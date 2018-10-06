@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 3c18478fb2996178ee0b75870ce63dfc79ad4c4c
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 8452f84c1358c410cd0431416a5b65a88a8b903e
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054727"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48817110"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Programowanie po stronie serwera w usłudze Azure Cosmos DB: procedury składowane, wyzwalacze bazy danych i funkcji zdefiniowanych przez użytkownika
 
@@ -92,7 +92,7 @@ client.executeStoredProcedureAsync('dbs/testdb/colls/testColl/sprocs/helloWorld'
     });
 ```
 
-Obiekt kontekstu zapewnia dostęp do wszystkich operacji, które mogą być wykonywane w magazynie usługi Cosmos DB, a także dostęp do obiektów żądań i odpowiedzi. W tym przypadku obiekt odpowiedzi używany do ustawiania treść odpowiedzi, który został wysłany do klienta. Aby uzyskać więcej informacji, zobacz [serwera usługi Azure Cosmos DB JavaScript dokumentacji zestawu SDK](https://azure.github.io/azure-cosmosdb-js-server/).  
+Obiekt kontekstu zapewnia dostęp do wszystkich operacji, które mogą być wykonywane w magazynie usługi Cosmos DB, a także dostęp do obiektów żądań i odpowiedzi. W tym przypadku obiekt odpowiedzi używany do ustawiania treść odpowiedzi, który został wysłany do klienta. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API usługi Azure Cosmos DB JavaScript po stronie serwera](https://azure.github.io/azure-cosmosdb-js-server/).  
 
 Daj nam rozwinąć w tym przykładzie i dodać więcej funkcji związanych z bazy danych do procedury składowanej. Procedury składowane można utworzyć, zaktualizować, odczytu, zapytania i usuwania dokumentów i załączników w kolekcji.    
 
@@ -503,7 +503,7 @@ client.createUserDefinedFunctionAsync('dbs/testdb/colls/testColl', taxUdf)
 ```
 
 ## <a name="javascript-language-integrated-query-api"></a>Zapytanie o języku zintegrowanym JavaScript API
-Oprócz wysyłania zapytań przy użyciu Gramatyka języka SQL w usłudze Azure Cosmos DB zestawu SDK po stronie serwera umożliwia wykonywanie zoptymalizowane zapytania przy użyciu fluent interfejsu języka JavaScript, bez konieczności znajomości języka SQL. Zapytanie języka JavaScript, które interfejs API umożliwia programowe tworzenie zapytań, przekazując predykatu funkcje do funkcji chainable wywołuje składnią znane elementy tablicy wbudowane i popularne biblioteki JavaScript, takich jak Lodash ECMAScript5 firmy. Zapytania są analizowane przez środowisko uruchomieniowe JavaScript do wykonania wydajnie za pomocą indeksów usługi Azure Cosmos DB.
+Oprócz wysyłania zapytań przy użyciu usługi Azure Cosmos DB — Gramatyka języka SQL, [SDK po stronie serwera](https://azure.github.io/azure-cosmosdb-js-server/) umożliwia wykonywanie zoptymalizowane zapytania przy użyciu fluent interfejsu języka JavaScript, bez konieczności znajomości języka SQL. Zapytanie języka JavaScript, które interfejs API umożliwia programowe tworzenie zapytań, przekazując predykatu funkcje do funkcji chainable wywołuje składnią znane elementy tablicy wbudowane i popularne biblioteki JavaScript, takich jak Lodash ECMAScript5 firmy. Zapytania są analizowane przez środowisko uruchomieniowe JavaScript do wykonania wydajnie za pomocą indeksów usługi Azure Cosmos DB.
 
 > [!NOTE]
 > `__` (podwójne podkreślenie) jest aliasem, aby `getContext().getCollection()`.
@@ -831,9 +831,8 @@ Po utworzeniu co najmniej jeden procedur składowanych, wyzwalaczy i funkcji zde
 
 Można również znaleźć następujące informacje i zasoby przydatne w ścieżce w taki sposób, aby dowiedzieć się więcej na temat programowanie po stronie serwera usługi Azure Cosmos dB:
 
-* [Zestawy SDK usługi Azure Cosmos DB](sql-api-sdk-dotnet.md)
+* [Dokumentacja interfejsu API po stronie serwera w usłudze Azure Cosmos DB JavaScript](https://azure.github.io/azure-cosmosdb-js-server/)
 * [Studio bazy danych DocumentDB](https://github.com/mingaliu/DocumentDBStudio/releases)
-* [JSON](http://www.json.org/) 
 * [JavaScript ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
 * [Rozszerzalność bezpieczne i przenośnej bazy danych](http://dl.acm.org/citation.cfm?id=276339) 
 * [Usługa zorientowanej na architekturę bazy danych](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 

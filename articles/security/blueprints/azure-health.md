@@ -9,20 +9,22 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: b20da0f31f197ed23aa73b185d127a6d5f2dbd8a
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: cbeee643ee4a2705d3f0202a7206e10fbcc5acab
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214945"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831623"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpieczenia platformy Azure i zgodności planu — dane kondycji HIPAA/HITRUST i SI
 
 ## <a name="overview"></a>Przegląd
 
-**Zabezpieczenia platformy Azure i zgodności planu — dane kondycji HIPAA/HITRUST i SI oferuje wdrożenia setką kompleksowych, aby zademonstrować sposób bezpiecznego pozyskiwanie, przechowywanie, analizowanie i wchodzić w interakcje z danymi kondycji równocześnie jest w stanie spełnić zgodności w branży rozwiązania PaaS platformy Azure wymagania. Planu pomaga przyspieszyć wdrażanie chmury i wykorzystania dla klientów korzystających z danych, która reguluje.**
+**Zabezpieczenia platformy Azure i zgodności planu — dane kondycji HIPAA/HITRUST i SI oferuje setką kompleksowych wdrożenie rozwiązania IaaS i PaaS platformy Azure, aby zademonstrować pozyskiwanie, przechowywanie, analizowanie, wchodzić w interakcje, tożsamość i bezpiecznie Wdrażaj rozwiązania z danymi kondycji podczas możliwość spełnianie wymagań dotyczących zgodności w branży. Planu pomaga przyspieszyć wdrażanie chmury i wykorzystania dla klientów korzystających z danych, która reguluje.**
 
-Zabezpieczenia platformy Azure i zgodności planu — dane kondycji HIPAA/HITRUST i SI planu oferuje narzędzia i wskazówki, aby pomóc we wdrażaniu bezpiecznej, Health Insurance Portability i Accountability Act (HIPAA) i kondycji informacji zaufania Alliance (HITRUST) gotowe Platforma jako usługa (PaaS) środowisko do umożliwiając pozyskiwanie, przechowywanie, analizowanie i interakcję z rekordami medycznymi osobistych, jak i osobiste innego niż w środowisku chmury bezpieczne, obejmujące wiele warstw, wdrażane jako rozwiązania end-to-end. Przedstawia typowe architektury referencyjnej, a jest zaprojektowane w celu uproszczenia wdrożenia systemu Microsoft Azure. Ta architektura podana przedstawiono rozwiązanie do potrzeb organizacji szukających podejście oparte na chmurze do zmniejszenia obciążenia i obniżyć koszty wdrożenia.
+Zabezpieczenia platformy Azure i zgodności planu — dane kondycji HIPAA/HITRUST i SI planu oferuje narzędzia i wskazówki, aby pomóc we wdrażaniu bezpiecznej, Health Insurance Portability i Accountability Act (HIPAA) i kondycji informacji zaufania Alliance (HITRUST) gotowe Platforma jako usługa (PaaS) środowisko do umożliwiając pozyskiwanie, przechowywanie, analizowanie i interakcję z rekordami medycznymi osobistych, jak i osobiste innego niż w środowisku chmury bezpieczne, obejmujące wiele warstw, wdrażane jako rozwiązania end-to-end. 
+
+Rozwiązanie IaaS pokażemy, jak migrować rozwiązanie SQL na podstawie lokalnych na platformę Azure oraz do wykonywania uprzywilejowanego dostępu do stacji roboczej (PAW) do bezpiecznego zarządzania usługami w chmurze i rozwiązań. IaaS programu SQL Server dodaje potencjalnych eksperymentowania, które dane są importowane do maszyny Wirtualnej SQL IaaS i że maszyna wirtualna używa MSI dostęp uwierzytelniony do interakcji z usługą SQL Azure PaaS. Zarówno te przedstawiono typowe architektury referencyjnej i upraszcza wdrożenie systemu Microsoft Azure. Ta architektura podana przedstawiono rozwiązanie do potrzeb organizacji szukających podejście oparte na chmurze do zmniejszenia obciążenia i obniżyć koszty wdrożenia.
 
 ![](images/components.png)
 
@@ -38,23 +40,15 @@ Ten plan ma służyć jako podstawa modułowej klienci będą mogli dostosować 
 
 ## <a name="deploying-the-automation"></a>Wdrażanie usługi automation
 
-- Aby wdrożyć to rozwiązanie, postępuj zgodnie z instrukcjami podanymi w wskazówki dotyczące wdrażania. 
+- Aby wdrożyć to rozwiązanie, wykonaj instrukcje podane w [ze wskazówkami dotyczącymi wdrażania](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/deployment.md). 
 
-[![](./images/deploy.png)](https://aka.ms/healthblueprintdeploy)
-
-Aby uzyskać szybki przegląd sposobu działania tego rozwiązania, Obejrzyj to [wideo](https://aka.ms/healthblueprintvideo) objaśnia i demonstruje wprowadzone jej wdrożenia.
+- Aby uzyskać szybki przegląd sposobu działania tego rozwiązania, Obejrzyj to [wideo](https://aka.ms/healthblueprintvideo) objaśnia i demonstruje wprowadzone jej wdrożenia.
 
 - Często zadawanych pytań znajdują się w [— często zadawane pytania](https://aka.ms/healthblueprintfaq) wskazówki.
 
 -   **Diagram architektury.** Na diagramie przedstawiono architekturę referencyjną, używany do planu, a przykładowy scenariusz przypadków użycia.
 
--   **Szablony wdrażania**. W tym wdrożeniu [szablonów usługi Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview#template-deployment) są używane do automatycznego wdrożenia składniki architektury platformę Microsoft Azure, określając parametry konfiguracji podczas instalacji.
-
--   **[Zautomatyzowane skrypty wdrażania](https://aka.ms/healthblueprintdeploy)**. Skrypty te pomagają wdrażania rozwiązania. Skrypty obejmują:
-
-
--   Instalacja modułu i [administratora globalnego](/azure/active-directory/active-directory-assign-admin-roles-azure-portal) skrypt instalacji jest używana do instalowania i sprawdzić poprawność konfiguracji wymaganych modułów programu PowerShell i ról administratora globalnego. 
--   Aby wdrożyć to rozwiązanie udostępniane za pośrednictwem pliku zip, który zawiera funkcje wstępnie skompilowanych wersji demonstracyjnej, używany jest instalacji skrypt programu PowerShell.
+-   [Rozszerzenie IaaS](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md) to rozwiązanie pokażemy, jak migrować rozwiązanie SQL na podstawie lokalnych na platformę Azure oraz do wykonywania Privieged stacji roboczej z dostępem do bezpiecznego zarządzania bsed chmurze usług i rozwiązań. 
 
 ## <a name="solution-components"></a>Składniki rozwiązania
 
@@ -70,7 +64,7 @@ Podstawowa architektura składa się z następujących składników:
 # <a name="architectural-diagram"></a>Diagram architektury
 
 
-![](images/refarch.png)
+![](images/ra2.png)
 
 ## <a name="roles"></a>Role
 

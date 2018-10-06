@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: fbbc5a199116e46aac0874f3dc6d6d9aa18c60cd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7f1e06fba76b833d4a344af1163ef7ef2c29bdb6
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954026"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816858"
 ---
 # <a name="manage-azure-data-explorer-database-permissions"></a>Zarządzanie uprawnieniami bazy danych Azure Eksplorator danych
 
@@ -31,7 +31,6 @@ Eksplorator usługi Azure Data ma następujące role:
 |Użytkownik bazy danych              |Może odczytywać wszystkie dane i metadane w bazie danych. Ponadto mogą utworzyć tabele (staje się administratorem tabeli dla tej tabeli) i funkcje w bazie danych.|
 |Podgląd bazy danych            |Może odczytywać wszystkie dane i metadane w bazie danych.|
 |Dużych możliwościach skalowania bazy danych          |Pozyskiwanie danych do wszystkich istniejących tabel w bazie danych, ale nie wykonywania zapytań o dane.|
-|Unrestrictedviewer bazy danych|Można wykonywać zapytania dotyczące tabel, które mają **RestrictedViewAccess** włączone zasady. Nie można zbadać inne tabele.|
 |Monitor bazy danych           |Można wykonać polecenia ".show..." w kontekście bazy danych i jego obiektów podrzędnych.|
 |Administrator tabeli                |Można to zrobić w zakresie konkretnej tabeli. |
 |Tabela dużych możliwościach skalowania             |Pozyskiwanie danych w zakresie konkretnej tabeli, ale nie wykonywania zapytań o dane.|

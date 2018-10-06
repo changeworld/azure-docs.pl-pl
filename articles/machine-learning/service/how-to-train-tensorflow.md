@@ -9,19 +9,19 @@ ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: ba43593e90b78aaa0083faf4f8162a7663c0ad47
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 43302bd449b2a25e3e1a65da5ae2a70c3660cb09
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974225"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815022"
 ---
 # <a name="how-to-train-tensorflow-models"></a>Jak szkolenia TensorFlow modeli
 
-W przypadku szkolenia sieci neuronowej (DNN) przy użyciu TensorFlow, Azure Machine Learning zapewnia niestandardowej klasy TensorFlow estymatora. Narzędzie do szacowania zestawu Azure SDK TensorFlow (nie można być conflated z [ `tf.estimator.Estimator` ](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator) klasy) umożliwia łatwe przesyłanie zadania szkolenia TensorFlow uruchamiany jednym węzłem i rozproszonych obliczeń platformy Azure.
+Szkolenia sieci neuronowej (DNN) przy użyciu TensorFlow, Azure Machine Learning zapewnia niestandardowego `TensorFlow` klasy `Estimator`. Zestaw Azure SDK `TensorFlow` narzędzie do szacowania (nie można być conflated z [ `tf.estimator.Estimator` ](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator) klasy) umożliwia łatwe przesyłanie zadania szkolenia TensorFlow uruchamiany jednym węzłem i rozproszonych obliczeń platformy Azure.
 
 ## <a name="single-node-training"></a>Szkolenie z jednym węzłem
-Szkolenie przy użyciu narzędzie do szacowania TensorFlow jest podobne do [podstawowa narzędzie do szacowania](how-to-train-ml-models.md), więc najpierw przeczytać artykuł porad i upewnij się, zrozumieniu pojęć wprowadzonych w.
+Szkolenie z `TensorFlow` narzędzie do szacowania jest podobne do [podstawowy `Estimator` ](how-to-train-ml-models.md), więc najpierw przeczytać artykuł porad i upewnij się, zrozumieniu pojęć wprowadzonych w.
   
 Aby uruchomić zadanie TensorFlow, utworzyć `TensorFlow` obiektu. Powinna już utworzono swoje [obliczeniowego elementu docelowego](how-to-set-up-training-targets.md#batch) obiektu `compute_target`.
 
@@ -42,13 +42,15 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
 ```
 
 W tym miejscu możemy określić następujące parametry do konstruktora TensorFlow:
-* `source_directory`: Katalog lokalny, który zawiera wszystkie wymagane na potrzeby zadania szkolenia kodu. Ten folder skopiowane z komputera lokalnego do zdalnego obliczeń
-* `script_params`: Określanie argumentów wiersza polecenia do skryptu szkolenia słownik `entry_script`, w postaci < argument wiersza polecenia, wartość > par
-* `compute_target`: Zdalne zasoby obliczeniowe uruchamianego skrypt szkolenia, w tym przypadku [usługi Batch AI](how-to-set-up-training-targets.md#batch) klastra
-* `entry_script`Filepath (względem `source_directory`) skryptu szkolenia, należy uruchomić na zdalne zasoby obliczeniowe. Ten plik i wszelkie dodatkowe pliki, od których zależy, powinny się znajdować w tym folderze
-* `conda_packages`: Lista pakietów języka Python, aby ją zainstalować za pomocą narzędzia conda, wymagane przez skrypt szkolenia. W takim przypadku używa skrypt szkoleniowy `sklearn` do ładowania danych, zatem Określ tego pakietu do zainstalowania.  
-Konstruktor ma inny parametr o nazwie `pip_packages` używanego do dowolnego pakietu pip, wymagane
-* `use_gpu`: Ustaw tę flagę `True` wykorzystanie procesora GPU do trenowania. Wartość domyślna to `False`.
+
+Parametr | Opis
+--|--
+`source_directory` | Katalog lokalny, który zawiera wszystkie wymagane na potrzeby zadania szkolenia kodu. Ten folder skopiowane z komputera lokalnego do zdalnego obliczeń
+`script_params` | Określanie argumentów wiersza polecenia do skryptu szkolenia słownika `entry_script`, w postaci < argument wiersza polecenia, wartość > par
+`compute_target` | Zdalne obliczeń, uruchamianego skrypt szkolenia, w tym przypadku [usługi Batch AI](how-to-set-up-training-targets.md#batch) klastra
+`entry_script` | FilePath (względem `source_directory`) skryptu szkolenia, należy uruchomić na zdalne zasoby obliczeniowe. Ten plik i wszelkie dodatkowe pliki, od których zależy, powinny się znajdować w tym folderze
+`conda_packages` | Lista pakietów języka Python, aby ją zainstalować za pomocą narzędzia conda, wymagane przez skrypt szkolenia. W takim przypadku używa skrypt szkoleniowy `sklearn` do ładowania danych, zatem Określ tego pakietu do zainstalowania.  Konstruktor ma inny parametr o nazwie `pip_packages` używanego do dowolnego pakietu pip, wymagane
+`use_gpu` | Ustaw tę flagę `True` wykorzystanie procesora GPU do trenowania. Wartość domyślna to `False`.
 
 Ponieważ używasz narzędzie do szacowania TensorFlow, domyślnie zostanie kontenera, użyty na potrzeby szkolenia TensorFlow pakietu i powiązane zależności niezbędne do szkolenia z zakresu procesorów oraz procesorów GPU.
 
@@ -61,8 +63,8 @@ run = exp.submit(tf_est)
 Narzędzie do szacowania TensorFlow umożliwia także szkolenie modeli na dużą skalę w klastrach GPU i CPU maszyn wirtualnych platformy Azure. Łatwo można uruchomić rozproszonego szkolenia TensorFlow kilka wywołań interfejsu API, natomiast usługa Azure Machine Learning będą zarządzać w tle, infrastruktury i aranżacji potrzebne do wykonania tych obciążeń.
 
 Usługa Azure Machine Learning obsługuje dwie metody rozproszonego szkolenia w TensorFlow:
-1. Na podstawie MPI rozproszonego szkolenia przy użyciu [Horovod](https://github.com/uber/horovod) framework
-2. natywne [rozproszonych TensorFlow](https://www.tensorflow.org/deploy/distributed) za pomocą parametru metody serwera
+* Na podstawie MPI rozproszonego szkolenia przy użyciu [Horovod](https://github.com/uber/horovod) framework
+* natywne [rozproszonych TensorFlow](https://www.tensorflow.org/deploy/distributed) za pomocą parametru metody serwera
 
 ### <a name="horovod"></a>Horovod
 [Horovod](https://github.com/uber/horovod) to architektura typu open-source pierścień allreduce dla rozproszonego szkolenia opracowany przez Uber.
@@ -83,13 +85,17 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
 ```
 
 Powyższy kod udostępnia następujące nowe parametry do konstruktora TensorFlow:
-* `node_count`: Liczba węzłów na potrzeby zadania szkolenia. Wartością domyślną tego argumentu `1`
-* `process_count_per_node`: Liczba procesów (lub "pracowników przetwarzających"), aby uruchomić w każdym węźle. Wartością domyślną tego argumentu `1`
-* `distributed_backend`: Zaplecze do uruchamiania rozproszonych szkoleń, która estymatora oferuje za pośrednictwem MPI. Domyślnie ten argument `None`. Jeśli chcesz przeprowadzić szkolenia równoległego lub rozproszonej (np. `node_count`> 1 lub `process_count_per_node`> 1 lub obie) przy użyciu MPI (i Horovod), należy ustawić `distributed_backend='mpi'`. Implementacja MPI używane przez usługi Azure Machine Learning jest [Otwórz MPI](https://www.open-mpi.org/).
+
+Parametr | Opis | Domyślne
+--|--|--
+`node_count` | Liczba węzłów na potrzeby zadania szkolenia. | `1`
+`process_count_per_node` | Liczba procesów (lub "pracowników przetwarzających"), aby uruchomić w każdym węźle.|`1`
+`distributed_backend` | Zaplecze dla uruchamiania rozproszonych, szkolenia, która estymatora oferuje za pośrednictwem MPI. Jeśli chcesz przeprowadzić szkolenia równoległego lub rozproszonej (np. `node_count`> 1 lub `process_count_per_node`> 1 lub obie) przy użyciu MPI (i Horovod), należy ustawić `distributed_backend='mpi'`. Implementacja MPI używane przez usługi Azure Machine Learning jest [Otwórz MPI](https://www.open-mpi.org/). | `None`
 
 Powyższy przykład zostaną uruchomione rozproszonego szkolenia dwóch pracowników jednego procesu roboczego w każdym węźle.
 
 Horovod wraz z jego zależnościami zostanie zainstalowany, dzięki czemu można po prostu zaimportować go w skrypcie szkolenia `train.py` w następujący sposób:
+
 ```Python
 import tensorflow as tf
 import horovod
@@ -104,6 +110,7 @@ run = exp.submit(tf_est)
 Można również uruchomić [native rozproszonych TensorFlow](https://www.tensorflow.org/deploy/distributed), parametr modelem serwera, który używa. W przypadku tej metody szkolenie w klastrze serwerów parametru i procesów roboczych. Procesy robocze obliczania gradientów podczas szkolenia, gdy serwery parametr agregacji gradientów.
 
 Konstrukcja obiektu TensorFlow:
+
 ```Python
 from azureml.train.dnn import TensorFlow
 
@@ -119,9 +126,12 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
 ```
 
 Należy zwrócić uwagę na następujące parametry do konstruktora TensorFlow w powyższym kodzie:
-* `worker_count`: Liczba procesów roboczych. Wartością domyślną tego argumentu `1`
-* `parameter_server_count`: Liczba serwerów parametrów. Wartością domyślną tego argumentu `1`
-* `distributed_backend`: Wewnętrznej bazy danych do użycia dla rozproszonego szkolenia. Domyślnie ten argument `None`. Aby to zrobić rozproszonego szkolenia za pośrednictwem parametrów serwera, musisz ustawić `distributed_backend='ps'`
+
+Parametr | Opis | Domyślne
+--|--|--
+`worker_count` | Liczba procesów roboczych. | `1`
+`parameter_server_count` | Liczba serwerów parametrów. | `1`
+`distributed_backend` | Zaplecze dla rozproszonego szkolenia. Rozproszonego szkolenia za pośrednictwem parametrów serwera, ustaw `distributed_backend='ps'` | `None`
 
 #### <a name="note-on-tfconfig"></a>Uwaga dotycząca `TF_CONFIG`
 Należy również adresów sieciowych i portów klastra na potrzeby [ `tf.train.ClusterSpec` ](https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec), dzięki czemu usługa Azure Machine Learning ustawia `TF_CONFIG` zmienną środowiskową dla Ciebie.
@@ -161,13 +171,13 @@ run = exp.submit(tf_est)
 
 ## <a name="examples"></a>Przykłady
 Samouczek dotyczący szkolenia TensorFlow jednym węzłem zobacz:
-* `training/03.train-tune-deploy-tensorflow/03.train-tune-deploy-tensorflow.ipynb`
+* `training/03.train-hyperparameter-tune-deploy-with-tensorflow `
 
 Samouczek dotyczący rozproszonego TensorFlow z Horovod zobacz:
-* `training/04.distributed-tensorflow-with-horovod/04.distributed-tensorflow-with-horovod.ipynb`
+* `training/04.distributed-tensorflow-with-horovod`
 
 Samouczek dotyczący natywnych TensorFlow rozproszonej zobacz:
-* `training/05.distributed-tensorflow-with-parameter-server/05.distributed-tensorflow-with-parameter-server.ipynb`
+* `training/05.distributed-tensorflow-with-parameter-server`
 
 Pobierz te notesy:
 

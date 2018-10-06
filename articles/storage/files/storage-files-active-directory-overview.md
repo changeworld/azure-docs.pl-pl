@@ -7,69 +7,57 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/19/2018
 ms.author: tamram
-ms.openlocfilehash: cb22d68f0e907777071e438c45a9a4c86155885f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d599b54fe828b88edd3d04d6cd66a4baf36c2c1a
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974106"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831555"
 ---
 # <a name="overview-of-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Omówienie uwierzytelniania usługi Azure Active Directory za pośrednictwem protokołu SMB dla usługi Azure Files (wersja zapoznawcza)
-
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
 Aby dowiedzieć się, jak włączyć uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB dla usługi Azure Files, zobacz [uwierzytelniania włączyć usługi Azure Active Directory za pośrednictwem protokołu SMB dla usługi Azure Files (wersja zapoznawcza)](storage-files-active-directory-enable.md).
 
 ## <a name="glossary"></a>Słownik 
-
 Warto poznać kilka kluczowych pojęć odnoszących się do uwierzytelniania usługi Azure AD przy użyciu protokołu SMB dla usługi Azure Files:
 
--   **Azure Active Directory (Azure AD)**
-
+-   **Azure Active Directory (Azure AD)**  
     Azure Active Directory (Azure AD) to usługa firmy Microsoft wieloma dzierżawami opartej na chmurze zarządzania katalogami i tożsamościami zarządzania. Usługa Azure AD łączy podstawowe usługi katalogowe, zarządzanie dostępem do aplikacji i ochrony tożsamości w ramach jednego rozwiązania. Aby uzyskać więcej informacji, zobacz [co to jest Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md)
 
--   **Usług domenowych Azure AD**
-
+-   **Usług domenowych Azure AD**  
     Usługi domenowe Azure AD oferuje zarządzane usługi domenowe, takie jak przyłączanie do domeny, zasady grupy, LDAP i Kerberos/NTLM uwierzytelniania. Te usługi są w pełni zgodne z usługą Windows Server Active Directory. Aby uzyskać więcej informacji, zobacz [usługi domenowe Azure Active Directory (AD)](../../active-directory-domain-services/active-directory-ds-overview.md).
 
--   **Kontrola dostępu (RBAC) oparta na rolach platformy Azure**
-
+-   **Kontrola dostępu (RBAC) oparta na rolach platformy Azure**  
     Kontrola dostępu oparta na rolach (Role-Based Access Control, RBAC) na platformie Azure umożliwia precyzyjne zarządzanie dostępem dla platformy Azure. Przy użyciu funkcji RBAC, można zarządzać dostępem do zasobów przez udzielenie użytkownikom najmniejsze uprawnienia wymagane do wykonywania swoich zadań. Aby uzyskać więcej informacji o ROLACH, zobacz [co to jest kontrola dostępu oparta na rolach (RBAC) na platformie Azure?](../../role-based-access-control/overview.md)
 
 -   **Uwierzytelnianie Kerberos**
 
     Kerberos to protokół uwierzytelniania, która jest używana do zweryfikowania tożsamości danego użytkownika lub hosta. Aby uzyskać więcej informacji na temat protokołu Kerberos, zobacz [uwierzytelnianie Kerberos — omówienie](https://docs.microsoft.com/windows-server/security/kerberos/kerberos-authentication-overview).
 
--  **Protokół Message Block (SMB) serwera**
-
+-  **Protokół Message Block (SMB) serwera**  
     SMB to protokół udostępniania plików sieciowych będące standardami branżowymi. Protokół SMB jest również nazywany Common Internet File System lub CIFS. Aby uzyskać więcej informacji na temat protokołu SMB, zobacz [protokołu SMB firmy Microsoft oraz omówienie protokołu CIFS](https://docs.microsoft.com/windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview).
 
 ## <a name="advantages-of-azure-ad-authentication"></a>Korzyści wynikające z uwierzytelniania usługi Azure AD
-
 Usługa Azure AD przy użyciu protokołu SMB dla usługi Azure Files oferuje wiele korzyści, za pośrednictwem za pomocą uwierzytelniania klucza wspólnego:
 
--   **Rozszerzanie środowiska dostępu do udziału tradycyjnych plików na podstawie tożsamości w chmurze z usługą Azure AD**
-
+-   **Rozszerzanie środowiska dostępu do udziału tradycyjnych plików na podstawie tożsamości w chmurze z usługą Azure AD**  
     Jeśli planujesz "lift- and -shift" serwery z plików z aplikacji w chmurze, zastępując tradycyjnych w usłudze pliki Azure, a następnie może być aplikacji do uwierzytelniania za pomocą usługi Azure AD dostęp do danych plików. Platforma Azure obsługuje pliki przy użyciu poświadczeń usługi Azure AD z przyłączonym do domeny maszynami wirtualnymi za pośrednictwem protokołu SMB do dostępu do udziałów plików, katalogów lub plików. Możesz również synchronizowanie wszystkich obiektów usługi Active Directory lokalnych z usługą Azure AD, aby zachować nazwy użytkownika, hasła i inne przypisania grupy.
 
--   **Wymuszanie szczegółową kontrolę dostępu do udziałów plików platformy Azure**
-
+-   **Wymuszanie szczegółową kontrolę dostępu do udziałów plików platformy Azure**  
     Przy użyciu uwierzytelniania usługi Azure AD przy użyciu protokołu SMB można przyznać uprawnienia do określonej tożsamości na poziomie udziału, katalogu lub pliku. Na przykład załóżmy, że masz kilka zespołów przy użyciu udziału plików platformy Azure w jednym projekcie współpracy. Podczas ograniczania dostępu do katalogów zawierających poufne dane finansowe do Twojego zespołu Finanse, można przyznać dostęp do zwykłych katalogi, wszystkich zespoły. 
 
--   **Tworzenie kopii zapasowej listy ACL wraz z danych**
-
+-   **Tworzenie kopii zapasowej listy ACL wraz z danych**  
     Aby utworzyć kopię zapasową istniejących udziałów plików w środowisku lokalnym, można użyć usługi Azure Files. Usługa Azure Files zachowuje Twojej listy kontroli dostępu oraz dane udostępnienie Utwórz kopię zapasową pliku do usługi Azure Files za pośrednictwem protokołu SMB.
 
 ## <a name="how-it-works"></a>Jak to działa
-
 Usługa Azure Files korzysta z usług domenowych Azure AD do obsługi uwierzytelniania Kerberos, przy użyciu poświadczeń usługi Azure AD z przyłączonym do domeny maszynami wirtualnymi. Zanim użyjesz usługi Azure AD za pomocą usługi Azure Files można włączyć usługi domenowe Azure AD i przyłączania do domeny na maszynach wirtualnych, z których mają dostęp do danych plików. Przyłączone do domeny maszyny Wirtualnej muszą znajdować się w tej samej sieci wirtualnej (VNET) usługi Azure AD Domain Services. 
 
 Tożsamość skojarzoną z aplikacji uruchomionej na maszynie Wirtualnej próbuje uzyskać dostęp do danych w usłudze Azure Files, żądanie jest wysyłane do usług domenowych Azure AD do uwierzytelniania tożsamości. Jeśli uwierzytelnianie się powiedzie, Azure AD Domain Services zwraca token protokołu Kerberos. Aplikacja wysyła żądanie, które zawiera token protokołu Kerberos i usługi Azure Files używa tego tokenu, aby autoryzować żądania. Usługa pliki systemu Azure odbiera tylko token i nie utrwala poświadczeń usługi Azure AD.
 
 ![Zrzut ekranu przedstawiający diagram uwierzytelniania usługi Azure AD przy użyciu protokołu SMB](media/storage-files-active-directory-overview/azure-active-directory-over-smb-for-files-overview.png)
 
-### <a name="enable-azure-ad-authentication-over-smb"></a>Włącz uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB
-
+### <a name="enable-azure-ad-authentication-over-smb"></a>Włączanie uwierzytelniania w usłudze Azure AD przez SMB
 Dla usługi Azure Files magazynu nowych i istniejących kont utworzonych po 29 sierpnia 2018 r., można włączyć uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB. 
 
 Przed włączeniem uwierzytelniania usługi Azure AD przy użyciu protokołu SMB, sprawdź, czy usługi domenowe Azure AD został pomyślnie wdrożony dla podstawowego dzierżawy usługi Azure AD, z którą jest skojarzone konta magazynu. Jeśli usługi domenowe Azure AD nie zostały jeszcze skonfigurowany, wykonaj instrukcje krok po kroku ze wskazówkami zawartymi w [włączyć usługi Azure Active Directory Domain Services w witrynie Azure portal](../../active-directory-domain-services/active-directory-ds-getting-started.md).
@@ -77,35 +65,29 @@ Przed włączeniem uwierzytelniania usługi Azure AD przy użyciu protokołu SMB
 Wdrożenie usługi Azure AD Domain Services zwykle trwa 10 do 15 minut. Po wdrożeniu usługi Azure AD Domain Services dla usługi Azure Files można włączyć uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB. Aby uzyskać więcej informacji, zobacz [uwierzytelniania włączyć usługi Azure Active Directory za pośrednictwem protokołu SMB dla usługi Azure Files (wersja zapoznawcza)](storage-files-active-directory-enable.md). 
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>Skonfiguruj uprawnienia na poziomie udziału plików platformy Azure
-
 Po włączeniu uwierzytelniania usługi Azure AD można skonfigurować niestandardowe role RBAC dla tożsamości usługi Azure AD i przypisania praw dostępu do żadnych udziałów plików na koncie magazynu.
 
 Aplikacji uruchomionej na maszynie Wirtualnej przyłączone do domeny próbuje zainstalować udział plików platformy Azure lub dostępu do pliku lub katalogu, aby zapewnić odpowiednie uprawnienia na poziomie udziału i uprawnień systemu plików NTFS są weryfikowane poświadczeń usługi Azure AD aplikacji. Aby uzyskać informacje o konfigurowaniu uprawnień na poziomie udziału, zobacz [włączyć usługi Azure Active Directory authentication za pośrednictwem protokołu SMB (wersja zapoznawcza)](storage-files-active-directory-enable.md).
 
 ### <a name="configure-directory--or-file-level-permissions-for-azure-files"></a>Konfigurowanie uprawnień na poziomie pliku lub katalogu dla usługi Azure Files 
-
 Usługa pliki Azure wymusza standardowe uprawnienia NTFS pliku, na poziomie katalogów i plików, w tym w katalogu głównym. Konfiguracja uprawnień na poziomie pliku lub katalogu jest obsługiwany tylko przez protokół SMB. Instalowanie docelowego udziału plików z maszyny Wirtualnej i skonfigurować uprawnienia za pomocą Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) lub [listy ACL zestaw](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl) polecenia. 
 
 > [!NOTE]
 > Skonfigurowanie uprawnień systemu plików NTFS, za pomocą Eksploratora plików Windows nie jest obsługiwana w wersji zapoznawczej.
 
 ### <a name="use-the-storage-account-key-for-superuser-permissions"></a>Użyj klucza konta magazynu, aby uzyskać uprawnienia administratora 
-
 Użytkownik posiada klucza konta magazynu dostęp usługi Azure Files z uprawnieniami administratora. Uprawnienia administratora pozwoliło wszystkich ograniczeń kontroli dostępu skonfigurowana na poziomie udziału, przy użyciu RBAC i wymuszane przez usługę Azure AD. Uprawnienia administratora są wymagane, aby zainstalować udział plików platformy Azure. 
 
 > [!IMPORTANT]
 > W ramach najlepsze rozwiązania dotyczące zabezpieczeń Unikaj udostępniania kluczy konta magazynu i korzystać z uprawnień usługi Azure AD, jeśli to możliwe.
 
 ### <a name="preserve-directory-and-file-acls-for-data-import-to-azure-file-shares"></a>Zachowaj ACL katalogów i plików do importowania danych do udziałów plików platformy Azure
-
 Uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB obsługuje przy zachowaniu katalog lub plik listy kontroli dostępu, gdy kopiowanie danych do udziałów plików platformy Azure. W wersji zapoznawczej możesz skopiować listy ACL na katalog lub plik do usługi Azure Files. Na przykład, można użyć [robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) z flagą `/copy:s` do kopiowania danych i listy kontroli dostępu do udziału plików platformy Azure.
 
 ## <a name="pricing"></a>Cennik
-
 Brak bez dodatkowej opłaty usługi, aby włączyć uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB na swoim koncie magazynu. Aby uzyskać więcej informacji na temat cen, zobacz [cennika usługi Azure Files](https://azure.microsoft.com/pricing/details/storage/files/) i [cennika usługi Azure AD Domain Services](https://azure.microsoft.com/pricing/details/active-directory-ds/) stron.
 
 ## <a name="next-steps"></a>Następne kroki
-
 Aby uzyskać więcej informacji na temat uwierzytelniania usługi Azure Files i Azure AD przy użyciu protokołu SMB zobacz następujące zasoby:
 
 - [Wprowadzenie do usługi Azure Files](storage-files-introduction.md)

@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 01/21/2018
+ms.date: 10/02/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 18dfdce827a76d924494e66ceb0d03e2bb3a3ffe
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: bca75f9efa1614c4fa719b21007c827494ecd8f0
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523764"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830714"
 ---
 # <a name="azure-storage-replication"></a>Replikacja usługi Azure Storage
 
@@ -40,6 +40,8 @@ Poniższa tabela zawiera krótkie omówienie zakres trwałości i dostępności,
 | Dostęp do odczytu do danych (w zdalnym, replikowany geograficznie region) w przypadku niedostępności obejmujących cały region | Nie                              | Nie                               | Nie                                   | Yes                                  |
 | Umożliwia zapewnienie trwałości ___ obiektów w danym roku                                          | co najmniej 99,999999999% (11 9) | co najmniej 99,9999999999% (12 9) | co najmniej 99,99999999999999% (16 9) | co najmniej 99,99999999999999% (16 9) |
 | Typy kont magazynu obsługiwanych                                                                   | GPv1, GPv2, Blob                | GPv2                             | GPv1, GPv2, Blob                     | GPv1, GPv2, Blob                     |
+| Umowa SLA dotycząca dostępności dla żądań odczytu | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego)
+
 
 Zobacz [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/) Aby uzyskać informacje na temat opcji nadmiarowości różne.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/26/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 951c012dd22cf83741211b9601a5e7502de33be6
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: bde8ea74d2b6d36cd070598d0542e5be4bdef244
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393030"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816178"
 ---
 # <a name="azure-stack-1807-update"></a>Aktualizacja usługi Azure Stack 1807
 
@@ -39,29 +39,40 @@ Numerem kompilacji aktualizacji usługi Azure Stack 1807 **1.1807.0.76**.
 
 Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack.
 
-- <!-- 1658937 | ASDK, IS --> **Rozpocznij tworzenie kopii zapasowych zgodnie ze wstępnie zdefiniowanym harmonogramem** — znajduje się urządzenie, w usłudze Azure Stack można teraz automatycznie wyzwoli infrastruktury kopii zapasowych, okresowo, aby wyeliminować interwencji człowieka. Usługi Azure Stack będą również automatycznie wyczyścić udziału zewnętrznego dla kopii zapasowych, które są starsze niż okres przechowywania zdefiniowany. Aby uzyskać więcej informacji, zobacz [Włącz wykonywanie kopii zapasowej dla usługi Azure Stack przy użyciu programu PowerShell](azure-stack-backup-enable-backup-powershell.md).
+<!-- 1658937 | ASDK, IS --> 
+- **Rozpocznij tworzenie kopii zapasowych zgodnie ze wstępnie zdefiniowanym harmonogramem** — znajduje się urządzenie, w usłudze Azure Stack można teraz automatycznie wyzwoli infrastruktury kopii zapasowych, okresowo, aby wyeliminować interwencji człowieka. Usługi Azure Stack będą również automatycznie wyczyścić udziału zewnętrznego dla kopii zapasowych, które są starsze niż okres przechowywania zdefiniowany. Aby uzyskać więcej informacji, zobacz [Włącz wykonywanie kopii zapasowej dla usługi Azure Stack przy użyciu programu PowerShell](azure-stack-backup-enable-backup-powershell.md).
 
-- <!-- 2496385 | ASDK, IS -->  **Dodane dane transferu czasu, do łącznego czasu tworzenia kopii zapasowej.** Aby uzyskać więcej informacji, zobacz [Włącz wykonywanie kopii zapasowej dla usługi Azure Stack przy użyciu programu PowerShell](azure-stack-backup-enable-backup-powershell.md).
+<!-- 2496385 | ASDK, IS -->  
+- **Dodane dane transferu czasu, do łącznego czasu tworzenia kopii zapasowej.** Aby uzyskać więcej informacji, zobacz [Włącz wykonywanie kopii zapasowej dla usługi Azure Stack przy użyciu programu PowerShell](azure-stack-backup-enable-backup-powershell.md).
 
--   <!-- 1702130 | ASDK, IS -->  **Pojemność zewnętrznych kopii zapasowych zawiera obecnie prawidłowe pojemności udziału zewnętrznego.** (Wcześniej było to trwale kodować do 10 GB.) Aby uzyskać więcej informacji, zobacz [Włącz wykonywanie kopii zapasowej dla usługi Azure Stack przy użyciu programu PowerShell](azure-stack-backup-enable-backup-powershell.md).
+<!-- 1702130 | ASDK, IS -->  
+- **Pojemność zewnętrznych kopii zapasowych zawiera obecnie prawidłowe pojemności udziału zewnętrznego.** (Wcześniej było to trwale kodować do 10 GB.) Aby uzyskać więcej informacji, zobacz [Włącz wykonywanie kopii zapasowej dla usługi Azure Stack przy użyciu programu PowerShell](azure-stack-backup-enable-backup-powershell.md).
 
-- <!-- 2508488 |  IS   -->  **Zwiększyć pojemność** przez [dodawania węzłów jednostki rozbudowywać](azure-stack-add-scale-node.md).
+<!-- 2508488 |  IS   -->
+- **Zwiększyć pojemność** przez [dodawania węzłów jednostki rozbudowywać](azure-stack-add-scale-node.md).
 
-- <!-- 2753130 |  IS, ASDK   -->  **Szablony usługi Azure Resource Manager obsługuje teraz elementu warunek** — teraz można wdrożyć zasobów w szablonie usługi Azure Resource Manager przy użyciu warunku. Można zaprojektować szablon, aby wdrożyć zasób, w oparciu o warunek, np. Sprawdzanie, czy występuje wartość parametru. Aby dowiedzieć się, jak przy użyciu szablonu jako warunek, zobacz [warunkowe wdrażanie zasobu](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/conditional-deploy) i [sekcji zmiennych szablonów usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-templates-variables) w dokumentacji platformy Azure. 
+<!-- 2753130 |  IS, ASDK   -->  
+- **Szablony usługi Azure Resource Manager obsługuje teraz elementu warunek** — teraz można wdrożyć zasobów w szablonie usługi Azure Resource Manager przy użyciu warunku. Można zaprojektować szablon, aby wdrożyć zasób, w oparciu o warunek, np. Sprawdzanie, czy występuje wartość parametru. Aby dowiedzieć się, jak przy użyciu szablonu jako warunek, zobacz [warunkowe wdrażanie zasobu](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/conditional-deploy) i [sekcji zmiennych szablonów usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-templates-variables) w dokumentacji platformy Azure. 
 
    Można również użyć szablonów [wdrażanie zasobów na więcej niż jedną subskrypcję lub grupę zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-cross-resource-group-deployment).  
 
-- <!--2753073 | IS, ASDK -->  **Obsługa wersji zasobu Microsoft.Network interfejsu API zostały zaktualizowane** obsługę interfejsu API w wersji 2017-10-01 od 2015-06-15 dotyczące zasobów sieciowych w usłudze Azure Stack.  Obsługa wersji zasobu od 2017-10-01 i 2015-06-15 jest niedostępna w tej wersji, ale będzie dostępna w przyszłej wersji.  Zapoznaj się [zagadnienia dotyczące sieci usługi Azure Stack](user/azure-stack-network-differences.md) dla różnice w funkcjonalności.
+<!--2753073 | IS, ASDK -->  
+- **Obsługa wersji zasobu Microsoft.Network interfejsu API zostały zaktualizowane** obsługę interfejsu API w wersji 2017-10-01 od 2015-06-15 dotyczące zasobów sieciowych w usłudze Azure Stack.  Obsługa wersji zasobu od 2017-10-01 i 2015-06-15 jest niedostępna w tej wersji.  Zapoznaj się [zagadnienia dotyczące sieci usługi Azure Stack](user/azure-stack-network-differences.md) dla różnice w funkcjonalności.
 
-- <!-- 2272116 | IS, ASDK   -->  **Usługa Azure Stack dodano obsługę wstecznego wyszukiwania DNS dla zewnętrznie połączonego z punktów końcowych infrastruktury Azure Stack** (które jest przeznaczone dla portalu, adminportal, zarządzania i adminmanagement). Dzięki temu nazwy zewnętrzny punkt końcowy usługi Azure Stack, aby być rozwiązane wyłącznie z adresu IP.
+<!-- 2272116 | IS, ASDK   -->  
+- **Usługa Azure Stack dodano obsługę wstecznego wyszukiwania DNS dla zewnętrznie połączonego z punktów końcowych infrastruktury Azure Stack** (które jest przeznaczone dla portalu, adminportal, zarządzania i adminmanagement). Dzięki temu nazwy zewnętrzny punkt końcowy usługi Azure Stack, aby być rozwiązane wyłącznie z adresu IP.
 
-- <!-- 2780899 |  IS, ASDK   --> **Usługa Azure Stack obsługuje teraz dodawanie interfejsów sieciowych dodatkowe do istniejącej maszyny Wirtualnej.**  Ta funkcja jest dostępna za pomocą portalu, programu PowerShell i interfejsu wiersza polecenia. Aby uzyskać więcej informacji, zobacz [Dodawanie lub usuwanie interfejsów sieciowych](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface-vm) w dokumentacji platformy Azure. 
+<!-- 2780899 |  IS, ASDK   --> 
+- **Usługa Azure Stack obsługuje teraz dodawanie interfejsów sieciowych dodatkowe do istniejącej maszyny Wirtualnej.**  Ta funkcja jest dostępna za pomocą portalu, programu PowerShell i interfejsu wiersza polecenia. Aby uzyskać więcej informacji, zobacz [Dodawanie lub usuwanie interfejsów sieciowych](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface-vm) w dokumentacji platformy Azure. 
 
-- <!-- 2222444 | IS, ASDK   -->  **Ulepszenia dokładności i zwiększa odporność wprowadzono sieć mierników użycia**.  Liczniki użycia sieci są teraz bardziej precyzyjne i uwzględniać subskrypcji konto zostało zawieszone, okresów awarii i sytuacje wyścigu.
+<!-- 2222444 | IS, ASDK   -->  
+- **Ulepszenia dokładności i zwiększa odporność wprowadzono sieć mierników użycia**.  Liczniki użycia sieci są teraz bardziej precyzyjne i uwzględniać subskrypcji konto zostało zawieszone, okresów awarii i sytuacje wyścigu.
 
-- <!-- 2753080 | IS -->  **Zaktualizuj powiadomienie o udostępnieniu.** Połączona usługa Azure Stack wdrożeń sprawdzi teraz okresowo bezpiecznego punktu końcowego i określić, czy aktualizacja jest dostępna dla chmury. To powiadomienie pojawi się na kafelku aktualizacji, jak po ręczne sprawdzanie i zaimportować nową aktualizację. Przeczytaj więcej na temat [zarządzanie aktualizacjami dla usługi Azure Stack](azure-stack-updates.md).
+<!-- 2753080 | IS -->  
+- **Zaktualizuj powiadomienie o udostępnieniu.** Połączona usługa Azure Stack wdrożeń sprawdzi teraz okresowo bezpiecznego punktu końcowego i określić, czy aktualizacja jest dostępna dla chmury. To powiadomienie pojawi się na kafelku aktualizacji, jak po ręczne sprawdzanie i zaimportować nową aktualizację. Przeczytaj więcej na temat [zarządzanie aktualizacjami dla usługi Azure Stack](azure-stack-updates.md).
 
-- <!-- 2297790 | IS, ASDK -->  **Ulepszenia usługi Azure Stack klienta syslog (funkcja w wersji zapoznawczej)**. Ten klient umożliwia przekazywanie inspekcji i dzienniki związane z infrastruktury Azure Stack w celu syslog serwera lub zabezpieczeń informacjami i zdarzeniami (SIEM) oprogramowania do zarządzania zewnętrznego do usługi Azure Stack. Klient usługi syslog obsługuje teraz protokół TCP za pomocą zwykłego tekstu lub szyfrowania protokołu TLS 1.2, ostatnim jest domyślna konfiguracja. Tylko do serwera lub wzajemnego uwierzytelniania można skonfigurować połączenia TLS.
+<!-- 2297790 | IS, ASDK -->  
+- **Ulepszenia usługi Azure Stack klienta syslog (funkcja w wersji zapoznawczej)**. Ten klient umożliwia przekazywanie inspekcji i dzienniki związane z infrastruktury Azure Stack w celu syslog serwera lub zabezpieczeń informacjami i zdarzeniami (SIEM) oprogramowania do zarządzania zewnętrznego do usługi Azure Stack. Klient usługi syslog obsługuje teraz protokół TCP za pomocą zwykłego tekstu lub szyfrowania protokołu TLS 1.2, ostatnim jest domyślna konfiguracja. Tylko do serwera lub wzajemnego uwierzytelniania można skonfigurować połączenia TLS.
 
   Aby skonfigurować, jak klient usługi syslog komunikuje się (takich jak protokół, szyfrowania i uwierzytelniania) z serwera syslog, użyj *SyslogServer zestaw* polecenia cmdlet. To polecenie cmdlet jest dostępna z uprzywilejowanym punktu końcowego (program ten).
 
@@ -73,42 +84,59 @@ Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack.
 
   Aby uzyskać więcej informacji, zobacz [przekazywania usługi syslog usługi Azure Stack](azure-stack-integrate-security.md).
 
-<!-- - | ####### | IS, ASDK |  **Azure Resource Manager includes the region name.** With this release, objects retrieved from the Azure Resource Manager will now include the region name attribute. If an existing PowerShell script directly passes the object to another cmdlet, the script may produce an error and fail. This is Azure Resource Manager compliant behavior, and requires the calling client to subtract the region attribute. For more information about the Azure Resource Manager see [Azure Resource Manager Documentation](https://docs.microsoft.com/azure/azure-resource-manager/). verify 8-10 mdb -->
+<!-- ####### | IS, ASDK | --> 
+- **Usługa Azure Resource Manager zawiera nazwę regionu.** W tej wersji pobrane z usługi Azure Resource Manager obiekty będzie teraz obejmować atrybucie nazwy w regionie. Jeśli istniejący skrypt programu PowerShell bezpośrednio przekazuje obiekt do innego polecenia cmdlet, skrypt może powodować błąd i zakończyć się niepowodzeniem. To jest zachowanie zgodne z usługi Azure Resource Manager i wymaga klienta wywołującego do odjęcia atrybut regionu. Aby uzyskać więcej informacji na temat usługi Azure Resource Manager, zobacz [dokumentacja usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/). Sprawdź 8 – 10 mdb-->
 
-- <!-- TBD | IS, ASDK -->  **Zmiany w funkcjonalności delegowane dostawców.** Począwszy od 1807 delegowane dostawców modelu jest uproszczony w celu lepszego wyrównywanie przy użyciu modelu odsprzedawca platformy Azure i delegowane dostawców nie będzie mogła tworzyć inne delegowane dostawców zasadniczo spłaszczanie modelu i dokonując dostawcy delegowane funkcja dostępna na jednym poziomie. Umożliwia przejście do nowego modelu i zarządzania subskrypcjami, teraz można przenieść subskrypcji użytkownika między nowej lub istniejącej subskrypcji delegowane dostawcy, które należą do tej samej dzierżawie katalogu. Można także przenosić należącymi do subskrypcji dostawcy domyślnej subskrypcji użytkownika do subskrypcji dostawcy delegowana w tej samej dzierżawie katalogu.  Aby uzyskać więcej informacji, zobacz [delegowanie ofert w usłudze Azure Stack](azure-stack-delegated-provider.md).
+<!-- TBD | IS, ASDK -->  
+- **Zmiany w funkcjonalności delegowane dostawców.** Począwszy od 1807 delegowane dostawców modelu jest uproszczony w celu lepszego wyrównywanie przy użyciu modelu odsprzedawca platformy Azure i delegowane dostawców nie będzie mogła tworzyć inne delegowane dostawców zasadniczo spłaszczanie modelu i dokonując dostawcy delegowane funkcja dostępna na jednym poziomie. Umożliwia przejście do nowego modelu i zarządzania subskrypcjami, teraz można przenieść subskrypcji użytkownika między nowej lub istniejącej subskrypcji delegowane dostawcy, które należą do tej samej dzierżawie katalogu. Można także przenosić należącymi do subskrypcji dostawcy domyślnej subskrypcji użytkownika do subskrypcji dostawcy delegowana w tej samej dzierżawie katalogu.  Aby uzyskać więcej informacji, zobacz [delegowanie ofert w usłudze Azure Stack](azure-stack-delegated-provider.md).
 
-- <!-- 2536808 IS ASDK --> **Ulepszone czas tworzenia maszyny Wirtualnej** dla maszyn wirtualnych, które zostały utworzone z obrazów, możesz pobrać z witryny Azure marketplace.
+<!-- 2536808 IS ASDK --> 
+- **Ulepszone czas tworzenia maszyny Wirtualnej** dla maszyn wirtualnych, które zostały utworzone z obrazów, możesz pobrać z witryny Azure marketplace.
 
-- <!-- TBD | IS, ASDK -->  **Usługa Azure Stack Capacity Planner usprawnienia w zakresie użyteczności**. Usługi Azure Stack [Capacity Planner](http://aka.ms/azstackcapacityplanner) oferuje uproszczone środowisko wpisywania pamięci podręcznej S2D i pojemność S2D podczas definiowania rozwiązania jednostki SKU. Limit 1000 maszyn wirtualnych zostało usunięte.
+<!-- TBD | IS, ASDK -->  
+- **Usługa Azure Stack Capacity Planner usprawnienia w zakresie użyteczności**. Usługi Azure Stack [Capacity Planner](http://aka.ms/azstackcapacityplanner) oferuje uproszczone środowisko wpisywania pamięci podręcznej S2D i pojemność S2D podczas definiowania rozwiązania jednostki SKU. Limit 1000 maszyn wirtualnych zostało usunięte.
 
 
 ### <a name="fixed-issues"></a>Rozwiązane problemy
 
-- <!-- TBD | ASDK, IS --> Aby bardziej niezawodna wprowadzono ulepszenia różnych procesu aktualizacji. Ponadto poprawki zostały wprowadzone do podstawowej infrastruktury, które zminimalizować potencjalny przestój w przypadku obciążeń podczas aktualizacji.
+<!-- TBD | ASDK, IS --> 
+- Aby bardziej niezawodna wprowadzono ulepszenia różnych procesu aktualizacji. Ponadto poprawki zostały wprowadzone do podstawowej infrastruktury, które zminimalizować potencjalny przestój w przypadku obciążeń podczas aktualizacji.
 
-- <!--2292271 | ASDK, IS --> Rozwiązano problem, gdy zmodyfikowane limit przydziału nie zostało zastosowane względem w przypadku istniejących subskrypcji. Teraz kiedy zwiększyć limit przydziału dla zasobu sieciowego, który jest częścią oferty i Plan skojarzony z subskrypcji użytkownika, nowy limit dotyczy istniejące subskrypcje, a także nowe subskrypcje.
+<!--2292271 | ASDK, IS --> 
+- Rozwiązano problem, gdy zmodyfikowane limit przydziału nie zostało zastosowane względem w przypadku istniejących subskrypcji. Teraz kiedy zwiększyć limit przydziału dla zasobu sieciowego, który jest częścią oferty i Plan skojarzony z subskrypcji użytkownika, nowy limit dotyczy istniejące subskrypcje, a także nowe subskrypcje.
 
-- <!-- 448955 | IS ASDK --> Teraz można pomyślnie odpytać dzienników aktywności dla systemów, które są wdrażane w strefie czasowej UTC + N.    
+<!-- 448955 | IS ASDK --> 
+- Teraz można pomyślnie odpytać dzienników aktywności dla systemów, które są wdrażane w strefie czasowej UTC + N.    
 
-- <!-- 2319627 |  ASDK, IS --> Sprawdzanie wymagań wstępnych dla parametrów konfiguracji kopii zapasowej (ścieżka/nazwa użytkownika/hasła/szyfrowania klucza) nie jest już ustawia nieprawidłowe ustawienia konfiguracji kopii zapasowej. (Wcześniej ustawiono nieprawidłowe ustawienia do tworzenia kopii zapasowej i kopii zapasowej może następnie zakończyć się niepowodzeniem po wyzwoleniu.)
+<!-- 2319627 |  ASDK, IS --> 
+- Sprawdzanie wymagań wstępnych dla parametrów konfiguracji kopii zapasowej (ścieżka/nazwa użytkownika/hasła/szyfrowania klucza) nie jest już ustawia nieprawidłowe ustawienia konfiguracji kopii zapasowej. (Wcześniej ustawiono nieprawidłowe ustawienia do tworzenia kopii zapasowej i kopii zapasowej może następnie zakończyć się niepowodzeniem po wyzwoleniu.)
 
-- <!-- 2215948 |  ASDK, IS --> Listy kopii zapasowych Odświeża teraz, gdy ręcznie usunąć kopii zapasowej z udziału zewnętrznego.
+<!-- 2215948 |  ASDK, IS -->
+- Listy kopii zapasowych Odświeża teraz, gdy ręcznie usunąć kopii zapasowej z udziału zewnętrznego.
 
-- <!-- 2332636 | IS -->  Aktualizacja ta wersja nie jest już resetuje domyślnym właścicielem domyślną subskrypcję dostawcy do wbudowanej **CloudAdmin** użytkownika podczas wdrażania za pomocą usług AD FS.
+<!-- 2332636 | IS -->  
+- Aktualizacja ta wersja nie jest już resetuje domyślnym właścicielem domyślną subskrypcję dostawcy do wbudowanej **CloudAdmin** użytkownika podczas wdrażania za pomocą usług AD FS.
 
-- <!-- 2360715 |  ASDK, IS -->  Po skonfigurowaniu integracji centrum danych nie jest już dostępne plik metadanych usług AD FS z udziału plików platformy Azure. Aby uzyskać więcej informacji, zobacz [konfigurowania integracji usług AD FS, zapewniając pliku metadanych Federacji](azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file). 
+<!-- 2360715 |  ASDK, IS -->  
+- Po skonfigurowaniu integracji centrum danych nie jest już dostępne plik metadanych usług AD FS z udziału plików platformy Azure. Aby uzyskać więcej informacji, zobacz [konfigurowania integracji usług AD FS, zapewniając pliku metadanych Federacji](azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file). 
 
-- <!-- 2388980 | ASDK, IS --> Rozwiązano problem uniemożliwił użytkownikom możliwość przypisania istniejącego publicznego adresu IP, gdyby zostały wcześniej przypisane do interfejsu sieciowego lub modułu równoważenia obciążenia do nowego interfejsu sieciowego lub modułu równoważenia obciążenia.  
+<!-- 2388980 | ASDK, IS --> 
+- Rozwiązano problem uniemożliwił użytkownikom możliwość przypisania istniejącego publicznego adresu IP, gdyby zostały wcześniej przypisane do interfejsu sieciowego lub modułu równoważenia obciążenia do nowego interfejsu sieciowego lub modułu równoważenia obciążenia.  
 
-- <!-- 2551834 - IS, ASDK --> Po wybraniu *Przegląd* dla konta magazynu w portalach administrator lub użytkownik, *Essentials* okienku zostaną wyświetlone wszystkie oczekiwane informacje poprawnie. 
+<!-- 2551834 - IS, ASDK --> 
+- Po wybraniu *Przegląd* dla konta magazynu w portalach administrator lub użytkownik, *Essentials* okienku zostaną wyświetlone wszystkie oczekiwane informacje poprawnie. 
 
-- <!-- 2551834 - IS, ASDK --> Po wybraniu *tagi* dla konta magazynu w portalach administratora lub użytkownika, informacje teraz wyświetlany poprawnie.
+<!-- 2551834 - IS, ASDK --> 
+- Po wybraniu *tagi* dla konta magazynu w portalach administratora lub użytkownika, informacje teraz wyświetlany poprawnie.
 
-- <!-- TBD - IS ASDK --> Ta wersja usługi Azure Stack rozwiązuje problem, który uniemożliwił stosowania aktualizacji sterowników z pakietów rozszerzeń OEM.
+<!-- TBD - IS ASDK --> 
+- Ta wersja usługi Azure Stack rozwiązuje problem, który uniemożliwił stosowania aktualizacji sterowników z pakietów rozszerzeń OEM.
 
--   <!-- 2055809- IS ASDK --> Rozwiązano problem uniemożliwiający usunięcie maszyn wirtualnych z poziomu bloku obliczeń, gdy maszyna wirtualna nie powiodło się.  
+<!-- 2055809- IS ASDK --> 
+- Rozwiązano problem uniemożliwiający usunięcie maszyn wirtualnych z poziomu bloku obliczeń, gdy maszyna wirtualna nie powiodło się.  
 
-- <!--  2643962 IS ASDK -->  Zgłoszono alert dotyczący *niską pojemność pamięci* nie jest już wyświetlany niepoprawnie.
+<!--  2643962 IS ASDK -->  
+- Zgłoszono alert dotyczący *niską pojemność pamięci* nie jest już wyświetlany niepoprawnie.
 
 - **Różne poprawki** dla wydajności, stabilności, bezpieczeństwa i systemu operacyjnego, który jest używany przez usługę Azure Stack.
 
@@ -151,17 +179,20 @@ Aby uzyskać więcej informacji na temat tych luk w zabezpieczeniach kliknij pop
 
 ### <a name="known-issues-with-the-update-process"></a>Znane problemy związane z procesem aktualizacji
 
-- <!-- 2468613 - IS --> Podczas instalacji tej aktualizacji, użytkownik może widzieć alerty z tytułem *błędu — szablon FaultType UserAccounts.New Brak.*  Te alerty można bezpiecznie zignorować. Te alerty zostanie zamknięte automatycznie po zakończeniu instalacji tej aktualizacji.
+<!-- 2468613 - IS --> 
+- Podczas instalacji tej aktualizacji, użytkownik może widzieć alerty z tytułem *błędu — szablon FaultType UserAccounts.New Brak.*  Te alerty można bezpiecznie zignorować. Te alerty zostanie zamknięte automatycznie po zakończeniu instalacji tej aktualizacji.
 
-- <!-- 2489559 - IS --> Nie należy próbować tworzyć maszyny wirtualne podczas instalacji tej aktualizacji. Aby uzyskać więcej informacji na temat zarządzania aktualizacjami, zobacz [zarządzanie aktualizacjami w usłudze Azure Stack — omówienie](azure-stack-updates.md#plan-for-updates).
+<!-- 2489559 - IS --> 
+- Nie należy próbować tworzyć maszyny wirtualne podczas instalacji tej aktualizacji. Aby uzyskać więcej informacji na temat zarządzania aktualizacjami, zobacz [zarządzanie aktualizacjami w usłudze Azure Stack — omówienie](azure-stack-updates.md#plan-for-updates).
 
-- <!-- 2830461 - IS --> W pewnych okolicznościach podczas aktualizacji wymaga uwagi, odpowiedni alert może nie zostać wygenerowany. Dokładny stan nadal zostaną odzwierciedlone w portalu i nie ulega zmianie.
+<!-- 2830461 - IS --> 
+- W pewnych okolicznościach podczas aktualizacji wymaga uwagi, odpowiedni alert może nie zostać wygenerowany. Dokładny stan nadal zostaną odzwierciedlone w portalu i nie ulega zmianie.
 
 ### <a name="post-update-steps"></a>Kroki po aktualizacji
 Po zainstalowaniu tej aktualizacji Zainstaluj wszystkie odpowiednie poprawki. Uzyskać więcej informacji, zobacz następujące artykuły bazy wiedzy knowledge base, a także naszego [obsługi zasad](azure-stack-servicing-policy.md). 
-- [KB 4464231 — usługi Azure Stack poprawki w usłudze Azure Stack poprawkę 1.1807.1.78]( https://support.microsoft.com/help/4464231)
+- [KB 4464231 — usługi Azure Stack poprawki w usłudze Azure Stack poprawkę 1.1807.1.78](https://support.microsoft.com/help/4464231)
 
- <!-- 2933866 – IS --> Po zainstalowaniu tej aktualizacji, możesz zobaczyć **ulepszone stanu instalacji aktualizacji nie powiodło się.** Może to obejmować informacje o poprzednich błędach instalacji aktualizacji, które są zmienione w celu odzwierciedlenia dwie nowe kategorie stanu. Nowe kategorie stanu są *PreparationFailed*, i *InstallationFailed*.  
+<!-- 2933866 – IS --> Po zainstalowaniu tej aktualizacji, możesz zobaczyć **ulepszone stanu instalacji aktualizacji nie powiodło się.** Może to obejmować informacje o poprzednich błędach instalacji aktualizacji, które są zmienione w celu odzwierciedlenia dwie nowe kategorie stanu. Nowe kategorie stanu są *PreparationFailed*, i *InstallationFailed*.  
 
 ## <a name="known-issues-post-installation"></a>Znane problemy (po instalacji)
 
@@ -173,27 +204,36 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 
 - Możliwość [Otwórz nowe żądanie obsługi z listy rozwijanej](azure-stack-manage-portals.md#quick-access-to-help-and-support) w obrębie administrator portalu nie są dostępne. Dla usługi Azure Stack zintegrowanych systemów, użyj następującego linku: [ https://aka.ms/newsupportrequest ](https://aka.ms/newsupportrequest).
 
-- <!-- 2931230 – IS  ASDK --> Plany, które są dodawane do subskrypcji użytkownika, ponieważ nie można usunąć planu dodatku, nawet wtedy, gdy usuniesz plan z subskrypcji użytkownika. Plan pozostanie, dopóki odwołujące się do planu dodatku subskrypcje zostaną również usunięte. 
+<!-- 2931230 – IS  ASDK --> 
+- Plany, które są dodawane do subskrypcji użytkownika, ponieważ nie można usunąć planu dodatku, nawet wtedy, gdy usuniesz plan z subskrypcji użytkownika. Plan pozostanie, dopóki odwołujące się do planu dodatku subskrypcje zostaną również usunięte. 
 
-- <!--2760466 – IS  ASDK --> Po zainstalowaniu nowego środowiska usługi Azure Stack, z tą wersją, ten alert oznacza to, *wymagana aktywacja* mogą nie być wyświetlane. [Aktywacja](azure-stack-registration.md) jest wymagany, zanim będzie można użyć portalu marketplace syndykacji.  
+<!--2760466 – IS  ASDK --> 
+- Po zainstalowaniu nowego środowiska usługi Azure Stack, z tą wersją, ten alert oznacza to, *wymagana aktywacja* mogą nie być wyświetlane. [Aktywacja](azure-stack-registration.md) jest wymagany, zanim będzie można użyć portalu marketplace syndykacji.  
 
-- <!-- TBD - IS ASDK --> Dwa typy subskrypcji administracyjne, które zostały [wprowadzonym w wersji 1804](azure-stack-update-1804.md#new-features) nie powinny być używane. Typy subskrypcji **pomiaru subskrypcji**, i **subskrypcji zużycie**. Te typy subskrypcji są wyświetlane w nowych wersji środowiska usługi Azure Stack począwszy od wersji 1804, ale nie są jeszcze gotowe do użycia. Można nadal używać **domyślny dostawca** typu subskrypcji.
+<!-- TBD - IS ASDK --> 
+- Dwa typy subskrypcji administracyjne, które zostały [wprowadzonym w wersji 1804](azure-stack-update-1804.md#new-features) nie powinny być używane. Typy subskrypcji **pomiaru subskrypcji**, i **subskrypcji zużycie**. Te typy subskrypcji są wyświetlane w nowych wersji środowiska usługi Azure Stack począwszy od wersji 1804, ale nie są jeszcze gotowe do użycia. Można nadal używać **domyślny dostawca** typu subskrypcji.
 
-- <!-- 2403291 - IS ASDK --> Nie może być użycie poziomych pasków przewijania u dołu portali administratora i użytkownika. Jeśli nie masz dostępu poziomych pasków przewijania, użyj linki do stron nadrzędnych na przejście do poprzedniego bloku w portalu, wybierając nazwę bloku mają być wyświetlane na liście łączy do stron nadrzędnych znajdujących się u góry lewym rogu portalu.
+<!-- 2403291 - IS ASDK --> 
+- Nie może być użycie poziomych pasków przewijania u dołu portali administratora i użytkownika. Jeśli nie masz dostępu poziomych pasków przewijania, użyj linki do stron nadrzędnych na przejście do poprzedniego bloku w portalu, wybierając nazwę bloku mają być wyświetlane na liście łączy do stron nadrzędnych znajdujących się u góry lewym rogu portalu.
 
   ![Łącza do stron nadrzędnych](media/azure-stack-update-1804/breadcrumb.png)
 
-- <!-- TBD - IS --> Może nie być możliwe do wyświetlania zasobów obliczeniowych i magazynu w portalu administratora. Przyczyny tego problemu jest błąd podczas instalowania aktualizacji, który powoduje, że aktualizacja nieprawidłowo zgłaszane jako pomyślne. Jeśli wystąpi ten problem, skontaktuj się z pomocą techniczną firmy Microsoft w celu uzyskania pomocy.
+<!-- TBD - IS --> 
+- Może nie być możliwe do wyświetlania zasobów obliczeniowych i magazynu w portalu administratora. Przyczyny tego problemu jest błąd podczas instalowania aktualizacji, który powoduje, że aktualizacja nieprawidłowo zgłaszane jako pomyślne. Jeśli wystąpi ten problem, skontaktuj się z pomocą techniczną firmy Microsoft w celu uzyskania pomocy.
 
-- <!-- TBD - IS --> Możesz zobaczyć pustego pulpitu nawigacyjnego w portalu. Aby odzyskać pulpitu nawigacyjnego, wybierz ikonę koła zębatego w prawym górnym rogu portalu, a następnie wybierz **przywrócić ustawienia domyślne**.
+<!-- TBD - IS --> 
+- Możesz zobaczyć pustego pulpitu nawigacyjnego w portalu. Aby odzyskać pulpitu nawigacyjnego, wybierz ikonę koła zębatego w prawym górnym rogu portalu, a następnie wybierz **przywrócić ustawienia domyślne**.
 
-- <!-- TBD - IS ASDK --> Usuwanie subskrypcji użytkownika powoduje zasoby oddzielone. Jako obejście najpierw usuń zasoby użytkowników lub całą grupę zasobów, a następnie usuń subskrypcji użytkownika.
+<!-- TBD - IS ASDK --> 
+- Usuwanie subskrypcji użytkownika powoduje zasoby oddzielone. Jako obejście najpierw usuń zasoby użytkowników lub całą grupę zasobów, a następnie usuń subskrypcji użytkownika.
 
-- <!-- TBD - IS ASDK --> Nie można wyświetlić uprawnienia do subskrypcji przy użyciu portali usługi Azure Stack. Jako obejście tego problemu Sprawdź uprawnienia za pomocą programu PowerShell.
+<!-- TBD - IS ASDK --> 
+- Nie można wyświetlić uprawnienia do subskrypcji przy użyciu portali usługi Azure Stack. Jako obejście tego problemu Sprawdź uprawnienia za pomocą programu PowerShell.
 
 
 ### <a name="health-and-monitoring"></a>Monitorowanie kondycji i
-- <!-- 1264761 - IS ASDK -->  Użytkownik może widzieć alerty dla **kondycji kontrolera** składnik, który ma następujące informacje:  
+<!-- 1264761 - IS ASDK -->  
+- Użytkownik może widzieć alerty dla **kondycji kontrolera** składnik, który ma następujące informacje:  
 
    Zgłoś alert, #1:
    - Nazwa: Rola infrastruktury złej kondycji
@@ -210,7 +250,8 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
   Obydwa alerty można bezpiecznie zignorować i zostanie zamknięte automatycznie wraz z upływem czasu.  
 
 
-- <!-- 2812138 | IS --> Można napotkać alert w przypadku **magazynu** składnik, który ma następujące informacje:
+<!-- 2812138 | IS --> 
+- Można napotkać alert w przypadku **magazynu** składnik, który ma następujące informacje:
 
    - Nazwa: Magazyn usługi wewnętrzny błąd komunikacji  
    - Waga: krytyczny  
@@ -219,14 +260,17 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 
     Alert można bezpiecznie zignorować, ale musisz ręcznie zamknąć alert.
 
-- <!-- 2368581 - IS. ASDK --> Operatorów usługi Azure Stack, jeśli pojawi się alert małej ilości pamięci, a maszyny wirtualne dzierżawcy nie można wdrożyć za pomocą **błąd podczas tworzenia maszyny Wirtualnej w sieci szkieletowej**, istnieje możliwość, że sygnatury usługi Azure Stack jest mało dostępnej pamięci. Użyj [Planisty wydajności usługi Azure Stack](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) poprawnie dostępnej pojemności dla obciążeń.
+<!-- 2368581 - IS. ASDK --> 
+- Operatorów usługi Azure Stack, jeśli pojawi się alert małej ilości pamięci, a maszyny wirtualne dzierżawcy nie można wdrożyć za pomocą **błąd podczas tworzenia maszyny Wirtualnej w sieci szkieletowej**, istnieje możliwość, że sygnatury usługi Azure Stack jest mało dostępnej pamięci. Użyj [Planisty wydajności usługi Azure Stack](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) poprawnie dostępnej pojemności dla obciążeń.
 
 
 ### <a name="compute"></a>Wystąpienia obliczeniowe
 
-- <!-- 2724873 - IS --> Korzystając z polecenia cmdlet programu PowerShell **Start AzsScaleUnitNode** lub **Stop AzsScaleunitNode** Zarządzanie jednostek skalowania, pierwsza próba uruchomienia lub zatrzymania jednostki skalowania może zakończyć się niepowodzeniem. Jeśli polecenie cmdlet nie powiedzie się przy pierwszym uruchomieniu, należy uruchomić polecenie cmdlet po raz drugi. Drugiego przebiegu ma być pomyślnie wykonane do ukończenia tej operacji. 
+<!-- 2724873 - IS --> 
+- Korzystając z polecenia cmdlet programu PowerShell **Start AzsScaleUnitNode** lub **Stop AzsScaleunitNode** Zarządzanie jednostek skalowania, pierwsza próba uruchomienia lub zatrzymania jednostki skalowania może zakończyć się niepowodzeniem. Jeśli polecenie cmdlet nie powiedzie się przy pierwszym uruchomieniu, należy uruchomić polecenie cmdlet po raz drugi. Drugiego przebiegu ma być pomyślnie wykonane do ukończenia tej operacji. 
 
-- <!-- 2494144 - IS, ASDK --> Wybierając rozmiar maszyny wirtualnej do wdrażania maszyn wirtualnych, niektóre rozmiary serii F maszyn wirtualnych nie są widoczne jako część selektor rozmiar podczas tworzenia maszyny Wirtualnej. Następujących rozmiarów maszyn wirtualnych nie są wyświetlane w selektorze: *F8s_v2*, *F16s_v2*, *F32s_v2*, i *F64s_v2*.  
+<!-- 2494144 - IS, ASDK --> 
+- Wybierając rozmiar maszyny wirtualnej do wdrażania maszyn wirtualnych, niektóre rozmiary serii F maszyn wirtualnych nie są widoczne jako część selektor rozmiar podczas tworzenia maszyny Wirtualnej. Następujących rozmiarów maszyn wirtualnych nie są wyświetlane w selektorze: *F8s_v2*, *F16s_v2*, *F32s_v2*, i *F64s_v2*.  
   Obejść ten problem należy użyć jednej z następujących metod do wdrożenia maszyny Wirtualnej. W każdej metodzie należy określić rozmiar maszyny Wirtualnej, którego chcesz użyć.
 
   - **Szablon usługi Azure Resource Manager:** gdy używasz szablonu, ustaw *vmSize* w szablonie wartość rozmiaru maszyny Wirtualnej, w której chcesz użyć. Na przykład, następujący wpis jest używany do wdrażania maszyn wirtualnych, który używa *F32s_v2* rozmiar:  
@@ -242,60 +286,79 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
   - **Program PowerShell:** przy użyciu programu PowerShell, można użyć [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0) z parametrem, który określa rozmiar maszyny Wirtualnej, podobnie jak `-VMSize "Standard_F32s_v2"`.
 
 
-- <!-- TBD - IS ASDK --> Ustawienia skalowania dla zestawów skalowania maszyn wirtualnych nie są dostępne w portalu. Jako obejście tego problemu, możesz użyć [programu Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Ze względu na różnice dotyczące wersji programu PowerShell, należy użyć `-Name` parametr zamiast `-VMScaleSetName`.
+<!-- TBD - IS ASDK --> 
+- Ustawienia skalowania dla zestawów skalowania maszyn wirtualnych nie są dostępne w portalu. Jako obejście tego problemu, możesz użyć [programu Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Ze względu na różnice dotyczące wersji programu PowerShell, należy użyć `-Name` parametr zamiast `-VMScaleSetName`.
 
-- <!-- TBD - IS --> Po utworzeniu zestaw dostępności w portalu, przechodząc do **New** > **obliczenia** > **zestawu dostępności**, można tworzyć tylko zestaw dostępności z domeny błędów i domeny aktualizacji 1. Obejść ten problem, tworząc nową maszynę wirtualną, utworzyć dostępności przy użyciu programu PowerShell, interfejsu wiersza polecenia, lub z poziomu portalu.
+<!-- TBD - IS --> 
+- Po utworzeniu zestaw dostępności w portalu, przechodząc do **New** > **obliczenia** > **zestawu dostępności**, można tworzyć tylko zestaw dostępności z domeny błędów i domeny aktualizacji 1. Obejść ten problem, tworząc nową maszynę wirtualną, utworzyć dostępności przy użyciu programu PowerShell, interfejsu wiersza polecenia, lub z poziomu portalu.
 
-- <!-- TBD - IS ASDK --> Po utworzeniu maszyny wirtualne w portalu użytkowników usługi Azure Stack portal zawiera nieprawidłową liczbę dysków z danymi, które można dołączyć do maszyny Wirtualnej serii DS. Maszyny wirtualne z serii DS może obsłużyć tyle dysków z danymi konfiguracji platformy Azure.
+<!-- TBD - IS ASDK --> 
+- Po utworzeniu maszyny wirtualne w portalu użytkowników usługi Azure Stack portal zawiera nieprawidłową liczbę dysków z danymi, które można dołączyć do maszyny Wirtualnej serii DS. Maszyny wirtualne z serii DS może obsłużyć tyle dysków z danymi konfiguracji platformy Azure.
 
-- <!-- TBD - IS ASDK --> Jeśli aprowizacja rozszerzenia na wdrożenie maszyny Wirtualnej trwa zbyt długo, użytkownicy pozwolić limit czasu inicjowania obsługi administracyjnej zamiast próby zatrzymania procesu cofnięcie przydziału lub Usuń maszynę Wirtualną.  
+<!-- TBD - IS ASDK --> 
+- Jeśli aprowizacja rozszerzenia na wdrożenie maszyny Wirtualnej trwa zbyt długo, użytkownicy pozwolić limit czasu inicjowania obsługi administracyjnej zamiast próby zatrzymania procesu cofnięcie przydziału lub Usuń maszynę Wirtualną.  
 
-- <!-- 1662991 IS ASDK --> Diagnostyka maszyn wirtualnych systemu Linux nie jest obsługiwana w usłudze Azure Stack. Podczas wdrażania maszyny Wirtualnej z systemem Linux przy użyciu włączenia diagnostyki maszyn wirtualnych, wdrożenie zakończy się niepowodzeniem. Wdrażanie nie powiedzie, jeśli włączysz podstawowe metryki maszyny Wirtualnej systemu Linux, za pomocą ustawień diagnostycznych.  
+<!-- 1662991 IS ASDK --> 
+- Diagnostyka maszyn wirtualnych systemu Linux nie jest obsługiwana w usłudze Azure Stack. Podczas wdrażania maszyny Wirtualnej z systemem Linux przy użyciu włączenia diagnostyki maszyn wirtualnych, wdrożenie zakończy się niepowodzeniem. Wdrażanie nie powiedzie, jeśli włączysz podstawowe metryki maszyny Wirtualnej systemu Linux, za pomocą ustawień diagnostycznych.  
 
-- <!-- 2724961- IS ASDK --> Po dokonaniu rejestracji **Microsoft.Insight** dostawcy zasobów w ustawieniach subskrypcji i tworzenie maszyny Wirtualnej z systemem Windows przy użyciu gościa systemu operacyjnego diagnostycznych włączona, na stronie Przegląd maszyny Wirtualnej nie wyświetla danych metryk. 
+<!-- 2724961- IS ASDK --> 
+- Po dokonaniu rejestracji **Microsoft.Insight** dostawcy zasobów w ustawieniach subskrypcji i tworzenie maszyny Wirtualnej z systemem Windows przy użyciu gościa systemu operacyjnego diagnostycznych włączona, na stronie Przegląd maszyny Wirtualnej nie wyświetla danych metryk. 
 
    Aby znaleźć danych metryk, takich jak wykres procent użycia procesora CPU dla maszyny Wirtualnej, przejdź do **metryki** bloku i wyświetlanie wszystkich obsługiwanych Windows maszyn wirtualnych gościa metryki.
 
 ### <a name="networking"></a>Networking  
 
-- <!-- 1766332 - IS ASDK --> W obszarze **sieć**, po kliknięciu **Utwórz bramę sieci VPN** do skonfigurowania połączenia sieci VPN, **oparte na zasadach** jest wymieniony jako typ sieci VPN. Nie należy zaznaczać tej opcji. Tylko **na podstawie trasy** opcja jest obsługiwana w usłudze Azure Stack.
+<!-- 1766332 - IS ASDK --> 
+- W obszarze **sieć**, po kliknięciu **Utwórz bramę sieci VPN** do skonfigurowania połączenia sieci VPN, **oparte na zasadach** jest wymieniony jako typ sieci VPN. Nie należy zaznaczać tej opcji. Tylko **na podstawie trasy** opcja jest obsługiwana w usłudze Azure Stack.
 
-- <!-- 1902460 - IS ASDK --> Usługa Azure Stack obsługuje jeden *bramy sieci lokalnej* dla adresu IP. Ta zasada obowiązuje dla wszystkich subskrypcji dzierżawcy. Po utworzenia pierwszego lokalne bramy połączenia sieciowego, kolejne podejmuje próbę utworzenia zasobu bramy sieci lokalnej za pomocą tego samego adresu IP są zablokowane.
+<!-- 1902460 - IS ASDK --> 
+- Usługa Azure Stack obsługuje jeden *bramy sieci lokalnej* dla adresu IP. Ta zasada obowiązuje dla wszystkich subskrypcji dzierżawcy. Po utworzenia pierwszego lokalne bramy połączenia sieciowego, kolejne podejmuje próbę utworzenia zasobu bramy sieci lokalnej za pomocą tego samego adresu IP są zablokowane.
 
-- <!-- 16309153 - IS ASDK --> W sieci wirtualnej, który został utworzony przy użyciu ustawienia serwera DNS z *automatyczne*, zmieniających się niestandardowy błąd serwera DNS. Zaktualizowano ustawienia nie zostaną wypchnięte do maszyn wirtualnych w tej sieci wirtualnej.
+<!-- 16309153 - IS ASDK --> 
+- W sieci wirtualnej, który został utworzony przy użyciu ustawienia serwera DNS z *automatyczne*, zmieniających się niestandardowy błąd serwera DNS. Zaktualizowano ustawienia nie zostaną wypchnięte do maszyn wirtualnych w tej sieci wirtualnej.
 
-- <!-- 2702741 -  IS ASDK --> Publiczne adresy IP, które są wdrażane przy użyciu metody dynamicznej alokacji nie musi zostać zachowane po wystawieniu Zatrzymaj anulowanie.
+<!-- 2702741 -  IS ASDK --> 
+- Publiczne adresy IP, które są wdrażane przy użyciu metody dynamicznej alokacji nie musi zostać zachowane po wystawieniu Zatrzymaj anulowanie.
 
-- <!-- 2529607 - IS ASDK --> W usłudze Azure Stack *obrotu klucz tajny*, istnieje okres, w której publiczne adresy IP są niedostępne dla 2 do 5 minut.
+<!-- 2529607 - IS ASDK --> 
+- W usłudze Azure Stack *obrotu klucz tajny*, istnieje okres, w której publiczne adresy IP są niedostępne dla 2 do 5 minut.
 
--   <!-- 2664148 - IS ASDK --> W scenariuszach, w którym dzierżawy uzyskuje dostęp do maszyn wirtualnych przy użyciu tunelu S2S VPN mogą występować w scenariuszu, w której próby nawiązania połączenia z się nie powieść, jeśli podsieci lokalnej został dodany do bramy sieci lokalnej, po brama została już utworzona. 
+<!-- 2664148 - IS ASDK --> 
+- W scenariuszach, w którym dzierżawy uzyskuje dostęp do maszyn wirtualnych przy użyciu tunelu S2S VPN mogą występować w scenariuszu, w której próby nawiązania połączenia z się nie powieść, jeśli podsieci lokalnej został dodany do bramy sieci lokalnej, po brama została już utworzona. 
 
 
 ### <a name="sql-and-mysql"></a>SQL i bazy danych MySQL
 
 
 
-- <!-- No Number - IS, ASDK -->  Znaki specjalne, łącznie ze spacjami i okresów, nie są obsługiwane w **rodziny** nazwy po utworzeniu jednostki SKU dla dostawców zasobów SQL i bazy danych MySQL. 
+<!-- No Number - IS, ASDK -->  
+- Znaki specjalne, łącznie ze spacjami i okresów, nie są obsługiwane w **rodziny** nazwy po utworzeniu jednostki SKU dla dostawców zasobów SQL i bazy danych MySQL. 
 
-- <!-- TBD - IS --> Tworzenie elementów na serwerach tego hosta SQL lub MySQL jest obsługiwane tylko dostawcy zasobów. Elementy utworzone na serwerze hosta, które nie są tworzone przez dostawcę zasobów może prowadzić do niezgodnego stanu.  
+<!-- TBD - IS --> 
+- Tworzenie elementów na serwerach tego hosta SQL lub MySQL jest obsługiwane tylko dostawcy zasobów. Elementy utworzone na serwerze hosta, które nie są tworzone przez dostawcę zasobów może prowadzić do niezgodnego stanu.  
 
-> [!NOTE]  
-> <!-- TBD - IS --> Po zaktualizowaniu do tej wersji usługi Azure Stack można nadal używać dostawcy zasobów SQL i MySQL, które wcześniej wdrożone.  Zaleca się, że po udostępnieniu nowej wersji aktualizacji SQL i bazy danych MySQL. Np. usługi Azure Stack należy zastosować aktualizacje do dostawcy zasobów SQL i MySQL sekwencyjnie. Na przykład jeśli używasz wersji 1804, najpierw zastosowanie wersji 1805, a następnie zaktualizuj do 1807.  
+<!-- TBD - IS -->
+> [!NOTE]   
+> Po zaktualizowaniu do tej wersji usługi Azure Stack można nadal używać dostawcy zasobów SQL i MySQL, które wcześniej wdrożone.  Zaleca się, że po udostępnieniu nowej wersji aktualizacji SQL i bazy danych MySQL. Np. usługi Azure Stack należy zastosować aktualizacje do dostawcy zasobów SQL i MySQL sekwencyjnie. Na przykład jeśli używasz wersji 1804, najpierw zastosowanie wersji 1805, a następnie zaktualizuj do 1807.  
 >  
 > Instalacja tej aktualizacji nie ma wpływu na bieżące użycie bazy danych SQL lub MySQL dostawców zasobów przez użytkowników. 
 > Niezależnie od wersji dostawców zasobów, których używasz dane użytkowników w swoich baz danych nie jest Dotyk i pozostanie dostępne.  
 
 ### <a name="app-service"></a>App Service
 
-- <!-- 2352906 - IS ASDK --> Użytkownicy, należy zarejestrować dostawcę zasobów magazynu, przed utworzeniem ich pierwszej funkcji platformy Azure w ramach subskrypcji.
+<!-- 2352906 - IS ASDK --> 
+- Użytkownicy, należy zarejestrować dostawcę zasobów magazynu, przed utworzeniem ich pierwszej funkcji platformy Azure w ramach subskrypcji.
 
-- <!-- 2489178 - IS ASDK --> Aby zapewnić skalowanie infrastruktury (pracowników, zarządzanie, frontonu role), należy użyć programu PowerShell, zgodnie z opisem w informacjach o wersji dla środowiska obliczeniowego.
+<!-- 2489178 - IS ASDK --> 
+- Aby zapewnić skalowanie infrastruktury (pracowników, zarządzanie, frontonu role), należy użyć programu PowerShell, zgodnie z opisem w informacjach o wersji dla środowiska obliczeniowego.
 
-- <!-- TBD - IS ASDK --> Usługa App Service można wdrażać tylko w *subskrypcję dostawcy domyślne* w tej chwili. W przyszłej aktualizacji usługi App Service zostanie wdrożona w nowe *pomiaru subskrypcji* która została wprowadzona w usłudze Azure Stack w wersji 1804. Gdy zliczania jest przeznaczony do użytku, wszystkie istniejące wdrożenia będą migrowane do tego nowego typu subskrypcji.
+<!-- TBD - IS ASDK --> 
+- Usługa App Service można wdrażać tylko w *subskrypcję dostawcy domyślne* w tej chwili. 
 
 
 ### <a name="usage"></a>Sposób użycia  
-- <!-- TBD - IS ASDK --> Użycie publicznego adresu IP adres użycie licznika dane pokazują, taka sama *Data/godzina zdarzenia* wartość dla każdego rekordu, zamiast *TimeDate* sygnatury, który pokazuje, kiedy rekord został utworzony. Obecnie nie można użyć tych danych do wykonania dokładnego rozliczania użycia publicznego adresu IP.
+<!-- TBD - IS ASDK --> 
+- Użycie publicznego adresu IP adres użycie licznika dane pokazują, taka sama *Data/godzina zdarzenia* wartość dla każdego rekordu, zamiast *TimeDate* sygnatury, który pokazuje, kiedy rekord został utworzony. Obecnie nie można użyć tych danych do wykonania dokładnego rozliczania użycia publicznego adresu IP.
 
 
 <!-- #### Identity -->

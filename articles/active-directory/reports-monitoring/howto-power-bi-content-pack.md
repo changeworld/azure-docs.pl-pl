@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 12/06/2017
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2cfdd5b903b8ffd9702745df150fe578d42e5a11
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: c0326a6b611d5f3d5633db2d2b64b8cdc15e10a7
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735836"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816688"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Korzystanie z pakietu zawartości usługi Power BI dla usługi Azure Active Directory
 
@@ -29,6 +29,10 @@ ms.locfileid: "45735836"
 |  |
 
 Jako IT administrator musisz zrozumieć, jak użytkownicy przyjmują i korzystać z funkcji usługi Azure Active Directory. Dzięki temu można zaplanować infrastrukturę IT oraz komunikację zwiększyć użycie, i w pełni wykorzystać funkcje usługi Azure AD. Pakiet zawartości usługi Power BI dla usługi Azure Active Directory daje możliwość pogłębioną analizę danych w taki sposób, aby zebrać więcej szczegółowych informacji o co się dzieje z katalogiem. Dzięki integracji interfejsów API usługi Azure Active Directory do usługi Power BI można łatwo pobrać wstępnie skompilowanych pakietu zawartości i uzyskać wgląd w całą aktywność w usłudze Azure Active Directory za pomocą rozbudowanego środowiska wizualizacji, usługa Power BI oferuje. Możesz utworzyć własny pulpit nawigacyjny i w prosty sposób udostępnić go innym osobom w organizacji. 
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Należy licencję usługi Azure AD premium (P1/P2) używać pakietu zawartości. 
 
 ## <a name="install-the-content-pack"></a>Zainstalowanie pakietu zawartości
 

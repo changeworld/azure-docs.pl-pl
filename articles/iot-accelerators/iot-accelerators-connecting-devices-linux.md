@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: dobett
-ms.openlocfilehash: fcc11347d06cde43c79ef4272f5c2ad87555c040
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 5faa91f054e62e2b3d9d317efe57f2d3f659cee6
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734492"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829838"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-linux"></a>Podłączanie urządzenia do akceleratora rozwiązań zdalnego monitorowania (Linux)
 
@@ -29,15 +29,15 @@ Aby wykonać kroki opisane w tym przewodniku z instrukcjami, konieczne jest urz�
 
 ## <a name="view-the-code"></a>Wyświetl kod
 
-[Przykładowego kodu](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring) użyto w tym przewodniku jest dostępny w repozytorium zestawów SDK C pakietu Azure IoT w witrynie GitHub.
+[Przykładowego kodu](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring_client) użyto w tym przewodniku jest dostępny w repozytorium zestawów SDK C pakietu Azure IoT w witrynie GitHub.
 
 ### <a name="download-the-source-code-and-prepare-the-project"></a>Pobierz kod źródłowy i przygotowywanie projektu
 
 Aby przygotować projekt, Klonuj lub Pobierz [repozytorium zestawów SDK C usługi IoT Azure](https://github.com/Azure/azure-iot-sdk-c) z usługi GitHub.
 
-Przykład znajduje się w **rozwiązania/samples/remote_monitoring** folderu.
+Przykład znajduje się w **rozwiązania/samples/remote_monitoring_client** folderu.
 
-Otwórz **remote_monitoring.c** w pliku **rozwiązania/samples/remote_monitoring** folderu w edytorze tekstów.
+Otwórz **remote_monitoring.c** w pliku **rozwiązania/samples/remote_monitoring_client** folderu w edytorze tekstów.
 
 [!INCLUDE [iot-accelerators-connecting-code](../../includes/iot-accelerators-connecting-code.md)]
 
@@ -59,7 +59,7 @@ W poniższych krokach opisano sposób użycia *CMake* do tworzenia aplikacji kli
 1. Uruchom aplikację klienta i wysyłanie danych telemetrycznych do Centrum IoT Hub:
 
     ```sh
-    ./samples/solutions/remote_monitoring/remote_monitoring_client
+    ./samples/solutions/remote_monitoring_client/remote_monitoring_client
     ```
 
     W konsoli są wyświetlane komunikaty w postaci:

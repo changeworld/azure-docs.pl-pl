@@ -4,15 +4,15 @@ description: Znajdź odpowiedzi na często zadawane pytania na temat usługi Azu
 services: storage
 author: RenaShahMSFT
 ms.service: storage
-ms.date: 09/11/2018
+ms.date: 10/04/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 1f7fc9916fc856d636b6ad850f831a3235b80632
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 725aa5ff0d5ac0d6760656fc596fe44ca8661d1f
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237759"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816127"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania (FAQ) dotyczące usługi Azure Files
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem będące standardami branżowymi [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można zainstalować równolegle na chmurowych lub lokalnych wdrożeń systemu Windows, Linux i macOS. Udziały plików platformy Azure na komputerach z systemem Windows Server, również buforujesz przy użyciu usługi Azure File Sync w celu zapewnienia szybkiego dostępu blisko użycia danych.
@@ -179,7 +179,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 * <a id="ad-support-regions"></a>
 **Jest wersja zapoznawcza usługi Azure AD przy użyciu protokołu SMB dla usługi Azure Files dostępne we wszystkich regionach platformy Azure?**
 
-    Podgląd jest dostępny we wszystkich publicznych regionach z wyjątkiem: zachodnie stany USA, zachodnie stany USA 2, południowo-środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, środkowe stany USA, północno-środkowe stany USA, Australia Wschodnia, Europa Zachodnia, Europa Północna.
+    Podgląd jest dostępny we wszystkich publicznych regionach z wyjątkiem: zachodnie stany USA, południowo-środkowe stany USA, środkowe stany USA, Europa Zachodnia, Europa Północna.
 
 * <a id="ad-support-on-premises"></a>
 **Uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB dla usługi Azure Files (wersja zapoznawcza) obsługuje uwierzytelnianie przy użyciu usługi Azure AD z maszyn w środowisku lokalnym?**

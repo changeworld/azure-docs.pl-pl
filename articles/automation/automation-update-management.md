@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/18/2018
+ms.date: 10/05/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3e21cb90dbe76a648cbb23729cc5068e75e8e5f7
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 403c52cb2de61f1c2d02ad72e9067da09b40a814
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498542"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816042"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -36,6 +36,8 @@ Na poniższym diagramie przedstawiono koncepcyjny widok działania i przepływu 
 ![Przepływ procesu zarządzania aktualizacjami](media/automation-update-management/update-mgmt-updateworkflow.png)
 
 Rozwiązanie Update Management może służyć do natywnie dołączanie maszyn w wielu subskrypcji w ramach tej samej dzierżawy. Do zarządzania maszynami w innej dzierżawie, należy najpierw dodać je jako [maszyny spoza platformy Azure](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine). 
+
+CVE po wersji może potrwać 2 – 3 godziny poprawki pojawienie się maszyn z systemem Linux dla oceny.  W przypadku komputerów Windows zajmuje 12 – 15 godzin poprawki do wyświetlenia dla oceny po udostępnieniu.
 
 Po komputer przeprowadzi skanowanie pod kątem zgodności aktualizacji, agent przekazuje zbiorczo informacje do usługi Azure Log Analytics. Na komputerze Windows skanowanie pod kątem zgodności jest domyślnie przeprowadzane co 12 godzin.
 

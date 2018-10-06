@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: d087a3d5746396d81ef4ea44d90e917f25ebf19d
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: c79b6f854dc78670a7eb8a1275c3e2fc46fcdd99
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45739185"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831691"
 ---
 ### <a name="code-walkthrough"></a>Instruktaż dotyczący kodu
 
@@ -26,7 +26,7 @@ Poniższy fragment kodu pokazuje, jak zdefiniowano zgłaszanych właściwości, 
 - Lista metod obsługiwanych przez urządzenie.
 - Schemat komunikaty telemetryczne wysyłane przez urządzenie.
 
-[!code-cpp[Define data structures for Chiller](~/iot-samples-c/samples/solutions/remote_monitoring/remote_monitoring.c?name=datadefinition "Define data structures for Chiller")]
+[!code-cpp[Define data structures for Chiller](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=datadefinition "Define data structures for Chiller")]
 
 Przykład obejmuje **serializeToJson** funkcja, która wykonuje serializację tej struktury danych, za pomocą biblioteki Parson.
 
@@ -39,15 +39,15 @@ Przykład obejmuje kilka funkcji wywołania zwrotnego, które drukują informacj
 
 Poniższy fragment kodu przedstawia **device_method_callback** funkcji. Ta funkcja określa akcję wykonywaną, gdy wywołanie metody są odebrane z akceleratora rozwiązań. Funkcja otrzymuje odwołanie do **Chłodnica** danych struktury w **userContextCallback** parametru. Wartość **userContextCallback** jest ustawiona, gdy funkcja wywołania zwrotnego jest skonfigurowana w **głównego** funkcji:
 
-[!code-cpp[Device method callback](~/iot-samples-c/samples/solutions/remote_monitoring/remote_monitoring.c?name=devicemethodcallback "Device method callback")]
+[!code-cpp[Device method callback](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=devicemethodcallback "Device method callback")]
 
 Gdy akcelerator rozwiązań wywołuje metodę aktualizacji oprogramowania układowego, przykładzie deserializuje ładunek JSON i uruchamia wątku w tle do ukończenia procesu aktualizacji. Poniższy fragment kodu przedstawia **do_firmware_update** , które jest uruchamiane w wątku:
 
-[!code-cpp[Firmware update thread](~/iot-samples-c/samples/solutions/remote_monitoring/remote_monitoring.c?name=firmwareupdate "Firmware update thread")]
+[!code-cpp[Firmware update thread](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=firmwareupdate "Firmware update thread")]
 
 Poniższy fragment kodu pokazuje, jak klient wysyła komunikaty telemetryczne do akceleratora rozwiązań. Właściwości wiadomości obejmują schemat komunikat ułatwiające akcelerator rozwiązań, wyświetlanie danych telemetrycznych na pulpicie nawigacyjnym:
 
-[!code-cpp[Send telemetry](~/iot-samples-c/samples/solutions/remote_monitoring/remote_monitoring.c?name=sendmessage "Send telemetry")]
+[!code-cpp[Send telemetry](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=sendmessage "Send telemetry")]
 
 **Głównego** funkcji w przykładzie:
 
@@ -57,4 +57,4 @@ Poniższy fragment kodu pokazuje, jak klient wysyła komunikaty telemetryczne do
 - Umożliwia skonfigurowanie funkcji wywołania zwrotnego metody urządzenia.
 - Wysyła symulowane dane telemetryczne wartości do akceleratora rozwiązań.
 
-[!code-cpp[Main](~/iot-samples-c/samples/solutions/remote_monitoring/remote_monitoring.c?name=main "Main")]
+[!code-cpp[Main](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=main "Main")]

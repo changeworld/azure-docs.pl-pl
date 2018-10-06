@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/02/2018
 ms.author: andrl
-ms.openlocfilehash: 2f6720e39856366e4bca387effdc2a0624d85826
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: c345235fa16a28877a46d5eaef54093d89ffcdd0
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247998"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815838"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Ustaw i uzyskiwanie informacji o przepływności kontenerów usługi Azure Cosmos DB i bazy danych
 
@@ -35,7 +35,7 @@ Możesz ustawić przepływności kontenera usługi Azure Cosmos DB lub zestaw ko
    |Identyfikator bazy danych  |  Podaj unikatową nazwę, aby zidentyfikować bazy danych. Baza danych jest kontenerem logicznym co najmniej jednej kolekcji. Nazwy baz danych muszą zawierać od 1 do 255 znaków i nie mogą zawierać znaków /, \\, #, ? ani mieć spacji na końcu. |
    |Identyfikator kolekcji  | Podaj unikatową nazwę identyfikującą kolekcji. W przypadku identyfikatorów kolekcji obowiązują takie same wymagania dotyczące znaków, jak dla nazw baz danych. |
    |Pojemność magazynu   | Ta wartość reprezentuje pojemność magazynu bazy danych. Podczas aprowizowania przepływności dla poszczególnych kolekcji, pojemności magazynu można **stała (10 GB)** lub **nieograniczone**. Nieograniczonej pojemności magazynu, należy ustawić klucz partycji dla danych.  |
-   |Przepływność   | Każdej kolekcji i bazy danych może mieć przepływność w jednostkach żądania na sekundę.  Pojemność magazynu stałych minimalna przepływność to 400 jednostek żądań na sekundę (RU/s), uzyskać nieograniczony magazyn pojemności, minimalna przepływność jest ustawiona na 1000 jednostek RU/s.|
+   |Przepływność   | Każdej kolekcji i bazy danych może mieć przepływność w jednostkach żądania na sekundę.  Oraz może mieć stałej kolekcji lub nieograniczonej pojemności magazynu. |
 
 6. Po wprowadzeniu wartości dla tych pól, zaznacz **OK** Aby zapisać ustawienia.  
 

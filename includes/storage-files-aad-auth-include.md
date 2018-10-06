@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 09/19/2018
+ms.date: 10/04/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 903074c78180ab2cd755abcf4207232f2851804e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c2dc0f2dea752dd44ab2805a0d6fc0e5517f5c6c
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47019697"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48831708"
 ---
 [Usługa Azure Files](../articles/storage/files/storage-files-introduction.md) obsługuje uwierzytelnianie oparte na tożsamości za pośrednictwem protokołu SMB (Server Message Block) (wersja zapoznawcza) za pośrednictwem [usługi domenowe Azure Active Directory (Azure AD)](../articles/active-directory-domain-services/active-directory-ds-overview.md). Przyłączone do domeny Windows maszyn wirtualnych (VM) mogą uzyskiwać dostęp do udziałów plików platformy Azure przy użyciu [usługi Azure AD](../articles/active-directory/fundamentals/active-directory-whatis.md) poświadczeń. 
 
@@ -23,5 +23,7 @@ Podczas korzystania z wersji zapoznawczej usługi Azure Files obsługuje równie
 
 > [!NOTE]
 > Uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB nie jest obsługiwane dla maszyn wirtualnych systemu Linux w wersji zapoznawczej. Obsługiwane są tylko systemu Windows Server dla maszyn wirtualnych.
->
+
+> Uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB nie jest obsługiwana dla maszyn lokalnych, uzyskiwanie dostępu do usługi Azure Files przy użyciu albo usługi AD lub poświadczeń usługi AAD.
+
 > Uwierzytelnianie usługi Azure AD jest dostępna tylko w przypadku kont magazynu utworzonych po 24 września 2018 r.

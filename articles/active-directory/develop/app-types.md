@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 3ac97ac5e9ae0a7059d9c74c5918212f1ce02790
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5a8e43934393c2e6a97b81809284781a5c207e41
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959958"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816348"
 ---
 # <a name="application-types-in-v10"></a>Typy aplikacji w wersji 1.0
 
@@ -69,7 +69,7 @@ Aby uzyskać szczegółowe informacje, Dowiedz się, jak [rejestrowanie aplikacj
 Inicjowanie obsługi administracyjnej staje się bardziej zrozumiały po zapoznaniu się, że istnieją dwie kategorie aplikacji, które mogą być opracowane i zintegrowane z usługą Azure AD:
 
 * **Pojedyncza aplikacja dzierżawy** — aplikacja jednej dzierżawy jest przeznaczony do użytku w jednej z organizacji. Są to zazwyczaj line-of-business (LoB) aplikacji napisanych przez Deweloper w przedsiębiorstwie. Aplikacja jednej dzierżawy musi tylko uzyskiwać dostęp użytkownicy w jednym katalogu, a w rezultacie wymaga tylko do udostępnienia w pojedynczym katalogu. Te aplikacje zwykle są rejestrowane przez dewelopera w organizacji.
-* **Aplikacja wielodostępna** -aplikacji z wieloma dzierżawami jest przeznaczona do użycia w wielu organizacjach nie tylko jednej z organizacji. Są to zazwyczaj software-as-a-service (SaaS) aplikacji napisanych przez niezależnego dostawcę oprogramowania (ISV). Wielodostępne aplikacje muszą być obsługiwana w każdym katalogu gdzie zostaną użyte, wymaga zgody użytkownika lub administratora, aby zarejestrować je. Ten proces zgody rozpoczyna się, gdy aplikacja została zarejestrowana w katalogu i otrzymuje dostęp do interfejsu API programu Graph lub może być inny interfejs API sieci web. Gdy użytkownik lub administrator z innej organizacji zarejestruje się w celu korzystania z aplikacji, zobaczą okno dialogowe, które wyświetla uprawnienia, których wymaga aplikacja. Użytkownik lub administrator, następnie mogą wyrazić zgodę na aplikację, która zapewnia dostęp do aplikacji do podanych danych, a na koniec rejestruje swojego katalogu aplikacji. Aby uzyskać więcej informacji, zobacz [Przegląd Framework zgody](quickstart-v1-integrate-apps-with-azure-ad.md#overview-of-the-consent-framework).
+* **Aplikacja wielodostępna** -aplikacji z wieloma dzierżawami jest przeznaczona do użycia w wielu organizacjach nie tylko jednej z organizacji. Są to zazwyczaj software-as-a-service (SaaS) aplikacji napisanych przez niezależnego dostawcę oprogramowania (ISV). Wielodostępne aplikacje muszą być obsługiwana w każdym katalogu gdzie zostaną użyte, wymaga zgody użytkownika lub administratora, aby zarejestrować je. Ten proces zgody rozpoczyna się, gdy aplikacja została zarejestrowana w katalogu i otrzymuje dostęp do interfejsu API programu Graph lub może być inny interfejs API sieci web. Gdy użytkownik lub administrator z innej organizacji zarejestruje się w celu korzystania z aplikacji, zobaczą okno dialogowe, które wyświetla uprawnienia, których wymaga aplikacja. Użytkownik lub administrator, następnie mogą wyrazić zgodę na aplikację, która zapewnia dostęp do aplikacji do podanych danych, a na koniec rejestruje swojego katalogu aplikacji. Aby uzyskać więcej informacji, zobacz [Przegląd Framework zgody](consent-framework.md).
 
 ### <a name="additional-considerations-when-developing-single-tenant-or-multi-tenant-apps"></a>Dodatkowe zagadnienia dotyczące opracowywania pojedynczego dzierżawy lub wielodostępnych aplikacji
 

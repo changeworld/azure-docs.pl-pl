@@ -1,7 +1,7 @@
 ---
-title: Mowy usług cognitive Services SDK rozwiązywania problemów
-description: Problemy z rozwiązywania problemów Cognitive Services — zestaw SDK rozpoznawania mowy
-titleSuffix: Microsoft Cognitive Services
+title: Rozwiązywanie problemów z mowy usług Cognitive Services SDK
+description: Rozwiązywanie problemów z mowy usług Cognitive Services SDK.
+titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: wolfma61
 ms.service: cognitive-services
@@ -9,41 +9,43 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: wolfma
-ms.openlocfilehash: ff8aba562cfd2d6d54c708ee7fdc4c6ca7185f29
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 02564021257c97f6c865fcbebf30c73babee859a
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284126"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816219"
 ---
-# <a name="troubleshooting-speech-services-sdk"></a>Rozwiązywanie problemów z usług przetwarzania mowy zestawu SDK
+# <a name="troubleshoot-the-speech-sdk"></a>Rozwiązywanie problemów z zestawu SDK funkcji rozpoznawania mowy
 
-Ten artykuł zawiera informacje ułatwiające rozwiązanie problemów, które można napotkać podczas korzystania z zestawu SDK rozpoznawania mowy.
+Ten artykuł zawiera informacje ułatwiają rozwiązywanie problemów, które można napotkać podczas używania zestawu SDK rozpoznawania mowy.
 
-## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Błąd `WebSocket Upgrade failed with an authentication error (403).`
+## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Błąd: Uaktualnienie WebSocket nie powiodło się z powodu błędu uwierzytelniania (403)
 
-Może być nieprawidłowy punkt końcowy dla Twojego regionu lub usługi. Dokładnie Sprawdź identyfikator URI, aby upewnić się, że jest on poprawny. Również, jak również może to być problem z Twoim klucz subskrypcji lub autoryzacji, zobacz następną sekcję, tokenu.
+Konieczne może być nieprawidłowy punkt końcowy dla Twojego regionu lub usługi. Sprawdź identyfikator URI, aby upewnić się, że jest on poprawny. 
 
-## <a name="error-http-403-forbidden-or-error-http-401-unauthorized"></a>Błąd `HTTP 403 Forbidden` lub błąd `HTTP 401 Unauthorized`
+Ponadto może być problem z Twoim klucz subskrypcji lub autoryzacji tokenu. Aby uzyskać więcej informacji zobacz następną sekcję.
 
-Ten błąd jest często spowodowane przez problemy z uwierzytelnianiem. Żądania połączenia bez prawidłowego `Ocp-Apim-Subscription-Key` lub `Authorization` nagłówka są odrzucane stanu 401 lub 403.
+## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Błąd: HTTP 403 Dostęp zabroniony lub HTTP 401 Brak autoryzacji
 
-* Jeśli używasz klucz subskrypcji dla uwierzytelniania, może to być spowodowane:
+Ten błąd jest często spowodowane przez problemy z uwierzytelnianiem. Żądania połączenia bez prawidłowego `Ocp-Apim-Subscription-Key` lub `Authorization` nagłówka zostały odrzucone ze stanem 403 lub 401.
+
+* Klucz subskrypcji używany do uwierzytelniania, może zostać wyświetlony błąd, ponieważ:
 
     - klucz subskrypcji lub jest nieprawidłowy
     - Przekroczono limit przydziału użycia Twojej subskrypcji
 
-* Jeśli używasz token autoryzacji do uwierzytelniania, może to być spowodowane:
+* Token autoryzacji używany do uwierzytelniania, może zostać wyświetlony błąd, ponieważ:
 
     - token autoryzacji jest nieprawidłowy
     - wygasł token autoryzacji
 
 ### <a name="validate-your-subscription-key"></a>Zweryfikuj swój klucz subskrypcji
 
-Możesz sprawdzić, aby upewnić się, że masz klucz ważnej subskrypcji, uruchamiając jeden z poniższych poleceń.
+Aby sprawdzić, mają klucz ważnej subskrypcji, uruchamiając jeden z następujących poleceń.
 
 > [!NOTE]
-> Zastąp `YOUR_SUBSCRIPTION_KEY` i `YOUR_REGION` przy użyciu własnych klucz subskrypcji i regionu skojarzonego odpowiednio.
+> Zastąp `YOUR_SUBSCRIPTION_KEY` i `YOUR_REGION` własny klucz subskrypcji i regionu skojarzonego.
 
 * PowerShell
 
@@ -68,7 +70,7 @@ Możesz sprawdzić, aby upewnić się, że masz klucz ważnej subskrypcji, uruch
 Jeśli token autoryzacji jest używany do uwierzytelniania, uruchom jedno z poniższych poleceń, aby sprawdzić, czy token autoryzacji jest nadal ważny. Tokeny są ważne przez 10 minut.
 
 > [!NOTE]
-> Zastąp `YOUR_AUDIO_FILE` ze ścieżką do pliku audio nagrań `YOUR_ACCESS_TOKEN` tokenem autoryzacji, zwracane w poprzednim kroku i `YOUR_REGION` z poprawny region.
+> Zastąp `YOUR_AUDIO_FILE` ze ścieżką do pliku nagrań audio. Zastąp `YOUR_ACCESS_TOKEN` tokenem autoryzacji są zwracane w poprzednim kroku. Zastąp `YOUR_REGION` z poprawny region.
 
 * PowerShell
 
@@ -83,12 +85,12 @@ Jeśli token autoryzacji jest używany do uwierzytelniania, uruchom jedno z poni
       'Content-type' = 'audio/wav; codec=audio/pcm; samplerate=16000'
     }
     
-    # Read audio into byte array
+    # Read audio into byte array.
     $audioBytes = [System.IO.File]::ReadAllBytes("YOUR_AUDIO_FILE")
     
     $RecoResponse = Invoke-RestMethod -Method POST -Uri $SpeechServiceURI -Headers $RecoRequestHeader -Body $audioBytes
     
-    # Show the result
+    # Show the result.
     $RecoResponse
     ```
 
@@ -100,22 +102,23 @@ Jeśli token autoryzacji jest używany do uwierzytelniania, uruchom jedno z poni
 
 ---
 
-## <a name="error-http-400-bad-request"></a>Błąd `HTTP 400 Bad Request`
+## <a name="error-http-400-bad-request"></a>Błąd: HTTP 400 Niewłaściwe żądanie
 
-Ten błąd występuje zazwyczaj, gdy treść żądania zawiera nieprawidłowe dane audio. Tylko `WAV` format jest obsługiwany. Również zapoznać się z nagłówków żądań, aby upewnić się, określasz odpowiednią `Content-Type` i `Content-Length`.
+Ten błąd występuje zazwyczaj, gdy treść żądania zawiera nieprawidłowe dane audio. Jest obsługiwany tylko format WAV. Sprawdź, czy nagłówki żądania, aby upewnić się, można określić odpowiednie wartości dla `Content-Type` i `Content-Length`.
 
-## <a name="error-http-408-request-timeout"></a>Błąd `HTTP 408 Request Timeout`
+## <a name="error-http-408-request-timeout"></a>Błąd: Limit czasu z 408 żądania HTTP
 
-Błąd jest najbardziej prawdopodobne, ponieważ nie dane audio są wysyłane do usługi. Ten błąd może być także spowodowane przez problemy z siecią.
+Najbardziej prawdopodobną błąd występuje, ponieważ nie dane audio są wysyłane do usługi. Ten błąd może być także spowodowany przez problemy z siecią.
 
-## <a name="the-recognitionstatus-in-the-response-is-initialsilencetimeout"></a>`RecognitionStatus` w odpowiedzi jest `InitialSilenceTimeout`
+## <a name="recognitionstatus-in-the-response-is-initialsilencetimeout"></a>"RecognitionStatus" w odpowiedzi jest "InitialSilenceTimeout"
 
-Dane audio jest zazwyczaj przyczyną problemu. Na przykład:
+Ten problem jest zazwyczaj spowodowane danych audio. Może zostać wyświetlony ten błąd, ponieważ:
 
-* Istnieje długa odcinek wyciszenia na początku audio. Usługa zostanie zatrzymanie rozpoznawanie po kilku sekundach i powrót `InitialSilenceTimeout`.
+* Istnieje długa odcinek wyciszenia na początku audio. W takiej sytuacji usługa zatrzymuje uznanie za kilka sekund i zwraca `InitialSilenceTimeout`.
+
 * Audio w formacie nieobsługiwanego kodera-dekodera, co powoduje, że dane audio powinien być traktowany jako wyciszenia.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Informacje o wersji](releasenotes.md)
+* [Zapoznaj się z informacjami o wersji](releasenotes.md)
 

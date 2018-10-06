@@ -1,6 +1,6 @@
 ---
-title: Szkolenie modeli uczenia maszynowego przy użyciu usługi Azure Machine Learning
-description: Dowiedz się, jak przeprowadzić jednym węzłem i rozproszonego szkolenia tradycyjnych uczenia maszynowego i głębokiego uczenia modeli za pomocą usługi Azure Machine Learning
+title: Szkolenie modeli uczenia maszynowego przy użyciu klasy narzędzie do szacowania za pomocą usługi Azure Machine Learning
+description: Dowiedz się, jak przeprowadzić jednym węzłem i rozproszonego szkolenia tradycyjnych uczenia maszynowego i głębokiego uczenia modeli za pomocą usługi Azure Machine Learning services narzędzie do szacowania klasy
 ms.author: minxia
 author: mx-iao
 services: machine-learning
@@ -9,33 +9,33 @@ ms.component: core
 ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 50b808b5769f2160d765ecdb431d71856e651b33
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8c2f4ad9acc789a23eb951265b0464aee6caaa6c
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983586"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815039"
 ---
 # <a name="how-to-train-models-with-azure-machine-learning"></a>Sposób trenowania modeli przy użyciu usługi Azure Machine Learning
 
 Szkolenia usługi machine learning modeli, szczególnie głębokich sieciach neuronowych, jest często zadania wymagające obliczeń i czasu. Po zakończeniu pisania skryptu szkolenia i systemem mały podzbiór danych na komputerze lokalnym, prawdopodobnie można skalować obciążenie.
 
-Aby ułatwić szkolenia, zestawu SDK języka Python usługi Azure Machine Learning zapewnia Abstrakcja wysokiego poziomu klasy narzędzie do szacowania, która umożliwia użytkownikom łatwe szkolenie modeli, ich w ekosystemie platformy Azure. Można tworzyć i używać obiekt narzędzie do szacowania do przesyłania żadnego kodu szkolenia, które chcesz uruchomić na zdalnym mocy obliczeniowej, czy jest ono szkolenia jednowęzłowej rozproszonej lub wykonywania w klastrze procesorów GPU. Zadań PyTorch i TensorFlow, Azure Machine Learning udostępnia również odpowiednich PyTorch niestandardowej i TensorFlow aplikacjom, które ułatwiają tworzenie tych platform.
+Aby ułatwić szkolenia, zestawu SDK języka Python usługi Azure Machine Learning zapewnia Abstrakcja wysokiego poziomu klasy narzędzie do szacowania, która umożliwia użytkownikom łatwe szkolenie modeli, ich w ekosystemie platformy Azure. Można tworzyć i używać `Estimator` obiektu w celu przesłania jakiegokolwiek kodu szkolenia, należy uruchomić na zdalnym mocy obliczeniowej, czy jest ono szkolenia jednowęzłowej rozproszonej lub wykonywania w klastrze procesorów GPU. Zadania PyTorch i TensorFlow, Azure Machine Learning zawiera także niestandardowe odpowiednich `PyTorch` i `TensorFlow` aplikacjom w celu uproszczenia korzystania z tych platform.
 
 ## <a name="train-with-an-estimator"></a>Szkolenie przy użyciu narzędzie do szacowania
 
-Po utworzeniu usługi [obszaru roboczego](https://docs.microsoft.com/azure/machine-learning/service/concept-azure-machine-learning-architecture#workspace) i skonfiguruj swoje [środowisko programistyczne](how-to-configure-environment.md), uczenia modelu w usłudze Azure Machine Learning obejmuje następujące czynności:  
-1. [Utworzyć cel obliczenia zdalnego](how-to-set-up-training-targets.md)
-2. [Przekazywanie danych szkoleniowych](how-to-access-data.md) (opcjonalnie)
-3. Utwórz skrypt szkolenia
-4. Utwórz obiekt narzędzie do szacowania
+Po utworzeniu usługi [obszaru roboczego](concept-azure-machine-learning-architecture.md#workspace) i skonfiguruj swoje [środowisko programistyczne](how-to-configure-environment.md), uczenia modelu w usłudze Azure Machine Learning obejmuje następujące czynności:  
+1. Utwórz [zdalnego obliczeniowego elementu docelowego](how-to-set-up-training-targets.md)
+2. Przekaż swoje [dane szkoleniowe](how-to-access-data.md) (opcjonalnie)
+3. Utwórz swoje [skrypt szkoleniowy](tutorial-train-models-with-aml.md#create-a-training-script)
+4. Utwórz `Estimator` obiektu
 5. Przesyłanie zadania szkolenia
 
-Ten artykuł koncentruje się na kroki 4 – 5. Kroki 1 – 3, można znaleźć w tym [samouczek](tutorial-train-models-with-aml.md) przykład.
+Ten artykuł koncentruje się na kroki 4 – 5. Kroki 1 – 3, można znaleźć na [uczenie modelu samouczek](tutorial-train-models-with-aml.md) przykład.
 
 ### <a name="single-node-training"></a>Szkolenie z jednym węzłem
 
-Poniższy kod przeprowadzi szkolenia jednym węzłem, uruchom na zdalne zasoby obliczeniowe na platformie Azure na potrzeby scikit-informacje modelu. Powinna już utworzono usługi [obliczeniowego elementu docelowego](how-to-set-up-training-targets.md#batch) obiektu `compute_target` i [datastore](how-to-access-data.md) obiektu `ds`.
+Użyj `Estimator` szkolenia jednym węzłem, uruchom na zdalne zasoby obliczeniowe na platformie Azure na potrzeby scikit-informacje modelu. Powinna już utworzono usługi [obliczeniowego elementu docelowego](how-to-set-up-training-targets.md#batch) obiektu `compute_target` i [datastore](how-to-access-data.md) obiektu `ds`.
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -52,15 +52,18 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
                    conda_packages=['scikit-learn'])
 ```
 
-Powyższym fragmencie kodu określa następujące parametry do konstruktora narzędzie do szacowania:
-* `source_directory`: Katalog lokalny, który zawiera wszystkie wymagane na potrzeby zadania szkolenia kodu. Ten folder skopiowane z komputera lokalnego do zdalnego obliczeń 
-* `script_params`: Określanie argumentów wiersza polecenia do skryptu szkolenia słownik `entry_script`, w postaci < argument wiersza polecenia, wartość > par
-* `compute_target`: Zdalne zasoby obliczeniowe uruchamianego skrypt szkolenia, w tym przypadku [usługi Batch AI](how-to-set-up-training-targets.md#batch) klastra
-* `entry_script`Filepath (względem `source_directory`) skryptu szkolenia, należy uruchomić na zdalne zasoby obliczeniowe. Ten plik i wszelkie dodatkowe pliki, od których zależy, powinny się znajdować w tym folderze
-* `conda_packages`: Lista pakietów języka Python, aby ją zainstalować za pomocą narzędzia conda, wymagane przez skrypt szkolenia.  
-Konstruktor ma inny parametr o nazwie `pip_packages` używanego do dowolnego pakietu pip, wymagane
+Ten fragment kodu określa następujące parametry `Estimator` konstruktora.
 
-Teraz, po utworzeniu obiektu narzędzie do szacowania, można przesłać zadania szkolenia, należy uruchomić na zdalne zasoby obliczeniowe poprzez wywołanie `submit` działać na Twoje [eksperymentu](concept-azure-machine-learning-architecture.md#experiment) obiektu `experiment`. 
+Parametr | Opis
+--|--
+`source_directory`| Katalog lokalny, który zawiera wszystkie wymagane na potrzeby zadania szkolenia kodu. Ten folder skopiowane z komputera lokalnego do zdalnego obliczeń 
+`script_params`| Określanie argumentów wiersza polecenia do skryptu szkolenia słownika `entry_script`, w postaci < argument wiersza polecenia, wartość > par
+`compute_target`| Zdalne obliczeń, uruchamianego skrypt szkolenia, w tym przypadku [usługi Batch AI](how-to-set-up-training-targets.md#batch) klastra
+`entry_script`| FilePath (względem `source_directory`) skryptu szkolenia, należy uruchomić na zdalne zasoby obliczeniowe. Ten plik i wszelkie dodatkowe pliki, od których zależy, powinny się znajdować w tym folderze
+`conda_packages`| Lista pakietów języka Python, aby ją zainstalować za pomocą narzędzia conda, wymagane przez skrypt szkolenia.  
+Konstruktor ma inny parametr o nazwie `pip_packages` używaną dla dowolnego pakietu pip, wymagane
+
+Teraz, po utworzeniu usługi `Estimator` obiektu i przesyłaj zadania szkolenia, należy uruchomić na zdalne zasoby obliczeniowe z wywołaniem `submit` działać na Twoje [eksperymentu](concept-azure-machine-learning-architecture.md#experiment) obiektu `experiment`. 
 
 ```Python
 run = experiment.submit(sk_est)
@@ -68,21 +71,21 @@ print(run.get_details().status)
 ```
 
 > [!IMPORTANT]
-> **Foldery specjalne** dwa foldery *generuje* i *dzienniki*, specjalne traktowane przez uczenie maszynowe Azure. Podczas szkolenia, jeśli zapisywać pliki do folderu o nazwie *generuje* i *dzienniki* , które są względem katalogu głównego (`./outputs` i `./logs`odpowiednio), otrzymają te pliki Dzięki temu będą mieli do nich dostęp, po zakończeniu przebieg automatycznie przekazywane do Twojej historii uruchamiania. 
+> **Foldery specjalne** dwa foldery *generuje* i *dzienniki*, specjalne traktowane przez uczenie maszynowe Azure. Podczas szkolenia, kiedy piszesz pliki do folderu o nazwie *generuje* i *dzienniki* , które są względem katalogu głównego (`./outputs` i `./logs`odpowiednio), pliki zostaną automatycznie tak, aby mieli do nich dostęp, po zakończeniu przebieg, należy przekazać do Twojej historii uruchamiania.
 >
-> Aby uzyskać dostęp do artefaktów utworzonego podczas uczenia (np. plików modeli, punkty kontrolne, pliki danych lub wykreślona obrazów) zapisu je do `./outputs` folderu.
+> Do tworzenia artefaktów podczas uczenia (np. plików modeli, punkty kontrolne, pliki danych lub wykreślona obrazów) zapisać je do `./outputs` folderu.
 >
-> Podobnie, można zapisywać żadnych dzienników z szkolenia Uruchom, aby `./logs` folderu. Korzystanie z usługi Azure Machine Learning [integracji narzędzia TensorBoard](https://aka.ms/aml-notebook-tb) upewnij się, zapisać Dzienniki narzędzia TensorBoard do tego folderu. Gdy przebieg jest w toku, można uruchomić narzędzia TensorBoard i przesyłanie strumieniowe dzienników.  Później również można przywrócić dzienników pochodzących z dowolnych z poprzednich przebiegów.
+> Podobnie, zapisywać żadnych dzienników z szkolenia uruchomić `./logs` folderu. Korzystanie z usługi Azure Machine Learning [integracji narzędzia TensorBoard](https://aka.ms/aml-notebook-tb) upewnij się, zapisać Dzienniki narzędzia TensorBoard do tego folderu. Gdy przebieg jest w toku, można uruchomić narzędzia TensorBoard i przesyłanie strumieniowe dzienników.  Później również można przywrócić dzienników pochodzących z dowolnych z poprzednich przebiegów.
 >
 > Na przykład, aby pobrać plik zapisywane *generuje* folderu na komputerze lokalnym po szkolenia zdalnego uruchamiania: `run.download_file(name='outputs/my_output_file', output_file_path='my_destination_path')`
 
 ### <a name="distributed-training-and-custom-docker-images"></a>Rozproszonego szkolenia i niestandardowych obrazów platformy Docker
 
-Istnieją dwa scenariusze dodatkowe szkolenie, które można wykonywać za pomocą narzędzia szacunkowej oceny:
-1. Przy użyciu niestandardowego obrazu platformy Docker
-2. Rozproszonego szkolenia na klastra wielowęzłowego
+Istnieją dwa scenariusze dodatkowe szkolenie, które można wykonywać za pomocą `Estimator`:
+* Przy użyciu niestandardowego obrazu platformy Docker
+* Rozproszonego szkolenia na klastra wielowęzłowego
 
-Poniższy kod przedstawia sposób przeprowadzania rozproszonego szkolenia CNTK modelu. Ponadto zamiast domyślnych obrazów usługi Azure Machine Learning, założono, że użytkownik ma swój własny obraz niestandardowy platformy docker, którego chcesz użyć do trenowania.
+Poniższy kod przedstawia sposób przeprowadzania rozproszonego szkolenia CNTK modelu. Ponadto zamiast domyślnych obrazów usługi Azure Machine Learning, założono, że używasz własnego obrazu niestandardowego platformy docker do trenowania.
 
 Powinna już utworzono swoje [obliczeniowego elementu docelowego](how-to-set-up-training-targets.md#batch) obiektu `compute_target`. Narzędzie do szacowania można utworzyć w następujący sposób:
 
@@ -99,11 +102,14 @@ estimator = Estimator(source_directory='./my-cntk-proj',
                       custom_docker_base_image='microsoft/mmlspark:0.12')
 ```
 
-Powyższy kod udostępnia następujące nowe parametry do konstruktora narzędzie do szacowania:
-* `custom_docker_base_image`: Nazwa obrazu, którego chcesz użyć. Należy podać tylko obrazów dostępnych w repozytoriach publicznych platformy docker (w tym przypadku usłudze Docker Hub). Aby użyć obrazu z repozytorium prywatnego platformy docker, należy użyć konstruktora `environment_definition` parametru zamiast tego
-* `node_count`: Liczba węzłów na potrzeby zadania szkolenia. Wartością domyślną tego argumentu `1`
-* `process_count_per_node`: Liczba procesów (lub "pracowników przetwarzających"), aby uruchomić w każdym węźle. W tym przypadku używasz `2` procesorów GPU jest dostępne w każdym węźle. Wartością domyślną tego argumentu `1`
-* `distributed_backend`: Zaplecze do uruchamiania rozproszonych szkoleń, która estymatora oferuje za pośrednictwem MPI. Domyślnie ten argument `None`. Jeśli chcesz przeprowadzić szkolenia równoległego lub rozproszonej (np. `node_count`> 1 lub `process_count_per_node`> 1 lub oba), ustaw `distributed_backend='mpi'`. Jest używana przez AML implementacja MPI [Otwórz MPI](https://www.open-mpi.org/).
+Powyższy kod udostępnia następujące nowe parametry `Estimator` Konstruktor:
+
+Parametr | Opis | Domyślne
+--|--|--
+`custom_docker_base_image`| Nazwa obrazu, którego chcesz użyć. Podaj tylko obrazów dostępnych w repozytoriach publicznych platformy docker (w tym przypadku usłudze Docker Hub). Aby użyć obrazu z repozytorium prywatnego platformy docker, należy użyć konstruktora `environment_definition` parametru zamiast tego | `None`
+`node_count`| Liczba węzłów na potrzeby zadania szkolenia. | `1`
+`process_count_per_node`| Liczba procesów (lub "pracowników przetwarzających"), aby uruchomić w każdym węźle. W tym przypadku używasz `2` procesorów GPU jest dostępne w każdym węźle.| `1`
+`distributed_backend`| Zaplecze dla uruchamiania rozproszonych, szkolenia, która estymatora oferuje za pośrednictwem MPI.  Przeprowadzenie szkolenia równoległego lub rozproszonej (np. `node_count`> 1 lub `process_count_per_node`> 1 lub oba), ustaw `distributed_backend='mpi'`. Jest używana przez AML implementacja MPI [Otwórz MPI](https://www.open-mpi.org/).| `None`
 
 Na koniec można przesłać zadania szkolenia:
 ```Python
@@ -115,7 +121,7 @@ Samouczek dotyczący uczenia modelu skryptu sklearn zobacz:
 * `tutorials/01.train-models.ipynb`
 
 Samouczek dotyczący rozproszonego CNTK przy użyciu niestandardowego platformy docker zobacz:
-* `training/06.distributed-cntk-with-custom-docker/06.distributed-cntk-with-custom-docker.ipynb`
+* `training/06.distributed-cntk-with-custom-docker`
 
 Pobierz te notesy:
 

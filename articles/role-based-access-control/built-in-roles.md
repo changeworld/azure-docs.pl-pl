@@ -15,12 +15,12 @@ ms.date: 09/27/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 6fe9a106975a03fabc9d674ede694e683dc3cd94
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 88667749d9cdf5239be33f3aca52d1a614556a41
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410276"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816617"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Wbudowane role zasobów platformy Azure
 [Kontrola dostępu oparta na rolach (RBAC)](overview.md) ma kilka definicji wbudowanej roli, które można przypisać do użytkowników, grup i nazwy główne usług. Przypisania roli są sposób kontrolowania dostępu do zasobów na platformie Azure. Jeśli role wbudowane nie spełniają potrzeb Twojej organizacji, możesz tworzyć własne [role niestandardowe](custom-roles.md).
@@ -786,14 +786,14 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Opis** | Umożliwia zarządzanie fabrykami danych, ale nie umożliwia uzyskiwania do nich dostępu. |
 > | **Identyfikator** | 673868aa-7521-48A0-acc6-0f60742d39f5 |
 > | **Akcje** |  |
-> | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
+> | Microsoft.Authorization/*/read | Przeczytaj, ról i przypisań ról. |
 > | Microsoft.DataFactory/dataFactories/* | Tworzenie i zarządzanie fabryki danych i zasobów podrzędnych w nich. |
 > | Microsoft.DataFactory/factories/* | Tworzenie i zarządzanie fabryki danych i zasobów podrzędnych w nich. |
-> | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Pobiera stany dostępności wszystkich zasobów w określonym zakresie |
-> | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
-> | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
-> | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | Microsoft.Insights/alertRules/* | Utwórz i Zarządzaj regułami alertów. |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | Pobierz stany dostępności dla wszystkich zasobów w określonym zakresie. |
+> | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów. |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Uzyskaj lub wyświetlić listę grup zasobów. |
+> | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej. |
 
 ## <a name="data-lake-analytics-developer"></a>Deweloper usługi Data Lake Analytics
 > [!div class="mx-tableFixed"]

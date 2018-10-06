@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 6831f67a33d114ca5c42ddacf8ef4de704e21711
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 32ef8ba2f6416e1b59fc98595f1b204e94bd2ead
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036960"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830994"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Użyj frazy Wyświetla sygnału boost listy programu word
 
@@ -46,7 +46,7 @@ Można dodać funkcje do aplikacji usługi LUIS, aby zwiększyć jego dokładno�
 <a name="deactivate-phrase-list"></a>
 
 > [!Note]
-> Edytuj, usuń lub dezaktywowanie listy fraz z wielokropek (***...*** ) przycisk na końcu wiersza eac frazy listy.
+> Usuń lub dezaktywowanie listy fraz z paska narzędzi kontekstowych na **frazę list** strony.
 
 ## <a name="pattern-regular-expression-feature"></a>Funkcja wzorca (wyrażenie regularne) 
 **Ta funkcja jest przestarzała**. Nie można dodać nowe funkcje wzorzec do usługi LUIS. Wszystkie istniejące funkcje wzorzec są obsługiwane do maja 2018 r. Przyczynia się do standardowych LUIS dopasowania wyrażenia regularnego przy użyciu żądania Ściągnięcia do [repozytorium Github aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text). 

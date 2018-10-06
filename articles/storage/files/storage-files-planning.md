@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 19adbbfc456303b471251c28cd984d1676786b19
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 0701049eb1aa86398e90484dbf21ef3781270fba
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783155"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831385"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego protokołu SMB. Ponieważ usługi Azure Files jest w pełni zarządzana, wdrażania jej w scenariuszach produkcyjnych jest znacznie prostsze niż we wdrażaniu oraz zarządzaniu nim serwera plików lub urządzeń NAS. W tym artykule opisano tematów, aby wziąć pod uwagę podczas wdrażania udziału plików platformy Azure do użytku produkcyjnego w organizacji.
@@ -56,19 +56,36 @@ Usługa pliki systemu Azure oferuje kilka opcji wbudowanych zapewniających bezp
 
 * Obsługa szyfrowania w obu tych protokołów w locie: szyfrowanie protokołu SMB 3.0 i REST pliku przy użyciu protokołu HTTPS. Domyślnie: 
     * Klienci, którzy obsługują szyfrowanie protokołu SMB 3.0 wysyłać i odbierać dane za pośrednictwem szyfrowanego kanału.
-    * Klienci, którzy nie obsługują protokołu SMB 3.0 mogą komunikować się wewnątrz datacenter za pośrednictwem protokołu SMB 2.1 lub SMB 3.0 bez szyfrowania. Należy pamiętać, że klienci nie są dozwolone do komunikacji między centrum danych za pośrednictwem protokołu SMB 2.1 lub SMB 3.0 bez szyfrowania.
+    * Klientów, które nie obsługują przy użyciu szyfrowania protokołu SMB 3.0 mogą komunikować się wewnątrz od centrum danych za pośrednictwem protokołu SMB 2.1 lub SMB 3.0 bez szyfrowania. Klienci SMB nie są dozwolone do komunikacji między centrum danych za pośrednictwem protokołu SMB 2.1 lub SMB 3.0 bez szyfrowania.
     * Klienci mogą komunikować się za pośrednictwem REST pliku przy użyciu protokołu HTTP lub HTTPS.
 * Szyfrowanie w spoczynku ([szyfrowanie usługi Azure Storage](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): szyfrowanie usługi Storage (SSE) jest włączona dla wszystkich kont magazynu. Magazynowanych danych jest szyfrowany za pomocą kluczy w pełni zarządzane. Szyfrowanie w spoczynku zwiększyć koszty magazynowania lub nie obniżenie wydajności. 
 * Opcjonalne wymaganie zaszyfrowanych danych podczas przesyłania: po wybraniu usługi Azure Files odrzuca dostęp do danych za pośrednictwem kanałów niezaszyfrowane. W szczególności są dozwolone tylko protokołu HTTPS i SMB 3.0 za pomocą szyfrowania połączenia. 
 
     > [!Important]  
-    > Wymaganie bezpiecznego transferu danych spowoduje, że nie może komunikować się z protokołem SMB 3.0 z szyfrowania starsze klienty SMB nie powiedzie się. Zobacz [zainstalować na Windows](storage-how-to-use-files-windows.md), [instalowanie w systemie Linux](storage-how-to-use-files-linux.md), [instalacji w systemie macOS](storage-how-to-use-files-mac.md) Aby uzyskać więcej informacji.
+    > Wymaganie bezpiecznego transferu danych spowoduje, że nie może komunikować się z protokołem SMB 3.0 z szyfrowania starsze klienty SMB nie powiedzie się. Aby uzyskać więcej informacji, zobacz [zainstalować na Windows](storage-how-to-use-files-windows.md), [instalowanie w systemie Linux](storage-how-to-use-files-linux.md), i [instalacji w systemie macOS](storage-how-to-use-files-mac.md).
 
 Maksymalne bezpieczeństwo zdecydowanie zalecamy zawsze włączenie zarówno szyfrowania podczas spoczynku oraz włączania szyfrowania danych podczas przesyłania, ilekroć są przy użyciu nowoczesnych klientów oraz dostęp do danych. Na przykład jeśli musisz zainstalować udział na Windows Server 2008 R2 maszyny Wirtualnej, który obsługuje tylko protokół SMB 2.1, musisz zezwolić na niezaszyfrowane ruch do swojego konta magazynu, ponieważ protokół SMB 2.1 nie obsługuje szyfrowania.
 
 Jeśli używasz usługi Azure File Sync na dostęp do udziału plików platformy Azure, zawsze użyjemy HTTPS i SMB 3.0 za pomocą szyfrowania można zsynchronizować dane serwerów Windows, niezależnie od tego, czy Wymaganie szyfrowania danych magazynowanych.
 
-## <a name="data-redundancy"></a>Nadmiarowość danych
+## <a name="file-share-performance-tiers"></a>Warstwy wydajności udziału plików
+Usługa Azure Files obsługuje dwie warstwy wydajności: standardowa i premium.
+
+* **Udziały plików standardowych** są wspierane przez obrotowych dysków twardych (HDD), które zapewniają niezawodność, wydajność dla obciążeń we/wy, które są mniej podatne na zmiany wydajności, takich jak udziały plików ogólnego przeznaczenia i środowiska deweloperskie i testowe. Udziały plików standardowa są dostępne tylko w modelu rozliczeń zgodnie z rzeczywistym użyciem.
+* **Udziały plików w warstwie Premium (wersja zapoznawcza)** są wspierane przez dyski półprzewodnikowe (SSD), które umożliwiają spójne, wysokiej wydajności i niskich opóźnieniach, w milisekundach oznaczona jedną cyfrą dla większości operacji We/Wy, dla większości obciążeń intensywnie korzystających z operacji We/Wy. To sprawia, że ich odpowiednie dla różnych obciążeń, takich jak bazy danych, hostowanie witryn sieci web, środowisk deweloperskich itp. Udziały plików w warstwie Premium są dostępne tylko w elastycznie model rozliczeń.
+
+### <a name="provisioned-shares"></a>Elastycznie udziałów
+Udziały plików w warstwie Premium są aprowizowane w oparciu stały współczynnik operacji We/Wy/GiB/przepływność. Dla każdego GiB zainicjowano obsługę administracyjną udziału pojawi się w jednej operacji We/Wy i 0,1 przepływność MiB/s do maksymalnego limitu na jedną akcję. Minimalny dozwolony aprowizacji to 100 GiB z minimum operacji We/Wy/przepływności. Rozmiar udziału w dowolnym momencie można zwiększyć i zmniejszyć w dowolnym momencie, ale można zmniejszyć co 24 godziny od czasu ostatniego wzrost.
+
+Na optymalne rozwiązanie wszystkie udziały serii można maksymalnie trzy operacje We/Wy za GiB aprowizowanego magazynu przez 60 minut lub dłużej w zależności od wielkości udziału. Nowe udziały Rozpocznij od środków pełną serii, w oparciu zaprowizowaną pojemnością.
+
+| Zaprowizowaną pojemnością | 100 GiB | 500 GiB | 1 TiB | 5 TiB | 
+|----------------------|---------|---------|-------|-------|
+| Operacje We/Wy w linii bazowej | 100 | 500 | 1,024 | 5120 | 
+| Limit serii | 300 | 1,500 | 3072 | 15,360 | 
+| Przepływność | 110 MiB/s | 150 MiB/s | 202 MiB/s | 612 MiB/s |
+
+## <a name="file-share-redundancy"></a>Nadmiarowość udziału plików
 Usługa Azure Files obsługuje trzy opcje nadmiarowości danych: Magazyn lokalnie nadmiarowy (LRS), Magazyn strefowo nadmiarowy (ZRS) i Magazyn geograficznie nadmiarowy (GRS). W poniższych sekcjach opisano różnice między Opcje nadmiarowości inną:
 
 ### <a name="locally-redundant-storage"></a>Magazyn lokalnie nadmiarowy
@@ -81,9 +98,9 @@ Usługa Azure Files obsługuje trzy opcje nadmiarowości danych: Magazyn lokalni
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-GRS.md)]
 
 ## <a name="data-growth-pattern"></a>Wzorzec wzrostu ilości danych
-Obecnie maksymalny rozmiar udziału plików platformy Azure jest wynosi 5 TiB. Ze względu na to bieżące ograniczenie podczas wdrażania udziału plików platformy Azure należy wziąć pod uwagę przewidywanego wzrostu ilości danych. Należy pamiętać, że konto usługi Azure Storage można przechowywać wiele udziałów w sumie 500 TiB przechowywane we wszystkich udziałów.
+Obecnie maksymalny rozmiar udziału plików platformy Azure jest wynosi 5 TiB. Ze względu na to bieżące ograniczenie podczas wdrażania udziału plików platformy Azure należy wziąć pod uwagę przewidywanego wzrostu ilości danych. 
 
-Istnieje możliwość synchronizowania wielu plików platformy Azure udostępnia do jednego serwera plików Windows za pomocą usługi Azure File Sync. Dzięki temu można zapewnić, że udziały plików starsze, bardzo duże, że może mieć w środowisku lokalnym, może być wprowadzana do usługi Azure File Sync. Zobacz [Planowanie wdrażania usługi Azure pliku synchronizacji](storage-files-planning.md) Aby uzyskać więcej informacji.
+Istnieje możliwość synchronizowania wielu plików platformy Azure udostępnia do jednego serwera plików Windows za pomocą usługi Azure File Sync. Dzięki temu można zapewnić, że udziały plików starsze, duże, że może mieć w środowisku lokalnym, może być wprowadzana do usługi Azure File Sync. Aby uzyskać więcej informacji, zobacz [Planowanie wdrażania usługi Azure pliku synchronizacji](storage-files-planning.md).
 
 ## <a name="data-transfer-method"></a>Metoda transferu danych
 Istnieje wiele opcji łatwy do zbiorczego transferu danych z istniejącego pliku udostępniania, takie jak udział plików lokalnych do usługi Azure Files. Kilka popularnych usług obejmują (niepełna lista):

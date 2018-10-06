@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 5910417696651cad06d6f21513e81728be4181cd
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 0e604138c35e476d1635cb695923bb7d2b83de82
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432466"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831266"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding często zadawane pytania
 
@@ -135,7 +135,7 @@ Jeśli aplikacja istniały przed LUIS jest ogólnie dostępna (GA), klucze punkt
 Aby przetransferować aplikacją usługi LUIS do innej subskrypcji platformy Azure, Eksportuj aplikacji LUIS, a następnie importować go za pomocą nowego konta. Zaktualizuj identyfikator aplikacji usługi LUIS w aplikacji klienta, który ją wywołuje. Nowa aplikacja może zwrócić LUIS nieco inne wyniki z oryginalnej aplikacji.
 
 ### <a name="how-do-i-download-a-log-of-user-utterances"></a>Jak pobrać dziennik wypowiedzi użytkowników?
-Domyślnie aplikacją usługi LUIS rejestruje wypowiedzi użytkowników. Aby pobrać dziennik wypowiedzi użytkowników, wysyłać aplikacją usługi LUIS, przejdź do **Moje aplikacje**i kliknij przycisk wielokropka (***...*** ) na liście aplikacji. Następnie kliknij przycisk **Eksportuj dzienniki punktu końcowego**. Dziennik jest formatowana jako plik wartości rozdzielanych przecinkami (CSV).
+Domyślnie aplikacją usługi LUIS rejestruje wypowiedzi użytkowników. Aby pobrać dziennik wypowiedzi użytkowników, wysyłać aplikacją usługi LUIS, przejdź do **Moje aplikacje**i wybierz aplikację. Na pasku narzędzi kontekstowych, wybierz **Eksportuj dzienniki punktu końcowego**. Dziennik jest formatowana jako plik wartości rozdzielanych przecinkami (CSV).
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>Jak wyłączyć rejestrowanie wypowiedzi
 Można wyłączyć rejestrowanie wypowiedzi użytkowników, ustawiając `log=false` w adresie URL punktu końcowego, który aplikacja kliencka używa zapytania usługi LUIS. Jednak wyłączenie rejestrowania wyłącza możliwość aplikacją usługi LUIS zasugerować wypowiedzi lub zwiększyć wydajność, który jest oparty na [aktywne uczenie](luis-concept-review-endpoint-utterances.md#what-is-active-learning). Jeśli ustawisz `log=false` ze względu na kwestie prywatności danych, nie można pobrać rekordu wyrażenia o tych użytkowników z usługi LUIS ani używać tych wypowiedzi ulepszenie aplikacji.

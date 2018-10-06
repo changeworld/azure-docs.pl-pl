@@ -1,7 +1,7 @@
 ---
 title: Temat mowy usług Cognitive Services SDK
 description: Przegląd zestawy SDK dostępne dla usługi mowy.
-titleSuffix: Microsoft Cognitive Services
+titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: v-jerkin
 ms.service: cognitive-services
@@ -9,16 +9,16 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 169d421ddccf33ac239b69ab78ca7dca0f0b8261
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c300c97691cbdd30a58342eafaf6b559a298c1db
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958419"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815217"
 ---
 # <a name="about-the-cognitive-services-speech-sdk"></a>Temat mowy usług Cognitive Services SDK
 
-Cognitive Services mowy Software Development Kit (SDK) udostępnia aplikacje natywne funkcje usługi rozpoznawania mowy, ułatwia tworzenie oprogramowania. Obecnie, zestaw SDK zapewnia dostęp do **zamiana mowy na tekst**, **tłumaczenia mowy**, i **rozpoznawanie intencji**.
+Cognitive Services mowy Software Development Kit (SDK) daje aplikacji natywnej dostęp do funkcji usługi rozpoznawania mowy, ułatwia tworzenie oprogramowania. Obecnie, zestaw SDK zapewnia dostęp do **zamiana mowy na tekst**, **tłumaczenia mowy**, i **rozpoznawanie intencji**.
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
@@ -30,17 +30,14 @@ Cognitive Services mowy Software Development Kit (SDK) udostępnia aplikacje nat
 
 Dla Windows firma Microsoft obsługuje następujące języki:
 
-* C# C++ (platformy UWP i programowi .NET): można odwołać się i używać najnowszej wersji naszych pakietu NuGet zestawu SDK rozpoznawania mowy.
-  Pakiet zawiera biblioteki klienckie 32-bitowych i 64-bitowych, a także zarządzane biblioteki (.NET).
-  Zestaw SDK można zainstalować w programie Visual Studio za pomocą narzędzia NuGet; po prostu wyszukać `Microsoft.CognitiveServices.Speech`.
+* C# C++ (platformy UWP i programowi .NET): można odwołać się i używać najnowszej wersji naszych pakietu NuGet zestawu SDK rozpoznawania mowy. Ten pakiet zawiera biblioteki klienckie 32-bitowych i 64-bitowych i bibliotek zarządzanych (.NET). Zestaw SDK można zainstalować za pomocą pakietu NuGet w programie Visual Studio. Wyszukaj **Microsoft.CognitiveServices.Speech**.
 
-* Java: Możesz odwołać się i używać najnowszej wersji naszych pakietu Maven zestaw SDK rozpoznawania mowy, który obsługuje tylko Windows x64.
-  W projekcie Maven Dodaj `https://csspeechstorage.blob.core.windows.net/maven/` jako dodatkowe repozytorium, a odwołanie `com.microsoft.cognitiveservices.speech:client-sdk:1.0.0` jako zależność. 
+* Java: Możesz odwołać się i używać najnowszej wersji naszych pakietu Maven zestaw SDK rozpoznawania mowy, który obsługuje tylko Windows x64. W projekcie Maven Dodaj `https://csspeechstorage.blob.core.windows.net/maven/` jako dodatkowe repozytorium i odwołania `com.microsoft.cognitiveservices.speech:client-sdk:0.6.0` jako zależność. 
 
 ### <a name="linux"></a>Linux
 
 > [!NOTE]
-> Obecnie obsługiwany jest tylko Ubuntu 16.04 na komputerze (x86 lub x64 dla programowania w języku C++, x64 dla platformy .NET Core i Java).
+> Obecnie obsługujemy tylko Ubuntu 16.04 na komputerze (x86 lub x64 dla programowania w języku C++ i x64 dla platformy .NET Core i Java).
 
 Upewnij się, że masz wymagany kompilator i biblioteki zainstalowane, uruchamiając następujące polecenia powłoki:
 
@@ -49,17 +46,15 @@ sudo apt-get update
 sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2
 ```
 
-* C#: Można odwołać się i używać najnowszej wersji naszych pakietu NuGet zestawu SDK rozpoznawania mowy.
-  Aby odwołać się do zestawu SDK, należy dodać następujące odwołanie do pakietu do projektu:
+* C#: Można odwołać się i używać najnowszej wersji naszych pakietu NuGet zestawu SDK rozpoznawania mowy. Aby odwołać się do zestawu SDK, należy dodać następujące odwołanie pakietu do projektu:
 
   ```xml
   <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.0.0" />
   ```
 
-* Java: Możesz odwołać się i używać najnowszej wersji naszych pakietu Maven zestaw SDK rozpoznawania mowy.
-  W projekcie Maven Dodaj `https://csspeechstorage.blob.core.windows.net/maven/` jako dodatkowe repozytorium, a odwołanie `com.microsoft.cognitiveservices.speech:client-sdk:1.0.0` jako zależność. 
+* Java: Możesz odwołać się i używać najnowszej wersji naszych pakietu Maven zestaw SDK rozpoznawania mowy. W projekcie Maven Dodaj `https://csspeechstorage.blob.core.windows.net/maven/` jako dodatkowe repozytorium i odwołania `com.microsoft.cognitiveservices.speech:client-sdk:0.6.0` jako zależność. 
 
-* C++: Pobierz zestaw SDK jako [pakietu tar](https://aka.ms/csspeech/linuxbinary) i Rozpakowywanie plików do wybranego katalogu. W poniższej tabeli przedstawiono strukturę folderu zestawu SDK.
+* C++: Pobierz zestaw SDK jako [pakietu tar](https://aka.ms/csspeech/linuxbinary) i Rozpakowywanie plików w wybranym katalogu. W poniższej tabeli przedstawiono strukturę folderu zestawu SDK:
 
   |Ścieżka|Opis|
   |-|-|
@@ -69,21 +64,21 @@ sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2
   |`lib/x64`|X64 natywnej biblioteki do łączenia się z aplikacją|
   |`lib/x86`|X86 natywnej biblioteki do łączenia się z aplikacją|
 
-  Do tworzenia aplikacji, skopiuj lub Przenieś wymagane pliki binarne (i biblioteki) do środowiska deweloperskiego i włączyć je zgodnie z potrzebami w procesie kompilacji.
+  Aby utworzyć aplikację, skopiuj lub Przenieś wymagane pliki binarne (i biblioteki) do środowiska deweloperskiego. Włączyć je zgodnie z potrzebami w procesie kompilacji.
 
 ### <a name="android"></a>Android
 
-Zestaw Java SDK dla systemu Android jest spakowany jako [AAR (biblioteka systemu Android)](https://developer.android.com/studio/projects/android-library), która obejmuje niezbędnych bibliotek, a także wymagane uprawnienia dla systemu Android dotyczące korzystania z niego.
-Znajduje się w repozytorium narzędzia Maven w `https://csspeechstorage.blob.core.windows.net/maven/` jako pakiet `com.microsoft.cognitiveservices.speech:client-sdk:1.0.0`.
-Korzystanie z pakietu z projektu w programie Android Studio, wprowadź następujące zmiany:
+Zestaw Java SDK dla systemu Android jest spakowany jako [AAR (biblioteka systemu Android)](https://developer.android.com/studio/projects/android-library), która obejmuje niezbędnych bibliotek, a także wymagane uprawnienia dla systemu Android dotyczące korzystania z niego. Znajduje się w repozytorium narzędzia Maven w `https://csspeechstorage.blob.core.windows.net/maven/` jako pakiet `com.microsoft.cognitiveservices.speech:client-sdk:1.0.0`.
 
-* Na poziomie projektu `build.gradle` plików, Dodaj następujący kod do `repository` sekcji:
+Korzystanie z pakietu z projektu w programie Android Studio, należy wprowadzić następujące zmiany:
+
+* W pliku build.gradle na poziomie projektu, Dodaj następujący kod do `repository` sekcji:
 
   ```text
   maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
   ```
 
-* Na poziomie modułu `build.gradle` plików, Dodaj następujący kod do `dependencies` sekcji:
+* W pliku build.gradle poziom modułu, Dodaj następujący kod do `dependencies` sekcji:
 
   ```text
   implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.0.0'

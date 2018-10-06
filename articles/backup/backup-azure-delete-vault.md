@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 7/6/2018
 ms.author: markgal
-ms.openlocfilehash: 4dc5b006be8599177fb908fe022a3a821b137e12
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e5bc68b55fdefc07b9764b8393ea6f4062468252
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422947"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816467"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Usuwanie magazynu usługi Recovery Services
 
@@ -58,7 +58,7 @@ Aby usunąć magazyn usługi Recovery Services, przy wymuszonego, można użyć 
 
 Aby usunąć magazyn usługi Recovery Services:
 
-1. Zaloguj się do konta platformy Azure.
+1. Zaloguj się do swojego konta platformy Azure.
 
    Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Connect-AzureRmAccount` i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 
@@ -90,6 +90,12 @@ Aby usunąć magazyn usługi Recovery Services:
    ```powershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>?api-version=2015-03-15
    ```
+   Magazyn może być pusty, aby można było usunąć. W przeciwnym razie wystąpi błąd zamieszczenie "Nie można usunąć magazynu, ponieważ istnieją zasoby w tym magazynie". Następujące polecenie pokazuje, jak usunąć kontener w ramach magazynu:
+
+   ```powershell
+   ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
+   ```
+   
 1. Zaloguj się do Twojej subskrypcji w witrynie Azure portal i sprawdź, czy magazyn zostanie usunięty.
 
 

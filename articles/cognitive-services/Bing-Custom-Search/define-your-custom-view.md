@@ -1,20 +1,21 @@
 ---
-title: 'Wyszukiwanie niestandardowe Bing: Definiowanie widoku niestandardowego | Dokumentacja firmy Microsoft'
-description: Opisuje sposób tworzenia witryn i usług wyszukiwania pionowego
+title: Zdefiniuj widok niestandardowy — Bing Custom Search
+titlesuffix: Azure Cognitive Services
+description: W tym artykule opisano sposób tworzenia witryn i usług wyszukiwania pionowego
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: 59fef9a370ca56080d06f0920ed5409c141683a4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a74e6a6a90a242d4d1b2fd71a5fc6cf949ea55cb
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980665"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815260"
 ---
 # <a name="configure-your-custom-search-experience"></a>Konfigurowanie środowiska wyszukiwania niestandardowego
 

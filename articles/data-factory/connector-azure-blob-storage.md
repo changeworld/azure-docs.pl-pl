@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 79bb3042af6a42b4a8c33e9a19c80d117c3216e7
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: ee3dafe55799c46231aa3ca7c19684d905a057de
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248860"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815430"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure Blob storage za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -47,7 +47,7 @@ Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, 
 - [Uwierzytelnianie za pomocą klucza konta](#account-key-authentication)
 - [Uwierzytelniania sygnatury dostępu współdzielonego](#shared-access-signature-authentication)
 - [Uwierzytelnianie jednostki usługi](#service-principal-authentication)
-- [Zarządzanych tożsamości do uwierzytelniania zasobów platformy Azure](#managed-service-identity-authentication)
+- [Zarządzanych tożsamości do uwierzytelniania zasobów platformy Azure](#managed-identity)
 
 >[!NOTE]
 >HDInsights, Azure Machine Learning i Azure SQL Data Warehouse PolyBase obciążenia obsługują tylko uwierzytelnianie klucza konta magazynu obiektów Blob platformy Azure.

@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/25/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: ba67acec778a48c084897095aa457e5637240a57
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 4ab3d0b74e8305d67af862020197c69b15221086
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227439"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830229"
 ---
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Dodawanie logowania firmy Microsoft do aplikacji sieci web platformy ASP.NET Core
 
@@ -29,38 +29,38 @@ ms.locfileid: "47227439"
 
 Ten przewodnik Szybki Start zawiera przykładowy kod, który demonstruje, jak zalogować się aplikacji internetowej ASP.NET Core w osobiste (hotmail.com, live.com, inne) i pracy kont służbowych z dowolnego wystąpienia usługi Azure Active Directory.
 
-![Jak działa przykładowej aplikacji wygenerowane przez ten przewodnik Szybki Start](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro.png)
+![Jak działa przykładowa aplikacja wygenerowana w tym przewodniku Szybki start](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro.png)
 
 
 > [!div renderon="docs"]
-> ## <a name="register-your-application-and-download-your-quickstart-app"></a>Zarejestruj swoją aplikację i Pobierz aplikację Szybki Start
+> ## <a name="register-your-application-and-download-your-quickstart-app"></a>Rejestrowanie aplikacji i pobieranie aplikacji Szybki start
 >
-> ### <a name="register-and-configure-your-application-and-code-sample"></a>Rejestrowanie i konfigurowanie usługi aplikacji i przykładowy kod
-> #### <a name="step-1-register-your-application"></a>Krok 1: Rejestrowanie aplikacji
+> ### <a name="register-and-configure-your-application-and-code-sample"></a>Rejestrowanie i konfigurowanie aplikacji i przykładowego kodu
+> #### <a name="step-1-register-your-application"></a>Krok 1. Rejestrowanie aplikacji
 > 
-> 1. Przejdź do [portalu rejestracji aplikacji Microsoft](https://apps.dev.microsoft.com/portal/register-app).
-> 1. Wprowadź nazwę aplikacji, upewnij się, opcja **instrukcje konfiguracji** nie jest zaznaczone, a następnie kliknij przycisk **Utwórz**.
-> 1. Kliknij przycisk `Add Platform`, a następnie wybierz `Web`.
-> 1. Upewnij się, że **Zezwalaj na niejawny przepływ** jest *zaznaczone*.
-> 1. W **adresy URL przekierowania**, wprowadź `https://localhost:3110/`.
-> 1. Przewiń w dół do dolnej części strony, a następnie kliknij przycisk **Zapisz**.
+> 1. Przejdź do [portalu rejestracji aplikacji firmy Microsoft](https://apps.dev.microsoft.com/portal/register-app).
+> 1. Wprowadź nazwę aplikacji, upewnij się, że pole wyboru **Guided Setup** (Konfiguracja z przewodnikiem) nie jest zaznaczone, a następnie kliknij przycisk **Create** (Utwórz).
+> 1. Kliknij pozycję `Add Platform`, a następnie wybierz pozycję `Web`.
+> 1. Upewnij się, że pole wyboru **Zezwalaj na niejawny przepływ** jest *zaznaczone*.
+> 1. W polu **Identyfikatory URL przekierowań** wprowadź ciąg `http://localhost:3110/`.
+> 1. Przewiń w dół do końca strony, a następnie kliknij pozycję **Zapisz**.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Konfigurowanie aplikacji w witrynie Azure portal
-> Dla przykładu kodu dla tego przewodnika Szybki Start do pracy, należy dodać adres URL odpowiedzi jako `http://localhost:3110/`.
+> #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1. Konfigurowanie aplikacji w witrynie Azure Portal
+> Aby przykład kodu z tego samouczka działał, należy jako adres URL odpowiedzi dodać adres `http://localhost:3110/`.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Ta zmiana wprowadzona dla mnie]()
+> > [Wprowadź tę zmianę automatycznie]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Już skonfigurowane](media/quickstart-v2-aspnet-core-webapp/green-check.png) aplikacja jest skonfigurowana za pomocą tego atrybutu
+> > ![Already configured](media/quickstart-v2-aspnet-core-webapp/green-check.png) (Już skonfigurowano) Twoja aplikacja została skonfigurowana za pomocą tego atrybutu
 
 #### <a name="step-2-download-your-aspnet-core-project"></a>Krok 2: Pobieranie usługi projektu platformy ASP.NET Core
 
 - [Pobieranie projektu ASP.NET Core](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/master.zip)
 
-#### <a name="step-3-configure-your-project"></a>Krok 3: Konfiguracja projektu
+#### <a name="step-3-configure-your-project"></a>Krok 3. Konfigurowanie projektu
 
-1. Wyodrębnij plik zip do folderu lokalnego (na przykład **C:\Azure-Samples**)
+1. Wyodrębnij plik zip do folderu lokalnego bliżej do folderu głównego — na przykład **C:\Azure-Samples**
 1. Jeśli używasz programu Visual Studio 2017, otwórz projekt w programie Visual Studio (opcjonalne)
 1. Edytuj **appsettings.json** i zastąp wartość `ClientId` identyfikatorem aplikacji z poziomu aplikacji, które właśnie zostało zarejestrowane:
 
@@ -68,11 +68,11 @@ Ten przewodnik Szybki Start zawiera przykładowy kod, który demonstruje, jak za
     "ClientId": "Enter_the_Application_Id_here"
     "TenantId": "common"
     ```
-1. Jeśli aplikacja jest *aplikacji z jedną dzierżawą* (przeznaczonych dla kont w bieżącym katalogu) w swojej **appsettings.json** plików, Znajdź wartość `TenantId` i Zastąp `common`za pomocą usługi **identyfikator dzierżawy** lub **nazwa dzierżawy** (na przykład contoso.microsoft.com). Możesz uzyskać nazwę dzierżawy w **strony Przegląd**.
+1. Jeśli aplikacja jest *aplikacji z jedną dzierżawą* (przeznaczonych dla kont w bieżącym katalogu) w swojej **appsettings.json** plików, Znajdź wartość `TenantId` i Zastąp `common`za pomocą usługi **identyfikator dzierżawy** lub **nazwa dzierżawy** (na przykład contoso.microsoft.com). Nazwę dzierżawy możesz uzyskać na stronie **Przegląd**.
 
 ## <a name="more-information"></a>Więcej informacji
 
-Ta sekcja zawiera omówienie kodu jest wymagane do logowania użytkowników. Może to być przydatne zrozumieć, jak działa kod, główne argumenty, a także jeśli chcesz dodać logowanie do istniejącej aplikacji platformy ASP.NET Core.
+Ta sekcja zawiera omówienie kodu wymaganego do logowania użytkowników. Może to być przydatne zrozumieć, jak działa kod, główne argumenty, a także jeśli chcesz dodać logowanie do istniejącej aplikacji platformy ASP.NET Core.
 
 ### <a name="startup-class"></a>Klasa początkowa
 
@@ -112,12 +112,12 @@ public void Configure(string name, OpenIdConnectOptions options)
 > |Lokalizacja  |  |
 > |---------|---------|
 > |ClientId     |Identyfikator aplikacji z aplikacji zarejestrowany w witrynie Azure portal|
-> |Urząd | Użytkownik fo punktu końcowego usługi STS do uwierzytelniania. Zazwyczaj https://login.microsoftonline.com/{tenant}/v2.0 dla chmury publicznej, gdzie {dzierżawa} jest nazwą dzierżawy, identyfikator dzierżawy lub *wspólnej* dla odwołania do wspólnego punktu końcowego (używane dla aplikacji wielodostępnych)|
+> |Urząd | Użytkownik fo punktu końcowego usługi STS do uwierzytelniania. Zazwyczaj jest to adres https://login.microsoftonline.com/{tenant}/v2.0 dla chmury publicznej, gdzie parametr {tenant} jest nazwą dzierżawy, identyfikatorem dzierżawy lub ma wartość *common* na potrzeby odwołania do wspólnego punktu końcowego (używany dla aplikacji z wieloma dzierżawami)|
 > |UseTokenLifetime |Wskazuje, że plik cookie uwierzytelniania powinien odpowiadać okresowi istnienia tokenu uwierzytelniania|
 > |RequireHttpsMetadata     |Wymaganie protokołu HTTPS na adres metadanych lub urzędu. Zaleca się zmienić tę wartość na `True`|
-> |Element TokenValidationParameters.     | Lista parametrów weryfikacji tokenu. W tym przypadku `ValidateIssuer` ustawiono `false` do wskazania, że może akceptować logowania z dowolnym osobiste lub konta służbowego lub szkolnego|
+> |Element TokenValidationParameters.     | Lista parametrów na potrzeby weryfikacji tokenu. W tym przypadku `ValidateIssuer` ustawiono `false` do wskazania, że może akceptować logowania z dowolnym osobiste lub konta służbowego lub szkolnego|
 
-### <a name="initiate-an-authentication-challenge"></a>Zainicjuj żądanie uwierzytelniania
+### <a name="initiate-an-authentication-challenge"></a>Inicjowanie żądania uwierzytelnienia
 
 Można wymusić użytkownikowi zalogowanie, wysyłając żądanie uwierzytelnienia w kontrolerze, podobnie jak w **AccountController.cs**:
 

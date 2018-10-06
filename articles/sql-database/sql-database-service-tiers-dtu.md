@@ -1,6 +1,6 @@
 ---
 title: Warstwy usługi SQL Database platformy Azure — jednostek DTU | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat warstw usług dla pojedynczej puli baz danych i do rozmiarów wystąpień obliczeniowych i rozmiaru magazynu.
+description: Więcej informacji na temat warstw usług dla pojedynczych i puli baz danych rozmiarów wystąpień obliczeniowych i rozmiaru magazynu.
 services: sql-database
 ms.service: sql-database
 ms.subservice: ''
@@ -11,22 +11,25 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 2f9362a6d771df3cdb11855844025bc8d9ea732e
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/04/2018
+ms.openlocfilehash: a9e274cea7543fc3361b1f2d0a60fc18176b6248
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162376"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831317"
 ---
-# <a name="choosing-a-dtu-based-service-tier-compute-size-and-storage-resources"></a>Wybieranie warstwy usług oparte na jednostkach DTU, obliczenia rozmiaru i zasobów magazynu 
+# <a name="dtu-based-service-tiers"></a>Warstwy usług oparte na jednostkach DTU
 
-Warstwy usługi są zróżnicowane według szeroką gamę rozmiarów wystąpień obliczeniowych o stałą ilość miejsca do magazynowania, ustalony okres przechowywania kopii zapasowych i stałej cenie. Wszystkie warstwy usługi oferują elastyczność zmiany rozmiarów wystąpień obliczeniowych bez przestojów. Pojedyncze bazy danych i pul elastycznych są rozliczane godzinowo na podstawie warstwy usługi i obliczeń rozmiaru.
+Warstwy usług oparte na jednostkach DTU są zróżnicowane według szeroką gamę rozmiarów wystąpień obliczeniowych o stałą ilość miejsca do magazynowania, ustalony okres przechowywania kopii zapasowych i stałej cenie. Wszystkie warstwy usługi oferują elastyczność zmiany rozmiarów wystąpień obliczeniowych bez przestojów. Pojedyncze bazy danych i pul elastycznych są rozliczane godzinowo na podstawie warstwy usługi i obliczeń rozmiaru.
 
 > [!IMPORTANT]
-> Wystąpienie zarządzane SQL Database, obecnie w publicznej wersji zapoznawczej nie obsługuje model zakupu jednostek DTU. Aby uzyskać więcej informacji, zobacz [wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance.md). 
+> Wystąpienie zarządzane SQL Database, obecnie w publicznej wersji zapoznawczej nie obsługuje model zakupu jednostek DTU. Aby uzyskać więcej informacji, zobacz [wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance.md).
 
-## <a name="choosing-a-dtu-based-service-tier"></a>Wybieranie warstwy usług oparte na jednostkach DTU
+> [!NOTE]
+> Aby uzyskać informacji na temat warstw usług opartych na rdzeniach wirtualnych, zobacz [warstwy usług oparte na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md). Aby dowiedzieć się, jak rozróżnianie warstwy usług oparte na jednostkach DTU i warstwy usług oparte na rdzeniach wirtualnych, zobacz [usługi Azure SQL Database, zakup modeli](sql-database-service-tiers.md).
+
+## <a name="compare-the-dtu-based-service-tiers"></a>Porównaj warstwy usług oparte na jednostkach DTU
 
 Wybieranie warstwy usług zależy przede wszystkim ciągłości biznesowej, magazynu i wymagań dotyczących wydajności.
 ||Podstawowa|Standardowa (Standard)|Premium|
@@ -43,7 +46,7 @@ Wybieranie warstwy usług zależy przede wszystkim ciągłości biznesowej, maga
 
 ## <a name="single-database-dtu-and-storage-limits"></a>Limity liczby jednostek DTU i magazynu pojedynczej bazy danych
 
-Obliczenia rozmiarów są wyrażone w jednostkach transakcji bazy danych (Dtu) dla pojedynczych baz danych i jednostek transakcji elastic Database (Edtu) dla pul elastycznych. Aby uzyskać więcej informacji na temat jednostek Dtu i Edtu, zobacz [co to są jednostki Dtu i Edtu](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)?
+Obliczenia rozmiarów są wyrażone w jednostkach transakcji bazy danych (Dtu) dla pojedynczych baz danych i jednostek transakcji elastic Database (Edtu) dla pul elastycznych. Aby uzyskać więcej informacji na temat jednostek Dtu i Edtu, zobacz [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers.md#dtu-based-purchasing-model)?
 
 ||Podstawowa|Standardowa (Standard)|Premium|
 | :-- | --: | --: | --: | --: |
@@ -76,14 +79,17 @@ Obliczenia rozmiarów są wyrażone w jednostkach transakcji bazy danych (Dtu) d
 Właściwości fizyczne (procesor CPU, pamięć, we/wy) powiązanych z Każda miara jednostek DTU są kalibrowane testów porównawczych, która symuluje obciążenie bazy danych rzeczywistych.
 
 ### <a name="correlating-benchmark-results-to-real-world-database-performance"></a>Korelowanie wyników testów porównawczych wydajności bazy danych rzeczywistych
+
 Jest ważne dowiedzieć się, że wszystkie testy porównawcze są reprezentatywne ale wskazuje tylko. Stawki za transakcje osiągane przy użyciu aplikacji testu porównawczego nie będzie taka sama, jak te, które mogą być osiągnięte z innymi aplikacjami. Testu porównawczego składa się z kolekcją innej transakcji, które typy uruchamiać schemat zawierający szeroką gamę tabele i typy danych. Podczas testu porównawczego skorzysta z tego samego podstawowe operacje, które są wspólne dla wszystkich obciążeń OLTP, nie reprezentuje dowolnej klasy określonej bazy danych lub aplikacji. Cel testu porównawczego jest zapewnienie uzasadnione przewodnik względnej wydajności bazy danych, która może być oczekiwany podczas skalowania w górę lub w dół od rozmiarów wystąpień obliczeniowych. W rzeczywistości bazy danych o różnych rozmiarach i złożoności, występują różne kombinacje obciążeń i będzie odpowiadać na różne sposoby. Na przykład aplikacji intensywnie korzystających z operacji We/Wy może wystąpić wcześniej progów we/wy lub aplikacji intensywnie korzystających z procesora CPU mogą występować limity procesora CPU, wcześniej. Nie ma żadnej gwarancji, które dowolnej określonej bazy danych będzie skalowane w taki sam sposób jak testów porównawczych, zgodnie z rosnącym obciążeniem.
 
 Testu wydajności i jego metody są opisane bardziej szczegółowo poniżej.
 
 ### <a name="benchmark-summary"></a>Podsumowanie testu porównawczego
+
 ASDB mierzy wydajność operacje podstawowej bazy danych, najczęściej występujące w obciążeń OLTP przetwarzania transakcji online. Mimo że testu porównawczego zaprojektowano z chmury obliczeniowej w uwadze, schemat bazy danych, wypełnianie danymi, a transakcje zostały zaprojektowane, aby być szeroko reprezentatywne podstawowych elementów, które są najczęściej używane w obciążeń OLTP.
 
 ### <a name="schema"></a>Schemat
+
 Schemat jest przeznaczona do ma za mało różnorodność i złożoność do obsługi szerokiej gamy operacji. Testu porównawczego działa na bazie danych składające się z sześciu tabel. Tabele można podzielić na trzy kategorie: stałym rozmiarze, skalowanie i powiększania. Istnieją dwie tabele stałym rozmiarze; trzy tabele skalowania; i jedna tabela rosnącą. Tabele o stałym rozmiarze ma stałą liczbę wierszy. Skalowanie tabele mają Kardynalność, jest proporcjonalna do wydajności bazy danych, ale nie zmienia się podczas testów porównawczych. Rosnąca tabeli ma rozmiar tak, jak skalowanie tabeli na ładowania początkowego, ale zmiany Kardynalność w trakcie uruchamiania testu porównawczego wiersze są wstawiane i usunięte.
 
 Schemat obejmuje różne typy danych, w tym liczba całkowita, numeryczne, znak i daty/godziny. Schemat zawiera klucze podstawowe i pomocnicze, ale nie ma żadnych kluczy obcych — oznacza to, że istnieją nie ograniczenia integralności referencyjnej między tabelami.
@@ -93,6 +99,7 @@ Program generowania danych generuje dane dla początkowej bazy danych. Liczba ca
 Baza danych ma rozmiar, oparte na "współczynnik skali". Współczynnik skali (skrót SF) określa Kardynalność skalowanie i rozwijaniu tabel. Zgodnie z poniższym opisem w sekcji Użytkownicy i Pacing, rozmiaru bazy danych, liczby użytkowników i maksymalną wydajność, wszystkie skalowanie proporcjonalnie do siebie nawzajem.
 
 ### <a name="transactions"></a>Transakcje
+
 Obciążenia składa się z dziewięciu typów transakcji, jak pokazano w poniższej tabeli. Każda transakcja jest przeznaczony do wyróżnienia z określonym zestawem właściwości systemu w bazie danych systemu i aparat sprzęt, wysoki kontrast z innych transakcji. Takie podejście ułatwia ocenę wpływu różnych składników na ogólną wydajność. Na przykład "Odczytu Heavy" transakcji tworzy znaczna liczba operacji odczytu z dysku.
 
 | Typ transakcji | Opis |
@@ -108,6 +115,7 @@ Obciążenia składa się z dziewięciu typów transakcji, jak pokazano w poniż
 | Obciążenie procesora CPU |WYBÓR; w pamięci. stosunkowo duże obciążenie procesora CPU; tylko do odczytu |
 
 ### <a name="workload-mix"></a>Różne obciążenia
+
 Transakcje są wybierane losowo w ważona dystrybucji przy użyciu następujących mieszanego ogólnej. Ogólny mieszanego ma współczynnik odczyt/zapis w około 2:1.
 
 | Typ transakcji | % mieszanego |
@@ -123,38 +131,41 @@ Transakcje są wybierane losowo w ważona dystrybucji przy użyciu następujący
 | Obciążenie procesora CPU |10 |
 
 ### <a name="users-and-pacing"></a>Użytkownicy i rozkład
+
 Obciążenia porównawczego jest uzyskiwana z narzędziem, które prześle transakcji w zestawie połączeń, aby symulować liczba równoczesnych użytkowników. Mimo że wszystkie połączenia i transakcji są generowane maszyny, dla uproszczenia nazywamy tych połączeń "Użytkownicy". Mimo że każdy użytkownik działa niezależnie od innych użytkowników, wszyscy użytkownicy wykonania tego samego cyklu kroki opisane poniżej:
 
 1. Nawiązać połączenia z bazą danych.
 2. Powtórz sygnalizowane, aby zakończyć pracę:
-   * Wybierz transakcji (z ważona dystrybucja).
-   * Przeprowadź wybraną transakcję i pomiar czasu odpowiedzi.
-   * Poczekaj, aż pacing opóźnienia.
+   - Wybierz transakcji (z ważona dystrybucja).
+   - Przeprowadź wybraną transakcję i pomiar czasu odpowiedzi.
+   - Poczekaj, aż pacing opóźnienia.
 3. Zamknij połączenie z bazą danych.
 4. Zakończ.
 
 Pacing opóźnienie (w kroku 2c) jest wybranych losowo, ale z dystrybucją, która ma średniej wersji 1.0 sekundy. Ten sposób każdy użytkownik średnio wygenerować co najwyżej jednej transakcji na sekundę.
 
 ### <a name="scaling-rules"></a>Zasady skalowania
+
 Liczba użytkowników, zależy od rozmiaru bazy danych (w jednostkach współczynnik skali). Brak jednego użytkownika dla każdej z pięciu jednostek współczynnik skali. Ze względu na opóźnienie pacing jeden użytkownik może generować co najwyżej jednej transakcji na sekundę, średnio.
 
 Na przykład-współczynnik skali 500 (SF = 500) bazy danych będzie mieć 100 użytkowników i osiągnąć maksymalny stopień 100 TPS. Można dostarczać TPS wyższe szybkości wymaga większej liczby użytkowników i większe bazy danych.
 
 ### <a name="measurement-duration"></a>Pomiar czasu trwania
+
 Nieprawidłowa uruchomienia testu porównawczego wymaga stabilnym pomiaru czas trwania wynoszący co najmniej jedną godzinę.
 
 ### <a name="metrics"></a>Metryki
+
 Kluczowe metryki w uruchomionym teście są przepływności i czasu odpowiedzi.
 
-* Przepływność jest miary wydajności podstawowych w uruchomionym teście. Przepływność jest zgłaszany w transakcji na jednostkę of-time, inwentaryzacji wszystkich typów transakcji.
-* Czas odpowiedzi jest miarą przewidywalność wydajności. Ograniczenie czasu odpowiedzi zależy od klasy usług z wyższej klasy usługę, której bardziej rygorystyczne wymagania dotyczące czasu reakcji, jak pokazano poniżej.
+- Przepływność jest miary wydajności podstawowych w uruchomionym teście. Przepływność jest zgłaszany w transakcji na jednostkę of-time, inwentaryzacji wszystkich typów transakcji.
+- Czas odpowiedzi jest miarą przewidywalność wydajności. Ograniczenie czasu odpowiedzi zależy od klasy usług z wyższej klasy usługę, której bardziej rygorystyczne wymagania dotyczące czasu reakcji, jak pokazano poniżej.
 
 | Klasa usługi | Pomiar przepływności | Wymagania dotyczące czasu odpowiedzi |
 | --- | --- | --- |
 | Premium |Transakcje na sekundę |95. percentyl na 0,5 sekund |
 | Standardowa (Standard) |Transakcje na minutę |90. percentyla w wersji 1.0 w ciągu kilku sekund |
 | Podstawowa |Transakcje na godzinę |80. percentylu, w sekundach 2.0 |
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 

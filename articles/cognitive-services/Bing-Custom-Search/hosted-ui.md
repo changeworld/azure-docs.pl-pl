@@ -1,20 +1,21 @@
 ---
-title: 'Bing Custom Search: Wyszukiwanie w witrynie | Dokumentacja firmy Microsoft'
-description: W tym artykule opisano sposób konfigurowania hostowanej interfejsu użytkownika
+title: Lokacji wyszukiwania, użyj obsługiwanego interfejsu użytkownika usługa Bing Custom Search
+titlesuffix: Azure Cognitive Services
+description: W tym artykule opisano sposób konfigurowania wyszukiwania niestandardowego Bing hostowanych interfejsu użytkownika.
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: 2aec8ba969fb639f2d785a429441f6ed4bbf7dfb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 77845cb60dac707326acdb08b0198f8725a36f62
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987683"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48813978"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Konfigurowanie środowiska obsługiwanego interfejsu użytkownika
 

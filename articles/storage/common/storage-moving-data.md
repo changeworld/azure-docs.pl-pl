@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/26/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 1df237a65a8b5312b20de19a99399b3a3dd075ff
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 76da33a74ad95d7f074bc4efd3a8d9f97c19d612
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049614"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830316"
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>Przenoszenie danych do i z usługi Azure Storage
 Jeśli chcesz przenieść lokalne dane do usługi Azure Storage (lub odwrotnie), istnieją na różne sposoby, aby to zrobić. Podejście, które najlepiej odpowiadający Ci będzie zależeć od danego scenariusza. Ten artykuł będzie zawiera krótkie omówienie różnych scenariuszy i odpowiednie oferty dla każdej z nich.
@@ -38,7 +38,7 @@ Jeśli wymagają lub wolisz tworzyć za pomocą narzędzia wiersza polecenia (np
 ### <a name="azcopy"></a>Narzędzie AzCopy
 AzCopy to narzędzie wiersza polecenia zapewniające o wysokiej wydajności kopiowania danych z usługi Azure Storage. Można także skopiować dane na koncie magazynu lub między różnych kont magazynu. Narzędzie AzCopy jest dostępny na [Windows](storage-use-azcopy.md) i [Linux](storage-use-azcopy-linux.md).
 
-Zobacz [Transfer danych za pomocą wiersza polecenia Azcopy](storage-use-azcopy.md) lub [transferu danych za pomocą narzędzia AzCopy w systemie Linux](storage-use-azcopy-linux.md) Aby dowiedzieć się więcej.
+Aby dowiedzieć się, jak przeprowadzić migrację danych lokalnych do usługi Azure Storage, zobacz [samouczek: Migrowanie danych lokalnych do magazynu w chmurze za pomocą narzędzia AzCopy](storage-use-azcopy-migrate-on-premises-data.md).
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 Azure PowerShell to moduł udostępniający polecenia cmdlet służące do zarządzania usługami na platformie Azure. Jest to język skryptów i powłoka wiersza polecenia oparta na zadaniach zaprojektowane pod kątem administrowania systemem.

@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: bbf94d53b24c4087e7212d56bd51131034e39212
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 5bfc11fdf6cbde9c9eed131bbcc7f7ab1dfbc442
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042991"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830697"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Rozwiązywanie problemów z wydajnością usługi Azure SQL Database dzięki inteligentnej analizie
 
@@ -237,7 +237,7 @@ Aby uzyskać więcej informacji, zobacz [wprowadzenie do tabel zoptymalizowanych
 
 Wzorzec ten wykrywalny wydajności wskazuje pogorszenie Bieżąca wydajność obciążeń bazy danych w porównaniu do poprzednich 7 dniowy linii bazowej. Jest ono spowodowane brakiem dostępnych jednostek Dtu w puli elastycznej w Twojej subskrypcji. 
 
-Zasoby w bazie danych SQL są zwykle nazywane [zasobów jednostek DTU](sql-database-service-tiers.md#what-are-database-transaction-units-dtus), które składają się z mieszany pomiar procesora CPU i we/wy zasobów (danych i dziennika transakcji we/wy). [Zasoby platformy Azure puli elastycznej](sql-database-elastic-pool.md) są używane jako pula zasobów eDTU dostępnych współużytkowane przez wiele baz danych dla celów skalowania. W przypadku zasobów eDTU dostępnych w elastycznej puli nie są wystarczająco duże, aby obsługiwać wszystkie bazy danych w puli, problem z wydajnością mała liczba pul elastycznych jednostek DTU została wykryta przez system.
+Zasoby w bazie danych SQL są zwykle nazywane [zasobów jednostek DTU](sql-database-service-tiers.md#dtu-based-purchasing-model), które składają się z mieszany pomiar procesora CPU i we/wy zasobów (danych i dziennika transakcji we/wy). [Zasoby platformy Azure puli elastycznej](sql-database-elastic-pool.md) są używane jako pula zasobów eDTU dostępnych współużytkowane przez wiele baz danych dla celów skalowania. W przypadku zasobów eDTU dostępnych w elastycznej puli nie są wystarczająco duże, aby obsługiwać wszystkie bazy danych w puli, problem z wydajnością mała liczba pul elastycznych jednostek DTU została wykryta przez system.
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 
