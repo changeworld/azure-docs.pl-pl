@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 890a6b9dd1ef63fcc59984686b2d6dec773cdb52
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 8ba1286f7283a1062b2b94d58c2439e8461c1573
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391848"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48817130"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurowanie ustawień usługi Azure Multi-Factor Authentication
 
@@ -111,17 +111,33 @@ Przed rozpoczęciem należy pamiętać o następujących ograniczeniach:
 * Limit rozmiaru pliku to 5 MB.
 * Uwierzytelnianie wiadomości powinien być krótszy niż 20 sekund. Komunikaty, które są dłuższe niż 20 sekund może spowodować, że weryfikacja nie powiedzie się. Użytkownik może nie odpowiadać przed zakończeniem komunikat i weryfikacja upłynie limit czasu.
 
+### <a name="custom-message-language-behavior"></a>Zachowanie języka niestandardowego komunikatu
+
+Podczas odtwarzania wiadomości głosowej niestandardowych dla użytkownika, język wiadomości zależy od od następujących czynników:
+
+* Język bieżącego użytkownika.
+   * Język, wykrytych przez przeglądarkę użytkownika.
+   * Inne scenariusze uwierzytelniania może zachowywać się inaczej.
+* Język dostępnych niestandardowych komunikatów o.
+   * Ten język jest wybierany przez administratora, gdy niestandardowy komunikat zostanie dodany.
+
+Na przykład, jeśli istnieje tylko jeden niestandardowy komunikat o języku niemieckim:
+
+* Użytkownik, który jest uwierzytelniany w języku niemieckim usłyszysz niestandardowy komunikat niemieckim.
+* Użytkownik, który jest uwierzytelniany w języku angielskim usłyszysz wiadomość standard w języku angielskim.
+
 ### <a name="set-up-a-custom-message"></a>Skonfigurować niestandardowy komunikat
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
-2. Przejdź do **usługi Azure Active Directory** > **serwera MFA** > **ustawień połączenia telefonicznego**.
+1. Przejdź do **usługi Azure Active Directory** > **serwera MFA** > **ustawień połączenia telefonicznego**.
 
    ![Rekord telefon niestandardowy wiadomości](./media/howto-mfa-mfasettings/phonecallsettings.png)
 
-3. Wybierz **Dodaj powitanie**.
-4. Wybierz typ pozdrowienia. Wybierz język.
-5. Wybierz plik MP3 lub wav dźwiękowego do przekazania.
-6. Wybierz pozycję **Dodaj**.
+1. Wybierz **Dodaj powitanie**.
+1. Wybierz typ pozdrowienia. 
+1. Wybierz język.
+1. Wybierz plik MP3 lub wav dźwiękowego do przekazania.
+1. Wybierz pozycję **Dodaj**.
 
 ## <a name="caching-in-azure-multi-factor-authentication"></a>Buforowanie w usłudze Azure Multi-Factor Authentication
 

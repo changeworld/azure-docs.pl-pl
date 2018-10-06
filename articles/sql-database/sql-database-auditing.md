@@ -7,17 +7,17 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: giladmit
-ms.author: giladm
+author: ronitr
+ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/10/2018
-ms.openlocfilehash: bf6757e4a31cf072a5d7395223df588be7ec49c2
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 99a22c7bd535b8ca020e08004ebbf6423a734a0b
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248486"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816994"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 Inspekcji usługi Azure SQL database śledzi zdarzenia bazy danych i zapisuje je do inspekcji logowania na koncie magazynu platformy Azure. Inspekcja również:

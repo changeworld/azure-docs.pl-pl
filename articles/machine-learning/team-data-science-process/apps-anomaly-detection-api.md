@@ -1,6 +1,6 @@
 ---
-title: Azure Machine Learning wykrywania anomalii interfejsu API | Dokumentacja firmy Microsoft
-description: Interfejs API wykrywania anomalii to przykład skompilowanej za pomocą programu Microsoft Azure Machine Learning wykrycia anomalii w czasie danych serii za pomocą wartości liczbowe, które są równomiernie rozłożone w czasie.
+title: Usługi Azure Machine Learning interfejs API wykrywania anomalii | Dokumentacja firmy Microsoft
+description: Interfejs API wykrywania anomalii jest przykładem utworzonych za pomocą programu Microsoft Azure Machine Learning, która wykrywa anomalie w danych szeregów czasowych za pomocą wartości liczbowe, które są równomiernie rozłożone w czasie.
 services: machine-learning
 documentationcenter: ''
 author: alokkirpal
@@ -15,53 +15,53 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/05/2017
 ms.author: alok
-ms.openlocfilehash: 9f1f3c2c808558124548008927219191469a412b
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: fa8a1f6ae70b4bbb078e25dcf109f53d77aa3b21
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836470"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815699"
 ---
-# <a name="machine-learning-anomaly-detection-api"></a>Wykrywanie anomalii interfejsu API uczenia maszynowego
+# <a name="machine-learning-anomaly-detection-api"></a>W usłudze Machine Learning interfejs API wykrywania anomalii
 ## <a name="overview"></a>Przegląd
-[Interfejs API wykrywania anomalii](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) przykład skompilowanej za pomocą usługi Azure Machine Learning, która wykrywa anomalii w czasie danych serii za pomocą wartości liczbowe, które są równomiernie rozłożone w czasie.
+[Interfejs API wykrywania anomalii](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) znajduje się przykład utworzonych za pomocą usługi Azure Machine Learning, która wykrywa anomalie w danych szeregów czasowych za pomocą wartości liczbowe, które są równomiernie rozłożone w czasie.
 
-Ten interfejs API może wykryć następujące typy nietypowe wzorce w danych w serii. czas:
+Ten interfejs API może wykryć następujące rodzaje nietypowe wzorce w danych szeregów czasowych:
 
-* **Dodatnie i ujemne trendów**: na przykład po monitorowanie wykorzystania pamięci w przypadku komputerów trendów może być przydatne jako może być świadczy o przeciek pamięci
-* **Zmiany w zakresie dynamicznym wartości**: na przykład w przypadku monitorowania wyjątków zgłaszanych przez usługi w chmurze, wszelkie zmiany w zakresie dynamicznym wartości może wskazywać niestabilności kondycji usługi, i
-* **Wzrósł i DIP**: na przykład w przypadku monitorowania, liczba niepowodzeń logowania w usłudze lub liczbę wyewidencjonowań w witrynie handlu elektronicznego, nagłego lub DIP może wskazywać nietypowe zachowanie.
+* **Trendy pozytywne i negatywne**: na przykład podczas monitorowania użycia pamięci w przypadku komputerów trend wzrostowy może być przedmiotem zainteresowania as może być wskazuje przeciek pamięci
+* **Zmiany w dynamicznym zakresie wartości**: na przykład podczas monitorowania wyjątki generowane przez usługę w chmurze, wszystkie zmiany wprowadzone w dynamicznym zakresie wartości może wskazywać niestabilność kondycję usługi, i
+* **Gwałtowne wzrosty i spadki**: na przykład podczas monitorowania liczby nieudanych prób zalogowania w usłudze lub liczbę wyewidencjonowań w witrynie handlu elektronicznego, wzrostów lub spadku może wskazywać nietypowego zachowania.
 
-Te machine learning detektory śledzić takie zmiany wartości przez raport i czas zmiany zachodzące w ich wartości jako wyniki anomalii. Nie wymaga strojenia próg ad hoc i wyniki można kontrolować szybkość dodatnią wartość false. Wykrywanie anomalii interfejsu API jest przydatne w kilku scenariuszach, takich jak monitorowanie usługi poprzez śledzenie wskaźników KPI w czasie, monitorowania użycia za pomocą metryk, takich jak liczbę wyszukiwań, liczby kliknięć, monitorowanie wydajności za pośrednictwem liczników, takie jak procesor CPU, pamięci odczytuje plik itp. wraz z upływem czasu.
+Detektory learning te maszyny śledzić takie zmiany w wartościach przez raport i czas zmiany zachodzące w ich wartości jako wyniki anomalii. Nie wymaga to dostosowywania progu ad hoc i ich oceny może służyć do kontrolowania wyników fałszywie dodatnich. Wykrywanie anomalii, interfejs API jest przydatne w kilku scenariuszach, takich jak monitorowanie usług, śledząc kluczowe wskaźniki wydajności wraz z upływem czasu, monitorowania użycia za pomocą metryk, takich jak Liczba wyszukiwań, liczby kliknięć, monitorowanie wydajności za pośrednictwem liczników, takich jak pamięć, procesor CPU, odczytuje plik itp. wraz z upływem czasu.
 
-Wykrywanie anomalii oferty jest dostarczany z przydatnych narzędzi ułatwiających rozpoczęcie pracy.
+Oferta wykrywania anomalii jest dostarczany z przydatnymi narzędziami, które ułatwią Ci rozpoczęcie pracy.
 
-* [Aplikacji sieci web](http://anomalydetection-aml.azurewebsites.net/) pomaga ocenić i wizualizować wyniki wykrywania anomalii interfejsów API na podstawie danych.
+* [Aplikacji sieci web](http://anomalydetection-aml.azurewebsites.net/) pomoże Ci ocenić i wizualizowania wyników wykrywania anomalii interfejsów API na podstawie posiadanych danych.
 
 > [!NOTE]
-> Spróbuj **rozwiązania IT anomalii Insights** obsługiwane przez [tego interfejsu API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)
+> Spróbuj **rozwiązania IT Anomaly Insights** działającemu [tego interfejsu API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)
 > 
-> Aby uzyskać to kompleksowe rozwiązania wdrożone do subskrypcji platformy Azure <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank"> **zacznij tutaj >**</a>
+> Aby uzyskać to kompleksowe rozwiązanie wdrożone do subskrypcji platformy Azure <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank"> **Szybki Start >**</a>
 > 
 >
 
-## <a name="api-deployment"></a>Wdrażania interfejsu API
-Aby korzystać z interfejsu API, należy ją wdrożyć do Twojej subskrypcji platformy Azure, w którym będzie obsługiwana jako usługi sieci web uczenie maszynowe Azure.  Można to zrobić z [galerii Azure AI](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2).  Będzie to wdrożenie dwóch usług sieci Web uczenie maszynowe Azure (i ich powiązane zasoby) do subskrypcji platformy Azure — jeden do wykrywania anomalii z wykrywaniem sezonowości, a drugi bez wykrywania sezonowości.  Po zakończeniu wdrożenia będzie mógł zarządzać swoje interfejsy API z [usług sieci web uczenie maszynowe Azure](https://services.azureml.net/webservices/) strony.  Na tej stronie można znaleźć z punktami końcowymi, klucze interfejsu API, a także przykładowy kod wywołanie interfejsu API.  Bardziej szczegółowe informacje są dostępne [tutaj](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice).
+## <a name="api-deployment"></a>Wdrażanie interfejsu API
+Aby można było używać interfejsu API, należy wdrożyć je do subskrypcji platformy Azure, w którym będzie obsługiwana jako usługi sieci web Azure Machine Learning.  Można to zrobić z [galerii Azure AI](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2).  Wdroży to dwie usługi sieci Web Azure ml (i ich powiązane zasoby) do subskrypcji platformy Azure — jeden dla wykrywanie anomalii przy użyciu wykrywania sezonowości i jedną bez wykrycia sezonowość.  Po zakończeniu wdrożenia można zarządzać z interfejsów API [usług sieci web Azure ml](https://services.azureml.net/webservices/) strony.  Na tej stronie można znaleźć swoje lokalizacje punktów końcowych, klucze interfejsu API, a także przykładowego kodu dla wywołania interfejsu API.  Bardziej szczegółowe instrukcje są dostępne [tutaj](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice).
 
 ## <a name="scaling-the-api"></a>Skalowanie interfejsu API
-Domyślnie wdrożenia mają bezpłatne i testowania plan rozliczeniowy obejmującej 1000 transakcji miesięcznie i obliczeń 2 godziny/miesiąc.  Można uaktualnić do innego planu, zgodnie z potrzebami.  Nie są dostępne informacje o cenach różne plany [tutaj](https://azure.microsoft.com/pricing/details/machine-learning/) w obszarze "Cennik produkcji interfejsu API sieci Web".
+Domyślnie wdrożenie będzie bezpłatne tworzenie i testowanie planu rozliczeniowego zawierającego 1000 transakcji miesięcznie i obliczeń 2 godz. / miesiąc.  Można uaktualnić do innego planu, zgodnie z potrzebami.  Dostępne są szczegółowe informacje na temat cen różne plany [tutaj](https://azure.microsoft.com/pricing/details/machine-learning/) w obszarze "Cennik produkcyjnego interfejsu API sieci Web".
 
 ## <a name="managing-aml-plans"></a>Zarządzanie AML plany 
-Możesz zarządzać planu rozliczeniowego [tutaj](https://services.azureml.net/plans/).  Nazwa planu będzie opierać się na nazwę grupy zasobów, wybrana podczas wdrażania interfejsu API, a także ciąg, który jest unikatowy dla Twojej subskrypcji.  Instrukcje dotyczące uaktualniania planu są dostępne [tutaj](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice) w sekcji "Zarządzanie planami rozliczeń".
+Możesz zarządzać planem rozliczeniowym [tutaj](https://services.azureml.net/plans/).  Nazwa planu będzie zależeć od nazwy grupy zasobów, który został wybrany podczas wdrażania interfejsu API, a także ciąg, który jest unikatowy dla Twojej subskrypcji.  Dostępne są instrukcje dotyczące sposobu uaktualnić swój plan [tutaj](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice) w sekcji "Zarządzanie plany rozliczeniowe".
 
 ## <a name="api-definition"></a>Definicja interfejsu API
-Usługa sieci web udostępnia interfejs API opartego na interfejsie REST za pośrednictwem protokołu HTTPS, które mogą być używane w różnych sposobów, łącznie z sieci web lub aplikacji mobilnej, R, Python, Excel, itp.  Wysyłanie danych serii czas do tej usługi za pośrednictwem wywołania interfejsu API REST i uruchomieniu kombinacji typów anomalii trzech opisanych poniżej.
+Usługa sieci web udostępnia interfejs API oparty na protokole REST przy użyciu protokołu HTTPS, które mogą być używane na różne sposoby, w tym sieci web lub aplikacji mobilnej, R, Python, Excel, itp.  Wysyłanie danych szeregów czasowych do tej usługi za pośrednictwem wywołania interfejsu API REST i uruchomieniu kombinacji typów anomalii trzy opisane poniżej.
 
 ## <a name="calling-the-api"></a>Wywołanie interfejsu API
-Aby można było wywołać interfejs API, należy znać lokalizacji punktu końcowego i klucz interfejsu API.  Oba te, wraz z przykładowy kod wywołanie interfejsu API, są dostępne z [usług sieci web uczenie maszynowe Azure](https://services.azureml.net/webservices/) strony.  Przejdź do żądanego interfejsu API, a następnie kliknij kartę "Consume", aby je znaleźć.  Należy pamiętać, że można wywołać interfejsu API jako interfejsu API programu Swagger (tj. z parametru adresu URL `format=swagger`) lub jako nie - interfejsu API programu Swagger (tzn. bez `format` parametr adresu URL).  Przykładowy kod w formacie struktury Swagger.  Poniżej jest przykładowe żądanie i odpowiedź w formacie bez struktury Swagger.  Te przykłady są do punktu końcowego sezonowości.  Punkt końcowy z systemem innym niż sezonowości jest podobne.
+Aby można było wywołać interfejs API, należy znać lokalizację punktu końcowego i klucz interfejsu API.  Oba te, wraz z przykładowego kodu do wywoływania interfejsu API, są dostępne z [usług sieci web Azure ml](https://services.azureml.net/webservices/) strony.  Przejdź do żądanego interfejsu API, a następnie kliknij kartę "Wykorzystania", aby je znaleźć.  Należy pamiętać, wywołując interfejs API jako interfejsu API struktury Swagger (tj. z parametru adresu URL `format=swagger`) lub jako innego niż - interfejsu API struktury Swagger (czyli bez `format` parametr adresu URL).  Przykładowy kod korzysta z formatu Swagger.  Poniżej znajduje przykład żądań i odpowiedzi w formacie bez struktury Swagger.  Te przykłady są do endpoint sezonowość.  Punkt końcowy sezonowość nie jest podobny.
 
 ### <a name="sample-request-body"></a>Treść żądania próbki
-Żądanie zawiera dwa obiekty: `Inputs` i `GlobalParameters`.  W żądaniu przykładzie poniżej, niektóre parametry są wysyłane jawnie a inni nie (Przewiń w dół pełną listę parametrów dla każdego punktu końcowego).  Parametry, które nie są jawnie wysłanych w żądaniu użyje wartości domyślnych, podane poniżej.
+Żądanie zawiera dwa obiekty: `Inputs` i `GlobalParameters`.  W przykładzie żądanie poniżej, niektóre parametry są wysyłane jawnie a inne nie (Przewiń w dół Aby uzyskać pełną listę parametrów dla każdego punktu końcowego).  Parametry, które nie są jawnie wysyłane w żądaniu użyje wartości domyślnych podanych poniżej.
 
     {
                 "Inputs": {
@@ -83,7 +83,7 @@ Aby można było wywołać interfejs API, należy znać lokalizacji punktu końc
     }
 
 ### <a name="sample-response"></a>Przykładowa odpowiedź
-Należy pamiętać, że, aby zobaczyć `ColumnNames` pole musi zawierać `details=true` jako parametr adresu URL w żądaniu.  Zobacz w poniższych tabelach znaczenie za każde z tych pól.
+Należy pamiętać, że, aby można było wyświetlić `ColumnNames` pole musi zawierać `details=true` jako parametr adresu URL w żądaniu.  Zobacz poniższe tabele zawierają znaczenie za każde z tych pól.
 
     {
         "Results": {
@@ -104,91 +104,91 @@ Należy pamiętać, że, aby zobaczyć `ColumnNames` pole musi zawierać `detail
 
 
 ## <a name="score-api"></a>Wynik interfejsu API
-Interfejs API wynik jest używane do uruchamiania wykrywania anomalii-okresach czasu serii danych. Interfejs API przeprowadza liczbą czujników anomalii danych i zwraca wyniki anomalii. Na poniższej ilustracji przedstawiono przykład anomalii wykrywanych w interfejsie API wynik. Ta szeregów czasowych ma 2 różne zmiany na poziomie, a nagłego 3. Czerwone kropki Pokaż czasu, jaką poziomu zmiana zostaje wykryta, podczas czarne kropki Pokaż nagłego wykryte.
+Interfejs API wynik jest używane do uruchamiania wykrywania anomalii w danych szeregów czasowych — sezonowym. Interfejs API działa szereg czujników anomalii w danych i zwraca wyniki anomalii. Na poniższej ilustracji przedstawiono przykład anomalie, które mogą wykryć API wynik. Tej serii czasu ma 2 różne zmiany poziomu i wzrostów 3. Czerwone kropki pokazują czas, w którym zostanie wykryta zmiana poziomu, a czarne kropki zawierają wzrostów wykryte.
 ![Wynik interfejsu API][1]
 
-### <a name="detectors"></a>Detektory
-Wykrywanie anomalii interfejs API obsługuje detektory w 3 szerokie kategorie. Szczegółowe informacje o określonych parametrów wejściowych i wyjściowych dla każdego detektora znajdują się w poniższej tabeli.
+### <a name="detectors"></a>Czujniki
+Interfejs API wykrywania anomalii obsługuje detektory 3 szerokie kategorie. W poniższej tabeli znajdują się szczegółowe informacje na temat określone parametry wejściowe i wyjściowe dla każdego detektora.
 
-| Wykrywacz kategorii | Wykrywanie | Opis | Parametry wejściowe | Dane wyjściowe |
+| Wykrywanie kategorii | Wykrywanie | Opis | Parametry wejściowe | Dane wyjściowe |
 | --- | --- | --- | --- | --- |
-| Detektory kolekcji |Wykrywanie TSpike |Wykryj wartości szczytowe i DIP na podstawie daleko wartości pochodzą z Kwartyle pierwszy i trzeci |*tspikedetector.sensitivity:* przyjmuje wartość całkowitą z zakresu 1-10, domyślne: 3; Wyższe wartości będzie przechwytywać więcej wartości skrajne, dzięki czemu mniej poufne |TSpike: wartości binarne — "1" w przypadku wykrycia kolekcji/dip, "0" w inny sposób |
-| Detektory kolekcji | Wykrywanie ZSpike |Wykryj wartości szczytowe i DIP oparte na to, jak daleko punktów danych są od ich średniej |*zspikedetector.sensitivity:* zająć liczbę całkowitą z zakresu 1-10, domyślne: 3; Wyższe wartości będzie przechwytywać więcej wartości skrajne, dzięki czemu mniej poufne |ZSpike: wartości binarne — "1" w przypadku wykrycia kolekcji/dip, "0" w inny sposób | |
-| Wykrywanie powolnego Trend |Wykrywanie powolnego Trend |Wykrywanie powolnego trend dodatnią zgodnie z harmonogramem czułości zestawu |*trenddetector.sensitivity:* próg na wynik detektora (domyślne: 3,25, 3,25 – 5 jest uzasadnione zakres, wybierz od; Im wyższa mniej wielkość liter) |tscore: liczbą zmiennoprzecinkową reprezentujący wynik anomalii na tendencji |
-| Detektory zmiany poziomu | Poziom dwukierunkowego wykrywanie zmian |Wykryj zmiany poziomu zarówno w górę, jak i w dół zgodnie z harmonogramem czułości zestawu |*bileveldetector.sensitivity:* próg na wynik detektora (domyślne: 3,25, 3,25 – 5 jest uzasadnione zakres, wybierz od; Im wyższa mniej wielkość liter) |rpscore: liczba zmiennoprzecinkowa reprezentująca wynik anomalii w górę i w dół zmiany poziomu | |
+| Detektory kolekcji |Wykrywanie TSpike |Wykrywanie, wzrostów i spadków, na podstawie daleko wartości pochodzą z Kwartyle pierwszy i trzeci |*tspikedetector.sensitivity:* przyjmuje wartość całkowitą z zakresu 1-10, domyślne: 3; Wyższe wartości będzie przechwytywać więcej wartości skrajnych co mniej poufnych |TSpike: wartości binarne — "1", w przypadku wykrycia kolekcji/dip, "0" w przeciwnym razie |
+| Detektory kolekcji | Wykrywanie ZSpike |Wykrywanie wzrostów i spadków, oparte na to, jak daleko są punktów danych od ich średniej |*zspikedetector.sensitivity:* zająć wartość całkowitą z zakresu 1-10, domyślne: 3; Wyższe wartości będzie przechwytywać więcej wartości skrajnych co mniej poufnych |ZSpike: wartości binarne — "1", w przypadku wykrycia kolekcji/dip, "0" w przeciwnym razie | |
+| Wykrywanie powolnego trendu |Wykrywanie powolnego trendu |Wykrywanie powolne trend dodatnią zgodnie z czułości zestawu |*trenddetector.sensitivity:* progu na wykrywanie wynik (domyślne: 3,25, 3,25 — 5 jest uzasadnione zakresu, aby wybrać ten program z; Im wyższa mniej wrażliwe) |tscore: liczbą zmiennoprzecinkową reprezentujący wyniku anomalii na tendencji |
+| Detektory zmiany poziomu | Wykrywanie zmian poziom dwukierunkowego |Wykrywanie zmiany poziomu zarówno w górę, jak i w dół zgodnie z czułości zestawu |*bileveldetector.sensitivity:* progu na wykrywanie wynik (domyślne: 3,25, 3,25 — 5 jest uzasadnione zakresu, aby wybrać ten program z; Im wyższa mniej wrażliwe) |rpscore: liczbą zmiennoprzecinkową reprezentujący wyniku anomalii w górę i w dół zmiany poziomu | |
 
 ### <a name="parameters"></a>Parametry
-Bardziej szczegółowe informacje dotyczące tych parametrów wejściowych jest wymienione w poniższej tabeli:
+W poniższej tabeli znajduje się bardziej szczegółowych informacji na temat tych parametrów wejściowych:
 
 | Parametry wejściowe | Opis | Ustawienie domyślne | Typ | Prawidłowy zakres | Sugerowany zakres |
 | --- | --- | --- | --- | --- | --- |
-| detectors.historyWindow |Historia (w # punktów danych) używane do obliczeń wynik anomalii |500 |liczba całkowita |10-2000 |Zależne od szeregu czasowego |
-| detectors.spikesdips | Czy można wykryć tylko wzrósł, tylko DIP i/lub |Oba |Wyliczenie |Oba nagłego, DIP |Oba |
-| bileveldetector.sensitivity |Czułość na poziomie dwukierunkowego zmienić detektora. |3.25 |double |Brak |3,25-5 (mniejsze wartości oznaczają więcej liter) |
-| trenddetector.sensitivity |Czułość dla detektora trend dodatnią. |3.25 |double |Brak |3,25-5 (mniejsze wartości oznaczają więcej liter) |
-| tspikedetector.sensitivity |Czułość dla detektora TSpike |3 |liczba całkowita |1-10 |3 – 5 (mniejsze wartości oznaczają więcej liter) |
-| zspikedetector.sensitivity |Czułość dla detektora ZSpike |3 |liczba całkowita |1-10 |3 – 5 (mniejsze wartości oznaczają więcej liter) |
-| postprocess.tailRows |Liczba najnowszych punktów danych przechowywanych w wynikach danych wyjściowych |0 |liczba całkowita |0 (Zachowaj wszystkie punkty danych), lub określ liczbę punktów do zachowania w wynikach |ND |
+| detectors.historywindow |Historii (liczba punktów danych) używane do obliczeń wyniku anomalii |500 |liczba całkowita |10-2000 |Szeregi czasowe zależnych od ustawień lokalnych |
+| detectors.spikesdips | Czy należy wykrywać tylko gwałtowne wzrosty, tylko adresy DIP i / lub |Oba |wyliczenia |Zarówno wzrostów spadku |Oba |
+| bileveldetector.sensitivity |Uwzględniania wykrywanie zmiany poziomu dwukierunkowy. |3.25 |double |Brak |3,25-5 (mniejsze wartości oznaczają w przypadku bardziej poufnych) |
+| trenddetector.sensitivity |Uwzględniania wykrywanie trendów pozytywnych. |3.25 |double |Brak |3,25-5 (mniejsze wartości oznaczają w przypadku bardziej poufnych) |
+| tspikedetector.sensitivity |Uwzględniania wykrywacz TSpike |3 |liczba całkowita |1-10 |3 – 5 (mniejsze wartości oznaczają w przypadku bardziej poufnych) |
+| zspikedetector.sensitivity |Uwzględniania wykrywacz ZSpike |3 |liczba całkowita |1-10 |3 – 5 (mniejsze wartości oznaczają w przypadku bardziej poufnych) |
+| postprocess.tailRows |Liczba najnowsze punkty danych mają być przechowywane w wynikach danych wyjściowych |0 |liczba całkowita |0 (Zachowaj wszystkie punkty danych), lub określ liczbę punktów do zachowania w wynikach |ND |
 
 ### <a name="output"></a>Dane wyjściowe
-Interfejs API uruchamia wszystkie detektory na podstawie czasu serii danych i zwraca wyniki anomalii i wskaźniki kolekcji binarne dla każdego punktu w czasie. W poniższej tabeli przedstawiono dane wyjściowe z interfejsu API. 
+Interfejs API uruchamia wszystkie czujniki w danych szeregów czasowych i zwraca wyniki anomalii i wskaźniki binarne kolekcji dla każdego punktu w czasie. W poniższej tabeli wymieniono dane wyjściowe z interfejsu API. 
 
 | Dane wyjściowe | Opis |
 | --- | --- |
-| Time |Sygnatury czasowe z danych pierwotnych lub dane zagregowane (i/lub) kalkulacyjne Jeśli agregacji (i/lub) brakuje przypisywania danych jest stosowany. |
-| Dane |Wartości od danych pierwotnych lub dane zagregowane (i/lub) kalkulacyjne w przypadku agregacji (i/lub) brakuje zastosowano przypisywania danych |
-| TSpike |Wskaźnik binarny, aby wskazać, czy kolekcja jest wykrywane przez wykrywacz TSpike |
-| ZSpike |Wskaźnik binarny, aby wskazać, czy kolekcja jest wykrywane przez wykrywacz ZSpike |
-| rpscore |Przestawne numer anomalii reprezentująca wynik na zmiany poziomu dwukierunkowych |
-| rpalert |wartość 1/0 wskazującą, czy istnieje poziom dwukierunkowego zmienić anomalii oparte na czułości wejściowych |
-| tscore |Przestawne numer anomalii reprezentująca wynik na dodatnią tendencji |
-| talert |wartość 1/0 wskazującą jest anomalii trend dodatnią, oparte na czułości wejściowych |
+| Time |Sygnatury czasowe z nieprzetworzonych danych albo dane zagregowane (i/lub) kalkulacyjne Jeśli agregacji (i/lub) brakuje przypisywania danych jest stosowany. |
+| Dane |Wartości z kolekcji danych pierwotnych lub danych zagregowanych (i/lub) kalkulacyjne, jeśli agregacji (i/lub) brakuje przypisywania danych jest stosowany. |
+| TSpike |Wskaźnik binarny, aby wskazać, czy kolekcja zostanie wykryty przez wykrywacz TSpike |
+| ZSpike |Wskaźnik binarny, aby wskazać, czy kolekcja zostanie wykryty przez wykrywacz ZSpike |
+| rpscore |Zmiennoprzecinkowy numer anomalii reprezentująca wynik w przypadku zmiany poziomu dwukierunkowe |
+| rpalert |wartość 1/0, wskazujący, że istnieje poziom dwukierunkowego zmienić anomalii na podstawie poziomu poufności danych wejściowych |
+| tscore |Zmiennoprzecinkowy numer anomalii reprezentująca wynik na dodatnią tendencji |
+| talert |wartość 1/0, wskazującą, jest anomalii trendów pozytywnych, na podstawie poziomu poufności danych wejściowych |
 
 ## <a name="scorewithseasonality-api"></a>ScoreWithSeasonality interfejsu API
-Interfejs API ScoreWithSeasonality jest używane do uruchamiania wykrywania anomalii na czas serii, która ma okresach wzorce. Ten interfejs API jest przydatne do wykrywania odchylenia w okresach wzorce.  
-Na poniższej ilustracji przedstawiono przykład nieprawidłowości wykryte w serii okresach czasu. Szeregów czasowych ma kolekcji jednego (1 czarne kropki (.)), DIP dwóch (2 czarna kropka i jeden na końcu) i jeden zmiany poziomu (czerwoną kropkę). Należy zauważyć, że dip środku szeregów czasowych i zmiany poziomu tylko discernable po okresach składniki są usuwane z serii.
-![Sezonowości interfejsu API][2]
+Interfejs API ScoreWithSeasonality jest używane do uruchamiania wykrywania anomalii w serii czasu, która sezonowych wzorców. Ten interfejs API jest przydatne do wykrywania odchylenia we wzorcach sezonowe.  
+Poniższa ilustracja przedstawia przykład nieprawidłowości wykryto w szeregach czasowych sezonowym. Szeregi czasowe ma kolekcji jednego (1 czarne kropki (.)), dwa spadku (2nd czarna kropka, a drugi na końcu) i jeden zmiany poziomu (czerwoną kropkę). Należy zauważyć, że dip środku szeregów czasowych i zmiany poziomu tylko przyspieszenie po sezonowych składniki zostaną usunięte z tej serii.
+![Sezonowość interfejsu API][2]
 
-### <a name="detectors"></a>Detektory
-Detektory w punkcie końcowym sezonowości są podobne do tych z systemem innym niż sezonowości punktu końcowego, ale nieco różne nazwy parametrów (wymienione poniżej).
+### <a name="detectors"></a>Czujniki
+Detektory w punkcie końcowym sezonowości są podobne do tych w punkcie końcowym bez sezonowości, ale z nazwy parametru nieco (wymienione poniżej).
 
 ### <a name="parameters"></a>Parametry
 
-Bardziej szczegółowe informacje dotyczące tych parametrów wejściowych jest wymienione w poniższej tabeli:
+W poniższej tabeli znajduje się bardziej szczegółowych informacji na temat tych parametrów wejściowych:
 
 | Parametry wejściowe | Opis | Ustawienie domyślne | Typ | Prawidłowy zakres | Sugerowany zakres |
 | --- | --- | --- | --- | --- | --- |
-| preprocess.aggregationInterval |Interwał agregacji w sekundach do agregowania danych wejściowych szeregów czasowych |0 (nie agregacji jest wykonywane) |liczba całkowita |0: w przeciwnym razie Pomiń agregacji, > 0 |5 minut do 1 dnia, zależne od szeregu czasowego |
-| preprocess.aggregationFunc |Funkcja używana do agregowania danych w określonym AggregationInterval |Średnia |Wyliczenie |Średnia, sum, długość |ND |
-| preprocess.replaceMissing |Wartości używane do przypisują brakujących danych |lkv (Ostatnia znana wartość) |Wyliczenie |zero, lkv, średnia |ND |
-| detectors.historyWindow |Historia (w # punktów danych) używane do obliczeń wynik anomalii |500 |liczba całkowita |10-2000 |Zależne od szeregu czasowego |
-| detectors.spikesdips | Czy można wykryć tylko wzrósł, tylko DIP i/lub |Oba |Wyliczenie |Oba nagłego, DIP |Oba |
-| bileveldetector.sensitivity |Czułość na poziomie dwukierunkowego zmienić detektora. |3.25 |double |Brak |3,25-5 (mniejsze wartości oznaczają więcej liter) |
-| postrenddetector.sensitivity |Czułość dla detektora trend dodatnią. |3.25 |double |Brak |3,25-5 (mniejsze wartości oznaczają więcej liter) |
-| negtrenddetector.sensitivity |Czułość dla detektora trend ujemna. |3.25 |double |Brak |3,25-5 (mniejsze wartości oznaczają więcej liter) |
-| tspikedetector.sensitivity |Czułość dla detektora TSpike |3 |liczba całkowita |1-10 |3 – 5 (mniejsze wartości oznaczają więcej liter) |
-| zspikedetector.sensitivity |Czułość dla detektora ZSpike |3 |liczba całkowita |1-10 |3 – 5 (mniejsze wartości oznaczają więcej liter) |
-| seasonality.enable |Określa, czy ma być wykonywane sezonowości analizy |true |wartość logiczna |wartość true, false |Zależne od szeregu czasowego |
-| seasonality.numSeasonality |Maksymalna liczba cykli okresowe wykrycie |1 |liczba całkowita |1, 2 |1-2 |
-| seasonality.transform |Czy okresach trend części należy usunąć przed zastosowaniem wykrywania anomalii (i) |deseason |Wyliczenie |Brak, deseason deseasontrend |ND |
-| postprocess.tailRows |Liczba najnowszych punktów danych przechowywanych w wynikach danych wyjściowych |0 |liczba całkowita |0 (Zachowaj wszystkie punkty danych), lub określ liczbę punktów do zachowania w wynikach |ND |
+| preprocess.aggregationInterval |Interwał agregacji w ciągu kilku sekund do agregowania danych wejściowych szeregów czasowych |0 (Brak agregacji odbywa się) |liczba całkowita |0: w przeciwnym razie Pomiń agregacji > 0 |5 minut do 1 dzień, szeregów czasowych zależnych od ustawień lokalnych |
+| preprocess.aggregationFunc |Funkcja używana do agregowania danych do określonego AggregationInterval |Średnia |wyliczenia |średnie, sum, długość |ND |
+| preprocess.replaceMissing |Wartości używane do przypisują brakujące dane |lkv (Ostatnia znana wartość) |wyliczenia |zero, lkv, średnia |ND |
+| detectors.historywindow |Historii (liczba punktów danych) używane do obliczeń wyniku anomalii |500 |liczba całkowita |10-2000 |Szeregi czasowe zależnych od ustawień lokalnych |
+| detectors.spikesdips | Czy należy wykrywać tylko gwałtowne wzrosty, tylko adresy DIP i / lub |Oba |wyliczenia |Zarówno wzrostów spadku |Oba |
+| bileveldetector.sensitivity |Uwzględniania wykrywanie zmiany poziomu dwukierunkowy. |3.25 |double |Brak |3,25-5 (mniejsze wartości oznaczają w przypadku bardziej poufnych) |
+| postrenddetector.sensitivity |Uwzględniania wykrywanie trendów pozytywnych. |3.25 |double |Brak |3,25-5 (mniejsze wartości oznaczają w przypadku bardziej poufnych) |
+| negtrenddetector.sensitivity |Uwzględniania wykrywacz trend ujemna. |3.25 |double |Brak |3,25-5 (mniejsze wartości oznaczają w przypadku bardziej poufnych) |
+| tspikedetector.sensitivity |Uwzględniania wykrywacz TSpike |3 |liczba całkowita |1-10 |3 – 5 (mniejsze wartości oznaczają w przypadku bardziej poufnych) |
+| zspikedetector.sensitivity |Uwzględniania wykrywacz ZSpike |3 |liczba całkowita |1-10 |3 – 5 (mniejsze wartości oznaczają w przypadku bardziej poufnych) |
+| seasonality.enable |Czy ma być przeprowadzane sezonowości analizy |true |wartość logiczna |wartość true, false |Szeregi czasowe zależnych od ustawień lokalnych |
+| seasonality.numSeasonality |Maksymalna liczba cykli okresowo, aby zostało wykryte |1 |liczba całkowita |1, 2 |1-2 |
+| seasonality.transform |Czy sezonowych części trend należy usunąć przed zastosowaniem wykrywania anomalii (i) |deseason |wyliczenia |Brak, deseason deseasontrend |ND |
+| postprocess.tailRows |Liczba najnowsze punkty danych mają być przechowywane w wynikach danych wyjściowych |0 |liczba całkowita |0 (Zachowaj wszystkie punkty danych), lub określ liczbę punktów do zachowania w wynikach |ND |
 
 ### <a name="output"></a>Dane wyjściowe
-Interfejs API uruchamia wszystkie detektory na podstawie czasu serii danych i zwraca wyniki anomalii i wskaźniki kolekcji binarne dla każdego punktu w czasie. W poniższej tabeli przedstawiono dane wyjściowe z interfejsu API. 
+Interfejs API uruchamia wszystkie czujniki w danych szeregów czasowych i zwraca wyniki anomalii i wskaźniki binarne kolekcji dla każdego punktu w czasie. W poniższej tabeli wymieniono dane wyjściowe z interfejsu API. 
 
 | Dane wyjściowe | Opis |
 | --- | --- |
-| Time |Sygnatury czasowe z danych pierwotnych lub dane zagregowane (i/lub) kalkulacyjne Jeśli agregacji (i/lub) brakuje przypisywania danych jest stosowany. |
-| OriginalData |Wartości od danych pierwotnych lub dane zagregowane (i/lub) kalkulacyjne w przypadku agregacji (i/lub) brakuje zastosowano przypisywania danych |
-| ProcessedData |Jedną z następujących czynności: <ul><li>Sezonowo szeregów czasowych, jeśli wykryto znaczących sezonowości deseason opcji;</li><li>sezonowo dostosowane i Beztrendowy szeregów czasowych, jeśli wykryto znaczących sezonowości i wybrana opcja deseasontrend</li><li>w przeciwnym razie jest to ten sam OriginalData</li> |
-| TSpike |Wskaźnik binarny, aby wskazać, czy kolekcja jest wykrywane przez wykrywacz TSpike |
-| ZSpike |Wskaźnik binarny, aby wskazać, czy kolekcja jest wykrywane przez wykrywacz ZSpike |
-| BiLevelChangeScore |Przestawne numer anomalii reprezentująca wynik na zmiany poziomu |
-| BiLevelChangeAlert |1/0 wartość wskazującą jest anomalii zmiany poziomu, oparte na czułości wejściowych |
-| PosTrendScore |Przestawne numer anomalii reprezentująca wynik na dodatnią tendencji |
-| PosTrendAlert |wartość 1/0 wskazującą jest anomalii trend dodatnią, oparte na czułości wejściowych |
-| NegTrendScore |Przestawne numer anomalii reprezentująca wynik na ujemnej tendencji |
-| NegTrendAlert |wartość 1/0 wskazującą jest anomalii trend ujemna, oparte na czułości wejściowych |
+| Time |Sygnatury czasowe z nieprzetworzonych danych albo dane zagregowane (i/lub) kalkulacyjne Jeśli agregacji (i/lub) brakuje przypisywania danych jest stosowany. |
+| OriginalData |Wartości z kolekcji danych pierwotnych lub danych zagregowanych (i/lub) kalkulacyjne, jeśli agregacji (i/lub) brakuje przypisywania danych jest stosowany. |
+| ProcessedData |Jedną z następujących czynności: <ul><li>Jeśli znaczące sezonowości został wykryty i deseason opcji; sezonowo szeregów czasowych</li><li>okresowo zmieniane i Beztrendowy szeregów czasowych, jeśli wykryto sezonowości znaczące i wybraną opcją deseasontrend</li><li>w przeciwnym razie jest taka sama jak OriginalData</li> |
+| TSpike |Wskaźnik binarny, aby wskazać, czy kolekcja zostanie wykryty przez wykrywacz TSpike |
+| ZSpike |Wskaźnik binarny, aby wskazać, czy kolekcja zostanie wykryty przez wykrywacz ZSpike |
+| BiLevelChangeScore |Zmiennoprzecinkowy numer anomalii reprezentująca wynik w przypadku zmiany poziomu |
+| BiLevelChangeAlert |1/0 wartość wskazującą brak jest anomalii zmiany poziomu, na podstawie poziomu poufności danych wejściowych |
+| PosTrendScore |Zmiennoprzecinkowy numer anomalii reprezentująca wynik na dodatnią tendencji |
+| PosTrendAlert |wartość 1/0, wskazującą, jest anomalii trendów pozytywnych, na podstawie poziomu poufności danych wejściowych |
+| NegTrendScore |Zmiennoprzecinkowy numer anomalii reprezentująca wynik na trend ujemna |
+| NegTrendAlert |wartość 1/0, wskazującą, jest anomalii trend ujemna, na podstawie poziomu poufności danych wejściowych |
 
 [1]: ./media/apps-anomaly-detection-api/anomaly-detection-score.png
 [2]: ./media/apps-anomaly-detection-api/anomaly-detection-seasonal.png

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: danlep
-ms.openlocfilehash: 698212ce1f4e88cda741a78030023f3acdeee9f0
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: a52dbdad3842760c447e22f4274ab944750840e7
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576087"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816790"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Uwierzytelnianie rozwiązań usługi Batch Management z usługą Active Directory
 
@@ -36,7 +36,7 @@ Aby dowiedzieć się więcej o korzystaniu z przykład zarządzania kontem i bib
 
 Azure [Active Directory Authentication Library] [ aad_adal] (ADAL) zapewnia interfejs programistyczny do usługi Azure AD do użycia w aplikacjach. Do wywołania biblioteki ADAL z aplikacji, należy zarejestrować aplikację w dzierżawie usługi Azure AD. Podczas rejestrowania aplikacji podajesz usługi Azure AD przy użyciu informacji o aplikacji, w tym jej nazwę w ramach dzierżawy usługi Azure AD. Następnie usługa Azure AD zawiera identyfikator aplikacji, która umożliwia kojarzenie aplikacji z usługą Azure AD w czasie wykonywania. Aby dowiedzieć się więcej o identyfikatorze aplikacji, zobacz [aplikacji i obiektów nazw głównych usług w usłudze Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
-Aby zarejestrować przykładową aplikację zarządzania kontem, wykonaj kroki opisane w [dodawania aplikacji](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md#adding-an-application) sekcji [Integrowanie aplikacji z usługą Azure Active Directory] [ aad_integrate]. Określ **natywną aplikację kliencką** dla typu aplikacji. Przemysł standardowego protokołu OAuth 2.0 Identyfikator URI **identyfikator URI przekierowania** jest `urn:ietf:wg:oauth:2.0:oob`. Można jednak określić dowolny prawidłowy identyfikator URI (takie jak `http://myaccountmanagementsample`) dla **identyfikator URI przekierowania**, ponieważ nie musi odpowiadać rzeczywistemu punktowi końcowemu:
+Aby zarejestrować przykładową aplikację zarządzania kontem, wykonaj kroki opisane w [dodawania aplikacji](../active-directory/develop/quickstart-v1-add-azure-ad-app.md) sekcji [Integrowanie aplikacji z usługą Azure Active Directory] [ aad_integrate]. Określ **natywną aplikację kliencką** dla typu aplikacji. Przemysł standardowego protokołu OAuth 2.0 Identyfikator URI **identyfikator URI przekierowania** jest `urn:ietf:wg:oauth:2.0:oob`. Można jednak określić dowolny prawidłowy identyfikator URI (takie jak `http://myaccountmanagementsample`) dla **identyfikator URI przekierowania**, ponieważ nie musi odpowiadać rzeczywistemu punktowi końcowemu:
 
 ![](./media/batch-aad-auth-management/app-registration-management-plane.png)
 

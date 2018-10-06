@@ -10,12 +10,12 @@ ms.technology: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 14956fd716a6939d5e7dd9d670cc78b58adf7f45
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1625bb9e9f51f8460db4e7ccbaf6e5eada3f8180
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042078"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831063"
 ---
 # <a name="integrate-speech-service"></a>Integracja usługi mowy
 [Usługa rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umożliwia użycie pojedynczego żądania do odbierania audio i zwracać prognoz usługi LUIS obiekty JSON. W tym artykule pobranie i używanie projektu C# w programie Visual Studio do odczytania wypowiedź do mikrofonu i otrzymywanie informacji prognoz usługi LUIS. Projekt używa mowy [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) pakietu już dołączone jako odwołanie. 
@@ -118,7 +118,7 @@ Celem poprawne **GetEmployeeOrgChart**, znaleziono bez obaw 61%. Jednostka keyPh
 Zestaw SDK rozpoznawania mowy zwraca całej odpowiedzi usługi LUIS. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Gdy nie jest już potrzebny, usuń ją kadry usługi LUIS. Aby to zrobić, wybierz wielokropek (**...**) po prawej stronie nazwy aplikacji na liście aplikacji i wybierz polecenie ***Delete*** (Usuń). W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
+Gdy nie jest już potrzebny, usuń ją kadry usługi LUIS. Aby to zrobić, wybierz aplikację, a następnie w kontekstowych narzędzi powyżej listy wybierz **Usuń**. W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
 
 Pamiętaj, aby usunąć katalog usługi LUIS-Samples, gdy wszystko będzie gotowe korzystającą z przykładowego kodu.
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: ffc2a9fb7b0ed516645c833f87c9ef5c95ca20ff
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 7416a6ccbb734c031f09bd4185b2674dead71dc8
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580756"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816807"
 ---
 # <a name="register-in-dev-center"></a>Rejestrowanie w Centrum deweloperów  
 Aby sprawdzić, czy użytkownik nie jest zalogowany do konta osobistego przeglądarki, otwórz nowy Internet Explorer InPrivate lub Incognito przeglądarki Chrome sesji przeglądania.  
@@ -130,7 +130,10 @@ Jeśli masz problemy z rejestracją Centrum deweloperów, należy wykonać nast�
 > Wiadomość e-mail z verify@microsoft.com z tematem "Wymagana akcja: Zweryfikuj swoje konto poczty e-mail, z firmą Microsoft". Kliknij link weryfikacyjny poufnych czasu, aby ukończyć rejestrację. *Jeśli nie otrzymasz wiadomość e-mail w ciągu 24 godziny, sprawdź folder wiadomości-śmieci.*
 
 *   **Co to są następne kroki po weryfikacji Centrum deweloperów?**
-> Przejdź do "Programy" (https://developer.microsoft.com/en-us/dashboard/Account/Programs) i zaloguj się do konta Centrum deweloperów. Powinien zostać wyświetlony sekcję zatytułowaną "Programy zalecane dla Ciebie" i w obszarze, Azure. Będzie kliknij przycisk "Rozpocznij", a następnie przejść przez proces konfigurowania konta platformy Azure.
+> Przejdź do "Programy" (https://developer.microsoft.com/dashboard/Account/Programs) i zaloguj się do konta Centrum deweloperów. Jeśli nie widzisz jako zarejestrowanego programu platformy Azure, sprawdź w obszarze "Programy zalecane dla Ciebie", a następnie sprawdź na platformie Azure wybierz pozycję "Pierwsze kroki".
+
+*   **Jak połączyć mojego konta Centrum deweloperów do swojego profilu wydawcy w portalu Cloud Partner?**
+> Ostatnim krokiem przed publikowania jest łączenie danych konta Centrum deweloperów do Twojego portalu Cloud Partner [profilu](https://cloudpartner.azure.com/#profile). Jeśli Twoje konto Centrum deweloperów różni się od konta na [portalu Cloud Partner](https://cloudpartner.azure.com/#alloffers), Dodaj swoje konto Centrum deweloperów jako nowy [użytkownika](https://cloudpartner.azure.com/#documentation/manage-users) w portalu Cloud Partner. Zaloguj się do [portalu dla partnerów w chmurze](https://cloudpartner.azure.com/#alloffers) przy użyciu danych konta Centrum deweloperów. Wybierz profil Publisher znajduje się w górnej części menu bezpośrednio z przeglądarki sieci web. Centrum deweloperów łącze wybierz konto.
 
 *   **Dlaczego moja aplikacja Centrum deweloperów zostaje odrzucony**
 > Firma weryfikacyjny innych firm (Duns & Bradstreet) nie może się z Tobą za pośrednictwem numer telefonu, które zostały udostępnione. Skontaktuj się z działem pomocy technicznej związanej z [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) można ponownie uruchomić proces weryfikacyjny

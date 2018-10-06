@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 77b6149f175723ccf19db660ed500fb8897080e8
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 03f02d9d36ffc6a14334cdcccf2d1455db34e2bc
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249625"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815809"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopiuj dane do / z usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -70,7 +70,7 @@ Różnymi typami uwierzytelniania można znaleźć w następnych sekcjach dotycz
 
 - [Uwierzytelnianie SQL](#sql-authentication)
 - Uwierzytelnianie usługi Azure AD aplikacji tokenu: [nazwy głównej usługi](#service-principal-authentication)
-- Uwierzytelnianie usługi Azure AD aplikacji tokenu: [zarządzanych tożsamości dla zasobów platformy Azure](#managed-service-identity-authentication)
+- Uwierzytelnianie usługi Azure AD aplikacji tokenu: [zarządzanych tożsamości dla zasobów platformy Azure](#managed-identity)
 
 >[!TIP]
 >Jeśli osiągnięty błąd z kodem jako "UserErrorFailedToConnectToSqlServer", a wiadomości, takich jak "limit sesji dla bazy danych jest XXX i został osiągnięty.", Dodaj `Pooling=false` parametry połączenia i spróbuj ponownie.
@@ -152,7 +152,7 @@ Aby użyć uwierzytelniania tokenu aplikacji usługi oparte na jednostce usługi
 }
 ```
 
-### <a name="managed-identities-for-azure-resources-authentication"></a>Zarządzanych tożsamości do uwierzytelniania zasobów platformy Azure
+### <a name="managed-identity"></a> Zarządzanych tożsamości do uwierzytelniania zasobów platformy Azure
 
 Fabryka danych może być skojarzony z [tożsamości zarządzanej dla zasobów platformy Azure](data-factory-service-identity.md) reprezentujący określonego fabryki. Ta tożsamość usługi służy do uwierzytelniania usługi Azure SQL Data Warehouse. Fabryka wyznaczonym mogą uzyskiwać dostęp do i kopiowania danych z lub do danych magazynu przy użyciu tej tożsamości.
 

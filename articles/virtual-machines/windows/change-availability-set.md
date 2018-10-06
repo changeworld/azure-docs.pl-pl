@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 8d11f81d5fea47ccef8689a84c06768c4ca36012
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 82a9363d5199c6e4446a76ab46f4f97ea3704710
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162040"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48813519"
 ---
 # <a name="change-the-availability-set-for-a-windows-vm"></a>Zmienianie zestawu dostępności dla maszyny Wirtualnej z systemem Windows
 Poniżej opisano sposób zmiany zestawu dostępności maszyny wirtualnej przy użyciu programu Azure PowerShell. Maszynę wirtualną można dodać tylko zestaw dostępności podczas jego tworzenia. Aby zmienić dostępności należy ustawić, należy usunąć i ponownie utworzyć maszynę wirtualną. 
@@ -40,9 +40,6 @@ Poniższy skrypt zawiera przykład zbieranie wymaganych informacji, usuwanie ory
        -ResourceGroupName $resourceGroup `
        -Name $vmName
 
-# Remove the original VM
-    Remove-AzureRmVM -ResourceGroupName $resourceGroup -Name $vmName
-
 # Create new availability set if it does not exist
     $availSet = Get-AzureRmAvailabilitySet `
        -ResourceGroupName $resourceGroup `
@@ -57,6 +54,9 @@ Poniższy skrypt zawiera przykład zbieranie wymaganych informacji, usuwanie ory
        -PlatformUpdateDomainCount 2 `
        -Sku Aligned
     }
+    
+# Remove the original VM
+    Remove-AzureRmVM -ResourceGroupName $resourceGroup -Name $vmName    
 
 # Create the basic configuration for the replacement VM
     $newVM = New-AzureRmVMConfig `

@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7000fc13a792f4f6def592e78dc759c8cf165881
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: ca4113050069698c74a5d1e7903d068946123543
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451922"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830110"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Usługa Azure Cosmos DB zestawu .NET Core SDK interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -52,6 +52,10 @@ ms.locfileid: "47451922"
 ## <a name="release-notes"></a>Informacje o wersji
 
 Azure Cosmos DB platformy .NET Core SDK ma równoważności funkcji z najnowszej wersji [zestawu .NET SDK usługi Azure Cosmos DB](sql-api-sdk-dotnet.md).
+
+### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2
+
+* Ulepszenia śledzenia diagnostycznego.
 
 ### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
 
@@ -204,6 +208,7 @@ Jeśli masz pytania dotyczące tego zestawu SDK, Opublikuj [StackOverflow](http:
 
 | Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
+| [2.1.2](#2.1.2) |04 października 2018 r. |--- |
 | [2.1.1](#2.1.1) |27 września 2018 r. |--- |
 | [2.1.0](#2.1.0) |21 września 2018 r. |--- |
 | [2.0.0](#2.0.0) |07 września 2018 r. |--- |

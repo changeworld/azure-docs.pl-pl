@@ -9,19 +9,19 @@ ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: e569b63f676fb750bcbab88dda6cda39156d41f5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 281fafe858f2000a19fe3c6a26a4ffd587557361
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977036"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816025"
 ---
 # <a name="how-to-train-pytorch-models"></a>Sposób trenowania modeli PyTorch
 
-W przypadku szkolenia sieci neuronowej (DNN) przy użyciu PyTorch, Azure Machine Learning zapewnia klasy PyTorch niestandardowej estymatora. Narzędzie do szacowania zestawu Azure SDK PyTorch można łatwo przesłać zadania szkolenia PyTorch uruchamiany jednym węzłem i rozproszonych obliczeń platformy Azure.
+Za pomocą PyTorch szkolenia sieci neuronowej (DNN), usługi Azure Machine Learning zapewnia niestandardowego `PyTorch` klasy `Estimator`. Zestaw Azure SDK `PyTorch` narzędzie do szacowania umożliwia łatwe przesyłanie zadania szkolenia PyTorch uruchamiany jednym węzłem i rozproszonych obliczeń platformy Azure.
 
 ## <a name="single-node-training"></a>Szkolenie z jednym węzłem
-Szkolenie przy użyciu narzędzie do szacowania PyTorch jest podobne do [podstawowa narzędzie do szacowania](how-to-train-ml-models.md), więc najpierw przeczytać artykuł porad i upewnij się, zrozumieniu pojęć wprowadzonych w.
+Szkolenie z `PyTorch` narzędzie do szacowania jest podobne do [podstawowy `Estimator` ](how-to-train-ml-models.md), więc najpierw przeczytać artykuł porad i upewnij się, zrozumieniu pojęć wprowadzonych w.
   
 Aby uruchomić zadanie PyTorch, utworzyć `PyTorch` obiektu. Powinna już utworzono usługi [obliczeniowego elementu docelowego](how-to-set-up-training-targets.md#batch) obiektu `compute_target` i [datastore](how-to-access-data.md) obiektu `ds`.
 
@@ -40,15 +40,16 @@ pt_est = PyTorch(source_directory='./my-pytorch-proj',
 ```
 
 W tym miejscu możemy określić następujące parametry do konstruktora PyTorch:
-* `source_directory`: Katalog lokalny, który zawiera wszystkie wymagane na potrzeby zadania szkolenia kodu. Ten folder skopiowane z komputera lokalnego do zdalnego obliczeń
-* `script_params`: Określanie argumentów wiersza polecenia do skryptu szkolenia słownik `entry_script`, w postaci < argument wiersza polecenia, wartość > par
-* `compute_target`: Zdalne zasoby obliczeniowe uruchamianego skrypt szkolenia, w tym przypadku [usługi Batch AI](how-to-set-up-training-targets.md#batch) klastra
-* `entry_script`Filepath (względem `source_directory`) skryptu szkolenia, należy uruchomić na zdalne zasoby obliczeniowe. Ten plik i wszelkie dodatkowe pliki, od których zależy, powinny się znajdować w tym folderze
-* `conda_packages`: Lista pakietów języka Python, aby ją zainstalować za pomocą narzędzia conda, wymagane przez skrypt szkolenia.
-Konstruktor ma inny parametr o nazwie `pip_packages` używanego do dowolnego pakietu pip, wymagane
-* `use_gpu`: Ustaw tę flagę `True` wykorzystanie procesora GPU do trenowania. Wartość domyślna to `False`
+Parametr | Opis
+--|--
+`source_directory` |  Katalog lokalny, który zawiera wszystkie wymagane na potrzeby zadania szkolenia kodu. Ten folder skopiowane z komputera lokalnego do zdalnego obliczeń
+`script_params` |  Określanie argumentów wiersza polecenia do skryptu szkolenia słownika `entry_script`, w postaci < argument wiersza polecenia, wartość > par
+`compute_target` |  Zdalne obliczeń, uruchamianego skrypt szkolenia, w tym przypadku [usługi Batch AI](how-to-set-up-training-targets.md#batch) klastra
+`entry_script` |  FilePath (względem `source_directory`) skryptu szkolenia, należy uruchomić na zdalne zasoby obliczeniowe. Ten plik i wszelkie dodatkowe pliki, od których zależy, powinny się znajdować w tym folderze
+`conda_packages` |  Lista pakietów języka Python, aby ją zainstalować za pomocą narzędzia conda, wymagane przez skrypt szkolenia. Konstruktor ma inny parametr o nazwie `pip_packages` używanego do dowolnego pakietu pip, wymagane
+`use_gpu` |  Ustaw tę flagę `True` wykorzystanie procesora GPU do trenowania. Wartość domyślna to `False`
 
-Ponieważ używasz narzędzie do szacowania PyTorch kontenera, użyty do trenowania będą domyślnie zawierają PyTorch pakietu i powiązane zależności niezbędne do szkolenia z zakresu procesorów oraz procesorów GPU.
+Ponieważ używasz `PyTorch` narzędzie do szacowania, będzie zawierać kontenera, użyty na potrzeby szkolenia, pakiet PyTorch i powiązane zależności niezbędne do szkolenia z zakresu procesorów oraz procesorów GPU.
 
 Następnie prześlij zadanie PyTorch:
 ```Python
@@ -56,7 +57,7 @@ run = exp.submit(pt_est)
 ```
 
 ## <a name="distributed-training"></a>Rozproszonego szkolenia
-Narzędzie do szacowania PyTorch umożliwia także szkolenie modeli na dużą skalę w klastrach GPU i CPU maszyn wirtualnych platformy Azure. Łatwo można uruchomić rozproszonego szkolenia PyTorch kilka wywołań interfejsu API, natomiast usługa Azure Machine Learning będą zarządzać w tle, infrastruktury i aranżacji potrzebne do wykonania tych obciążeń.
+`PyTorch` Narzędzie do szacowania pozwala również na szkolenie modeli na dużą skalę w klastrach GPU i CPU maszyn wirtualnych platformy Azure. Łatwo można uruchomić rozproszonego szkolenia PyTorch kilka wywołań interfejsu API, natomiast usługa Azure Machine Learning będą zarządzać w tle, infrastruktury i aranżacji potrzebne do wykonania tych obciążeń.
 
 Usługa Azure Machine Learning obsługuje obecnie na podstawie MPI dla rozproszonego szkolenia w PyTorch przy użyciu Horovod framework.
 
@@ -78,10 +79,12 @@ pt_est = PyTorch(source_directory='./my-pytorch-project',
                  use_gpu=True)
 ```
 
-Powyższy kod udostępnia następujące nowe parametry do konstruktora PyTorch:
-* `node_count`: Liczba węzłów na potrzeby zadania szkolenia. Wartością domyślną tego argumentu `1`
-* `process_count_per_node`: Liczba procesów (lub "pracowników przetwarzających"), aby uruchomić w każdym węźle. Wartością domyślną tego argumentu `1`
-* `distributed_backend`: Zaplecze do uruchamiania rozproszonych szkoleń, która estymatora oferuje za pośrednictwem MPI. Domyślnie ten argument `None`. Jeśli chcesz przeprowadzić szkolenia równoległego lub rozproszonej (np. `node_count`> 1 lub `process_count_per_node`> 1 lub obie) przy użyciu MPI (i Horovod), należy ustawić `distributed_backend='mpi'`. Implementacja MPI używane przez usługi Azure Machine Learning jest [Otwórz MPI](https://www.open-mpi.org/).
+Ten kod udostępnia następujące nowe parametry do konstruktora PyTorch:
+Parametr | Opis | Domyślne
+--|--|--
+`node_count` |  Liczba węzłów na potrzeby zadania szkolenia. | `1`
+`process_count_per_node` |  Liczba procesów (lub "pracowników przetwarzających"), aby uruchomić w każdym węźle. | `1`
+`distributed_backend` |  Zaplecze dla uruchamiania rozproszonych, szkolenia, która estymatora oferuje za pośrednictwem MPI.  Przeprowadzenie szkolenia równoległego lub rozproszonej (np. `node_count`> 1 lub `process_count_per_node`> 1 lub oba) przy użyciu MPI (i Horovod), należy ustawić `distributed_backend='mpi'`. Implementacja MPI używane przez usługi Azure Machine Learning jest [Otwórz MPI](https://www.open-mpi.org/). | `None`
 
 Powyższy przykład zostaną uruchomione rozproszonego szkolenia dwóch pracowników jednego procesu roboczego w każdym węźle.
 
@@ -98,10 +101,10 @@ run = exp.submit(pt_est)
 
 ## <a name="examples"></a>Przykłady
 Samouczek dotyczący szkolenia PyTorch jednym węzłem zobacz:
-* `training/01.train-tune-deploy-pytorch/01.train-tune-deploy-pytorch.ipynb`
+* `training/01.train-hyperparameter-tune-deploy-with-pytorch`
 
 Samouczek dotyczący rozproszonego PyTorch z Horovod zobacz:
-* `training/02.distributed-pytorch-with-horovod/02.distributed-pytorch-with-horovod.ipynb`
+* `training/02.distributed-pytorch-with-horovod`
 
 Pobierz te notesy:
 

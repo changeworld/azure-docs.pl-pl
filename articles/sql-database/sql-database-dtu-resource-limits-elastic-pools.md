@@ -12,12 +12,12 @@ ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 37ce2347aadbe1a863201a3ac474444fd25f8212
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: e3b46620d15f8c08d0da69aef3d8c0920e5ad4ec
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044641"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830076"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-based-purchasing-model"></a>Limity zasobów dla pul elastycznych za pomocą modelu zakupu opartego na jednostkach DTU 
 
@@ -133,5 +133,5 @@ W poniższej tabeli opisano właściwości dla bazy danych w puli.
 - Zobacz [— często zadawane pytania dla bazy danych SQL](sql-database-faq.md) odpowiedzi na często zadawane pytania.
 - Zobacz [Przegląd zasobów limity na serwerze logicznym](sql-database-resource-limits-logical-server.md) uzyskać informacji dotyczących ograniczeń na poziomach serwera i subskrypcji.
 - Aby uzyskać informacji na temat ogólne limity platformy Azure, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md).
-- Aby uzyskać informacji na temat jednostek Dtu i Edtu, zobacz [jednostek Dtu i Edtu](sql-database-service-tiers.md#what-are-database-transaction-units-dtus).
+- Aby uzyskać informacji na temat jednostek Dtu i Edtu, zobacz [jednostek Dtu i Edtu](sql-database-service-tiers.md#dtu-based-purchasing-model).
 - Aby uzyskać informacje na temat limitów rozmiarów bazy danych tempdb, zobacz https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database.

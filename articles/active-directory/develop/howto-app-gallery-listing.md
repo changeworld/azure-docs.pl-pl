@@ -17,12 +17,12 @@ ms.date: 09/14/2018
 ms.author: celested
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 3d6692808bad2010779323cecc42778def32a38c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dd164882f9820cab970edd4d01f2f28c26771f88
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980274"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815223"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Porady: wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory
 
@@ -39,7 +39,7 @@ ms.locfileid: "46980274"
 
 - Aplikacje Sfederowane (Open ID i SAML/WS-Fed) aplikacja musi obsługiwać ten model do umieszczenia w galerii usługi Azure AD. Aplikacje w przedsiębiorstwie galerii powinien obsługiwać wielu konfiguracji klienta i nie są ustawiane określonego klienta.
 
-- Dla Open ID Connect, aplikacja powinna być wielodostępnych i [platformy wyrażania zgody w usłudze Azure AD](quickstart-v1-integrate-apps-with-azure-ad.md#overview-of-the-consent-framework) powinna być poprawnie zaimplementowany dla aplikacji. Użytkownika można wysyłać żądania logowania do endpoint wspólnego, tak, aby każdy klient może zapewnić zgody na aplikację. Możesz kontrolować dostęp użytkowników na podstawie Identyfikatora dzierżawy i nazwa UPN użytkownika odebrane w tokenie.
+- Dla Open ID Connect, aplikacja powinna być wielodostępnych i [platformy wyrażania zgody w usłudze Azure AD](consent-framework.md) powinna być poprawnie zaimplementowany dla aplikacji. Użytkownika można wysyłać żądania logowania do endpoint wspólnego, tak, aby każdy klient może zapewnić zgody na aplikację. Możesz kontrolować dostęp użytkowników na podstawie Identyfikatora dzierżawy i nazwa UPN użytkownika odebrane w tokenie.
 
 - Dla protokołu SAML 2.0/WS-Fed aplikacja musi mieć możliwość celu integracja logowania jednokrotnego SAML/WS-Fed w trybie SP lub dostawcy tożsamości. Upewnij się, że to działa poprawnie przed przesłaniem żądania.
 

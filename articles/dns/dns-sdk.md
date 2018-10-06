@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: victorh
-ms.openlocfilehash: 14860ae48e520f86ce9d5bea739605d1a4baf0c7
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 7acc0fa4c3654c96ac0f8f1baed7ea5b7b306376
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173197"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829773"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>Tworzenie strefy DNS i zestawów rekordów przy użyciu zestawu .NET SDK
 
@@ -33,7 +33,7 @@ Zazwyczaj udzielany jest dostęp programowy do zasobów platformy Azure za pomoc
 3. Uprawnienia konta głównego usługi "Współautor strefy DNS" w grupie zasobów przy użyciu kontroli RBAC platformy Azure ([Oto jak](../role-based-access-control/role-assignments-portal.md).)
 4. Jeśli używasz zestawu SDK usługi Azure DNS przykładowy projekt, przeprowadź edycję pliku "program.cs" w następujący sposób:
 
-   * Wstaw poprawne wartości dla identyfikatora dzierżawy, clientId (znany także jako identyfikator konta), hasło, usługa konta głównego i identyfikator subskrypcji używany w kroku 1.
+   * Wstaw poprawne wartości dla `tenantId`, `clientId` (znany także jako identyfikator konta), `secret` (hasło konta nazwy głównej usługi) i `subscriptionId` w przypadku użycia w kroku 1.
    * Wprowadź nazwę grupy zasobów, wybrana w kroku 2.
    * Wprowadź wybraną nazwę strefy DNS.
 
@@ -59,7 +59,7 @@ using Microsoft.Azure.Management.Dns.Models;
 
 ## <a name="initialize-the-dns-management-client"></a>Inicjowanie klienta zarządzania DNS
 
-*DnsManagementClient* zawiera metody i właściwości niezbędne do zarządzania strefami DNS i zestawami rekordów.  Poniższy kod loguje się do konta głównego usługi i tworzy obiekt DnsManagementClient.
+`DnsManagementClient` Zawiera metody i właściwości niezbędne do zarządzania rekordami i zestawami stref DNS.  Poniższy kod loguje się do konta głównego usługi i tworzy `DnsManagementClient` obiektu.
 
 ```cs
 // Build the service credentials and DNS management client
@@ -72,7 +72,7 @@ dnsClient.SubscriptionId = subscriptionId;
 
 Aby utworzyć strefę DNS, najpierw "Strefa" tworzony jest obiekt zawiera parametry strefy DNS. Ponieważ stref DNS nie są połączone w określonym regionie, lokalizacja jest ustawiona na "global". W tym przykładzie [usługi Azure Resource Manager "tag"](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/) jest także dodawane do strefy.
 
-Do faktycznie tworzenia lub aktualizacji strefy w usłudze Azure DNS, strefy obiekt zawierający parametry strefy jest przekazywany do *DnsManagementClient.Zones.CreateOrUpdateAsyc* metody.
+Do faktycznie tworzenia lub aktualizacji strefy w usłudze Azure DNS, strefy obiekt zawierający parametry strefy jest przekazywany do `DnsManagementClient.Zones.CreateOrUpdateAsyc` metody.
 
 > [!NOTE]
 > DnsManagementClient obsługuje trzy tryby działania: synchroniczne ("CreateOrUpdate"), asynchroniczny ("CreateOrUpdateAsync"), lub asynchroniczna dzięki dostępowi do odpowiedzi HTTP (CreateOrUpdateWithHttpMessagesAsync).  W zależności od potrzeb aplikacji można wybrać dowolny z następujących trybów.
@@ -98,7 +98,7 @@ var dnsZone = await dnsClient.Zones.CreateOrUpdateAsync(resourceGroupName, zoneN
 
 Rekordy DNS są zarządzane jako zestaw rekordów. Zestaw rekordów to zestaw rekordów o tej samej nazwie i typie rekordu w strefie.  Nazwa zestawu rekordów jest określana względem nazwę strefy, a nie w pełni kwalifikowanej nazwy DNS.
 
-Aby utworzyć lub zaktualizować zestawu rekordów, jest utworzony i przekazany do obiektu parametrów "Zestawu rekordów" *DnsManagementClient.RecordSets.CreateOrUpdateAsync*. Zgodnie ze strefami DNS są dostępne trzy tryby działania: synchroniczne ("CreateOrUpdate"), asynchroniczny ("CreateOrUpdateAsync"), lub asynchroniczna dzięki dostępowi do odpowiedzi HTTP (CreateOrUpdateWithHttpMessagesAsync).
+Aby utworzyć lub zaktualizować zestawu rekordów, jest utworzony i przekazany do obiektu parametrów "Zestawu rekordów" `DnsManagementClient.RecordSets.CreateOrUpdateAsync`. Zgodnie ze strefami DNS są dostępne trzy tryby działania: synchroniczne ("CreateOrUpdate"), asynchroniczny ("CreateOrUpdateAsync"), lub asynchroniczna dzięki dostępowi do odpowiedzi HTTP (CreateOrUpdateWithHttpMessagesAsync).
 
 Podobnie jak w przypadku stref DNS, operacje na zestawach rekordów obejmują obsługę optymistycznej współbieżności.  W tym przykładzie ponieważ określono "If-Match" ani "If-None-Match" zestawu rekordów zawsze jest tworzony.  To wywołanie spowoduje zastąpienie dowolnego istniejącego zestawu rekordów z taką samą nazwę i typ rekordu w tej strefie DNS.
 
@@ -122,7 +122,7 @@ var recordSet = await dnsClient.RecordSets.CreateOrUpdateAsync(resourceGroupName
 
 ## <a name="get-zones-and-record-sets"></a>Strefami i zestawami rekordów
 
-*DnsManagementClient.Zones.Get* i *DnsManagementClient.RecordSets.Get* metody pobierania poszczególnych stref rekordami i zestawami, odpowiednio. Zestawy rekordów są identyfikowane przez ich typu, nazwy i strefy i grupę zasobów, które istnieją w. Strefy są identyfikowane przez ich nazwy i grupę zasobów, które istnieją w.
+`DnsManagementClient.Zones.Get` i `DnsManagementClient.RecordSets.Get` metody pobierania poszczególnych stref rekordami i zestawami, odpowiednio. Zestawy rekordów są identyfikowane przez ich typu, nazwy i strefy i grupę zasobów, które istnieją w. Strefy są identyfikowane przez ich nazwy i grupę zasobów, które istnieją w.
 
 ```cs
 var recordSet = dnsClient.RecordSets.Get(resourceGroupName, zoneName, recordSetName, RecordType.A);

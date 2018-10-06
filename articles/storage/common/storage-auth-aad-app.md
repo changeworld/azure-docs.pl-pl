@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/07/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 1cb66c475f1d0c1b6606db03bfdf4746eeb1bf6b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 6a0b7139fd8d216397090154a4324c8e4305a939
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295776"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816382"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-azure-storage-application-preview"></a>Uwierzytelnianie za pomocą usługi Azure Active Directory z aplikacji usługi Azure Storage (wersja zapoznawcza)
 
@@ -33,7 +33,7 @@ Pierwszym krokiem przy użyciu usługi Azure AD do autoryzowania dostępu do zas
 
 Możesz zarejestrować swoją aplikację, należy podać informacje o aplikacji do usługi Azure AD. Następnie usługa Azure AD zawiera identyfikator klienta (nazywanych również *identyfikator aplikacji*) umożliwia kojarzenie aplikacji z usługą Azure AD w czasie wykonywania. Aby dowiedzieć się więcej o identyfikatorze klienta, zobacz [aplikacji i obiektów nazw głównych usług w usłudze Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md).
 
-Aby zarejestrować swoją aplikację usługi Azure Storage, wykonaj kroki opisane w [dodawania aplikacji](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md#adding-an-application) sekcji [Integrowanie aplikacji z usługą Azure Active Directory](../../active-directory/active-directory-integrating-applications.md). Jeśli zarejestrujesz aplikację jako natywną aplikację, można określić dowolny prawidłowy identyfikator URI dla **identyfikator URI przekierowania**. Wartość nie musi odpowiadać rzeczywistemu punktowi końcowemu.
+Aby zarejestrować swoją aplikację usługi Azure Storage, wykonaj kroki opisane w [dodawania aplikacji](../../active-directory/develop/quickstart-v1-add-azure-ad-app.md) sekcji [Integrowanie aplikacji z usługą Azure Active Directory](../../active-directory/active-directory-integrating-applications.md). Jeśli zarejestrujesz aplikację jako natywną aplikację, można określić dowolny prawidłowy identyfikator URI dla **identyfikator URI przekierowania**. Wartość nie musi odpowiadać rzeczywistemu punktowi końcowemu.
 
 ![Zrzut ekranu przedstawiający, jak zarejestrować aplikację magazynu z usługą Azure AD](./media/storage-auth-aad-app/app-registration.png)
 

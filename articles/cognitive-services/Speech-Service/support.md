@@ -8,12 +8,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: 4f296e2a7e7e205715ab232ef137493adf02e0f1
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f14fee349f5b5d88d628d0322e32bedeacd0562f
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295618"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816263"
 ---
 # <a name="support-and-help-options"></a>Opcje pomocy technicznej i pomocy
 
@@ -43,6 +43,13 @@ Szybsze wyniki ograniczyć wyszukiwanie do witryny Stack Overflow, dokumentacji 
 ```
 
 Gdzie *{Your wyszukiwane terminy}* są wyszukiwane słowa kluczowe.
+
+## <a name="create-an-azure-support-request"></a>Tworzenie żądania pomocy technicznej platformy Azure
+
+Klienci platformy Azure można tworzyć i zarządzać żądaniami pomocy technicznej w witrynie Azure portal.
+
+* [Azure Portal](https://portal.azure.com)
+* [Portal Azure dla instytucji rządowych Stanów Zjednoczonych](https://portal.azure.us)
 
 ## <a name="post-a-question-to-stack-overflow"></a>Zamieść pytanie na przepełnienie stosu
 

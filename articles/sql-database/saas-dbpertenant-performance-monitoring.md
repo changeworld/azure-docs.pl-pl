@@ -12,18 +12,18 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: e774394eeb95fbc8d80e181a614a7e30258a100e
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: b0e1cf976552754070b939a1463d033d66a0119c
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056774"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830043"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Monitorowanie i zarządzanie wydajnością bazy danych Azure SQL i pul baz danych w aplikacji SaaS z wieloma dzierżawami
 
 W tym samouczku zbadano kilka podstawowych scenariuszy zarządzania wydajnością używanych w aplikacjach SaaS. Przy użyciu generator obciążenia, aby symulować działanie we wszystkich bazach danych dzierżaw, wbudowane funkcje monitorowania i alertów bazy danych SQL i pule elastyczne są przedstawione w artykule.
 
-Aplikacji Wingtip Tickets SaaS bazy danych dla dzierżawy używa modelu danych do pojedynczej dzierżawy, którym każde miejsce (dzierżawca) ma swoją własną bazę danych. Podobnie jak w przypadku wielu innych aplikacji SaaS, oczekiwany wzorzec obciążenia dzierżawy charakteryzuje się nieprzewidywalnością i sporadycznością występowania. Innymi słowy, sprzedaż biletów może nastąpić w dowolnej chwili. Aby jak najlepiej wykorzystać ten typowy wzorzec korzystania z bazy danych, bazy danych dzierżaw zostały wdrożone w elastycznych pulach baz danych. Elastyczne pule umożliwiają optymalizację kosztu rozwiązania dzięki udostępnieniu zasobów pomiędzy wieloma bazami danych. W przypadku tego typu wzorca ważne jest, aby monitorować użycie zasobów bazy danych i puli, co ma na celu rozsądne równoważenie obciążenia między pulami. Należy także upewnić się, że pojedyncze bazy danych posiadają odpowiednie zasoby, i że pule nie zbliżają się do swoich limitów liczby jednostek [eDTU](sql-database-service-tiers.md#what-are-database-transaction-units-dtus). W tym samouczku przedstawiono metody monitorowania baz danych i pul oraz zarządzania nimi, a także wykonywanie akcji naprawczych w odpowiedzi na wahania obciążenia.
+Aplikacji Wingtip Tickets SaaS bazy danych dla dzierżawy używa modelu danych do pojedynczej dzierżawy, którym każde miejsce (dzierżawca) ma swoją własną bazę danych. Podobnie jak w przypadku wielu innych aplikacji SaaS, oczekiwany wzorzec obciążenia dzierżawy charakteryzuje się nieprzewidywalnością i sporadycznością występowania. Innymi słowy, sprzedaż biletów może nastąpić w dowolnej chwili. Aby jak najlepiej wykorzystać ten typowy wzorzec korzystania z bazy danych, bazy danych dzierżaw zostały wdrożone w elastycznych pulach baz danych. Elastyczne pule umożliwiają optymalizację kosztu rozwiązania dzięki udostępnieniu zasobów pomiędzy wieloma bazami danych. W przypadku tego typu wzorca ważne jest, aby monitorować użycie zasobów bazy danych i puli, co ma na celu rozsądne równoważenie obciążenia między pulami. Należy także upewnić się, że pojedyncze bazy danych posiadają odpowiednie zasoby, i że pule nie zbliżają się do swoich limitów liczby jednostek [eDTU](sql-database-service-tiers.md#dtu-based-purchasing-model). W tym samouczku przedstawiono metody monitorowania baz danych i pul oraz zarządzania nimi, a także wykonywanie akcji naprawczych w odpowiedzi na wahania obciążenia.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 

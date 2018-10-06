@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: danlep
-ms.openlocfilehash: 1f9a2b786db59ecfee6ede53b2b789d84651c975
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 1347d3aac01c62040c164eee22c7a905b07e8236
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577122"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816970"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Uwierzytelnianie rozwiązań usługi Batch za pomocą usługi Active Directory
 
@@ -68,7 +68,7 @@ Pierwszym krokiem przy użyciu usługi Azure AD do uwierzytelniania jest zarejes
 
 Możesz zarejestrować swoją aplikację, należy podać informacje o aplikacji do usługi Azure AD. Następnie usługa Azure AD zawiera identyfikator aplikacji (nazywane również *identyfikator klienta*) umożliwia kojarzenie aplikacji z usługą Azure AD w czasie wykonywania. Aby dowiedzieć się więcej o identyfikatorze aplikacji, zobacz [aplikacji i obiektów nazw głównych usług w usłudze Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
-Aby zarejestrować aplikacji usługi Batch, wykonaj kroki opisane w [dodawania aplikacji](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md#adding-an-application) sekcji [Integrowanie aplikacji z usługą Azure Active Directory][aad_integrate]. Jeśli zarejestrujesz aplikację jako natywną aplikację, można określić dowolny prawidłowy identyfikator URI dla **identyfikator URI przekierowania**. Nie musi odpowiadać rzeczywistemu punktowi końcowemu.
+Aby zarejestrować aplikacji usługi Batch, wykonaj kroki opisane w [dodawania aplikacji](../active-directory/develop/quickstart-v1-add-azure-ad-app.md) sekcji [Integrowanie aplikacji z usługą Azure Active Directory][aad_integrate]. Jeśli zarejestrujesz aplikację jako natywną aplikację, można określić dowolny prawidłowy identyfikator URI dla **identyfikator URI przekierowania**. Nie musi odpowiadać rzeczywistemu punktowi końcowemu.
 
 Po zarejestrowaniu aplikacji zostanie wyświetlony identyfikator aplikacji:
 
