@@ -1,37 +1,60 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: active-directory
+documentationcenter: dev-center-name
+author: jmprieur
+manager: mtillman
+editor: ''
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/17/2018
+ms.author: jmprieur
+ms.custom: include file
+ms.openlocfilehash: d333f8ecd7e1044575f570d893227f9dcb394974
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843104"
+---
 ## <a name="test-your-code"></a>Testowanie kodu
 
-Aby uruchomić projekt, w programie Visual Studio, wybierz **F5**. Aplikacja **właściwości MainWindow** jest wyświetlana, jak pokazano poniżej:
+Aby uruchomić projekt, w programie Visual Studio, wybierz **F5**. Aplikacja **MainWindow** jest wyświetlana, jak pokazano poniżej:
 
 ![Testowanie aplikacji](./media/active-directory-develop-guidedsetup-windesktop-test/samplescreenshot.png)
 
-Uruchamianie aplikacji po raz pierwszy i wybierz **wywołać Microsoft interfejsu API programu Graph** przycisku, zostanie wyświetlony monit do logowania. Użyj konta usługi Azure Active Directory (konta firmowego lub szkolnego) lub konta Microsoft (live.com, outlook.com), aby przetestować go.
+Przy pierwszym uruchomieniu aplikacji i wybierz **wywołania interfejsu API Microsoft Graph** przycisku, zostanie wyświetlony monit do logowania. Użyj konta usługi Azure Active Directory (konto służbowe) lub konta Microsoft (live.com, outlook.com), aby ją przetestować.
 
 ![Zaloguj się do aplikacji](./media/active-directory-develop-guidedsetup-windesktop-test/signinscreenshot.png)
 
-### <a name="provide-consent-for-application-access"></a>Podaj zgody na dostęp do aplikacji
-Podczas pierwszego logowania się do aplikacji, zostanie również wyświetlony monit zapewnienie wyrażenia zgody na umożliwić aplikacji dostęp do Twojego profilu i logowanie się w, jak pokazano poniżej: 
+### <a name="provide-consent-for-application-access"></a>Podanie zgody na dostęp do aplikacji
+Przy pierwszym logowaniu do aplikacji, zostanie również wyświetlony monit zapewnienie zgody, aby umożliwić aplikacji dostęp do Twojego profilu i logowanie się w programie, jak pokazano poniżej: 
 
 ![Wyrażenie zgody na dostęp do aplikacji](./media/active-directory-develop-guidedsetup-windesktop-test/consentscreen.png)
 
 ### <a name="view-application-results"></a>Wyświetl wyniki aplikacji
-Po zalogowaniu, powinny być widoczne informacje o profilu użytkownika, które jest zwracany przez wywołanie interfejsu API programu Microsoft Graph. Wyniki są wyświetlane w **wyniki wywołania interfejsu API** pole. Podstawowe informacje o token, który został uzyskany za pośrednictwem wywołania `AcquireTokenAsync` lub `AcquireTokenSilentAsync` powinny być widoczne w **informacji o tokenie** pole. Wyniki obejmują następujące właściwości:
+Po zalogowaniu, powinny być widoczne informacje o profilu użytkownika, który jest zwracany przez wywołanie interfejsu API programu Microsoft Graph. Wyniki są wyświetlane w **wyników wywołań interfejsu API** pole. Podstawowe informacje o token, który został uzyskany za pośrednictwem wywołania `AcquireTokenAsync` lub `AcquireTokenSilentAsync` powinny być widoczne w **informacje o tokenie** pole. Wyniki obejmują następujące właściwości:
 
 |Właściwość  |Format  |Opis |
 |---------|---------|---------|
-|**Nazwa** |Imię i nazwisko użytkownika |Imię i nazwisko użytkownika.|
-|**Nazwa użytkownika** |<span>user@domain.com</span> |Nazwa użytkownika, która jest używana do identyfikacji użytkownika.|
-|**Wygaśnięcia tokenu** |Data/godzina |Czas, w którym token jest ważny. MSAL rozszerza datę wygaśnięcia, odnowienie tokenu w razie potrzeby.|
-|**Token dostępu** |Ciąg |Tokenu ciąg, który jest wysyłany do HTTP żądań, które wymagają *nagłówek autoryzacji*.|
+|**Nazwa** |Imię i nazwisko użytkownika |Użytkownik na imię i nazwisko.|
+|**Nazwa użytkownika** |<span>user@domain.com</span> |Nazwa użytkownika, który służy do identyfikowania użytkownika.|
+|**Token wygasa** |DateTime |Czas, w którym token jest ważny. Biblioteka MSAL rozszerza datę wygaśnięcia, odnawianie tokenu zgodnie z potrzebami.|
+|**Token dostępu** |Ciąg |Ciąg tokenu, który jest wysyłany do protokołu HTTP żądania, które wymagają *nagłówek autoryzacji*.|
 
 <!--start-collapse-->
-### <a name="more-information-about-scopes-and-delegated-permissions"></a>Więcej informacji o zakresach i uprawnień delegowanych
+### <a name="more-information-about-scopes-and-delegated-permissions"></a>Więcej informacji o zakresach i delegowane uprawnienia
 
-Wymaga interfejsu API programu Microsoft Graph *user.read* zakresu odczytać profilu użytkownika. Ten zakres jest automatycznie dodawany domyślnie w każdej aplikacji, która jest zarejestrowana w portalu rejestracji aplikacji. Inne interfejsy API dla programu Microsoft Graph, a także niestandardowych interfejsów API dla serwera zaplecza może wymagać dodatkowych zakresów. Wymaga interfejsu API programu Microsoft Graph *Calendars.Read* zakres, aby wyświetlić listę kalendarzy użytkownika.
+Interfejsu API programu Microsoft Graph wymaga *user.read* zakresu na odczytywanie profilu użytkownika. Ten zakres jest automatycznie dodawany domyślnie każda aplikacja, która jest zarejestrowana w portalu rejestracji aplikacji. Inne interfejsy API dla programu Microsoft Graph, a także niestandardowych interfejsów API dla serwera zaplecza, może być wymagane dodatkowe zakresy. Interfejsu API programu Microsoft Graph wymaga *Calendars.Read* zakres, aby wyświetlić listę kalendarzy użytkownika.
 
-Aby uzyskać dostęp do kalendarzy użytkownika w kontekście aplikacji, należy dodać *Calendars.Read* delegowane uprawnienia do informacji o rejestracji aplikacji. Następnie należy dodać *Calendars.Read* zakres do `acquireTokenSilent` wywołania. 
+Aby uzyskać dostęp do kalendarzy użytkownika w kontekście aplikacji, należy dodać *Calendars.Read* delegowane uprawnienia do rejestrowania informacji o aplikacji. Następnie należy dodać *Calendars.Read* ograniczyć zakres do `acquireTokenSilent` wywołania. 
 
 >[!NOTE]
->Użytkownik może zostać wyświetlony monit dla dodatkowych zgody, jak zwiększyć liczbę zakresów.
+>Użytkownik może być monitowany o dodatkowe zgody, jak zwiększyć liczbę zakresów.
 
 <!--end-collapse-->
 

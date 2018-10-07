@@ -6,7 +6,6 @@ documentationcenter: dev-center-name
 author: andretms
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
@@ -15,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: c6d5fab6ff065dee336c510e3f94583cb0c4960b
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 248f2575e284ae456578b071013e1a5501329116
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46466175"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843429"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Użyj Microsoft Authentication Library (MSAL), aby uzyskać token dla interfejsu API programu Microsoft Graph
 
@@ -205,10 +204,10 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
 
 <!--start-collapse-->
 ### <a name="more-information"></a>Więcej informacji
-#### <a name="getting-a-user-token-interactively"></a>Pobieranie tokenu użytkownika interaktywnego
+#### <a name="getting-a-user-token-interactively"></a>Interaktywne pobieranie tokenu użytkownika
 Wywoływanie `acquireToken` metoda nie powoduje monitowanie użytkownika o Zaloguj się w oknie przeglądarki. Aplikacje zwykle wymagają użytkownika do logowania interakcyjnego potrzebują dostępu do chronionego zasobu po raz pierwszy lub silent operacji można uzyskać tokenu kończy się niepowodzeniem (np. hasło tego użytkownika wygasła).
 
-#### <a name="getting-a-user-token-silently"></a>Pobieranie tokenu użytkownika dyskretnie
+#### <a name="getting-a-user-token-silently"></a>Dyskretne pobieranie tokenu użytkownika
 `acquireTokenSilent` Obsługiwała pozyskanie tokenu i wznowienie bez żadnej interakcji użytkownika. Po `acquireToken` jest wykonywany po raz pierwszy `acquireTokenSilent` jest metodą, często używane do uzyskiwania tokenów, które umożliwiają dostęp do chronionych zasobów dla kolejnych wywołań — jak do żądania lub odnowienia tokenów wywołań dyskretnie.
 
 Po pewnym czasie `acquireTokenSilent` zakończy się niepowodzeniem — np. użytkownik zalogował lub została zmieniona swojego hasła na innym urządzeniu. Gdy biblioteki MSAL wykryje, że ten problem można rozwiązać, wymagając akcję interaktywne, jest on uruchamiany `MSALErrorCode.interactionRequired` wyjątku. Aplikacja może obsłużyć ten wyjątek na dwa sposoby:

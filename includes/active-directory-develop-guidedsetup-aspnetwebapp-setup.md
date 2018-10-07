@@ -2,36 +2,42 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: active-directory
+documentationcenter: dev-center-name
 author: andretms
+manager: mtillman
+editor: ''
 ms.service: active-directory
+ms.devlang: na
 ms.topic: include
-ms.date: 05/08/2018
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/17/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 9c7daf7bc947b08835148f6d09c58b47c9e0186b
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 99eabd8f9c9b3ab86c348350e8924cea0eb668ba
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36204924"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843302"
 ---
 ## <a name="set-up-your-project"></a>Konfigurowanie projektu
 
 W tej sekcji przedstawiono kroki, aby zainstalować i skonfigurować potoku uwierzytelniania za pomocą oprogramowania pośredniczącego OWIN w projekcie ASP.NET przy użyciu protokołu OpenID Connect. 
 
-> Preferowane jest zamiast tego Pobierz ten przykładowy projekt programu Visual Studio? [Pobieranie projektu](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip) i przejść [kroku konfiguracji](#register-your-application) skonfigurować przykładowy kod przed wykonaniem.
+> Chcesz zamiast tego Pobierz ten przykładowy projekt programu Visual Studio? [Pobieranie projektu](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip) , a następnie przejdź do [kroku konfiguracji](#register-your-application) do skonfigurowania przykładowego kodu przed wykonaniem.
 
-### <a name="create-your-aspnet-project"></a>Tworzenie projektu platformy ASP.NET
+### <a name="create-your-aspnet-project"></a>Utwórz projekt platformy ASP.NET
 
 1. W programie Visual Studio: `File` > `New` > `Project`
-2. W obszarze *Visual C# \Web*, wybierz pozycję `ASP.NET Web Application (.NET Framework)`.
-3. Nazwa aplikacji, a następnie kliknij przycisk *OK*
-4. Wybierz `Empty` i zaznacz pole wyboru, aby dodać `MVC` odwołań
+2. W obszarze *Visual C# \Web*, wybierz opcję `ASP.NET Web Application (.NET Framework)`.
+3. Nadaj nazwę aplikacji, a następnie kliknij przycisk *OK*
+4. Wybierz `Empty` i zaznacz pole wyboru, aby dodać `MVC` odwołania
 
 ## <a name="add-authentication-components"></a>Dodaj składniki uwierzytelniania
 
 1. W programie Visual Studio: `Tools` > `Nuget Package Manager` > `Package Manager Console`
-2. Dodaj *pakietów NuGet oprogramowanie pośredniczące OWIN* wpisując następujące polecenie w oknie konsoli Menedżera pakietów:
+2. Dodaj *pakiety NuGet oprogramowania pośredniczącego OWIN*, wpisując następujące polecenie w oknie Konsola menedżera pakietów:
 
     ```powershell
     Install-Package Microsoft.Owin.Security.OpenIdConnect
@@ -41,18 +47,18 @@ W tej sekcji przedstawiono kroki, aby zainstalować i skonfigurować potoku uwie
 
 <!--start-collapse-->
 > ### <a name="about-these-libraries"></a>Te biblioteki — informacje
->Powyżej biblioteki Włącz logowanie jednokrotne (SSO) przy użyciu protokołu OpenID Connect przy użyciu uwierzytelniania opartego na pliku cookie. Po zakończeniu uwierzytelniania i token reprezentujący użytkownika jest wysyłany do aplikacji, oprogramowanie pośredniczące OWIN tworzy plik cookie sesji. Dlatego użytkownik nie musi ponownie wpisać hasło i nie jest wymagane nie dodatkowe weryfikacji przeglądarki następnie używa tego pliku cookie dla kolejnych żądań.
+>Powyższe biblioteki włączają logowanie jednokrotne (SSO) przy użyciu protokołu OpenID Connect za pośrednictwem uwierzytelniania w oparciu o pliki cookie. Po zakończeniu uwierzytelniania i wysłaniu tokenu reprezentującego użytkownika do aplikacji oprogramowanie pośredniczące OWIN tworzy plik cookie sesji. Przeglądarki następnie używa ten plik cookie dla kolejnych żądań, dzięki czemu użytkownik nie musiał ponownie wpisz hasło, a nie dodatkowa weryfikacja jest wymagana.
 <!--end-collapse-->
 
-## <a name="configure-the-authentication-pipeline"></a>Konfigurowanie procesu uwierzytelniania
-Poniższe kroki są używane do tworzenia oprogramowania pośredniczącego OWIN klasy początkowej można skonfigurować uwierzytelniania OpenID Connect. Ta klasa zostanie uruchomiony automatycznie po rozpoczęciu procesu programu IIS.
+## <a name="configure-the-authentication-pipeline"></a>Konfigurowanie potoku uwierzytelniania
+Poniższe kroki są używane do tworzenia oprogramowania pośredniczącego OWIN Klasa początkowa, aby skonfigurować uwierzytelnianie OpenID Connect. Ta klasa zostanie wykonana automatycznie, gdy rozpoczyna się proces usług IIS.
 
 > [!TIP]
-> Jeśli projekt nie ma `Startup.cs` pliku w folderze głównym:
+> Jeśli projekt nie ma pliku `Startup.cs` w folderze głównym:
 > 1. Kliknij prawym przyciskiem myszy w folderze głównym projektu: > `Add` > `New Item...` > `OWIN Startup class`<br/>
 > 2. Nadaj jej nazwę `Startup.cs`
 >
->> Upewnij się, że jest wybrana klasa, klasę początkową OWIN i nie C# klasa standardowa. To potwierdzić, sprawdzając występowanie `[assembly: OwinStartup(typeof({NameSpace}.Startup))]` powyżej przestrzeni nazw.
+>> Upewnij się, że wybrana klasa to klasa początkowa OWIN, a nie standardowa klasa C#. Potwierdź to, sprawdzając obecność ciągu `[assembly: OwinStartup(typeof({NameSpace}.Startup))]` powyżej przestrzeni nazw.
 
 1. Dodaj *OWIN* i *Microsoft.IdentityModel* odwołuje się do `Startup.cs`:
 
@@ -67,7 +73,7 @@ Poniższe kroki są używane do tworzenia oprogramowania pośredniczącego OWIN 
     using Microsoft.Owin.Security.Notifications;
     ```
 
-2. Zastąp klasy początkowej przy użyciu poniższego kodu:
+2. Klasa początkowa Zastąp poniższy kod:
 
     ```csharp
     public class Startup
@@ -137,6 +143,6 @@ Poniższe kroki są używane do tworzenia oprogramowania pośredniczącego OWIN 
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>Więcej informacji
-> Parametry podane *OpenIDConnectAuthenticationOptions* służyć jako współrzędnych dla aplikacji do komunikowania się z usługą Azure AD. Ponieważ oprogramowania pośredniczącego protokołu OpenID Connect używa plików cookie w tle, należy skonfigurować uwierzytelniania plików cookie jako kod powyżej przedstawiono. *ValidateIssuer* wartość informuje OpenIdConnect nie ograniczyć dostęp do jednej z określonych organizacji.
+> Parametry podane w pozycji *OpenIDConnectAuthenticationOptions* służą jako współrzędne dla aplikacji do komunikowania się z usługą Azure AD. Ponieważ oprogramowania pośredniczącego OpenID Connect używa plików cookie w tle, należy skonfigurować uwierzytelniania plików cookie, jak kod powyżej przedstawiono. Wartość *ValidateIssuer* informuje oprogramowanie OpenIdConnect, aby nie ograniczać dostępu do jednej konkretnej organizacji.
 <!--end-collapse-->
 

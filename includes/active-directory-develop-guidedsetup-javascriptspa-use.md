@@ -6,7 +6,6 @@ documentationcenter: dev-center-name
 author: navyasric
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
@@ -15,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: be8ffeae1977fb2f56e0f85a716d982a6d2f84dc
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 77400453e455ff2ebf20f59f888a3e3d641bcf07
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060823"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843206"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Biblioteka Microsoft Authentication Library (MSAL) umożliwia logowanie użytkownika
 
@@ -132,16 +131,16 @@ Po kliknięciu *"Sign In"* przycisku po raz pierwszy `signIn` wywołania metody 
 
 SPA wygenerowane przez ten przewodnik dotyczący wywołania `acquireTokenSilent` i/lub `acquireTokenPopup` uzyskania *token dostępu* umożliwia tworzenie zapytań dotyczących interfejsu API programu Microsoft Graph, aby uzyskać informacje o profilu użytkownika. Przykład sprawdza poprawność tokenu Identyfikatora, należy spojrzeć na [to](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "przykładowe active-directory-javascript-singlepageapp-dotnet-webapi-v2 Github") ASP korzysta z przykładowej aplikacji w usłudze GitHub — przykład Interfejs API sieci web platformy .NET dla walidacji tokenów.
 
-#### <a name="getting-a-user-token-interactively"></a>Pobieranie tokenu użytkownika interaktywnego
+#### <a name="getting-a-user-token-interactively"></a>Interaktywne pobieranie tokenu użytkownika
 
 Po początkowej logowania, nie chcesz o konieczności ponownego uwierzytelnienia za każdym razem, gdy potrzebują do wysłania żądania tokenu dostępu do zasobu — więc *acquireTokenSilent* powinny być używane w większości przypadków do uzyskania tokenów. Istnieją jednak sytuacje, trzeba wymusić użytkownikom na interakcję z punktu końcowego v2 usługi Azure Active Directory — niektóre przykłady to:
-- Użytkownicy może być konieczne ponowne wprowadzenie poświadczeń, ponieważ hasło wygasło
-- Aplikacja żąda dostępu do zasobu, który użytkownik musi wyrazić zgodę na
-- Uwierzytelnianie dwuskładnikowe jest wymagana
+- Użytkownicy muszą ponownie wprowadzić poświadczenia, ponieważ hasło wygasło.
+- Aplikacja żąda dostępu do zasobów wymagającego zgody użytkownika.
+- Wymagane jest uwierzytelnianie dwuetapowe.
 
 Wywoływanie *acquireTokenPopup(scope)* wyniki w oknie podręcznym (lub *acquireTokenRedirect(scope)* skutkuje przekierowywanie użytkowników do punktu końcowego usługi Azure Active Directory w wersji 2) gdy użytkownicy musieli współpracują ze sobą, potwierdzenie poświadczeń, zapewniając zgody do wymaganych zasobów albo ukończenie uwierzytelniania dwuskładnikowego.
 
-#### <a name="getting-a-user-token-silently"></a>Pobieranie tokenu użytkownika dyskretnie
+#### <a name="getting-a-user-token-silently"></a>Dyskretne pobieranie tokenu użytkownika
 ` acquireTokenSilent` Obsługiwała pozyskanie tokenu i wznowienie bez żadnej interakcji użytkownika. Po `loginPopup` (lub `loginRedirect`) jest wykonywana po raz pierwszy `acquireTokenSilent` jest metodą, często używane do uzyskiwania tokenów, które umożliwiają dostęp do chronionych zasobów dla kolejnych wywołań — jak do żądania lub odnowienia tokenów wywołań dyskretnie.
 `acquireTokenSilent` może się nie powieść w niektórych przypadkach — na przykład użytkownika hasło wygasło. Aplikacja może obsłużyć ten wyjątek na dwa sposoby:
 

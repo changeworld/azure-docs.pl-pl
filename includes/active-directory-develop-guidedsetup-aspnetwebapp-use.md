@@ -6,7 +6,6 @@ documentationcenter: dev-center-name
 author: andretms
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
@@ -15,14 +14,14 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 98bb86be1e1d0dccb5a76b91489e664ee4a30765
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 167fccd8e0546bc8f5ac1b24489cae68cc14191f
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36943593"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48842861"
 ---
-## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>Dodawanie kontrolera do obsługi żądań logowania i wylogowywania
+## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>Dodaj kontroler do obsługi żądań logowania i wylogowania
 
 W tym kroku przedstawiono sposób tworzenia nowego kontrolera do udostępnienia metody logowania i wylogowywania.
 
@@ -38,7 +37,7 @@ W tym kroku przedstawiono sposób tworzenia nowego kontrolera do udostępnienia 
     using Microsoft.Owin.Security.OpenIdConnect;
     ```
     
-6. Dodaj te dwie metody poniżej, aby obsłużyć logowania i wylogowywania do kontrolera, inicjując żądanie uwierzytelnienia za pomocą kodu:
+6. Dodaj te dwie metody poniżej, aby obsłużyć logowania i wylogowania do kontrolera, inicjując wezwanie do uwierzytelnienia za pomocą kodu:
     
     ```csharp
     /// <summary>
@@ -66,13 +65,13 @@ W tym kroku przedstawiono sposób tworzenia nowego kontrolera do udostępnienia 
     }
     ```
 
-## <a name="create-the-apps-home-page-to-sign-in-users-via-a-sign-in-button"></a>Tworzenie strony głównej aplikacji do logowania użytkowników przy użyciu przycisku logowania
+## <a name="create-the-apps-home-page-to-sign-in-users-via-a-sign-in-button"></a>Tworzenie strony głównej aplikacji do logowania użytkowników za pomocą przycisku logowania
 
-W programie Visual Studio Utwórz nowy widok, aby dodać przycisk Zarejestruj i wyświetlić informacje o użytkowniku po uwierzytelnieniu:
+W programie Visual Studio utwórz nowy widok, aby dodać przycisk logowania i wyświetlić informacje o użytkowniku po uwierzytelnieniu:
 
 1.  Kliknij prawym przyciskiem myszy `Views\Home` i wybierz polecenie `Add View`
 2.  Nadaj jej nazwę `Index`.
-3.  Dodaj poniższy kod HTML, który zawiera przycisk Zarejestruj, do pliku:
+3.  Dodaj do pliku następujący kod HTML, który zawiera przycisk logowania:
 
     ```html
     <html>
@@ -114,17 +113,17 @@ W programie Visual Studio Utwórz nowy widok, aby dodać przycisk Zarejestruj i 
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>Więcej informacji
-> Ta strona dodaje przycisk Zarejestruj się w formacie SVG z czarnym tle:<br/>![Zaloguj się przy użyciu firmy Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Więcej logowania przycisków, przejdź do [tej strony](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "znakowanie wytyczne").
+> Ta strona dodaje przycisk logowania w formacie SVG z czarnym tle:<br/>![Zaloguj się przy użyciu konta Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Więcej logowania przyciski, przejdź do [na tej stronie](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "wytyczne dotyczące oznaczania marką").
 <!--end-collapse-->
 
-## <a name="add-a-controller-to-display-users-claims"></a>Dodawanie kontrolera w celu wyświetlenia oświadczeń użytkownika
-Ten kontroler pokazuje zastosowań `[Authorize]` atrybut do ochrony kontrolera. Ten atrybut ogranicza dostęp do kontrolera, zezwalając tylko użytkownicy uwierzytelnieni. Poniższy kod sprawia, że użycie atrybutu do wyświetlenia w ramach logowania w oświadczeń użytkowników, które zostały pobrane.
+## <a name="add-a-controller-to-display-users-claims"></a>Dodaj kontroler na wyświetlanie oświadczeń użytkownika
+Ten kontroler pokazuje wykorzystanie atrybutu `[Authorize]` do ochrony kontrolera. Ten atrybut ogranicza dostęp do kontrolera, zezwalając na dostęp tylko uwierzytelnionym użytkownikom. Poniższy kod wykorzystuje atrybutu do wyświetlenia oświadczeń użytkowników, które zostały pobrane w ramach logowania.
 
 1.  Kliknij prawym przyciskiem myszy `Controllers` folderu: `Add` > `Controller`
 2.  Wybierz pozycję `MVC {version} Controller – Empty`.
 3.  Kliknij przycisk *Dodaj*
 4.  Nadaj jej nazwę `ClaimsController`
-5.  Zamień na kod klasy kontrolera kod poniżej — spowoduje to dodanie `[Authorize]` do klasy atrybutu:
+5.  Zastąp kod klasy kontrolera kodem poniżej — spowoduje to dodanie `[Authorize]` do klasy atrybutu:
 
     ```csharp
     [Authorize]
@@ -157,16 +156,16 @@ Ten kontroler pokazuje zastosowań `[Authorize]` atrybut do ochrony kontrolera. 
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>Więcej informacji
-> Z powodu użycia `[Authorize]` atrybutu, wszystkie metody tego kontrolera można wykonać tylko, jeśli użytkownik jest uwierzytelniony. Jeśli użytkownik nie jest uwierzytelniony i próbuje uzyskać dostęp z kontrolerem, OWIN inicjują żądania uwierzytelnienia i zmusza użytkownika do uwierzytelniania. Powyższy kod analizuje lista oświadczeń dla określonego użytkownika atrybuty uwzględnione w tokenie identyfikator użytkownika. Te atrybuty obejmują pełną nazwę użytkownika i nazwę użytkownika, a także temat identyfikator użytkownika globalne. Zawiera także *identyfikator dzierżawcy*, który reprezentuje identyfikator organizacji użytkownika. 
+> Z powodu użycia atrybutu `[Authorize]` wszystkie metody tego kontrolera można wykonać tylko wtedy, gdy użytkownik jest uwierzytelniony. Jeśli użytkownik nie jest uwierzytelniony, próbuje uzyskać dostęp z kontrolerem OWIN inicjują wezwanie do uwierzytelnienia i zmusza użytkownika do uwierzytelniania. Powyższy kod sprawdza lista oświadczeń dla określonego użytkownika atrybutów zawarte w tokenie identyfikatora użytkownika. Te atrybuty obejmują imię i nazwisko użytkownika oraz nazwę użytkownika, a także podmiot globalnego identyfikatora. Zawiera on także *identyfikator dzierżawy*, który reprezentuje identyfikator organizacji użytkownika. 
 <!--end-collapse-->
 
-## <a name="create-a-view-to-display-the-users-claims"></a>Tworzenie widoku do wyświetlenia oświadczenia użytkownika
+## <a name="create-a-view-to-display-the-users-claims"></a>Utwórz widok na wyświetlanie oświadczeń użytkownika
 
-W programie Visual Studio Utwórz nowy widok, aby wyświetlić oświadczeń użytkownika na stronie sieci web:
+W programie Visual Studio utwórz nowy widok w celu wyświetlenia oświadczeń użytkownika na stronie internetowej:
 
 1.  Kliknij prawym przyciskiem myszy `Views\Claims` folderu oraz: `Add View`
 2.  Nadaj jej nazwę `Index`.
-3.  Dodaj poniższy kod HTML do pliku:
+3.  Dodaj następujący kod HTML do pliku:
 
     ```html
     <html>

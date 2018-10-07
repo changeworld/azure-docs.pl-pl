@@ -6,7 +6,6 @@ documentationcenter: dev-center-name
 author: andretms
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
@@ -15,18 +14,18 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: f0e584a4a4a54fc04b5539b56d5c901bfaa42bcc
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 6e20ce083c415bced22231835cc616ede8f0dd04
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46293776"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843061"
 ---
 ## <a name="register-your-application"></a>Rejestrowanie aplikacji
 Aplikację można zarejestrować na dwa sposoby, zgodnie z opisem w dwóch następnych sekcjach.
 
 ### <a name="option-1-express"></a>Opcja 1: Express
-1. Przejdź do [portalu rejestracji aplikacji Microsoft](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=android&step=configure).
+1. Przejdź do [portalu rejestracji aplikacji firmy Microsoft](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=android&step=configure).
 2.  W **Nazwa aplikacji**, wprowadź nazwę aplikacji.
 
 3. Upewnij się, że **instrukcje konfiguracji** pole wyboru jest wybrany, a następnie wybierz **Utwórz**.
@@ -34,12 +33,12 @@ Aplikację można zarejestrować na dwa sposoby, zgodnie z opisem w dwóch nast�
 4. Postępuj zgodnie z instrukcjami dotyczącymi uzyskiwania Identyfikatora aplikacji, a następnie wklej go w kodzie.
 
 ### <a name="option-2-advanced"></a>Opcja 2: Zaawansowane 
-1. Przejdź do [portalu rejestracji aplikacji Microsoft](https://apps.dev.microsoft.com/portal/register-app).
-2. W **Nazwa aplikacji** wprowadź nazwę aplikacji. 
+1. Przejdź do [portalu rejestracji aplikacji firmy Microsoft](https://apps.dev.microsoft.com/portal/register-app).
+2. W polu **Application Name** (Nazwa aplikacji) wprowadź nazwę aplikacji. 
 
-3. Upewnij się, że **instrukcje konfiguracji** pole wyboru jest wyczyszczone, a następnie wybierz **Utwórz**.
+3. Upewnij się, że pole **Guided Setup** (Konfiguracja z przewodnikiem) jest wyczyszczone, a następnie wybierz pozycję **Create** (Utwórz).
 
-4. Wybierz **Dodaj platformy**, wybierz opcję **aplikacji natywnej**, a następnie wybierz pozycję **Zapisz**.
+4. Wybierz kolejno pozycje **Add platform** (Dodaj platformę), **Native Application** (Aplikacja natywna) i **Save** (Zapisz).
 
 5. W obszarze **aplikacji** > **java** > **{hosta}. { przestrzeń nazw}**, otwórz `MainActivity`. 
 
