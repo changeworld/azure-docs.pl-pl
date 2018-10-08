@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 08/29/2018
+ms.date: 09/05/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: d7b93c28bf83e468d1470b0962dcf9d87a52adb2
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 00a1f7edfb24d9bd44e48161f3cd2e69cba36bfc
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189580"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052126"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Tworzenie aplikacji internetowej ASP.NET Core na platformie Azure
 
@@ -36,11 +36,12 @@ Usługa [Azure Web Apps](app-service-web-overview.md) oferuje wysoce skalowalną
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W celu ukończenia tego samouczka:
+Aby ukończyć ten samouczek, zainstaluj program <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> z pakietem roboczym **Programowanie dla platformy ASP.NET i sieci Web**.
 
-Zainstaluj program <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> z pakietem roboczym **Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych**.
+Jeśli masz już zainstalowany program Visual Studio 2017:
 
-Jeśli program Visual Studio został już zainstalowany, dodaj pakiet roboczy w programie Visual Studio, klikając kolejno pozycje **Narzędzia** > **Pobierz narzędzia i funkcje**.
+- Zainstaluj najnowsze aktualizacje w programie Visual Studio, klikając pozycje **Pomoc** > **Sprawdź aktualizacje**.
+- Dodaj pakiet roboczy, klikając pozycje **Narzędzia** > **Pobierz narzędzia i funkcje**.
 
 ## <a name="create-an-aspnet-core-web-app"></a>Tworzenie aplikacji internetowej ASP.NET Core
 
@@ -52,7 +53,7 @@ Nadaj aplikacji nazwę _myFirstAzureWebApp_, a następnie kliknij przycisk **OK*
    
 ![Okno dialogowe Nowy projekt](./media/app-service-web-get-started-dotnet/new-project.png)
 
-Na platformie Azure można wdrożyć dowolny typ aplikacji internetowej ASP.NET Core. Do celów tego przewodnika Szybki start wybierz szablon **Aplikacja internetowa** i upewnij się, że uwierzytelnianie jest ustawione na wartość **Bez uwierzytelniania**.
+Na platformie Azure można wdrożyć dowolny typ aplikacji internetowej ASP.NET Core. Do celów tego przewodnika Szybki start wybierz szablon **Aplikacja internetowa** i upewnij się, że uwierzytelnianie jest ustawione na wartość **Bez uwierzytelniania** i nie jest wybrana żadna inna opcja.
       
 Kliknij przycisk **OK**.
 
@@ -62,21 +63,19 @@ Z menu wybierz pozycję **Debuguj > Uruchom bez debugowania**, aby lokalnie uruc
 
 ![Uruchamianie aplikacji lokalnie](./media/app-service-web-get-started-dotnet/razor-web-app-running-locally.png)
 
-## <a name="publish-to-azure"></a>Publikowanie na platformie Azure
+## <a name="launch-the-publish-wizard"></a>Uruchamianie kreatora publikacji
 
 W obszarze **Eksplorator rozwiązań** kliknij prawym przyciskiem myszy projekt **myFirstAzureWebApp**, a następnie wybierz polecenie **Publikuj**.
 
 ![Publikowanie z Eksploratora rozwiązań](./media/app-service-web-get-started-dotnet/right-click-publish.png)
 
-Upewnij się, że pozycja **Microsoft Azure App Service** jest zaznaczona, a następnie kliknij przycisk **Publikuj**.
+Kreator publikowania jest uruchamiany automatycznie. Wybierz pozycje **App Service** > **Publikuj**, aby otworzyć okno dialogowe **Utwórz usługę App Service**.
 
 ![Publikowanie ze strony przeglądu projektu](./media/app-service-web-get-started-dotnet/publish-to-app-service.png)
 
-Spowoduje to otwarcie okna dialogowego **Tworzenie usługi App Service**, które ułatwi Ci utworzenie wszystkich zasobów platformy Azure niezbędnych do uruchomienia aplikacji internetowej ASP.NET Core na platformie Azure.
-
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-W oknie dialogowym **Tworzenie usługi App Service** kliknij pozycję **Dodaj konto**, a następnie zaloguj się do swojej subskrypcji platformy Azure. Po zalogowaniu wybierz z listy rozwijanej konto zawierające odpowiednią subskrypcję.
+W oknie dialogowym **Tworzenie usługi App Service** kliknij pozycję **Dodaj konto**, a następnie zaloguj się do swojej subskrypcji platformy Azure. Jeśli logowanie zostało już wykonane, wybierz żądane konto z listy rozwijanej.
 
 > [!NOTE]
 > Jeśli przeprowadzono już logowanie, nie wybieraj jeszcze pozycji **Utwórz**.
@@ -96,9 +95,9 @@ Nadaj grupie zasobów nazwę **myResourceGroup**, a następnie kliknij przycisk 
 
 [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-Obok pozycji **Plan usługi App Service** wybierz pozycję **Nowy**. 
+Obok pozycji **Plan hostingu** wybierz pozycję **Nowy**. 
 
-W oknie dialogowym **Konfiguruj plan usługi App Service** użyj ustawień znajdujących się w tabeli poniżej zrzutu ekranu.
+W oknie dialogowym **Konfiguruj plan hostingu** użyj ustawień znajdujących się w tabeli poniżej zrzutu ekranu.
 
 ![Tworzenie planu usługi App Service](./media/app-service-web-get-started-dotnet/configure-app-service-plan.png)
 
@@ -112,17 +111,17 @@ Kliknij przycisk **OK**.
 
 ## <a name="create-and-publish-the-web-app"></a>Tworzenie i publikowanie aplikacji internetowej
 
-W polu **Nazwa aplikacji internetowej** wpisz unikatową nazwę aplikacji (dozwolone znaki to `a-z`, `0-9` i `-`) lub zaakceptuj automatycznie wygenerowaną unikatową nazwę. Adres URL aplikacji internetowej to `http://<app_name>.azurewebsites.net`, gdzie `<app_name>` to nazwa aplikacji internetowej.
+W polu **Nazwa aplikacji** wpisz unikatową nazwę aplikacji (dozwolone znaki to `a-z`, `0-9` i `-`) lub zaakceptuj automatycznie wygenerowaną unikatową nazwę. Adres URL aplikacji internetowej to `http://<app_name>.azurewebsites.net`, gdzie `<app_name>` to nazwa aplikacji.
 
 Wybierz pozycję **Utwórz**, aby rozpocząć tworzenie zasobów platformy Azure.
 
-![Konfigurowanie nazwy aplikacji internetowej](./media/app-service-web-get-started-dotnet/web-app-name.png)
+![Konfigurowanie nazwy aplikacji](./media/app-service-web-get-started-dotnet/web-app-name.png)
 
 Po zakończeniu działania kreatora aplikacja internetowa ASP.NET Core zostanie opublikowana na platformie Azure, a następnie uruchomiona w domyślnej przeglądarce.
 
 ![Opublikowana aplikacja internetowa platformy ASP.NET na platformie Azure](./media/app-service-web-get-started-dotnet/web-app-running-live.png)
 
-Nazwa aplikacji internetowej określona w [kroku tworzenia i publikowania](#create-and-publish-the-web-app) jest używana jako prefiks adresu URL w formacie `http://<app_name>.azurewebsites.net`.
+Nazwa aplikacji określona w [kroku tworzenia i publikowania](#create-and-publish-the-web-app) jest używana jako prefiks adresu URL w formacie `http://<app_name>.azurewebsites.net`.
 
 Gratulacje, Twoja aplikacja internetowa ASP.NET Core działa w usłudze Azure App Service.
 
@@ -130,7 +129,7 @@ Gratulacje, Twoja aplikacja internetowa ASP.NET Core działa w usłudze Azure Ap
 
 Za pomocą **Eksploratora rozwiązań** otwórz plik _Pages/Index.cshtml_.
 
-Znajdź tag HTML `<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">` u góry i zastąp cały element następującym kodem:
+Zastąp dwa tagi `<div>` następującym kodem:
 
 ```HTML
 <div class="jumbotron">
