@@ -1,7 +1,7 @@
 
 ## <a name="open-azure-cloud-shell"></a>Otwieranie usługi Azure Cloud Shell
 
-Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Typowe narzędzia platformy Azure są wstępnie zainstalowane i skonfigurowane w usłudze Cloud Shell na potrzeby użycia z poziomu konta. Po prostu wybierz przycisk **Kopiuj**, aby skopiować kod, wklej go do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby go uruchomić. Usługę Cloud Shell można otworzyć na kilka sposobów:
+Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Typowe narzędzia platformy Azure są wstępnie zainstalowane i skonfigurowane w usłudze Cloud Shell na potrzeby użycia z poziomu konta. Po prostu wybierz przycisk **Kopiuj**, aby skopiować kod, wklej go do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby go uruchomić. Usługę Cloud Shell można otworzyć na kilka sposobów. Możesz wybrać dowolny z nich:
 
 |  |   |
 |-----------------------------------------------|---|
