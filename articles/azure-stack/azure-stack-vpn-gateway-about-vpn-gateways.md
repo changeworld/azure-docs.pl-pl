@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/02/2018
 ms.author: brenduns
-ms.openlocfilehash: 0ff3402115ae9f4c736bf9058fc09de16eaefb1e
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: ed405a0f8892b278d81f2494ad90f776ad5faa41
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347190"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857095"
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>O usłudze VPN gateway dla usługi Azure Stack
 
@@ -33,7 +33,7 @@ Podczas tworzenia bramy sieci wirtualnej musisz wybrać typ bramy do utworzenia.
 
 Każda sieć wirtualna może mieć tylko dwie bramy sieci wirtualnych, ale może istnieć tylko jedna brama danego typu. W zależności od wybranych ustawień można utworzyć wiele połączeń z jedną bramą sieci VPN. Przykładem jest Konfiguracja połączenia obejmującego wiele lokacji.
 
-Przed utworzeniem i konfigurowanie bramy sieci VPN dla usługi Azure Stack, przejrzyj [zagadnienia dotyczące sieci usługi Azure Stack](/azure/azure-stack/user/azure-stack-network-differences) Aby dowiedzieć się, jak konfiguracji dla usługi Azure Stack różni się od platformy Azure.
+Przed utworzeniem i konfigurowanie bramy sieci VPN dla usługi Azure Stack, przejrzyj [zagadnienia dotyczące sieci usługi Azure Stack](/articles/azure-stack/user/azure-stack-network-differences.md) Aby dowiedzieć się, jak konfiguracji dla usługi Azure Stack różni się od platformy Azure.
 
 >[!NOTE]
 >Na platformie Azure przepustowość dla bramy sieci VPN możesz wybrać jednostkę SKU musi być podzielona we wszystkich połączeniach, które są podłączone do bramy. Jednak w usłudze Azure Stack wartość przepustowości dla jednostki SKU bramy sieci VPN jest stosowany do każdego zasobu połączenia, która jest połączona z bramą.

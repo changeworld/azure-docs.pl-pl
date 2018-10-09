@@ -9,12 +9,12 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: b6bb04d9cec690198de663189dacd41fcbe960eb
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: bb3e5010f1839f7b18396cc8e177ed07e52ea98a
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248608"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867646"
 ---
 # <a name="design-process-overview"></a>Omówienie procesu projektowania
 We wszystkich fazach Akustyka projektu przepływu pracy można wyrazić zgodną z planem projektu: wstępne tworzenie sceny instalacji, położenia źródła dźwięku i po Tworzenie projektu. Ten proces wymaga mniej znaczników skojarzony umieszczenie woluminy pogłosu przy zachowaniu projektanta kontrolę nad jak brzmi sceny.
@@ -37,6 +37,21 @@ Wyświetlanie voxels oraz sondę w punktach w czasie wykonywania mogą pomóc w 
 
 Wyświetlanie voxel może pomóc określić, jeśli składniki wizualne w grze mają transformacji zastosowanych do nich. Jeśli tak, należy zastosować taką samą transformację z hostingiem elementy GameObject **Menedżera Akustyka**.
 
+### <a name="voxel-size-discrepancies"></a>Voxel rozmiar niezgodności
+Można zauważyć, że rozmiar voxels używa się do ilustrowania, który sceny siatek uczestniczyć w tworzenie Akustyka różni się w widokach czasu i środowiska wykonawczego projektu. Ta różnica nie ma wpływu na jakość/stopień szczegółowości swoje częstotliwość symulacji wybrany, ale jest raczej biproduct użytkowania sceny voxelized środowiska uruchomieniowego. W czasie wykonywania "dostosowany" do obsługi interpolacji między lokalizacje źródłowe są voxels symulacji. Dzięki temu, projekt czasu pozycjonowanie źródeł dźwięku bliżej do siatek sceny niż pozwala rozmiar voxel symulacji — ponieważ źródeł wewnątrz voxel, które zawierają pod względem akustycznym traktowanej siatki nie należy wprowadzać żadnych dźwięku.
+
+Poniżej przedstawiono dwa obrazy przedstawiający różnicę między voxels projektu (wstępne tworzenie) i voxels środowiska uruchomieniowego (po tworzenie), jak zwizualizować za wtyczki aparatu Unity:
+
+Voxels czasu projektowania:
+
+![VoxelsDesignTime](media/VoxelsDesignTime.png)
+
+Voxels środowiska uruchomieniowego:
+
+![VoxelsRuntime](media/VoxelsRuntime.png)
+
+Decyzja w sprawie czy siatki voxel dokładnie reprezentuje siatek sceny architektury do konstrukcji należy za pomocą voxels trybu projektowania, nie wizualizacji środowiska uruchomieniowego voxels dostosowany.
+
 ## <a name="post-bake-design"></a>Po utworzeniu Tworzenie projektu
 Tworzenie wyniki są przechowywane w pliku ACE jako parametry zamknięcia i reverberation dla wszystkich par lokalizacji odbiornika źródła w całym sceny. To fizycznie uzyskać dokładny wynik może służyć do Twojego projektu jako — jest i jest doskonałym punkt początkowy dla projektu. Proces projektowania po tworzenie określa reguły przekształcania parametry wynik tworzenie w czasie wykonywania.
 
@@ -53,22 +68,22 @@ Aby dostosować parametry dla wszystkich źródeł, kliknij na pasku kanału w m
 ![Dostosowywanie Mixer](media/MixerParameters.png)
 
 ### <a name="tuning-source-parameters"></a>Dostrajanie parametrów źródła
-Dołączanie **AcousticsDesign** skrypt do źródła umożliwia dostrajanie parametrów dla tego źródła. Aby dołączyć skrypt, kliknij przycisk **Dodaj składnik** w dolnej części **Inspektor** panelu, a następnie przejdź do **Skrypty > Projekt Akustyka**. Skrypt zawiera sześć kontrolki:
+Dołączanie **AcousticsAdjust** skrypt do źródła umożliwia dostrajanie parametrów dla tego źródła. Aby dołączyć skrypt, kliknij przycisk **Dodaj składnik** w dolnej części **Inspektor** panelu, a następnie przejdź do **Skrypty > Dostosuj Akustyka**. Skrypt zawiera sześć kontrolki:
 
-![AcousticsDesign](media/AcousticsDesign.png)
+![AcousticsAdjust](media/AcousticsAdjust.png)
 
-* **Współczynnik zamknięcia** -dotyczą mnożnik zamknięcia poziom bazy danych, obliczone przez system Akustyka. Jeśli ta mnożnik jest większa niż 1, zamknięcia będzie exaggerated, podczas wartości mniejsza niż 1 Upewnij wpływ zamknięcia bardziej subtelne, a wartość 0 powoduje wyłączenie zamknięcia.
-* **Przekazywanie (baza danych)** — Ustaw tłumienie (w bazie danych), spowodowane przez geometrii. Ustaw suwak do jego najniższym poziomie, aby wyłączyć przekazywanie. Akustyka spatializes początkowej audio susz jako odebranych wokół geometrii sceny (portaling). Przekazywanie udostępnia dodatkowe przybycia susz, który jest spatialized w kierunku linii wzroku. Należy pamiętać, że tłumienie odległość krzywą dla źródła są również stosowane.
-* **Dostosuj wetness (baza danych)** — dopasowuje pogłosu zasilania, w bazie danych, zgodnie z odległości ze źródła. Wartości dodatnich wprowadzać dźwięk bardziej reverberant podczas wartości ujemnych wprowadzić bardziej susz dźwięku. Kliknij na formancie krzywej (wiersz zielony), aby wyświetlić Edytor krzywej. Zmodyfikuj krzywej kliknięcie lewym przyciskiem myszy, aby dodać punkty, a następnie przeciągając tych punktów w celu utworzenia funkcji, że chcesz użyć. Oś x jest odległość od źródłowego i osi y jest dostosowanie pogłosu w bazie danych. Zobacz ten [ręczne Unity](https://docs.unity3d.com/Manual/EditingCurves.html) Aby uzyskać więcej informacji na temat edytowania krzywych. Aby przywrócić wartość domyślną krzywej, kliknij prawym przyciskiem myszy **dostosować Wetness** i wybierz **resetowania**.
-* **Decay Skala czasu** — dopasowuje mnożnik dla czas zanikania. Na przykład jeśli wynik tworzenie określa czas zanikania 750 milisekund, ale ta wartość jest równa 1,5, czas zanikania stosowane do źródła jest 1,125 milisekund.
 * **Włącz Akustyka** — Określa, czy Akustyka jest stosowany do tego źródła. Po usunięciu zaznaczenia źródła będzie spatialized HRTFs, jednak bez Akustyka, co oznacza bez przeszkód, zamknięcia i parametry dynamiczne reverberation, takie jak poziom i zanikania czasu. Reverberation nadal jest stosowany przy stałym poziomie i czas zanikania.
-* **Dostosowanie outdoorness** -addytywne korektę na system Akustyka szacowania jak "na zewnątrz" reverberation w źródle powinny dźwiękowych. To ustawienie na 1 spowoduje, że źródło zawsze dźwięku całkowicie na zewnątrz, podczas ustawienie go na wartość -1 spowoduje, że źródła dźwięku pomieszczeniu.
+* **Zamknięcia** -dotyczą mnożnik zamknięcia poziom bazy danych, obliczone przez system Akustyka. Jeśli ta mnożnik jest większa niż 1, zamknięcia będzie exaggerated, podczas wartości mniejsza niż 1 Upewnij wpływ zamknięcia bardziej subtelne, a wartość 0 powoduje wyłączenie zamknięcia.
+* **Przekazywanie (baza danych)** — Ustaw tłumienie (w bazie danych), spowodowane przez geometrii. Ustaw suwak do jego najniższym poziomie, aby wyłączyć przekazywanie. Akustyka spatializes początkowej audio susz jako odebranych wokół geometrii sceny (portaling). Przekazywanie udostępnia dodatkowe przybycia susz, który jest spatialized w kierunku linii wzroku. Należy pamiętać, że tłumienie odległość krzywą dla źródła są również stosowane.
+* **Wetness (baza danych)** — dopasowuje pogłosu zasilania, w bazie danych, zgodnie z odległości ze źródła. Wartości dodatnich wprowadzać dźwięk bardziej reverberant podczas wartości ujemnych wprowadzić bardziej susz dźwięku. Kliknij na formancie krzywej (wiersz zielony), aby wyświetlić Edytor krzywej. Zmodyfikuj krzywej kliknięcie lewym przyciskiem myszy, aby dodać punkty, a następnie przeciągając tych punktów w celu utworzenia funkcji, że chcesz użyć. Oś x jest odległość od źródłowego i osi y jest dostosowanie pogłosu w bazie danych. Zobacz ten [ręczne Unity](https://docs.unity3d.com/Manual/EditingCurves.html) Aby uzyskać więcej informacji na temat edytowania krzywych. Aby przywrócić wartość domyślną krzywej, kliknij prawym przyciskiem myszy **Wetness** i wybierz **resetowania**.
+* **Decay Skala czasu** — dopasowuje mnożnik dla czas zanikania. Na przykład jeśli wynik tworzenie określa czas zanikania 750 milisekund, ale ta wartość jest równa 1,5, czas zanikania stosowane do źródła jest 1,125 milisekund.
+* **Outdoorness** -addytywne korektę na system Akustyka szacowania jak "na zewnątrz" reverberation w źródle powinny dźwiękowych. To ustawienie na 1 spowoduje, że źródło zawsze dźwięku całkowicie na zewnątrz, podczas ustawienie go na wartość -1 spowoduje, że źródła dźwięku pomieszczeniu.
 
-Różne źródła może wymagać różne ustawienia uzyskać pewne efekty estetycznych lub rozgrywkę. Okno dialogowe jest jednym z przykładów możliwe. Wyczyść ludzi jest bardziej attuned do reverberation w mowy, gdy okno dialogowe często konieczne jest zrozumiały dla rozgrywkę. Konta na w tym, bez konieczności szukania okno dialogowe bez diegetic, przenosząc **dostosować Wetness** w dół, dostosowując **Percepcyjna Warp odległość** parametru opisane poniżej, dodając kilka **Transmisji** dla niektórych susz boost audio propagowanie przez ściany i/lub zmniejszając **zamknięcia współczynnik** od 1 do ma więcej dźwięku odbierane za pośrednictwem portali.
+Różne źródła może wymagać różne ustawienia uzyskać pewne efekty estetycznych lub rozgrywkę. Okno dialogowe jest jednym z przykładów możliwe. Wyczyść ludzi jest bardziej attuned do reverberation w mowy, gdy okno dialogowe często konieczne jest zrozumiały dla rozgrywkę. Konta na w tym, bez konieczności szukania okno dialogowe bez diegetic, przenosząc **Wetness** w dół, dostosowując **Percepcyjna Warp odległość** parametru opisane poniżej, dodanie niektórych  **Przekazywanie** dla niektórych susz boost audio propagowanie przez ściany i/lub zmniejszając **zamknięcia** od 1 do ma więcej dźwięku odbierane za pośrednictwem portali.
 
-Dołączanie **AcousticsDesignExperimental** skrypt do źródła umożliwia eksperymentalne dostrajania parametrów dla tego źródła. Aby dołączyć skrypt, kliknij przycisk **Dodaj składnik** w dolnej części **Inspektor** panelu, a następnie przejdź do **skryptów > eksperymentalne projektowania Akustyka**. Obecnie jest jedną eksperymentalna kontrolka:
+Dołączanie **AcousticsAdjustExperimental** skrypt do źródła umożliwia eksperymentalne dostrajania parametrów dla tego źródła. Aby dołączyć skrypt, kliknij przycisk **Dodaj składnik** w dolnej części **Inspektor** panelu, a następnie przejdź do **Skrypty > Akustyka dostosować eksperymentalne**. Obecnie jest jedną eksperymentalna kontrolka:
 
-![AcousticsDesignExperimental](media/AcousticsDesignExperimental.png)
+![AcousticsAdjustExperimental](media/AcousticsAdjustExperimental.png)
 
 * **Percepcyjna Warp odległość** — Zastosuj wykładniczy Wypaczanie odległość, używany do obliczania współczynnik mokro próbnego. System Akustyka oblicza mokrą poziomy w całej przestrzeni, które różnią się płynnie z odległości i podaj odległość Percepcyjna podpowiedzi. Wypaczanie wartości większe niż 1 exaggerate ten efekt przez coraz większe poziomy reverberation powiązane odległość, wprowadzania dźwięku "odległe", podczas gdy mniej niż 1 Upewnij Wypaczanie wartości bardziej subtelne, dzięki czemu dźwięk więcej zmian na podstawie odległości reverberation "przedstawia".
 
