@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: spelluru
-ms.openlocfilehash: c81f876d352c05592257d7d4118a635982845d06
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: fb42f9920ce173b25cbc16725cf1f9dfd96fcc9e
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408423"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48853457"
 ---
 # <a name="duplicate-detection"></a>Wykrywanie duplikatów
 
@@ -58,7 +58,6 @@ Utrzymywanie okna small oznacza, że mniej identyfikatory komunikatów muszą by
 
 Aby dowiedzieć się więcej na temat obsługi komunikatów usługi Service Bus, zobacz następujące tematy:
 
-* [Podstawy usługi Service Bus](service-bus-fundamentals-hybrid-solutions.md)
 * [Kolejki, tematy i subskrypcje usługi Service Bus](service-bus-queues-topics-subscriptions.md)
 * [Wprowadzenie do kolejek usługi Service Bus](service-bus-dotnet-get-started-with-queues.md)
 * [Jak używać tematów i subskrypcji usługi Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)

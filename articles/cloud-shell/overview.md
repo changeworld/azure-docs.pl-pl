@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: ea7393584e77b51073ca8938ec03e9d6f6ad6fc0
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 85d054be6b72c736ec66384b9caec71208f36802
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166677"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869367"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Omówienie usługi Azure Cloud Shell
 Usługa Azure Cloud Shell jest powłoką interaktywne, dostępny w przeglądarce do zarządzania zasobami platformy Azure.
@@ -78,7 +78,7 @@ Dowiedz się więcej na temat sposobu instalacji [konta magazynu do nowego lub i
 * Usługa cloud Shell wymaga udziału plików platformy Azure ma zostać zainstalowany
 * Usługa cloud Shell używa tego samego udziału plików platformy Azure dla zarówno powłoki Bash, jak i programu PowerShell
 * Usługa cloud Shell jest przypisany jeden komputer dla konta użytkownika
-* Usługa cloud Shell będzie się powtarzał $Home przy użyciu obrazu 5 GB przechowywanych w udziale plików
+* Usługa cloud Shell będzie się powtarzał $HOME przy użyciu obrazu 5 GB przechowywanych w udziale plików
 * Uprawnienia zostały ustawione jako zwykły użytkownik systemu Linux w powłoce Bash
 
 Dowiedz się więcej o funkcjach [Bash w usłudze Cloud Shell](features.md) i [programu PowerShell w usłudze Cloud Shell](features-powershell.md).

@@ -2,18 +2,17 @@
 title: Konfiguracja sieci w usłudze Azure Kubernetes Service (AKS)
 description: Więcej informacji o konfiguracji sieci podstawowe i Zaawansowane w usłudze Azure Kubernetes Service (AKS).
 services: container-service
-author: mmacy
-manager: jeconnoc
+author: iainfoulds
 ms.service: container-service
 ms.topic: article
 ms.date: 08/31/2018
-ms.author: marsma
-ms.openlocfilehash: 16349af5932987cc0db4295355a0365c8579fcbf
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.author: iainfou
+ms.openlocfilehash: d278e47979e696183b703f7e67e39757d854fdb2
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345744"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857741"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Konfiguracja sieci w usłudze Azure Kubernetes Service (AKS)
 

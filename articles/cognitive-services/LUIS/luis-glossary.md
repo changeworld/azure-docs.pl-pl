@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: a741cb1c2643e48080018e5c9f4ada7038bce29e
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: b24b21ee5fc929d3e7bd026191ce8791d79f9abc
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434810"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870778"
 ---
 # <a name="glossary"></a>Słownik
 Language Understanding (LUIS) słownik wyjaśnia, warunki, które można napotkać podczas pracy z usługą interfejsu API usługi LUIS.
@@ -74,7 +74,7 @@ W kontekście usługi LUIS **domeny** jest obszarem wiedzy. Twoja domena to spec
 
 ## <a name="endpoint"></a>Punkt końcowy
 
-[Punktu końcowego usługi LUIS](https://aka.ms/luis-endpoint-apis) adres URL jest, dokąd wysyłać zapytania usługi LUIS po [aplikacją usługi LUIS](#luis-app) jest utworzonych i opublikowanych. Adres URL punktu końcowego zawiera region opublikowanej aplikacji, a także identyfikator aplikacji. Można znaleźć punktu końcowego na **[kluczy i punktów końcowych](/luis-how-to-manage-keys.md)** strony aplikacji, lub można uzyskać adresu URL punktu końcowego z [uzyskać informacje o aplikacji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) interfejsu API.
+[Punktu końcowego usługi LUIS](https://aka.ms/luis-endpoint-apis) adres URL jest, dokąd wysyłać zapytania usługi LUIS po [aplikacją usługi LUIS](#luis-app) jest utworzonych i opublikowanych. Adres URL punktu końcowego zawiera region opublikowanej aplikacji, a także identyfikator aplikacji. Można znaleźć punktu końcowego na **[kluczy i punktów końcowych](luis-how-to-manage-keys.md)** strony aplikacji, lub można uzyskać adresu URL punktu końcowego z [uzyskać informacje o aplikacji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) interfejsu API.
 
 Przykładowy punkt końcowy wygląda następująco:
 

@@ -2,17 +2,17 @@
 title: Dokumentacja usługi Azure Container Registry zadań - YAML
 description: Odwołanie do definiowania zadań w YAML dla zadania usługi ACR, w tym właściwości zadania, krok typy, właściwości kroku i wbudowane zmienne.
 services: container-registry
-author: mmacy
+author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 09/24/2018
-ms.author: marsma
-ms.openlocfilehash: a40c05b2775e32bd0932122245914951d42cf712
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.author: danlep
+ms.openlocfilehash: a26b766c18ea2b14796af796abe7f36aa4fc1c66
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47048083"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854953"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Odwołanie do zadania usługi ACR: YAML
 
@@ -30,7 +30,7 @@ Zadania rejestru Azure container Registry obsługuje deklaracji wieloetapowego z
 Najwyższego poziomu `acr-task.yaml` są w nim elementów podstawowych **we właściwościach zadania**, **krok typy**, i **krok właściwości**:
 
 * [We właściwościach zadania](#task-properties) dotyczą wszystkie kroki wykonywane w ramach wykonywania zadania. Istnieją trzy właściwości globalnego zadania:
-  * wersja
+  * version
   * stepTimeout
   * totalTimeout
 * [Zadanie typy kroku](#task-step-types) reprezentują typy akcji, które mogą być wykonywane w zadaniu. Istnieją trzy typy krok:
@@ -40,7 +40,7 @@ Najwyższego poziomu `acr-task.yaml` są w nim elementów podstawowych **we wła
 * [We właściwościach krok zadania](#task-step-properties) parametrów, które są stosowane do pojedynczego kroku. Istnieje kilka właściwości kroku, w tym:
   * startDelay
   * timeout
-  * Kiedy
+  * kiedy
   * .. .i wiele innych.
 
 Podstawowy format `acr-task.yaml` następuje po pliku, w tym niektóre typowe właściwości kroku. Podczas nie wyczerpujący reprezentacja wszystkich właściwości dostępne kroku lub krok typu użycia zapewnia szybki przegląd format pliku podstawowego.

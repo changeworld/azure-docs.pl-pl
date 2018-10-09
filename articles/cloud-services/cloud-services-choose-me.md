@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 6af4533a4ab374071b904cc4b03ca239a3e83364
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 309c7275a1e775ed2bd689520ac39501e8bd6052
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008965"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857826"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Omówienie usługi Azure Cloud Services
 Usługi Azure Cloud Services znajduje się przykład [platforma jako usługa](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Podobnie jak [usługi Azure App Service](../app-service/app-service-web-overview.md), ta technologia jest przeznaczona do obsługi aplikacji, które są skalowalne, niezawodne i tanie w utrzymaniu. W ten sam sposób, że usługi App Service znajduje się na maszynach wirtualnych (VM), dlatego też jest usług Azure Cloud Services. Jednak masz większą kontrolę nad maszynami wirtualnymi. Własne oprogramowanie można zainstalować na maszynach wirtualnych, które używają usług Azure Cloud Services, a użytkownik może uzyskiwać do nich dostęp zdalnie.
@@ -33,7 +33,7 @@ Istnieją dwa typy ról, usług Azure Cloud Services. Jedyną różnicą między
 
 * **Rola procesu roboczego**: korzysta z usług IIS i uruchamia autonomiczny Twojej aplikacji.
 
-Na przykład prosta aplikacja może użyć tylko jednej roli sieci web, obsługująca witryny sieci Web. Bardziej złożonych aplikacji mogą używać roli sieci web do obsługi przychodzących żądań od użytkowników, a następnie przekazać te żądania do roli procesu roboczego do przetworzenia. (Ta komunikacja może używać [usługi Azure Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md) lub [Azure Queue storage](../storage/common/storage-introduction.md).)
+Na przykład prosta aplikacja może użyć tylko jednej roli sieci web, obsługująca witryny sieci Web. Bardziej złożonych aplikacji mogą używać roli sieci web do obsługi przychodzących żądań od użytkowników, a następnie przekazać te żądania do roli procesu roboczego do przetworzenia. (Ta komunikacja może używać [usługi Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) lub [Azure Queue storage](../storage/common/storage-introduction.md).)
 
 Jak sugeruje poprzednim rysunku, wszystkie maszyny wirtualne w jednej aplikacji uruchomione w tej samej usługi w chmurze. Dostęp użytkowników aplikacji za pomocą jednego publicznego adresu IP, za pomocą żądań automatycznie ładować równoważone w aplikacji w maszynach wirtualnych. Platforma [skaluje się i wdraża](cloud-services-how-to-scale-portal.md) maszyn wirtualnych w aplikacji usług Azure Cloud Services w taki sposób, aby uniknąć pojedynczego punktu awarii sprzętowej.
 

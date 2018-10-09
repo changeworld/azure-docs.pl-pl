@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 10/04/2018
 ms.author: jeedes
-ms.openlocfilehash: 2f87c4a15ac21241b3304d1fdf0a5bd0ae715615
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 36f1bd9c11c8932968a3501ef22fdb7153411256
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430209"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867565"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Samouczek: Integracja usługi Azure Active Directory z usług Salesforce
 
@@ -38,7 +38,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą usługi Salesforce, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Salesforce logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -50,29 +50,31 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
+
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie usługi Salesforce z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-salesforce-from-the-gallery"></a>Dodawanie usługi Salesforce z galerii
+
 Aby skonfigurować integrację usług Salesforce do usługi Azure AD, należy dodać Salesforce za pomocą galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać usługi Salesforce z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk usługi Azure Active Directory][1]
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
 
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-1. W polu wyszukiwania wpisz **Salesforce**, wybierz opcję **Salesforce** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Salesforce**, wybierz opcję **Salesforce** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![SalesForce, na liście wyników](./media/salesforce-tutorial/tutorial_salesforce_addfromgallery.png)
 
@@ -87,10 +89,10 @@ W usłudze Salesforce, przypisz wartość **nazwa_użytkownika** w usłudze Azur
 Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego usługi Salesforce, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego Salesforce](#create-a-salesforce-test-user)**  — aby odpowiednikiem Britta Simon w usłudze Salesforce, połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego Salesforce](#create-a-salesforce-test-user)**  — aby odpowiednikiem Britta Simon w usłudze Salesforce, połączonego z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -102,11 +104,19 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+2. Kliknij przycisk **pojedynczej zmiany trybu logowania jednokrotnego** na górze ekranu, aby wybrać **SAML** trybu.
 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/salesforce-tutorial/tutorial_salesforce_samlbase.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](./media/salesforce-tutorial/tutorial_general_300.png)
 
-1. Na **Salesforce domena i adresy URL** sekcji, wykonaj następujące czynności:
+3. Na **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, kliknij przycisk **wybierz** dla **SAML** trybu, aby włączyć logowanie jednokrotne.
+
+    ![Skonfigurować łącze rejestracji jednokrotnej](./media/salesforce-tutorial/tutorial_general_301.png)
+
+4. Na **Ustaw się logowanie jednokrotne z SAML** kliknij **Edytuj** przycisk, aby otworzyć **podstawową konfigurację protokołu SAML** okna dialogowego.
+   
+    ![Skonfigurować łącze rejestracji jednokrotnej](./media/salesforce-tutorial/tutorial_general_302.png)
+
+5. Na **podstawową konfigurację protokołu SAML** sekcji, wykonaj następujące czynności:
 
     ![Domena usługi SalesForce i adresy URL pojedynczego logowania jednokrotnego informacji](./media/salesforce-tutorial/tutorial_salesforce_url.png)
 
@@ -125,82 +135,52 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE]
     > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywisty adres URL logowania i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klient Salesforce](https://help.salesforce.com/support) do uzyskania tych wartości.
 
-1. Na **certyfikat podpisywania SAML** kliknij **certyfikatu** , a następnie zapisz plik certyfikatu na komputerze.
+6. Na **certyfikat podpisywania SAML** sekcji, kliknij na **Pobierz** można pobrać **XML metadanych Federacji** , a następnie zapisz plik xml na tym komputerze.
 
     ![Link pobierania certyfikatu](./media/salesforce-tutorial/tutorial_salesforce_certificate.png) 
 
-1. Kliknij przycisk **Zapisz** przycisku.
+7. Otwarcie nowej karty w przeglądarce i zaloguj się do konta administratora usługi Salesforce.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/salesforce-tutorial/tutorial_general_400.png)
-
-1. Na **Konfiguracja usługi Salesforce** , kliknij przycisk **skonfigurować Salesforce** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego adres URL usługi** z **krótki przewodnik po sekcji.**
-
-    ![Konfiguracja usługi SalesForce](./media/salesforce-tutorial/tutorial_salesforce_configure.png) 
-
-1. Otwarcie nowej karty w przeglądarce i zaloguj się do konta administratora usługi Salesforce.
-
-1. Kliknij pozycję **instalacji** w obszarze **ikonę ustawienia** w prawym górnym rogu strony.
+8. Kliknij pozycję **instalacji** w obszarze **ikonę ustawienia** w prawym górnym rogu strony.
 
     ![Konfigurowanie logowania jednokrotnego](./media/salesforce-tutorial/configure1.png)
 
-1. Przewiń w dół do **ustawienia** w okienku nawigacji kliknij **tożsamości** aby rozwinąć sekcję powiązane. Następnie kliknij przycisk **ustawienia rejestracji jednokrotnej**.
+9. Przewiń w dół do **ustawienia** w okienku nawigacji kliknij **tożsamości** aby rozwinąć sekcję powiązane. Następnie kliknij przycisk **ustawienia rejestracji jednokrotnej**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/salesforce-tutorial/sf-admin-sso.png)
 
-1. Na **ustawienia rejestracji jednokrotnej** kliknij **Edytuj** przycisku.
+10. Na **ustawienia rejestracji jednokrotnej** kliknij **Edytuj** przycisku.
 
     ![Konfigurowanie logowania jednokrotnego](./media/salesforce-tutorial/sf-admin-sso-edit.png)
-    
-    > [!NOTE]
-    > Jeśli nie można włączyć ustawienia logowania jednokrotnego dla konta usługi Salesforce, może być konieczne skontaktowanie się z [zespołem pomocy technicznej klient Salesforce](https://help.salesforce.com/support). 
 
-1. Wybierz **włączone SAML**, a następnie kliknij przycisk **Zapisz**.
+    > [!NOTE]
+    > Jeśli nie można włączyć ustawienia logowania jednokrotnego dla konta usługi Salesforce, może być konieczne skontaktowanie się z [zespołem pomocy technicznej klient Salesforce](https://help.salesforce.com/support).
+
+11. Wybierz **włączone SAML**, a następnie kliknij przycisk **Zapisz**.
 
       ![Konfigurowanie logowania jednokrotnego](./media/salesforce-tutorial/sf-enable-saml.png)
-1. Aby skonfigurować SAML pojedynczego logowania jednokrotnego ustawienia, kliknij **New**.
+
+12. Aby skonfigurować SAML pojedynczego logowania jednokrotnego ustawienia, kliknij **nowy z pliku metadanych**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/salesforce-tutorial/sf-admin-sso-new.png)
 
-1. Na **SAML pojedynczego logowania jednokrotnego ustawienie Edytuj** strony, wprowadź następujące ustawienia:
+13. Kliknij przycisk **wybierz plik** można przekazać pliku XML metadanych, który został pobrany z witryny Azure portal i kliknij przycisk **Utwórz**.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/salesforce-tutorial/sf-saml-config.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/salesforce-tutorial/xmlchoose.png)
 
-    a. Aby uzyskać **nazwa** wpisz przyjazną nazwę dla tej konfiguracji. Podanie wartości dla **nazwa** automatycznie wypełnić **Nazwa interfejsu API** pola tekstowego.
+14. Na **SAML pojedynczego ustawień logowania jednokrotnego** stronie automatycznie wypełnić pola i kliknij przycisk Zapisz.
 
-    b. W **wystawcy** pole, Wklej wartość **identyfikator jednostki SAML**, które zostały skopiowane z witryny Azure portal.
+    ![Konfigurowanie logowania jednokrotnego](./media/salesforce-tutorial/salesforcexml.png)
 
-    c. W **polu tekstowym identyfikator jednostki**, wpisz nazwę domeny usługi Salesforce za pomocą następującego wzorca:
-
-      * Konta przedsiębiorstwa: `https://<subdomain>.my.salesforce.com`
-      * Konto dewelopera: `https://<subdomain>-dev-ed.my.salesforce.com`
-
-    d. Aby przekazać **certyfikatu dostawcy tożsamości**, kliknij przycisk **wybierz plik** do przeglądania i wybierz plik certyfikatu, który został pobrany z witryny Azure portal.
-
-    e. Jako **typu tożsamości SAML**, wybierz jedną z następujących opcji:
-
-      * Wybierz **potwierdzenie zawiera Salesforce użytkownika**, jeśli Salesforce użytkownika jest przekazywany w potwierdzenie SAML
-
-      * Wybierz **potwierdzenie zawiera identyfikator federacji z obiektu użytkownika**, jeśli identyfikator federacyjnej z obiektu użytkownika jest przekazywany w potwierdzenie SAML
-
-      * Wybierz **potwierdzenie zawiera identyfikator korzystanie z obiektu użytkownika**, jeśli identyfikator użytkownika na podstawie obiektu użytkownika, który jest przekazywany w potwierdzenie SAML
-
-    f. Dla **lokalizacji tożsamości SAML**, wybierz opcję **tożsamość jest w elemencie NameIdentifier instrukcji podmiotu**.
-
-    g. Dla **dostawcy inicjowane żądania powiązania usługi**, wybierz opcję **przekierowania HTTP**.
-
-    h. W **adres URL logowania dostawcy tożsamości** pola tekstowego, Wklej wartość **pojedynczy znak na adres URL usługi**, które zostały skopiowane z witryny Azure portal
-
-    i. Na koniec kliknij **Zapisz** Aby zastosować SAML pojedynczego logowania jednokrotnego ustawienia.
-
-1. W okienku nawigacji po lewej stronie w usłudze Salesforce kliknij **ustawienia firmowe** rozwiń sekcję powiązane, a następnie kliknij przycisk **Moja domena**.
+15. W okienku nawigacji po lewej stronie w usłudze Salesforce kliknij **ustawienia firmowe** rozwiń sekcję powiązane, a następnie kliknij przycisk **Moja domena**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/salesforce-tutorial/sf-my-domain.png)
 
-1. Przewiń w dół do **konfiguracji uwierzytelniania** sekcji, a następnie kliknij przycisk **Edytuj** przycisku.
+16. Przewiń w dół do **konfiguracji uwierzytelniania** sekcji, a następnie kliknij przycisk **Edytuj** przycisku.
 
     ![Konfigurowanie logowania jednokrotnego](./media/salesforce-tutorial/sf-edit-auth-config.png)
 
-1. W **konfiguracji uwierzytelniania** sekcji wyboru **AzureSSO** jako **na uwierzytelnianie** z konfiguracji logowania jednokrotnego SAML, a następnie kliknij **Zapisz** .
+17. W **konfiguracji uwierzytelniania** sekcji wyboru **AzureSSO** jako **na uwierzytelnianie** z konfiguracji logowania jednokrotnego SAML, a następnie kliknij **Zapisz** .
 
     ![Konfigurowanie logowania jednokrotnego](./media/salesforce-tutorial/sf-auth-config.png)
 
@@ -211,33 +191,26 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
+1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Utwórz użytkownika usługi Azure AD][100]
 
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
+2. Wybierz **nowego użytkownika** w górnej części ekranu.
 
-    ![Przycisk usługi Azure Active Directory](./media/salesforce-tutorial/create_aaduser_01.png)
+    ![Tworzenie użytkownika testowego usługi Azure AD](./media/salesforce-tutorial/create_aaduser_01.png) 
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+3. We właściwościach użytkownika wykonaj następujące czynności.
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/salesforce-tutorial/create_aaduser_02.png)
+    ![Tworzenie użytkownika testowego usługi Azure AD](./media/salesforce-tutorial/create_aaduser_02.png)
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+    a. W **nazwa** pola wprowadź **BrittaSimon**.
+  
+    b. W **nazwa_użytkownika** typ pola **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    ![Przycisk Dodaj](./media/salesforce-tutorial/create_aaduser_03.png)
+    c. Wybierz **właściwości**, wybierz opcję **hasło Show** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w polu hasło.
 
-1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
-
-    ![Okno dialogowe użytkownika](./media/salesforce-tutorial/create_aaduser_04.png)
-
-    a. W **nazwa** wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
-
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
-
-    d. Kliknij pozycję **Utwórz**.
+    d. Wybierz pozycję **Utwórz**.
 
 ### <a name="create-a-salesforce-test-user"></a>Tworzenie użytkownika testowego usługi Salesforce
 
@@ -255,30 +228,30 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
     ![Przypisz użytkownika][201]
 
-1. Na liście aplikacji wybierz **Salesforce**.
+2. Na liście aplikacji wybierz **Salesforce**.
 
     ![Link usługi Salesforce, na liście aplikacji](./media/salesforce-tutorial/tutorial_salesforce_app.png)
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj użytkownika** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Okienko Dodawanie przypisania][203]
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka usługi Salesforce w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji Salesforce.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 

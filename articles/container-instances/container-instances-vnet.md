@@ -2,17 +2,17 @@
 title: Wdrażanie wystąpień kontenerów w sieci wirtualnej platformy Azure
 description: Dowiedz się, jak wdrożyć grup kontenerów do nowej lub istniejącej sieci wirtualnej platformy Azure.
 services: container-instances
-author: mmacy
+author: dlepow
 ms.service: container-instances
 ms.topic: article
 ms.date: 09/24/2018
-ms.author: marsma
-ms.openlocfilehash: bce1de5536eb26b48132bd3642eb780043e76231
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.author: danlep
+ms.openlocfilehash: 6d319c09b8a935b5ca81a6d5815daa5d2f706f45
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47048016"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854616"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Wdrażanie wystąpień kontenerów w sieci wirtualnej platformy Azure
 

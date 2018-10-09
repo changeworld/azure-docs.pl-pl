@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 8ce550fcd9756286488d17ac5cad258aaf1682ba
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bde451a2a01a8baa347f093a1b56525dcead00f3
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946862"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855310"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Tworzenie, zmienianie lub usuwanie komunikacji równorzędnej sieci wirtualnej
 
@@ -116,7 +116,7 @@ Jeśli chcesz, aby sieci wirtualne do komunikowania się czasami, ale nie zawsze
 - Podczas tworzenia, globalnej komunikacji równorzędnej, wirtualne sieci równorzędne może znajdować się w dowolnym regionie chmury publicznej platformy Azure, ale nie znajduje się w chmurach narodowych platformy Azure. Można tylko komunikacji równorzędnej sieci wirtualnych w tym samym regionie, w chmurach krajowych.
 - Zasoby w jednej sieci wirtualnej nie może komunikować się z adresu IP frontonu Azure wewnętrznego modułu równoważenia obciążenia globalne równorzędne sieci wirtualnych. Moduł równoważenia obciążenia i zasoby, które komunikują się z nim muszą być w sieci wirtualnej, w tym samym regionie. Jeśli wirtualne sieci równorzędne są jednak w tym samym regionie, zasoby w dowolnej sieci wirtualnej mogą komunikować się z adresu IP frontonu Azure wewnętrznego modułu równoważenia obciążenia w dowolnej sieci wirtualnej w komunikacji równorzędnej.
 - Nie można użyć bram zdalnych lub Zezwalaj na tranzyt przez bramę na globalne równorzędne sieci wirtualne. Aby użyć bram zdalnych lub Zezwalaj na tranzyt bramy, wirtualne sieci równorzędne musi być w tym samym regionie.
-- Sieci wirtualne mogą być w tej samej lub innej subskrypcji. Gdy możesz nawiązać komunikację równorzędną między sieciami wirtualnymi w różnych subskrypcjach, obie subskrypcje można skojarzyć z tej samej lub innej dzierżawy usługi Azure Active Directory. Jeśli nie masz już dzierżawę usługi AD, możesz szybko [utworzyć](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Obsługa komunikacja równorzędna między sieciami wirtualnymi o subskrypcji skojarzonych z różnych dzierżaw usługi Azure Aztuve Directory nie jest dostępne w portalu. Można użyć interfejsu wiersza polecenia, programu PowerShell i szablonów.
+- Sieci wirtualne mogą być w tej samej lub innej subskrypcji. Gdy możesz nawiązać komunikację równorzędną między sieciami wirtualnymi w różnych subskrypcjach, obie subskrypcje można skojarzyć z tej samej lub innej dzierżawy usługi Azure Active Directory. Jeśli nie masz już dzierżawę usługi AD, możesz szybko [utworzyć](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Obsługa komunikacja równorzędna między sieciami wirtualnymi o subskrypcji skojarzonych z różnych dzierżaw usługi Azure Active Directory nie jest dostępne w portalu. Można użyć interfejsu wiersza polecenia, programu PowerShell i szablonów.
 - Sieci wirtualne, z którymi możesz komunikacji równorzędnej musi mieć nienakładające się przestrzenie adresów IP.
 - Nie można dodać zakresy adresów do lub usuwanie zakresów adresów z przestrzeni adresowej sieci wirtualnej, gdy sieć wirtualna a jest połączona z inną siecią wirtualną. Aby dodać lub usunąć zakresów adresów, usuwanie komunikacji równorzędnej, dodać lub usunąć zakresów adresów, następnie ponownie utworzyć komunikację równorzędną. Aby zakresy adresów, aby dodać lub usunąć zakresów adresów z sieciami wirtualnymi, zobacz [Zarządzanie sieciami wirtualnymi](manage-virtual-network.md).
 - Można nawiązać komunikację równorzędną między dwiema sieciami wirtualnymi wdrożonymi za pośrednictwem Menedżera zasobów i wirtualna sieć wdrożone za pomocą usługi Resource Manager z siecią wirtualną, która jest wdrażana za pośrednictwem klasycznego modelu wdrażania. Nie można nawiązać komunikację równorzędną między dwiema sieciami wirtualnymi utworzonymi za pomocą klasycznego modelu wdrażania. Jeśli nie znasz modele wdrażania Azure, zapoznaj się z [Understand Azure deployment models](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artykułu. Do połączenia dwóch sieci wirtualnych utworzonych za pomocą klasycznego modelu wdrażania można użyć usługi [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V).

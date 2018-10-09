@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 09/18/2018
-ms.author: v-yijong
-ms.openlocfilehash: d484452e03110a71933f3c503f5bd06c93aac68c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.date: 10/05/2018
+ms.author: yijenj
+ms.openlocfilehash: 47333a7b5ad7d76ee8bbac19884ba8246eadc05e
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047782"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855786"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>Zarządzanie potencjalnych klientów dla portalu marketplace w chmurze
 
@@ -56,6 +56,42 @@ Po zostały poprawnie skonfigurowane w lokalizacji docelowej potencjalnych klien
 
 Po technicznych, skonfiguruj znajduje się w miejscu, należy dołączyć potencjalni klienci w bieżącej sprzedaży i strategii marketingowej i procesów operacyjnych. Jesteśmy zainteresowani lepsze zrozumienie procesu ogólną sprzedaży i aby ściśle współpracować z Tobą na dostarczaniu wysokiej jakości potencjalnych klientów i wystarczającej ilości danych, które zapewnią Ci sukces. Chętnie poznamy Twoją opinię, jak firma Microsoft optymalizacji i ulepszanie potencjalnych klientów, który możemy wysłać dodatkowe dane, aby sprawić, że ci klienci pomyślnie. Daj nam znać, jeśli interesują Cię zapewnianie opinii i sugestii, aby ułatwić zespołowi sprzedaży korzystać z portalu Marketplace potencjalnych klientów.
 
+
+
+## <a name="common-lead-configuration-errors-during-publishing-on-cloud-partner-portal"></a>Typowe błędy konfiguracji potencjalnego klienta podczas publikowania w portalu cloud partner 
+
+**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM. Sprawdź ustawienia konta Dynamics CRM. LastCRMError: Nie można zalogować się do usługi Dynamics CRM, LastCRMException:** 
+
+> Jeśli wybrano opcję uwierzytelniania usługi O365, sprawdź, czy konto użytkownika i hasła jest prawidłowa. Jeśli wybrano usługi AAD, sprawdź, czy identyfikator dzierżawy, identyfikator aplikacji i aplikacji wpisu tajnego klucza dopasowuje co zostało skonfigurowane na usługi AAD. Postępuj zgodnie z instrukcjami [tutaj](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics). Jeśli nazwa użytkownika/hasło konta jest prawidłowa, upewnij się, ma dostęp do Dynamics 365 i ma przypisaną licencję (kroki 11-15, jeśli używasz usługi Azure Active Directory lub ustawienia zabezpieczeń, jeśli za pomocą użytkownika usługi Office). 
+
+ 
+**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM. Użytkownik nie masz uprawnień do tworzenia atrybutu leadsourcecode w jednostce potencjalnego klienta** 
+
+> Brak role zabezpieczeń do usługi składnika zapisywania programu Microsoft Marketplace potencjalnego klienta aplikacji/użytkownika. Wykonaj kroki 11-15, jeśli używasz usługi Azure Active Directory lub ustawienia zabezpieczeń, jeśli za pomocą użytkownika usługi Office [tutaj](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics).
+
+**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM przy użyciu usługi AAD. Wyjątek:: Nie znaleziono dzierżawy. To wystąpienie może się zdarzyć, jeśli istnieją aktywne subskrypcje dla dzierżawy.**  
+
+> Identyfikator katalogu podane w sekcji Zarządzanie potencjalnymi klientami nie jest prawidłowym katalogiem. Uzyskaj identyfikator katalogu, zgodnie z instrukcjami w kroku 2 (w obszarze Azure Active Directory z [tutaj](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics) 
+
+**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM. LastCRMError: Nie powiodło się — SecLib::RetrievePrivilegeForUser żadnych ról przypisanych do użytkownika.**  
+
+> Rozwiązanie: Przypisz rolę zabezpieczeń do usługi składnika zapisywania programu Microsoft Marketplace potencjalnego klienta. Postępuj zgodnie z instrukcjami [tutaj](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics) w obszarze Ustawienia zabezpieczeń 
+
+**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM przy użyciu usługi AAD. Wyjątek:: Nie znaleziono aplikacji z identyfikatorem w katalogu** 
+
+> Identyfikatora aplikacji podanego w sekcji Zarządzanie potencjalnymi klientami nie jest prawidłowym katalogiem. Uzyskaj identyfikator katalogu, zgodnie z instrukcjami w kroku 8 (w obszarze Azure Active Directory z [tutaj](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
+
+**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM przy użyciu usługi AAD. Wyjątek:: Żądany identyfikator dzierżawy nie jest prawidłowe i nie jest prawidłową domenę zewnętrzną formatem** 
+
+> Identyfikator katalogu podane w sekcji Zarządzanie potencjalnymi klientami nie jest prawidłowym katalogiem. Uzyskaj identyfikator katalogu, zgodnie z instrukcjami w kroku 2 (w obszarze Azure Active Directory z [tutaj](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
+
+**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM przy użyciu usługi AAD. Wyjątku:: Błąd sprawdzanie poprawności poświadczeń.: podano nieprawidłowy klucz tajny.** 
+
+> Rozwiązanie: Zaloguj się do witryny Azure Portal, sprawdź, czy klucz aplikacji jest zgodny, co znajduje się w portalu Cloud Partner. Wygeneruj hasło oparte na instrukcji w kroku 10 (w obszarze Azure Active Directory), z [tutaj](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
+
+**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM. LastCRMError: Kanał żądania przekroczył limit czasu podczas oczekiwania na odpowiedź po 00:02:00. Zwiększ wartość limitu czasu podawaną do wywołania na żądanie, lub zwiększ wartość właściwości SendTimeout w powiązaniu. Czas przydzielony na tę operację mógł stanowić część większego limitu czasu.**  
+
+> Rozwiązanie: Logowania do portalu Cloud Partner, sprawdź szczegóły Storefront >> docelowego potencjalnego klienta >> adresu URL, sprawdź, czy jest prawidłowe wystąpienie dynamicznego CRM
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
@@ -201,41 +237,3 @@ Ze względu na zasady dane osobowe (prywatne informacje użytkownika) firma Micr
 **Skonfigurowano usługi Azure Storage (BLOB/Table) jako miejsce docelowe Moje potencjalny klient, ile będzie kosztować?** 
 
 Brakuje danych prowadzić ogólnego (< 1 GB dla prawie wszystkich wydawców). Koszt będzie zależeć od liczby potencjalnych klientów odebrane, odebranie 1000 potencjalnych klientów w ciągu miesiąca koszt wynosi około 50 centów. 
-
- 
-
-
-## <a name="common-lead-configuration-errors-during-publishing-on-cloud-partner-portal"></a>Typowe błędy konfiguracji potencjalnego klienta podczas publikowania w portalu cloud partner 
-
-**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM. Sprawdź ustawienia konta Dynamics CRM. LastCRMError: Nie można zalogować się do usługi Dynamics CRM, LastCRMException:** 
-
-> Jeśli wybrano opcję uwierzytelniania usługi O365, sprawdź, czy konto użytkownika i hasła jest prawidłowa. Jeśli wybrano usługi AAD, sprawdź, czy identyfikator dzierżawy, identyfikator aplikacji i aplikacji wpisu tajnego klucza dopasowuje co zostało skonfigurowane na usługi AAD. Postępuj zgodnie z instrukcjami [tutaj](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics). Jeśli nazwa użytkownika/hasło konta jest prawidłowa, upewnij się, ma dostęp do Dynamics 365 i ma przypisaną licencję (kroki 11-15, jeśli używasz usługi Azure Active Directory lub ustawienia zabezpieczeń, jeśli za pomocą użytkownika usługi Office). 
-
- 
-**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM. Użytkownik nie masz uprawnień do tworzenia atrybutu leadsourcecode w jednostce potencjalnego klienta** 
-
-> Brak role zabezpieczeń do usługi składnika zapisywania programu Microsoft Marketplace potencjalnego klienta aplikacji/użytkownika. Wykonaj kroki 11-15, jeśli używasz usługi Azure Active Directory lub ustawienia zabezpieczeń, jeśli za pomocą użytkownika usługi Office [tutaj](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics).
-
-**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM przy użyciu usługi AAD. Wyjątek:: Nie znaleziono dzierżawy. To wystąpienie może się zdarzyć, jeśli istnieją aktywne subskrypcje dla dzierżawy.**  
-
-> Identyfikator katalogu podane w sekcji Zarządzanie potencjalnymi klientami nie jest prawidłowym katalogiem. Uzyskaj identyfikator katalogu, zgodnie z instrukcjami w kroku 2 (w obszarze Azure Active Directory z [tutaj](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics) 
-
-**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM. LastCRMError: Nie powiodło się — SecLib::RetrievePrivilegeForUser żadnych ról przypisanych do użytkownika.**  
-
-> Rozwiązanie: Przypisz rolę zabezpieczeń do usługi składnika zapisywania programu Microsoft Marketplace potencjalnego klienta. Postępuj zgodnie z instrukcjami [tutaj](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics) w obszarze Ustawienia zabezpieczeń 
-
-**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM przy użyciu usługi AAD. Wyjątek:: Nie znaleziono aplikacji z identyfikatorem w katalogu** 
-
-> Identyfikatora aplikacji podanego w sekcji Zarządzanie potencjalnymi klientami nie jest prawidłowym katalogiem. Uzyskaj identyfikator katalogu, zgodnie z instrukcjami w kroku 8 (w obszarze Azure Active Directory z [tutaj](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
-
-**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM przy użyciu usługi AAD. Wyjątek:: Żądany identyfikator dzierżawy nie jest prawidłowe i nie jest prawidłową domenę zewnętrzną formatem** 
-
-> Identyfikator katalogu podane w sekcji Zarządzanie potencjalnymi klientami nie jest prawidłowym katalogiem. Uzyskaj identyfikator katalogu, zgodnie z instrukcjami w kroku 2 (w obszarze Azure Active Directory z [tutaj](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
-
-**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM przy użyciu usługi AAD. Wyjątku:: Błąd sprawdzanie poprawności poświadczeń.: podano nieprawidłowy klucz tajny.** 
-
-> Rozwiązanie: Zaloguj się do witryny Azure Portal, sprawdź, czy klucz aplikacji jest zgodny, co znajduje się w portalu Cloud Partner. Wygeneruj hasło oparte na instrukcji w kroku 10 (w obszarze Azure Active Directory), z [tutaj](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
-
-**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM. LastCRMError: Kanał żądania przekroczył limit czasu podczas oczekiwania na odpowiedź po 00:02:00. Zwiększ wartość limitu czasu podawaną do wywołania na żądanie, lub zwiększ wartość właściwości SendTimeout w powiązaniu. Czas przydzielony na tę operację mógł stanowić część większego limitu czasu.**  
-
-> Rozwiązanie: Logowania do portalu Cloud Partner, sprawdź szczegóły Storefront >> docelowego potencjalnego klienta >> adresu URL, sprawdź, czy jest prawidłowe wystąpienie dynamicznego CRM

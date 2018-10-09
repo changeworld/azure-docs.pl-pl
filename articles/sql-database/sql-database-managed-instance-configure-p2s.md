@@ -11,21 +11,22 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab, bonova, jovanpop
 manager: craigg
-ms.date: 09/06/2018
-ms.openlocfilehash: fc51d7191deb8242075b28fbb42adc2ff9ae2739
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/05/2018
+ms.openlocfilehash: 370df2f13ddf9a2cf6613da95bd845ebfd0f253a
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163005"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868194"
 ---
-# <a name="configure-a-point-to-site-connection-to-connect-to-an-azure-sql-database-managed-instance-from-on-premises-computer"></a>Konfigurowanie połączenia punkt lokacja, nawiązywanie połączenia z bazą danych wystąpienia zarządzanego Azure SQL z na komputerze lokalnym
+# <a name="configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Konfigurowanie połączenia typu punkt lokacja do wystąpienia usługi Azure SQL Database Managed ze środowiska lokalnego
 
 Ten przewodnik Szybki Start pokazano, jak nawiązać połączenie z wystąpieniem zarządzanym usługi Azure SQL Database przy użyciu [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) z komputera klienckiego w środowisku lokalnym za pośrednictwem połączenia punkt lokacja. Aby uzyskać informacje na temat połączeń typu punkt lokacja, zobacz [sieci VPN typu punkt-lokacja — informacje](../vpn-gateway/point-to-site-about.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Ten przewodnik Szybki Start:
+
 - Używa jako jego początkowy punkt zasobów utworzonych w tym przewodniku Szybki Start: [utworzysz wystąpienie zarządzane](sql-database-managed-instance-get-started.md).
 - Wymaga środowiska PowerShell 5.1 i programu Azure PowerShell 5.4.2 lub nowszej komputer kliencki w środowisku lokalnym.
 - Wymaga najnowszej wersji [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) na komputerze klienckim w środowisku lokalnym
@@ -34,23 +35,24 @@ Ten przewodnik Szybki Start:
 
 1. Otwórz program Powershell na komputerze klienckim w środowisku lokalnym.
 2. Skopiuj i wklej ten skrypt programu PowerShell. Ten skrypt dołącza bramy sieci VPN do sieci wirtualnej wystąpienia zarządzanego, który został utworzony w [utworzysz wystąpienie zarządzane](sql-database-managed-instance-get-started.md) Szybki Start. Ten skrypt wykonuje następujące trzy kroki:
-  - Tworzy i instalowania certyfikatów na komputerze klienckim
-  - Oblicza przyszłych zakres adresów IP podsieci bramy sieci VPN
-  - Tworzy podsieci GatewaySubnet
-  - Służy do wdrażania szablonu usługi Azure Resource Manager, który dołącza bramy sieci VPN do podsieci sieci VPN
 
-   ```powershell
-   $scriptUrlBase = 'https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/manage/azure-sql-db-managed-instance/attach-vpn-gateway'
+   - Tworzy i instalowania certyfikatów na komputerze klienckim
+   - Oblicza przyszłych zakres adresów IP podsieci bramy sieci VPN
+   - Tworzy podsieci GatewaySubnet
+   - Służy do wdrażania szablonu usługi Azure Resource Manager, który dołącza bramy sieci VPN do podsieci sieci VPN
 
-   $parameters = @{
+     ```powershell
+     $scriptUrlBase = 'https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/manage/azure-sql-db-managed-instance/attach-vpn-gateway'
+
+     $parameters = @{
        subscriptionId = '<subscriptionId>'
        resourceGroupName = '<resourceGroupName>'
        virtualNetworkName = '<virtualNetworkName>'
        certificateNamePrefix  = '<certificateNamePrefix>'
        }
 
-   Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/attachVPNGateway.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters, $scriptUrlBase 
-   ```
+     Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/attachVPNGateway.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters, $scriptUrlBase
+     ```
 
 3. Podaj żądane parametry w skrypcie programu PowerShell. Wartości `<subscriptionId>`, `<resourceGroup>` i `<virtualNetworkName>` powinna być zgodna z tymi, które są używane w [Tworzenie wystąpienia zarządzanego](sql-database-managed-instance-get-started.md) Szybki Start. Wartość `<certificateNamePrefix>` może być ciągiem wybranych przez użytkownika.
 
@@ -66,15 +68,15 @@ Ten przewodnik Szybki Start:
 3. Kliknij przycisk **Point-to-site configuration** a następnie kliknij przycisk **klienta VPN Pobierz**.
 
     ![Pobieranie klienta VPN](./media/sql-database-managed-instance-configure-p2s/download-vpn-client.png)  
-4. Wyodrębnij pliki z archiwum zip, a następnie otwórz wyodrębniony folder. 
-5. Havigate do folderu WindowsAmd64, otwórz **VpnClientSetupAmd64.exe** pliku.
+4. Wyodrębnij pliki z archiwum zip, a następnie otwórz wyodrębniony folder.
+5. Przejdź do folderu WindowsAmd64 i Otwórz **VpnClientSetupAmd64.exe** pliku.
 6. Jeśli zostanie wyświetlony **Windows chroniony komputer PC** , kliknij przycisk **więcej informacji o** a następnie kliknij przycisk **Uruchom mimo to**.
 
     ![Zainstaluj klienta sieci VPN](./media/sql-database-managed-instance-configure-p2s/vpn-client-defender.png)\
 7. Kliknij przycisk **tak** w oknie Kontrola konta użytkownika, aby kontynuować.
 8. W oknie dialogowym MyNewVNet kliknij **tak** do zainstalowania klienta sieci Vpn w taki sposób, aby uzyskać MyNewVNet.
 
-## <a name="connect-to-the-vpn-connection"></a>Nawiązać połączenia z siecią VPN.
+## <a name="connect-to-the-vpn-connection"></a>Nawiązywanie połączenia z siecią VPN
 
 1. Przejdź do połączeń sieci VPN na komputerze klienckim, a następnie kliknij przycisk **MyNewVNet** nawiązać połączenie z tą siecią wirtualną.
 
@@ -93,7 +95,6 @@ Ten przewodnik Szybki Start:
 ## <a name="use-ssms-to-connect-to-the-managed-instance"></a>Nawiązywanie połączenia z wystąpieniem zarządzanym za pomocą programu SSMS
 
 1. Na komputerze klienckim w środowisku lokalnym Otwórz program SQL Server Management Studio (SSMS).
- 
 2. W **Połącz z serwerem** okna dialogowego wprowadź w pełni kwalifikowaną **nazwy hosta** wystąpienia zarządzanego w **nazwy serwera** wybierz opcję **programu SQL Server Uwierzytelnianie**login i hasło, a następnie kliknij przycisk **Connect**.
 
     ![nawiązywanie połączenia w programie ssms](./media/sql-database-managed-instance-configure-vm/ssms-connect.png)  

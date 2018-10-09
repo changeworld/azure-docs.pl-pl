@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: edb1638f4568656761f923c73ba8cdc0dd968d96
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: c55e67e24c8f5ff6e243c67b614592874b2cc459
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296486"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870659"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Dlatego potrzebujesz więcej informacji na temat usługi Service Fabric?
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych i niezawodnych mikrousług oraz zarządzanie nimi.  Usługa Service Fabric ma dużej powierzchni, jednak i jest dużo, aby dowiedzieć się więcej.  Ten artykuł zawiera streszczenie usługi Service Fabric i w tym artykule opisano podstawowe pojęcia programowania modeli i cyklem życia aplikacji, testowania, klastrów i monitorowanie kondycji. Odczyt [Przegląd](service-fabric-overview.md) i [co to są mikrousługi?](service-fabric-overview-microservices.md) wprowadzenie i jak usługi Service Fabric można utworzyć mikrousługi. Ten artykuł nie zawiera pełną listę zawartości, ale łącze do omówienie i wprowadzenie wprowadzenie artykułów dla każdego obszaru usługi Service Fabric. 
@@ -73,7 +73,7 @@ W ramach partycji bezstanowej usługi o nazwie mają wystąpień, a usług stano
 ## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>Mikrousługi stanowe i bezstanowe dla usługi Service Fabric
 Usługa Service Fabric umożliwia tworzenie aplikacji składających się z mikrousług lub kontenerów. Mikrousługi bezstanowe (na przykład bramy protokołów i internetowe serwery proxy) nie utrzymują modyfikowalnego stanu poza żądaniem i odpowiedzią serwera. Przykładem usługi bezstanowej są procesy robocze usług Azure Cloud Services. Mikrousługi stanowe (na przykład konta użytkowników, bazy danych, urządzenia, koszyki zakupów i kolejki) utrzymują modyfikowalny, autorytatywny stan poza żądaniem i odpowiedzią. Współczesne aplikacje internetowe łączą w sobie mikrousługi stanowe i bezstanowe. 
 
-Kluczowe differentation z usługą Service Fabric jest koncentracja na tworzeniu usług stanowych przy użyciu [wbudowanych modeli programowania ](service-fabric-choose-framework.md) lub konteneryzowanych usług stanowych. [Scenariusze zastosowania](service-fabric-application-scenarios.md) opisują sytuacje, w których używane są usługi stanowe.
+Ważną cechą wyróżniającą usługę Service Fabric jest koncentracja na tworzeniu usług stanowych przy użyciu [wbudowanych modeli programowania ](service-fabric-choose-framework.md) lub konteneryzowanych usług stanowych. [Scenariusze zastosowania](service-fabric-application-scenarios.md) opisują sytuacje, w których używane są usługi stanowe.
 
 Dlaczego warto mieć mikrousług stanowych wraz z tymi o bezstanowa? Dwie główne przyczyny są następujące:
 

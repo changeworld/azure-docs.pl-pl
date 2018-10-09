@@ -14,19 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: e3745efdd0d0ea159afcda177c306f5865ac2aad
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 150147a0fe0fdfcf2e6c9f2b780587749af1ded0
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366838"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857911"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Umożliwia dostęp do programu GRUB i tryb jednego użytkownika konsoli szeregowej
-Program GRUB jest sumy Unified programu inicjującego. Z programu GRUB są możliwość modyfikowania konfiguracji rozruchu do rozruchu w trybie jednego użytkownika, między innymi. 
+Program GRUB jest sumy Unified programu inicjującego. Z programu GRUB są możliwość modyfikowania konfiguracji rozruchu do rozruchu w trybie jednego użytkownika, między innymi.
 
 Tryb jednego użytkownika jest minimalne środowisko z minimalną liczbę funkcji. Może być przydatne do badania problemów rozruchu, problemy z systemu plików lub problemy z siecią. Mniej usług może działać w tle i w zależności od uruchamiania przełącznika/RL, system plików może nie nawet automatycznie zainstalowany.
 
-Tryb jednego użytkownika jest również przydatne w sytuacjach, w której maszyna wirtualna tylko może być skonfigurowany do akceptowania kluczy SSH do logowania się w. W takim przypadku można utworzyć konto przy użyciu uwierzytelniania hasła w trybie jednego użytkownika. 
+Tryb jednego użytkownika jest również przydatne w sytuacjach, w której maszyna wirtualna tylko może być skonfigurowany do akceptowania kluczy SSH do logowania się w. W takim przypadku można utworzyć konto przy użyciu uwierzytelniania hasła w trybie jednego użytkownika.
 
 Aby przejść do trybu jednego użytkownika, należy wprowadzić CHODNIKÓW, kiedy maszyna wirtualna jest uruchamiana i modyfikowanie konfiguracji rozruchu w CHODNIKÓW. Można to zrobić, za pomocą konsoli szeregowej maszyny Wirtualnej.
 

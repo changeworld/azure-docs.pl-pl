@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: spelluru
-ms.openlocfilehash: a15e726e237bcdbd9d380aaf9232e5d16a2e648f
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 631c4334b1e2ca37dfc87709718b6639c2762c5c
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409139"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857690"
 ---
 # <a name="message-sequencing-and-timestamps"></a>Sekwencjonowanie i sygnatury czasowe komunikatów
 
@@ -26,7 +26,7 @@ Sekwencjonowanie i sygnatura czasowa to dwie funkcje, które są zawsze włączo
 
 Dla tych przypadków, w których bezwzględne kolejność komunikatów jest ważna i/lub w którym użytkownik potrzebuje zaufanego Unikatowy identyfikator komunikaty, komunikaty sygnatury brokera z odstępu bez, zwiększenie numeru sekwencyjnego względem kolejki lub tematu. Partycjonowane jednostki, aby uzyskać numer sekwencyjny wystawiono względem partycji.
 
-**SequenceNumber** wartość jest unikatowy 64-bitową liczbę całkowitą przypisany do wiadomości, jak jest akceptowane i przechowywane przez brokera i funkcje jako wewnętrzny identyfikator. W przypadku partycjonowane jednostki znajdujące się najwyżej 16 bitów odzwierciedlają identyfikatora partycji. Numery sekwencyjne przejdą do zera po wyczerpaniu zakresu 48/x 64.
+**SequenceNumber** wartość jest unikatowy 64-bitową liczbę całkowitą przypisany do wiadomości, jak jest akceptowane i przechowywane przez brokera i funkcje jako wewnętrzny identyfikator. W przypadku partycjonowane jednostki znajdujące się najwyżej 16 bitów odzwierciedlają identyfikatora partycji. Numery sekwencyjne przechodzą do zera po wyczerpaniu zakresu 48/64-bitowy.
 
 Numer sekwencyjny może być zaufane jako unikatowy identyfikator, ponieważ jest przypisany przez urząd Środkowa i neutralne a nie przez klientów. Ponadto reprezentuje wartość true, kolejności przybycia i jest bardziej precyzyjne niż sygnatura czasowa, jako kryterium zamówienia, ponieważ sygnatury czasowe nie może mieć wystarczająco wysoka rozdzielczość stawek extreme wiadomości i mogą paść ofiarą (ale minimalne) zegara w sytuacjach, w którym brokera własność przejścia między węzłami.
 
@@ -50,7 +50,6 @@ Ta funkcja jest zakotwiczona na poszczególne wiadomości, a komunikaty mogą by
 
 Aby dowiedzieć się więcej na temat obsługi komunikatów usługi Service Bus, zobacz następujące tematy:
 
-* [Podstawy usługi Service Bus](service-bus-fundamentals-hybrid-solutions.md)
 * [Kolejki, tematy i subskrypcje usługi Service Bus](service-bus-queues-topics-subscriptions.md)
 * [Wprowadzenie do kolejek usługi Service Bus](service-bus-dotnet-get-started-with-queues.md)
 * [Jak używać tematów i subskrypcji usługi Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)

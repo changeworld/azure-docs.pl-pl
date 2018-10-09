@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: d94aaa93596a18cf92b745267a6be9966454e36f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7ff7167d60a4c22459622aea6a71130bd1e209fb
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971553"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868874"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>Protokoły w wersji 2.0 — przepływ kodu autoryzacji OAuth 2.0
 
@@ -234,7 +234,9 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 ## <a name="refresh-the-access-token"></a>Odświeżenia tokenu dostępu
 
-Access_tokens są krótkie krótkotrwałe i należy je odświeżyć, po ich wygaśnięciu, aby nadal mieć dostęp do zasobów. Możesz to zrobić, przesyłając innego `POST` limit czasu żądania `/token` punktu końcowego, tym razem realizacji `refresh_token` zamiast `code`:
+Access_tokens są krótkie krótkotrwałe i należy je odświeżyć, po ich wygaśnięciu, aby nadal mieć dostęp do zasobów. Możesz to zrobić, przesyłając innego `POST` limit czasu żądania `/token` punktu końcowego, tym razem realizacji `refresh_token` zamiast `code`.  Tokeny odświeżania są prawidłowe dla wszystkich uprawnień, które klient otrzymał już zgoda na — w związku z tym, token odświeżania wydane w żądaniu na potrzeby `scope=mail.read` może służyć do żądania nowy token dostępu dla `scope=api://contoso.com/api/UseResource`.  
+
+Odświeżanie tokenów nie mają określonego okresy istnienia. Zazwyczaj okresy istnienia tokenów odświeżania są stosunkowo długo. Jednak w niektórych przypadkach, tokeny odświeżania wygaśnie, zostaną odwołane lub braku wystarczających uprawnień do żądanej akcji. Twoja aplikacja potrzebuje do oczekują i obsługiwać [błędy zwrócone przez punkt końcowy wystawiania tokenu](#error-codes-for-token-endpoint-errors) poprawnie. 
 
 ```
 // Line breaks for legibility only

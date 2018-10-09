@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: yshoukry, LADocs
 ms.topic: article
 ms.date: 07/20/2018
-ms.openlocfilehash: daeb0c5436d851b6e234c1b97583df526192659e
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 5fc4ccacaaedfc3fe6c77fa9a0ad693530bdde93
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018778"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855429"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Zainstaluj lokalną bramę danych dla usługi Azure Logic Apps
 
@@ -211,7 +211,7 @@ Aby podać informacje o serwerze proxy dla bramy, zobacz [Skonfiguruj ustawienia
 > [!NOTE]
 > To polecenie spowoduje przetestowanie tylko łączności sieciowej i łączności z usługą Azure Service Bus. Polecenie nie wykonuje żadnych czynności przy użyciu bramy lub Usługa bramy w chmurze i przechowuje swoje poświadczenia i informacje szczegółowe bramy. 
 >
-> Ponadto to polecenie jest tylko dostępne w systemie Windows Server 2012 R2 lub nowszy i Windows 8.1 lub nowszym. We wcześniejszych wersjach systemu operacyjnego można użyć Telnet, aby przetestować łączność. Dowiedz się więcej o [usługi Azure Service Bus i hybrydowych rozwiązań](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md).
+> Ponadto to polecenie jest tylko dostępne w systemie Windows Server 2012 R2 lub nowszy i Windows 8.1 lub nowszym. We wcześniejszych wersjach systemu operacyjnego można użyć Telnet, aby przetestować łączność. Dowiedz się więcej o [usługi Azure Service Bus i hybrydowych rozwiązań](../service-bus-messaging/service-bus-messaging-overview.md).
 
 Wyniki powinny wyglądać podobnie do tego przykładu z **TcpTestSucceeded** równa **True**:
 
@@ -232,7 +232,7 @@ Zapora może także blokować połączenia, które usługi Azure Service Bus naw
 
 ## <a name="configure-ports"></a>Konfigurowanie portów
 
-Brama tworzy połączenie wychodzące do [usługi Azure Service Bus](https://azure.microsoft.com/services/service-bus/) i komunikuje się na portach wychodzących: TCP 443 (domyślnie), 5671, 5672, 9350 do 9354. Brama nie wymaga portów przychodzących. Dowiedz się więcej o [usługi Azure Service Bus i hybrydowych rozwiązań](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md).
+Brama tworzy połączenie wychodzące do [usługi Azure Service Bus](https://azure.microsoft.com/services/service-bus/) i komunikuje się na portach wychodzących: TCP 443 (domyślnie), 5671, 5672, 9350 do 9354. Brama nie wymaga portów przychodzących. Dowiedz się więcej o [usługi Azure Service Bus i hybrydowych rozwiązań](../service-bus-messaging/service-bus-messaging-overview.md).
 
 Brama używa te w pełni kwalifikowanych nazw domen:
 

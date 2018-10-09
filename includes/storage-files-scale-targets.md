@@ -1,4 +1,4 @@
-| Zasób | Standardowy plik udostępnia udziały | Udziały plików w warstwie Premium (wersja zapoznawcza) |
+| Zasób | Udziały plików standardowe | Udziały plików w warstwie Premium (wersja zapoznawcza) |
 |----------|---------------|------------------------------------------|
 | Minimalny rozmiar udziału plików | (Brak minimum; płatność zgodnie z rzeczywistym użyciem) | 100 GiB |
 | Maksymalny rozmiar udziału plików | 5 TiB | 5 TiB |

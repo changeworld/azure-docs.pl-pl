@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/02/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: bca75f9efa1614c4fa719b21007c827494ecd8f0
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: b266bc11f32d8621b6819b695af42cb14908bc05
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830714"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870795"
 ---
 # <a name="azure-storage-replication"></a>Replikacja usługi Azure Storage
 
@@ -40,10 +40,12 @@ Poniższa tabela zawiera krótkie omówienie zakres trwałości i dostępności,
 | Dostęp do odczytu do danych (w zdalnym, replikowany geograficznie region) w przypadku niedostępności obejmujących cały region | Nie                              | Nie                               | Nie                                   | Yes                                  |
 | Umożliwia zapewnienie trwałości ___ obiektów w danym roku                                          | co najmniej 99,999999999% (11 9) | co najmniej 99,9999999999% (12 9) | co najmniej 99,99999999999999% (16 9) | co najmniej 99,99999999999999% (16 9) |
 | Typy kont magazynu obsługiwanych                                                                   | GPv1, GPv2, Blob                | GPv2                             | GPv1, GPv2, Blob                     | GPv1, GPv2, Blob                     |
-| Umowa SLA dotycząca dostępności dla żądań odczytu | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego)
+| Umowa SLA dotycząca dostępności dla żądań odczytu | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,99% (99,9% w przypadku warstwy dostępu chłodnego) |
+| Umowa SLA dotycząca dostępności dla żądań zapisu | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) |
 
+Aby uzyskać informacje dla każdej opcji nadmiarowości, zobacz [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/). 
 
-Zobacz [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/) Aby uzyskać informacje na temat opcji nadmiarowości różne.
+Aby uzyskać informacje o usłudze Azure Storage gwarantuje potrzeby trwałości i dostępności, zobacz [umowę SLA usługi Azure Storage](https://azure.microsoft.com/support/legal/sla/storage/).
 
 > [!NOTE]
 > Usługa Premium Storage obsługuje tylko lokalnie nadmiarowym (LRS). Aby uzyskać informacje o usłudze Premium Storage, zobacz [usługi Premium Storage: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure](../../virtual-machines/windows/premium-storage.md).

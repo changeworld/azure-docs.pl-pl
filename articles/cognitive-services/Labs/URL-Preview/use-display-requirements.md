@@ -1,23 +1,25 @@
 ---
-title: Projekt Użyj adresu URL w wersji zapoznawczej i wyświetlić wymagania - kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
-description: Użyj i wyświetlić wymagania dla punktu końcowego interfejsu API w wersji zapoznawczej adres URL projektu.
+title: Użyj i wyświetlają wymagania dotyczące — Podgląd adresu URL projektu
+titlesuffix: Azure Cognitive Services
+description: Użyj i wyświetlają wymagania dotyczące punktu końcowego interfejsu API (wersja zapoznawcza) adres URL projektu.
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 4aee9207c4f1bd4f0e36aae42985096544dc19d7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: a1aaf5f4c273e2eb42110d11cd3c28f8cf322750
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348596"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868362"
 ---
-# <a name="project-url-preview-use-and-display-requirements"></a>Projekt Użyj adresu URL w wersji zapoznawczej i wyświetlić wymagania
+# <a name="project-url-preview-use-and-display-requirements"></a>Podgląd adresu URL projektu użycia i wyświetlają wymagania dotyczące
 
-Tylko przy użyciu danych z projektu adres URL podglądu Wyświetl wstawki podglądu i miniatur Link do ich lokacji źródłowych w inicjowanych przez użytkownika końcowego adresu URL udostępniania mediów społecznościowych, rozmów bot lub podobne oferty. Nie musi skopiować, przechowywania lub pamięci podręcznej danych otrzymywanych z podglądu adres URL projektu. Należy uwzględnić wszystkie żądania, aby wyłączyć podglądy, które mogą wystąpić z witryny sieci Web lub właściciele zawartości.
+Dane projektu adres URL w wersji zapoznawczej można używać tylko do wyświetlania fragmentów kodu (wersja zapoznawcza) i obrazy miniatur hiperłącza do ich lokacji źródłowych w inicjowane przez użytkownika końcowego adresu URL do udostępniania w mediach społecznościowych, czatbot lub podobne ofert. Nie musi skopiować, przechowywania lub wszelkie dane, otrzymanymi od Podgląd adresu URL projektu z pamięci podręcznej. Należy uwzględnić wszystkie żądania, aby wyłączyć wersji zapoznawczych, które użytkownik może otrzymywać z witryny sieci Web lub właściciele zawartości.
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Omówienie podglądu adresu URL](overview.md)
+- [Podgląd adresu URL — omówienie](overview.md)

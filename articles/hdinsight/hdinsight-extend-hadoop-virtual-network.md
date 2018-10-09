@@ -7,13 +7,13 @@ ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/26/2018
-ms.openlocfilehash: 6df64afa5e99ea5fe3d3c6531e6e50425520286b
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 10/08/2018
+ms.openlocfilehash: 724d3d7fe8ff037b82bbce797e391c21060aa53d
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801968"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870965"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozszerzenie usługi Azure HDInsight przy użyciu usługi Azure Virtual Network
 
@@ -302,7 +302,7 @@ Jeśli używasz sieciowych grup zabezpieczeń lub tras zdefiniowanych przez uży
 
     Aby uzyskać informacji na temat adresów IP do użycia dla platformy Azure Government, zobacz [platformy Azure dla instytucji rządowych w rozwiązania inteligentne + analiza](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) dokumentu.
 
-3. Jeśli używasz niestandardowego serwera DNS z sieci wirtualnej, należy także zezwolić na dostęp z __168.63.129.16__. Ten adres jest Azure cyklicznego programu rozpoznawania nazw. Aby uzyskać więcej informacji, zobacz [rozpoznawanie nazw dla maszyn wirtualnych i ról wystąpień](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentu.
+3. Należy także zezwolić na dostęp z __168.63.129.16__. Ten adres jest Azure cyklicznego programu rozpoznawania nazw. Aby uzyskać więcej informacji, zobacz [rozpoznawanie nazw dla maszyn wirtualnych i ról wystąpień](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentu.
 
 Aby uzyskać więcej informacji, zobacz [kontrolowanie ruchu sieciowego](#networktraffic) sekcji.
 

@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 0cb8a185407c7b180a170f1f9b9d76aa28a24de5
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: a06a04ba992c8d7e9691e4838d38faaafd48de7a
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031632"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48853916"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migrowanie bazy wiedzy przy użyciu eksportu / importu
 Narzędzie QnA Maker ogłosiliśmy ogólną dostępność 7 maja 2018 r. w \\\build\ konferencji. Usługa QnA Maker GA ma Nowa architektura oparta na platformie Azure. Baz wiedzy utworzonych za pomocą bezpłatnej wersji zapoznawczej usługi QnA Maker będą musieli przeprowadzić migrację do usługi QnA Maker GA. Usługa QnA Maker w wersji zapoznawczej zostaną wycofane w listopada 2018 r. Aby uzyskać więcej informacji na temat zmian w wersji ogólnie dostępnej usługi QnA Maker, zobacz powiadomienie usługi QnA Maker GA [wpis w blogu](https://aka.ms/qnamakerga-blog).
@@ -38,9 +38,7 @@ Wymagania wstępne
 
     ![Pobierz bazy wiedzy](../media/qnamaker-how-to-migrate-kb/preview-download.png)
 
-4. Zaloguj się do [portalu narzędzia QnA Maker](https://qnamaker.ai) przy użyciu poświadczeń platformy azure i kliknij pozycję **Utwórz nową usługę**.
-
-    ![Tworzenie bazy wiedzy ](../media/qnamaker-how-to-create-kb/create-new-service.png)
+4. Zaloguj się do [portalu narzędzia QnA Maker](https://qnamaker.ai) przy użyciu poświadczeń platformy azure i kliknij pozycję **tworzenie bazy wiedzy**.
     
 5. Jeśli nie utworzono już usługę QnA Maker, wybierz opcję **tworzenie pytań i odpowiedzi usługi**. W przeciwnym razie wybierz usługę QnA Maker z listy rozwijane w kroku 2. Wybierz usługę QnA Maker, który będzie hostem bazy wiedzy Knowledge Base.
 

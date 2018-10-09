@@ -3,7 +3,7 @@ title: Usługa Azure konsoli szeregowej CHODNIKÓW i trybie jednego użytkownika
 description: Za pomocą konsoli szeregowej dla chodników na maszynach wirtualnych platformy Azure.
 services: virtual-machines-linux
 documentationcenter: ''
-author: alsin
+author: asinn826
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,19 +14,40 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 47a97d842822ed3d6c8c1583808552c1b2d1d53e
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 411c743421af79ea066df3a5fc07f71b8b6cb993
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414072"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855871"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Umożliwia dostęp do programu GRUB i tryb jednego użytkownika konsoli szeregowej
-Tryb jednego użytkownika jest minimalne środowisko z minimalną liczbę funkcji. Może być przydatne w przypadku badanie problemy lub problemy z siecią mniejszą liczbę usług może działać w tle i, w zależności od uruchamiania przełącznika/RL, system plików może nie nawet automatycznie zainstalowany. Dzięki takiemu grupowaniu można zbadać sytuacjach, takich jak system plików uszkodzony, fstab przerwany, lub (iptables niepoprawna konfiguracja) połączenia sieciowego.
+Program GRUB jest sumy Unified programu inicjującego. Z programu GRUB są możliwość modyfikowania konfiguracji rozruchu do rozruchu w trybie jednego użytkownika, między innymi.
 
-Niektóre dystrybucje będzie automatycznie pomijać możesz w trybie jednego użytkownika lub w trybie awaryjnym, jeśli maszyna wirtualna jest nie do rozruchu. Innych osób, jednak wymagają dodatkowej konfiguracji, zanim one mogą porzucić możesz w trybie jednego użytkownika lub awaryjnego automatycznie.
+Tryb jednego użytkownika jest minimalne środowisko z minimalną liczbę funkcji. Może być przydatne do badania problemów rozruchu, problemy z systemu plików lub problemy z siecią. Mniej usług może działać w tle i w zależności od uruchamiania przełącznika/RL, system plików może nie nawet automatycznie zainstalowany.
 
-Należy upewnić się, że CHODNIKÓW jest włączona na maszynie Wirtualnej, aby można było w trybie jednego użytkownika dostępu. W zależności od Twojej dystrybucji może być jakąś pracę Instalatora, aby upewnić się, że włączono programu GRUB. 
+Tryb jednego użytkownika jest również przydatne w sytuacjach, w której maszyna wirtualna tylko może być skonfigurowany do akceptowania kluczy SSH do logowania się w. W takim przypadku można utworzyć konto przy użyciu uwierzytelniania hasła w trybie jednego użytkownika.
+
+Aby przejść do trybu jednego użytkownika, należy wprowadzić CHODNIKÓW, kiedy maszyna wirtualna jest uruchamiana i modyfikowanie konfiguracji rozruchu w CHODNIKÓW. Można to zrobić, za pomocą konsoli szeregowej maszyny Wirtualnej. 
+
+## <a name="general-grub-access"></a>Ogólny program GRUB dostępu
+Dostępu CHODNIKÓW, będzie konieczne ponowne uruchomienie maszyny Wirtualnej przy jednoczesnym zachowaniu Otwórz blok konsoli szeregowej. Niektóre dystrybucje wymaga danych wprowadzonych z klawiatury do wyświetlenia CHODNIKÓW, podczas gdy inne automatycznie Pokaż CHODNIKÓW na kilka sekund i Zezwalaj na klawiatury danych wprowadzonych przez użytkownika limit czasu anulowania. 
+
+Należy upewnić się, że CHODNIKÓW jest włączona na maszynie Wirtualnej, aby można było w trybie jednego użytkownika dostępu. W zależności od Twojej dystrybucji może być jakąś pracę Instalatora, aby upewnić się, że włączono programu GRUB. Informacje specyficzne dla dystrybucji są dostępne poniżej.
+
+### <a name="reboot-your-vm-to-access-grub-in-serial-console"></a>Ponowne uruchomienie maszyny Wirtualnej, aby uzyskać dostęp CHODNIKÓW w konsoli szeregowej
+Ponowne uruchamianie maszyny Wirtualnej za pomocą bloku konsoli szeregowej, otwórz może odbywać się przy użyciu SysRq `'b'` polecenia, jeśli [SysRq](./serial-console-nmi-sysrq.md) jest włączona lub przez kliknięcie przycisku ponownego uruchomienia znajdujący się w bloku przeglądu (Otwieranie maszyny Wirtualnej w nowej karcie przeglądarki, ponowne uruchomienie bez zamknięcia Blok konsoli szeregowej). Postępuj zgodnie z poniższymi instrukcjami specyficzne dla dystrybucji, aby dowiedzieć się, czego można oczekiwać od CHODNIKÓW, po ponownym uruchomieniu.
+
+## <a name="general-single-user-mode-access"></a>Ogólnego dostępu tryb jednego użytkownika
+Ręczne dostęp do trybu jednego użytkownika mogą być potrzebne w sytuacjach, w których nie skonfigurowano konta przy użyciu uwierzytelniania hasła. Należy zmodyfikować konfigurację programu GRUB, aby ręcznie wprowadzić w trybie jednego użytkownika. Gdy to zrobisz, zobacz [tryb jednego użytkownika użycia zresetować lub Dodaj hasło](#-Use-Single-User-Mode-to-reset-or-add-a-password) uzyskać dalsze instrukcje.
+
+W przypadku gdy maszyna wirtualna nie uruchamia dystrybucje będzie często automatycznie pomijać możesz w trybie jednego użytkownika lub w trybie awaryjnym. Innych osób, jednak wymagają dodatkowej konfiguracji, zanim mogą porzucić możesz w trybie jednego użytkownika lub awaryjnego automatycznie (takich jak konfigurowanie hasła głównego).
+
+### <a name="use-single-user-mode-to-reset-or-add-a-password"></a>W trybie jednego użytkownika zresetować lub Dodaj hasło
+Gdy jesteś w trybie jednego użytkownika, wykonaj następujące polecenie, aby dodać nowego użytkownika z uprawnieniami sudo:
+1. Uruchom `useradd <username>` dodawania użytkownika
+1. Uruchom `sudo usermod -a -G sudo <username>` udzielenia uprawnień użytkownika root nowego użytkownika
+1. Użyj `passwd <username>` ustawić hasło dla nowego użytkownika. Następnie będzie można logować się jako nowy użytkownik
 
 
 ## <a name="access-for-red-hat-enterprise-linux-rhel"></a>Dostęp do programu Red Hat Enterprise Linux (RHEL)
@@ -64,7 +85,7 @@ Jeśli po skonfigurowaniu CHODNIKÓW i głównego dostępu przy użyciu powyższ
 1. Naciśnij klawisze Ctrl + X, aby zakończyć proces i ponowne uruchomienie przy użyciu ustawień zastosowanych
 1. Zostanie wyświetlony monit o hasło administratora zanim będzie mógł przejść do trybu jednego użytkownika — jest to samo hasło utworzone w powyższych instrukcji    
 
-    ![](/media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
+    ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>Wejdź w tryb jednego użytkownika bez konta głównego włączone w RHEL
 Jeśli użytkownik nie powiodło się powyższe kroki, aby włączyć jako użytkownik root, możesz zresetować hasła użytkownika root. Skorzystaj z poniższych instrukcji:
@@ -81,7 +102,7 @@ Jeśli użytkownik nie powiodło się powyższe kroki, aby włączyć jako użyt
 1. Po uruchomieniu w trybie jednego użytkownika, wpisz w `chroot /sysroot` przełączyć się do `sysroot` zdjęto zabezpieczeń systemu
 1. Jesteś teraz głównego. Możesz zresetować hasła głównego przy użyciu `passwd` , a następnie użyć z powyższymi instrukcjami, aby przejść do trybu jednego użytkownika. Typ `reboot -f` ponowne uruchomienie, gdy wszystko będzie gotowe.
 
-![](/media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
+![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
 > Uwaga: Uruchomiona przy użyciu powyższych instrukcji spowoduje porzucenie należy do awaryjnego shell, dzięki czemu można również wykonywać zadania, takie jak edytowanie `fstab`. Jednak powszechnie akceptowane sugestia jest do zresetowania hasła głównego i używać go do trybu jednego użytkownika. 
 
@@ -100,6 +121,13 @@ Nie wymagają hasła głównego obrazów systemu Ubuntu. Jeśli system jest uruc
 
 ### <a name="grub-access-in-ubuntu"></a>Program GRUB dostępu w systemie Ubuntu
 Dostępu CHODNIKÓW, naciśnij i przytrzymaj "Esc" w przypadku, gdy maszyna wirtualna jest uruchamiana.
+
+Domyślnie obrazów systemu Ubuntu nie może automatycznie pokazywane na ekranie programu GRUB. Można to zmienić za pomocą następujących instrukcji:
+1. Otwórz `/etc/default/grub.d/50-cloudimg-settings.cfg` w edytorze tekstów wybranych przez użytkownika
+1. Zmiana `GRUB_TIMEOUT` wartość na wartość inną niż zero
+1. Otwórz `/etc/default/grub` w edytorze tekstów wybranych przez użytkownika
+1. Komentarz `GRUB_HIDDEN_TIMEOUT=1` wiersza
+1. Uruchom polecenie `sudo update-grub`
 
 ### <a name="single-user-mode-in-ubuntu"></a>Tryb jednego użytkownika w systemie Ubuntu
 Ubuntu spowoduje porzucenie możesz w trybie jednego użytkownika automatycznie, jeśli nie normalny rozruch. Aby ręcznie wprowadzić w trybie jednego użytkownika, należy użyć poniższych instrukcji:
@@ -136,7 +164,7 @@ Program GRUB dostępu w systemie SLES wymaga konfiguracji programu rozruchowego 
 1. Aby wprowadzić CHODNIKÓW, ponowne uruchomienie maszyny Wirtualnej, a następnie naciśnij dowolny klawisz, podczas sekwencji rozruchu się CHODNIKÓW pozostają na ekranie
     - Domyślny limit czasu CHODNIKÓW jest wartości 1. Można to modyfikować, zmieniając `GRUB_TIMEOUT` zmienną `/etc/default/grub`
 
-![](/media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
+![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
 
 ### <a name="single-user-mode-in-suse-sles"></a>Tryb jednego użytkownika w systemie SLES SUSE
 Użytkownik zostanie automatycznie usunięty do awaryjnego shell Jeśli SLES nie normalny rozruch. Aby ręcznie wprowadzić awaryjnego powłoki, użyj poniższych instrukcji:

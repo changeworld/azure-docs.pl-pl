@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: diberry
-ms.openlocfilehash: b0a02d2e5e0a1f1765098e1b1e258424b6443878
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 42bd8ef95ac1b55e76fe1cf0702b79de91832741
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039582"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870183"
 ---
 # <a name="usage-data-for-luis-service-from-azure-cloud-shell"></a>Dane użycia usługi LUIS z usługi Azure Cloud Shell
 Portal systemu Azure pozwala na używanie poleceń cmdlet programu PowerShell do pracy z zasobami usługi LUIS. 
@@ -23,7 +23,7 @@ Portal systemu Azure pozwala na używanie poleceń cmdlet programu PowerShell do
 Te polecenia cmdlet umożliwiają [tworzenie](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/new-azurermcognitiveservicesaccount?view=azurermps-6.0.0) LUIS subskrypcji, uzyskaj informacje o subskrypcji, w tym [użycia](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccountusage?view=azurermps-6.0.0), i [Usuń](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/remove-azurermcognitiveservicesaccount?view=azurermps-6.0.0) subskrypcji. 
 
 ## <a name="cloud-shell-storage-account-and-authentication"></a>Konta magazynu w chmurze powłoki i uwierzytelniania
-Aby można było używać programu PowerShell w witrynie Azure portal [cloud shell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell), musisz mieć konto usługi Azure storage. Jeśli nie masz [konta magazynu](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage#set-up-a-clouddrive-file-share), użytkownik jest monitowany o jego utworzenie. Konto magazynu pozwala zapisać skrypty programu PowerShell w usłudze cloud shell.  
+Aby można było używać programu PowerShell w witrynie Azure portal [cloud shell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell), musisz mieć konto usługi Azure storage. Jeśli nie masz [konta magazynu](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage), użytkownik jest monitowany o jego utworzenie. Konto magazynu pozwala zapisać skrypty programu PowerShell w usłudze cloud shell.  
 
 Należy również uwierzytelnianie na platformie Azure w usłudze cloud shell uzyskiwać dostępu do zasobów. 
 

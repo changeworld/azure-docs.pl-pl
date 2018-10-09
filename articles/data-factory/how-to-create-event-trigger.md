@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: douglasl
-ms.openlocfilehash: 53ea7425f0497eca7c95ddefeaa09aa40259672b
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 38fbb62de60bc5604210c8ad7339368a04967c27
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216275"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867056"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Utwórz wyzwalacz, który uruchamia potok w odpowiedzi na zdarzenie
 
@@ -58,11 +58,11 @@ Jak najszybciej pliku dociera do lokalizacji Twojego magazynu i zostanie utworzo
 
 ### <a name="map-trigger-properties-to-pipeline-parameters"></a>Mapowanie właściwości wyzwalacza do parametrów potoku
 
-Gdy zdarzenie wyzwalacza dla konkretnego obiektu blob, zdarzenie przechwytuje ścieżkę i nazwę folderu obiektu blob do właściwości `@triggerBody().folderPath` i `@triggerBody().fileName`. Aby użyć wartości tych właściwości w potoku, należy zamapować właściwości do parametrów potoku. Po mapowania właściwości do parametrów, można uzyskać dostęp do wartości przechwycone przez wyzwalacz za pomocą `@pipeline.parameters.parameterName` wyrażenia w całym potoku.
+Gdy zdarzenie wyzwalacza dla konkretnego obiektu blob, zdarzenie przechwytuje ścieżkę i nazwę folderu obiektu blob do właściwości `@triggerBody().folderPath` i `@triggerBody().fileName`. Aby użyć wartości tych właściwości w potoku, należy zamapować właściwości do parametrów potoku. Po mapowania właściwości do parametrów, można uzyskać dostęp do wartości przechwycone przez wyzwalacz za pomocą `@pipeline().parameters.parameterName` wyrażenia w całym potoku.
 
 ![Mapowanie właściwości do parametrów potoku](media/how-to-create-event-trigger/event-based-trigger-image4.png)
 
-Na przykład w poprzednim zrzucie ekranu. wyzwalacz jest skonfigurowany do uruchomi się, jeśli ścieżka obiektu blob, kończy się rozszerzeniem `.csv` jest tworzony na koncie magazynu. W rezultacie, gdy obiekt blob z `.csv` rozszerzenia jest tworzony w dowolnym miejscu na koncie magazynu `folderPath` i `fileName` właściwości przechwytywania lokalizacji nowy obiekt blob. Na przykład `@triggerBody().folderPath` ma wartość, takich jak `/containername/foldername/nestedfoldername` i `@triggerBody().fileName` ma wartość, takich jak `filename.csv`. Te wartości są mapowane w przykładzie do parametrów potoku `sourceFolder` i `sourceFile`. Można ich używać w całym potoku jako `@pipeline.parameters.sourceFolder` i `@pipeline.parameters.sourceFile` odpowiednio.
+Na przykład w poprzednim zrzucie ekranu. wyzwalacz jest skonfigurowany do uruchomi się, jeśli ścieżka obiektu blob, kończy się rozszerzeniem `.csv` jest tworzony na koncie magazynu. W rezultacie, gdy obiekt blob z `.csv` rozszerzenia jest tworzony w dowolnym miejscu na koncie magazynu `folderPath` i `fileName` właściwości przechwytywania lokalizacji nowy obiekt blob. Na przykład `@triggerBody().folderPath` ma wartość, takich jak `/containername/foldername/nestedfoldername` i `@triggerBody().fileName` ma wartość, takich jak `filename.csv`. Te wartości są mapowane w przykładzie do parametrów potoku `sourceFolder` i `sourceFile`. Można ich używać w całym potoku jako `@pipeline().parameters.sourceFolder` i `@pipeline().parameters.sourceFile` odpowiednio.
 
 ## <a name="json-schema"></a>Schemat JSON
 

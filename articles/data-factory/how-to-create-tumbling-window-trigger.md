@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/27/2018
 ms.author: shlo
-ms.openlocfilehash: c42d6235af8a5ab27fbd550b63c301fd9c6f15b1
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 1a24079292ce8fdd6a514a85484fc10b77491ba6
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325037"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868341"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Utwórz wyzwalacz, który uruchamia potok okna wirowania
 Ten artykuł zawiera kroki umożliwiające tworzenie, uruchamianie i monitorowanie wyzwalacza okna wirowania. Aby uzyskać ogólne informacje na temat wyzwalaczy i obsługiwanych typów, zobacz [wyzwalacze i wykonywanie potoku](concepts-pipeline-execution-triggers.md).
@@ -80,7 +80,7 @@ Poniższa tabela zawiera ogólne omówienie głównych elementów JSON, które s
 |:--- |:--- |:--- |:--- |:--- |
 | **type** | Typ wyzwalacza. Typ jest wartością stałą "TumblingWindowTrigger." | Ciąg | "TumblingWindowTrigger" | Yes |
 | **runtimeState** | Bieżący stan wyzwalacza czasu wykonywania.<br/>**Uwaga**: ten element jest \<tylko do odczytu >. | Ciąg | "Started", "zatrzymana," "Wyłączone" | Yes |
-| **frequency** | Ciąg, który reprezentuje jednostkę częstotliwość (minuty lub godziny) powtarzania wyzwalacza. Jeśli **startTime** wartości daty są bardziej szczegółowe niż **częstotliwość** wartość **startTime** daty są traktowane jako, gdy są obliczane w granicach okna. Na przykład jeśli **częstotliwość** wartość to co godzinę i **startTime** wartość 2016-04 — 01T10:10:10Z, pierwsze okno jest (2017-09 — 01T10:10:10Z, 2017-09 — 01T11:10:10Z). | Ciąg | "minute", "hour"  | Yes |
+| **frequency** | Ciąg, który reprezentuje jednostkę częstotliwość (minuty lub godziny) powtarzania wyzwalacza. Jeśli **startTime** wartości daty są bardziej szczegółowe niż **częstotliwość** wartość **startTime** daty są traktowane jako, gdy są obliczane w granicach okna. Na przykład jeśli **częstotliwość** wartość to co godzinę i **startTime** wartość 2017 — 09 — 01T10:10:10Z, pierwsze okno jest (2017-09 — 01T10:10:10Z, 2017-09 — 01T11:10:10Z). | Ciąg | "minute", "hour"  | Yes |
 | **interval** | Dodatnia liczba całkowita oznaczająca interwał wartości właściwości **frequency**, która określa częstotliwość uruchamiania wyzwalacza. Na przykład jeśli **interwał** 3 i **częstotliwość** jest "hour" wyzwalacz jest powtarzany co 3 godziny. | Liczba całkowita | Dodatnia liczba całkowita. | Yes |
 | **startTime**| Pierwsze wystąpienie, które mogą znajdować się w przeszłości. Pierwszy interwał wyzwalacza (**startTime**, **startTime** + **interwał**). | DateTime | Wartość daty/godziny. | Yes |
 | **endTime**| Ostatnie wystąpienie, które mogą znajdować się w przeszłości. | DateTime | Wartość daty/godziny. | Yes |

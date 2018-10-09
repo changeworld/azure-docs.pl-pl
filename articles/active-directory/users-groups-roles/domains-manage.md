@@ -10,19 +10,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 10/04/2018
+ms.date: 10/05/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
-ms.openlocfilehash: 65c3fa4c667fdb2d670ff259b190db140b4d968f
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: d5f926ac41bb90ba716e0c52b790a60fd74e0631
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803923"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854919"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Zarządzanie niestandardowymi nazwami domen w usłudze Azure Active Directory
 
-Nazwa domeny jest ważną częścią identyfikatora dla wielu zasobów katalogu: jest częścią użytkownika nazwy lub adresu e-mail użytkownika, część adresu w grupie i mogą być częścią aplikacji identyfikator URI dla aplikacji. Zasób w usłudze Azure Active Directory (Azure AD) mogą obejmować nazwę domeny, która została już zweryfikowana jako należące do katalogu, który zawiera zasób. Tylko administratorzy globalni mogą wykonywać zadania zarządzania domeny, w usłudze Azure AD.
+Nazwa domeny jest ważną częścią identyfikatora dla wielu zasobów katalogu: jest częścią użytkownika nazwy lub adresu e-mail użytkownika, część adresu w grupie i czasami część aplikacji, identyfikator URI dla aplikacji. Zasób w usłudze Azure Active Directory (Azure AD) mogą obejmować nazwę domeny, który jest własnością katalogu, który zawiera zasób. Tylko administratorzy globalni mogą zarządzać domen w usłudze Azure AD.
 
 ## <a name="set-the-primary-domain-name-for-your-azure-ad-directory"></a>Ustaw nazwę domeny głównej dla katalogu usługi Azure AD
 
@@ -38,19 +38,19 @@ Po utworzeniu katalogu początkowa nazwa domeny, takich jak "contoso.onmicrosoft
   
    ![Wprowadź nazwę domeny głównej](./media/domains-manage/make-primary-domain.png)
 
-Można zmienić podstawowej nazwy domeny dla katalogu jako zweryfikowanej domenie niestandardowej, która nie obejmuje Federacja. Zmiana domeny podstawowej dla katalogu nie spowoduje zmiany nazw użytkowników dla wszystkich istniejących użytkowników.
+Można zmienić podstawowej nazwy domeny dla katalogu jako zweryfikowanej domenie niestandardowej, która nie jest federacyjna. Domena podstawowa dla katalogu nie będzie zmiana nazwy użytkownika dla wszystkich istniejących użytkowników.
 
 ## <a name="add-custom-domain-names-to-your-azure-ad-tenant"></a>Dodawanie niestandardowych nazw domen do dzierżawy usługi Azure AD
 
-Możesz dodać maksymalnie 900 nazw domen zarządzanych. Jeśli konfigurujesz wszystkie domeny dla federacji z usługą Active Directory w środowisku lokalnym, możesz dodać do maksymalnie 450 nazwy domeny w każdym katalogu. 
+Możesz dodać maksymalnie 900 nazw domen zarządzanych. Jeśli konfigurujesz wszystkie domeny dla federacji z usługą Active Directory w środowisku lokalnym, możesz dodać do 450 nazwy domeny w każdym katalogu.
 
 ## <a name="add-subdomains-of-a-custom-domain"></a>Dodać poddomeny domeny niestandardowej
 
-Jeśli chcesz dodać nazwy domen trzeciego poziomu, takie jak "europe.contoso.com" do katalogu, należy najpierw dodać i weryfikowania domeny drugiego poziomu, np. contoso.com. Domenę podrzędną zostanie automatycznie zweryfikowana przez usługę Azure AD. Aby wyświetlić zweryfikowano domenę podrzędną, który właśnie został dodany, Odśwież stronę w przeglądarce, która zawiera listę domen.
+Jeśli chcesz dodać nazwy domen trzeciego poziomu, takie jak "europe.contoso.com" do katalogu, należy najpierw dodać i weryfikowania domeny drugiego poziomu, np. contoso.com. Poddomeny jest automatycznie weryfikowana przez usługę Azure AD. Aby sprawdzić, czy poddomeny, którą dodałeś został zweryfikowany, Odśwież listę domen w przeglądarce.
 
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Co należy zrobić, jeśli zmienisz rejestratora DNS dla swojej niestandardowej nazwy domeny
 
-Jeśli zmienisz rejestratora DNS dla swojej niestandardowej nazwy domeny, można nadal używać niestandardowej nazwy domeny za pomocą samej usługi Azure AD z produktu bez przeszkód i bez dodatkowych zadań konfiguracji. Jeśli używasz niestandardowej nazwy domeny za pomocą usługi Office 365, Intune lub innych usług, które zależą od nazwy domeny niestandardowej w usłudze Azure AD, zapoznaj się z dokumentacją dla tych usług.
+Jeśli zmienisz rejestratorów DNS, nie ma żadnych zadań dodatkowej konfiguracji w usłudze Azure AD. Aby kontynuować, przy użyciu nazwy domeny w usłudze Azure AD z produktu bez przeszkód. Jeśli używasz niestandardowej nazwy domeny za pomocą usługi Office 365, Intune lub innych usług, które zależą od nazwy domeny niestandardowej w usłudze Azure AD, zobacz dokumentację dla tych usług.
 
 ## <a name="delete-a-custom-domain-name"></a>Usuwanie nazwy domeny niestandardowej
 
@@ -83,7 +83,7 @@ Zwracany jest błąd, gdy:
 
 * Liczba obiektów, których nazwa zostanie zmieniona, jest większa niż 1000
 * Jedna z aplikacji, których nazwa zostanie zmieniona jest aplikacji z wieloma dzierżawami
-  
+
 ### <a name="frequently-asked-questions"></a>Często zadawane pytania
 
 **P: Dlaczego jest usunięcie domeny kończy się niepowodzeniem z powodu błędu informujący o tym, mają grupy programu Exchange zarządzanych na tę nazwę domeny?** <br>

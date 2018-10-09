@@ -2,18 +2,18 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: storage
-author: rogara
+author: roygara
 ms.service: storage
 ms.topic: include
 ms.date: 04/09/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 26c3e8a096a3ee7bc5146759f8de62e5c1c7fed1
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 796614a9e60ccb7ab155bc986b39c04c781224e8
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47390006"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48874021"
 ---
 ## <a name="about-vhds"></a>Informacje o wirtualnych dyskach twardych
 
@@ -34,11 +34,11 @@ Zanim będzie możliwe usunięcie źródłowego pliku vhd, trzeba będzie usuną
 
 Dyski platformy Azure zaprojektowano tak, aby zapewniały 99,999% dostępności. Dyski Azure stale wydały trwałość przeznaczonych dla przedsiębiorstw, dzięki wiodącej w branży ZERO % Annualized współczynnik błędów.
 
-Istnieją trzy warstwy wydajności pamięci masowej, które można wybierać podczas tworzenia dysków — dyski SSD w warstwie Premium SSD w warstwie standardowa (wersja zapoznawcza) i magazynu w warstwie standardowa dysk twardy. Ponadto istnieją dwa typy dysków — niezarządzane i zarządzane.
+Istnieją trzy warstwy wydajności pamięci masowej, które można wybierać podczas tworzenia dysków — dyski SSD w warstwie Premium SSD w warstwie standardowa i magazynu w warstwie standardowa dysk twardy. Ponadto istnieją dwa typy dysków — niezarządzane i zarządzane.
 
 ### <a name="standard-hdd-disks"></a>Dyski w warstwie standardowa dysk twardy
 
-Dyski standardowe dyski TWARDE są wspierane przez dysków twardych i dostarczaj ekonomicznego magazynowania. Dysk twardy magazynu w warstwie standardowa może być replikowany lokalnie w jednym centrum danych lub być objęty nadmiarowością geograficzną z podstawowym i dodatkowym centrum danych. Aby uzyskać więcej informacji na temat replikowania magazynu, zobacz [replikacja usługi Azure Storage](../articles/storage/common/storage-redundancy.md). 
+Dyski standardowe dyski TWARDE są wspierane przez dysków twardych i dostarczaj ekonomicznego magazynowania. Dysk twardy magazynu w warstwie standardowa może być replikowany lokalnie w jednym centrum danych lub być objęty nadmiarowością geograficzną z podstawowym i dodatkowym centrum danych. Aby uzyskać więcej informacji na temat replikowania magazynu, zobacz [replikacja usługi Azure Storage](../articles/storage/common/storage-redundancy.md).
 
 Aby uzyskać więcej informacji na temat korzystania z dysków standardowych dysków Twardych, zobacz [Standard Storage i dyski](../articles/virtual-machines/windows/standard-storage.md).
 

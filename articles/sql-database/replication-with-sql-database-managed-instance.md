@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 95c27bcc99f08cb1e4998e43a6a2abd508bee0ac
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 25d13ba53eb5a8b411a557b5eaf05d278faa3733
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47228365"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869316"
 ---
 # <a name="replication-with-sql-database-managed-instance"></a>Wystąpienie zarządzane w replikacji z bazy danych SQL
 
@@ -76,21 +76,22 @@ Obsługuje:
 
 ## <a name="configure-publishing-and-distribution-example"></a>Skonfiguruj publikowanie i dystrybucję przykład
 
-1. [Tworzenie wystąpienia usługi Azure SQL Database Managed](http://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-create-tutorial-portal) w portalu.
+1. [Tworzenie wystąpienia usługi Azure SQL Database Managed](sql-database-managed-instance-create-tutorial-portal.md) w portalu.
+2. [Tworzenie konta usługi Azure Storage](http://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) dla katalogu roboczego.
 
-1. [Tworzenie konta usługi Azure Storage](http://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) dla katalogu roboczego. Pamiętaj skopiować kluczy magazynu. Zobacz [wyświetlanie i kopiowanie kluczy dostępu do magazynu](http://docs.microsoft.com/azure/storage/common/storage-create-storage-account#manage-your-storage-access-keys).
-
-1. Tworzenie bazy danych wydawcy.
+   Pamiętaj skopiować kluczy magazynu. Zobacz [wyświetlanie i kopiowanie kluczy dostępu do magazynu](../storage/common/storage-account-manage.md#access-keys
+).
+3. Tworzenie bazy danych wydawcy.
 
    W poniższych skryptów przykładzie Zastąp `<Publishing_DB>` o nazwie tej bazy danych.
 
-1. Utwórz użytkownika bazy danych przy użyciu uwierzytelniania SQL dystrybutora. Zobacz, [tworzenie użytkowników bazy danych](http://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users). Użyj bezpiecznego hasła.
+4. Utwórz użytkownika bazy danych przy użyciu uwierzytelniania SQL dystrybutora. Zobacz, [tworzenie użytkowników bazy danych](http://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users). Użyj bezpiecznego hasła.
 
    W poniższych skryptów przykład `<SQL_USER>` i `<PASSWORD>` przy użyciu tego konta serwera SQL bazy danych użytkownika i hasło.
 
-1. [Nawiąż połączenie z wystąpieniem zarządzanym bazy danych SQL](http://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms).
+5. [Nawiąż połączenie z wystąpieniem zarządzanym bazy danych SQL](http://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms).
 
-1. Uruchom następujące zapytanie, aby dodać dystrybutora i bazy danych dystrybucji.
+6. Uruchom następujące zapytanie, aby dodać dystrybutora i bazy danych dystrybucji.
 
    ```sql
    USE [master]
@@ -99,7 +100,7 @@ Obsługuje:
    EXEC sp_adddistributiondb @database = N'distribution';
    ```
 
-1. Aby skonfigurować wydawcy do korzystania z dystrybucji określonej bazy danych, zaktualizuj i uruchom zapytanie follwing.
+7. Aby skonfigurować wydawcy do korzystania z bazy danych dystrybucji określonego, zaktualizuj i uruchom następujące zapytanie.
 
    Zastąp `<SQL_USER>` i `<PASSWORD>` przy użyciu konta programu SQL Server i hasła.
 
@@ -107,7 +108,7 @@ Obsługuje:
 
    Zastąp `<STORAGE_CONNECTION_STRING>` przy użyciu parametrów połączenia z **klucze dostępu** kartę konta usługi Microsoft Azure storage.
 
-   Po zaktualizowaniu następujące zapytanie, należy ją uruchomić. 
+   Po zaktualizowaniu następujące zapytanie, należy ją uruchomić.
 
    ```sql
    USE [master]
@@ -121,7 +122,7 @@ Obsługuje:
    GO
    ```
 
-1. Skonfiguruj wydawcę pod kątem replikacji. 
+8. Skonfiguruj wydawcę pod kątem replikacji.
 
     W następującym zapytaniu Zastąp `<Publishing_DB>` o nazwie bazy danych wydawcy.
 
@@ -155,15 +156,13 @@ Obsługuje:
                 @job_password = N'<PASSWORD>'
    ```
 
-1. Dodaj artykuł, subskrypcji i agentów subskrypcji wypychanych. 
+9. Dodaj artykuł, subskrypcji i agentów subskrypcji wypychanych.
 
    Aby dodać te obiekty, zaktualizuj poniższy skrypt.
 
-   Zastąp `<Object_Name>` nazwą obiektu publikacji.
-
-   Zastąp `<Object_Schema>` o nazwie schematu źródła. 
-
-   Zastąp innych parametrów w nawiasy ostre `<>` do odpowiadają wartościom w wcześniejsze skrypty. 
+   - Zastąp `<Object_Name>` nazwą obiektu publikacji.
+   - Zastąp `<Object_Schema>` o nazwie schematu źródła.
+   - Zastąp innych parametrów w nawiasy ostre `<>` do odpowiadają wartościom w wcześniejsze skrypty.
 
    ```sql
    EXEC sp_addarticle @publication = N'<Publication_Name>',
@@ -183,7 +182,7 @@ Obsługuje:
                 @subscriber_security_mode = 0,
                 @subscriber_login = N'<SQL_USER>',
                 @subscriber_password = N'<PASSWORD>',
-                @job_login = N'<SQL_USER>', 
+                @job_login = N'<SQL_USER>',
                 @job_password = N'<PASSWORD>'
    GO
    ```

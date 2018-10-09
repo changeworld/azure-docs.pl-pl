@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2018
+ms.date: 10/03/2018
 ms.author: sethm
-ms.reviewer: jeffgo
-ms.openlocfilehash: 9e579123124615df83483e244ef11810ca590844
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.reviewer: avishwan
+ms.openlocfilehash: 40ecb474b4faa4031cb364dfc1151c6fe6f09dd6
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633967"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856455"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Tworzenie i publikowanie elementu portalu Marketplace
 
@@ -29,12 +29,15 @@ ms.locfileid: "45633967"
 1. [Pobierz](http://www.aka.ms/azurestackmarketplaceitem) narzędzie Packager galerii Azure i próbka Azure Stack w portalu Marketplace.
 2. Otwórz przykładowy elementu portalu Marketplace i Zmień nazwę **SimpleVMTemplate** folderu. (Na przykład użyj nazwy jako swojej elementu portalu Marketplace — **Contoso.TodoList**.) Ten folder zawiera:
    
-       /Contoso.TodoList/
-       /Contoso.TodoList/Manifest.json
-       /Contoso.TodoList/UIDefinition.json
-       /Contoso.TodoList/Icons/
-       /Contoso.TodoList/Strings/
-       /Contoso.TodoList/DeploymentTemplates/
+   ```shell
+   /Contoso.TodoList/
+   /Contoso.TodoList/Manifest.json
+   /Contoso.TodoList/UIDefinition.json
+   /Contoso.TodoList/Icons/
+   /Contoso.TodoList/Strings/
+   /Contoso.TodoList/DeploymentTemplates/
+   ```
+
 3. [Tworzenie szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) lub wybierz szablon z serwisu GitHub. Elementu portalu Marketplace używa tego szablonu, aby utworzyć zasób.
 
     > [!Note]  
@@ -52,22 +55,30 @@ ms.locfileid: "45633967"
 8. W **manifest.json** pliku, zmień **nazwa** na nazwę elementu portalu Marketplace. Również zmienić **wydawcy** do nazwy lub firmy.
 9. W obszarze **artefaktów**, zmień **nazwa** i **ścieżki** na poprawne informacje dla szablonu usługi Azure Resource Manager, które zostało uwzględnione.
    
-         "artifacts": [
-            {
-                "name": "Type your template name",
-                "type": "Template",
-                "path": "DeploymentTemplates\\Type your path",
-                "isDefault": true
-            }
+   ```json
+   "artifacts": [
+      {
+          "name": "Type your template name",
+          "type": "Template",
+          "path": "DeploymentTemplates\\Type your path",
+          "isDefault": true
+      }
+   ```
+
 10. Zastąp **Moje elementy portalu Marketplace** listę kategorii, w którym powinna zostać wyświetlona Twoja elementu portalu Marketplace.
     
-             "categories":[
-                 "My Marketplace Items"
-              ],
+   ```json
+   "categories":[
+   "My Marketplace Items"
+   ],
+   ```
+
 11. Wszelkie dalsze zmiany do pliku manifest.json się [odwołania: manifest.json elementu portalu Marketplace](#reference-marketplace-item-manifestjson).
 12. Aby spakować foldery do pliku .azpkg, otwórz wiersz polecenia i uruchom następujące polecenie:
     
-        AzureGalleryPackager.exe package –m <path to manifest.json> -o <output location for the package>
+   ```shell
+   AzureGalleryPackager.exe package –m <path to manifest.json> -o <output location for the package>
+   ```
     
     > [!NOTE]
     > Pełna ścieżka do pakietu danych wyjściowych musi istnieć. Na przykład jeśli ścieżka wyjściowa ma C:\MarketPlaceItem\yourpackage.azpkg, musi istnieć folder C:\MarketPlaceItem.
@@ -79,8 +90,10 @@ ms.locfileid: "45633967"
 2. Na maszynie wirtualnej klienta w środowisku Microsoft Azure Stack upewnij się, że sesja programu PowerShell jest skonfigurowany przy użyciu poświadczeń administratora usługi. Można znaleźć instrukcje dotyczące sposobu uwierzytelniania programu PowerShell w usłudze Azure Stack w [wdrażanie szablonu przy użyciu programu PowerShell](user/azure-stack-deploy-template-powershell.md).
 3. Kiedy używasz [PowerShell 1.3.0]( azure-stack-powershell-install.md) lub nowszej, możesz użyć **AzsGalleryItem Dodaj** polecenia cmdlet programu PowerShell publikowanie elementu portalu Marketplace do usługi Azure Stack. Przed użyciem środowiska PowerShell 1.3.0, należy użyć polecenia cmdlet **AzureRMGalleryitem Dodaj** zamiast **AzsGalleryItem Dodaj**.  Na przykład, kiedy używać programu PowerShell 1.3.0 lub nowszej:
    
-       Add-AzsGalleryItem -GalleryItemUri `
-       https://sample.blob.core.windows.net/gallerypackages/Microsoft.SimpleTemplate.1.0.0.azpkg –Verbose
+   ```powershell
+   Add-AzsGalleryItem -GalleryItemUri `
+   https://sample.blob.core.windows.net/gallerypackages/Microsoft.SimpleTemplate.1.0.0.azpkg –Verbose
+   ```
    
    | Parametr | Opis |
    | --- | --- |
@@ -102,7 +115,9 @@ ms.locfileid: "45633967"
 
 6. Można usunąć elementu portalu Marketplace przy użyciu **AzureRMGalleryItem Usuń** polecenia cmdlet. Przykład:
    
-        Remove-AzsGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  –Verbose
+   ```powershell
+   Remove-AzsGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  –Verbose
+   ```
    
    > [!NOTE]
    > Interfejs użytkownika portalu Marketplace, mogą być wyświetlane błąd, po usunięciu elementu. Aby naprawić błąd, kliknij przycisk **ustawienia** w portalu. Następnie wybierz **Odrzuć modyfikacje** w obszarze **dostosowywania portalu**.

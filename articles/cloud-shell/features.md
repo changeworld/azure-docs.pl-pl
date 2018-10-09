@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: juluk
-ms.openlocfilehash: 51dc1280dcc8c47c3cb3ad46fc720e0a38e04b69
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 9a6f7aeea799787becf0bb99cdfa08bed4e9d355
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814444"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867463"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkcje i narzędzia dla usługi Azure Cloud Shell
 
@@ -33,12 +33,12 @@ Usługa Azure Cloud Shell jest uruchamiany na `Ubuntu 16.04 LTS`.
 
 Usługa cloud Shell bezpiecznie i automatycznie przeprowadza uwierzytelnianie dostępu do konta dla wiersza polecenia platformy Azure i programu Azure PowerShell.
 
-### <a name="home-persistence-across-sessions"></a>Trwałości $Home między sesjami
+### <a name="home-persistence-across-sessions"></a>Trwałości $HOME między sesjami
 
 Aby utrwalać pliki między sesjami, usługa Cloud Shell przeprowadzi Cię przez dołączenie udziału plików platformy Azure przy pierwszym uruchomieniu.
-Po zakończeniu Cloud Shell spowoduje automatyczne dołączanie usługi storage (zainstalowanego jako `$Home\clouddrive`) dla wszystkich przyszłych sesji.
-Ponadto usługi `$Home` katalogu są utrwalane jako .img w udziale plików platformy Azure.
-Pliki poza `$Home` i stan maszyny nie są zachowywane między sesjami. W przypadku przechowywania wpisów tajnych, takich jak klucze SSH, należy stosować najlepsze rozwiązania. Usługi takie jak [usługi Azure Key Vault ma samouczków dotyczących instalacji](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#prerequisites).
+Po zakończeniu Cloud Shell spowoduje automatyczne dołączanie usługi storage (zainstalowanego jako `$HOME\clouddrive`) dla wszystkich przyszłych sesji.
+Ponadto usługi `$HOME` katalogu są utrwalane jako .img w udziale plików platformy Azure.
+Pliki poza `$HOME` i stan maszyny nie są zachowywane między sesjami. W przypadku przechowywania wpisów tajnych, takich jak klucze SSH, należy stosować najlepsze rozwiązania. Usługi takie jak [usługi Azure Key Vault ma samouczków dotyczących instalacji](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#prerequisites).
 
 [Dowiedz się więcej na temat utrwalanie plików w usłudze Cloud Shell.](persisting-shell-storage.md)
 
@@ -61,7 +61,7 @@ Usługa cloud Shell oferuje wstępnie skonfigurowane uwierzytelnianie dla narzę
 |---|---|
 |Narzędzia systemu Linux            |Bash<br> zsh<br> SH<br> tmux<br> Postaraj się<br>               |
 |Narzędzia platformy Azure            |[Interfejs wiersza polecenia Azure](https://github.com/Azure/azure-cli) i [klasycznego wiersza polecenia platformy Azure](https://github.com/Azure/azure-xplat-cli)<br> [Narzędzie AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Interfejs wiersza polecenia usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Usługa Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
-|Edytory tekstu           |vim<br> nano<br> emacs:       |
+|Edytory tekstu           |vim<br> nano<br> emacs:<br> Kod       |
 |Kontrola źródła         |git                    |
 |Narzędzia do kompilacji            |Wprowadź<br> Narzędzia maven<br> npm<br> Narzędzie PIP         |
 |Containers             |[Interfejs CLI platformy docker](https://github.com/docker/cli)/[maszyny platformy Docker](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Polecenie Helm](https://github.com/kubernetes/helm)<br> [INTERFEJS WIERSZA POLECENIA DC/OS](https://github.com/dcos/dcos-cli)         |
@@ -76,7 +76,7 @@ Usługa cloud Shell oferuje wstępnie skonfigurowane uwierzytelnianie dla narzę
 |Przejdź         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.9.4      |
-|PowerShell |[6.1.0-Preview.4](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell |[6.1.0](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2.7 i 3.5 (ustawienie domyślne)|
 
 ## <a name="next-steps"></a>Kolejne kroki

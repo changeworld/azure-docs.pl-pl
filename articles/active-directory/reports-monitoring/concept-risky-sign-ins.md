@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/14/2017
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 3fab0648a2ad0e0a4c193d37875913dd27bf9af4
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 38ae18dca08b50a90102149d7e44169c956a1c0e
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574284"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869639"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Raport dotyczący ryzykownych logowań w portalu usługi Azure Active Directory
 
@@ -37,6 +37,15 @@ W witrynie [Azure Portal](https://portal.azure.com) raporty dotyczące zabezpiec
 
 ![Ryzykowne logowania](./media/concept-risky-sign-ins/10.png)
 
+## <a name="who-can-access-the-risky-sign-ins-report"></a>Kto ma dostęp do raportów ryzykownych logowań?
+
+Raporty dotyczący ryzykownych logowań są dostępne dla użytkowników w następujących ról:
+
+- Administrator zabezpieczeń
+- Administrator globalny
+- Odczytywanie zabezpieczeń
+
+Aby dowiedzieć się, jak przypisywać role administracyjne dla użytkownika w usłudze Azure Active Directory, zobacz [widoku i przypisywanie ról administratorów w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-manage-roles-portal).
 
 ## <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>Jaka licencja usługi Azure AD jest wymagana w celu uzyskania dostępu do raportu zabezpieczeń?  
 
@@ -48,8 +57,6 @@ Jednak poziom szczegółowości raportu zależy od wersji:
 - Wersja **Azure Active Directory Premium 1** rozszerza ten model, umożliwiając również badanie niektórych podstawowych zdarzeń związanych z ryzykiem, które uwzględniono w poszczególnych raportach. 
 
 - Wersja **Azure Active Directory Premium 2** oferuje najbardziej szczegółowe informacje na temat wszystkich zdarzeń o podwyższonym ryzyku i umożliwia konfigurowanie zasad zabezpieczeń, które automatycznie reagują na wystąpienie skonfigurowanych poziomów ryzyka.
-
-
 
 ## <a name="azure-active-directory-free-and-basic-edition"></a>Azure Active Directory — wersja Bezpłatna i Podstawowa
 

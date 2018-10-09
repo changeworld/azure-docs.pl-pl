@@ -11,20 +11,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/26/2018
+ms.date: 10/08/2018
 ms.author: jingwang
-ms.openlocfilehash: 2229a8a01d29fc167eb3696423224f1d2ef0df4e
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 3caae8ecae66178bc538d0b9d1240293028f33ad
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248469"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867361"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Kopiowanie danych z usługi Office 365 na platformie Azure przy użyciu usługi Azure Data Factory (wersja zapoznawcza) 
 
 Usługa Azure Data Factory pozwala przenieść bogate dane organizacji w usługi Office 365 dzierżawy na platformę Azure w sposób skalowalny i kompilowanie aplikacji do analizowania i wyodrębnić szczegółowe informacje, w oparciu o te zasoby cennych danych. Integracja z usługą Privileged Access Management zapewnia kontrolę bezpiecznego dostępu do cennych danych nadzorowanych w usłudze Office 365.  Aby uzyskać więcej informacji dotyczących danych programu Microsoft Graph connect, zapoznaj się [ten link](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki).
 
 W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z usługi Office 365. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+
+Wprowadzenie dziewięć minutę i demonstracyjnych dotyczące łączenia usługi Data Factory z danych usługi Office 365 Obejrzyj poniższy film wideo:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-cloud-scale-analytics-of-Office-365-data-with-Azure-Data-Factory/player]
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 

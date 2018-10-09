@@ -8,16 +8,16 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: 860b58a18fbc14532a8591fc753453d60492d3c0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e702cb6da3378e460ebb68542d82e736b9f57a52
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981376"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857792"
 ---
 # <a name="batch-transcription"></a>Transkrypcja wsadowa
 
-Transkrypcja partii jest idealnym rozwiązaniem w przypadku dużych ilości audio. Można wskazać pliki audio i wrócić transkrypcje w trybie asynchronicznym.
+Transkrypcja partii jest idealnym rozwiązaniem w przypadku dużych ilości audio. Można wskazać pliki audio, według identyfikatora URI i wrócić transkrypcje w trybie asynchronicznym.
 
 ## <a name="batch-transcription-api"></a>Batch transkrypcji interfejsu API
 
@@ -59,7 +59,7 @@ Dla stereo strumieni audio transkrypcji Batch dzieli kanału lewy i prawy podcza
 
 ## <a name="authorization-token"></a>Token autoryzacji
 
-Zgodnie z wszystkich funkcji programu Unified Speech Service, Utwórz klucz subskrypcji z [witryny Azure portal](https://portal.azure.com) następujące naszych [Get-Started guide](get-started.md). Jeśli planujesz uzyskiwanie transkrypcje modeli podstawowych w naszym następnie to wszystko, co należy zrobić. 
+Jak z wszystkich funkcji usługi rozpoznawania mowy, tworzenie klucz subskrypcji z [witryny Azure portal](https://portal.azure.com) następujące naszych [Get-Started guide](get-started.md). Jeśli planujesz uzyskiwanie transkrypcje modeli podstawowych w naszym następnie to wszystko, co należy zrobić. 
 
 Jeśli planowane jest na dostosowywanie i przy użyciu modelu niestandardowego należy dodać ten klucz subscritpion na portal usługi custom speech w następujący sposób:
 

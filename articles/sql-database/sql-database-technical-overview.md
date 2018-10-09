@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/04/2018
-ms.openlocfilehash: 747ef66b3d60e42e0d28669fb58364fd7c393438
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.date: 10/05/2018
+ms.openlocfilehash: c564dac4ec31f48b71cfdb0d7c5dd596ddd0df7e
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831234"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868840"
 ---
 # <a name="the-azure-sql-database-service"></a>Usługa Azure SQL Database
 
@@ -32,12 +32,17 @@ Usługa Azure SQL Database udostępnia następujące opcje wdrażania na potrzeb
 
 Poniższa ilustracja przedstawia te opcje wdrażania:
 
-![deployment-options](./media/sql-database-technical-overview/deployment-options.png) 
+![deployment-options](./media/sql-database-technical-overview/deployment-options.png)
 
 Usługa SQL Database współdzieli swój kod podstawowy z [aparatem bazy danych programu Microsoft SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation). Zgodnie ze strategią firmy Microsoft skupiającej się na chmurze najnowsze funkcjonalności programu SQL Server są wydawane najpierw w usłudze SQL Database, a dopiero później w samym programie SQL Server. Podejście to umożliwia użytkownikom dostęp do najnowszych możliwości programu SQL Server bez potrzeby wdrażania poprawek lub wykonywania uaktualnień — a na dodatek funkcje te są już przetestowane w milionach baz danych. Aby uzyskać informacje dotyczące nowych możliwości w miarę ich publikowania, zobacz:
 
-- **[Harmonogram działania platformy Azure dla usługi SQL Database](https://azure.microsoft.com/roadmap/?category=databases)**: miejsce, w którym można zobaczyć, co pojawiło się nowego i co jest planowane.
-- **[Blog usługi Azure SQL Database](https://azure.microsoft.com/blog/topics/database)**: miejsce, w którym członkowie zespołu produktowego programu SQL Server zamieszczają informacje o nowościach i funkcjach usługi SQL Database.
+- **[Plan usługi Azure SQL Database](https://azure.microsoft.com/roadmap/?category=databases)**:
+
+  Miejsce, aby dowiedzieć się, co nowego i co będzie dalej.
+
+- **[Blog usługi Azure SQL Database](https://azure.microsoft.com/blog/topics/database)**:
+
+  Miejsce, gdzie blogu elementów członkowskich, temat wiadomości bazy danych SQL i funkcje zespołu produktu SQL Server.
 
 > [!IMPORTANT]
 > Aby zrozumieć różnice między funkcjami usługi SQL Database i programu SQL Server, zobacz [SQL features (Funkcje języka SQL)](sql-database-features.md).
@@ -61,7 +66,7 @@ Usługa SQL Database oferuje [model zakupu w oparciu o jednostki DTU](sql-databa
 Możesz utworzyć pierwszą aplikację na małej, pojedynczej bazy danych na niskim poziomie kosztów miesięcznie w warstwie ogólnego przeznaczenia i następnie zmienić warstwę usługi ręcznie lub programowo w dowolnym momencie do warstwy usług krytycznych biznesowych do potrzeb rozwiązania. Wydajność można dostosować bez przestoju aplikacji i przerwy w świadczeniu usługi klientom. Dynamiczna skalowalność umożliwia bazie danych przezroczyste odpowiadanie na gwałtownie zmieniające się wymagania dotyczące zasobów oraz płacenie tylko za potrzebne zasoby i tylko gdy są używane.
 
 > [!IMPORTANT]
-> [Warstwy usługi w Hiperskali](sql-database-service-tier-hyperscale.md) jest obecnie dostępna w publicznej wersji zapoznawczej. Nie zaleca się jeszcze uruchamianie dowolnego obciążenia produkcyjnego w bazach danych na dużą skalę. Nie można zaktualizować bazy danych na dużą skalę do innych warstw usług. W celu badania zaleca się, Utwórz kopię bieżącej bazy danych i zaktualizowania kopii do warstwy usługi w Hiperskali...
+> [Warstwy usługi w Hiperskali](sql-database-service-tier-hyperscale.md) jest obecnie dostępna w publicznej wersji zapoznawczej. Nie zaleca się jeszcze uruchamianie dowolnego obciążenia produkcyjnego w bazach danych na dużą skalę. Nie można zaktualizować bazy danych na dużą skalę do innych warstw usług. W celu badania zaleca się, Utwórz kopię bieżącej bazy danych i zaktualizowania kopii do warstwy usług na dużą skalę.
 
 Dynamiczna skalowalność różni się od skalowania automatycznego. O skalowaniu automatycznym mówimy, gdy usługa jest skalowana automatycznie na podstawie kryteriów, natomiast dynamiczna skalowalność uwzględnia skalowanie ręczne bez przestojów. Pojedyncza baza danych SQL Azure Database obsługuje ręczną dynamiczną skalowalność, ale nie skalowanie automatyczne. Aby zapewnić środowisko bardziej *zautomatyzowane*, rozważ użycie elastycznych pul baz danych, które umożliwiają bazom danych udostępnianie zasobów w puli w zależności od potrzeb. Istnieją jednak skrypty, które ułatwiają automatyzację skalowalności dla pojedynczej bazy danych SQL Azure Database. Na przykład zobacz temat [Monitorowanie i skalowanie pojedynczej bazy danych SQL za pomocą programu PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).
 
@@ -98,19 +103,29 @@ Ponadto usługa SQL Database może [tworzyć metryki i dzienniki diagnostyczne](
 
 Umowa dotycząca poziomu usług [(SLA)](http://azure.microsoft.com/support/legal/sla/) o czołowej w branży dostępności 99,99% dla platformy Azure, która jest obsługiwana przez globalną sieć centrów danych zarządzanych przez firmę Microsoft, pomaga zapewnić działanie aplikacji przez 24 godziny na dobę, 7 dni w tygodniu. Platforma Azure w pełni zarządza każdą usługą Azure SQL Database i gwarantuje, że nie nastąpi żadna utrata danych oraz że dane będą dostępne przez bardzo wysoki odsetek czasu. Platforma Azure automatycznie obsługuje stosowanie poprawek, tworzenie kopii zapasowych, replikację, wykrywanie błędów, bazowe potencjalne awarie sprzętu, oprogramowania lub sieci, wdrażanie poprawek usterek, przełączanie w tryb failover, uaktualnianie bazy danych oraz inne zadania konserwacji. Dostępność w warstwie Standardowa jest osiągana przez oddzielenie warstw obliczeń i magazynu. Dostępność w warstwie Premium jest osiągana przez integrację obliczeń i magazynu w jednym węźle, aby zapewnić wydajność, a następnie zaimplementowanie zawsze włączonych grup dostępności w tle. Aby uzyskać pełne omówienie możliwości wysokiej dostępności usługi Azure SQL Database, zobacz [dostępności bazy danych SQL](sql-database-high-availability.md). Ponadto usługa SQL Database oferuje wbudowane funkcje [zapewnienia ciągłości działalności biznesowej i globalnej skalowalności](sql-database-business-continuity.md), takie jak:
 
-- **[Automatyczne kopie zapasowe](sql-database-automated-backups.md)**: usługa SQL Database automatycznie wykonuje pełne i różnicowe kopie zapasowe oraz kopie zapasowe dziennika transakcji.
-- **[Przywracanie do punktu w czasie](sql-database-recovery-using-backups.md)**: usługa SQL Database obsługuje odzyskiwanie do dowolnego punktu w czasie w ramach okresu przechowywania automatycznych kopii zapasowych.
-- **[Aktywna replikacja geograficzna](sql-database-geo-replication-overview.md)**: usługa SQL Database pozwala na skonfigurowanie maksymalnie czterech udostępnionych do odczytu pomocniczych baz danych w tym samym centrum danych lub w globalnie rozproszonych centrach danych platformy Azure.  Na przykład, jeśli masz aplikację SaaS z bazą danych katalogu charakteryzującą się dużą liczbą równoczesnych transakcji tylko do odczytu, włącz aktywną replikację geograficzną, aby umożliwić globalne skalowanie odczytu i pozbyć się wąskich gardeł w podstawowej bazie danych, spowodowanych obciążeniami odczytu. 
-- **[Grupy trybu failover](sql-database-geo-replication-overview.md)**: usługa SQL Database pozwala włączyć wysoką dostępność i równoważenie obciążeń w skali globalnej, w tym przezroczystą replikację geograficzną i tryb failover dla dużych zestawów baz danych i pul elastycznych. Grupy trybu failover i aktywna replikacja geograficzna umożliwiają tworzenie globalnie rozproszonych aplikacji SaaS przy minimalnym narzucie prac administracyjnych, pozostawiając po stronie usługi SQL Database całość złożonego monitorowania, routing i organizację trybu failover.
-- **[Bazy danych strefowo nadmiarowe](sql-database-high-availability.md)**: usługa SQL Database umożliwia aprowizację elastycznych pul albo baz danych w warstwie Premium lub Krytyczne dla działania firmy w wielu strefach dostępności. Ponieważ te bazy danych oraz elastyczne pule mają wiele nadmiarowych replik zapewniających wysoką dostępność, umieszczenie tych replik w wielu strefach dostępności zapewnia wyższą niezawodność, w tym możliwość automatycznego odzyskania po awarii w skali centrum danych bez utraty danych.  
+- **[Automatyczne kopie zapasowe](sql-database-automated-backups.md)**:
+
+  SQL Database automatycznie wykonuje pełne, różnicowe kopie zapasowe oraz kopie zapasowe dziennika transakcji.
+- **[W momencie przywracania](sql-database-recovery-using-backups.md)**:
+
+  Usługa SQL Database obsługuje odzyskiwanie do dowolnego punktu w czasie w okresie przechowywania automatycznych kopii zapasowych.
+- **[Aktywna replikacja geograficzna](sql-database-geo-replication-overview.md)**:
+
+  Bazy danych SQL pozwala na skonfigurowanie maksymalnie czterech odczytu pomocniczych baz danych w jednym centrów danych platformy Azure w tej samej lub w globalnie rozproszonych.  Na przykład, jeśli masz aplikację SaaS z bazą danych katalogu charakteryzującą się dużą liczbą równoczesnych transakcji tylko do odczytu, włącz aktywną replikację geograficzną, aby umożliwić globalne skalowanie odczytu i pozbyć się wąskich gardeł w podstawowej bazie danych, spowodowanych obciążeniami odczytu.
+- **[Grupy trybu failover](sql-database-geo-replication-overview.md)**:
+
+  SQL Database pozwala włączyć wysoką dostępność i równoważenie obciążeń w skali globalnej, w tym przezroczystą replikację geograficzną i tryb failover dla dużych zestawów baz danych i pul elastycznych. Grupy trybu failover i aktywna replikacja geograficzna umożliwiają tworzenie globalnie rozproszonych aplikacji SaaS przy minimalnym narzucie prac administracyjnych, pozostawiając po stronie usługi SQL Database całość złożonego monitorowania, routing i organizację trybu failover.
+- **[Strefowo nadmiarowe bazy danych](sql-database-high-availability.md)**:
+
+  Usługa SQL Database umożliwia można aprowizować — wersja Premium lub krytyczne dla działania firmy baz danych lub pule elastyczne w wielu strefach dostępności. Ponieważ te bazy danych oraz elastyczne pule mają wiele nadmiarowych replik zapewniających wysoką dostępność, umieszczenie tych replik w wielu strefach dostępności zapewnia wyższą niezawodność, w tym możliwość automatycznego odzyskania po awarii w skali centrum danych bez utraty danych.  
 
 ## <a name="built-in-intelligence"></a>Wbudowane narzędzie analizy
 
-Usługa SQL Database udostępnia wbudowane narzędzie analizy, które pomaga znacznie zmniejszyć koszty działania baz danych i zarządzania nimi oraz zmaksymalizować wydajność i zabezpieczenia aplikacji. Nieprzerwanie obsługując miliony obciążeń klientów, usługa SQL Database zbiera i przetwarza ogromne ilości danych telemetrycznych, w pełni przestrzegając przy tym zasad ochrony prywatności klientów. Rozmaite algorytmy stale analizują dane telemetryczne, dzięki czemu usługa może zdobywać wiedzę i dostosować się do Twojej aplikacji. Dzięki tej analizie usługa funkcjonuje ze zwiększoną wydajnością wynikającą z uwzględnienia zaleceń dostosowanych do określonego obciążenia. 
+Usługa SQL Database udostępnia wbudowane narzędzie analizy, które pomaga znacznie zmniejszyć koszty działania baz danych i zarządzania nimi oraz zmaksymalizować wydajność i zabezpieczenia aplikacji. Nieprzerwanie obsługując miliony obciążeń klientów, usługa SQL Database zbiera i przetwarza ogromne ilości danych telemetrycznych, w pełni przestrzegając przy tym zasad ochrony prywatności klientów. Rozmaite algorytmy stale analizują dane telemetryczne, dzięki czemu usługa może zdobywać wiedzę i dostosować się do Twojej aplikacji. Dzięki tej analizie usługa funkcjonuje ze zwiększoną wydajnością wynikającą z uwzględnienia zaleceń dostosowanych do określonego obciążenia.
 
 ### <a name="automatic-performance-monitoring-and-tuning"></a>Automatyczne monitorowanie i dostosowywanie wydajności
 
-Usługa SQL Database udostępnia szczegółowy wgląd w zapytania, których monitorowanie jest wymagane. Usługa SQL Database uzyskuje informacje o wzorcach Twoich baz danych i umożliwia dostosowanie schematu bazy danych do obciążenia. Usługa SQL Database udostępnia [zalecenia dotyczące dostrajania wydajności](sql-database-advisor.md) pozwalające na przeglądanie i stosowanie akcji dostrajających. 
+Usługa SQL Database udostępnia szczegółowy wgląd w zapytania, których monitorowanie jest wymagane. Usługa SQL Database uzyskuje informacje o wzorcach Twoich baz danych i umożliwia dostosowanie schematu bazy danych do obciążenia. Usługa SQL Database udostępnia [zalecenia dotyczące dostrajania wydajności](sql-database-advisor.md) pozwalające na przeglądanie i stosowanie akcji dostrajających.
 
 Jednak nieprzerwane monitorowanie bazy danych jest trudnym i żmudnym zadaniem, szczególnie w przypadku pracy z wieloma bazami danych. Funkcja [Intelligent Insights](sql-database-intelligent-insights.md) zapewnia to przez automatyczne monitorowanie wydajności bazy danych SQL w odpowiedniej skali oraz informowanie o problemach ze spadkiem wydajności. Identyfikuje główną przyczynę problemu i oferuje zalecenia dotyczące podnoszenia wydajności, jeśli to możliwe.
 
@@ -129,15 +144,21 @@ Do usługi SQL Database dodajemy również rodzinę [funkcji adaptacyjnego przet
 
 ## <a name="advanced-security-and-compliance"></a>Zaawansowane zabezpieczenia i zgodność
 
-Usługa SQL Database oferuje szeroką gamę [wbudowanych funkcji zabezpieczeń i zgodności](sql-database-security-overview.md), co ułatwia spełnienie przez aplikację różnych wymagań dotyczących zabezpieczeń i zgodności. 
+Usługa SQL Database oferuje szeroką gamę [wbudowanych funkcji zabezpieczeń i zgodności](sql-database-security-overview.md), co ułatwia spełnienie przez aplikację różnych wymagań dotyczących zabezpieczeń i zgodności.
 
 ### <a name="advance-threat-protection"></a>Advanced Threat Protection
 
 Usługa SQL Advanced Threat Protection to ujednolicony pakiet zaawansowanych możliwości zabezpieczeń SQL. Obejmuje to funkcję wykrywania i klasyfikowania danych poufnych, likwidowanie luk w zabezpieczeniach bazy danych i wykrywanie nietypowych działań, które mogą wskazywać, że baza danych jest zagrożona. Zapewnia ona pojedynczą lokalizację, w której można włączać te możliwości i zarządzać nimi.
 
-- [Odnajdywanie i klasyfikacja danych](sql-database-data-discovery-and-classification.md) (obecnie w wersji zapoznawczej) zapewnia możliwości wbudowane w usługę Azure SQL Database na potrzeby odnajdywania, klasyfikowania, etykietowania oraz ochrony danych poufnych w bazach danych. Za jej pomocą można zapewniać wgląd w stan klasyfikacji bazy danych oraz śledzić dostęp do danych poufnych w bazie danych i poza jej granicami.
-- [Ocena luk w zabezpieczeniach](sql-vulnerability-assessment.md) to łatwa do skonfigurowania usługa umożliwiająca odnajdywanie i śledzenie potencjalnych luk w zabezpieczeniach bazy danych oraz pomagająca w ich usuwaniu. Zapewnia wgląd w stan zabezpieczeń i zapewnia kroki, które można wykonać w celu rozwiązania problemów z zabezpieczeniami oraz zwiększenia bezpieczeństwa bazy danych.
-- [Wykrywanie zagrożeń](sql-database-threat-detection.md) wykrywa nietypowe działania wskazujące na nieprawidłowe i potencjalnie szkodliwe próby uzyskania dostępu do bazy danych lub wykorzystania jej. Stale monitoruje Twoją bazę danych pod kątem podejrzanych działań i zapewnia natychmiastowe alerty zabezpieczeń dotyczące potencjalnych luk w zabezpieczeniach, ataków polegających na wstrzyknięciu kodu SQL oraz anomalii we wzorcach dostępu do bazy danych. Alerty wykrywania zagrożeń zawierają szczegółowe informacje o podejrzanych działaniach i zalecane czynności dotyczące sposobu badania i ograniczenia zagrożenia.
+- [Odnajdywanie i klasyfikacja danych](sql-database-data-discovery-and-classification.md):
+
+  Ta funkcja (obecnie w wersji zapoznawczej) zapewnia funkcje wbudowane w usłudze Azure SQL Database na potrzeby odnajdywania, klasyfikowania, etykietowania i ochrony poufnych danych w bazach danych. Za jej pomocą można zapewniać wgląd w stan klasyfikacji bazy danych oraz śledzić dostęp do danych poufnych w bazie danych i poza jej granicami.
+- [Ocena luk w zabezpieczeniach](sql-vulnerability-assessment.md):
+
+  Ta usługa może odnaleźć, śledzenie i ułatwić korygowanie potencjalnych luk w bazie danych. Zapewnia wgląd w stan zabezpieczeń i zapewnia kroki, które można wykonać w celu rozwiązania problemów z zabezpieczeniami oraz zwiększenia bezpieczeństwa bazy danych.
+- [Wykrywanie zagrożeń](sql-database-threat-detection.md):
+
+  Ta funkcja wykrywa nietypowe działania wskazujące na nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystania bazy danych. Stale monitoruje Twoją bazę danych pod kątem podejrzanych działań i zapewnia natychmiastowe alerty zabezpieczeń dotyczące potencjalnych luk w zabezpieczeniach, ataków polegających na wstrzyknięciu kodu SQL oraz anomalii we wzorcach dostępu do bazy danych. Alerty wykrywania zagrożeń zawierają szczegółowe informacje o podejrzanych działaniach i zalecane czynności dotyczące sposobu badania i ograniczenia zagrożenia.
 
 ### <a name="auditing-for-compliance-and-security"></a>Inspekcja zgodności i zabezpieczeń
 
@@ -159,10 +180,18 @@ Usługa SQL Database jest poddawana regularnym inspekcjom i ma certyfikat kilku 
 
 Dzięki usłudze SQL Database tworzenie i konserwowanie aplikacji jest łatwiejsze i bardziej produktywne. Usługa SQL Database pozwala Ci skoncentrować się na tym, co robisz najlepiej: tworzeniu wspaniałych aplikacji. W usłudze SQL Database możesz zarządzać i projektować, korzystając z narzędzi i umiejętności, które już masz.
 
-- **[Azure Portal](https://portal.azure.com/)**: aplikacja sieci Web do zarządzania wszystkimi usługami platformy Azure 
-- **[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)**: bezpłatna, udostępniona do pobrania aplikacja kliencka do zarządzania dowolną infrastrukturą SQL — od programu SQL Server po usługę SQL Database
-- **[SQL Server Data Tools w programie Visual Studio](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)**: bezpłatna, udostępniona do pobrania aplikacja kliencka do projektowania relacyjnych baz danych programu SQL Server, baz danych SQL platformy Azure, pakietów usługi Integration Services, modeli danych usługi Analysis Services i raportów usługi Reporting Services.
-- **[Visual Studio Code](https://code.visualstudio.com/docs)**: bezpłatny, udostępniony do pobrania, otwarty edytor kodu dla systemów Windows, macOS i Linux obsługujący rozszerzenia, w tym [rozszerzenie mssql](https://aka.ms/mssql-marketplace), używany do wysyłania zapytań do programu Microsoft SQL Server oraz usług Azure SQL Database i SQL Data Warehouse.
+- **[Witryna Azure portal](https://portal.azure.com/)**:
+
+  Aplikacja sieci web do zarządzania wszystkich usług platformy Azure
+- **[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)**:
+
+  Bezpłatna, dostępna do pobrania aplikacja kliencka do zarządzania dowolną infrastrukturą SQL — od programu SQL Server do usługi SQL Database
+- **[SQL Server Data Tools w programie Visual Studio](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)**:
+
+  Bezpłatna, dostępna do pobrania aplikacja kliencka do projektowania relacyjnych baz danych programu SQL Server, bazy danych Azure SQL, pakiety usług Integration Services, modele danych usług Analysis Services i raporty usług Reporting Services.
+- **[Program Visual Studio Code](https://code.visualstudio.com/docs)**:
+
+  Edytor kodu bezpłatny, dostępny do pobrania, typu open source dla Windows, macOS i Linux obsługujący rozszerzenia, w tym [rozszerzenie mssql](https://aka.ms/mssql-marketplace) do wykonywania zapytań programu Microsoft SQL Server, usługi Azure SQL Database i SQL Data Warehouse.
 
 Usługa SQL Database obsługuje tworzenie aplikacji za pomocą narzędzi Python, Java, Node.js, PHP, Ruby i .NET w systemach MacOS, Linux i Windows. Usługa SQL Database obsługuje te same [biblioteki połączeń](sql-database-libraries.md) co program SQL Server.
 
@@ -177,7 +206,6 @@ Usługa SQL Database obsługuje tworzenie aplikacji za pomocą narzędzi Python,
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Zapoznać się z [cennikiem](https://azure.microsoft.com/pricing/details/sql-database/) zawierającym porównania i kalkulatory kosztów dla pojedynczej bazy danych i pul elastycznych.
-
 - Zobacz te przewodniki Szybki start, aby rozpocząć pracę:
 
   - [Tworzenia bazy danych SQL w witrynie Azure Portal](sql-database-get-started-portal.md)  

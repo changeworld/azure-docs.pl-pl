@@ -2,18 +2,17 @@
 title: Elementy webhook usługi Azure Container Registry
 description: Dowiedz się, jak korzystać z elementami webhook w celu wyzwalać zdarzenia wystąpieniu określonych akcji w swoich repozytoriów w rejestrze.
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 08/20/2017
-ms.author: marsma
-ms.openlocfilehash: c424e81b13c3c60e975d3721693b1f80e00cfdd7
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.author: danlep
+ms.openlocfilehash: 350ae16aa66276e7e64c5c35718dca74a70f499e
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056405"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854103"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Przy użyciu elementów webhook usługi Azure Container Registry
 

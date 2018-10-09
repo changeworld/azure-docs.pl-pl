@@ -1,39 +1,38 @@
 ---
-title: Polecenia można wykonywać w programie kontenery wystąpień kontenera platformy Azure
-description: Dowiedz się, jak wykonać polecenia w kontenerze, który jest obecnie uruchomiony w wystąpień kontenera platformy Azure
+title: Wykonywanie poleceń w uruchomionych kontenerów w usłudze Azure Container Instances
+description: Dowiedz się, jak wykonywać polecenia w kontenerze, który jest obecnie uruchomiony w usłudze Azure Container Instances
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: article
 ms.date: 03/30/2018
-ms.author: marsma
-ms.openlocfilehash: 43211f620efb16cbcd722d3d386b1bb862fc6280
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: danlep
+ms.openlocfilehash: 577e2386c352798bc21a2c78b22726128ac7cf0a
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32165650"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854092"
 ---
-# <a name="execute-a-command-in-a-running-azure-container-instance"></a>Wykonanie polecenia w wystąpieniu kontener uruchamianie Azure
+# <a name="execute-a-command-in-a-running-azure-container-instance"></a>Wykonanie polecenia w wystąpieniu działa usługa Azure container
 
-Wystąpień kontenera platformy Azure obsługuje wykonywania polecenia w kontenerze uruchomione. Polecenia w kontenerze, który został już uruchomiony jest szczególnie przydatne podczas tworzenia aplikacji i rozwiązywania problemów. Najbardziej typowe używanie tej funkcji jest uruchamianie interaktywnego powłoki tak, aby umożliwić debugowanie problemów w kontenerze uruchomione.
+Usługa Azure Container Instances obsługuje wykonywanie polecenia w uruchomionego kontenera. Uruchomienie polecenia w kontenerze, który został już uruchomiony jest szczególnie przydatne podczas tworzenia aplikacji i rozwiązywania problemów. Najczęściej używane ta funkcja jest uruchomienie interaktywnej powłoki, aby można było debugować problemy z uruchomionego kontenera.
 
 ## <a name="run-a-command-with-azure-cli"></a>Uruchom polecenie z wiersza polecenia platformy Azure
 
-Wykonania polecenia w kontenerze uruchomionych z [exec kontenera az] [ az-container-exec] w [interfejsu wiersza polecenia Azure][azure-cli]:
+Wykonanie polecenia w kontenerze uruchomiona przy użyciu [az container exec] [ az-container-exec] w [wiersza polecenia platformy Azure][azure-cli]:
 
 ```azurecli
 az container exec --resource-group <group-name> --name <container-group-name> --exec-command "<command>"
 ```
 
-Na przykład, aby uruchomić powłoki Bash w kontenerze Nginx:
+Na przykład można uruchomić z poziomu powłoki Bash w kontenera Nginx:
 
 ```azurecli
 az container exec --resource-group myResourceGroup --name mynginx --exec-command "/bin/bash"
 ```
 
-W przykładzie danych wyjściowych poniżej, powłoki Bash jest uruchamiana w kontenerze systemu Linux uruchomionych, zapewniając terminalu, w którym `ls` jest wykonywana:
+W przykładzie danych wyjściowych poniżej, powłoki Bash, jest uruchamiana w działający kontener systemu Linux, zapewniając terminalu, w którym `ls` jest wykonywana:
 
 ```console
 $ az container exec --resource-group myResourceGroup --name mynginx --exec-command "/bin/bash"
@@ -45,7 +44,7 @@ exit
 Bye.
 ```
 
-W tym przykładzie wiersza polecenia jest uruchamiana w kontenerze Nanoserver uruchomiona:
+W tym przykładzie zostanie uruchomiony wiersz polecenia w kontenerze uruchomiona Nanoserver:
 
 ```console
 $ az container exec --resource-group myResourceGroup --name myiis --exec-command "cmd.exe"
@@ -75,9 +74,9 @@ Bye.
 
 ## <a name="multi-container-groups"></a>Grupy z wieloma kontenerami
 
-Jeśli Twoje [grupy kontenerów](container-instances-container-groups.md) ma wiele kontenerów, takie jak kontenera aplikacji i boczną rejestrowania, określ nazwę kontenera, w którym można uruchomić polecenie z `--container-name`.
+Jeśli Twoje [grupy kontenerów](container-instances-container-groups.md) ma wiele kontenerów, takich jak kontener aplikacji i przyczepki rejestrowania, określ nazwę kontenera, w którym należy uruchomić polecenie z `--container-name`.
 
-Na przykład w grupie kontenera *mynginx* są dwa kontenery *aplikacji nginx* i *rejestratora*. Do uruchomienia powłoki w *aplikacji nginx* kontenera:
+Na przykład, w grupie kontenerów *mynginx* są dwa kontenery *aplikacji nginx* i *rejestratora*. Można uruchomić z poziomu powłoki na *aplikacji nginx* kontenera:
 
 ```azurecli
 az container exec --resource-group myResourceGroup --name mynginx --container-name nginx-app --exec-command "/bin/bash"
@@ -85,11 +84,11 @@ az container exec --resource-group myResourceGroup --name mynginx --container-na
 
 ## <a name="restrictions"></a>Ograniczenia
 
-Wystąpień kontenera Azure obecnie obsługuje uruchamianie jednego procesu z [exec kontenera az][az-container-exec], i nie można przekazywać argumenty polecenia. Nie można na przykład łańcucha poleceń, takich jak w `sh -c "echo FOO && echo BAR"`, lub wykonaj `echo FOO`.
+Usługa Azure Container Instances obecnie obsługuje uruchamianie w pojedynczym procesie [az container exec][az-container-exec], i nie można przekazać argumenty wiersza polecenia. Na przykład nie można utworzyć łańcuch poleceń, takich jak w `sh -c "echo FOO && echo BAR"`, albo wykonaj `echo FOO`.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o innych narzędzi do rozwiązywania problemów i typowe problemy z wdrażaniem w [Rozwiązywanie problemów i wdrożenia kontenera w wystąpień kontenera Azure](container-instances-troubleshooting.md).
+Dowiedz się więcej o innych narzędzi do rozwiązywania problemów i typowych problemów z wdrażaniem w [rozwiązywać problemy kontenerów i wdrażanie w usłudze Azure Container Instances](container-instances-troubleshooting.md).
 
 <!-- LINKS - internal -->
 [az-container-create]: /cli/azure/container#az-container-create

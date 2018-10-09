@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/07/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: d48eee711e5d43c2113c3a21d87386b350c6b01f
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: ef9fdb348a80c050e8c47217f2f5158200ae2f30
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731904"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868689"
 ---
 # <a name="authenticate-access-to-azure-blobs-and-queues-using-azure-active-directory-preview"></a>Uwierzytelnianie dostępu do obiektów blob platformy Azure i queues, korzystając z usługi Azure Active Directory (wersja zapoznawcza)
 
@@ -35,8 +35,7 @@ Należy pamiętać o następujących kwestiach dotyczących korzystania z wersji
     - [.NET](https://www.nuget.org/packages/WindowsAzure.Storage)
     - [Java](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)
     - Python
-        - [Obiekt blob](https://github.com/Azure/azure-storage-python/releases/tag/)
-        - [kolejki](https://github.com/Azure/azure-storage-python/releases/tag/)
+        - [Obiekt blob, kolejki i pliki](https://github.com/Azure/azure-storage-python)
     - [Node.js](https://www.npmjs.com/package/azure-storage)
     - [JavaScript](https://aka.ms/downloadazurestoragejs)
 

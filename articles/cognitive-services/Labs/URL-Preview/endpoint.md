@@ -1,27 +1,28 @@
 ---
-title: Projekt punkt końcowy adres URL podglądu - kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
-description: Podsumowanie punktu końcowego adresu URL podglądu.
+title: Podgląd adresu URL punktu końcowego projektu
+titlesuffix: Azure Cognitive Services
+description: Podsumowanie Podgląd adresu URL punktu końcowego.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: ddd53aa49db01d7a6db397eb285d0854edc59388
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0464ac80c451ada46561de78b5ba0860c59a9e34
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348616"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868653"
 ---
-# <a name="project-url-preview-endpoint"></a>Punkt końcowy adres URL podglądu projektu
+# <a name="project-url-preview-endpoint"></a>Podgląd adresu URL punktu końcowego projektu
 
-Interfejs API w wersji zapoznawczej adres URL zawiera jeden punkt końcowy.
+Adres URL interfejsu API (wersja zapoznawcza) zawiera jeden punkt końcowy.
 
 ## <a name="endpoint"></a>Endpoint
-Aby uzyskać adres URL w wersji zapoznawczej, Wyślij żądanie do następujący punkt końcowy. Użyj nagłówków i parametry adresu URL dla innych specyfikacji.
+Aby uzyskać adres URL w wersji zapoznawczej, Wyślij żądanie do następujący punkt końcowy. Na użytek nagłówki i parametry adresu URL inne specyfikacje.
 
 GET:
 ````
@@ -32,12 +33,12 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=https://swiftk
 ### <a name="query-parameters"></a>Parametry zapytania
 |Name (Nazwa)|Wartość|Typ|Wymagane|  
 |----------|-----------|----------|--------------|  
-|Q|Adres URL do podglądu|Ciąg |Yes|
-|bezpieczne wyszukiwanie|Zawartość dla dorosłych niedozwolony lub pirackich zawartość, jest zablokowany z kodem błędu 400 i *isFamilyFriendly* flagi nie są zwracane. <p>Treści dla dorosłych prawnych poniżej jest to zachowanie. Zwraca wartość Kod stanu 200 i *isFamilyFriendly* flaga jest ustawiona na wartość false.<ul><li>bezpieczne wyszukiwanie = strict: tytuł, opis i adres URL obrazu nie zostaną zwrócone.</li><li>bezpieczne wyszukiwanie = umiarkowany; Pobierz tytuł, adres URL i opis, ale nie opis obrazu.</li><li>bezpieczne wyszukiwanie = wyłączone; Pobierz wszystkie odpowiedzi obiektów/elementy — tytuł, adres URL, opis i obraz.</li></ul> |Ciąg|Nie jest wymagane. </br> Domyślnie bezpieczne wyszukiwanie = strict.| 
+|pytania i odpowiedzi|Adres URL, aby wyświetlić podgląd|Ciąg |Yes|
+|bezpieczne wyszukiwanie|Nielegalnych treści dla dorosłych lub pirackich zawartości jest zablokowany kod błędu: 400 i *isFamilyFriendly* flaga nie jest zwracana. <p>Treści dla dorosłych prawnych poniżej jest to zachowanie. Zwraca wartość Kod stanu 200, a *isFamilyFriendly* flaga jest ustawiona na wartość false.<ul><li>bezpieczne wyszukiwanie = strict: tytuł, opis, adres URL i obraz nie zostanie zwrócona.</li><li>bezpieczne wyszukiwanie = średni; Uzyskaj tytuł, adres URL i opis, ale nie opisowy obraz.</li><li>bezpieczne wyszukiwanie = wyłączone; Pobierz wszystkie odpowiedzi obiektów/elementy — tytuł, adres URL, opis i obraz.</li></ul> |Ciąg|Nie jest wymagane. </br> Wartość domyślna to bezpieczne wyszukiwanie = strict.| 
 
 ## <a name="response-object"></a>Obiekt odpowiedzi
 
-Odpowiedź zawiera nagłówki HTTP i obiekt strony sieci Web z atrybutami, jak pokazano w poniższym przykładzie: `name`, `url`, `description`, `isFamilyFriendly`, i `primaryImageOfPage`.
+Odpowiedź zawiera nagłówki HTTP i obiekt strony sieci Web za pomocą atrybutów, jak pokazano w poniższym przykładzie: `name`, `url`, `description`, `isFamilyFriendly`, i `primaryImageOfPage`.
 
 ````
 BingAPIs-TraceId: 15AFE52A97AA422F960433A94803F6CE
@@ -59,8 +60,8 @@ X-MSEdge-Ref: Ref A: 15AFE52A97AA422F960433A94803F6CE Ref B: PAOEDGE0418 Ref C: 
 ````
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [C# — Szybki Start](csharp.md)
-- [Szybki Start Java](java-quickstart.md)
-- [JavaScript — Szybki Start](javascript.md)
-- [Węzeł Szybki Start](node-quickstart.md)
-- [Krótkie wprowadzenie do języka Python](python-quickstart.md)
+- [Przewodnik Szybki Start języka C#](csharp.md)
+- [Przewodnik Szybki Start języka Java](java-quickstart.md)
+- [Przewodnik Szybki Start języka JavaScript](javascript.md)
+- [Przewodnik Szybki Start węzła](node-quickstart.md)
+- [Przewodnik Szybki Start języka Python](python-quickstart.md)

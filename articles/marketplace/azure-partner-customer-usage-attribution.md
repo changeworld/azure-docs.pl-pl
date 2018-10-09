@@ -3,7 +3,7 @@ title: Usługa Azure autorstwa użycia partnerów i klientów
 description: Omówienie sposobu śledzenia użycia przez klientów dla rozwiązań w portalu Azure Marketplace
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
-author: ellacroi
+author: yijenj
 manager: nunoc
 editor: ''
 ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 07/26/2018
-ms.author: ellacroi
-ms.openlocfilehash: c3690c9be940a69bd2f8745493d4e2648bac6d9b
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.date: 10/05/2018
+ms.author: yijenj
+ms.openlocfilehash: 99df133b9f626f970189df578c6d107086b9dab9
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42059928"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855004"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Uznanie autorstwa użycia klienta partnerów platformy Azure
 
@@ -157,7 +157,7 @@ Możesz uzyskać [oryginalnego skryptu](https://gist.github.com/bmoore-msft/ae6b
 ```
 Param(
     [GUID][Parameter(Mandatory=$true)]$guid,
-    [string][Parameter(Mandatory=$true)]$resourceGroupName'
+    [string][Parameter(Mandatory=$true)]$resourceGroupName
 )
 
 # Get the correlationId of the pid deployment

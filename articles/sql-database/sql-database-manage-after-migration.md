@@ -11,13 +11,13 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 6dd4aacddfbce3e06c1ea9a356a559cc8cd8049c
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/05/2018
+ms.openlocfilehash: fd32a00fe83e731321cb5e365f64d0f6acf8732d
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166490"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870982"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nowe DBA w chmurze — zarządzania bazą danych w usłudze Azure SQL Database
 
@@ -89,7 +89,7 @@ Uwierzytelnianie tradycyjnego systemu windows nie jest obsługiwana. Usługa Azu
 ### <a name="how-do-i-limit-or-control-connectivity-access-to-my-database"></a>Jak ograniczyć lub kontrolować połączenia dostępu do bazy danych?
 Istnieje kilka technik do dyspozycji, którego można użyć do osiągnięcia organizacji optymalną łączność aplikacji. 
 - Reguły zapory
-- Punkty końcowe usługi sieci Wirtualnej
+- Punkty końcowe usługi sieci wirtualnej
 - Zastrzeżone adresy IP
 
 #### <a name="firewall"></a>Zapora
@@ -98,11 +98,11 @@ Zapora uniemożliwia dostęp do serwera z zewnętrznej jednostki, zezwalając ty
 Można utworzyć reguły zapory na poziomie serwera lub na poziomie bazy danych. Reguły zapory na poziomie serwera mogą utworzone za pośrednictwem portalu lub za pomocą programu SSMS. Aby uzyskać więcej informacji na temat sposobu konfigurowania serwera oraz reguły zapory na poziomie bazy danych, zobacz: [tworzenie reguł zapory w bazie danych SQL](sql-database-security-tutorial.md#create-a-server-level-firewall-rule-in-the-azure-portal).
 
 #### <a name="service-endpoints"></a>Punkty końcowe usługi
-Domyślnie usługi SQL database jest skonfigurowany do "Zezwalaj na usługi platformy Azure na dostęp do serwera" — oznacza to, dowolnej maszyny wirtualnej na platformie Azure może próbować połączyć się z bazą danych. Te próby nadal jest konieczne może zostać uwierzytelniony. Jednakże jeśli nie chcesz bazę danych, aby były dostępne dla żadnych adresów IP usługi Azure, możesz wyłączyć "Zezwalaj na usługi platformy Azure na dostęp do serwera". Ponadto można skonfigurować [punkty końcowe usługi sieci Wirtualnej](sql-database-vnet-service-endpoint-rule-overview.md).
+Domyślnie usługi SQL database jest skonfigurowany do "Zezwalaj na usługi platformy Azure na dostęp do serwera" — oznacza to, dowolnej maszyny wirtualnej na platformie Azure może próbować połączyć się z bazą danych. Te próby nadal jest konieczne może zostać uwierzytelniony. Jednakże jeśli nie chcesz bazę danych, aby były dostępne dla żadnych adresów IP usługi Azure, możesz wyłączyć "Zezwalaj na usługi platformy Azure na dostęp do serwera". Ponadto można skonfigurować [punkty końcowe usługi sieci wirtualnej](sql-database-vnet-service-endpoint-rule-overview.md).
 
 Punkty końcowe usługi (SE) umożliwiają udostępnianie krytycznych zasobów platformy Azure tylko do własnej prywatnej sieci wirtualnej na platformie Azure. W ten sposób można zasadniczo wyeliminować publicznego dostępu do zasobów. Ruch między siecią wirtualną na platformie Azure pozostaje w sieci szkieletowej platformy Azure. Bez SE uzyskasz tunelowania wymuszanego routing pakietów. Sieć wirtualna wymusza ruch internetowy do organizacji i zapoznać się z tej samej trasie ruch usługi platformy Azure. Dzięki punktom końcowym usług można zoptymalizować to od przepływu pakietów bezpośrednio z sieci wirtualnej do usługi w sieci szkieletowej platformy Azure.
 
-![Punkty końcowe usługi sieci Wirtualnej](./media/sql-database-manage-after-migration/vnet-service-endpoints.png) 
+![Punkty końcowe usługi sieci wirtualnej](./media/sql-database-manage-after-migration/vnet-service-endpoints.png) 
 
 #### <a name="reserved-ips"></a>Zastrzeżone adresy IP
 Innym rozwiązaniem jest aprowizowanie [zastrzeżone adresy IP](../virtual-network/virtual-networks-reserved-public-ip.md) dla maszyn wirtualnych i dozwolonych tych określonych adresów IP maszyn wirtualnych na serwerze ustawienia zapory. Przypisując zastrzeżone adresy IP, możesz zapisać pracy związanej z konieczności zaktualizować reguły zapory przy użyciu zmiany adresów IP.

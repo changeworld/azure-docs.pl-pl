@@ -2,18 +2,17 @@
 title: Uruchamianie zadań konteneryzowanych w usłudze Azure Container Instances za pomocą zasady ponownego uruchamiania
 description: Dowiedz się, jak używać usługi Azure Container Instances do wykonania zadania, które zostało ukończone, takie jak w kompilacji, testów lub zadań renderowania obrazu.
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: article
 ms.date: 07/26/2018
-ms.author: marsma
-ms.openlocfilehash: f4d30a9902261c0e785a1af36a7c1c7a8a0fec46
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: danlep
+ms.openlocfilehash: c9e3fadd5164ca0d770f36ba95c30db933efcd39
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444949"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48853896"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Uruchamianie zadań konteneryzowanych za pomocą zasady ponownego uruchamiania
 

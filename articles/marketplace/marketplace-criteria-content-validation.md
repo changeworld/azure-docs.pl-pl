@@ -12,30 +12,20 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 0b971535120e51a9aeec7b57da133c6b8db6a09e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 383f16bf0671e0bdec840afe1abe85e37ed32ce2
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219418"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855361"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Lista Azure Marketplace, wytycznych
 
 Ten dokument zawiera wskazówki dotyczące wymagań, a także listę kontrolną dla osób dokonujących przeglądu dla nowych ofert i usług wymienionych w portalu Azure Marketplace.
 
-Wszystkie oferty muszą spełniać "wszystkie wymagania listy". Dodatkowe wymagania i listy kontrolne, które są dostarczane dla określonych typów w tym: oferuje z dołączone wersje próbne konsultacji oferty, aplikacje SaaS i kontenery.
-
-**Zobacz najlepszym rozwiązaniem jest wyświetlanie podane tutaj przykłady:**
-| Typ oferty | Oferuje łącza
-|:--- |:--- |
-| Ogólne | <br> https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.waf?tab=Overview <br> https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.netapp-altavault-cloud-integrated-storage-solution?tab=Overview |
-| Wersja próbna | https://azuremarketplace.microsoft.com/en-us/marketplace/apps/intigua.intigua-agent-manager-trial?tab=Overview |
-| Aplikacje SaaS | https://azuremarketplace.microsoft.com/en-us/marketplace/apps/apptimized.isvtesting?tab=Overview |
-| Containers |https://azuremarketplace.microsoft.com/en-us/marketplace/apps/couchbase.couchbase-server-enterprise-containercouchbase-enterprise-server-container-byol?tab=Overview |
-| Usługi doradcze | https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/wipro-ltd.cmp-wipro?page=1 |
-
+Wszystkie oferty muszą spełniać [wszystkie wymagania ofercie](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#all-listing-requirements) wymienione poniżej. Dodatkowe wymagania i listy kontrolne, które są dostarczane dla określonych typów w tym: dołączone oferty z [prób](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#trial-offer-requirements), [aplikacji SaaS](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#saas-apps-requirements), [kontenery](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#container-offer-requirements)i [konsultacji oferty](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#consulting-offer-requirements).
 
 
 ## <a name="all-listing-requirements"></a>Wszystkie wymagania listy
@@ -108,10 +98,8 @@ Wszystkie oferty muszą spełniać "wszystkie wymagania listy". Dodatkowe wymaga
 | 12 | Dowiedz się więcej  | <br>• Linki na dole (w opisie nie łączy portalu marketplace po lewej stronie) prowadzi do informacji na temat rozwiązania i są publicznie dostępne i wyświetlania poprawnie. <br>• Łącza muszą mieć "Przyjazna nazwa" i być wyświetlana jako nazwa pliku żadnych plików do pobrania | |
 
 
-
-
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o typach inną ofertę w portalu marketplace <br>[Aplikacje SaaS](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) <br>[Containers](https://docs.microsoft.com/azure/marketplace/marketplace-containers) <br>[Usługi doradcze](https://docs.microsoft.com/azure/marketplace/consulting-services)
+* Dowiedz się więcej o typach inną ofertę w portalu marketplace <br>[Aplikacje SaaS](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) <br>[Containers](https://docs.microsoft.com/azure/marketplace/marketplace-containers) <br>[Usługi konsultingowe](https://docs.microsoft.com/azure/marketplace/consulting-services)
 *   [Określić typ oferty dla Twojego rozwiązania](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)
 
  

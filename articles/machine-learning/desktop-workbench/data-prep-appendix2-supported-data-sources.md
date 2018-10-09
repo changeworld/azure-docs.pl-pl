@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: c4686bf01031e30bd9dc94f42d80da524db82931
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: eb84638e2996b0ee9bd5a580b7e827ea30d0ab21
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969261"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855990"
 ---
 # <a name="supported-data-sources-for-azure-machine-learning-data-preparation"></a>Obsługiwane źródła danych w celu przygotowania danych usługi Azure Machine Learning 
 
@@ -115,7 +115,7 @@ Wykonanie skalowalnego w poziomie opiera się na Parquet platforma Spark odczyty
 Lokalny dysk twardy lub lokalizacji magazynu mapowanej sieci.
 
 ### <a name="sql-server"></a>Oprogramowanie SQL Server
-Lokalne programu SQL Server, lub bazy danych Azure SQL.
+Lokalne programu SQL server lub bazie danych Azure SQL.
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 Usługa Azure Blob storage, co wymaga subskrypcji platformy Azure.

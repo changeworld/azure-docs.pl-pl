@@ -2,18 +2,17 @@
 title: Uwierzytelnianie za pomocą usługi Azure Container Registry z usługi Azure Kubernetes Service
 description: Dowiedz się, jak zapewnić dostęp do obrazów w prywatnego rejestru kontenera z usługi Azure Kubernetes Service za pomocą jednostki usługi Azure Active Directory.
 services: container-service
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2018
-ms.author: marsma
-ms.openlocfilehash: c9ade4d61a1b95d5041a13f9436f0d02a7951758
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: danlep
+ms.openlocfilehash: d08fc0cb8e3203a60cbd426145ec50bb3636e758
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981670"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857129"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Uwierzytelnianie za pomocą usługi Azure Container Registry z usługi Azure Kubernetes Service
 

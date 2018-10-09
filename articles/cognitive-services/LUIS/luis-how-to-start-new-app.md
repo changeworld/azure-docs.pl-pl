@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 401c4fb8942aee73c036ae2b248a030eaea4917a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 55af0559c98c9fc63fd6902d80b4e6f2f0a7d2da
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031258"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870119"
 ---
 # <a name="create-an-app"></a>Tworzenie aplikacji
 Istnieje kilka sposobów, aby utworzyć aplikację usługi LUIS. Można utworzyć aplikację usługi LUIS w [LUIS](https://www.luis.ai) portalu lub za pomocą usługi LUIS tworzenia [interfejsów API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
@@ -22,9 +22,9 @@ Istnieje kilka sposobów, aby utworzyć aplikację usługi LUIS. Można utworzy�
 ## <a name="using-the-luis-portal"></a>Za pomocą portalu usługi LUIS
 Można utworzyć nową aplikację w portalu usługi LUIS na kilka sposobów:
 
-* [Rozpocznij](#create-new-app) z pustą aplikację i utworzyć intencji, wypowiedzi i jednostek.
-* [Rozpocznij](#create-new-app) z pustą aplikacją i Dodaj [ze wstępnie utworzonych domen](luis-how-to-use-prebuilt-domains.md).
-* [Importowanie aplikacji usługi LUIS](#import-new-app) z pliku JSON, który zawiera już intencji, wypowiedzi i jednostek.
+* Rozpocznij od pusta aplikacja i tworzyć intencji, wypowiedzi i jednostek.
+* Start z pustą aplikacją, a następnie dodaj [ze wstępnie utworzonych domen](luis-how-to-use-prebuilt-domains.md).
+* Importowanie aplikacji usługi LUIS z pliku JSON, który zawiera już intencji, wypowiedzi i jednostek.
 
 ## <a name="using-the-authoring-apis"></a>Za pomocą tworzenia interfejsów API
 Można utworzyć nową aplikację za pomocą tworzenia interfejsów API na kilka sposobów:

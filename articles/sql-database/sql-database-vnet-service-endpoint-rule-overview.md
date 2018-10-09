@@ -12,12 +12,12 @@ ms.author: dmalik
 ms.reviewer: vanto, genemi
 manager: craigg
 ms.date: 09/18/2018
-ms.openlocfilehash: 90138664e5eab9110f51bbd3d3755dec0ed59ea8
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 0e14a00cbd7f38f7409a6551ac6f29c9f54a7434
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166813"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870846"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database-and-sql-data-warehouse"></a>Na użytek punktów końcowych usługi sieci wirtualnej i zasady usługi Azure SQL Database i SQL Data Warehouse
 
@@ -187,7 +187,7 @@ Program PolyBase jest najczęściej używany do ładowania danych w usłudze Azu
 #### <a name="azure-sqldb-blob-auditing"></a>Obiekt Blob platformy Azure SQLDB inspekcji
 Inspekcja obiektów blob wypchnięcia dzienników inspekcji na koncie magazynu. Jeśli to konto magazynu używa funkcji punktów końcowych usługi sieci wirtualnej spowoduje przerwanie łączności z SQLDB platformy Azure na koncie magazynu.
 
-## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Dodawanie reguły zapory sieci Wirtualnej do serwera bez włączania na sieć Wirtualną punktów końcowych usługi
+## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Dodawanie reguły zapory sieci wirtualnej do serwera bez włączania na sieć wirtualną punktów końcowych usługi
 
 Dawno temu zanim ta funkcja została ulepszona, były wymagane było włączyć punkty końcowe usługi sieci wirtualnej przed regułę sieci wirtualnej na żywo można zaimplementować w zaporze. Punkty końcowe związane z danej podsieci sieci wirtualnej do usługi Azure SQL Database. Ale teraz od stycznia 2018 r. można ominąć, to wymaganie, ustawiając **IgnoreMissingServiceEndpoint** flagi.
 

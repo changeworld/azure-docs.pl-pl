@@ -12,15 +12,15 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: d944ead01da81e2fec49d256a4da939067bcceee
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 10/05/2018
+ms.openlocfilehash: 2d735225782398b4e22a42816586a56cab54b763
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064413"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870200"
 ---
-# <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>Zawsze szyfrowane: Chronić poufne dane w bazie danych SQL i przechowywania kluczy szyfrowania w usłudze Azure Key Vault
+# <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Zawsze szyfrowane: Ochrona poufnych danych i przechowywania kluczy szyfrowania w usłudze Azure Key Vault
 
 W tym artykule pokazano, jak zabezpieczyć poufne dane w usłudze SQL database za pomocą szyfrowania danych przy użyciu [Kreator zawsze szyfrowane](https://msdn.microsoft.com/library/mt459280.aspx) w [programu SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx). Zawiera on również instrukcje, które zostanie przedstawiony sposób przechowywania każdego klucza szyfrowania w usłudze Azure Key Vault.
 

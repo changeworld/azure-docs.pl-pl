@@ -4,7 +4,7 @@ description: W tym artykule opisano role i uprawnienia wymagane do utworzenia fa
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.date: 10-04/2018
+ms.date: 10/08/2018
 ms.topic: conceptual
 ms.service: data-factory
 services: data-factory
@@ -12,12 +12,12 @@ documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.openlocfilehash: cd6e28298b773f466ea317b7217af7709802aa12
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 0c915c6b102f3aeedb316048fad1c6dc238fa0ad
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817516"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868619"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Role i uprawnienia dla usługi Azure Data Factory
 
@@ -50,6 +50,9 @@ Aby uzyskać więcej informacji na temat tej roli, zobacz [roli współautora us
 ### <a name="resource-manager-template-deployment"></a>Wdrażanie szablonu usługi Resource Manager
 
 **Współautor Data Factory** roli na poziomie grupy zasobów lub nowszej, pozwala użytkownikom na wdrażanie szablonów usługi Resource Manager. W wyniku członkowie roli można użyć szablonów usługi Resource Manager do wdrożenia zarówno fabryki danych i ich zasoby podrzędne, w tym zestawy danych, połączonych usług, potoki, wyzwalaczy i środowiska integration Runtime. Członkostwo w tej roli nie zezwala użytkownikom na tworzenie innych zasobów, jednak.
+
+> [!WARNING]
+> Wdrażanie szablonu usługi Resource Manager za pomocą **Współautor Data Factory** roli nie podniesienia poziomu uprawnień użytkownika. Na przykład, jeśli wdrożyć szablon, który tworzy maszynę wirtualną platformy Azure, a nie masz uprawnień do tworzenia maszyn wirtualnych, wdrożenie zakończy się niepowodzeniem z powodu błędu autoryzacji.
 
 ### <a name="custom-scenarios-and-custom-roles"></a>Niestandardowe scenariusze i ról niestandardowych
 

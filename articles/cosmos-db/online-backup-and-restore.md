@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: 77f22201b897703f6e74a5a3626a2ccc04a814f4
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 580c7410119a26ed3601c7c6ee020a13029339fe
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043230"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867803"
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatyczne tworzenie kopii zapasowej online i przywracanie za pomocą usługi Azure Cosmos DB
-Usługa Azure Cosmos DB automatycznie wykonuje kopie zapasowe wszystkich danych w regularnych odstępach czasu. Automatyczne kopie zapasowe są wykonywane bez wywierania wpływu na wydajność lub dostępności operacje bazy danych. Wszystkie kopie zapasowe są przechowywane osobno w innej usługi storage, a te kopie zapasowe globalnie są replikowane w celu zapewnienia odporności na regionalnej awarii. Automatyczne kopie zapasowe są przeznaczone dla scenariuszy, gdy przypadkowego usunięcia kontenera usługi Cosmos DB i później wymagają odzyskiwanie danych lub rozwiązanie odzyskiwania po awarii.  
+Usługa Azure Cosmos DB automatycznie wykonuje kopie zapasowe wszystkich danych w regularnych odstępach czasu. Automatyczne kopie zapasowe są wykonywane bez wywierania wpływu na wydajność lub dostępności operacje bazy danych. Wszystkie kopie zapasowe są przechowywane osobno w innej usługi storage, a te kopie zapasowe globalnie są replikowane w celu zapewnienia odporności na regionalnej awarii. Automatyczne kopie zapasowe są przeznaczone dla scenariuszy podczas przypadkowego usunięcia kontenera usługi Cosmos DB i później wymaga odzyskiwania danych.  
 
 W tym artykule rozpoczyna się od krótkie przypomnienie nadmiarowości danych i dostępności w usłudze Cosmos DB, a następnie w tym artykule omówiono tworzenie kopii zapasowych. 
 
@@ -67,14 +67,17 @@ Jeśli trzeba przywrócić bazę danych z powodu problemu z uszkodzeniem danych 
 
 Usługa Azure Cosmos DB zachowa ostatnie dwie kopie zapasowe wszystkich partycji w ramach konta bazy danych. Ten model działa lepiej, gdy kontener (zbiór dokumentów, wykres i tabela) lub bazy danych zostanie przypadkowo usunięty, ponieważ jedna z ostatniej wersji można przywrócić. Jednak w przypadku użytkowników może stanowić problem uszkodzenia danych, usługi Azure Cosmos DB może być uszkodzenie danych świadomości i jest możliwe, mogą zostać zastąpione istniejące kopie zapasowe uszkodzenia. 
 
-Jak najszybciej wykryto uszkodzenie skontaktowanie pracownikowi pomocy technicznej za pomocą konta i kontenera informacji o bazie danych za pomocą przybliżony czas uszkodzenia. Kolejną akcję, które użytkownik może wykonać w przypadku programu uszkodzony (usuwanie danych/aktualizacja) użytkownika, należy usunąć uszkodzony kontenera (kolekcja/wykres/table) tak, aby kopie zapasowe są chronione przed zastąpieniem z uszkodzonych danych.  
+Jak najszybciej wykryto uszkodzenie tak, aby kopie zapasowe są chronione przed zastąpieniem z uszkodzonych danych należy usunąć uszkodzony kontenera (kolekcja/wykres/table). Najważniejsze skontaktowanie się z Microsoft Support i zgłosić bilet z określonym żądaniem ważność 2. 
 
 Na poniższym obrazie przedstawiono tworzenie żądania pomocy technicznej do przywrócenia container(collection/graph/table) za pośrednictwem witryny Azure portal do przypadkowego usunięcia lub aktualizowania danych w kontenerze
 
 ![Przywróć kontenera omyłkowe aktualizacji lub usuwania danych w usłudze Cosmos DB](./media/online-backup-and-restore/backup-restore-support.png)
 
-Po zakończeniu przywracania dla tego rodzaju scenariuszy — dane są przywracane na inne konto (z sufiksem "-przywrócić") i kontener. Przywracanie nie odbywa się mające na celu zapewnienie Państwo klienta, aby wykonać sprawdzanie poprawności danych i Przenieś dane zgodnie z potrzebami. Kontener przywróconej znajduje się w tym samym regionie przy użyciu tych samych (RUS) i zasad indeksowania. 
+Po zakończeniu przywracania dla tego rodzaju scenariuszy — dane są przywracane na inne konto (z sufiksem "-przywrócić") i kontener. Przywracanie nie odbywa się mające na celu zapewnienie Państwo klienta, aby wykonać sprawdzanie poprawności danych i Przenieś dane zgodnie z potrzebami. Kontener przywróconej znajduje się w tym samym regionie przy użyciu tych samych (RUS) i zasad indeksowania. Użytkownik będący administratorem subskrypcji lub współadministrator widoczne tego konta przywrócona.
 
+
+> [!NOTE]
+> Przywróć naprawia uszkodzenie danych lub tylko do testowania, Zaplanuj je usunąć wkrótce co zadanie jest wykonywane, jak przywrócić kontenerów lub bazy danych będzie kosztować dodatkowe — zależne od aprowizowanej przepływności. 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby replikować bazę danych w wielu centrach danych, zobacz [dystrybuować dane globalnie za pomocą usługi Cosmos DB](distribute-data-globally.md). 

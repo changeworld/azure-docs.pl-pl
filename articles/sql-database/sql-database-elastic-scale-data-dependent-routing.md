@@ -11,15 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 25bb665d9ea9166d099ab7f3f9696d92da8314e9
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/05/2018
+ms.openlocfilehash: c54a644b140d65ccad1a3cba6c5a07a8e201cddb
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161825"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869622"
 ---
-# <a name="data-dependent-routing"></a>Routing zależny od danych
+# <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Użyj danych zależne od routingu, aby skierować zapytanie do odpowiedniej bazy danych
+
 **Routing zależny od danych** jest możliwość użycia danych w zapytaniu Kieruj żądania do odpowiedniej bazy danych. Routing zależne od danych jest podstawowy wzorzec, podczas pracy z bazami danych podzielonych na fragmenty. Kontekst żądania może również kierować żądania, zwłaszcza, jeśli klucz fragmentowania nie jest częścią zapytania. Każdej określonej kwerendy lub transakcji w aplikacji przy użyciu routingu zależnego od danych jest ograniczony do uzyskiwania dostępu do pojedynczej bazy danych na żądanie. Narzędzi elastycznej bazy danych SQL Azure, tym routing odbywa się za pomocą **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)) klasy.
 
 Aplikacja nie musi się do śledzenia różnych parametrów połączenia lub lokalizacje bazy danych skojarzone z inną wycinki danych w środowisku podzielonej na fragmenty. Zamiast tego [Menedżera mapowań fragmentów](sql-database-elastic-scale-shard-map-management.md) połączenia zostanie otwarta do właściwych baz danych, w razie potrzeby, na podstawie danych mapy fragmentów i wartość klucza fragmentowania, który jest elementem docelowym żądania aplikacji. Klucz jest zazwyczaj *customer_id*, *tenant_id*, *date_key*, lub niektóre inne określone identyfikator, który jest podstawowe parametru żądania bazy danych. 

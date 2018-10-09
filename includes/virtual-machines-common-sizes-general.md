@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: eac6c6d76bcc3b3d9cfeda7d8ca4e52e28ba9d8f
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 2d1a6bdb0cb53e3e58b4b4e8fed4bf29957d6489
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44369370"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48858081"
 ---
 Rozmiary maszyn wirtualnych ogólnego przeznaczenia udostępniają o zrównoważonym obciążeniu współczynnik procesora CPU w stosunku do pamięci. Idealne na potrzeby testowania i programowania, małych i średnich baz danych oraz serwerów sieci Web o niewielkim i średnim ruchu. Ten artykuł zawiera informacje o liczbie procesorów wirtualnych, dysków z danymi i kart sieciowych, a także przepływności rozmiary w tej metodzie grupowania. 
 
@@ -26,6 +26,8 @@ Rozmiary maszyn wirtualnych ogólnego przeznaczenia udostępniają o zrównoważ
 - Seria Dv3 funkcji procesorze 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) procesora lub najnowsza wersja 4 2,3 GHz Intel XEON® E5-2673 procesora (Broadwell) w funkcji hyper Threading konfiguracji, zapewniając lepsze korzyści, w przypadku większości obciążeń przeznaczenia.  Pamięci została rozwinięta (z ~3.5 GiB/procesora wirtualnego vCPU do 4 GiB/vCPU), gdy zostały dostosowane limity dysku i sieci na podstawie za rdzeń w celu zapewnienia zgodności z przejścia na wielowątkowość.  Dv3 nie ma już duża ilość pamięci rozmiarów maszyny Wirtualnej z rodzin D/Dv2, te zostały przeniesione do nowej rodziny Ev3.
 
   Przykładowe przypadki użycia serii D obejmują aplikacji przeznaczonych dla przedsiębiorstw, relacyjne bazy danych, buforowanie w pamięci i analizy. 
+  
+- [DC serii](#dc-series) to Nowa rodzina maszyn wirtualnych na platformie Azure, która pomaga chronić poufność i integralność danych i kodu podczas przetwarzania w chmurze publicznej. Te maszyny są wspierane przez najnowszą generację 3,7 GHz Intel XEON E - 2176G procesora przy użyciu technologii SGX. Z technologią Intel Turbo Boost Technology tych maszyn, można przejść do 4.7 GHz. Wystąpienia serii DC Umożliwiaj klientom tworzenie bezpiecznych aplikacji na podstawie enklawy chronić ich kod i dane, gdy jest używany
 
 ## <a name="b-series"></a>Seria B
 
@@ -138,6 +140,7 @@ Usługa Premium Storage: Nieobsługiwane
 
 Buforowanie Premium Storage: Nieobsługiwane
 
+
 | Rozmiar            | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: operacje we/wy na sek. / odczyt MB/s / zapis MB/s | Maksymalna liczba dysków danych / przepływność: liczba operacji we/wy na sekundę | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) | 
 |-----------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standardowa_A1_v2  | 1         | 2           | 10             | 1000 / 20 / 10                                           | 2 / 2 x 500               | 2 / 250                 |
@@ -149,6 +152,22 @@ Buforowanie Premium Storage: Nieobsługiwane
 | Standardowa_A8m_v2 | 8         | 64          | 80             | 8000 / 160 / 80                                          | 16 / 16 x 500             | 8 / 2000                     |
 
 <br>
+
+
+## <a name="dc-series"></a>Seria kontrolera domeny
+
+Usługa Premium Storage: obsługiwane
+
+Buforowanie magazynu Premium: obsługiwane
+
+
+
+| Rozmiar          | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
+|---------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
+| Standard_DC2s | 2    | 8           | 100                    | 2              | 4000 / 32 (43)                                                          | 3200 — rozmiar/48                                  | 2 / 1500                                     |
+| Standard_DC4s | 4    | 16          | 200                    | 4              | 8000 / 64 (86)                                                          | 6400 /96                                  | 2 / 3000                                     |
+
+
 
 
 

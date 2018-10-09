@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 1a02fd604d08e87c84a73657b7204ecb42b3498b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: c94d4d4beea22e68a581cd208a25f915e4217614
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393183"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870880"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak używać usługi Azure API Management przy użyciu sieci wirtualnych
 Sieci wirtualne platformy Azure (Vnet) umożliwiają umieszczenie wszystkich zasobów platformy Azure w sieci lecz-internet, która umożliwia kontrolę dostępu do. Te sieci mogą być następnie połączone do sieci w środowisku lokalnym przy użyciu różnych technologii sieci VPN. Aby dowiedzieć się więcej o usłudze Azure Virtual Networks start z informacjami w tym miejscu: [Omówienie usługi Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -106,19 +106,21 @@ Poniżej przedstawiono listę typowych problemów z błędną konfiguracją, kt�
 
 Gdy wystąpienie usługi API Management znajduje się w sieci Wirtualnej, są używane porty w poniższej tabeli.
 
-| Źródło / porty docelowe | Kierunek | Protokół transportowy | Źródłowy / docelowy | Cel (*) | Typ sieci wirtualnej |
-| --- | --- | --- | --- | --- | --- |
-| * / 80, 443 |Przychodzący |TCP |INTERNET / VIRTUAL_NETWORK|Komunikacja klienta z usługi API Management|Zewnętrzne |
-| * / 3443 |Przychodzący |TCP |APIMANAGEMENT / VIRTUAL_NETWORK|Punkt końcowy zarządzania dla witryny Azure portal i programu Powershell |Zewnętrzne i wewnętrzne |
-| * / 80, 443 |Wychodzący |TCP |VIRTUAL_NETWORK / Storage|**Zależność od usługi Azure Storage**|Zewnętrzne i wewnętrzne |
-| * / 80, 443 |Wychodzący |TCP |VIRTUAL_NETWORK / INTERNET| Usługa Azure Active Directory (jeśli dotyczy)|Zewnętrzne i wewnętrzne |
-| * / 1433 |Wychodzący |TCP |VIRTUAL_NETWORK / SQL|**Dostęp do punktów końcowych usługi Azure SQL** |Zewnętrzne i wewnętrzne |
-| * / 5672 |Wychodzący |TCP |VIRTUAL_NETWORK / usługi EventHub |Zależność dla dziennika do zasad Centrum zdarzeń i agenta monitorowania |Zewnętrzne i wewnętrzne |
-| * / 445 |Wychodzący |TCP |VIRTUAL_NETWORK / Storage |Zależność od udziału plików platformy Azure dla usługi GIT |Zewnętrzne i wewnętrzne |
-| * / 1886 |Wychodzący |TCP |VIRTUAL_NETWORK / INTERNET|Niezbędnych do publikowania stan kondycji Resource Health |Zewnętrzne i wewnętrzne |
-| * / 25028 |Wychodzący |TCP |VIRTUAL_NETWORK / INTERNET|Łączenie do przekazywania SMTP do wysyłania wiadomości E-mail |Zewnętrzne i wewnętrzne |
-| * / 6381 - 6383 |Dla ruchu przychodzącego i wychodzącego |TCP |VIRTUAL_NETWORK / VIRTUAL_NETWORK|Dostęp do wystąpień usługi Redis Cache między RoleInstances |Zewnętrzne i wewnętrzne |
-| * / * | Przychodzący |TCP |AZURE_LOAD_BALANCER / VIRTUAL_NETWORK| Moduł równoważenia obciążenia infrastruktury platformy Azure |Zewnętrzne i wewnętrzne |
+| Źródło / porty docelowe | Kierunek          | Protokół transportowy | Źródłowy / docelowy                  | Cel (*)                                                 | Typ sieci wirtualnej |
+|------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
+| * / 80, 443                  | Przychodzący            | TCP                | INTERNET / VIRTUAL_NETWORK            | Komunikacja klienta z usługi API Management                      | Zewnętrzne             |
+| * / 3443                     | Przychodzący            | TCP                | APIMANAGEMENT / VIRTUAL_NETWORK       | Punkt końcowy zarządzania dla witryny Azure portal i programu Powershell         | Zewnętrzne i wewnętrzne  |
+| * / 80, 443                  | Wychodzący           | TCP                | VIRTUAL_NETWORK / Storage             | **Zależność od usługi Azure Storage**                             | Zewnętrzne i wewnętrzne  |
+| * / 80, 443                  | Wychodzący           | TCP                | VIRTUAL_NETWORK / INTERNET            | Usługa Azure Active Directory (jeśli dotyczy)                   | Zewnętrzne i wewnętrzne  |
+| * / 1433                     | Wychodzący           | TCP                | VIRTUAL_NETWORK / SQL                 | **Dostęp do punktów końcowych usługi Azure SQL**                           | Zewnętrzne i wewnętrzne  |
+| * / 5672                     | Wychodzący           | TCP                | VIRTUAL_NETWORK / usługi EventHub            | Zależność dla dziennika do zasad Centrum zdarzeń i agenta monitorowania | Zewnętrzne i wewnętrzne  |
+| * / 445                      | Wychodzący           | TCP                | VIRTUAL_NETWORK / Storage             | Zależność od udziału plików platformy Azure dla usługi GIT                      | Zewnętrzne i wewnętrzne  |
+| * / 1886                     | Wychodzący           | TCP                | VIRTUAL_NETWORK / INTERNET            | Niezbędnych do publikowania stan kondycji Resource Health          | Zewnętrzne i wewnętrzne  |
+| * / jest 25                       | Wychodzący           | TCP                | VIRTUAL_NETWORK / INTERNET            | Łączenie z usługą przekazywania protokołu SMTP w celu wysyłania wiadomości e-mail                    | Zewnętrzne i wewnętrzne  |
+| * w / 587                      | Wychodzący           | TCP                | VIRTUAL_NETWORK / INTERNET            | Łączenie z usługą przekazywania protokołu SMTP w celu wysyłania wiadomości e-mail                    | Zewnętrzne i wewnętrzne  |
+| * / 25028                    | Wychodzący           | TCP                | VIRTUAL_NETWORK / INTERNET            | Łączenie z usługą przekazywania protokołu SMTP w celu wysyłania wiadomości e-mail                    | Zewnętrzne i wewnętrzne  |
+| * / 6381 - 6383              | Dla ruchu przychodzącego i wychodzącego | TCP                | VIRTUAL_NETWORK / VIRTUAL_NETWORK     | Dostęp do wystąpień usługi Redis Cache między RoleInstances          | Zewnętrzne i wewnętrzne  |
+| * / *                        | Przychodzący            | TCP                | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK | Moduł równoważenia obciążenia infrastruktury platformy Azure                          | Zewnętrzne i wewnętrzne  |
 
 >[!IMPORTANT]
 > Porty, dla którego *przeznaczenia* jest **bold** są wymagane dla usługi API Management została wdrożona pomyślnie. Blokowanie innych portów jednak spowoduje obniżenie wydajności w możliwość korzystania i monitorowania uruchomioną usługę.
@@ -129,11 +131,13 @@ Gdy wystąpienie usługi API Management znajduje się w sieci Wirtualnej, są u�
 
 * **Monitorowanie kondycji i metryki**: połączenia sieciowego ruchu wychodzącego do usługi Azure punktów końcowych monitorowania, które rozwiązania w ramach następujących domen: 
 
-    | Środowisko platformy Azure | Punkty końcowe |
-    | --- | --- |
-    | Azure Public | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li><li>prod3 black.prod3.metrics.nsatc.net</li><li>prod3 red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com gdzie `East US 2` jest eastus2.warm.ingestion.msftcloudes.com</li></ul> |
-    | Azure Government | <ul><li>fairfax.warmpath.usgovcloudapi.NET</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li></ul> |
-    | Azure (Chiny) | <ul><li>mooncake.warmpath.chinacloudapi.CN</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li></ul> |
+    | Środowisko platformy Azure | Punkty końcowe                                                                                                                                                                                                                                                                                                                                                              |
+    |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | Azure Public      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li><li>prod3 black.prod3.metrics.nsatc.net</li><li>prod3 red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com gdzie `East US 2` jest eastus2.warm.ingestion.msftcloudes.com</li></ul> |
+    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.NET</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li></ul>                                                                                                                                                                                                                                                |
+    | Azure (Chiny)       | <ul><li>mooncake.warmpath.chinacloudapi.CN</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li></ul>                                                                                                                                                                                                                                                |
+
+* **Przekazywania SMTP**: połączenia sieciowego ruchu wychodzącego do przekazywania SMTP, który jest rozpoznawany jako na hoście `ies.global.microsoft.com`.
 
 * **Azure portal Diagnostics**: umożliwia przepływ dzienników diagnostycznych z witryny Azure portal, korzystając z rozszerzenia usługi API Management z poziomu wewnątrz sieci wirtualnej, a dostęp ruchu wychodzącego do `dc.services.visualstudio.com` na porcie 443 jest wymagany. Pomaga to w rozwiązywaniu problemów, które mogą twarzy w przypadku korzystania z rozszerzenia.
 

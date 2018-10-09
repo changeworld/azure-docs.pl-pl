@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 90271758e4092a574d3a44deffe42e3c689a31ca
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 5532c86271fa6a5f2b573e005993a68ac0a9e248
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48784862"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857078"
 ---
 # <a name="managed-identities-for-azure-resources-with-service-bus"></a>Zarządzanych tożsamości dla zasobów platformy Azure z usługą Service Bus 
 
@@ -83,7 +83,6 @@ Aby wysyłać ani odbierać wiadomości, wprowadź nazwę przestrzeni nazw i naz
 
 Aby dowiedzieć się więcej na temat obsługi komunikatów usługi Service Bus, zobacz następujące tematy:
 
-* [Podstawy usługi Service Bus](service-bus-fundamentals-hybrid-solutions.md)
 * [Kolejki, tematy i subskrypcje usługi Service Bus](service-bus-queues-topics-subscriptions.md)
 * [Wprowadzenie do kolejek usługi Service Bus](service-bus-dotnet-get-started-with-queues.md)
 * [Jak używać tematów i subskrypcji usługi Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)

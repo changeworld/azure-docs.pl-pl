@@ -1,37 +1,38 @@
 ---
-title: Zapytanie odpowiedzi wyszukiwania jednostki projektu — kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
-description: Zapytania dotyczące jednostek przy użyciu projektu odpowiedzi wyszukiwania
+title: 'Szybki Start: Zapytanie jednostki wyszukiwania odpowiedzi projektów'
+titlesuffix: Azure Cognitive Services
+description: Zapytania dotyczące jednostki przy użyciu projektu wyszukiwanie odpowiedzi
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
+ms.component: project-answer-search
 ms.topic: article
 ms.date: 04/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 2b8382b791c02514e5110097700e223d98fafd6a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: efb46fc7064bcad69b5ea84f9bdfe923d95ccbe6
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348604"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867582"
 ---
-# <a name="query-for-entities"></a>Zapytań dla jednostek
+# <a name="quickstart-query-for-entities"></a>Szybki Start: Zapytań dotyczących jednostek
 
-Jeśli zapytanie żąda informacji na temat osoby, miejsca lub operacją, odpowiedzi może zawierać `entities` odpowiedzi.  Zapytania zawsze zwracają stron sieci Web, [fakty](fact-queries.md) i/lub [jednostek](entity-queries.md) są zależne zapytania.
+Jeśli zapytanie żąda informacji na temat osoby, miejsca lub rzeczy, odpowiedź może zawierać `entities` odpowiedzi.  Zapytania zawsze zwracają stron sieci Web, [fakty](fact-queries.md) i/lub [jednostek](entity-queries.md) są zależne od zapytania.
 
-Jednostek obsługuje trzy scenariusze zapytania: 
--   DominantEntity — istnieje tylko jedna jednostka, która odpowiada zapytania i przeznaczeniu użytkownika. Na przykład zapytanie kręci miejsca jest scenariusz DominantEntity. 
--   Uściślanie — istnieje więcej niż jednej jednostki, która odpowiada zapytania i przeznaczeniu użytkownika i zależy od użytkownika o wybranie prawidłowe jednostki. Na przykład zapytanie gry Thrones jest scenariusz Uściślanie, który zwraca seria książki i pokazywania telewizji. 
--   Lista — istnieje wiele jednostek spełniających zapytania i przeznaczeniu użytkownika. Na przykład zapytanie "Lista zagrożonych określa" jest scenariusz listy, który zwraca wartości tabelarycznych sformatowana do wyświetlenia w wiersze i komórki. 
+Jednostki obsługuje trzy scenariusze kwerendy: 
+-   DominantEntity — istnieje tylko jedna jednostka, która pasuje do zapytania i intencji użytkownika. Na przykład zapytanie wskazówkę miejsca jest scenariusz DominantEntity. 
+-   Uściślanie — istnieje więcej niż jednej jednostki, który odpowiada, zapytania i przeznaczenie użytkownika i zależy od użytkownika o wybranie prawidłowe jednostki. Na przykład zapytanie gry Thrones jest scenariusz uściślania, który zwraca serii książki i Pokaż telewizyjnych w Twoim regionie. 
+-   List — istnieje wiele jednostek, które odpowiadają zapytania i intencji użytkownika. Na przykład zapytanie "Lista zagrożonych gatunków" jest scenariusz listy, który zwraca wartości tabelarycznych formatować w celu wyświetlenia w wiersze i komórki. 
  
-Aby określić scenariusz zapytania, użyj `queryScenario` pole `entities` obiektu. Dane, które zawiera jednostki zależy od typu jednostki. Chociaż jednostek zawiera te same informacje podstawowe, niektóre jednostki, takich jak atrakcji lub książki obejmują dodatkowe właściwości. Obejmują jednostek zawierających dodatkowe właściwości `_type` pola, które zawiera wskazówkę używane przez serializator. Następujące jednostki obejmują dodatkowe właściwości: 
--   Podręcznik 
+Aby określić scenariusz zapytania, należy użyć `queryScenario` pole `entities` obiektu. Dane, które zawiera jednostkę zależy od typu jednostki. Chociaż jednostki zawierają te same podstawowe informacje, niektóre jednostki, takie jak atrakcji lub książki obejmują dodatkowe właściwości. Jednostek zawierających dodatkowe właściwości obejmują `_type` pola, które zawiera wskazówki, używany przez element serializujący. Następujące jednostki zawierają dodatkowe właściwości: 
+-   Książki 
 -   MusicRecording 
 -   Person (Osoba) 
 -   Przyciągania 
  
-Aby określić typ jednostki, która zawiera odpowiedzi, należy użyć `entityTypeHints` pola, jak pokazano w zapytaniu dla rachunku bramy.
+Aby określić typ jednostki, który zawiera odpowiedź, użyj `entityTypeHints` pola, jak pokazano w zapytaniu dla Billa Gatesa.
 ````
         },
         "description": "Bill Gates is an American business man and philanthropist, co-founder of Microsoft",
@@ -44,11 +45,11 @@ Aby określić typ jednostki, która zawiera odpowiedzi, należy użyć `entityT
         "bingId": "6d7d66a7-2cb8-0ae9-637c-f81fd749dc9a"
       }
 ````
-Poniżej przedstawiono zapytania dla miejsca Wskazówka:
+Oto zapytanie dotyczące wskazówkę miejsca:
 ````
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=space+needle&mkt=en-us
 ````
-Odpowiedź zawiera `entities` odpowiedzi. Uwaga `entityScenario` i `entityTypeHints` pól. 
+Odpowiedź zawiera `entities` odpowiedzi. Uwaga `entityScenario` i `entityTypeHints` pola. 
 ````
   "entities": {
     "value": [
@@ -109,9 +110,9 @@ Odpowiedź zawiera `entities` odpowiedzi. Uwaga `entityScenario` i `entityTypeHi
   },
 ````
 
-Zapytania można powrócić do listy, jeśli jest to potrzebne.
+Zapytanie może zwracać listę, jeśli jest to potrzebne.
 
-**Zapytanie:** następujące zapytanie wyszukuje listę zagrożonych domowego:
+**Zapytanie:** poniższe zapytanie wyszukuje listę zagrożonych gatunków:
 
 ````
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=list+of+endangered+species
@@ -220,7 +221,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=list+of+enda
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [C# — Szybki Start](c-sharp-quickstart.md)
-- [Szybki Start Java](java-quickstart.md)
-- [Węzeł Szybki Start](node-quickstart.md)
-- [Krótkie wprowadzenie do języka Python](python-quickstart.md)
+- [Przewodnik Szybki Start języka C#](c-sharp-quickstart.md)
+- [Przewodnik Szybki Start języka Java](java-quickstart.md)
+- [Przewodnik Szybki Start węzła](node-quickstart.md)
+- [Przewodnik Szybki Start języka Python](python-quickstart.md)

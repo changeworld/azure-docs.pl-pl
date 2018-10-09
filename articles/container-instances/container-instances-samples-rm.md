@@ -1,52 +1,51 @@
 ---
-title: Próbki szablon Menedżera zasobów Azure — wystąpień kontenera platformy Azure
-description: Przykładów dla platformy Azure Resource Manager szablonu dla wystąpień kontenera platformy Azure
+title: Przykłady szablonów usługi Resource Manager platformy Azure — usłudze Azure Container Instances
+description: Przykłady szablonów usługi Azure Resource Manager dla usługi Azure Container Instances
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: article
 ms.date: 05/17/2018
-ms.author: marsma
-ms.openlocfilehash: fcc2e6c52e773d95bcdfe43d881fce036fae6513
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.author: danlep
+ms.openlocfilehash: e825e0bdd08db0e9c1b51c09859aba2e7c716f91
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260168"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856472"
 ---
-# <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Szablony usługi Azure Resource Manager dla wystąpień kontenera platformy Azure
+# <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Szablony usługi Azure Resource Manager dla usługi Azure Container Instances
 
-Następujące przykładowe szablony wdrażanie wystąpień kontenera w różnych konfiguracjach.
+Następujące przykładowe szablony wdrażanie wystąpień kontenerów w różnych konfiguracjach.
 
-Opcje wdrażania, zobacz [wdrożenia](#deployment) sekcji. Jeśli chcesz tworzyć własne szablony wystąpień kontenera Azure [odwołania do szablonu usługi Resource Manager] [ ref] szczegóły formacie szablonu i dostępnych właściwości.
+Dla opcji wdrażania, zobacz [wdrożenia](#deployment) sekcji. Jeśli chcesz tworzyć własne szablony usługi Azure Container Instances [odwołanie do szablonu usługi Resource Manager] [ ref] szczegółowo określa najważniejsze formacie szablonu i dostępnych właściwości.
 
 ## <a name="sample-templates"></a>Przykładowe szablony
 
 | | |
 |-|-|
 | **Aplikacje** ||
-| [WordPress][app-wp] | Tworzy witrynę sieci Web WordPress i jej baza danych MySQL w wystąpieniu kontenera. Zawartość witryny WordPress i baza danych MySQL są zachowywane do usługi pliki Azure udziału. |
-| [NAV MS SQL Server i usług IIS][app-nav] | Wdraża jeden kontener systemu Windows z oferujący wszystkie potrzebne funkcje niezależne Dynamics NAV / środowiska Dynamics 365 Business centralnej. |
+| [WordPress][app-wp] | Tworzy witrynę sieci Web WordPress i jego bazę danych MySQL w wystąpieniu kontenera. Zawartość witryny WordPress i baza danych MySQL zostaną utrwalone w usłudze Azure Files udostępniania. |
+| [MS NAV przy użyciu programu SQL Server i usług IIS][app-nav] | Wdraża jeden kontener Windows za pomocą w pełni wyposażone niezależna Dynamics NAV / środowiska Dynamics 365 Business Central. |
 | **Woluminy** ||
-| [emptyDir][vol-emptydir] | Wdraża dwa kontenery Linux mających emptyDir woluminu. |
-| [GitRepo][vol-gitrepo] | Wdraża kontenera systemu Linux, w którym klonów repozytorium GitHub i instaluje ją jako wolumin. |
-| [klucz tajny][vol-secret] | Wdraża kontenera Linux z certyfikatu PFX, zainstalować jako woluminu tajny. |
+| [emptyDir][vol-emptydir] | Wdraża dwóch kontenerów systemu Linux, które współużytkują woluminu emptyDir. |
+| [GitRepo][vol-gitrepo] | Wdraża klonuje repozytorium GitHub, która instaluje ją jako wolumin kontenera systemu Linux. |
+| [Klucz tajny][vol-secret] | Służy do wdrażania kontenerów systemu Linux przy użyciu certyfikatu PFX, zainstalowany jako wolumin tajny. |
 | **Sieć** ||
-| [Kontener dostępne za pośrednictwem protokołu UDP][net-udp] | Wdraża kontener systemu Windows lub Linux, który przedstawia portu UDP. |
-| [Kontener Linux z publicznego adresu IP][net-publicip] | Wdraża jeden kontener Linux dostępny za pośrednictwem publicznego adresu IP. |
+| [Kontener dostępne za pośrednictwem protokołu UDP][net-udp] | Służy do wdrażania kontenerów Windows lub Linux, która uwidacznia UDP port. |
+| [Kontener systemu Linux z publicznym adresem IP][net-publicip] | Wdraża jednego kontenera systemu Linux dostępnych za pośrednictwem publicznego adresu IP. |
 | **Zasoby platformy Azure** ||
-| [Tworzenie konta magazynu Azure i udostępnianie plików][az-files] | Używa interfejsu wiersza polecenia Azure w wystąpieniu kontener można utworzyć konta magazynu i udział plików Azure.
+| [Tworzenie konta usługi Azure Storage i udostępnianie plików][az-files] | Używa wiersza polecenia platformy Azure w wystąpieniu kontenera, aby utworzyć konto magazynu i udział plików platformy Azure.
 
 ## <a name="deployment"></a>Wdrożenie
 
-Istnieje kilka opcji wdrażania zasobów z szablonami usługi Resource Manager:
+Masz kilka opcji wdrożenia zasobów przy użyciu szablonów usługi Resource Manager:
 
-[Interfejs wiersza polecenia platformy Azure][deploy-cli]
+[Wiersza polecenia platformy Azure][deploy-cli]
 
 [Azure PowerShell][deploy-powershell]
 
-[Azure portal][deploy-portal]
+[Witryna Azure portal][deploy-portal]
 
 [INTERFEJS API REST][deploy-rest]
 

@@ -9,12 +9,12 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 10/01/2018
 ms.author: gracez
-ms.openlocfilehash: 432a17b1e3cd065bd6189ffa9f80ca5985629bb7
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 2dc034ea28075019b74fe9d9be548cf9d355d20e
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239950"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857486"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migracja z rozpoznawania mowy Bing do usługi rozpoznawania mowy
 
@@ -74,11 +74,11 @@ Usługa rozpoznawania mowy nie oferuje obecnie globalny punkt końcowy. Należy 
 
 Jeśli aplikacja używa długotrwałe połączeń, nie można użyć dostępnego zestawu SDK można używać połączenia WebsSockets i zarządzać limit czasu 10 minut przez ponowne połączenie się w odpowiednim czasie.
 
-Aby rozpocząć nowy zestaw SDK rozpoznawania mowy:
+Aby rozpocząć pracę z zestawem SDK mowy:
 
 1. Pobierz [mowy SDK](speech-sdk.md).
 1. Pracy za pośrednictwem usługi mowy [przewodniki szybkiego startu](quickstart-csharp-dotnet-windows.md), [samouczki](how-to-recognize-intents-from-speech-csharp.md)i przyjrzyj się [przykłady kodu](samples.md) do zapoznania się z nowych interfejsów API.
-1. Aktualizacja aplikacji umożliwiająca użycie nowej usługi rozpoznawania mowy i interfejsów API.
+1. Aktualizacja aplikacji umożliwiająca użycie usługi rozpoznawania mowy i interfejsów API.
 
 ## <a name="support"></a>Pomoc techniczna
 

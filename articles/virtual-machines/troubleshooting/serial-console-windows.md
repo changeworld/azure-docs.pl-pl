@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: e1884048d0f02de1b3a354bc4dac2b3e98dcccc9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 17fec61e73298a6250cf6805bb9a713ff3d3a488
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414221"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48858013"
 ---
 # <a name="virtual-machine-serial-console"></a>Konsola szeregowa maszyny wirtualnej
 
@@ -28,7 +28,7 @@ Konsola szeregowa maszyny wirtualnej na platformie Azure zapewnia dostęp do kon
 
 Konsola szeregowa dokumentację dotyczącą maszyn wirtualnych systemu Linux [tutaj](serial-console-linux.md).
 
-> [!Note] 
+> [!NOTE] 
 > Konsola szeregowa dla maszyn wirtualnych jest ogólnie dostępna w globalnych regionów platformy Azure. W tym momencie konsoli szeregowej nie jest jeszcze dostępna w chmurach platformy Azure Government lub Azure (Chiny).
 
  
@@ -83,9 +83,12 @@ Jeśli musisz włączyć moduł ładujący rozruchu Windows monituje o do wyświ
 1. Połącz się z maszyną wirtualną Windows za pomocą pulpitu zdalnego
 2. W administracyjnym wierszu polecenia Uruchom następujące polecenia 
 * `bcdedit /set {bootmgr} displaybootmenu yes`
-* `bcdedit /set {bootmgr} timeout 5`
+* `bcdedit /set {bootmgr} timeout 30`
 * `bcdedit /set {bootmgr} bootems yes`
 3. Ponowne uruchomienie systemu pod kątem menu rozruchu jest włączona
+
+> [!NOTE] 
+> Limit czasu, ustawionego dla menu Menedżera rozruchu pojawienie się będzie miało wpływ na czas rozruchu systemu operacyjnego w przyszłości. Może być akceptowalne z niektórymi dodać 30 drugi limit czasu, aby upewnić się, że Menedżera rozruchu jest widoczny za pośrednictwem konsoli szeregowej, innych może być krótszy limit czasu. Wartość potrafisz, należy ustawić wartość limitu czasu.
 
 ## <a name="use-serial-console-for-nmi-calls-in-windows-vms"></a>Użyj konsoli szeregowej NMI wywołań na maszynach wirtualnych Windows
 Niemaskowalnego przerwania (NMI) jest przeznaczone do tworzenia sygnał, który nie zignoruje oprogramowania na maszynie wirtualnej. W przeszłości NMIs zostały użyte w celu monitorowania problemów ze sprzętem w systemach, które są wymagane określone czasy.  Dzisiaj, programistów i system Administratorzy często używają NMI jako mechanizm do debugowania i rozwiązywanie problemów z systemów, które są zawieszone.
@@ -99,7 +102,7 @@ Aby uzyskać informacje na temat konfigurowania Windows do utworzenia zrzutu awa
 ## <a name="disable-serial-console"></a>Wyłącz konsoli szeregowej
 Domyślnie wszystkie subskrypcje mają dostęp do konsoli szeregowej włączone dla wszystkich maszyn wirtualnych. Można wyłączyć konsoli szeregowej na poziomie subskrypcji lub na poziomie maszyny Wirtualnej.
 
-> [!Note]       
+> [!NOTE]       
 > Aby włączyć lub wyłączyć konsoli szeregowej subskrypcji, musisz mieć uprawnienia do zapisu do subskrypcji. Obejmuje, ale nie jest ograniczona do ról administratora lub właściciela. Role niestandardowe mogą również mieć uprawnienia do zapisu.
 
 ### <a name="subscription-level-disable"></a>Wyłącz poziom subskrypcji

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/26/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 7cf3e08caad93bb7fb7fd221b6fdb9b2fc39397a
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: b6cb095736bbf41d53359bf7d07206703de5335c
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816739"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870010"
 ---
 # <a name="azure-stack-1805-update"></a>Aktualizacja usługi Azure Stack 1805
 
@@ -72,8 +72,8 @@ Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack.
 ## <a name="before-you-begin"></a>Przed rozpoczęciem    
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-- Instalowanie usługi Azure Stack [aktualizacji 1804](azure-stack-update-1804.md) przed zastosowaniem aktualizacji usługi Azure Stack 1805.  
-- Zainstaluj najnowszy dostępny [aktualizacja lub poprawka dla wersji 1804](azure-stack-update-1804.md#post-update-steps).   
+- Przed zastosowaniem aktualizacji usługi Azure Stack 1805, należy zainstalować aktualizację usługi Azure Stack w wersji 1804.  
+- Instalowanie najnowszej dostępnej aktualizacji lub poprawek dla wersji 1804.   
 - Przed rozpoczęciem instalacji aktualizacji 1805 Uruchom [AzureStack testu](azure-stack-diagnostic-test.md) Aby zweryfikować stan usługi Azure Stack i rozwiązać wszelkie problemy z działaniem, znaleziono. Również przejrzeć aktywne alerty i rozwiązywanie tych, które wymagają akcji. 
 
 ### <a name="known-issues-with-the-update-process"></a>Znane problemy związane z procesem aktualizacji   
@@ -117,7 +117,7 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
   Obejście: Aby rozwiązać ten problem, po zainstalowaniu tej aktualizacji, należy użyć krok 3 z [wyzwalania automatyzacji, aby skonfigurować oświadczeń zaufania dostawcy w usłudze Azure Stack](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1) procedury, aby zresetować właściciela subskrypcji dostawcy domyślnego.   
 
 <!-- TBD - IS ASDK --> 
-- Niektórych typów subskrypcji administracyjne nie są dostępne.  Po uaktualnieniu usługi Azure Stack w tej wersji typów dwóch subskrypcji, które były [wprowadzonym w wersji 1804](azure-stack-update-1804.md#new-features) nie są widoczne w konsoli. Jest to oczekiwane. Typy subskrypcji niedostępne są *pomiaru subskrypcji*, i *subskrypcji zużycie*. Te typy subskrypcji są wyświetlane w nowych wersji środowiska usługi Azure Stack począwszy od wersji 1804, ale nie są jeszcze gotowe do użycia. Można nadal używać *domyślny dostawca* typu subskrypcji.  
+- Niektórych typów subskrypcji administracyjne nie są dostępne. Typy dwóch subskrypcji, które zostały wprowadzone w wersji 1804 usługi Azure Stack możesz uaktualnić do tej wersji, nie są widoczne w konsoli. Jest to oczekiwane. Typy subskrypcji niedostępne są *pomiaru subskrypcji*, i *subskrypcji zużycie*. Te typy subskrypcji są wyświetlane w nowych wersji środowiska usługi Azure Stack począwszy od wersji 1804, ale nie są jeszcze gotowe do użycia. Można nadal używać *domyślny dostawca* typu subskrypcji.  
 
 <!-- 2403291 - IS ASDK --> 
 - Nie może być użycie poziomych pasków przewijania u dołu portali administratora i użytkownika. Jeśli nie masz dostępu poziomych pasków przewijania, użyj linki do stron nadrzędnych na przejście do poprzedniego bloku w portalu, wybierając nazwę bloku mają być wyświetlane na liście łączy do stron nadrzędnych znajdujących się u góry lewym rogu portalu.

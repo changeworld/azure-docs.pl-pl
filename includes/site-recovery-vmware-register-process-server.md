@@ -1,5 +1,5 @@
 * Połącz się z maszyną wirtualną serwera przetwarzania za pomocą Podłączania pulpitu zdalnego.
-* Narzędzie cspsconfigtool.exe można uruchamiać przez kliknięcie skrótu dostępnego na pulpicie. (Jeśli logujesz się na serwerze przetwarzania po raz pierwszy, to narzędzie zostanie uruchomione automatycznie).
+* Narzędzie cspsconfigtool.exe można uruchamiać przez kliknięcie skrótu dostępnego na pulpicie. (Narzędzie zostanie automatycznie uruchomiony, jeśli to po raz pierwszy logujesz się do serwera przetwarzania).
   - W pełni kwalifikowana nazwa domeny (FQDN) lub adres IP.
   - Port, na którym nasłuchuje serwer konfiguracji. Ta wartość powinna być równa 443.
   - Hasło połączenia do łączenia się z serwerem konfiguracji.

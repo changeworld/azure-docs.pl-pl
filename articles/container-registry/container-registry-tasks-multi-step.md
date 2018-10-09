@@ -2,17 +2,17 @@
 title: Automatyzowanie kompilacji obrazów, testowania i stosowanie poprawek za pomocą usługi Azure Container Registry wieloetapowego zadania
 description: Zadania wieloetapowe wprowadzenie, funkcja rejestru Azure container Registry zadań w usłudze Azure Container Registry, oferująca przepływów pracy opartych na zadania tworzenia, testowania i poprawianie obrazów kontenerów w chmurze.
 services: container-registry
-author: mmacy
+author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 09/24/2018
-ms.author: marsma
-ms.openlocfilehash: b88fbf927cff51d78d95ed9501921d528b22b455
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.author: danlep
+ms.openlocfilehash: cdabafc4f70b08076820e7e0d39300b3eb0bc1e7
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047872"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856722"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Uruchamianie wieloetapowych kompilacji, testów i zadania poprawki w zadaniach usługi ACR
 

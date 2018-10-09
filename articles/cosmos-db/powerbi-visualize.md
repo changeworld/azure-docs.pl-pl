@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: 686f21aa805560bb4c2a7fbf9b0c61e1edef14bb
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: dfd66c1ac2e627b72d24a520fc37c6ebfb361556
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785532"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870004"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Wizualizuj dane z usługi Azure Cosmos DB przy użyciu łącznika usługi Power BI
 
-[Usługi Power BI](https://powerbi.microsoft.com/) to usługa online, na którym można tworzyć i udostępniać pulpity nawigacyjne i raporty. Power BI Desktop jest narzędziu, która umożliwia pobieranie danych z różnych źródeł danych raportu. Usługa Azure Cosmos DB jest jednym z jednego źródła danych używanego w programie Power BI Desktop. Power BI Desktop możesz połączyć konto usługi Azure Cosmos DB za pomocą łącznika usługi Azure Cosmos DB dla usługi Power BI.  Po zaimportowaniu danych usługa Azure Cosmos DB do usługi Power BI, można przekształcić je, tworzenie raportów i publikowania raportów usługi Power BI.   
+[Usługi Power BI](https://powerbi.microsoft.com/) to usługa online, na którym można tworzyć i udostępniać pulpity nawigacyjne i raporty. Power BI Desktop jest narzędziu, która umożliwia pobieranie danych z różnych źródeł danych raportu. Usługa Azure Cosmos DB jest jednym z źródła danych, które można użyć w programie Power BI Desktop. Power BI Desktop możesz połączyć konto usługi Azure Cosmos DB za pomocą łącznika usługi Azure Cosmos DB dla usługi Power BI.  Po zaimportowaniu danych usługa Azure Cosmos DB do usługi Power BI, można przekształcić je, tworzenie raportów i publikowania raportów usługi Power BI.   
 
 W tym artykule opisano kroki wymagane do połączenia z kontem usługi Azure Cosmos DB Power BI Desktop. Po nawiązaniu połączenia możesz przejść do kolekcji, wyodrębniania danych, przekształcanie danych JSON w formacie tabelarycznym i opublikować raport usługi Power BI.
 

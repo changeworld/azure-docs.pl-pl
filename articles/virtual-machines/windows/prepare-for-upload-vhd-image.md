@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 08/23/2018
+ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: b4787f5b9657afbcedbd3803d6a17af9c8cf9099
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 53c7b2f217e315d473e18da8f134352722229ee0
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406995"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855820"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Przygotowywanie wirtualnego dysku twardego Windows lub VHDX można przekazać na platformę Azure
 Przed przekazaniem Windows maszyn wirtualnych (VM) ze środowiska lokalnego w systemie Microsoft Azure, należy przygotować wirtualny dysk twardy (VHD lub VHDX). Platforma Azure obsługuje **tylko maszyny wirtualne generacji 1** są w formacie pliku wirtualnego dysku twardego oraz mieć stały dysk o rozmiarze. Maksymalny dozwolony rozmiar wirtualnego dysku twardego jest 1,023 GB. Możesz również przekonwertować generacji 1 maszyny Wirtualnej z VHDX pliku system do wirtualnego dysku twardego i z dynamicznie powiększających się dysków na stałych rozmiarach. Ale nie można zmienić generacji maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [generacji 1 lub 2 należy utworzyć maszyny Wirtualnej w funkcji Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
@@ -88,7 +88,7 @@ Na maszynie Wirtualnej, który chcesz przekazać na platformę Azure, należy ur
 4. Ustawianie czasu uniwersalnego czasu koordynowanego (UTC) dla Windows i typ uruchomienia usługi Czas Windows (w32time) do **automatycznie**:
    
     ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation' -name "RealTimeIsUniversal" 1 -Type DWord
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation' -name "RealTimeIsUniversal" -Value 1 -Type DWord -force
 
     Set-Service -Name w32time -StartupType Automatic
     ```
@@ -96,6 +96,13 @@ Na maszynie Wirtualnej, który chcesz przekazać na platformę Azure, należy ur
 
     ```PowerShell
     powercfg /setactive SCHEME_MIN
+    ```
+6. Upewnij się, że zmienne środowiskowe **TEMP** i **TMP** są ustawione na wartości domyślne:
+
+    ```PowerShell
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -name "TEMP" -Value "%SystemRoot%\TEMP" -Type ExpandString -force
+
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -name "TMP" -Value "%SystemRoot%\TEMP" -Type ExpandString -force
     ```
 
 ## <a name="check-the-windows-services"></a>Sprawdź usługi Windows
@@ -119,63 +126,63 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
 Upewnij się, że następujące ustawienia są poprawnie skonfigurowane dla połączeń usług pulpitu zdalnego:
 
 >[!Note] 
->Podczas uruchamiania, może wystąpić komunikat o błędzie **Set-zmieniona właściwość elementu — ścieżka "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal usługi — nazwa &lt;nazwa obiektu&gt; &lt;wartość&gt;** w ramach tej procedury. Komunikat o błędzie można bezpiecznie zignorować. Oznacza to, tylko że domeny nie jest wypychanie tę konfigurację za pomocą obiektu zasad grupy.
+>Podczas uruchamiania, może wystąpić komunikat o błędzie **Set-zmieniona właściwość elementu — ścieżka "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal usługi — nazwa &lt;nazwa obiektu&gt; — wartość &lt;wartość&gt;**  w ramach tej procedury. Komunikat o błędzie można bezpiecznie zignorować. Oznacza to, tylko że domeny nie jest wypychanie tę konfigurację za pomocą obiektu zasad grupy.
 >
 >
 
 1. Włączono protokół RDP (Remote Desktop):
    
     ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -Value 0 -Type DWord
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -Value 0 -Type DWord -force
 
-    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -name "fDenyTSConnections" -Value 0 -Type DWord
+    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -name "fDenyTSConnections" -Value 0 -Type DWord -force
     ```
    
 2. Portu RDP jest prawidłowo skonfigurowany (domyślnie port 3389):
    
     ```PowerShell
-   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "PortNumber" 3389 -Type DWord
+   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "PortNumber" -Value 3389 -Type DWord -force
     ```
     Podczas wdrażania maszyny Wirtualnej, domyślne reguły są tworzone dla portu 3389. Jeśli chcesz zmienić numer portu to zrobić po wdrożeniu maszyny Wirtualnej na platformie Azure.
 
 3. Odbiornik nasłuchuje w każdy interfejs sieciowy:
    
     ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "LanAdapter" 0 -Type DWord
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "LanAdapter" -Value 0 -Type DWord -force
    ```
 4. Skonfigurować tryb uwierzytelniania na poziomie sieci na potrzeby połączenia RDP:
    
     ```PowerShell
-   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" 1 -Type DWord
+   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1 -Type DWord -force
 
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "SecurityLayer" 1 -Type DWord
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "SecurityLayer" -Value 1 -Type DWord -force
 
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "fAllowSecProtocolNegotiation" 1 -Type DWord
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "fAllowSecProtocolNegotiation" -Value 1 -Type DWord -force
      ```
 
 5. Ustaw wartość keep-alive:
     
     ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -name "KeepAliveEnable" 1 -Type DWord
-    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -name "KeepAliveInterval" 1 -Type DWord
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "KeepAliveTimeout" 1 -Type DWord
+    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -name "KeepAliveEnable" -Value 1  -Type DWord -force
+    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -name "KeepAliveInterval" -Value 1  -Type DWord -force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "KeepAliveTimeout" -Value 1 -Type DWord -force
     ```
 6. Połącz ponownie:
     
     ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -name "fDisableAutoReconnect" 0 -Type DWord
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "fInheritReconnectSame" 1 -Type DWord
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "fReconnectSame" 0 -Type DWord
+    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -name "fDisableAutoReconnect" -Value 0 -Type DWord -force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "fInheritReconnectSame" -Value 1 -Type DWord -force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "fReconnectSame" -Value 0 -Type DWord -force
     ```
 7. Ogranicz liczbę jednoczesnych połączeń:
     
     ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "MaxInstanceCount" 4294967295 -Type DWord
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "MaxInstanceCount" -Value 4294967295 -Type DWord -force
     ```
 8. Jeśli ma żadnych certyfikatów z podpisem własnym powiązane odbiornik protokołu RDP, należy je usunąć:
     
     ```PowerShell
-    Remove-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "SSLCertificateSHA1Hash"
+    Remove-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "SSLCertificateSHA1Hash" -force
     ```
     To, aby upewnić się, że możesz połączyć na początku podczas wdrażania maszyny Wirtualnej. Możesz również sprawdzić to na późniejszym etapie po wdrożeniu maszyny Wirtualnej na platformie Azure, jeśli to konieczne.
 
@@ -193,27 +200,25 @@ Upewnij się, że następujące ustawienia są poprawnie skonfigurowane dla poł
 1. Włącz zaporę Windows, na trzy profile (domeny, Standard i publiczne):
 
    ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile' -name "EnableFirewall" -Value 1 -Type DWord
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\PublicProfile' -name "EnableFirewall" -Value 1 -Type DWord
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\Standardprofile' -name "EnableFirewall" -Value 1 -Type DWord
+    Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled True
    ```
 
 2. W programie PowerShell, aby włączyć usługę WinRM za pośrednictwem trzech profili zapory (domena, prywatne i publiczne) i włączyć usługi zdalne programu PowerShell, uruchom następujące polecenie:
    
    ```PowerShell
     Enable-PSRemoting -force
-    netsh advfirewall firewall set rule dir=in name="Windows Remote Management (HTTP-In)" new enable=yes
-    netsh advfirewall firewall set rule dir=in name="Windows Remote Management (HTTP-In)" new enable=yes
+
+    Set-NetFirewallRule -DisplayName "Windows Remote Management (HTTP-In)" -Enabled True
    ```
 3. Włącz następujące reguły zapory zezwalające na ruch RDP:
 
    ```PowerShell
-    netsh advfirewall firewall set rule group="Remote Desktop" new enable=yes
+    Set-NetFirewallRule -DisplayGroup "Remote Desktop" -Enabled True
    ```   
 4. Tak, aby maszyna wirtualna może odpowiadać na polecenia ping w sieci wirtualnej, należy włączyć zasadę udostępnianie plików i drukarek:
 
    ```PowerShell
-    netsh advfirewall firewall set rule dir=in name="File and Printer Sharing (Echo Request - ICMPv4-In)" new enable=yes
+   Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -Enabled True
    ``` 
 5. Jeśli maszyna wirtualna ma być częścią domeny, sprawdź następujące ustawienia, aby upewnić się, że wcześniejsze ustawienia nie są przywracane. Zasady usługi AD, które musi być zaznaczone są następujące:
 
@@ -250,7 +255,7 @@ Upewnij się, że następujące ustawienia są poprawnie skonfigurowane dla poł
 
     #Enable Serial Console Feature
     bcdedit /set {bootmgr} displaybootmenu yes
-    bcdedit /set {bootmgr} timeout 10
+    bcdedit /set {bootmgr} timeout 5
     bcdedit /set {bootmgr} bootems yes
     bcdedit /ems {current} ON
     bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200
@@ -262,20 +267,20 @@ Upewnij się, że następujące ustawienia są poprawnie skonfigurowane dla poł
     ```powershell
     cmd
 
-    #Setup the Guest OS to collect a kernel dump on an OS crash event
-    REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
-    REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 2 /f
-    REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
+    # Setup the Guest OS to collect a kernel dump on an OS crash event
+    Set-ItemProperty -Path 'HKLM\SYSTEM\CurrentControlSet\Control\CrashControl' -name CrashDumpEnabled -Type DWord -force -Value 2
+    Set-ItemProperty -Path 'HKLM\SYSTEM\CurrentControlSet\Control\CrashControl' -name DumpFile -Type ExpandString -force -Value "%SystemRoot%\MEMORY.DMP"
+    Set-ItemProperty -Path 'HKLM\SYSTEM\CurrentControlSet\Control\CrashControl' -name NMICrashDump -Type DWord -force -Value 1
 
     #Setup the Guest OS to collect user mode dumps on a service crash event
-    md c:\Crashdumps
-    REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /v DumpFolder /t REG_EXPAND_SZ /d "c:\CrashDumps" /f
-    REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /v CrashCount /t REG_DWORD /d 10 /f
-    REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /v DumpType /t REG_DWORD /d 2 /f
+    $key = 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps'
+    if ((Test-Path -Path $key) -eq $false) {(New-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting' -Name LocalDumps)}
+    New-ItemProperty -Path $key -name DumpFolder -Type ExpandString -force -Value "c:\CrashDumps"
+    New-ItemProperty -Path $key -name CrashCount -Type DWord -force -Value 10
+    New-ItemProperty -Path $key -name DumpType -Type DWord -force -Value 2
     sc config WerSvc start= demand
 
     exit
-    
     ```
 4. Sprawdź, czy repozytorium systemu Windows Management Instrumentations spójne. Aby to wykonać, uruchom następujące polecenie:
 
@@ -408,7 +413,7 @@ Następujące ustawienia nie wpływają na przekazywanie wirtualnego dysku tward
 *  Po utworzeniu maszyny Wirtualnej na platformie Azure, zaleca się umieszczenie pliku stronicowania w woluminie "Stacja danych czasowych", aby zwiększyć wydajność. Możesz skonfigurować to w następujący sposób:
 
     ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile"
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile" -Type MultiString -force
     ```
 W przypadku każdego dysku danych, który jest dołączony do maszyny Wirtualnej, litera dysku woluminu dysku danych czasowych jest zazwyczaj "D." Oznaczenie to może być różne w zależności od liczby dostępnych dysków i ustawienia, które wprowadzasz.
 

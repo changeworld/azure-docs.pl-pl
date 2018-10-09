@@ -2,17 +2,17 @@
 title: Uaktualnij rejestr kontenerów klasycznej platformie Azure
 description: Skorzystaj z zalet rozszerzonej zestawu funkcji komponentu Basic, Standard i Premium zarządzane rejestry kontenerów, uaktualniając niezarządzanych Classic rejestru kontenerów.
 services: container-registry
-author: mmacy
+author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 08/28/2018
-ms.author: marsma
-ms.openlocfilehash: 951866c1c74cb14536ea341d80c06e0fcfe0e4fe
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.author: danlep
+ms.openlocfilehash: fd22677c2acc9e61abc082b3515a817c01c163cb
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025592"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855973"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Uaktualnianie rejestru klasycznego kontenera
 

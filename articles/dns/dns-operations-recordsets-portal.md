@@ -1,26 +1,18 @@
 ---
-title: Zarządzanie zestawami rekordów DNS i rekordów za pomocą usługi Azure DNS | Dokumentacja firmy Microsoft
+title: Zarządzanie zestawami rekordów DNS i rekordów za pomocą usługi Azure DNS
 description: Usługa system DNS Azure umożliwia zarządzanie zestawami rekordów DNS i rekordów, gdy hosting domeny.
 services: dns
-documentationcenter: na
 author: vhorne
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 18ed44a1-7bfe-454f-964e-922ad978264a
 ms.service: dns
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/16/2016
+ms.date: 10/6/2018
 ms.author: victorh
-ms.openlocfilehash: e24aa8d0fb72147b0ac30e7c495b598d6e9ea96f
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 891adfacde6e46b1d8fe8e2f6b5fb39c90ce27a0
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451396"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48853712"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Zarządzanie rekordami systemu DNS i zestawów rekordów przy użyciu witryny Azure portal
 
@@ -120,3 +112,4 @@ Nie można usunąć SOA i zestawy rekordów NS w wierzchołku strefy (nazwa = "\
 * Aby uzyskać więcej informacji na temat usługi Azure DNS, zobacz [Omówienie usługi Azure DNS](dns-overview.md).
 * Aby uzyskać więcej informacji na temat automatyzowania DNS, zobacz [zestawów rekordów przy użyciu zestawu SDK platformy .NET i strefami DNS tworzenia](dns-sdk.md).
 * Aby uzyskać więcej informacji na temat rekordami odwrotnego systemu DNS, zobacz [omówienie odwrotnego DNS i pomocy technicznej na platformie Azure](dns-reverse-dns-overview.md).
+* Aby uzyskać więcej informacji na temat rekordów aliasów systemu DNS platformy Azure, zobacz [Azure alias DNS rekordów — omówienie](dns-alias.md).

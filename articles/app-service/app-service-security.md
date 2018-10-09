@@ -1,7 +1,7 @@
 ---
 title: Zabezpieczenia w usłudze Azure App Service i Azure Functions | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o jak usługi App Service ułatwia bezpieczne aplikacja i jak można dalej zablokować aplikację z poziomu zagrożenia.
-keywords: usługi Azure app service, aplikacji sieci web, aplikacji mobilnych, aplikacji interfejsu api, aplikacji funkcji, bezpieczeństwo, bezpieczne i zabezpieczony, zgodności i zgodne, certyfikatów, certyfikaty, https, ftps tls, zaufanie, szyfrowanie, szyfrowanie, szyfrowane, ograniczenia adresów ip, uwierzytelnianie, autoryzacja, uwierzytelniania, autho, msi, tożsamość usługi zarządzanej, wpisów tajnych, klucz tajny, poprawek, poprawek, poprawek, wersji, izolacji, izolacji sieci, przed atakami ddos i mitm
+keywords: usługi Azure app service, aplikacji sieci web, aplikacji mobilnych, aplikacji interfejsu api, aplikacji funkcji, bezpieczeństwo, bezpieczne i zabezpieczony, zgodności i zgodne, certyfikatów, certyfikaty, https, ftps tls, zaufanie, szyfrowanie, szyfrowanie, szyfrowane, ograniczenia adresów ip, uwierzytelnianie, autoryzacja, uwierzytelniania, autho, msi, tożsamość usługi zarządzanej, tożsamość zarządzaną, wpisów tajnych, klucz tajny, poprawek, poprawek, poprawek, wersji, izolacji, izolacji sieci, przed atakami ddos i mitm
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
-ms.openlocfilehash: 40fdd22bdbb3fc0676688430069d58c0422a7ca2
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 3bacc2bf253a6b8c3b869b7a6d4952d982de3ee6
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382120"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857503"
 ---
 # <a name="security-in-azure-app-service-and-azure-functions"></a>Zabezpieczenia w usłudze Azure App Service i Azure Functions
 
@@ -69,7 +69,7 @@ Usługa App Service, uwierzytelnianie i autoryzacja obsługuje wielu dostawców 
 
 Podczas uwierzytelniania w odniesieniu do usługi zaplecza, usługa App Service udostępnia dwa różne mechanizmy, w zależności od Twoich potrzeb:
 
-- **Usługa tożsamości** — Zaloguj się do zasobu zdalnego przy użyciu tożsamości aplikacji. Usługa App Service umożliwia łatwe tworzenie [tożsamości usługi zarządzanej](app-service-managed-service-identity.md), które służy do uwierzytelniania za pomocą innych usług, takich jak [usługi Azure SQL Database](/azure/sql-database/) lub [usługi Azure Key Vault](/azure/key-vault/). Samouczek end-to-end tej metody, zobacz [połączenia Zabezpieczanie usługi Azure SQL Database z usługi App Service przy użyciu tożsamości usługi zarządzanej](app-service-web-tutorial-connect-msi.md).
+- **Usługa tożsamości** — Zaloguj się do zasobu zdalnego przy użyciu tożsamości aplikacji. Usługa App Service umożliwia łatwe tworzenie [tożsamości zarządzanej](app-service-managed-service-identity.md), które służy do uwierzytelniania za pomocą innych usług, takich jak [usługi Azure SQL Database](/azure/sql-database/) lub [usługi Azure Key Vault](/azure/key-vault/). Samouczek end-to-end tej metody, zobacz [połączenia Zabezpieczanie usługi Azure SQL Database z usługi App Service za pomocą tożsamości zarządzanej](app-service-web-tutorial-connect-msi.md).
 - **W imieniu z (OBO)** -wprowadzić delegowanego dostępu do zasobów zdalnych w imieniu użytkownika. Za pomocą usługi Azure Active Directory jako dostawcy uwierzytelniania, aplikacji usługi app Service można wykonywać delegowanego logowania do usługi zdalnej, takich jak [interfejsu API usługi Azure Active Directory Graph](../active-directory/develop/active-directory-graph-api.md) lub zdalnej aplikacji interfejsu API w usłudze App Service. Samouczek end-to-end tej metody, zobacz [uwierzytelnianie i autoryzowanie użytkowników end-to-end w usłudze Azure App Service](app-service-web-tutorial-auth-aad.md).
 
 ## <a name="connectivity-to-remote-resources"></a>Łączność z zasobami zdalnymi
@@ -82,7 +82,7 @@ Istnieją trzy typy zasobów zdalnych, które aplikacja może być konieczne dos
 
 W każdym z tych przypadków usługa App Service zapewnia sposób nawiązywanie bezpiecznych połączeń, ale nadal należy przestrzegać najlepszych rozwiązań dotyczących zabezpieczeń. Na przykład zawsze używać połączeń szyfrowanych nawet wtedy, gdy zasób zaplecza zezwala na połączenia nieszyfrowanego. Ponadto upewnij się, że zaplecza usługi Azure zezwala minimalny zestaw adresów IP. Wychodzące adresy IP można znaleźć Twoją aplikację [przychodzące i wychodzące adresy IP w usłudze Azure App Service](app-service-ip-addresses.md).
 
-### <a name="azure-resources"></a>Zasoby Azure
+### <a name="azure-resources"></a>Zasoby platformy Azure
 
 Gdy aplikacja łączy się z zasobami platformy Azure, takich jak [bazy danych SQL](https://azure.microsoft.com/services/sql-database/) i [usługi Azure Storage](/azure/storage/), połączenie pozostaje w obrębie platformy Azure i nie cross wszystkie granice sieci. Jednak połączenie przechodzi przez udostępnionej sieci na platformie Azure, dlatego zawsze upewnij się, że połączenie jest szyfrowane. 
 
@@ -106,13 +106,13 @@ Można bezpieczny dostęp do zasobów lokalnych, takich jak bazy danych na trzy 
 
 Nie należy przechowywać kluczy tajnych aplikacji, takich jak poświadczenia bazy danych, tokeny interfejsu API i klucze prywatne w plikach kodu lub konfiguracji. Powszechnie akceptowane podejściem jest dostęp do nich jako [zmienne środowiskowe](https://wikipedia.org/wiki/Environment_variable) przy użyciu standardowego wzorca w wybranym języku. W usłudze App Service jest to sposób definiowania zmiennych środowiskowych [ustawienia aplikacji](web-sites-configure.md#app-settings) (i, szczególnie w przypadku aplikacji .NET [parametry połączenia](web-sites-configure.md#connection-strings)). Ustawienia aplikacji i parametry połączenia są przechowywane w postaci zaszyfrowanej na platformie Azure i są one odszyfrowywane tylko przed są wstrzykiwane do pamięci procesu aplikacji, po uruchomieniu aplikacji. Klucze szyfrowania są obracane regularnie.
 
-Alternatywnie można zintegrować aplikację usługi App Service przy użyciu [usługi Azure Key Vault](/azure/key-vault/) zarządzania zaawansowane wpisów tajnych. Przez [uzyskiwania dostępu do usługi Key Vault przy użyciu tożsamości usługi zarządzanej](../key-vault/tutorial-web-application-keyvault.md), aplikacji usługi app Service bezpieczny dostęp do danych poufnych, potrzebujesz.
+Alternatywnie można zintegrować aplikację usługi App Service przy użyciu [usługi Azure Key Vault](/azure/key-vault/) zarządzania zaawansowane wpisów tajnych. Przez [uzyskiwania dostępu do usługi Key Vault za pomocą tożsamości zarządzanej](../key-vault/tutorial-web-application-keyvault.md), aplikacji usługi app Service bezpieczny dostęp do danych poufnych, potrzebujesz.
 
 ## <a name="network-isolation"></a>Izolacja sieci
 
 Z wyjątkiem **izolowany** warstwy cenowej, dla wszystkich warstw uruchamiaj swoje aplikacje w udostępnionej infrastrukturze sieciowej w usłudze App Service. Na przykład publiczne adresy IP i równoważenia obciążenia frontonu są współużytkowane z innymi dzierżawami. **Izolowany** warstwy zapewnia izolację sieci pełną, uruchamiając swoje aplikacje w dedykowanej [środowiska App Service environment](environment/intro.md). Środowiska usługi App Service uruchamia wystąpienia programu [Azure Virtual Network](/azure/virtual-network/). Dzięki temu można: 
 
-- Ograniczanie dostępu do sieci za pomocą [sieciowe grupy zabezpieczeń](../virtual-network/virtual-networks-nsg.md). 
+- Ograniczanie dostępu do sieci za pomocą [sieciowe grupy zabezpieczeń](../virtual-network/virtual-networks-dmz-nsg.md). 
 - Obsługiwać swoje aplikacje za pomocą dedykowanego publicznego punktu końcowego, za pomocą dedykowanego frontonów.
 - Obsługiwać wewnętrznej aplikacji przy użyciu wewnętrznego modułu równoważenia obciążenia (ILB), która zezwala na dostęp tylko z wewnątrz sieci wirtualnej platformy Azure. Wewnętrznego modułu równoważenia obciążenia ma adres IP z podsieci prywatnej, co zapewnia pełną izolację aplikacji z Internetu.
 - [Użyj wewnętrznego modułu równoważenia obciążenia za zaporą aplikacji sieci web (WAF)](environment/integrate-with-application-gateway.md). Zapora aplikacji sieci Web zapewnia ochronę klasy korporacyjnej w aplikacjach publicznego, takie jak ochrona przed atakami DDoS, filtrowanie identyfikatora URI i zapobiegania iniekcji SQL.

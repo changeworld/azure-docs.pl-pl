@@ -2,18 +2,17 @@
 title: Zainstaluj wolumin tajny w usłudze Azure Container Instances
 description: Dowiedz się, jak zainstalować wpisu tajnego wolumin do przechowywania poufnych informacji dotyczących dostępu przez wystąpienia kontenera
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: article
 ms.date: 07/19/2018
-ms.author: marsma
-ms.openlocfilehash: 572e6701bbe69bbb07c76d468a309030fc37d984
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.author: danlep
+ms.openlocfilehash: 9aa80cf3cb02237cea11e370151eda8c67c7b10e
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159893"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856755"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Zainstaluj wolumin tajny w usłudze Azure Container Instances
 

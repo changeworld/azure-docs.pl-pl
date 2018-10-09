@@ -8,20 +8,20 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: cc73be09cec4ef963a496687d112f98e05d98802
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 8a441f43a5d7ab3daa3c430dc715fab9ff8c63bb
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018523"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868313"
 ---
 # <a name="speech-service-rest-apis"></a>Usługa rozpoznawania mowy interfejsów API REST
 
-Interfejsy API REST usługi Azure Cognitive Services unified mowy usługi są podobne do interfejsów API dostarczonych przez [modułu Speech API Bing](https://docs.microsoft.com/azure/cognitive-services/Speech). Punktów końcowych, które różnią się od punktów końcowych używanych przez usługę rozpoznawania mowy Bing. Regionalne punkty końcowe są dostępne i trzeba użyć klucza subskrypcji, która odnosi się do punktu końcowego, którego używasz.
+Interfejsy API REST usługi mowy w usłudze Azure Cognitive Services są podobne do interfejsów API dostarczonych przez [modułu Speech API Bing](https://docs.microsoft.com/azure/cognitive-services/Speech). Punktów końcowych, które różnią się od punktów końcowych używanych przez usługę rozpoznawania mowy Bing. Regionalne punkty końcowe są dostępne i trzeba użyć klucza subskrypcji, która odnosi się do punktu końcowego, którego używasz.
 
 ## <a name="speech-to-text"></a>Zamiana mowy na tekst
 
-Punktów końcowych rozpoznawania mowy, interfejsu API REST usługi tekstowe są wyświetlane w poniższej tabeli. Użyj jednego, który odpowiada Twoim regionie subskrypcji.
+Punktów końcowych rozpoznawania mowy, interfejsu API REST usługi tekstowe są wyświetlane w poniższej tabeli. Użyj jednego, który odpowiada Twoim regionie subskrypcji. Odwołanie **tryby rozpoznawania** sekcji poniżej, aby zastąpić `conversation` z oboma `interactive` lub `dictation` dla Twojego żądaną sceanrio w danym wywołania interfejsu API.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
@@ -29,6 +29,53 @@ Punktów końcowych rozpoznawania mowy, interfejsu API REST usługi tekstowe są
 > Jeśli dostosowany model akustyczny lub model języka lub wymowa, należy użyć niestandardowego punktu końcowego.
 
 Ten interfejs API obsługuje tylko krótkie wypowiedzi. Żądania może zawierać maksymalnie 10 sekund audio i ostatnie 14 sekundy ogólnej. Interfejs API REST zwraca wyniki tylko końcowej, nie przejściowym lub częściowe wyniki. Usługa rozpoznawania mowy ma również [batch transkrypcji](batch-transcription.md) interfejsu API, które można wykonać transkrypcji audio dłużej.
+
+### <a name="recognition-modes"></a>Tryby rozpoznawania
+
+Korzystając z interfejsu API REST lub protokołu WebSocket protokołu bezpośrednio, należy go określić tryb rozpoznawania: `interactive`, `conversation`, lub `dictation`. Tryb rozpoznawania dostosowuje rozpoznawania mowy, w oparciu o jak użytkownicy będą mówić. Wybierz tryb rozpoznawania odpowiednie dla twojej aplikacji.
+
+> [!NOTE]
+> Tryby rozpoznawania może mieć różne zachowania za pomocą protokołu REST, niż na ich za pomocą protokołu WebSocket. Na przykład interfejsu API REST nie obsługuje ciągłego rozpoznawanie, nawet w trybie konwersacji lub dyktowanie.
+> [!NOTE]
+> Te tryby są stosowane, gdy bezpośrednio korzystać z protokołu REST lub protokołu WebSocket. [Zestaw SDK rozpoznawania mowy](speech-sdk.md) używa różnych parametrów do określenia konfiguracji rozpoznawania. Aby uzyskać więcej informacji zobacz Biblioteka klienta wybranych przez użytkownika.
+
+Usługa rozpoznawania mowy zwraca tylko jeden wynik frazy rozpoznawania we wszystkich trybach rozpoznawania. Istnieje limit 15 sekund dla dowolnego pojedynczego wypowiedź, gdy bezpośrednio za pomocą protokołu WebSocket i interfejsów API REST.
+
+#### <a name="interactive-mode"></a>Tryb interaktywny
+
+W `interactive` trybie użytkownik zgłasza krótka żądania i oczekuje, że aplikacja do wykonania akcji w odpowiedzi.
+
+Następujące właściwości są typowe dla aplikacji w trybie interakcyjnym:
+
+- Użytkownicy o tym, że rozmowy maszynę, a nie inny człowieka.
+- Użytkownicy aplikacji znać wcześniej, mają być Powiedz, oparte na to, czego oczekują aplikacji w celu.
+- Wypowiedzi zazwyczaj ostatnie o 2-3 sekundy.
+
+#### <a name="conversation-mode"></a>Tryb konwersacji
+
+W `conversation` tryb, użytkownicy są zaangażowane w konwersacji międzyludzkich —.
+
+Następujące właściwości są typowe dla aplikacji w trybie konwersacji:
+
+- Użytkownicy wiedzą, że komunikują się z inną osobą.
+- Rozpoznawanie mowy podnosi uczestnicy jeden lub oba Zobacz tekstu mówionego rozmowy przez ludzi.
+- Użytkownicy nie zawsze jest planowana mają powiedzieć.
+- Użytkownicy często korzystają z żargonu i innych nieformalne mowy.
+
+#### <a name="dictation-mode"></a>Tryb dyktowania
+
+W `dictation` tryb, użytkownicy recytować wypowiedzi dłuższe do aplikacji w celu dalszego przetwarzania.
+
+Następujące właściwości są typowe dla aplikacji w trybie dyktowania:
+
+- Użytkownicy wiedzą, że komunikują się z maszyną.
+- Użytkownicy są wyświetlane wyniki tekstu rozpoznawania mowy.
+- Użytkownicy planu często mają być powiedzieć i używać bardziej formalnych języka.
+- Użytkownicy stosują pełną zdania, ostatnich 5 – 8 sekund.
+
+> [!NOTE]
+> W trybie dyktowania i konwersacji Microsoft Speech Service nie zwracać wyniki częściowe. Zamiast tego usługa zwraca wyniki stabilne frazy po wyciszenia granic w strumienia audio. Microsoft może zwiększyć protokołu rozpoznawania mowy do udoskonalenia środowiska użytkownika w tych trybach ciągłe rozpoznawania.
+
 
 ### <a name="query-parameters"></a>Parametry zapytania
 
@@ -55,13 +102,19 @@ Następujące pola są wysyłane w nagłówku żądania HTTP.
 
 ### <a name="audio-format"></a>Audio format
 
-Dźwięku w treści HTTP `PUT` żądania. Należy go w formacie WAV PCM pojedynczy kanał (mono) na 16 KHz 16-bitowych.
+Dźwięku w treści HTTP `PUT` żądania. Należy go w formacie WAV PCM pojedynczy kanał (mono) na 16 KHz następujące formaty/kodowania 16-bitowych.
+
+* Format WAV PCM koder-dekoder
+* Format OGG z kodera-dekodera DZIELE
+
+>[!NOTE]
+>Powyższe formaty są obsługiwane za pośrednictwem interfejsu API REST i WebSocket usługi mowy. [Zestaw SDK rozpoznawania mowy](/index.yml) aktualnie obsługuje tylko WAV Formatuj przy użyciu kodera-dekodera PCM. 
 
 ### <a name="chunked-transfer"></a>Fragmentaryczne transferu
 
 Transferu pakietowego (`Transfer-Encoding: chunked`) może pomóc zmniejszyć opóźnienie rozpoznawania, ponieważ zezwala ona na usługi mowy rozpoczęcie przetwarzania plików audio, gdy są przesyłane. Interfejs API REST nie zapewnia tymczasowe lub częściowe wyniki. Ta opcja jest przeznaczona wyłącznie do zwiększyć szybkość reakcji.
 
-Poniższy kod ilustruje sposób wysyłania audio we fragmentach. `request` Obiekt HTTPWebRequest podłączonego do odpowiedniego punktu końcowego REST. `audioFile` jest to ścieżka do pliku audio na dysku.
+Poniższy kod ilustruje sposób wysyłania audio we fragmentach. Tylko pierwszy fragment może zawierać nagłówek pliku audio. `request` Obiekt HTTPWebRequest podłączonego do odpowiedniego punktu końcowego REST. `audioFile` jest to ścieżka do pliku audio na dysku.
 
 ```csharp
 using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))

@@ -9,12 +9,12 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: a82472ccd5524e7cbe3d92070a6d2b583d8eb4d5
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 7a409b1ecdd693a0f28d2303d55a27b177644eb0
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249302"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855412"
 ---
 # <a name="bake-acoustics"></a>Tworzenie Akustyka
 
@@ -230,25 +230,25 @@ Aby oszacować, jaki będzie koszt danego tworzenie, wykonaj wartości wyświetl
 Po zakończeniu tworzenie, sprawdź, czy punkty voxels i badania znajdują się w ich oczekiwanych lokalizacjach za pomocą wtyczki środowiska uruchomieniowego. Więcej informacji znajduje się w [Omówienie procesu projektowania dla Akustyka](design-process.md).
 
 ## <a name="Local-bake"></a>Tworzenie lokalnego
-Tworzenie lokalnej działa Akustyka symulacji na komputerze lokalnym zamiast przeniesieniu ich do klastra obliczeniowego usługi Azure Batch. Może to być to dobry wybór do eksperymentowania z Akustyka bez subskrypcji platformy Azure, ale pamiętaj, że Symulacja Akustyka praktyce najbardziej wymagających a może zająć dużo czasu w zależności od rozmiaru sceny konfiguracji symulacji i raw moc obliczeniową maszyny przetwarzania.
+Tworzenie lokalnej działa symulacji Akustyka komputera zamiast przeniesieniu ich do klastra obliczeniowego usługi Azure Batch. Może to być to dobry wybór do eksperymentowania z Akustyka bez subskrypcji platformy Azure. Pamiętaj, że Symulacja Akustyka praktyce najbardziej wymagających może zająć dużo czasu w zależności od rozmiaru sceny, symulacja konfiguracji i raw mocy obliczeniowej maszyny przetwarzania.
 
 ### <a name="minimum-hardware-requirements"></a>Minimalne wymagania sprzętowe
 64-bitowy procesor Intel z co najmniej 8 rdzeni i 32 GB pamięci RAM lub nowszej.
 
-Na przykład na komputerze przy użyciu Intel Xeon E5-1660 8-rdzeniowe @ 3 GHz i 32 GB pamięci-
+Na przykład na komputerze przy użyciu Intel Xeon E5-1660 @ 3 GHz oraz 32 GB pamięci RAM — 8 rdzeni
 * Niewielkiej sceny przy użyciu 100 sondy zajmuje OK. 2 dla zdalnego tworzenie i około 32 godziny na tworzenie rozwiązania dobrym rozwiązaniem.
-* Większe sceny z 1000 sond może zająć maksymalnie ~ 20 godzin zgrubnym rozwiązanie problemu i ~ 21 dni tworzenie rozwiązania dobrym rozwiązaniem.
+* Większe sceny za pomocą sondy 1000 może potrwać maksymalnie ~ 20 godzin zgrubnym rozwiązanie problemu i ~ 21 dni tworzenie rozwiązania dobrym rozwiązaniem.
 
 ### <a name="setup-docker"></a>Konfigurowanie platformy Docker
 Instalowanie i konfigurowanie platformy Docker na komputerze, który będzie przetwarzał Symulacja-
 1. Zainstaluj [zestawu narzędzi platformy Docker](https://www.docker.com/products/docker-desktop).
-2. Uruchom ustawień platformy Docker, przejdź do opcji "Zaawansowane", a następnie skonfigurować zasoby, jak pokazano poniżej. ![Zasoby platformy docker](media/DockerSettings.png)
-3. Przejdź do opcji "Udostępnione dyski" i Włącz udostępnianie dla dysku używana na potrzeby przetwarzania.![DockerDriveSharing](media/DockerSharedDrives.png)
+2. Uruchom ustawień platformy Docker, przejdź do opcji "Zaawansowany", a następnie konfiguruje zasoby, aby w przynajmniej 8 GB pamięci RAM. Więcej procesorów można przydzielić do platformy Docker, tym szybsze tworzenie zostanie ukończone. ![Przykład ustawień platformy Docker](media/DockerSettings.png)
+3. Przejdź do "Udostępnione dyski" i Włącz udostępnianie dla dysku używana na potrzeby przetwarzania.![DockerDriveSharing](media/DockerSharedDrives.png)
 
 ### <a name="run-local-bake"></a>Tworzenie lokalnego uruchomienia
 1. Kliknij przycisk "Przygotowanie lokalnego tworzenie" na karcie Tworzenie, a następnie wybierz folder, w którym zostaną zapisane pliki wejściowe i wykonywania skryptów. Następnie można uruchomić tworzenie na dowolnym komputerze, tak długo, jak spełnia minimalne wymagania sprzętowe i ma platforma Docker jest zainstalowana przez skopiowanie folderu do tej maszyny.
-2. Uruchomienie symulacji za pomocą skryptu "runlocalbake.bat", który będzie pobrać obraz Docker Akustyka projektu, za pomocą zestawu narzędzi niezbędnych do symulacji przetwarzania i rozpocząć symulację. 
-3. Po zakończeniu symulacji skopiuj wynikowy plik .ace do projektu środowiska Unity do tej samej lokalizacji, która została określona w karcie sondy. Upewnij się, że nazwa pliku docelowego jest zgodny z wymaganiami firmy Unity, dodając ".bytes" do rozszerzenia pliku. Szczegółowe dzienniki symulacji są przechowywane w pliku "AcousticsLog.txt". Jeśli napotkasz problemy, należy udostępnić ten plik w celu ułatwienia diagnozy.
+2. Uruchomienie symulacji za pomocą skryptu "runlocalbake.bat". Ten skrypt spowoduje pobranie obrazu platformy Docker Akustyka projektu z zestawem narzędzi niezbędnych do symulacji przetwarzania i rozpocząć symulację. 
+3. Po zakończeniu symulacji skopiuj wynikowy plik .ace, wróć do projektu środowiska Unity. Aby upewnić się, że Unity rozpoznaje to jako plik binarny, Dołącz ".bytes" z rozszerzeniem pliku (na przykład "Scene1.ace.bytes"). Szczegółowe dzienniki symulacji są przechowywane w "AcousticsLog.txt." Jeśli napotkasz problemy, należy udostępnić ten plik w celu ułatwienia diagnozy.
 
 ## <a name="Data-Files"></a>Pliki danych
 

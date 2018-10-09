@@ -5,67 +5,49 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 08/09/2017
+ms.date: 10/04/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
-ms.reviewer: sasubram
-ms.openlocfilehash: 1d92f68bbb5e8c001594e4f78f90cb10496aaf29
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.reviewer: mal
+ms.openlocfilehash: d80794511f334cd6dc5af418e24fc774b7d8728f
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984496"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867514"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Wskazówki dotyczące licencjonowania funkcji współpracy między firmami przy użyciu usługi Azure Active Directory
 
-Funkcje współpracy B2B usługi Azure AD umożliwia zaprosić użytkowników-gości do dzierżawy usługi Azure AD, aby umożliwić im dostęp do usługi Azure AD i innych zasobów w Twojej organizacji. Jeśli chcesz zapewnić dostęp do płatnych funkcji usługi Azure AD, musi mieć licencję użytkowników-gości współpracy B2B odpowiednie licencje usługi Azure AD. 
+Przy użyciu funkcji współpracy business-to-business (B2B) usługi Azure Active Directory (Azure AD), możesz zaprosić użytkowników zewnętrznych (lub "użytkowników-gości") do użycia z płatnych usług Azure AD. Dla każdego płatnej licencji usługi Azure AD, który przypiszesz do użytkownika, możesz zaprosić do pięciu użytkowników-gości w ramach dodatku użytkownika zewnętrznego.
 
-W szczególności:
-* Bezpłatne możliwości usługi Azure AD są dostępne dla użytkowników-gości bez dodatkowych licencji.
-* Jeśli chcesz zapewnić dostęp do płatnych funkcji usługi Azure AD dla użytkowników B2B, musi mieć wystarczającą liczbę licencji, do obsługi tych użytkowników-gości B2B.
-* Zapraszający dzierżawca z płatnej licencji usługi Azure AD jest współpraca B2B prawa dodatkowe pięciu użytkowników-gości B2B zaproszenie do dzierżawy do używania.
-* Klient, który jest właścicielem zapraszający dzierżawca musi być jedna, aby ustalić, ile współpracy B2B, użytkownicy muszą mieć płatnych funkcji usługi Azure AD. W zależności od usługi płatne Azure AD funkcje dla użytkowników gości, musisz mieć dostatecznie usłudze Azure AD płatnych licencji użytkowników we współpracy B2B w tym samym współczynnik 5:1.
+Użytkownik-Gość to osoba, która nie jest członkiem organizacji lub dowolny z podmiotów stowarzyszonych w Twojej organizacji. Użytkowników-gości są definiowane przez ich związek z Twojej organizacji, nie przez poświadczenia, których używają do logowania. W rzeczywistości użytkownika-gościa może zarejestrować się za pomocą zewnętrznego tożsamości lub za pomocą poświadczeń należących do organizacji.
 
-Użytkownik-Gość współpracy B2B zostanie dodany jako użytkownik z firmy partnerskiej, a nie pracownika, organizacji lub pracownik różnych firm w swojej konglomeracie. Użytkownik-Gość B2B można zalogować się przy użyciu zewnętrznego poświadczenia lub własnością Twojej organizacji, zgodnie z opisem w tym artykule. 
+Poniżej przedstawiono *nie* użytkowników (gości):
+- Twoi pracownicy, wykonawcy u klienta lub agentów u klienta
+- Pracownicy, wykonawcy u klienta ani lokalnymi przedstawicielami Twojej filii
 
-Innymi słowy Licencjonowanie B2B ustawiono nie, przez jaki użytkownik jest uwierzytelniany, ale raczej przez relację użytkownika dla danej organizacji. Jeśli Ci użytkownicy nie są partnerami, są traktowane inaczej w postanowienia licencyjne. Nie są uwzględniane jako użytkownika współpracy B2B do celów licencjonowania, nawet wtedy, gdy ich UserType jest oznaczony jako "Gość". Powinny być one licencjonowane zwykle w jedną licencję dla poszczególnych użytkowników. Tych użytkowników należą:
-* Pracowników
-* Personel logowanie się przy użyciu tożsamości zewnętrznych
-* Pracownik różnych firm w swojej konglomeracie
+Licencjonowanie na użytkownika B2B gościa jest automatycznie obliczana i zgłoszone na podstawie współczynnika 1:5. Obecnie nie jest możliwe do przypisania B2B licencji użytkownika gościa bezpośrednio do użytkowników-gości.
 
+Istnieje kilka sytuacji, gdy zgłaszane nie jest użytkownikiem-gościem przy użyciu dodatku użytkownika zewnętrznego 1:5. Jeśli użytkownik-Gość ma już jest licencja usługi Azure AD w organizacji przez użytkownika, użytkownik nie używać jednej z Twoich licencji użytkowników gości B2B. Ponadto gościa, które użytkownicy mogą korzystać z bezpłatnych funkcji usługi Azure AD z żadnymi dodatkowymi wymaganiami licencjonowania. Użytkownicy-goście mają dostęp do bezpłatnych funkcji usługi Azure AD, nawet jeśli nie masz żadnych płatne licencje usługi Azure AD. 
 
-## <a name="licensing-examples"></a>Przykłady licencjonowania
-- Klient chce, aby zaprosić 100 użytkowników we współpracy B2B do swojej dzierżawy usługi Azure AD. Klient przypisuje zarządzania dostępem i Inicjowanie obsługi administracyjnej dla wszystkich użytkowników, ale 50 użytkowników wymagają uwierzytelniania Wieloskładnikowego i dostępu warunkowego. Ten klient musi zakupić 10 licencji usługi Azure AD podstawowa i 10 Azure AD Premium P1 licencji użytkowników B2B poprawnie. Jeśli klient planuje używać funkcji Identity Protection użytkownikom B2B, muszą mieć licencji usługi Azure AD Premium P2 zaproszonych użytkowników w tej samej współczynnik 5:1.
-- Klient ma 10 pracowników, którzy są aktualnie wszystkie licencjonowane przy użyciu usługi Azure AD Premium P1. Firma chce teraz zaprosić 60 B2B użytkowników, którzy wymagają uwierzytelniania wieloskładnikowego (MFA). W obszarze reguła licencjonowania 5:1 klient musi mieć co najmniej 12 licencje usługi Azure AD Premium P1, aby objęły one wszystkich użytkowników współpracy B2B 60. Ponieważ mają one już 10 licencji Premium P1 dla swoich pracowników, 10, mają oni uprawnienia, aby zaprosić 50 użytkowników B2B z funkcji Premium P1, takich jak uwierzytelnianie wieloskładnikowe. W tym przykładzie następnie należy dokupić 2 dodatkowe licencje Premium P1 dla pokrycia pozostałych 10 użytkowników we współpracy B2B.
+## <a name="examples-calculating-guest-user-licenses"></a>Przykłady: Obliczanie licencji użytkownika gościa
+Po określeniu, ilu użytkowników-gości, uzyskać dostęp z płatnych usług Azure AD, upewnij się, masz wystarczająco usługi Azure AD płatne licencje użytkowników-gości współczynnik wymagane 1:5. Oto kilka przykładów:
 
-> [!NOTE]
-> Nie ma możliwości jeszcze, aby przypisać licencje bezpośrednio do użytkowników B2B, aby włączyć te prawa użytkownika współpracy B2B.
+- Aby zaprosić 100 użytkowników-gości do aplikacji usługi Azure AD lub usługi, a chcesz przypisać zarządzania dostępem i Inicjowanie obsługi wszystkich użytkowników-gości. Chcesz także wymagać uwierzytelniania Wieloskładnikowego i dostępu warunkowego dla 50 tych użytkowników-gości. Aby uwzględnić to połączenie, musisz 10 licencji usługi Azure AD podstawowa i 10 licencji usługi Azure AD Premium P1. Jeśli planowane jest korzystanie z funkcji ochrony tożsamości użytkowników z gościa, potrzebujesz licencji usługi Azure AD Premium P2 w tej samej proporcji 1:5 użytkowników-gości.
+- Chcesz zaprosić 60 użytkowników-gości, którzy wymagają usługi MFA, więc musisz mieć co najmniej 12 licencji usługi Azure AD Premium P1. Masz 10 pracowników za pomocą licencji usługi Azure AD Premium P1, które umożliwiałyby maksymalnie 50 użytkowników-gości w ramach licencjonowania współczynnik 1:5. Musisz kupić dwie dodatkowe licencje Premium P1 10 użytkowników-gości dodatkowe.
 
-Klient, który jest właścicielem zapraszający dzierżawca musi być jedna, aby ustalić, ile współpracy B2B, użytkownicy muszą mieć płatnych funkcji usługi Azure AD. W zależności od tego, które płatne funkcje usługi Azure AD, które chcesz dla użytkowników z gościa musi mieć wystarczająco usługi Azure AD płatne licencje użytkowników współpracy B2B w stosunku do 5:1. 
+## <a name="using-the-b2b-collaboration-api-to-invite-users-from-your-affiliates"></a>Za pomocą współpracy B2B interfejsu API można zaprosić użytkowników z Twojej oddziałów
 
-## <a name="additional-licensing-details"></a>Dodatkowe szczegóły licencji
-- Nie ma potrzeby faktycznie przypisać licencje do kont użytkowników B2B. Oparty na stosunku 5:1, licencjonowania jest automatycznie obliczana i raportowany.
-- Jeśli nie płatnych licencja usługi Azure AD istnieje w dzierżawie, co zaproszony użytkownik otrzyma prawa, które oferuje bezpłatna wersja usługi Azure AD.
-- Jeśli licencji B2B, współpracy użytkownik już ma płatnej usługi Azure AD w swojej organizacji, nie zajmują jednej licencji współpracy B2B zapraszający dzierżawca.
+Zgodnie z definicją, użytkownik-Gość B2B jest użytkownikiem zewnętrznym, zaprosić do użycia z płatnych usług i aplikacji usługi Azure AD. Pracownika, wykonawcy u klienta lub agenta u klienta w firmie lub jednym z podmiotów stowarzyszonych nie kwalifikuje się do współpracy B2B, nawet jeśli są używane funkcje B2B. Oto kilka przykładów: 
+- Chcesz użyć poświadczeń zewnętrzne (na przykład tożsamości społecznościowych) można zaprosić użytkownika, który jest pracownika z organizacji. W tym scenariuszu nie jest zgodne z wymaganiami dotyczącymi licencjonowania i nie jest dozwolone. Poświadczenia zewnętrznych nie wprowadzaj pracownika użytkownika zewnętrznego.  
+- Chcesz zaprosić użytkownika z jednego z podmiotów stowarzyszonych w organizacji za pomocą interfejsów API B2B. Chociaż w tym scenariuszu korzysta z interfejsów API B2B można zaprosić użytkownika, nie jest traktowane jako współpracy B2B. Go nie spełnia wymagań dotyczących licencjonowania ponieważ użytkownika z Twojego partnera nie jest użytkownikiem zewnętrznym. 
 
-## <a name="advanced-discussion-what-are-the-licensing-considerations-when-we-add-users-from-a-conglomerate-organization-as-members-using-your-apis"></a>Zaawansowane dyskusji: co to są licencjonowania zagadnienia, po dodaniu użytkowników z konglomeratu organizacji jako "Członkowie", przy użyciu interfejsów API?
-Użytkownik-Gość B2B to taki, który otrzymał zaproszenie z organizacji partnerskiej do pracy z organizacji hosta. Zazwyczaj każdym innym przypadku nie kwalifikuje się jako B2B nawet jej używa funkcji B2B. Spójrzmy na dwa przypadki w szczególności:
-
-1. Jeśli host zaprasza pracownika przy użyciu adresu odbiorcy
-  * W tym scenariuszu nie jest zgodne z naszymi zasadami licencjonowania i nie jest zalecane.
-
-2. Jeśli organizacja hosta dodaje użytkownika z innej organizacji konglomeratu
-  1. W takim przypadku użytkownik otrzymał zaproszenie za pomocą interfejsów API B2B, ale ten przypadek nie jest tradycyjnie B2B. W idealnym przypadku powinien mamy tych organizacji zapraszać innych użytkowników organizacje jako elementy członkowskie (nasze interfejsy API umożliwia, które). W tym przypadku licencje muszą być przypisane do tych członków, ich dostęp do zasobów w organizacji zapraszającej.
-
-  2. Niektóre organizacje mogą zdecydować dodać użytkowników z innych organizacji do dodania jako "Gość" jako zasady. Istnieją dwa przypadki, w tym miejscu:
-      * Konglomeratu organizacja używa już usługi Azure AD i zaproszeni użytkownicy są licencjonowane w innej organizacji: w tym przypadku nie oczekujemy, że zaproszeni użytkownicy muszą wykonać formuły 1:5 rozmieszczony we wcześniejszej części tego dokumentu. 
-
-      * Konglomeratu organizacja nie korzysta z usługi Azure AD lub nie ma odpowiedniej licencji: W tym przypadku postępuj zgodnie z formuły 1:5 rozmieszczony we wcześniejszej części tego dokumentu.
+W obu tych scenariuszy, lepszym rozwiązaniem jest używanie interfejsu API B2B zaprosić użytkowników jako elementy członkowskie (invitedUserType = — członek) i przypisz je każdej licencji usługi Azure AD. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Na współpracy B2B usługi Azure AD, zobacz następujące artykuły:
+Na współpracy B2B usługi Azure AD, zobacz następujące zasoby:
 
 * [Czym jest współpraca B2B w usłudze Azure AD?](what-is-b2b.md)
 * [Często zadawane pytania (FAQ) współpracy w usłudze Azure Active Directory B2B](faq.md)

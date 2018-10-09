@@ -2,18 +2,17 @@
 title: Aktualizuj kontenerów w usłudze Azure Container Instances
 description: Dowiedz się, jak zaktualizować uruchomione kontenery w grupach kontenera usługi Azure Container Instances.
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: article
 ms.date: 08/01/2018
-ms.author: marsma
-ms.openlocfilehash: 5a42b0983b0f754b119fa304317e758a976fb4f6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: danlep
+ms.openlocfilehash: 2df6a2724cbdcd6bbb6c6ca6636256b7e399da8e
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432620"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854545"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Aktualizuj kontenerów w usłudze Azure Container Instances
 
@@ -23,7 +22,7 @@ Podczas normalnej pracy wystąpienia kontenera może okazać się konieczne zakt
 
 Ponowne wdrażanie istniejącej grupy z co najmniej jedną właściwość zmodyfikowane, aby zaktualizować kontenerów w grupie kontenerów. Podczas aktualizowania kontenera grupy wszystkich uruchomionych kontenerów w grupie zostaną ponownie uruchomione w miejscu.
 
-Wdróż ponownie istniejącej grupy kontenerów przez wydanie polecenia create (lub użyj witryny Azure portal), a następnie określ nazwę istniejącej grupy. Po wykonaniu polecenia create wyzwalanie ponownego wdrożenia komputera, należy zmodyfikować co najmniej jedną prawidłową właściwością grupy. Nie wszystkie właściwości grupy kontenerów są prawidłowe dla ponownego wdrażania. Zobacz [właściwości, które wymagają usunięcia](#properties-that-require-delete) listę nieobsługiwane właściwości.
+Wdróż ponownie istniejącej grupy kontenerów przez wydanie polecenia create (lub użyj witryny Azure portal), a następnie określ nazwę istniejącej grupy. Po wykonaniu polecenia create wyzwalanie ponownego wdrożenia komputera, należy zmodyfikować co najmniej jedną prawidłową właściwością grupy. Nie wszystkie właściwości grupy kontenerów są prawidłowe dla ponownego wdrażania. Zobacz [właściwości, które wymagają usunięcia](#properties-that-require-container-delete) listę nieobsługiwane właściwości.
 
 Poniższy przykład wiersza polecenia platformy Azure zostaje zaktualizowana o nowe etykiety nazwy DNS grupy kontenerów. Ponieważ właściwość etykiety nazwy DNS grupy został zmodyfikowany, grupy kontenerów jest ponownie wdrażana i ponownie uruchomić jego kontenerów.
 

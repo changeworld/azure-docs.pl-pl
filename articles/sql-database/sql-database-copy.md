@@ -11,15 +11,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 2ce86bee96f22b4079afee3eacbeee7ea15a6ffa
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.date: 10/05/2018
+ms.openlocfilehash: 639795824bf75bb99d34f12d4dfc4e0695341986
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226011"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868416"
 ---
-# <a name="copy-an-azure-sql-database"></a>Kopiowanie bazy danych Azure SQL
+# <a name="copy-an-transactionally-consistent-copy-of-an-azure-sql-database"></a>Skopiuj spójnej transakcyjnie kopii bazy danych Azure SQL
 
 Usługa Azure SQL Database udostępnia kilka metod do tworzenia spójnej transakcyjnie kopii istniejącej bazy danych Azure SQL na tym samym serwerze lub na innym serwerze. Możesz skopiować bazę danych SQL za pomocą witryny Azure portal, programu PowerShell lub języka T-SQL. 
 

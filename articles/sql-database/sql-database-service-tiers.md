@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/02/2018
-ms.openlocfilehash: 1bcaceb0f4d96b66d7fd25b1733b3f505316fe5a
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.date: 10/05/2018
+ms.openlocfilehash: 660252c987c06a7afd8974a65cd57009b4973a25
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830559"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868296"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Usługa Azure SQL Database zakupu modeli
 
@@ -39,9 +39,9 @@ Następujących tabel i wykresów porównania i porównać te dwa modele zakupu.
 
 ![model cen](./media/sql-database-service-tiers/pricing-model.png)
 
-## <a name="vcore-based-purchasing-model"></a>model zakupu w oparciu o rdzeń wirtualny 
+## <a name="vcore-based-purchasing-model"></a>Model zakupu bazujący na rdzeniach wirtualnych 
 
-Rdzeń wirtualny reprezentuje logiczny Procesor CPU z opcją wyboru generacji sprzętu i cechy fizyczne sprzętu (na przykład liczba rdzeni, pamięć, rozmiar magazynu). Model zakupu opartego na rdzeniach wirtualnych zapewnia Twojej elastyczności, kontroli, przejrzystości użycia poszczególnych zasobów i prostą metodę tłumaczenia wymagań obciążenia w chmurze lokalnie. Ten model umożliwia wybierz obliczeniowych, pamięci i magazynu, w zależności od ich potrzeb obciążenia. W opartych na rdzeniach wirtualnych model zakupu, można wybrać między [ogólnego przeznaczenia](sql-database-high-availability.md#standardgeneral-purpose-availability) i [krytyczne dla działania](sql-database-high-availability.md#premiumbusiness-critical-availability) warstwy usług dla obu [pojedyncze bazy danych](sql-database-single-database-scale.md), [ wystąpienia zarządzane](sql-database-managed-instance.md), i [pul elastycznych](sql-database-elastic-pool.md). Dla pojedynczych baz danych, można także [(wersja zapoznawcza) na dużą skalę](sql-database-service-tier-hyperscale.md) warstwy usług.
+Rdzeń wirtualny reprezentuje logiczny Procesor CPU z opcją wyboru generacji sprzętu i cechy fizyczne sprzętu (na przykład liczba rdzeni, pamięć, rozmiar magazynu). Model zakupu opartego na rdzeniach wirtualnych zapewnia Twojej elastyczności, kontroli, przejrzystości użycia poszczególnych zasobów i prostą metodę tłumaczenia wymagań obciążenia w chmurze lokalnie. Ten model umożliwia wybierz obliczeniowych, pamięci i magazynu, w zależności od ich potrzeb obciążenia. W opartych na rdzeniach wirtualnych model zakupu, można wybrać między [ogólnego przeznaczenia](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) i [krytyczne dla działania](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) warstwy usług dla obu [pojedyncze bazy danych](sql-database-single-database-scale.md), [ wystąpienia zarządzane](sql-database-managed-instance.md), i [pul elastycznych](sql-database-elastic-pool.md). Dla pojedynczych baz danych, można także [(wersja zapoznawcza) na dużą skalę](sql-database-service-tier-hyperscale.md) warstwy usług.
 
 Model zakupu opartego na rdzeniach wirtualnych umożliwia niezależnie wybrać zasoby obliczeniowe i magazynowe, Dopasuj wydajność środowiska lokalnego i optymalizacja ceny. Oparty na rdzeniach wirtualnych model zakupu klienci płacą za zasoby:
 

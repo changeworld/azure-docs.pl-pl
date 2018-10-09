@@ -8,22 +8,16 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 571a005dd3f50690f291a7ffa3c1174ea15cb0ed
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 07ee05128333df963c2d8ff3dd3f6442a3843d07
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47048046"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48866894"
 ---
 # <a name="delete-data-from-azure-data-explorer"></a>Usuwanie danych z Eksploratora danych platformy Azure
 
 Eksplorator danych usługi Azure obsługuje kilka zbiorczego usuwania metod, które zostaną przedstawione w tym artykule. Program nie obsługuje usuwania każdego rekordu w czasie rzeczywistym, ponieważ jest zoptymalizowany do szybkiego dostępu do odczytu.
-
-* Jeśli baza danych nie jest już potrzebny, usuń go za pomocą polecenia bazy danych listy.
-
-    ```Kusto
-    .drop database <DatabaseName>
-    ```
 
 * Jeśli co najmniej jedna tabela nie jest już potrzebny, usuń je przy użyciu tabeli docelowej lub porzucić tabel polecenia.
 
@@ -44,12 +38,5 @@ Eksplorator danych usługi Azure obsługuje kilka zbiorczego usuwania metod, kt�
     ```
 
     Aby uzyskać więcej informacji, zobacz [zasady przechowywania](https://docs.microsoft.com/azure/kusto/concepts/retentionpolicy).
-
-* Możesz usunąć poszczególnych rekordów za pomocą *przeczyścić* operacji, oparte na notacji predykatu `where CustomerName == 'contoso'`. Inaczej mówiąc, przeczyszczenia jest usuwanie zbiorcze, który nie jest przeznaczony do usunięcia w czasie rzeczywistym. Poniższy przykład pokazuje przeczyszczenia.
-
-    ```Kusto
-    .purge table Customer records
-    | where CustomerName =='contoso'
-    ```
 
 Jeśli potrzebujesz pomocy z problemami usuwania danych, otwórz żądanie pomocy technicznej w [witryny Azure portal](https://portal.azure.com).

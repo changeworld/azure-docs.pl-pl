@@ -1,6 +1,6 @@
 ---
 title: Azure PublicIpAddressCombo UI element | Microsoft Docs
-description: Opis elementu Microsoft.Network.PublicIpAddressCombo interfejsu użytkownika do portalu Azure.
+description: Opis elementu Microsoft.Network.PublicIpAddressCombo interfejsu użytkownika dla witryny Azure portal.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: d06a450595a53fdc65fba74791345abe3a1b3db4
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: c3e8c99f6648f0f4927140f3215978566afb9eb8
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109573"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868908"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo UI element
 Grupa służy do wybierania nowego lub istniejącego publicznego adresu IP.
@@ -26,8 +26,8 @@ Grupa służy do wybierania nowego lub istniejącego publicznego adresu IP.
 ## <a name="ui-sample"></a>Przykład interfejsu użytkownika
 ![Microsoft.Network.PublicIpAddressCombo](./media/managed-application-elements/microsoft.network.publicipaddresscombo.png)
 
-- Jeśli użytkownik wybierze opcję "Brak" publicznego adresu IP, pole tekstowe etykieta nazwy domeny jest ukryty.
-- Jeśli użytkownik wybierze istniejącego publicznego adresu IP, pole tekstowe etykieta nazwy domeny jest wyłączone. Wartość jest etykieta nazwy domeny wybranego adresu IP.
+- Jeśli użytkownik wybierze opcję "None", aby uzyskać publiczny adres IP, pole tekstowe etykiety nazwy domeny jest ukryty.
+- Jeśli użytkownik wybierze istniejącego publicznego adresu IP, pole tekstowe etykiety nazwy domeny jest wyłączone. Jego wartość jest etykieta nazwy domeny dla wybranego adresu IP.
 - Aktualizacje sufiks (na przykład westus.cloudapp.azure.com) nazwa domeny automatycznie na podstawie wybranej lokalizacji.
 
 ## <a name="schema"></a>Schemat
@@ -63,14 +63,14 @@ Grupa służy do wybierania nowego lub istniejącego publicznego adresu IP.
 ```
 
 ## <a name="remarks"></a>Uwagi
-- Jeśli `constraints.required.domainNameLabel` ustawiono **true**, użytkownik musi podać etykieta nazwy domeny, podczas tworzenia nowego publicznego adresu IP. Istniejącego publicznego adresu IP, adresy bez etykiety nie są dostępne do wyboru.
-- Jeśli `options.hideNone` ustawiono **true**, następnie wybrać opcję **Brak** publicznego adresu IP adres jest ukryty. Wartość domyślna to **false**.
+- Jeśli `constraints.required.domainNameLabel` ustawiono **true**, użytkownik musi podać etykietę nazwy domeny, podczas tworzenia nowego publicznego adresu IP. Istniejące publiczne adresy IP bez etykiety nie są dostępne do wyboru.
+- Jeśli `options.hideNone` ustawiono **true**, następnie możliwość dokonania wyboru **Brak** publiczny adres IP na adres jest ukryty. Wartość domyślna to **false**.
 - Jeśli `options.hideDomainNameLabel` ustawiono **true**, a następnie w polu tekstowym dla etykiety nazwy domeny jest ukryty. Wartość domyślna to **false**.
-- Jeśli `options.hideExisting` ma wartość true, a następnie użytkownik nie jest możliwe wybranie istniejącego publicznego adresu IP. Wartość domyślna to **false**.
-- Aby uzyskać `zone`, tylko publiczne adresy IP dla określonej strefy lub odporność publiczne adresy IP strefy są dostępne.
+- Jeśli `options.hideExisting` ma wartość true, użytkownik nie jest w stanie wybrać istniejącego publicznego adresu IP. Wartość domyślna to **false**.
+- Aby uzyskać `zone`tylko publiczne adresy IP dla określonej strefy i odporne na błędy publiczne adresy IP strefy są dostępne.
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
-Jeśli użytkownik wybierze żadnego publicznego adresu IP, formantu zwraca następujące dane wyjściowe:
+Jeśli użytkownik wybierze Brak publicznego adresu IP, formant zwraca następujące wyniki:
 
 ```json
 {
@@ -78,7 +78,7 @@ Jeśli użytkownik wybierze żadnego publicznego adresu IP, formantu zwraca nast
 }
 ```
 
-Jeśli użytkownik wybierze nowy lub istniejący adres IP, formantu zwraca następujące dane wyjściowe:
+Jeśli użytkownik wybierze nowy lub istniejący adres IP, formant zwraca następujące wyniki:
 
 ```json
 {
@@ -86,13 +86,14 @@ Jeśli użytkownik wybierze nowy lub istniejący adres IP, formantu zwraca nast�
   "resourceGroup": "rg01",
   "domainNameLabel": "mydomain",
   "publicIPAllocationMethod": "Dynamic",
+  "sku": "Basic",
   "newOrExistingOrNone": "new"
 }
 ```
 
-- Gdy `options.hideNone` jest określony jako **true**, `newOrExistingOrNone` będzie mieć tylko wartość **nowe** lub **istniejących**.
+- Gdy `options.hideNone` jest określony jako **wartość true,**, `newOrExistingOrNone` będzie mieć tylko wartość **nowe** lub **istniejących**.
 - Gdy `options.hideDomainNameLabel` jest określony jako **true**, `domainNameLabel` jest niezadeklarowany.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby obejrzeć wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie CreateUiDefinition](create-uidefinition-overview.md).
-* Opis właściwości wspólnych elementów interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).
+* Wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie do zasobu CreateUiDefinition](create-uidefinition-overview.md).
+* Aby uzyskać opis wspólne właściwości w elementach interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: b15224a5be6c3c1df0778c35680836cbbfee2e48
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 8c432146d33db992a0ae612dfc56ace9460ade17
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810673"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870863"
 ---
 # <a name="configure-lead-management-for-dynamics-crm-online"></a>Konfigurowanie — Zarządzanie potencjalnymi klientami dla usługi Dynamics CRM online
 
@@ -95,7 +95,7 @@ Wykonaj następujące kroki, aby skonfigurować usługę Azure Active Directory 
 
 ### <a name="office-365"></a>Office 365
 
-Jeśli nie chcesz używać usługi Azure Active Directory, można zarejestrować nowego użytkownika w portalu administracyjnym usługi Office 365. Można będzie wymagany do zaktualizowania nazwy użytkownika/hasła co 90 dni, aby nadal korzystać z potencjalnymi klientami.
+Jeśli nie chcesz używać usługi Azure Active Directory, można zarejestrować nowego użytkownika w portalu administracyjnym usługi Office 365. Możliwe będzie wymagany do zaktualizowania nazwy użytkownika/hasła co 90 dni, aby nadal korzystać z potencjalnymi klientami.
 
 Wykonaj następujące kroki, aby skonfigurować usługi Office 365 dla usługi Dynamics CRM.
 

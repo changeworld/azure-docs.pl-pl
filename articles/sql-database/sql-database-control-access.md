@@ -11,21 +11,23 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 06/13/2018
-ms.openlocfilehash: a39e65d5a3aff6158c189f392e2db8bd8273ad1b
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 10/05/2018
+ms.openlocfilehash: 08854c2f31d86eefa1645269f47bb88659d7e1cb
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063787"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868891"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Kontrola dostępu do usługi Azure SQL Database i SQL Data Warehouse
+
 Aby zapewnić bezpieczeństwo, Azure [bazy danych SQL](sql-database-technical-overview.md) i [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) kontrolować dostęp za pomocą reguł zapory, ograniczając łączność przy użyciu adresu IP, mechanizmów uwierzytelniania wymagających od użytkowników potwierdzenia ich tożsamość oraz mechanizmy autoryzacji ograniczające użytkowników do określonych działań i danych. 
 
 > [!IMPORTANT]
 > Aby zobaczyć przegląd funkcji zabezpieczeń usługi SQL Database, zobacz [omówienie zabezpieczeń usługi SQL](sql-database-security-overview.md). Aby zapoznać się z samouczkiem, zobacz [Zabezpieczanie usługi Azure SQL Database](sql-database-security-tutorial.md). Omówienie funkcji zabezpieczeń usługa SQL Data Warehouse, zobacz [Omówienie zabezpieczeń usługi SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)
 
 ## <a name="firewall-and-firewall-rules"></a>Zapora i reguły zapory
+
 Usługa Microsoft Azure SQL Database udostępnia usługę relacyjnej bazy danych dla platformy Azure i innych aplikacji internetowych. Aby chronić dane, zapora uniemożliwia wszelki dostęp do serwera bazy danych do momentu określenia komputerów, które mają uprawnienia. Zapora udziela dostępu do bazy danych na podstawie źródłowego adresu IP każdego żądania. Aby uzyskać więcej informacji, zobacz [Omówienie reguł zapory usługi Azure SQL Database](sql-database-firewall-configure.md)
 
 Usługa Azure SQL Database jest dostępna tylko za pośrednictwem portu TCP 1433. Aby uzyskać dostęp do usługi SQL Database z komputera, upewnij się, że zapora komputera klienta umożliwia wychodzący ruch TCP na porcie TCP 1433. Należy zablokować połączenia przychodzące na porcie TCP 1433, jeśli nie są one wymagane przez inne aplikacje. 
@@ -36,8 +38,12 @@ W ramach procesu łączenia wszystkie połączenia przychodzące z maszyny wirtu
 
 Usługa SQL Database obsługuje dwa typy uwierzytelniania:
 
-* **Uwierzytelnianie usługi SQL**, które używa nazwy użytkownika i hasła. Po utworzeniu serwera logicznego bazy danych należy określić nazwę logowania „server admin” przy użyciu nazwy użytkownika i hasła. Przy użyciu tych poświadczeń można wybrać metodę uwierzytelniania w każdej innej bazie danych na tym serwerze jako jej właściciel, czyli „dbo”. 
-* **Uwierzytelnianie usługi Azure Active Directory**, które korzysta z tożsamości zarządzanej przez usługę Azure Active Directory i jest obsługiwane w przypadku zarządzanych i zintegrowanych domen. Używaj uwierzytelniania usługi Active Directory (zabezpieczeń zintegrowanych), [gdy tylko jest to możliwe](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode). Aby skorzystać z uwierzytelniania przy użyciu usługi Azure Active Directory, należy utworzyć innego administratora serwera o nazwie „Azure AD admin”, co umożliwi administrowanie użytkownikami i grupami usługi Azure AD. Ten administrator może również wykonywać wszystkie operacje, które może wykonać zwykły administrator serwera. Zobacz artykuł [Connecting to SQL Database By Using Azure Active Directory Authentication](sql-database-aad-authentication.md) (Łączenie z usługą SQL Database przy użyciu uwierzytelniania usługi Azure Active Directory), aby poznać krok po kroku sposób tworzenia administratora usługi Azure AD w celu włączenia uwierzytelniania usługi Azure Active Directory.
+- **Uwierzytelnianie SQL**:
+
+  Ta metoda uwierzytelniania używa nazwy użytkownika i hasła. Po utworzeniu serwera logicznego bazy danych należy określić nazwę logowania „server admin” przy użyciu nazwy użytkownika i hasła. Przy użyciu tych poświadczeń można wybrać metodę uwierzytelniania w każdej innej bazie danych na tym serwerze jako jej właściciel, czyli „dbo”. 
+- **Usługa Azure Active Directory Authentication**:
+
+  Ta metoda uwierzytelniania korzysta z tożsamości zarządzanej przez usługę Azure Active Directory i jest obsługiwany w przypadku zarządzanych i zintegrowanych domen. Używaj uwierzytelniania usługi Active Directory (zabezpieczeń zintegrowanych), [gdy tylko jest to możliwe](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode). Aby skorzystać z uwierzytelniania przy użyciu usługi Azure Active Directory, należy utworzyć innego administratora serwera o nazwie „Azure AD admin”, co umożliwi administrowanie użytkownikami i grupami usługi Azure AD. Ten administrator może również wykonywać wszystkie operacje, które może wykonać zwykły administrator serwera. Zobacz artykuł [Connecting to SQL Database By Using Azure Active Directory Authentication](sql-database-aad-authentication.md) (Łączenie z usługą SQL Database przy użyciu uwierzytelniania usługi Azure Active Directory), aby poznać krok po kroku sposób tworzenia administratora usługi Azure AD w celu włączenia uwierzytelniania usługi Azure Active Directory.
 
 Aparat bazy danych zamyka połączenia, które pozostawały bezczynne dłużej niż przez 30 minut. Połączenie musi wykonać ponowne logowanie, zanim będzie można z niego skorzystać. Stale aktywne połączenia z usługą SQL Database wymagają ponownej autoryzacji (wykonywanej przez aparat bazy danych) co najmniej raz na 10 godzin. Aparat bazy danych próbuje ponownej autoryzacji przy użyciu podanego pierwotnie hasła, dzięki czemu nie jest wymagane wprowadzanie danych przez użytkownika. Ze względu na wydajność po zresetowaniu hasła w usłudze SQL Database, połączenie jest nie ponownie uwierzytelniane — nawet w przypadku zresetowania połączenia z powodu buforowania połączeń. Jest to zachowania inne niż w przypadku lokalnej usługi SQL Server. Jeśli po początkowej autoryzacji połączenia zmieniono hasło, należy zakończyć to połączenie i utworzyć nowe przy użyciu nowego hasła. Użytkownik z uprawnieniem `KILL DATABASE CONNECTION` może w sposób jawny zakończyć połączenie z usługą SQL Database za pomocą polecenia [KILL](https://docs.microsoft.com/sql/t-sql/language-elements/kill-transact-sql).
 
@@ -51,11 +57,12 @@ Autoryzacja określa, co użytkownik może zrobić w usłudze Azure SQL Database
 
 Dostęp do bazy danych `master` jest zazwyczaj potrzebny tylko administratorom. Rutynowy dostęp do każdej bazy danych użytkownika powinien się odbywać za pośrednictwem użytkowników utworzonych w każdej zawartej bazie danych innych niż administrator. W przypadku korzystania z użytkowników zawartej bazy danych nie trzeba tworzyć nazw logowania w bazie danych `master`. Aby uzyskać więcej informacji, zobacz artykuł [Contained Database Users - Making Your Database Portable](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) (Użytkownicy zawartej bazy danych — tworzenie przenośnej bazy danych).
 
-Należy zapoznać się z następującymi funkcjami, których można użyć do ograniczania lub podnoszenia uprawnień:   
-* [Personifikacji](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/customizing-permissions-with-impersonation-in-sql-server) i [podpisywania modułów](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server) można używać do bezpiecznego tymczasowego podnoszenia poziomu uprawnień.
-* [Zabezpieczeń na poziomie wiersza](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) można używać do ograniczania zbioru wierszy, do których użytkownik może uzyskać dostęp.
-* [Maskowania danych](sql-database-dynamic-data-masking-get-started.md) można używać do ograniczania ujawniania danych wrażliwych.
-* [Procedury składowane](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) umożliwiają ograniczenie czynności wykonywanych w bazie danych.
+Należy zapoznać się z następującymi funkcjami, których można użyć do ograniczania lub podnoszenia uprawnień:
+
+- [Personifikacji](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/customizing-permissions-with-impersonation-in-sql-server) i [podpisywania modułów](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server) można używać do bezpiecznego tymczasowego podnoszenia poziomu uprawnień.
+- [Zabezpieczeń na poziomie wiersza](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) można używać do ograniczania zbioru wierszy, do których użytkownik może uzyskać dostęp.
+- [Maskowania danych](sql-database-dynamic-data-masking-get-started.md) można używać do ograniczania ujawniania danych wrażliwych.
+- [Procedury składowane](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) umożliwiają ograniczenie czynności wykonywanych w bazie danych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

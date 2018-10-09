@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, sashan
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: dfb1e218218a44aafd318acb53750c875bdf1263
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.date: 10/05/2018
+ms.openlocfilehash: 1c6fb3660f395e709207e788b4ef648a69cae48d
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247723"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868579"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Wysoka dostępność i Azure SQL Database
 
@@ -31,9 +31,9 @@ Usługa Azure SQL Database jest oparty na architekturę aparatu bazy danych prog
 
 Platforma Azure uaktualnia i poprawek podstawowego systemu operacyjnego, sterowników i aparatu bazy danych programu SQL Server sposób niewidoczny dla użytkownika za pomocą minimalny czas przestoju dla użytkowników końcowych. Usługa Azure SQL Database działa na najnowsza stabilna wersja aparatu bazy danych programu SQL Server i system operacyjny Windows, a większość użytkowników będzie nie należy zauważyć, że uaktualnienia są wykonywane stale.
 
-## <a name="standardgeneral-purpose-availability"></a>Dostępność Standard/ogólnego przeznaczenia
+## <a name="basic-standard-and-general-purpose-service-tier-availability"></a>Podstawowa, standardowa i ogólnego przeznaczenia warstwy dostępność usług
 
-Standardowa dostępności odnosi się do umowy SLA dostępność przez 99,99%, która jest stosowana w warstwach Basic/Standard/ogólnego przeznaczenia. Wysoka dostępność w tym modelu architektury jest osiągana przez oddzielenie warstwy obliczeniowej i magazynowej i replikację danych w warstwie magazynu.
+Standardowa dostępności odnosi się do umowy SLA dostępność przez 99,99%, która jest stosowana w następujących warstwach usługi podstawowa, standardowa i ogólnego przeznaczenia. Wysoka dostępność w tym modelu architektury jest osiągana przez oddzielenie warstwy obliczeniowej i magazynowej i replikację danych w warstwie magazynu.
 
 Na poniższej ilustracji przedstawiono cztery węzły w standardowych architektury modelu z rozdzielonych warstwy obliczeń i magazynu.
 
@@ -46,9 +46,9 @@ W modelu standardowego dostępności istnieją dwie warstwy:
 
 Zawsze, gdy aparat bazy danych lub system operacyjny zostanie uaktualniony, część podstawowej infrastruktury nie powiedzie się lub jeśli jakiś problem krytyczny zostanie wykryte w procesie programu Sql Server, usługi Azure Service Fabric zostanie przesunięty bezstanowe procesu programu SQL Server do innego węzła obliczeniowego o bezstanowa. Istnieje zestaw węzłów zapasowych, który oczekuje na uruchomienie nowej usługi obliczeniowe w przypadku pracy awaryjnej, aby zminimalizować czas pracy awaryjnej. W warstwie usługi Azure Storage to nie miało wpływu na dane i pliki danych/dziennika są dołączone do nowo utworzonym procesu programu SQL Server. Tego procesu gwarantuje dostępność przez 99,99%, ale może mieć wpływ na niektóre wydajności na duże obciążenie, które działa ze względu na czas przejścia i fakt nowego węzła programu SQL Server, który rozpoczyna się od zimnych pamięci podręcznej.
 
-## <a name="premiumbusiness-critical-availability"></a>Dostępność w warstwie Premium/krytyczne
+## <a name="premium-and-business-critical-service-tier-availability"></a>Dostępność warstwy Premium i krytyczne dla działania firmy usługi
 
-Dostępność — wersja Premium jest włączona w warstwie Premium usługi Azure SQL Database i jest ona przeznaczona dla dużych obciążeń, które nie tolerują żadnego wpływu na wydajność, z powodu operacji konserwacji.
+Dostępność — wersja Premium jest włączona w warstwach usług Premium i krytyczne dla działania firmy z usługi Azure SQL Database i jest ona przeznaczona dla dużych obciążeń, które nie tolerują żadnego wpływu na wydajność, z powodu operacji konserwacji.
 
 W modelu premium bazy danych Azure SQL database integruje zasobów obliczeniowych i magazynowych w pojedynczym węźle. Wysoka dostępność w tym modelu architektury jest osiągana przez funkcję replikacji obliczeniowej (proces aparatu bazy danych programu SQL Server) i pamięci masowej (SSD podłączonych lokalnie), które zostały wdrożone w 4-węzłowy [zawsze włączonych grup dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) klastra.
 

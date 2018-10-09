@@ -1,20 +1,21 @@
 ---
-title: Projekt odwołanie adresu URL (wersja zapoznawcza) — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
+title: Podgląd adresu URL odwołania do projektu
+titlesuffix: Azure Cognitive Services
 description: Odwołanie do projektu Podgląd adresu URL punktu końcowego.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: reference
 ms.date: 03/29/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 46c011d62b6ae51f5f7d292345e6ece0e27a8541
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.author: rosh
+ms.openlocfilehash: 3416fd9bc63c48e976d0b00f42ec9f8119a40eb8
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865879"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870812"
 ---
 # <a name="project-url-preview-v7-reference"></a>Odwołanie do projektu Podgląd adresu URL w wersji 7
 
@@ -99,7 +100,7 @@ Definiuje błąd, który wystąpił.
 |<a name="error-message" />Komunikat|Opis błędu.|Ciąg|  
 |<a name="error-moredetails" />moreDetails|Opis, który zawiera dodatkowe informacje o tym błędzie.|Ciąg|  
 |<a name="error-parameter" />Parametr|Parametr zapytania w żądaniu, które spowodowały błąd.|Ciąg|  
-|<a name="error-subcode" />podrzędnego|Kod błędu, który identyfikuje błąd. Na przykład jeśli `code` jest InvalidRequest, `subCode` może być ParameterInvalid lub ParameterInvalidValue. |Ciąg|  
+|<a name="error-subcode" />Podrzędnego|Kod błędu, który identyfikuje błąd. Na przykład jeśli `code` jest InvalidRequest, `subCode` może być ParameterInvalid lub ParameterInvalidValue. |Ciąg|  
 |<a name="error-value" />Wartość|Wartość parametru zapytania, która nie jest prawidłowa.|Ciąg|  
   
 
@@ -109,7 +110,7 @@ Obiekt najwyższego poziomu, który zawiera odpowiedź, gdy żądanie zakończy 
 |Name (Nazwa)|Wartość|Typ|  
 |----------|-----------|----------|  
 |_typ|Wskazówka typu.|Ciąg|  
-|<a name="errors" />błędy|Lista błędów, które opisują przyczyny niepowodzenia żądania.|[Błąd](#error)]|   
+|<a name="errors" />Błędy|Lista błędów, które opisują przyczyny niepowodzenia żądania.|[Błąd](#error)]|   
   
 
 ### <a name="webpage"></a>Strony sieci Web  
@@ -180,7 +181,7 @@ Poniżej przedstawiono wartości możliwy błąd kodu i podrzędnego błędu kod
 |Kod|Podrzędnego|Opis
 |-|-|-
 |Błąd ServerError|UnexpectedError<br/>ResourceError<br/>Nie zaimplementowano|Kod stanu HTTP to 500.
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Zablokowany|Wyszukiwarka Bing zwróci InvalidRequest zawsze wtedy, gdy dowolnej części żądania jest nieprawidłowa. Na przykład brakuje wymaganego parametru lub wartość parametru jest nieprawidłowa.<br/><br/>W przypadku ParameterMissing lub ParameterInvalidValue błędu 400 jest kod stanu HTTP.<br/><br/>Jeśli używasz protokołu HTTP zamiast HTTPS, Wyszukiwarka Bing zwróci HttpNotAllowed i jest kod stanu HTTP 410.
+|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Zablokowane|Wyszukiwarka Bing zwróci InvalidRequest zawsze wtedy, gdy dowolnej części żądania jest nieprawidłowa. Na przykład brakuje wymaganego parametru lub wartość parametru jest nieprawidłowa.<br/><br/>W przypadku ParameterMissing lub ParameterInvalidValue błędu 400 jest kod stanu HTTP.<br/><br/>Jeśli używasz protokołu HTTP zamiast HTTPS, Wyszukiwarka Bing zwróci HttpNotAllowed i jest kod stanu HTTP 410.
 |RateLimitExceeded|Nie kodów podrzędnych|Wyszukiwarka Bing zwróci RateLimitExceeded zawsze wtedy, gdy przekracza z zapytań na sekundę (QPS) lub zapytania na miesiąc (QPM) limitu przydziału.<br/><br/>Po przekroczeniu liczby zapytań na Sekundę, Wyszukiwarka Bing zwróci kod stanu HTTP 429, a Jeśli przekroczysz QPM, Wyszukiwarka Bing zwróci 403.
 |InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Wyszukiwarka Bing zwróci InvalidAuthorization, kiedy Bing nie może uwierzytelnić obiektu wywołującego. Na przykład `Ocp-Apim-Subscription-Key` brakuje nagłówka lub klucz subskrypcji jest nieprawidłowy.<br/><br/>Nadmiarowość występuje w przypadku określenia więcej niż jedną metodę uwierzytelniania.<br/><br/>Jeśli ten błąd jest InvalidAuthorization, kod stanu HTTP jest 401.
 |InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Wyszukiwarka Bing zwróci InsufficientAuthorization, gdy obiekt wywołujący nie ma uprawnień dostępu do zasobu. Może to wystąpić, jeśli klucz subskrypcji został wyłączony lub wygasł. <br/><br/>Jeśli ten błąd jest InsufficientAuthorization, kod stanu HTTP jest 403.

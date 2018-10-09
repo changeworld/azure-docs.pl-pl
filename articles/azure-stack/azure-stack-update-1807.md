@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 10/07/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: bde8ea74d2b6d36cd070598d0542e5be4bdef244
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: bce76827c56fd660b6ab4353fed1c43f88132587
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816178"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868823"
 ---
 # <a name="azure-stack-1807-update"></a>Aktualizacja usługi Azure Stack 1807
 
@@ -190,7 +190,7 @@ Aby uzyskać więcej informacji na temat tych luk w zabezpieczeniach kliknij pop
 
 ### <a name="post-update-steps"></a>Kroki po aktualizacji
 Po zainstalowaniu tej aktualizacji Zainstaluj wszystkie odpowiednie poprawki. Uzyskać więcej informacji, zobacz następujące artykuły bazy wiedzy knowledge base, a także naszego [obsługi zasad](azure-stack-servicing-policy.md). 
-- [KB 4464231 — usługi Azure Stack poprawki w usłudze Azure Stack poprawkę 1.1807.1.78](https://support.microsoft.com/help/4464231)
+- [KB 4467061 — usługi Azure Stack poprawki w usłudze Azure Stack poprawkę 1.1807.3.82](https://support.microsoft.com/help/4467061/)
 
 <!-- 2933866 – IS --> Po zainstalowaniu tej aktualizacji, możesz zobaczyć **ulepszone stanu instalacji aktualizacji nie powiodło się.** Może to obejmować informacje o poprzednich błędach instalacji aktualizacji, które są zmienione w celu odzwierciedlenia dwie nowe kategorie stanu. Nowe kategorie stanu są *PreparationFailed*, i *InstallationFailed*.  
 
@@ -211,7 +211,7 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 - Po zainstalowaniu nowego środowiska usługi Azure Stack, z tą wersją, ten alert oznacza to, *wymagana aktywacja* mogą nie być wyświetlane. [Aktywacja](azure-stack-registration.md) jest wymagany, zanim będzie można użyć portalu marketplace syndykacji.  
 
 <!-- TBD - IS ASDK --> 
-- Dwa typy subskrypcji administracyjne, które zostały [wprowadzonym w wersji 1804](azure-stack-update-1804.md#new-features) nie powinny być używane. Typy subskrypcji **pomiaru subskrypcji**, i **subskrypcji zużycie**. Te typy subskrypcji są wyświetlane w nowych wersji środowiska usługi Azure Stack począwszy od wersji 1804, ale nie są jeszcze gotowe do użycia. Można nadal używać **domyślny dostawca** typu subskrypcji.
+- Nie można używać dwa typy subskrypcji administracyjne, które zostały wprowadzone w wersji 1804. Typy subskrypcji **pomiaru subskrypcji**, i **subskrypcji zużycie**. Te typy subskrypcji są wyświetlane w nowych wersji środowiska usługi Azure Stack począwszy od wersji 1804, ale nie są jeszcze gotowe do użycia. Można nadal używać **domyślny dostawca** typu subskrypcji.
 
 <!-- 2403291 - IS ASDK --> 
 - Nie może być użycie poziomych pasków przewijania u dołu portali administratora i użytkownika. Jeśli nie masz dostępu poziomych pasków przewijania, użyj linki do stron nadrzędnych na przejście do poprzedniego bloku w portalu, wybierając nazwę bloku mają być wyświetlane na liście łączy do stron nadrzędnych znajdujących się u góry lewym rogu portalu.

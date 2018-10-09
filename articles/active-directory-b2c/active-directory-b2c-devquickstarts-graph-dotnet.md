@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 013fd019771fb9994c87e363c78eae36431f91de
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 32a887d54a239db0c1e40458e1b304d899befff5
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953229"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870557"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Usługa Azure AD B2C: Użyj usługi Azure AD interfejsu API programu Graph
 
@@ -38,7 +38,7 @@ Przed utworzeniem aplikacji lub użytkowników należy dzierżawy usługi Azure 
 Po umieszczeniu dzierżawy usługi B2C należy zarejestrować swojej aplikacji za pomocą [witryny Azure portal](https://portal.azure.com).
 
 > [!IMPORTANT]
-> Aby używać interfejsu API programu Graph z dzierżawą B2C, należy zarejestrować aplikacji przy użyciu *rejestracje aplikacji* usługi w witrynie Azure portal **nie** usługi Azure AD B2C *aplikacje*menu. Zgodnie z poniższymi instrukcjami prowadzić do menu masz. Nie można ponownie użyć istniejących aplikacji B2C, które zarejestrowane w usłudze Azure AD B2C *aplikacje* menu.
+> Aby używać interfejsu API programu Graph z dzierżawą B2C, należy zarejestrować aplikacji przy użyciu *rejestracje aplikacji* usługi w witrynie Azure portal **nie** usługi Azure AD B2C *aplikacje*menu. Zgodnie z poniższymi instrukcjami prowadzą do odpowiednich menu. Nie można ponownie użyć istniejących aplikacji B2C, które zarejestrowane w usłudze Azure AD B2C *aplikacje* menu.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz dzierżawę usługi Azure AD B2C, wybierając swoje konto w prawym górnym rogu strony.

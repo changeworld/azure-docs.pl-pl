@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/11/2018
 ms.author: harijay
-ms.openlocfilehash: 642bf03ecef7f6db25c51671635d96ef7baed91a
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: ce799f4201a560077c5bb1b943a9e587a71806f2
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413817"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856347"
 ---
 # <a name="virtual-machine-serial-console"></a>Konsola szeregowa maszyny wirtualnej
 
@@ -49,7 +49,7 @@ Dokumentacja konsoli szeregowej, w przypadku maszyn wirtualnych Windows [tutaj](
 
 
 ## <a name="get-started-with-serial-console"></a>Wprowadzenie do konsoli szeregowej
-Konsola szeregowa dla maszyn wirtualnych jest dostępny za pośrednictwem tylko [witryny Azure portal](https://portal.azure.com). Poniżej przedstawiono kroki umożliwiające dostęp do konsoli szeregowej dla maszyn wirtualnych za pomocą portalu 
+Konsola szeregowa dla maszyn wirtualnych jest dostępny za pośrednictwem tylko [witryny Azure portal](https://portal.azure.com). Upewnij się, że zostały spełnione [wymagania wstępne](#prerequisites) powyżej. Poniżej przedstawiono kroki umożliwiające dostęp do konsoli szeregowej dla maszyn wirtualnych za pośrednictwem portalu:
 
   1. Otwórz witrynę Azure portal
   1. (Pomiń to Jeśli maszyna wirtualna ma użytkownika, który korzysta z uwierzytelniania za pomocą hasła) Dodawanie użytkownika przy użyciu uwierzytelniania nazwy użytkownika/hasła, klikając blok "Resetuj hasło"

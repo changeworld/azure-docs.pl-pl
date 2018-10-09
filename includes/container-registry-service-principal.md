@@ -2,18 +2,18 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: container-registry
-author: mmacy
+author: dlepow
 ms.service: container-registry
 ms.topic: include
 ms.date: 08/03/2018
-ms.author: marsma
+ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 2174ae44f8e78763c1939aee5e6b86c95a0924ce
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: a76f0205a34b106cf04b61938b1b576db9325c40
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39513733"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48858047"
 ---
 ## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
 

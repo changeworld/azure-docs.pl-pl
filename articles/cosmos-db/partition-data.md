@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c35082d107b538e7e908162c00facafecc406bc6
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 9b7d9a0dd439b7c25180c8f250a87ae5ee184139
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785651"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870574"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Partycja i skali w usłudze Azure Cosmos DB
 
@@ -119,6 +119,8 @@ Podczas tworzenia kontenera grafu podzielonym na partycje, należy wziąć pod u
 
 - **Zapytania programu Graph powinien określać klucz partycji**. Aby w pełni korzystać z partycjonowania poziomego w usłudze Azure Cosmos DB, jeśli to możliwe, wykres zapytania powinien zawierać klucza partycji. Na przykład jeśli zaznaczono jednego wierzchołka. Następujące przykładowe zapytania pokazują, jak dołączyć klucz partycji, po wybraniu jednego lub wielu wierzchołków w grafie podzielonym na partycje:
 
+    - **Obecnie nie można użyć `/id` jako klucza partycji dla kontenera w interfejsie API języka Gremlin**.
+
     - Wybraniu wierzchołka według identyfikatorów, a następnie **użyj `.has()` krok, aby określić właściwości klucza partycji**: 
     
         ```
@@ -147,7 +149,7 @@ Podczas tworzenia kontenera grafu podzielonym na partycje, należy wziąć pod u
 
 * **Użyj kierunku wychodzącego, podczas wykonywania zapytań dotyczących krawędzie** zawsze, gdy jest to możliwe. Krawędzie są przechowywane z ich źródła wierzchołki, w kierunku wychodzącego. Oznacza to, że prawdopodobieństwo konieczności uciekania się do zapytań między partycjami są zminimalizowane, gdy danych i zapytania, które są skonstruowane z tego wzorca należy pamiętać.
 
-## <a name="designing-for-partitioning"></a> Tworzenie klucza partycji 
+## <a name="designing-for-partitioning"></a> Utwórz klucz partycji 
 Tworzenie kontenerów i skalować je w dowolnym momencie można użyć witryny Azure portal lub interfejsu wiersza polecenia platformy Azure. W tej sekcji pokazano, jak tworzyć kontenery i określ klucz aprowizowanej przepływności i partycji przy użyciu każdego interfejsu API.
 
 
@@ -225,6 +227,9 @@ Aby uzyskać więcej informacji, zobacz [opracowywanie zawartości przy użyciu 
 ### <a name="gremlin-api"></a>Interfejs API języka Gremlin
 
 Za pomocą interfejsu API języka Gremlin można użyć witryny Azure portal lub interfejsu wiersza polecenia platformy Azure do utworzenia kontenera, który reprezentuje wykresu. Alternatywnie ponieważ usługi Azure Cosmos DB to wielomodelowa, służy jednego z innych interfejsów API do tworzenia i skalowania kontenera grafu.
+
+> [!NOTE]
+> Nie można użyć `/id` jako klucza partycji dla kontenera w interfejsie API języka Gremlin. 
 
 Możesz przeczytać dowolnego wierzchołka lub Microsoft edge, przy użyciu klucza partycji i Identyfikatora w języku Gremlin. Na przykład w przypadku programu graph z regionem ("USA") jako klucza partycji i "Seattle", jako klucz wiersza, można znaleźć wierzchołka przy użyciu następującej składni:
 

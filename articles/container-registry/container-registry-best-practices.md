@@ -2,18 +2,17 @@
 title: Najlepsze rozwiązania w usłudze Azure Container Registry
 description: Dowiedz się, jak efektywnie korzystać z usługi Azure Container Registry dzięki zastosowaniu tych najlepszych rozwiązań.
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 09/27/2018
-ms.author: marsma
-ms.openlocfilehash: 9bb1f7682338f1d9e591ed1350e1940d85462bd1
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.author: danlep
+ms.openlocfilehash: e22acc6e698d9b14a55145d8f23f5f773e6c39fd
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409341"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857707"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Najlepsze rozwiązania dla usługi Azure Container Registry
 

@@ -2,19 +2,18 @@
 title: Wdrażanie usługi Azure Container instances z usługi Azure Container Registry
 description: Dowiedz się, jak wdrożyć kontenery w usłudze Azure Container Instances za pomocą obrazów kontenerów w usłudze Azure container registry.
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: article
 ms.date: 03/30/2018
-ms.author: marsma
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 5c3cf162caf5cf9aa88b012257d4caab37b7893c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bbdf9a88c19e8006ffa9669b0c6d95d85506b256
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424215"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854460"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Wdrażanie usługi Azure Container instances z usługi Azure Container Registry
 
