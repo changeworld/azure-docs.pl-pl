@@ -179,6 +179,8 @@ items:
     href: /rest/api/streamanalytics
 - name: Zasoby
   items:
+  - name: Stream Analytics — wersje zapoznawcze
+    href: stream-analytics-previews.md
   - name: Harmonogram działania dla platformy Azure
     href: https://azure.microsoft.com/roadmap/
   - name: Blog
@@ -201,9 +203,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: Oficjalny dokument — przetwarzanie zdarzeń w czasie rzeczywistym
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: 5984dcbe6bcd7879f28d55a3c0c6b919ed8a7351
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 85e4a1bdc05f48a842a183bfa6db80d0bd3f946f
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585836"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854766"
