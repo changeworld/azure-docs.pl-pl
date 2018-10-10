@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 10/04/2018
-ms.openlocfilehash: 6321c1dab0ae9db231a5ba494c981f47aee3ee6b
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.date: 10/09/2018
+ms.openlocfilehash: e93de9b3642e0b01bf65b6761d8832b0d4c2a431
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831357"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901689"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-use-benefit-and-migration"></a>Rdzeń wirtualny warstwy usługi, korzyści z używania hybrydowej platformy Azure i migracji
 
@@ -33,7 +33,7 @@ model rdzenia wirtualnego pozwala również na używanie [hybrydowej platformy A
 
 ## <a name="service-tier-characteristics"></a>Właściwości warstwy usług
 
-Model rdzenia wirtualnego zapewnia dwie warstwy usług ogólnego przeznaczenia i krytyczne dla działania firmy. Warstwy usługi są zróżnicowane według szeroką gamę rozmiarów wystąpień obliczeniowych, projekt wysokiej dostępności, odporności izolacji, typów pamięci masowej i zakres operacji We/Wy. Klienta należy skonfigurować osobno wymagane okres przechowywania i przechowywania kopii zapasowych.
+Model rdzenia wirtualnego zapewnia dwie warstwy usług ogólnego przeznaczenia i krytyczne dla działania firmy. Warstwy usługi są zróżnicowane według szeroką gamę rozmiarów wystąpień obliczeniowych, projekt wysokiej dostępności, odporności izolacji, typów pamięci masowej i zakres operacji We/Wy. Klienta należy skonfigurować osobno wymagane okres przechowywania i przechowywania kopii zapasowych. Musisz oddzielnie skonfigurować wymagane okres przechowywania i przechowywania kopii zapasowych. W witrynie Azure portal przejdź do serwera (bez bazy danych) > zarządzanych kopii zapasowych > Konfiguruj zasady > w czasie przywracania konfiguracji punktu > 7 – 35 dni.
 
 Poniższa tabela pomoże Ci zrozumieć różnice między tymi dwoma warstwami:
 

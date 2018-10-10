@@ -1,22 +1,23 @@
 ---
-title: Składnia poleceń wyszukiwania JSON w Academic Knowledge API | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat składni wyszukiwania JSON używanego w Academic Knowledge API w kognitywnych usług firmy Microsoft.
+title: Składnia wyszukiwania JSON — interfejs Academic Knowledge API
+titlesuffix: Azure Cognitive Services
+description: Więcej informacji na temat składni wyszukiwania JSON, których można używać w interfejsu Academic Knowledge API.
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: a4b9cf535dae60258d71c43bba6f9eec1444bd41
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5ece028f89ad9e93840211383db97a5d8a80069a
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346861"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900414"
 ---
-# <a name="json-search-syntax"></a>Składnia poleceń wyszukiwania JSON
+# <a name="json-search-syntax"></a>Składnia wyszukiwania JSON
 
 ```javascript
 /* Query Object:
@@ -32,9 +33,9 @@ ms.locfileid: "35346861"
 }
 ```
 
-Nazwy węzłów w ścieżce zapytania (_v0, v1..._ ) identyfikatorami węzła, które może być przywoływany w obiekcie zapytania; nazwy krawędzi (_e0, e1,..._ ) w ścieżce reprezentują typy odpowiednich krawędzi. Możemy użyć gwiazdki _*_ jako nazwa węzła lub Microsoft edge (z wyjątkiem węzła początkowego, które muszą mieć) Aby zadeklarować że istnieją nie ograniczenia dotyczące takiego elementu. Na przykład ścieżka zapytania `/v0/*/v1/e1/*/` pobiera ścieżki z programu graph bez ograniczania typu granicy _(v0 v1)_. W tym samym czasie zapytanie nie ma ograniczeń na komputerze docelowym (ostatni węzeł) ścieżki albo.
+Nazwy węzłów w ścieżce zapytania (_v0-v1..._ ) służą jako identyfikatory węzłów, które mogą być przywoływane w obiekcie zapytania; nazwy krawędzi (_e0, e1..._ ) w ścieżce reprezentują typy odpowiednich krawędzi. Możemy użyć gwiazdki _*_ jako nazwę węzła lub krawędzi (z wyjątkiem począwszy od węzła, który należy zachować szczególną) do deklarowania, istnieją bez ograniczeń w odniesieniu do takiego elementu. Na przykład ścieżka kwerendy `/v0/*/v1/e1/*/` pobiera ścieżki z wykresu bez ograniczania typie krawędzi _(v0, wersja 1)_. W międzyczasie zapytanie nie ma albo ograniczenia na komputerze docelowym (ostatni węzeł) ścieżki.
 
-Jeśli ścieżka zawiera tylko jeden węzeł, powiedz _v0_, po prostu zwraca wszystkie jednostki, które spełniają ograniczenia. Obiekt ograniczenia dotyczą węzeł początkowy jest wywoływana *Uruchamianie obiektu Query*, którego specyfikacji znajduje się w następujący sposób.
+Jeśli ścieżka zawiera tylko jeden węzeł, powiedz _v0_, zapytanie po prostu zwrócenia wszystkich jednostek, które spełniają ograniczenia. Obiekt ograniczenia stosowane do węzeł początkowy jest wywoływana *od obiektu kwerendy*, którego specyfikacji znajduje się w następujący sposób.
 
 ```javascript
 /* Starting Query Object:
@@ -63,7 +64,7 @@ Jeśli ścieżka zawiera tylko jeden węzeł, powiedz _v0_, po prostu zwraca wsz
 }
 ```
 
-Jeśli ścieżka zawiera więcej niż tylko węzeł początkowy, procesor zapytań wykona przechodzenie wykresu, zgodnie ze wzorcem określonej ścieżki. Po dostarczeniu do węzła, akcje przechodzenie wybrany użytkownik zostanie wyzwolony, oznacza to, czy zatrzyma się w bieżącym węźle i powrócić do eksplorowania wykresu w dalszym ciągu. Jeśli nie określono żadnej akcji przechodzenie, zostaną wykonane akcje domyślne. Węzeł pośredni domyślne działanie jest nadal Eksploruj wykresu. W przypadku ostatniego węzła ścieżki domyślne działanie jest zatrzymanie i powrót. Obiekt ograniczenia, który określa akcje przechodzenie jest nazywany *obiekt akcji przechodzenie*. Jego specyfikację znajduje się w następujący sposób:
+Jeśli ścieżka zawiera więcej niż tylko węzeł początkowy, procesor zapytań będzie wykonywać przechodzenie grafu, następującego wzorca określonej ścieżki. Po dostarczeniu do węzła, akcje przechodzenie określonych przez użytkownika zostaną wyzwolone, oznacza to, czy zatrzyma bieżącego węzła i zwracają zrozumienie wykresu w dalszym ciągu. Jeśli nie określono żadnej akcji przechodzenia, zostaną wykonane akcje domyślne. Dla węzła pośredniego domyślna akcja jest zrozumienie wykresu w dalszym ciągu. Dla ostatniego węzła ścieżki domyślnej akcji jest zatrzymanie i powrót. Obiekt ograniczenia, który określa akcje przechodzenie nosi nazwę *przechodzenia przez akcję obiektu*. Jego specyfikacji znajduje się w następujący sposób:
 
 ```javascript
 /* Traversal Action Object:
@@ -106,7 +107,7 @@ Jeśli ścieżka zawiera więcej niż tylko węzeł początkowy, procesor zapyta
 }
 ```
 
-Treść POST *json* zapytanie wyszukiwania musi zawierać co najmniej *ścieżki* wzorca. Obiekty akcji przechodzenia są opcjonalne. Poniżej przedstawiono dwa przykłady.
+Treść wpisu *json* zapytanie wyszukiwania powinno zawierać co najmniej jeden *ścieżki* wzorca. Przechodzenie akcji obiekty są opcjonalne. Poniżej przedstawiono dwa przykłady.
 
 ```JSON
 {

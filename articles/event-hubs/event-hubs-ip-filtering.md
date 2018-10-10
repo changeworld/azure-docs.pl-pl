@@ -3,19 +3,19 @@ title: Azure Event Hubs IP połączenia filtrów | Dokumentacja firmy Microsoft
 description: Użyj filtrowania z określonych adresów IP do usługi Azure Event Hubs w celu połączenia bloków adresów IP.
 services: event-hubs
 documentationcenter: ''
-author: ShubhaVijayasarathy
+author: spelluru
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.date: 08/26/2018
-ms.author: shvija
-ms.openlocfilehash: 6d96eac3ecd249de3ba0da82eff95c45e45fa02d
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.date: 10/08/2018
+ms.author: spelluru
+ms.openlocfilehash: c229a6f84096ecca892b74f7ce65cb831fa50be3
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746199"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886181"
 ---
 # <a name="use-ip-filters"></a>Użyj filtrów IP
 
@@ -48,6 +48,9 @@ Na przykład jeśli chcesz zaakceptować adresów w 70.37.104.0/24 zakresu i odr
 > Odrzuca adresy IP można zapobiec interakcji z usługą Event Hubs innych usług platformy Azure (np. usługi Azure Stream Analytics, Azure Virtual Machines lub Device Explorer w portalu).
 
 ### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Tworzenie reguły sieci wirtualnej przy użyciu szablonów usługi Azure Resource Manager
+
+> [!IMPORTANT]
+> Sieci wirtualne są obsługiwane w **standardowa** i **dedykowanych** warstw usługi Event Hubs. Nie jest obsługiwana w warstwie podstawowa. 
 
 Następujący szablon usługi Resource Manager umożliwia dodanie reguły sieci wirtualnej do istniejącej przestrzeni nazw usługi Event Hubs.
 

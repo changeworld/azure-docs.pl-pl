@@ -12,14 +12,14 @@ ms.author: ronitr
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 55b61dbd9057bb25b2790c9362f0625d7fc2a91d
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 8d3a14228d31c8f4507dbcac7b9bd47ae1c4de0a
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867112"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902164"
 ---
-# <a name="an-overview-ahd-azure-sql-database-security-capabilities"></a>Możliwości zabezpieczeń usługi Azure SQL Database ahd — omówienie
+# <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Omówienie funkcji zabezpieczeń usługi Azure SQL Database
 
 W tym artykule przedstawiono podstawowe informacje o zabezpieczeniach warstwy danych aplikacji przy użyciu usługi Azure SQL Database. W szczególności ten artykuł ułatwia rozpoczęcie pracy z zasobami na potrzeby ochrony danych, kontrolowania dostępu i aktywnego monitorowania.
 

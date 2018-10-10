@@ -1,24 +1,25 @@
 ---
-title: Metoda CalcHistogram w Academic Knowledge API | Dokumentacja firmy Microsoft
-description: Metoda CalcHistogram do obliczenia rozkład wartości atrybutów dla zestawu jednostek papieru w kognitywnych usług firmy Microsoft.
+title: Metoda CalcHistogram — interfejs Academic Knowledge API
+titlesuffix: Azure Cognitive Services
+description: Metoda CalcHistogram do obliczania rozkładu wartości atrybutu dla zestawu jednostek papieru.
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: e0b773fb9791ee638c8cfdbbc9dca40543e50ec0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: da5e03e5fd3259157ee33744b614e2be3e284eb8
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346901"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901936"
 ---
-# <a name="calchistogram-method"></a>CalcHistogram — metoda
+# <a name="calchistogram-method"></a>Metoda CalcHistogram
 
-**Calchistogram** interfejsu API REST jest używane do obliczania rozkład wartości atrybutów dla zestawu jednostek papieru.          
+**Calchistogram** interfejsu API REST jest używane do obliczania rozkładu wartości atrybutu dla zestawu jednostek papieru.          
 
 
 **Punkt końcowy REST:**
@@ -31,45 +32,45 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?
 
 Name (Nazwa)  |Wartość | Wymagana?  |Opis
 -----------|----------|--------|----------
-**expr**    |Ciąg tekstowy | Yes  |Wyrażenia zapytania, które określa jednostek służącym do obliczenia histogramów.
-**Model** |Ciąg tekstowy | Nie |Wybierz nazwę modelu, który chcesz zbadać.  Obecnie, domyślnie przyjmowana jest wartość *najnowsze*.
-**Atrybuty** | Ciąg tekstowy | Nie<br>Wartość domyślna: | Rozdzielana przecinkami lista określająca wartości atrybutów, które znajdują się w odpowiedzi. W nazwach atrybutów jest uwzględniana wielkość liter.
-**Liczba** |Liczba | Nie<br>Domyślny: 10 |Liczba wyników do zwrócenia.
+**expr**    |Ciąg tekstowy | Yes  |Wyrażenie zapytania, które określa jednostki, względem którego ma zostać obliczanie histogramów.
+**Model** |Ciąg tekstowy | Nie |Wybierz nazwę modelu, który chcesz zbadać.  Obecnie ma domyślnie wartość *najnowsze*.
+**Atrybuty** | Ciąg tekstowy | Nie<br>Wartość domyślna: | Listę rozdzielonych przecinkami, która określa wartości atrybutów, które znajdują się w odpowiedzi. Nazwy atrybutów jest rozróżniana wielkość liter.
+**Liczba** |Liczba | Nie<br>Domyślnie: 10 |Liczba wyników do zwrócenia.
 **offset**  |Liczba | Nie<br>Domyślna: 0 |Indeks pierwszego wyniku do zwrócenia.
 <br>
 ## <a name="response-json"></a>Odpowiedź (JSON)
 Name (Nazwa) | Opis
 --------|---------
-**expr**  |Wyrażenie parametru z żądaniem.
-**num_entities** | Całkowita liczba zgodnych jednostek.
-**histogramów** |  Tablica histogramów, po jednej dla każdego atrybutu określony w żądaniu.
-**.attribute histogramów [x]** | Nazwa atrybutu, w którym została obliczona histogramu.
-**.distinct_values histogramów [x]** | Liczba wartości odrębnych wśród odpowiadającym jednostek dla tego atrybutu.
-**.total_count histogramów [x]** | Całkowita liczba wystąpień wartość wśród odpowiadającym jednostek dla tego atrybutu.
-**.histogram histogramów [x]** | Histogram dane dla tego atrybutu.
-**histogramów [.value .histogram [y] x]** |  Wartość atrybutu.
-**histogramów [.logprob .histogram [y] x]**  |Całkowita liczba logarytm naturalny prawdopodobieństwo zgodnych jednostek z wartością tego atrybutu.
-**histogramów [.count .histogram [y] x]**  |Liczba zgodnych jednostek z wartością tego atrybutu.
-**zostało przerwane** | Wartość true, jeśli upłynął limit czasu żądania.
+**expr**  |Parametr wyrażenie z żądania.
+**num_entities** | Łączna liczba zgodnych jednostek.
+**histogramy** |  Tablica histogramów, jeden dla każdego atrybutu określona w żądaniu.
+**.attribute histogramy [x]** | Nazwa atrybutu, względem której została obliczona histogram.
+**.distinct_values histogramy [x]** | Liczba unikatowych wartości między dopasowania jednostek dla tego atrybutu.
+**.total_count histogramy [x]** | Całkowita liczba wystąpień wartość między dopasowania jednostek dla tego atrybutu.
+**.histogram histogramy [x]** | Histogram dane dla tego atrybutu.
+**histogramy [x] .value .histogram [t]** |  Wartość atrybutu.
+**histogramy [.logprob .histogram [t] x]**  |Łączna liczba logarytmu naturalnego prawdopodobieństwo, że dopasowanie jednostki z wartością tego atrybutu.
+**histogramy [.count .histogram [t] x]**  |Liczba zgodne jednostki z wartością tego atrybutu.
+**Zostało przerwane** | Wartość true, jeśli upłynął limit czasu żądania.
 
  <br>
 #### <a name="example"></a>Przykład:
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?expr=And(Composite(AA.AuN=='jaime teevan'),Y>2012)&attributes=Y,F.FN&count=4
 ```
-<br>W tym przykładzie, aby wygenerować histogram liczby publikacji roku dla konkretnego autora od 2010, firma Microsoft może najpierw wygenerować za pomocą wyrażenia zapytania **interpretowania** interfejsu API za pomocą ciągu zapytania: *dokumenty przez teevan jaime po 2012*.
+<br>W tym przykładzie, aby wygenerować histogram liczby publikacje według roku dla danego autora od 2010, firma Microsoft może najpierw wygenerować za pomocą wyrażenia zapytania **interpretacji** interfejsu API za pomocą ciągu zapytania: *papers przez teevan trzyczęściową po 2012*.
 
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/interpret?query=papers by jaime teevan after 2012
 ```
-<br>Wyrażenie w pierwszym interpretację jest zwracana z interpret interfejsu API jest *i (złożone (AA. AuN == "jaime teevan"), Y > 2012)*.
-<br>Wartość tego wyrażenia są następnie przekazywane w celu **calchistogram** interfejsu API. *Attributes=Y,F.FN* parametr wskazuje, czy dystrybucje liczby papieru powinna być roku i pola badania, np.:
+<br>Wyrażenie, które w pierwszej interpretacji, który jest zwracany z interpretację interfejsu API jest *i (złożonego (AA. AuN == "trzyczęściową teevan"), Y > 2012)*.
+<br>Ta wartość wyrażenia jest następnie przekazywany do **calchistogram** interfejsu API. *Attributes=Y,F.FN* parametr wskazuje, że dystrybucje liczby dokument powinny być według roku i pola badania, np.:
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?expr=And(Composite(AA.AuN=='jaime teevan'),Y>2012)&attributes=Y,F.FN&count=4
 ```
-<br>Odpowiedzi na to żądanie najpierw wskazuje, czy 37 dokumenty, które pasują do wyrażenia zapytania.  Aby uzyskać *roku* atrybutu, istnieją 3 różne wartości, po jednej dla każdego roku po 2012 (tj. 2013, 2014 i 2015) określone w zapytaniu.  Liczba całkowita papieru przez 3 różne wartości jest 37.  Dla każdego *roku*, histogram zawiera wartość prawdopodobieństwa całkowita logarytm naturalny, a liczba zgodnych jednostek.     
+<br>Odpowiedź na to żądanie najpierw oznacza, że 37 dokumentów, które pasują do wyrażenia zapytania.  Aby uzyskać *roku* atrybutu, istnieją 3 różne wartości, po jednym dla każdego roku po 2012 (czyli 2013, 2014 i 2015), jak określono w zapytaniu.  Liczba całkowita dokument za pośrednictwem 3 różne wartości jest 37.  Dla każdego *roku*, histogram pokazuje wartości, prawdopodobieństwa całkowita logarytmu naturalnego oraz liczby pasujących jednostek.     
 
-Histogramu *pola badać* pokazuje są 34 różne pola badania. Dokument może być skojarzony z wielu pól badań, łączna liczba (53) może być większa niż liczba zgodnych jednostek.  Mimo że istnieją różne wartości 34, odpowiedź zawiera tylko pierwszych 4 z powodu *count = 4* parametru.
+Histogram dla *pola badanie* wskazuje, że są 34 unikatowych pól studiów. Jak dokument może być skojarzone z wieloma polami studiów, łączna liczba (53) może być większa niż liczba zgodnych jednostek.  Mimo że istnieją 34 różne wartości, odpowiedź zawiera tylko pierwszych 4 z powodu *count = 4* parametru.
 
 ```JSON
 {

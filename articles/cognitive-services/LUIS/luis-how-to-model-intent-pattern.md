@@ -6,16 +6,16 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: luis
-ms.topic: article
+ms.component: language-understanding
+ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: c97092385cdc28ba6e4d916ae8039f065f97d31d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6c15fc256a330c7de154c551c1ef4c78913f470a
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47030818"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885890"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Jak dodać wzorców w celu zwiększenia dokładności prognozy
 Gdy aplikacją usługi LUIS otrzyma wypowiedzi punktu końcowego, należy użyć [koncepcji](luis-concept-patterns.md) wzorców w celu zwiększenia dokładności prognozy dla wypowiedzi zawiera wzorca w porządku program word i wybór programu word. Wzorce użycia [jednostek](luis-concept-entity-types.md) i ich ról, aby wyodrębnić dane przy użyciu składni z określonym wzorcem. 

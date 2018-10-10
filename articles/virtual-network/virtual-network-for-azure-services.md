@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: ef902f58f37cd0d09195aa5d1ff03847906ef414
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 163a8f318608ba980d98209277371fb4d148c4ff
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238901"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902777"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Integracja sieci wirtualnej dla usług platformy Azure
 
@@ -46,9 +46,6 @@ Wdrażanie usług w ramach sieci wirtualnej zapewnia następujące możliwości:
 - Opcjonalnie można wymagać usługi [delegowane podsieci](virtual-network-manage-subnet.md#add-a-subnet) jako jawne identyfikatora podsieci hostować określonej usługi. Delegowanie podsieci umożliwia jawne uprawnienia do usługi, aby utworzyć zasoby specyficzne dla usługi w podsieci.
 
 ### <a name="services-that-can-be-deployed-into-a-virtual-network"></a>Usługi, które mogą być wdrażane w sieci wirtualnej
-
-Każda usługa wdrażać bezpośrednio w sieci wirtualnej ma określone wymagania dotyczące routingu i typów ruchu, które muszą być dozwolone, do i z podsieci. Różne usługi, które mogą być wdrażane w sieci wirtualnej są podzielone poniżej. Wybierz usługę określonych w tabeli, aby dowiedzieć się więcej o nich oraz jak ją zintegrować z sieci wirtualnej. 
-
 
 |Kategoria|Usługa|
 |-|-|

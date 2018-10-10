@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: hjerez
 ms.author: hjerez
 ms.date: 09/24/2018
-ms.openlocfilehash: afba483172bc34b9d54afc3af755f0967affc875
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: b09ef259d73744612c41adc4fc40ea0235da9bcb
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239170"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885071"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Zarządzanie, wdrażanie i monitorowanie modeli przy użyciu usługi Azure Machine Learning
 
@@ -71,7 +71,7 @@ Obrazy można wdrożyć dla następujących [celów wdrażania](how-to-deploy-an
 * FPGA maszyn
 * Urządzenia w usłudze Azure IoT Edge
 
-Jak usługa zostanie wdrożona, żądanie wnioskowania jest automatycznie równoważeniem obciążenia i klaster będzie skalowany w celu zaspokojenia jakiekolwiek skoki na żądanie. [Dane telemetryczne o usłudze](https://docs.microsoft.com/python/api/azureml-telemetry/azureml.telemetry?view=azure-ml-py) mogą być przechwytywane w usłudze Azure Application Insights skojarzone z obszarem roboczym.
+Jak usługa zostanie wdrożona, żądanie wnioskowania jest automatycznie równoważeniem obciążenia i klaster będzie skalowany w celu zaspokojenia jakiekolwiek skoki na żądanie. [Mogą być przechwytywane dane telemetryczne o usłudze](how-to-enable-app-insights.md) w usłudze Azure Application Insights skojarzone z obszarem roboczym.
 
 ## <a name="step-4-monitor-models-and-collect-data"></a>Krok 4: Modele monitorowanie i zbieranie danych
 

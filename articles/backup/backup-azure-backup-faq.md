@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/2/2018
 ms.author: markgal
-ms.openlocfilehash: efe08eddaceb5a764dbd5393e79644eac1e2e106
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 9168a67366664f50a49ae04ef8ddc2f7aa9d665b
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406162"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886498"
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Pytania dotyczące usługi Azure Backup
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące składników usługi Azure Backup. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Aby zadać pytanie dotyczące usługi Azure Backup, kliknij pozycję **Komentarze** (po prawej stronie). Komentarze są wyświetlane na dole tego artykułu. Aby komentować, musisz mieć konto Livefyre. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -43,10 +43,10 @@ Nie. Magazyn jest tworzone na poziomie subskrypcji i nie może zostać przypisan
 Nie. Nie można przenieść dane kopii zapasowej, przechowywane w magazynie w innym magazynie.
 
 ### <a name="can-i-change-from-grs-to-lrs-after-a-backup-br"></a>Można zmienić z GRS na LRS po utworzeniu kopii zapasowej? <br/>
-Nie. Magazyn usługi Recovery Services można zmienić tylko opcje magazynu, zanim wszystkie kopie zapasowe są przechowywane. 
+Nie. Magazyn usługi Recovery Services można zmienić tylko opcje magazynu, zanim wszystkie kopie zapasowe są przechowywane.
 
 ### <a name="recovery-services-vaults-are-resource-manager-based-are-backup-vaults-still-supported-br"></a>Magazyny usług Recovery Services są oparte na usłudze Resource Manager. Czy magazyny kopii zapasowych są nadal obsługiwane? <br/>
-Magazyny kopii zapasowych zostały przekonwertowane na magazynów usługi Recovery Services. Jeśli nie zostały przekonwertowane magazynu kopii zapasowych w magazynie usługi Recovery Services, magazynu kopii zapasowych został przekonwertowany w magazynie usługi Recovery Services dla Ciebie. 
+Magazyny kopii zapasowych zostały przekonwertowane na magazynów usługi Recovery Services. Jeśli nie zostały przekonwertowane magazynu kopii zapasowych w magazynie usługi Recovery Services, magazynu kopii zapasowych został przekonwertowany w magazynie usługi Recovery Services dla Ciebie.
 
 ### <a name="can-i-migrate-a-backup-vault-to-a-recovery-services-vault-br"></a>Czy mogę przeprowadzić migrację magazynu usługi Backup do magazynu usługi Recovery Services? <br/>
 Wszystkie magazyny kopii zapasowych zostały przekonwertowane na magazynów usługi Recovery Services. Jeśli nie zostały przekonwertowane magazynu kopii zapasowych w magazynie usługi Recovery Services, magazynu kopii zapasowych został przekonwertowany w magazynie usługi Recovery Services dla Ciebie.
@@ -60,7 +60,6 @@ Szczegółową listę pytań możesz znaleźć w temacie [FAQ on Azure VM backup
 ## <a name="back-up-vmware-servers"></a>Tworzenie kopii zapasowych serwerów VMware
 
 ### <a name="can-i-back-up-vmware-vcenter-servers-to-azure"></a>Czy można tworzyć kopie zapasowe serwerów VMware vCenter na platformie Azure?
-
 Tak. Użyj usługi Azure Backup Server, aby utworzyć kopie zapasowe serwerów VMware vCenter i ESXi na platformie Azure. Informacje na temat obsługiwanych wersji oprogramowania VMware można znaleźć w artykule [Azure Backup Server protection matrix](backup-mabs-protection-matrix.md) (Zestawienie elementów chronionych przez usługę Azure Backup Server). Szczegółowe instrukcje zawiera temat [Use Azure Backup Server to back up a VMware server](backup-azure-backup-server-vmware.md) (Wykonywanie kopii zapasowej serwera VMware przy użyciu usługi Azure Backup Server).
 
 ### <a name="do-i-need-a-separate-license-to-recover-a-full-on-premises-vmwarehyper-v-cluster-from-dpm-or-azure-backup-serverbr"></a>Czy muszę mieć oddzielnej licencji, aby odzyskać pełną lokalny klaster VMware/funkcji Hyper-V z programu DPM ani usługi Azure Backup Server?<br/>
@@ -74,17 +73,14 @@ Tak.
 Nie. Serwer DPM lub MABS można zarejestrować tylko w jednym magazynie.
 
 ### <a name="which-version-of-system-center-data-protection-manager-is-supported"></a>Która wersja programu System Center Data Protection Manager jest obsługiwana?
-
-Zaleca się zainstalowanie [najnowszego](http://aka.ms/azurebackup_agent) agenta usługi Azure Backup z najnowszego pakietu zbiorczego aktualizacji (UR) dla programu System Center Data Protection Manager (DPM). 
+Zaleca się zainstalowanie [najnowszego](http://aka.ms/azurebackup_agent) agenta usługi Azure Backup z najnowszego pakietu zbiorczego aktualizacji (UR) dla programu System Center Data Protection Manager (DPM).
 - Programu System Center DPM 2012 R2 [14 pakiet zbiorczy aktualizacji](https://support.microsoft.com/help/4043315/update-rollup-14-for-system-center-2012-r2-data-protection-manager) jest najnowszą aktualizacją.
 - Dla programu System Center DPM 2016 [pakietu zbiorczego aktualizacji 2](https://support.microsoft.com/en-us/help/3209593) jest najnowszą aktualizacją.
 
 ### <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-protect-on-premises-applicationvm-workloads-to-azure"></a>Agent usługi Azure Backup został zainstalowany w celu ochrony plików i folderów. Czy można zainstalować programu System Center DPM do ochrony obciążeń aplikacji i maszyn wirtualnych w środowisku lokalnym na platformie Azure?
-
 Tak. Jednak aby używać usługi Azure Backup usługi System Center Data Protection Manager (DPM), najpierw zainstaluj program DPM, a następnie zainstaluj agenta usługi Azure Backup. Instalowanie składników usługi Azure Backup w tej kolejności zapewnia współdziałanie agenta usługi Azure Backup z programem DPM. Nie zaleca się instalowania agenta usługi Azure Backup przed instalacją programu DPM. Takie rozwiązanie nie jest obsługiwane.
 
 ### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>Czy można użyć programu DPM, aby utworzyć kopię zapasową aplikacji w usłudze Azure Stack?
-
 Nie. Jeśli kopia zapasowa Azure można użyć do ochrony usługi Azure Stack, usługi Azure Backup nie obsługuje obecnie za pomocą programu DPM, aby utworzyć kopię zapasową aplikacji w usłudze Azure Stack.
 
 ## <a name="how-azure-backup-works"></a>Jak działa usługa Azure Backup
@@ -115,7 +111,7 @@ Usługa Azure Backup obsługuje następujące systemy operacyjne w przypadku zab
 | Windows Server 2016 |64-bitowa |Standard, Datacenter, Essentials |
 | Windows Server 2012 R2 i najnowsze dodatki Service Pack |64-bitowa |Standard, Datacenter, Foundation |
 | Windows Server 2012 i najnowsze dodatki Service Pack |64-bitowa |Datacenter, Foundation, Standard |
-| Windows Storage Server 2016 i najnowsze dodatki Service Pack |64-bitowa |Standard, Workgroup | 
+| Windows Storage Server 2016 i najnowsze dodatki Service Pack |64-bitowa |Standard, Workgroup |
 | Windows Storage Server 2012 R2 i najnowsze dodatki Service Pack |64-bitowa |Standard, Workgroup |
 | Windows Storage Server 2012 i najnowsze dodatki Service Pack |64-bitowa |Standard, Workgroup |
 | Windows Server 2012 R2 i najnowsze dodatki Service Pack |64-bitowa |Essential |
@@ -192,7 +188,7 @@ Tak. Dane są szyfrowane na lokalnym serwerze/kliencie/komputerze z programem SC
 Tak. Dane wysyłane do platformy Azure pozostają zaszyfrowane (nieaktywne). Firma Microsoft nie odszyfrowuje danych kopii zapasowej w żadnym punkcie. Podczas wykonywania kopii zapasowej maszyny wirtualnej platformy Azure usługa Azure Backup opiera się na szyfrowaniu maszyny wirtualnej. Jeśli na przykład maszyna wirtualna została zaszyfrowana przy użyciu usługi Azure Disk Encryption lub innej technologii szyfrowania, usługa Azure Backup używa tego szyfrowania do zabezpieczenia danych.
 
 ### <a name="what-is-the-minimum-length-of-encryption-key-used-to-encrypt-backup-data-br"></a>Jaka jest minimalna długość klucza szyfrowania używanego do szyfrowania danych w kopii zapasowej? <br/>
-Klucz szyfrowania powinien składać się z co najmniej 16 znaków, gdy używasz agenta usługi Azure Backup. W przypadku maszyn wirtualnych platformy Azure nie ma limitu długości kluczy używanych przez usługę Azure KeyVault. 
+Klucz szyfrowania powinien składać się z co najmniej 16 znaków, gdy używasz agenta usługi Azure Backup. W przypadku maszyn wirtualnych platformy Azure nie ma limitu długości kluczy używanych przez usługę Azure KeyVault.
 
 ### <a name="what-happens-if-i-misplace-the-encryption-key-can-i-recover-the-data-or-can-microsoft-recover-the-data-br"></a>Co się stanie, jeśli klucz szyfrowania zostanie zgubiony przez użytkownika? Czy użytkownik lub firma Microsoft może odzyskać dane? <br/>
 Klucz używany do szyfrowania danych kopii zapasowej jest przechowywany tylko lokalnie przez klienta. Firma Microsoft nie przechowuje kopii klucza na platformie Azure i nie ma do niego dostępu. Jeśli klient zgubi klucz, firma Microsoft nie może odzyskać danych kopii zapasowej.

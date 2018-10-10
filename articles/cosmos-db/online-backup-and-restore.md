@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: 580c7410119a26ed3601c7c6ee020a13029339fe
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 657b75e5e3bb5c35bb23221235e62298fc797046
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867803"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902675"
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatyczne tworzenie kopii zapasowej online i przywracanie za pomocą usługi Azure Cosmos DB
 Usługa Azure Cosmos DB automatycznie wykonuje kopie zapasowe wszystkich danych w regularnych odstępach czasu. Automatyczne kopie zapasowe są wykonywane bez wywierania wpływu na wydajność lub dostępności operacje bazy danych. Wszystkie kopie zapasowe są przechowywane osobno w innej usługi storage, a te kopie zapasowe globalnie są replikowane w celu zapewnienia odporności na regionalnej awarii. Automatyczne kopie zapasowe są przeznaczone dla scenariuszy podczas przypadkowego usunięcia kontenera usługi Cosmos DB i później wymaga odzyskiwania danych.  
@@ -47,12 +47,18 @@ Na poniższym obrazie przedstawiono okresowe pełne kopie zapasowe wszystkich je
 ## <a name="backup-retention-period"></a>Okres przechowywania kopii zapasowej
 Zgodnie z powyższym opisem usługi Azure Cosmos DB trwa migawki danych na poziomie partycji co cztery godziny. W dowolnym momencie tylko dwie ostatnie migawki zostaną zachowane. Jednak usunięcie kontenera/bazy danych Azure Cosmos DB zachowuje istniejące migawki dla wszystkich usuniętych partycji w danym kontenerze/bazy danych przez 30 dni.
 
-Interfejsu API SQL, jeśli chcesz zachować swoje własne migawki, możesz użyć eksportowania do formatu JSON opcji w usłudze Azure Cosmos DB [narzędzia migracji danych](import-data.md#export-to-json-file) do planowania dodatkowych kopii zapasowych.
+Dla interfejsu API SQL Jeśli chcesz zachować swoje własne migawki, możesz to zrobić przy użyciu następujących opcji:
+
+* Użyj eksportowania do formatu JSON opcji w usłudze Azure Cosmos DB [narzędzia migracji danych](import-data.md#export-to-json-file) do planowania dodatkowych kopii zapasowych.
+
+* Użyj [usługi Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) okresowo przenoszenia danych.
+
+* Użyj usługi Azure Cosmos DB [zestawienia zmian](change-feed.md) odczytywanie danych okresowo dla pełnej kopii zapasowej i osobno przyrostowe zmiany i przejdź do lokalizacji docelowej obiektu blob. 
+
+* Do zarządzania bez wyłączania zasilania kopii zapasowych, jest możliwe, aby okresowo odczytywanie danych z kanału informacyjnego zmian i opóźnienia zapisu, jej do innej kolekcji. Dzięki temu nie trzeba przywrócić dane i natychmiast przyjrzeć się danym problemu. 
 
 > [!NOTE]
-> Jeśli użytkownik "Aprowizowanie przepływności dla zestawu kontenerów na poziomie bazy danych" — należy pamiętać o przywracania odbywa się na poziomie pełnym konta bazy danych. Należy również upewnij się, że skontaktowanie się w obrębie 8 godzin do zespołu pomocy technicznej, jeśli przypadkowo usunięto kontener. Nie można przywrócić dane, jeśli użytkownik nie skontaktowania się z zespołem pomocy technicznej w 8 godzin. 
-
-
+> Jeśli użytkownik "Aprowizowanie przepływności dla zestawu kontenerów na poziomie bazy danych" — należy pamiętać o przywracania odbywa się na poziomie pełnym konta bazy danych. Należy również upewnij się, że się w obrębie 8 godzin do zespołu pomocy technicznej, jeśli przypadkowo usuniesz kontenera. Nie można przywrócić dane, jeśli użytkownik nie skontaktowania się z zespołem pomocy technicznej w 8 godzin.
 
 ## <a name="restoring-a-database-from-an-online-backup"></a>Przywracanie bazy danych z kopii zapasowej online
 
@@ -61,7 +67,7 @@ Jeśli przypadkowo usuniesz bazy danych lub kontenera, możesz to zrobić [bilet
 Jeśli trzeba przywrócić bazę danych z powodu problemu z uszkodzeniem danych (w tym przypadki, w których są usuwane dokumenty znajdujące się w kontenerze), zobacz [obsługi uszkodzenie danych](#handling-data-corruption) jak należy wykonać dodatkowe kroki w celu zapobieżenia uszkodzone dane zastąpienie istniejących kopii zapasowych. Dla określonej migawki kopii zapasowej do przywrócenia Cosmos DB wymaga danych był dostępny na czas trwania cyklu tworzenia kopii zapasowych dla tej migawki.
 
 > [!NOTE]
-> Kolekcje lub baz danych można przywrócić tylko po żądań klientów w celu przywrócenia. Można usunąć kontenera lub bazy danych bezpośrednio po przywróceniu danych jest responsbility przez klienta. Jeśli nie usuniesz przywróconych baz danych i kolekcji, będzie powodować Naliczanie koszt zgodnie ze stawką przywróconej kolekcji lub bazy danych. Tak jest bardzo ważne natychmiast je usunąć. 
+> Kolekcje lub baz danych można przywrócić tylko na żądania klientów jawnego. Odpowiada klienta można usunąć kontenera lub bazy danych bezpośrednio po uzgadnianie danych. Jeśli nie usuniesz przywróconych baz danych i kolekcji, spowoduje naliczenie kosztów, jednostek żądania, magazynu i ruchu wychodzącego.
 
 ## <a name="handling-data-corruption"></a>Obsługa uszkodzenie danych
 
@@ -73,7 +79,7 @@ Na poniższym obrazie przedstawiono tworzenie żądania pomocy technicznej do pr
 
 ![Przywróć kontenera omyłkowe aktualizacji lub usuwania danych w usłudze Cosmos DB](./media/online-backup-and-restore/backup-restore-support.png)
 
-Po zakończeniu przywracania dla tego rodzaju scenariuszy — dane są przywracane na inne konto (z sufiksem "-przywrócić") i kontener. Przywracanie nie odbywa się mające na celu zapewnienie Państwo klienta, aby wykonać sprawdzanie poprawności danych i Przenieś dane zgodnie z potrzebami. Kontener przywróconej znajduje się w tym samym regionie przy użyciu tych samych (RUS) i zasad indeksowania. Użytkownik będący administratorem subskrypcji lub współadministrator widoczne tego konta przywrócona.
+Po zakończeniu przywracania dla tego rodzaju scenariuszy — dane są przywracane na inne konto (z sufiksem "-przywrócić") i kontener. Przywracanie nie odbywa się mające na celu zapewnienie Państwo klienta, aby wykonać sprawdzanie poprawności danych i Przenieś dane zgodnie z potrzebami. Kontener przywróconej znajduje się w tym samym regionie przy użyciu tych samych (RUS) i zasad indeksowania. Użytkownik będący administratorem subskrypcji lub coadmin widoczne tego konta przywrócona.
 
 
 > [!NOTE]

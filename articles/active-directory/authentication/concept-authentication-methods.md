@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 7776ca63dd5c02e470ead35e3dad73c051731fd1
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: a8bcbc37ffba2caace0934c5414e1ccfd6fbb558
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42059923"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901995"
 ---
 # <a name="what-are-authentication-methods"></a>Jakie są metody uwierzytelniania?
 
@@ -31,6 +31,7 @@ Firma Microsoft zdecydowanie zaleca się Administratorzy umożliwianie użytkown
 | Pytania zabezpieczające | Tylko samoobsługowego resetowania HASEŁ |
 | Email address (Adres e-mail) | Tylko samoobsługowego resetowania HASEŁ |
 | Aplikacja Microsoft Authenticator | Uwierzytelnianie wieloskładnikowe i publicznej wersji zapoznawczej na potrzeby samoobsługowego resetowania HASŁA |
+| Token sprzętowy OATH | Publicznej wersji zapoznawczej dla uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ |
 | SMS | Uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ |
 | Połączenie głosowe | Uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ |
 | Hasła aplikacji | Uwierzytelnianie wieloskładnikowe tylko w niektórych przypadkach |
@@ -39,7 +40,7 @@ Firma Microsoft zdecydowanie zaleca się Administratorzy umożliwianie użytkown
 
 |     |
 | --- |
-| Powiadomienia aplikacji mobilnej i kodu aplikacji mobilnej jako metody dla hasła usługi Azure AD z samoobsługowego resetowania są w publicznej wersji zapoznawczej funkcji usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| Tokeny sprzętowe OATH dla uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ i telefon komórkowy powiadomienia przez aplikacje lub kod aplikacji mobilnej jako metody haseł usługi Azure AD resetowania są w publicznej wersji zapoznawczej funkcji usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
 ## <a name="password"></a>Hasło
@@ -146,6 +147,28 @@ Aplikacja Microsoft Authenticator lub innych aplikacjach innych firm może słu�
 > [!WARNING]
 > Dla samoobsługowego resetowania haseł podczas tylko jedną z metod jest wymagany na potrzeby resetowania kod weryfikacyjny jest jedyną opcją, dostępne dla użytkowników **aby zapewnić najwyższy poziom zabezpieczeń**.
 >
+
+## <a name="oath-hardware-tokens"></a>Tokeny sprzętowe OATH
+
+OATH jest otwarty standard, który określa sposób jednorazowe hasła (OTP) kody są generowane. Usługa Azure AD będzie obsługiwać korzystanie z tokenów OATH-TOTP SHA-1 odmiany 30 sekund lub 60 sekund. Klienci mogą uzyskać te tokeny od dostawcy wybranych przez nich. Należy pamiętać, że klucze tajne są ograniczone do 128 znaków, które mogą nie być zgodna z wszystkich tokenów.
+
+![Przekazywanie tokenów OATH do bloku tokenów OATH serwera usługi MFA w witrynie Azure portal](media/concept-authentication-methods/oath-tokens-azure-ad.png)
+
+Po drogą kupna tokeny muszą być przesłane w formacie wartości rozdzielanych przecinkami (CSV) jako przykład poniżej przedstawiono w tym nazwy UPN, numer seryjny, klucz tajny, interwał czasu, producenta i modelu.
+
+```
+upn,serial number,secret key,timeinterval,manufacturer,model
+Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
+```
+
+> [!NOTE]
+> Upewnij się, że wiersz nagłówka w pliku CSV, jak pokazano powyżej.
+
+Raz niepoprawnie sformatowany jako plik CSV, administrator może, a następnie zaloguj się do witryny Azure portal i przejdź do **usługi Azure Active Directory**, **serwera MFA**, **tokenów OATH**, i Przekaż wynikowy plik CSV.
+
+W zależności od rozmiaru pliku CSV może upłynąć kilka minut, aby przetworzyć. Kliknij przycisk **Odśwież** przycisk, aby wyświetlić bieżący stan. Jeśli występują błędy w pliku, masz możliwość pobrania plik CSV z listą wszelkie błędy, które należy rozwiązać.
+
+Gdy zostały rozwiązane wszystkie błędy, administrator następnie można uruchomić każdy klucz klikając **Aktywuj** token zostanie uaktywniony i wprowadzanie kodu OTP jest wyświetlany w tokenie.
 
 ## <a name="mobile-phone"></a>Telefon komórkowy
 

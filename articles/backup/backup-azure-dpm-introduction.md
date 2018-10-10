@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/22/2018
 ms.author: adigan
-ms.openlocfilehash: 873e7066bcf51b32c3a7a54e845ffd5a744f407f
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 2da5b04f56a5746fb77de6bc954bb5971eb4664b
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745439"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885174"
 ---
 # <a name="preparing-to-back-up-workloads-to-azure-with-dpm"></a>Przygotowywanie do tworzenia kopii zapasowych obciążeń na platformie Azure przy użyciu programu DPM
 > [!div class="op_single_selector"]
@@ -170,7 +170,7 @@ Po utworzeniu magazynu usługi Azure Backup agent powinien być zainstalowany na
 14. Korzystając z programu Data Protection Manager, można zmodyfikować ustawienia określone podczas rejestracji przepływu pracy, klikając **Konfiguruj** opcję, wybierając **Online** w obszarze **zarządzania**  Kartę.
 
 ## <a name="requirements-and-limitations"></a>Wymagania (i ograniczenia)
-* Program DPM może działać jako serwer fizyczny lub maszyny wirtualnej funkcji Hyper-V zainstalowana na System Center 2012 SP1 lub System Center 2012 R2. Mogą również działać jako maszynę wirtualną platformy Azure, uruchomiony w programie System Center 2012 R2 z co najmniej programu DPM 2012 R2 Update Rollup 3 lub maszynie wirtualnej Windows w środowisku programu VMWare działające co najmniej program System Center 2012 R2 z pakietem zbiorczym aktualizacji 5.
+* Program DPM może działać jako serwer fizyczny lub maszyny wirtualnej funkcji Hyper-V zainstalowana na System Center 2012 SP1 lub System Center 2012 R2. Mogą również działać jako maszynę wirtualną platformy Azure, uruchomiony w programie System Center 2012 R2 z co najmniej programu DPM 2012 R2 Update Rollup 3 lub maszynie wirtualnej Windows w środowisku programu VMware działające co najmniej program System Center 2012 R2 z pakietem zbiorczym aktualizacji 5.
 * Jeśli używasz programu DPM za pomocą programu System Center 2012 SP1 należy zainstalować pakietu zbiorczego aktualizacji 2 dla programu System Center Data Protection Manager SP1. Jest to wymagane, aby można było zainstalować agenta usługi Azure Backup.
 * Serwer programu DPM powinien mieć, programu Windows PowerShell i .net Framework 4.5 zainstalowane.
 * Program DPM może wykonać kopię zapasową większości obciążeń usługi Azure Backup. Aby uzyskać pełną listę, co ma obsługiwane Zobacz usługi Azure Backup obsługuje poniższe elementy.

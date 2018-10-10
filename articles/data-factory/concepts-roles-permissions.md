@@ -12,12 +12,12 @@ documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.openlocfilehash: 0c915c6b102f3aeedb316048fad1c6dc238fa0ad
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 10f325f3b7c93b91180b6a170c8b7accb75eb03b
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868619"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883775"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Role i uprawnienia dla usługi Azure Data Factory
 
@@ -51,7 +51,7 @@ Aby uzyskać więcej informacji na temat tej roli, zobacz [roli współautora us
 
 **Współautor Data Factory** roli na poziomie grupy zasobów lub nowszej, pozwala użytkownikom na wdrażanie szablonów usługi Resource Manager. W wyniku członkowie roli można użyć szablonów usługi Resource Manager do wdrożenia zarówno fabryki danych i ich zasoby podrzędne, w tym zestawy danych, połączonych usług, potoki, wyzwalaczy i środowiska integration Runtime. Członkostwo w tej roli nie zezwala użytkownikom na tworzenie innych zasobów, jednak.
 
-> [!WARNING]
+> [!IMPORTANT]
 > Wdrażanie szablonu usługi Resource Manager za pomocą **Współautor Data Factory** roli nie podniesienia poziomu uprawnień użytkownika. Na przykład, jeśli wdrożyć szablon, który tworzy maszynę wirtualną platformy Azure, a nie masz uprawnień do tworzenia maszyn wirtualnych, wdrożenie zakończy się niepowodzeniem z powodu błędu autoryzacji.
 
 ### <a name="custom-scenarios-and-custom-roles"></a>Niestandardowe scenariusze i ról niestandardowych

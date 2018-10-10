@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: ffd22f3612d55258737cb9c004b2b0f4e9326f07
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 5a97a683e7f25029199ba68ce3d5cee410c3cf29
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452517"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886828"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą języka Java w usłudze Azure Stack
 
@@ -40,7 +40,7 @@ Profil interfejsu API jest kombinacją dostawcy zasobów i wersje interfejsów A
     
       - To można określić w pliku Pom.xml jako zależność, która automatycznie ładuje moduły Jeśli wybierz odpowiednie klasę z listy rozwijanej, tak jak przy użyciu platformy .NET.
         
-          - Górnej części każdego modułu wygląda następująco:         
+      - Górnej części każdego modułu wygląda następująco:         
            `Import com.microsoft.azure.management.resources.v2018_03_01.ResourceGroup`
              
 
@@ -93,11 +93,11 @@ Za pomocą zestawu Azure Java SDK usługi Azure Stack, należy podać następuj�
 
 | Wartość                     | Zmienne środowiskowe | Opis                                                                                                                                                                                                          |
 | ------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Identyfikator dzierżawy                 | TENANT_ID            | Zalety usługi Azure Stack [ <span class="underline">identyfikator dzierżawy</span>](../azure-stack-identity-overview.md).                                                          |
-| Identyfikator klienta                 | CLIENT_ID             | Usługa identyfikator podmiotu zabezpieczeń aplikacji zapisywał informacje o nazwę główną usługi został utworzony w poprzedniej sekcji niniejszego dokumentu.                                                                                              |
-| Identyfikator subskrypcji           | SUBSCRIPTION_ID      | [ <span class="underline">Identyfikator subskrypcji</span> ](../azure-stack-plan-offer-quota-overview.md#subscriptions) jest sposób uzyskiwania dostępu do oferty w usłudze Azure Stack.                |
-| Wpis tajny klienta             | WARTOŚĆ CLIENT_SECRET        | Klucz tajny aplikacji nazwy głównej usługi zapisane podczas tworzenia nazwy głównej usługi.                                                                                                                                   |
-| Punkt końcowy usługi Resource Manager | PUNKT KOŃCOWY              | Zobacz [ <span class="underline">punktu końcowego Menedżera zasobów usługi Azure Stack</span>](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint). |
+| Identyfikator dzierżawy                 | AZURE_TENANT_ID            | Zalety usługi Azure Stack [ <span class="underline">identyfikator dzierżawy</span>](../azure-stack-identity-overview.md).                                                          |
+| Identyfikator klienta                 | AZURE_CLIENT_ID             | Usługa identyfikator podmiotu zabezpieczeń aplikacji zapisywał informacje o nazwę główną usługi został utworzony w poprzedniej sekcji niniejszego dokumentu.                                                                                              |
+| Identyfikator subskrypcji           | AZURE_SUBSCRIPTION_ID      | [ <span class="underline">Identyfikator subskrypcji</span> ](../azure-stack-plan-offer-quota-overview.md#subscriptions) jest sposób uzyskiwania dostępu do oferty w usłudze Azure Stack.                |
+| Wpis tajny klienta             | AZURE_CLIENT_SECRET        | Klucz tajny aplikacji nazwy głównej usługi zapisane podczas tworzenia nazwy głównej usługi.                                                                                                                                   |
+| Punkt końcowy usługi Resource Manager | ARM_ENDPOINT              | Zobacz [ <span class="underline">punktu końcowego Menedżera zasobów usługi Azure Stack</span>](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint). |
 | Lokalizacja                  | RESOURCE_LOCATION    | Lokalny dla usługi Azure Stack                                                                                                                                                                                                |
 
 Aby znaleźć identyfikator dzierżawy usługi Azure Stack, należy postępować zgodnie z instrukcjami [tutaj](../azure-stack-csp-ref-operations.md). Aby ustawić zmienne środowiskowe, wykonaj następujące czynności:
@@ -107,7 +107,7 @@ Aby znaleźć identyfikator dzierżawy usługi Azure Stack, należy postępować
 Aby ustawić zmienne środowiskowe w wierszu polecenia Windows, użyj następującego formatu:
 
 ```shell
-Set Azure_Tenant_ID=<Your_Tenant_ID>
+Set AZURE_TENANT_ID=<Your_Tenant_ID>
 ```
 
 ### <a name="macos-linux-and-unix-based-systems"></a>System macOS, Linux i komputerach z systemem Unix
@@ -115,7 +115,7 @@ Set Azure_Tenant_ID=<Your_Tenant_ID>
 W systemach Unix, na podstawie można użyć następującego polecenia:
 
 ```shell
-Export Azure_Tenant_ID=<Your_Tenant_ID>
+Export AZURE_TENANT_ID=<Your_Tenant_ID>
 ```
 
 ### <a name="the-azure-stack-resource-manager-endpoint"></a>Punktu końcowego Menedżera zasobów usługi Azure Stack
@@ -162,7 +162,8 @@ Poniższy kod uwierzytelnia nazwę główną usługi w usłudze Azure Stack. Ide
 ```java
 AzureTokenCredentials credentials = new ApplicationTokenCredentials(client, tenant, key, AZURE_STACK)
                     .withDefaultSubscriptionId(subscriptionId);
-            Azure azureStack = Azure.configure().withLogLevel(com.microsoft.rest.LogLevel.BASIC)
+Azure azureStack = Azure.configure()
+                    .withLogLevel(com.microsoft.rest.LogLevel.BASIC)
                     .authenticate(credentials, credentials.defaultSubscriptionId());
 ```
 
@@ -182,7 +183,7 @@ AzureEnvironment AZURE_STACK = new AzureEnvironment(new HashMap<String, String>(
                     put("activeDirectoryResourceId", settings.get("audience"));
                     put("activeDirectoryGraphResourceId", settings.get("graphEndpoint"));
                     put("storageEndpointSuffix", armEndpoint.substring(armEndpoint.indexOf('.')));
-                    put("keyVaultDnsSuffix", ".adminvault" + armEndpoint.substring(armEndpoint.indexOf('.')));
+                    put("keyVaultDnsSuffix", ".vault" + armEndpoint.substring(armEndpoint.indexOf('.')));
                 }
             });
 ```
@@ -205,8 +206,7 @@ HttpGet getRequest = new
 HttpGet(String.format("%s/metadata/endpoints?api-version=1.0",
 armEndpoint));
 
-// Add additional header to getRequest which accepts application/xml
-data
+// Add additional header to getRequest which accepts application/xml data
 getRequest.addHeader("accept", "application/xml");
 
 // Execute request and catch response
@@ -217,37 +217,37 @@ HttpResponse response = httpClient.execute(getRequest);
 
 Do tworzenia rozwiązań przy użyciu profilów platformy .NET i interfejsu API usługi Azure Stack, można użyć następujących przykładów usługi GitHub jako odniesienia:
 
-  - [Zarządzanie grupami zasobów](https://github.com/viananth/resources-java-manage-resource-group/tree/stack/Hybrid)
+  - [Zarządzanie grupami zasobów](https://github.com/Azure-Samples/Hybrid-resources-java-manage-resource-group)
 
-  - [Zarządzanie kontami magazynu](https://github.com/viananth/storage-java-manage-storage-accounts/tree/stack/Hybrid)
+  - [Zarządzanie kontami magazynu](https://github.com/Azure-Samples/hybrid-storage-java-manage-storage-accounts)
 
-  - [Zarządzanie maszyną wirtualną](https://github.com/viananth/compute-java-manage-vm/tree/stack/Hybrid)
+  - [Zarządzanie maszyną wirtualną](https://github.com/Azure-Samples/hybrid-compute-java-manage-vm)
 
 ### <a name="sample-unit-test-project"></a>Przykładowy projekt testu jednostki 
 
 1.  Sklonuj repozytorium przy użyciu następującego polecenia:
     
-    `git clone https://github.com/viananth/resources-java-manage-resource-group/tree/stack/Hybrid`
+    `git clone https://github.com/Azure-Samples/Hybrid-resources-java-manage-resource-group.git`
 
 2.  Tworzenie jednostki usługi platformy Azure i przypisywanie roli dostęp do subskrypcji. Aby uzyskać instrukcje dotyczące tworzenia jednostki usługi, zobacz [użyciu programu Azure PowerShell utworzyć nazwę główną usługi za pomocą certyfikatu](../azure-stack-create-service-principals.md).
 
 3.  Pobierz następujące wartości zmiennych środowiskowych wymagane:
     
-   1.  TENANT_ID
-   2.  CLIENT_ID
-   3.  WARTOŚĆ CLIENT_SECRET
-   4.  SUBSCRIPTION_ID
-   5.  ARM_ENDPOINT
-   6.  RESOURCE_LOCATION
+    -  AZURE_TENANT_ID
+    -  AZURE_CLIENT_ID
+    -  AZURE_CLIENT_SECRET
+    -  AZURE_SUBSCRIPTION_ID
+    -  ARM_ENDPOINT
+    -  RESOURCE_LOCATION
 
 4.  Ustaw następujące zmienne środowiskowe, korzystając z informacji pobrane z nazwy głównej usługi zostały utworzone za pomocą wiersza polecenia:
     
-   1. Eksportuj TENANT_ID = {swój identyfikator dzierżawy}
-   2. Eksportuj CLIENT_ID = {identyfikatora klienta}
-   3. Eksportuj CLIENT_SECRET = {klucz tajny klienta}
-   4. Eksportuj SUBSCRIPTION_ID = {identyfikator subskrypcji}
-   5. Eksportuj ARM_ENDPOINT = {adres URL Menedżer usłudze Azure Stack Resource}
-   6. Eksportuj RESOURCE_LOCATION = {lokalizacji usługi Azure Stack}
+    - Eksportuj AZURE_TENANT_ID = {swój identyfikator dzierżawy}
+    - Eksportuj AZURE_CLIENT_ID = {identyfikatora klienta}
+    - Eksportuj AZURE_CLIENT_SECRET = {klucz tajny klienta}
+    - Eksportuj AZURE_SUBSCRIPTION_ID = {identyfikator subskrypcji}
+    - Eksportuj ARM_ENDPOINT = {adres URL Menedżer usłudze Azure Stack Resource}
+    - Eksportuj RESOURCE_LOCATION = {lokalizacji usługi Azure Stack}
 
    W Windows, użyj **ustaw** zamiast **wyeksportować**.
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: ccb759a9151d734aa99a6f6b9c68e6072874dd84
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: c6e9eef762d4a9eb95685d94c61ce10d499bb155
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394832"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884807"
 ---
 # <a name="use-ip-filters"></a>Użyj filtrów IP
 
@@ -48,6 +48,8 @@ Na przykład jeśli chcesz zaakceptować adresów w 70.37.104.0/24 zakresu i odr
 > Odrzuca adresy IP można zapobiec interakcji z usługą Service Bus innych usług platformy Azure (np. usługi Azure Stream Analytics, Azure Virtual Machines lub Device Explorer w portalu).
 
 ### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Tworzenie reguły sieci wirtualnej przy użyciu szablonów usługi Azure Resource Manager
+
+> ! [WAŻNE] Sieci wirtualne są obsługiwane tylko w **premium** warstwy usługi Service Bus.
 
 Następujący szablon usługi Resource Manager umożliwia dodanie reguły sieci wirtualnej do istniejącej przestrzeni nazw usługi Service Bus.
 

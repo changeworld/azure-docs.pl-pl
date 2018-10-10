@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: f5e23a5734f8451b99823f238b577a21a4752c18
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: babad23743a0a3c9631c0bcf406de3521174264a
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047818"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887216"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Jak rozwiązywać problemy z "środowisko uruchomieniowe usługi functions jest nieosiągalny"
 
@@ -28,7 +28,7 @@ Ten dokument ma na celu rozwiązywanie problemów z powodu następującego błę
 `Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
 
 ### <a name="summary"></a>Podsumowanie
-Ten problem występuje, gdy nie można uruchomić Azure unctions środowiska uruchomieniowego. Najbardziej typową przyczyną wystąpienia tego błędu jest aplikacja funkcji utraty dostępu do jego konta magazynu. [Więcej informacji na temat wymagania konta magazynu w tym miejscu](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
+Ten problem występuje, gdy nie można uruchomić środowisko uruchomieniowe usługi Azure Functions. Najbardziej typową przyczyną wystąpienia tego błędu jest aplikacja funkcji utraty dostępu do jego konta magazynu. [Więcej informacji na temat wymagania konta magazynu w tym miejscu](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 Omówimy cztery najbardziej typowe przypadki błędów, jak identyfikować i jak rozwiązać problem w każdym przypadku.

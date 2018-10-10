@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: 4e40a731530e9423c7be6f2e2449aad970bb327c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: b3b96bec7a56a0d1f8471f0290ae928ef80d7b3a
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040248"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883741"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Dokumentacja ustawień aplikacji dla usługi Azure Functions
 
@@ -114,7 +114,7 @@ Prawidłowe wartości to "readwrite" i "readonly".
 
 ## <a name="functionsextensionversion"></a>FUNKCJE\_ROZSZERZENIA\_WERSJI
 
-Wersja środowiska uruchomieniowego usługi Azure Functions do użycia w tej aplikacji funkcji. Tylda za pomocą wersji głównej oznacza, użyj najnowszej wersji tej wersji głównej (na przykład, "~ 2"). Jeśli dla tej samej wersji głównej są dostępne nowe wersje, są instalowane automatycznie w aplikacji funkcji. Aby przypiąć ją do określonej wersji, należy użyć pełny numer wersji (na przykład "2.0.12345"). Domyślna to "~ 2".
+Wersja środowiska uruchomieniowego funkcji do użycia w tej aplikacji funkcji. Tylda za pomocą wersji głównej oznacza, użyj najnowszej wersji tej wersji głównej (na przykład, "~ 2"). Jeśli dla tej samej wersji głównej są dostępne nowe wersje, są instalowane automatycznie w aplikacji funkcji. Aby przypiąć ją do określonej wersji, należy użyć pełny numer wersji (na przykład "2.0.12345"). Domyślna to "~ 2". Wartość `~1` Przypina aplikacji do wersji 1.x środowiska uruchomieniowego.
 
 |Klucz|Wartość przykładowa|
 |---|------------|
@@ -122,7 +122,7 @@ Wersja środowiska uruchomieniowego usługi Azure Functions do użycia w tej apl
 
 ## <a name="functionsworkerruntime"></a>FUNKCJE\_PROCESU ROBOCZEGO\_ŚRODOWISKA URUCHOMIENIOWEGO
 
-Proces roboczy CLR do załadowania w aplikacji funkcji.  Odpowiada to język używany w aplikacji (na przykład "dotnet"). Dla funkcji w wielu językach, musisz opublikować je w wiele aplikacji, z których każdy z odpowiedniej wartości środowiska uruchomieniowego procesu roboczego.  Prawidłowe wartości to `dotnet`, `node`, i `java`.
+Proces roboczy CLR do załadowania w aplikacji funkcji.  Odpowiada to język używany w aplikacji (na przykład "dotnet"). Dla funkcji w wielu językach, musisz opublikować je w wiele aplikacji, z których każdy z odpowiedniej wartości środowiska uruchomieniowego procesu roboczego.  Prawidłowe wartości to `dotnet` (C# /F #), `node` (JavaScript) i `java` (Java).
 
 |Klucz|Wartość przykładowa|
 |---|------------|

@@ -2,7 +2,7 @@
 title: Często zadawane pytania dotyczące korzystania z usługi Azure Database Migration Service | Dokumentacja firmy Microsoft
 description: Dowiedz się, często zadawane pytania dotyczące korzystania z usługi Azure Database Migration Service do przeprowadzania migracji bazy danych.
 services: database-migration
-author: HJToland3
+author: pochiraju
 ms.author: rajpo
 manager: ''
 ms.reviewer: ''
@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 06/19/2018
-ms.openlocfilehash: 08158843d0dfb3e5eb0635b5f5b5d015938d895e
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 10/09/2018
+ms.openlocfilehash: f1f67921e7eadded4292f244f5754c8f00341a15
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804416"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887108"
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>Często zadawane pytania dotyczące korzystania z usługi Azure Database Migration Service
 Ten artykuł zawiera listę często zadawane pytania dotyczące korzystania z usługi Azure Database Migration Service wraz z powiązane odpowiedzi.
@@ -28,7 +28,7 @@ Azure Database Migration Service to w pełni zarządzana usługa zaprojektowana 
 - Dalsze inwestycje w bezproblemowe migracje.
 
 ### <a name="q-what-source-target-pairs-does-the-azure-database-migration-service-currently-support"></a>PYTANIE: Jakie par źródło cel usługi Azure Database Migration Service obsługuje obecnie?
-Usługa obecnie obsługuje operacje migracji z programu SQL Server do usługi Azure SQL Database i możesz przejść do witryny Azure portal teraz aby rozpocząć korzystanie z usługi Azure Database Migration Service w tym scenariuszu. Inne par źródło cel, takich jak Oracle do usługi Azure SQL Database są dostępne za pośrednictwem ograniczone prywatnej wersji zapoznawczej. Aby sprawdzić możliwość uczestniczenia w ograniczonej wersji zapoznawczej prywatnych z tych scenariuszy, zarejestruj się [tutaj](https://aka.ms/dms-preview/).
+Usługa obecnie obsługuje operacje migracji z programu SQL Server do usługi Azure SQL Database i możesz przejść do witryny Azure portal teraz aby rozpocząć korzystanie z usługi Azure Database Migration Service w tym scenariuszu. Inne par źródło cel, takich jak Oracle do usługi Azure SQL Database, są dostępne za pośrednictwem ograniczone prywatnej wersji zapoznawczej. Aby sprawdzić możliwość uczestniczenia w ograniczonej wersji zapoznawczej prywatnych z tych scenariuszy, zarejestruj się [tutaj](https://aka.ms/dms-preview/).
 
 ### <a name="q-how-does-the-azure-database-migration-service-compare-to-other-microsoft-database-migration-tools-such-as-the-database-migration-assistant-dma-or-sql-server-migration-assistant-ssma"></a>PYTANIE: Jak wygląda porównanie usługi Azure Database Migration Service do innych narzędzi migracji bazy danych firmy Microsoft, takich jak bazy danych Migration Assistant (DMA) lub SQL Server Migration Assistant (SSMA)?
 Azure Database Migration Service jest preferowaną metodą migracji bazy danych w systemie Microsoft Azure na dużą skalę. Aby uzyskać więcej szczegółów na porównanie usługi Azure Database Migration Service do innych firmy Microsoft bazy danych narzędzi migracji, a następnie uzyskać zalecenia dotyczące używania usługi dla różnych scenariuszy, zobacz ogłaszania blogu [rozróżnianie baza danych firmy Microsoft Narzędzia i usługi migracji](https://blogs.msdn.microsoft.com/datamigration/2017/10/13/differentiating-microsofts-database-migration-tools-and-services/).
@@ -59,9 +59,9 @@ Azure Database Migration Service wstępnie wymagane składniki, które są wspó
 Aby uzyskać listę wszystkich wymagań wstępnych dotyczących konkurować scenariusze dotyczące migracji za pomocą usługi Azure Database Migration Service, zobacz powiązanych samouczków w usłudze Azure Database Migration Service [dokumentacji](https://docs.microsoft.com/azure/dms/dms-overview) na witryny docs.microsoft.com.
 
 ### <a name="q-how-do-i-find-the-ip-address-for-the-azure-database-migration-service-so-that-i-can-create-an-allow-list-for-the-firewall-rules-used-to-access-my-source-database-for-migration"></a>PYTANIE: Jak znaleźć adres IP dla usługi Azure Database Migration Service, dzięki czemu można utworzyć listę dozwolonych reguł zapory umożliwiające dostęp do bazy danych źródłowego do migracji?
-Może być konieczne dodanie reguły zapory, dzięki czemu Azure Database Migration Service dostęp do źródłowej bazy danych do migracji. Adres IP dla usługi jest dynamiczny, ale jeśli używasz Express Route, ten adres prywatnie jest przypisywany przez sieci firmowej. Najprostszym sposobem identyfikacji odpowiedniego adresu IP, który jest do wyszukania w tej samej grupie zasobów aprowizowanych zasobu usługi Azure Database Migration Service można znaleźć skojarzonego interfejsu sieciowego. Zazwyczaj nazwą zasobu interfejsu sieciowego zaczyna się od prefiksu karty Sieciowej i następuje znak unikatowy i numer sekwencji, przykład jj6tnztnmarpsskr82rbndyp karty Sieciowej. Wybranie tego zasobu interfejsu sieciowego, możesz zobaczyć adres IP, który musi być uwzględniony na liście dozwolonych na Przegląd zasobów stronę witryny Azure portal.
+Może być konieczne dodanie reguły zapory, dzięki czemu Azure Database Migration Service dostęp do źródłowej bazy danych do migracji. Adres IP dla usługi jest dynamiczny, ale jeśli używasz programu Express Route, ten adres prywatnie jest przypisywany przez sieci firmowej. Najprostszym sposobem identyfikacji odpowiedniego adresu IP, który jest do wyszukania w tej samej grupie zasobów aprowizowanych zasobu usługi Azure Database Migration Service można znaleźć skojarzonego interfejsu sieciowego. Zazwyczaj nazwą zasobu interfejsu sieciowego zaczyna się od prefiksu karty Sieciowej i następuje znak unikatowy i numer sekwencji, na przykład jj6tnztnmarpsskr82rbndyp karty Sieciowej. Wybranie tego zasobu interfejsu sieciowego, możesz zobaczyć adres IP, który musi być uwzględniony na liście dozwolonych na Przegląd zasobów stronę witryny Azure portal.
 
-Może być również konieczne obejmują źródło portu programu SQL Server nasłuchuje na liście dozwolonych. Domyślnie jest port 1433, ale źródła programu SQL Server może być skonfigurowana do nasłuchiwania na również innych portów. W takim przypadku konieczne jest uwzględnienie tych portów z listy dozwolonych. Można określić numer portu, którego nasłuchuje serwer SQL za pomocą zapytania dynamicznego widoku zarządzania:
+Może być również konieczne obejmują źródło portu programu SQL Server nasłuchuje na liście dozwolonych. Domyślnie tego portu 1433, ale źródła, które można skonfigurować programu SQL Server w celu nasłuchiwania również innych portów. W takim przypadku konieczne jest uwzględnienie tych portów z listy dozwolonych. Można określić numer portu, którego nasłuchuje serwer SQL za pomocą zapytania dynamicznego widoku zarządzania:
 
 ```sql
     SELECT DISTINCT 

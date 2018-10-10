@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2017
+ms.date: 10/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4809a413ce40532cc0367945fd902188f065baaa
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 9c40cfd9b15f2ae6398b70effc4f4d38111cfe1e
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312053"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886069"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Synchronizacja programu Azure AD Connect: rozszerzenia katalogów
 Umożliwia rozszerzeń katalogów rozszerzania schematu w usłudze Azure Active Directory (Azure AD) przy użyciu atrybutów z usługi Active Directory w środowisku lokalnym. Ta funkcja umożliwia tworzenie aplikacji biznesowych za korzystanie z atrybutów, które nadal zarządzać w środowisku lokalnym. Te atrybuty mogą być używane za pośrednictwem [rozszerzenia katalogów interfejsu API usługi Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) lub [programu Microsoft Graph](https://graph.microsoft.io/). Zobaczysz dostępne atrybuty za pomocą [programu Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) i [programu Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)odpowiednio.
@@ -28,6 +28,9 @@ Umożliwia rozszerzeń katalogów rozszerzania schematu w usłudze Azure Active 
 Obecnie nie obciążenie usługi Office 365 korzysta z tych atrybutów.
 
 Możesz skonfigurować dodatkowych atrybutów, które chcesz synchronizować w ścieżce ustawienia niestandardowe w Kreatorze instalacji.
+
+>[!NOTE]
+>Pole dostępnych atrybutów jest rozróżniana wielkość liter.
 
 ![Kreator rozszerzenia schematu](./media/how-to-connect-sync-feature-directory-extensions/extension2.png)  
 

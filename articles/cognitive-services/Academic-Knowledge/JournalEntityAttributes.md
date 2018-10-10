@@ -1,24 +1,25 @@
 ---
-title: Atrybuty obiektu arkusza w Academic Knowledge API | Dokumentacja firmy Microsoft
-description: Dowiedz się, atrybuty, które można użyć z jednostką dziennika w Academic Knowledge API w usługach kognitywnych.
+title: Atrybuty jednostki dziennika — interfejs Academic Knowledge API
+titlesuffix: Azure Cognitive Services
+description: Dowiedz się, atrybuty, które można użyć z jednostką arkusza w interfejsu Academic Knowledge API w usługach Cognitive Services.
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: e782c57b8ac57028e070c16382c53ec76666e94d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 45b2860b56e79c197d96998350131a142326157a
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346848"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902811"
 ---
-# <a name="journal-entity"></a>Jednostki dziennika
+# <a name="journal-entity"></a>Jednostki do arkusza
 
-<sub> * Następujące atrybuty są specyficzne dla jednostki dziennika. (Ty = "2") </sub>
+<sub> * Następujące atrybuty są specyficzne dla jednostki do arkusza. (Ty = "2") </sub>
 
 Name (Nazwa)    |Opis                            |Typ       | Operacje
 ------- | ------------------------------------- | --------- | ----------------------------

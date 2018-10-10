@@ -1,20 +1,21 @@
 ---
-title: Tworzenie Akustyka z projektu Akustyka — Cognitive Services
+title: Tworzenie Akustyka z Akustyka projektu
+titlesuffix: Azure Cognitive Services
 description: W tym dokumencie opisano proces przesyłania tworzenie Akustyka przy użyciu rozszerzenia edytora aparatu Unity.
 services: cognitive-services
 author: kegodin
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 7a409b1ecdd693a0f28d2303d55a27b177644eb0
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: c37e050cd762cb173d64f78b5267e4ad252d17a9
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855412"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902250"
 ---
 # <a name="bake-acoustics"></a>Tworzenie Akustyka
 

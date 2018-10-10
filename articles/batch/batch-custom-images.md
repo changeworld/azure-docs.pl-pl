@@ -1,99 +1,109 @@
 ---
-title: Zapewnij pule partii zadań Azure z niestandardowymi obrazami | Dokumentacja firmy Microsoft
-description: Można utworzyć plik wsadowy puli z niestandardowego obrazu, aby udostępnić obliczeniowe węzłów, które zawierają oprogramowanie i dane potrzebne do aplikacji. Niestandardowe obrazy są wydajnym sposobem konfigurowania węzłów obliczeniowych do uruchamiania obciążeń partii.
+title: Aprowizowanie puli Azure Batch za pomocą niestandardowego obrazu | Dokumentacja firmy Microsoft
+description: Tworzenie puli za pomocą niestandardowego obrazu dla aprowizacji funkcji obliczeniowych węzły, które zawierają oprogramowanie i dane potrzebne dla aplikacji usługi Batch. Obrazy niestandardowe są wydajny sposób konfigurowania węzłów obliczeniowych do uruchamiania obciążeń usługi Batch.
 services: batch
 author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 04/23/2018
+ms.date: 10/04/2018
 ms.author: danlep
-ms.openlocfilehash: 78bc50a1189d8f42281f81643a5e907d94480082
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7d0526dd233afd3976b22d257300681db0bfcead
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32158616"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885216"
 ---
-# <a name="use-a-managed-custom-image-to-create-a-pool-of-virtual-machines"></a>Użyj zarządzanego obrazu niestandardowego do utworzenia puli maszyn wirtualnych 
+# <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Używanie niestandardowego obrazu, aby utworzyć pulę maszyn wirtualnych 
 
-Podczas tworzenia puli partii zadań Azure za pomocą konfiguracji maszyny wirtualnej, należy określić obraz maszyny Wirtualnej, który zawiera system operacyjny na każdym węźle obliczeń w puli. Obraz portalu Azure Marketplace, albo niestandardowego obrazu (obraz maszyny Wirtualnej zostanie utworzony i skonfigurowany samodzielnie), można utworzyć puli maszyn wirtualnych. Niestandardowy obraz musi być *zarządzanego obrazu* zasobu w tej samej subskrypcji platformy Azure i regionu co konto usługi partia zadań.
+Podczas tworzenia puli usługi Azure Batch za pomocą konfiguracji maszyny wirtualnej, należy określić obraz maszyny Wirtualnej, który zawiera system operacyjny na każdym węźle obliczeniowym w puli. Można utworzyć puli maszyn wirtualnych, przy użyciu obsługiwanych obrazów portalu Azure Marketplace lub przy użyciu niestandardowego obrazu (obraz maszyny Wirtualnej zostanie utworzony i skonfigurowany samodzielnie). Niestandardowy obraz musi być *obrazu zarządzanego* zasobów w tej samej subskrypcji platformy Azure i regionie co konto usługi Batch.
 
-## <a name="why-use-a-custom-image"></a>Dlaczego warto używać niestandardowego obrazu?
-Po podaniu niestandardowego obrazu jest mają kontrolę nad konfiguracji systemu operacyjnego i typ systemu operacyjnego i dysków z danymi do użycia. Obraz niestandardowy może zawierać aplikacji i danych referencyjnych, które staną się dostępne we wszystkich węzłach puli partii natychmiast po ich udostępnieniu.
+## <a name="why-use-a-custom-image"></a>Dlaczego warto używać obrazu niestandardowego?
 
-Przy użyciu niestandardowego obrazu zaoszczędzić czas, w celu przygotowania węzły obliczeniowe z puli do uruchomienia obciążenie partii. Można użyć obrazu portalu Azure Marketplace i instalować oprogramowanie na każdy węzeł obliczeniowy po zainicjowaniu obsługi administracyjnej, może być bardziej wydajne przy użyciu niestandardowego obrazu.
+Jeśli podasz niestandardowego obrazu, masz kontrolę nad konfiguracji systemu operacyjnego i typ systemu operacyjnego i dysków z danymi ma być używany. Obraz niestandardowy może zawierać aplikacji i danych referencyjnych, które staną się dostępne we wszystkich węzłach puli usługi Batch, zaraz po ich udostępnieniu.
 
-Przy użyciu niestandardowego obrazu skonfigurowany dla danego scenariusza zapewniają wiele korzyści:
+Przy użyciu niestandardowego obrazu zaoszczędzić czas, w ramach przygotowywania węzłów obliczeniowych w puli do uruchomienia obciążenia usługi Batch. Można użyć obrazu portalu Azure Marketplace i instalować oprogramowanie na każdym węźle obliczeniowym po zainicjowaniu obsługi administracyjnej, może być bardziej efektywne przy użyciu niestandardowego obrazu.
 
-- **Konfigurowanie systemu operacyjnego (OS)**. Specjalnej konfiguracji systemu operacyjnego można wykonywać na niestandardowego obrazu dysku systemu operacyjnego. 
-- **Przed rozpoczęciem instalacji aplikacji.** Można utworzyć niestandardowy obraz z wstępnie zainstalowane aplikacje na dysku systemu operacyjnego, który jest bardziej wydajny i mniej podatne na błędy niż instalowania aplikacji po zainicjowaniu obsługi administracyjnej węzły obliczeniowe przy użyciu StartTask.
-- **Zaoszczędzić czas ponownego uruchomienia na maszynach wirtualnych.** Aplikacji zwykle wymaga ponownego uruchomienia maszyny Wirtualnej, który jest czasochłonne. Aby zaoszczędzić czas ponownego uruchomienia, należy wstępnie instalowania aplikacji. 
-- **Skopiuj raz bardzo dużych ilości danych.** Możesz wprowadzić dane statyczne część zarządzanego obrazu niestandardowego kopiując go do zarządzanego obrazu dysków z danymi. To należy wykonać jeden raz i tylko udostępnia danych do każdego węzła w puli.
-- **Wybór dysków.** Można utworzyć obraz niestandardowy zarządzany z dysku VHD z dyskiem zarządzanym maszyny Wirtualnej platformy Azure, migawkę tych dysków lub własnego systemu Linux lub Windows instalacji, który został skonfigurowany. Masz wybór za pomocą magazyn w warstwie premium dla dysku systemu operacyjnego i dysk z danymi.
-- **Zwiększaj pul do dowolnej wielkości.** Gdy używasz zarządzanego obrazu niestandardowego można utworzyć puli do dowolnej wielkości, zażądać może zwiększyć się pula. Nie trzeba utworzyć kopii obiektu blob obrazu wirtualne dyski twarde, aby pomieścić liczby maszyn wirtualnych. 
+Przy użyciu niestandardowego obrazu skonfigurowany dla danego scenariusza można podać kilka dodatkowych korzyści:
+
+- **Konfigurowanie systemu operacyjnego (OS)**. Można dostosować konfigurację dysku systemu operacyjnego obrazu. 
+- **Przed rozpoczęciem instalacji aplikacji.** Przed instalacją aplikacje na dysku systemu operacyjnego, który jest bardziej wydajne i mniej podatne na błędy niż instalowania aplikacji po zainicjowaniu obsługi administracyjnej węzłów obliczeniowych za pomocą zadania uruchamiania.
+- **Zapisz czas ponownego uruchomienia na maszynach wirtualnych.** Instalacja aplikacji zwykle wymaga ponownego uruchomienia maszyny Wirtualnej, czasochłonne. Aby zaoszczędzić czas ponownego uruchomienia, należy wstępnie instalowania aplikacji. 
+- **Skopiuj jeden raz bardzo dużych ilości danych.** Należy dane statyczne część zarządzany obraz niestandardowy, kopiując go do dysków z danymi obrazu zarządzanego. To musi odbywać się jeden raz i tylko udostępnia dane w każdym węźle puli.
+- **Wybór typów dysków.** Masz do wyboru używania usługi premium storage dla dysku systemu operacyjnego i dysk z danymi.
+- **Zwiększanie puli do dużych rozmiarów.** Gdy używasz zarządzany obraz niestandardowy do tworzenia puli, pula można powiększać bez konieczności można utworzyć kopie obiektu blob obrazu vhd. 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- **Zasobu zarządzanego obrazu**. Aby utworzyć puli maszyn wirtualnych przy użyciu niestandardowego obrazu, należy utworzyć zasobu zarządzanego obrazu w tej samej subskrypcji platformy Azure i regionu co konto usługi partia zadań. Dla opcji przygotować się do zarządzanego obrazu zobacz sekcję poniżej.
-- **Uwierzytelnianie usługi Azure Active Directory (AAD)**. Interfejs API klienta wsadowym należy użyć uwierzytelniania usługi AAD. Azure partii obsługę usługi AAD jest udokumentowany w [rozwiązań usług uwierzytelniania partii z usługą Active Directory](batch-aad-auth.md).
+- **Zasób obrazu zarządzanego**. Tworzenie puli maszyn wirtualnych przy użyciu niestandardowego obrazu, należy mieć lub utworzyć zasób obrazu zarządzanego w tej samej subskrypcji platformy Azure i regionie co konto usługi Batch. Obraz, który powinien zostać utworzony z migawki dysku systemu operacyjnego maszyny Wirtualnej i opcjonalnie jego dołączonych dysków z danymi. Aby uzyskać więcej informacji i czynności, aby przygotować do zarządzanego obrazu zobacz następującą sekcję. 
+  - Użyj unikatowy obrazu niestandardowego dla każdej puli, który tworzysz.
+  - Aby utworzyć pulę przy użyciu obrazu przy użyciu interfejsów API usługi Batch, należy określić **identyfikator zasobu** obrazu, który ma postać `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage`. Aby korzystać z portalu, użyj **nazwa** obrazu.  
+  - Zasób obrazu zarządzanego powinna istnieć okres istnienia puli, aby umożliwić skalowanie w górę i może zostać usunięta po usunięciu puli.
 
-    
-## <a name="prepare-a-custom-image"></a>Przygotuj obraz niestandardowy
-Można przygotować zarządzanego obrazu z dysku VHD, z maszyny Wirtualnej platformy Azure z dyskami zarządzanych lub migawki maszyny Wirtualnej. Dla partii zaleca się utworzenie zarządzanego obrazu z maszyny Wirtualnej z dysków zarządzanych lub migawki maszyny Wirtualnej. Zarządzanego obrazu źródłowego zasobu powinny istnieć dla pul na skalowanie w górę i może zostać usunięta po usunięciu puli. 
+- **Uwierzytelnianie usługi Azure Active Directory (AAD)**. Interfejs API klienta usługi Batch, należy użyć uwierzytelniania usługi AAD. Obsługa usługi Azure Batch dla usługi AAD jest udokumentowany w [uwierzytelnianie rozwiązań usługi Batch service z usługą Active Directory](batch-aad-auth.md).
 
-Podczas przygotowywania obrazu, należy pamiętać następujące kwestie:
+## <a name="prepare-a-custom-image"></a>Przygotowanie obrazu niestandardowego
 
-* Upewnij się, że podstawowy obraz systemu operacyjnego używany do aprowizowania pul usługi Batch nie ma wstępnie zainstalowanych rozszerzeń platformy Azure, takich jak rozszerzenie skryptu niestandardowego. Jeśli obraz zawiera wstępnie zainstalowane rozszerzenie, platforma Azure może napotkać problemy podczas wdrażania maszyny wirtualnej.
-* Upewnij się, czy podstawowy obraz systemu operacyjnego, podane przez użytkownika używa domyślnej dysku tymczasowego. Agenta węzła partii oczekuje obecnie domyślnym dysku tymczasowym.
-* Nie można usunąć zasobu zarządzanego obrazu przywoływanego przez pulę partii przez czas ich istnienia puli. Jeśli zasobu zarządzanego obrazu zostanie usunięty, a następnie nie może zwiększyć się pula wszelkie dodatkowe. 
+Na platformie Azure można przygotować obrazu zarządzanego z migawek systemu operacyjnego w maszynie Wirtualnej platformy Azure i dysków z danymi, uogólnionej maszyny Wirtualnej platformy Azure z dyskami zarządzanymi lub lokalnego uogólnionego wirtualnego dysku twardego przekazane. Aby skalować pule usługi Batch niezawodnie przy użyciu niestandardowego obrazu, zaleca się utworzenie obrazu zarządzanego przy użyciu *tylko* pierwszej metody: przy użyciu migawek dysków maszyny Wirtualnej. Zobacz poniższe kroki, aby przygotować Maszynę wirtualną, Utwórz migawkę i tworzenie obrazu na podstawie migawki. 
 
-### <a name="to-create-a-managed-image"></a>Aby utworzyć obraz zarządzanych
-Wszystkie istniejące przygotowane systemu Windows lub Linux dysku systemu operacyjnego służy do tworzenia zarządzanego obrazu. Na przykład jeśli chcesz użyć lokalnego obrazu, następnie przekaż dysku do konta usługi Azure Storage, który znajduje się w tej samej subskrypcji i regionu jako konta usługi partia zadań przy użyciu narzędzia AzCopy lub innego narzędzia przekazywania. Aby uzyskać szczegółowe kroki w celu przekazania dysku VHD i utworzyć obraz zarządzanych, zobacz wskazówki dotyczące [Windows](../virtual-machines/windows/upload-generalized-managed.md) lub [Linux](../virtual-machines/linux/upload-vhd.md) maszyn wirtualnych.
+### <a name="prepare-a-vm"></a>Przygotowywanie maszyny Wirtualnej 
 
-Można również przygotować zarządzanego obrazu z nowej lub istniejącej maszyny Wirtualnej platformy Azure lub migawki maszyny Wirtualnej. 
+Jeśli tworzysz nową maszynę Wirtualną dla obrazu użyć obsługiwane przy użyciu usługi Batch jako obrazu podstawowego dla obrazu zarządzanego obrazu portalu Azure Marketplace, a następnie ją Dostosuj.  Aby uzyskać listę obsługiwanych przez usługę Azure Batch odwołań do obrazu portalu Azure Marketplace, zobacz [jednostki SKU agenta węzła listy](/rest/api/batchservice/account/listnodeagentskus) operacji. Obraz innych firm nie można użyć jako obrazu podstawowego.
 
-* W przypadku tworzenia nowej maszyny Wirtualnej, można użyć obrazu portalu Azure Marketplace jako obrazu podstawowego do zarządzanego obrazu, a następnie dostosować go. 
+* Upewnij się, że maszyna wirtualna jest tworzona w przypadku dysków zarządzanych. To domyślne ustawienie magazynu podczas tworzenia maszyny Wirtualnej.
+* Nie należy instalować rozszerzeń platformy Azure, takich jak rozszerzenie niestandardowego skryptu na maszynie Wirtualnej. Jeśli obraz zawiera wstępnie zainstalowane rozszerzenie, Azure, mogą wystąpić problemy podczas wdrażania puli usługi Batch.
+* Upewnij się, że podstawowy obraz systemu operacyjnego, których udzielasz używa domyślnego dysku tymczasowego. Agent węzłów usługi Batch oczekuje domyślnego dysku tymczasowego.
+* Gdy maszyna wirtualna jest uruchomiona, się z nim za pośrednictwem protokołu RDP (dla Windows) lub SSH (dla systemu Linux). Zainstaluj oprogramowanie niezbędne lub skopiuj żądanych danych.  
 
-* Jeśli planowane jest przechwycenie obrazu przy użyciu portalu, upewnij się, że maszyna wirtualna zostanie utworzona z dyskiem zarządzanym. Jest to domyślne ustawienie magazynu podczas tworzenia maszyny Wirtualnej.
+### <a name="create-a-vm-snapshot"></a>Tworzenie migawki maszyny Wirtualnej
 
-* Gdy maszyna wirtualna jest uruchomiona, się z nim połączyć za pośrednictwem protokołu RDP (dla systemu Windows) lub protokołu SSH (dla systemu Linux). Zainstaluj oprogramowanie niezbędne skopiować żądanych danych, a następnie Uogólnij maszyny Wirtualnej.  
+Migawka jest pełna, tylko do odczytu kopię dysku VHD. Aby utworzyć migawkę maszyny Wirtualnej systemu operacyjnego ani dysków z danymi, można użyć witryny Azure portal lub narzędzi wiersza polecenia. Kroki i opcje, aby utworzyć migawkę, znajdują się wskazówki dotyczące [Linux](../virtual-machines/linux/snapshot-copy-managed-disk.md) lub [Windows](../virtual-machines/windows/snapshot-copy-managed-disk.md) maszyn wirtualnych.
 
-Dla kroki w celu uogólnienia maszyny Wirtualnej platformy Azure i utworzyć obraz zarządzanych, zobacz wskazówki dotyczące [Windows](../virtual-machines/windows/capture-image-resource.md) lub [Linux](../virtual-machines/linux/capture-image.md) maszyn wirtualnych.
+### <a name="create-an-image-from-one-or-more-snapshots"></a>Tworzenie obrazu na podstawie co najmniej jednej migawki
 
-W zależności od tego, jak zaplanować tworzenie puli partii z obrazem należy następujący identyfikator obrazu:
+Aby utworzyć obrazu zarządzanego z migawki, użyj narzędzia wiersza polecenia platformy Azure takie jak [utworzyć obraz az](/cli/azure/image#az_image_create) polecenia. Aby utworzyć obraz, określając migawki dysku systemu operacyjnego i opcjonalnie co najmniej jeden migawki dysków danych.
 
-* Jeśli planujesz tworzenie puli za pomocą obrazu przy użyciu interfejsów API partii, **identyfikator zasobu** obrazu, który ma postać `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage`. 
-* Jeśli zamierzasz korzystać z portalu **nazwa** obrazu. 
+## <a name="create-a-pool-from-a-custom-image-in-the-portal"></a>Tworzenie puli za pomocą niestandardowego obrazu w portalu
 
-
-
-
-
-## <a name="create-a-pool-from-a-custom-image-in-the-portal"></a>Utwórz pulę z niestandardowego obrazu w portalu
-
-Po zapisaniu niestandardowego obrazu i znasz jego nazwie lub identyfikatorze zasobu, można utworzyć puli partii z tego obrazu. Poniższe kroki pokazują, jak utworzyć pulę z portalu Azure.
+Po zapisaniu z obrazem niestandardowym i znasz jego nazwę lub identyfikator zasobu, należy utworzyć pulę usługi Batch z tego obrazu. Poniższe kroki pokazują sposób tworzenia puli w witrynie Azure portal.
 
 > [!NOTE]
-> W przypadku tworzenia puli przy użyciu jednego z interfejsów API partii, upewnij się, że tożsamość, którą można używać do uwierzytelniania usługi AAD ma uprawnienia do zasobu obrazu. Zobacz [rozwiązań usług uwierzytelniania partii z usługą Active Directory](batch-aad-auth.md).
+> W przypadku tworzenia puli przy użyciu jednego z interfejsów API usługi Batch, upewnij się, że tożsamości używany do uwierzytelniania usługi AAD ma uprawnienia do zasobu obrazu. Zobacz [uwierzytelnianie rozwiązań usługi Batch service z usługą Active Directory](batch-aad-auth.md).
 >
 
-1. W witrynie Azure Portal przejdź do swojego konta usługi Batch. To konto musi być w tej samej subskrypcji i regionu jako grupa zasobów, zawierający obraz niestandardowy. 
+1. W witrynie Azure Portal przejdź do swojego konta usługi Batch. To konto musi być w tej samej subskrypcji i regionie co grupa zasobów zawierająca obraz niestandardowy. 
 2. W **ustawienia** oknie po lewej stronie, wybierz opcję **pule** elementu menu.
 3. W **pule** wybierz **Dodaj** polecenia.
-4. Na **Dodaj pulę,** wybierz **niestandardowego obrazu (Linux/system Windows)** z **typ obrazu** listy rozwijanej. Z **obrazu maszyny Wirtualnej niestandardowe** listy rozwijanej, wybierz nazwę obrazu (forma krótka/identyfikatora zasobu).
-5. Wybierz poprawny **wydawcy lub oferta/jednostki Sku** dla niestandardowego obrazu.
-6. Określ pozostałe wymagane ustawienia, w tym **rozmiaru węzła**, **Target dedykowanych węzłów**, i **niski priorytet węzłów**, a także wszelkie potrzebne ustawienia opcjonalne.
+4. Na **Dodaj pulę** wybierz **obraz niestandardowy (Linux/Windows)** z **typ obrazu** listy rozwijanej. Z **niestandardowy obraz maszyny Wirtualnej** listy rozwijanej wybierz nazwę obrazu (krótka identyfikator zasobu).
+5. Wybierz poprawnego **wydawcę/ofertę/jednostkę Sku** dla obrazu niestandardowego.
+6. Określ pozostałe wymagane ustawienia, w tym **rozmiar węzła**, **docelowe węzły dedykowane**, i **niskim priorytecie węzłów**, jak również dowolne żądane ustawienia opcjonalne.
 
-    Na przykład w przypadku obraz niestandardowy Microsoft Windows Server Datacenter 2016 **Dodaj pulę,** zostanie wyświetlone okno, jak pokazano poniżej:
+    Na przykład obraz niestandardowy program Microsoft Windows Server 2016 Datacenter **Dodaj pulę** okno pojawia się, jak pokazano poniżej:
 
-    ![Dodaj pulę z niestandardowego obrazu systemu Windows](media/batch-custom-images/add-pool-custom-image.png)
+    ![Dodaj pulę za pomocą niestandardowego obrazu Windows](media/batch-custom-images/add-pool-custom-image.png)
   
-Aby sprawdzić, czy istniejącej puli jest oparta na niestandardowego obrazu, zobacz **systemu operacyjnego** właściwości w sekcji Podsumowanie zasobów z **puli** okna. Jeśli w puli została utworzona z obrazu niestandardowego, jest równa **niestandardowego obrazu maszyny Wirtualnej**.
+Aby sprawdzić, czy istniejącej puli jest oparta na obrazach niestandardowych, zobacz **systemu operacyjnego** właściwości w sekcji podsumowania zasobów **puli** okna. Jeśli pula została utworzona na podstawie niestandardowego obrazu, jest równa **niestandardowego obrazu maszyny Wirtualnej**.
 
 Wszystkie obrazy niestandardowe skojarzone z pulą są wyświetlane w puli **właściwości** okna.
- 
+
+## <a name="considerations-for-large-pools"></a>Zagadnienia dotyczące dużych pul
+
+Jeśli użytkownik chce utworzyć pulę przy użyciu setek maszyn wirtualnych lub więcej przy użyciu niestandardowego obrazu, należy zgodnie z wytycznymi poprzedni, aby użyć obrazu utworzonego na podstawie migawki maszyny Wirtualnej.
+
+Również pamiętać o następujących kwestiach:
+
+- **Limity rozmiaru** — Batch ogranicza rozmiar puli 2500 dedykowanych węzłów obliczeniowych lub 1000 węzłów o niskim priorytecie, korzystając z niestandardowego obrazu.
+
+  Jeśli używasz tego samego obrazu (lub wiele obrazów, w oparciu o tę samą migawkę bazowego) można utworzyć wiele pul, węzły obliczeniowe całkowitą w pulach nie może przekroczyć poprzedniego limitów. Nie zaleca się przy użyciu obrazu lub jego migawkę bazowego dla więcej niż jedną pulę.
+
+  Limity, może zostać ograniczona, w przypadku skonfigurowania puli z [przychodzących pul NAT](pool-endpoint-configuration.md).
+
+- **Limit czasu zmiany rozmiaru** — Jeśli pula zawiera stałą liczbę węzłów automatyczne skalowanie nie zwiększ właściwość resizeTimeout puli, aby wartością, taką jak 20 – 30 minutach. Jeśli pula nie dociera do rozmiaru docelowego przed upływem limitu czasu, przeprowadzenie [operacja zmiany rozmiaru](/rest/api/batchservice/pool/resize).
+
+  Jeśli planujesz puli za pomocą ponad 300 węzłów obliczeniowych, może być konieczne zmiany rozmiaru puli wielokrotnie nawiązać rozmiar docelowy.
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby uzyskać szczegółowe informacje o partii, zobacz [Programowanie równoległe na dużą skalę obliczeniowe rozwiązań w partii](batch-api-basics.md).
+- Aby uzyskać szczegółowe omówienie usługi Batch, zobacz [tworzenie rozbudowanych rozwiązań przetwarzania równoległego przy użyciu usługi Batch](batch-api-basics.md).

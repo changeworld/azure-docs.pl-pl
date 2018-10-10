@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2018
+ms.date: 10/18/2018
 ms.author: douglasl
-ms.openlocfilehash: fa13b6509052438a0f59c4610f250d0b88b41f2b
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 77e5d6c278436a1fc192421c9867106409389a66
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043081"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888225"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -293,6 +293,23 @@ Jeśli chcesz korzystać z zawartości stdout.txt działania podrzędnego, może
   > [!IMPORTANT]
   > - Activity.json linkedServices.json i datasets.json są przechowywane w folderze czasu wykonywania zadania wsadowego. W tym przykładzie activity.json linkedServices.json i datasets.json są przechowywane w "https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/" ścieżki. Jeśli to konieczne, należy wyczyścić oddzielnie. 
   > - Do celów połączone usługi, własne środowisko IR, poufne informacje, takie jak klucze lub hasła są szyfrowane, środowiskiem Integration Runtime, aby zapewnić dostęp do poświadczeń pozostaje klientów zdefiniowane prywatnym środowisku sieciowym. Niektóre pola poufnych może być brak w odwołuje się kod aplikacji niestandardowej w ten sposób. W extendedProperties zamiast odwołanie do połączonej usługi, jeśli to konieczne, należy użyć ciągu SecureString. 
+
+## <a name="retrieve-securestring-outputs"></a>Pobieranie danych wyjściowych SecureString
+
+Wartości właściwości poufnych, wyznaczony jako typ *SecureString*, jak pokazano na niektóre przykłady w niniejszym artykule są maskowane się na karcie monitorowanie w interfejsie użytkownika usługi Data Factory.  Podczas wykonywania potoku rzeczywiste, jednak *SecureString* właściwość jest serializowana jako plik JSON w ramach `activity.json` pliku jako zwykły tekst. Na przykład:
+
+```json
+"extendedProperties": {
+    "connectionString": {
+        "type": "SecureString",
+        "value": "aSampleSecureString"
+    }
+}
+```
+
+Tej serializacji nie jest naprawdę bezpieczny i nie jest przeznaczony do zabezpieczenia. Celem jest wskazówkę Data Factory, aby wartość na karcie monitorowanie maski.
+
+Dostęp do właściwości typu *SecureString* z niestandardowych działań odczytywać `activity.json` pliku, który jest umieszczony w tym samym folderze co Twoje. Plik EXE, deserializacji za pomocą pliku JSON, a następnie uzyskać dostęp do właściwości JSON (extendedProperties = > [propertyName] = > wartość).
 
 ## <a name="compare-v2-v1"></a> Porównaj działaniu niestandardowym w wersji 2 i w wersji 1 (niestandardowy) działania DotNet
 

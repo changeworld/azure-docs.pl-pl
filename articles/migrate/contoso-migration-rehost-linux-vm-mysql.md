@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: raynew
-ms.openlocfilehash: 49667251cbce4a3f71d71a6508793a2d4c7aac38
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: f6c877a182395d12ee46e9fd9b7892a4a3e5cdb8
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300414"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887789"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms-and-azure-mysql"></a>Migracja Contoso: ponowne hostowanie aplikacji systemu Linux w środowisku lokalnym, do maszyn wirtualnych platformy Azure i usługi Azure MySQL
 
@@ -53,7 +53,7 @@ Zespół kierowniczy IT ściśle podjęła współpracę z partnerami biznesowym
 
 Zespół chmury firmy Contoso ma przypięte w dół do celów migracji, aby określić najlepszą metodę migracji:
 
-- Po migracji aplikacji na platformie Azure mają te same możliwości wydajności, jak obecnie w środowisku programu VMWare w środowisku lokalnym.  Aplikacja pozostanie tak krytyczne w chmurze, ponieważ jest w środowisku lokalnym. 
+- Po migracji aplikacji na platformie Azure mają te same możliwości wydajności, jak obecnie w środowisku programu VMware w środowisku lokalnym.  Aplikacja pozostanie tak krytyczne w chmurze, ponieważ jest w środowisku lokalnym. 
 - Contoso nie chcesz inwestować w tej aplikacji.  Ważne jest, aby firmy, ale w obecnej formie Contoso po prostu chcesz bezpiecznie przenieść je do chmury.
 - Po zakończeniu kilka migracji aplikacji Windows, firma Contoso chce dowiedzieć się, jak używać w infrastrukturze opartej na systemie Linux na platformie Azure.
 - Firma Contoso chce, aby zminimalizować zadania administratora bazy danych, po przeniesieniu aplikacji w chmurze.

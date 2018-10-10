@@ -1,6 +1,6 @@
 ---
-title: Dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw w usłudze Azure Active Directory
+title: Dostosowywanie oświadczeń wystawionych w tokenie języka SAML dla aplikacji dla przedsiębiorstw w usłudze Azure AD | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dostosowywanie oświadczeń wystawionych w tokenie języka SAML dla aplikacji korporacyjnych w usłudze Azure AD.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -17,20 +17,20 @@ ms.date: 09/11/2018
 ms.author: celested
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 80842f7e99ee0c58f1615892f3c3c4adf03119b6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5633dfbf59396e79226b196c2b699981409092ab
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956974"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902029"
 ---
-# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications-in-azure-ad"></a>Porady: dostosowywanie oświadczeń wystawionych w tokenie języka SAML dla aplikacji dla przedsiębiorstw w usłudze Azure AD
+# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Porady: dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw
 
-Już dzisiaj usługi Azure Active Directory obsługuje funkcję logowania jednokrotnego na z większością aplikacji przedsiębiorstwa, w tym aplikacje, zarówno wstępnie zintegrowane w galerii aplikacji Azure AD, jak również aplikacji niestandardowych. Jeśli użytkownik uwierzytelnia się do aplikacji za pomocą usługi Azure AD przy użyciu protokołu SAML 2.0, usługi Azure AD wysyła token do aplikacji (za pośrednictwem metody POST protokołu HTTP). A następnie ją sprawdza poprawność tokenu i używa go do logowania użytkownika zamiast monitowania o nazwę użytkownika i hasło. Te tokeny SAML zawierają informacje o użytkowniku, znane jako "oświadczenia".
+Już dzisiaj usługi Azure Active Directory (Azure AD) obsługuje funkcję logowania jednokrotnego na z większością aplikacji przedsiębiorstwa, w tym aplikacje, zarówno wstępnie zintegrowane w galerii aplikacji Azure AD, jak również aplikacji niestandardowych. Jeśli użytkownik uwierzytelnia się do aplikacji za pomocą usługi Azure AD przy użyciu protokołu SAML 2.0, usługi Azure AD wysyła token do aplikacji (za pośrednictwem metody POST protokołu HTTP). A następnie ją sprawdza poprawność tokenu i używa go do logowania użytkownika zamiast monitowania o nazwę użytkownika i hasło. Te tokeny SAML zawierają informacje o użytkowniku, znane jako "oświadczenia".
 
-W tożsamości — mówić, "oświadczenia" o informacją przez dostawcę tożsamości użytkownika w tokenie, które wydają się one dla tego użytkownika. W [tokenu SAML](http://en.wikipedia.org/wiki/SAML_2.0), tych danych jest zwykle są zawarte w instrukcji atrybutów SAML. Unikatowy identyfikator użytkownika jest zazwyczaj reprezentowany w podmiocie SAML, nazywany również jako identyfikator nazwy.
+A *oświadczenia* informacje informacją przez dostawcę tożsamości użytkownika w tokenie są wydania dla tego użytkownika. W [tokenu SAML](http://en.wikipedia.org/wiki/SAML_2.0), tych danych jest zwykle są zawarte w instrukcji atrybutów SAML. Unikatowy identyfikator użytkownika jest zazwyczaj reprezentowany w podmiocie SAML, nazywany również jako identyfikator nazwy.
 
-Domyślnie usługi Azure Active Directory wystawia SAML token do aplikacji, która zawiera NameIdentifier roszczenia z wartością nazwy użytkownika (zwane również główną nazwę użytkownika) w usłudze Azure AD. Ta wartość może jednoznacznie zidentyfikować użytkownika. SAML token zawiera również dodatkowe oświadczenia, zawierającego adres e-mail użytkownika, imię i nazwisko.
+Domyślnie usługa Azure AD wystawia SAML token do aplikacji, która zawiera NameIdentifier roszczenia z wartością nazwy użytkownika (zwane również główną nazwę użytkownika) w usłudze Azure AD. Ta wartość może jednoznacznie zidentyfikować użytkownika. SAML token zawiera również dodatkowe oświadczenia, zawierającego adres e-mail użytkownika, imię i nazwisko.
 
 Aby wyświetlić lub edytować oświadczeń wystawionych w tokenie SAML do aplikacji, Otwórz aplikację w witrynie Azure portal. Następnie wybierz pozycję **Wyświetl i Edytuj wszystkie inne atrybuty użytkownika** pola wyboru w **atrybutów użytkownika** części aplikacji.
 
@@ -38,7 +38,7 @@ Aby wyświetlić lub edytować oświadczeń wystawionych w tokenie SAML do aplik
 
 Istnieją dwie możliwe przyczyny, dlaczego może być konieczne edytowanie oświadczeń wystawionych w tokenie SAML:
 * Aplikacja została zapisana wymaga innego zestawu oświadczeń identyfikatorów URI lub wartości oświadczeń.
-* Aplikacja została wdrożona w sposób, który wymaga NameIdentifier roszczenia inne niż nazwa użytkownika (zwane również główną nazwę użytkownika) przechowywanych w usłudze Azure Active Directory.
+* Aplikacja została wdrożona w sposób, który wymaga NameIdentifier roszczenia inne niż nazwa użytkownika (zwane również główną nazwę użytkownika) przechowywanych w usłudze Azure AD.
 
 Można edytować domyślnych wartości oświadczenia. Wybierz wiersz dotyczący oświadczenia w tabeli atrybuty tokenu języka SAML. Spowoduje to otwarcie **Edytuj atrybut** sekcji, a następnie edytować nazwy oświadczenia, wartości i skojarzony z oświadczeniem przestrzeni nazw.
 
@@ -130,8 +130,9 @@ Obejmuje niektóre oświadczenia ograniczeniami SAML. Jeśli dodasz te oświadcz
     | http://schemas.microsoft.com/identity/claims/scope |
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Zarządzanie aplikacjami w usłudze Azure Active Directory](../manage-apps/what-is-application-management.md)
-* [Konfigurowanie logowania jednokrotnego do aplikacji, które nie znajdują się w galerii aplikacji Azure Active Directory](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
+
+* [Zarządzanie aplikacjami w usłudze Azure AD](../manage-apps/what-is-application-management.md)
+* [Konfigurowanie logowania jednokrotnego do aplikacji, które nie znajdują się w galerii aplikacji usługi Azure AD](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
 * [Rozwiązywanie problemów z opartej na SAML logowania jednokrotnego](howto-v1-debug-saml-sso-issues.md)
 
 <!--Image references-->

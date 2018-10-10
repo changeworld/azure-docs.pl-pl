@@ -1,20 +1,21 @@
 ---
-title: Znane problemy z wtyczką Akustyka — Cognitive Services
+title: Znane problemy z wtyczką Akustyka projektu
+titlesuffix: Azure Cognitive Services
 description: W przypadku używania projektanta w wersji zapoznawczej dla Akustyka projektu, mogą wystąpić następujące znane problemy.
 services: cognitive-services
 author: kylestorck
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kylestorck
-ms.openlocfilehash: e42a2f854d5d4fa72e17a0b75ffef55069ccb626
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 6d3605b579a44dccb259bef281392cbfe2b9f916
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267873"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902156"
 ---
 # <a name="known-issues"></a>Znane problemy
 W przypadku używania projektanta w wersji zapoznawczej dla Akustyka projektu, mogą wystąpić następujące znane problemy.

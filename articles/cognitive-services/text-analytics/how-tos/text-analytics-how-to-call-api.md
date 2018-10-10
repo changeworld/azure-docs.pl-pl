@@ -1,21 +1,21 @@
 ---
-title: Wywołanie interfejsu API REST usługi Text Analytics
-titleSuffix: Azure Cognitive Services
+title: Wywoływanie interfejsu API usługi Text Analytics
+titlesuffix: Azure Cognitive Services
 description: Dowiedz się, jak wywołać interfejs API REST analizy tekstu.
 services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: text-analytics
+ms.component: text-analytics
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: 5293aaf6083dc832f7fe96fd6656fc8d1c30060e
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: a70ef893019264ffc0eb3cb2982b05b15ebd0acf
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603264"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884372"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Jak wywołać interfejs API REST analizy tekstu
 
@@ -40,7 +40,7 @@ Konieczne jest posiadanie [punktu końcowego i klucza dostępu](text-analytics-h
 
 Dane wejściowe muszą być JSON w nieprzetworzony tekst bez struktury. XML nie jest obsługiwane. Schemat jest proste, składający się z elementy opisane w poniższej liście. 
 
-Obecnie można przesyłać tych samych dokumentów dla wszystkich operacji analizy tekstu: tonacji, kluczowych fraz, wykrywanie języka i łączenie podmiotów. (Schemat jest mogą się różnić dla każdej analizy w przyszłości).
+Obecnie można przesyłać tych samych dokumentów dla wszystkich operacji analizy tekstu: tonacji, kluczowych fraz, wykrywanie języka i identyfikator jednostki. (Schemat jest mogą się różnić dla każdej analizy w przyszłości).
 
 | Element | Prawidłowe wartości | Wymagana? | Sposób użycia |
 |---------|--------------|-----------|-------|
@@ -65,7 +65,7 @@ Usługa akceptuje żądania w rozmiarze do 1 MB. Jeśli używasz narzędzia Post
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/entities`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
 
 2. Ustaw trzy nagłówki żądania:
 
@@ -86,7 +86,7 @@ Usługa akceptuje żądania w rozmiarze do 1 MB. Jeśli używasz narzędzia Post
   + [Wykrywanie języka](text-analytics-how-to-language-detection.md)  
   + [Wyodrębnianie kluczowych fraz](text-analytics-how-to-keyword-extraction.md)  
   + [Analiza tonacji](text-analytics-how-to-sentiment-analysis.md)  
-  + [Łączenie jednostek](text-analytics-how-to-entity-linking.md)  
+  + [Rozpoznawanie jednostek (wersja zapoznawcza)](text-analytics-how-to-entity-linking.md)  
 
 
 6. Kliknij przycisk **wysyłania** można przesłać żądania. Możesz przesłać do 100 żądań na minutę. 

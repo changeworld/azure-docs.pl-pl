@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 17fec61e73298a6250cf6805bb9a713ff3d3a488
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 705366dbb055679a2d0adc628938fa419609f6ed
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48858013"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885123"
 ---
 # <a name="virtual-machine-serial-console"></a>Konsola szeregowa maszyny wirtualnej
 
@@ -222,7 +222,7 @@ A. Konieczne jest posiadanie dostępu na poziomie współautora lub nowszej, aby
 
 **PYTANIA I ODPOWIEDZI. Moje konsoli szeregowej nie widać niczego, co należy zrobić?**
 
-A. Obraz jest prawdopodobnie nieprawidłowo skonfigurowane, aby uzyskać dostęp do konsoli szeregowej. Zobacz [Włącz konsoli szeregowej na obrazach niestandardowych lub starsze](#Enable-Serial-Console-in-custom-or-older-images) Aby uzyskać szczegółowe informacje na temat konfigurowania swój obraz, aby umożliwić konsoli szeregowej.
+A. Obraz jest prawdopodobnie nieprawidłowo skonfigurowane, aby uzyskać dostęp do konsoli szeregowej. Zobacz [Włącz konsoli szeregowej na obrazach niestandardowych lub starsze](#enable-serial-console-in-custom-or-older-images) Aby uzyskać szczegółowe informacje na temat konfigurowania swój obraz, aby umożliwić konsoli szeregowej.
 
 **PYTANIA I ODPOWIEDZI. Konsola szeregowa jest dostępna dla zestawów skalowania maszyn wirtualnych?**
 

@@ -5,17 +5,17 @@ services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-finder
+ms.component: anomaly-finder
 ms.topic: include
 ms.date: 04/13/2018
 ms.author: chliang
 ms.custom: include file
-ms.openlocfilehash: ff36202b67f6262b7ba67fe48ef37f2b656b91fa
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a49df0c18ef9db9d0d41ca2e714474e6386ae7d1
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348185"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48904576"
 ---
 <a name="definitions"></a>
 ## <a name="definitions"></a>Definicje
@@ -25,8 +25,8 @@ ms.locfileid: "35348185"
 
 |Name (Nazwa)|Opis|Schemat|
 |---|---|---|
-|**Znacznik czasu**  <br>*Opcjonalne*|Znacznik czasu dla punktu danych. Upewnij się, że powoduje wyrównanie o północy i użyj UTC Data i godzina ciąg znaków, na przykład 2017-08-01T00:00:00Z.|ciąg (daty i godziny)|
-|**Wartość**  <br>*Opcjonalne*|Dane wartości miary.|numer (o podwójnej precyzji)|
+|**Znacznik czasu:**  <br>*Opcjonalne*|Sygnatura czasowa dla punktu danych. Upewnij się, powoduje wyrównanie z o północy i użyj formatu UTC Data i godzina ciąg znaków, na przykład 2017-08-01T00:00:00Z.|ciąg (Data godzina)|
+|**Wartość**  <br>*Opcjonalne*|Dane wartości miary.|Liczba (podwójny)|
 
 
 <a name="request"></a>
@@ -34,8 +34,8 @@ ms.locfileid: "35348185"
 
 |Name (Nazwa)|Opis|Schemat|
 |---|---|---|
-|**Okres**  <br>*Opcjonalne*|Okres punktów danych. Jeśli wartość jest równa null lub nie są wyświetlane, interfejsu API będzie automatycznie określenia okresu.|numer (o podwójnej precyzji)|
-|**Punkty**  <br>*Opcjonalne*|Punkty danych serii czasu. Dane mają być sortowane przez rosnącej odpowiadające wynik anomalii sygnatury czasowej. Jeśli dane nie są poprawnie sortowane lub sygnatura czasowa zduplikowany, interfejsu API wykryje punktów anomalii poprawnie, ale nie można także dopasować punktów zwrócona z danych wejściowych. W takim przypadku zostanie dodany komunikat ostrzegawczy w odpowiedzi.|< [polecenie](#point) > tablicy|
+|**Okres**  <br>*Opcjonalne*|Okres punktów danych. Jeśli wartość jest pusta lub nie są wyświetlane, interfejs API określa okres automatycznie.|Liczba (podwójny)|
+|**punkty**  <br>*Opcjonalne*|Punkty danych szeregów czasowych. Dane powinny być posortowane według sygnatur czasowych w kolejności rosnącej, aby dopasować wyniku anomalii. Jeśli dane nie są sortowane poprawnie, istnieje zduplikowana sygnatura czasowa interfejsu API będzie wykrywał punktów anomalii poprawnie, ale nie można również zgodne punkty zwracany za pomocą danych wejściowych. W takim przypadku zostanie dodany komunikat ostrzegawczy w odpowiedzi.|< [polecenie](#point) > tablicy|
 
 
 <a name="response"></a>
@@ -43,14 +43,14 @@ ms.locfileid: "35348185"
 
 |Name (Nazwa)|Opis|Schemat|
 |---|---|---|
-|**ExpectedValues**  <br>*Opcjonalne*|Wartością prognozowaną przez naukę na podstawie modelu. Jeśli punkty danych wejściowych są sortowane według znaczników czasu w kolejności rosnącej, indeks tablicy można mapować oczekiwaną wartością i oryginalnej wartości.|< numer (o podwójnej precyzji) > tablicy|
-|**IsAnomaly**  <br>*Opcjonalne*|Wynik tego, czy punkty danych są anomalii lub nie w obu kierunkach (nagłego lub DIP). wartość TRUE oznacza, że punkt anomalii, wartość false oznacza, że punkt znajduje się z systemem innym niż anomalii. Jeśli punkty danych wejściowych są sortowane według znaczników czasu w kolejności rosnącej, indeks tablicy można mapować oczekiwaną wartością i oryginalnej wartości.|Tablica < wartość logiczna >|
-|**IsAnomaly_Neg**  <br>*Opcjonalne*|Wynik na to, czy punkty danych są anomalii w kierunku ujemną (DIP). PRAWDA oznacza, że kierunek anomalii jest ujemna. Jeśli punkty danych wejściowych są sortowane według znaczników czasu w kolejności rosnącej, indeks tablicy można mapować oczekiwaną wartością i oryginalnej wartości.|Tablica < wartość logiczna >|
-|**IsAnomaly_Pos**  <br>*Opcjonalne*|Wynik na to, czy punkty danych są anomalii w kierunku dodatnią (nagłego). PRAWDA oznacza, że kierunek anomalii jest dodatnia. Jeśli punkty danych wejściowych są sortowane według znaczników czasu w kolejności rosnącej, indeks tablicy można służy do mapowania oczekiwanego i oryginalne wartości.|Tablica < wartość logiczna >|
-|**LowerMargin**  <br>*Opcjonalne*|(ExpectedValue - LowerMargin) określa, że dolna granica punktu danych jest nadal traktować jako standardowa. Jeśli punkty danych wejściowych są sortowane według znaczników czasu w kolejności rosnącej, indeks tablicy można mapować oczekiwaną wartością i oryginalnej wartości.|< numer (o podwójnej precyzji) > tablicy|
-|**Okres**  <br>*Opcjonalne*|Okres, który interfejsu API używany do wykrywania anomalii punktów.|numer (float)|
-|**UpperMargin**  <br>*Opcjonalne*|Suma ExpectedValue i UpperMargin określa górną granicę punktu danych jest nadal traktować jako standardowa. Jeśli punkty danych wejściowych są sortowane według znaczników czasu w kolejności rosnącej, indeks tablicy można mapować oczekiwaną wartością i oryginalnej wartości.|< numer (o podwójnej precyzji) > tablicy|
-|**WarningText**  <br>*Opcjonalne*|Jeśli punkty danych wejściowych, pod warunkiem nie znajdują się one regułę, która wymaga interfejsu API, a dane nadal mogą być wykrywane przez interfejs API, interfejsu API będzie analizować dane i Dołącz informacje ostrzeżenie w tym polu.|ciąg|
+|**ExpectedValues**  <br>*Opcjonalne*|Wartością prognozowaną ucząc model oparty na protokole. Jeśli punkty danych wejściowych są posortowane według sygnatur czasowych w kolejności rosnącej, indeks tablicy może służyć do mapowania oczekiwaną wartość i oryginalna wartość.|Tablica < numer (podwójny) >|
+|**IsAnomaly**  <br>*Opcjonalne*|Wynik tego, czy punkty danych są anomalii lub nie w obu kierunkach (wzrostów lub spadku). wartość TRUE oznacza, że punkt znajduje się anomalii, wartość false oznacza, że punkt znajduje się bez anomalii. Jeśli punkty danych wejściowych są posortowane według sygnatur czasowych w kolejności rosnącej, indeks tablicy może służyć do mapowania oczekiwaną wartość i oryginalna wartość.|Tablica < wartość logiczna >|
+|**IsAnomaly_Neg**  <br>*Opcjonalne*|Wynik dla tego, czy punkty danych są anomalie w kierunku ujemna (spadku). PRAWDA oznacza, że kierunek anomalii jest ujemna. Jeśli punkty danych wejściowych są posortowane według sygnatur czasowych w kolejności rosnącej, indeks tablicy może służyć do mapowania oczekiwaną wartość i oryginalna wartość.|Tablica < wartość logiczna >|
+|**IsAnomaly_Pos**  <br>*Opcjonalne*|Wynik dla tego, czy punkty danych są anomalie w kierunku dodatnią (wzrostów). PRAWDA oznacza, że kierunek anomalii jest dodatni. Jeśli punkty danych wejściowych są posortowane według sygnatur czasowych w kolejności rosnącej, indeks tablicy może służyć do mapowania wartości oczekiwanej a wersją z oryginalnego.|Tablica < wartość logiczna >|
+|**LowerMargin**  <br>*Opcjonalne*|(ExpectedValue - LowerMargin) określa dolną granicę, że punkt danych nadal jest uznawane za w zwykły sposób. Jeśli punkty danych wejściowych są posortowane według sygnatur czasowych w kolejności rosnącej, indeks tablicy może służyć do mapowania oczekiwaną wartość i oryginalna wartość.|Tablica < numer (podwójny) >|
+|**Okres**  <br>*Opcjonalne*|Okres interfejsu API używaną do wykrywania anomalii punkty.|Liczba (zmiennoprzecinkowego)|
+|**UpperMargin**  <br>*Opcjonalne*|Suma ExpectedValue i UpperMargin okaże się, że górna granica, która punktu danych jest nadal traktować w zwykły sposób. Jeśli punkty danych wejściowych są posortowane według sygnatur czasowych w kolejności rosnącej, indeks tablicy może służyć do mapowania oczekiwaną wartość i oryginalna wartość.|Tablica < numer (podwójny) >|
+|**WarningText**  <br>*Opcjonalne*|Jeśli reguła, która wymaga interfejsu API i dane nadal może zostać wykryte przez interfejs API nie postępujesz zgodnie z punktów danych wejściowych, pod warunkiem, interfejs API analizy danych i Dołącz informacje ostrzeżenie w tym polu.|ciąg|
 
 
 

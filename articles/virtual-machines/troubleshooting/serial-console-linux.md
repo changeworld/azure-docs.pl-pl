@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/11/2018
 ms.author: harijay
-ms.openlocfilehash: ce799f4201a560077c5bb1b943a9e587a71806f2
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: bccf53ed5554579f4ff0a864c38562b7b7f0d3ca
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856347"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885293"
 ---
 # <a name="virtual-machine-serial-console"></a>Konsola szeregowa maszyny wirtualnej
 
@@ -44,7 +44,7 @@ Dokumentacja konsoli szeregowej, w przypadku maszyn wirtualnych Windows [tutaj](
 
     ![](./media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
 
-* Aby uzyskać ustawienia właściwe dla dystrybucje systemu Linux, zobacz [dostęp do konsoli szeregowej dla systemu Linux](#Serial-Console-Linux-distro-availability)
+* Aby uzyskać ustawienia właściwe dla dystrybucje systemu Linux, zobacz [dostępności dystrybucji Serial konsoli systemu Linux](#serial-console-linux-distro-availability)
 
 
 
@@ -206,7 +206,7 @@ A. Konieczne jest posiadanie dostępu na poziomie współautora lub nowszej, aby
 
 **PYTANIA I ODPOWIEDZI. Moje konsoli szeregowej nie widać niczego, co należy zrobić?**
 
-A. Obraz jest prawdopodobnie nieprawidłowo skonfigurowane, aby uzyskać dostęp do konsoli szeregowej. Zobacz [dostępu do konsoli szeregowej dla systemu Linux](#Access-Serial-Console-for-Linux) Aby uzyskać szczegółowe informacje na temat konfigurowania swój obraz, aby umożliwić konsoli szeregowej.
+A. Obraz jest prawdopodobnie nieprawidłowo skonfigurowane, aby uzyskać dostęp do konsoli szeregowej. Zobacz [Serial konsoli systemu Linux dostępnych dla określonych dystrybucji dostępności](#serial-console-linux-distro-availability) Aby uzyskać szczegółowe informacje na temat konfigurowania swój obraz, aby umożliwić konsoli szeregowej.
 
 **PYTANIA I ODPOWIEDZI. Konsola szeregowa jest dostępna dla zestawów skalowania maszyn wirtualnych?**
 

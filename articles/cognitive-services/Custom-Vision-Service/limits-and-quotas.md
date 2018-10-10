@@ -10,12 +10,12 @@ ms.component: custom-vision
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: anroth
-ms.openlocfilehash: 53884cfc2683832d9df2b215c92b6b683ba29d2c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: ce06effbce12abb6271e050829d3218f4fbbfbf4
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363467"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902864"
 ---
 # <a name="limits-and-quotas"></a>Limity przydziału i ograniczenia
 
@@ -26,7 +26,8 @@ Ograniczone zasoby projektu okres próbny są dołączone do swoich danych logow
 ||**Ograniczona wersja próbna**|**F0 (Azure)**|**S0 (Azure)**|
 |-----|-----|-----|-----|
 |Projekty|2|2|100|
-|Uczone obrazy na projekt|5000|5000|50,000|
+|Uczone obrazy na projekt i klasyfikacji|5000|5000|50,000|
+|Uczone obrazy na projekt, wykrywanie obiektów|5000|5000|10 000|
 |Prognozy / miesiąc|10 000 |10 000|Nieograniczona liczba|
 |Tagi / project|50|50|250|
 |Liczba iteracji |10|10|10|

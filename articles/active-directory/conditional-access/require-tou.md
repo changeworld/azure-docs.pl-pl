@@ -1,6 +1,6 @@
 ---
 title: Przewodnik Szybki Start — wymagają warunki użytkowania, należy zaakceptować przed uzyskaniem dostępu do aplikacji w chmurze, które są chronione przez dostęp warunkowy usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: W tym przewodniku Szybki Start dowiesz się, jak można wymagać, że warunki użytkowania są akceptowane przed uzyskaniem dostępu do aplikacji w chmurze wybranych przez przez dostęp warunkowy usługi Azure Active Directory.
+description: W tym przewodniku Szybki Start dowiesz się, jak można wymagać, że warunki użytkowania są akceptowane przed uzyskaniem dostępu do aplikacji w chmurze wybranych przez dostęp warunkowy usługi Azure Active Directory.
 services: active-directory
 keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego, warunki użytkowania
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 2b06dcfd4bdeb68d114c0c6dd57134fadfef57b5
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: e121cfddf8dc598771d630e011b4410217f5e92b
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605848"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901890"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Szybki Start: Wymagaj warunki użytkowania, należy zaakceptować przed uzyskaniem dostępu do aplikacji w chmurze 
 
@@ -193,7 +193,7 @@ Ustaw w zasadach:
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Oceń symulowane logowania
 
-Teraz, gdy skonfigurowano zasady dostępu warunkowego, prawdopodobnie chcesz wiedzieć, czy działa zgodnie z oczekiwaniami. Pierwszym krokiem należy używać dostępu warunkowego, zasady narzędzie analizy warunkowej w celu symulowania logowania dla użytkownika testowego. Symulacja szacuje wpływ tym logowania ma zasady i generuje raport symulacji.  
+Teraz, gdy skonfigurowano zasady dostępu warunkowego, prawdopodobnie chcesz wiedzieć, czy działają one zgodnie z oczekiwaniami. Pierwszym krokiem należy używać dostępu warunkowego, zasady narzędzie analizy warunkowej w celu symulowania logowania dla użytkownika testowego. Symulacja szacuje wpływ tego logowania na zasady i generuje raport symulacji.  
 
 Można zainicjować co, jeśli narzędzie oceny zasad, ustaw:
 

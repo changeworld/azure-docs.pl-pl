@@ -10,12 +10,12 @@ ms.author: tedway
 author: tedway
 ms.date: 05/07/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: cb1abdce3bbd7349695ece70ff336c7e513c0918
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 344423ea9943e04dc5f02ebee0903d179be90bbd
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162189"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887585"
 ---
 # <a name="azure-machine-learning-hardware-acceleration-package"></a>Pakiet Azure Machine Learning sprzętowego przyspieszania
 
@@ -148,7 +148,7 @@ Ten przykładowy kod opisano sposób korzystania z zestawu SDK do wdrożenia mod
 
 ## <a name="reporting-issues"></a>Raportowanie problemów
 
-Użyj [forum](https://aka.ms/aml-forum) zgłosić problemy wystąpią z pakietem.
+Użyj [forum](https://aka.ms/aml-forum-service) zgłosić problemy wystąpią z pakietem.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

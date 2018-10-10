@@ -1,6 +1,6 @@
 ---
-title: Rozwiązania Cosmos Azure DB tabeli interfejsu API dla języka Python | Dokumentacja firmy Microsoft
-description: Dowiedz się wszystkiego o rozwiązania Cosmos DB tabeli interfejsu API Azure tym daty wydania, daty wycofania i zmiany wprowadzone od każdej wersji.
+title: Interfejs API tabel usługi Azure Cosmos DB dla języka Python | Dokumentacja firmy Microsoft
+description: Dowiedz się wszystkiego o usłudze Azure Cosmos DB interfejsu API tabel tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami.
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
@@ -12,14 +12,14 @@ ms.topic: reference
 ms.date: 11/20/2017
 ms.author: sngun
 ms.custom: ''
-ms.openlocfilehash: 9d55394f273069cd3497cde334814b91a7123de8
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 2e22bfb30cdf4decdc8a6fba612b75233c9c0971
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798240"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901196"
 ---
-# <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure rozwiązania Cosmos DB tabeli interfejsu API zestawu SDK dla języka Python: informacje o wersji i zasoby
+# <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Usługa Azure Cosmos DB Table API SDK dla języka Python: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [Java](table-sdk-java.md)
@@ -29,11 +29,11 @@ ms.locfileid: "34798240"
 
 |   |   |
 |---|---|
-|**Pobierz zestaw SDK**|[PyPI](https://pypi.python.org/pypi/azure-cosmosdb-table/)|
-|**Dokumentacja interfejsu API**|[Dokumentacji interfejsu API języka Python](https://azure.github.io/azure-cosmosdb-python/)|
-|**Instrukcje dotyczące instalacji zestawu SDK**|[Instrukcje dotyczące instalacji zestawu SDK Python](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
-|**Przyczyniają się do zestawu SDK**|[GitHub](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
-|**Bieżący obsługiwanych platform**|[Python 2.7](https://www.python.org/downloads/) lub () [Python 3.3, 3.4, 3.5 lub 3,6]https://www.python.org/downloads/)|
+|**Zestaw SDK do pobrania**|[PyPI](https://pypi.python.org/pypi/azure-cosmosdb-table/)|
+|**Dokumentacja interfejsu API**|[Dokumentacja interfejsu API języka Python](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)|
+|**Instrukcje dotyczące instalacji zestawu SDK**|[Instrukcje dotyczące instalacji zestawu SDK języka Python](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
+|**Przyczynia się do zestawu SDK**|[GitHub](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
+|**Bieżący obsługiwanych platform**|[Python 2.7](https://www.python.org/downloads/) lub () [Python 3.3, 3.4, 3.5 i 3.6]https://www.python.org/downloads/)|
 
 > [!IMPORTANT]
 > Jeśli utworzono konto interfejsu API tabel w trakcie okresu próbnego, utwórz [nowe konto interfejsu API tabel](create-table-dotnet.md#create-a-database-account), aby móc korzystać z ogólnie dostępnych zestawów SDK interfejsu API tabel.
@@ -42,19 +42,19 @@ ms.locfileid: "34798240"
 ## <a name="release-notes"></a>Informacje o wersji
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
-* Ogólnie zlecenia
+* Wersji ogólnodostępnej
 
 ### <a name="a-name03710371"></a><a name="0.37.1"/>0.37.1
 * Zestaw SDK w wersji wstępnej
 
-## <a name="release-and-retirement-dates"></a>Wersja i wycofania dat
-Firma Microsoft udostępni powiadomienia co najmniej **12 miesięcy** klienta z wyprzedzeniem wycofanie SDK w celu złagodzenia przejścia do nowszej/nieobsługiwaną wersję.
+## <a name="release-and-retirement-dates"></a>Daty wydania i wycofania
+Firma Microsoft zapewnia powiadomienie co najmniej **12 miesięcy** ewentualnej wycofanie zestawu SDK w celu złagodzenia przejścia do nowszych/obsługiwanych wersji.
 
-Nowe funkcje i funkcjonalność i optymalizację, które są dodawane tylko do bieżącego zestawu SDK, w związku jest zalecane, zawsze Uaktualnij zestaw SDK najnowszą tak szybko jak to możliwe. 
+Nowe funkcje i funkcjonalność i optymalizacje są dodawane tylko do bieżącego zestawu SDK, w związku z tym zalecane jest, zawsze uaktualnienie do najnowszej wersji zestawu SDK tak szybko, jak to możliwe. 
 
 <br/>
 
-| Wersja | Data wydania | Dacie wycofania |
+| Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |15 listopada 2017 r. |--- |
 | [0.37.1](#0.37.1) |05 października 2017 r. |--- |
@@ -64,5 +64,5 @@ Nowe funkcje i funkcjonalność i optymalizację, które są dodawane tylko do b
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Zobacz także
-Aby dowiedzieć się więcej na temat rozwiązania Cosmos bazy danych, zobacz [bazy danych programu Microsoft Azure rozwiązania Cosmos](https://azure.microsoft.com/services/cosmos-db/) stronę usługi. 
+Aby dowiedzieć się więcej na temat usługi Cosmos DB, zobacz [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) stronę usługi. 
 

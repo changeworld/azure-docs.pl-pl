@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 9/10/2018
 ms.author: markgal
-ms.openlocfilehash: ebfd879fcd619dab48e4a08130f86afc68f91207
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 7ab88ce3565ccf79f20847a3a5e744c495d5fcb1
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785430"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884937"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Przygotowywanie środowiska do tworzenia kopii zapasowych maszyn wirtualnych wdrożonych przez program Resource Manager
 
@@ -62,6 +62,9 @@ Przed przygotowaniem środowiska, należy zrozumieć następujące ograniczenia:
   * Maszyn wirtualnych w ramach konfiguracji usługi równoważenia obciążenia (wewnętrznych i zewnętrznych)
   * Maszyny wirtualne za pomocą wielu zastrzeżonych adresów IP
   * Maszyny wirtualne z wieloma kartami sieciowymi
+
+  > [!NOTE]
+  > Usługa Azure Backup obsługuje [dysków zarządzanych dysków SSD w warstwie standardowa](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/), nowy typ trwałego magazynu dla maszyn wirtualnych Microsoft Azure. Jest on obsługiwany w przypadku dysków zarządzanych w [stosu kopii zapasowych maszyn wirtualnych platformy Azure w wersji 2](backup-upgrade-to-vm-backup-stack-v2.md).
 
 ## <a name="create-a-recovery-services-vault-for-a-vm"></a>Utwórz magazyn usługi Recovery Services dla maszyny Wirtualnej
 Magazyn usługi Recovery Services jest jednostką, która przechowuje kopie zapasowe i punkty odzyskiwania, które zostały utworzone wraz z upływem czasu. Magazyn usługi Recovery Services zawiera także zasady tworzenia kopii zapasowych, które są skojarzone z chronionych maszyn wirtualnych.

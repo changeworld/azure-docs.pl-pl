@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2018
+ms.date: 09/10/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3f4907d99b25df31ac7f081282cebe700f55b62
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 25a8150a2fcf7cdd4e3c82478c0b3db3dad870b4
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423746"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887568"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Limity przydziału i limity usługi Batch
 
@@ -53,7 +53,9 @@ Jeśli zostało utworzone konto usługi Batch z trybem alokacji puli równa **su
 | [Aplikacje](batch-application-packages.md) na konto usługi Batch |20 |
 | Pakiety aplikacji na aplikację |40 |
 | Okres istnienia zadania maksymalna | 7 dni<sup>1</sup> |
-| Węzłów obliczeniowych w puli komunikacji między węzłami włączone | 100 |
+| Węzłów obliczeniowych w [puli komunikacji między węzłami włączone](batch-mpi.md) | 100 |
+| Dedykowane węzły obliczeniowe w [pula została utworzona przy użyciu niestandardowego obrazu maszyny Wirtualnej](batch-custom-images.md) | 2500 |
+| O niskim priorytecie węzłów obliczeniowych w [pula została utworzona przy użyciu niestandardowego obrazu maszyny Wirtualnej](batch-custom-images.md) | 1000 |
 
 <sup>1</sup> maksymalny okres istnienia zadania, od momentu dodania go do zadania do jego ukończenia wynosi 7 dni. Ukończone zadania podrzędne są utrwalone przez czas nieokreślony. Dane dla zadań podrzędnych nieukończonych w ciągu maksymalnego okresu istnienia nie są dostępne.
 

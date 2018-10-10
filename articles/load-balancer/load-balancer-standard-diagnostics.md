@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/27/2018
+ms.date: 10/9/2018
 ms.author: Kumud
-ms.openlocfilehash: 43945dc8810151eb701aa9e1aa1be47d4fbb0491
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 0711b52b76a22e32d05f27e6aae6c981bd2c148a
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125648"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902607"
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Metryki i kondycji diagnostyki dla standardowego modułu równoważenia obciążenia
 
-Usługa Azure Load Balancer Standard zapewnia zasoby, następujące funkcje diagnostyczne:
-* **Metryk wielowymiarowych**: udostępnia nowe funkcje diagnostyczne wielowymiarowych obciążenia publicznych i wewnętrznych konfiguracji modułu równoważenia. Można monitorować, zarządzanie i rozwiązywanie problemów z zasobami usługi równoważenia obciążenia.
+Usługa Azure Load Balancer Standard uwidacznia standardowa usługi Azure Load Balancer zapewnia następujące funkcje diagnostyczne zasobów:
+* **Metryk wielowymiarowych**: oferuje nowe funkcje diagnostyczne wielowymiarowych za pośrednictwem [usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) publicznych i wewnętrznych obciążenia konfiguracji modułu równoważenia. Można monitorować, zarządzanie i rozwiązywanie problemów z zasobami usługi równoważenia obciążenia.
 
 * **Usługa Resource health**: strony modułu równoważenia obciążenia w witrynie Azure portal i strony Resource Health (w obszarze monitorowanie) udostępnianie sekcji kondycja zasobu dla konfiguracji modułu równoważenia obciążenia publiczny Standard Load Balancer.
 
@@ -219,6 +219,7 @@ W poniższej tabeli przedstawiono różne stany kondycji zasobów i ich opisy:
 
 - Dowiedz się więcej o [usłudze Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md).
 - Dowiedz się więcej o swojej [łączności wychodzącej modułu równoważenia obciążenia](https://aka.ms/lboutbound).
+- Dowiedz się więcej o [usługa Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview).
 - Dowiedz się więcej o [metryk usługi Azure Monitor interfejsu API REST](https://docs.microsoft.com/rest/api/monitor/metrics/).
 
 

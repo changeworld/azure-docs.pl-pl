@@ -9,12 +9,12 @@ ms.author: jamesbak
 ms.date: 06/27/2018
 ms.service: storage
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 27ea73862f834a834b1622d0e51d0076c9afbe71
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 71c3343db592162bcfa7ec46a29e0d680ca83079
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523108"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900710"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Użyj Gen2 usługi Azure Data Lake Storage — identyfikator URI
 
@@ -26,7 +26,7 @@ Składnia identyfikatora URI Data Lake Storage Gen2 jest zależy od tego, czy ko
 
 Jeśli konto stanie Data Lake Storage Gen2 chcesz adres **nie** Ustaw jako domyślny system plików podczas tworzenia konta, a następnie jest skróconej składni identyfikatora URI:
 
-<pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.widows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
+<pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.windows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
 
 1. **Identyfikator schematu**: `abfs` protokół jest używany jako identyfikator schematu. Masz możliwość nawiązania połączenia z lub bez połączenia z secure sockets layer (SSL). Użyj `abfss` nawiązywanie połączeń z secure sockets layer połączenia.
 

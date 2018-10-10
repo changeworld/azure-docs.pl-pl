@@ -5,17 +5,19 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/06/2018
+ms.date: 10/08/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 2d1a6bdb0cb53e3e58b4b4e8fed4bf29957d6489
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 8297e324f03d263acaa30dfa2147f7ee713bd265
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48858081"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48904520"
 ---
 Rozmiary maszyn wirtualnych ogólnego przeznaczenia udostępniają o zrównoważonym obciążeniu współczynnik procesora CPU w stosunku do pamięci. Idealne na potrzeby testowania i programowania, małych i średnich baz danych oraz serwerów sieci Web o niewielkim i średnim ruchu. Ten artykuł zawiera informacje o liczbie procesorów wirtualnych, dysków z danymi i kart sieciowych, a także przepływności rozmiary w tej metodzie grupowania. 
+
+- [DC serii](#dc-series) to Nowa rodzina maszyn wirtualnych na platformie Azure, która pomaga chronić poufność i integralność danych i kodu podczas przetwarzania w chmurze publicznej. Te maszyny są wspierane przez najnowszą generację 3,7 GHz Intel XEON E - 2176G procesora przy użyciu technologii SGX. Z technologią Intel Turbo Boost Technology tych maszyn, można przejść do 4.7 GHz. Wystąpienia serii DC Umożliwiaj klientom tworzenie bezpiecznych aplikacji na podstawie enklawy chronić ich kod i dane, gdy jest używany.
 
 - Maszyny wirtualne z serii Av2 można wdrożyć na różnych typach sprzętu i procesorach. Maszyny wirtualne serii A zapewniają wydajność procesora CPU i konfiguracje pamięci, które są najlepsze w przypadku obciążeń podstawowych, takich jak tworzenie i testowanie aplikacji. Rozmiar jest ograniczany w zależności od sprzętu, aby zapewnić spójną wydajność procesora dla uruchomionego wystąpienia niezależnie od sprzętu, na którym jest ono wdrożone. Aby określić sprzęt fizyczny, na którym jest wdrażany dany rozmiar, utwórz zapytanie o sprzęt wirtualny z poziomu maszyny wirtualnej.
 
@@ -27,7 +29,6 @@ Rozmiary maszyn wirtualnych ogólnego przeznaczenia udostępniają o zrównoważ
 
   Przykładowe przypadki użycia serii D obejmują aplikacji przeznaczonych dla przedsiębiorstw, relacyjne bazy danych, buforowanie w pamięci i analizy. 
   
-- [DC serii](#dc-series) to Nowa rodzina maszyn wirtualnych na platformie Azure, która pomaga chronić poufność i integralność danych i kodu podczas przetwarzania w chmurze publicznej. Te maszyny są wspierane przez najnowszą generację 3,7 GHz Intel XEON E - 2176G procesora przy użyciu technologii SGX. Z technologią Intel Turbo Boost Technology tych maszyn, można przejść do 4.7 GHz. Wystąpienia serii DC Umożliwiaj klientom tworzenie bezpiecznych aplikacji na podstawie enklawy chronić ich kod i dane, gdy jest używany
 
 ## <a name="b-series"></a>Seria B
 

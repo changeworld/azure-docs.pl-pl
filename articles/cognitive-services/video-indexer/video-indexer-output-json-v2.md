@@ -8,19 +8,19 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: video-indexer
 ms.topic: conceptual
-ms.date: 09/15/2018
+ms.date: 10/08/2018
 ms.author: juliako
-ms.openlocfilehash: 76f83e7ad70e3e1906bc1aa90c74d600053aeb6f
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 27f24d588cf1cac5f580a41cc0901a8907b66652
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985647"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884294"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Zbadanie danych wyjściowych indeksatora wideo utworzone przez interfejs API w wersji 2
 
 > [!Note]
-> Interfejsu API w wersji 1 indeksatora wideo została zakończona w dniu 1 sierpnia 2018. Teraz należy używać interfejsu API indeksatora wideo w wersji 2. <br/>Tworzenie za pomocą interfejsów API w wersji 2 indeksatora wideo, można zapoznać się z instrukcjami znaleziono [tutaj](https://api-portal.videoindexer.ai/). 
+> Interfejs API usługi Video Indexer w wersji 1 został wycofany 1 sierpnia 2018 r. Teraz należy używać interfejsu API usługi Video Indexer w wersji 2. <br/>Aby tworzyć rozwiązania za pomocą interfejsów API usługi Video Indexer w wersji 2, zapoznaj się z instrukcjami podanymi [tutaj](https://api-portal.videoindexer.ai/). 
 
 Gdy wywołujesz **uzyskać indeks wideo** interfejsu API i stan odpowiedzi jest OK, Uzyskaj szczegółowe dane wyjściowe JSON jako treść odpowiedzi. Zawartość JSON zawiera szczegółowe informacje o określonym informacjom o filmie wideo. Szczegółowe informacje zawierają wymiary, takie jak: zapisy ocrs, twarzy, tematy, bloki, itp. Wymiary są wystąpienia zakresy czasu, przedstawiających podczas każdego wymiaru pojawiły się w trakcie filmu wideo.  
 
@@ -115,7 +115,7 @@ W tej sekcji przedstawiono podsumowanie szczegółowych danych.
 |publishedUrlProxy|Adres url do przesyłania strumieniowego wideo z (dla urządzeń firmy Apple).|
 |viewToken|Token krótkotrwałe widoku służącą do strumieniowego przesyłania wideo.|
 |sourceLanguage|Język źródłowy klip wideo.|
-|język|Rzeczywiste język wideo (tłumaczenia).|
+|language|Rzeczywiste język wideo (tłumaczenia).|
 |indexingPreset|Ustawienie wstępne, używane do indeksowania filmu wideo.|
 |streamingPreset|Ustawienie wstępne, używany do publikowania filmu wideo.|
 |linguisticModelId|Model CRI umożliwia także filmu wideo.|
@@ -155,7 +155,7 @@ Krój może mieć identyfikator, nazwę, miniatury, inne metadane i listę swoic
 |Wersja|Wersja kodu|
 |---|---|
 |sourceLanguage|Język źródłowy wideo (przy założeniu jeden język master). W formie [BCP 47](https://tools.ietf.org/html/bcp47) ciągu.|
-|język|Język insights (tłumaczenia go z języka źródłowego). W formie [BCP 47](https://tools.ietf.org/html/bcp47) ciągu.|
+|language|Język insights (tłumaczenia go z języka źródłowego). W formie [BCP 47](https://tools.ietf.org/html/bcp47) ciągu.|
 |transkrypcji|[Transkrypcji](#transcript) wymiaru.|
 |optyczne rozpoznawanie znaków|[Optyczne rozpoznawanie znaków](#ocr) wymiaru.|
 |słowa kluczowe|[Słowa kluczowe](#keywords) wymiaru.|
@@ -205,7 +205,7 @@ wystąpienia|Lista zakresów czasu tego bloku.|
 |---|---|
 |id|Identyfikator wiersza.|
 |tekst|Transkrypcja sam.|
-|język|Język transkrypcji. Przeznaczony do obsługi transkrypcji, w którym każdy wiersz może mieć inny język.|
+|language|Język transkrypcji. Przeznaczony do obsługi transkrypcji, w którym każdy wiersz może mieć inny język.|
 |wystąpienia|Lista zakresów czasu, w którym znajdowały się tego wiersza. Jeśli wystąpienie jest transkrypcji, będzie miał tylko 1 wystąpienia.|
 
 Przykład:
@@ -244,7 +244,7 @@ Przykład:
 |id|Identyfikator wiersza optyczne rozpoznawanie znaków|
 |tekst|Optyczne rozpoznawanie znaków tekstu.|
 |zaufania|Rozpoznawanie zaufania.|
-|język|Język optyczne rozpoznawanie znaków.|
+|language|Język optyczne rozpoznawanie znaków.|
 |wystąpienia|Lista zakresów czasu, w którym znajdowały się tym optyczne rozpoznawanie znaków (OCR tego samego mogą pojawiać się wielokrotnie).|
 
 ```json
@@ -287,7 +287,7 @@ Przykład:
 |id|Identyfikator — słowo kluczowe.|
 |tekst|Tekst — słowo kluczowe.|
 |zaufania|Słowo kluczowe rozpoznawania zaufania.|
-|język|Język — słowo kluczowe (w przypadku tłumaczonym).|
+|language|Język — słowo kluczowe (w przypadku tłumaczonym).|
 |wystąpienia|Lista zakresów czasu, w którym znajdowały się to słowo kluczowe (słowo kluczowe może pojawić się wiele razy).|
 
 ```json
@@ -332,7 +332,7 @@ Przykład:
 |Name (Nazwa)|Opis|
 |---|---|
 |id|Identyfikator twarzy.|
-|name|Nazwa czcionki. Może to być "Nieznany #0", osobistości zidentyfikowanych lub osoby uczonego klienta.|
+|name|Nazwa powierzchnię. Może być "nieznany #, 0, osobistości zidentyfikowanych lub osoby uczonego klienta.|
 |zaufania|Zaufanie identyfikacji twarzy.|
 |description|Opis osobistości. |
 |thumbnalId|Identyfikator miniatury napotykane przez.|
@@ -378,7 +378,7 @@ Przykład:
 |---|---|
 |id|Identyfikator etykiety.|
 |name|Nazwa etykiety (na przykład "Computer", "TV").|
-|język|Etykieta nazwy język (w przypadku przetłumaczona). NARZĘDZIE BCP 47|
+|language|Etykieta nazwy język (w przypadku przetłumaczona). NARZĘDZIE BCP 47|
 |wystąpienia|Lista zakresów czasu, w których pojawiły się tej etykiety (etykieta może wystąpić wiele razy). Każde wystąpienie ma pole zaufania. |
 
 
@@ -678,7 +678,7 @@ Usługa Video Indexer identyfikuje emocji oparte na mowę i dźwięk podpowiedzi
 |Name (Nazwa)|Opis|
 |---|---|
 |id|Identyfikator emocji.|
-|type|Obecnie rozpoznawania emocji, który został zidentyfikowany na podstawie rozpoznawania mowy i podpowiedzi audio. Może to być rozpoznawania emocji: przynosi radość do, smutek, gniew lub strach.|
+|type|Obecnie rozpoznawania emocji, który został zidentyfikowany na podstawie rozpoznawania mowy i podpowiedzi audio. Mogą to być emocje takie jak radość, smutek, gniew czy strach.|
 |wystąpienia|Lista zakresów czasu, w których pojawiły się tym emocji.|
 
 ```json
@@ -771,7 +771,7 @@ Usługa Video Indexer sprawia, że wnioskowania główne tematy z transkrypcji. 
 |name|Nazwa tematu, na przykład: "Stacjonarnym".|
 |Identyfikator odwołania|Linki do stron nadrzędnych odzwierciedlający hierarchii tematów. Na przykład: "kondycji i dobro / medycyna i opiece zdrowotnej / stacjonarnym".|
 |zaufania|Współczynnik ufności z zakresu [0,1]. Nowszy jest większa pewność.|
-|język|Język używany w tym temacie.|
+|language|Język używany w tym temacie.|
 |iptcName|Nośnik IPTC kodu nazwy, w przypadku wykrycia.|
 |wystąpienia |Obecnie usługa Video Indexer nie indeksowania tematu na przedziały czasu, więc całe wideo jest używany jako interwał.|
 

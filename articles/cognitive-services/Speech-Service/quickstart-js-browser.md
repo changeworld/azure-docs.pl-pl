@@ -5,16 +5,16 @@ description: Dowiedz się, jak rozpoznawanie mowy w języku JavaScript w przegl�
 services: cognitive-services
 author: fmegen
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: fmegen
-ms.openlocfilehash: 9ac48bd77087a8dc050ccd1ee8fe63ec5c25a643
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 75dcda643741e3aeb1238f82128e4c5b058be840
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018388"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883662"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-cognitive-services-speech-sdk"></a>Szybki Start: Rozpoznawanie mowy w języku JavaScript w przeglądarce, za pomocą Cognitive Services SDK rozpoznawania mowy
 

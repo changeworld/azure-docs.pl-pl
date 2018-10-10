@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: 8d5f31f09d51794f9ad3c126edf2fd935f379221
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: fa19c932a18102107068303e1474abd992df3161
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296480"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48903032"
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>Migracja lokalnych aplikacji usług AD FS na platformę Azure 
 
@@ -151,7 +151,7 @@ Aplikacje, które można obecnie łatwo migrować, to aplikacje SAML 2.0 używaj
 - Imię.
 - Nazwisko.
 - Atrybut alternatywny, taki jak **NameID** w języku SAML, w tym atrybut poczty usługi Azure AD, prefiks poczty, identyfikator pracownika, atrybuty rozszerzenia 1–15 lub lokalny atrybut **SamAccountName**. Aby uzyskać więcej informacji, zobacz [Edytowanie oświadczenia NameIdentifier](../develop/active-directory-saml-claims-customization.md).
-- Oświadczenia niestandardowe. Aby uzyskać informacje dotyczące obsługiwanych mapowań oświadczeń, zobacz [Mapowanie oświadczeń w usłudze Azure Active Directory](../active-directory-claims-mapping.md) i [Dostosowywanie oświadczeń wystawionych w tokenie języka SAML dla aplikacji dla przedsiębiorstw w usłudze Azure Active Directory](../develop/active-directory-saml-claims-customization.md).
+- Oświadczenia niestandardowe. Aby uzyskać informacje dotyczące obsługiwanych mapowań oświadczeń, zobacz [Mapowanie oświadczeń w usłudze Azure Active Directory](../develop/active-directory-claims-mapping.md) i [Dostosowywanie oświadczeń wystawionych w tokenie języka SAML dla aplikacji dla przedsiębiorstw w usłudze Azure Active Directory](../develop/active-directory-saml-claims-customization.md).
 
 Oprócz oświadczeń niestandardowych i elementów **NameID**, konfiguracje, które wymagają wykonania dodatkowych kroków konfiguracji w usłudze Azure AD w ramach migracji, to:
 - Niestandardowe reguły autoryzacji lub uwierzytelniania wieloskładnikowego w usługach AD FS. Można je skonfigurować za pomocą funkcji [dostępu warunkowego usługi Azure AD](../active-directory-conditional-access-azure-portal.md).
@@ -171,7 +171,7 @@ Obecnie nie można migrować aplikacji, które wymagają wymienionych poniżej m
 - Oświadczenia w możliwościach tokenów:
     - Wystawianie nazw grup lokalnych jako oświadczeń.
     - Oświadczenia z magazynów innych niż usługa Azure AD.
-    - Złożone reguły przekształcania wystawiania oświadczeń. Aby uzyskać informacje dotyczące obsługiwanych mapowań oświadczeń, zobacz [Mapowanie oświadczeń w usłudze Azure Active Directory](../active-directory-claims-mapping.md) i [Dostosowywanie oświadczeń wystawionych w tokenie języka SAML dla aplikacji dla przedsiębiorstw w usłudze Azure Active Directory](../develop/active-directory-saml-claims-customization.md).
+    - Złożone reguły przekształcania wystawiania oświadczeń. Aby uzyskać informacje dotyczące obsługiwanych mapowań oświadczeń, zobacz [Mapowanie oświadczeń w usłudze Azure Active Directory](../develop/active-directory-claims-mapping.md) i [Dostosowywanie oświadczeń wystawionych w tokenie języka SAML dla aplikacji dla przedsiębiorstw w usłudze Azure Active Directory](../develop/active-directory-saml-claims-customization.md).
     - Wystawianie rozszerzeń katalogów jako oświadczeń.
     - Niestandardowa specyfikacja formatu **NameID**.
     - Wystawianie atrybutów o wielu wartościach.

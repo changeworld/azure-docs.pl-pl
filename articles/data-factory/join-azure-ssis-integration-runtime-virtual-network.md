@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 10/09/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: a9a4b7728eff3057b9677d12df51cc8c477744ca
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e6950c38db83efb57e5f3b1809aa6baa56532cd0
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953943"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48903049"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Dołącz do środowiska Azure-SSIS integration runtime do sieci wirtualnej
 Dołącz do środowiska Azure-SSIS integration runtime (IR) z siecią wirtualną platformy Azure w następujących scenariuszach: 
@@ -57,6 +57,8 @@ Więcej szczegółów można znaleźć w poniższych sekcjach.
 ## <a name="requirements-for-virtual-network-configuration"></a>Wymagania dotyczące konfiguracji sieci wirtualnej
 -   Upewnij się, że `Microsoft.Batch` jest zarejestrowanego dostawcy w ramach subskrypcji z podsieci sieci wirtualnej, który hostuje Azure-SSIS IR. Jeśli używasz klasycznej sieci wirtualnej również dołączyć `MicrosoftAzureBatch` do roli współautora klasycznej maszyny wirtualnej dla tej sieci wirtualnej. 
 
+-   Upewnij się, że masz wymagane uprawnienia. Zobacz [wymagane uprawnienia](#perms).
+
 -   Wybierz odpowiednie podsieci w celu hostowania Azure-SSIS IR. Zobacz [Wybierz podsieć](#subnet). 
 
 -   Jeśli używasz własnego serwera usługi nazw domen (DNS, Domain Name System) w sieci wirtualnej, zobacz [serwera usługi nazw domen](#dns_server). 
@@ -66,6 +68,16 @@ Więcej szczegółów można znaleźć w poniższych sekcjach.
 -   Jeśli są przy użyciu usługi Azure Expressroute lub konfigurowanie zdefiniowaną przez użytkownika (UDR), zobacz [użycia usługi Azure ExpressRoute lub trasy zdefiniowane użytkownika](#route). 
 
 -   Upewnij się, grupy zasobów w sieci wirtualnej można tworzyć i usuwać niektórych zasobów sieciowych platformy Azure. Zobacz [wymagania dla grupy zasobów](#resource-group). 
+
+### <a name="perms"></a> Wymagane uprawnienia
+
+- Jeśli dołączasz SSIS IR do sieci wirtualnej platformy Azure w bieżącej wersji, masz dwie opcje:
+
+  - Za pomocą wbudowanej roli *Współautor sieci*. Ta rola wymaga *Microsoft.Network/\**  uprawnienie, jednak, które ma znacznie większego zakresu.
+
+  - Utwórz rolę niestandardową, która obejmuje uprawnienie *Microsoft.Network/virtualNetworks/\*/join/Akcja*. 
+
+- Jeśli dołączasz SSIS IR do klasycznej sieci wirtualnej platformy Azure, firma Microsoft zaleca użycie wbudowana rola *współautora klasycznej maszyny wirtualnej*. W przeciwnym razie należy zdefiniować rolę niestandardową, która obejmuje uprawnienie do dołączenia do sieci wirtualnej.
 
 ### <a name="subnet"></a> Wybierz podsieć
 -   Nie należy wybierać GatewaySubnet wdrażania środowiska Azure-SSIS Integration Runtime, ponieważ jest to wersja dedykowana dla bramy sieci wirtualnej. 

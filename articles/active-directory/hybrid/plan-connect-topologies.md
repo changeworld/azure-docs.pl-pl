@@ -12,18 +12,21 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 10/09/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bab18c5c36cf4ffbbe6268910bf9121bc351fdca
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 26049b1e7283d53be7214130ff64cf830935708c
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311997"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901806"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologie obsługiwane w programie Azure AD Connect
 W tym artykule opisano różne lokalne i topologii usługi Azure Active Directory (Azure AD), korzystających z synchronizacji programu Azure AD Connect jako rozwiązania do integracji kluczy. Ten artykuł zawiera zarówno obsługiwanych i nieobsługiwanych konfiguracji.
+
+>[!IMPORTANT]
+>Synchronizacja usługi Active Directory z usługą Azure AD przy użyciu rozwiązania innego niż program Azure AD Connect może spowodować niespójny lub nieobsługiwany stan. W wyniku firmy Microsoft nie zapewnia pomoc techniczną w przypadku takich wdrożeń.
 
 Oto legendy dla obrazów znajdujących się w artykule:
 
@@ -35,7 +38,7 @@ Oto legendy dla obrazów znajdujących się w artykule:
 | Usługa Azure AD Connect serwer synchronizacji "staging tryb" |![Usługa Azure AD Connect serwer synchronizacji "staging tryb"](./media/plan-connect-topologies/LegendSync2.png) |
 | GALSync za pomocą programu Forefront Identity Manager (FIM) 2010 lub Microsoft Identity Manager (MIM) 2016 |![GALSync za pomocą programu FIM 2010 lub programu MIM 2016](./media/plan-connect-topologies/LegendSync3.png) |
 | Serwer synchronizacji programu Azure AD Connect, szczegółowe |![Serwer synchronizacji programu Azure AD Connect, szczegółowe](./media/plan-connect-topologies/LegendSync4.png) |
-| Azure AD |![Azure Active Directory](./media/plan-connect-topologies/LegendAAD.png) |
+| Azure AD |![Usługa Azure Active Directory](./media/plan-connect-topologies/LegendAAD.png) |
 | Nieobsługiwany scenariusz |![Nieobsługiwany scenariusz](./media/plan-connect-topologies/LegendUnsupported.png) |
 
 

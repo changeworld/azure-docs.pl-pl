@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 10/09/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: d59de5beb01da3b23de0a7e177fd1cb1887694fc
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 410566e62daeb42100443e72f2d8a1acb8dad5a3
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586057"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902284"
 ---
 # <a name="register-azure-stack-with-azure"></a>Rejestrowania usługi Azure Stack na platformie Azure
 
@@ -210,11 +210,11 @@ Wykonaj następujące kroki, aby zarejestrować usługi Azure Stack z platformą
       -PrivilegedEndpointCredential $CloudAdminCred `
       -PrivilegedEndpoint <PrivilegedEndPoint computer name> `
       -AgreementNumber <EA agreement number> `
-      -BillingModel Capacity
+      -BillingModel Capacity `
       -RegistrationName $RegistrationName
   ```
    > [!Note]  
-   > Można wyłączyć raportowanie z parametrem UsageReportingEnabled dla użycia **AzsRegistration zestaw** polecenia cmdlet. Ustaw parametr na wartość false. Na przykład: "UsageReportingEnabled
+   > Można wyłączyć raportowanie z parametrem UsageReportingEnabled dla użycia **AzsRegistration zestaw** polecenia cmdlet przez ustawienie parametru na wartość false. 
    
   Aby uzyskać więcej informacji na temat polecenia cmdlet Set-AzsRegistration, zobacz [dokumentacja rejestracji](#registration-reference).
 

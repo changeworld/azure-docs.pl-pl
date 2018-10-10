@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: 66d375022d200cc916c77c059fa64eb6dbbc17e2
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: f82a01f3a2b88e66988717eb008a65c8f2aecf28
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308150"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900329"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Wdrażanie aplikacji w usłudze Azure App Service przy użyciu protokołu FTP/S
 
@@ -66,7 +66,7 @@ Aby zwiększyć bezpieczeństwo należy zezwalać FTP za pośrednictwem protoko�
 
 Na stronie zasobów aplikacji w [witryny Azure portal](https://portal.azure.com), wybierz opcję **ustawienia aplikacji** w nawigacji po lewej stronie.
 
-Aby wyłączyć nieszyfrowanego protokołu FTP, wybierz **FTPS tylko**. Aby całkowicie wyłączyć FTP i FTPS, wybierz **wyłączyć**. Po zakończeniu kliknij przycisk **Zapisz**. Jeśli przy użyciu **FTPS tylko** muszą wymuszać protokół TLS 1.1 lub wyższą, przechodząc do **ustawienia protokołu SSL** bloku aplikacji sieci web. Protokół TLS 1.0 jest nieobsługiwane w przypadku **FTPS tylko**.
+Aby wyłączyć nieszyfrowanego protokołu FTP, wybierz **FTPS tylko**. Aby całkowicie wyłączyć FTP i FTPS, wybierz **wyłączyć**. Po skończeniu kliknij przycisk **Zapisz**. Jeśli przy użyciu **FTPS tylko** muszą wymuszać protokół TLS 1.1 lub wyższą, przechodząc do **ustawienia protokołu SSL** bloku aplikacji sieci web. Protokół TLS 1.0 jest nieobsługiwane w przypadku **FTPS tylko**.
 
 ![Wyłączanie protokołu FTP/S](./media/app-service-deploy-ftp/disable-ftp.png)
 
@@ -109,4 +109,4 @@ Dla bardziej zaawansowanych scenariuszy wdrażania, spróbuj [wdrażania na plat
 
 ## <a name="more-resources"></a>Więcej zasobów
 
-* [Poświadczenia wdrożenia usługi Azure App Service](app-service-deploy-ftp.md)
+* [Poświadczenia wdrożenia usługi Azure App Service](app-service-deployment-credentials.md)

@@ -9,14 +9,21 @@ ms.component: custom-vision
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: anroth
-ms.openlocfilehash: 61fa0b1d2fc40daed8b3b99a0ab0d36de802ce3d
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 8b4ba1601a7c5a9f523f7f8145a032861aac5d8c
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367988"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901332"
 ---
 # <a name="custom-vision-service-release-notes"></a>Informacje o wersji usługi Custom Vision
+
+## <a name="october-9-2018"></a>9 października 2018 r.
+- Wykrywanie obiektów wprowadza płatna wersja zapoznawcza. Można teraz tworzyć projekty wykrywanie obiektów z zasobów platformy Azure.
+- Dodano funkcję "Przenieś na platformie Azure" do witryny sieci Web, aby ułatwić uaktualnienie projektu ograniczonej wersji próbnej, aby utworzyć łącze do platformy Azure. Projekt połączonych zasobów (F0 lub S0). To na stronie Ustawienia można znaleźć na produkt.  
+- Dodano Eksport do 1.2 ONNX, obsługi wersji aktualizacji października 2018 Windows Windows ML.
+Eksportowanie poprawki błędów, w tym ONNX przy użyciu znaków specjalnych. 
+
 
 ## <a name="august-14-2018"></a>14 sierpnia 2018 r.
 - Dodano widżet "Wprowadzenie" do lokacji customvision.ai prowadzą użytkowników przez szkolenia dotyczącego projektu. 
@@ -24,12 +31,12 @@ ms.locfileid: "46367988"
 
 ## <a name="june-28-2018"></a>28 czerwca 2018 r.
 - Ulepszenia poprawki błędów i wewnętrznej bazy danych.
-- Klasyfikacja kontra Enabeled dla projektów, których obrazy mają dokładnie jedną etykietę. W prognozy dla trybu wieloklasowej prawdopodobieństwa obliczymy sumę do jednego (wszystkie obrazy są klasyfikowane między z określonymi tagami).
+- Włączone Wieloklasowej klasyfikacji, w przypadku projektów, których obrazy mają dokładnie jedną etykietę. W prognozy dla trybu wieloklasowej prawdopodobieństwa obliczymy sumę do jednego (wszystkie obrazy są klasyfikowane między z określonymi tagami).
 
 ## <a name="june-13-2018"></a>13 czerwca 2018 r.
 - Odświeżanie UX koncentruje się na łatwość użycia i ułatwienia dostępu. 
 - Ulepszenia potoku uczenia maszynowego korzystną multilabel projektów z dużą liczbą tagów.
-- Usunięto usterkę występującą podczas eksportowania TensorFlow. Wyeksportowane Enabeled modelu obsługi wersji, więc iteracji można wyeksportować więcej niż jeden raz. 
+- Usunięto usterkę występującą podczas eksportowania TensorFlow. Włączone modelu eksportowanych funkcji przechowywania wersji, więc iteracji można wyeksportować więcej niż jeden raz. 
 
 ## <a name="may-7-2018"></a>7 maja 2018 r.
 - Wprowadzono funkcję wykrywania obiektów w wersji zapoznawczej dla projektów w ograniczonej wersji próbnej.
@@ -38,7 +45,7 @@ ms.locfileid: "46367988"
 - Znaczne ulepszenia zaplecza w potoku uczenia maszynowego na potrzeby projektów klasyfikacji obrazów. Projekty szkolone po 27 kwietnia 2018 r. skorzystają z tych aktualizacji.
 - Dodano eksportowanie modeli do ONNX na potrzeby użycia z uczeniem maszynowym systemu Windows.
 - Dodano eksportowanie modeli do pliku Dockerfile. Dzięki temu można pobierać artefakty, aby tworzyć własne kontenery systemu Windows lub Linux, w tym DockerFile, model TensorFlow i kod usługi. 
-- W przypadku nowo szkolonych modeli wyeksportowanych do TensorFlow w domenach General (kompaktowa) i Landmark (kompaktowa) [średnie wartości wynoszą teraz (0,0,0)](https://github.com/azure-samples/cognitive-services-android-customvision-sample), aby zapewnić spójność ze wszystkimi projektami. 
+- Nowo wykwalifikowani modeli wyeksportowane do TensorFlow w ogóle (CD) i domen charakterystycznych elementów krajobrazu (CD) [wartości oznaczają są teraz (0,0,0)](https://github.com/azure-samples/cognitive-services-android-customvision-sample), w celu zachowania spójności we wszystkich projektach. 
 
 ## <a name="march-1-2018"></a>1 marca 2018 r.
 - Wprowadzono płatną wersję zapoznawczą i dołączono ją do witryny Azure Portal. Projekty można teraz dołączać do zasobów Azure przy użyciu warstwy F0 (Bezpłatna) lub S0 (Standardowa). Wprowadzono projekty warstwy S0, które umożliwiają użycie do 100 tagów i 25 000 obrazów. 

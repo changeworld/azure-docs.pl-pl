@@ -1,90 +1,91 @@
 ---
-title: Składnia wyrażenia w Academic Knowledge API kwerendy | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać składni wyrażenia zapytania w Academic Knowledge API kognitywnych usług firmy Microsoft.
+title: Składnia wyrażeń — interfejs Academic Knowledge API
+titlesuffix: Azure Cognitive Services
+description: Dowiedz się, jak używać składni wyrażeń zapytania w interfejsu Academic Knowledge API.
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 6ec338fff09954e2f14066ce2b83bc1228794af8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: bf6dbde725670030046aad4fccf41554b8d917fe
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346908"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901281"
 ---
 # <a name="query-expression-syntax"></a>Składnia wyrażenia zapytania
 
-Zaobserwowano, że odpowiedź na **interpretowania** żądanie zawiera wyrażenia zapytania. Gramatyki, która interpretowane zapytania użytkownika tworzone wyrażenia zapytania dla każdego interpretacji. Wyrażenia zapytania mogą być następnie używane do wystawienia **oceny** żądania pobrania jednostki wyników wyszukiwania.
+Zaobserwowaliśmy, że odpowiedź na **interpretacji** żądanie zawiera wyrażenie zapytania. Gramatyki, który interpretowany kwerendy użytkownika utworzony w wyrażeniu kwerendy dla każdego interpretacji. Następnie można użyć wyrażenia zapytania do wystawienia **oceny** żądanie pobrania wyników wyszukiwania jednostek.
 
-Można również utworzyć własne wyrażenia zapytania i używać ich w **oceny** żądania. Może to być przydatne, jeśli tworzysz z własnego interfejsu użytkownika, który tworzy wyrażenia zapytania w odpowiedzi na działania użytkownika. Aby to zrobić, należy znać składni wyrażeń zapytania.  
+Można również utworzyć własne wyrażenia zapytania i używać ich w **oceny** żądania. Może to być przydatne, jeśli tworzysz własny interfejs użytkownika, co powoduje utworzenie w wyrażeniu kwerendy w odpowiedzi na działania użytkownika. Aby to zrobić, musisz wiedzieć składni wyrażeń zapytania.  
 
-Każdy atrybut jednostki, który może być uwzględniony w wyrażeniu zapytania ma typ danych oraz zestaw operatorów zapytań możliwe. Określono zestaw atrybutów jednostki i operatory obsługiwane dla każdego atrybutu w [atrybuty obiektu](EntityAttributes.md). Zapytanie jednowartościowych wymaga do obsługi atrybutu *jest równe* operacji. Zapytanie prefiks wymaga do obsługi atrybutu *StartsWith* operacji. Kwerendy zakresu numerycznego wymaga do obsługi atrybutu *IsBetween* operacji.
+Każdy atrybut jednostki, które mogą być zawarte w wyrażeniu zapytania ma na określony typ danych i zestaw operatorów, to możliwe. Określono zestaw atrybutów jednostki i obsługiwane operatory dla każdego atrybutu w [atrybutów jednostki](EntityAttributes.md). Zapytanie jednowartościowych wymaga, aby atrybut do obsługi *jest równa* operacji. Zapytanie prefiks wymaga, aby atrybut do obsługi *StartsWith* operacji. Kwerendy zakresu liczbowego wymaga, aby atrybut do obsługi *IsBetween* operacji.
 
-Niektóre dane jednostki są przechowywane jako atrybuty złożonego wskazywany przez pojedynczego znaku kropki "." w nazwie atrybutu. Na przykład informacji o przynależności/autora jest reprezentowany jako atrybut złożonego. Zawiera składniki 4: AuN, AuId, AfN, AfId. Te składniki są osobne fragmenty danych, które tworzą wartość atrybutu pojedynczej jednostki.
+Niektóre dane jednostki są przechowywane jako atrybuty złożonego, wskazane przez pojedynczego znaku kropki "." w nazwie atrybutu. Na przykład informacji o przynależności/autor jest reprezentowany jako atrybut złożonego. Zawiera składniki 4: AuN AuId, AfN, AfId. Te składniki są oddzielne fragmenty danych, które stanowią wartość atrybutu pojedynczej jednostki.
 
 
 **Atrybut ciągu: Pojedyncza wartość** (w tym odpowiedników synonimy)  
-Analizy czasowej = "indeksowania analizą semantycznego ukryty"  
+Oś = "indeksowania przez ukrytego analizy semantycznej"  
 Złożone (AA. AuN = "dochodzić dumais")
 
-**Atrybut ciągu: Dokładnie jednej wartości** (zgodna tylko z wartościami kanonicznymi)  
-Analizy czasowej == "indeksowania analizą semantycznego ukryty"  
-Złożone (AA. AuN == "susan t dumais")
+**Atrybut ciągu: Dokładnie jedną wartość** (jest zgodna tylko z wartościami kanonicznymi)  
+Oś == "indeksowania przez ukrytego analizy semantycznej"  
+Złożone (AA. AuN == "dumais susan t")
      
 **Atrybut ciągu: Wartość prefiksu**   
-Analizy czasowej = "indeksowania według ukryty seman"...  
-Złożone (AA. AuN =... "dochodzić du")
+Oś = "indeksowania przez ukrytego seman"...  
+Złożone (AA. AuN =... "dochodzić jednostka bazy danych")
 
-**Liczbowa atrybutu: Pojedyncza wartość**  
+**Liczbową atrybut: Pojedyncza wartość**  
 Y = 2010
  
-**Atrybut numeryczny: Wartość zakresu**  
+**Liczbowego atrybut: Wartość zakresu**  
 Y &GT; 2005  
 Y &GT; = 2005  
-Y &LT; 2010  
-Y &LT; = 2010  
-Y =\[2010, 2012\) (zawiera wartość tylko lewej granicy: 2010, 2011)  
-Y =\[2010, 2012\] (obejmuje zarówno wartości granicznych: 2010, 2011, 2012)
+T &LT; 2010  
+T &LT; = 2010  
+Y =\[2010, 2012\) (zawiera tylko lewej granicy, wartość: 2010, 2011)  
+Y =\[2010, 2012\] (obejmuje zarówno wartości graniczne: 2010, 2011, 2012)
  
-**Liczbowych atrybutu: Wartość prefiksu**  
-Y = "19"... (wszystkie wartość liczbową będącą rozpoczyna się od 19) 
+**Numerycznych atrybutów: Wartość prefiksu**  
+Y = "19"... (wszystkie wartość liczbową rozpoczyna się od 19) 
  
 **Atrybutu daty: Pojedyncza wartość**  
-D = "2010--02 04"
+D = "2010-02-04"
 
-**Atrybut Data: Wartość zakresu**  
+**Dat atrybut: Wartość zakresu**  
 D &GT; "2010-02-03"  
 D = ["2010-02-03", "2010-02-05"]
 
 **I/lub zapytania:**  
-I (Y = 1985, analizy czasowej = "systemami elektronicznych disordered")  
-Lub (analizy czasowej = "elektronicznego systemami disordered", analizy czasowej = "odporność na uszkodzenia zasady i praktyki")  
-And(OR(Y=1985,Y=2008), analizy czasowej = "systemami elektronicznych disordered")
+I (Y = 1985, limit = "disordered elektroniczne systemy")  
+Lub (Ti = "elektroniczne systemy disordered", limit = "odporności na uszkodzenia zasady i praktyki")  
+And(OR(Y=1985,Y=2008), limit = "disordered elektroniczne systemy")
  
 **Złożone kwerendy:**  
-Zapytania składników atrybutu złożonego należy dołączyć część wyrażenia zapytania, który odwołuje się do atrybutu złożonego w funkcji Composite(). 
+Zapytania składników atrybutu złożonego należy ująć części wyrażenie zapytania, które odwołuje się do atrybutu złożonego w funkcji Composite(). 
 
-Na przykład zapytanie dla dokumentów przez autora, należy użyć następującej kwerendy:
+Na przykład aby wysłać zapytanie dla dokumentów, imię i nazwisko autora, użyj następującego zapytania:
 ```
 Composite(AA.AuN='mike smith')
 ```
-<br>Aby sprawdzić dla dokumentów przez konkretnego autora, podczas autora w szczególności instytucji, użyj następującej kwerendy:
+<br>Aby wysłać zapytanie dla dokumentów przez określonego autora podczas autora w szczególności instytucji, użyj następującego zapytania:
 ```
 Composite(And(AA.AuN='mike smith',AA.AfN='harvard university'))
 ```
-<br>Funkcja Composite() wiąże ze sobą dwie części złożonego atrybutu. Oznacza to, że tylko uzyskujemy dokumenty gdy autorów jest "Jan Nowak" podczas był on w Harvard. 
+<br>Funkcja Composite() łączy dwie części atrybut złożonego ze sobą. Oznacza to, że tylko uzyskujemy dokumentów gdzie jest on autorzy "Jan Kowalski" podczas zajmował w Harvard. 
 
-Dla dokumentów przez konkretnego autora w przynależności z autorami (innych) z konkretnym instytucji kwerendy, użyj następującego zapytania:
+Aby wysłać zapytanie dla dokumentów przez określonego autora w przynależności z autorami, (inne) z określoną instytucji, użyj następującego zapytania:
 ```
 And(Composite(AA.AuN='mike smith'),Composite(AA.AfN='harvard university'))
 ```
-<br>W tej wersji ponieważ Composite() jest stosowany do autora i przynależności indywidualnie przed And(), uzyskujemy wszystkie dokumenty, gdzie autorów jest "Jan Kowalski", a jeden z przynależności autorów "Harvard". To dźwięki, podobnie jak w poprzednim przykładzie kwerendy, ale nie jest to samo.
+<br>W tej wersji ponieważ Composite() została zastosowana do autora i przynależność do indywidualnie przed And(), uzyskujemy wszystkich dokumentów, gdzie jest jeden z autorzy "Jan Kowalski" i jest jeden z przynależności autorów "Harvard". Ta funkcja sprawa podobny do poprzedniego przykładu zapytania, ale nie jest tak samo.
 
-Ogólnie rzecz biorąc, rozważmy następujący przykład: mamy złożonego atrybutu C, która ma dwa składniki, A i B. Jednostka może mieć wiele wartości dla C. Oto nasze jednostek:
+Ogólnie rzecz biorąc, rozważmy następujący przykład: Firma Microsoft ma atrybut złożony języka C, który ma dwa składniki, A i B. Jednostka może mieć wiele wartości dla języka C. Oto nasze jednostki:
 ```
 E1: C={A=1, B=1}  C={A=1,B=2}  C={A=2,B=3}
 E2: C={A=1, B=3}  C={A=3,B=2}
@@ -95,15 +96,15 @@ E2: C={A=1, B=3}  C={A=3,B=2}
 Composite(And(C.A=1, C.B=2))
 ```
 
-<br>jest zgodna tylko jednostki, które mają wartość dla języka C, gdy składnik C.A jest 1 i składnik C.B jest 2. Tylko E1 odpowiada to zapytanie.
+<br>Dopasowuje tylko jednostek, które mają wartość dla języka C, gdzie składnika C.A wynosi 1, a składnik C.B to 2. Tylko E1 pasuje do tego zapytania.
 
 Zapytanie 
 ```
 And(Composite(C.A=1), Composite(C.B=2))
 ```
-<br>Dopasowuje jednostek, które będzie mieć wartość C, gdzie C.A to 1, a także ma wartości dla języka C gdzie C.B to 2. Zarówno E1 i E2 pasuje do tego zapytania.
+<br>pasuje do jednostek, które mają wartość dla języka C, w którym C.A wynosi 1, a także ma wartości dla języka C gdzie C.B wynosi 2. E1 i E2 pasujących do tego zapytania.
 
 Uwaga:  
-- Nie można odwoływać się część złożonego atrybutu poza funkcją Composite().
+- Nie można odwoływać się częścią złożonego atrybutu poza funkcją Composite().
 - Nie można odwoływać się części dwóch różnych atrybutów złożonego w tej samej funkcji Composite().
 - Nie można odwoływać się atrybut, który nie jest częścią złożonego atrybutu wewnątrz funkcji Composite().

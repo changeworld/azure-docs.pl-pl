@@ -1,5 +1,5 @@
 ---
-title: Zrozumienie kontroli zabezpieczeń usługi Azure Stack | Dokumentacja firmy Microsoft
+title: Zrozumienie kontroli zabezpieczeń usługi Azure Stack
 description: Jako administrator usługi Dowiedz się więcej o kontroli bezpieczeństwa do usługi Azure Stack
 services: azure-stack
 documentationcenter: ''
@@ -11,20 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 10/9/2018
 ms.author: patricka
-ms.openlocfilehash: 048a2e8204b3b8776b5a7e0e425dbc5fdf3d504c
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 32c268c1e4a0ff4d17c5b03f0ffd33b0ddf5b927
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719022"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901485"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Poziom zabezpieczeń infrastruktury w usłudze Azure Stack
 
 *Dotyczy: zintegrowane systemy usługi Azure Stack*
 
-Zagadnienia dotyczące zabezpieczeń i przepisy dotyczące zgodności są głównym sterowniki przy użyciu chmury hybrydowej. Usługa Azure Stack został zaprojektowany dla tych scenariuszy i jest ważne zrozumieć formantów już w miejscu, podczas wdrażania usługi Azure Stack.
+Zagadnienia dotyczące zabezpieczeń i przepisy dotyczące zgodności są głównym sterowniki przy użyciu chmury hybrydowej. Usługa Azure Stack jest przeznaczona dla tych scenariuszy. W tym artykule opisano kontroli bezpieczeństwa na potrzeby usługi Azure Stack.
 
 Współistnienia dwóch warstw ogólny poziom zabezpieczeń w usłudze Azure Stack. Pierwsza warstwa jest infrastruktury Azure Stack, która obejmuje składniki sprzętowe do usługi Azure Resource Manager. Pierwsza warstwa obejmuje administratora i portale dzierżawy. Druga warstwa składa się z obciążeń utworzone, wdrażania i zarządzania nimi przez dzierżawców. Druga warstwa zawiera elementy, takie jak maszyny wirtualne i usługi aplikacji, witryn sieci web.
 
@@ -50,14 +50,14 @@ Wszystkie punkty końcowe infrastruktury zewnętrznych, takich jak punkty końco
 Chociaż mogą być używane certyfikaty z podpisem własnym dla tych zewnętrznych punktów końcowych, Microsoft zdecydowanie z informacją o tym przed ich używania. 
 
 ## <a name="secret-management"></a>Zarządzanie wpisami tajnymi
-Infrastruktura usługi Azure Stack używa wpisy tajne, takie jak hasła, dlatego też działać. Większość z nich są automatycznie obracane często, ponieważ są one konta usług zarządzane grupy, które Obróć co 24 godziny.
+Infrastruktura usługi Azure Stack używa wpisy tajne, takie jak hasła, dlatego też działać. Większość z nich są automatycznie obracane często, ponieważ są one konta Group-Managed usług, które Obróć co 24 godziny.
 
-Pozostałe wpisy tajne, które nie są konta usług zarządzane grupy można obracać ręcznie przy użyciu skryptu w uprzywilejowanych punktu końcowego.
+Pozostałe wpisy tajne, które nie są kontami usług Group-Managed można obracać ręcznie przy użyciu skryptu w uprzywilejowanych punktu końcowego.
 
 ## <a name="code-integrity"></a>Integralność kodu
 Usługa Azure Stack, korzysta z najnowszych systemu Windows Server 2016 funkcji zabezpieczeń. Jeden z nich jest systemu Windows Defender funkcji Device Guard, zawiera listę dozwolonych aplikacji, która zapewnia, że tylko autoryzowani kod działa w ramach infrastruktury Azure Stack. 
 
-Autoryzowanego kodu jest podpisany przez firmę Microsoft lub partnerem OEM i znajduje się na liście dozwolonych oprogramowania, który jest określony w zasadach zdefiniowana przez firmę Microsoft. Innymi słowy mogą być wykonywane tylko w przypadku oprogramowania, które zostało zatwierdzone do uruchomienia w ramach infrastruktury Azure Stack. Każda próba wykonania nieautoryzowanego kodu jest zablokowana i inspekcji jest wygenerowany.
+Autoryzowanego kodu jest podpisany przez firmę Microsoft lub partnerem OEM. Podpisanego kodu autoryzowanych znajduje się na liście dozwolonych oprogramowania określone w zasadach zdefiniowana przez firmę Microsoft. Innymi słowy mogą być wykonywane tylko w przypadku oprogramowania, które zostało zatwierdzone do uruchomienia w ramach infrastruktury Azure Stack. Każda próba wykonania nieautoryzowanego kodu jest zablokowana i inspekcji jest wygenerowany.
 
 Zasady funkcji Device Guard zapobiega także agentów innych firm lub oprogramowanie działające w infrastrukturze Azure Stack.
 
@@ -67,7 +67,7 @@ Kolejną funkcją zabezpieczeń systemu Windows Server 2016 w usłudze Azure Sta
 ## <a name="antimalware"></a>Oprogramowanie chroniące przed złośliwym kodem
 Każdy składnik w usłudze Azure Stack (hosty funkcji Hyper-V i maszyn wirtualnych) jest chroniony za pomocą programu antywirusowego Windows Defender.
 
-W połączonych scenariuszach aktualizacje definicji i aparatu oprogramowania antywirusowego są stosowane wiele razy dziennie. W scenariuszach bez połączenia aktualizacji ochrony przed złośliwym kodem są stosowane w ramach comiesięcznych aktualizacji usługi Azure Stack. Zobacz [aktualizacji programu antywirusowego Windows Defender w usłudze Azure Stack](azure-stack-security-av.md) Aby uzyskać więcej informacji.
+W połączonych scenariuszach aktualizacje definicji i aparatu oprogramowania antywirusowego są stosowane wiele razy dziennie. W scenariuszach bez połączenia aktualizacji ochrony przed złośliwym kodem są stosowane w ramach comiesięcznych aktualizacji usługi Azure Stack. Aby uzyskać więcej informacji, zobacz [aktualizacji programu antywirusowego Windows Defender w usłudze Azure Stack](azure-stack-security-av.md).
 
 ## <a name="constrained-administration-model"></a>Model administracyjny ograniczone
 Administracja w usłudze Azure Stack jest kontrolowany przy użyciu trzech punktów wejścia, każdy z określonym przeznaczeniem: 
@@ -76,12 +76,24 @@ Administracja w usłudze Azure Stack jest kontrolowany przy użyciu trzech punkt
 3. Dla określonych operacji niskiego poziomu, na przykład data center integration lub obsługi scenariuszy, usługi Azure Stack uwidacznia punkt końcowy programu PowerShell, nazywane [uprzywilejowanych punktu końcowego](azure-stack-privileged-endpoint.md). Ten punkt końcowy ujawnia tylko zestaw dozwolonych poleceń cmdlet i intensywnie podlega inspekcji.
 
 ## <a name="network-controls"></a>Kontrolki sieci
-Infrastruktura usługi Azure Stack jest dostarczany za pomocą różnych warstw List(ACL) kontroli dostępu do sieci. Listy ACL zapobiegać nieautoryzowanemu dostępowi do składników infrastruktury i ograniczyć komunikacji infrastruktury do ścieżek, które są wymagane do jego funkcjonowania. 
+Infrastruktura usługi Azure Stack jest dostarczany za pomocą różnych warstw sieciowych listy kontroli dostępu (ACL). Listy ACL zapobiegać nieautoryzowanemu dostępowi do składników infrastruktury i ograniczyć komunikacji infrastruktury do ścieżek, które są wymagane do jego funkcjonowania. 
 
 Listy ACL sieci są wymuszane w trzech warstwach:
 1.  Przełączniki tor
 2.  Sieć definiowana przez oprogramowanie
 3.  Zapory systemu operacyjnego hosta i maszyny Wirtualnej
+
+## <a name="regulatory-compliance"></a>Zgodność z przepisami
+
+Usługa Azure Stack zrealizowano formalne oceny przez firmę inspekcji niezależnie od innych firm. W rezultacie dokumentację dotyczącą jak infrastruktury Azure Stack spełnia dotyczy formanty z kilku standardów zgodności głównych jest dostępna. Dokumentacja nie jest to program certyfikacji usługi Azure Stack z powodu standardów, w tym kilka formantów z pracownikami i powiązane z procesem. Zamiast klienci mogą używać tej dokumentacji, aby szybko rozpocząć tworzenie swoich procesu certyfikacji.
+
+Oceny obejmują następujące standardy:
+
+- [PCI-DSS](https://www.pcisecuritystandards.org/pci_security/) adresy branży kart płatniczych.
+- [Macierzy kontroli chmury CSA](https://cloudsecurityalliance.org/group/cloud-controls-matrix/#_overview) to kompleksowe mapowania przez wiele standardów, w tym FedRAMP umiarkowany, ISO27001, HIPAA, HITRUST, ITAR, NIST SP800-53 i inne.
+- [Programowi FedRAMP High](https://www.fedramp.gov/fedramp-releases-high-baseline/) dla klientów rządowych.
+
+Dokumentacja zgodności znajduje się na [Portal zaufania usługi Microsoft](https://servicetrust.microsoft.com/ViewPage/Blueprint). Przewodniki dotyczące zgodności są zasobem chronionym i wymagają, możesz zalogować się przy użyciu poświadczeń usługi platformy Azure w chmurze.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

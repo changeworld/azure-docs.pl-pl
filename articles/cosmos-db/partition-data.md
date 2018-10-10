@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b7d9a0dd439b7c25180c8f250a87ae5ee184139
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: d7c1c28b3d7b2f51c31f5f05cdef66cc8d71e192
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870574"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886386"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Partycja i skali w usłudze Azure Cosmos DB
 
@@ -104,50 +104,6 @@ Poniżej przedstawiono wymagania wstępne dotyczące należy wziąć pod uwagę,
 * Wszystkie kontenery skonfigurowany tak, aby udostępnić przepływności jako część zestawu kontenerów są traktowane jako **nieograniczone** kontenerów.
 
 Jeśli utworzono **stałe** kontenera bez partycji klucza lub przepływności, mniej niż 1000 jednostek RU/s, kontenera będzie nie automatycznego skalowania. Aby przeprowadzić migrację danych z kontener stały do nieograniczonego kontenera, musisz użyć [narzędzia migracji danych](import-data.md) lub [kanału informacyjnego zmian biblioteki](change-feed.md). 
-
-## <a name="PartitionedGraph"></a>Wymagania dotyczące partycjonowane wykresu
-
-Podczas tworzenia kontenera grafu podzielonym na partycje, należy wziąć pod uwagę następujące informacje:
-
-- **Niezbędne jest skonfigurowanie partycjonowanie** Jeśli powinien być większy niż 10 GB, rozmiar kontenera i/lub jeśli przydzielanie ponad 10 000 jednostek żądań na sekundę (RU/s) ma być wymagane.
-
-- **Wierzchołki i krawędzie, które są przechowywane jako dokumenty JSON** w zapleczu interfejsu API języka Gremlin usługi Azure Cosmos DB.
-
-- **Wierzchołki wymagają klucza partycji**. Tego klucza określa, której partycji służy do przechowywania wierzchołka i tego procesu jest używany algorytm wyznaczania wartości skrótu. Nazwa tego klucza partycji jest jednowyrazowej ciągu bez spacji ani znaków specjalnych i jest zdefiniowany, tworząc nowy kontener przy użyciu formatu `/partitioning-key-name`.
-
-- **Krawędzie są przechowywane z ich źródła wierzchołka**. Innymi słowy dla każdego wierzchołka kluczu partycji określa, gdzie są przechowywane wierzchołka i jego krawędzi wychodzących. Ten sposób można uniknąć zapytań między partycjami, używając `out()` Kardynalność zapytania programu graph.
-
-- **Zapytania programu Graph powinien określać klucz partycji**. Aby w pełni korzystać z partycjonowania poziomego w usłudze Azure Cosmos DB, jeśli to możliwe, wykres zapytania powinien zawierać klucza partycji. Na przykład jeśli zaznaczono jednego wierzchołka. Następujące przykładowe zapytania pokazują, jak dołączyć klucz partycji, po wybraniu jednego lub wielu wierzchołków w grafie podzielonym na partycje:
-
-    - **Obecnie nie można użyć `/id` jako klucza partycji dla kontenera w interfejsie API języka Gremlin**.
-
-    - Wybraniu wierzchołka według identyfikatorów, a następnie **użyj `.has()` krok, aby określić właściwości klucza partycji**: 
-    
-        ```
-        g.V('vertex_id').has('partitionKey', 'partitionKey_value')
-        ```
-    
-    - Wybieranie wierzchołka przez **Określanie krotki wartości klucza partycji i Identyfikatora**: 
-    
-        ```
-        g.V(['partitionKey_value', 'vertex_id'])
-        ```
-        
-    - Wybieranie wierzchołek, określając **tablicy krotek, który zawiera wartości klucza partycji i identyfikatory**:
-    
-        ```
-        g.V(['partitionKey_value0', 'verted_id0'], ['partitionKey_value1', 'vertex_id1'], ...)
-        ```
-        
-    - Wybierając zestaw wierzchołki przez **określania listy wartości klucza partycji**: 
-    
-        ```
-        g.V('vertex_id0', 'vertex_id1', 'vertex_id2', …).has('partitionKey', within('partitionKey_value0', 'partitionKey_value01', 'partitionKey_value02', …)
-        ```
-
-* **Zawsze określać wartości klucza partycji podczas wykonywania zapytań dotyczących wierzchołek**. Uzyskiwanie wierzchołek z znanych partycji jest najbardziej wydajny sposób pod względem wydajności.
-
-* **Użyj kierunku wychodzącego, podczas wykonywania zapytań dotyczących krawędzie** zawsze, gdy jest to możliwe. Krawędzie są przechowywane z ich źródła wierzchołki, w kierunku wychodzącego. Oznacza to, że prawdopodobieństwo konieczności uciekania się do zapytań między partycjami są zminimalizowane, gdy danych i zapytania, które są skonstruowane z tego wzorca należy pamiętać.
 
 ## <a name="designing-for-partitioning"></a> Utwórz klucz partycji 
 Tworzenie kontenerów i skalować je w dowolnym momencie można użyć witryny Azure portal lub interfejsu wiersza polecenia platformy Azure. W tej sekcji pokazano, jak tworzyć kontenery i określ klucz aprowizowanej przepływności i partycji przy użyciu każdego interfejsu API.

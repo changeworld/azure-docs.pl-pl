@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 77f552f94df6e003f6504991f9617a080acdd768
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: c122153f43bd68b0c3c5a1046e2a0b7c65249572
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47180516"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887295"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Ustawienia logowania przy użyciu konta usługi Azure Active Directory za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C 
 
@@ -176,6 +176,18 @@ Teraz, gdy przycisk w miejscu, należy połączyć akcji. Akcja, w tym przypadku
 
 3. Zapisz *TrustFrameworkExtensions.xml* plik i ponownie przekazać go do weryfikacji.
 
+## <a name="create-an-azure-ad-b2c-application"></a>Tworzenie aplikacji usługi Azure AD B2C
+
+Za pomocą usługi Azure AD B2c odbywa się przy użyciu aplikacji utworzonej w dzierżawie. W tej sekcji przedstawiono kroki opcjonalne, które możesz wykonać, aby utworzyć aplikację testu, jeśli jeszcze tego nie zrobiłeś.
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
+3. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **usługi Azure AD B2C**.
+4. Wybierz **aplikacje**, a następnie wybierz pozycję **Dodaj**.
+5. Wprowadź nazwę aplikacji, na przykład *testapp1*.
+6. Dla **aplikacji sieci Web / interfejs API sieci Web**, wybierz opcję `Yes`, a następnie wprowadź `https://jwt.ms` dla **adres URL odpowiedzi**.
+7. Kliknij pozycję **Utwórz**.
+
 ## <a name="update-and-test-the-relying-party-file"></a>Aktualizowanie i przetestować go jednostki uzależnionej ze stron
 
 Należy zaktualizować plik innych firm (RP) jednostki uzależnionej, która inicjuje podróży użytkownika, który został utworzony.
@@ -184,5 +196,6 @@ Należy zaktualizować plik innych firm (RP) jednostki uzależnionej, która ini
 2. Otwórz nowy plik i zaktualizuj wartość **PolicyId** atrybutu dla **elementu TrustFrameworkPolicy** przy użyciu unikatowej wartości. Na przykład `SignUpSignInContoso`.
 3. Zaktualizuj wartość **PublicPolicyUri** o identyfikatorze URI zasad. Na przykład`http://contoso.com/B2C_1A_signup_signin_contoso`
 4. Zaktualizuj wartość **ReferenceId** atrybutu w **DefaultUserJourney** aby dopasować identyfikator nowego podróży użytkownika utworzony (SignUpSignInContoso).
-5. Zapisz zmiany, Przekaż plik i go przetestować, otwierając ją i klikając **Uruchom teraz**.
+5. Zapisz zmiany, Przekaż plik, a następnie wybierz nowe zasady na liście.
+6. Upewnij się, że zaznaczone jest aplikacja usługi Azure AD B2C, który został utworzony w **wybierz aplikację** pola, a następnie przetestuj go, klikając **Uruchom teraz**.
 

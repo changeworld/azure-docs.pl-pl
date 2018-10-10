@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/27/2018
+ms.date: 10/08/2018
 ms.author: aljo
-ms.openlocfilehash: 69f29eac17ecdf5381a550bc182c547fa0c25278
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 7a80693090b92db55ad2feed52fdbb2a455e3c39
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018982"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884497"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Dostosowywanie ustawień klastra usługi Service Fabric
 W tym artykule opisano sposób dostosowywania różne ustawienia sieci szkieletowej klastra usługi Service Fabric. W przypadku klastrów hostowanych na platformie Azure, można dostosować ustawienia za pośrednictwem [witryny Azure portal](https://portal.azure.com) lub przy użyciu szablonu usługi Azure Resource Manager. W przypadku autonomicznych klastrów możesz dostosować ustawienia aktualizowania pliku ClusterConfig.json, a następnie wykonać uaktualnienie konfiguracji w klastrze. 
@@ -361,6 +361,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |DeploymentMaxFailureCount|Int, domyślna to 20| Dynamiczny|Wdrażanie aplikacji zostanie ponowiona dla czasów DeploymentMaxFailureCount przed zaniechaniem wdrożenie tej aplikacji w węźle.| 
 |DeploymentMaxRetryInterval| Przedział czasu, wartością domyślną jest Common::TimeSpan::FromSeconds(3600)|Dynamiczny| Określ przedział czasu w sekundach. Maksymalny interwał ponawiania dla wdrożenia. W przypadku każdego niepowodzenia ciągłe interwał ponawiania jest obliczany jako (DeploymentMaxRetryInterval; Min Liczba niepowodzeń ciągłe * DeploymentRetryBackoffInterval) |
 |DeploymentRetryBackoffInterval| Przedział czasu, wartością domyślną jest Common::TimeSpan::FromSeconds(10)|Dynamiczny|Określ przedział czasu w sekundach. Interwał wycofywania niepowodzenia wdrożenia. W przypadku niepowodzenia ciągłego wdrażania, co system ponowi próbę wdrożenia dla maksymalnie MaxDeploymentFailureCount. Interwał ponawiania jest wynikiem błędu ciągłego wdrażania i interwał wycofywania wdrożenia. |
+|DisableDockerRequestRetry|wartość logiczna, domyślna to FALSE |Dynamiczny| Domyślnie SF komunikuje się za pomocą DD (docker dameon) z limitem czasu równym "DockerRequestTimeout" dla każdego żądania http wysyłane do niej. Jeśli DD nie odpowie w tym okresie; Jeśli najwyższego poziomu operacji środki, nieopłacone remining czasu wysyła żądanie SF ponownie.  Za pomocą kontenera funkcji Hyper-v; DD upłynąć znacznie więcej czasu na wyświetlenie kontenera lub go dezaktywować. W takich przypadkach DD żądaniu limit czasu z punktu widzenia SF i SF ponawia operację. Czasami zajmuje to nieco dodaje więcej wykorzystanie w polu DD. Ta konfiguracja umożliwia wyłączenie ta ponowna próba i poczekaj, aż DD odpowiedzi. |
 |EnableActivateNoWindow| wartość logiczna, domyślna to FALSE|Dynamiczny| Aktywowanego procesu jest tworzony w tle bez żadnych konsoli. |
 |EnableContainerServiceDebugMode|wartość logiczna, domyślny ma wartość TRUE|Statyczny|Włączanie/wyłączanie rejestrowania dla kontenerów docker.  Tylko Windows.|
 |EnableDockerHealthCheckIntegration|wartość logiczna, domyślny ma wartość TRUE|Statyczny|Umożliwia integrację zdarzeń funkcji HEALTHCHECK platformy docker za pomocą usługi Service Fabric raport o kondycji systemu |
@@ -422,6 +423,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |SharedLogId |ciąg, domyślna to "" |Statyczny|Unikatowy identyfikator guid dla udostępnionego dziennika kontenera. Użyj "" Jeśli przy użyciu domyślnej ścieżki, w obszarze katalogu głównego danych sieci szkieletowej. |
 |SharedLogPath |ciąg, domyślna to "" |Statyczny|Ścieżka i nazwa pliku do lokalizacji, aby umieścić kontenera udostępnionego dziennika. Użyj "" dotyczące korzystania z domyślnej ścieżki, w obszarze katalogu głównego danych sieci szkieletowej. |
 |SharedLogSizeInMB |Int, wartością domyślną jest 8192 |Statyczny|Liczba MB do przydzielenia w kontenerze udostępnionego dziennika. |
+|SharedLogThrottleLimitInPercentUsed|int, domyślna to 0 | Statyczny | Procent użycia udostępnionego dziennika, który będzie wywoływać ograniczania przepustowości. Wartość powinna być z zakresu od 0 do 100. Wartość 0 oznacza użyta domyślna wartość procentową. Wartości 100 oznacza bez ograniczania przepływności w ogóle. Wartość z zakresu od 1 do 99 określa wartość procentową użycia dziennika powyższe ograniczenie, które nastąpią; na przykład, jeśli udostępniony dziennik jest 10GB, a wartość jest 90 throttleing miało miejsce, gdy 9GB, jest w użyciu. Zaleca się przy użyciu wartości domyślnej.|
 |WriteBufferMemoryPoolMaximumInKB | int, domyślna to 0 |Dynamiczny|Liczba KB, aby umożliwić puli pamięci bufor zapisu do rozwijania. Użycie wartości 0, aby wskazać, bez ograniczeń. |
 |WriteBufferMemoryPoolMinimumInKB |Int, wartością domyślną jest 8388608 |Dynamiczny|Numer bazy wiedzy można wstępnie przydzielić dla puli pamięci buforu zapisu. Użycie wartości 0, aby wskazać, ma ograniczenia domyślne powinny być zgodne z SharedLogSizeInMB poniżej. |
 

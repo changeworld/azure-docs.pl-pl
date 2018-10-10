@@ -15,12 +15,12 @@ ms.date: 10/11/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: aae73816b883fe782eff27c56174c71f14c253c4
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 53d613052713e5144cb9d96aeeb937392fd4736a
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577190"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902930"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Na podstawie nagłówka uwierzytelniania dla logowania jednokrotnego przy użyciu serwera Proxy aplikacji i PingAccess
 
@@ -162,10 +162,10 @@ W tym przykładzie użyto [witryny Azure portal](https://portal.azure.com) do ak
 >[!NOTE]
 >Aby użyć oświadczenia niestandardowego, musi również mieć zasad niestandardowych, zdefiniowanych i przypisane do aplikacji.  Ta zasada powinna zawierać wszystkie wymagane atrybutów niestandardowych.
 >
->Definicja zasad i przypisania może odbywać się przy użyciu programu PowerShell, usługi Azure AD Graph Explorer lub MS Graph.  Jeśli robisz to w programie PowerShell, należy najpierw użyć `New-AzureADPolicy `i przypisz je do aplikacji przy użyciu `Set-AzureADServicePrincipalPolicy`.  Aby uzyskać więcej informacji, zobacz [dokumentacji usługi Azure AD Policy](../active-directory-claims-mapping.md#claims-mapping-policy-assignment).
+>Definicja zasad i przypisania może odbywać się przy użyciu programu PowerShell, usługi Azure AD Graph Explorer lub MS Graph.  Jeśli robisz to w programie PowerShell, należy najpierw użyć `New-AzureADPolicy `i przypisz je do aplikacji przy użyciu `Set-AzureADServicePrincipalPolicy`.  Aby uzyskać więcej informacji, zobacz [dokumentacji usługi Azure AD Policy](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
 
 ### <a name="optional---use-a-custom-claim"></a>Opcjonalne — Użyj oświadczenia niestandardowego
-Aby aplikacja oświadczenia niestandardowego i zawiera dodatkowe pola, upewnij się, czy masz również [utworzone oświadczenia niestandardowe mapowanie zasad i przypisać je do aplikacji](../active-directory-claims-mapping.md#claims-mapping-policy-assignment).
+Aby aplikacja oświadczenia niestandardowego i zawiera dodatkowe pola, upewnij się, czy masz również [utworzone oświadczenia niestandardowe mapowanie zasad i przypisać je do aplikacji](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
 
 ## <a name="download-pingaccess-and-configure-your-app"></a>Pobierz oprogramowanie PingAccess i konfigurowanie aplikacji
 

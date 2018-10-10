@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2018
 ms.author: ryanwi
-ms.openlocfilehash: 9d287abf8963ba46cce42f101aecba31c9762c7a
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: f2795e2836dbb374d147b84d2ac91977659a1520
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249540"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883519"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Przygotowywanie środowiska deweloperskiego w systemie Windows
 > [!div class="op_single_selector"]
@@ -93,7 +93,6 @@ Po skonfigurowaniu środowiska projektowego możesz zacząć kompilować i uruch
 * [Informacje o modelach programowania: Reliable Services i Reliable Actors](service-fabric-choose-framework.md)
 * [Przykłady kodu platformy Service Fabric w witrynie GitHub](https://aka.ms/servicefabricsamples)
 * [Wizualizowanie klastra przy użyciu narzędzia Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
-* [Ścieżka szkoleniowa platformy Service Fabric — pełne wprowadzenie do platformy](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
 * Uzyskaj informacje o [opcjach pomocy technicznej usługi Service Fabric](service-fabric-support.md)
 
 [1]: https://azure.microsoft.com/campaigns/service-fabric/ "Strona kampanii usługi Service Fabric"

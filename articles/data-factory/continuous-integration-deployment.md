@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 10/09/2018
 ms.author: douglasl
-ms.openlocfilehash: 8027b167481fd4e48e03b3c1ad3ed8c6adcb853e
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 5da9d4b33951e14df251fe4939c54cff822843aa
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815447"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901961"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Ciągła integracja i dostarczanie (CI/CD) w usłudze Azure Data Factory
 
@@ -182,6 +182,9 @@ Wdrażanie może zakończyć się niepowodzeniem, jeśli zostanie podjęta prób
     ![](media/continuous-integration-deployment/continuous-integration-image11.png)
 
 Można wykonać podobne kroki i użyć podobny kod (z `Start-AzureRmDataFactoryV2Trigger` funkcji) do ponownego uruchomienia wyzwalacze po wdrożeniu.
+
+> [!IMPORTANT]
+> Ciągła integracja i scenariusze wdrażania typu środowiska Integration Runtime w różnych środowiskach musi być taka sama. Na przykład, jeśli masz *może być samodzielnie hostowane* tego samego środowiska IR Integration Runtime (IR) w środowisku programistycznym, musi być typu *może być samodzielnie hostowane* w innych środowiskach, takich jak testowych i produkcyjnych również. Podobnie, jeśli udostępniasz środowiska integration Runtime na wiele etapów, należy skonfigurować urząd skarbowy jako *połączonej, może być samodzielnie hostowane* we wszystkich środowiskach, takich jak programowania, testowania i produkcji.
 
 ## <a name="sample-deployment-template"></a>Przykładowy szablon wdrożenia
 

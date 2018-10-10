@@ -3,17 +3,17 @@ title: Konfigurowanie klastra HDInsight z pakietem Enterprise Security za pomoc�
 description: Dowiedz się, jak instalowanie i konfigurowanie klastra HDInsight Enterprise Security pakietu przy użyciu usługi Azure Active Directory Domain Services.
 services: hdinsight
 ms.service: hdinsight
-author: omidm1
-ms.author: omidm
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
-ms.date: 10/3/2018
-ms.openlocfilehash: 84ee24b9002237d0993a30190944dbd6dd190ac8
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.date: 10/9/2018
+ms.openlocfilehash: c56158a5e8df2e8781ec8e4431c75beadd154297
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48784944"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901655"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurowanie klastra HDInsight z pakietem Enterprise Security za pomocą usługi Azure Active Directory Domain Services
 
@@ -25,6 +25,9 @@ W tym artykule dowiesz się, jak skonfigurować klaster HDInsight przy użyciu E
 >ESP jest ogólnie w HDI 3.6 dla platformy Spark, interaktywny i Hadoop. ESP dla typów klastrów HBase i Kafka jest w wersji zapoznawczej.
 
 ## <a name="enable-azure-ad-ds"></a>Włączanie usługi Azure AD DS
+
+> [!NOTE]
+> Tylko Administratorzy dzierżawy mają uprawnienia do tworzenia wystąpienia usług AD DS platformy Azure. Czy za pomocą magazynu klastra usługi Azure Data Lake Store (ADLS) Gen1 lub Gen2, Wyłącz uwierzytelnianie wieloskładnikowe (MFA) tylko dla użytkowników, którzy będą uzyskiwać dostęp do klastra. Jeśli magazyn klastra usługi Azure Blob Storage (WASB), nie należy wyłączać usługi MFA.
 
 Włączanie usługi Azure AD DS jest wymaganiem wstępnym, przed utworzeniem klastra HDInsight z ESP. Aby uzyskać więcej informacji, zobacz [włączyć usługi Azure Active Directory Domain Services w witrynie Azure portal](../../active-directory-domain-services/active-directory-ds-getting-started.md). 
 
@@ -40,8 +43,7 @@ Zmień konfigurację serwerów DNS w sieci Wirtualnej usług AD DS platformy Azu
 
 ![Trwa aktualizowanie konfiguracji DNS sieci Wirtualnej](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-vnet-configuration.png)
 
-> [!NOTE]
-> Tylko Administratorzy dzierżawy mają uprawnienia do tworzenia wystąpienia usług AD DS platformy Azure. Uwierzytelnianie wieloskładnikowe wymaga można wyłączyć tylko dla użytkowników, którzy będą uzyskiwać dostęp do klastra.
+
 
 Podczas włączania bezpiecznego protokołu LDAP, umieść nazwę domeny do nazwy podmiotu lub alternatywną nazwę podmiotu w certyfikacie. Na przykład, jeśli nazwa domeny to *contoso.com*, upewnij się, takiej samej nazwie istnieje w nazwie podmiotu certyfikatu lub alternatywnej nazwy podmiotu. Aby uzyskać więcej informacji, zobacz [domeny zarządzanej przez Konfigurowanie bezpiecznego protokołu LDAP dla usługi Azure AD — DS](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md).
 

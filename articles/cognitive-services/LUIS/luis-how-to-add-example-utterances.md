@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 387668263a6bab6e12a21adf04aebfbbf108a006
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: adb44dcc8c41b1a7846ff346d141dc0c4b028e96
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036494"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888292"
 ---
 # <a name="add-example-utterances-and-label-with-entities"></a>Dodawanie wypowiedzi przykład i etykiety z jednostkami
 
@@ -92,12 +92,12 @@ Dodawanie synonimów do jednostki listy, wybierając wyraz lub frazę w polu wyp
 
 W wypowiedź, wybierz równoznaczny słowa, takie jak `aqua` do wody, następnie wybierz listę jednostki nazwę na liście rozwijanej, takich jak **pić**, a następnie wybierz **ustawiony jako synonim**, następnie wybierz listę element jest synonimem, takie jak **wody**.
 
-![Zrzut ekranu z opcjami szczegółów strony Tworzenie nowych synonim wyróżniony](./media/luis-how-to-add-example-utterances/set-agua-as-synonym.png)
+![Zrzut ekranu z opcjami szczegółów strony Utwórz nowy widok znormalizowane wyróżnione](./media/luis-how-to-add-example-utterances/set-agua-as-synonym.png)
 
 ## <a name="create-new-item-for-list-entity"></a>Utwórz nowy element listy jednostki
-Utwórz nowy element do istniejącej jednostki listę, wybierając wyraz lub frazę w polu wypowiedź. Jeśli masz napój listy i chcesz dodać `tea` jako nowy element, postępuj zgodnie z instrukcjami:
+Utwórz nowy element do istniejącej jednostki listę, wybierając wyraz lub frazę w polu wypowiedź. W przypadku pracowników, listy i chcesz dodać `Bob Smith` jako nowy element, postępuj zgodnie z instrukcjami:
 
-W wypowiedź, zaznacz wyraz dla nowego elementu listy, takich jak `tea`, następnie wybierz nazwę jednostki listy na liście rozwijanej, takich jak **pić**, a następnie wybierz **tworzenie nowych synonim**. 
+W polu wypowiedź, wybierz pozycję wyrazu lub frazy dla nowego elementu listy, takich jak `Bob Smith`, następnie wybierz nazwę jednostki listy na liście rozwijanej, takich jak **pracowników**, a następnie wybierz **Utwórz nowy widok znormalizowane**. 
 
 ![Zrzut ekranu przedstawiający dodawanie nowego elementu listy](./media/luis-how-to-add-example-utterances/list-entity-create-new-item.png)
 

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 66494ca6bd9b4d8276469e85f4c6bb435ae245f7
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 154d82ab5e309631df0bfa40df7fe14902327f46
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716404"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884279"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Często zadawane pytania dotyczące akceleratorów rozwiązań IoT
 
@@ -41,6 +41,10 @@ Obecnie tylko rozwiązania do zdalnego monitorowania używa architektura mikrous
 ### <a name="what-advantages-does-the-new-open-sourced-microservices-based-architecture-provide-in-the-new-update"></a>Jakie korzyści są dostępne nowe open source opartych na mikrousługach architektury w nowej aktualizacji?
 
 W ciągu ostatnich dwóch lat znacznie powstał architektury w chmurze. Mikrousługi mają uznana doskonałe wzorzec do osiągnięcia skali i elastyczności, bez obniżania oczekiwanego poziomu prędkość opracowywania. Ten wzorzec architektury jest używana w kilku usługach Microsoft wewnętrznie z doskonałą niezawodność i skalowalność wyników. Firma Microsoft korzystają z tych uczenia w praktyce, dzięki czemu nasze klienci mogli korzystać z nich.
+
+### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Gdzie można znaleźć informacje o poprzednią wersję rozwiązania do zdalnego monitorowania?
+
+Poprzednią wersję akceleratora rozwiązania monitorowania zdalnego jest znane jako rozwiązanie IoT zdalnego monitorowania pakietu wstępnie skonfigurowane. Można znaleźć dokumentację zarchiwizowane w [ https://docs.microsoft.com/previous-versions/azure/iot-suite/ ](https://docs.microsoft.com/previous-versions/azure/iot-suite/).
 
 ### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>Nowy akcelerator rozwiązań jest dostępna w tym samym regionie geograficznym co istniejące rozwiązanie?
 

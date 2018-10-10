@@ -2,7 +2,7 @@
 title: Przegląd wymagań wstępnych dotyczących używania usługi Azure Database Migration Service | Dokumentacja firmy Microsoft
 description: Zapoznaj się z omówieniem wymagania wstępne dotyczące korzystania z usługi Azure Database Migration Service do przeprowadzania migracji bazy danych.
 services: database-migration
-author: HJToland3
+author: pochiraju
 ms.author: rajpo
 manager: ''
 ms.reviewer: ''
@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 06/19/2018
-ms.openlocfilehash: c90727db28bde0a1985104f1fbc9c7380bba8dee
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 10/09/2018
+ms.openlocfilehash: b3c974eaf4e44a80046efc4b1545f29797fcaf0c
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802937"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887670"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>Przegląd wymagań wstępnych dotyczących używania usługi Azure Database Migration Service
 Istnieje kilka wymagań wstępnych wymagane w celu zapewnienia, że usługi Azure Database Migration Service działa sprawnie podczas przeprowadzania migracji bazy danych. Pewne warunki wstępne mają zastosowanie we wszystkich scenariuszach (par źródło cel) obsługiwane przez usługę, podczas gdy inne wymagania wstępne są unikatowe dla konkretnego scenariusza.

@@ -6,16 +6,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.topic: conceptual
 ms.service: site-recovery
-ms.date: 08/30/2018
+ms.date: 10/09/2018
 ms.author: raynew
-ms.openlocfilehash: c71f683355a09c8ba2381db406eeb1ccabdb7afa
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 802c2223a72a89dbe2a97404aab4b0fc85c391ed
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697700"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902828"
 ---
-# <a name="replicate-azure-stack-vms-to-azure-preview"></a>Replikowanie maszyn wirtualnych platformy Azure Stack na platformie Azure (wersja zapoznawcza)
+# <a name="replicate-azure-stack-vms-to-azure"></a>Replikowanie maszyn wirtualnych usługi Azure Stack na platformie Azure
 
 W tym artykule pokazano, jak skonfigurować odzyskiwanie po awarii na platformie Azure dla maszyn wirtualnych platformy Azure Stack, przy użyciu [usługi Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview).
 
@@ -25,10 +25,6 @@ Usługa Site Recovery przyczynia się do Twojej ciągłość działalności bizn
 - W przypadku wystąpienia awarii w lokacji głównej, użyjesz Site Recovery do trybu failover na platformie Azure.
 - W tryb failover maszyn wirtualnych platformy Azure są tworzone na podstawie przechowywanych danych maszyny Wirtualnej, a użytkownicy mogą nadal dostęp do obciążenia uruchomione na tych maszynach wirtualnych platformy Azure.
 - Gdy wszystko jest uruchomione ponownie, możesz się nie powieść maszyn wirtualnych z powrotem do platformy Azure do lokacji głównej i rozpocząć replikowanie ich do usługi Azure storage ponownie.
-
-
-> [!NOTE]
-> Usługa Site Recovery dla usługi Azure Stack jest obecnie w publicznej wersji zapoznawczej.
 
 
 W tym artykule omówiono sposób wykonywania następujących zadań:

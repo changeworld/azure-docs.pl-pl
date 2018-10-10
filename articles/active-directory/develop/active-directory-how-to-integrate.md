@@ -17,14 +17,15 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: fdc33f4009ce9434b241611851fecec451783a1a
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: cde2706db255746293ddc29c6d5bdd31d970e535
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495343"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901553"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integracja z usługą Azure Active Directory
+
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
 Usługa Azure Active Directory zapewnia organizacjom przeznaczonych dla przedsiębiorstw Zarządzanie tożsamościami dla aplikacji w chmurze. Integracja z usługą Azure AD zapewnia usprawnione środowisko logowania użytkowników i pomaga aplikacjom są zgodne z zasadami IT.

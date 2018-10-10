@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/05/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 403c52cb2de61f1c2d02ad72e9067da09b40a814
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 8cdff34078c759379b5b939bdcdbc55155b51251
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816042"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887459"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -515,7 +515,7 @@ Aby dowiedzieć się, jak zintegrować rozwiązanie do zarządzania z System Cen
 
 ## <a name="inclusion-behavior"></a>Zachowanie dołączania
 
-Włączenie aktualizacji można określić określonej aktualizacji do zastosowania. Poprawki lub pakietów, które są ustawione w celu uwzględnienia są instalowane bez względu na to klasyfikacje wybrane do wdrożenia.
+Włączenie aktualizacji można określić określonej aktualizacji do zastosowania. Poprawki lub pakietów, które są ustawione w celu uwzględnienia są zainstalowane. Podczas poprawki lub pakietów, które są ustawione do uwzględnienia, a także wybrano klasyfikację, instalowane są uwzględnione elementy i elementy, które spełniają klasyfikacji.
 
 Dla maszyn z systemem Linux Jeśli pakiet jest uwzględniony, ale zawiera pakiet zależnych, który został wykluczony, specifcally pakiet nie jest zainstalowany.
 

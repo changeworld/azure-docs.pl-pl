@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: ba42c3cc50466f9b5bf46cd1eef8f0d4e48bf89a
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 9dcec525adf7676b23c6dec14dff07c6d419c085
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856007"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884646"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Użyj konsoli szeregowej wywołań SysRq i NMI
 
@@ -30,11 +30,11 @@ Po sekwencji SysRq zostało dostarczone, konfiguracji jądra kontrolować, jak z
 
 Konsoli szeregowej Azure może służyć do wysyłania SysRq na maszynie wirtualnej platformy Azure przy użyciu ikonę klawiatury na pasku poleceń, pokazano poniżej.
 
-![](/media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
+![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
 Polecenie "Wyślij SysRq" zostanie otwarte okno dialogowe, które zapewniają typowe opcje SysRq, lub zaakceptować sekwencji poleceń SysRq wprowadzane do okna dialogowego.  Dzięki temu dla serii SysRq do wykonywania operacji wysokiego poziomu, takie jak przy użyciu bezpiecznego rozruchu: `REISUB`.
 
-![](/media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
+![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
 Nie można użyć polecenia SysRq na maszynach wirtualnych, które zostały zatrzymane lub których jądra jest w stanie przestanie odpowiadać. (na przykład jądra).
 
@@ -103,8 +103,9 @@ Niemaskowalnego przerwania (NMI) jest przeznaczone do tworzenia sygnał, który 
 
 Konsoli szeregowej może służyć do wysyłania NMI na maszynie wirtualnej platformy Azure przy użyciu ikonę klawiatury na pasku poleceń, pokazano poniżej. Po NMI zostało dostarczone, konfiguracja maszyny wirtualnej będzie kontrolować, jak zachowuje się system.  Linux systemów operacyjnych można skonfigurować do awarii i Utwórz zrzut pamięci systemu operacyjnego odbiera NMI.
 
-![](/media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
+![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
 
+### <a name="enable-nmi"></a>Włącz NMI
 W systemach Linux, które obsługują sysctl konfigurowania jądra parametry można włączyć alarm, po odebraniu tego NMI przy użyciu następujących czynności:
 1. Dodanie tego wiersza, aby */etc/sysctl.conf* <br>
     `kernel.panic_on_unrecovered_nmi=1`

@@ -1,5 +1,5 @@
 ---
-title: Uwierzytelnianie za pomocą usługi Azure AD i uzyskiwanie tokenu JWT przy użyciu protokołu OAuth 2.0
+title: Uwierzytelnianie za pomocą usługi Azure AD i uzyskać token JWT przy użyciu protokołu OAuth 2.0
 description: Przykładowy kod, przedstawiający sposób uwierzytelniania za pomocą usługi Azure Active Directory przy użyciu protokołu OAuth 2.0 dostęp do aplikacji zabezpieczonej sieci web i interfejsów API sieci web w Twojej organizacji.
 services: active-directory
 author: rloutlaw
@@ -13,14 +13,14 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: routlaw
 ms.custom: aaddev
-ms.openlocfilehash: d77af898d5baef4fa7970132b0eb8deddb8f68cb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f4bcbb2064a8f7fcdfd2002d2e8d6e0c4f679ffc
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981801"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902913"
 ---
-# <a name="request-an-access-token-using-oauth-20-to-access-web-apis-and-applications-secured-by-azure-active-directory"></a>Żądanie tokenu dostępu, dostęp do interfejsów API sieci web i aplikacji zabezpieczonej przez usługi Azure Active Directory przy użyciu protokołu OAuth 2.0
+# <a name="how-to-request-an-access-token-using-oauth-20-to-access-web-apis-and-applications-secured-by-azure-ad"></a>Porady: żądania tokenu dostępu, dostęp do interfejsów API sieci web i aplikacji zabezpieczonej przez usługi Azure AD przy użyciu protokołu OAuth 2.0
 
 W tym artykule pokazano, jak uzyskać JSON Web Token (JWT) dostęp do zasobów zabezpieczonych przez usługi Azure AD. Przyjęto założenie, że masz [token autoryzacji](/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code) z uprawnienia przyznane przez użytkownika lub za pomocą [nazwy głównej usługi](/azure/active-directory/develop/active-directory-application-objects).
 
@@ -45,7 +45,6 @@ Wymagane są następujące nagłówki:
 |--------------------|-----------------|  
 | *Host:* | https://login.microsoftonline.com |
 | *Typ zawartości:*| application/x-www-form-urlencoded |
- 
 
 ### <a name="uri-parameters"></a>Parametry identyfikatora URI
 
@@ -59,6 +58,7 @@ Wymagane są następujące nagłówki:
 | redirect_uri  | wymagane              | Taką samą wartość redirect_uri, który został użyty do uzyskania authorization_code.                                                                                                                                                                                                                                                                                                                                                             |
 | client_secret | wymagane dla aplikacji sieci web | Klucz tajny aplikacji, utworzonego w portalu rejestracji aplikacji dla aplikacji. Nie należy używać w aplikacji natywnej, ponieważ client_secrets nie mogą być w niezawodny sposób będą przechowywane na urządzeniach. Jest ona wymagana dla aplikacji sieci web i interfejsów API, które mają możliwość bezpiecznie przechowywać wartość client_secret po stronie serwera sieci web.  Wpisy tajne klienta musi być zakodowane w adresie URL przed wysłaniem.                                                                                 |
 | wartość parametru code_verifier | opcjonalne              | Tym samym wartość parametru code_verifier użytego do uzyskania authorization_code. Wymagane, jeśli PKCE został użyty w żądaniu grant kod autoryzacji. Aby uzyskać więcej informacji, zobacz [PKCE RFC](https://tools.ietf.org/html/rfc7636)                                                                                                                                                                                                                                                                                             |
+
 ## <a name="handle-the-response"></a>Obsługa odpowiedzi
 
 Odpowiedź oznaczająca Powodzenie tokenu będzie zawierać JWT token i będzie wyglądać następująco:
@@ -81,6 +81,3 @@ Odpowiedź oznaczająca Powodzenie tokenu będzie zawierać JWT token i będzie 
 | scope         | Access_token nadaje się do zakresów.                                                                                                                                                                                                                                                                                                                                                                                                         |
 | refresh_token | Token odświeżania OAuth 2.0. Aplikacja może używać tego tokenu uzyskiwanie tokenów dostępu dodatkowe, po upływie bieżącego tokenu dostępu. Refresh_tokens są długotrwałe i pozwala zachować dostęp do zasobów przez dłuższy czas. Aby uzyskać więcej szczegółów, zobacz [kodu v2.0 udzielić odwołanie](v2-oauth2-auth-code-flow.md#refresh-the-access-token). <br> **Uwaga:** tylko wtedy, jeśli podana `offline_access` zażądano zakresu.                                               |
 | id_token      | Niepodpisane JSON Web Token (JWT). Aplikację można dekodować segmentów tego tokenu na żądanie informacji o użytkowniku, który jest zalogowany. Wartości w pamięci podręcznej i ich wyświetlenie aplikacji, ale nie należy polegać na nich autoryzacji lub granice zabezpieczeń. Aby uzyskać więcej informacji na temat id_tokens zobacz [ `id_token reference` ](id-tokens.md). <br> **Uwaga:** tylko wtedy, jeśli podana `openid` zażądano zakresu. |
-
-
-

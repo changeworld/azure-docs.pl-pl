@@ -1,44 +1,45 @@
 ---
-title: Składnia poleceń wyszukiwania lambda w Academic Knowledge API | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat składni wyszukiwania Lambda używanego w Academic Knowledge API w kognitywnych usług firmy Microsoft.
+title: Składnia wyszukiwania lambda — interfejs Academic Knowledge API
+titlesuffix: Azure Cognitive Services
+description: Więcej informacji na temat składni wyszukiwania Lambda, których można używać w interfejsu Academic Knowledge API.
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: f486368e1d0258087091acb846a84b125712db40
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 284f1d90f043e2634e143508e2ab0e98cd309f46
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346937"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902692"
 ---
-# <a name="lambda-search-syntax"></a>Składnia poleceń wyszukiwania lambda
+# <a name="lambda-search-syntax"></a>Składnia wyszukiwania lambda
 
-Każdy *lambda* zapytania wyszukiwania ciąg opisuje wzorca wykresu. Zapytanie musi mieć co najmniej jeden węzeł początkowy, określając, z których węzła wykresu Rozpoczniemy podczas przechodzenia. Aby określić węzeł początkowy, należy wywołać *MAGNETYCZNY. StartFrom()* — metoda i przekaż identyfikatory jeden lub więcej węzłów lub kwerendy obiekt, który określa ograniczenia wyszukiwania. *StartFrom()* metoda ma trzech przeciążeń. Wszystkie z nich podjąć dwa argumenty z drugim jest opcjonalne. Pierwszy argument może być długich liczb całkowitych wyliczalny zbiór długich liczb całkowitych, lub obiekt ciąg reprezentujący JSON, z tej samej semantyki jako w *json* wyszukiwania:
+Każdy *lambda* zapytania wyszukiwania ciągu w tym artykule opisano wzorzec graficzny. Zapytanie musi mieć co najmniej jeden węzeł początkowy, określając, z których węzła grafu Zaczniemy podczas przechodzenia. Aby określić węzeł początkowy, należy wywołać *MAG. StartFrom()* metody i przekaż identyfikatory jednego lub więcej węzłów lub kwerendy obiektu, który określa ograniczenia wyszukiwania. *StartFrom()* metoda ma trzy przeciążenia. Wszystkie z nich wykonać dwa argumenty z drugim jest opcjonalne. Pierwszy argument może być liczba całkowita typu long, wyliczalny zbiór długa liczba całkowita lub ciąg JSON reprezentujący obiekt, z tą samą semantyką jako w *json* wyszukiwania:
 ```
 StartFrom(long cellid, IEnumerable<string> select = null)
 StartFrom(IEnumerable<long> cellid, IEnumerable<string> select = null)
 StartFrom(string queryObject, IEnumerable<string> select = null)
 ```
 
-Proces zapisywania zapytania wyszukiwania lambda jest przeprowadzenie z jednego węzła do innego. Aby określić typ krawędzi kroków, użyj *FollowEdge()* i przekazywanie typów pożądanej krawędzi. *FollowEdge()* przyjmuje dowolnej liczby argumenty typu string:
+Proces pisania zapytania wyszukiwania lambda jest zapoznaj się z jednego węzła do drugiego. Aby określić typ urządzeniami brzegowymi w celu zaprezentowania, użyj *FollowEdge()* i przekazać w typach pożądanej krawędzi. *FollowEdge()* przyjmuje dowolną liczbę argumentów ciągów:
 ```
 FollowEdge(params string[] edgeTypes)
 ```
 > [!NOTE]
-> Jeśli nie Szanujemy typów czasie, które należy wykonać, po prostu pominąć *FollowEdge()* między dwoma węzłami: zapytanie przeprowadzi wszystkie możliwe krawędzi między tymi dwoma węzłami.
+> Jeśli firma Microsoft nie są istotne typów parametrów w czasie do wykonania, po prostu pominąć *FollowEdge()* między dwoma węzłami: zapytanie przeprowadzi wszystkich możliwych krawędzi między tymi dwoma węzłami.
 
-Można określić akcje Przechodzenie do wykonania w węźle, za pomocą *VisitNode()*, oznacza to, czy zatrzymać w tym węźle i zwrócenia wyniku bieżącej ścieżki lub aby kontynuować zapoznać się z wykresu.  Typ wyliczeniowy *akcji* definiują dwa typy działań: *Action.Return* i *Action.Continue*. Firma Microsoft może przekazać takie wartości wyliczenia bezpośrednio do *VisitNode()*, lub połączyć je z bitowego- i operatora "&". Dwa działania są połączone, oznacza to, podjęcia działań zarówno. Uwaga: nie używaj bitowo- lub operator "|" w akcji. To spowoduje, że zapytanie, aby zakończyć bez powrotu żadnych czynności. Pomijanie *VisitNode()* między dwiema *FollowEdge()* wywołania spowoduje, że kwerenda bezwarunkowo Eksploruj wykres po węzła.
+Można określić akcje Przechodzenie do wykonania w węźle za pomocą *VisitNode()*, oznacza to, czy można zatrzymać w tym węźle i zwracać bieżącą ścieżkę w wyniku lub w dalszym ciągu zrozumienie wykresu.  Typ wyliczeniowy *akcji* definiuje dwa rodzaje działań: *Action.Return* i *Action.Continue*. Możemy przekazać wartość wyliczenia bezpośrednio do *VisitNode()*, lub łączyć je przy użyciu bitowego operatora- i operator 'i'. Połączeniu dwa działania, oznacza to, że obie akcje zostaną wykonane. Uwaga: nie używaj bitowe — lub operatora "|" w akcji. To spowoduje, że zapytanie, aby zakończyć bez zwracania niczego. Pomijanie *VisitNode()* między dwoma *FollowEdge()* wywołania spowoduje, że kwerenda bezwarunkowo zrozumienie wykresu po wprowadzeniu na węzeł.
 
 ```
 VisitNode(Action action, IEnumerable<string> select = null)
 ```
 
-Dla *VisitNode()*, firma Microsoft może również przekazać w wyrażeniu lambda typu *wyrażenie\<Func\<węzeł i, Akcja\>\>*, który przyjmuje *Węzeł i* i zwraca przechodzenie akcję:
+Dla *VisitNode()*, możemy również przekazać w wyrażeniu lambda typu *wyrażenie\<Func\<węzeł i, Akcja\>\>*, który przyjmuje *Węzeł i* i zwraca przechodzenia przez akcję:
 
 ```
 VisitNode(Expression<Func<INode, Action>> action, IEnumerable<string> select = null)
@@ -46,53 +47,53 @@ VisitNode(Expression<Func<INode, Action>> action, IEnumerable<string> select = n
 
 ## <a name="inode"></a>*Węzeł i* 
 
-*Węzeł i* zapewnia *tylko do odczytu* interfejsów i kilka wbudowane funkcje pomocników w węźle dostępu do danych. 
+*Węzeł i* zapewnia *tylko do odczytu* dostępu do danych, interfejsy i kilka wbudowane funkcje pomocników w węźle. 
 
 ### <a name="basic-data-access-interfaces"></a>Interfejsy dostępu do danych podstawowych
 
-##### <a name="long-cellid"></a>długie CellID
+##### <a name="long-cellid"></a>długi CellID
 
 64-bitowy identyfikator węzła. 
 
-##### <a name="t-getfieldtstring-fieldname"></a>T GetField\<T\>(ciągów fieldName)
+##### <a name="t-getfieldtstring-fieldname"></a>T GetField\<T\>(string fieldName)
 
-Pobiera wartość określonej właściwości. *T* jest żądanego typu, który powinien być interpretowane jako pole. Rzutowanie typów automatyczne zostanie podjęta, jeśli żądanego typu nie można niejawnie przekonwertować typu pola. Uwaga: Jeśli ta właściwość jest wielowartościowe, *GetField\<ciąg\>*  spowoduje, że na liście, aby można serializować do ciągu Json ["val1", "Wart2",...]. Jeśli właściwość nie istnieje, spowoduje zgłoszenie wyjątku i przerwania bieżącego eksploracji wykresu.
+Pobiera wartość określonej właściwości. *T* to żądany typ, który powinien być interpretowane jako pole. Rzutowanie typów automatycznego zostanie podjęta, jeśli żądany typ nie można niejawnie przekonwertować z typu pola. Uwaga: Jeśli właściwość jest wielowartościowy *GetField\<ciąg\>*  spowoduje, że na liście, aby można serializować do ciągu Json ["val1", "val2",...]. Jeśli właściwość nie istnieje, wówczas zgłoszenie wyjątku i przerwać bieżącą eksplorację wykresu.
 
 ##### <a name="bool-containsfieldstring-fieldname"></a>wartość logiczna ContainsField (nazwa pola ciągu)
 
 Informuje, czy pole o podanej nazwie istnieje w bieżącym węźle.
 
-##### <a name="string-getstring-fieldname"></a>ciąg get (nazwa pola ciągu)
+##### <a name="string-getstring-fieldname"></a>ciąg Pobierz (nazwa pola ciągu)
 
-Jak działa *GetField\<ciąg\>(fieldName)*. Jednak go nie zgłaszają wyjątki, gdy nie można odnaleźć pola, zwraca puste string("") zamiast tego.
+Działa jak *GetField\<ciąg\>(NazwaPola)*. Jednak go nie generuje wyjątków, gdy pole nie zostanie znaleziony, zwraca pusty string("") zamiast tego.
 
-##### <a name="bool-hasstring-fieldname"></a>wartość logiczna ma (nazwa pola ciągu)
+##### <a name="bool-hasstring-fieldname"></a>bool ma (nazwa pola ciągu)
 
 Informuje, czy dana właściwość istnieje w bieżącym węźle. Taki sam jak *ContainsField(fieldName)*.
 
-##### <a name="bool-hasstring-fieldname-string-value"></a>wartość logiczna ma (fieldName ciąg, wartość ciągu)
+##### <a name="bool-hasstring-fieldname-string-value"></a>bool ma (Nazwa ciągu, pola wartości ciągu)
 
-Informuje, jeśli właściwość nie ma podanej wartości. 
+Informuje o tym, jeśli właściwość ma podanej wartości. 
 
 ##### <a name="int-countstring-fieldname"></a>Liczba int (nazwa pola ciągu)
 
-Pobierz liczbę wartości właściwości. Gdy właściwość nie istnieje, zwraca wartość 0.
+Pobierz wartości danej właściwości. Gdy właściwość nie istnieje, zwraca wartość 0.
 
 ### <a name="built-in-helper-functions"></a>Wbudowane funkcje pomocników
 
-##### <a name="action-returnifbool-condition"></a>Akcja return_if (wartość logiczna warunek)
+##### <a name="action-returnifbool-condition"></a>Akcja return_if (warunków, wartość logiczna)
 
-Zwraca *Action.Return* po spełnieniu warunku *true*. Jeśli warunek nie jest *false* i tego wyrażenia nie jest połączony z innymi działaniami z bitowego- i operatora eksploracji wykres zostanie przerwana.
+Zwraca *Action.Return* Jeśli warunek nie jest *true*. Jeśli warunek nie jest *false* i to wyrażenie nie jest połączony z innymi akcjami z bitowej — i operatora eksploracji wykresu zostanie przerwane.
 
-##### <a name="action-continueifbool-condition"></a>Akcja continue_if (wartość logiczna warunek)
+##### <a name="action-continueifbool-condition"></a>Akcja continue_if (warunków, wartość logiczna)
 
-Zwraca *Action.Continue* po spełnieniu warunku *true*. Jeśli warunek nie jest *false* i tego wyrażenia nie jest połączony z innymi działaniami z bitowego- i operatora eksploracji wykres zostanie przerwana.
+Zwraca *Action.Continue* Jeśli warunek nie jest *true*. Jeśli warunek nie jest *false* i to wyrażenie nie jest połączony z innymi akcjami z bitowej — i operatora eksploracji wykresu zostanie przerwane.
 
-##### <a name="bool-dicedouble-p"></a>selekcji bool (dwa razy p)
+##### <a name="bool-dicedouble-p"></a>wartość logiczna dice (podwójny p)
 
-Generuje liczbę losową, która jest większa niż lub równa 0,0 i mniejszą niż 1,0. Ta funkcja zwraca *true* tylko wtedy, gdy liczba jest mniejsza lub równa *p*.
+Generuje losową liczbę, która jest mniejsza niż 0,0 i mniejszą niż 1,0. Ta funkcja zwraca *true* tylko wtedy, gdy liczba jest mniejsza niż lub równa *p*.
 
-W porównaniu z *json* wyszukiwania, *lambda* wyszukiwanie jest bardziej obszerne: wyrażenia lambda w języku C# bezpośrednio można określić wzorcami zapytań. Poniżej przedstawiono dwa przykłady.
+W porównaniu z *json* wyszukiwania, *lambda* wyszukiwanie jest bardziej ekspresyjnego: wyrażeń lambda w języku C# bezpośrednio służy do określania wzorców zapytań. Poniżej przedstawiono dwa przykłady.
 
 ```
 MAG.StartFrom(@"{
