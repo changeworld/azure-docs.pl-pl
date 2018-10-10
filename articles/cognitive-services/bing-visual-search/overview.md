@@ -1,55 +1,55 @@
 ---
-title: Omówienie interfejsu API wyszukiwania wizualnego Bing | Dokumentacja firmy Microsoft
-titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Pokazuje, jak można pobrać szczegółów lub szczegółowych informacjach o pliku obrazu, takie jak podobne obrazy lub źródeł zakupów.
+title: Co to jest wyszukiwanie wizualne Bing?
+titleSuffix: Azure Cognitive Services
+description: Wyszukiwanie wizualne Bing dostarcza informacje szczegółowe dotyczące obrazu, takie jak podobne obrazy lub źródła zakupów.
 services: cognitive-services
 author: swhite-msft
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: bing-visual-search
-ms.topic: article
+ms.topic: overview
 ms.date: 04/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: aa563d89b1834f5be952f13c31a2451d809709b1
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: MT
+ms.openlocfilehash: 2ab73281eb050a52b596504ea9cc0e478144ff24
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006533"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226777"
 ---
 # <a name="what-is-bing-visual-search-api"></a>Czym jest interfejs API wyszukiwania wizualnego Bing?
 
-Interfejs API wyszukiwania wizualnego Bing udostępnia środowisko podobnie jak pokazano na Bing.com/images szczegółowe informacje dotyczące obrazu. Wyszukiwanie wizualne możesz przekazać obraz i wrócić szczegółowe informacje dotyczące obrazu, takich jak podobnych obrazach, źródła zakupów i stron sieci Web, który zawiera obraz i nie tylko. Zamiast przekazywania obrazu, możesz także podać token szczegółowe informacje, który można pobrać z obrazu w wynikach wyszukiwania obrazów (zobacz [interfejs API obrazów Bing](../bing-image-search/overview.md)).
+Interfejs API wyszukiwania wizualnego Bing udostępnia środowisko podobne do szczegółów obrazu pokazanego w witrynie Bing.com/images. Za pomocą wyszukiwania wizualnego można przekazać obraz i uzyskać szczegółowe informacje dotyczące tego obrazu, takie jak podobne obrazy, źródła zakupów, strony internetowe zawierające ten obraz i nie tylko. Zamiast przekazywania obrazu możesz też podać token szczegółowych informacji, który uzyskasz z obrazu w wynikach wyszukiwania obrazów (zobacz [Interfejs API usługi Obrazy Bing](../bing-image-search/overview.md)).
 
-Wyszukiwanie wizualne można zidentyfikować, osobistości, pomników i charakterystycznych elementów krajobrazu, kompozycję, meble, sposób, produkty, rozpoznawania znaków (OCR) i inne.
+Wyszukiwanie wizualne może identyfikować znane osoby, pomniki i charakterystyczne elementy krajobrazu, dzieła sztuki, meble, modę, produkty, rozpoznawanie znaków (OCR) i nie tylko.
 
-Poniżej przedstawiono szczegółowe informacje, że wyszukiwanie wizualne umożliwia odnajdywanie.
+Poniżej przedstawiono szczegółowe informacje, które można odnaleźć za pomocą wyszukiwania wizualnego.
 
-- Podobnych obrazach&mdash;listę obrazów, które przypominają wizualnie obrazu wejściowego
-- Wizualnie podobnych produktów&mdash;listę obrazów, które zawierają produktów, które wizualnie podobnych do produktu na obrazie danych wejściowych
-- Zakupy źródeł&mdash;listy miejsc, w której można kupić elementu przedstawiona w obrazu wejściowego
-- Powiązane wyszukiwania&mdash;listy powiązane wyszukiwania wprowadzone przez innych użytkowników lub które są oparte na zawartości obrazu
-- Strony sieci Web, które obejmują obraz&mdash;listę stron sieci Web, która obejmuje obrazu wejściowego
-- Przepisy&mdash;listę stron sieci Web zawierających przepisy składania płytkę obrazie danych wejściowych
+- Obrazy podobne wizualnie&mdash;Lista obrazów, które wizualnie przypominają obraz wejściowy
+- Produkty podobne wizualnie&mdash;Lista obrazów zawierających produkty, które są wizualnie podobne do produktu znajdującego się na obrazie wejściowym
+- Źródła zakupów&mdash;Lista miejsc, w których można kupić rzecz pokazaną na obrazie wejściowym
+- Powiązane wyszukiwania&mdash;Lista powiązanych wyszukiwań wykonanych przez innych użytkowników lub opartych na zawartości obrazu
+- Strony internetowe, które zawierają obraz&mdash;Lista stron internetowych, które zawierają obraz wejściowy
+- Przepisy&mdash;Lista stron internetowych zawierających przepisy na danie znajdujące się na obrazie wejściowym
 
-Oprócz wglądowi w szczegółowe dane wyszukiwania wizualnego zwraca zestaw warunków (tagi) pochodzące z obrazu wejściowego. Te znaczniki pozwalają użytkownikom Eksploruj pojęcia znalezione na obrazie. Na przykład jeśli obrazu wejściowego sławę wykresie jeden tag może mieć nazwy wykresie, inny znacznik może być sportu. Lub, w przypadku obrazu wejściowego koła firmy apple, znaczniki może być desery kołowy firmy Apple, wycinków, dzięki czemu użytkownicy mogą eksplorować pojęcia pokrewne.
+Oprócz tych szczegółowych informacji wyszukiwanie wizualne zwraca także zróżnicowany zestaw terminów (tagów) pobranych z obrazu wejściowego. Te tagi pozwalają użytkownikom na eksplorowanie pojęć znajdujących się na obrazie. Jeśli na przykład obraz wejściowy przedstawia sławnego sportowca, jednym z tagów może być imię i nazwisko tego sportowca, a drugim tagiem może być dyscyplina sportowa. Jeśli obraz wejściowy przedstawia szarlotkę, tagi mogą być następujące: szarlotka, ciasta, desery — dzięki temu użytkownicy mogą poznać pokrewne pojęcia.
 
-Wyniki wyszukiwania wizualnego także blokujących pola dla regionów zainteresowania na obrazie. Na przykład jeśli obraz zawiera kilka osobistości, wyniki mogą obejmować blokujących pola dla każdego z rozpoznanym osobistości na obrazie. Lub, jeśli Bing rozpoznaje produktu lub odzieży w obrazie, wynik może zawierać obwiedni rozpoznany produkt lub odzieży elementu.
+Wyniki wyszukiwania wizualnego zawierają także pola ograniczenia dla regionów zainteresowania na obrazie. Jeśli na przykład obraz zawiera kilka znanych osób, wyniki mogą zawierać pola ograniczenia dla każdej rozpoznanej osoby na obrazie. Jeśli natomiast usługa Bing rozpozna produkt lub odzież na obrazie, wynik może zawierać pole ograniczenia dla rozpoznanego produktu lub elementu odzieży.
 
 > [!IMPORTANT]
-> Jeśli używasz/obrazy/szczegóły punktu końcowego do [uzyskać szczegółowe informacje o obrazach](../bing-image-search/image-insights.md), należy zaktualizować swój kod, aby zamiast tego użyj wyszukiwania wizualnego, ponieważ zapewnia bardziej szczegółowe informacje.
+> Jeśli używasz punktu końcowego /images/details, aby [uzyskać szczegółowe informacje o obrazie](../bing-image-search/image-insights.md), warto zaktualizować kod, aby zamiast tego używać wyszukiwania wizualnego, ponieważ dostarcza ono pełniejszych szczegółowych informacji.
 
 
 ## <a name="the-request"></a>Żądanie
 
-Dostępne są następujące opcje w celu uzyskania szczegółowych informacji o pliku obrazu. 
+Poniżej przedstawiono opcje umożliwiające uzyskanie szczegółowych informacji o obrazie. 
 
-- Wyślij token szczegółowe informacje, który można pobrać z obrazu w poprzedniego wywołania do jednego z [interfejs API obrazów Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) punktów końcowych
-- Wyślij adres URL obrazu
-- Przekaż obraz (binarnych)
+- Wysłanie tokenu szczegółowych informacji, który można uzyskać z obrazu w poprzednim wywołaniu do jednego z punktów końcowych [interfejsu API wyszukiwania obrazów Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+- Wysłanie adresu URL obrazu
+- Przekazanie obrazu (format binarny)
 
 
-Jeśli wyślesz wyszukiwania wizualnego token obrazu lub adres URL, poniżej przedstawiono obiekt JSON, który musi zawierać w treści wpisu. 
+Jeśli wysyłasz do wyszukiwania wizualnego token lub adres URL obrazu, poniżej przedstawiono obiekt JSON, który należy umieścić w treści żądania POST. 
 
 ```json
 {
@@ -71,67 +71,67 @@ Jeśli wyślesz wyszukiwania wizualnego token obrazu lub adres URL, poniżej prz
 }
 ```
 
-`imageInfo` Obiektu musi zawierać albo `url` lub `imageInsightsToken` pola, ale nie oba jednocześnie. Ustaw `url` pola Adres URL obrazu dostępny Internet. Rozmiar maksymalny obsługiwany obraz to 1 MB.
+Obiekt `imageInfo` musi zawierać pole `url` lub pole `imageInsightsToken`, ale nie oba jednocześnie. W polu `url` ustaw adres URL obrazu dostępnego w Internecie. Maksymalny obsługiwany rozmiar obrazu wynosi 1 MB.
 
-`imageInsightsToken` Musi być równa tokenu szczegółowych informacji. Do uzyskania tokenu szczegółowe informacje, należy wywołać interfejsu API obrazów Bing. Odpowiedź zawiera listę `Image` obiektów. Każdy `Image` obiekt zawiera `imageInsightsToken` pola, które zawiera token.
+W polu `imageInsightsToken` musi być ustawiony token szczegółowych informacji. Aby uzyskać token szczegółowych informacji, wywołaj interfejs API wyszukiwania obrazów Bing. Odpowiedź zawiera listę obiektów `Image`. Każdy obiekt `Image` zawiera pole `imageInsightsToken`, które zawiera token.
 
-`cropArea` Pole jest opcjonalne. Obszar kadrowania Określa górny, lewym rogu i dolny, prawy róg regionu zainteresowania. Należy określić wartości z zakresu od 0,0 do 1,0. Wartości są procent ogólnej szerokości lub wysokości. Na przykład powyższy przykład oznacza po prawej stronie połowę obrazu jako regionu zainteresowania. Uwzględnij go ograniczyć żądanie insights regionu zainteresowania.
+Pole `cropArea` jest opcjonalne. Obszar przycinania określa lewy górny róg i prawy dolny róg regionu zainteresowania. Określ wartości z zakresu od 0,0 do 1,0. Wartości te są procentem ogólnej szerokości lub wysokości. W powyższym przykładzie jako region zainteresowania określono prawą połowę obrazu. Uwzględnij je, jeśli chcesz ograniczyć żądanie szczegółowych informacji do regionu zainteresowania.
 
-`filters` Obiekt zawiera filtr witryn (zobacz `site` pola), można użyć do ograniczenia podobnych obrazów i wyniki podobne produkty do określonej domeny. Na przykład, jeśli obraz jest Surface Book, możesz ustawić `site` do www.microsoft.com. 
+Obiekt `filters` zawiera filtr witryny (patrz pole `site`), którego możesz użyć, aby ograniczyć wyniki podobnych obrazów i podobnych produktów do określonej domeny. Jeśli na przykład obraz przedstawia książkę Surface Book, dla obiektu `site` możesz ustawić wartość www.microsoft.com. 
 
-Jeśli chcesz uzyskać szczegółowe informacje o lokalną kopię obrazu, Przekaż obraz jako dane binarne.
+Jeśli chcesz uzyskać szczegółowe informacje o lokalnej kopii obrazu, przekaż obraz w formie danych binarnych.
 
-Aby uzyskać szczegółowe informacje o tym tych opcji w treść wpisu, zobacz [zawartości typów formularza](#content-form-types).
+Aby uzyskać informacje o uwzględnianiu tych opcji w treści żądania POST, zobacz [Typy formularzy zawartości](#content-form-types).
 
 
 ### <a name="endpoint"></a>Endpoint
 
-Punkt końcowy wyszukiwania wizualnego jest: https:\/\/api.cognitive.microsoft.com/bing/v7.0/images/visualsearch.
+Punkt końcowy wyszukiwania wizualnego jest następujący: https:\/\/api.cognitive.microsoft.com/bing/v7.0/images/visualsearch.
 
-Żądania muszą być wysyłane jako tylko żądania HTTP POST. 
+Żądania należy wysyłać tylko jako żądania HTTP POST. 
 
 
 ### <a name="query-parameters"></a>Parametry zapytania
 
-Poniżej przedstawiono parametrów zapytania, które należy określić żądanie. Jako minimum, należy uwzględnić `mkt` parametr zapytania.
+Poniżej przedstawiono parametry zapytania, które należy określić w żądaniu. Należy uwzględnić przynajmniej parametr zapytania `mkt`.
 
-|Name (Nazwa)|Wartość|Typ|Wymagane|  
+|Name (Nazwa)|Wartość|Typ|Wymagany|  
 |----------|-----------|----------|--------------|  
-|<a name="cc" />DW|Kraj 2-znakowy kod kraju, skąd pochodzą wyniki.<br /><br /> Jeśli ustawisz ten parametr, należy także określić [Accept-Language](#acceptlanguage) nagłówka. Usługa Bing używa pierwszego obsługiwanego języka umożliwia znalezienie z listy języków i łączy język w celu określenia rynku, w celu zwracania wyników z kodem kraju. Jeśli lista języków nie ma obsługiwanego języka, Bing znajdzie najbliższego języka i rynku, który obsługuje żądania. Lub może używać zagregowanych lub domyślna rynku dla wyników zamiast podanego.<br /><br /> Należy używać tego parametru zapytania i `Accept-Language` parametr zapytania tylko wtedy, gdy należy określić w wielu językach; w przeciwnym razie należy użyć `mkt` i `setLang` parametry zapytania.<br /><br /> Ten parametr i [mkt](#mkt) parametr zapytania wykluczają się wzajemnie&mdash;nie określać jednocześnie.|Ciąg|Nie|  
-|<a name="mkt" />mkt|Na rynku, skąd pochodzą wyniki. <br /><br /> **Uwaga:** zachęcamy do zawsze określać na rynku, jeśli jest znany. Określanie rynku pomaga Bing Kieruj żądania i zwrócić odpowiedź odpowiednie i optymalne.<br /><br /> Ten parametr i [DW](#cc) parametr zapytania wykluczają się wzajemnie&mdash;nie określać jednocześnie.|Ciąg|Yes|  
-|<a name="safesearch" />bezpieczne wyszukiwanie|Filtr używany do filtrowania zawartości dla dorosłych. Poniżej przedstawiono wartości możliwe filtru bez uwzględniania wielkości liter.<br /><ul><li>Wyłącz&mdash;zwracają stron internetowych z treści dla dorosłych tekst lub obrazy.<br /><br/></li><li>Umiarkowany&mdash;zwracają stron internetowych z treści dla dorosłych tekst, ale nie do treści dla dorosłych obrazów.<br /><br/></li><li>Ścisłe&mdash;nie zwracają stron internetowych z treści dla dorosłych tekst lub obrazy.</li></ul><br /> Wartość domyślna to średni.<br /><br /> **Uwaga:** Jeśli żądanie pochodzi z rynku zasad treści dla dorosłych tego Bing wymaga `safeSearch` równa Strict, ignoruje Bing `safeSearch` wartość i używa Strict.<br/><br/>**Uwaga:** Jeśli używasz `site:` — operator zapytań, istnieje prawdopodobieństwo, że odpowiedź może zawierać treści dla dorosłych niezależnie od tego, co `safeSearch` ustawiono parametr zapytania. Użyj `site:` tylko wtedy, gdy masz świadomość zawartości w witrynie i scenariusza obsługuje możliwość treści dla dorosłych. |Ciąg|Nie|  
-|<a name="setlang" />setLang|Język na potrzeby ciągi interfejsu użytkownika. Określ język, przy użyciu ISO 639-1 literę 2 języka kodu. Na przykład kod języka na język angielski jest EN. Wartość domyślna to EN (w języku angielskim).<br /><br /> Mimo że jest to opcjonalne, należy zawsze określić język. Zwykle ustawiasz `setLang` w języku określonym przez `mkt` , chyba że użytkownik chce ciągi interfejsu użytkownika, które są wyświetlane w innym języku.<br /><br /> Ten parametr i [Accept-Language](#acceptlanguage) nagłówka wykluczają się wzajemnie&mdash;nie określać jednocześnie.<br /><br /> Ciąg interfejsu użytkownika jest ciągiem, który jest używana jako etykieta w interfejsie użytkownika. Istnieje kilka ciągów interfejsu użytkownika w obiektach odpowiedź JSON. Także łącza do właściwości Bing.com w obiektach odpowiedzi zastosować określonego języka.|Ciąg|Nie| 
+|<a name="cc" />cc|2-znakowy kod kraju dla kraju, z którego pochodzą wyniki.<br /><br /> Jeśli ustawisz ten parametr, musisz także określić nagłówek [Accept-Language](#acceptlanguage). Usługa Bing używa pierwszego obsługiwanego języka znalezionego na liście języków i łączy ten język z określonym kodem kraju, aby ustalić rynek, z którego mają być zwrócone wyniki. Jeśli lista języków nie zawiera obsługiwanego języka, usługa Bing znajduje najbliższy język i rynek, które obsługują żądanie. Może też używać rynku zagregowanego lub domyślnego, zamiast podanego.<br /><br /> Tego parametru zapytania i parametru `Accept-Language` należy używać tylko wtedy, gdy jest określanych wiele języków. W przeciwnym razie należy użyć parametrów zapytania `mkt` i `setLang`.<br /><br /> Ten parametr i parametr zapytania [mkt](#mkt) wykluczają się wzajemnie&mdash;nie określaj ich jednocześnie.|Ciąg|Nie|  
+|<a name="mkt" />mkt|Rynek, z którego pochodzą wyniki. <br /><br /> **UWAGA:** Zachęcamy, aby zawsze określać rynek, jeśli jest znany. Określenie rynku pomaga usłudze Bing w kierowaniu żądania i zwracaniu odpowiedniej i optymalnej odpowiedzi.<br /><br /> Ten parametr i parametr zapytania [cc](#cc) wykluczają się wzajemnie&mdash;nie określaj ich jednocześnie.|Ciąg|Yes|  
+|<a name="safesearch" />safeSearch|Filtr używany do odfiltrowania zawartości dla dorosłych. Poniżej przedstawiono możliwe wartości filtru bez uwzględniania wielkości liter.<br /><ul><li>Off&mdash;zwracaj strony internetowe z tekstem i obrazami dla dorosłych.<br /><br/></li><li>Moderate&mdash;zwracaj strony internetowe z tekstem dla dorosłych, ale bez obrazów dla dorosłych.<br /><br/></li><li>Strict&mdash;nie zwracaj stron internetowych z tekstem i obrazami dla dorosłych.</li></ul><br /> Wartość domyślna to Moderate.<br /><br /> **UWAGA:** Jeśli żądanie pochodzi z rynku, dla którego zasady treści dla dorosłych usługi Bing wymagają wartości Strict dla parametru`safeSearch`, usługa Bing ignoruje wartość parametru `safeSearch` i używa wartości Strict.<br/><br/>**UWAGA:** Jeśli używasz operatora zapytania `site:`, istnieje ryzyko, że odpowiedź będzie zawierać zawartość dla dorosłych niezależnie od ustawienia parametru zapytania `safeSearch`. Operatora `site:` używaj tylko wtedy, gdy znasz zawartość witryny i w swoim scenariuszu uwzględniasz możliwość pojawienia się zawartości dla dorosłych. |Ciąg|Nie|  
+|<a name="setlang" />setLang|Język ciągów interfejsu użytkownika. Określ język przy użyciu 2-literowego kodu języka w standardzie ISO 639-1. Na przykład kod języka dla języka angielskiego to EN. Wartość domyślna to EN (język angielski).<br /><br /> Mimo, że jest to opcjonalne, należy zawsze określić język. Na ogół dla parametru `setLang` ustawia się język określony przez parametr `mkt`, chyba że użytkownik chce, aby ciągi interfejsu użytkownika były wyświetlane w innym języku.<br /><br /> Ten parametr i nagłówek [Accept-Language](#acceptlanguage) wykluczają się wzajemnie&mdash;nie określaj ich jednocześnie.<br /><br /> Ciąg interfejsu użytkownika to ciąg, który jest używany jako etykieta w interfejsie użytkownika. W obiektach odpowiedzi JSON istnieje kilka ciągów interfejsu użytkownika. Ponadto wszelkie linki do właściwości witryny Bing.com w obiektach odpowiedzi także stosują określony język.|Ciąg|Nie| 
 
 ### <a name="headers"></a>Nagłówki
 
-Dostępne są następujące nagłówki, które należy określić żądanie. Nagłówki typu zawartości i Ocp-Apim-Subscription-Key są tylko nagłówki wymagane, ale powinny również obejmować agenta użytkownika, X-MSEdge-ClientID, X-MSEdge-ClientIP i X wyszukiwania lokalizacji.
+Poniżej przedstawiono nagłówki, które należy określić w żądaniu. Nagłówki Content-Type i Ocp-Apim-Subscription-Key są jedynymi wymaganymi nagłówkami, ale powinno się również uwzględniać nagłówki User-Agent, X-MSEdge-ClientID, X-MSEdge-ClientIP i X-Search-Location.
 
 
 |Nagłówek|Opis|  
 |------------|-----------------|  
-|<a name="acceptlanguage" />Zaakceptuj języka|Nagłówek żądania opcjonalne.<br /><br /> Rozdzielana przecinkami lista języków na potrzeby ciągi interfejsu użytkownika. Lista jest w porządku malejącym. Aby uzyskać więcej informacji, łącznie z oczekiwanym formatem, zobacz [specyfikacją RFC2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Ten nagłówek i [setLang](#setlang) parametr zapytania wykluczają się wzajemnie&mdash;nie określać jednocześnie.<br /><br /> Jeśli ustawisz ten nagłówek, należy także określić [DW](#cc) parametr zapytania. Aby ustalić, do zwracania wyników na rynku, usługa Bing używa pierwszego obsługiwanego języka znajdzie się na liście i łączy ją z `cc` wartość parametru. Jeżeli lista nie zawiera obsługiwanych języków, Bing znajduje się najbliższy języku i za pomocą rynku, który obsługuje żądania lub używa zagregowane lub domyślna rynku dla wyników. Aby określić na rynku, używanym w usłudze Bing, zobacz nagłówek BingAPIs rynku.<br /><br /> Użyj tego pliku nagłówkowego i `cc` parametr zapytania tylko wtedy, gdy należy określić w wielu językach. W przeciwnym razie użyj [mkt](#mkt) i [setLang](#setlang) parametry zapytania.<br /><br /> Ciąg interfejsu użytkownika jest ciągiem, który jest używana jako etykieta w interfejsie użytkownika. Istnieje kilka ciągów interfejsu użytkownika w obiektach odpowiedź JSON. Łącza do właściwości Bing.com w obiektach odpowiedzi zastosowanie określonego języka.|  
-|<a name="contenttype" />Typ zawartości|Nagłówek żądania wymagane.<br /><br />Musi być ustawione na danych — multipart/formularza i zawierają parametr granic (na przykład multipart/formularza data; granic =\<ciąg granic\>). Aby uzyskać więcej informacji, zobacz [zawartości typów formularza](#content-form-types).
-|<a name="market" />Rynek BingAPIs|Nagłówek odpowiedzi.<br /><br /> Na rynku, używany przez żądanie. Formularz jest \<languageCode\>-\<countryCode\>. Na przykład: en US.|  
-|<a name="traceid" />BingAPIs TraceId|Nagłówek odpowiedzi.<br /><br /> Identyfikator wpisu dziennika, który zawiera szczegółowe informacje o żądaniu. Gdy wystąpi błąd, przechwytywać tego identyfikatora. Jeśli nie jest możliwe określić i rozwiązać problem, należy dołączyć ten identyfikator oraz inne informacje, które podasz zespołem pomocy technicznej.|  
-|<a name="subscriptionkey" />OCP-Apim-Subscription-Key|Nagłówek żądania wymagane.<br /><br /> Klucz subskrypcji, który otrzymał podczas tworzenia konta dla tej usługi w [usług Cognitive Services](https://www.microsoft.com/cognitive-services/).|  
-|<a name="pragma" />Dyrektywy pragma|Nagłówek żądania opcjonalne<br /><br /> Domyślnie Wyszukiwarka Bing zwróci zawartości w pamięci podręcznej, jeśli jest dostępny. Aby zapobiec zwracaniem buforowanych zawartości Bing, ustawić nagłówek Pragma no-cache (na przykład Pragma: nie-cache).
-|<a name="useragent" />Agent użytkownika|Nagłówek żądania opcjonalne.<br /><br /> Agent użytkownika wysłał żądanie. Usługa Bing używa agenta użytkownika zapewnienie zoptymalizowane środowiska użytkowników urządzeń przenośnych. Mimo że jest to opcjonalne, zachęcamy do zawsze określać tego nagłówka.<br /><br /> Agent użytkownika powinna być ten sam ciąg, który wysyła w dowolnej przeglądarce często używane. Aby uzyskać informacji na temat agentów użytkownika, zobacz [dokumencie RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Poniżej przedstawiono przykłady ciągów agenta użytkownika.<br /><ul><li>Windows Phone&mdash;Mozilla/5.0 (zgodny; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Dotyk; NOKIA; Lumia 822)<br /><br /></li><li>Android&mdash;Mozilla/5.0 (Linux; U; Android 2.3.5; en-us; SCH-I500 kompilacji/GINGERBREAD) AppleWebKit/533.1 (KHTML; Gecko, takich jak) w wersji/4.0 Mobile Safari/533.1<br /><br /></li><li>iPhone&mdash;Mozilla/5.0 (iPhone; Procesor CPU 6_1 system operacyjny telefonu iPhone, takich jak system Mac OS X) AppleWebKit/536.26 (KHTML; Gecko, takich jak) iPhone4 Mobile/10B142; 1 BingWeb/3.03.1428.20120423<br /><br /></li><li>Komputer&mdash;Mozilla/5.0 (Windows NT 6.3; EMULATOR WOW64; Trident/7.0. Dotyk; Rv:11.0) Gecko, takich jak<br /><br /></li><li>iPad&mdash;Mozilla/5.0 (iPad; 7_0 Procesora systemu operacyjnego, takich jak system Mac OS X) AppleWebKit/537.51.1 (takich jak aparat Gecko KHTML) w wersji/7.0 Mobile/11A465 Safari/9537.53</li></ul>|
-|<a name="clientid" />ClientID-X-MSEdge|Opcjonalne nagłówki żądania i odpowiedzi.<br /><br /> Usługa Bing używa tego pliku nagłówkowego, aby zapewnić użytkownikom spójne zachowanie dla wywołań interfejsu API usługi Bing. Bing często lotach nowe funkcje i ulepszenia i używa Identyfikatora klienta jako klucza do przypisywania ruch na różnych lotów. Jeśli nie używasz tego samego Identyfikatora klienta dla użytkownika dla wielu żądań, Bing może przypisać użytkownika do wielu lotów powodujące konflikt. Przypisywane do wielu lotów powodujące konflikt może prowadzić do środowiska użytkownika niespójne. Na przykład jeśli drugie żądanie przypisania lotu inny niż pierwszy, środowisko może być nieoczekiwany. Ponadto Bing można użyć Identyfikatora klienta, aby dostosować wyniki z Internetu na tym kliencie identyfikatory historii wyszukiwania, zapewniając bardziej zaawansowane środowisko użytkownika.<br /><br /> Usługa Bing używa tego pliku nagłówkowego również do poprawy wyników w klasyfikacji przez analizowanie aktywności generowane przez identyfikator klienta. Ulepszenia istotności ułatwić lepszą jakość wyników dostarczane przez interfejsy API usługi Bing i z kolei umożliwia za pomocą kliknięć większe konsumenta interfejsu API.<br /><br /> **Ważne:** mimo, że jest to opcjonalne, należy wziąć pod uwagę tego pliku nagłówkowego wymagane. Przechowywanie identyfikator klienta dla wielu żądań dla tego samego użytkownika końcowego lub kombinacji urządzeń umożliwia (1) interfejsu API odbiorcę, aby otrzymywać spójne środowisko użytkownika oraz (2) za pomocą kliknięć większe za pośrednictwem lepszą jakość wyników z interfejsów API Bing.<br /><br /> Dostępne są następujące reguły podstawowe użycia, które są stosowane do tego pliku nagłówkowego.<br /><ul><li>Każdy użytkownik, który korzysta z aplikacji na urządzeniu musi mieć unikatową, Bing, wygenerowany identyfikator klienta.<br /><br/>Jeśli tego pliku nagłówkowego nie zostanie uwzględniony w żądaniu, Bing generuje identyfikator i zwraca go w nagłówku odpowiedzi ClientID-X-MSEdge. Jedyną sytuacją, że nie może zawierać tego nagłówka w żądaniu po raz pierwszy, o których użytkownik używa aplikacji na tym urządzeniu.<br /><br/></li><li>**Uwaga:** należy upewnić się, że tego Identyfikatora klienta nie jest możliwym do żadnych informacji konta uwierzytelnionego użytkownika.</li><li>Dla każdego żądania interfejsu API usługi Bing, która aplikacja sprawia, że dla tego użytkownika na urządzeniu, należy użyć Identyfikatora klienta.<br /><br/></li><li>Utrwalanie identyfikator klienta. Aby utrwalić identyfikator w aplikacji przeglądarki, umożliwia upewnij się, że identyfikator jest używany we wszystkich sesjach trwały plik cookie HTTP. Nie należy używać pliku cookie sesji. Dla innych aplikacji, takich jak aplikacje mobilne należy użyć urządzenia magazynu trwałego można utrwalić identyfikatora.<br /><br/>Następnym razem użytkownik używa aplikacji na tym urządzeniu, Uzyskaj identyfikator klienta, który zostały utrwalone.</li></ul><br /> **Uwaga:** odpowiedzi Bing może lub nie może zawierać tego nagłówka. Jeśli odpowiedź zawiera tego pliku nagłówkowego, przechwytywanie Identyfikatora klienta i użyć jej do wszystkich kolejnych żądań Bing dla użytkownika na tym urządzeniu.<br /><br /> **Uwaga:** Jeśli dodasz X MSEdge ClientID, nie może zawierać pliki cookie w żądaniu.|  
-|<a name="clientip" />X-MSEdge-ClientIP|Nagłówek żądania opcjonalne.<br /><br /> Adres IPv4 lub IPv6 na urządzeniu klienckim. Adres IP jest używany w celu odnalezienia lokalizacji użytkownika. Usługa Bing używa informacji o lokalizacji, aby określić sposób bezpiecznego wyszukiwania.<br /><br /> **Uwaga:** mimo, że jest to opcjonalne, zachęcamy do zawsze określać tego pliku nagłówkowego i Nagłówek X-Search-lokalizacji.<br /><br /> Adres nie zaciemniania (na przykład, zmieniając ostatni oktet 0). Polega na zaciemnianiu wyniki adres, w tym miejscu nie jest w dowolnym miejscu w pobliżu lokalizacji rzeczywistego urządzenia, co może spowodować Bing obsługująca błędnych wyników.|  
-|<a name="location" />Lokalizacja w przypadku wyszukiwania X|Nagłówek żądania opcjonalne.<br /><br /> Rozdzielana średnikami lista par klucz/wartość, które opisują lokalizację geograficzną klienta. Usługa Bing używa informacji o lokalizacji, aby określić sposób bezpiecznego wyszukiwania i zwrócić odpowiedniej zawartości lokalnej. Określ pary klucz/wartość jako \<klucz\>:\<wartość\>. Dostępne są następujące klucze, które służy do określania lokalizacji użytkownika.<br /><br /><ul><li>lat&mdash;wymagane. Szerokość geograficzna lokalizacji klienta, w stopniach. Szerokość musi być większa lub równa-90.0 i mniejsza niż lub równa +90.0. Wartości ujemne wskazują Latitude południowy, a wartości dodatnich wskazują Północna geograficznej.<br /><br /></li><li>długi&mdash;wymagane. Długość geograficzna lokalizacji klienta, w stopniach. Długość geograficzna musi być większa lub równa-180.0 i mniejsza niż lub równa +180.0. Wartości ujemne wskazują szerokości geograficzne western, a wartości dodatnich wskazują Wschodniej szerokości geograficzne.<br /><br /></li><li>ponownie&mdash;wymagane. Promień, w metrach, który określa dokładność pozioma współrzędne. Należy przekazać wartość zwrócona przez obiekt usługi lokalizacji urządzenia. Typowe wartości może być 22m dla GPS/Wi-Fi, 380m triangulacji tower komórka i 18,000m dla odwrotnego wyszukiwania adresu IP.<br /><br /></li><li>TS&mdash;opcjonalne. Sygnatura czasowa systemu UNIX UTC z kiedy klient nie był w lokalizacji. (Sygnatura czasowa systemu UNIX jest liczba sekund od 1 stycznia 1970 r.).<br /><br /></li><li>HEAD&mdash;atrybut opcjonalny. Klient względnej pozycji lub kierunku ruchu. Określ kierunek ruchu jako stopni od 0 do 360, zliczania do ruchu wskazówek zegara względem Północna wartość true. Określ kluczy tylko wtedy, gdy `sp` klucza jest różna od zera.<br /><br /></li><li>SP&mdash;opcjonalne. Prędkość poziome (szybkość) w metrach na sekundę, które są przesyłane na urządzeniu klienckim.<br /><br /></li><li>ALT&mdash;atrybut opcjonalny. Wysokość urządzenia klienta, w metrach.<br /><br /></li><li>czy&mdash;atrybut opcjonalny. Promień, w metrach, określająca dokładność pionowych we współrzędnych. Określ ten klucz, tylko wtedy, gdy należy określić `alt` klucza.<br /><br /></li></ul> **Uwaga:** Chociaż wiele kluczy są opcjonalne, więcej informacji, które podasz, tym bardziej dokładne wyniki lokalizacji są.<br /><br /> **Uwaga:** mimo, że jest to opcjonalne, zachęcamy do zawsze określić lokalizację geograficzną użytkownika. Podanie lokalizacji jest szczególnie ważne, jeśli adres IP klienta nie odzwierciedla precyzyjnie lokalizacji fizycznej przez użytkownika (na przykład, jeśli klient korzysta z sieci VPN). Aby uzyskać optymalne wyniki należy dołączyć ten nagłówek i Nagłówek X-MSEdge-ClientIP, ale co najmniej powinien być dołączany do tego pliku nagłówkowego.|
+|<a name="acceptlanguage" />Accept-Language|Opcjonalny nagłówek żądania.<br /><br /> Rozdzielana przecinkami lista języków dla ciągów interfejsu użytkownika. Lista jest zorganizowana w malejącym porządku preferencji. Aby uzyskać więcej informacji, łącznie z oczekiwanym formatem, zobacz [RFC2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Ten nagłówek i parametr zapytania [setLang](#setlang) wykluczają się wzajemnie&mdash;nie określaj ich jednocześnie.<br /><br /> Jeśli ustawisz ten nagłówek, musisz także określić parametr zapytania [cc](#cc). Aby ustalić rynek, dla którego mają zostać zwrócone wyniki, usługa Bing używa pierwszego obsługiwanego języka znalezionego na liście i łączy go z wartością parametru `cc`. Jeśli lista nie zawiera obsługiwanego języka, usługa Bing znajduje najbliższy język i rynek, które obsługują żądanie, lub używa rynku zagregowanego bądź domyślnego. Aby sprawdzić, jakiego rynku użyła usługa Bing, zobacz nagłówek BingAPIs-Market.<br /><br /> Używaj tego nagłówka i parametru zapytania `cc` tylko wtedy, gdy określasz wiele języków. W przeciwnym razie użyj parametrów zapytania [mkt](#mkt) i [setLang](#setlang).<br /><br /> Ciąg interfejsu użytkownika to ciąg, który jest używany jako etykieta w interfejsie użytkownika. W obiektach odpowiedzi JSON istnieje kilka ciągów interfejsu użytkownika. Wszelkie linki do właściwości witryny Bing.com w obiektach odpowiedzi także stosują określony język.|  
+|<a name="contenttype" />Content-Type|Wymagany nagłówek żądania.<br /><br />Musi mieć ustawioną wartość multipart/form-data i zawierać parametr ograniczenia (na przykład multipart/form-data; boundary=\<ciąg ograniczenia\>). Aby uzyskać więcej informacji, zobacz [Typy formularzy zawartości](#content-form-types).
+|<a name="market" />BingAPIs-Market|Nagłówek odpowiedzi.<br /><br /> Rynek używany przez żądanie. Format jest następujący \<kod_języka\>-\<kod_kraju\>. Na przykład en-US.|  
+|<a name="traceid" />BingAPIs-TraceId|Nagłówek odpowiedzi.<br /><br /> Identyfikator wpisu dziennika, który zawiera szczegółowe informacje o żądaniu. Gdy wystąpi błąd, przechwyć ten identyfikator. Jeśli nie możesz określić i rozwiązać problemu, dołącz ten identyfikator wraz z innymi informacjami, które podasz zespołowi pomocy technicznej.|  
+|<a name="subscriptionkey" />Ocp-Apim-Subscription-Key|Wymagany nagłówek żądania.<br /><br /> Klucz subskrypcji otrzymany podczas tworzenia konta dla tej usługi w usługach [Cognitive Services](https://www.microsoft.com/cognitive-services/).|  
+|<a name="pragma" />Pragma|Opcjonalny nagłówek żądania<br /><br /> Usługa Bing domyślnie zwraca zawartość buforowaną, jeśli jest dostępna. Aby zapobiec zwracaniu zawartości buforowanej przez usługę Bing, dla nagłówka Pragma ustaw wartość no-cache (na przykład Pragma: no-cache).
+|<a name="useragent" />User-Agent|Opcjonalny nagłówek żądania.<br /><br /> Agent użytkownika, od którego pochodzi żądanie. Usługa Bing korzysta z agenta użytkownika, aby zapewnić zoptymalizowane środowisko obsługi dla użytkowników urządzeń przenośnych. Mimo że ten nagłówek jest opcjonalny, zachęcamy, aby go zawsze określać.<br /><br /> Nagłówek user-agent powinien być takim samym ciągiem, jaki wysyła każda powszechnie używana przeglądarka. Aby uzyskać informacje na temat agentów użytkownika, zobacz [RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Poniżej przedstawiono przykłady ciągów nagłówka user-agent.<br /><ul><li>Windows Phone&mdash;Mozilla/5.0 (zgodne; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)<br /><br /></li><li>Android&mdash;Mozilla/5.0 (Linux; U; Android 2.3.5; en-us; SCH-I500 Build/GINGERBREAD) AppleWebKit/533.1 (KHTML; jak Gecko) Version/4.0 Mobile Safari/533.1<br /><br /></li><li>iPhone&mdash;Mozilla/5.0 (iPhone; CPU iPhone OS 6_1 jak Mac OS X) AppleWebKit/536.26 (KHTML; jak Gecko) Mobile/10B142 iPhone4;1 BingWeb/3.03.1428.20120423<br /><br /></li><li>Komputer PC&mdash;Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) jak Gecko<br /><br /></li><li>iPad&mdash;Mozilla/5.0 (iPad; CPU OS 7_0 jak Mac OS X) AppleWebKit/537.51.1 (KHTML, jak Gecko) Version/7.0 Mobile/11A465 Safari/9537.53</li></ul>|
+|<a name="clientid" />X-MSEdge-ClientID|Opcjonalny nagłówek żądania i odpowiedzi.<br /><br /> Usługa Bing używa tego nagłówka, aby zapewnić użytkownikom spójne zachowanie dla wywołań interfejsu API usługi Bing. Usługa Bing często testuje nowe funkcje i ulepszenia i używa identyfikatora klienta jako klucza do przypisywania ruchu dla różnych pakietów testowych. Jeśli nie będziesz używać tego samego identyfikatora klienta dla użytkownika w wielu żądaniach, usługa Bing może przypisać użytkownika do różnych, konfliktowych pakietów testowych. Przypisanie do wielu konfliktowych pakietów testowych może prowadzić do niespójnego środowiska użytkownika. Jeśli na przykład drugie żądanie ma przypisany inny pakiet testowy, niż pierwsze, środowisko obsługi może być nieoczekiwane. Ponadto usługa Bing może używać identyfikatora klienta, aby dopasować wyniki internetowe do historii wyszukiwania tego identyfikatora, zapewniając użytkownikowi bogatsze środowisko obsługi.<br /><br /> Usługa Bing używa także tego nagłówka, aby ulepszyć pozycjonowanie wyników, analizując aktywność generowaną przez identyfikator klienta. Ulepszenia istotności pomagają zwiększyć jakość wyników dostarczanych przez interfejsy API usługi Bing, co w rezultacie daje wyższą częstotliwość kliknięć dla użytkownika interfejsu API.<br /><br /> **WAŻNE:** Mimo że ten nagłówek jest opcjonalny, można go uważać za wymagany. Utrwalenie identyfikatora klienta dla wielu żądań dla połączenia tego samego użytkownika końcowego i urządzenia umożliwia (1) zapewnienie użytkownikowi interfejsu API spójnego środowiska obsługi oraz (2) uzyskanie wyższej częstotliwości kliknięć dzięki lepszej jakość wyników z interfejsów API usługi Bing.<br /><br /> Poniżej przedstawiono podstawowe reguły użycia, które mają zastosowanie do tego nagłówka.<br /><ul><li>Każdy użytkownik, który korzysta z Twojej aplikacji na urządzeniu, musi mieć unikatowy identyfikator klienta wygenerowany przez usługę Bing.<br /><br/>Jeśli nie uwzględnisz tego nagłówka w żądaniu, usługa Bing wygeneruje identyfikator i zwróci go w nagłówku odpowiedzi X-MSEdge-ClientID. Jedyną sytuacją, w której NIE należy uwzględniać tego nagłówka w żądaniu, jest pierwsze użycie Twojej aplikacji przez danego użytkownika na danym urządzeniu.<br /><br/></li><li>**UWAGA:** Należy upewnić się, że tego identyfikatora klienta nie można połączyć z żadnymi informacjami o koncie użytkownika uwierzytelnionego.</li><li>Używaj identyfikatora klienta dla każdego żądania interfejsu API usługi Bing, które Twoja aplikacja wykonuje dla tego użytkownika na danym urządzeniu.<br /><br/></li><li>Utrwal identyfikator klienta. Aby utrwalić identyfikator w aplikacji przeglądarki, użyj trwałego pliku cookie HTTP, aby mieć pewność, że dany identyfikator będzie używany we wszystkich sesjach. Nie należy używać plików cookie sesji. W przypadku innych aplikacji, takich jak aplikacje mobilne, użyj magazynu trwałego urządzenia, aby utrwalić identyfikator.<br /><br/>Następnym razem, gdy użytkownik będzie używać Twojej aplikacji na tym urządzeniu, uzyskaj utrwalony identyfikator klienta.</li></ul><br /> **UWAGA:** Odpowiedzi usługi Bing mogą zawierać ten nagłówek lub nie. Jeśli odpowiedź zawiera ten nagłówek, przechwyć identyfikator klienta i używaj go dla wszystkich kolejnych żądań usługi Bing dla tego użytkownika na tym urządzeniu.<br /><br /> **UWAGA:** jeśli dodasz nagłówek X-MSEdge-ClientID, nie możesz uwzględnić w żądaniu plików cookie.|  
+|<a name="clientip" />X-MSEdge-ClientIP|Opcjonalny nagłówek żądania.<br /><br /> Adres IPv4 lub IPv6 na urządzeniu klienckim. Adres IP jest używany w celu odnalezienia lokalizacji użytkownika. Usługa Bing używa informacji o lokalizacji, aby określić sposób bezpiecznego wyszukiwania.<br /><br /> **UWAGA:** Mimo że ten nagłówek jest opcjonalny, zachęcamy, aby go zawsze określać wraz z nagłówkiem X-Search-Location.<br /><br /> Nie należy zaciemniać adres (na przykład zamieniając ostatni oktet na 0). Zaciemnianie adresu powoduje, że ustalona lokalizacja nie jest nawet przybliżona do rzeczywistej lokalizacji urządzenia, przez co usługa Bing może zwracać błędne wyniki.|  
+|<a name="location" />X-Search-Location|Opcjonalny nagłówek żądania.<br /><br /> Rozdzielana średnikami lista par klucz/wartość, które opisują geograficzną lokalizację klienta. Usługa Bing używa informacji o lokalizacji, aby określić sposób bezpiecznego wyszukiwania i aby zwracać odpowiednią zawartość lokalną. Parę klucz/wartość określ w formacie \<klucz\>:\<wartość\>. Poniżej przedstawiono klucze, które służą do określania lokalizacji użytkownika.<br /><br /><ul><li>lat&mdash;Wymagane. Szerokość geograficzna lokalizacji klienta w stopniach. Szerokość geograficzna musi być większa niż lub równa -90.0 i mniejsza niż lub równa +90.0. Wartości ujemne wskazują południową szerokość geograficzną, a wartości dodatnie wskazują północną szerokość geograficzną.<br /><br /></li><li>long&mdash;Wymagane. Długość geograficzna lokalizacji klienta w stopniach. Długość geograficzna musi być większa niż lub równa -180.0 i mniejsza niż lub równa +180.0. Wartości ujemne wskazują zachodnią długość geograficzną, a wartości dodatnie wskazują wschodnią długość geograficzną.<br /><br /></li><li>re&mdash;Wymagane. Promień, w metrach, który określa poziomą dokładność współrzędnych. Przekaż wartość zwróconą przez usługę lokalizacji urządzenia. Typowe wartości mogą wynosić 22 m dla sieci GPS/Wi-Fi, 380 m dla triangulacji wieży sieci komórkowej i 18 000 m dla wstecznego wyszukiwania adresu IP.<br /><br /></li><li>ts&mdash;Opcjonalne. Sygnatura czasowa w systemie UTC UNIX dla czasu, kiedy klient znajdował się w danej lokalizacji. (Sygnatura czasowa systemu UNIX to liczba sekund od 1 stycznia 1970 r.).<br /><br /></li><li>head&mdash;Opcjonalne. Względny kierunek przemieszczania się klienta. Określ kierunek ruchu jako liczbę stopni z zakresu od 0 do 360, zliczanych zgodnie z ruchem wskazówek zegara względem prawdziwej północy. Określ ten klucz tylko wtedy, gdy wartość klucza `sp` jest różna od zera.<br /><br /></li><li>sp&mdash;Opcjonalne. Prędkość pozioma (szybkość) w metrach na sekundę, z którą przemieszcza się urządzenie klienckie.<br /><br /></li><li>alt&mdash;Opcjonalne. Wysokość urządzenia klienta, w metrach.<br /><br /></li><li>are&mdash;Opcjonalne. Promień, w metrach, który określa pionową dokładność współrzędnych. Określ ten klucz tylko wtedy, gdy wartość klucza `alt` także została określona.<br /><br /></li></ul> **UWAGA:** chociaż wiele z tych kluczy jest opcjonalnych, im więcej informacji określisz, tym bardziej dokładne będą wyniki lokalizacji.<br /><br /> **UWAGA:** Mimo że jest to opcjonalne, zachęcamy, aby zawsze określać geograficzną lokalizację użytkownika. Podanie lokalizacji jest szczególnie ważne, jeśli adres IP klienta nie odzwierciedla precyzyjnie fizycznej lokalizacji użytkownika (na przykład, jeśli klient korzysta z sieci VPN). Aby uzyskać optymalne wyniki należy uwzględnić ten nagłówek i nagłówek X-MSEdge-ClientIP, a co najmniej należy uwzględnić ten nagłówek.|
 
 > [!NOTE] 
-> Należy pamiętać, że warunków użytkowania wymaga zgodności ze wszystkimi obowiązującymi przepisami, w tym dotyczących korzystania z tych nagłówków. Na przykład w niektórych systemach prawnych, takich jak Europa, istnieją wymagania w celu uzyskania zgody użytkownika przed wprowadzeniem niektórych urządzeń śledzenia na urządzeniach użytkowników.
+> Pamiętaj, że Warunki użytkowania wymagają zgodności ze wszystkimi obowiązującymi przepisami prawa, w tym dotyczącymi korzystania z tych nagłówków. W niektórych systemach prawnych, na przykład w Europie, wymagane jest uzyskania zgody użytkownika przed umieszczeniem narzędzi śledzących na urządzeniu użytkownika.
 
 
 <a name="content-form-types" />
 
-### <a name="content-form-types"></a>Typy zawartości formularza
+### <a name="content-form-types"></a>Typy formularzy zawartości
 
-Każde żądanie musi zawierać nagłówek Content-Type. Musi mieć wartość nagłówka: multipart/formularza danych; granic =\<ciąg granic\>, gdzie \<ciąg granic\> jest unikatowy, nieprzezroczysty ciąg, który identyfikuje granic danych formularza. Na przykład granic = boundary_1234 abcd.
+Każde żądanie musi zawierać nagłówek Content-Type. Ustawienia nagłówka muszą być następujące: multipart/form-data; boundary=\<ciąg graniczny\>, gdzie \<ciąg graniczny\> to unikatowy, nieprzezroczysty ciąg, który identyfikuje granice danych formularza. Na przykład boundary=boundary_1234-abcd.
 
 
-Jeśli wyślesz wyszukiwania wizualnego token obrazu lub adres URL, poniżej przedstawiono dane formularza należy uwzględnić w treści wpisu. Dane mogą zawierać nagłówek Content-Disposition i jego `name` parametru musi być równa "knowledgeRequest." Aby uzyskać szczegółowe informacje o `imageInfo` obiektu, zobacz [żądania](#the-request).
+Jeśli wysyłasz do wyszukiwania wizualnego token lub adres URL obrazu, poniżej przedstawiono dane formularza, które należy umieścić w treści żądania POST. Dane formularza muszą zawierać nagłówek Content-Disposition, a jego parametr `name` musi mieć ustawioną wartość „knowledgeRequest”. Aby uzyskać szczegółowe informacje o obiekcie `imageInfo`, zobacz [Żądanie](#the-request).
 
 
 ```
@@ -147,7 +147,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
-Jeśli załadujesz lokalny obraz, poniżej przedstawiono dane formularza należy uwzględnić w treści wpisu. Dane mogą zawierać nagłówek Content-Disposition. Jego `name` parametru musi być równa "image" i `filename` parametru może być ustawiona na dowolny ciąg. Nagłówek Content-Type może być ustawiona na dowolny typ mime obrazu często używane. Zawartość formularza jest plik binarny obrazu. Rozmiar maksymalny obrazu, którą możesz przekazać to 1 MB. Największy szerokości lub wysokości powinna być 1 500 pikseli lub mniej.
+W przypadku przekazywania lokalnego obrazu w treści żądania POST konieczne jest podanie pokazanych poniżej danych formularza. Dane formularza muszą zawierać nagłówek Content-Disposition. Jego parametr `name` musi mieć wartość „image”, a parametr `filename` może być ustawiony na dowolny ciąg. Nagłówek Content-Type może być ustawiony na dowolny powszechnie używany obraz typu MIME. Zawartością formularza jest plik binarny obrazu. Maksymalny rozmiar obrazu, który można przekazać, wynosi 1 MB. Największa szerokość lub wysokość powinna wynosić maksymalnie 1500 pikseli.
 
 
 ```
@@ -191,7 +191,7 @@ Content-Type: image/jpeg
 
 ### <a name="example-request"></a>Przykładowe żądanie
 
-Na poniższym obrazie przedstawiono żądanie insights pełny obraz, które przekazuje token obrazu i regionu zainteresowania. Token szczegółowe informacje można uzyskać od poprzedniego wywołania do /images/search.
+Poniżej przedstawiono pełne żądanie szczegółowych informacji, które przekazuje token obrazu i region zainteresowania. Token szczegółowych informacji można uzyskać z poprzedniego wywołania żądania /images/search.
 
 
 ```  
@@ -224,7 +224,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 
 ## <a name="the-response"></a>Odpowiedź
 
-W przypadku szczegółowych informacji dotyczących obrazu, odpowiedź zawiera co najmniej jeden `tags` zawierających szczegółowe informacje. `image` Pole zawiera token szczegółowe informacje dla obrazu wejściowego.
+Jeśli dla obrazu są dostępne szczegółowe informacje, odpowiedź obejmuje co najmniej jeden obiekt `tags` zawierający te szczegółowe informacje. Pole `image` zawiera token szczegółowych informacji dla obrazu wejściowego.
 
 ```json
 {
@@ -242,7 +242,7 @@ W przypadku szczegółowych informacji dotyczących obrazu, odpowiedź zawiera c
 }
 ```
 
-`tags` Pole zawiera nazwę wyświetlaną i listę akcji (insights). Zawiera jeden tag `displayName` pola, który jest ustawiony na pusty ciąg. Ten tag zawiera szczegółowe informacje domyślne, takich jak strony sieci Web, który zawiera obraz, podobnych wizualnie obrazów i zakupów źródeł dla elementów znalezionych w obrazie. Ponieważ cały obraz ma znaczenie, domyślnego znacznika szczegółowych informacji nie uwzględnia blokujących pola dla regionów zainteresowania.
+Pole `tags` zawiera nazwę wyświetlaną i listę akcji (szczegółowe informacje). Jeden z tagów zawiera pole `displayName`, dla którego ustawiono pusty ciąg. Ten tag zawiera domyślne informacje szczegółowe, takie jak strony internetowe, na których znajduje się obraz, obrazy podobne wizualnie i źródła zakupów dla elementów znalezionych na obrazie. Ponieważ cały obraz znajduje się w regionie zainteresowania, domyślny znacznik szczegółowych informacji nie zawiera pól ograniczenia dla regionów zainteresowania.
 
 
 ```json
@@ -269,19 +269,19 @@ W przypadku szczegółowych informacji dotyczących obrazu, odpowiedź zawiera c
 }
 ```
 
-Aby uzyskać listę wglądu w szczegółowe dane domyślne, zobacz [domyślne insights](./default-insights-tag.md).
+Aby uzyskać listę domyślnych szczegółowych informacji, zobacz [Domyślne szczegółowe informacje](./default-insights-tag.md).
 
 
 
-Pozostałe znaczniki zawierają inne szczegółowe informacje, które mogą być interesujące dla użytkownika. Na przykład jeśli obraz zawiera tekst, jeden tag może obejmować insight TextResults, który zawiera rozpoznanego tekstu. Lub, jeśli Bing rozpoznaje jednostki (osoby, miejsca lub rzeczy) w obrazie, jeden tag identyfikują jednostkę. Wyszukiwanie wizualne również zwraca zestaw warunków (tagi) pochodzące z obrazu wejściowego. Te znaczniki pozwalają użytkownikom Eksploruj pojęcia znalezione na obrazie. Na przykład jeśli obrazu wejściowego jest sławę wykresie, jeden tag może być dyscyplin sportowych, który zawiera linki do obrazów sportu.
+Pozostałe tagi zawierają inne szczegółowe informacje, które mogą interesować użytkownika. Jeśli na przykład obraz zawiera tekst, jeden tag może obejmować szczegółowe informacje TextResults, które zawierają rozpoznany tekst. Jeśli natomiast usługa Bing rozpozna jednostkę (osobę, miejsce lub rzecz) na obrazie, jeden z tagów może identyfikować tę jednostkę. Wyszukiwanie wizualne zwraca także zróżnicowany zestaw terminów (tagów) pobranych z obrazu wejściowego. Te tagi pozwalają użytkownikom na eksplorowanie pojęć znajdujących się na obrazie. Jeśli na przykład obrazu wejściowy przedstawia sławnego sportowca, jeden z tagów może reprezentować dyscyplinę sportową i zawierać linki do obrazów tej dyscypliny.
 
-Każdy znacznik zawiera nazwę wyświetlaną, która służy do kategoryzowania wgląd, obwiedni identyfikujący regionu zainteresowania, które dotyczą wiedzę, samych szczegółowych danych i miniaturę obrazu. Na przykład jeśli obraz jest osoby na sobie jersey dyscyplin sportowych, jeden tag obejmują obwiedni granic rękaw, która obejmuje VisualSearch i ProductVisualSearch insights. I inny znacznik może zawierać szczegółowe informacje o ImageResults, który zawiera adres URL żądania interfejsu API /images/search można pobrać obrazów, które są związane z badany oddziałuje przez czas lub adres URL wyszukiwania Bing.com, który powoduje otwarcie wyniki wyszukiwania obrazu Bing.com.
+Każdy tag zawiera nazwę wyświetlaną, która służy do kategoryzowania szczegółowych informacji, pole ograniczenia identyfikujące region zainteresowania, których dotyczą szczegółowe informacje, same szczegółowe informację oraz miniaturę obrazu. Jeśli na przykład obraz przedstawia osobę w bluzie sportowej, jeden z tagów może zawierać pole ograniczenia, które obejmuje bluzę i szczegółowe informacje VisualSearch oraz ProductVisualSearch. Natomiast inny tag może zawierać szczegółowe informacje ImageResults, które obejmują adres URL żądania interfejsu API /images/search umożliwiający pobranie obrazów powiązanych tematycznie, lub adres URL wyszukiwania witryny Bing.com, który powoduje otwarcie wyników wyszukiwania obrazu w witrynie Bing.com.
 
-Wszystkie tagi innej niż domyślna etykieta szczegółowe informacje obejmują blokujących pola, które identyfikują regionów zainteresowania na obrazie. Na przykład jeśli obraz zawiera wiele osób rozpoznany, tagi mogą obejmować blokujących pola dla każdej osoby lub jeśli obraz zawiera elementy rozpoznane odzieży, tagi mogą obejmować blokujących pola dla każdego elementu odzieży rozpoznane. Obwiedni służy do tworzenia punktów aktywnych na obrazie, po kliknięciu, zawierają szczegółowe informacje o zawartości w danym regionie obrazu. Zaprojektuj nie może zawierać do obrazu dla obwiedni, które identyfikują całego obrazu.
+Wszystkie tagi, poza domyślnym tagiem szczegółowych informacji, zawierają pola ograniczenia, które określają regiony zainteresowania na obrazie. Jeśli na przykład obraz przedstawia wiele rozpoznawalnych osób, tagi mogą zawierać pola ograniczenia dla każdej osoby. Jeśli natomiast obraz przedstawia rozpoznawalne elementy odzieży, tagi mogą zawierać pola ograniczenia dla każdego rozpoznanego elementu odzieży. Przy użyciu pól ograniczenia można tworzyć punkty aktywne na obrazie, które po kliknięciu wyświetlają informacje na temat zawartości w danym regionie obrazu. Punktów aktywnych nie należy dołączać do obrazów, dla których pole ograniczenia obejmuje cały obraz.
 
 ### <a name="text-recognition"></a>Rozpoznawanie tekstu
 
-Jeśli obraz zawiera tekst, który usługa rozpozna, jeden tag będzie zawierać szczegółowe informacje TextResults (działanie). Szczegółowe informacje o `displayName` zawiera rozpoznany tekst. 
+Jeśli obraz zawiera tekst, który usługa rozpoznaje, jeden tag będzie zawierać szczegółowe informacje TextResults (akcja). Element `displayName` szczegółowych informacji zawiera rozpoznany tekst. 
 
 ```json
     {
@@ -311,10 +311,10 @@ Jeśli obraz zawiera tekst, który usługa rozpozna, jeden tag będzie zawierać
     }
 ```
 
-Ponieważ tag `displayName` pole zawiera ##TextRecognition, nie należy używać jako tytuł kategorii w najlepsze środowisko użytkownika. Zbliża się do wyświetlania żadnych nazw, które zaczyna się od ##. Zamiast tego należy użyć nazwy wyświetlania akcji.
+Ponieważ pole `displayName` tagu zawiera ciąg ##TextRecognition, nie należy używać go jako tytułu kategorii w środowisku użytkownika. Dotyczy to każdej nazwy wyświetlanej rozpoczynającej się od znaków ##. Zamiast tego należy użyć nazwy wyświetlanej akcji.
 
 
-Rozpoznawanie tekstu można także rozpoznaje informacje kontaktowe wizytówki, takich jak numery telefonów i adresów e-mail. Pole określa lokalizację informacji kontaktowych przy użyciu tej karty. 
+Rozpoznawanie tekstu może także rozpoznawać informacje kontaktowe na wizytówkach, takie jak numery telefonów i adresy e-mail. Pole ograniczenia określa lokalizację informacji kontaktowych na wizytówce. 
 
 ```json
     {
@@ -400,7 +400,7 @@ Rozpoznawanie tekstu można także rozpoznaje informacje kontaktowe wizytówki, 
     }
 ```
 
-Jeśli obraz zawiera rozpoznanego jednostki, takie jak osoby, miejsca lub rzeczy, jeden tag może obejmować wglądu jednostkę. 
+Jeśli obraz zawiera rozpoznaną jednostkę, taką jak osoba, miejsce lub rzecz, jeden tag może obejmować szczegółowe informacje jednostki. 
 
 ```json
     {
@@ -435,14 +435,14 @@ Jeśli obraz zawiera rozpoznanego jednostki, takie jak osoby, miejsca lub rzeczy
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby szybko rozpocząć pracę z pierwszego żądania, zobacz artykuł Szybki Start: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md).
+Aby szybko rozpocząć pracę z pierwszym żądaniem, zobacz przewodniki Szybki start dla języków: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
 
-Wypróbuj interfejs API. Przejdź do [konsoli testowania interfejs API wyszukiwania wizualnego](https://dev.cognitive.microsoft.com/docs/services/878c38e705b84442845e22c7bff8c9ac). 
+Wypróbuj interfejs API. Przejdź do [konsoli testowania interfejsu API wyszukiwania wizualnego](https://dev.cognitive.microsoft.com/docs/services/878c38e705b84442845e22c7bff8c9ac). 
 
 
-Zapoznaj się z [Visual dokumentacja interfejsu API wyszukiwania](https://aka.ms/bingvisualsearchreferencedoc). Dokumentacja zawiera listę punktów końcowych, nagłówków i parametrów zapytań, które są stosowane w żądaniach wyników wyszukiwania. Zawiera także definicje obiektów odpowiedzi. 
+Zapoznaj się z [dokumentacją interfejsu API wyszukiwania wizualnego](https://aka.ms/bingvisualsearchreferencedoc). Dokumentacja zawiera listę punktów końcowych, nagłówków i parametrów zapytań, które są stosowane w żądaniach wyników wyszukiwania. Zawiera także definicje obiektów odpowiedzi. 
 
 Nie zapomnij przeczytać [wymagań w zakresie korzystania z usługi Bing i wyświetlania danych z niej](./use-and-display-requirements.md), aby nie złamać żadnych reguł dotyczących korzystania z wyników wyszukiwania.
 

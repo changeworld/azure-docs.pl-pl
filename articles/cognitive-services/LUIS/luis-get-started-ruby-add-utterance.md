@@ -1,20 +1,21 @@
 ---
-title: Szybki start — zmiana modelu i uczenie aplikacji LUIS przy użyciu języka Ruby — Azure Cognitive Services | Microsoft Docs
+title: Szybki start dla języka Ruby — zmienianie modelu i szkolenie aplikacji LUIS
+titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start języka Ruby dodasz przykładowe wypowiedzi do aplikacji Home Automation i przeprowadzisz uczenie aplikacji. Przykładowe wypowiedzi to tekst z rozmowami użytkownika mapowany na intencje. Poprzez zapewnienie przykładowych wypowiedzi dla intencji możesz nauczyć aplikację LUIS, jakim intencjom odpowiada rodzaj tekstu podanego przez użytkownika.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/24/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 537ebe2d008e313d2fb29d05143804c3478567e8
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 2d4633592742bd81cc6972884a0c4f5141aa9943
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159456"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47030910"
 ---
 # <a name="quickstart-change-model-using-ruby"></a>Szybki start: zmiana modelu przy użyciu języka Ruby
 

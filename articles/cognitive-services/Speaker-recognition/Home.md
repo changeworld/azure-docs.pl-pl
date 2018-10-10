@@ -1,60 +1,61 @@
 ---
-title: Rozpoznawanie prelegenta interfejsu API | Dokumentacja firmy Microsoft
-description: Użyj zaawansowane algorytmy weryfikacji osoby mówiącej i identyfikacji osoby mówiącej przy użyciu interfejsu API rozpoznawania prelegenta w usługach kognitywnych.
+title: Co to jest rozpoznawanie osoby mówiącej?
+titlesuffix: Azure Cognitive Services
+description: Użyj zaawansowanych algorytmów służących do weryfikacji osoby mówiącej i identyfikacji osoby mówiącej przy użyciu interfejsu API rozpoznawania osoby mówiącej.
 services: cognitive-services
 author: dwlin
-manager: zhang
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speaker-recognition
-ms.topic: article
+ms.topic: overview
 ms.date: 03/20/2016
 ms.author: dwlin
-ms.openlocfilehash: 6d5e4e4bbe0cb5e57d2556f680ffcf8d16ee1818
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 13a95aff8b2b0d5dad0574e6107958a20576702a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347396"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227337"
 ---
 # <a name="speaker-recognition-api"></a>Interfejs API rozpoznawania osoby mówiącej
 
-Zapraszamy do interfejsów API rozpoznawania prelegenta firmy Microsoft. Interfejsy API rozpoznawania osoby mówiącej są oparte na chmurze interfejsów API, które udostępniają najbardziej zaawansowane algorytmy weryfikacji osoby mówiącej i identyfikacji osoby mówiącej. Rozpoznawanie prelegenta można podzielić na dwie kategorie: weryfikacji osoby mówiącej i identyfikacji osoby mówiącej.
+Interfejsy API rozpoznawania osoby mówiącej — Zapraszamy. Interfejsy API rozpoznawania osoby mówiącej to chmurowe interfejsy API oferujące najbardziej zaawansowane algorytmy do weryfikacji oraz identyfikacji osoby mówiącej. Rozpoznawanie osoby mówiącej można podzielić na dwie kategorie: weryfikację osoby mówiącej oraz identyfikację osoby mówiącej.
 
 
 ## <a name="speaker-verification"></a>Weryfikacja osoby mówiącej
 
 
-Głos ma unikatowych parametrów, które mogą służyć do identyfikowania osoby, podobnie jak przy użyciu linii papilarnych.  Przy użyciu głosu, jak siła sygnału jest wystarczająca dla scenariuszy uwierzytelniania i kontroli dostępu ma status nowe narzędzie innowacyjne — zasadniczo zapewniających poziom zabezpieczeń, które upraszcza środowisko uwierzytelniania dla klientów.
+Głos ma unikatowe cechy, które mogą służyć do identyfikowania osoby, podobnie jak ma to miejsce w przypadku odcisku palca.  Korzystanie z głosu do kontroli dostępu i scenariuszy uwierzytelniania okazało się nowym innowacyjnym narzędziem —zasadniczo oferuje ono wyższy stopień bezpieczeństwa, co ułatwia klientom uwierzytelnianie.
 
-Interfejsy API weryfikacji osoby mówiącej automatycznie można sprawdzić i uwierzytelnianie użytkowników przy użyciu ich głosu lub mowy.
+Interfejsy API weryfikacji osoby mówiącej mogą automatycznie weryfikować i uwierzytelniać użytkowników przy użyciu ich głosu lub mowy.
 
-### <a name="enrollment"></a>Rejestracji
+### <a name="enrollment"></a>Rejestracja
 
-Rejestrowanie na potrzeby weryfikacji osoby mówiącej jest zależne tekstu, co oznacza, że głośniki należy wybrać określone hasło do użycia podczas faz zarówno rejestracji i weryfikacji. 
+Rejestracja do weryfikacji osoby mówiącej jest zależna od tekstu, co oznacza, że osoby mówiące muszą wybrać określone hasło, które będzie używane w fazach rejestracji i weryfikacji. 
 
-W rejestracji prelegenta głos jest rejestrowany informujący o tym określone wyrażenie, a następnie szereg funkcji są wyodrębniane i frazy wybrany został rozpoznany. Ze sobą zarówno wyodrębnionego funkcje i wybranego frazę formularza podpisu unikatowy głosu.
+Podczas rejestracji jest nagrywany głos osoby mówiącej w trakcie wypowiadania określonej frazy, następnie zostaje wyodrębniona pewna liczba cech i wybrana fraza zostaje rozpoznana. Wyodrębnione cechy i wybrana fraza wspólnie tworzą unikatowy podpis głosowy.
 
 ### <a name="verification"></a>Weryfikacja
 ###
-W weryfikacji, wejściowych głosu i hasło są porównywane podpis głosu i hasło rejestracji — w celu sprawdzenia, czy są one z tej samej osoby, a jeśli są one opinie poprawne hasło.
+Podczas weryfikacji głos i fraza wejściowa są porównywane z podpisem głosowym i frazą z rejestracji — aby zweryfikować, czy pochodzą od tej samej osoby i czy zawierają prawidłową frazę.
 
-Aby uzyskać więcej informacji o weryfikacji osoby mówiącej, zapoznaj się z interfejsu API [prelegenta — Weryfikacja](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/563309b7778daf06340c9652).
+Aby uzyskać więcej informacji na temat weryfikacji osoby mówiącej, zapoznaj się z artykułem dotyczącym interfejsu API [weryfikacji osoby mówiącej](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/563309b7778daf06340c9652).
 
 ## <a name="speaker-identification"></a>Identyfikacja osoby mówiącej
 
-Interfejsy API identyfikacji osoby mówiącej automatycznie można zidentyfikować osoby mówiącej w pliku audio danej grupy potencjalnego głośników. Wejście audio parowania względem wprowadzonej grupy głośniki, a w przypadku, gdy brak Znaleziono dopasowanie, jest zwracany prelegenta tożsamości.
+Interfejsy API identyfikacji osoby mówiącej mogą automatycznie identyfikować osobę mówiącą w pliku audio po podaniu grupy potencjalnych osób mówiących. Dane wejściowe w postaci głosu są porównywane z podaną grupą osób mówiących. Po znalezieniu dopasowania jest zwracana tożsamość osoby mówiącej.
 
-Wszystkie głośniki powinien przejść przez proces rejestracji, aby najpierw uzyskać głosu zarejestrowany w systemie i zostały utworzone drukowania głosu.
-
-
-### <a name="enrollment"></a>Rejestracji
-
-Rejestracja do identyfikacji osoby mówiącej jest niezależny tekstu, co oznacza, że nie ma żadnych ograniczeń na prelegenta mówi w audio. Prelegenta głos jest rejestrowana i szereg funkcji są wyodrębniane do tworzenia podpisu unikatowy głosu. 
+Wszystkie osoby mówiące powinny najpierw przejść proces rejestracji, aby ich głos został zarejestrowany w systemie i została utworzona ich próbka głosu.
 
 
-### <a name="recognition"></a>Uznawanie
+### <a name="enrollment"></a>Rejestracja
 
-Audio nieznany prelegenta, wraz z potencjalnego grupy głośniki podano podczas rozpoznawania. Wejściowy głos jest porównywany względem wszystkich głośników w celu ustalenia, których głos jest, a jeśli brak Znaleziono dopasowanie, zwracany jest tożsamość prelegenta.
+Rejestracja w celu identyfikacji osoby mówiącej jest niezależna od tekstu, co oznacza, że nie ma żadnych ograniczeń w zakresie słów wypowiadanych przez osobę mówiącą na nagraniu dźwiękowym. Po nagraniu głosu osoby mówiącej następuje wyodrębnienie pewnej liczby cech i utworzenie unikatowego podpisu głosowego. 
 
 
-Aby uzyskać więcej informacji na temat identyfikacji osoby mówiącej, zapoznaj się z interfejsu API [prelegenta — identyfikator](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c068e597ed22ec38f42e).
+### <a name="recognition"></a>Rozpoznawanie
+
+Podczas rozpoznawania należy dostarczyć nagranie dźwiękowe nieznanej osoby mówiącej oraz potencjalną grupę osób mówiących. Głos wejściowy jest porównywany ze wszystkimi osobami mówiącymi w celu ustalenia, do kogo należy głos, a po znalezieniu dopasowania zostaje zwrócona tożsamość osoby mówiącej.
+
+
+Aby uzyskać więcej informacji na temat identyfikacji osoby mówiącej, zapoznaj się z artykułem dotyczącym interfejsu API [identyfikacji osoby mówiącej](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c068e597ed22ec38f42e).

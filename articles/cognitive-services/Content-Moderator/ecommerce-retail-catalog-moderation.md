@@ -1,69 +1,70 @@
 ---
-title: łagodzenie katalogu handlu elektronicznego z uczenia maszynowego i AI z moderatora zawartości platformy Azure | Dokumentacja firmy Microsoft
-description: Katalogi automatycznie umiarkowane handlu elektronicznego z uczenia maszynowego i AI
+title: 'Samouczek: moderowanie katalogu handlu elektronicznego — Content Moderator'
+titlesuffix: Azure Cognitive Services
+description: Automatycznie moderuj katalogi handlu elektronicznego przy użyciu uczenia maszynowego i sztucznej inteligencji.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 6177758eaa3e611ad67da0778d889df48b052d90
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
-ms.translationtype: MT
+ms.openlocfilehash: 2405ba9087e63b57c7bd6bc6f290cdafacaf7a49
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37095755"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227354"
 ---
-# <a name="ecommerce-catalog-moderation-with-machine-learning"></a>łagodzenie katalogu handlu elektronicznego z uczenia maszynowego
+# <a name="tutorial-ecommerce-catalog-moderation-with-machine-learning"></a>Samouczek: moderowanie katalogu handlu elektronicznego za pomocą uczenia maszynowego
 
-W tym samouczku będziemy Dowiedz się, jak zaimplementować machine learning na podstawie inteligentnego handlu elektronicznego katalogu łagodzenia łącząc technologie AI wspierana maszyny z człowieka łagodzenia do zapewnienia inteligentnego katalogu systemu.
+W tym samouczku opisano, jak wdrożyć inteligentne moderowanie katalogu handlu elektronicznego oparte na uczeniu maszynowym przez połączenie technologii sztucznej inteligencji wspomaganych maszynowo z moderowaniem z udziałem człowieka, aby zapewnić inteligentny system katalogów.
 
-![Obrazy niejawnych produktu](images/tutorial-ecommerce-content-moderator.PNG)
+![Sklasyfikowane obrazy produktów](images/tutorial-ecommerce-content-moderator.PNG)
 
-## <a name="business-scenario"></a>Scenariusza biznesowego
+## <a name="business-scenario"></a>Scenariusz biznesowy
 
-Użyj technologii wspierana maszyny do klasyfikowania i średnie obrazy produktu w tych kategoriach:
+Technologie wspomagane maszynowo umożliwiają klasyfikowanie i moderowanie obrazów produktów w następujących kategoriach:
 
-1. Osoba dorosła (nagość)
-2. Luksusowych (sugerującą)
-3. Znanych osób
-4. Flagi stany USA
-5. Toys
+1. Dla dorosłych (nagość)
+2. Erotyka (o charakterze seksualnym)
+3. Celebryci
+4. Flagi USA
+5. Zabawki
 6. Pióra
 
-## <a name="tutorial-steps"></a>Kroki samouczka
+## <a name="tutorial-steps"></a>Kroki Samouczka
 
-Samouczek prowadzi użytkownika przez następujące kroki:
+Ten samouczek zawiera instrukcje wykonania następujących kroków:
 
-1. Zarejestruj się i tworzenie zespołu moderatora zawartości.
-2. Skonfiguruj łagodzenia tagi (etykiety) dla potencjalnych renomy i Flaga zawartości.
-3. Za pomocą interfejsu API obrazu zawartości moderatora skanowania pod kątem potencjalnych zawartość dla dorosłych i luksusowych.
-4. Za pomocą interfejsu API przetwarzania obrazów komputera skanowania pod kątem potencjalnych znanych osób.
-5. Skanowanie w poszukiwaniu ewentualnej obecności flagi przy użyciu usługi wizji niestandardowe.
-6. Przedstawia wyniki skanowania nuanced dla człowieka przeglądu i podejmowania decyzji końcowej.
+1. Rejestracja i tworzenie zespołu dla usługi Content Moderator.
+2. Konfigurowanie tagów moderowania (etykiet) pod kątem potencjalnej zawartości, w tym celebrytów i flag.
+3. Używanie interfejsu API obrazów usługi Content Moderator do skanowania materiału pod kątem potencjalnej zawartości erotycznej lub dla dorosłych.
+4. Używanie interfejsu API przetwarzania obrazów do skanowania materiału pod kątem potencjalnych celebrytów.
+5. Używanie usługi Custom Vision do skanowania pod kątem możliwej obecności flag.
+6. Przekazywanie szczegółowych wyników skanowania do przeglądu z udziałem człowieka i ostatecznej decyzji.
 
 ## <a name="create-a-team"></a>Tworzenie zespołu
 
-Zapoznaj się [szybkiego startu](quick-start.md) stronę, aby utworzyć konto moderatora zawartości i tworzenie zespołu. Uwaga **identyfikator zespołu** z **poświadczenia** strony.
+Zapoznaj się z informacjami na stronie [Szybki start](quick-start.md), zarejestruj się w usłudze Content Moderator i utwórz zespół. Zanotuj **identyfikator zespołu** ze strony **Poświadczenia**.
 
 
-## <a name="define-custom-tags"></a>Zdefiniuj znaczniki niestandardowe
+## <a name="define-custom-tags"></a>Definiowanie tagów niestandardowych
 
-Zapoznaj się [tagi](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/tags) artykuł, aby dodać niestandardowe tagi. Oprócz wbudowanych **dla dorosłych** i **luksusowych** tagów, nowe znaczniki Zezwalaj narzędziu przeglądu do wyświetlenia nazw opisowych tagów.
+Zapoznaj się z informacjami w artykule [Tagi](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/tags) i dodaj tagi niestandardowe. Po dodaniu do wbudowanych tagów dla **dorosłych** i **erotycznych** nowe tagi umożliwiają narzędziu do przeglądu wyświetlanie nazw opisowych tagów.
 
-W tym przypadku definiujemy znaczniki niestandardowe (**renomy**, **flagi**, **nam**, **zabawki**, **pióra**):
+W naszym przypadku zdefiniujemy te tagi niestandardowe (**celebrity**, **flag**, **us**, **toy**, **pen**):
 
-![Konfigurowanie niestandardowych tagów](images/tutorial-ecommerce-tags2.PNG)
+![Konfigurowanie tagów niestandardowych](images/tutorial-ecommerce-tags2.PNG)
 
-## <a name="list-your-api-keys-and-endpoints"></a>Lista punktów końcowych i klucze interfejsu API
+## <a name="list-your-api-keys-and-endpoints"></a>Podawanie listy kluczy i punktów końcowych interfejsu API
 
-1. Samouczek używa trzech interfejsów API i odpowiadające im klucze i punkty końcowe interfejsu API.
-2. Punkty końcowe z interfejsu API są różne na podstawie regionów Twojej subskrypcji i identyfikator zawartości moderatora przeglądu zespołu.
+1. W Samouczku użyto trzech interfejsów API oraz odpowiadających im kluczy i punktów końcowych interfejsu API.
+2. Punkty końcowe interfejsu API są różne w zależności od regionów subskrypcji oraz identyfikatora zespołu do przeprowadzania przeglądu usługi Content Moderator.
 
 > [!NOTE]
-> Samouczek jest przeznaczony do używania kluczy subskrypcji w regionach, które są widoczne w następujących punktów końcowych. Pamiętaj dopasować klucze interfejsu API z regionu identyfikatorów URI w przeciwnym razie klucze mogą nie działać z następujących punktów końcowych:
+> W Samouczku użyto kluczy subskrypcji w regionach widocznych w następujących punktach końcowych. Pamiętaj, aby dopasować klucze interfejsu API do identyfikatorów URI regionu, w przeciwnym razie klucze mogą nie działać z następującymi punktami końcowymi:
 
          // Your API keys
         public const string ContentModeratorKey = "XXXXXXXXXXXXXXXXXXXX";
@@ -76,12 +77,12 @@ W tym przypadku definiujemy znaczniki niestandardowe (**renomy**, **flagi**, **n
         public const string ComputerVisionUri = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0";
         public const string CustomVisionUri = "https://southcentralus.api.cognitive.microsoft.com/customvision/v1.0/Prediction/XXXXXXXXXXXXXXXXXXXX/url";
 
-## <a name="scan-for-adult-and-racy-content"></a>Skanowanie pod kątem zawartość dla dorosłych i luksusowych
+## <a name="scan-for-adult-and-racy-content"></a>Skanowanie pod kątem zawartości erotycznej i dla osób dorosłych
 
-1. Funkcja przyjmuje adres URL obrazu i Tablica par klucz wartość jako parametry.
-2. Wywołuje interfejs API obrazu moderatora zawartości można pobrać wyników dorosłą i Racy.
-3. Jeśli wynik jest większa niż 0,4 (zakres to od 0 do 1), ustawia wartość w **ReviewTags** tablicy do **True**.
-4. **ReviewTags** tablicy jest używany do zaznacz odpowiedniego tagu w narzędziu przeglądu.
+1. Parametrami funkcji są adres URL obrazu i tablica par wartości kluczy.
+2. Wywołuje interfejs API wyszukiwania obrazów usługi Content Moderator w celu pobrania wyników dla treści erotycznych i dla dorosłych.
+3. Jeśli wynik przekracza 0,4 (w zakresie od 0 do 1), w tablicy **ReviewTags** zostaje ustawiona wartość **True**.
+4. Tablica **ReviewTags** służy do wyróżniania odpowiadającego tagu w narzędziu do przeglądu.
 
         public static bool EvaluateAdultRacy(string ImageUrl, ref KeyValuePair[] ReviewTags)
         {
@@ -119,17 +120,17 @@ W tym przypadku definiujemy znaczniki niestandardowe (**renomy**, **flagi**, **n
             return response.IsSuccessStatusCode;
         }
 
-## <a name="scan-for-celebrities"></a>Skanowanie pod kątem znanych osób
+## <a name="scan-for-celebrities"></a>Skanowanie pod kątem celebrytów
 
-1. Zaloguj się do [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) z [komputera wizji API](https://azure.microsoft.com/services/cognitive-services/computer-vision/).
-2. Kliknij przycisk **uzyskać klucz interfejsu API** przycisku.
-3. Zaakceptuj postanowienia.
-4. Aby się zalogować, wybierz z listy dostępnych kont Internet.
-5. Należy pamiętać, klucze interfejsu API wyświetlany na stronie usługi.
+1. Zarejestruj się w [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) [interfejsu API przetwarzania obrazów](https://azure.microsoft.com/services/cognitive-services/computer-vision/).
+2. Kliknij przycisk **Pobierz klucz interfejsu API**.
+3. Zaakceptuj warunki.
+4. Aby się zalogować, wybierz pozycję z listy dostępnych kont internetowych.
+5. Zanotuj klucze interfejsu API wyświetlone na stronie usługi.
     
-   ![Klucz interfejsu API przetwarzania obrazów komputera](images/tutorial-computer-vision-keys.PNG)
+   ![Klucze interfejsu API przetwarzania obrazów](images/tutorial-computer-vision-keys.PNG)
     
-6. Skorzystaj z kodu źródłowego projektu dla funkcji, która skanuje obrazu przy użyciu interfejsu API przetwarzania obrazów komputera.
+6. Zapoznaj się z kodem źródłowym projektu funkcji, która skanuje obraz za pomocą interfejsu API przetwarzania obrazów.
 
          public static bool EvaluateComputerVisionTags(string ImageUrl, string ComputerVisionUri, string ComputerVisionKey, ref KeyValuePair[] ReviewTags)
         {
@@ -156,13 +157,13 @@ W tym przypadku definiujemy znaczniki niestandardowe (**renomy**, **flagi**, **n
             return Response.IsSuccessStatusCode;
         }
 
-## <a name="classify-into-flags-toys-and-pens"></a>Klasyfikowanie w flagi, toys i pióra
+## <a name="classify-into-flags-toys-and-pens"></a>Klasyfikowanie na flagi, zabawki i pióra
 
-1. [Zaloguj się](https://azure.microsoft.com/en-us/services/cognitive-services/custom-vision-service/) do [Podgląd niestandardowe wizji API](https://www.customvision.ai/).
-2. Użyj [szybkiego startu](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) do kompilacji z klasyfikatora niestandardowego do wykrycia obecności potencjalnych flagi, toys i pióra.
-   ![Wizja niestandardowe obrazy szkolenia](images/tutorial-ecommerce-custom-vision.PNG)
-3. [Pobierz adres URL punktu końcowego prognozowania](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api) dla Twojego niestandardowego klasyfikatora.
-4. Odwołuje się do kodu źródłowego projektu, aby wyświetlić funkcję, która wywołuje punkt końcowy prognozowania klasyfikatora niestandardowych do skanowania obrazu.
+1. [Zaloguj się](https://azure.microsoft.com/en-us/services/cognitive-services/custom-vision-service/) do [wersji zapoznawczej interfejsu API usługi Custom Vision](https://www.customvision.ai/).
+2. Użyj przewodnika [Szybki Start](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) do utworzenia klasyfikatora niestandardowego, który będzie służył do wykrywania potencjalnej obecności flag, zabawek i piór.
+   ![Obrazy ze szkolenia dotyczącego usługi Custom Vision](images/tutorial-ecommerce-custom-vision.PNG)
+3. [Pobierz adres URL punktu końcowego przewidywania](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api) dla klasyfikatora niestandardowego.
+4. Sprawdź kod źródłowy projektu, aby zobaczyć funkcję, która wywołuje punkt końcowy przewidywania klasyfikatora niestandardowego, i przeskanować obraz.
 
         public static bool EvaluateCustomVisionTags(string ImageUrl, string CustomVisionUri, string CustomVisionKey, ref KeyValuePair[] ReviewTags)
         {
@@ -180,11 +181,11 @@ W tym przypadku definiujemy znaczniki niestandardowe (**renomy**, **flagi**, **n
             return response.IsSuccessStatusCode;
         }       
  
-## <a name="reviews-for-human-in-the-loop"></a>Przeglądy dla człowieka w pętli
+## <a name="reviews-for-human-in-the-loop"></a>Przeglądy wymagające udziału człowieka
 
-1. W poprzednich sekcjach przeprowadzone skanowanie przychodzących obrazy dla dorosłych i luksusowych (moderatora zawartości), flagi (niestandardowe wizji) i znanych osób (wizji komputera).
-2. W oparciu o naszych progi dopasowanie dla każdego skanowania, udostępnić nuanced przypadków dla człowieka przeglądu w narzędziu przeglądu.
-        publiczne statyczne bool {CreateReview (ciąg ImageUrl, KeyValuePair [] metadanych)
+1. W poprzednich sekcjach przeprowadziliśmy skanowanie obrazów przychodzących pod kątem treści dla osób dorosłych (Content Moderator), celebrytów (przetwarzanie obrazów) i flag (Custom Vision).
+2. W oparciu o progi dopasowania dla każdego skanowania udostępnij szczegóły przypadków do przeglądu przez człowieka w narzędziu do przeglądu.
+        public static bool CreateReview(string ImageUrl, KeyValuePair[] Metadata) {
 
             ReviewCreationRequest Review = new ReviewCreationRequest();
             Review.Item[0] = new ReviewItem();
@@ -202,11 +203,11 @@ W tym przypadku definiujemy znaczniki niestandardowe (**renomy**, **flagi**, **n
             return response.IsSuccessStatusCode;
         }
 
-## <a name="submit-batch-of-images"></a>Przedstawia partii obrazów
+## <a name="submit-batch-of-images"></a>Przesyłanie partii obrazów
 
-1. Ten samouczek zakłada katalogu "C:Test" z pliku tekstowego, który zawiera listę adresów URL obrazu.
-2. Poniższy kod sprawdza istnienie pliku i odczytuje wszystkie adresy URL w pamięci.
-            Sprawdź, czy katalog testowy do pliku tekstowego z listą adresów URL obrazu do skanowania var topdir = @"C:\test\"; var Urlsfile = topdir +"Urls.txt";
+1. W tym Samouczku przyjęto, że jest używany katalog „C:Test” zawierający plik tekstowy z listą adresów URL obrazów.
+2. Poniższy kod sprawdza istnienie pliku i odczytuje wszystkie adresy URL do pamięci.
+            // Sprawdź katalog testowy pod kątem pliku testowego zawierającego listę adresów URL obrazów, aby przeskanować var topdir = @"C:\test\"; var Urlsfile = topdir + "Urls.txt";
 
             if (!Directory.Exists(topdir))
                 return;
@@ -219,11 +220,11 @@ W tym przypadku definiujemy znaczniki niestandardowe (**renomy**, **flagi**, **n
             // Read all image URLs in the file
             var Urls = File.ReadLines(Urlsfile);
 
-## <a name="initiate-all-scans"></a>Inicjowanie skanowania wszystkich
+## <a name="initiate-all-scans"></a>Inicjowanie wszystkich skanowań
 
-1. Ta funkcja najwyższego poziomu w pętli wszystkich obrazów adresów URL w pliku tekstowym, który wspomniano wcześniej.
-2. Skanuje je z każdego interfejsu API i jeśli wynik zaufania dopasowania mieści się w naszej kryteria tworzy Przegląd dla człowieka moderatorów.
-             dla każdego obrazu adres URL w pliku... foreach (var adres Url w adresach URL) {/ / Initiatize nowej tablicy tagi przeglądu ReviewTags = nowe KeyValuePair [MAXTAGSCOUNT];
+1. Ta funkcja najwyższego poziomu obsługuje pętlę przez wszystkie adresy URL obrazów we wcześniej wspomnianym pliku tekstowym.
+2. Skanuje je za pomocą każdego interfejsu API i jeśli dopasowany współczynnik ufności pasuje do naszych kryteriów, tworzy przegląd dla użytkowników pełniących rolę moderatorów.
+             // dla każdego adresu URL obrazu w pliku... foreach (var Url in Urls) { // Zainicjuj nową tablicę tagów przeglądu ReviewTags = nowe KeyValuePair[MAXTAGSCOUNT];
 
                 // Evaluate for potential adult and racy content with Content Moderator API
                 EvaluateAdultRacy(Url, ref ReviewTags);
@@ -240,12 +241,12 @@ W tym przypadku definiujemy znaczniki niestandardowe (**renomy**, **flagi**, **n
 
 ## <a name="license"></a>Licencja
 
-Wszystkie zestawy SDK usługi kognitywnych firmy Microsoft i przykłady, jest udzielana z licencją MIT. Aby uzyskać więcej informacji, zobacz [licencji](https://microsoft.mit-license.org/).
+Wszystkie zestawy SDK usługi Microsoft Cognitive Services i przykłady podlegają licencji MIT. Aby uzyskać więcej szczegółów, zobacz [LICENSE](https://microsoft.mit-license.org/) (LICENCJA).
 
 ## <a name="developer-code-of-conduct"></a>Kodeks postępowania dewelopera
 
-Przy użyciu usług kognitywnych, łącznie z tej biblioteki klienta & próbki, deweloperzy mają wykonaj "Developer kodu z należy przeprowadzić dla Microsoft kognitywnych usługi", podczas gdy znaleziono w http://go.microsoft.com/fwlink/?LinkId=698895.
+Deweloperzy korzystający z usługi Cognitive Services, łącznie z tą biblioteką kliencką i przykładami powinni postępować zgodnie z dokumentem „Developer Code of Conduct for Microsoft Cognitive Services” („Kodeks postępowania dla deweloperów usługi Microsoft Cognitive Services”) znajdującym się pod adresem http://go.microsoft.com/fwlink/?LinkId=698895.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Tworzenie i rozszerzanie samouczka za pomocą [pliki źródłowe projektu](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) w witrynie Github.
+Opracowuj i poszerzaj samouczek przy użyciu [plików źródłowych projektu](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) w portalu Github.

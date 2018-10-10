@@ -1,20 +1,21 @@
 ---
-title: Szybki start — zmiana modelu i uczenie aplikacji LUIS przy użyciu języka Java — Azure Cognitive Services | Microsoft Docs
+title: Szybki start dla języka Java — zmienianie modelu i szkolenie aplikacji LUIS
+titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start języka Java dodasz przykładowe wypowiedzi do aplikacji Home Automation i przeprowadzisz uczenie aplikacji. Przykładowe wypowiedzi to tekst z rozmowami użytkownika mapowany na intencje. Poprzez zapewnienie przykładowych wypowiedzi dla intencji możesz nauczyć aplikację LUIS, jakim intencjom odpowiada rodzaj tekstu podanego przez użytkownika.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/24/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: ddb22bce77dda55ad6e83efa8c0ca2c476f78836
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 8500dfdd639b4f1de46a0b79b87a8564d338b6ab
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161122"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042028"
 ---
 # <a name="quickstart-change-model-using-java"></a>Szybki start: zmiana modelu przy użyciu języka Java 
 

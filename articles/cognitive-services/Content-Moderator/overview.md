@@ -1,57 +1,58 @@
 ---
-title: Omówienie usługi Azure zawartości moderatora | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać moderatora zawartości do śledzenia, Flaga, oceny i filtrować nieodpowiednie zawartość zawartość wygenerowaną przez użytkowników.
+title: Czym jest pakiet Content Moderator?
+titlesuffix: Azure Cognitive Services
+description: Dowiedz się, jak używać pakietu Content Moderator do śledzenia, flagowania, oceniania i filtrowania nieodpowiednich treści w zawartości wygenerowanej przez użytkownika.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: overview
 ms.date: 06/15/2017
 ms.author: sajagtap
-ms.openlocfilehash: cd9e2e9c10e9dc5ba118c8319f76174bf6f0da9f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: e109376f47d921fb18d7bb9a6252e80315419ec0
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349380"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226045"
 ---
-# <a name="what-is-content-moderator"></a>Co to jest moderatora zawartości?
+# <a name="what-is-content-moderator"></a>Czym jest pakiet Content Moderator?
 
-Łagodzenie zawartości to proces monitorowania możliwe zawartości obraźliwe, niepożądanych i ryzykowne. Moderowane zawartości może być obrazy, tekst i wideo.
+Moderowanie zawartości to proces monitorowania zawartości, która może być obraźliwa, niepożądana lub ryzykowna. Moderowaną zawartością mogą być obrazy, tekst i filmy wideo.
 
-## <a name="where-it-is-used"></a>Gdzie jest używane
+## <a name="where-it-is-used"></a>Gdzie jest używany
 
-Na poniższej liście przedstawiono kilka przykładowych scenariuszy, gdzie są używane moderatora zawartości:
+Na poniższej liście przedstawiono kilka przykładowych scenariuszy użycia pakietu Content Moderator:
 
-- Zawartość wygenerowany online rynków Moderowanie katalogów produktów i użytkownika
-- Artefakty gier i pokoje rozmów wygenerował firm gier Moderowanie użytkownika
-- Społecznościowych platformy obsługi komunikatów Moderowanie obrazy, tekst i filmy dodane przez użytkowników
-- Implementowanie scentralizowane łagodzenia zawartości ze względu na zawartość firm nośnika Enterprise
-- Filtrowanie zawartości zły i obraźliwe dla uczniów lub studentów i instytucjom dostawców rozwiązań K-12 education
+- Platformy handlowe online, moderujące katalogi produktów i zawartość wygenerowaną przez użytkowników
+- Firmy produkujące gry, moderujące artefakty w grze wygenerowane przez użytkownika i pokoje rozmów
+- Platforma społecznościowa, moderująca obrazy, teksty i filmy wideo dodawane przez użytkowników
+- Firmy oferujące multimedia dla przedsiębiorstw, implementujące scentralizowane moderowanie zawartości
+- Dostawcy rozwiązań dla szkół podstawowych i średnich, filtrujący złą i obraźliwą zawartość dla uczniów i nauczycieli
 
 ## <a name="what-it-includes"></a>Co zawiera
 
-Zawartości moderatora składa się z kilku usług sieci web interfejsów API i wbudowane człowieka w — pętlę Przejrzyj narzędzie, które ułatwia umiarkowane obrazy, tekst i wideo.
+Pakiet Content Moderator składa się z kilku interfejsów API usług internetowych i wbudowanego narzędzia do przeprowadzania przeglądu obsługiwanego przez człowieka, które pomaga moderować obrazy, tekst i filmy wideo.
 
-![Diagram blokowy moderatora zawartości](images/content-moderator-block-diagram.png)
+![Diagram blokowy pakietu Content Moderator](images/content-moderator-block-diagram.png)
 
 ## <a name="apis"></a>Interfejsy API
 
-Moderatora zawartości zawiera następujące interfejsy API:
-  - [**Tekst łagodzenia interfejsu API**](text-moderation-api.md): Skanuj tekst możliwości niestosownych wyrażeń, jawne, sugerujących obraźliwe i dane osobowe lub informacje za pomocą tego interfejsu API.
-  - [**Lista termin niestandardowego interfejsu API**](try-terms-list-api.md): Użyj tego interfejsu API do dopasowywania listy warunków oprócz wbudowanych warunków. Użyj ich, aby zablokować lub zezwolić zawartości zgodnie z zasadami dotyczącymi zawartości.  
-  - [**Obraz łagodzenia interfejsu API**](image-moderation-api.md): skanowanie obrazów na zawartość dla dorosłych i luksusowych, wykrywania tekstu w obrazach, z możliwością OCR (Rozpoznawania) i wykrywania kroje za pomocą tego interfejsu API.
-  - [**Listy obrazów niestandardowego interfejsu API**](try-image-list-api.md): Użyj tego interfejsu API do dopasowywania list niestandardowych obrazów, wstępnie zidentyfikowane zawartość, która nie należy do klasyfikowania ponownie.
-  - [**Łagodzenie wideo interfejsu API**](video-moderation-api.md): użycie tego interfejsu API w celu skanowania plików wideo na potencjalne zawartość dla dorosłych i luksusowych.
-  - [**Przejrzyj interfejsów API**](try-review-api-job.md): Użyj [zadania](try-review-api-job.md), [przeglądami](try-review-api-review.md), i [przepływu pracy](try-review-api-workflow.md) na tworzenie i automatyzować przepływy pracy ludzkich w pętli w ramach operacji narzędzie przeglądu.
+Pakiet Content Moderator zawiera następujące interfejsy API:
+  - [**Interfejs API moderowania tekstu**](text-moderation-api.md): ten interfejs API służy do skanowania tekstu pod kątem możliwych wulgaryzmów — jawnych, sugestywnych, obraźliwych — oraz danych osobowych.
+  - [**Interfejs API listy terminów niestandardowych**](try-terms-list-api.md): ten interfejs API służy do wyszukiwania dopasowań względem niestandardowych list terminów, poza terminami wbudowanymi. Użyj tych list, aby blokować zawartość lub zezwalać na nią zgodnie z określonymi zasadami dotyczącymi zawartości.  
+  - [**Interfejs API moderowania obrazów**](image-moderation-api.md): ten interfejs API służy do skanowania obrazów pod kątem zawartości dla dorosłych i zawartości erotycznej, wykrywania tekstu w obrazach za pomocą funkcji optycznego rozpoznawania znaków (OCR) i wykrywania twarzy.
+  - [**Interfejs API listy obrazów niestandardowych**](try-image-list-api.md): ten interfejs API służy do przeprowadzania dopasowań względem niestandardowych list obrazów, czyli wstępnie zdefiniowanej zawartości, której nie trzeba klasyfikować ponownie.
+  - [**Interfejs API moderowania wideo**](video-moderation-api.md): ten interfejs API służy do skanowania wideo pod kątem potencjalnej zawartości dla dorosłych i zawartości erotycznej.
+  - [**Interfejsy API przeglądu**](try-review-api-job.md): przy użyciu operacji [Zadania](try-review-api-job.md), [Przeglądy](try-review-api-review.md) i [Przepływ pracy](try-review-api-workflow.md) utwórz i zautomatyzuj przepływy pracy obsługiwane przez człowieka w ramach narzędzia do przeglądu.
 
 ## <a name="human-review-tool"></a>Narzędzie do przeglądu przez ludzi
 
-Twoja subskrypcja moderatora zawartości obejmuje wbudowane [narzędzie przeglądu człowieka](Review-Tool-User-Guide/human-in-the-loop.md). Umożliwia utworzenie przeglądy tekst, obrazy i wideo dla Twojego człowieka moderatorów podjęcie decyzji końcowego wymienione wcześniej API przeglądu.
+Subskrypcja pakietu Content Moderator obejmuje wbudowane [narzędzie do przeglądu przez ludzi](Review-Tool-User-Guide/human-in-the-loop.md). Użyj wspomnianego wcześniej interfejsu API przeglądu, aby tworzyć przeglądy tekstu, obrazów i filmów wideo względem których ostateczną decyzję mają podjąć moderatorzy ludzcy.
 
-![Przegląd zawartości wideo moderatora narzędzia](images/video-review-default-view.png)
+![Narzędzie służące do przeprowadzania przeglądu wideo usługi Content Moderator](images/video-review-default-view.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Użyj [szybkiego startu](quick-start.md) wprowadzenie moderatora zawartości.
+Zacznij pracę z pakietem Content Moderator, korzystając z [przewodnika Szybki start](quick-start.md).

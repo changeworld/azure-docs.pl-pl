@@ -1,35 +1,37 @@
 ---
-title: Szybki Start języka Python dla usług Azure kognitywnych, wideo wyszukiwania usługi Bing interfejsu API | Dokumentacja firmy Microsoft
-description: Pobierz informacje i przykładowy kod w celu szybkiego Rozpoczynanie pracy przy użyciu interfejsu API wyszukiwania usługi Bing wideo w kognitywnych usług Microsoft Azure.
+title: 'Szybki start: wyszukiwanie wideo Bing, Python'
+titlesuffix: Azure Cognitive Services
+description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API wyszukiwania wideo Bing.
 services: cognitive-services
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: ce4356f05e69540bc3bc3241e2ec1751ff7a7276
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 797eb476aa3386949b08efb957edf48a97e40d6b
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347512"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220018"
 ---
-# <a name="quickstart-for-bing-video-search-api-with-python"></a>Szybki Start dla wideo wyszukiwania usługi Bing interfejsu API za pomocą języka Python
+# <a name="quickstart-bing-video-search-api-with-python"></a>Szybki start: interfejs API wyszukiwania wideo Bing oraz język Python
 
-W tym przewodniku przedstawiono sposób korzystania z usługi Bing wideo wyszukiwania interfejsu API, część kognitywnych usług Microsoft Azure. Zapoznaj się [dokumentacja interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) uzyskać szczegółowe informacje techniczne dotyczące interfejsów API.
+W tym artykule pokazano, jak używać interfejsu API wyszukiwania wideo Bing, który jest częścią usług Microsoft Cognitive Services na platformie Azure. Zapoznaj się [dokumentacją interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference), aby uzyskać szczegółowe informacje techniczne dotyczące interfejsów API.
 
-W tym przykładzie można uruchomić jako notesu Jupyter na [MyBinder](https://mybinder.org) , klikając polecenie Uruchom integratora znaczków: 
+Ten przykład można uruchomić jako notes programu Jupyter w witrynie [MyBinder](https://mybinder.org). W tym celu należy kliknąć ikonę Launch Binder: 
 
-[![Obiekt wiążący](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingVideoSearchAPI.ipynb)
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingVideoSearchAPI.ipynb)
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Musi mieć [kognitywnych interfejsu API usług konta](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsy API wyszukiwania usługi Bing**. [Bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca dla tego przewodnika Szybki Start. Należy klucz dostępu podany przy wywołaniu metody aktywacji bezpłatną wersję próbną lub może używać klucza płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.
+Trzeba mieć [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do **interfejsów API wyszukiwania Bing**. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca na potrzeby tego przewodnika Szybki start. Potrzebny jest klucz dostępu podany przy aktywacji bezpłatnej wersji próbnej lub klucz płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.
 
-## <a name="running-the-walkthrough"></a>Uruchomiona przewodnika
+## <a name="running-the-walkthrough"></a>Uruchamianie przewodnika
 
-Najpierw należy ustawić `subscription_key` do klucza interfejsu API dla usługi interfejsu API Bing.
+Najpierw nadaj zmiennej `subscription_key` wartość klucza interfejsu API dla usługi interfejsu API Bing.
 
 
 ```python
@@ -37,21 +39,21 @@ subscription_key = None
 assert subscription_key
 ```
 
-Następnie sprawdź, czy `search_url` punktu końcowego jest poprawna. W tym tylko jeden punkt końcowy jest używany do wyszukiwania usługi Bing interfejsów API. Jeśli wystąpią błędy autoryzacji dokładnie, czy ta wartość względem punktu końcowego wyszukiwania usługi Bing w pulpicie nawigacyjnym platformy Azure.
+Następnie upewnij się, że wartość `search_url` punktu końcowego jest poprawna. Obecnie tylko jeden punkt końcowy jest używany dla interfejsów API wyszukiwania Bing. Jeśli wystąpią błędy autoryzacji, dokładnie sprawdź tę wartość, porównując ją z punktem końcowym wyszukiwania w usłudze Bing na pulpicie nawigacyjnym platformy Azure.
 
 
 ```python
 search_url = "https://api.cognitive.microsoft.com/bing/v7.0/videos/search"
 ```
 
-Ustaw `search_term` do wyszukania wideo kocięta
+Nadaj zmiennej `search_term` wartość kittens, aby wyszukiwać wideo z kociętami
 
 
 ```python
 search_term = "kittens"
 ```
 
-Z poniższego bloku używa `requests` biblioteki w języku Python do wyróżnienia do wyszukiwania usługi Bing interfejsów API i zwrócenie wyników jako obiekt JSON. Sprawdź, czy jest przekazywana klucza interfejsu API za pomocą `headers` słownika i wyszukiwanie termin za pośrednictwem `params` słownika. Aby zapoznać się z pełną listą opcje, które mogą służyć do filtrowania wyników wyszukiwania, zapoznaj się [interfejsu API REST](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) dokumentacji.
+Następujący blok wykorzystuje bibliotekę `requests` w języku Python do wywoływania interfejsów API wyszukiwania Bing i zwracania wyników w postaci obiektu JSON. Zobacz, jak przekazujemy klucz interfejsu API za pośrednictwem słownika `headers` i wyszukiwany termin za pośrednictwem słownika `params`. Aby wyświetlić pełną listę opcji, które mogą służyć do odfiltrowania wyników wyszukiwania, zobacz dokumentację [interfejsu API REST](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference).
 
 
 ```python
@@ -64,7 +66,7 @@ response.raise_for_status()
 search_results = response.json()
 ```
 
-`search_results` Obiekt zawiera odpowiednie pliki wideo wraz z zaawansowanych metadanych. Aby przejrzeć pola wideo, użyj jej `embedHtml` właściwości i wstaw go w `IFrame`.
+Obiekt `search_results` zawiera odpowiednie filmy wideo oraz obszerne metadane. Aby wyświetlić jeden z filmów, użyj jego właściwości `embedHtml` i wprowadź ją do `IFrame`.
 
 
 ```python
@@ -72,12 +74,12 @@ from IPython.display import HTML
 HTML(search_results["value"][0]["embedHtml"].replace("autoplay=1","autoplay=0"))
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Filmy wideo stronicowania](paging-videos.md)
-> [Resizing i przycinanie obrazów miniatur](resize-and-crop-thumbnails.md)
+> [Stronicowanie wideo](paging-videos.md)
+> [Zmiana rozmiaru i przycinanie obrazów miniatur](resize-and-crop-thumbnails.md)
 
-## <a name="see-also"></a>Zobacz także 
+## <a name="see-also"></a>Zobacz też 
 
- [Wyszukiwanie w sieci web wideo](search-the-web.md) [Wypróbuj](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)
+ [Wyszukiwanie filmów wideo w sieci web](search-the-web.md) [Wypróbuj](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)

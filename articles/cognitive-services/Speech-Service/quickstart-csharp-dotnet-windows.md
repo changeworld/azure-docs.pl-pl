@@ -1,108 +1,71 @@
 ---
-title: 'Szybki Start: Rozpoznawanie mowy w języku C# na platformie .NET Framework na Windows przy użyciu Cognitive Services SDK rozpoznawania mowy'
+title: 'Szybki start: rozpoznawanie mowy w języku C# na platformie .NET Framework w systemie Windows za pomocą zestawu Speech SDK usługi Cognitive Services'
 titleSuffix: Microsoft Cognitive Services
-description: Dowiedz się, jak rozpoznawanie mowy w języku C# na platformie .NET Framework na Windows przy użyciu Cognitive Services SDK rozpoznawania mowy
+description: Dowiedz się, jak rozpoznawać mowę w języku C# na platformie .NET Framework w systemie Windows za pomocą zestawu Speech SDK usługi Cognitive Services
 services: cognitive-services
 author: wolfma61
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
-ms.date: 07/16/2018
+ms.topic: quickstart
+ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 0f4c0243c09fd7a6b8d221d6c077775f83d82b8b
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
-ms.translationtype: MT
+ms.openlocfilehash: 32b484451c4ee2264c25cca92b1d03d91b955a29
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024547"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47054000"
 ---
-# <a name="quickstart-recognize-speech-in-c-under-net-framework-on-windows-using-the-speech-sdk"></a>Szybki Start: Rozpoznawanie mowy w języku C# na platformie .NET Framework na Windows przy użyciu zestawu SDK rozpoznawania mowy
+# <a name="quickstart-recognize-speech-in-c-under-net-framework-on-windows-by-using-the-speech-sdk"></a>Szybki start: rozpoznawanie mowy w języku C# na platformie .NET Framework w systemie Windows za pomocą zestawu Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-W tym artykule dowiesz się, jak utworzyć aplikację konsolową C# dla platformy .NET Framework na Windows transkrypcja mowy na tekst za pomocą Cognitive Services SDK rozpoznawania mowy.
-Aplikacja jest skompilowana przy użyciu [Microsoft Cognitive Services mowy zestawu SDK pakietu NuGet](https://aka.ms/csspeech/nuget) i Microsoft Visual Studio 2017.
+W tym artykule utworzysz aplikację konsolową języka C# dla platformy .NET Framework w systemie Windows za pomocą [zestawu Speech SDK](speech-sdk.md). Transkrypcja mowy na tekst będzie odbywać się w czasie rzeczywistym z mikrofonu komputera. Aplikacja będzie kompilowana przy użyciu [pakietu NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017 (w dowolnej wersji).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Klucz subskrypcji dla usługi mowy. Zobacz [bezpłatnie wypróbować usługę rozpoznawania mowy](get-started.md).
-* Komputera z systemem Windows przy użyciu mikrofonu pracy.
-* Program Visual Studio 2017, wersja Community Edition lub nowszy.
-* **Programowanie aplikacji klasycznych dla platformy .NET** obciążenia w programie Visual Studio. Możesz ją włączyć w **narzędzia** \> **Pobierz narzędzia i funkcje**.
-
-  ![Włącz programowanie aplikacji klasycznych dla platformy .NET](media/sdk/vs-enable-net-desktop-workload.png)
+Do ukończenia kroków tego przewodnika Szybki start potrzebujesz klucza subskrypcji usługi rozpoznawania mowy. Możesz uzyskać go bezpłatnie. Zobacz [Wypróbuj bezpłatnie usługę rozpoznawania mowy](get-started.md), aby uzyskać szczegółowe informacje.
 
 ## <a name="create-a-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
-1. W programie Visual Studio 2017 Utwórz nową Visual C# Console aplikację. W **nowy projekt** okno dialogowe, w lewym okienku rozwiń **zainstalowane** \> **Visual C#** \> **Windows Desktop** , a następnie wybierz **Aplikacja konsoli (.NET Framework)**. Wprowadź nazwę projektu *helloworld*.
+[!INCLUDE [Create project ](../../../includes/cognitive-services-speech-service-create-speech-project-vs-csharp.md)]
 
-    ![Tworzenie języka Visual C# Aplikacja konsoli (.NET Framework)](media/sdk/qs-csharp-dotnet-windows-01-new-console-app.png "tworzenie Visual C# Aplikacja konsoli (.NET Framework)")
+## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
 
-1. Zainstalowania i odwołania [pakietu NuGet zestawu SDK mowy](https://aka.ms/csspeech/nuget). W Eksploratorze rozwiązań kliknij rozwiązanie prawym przyciskiem myszy i wybierz **Zarządzaj pakietami NuGet dla rozwiązania**.
-
-    ![Kliknij prawym przyciskiem myszy Zarządzaj pakietami NuGet dla rozwiązania](media/sdk/qs-csharp-dotnet-windows-02-manage-nuget-packages.png "Zarządzaj pakietami NuGet dla rozwiązania")
-
-1. W prawym górnym rogu w **źródła pakietu** pól, zaznacz **Nuget.org**. Wyszukaj `Microsoft.CognitiveServices.Speech` pakietu, a następnie zainstalować ją na **helloworld** projektu.
-
-    ![Zainstaluj pakiet NuGet Microsoft.CognitiveServices.Speech](media/sdk/qs-csharp-dotnet-windows-03-nuget-install-0.5.0.png "pakietu Nuget instalacji")
-
-1. Akceptuje wyświetlane.
-
-    ![Akceptuje](media/sdk/qs-csharp-dotnet-windows-04-nuget-license.png "akceptuje")
-
-1. Następujący wiersz danych wyjściowych zostanie wyświetlony w konsoli Menedżera pakietów.
-
-   ```text
-   Successfully installed 'Microsoft.CognitiveServices.Speech 0.6.0' to helloworld
-   ```
-
-## <a name="create-a-platform-configuration-matching-your-pc-architecture"></a>Utwórz konfigurację platformy dopasowywanie architektury komputera
-
-W tej sekcji dodasz nowa platforma do konfiguracji, który pasuje do architektury procesora.
-
-1. Uruchom Menedżera konfiguracji. Wybierz **kompilacji** > **programu Configuration Manager**.
-
-    ![Uruchom program configuration manager](media/sdk/qs-csharp-dotnet-windows-05-cfg-manager-click.png "Uruchom program configuration manager")
-
-1. W **programu Configuration Manager** okna dialogowego Dodaj nową platformę. Z **aktywną platformą rozwiązania** listy rozwijanej wybierz **New**.
-
-    ![Dodaj nową platformę w oknie Menedżera konfiguracji](media/sdk/qs-csharp-dotnet-windows-06-cfg-manager-new.png "Dodaj nową platformę w oknie Menedżera konfiguracji")
-
-1. Jeśli korzystasz z 64-bitowych Windows, Utwórz nową konfigurację platformy o nazwie `x64`. Jeśli używasz 32-bitowa Windows, Utwórz nową konfigurację platformy o nazwie `x86`. W tym artykule opisano tworzenie `x64` konfigurację platformy.
-
-    ![Na Windows 64-bitowych, Dodaj nową platformę o nazwie "x64"](media/sdk/qs-csharp-dotnet-windows-07-cfg-manager-add-x64.png "Dodaj x64 platformy")
-
-## <a name="add-the-sample-code"></a>Dodaj kod przykładowy
-
-1. Otwórz `Program.cs` i Zastąp cały kod w nim następującym kodem.
+1. Otwórz plik `Program.cs` i zastąp cały jego kod poniższym kodem.
 
     [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-dotnet-windows/helloworld/Program.cs#code)]
 
-1. Zastąp ciąg `YourSubscriptionKey` z kluczem subskrypcji.
+1. W tym samym pliku zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji usługi rozpoznawania mowy.
 
-1. Zastąp ciąg `YourServiceRegion` z [region](regions.md) skojarzonych z subskrypcją (na przykład `westus` bezpłatnej subskrypcji wersji próbnej).
+1. Zastąp także ciąg `YourServiceRegion` [regionem](regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
 
-1. Zapisz zmiany w projekcie.
+1. Zapisz zmiany projektu.
 
-## <a name="build-and-run-the-sample"></a>Kompilowanie i uruchamianie przykładu
+## <a name="build-and-run-the-app"></a>Kompilowanie i uruchamianie aplikacji
 
-1. Skompiluj aplikację. Na pasku menu wybierz **kompilacji** > **Kompiluj rozwiązanie**. Kod powinien teraz skompilować bez błędów.
+1. Skompiluj aplikację. Na pasku menu wybierz kolejno pozycje **Kompiluj** > **Kompiluj rozwiązanie**. Kod powinien teraz zostać skompilowany bez błędów.
 
-    ![Pomyślnej kompilacji](media/sdk/qs-csharp-dotnet-windows-08-build.png "pomyślnej kompilacji")
+    ![Zrzut ekranu aplikacji programu Visual Studio aplikacji z wyróżnioną opcją Kompiluj rozwiązanie](media/sdk/qs-csharp-dotnet-windows-08-build.png "Kompilacja ukończona pomyślnie")
 
-1. Uruchom aplikację. Na pasku menu wybierz **debugowania** > **Rozpocznij debugowanie**, lub naciśnij **F5**.
+1. Uruchom aplikację. Na pasku menu wybierz kolejno pozycje **Debuguj** > **Rozpocznij debugowanie** lub naciśnij klawisz **F5**.
 
-    ![Uruchom aplikację do debugowania](media/sdk/qs-csharp-dotnet-windows-09-start-debugging.png "uruchomić aplikację do debugowania")
+    ![Zrzut ekranu aplikacji programu Visual Studio aplikacji z wyróżnioną opcją Rozpocznij debugowanie](media/sdk/qs-csharp-dotnet-windows-09-start-debugging.png "Uruchamianie aplikacji do debugowania")
 
-1. Zostanie wyświetlone okno konsoli monitem powiedzieć coś (w języku angielskim). Rozpoznany tekst pojawi się w tym samym oknie.
+1. Zostanie wyświetlone okno konsoli z monitem o wypowiedzenie słów. Wymów frazę lub zdanie w języku angielskim. Mowa zostanie przesłana do usługi rozpoznawania mowy i transkrybowana na tekst, który zostanie wyświetlony w tym samym oknie.
 
-    ![Dane wyjściowe konsoli po pomyślnym rozpoznawania](media/sdk/qs-csharp-dotnet-windows-10-console-output.png "dane wyjściowe konsoli po pomyślnym rozpoznawania")
+    ![Zrzut ekranu przedstawiający dane wyjściowe konsoli po pomyślnym ukończeniu rozpoznawania](media/sdk/qs-csharp-dotnet-windows-10-console-output.png "Dane wyjściowe konsoli po pomyślnym ukończeniu rozpoznawania")
 
-[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Poszukaj tego przykładu w `quickstart/csharp-dotnet-windows` folderu.
+[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+Poszukaj tego przykładu w folderze `quickstart/csharp-dotnet-windows`.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Tłumaczenie mowy](how-to-translate-speech-csharp.md)
-- [Dostosowywanie modeli akustycznych](how-to-customize-acoustic-models.md)
+> [!div class="nextstepaction"]
+> [Recognize intents from speech by using the Speech SDK for C#](how-to-recognize-intents-from-speech-csharp.md) (Rozpoznawanie intencji z mowy przy użyciu zestawu Speech SDK mowy dla języka C#)
+
+## <a name="see-also"></a>Zobacz też
+
+- [Translate speech](how-to-translate-speech-csharp.md) (Tłumaczenie mowy)
+- [Customize acoustic models](how-to-customize-acoustic-models.md) (Dostosowywanie modeli akustycznych)
 - [Dostosowywanie modeli językowych](how-to-customize-language-model.md)

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 905873a695635ba80de258cbf458c8dd3e18d443
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: e73b0e88a98c1b06216378078626b4338c598816
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700342"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422970"
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB: Tworzenie elementów, wykonywanie zapytań i przechodzenie grafu w konsoli Gremlin
 
@@ -90,21 +90,16 @@ serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessage
 
 5. Następnie uruchom `:remote console`, aby przekierować wszystkie polecenia konsoli na serwer zdalny.
 
+   > [!NOTE]
+   > Jeśli nie uruchomisz polecenia `:remote console`, ale chcesz przekierować wszystkie polecenia konsoli na serwer zdalny, dodaj do polecenia prefiks `:>`, na przykład uruchom polecenie jako `:> g.V().count()`. Ten prefiks jest częścią polecenia i jest to ważne, gdy konsola Gremlin jest używana z usługą Azure Cosmos DB. Pominięcie tego prefiksu oznacza, że konsola ma wykonać polecenia lokalnie, często względem grafu w pamięci. Użycie tego prefiksu `:>` powoduje wykonanie polecenia zdalnego przez konsolę, w tym przypadku względem usługi Azure Cosmos DB (emulatora localhost lub wystąpienia platformy Azure).
+
 Wspaniale! Teraz, po zakończeniu konfigurowania, zacznijmy uruchamianie poleceń konsoli.
 
 Wypróbujmy proste polecenie count(). Wpisz następujący tekst w wierszu polecenia konsoli:
-```
-:> g.V().count()
-```
 
-> [!TIP]
-> Warto zauważyć prefiks `:>` poprzedzający tekst `g.V().count()`. 
->
-> Jest to część polecenia, które należy wpisać. Jest to ważne, gdy konsola Gremlin jest używana z usługą Azure Cosmos DB.  
->
-> Pominięcie tego prefiksu `:>` oznacza, że konsola ma wykonać polecenia lokalnie, często względem grafu w pamięci.
-> Użycie tego prefiksu `:>` powoduje wykonanie polecenia zdalnego przez konsolę, w tym przypadku względem usługi Cosmos DB (emulatora localhost lub wystąpienia > Azure).
-
+```
+g.V().count()
+```
 
 ## <a name="create-vertices-and-edges"></a>Tworzenie wierzchołków i krawędzi
 
@@ -113,7 +108,7 @@ Zacznijmy od dodania wierzchołków dla pięciu osób: *Thomas*, *Mary Kay*, *Ro
 Dane wejściowe (Thomas):
 
 ```
-:> g.addV('person').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44).property('userid', 1)
+g.addV('person').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44).property('userid', 1)
 ```
 
 Dane wyjściowe:
@@ -124,7 +119,7 @@ Dane wyjściowe:
 Dane wejściowe (Mary Kay):
 
 ```
-:> g.addV('person').property('firstName', 'Mary Kay').property('lastName', 'Andersen').property('age', 39).property('userid', 2)
+g.addV('person').property('firstName', 'Mary Kay').property('lastName', 'Andersen').property('age', 39).property('userid', 2)
 
 ```
 
@@ -138,7 +133,7 @@ Dane wyjściowe:
 Dane wejściowe (Robin):
 
 ```
-:> g.addV('person').property('firstName', 'Robin').property('lastName', 'Wakefield').property('userid', 3)
+g.addV('person').property('firstName', 'Robin').property('lastName', 'Wakefield').property('userid', 3)
 ```
 
 Dane wyjściowe:
@@ -150,7 +145,7 @@ Dane wyjściowe:
 Dane wejściowe (Ben):
 
 ```
-:> g.addV('person').property('firstName', 'Ben').property('lastName', 'Miller').property('userid', 4)
+g.addV('person').property('firstName', 'Ben').property('lastName', 'Miller').property('userid', 4)
 
 ```
 
@@ -163,7 +158,7 @@ Dane wyjściowe:
 Dane wejściowe (Jack):
 
 ```
-:> g.addV('person').property('firstName', 'Jack').property('lastName', 'Connor').property('userid', 5)
+g.addV('person').property('firstName', 'Jack').property('lastName', 'Connor').property('userid', 5)
 ```
 
 Dane wyjściowe:
@@ -178,7 +173,7 @@ Następnie dodajmy krawędzie dla relacji między tymi osobami.
 Dane wejściowe (Thomas -> Mary Kay):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Mary Kay'))
+g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Mary Kay'))
 ```
 
 Dane wyjściowe:
@@ -190,7 +185,7 @@ Dane wyjściowe:
 Dane wejściowe (Thomas -> Robin):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Robin'))
+g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Robin'))
 ```
 
 Dane wyjściowe:
@@ -202,7 +197,7 @@ Dane wyjściowe:
 Dane wejściowe (Robin -> Ben):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Robin').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Ben'))
+g.V().hasLabel('person').has('firstName', 'Robin').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Ben'))
 ```
 
 Dane wyjściowe:
@@ -217,7 +212,7 @@ Zaktualizujmy wierzchołek *Thomas*, podając nowy wiek: *45*.
 
 Dane wejściowe:
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').property('age', 45)
+g.V().hasLabel('person').has('firstName', 'Thomas').property('age', 45)
 ```
 Dane wyjściowe:
 
@@ -234,7 +229,7 @@ Najpierw wypróbujmy zapytanie z filtrem, aby zwrócić tylko te osoby, które m
 Dane wejściowe (zapytanie filtru):
 
 ```
-:> g.V().hasLabel('person').has('age', gt(40))
+g.V().hasLabel('person').has('age', gt(40))
 ```
 
 Dane wyjściowe:
@@ -248,7 +243,7 @@ Następnie wyświetlmy imiona osób, które mają więcej niż 40 lat.
 Dane wejściowe (zapytanie filtru i projekcji):
 
 ```
-:> g.V().hasLabel('person').has('age', gt(40)).values('firstName')
+g.V().hasLabel('person').has('age', gt(40)).values('firstName')
 ```
 
 Dane wyjściowe:
@@ -264,7 +259,7 @@ Przejdźmy graf w celu zwrócenia wszystkich znajomych Thomasa.
 Dane wejściowe (znajomi Thomasa):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person')
+g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person')
 ```
 
 Dane wyjściowe: 
@@ -279,7 +274,7 @@ Następnie uzyskajmy kolejną warstwę wierzchołków. Przejdźmy graf w celu zw
 Dane wejściowe (znajomi znajomych Thomasa):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')
+g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')
 ```
 Dane wyjściowe:
 
@@ -294,7 +289,7 @@ Usuńmy teraz wierzchołek z bazy danych grafu.
 Dane wejściowe (usunięcie wierzchołka Jacka):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Jack').drop()
+g.V().hasLabel('person').has('firstName', 'Jack').drop()
 ```
 
 ## <a name="clear-your-graph"></a>Czyszczenie grafu
@@ -304,8 +299,8 @@ Na koniec usuńmy z bazy danych wszystkie wierzchołki i krawędzie.
 Dane wejściowe:
 
 ```
-:> g.E().drop()
-:> g.V().drop()
+g.E().drop()
+g.V().drop()
 ```
 
 Gratulacje! Pomyślnie ukończono samouczek interfejsu API języka Gremlin w usłudze Azure Cosmos DB!

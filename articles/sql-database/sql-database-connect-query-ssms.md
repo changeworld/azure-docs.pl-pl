@@ -3,19 +3,22 @@ title: 'SSMS: nawiązywanie połączenia i wykonywanie zapytań dotyczących dan
 description: Dowiedz się, jak łączyć się z bazą danych SQL Database na platformie Azure przy użyciu programu SQL Server Management Studio (SSMS). Następnie uruchom instrukcje Transact-SQL (T-SQL), aby wykonać zapytanie i edytować dane.
 keywords: łączenie z bazą danych SQL, sql server management studio
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: mvc,DBs & servers
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: quickstart
-ms.date: 08/01/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: 9177ad9cc4cbb668599d35b295ab939cea148a5a
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.reviewer: ''
+manager: craigg
+ms.date: 08/01/2018
+ms.openlocfilehash: 4c8b8a609fe5aa531570805d7a58141a6df84090
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412818"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063221"
 ---
 # <a name="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data"></a>Azure SQL Database: używanie programu SQL Server Management Studio do nawiązywania połączenia i wykonywania zapytań dotyczących danych
 
@@ -26,6 +29,8 @@ ms.locfileid: "39412818"
 Ten przewodnik Szybki start używa jako punktu początkowego zasobów utworzonych w jednym z poniższych przewodników Szybki start:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+
+Ten przewodnik Szybki start wymaga również skonfigurowania reguły zapory na poziomie serwera. W celu zapoznania się z samouczkiem przedstawiający sposób wykonywania tej czynności zobacz [Create server-level firewall rule](sql-database-get-started-portal-firewall.md) (Tworzenie reguły zapory na poziomie serwera).
 
 #### <a name="install-the-latest-ssms"></a>Instalowanie najnowszej wersji środowiska SSMS
 

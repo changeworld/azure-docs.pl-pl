@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/22/2018
+ms.date: 10/09/2018
 ms.author: patricka
 ms.reviewer: ''
-ms.openlocfilehash: 84ab374c95f3e77b2897ff142c3cacef3df87140
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 1bc4fcda360a899fb2f58e2ac26270d160227a65
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718920"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902845"
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Przegląd tożsamości usługi Azure Stack
 
@@ -59,7 +59,7 @@ Jak utworzyć i zarządzać użytkownikami i grupami, zależy od rozwiązania to
 
 W usłudze Azure Stack, kont użytkowników:
 
-- Są tworzone w *username@domain* formatu. Mimo że usług AD FS kont użytkowników jest mapowany do wystąpienia usługi Active Directory, usług AD FS nie obsługuje użycia  *\<domeny >\<alias >* formatu.
+- Są tworzone w *username@domain* formatu. Mimo że usług AD FS kont użytkowników jest mapowany do wystąpienia usługi Active Directory, usług AD FS nie obsługuje użycia  *\\ \<domeny >\\\<alias >* formatu.
 - Można skonfigurować do korzystania z uwierzytelniania Multi-Factor Authentication.
 - Są ograniczone do katalogu, gdzie są najpierw zarejestrować, jest katalogiem swojej organizacji.
 - Mogą zostać zaimportowane z usługi w katalogach lokalnych. Aby uzyskać więcej informacji, zobacz [integrowanie katalogów lokalnych z usługą Azure Active Directory](/azure/active-directory/connect/active-directory-aadconnect).

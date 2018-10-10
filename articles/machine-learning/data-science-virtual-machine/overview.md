@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/27/2017
 ms.author: gokuma
-ms.openlocfilehash: 661c757cda2f70b03d136f3726c7afe633fbbe04
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 62c8ff225b9c649afa7532ad5edfdd627e573d81
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42023000"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032235"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Wprowadzenie do maszyny wirtualnej do nauki o danych platformy Azure dla systemów Linux i Windows
 
@@ -137,3 +137,5 @@ Maszyna wirtualna do nauki o danych obejmuje wiele popularnych narzędzi do nauk
 * Aby uzyskać więcej informacji na temat tworzenia i używania maszyny wirtualnej do nauki o danych z systemem Ubuntu, zobacz [Provision the Data Science Virtual Machine for Linux (Ubuntu) (Aprowizowanie maszyny wirtualnej do nauki o danych dla systemu Linux — Ubuntu)](dsvm-ubuntu-intro.md). Aby uzyskać więcej informacji na temat tworzenia i używania maszyny wirtualnej do nauki o danych z systemem CentOS, zobacz [Provision a Linux CentOS Data Science Virtual Machine on Azure (Aprowizowanie maszyny wirtualnej do nauki o danych z systemem Linux CentOS na platformie Azure)](linux-dsvm-intro.md).
 * Przewodnik z instrukcjami dotyczącymi typowych zadań w zakresie nauki o danych na maszynie wirtualnej z systemem Linux (CentOS i Ubuntu) jest dostępny na stronie [Data science on the Linux Data Science Virtual Machine (Nauka o danych na maszynie wirtualnej do nauki o danych z systemem Linux)](linux-dsvm-walkthrough.md).
 
+## <a name="next-steps"></a>Następne kroki
+[R developer's guide to Azure](../r-developers-guide.md) (Przewodnik po platformie Azure dla deweloperów języka R)

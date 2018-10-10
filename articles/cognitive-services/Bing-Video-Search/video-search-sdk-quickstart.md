@@ -1,59 +1,59 @@
 ---
-title: Wideo wyszukiwania szybkiego startu zestawu SDK C# | Dokumentacja firmy Microsoft
-description: Instalator wideo wyszukiwania zestawu SDK aplikacji konsoli.
-titleSuffix: Azure cognitive services setup News search SDK C# console application
+title: 'Szybki start: zestaw SDK wyszukiwania wideo Bing, C#'
+titleSuffix: Azure Cognitive Services
+description: Konfiguracja aplikacji konsoli zestawu SDK wyszukiwania wideo Bing.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 01/29/2018
-ms.author: v-gedod
-ms.openlocfilehash: f53e2d0f0052ccfabb6d750556cb532f069c9121
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: 6cf7a16fa28602e5e3733741db8bfb7296882487
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349480"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219944"
 ---
-# <a name="video-search-sdk-c-quickstart"></a>Wideo wyszukiwania zestawu SDK C# Szybki Start
+# <a name="quickstart-bing-video-search-sdk-with-c"></a>Szybki start: zestaw SDK wyszukiwania wideo Bing oraz język C# 
 
-Zestaw SDK wyszukiwania usługi Bing wideo zawiera funkcje interfejsu API REST dla żądań sieci web i wyniki analizy.
+Zestaw SDK wyszukiwania wideo Bing obejmuje funkcjonalność interfejsu API REST na potrzeby żądań internetowych i analizowania wyników.
 
-[Źródła kodu dla C# Bing wideo wyszukiwania zestawu SDK przykłady](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVideoSearch) jest dostępna w Centrum Git.
+[Kod źródłowy przykładów zestawu SDK wyszukiwanie wideo Bing w języku C#](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVideoSearch) jest dostępny w serwisie Git Hub.
 
 ## <a name="application-dependencies"></a>Zależności aplikacji
 
-Aby skonfigurować aplikację konsoli przy użyciu zestawu SDK wyszukiwania usługi Bing wideo, przejdź do `Manage NuGet Packages` opcji z Eksploratora rozwiązań w programie Visual Studio.  Dodaj `Microsoft.Azure.CognitiveServices.Search.VideoSearch` pakietu.
+Aby skonfigurować aplikację konsolową przy użyciu zestawu SDK wyszukiwanie wideo Bing, przejdź do opcji `Manage NuGet Packages` w Eksploratorze rozwiązań w programie Visual Studio.  Dodaj pakiet `Microsoft.Azure.CognitiveServices.Search.VideoSearch`.
 
-Instalowanie [[pakiet NuGet wideo wyszukiwania SDK]](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VideoSearch/1.2.0) instaluje również zależności, w tym:
+Zainstalowanie [[pakietu NuGet Web Search SDK]](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VideoSearch/1.2.0)spowoduje również zainstalowanie zależności, w tym:
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
 * Newtonsoft.Json
 
 
-## <a name="video-search-client"></a>Wideo klienta wyszukiwania
-Aby utworzyć wystąpienie `VideoSearchAPI` klienta, dodawanie dyrektywy using:
+## <a name="video-search-client"></a>Klient wyszukiwania wideo
+Aby utworzyć wystąpienie klienta `VideoSearchAPI`, dodaj dyrektywy using:
 ```
 using Microsoft.Azure.CognitiveServices.Search.VideoSearch;
 using Microsoft.Azure.CognitiveServices.Search.VideoSearch.Models;
 
 ```
-Następnie można utworzyć wystąpienia klienta:
+Następnie utwórz wystąpienie klienta:
 ```
 var client = new VideoSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 
 
 ```
-Korzystając z klienta do wyszukiwania tekstu zapytania "SwiftKey" dla plików wideo.
+Użyj klienta do wyszukanie tekstu zapytania „SwiftKey” wśród filmów wideo.
 ```
 var videoResults = client.Videos.SearchAsync(query: "SwiftKey").Result;
 Console.WriteLine("Search videos for query \"SwiftKey\"");
 
 ```
 
-Analizowanie wyników, a następnie sprawdź liczbę wyników i wydrukowania Identyfikatora, nazwy i adresu url pierwszego wyniku wideo.
+Przeanalizuj wyniki, a następnie sprawdź liczbę wyników, a następnie wyświetl identyfikator, nazwę i adres URL pierwszego wyniku wideo.
 ```
 if (videoResults == null)
 {
@@ -77,9 +77,9 @@ else
 }
 
 ```
-## <a name="complete-console-application"></a>Aplikacja konsolowa ukończone
+## <a name="complete-console-application"></a>Kompletna aplikacja konsolowa
 
-Następującej aplikacji konsoli wykonuje wcześniej zdefiniowane zapytanie i analizuje wyniki.
+Następująca aplikacja konsolowa wykonuje wcześniej zdefiniowane zapytanie i analizuje wyniki.
 
 ```
 using System;
@@ -140,9 +140,9 @@ namespace VideoSrchSDK
         }
 
 ```
-## <a name="url-parameters"></a>Parametry adresu URL
+## <a name="url-parameters"></a>Parametry URL
 
-Wyszukaj tekst zapytania "Bellevue przyczepy" pliki wideo, które zostały zmienione, krótki i rozdzielczości 1080p.  Sprawdź liczbę wyników, a następnie wydrukuj Identyfikatora, nazwy i adresu url pierwszego wyniku wideo.
+Wyszukaj tekst zapytania „Bellevue Trailer” wśród filmów wideo, które są niezmienione, krótkie i mają rozdzielczość 1080p.  Sprawdź liczbę wyników, a następnie wyświetl identyfikator, nazwę i adres URL pierwszego wyniku wideo.
 
 ```
         public static void VideoSearchWithFilters(VideoSearchAPI client)
@@ -183,8 +183,8 @@ Wyszukaj tekst zapytania "Bellevue przyczepy" pliki wideo, które zostały zmien
 
 
 ```
-## <a name="trending-videos"></a>Popularne klipy wideo
-Wyszukaj trendów wideo, a następnie sprawdź Kafelki transparent i kategorii.
+## <a name="trending-videos"></a>Popularne wideo
+Wyszukaj popularne filmy wideo, a następnie sprawdź kafelki banerów i kategorie.
 ```
         public static void VideoTrending(VideoSearchAPI client)
         {
@@ -259,7 +259,7 @@ Wyszukaj trendów wideo, a następnie sprawdź Kafelki transparent i kategorii.
 
 ```
 ## <a name="details"></a>Szczegóły
-Wyszukaj pliki wideo "Bellevue przyczepy", a następnie wyszukaj szczegółowe informacje pierwszy wideo.
+Wyszukaj wideo „Bellevue Trailer”, a następnie wyszukaj szczegółowe informacje z pierwszego filmu wideo.
 ```
         public static void VideoDetail(VideoSearchAPI client)
         {
@@ -321,6 +321,6 @@ Wyszukaj pliki wideo "Bellevue przyczepy", a następnie wyszukaj szczegółowe i
 
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Usługi kognitywnych przykłady zestawu .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+[Cognitive services .NET SDK samples (Przykłady zestawów SKD .NET usług Cognitive Services)](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

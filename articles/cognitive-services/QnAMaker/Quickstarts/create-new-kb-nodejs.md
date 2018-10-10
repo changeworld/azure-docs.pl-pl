@@ -1,24 +1,26 @@
 ---
-title: Tworzenie nowej bazy wiedzy — Szybki start dla środowiska Node.js — interfejs API usługi Microsoft QnA Maker (V4) — Azure Cognitive Services | Microsoft Docs
-description: Utwórz bazę wiedzy w środowisku Node.js do przechowywania często zadawanych pytań lub podręczników produktu i rozpocznij pracę z usługą QnA Maker.
+title: 'Szybki start: środowisko Node.js w interfejsie API — tworzenie bazy wiedzy — QnA Maker'
+description: Ten przewodnik Szybki start zawiera omówienie programistycznego tworzenia przykładowej bazy wiedzy usługi QnA Maker, która zostanie wyświetlona na pulpicie nawigacyjnym platformy Azure na koncie interfejsu API usługi Azure Services.
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: quickstart
-ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: cbf89aa3a10012ea2d99972c6a83dd351739c5a6
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 435c937e64d0befc5a3bf30f9d58ccd303247b9e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "43771397"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037307"
 ---
 # <a name="create-a-new-knowledge-base-in-nodejs"></a>Tworzenie nowej bazy wiedzy w środowisku Node.js
 
 Ten przewodnik Szybki start zawiera omówienie programistycznego tworzenia przykładowej bazy wiedzy usługi QnA Maker, która zostanie wyświetlona na pulpicie nawigacyjnym platformy Azure na koncie interfejsu API usług Azure Services.
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
 
 Poniżej przedstawiono dwa przykładowe dwa adresy URL często zadawanych pytań (w elemencie „urls” w ciągu **req={}**), które dostarczają zawartość. Usługa QnA Maker automatycznie wyodrębnia pytania i odpowiedzi z tej częściowo ustrukturyzowanej zawartości. Obszerniejsze wyjaśnienia znajdują się w dokumencie dotyczącym [źródeł danych](../Concepts/data-sources-supported.md). Podczas pracy z tym przewodnikiem Szybki start możesz również skorzystać z własnych adresów URL często zadawanych pytań.
 

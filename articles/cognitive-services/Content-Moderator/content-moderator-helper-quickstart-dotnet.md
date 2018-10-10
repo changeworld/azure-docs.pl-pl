@@ -1,45 +1,46 @@
 ---
-title: Azure zawartości SDK moderatora dla metody pomocnika .NET | Dokumentacja firmy Microsoft
-description: Sposób zwracania klienta moderatora zawartości przy użyciu zestawu SDK moderatora zawartości platformy Azure dla platformy .NET
+title: 'Szybki start: zestaw SDK Content Moderator dla metody pomocnika platformy .NET'
+titlesuffix: Azure Cognitive Services
+description: Sposób zwracania klienta usług Content Moderator przy użyciu zestawu SDK Azure Content Moderator dla platformy .NET
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: quickstart
 ms.date: 01/04/2018
 ms.author: sajagtap
-ms.openlocfilehash: 36f2124708731f78f34849d8210ed39ea8f59140
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 0c167de3af8aea6820962e7cc8d0c21f5ba61807
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346929"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223274"
 ---
-# <a name="helper-code-to-return-a-content-moderator-client"></a>Kod pomocniczy do zwrócenia klientowi moderatora zawartości
+# <a name="quickstart-helper-code-to-return-a-content-moderator-client"></a>Szybki start: kod pomocnika zwracający klienta usług Content Moderator
 
-Ten artykuł zawiera informacje i przykłady ułatwiające rozpoczęcie pracy z zawartości moderatora zestawu SDK dla platformy .NET można utworzyć klienta moderatora zawartości dla Twojej subskrypcji.
+Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć korzystanie z zestawu SDK Content Moderator dla platformy .NET w celu utworzenia klienta usług Content Moderator dla subskrypcji.
 
-Biblioteka jest używany przez inne elementy szybkiego startu w tej sekcji.
+Biblioteka jest używana przez inne przewodniki Szybki start w tej sekcji.
 
-W tym artykule przyjęto założenie, że znasz już program Visual Studio i C#.
+W tym artykule założono, że znasz już program Visual Studio i język C#.
 
 > [!IMPORTANT]
 > Ta biblioteka klas zawiera kod przeznaczony wyłącznie w celach demonstracyjnych.
-> Jeśli dostosować ten kod do użycia w środowisku produkcyjnym, należy użyć metody bezpiecznego przechowywania i przy użyciu klucza zawartości moderatora subskrypcji.
+> W przypadku adaptacji tego kodu do użycia w środowisku produkcyjnym użyj bezpiecznej metody przechowywania i używania klucza subskrypcji Content Moderator.
 
-## <a name="sign-up-for-content-moderator-services"></a>Załóż moderatora zawartości usług
+## <a name="sign-up-for-content-moderator-services"></a>Zarejestruj się w usługach Content Moderator
 
-Zanim użyjesz usługi moderatora zawartości za pośrednictwem interfejsu API REST lub zestawu SDK, należy klucza subskrypcji.
-Zapoznaj się [szybkiego startu](quick-start.md) Aby dowiedzieć się, jak można uzyskać klucz.
+Zanim użyjesz usług Content Moderator za pomocą interfejsu API REST lub zestawu SDK, potrzebujesz klucza subskrypcji.
+Zapoznaj się z przewodnikiem [Szybki start](quick-start.md), aby dowiedzieć się, jak można uzyskać klucz.
 
 ## <a name="create-your-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
-1. Utwórz nową **biblioteki klas (.NET Framework)** projektu.
+1. Utwórz nowy projekt **Biblioteka klas (.NET Framework)**.
 
-   W przykładowym kodzie I o nazwie projektu **ModeratorHelper**.
+   W przykładowym kodzie projekt został nazwany **ModeratorHelper**.
 
-1. Dodaj odwołanie do **System.Configuration** zestawu struktury.
+1. Dodaj odwołanie do zestawu struktury **System.Configuration** Framework.
 
 ### <a name="install-required-packages"></a>Instalowanie wymaganych pakietów
 
@@ -49,9 +50,9 @@ Zainstaluj następujące pakiety NuGet:
 - Microsoft.Rest.ClientRuntime
 - Newtonsoft.Json
 
-### <a name="create-the-content-moderator-client"></a>Tworzenie klienta moderatora zawartości
+### <a name="create-the-content-moderator-client"></a>Tworzenie klienta usług Content Moderator
 
-Zastąp zawartość pliku ModeratorHelper.cs następujący kod:
+Zastąp zawartość pliku ModeratorHelper.cs następującym kodem:
 
     using Microsoft.CognitiveServices.ContentModerator;
 
@@ -102,10 +103,10 @@ Zastąp zawartość pliku ModeratorHelper.cs następujący kod:
 
 
 > [!IMPORTANT]
-> Aktualizacja **AzureRegion** i **CMSubscriptionKey** pola z wartościami region klucza identyfikator i subskrypcji.
+> Zaktualizuj pola **AzureRegion** i **CMSubscriptionKey** wartościami identyfikatora regionu i klucza subskrypcji.
 
-Masz teraz szybko utworzyć klienta moderatora zawartości dla Twojej subskrypcji.
+Oto szybki sposób utworzenia klienta usług Content Moderator dla subskrypcji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Pobierz rozwiązania Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) to i inne elementy zawartości moderatora szybkiego startu dla platformy .NET i rozpocząć pracę na integracją.
+[Pobierz rozwiązanie programu Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego i innych przewodników Szybki start usług Content Moderator dla platformy .NET i rozpocznij pracę nad integracją.

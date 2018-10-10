@@ -1,32 +1,32 @@
 ---
-title: Samouczek obraz przekazywania wyszukiwania wizualnego Bing | Dokumentacja firmy Microsoft
-titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Dzieli proces przekazywania obrazu do usługi Bing, aby uzyskać szczegółowe informacje o jego analizowanie i wyświetlanie odpowiedzi.
+title: 'Samouczek: jak przekazać obraz — wyszukiwanie wizualne Bing'
+titleSuffix: Azure Cognitive Services
+description: W samouczku szczegółowo omówiono poszczególne etapy procesu przekazywania obrazu do usługi Bing oraz analizowania i wyświetlania odpowiedzi.
 services: cognitive-services
 author: swhite-msft
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: bing-visual-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 1352ccbcda35c693c5ac0b36156af199ae46bee9
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
-ms.translationtype: MT
+ms.openlocfilehash: a5bc5197ecd1f35b4d0026caa076a844c9d57c40
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39068672"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221328"
 ---
-# <a name="tutorial-breaking-down-bing-visual-search-upload"></a>Samouczek: Potężne przekazywania wyszukiwania wizualnego Bing
+# <a name="tutorial-breaking-down-bing-visual-search-upload"></a>Samouczek: omówienie operacji przekazywania do wyszukiwania wizualnego Bing
 
-W tym samouczku dzieli proces przekazywania obrazu do usługi Bing i ponownie uzyskiwanie szczegółowych danych. Pokazano również, jak uzyskać dostęp, i wyświetlić szczegółowe informacje w odpowiedzi JSON. Aby uzyskać kompletny przykład kodu HTML i JavaScript, zobacz [uzupełnianie kodu](#complete-code).
+W tym samouczku omówiono proces przekazywania obrazu do usługi Bing i uzyskiwania szczegółowych informacji zwrotnych. Przedstawiono również, jak uzyskać dostęp do szczegółowych informacji w odpowiedzi JSON i wyświetlić je. Aby uzyskać kompletny przykład kodu HTML i JavaScript, zobacz [Kompletny kod](#complete-code).
 
-W tym samouczku jest udostępniana dla deweloperów, który chce, aby zbadać zawartość odpowiedzi wyszukiwania wizualnego Bing. Zastosuj wszystkie przypadki użycia i nie wyświetlają wymagania dotyczące (na przykład nie zapewnia łącza do zasady zachowania poufności informacji firmy Microsoft). Aby uzyskać wszystkie wymagania dotyczące użycia, zobacz [Bing użycia i wymagania dotyczące wyświetlania](./use-and-display-requirements.md).
+Ten samouczek jest przeznaczony dla deweloperów, którzy chcą badać zawartość odpowiedzi wyszukiwania wizualnego Bing. Nie spełniono w nim wszystkich wymagań dotyczących użycia i wyświetlania (na przykład nie podano hiperlinku do zasad ochrony prywatności firmy Microsoft). Aby zapoznać się ze wszystkimi wymaganiami dotyczącymi użycia, zobacz [Wymagania dotyczące użycia i wyświetlania Bing](./use-and-display-requirements.md).
 
 
-## <a name="where-to-start"></a>Gdzie zacząć?
+## <a name="where-to-start"></a>Od czego rozpocząć?
 
-Zacznijmy od strony HTML, która wysyła Bing obrazu i otrzymuje szczegółowych informacji i wyświetla je. W ulubionym edytorze Utwórz plik o nazwie uploaddemo.html. Dodaj podstawowe następującą strukturę kodu HTML do pliku.
+Zacznijmy od strony HTML, która wysyła obraz do usługi Bing, otrzymuje szczegółowe informacje zwrotne i wyświetla je. W ulubionym edytorze utwórz plik o nazwie uploaddemo.html. Dodaj następującą podstawową strukturę HTML do pliku.
 
 ```html
 <!DOCTYPE html>
@@ -40,7 +40,7 @@ Zacznijmy od strony HTML, która wysyła Bing obrazu i otrzymuje szczegółowych
 </html>      
 ```
 
-Aby rozpocząć, możemy podzielić strony sekcji żądania, w którym użytkownik udostępnia wszystkie informacje potrzebne do utworzenia żądania, i sekcję odpowiedzi, gdzie są wyświetlane szczegółowe informacje. Dodaj następujący kod \<div\> tagów \<treści\>. \<Hr\> tag wizualnie wyznacza sekcji żądania z sekcji odpowiedzi.
+Na początku podzielimy stronę na sekcję żądania, w której użytkownik udostępnia wszystkie informacje potrzebne do utworzenia żądania, i sekcję odpowiedzi, w której są wyświetlane szczegółowe informacje. Dodaj następujące tagi \<div\> wewnątrz sekcji \<body\>. Tag \<hr\> rozdziela wizualnie sekcję żądania od sekcji odpowiedzi.
 
 ```html
         <div id="requestSection"></div>
@@ -50,13 +50,13 @@ Aby rozpocząć, możemy podzielić strony sekcji żądania, w którym użytkown
         <div id="responseSection"></div>
 ```
 
-## <a name="get-the-file-to-upload"></a>Pobierz plik do przekazania
+## <a name="get-the-file-to-upload"></a>Pobieranie pliku do przekazania
 
-Aby umożliwić użytkownikowi wybranie obrazu do przekazania, używa pokaz \<wejściowych\> tag z atrybutem typu zestawu do pliku. Interfejs użytkownika musi być Wyczyść, że wersja demonstracyjna używa Bing w celu uzyskania wyników wyszukiwania. 
+Aby umożliwić użytkownikowi wybranie obrazu do przekazania, w pokazie użyto tagu \<input\> z atrybutem type o wartości file. Interfejs użytkownika musi w jasny sposób pokazać, że w pokazie do wyszukiwania wyników jest używana usługa Bing. 
 
-Dodaj następujący kod \<div\> do DIV requestSection. Pliku wejściowego akceptuje pojedynczy plik dowolnego typu obrazu (na przykład, jpg, GIF, PNG). `onchange` Zdarzenia Określa program obsługi, który jest wywoływana, gdy użytkownik wybierze plik.
+Dodaj następujący tag \<div\> do sekcji div requestSection. Tag input z atrybutem type o wartości file akceptuje pojedynczy plik dowolnego typu obrazu (na przykład, JPG, GIF, PNG). Zdarzenie `onchange` określa procedurę obsługi, która jest wywoływana, gdy użytkownik wybiera plik.
 
-\<Dane wyjściowe\> tag jest używany do wyświetlania miniatury wybranego obrazu.
+Tag \<output\> służy do wyświetlania miniatury wybranego obrazu.
 
 
 ```html
@@ -69,14 +69,14 @@ Dodaj następujący kod \<div\> do DIV requestSection. Pliku wejściowego akcept
             </div>
 ```
 
-Przed dodaniem obsługi, należy dodać \<skryptu\> tag \<head\> tagu.
+Przed dodaniem procedury obsługi należy dodać tag \<script\> do tagu \<head\>.
 
 ```html
         <script>
         <\script>
 ```
 
-Poniżej przedstawiono procedurę obsługi, który przechwytuje wybranego obrazu. Program obsługi zawiera logikę, aby upewnić się, że wybrany plik jest plikiem obrazu i że jego rozmiar wynosi 1 MB lub mniej. Umożliwia użytkownikowi wybranie większych plików, ale należy zmniejszyć rozmiar obrazu do mniej niż 1 MB przed przekazaniem go do usługi Bing. Ostatni krok to jest program obsługi jest wyświetlić miniaturę obrazu, dzięki czemu użytkownik ma visual przypomnieniem o ich wybranego pliku.
+Poniżej przedstawiono procedurę obsługi, która przechwytuje wybrany obraz. Procedura obsługi zawiera logikę pozwalającą upewnić się, że wybrany plik jest plikiem obrazu, a jego rozmiar wynosi 1 MB lub mniej. Można pozwolić użytkownikowi na wybieranie większych plików, ale przed przekazaniem obrazu do usługi Bing trzeba zmniejszyć rozmiar do mniej niż 1 MB. Ostatnią czynnością procedury obsługi jest wyświetlenie miniatury obrazu, która wizualnie przypomina użytkownikowi o wybranym pliku.
 
 ```javascript
         function handleFileSelect(selector) {
@@ -126,9 +126,9 @@ Poniżej przedstawiono procedurę obsługi, który przechwytuje wybranego obrazu
 ```
 
 
-## <a name="what-else-is-needed-before-making-the-call-to-bing"></a>Co jeszcze jest wymagana przed wykonaniem wywołania do usługi Bing?
+## <a name="what-else-is-needed-before-making-the-call-to-bing"></a>Co jeszcze trzeba zrobić przed wywołaniem usługi Bing?
 
-Wersja demonstracyjna nadal wymaga klucza subskrypcji. W praktyce prawdopodobnie otrzymamy klucz subskrypcji z bezpiecznego magazynu, ale dla uproszczenia ten pokaz, musisz podać go w interfejsie użytkownika. Dodaj następujący kod \<wejściowych\> tag (w atrybucie type z ustawioną wartość text) \<treści\> tuż poniżej pliku \<dane wyjściowe\> tagu.
+Pokaz nadal wymaga klucza subskrypcji. W praktyce prawdopodobnie będziesz pobierać klucz subskrypcji z bezpiecznego magazynu, ale dla uproszczenia tego pokazu trzeba podać go w interfejsie użytkownika. Dodaj następujący kod tag \<input\> (z atrybutem type o wartości text) do sekcji \<body\> tuż poniżej tagu \<input\> dla pliku.
 
 ```html
         <div>
@@ -138,9 +138,9 @@ Wersja demonstracyjna nadal wymaga klucza subskrypcji. W praktyce prawdopodobnie
         </div>
 ```
 
-Korzystając z obrazu i klucz subskrypcji w kasie istnieje możliwość wywołanie do wyszukiwania wizualnego Bing w celu uzyskania szczegółowych informacji o obrazie. Wywołania będą używać domyślnej rynku i wartości bezpieczne wyszukiwanie (en-us i umiarkowany, odpowiednio).
+Korzystając z znajdującego się pod ręką obrazu i klucza subskrypcji, możesz wywołać usługę wyszukiwania wizualnego Bing, aby pobrać szczegółowe informacje o obrazie. Wywołanie będzie używać domyślnych wartości rynku i bezpieczeństwa wyszukiwania (odpowiednio en-us i moderate).
 
-Ten pokaz zapewnia użytkownikowi możliwość zmiany tych wartości. Dodaj następujący kod \<div\> poniżej div. kluczy subskrypcji Wersja demonstracyjna używa \<wybierz\> tag do zapewnienia listy rozwijanej na rynku i bezpieczne wyszukiwanie wartości. Obu list Wyświetl usługi Bing przez wartość domyślną.
+W tym pokazie użytkownik ma możliwość zmiany tych wartości. Dodaj następujący kod \<div\> poniżej tagu div klucza subskrypcji. W pokazie jest używany tag \<select\> do zapewnienia listy rozwijanej do określenia wartości rynku i bezpieczeństwa wyszukiwania. Obie listy wyświetlają domyślną wartość usługi Bing.
 
  
 ```html
@@ -203,7 +203,7 @@ Ten pokaz zapewnia użytkownikowi możliwość zmiany tych wartości. Dodaj nast
         </div>
 ```
 
-Wersja demonstracyjna ukrywa listach zwijany div, które są kontrolowane przez łącze opcji zapytania. Po kliknięciu łącze Opcje zapytania, div rozwija, dzięki czemu możesz wyświetlić i zmodyfikować opcje zapytania. Po kliknięciu opcji zapytania ponownie, łącze zwija dziel i jest ukryty. Na poniższym obrazie przedstawiono łącze Opcje zapytania program obsługi. Program obsługi Określa, czy div jest rozwinięta czy zwinięta. Dodaj ten program obsługi do \<skryptu\> sekcji. Program obsługi jest używany przez wszystkie elementy DIV ukrytych zwijane w pokazie.
+W tym pokazie listy są ukryte w tagach div z możliwością zwijania, które są kontrolowane przez hiperlink opcji zapytania. Po kliknięciu hiperlinku opcji zapytania tag div rozwija się, dzięki czemu można wyświetlić i zmodyfikować te opcje. Po ponownym kliknięciu hiperlinku opcji zapytania tag div zwija się i zostaje ukryty. Poniżej przedstawiono procedurę obsługi zdarzenia onclick hiperlinku opcji zapytania. Procedura obsługi steruje zwijaniem i rozwijaniem tagu div. Dodaj tę procedurę obsługi do sekcji \<script\>. Procedura obsługi jest używana w tym pokazie przez wszystkie elementy div, które można zwijać.
 
 ```javascript
         // Contains the toggle state of divs.
@@ -226,15 +226,15 @@ Wersja demonstracyjna ukrywa listach zwijany div, które są kontrolowane przez 
 ```
 
 
-## <a name="making-the-call"></a>Wywołania
+## <a name="making-the-call"></a>Wywoływanie
 
-Dodaj poniższy przycisk insights Get poniżej div opcje w treści. Ten przycisk pozwala użytkownikowi na zainicjowanie połączenia. Gdy użytkownik kliknie przycisk, kursor zostanie zmieniony na obrotowych kursor oczekiwania i program obsługi jest wywoływana.
+Dodaj poniższy przycisk pobierania szczegółowych informacji poniżej tagu div opcji w sekcji body. Ten przycisk pozwala użytkownikowi na zainicjowanie wywołania. Gdy użytkownik kliknie przycisk, kursor zmienia się w wirujący kursor oczekiwania i jest wywoływana procedura obsługi zdarzenia onclick.
 
 ```html
         <p><input type="button" id="query" value="Get insights" onclick="document.body.style.cursor='wait'; handleQuery()" /></p>
 ```
 
-Dodawanie przycisku program obsługi do \<skryptu\> tagu. Program obsługi sprawdza, czy klucz subskrypcji jest obecny i 32 znaków i że obraz został wybrany. Czyści wszystkie szczegółowe informacje z poprzedniej kwerendy. Jeśli wszystko, co jest akceptowalne, wywołuje funkcję wysłanie do wywoływania.
+Dodaj procedurę obsługi zdarzenia onclick przycisku do tagu \<script\>. Procedura obsługi sprawdza, czy jest obecny klucz subskrypcji składający się z 32 znaków, a obraz został wybrany. Ponadto czyści wszystkie szczegółowe informacje z poprzedniego zapytania. Jeśli wszystko jest w porządku, wywołuje funkcję sendRequest.
 
 ```javascript
         function handleQuery() {
@@ -271,7 +271,7 @@ Dodawanie przycisku program obsługi do \<skryptu\> tagu. Program obsługi spraw
         }
 ```
 
-Funkcja wysłanie formatów adresu URL punktu końcowego, ustawia dla nagłówka Ocp-Apim-Subscription-Key klucz subskrypcji, dołącza obrazu, aby przekazać plik binarny, określa obsługi odpowiedzi i wywołuje tę funkcję. 
+Funkcja sendRequest formatuje adres URL punktu końcowego, w nagłówku Ocp-Apim-Subscription-Key ustawia klucz subskrypcji, dołącza dane binarne obrazu do przekazania, określa procedurę obsługi odpowiedzi i wywołuje żądanie. 
 
 ```javascript
         function sendRequest(file, key) {
@@ -293,11 +293,11 @@ Funkcja wysłanie formatów adresu URL punktu końcowego, ustawia dla nagłówka
 
 ## <a name="handling-the-response"></a>Obsługa odpowiedzi
 
-Funkcja handleResponse obsługuje odpowiedzi z wywołania wyszukiwania wizualnego Bing. Jeśli wywołanie zakończy się powodzeniem, analizuje odpowiedź JSON do poszczególnych tagów, które zawierają szczegółowe informacje. Następnie dodaje ciąg, wyniki wyszukiwania w Internecie Bing, do strony, aby poinformować użytkownika o tym, że dane pochodzą z usługi Bing.
+Funkcja handleResponse obsługuje odpowiedź z wywołania wyszukiwania wizualnego Bing. Jeśli wywołanie zakończy się powodzeniem, analizuje odpowiedź JSON, wprowadzając ją do poszczególnych tagów ze szczegółowymi informacjami. Następnie dodaje do strony ciąg „Bing internet search results”, aby poinformować użytkownika o tym, że dane pochodzą z usługi Bing.
 
-Pokaz można zrzutu wszystkie szczegółowe informacje na stronę, ale niektóre obrazy zwracać dużo danych, co może utrudnić korzystać. Zamiast tego pokaz tworzy zwijany div dla każdego znacznika, dzięki czemu użytkownik może zarządzać jak dużo danych, które będą widoczne.
+W pokazie można było zrzucić wszystkie szczegółowe informacje na stronę, ale niektóre obrazy zwracają dużo danych, co mogłoby utrudnić ich wykorzystanie. Zamiast tego w pokazie tworzona jest oddzielna, zwijana sekcja div dla każdego tagu, dzięki czemu użytkownik może zarządzać ilością widocznych danych.
 
-Dodaj program obsługi \<skryptu\> sekcji.
+Dodaj tę procedurę obsługi do sekcji \<script\>.
 
 ```javascript
         function handleResponse() {
@@ -334,7 +334,7 @@ Dodaj program obsługi \<skryptu\> sekcji.
         }
 ```
 
-Funkcja buildTagSections iterację przeanalizowany tagów JSON i wywołuje funkcję buildDiv tworzenie div dla każdego znacznika. Podobnie jak za pomocą opcji zapytania każdego znacznika jest wyświetlana jako link. Gdy użytkownik kliknie link, tagu rozszerza się wyświetlanie szczegółowych danych skojarzonych z tagiem. Jeśli użytkownik kliknie łącze ponownie, sekcji zwija ukrywanie szczegółowych informacji od użytkownika.
+Funkcja buildTagSections iteruje przez analizowane tagi JSON i wywołuje funkcję buildDiv, aby utworzyć sekcję div dla każdego tagu. Podobnie jak w przypadku opcji zapytania, każdy tag jest wyświetlany jako hiperlink. Gdy użytkownik kliknie hiperlink, tag rozwija się, pokazując skojarzone szczegółowe informacje. Jeśli użytkownik kliknie hiperlink ponownie, sekcja zwija się, ukrywając szczegółowe informacje przed użytkownikiem.
 
 ```javascript
         function buildTagSections(tags) {
@@ -372,11 +372,11 @@ Funkcja buildTagSections iterację przeanalizowany tagów JSON i wywołuje funkc
         }
 ```
 
-Funkcja buildDiv wywołuje funkcję addDivContent do budowania zawartości każdego znacznika zwijany div.
+Funkcja buildDiv wywołuje funkcję addDivContent do budowania zawartości zwijanych sekcji div poszczególnych tagów.
 
-Tag zawartość obejmuje JSON z odpowiedzi dla tagu. Wersja demonstracyjna obejmuje za pomocą pliku JSON dla tych deweloperów, które mają być wyświetlane w formacie JSON za odpowiedź. Początkowo tylko 100 pierwszych znaków za pomocą pliku JSON jest wyświetlana, ale możesz kliknąć pozycję ciągu JSON, aby wyświetlić wszystkie dane JSON. Jeśli klikniesz go ponownie, ciąg JSON powoduje powrót do 100 znaków.
+Zawartość tagu zawiera dane JSON z odpowiedzi dla tagu. Pokaz obejmuje dane JSON dla tych deweloperów, którzy chcą zobaczyć dane JSON kryjące się za odpowiedzią. Początkowo widać tylko 100 pierwszych znaków danych JSON, ale możesz kliknąć ciąg JSON, aby wyświetlić wszystkie dane JSON. Jeśli klikniesz go ponownie, ciąg JSON ponownie zwinie się do 100 znaków.
 
-Następnie dodaj typy akcji znaleziony w tagu. Dla każdego typu akcji wywołań różnych funkcji, aby dodać jego szczegółowych informacji.
+Następnie dodaj typy akcji znalezione w tagu. Dla każdego typu akcji wywołaj różne funkcje, aby dodać odpowiednie szczegółowe informacje.
 
 ```javascript
         function addDivContent(div, tag, json) {
@@ -451,9 +451,9 @@ Następnie dodaj typy akcji znaleziony w tagu. Dla każdego typu akcji wywołań
         }
 ```
 
-Poniżej przedstawiono wszystkie funkcje, które są wyświetlane szczegółowe informacje dla rozmaitych akcji. Większość z tych funkcji jest bardzo proste &mdash; zapewniają albo możesz klikać obrazu lub łączem, który powoduje otwarcie strony sieci Web, gdzie można uzyskać więcej informacji na temat obrazów (Bing.com lub obrazu host strony sieci Web). Samouczek nie są wyświetlane wszystkie dane skojarzone z wiedzę. Aby wyświetlić wszystkie pola dostępne, aby uzyskać szczegółowe informacje, zobacz [graficznej wyszukiwania Bing](https://aka.ms/bingvisualsearchreferencedoc).
+Poniżej przedstawiono wszystkie funkcje, które wyświetlają szczegółowe informacje dla rozmaitych akcji. Większość z tych funkcji jest bardzo prosta &mdash; zapewniają klikalny obraz lub hiperlink, który powoduje otwarcie strony WWW, gdzie można uzyskać więcej informacji na temat obrazu (Bing.com lub strony WWW hosta obrazu). W samouczku nie pokazano wszystkich danych skojarzonych ze szczegółowymi informacjami. Aby wyświetlić wszystkie pola dostępne w szczegółowych informacjach, zobacz [dokumentację wyszukiwania wizualnego Bing](https://aka.ms/bingvisualsearchreferencedoc).
 
-Należy pamiętać, że istnieje minimalnej ilości danych, który musi być wyświetlana, pozostałe zależy od użytkownika. Aby upewnić się, że jesteś w zakresie zgodności, zobacz [Bing użycia i wymagania dotyczące wyświetlania](./use-and-display-requirements.md).
+Należy pamiętać, że istnieje minimalna ilość danych, które trzeba wyświetlić. Reszta zależy od Ciebie. Aby upewnić się, że jesteś w zakresie zgodności, zobacz [Wymagania dotyczące użycia i wyświetlania Bing](./use-and-display-requirements.md).
 
 
 ```javascript
@@ -676,9 +676,9 @@ Należy pamiętać, że istnieje minimalnej ilości danych, który musi być wy�
 
 
 
-## <a name="adding-styles-to-make-the-page-display-correctly"></a>Dodawanie style stronę poprawnego wyświetlania
+## <a name="adding-styles-to-make-the-page-display-correctly"></a>Dodawanie stylów w celu poprawnego wyświetlania strony
 
-Dodaj następujący kod \<styl\> sekcji \<head\> tagu.
+Dodaj następującą sekcję \<style\> do tagu \<head\>.
 
 ```html
         <style>
@@ -1329,6 +1329,6 @@ Oto kompletny przykład kodu HTML i JavaScript.
 </html>      
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby zobaczyć, jak działa uzyskiwanie szczegółowych danych przy użyciu i szczegółowe informacje Zobacz tokenu, [samouczek ImageInsightsToken SDK wyszukiwania wizualnego Bing](.\tutorial-visual-search-insights-token.md).
+Aby zobaczyć, jak działa uzyskiwanie szczegółowych informacji za pomocą tokena szczegółowych informacji, zobacz [Bing Visual Search SDK ImageInsightsToken tutorial](.\tutorial-visual-search-insights-token.md) (samouczek: token ImageInsightsToken zestawu SDK wyszukiwania wizualnego Bing).

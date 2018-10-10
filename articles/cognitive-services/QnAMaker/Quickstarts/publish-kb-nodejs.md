@@ -1,24 +1,27 @@
 ---
-title: Szybki start — publikowanie bazy wiedzy za pomocą środowiska Node.js — Azure Cognitive Services | Microsoft Docs
+title: 'Szybki start: publikowanie bazy wiedzy za pomocą środowiska Node.js — QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: W jaki sposób opublikować bazę wiedzy za pomocą środowiska Node.js w usłudze QnA Maker.
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: quickstart
-ms.date: 06/18/2018
-ms.author: nolachar
-ms.openlocfilehash: fad3857774f2726e3db595ee6bc72d52a8ac46d9
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 00642661995e16bda9ad995e69545b28468779c5
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "43771607"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040942"
 ---
 # <a name="publish-a-knowledge-base-in-nodejs"></a>Publikowanie bazy wiedzy za pomocą środowiska Node.js
 
 Poniższy kod publikuje istniejącą bazę wiedzy za pomocą metody [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe).
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
 
 Jeśli nie masz jeszcze bazy wiedzy, możesz utworzyć przykładową bazę na potrzeby tego podręcznika Szybki start: [Tworzenie nowej bazy wiedzy](create-new-kb-nodejs.md).
 

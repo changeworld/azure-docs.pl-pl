@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 05ce8c932e9d3d812e34e23c082d459c3193ea40
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1f720c8921a9a49e76465cce1c8226232fdb12ea
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608505"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096245"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Przewodnik Szybki start — integracja konta magazynu platformy Azure z usługą Azure CDN
 W tym przewodniku Szybki start włączysz usługę [Azure Content Delivery Network (CDN)](cdn-overview.md), aby buforować zawartość z magazynu Azure. Usługa Azure CDN oferuje deweloperom globalne rozwiązanie umożliwiające dostarczanie zawartości z wysoką przepustowością. Może buforować obiekty blob oraz zawartość statyczną wystąpień obliczeniowych na węzłach fizycznych w Stanach Zjednoczonych, Europie, Azji, Australii i Ameryce Południowej.
@@ -84,7 +84,7 @@ Do utworzenia konta magazynu, m.in. w witrynie Azure Portal i programie PowerShe
 
 ## <a name="enable-azure-cdn-for-the-storage-account"></a>Włączanie usługi Azure CDN dla konta magazynu
 
-Usługę Azure CDN dla konta magazynu można włączyć bezpośrednio z konta magazynu. Jeśli chcesz określić zaawansowane ustawienia konfiguracji dla punktu końcowego usługi CDN, np. typ optymalizacji, możesz zamiast tego użyć [rozszerzenia usługi Azure CDN](cdn-create-new-endpoint.md), aby utworzyć profil CDN lub punkt końcowy usługi CDN.
+Usługę Azure CDN dla konta magazynu można włączyć bezpośrednio z konta magazynu. wysJeśli chcesz określić zaawansowane ustawienia konfiguracji dla punktu końcowego usługi CDN, takie jak [optymalizacja pobierania dużych plików](cdn-optimization-overview.md#large-file-download), możesz zamiast tego użyć [rozszerzenia usługi Azure CDN](cdn-create-new-endpoint.md), aby utworzyć punkt końcowy i profil usługi CDN.
 
 1. Wybierz konto magazynu z pulpitu nawigacyjnego, a następnie wybierz opcję **Azure CDN** w lewym okienku. Jeśli przycisk **Azure CDN** przycisk nie jest od razu widoczny, aby go znaleźć, możesz wprowadzić CDN w polu **wyszukiwania** w lewym okienku.
     
@@ -96,9 +96,9 @@ Usługę Azure CDN dla konta magazynu można włączyć bezpośrednio z konta ma
 
     | Ustawienie  | Wartość |
     | -------- | ----- |
-    | **Profil CDN** | Wybierz opcję **Utwórz nowy** i wprowadź *my-cdn-profile-123* jako nazwę profilu. Ta nazwa musi być globalnie unikatowa. Jeśli jest już używana, można wprowadzić inną nazwę.  |
+    | **Profil CDN** | Wybierz opcję **Utwórz nowy** i wprowadź *my-cdn-profile-123* jako nazwę profilu. Ta nazwa musi być globalnie unikatowa; jeśli jest już używana, można wprowadzić inną nazwę.  |
     | **Warstwa cenowa** | Z listy rozwijanej wybierz pozycję **Verizon — Standardowa**. |
-    | **Nazwa punktu końcowego usługi CDN** | Wprowadź ciąg *my-endpoint-123* jako nazwę hosta punktu końcowego. Ta nazwa musi być globalnie unikatowa. Jeśli jest już używana, można wprowadzić inną nazwę. Ta nazwa jest używana do uzyskiwania dostępu do buforowanych zasobów w domenie _&lt;nazwa punktu końcowego&gt;_.azureedge.net. Domyślnie nowy punkt końcowy CDN używa jako nazwy serwera pochodzenia nazwy hosta konta magazynu.|
+    | **Nazwa punktu końcowego usługi CDN** | Wprowadź ciąg *my-endpoint-123* jako nazwę hosta punktu końcowego. Ta nazwa musi być globalnie unikatowa; jeśli jest już używana, można wprowadzić inną nazwę. Ta nazwa jest używana do uzyskiwania dostępu do buforowanych zasobów w domenie _&lt;nazwa punktu końcowego&gt;_.azureedge.net. Domyślnie nowy punkt końcowy CDN używa jako nazwy serwera pochodzenia nazwy hosta konta magazynu.|
 
 3. Wybierz pozycję **Utwórz**. Po utworzeniu punktu końcowego zostanie on wyświetlony na liście punktów końcowych.
 
@@ -109,6 +109,9 @@ Usługę Azure CDN dla konta magazynu można włączyć bezpośrednio z konta ma
 Na stronie **Azure CDN** konta magazynu wybierz z listy punkt końcowy usługi CDN, aby otworzyć stronę konfiguracji punktu końcowego usługi CDN. Na tej stronie można włączyć dodatkowe funkcje CDN dla dostarczania, np. [kompresję](cdn-improve-performance.md), [buforowanie ciągów zapytań](cdn-query-string.md) i [filtrowanie geograficznie](cdn-restrict-access-by-country.md). 
     
 ![Przechowywanie konfiguracji punktu końcowego CDN](./media/cdn-create-a-storage-account-with-cdn/cdn-storage-endpoint-configuration.png)
+
+## <a name="enable-sas"></a>Włączanie sygnatury dostępu współdzielonego
+Jeśli chcesz przyznać ograniczony dostęp do prywatnych kontenerów magazynu, możesz użyć funkcji sygnatury dostępu współdzielonego konta usługi Azure Storage. Sygnatura dostępu współdzielonego to identyfikator URI, który zapewnia ograniczone prawa dostępu do zasobów usługi Azure Storage bez ujawniania klucza konta. Aby uzyskać więcej informacji, zobacz [Using Azure CDN with SAS](cdn-sas-storage-support.md) (Używanie usługi Azure CDN z sygnaturą dostępu współdzielonego).
 
 ## <a name="access-cdn-content"></a>Uzyskiwanie dostępu do zawartości usługi CDN
 Aby uzyskać dostęp do zawartości w pamięci podręcznej w sieci CDN, użyj adresu URL sieci CDN w portalu. Adres buforowanego obiektu blob ma następujący format:
@@ -139,8 +142,8 @@ W poprzednich krokach utworzono profil i punkt końcowy usługi CDN w grupie zas
 3. Aby usunąć konto magazynu, wybierz je z pulpitu nawigacyjnego, a następnie wybierz opcję **Usuń** z górnego menu.
 
 ## <a name="next-steps"></a>Następne kroki
-Aby dowiedzieć się więcej na temat dodawania domeny niestandardowej do punktu końcowego usługi CDN, zapoznaj się z następującym samouczkiem:
+Aby dowiedzieć się więcej na temat dodawania domeny niestandardowej i włączania protokołu HTTP w punkcie końcowym usługi CDN, zapoznaj się z następującym samouczkiem:
 
 > [!div class="nextstepaction"]
-> [Samouczek: dodawanie domeny niestandardowej do punktu końcowego usługi Azure CDN](cdn-map-content-to-custom-domain.md)
+> [Samouczek: uzyskiwanie dostępu do obiektów blob magazynu w domenie niestandardowej usługi Azure CDN za pośrednictwem protokołu HTTPS](cdn-storage-custom-domain-https.md)
 

@@ -1,40 +1,41 @@
 ---
-title: C# szybkiego startu dla usług Azure kognitywnych, wideo wyszukiwania usługi Bing interfejsu API | Dokumentacja firmy Microsoft
-description: Pobierz informacje i przykładowy kod w celu szybkiego Rozpoczynanie pracy przy użyciu interfejsu API wyszukiwania usługi Bing wideo w kognitywnych usług Microsoft Azure.
+title: 'Szybki start: interfejs API wyszukiwania wideo Bing, C#'
+titlesuffix: Azure Cognitive Services
+description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API wyszukiwania wideo Bing.
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 0686d99b5f6f7b0546fc4e8c24369957667a7da6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 00522ac87a74226c9af1920bd884792ff2956a95
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348989"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225773"
 ---
-# <a name="quickstart-for-bing-video-search-api-with-c"></a>Szybki Start dla wideo wyszukiwania usługi Bing interfejsu API w języku C#
+# <a name="quickstart-bing-video-search-api-with-c"></a>Szybki start: interfejs API wyszukiwania wideo Bing oraz język C#
 
-W tym artykule przedstawiono, jak używać API wyszukiwania wideo Bing, część kognitywnych usług Microsoft Azure. W tym artykule używa języka C#, interfejsu API jest zgodny z żadnego języka programowania, które mogą wysyłać żądania HTTP i przeanalizować składni JSON usługi sieci RESTful Web. 
+W tym artykule pokazano, jak używać interfejsu API wyszukiwania wideo Bing, który jest częścią usług Azure Cognitive Services. Chociaż ten artykuł dotyczy języka C#, ten interfejs API jest usługą sieci Web w architekturze RESTful, zgodną z dowolnym językiem programowania, który może wykonywać żądania HTTP i analizować format JSON. 
 
-Przykładowy kod został napisany w języku C# jako aplikację .NET Core z minimalnym zależności zewnętrzne, dlatego można również uruchomić w systemie Linux lub Mac OS X przy użyciu Mono.
+Przykładowy kod został napisany w języku C# w formie aplikacji platformy .NET Core z minimalnym zależnościami zewnętrznymi, aby można go było również uruchomić w systemie Linux lub Mac OS X przy użyciu rozwiązania Mono.
 
-Zapoznaj się [dokumentacja interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) uzyskać szczegółowe informacje techniczne dotyczące interfejsów API.
+Zapoznaj się [dokumentacją interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference), aby uzyskać szczegółowe informacje techniczne dotyczące interfejsów API.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Musi mieć [kognitywnych interfejsu API usług konta](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsy API wyszukiwania usługi Bing**. [Bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca dla tego przewodnika Szybki Start. Konieczne będzie klucz dostępu podany przy wywołaniu metody aktywacji bezpłatną wersję próbną lub może używać klucza płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.
+Trzeba mieć [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do **interfejsów API wyszukiwania Bing**. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca na potrzeby tego przewodnika Szybki start. Potrzebny będzie klucz dostępu podany przy aktywacji bezpłatnej wersji próbnej lub klucz płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.
 
-## <a name="bing-video-search"></a>Wyszukiwania usługi Bing wideo
+## <a name="bing-video-search"></a>Wyszukiwanie wideo Bing
 
-[Wideo API wyszukiwania usługi Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) zwraca wyniki wideo z usługi Bing aparatu wyszukiwania.
+[Interfejs API wyszukiwania wideo Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) zwraca wyniki wideo z wyszukiwarki Bing.
 
-1. Utwórz nowe rozwiązanie konsoli w programie Visual Studio (Community Edition jest poprawnie).
-1. Zastąp plik Program.cs kodem poniżej.
-1. Zastąp `accessKey` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
+1. Utwórz nowe rozwiązanie konsolowe w programie Visual Studio (wersja Community Edition jest wystarczająca).
+1. Zastąp plik Program.cs kodem przedstawionym poniżej.
+1. Zastąp wartość `accessKey` kluczem dostępu właściwym dla Twojej subskrypcji.
 1. Uruchom program.
 
 ```csharp
@@ -190,7 +191,7 @@ namespace BingVideoSearchCSharpCore
 
 **Odpowiedź**
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie:
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie:
 
 ```json
 {
@@ -298,13 +299,13 @@ Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Filmy wideo stronicowania](paging-videos.md)
-> [Resizing i przycinanie obrazów miniatur](resize-and-crop-thumbnails.md)
+> [Stronicowanie wideo](paging-videos.md)
+> [Zmiana rozmiaru i przycinanie obrazów miniatur](resize-and-crop-thumbnails.md)
 
-## <a name="see-also"></a>Zobacz także 
+## <a name="see-also"></a>Zobacz też 
 
- [Wyszukiwanie w sieci web wideo](search-the-web.md)  
+ [Wyszukiwanie filmów wideo w Internecie](search-the-web.md)  
  [Wypróbuj](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)

@@ -1,51 +1,52 @@
 ---
-title: Umiarkowany przy użyciu niestandardowych list obrazów w usłudze Azure Content Moderator | Dokumentacja firmy Microsoft
-description: Jak średni przy użyciu niestandardowego obrazu listy, dla platformy .NET przy użyciu zestawu SDK usługi Azure Content Moderator.
+title: 'Szybki start: moderowanie przy użyciu niestandardowych list obrazów — Content Moderator'
+titlesuffix: Azure Cognitive Services
+description: Sposób moderowania przy użyciu niestandardowych list obrazów za pomocą zestawu SDK Content Moderator dla platformy .NET.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/14/2018
 ms.author: sajagtap
-ms.openlocfilehash: 855d89af70e080e2837fe2c0b66ea66c188dbd61
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
-ms.translationtype: MT
+ms.openlocfilehash: 094542bad7ea8e9283d9a07fe620e363be1d0c2e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182692"
+ms.locfileid: "47226463"
 ---
-# <a name="moderate-with-custom-image-lists-in-net"></a>Moderowanie przy użyciu niestandardowych list obrazów na platformie .NET
+# <a name="quickstart-moderate-with-custom-image-lists-in-net"></a>Szybki start: moderowanie przy użyciu niestandardowych list obrazów na platformie .NET
 
-Ten artykuł zawiera informacje i przykłady kodu, które ułatwią Ci rozpoczęcie korzystania z [Content Moderator zestawu SDK dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) do:
-- Utwórz listę obrazu niestandardowego
-- Dodawanie i usuwanie obrazów z listy
-- Pobierz identyfikatory wszystkich obrazów na liście
-- Pobieranie i zaktualizować metadane listy
-- Odśwież listę indeks wyszukiwania
-- Obrazy ekranu względem obrazów na liście
-- Usuń wszystkie obrazy z listy
+Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć korzystanie z zestawu [SDK Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) do następujących zastosowań:
+- Tworzenie niestandardowych list obrazów
+- Dodawanie i usuwanie obrazów na liście
+- Uzyskiwanie identyfikatorów wszystkich obrazów na liście
+- Pobieranie i aktualizowanie metadanych listy
+- Odświeżanie indeksu wyszukiwania listy
+- Porównywanie obrazów względem obrazów na liście
+- Usuwanie wszystkich obrazów z listy
 - Usuwanie listy niestandardowej
 
 > [!NOTE]
-> Istnieje maksymalny limit wynoszący **5 image list** z każdej listy **nie może przekraczać 10 000 obrazów**.
+> Istnieje maksymalny limit wynoszący **5 list obrazów**, a poszczególne listy **nie mogą przekraczać 10 000 obrazów**.
 >
 
-Aplikację konsoli w tym przewodniku Szybki Start symuluje niektóre zadania, które można wykonywać na interfejs API listy obrazów.
+Aplikacja konsolowa dla tego przewodnika Szybki Start symuluje niektóre zadania, które można wykonywać za pomocą interfejsu API listy obrazów.
 
-W tym artykule założono, że znasz już program Visual Studio i języka C#.
+W tym artykule założono, że znasz już program Visual Studio i język C#.
 
-## <a name="sign-up-for-content-moderator-services"></a>Załóż konto usługi Content Moderator
+## <a name="sign-up-for-content-moderator-services"></a>Zarejestruj się w usługach Content Moderator
 
-Zanim użyjesz usługi Content Moderator za pośrednictwem interfejsu API REST lub zestawu SDK, potrzebujesz klucza subskrypcji.
-Zapoznaj się [Szybki Start](quick-start.md) Aby dowiedzieć się, jak można uzyskać klucz.
+Zanim użyjesz usług Content Moderator za pomocą interfejsu API REST lub zestawu SDK, potrzebujesz klucza subskrypcji.
+Zapoznaj się [przewodnikiem Szybki start](quick-start.md), aby dowiedzieć się, jak można uzyskać klucz.
 
 ## <a name="create-your-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
-1. Dodaj nową **Aplikacja konsoli (.NET Framework)** projektu do rozwiązania.
+1. Dodaj nowy projekt **Aplikacja konsoli (.NET Framework)** do rozwiązania.
 
-   W przykładowym kodzie, nadaj projektowi nazwę **ImageLists**.
+   W przykładowym kodzie nadaj projektowi nazwę **ImageLists**.
 
 1. Wybierz ten projekt jako pojedynczy projekt startowy rozwiązania.
 
@@ -57,9 +58,9 @@ Zainstaluj następujące pakiety NuGet:
 - Microsoft.Rest.ClientRuntime
 - Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Aktualizacja programu za pomocą instrukcji
+### <a name="update-the-programs-using-statements"></a>Aktualizowanie programu za pomocą instrukcji
 
-Modyfikowanie programu za pomocą instrukcji.
+Zmodyfikuj program za pomocą instrukcji.
 
     using Microsoft.Azure.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator;
@@ -72,10 +73,10 @@ Modyfikowanie programu za pomocą instrukcji.
 
 ### <a name="create-the-content-moderator-client"></a>Tworzenie klienta usługi Content Moderator
 
-Dodaj następujący kod, aby utworzyć pakiet Content Moderator klienta dla Twojej subskrypcji.
+Dodaj następujący kod, aby utworzyć klienta usługi Content Moderator dla Twojej subskrypcji.
 
 > [!IMPORTANT]
-> Aktualizacja **Region_świadczenia_usługi_azure** i **CMSubscriptionKey** pola z wartościami Twojego regionu identyfikatora i klucza subskrypcji.
+> Zaktualizuj pola **AzureRegion** i **CMSubscriptionKey** wartościami identyfikatora regionu i klucza subskrypcji.
 
 
     /// <summary>
@@ -121,9 +122,9 @@ Dodaj następujący kod, aby utworzyć pakiet Content Moderator klienta dla Twoj
     }
 
 
-### <a name="initialize-application-specific-settings"></a>Inicjowanie ustawienia specyficzne dla aplikacji
+### <a name="initialize-application-specific-settings"></a>Inicjowanie ustawień specyficznych dla aplikacji
 
-Dodaj następujące klasy i pola statyczne do **Program** klasy w pliku Program.cs.
+Dodaj następujące klasy i pola statyczne do klasy **Program** w pliku Program.cs.
 
     /// <summary>
     /// The minimum amount of time, im milliseconds, to wait between calls
@@ -245,12 +246,12 @@ Dodaj następujące klasy i pola statyczne do **Program** klasy w pliku Program.
    
 
 > [!NOTE]
-> Klucz usługi Content Moderator ma żądań na drugi limit szybkości (jednostek Uzależnionych), a Jeśli przekroczysz limit, zestaw SDK zgłasza wyjątek z kodem błędu 429. 
+> Klucz usługi Content Moderator ma limit liczby żądań na sekundę (RPS), a w razie przekroczenia tego limitu zestaw SDK zgłasza wyjątek z kodem błędu 429. 
 >
-> Klucz w warstwie bezpłatna obowiązuje limit szybkości jeden RPS.
+> Limit klucza warstwy bezpłatnej wynosi 1 RPS.
 
 
-## <a name="create-a-method-to-write-messages-to-the-log-file"></a>Utwórz metodę, aby zapisywać komunikaty w pliku dziennika
+## <a name="create-a-method-to-write-messages-to-the-log-file"></a>Utwórz metodę na potrzeby zapisywania komunikatów do pliku dziennika
 
 Dodaj następującą metodę do klasy **Program**. 
 
@@ -269,7 +270,7 @@ Dodaj następującą metodę do klasy **Program**.
         }
     }
 
-## <a name="create-a-method-to-create-the-custom-list"></a>Utwórz metodę, aby utworzyć listę niestandardowych
+## <a name="create-a-method-to-create-the-custom-list"></a>Tworzenie metody w celu utworzenia listy niestandardowej
 
 Dodaj następującą metodę do klasy **Program**. 
 
@@ -296,11 +297,11 @@ Dodaj następującą metodę do klasy **Program**.
         return result;
     }
 
-## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>Utwórz metodę, aby dodać zestaw obrazów do listy
+## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>Tworzenie metody w celu dodania kolekcji obrazów do listy
 
 Dodaj następującą metodę do klasy **Program**.
 
-Ten przewodnik Szybki Start nie pokazują, jak zastosować znaczniki do obrazów na liście. 
+Ten przewodnik Szybki start nie pokazuje, jak zastosować tagi do obrazów na liście. 
 
     /// <summary>
     /// Adds images to an image list.
@@ -340,7 +341,7 @@ Ten przewodnik Szybki Start nie pokazują, jak zastosować znaczniki do obrazów
         }
     }
 
-## <a name="create-a-method-to-remove-images-from-the-list"></a>Utwórz metodę, aby usunąć obrazy z listy
+## <a name="create-a-method-to-remove-images-from-the-list"></a>Tworzenie metody w celu usunięcia obrazów z listy
 
 Dodaj następującą metodę do klasy **Program**. 
 
@@ -375,7 +376,7 @@ Dodaj następującą metodę do klasy **Program**.
         }
     }
 
-## <a name="create-a-method-to-get-all-of-the-content-ids-for-images-in-the-list"></a>Utwórz metodę, aby uzyskać całą zawartość identyfikatorów obrazów na liście
+## <a name="create-a-method-to-get-all-of-the-content-ids-for-images-in-the-list"></a>Tworzenie metody w celu uzyskania wszystkich identyfikatorów zawartości dla obrazów na liście
 
 Dodaj następującą metodę do klasy **Program**. 
 
@@ -400,7 +401,7 @@ Dodaj następującą metodę do klasy **Program**.
         return result;
     }
 
-## <a name="create-a-method-to-update-the-details-of-the-list"></a>Utwórz metodę, aby zaktualizować szczegóły listy
+## <a name="create-a-method-to-update-the-details-of-the-list"></a>Tworzenie metody w celu zaktualizowania szczegółów listy
 
 Dodaj następującą metodę do klasy **Program**. 
 
@@ -428,7 +429,7 @@ Dodaj następującą metodę do klasy **Program**.
         return result;
     }
 
-## <a name="create-a-method-to-retrieve-the-details-of-the-list"></a>Utwórz metodę, aby pobrać szczegóły listy
+## <a name="create-a-method-to-retrieve-the-details-of-the-list"></a>Tworzenie metody w celu pobrania szczegółów listy
 
 Dodaj następującą metodę do klasy **Program**.
 
@@ -453,11 +454,11 @@ Dodaj następującą metodę do klasy **Program**.
         return result;
     }
 
-## <a name="create-a-method-to-refresh-the-search-index-of-the-list"></a>Utwórz metodę, aby odświeżyć indeks wyszukiwania listy
+## <a name="create-a-method-to-refresh-the-search-index-of-the-list"></a>Tworzenie metody w celu odświeżenia indeksu wyszukiwania listy
 
 Dodaj następującą metodę do klasy **Program**.
 
-Ilekroć zaktualizowania listy, należy odświeżyć indeks wyszukiwania przed rozpoczęciem korzystania z listy, aby obrazy ekranu.
+Po każdym zaktualizowaniu listy należy odświeżyć indeks wyszukiwania, zanim lista zostanie użyta do porównywania obrazów.
 
     /// <summary>
     /// Refreshes the search index for an image list.
@@ -480,7 +481,7 @@ Ilekroć zaktualizowania listy, należy odświeżyć indeks wyszukiwania przed r
         return result;
     }
 
-## <a name="create-a-method-to-match-images-against-the-list"></a>Utwórz metodę, aby dopasować obrazów z listą
+## <a name="create-a-method-to-match-images-against-the-list"></a>Tworzenie metody w celu dopasowania obrazów do obrazów na liście
 
 Dodaj następującą metodę do klasy **Program**. 
 
@@ -508,7 +509,7 @@ Dodaj następującą metodę do klasy **Program**.
         }
     }
 
-## <a name="create-a-method-to-delete-all-images-from-the-list"></a>Utwórz metodę, aby usunąć wszystkie obrazy z listy
+## <a name="create-a-method-to-delete-all-images-from-the-list"></a>Tworzenie metody w celu usunięcia wszystkich obrazów z listy
 
 Dodaj następującą metodę do klasy **Program**. 
 
@@ -530,7 +531,7 @@ Dodaj następującą metodę do klasy **Program**.
         WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
     }
 
-## <a name="create-a-method-to-delete-the-list"></a>Utwórz metodę, aby usunąć listę
+## <a name="create-a-method-to-delete-the-list"></a>Tworzenie metody w celu usunięcia listy
 
 Dodaj następującą metodę do klasy **Program**. 
 
@@ -552,7 +553,7 @@ Dodaj następującą metodę do klasy **Program**.
         WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
     }
 
-## <a name="create-a-method-to-retrieve-ids-for-all-image-lists"></a>Utwórz metodę, aby pobieranie identyfikatorów dla wszystkich list obrazów
+## <a name="create-a-method-to-retrieve-ids-for-all-image-lists"></a>Tworzenie metody w celu pobrania identyfikatorów dla wszystkich list obrazów
 
 Dodaj następującą metodę do klasy **Program**. 
 
@@ -575,11 +576,11 @@ Dodaj następującą metodę do klasy **Program**.
         return result;
     }
 
-## <a name="add-code-to-simulate-the-use-of-an-image-list"></a>Dodaj kod, aby zasymulować użycie listy obrazów
+## <a name="add-code-to-simulate-the-use-of-an-image-list"></a>Dodawanie kodu w celu symulowania używania listy obrazów
 
-Dodaj następujący kod do **Main** metody.
+Dodaj następujący kod do metody **Main**.
 
-Ten kod symuluje wielu operacji, które mogłyby wykonać w definiowanie i zarządzanie listy, a także przy użyciu listy do ekranu obrazów. Funkcje rejestrowania umożliwiają wyświetlanie obiektów odpowiedzi generowane przez wywołania SDK do usługi Content Moderator.
+Ten kod symuluje wiele operacji wykonywanych w ramach definiowania listy i zarządzania nią, a także przeglądania obrazów za pomocą listy. Funkcje rejestrowania umożliwiają wyświetlenie obiektów odpowiedzi wygenerowanych przez wywołania usługi Content Moderator za pomocą zestawu SDK.
 
     // Create the text writer to use for logging, and cache a static reference to it.
     using (StreamWriter outputWriter = new StreamWriter(OutputFile))
@@ -647,10 +648,10 @@ Ten kod symuluje wielu operacji, które mogłyby wykonać w definiowanie i zarz�
     Console.WriteLine("Press any key to exit...");
     Console.ReadKey();
 
-## <a name="run-the-program-and-review-the-output"></a>Uruchom program i przejrzyj dane wyjściowe
+## <a name="run-the-program-and-review-the-output"></a>Uruchamianie programu i przeglądanie danych wyjściowych
 
-Identyfikator listy i obrazu zawartości, czy identyfikatory są różne każdym uruchomieniu aplikacji.
-Plik dziennika zapisanych przez program zawiera następujące dane wyjściowe:
+Identyfikator listy i identyfikatory zawartości obrazu są różne po każdym uruchomieniu aplikacji.
+Plik dziennika zapisany przez program zawiera następujące dane wyjściowe:
 
     Creating list MyList.
     Response:
@@ -1067,6 +1068,6 @@ Plik dziennika zapisanych przez program zawiera następujące dane wyjściowe:
     []
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Pobierz [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) i [rozwiązania Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego programu oraz inne Przewodniki Szybki Start pakietu Content Moderator dla platformy .NET i Rozpocznij pracę nad integracją.
+Pobierz zestaw [SDK Content Moderator dla platformy.NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) i [rozwiązanie programu Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego i innych przewodników Szybki start usługi Content Moderator dla platformy .NET i rozpocznij pracę nad integracją.

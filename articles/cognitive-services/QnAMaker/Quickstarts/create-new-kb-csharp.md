@@ -1,24 +1,27 @@
 ---
-title: Tworzenie nowej bazy wiedzy — Szybki start dla języka C# — interfejs API usługi Microsoft QnA Maker (V4) — Azure Cognitive Services | Microsoft Docs
-description: Utwórz bazę wiedzy w języku C# do przechowywania często zadawanych pytań lub podręczników produktu i rozpocznij pracę z usługą QnA Maker.
+title: 'Szybki start: język C# w interfejsie API — tworzenie bazy wiedzy — QnA Maker'
+titlesuffix: Azure Cognitive Services
+description: Ten przewodnik Szybki start zawiera omówienie programistycznego tworzenia przykładowej bazy wiedzy usługi QnA Maker, która zostanie wyświetlona na pulpicie nawigacyjnym platformy Azure na koncie interfejsu API usługi Azure Services.
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: quickstart
-ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: 16d17a335bb84212497010b3eeb930582fa86dc4
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 8a0840a96f21f76f3a742d973c86dd02929b8e30
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "43771271"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039450"
 ---
 # <a name="create-a-new-knowledge-base-in-c"></a>Tworzenie nowej bazy wiedzy w języku C#
 
 Ten przewodnik Szybki start zawiera omówienie programistycznego tworzenia przykładowej bazy wiedzy usługi QnA Maker, która zostanie wyświetlona na pulpicie nawigacyjnym platformy Azure na koncie interfejsu API usługi Azure Services.
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-csharp-repo-note.md)]
 
 Poniżej przedstawiono dwa przykładowe adresy URL często zadawanych pytań („urls” w ciągu kb). Usługa QnA Maker automatycznie wyodrębnia pytania i odpowiedzi z częściowo ustrukturyzowanej zawartości, na przykład często zadawanych pytań. Obszerniejsze wyjaśnienia znajdują się w dokumencie dotyczącym [źródeł danych](../Concepts/data-sources-supported.md). Podczas pracy z tym przewodnikiem Szybki start możesz również skorzystać z własnych adresów URL często zadawanych pytań.
 

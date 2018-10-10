@@ -1,66 +1,67 @@
 ---
-title: Umiarkowany z listy terminów niestandardowych w usłudze Azure Content Moderator | Dokumentacja firmy Microsoft
-description: Jak średni terminem niestandardowej listy, dla platformy .NET przy użyciu zestawu SDK usługi Azure Content Moderator.
+title: 'Szybki start: moderowanie przy użyciu niestandardowych list terminów — Content Moderator'
+titlesuffix: Azure Cognitive Services
+description: Sposób moderacji przy użyciu niestandardowych list terminów za pomocą zestawu SDK Content Moderator dla platformy .NET.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: 55233198c4553f9838036e4eb91cff380af1988d
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
-ms.translationtype: MT
+ms.openlocfilehash: c7a9e98444b47b058a17b18ba7d9a7c6b2249ba4
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182301"
+ms.locfileid: "47223223"
 ---
-# <a name="moderate-with-custom-term-lists-in-net"></a>Średni z listy terminów niestandardowe na platformie .NET
+# <a name="quickstart-moderate-with-custom-term-lists-in-net"></a>Szybki start: moderowanie przy użyciu niestandardowych list terminów na platformie .NET
 
-Domyślnej globalnej listy terminy w usłudze Azure Content Moderator jest wystarczająca na potrzeby większości zawartości moderowania. Jednak może być konieczne ekranu warunków, które są specyficzne dla Twojej organizacji. Na przykład możesz chcieć nazwy tagu do dalszego przeglądu. 
+Domyślna globalna lista terminów w usługach Azure Content Moderator wystarcza w przypadku większości potrzeb moderowania zawartości. Jednak może być konieczne sprawdzanie terminów, które są specyficzne dla organizacji. Na przykład warto oznaczyć tagiem nazwy konkurencji w celu dalszego przeglądu. 
 
-Możesz użyć [Content Moderator zestawu SDK dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) do tworzenia niestandardowych list terminów do wykorzystania przy użyciu interfejsu API moderowania tekstu.
+[Zestaw SDK Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) może służyć do tworzenia niestandardowych list terminów do wykorzystania przy użyciu interfejsu API moderowania tekstów.
 
 > [!NOTE]
-> Istnieje maksymalny limit wynoszący **Wyświetla 5 termin** z każdej listy **nie może przekraczać 10 000 warunki**.
+> Istnieje maksymalny limit wynoszący **5 list terminów**, a poszczególne listy **nie mogą przekraczać 10 000 terminów**.
 >
 
-Ten artykuł zawiera informacje i przykłady kodu, aby pomóc Ci rozpocząć korzystanie z Content Moderator zestawu SDK dla platformy .NET do:
-- Utwórz listę.
-- Dodawanie warunków do listy.
-- Warunki ekranu względem warunki na liście.
-- Usuwanie warunków z listy.
+Ten artykuł zawiera informacje i przykłady kodu, aby początkowo ułatwić korzystanie z zestawu SDK Content Moderator dla platformy .NET do następujących zastosowań:
+- Tworzenie listy.
+- Dodawanie terminów do listy.
+- Sprawdzanie terminów względem terminów na liście.
+- Usuwanie terminów z listy.
 - Usuwanie listy.
-- Edytuj informacje na liście.
-- Odśwież indeks, aby zmiany na liście znajdują się w nowe skanowanie.
+- Edycja informacji na liście.
+- Odświeżanie indeksu, aby zmiany na liście były uwzględnione w nowym skanowaniu.
 
-W tym artykule założono, że znasz już program Visual Studio i języka C#.
+W tym artykule założono, że znasz już program Visual Studio i język C#.
 
-## <a name="sign-up-for-content-moderator-services"></a>Załóż konto usługi Content Moderator
+## <a name="sign-up-for-content-moderator-services"></a>Zarejestruj się w usługach Content Moderator
 
-Zanim użyjesz usługi Content Moderator za pośrednictwem interfejsu API REST lub zestawu SDK, potrzebujesz klucza subskrypcji.
+Zanim użyjesz usług Content Moderator za pośrednictwem interfejsu API REST lub zestawu SDK, potrzebujesz klucza subskrypcji.
 
-Na pulpicie nawigacyjnym Content Moderator możesz znaleźć klucz subskrypcji w **ustawienia** > **poświadczenia** > **API**  >  **Wersji próbnej Ocp-Apim-Subscription-Key**. Aby uzyskać więcej informacji, zobacz [Przegląd](overview.md).
+Na pulpicie nawigacyjnym Content Moderator możesz znaleźć klucz subskrypcji w menu **Ustawienia** > **Poświadczenia** > **API** > **Trial Ocp-Apim-Subscription-Key** (Wersja próbna klucza Ocp-Apim-Subscription-Key). Aby uzyskać więcej informacji, zobacz [Omówienie](overview.md).
 
 ## <a name="create-your-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
-1. Dodaj nową **Aplikacja konsoli (.NET Framework)** projektu do rozwiązania.
+1. Dodaj nowy projekt **Aplikacja konsoli (.NET Framework)** do swojego rozwiązania.
 
-1. Nadaj projektowi nazwę **TermLists**. Wybierz ten projekt jako pojedynczy projekt startowy rozwiązania.
+1. Nazwij projekt **TermLists**. Wybierz ten projekt jako pojedynczy projekt startowy rozwiązania.
 
 ### <a name="install-required-packages"></a>Instalowanie wymaganych pakietów
 
-Zainstaluj następujące pakiety NuGet projektu TermLists:
+Zainstaluj następujące pakiety NuGet do projektu TermLists:
 
 - Microsoft.Azure.CognitiveServices.ContentModerator
 - Microsoft.Rest.ClientRuntime
 - Microsoft.Rest.ClientRuntime.Azure
 - Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Aktualizacja programu za pomocą instrukcji
+### <a name="update-the-programs-using-statements"></a>Aktualizacja instrukcji using programu
 
-Modyfikowanie programu za pomocą instrukcji.
+Modyfikacja instrukcji using programu.
 
     using Microsoft.Azure.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator;
@@ -71,12 +72,12 @@ Modyfikowanie programu za pomocą instrukcji.
     using System.IO;
     using System.Threading;
 
-### <a name="create-the-content-moderator-client"></a>Tworzenie klienta usługi Content Moderator
+### <a name="create-the-content-moderator-client"></a>Tworzenie klienta usług Content Moderator
 
-Dodaj następujący kod, aby utworzyć pakiet Content Moderator klienta dla Twojej subskrypcji.
+Dodaj następujący kod, aby utworzyć klienta usług Content Moderator dla swojej subskrypcji.
 
 > [!IMPORTANT]
-> Aktualizacja **Region_świadczenia_usługi_azure** i **CMSubscriptionKey** pola z wartościami Twojego regionu identyfikatora i klucza subskrypcji.
+> Zaktualizuj pola **AzureRegion** i **CMSubscriptionKey** wartościami identyfikatora regionu i klucza subskrypcji.
 
 
     /// <summary>
@@ -121,9 +122,9 @@ Dodaj następujący kod, aby utworzyć pakiet Content Moderator klienta dla Twoj
         }
     }
 
-### <a name="add-private-properties"></a>Dodawanie właściwości prywatne
+### <a name="add-private-properties"></a>Dodawanie właściwości prywatnych
 
-Dodaj następujące właściwości prywatnej do przestrzeni nazw TermLists, klasy programu.
+Dodaj następujące właściwości prywatnych do przestrzeni nazw TermLists w klasie Program.
 
     /// <summary>
     /// The language of the terms in the term lists.
@@ -144,14 +145,14 @@ Dodaj następujące właściwości prywatnej do przestrzeni nazw TermLists, klas
 
 ## <a name="create-a-term-list"></a>Tworzenie listy terminów
 
-Utwórz listę termin z **ContentModeratorClient.ListManagementTermLists.Create**. Pierwszy parametr **Utwórz** jest ciąg zawierający typ MIME, który powinien być "application/json". Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f). Drugi parametr jest **treści** obiekt, który zawiera nazwę i opis listy nowy termin.
+Do tworzenia listy terminów służy metoda **ContentModeratorClient.ListManagementTermLists.Create**. Pierwszy parametr metody **Create** to ciąg zawierający typ MIME, który powinien mieć wartość „application/json”. Aby uzyskać więcej informacji, zobacz [dokumentację interfejsu API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f). Drugi parametr to obiekt **Body**, który zawiera nazwę i opis nowej listy terminów.
 
-Dodaj następującą definicję metody do przestrzeni nazw TermLists, klasy programu.
+Dodaj następującą definicję metody do przestrzeni nazw TermLists w klasie Program.
 
 > [!NOTE]
-> Klucz usługi Content Moderator ma żądań na drugi limit szybkości (jednostek Uzależnionych), a Jeśli przekroczysz limit, zestaw SDK zgłasza wyjątek z kodem błędu 429. 
+> Klucz usług Content Moderator ma limit liczby żądań na sekundę (RPS), a w razie przekroczenia tego limitu zestaw SDK zgłasza wyjątek z kodem błędu 429. 
 >
-> Klucz w warstwie bezpłatna obowiązuje limit szybkości jeden RPS.
+> Limit klucza warstwy bezpłatnej wynosi 1 RPS.
 
     /// <summary>
     /// Creates a new term list.
@@ -177,11 +178,11 @@ Dodaj następującą definicję metody do przestrzeni nazw TermLists, klasy prog
         }
     }
 
-## <a name="update-term-list-name-and-description"></a>Aktualizacja termin nazwę i opis listy
+## <a name="update-term-list-name-and-description"></a>Aktualizacja nazwy i opisu listy terminów
 
-Zaktualizuj informacje o liście termin z **ContentModeratorClient.ListManagementTermLists.Update**. Pierwszy parametr **aktualizacji** jest określenie listy. Drugi parametr jest typ MIME, który powinien być "application/json". Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f685). Trzeci parametr jest **treści** obiekt, który zawiera nową nazwę i opis.
+Do aktualizacji informacji o liście terminów służy metoda **ContentModeratorClient.ListManagementTermLists.Update**. Pierwszy parametr metody **Update** to identyfikator listy terminów. Drugi parametr to typ MIME, który powinien mieć wartość „application/json”. Aby uzyskać więcej informacji, zobacz [dokumentację interfejsu API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f685). Trzeci parametr to obiekt **Body**, który zawiera nową nazwę i nowy opis.
 
-Dodaj następującą definicję metody do przestrzeni nazw TermLists, klasy programu.
+Dodaj następującą definicję metody do przestrzeni nazw TermLists w klasie Program.
 
     /// <summary>
     /// Update the information for the indicated term list.
@@ -198,9 +199,9 @@ Dodaj następującą definicję metody do przestrzeni nazw TermLists, klasy prog
         Thread.Sleep(throttleRate);
     }
 
-## <a name="add-a-term-to-a-term-list"></a>Dodaj warunek do listy terminów
+## <a name="add-a-term-to-a-term-list"></a>Dodawanie terminu do listy terminów
 
-Dodaj następującą definicję metody do przestrzeni nazw TermLists, klasy programu.
+Dodaj następującą definicję metody do przestrzeni nazw TermLists w klasie Program.
 
     /// <summary>
     /// Add a term to the indicated term list.
@@ -215,9 +216,9 @@ Dodaj następującą definicję metody do przestrzeni nazw TermLists, klasy prog
         Thread.Sleep(throttleRate);
     }
 
-## <a name="get-all-terms-in-a-term-list"></a>Pobierz wszystkie terminy w listy terminów
+## <a name="get-all-terms-in-a-term-list"></a>Pobieranie wszystkich terminów z listy terminów
 
-Dodaj następującą definicję metody do przestrzeni nazw TermLists, klasy programu.
+Dodaj następującą definicję metody do przestrzeni nazw TermLists w klasie Program.
 
     /// <summary>
     /// Get all terms in the indicated term list.
@@ -236,13 +237,13 @@ Dodaj następującą definicję metody do przestrzeni nazw TermLists, klasy prog
         Thread.Sleep(throttleRate);
     }
 
-## <a name="add-code-to-refresh-the-search-index"></a>Dodaj kod, aby odświeżyć indeks wyszukiwania
+## <a name="add-code-to-refresh-the-search-index"></a>Dodawanie kodu do odświeżania indeksu wyszukiwania
 
-Po wprowadzeniu zmian do listy terminów możesz odświeżyć jej indeks wyszukiwania dla zmian do uwzględnienia następnym razem, użyj listy terminów, aby tekst na ekranie. Jest to podobne do jak wyszukiwarki na pulpicie systemu Windows (jeśli jest włączone) lub aparatu wyszukiwania w sieci web nieustannie odświeża jej indeks w celu uwzględnienia nowych plików lub stron.
+Po wprowadzeniu zmian w liście terminów należy odświeżyć jej indeks wyszukiwania, aby zmiany zostały uwzględnione przy następnym użyciu listy terminów do sprawdzania tekstu. Przypomina to działanie wyszukiwarki na komputerze (jeśli jest włączona) lub wyszukiwarki internetowej, które ciągle odświeżają swój indeks w celu uwzględnienia nowych plików lub stron.
 
-Odśwież indeksu wyszukiwania listy terminów z **ContentModeratorClient.ListManagementTermLists.RefreshIndexMethod**.
+Do odświeżania indeksu wyszukiwania listy terminów służy metoda **ContentModeratorClient.ListManagementTermLists.RefreshIndexMethod**.
 
-Dodaj następującą definicję metody do przestrzeni nazw TermLists, klasy programu.
+Dodaj następującą definicję metody do przestrzeni nazw TermLists w klasie Program.
 
     /// <summary>
     /// Refresh the search index for the indicated term list.
@@ -256,22 +257,22 @@ Dodaj następującą definicję metody do przestrzeni nazw TermLists, klasy prog
         Thread.Sleep((int)(latencyDelay * 60 * 1000));
     }
 
-## <a name="screen-text-using-a-term-list"></a>Tekst na ekranie przy użyciu listy terminów
+## <a name="screen-text-using-a-term-list"></a>Sprawdzanie tekstu przy użyciu listy terminów
 
-Ekran tekstu przy użyciu listy terminów, za pomocą **ContentModeratorClient.TextModeration.ScreenText**, który przyjmuje następujące parametry.
+Do sprawdzania tekstu przy użyciu listy terminów służy metoda **ContentModeratorClient.TextModeration.ScreenText**, która przyjmuje następujące parametry.
 
-- Język wyrażeń w listy terminów.
-- Typ MIME, który może być "text/html", "text/xml", "text/języka markdown" lub "text/plain".
-- Tekst do ekranu.
-- Wartość logiczna. Ustaw to pole **true** Autokorekty tekstu przed specjalistycznego go.
-- Wartość logiczna. Ustaw to pole **true** wykrywania osobistych identyfikowalne dane osobowe w tekście.
-- Identyfikator listy terminów
+- Język terminów na liście terminów.
+- Typ MIME, który może mieć wartość „text/html”, „text/xml”, „text/markdown” lub „text/plain”.
+- Tekst do sprawdzenia.
+- Wartość logiczna. Ustaw wartość **true** w tym polu w celu autokorekty tekstu przed jego sprawdzaniem.
+- Wartość logiczna. Ustaw wartość **true** w tym polu w celu wykrywania danych osobowych w tekście.
+- Identyfikator listy terminów.
 
-Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f).
+Aby uzyskać więcej informacji, zobacz [dokumentację interfejsu API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f).
 
-**ScreenText** zwraca **ekranu** obiektu, który ma **warunki** właściwość, która zawiera dowolne warunki tego pakietu Content Moderator wykryte w kontroli. Należy pamiętać, że jeśli Content Moderator nie wykrył żadnych warunków podczas osłaniania, **warunki** właściwość ma wartość **null**.
+**ScreenText** zwraca obiekt **Screen**, który ma właściwość **Terms** zawierającą listę terminów wykrytych przez usługi Content Moderator podczas sprawdzania. Należy pamiętać, że jeśli usługi Content Moderator nie wykryją żadnych warunków podczas sprawdzania, właściwość **Terms** będzie miała wartość **null**.
 
-Dodaj następującą definicję metody do przestrzeni nazw TermLists, klasy programu.
+Dodaj następującą definicję metody do przestrzeni nazw TermLists w klasie Program.
 
     /// <summary>
     /// Screen the indicated text for terms in the indicated term list.
@@ -297,17 +298,17 @@ Dodaj następującą definicję metody do przestrzeni nazw TermLists, klasy prog
         read.Sleep(throttleRate);
     }
 
-## <a name="delete-terms-and-lists"></a>Usuń warunki i list
+## <a name="delete-terms-and-lists"></a>Usuwanie terminów i list
 
-Usuwanie termin lub listy jest bardzo proste. Zestaw SDK umożliwia wykonywanie następujących zadań:
+Usuwanie terminu lub listy jest bardzo proste. Zestaw SDK pozwala wykonać następuje zadania:
 
-- Usuń termin. (**ContentModeratorClient.ListManagementTerm.DeleteTerm**)
-- Usuń wszystkie warunki na liście, bez usuwania listy. (**ContentModeratorClient.ListManagementTerm.DeleteAllTerms**)
-- Usuń listę i całą jego zawartość. (**ContentModeratorClient.ListManagementTermLists.Delete**)
+- Usuwanie terminu. (**ContentModeratorClient.ListManagementTerm.DeleteTerm**)
+- Usuwanie wszystkich terminów z listy, bez usuwania listy. (**ContentModeratorClient.ListManagementTerm.DeleteAllTerms**)
+- Usuwanie listy i całej jej zawartości. (**ContentModeratorClient.ListManagementTermLists.Delete**)
 
-### <a name="delete-a-term"></a>Usuń termin
+### <a name="delete-a-term"></a>Usuwanie terminu
 
-Dodaj następującą definicję metody do przestrzeni nazw TermLists, klasy programu.
+Dodaj następującą definicję metody do przestrzeni nazw TermLists w klasie Program.
 
     /// <summary>
     /// Delete a term from the indicated term list.
@@ -322,9 +323,9 @@ Dodaj następującą definicję metody do przestrzeni nazw TermLists, klasy prog
         Thread.Sleep(throttleRate);
     }
 
-### <a name="delete-all-terms-in-a-term-list"></a>Usuń wszystkie warunki na liście termin
+### <a name="delete-all-terms-in-a-term-list"></a>Usuwanie wszystkich terminów z listy terminów
 
-Dodaj następującą definicję metody do przestrzeni nazw TermLists, klasy programu.
+Dodaj następującą definicję metody do przestrzeni nazw TermLists w klasie Program.
 
     /// <summary>
     /// Delete all terms from the indicated term list.
@@ -340,7 +341,7 @@ Dodaj następującą definicję metody do przestrzeni nazw TermLists, klasy prog
 
 ### <a name="delete-a-term-list"></a>Usuwanie listy terminów
 
-Dodaj następującą definicję metody do przestrzeni nazw TermLists, klasy programu.
+Dodaj następującą definicję metody do przestrzeni nazw TermLists w klasie Program.
 
     /// <summary>
     /// Delete the indicated term list.
@@ -354,9 +355,9 @@ Dodaj następującą definicję metody do przestrzeni nazw TermLists, klasy prog
         Thread.Sleep(throttleRate);
     }
 
-## <a name="putting-it-all-together"></a>Łączenie wszystkiego razem
+## <a name="putting-it-all-together"></a>Zebranie wszystkich elementów
 
-Dodaj **Main** definicję metody do przestrzeni nazw TermLists, klasy programu. Na koniec można zamknąć, klasę Program i TermLists przestrzeni nazw.
+Dodaj następującą definicję metody **main** do przestrzeni nazw TermLists w klasie Program. Na koniec zamknij klasę Program i przestrzeń nazw TermLists.
 
     static void Main(string[] args)
     {
@@ -392,9 +393,9 @@ Dodaj **Main** definicję metody do przestrzeni nazw TermLists, klasy programu. 
         }
     }
 
-## <a name="run-the-application-to-see-the-output"></a>Uruchom aplikację, aby wyświetlić dane wyjściowe
+## <a name="run-the-application-to-see-the-output"></a>Uruchom aplikację, aby zobaczyć dane wyjściowe
 
-Dane wyjściowe będą znajdować się na następujące wiersze, ale dane mogą się różnić.
+Dane wyjściowe będą umieszczone w następujących wierszach, ale dane mogą się różnić.
 
     Creating term list.
     Term list created. ID: 252.
@@ -424,6 +425,6 @@ Dane wyjściowe będą znajdować się na następujące wiersze, ale dane mogą 
     Deleting term list with ID 252.
     Press ENTER to close the application.
     
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Pobierz [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) i [rozwiązania Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego programu oraz inne Przewodniki Szybki Start pakietu Content Moderator dla platformy .NET i Rozpocznij pracę nad integracją.
+Pobierz [zestaw SDK Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) i [rozwiązanie Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego i innych przewodników Szybki start dotyczących usług Content Moderator dla platformy .NET i rozpocznij pracę nad integracją.
