@@ -25,7 +25,7 @@
 # Instrukcje
 ## Planowanie i projektowanie
 ### [Omówienie architektury usługi Azure AD](fundamentals/active-directory-architecture.md)
-### [Mapowanie oświadczeń w usłudze Azure Active Directory](active-directory-claims-mapping.md)
+### [Mapowanie oświadczeń w usłudze Azure Active Directory](develop/active-directory-claims-mapping.md)
 ### [Wdrażanie rozwiązania tożsamości hybrydowej](hybrid/plan-hybrid-identity-design-considerations-overview.md)
 #### Określanie wymagań
 ##### [Tożsamość](hybrid/plan-hybrid-identity-design-considerations-business-needs.md)
@@ -200,7 +200,7 @@
 #### [Ograniczenia dzierżawy](manage-apps/tenant-restrictions.md)
 #### [Aprowizacja użytkowników przy użyciu standardu SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
 
-### [Opis środowisk zgody dla aplikacji usługi Azure AD](application-consent-experience.md)
+### [Opis środowisk zgody dla aplikacji usługi Azure AD](develop/application-consent-experience.md)
 
 ### Rozwiązywanie problemów
 
@@ -323,7 +323,7 @@
 
 ### [Integrowanie tożsamości lokalnych za pomocą usługi Azure AD Connect](hybrid/whatis-hybrid-identity.md)
 
-### [Konfigurowanie okresów istnienia tokenu](active-directory-configurable-token-lifetimes.md)
+### [Konfigurowanie okresów istnienia tokenu](develop/active-directory-configurable-token-lifetimes.md)
 
 ## Zabezpieczanie tożsamości
 
@@ -363,4 +363,4 @@
 ## [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/)
 ## [Aktualizacje usług](https://azure.microsoft.com/updates/?product=active-directory)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
-## [Wideo](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)
+## [Filmy wideo](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)
