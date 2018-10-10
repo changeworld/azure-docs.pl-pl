@@ -36,8 +36,8 @@ Prosta jednostka jest odpowiednia dla tego typu danych, gdy:
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * Korzystanie z istniejącej aplikacji samouczka
-> * Dodawanie prostej jednostki do wyodrębnienia zadań z aplikacji
-> * Dodawanie listy fraz w celu wzmocnienia sygnału wyrazów związanych z zadaniami
+> * Dodawanie prostej jednostki do wyodrębnienia stanowisk z aplikacji
+> * Dodawanie listy fraz w celu wzmocnienia sygnału wyrazów związanych ze stanowiskami
 > * Szkolenie 
 > * Publikowanie 
 > * Pobieranie intencji i jednostek z punktu końcowego
@@ -61,15 +61,15 @@ Prosta jednostka wykrywa pojedynczą koncepcję danych zawartą w wyrazach lub f
 
 Przeanalizujmy następujące wypowiedzi z czatbota:
 
-|Wypowiedź|Nazwa zadania możliwa do wyodrębnienia|
+|Wypowiedź|Nazwa stanowiska możliwa do wyodrębnienia|
 |:--|:--|
 |I want to apply for the new accounting job.|accounting|
 |Submit my resume for the engineering position.|engineering|
 |Fill out application for job 123456|123456|
 
-Nazwa zadania jest trudna do określenia, ponieważ może być rzeczownikiem, czasownikiem lub frazą składającą się z kilku wyrazów. Na przykład:
+Nazwa stanowiska jest trudna do określenia, ponieważ może być rzeczownikiem, czasownikiem lub frazą składającą się z kilku wyrazów. Na przykład:
 
-|Zadania|
+|Stanowiska|
 |--|
 |engineer|
 |software engineer|
@@ -82,7 +82,7 @@ Nazwa zadania jest trudna do określenia, ponieważ może być rzeczownikiem, cz
 |extruder|
 |millwright|
 
-Ta aplikacja LUIS ma nazwy zadań w kilku intencjach. Dzięki oznaczeniu tych wyrazów w wypowiedziach dla wszystkich intencji usługa LUIS uczy się, jaka jest nazwa stanowiska i gdzie znajduje się ona w wypowiedziach.
+Ta aplikacja LUIS ma nazwy stanowisk w kilku intencjach. Dzięki oznaczeniu tych wyrazów w wypowiedziach dla wszystkich intencji usługa LUIS uczy się, jaka jest nazwa stanowiska i gdzie znajduje się ona w wypowiedziach.
 
 Po oznaczeniu jednostek w przykładowych wypowiedziach ważne jest dodanie listy fraz w celu wzmocnienia sygnału prostej jednostki. Lista fraz **nie** jest używana jako dokładne dopasowanie i nie musi uwzględniać każdej możliwej wartości, jakiej oczekujesz. 
 
@@ -96,17 +96,17 @@ Po oznaczeniu jednostek w przykładowych wypowiedziach ważne jest dodanie listy
 
 4. W oknie podręcznym sprawdź nazwę i typ jednostki, a następnie wybierz pozycję **Done** (Gotowe).
 
-    ![Modalne okno dialogowe tworzenia prostej jednostki o nazwie Job (Zadanie) i typie Simple (Prosta)](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
+    ![Modalne okno dialogowe tworzenia prostej jednostki o nazwie Job (Stanowisko) i typie Simple (Prosta)](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
 
-5. W wypowiedzi `Submit resume for engineering position` oznacz etykietą wyraz `engineering` jako jednostkę Job (Zadanie). Zaznacz wyraz `engineering`, a następnie wybierz pozycję **Job** (Zadanie) w menu podręcznym. 
+5. W wypowiedzi `Submit resume for engineering position` oznacz etykietą wyraz `engineering` jako jednostkę Job (Stanowisko). Zaznacz wyraz `engineering`, a następnie wybierz pozycję **Job** (Stanowisko) w menu podręcznym. 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Zrzut ekranu usługi LUIS z wyróżnioną etykietą jednostki Job (Zadanie)")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
+    [![](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Zrzut ekranu usługi LUIS z wyróżnioną etykietą jednostki Job (Stanowisko)")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
-    Wszystkie wypowiedzi są oznaczone etykietami, ale pięć wypowiedzi nie wystarcza, aby nauczyć usługę LUIS o powiązanych z zadaniem wyrazach i frazach. Zadania, które używają wartości liczbowej, nie potrzebują większej liczby przykładów, ponieważ używają jednostki wyrażenia regularnego. Zadania, które są wyrazami lub frazami, wymagają co najmniej 15 dalszych przykładów. 
+    Wszystkie wypowiedzi są oznaczone etykietami, ale pięć wypowiedzi nie wystarcza, aby nauczyć usługę LUIS o powiązanych ze stanowiskiem wyrazach i frazach. Stanowiska, które używają wartości liczbowej, nie potrzebują większej liczby przykładów, ponieważ używają jednostki wyrażenia regularnego. Stanowiska, które są wyrazami lub frazami, wymagają co najmniej 15 dalszych przykładów. 
 
-6. Dodaj więcej wypowiedzi i oznacz wyrazy lub frazy dotyczące zadania jako jednostkę **Job** (Zadanie). Typy zadań są ogólnie używane w ramach zatrudnienia na potrzeby usługi obsługującej zatrudnienie. Jeśli potrzebujesz zadań związanych z określoną branżą, wyrazy zadania powinny to odzwierciedlać. 
+6. Dodaj więcej wypowiedzi i oznacz wyrazy lub frazy dotyczące stanowiska jako jednostkę **Job** (Stanowisko). Typy stanowisk są ogólnie używane w ramach zatrudnienia na potrzeby usługi obsługującej zatrudnienie. Jeśli potrzebujesz stanowisk związanych z określoną branżą, wyrazy związane ze stanowiskiem powinny to odzwierciedlać. 
 
-    |Wypowiedź|Jednostka Job (Zadanie)|
+    |Wypowiedź|Jednostka Job (Stanowisko)|
     |:--|:--|
     |I'm applying for the Program Manager desk in R&D|Program Manager|
     |Here is my line cook application.|line cook|
@@ -133,15 +133,15 @@ Dodanie etykiet (_oznaczenie_) jednostki wskazuje usłudze LUIS, gdzie znajduje 
 
 2. Wybierz pozycję **GetJobInformation** z listy intencji. 
 
-3. Oznacz etykietami zadania w przykładowych wypowiedziach:
+3. Oznacz etykietami stanowiska w przykładowych wypowiedziach:
 
-    |Wypowiedź|Jednostka Job (Zadanie)|
+    |Wypowiedź|Jednostka Job (Stanowisko)|
     |:--|:--|
     |Is there any work in databases?|bazy danych|
     |Looking for a new situation with responsibilities in accounting (Szukam nowego wyzwania w obszarze księgowości)|accounting|
     |What positions are available for senior engineers?|senior engineers|
 
-    Istnieją inne przykładowe wypowiedzi, ale nie zawierają one wyrazów związanych z zadaniem.
+    Istnieją inne przykładowe wypowiedzi, ale nie zawierają one wyrazów związanych ze stanowiskiem.
 
 ## <a name="train"></a>Szkolenie
 
@@ -222,9 +222,9 @@ Dodanie etykiet (_oznaczenie_) jednostki wskazuje usłudze LUIS, gdzie znajduje 
 
 
 ## <a name="names-are-tricky"></a>Nazwy są trudne
-Aplikacja LUIS znalazła prawidłową intencję z wysokim poziomem pewności i wyodrębniła nazwę zadania, ale nazwy mogą być skomplikowane. Spróbuj użyć wypowiedzi `This is the lead welder paperwork`.  
+Aplikacja LUIS znalazła prawidłową intencję z wysokim poziomem pewności i wyodrębniła nazwę stanowiska, ale nazwy mogą być skomplikowane. Spróbuj użyć wypowiedzi `This is the lead welder paperwork`.  
 
-W poniższym kodzie JSON usługa LUIS odpowiada przy użyciu prawidłowej intencji `ApplyForJob`, ale nie wyodrębniła nazwy zadania `lead welder`. 
+W poniższym kodzie JSON usługa LUIS odpowiada przy użyciu prawidłowej intencji `ApplyForJob`, ale nie wyodrębniła nazwy stanowiska `lead welder`. 
 
 ```JSON
 {
@@ -283,7 +283,7 @@ Ponieważ nazwa może być dowolna, usługa LUIS przewiduje jednostki dokładnie
 
 ## <a name="to-boost-signal-add-phrase-list"></a>Dodawanie listy fraz w celu wzmocnienia sygnału
 
-Otwórz plik [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) z repozytorium Github LUIS-Samples. Lista zawiera ponad tysiąc wyrazów i fraz związanych z zadaniami. Wyszukaj na liście istotne w Twoim przypadku wyrazy dotyczące zadań. Jeśli odpowiednich wyrazów lub fraz nie ma na liście, dodaj własne.
+Otwórz plik [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) z repozytorium Github LUIS-Samples. Lista zawiera ponad tysiąc wyrazów i fraz związanych ze stanowiskami. Wyszukaj na liście istotne w Twoim przypadku wyrazy związane ze stanowiskami. Jeśli odpowiednich wyrazów lub fraz nie ma na liście, dodaj własne.
 
 1. W sekcji **Build** (Kompilacja) aplikacji LUIS wybierz pozycję **Phrase lists** (Listy fraz) w menu **Improve app performance** (Zwiększ wydajność aplikacji).
 
