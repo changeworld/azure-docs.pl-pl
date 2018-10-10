@@ -1,20 +1,21 @@
 ---
-title: Omówienie procesu projektowania dla Akustyka — Cognitive Services
+title: Omówienie procesu projektowania dla Akustyka projektu
+titlesuffix: Azure Cognitive Services
 description: W tym dokumencie opisano sposób express zgodną z planem projektu we wszystkich fazach Akustyka projektu przepływu pracy.
 services: cognitive-services
 author: kegodin
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: bb3e5010f1839f7b18396cc8e177ed07e52ea98a
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 46e2e276086f836ff881fde1db6462f6e7788e22
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867646"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901366"
 ---
 # <a name="design-process-overview"></a>Omówienie procesu projektowania
 We wszystkich fazach Akustyka projektu przepływu pracy można wyrazić zgodną z planem projektu: wstępne tworzenie sceny instalacji, położenia źródła dźwięku i po Tworzenie projektu. Ten proces wymaga mniej znaczników skojarzony umieszczenie woluminy pogłosu przy zachowaniu projektanta kontrolę nad jak brzmi sceny.
