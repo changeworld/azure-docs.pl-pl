@@ -1,9 +1,9 @@
 ---
-title: Omówienie usługi Azure stosu planu, oferty, przydziału i subskrypcji | Dokumentacja firmy Microsoft
-description: Jako operator chmury ma być planów Azure stosu, oferty, przydziały i subskrypcje.
+title: Omówienie usługi Azure Stack planu, oferty, przydziału i subskrypcji | Dokumentacja firmy Microsoft
+description: Operator chmury chcę zrozumieć plany, oferty, przydziały i subskrypcje usługi Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 3dc92e5c-c004-49db-9a94-783f1f798b98
@@ -13,75 +13,75 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/07/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: d8aef778807d3a8a61cf9eedaae24abce84a19ab
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 70ed5d45701133434c708ad80aaafc58645297e8
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248762"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077123"
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>Omówienie planu, oferty, przydziału i subskrypcji
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-[Azure stosu](azure-stack-poc.md) umożliwia dostarczanie szerokiej gamy usług, takich jak maszyny wirtualne, bazy danych SQL Server, SharePoint, Exchange, a nawet [elementów portalu Azure Marketplace](azure-stack-marketplace-azure-items.md). Jako operator stosu Azure Skonfiguruj i dostarczanie tych usług w stosie Azure przy użyciu planów, ofertami i przydziały.
+[Usługa Azure Stack](azure-stack-poc.md) pozwala dostarczać cały szereg usług, takie jak maszyny wirtualne, bazy danych SQL Server, SharePoint, Exchange, a nawet [elementów portalu Azure Marketplace](azure-stack-marketplace-azure-items.md). Jako operatorów usługi Azure Stack, skonfiguruj i dostarczanie tych usług w usłudze Azure Stack przy użyciu planów, ofert i przydziałów.
 
-Oferty zawierają co najmniej jeden plan, a każdy plan zawiera co najmniej jedna usługa. Tworzenie planów i połączenie ich do innej oferty, można zarządzać:
+Oferty zawierają co najmniej jeden plan, a każdy plan zawiera co najmniej jednej usługi. Tworzenie planów i łącząc je w różnych ofert, można zarządzać:
 
-- Które usługi i użytkownicy mogą uzyskiwać dostęp do zasobów.
+- Które usługi i zasoby, które użytkownicy mogą uzyskiwać dostęp.
 - Ilość zasobów, które użytkownicy mogą korzystać.
-- Regiony mają dostęp do zasobów.
+- Które regiony mają dostęp do zasobów.
 
-W przypadku dostarczenia usługi, wykonaj następujące kroki wysokiego poziomu:
+Gdy można dostarczać usługi, postępuj zgodnie z następującą ogólną procedurą:
 
-1. Dodaj usługi, które mają zostać dostarczone do użytkowników.
-2. Utwórz plan, który ma co najmniej jedna usługa. Podczas tworzenia planu, wybierz lub utwórz przydziały definiujące ograniczenia zasobów poszczególnych usług w planie.
-3. Utwórz ofertę, która zawiera co najmniej jeden plan. Oferty mogą obejmować plany podstawowe i planów dodatek opcjonalne.
+1. Dodaj usługę, którą chcesz dostarczać użytkownikom.
+2. Utwórz plan, który ma co najmniej jednej usługi. Podczas tworzenia planu, wybierz lub utwórz przydziały, które definiują limity zasobów dla każdej usługi w planie.
+3. Utwórz ofertę, która zawiera co najmniej jeden plan. Oferta może zawierać planów podstawowych i planów dodatków opcjonalne.
 
-Po utworzeniu oferty, użytkownicy mogą subskrybować on dostęp do usług i zasobów, który zapewnia oferty. Użytkownicy mogą subskrybować tyle oferty mogą. Na poniższym diagramie przedstawiono prosty przykład użytkownika, który subskrybuje dwa oferty. Każdy oferta ma planu lub dwóch i każdego planu umożliwi im dostęp do usług.
+Po utworzeniu oferty użytkowników może być subskrybowana przez dostęp do usług i zasobów, których oferta obejmuje stały przydział. Użytkownicy mogą subskrybować oferty tyle, jak chcą. Na poniższym diagramie przedstawiono prosty przykład użytkownika, który subskrybuje dwóch ofert. Każda oferta ma plan lub dwa, a każdy plan umożliwi im dostęp do usług.
 
-![Dzierżawy subskrypcja z ofertami i planów](media/azure-stack-key-features/image4.png)
+![Subskrypcji dzierżawcy przy użyciu oferty i plany](media/azure-stack-key-features/image4.png)
 
 ## <a name="plans"></a>Plany
 
-Plany to grupy co najmniej jedna usługa. Jako operator stosu Azure możesz [tworzyć plany](azure-stack-create-plan.md) oferować użytkownikom. Z kolei użytkownikom subskrybować oferty korzystać z planów i usług, które obejmują one. Podczas tworzenia planów, upewnij się, że ustawienie przydziałami, zdefiniuj planów podstawowej i należy wziąć pod uwagę, łącznie z planami dodatek opcjonalne.
+Plany są grupowania co najmniej jednej usługi. Jako operatorów usługi Azure Stack możesz [tworzyć plany](azure-stack-create-plan.md) do zaoferowania użytkownikom. Z kolei użytkownicy subskrybują oferty, aby korzystać z planów i usług, które należą do. Podczas tworzenia planów, pamiętaj ustawić limity przydziału, zdefiniuj swoje plany podstawowe i należy rozważyć umieszczenie planów dodatków opcjonalne.
 
 ### <a name="quotas"></a>Przydziały
 
-Aby ułatwić zarządzanie pojemność w chmurze, można za pomocą wstępnie skonfigurowanych przydziałów lub utworzyć nowy przydział dla każdej usługi w planie. Przydziały zdefiniować limity górny zasobów, które subskrypcji użytkownika można udostępnić lub korzystać z. Na przykład limit przydziału może zezwolić użytkownikowi na tworzenie do pięciu maszynach wirtualnych (VM). Dodatkowych przydziałach można ustawić na maszynach wirtualnych, takie jak ilość pamięci RAM i procesora CPU rdzeni.
+Aby ułatwić zarządzanie pojemnością chmury, możesz użyć wstępnie skonfigurowane limity przydziału lub tworzenie nowego limitu przydziału dla każdej usługi w ramach planu. Przydziały definiują limity górny zasobów, które subskrypcji użytkownika można aprowizować lub zużywają. Na przykład limit przydziału mogą zezwalać na użytkownika, aby utworzyć do pięciu maszyn wirtualnych (VM). Możesz ustawić dodatkowe przydziały na maszynach wirtualnych, takie jak ilość pamięci RAM i procesora CPU rdzeni.
 
-Można skonfigurować przydziały według regionu. Na przykład plan, który udostępnia usługi obliczeniowe dla regionu A może mieć przydziału dwóch maszyn wirtualnych z 4 GB pamięci RAM i 8 rdzeni Procesora.
+Można skonfigurować przydziały uporządkowane według regionów. Na przykład plan, które świadczy usługi compute dla regionu, A może mieć limit przydziału dwie maszyny wirtualne z 4 GB pamięci RAM i 8 rdzeni procesora CPU.
 
 >[!NOTE]
->Azure stosu Development Kit, tylko jeden region (o nazwie *lokalnego*) jest dostępny.
+>W usłudze Azure Stack Development Kit, tylko jeden region (o nazwie *lokalnego*) jest dostępna.
 
-Dowiedz się więcej o [typy przydziału w stosie Azure](azure-stack-quota-types.md).
+Dowiedz się więcej o [typy limitów przydziału w usłudze Azure Stack](azure-stack-quota-types.md).
 
 ### <a name="base-plan"></a>Plan podstawowy
 
-Podczas tworzenia oferty, administrator usługi mogą obejmować planu podstawowego. Te plany podstawowe są domyślnie dołączone, gdy użytkownik subskrybuje tej oferty. Gdy użytkownik subskrybuje, mają dostęp do wszystkich dostawców zasobów określone w te plany podstawowe (za pomocą odpowiednich przydziały.)
+Podczas tworzenia oferty, administrator usługi może zawierać plan podstawowy. Te plany podstawowe znajdują się domyślnie, gdy użytkownik subskrybuje tę ofertę. Gdy użytkownik subskrybuje, mają dostęp do wszystkich dostawców zasobów, określone w tych planów podstawowych (z odpowiedniej limitów przydziału.)
 
 ### <a name="add-on-plans"></a>Plany dodatkowe
 
-Dodatkowe programy są opcjonalne plany, które można dodać do oferty. Plany dodatku nie są domyślnie włączone w subskrypcji. Dodatkowe programy są dodatkowe planów (limity) dostępna w propozycję subskrybenta można dodać do subskrypcji. Na przykład możesz zaoferować podstawowy plan o ograniczonych zasobów z wersji próbnej i planu dodatkowe zasoby bardziej znaczące klienci, którzy zdecydują się wdrożyć usługę.
+Plany dodatkowe są opcjonalne plany, które możesz dodać do oferty. Plany dodatkowe nie są domyślnie włączone w subskrypcji. Plany dodatkowe są plany dodatkowe (z limitami przydziału) dostępnych w ofercie, subskrybent można dodać do swojej subskrypcji. Na przykład możesz zaoferować plan podstawowy z ograniczonymi zasobami z wersji próbnej i planu dodatku z zasobami bardziej znaczące klienci, którzy zdecydują się podczas wdrażania usługi.
 
 ## <a name="offers"></a>Oferta
 
-Oferty to grupy co najmniej jeden plan utworzonych przez Ciebie, dzięki czemu użytkownicy mogą subskrybować je. Na przykład oferty alfa może zawierać A Plan, który zapewnia zbiór usług obliczeń i planu B, który zapewnia zbiór usług magazynu i sieci.
+Oferty są grupami co najmniej jeden plany, które można utworzyć, dzięki czemu użytkownicy mogą je subskrybują. Na przykład alfa oferuje może zawierać, A Plan, który zawiera zbiór usług obliczeniowych i planowanie B, który zawiera zestaw usług magazynu i sieci.
 
-Gdy użytkownik [utworzyć ofertę](azure-stack-create-offer.md), musi zawierać co najmniej jeden plan bazowy, ale można również tworzyć plany dodatków, które użytkownicy mogą dodawać do nich.
+Gdy użytkownik [Utwórz ofertę](azure-stack-create-offer.md), musi zawierać co najmniej jeden plan podstawowy, ale można również tworzyć plany dodatkowe, które użytkownicy mogą dodawać do swojej subskrypcji.
 
 ## <a name="subscriptions"></a>Subskrypcje
 
-Jak użytkownicy uzyskują dostęp do Twojej oferty jest subskrypcja. Jeśli operator Azure stosu dla dostawcy usług, użytkowników (dzierżawcami) Kup usług subskrypcja z ofertami. Jeśli operator Azure stosu w organizacji, użytkownicy (pracowników) mogą subskrybować oferowane bez płatności usługi.
+Subskrypcja stanowi, jak użytkownicy uzyskują dostęp swoje oferty. W przypadku operatorów usługi Azure Stack dla dostawcy usług, użytkowników (dzierżawcy) kupować usługi subskrybując Twoich ofert. Jeśli jesteś operatorów usługi Azure Stack w organizacji, użytkownicy (pracownicy) mogą subskrybować usługi, które oferują bez konieczności płacenia.
 
-Każda kombinacja użytkownika z oferty jest unikatowy subskrypcji. Użytkownik może mieć subskrypcji do wielu ofert, ale każda subskrypcja ma zastosowanie tylko do jednej oferty. Plany, ofertami i przydziały dotyczą tylko subskrypcji unikatowy — nie można udostępniać między subskrypcjami. Wszystkie zasoby, które użytkownik tworzy jest skojarzony z jedną subskrypcją.
+Każda kombinacja użytkownika z ofertą jest unikatowy subskrypcji. Użytkownik może mieć wiele ofert subskrypcji, ale każda subskrypcja ma zastosowanie tylko do jednej oferty. Plany, oferty i przydziały dotyczą tylko subskrypcji unikatowy — nie można udostępniać między subskrypcjami. Wszystkie zasoby, które tworzy użytkownik jest skojarzony z jedną subskrypcją.
 
-### <a name="default-provider-subscription"></a>Domyślny dostawca subskrypcji
+### <a name="default-provider-subscription"></a>Domyślną subskrypcję dostawcy
 
-Subskrypcja dostawca domyślny jest tworzony automatycznie podczas wdrażania usługi Azure stosu Development Kit. Ta subskrypcja może służyć do zarządzania Azure stosu, wdrażania dostawców dodatkowych zasobów oraz tworzenie planów i oferty dla użytkowników. Zabezpieczeń i licencjonowania przyczyny należy ich używać do uruchamiania obciążeń klientów i aplikacji.
+Subskrypcję dostawcy domyślne jest tworzone automatycznie podczas wdrażania usługi Azure Stack Development Kit. Ta subskrypcja może służyć do zarządzania usługi Azure Stack, wdrażanie dostawców dodatkowych zasobów i utworzyć plany i oferty dla użytkowników. Dla zabezpieczeń i licencjonowania przyczyny należy ich używać do uruchamiania obciążeń klientów i aplikacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

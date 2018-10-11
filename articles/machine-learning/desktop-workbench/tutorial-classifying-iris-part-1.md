@@ -1,5 +1,5 @@
 ---
-title: Samouczek dotyczący przygotowywania danych do klasyfikowania irysów w usługach Azure Machine Learning (wersja zapoznawcza) | Microsoft Docs
+title: Samouczek dotyczący przygotowywania danych do klasyfikowania irysów w usłudze Azure Machine Learning (wersja zapoznawcza) | Microsoft Docs
 description: W całej serii tego samouczka kompleksowo przedstawiono sposób korzystania z usługi Azure Machine Learning (wersja zapoznawcza). W części pierwszej omówiono przygotowywanie danych.
 services: machine-learning
 author: hning86
@@ -12,14 +12,17 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/7/2018
-ms.openlocfilehash: 56f1d26d5d687982366b9a8fb20235ff338a9573
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ROBOTS: NOINDEX
+ms.openlocfilehash: 272b8250a80fee42780311dec92f6d47c221c160
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38722987"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990165"
 ---
 # <a name="tutorial-1-classify-iris---preparing-the-data"></a>Samouczek 1: klasyfikowanie irysów — przygotowanie danych
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
 Usługa Azure Machine Learning (wersja zapoznawcza) stanowi zintegrowane, kompleksowe rozwiązanie do nauki o danych i do analiz zaawansowanych przeznaczone dla profesjonalnych analityków, którzy będą z niego korzystać w celu przygotowywania danych, opracowywania eksperymentów i wdrażania modeli na skalę chmury.
 
@@ -32,6 +35,8 @@ Niniejszy samouczek jest **pierwszą częścią trzyczęściowej serii**. W tym 
 
 W tym samouczku wykorzystywany jest ponadczasowy [zbiór danych na temat irysów](https://en.wikipedia.org/wiki/Iris_flower_data_set). 
 
+[!INCLUDE [aml-preview-note](../../../includes/aml-preview-note.md)]
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -40,11 +45,11 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 - Konto Eksperymentowanie w usłudze Azure Machine Learning
 - Zainstalowana aplikacja Azure Machine Learning Workbench
 
-Jeśli te wymagania wstępne nie zostały jeszcze spełnione, postępuj zgodnie z instrukcjami w artykule [Szybki start: instalacja i uruchamianie](../service/quickstart-installation.md), aby skonfigurować Twoje konta i zainstalować aplikację Azure Machine Learning Workbench. 
+Jeśli te wymagania wstępne nie zostały jeszcze spełnione, postępuj zgodnie z instrukcjami w artykule [Szybki start: instalacja i uruchamianie](quickstart-installation.md), aby skonfigurować Twoje konta i zainstalować aplikację Azure Machine Learning Workbench. 
 
 ## <a name="create-a-new-project-in-workbench"></a>Tworzenie nowego projektu w aplikacji Workbench
 
-Jeśli wykonywano kroki z artykułu [Szybki start: instalacja i uruchamianie](../service/quickstart-installation.md), ten projekt powinien już istnieć i możesz przejść do następnej sekcji.
+Jeśli wykonywano kroki z artykułu [Szybki start: instalacja i uruchamianie](quickstart-installation.md), ten projekt powinien już istnieć i możesz przejść do następnej sekcji.
 
 1. Uruchom aplikację Azure Machine Learning Workbench i w razie potrzeby zaloguj się. 
    
@@ -62,7 +67,7 @@ Jeśli wykonywano kroki z artykułu [Szybki start: instalacja i uruchamianie](..
    Project name (Nazwa projektu) | myIris |Wprowadź unikatową nazwę, która identyfikuje Twoje konto. Możesz użyć własnej nazwy albo nazwy działu lub projektu, która najlepiej identyfikuje eksperyment. Nazwa powinna mieć od 2 do 32 znaków. Powinna ona zawierać tylko znaki alfanumeryczne i znak łącznika (-). 
    Katalog projektu | c:\Temp\ | Określ katalog, w którym zostanie utworzony projekt.
    Opis projektu | _Pozostaw puste_ | Pole opcjonalne przydatne do opisywania projektów.
-   Adres URL repozytorium usługi GIT VisualStudio.com |_Pozostaw puste_ | Pole opcjonalne. Możesz skojarzyć projekt z repozytorium Git w usłudze Visual Studio Team Services na potrzeby kontroli źródła i współpracy. [Dowiedz się, jak to skonfigurować](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo). 
+   Adres URL repozytorium usługi GIT VisualStudio.com |_Pozostaw puste_ | Pole opcjonalne. Możesz skojarzyć projekt z repozytorium Git w pakiecie Azure DevOps na potrzeby kontroli źródła i współpracy. [Dowiedz się, jak to skonfigurować](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo). 
    Wybrany obszar roboczy | IrisGarden (jeśli istnieje) | Wybierz obszar roboczy utworzony dla konta Eksperymentowania w witrynie Azure Portal. <br/>Jeśli samouczek Szybki start był wykonywany, powinien już istnieć obszar roboczy o nazwie IrisGarden. W przeciwnym razie wybierz obszar roboczy utworzony podczas tworzenia konta Eksperymentowania lub dowolny inny, którego chcesz użyć.
    Szablon projektu | Classifying Iris | Szablony zawierają skrypty i dane, których można użyć, aby zapoznać się z produktem. Ten szablon zawiera skrypty i dane potrzebne w tym samouczku Szybki start oraz innych samouczkach w tej witrynie dokumentacji. 
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: glenga
-ms.openlocfilehash: e77e81624c93bf1189afd556a8257362197c6b60
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 1827e54f5e1e68ec324b4f521de843be48935391
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902964"
+ms.locfileid: "49079416"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
@@ -326,6 +326,8 @@ func host start
 | **`--nodeDebugPort -n`** | Port do użycia w debugerze węzła. Wartość domyślna: Wartość z pliku launch.json lub 5858. W wersji 1.x tylko. |
 | **`--password`** | Hasło lub plik, który zawiera hasło do pliku .pfx. Używana tylko z `--cert`. W wersji 2.x tylko. |
 | **`--port -p`** | Lokalny port do nasłuchiwania. Wartość domyślna: 7071. |
+| **`--pause-on-error`** | Wstrzymaj na dodatkowe dane wejściowe, zanim proces zostanie zakończony. Używana tylko wtedy, gdy uruchamianie podstawowych narzędzi w zintegrowanym środowisku programistycznym (IDE).|
+| **`--script-root --prefix`** | Można określić ścieżkę do katalogu głównego aplikacji funkcji, który ma zostać uruchomić lub wdrożyć. Służy to do skompilowanych projektach, generujących pliki projektu do podfolderu. Na przykład podczas kompilowania biblioteki klas C# plików projektu, host.json, local.settings.json i function.json są generowane w *głównego* podfolder ze ścieżką, takich jak `MyProject/bin/Debug/netstandard2.0`. W tym przypadku Ustaw prefiks jako `--script-root MyProject/bin/Debug/netstandard2.0`. Jest to katalog główny aplikacji funkcji, podczas uruchamiania na platformie Azure. |
 | **`--timeout -t`** | Limit czasu dla hosta funkcji, które można uruchomić w ciągu kilku sekund. Wartość domyślna: 20 sekund.|
 | **`--useHttps`** | Powiąż z `https://localhost:{port}` , a nie do `http://localhost:{port}`. Domyślnie ta opcja tworzy zaufanego certyfikatu na komputerze.|
 
@@ -333,7 +335,7 @@ Dla języka C# projekt biblioteki klas (.csproj), należy wprowadzić `--build` 
 
 Podczas uruchamiania hosta funkcje, dane wyjściowe funkcji wyzwalanych przez adres URL protokołu HTTP:
 
-```bash
+```output
 Found the following functions:
 Host.Functions.MyHttpTrigger
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 05ec147e705da4951735616881ad19ad265b403d
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: d1d760c2642e0c986e50570630d31dda11d17478
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41920755"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964742"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Samouczek: tworzenie infrastruktury programowania na maszynie wirtualnej z systemem Linux na platformie Azure przy użyciu usług Jenkins, GitHub i Docker
 
@@ -37,7 +37,7 @@ Aby zautomatyzować fazę kompilacji i testowania podczas tworzenia aplikacji, m
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 ## <a name="create-jenkins-instance"></a>Tworzenie wystąpienia usługi Jenkins
 W poprzednim samouczku dotyczącym [sposobu dostosowywania maszyny wirtualnej systemu Linux przy pierwszym uruchomieniu](tutorial-automate-vm-deployment.md) przedstawiono proces automatyzowania dostosowywania maszyny wirtualnej przy użyciu pliku cloud-init. W tym samouczku plik cloud-init jest używany do instalowania usługi Jenkins i platformy Docker na maszynie wirtualnej. Jenkins to popularny serwer automatyzacji typu open source, który bezproblemowo integruje się z platformą Azure, umożliwiając ciągłą integrację (CI) i ciągłe dostarczanie (CD). Więcej samouczków dotyczących korzystania z usługi można znaleźć w centrum [Usługa Jenkins na platformie Azure](https://docs.microsoft.com/azure/jenkins/).
@@ -241,7 +241,7 @@ W tym samouczku skonfigurowano usługę GitHub do uruchomienia zadania kompilacj
 > * Tworzenie obrazu platformy Docker dla aplikacji
 > * Sprawdzanie, czy zatwierdzenia GitHub tworzą nowy obraz platformy Docker i aktualizują działającą aplikację
 
-Przejdź do następnego samouczka, aby dowiedzieć się więcej na temat sposobu integrowania usługi Jenkins z usługami Visual Studio Team Services.
+Przejdź do następnego samouczka, aby dowiedzieć się więcej na temat sposobu integrowania usługi Jenkins z usługami Azure DevOps Services.
 
 > [!div class="nextstepaction"]
-> [Wdrażanie aplikacji przy użyciu usług Jenkins i Team Services](tutorial-build-deploy-jenkins.md)
+> [Wdrażanie aplikacji przy użyciu usług Jenkins i Azure DevOps Services](tutorial-build-deploy-jenkins.md)

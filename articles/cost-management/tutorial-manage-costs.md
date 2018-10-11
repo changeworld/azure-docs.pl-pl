@@ -1,26 +1,29 @@
 ---
-title: Samouczek — zarządzanie kosztami przy użyciu usługi Azure Cost Management | Microsoft Docs
+title: Samouczek — zarządzanie kosztami przy użyciu rozwiązania Cloudyn na platformie Azure | Microsoft Docs
 description: Ten samouczek przedstawia zarządzanie kosztami metodą przydzielania kosztów oraz przy użyciu raportów przewidywanych kosztów i obciążeń zwrotnych.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 09/18/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 16f86eace9b5848f263e0d0772db441a123f21ae
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 743576d8cbd7135369fb692e601360cb57a6c3bd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989639"
 ---
-# <a name="tutorial-manage-costs-by-using-azure-cost-management"></a>Samouczek: zarządzanie kosztami przy użyciu usługi Azure Cost Management
+# <a name="tutorial-manage-costs-by-using-cloudyn"></a>Samouczek: zarządzanie kosztami przy użyciu rozwiązania Cloudyn
 
-Usługa Azure Cost Management umożliwia zarządzanie kosztami i tworzenie raportów przewidywanych kosztów przez przydzielanie kosztów na podstawie tagów. W procesie przydzielania kosztów do wykorzystywanych zasobów w chmurze przypisywane są koszty. Koszty są w pełni przydzielone, gdy wszystkie zasoby są skategoryzowane przy użyciu tagów. Po przydzieleniu kosztów można udostępnić użytkownikom analizę przewidywanych kosztów i obciążeń zwrotnych za pomocą pulpitów nawigacyjnych i raportów. Jednak na początku korzystania z usługi Cost Management wiele zasobów może nie mieć przypisanych tagów lub przypisanie im tagów może być niemożliwe.
+Rozwiązanie Cloudyn umożliwia zarządzanie kosztami i tworzenie raportów przewidywanych kosztów przez przydzielanie kosztów na podstawie tagów. W procesie przydzielania kosztów do wykorzystywanych zasobów w chmurze przypisywane są koszty. Koszty są w pełni przydzielone, gdy wszystkie zasoby są skategoryzowane przy użyciu tagów. Po przydzieleniu kosztów można udostępnić użytkownikom analizę przewidywanych kosztów i obciążeń zwrotnych za pomocą pulpitów nawigacyjnych i raportów. Jednak na początku korzystania z rozwiązania Cloudyn wiele zasobów może nie mieć przypisanych tagów lub przypisanie im tagów może być niemożliwe.
 
 Na przykład może być konieczne uzyskanie zwrotu kosztów inżynieryjnych. Potrzebna jest możliwość przedstawienia zespołowi inżynierów tego, że wymagane jest określona kwota — na podstawie kosztów zasobów. Można pokazać im raport dotyczący wszystkich wykorzystanych zasobów z tagiem *inżynieria*.
+
+W tym artykule tagi i kategorie mają czasami to samo znaczenie. Kategorie to obszerne kolekcje mogące zawierać wiele elementów. Mogą to być na przykład jednostki biznesowe, centra kosztów, usługi internetowe lub inne dowolne elementy oznaczone tagami. Tagi to pary kluczy i wartości umożliwiające kategoryzowanie zasobów, wyświetlanie skonsolidowanych informacji na temat rozliczeń oraz zarządzanie nimi przez zastosowanie tego samego tagu względem wielu zasobów i grup zasobów. We wcześniejszych wersjach witryny Azure Portal *nazwa tagu* była określana jako *klucz*. Tagi są tworzone i przechowywane dla pojedynczej subskrypcji platformy Azure. Tagi w usługach AWS składają się z pary klucz/wartość. Ponieważ zarówno na platformie Azure, jak i w usługach AWS jest używany termin *klucz*, rozwiązanie Cloudyn korzysta też z tego terminu. Narzędzie Category Manager korzysta z kluczy (nazw tagów) do scalania tagów.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -33,13 +36,22 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Musisz mieć konto platformy Azure.
-- Musisz mieć rejestrację próbną lub płatną subskrypcję usługi Azure Cost Management.
+- Musisz mieć rejestrację próbną lub płatną subskrypcję rozwiązania Cloudyn.
+- [Nieaktywowane konta należy aktywować](activate-subs-accounts.md) w portalu Cloudyn.
+- Na maszynach wirtualnych należy włączyć [monitorowanie na poziomie gościa](azure-vm-extended-metrics.md).
+
 
 ## <a name="use-custom-tags-to-allocate-costs"></a>Przydzielanie kosztów za pomocą tagów niestandardowych
 
+Rozwiązanie Cloudyn pobiera dane tagu grupy zasobów z platformy Azure i automatycznie propaguje informacje dotyczące tagu do zasobów. W przypadku alokacji kosztów koszty można wyświetlać według tagów zasobów.
+
+W modelu alokacji kosztów definiowane są kategorie (tagi), które są stosowane wewnętrznie do nieskategoryzowanych (nieotagowanych) zasobów. Dzięki temu można grupować koszty i definiować reguły na potrzeby obsługi nieotagowanych kosztów. Reguły alokacji kosztów to zapisane instrukcje dystrybucji kosztów jednej usługi do innej usługi. Później dla tych zasobów można wyświetlić tagi/kategorie w raportach dotyczących *alokacji kosztów* przez wybranie utworzonego modelu.
+
+Należy pamiętać, że informacje o tagu nie są wyświetlane dla tych zasobów w raportach dotyczących *analizy kosztów*. Ponadto tagi zastosowane w rozwiązaniu Cloudyn przy użyciu funkcji alokacji kosztów nie są wysyłane do platformy Azure, dlatego nie będą one widoczne w witrynie Azure Portal.
+
 Podczas przydzielania kosztów w pierwszej kolejności należy zdefiniować zakres przy użyciu modelu kosztów. Model kosztów nie zmienia kosztów, lecz je dystrybuuje. Tworzenie modelu kosztów polega na segmentacji danych według jednostek kosztów, kont lub subskrypcji, a także według wielu tagów. Przykłady typowych tagów to kod rozliczeń, centrum kosztu lub nazwa grupy. Tagi ułatwiają też analizę przewidywanych kosztów i obciążeń zwrotnych do innych części organizacji.
 
-Aby utworzyć niestandardowy model przydzielania kosztów, wybierz pozycję **Cost** (Koszty) &gt; **Cost Management** (Zarządzanie kosztami) &gt; **Cost Allocation 360°** (Alokacja kosztu 360°) w menu raportu.
+Aby utworzyć niestandardowy model alokacji kosztów, wybierz pozycję **Costs** (Koszty) &gt; **Cost Management** (Zarządzanie kosztami) &gt; **Cost Allocation 360°** (Alokacja kosztu 360°) w menu raportu.
 
 ![Wybieranie pozycji Cost Allocation 360 (Alokacja kosztu 360)](./media/tutorial-manage-costs/cost-allocation-360.png)
 
@@ -59,7 +71,7 @@ Na przykład koszty magazynu platformy Azure możesz dystrybuować równomiernie
 
 
 
-Inny przykład: możesz chcieć przydzielić wszystkie koszty sieci platformy Azure do określonej jednostki biznesowej w organizacji. Aby to zrobić, wybierz pozycję **Azure/Network**, a następnie pozycję **Explicit Distribution** (Dystrybucja jawna). Następnie ustaw dla procentu dystrybucji wartość 100 i wybierz jednostkę biznesową — na poniższej ilustracji jest to jednostka **G&amp;A**:
+Inny przykład: możesz chcieć przydzielić wszystkie koszty sieci platformy Azure do określonej jednostki biznesowej w organizacji. Aby to zrobić, wybierz pozycję **Azure/Network**, a następnie w obszarze **Define Allocation Rule** (Definiowanie reguły alokacji) wybierz pozycję **Explicit Distribution** (Dystrybucja jawna). Następnie ustaw dla procentu dystrybucji wartość 100 i wybierz jednostkę biznesową — na poniższej ilustracji jest to jednostka **G&amp;A**:
 
 ![Przykładowa reguła przydzielania do określonej jednostki biznesowej w modelu kosztów](./media/tutorial-manage-costs/cost-model03.png)
 
@@ -97,9 +109,9 @@ Dane tagów widoczne w raportach usługi Cloudyn pochodzą z trzech miejsc:
     - Tagi jednostek Cloudyn — metadane zdefiniowane przez użytkownika zastosowane do jednostek Cloudyn
     - Category Manager — narzędzie do czyszczenia danych, które tworzy nowe tagi na podstawie reguł zastosowanych do istniejących tagów
 
-Aby wyświetlać w raportach kosztów Cloudyn tagi dostawców chmury, należy utworzyć niestandardowy model przydzielania kosztów przy użyciu funkcji Cost Allocation 360. Aby to zrobić, przejdź do pozycji **Cost** (Koszty) > **Cost Management** (Zarządzanie kosztami) > **Cost Allocation 360°** (Alokacja kosztu 360°), wybierz odpowiednie tagi, a następnie zdefiniuj reguły obsługi nieotagowanych kosztów. Następnie utwórz nowy model kosztów. Następnie możesz przeglądać raporty w analizie przydzielania kosztów (Cost Allocation Analysis) w celu wyświetlania, filtrowania i sortowania tagów zasobów platformy Azure.
+Aby wyświetlać w raportach kosztów Cloudyn tagi dostawców chmury, należy utworzyć niestandardowy model przydzielania kosztów przy użyciu funkcji Cost Allocation 360. Aby to zrobić, przejdź do pozycji **Costs** (Koszty) > **Cost Management** (Zarządzanie kosztami) > **Cost Allocation 360°** (Alokacja kosztu 360°), wybierz odpowiednie tagi, a następnie zdefiniuj reguły obsługi nieotagowanych kosztów. Następnie utwórz nowy model kosztów. Następnie możesz przeglądać raporty w analizie przydzielania kosztów (Cost Allocation Analysis) w celu wyświetlania, filtrowania i sortowania tagów zasobów platformy Azure.
 
-Tagi zasobów platformy Azure są wyświetlane tylko w raportach **Cost Allocation Analysis** (Analiza przydzielania kosztów).
+Tagi zasobów platformy Azure są wyświetlane tylko w raportach **Costs** > **Cost Allocation Analysis** (Koszty > Analiza alokacji kosztów).
 
 Tagi rozliczeń dostawców chmury są widoczne we wszystkich raportach kosztów.
 

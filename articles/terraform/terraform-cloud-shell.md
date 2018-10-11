@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2017
-ms.openlocfilehash: 107a6dd82465ce1455a3c2922c8f9cba6b73dd64
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: a5f44edf201ce9a2e2c0da6b5da9031958a11fdc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667966"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959312"
 ---
 # <a name="terraform-cloud-shell-development"></a>Programowanie za pomocą narzędzia Terraform w usłudze Cloud Shell 
 
@@ -45,7 +45,7 @@ Usługa Cloud Shell przekazuje wymagane wartości dla dostawcy `azurerm` za pomo
 
 Pliki i stany powłoki pozostają w usłudze Azure Storage między sesjami usługi Cloud Shell. Używając [Eksploratora usługi Azure Storage](/azure/vs-azure-tools-storage-manage-with-storage-explorer), skopiuj i przekaż pliki z komputera lokalnego do usługi Cloud Shell.
 
-W usłudze Cloud Shell jest dostępny interfejs wiersza polecenia platformy Azure w wersji 2.0, który stanowi doskonałe narzędzie do testowania konfiguracji i kontrolowania pracy po wykonaniu polecenia `terraform apply` lub `terraform destroy`.
+W usłudze Cloud Shell jest dostępny interfejs wiersza polecenia platformy Azure, który stanowi doskonałe narzędzie do testowania konfiguracji i kontrolowania pracy po wykonaniu polecenia `terraform apply` lub `terraform destroy`.
 
 
 ## <a name="next-steps"></a>Następne kroki

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: d89e9b4dcfe44648f1e3ddd95fb01b62a36295df
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6bb13ad19f9b0b6137cdb2b4a9afbb2f325b9d36
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32166341"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46975060"
 ---
 # <a name="introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>Wprowadzenie do rozwiązań hostingu kontenera przy użyciu usługi Azure Container Service 
 
@@ -30,7 +30,7 @@ Za pomocą usługi Azure Container Service możesz korzystać z funkcji klasy ko
 Za pomocą usługi Azure Container Service chcemy zapewnić środowisko hostingu kontenerów za pomocą narzędzi i technologii typu open source, które już dziś są popularne wśród naszych klientów. W tym celu możemy uwidocznić standardowe punkty końcowe interfejsu API dla wybranego koordynatora (DC/OS, Docker Swarm lub Kubernetes). Za pomocą tych punktów końcowych można wykorzystać dowolne oprogramowanie, które jest w stanie komunikować się z tymi punktami końcowymi. Na przykład w przypadku punktu końcowego Docker Swarm można użyć interfejsu wiersza polecenia (CLI) platformy Docker. Dla platformy DC/OS można wybrać interfejs wiersza polecenia DCOS. W przypadku rozwiązania Kubernetes można wybrać narzędzie `kubectl`.
 
 ## <a name="creating-a-docker-cluster-by-using-azure-container-service"></a>Tworzenie klastra platformy Docker za pomocą usługi Azure Container Service
-Aby rozpocząć korzystanie z usługi Azure Container Service, musisz wdrożyć klaster usługi Azure Container Service za pośrednictwem portalu (wyszukaj w witrynie Marketplace termin **Azure Container Service**) przy użyciu szablonu usługi Azure Resource Manager ([Docker Swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm), [DC/OS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos) lub [Kubernetes](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)) albo za pomocą [interfejsu wiersza polecenia platformy Azure w wersji 2.0](container-service-create-acs-cluster-cli.md). Udostępnione szablony szybkiego startu można modyfikować w celu włączenia dodatkowej lub zaawansowanej konfiguracji platformy Azure. Aby uzyskać więcej informacji, zobacz [Wdrażanie klastra usługi Azure Container Service](container-service-deployment.md).
+Aby rozpocząć korzystanie z usługi Azure Container Service, musisz wdrożyć klaster usługi Azure Container Service za pośrednictwem portalu (wyszukaj w witrynie Marketplace termin **Azure Container Service**) przy użyciu szablonu usługi Azure Resource Manager ([Docker Swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm), [DC/OS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos) lub [Kubernetes](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)) albo za pomocą [interfejsu wiersza polecenia platformy Azure](container-service-create-acs-cluster-cli.md). Udostępnione szablony szybkiego startu można modyfikować w celu włączenia dodatkowej lub zaawansowanej konfiguracji platformy Azure. Aby uzyskać więcej informacji, zobacz [Wdrażanie klastra usługi Azure Container Service](container-service-deployment.md).
 
 ## <a name="deploying-an-application"></a>Wdrażanie aplikacji
 Usługa Azure Container Service umożliwia wybranie do aranżacji koordynatora Docker Swarm, DC/OS lub Kubernetes. Sposób wdrażania aplikacji zależy od wybranego programu koordynatora.
@@ -55,7 +55,8 @@ Domyślnie koordynator DC/OS działający w usłudze Azure Container Service zaw
 ![Uniwersum DC/OS w usłudze Azure Container Service](media/dcos/universe.png)
 
 #### <a name="using-marathon"></a>Przy użyciu platformy Marathon
-Platforma Marathon to obejmujący cały klaster system inicjowania i kontroli dla usług w cgroup — lub, w przypadku usługi Azure Container Service, kontenerów w formacie aparatu Docker. Platforma Marathon udostępnia interfejs sieci Web, z którego można wdrażać aplikacje. Możesz uzyskać do niej dostęp pod adresem URL, który wygląda podobnie do `http://DNS_PREFIX.REGION.cloudapp.azure.com`, gdzie DNS\_PREFIX i REGION są definiowane w czasie wdrażania. Oczywiście można również podać własną nazwę DNS. Aby uzyskać więcej informacji na temat uruchamiania kontenera za pomocą interfejsu użytkownika sieci Web platformy Marathon, zobacz [DC/OS container management through the Marathon web UI](container-service-mesos-marathon-ui.md) (Zarządzanie kontenerem DC/OS za pomocą interfejsu użytkownika sieci Web platformy Marathon).
+Platforma Marathon to obejmujący cały klaster system inicjowania i kontroli dla usług w cgroup — lub, w przypadku usługi Azure Container Service, kontenerów w formacie aparatu Docker. Platforma Marathon udostępnia interfejs sieci Web, z którego można wdrażać aplikacje. Dostęp do niego możesz uzyskać pod adresem URL, który wygląda podobnie jak `http://DNS_PREFIX.REGION.cloudapp.azure.com`,
+gdzie DNS\_PREFIX i REGION są definiowane w czasie wdrażania. Oczywiście można również podać własną nazwę DNS. Aby uzyskać więcej informacji na temat uruchamiania kontenera za pomocą interfejsu użytkownika sieci Web platformy Marathon, zobacz [DC/OS container management through the Marathon web UI](container-service-mesos-marathon-ui.md) (Zarządzanie kontenerem DC/OS za pomocą interfejsu użytkownika sieci Web platformy Marathon).
 
 ![Lista aplikacji aparatu Marathon](media/dcos/marathon-applications-list.png)
 
@@ -102,4 +103,4 @@ Tworzenie aplikacji za pomocą usługi Azure Container Service (kompilacja 2016)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Wdrażanie klastra usługi kontenera przy użyciu [portalu](container-service-deployment.md) lub [interfejsu wiersza polecenia platformy Azure w wersji 2.0](container-service-create-acs-cluster-cli.md).
+Wdrażanie klastra usługi kontenera przy użyciu [portalu](container-service-deployment.md) lub [interfejsu wiersza polecenia platformy Azure](container-service-create-acs-cluster-cli.md).

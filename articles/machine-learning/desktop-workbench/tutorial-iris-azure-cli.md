@@ -10,15 +10,19 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 10/15/2017
-ms.openlocfilehash: 10fe861682da6c1d1ac701a565cef11f9b44cd1e
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ROBOTS: NOINDEX
+ms.openlocfilehash: b9b515a2ccaedc40fc531d6a1cc58cbe98212b4a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41919849"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967901"
 ---
 # <a name="tutorial-classifying-iris-using-the-command-line-interface"></a>Samouczek: klasyfikowanie irysów przy użyciu interfejsu wiersza polecenia
-Usługi Azure Machine Learning (wersja zapoznawcza) stanowią zintegrowane, kompleksowe rozwiązanie do przetwarzania danych i do przeprowadzania zaawansowanych analiz. Jest ono przeznaczone dla profesjonalnych analityków, którzy będą z niego korzystać w celu przygotowywania danych, opracowywania eksperymentów i wdrażania modeli na skalę chmury.
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
+Usługa Azure Machine Learning (wersja zapoznawcza) stanowi zintegrowane, kompleksowe rozwiązanie do przetwarzania danych i do przeprowadzania zaawansowanych analiz. Jest ono przeznaczone dla profesjonalnych analityków, którzy będą z niego korzystać w celu przygotowywania danych, opracowywania eksperymentów i wdrażania modeli w skali chmury.
 
 Z tego samouczka dowiesz się, jak używać narzędzi interfejsu wiersza polecenia (CLI) w wersji zapoznawczej usługi Azure Machine Learning do wykonywania następujących czynności: 
 > [!div class="checklist"]
@@ -34,7 +38,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
   
   Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-- Aplikacja Azure Machine Learning Workbench zainstalowana zgodnie z opisem w sekcji [Szybki Start: instalowanie i uruchamianie usług Azure Machine Learning](../service/quickstart-installation.md). 
+- Aplikacja Azure Machine Learning Workbench zainstalowana zgodnie z opisem w sekcji [Szybki start: instalowanie i uruchamianie usługi Azure Machine Learning](quickstart-installation.md). 
 
   >[!IMPORTANT]
   >Nie należy tworzyć kont usługi Azure Machine Learning, ponieważ zrobimy to z użyciem interfejsu wiersza polecenia w tym artykule.
@@ -139,16 +143,16 @@ $ az ml project create --name <project name> --workspace <workspace name> --acco
 ```
 
 ### <a name="create-a-new-project-associated-with-a-cloud-git-repository"></a>Tworzenie nowego projektu skojarzonego z repozytorium Git w chmurze
-Możesz utworzyć nowy projekt skojarzony z repozytorium Git usługi VSTS (Visual Studio Team Service). Za każdym razem, gdy przesyłany jest eksperyment, migawka całego folderu projektu jest przekazywana do zdalnego repozytorium Git. Zobacz [Używanie repozytorium Git z projektem aplikacji Azure Machine Learning Workbench](using-git-ml-project.md), aby uzyskać więcej informacji.
+Możesz utworzyć nowy projekt skojarzony z repozytorium Git pakietu Azure DevOps. Za każdym razem, gdy przesyłany jest eksperyment, migawka całego folderu projektu jest przekazywana do zdalnego repozytorium Git. Zobacz [Używanie repozytorium Git z projektem aplikacji Azure Machine Learning Workbench](using-git-ml-project.md), aby uzyskać więcej informacji.
 
 > [!NOTE]
-> Usługa Azure Machine Learning obsługuje tylko puste repozytoria Git utworzone w usłudze VSTS.
+> Usługa Azure Machine Learning obsługuje tylko puste repozytoria Git utworzone w pakiecie Azure DevOps.
 
 ```azure-cli
 $ az ml project create --name <project name> --workspace <workspace name> --account <experimentation account name> --resource-group <resource group name> --path <local folder path> --repo <VSTS repo URL>
 ```
 > [!TIP]
-> Jeśli wyświetla się błąd „Adres URL repozytorium może być nieprawidłowy lub użytkownik może nie mieć dostępu”, możesz utworzyć token zabezpieczający w usłudze VSTS (w menu _Zabezpieczenia_, _Dodaj osobiste tokeny dostępu_) i użyć argumentu `--vststoken` podczas tworzenia projektu. 
+> Jeśli wyświetla się błąd „Adres URL repozytorium może być nieprawidłowy lub użytkownik może nie mieć dostępu”, możesz utworzyć token zabezpieczający w pakiecie Azure DevOps (w menu _Zabezpieczenia_, _Dodaj osobiste tokeny dostępu_) i użyć argumentu `--vststoken` podczas tworzenia projektu. 
 
 ### <a name="sample_create"></a>Tworzenie nowego projektu na podstawie projektu przykładowego
 W tym przykładzie utworzysz nowy projekt, używając jako szablonu projektu przykładowego.

@@ -3,7 +3,7 @@ title: Łączenie usługi Azure Stack na platformie Azure przy użyciu usługi E
 description: Dowiedz się, jak połączyć sieci wirtualne w usłudze Azure Stack z sieciami wirtualnymi na platformie Azure przy użyciu usługi ExpressRoute.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: db9f19154668fa33bb94e59a4da6735b1a6d3d49
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: eee4407af8d7def94061002941d758a99237645f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720501"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078702"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Łączenie usługi Azure Stack na platformie Azure przy użyciu usługi Azure ExpressRoute
 
@@ -345,7 +345,7 @@ Postępuj zgodnie z instrukcjami w [Konfigurowanie bramy sieci wirtualnej dla us
 
 Aby połączyć z obwodem usługi ExpressRoute z piastą, wykonaj kroki opisane w [łączenie sieci wirtualnej z obwodem usługi ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md).
 
-### <a name="peer-the-vnets"></a>Komunikacja równorzędna sieci wirtualnych
+### <a name="peer-the-vnets"></a>Łączenie sieci wirtualnych przy użyciu komunikacji równorzędnej
 
 Komunikacja równorzędna koncentratora i przy użyciu kroków w sieci wirtualne będące szprychami [tworzenia wirtualnej sieci równorzędnej przy użyciu witryny Azure portal](../virtual-network/virtual-networks-create-vnetpeering-arm-portal.md). Podczas konfigurowania komunikacji równorzędnej sieci wirtualnej, upewnij się, że można użyć następujących opcji:
 

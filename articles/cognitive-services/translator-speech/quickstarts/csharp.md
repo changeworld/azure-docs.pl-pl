@@ -1,41 +1,43 @@
 ---
-title: Przewodnik Szybki Start języka C# dla usługi Azure Cognitive Services, interfejs API mowy usługi Microsoft Translator | Dokumentacja firmy Microsoft
-description: Pobierz informacje oraz przykłady kodu w celu szybkiego Rozpocznij pracę przy użyciu interfejsu API mowy usługi Microsoft Translator w usługach Microsoft Cognitive Services na platformie Azure.
+title: 'Szybki start: interfejs API tłumaczenia mowy w usłudze Translator — C#'
+titlesuffix: Azure Cognitive Services
+description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API tłumaczenia mowy w usłudze Translator.
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.topic: article
+ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: c8c1945d8343ad966fe4b09f67099bccdae4be29
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7d1f5968fe6ddffce3194f070b6a17aca4d3d9ab
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128541"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995044"
 ---
-# <a name="quickstart-for-microsoft-translator-speech-api-with-c"></a>Przewodnik Szybki start dotyczący mowy usługi Microsoft Translator interfejsu API w języku C# 
+# <a name="quickstart-translator-speech-api-with-c"></a>Szybki start: interfejs API tłumaczenia mowy w usłudze Translator — C# 
 <a name="HOLTop"></a>
 
-Ten artykuł pokazuje, jak używać interfejsu API mowy usługi Microsoft Translator do tłumaczenia używany w pliku .wav słów.
+W tym artykule pokazano, jak używać interfejsu API tłumaczenia mowy w usłudze Translator do tłumaczenia wypowiedzi z pliku wav.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Konieczne będzie [programu Visual Studio 2017](https://www.visualstudio.com/downloads/) do uruchamiania tego kodu na Windows. (Można korzystać z bezpłatnej wersji Community Edition).
+Do uruchamiania tego kodu w systemie Windows jest potrzebny [program Visual Studio 2017](https://www.visualstudio.com/downloads/). (Można korzystać z bezpłatnej wersji Community Edition).
 
-Konieczne będzie plik wav o nazwie "speak.wav", w tym samym folderze co plik wykonywalny, który kompilujesz z poniższym kodem. Ten plik w formacie .wav należy w module PCM standardowe, 16-bitowych, 16kHz, format mono.
+Plik wav o nazwie „speak.wav” musi znajdować się w tym samym folderze co plik wykonywalny, który skompilujesz przy użyciu poniższego kodu. Ten plik wav powinien być plikiem zapisanym w standardzie PCM, o 16-bitowej rozdzielczości, częstotliwości 16 kHz w formacie mono.
 
-Konieczne jest posiadanie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejs API mowy usługi Microsoft Translator**. Konieczne będzie klucza z płatnej licencji usługi [pulpitu nawigacyjnego platformy Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
+Musisz mieć również [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsem API tłumaczenia mowy w usłudze Microsoft Translator**. Będziesz potrzebować klucza płatnej subskrypcji dostępnego na [pulpicie nawigacyjnym platformy Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
 ## <a name="translate-speech"></a>Tłumaczenie mowy
 
-Poniższy kod wykonuje translację mowy z jednego języka do innego.
+Poniższy kod tłumaczy mowę z jednego języka na inny.
 
-1. Utwórz nowy projekt C# w Twoim ulubionym środowisku IDE.
-2. Dodaj kod, przedstawione poniżej.
-3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
+1. Utwórz nowy projekt języka C# w ulubionym środowisku IDE.
+2. Dodaj kod przedstawiony poniżej.
+3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```csharp
@@ -142,18 +144,18 @@ namespace TranslateSpeechQuickStart
 }
 ```
 
-**Tłumaczenie mowy odpowiedzi**
+**Wynik tłumaczenia mowy**
 
-Pomyślne wynikiem jest utworzenie pliku o nazwie "speak2.wav". Plik zawiera tłumaczeń wyrazów, używany w "speak.wav".
+Pomyślnym wynikiem jest utworzenie pliku o nazwie „speak2.wav”. Ten plik zawiera tłumaczenie słów wymawianych w pliku „speak.wav”.
 
 [Powrót do początku](#HOLTop)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek dotyczący mowy usługi Translator](../tutorial-translator-speech-csharp.md)
+> [Samouczek dotyczący tłumaczenia mowy w usłudze Translator](../tutorial-translator-speech-csharp.md)
 
-## <a name="see-also"></a>Zobacz także 
+## <a name="see-also"></a>Zobacz też 
 
-[Omówienie funkcji rozpoznawania mowy w usłudze Translator](../overview.md)
-[dokumentacja interfejsu API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)
+[Omówienie tłumaczenia mowy w usłudze Translator](../overview.md)
+[Dokumentacja interfejsu API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

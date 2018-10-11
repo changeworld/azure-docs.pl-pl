@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 1ac55b728a29ff1bb8129087da5992ffe5f23df9
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 6ed1ef6019e339768c4ba6a62d8b4d99d844f254
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42820323"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949529"
 ---
 # <a name="azure-and-linux"></a>Azure i Linux
 Platforma Microsoft Azure to rosnący zbiór zintegrowanych usług publicznych w chmurze, obejmujący maszyny wirtualne, usługi analityczne, bazodanowe, mobilne, sieciowe, magazynowe oraz internetowe &mdash; — idealne do hostowania rozwiązań.  Microsoft Azure to skalowalna platforma obliczeniowa, która pozwala na płacenie tylko za używane usługi, z których można korzystać w dowolnej chwili — bez konieczności inwestowania w sprzęt lokalny.  Platforma Azure jest gotowa wraz z Tobą do skalowania rozwiązań tak, aby sprostać wymaganiom klientów.
@@ -37,7 +37,7 @@ Platforma Azure oferuje najlepszą w branży umowę dotyczącą poziomu usług g
 
 ## <a name="managed-disks"></a>Managed Disks
 
-W przypadku usługi Managed Disks tworzenie konta usługi Azure Storage i zarządzanie nią odbywa się automatycznie w tle i nie trzeba martwić się o limity skalowalności konta magazynu. Wystarczy określić rozmiar dysku i warstwę wydajności (Standardowa/Premium), a platforma Azure utworzy dysk i będzie nim zarządzać. O używanym magazynie nie trzeba myśleć przy dodawaniu dysków albo skalowaniu maszyny wirtualnej w górę i w dół. Jeśli tworzysz nowe maszyny wirtualne, [użyj interfejsu wiersza polecenia platformy Azure 2.0](quick-create-cli.md) lub witryny Azure Portal, aby utworzyć maszyny wirtualne z zarządzanymi dyskami systemu operacyjnego i dyskami danych. Jeśli na maszynie wirtualnej znajdują się niezarządzane dyski, możesz [przekonwertować maszyny wirtualne, tak aby korzystały z usługi Managed Disks](convert-unmanaged-to-managed-disks.md).
+W przypadku usługi Managed Disks tworzenie konta usługi Azure Storage i zarządzanie nią odbywa się automatycznie w tle i nie trzeba martwić się o limity skalowalności konta magazynu. Wystarczy określić rozmiar dysku i warstwę wydajności (Standardowa/Premium), a platforma Azure utworzy dysk i będzie nim zarządzać. O używanym magazynie nie trzeba myśleć przy dodawaniu dysków albo skalowaniu maszyny wirtualnej w górę i w dół. Jeśli tworzysz nowe maszyny wirtualne, [użyj interfejsu wiersza polecenia platformy Azure](quick-create-cli.md) lub witryny Azure Portal, aby utworzyć maszyny wirtualne z zarządzanymi dyskami systemu operacyjnego i dyskami danych. Jeśli na maszynie wirtualnej znajdują się niezarządzane dyski, możesz [przekonwertować maszyny wirtualne, tak aby korzystały z usługi Managed Disks](convert-unmanaged-to-managed-disks.md).
 
 Można też zarządzać własnymi obrazami niestandardowymi na jednym koncie magazynu na region platformy Azure i używać ich do tworzenia setek maszyn wirtualnych w tej samej subskrypcji. Aby uzyskać więcej informacji o dyskach zarządzanych, zobacz [Omówienie usługi Azure Managed Disks](../linux/managed-disks-overview.md).
 
@@ -91,7 +91,7 @@ Zanim rozpoczniesz korzystanie z platformy Azure, musisz założyć konto na pla
 Pierwszym krokiem korzystania z chmury Azure jest utworzenie konta platformy Azure.  Przejdź do strony [tworzenia konta Azure](https://azure.microsoft.com/pricing/free-trial/), aby rozpocząć pracę.
 
 ### <a name="install-the-cli"></a>Instalowanie interfejsu wiersza polecenia
-Nowe konto platformy Azure umożliwia natychmiastowe rozpoczęcie korzystania z witryny Azure Portal, czyli internetowego panelu administracyjnego.  Aby zarządzać chmurą Azure z poziomu wiersza polecenia, musisz zainstalować narzędzie `azure-cli`.  Zainstaluj [interfejs wiersza polecenia Azure 2.0](/cli/azure/install-azure-cli) na stacji roboczej Mac lub Linux.
+Nowe konto platformy Azure umożliwia natychmiastowe rozpoczęcie korzystania z witryny Azure Portal, czyli internetowego panelu administracyjnego.  Aby zarządzać chmurą Azure z poziomu wiersza polecenia, musisz zainstalować narzędzie `azure-cli`.  Zainstaluj [interfejs wiersza polecenia Azure](/cli/azure/install-azure-cli) na stacji roboczej Mac lub Linux.
 
 ### <a name="create-an-ssh-key-pair"></a>Tworzenie pary kluczy SSH
 Masz już teraz konto Azure, dostęp do witryny internetowej Azure Portal oraz interfejs wiersza polecenia Azure.  Kolejnym krokiem jest utworzenie pary kluczy SSH używanej do logowania SSH do systemu Linux bez konieczności używania hasła.  [Utwórz parę kluczy SSH w systemie Linux i Mac](mac-create-ssh-keys.md) w celu włączenia bezpieczniejszego logowania bez podawania hasła.

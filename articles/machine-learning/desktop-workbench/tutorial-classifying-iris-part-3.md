@@ -12,14 +12,18 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/13/2018
-ms.openlocfilehash: de0c93ef5b907b56e6ad66a04bb728b5b9aabb9a
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2eb6eb5090b0a68a189e2d4f1148d3238bc3ee0d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41919219"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946616"
 ---
 # <a name="tutorial-3-classify-iris-deploy-a-model"></a>Samouczek 3: klasyfikowanie irysów: wdrażanie modelu
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 Usługa Azure Machine Learning (wersja zapoznawcza) to zintegrowane, kompleksowe rozwiązanie do nauki o danych i do analiz zaawansowanych przeznaczone dla profesjonalnych analityków. Pozwala ono analitykom przygotowywać dane, opracowywać eksperymenty i wdrażać modele na skalę chmury.
 
 Niniejszy samouczek jest **trzecią częścią trzyczęściowej serii**. W tej części samouczka użyjesz usługi Machine Learning (wersja zapoznawcza) do wykonywania następujących czynności:
@@ -38,7 +42,7 @@ W tym samouczku wykorzystywany jest ponadczasowy [zbiór danych na temat irysów
 
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
-- Konto eksperymentowania i aplikacja Azure Machine Learning Workbench zainstalowana zgodnie z opisem w tym [przewodniku Szybki start](../service/quickstart-installation.md)
+- Konto eksperymentowania i aplikacja Azure Machine Learning Workbench zainstalowana zgodnie z opisem w tym [przewodniku Szybki start](quickstart-installation.md)
 - Model klasyfikacji z [części 2. samouczka](tutorial-classifying-iris-part-2.md)
 - Aparat platformy Docker zainstalowany i uruchomiony lokalnie
 
@@ -224,9 +228,9 @@ Teraz można przystąpić do tworzenia usługi internetowej czasu rzeczywistego.
 1. Aby utworzyć usługę internetową czasu rzeczywistego, użyj poniższego polecenia:
 
    ```azurecli
-   az ml service create realtime -f score_iris.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true -c aml_config\conda_dependencies.yml
+   az ml service create realtime -f score_iris.py --model-file model.pkl -s ./output/service_schema.json -n irisapp -r python --collect-model-data true -c aml_config\conda_dependencies.yml
    ```
-   Spowoduje to wygenerowanie identyfikatora usługi internetowej, którego będzie można użyć później.
+   Spowoduje to wygenerowanie identyfikatora usługi internetowej, którego będzie można użyć później. Pomiń katalog wyjściowy, jeśli znajduje się w notesie.
 
    Następujące przełączniki są używane razem z poleceniem **az ml service create realtime**:
 
@@ -276,9 +280,9 @@ Najpierw należy zarejestrować model. Następnie należy wygenerować manifest,
    Aby utworzyć manifest, użyj następującego polecenia i podaj wyjściowy identyfikator modelu z poprzedniego kroku:
 
    ```azurecli
-   az ml manifest create --manifest-name <new manifest name> -f score_iris.py -r python -i <model ID> -s service_schema.json -c aml_config\conda_dependencies.yml
+   az ml manifest create --manifest-name <new manifest name> -f score_iris.py -r python -i <model ID> -s ./output/service_schema.json -c aml_config\conda_dependencies.yml
    ```
-   To polecenie spowoduje wygenerowanie identyfikatora manifestu.
+   To polecenie spowoduje wygenerowanie identyfikatora manifestu.  Pomiń katalog wyjściowy, jeśli znajduje się w notesie.
 
 1. Utwórz obraz platformy Docker.
 

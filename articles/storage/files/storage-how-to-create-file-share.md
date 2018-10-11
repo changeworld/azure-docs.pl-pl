@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 9ce0bc425836fffb59e804bdbd19f23cfc26c00e
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: ec952aa26d7bc6b185b425700080a4f474564b76
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527173"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46955813"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Tworzenie udziału plików w usłudze Azure Files
 Udziały plików platformy Azure można tworzyć przy użyciu witryny [Azure Portal](https://portal.azure.com/), poleceń cmdlet programu PowerShell usługi Azure Storage, bibliotek klienckich usługi Azure Storage lub interfejsu API REST usługi Azure Storage. Z tego samouczka dowiesz się:
@@ -47,7 +47,7 @@ Aby przygotować się do użycia programu Azure PowerShell, pobierz i zainstaluj
 > [!Note]  
 > Zalecamy pobranie i zainstalowanie najnowszej wersji modułu Azure PowerShell (lub uaktualnienie do tej wersji).
 
-1. **Utwórz kontekst konta magazynu i klucza** W kontekście zawarta jest nazwa konta magazynu i klucz konta. Aby uzyskać instrukcje dotyczące kopiowania klucza konta z witryny [Azure Portal](https://portal.azure.com/), zobacz [Wyświetlanie i kopiowanie kluczy dostępu do magazynu](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#view-and-copy-storage-access-keys).
+1. **Utwórz kontekst konta magazynu i klucza** W kontekście zawarta jest nazwa konta magazynu i klucz konta. Aby uzyskać instrukcje dotyczące kopiowania klucza konta z witryny [Azure Portal](https://portal.azure.com/), zobacz [Storage account access keys (Klucze dostępu do konta magazynu)](../common/storage-account-manage.md#access-keys).
 
     ```powershell
     $storageContext = New-AzureStorageContext <storage-account-name> <storage-account-key>
@@ -64,7 +64,7 @@ Aby przygotować się do użycia programu Azure PowerShell, pobierz i zainstaluj
 
 ## <a name="create-file-share-through-command-line-interface-cli"></a>Tworzenie udziału plików za pomocą interfejsu wiersza polecenia (CLI)
 1. **Aby przygotować się do użycia interfejsu wiersza polecenia (CLI), pobierz i zainstaluj wiersz polecenia platformy Azure.**  
-    Zobacz artykuły [Install Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (Instalowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0) i [Get started with Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) (Rozpoczynanie pracy z interfejsem wiersza polecenia platformy Azure w wersji 2.0).
+    Zobacz artykuły [Install the Azure CLI (Instalowanie interfejsu wiersza polecenia platformy Azure) ](https://docs.microsoft.com/cli/azure/install-azure-cli) i [Get started with Azure CLI (Rozpoczynanie pracy z interfejsem wiersza polecenia platformy Azure)](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
 
 2. **Utwórz parametry połączenia z kontem magazynu, w którym chcesz utworzyć udział.**  
     W poniższym przykładzie zastąp zmienne ```<storage-account>``` i ```<resource_group>``` nazwą konta magazynu i grupą zasobów:

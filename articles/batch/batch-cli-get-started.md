@@ -15,18 +15,18 @@ ms.workload: big-compute
 ms.date: 07/24/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2360c5a672975cec48f5c17b098125b8287799c3
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 9b5c1df8776b63fc8ceecfa0377e74c757ba503c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493700"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950152"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Zarządzanie zasobami usługi Batch przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Interfejs wiersza polecenia platformy Azure w wersji 2.0 to środowisko wiersza polecenia platformy Azure do zarządzania jej zasobami. Można go używać w systemach macOS, Linux i Windows. Interfejs wiersza polecenia platformy Azure 2.0 jest zoptymalizowany do zarządzania i administrowania zasobami platformy Azure z wiersza polecenia. Interfejs wiersza polecenia platformy Azure umożliwia zarządzanie kontami usługi Azure Batch i zarządzanie zasobami, na przykład pulami, zadaniami i zadaniami podrzędnymi. Za pomocą interfejsu wiersza polecenia platformy Azure można tworzyć skrypty dla wielu tych samych zadań, które wykonuje się za pomocą interfejsów API usługi Batch, witryny Azure Portal oraz poleceń cmdlet programu PowerShell dla usługi Batch.
+Interfejs wiersza polecenia platformy Azure to środowisko wiersza polecenia platformy Azure do zarządzania jej zasobami. Można go używać w systemach macOS, Linux i Windows. Interfejs wiersza polecenia platformy Azure jest zoptymalizowany do zarządzania i administrowania zasobami platformy Azure z wiersza polecenia. Interfejs wiersza polecenia platformy Azure umożliwia zarządzanie kontami usługi Azure Batch i zarządzanie zasobami, na przykład pulami, zadaniami i zadaniami podrzędnymi. Za pomocą interfejsu wiersza polecenia platformy Azure można tworzyć skrypty dla wielu tych samych zadań, które wykonuje się za pomocą interfejsów API usługi Batch, witryny Azure Portal oraz poleceń cmdlet programu PowerShell dla usługi Batch.
 
-Ten artykuł zawiera omówienie korzystania z [interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure) z usługą Batch. Aby zapoznać się z omówieniem korzystania z interfejsu wiersza polecenia na platformie Azure, zobacz [Rozpoczynanie pracy z interfejsem wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
+Ten artykuł zawiera omówienie korzystania z [interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure) z usługą Batch. Aby zapoznać się z omówieniem korzystania z interfejsu wiersza polecenia na platformie Azure, zobacz [Rozpoczynanie pracy z interfejsem wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
 
 ## <a name="set-up-the-azure-cli"></a>Konfigurowanie interfejsu wiersza polecenia platformy Azure
 
@@ -47,12 +47,9 @@ Możesz wyświetlić tekst pomocy dla każdego polecenia w interfejsie wiersza p
 
 W razie wątpliwości użyj opcji wiersza polecenia `-h`, aby uzyskać pomoc dotyczącą jakiegokolwiek polecenia interfejsu wiersza polecenia platformy Azure.
 
-> [!NOTE]
-> W wcześniejszych wersjach interfejsu wiersza polecenia platformy Azure polecenia interfejsu wiersza polecenia były poprzedzane opcją `azure`. W wersji 2.0 wszystkie polecenia są teraz poprzedzane opcją `az`. Należy zaktualizować skrypty, aby były zgodne z nową składnią wersji 2.0.
->
->  
 
-Ponadto w dokumentacji wiersza polecenia platformy Azure można znaleźć szczegółowe informacje o [poleceniach wiersza polecenia platformy Azure dla usługi Batch](https://docs.microsoft.com/cli/azure/batch). 
+
+Ponadto w dokumentacji wiersza polecenia platformy Azure można znaleźć szczegółowe informacje o [poleceniach wiersza polecenia platformy Azure dla usługi Batch](/cli/azure/batch). 
 
 ## <a name="log-in-and-authenticate"></a>Logowanie i uwierzytelnianie
 
@@ -63,7 +60,7 @@ Aby używać interfejsu wiersza polecenia platformy Azure z usługą Batch, nale
 
 ### <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
-Istnieje kilka różnych sposobów logowania się na platformie Azure. Opisano je szczegółowo w artykule [Logowanie się za pomocą interfejsu wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/cli/azure/authenticate-azure-cli):
+Istnieje kilka różnych sposobów logowania się na platformie Azure. Opisano je szczegółowo w artykule [Logowanie się za pomocą interfejsu wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli):
 
 1. [Logowanie interakcyjne](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#az-authenticate-azure-cli-interactive-log-in). Zaloguj się interakcyjnie, gdy samodzielnie uruchamiasz polecenia interfejsu wiersza polecenia platformy Azure w wierszu polecenia.
 2. [Logowanie za pomocą jednostki usługi](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#az-authenticate-azure-cli-logging-in-with-a-service-principal). Zaloguj się za pomocą jednostki usługi, gdy uruchamiasz polecenia interfejsu wiersza polecenia platformy Azure za pomocą skryptu lub aplikacji.
@@ -87,7 +84,7 @@ Aby za pomocą interfejsu wiersza polecenia platformy Azure zarządzać zasobami
 
 Dostępne są dwie opcje uwierzytelnienia na koncie usługi Batch:
 
-- **Przy użyciu uwierzytelniania usługi Azure Active Directory (Azure AD).** 
+- **Przy użyciu uwierzytelniania usługi Azure Active Directory (Azure AD)** 
 
     Uwierzytelnianie przy użyciu usługi Azure AD jest ustawieniem domyślnym w przypadku używania interfejsu wiersza polecenia platformy Azure z usługą Batch i jest zalecane w większości przypadków. 
     
@@ -101,9 +98,9 @@ Dostępne są dwie opcje uwierzytelnienia na koncie usługi Batch:
     az batch account login -g myresource group -n mybatchaccount
     ```
 
-- **Przy użyciu uwierzytelniania klucza wspólnego.**
+- **Przy użyciu uwierzytelniania klucza wspólnego**
 
-    [Uwierzytelnianie klucza wspólnego](https://docs.microsoft.com/rest/api/batchservice/authenticate-requests-to-the-azure-batch-service#authentication-via-shared-key) polega na uwierzytelnianiu poleceń interfejsu wiersza polecenia platformy Azure dla usługi Batch za pomocą kluczy dostępu konta.
+    [Uwierzytelnianie klucza wspólnego](/rest/api/batchservice/authenticate-requests-to-the-azure-batch-service#authentication-via-shared-key) polega na uwierzytelnianiu poleceń interfejsu wiersza polecenia platformy Azure dla usługi Batch za pomocą kluczy dostępu konta.
 
     W przypadku tworzenia skryptów interfejsu wiersza polecenia platformy Azure w celu zautomatyzowania wywoływania poleceń usługi Batch można użyć uwierzytelniania klucza wspólnego lub jednostki usługi w usłudze Azure AD. W niektórych przypadkach użycie uwierzytelniania klucza wspólnego może być łatwiejsze niż tworzenie jednostki usługi.  
 
@@ -173,7 +170,6 @@ Poniższe porady mogą być pomocne w przypadku rozwiązywania problemów związ
 * Użyj opcji `-v` i `-vv`, aby wyświetlić **pełne** dane wyjściowe polecenia. Gdy jest dołączona flaga `-vv`, w interfejsie wiersza polecenia platformy Azure wyświetlane są faktyczne żądania i odpowiedzi REST. Te przełączniki są przydatne do wyświetlania pełnych danych wyjściowych błędu.
 * Możesz wyświetlić **dane wyjściowe polecenia w formie pliku JSON** przy użyciu opcji `--json`. Przykładowo polecenie `az batch pool show pool001 --json` wyświetla właściwości puli 001 w formacie JSON. Następnie możesz skopiować i zmodyfikować te dane wyjściowe, aby użyć ich w pliku `--json-file` (zobacz sekcję [Pliki JSON](#json-files) wcześniej w tym artykule).
 <!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
-
 
 ## <a name="next-steps"></a>Następne kroki
 

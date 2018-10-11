@@ -8,13 +8,13 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/06/2018
-ms.openlocfilehash: cd1219fda7821fdc99e334de58826317113415d4
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.date: 09/08/2018
+ms.openlocfilehash: f261c59193349d55d407e6079002b75884273e84
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053645"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960247"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Tworzenie klastra Kubernetes za pomocą usługi Azure Kubernetes Service i narzędzia Terraform
 Usługa [Azure Kubernetes Service (AKS)](/azure/aks/) zarządza hostowanym środowiskiem Kubernetes, dzięki czemu można szybko i łatwo wdrażać konteneryzowane aplikacje i zarządzać nimi bez specjalistycznej wiedzy z zakresu aranżacji kontenerów. Eliminuje to również uciążliwości związane z bieżącą obsługą i konserwacją dzięki aprowizowaniu, aktualizowaniu i skalowaniu zasobów na żądanie bez przełączania aplikacji do trybu offline.
@@ -32,7 +32,7 @@ Z tego samouczka dowiesz się, jak wykonywać następujące zadania w ramach two
 
 - **Skonfiguruj narzędzie Terraform**: postępuj zgodnie ze wskazówkami w artykule [Terraform and configure access to Azure](/azure/virtual-machines/linux/terraform-install-configure) (Terraform i konfigurowanie dostępu do platformy Azure).
 
-- **Jednostka usługi platformy Azure**: postępuj zgodnie z instrukcjami w sekcji dotyczącej **tworzenia jednostki usługi** artykułu [Tworzenie jednostki usługi platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal). Zapisz wartości pozycji appId, displayName, password i tenant.
+- **Jednostka usługi platformy Azure**: postępuj zgodnie z instrukcjami w sekcji dotyczącej **tworzenia jednostki usługi** artykułu [Tworzenie jednostki usługi platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal). Zapisz wartości pozycji appId, displayName, password i tenant.
 
 ## <a name="create-the-directory-structure"></a>Tworzenie struktury katalogów
 Pierwszym krokiem jest utworzenie katalogu, w którym będą przechowywane pliki konfiguracji narzędzia Terraform dla tego ćwiczenia.
@@ -295,7 +295,14 @@ W tej sekcji dowiesz się, jak za pomocą polecenia `terraform init` utworzyć z
 
     ![Przykładowe wyniki wykonania polecenia „terraform init”](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-init-complete.png)
 
-1. Uruchom polecenie `terraform plan`, aby utworzyć plan narzędzia Terraform definiujący elementy infrastruktury. Polecenie zażąda dwóch wartości: **var.client_id** i **var.client_secret**. W przypadku zmiennej **var.client_id** wprowadź wartość **appId** skojarzoną z Twoją jednostką usługi. W przypadku zmiennej **var.client_secret** wprowadź wartość **password** skojarzoną z Twoją jednostką usługi.
+1. Wyeksportuj poświadczenia jednostki usługi. Zastąp elementy &lt;your-client-id> i &lt;your-client-secret> odpowiednio wartościami identyfikatora **appId** oraz **hasła** skojarzonymi z Twoją jednostką usługi.
+
+    ```bash
+    export TF_VAR_client_id=<your-client-id>
+    export TF_VAR_client_secret=<your-client-secret>
+    ```
+
+1. Uruchom polecenie `terraform plan`, aby utworzyć plan narzędzia Terraform definiujący elementy infrastruktury. 
 
     ```bash
     terraform plan -out out.plan

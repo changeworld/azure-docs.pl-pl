@@ -3,7 +3,7 @@ title: W tym samouczku dowiesz się, jak subskrybować ofertę usługi Azure Sta
 description: W tym samouczku dowiesz się, jak utworzyć nową subskrypcję do usługi Azure Stack i przetestować ofertę, tworząc testowej maszyny wirtualnej.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/05/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 0e2fa9b01d27d68c1eab9097a20b6e350ba47f99
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: aff20cba3bc07924f669420a8c367613b41111a1
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028818"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49076104"
 ---
 # <a name="tutorial-create-and-test-a-subscription"></a>Samouczek: tworzenie i testowanie subskrypcji
 W tym samouczku dowiesz się, jak utworzyć subskrypcję zawierającą oferty i przetestuj. Dla testu będzie zalogować się do portalu użytkowników usługi Azure Stack jako administrator w chmurze, subskrybowaniu oferty, a następnie utwórz maszynę wirtualną.

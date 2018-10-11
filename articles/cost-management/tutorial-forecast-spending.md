@@ -1,25 +1,25 @@
 ---
-title: Samouczek — prognozowanie wydatków przy użyciu usługi Azure Cost Management | Microsoft Docs
+title: Samouczek — prognozowanie wydatków przy użyciu usługi Cloudyn na platformie Azure | Microsoft Docs
 description: W tym samouczku przedstawiono sposób prognozowania wydatków za pomocą historycznych danych użycia i wydatków.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 09/18/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 411b4797510b26dec43ea7f2232457199808c857
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 587459be69fe250b3e73fb9eb9d5cd08cf2e7a42
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32162198"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953688"
 ---
 # <a name="tutorial-forecast-future-spending"></a>Samouczek: prognozowanie wydatków w przyszłości
 
-Usługa Azure Cost Management umożliwia prognozowanie wydatków w przyszłości na podstawie historycznych danych o użyciu usług i wydatkach. Raporty usługi Cloudyn zawierają wszystkie dane dotyczące przewidywanych kosztów. Korzystając z przykładów w tym samouczku, zapoznasz się z przewidywanymi kosztami przy użyciu tych raportów. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Usługa Cloudyn umożliwia prognozowanie wydatków w przyszłości na podstawie historycznych danych o użyciu usług i wydatkach. Raporty usługi Cloudyn zawierają wszystkie dane dotyczące przewidywanych kosztów. Korzystając z przykładów w tym samouczku, zapoznasz się z przewidywanymi kosztami przy użyciu tych raportów. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Prognozowanie wydatków w przyszłości
@@ -29,7 +29,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Musisz mieć konto platformy Azure.
-- Musisz mieć rejestrację próbną lub płatną subskrypcję usługi Azure Cost Management.
+- Musisz mieć rejestrację próbną lub płatną subskrypcję usługi Cloudyn.
 
 ## <a name="forecast-future-spending"></a>Prognozowanie wydatków w przyszłości
 
@@ -53,7 +53,7 @@ W menu Raporty w górnej części portalu kliknij pozycję **Koszty** > **Progno
 
 Na przykładzie widać, które usługi wiązały się z największymi wydatkami. Tak jak w przykładzie raportu miesięcznego, koszty usług Azure były niższe niż koszty usług AWS. Jeśli chcesz wyświetlić szczegółową prognozę kosztów maszyn wirtualnych platformy Azure, na liście **Filtr** zaznacz pozycję **Azure/VM**.
 
-![Przewidywane roczne koszty maszyn wirtualnych](./media/tutorial-forecast-spending/project-annual02.png)
+![Przewidywane koszty roczne maszyn wirtualnych](./media/tutorial-forecast-spending/project-annual02.png)
 
 Na powyższej ilustracji przewidywany roczny koszt maszyn wirtualnych platformy Azure wynosi 28 374 USD.
 

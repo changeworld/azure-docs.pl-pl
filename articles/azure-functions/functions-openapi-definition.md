@@ -12,12 +12,12 @@ ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: f2f4e7d96c4d8725d9d34314854665440d86ce8d
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: a085d7e25854a928778802d2b4ef50cf9e57eff9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095083"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960927"
 ---
 # <a name="create-an-openapi-definition-for-a-function"></a>Tworzenie definicji interfejsu OpenAPI dla funkcji
 Interfejsy API REST są często opisywane przy użyciu definicji OpenAPI (wcześniej znanej jako plik struktury [Swagger](http://swagger.io/)). Ta definicja zawiera informacje o operacjach dostępnych w interfejsie API i wymaganej strukturze danych żądań i odpowiedzi dla interfejsu API.
@@ -31,6 +31,9 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Tworzenie definicji interfejsu OpenAPI za pomocą narzędzi interfejsu OpenAPI
 > * Modyfikowanie definicji w celu udostępnienia dodatkowych metadanych
 > * Testowanie definicji przez wywołanie funkcji
+
+> [!IMPORTANT]
+> Funkcja interfejsu OpenAPI w wersji zapoznawczej jest obecnie dostępna tylko w środowisku uruchomieniowym w wersji 1.x. Informacje na temat tworzenia aplikacji funkcji w wersji 1.x [można znaleźć tutaj](./functions-versions.md#creating-1x-apps).
 
 ## <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji
 

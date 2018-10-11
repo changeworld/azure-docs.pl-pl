@@ -6,21 +6,21 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 05/01/2018
+ms.date: 09/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: a52ab4ff65312088e65d56006b6f99a7470b88f6
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 575c8a5bec4c7763c75154835830ba350f009e93
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287254"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946941"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>Samouczek: konfigurowanie routingu wiadomości przy użyciu usługi IoT Hub
 
-Routing komunikatów umożliwia wysyłanie danych telemetrycznych z urządzeń IoT do wbudowanych punktów końcowych zgodnych z centrum Event Hubs lub do niestandardowych punktów końcowych, takich jak usługa Blob Storage, kolejka usługi Service Bus, temat usługi Service Bus i usługa Event Hubs. Podczas konfigurowania routingu komunikatów można utworzyć reguły rozsyłania, aby dostosować trasę zgodną z wybraną regułą. Po zakończeniu konfiguracji dane przychodzące są automatycznie rozsyłane do punktów końcowych przez usługę IoT Hub. 
+[Routing komunikatów](iot-hub-devguide-messages-d2c.md) umożliwia wysyłanie danych telemetrycznych z urządzeń IoT do wbudowanych punktów końcowych zgodnych z centrum Event Hubs lub do niestandardowych punktów końcowych, takich jak usługa Blob Storage, kolejka usługi Service Bus, temat usługi Service Bus i usługa Event Hubs. Podczas konfigurowania routingu komunikatów można utworzyć [zapytania dotyczące routingu](iot-hub-devguide-routing-query-syntax.md), aby dostosować trasę spełniającą określony warunek. Po zakończeniu konfiguracji dane przychodzące są automatycznie rozsyłane do punktów końcowych przez usługę IoT Hub. 
 
-Z tego samouczka dowiesz się, jak skonfigurować reguły rozsyłania i korzystać z nich za pomocą usługi IoT Hub. Będziesz przekierowywać komunikaty z urządzenia IoT do jednej z wielu usług, w tym z magazynu obiektów blob i kolejki usługi Service Bus. Komunikaty do kolejki usługi Service Bus będą pobierane przez aplikację logiki i wysyłane pocztą e-mail. Komunikaty, które nie mają specjalnie skonfigurowanego routingu, są wysyłane do domyślnego punktu końcowego i wyświetlane w wizualizacji usługi Power BI.
+Z tego samouczka dowiesz się, jak skonfigurować zapytania dotyczące routingu i korzystać z nich za pomocą usługi IoT Hub. Będziesz przekierowywać komunikaty z urządzenia IoT do jednej z wielu usług, w tym z magazynu obiektów blob i kolejki usługi Service Bus. Komunikaty do kolejki usługi Service Bus będą pobierane przez aplikację logiki i wysyłane pocztą e-mail. Komunikaty, które nie mają specjalnie skonfigurowanego routingu, są wysyłane do domyślnego punktu końcowego i wyświetlane w wizualizacji usługi Power BI.
 
 Ten samouczek obejmuje wykonanie następujących zadań:
 
@@ -39,58 +39,35 @@ Ten samouczek obejmuje wykonanie następujących zadań:
 
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-- Zainstaluj program [Visual Studio dla systemu Windows](https://www.visualstudio.com/). 
+- Instalacja programu [Visual Studio](https://www.visualstudio.com/). 
 
 - Konto usługi Power BI do analizowania danych analitycznych strumienia domyślnego punktu końcowego. ([Wypróbuj bezpłatnie usługę Power BI](https://app.powerbi.com/signupredirect?pbi_source=web)).
 
 - Konto usługi Office 365 do wysyłania powiadomień e-mail. 
 
-Do wykonania kroków konfiguracji opisanych w tym samouczku potrzebujesz interfejsu wiersza polecenia platformy Azure lub programu Azure PowerShell. 
-
-Do korzystania z interfejsu wiersza polecenia platformy Azure, mimo że można go zainstalować lokalnie, zalecamy użycie usługi Azure Cloud Shell. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do uruchamiania skryptów interfejsu wiersza polecenia platformy Azure. Typowe narzędzia platformy Azure są wstępnie zainstalowane i skonfigurowane w usłudze Cloud Shell na potrzeby użycia z poziomu konta, dlatego nie trzeba instalować ich lokalnie. 
-
-Aby używać programu PowerShell, zainstaluj go lokalnie, korzystając z poniższych instrukcji. 
-
-### <a name="azure-cloud-shell"></a>Azure Cloud Shell
-
-Usługę Cloud Shell można otworzyć na kilka sposobów:
-
-|  |   |
-|-----------------------------------------------|---|
-| Wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. | ![Usługa Cloud Shell w tym artykule](./media/tutorial-routing/cli-try-it.png) |
-| Otwórz usługę Cloud Shell w swojej przeglądarce. | [![https://shell.azure.com/bash](./media/tutorial-routing/launchcloudshell.png)](https://shell.azure.com) |
-| Wybierz przycisk **Cloud Shell** w menu w prawym górnym rogu witryny [Azure Portal](https://portal.azure.com). |    ![Usługa Cloud Shell w portalu](./media/tutorial-routing/cloud-shell-menu.png) |
-|  |  |
-
-### <a name="using-azure-cli-locally"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure w środowisku lokalnym
-
-Jeśli wolisz używać lokalnego interfejsu wiersza polecenia zamiast usługi Cloud Shell, musisz mieć moduł interfejsu wiersza polecenia Azure w wersji 2.0.30.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). 
-
-### <a name="using-powershell-locally"></a>Używanie programu PowerShell lokalnie
-
-Dla tego samouczka jest wymagany moduł Azure PowerShell w wersji 5.7 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="set-up-resources"></a>Konfigurowanie zasobów
 
-W tym samouczku potrzebujesz centrum IoT Hub, konta magazynu i kolejki usługi Service Bus. Wszystkie te zasoby można utworzyć przy użyciu interfejsu wiersza polecenia platformy Azure lub programu Azure PowerShell. Użyj tej samej grupy zasobów i lokalizacji dla wszystkich zasobów. Po zakończeniu możesz usunąć wszystko w jednym kroku, usuwając grupę zasobów.
+W tym samouczku potrzebujesz centrum IoT Hub, konta magazynu i kolejki usługi Service Bus. Te zasoby można utworzyć przy użyciu interfejsu wiersza polecenia platformy Azure lub programu Azure PowerShell. Użyj tej samej grupy zasobów i lokalizacji dla wszystkich zasobów. Po zakończeniu możesz usunąć wszystko w jednym kroku, usuwając grupę zasobów.
 
 W poniższych sekcjach opisano sposób wykonywania tych wymaganych czynności. Postępuj zgodnie z instrukcjami dotyczącymi interfejsu wiersza polecenia *lub* programu PowerShell.
 
 1. Utwórz [grupę zasobów](../azure-resource-manager/resource-group-overview.md). 
 
-    <!-- When they add the Basic tier, change this to use Basic instead of Standard. -->
+2. Utwórz centrum IoT Hub w warstwie S1. Dodaj grupę użytkowników do centrum IoT Hub. Grupa użytkowników jest używana przez usługę Azure Stream Analytics podczas pobierania danych.
 
-1. Utwórz centrum IoT Hub w warstwie S1. Dodaj grupę użytkowników do centrum IoT Hub. Grupa użytkowników jest używana przez usługę Azure Stream Analytics podczas pobierania danych.
+3. Utwórz standardowe konto magazynu w wersji 1 przy użyciu replikacji Standard_LRS.
 
-1. Utwórz standardowe konto magazynu w wersji 1 przy użyciu replikacji Standard_LRS.
+4. Utwórz przestrzeń nazw i kolejkę usługi Service Bus. 
 
-1. Utwórz przestrzeń nazw i kolejkę usługi Service Bus. 
+5. Utwórz tożsamość urządzenia symulowanego, które wysyła wiadomości do centrum. Zapisz klucz na potrzeby fazy testowania.
 
-1. Utwórz tożsamość urządzenia symulowanego, które wysyła wiadomości do centrum. Zapisz klucz na potrzeby fazy testowania.
+### <a name="set-up-your-resources-using-azure-cli"></a>Konfigurowanie zasobów przy użyciu interfejsu wiersza polecenia platformy Azure
 
-### <a name="azure-cli-instructions"></a>Instrukcje dotyczące interfejsu wiersza polecenia platformy Azure
+Skopiuj i wklej ten skrypt w usłudze Cloud Shell. Przy założeniu, że użytkownik jest już zalogowany, usługa będzie kolejno uruchamiać po jednym wierszu skryptu. 
 
-Najprostszym sposobem użycia tego skryptu jest skopiowanie i wklejenie go w usłudze Cloud Shell. Przy założeniu, że użytkownik jest już zalogowany, usługa będzie kolejno uruchamiać po jednym wierszu skryptu. 
+Zmienne, które muszą być globalnie unikatowe, mają dołączony element `$RANDOM`. Gdy skrypt jest uruchamiany i zmienne są ustawione, wygenerowany zostaje losowy ciąg liczbowy i dołączony na końcu stałego ciągu, dzięki czemu staje się on unikatowy.
 
 ```azurecli-interactive
 
@@ -182,9 +159,11 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 ```
 
-### <a name="powershell-instructions"></a>Instrukcje dotyczące programu PowerShell
+### <a name="set-up-your-resources-using-azure-powershell"></a>Konfigurowanie zasobów za pomocą programu Azure PowerShell
 
-Najprostszym sposobem użycia tego skryptu jest otwarcie [środowiska ISE programu PowerShell](https://docs.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise?view=powershell-6), skopiowanie skryptu do schowka, a następnie wklejenie całego skryptu w oknie skryptu. Następnie można zmienić wartości nazw zasobów (w razie potrzeby) i uruchomić cały skrypt. 
+Skopiuj i wklej ten skrypt w usłudze Cloud Shell. Przy założeniu, że użytkownik jest już zalogowany, usługa będzie kolejno uruchamiać po jednym wierszu skryptu.
+
+Zmienne, które muszą być globalnie unikatowe, mają dołączony element `$(Get-Random)`. Gdy skrypt jest uruchamiany i zmienne są ustawione, wygenerowany zostaje losowy ciąg liczbowy i dołączony na końcu stałego ciągu, dzięki czemu staje się on unikatowy.
 
 ```azurepowershell-interactive
 # Log into Azure account.
@@ -265,15 +244,15 @@ W kolejnym kroku utwórz tożsamość urządzenia i zapisz jego klucz do późni
 
 1. Otwórz witrynę [Azure Portal](https://portal.azure.com) i zaloguj się do konta platformy Azure.
 
-1. Kliknij pozycję **Grupy zasobów** i wybierz grupę zasobów. W tym samouczku jest używana grupa **ContosoResources**.
+2. Kliknij pozycję **Grupy zasobów** i wybierz grupę zasobów. W tym samouczku jest używana grupa **ContosoResources**.
 
-1. Na liście zasobów kliknij swoje centrum IoT Hub. W tym samouczku jest używane centrum **ContosoTestHub**. Wybierz pozycję **Urządzenia IoT** w okienku centrum.
+3. Na liście zasobów kliknij swoje centrum IoT Hub. W tym samouczku jest używane centrum **ContosoTestHub**. Wybierz pozycję **Urządzenia IoT** w okienku centrum.
 
-1. Kliknij pozycję **+ Dodaj**. W okienku Dodawanie urządzenia wypełnij pole identyfikatora urządzenia. W tym samouczku jest używany identyfikator **Contoso-Test-Device**. Pozostaw klucze puste i zaznacz pole **Automatycznie generuj klucze**. Upewnij się, że pozycja **Połącz urządzenie z centrum IoT Hub** została włączona. Kliknij pozycję **Zapisz**.
+4. Kliknij pozycję **+ Dodaj**. W okienku Dodawanie urządzenia wypełnij pole identyfikatora urządzenia. W tym samouczku jest używany identyfikator **Contoso-Test-Device**. Pozostaw klucze puste i zaznacz pole **Automatycznie generuj klucze**. Upewnij się, że pozycja **Połącz urządzenie z centrum IoT Hub** została włączona. Kliknij pozycję **Zapisz**.
 
    ![Zrzut ekranu przedstawiający ekran dodawania urządzenia.](./media/tutorial-routing/add-device.png)
 
-1. Po utworzeniu urządzenia kliknij je, aby wyświetlić wygenerowane klucze. Kliknij ikonę kopiowania na kluczu podstawowym i zapisz go w dowolnym miejscu, takim jak Notatnik, do użycia w fazie testowania opisanej w tym samouczku.
+5. Po utworzeniu urządzenia kliknij je, aby wyświetlić wygenerowane klucze. Kliknij ikonę kopiowania na kluczu podstawowym i zapisz go w dowolnym miejscu, takim jak Notatnik, do użycia w fazie testowania opisanej w tym samouczku.
 
    ![Zrzut ekranu przedstawiający szczegóły urządzenia, w tym klucze.](./media/tutorial-routing/device-details.png)
 
@@ -289,69 +268,85 @@ Planujesz rozsyłać komunikaty do różnych zasobów na podstawie właściwośc
 
 ### <a name="routing-to-a-storage-account"></a>Routing do konta magazynu 
 
-Teraz należy skonfigurować routing dla konta magazynu. Zdefiniuj punkt końcowy, a następnie skonfiguruj trasę dla tego punktu końcowego. Komunikaty, w których właściwość **level** została ustawiona na **storage**, są automatycznie zapisywane na koncie magazynu.
+Teraz należy skonfigurować routing dla konta magazynu. Przejdź do okienka Kierowanie komunikatów, a następnie dodaj trasę. Podczas dodawania trasy zdefiniuj nowy punkt końcowy trasy. Po zakończeniu konfigurowania komunikaty, w których właściwość **level** została ustawiona na **storage**, będą automatycznie zapisywane na koncie magazynu.
 
-1. W witrynie [Azure Portal](https://portal.azure.com) kliknij pozycję **Grupy zasobów**, a następnie wybierz grupę zasobów. W tym samouczku jest używana grupa **ContosoResources**. Kliknij centrum IoT Hub na liście zasobów. W tym samouczku jest używane centrum **ContosoTestHub**. Kliknij przycisk **Punkty końcowe**. W okienku **Punkty końcowe** kliknij pozycję **+Dodaj**. Wprowadź następujące informacje:
+1. W witrynie [Azure Portal](https://portal.azure.com) kliknij pozycję **Grupy zasobów**, a następnie wybierz grupę zasobów. W tym samouczku jest używana grupa **ContosoResources**. 
 
-   **Nazwa**: wprowadź nazwę punktu końcowego. W tym samouczku jest używana nazwa **StorageContainer**.
+2. Kliknij centrum IoT Hub na liście zasobów. W tym samouczku jest używane centrum **ContosoTestHub**. 
+
+3. Kliknij pozycję **Kierowanie komunikatów**. W okienku **Kierowanie komunikatów** kliknij pozycję +**Dodaj**. W okienku **Dodawanie trasy** kliknij pozycję +**Dodaj** obok pola punktu końcowego, jak pokazano na poniższej ilustracji:
+
+   ![Zrzut ekranu pokazujący, jak rozpocząć dodawanie punktu końcowego do trasy.](./media/tutorial-routing/message-routing-add-a-route-w-storage-ep.png)
+
+4. Wybierz pozycję **Blob storage**. Zostanie wyświetlone okienko **Dodawanie punktu końcowego magazynu**. 
+
+   ![Zrzut ekranu przedstawiający dodawanie punktu końcowego.](./media/tutorial-routing/message-routing-add-storage-ep.png)
+
+5. Wprowadź nazwę punktu końcowego. W tym samouczku jest używana nazwa **StorageContainer**.
+
+6. Kliknij pozycję **Wybierz kontener**. Spowoduje to przejście do listy kont magazynu. Wybierz konto skonfigurowane podczas wykonywania kroków przygotowywania. W tym samouczku jest używana kolejka **contosostorage**. Przedstawia ona listę kontenerów na danym koncie magazynu. Wybierz kontener skonfigurowany podczas wykonywania kroków przygotowywania. W tym samouczku jest używany kontener **contosoresults**. Kliknij pozycję **Wybierz**. Spowoduje to powrót do okienka **Dodawanie punktu końcowego**. 
+
+7. Użyj wartości domyślnych w pozostałych polach. Kliknij pozycję **Utwórz**, aby utworzyć punkt końcowy magazynu i dodać go do trasy. Spowoduje to powrót do okienka **Dodawanie trasy**.
+
+8.  Teraz podaj pozostałe informacje zapytania dotyczącego routingu. To zapytanie określa kryteria dotyczące wysyłania komunikatów do kontenera magazynu, który właśnie został dodany jako punkt końcowy. Wypełnij pola na ekranie. 
+
+   **Nazwa**: wprowadź nazwę zapytania dotyczącego routingu. W tym samouczku jest używana nazwa **StorageRoute**.
+
+   **Punkt końcowy**: właśnie skonfigurowany punkt końcowy. 
    
-   **Typ punktu końcowego**: z listy rozwijanej wybierz pozycję **Kontener usługi Azure Storage**.
+   **Źródło danych**: z listy rozwijanej wybierz pozycję **Komunikaty telemetrii urządzenia**.
 
-   Kliknij pozycję **Wybierz kontener**, aby wyświetlić listę kont magazynu. Wybierz swoje konto magazynu. W tym samouczku jest używana kolejka **contosostorage**. Następnie wybierz kontener. W tym samouczku jest używany kontener **contosoresults**. Kliknij pozycję **Wybierz**, aby wrócić do okienka **Dodawanie punktu końcowego**. 
+   **Włącz trasę**: upewnij się, że ta opcja została włączona.
    
-   ![Zrzut ekranu przedstawiający dodawanie punktu końcowego.](./media/tutorial-routing/add-endpoint-storage-account.png)
-   
-   Kliknij przycisk **OK**, aby zakończyć dodawanie punktu końcowego.
-   
-1. Kliknij pozycję **Trasy** w centrum IoT Hub. Planujesz utworzyć regułę rozsyłania kierującą komunikaty do kontenera magazynu, który został właśnie dodany jako punkt końcowy. Kliknij pozycję **+Dodaj** w górnej części okienka Trasy. Wypełnij pola na ekranie. 
+   **Zapytanie dotyczące routingu**: wprowadź `level="storage"` jako ciąg zapytania. 
 
-   **Nazwa**: wprowadź nazwę reguły rozsyłania. W tym samouczku jest używana reguła **StorageRule**.
-
-   **Źródło danych**: z listy rozwijanej wybierz pozycję **Komunikaty urządzenia**.
-
-   **Punkt końcowy**: wybierz właśnie skonfigurowany punkt końcowy. W tym samouczku jest używana nazwa **StorageContainer**. 
+   ![Zrzut ekranu przedstawiający tworzenie zapytania dotyczącego routingu dla konta magazynu.](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
    
-   **Ciąg zapytania**: wprowadź `level="storage"` jako ciąg zapytania. 
-
-   ![Zrzut ekranu przedstawiający tworzenie reguły rozsyłania dla konta magazynu.](./media/tutorial-routing/create-a-new-routing-rule-storage.png)
-   
-   Kliknij pozycję **Zapisz**. Po zakończeniu nastąpi powrót do okienka Trasy, w którym można zobaczyć nową regułę rozsyłania dla magazynu. Zamknij okienko Trasy, co spowoduje powrót na stronę grupy zasobów.
+   Kliknij pozycję **Zapisz**. Po zakończeniu nastąpi powrót do okienka Kierowanie komunikatów, w którym można zobaczyć nowe zapytanie dotyczące routingu dla magazynu. Zamknij okienko Trasy, co spowoduje powrót na stronę grupy zasobów.
 
 ### <a name="routing-to-a-service-bus-queue"></a>Routing do kolejki usługi Service Bus 
 
-Teraz skonfigurujesz routing dla kolejki usługi Service Bus. Zdefiniuj punkt końcowy, a następnie skonfiguruj trasę dla tego punktu końcowego. Komunikaty, w których właściwość **level** została ustawiona na **critical**, są zapisywane do kolejki usługi Service Bus wyzwalającej aplikację logiki, która następnie wysyła wiadomość e-mail z informacjami. 
+Teraz skonfigurujesz routing dla kolejki usługi Service Bus. Przejdź do okienka Kierowanie komunikatów, a następnie dodaj trasę. Podczas dodawania trasy zdefiniuj nowy punkt końcowy trasy. Po zakończeniu konfigurowania komunikaty, w których właściwość **level** została ustawiona na **critical**, będą zapisywane do kolejki usługi Service Bus wyzwalającej aplikację logiki, która następnie wysyła wiadomość e-mail z informacjami. 
 
-1. Na stronie grupy zasobów kliknij centrum IoT Hub, a następnie kliknij pozycję **punkty końcowe**. W okienku **Punkty końcowe** kliknij pozycję **+Dodaj**. Wprowadź następujące informacje.
+1. Na stronie grupy zasobów kliknij centrum IoT Hub, a następnie kliknij pozycję **Kierowanie komunikatów**. 
 
-   **Nazwa**: wprowadź nazwę punktu końcowego. W tym samouczku jest używana nazwa **CriticalQueue**. 
+2. W okienku **Kierowanie komunikatów** kliknij pozycję +**Dodaj**. 
 
-   **Typ punktu końcowego**: z listy rozwijanej wybierz pozycję **Kolejka usługi Service Bus**.
+3. W okienku **Dodawanie trasy** kliknij pozycję +**Dodaj** obok pola punktu końcowego. Wybierz pozycję **Kolejka usługi Service Bus**. Zostanie wyświetlone okienko **Dodawanie punktu końcowego usługi Service Bus**. 
 
-   **Przestrzeń nazw usługi Service Bus**: z listy rozwijanej wybierz przestrzeń nazw usługi Service Bus na potrzeby tego samouczka. W tym samouczku jest używana nazwa **ContosoSBNamespace**.
+   ![Zrzut ekranu przedstawiający dodawanie punktu końcowego usługi Service Bus](./media/tutorial-routing/message-routing-add-sbqueue-ep.png)
 
-   **Kolejka usługi Service Bus**: z listy rozwijanej wybierz kolejkę usługi Service Bus. W tym samouczku jest używana kolejka **contososbqueue**.
+4. Wypełnij następujące pola:
 
-   ![Zrzut ekranu przedstawiający dodawanie punktu końcowego dla kolejki usługi Service Bus.](./media/tutorial-routing/add-endpoint-sb-queue.png)
-
-   Kliknij przycisk **OK**, aby zapisać punkt końcowy. Po zakończeniu zamknij okienko Punkty końcowe. 
-    
-1. Kliknij pozycję **Trasy** w centrum IoT Hub. Planujesz utworzyć regułę rozsyłania kierującą komunikaty do kolejki usługi Service Bus, która została właśnie dodana jako punkt końcowy. Kliknij pozycję **+Dodaj** w górnej części okienka Trasy. Wypełnij pola na ekranie. 
-
-   **Nazwa**: wprowadź nazwę reguły rozsyłania. W tym samouczku jest używana reguła **SBQueueRule**. 
-
-   **Źródło danych**: z listy rozwijanej wybierz pozycję **Komunikaty urządzenia**.
-
-   **Punkt końcowy**: wybierz właśnie skonfigurowany punkt końcowy **CriticalQueue**.
-
-   **Ciąg zapytania**: wprowadź `level="critical"` jako ciąg zapytania. 
-
-   ![Zrzut ekranu przedstawiający tworzenie reguły rozsyłania dla kolejki usługi Service Bus.](./media/tutorial-routing/create-a-new-routing-rule-sbqueue.png)
+   **Nazwa punktu końcowego**: wprowadź nazwę punktu końcowego. W tym samouczku jest używana nazwa **CriticalQueue**.
    
-   Kliknij pozycję **Zapisz**. Po powrocie do okienka Trasy zobaczysz obydwie nowe reguły rozsyłania wyświetlone w poniższy sposób.
+   **Przestrzeń nazw usługi Service Bus**: kliknij to pole, aby wyświetlić listę rozwijaną. Wybierz przestrzeń nazw usługi Service Bus, która została skonfigurowana podczas procedury przygotowywania. W tym samouczku jest używana nazwa **ContosoSBNamespace**.
 
-   ![Zrzut ekranu przedstawiający właśnie skonfigurowane trasy.](./media/tutorial-routing/show-routing-rules-for-hub.png)
+   **Kolejka usługi Service Bus**: kliknij to pole, aby wyświetlić listę rozwijaną. Z tej listy wybierz kolejkę usługi Service Bus. W tym samouczku jest używana kolejka **contososbqueue**.
 
-   Zamknij okienko Trasy, co spowoduje powrót na stronę grupy zasobów.
+5. Kliknij pozycję **Utwórz**, aby dodać punkt końcowy kolejki usługi Service Bus. Spowoduje to powrót do okienka **Dodawanie trasy**. 
+
+6.  Teraz podaj pozostałe informacje zapytania dotyczącego routingu. To zapytanie określa kryteria dotyczące wysyłania komunikatów do kolejki usługi Service Bus, która właśnie została dodana jako punkt końcowy. Wypełnij pola na ekranie. 
+
+   **Nazwa**: wprowadź nazwę zapytania dotyczącego routingu. W tym samouczku jest używana nazwa **SBQueueRoute**. 
+
+   **Punkt końcowy**: właśnie skonfigurowany punkt końcowy.
+
+   **Źródło danych**: z listy rozwijanej wybierz pozycję **Komunikaty telemetrii urządzenia**.
+
+   **Zapytanie dotyczące routingu**: wprowadź `level="critical"` jako ciąg zapytania. 
+
+   ![Zrzut ekranu przedstawiający tworzenie zapytania dotyczącego zapytania dla kolejki usługi Service Bus.](./media/tutorial-routing/message-routing-finish-route-sbq-ep.png)
+
+7. Kliknij pozycję **Zapisz**. Po powrocie do okienka Trasy zobaczysz obydwie nowe trasy wyświetlone w poniższy sposób.
+
+   ![Zrzut ekranu przedstawiający właśnie skonfigurowane trasy.](./media/tutorial-routing/message-routing-show-both-routes.png)
+
+8. Aby wyświetlić skonfigurowane niestandardowe punkty końcowe, kliknij kartę **Niestandardowe punkty końcowe**.
+
+   ![Zrzut ekranu przedstawiający właśnie skonfigurowane niestandardowe punkty końcowe.](./media/tutorial-routing/message-routing-show-custom-endpoints.png)
+
+9. Zamknij okienko Kierowanie komunikatów, co spowoduje powrót do okienka grupy zasobów.
 
 ## <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki  
 

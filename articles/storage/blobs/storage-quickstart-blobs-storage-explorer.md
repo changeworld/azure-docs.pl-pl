@@ -1,29 +1,31 @@
 ---
-title: Przewodnik Szybki start platformy Azure — tworzenie obiektu blob w magazynie obiektów przy użyciu Eksploratora usługi Azure Storage | Microsoft Docs
-description: W tym przewodniku Szybki start Eksplorator usługi Azure Storage jest używany w ramach magazynu obiektów (blob). Następnie przy użyciu Eksploratora usługi Storage przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz obiekty blob w kontenerze.
+title: 'Szybki start: tworzenie obiektu blob w magazynie obiektów za pomocą Eksploratora usługi Azure Storage'
+description: W tym przewodniku Szybki start dowiesz się, jak utworzyć kontener i obiekt blob, korzystając z Eksploratora usługi Azure Storage. Następnie dowiesz się, jak pobrać obiekt blob na komputer lokalny i jak wyświetlać wszystkie obiekty blob w kontenerze. Dowiesz się również, jak utworzyć migawkę obiektu blob, zarządzać zasadami dostępu do kontenera i utworzyć sygnaturę dostępu współdzielonego.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 04/09/2018
+ms.date: 08/27/2018
 ms.author: tamram
-ms.openlocfilehash: 83698abd3006671c5edce37e3cada26d07d25b8f
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 3f0418e9ccdc5fe3babd2f1ac4482795994fe3b4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399640"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996132"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-azure-storage-explorer"></a>Szybki Start: przekazywanie, pobieranie i wyświetlanie obiektów blob za pomocą Eksploratora usługi Azure Storage
+# <a name="quickstart-use-azure-storage-explorer-to-create-a-blob-in-object-storage"></a>Szybki start: tworzenie obiektu blob w magazynie obiektów za pomocą Eksploratora usługi Azure Storage
 
-[Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) to wieloplatformowy interfejs użytkownika służący do zarządzania zawartością kont magazynu. Ten przewodnik zawiera informacje na temat używania Eksploratora usługi Azure Storage do transferowania plików między dyskiem lokalnym i usługą Azure Blob Storage.
+W tym przewodniku Szybki start dowiesz się, jak utworzyć kontener i obiekt blob, korzystając z [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/). Następnie dowiesz się, jak pobrać obiekt blob na komputer lokalny i jak wyświetlać wszystkie obiekty blob w kontenerze. Dowiesz się również, jak utworzyć migawkę obiektu blob, zarządzać zasadami dostępu do kontenera i utworzyć sygnaturę dostępu współdzielonego.
+
+## <a name="prerequisites"></a>Wymagania wstępne
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-Dla tego przewodnika Szybki start wymagane jest, aby Eksplorator usługi Azure Storage był zainstalowany. Jeśli nie jest, odwiedź stronę [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/), aby pobrać go dla systemu Windows, Macintosh lub Linux.
+W przypadku tego przewodnika Szybki start wymagane jest zainstalowanie Eksploratora usługi Azure Storage. Aby zainstalować Eksplorator usługi Azure Storage dla systemu Windows, Macintosh lub Linux, zobacz [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
 
-[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
+[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 ## <a name="log-in-to-storage-explorer"></a>Logowanie się w Eksploratorze usługi Storage
 

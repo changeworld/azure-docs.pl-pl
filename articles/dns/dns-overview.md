@@ -5,14 +5,14 @@ author: vhorne
 manager: jeconnoc
 ms.service: dns
 ms.topic: overview
-ms.date: 6/7/2018
+ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: 0812f5e3e23fbf49afec91524b4de2ff0eb7cd9a
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: e3e04bf7e35b22a56465810f476323ed217e047a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574185"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967629"
 ---
 # <a name="what-is-azure-dns"></a>Co to jest system DNS platformy Azure?
 
@@ -52,6 +52,14 @@ Możesz zarządzać domenami i rekordami za pomocą witryny Azure Portal, polece
 Usługa Azure DNS obsługuje również prywatne domeny DNS (obecnie w publicznej wersji zapoznawczej). Dzięki temu można korzystać z własnych niestandardowych nazw domen w prywatnych sieciach wirtualnych zamiast z dostępnych obecnie nazw udostępnianych przez platformę Azure.
 
 Aby uzyskać więcej informacji, zobacz [Using Azure DNS for private domains (Korzystanie z usługi Azure DNS na potrzeby domen prywatnych)](private-dns-overview.md).
+
+## <a name="alias-records"></a>Rekordy aliasu
+
+Usługa Azure DNS obsługuje zestawy rekordów aliasu. Możesz użyć zestawu rekordów aliasu, aby odwoływać się do zasobu platformy Azure, na przykład publicznego adresu IP platformy Azure lub profilu usługi Traffic Manager. Jeśli adres IP zasobu źródłowego ulegnie zmianie, zestaw rekordów aliasu płynnie zaktualizuje się podczas rozpoznawania nazw DNS. Zestaw rekordów aliasu wskazuje wystąpienie usługi, a wystąpienie usługi jest skojarzone z adresem IP. 
+
+Dodatkowo możesz teraz skierować domenę wierzchołkową (na przykład contoso.com) do profilu usługi Traffic Manager, używając rekordu aliasu.
+
+Aby uzyskać więcej informacji, zobacz temat [Overview of Azure DNS alias records (Omówienie rekordów aliasów usługi Azure DNS)](dns-alias.md).
 
 
 ## <a name="next-steps"></a>Następne kroki

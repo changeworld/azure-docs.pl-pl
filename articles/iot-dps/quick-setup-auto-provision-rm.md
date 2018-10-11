@@ -9,22 +9,22 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e3aa2cf93e529fcc430162ac90be06a75690fb21
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 45558e25f2f61090cfb3ddb5c382170ab40792d0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523448"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999050"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Konfigurowanie usługi IoT Hub Device Provisioning przy użyciu szablonu usługi Azure Resource Manager
 
-Przy użyciu usługi [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) można skonfigurować programowo zasoby w chmurze platformy Azure niezbędne do aprowizacji urządzeń. Poniżej przedstawiono procedurę tworzenia usługi IoT Hub, nowej usługi IoT Hub Device Provisioning oraz łączenia tych dwóch usług ze sobą przy użyciu szablonu usługi Azure Resource Manager. W tym przewodniku Szybki start [interfejs wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) jest używany do wykonywania kroków programowych niezbędnych do utworzenia grupy zasobów i wdrożenia szablonu, ale te kroki można również z łatwością wykonać i wdrożyć szablon przy użyciu [witryny Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal), [programu PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), środowiska .NET, języka Ruby lub innych języków programowania. 
+Przy użyciu usługi [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) można skonfigurować programowo zasoby w chmurze platformy Azure niezbędne do aprowizacji urządzeń. Poniżej przedstawiono procedurę tworzenia usługi IoT Hub, nowej usługi IoT Hub Device Provisioning oraz łączenia tych dwóch usług ze sobą przy użyciu szablonu usługi Azure Resource Manager. W tym przewodniku Szybki start [interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) jest używany do wykonywania kroków programowych niezbędnych do utworzenia grupy zasobów i wdrożenia szablonu, ale te kroki można również z łatwością wykonać i wdrożyć szablon przy użyciu [witryny Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal), [programu PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), środowiska .NET, języka Ruby lub innych języków programowania. 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Ten przewodnik Szybki start wymaga uruchomienia wiersza polecenia platformy Azure lokalnie. Musi być zainstalowany wiersz polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja wiersza polecenia lub jego uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
+- Ten przewodnik Szybki start wymaga uruchomienia wiersza polecenia platformy Azure lokalnie. Musi być zainstalowany wiersz polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja interfejsu wiersza polecenia lub jego uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 
 ## <a name="sign-in-to-azure-and-create-a-resource-group"></a>Logowanie się do platformy Azure i tworzenie grupy zasobów

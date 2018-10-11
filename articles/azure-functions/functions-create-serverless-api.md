@@ -1,131 +1,130 @@
 ---
-title: Utwórz interfejs API niekorzystającą przy użyciu usługi Azure Functions | Dokumentacja firmy Microsoft
-description: Jak utworzyć interfejs API niekorzystającą przy użyciu usługi Azure Functions
+title: Tworzenie bezserwerowego interfejsu API za pomocą usługi Azure Functions | Microsoft Docs
+description: Jak utworzyć bezserwerowy interfejs API za pomocą usługi Azure Functions
 services: functions
 author: mattchenderson
-manager: cfowler
-ms.service: functions
-ms.tgt_pltfrm: na
+manager: jeconnoc
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 7c3933210c01c81077b594abb8c3183d6e3c58a0
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 9a35c1205c0b564c8d0db1fbd0535d41bb9c84a0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2017
-ms.locfileid: "24811604"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989910"
 ---
-# <a name="create-a-serverless-api-using-azure-functions"></a>Utwórz interfejs API niekorzystającą przy użyciu usługi Azure Functions
+# <a name="create-a-serverless-api-using-azure-functions"></a>Tworzenie bezserwerowego interfejsu API za pomocą usługi Azure Functions
 
-Z tego samouczka dowiesz się, jak usługi Azure Functions umożliwia tworzenie skalowalnej interfejsów API. Środowisko Azure Functions jest dostarczany z kolekcji wbudowanych HTTP wyzwalaczy i powiązań, które ułatwiają tworzenie punktu końcowego w różnych językach, łącznie z Node.JS, C# i inne. W tym samouczku będzie dostosować wyzwalacz protokołu HTTP do obsługi określonych akcji w projekcie interfejsu API. Należy również przygotować do powiększania interfejsu API integrowanie go z serwerów proxy funkcji platformy Azure i konfigurowanie zasymulować interfejsów API. Wszystko to odbywa się na górze środowiska obliczeniowe bez serwera funkcji, nie trzeba martwić skalowania zasobów — wystarczy można skoncentrować się na logice interfejsu API.
+W tym samouczku dowiesz się, jak za pomocą usługi Azure Functions tworzyć wysoce skalowalne interfejsy API. Usługa Azure Functions zawiera kolekcję wbudowanych wyzwalaczy i powiązań HTTP, które ułatwiają tworzenie punktu końcowego w różnych językach, takich jak Node.JS, C# itp. W tym samouczku dostosujesz wyzwalacz HTTP, aby obsługiwał określone akcje w Twoim projekcie interfejsu API. Przygotujesz się również na rozwój Twojego interfejsu API, integrując go z serwerami proxy usługi Azure Functions i konfigurując makiety interfejsów API. Wszystko to dzieje się w górnej warstwie bezserwerowego środowiska obliczeniowego usługi Functions, dzięki czemu nie musisz martwić się o skalowanie zasobów — możesz po prostu skupić się na logice interfejsu API.
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
-Funkcja wynikowy będzie służyć do pozostałej części tego samouczka.
+Wynikowa funkcja będzie używana w dalszej części tego samouczka.
 
 ### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Otwórz Azure portal. Aby to zrobić, zaloguj się do [https://portal.azure.com](https://portal.azure.com) z Twoim kontem platformy Azure.
+Otwórz witrynę Azure Portal. W tym celu zaloguj się do witryny [https://portal.azure.com](https://portal.azure.com) przy użyciu danych konta Azure.
 
 ## <a name="customize-your-http-function"></a>Dostosowywanie funkcji HTTP
 
-Domyślnie funkcja wyzwalanych przez protokół HTTP jest skonfigurowany do akceptowania dowolnej metody HTTP. Jest również domyślny adres URL w postaci `http://<yourapp>.azurewebsites.net/api/<funcname>?code=<functionkey>`. Po wykonaniu procedury szybkiego startu, następnie `<funcname>` prawdopodobnie wygląda "HttpTriggerJS1". W tej sekcji należy zmodyfikować funkcji ma odpowiadać tylko na żądania GET względem `/api/hello` zamiast tego trasy. 
+Domyślnie funkcja wyzwalana przez protokół HTTP jest skonfigurowana tak, aby akceptowała dowolną metodę HTTP. Istnieje również domyślny adres URL formularza `http://<yourapp>.azurewebsites.net/api/<funcname>?code=<functionkey>`. Jeśli udało Ci się wykonać instrukcje z przewodnika Szybki start, parametr `<funcname>` prawdopodobnie wygląda jak „HttpTriggerJS1”. W tej sekcji zmodyfikujesz funkcję tak, aby odpowiadała tylko na żądania GET dotyczące trasy `/api/hello`. 
 
-1. Przejdź do funkcji w portalu Azure. Wybierz **integracji** na lewym pasku nawigacyjnym.
+1. Przejdź do swojej funkcji w witrynie Azure Portal. Wybierz pozycję **Integracja** na lewym pasku nawigacyjnym.
 
     ![Dostosowywanie funkcji HTTP](./media/functions-create-serverless-api/customizing-http.png)
 
-1. Użyj ustawień wyzwalacza HTTP określoną w tabeli.
+1. Użyj ustawień wyzwalacza HTTP określonych w tabeli.
 
     | Pole | Wartość przykładowa | Opis |
     |---|---|---|
-    | Dopuszczalnych metod HTTP | Wybrane metody zostaną usunięte | Określa, jakie metody HTTP może służyć do wywołania tej funkcji |
-    | Wybrane metody HTTP | POBIERZ | Umożliwia tylko wybrane metody HTTP używanego do wywołania tej funkcji |
-    | Szablon trasy | człon | Określa, jakie trasy służy do wywoływania tej funkcji |
-    | Poziom dostępu | Anonimowe | Opcjonalnie: Sprawia, że funkcja dostępne bez klucza interfejsu API |
+    | Dozwolone metody HTTP | Wybrane metody | Określa, jakich metod HTTP można używać do wywoływania tej funkcji |
+    | Wybrane metody HTTP | GET | Umożliwia wywoływanie tej funkcji tylko przy użyciu wybranych metod HTTP |
+    | Szablon trasy | /hello | Określa trasę używaną do wywoływania tej funkcji |
+    | Poziom autoryzacji | Anonimowe | Opcjonalnie: sprawia, że funkcja jest dostępna bez klucza interfejsu API |
 
     > [!NOTE] 
-    > Należy pamiętać, że nie zawiera `/api` podstawowa prefiks ścieżki w szablonie trasy, ponieważ jest to obsługiwane przez ustawienie globalne.
+    > Zwróć uwagę, że w szablonie trasy nie został uwzględniony prefiks ścieżki podstawowej `/api`, ponieważ jest on obsługiwany przez ustawienie globalne.
 
 1. Kliknij pozycję **Zapisz**.
 
-Dowiedz się więcej o dostosowywaniu funkcji HTTP w [powiązania HTTP funkcje platformy Azure i webhook](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#customizing-the-http-endpoint).
+Więcej informacji na temat dostosowywania funkcji HTTP możesz znaleźć w artykule [Powiązania HTTP usługi Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#customizing-the-http-endpoint).
 
 ### <a name="test-your-api"></a>Testowanie interfejsu API
 
-Następnie należy przetestować funkcję wyświetlić go do pracy z nowego powierzchni interfejsu API.
-1. Przejdź z powrotem do strony programowanie klikając nazwę funkcji, na lewym pasku nawigacyjnym.
-1. Kliknij przycisk **uzyskać adres URL funkcji** i skopiuj adres URL. Powinny pojawić się go używa `/api/hello` teraz trasy.
-1. Skopiuj adres URL do nowej karty przeglądarki lub preferowanego klienta REST. Przeglądarki użyje GET domyślnie.
-1. Dodawanie parametrów do ciągu zapytania w adresie URL, np.`/api/hello/?name=John`
-1. Kliknij przycisk wprowadzić, aby upewnić się, że działa. Powinny pojawić się odpowiedzi "*Hello Jan*"
-1. Można też spróbować wywoływanie punkt końcowy z innej metody HTTP, aby upewnić się, że funkcja nie jest uruchomiona. W tym celu należy użyć klienta REST, takie jak cURL, Postman lub Fiddler.
+Następnie przetestuj swoją funkcję, aby sprawdzić, czy działa z nowym środowiskiem interfejsu API.
+1. Przejdź z powrotem do strony programowania, klikając nazwę funkcji na lewym pasku nawigacyjnym.
+1. Kliknij pozycję **Pobierz adres URL funkcji** i skopiuj adres URL. Powinien on teraz zawierać trasę `/api/hello`.
+1. Skopiuj adres URL do nowej karty przeglądarki lub preferowanego klienta REST. W przeglądarkach domyślnie jest używana metoda GET.
+1. Dodaj parametry do ciągu zapytania w adresie URL, np. `/api/hello/?name=John`.
+1. Naciśnij klawisz „Enter”, aby sprawdzić, czy adres działa. Powinna zostać wyświetlona odpowiedź „*Hello John*”.
+1. Możesz również podjąć próbę wywołania punktu końcowego za pomocą innej metody HTTP, aby upewnić się, że funkcja nie zostanie wykonana. W tym celu musisz użyć klienta REST, np. programu cURL, Postman lub Fiddler.
 
 ## <a name="proxies-overview"></a>Omówienie serwerów proxy
 
-W następnej sekcji zostanie powierzchni interfejsu API za pośrednictwem serwera proxy. Azure proxy funkcji służy do przekazywania żądań do innych zasobów. Zdefiniuj punkt końcowy HTTP, podobnie jak wyzwalacza HTTP, ale zamiast pisania kodu do wykonania, gdy jest wywoływana tego punktu końcowego, podaj adres URL do zdalnego wdrożenia. Umożliwia utworzenie wielu źródeł interfejsu API w jednym powierzchni interfejsu API, który ułatwia klientom korzystać. Jest to szczególnie przydatne, jeśli chcesz skompilować jako mikrousług interfejsu API.
+W następnej sekcji udostępnisz interfejs API za pośrednictwem serwera proxy. Serwery proxy usługi Azure Functions umożliwiają przekazywanie żądań do innych zasobów. Ty definiujesz punkt końcowy HTTP, podobnie jak w przypadku wyzwalacza HTTP, ale zamiast pisać kod, który zostanie wykonany po wywołaniu punktu końcowego, podajesz adres URL do zdalnej implementacji. Dzięki temu możesz utworzyć wiele źródeł interfejsu API w jednym środowisku interfejsu API, które jest łatwe do użycia przez klientów. Jest to szczególnie przydatne, gdy chcesz utworzyć interfejs API w formie mikrousług.
 
-Serwer proxy może wskazywać dowolnego zasobu HTTP, takie jak:
-- Stan usługi Funkcje Azure 
-- Aplikacje interfejsu API w [usługi aplikacji Azure](https://docs.microsoft.com/azure/app-service/app-service-web-overview)
-- Kontenery docker w [usługi aplikacji w systemie Linux](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)
-- Inne obsługiwane interfejsu API
+Serwer proxy może wskazywać dowolny zasób HTTP, na przykład:
+- Azure Functions 
+- Aplikacje interfejsów API w usłudze [Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-overview)
+- Kontenery platformy Docker w usłudze [App Service w systemie Linux](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)
+- Jakikolwiek inny hostowany interfejs API
 
-Aby dowiedzieć się więcej na temat serwerów proxy, zobacz [Praca z serwerów proxy funkcji Azure].
+Aby dowiedzieć się więcej na temat serwerów proxy, zobacz [Praca z serwerami proxy usługi Azure Functions].
 
 ## <a name="create-your-first-proxy"></a>Tworzenie pierwszego serwera proxy
 
-W tej sekcji utworzysz nowego serwera proxy, który służy jako frontonu do ogólnego interfejsu API. 
+W tej sekcji utworzysz nowy serwer proxy, który będzie służył jako fronton dla ogólnego interfejsu API. 
 
-### <a name="setting-up-the-frontend-environment"></a>Konfigurowanie środowiska serwera sieci Web
+### <a name="setting-up-the-frontend-environment"></a>Konfigurowanie środowiska frontonu
 
-Powtórz kroki, aby [tworzenia aplikacji funkcji](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app) Aby utworzyć nową aplikację funkcji spowoduje utworzenie serwera proxy. Adres URL tej nowej aplikacji będzie służyć jako fronton dla interfejsach API i aplikacji funkcji, które zostały wcześniej edycji będzie służyć jako wewnętrznej bazy danych.
+Wykonaj ponownie procedurę [Tworzenie aplikacji funkcji](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app), aby utworzyć nową aplikację funkcji, w której utworzysz serwer proxy. Adres URL tej nowej aplikacji będzie służył jako fronton dla naszego interfejsu API, a edytowana wcześniej aplikacja funkcji będzie pełniła rolę zaplecza.
 
-1. Przejdź do nowej aplikacji funkcji serwera sieci Web w portalu.
-1. Wybierz **funkcji platformy** i wybierz polecenie **ustawienia aplikacji**.
-1. Przewiń w dół do **ustawienia aplikacji** gdzie pary klucz wartość są przechowywane i utworzyć nową ustawiania z kluczem "HELLO_HOST". Ustaw jej wartość na hoście aplikacji funkcji wewnętrznej bazy danych, takich jak `<YourBackendApp>.azurewebsites.net`. Jest to część adresu URL, które wcześniej zostały skopiowane podczas testowania funkcji HTTP. To ustawienie w konfiguracji później będziesz odwoływać.
+1. Przejdź do nowej aplikacji funkcji frontonu w portalu.
+1. Wybierz pozycję **Funkcje platformy**, a następnie pozycję **Ustawienia aplikacji**.
+1. Przewiń w dół do **ustawień aplikacji**, w których są przechowywane pary klucz/wartość i utwórz nowe ustawienie z kluczem „HELLO_HOST”. Ustaw dla niego wartość hosta aplikacji funkcji zaplecza, na przykład `<YourBackendApp>.azurewebsites.net`. Jest to część adresu URL, który został skopiowany wcześniej podczas testowania funkcji HTTP. Później będziesz odwoływać się do tego ustawienia w konfiguracji.
 
     > [!NOTE] 
-    > Ustawienia aplikacji są zalecane w przypadku konfiguracji hosta zapobiec zależności środowiska ustalony dla serwera proxy. Przy użyciu ustawień aplikacji oznacza, że konfiguracja serwera proxy można przenosić między środowiskami i zostaną zastosowane ustawienia aplikacji dla określonego środowiska.
+    > Ustawienia aplikacji są zalecane w przypadku konfiguracji hosta, aby uniknąć zakodowanej zależności środowiska dla serwera proxy. Korzystanie z ustawień aplikacji oznacza możliwość przenoszenia konfiguracji serwera proxy między środowiskami i zastosowanie ustawień aplikacji specyficznych dla środowiska.
 
 1. Kliknij pozycję **Zapisz**.
 
-### <a name="creating-a-proxy-on-the-frontend"></a>Tworzenie serwera proxy na frontonie
+### <a name="creating-a-proxy-on-the-frontend"></a>Tworzenie serwera proxy we frontonie
 
-1. Przejdź z powrotem do aplikacji funkcji serwera sieci Web w portalu.
-1. W obszarze nawigacji po lewej stronie, kliknij znak "+" obok "Proxy".
+1. Przejdź z powrotem do aplikacji funkcji frontonu w portalu.
+1. Na lewym pasku nawigacyjnym kliknij znak plus „+” obok pozycji „Serwer proxy”.
     ![Tworzenie serwera proxy](./media/functions-create-serverless-api/creating-proxy.png)
-1. Użyj ustawień serwera proxy, jak określono w tabeli. 
+1. Użyj ustawień serwera proxy określonych w tabeli. 
 
     | Pole | Wartość przykładowa | Opis |
     |---|---|---|
-    | Nazwa | HelloProxy | Przyjazna nazwa używana tylko w przypadku zarządzania |
-    | Szablon trasy | / api/hello | Określa, jakie trasy służy do wywoływania tego serwera proxy |
-    | Adres URL wewnętrznej bazy danych | https://%HELLO_HOST%/API/Hello | Określa, do którego powinien być serwerem proxy żądania punktu końcowego |
+    | Name (Nazwa) | HelloProxy | Przyjazna nazwa używana tylko do zarządzania |
+    | Szablon trasy | /api/hello | Określa trasę używaną do wywoływania tego serwera proxy |
+    | Adres URL zaplecza | https://%HELLO_HOST%/api/hello | Określa punkt końcowy, do którego powinno być przekazywane żądanie |
     
-1. Należy pamiętać, że nie ma serwerów proxy `/api` prefiks ścieżki podstawowej i ten musi być zawarte w szablonie trasy.
-1. `%HELLO_HOST%` Składni będzie odwoływać się do ustawienia aplikacji utworzone wcześniej. Funkcja oryginalnego wskaże rozpoznać adres URL.
-1. Kliknij przycisk **Utwórz**.
-1. Można wypróbować nowego serwera proxy, kopiując adres URL serwera Proxy i testowanie go w przeglądarce lub z ulubionych klienta HTTP.
-    1. Do użycia funkcji anonimowej:
+1. Zwróć uwagę, że serwery proxy nie zapewniają prefiksu ścieżki podstawowej `/api`, który musi znajdować się w szablonie trasy.
+1. Składnia `%HELLO_HOST%` będzie odwoływać się do utworzonego wcześniej ustawienia aplikacji. Rozpoznany adres URL będzie wskazywał oryginalną funkcję.
+1. Kliknij pozycję **Utwórz**.
+1. Nowy serwer proxy możesz wypróbować, kopiując adres URL serwera proxy i testując go w przeglądarce lub używając ulubionego klienta HTTP.
+    1. W przypadku funkcji anonimowej użyj adresu:
         1. `https://YOURPROXYAPP.azurewebsites.net/api/hello?name="Proxies"`
-    1. Dla funkcji z użyciem autoryzacji:
+    1. W przypadku funkcji z autoryzacją użyj adresu:
         1. `https://YOURPROXYAPP.azurewebsites.net/api/hello?code=YOURCODE&name="Proxies"`
 
-## <a name="create-a-mock-api"></a>Utwórz zasymulować interfejs API
+## <a name="create-a-mock-api"></a>Tworzenie makiety interfejsu API
 
-Następnie użyje serwer proxy można utworzyć zasymulować interfejsu API dla rozwiązania. Dzięki temu programowanie klienta do postępu, bez konieczności wewnętrznej bazy danych, w pełni wdrożone. Później w rozwoju należy utworzyć nową aplikację funkcji, która obsługuje tę logikę i przekierowywania serwera proxy.
+Następnie użyjesz serwera proxy do utworzenia makiety interfejsu API dla Twojego rozwiązania. Umożliwi to postęp w programowaniu klienta bez konieczności pełnego zaimplementowania zaplecza. Na dalszym etapie programowania możesz utworzyć nową aplikację funkcji, która będzie obsługiwała tę logikę, i przekierować do niej serwer proxy.
 
-Aby utworzyć ten zasymulować interfejs API, utworzymy nowe proxy przy użyciu tego czasu [Edytor usług aplikacji](https://github.com/projectkudu/kudu/wiki/App-Service-Editor). Aby rozpocząć, przejdź do aplikacji funkcji w portalu. Wybierz **funkcji platformy** i w obszarze **narzędzi programistycznych** znaleźć **Edytor usług aplikacji**. Kliknięcie łącza zostanie otwarty Edytor usługi aplikacji na nowej karcie.
+W celu utworzenia tej makiety interfejsu API utworzymy nowy serwer proxy, tym razem używając [Edytora usługi App Service](https://github.com/projectkudu/kudu/wiki/App-Service-Editor). Aby rozpocząć, przejdź do aplikacji funkcji w portalu. Wybierz pozycję **Funkcje platformy** i w obszarze **Narzędzia programistyczne** znajdź pozycję **Edytor usługi App Service**. Kliknięcie tej pozycji spowoduje otwarcie Edytora usługi App Service w nowej karcie.
 
-Wybierz `proxies.json` na lewym pasku nawigacyjnym. To jest plik zawierający konfigurację dla wszystkich sieci serwerów proxy. Jeśli używany jest jeden z [metody wdrażania funkcji](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment), jest to plik mają być przechowywane w kontroli źródła. Aby dowiedzieć się więcej na temat tego pliku, zobacz [proxy Zaawansowana konfiguracja](https://docs.microsoft.com/azure/azure-functions/functions-proxies#advanced-configuration).
+Wybierz pozycję `proxies.json` na lewym pasku nawigacyjnym. Jest to plik zawierający konfigurację wszystkich Twoich serwerów proxy. Jeśli używasz jednej z [metod wdrażania usługi Functions](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment), jest to plik, który będzie utrzymywany w kontroli źródła. Aby dowiedzieć się więcej na temat tego pliku, zobacz [Konfiguracja zaawansowana serwerów proxy](https://docs.microsoft.com/azure/azure-functions/functions-proxies#advanced-configuration).
 
-Jeśli wykonaniu wykonanej do tej pory, proxies.json Twojego powinna wyglądać następująco:
+Po wykonaniu wszystkich powyższych kroków plik proxies.json powinien wyglądać następująco:
 
 ```json
 {
@@ -141,7 +140,7 @@ Jeśli wykonaniu wykonanej do tej pory, proxies.json Twojego powinna wyglądać 
 }
 ```
 
-Następnie dodasz zasymulować interfejsu API. Zastąp plik proxies.json następujące czynności:
+Następnie dodasz makietę interfejsu API. Zastąp plik proxies.json następującym:
 
 ```json
 {
@@ -177,20 +176,20 @@ Następnie dodasz zasymulować interfejsu API. Zastąp plik proxies.json następ
 }
 ```
 
-Spowoduje to dodanie nowego serwera proxy, "GetUserByName" bez właściwości backendUri. Zamiast kontaktować się z innym zasobem, modyfikuje domyślny z serwerów proxy przy użyciu zastąpienia odpowiedzi. Można także zastąpienia żądań i odpowiedzi w połączeniu z adresem URL wewnętrznej bazy danych. Jest to szczególnie przydatne podczas pośredniczenie dla starszej wersji systemu, której użytkownik może być konieczne zmodyfikowanie nagłówków, zapytania parametry itp. Aby dowiedzieć się więcej na temat zastąpienia żądań i odpowiedzi, zobacz [modyfikowanie żądań i odpowiedzi w proxy](https://docs.microsoft.com/azure/azure-functions/functions-proxies#a-namemodify-requests-responsesamodifying-requests-and-responses).
+Spowoduje to dodanie nowego serwera proxy „GetUserByName” bez właściwości backendUri. Zamiast wywoływania innego zasobu, modyfikuje on odpowiedź domyślną z serwerów proxy przy użyciu funkcji przesłonięcia odpowiedzi. Przesłonięć żądań i odpowiedzi można także używać w połączeniu z adresem URL zaplecza. Jest to szczególnie przydatne w przypadku przekazywania do starszego systemu, w którym może być konieczne modyfikowanie nagłówków, parametrów zapytań itp. Aby dowiedzieć się więcej na temat przesłonięć żądań i odpowiedzi, zobacz [Modyfikowanie żądań i odpowiedzi w serwerach proxy](https://docs.microsoft.com/azure/azure-functions/functions-proxies#a-namemodify-requests-responsesamodifying-requests-and-responses).
 
-Testowanie zasymulować interfejsu API przez wywołanie metody `<YourProxyApp>.azurewebsites.net/api/users/{username}` punktu końcowego za pomocą przeglądarki lub Twoje ulubione klienta REST. Pamiętaj zastąpić _{username}_ z wartością ciągu reprezentujący nazwę użytkownika.
+Przetestuj makietę interfejsu API, wywołując metodę `<YourProxyApp>.azurewebsites.net/api/users/{username}` za pomocą przeglądarki lub ulubionego klienta REST. Koniecznie zastąp parametr _{username}_ wartością ciągu reprezentującą nazwę użytkownika.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób tworzenia i dostosowywania interfejsu API na usługi Azure Functions. Przedstawiono również sposób Przełącz wielu interfejsów API, mocks, w tym razem jako powierzchnię interfejsu API unified. Te techniki służy do tworzenia interfejsów API żadnych złożoności wszystkie uruchomionej na modelu niekorzystającą obliczeniowe udostępniane przez usługi Azure Functions.
+W tym samouczku przedstawiono sposób tworzenia i dostosowywania interfejsu API w usłudze Azure Functions. Przedstawiono również sposób łączenia wielu interfejsów API, w tym makiet, w celu uzyskania ujednoliconego środowiska interfejsu API. Za pomocą tych technik możesz tworzyć interfejsy API o dowolnej złożoności, pracując na bezserwerowym modelu obliczeniowym udostępnianym przez usługę Azure Functions.
 
-Następujące informacje mogą być pomocne podczas opracowywania dalsze interfejsu API:
+Podczas dalszego programowania interfejsu API może być przydatna następująca dokumentacja:
 
-- [Azure powiązania HTTP funkcje i elementu webhook](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)
-- [Praca z serwerów proxy funkcji Azure]
-- [Dokumentowanie funkcje interfejsu API Azure (wersja zapoznawcza)](https://docs.microsoft.com/azure/azure-functions/functions-api-definition-getting-started)
+- [Powiązania HTTP usługi Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)
+- [Praca z serwerami proxy usługi Azure Functions]
+- [Dokumentowanie interfejsu API usługi Azure Functions (wersja zapoznawcza)](https://docs.microsoft.com/azure/azure-functions/functions-api-definition-getting-started)
 
 
 [Create your first function]: https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function
-[Praca z serwerów proxy funkcji Azure]: https://docs.microsoft.com/azure/azure-functions/functions-proxies
+[Praca z serwerami proxy usługi Azure Functions]: https://docs.microsoft.com/azure/azure-functions/functions-proxies

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: seguler
-ms.openlocfilehash: 90858501cbf20af032c98ca8703f9e74b475e9c1
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 93dc651767fc2be815fb706f71386ce72b382a37
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398580"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981727"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą języka Go
 
@@ -23,11 +23,14 @@ W tym przewodniku Szybki start dowiesz się, w jaki sposób za pomocą języka p
 
 Aby ukończyć ten przewodnik Szybki start: 
 * Zainstaluj program [Go 1.8 lub nowszy](https://golang.org/dl/).
-* Pobierz i zainstaluj [zestaw SDK usługi Azure Storage Blob dla języka Go](https://github.com/azure/azure-storage-blob-go/) za pomocą polecenia `go get -u github.com/azure/azure-storage-blob-go/2016-05-31/azblob`. 
+* Pobierz i zainstaluj [zestaw SDK usługi Azure Storage Blob dla języka Go](https://github.com/azure/azure-storage-blob-go/) za pomocą polecenia `go get -u github.com/Azure/azure-storage-blob-go/2016-05-31/azblob`. 
+
+> [!WARNING]
+> Ciąg Azure w adresie URL musi zaczynać się wielką literą. W przeciwnym razie podczas pracy z zestawem SDK mogą wystąpić problemy związane z wielkością liter. Ciąg Azure musi zaczynać się wielką literą także w Twoich instrukcjach importu.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
+[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 ## <a name="download-the-sample-application"></a>Pobieranie przykładowej aplikacji
 [Przykładowa aplikacja](https://github.com/Azure-Samples/storage-blobs-go-quickstart.git) używana w tym przewodniku Szybki start to podstawowa aplikacja w języku Go.  

@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: negat
-ms.openlocfilehash: abad57856db63c954f963a28b1dbd3c95395c9bd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8b3956860a38057771770b965006606ffb3e24f8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652590"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963785"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Obsługa sieci w kontekście zestawów skalowania maszyn wirtualnych platformy Azure
 
 W przypadku wdrażania zestawu skalowania maszyn wirtualnych platformy Azure za pośrednictwem portalu, niektóre właściwości sieciowe są konfigurowane domyślnie, na przykład usługa Azure Load Balancer z regułami NAT dla ruchu przychodzącego. W tym artykule opisano, jak korzystać z niektórych bardziej zaawansowanych funkcji sieciowych konfigurowalnych za pomocą zestawów skalowania.
 
-Wszystkie funkcje omówione w tym artykule można skonfigurować za pomocą szablonów usługi Azure Resource Manager. Dla wybranych funkcji dołączono też przykłady związane z interfejsem wiersza polecenia platformy Azure i programem PowerShell. Użyj interfejsu wiersza polecenia w wersji 2.10 i programu PowerShell 4.2.0 lub nowszego.
+Wszystkie funkcje omówione w tym artykule można skonfigurować za pomocą szablonów usługi Azure Resource Manager. Dla wybranych funkcji dołączono też przykłady związane z interfejsem wiersza polecenia platformy Azure i programem PowerShell. Należy użyć interfejsu wiersza polecenia platformy Azure w wersji 2.0.10 lub nowszej i programu PowerShell w wersji 4.2.0 lub nowszej.
 
 ## <a name="accelerated-networking"></a>Accelerated Networking
 Usługa Azure Accelerated Networking zwiększa wydajność sieci, umożliwiając wirtualizację we/wy z jednym elementem głównym (SR-IOV) do maszyny wirtualnej. Aby dowiedzieć się więcej o korzystaniu z usługi Accelerated Networking, zobacz temat dotyczący usługi Accelerated Networking dla maszyn wirtualnych z systemem [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) lub [Linux](../virtual-network/create-vm-accelerated-networking-cli.md). Aby korzystać z tej funkcji przyspieszania sieci wraz z zestawami skalowania, w ustawieniach networkInterfaceConfigurations zestawu skalowania ustaw dla właściwości enableAcceleratedNetworking wartość **true**. Na przykład:
@@ -79,7 +79,7 @@ Aby utworzyć zestaw skalowania, który używa bramy aplikacji, należy odwoła�
 Domyślnie zestawy skalowania przyjmują konkretne ustawienia DNS sieci VNET i podsieci, w których je utworzono. Można jednak skonfigurować ustawienia DNS zestawu skalowania bezpośrednio.
 
 ### <a name="creating-a-scale-set-with-configurable-dns-servers"></a>Tworzenie zestawu skalowania z konfigurowalnymi serwerami DNS
-Aby utworzyć zestaw skalowania z niestandardową konfiguracją DNS przy użyciu interfejsu wiersza polecenia w wersji 2.0, dodaj do polecenia **vmss create** argument **--dns-servers**, a po nim podaj oddzielane spacjami adresy IP serwerów. Na przykład:
+Aby utworzyć zestaw skalowania z niestandardową konfiguracją DNS przy użyciu interfejsu wiersza polecenia platformy Azure, dodaj do polecenia **vmss create** argument **--dns-servers**, a po nim podaj oddzielane spacjami adresy IP serwerów. Na przykład:
 ```bash
 --dns-servers 10.0.0.6 10.0.0.5
 ```
@@ -91,7 +91,7 @@ Aby skonfigurować niestandardowe serwery DNS w szablonie platformy Azure, do se
 ```
 
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>Tworzenie zestawu skalowania z konfigurowalnymi nazwami domen maszyn wirtualnych
-Aby utworzyć zestaw skalowania z niestandardową nazwą DNS maszyn wirtualnych przy użyciu interfejsu wiersza polecenia w wersji 2.0, dodaj do polecenia **vmss create** argument **--vm-domain-name**, a po nim podaj ciąg reprezentujący nazwę domeny.
+Aby utworzyć zestaw skalowania z niestandardową nazwą DNS maszyn wirtualnych przy użyciu interfejsu wiersza polecenia, dodaj do polecenia **vmss create** argument **--vm-domain-name**, a po nim podaj ciąg reprezentujący nazwę domeny.
 
 Aby ustawić nazwę domeny w szablonie platformy Azure, do sekcji **networkInterfaceConfigurations** zestawu skalowania dodaj właściwość **dnsSettings**. Na przykład:
 
@@ -136,7 +136,7 @@ Ogólnie maszyny wirtualne zestawu skalowania platformy Azure nie muszą mieć w
 Jednak w niektórych scenariuszach maszyny wirtualne zestawu skalowania muszą mieć własne publiczne adresy IP. Przykładem są gry — gdy konsola musi nawiązać bezpośrednie połączenie z maszyną wirtualną w chmurze obsługującą przetwarzanie symulacji świata fizycznego w grze. Innym przykładem jest sytuacja, w której maszyny wirtualne muszą nawiązywać ze sobą połączenia zewnętrzne między regionami w rozproszonej bazie danych.
 
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>Tworzenie zestawu skalowania z publicznym adresem IP dla każdej maszyny wirtualnej
-Aby utworzyć zestaw skalowania, w którym każdej maszynie wirtualnej zostanie przypisany publiczny adres IP, przy użyciu interfejsu wiersza polecenia w wersji 2.0, dodaj do polecenia **vmss create** parametr **--public-ip-per-vm**. 
+Aby utworzyć zestaw skalowania, w którym każdej maszynie wirtualnej zostanie przypisany publiczny adres IP, przy użyciu interfejsu wiersza polecenia, dodaj do polecenia **vmss create** parametr **--public-ip-per-vm**. 
 
 Aby utworzyć zestaw skalowania przy użyciu szablonu platformy Azure, upewnij się, że interfejs API zasobu Microsoft.Compute/virtualMachineScaleSets ma wersję co najmniej **2017-03-30**, i dodaj właściwość JSON **publicIpAddressConfiguration** do sekcji ipConfigurations zestawu skalowania. Na przykład:
 
@@ -151,7 +151,7 @@ Aby utworzyć zestaw skalowania przy użyciu szablonu platformy Azure, upewnij s
 Przykład szablonu: [201-vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-public-ip-linux)
 
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>Badanie publicznych adresów IP maszyn wirtualnych w zestawie skalowania
-Aby uzyskać listę publicznych adresów IP przypisanych do maszyn wirtualnych w zestawie skalowania przy użyciu interfejsu wiersza polecenia w wersji 2.0, użyj polecenia **az vmss list-instance-public-ips**.
+Aby uzyskać listę publicznych adresów IP przypisanych do maszyn wirtualnych w zestawie skalowania przy użyciu interfejsu wiersza polecenia, użyj polecenia **az vmss list-instance-public-ips**.
 
 Aby uzyskać listę publicznych adresów IP zestawu skalowania przy użyciu programu PowerShell, użyj polecenia _Get-AzureRmPublicIpAddress_. Na przykład:
 ```PowerShell

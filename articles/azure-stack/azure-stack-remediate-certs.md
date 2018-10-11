@@ -3,7 +3,7 @@ title: Korygowanie problemów z certyfikatami dla usługi Azure Stack | Dokument
 description: Użyj sprawdzania gotowości stosu usługi Azure, aby przejrzeć i Korygowanie problemów z certyfikatami.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/08/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 6bc7839e7db0022beaa9b31c390655f31d1d52c0
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 5e96c731496d79ca081091e2059a35545f963bd6
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053469"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078640"
 ---
 # <a name="remediate-common-issues-for-azure-stack-pki-certificates"></a>Rozwiązania typowych problemów dotyczących certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack
 Informacje w tym artykule ułatwiają zrozumienie i rozwiązywanie typowych problemów dotyczących certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack. Można wykryć problemy, korzystając z narzędzia narzędzie do sprawdzania gotowości usługi Azure Stack [weryfikują certyfikaty infrastruktury kluczy publicznych do usługi Azure Stack](azure-stack-validate-pki-certs.md). Narzędzie sprawdza, sprawdź, czy certyfikaty wymagań infrastruktury kluczy publicznych wdrożenia usługi Azure Stack i Azure Stack klucz tajny obrotu i loguje się wyniki [pliku report.json](azure-stack-validation-report.md).  

@@ -1,27 +1,24 @@
 ---
-title: Przewodnik Szybki start platformy Azure — Tworzenie konta magazynu | Microsoft Docs
-description: Szybko naucz się, jak utworzyć nowe konto magazynu przy użyciu witryny Azure Portal, programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure.
+title: 'Szybki start: tworzenie konta magazynu — Azure Storage'
+description: W tym samouczku Szybki start nauczysz się, jak utworzyć konto magazynu przy użyciu witryny Azure Portal, programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Konto usługi Azure Storage zapewnia unikatową przestrzeń nazw na platformie Microsoft Azure do przechowywania i umożliwiania dostępu do obiektów danych utworzonych w usłudze Azure Storage.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 07/03/2018
+ms.date: 09/18/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 91e98f74fd6cd88533a5090a383897eaa0e60648
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: a695e333f48ed0bbf1ad5656c20964232feff4d7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524024"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990131"
 ---
 # <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Konto usługi Azure Storage zapewnia unikatową przestrzeń nazw w chmurze do przechowywania i umożliwiania dostępu do obiektów w usłudze Azure Storage. Konto magazynu zawiera wszystkie obiekty blob, pliki, kolejki, tabele i dyski tworzone w ramach tego konta. 
-
-Aby rozpocząć pracę z usługą Azure Storage, należy najpierw utworzyć konto magazynu. Możesz utworzyć konto usługi Azure Storage przy użyciu [witryny Azure Portal](https://portal.azure.com/), [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) lub [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure?view=azure-cli-latest). W tym przewodniku Szybki start przedstawiano sposób użycia każdej z tych opcji do utworzenia nowego konta magazynu. 
-
+W tym samouczku Szybki start nauczysz się, jak utworzyć konto magazynu przy użyciu witryny [Azure Portal](https://portal.azure.com/), programu [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) lub [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure?view=azure-cli-latest).  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -54,7 +51,7 @@ Ten przycisk służy do uruchamiania interaktywnej powłoki, której możesz uż
 
 ### <a name="install-the-cli-locally"></a>Instalowanie interfejsu wiersza polecenia lokalnie
 
-Interfejs wiersza polecenia platformy Azure możesz również zainstalować i używać go lokalnie. Ten przewodnik Szybki start wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). 
+Interfejs wiersza polecenia platformy Azure możesz również zainstalować i używać go lokalnie. Ten przewodnik Szybki start wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
 
 ---
 
@@ -84,26 +81,21 @@ az login
 
 ---
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Więcej informacji na temat grup zasobów znajduje się w temacie [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
+Teraz możesz przystąpić do tworzenia konta magazynu.
+
+Każde konto magazynu musi należeć do grupy zasobów platformy Azure. Grupa zasobów to logiczny kontener przeznaczony do grupowania usług platformy Azure. Podczas tworzenia konta magazynu masz możliwość utworzenia nowej grupy zasobów lub użycia istniejącej grupy zasobów. W tym przewodniku Szybki start pokazano, jak utworzyć nową grupę zasobów. 
+
+Konto magazynu **ogólnego przeznaczenia, wersja 2** zapewnia dostęp do wszystkich usług magazynu Azure Storage: obiektów blob, plików, kolejek, tabel i dysków. W tym samouczku przedstawiono tworzenie konta magazynu ogólnego przeznaczenia, wersja 2, ale kroki tworzenia dowolnego typu konta magazynu są podobne.   
 
 # <a name="portaltabportal"></a>[Portal](#tab/portal)
 
-Aby utworzyć grupę zasobów w witrynie Azure Portal, wykonaj następujące kroki:
-
-1. W witrynie Azure Portal rozwiń menu po lewej stronie, aby otworzyć menu usług, a następnie wybierz pozycję **Grupy zasobów**.
-2. Kliknij przycisk **Dodaj**, aby dodać nową grupę zasobów.
-3. Wprowadź nazwę nowej grupy zasobów.
-4. Wybierz subskrypcję, w ramach której chcesz utworzyć nową grupę zasobów.
-5. Wybierz lokalizację grupy zasobów.
-6. Kliknij przycisk **Utwórz**.  
-
-![Zrzut ekranu przedstawiający proces tworzenia grupy zasobów w witrynie Azure Portal](./media/storage-quickstart-create-account/create-resource-group.png)
+[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
 
-Aby utworzyć nową grupę zasobów za pomocą programu PowerShell, użyj polecenia [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup): 
+Najpierw użyj polecenia [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) w programie PowerShell, aby utworzyć nową grupę zasobów: 
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -119,64 +111,7 @@ Get-AzureRmLocation | select Location
 $location = "westus"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
-
-Aby utworzyć nową grupę zasobów za pomocą interfejsu wiersza polecenia platformy Azure, użyj polecenia [az group create](/cli/azure/group#az_group_create). 
-
-```azurecli-interactive
-az group create \
-    --name storage-quickstart-resource-group \
-    --location westus
-```
-
-Jeśli nie masz pewności, który region należy określić dla parametru `--location`, za pomocą polecenia [az account list-locations](/cli/azure/account#az_account_list) możesz pobrać listę obsługiwanych regionów dla swojej subskrypcji.
-
-```azurecli-interactive
-az account list-locations \
-    --query "[].{Region:name}" \
-    --out table
-```
-
----
-
-## <a name="create-a-general-purpose-storage-account"></a>Tworzenie konta magazynu ogólnego przeznaczenia
-
-Konto magazynu ogólnego przeznaczenia zapewnia dostęp do wszystkich usług magazynu Azure Storage: obiektów blob, plików, kolejek i tabel. Konto magazynu ogólnego przeznaczenia można utworzyć w warstwie Standardowa lub Premium. W przykładach w tym artykule pokazano sposób tworzenia konta magazynu ogólnego przeznaczenia w warstwie Standardowa (wartość domyślna).
-
-Usługa Azure Storage oferuje dwa typy kont magazynu ogólnego przeznaczenia:
-
-- Konta ogólnego przeznaczenia, wersja 2 
-- Konta ogólnego przeznaczenia, wersja 1 
-
-> [!NOTE]
-> Zalecane jest tworzenie nowych kont magazynu jako **kont ogólnego przeznaczenia, wersja 2**, aby móc korzystać z nowszych funkcji dostępnych w przypadku tych kont.  
-
-Aby uzyskać więcej informacji dotyczących typów kont magazynu, zobacz temat [Opcje konta usługi Azure Storage](storage-account-options.md).
-
-Podczas określania nazwy konta magazynu należy pamiętać o następujących regułach:
-
-- Nazwy kont usługi Storage muszą mieć długość od 3 do 24 znaków i mogą zawierać tylko cyfry i małe litery.
-- Nazwa konta magazynu musi być unikatowa w obrębie platformy Azure. Każde konto magazynu musi mieć inną nazwę.
-
-# <a name="portaltabportal"></a>[Portal](#tab/portal)
-
-Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 w witrynie Azure Portal, wykonaj następujące kroki:
-
-1. W witrynie Azure Portal rozwiń menu po lewej stronie, aby otworzyć menu usług, a następnie wybierz pozycję **Wszystkie usługi**. Następnie przewiń w dół do pozycji **Storage** i wybierz pozycję **Konta magazynu**. W oknie **Konta magazynu**, które zostanie wyświetlone, wybierz pozycję **Dodaj**.
-2. Wprowadź nazwę konta magazynu.
-3. Ustaw pole **Rodzaj konta** na wartość **StorageV2 (ogólnego przeznaczenia, wersja 2)**.
-4. Pozostaw pole **Replikacja** ustawione na wartość **Magazyn lokalnie nadmiarowy (LRS)**. Możesz również wybrać pozycję **Magazyn strefowo nadmiarowy (ZRS)**, **Magazyn geograficznie nadmiarowy (GRS)** lub **Magazyn geograficznie nadmiarowy dostępny do odczytu (RA-GRS)**.
-5. Pozostaw następujące pola ustawione na ich wartości domyślne: **Model wdrażania**, **Wydajność** i **Wymagany bezpieczny transfer**.
-6. Wybierz subskrypcję, w ramach której chcesz utworzyć konto magazynu.
-7. Z listy rozwijanej **Grupa zasobów** wybierz pozycję **Użyj istniejącej**, a następnie wybierz grupę zasobów utworzoną w poprzedniej sekcji.
-8. Wybierz lokalizację nowego konta magazynu.
-9. Kliknij pozycję **Utwórz**, aby utworzyć konto magazynu.      
-
-![Zrzut ekranu przedstawiający proces tworzenia konta magazynu w witrynie Azure Portal](./media/storage-quickstart-create-account/create-account-portal.png)
-
-# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
-
-Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 z poziomu programu PowerShell przy użyciu magazynu lokalnie nadmiarowego (LRS), użyj polecenia [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount): 
+Następnie utwórz konto magazynu ogólnego przeznaczenia, wersja 2 z magazynem lokalnie nadmiarowym (LRS). Użyj polecenia [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount): 
 
 ```powershell
 New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
@@ -197,7 +132,23 @@ Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 przy użyciu mag
 
 # <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
-Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 z poziomu interfejsu wiersza polecenia platformy Azure przy użyciu magazynu lokalnie nadmiarowego, użyj polecenia [az storage account create](/cli/azure/storage/account#az_storage_account_create).
+Najpierw użyj polecenia [az group create](/cli/azure/group#az_group_create) interfejsu wiersza polecenia platformy Azure, aby utworzyć nową grupę zasobów. 
+
+```azurecli-interactive
+az group create \
+    --name storage-quickstart-resource-group \
+    --location westus
+```
+
+Jeśli nie masz pewności, który region należy określić dla parametru `--location`, za pomocą polecenia [az account list-locations](/cli/azure/account#az_account_list) możesz pobrać listę obsługiwanych regionów dla swojej subskrypcji.
+
+```azurecli-interactive
+az account list-locations \
+    --query "[].{Region:name}" \
+    --out table
+```
+
+Następnie utwórz konto magazynu ogólnego przeznaczenia, wersja 2 z magazynem lokalnie nadmiarowym. Użyj polecenia [az storage account create](/cli/azure/storage/account#az_storage_account_create):
 
 ```azurecli-interactive
 az storage account create \
@@ -258,16 +209,16 @@ W tym przewodniku Szybki start zostało utworzone standardowe konto magazynu og�
 # <a name="portaltabportal"></a>[Portal](#tab/portal)
 
 > [!div class="nextstepaction"]
-> [Transferowanie obiektów do usługi Azure Blob Storage i z niej za pomocą witryny Azure Portal](../blobs/storage-quickstart-blobs-portal.md)
+> [Praca z obiektami blob za pomocą witryny Azure Portal](../blobs/storage-quickstart-blobs-portal.md)
 
 # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
 
 > [!div class="nextstepaction"]
-> [Transferowanie obiektów do usługi Azure Blob Storage i z niej za pomocą programu PowerShell](../blobs/storage-quickstart-blobs-powershell.md)
+> [Praca z obiektami blob za pomocą programu PowerShell](../blobs/storage-quickstart-blobs-powershell.md)
 
 # <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 > [!div class="nextstepaction"]
-> [Transferowanie obiektów do usługi Azure Blob Storage i z niej za pomocą interfejsu wiersza polecenia platformy Azure](../blobs/storage-quickstart-blobs-cli.md)
+> [Praca z magazynem obiektów blob przy użyciu interfejsu wiersza polecenia platformy Azure](../blobs/storage-quickstart-blobs-cli.md)
 
 ---

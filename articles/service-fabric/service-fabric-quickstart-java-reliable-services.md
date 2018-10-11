@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 10/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ed5da0afe67deaa7000c1bf3b8d75bdea14f2ecd
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 7fcf0b924868d755bc76f7d1e695e73afc4eae6a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616330"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993395"
 ---
 # <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>Szybki start: wdrażanie aplikacji niezawodnych usług Java w usłudze Service Fabric
 
@@ -101,7 +101,7 @@ Zaloguj się i dołącz do [klastra systemu Linux](http://aka.ms/tryservicefabri
 Usługa Service Fabric udostępnia kilka narzędzi, których możesz używać do zarządzania klastrem i jego aplikacjami:
 
 * Service Fabric Explorer — narzędzie oparte na przeglądarce.
-* Interfejs wiersza polecenia (CLI) usługi Service Fabric, który korzysta z interfejsu wiersza polecenia platformy Azure 2.0.
+* Interfejs wiersza polecenia usługi Service Fabric, który korzysta z interfejsu wiersza polecenia platformy Azure.
 * Polecenia programu PowerShell.
 
 W tym przewodniku Szybki start jest używany interfejs wiersza polecenia usługi Service Fabric i narzędzie Service Fabric Explorer.

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: da4f06ff4e1478043bc147c2c08083e118bccbe4
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4532355130fff987e25c5c804630fb6bdd7699df
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723123"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959839"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Samouczek: skalowanie automatyczne zestawu skalowania maszyn wirtualnych przy użyciu szablonu platformy Azure
 Podczas tworzenia zestawu skalowania musisz zdefiniować liczbę wystąpień maszyn wirtualnych, które chcesz uruchamiać. W odpowiedzi na zmieniające się zapotrzebowanie aplikacji możesz automatycznie zwiększać lub zmniejszać liczbę wystąpień maszyn wirtualnych. Skalowanie automatyczne pozwala spełniać potrzeby klientów lub reagować na zmiany wydajności aplikacji w całym cyklu jej życia. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -36,7 +36,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.29 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli). 
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.29 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli). 
 
 
 ## <a name="define-an-autoscale-profile"></a>Definiowanie profilu skalowania automatycznego
@@ -272,7 +272,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 
 ## <a name="next-steps"></a>Następne kroki
-W tym samouczku przedstawiono automatyczne skalowanie zestawu skalowania w pionie lub w poziomie za pomocą interfejsu wiersza polecenia platformy Azure 2.0:
+W tym samouczku przedstawiono automatyczne skalowanie zestawu skalowania w pionie lub w poziomie za pomocą interfejsu wiersza polecenia platformy Azure:
 
 > [!div class="checklist"]
 > * Używanie funkcji skalowania automatycznego z zestawem skalowania
@@ -280,7 +280,7 @@ W tym samouczku przedstawiono automatyczne skalowanie zestawu skalowania w pioni
 > * Testy obciążeniowe wystąpień maszyn wirtualnych i wyzwalanie reguł skalowania automatycznego
 > * Skalowanie automatyczne do wewnątrz po zmniejszeniu zapotrzebowania
 
-Więcej akcji zestawów skalowania maszyn wirtualnych zawierają następujące przykładowe skrypty interfejsu wiersza polecenia platformy Azure 2.0:
+Więcej akcji zestawów skalowania maszyn wirtualnych zawierają następujące przykładowe skrypty interfejsu wiersza polecenia platformy Azure:
 
 > [!div class="nextstepaction"]
-> [Scale set script samples for Azure CLI 2.0 (Przykładowe skrypty zestawu skalowania przeznaczone dla interfejsu wiersza polecenia platformy Azure 2.0)](cli-samples.md)
+> [Scale set script samples for Azure CLI (Przykładowe skrypty zestawu skalowania przeznaczone dla interfejsu wiersza polecenia platformy Azure)](cli-samples.md)

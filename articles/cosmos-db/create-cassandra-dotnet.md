@@ -1,22 +1,21 @@
 ---
-title: 'Szybki start: interfejs API bazy danych Cassandra z platformą .NET — Azure Cosmos DB | Microsoft Docs'
+title: 'Szybki start: interfejs API Cassandra z platformą .NET— Azure Cosmos DB'
 description: W tym przewodniku Szybki start przedstawiono używanie interfejsu API bazy danych Cassandra w usłudze Azure Cosmos DB do tworzenia aplikacji profilów przy użyciu witryny Azure Portal i platformy .NET
 services: cosmos-db
-author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
+author: SnehaGunda
+ms.author: sngun
 ms.custom: quick start connect, mvc
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 11/15/2017
-ms.author: sngun
-ms.openlocfilehash: 6ab7c0fa5f7e4d10b38ecee8f75372dda3b11a1c
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 09/24/2018
+ms.openlocfilehash: 3708027b766ff9070831dd3677e821565e0dd4fa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700584"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46994959"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-and-azure-cosmos-db"></a>Szybki start: tworzenie aplikacji interfejsu API bazy danych Cassandra przy użyciu platformy .NET i usługi Azure Cosmos DB
 
@@ -27,7 +26,7 @@ ms.locfileid: "43700584"
 > * [Python](create-cassandra-python.md)
 >  
 
-W tym przewodniku Szybki start przedstawiono używanie platformy .NET i [interfejsu API bazy danych Cassandra](cassandra-introduction.md) w usłudze Azure Cosmos DB do tworzenia aplikacji profilów przez sklonowanie przykładu z serwisu GitHub. Ten przewodnik Szybki start przeprowadzi Cię również przez tworzenie konta usługi Azure Cosmos DB przy użyciu portalu internetowego platformy Azure.   
+W tym przewodniku Szybki start przedstawiono używanie platformy .NET i [interfejsu API bazy danych Cassandra](cassandra-introduction.md) w usłudze Azure Cosmos DB do tworzenia aplikacji profilów przez sklonowanie przykładu z serwisu GitHub. W tym przewodniku Szybki start pokazano również sposób tworzenia konta usługi Azure Cosmos DB przy użyciu witryny internetowej Azure Portal.
 
 Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu globalnego rozproszenia i możliwości skalowania w poziomie w usłudze Azure Cosmos DB można szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, tabel, par klucz/wartość i grafowe. 
 
@@ -35,9 +34,7 @@ Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firm
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Można też [bezpłatnie wypróbować usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) bez subskrypcji platformy Azure — nie wymaga to opłat ani zobowiązań.
 
-Uzyskaj dostęp do programu wersji zapoznawczej interfejsu API bazy danych Cassandra w usłudze Azure Cosmos DB. Jeśli jeszcze nie został wysłany wniosek o dostęp, [zarejestruj się teraz](cassandra-introduction.md#sign-up-now).
-
-Ponadto: 
+Potrzebne są też następujące elementy: 
 * Jeśli nie masz jeszcze zainstalowanego programu Visual Studio 2017, możesz pobrać program [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) i używać go **bezpłatnie**. Podczas instalacji programu Visual Studio upewnij się, że jest włączona opcja **Programowanie na platformie Azure**.
 * Zainstaluj usługę [Git](https://www.git-scm.com/), aby sklonować przykład.
 
@@ -51,7 +48,7 @@ Ponadto:
 
 Teraz przejdźmy do pracy z kodem. Sklonujemy aplikację interfejsu API bazy danych Cassandra z serwisu GitHub, ustawimy parametry połączenia i uruchomimy ją. Zobaczysz, jak łatwo jest pracować programowo z danymi. 
 
-1. Otwórz wiersz polecenia, utwórz nowy folder o nazwie git-samples, a następnie zamknij wiersz polecenia.
+1. Otwórz wiersz polecenia. Utwórz nowy folder o nazwie `git-samples`. Następnie zamknij wiersz polecenia.
 
     ```bash
     md "C:\git-samples"
@@ -69,11 +66,11 @@ Teraz przejdźmy do pracy z kodem. Sklonujemy aplikację interfejsu API bazy dan
     git clone https://github.com/Azure-Samples/azure-cosmos-db-cassandra-dotnet-getting-started.git
     ```
 
-3. Następnie otwórz plik rozwiązania CassandraQuickStartSample w programie Visual Studio. 
+4. Następnie otwórz plik rozwiązania CassandraQuickStartSample w programie Visual Studio. 
 
 ## <a name="review-the-code"></a>Przeglądanie kodu
 
-Ten krok jest opcjonalny. Jeśli chcesz dowiedzieć się, jak zasoby bazy danych są tworzone w kodzie, możesz przejrzeć poniższe fragmenty kodu. Wszystkie fragmenty kodu pochodzą z pliku Program.cs zainstalowanego w folderze C:\git-samples\azure-cosmos-db-cassandra-dotnet-getting-started\CassandraQuickStartSample. W przeciwnym razie możesz od razu przejść do sekcji [Aktualizowanie parametrów połączenia](#update-your-connection-string).
+Ten krok jest opcjonalny. Jeśli chcesz dowiedzieć się, jak kod tworzy zasoby bazy danych, możesz przejrzeć poniższe fragmenty kodu. Fragmenty kodu są pobierane z pliku `Program.cs` zainstalowanego w folderze `C:\git-samples\azure-cosmos-db-cassandra-dotnet-getting-started\CassandraQuickStartSample`. W przeciwnym razie możesz od razu przejść do sekcji [Aktualizowanie parametrów połączenia](#update-your-connection-string).
 
 * Zainicjuj sesję przez nawiązanie połączenia z punktem końcowym klastra Cassandra. Interfejs API bazy danych Cassandra w usłudze Azure Cosmos DB obsługuje tylko protokół TLS 1.2. 
 
@@ -121,7 +118,7 @@ Ten krok jest opcjonalny. Jeśli chcesz dowiedzieć się, jak zasoby bazy danych
 
 Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach połączenia i skopiować je do aplikacji. Informacje o parametrach połączenia umożliwiają aplikacji komunikowanie się z hostowaną bazą danych.
 
-1. W witrynie [Azure Portal](http://portal.azure.com/) kliknij pozycję **Parametry połączenia**. 
+1. W witrynie [Azure Portal](http://portal.azure.com/) wybierz pozycję **Parametry połączenia**.
 
     Użyj przycisku ![Przycisk Kopiuj](./media/create-cassandra-dotnet/copy.png) po prawej stronie ekranu, aby skopiować wartość NAZWA UŻYTKOWNIKA.
 
@@ -149,22 +146,22 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
 
 5. Zapisz plik Program.cs.
     
-## <a name="run-the-app"></a>Uruchamianie aplikacji
+## <a name="run-the-net-app"></a>Uruchamianie aplikacji .Net
 
-1. W programie Visual Studio kliknij pozycję **Narzędzia** > **Menedżer pakietów NuGet** > **Konsola menedżera pakietów**.
+1. W programie Visual Studio wybierz pozycję **Narzędzia** > **Menedżer pakietów NuGet** > **Konsola menedżera pakietów**.
 
 2. W wierszu polecenia użyj poniższego polecenia, aby zainstalować pakiet NuGet sterownika platformy .NET. 
 
     ```cmd
     Install-Package CassandraCSharpDriver
     ```
-3. Naciśnij klawisze CTRL + F5, aby uruchomić aplikację. Aplikacja zostanie wyświetlona w oknie konsoli. 
+3. Naciśnij klawisze CTRL+F5, aby uruchomić aplikację. Aplikacja zostanie wyświetlona w oknie konsoli. 
 
     ![Wyświetlanie i weryfikowanie danych wyjściowych](./media/create-cassandra-dotnet/output.png)
 
-    Naciśnij klawisze CTRL+C, aby zatrzymać działanie programu i zamknąć okno konsoli. 
+    Naciśnij klawisze CTRL+C, aby zatrzymać wykonywanie programu i zamknąć okno konsoli. 
     
-    Teraz możesz otworzyć Eksploratora danych w witrynie Azure Portal, aby wyświetlać zapytania oraz modyfikować te nowe dane i pracować z nimi. 
+4. W witrynie Azure Portal otwórz **Eksploratora danych**, aby wykonywać zapytania oraz modyfikować te nowe dane i pracować z nimi.
 
     ![Wyświetlanie danych w Eksploratorze danych](./media/create-cassandra-dotnet/data-explorer.png)
 

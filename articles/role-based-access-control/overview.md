@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/07/2018
+ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d0d140a1656719b406567fee431d8e48a51852c5
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 37498394bc163852d397337cf5728b4941ae45a7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714455"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956510"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>Co to jest kontrola dostępu oparta na rolach?
 
@@ -89,7 +89,7 @@ Gdy udzielisz dostępu w zakresie nadrzędnym, te uprawnienia są dziedziczone p
 - Jeśli przypiszesz rolę [czytelnika](built-in-roles.md#reader) do grupy na poziomie subskrypcji, członkowie tej grupy będą mogli wyświetlać wszystkie grupy zasobów i zasoby w ramach tej subskrypcji.
 - Jeśli przypiszesz rolę [współautora](built-in-roles.md#contributor) do aplikacji na poziomie grupy zasobów, ta aplikacja będzie mogła zarządzać zasobami dowolnego typu w tej grupie zasobów, ale nie w innych grupach zasobów w ramach subskrypcji.
 
-### <a name="role-assignment"></a>Przypisanie roli
+### <a name="role-assignments"></a>Przypisania ról
 
 *Przypisanie roli* to proces powiązania definicji roli z użytkownikiem, grupą lub jednostką usługi oraz wybranym zakresem w celu udzielenia dostępu. Udzielenie dostępu polega na utworzeniu przypisania roli, a odwołanie dostępu — na usunięciu przypisania roli.
 
@@ -98,6 +98,32 @@ Na poniższym diagramie przedstawiono przykład przypisania roli. W tym przykła
 ![Przypisanie roli w celu kontroli dostępu](./media/overview/rbac-overview.png)
 
 Przypisania ról można tworzyć, korzystając z witryny Azure Portal, interfejsu wiersza polecenia platformy Azure, programu Azure PowerShell, zestawów Azure SDK lub interfejsów API REST. W ramach jednej subskrypcji można utworzyć maksymalnie 2000 przypisań ról. Aby móc tworzyć i usuwać przypisania ról, potrzebne są uprawnienia `Microsoft.Authorization/roleAssignments/*`. Te uprawnienia można przyznać za pomocą ról [Właściciel](built-in-roles.md#owner) i [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator).
+
+## <a name="deny-assignments"></a>Przypisania odmowy
+
+Poprzedni model kontroli dostępu opartego na rolach umożliwiał wyłącznie zezwolenie, bez możliwości odmowy. Obecny model obsługuje w ograniczony sposób również przypisania odmowy. Podobnie jak przypisanie roli *przypisanie odmowy* wiąże zestaw akcji odmowy z użytkownikiem, grupą lub jednostką usługi w określonym zakresie w celu odmowy dostępu. Przypisanie roli definiuje zestaw akcji, które są *dozwolone*, podczas gdy przypisanie odmowy definiuje zestaw akcji, które są *niedozwolone*. Innymi słowy przypisanie odmowy uniemożliwia użytkownikom wykonywanie określonych akcji, nawet jeśli przypisanie roli daje im taki dostęp. Przypisanie odmowy ma pierwszeństwo przed przypisaniem roli.
+
+Obecnie przypisania odmowy są **tylko do odczytu** i mogą zostać ustawione wyłącznie przez platformę Azure. Nawet jeśli nie możesz utworzyć własnych przypisań odmowy, możesz wyświetlić listę przypisań odmowy, ponieważ mogą one mieć wpływ na Twoje uprawnienia. Aby uzyskać informacje na temat przypisania odmowy, musisz mieć uprawnienie `Microsoft.Authorization/denyAssignments/read`, które jest uwzględnione w większości [wbudowanych ról](built-in-roles.md#owner). Aby uzyskać więcej informacji, zobacz [Understand deny assignments (Czym są przypisania odmowy)](deny-assignments.md).
+
+## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>W jaki sposób kontrola dostępu oparta na rolach określa, czy użytkownik ma dostęp do zasobu
+
+Poniżej przedstawiono główne kroki wykorzystywane przez kontrolę dostępu opartą na rolach, aby określić, czy masz dostęp do zasobu na płaszczyźnie zarządzania. Warto je znać, jeśli próbujesz rozwiązać problem z dostępem.
+
+1. Użytkownik (lub jednostka usługi) uzyskuje token dla usługi Azure Resource Manager.
+
+    Ten token zawiera informację o członkostwie użytkownika w grupach (w tym przechodnim członkostwie w grupach).
+
+1. Użytkownik tworzy wywołanie interfejsu API REST do usługi Azure Resource Manager, dołączając token.
+
+1. Usługa Azure Resource Manager pobiera wszystkie przypisania roli lub odmowy, które dotyczą zasobu, wobec którego podejmowana jest akcja.
+
+1. Usługa Azure Resource Manager zawęża przypisania roli, które dotyczą tego użytkownika lub jego grupy, i określa, jakie role posiada użytkownik względem tego zasobu.
+
+1. Usługa Azure Resource Manager określa, czy akcja w wywołaniu interfejsu API należy do ról, jakie użytkownik posiada względem tego zasobu.
+
+1. Jeśli użytkownik nie ma roli zawierającej daną akcję w wymaganym zakresie, następuje odmowa dostępu. W przeciwnym razie usługa Azure Resource Manager sprawdza, czy ma w tej sytuacji zastosowanie przypisanie odmowy.
+
+1. Jeśli tak, dostęp jest blokowany. Jeśli nie, dostęp jest udzielany.
 
 ## <a name="next-steps"></a>Następne kroki
 

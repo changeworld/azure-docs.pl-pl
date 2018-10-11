@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: b206d93d7c72f5d8ff3dd3baa277cd0db33ba583
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 97e192312619455c0055a917df880cc48eb082dd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42811917"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978921"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing ruchu w sieci wirtualnej
 
@@ -105,13 +105,13 @@ Typu **Komunikacja równorzędna sieci wirtualnej** lub **VirtualNetworkServiceE
 
 Nazwa wyświetlana i przywoływana dla typów następnego przeskoku jest różna dla witryny Azure Portal i narzędzi wiersza polecenia oraz usługi Azure Resource Manager i klasycznych modeli wdrażania. W poniższej tabeli wymieniono nazwy używane w odwołaniu do każdego typu następnego przeskoku dla różnych narzędzi i [modeli wdrażania](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json):
 
-|Typ następnego skoku                   |Azure CLI 2.0 i PowerShell (Resource Manager) |Azure CLI 1.0 i PowerShell (klasyczne)|
+|Typ następnego skoku                   |Interfejs wiersza polecenia platformy Azure 2.0 i program PowerShell (Resource Manager) |Klasyczny interfejs wiersza polecenia platformy Azure i program PowerShell (wersja klasyczna)|
 |-------------                   |---------                                       |-----|
 |Brama sieci wirtualnej         |VirtualNetworkGateway                           |VPNGateway|
-|Sieć wirtualna                 |VNetLocal                                       |VNETLocal (niedostępne w wersji 1.0 interfejsu wiersza polecenia w trybie asm)|
-|Internet                        |Internet                                        |Internet (niedostępny w wersji 1.0 interfejsu wiersza polecenia w trybie asm)|
+|Sieć wirtualna                 |VNetLocal                                       |VNETLocal (niedostępne w wersji klasycznej interfejsu wiersza polecenia w trybie asm)|
+|Internet                        |Internet                                        |Internet (niedostępny w wersji klasycznej interfejsu wiersza polecenia w trybie asm)|
 |Urządzenie wirtualne               |VirtualAppliance                                |VirtualAppliance|
-|Brak                            |Brak                                            |Null (niedostępne w wersji 1.0 interfejsu wiersza polecenia w trybie asm)|
+|Brak                            |Brak                                            |Null (niedostępne w wersji klasycznej interfejsu wiersza polecenia w trybie asm)|
 |Wirtualne sieci równorzędne         |Komunikacja równorzędna sieci wirtualnych                                    |Nie dotyczy|
 |Punkt końcowy usługi sieci wirtualnej|VirtualNetworkServiceEndpoint                   |Nie dotyczy|
 

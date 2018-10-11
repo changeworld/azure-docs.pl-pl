@@ -3,7 +3,7 @@ title: Raport weryfikacji dla usługi Azure Stack | Dokumentacja firmy Microsoft
 description: Aby przejrzeć wyniki sprawdzania poprawności, należy użyć raportu narzędzie do sprawdzania gotowości usługi Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/08/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 06b5660a9428e98d2e99b5d447a05700968ec884
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 156b84e4941363716721b5cee6c19333ffe7594c
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43381917"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079450"
 ---
 # <a name="azure-stack-validation-report"></a>Raport weryfikacji usługi Azure Stack
 Można uruchomić operacji walidacji, które obsługują wdrażanie i obsługa środowiska Azure Stack, należy użyć narzędzia narzędzie do sprawdzania gotowości usługi Azure Stack. Narzędzie zapisuje wyniki do pliku raportu JSON. Raport przedstawia szczegółowe i sumaryczne dane o stanie wymagania wstępne dotyczące wdrażania usługi Azure Stack. Przedstawia również informacje o rotacji kluczy tajnych dla istniejących wdrożeń programu Azure Stack.  
@@ -60,7 +60,7 @@ Aby wyświetlić raport, który jest filtrowana na jednym typie sprawdzania popr
 - Certyfikat
 - AzureRegistration
 - AzureIdentity
-- Zadania   
+- Stanowiska   
 - Wszyscy  
 
 Na przykład aby wyświetlić raport podsumowania dla certyfikatów tylko wtedy, użyj następującego polecenia programu PowerShell: 

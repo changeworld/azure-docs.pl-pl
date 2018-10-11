@@ -1,29 +1,29 @@
 ---
-title: Samouczek — przypisywanie dostępu w usłudze Azure Cost Management | Microsoft Docs
-description: Ten samouczek zawiera informacje na temat przypisywania dostępu do danych rozwiązania Cost Management przy użyciu kont użytkowników w celu zdefiniowania poziomów dostępu do jednostek.
+title: Samouczek — przypisywanie dostępu przy użyciu rozwiązania Cloudyn na platformie Azure | Microsoft Docs
+description: Ten samouczek zawiera informacje na temat przypisywania dostępu do danych rozwiązania Cloudyn przy użyciu kont użytkowników w celu zdefiniowania poziomów dostępu do jednostek.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/10/2018
+ms.date: 09/18/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 4b45d917118d5be1252c3bb232e4b24e68d7857f
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: b3dcfc1756932d75f9885490baa8d09af54d111c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188186"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957475"
 ---
-# <a name="tutorial-assign-access-to-cost-management-data"></a>Samouczek: przypisywanie dostępu do danych rozwiązania Cost Management
+# <a name="tutorial-assign-access-to-cloudyn-data"></a>Samouczek: przypisywanie dostępu do danych rozwiązania Cloudyn
 
-Prawa dostępu do danych rozwiązania Cost Management są przyznawane za pośrednictwem funkcji zarządzania użytkownikami lub jednostkami. Konta użytkowników platformy Cloudyn określają dostęp do *jednostek* i funkcji administracyjnych. Istnieją dwa typy dostępu: administratora i użytkownika. O ile nie zmodyfikowano ich dla poszczególnych użytkowników, prawa dostępu administratora umożliwiają użytkownikowi nieograniczone korzystanie ze wszystkich funkcji w portalu Cloudyn, w tym z funkcji, takich jak: zarządzanie użytkownikami, zarządzanie listami adresatów oraz dostęp jednostki głównej do danych wszystkich jednostek. Dostęp użytkownika jest przeznaczony dla użytkowników końcowych i umożliwia im wyświetlanie raportów oraz tworzenie raportów przy użyciu dostępu do danych jednostki.
+Prawa dostępu do danych rozwiązania Cloudyn są przyznawane za pośrednictwem funkcji zarządzania użytkownikami lub jednostkami. Konta użytkowników platformy Cloudyn określają dostęp do *jednostek* i funkcji administracyjnych. Istnieją dwa typy dostępu: administratora i użytkownika. O ile nie zmodyfikowano ich dla poszczególnych użytkowników, prawa dostępu administratora umożliwiają użytkownikowi nieograniczone korzystanie ze wszystkich funkcji w portalu Cloudyn, w tym z funkcji, takich jak: zarządzanie użytkownikami, zarządzanie listami adresatów oraz dostęp jednostki głównej do danych wszystkich jednostek. Dostęp użytkownika jest przeznaczony dla użytkowników końcowych i umożliwia im wyświetlanie raportów oraz tworzenie raportów przy użyciu dostępu do danych jednostki.
 
 Jednostki są używane do odzwierciedlania struktury hierarchicznej organizacji biznesowej. Identyfikują one działy, oddziały i zespoły Twojej organizacji w rozwiązaniu Cloudyn. Hierarchia jednostek pomaga dokładnie śledzić wydatki dla poszczególnych jednostek.
 
-Zarejestrowanie konta lub umowy dotyczącej platformy Azure spowodowało utworzenie w rozwiązaniu Cloudyn konta z uprawnieniami administratora, więc możesz wykonać wszystkie czynności opisane w tym samouczku. Ten samouczek dotyczy dostępu do danych rozwiązania Cost Management, w tym danych zarządzania użytkownikami i zarządzania jednostkami. Omawiane kwestie:
+Zarejestrowanie konta lub umowy dotyczącej platformy Azure spowodowało utworzenie w rozwiązaniu Cloudyn konta z uprawnieniami administratora, więc możesz wykonać wszystkie czynności opisane w tym samouczku. Ten samouczek dotyczy dostępu do danych rozwiązania Cloudyn, w tym danych zarządzania użytkownikami i zarządzania jednostkami. Omawiane kwestie:
 
 > [!div class="checklist"]
 > * Tworzenie użytkownika z prawami dostępu administratora
@@ -38,7 +38,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Musisz mieć konto platformy Azure.
-- Musisz mieć rejestrację próbną lub płatną subskrypcję usługi Azure Cost Management.
+- Musisz mieć rejestrację próbną lub płatną subskrypcję usługi Cloudyn.
 
 ## <a name="create-a-user-with-admin-access"></a>Tworzenie użytkownika z prawami dostępu administratora
 
@@ -47,10 +47,10 @@ Mimo że Ty masz już prawa dostępu administratora, współpracownicy z organiz
 Wprowadź wymagane informacje o użytkowniku. **Identyfikator logowania** musi być prawidłowym adresem e-mail. Wybierz uprawnienia, aby zezwolić na zarządzanie użytkownikami, co pozwoli użytkownikowi na tworzenie i modyfikowanie innych użytkowników. Zarządzanie listami adresatów umożliwia użytkownikowi edytowanie list adresatów. Link z informacjami logowania jest wysyłany do użytkownika pocztą e-mail z platformy Cloudyn po wybraniu pozycji **Powiadom użytkownika pocztą e-mail**. Podczas pierwszego logowania użytkownik ustawia hasło.
 
 W obszarze **Użytkownik ma dostęp administratora** wybrano jednostkę główną organizacji. Pozostaw zaznaczoną jednostkę główną i zapisz informacje o użytkowniku. Wybranie jednostki głównej pozwoli użytkownikowi na posiadanie uprawnień administratora nie tylko do jednostki głównej w drzewie, ale także do wszystkich jednostek, które znajdują się pod nią.  
-  ![dodawanie nowego użytkownika z prawami dostępu administratora](.\media\tutorial-user-access\new-admin-access.png)
+  ![Dodawanie nowego użytkownika z prawami dostępu administratora](.\media\tutorial-user-access\new-admin-access.png)
 
 ## <a name="create-a-user-with-user-access"></a>Tworzenie użytkownika z prawami dostępu użytkownika
-Zazwyczaj użytkownicy, którzy potrzebują dostępu do danych rozwiązania Cost Management, takich jak pulpity nawigacyjne i raporty, powinni mieć prawa użytkownika do ich wyświetlania. Utwórz nowego użytkownika z dostępem użytkownika podobnego do utworzonego przy użyciu dostępu administratora, pamiętając o następujących różnicach:
+Zazwyczaj użytkownicy, którzy potrzebują dostępu do danych rozwiązania Cloudyn, takich jak pulpity nawigacyjne i raporty, powinni mieć prawa użytkownika do ich wyświetlania. Utwórz nowego użytkownika z dostępem użytkownika podobnego do utworzonego przy użyciu dostępu administratora, pamiętając o następujących różnicach:
 
 - Usuń zaznaczenie pól **Zezwól na zarządzanie użytkownikami** i **Zezwól na zarządzanie listami adresatów**, a następnie usuń wszystkie pozycje z listy **Użytkownik ma dostęp administratora**.
 - Zaznacz jednostki, do których użytkownik musi mieć dostęp, na liście **Użytkownik ma dostęp użytkownika**.
@@ -58,7 +58,7 @@ Zazwyczaj użytkownicy, którzy potrzebują dostępu do danych rozwiązania Cost
 
 ![dodawanie nowego użytkownika z prawami dostępu użytkownika](.\media\tutorial-user-access\new-user-access.png)
 
-Aby obejrzeć film wideo z samouczkiem dotyczącym dodawania użytkowników, zobacz [Adding Users to Azure Cost Management](https://youtu.be/Nzn7GLahx30) (Dodawanie użytkowników do usługi Azure Cost Management).
+Aby obejrzeć film wideo z samouczkiem dotyczącym dodawania użytkowników, zobacz [Adding Users to Cloudyn](https://youtu.be/Nzn7GLahx30) (Dodawanie użytkowników do rozwiązania Cloudyn).
 
 ## <a name="delete-a-user"></a>Usuwanie użytkownika
 
@@ -88,11 +88,11 @@ Po zarejestrowaniu konta lub umowy związanej z platformą Azure na platformie C
 
 W portalu Cloudyn kliknij symbol koła zębatego w prawym górnym rogu, a następnie wybierz pozycję **Konta w chmurze**. Rozpoczynasz od pojedynczej jednostki (głównej) i tworzysz drzewo jednostek pod tą jednostką główną. Oto przykład hierarchii jednostek, która po ukończeniu drzewa może przypominać wiele organizacji IT:
 
-![drzewo jednostki](.\media\tutorial-user-access\entity-tree.png)
+![Drzewo jednostki](.\media\tutorial-user-access\entity-tree.png)
 
 Obok pozycji **Jednostki** kliknij pozycję **Dodaj jednostkę**. Wprowadź informacje o osobie lub dziale do dodania. Wartości pól **Imię i nazwisko** i **Adres e-mail** nie muszą być zgodne z danymi istniejących użytkowników. Jeśli chcesz wyświetlić listę poziomów dostępu, wyszukaj w pomocy zagadnienia dotyczące *dodawania jednostki*.
 
-![dodawanie jednostki](.\media\tutorial-user-access\add-entity.png)
+![Dodawanie jednostki](.\media\tutorial-user-access\add-entity.png)
 
 Gdy wszystko będzie gotowe, **zapisz** jednostkę.
 
@@ -114,9 +114,9 @@ W portalu Cloudyn kliknij symbol koła zębatego w prawym górnym rogu, a nastę
 
 Istnieje także możliwość skojarzenia wielu kont z jednostką. Wybierz konta, a następnie kliknij polecenie **Przenieś**. W polu Przenieś konta wybierz jednostkę, do której ma zostać przeniesione konto, a następnie kliknij polecenie **Zapisz**. Pole Przenieś konta żąda potwierdzenia przeniesienia kont. Kliknij pozycję **Tak**, a następnie kliknij pozycję **OK**.
 
-Aby obejrzeć film wideo z samouczkiem dotyczącym tworzenia hierarchii jednostek kosztów, zobacz [Creating a Cost Entity Hierarchy in Azure Cost Management](https://youtu.be/dAd9G7u0FmU) (Tworzenie hierarchii jednostek kosztów w usłudze Azure Cost Management).
+Aby obejrzeć film wideo z samouczkiem dotyczącym tworzenia hierarchii jednostek kosztów, zobacz [Creating a Cost Entity Hierarchy in Cloudyn](https://youtu.be/dAd9G7u0FmU) (Tworzenie hierarchii jednostek kosztów w rozwiązaniu Cloudyn).
 
-Jeśli jesteś użytkownikiem platformy Azure z umową Enterprise Agreement, obejrzyj film z samouczkiem dotyczącym kojarzenia kont i subskrypcji z jednostkami: [Connecting to Azure Resource Manager with Azure Cost Management](https://youtu.be/oCIwvfBB6kk) (Łączenie z usługą Azure Resource Manager przy użyciu usługi Azure Cost Management).
+Jeśli jesteś użytkownikiem platformy Azure z umową Enterprise Agreement, obejrzyj film z samouczkiem dotyczącym kojarzenia kont i subskrypcji z jednostkami: [Connecting to Azure Resource Manager with Cloudyn](https://youtu.be/oCIwvfBB6kk) (Łączenie z usługą Azure Resource Manager przy użyciu rozwiązania Cloudyn).
 
 ## <a name="next-steps"></a>Następne kroki
 

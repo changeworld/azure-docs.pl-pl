@@ -1,25 +1,25 @@
 ---
-title: Rejestrowanie przy użyciu informacji o partnerze programu CSP w usłudze Azure Cost Management | Microsoft Docs
-description: Zarejestruj się w usłudze Azure Cost Management przy użyciu informacji o partnerze programu CSP.
+title: Rejestrowanie przy użyciu informacji o partnerze programu CSP w rozwiązaniu Cloudyn na platformie Azure | Microsoft Docs
+description: Zarejestruj się w rozwiązaniu Cloudyn przy użyciu informacji o partnerze programu CSP.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 08/06/2018
+ms.date: 09/18/2018
 ms.topic: quickstart
 ms.custom: ''
 ms.service: cost-management
 manager: dougeby
-ms.openlocfilehash: e97ac06d5740a793d5f811e1a7ac01fef1a32806
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 698ddab4f5bca5aacf79cb952a51c385a67eee32
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578062"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985452"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>Rejestrowanie w programie partnerskim programu CSP i wyświetlanie danych kosztów
 
-Jako partner programu CSP możesz zarejestrować się w usłudze Azure Cost Management. Rejestracja zapewnia dostęp do portalu firmy Cloudyn. W tym przewodniku Szybki start opisano szczegółowo proces rejestracji niezbędny do utworzenia subskrypcji wersji próbnej rozwiązania Cloudyn i zalogowania w portalu Cloudyn. Przedstawiono w nim także, jak od razu rozpocząć wyświetlanie danych kosztów.
+Jako partner programu CSP możesz zarejestrować się w rozwiązaniu Cloudyn. Rejestracja zapewnia dostęp do portalu firmy Cloudyn. W tym przewodniku Szybki start opisano szczegółowo proces rejestracji niezbędny do utworzenia subskrypcji wersji próbnej rozwiązania Cloudyn i zalogowania w portalu Cloudyn. Przedstawiono w nim także, jak od razu rozpocząć wyświetlanie danych kosztów.
 
 
 >[!NOTE]
@@ -35,12 +35,12 @@ Aby uzyskać więcej informacji, zobacz [Nawiązywanie połączenia z interfejse
 
 - Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
 
-## <a name="register-with-azure-cost-management"></a>Rejestrowanie w usłudze Azure Cost Management
+## <a name="register-with-cloudyn"></a>Rejestrowanie w rozwiązaniu Cloudyn
 
 1. W witrynie Azure Portal kliknij pozycję **Zarządzanie kosztami i rozliczenia** na liście usług.
-2. W obszarze **Przegląd** kliknij pozycję **Zarządzanie kosztami**  
-    ![Strona Zarządzanie kosztami](./media/quick-register-csp/cost-mgt-billing-service.png)
-3. Na stronie **Zarządzanie kosztami** kliknij pozycję **Przejdź do zarządzania kosztami**, aby otworzyć stronę rejestracji rozwiązania Cloudyn w nowym oknie.
+2. W obszarze **Przegląd** kliknij pozycję **Cloudyn**.  
+    ![Strona rozwiązania Cloudyn](./media/quick-register-csp/cost-mgt-billing-service.png)
+3. Na stronie **Cloudyn** kliknij pozycję **Przejdź do rozwiązania Cloudyn**, aby otworzyć stronę rejestracji rozwiązania Cloudyn w nowym oknie.
 4. Na stronie rejestracji wersji próbnej rozwiązania Cloudyn wpisz nazwę swojej firmy, wybierz pozycję **Microsoft CSP Partner Program Administrator** (Administrator programu partnerskiego programu Microsoft CSP), a następnie kliknij przycisk **Next** (Dalej).  
 5. Wypełnij pola **Application ID** (Identyfikator aplikacji), **Commerce ID** (Identyfikator handlowy) i **Application Secret key**(Klucz tajny aplikacji), a następnie wybierz pozycję **Default Pricing Plan** (Domyślny plan cenowy). Jeśli w tej chwili nie masz tych informacji, zaloguj się do portalu Centrum partnerskiego na stronie [https://partnercenter.microsoft.com](https://partnercenter.microsoft.com) za pomocą głównego konta administratora i wykonaj następujące czynności:
   1. Przejdź do obszaru **Pulpit nawigacyjny**, kliknij symbol **Ustawienia**, kliknij pozycję **Ustawienia partnera**, a następnie kliknij pozycję **Zarządzanie aplikacjami**.
@@ -62,7 +62,7 @@ Domyślnie interfejs API Centrum partnerskiego jest dostępny tylko dla bezpośr
 Aby włączyć dostęp dla partnerów lub klientów bezpośredniego programu CSP, wykonaj czynności opisane w sekcji [Tworzenie rejestracji wersji próbnej](#create-a-trial-registration) i skonfiguruj rejestrację wersji próbnej. Następnie wykonaj następujące czynności, aby posegmentować dane pośredniego programu CSP przy użyciu grup jednostek rozwiązania Cloudyn. Przypisz odpowiednie uprawnienia użytkowników do grup jednostek.
 
 1. Utwórz grupę jednostek, korzystając z informacji zawartych w sekcji [Tworzenie jednostek](tutorial-user-access.md#create-and-manage-entities).
-2. Wykonaj czynności opisane w artykule [Przypisywanie subskrypcji do jednostek kosztów](https://support.cloudyn.com/hc/en-us/articles/115005139425-Video-Assigning-subscriptions-to-Cost-Entities). Skojarz konto klienta pośredniego programu CSP i jego subskrypcje z uprzednio utworzoną jednostką.
+2. Wykonaj czynności opisane w artykule [Przypisywanie subskrypcji do jednostek kosztów](https://support.cloudyn.com/hc/articles/115005139425-Video-Assigning-subscriptions-to-Cost-Entities). Skojarz konto klienta pośredniego programu CSP i jego subskrypcje z uprzednio utworzoną jednostką.
 3. Wykonaj czynności opisane w sekcji [Tworzenie użytkownika z dostępem administratora](tutorial-user-access.md#create-a-user-with-admin-access), aby utworzyć konto użytkownika z dostępem administratora. Następnie upewnij się, że konto użytkownika ma dostęp administratora do określonych jednostek, które utworzono wcześniej dla konta pośredniego.
 
 Partnerzy pośredniego programu CSP mogą logować się do portalu Cloudyn przy użyciu utworzonych dla nich kont.
@@ -72,7 +72,7 @@ Partnerzy pośredniego programu CSP mogą logować się do portalu Cloudyn przy 
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start opisano rejestrację w usłudze Cost Management przy użyciu informacji programu CSP. Przedstawiono także logowanie się do portalu Cloudyn i rozpoczęcie wyświetlania danych kosztów. Aby dowiedzieć się więcej na temat usługi Azure Cost Management, przejdź do samouczka usługi Cost Management.
+W tym przewodniku Szybki start opisano rejestrację w rozwiązaniu Cloudyn przy użyciu informacji programu CSP. Przedstawiono także logowanie się do portalu Cloudyn i rozpoczęcie wyświetlania danych kosztów. Aby dowiedzieć się więcej na temat rozwiązania Cloudyn, przejdź do samouczka dotyczącego rozwiązania Cloudyn.
 
 > [!div class="nextstepaction"]
 > [Przeglądanie użycia i kosztów](./tutorial-review-usage.md)

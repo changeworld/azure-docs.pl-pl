@@ -5,16 +5,16 @@ services: cost-management
 author: bandersmsft
 ms.service: cost-management
 ms.topic: include
-ms.date: 04/26/2018
+ms.date: 09/17/2018
 ms.author: banders
 manager: dougeby
 ms.custom: include file
-ms.openlocfilehash: 1b65775ef5ad40ca9e9c1e2c96fe1c2b8d92afdc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4acc3f43f04c51e5303c8eba1d934580802312b5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32198859"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47017691"
 ---
 ## <a name="view-cost-data"></a>Wyświetlanie danych kosztów
 
@@ -26,27 +26,27 @@ W tym przykładzie pulpit nawigacyjny zarządzania obejmuje skonsolidowane koszt
 
 Jeśli nie masz pewności, jaki jest cel raportu na pulpicie nawigacyjnym, umieść kursor na symbolu **i**, aby wyświetlić wyjaśnienie. Kliknij dowolny raport na pulpicie nawigacyjnym, aby wyświetlić pełny raport.
 
-Możesz też wyświetlać raporty za pomocą menu raportów w górnej części portalu. Spójrzmy na wydatki związane z zasobami platformy Azure w firmie Contoso z ostatnich 30 dni. Kliknij pozycję **Koszt**  >  **Analiza kosztów**  >  **Rzeczywista analiza kosztów**. Wyczyść wszelkie wartości ustawione dla tagów, grup lub filtrów w raporcie.
+Możesz też wyświetlać raporty za pomocą menu raportów w górnej części portalu. Spójrzmy na wydatki związane z zasobami platformy Azure w firmie Contoso z ostatnich 30 dni. Kliknij pozycję **Koszty** > **Analiza kosztów** > **Rzeczywista analiza kosztów**. Wyczyść wszelkie wartości ustawione dla tagów, grup lub filtrów w raporcie.
 
 ![Rzeczywista analiza kosztów](./media/cost-management-create-account-view-data/actual-cost-01.png)
 
-W tym przykładzie łączny koszt wynosi 75 970 USD, a budżet wynosi 130 000 USD.
+W tym przykładzie łączny koszt wynosi 122 273 USD, a budżet wynosi 290 000 USD.
 
 Teraz zmodyfikujemy format raportu oraz ustawimy grupy i filtry, aby zawęzić wyniki dla kosztów związanych z platformą Azure. Jako **zakres dat** ustaw ostatnich 30 dni. W prawym górnym rogu kliknij symbol kolumny, aby zastosować formatowanie wykresu słupkowego, a następnie w obszarze Grupy wybierz pozycję **Dostawca**. Następnie jako filtr **Dostawca** ustaw wartość **Azure**.
 
 ![Odfiltrowana rzeczywista analiza kosztów](./media/cost-management-create-account-view-data/actual-cost-02.png)
 
-W tym przykładzie łączny koszt zasobów platformy Azure z ostatnich 30 dni wynosi 3839 USD.
+W tym przykładzie łączny koszt zasobów platformy Azure z ostatnich 30 dni wynosi 3309 USD.
 
 Kliknij prawym przyciskiem myszy pasek Dostawca (Azure), a następnie przejdź do szczegółów do pozycji **Typy zasobów**.
 
 ![przejście do szczegółów](./media/cost-management-create-account-view-data/actual-cost-03.png)
 
-Na poniższej ilustracji przedstawiono koszty zasobów platformy Azure poniesione przez firmę Contoso. Łączny koszt wynosi 3839 USD. W tym przykładzie połowa kosztów dotyczyła magazynu lokalnie nadmiarowego, a druga połowa dotyczyła różnych wystąpień maszyn wirtualnych.
+Na poniższej ilustracji przedstawiono koszty zasobów platformy Azure poniesione przez firmę Contoso. Łączny koszt wynosi 3309 USD. W tym przykładzie połowa kosztów dotyczyła maszyn wirtualnych w warstwie Standard_A1, a druga połowa — różnych wystąpień usług platformy Azure i maszyn wirtualnych.
 
 ![typy zasobów](./media/cost-management-create-account-view-data/actual-cost-04.png)
 
-Kliknij prawym przyciskiem myszy typ zasobu i wybierz pozycję **Jednostki kosztów**, aby wyświetlić jednostki kosztów i usługi, które korzystały z zasobu. W tym przykładzie użycie usług maszyn wirtualnych i procesów roboczych w metodologii DevOps wyniosło 486,60 USD i 435,71 USD. Łączny koszt dla obu usług wyniósł 922 USD.
+Kliknij prawym przyciskiem myszy typ zasobu i wybierz pozycję **Jednostki kosztów**, aby wyświetlić jednostki kosztów i usługi, które korzystały z zasobu. Na poniższej przykładowej ilustracji magazyn lokalnie nadmiarowy został ustawiony jako typ zasobu. Jednostka Contoso|Azure/Storage wykorzystała 15,65 USD. Jednostka Inżynieria|Azure Storage wykorzystała 164,25 USD. Jednostka Infrastruktura udostępniona|Azure/Storage wykorzystała 116,58 USD. Łączny koszt usług wynosi 296 USD.
 
 ![jednostki kosztów i usługi](./media/cost-management-create-account-view-data/actual-cost-05.png)
 

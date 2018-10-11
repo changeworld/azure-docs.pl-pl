@@ -1,6 +1,6 @@
 ---
-title: Tworzenie wewnętrznego modułu równoważenia obciążenia — interfejs wiersza polecenia platformy Azure (model klasyczny) | Microsoft Docs
-description: Dowiedz się, jak utworzyć wewnętrzny moduł równoważenia obciążenia w klasycznym modelu wdrażania przy użyciu interfejsu wiersza polecenia Azure
+title: Tworzenie wewnętrznego modułu równoważenia obciążenia — klasyczny interfejs wiersza polecenia platformy Azure | Microsoft Docs
+description: Dowiedz się, jak utworzyć wewnętrzny moduł równoważenia obciążenia w klasycznym modelu wdrażania przy użyciu klasycznego interfejsu wiersza polecenia Azure
 services: load-balancer
 documentationcenter: na
 author: genlin
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 06/18/2018
 ms.author: genli
-ms.openlocfilehash: 8f0ac03ff7b749e47692d03d65502df0a19bb758
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fb8929b31fa4325b996ddf4c5ec48e4acb0b930a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38539521"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966923"
 ---
-# <a name="get-started-creating-an-internal-load-balancer-classic-using-the-azure-cli"></a>Wprowadzenie do tworzenia wewnętrznego modułu równoważenia obciążenia (w modelu klasycznym) przy użyciu interfejsu wiersza polecenia Azure
+# <a name="get-started-creating-an-internal-load-balancer-using-the-azure-classic-cli"></a>Wprowadzenie do tworzenia wewnętrznego modułu równoważenia obciążenia przy użyciu klasycznego interfejsu wiersza polecenia Azure
 
 > [!div class="op_single_selector"]
 > * [Program PowerShell](../load-balancer/load-balancer-get-started-ilb-classic-ps.md)
@@ -44,11 +44,11 @@ Aby utworzyć zestaw wewnętrznego modułu równoważenia obciążenia, a także
 2. Dodaj punkty końcowe odpowiadające maszynom wirtualnym, które mogą otrzymywać ruch przychodzący.
 3. Skonfiguruj serwery wysyłające ruch, aby wysyłały ruch na wirtualny adres IP (VIP) wystąpienia wewnętrznego równoważenia obciążenia.
 
-## <a name="step-by-step-creating-an-internal-load-balancer-using-cli"></a>Szczegółowy opis tworzenia wewnętrznego modułu równoważenia obciążenia przy użyciu interfejsu wiersza polecenia
+## <a name="step-by-step-creating-an-internal-load-balancer-using-classic-cli"></a>Szczegółowy opis tworzenia wewnętrznego modułu równoważenia obciążenia przy użyciu klasycznego interfejsu wiersza polecenia
 
 W tym przewodniku opisano sposób tworzenia wewnętrznego modułu równoważenia obciążenia w oparciu o powyższy scenariusz.
 
-1. Jeśli po raz pierwszy używasz interfejsu wiersza polecenia Azure, zobacz artykuł [Instalowanie i konfigurowania interfejsu wiersza polecenia Azure](../cli-install-nodejs.md) i postępuj zgodnie z instrukcjami aż do punktu, w którym należy wybrać konto platformy Azure i subskrypcję.
+1. Jeśli po raz pierwszy używasz klasycznego interfejsu wiersza polecenia, zobacz artykuł [Instalowanie i konfigurowania interfejsu wiersza polecenia Azure](../cli-install-nodejs.md) i postępuj zgodnie z instrukcjami aż do punktu, w którym należy wybrać konto platformy Azure i subskrypcję.
 2. Uruchom polecenie **azure config mode**, aby przełączyć tryb na klasyczny, jak pokazano poniżej.
 
     ```azurecli

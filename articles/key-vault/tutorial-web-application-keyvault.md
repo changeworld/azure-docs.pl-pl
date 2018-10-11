@@ -9,32 +9,32 @@ ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/17/2018
+ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 91e2047998d6e743691821c631e15c94cd63cf15
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: d1776fc2347eb1a1f03a834b6a5f847ef5c551e4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41920093"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948887"
 ---
 # <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>Samouczek: konfigurowanie aplikacji internetowej platformy Azure w celu odczytu wpisu tajnego z usługi Key Vault
 
-W tym samouczku wykonasz kroki niezbędne do skonfigurowania aplikacji internetowej platformy Azure w celu odczytu informacji z usługi Key Vault za pomocą tożsamości usługi zarządzanej. Omawiane kwestie:
+W tym samouczku wykonasz kroki niezbędne do skonfigurowania aplikacji internetowej platformy Azure w celu odczytu informacji z usługi Key Vault za pomocą tożsamości zarządzanych zasobów platformy Azure. Omawiane kwestie:
 
 > [!div class="checklist"]
 > * Tworzenie usługi Key Vault.
 > * Przechowywanie wpisu tajnego w usłudze Key Vault.
 > * Tworzenie aplikacji internetowej platformy Azure.
-> * Włączanie tożsamości usługi zarządzanej
+> * Włączanie tożsamości zarządzanej w aplikacji internetowej.
 > * Przyznaj wymagane uprawnienia, aby umożliwić aplikacji odczyt danych z usługi Key Vault.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 Aby zalogować się do platformy Azure przy użyciu interfejsu wiersza polecenia, możesz wpisać:
 
@@ -218,9 +218,9 @@ Istnieją dwa pakiety NuGet, które Twoja aplikacja internetowa musi mieć zains
 >[!IMPORTANT]
 > Zostanie otwarte okno przeglądarki i wyświetlony komunikat 502.5 — błąd procesu. Jest to oczekiwane. Należy przyznać tożsamości aplikacji prawo odczytu wpisów tajnych z usługi Key Vault.
 
-## <a name="enable-managed-service-identity"></a>Włączanie tożsamości usługi zarządzanej
+## <a name="enable-a-managed-identity-for-the-web-app"></a>Włączanie tożsamości zarządzanej w aplikacji internetowej
 
-Usługa Azure Key Vault oferuje bezpieczny sposób przechowywania poświadczeń oraz innych kluczy i wpisów tajnych, ale w celu ich pobrania należy uwierzytelnić kod w usłudze Key Vault. Tożsamość usługi zarządzanej (MSI) ułatwia rozwiązywanie tego problemu, udostępniając usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure Active Directory (Azure AD). Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD, w tym w usłudze Key Vault, bez konieczności przechowywania poświadczeń w kodzie.
+Usługa Azure Key Vault oferuje bezpieczny sposób przechowywania poświadczeń oraz innych kluczy i wpisów tajnych, ale w celu ich pobrania należy uwierzytelnić kod w usłudze Key Vault. [Omówienie tożsamości zarządzanych dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md) ułatwia rozwiązywanie tego problemu, udostępniając usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure Active Directory (Azure AD). Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD, w tym w usłudze Key Vault, bez konieczności przechowywania poświadczeń w kodzie.
 
 1. Powrót do interfejsu wiersza polecenia platformy Azure
 2. Uruchom polecenie assign-identity w celu utworzenia tożsamości dla tej aplikacji:
@@ -230,7 +230,7 @@ az webapp identity assign --name "WebKeyVault" --resource-group "ContosoResource
 ```
 
 >[!NOTE]
->To polecenie odpowiada przejściu do portalu i przełączeniu ustawienia **Tożsamość usługi zarządzanej** na wartość **Włączone** we właściwościach aplikacji internetowej.
+>To polecenie odpowiada przejściu do portalu i przełączeniu ustawienia **Przypisana tożsamość/system** na wartość **Włączone** we właściwościach aplikacji internetowej.
 
 ## <a name="grant-rights-to-the-application-identity"></a>Przyznawanie uprawnień tożsamości aplikacji
 

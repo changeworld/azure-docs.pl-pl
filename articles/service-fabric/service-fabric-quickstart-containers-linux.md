@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/11/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b0ded0fb274f6b64935ddaba75abf23a94063120
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c84470936dfc9610f23dacb55d8d8643a2651f71
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452655"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948404"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Szybki start: wdrażanie kontenerów systemu Linux w usłudze Service Fabric
 
@@ -65,7 +65,7 @@ Zaloguj się i dołącz do [klastra systemu Linux](http://aka.ms/tryservicefabri
 Usługa Service Fabric udostępnia kilka narzędzi, których możesz używać do zarządzania klastrem i jego aplikacjami:
 
 - Service Fabric Explorer — narzędzie oparte na przeglądarce.
-- Interfejs wiersza polecenia (CLI) usługi Service Fabric, który korzysta z interfejsu wiersza polecenia platformy Azure 2.0.
+- Interfejs wiersza polecenia usługi Service Fabric, który korzysta z interfejsu wiersza polecenia platformy Azure. 
 - Polecenia programu PowerShell.
 
 W tym przewodniku Szybki start używasz usługi Service Fabric w usłudze Cloud Shell i narzędzia Service Fabric Explorer. Poniższe sekcje pokazują, jak zainstalować certyfikat wymagany w celu nawiązania połączenia z bezpiecznym klastrem za pomocą tych narzędzi.

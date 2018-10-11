@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: 583400dba7077ebab3ce80d6a03b26f13a659b35
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: b6654afa27255b0ebd0cc80b94212f44bbf16f34
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696874"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960079"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-4-create-an-azure-cosmos-db-account-using-the-azure-cli"></a>Tworzenie aplikacji bazy danych MongoDB przy użyciu usług Angular i Azure Cosmos DB — część 4: tworzenie konta usługi Azure Cosmos DB przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -37,7 +37,7 @@ Część 4 samouczka jest oparta na [Części 3](tutorial-develop-mongodb-nodejs
 
 Przed rozpoczęciem tej części samouczka upewnij się, że zostały wykonane czynności opisane w [części 3](tutorial-develop-mongodb-nodejs-part3.md) samouczka. 
 
-W tej sekcji samouczka możesz użyć usługi Azure Cloud Shell (w przeglądarce internetowej) lub zainstalowanego lokalnie [interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia platformy Azure, pamiętaj, aby później uruchomić interfejs wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version` w wierszu polecenia, aby sprawdzić swoją wersję. 
+W tej sekcji samouczka możesz użyć usługi Azure Cloud Shell (w przeglądarce internetowej) lub zainstalowanego lokalnie [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 

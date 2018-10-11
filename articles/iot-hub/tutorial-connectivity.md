@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 05/29/2018
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: dc857760cf0d3fa2e146f22196b7bc36d119df5f
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 5a09211dc134cdb372a9712c1f45d7c44660a759
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869594"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966864"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Samouczek: testowanie łączności z centrum IoT za pomocą urządzenia symulowanego
 
@@ -33,7 +33,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Skrypty interfejsu wiersza polecenia uruchamiane w tym samouczku wymagają [rozszerzenia usługi Microsoft Azure IoT dla interfejsu wiersza polecenia platformy Azure 2.0](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md). Aby zainstalować to rozszerzenie, uruchom następujące polecenie interfejsu wiersza polecenia:
+Skrypty interfejsu wiersza polecenia uruchamiane w tym samouczku wymagają [rozszerzenia usługi Microsoft Azure IoT dla interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md). Aby zainstalować to rozszerzenie, uruchom następujące polecenie interfejsu wiersza polecenia:
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
@@ -51,7 +51,7 @@ node --version
 
 Pobierz przykładowy projekt symulatora urządzenia Node.js ze strony https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip i wyodrębnij archiwum ZIP.
 
-## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT
+## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
 Jeśli podczas pracy z poprzednim przewodnikiem Szybki start lub samouczkiem zostało już utworzone centrum IoT w warstwie Bezpłatna lub Standardowa, możesz pominąć ten krok.
 
@@ -100,7 +100,7 @@ Aby zresetować podstawowy klucz urządzenia dla urządzenia **MyTestDevice**, u
 # Generate a new Base64 encoded key using the current date
 read key < <(date +%s | sha256sum | base64 | head -c 32)
 
-# Requires the IoT Extension for Azure CLI 2.0
+# Requires the IoT Extension for Azure CLI
 # az extension add --name azure-cli-iot-ext
 
 # Reset the primary device key for MyTestDevice

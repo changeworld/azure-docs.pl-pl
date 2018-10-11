@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 1009a7a1d9f354f7a41b0e3a0fbc49d57992bc31
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 034731ac2c965d6b9b682c62b9866870e558ff6d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42916474"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964671"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>Szybki start: tworzenie konta magazynu usługi Azure Data Lake Storage 2. generacji w wersji zapoznawczej
 
@@ -49,7 +49,7 @@ Ten przycisk służy do uruchamiania interaktywnej powłoki, której możesz uż
 
 ### <a name="install-the-cli-locally"></a>Instalowanie interfejsu wiersza polecenia lokalnie
 
-Interfejs wiersza polecenia platformy Azure możesz również zainstalować i używać go lokalnie. Ten przewodnik Szybki start wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.38 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli).
+Interfejs wiersza polecenia platformy Azure możesz również zainstalować i używać go lokalnie. Ten przewodnik Szybki start wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.38 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
 ## <a name="overview-of-creating-an-azure-data-lake-storage-gen2-account"></a>Omówienie tworzenia konta usługi Azure Data Lake Storage 2. generacji
 
@@ -58,7 +58,7 @@ Przed utworzeniem konta musisz najpierw utworzyć grupę zasobów, która dział
 > [!NOTE]
 > Aby korzystać z zalet funkcji usługi Data Lake Storage 2. generacji, należy tworzyć nowe konta magazynu jako typ **StorageV2 (ogólnego przeznaczenia w wersji 2)**.  
 
-Aby uzyskać więcej informacji dotyczących typów kont magazynu, zobacz temat [Opcje konta usługi Azure Storage](../common/storage-account-options.md).
+Aby uzyskać więcej informacji dotyczących kont magazynu, zobacz temat [Azure Storage account overview](../common/storage-account-overview.md) (Omówienie konta usługi Azure Storage).
 
 Podczas określania nazwy konta magazynu należy pamiętać o następujących regułach:
 
