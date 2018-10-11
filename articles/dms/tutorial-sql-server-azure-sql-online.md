@@ -2,21 +2,21 @@
 title: Używanie usługi Azure Database Migration Service do przeprowadzania migracji w trybie online z programu SQL Server do usługi Azure SQL Database | Microsoft Docs
 description: Dowiedz się, w jaki sposób przeprowadzić migrację w trybie online z lokalnego programu SQL Server do usługi Azure SQL Database za pomocą usługi Azure Database Migration Service.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: ''
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 08/31/2018
-ms.openlocfilehash: b4cbc7fc7e031fcbd25229792488dbb4002ea23e
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.date: 10/10/2018
+ms.openlocfilehash: cbc30d1a70d7a333f56df6f0a796d3a8e6532fe8
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340215"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068731"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-online-using-dms"></a>Przeprowadzanie migracji z programu SQL Server do usługi Azure SQL Database w trybie online przy użyciu usługi DMS
 Usługa Azure Database Migration Service służy do migrowania baz danych z lokalnego wystąpienia programu SQL Server do usługi [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) przy minimalnym przestoju. W tym samouczku przeprowadzisz migrację bazy danych **Adventureworks2012** przywróconej do lokalnego wystąpienia programu SQL Server 2016 (lub nowszej wersji) do usługi Azure SQL Database, używając usługi Azure Database Migration Service.

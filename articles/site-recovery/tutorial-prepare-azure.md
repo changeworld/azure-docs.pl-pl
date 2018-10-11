@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 10/10/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6a113169cb3f8fea1012643efcb56e5cf6c7e908
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 4a92bfc9d682346c874ce91fc9835558402bae84
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915973"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078991"
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>Przygotowywanie zasobów platformy Azure do replikacji maszyn lokalnych
 
@@ -35,7 +35,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się w [Portalu Azure](http://portal.azure.com).
+Zaloguj się w witrynie [Azure Portal](http://portal.azure.com).
 
 ## <a name="verify-account-permissions"></a>Sprawdzanie uprawnień konta
 
@@ -89,7 +89,7 @@ Gdy maszyny wirtualne platformy Azure są tworzone na podstawie magazynu po prze
 6. W obszarze **Subskrypcja** wybierz subskrypcję, w ramach której chcesz utworzyć sieć.
 7. W obszarze **Lokalizacja** wybierz pozycję **Europa Zachodnia**. Sieć musi znajdować się w tym samym regionie co magazyn Usług odzyskiwania.
 8. Należy pozostawić opcje domyślne podstawowej ochrony DDoS bez punktu końcowego usługi w sieci.
-9. Kliknij przycisk **Utwórz**.
+9. Kliknij pozycję **Utwórz**.
 
    ![Tworzenie sieci wirtualnej](media/tutorial-prepare-azure/create-network.png)
 

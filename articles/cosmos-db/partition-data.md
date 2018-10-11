@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d7c1c28b3d7b2f51c31f5f05cdef66cc8d71e192
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 968651e2bd06d54c8b735bf2418e0d84b94f315d
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886386"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078568"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Partycja i skali w usłudze Azure Cosmos DB
 
@@ -185,7 +185,7 @@ Aby uzyskać więcej informacji, zobacz [opracowywanie zawartości przy użyciu 
 Za pomocą interfejsu API języka Gremlin można użyć witryny Azure portal lub interfejsu wiersza polecenia platformy Azure do utworzenia kontenera, który reprezentuje wykresu. Alternatywnie ponieważ usługi Azure Cosmos DB to wielomodelowa, służy jednego z innych interfejsów API do tworzenia i skalowania kontenera grafu.
 
 > [!NOTE]
-> Nie można użyć `/id` jako klucza partycji dla kontenera w interfejsie API języka Gremlin. 
+> `/id` i `/label` nie są obsługiwane jako klucze partycji dla kontenera w interfejsie API języka Gremlin.
 
 Możesz przeczytać dowolnego wierzchołka lub Microsoft edge, przy użyciu klucza partycji i Identyfikatora w języku Gremlin. Na przykład w przypadku programu graph z regionem ("USA") jako klucza partycji i "Seattle", jako klucz wiersza, można znaleźć wierzchołka przy użyciu następującej składni:
 

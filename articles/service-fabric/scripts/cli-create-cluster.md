@@ -15,18 +15,18 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 79125beac6ab34b88c951a2fb9c601b93ae36e20
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9c2f094104172407992371b6738dd2fdf101a506
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642210"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985117"
 ---
 # <a name="create-a-secure-service-fabric-linux-cluster-in-azure"></a>Tworzenie bezpiecznego klastra systemu Linux usługi Service Fabric na platformie Azure
 
 To polecenie tworzy certyfikat z podpisem własnym, dodaje go do magazynu kluczy i pobiera certyfikat lokalnie.  Nowy certyfikat służy do zabezpieczania klastra podczas wdrażania.  Zamiast tworzenia nowego certyfikatu można też użyć istniejącego.  W każdym razie nazwa podmiotu certyfikatu musi być zgodna z domeną używaną w celu uzyskiwania dostępu do klastra usługi Service Fabric. To dopasowanie jest wymagane, aby można było zapewnić protokół SSL dla punktów końcowych zarządzania protokołu HTTPS klastra i dla narzędzia Service Fabric Explorer. Nie można uzyskać z urzędu certyfikacji certyfikatu SSL dla domeny `.cloudapp.azure.com`. Musisz uzyskać niestandardową nazwę domeny dla klastra. W przypadku żądania certyfikatu od urzędu certyfikacji nazwa podmiotu certyfikatu musi być zgodna z niestandardową nazwą domeny używaną dla danego klastra.
 
-W razie potrzeby zainstaluj [interfejs wiersza polecenia platformy Azure 2.0](/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
+W razie potrzeby zainstaluj [interfejs wiersza polecenia platformy Azure](/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 

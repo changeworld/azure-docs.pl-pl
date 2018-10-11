@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: tworzenie, debugowanie i wdrażanie aplikacji internetowej usługi Service Fabric Mesh dla wielu usług | Microsoft Docs'
+title: 'Samouczek: tworzenie, debugowanie, wdrażanie i monitorowanie aplikacji usługi Service Fabric Mesh dla wielu usług'
 description: W tym samouczku utworzysz wielousługową aplikację usługi Azure Service Fabric Mesh składającą się z witryny internetowej ASP.NET Core, która komunikuje się z usługą internetową zaplecza, a następnie zdebugujesz ją lokalnie i opublikujesz na platformie Azure.
 services: service-fabric-mesh
 documentationcenter: .net
@@ -12,26 +12,28 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/17/2018
+ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 59ff3434e7b984f4530ad4f8b03b27991d3a9c1c
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 09112aafdbabf0cda2b3ae13af73a9223533a6e1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41921049"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979198"
 ---
-# <a name="tutorial-create-debug-and-deploy-a-multi-service-web-application-to-service-fabric-mesh"></a>Samouczek: tworzenie, debugowanie i wdrażanie aplikacji internetowej usługi Service Fabric Mesh dla wielu usług
+# <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Samouczek: tworzenie, debugowanie, wdrażanie i aktualizowanie aplikacji usługi Service Fabric Mesh dla wielu usług
 
-Niniejszy samouczek jest pierwszą częścią serii. Dowiesz się, jak utworzyć aplikację usługi Azure Service Fabric Mesh z frontonem internetowym platformy ASP.NET i usługą zaplecza internetowego interfejsu API platformy ASP.NET Core. Następnie przeprowadzisz debugowanie aplikacji w lokalnym klastrze projektowym i opublikujesz ją na platformie Azure. Po zakończeniu będziesz mieć prostą aplikację z zadaniami do wykonania, która przedstawia wywołanie między usługami w aplikacji Service Fabric Mesh uruchomionej w usłudze Azure Service Fabric Mesh.
+Niniejszy samouczek jest pierwszą częścią serii. Dowiesz się, jak za pomocą programu Visual Studio można utworzyć aplikację usługi Azure Service Fabric Mesh z frontonem internetowym platformy ASP.NET i usługą zaplecza internetowego interfejsu API platformy ASP.NET Core. Następnie przeprowadzisz debugowanie aplikacji w lokalnym klastrze projektowym. Opublikujesz aplikację na platformie Azure, a następnie dokonasz zmian w konfiguracji i kodzie i uaktualnisz aplikację. Na koniec wyczyścisz nieużywane zasoby platformy Azure, aby zapobiec naliczaniu opłat za nie.
+
+Zanim zakończysz, przejdziesz przez większość faz zarządzania cyklem życia aplikacji i zbudujesz aplikację demonstrującą wywołanie typu usługa-usługa w aplikacji usługi Service Fabric Mesh.
 
 Jeśli nie chcesz ręcznie tworzyć aplikacji z zadaniami do wykonania, możesz [pobrać kod źródłowy](https://github.com/azure-samples/service-fabric-mesh) gotowej aplikacji i od razu przejść do sekcji [Lokalne debugowanie aplikacji](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md).
 
 Część pierwsza serii zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Tworzenie aplikacji Service Fabric Mesh składającej się z frontonu internetowego ASP.NET.
+> * Tworzenie aplikacji usługi Service Fabric Mesh składającej się z frontonu internetowego ASP.NET w programie Visual Studio.
 > * Tworzenie modelu reprezentującego elementy do wykonania.
 > * Tworzenie usługi zaplecza i pobieranie danych z niej.
 > * Dodawanie kontrolera i elementu DataContext w ramach wzorca model-widok-kontroler dla usługi zaplecza.
@@ -40,9 +42,11 @@ Część pierwsza serii zawiera informacje na temat wykonywania następujących 
 
 Ta seria samouczków zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
-> * Tworzenie aplikacji usługi Service Fabric Mesh
-> * [Lokalne debugowanie aplikacji](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
-> * [Publikowanie aplikacji na platformie Azure](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * Tworzenie aplikacji usługi Service Fabric Mesh w programie Visual Studio
+> * [Debugowanie aplikacji usługi Service Fabric Mesh w lokalnym klastrze projektowym](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * [Wdrażanie aplikacji usługi Service Fabric Mesh](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * [Uaktualnianie aplikacji usługi Service Fabric Mesh](service-fabric-mesh-tutorial-upgrade.md)
+> * [Czyszczenie zasobów usługi Service Fabric Mesh](service-fabric-mesh-tutorial-cleanup-resources.md)
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -54,9 +58,7 @@ Przed rozpoczęciem tego samouczka:
 
 * Upewnij się, że masz [skonfigurowane środowisko projektowe](service-fabric-mesh-howto-setup-developer-environment-sdk.md) z zainstalowanym środowiskiem uruchomieniowym usługi Service Fabric, zestawem SDK, platformą Docker i programem Visual Studio 2017.
 
-* Obecnie aplikacja używana podczas pracy z tym samouczkiem musi być utworzona z użyciem angielskich ustawień regionalnych.
-
-## <a name="create-a-service-fabric-mesh-project"></a>Tworzenie projektu usługi Service Fabric Mesh
+## <a name="create-a-service-fabric-mesh-project-in-visual-studio"></a>Tworzenie projektu usługi Service Fabric Mesh w programie Visual Studio
 
 Otwórz program Visual Studio, a następnie wybierz pozycję **Plik** > **Nowy** > **Projekt**.
 
@@ -212,10 +214,7 @@ public static class DataContext
 
     static DataContext()
     {
-        ToDoList = new Model.ToDoList("Main List");
-
         // Seed to-do list
-
         ToDoList.Add(Model.ToDoItem.Load("Learn about microservices", 0, true));
         ToDoList.Add(Model.ToDoItem.Load("Learn about Service Fabric", 1, true));
         ToDoList.Add(Model.ToDoItem.Load("Learn about Service Fabric Mesh", 2, false));
@@ -368,6 +367,7 @@ W pliku service.yaml dodaj następujące zmienne w sekcji `environmentVariables`
 
 > [!IMPORTANT]
 > Do uzyskania efektu wcięcia zmiennych w pliku service.yaml należy użyć spacji, a nie znaków tabulacji. W przeciwnym razie plik nie zostanie skompilowany. Program Visual Studio może wstawiać znaki tabulacji podczas tworzenia zmiennych środowiskowych. Wszystkie znaki tabulacji należy zastąpić spacjami. Mimo że w procesie **kompilacji** w danych wyjściowych debugowania będą wyświetlane błędy, aplikacja zostanie uruchomiona. Jednak nie będzie ona działać do momentu przekonwertowania znaków tabulacji na spacje. Aby upewnić się, że plik service.yaml nie zawiera znaków tabulacji, w edytorze Visual Studio można włączyć wyświetlanie białych znaków, wybierając pozycję **Edytuj**  > **Zaawansowane**  > **Wyświetl białe znaki**.
+> Należy pamiętać, że pliki service.yaml są przetwarzane przy użyciu ustawień regionalnych języka angielskiego.  Jeśli na przykład jest potrzebne użycie separatora dziesiętnego, należy zastosować kropkę, a nie przecinek.
 
 Plik **service.yaml** w Twoim projekcie **WebFrontEnd** powinien wyglądać mniej więcej tak, mimo że wartość `ApiHostPort` prawdopodobnie będzie inna:
 
@@ -380,7 +380,7 @@ Teraz możesz przystąpić do tworzenia i wdrażania obrazu aplikacji usługi Se
 W tej części samouczka zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Tworzenie aplikacji Service Fabric Mesh składającej się z frontonu internetowego ASP.NET.
+> * Tworzenie aplikacji usługi Service Fabric Mesh składającej się z frontonu internetowego ASP.NET.
 > * Tworzenie modelu reprezentującego elementy do wykonania.
 > * Tworzenie usługi zaplecza i pobieranie danych z niej.
 > * Dodawanie kontrolera i elementu DataContext w ramach wzorca model-widok-kontroler dla usługi zaplecza.
@@ -389,4 +389,4 @@ W tej części samouczka zawarto informacje na temat wykonywania następujących
 
 Przejdź do następnego samouczka:
 > [!div class="nextstepaction"]
-> [Debugowanie lokalnej aplikacji usługi Service Fabric Mesh](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> [Debugowanie aplikacji usługi Service Fabric Mesh w lokalnym klastrze projektowym](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)

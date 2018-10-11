@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/02/2018
+ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 8c943b9ec8114699a7fad487c7d669b58942c019
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 83d2fabbe3a1b0ab44cb97e53baf0aa40349aeed
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042533"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079212"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Macierz obsługi replikacji funkcji Hyper-V do platformy Azure
 

@@ -1,6 +1,6 @@
 ---
 title: Dostęp do usługi Azure Active Directory tokenów odwołania | Dokumentacja firmy Microsoft
-description: Akceptować tokeny dostępu emitowane przez 1.0 i 2.0 punktów końcowych usługi Azure AD.
+description: Więcej informacji na temat tokenów dostępu wyemitowane przez punkty końcowe usługi Azure AD w wersji 1.0 i 2.0.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 5f467b5fd9db913d41342bfec3e08791ad41a36a
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: f184c18e97144f7efb30d61ebd024344510f3f5c
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815634"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078770"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Tokeny dostępu w usłudze Azure Active Directory
 
@@ -87,6 +87,7 @@ Oświadczenia są obecne, tylko wtedy, gdy istnieje wartość, aby wypełnić go
 |-----|--------|-------------|
 | `aud` | Ciąg, identyfikator URI Identyfikatora aplikacji | Identyfikuje zamierzonym odbiorcą tokenu. W tokenach dostępu odbiorców jest identyfikator aplikacji, przypisany do aplikacji w witrynie Azure portal. Aplikację należy sprawdzić tę wartość i odrzucenie tokenu, jeśli wartość nie jest zgodny. |
 | `iss` | Ciąg identyfikatora URI usługi STS | Określa usługę tokenu zabezpieczającego (STS), który tworzy i zwraca token i dzierżawy usługi Azure AD, w którym użytkownik został uwierzytelniony. Jeśli token został wystawiony przez punkt końcowy v2.0, identyfikator URI zakończy się w `/v2.0`. Identyfikator GUID, który wskazuje, czy użytkownik jest użytkownikiem odbiorcy z konta Microsoft jest `9188040d-6c67-4c5b-b112-36a304b66dad`. Aplikację należy użyć część stanowiącą identyfikator GUID oświadczenia, aby ograniczyć zestaw dzierżawców, którzy mogą zalogować do aplikacji, jeśli ma to zastosowanie. |
+|`idp`|Ciąg, zazwyczaj identyfikator URI usługi STS | Rejestruje dostawcę tożsamości, który uwierzytelnił podmiot tokenu. Ta wartość jest taka sama jak wartość oświadczenia wystawcy, chyba że konto użytkownika nie znajduje się w tej samej dzierżawie, jako wystawca - goście, na przykład. Jeśli oświadczenia nie jest obecny, oznacza to, że wartość `iss` mogą być używane zamiast tego.  Dla osobistych kont, które są używane w kontekście orgnizational (na przykład konta osobistego zaproszeni do dzierżawy usługi Azure AD) `idp` oświadczeń może być "live.com" lub identyfikator URI usługi STS dzierżawy konta Microsoft zawierającego `9188040d-6c67-4c5b-b112-36a304b66dad`. |  
 | `iat` | int, sygnatura czasowa systemu UNIX | "Wydany w" wskazuje, kiedy wystąpił uwierzytelniania dla tego tokenu. |
 | `nbf` | int, sygnatura czasowa systemu UNIX | Oświadczenie "nbf" (nie przed) identyfikuje czas, przed którym tokenu JWT nie muszą zostać zaakceptowane do przetworzenia. |
 | `exp` | int, sygnatura czasowa systemu UNIX | Oświadczenie "exp" (czas wygaśnięcia) identyfikuje czasu wygaśnięcia na lub po którym tokenu JWT nie może zostać przyjęty do przetworzenia. Należy zauważyć, że zasób może odrzucić token przed upływem wskazanego terminu, takie jak kiedy konieczne jest wprowadzenie zmiany w uwierzytelnianiu lub token odwołania został wykryty. |

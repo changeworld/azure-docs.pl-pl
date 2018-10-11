@@ -1,6 +1,6 @@
 ---
-title: Usługi aplikacji — informacje o wersji 1 update stosu Azure | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat nowości w aktualizacji, jeden dla usługi aplikacji Azure stosu, znane problemy i pobierania aktualizacji.
+title: Usługa App Service w usłudze Azure Stack update — informacje o wersji 1 | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat nowości w aktualizacji, jeden dla usługi App Service w usłudze Azure Stack, znanych problemów i umożliwiające pobranie aktualizacji.
 services: azure-stack
 documentationcenter: ''
 author: apwestgarth
@@ -14,51 +14,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: anwestg
-ms.reviewer: brenduns
-ms.openlocfilehash: 80bd865b7a08d9488c0fb6a1a5b60445b9c6eaaa
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.reviewer: sethm
+ms.openlocfilehash: ee6e4397345b4cb169e7e22d951d4c4fdff5b7b7
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34358085"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078719"
 ---
-# <a name="app-service-on-azure-stack-update-1-release-notes"></a>Usługi aplikacji — informacje o wersji 1 update Azure stosu
+# <a name="app-service-on-azure-stack-update-1-release-notes"></a>Usługa App Service w usłudze Azure Stack update — informacje o wersji 1
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Te informacje o wersji opisano ulepszeń i poprawek w usłudze Azure App Service na Azure stosu Update 1 i znanych problemów. Znane problemy są podzielone na problemy z bezpośrednio do wdrożenia, proces aktualizacji i problemy z kompilacją (po instalacji).
+Tych informacjach o wersji opisano ulepszeń i poprawek w usłudze Azure App Service, Azure Stack Update 1 i znanych problemach. Znane problemy są podzielone na problemy z bezpośrednio do wdrożenia, proces aktualizacji i problemy z kompilacją (po instalacji).
 
 > [!IMPORTANT]
-> Zastosowanie aktualizacji 1802 systemu Azure stosu zintegrowane lub wdrożyć najnowszy zestaw deweloperski stosu Azure przed wdrożeniem usługi Azure App Service.
+> Dotyczą aktualizacji 1802 system zintegrowany z usługi Azure Stack można też wdrażać najnowszy zestaw Azure Stack development kit przed wdrożeniem usługi Azure App Service.
 >
 >
 
-## <a name="build-reference"></a>Tworzenie odwołania
+## <a name="build-reference"></a>Dokumentacja kompilowania
 
-Usługa aplikacji Azure stosu Update 1 numer kompilacji jest **69.0.13698.9**
+App Service na numer kompilacji programu Azure Stack aktualizacji 1 to **69.0.13698.9**
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
 > [!IMPORTANT]
-> Nowe wdrożenia usługi Azure App Service na stosie Azure wymaga [certyfikat uniwersalny podmiotu trzech](azure-stack-app-service-before-you-get-started.md#get-certificates) ze względu na ulepszenia w taki sposób, w jaki usługa rejestracji Jednokrotnej dla Kudu teraz obsługiwane w usłudze Azure App Service. Nowy temat jest  **\*. sso.appservice.\< region\>.\< DomainName\>.\< rozszerzenia\>**
+> Teraz wymagają nowych wdrożeń usługi Azure App Service w usłudze Azure Stack [certyfikat uniwersalny tematu z trzema](azure-stack-app-service-before-you-get-started.md#get-certificates) ze względu na ulepszenia w taki sposób, w jaki logowanie Jednokrotne do Kudu jest teraz obsługiwane w usłudze Azure App Service. Nowy temat jest  **\*. sso.appservice.\< region\>.\< nazwa_domeny\>.\< rozszerzenie\>**
 >
 >
 
-Zapoznaj się [przed rozpoczęciem pracy dokumentacji](azure-stack-app-service-before-you-get-started.md) przed rozpoczęciem wdrażania.
+Zapoznaj się [dokumentacji przed rozpoczęciem](azure-stack-app-service-before-you-get-started.md) przed rozpoczęciem wdrażania.
 
 ### <a name="new-features-and-fixes"></a>Nowe funkcje i poprawki
 
-Usługa aplikacji Azure na Azure stosu Update 1 zawiera następujące ulepszenia i poprawki:
+Usługa Azure App Service w usłudze Azure Stack Update 1 obejmuje następujące ulepszenia i poprawki:
 
-- **Wysokiej dostępności z usługi Azure App Service** -1802 stosu Azure obciążeń włączone aktualizacje do wdrożenia na fault domen. W związku z tym infrastruktury usługi aplikacji jest w stanie się odporność na uszkodzenia, co zostanie ona wdrożona w domenach awarii. Domyślnie wszystkie nowe wdrożenia usługi Azure App Service ma tę możliwość, jednak wdrożeń ukończone przed 1802 stosu Azure zastosowanych aktualizacji można znaleźć w temacie [dokumentacji domena awarii usługi aplikacji](azure-stack-app-service-fault-domain-update.md)
+- **Wysoka dostępność usług Azure App Service** — można wdrożyć w różnych obciążeń włączone aktualizacje usługi Azure Stack w wersji 1802 domeny błędów. W związku z tym infrastruktury usługi App Service jest w stanie zapewnić odporność na uszkodzenia, ponieważ zostanie ono wdrożone w domenach błędów. Domyślnie wszystkich nowych wdrożeń usługi Azure App Service ma tę możliwość, jednak wdrożenia zakończone przed Azure Stack w wersji 1802 Trwa stosowanie aktualizacji można znaleźć [dokumentacji domeny błędów usługi App Service](azure-stack-app-service-fault-domain-update.md)
 
-- **Wdrażanie w istniejącej sieci wirtualnej** — klienci mogą teraz wdrożyć usługi aplikacji na stosie Azure w ramach istniejącej sieci wirtualnej. Wdrażanie w istniejącej sieci wirtualnej umożliwia klientom łączenie się z programu SQL Server i serwer plików, wymaganych do usługi Azure App Service za pośrednictwem portów prywatnych. Podczas wdrażania klientów można wybrać do wdrożenia w istniejącej sieci wirtualnej, jednak [należy utworzyć podsieci do użycia przez usługę App Service](azure-stack-app-service-before-you-get-started.md#virtual-network) przed ich wdrożeniem.
+- **Wdrażanie w istniejącej sieci wirtualnej** — klienci mogą teraz wdrażać usługi App Service w usłudze Azure Stack w ramach istniejącej sieci wirtualnej. Wdrażanie w istniejącej sieci wirtualnej umożliwia klientom łączenie się z programu SQL Server i serwer plików, wymagane dla usługi Azure App Service za pośrednictwem portów prywatnych. Podczas wdrażania, klienci mogą wybrać do wdrożenia w istniejącej sieci wirtualnej, jednak [utworzyć podsieci do użycia przez usługę App Service](azure-stack-app-service-before-you-get-started.md#virtual-network) przed ich wdrożeniem.
 
-- Aktualizacje **dzierżawa usługi aplikacji, administrator, portali funkcje i narzędzia Kudu**. Spójne z wersją zestawu SDK usługi Azure stosu portalu.
+- Aktualizacje **dzierżawy usługi aplikacji, administrator, portali funkcje i narzędzia Kudu**. Zgodne z wersją zestawu SDK usługi Azure Stack Portal.
 
-- **Aktualizacje następujące struktury aplikacji i narzędzi**:
-    - Dodaje **.Net Core 2.0** obsługuje
-    - Dodaje **Node.JS** wersji:
+- **Aktualizacje do narzędzi i struktur aplikacji na następujących**:
+    - Dodano **.Net Core 2.0** pomocy technicznej
+    - Dodano **Node.JS** wersji:
         - 6.11.2
         - 6.11.5
         - 7.10.1
@@ -69,7 +69,7 @@ Usługa aplikacji Azure na Azure stosu Update 1 zawiera następujące ulepszenia
         - 8.7.0
         - 8.8.1
         - 8.9.0
-    - Dodaje **NPM** wersji:
+    - Dodano **NPM** wersji:
         - 3.10.10
         - 4.2.0
         - 5.0.0
@@ -77,52 +77,52 @@ Usługa aplikacji Azure na Azure stosu Update 1 zawiera następujące ulepszenia
         - 5.3.0
         - 5.4.2
         - 5.5.1
-    - Dodaje **PHP** aktualizacji:
+    - Dodano **PHP** aktualizacji:
         - 5.6.32
         - 7.0.26 (x86 i x64)
         - 7.1.12 (x86 i x64)
-    - Zaktualizowano **Git dla systemu Windows** v 2.14.1
+    - Zaktualizowano **Git dla Windows** v 2.14.1
     - Zaktualizowano **Mercurial** do v4.5.0
 
-  - Dodano obsługę **HTTPS tylko** funkcji w funkcji domeny niestandardowe w portalu dzierżawcy usługi aplikacji. 
+  - Dodano obsługę **tylko HTTPS** funkcji w ramach funkcji domena niestandardowa w portalu dzierżawcy usługi App Service. 
 
-  - Dodano Weryfikacja połączenia z magazynem w selektorze magazynu niestandardowego dla usługi Azure Functions 
+  - Dodano sprawdzanie poprawności połączenia magazynu w selektorze magazynu niestandardowego dla usługi Azure Functions 
 
 #### <a name="fixes"></a>Poprawki
 
-- Podczas tworzenia pakietu wdrożeniowego w trybie offline, klienci nie będą już przekazywane dostępu komunikat o błędzie podczas otwierania folderu z Instalatora usługi aplikacji
+- Podczas tworzenia pakietu wdrożeniowego w trybie offline, klienci nie będą już przekazywane odmowa dostępu komunikat o błędzie podczas otwierania folderu z poziomu Instalatora usługi App Service
 
-- Rozwiązane problemy podczas pracy funkcji domen niestandardowych w portalu dzierżawcy usługi aplikacji.
+- Rozwiązane problemy podczas pracy w funkcji domen niestandardowych w portalu dzierżawcy usługi App Service.
 
-- Zapobiegaj klientów przy użyciu nazw zastrzeżonych administratora podczas instalacji
+- Pozwolić użytkownikom przy użyciu nazw zastrzeżonych administratora podczas instalacji
 
-- Wdrożenia usługi App Service z włączoną **przyłączony do domeny** serwera plików
+- Wdrożenie usługi App Service z włączoną **przyłączonych do domeny** serwera plików
 
-- Ulepszone pobieranie stosu Azure głównego certyfikatu w skrypcie i teraz sprawdzić poprawność certyfikatu głównego w Instalatorze usługi aplikacji.
+- Ulepszone pobieranie głównego usługi Azure Stack certyfikatu w skrypcie, a teraz sprawdzić poprawność certyfikatu głównego, w oknie Instalatora usługi App Service.
 
-- Nieprawidłowy stan stały zwracanych do usługi Azure Resource Manager, gdy subskrypcja jest usuwane że zasoby zawarte w przestrzeni nazw Microsoft.Web.
+- Nieprawidłowy stan ustalony zwracane do usługi Azure Resource Manager, gdy subskrypcja jest usunąć ten zawarte w niej zasoby w przestrzeni nazw Microsoft.Web.
 
-### <a name="known-issues-with-the-deployment-process"></a>Znane problemy z procesu wdrażania
+### <a name="known-issues-with-the-deployment-process"></a>Znane problemy związane z procesu wdrażania
 
 - Błędy sprawdzania poprawności certyfikatu
 
-Niektórzy klienci wystąpić problemy podczas dostarczania certyfikatów Instalatora usługi aplikacji podczas wdrażania w systemie zintegrowane z powodu zbyt restrykcyjne weryfikacji w Instalatorze. Instalator usługi aplikacji została ponownie wydana, jeżeli klienci [Pobierz zaktualizowany Instalator](https://aka.ms/appsvconmasinstaller). Jeśli nadal występują problemy dotyczące sprawdzania poprawności certyfikatów przy użyciu zaktualizowanych Instalatora, należy się z pomocą techniczną.
+Niektórzy klienci wystąpić problemy podczas dostarczania certyfikatów do Instalatora usługi App Service, wdrażając na system zintegrowany z powodu zbyt restrykcyjne sprawdzanie poprawności w Instalatorze. Instalator usługi App Service opublikowano ponownie, jeżeli klienci [pobrać zaktualizowany Instalator](https://aka.ms/appsvconmasinstaller). Jeśli nadal występują problemy, sprawdzanie poprawności certyfikatów za pomocą zaktualizowany Instalator, skontaktuj się z pomocą techniczną.
 
-- Problem podczas pobierania certyfikatu głównego stosu Azure z zintegrowany system.
+- Wystąpił problem podczas pobierania certyfikatu głównego usługi Azure Stack z zintegrowanego systemu.
 
-Błąd w Get AzureStackRootCert.ps1 spowodował klientów nie można pobrać certyfikat główny stos Azure podczas wykonywania skryptu na komputerze, na którym nie ma zainstalowany certyfikat główny. Skrypt teraz również opublikowano ponownie, rozwiązywanie tego problemu, a żądania klientów [Pobierz skrypty zaktualizowane Pomocnika](https://aka.ms/appsvconmashelpers). Jeśli nadal występują problemy podczas pobierania certyfikatu głównego z zaktualizowany skrypt, skontaktuj się z pomocą techniczną.
+Błąd w Get AzureStackRootCert.ps1 spowodował klientów nie można pobrać certyfikatu głównego usługi Azure Stack, podczas wykonywania skryptu na maszynie nie zainstalowano certyfikat główny. Skrypt teraz również opublikowano ponownie, rozwiązywania tego problemu i żądania klientów [Pobierz skrypty pomocnika zaktualizowane](https://aka.ms/appsvconmashelpers). Jeśli nadal występują problemy podczas pobierania certyfikatu głównego z zaktualizowanego skryptu, skontaktuj się z pomocą techniczną.
 
 ### <a name="known-issues-with-the-update-process"></a>Znane problemy związane z procesem aktualizacji
 
-- Nie są znane problemy aktualizacji usługi Azure App Service na Azure stosu Update 1.
+- Nie istnieją żadne znane problemy w aktualizacji usługi Azure App Service w usłudze Azure Stack Update 1.
 
 ### <a name="known-issues-post-installation"></a>Znane problemy (po instalacji)
 
-- Wymiany gniazd nie działa.
+- Zamiany nie działa.
 
-Wymiany gniazd lokacji są dzielone w tej wersji. Aby przywrócić funkcjonalność, wykonaj następujące kroki:
+Zamiany gniazda witryny jest przerywana w tej wersji. Aby przywrócić funkcjonalność, wykonaj następujące kroki:
 
-1. Modyfikowanie grupy zabezpieczeń sieci ControllersNSG do **Zezwalaj** połączeń pulpitu zdalnego do wystąpień kontrolera usługi aplikacji. Zamień na nazwę grupy zasobów, wdrożonej usługi aplikacji w AppService.local.
+1. Modyfikowanie ControllersNSG sieciowej grupy zabezpieczeń w celu **Zezwalaj** połączeń pulpitu zdalnego wystąpienia kontrolera usługi App Service. Zastąp nazwę grupy zasobów, w której wdrożono usługi App Service w AppService.local.
 
     ```powershell
       Add-AzureRmAccount -EnvironmentName AzureStackAdmin
@@ -147,8 +147,8 @@ Wymiany gniazd lokacji są dzielone w tej wersji. Aby przywrócić funkcjonalno�
       Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
       ```
 
-2. Przejdź do **CN0-VM** w obszarze maszyn wirtualnych w portalu Azure stosu administratora i **kliknij przycisk Połącz** otworzyć sesję pulpitu zdalnego z wystąpienie kontrolera. Użyj poświadczeń określonych podczas wdrażania usługi aplikacji.
-3. Uruchom **programu PowerShell jako Administrator** i uruchom następujący skrypt
+2. Przejdź do **maszyny Wirtualnej CN0** w ramach maszyn wirtualnych w portalu administratora usługi Azure Stack i **kliknij przycisk Połącz** otworzyć sesji usług pulpitu zdalnego przy użyciu wystąpienia kontrolera. Użyj poświadczeń określonych podczas wdrażania usługi App Service.
+3. Rozpocznij **program PowerShell jako Administrator** i uruchom następujący skrypt
 
     ```powershell
         Import-Module appservice
@@ -171,8 +171,8 @@ Wymiany gniazd lokacji są dzielone w tej wersji. Aby przywrócić funkcjonalno�
         
     ```
 
-4. Zamykanie sesji usług pulpitu zdalnego.
-5. Przywróć ControllersNSG sieciową grupę zabezpieczeń do **Odmów** połączeń pulpitu zdalnego do wystąpień kontrolera usługi aplikacji. Zamień na nazwę grupy zasobów, wdrożonej usługi aplikacji w AppService.local.
+4. Zamknij sesję pulpitu zdalnego.
+5. Przywróć ControllersNSG sieciowej grupy zabezpieczeń w celu **Odmów** połączeń pulpitu zdalnego wystąpienia kontrolera usługi App Service. Zastąp nazwę grupy zasobów, w której wdrożono usługi App Service w AppService.local.
 
     ```powershell
 
@@ -197,9 +197,9 @@ Wymiany gniazd lokacji są dzielone w tej wersji. Aby przywrócić funkcjonalno�
         # Commit the changes back to NSG
         Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
-- Nie można osiągnąć serwera plików, gdy wdrażana jest usługa aplikacji w ramach istniejącej sieci wirtualnej i serwer plików jest dostępna w sieci prywatnej tylko są pracowników.
+- Pracownicy są nie można nawiązać połączenia z serwerem plików po wdrożeniu usługi App Service w istniejącej sieci wirtualnej i serwer plików jest dostępna tylko w sieci prywatnej.
  
-Jeśli wybierzesz do wdrożenia w ramach istniejącej sieci wirtualnej i wewnętrzny adres IP, aby połączyć się z serwerem plików, należy dodać reguły zabezpieczeń dla ruchu wychodzącego, włączanie ruchu SMB między podsieci procesu roboczego i serwera plików. Aby to zrobić, przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:
+Jeśli wybierzesz do wdrożenia w istniejącej sieci wirtualnej i wewnętrzny adres IP, aby nawiązać połączenie z serwerem plików, należy dodać regułę zabezpieczeń dla ruchu wychodzącego włączanie ruchu SMB między podsieci procesów roboczych i serwera plików. Aby to zrobić, przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:
  * Źródło: wszystkie
  * Zakres portów źródłowych: *
  * Miejsce docelowe: Adresy IP
@@ -210,11 +210,11 @@ Jeśli wybierzesz do wdrożenia w ramach istniejącej sieci wirtualnej i wewnęt
  * Priorytet: 700
  * Nazwa: Outbound_Allow_SMB445
 
-### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Znane problemy dotyczące działania usługi Azure App Service na stosie Azure Administratorzy chmury
+### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Znane problemy dotyczące administratorów chmury, działania usługi Azure App Service w usłudze Azure Stack
 
-Zapoznaj się z dokumentacją w [1802 stosu Azure informacje o wersji](azure-stack-update-1802.md)
+Zapoznaj się z dokumentacją w [informacje o wersji usługi Azure Stack w wersji 1802](azure-stack-update-1802.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Omówienie usługi Azure App Service, zobacz [usłudze Azure App Service na stos Azure omówienie](azure-stack-app-service-overview.md).
-- Aby uzyskać więcej informacji dotyczących sposobu przygotowania do wdrożenia usługi aplikacji Azure stosu, zobacz [przed rozpoczęciem pracy z usługi aplikacji Azure stosu](azure-stack-app-service-before-you-get-started.md).
+- Omówienie usługi Azure App Service, zobacz [usługi Azure App Service w usłudze Azure Stack — omówienie](azure-stack-app-service-overview.md).
+- Aby uzyskać więcej informacji na temat przygotowywania do wdrożenia usługi App Service w usłudze Azure Stack, zobacz [przed rozpoczęciem pracy z usługą App Service w usłudze Azure Stack](azure-stack-app-service-before-you-get-started.md).

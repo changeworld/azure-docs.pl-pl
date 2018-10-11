@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.devlang: azure-cli
 ms.topic: tutorial
 ms.date: 04/01/2018
-ms.openlocfilehash: 4e6a1a1488b7d7222ca9b0353b9eba697dd594ce
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: c04eede63df50359af55f3956041df10fa2d075e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031213"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982345"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>Samouczek: projektowanie bazy danych usługi Azure Database for PostgreSQL za pomocą interfejsu wiersza polecenia platformy Azure 
 W tym samouczku dowiesz się, jak wykonywać następujące czynności, używając interfejsu wiersza polecenia platformy Azure:
@@ -29,11 +29,11 @@ W tym samouczku dowiesz się, jak wykonywać następujące czynności, używają
 > * Aktualizowanie danych
 > * Przywracanie danych
 
-Aby uruchamiać polecenia z tego samouczka, możesz użyć usługi Azure Cloud Shell w przeglądarce lub [zainstalować interfejs wiersza polecenia platformy Azure w wersji 2.0]( /cli/azure/install-azure-cli) na swoim komputerze.
+Aby uruchamiać polecenia z tego samouczka, możesz użyć usługi Azure Cloud Shell w przeglądarce lub [zainstalować interfejs wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli) na swoim komputerze.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten artykuł będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli). 
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten artykuł będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli). 
 
 Jeśli masz wiele subskrypcji, wybierz odpowiednią subskrypcję, w której zasób istnieje lub dla której są za niego naliczane opłaty. Wybierz określony identyfikator subskrypcji na Twoim koncie za pomocą polecenia [az account set](/cli/azure/account#az_account_set).
 ```azurecli-interactive

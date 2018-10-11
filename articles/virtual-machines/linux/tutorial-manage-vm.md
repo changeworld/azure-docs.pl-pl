@@ -1,6 +1,6 @@
 ---
 title: Samouczek — tworzenie maszyn wirtualnych z systemem Linux i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure | Microsoft Docs
-description: Z tego samouczka dowiesz się, jak tworzyć maszyny wirtualne z systemem Linux i zarządzać nimi za pomocą interfejsu wiersza polecenia platformy Azure 2.0
+description: Z tego samouczka dowiesz się, jak tworzyć maszyny wirtualne z systemem Linux i zarządzać nimi za pomocą interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e7338da637d92520bc5f67de9d3d2bdae3204e35
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 01e8f74f409271810652a9202b634762ad88dcea
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930039"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981250"
 ---
-# <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli-20"></a>Samouczek — tworzenie maszyn wirtualnych z systemem Linux i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure 2.0
+# <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Samouczek: tworzenie maszyn wirtualnych z systemem Linux i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure
 
 Maszyny wirtualne platformy Azure oferują w pełni konfigurowalne i elastyczne środowiska obliczeniowe. W tym samouczku opisano podstawowe elementy wdrożenia maszyny wirtualnej platformy Azure, takie jak wybieranie rozmiaru i obrazu maszyny wirtualnej oraz wdrażanie maszyny wirtualnej. Omawiane kwestie:
 
@@ -36,7 +36,7 @@ Maszyny wirtualne platformy Azure oferują w pełni konfigurowalne i elastyczne 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 ## <a name="create-resource-group"></a>Tworzenie grupy zasobów
 

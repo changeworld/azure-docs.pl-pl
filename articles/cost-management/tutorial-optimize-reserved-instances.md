@@ -1,30 +1,30 @@
 ---
-title: Samouczek — optymalizowanie kosztów wystąpień zarezerwowanych za pomocą usługi Azure Cost Management | Microsoft Docs
+title: Samouczek — optymalizowanie kosztów wystąpień zarezerwowanych za pomocą rozwiązania Cloudyn na platformie Azure | Microsoft Docs
 description: W tym samouczku dowiesz się, jak optymalizować koszty wystąpień zarezerwowanych na platformach Azure i Amazon Web Services (AWS).
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 09/18/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: f0edad58256ecc29e2fd215095e8b5ab13d69ce8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c50259f0df955c3a22edc979dfebc8bfb2059e16
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32177327"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987776"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
 
 # <a name="tutorial-optimize-reserved-instances"></a>Samouczek: optymalizowanie wystąpień zarezerwowanych
 
-W tym samouczku dowiesz się, jak usługa Cost Management może pomóc Ci w optymalizowaniu kosztów i wykorzystania wystąpień zarezerwowanych na platformach Azure i Amazon Web Services (AWS). Wystąpienie zarezerwowane u obu dostawców usług w chmurze oznacza długoterminowe zobowiązanie, w ramach którego z góry zobowiązujesz się do używania maszyny wirtualnej w przyszłości. Potencjalnie oferuje ono znaczne oszczędności w stosunku do standardowego modelu cen maszyny wirtualnej, w którym płatność odbywa się zgodnie z rzeczywistym użyciem. Potencjalne oszczędności stają się rzeczywiste dopiero wtedy, gdy w pełni wykorzystasz pojemność wystąpień zarezerwowanych.
+W tym samouczku dowiesz się, jak rozwiązanie Cloudyn może pomóc Ci w optymalizowaniu kosztów i wykorzystania wystąpień zarezerwowanych na platformach Azure i Amazon Web Services (AWS). Wystąpienie zarezerwowane u obu dostawców usług w chmurze oznacza długoterminowe zobowiązanie, w ramach którego z góry zobowiązujesz się do używania maszyny wirtualnej w przyszłości. Potencjalnie oferuje ono znaczne oszczędności w stosunku do standardowego modelu cen maszyny wirtualnej, w którym płatność odbywa się zgodnie z rzeczywistym użyciem. Potencjalne oszczędności stają się rzeczywiste dopiero wtedy, gdy w pełni wykorzystasz pojemność wystąpień zarezerwowanych.
 
-W tym samouczku wyjaśniono, w jaki sposób wystąpienia zarezerwowane platform Azure i AWS są obsługiwane przez usługę Cost Management. Opisano w nim również, jak można optymalizować koszty wystąpień zarezerwowanych. Odbywa się to przede wszystkim przez zapewnienie pełnego wykorzystania rezerwacji. W tym samouczku zostaną wykonane następujące czynności:
+W tym samouczku wyjaśniono, w jaki sposób wystąpienia zarezerwowane platform Azure i AWS są obsługiwane przez rozwiązanie Cloudyn. Opisano w nim również, jak można optymalizować koszty wystąpień zarezerwowanych. Odbywa się to przede wszystkim przez zapewnienie pełnego wykorzystania rezerwacji. W tym samouczku zostaną wykonane następujące czynności:
 
 > [!div class="checklist"]
 > * Poznanie kosztów wystąpień zarezerwowanych na platformie Azure
@@ -41,7 +41,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Musisz mieć konto platformy Azure.
-- Musisz mieć rejestrację próbną lub płatną subskrypcję usługi Azure Cost Management.
+- Musisz mieć rejestrację próbną lub płatną subskrypcję rozwiązania Cloudyn.
 - Musisz mieć wystąpienia zarezerwowane kupione na platformie Azure lub AWS.
 
 ## <a name="understand-azure-ri-costs"></a>Poznanie kosztów wystąpień zarezerwowanych na platformie Azure
@@ -85,7 +85,7 @@ Współdzielony zakres zakupu jest najbardziej elastyczny i jest zalecany zawsze
 
 ## <a name="optimize-azure-ri-costs"></a>Optymalizowanie kosztów wystąpień zarezerwowanych na platformie Azure
 
-Usługa Azure Cost Management obsługuje wystąpienia zarezerwowane i korzyści hybrydowe w następujący sposób:
+Rozwiązanie Cloudyn obsługuje wystąpienia zarezerwowane i korzyści użycia hybrydowego w następujący sposób:
 
 - Przedstawianie kosztów skojarzonych z modelami cen
 - Śledzenie użycia wystąpień zarezerwowanych
@@ -116,7 +116,7 @@ Jeśli jednak maszyna wirtualna będzie działać tylko przez 50% czasu, próg r
 
 ## <a name="view-ri-costs"></a>Wyświetlanie kosztów wystąpień zarezerwowanych
 
-Po zakupie rezerwacji dokonujesz jednorazowej płatności. Płatność można wyświetlić w usłudze Cost Management na dwa sposoby:
+Po zakupie rezerwacji dokonujesz jednorazowej płatności. Płatność można wyświetlić w rozwiązaniu Cloudyn na dwa sposoby:
 
 - Rzeczywisty koszt
 - Amortyzowany koszt

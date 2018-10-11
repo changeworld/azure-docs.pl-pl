@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: efedb7cde06ed03ec330027a18b00bcc897919cf
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: e3e3a981daf1273b8b2387cb1c665317f860b1d2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576923"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974871"
 ---
 # <a name="set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>Konfigurowanie jednostki usługi Azure AD dla klastra Kubernetes w usłudze Azure Container Service
 
@@ -23,7 +23,7 @@ ms.locfileid: "39576923"
 W usłudze Azure Container Service klaster Kubernetes wymaga [jednostki usługi Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md) do współpracy z interfejsami API platformy Azure. Nazwa główna usługi jest potrzebna do dynamicznego zarządzania zasobami, takimi jak [trasy zdefiniowane przez użytkownika](../../virtual-network/virtual-networks-udr-overview.md) i narzędzie [Azure Load Balancer dla warstwy 4](../../load-balancer/load-balancer-overview.md).
 
 
-W tym artykule przedstawiono różne sposoby konfigurowania jednostki usługi dla klastra Kubernetes. Na przykład jeśli zainstalowano i skonfigurowano [interfejs wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-az-cli2), można uruchomić polecenie [`az acs create`](/cli/azure/acs#az-acs-create), aby jednocześnie utworzyć klaster Kubernetes i nazwę główną usługi.
+W tym artykule przedstawiono różne sposoby konfigurowania jednostki usługi dla klastra Kubernetes. Przykładowo, jeśli zainstalowano i skonfigurowano [interfejs wiersza polecenia platformy Azure](/cli/azure/install-az-cli2), można uruchomić polecenie [`az acs create`](/cli/azure/acs#az_acs_create), aby jednocześnie utworzyć klaster Kubernetes i jednostkę usługi.
 
 
 ## <a name="requirements-for-the-service-principal"></a>Wymagania dotyczące nazwy głównej usługi
@@ -44,7 +44,7 @@ Możesz użyć istniejącej jednostki usługi Azure AD, która spełnia następu
 
 Jeśli chcesz utworzyć jednostkę usługi Azure AD przed wdrożeniem klastra Kubernetes, platforma Azure udostępnia kilka metod.
 
-Następujące przykładowe polecenia pokazują, jak wykonać to za pomocą interfejsu [wiersza polecenia platformy Azure w wersji 2.0](../../azure-resource-manager/resource-group-authenticate-service-principal-cli.md). Można też utworzyć jednostkę usługi za pomocą programu [Azure PowerShell](../../azure-resource-manager/resource-group-authenticate-service-principal.md), [portalu](../../azure-resource-manager/resource-group-create-service-principal-portal.md) lub innej metody.
+Następujące przykładowe polecenia pokazują, jak można wykonać to za pomocą interfejsu [wiersza polecenia platformy Azure](../../azure-resource-manager/resource-group-authenticate-service-principal-cli.md). Można też utworzyć jednostkę usługi za pomocą programu [Azure PowerShell](../../azure-resource-manager/resource-group-authenticate-service-principal.md), [portalu](../../azure-resource-manager/resource-group-create-service-principal-portal.md) lub innej metody.
 
 ```azurecli
 az login
@@ -67,13 +67,13 @@ Wyróżniono **identyfikator klienta** (`appId`) i **klucz tajny klienta** (`pas
 
 Podaj **identyfikator klienta** (nazywany również `appId`, identyfikator aplikacji) i **wpis tajny klienta** (`password`) istniejącej nazwy głównej usługi jako parametry podczas tworzenia klastra Kubernetes. Upewnij się, że jednostka usługi spełnia wymagania przedstawione na początku tego artykułu.
 
-Te parametry można określić podczas wdrażania klastra Kubernetes za pomocą [interfejsu wiersza polecenia platformy Azure w wersji 2.0](container-service-kubernetes-walkthrough.md), witryny [Azure Portal](../dcos-swarm/container-service-deployment.md) lub innymi metodami.
+Te parametry można określić podczas wdrażania klastra Kubernetes za pomocą [interfejsu wiersza polecenia platformy Azure](container-service-kubernetes-walkthrough.md), witryny [Azure Portal](../dcos-swarm/container-service-deployment.md) lub innymi metodami.
 
 >[!TIP]
 >Podczas określania **identyfikatora klienta** należy użyć identyfikatora `appId`, a nie `ObjectId` nazwy głównej usługi.
 >
 
-Poniższy przykład przedstawia sposób przekazania parametrów poprzez interfejs wiersza polecenia Azure w wersji 2.0. W tym przykładzie użyto [szablonu Kubernetes quickstart](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes).
+Poniższy przykład przedstawia sposób przekazania parametrów poprzez interfejs wiersza polecenia Azure. W tym przykładzie użyto [szablonu Kubernetes quickstart](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes).
 
 1. [Pobierz](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.parameters.json) plik parametrów szablonu `azuredeploy.parameters.json` z usługi GitHub.
 

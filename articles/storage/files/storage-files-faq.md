@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 10/04/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 7cab1d0594792437c03427177159b193765aa92e
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: b3aca33bea8f7847b7069bba3f2a6dcd143cf29c
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870999"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079133"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania (FAQ) dotyczące usługi Azure Files
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem będące standardami branżowymi [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można zainstalować równolegle na chmurowych lub lokalnych wdrożeń systemu Windows, Linux i macOS. Udziały plików platformy Azure na komputerach z systemem Windows Server, również buforujesz przy użyciu usługi Azure File Sync w celu zapewnienia szybkiego dostępu blisko użycia danych.
@@ -149,7 +149,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
 **Dlaczego pliki warstwowe są dostępne poza przestrzeni nazw punktu końcowego serwera**  
-    Przed wersją agenta usługi Azure File Sync 3 usługi Azure File Sync zablokowane przeniesienie plików warstwowych, poza punkt końcowy serwera, ale w tym samym woluminie jako punkt końcowy serwera. Operacje kopiowania, przenosi plików warstwowy i przesuwa z warstwowego na inne woluminy nie miała wpływu. Przyczyna tego zachowania była niejawna zakładając, że Eksplorator plików i innych interfejsów API Windows, przeniesienia operacji na tym samym woluminie czy (prawie) instanenous Zmień nazwę operacji. Oznacza to, przenosi spowoduje Eksploratorze plików lub innych metod przenoszenia (na przykład wiersza polecenia lub programu PowerShell) są wyświetlane odpowiadać, podczas gdy usługi Azure File Sync odwołuje dane z chmury. Począwszy od [wersja agenta usługi Azure File Sync 3.0.12.0](storage-files-release-notes.md#agent-version-30120), usługi Azure File Sync pozwala przenieść plik warstwowy poza punktu końcowego serwera. Firma Microsoft należy unikać negatywnego wpływu, wcześniej wspomniano, dzięki czemu plikami warstwowym istnieje jako plik warstwowy poza punkt końcowy serwera, a następnie odwołująca plik w tle. Oznacza to, że przenosi na tym samym woluminie są instaneous i robimy całą pracę, przywołanie pliku na dysku, po ukończeniu przenoszenia. 
+    Przed wersją agenta usługi Azure File Sync 3 usługi Azure File Sync zablokowane przeniesienie plików warstwowych, poza punkt końcowy serwera, ale w tym samym woluminie jako punkt końcowy serwera. Operacje kopiowania, przenosi plików warstwowy i przesuwa z warstwowego na inne woluminy nie miała wpływu. Przyczyna tego zachowania była niejawna zakładając, że Eksplorator plików i innych interfejsów API Windows, przeniesienia operacji na tym samym woluminie czy (prawie) instanenous Zmień nazwę operacji. Oznacza to, przenosi spowoduje Eksploratorze plików lub innych metod przenoszenia (na przykład wiersza polecenia lub programu PowerShell) są wyświetlane odpowiadać, podczas gdy usługi Azure File Sync odwołuje dane z chmury. Począwszy od [wersja agenta usługi Azure File Sync 3.0.12.0](storage-files-release-notes.md#supported-versions), usługi Azure File Sync pozwala przenieść plik warstwowy poza punktu końcowego serwera. Firma Microsoft należy unikać negatywnego wpływu, wcześniej wspomniano, dzięki czemu plikami warstwowym istnieje jako plik warstwowy poza punkt końcowy serwera, a następnie odwołująca plik w tle. Oznacza to, że przenosi na tym samym woluminie są instaneous i robimy całą pracę, przywołanie pliku na dysku, po ukończeniu przenoszenia. 
 
 * <a id="afs-do-not-delete-server-endpoint"></a>
 **Mam problem z usługi Azure File Sync na serwerze (synchronizacja chmury warstw itp). Należy I usunięcie i ponowne utworzenie Mój punkt końcowy serwera?**  

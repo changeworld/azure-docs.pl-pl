@@ -1,6 +1,6 @@
 ---
 title: Samouczek — tworzenie zestawu skalowania maszyn wirtualnych dla systemu Linux na platformie Azure | Microsoft Docs
-description: Z tego samouczka dowiesz się, jak za pomocą interfejsu wiersza polecenia platformy Azure 2.0 utworzyć i wdrożyć aplikację o wysokiej dostępności na maszynach wirtualnych z systemem Linux przy użyciu zestawu skalowania maszyn wirtualnych
+description: Z tego samouczka dowiesz się, jak za pomocą interfejsu wiersza polecenia platformy Azure utworzyć i wdrożyć aplikację o wysokiej dostępności na maszynach wirtualnych z systemem Linux przy użyciu zestawu skalowania maszyn wirtualnych
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b8e25934dfd1bfa9d94d3452044443e7a5002534
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e3354abb400530bc5aa18288408b1052cd3575c4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932674"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46992239"
 ---
-# <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli-20"></a>Samouczek: tworzenie zestawu skalowania maszyn wirtualnych i wdrażanie aplikacji o wysokiej dostępności w systemie Windows za pomocą interfejsu wiersza polecenia platformy Azure 2.0
+# <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>Samouczek: tworzenie zestawu skalowania maszyn wirtualnych i wdrażanie aplikacji o wysokiej dostępności w systemie Linux za pomocą interfejsu wiersza polecenia platformy Azure
 
 Zestaw skalowania maszyn wirtualnych umożliwia wdrożenie zestawu identycznych, automatycznie skalowanych maszyn wirtualnych, oraz zarządzanie nimi. Maszyny wirtualne w zestawie skalowania można skalować ręcznie lub można zdefiniować reguły skalowania automatycznego na podstawie użycia zasobów, takich jak procesor CPU, zapotrzebowanie na pamięć lub ruch sieciowy. W tym samouczku wdrażany jest zestaw skalowania maszyn wirtualnych na platformie Azure. Omawiane kwestie:
 
@@ -37,7 +37,7 @@ Zestaw skalowania maszyn wirtualnych umożliwia wdrożenie zestawu identycznych,
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 ## <a name="scale-set-overview"></a>Omówienie zestawów skalowania
 Zestaw skalowania maszyn wirtualnych umożliwia wdrożenie zestawu identycznych, automatycznie skalowanych maszyn wirtualnych, oraz zarządzanie nimi. Maszyny wirtualne w zestawie skalowania są dystrybuowane w ramach domen aktualizacji i usterek logiki w co najmniej jednej *grupie umieszczania*. Są to grupy podobnie skonfigurowanych maszyn wirtualnych — podobne do [zestawów dostępności](tutorial-availability-sets.md).
@@ -156,7 +156,7 @@ Aby zobaczyć zestaw skalowania w działaniu, możesz wymusić odświeżenie prz
 
 
 ## <a name="management-tasks"></a>Zadania zarządzania
-W całym cyklu życia zestawu skalowania konieczne może być uruchomienie jednego lub większej liczby zadań zarządzania. Ponadto może pojawić się potrzeba tworzenia skryptów automatyzujących różne zadania cyklu życia. Interfejs wiersza polecenia platformy Azure 2.0 umożliwia szybkie wykonywanie tych zadań. Poniżej przedstawiono kilka typowych zadań.
+W całym cyklu życia zestawu skalowania konieczne może być uruchomienie jednego lub większej liczby zadań zarządzania. Ponadto może pojawić się potrzeba tworzenia skryptów automatyzujących różne zadania cyklu życia. Interfejs wiersza polecenia platformy Azure umożliwia szybkie wykonywanie tych zadań. Poniżej przedstawiono kilka typowych zadań.
 
 ### <a name="view-vms-in-a-scale-set"></a>Wyświetlanie maszyn wirtualnych w zestawie skalowania
 Aby wyświetlić listę uruchomionych maszyn wirtualnych w zestawie skalowania, użyj polecenia [az vmss list-instances](/cli/azure/vmss#az-vmss-list-instances) w następujący sposób:

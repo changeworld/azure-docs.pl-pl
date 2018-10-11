@@ -1,6 +1,6 @@
 ---
-title: Przykłady interfejsu wiersza polecenia platformy Azure w wersji 2.0 — strefowo nadmiarowy zestaw skalowania | Microsoft Docs
-description: Przykłady interfejsu wiersza polecenia platformy Azure w wersji 2.0
+title: Przykłady interfejsu wiersza polecenia platformy Azure — strefowo nadmiarowy zestaw skalowania | Microsoft Docs
+description: Przykłady interfejsu wiersza polecenia platformy Azure
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5b999ab1ffa9a0c576bc4f00f14b12512ebcb80d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f59a1083e76f8d2a629f1589f6b44c241eadca89
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38618169"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986760"
 ---
 # <a name="create-a-zone-redundant-virtual-machine-scale-set-with-powershell"></a>Tworzenie strefowo nadmiarowego zestawu skalowania maszyn wirtualnych przy użyciu programu PowerShell
 Ten skrypt tworzy zestaw skalowania maszyn wirtualnych z systemem Ubuntu w wielu strefach dostępności. Po uruchomieniu skryptu dostęp do maszyny wirtualnej można uzyskać za pomocą protokołu RDP.
@@ -50,6 +50,6 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [az group delete](/cli/azure/ad/group#delete) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure w wersji 2.0, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/overview).
+Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/overview).
 
-Dodatkowe przykłady skryptów interfejsu wiersza polecenia platformy Azure w wersji 2.0 dotyczących zestawu skalowania maszyn wirtualnych można znaleźć w [dokumentacji zestawu skalowania maszyn wirtualnych platformy Azure](../cli-samples.md).
+Dodatkowe przykłady skryptów interfejsu wiersza polecenia platformy Azure dotyczących zestawu skalowania maszyn wirtualnych można znaleźć w [dokumentacji zestawu skalowania maszyn wirtualnych platformy Azure](../cli-samples.md).

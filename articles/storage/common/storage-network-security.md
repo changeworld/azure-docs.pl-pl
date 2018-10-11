@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: ff382becb71f187ac38b0ef5d31c1b29c43f3fe7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bcb772185f0a16183b8a6c9674419781ef41be3e
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972559"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068540"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych
 Usługa Azure Storage udostępnia model zabezpieczeń warstwowych, dzięki czemu możesz do zabezpieczania konta magazynu do określonego zestawu dozwolonych sieci.  Po skonfigurowaniu reguł sieci tylko aplikacje z dozwolonych sieci można uzyskiwać dostęp do konta magazynu.  Podczas wywoływania z dozwolonych sieci, aplikacje w dalszym ciągu wymagają właściwej zezwolenia (prawidłowy klucz dostępu lub tokenu sygnatury dostępu Współdzielonego) dostęp do konta magazynu.
 
 > [!IMPORTANT]
-> Włączenie reguły zapory dla konta usługi Storage zablokuje dostęp do żądań przychodzących danych, łącznie z innymi usługami platformy Azure.  W tym za pomocą portalu, zapisywanie dzienników itp.  Dla usług uczestniczących w programie można ponownie włączyć funkcje za pośrednictwem [wyjątki](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) poniższej sekcji.  Aby uzyskać dostęp do portalu, trzeba to zrobić z komputera w obrębie granicy zaufanych (IP lub sieci wirtualnej), które zostały skonfigurowane.
+> Włączenie reguły zapory dla konta usługi Storage zablokuje dostęp do żądań przychodzących danych, łącznie z innymi usługami platformy Azure.  W tym za pomocą portalu, zapisywanie dzienników itp.  Usługi platformy Azure, które działają z w ramach sieci wirtualnej można udzielić dostępu, umożliwiając podsieci wystąpienia usługi.  Usługi platformy Azure, którzy nie działają z w obrębie sieci wirtualnej zostanie zablokowane przez zaporę.  Ograniczona liczba scenariuszy, można włączyć za pomocą [wyjątki](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) mechanizm opisane poniżej.  Aby uzyskać dostęp do portalu, trzeba to zrobić z komputera w obrębie granicy zaufanych (IP lub sieci wirtualnej), które zostały skonfigurowane.
 >
 
 ## <a name="scenarios"></a>Scenariusze

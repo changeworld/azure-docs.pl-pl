@@ -1,6 +1,6 @@
 ---
-title: Tworzenie modułu równoważenia obciążenia dostępnego z Internetu — interfejs wiersza polecenia platformy Azure (model klasyczny) | Microsoft Docs
-description: Dowiedz się, jak utworzyć dostępny z Internetu moduł równoważenia obciążenia w klasycznym modelu wdrażania przy użyciu interfejsu wiersza polecenia Azure
+title: Tworzenie modułu równoważenia obciążenia dostępnego z Internetu — klasyczny interfejs wiersza polecenia platformy Azure | Microsoft Docs
+description: Dowiedz się, jak utworzyć dostępny z Internetu moduł równoważenia obciążenia w klasycznym modelu wdrażania za pomocą klasycznego interfejsu wiersza polecenia platformy Azure
 services: load-balancer
 documentationcenter: na
 author: genlin
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 06/18/2018
 ms.author: genli
-ms.openlocfilehash: bacf135da25a5315e61922179db9a29fa8a152f1
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a91a53070985a24ccd87f16254f652fe48c42c5a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38540012"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46988159"
 ---
-# <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-the-azure-cli"></a>Wprowadzenie do tworzenia dostępnego z Internetu modułu równoważenia obciążenia (klasycznego) przy użyciu interfejsu wiersza polecenia Azure
+# <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-the-azure-classic-cli"></a>Wprowadzenie do tworzenia dostępnego z Internetu modułu równoważenia obciążenia (klasycznego) za pomocą klasycznego interfejsu wiersza polecenia platformy Azure
 
 > [!div class="op_single_selector"]
 > * [Program PowerShell](../load-balancer/load-balancer-get-started-internet-classic-ps.md)
-> * [Interfejs wiersza polecenia platformy Azure](../load-balancer/load-balancer-get-started-internet-classic-cli.md)
+> * [Klasyczny interfejs wiersza polecenia platformy Azure](../load-balancer/load-balancer-get-started-internet-classic-cli.md)
 > * [Azure Cloud Services](../load-balancer/load-balancer-get-started-internet-classic-cloud.md)
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
@@ -33,13 +33,15 @@ ms.locfileid: "38540012"
 > [!IMPORTANT]
 > Przed rozpoczęciem pracy z zasobami platformy Azure należy pamiętać, że ma ona obecnie dwa modele wdrażania: za pomocą usługi Azure Resource Manager i model klasyczny. Przed rozpoczęciem pracy z dowolnym zasobem Azure należy zapoznać się z [modelami i narzędziami wdrażania](../azure-classic-rm.md). Dokumentację dotyczącą różnych narzędzi można wyświetlić, klikając karty w górnej części artykułu. W tym artykule opisano klasyczny model wdrażania. Możesz też zapoznać się z artykułem na temat [tworzenia dostępnego z Internetu modułu równoważenia obciążenia za pomocą usługi Azure Resource Manager](load-balancer-get-started-internet-arm-ps.md).
 
+[!INCLUDE [requires-classic-cli](../../includes/contains-classic-cli-content.md)]
+
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
 ## <a name="create-an-internet-facing-load-balancer-using-cli"></a>Tworzenie modułu równoważenia obciążenia połączonego z Internetem przy użyciu interfejsu wiersza polecenia
 
 W tym przewodniku opisano sposób tworzenia internetowego modułu równoważenia obciążenia w oparciu o powyższy scenariusz.
 
-1. Jeśli po raz pierwszy używasz interfejsu wiersza polecenia Azure, zobacz artykuł [Instalowanie i konfigurowania interfejsu wiersza polecenia Azure](../cli-install-nodejs.md) i postępuj zgodnie z instrukcjami aż do punktu, w którym należy wybrać konto platformy Azure i subskrypcję.
+1. Jeśli po raz pierwszy używasz klasycznego interfejsu wiersza polecenia platformy Azure, zobacz artykuł [Instalowanie klasycznego interfejsu wiersza polecenia platformy Azure](../cli-install-nodejs.md) i postępuj zgodnie z instrukcjami aż do momentu, gdy należy wybrać konto i subskrypcję platformy Azure.
 2. Uruchom polecenie **azure config mode**, aby przełączyć tryb na klasyczny, jak pokazano poniżej.
 
     ```azurecli

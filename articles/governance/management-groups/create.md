@@ -8,14 +8,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/21/2018
+ms.date: 10/10/2018
 ms.author: rithorn
-ms.openlocfilehash: b436336a3484ec27e4b90785d668ba905281f158
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 6273f265ebb5f9a2336040aacc01d1428fd0db11
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018605"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077752"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Tworzenie grupy zarządzania do organizacji zasobów i zarządzania
 
@@ -69,7 +69,7 @@ Użyj **ParentId** parametru tej grupy zarządzania można utworzyć w ramach r�
 W interfejsie wiersza polecenia platformy Azure, użyj az polecenia create grupy zarządzania kontem.
 
 ```azurecli-interactive
-az account management-group create --group-name 'Contoso'
+az account management-group create --name 'Contoso'
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

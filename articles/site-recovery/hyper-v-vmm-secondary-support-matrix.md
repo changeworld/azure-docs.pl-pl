@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 13b4dc6e49c67ae9fd880ab64880966835242dec
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: e1a0ee2a9ad958a5938569927a489785edd8ee1f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921500"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078842"
 ---
 # <a name="support-matrix-for-replication-of-hyper-v-vms-to-a-secondary-site"></a>Macierz obsługi dla replikacji maszyn wirtualnych funkcji Hyper-V do lokacji dodatkowej
 
@@ -108,7 +108,7 @@ Przenieś magazyn, sieci, maszyn wirtualnych platformy Azure między grupami zas
 
 Dostawca służy do koordynowania komunikacji między serwerami programu VMM. 
 
-**Najnowsze** | **Aktualizacje**
+**najnowsze** | **Aktualizacje**
 --- | --- | --- | --- | ---
 5.1.19 ([dostępna z portalu](http://aka.ms/downloaddra) | [Najnowsze funkcje i poprawki](https://support.microsoft.com/kb/3155002)
 

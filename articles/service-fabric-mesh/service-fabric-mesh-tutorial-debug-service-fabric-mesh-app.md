@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: debugowanie aplikacji internetowej usługi Azure Service Fabric Mesh | Microsoft Docs'
+title: Samouczek — debugowanie aplikacji internetowej usługi Azure Service Fabric Mesh uruchomionej w lokalnym klastrze projektowym | Microsoft Docs
 description: W tym samouczku zdebugujemy aplikację usługi Azure Service Fabric Mesh uruchomioną w klastrze lokalnym.
 services: service-fabric-mesh
 documentationcenter: .net
@@ -12,19 +12,19 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/17/2018
+ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c519d24a8401823039f3d6598276890ec6498bbc
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 27e4c8f6ac24d40a6afacf10175413745f5151d9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41917612"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997016"
 ---
-# <a name="tutorial-debug-a-service-fabric-mesh-web-application"></a>Samouczek: debugowanie aplikacji internetowej usługi Service Fabric Mesh
+# <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Samouczek: debugowanie aplikacji usługi Service Fabric Mesh w lokalnym klastrze projektowym
 
-Ten samouczek to druga część serii. Przedstawiono w nim sposób debugowania aplikacji internetowej usługi Azure Service Fabric Mesh w lokalnym klastrze projektowym.
+Ten samouczek to druga część serii. Przedstawiono w nim sposób tworzenia i debugowania aplikacji usługi Azure Service Fabric Mesh w lokalnym klastrze projektowym.
 
 Ten samouczek zawiera następujące informacje:
 
@@ -34,9 +34,11 @@ Ten samouczek zawiera następujące informacje:
 
 Ta seria samouczków zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
-> * [Tworzenie aplikacji usługi Service Fabric Mesh](service-fabric-mesh-tutorial-create-dotnetcore.md)
-> * Lokalne debugowanie aplikacji
-> * [Publikowanie aplikacji na platformie Azure](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * [Tworzenie aplikacji usługi Service Fabric Mesh w programie Visual Studio](service-fabric-mesh-tutorial-create-dotnetcore.md)
+> * Debugowanie aplikacji usługi Service Fabric Mesh uruchomionej w lokalnym klastrze projektowym
+> * [Wdrażanie aplikacji usługi Service Fabric Mesh](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * [Uaktualnianie aplikacji usługi Service Fabric Mesh](service-fabric-mesh-tutorial-upgrade.md)
+> * [Czyszczenie zasobów usługi Service Fabric Mesh](service-fabric-mesh-tutorial-cleanup-resources.md)
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -105,4 +107,4 @@ W tej części samouczka przedstawiono informacje na temat wykonywania następuj
 
 Przejdź do następnego samouczka:
 > [!div class="nextstepaction"]
-> [Publikowanie aplikacji internetowej usługi Service Fabric Mesh](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> [Wdrażanie aplikacji usługi Service Fabric Mesh](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)

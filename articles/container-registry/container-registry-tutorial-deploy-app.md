@@ -2,19 +2,18 @@
 title: Samouczek usługi Azure Container Registry — Wdrażanie aplikacji internetowej z usługi Azure Container Registry
 description: Wdrażanie aplikacji internetowej opartej na systemie Linux przy użyciu obrazu kontenera z rejestru kontenerów platformy Azure z replikacją geograficzną. Druga część trzyczęściowej serii.
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 08/20/2018
-ms.author: marsma
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 25e3fdfe72fc2a6ffec1bcee23cd9f1edc783838
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: d1924d730f2c2a64063496d4be759194cef99175
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41924828"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48853865"
 ---
 # <a name="tutorial-deploy-web-app-from-azure-container-registry"></a>Samouczek: Wdrażanie aplikacji internetowej z usługi Azure Container Registry
 

@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7ff7167d60a4c22459622aea6a71130bd1e209fb
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 1b9f1f1ff5e0a2a178b5a0b2a09f5513bf508b3f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868874"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079178"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>Protokoły w wersji 2.0 — przepływ kodu autoryzacji OAuth 2.0
 
@@ -178,8 +178,10 @@ Odpowiedź oznaczająca Powodzenie tokenu będzie wyglądać następująco:
 | expires_in    | Jak długo token dostępu jest prawidłowy (w sekundach).                                                                                                                                                                                                                                                                                                                                                                                                       |
 | scope         | Access_token nadaje się do zakresów.                                                                                                                                                                                                                                                                                                                                                                                                         |
 | refresh_token | Token odświeżania OAuth 2.0. Aplikacja może używać tego tokenu uzyskiwanie tokenów dostępu dodatkowe, po upływie bieżącego tokenu dostępu. Refresh_tokens są długotrwałe i pozwala zachować dostęp do zasobów przez dłuższy czas. Aby uzyskać więcej szczegółów na odświeżenie tokenu dostępu, zapoznaj się [poniżej](#refresh-the-access-token). <br> **Uwaga:** tylko wtedy, jeśli podana `offline_access` zażądano zakresu.                                               |
-| id_token      | Niepodpisane JSON Web Token (JWT). Aplikację można dekodować segmentów tego tokenu na żądanie informacji o użytkowniku, który jest zalogowany. Wartości w pamięci podręcznej i ich wyświetlenie aplikacji, ale nie należy polegać na nich autoryzacji lub granice zabezpieczeń. Aby uzyskać więcej informacji na temat id_tokens zobacz [ `id_token reference` ](id-tokens.md). <br> **Uwaga:** tylko wtedy, jeśli podana `openid` zażądano zakresu. |
+| id_token      | Tokenu Web JSON (JWT). Aplikację można dekodować segmentów tego tokenu na żądanie informacji o użytkowniku, który jest zalogowany. Wartości w pamięci podręcznej i ich wyświetlenie aplikacji, ale nie należy polegać na nich autoryzacji lub granice zabezpieczeń. Aby uzyskać więcej informacji na temat id_tokens zobacz [ `id_token reference` ](id-tokens.md). <br> **Uwaga:** tylko wtedy, jeśli podana `openid` zażądano zakresu. |
+
 #### <a name="error-response"></a>Odpowiedzi na błąd
+
 Odpowiedzi na błędy będzie wyglądać następująco:
 
 ```json

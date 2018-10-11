@@ -1,9 +1,9 @@
 ---
-title: Dodawanie obrazów systemu Linux Azure stosu
-description: Dowiedz się, jak dodać obrazy Linux Azure stosu.
+title: Dodawanie obrazów systemu Linux w usłudze Azure Stack
+description: Dowiedz się, jak dodać obrazy systemu Linux w usłudze Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -12,46 +12,46 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: 64a860bc925b9c7499363c1fe39d03df88a9a51d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: db52d145c3bfbd9415072be13ccb502969f07374
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33935720"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077651"
 ---
-# <a name="add-linux-images-to-azure-stack"></a>Dodawanie obrazów systemu Linux Azure stosu
+# <a name="add-linux-images-to-azure-stack"></a>Dodawanie obrazów systemu Linux w usłudze Azure Stack
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Można wdrożyć maszyn wirtualnych systemu Linux (VM) na stosie Azure przez dodanie do obrazu opartych na systemie Linux w portalu Azure Marketplace stosu. Najprostszym sposobem, aby dodać obraz systemu Linux Azure stos jest za pośrednictwem zarządzania Marketplace. Te obrazy zostały przygotowane i sprawdzane pod kątem zgodności z stosu Azure.
+Przez dodanie obrazów systemu Linux w witrynie Azure Marketplace stosu, można wdrożyć maszyny wirtualne systemu Linux (VM) w usłudze Azure Stack. Najprostszym sposobem dodania obrazu systemu Linux w usłudze Azure Stack jest za pośrednictwem witryny Marketplace zarządzania. Te obrazy zostały przetworzone i przetestowane pod kątem zgodności z usługą Azure Stack.
 
-## <a name="marketplace-management"></a>Zarządzanie Marketplace
+## <a name="marketplace-management"></a>Zarządzanie w portalu Marketplace
 
-Aby pobrać Linux obrazów z portalu Azure Marketplace, procedury przedstawione w artykule. Wybierz obrazy systemu Linux, które chcesz zapewnić użytkownikom na stosie Azure. 
+Aby pobrać obrazy systemu Linux w portalu Azure Marketplace, korzystając z procedur w następującym artykułem. Wybierz obrazy systemu Linux, którzy chcą oferować użytkowników usługi Azure Stack. 
 
-[Pobieranie elementów marketplace z platformy Azure do stosu Azure](azure-stack-download-azure-marketplace-item.md).
+[Pobieranie elementów portalu marketplace z platformy Azure do usługi Azure Stack](azure-stack-download-azure-marketplace-item.md).
 
-Należy pamiętać, że istnieją aktualizacje częste do tych obrazów, więc zarządzania Marketplace często w celu zapewnienia aktualności.
+Należy pamiętać, że częste aktualizacje do tych obrazów, dlatego należy sprawdzić zarządzania portalu Marketplace, często w celu zapewnienia aktualności.
 
-## <a name="prepare-your-own-image"></a>Przygotowanie własnego obrazu
+## <a name="prepare-your-own-image"></a>Przygotuj swój własny obraz
 
- Tam gdzie to możliwe, należy pobrać obrazy dostępne za pośrednictwem portalu Marketplace zarządzania, które zostały przygotowane i sprawdzane pod kątem stosu Azure. 
+ Wszędzie tam, gdzie to możliwe, należy pobrać obrazów dostępnych za pośrednictwem witryny Marketplace zarządzania, która została przygotowana i sprawdzane pod kątem usługi Azure Stack. 
  
- Agenta systemu Linux platformy Azure (zwykle nazywane `WALinuxAgent` lub `walinuxagent`) jest wymagane, a nie wszystkie wersje agenta będą działać na stosie Azure. Należy używać wersji 2.2.18 lub nowszym w przypadku tworzenia własnego obrazu. Należy pamiętać, że [init chmury](https://cloud-init.io/) na stosie Azure nie jest obsługiwana w tej chwili.
+ Agent systemu Linux platformy Azure (zazwyczaj nazywany `WALinuxAgent` lub `walinuxagent`) jest wymagana, i nie wszystkie wersje agenta będzie działać w usłudze Azure Stack. Należy używać wersji 2.2.18 lub nowszej, jeśli tworzysz własny obraz. Należy pamiętać, że [pakietu cloud-init](https://cloud-init.io/) nie jest obsługiwana w usłudze Azure Stack w tej chwili.
 
- Można przygotować własny obraz systemu Linux przy użyciu poniższych instrukcji:
+ Można przygotować własnego obrazu systemu Linux przy użyciu następujących instrukcji:
 
-   * [Na podstawie centOS dystrybucji](../virtual-machines/linux/create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+   * [Dystrybucje systemu centOS](../virtual-machines/linux/create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
    * [Debian systemu Linux](../virtual-machines/linux/debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
    * [Red Hat Enterprise Linux](azure-stack-redhat-create-upload-vhd.md)
    * [SLES & openSUSE](../virtual-machines/linux/suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
    * [Serwer Ubuntu](../virtual-machines/linux/create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
     
-## <a name="add-your-image-to-the-marketplace"></a>Dodawanie obrazu do witryny marketplace
+## <a name="add-your-image-to-the-marketplace"></a>Dodawanie obrazu do portalu marketplace
  
-Postępuj zgodnie z [dodać obraz do witryny Marketplace](azure-stack-add-vm-image.md). Upewnij się, że `OSType` ustawiono parametr `Linux`.
+Postępuj zgodnie z [dodać obraz do portalu Marketplace](azure-stack-add-vm-image.md). Upewnij się, że `OSType` parametr ma wartość `Linux`.
 
-Po dodaniu go do portalu Marketplace, zostanie utworzony element Marketplace, a użytkownicy będą mogli wdrażać maszyny wirtualnej systemu Linux.
+Po dodaniu obrazu portalu Marketplace, tworzony jest element portalu Marketplace, a użytkownicy mogą wdrażać maszyny wirtualnej systemu Linux.

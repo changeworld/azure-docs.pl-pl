@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 413b94c1f1845e0dcda54b04882e5d6664b81380
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: a63a31c5ceb4298829f85627196fea5d7a38ca4b
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815498"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068506"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Typowe problemy z usługą Azure IoT Edge i ich rozwiązania
 
@@ -324,6 +324,18 @@ Demon usługi IoT Edge wymusza identyfikator procesu dla wszystkich modułów na
 
 ### <a name="resolution"></a>Rozwiązanie
 Upewnij się, że ten sam identyfikator procesu jest zawsze używany przez niestandardowy moduł usługi IoT Edge do wysyłania komunikatów do edgeHub. Na przykład, upewnij się, że `ENTRYPOINT` zamiast `CMD` polecenia w pliku platformy Docker, ponieważ `CMD` doprowadzi do jednego procesu Identyfikator modułu i inny identyfikator procesu działania głównego programu, natomiast polecenia powłoki bash `ENTRYPOINT` doprowadzi do Identyfikator pojedynczego procesu.
+
+
+## <a name="firewall-and-port-configuration-rules-for-iot-edge-deployment"></a>Reguły konfiguracji zapory i portu dla wdrożenia usługi IoT Edge
+Usługa Azure IoT Edge umożliwia komunikację z serwer graniczny środowiska lokalnego do chmury platformy Azure za pomocą obsługiwanych protokołów IoT Hub, zobacz [wybór protokołu komunikacyjnego](../iot-hub/iot-hub-devguide-protocols.md). Aby zwiększyć bezpieczeństwo kanałów komunikacji między usługą Azure IoT Edge i usługi Azure IoT Hub są zawsze skonfigurowane jako ruchu wychodzącego; zależy to [wzorzec komunikacji korzystającej z usług](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/), minimalizując obszar narażony na zamierzających do zbadania. Komunikacji przychodzącej jest tylko wymagane dla konkretnych scenariuszy, gdzie usługi Azure IoT Hub potrzebne do wypychania komunikatów do serwera usługi Azure IoT Edge (np. w chmurze do komunikaty urządzenia), są ponownie są chronione przy użyciu bezpiecznych kanałów TLS i można dodatkowo zabezpieczyć przy użyciu X.509 certyfikaty i moduły urządzenia modułu TPM. Menedżer zabezpieczeń usługi Azure IoT Edge decyduje, jak ta komunikacja może być nawiązane, zobacz [Menedżera zabezpieczeń usługi IoT Edge](../iot-edge/iot-edge-security-manager.md).
+
+Chociaż usługi IoT Edge zapewnia rozszerzoną konfigurację do zabezpieczania środowiska uruchomieniowego usługi Azure IoT Edge i wdrożone moduły, jest nadal zależne od podstawowej konfiguracji komputera i sieci. W związku z tym koniecznie upewnij się, że odpowiednie reguły sieci i zapory są skonfigurowane do bezpiecznego urządzeniami brzegowymi w celu komunikacji z chmury. Następujące może służyć jako wytyczne podczas konfiguracji zapory reguły dla podstawowych serwerów hostujące środowisko uruchomieniowe usługi Azure IoT Edge:
+
+|Protokół|Port|przychodzące|Wychodzący|Wskazówki|
+|--|--|--|--|--|
+|MQTT|8883|ZABLOKOWANE (ustawienie domyślne)|ZABLOKOWANE (ustawienie domyślne)|<ul> <li>Skonfiguruj wychodzące (wychodzące) jest otwarte, gdy jako protokół komunikacji przy użyciu protokołu MQTT.<li>1883 dla protokołu MQTT nie jest obsługiwany przez usługi IoT Edge. <li>Połączenia przychodzące (przychodzące) powinien być blokowany.</ul>|
+|AMQP|5671|ZABLOKOWANE (ustawienie domyślne)|Otwórz (ustawienie domyślne)|<ul> <li>Protokół komunikacji domyślnego dla usługi IoT Edge. <li> Musi być skonfigurowany jako Otwórz, czy usługi Azure IoT Edge nie jest skonfigurowany dla innych obsługiwanych protokołów AMQP jest protokół komunikacyjny żądaną.<li>5672 dla protokołu AMQP nie jest obsługiwany przez usługi IoT Edge.<li>Zablokować tego portu, w przypadku użycia usługi Azure IoT Edge różne usługi IoT Hub z obsługiwanych protokołów.<li>Połączenia przychodzące (przychodzące) powinien być blokowany.</ul></ul>|
+|HTTPS|443|ZABLOKOWANE (ustawienie domyślne)|Otwórz (ustawienie domyślne)|<ul> <li>Konfigurowanie wychodzące (wychodzące) to Open na porcie 443 dla usługi IoT Edge inicjowania obsługi administracyjnej, jest to wymagane, gdy za pomocą skryptów ręczne lub usługi Azure IoT urządzenia inicjowania obsługi usługi (DPS). <li>Połączenia przychodzącego (przychodzące) powinny być otwarte tylko w określonych scenariuszach: <ul> <li>  Jeśli masz z urządzeniami liścia, które może wysyłać żądania do metody przezroczystej bramy. W tym przypadku Port 443 nie musi być otwarty z sieciami zewnętrznymi, aby połączyć się IoTHub lub świadczyć usługi IoTHub za pośrednictwem usługi Azure IoT Edge. Ten sposób przychodzącej reguły może być ograniczony do otwierać tylko przychodzące (przychodzący) z siecią wewnętrzną. <li> Klient scenariuszy dotyczących urządzeń (C2D).</ul><li>80 dla protokołu HTTP nie jest obsługiwany przez usługi IoT Edge.<li>Jeśli nie można skonfigurować protokołów innych niż HTTP (np. protokołu AMQP, MQTT) w przedsiębiorstwie; komunikaty mogą być wysyłane przez protokół WebSockets. Port 443 będzie służyć do komunikacji protokołu WebSocket w takiej sytuacji.</ul>|
 
 
 ## <a name="next-steps"></a>Kolejne kroki

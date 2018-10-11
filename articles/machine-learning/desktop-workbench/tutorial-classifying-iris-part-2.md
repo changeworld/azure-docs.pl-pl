@@ -12,15 +12,19 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/15/2018
-ms.openlocfilehash: 4f9b14762332bd11fd69a855d8fabdb206e34919
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ROBOTS: NOINDEX
+ms.openlocfilehash: 6faabc3003048c93c08451c537496e762352b50b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41919201"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997325"
 ---
 # <a name="tutorial-2-classify-iris---build-a-model"></a>Samouczek 2: klasyfikowanie irysów — kompilowanie modelu
-Usługi Azure Machine Learning (wersja zapoznawcza) stanowią zintegrowane rozwiązanie do przetwarzania danych i do przeprowadzania zaawansowanych analiz. Jest ono przeznaczone dla profesjonalnych analityków, którzy będą z niego korzystać w celu przygotowywania danych, opracowywania eksperymentów i wdrażania modeli na skalę chmury.
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
+Usługa Azure Machine Learning (wersja zapoznawcza) stanowi zintegrowane rozwiązanie do nauki o danych i do przeprowadzania zaawansowanych analiz. Jest ono przeznaczone dla profesjonalnych analityków, którzy będą z niego korzystać w celu przygotowywania danych, opracowywania eksperymentów i wdrażania modeli na skalę chmury.
 
 Niniejszy samouczek jest **drugą częścią trzyczęściowej serii**. W tej części samouczka użyjesz usługi Azure Machine Learning, aby:
 
@@ -39,7 +43,7 @@ W tym samouczku wykorzystywany jest ponadczasowy [zbiór danych na temat irysów
 
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
-- Konto eksperymentowania i aplikacja Azure Machine Learning Workbench zainstalowana zgodnie z opisem w tym [przewodniku Szybki start](../service/quickstart-installation.md)
+- Konto eksperymentowania i aplikacja Azure Machine Learning Workbench zainstalowana zgodnie z opisem w tym [przewodniku Szybki start](quickstart-installation.md)
 - Projekt i przygotowane dane irysów z [części 1. samouczka](tutorial-classifying-iris-part-1.md)
 - Aparat platformy Docker zainstalowany i uruchomiony lokalnie. Wersja Community Edition platformy Docker jest wystarczająca. Dowiedz się, jak zainstalować platformę Docker tutaj: https://docs.docker.com/engine/installation/.
 

@@ -1,28 +1,32 @@
 ---
-title: Samouczek — przeglądanie użycia i kosztów w usłudze Azure Cost Management | Microsoft Docs
+title: Samouczek — przeglądanie użycia i kosztów za pomocą rozwiązania Cloudyn na platformie Azure | Microsoft Docs
 description: Ten samouczek przedstawia przeglądanie użycia i kosztów w celu śledzenia trendów, wykrywania niewydajności i tworzenia alertów.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 09/18/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 5505ec8dd25e5468fad81d4eb26980202425969a
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 72eaa6f085581f34b696a946e2168eceaa21a849
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "35628721"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987717"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
 
 # <a name="tutorial-review-usage-and-costs"></a>Samouczek: przeglądanie użycia i kosztów
 
-Usługa Azure Cost Management umożliwia przeglądanie użycia i kosztów w celu śledzenia trendów, wykrywania niewydajności i tworzenia alertów. Wszystkie dane użycia i kosztów są wyświetlane na pulpitach nawigacyjnych i w raportach usługi Cloudyn. Przykłady w tym samouczku ilustrują przeglądanie użycia i kosztów za pomocą pulpitów nawigacyjnych i raportów. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Rozwiązanie Cloudyn umożliwia przeglądanie użycia i kosztów w celu śledzenia trendów, wykrywania niewydajności i tworzenia alertów. Wszystkie dane użycia i kosztów są wyświetlane na pulpitach nawigacyjnych i w raportach usługi Cloudyn. Przykłady w tym samouczku ilustrują przeglądanie użycia i kosztów za pomocą pulpitów nawigacyjnych i raportów.
+
+Usługa Azure Cost Management oferuje podobne funkcje jak rozwiązanie Cloudyn. Usługa Azure Cost Management to natywne rozwiązanie do zarządzania kosztami na platformie Azure. Ułatwia ona analizowanie kosztów, tworzenie budżetów i zarządzanie nimi, eksportowanie danych, a także zapoznawanie się z rekomendacjami dotyczącymi optymalizacji i ich wdrażanie w celu zaoszczędzenia pieniędzy. Aby uzyskać więcej informacji, zobacz temat [dotyczący usługi Azure Cost Management](overview-cost-mgt.md).
+
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Śledzenie trendów użycia i kosztów
@@ -35,7 +39,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Musisz mieć konto platformy Azure.
-- Musisz mieć rejestrację próbną lub płatną subskrypcję usługi Azure Cost Management.
+- Musisz mieć rejestrację próbną lub płatną subskrypcję rozwiązania Cloudyn.
 
 ## <a name="open-the-cloudyn-portal"></a>Otwieranie portalu Cloudyn
 
@@ -59,7 +63,7 @@ W poprzednim przykładzie od dnia 2017-08-31 wydano mniej pieniędzy niż wcześ
 
 W tym przykładzie wyraźnie widać, że koszty usługi Azure Storage spadły od dnia 2017-08-31, podczas gdy wydatki związane z innymi usługami platformy Azure pozostały na tym samym poziomie. Co więc spowodowało obniżenie wydatków? W tym przykładzie niektórzy pracownicy byli na urlopie i nie używali usługi Storage.
 
-Aby obejrzeć samouczek wideo dotyczący śledzenia trendów użycia i kosztów, zobacz [Analyzing your cloud billing data vs. time with Azure Cost Management (Analizowanie danych rozliczeń dla chmury na przestrzeni czasu przy użyciu usługi Azure Cost Management)](https://youtu.be/7LsVPHglM0g).
+Aby obejrzeć samouczek wideo dotyczący śledzenia trendów użycia i kosztów, zobacz [Analyzing your cloud billing data vs. time with Cloudyn](https://youtu.be/7LsVPHglM0g) (Analizowanie danych rozliczeń dla chmury na przestrzeni czasu przy użyciu rozwiązania Cloudyn).
 
 ## <a name="detect-usage-inefficiencies"></a>Wykrywanie przypadków niewydajnego użycia
 
@@ -83,7 +87,7 @@ Wyświetl identyfikatory wystąpień maszyn wirtualnych, klikając symbol znaku 
 
 ![Lista kandydatów](./media/tutorial-review-usage/sizing03.png)
 
-Aby obejrzeć samouczek wideo dotyczące wykrywania przypadków niewydajnego użycia, zobacz [Optimizing VM Size in Azure Cost Management (Optymalizowanie rozmiarów maszyn wirtualnych w usłudze Azure Cost Management)](https://youtu.be/1xaZBNmV704).
+Aby obejrzeć samouczek wideo dotyczący wykrywania przypadków niewydajnego użycia, zobacz [Optimizing VM Size in Cloudyn ](https://youtu.be/1xaZBNmV704) (Optymalizowanie rozmiarów maszyn wirtualnych w rozwiązaniu Cloudyn).
 
 ## <a name="create-alerts-for-unusual-spending"></a>Tworzenie alertów dotyczących nietypowych wydatków
 

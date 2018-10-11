@@ -8,12 +8,12 @@ ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
-ms.openlocfilehash: 1cf21dfee0e0e5bcbfff80945a3bfdfbc4bad83b
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: b0db5e79ac3f52bfcd9c7791a843265a421ef1bf
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43300596"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48903015"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Szybki start: uruchamianie zadania Spark w usłudze Azure Databricks przy użyciu witryny Azure Portal
 
@@ -105,7 +105,7 @@ W tej sekcji utworzysz notes w obszarze roboczym usługi Azure Databricks, a nas
     ```scala
     spark.conf.set("fs.azure.account.key.<ACCOUNT_NAME>.dfs.core.windows.net", "<ACCOUNT_KEY>") 
     spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
-    dbutils.fs.ls("abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/")
+    dbutils.fs.ls("abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/")
     spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false") 
     ```
 
@@ -119,13 +119,13 @@ Przed przystąpieniem do pracy z tą sekcją musisz zapewnić spełnienie nastę
 
 Wprowadź następujący kod w komórce notesu:
 
-    %sh wget -P /tmp https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json
+    %sh wget -P /tmp https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json
 
 W komórce naciśnij `Shift` + `Enter`, aby uruchomić kod.
 
 Teraz w nową komórce pod tą komórką wprowadź następujący kod (zastąp elementy **FILE_SYSTEM** i **ACCOUNT_NAME** tą samą wartością, której użyto wcześniej:
 
-    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfs://<FILE_SYSTEM>@<ACCOUNT_NAME>.dfs.core.windows.net/")
+    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<FILE_SYSTEM>@<ACCOUNT_NAME>.dfs.core.windows.net/")
 
 W komórce naciśnij `Shift` + `Enter`, aby uruchomić kod.
 
@@ -141,7 +141,7 @@ Aby uruchomić zadanie Spark SQL w danych, wykonaj poniższe zadania.
     CREATE TABLE radio_sample_data
     USING json
     OPTIONS (
-     path  "abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>/small_radio_json.json"
+     path  "abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>/small_radio_json.json"
     )
     ```
 

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: cbd475ae4ce944db3ebf57b415b60e7abdd52677
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 33126c094a55bc57edd49a54fbc4f5acd7401998
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163855"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079008"
 ---
 # <a name="configure-your-automated-machine-learning-experiment"></a>Skonfiguruj Twoje zautomatyzowane eksperymentu uczenia maszynowego
 
@@ -184,13 +184,13 @@ Poniższa tabela zawiera listę dostępnych eksperymentu i ich wartości domyśl
 Właściwość |  Opis | Wartość domyślna
 --|--|--
 `task`  |Określ typ maszyny nauczanym problemem. Dozwolone wartości to <li>klasyfikacja</li><li>Regresji</li>    | Brak |
-`primary_metric` |Metryki, którą chcesz zoptymalizować w tworzeniu modelu. Na przykład jeśli określisz dokładność jako primary_metric zautomatyzowane ML wygląda odnaleźć modelu z maksymalną dokładnością. Można określić tylko jeden primary_metric na eksperyment. Dozwolone wartości to <br/>**Klasyfikacja**:<br/><li> dokładność  </li><li> AUC_weighted</li><li> precision_score_weighted </li><li> balanced_accuracy </li><li> average_precision_score_weighted </li><br/>**Regresja**: <br/><li> normalized_mean_absolute_error </li><li> spearman_correlation </li><li> normalized_root_mean_squared_error </li><li> normalized_root_mean_squared_log_error</li><li> R2_score    </li> | Klasyfikacji: dokładności <br/>Aby uzyskać regresji: spearman_correlation <br/> |
+`primary_metric` |Metryki, którą chcesz zoptymalizować w tworzeniu modelu. Na przykład jeśli określisz dokładność jako primary_metric zautomatyzowane ML wygląda odnaleźć modelu z maksymalną dokładnością. Można określić tylko jeden primary_metric na eksperyment. Dozwolone wartości to <br/>**Klasyfikacja**:<br/><li> accuracy  </li><li> AUC_weighted</li><li> precision_score_weighted </li><li> balanced_accuracy </li><li> average_precision_score_weighted </li><br/>**Regresja**: <br/><li> normalized_mean_absolute_error </li><li> spearman_correlation </li><li> normalized_root_mean_squared_error </li><li> normalized_root_mean_squared_log_error</li><li> R2_score    </li> | Klasyfikacji: dokładności <br/>Aby uzyskać regresji: spearman_correlation <br/> |
 `exit_score` |  Można ustawić wartość docelowa dla Twojej primary_metric. Po znalezieniu modelu spełniających docelowego primary_metric ML automatycznego zostanie zatrzymane, iteracja, a kończy eksperymentu. Ta wartość nie jest ustawiona (ustawienie domyślne), będą nadal uruchamiać liczbę iteracji, określony w iteracji eksperymentu uczenia Maszynowego z automatycznego. Przyjmuje wartość typu double. Jeśli element docelowy nigdy nie osiągnie, zautomatyzowane ML będzie kontynuowane, aż do napotkania liczba iteracji, określony w iteracji.|   Brak
 `iterations` |Maksymalna liczba iteracji. Każda iteracja jest równy zadania szkolenia, powstałego w potoku. Potok to wstępne przetwarzanie danych i modelu. Aby uzyskać użycia modeli wysokiej jakości, co najmniej 250 | 100
 `Concurrent_iterations`|    Maksymalna liczba iteracji do równoległego uruchamiania. To ustawienie działa tylko w przypadku zdalnego obliczeń.|    1
 `max_cores_per_iteration`   | Wskazuje, jak wiele rdzeni na obliczeniowego elementu docelowego będzie używana do nauczenia jeden potok. Jeśli algorytm można wykorzystać wiele rdzeni, to zwiększa wydajność na maszynie wielordzeniowych. Jest on ustawiany na wartość -1 do użycia rdzeni dostępnych na komputerze.|  1
 `max_time_sec` |    Ogranicza czas (w sekundach), jaki zajmuje konkretnej iteracji. Jeśli iteracji przekroczy określony, pobiera anulowane tej iteracji. W przeciwnym razie zestaw, a następnie iteracji będzie nadal działać, dopóki zostanie zakończone. |   Brak
-`n_cross_validations`   |Liczba krzyżowego sprawdzania poprawności dzieli dane| Brak
+`n_cross_validations`   |Liczba podziałów krzyżowego sprawdzania poprawności| Brak
 `validation_size`   |Rozmiar sprawdzania poprawności, Ustaw jako wartość procentowa próbki szkolenia.|  Brak
 `preprocess` | PRAWDA/FAŁSZ <br/>Wartość true włącza eksperymentów do wykonywania przetwarzania wstępnego w danych wejściowych. Poniżej przedstawiono część przetwarzania wstępnego<li>Brak danych: Imputes brakujące dane numeryczne ze średnią, tekst z większości wystąpienia </li><li>Wartości podzielonych na kategorie: Jeśli typ danych liczbowych i liczba unikatowych wartości jest mniejsza niż 5 procent, konwertuje do hot jednego procesu kodowania </li><li>Itp. Aby uzyskać pełną listę wyboru [repozytorium GitHub](https://aka.ms/aml-notebooks)</li><br/>Uwaga: Jeśli dane są rozrzedzonej nie można użyć wstępnie Przetwórz = true |  False | 
 `blacklist_algos`   | Automatyczne eksperymentu uczenia Maszynowego ma wiele różnych algorytmów, które podejmuje próby. Skonfiguruj automatyczne uczenia Maszynowego, aby wykluczyć niektóre algorytmy z eksperymentu. Parametr jest przydatne, jeśli masz świadomość, że algorytmy nie działają dobrze sprawdza się w zestawie danych. Z wyjątkiem algorytmów można skrócić zasobów obliczeniowych i czasu szkoleń.<br/>Dozwolone wartości klasyfikacji<br/><li>Regresja logistyczna</li><li>Klasyfikator SGD</li><li>MultinomialNB</li><li>BernoulliNB</li><li>SVM</li><li>LinearSVM</li><li>kNN</li><li>DT</li><li>RF</li><li>dodatkowe drzew</li><li>ulepszanie gradientu</li><li>lgbm_classifier</li><br/>Dozwolone wartości regresji<br/><li>Elastyczne netto</li><li>Regresor zwiększenie gradientu</li><li>Regresor DT</li><li>regresor kNN</li><li>Hurtowi Lasso</li><li>Regresor SGD</li><li>Regresor RF</li><li>regresor dodatkowe drzew</li>|   Brak
@@ -225,8 +225,7 @@ Następujące metryki są zapisywane w każdej iteracji
 * AUC_macro
 * AUC_micro
 * AUC_weighted
-* AUC_weighted_max
-* dokładność
+* accuracy
 * average_precision_score_macro
 * average_precision_score_micro
 * average_precision_score_weighted

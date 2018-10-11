@@ -1,6 +1,6 @@
 ---
-title: Samouczek — tworzenie dysków dla zestawów skalowania za pomocą interfejsu wiersza polecenia platformy Azure 2.0 i korzystanie z nich | Microsoft Docs
-description: Dowiedz się, jak za pomocą interfejsu wiersza polecenia platformy Azure 2.0 utworzyć usługę Managed Disks i używać jej razem z zestawem skalowania maszyn wirtualnych, na przykład dodawać, przygotowywać, wyświetlać i odłączać dyski.
+title: Samouczek — tworzenie dysków dla zestawów skalowania za pomocą interfejsu wiersza polecenia platformy Azure i korzystanie z nich | Microsoft Docs
+description: Dowiedz się, jak za pomocą interfejsu wiersza polecenia platformy Azure utworzyć usługę Managed Disks i używać jej razem z zestawem skalowania maszyn wirtualnych, na przykład dodawać, przygotowywać, wyświetlać i odłączać dyski.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3c34ebda3700bb34952fb067bc965069004aee75
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ae26e851e60f654a502779fe2a8b41e13dc47915
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38719483"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993633"
 ---
-# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli-20"></a>Samouczek: tworzenie dysków i używanie ich z zestawem skalowania maszyn wirtualnych za pośrednictwem interfejsu wiersza polecenia platformy Azure 2.0
+# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Samouczek: tworzenie dysków i używanie ich z zestawem skalowania maszyn wirtualnych za pośrednictwem interfejsu wiersza polecenia platformy Azure
 Zestawy skalowania maszyn wirtualnych przechowują aplikacje, dane oraz systemy operacyjne wystąpień maszyn wirtualnych na dyskach. Ważne jest, aby podczas tworzenia zestawu skalowania i zarządzania nim wybrać taki rozmiar dysku i konfigurację, które odpowiadają oczekiwanemu obciążeniu. W tym samouczku omówiono tworzenie dysków maszyn wirtualnych i zarządzanie nimi. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
@@ -37,7 +37,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.29 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.29 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 
 ## <a name="default-azure-disks"></a>Domyślne dyski platformy Azure
@@ -298,7 +298,7 @@ az group delete --name myResourceGroup --no-wait --yes
 
 
 ## <a name="next-steps"></a>Następne kroki
-W tym samouczku omówiono tworzenie dysków i używanie ich z zestawami skalowania za pośrednictwem interfejsu wiersza polecenia platformy Azure 2.0:
+W tym samouczku omówiono tworzenie dysków i używanie ich z zestawami skalowania za pośrednictwem interfejsu wiersza polecenia platformy Azure:
 
 > [!div class="checklist"]
 > * Dyski systemu operacyjnego i dyski tymczasowe

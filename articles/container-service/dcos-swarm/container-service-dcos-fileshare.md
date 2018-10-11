@@ -1,6 +1,6 @@
 ---
-title: Udział plików dla klastra Azure DC/OS
-description: Tworzenie i zainstalować udział plików w klastrze DC/OS usługi kontenera platformy Azure
+title: Udział plików dla klastra DC/OS na platformie Azure
+description: Tworzenie udziału plików i instalowanie go w klastrze DC/OS w usłudze Azure Container Service
 services: container-service
 author: julienstroheker
 manager: dcaro
@@ -9,31 +9,31 @@ ms.topic: tutorial
 ms.date: 06/07/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: c1c318f4204efd24a2d9d3d83bb1cb71f5775bdb
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 4e03a0b450c9806edfb81a867fba97052659ec44
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2017
-ms.locfileid: "26331206"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973508"
 ---
-# <a name="create-and-mount-a-file-share-to-a-dcos-cluster"></a>Tworzenie i zainstalować udział plików w klastrze DC/OS
+# <a name="create-and-mount-a-file-share-to-a-dcos-cluster"></a>Tworzenie udziału plików i instalowanie go w klastrze DC/OS
 
-Ten samouczek zawiera szczegóły dotyczące sposobu tworzenia udziału plików na platformie Azure i zainstalować go na każdy agent i głównego klastra DC/OS. Konfigurowanie udziału plików ułatwia udostępnianie plików w klastrze, takich jak konfiguracja, access, dzienników i. W tym samouczku, wykonywane są następujące zadania:
+W tym samouczku opisano, jak można utworzyć udział plików na platformie Azure i zainstalować go na każdym agencie i wzorcu klastra DC/OS. Skonfigurowanie udziału plików ułatwia udostępnianie plików w klastrze, na przykład takich jak pliki związane z konfiguracją, dostępem lub dzienniki. W ramach tego samouczka wykonywane są następujące zadania:
 
 > [!div class="checklist"]
 > * Tworzenie konta usługi Azure Storage
 > * Tworzenie udziału plików
 > * Instalowanie udziału w klastrze DC/OS
 
-Należy klastra ACS DC/OS, aby wykonać kroki opisane w tym samouczku. W razie potrzeby [w tym przykładzie skrypt](./../kubernetes/scripts/container-service-cli-deploy-dcos.md) można utworzyć.
+Do wykonania kroków opisanych w tym samouczku potrzebujesz klastra DC/OS usługi ACS. W razie potrzeby [ten przykładowy skrypt](./../kubernetes/scripts/container-service-cli-deploy-dcos.md) pomoże Ci go utworzyć.
 
-Dla tego samouczka wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli). 
+Dla tego samouczka wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli). 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-a-file-share-on-microsoft-azure"></a>Tworzenie udziału plików w systemie Microsoft Azure
+## <a name="create-a-file-share-on-microsoft-azure"></a>Tworzenie udziału plików na platformie Microsoft Azure
 
-Przed rozpoczęciem korzystania z udziału plików na platformę Azure z klastrem usługi ACS DC/OS, należy utworzyć konto i pliku udziału magazynu. Uruchom następujący skrypt, aby utworzyć udział magazynu i plików. Zaktualizuj parametry z thoes ze środowiska.
+Przed rozpoczęciem korzystania z udziału plików platformy Azure z klastrem DC/OS usługi ACS konieczne jest utworzenie konta magazynu i udziału pliku. Uruchom następujący skrypt, aby utworzyć magazyn i udział plików. Zaktualizuj parametry wartościami z Twojego środowiska.
 
 ```azurecli-interactive
 # Change these four parameters
@@ -54,11 +54,11 @@ az storage share create -n $DCOS_PERS_SHARE_NAME
 
 ## <a name="mount-the-share-in-your-cluster"></a>Instalowanie udziału w klastrze
 
-Następnie udziału plików musi ma zostać zainstalowany na każdej maszynie wirtualnej w klastrze. To zadanie zostało wykonane przy użyciu narzędzia cifs/protokołu. Operacja instalacji można wykonać ręcznie na każdym węźle klastra lub przez uruchomienie skryptu przed każdym węźle w klastrze.
+Następnie udział plików musi zostać zainstalowany na każdej maszynie wirtualnej w Twoim klastrze. To zadanie jest wykonywane przy użyciu narzędzia/protokołu cifs. Operację instalacji można ukończyć ręcznie w każdym węźle klastra lub przez uruchomienie skryptu dla każdego węzła w klastrze.
 
-W tym przykładzie dwa skrypty są uruchamiane, co należy zainstalować udział plików na platformę Azure, a drugie, aby uruchomić ten skrypt w każdym węźle klastra DC/OS.
+W tym przykładzie uruchamiane są dwa skrypty, jeden w celu zainstalowania udziału plików platformy Azure, a drugi, aby uruchomić ten skrypt w każdym węźle klastra DC/OS.
 
-Po pierwsze nazwa konta magazynu platformy Azure i klucz dostępu są wymagane. Uruchom następujące polecenia, aby uzyskać te informacje. Zwróć uwagę, te wartości są używane w kolejnym kroku.
+Na początku wymagane są nazwa i klucz dostępu konta magazynu Azure. Aby uzyskać te informacje, uruchom następujące polecenia. Zanotuj każdą z nich. Te wartości są używane w kolejnym kroku.
 
 Nazwa konta magazynu:
 
@@ -67,33 +67,33 @@ STORAGE_ACCT=$(az storage account list --resource-group $DCOS_PERS_RESOURCE_GROU
 echo $STORAGE_ACCT
 ```
 
-Klucz dostępu do konta magazynu:
+Klucz dostępu konta magazynu:
 
 ```azurecli-interactive
 az storage account keys list --resource-group $DCOS_PERS_RESOURCE_GROUP --account-name $STORAGE_ACCT --query "[0].value" -o tsv
 ```
 
-Następnie Uzyskaj FQDN wzorca DC/OS i zapisze go w zmiennej.
+Następnie uzyskaj nazwę FQDN wzorca DC/OS i zapisz ją w zmiennej.
 
 ```azurecli-interactive
 FQDN=$(az acs list --resource-group $DCOS_PERS_RESOURCE_GROUP --query "[0].masterProfile.fqdn" --output tsv)
 ```
 
-Skopiuj klucz prywatny do węzła głównego. Ten klucz jest potrzebne do utworzenia ssh połączenia z wszystkich węzłów w klastrze. Zaktualizuj nazwę użytkownika, jeśli wartości innych niż domyślne był używany podczas tworzenia klastra. 
+Skopiuj klucz prywatny do węzła głównego. Ten klucz jest potrzebny do utworzenia połączenia ssh z wszystkimi węzłami w klastrze. Zaktualizuj nazwę użytkownika, jeśli podczas tworzenia klastra użyto wartości innej niż domyślna. 
 
 ```azurecli-interactive
 scp ~/.ssh/id_rsa azureuser@$FQDN:~/.ssh
 ```
 
-Utwórz połączenie SSH z wzorcem (lub pierwszego serwera głównego) klastra systemu DC/OS. Zaktualizuj nazwę użytkownika, jeśli wartości innych niż domyślne był używany podczas tworzenia klastra.
+Utwórz połączenie SSH przy użyciu wzorca (lub pierwszego wzorca) klastra opartego na rozwiązaniu DC/OS. Zaktualizuj nazwę użytkownika, jeśli podczas tworzenia klastra użyto wartości innej niż domyślna.
 
 ```azurecli-interactive
 ssh azureuser@$FQDN
 ```
 
-Utwórz plik o nazwie **cifsMount.sh**i skopiuj do niego następującą zawartość. 
+Utwórz plik o nazwie **cifsMount.sh** i skopiuj do niego poniższą zawartość. 
 
-Ten skrypt jest używany do zainstalowania udziału plików na platformę Azure. Aktualizacja `STORAGE_ACCT_NAME` i `ACCESS_KEY` zmiennych z informacji zebranych wcześniej.
+Ten skrypt jest używany do zainstalowania udziału plików platformy Azure. Zaktualizuj zmienne `STORAGE_ACCT_NAME` i `ACCESS_KEY`, korzystając z zebranych wcześniej informacji.
 
 ```azurecli-interactive
 #!/bin/bash
@@ -112,9 +112,9 @@ if [ ! -d "/mnt/share/$SHARE_NAME" ]; then sudo mkdir -p "/mnt/share/$SHARE_NAME
 # Mount the share under the previous local folder created
 sudo mount -t cifs //$STORAGE_ACCT_NAME.file.core.windows.net/$SHARE_NAME /mnt/share/$SHARE_NAME -o vers=3.0,username=$STORAGE_ACCT_NAME,password=$ACCESS_KEY,dir_mode=0777,file_mode=0777
 ```
-Utworzyć drugi plik o nazwie **getNodesRunScript.sh** i skopiuj następującą zawartość do pliku. 
+Utwórz drugi plik o nazwie **getNodesRunScript.sh** i skopiuj poniższą zawartość do pliku. 
 
-Ten skrypt umożliwia odnalezienie wszystkich węzłów klastra, a następnie wykonuje **cifsMount.sh** skrypt, aby zainstalować udział plików na każdym.
+Ten skrypt umożliwia odnalezienie wszystkich węzłów klastra, a następnie uruchamia skrypt **cifsMount.sh**, aby zainstalować udział plików na każdym z nich.
 
 ```azurecli-interactive
 #!/bin/bash
@@ -132,24 +132,24 @@ do
   done
 ```
 
-Uruchom skrypt, aby zainstalować udział plików na platformę Azure na wszystkich węzłach klastra.
+Uruchom skrypt, aby zainstalować udział plików platformy Azure we wszystkich węzłach klastra.
 
 ```azurecli-interactive
 sh ./getNodesRunScript.sh
 ```  
 
-Udział plików jest teraz dostępny w `/mnt/share/dcosshare` w każdym węźle klastra.
+Udział plików jest teraz dostępny pod adresem `/mnt/share/dcosshare` w każdym węźle klastra.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku platformy Azure udziału plików została udostępniona klastra DC/OS, wykonując kroki:
+W tym samouczku platformy Azure udział plików został udostępniony w klastrze DC/OS za pomocą kroków:
 
 > [!div class="checklist"]
 > * Tworzenie konta usługi Azure Storage
 > * Tworzenie udziału plików
 > * Instalowanie udziału w klastrze DC/OS
 
-Przejdź do następnego samouczka, aby dowiedzieć się więcej na temat integracji Azure kontenera rejestru z DC/OS na platformie Azure.  
+Przejdź do następnego samouczka, aby dowiedzieć się więcej na temat integracji usługi Azure Container Registry z rozwiązaniem DC/OS na platformie Azure.  
 
 > [!div class="nextstepaction"]
 > [Równoważenie obciążenia aplikacji](container-service-dcos-acr.md)

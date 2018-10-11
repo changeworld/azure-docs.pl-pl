@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 6/7/2017
-ms.openlocfilehash: 7d9565db8fe46ee26fafa7bd021d771e728e9a77
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: b9ca8848da543bbfb27246109c3a4ab97eb6bc58
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43101616"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974922"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Wdrażanie w usłudze Azure App Service za pomocą serwera Jenkins i interfejsu wiersza polecenia platformy Azure
 Aby wdrożyć aplikację internetową Java na platformie Azure, można użyć interfejsu wiersza polecenia platformy Azure w [potoku Jenkins](https://jenkins.io/doc/book/pipeline/). W tym samouczku utworzysz potok CI/CD na maszynie wirtualnej platformy Azure. Wykonasz m.in. następujące czynności:
@@ -26,7 +26,7 @@ Aby wdrożyć aplikację internetową Java na platformie Azure, można użyć in
 > * Tworzenie potoku Jenkins
 > * Uruchamianie potoku i weryfikowanie aplikacji internetowej
 
-Dla tego samouczka wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
+Dla tego samouczka wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

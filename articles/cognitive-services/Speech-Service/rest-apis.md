@@ -8,12 +8,12 @@ ms.component: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: dd43aff91568ba4bd93f27e88cc63a50b9d8e4bd
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: fea4f762a46963f923ba8f44644df37b29fc77a6
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886440"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068744"
 ---
 # <a name="speech-service-rest-apis"></a>Usługa rozpoznawania mowy interfejsów API REST
 
@@ -21,7 +21,7 @@ Interfejsy API REST usługi mowy w usłudze Azure Cognitive Services są podobne
 
 ## <a name="speech-to-text"></a>Zamiana mowy na tekst
 
-Punktów końcowych rozpoznawania mowy, interfejsu API REST usługi tekstowe są wyświetlane w poniższej tabeli. Użyj jednego, który odpowiada Twoim regionie subskrypcji. Odwołanie **tryby rozpoznawania** sekcji poniżej, aby zastąpić `conversation` z oboma `interactive` lub `dictation` dla Twojego żądaną sceanrio w danym wywołania interfejsu API.
+Punktów końcowych rozpoznawania mowy, interfejsu API REST usługi tekstowe są wyświetlane w poniższej tabeli. Użyj jednego, który odpowiada Twoim regionie subskrypcji. 
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
@@ -29,52 +29,6 @@ Punktów końcowych rozpoznawania mowy, interfejsu API REST usługi tekstowe są
 > Jeśli dostosowany model akustyczny lub model języka lub wymowa, należy użyć niestandardowego punktu końcowego.
 
 Ten interfejs API obsługuje tylko krótkie wypowiedzi. Żądania może zawierać maksymalnie 10 sekund audio i ostatnie 14 sekundy ogólnej. Interfejs API REST zwraca wyniki tylko końcowej, nie przejściowym lub częściowe wyniki. Usługa rozpoznawania mowy ma również [batch transkrypcji](batch-transcription.md) interfejsu API, które można wykonać transkrypcji audio dłużej.
-
-### <a name="recognition-modes"></a>Tryby rozpoznawania
-
-Korzystając z interfejsu API REST lub protokołu WebSocket protokołu bezpośrednio, należy go określić tryb rozpoznawania: `interactive`, `conversation`, lub `dictation`. Tryb rozpoznawania dostosowuje rozpoznawania mowy, w oparciu o jak użytkownicy będą mówić. Wybierz tryb rozpoznawania odpowiednie dla twojej aplikacji.
-
-> [!NOTE]
-> Tryby rozpoznawania może mieć różne zachowania za pomocą protokołu REST, niż na ich za pomocą protokołu WebSocket. Na przykład interfejsu API REST nie obsługuje ciągłego rozpoznawanie, nawet w trybie konwersacji lub dyktowanie.
-> [!NOTE]
-> Te tryby są stosowane, gdy bezpośrednio korzystać z protokołu REST lub protokołu WebSocket. [Zestaw SDK rozpoznawania mowy](speech-sdk.md) używa różnych parametrów do określenia konfiguracji rozpoznawania. Aby uzyskać więcej informacji zobacz Biblioteka klienta wybranych przez użytkownika.
-
-Usługa rozpoznawania mowy zwraca tylko jeden wynik frazy rozpoznawania we wszystkich trybach rozpoznawania. Istnieje limit 15 sekund dla dowolnego pojedynczego wypowiedź, gdy bezpośrednio za pomocą protokołu WebSocket i interfejsów API REST.
-
-#### <a name="interactive-mode"></a>Tryb interaktywny
-
-W `interactive` trybie użytkownik zgłasza krótka żądania i oczekuje, że aplikacja do wykonania akcji w odpowiedzi.
-
-Następujące właściwości są typowe dla aplikacji w trybie interakcyjnym:
-
-- Użytkownicy o tym, że rozmowy maszynę, a nie inny człowieka.
-- Użytkownicy aplikacji znać wcześniej, mają być Powiedz, oparte na to, czego oczekują aplikacji w celu.
-- Wypowiedzi zazwyczaj ostatnie o 2-3 sekundy.
-
-#### <a name="conversation-mode"></a>Tryb konwersacji
-
-W `conversation` tryb, użytkownicy są zaangażowane w konwersacji międzyludzkich —.
-
-Następujące właściwości są typowe dla aplikacji w trybie konwersacji:
-
-- Użytkownicy wiedzą, że komunikują się z inną osobą.
-- Rozpoznawanie mowy podnosi uczestnicy jeden lub oba Zobacz tekstu mówionego rozmowy przez ludzi.
-- Użytkownicy nie zawsze jest planowana mają powiedzieć.
-- Użytkownicy często korzystają z żargonu i innych nieformalne mowy.
-
-#### <a name="dictation-mode"></a>Tryb dyktowania
-
-W `dictation` tryb, użytkownicy recytować wypowiedzi dłuższe do aplikacji w celu dalszego przetwarzania.
-
-Następujące właściwości są typowe dla aplikacji w trybie dyktowania:
-
-- Użytkownicy wiedzą, że komunikują się z maszyną.
-- Użytkownicy są wyświetlane wyniki tekstu rozpoznawania mowy.
-- Użytkownicy planu często mają być powiedzieć i używać bardziej formalnych języka.
-- Użytkownicy stosują pełną zdania, ostatnich 5 – 8 sekund.
-
-> [!NOTE]
-> W trybie dyktowania i konwersacji Microsoft Speech Service nie zwracać wyniki częściowe. Zamiast tego usługa zwraca wyniki stabilne frazy po wyciszenia granic w strumienia audio. Microsoft może zwiększyć protokołu rozpoznawania mowy do udoskonalenia środowiska użytkownika w tych trybach ciągłe rozpoznawania.
 
 
 ### <a name="query-parameters"></a>Parametry zapytania
@@ -529,6 +483,6 @@ public class Authentication
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
-- [Dostosowywanie modeli akustycznych](how-to-customize-acoustic-models.md)
-- [Dostosowywanie modeli językowych](how-to-customize-language-model.md)
+- [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
+- [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)
 

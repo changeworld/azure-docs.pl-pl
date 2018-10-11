@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 10/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5db53567b1df9e726fb0c507f0302536ea45b7f4
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: fcf3ecaff6e8ba1421496a96d01428946cf8ab8e
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603774"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077786"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Utraconych wiadomości i zasady ponawiania prób
 
@@ -48,7 +48,7 @@ Aby wyłączyć Obsługa utraconych komunikatów, uruchom ponownie polecenie, ab
 
 Podczas tworzenia subskrypcji usługi Event Grid, można ustawić wartości dla ile usługi Event Grid należy dążyć do dostarczenia zdarzeń. Domyślnie usługi Event Grid prób przez 24 godziny (1440 minut) i próbuje maksymalnie 30-krotnie. Możesz ustawić te wartości dla swojej subskrypcji usługi event grid. Wartość dla zdarzenia, czas wygaśnięcia musi być liczbą całkowitą z zakresu od 1 do 1440. Wartość kolejnymi próbami dostarczenia maksymalna musi być liczbą całkowitą z zakresu od 1 do 30.
 
-Nie można skonfigurować [interwał ponawiania prób](delivery-and-retry.md#retry-intervals-and-duration).
+Nie można skonfigurować [harmonogram ponownych prób](delivery-and-retry.md#retry-schedule-and-duration).
 
 Aby ustawić zdarzenia time to live wartość inna niż 1440 minut, należy użyć:
 

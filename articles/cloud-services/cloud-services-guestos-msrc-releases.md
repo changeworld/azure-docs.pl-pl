@@ -11,17 +11,42 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 9/13/2018
+ms.date: 10/9/2018
 ms.author: raiye
-ms.openlocfilehash: c0eff5054b186ebc701e88d793992c8729408b7d
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: f0fe3d66430c17c417de7ecd808069ba76a57ef5
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45606001"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069543"
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa platformy Azure
 Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Security Response Center (MSRC) stosowane do systemu operacyjnego gościa platformy Azure. Wyszukaj w tym artykule, aby określić, jeśli dana aktualizacja ma zastosowanie do systemu operacyjnego gościa, którego używasz. Aktualizacje zawsze przenoszone w konkretnym [rodziny] [ family-explain] były one wprowadzone w.
+
+## <a name="september-guest-os"></a>System operacyjny gościa września
+> [!NOTE]
+> System operacyjny gościa września jest obecnie wdrażana do maszyn wirtualnych usługi chmury, które są skonfigurowane dla aktualizacji automatycznych. Po zakończeniu wprowadzania tej wersji będą dostępne dla ręczne aktualizacje za pośrednictwem usługi Azure portal i plików konfiguracji. Następujące poprawki znajdują się w systemie operacyjnym gościa września. Ta lista może ulec zmianie.
+
+| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| --- | --- | --- | --- | --- |
+| ReL 18-09 | [4457131] | Zabezpieczenia systemu Windows 10 | 5.23 | 11 września 2018 r. |
+| ReL 18-09 | [4457145] | Tylko zabezpieczeń Windows | 2.78 | 11 września 2018 r. |
+| ReL 18-09 | [4457140] | Tylko zabezpieczeń Windows | 3.65 | 11 września 2018 r. |
+| ReL 18-09 | [4457143] | Tylko zabezpieczeń Windows | 4.58 | 11 września 2018 r. |
+| ReL 18-09 | [4457055], [4457030] | .NET 3.5, 4.5 zabezpieczeń | 2.78 | 11 września 2018 r. |
+| ReL 18-09 | [4457053], [4457029] | .NET 3.5, zabezpieczenia 4.x | 3.65 | 11 września 2018 r. |
+| ReL 18-09 | [4457056], [4457028] | .NET 3.5, zabezpieczenia 4.x | 4.58 | 11 września 2018 r. |
+| ReL 18-09 | [4457146] | Flash | 3.65, 4.58, 5.23 | 11 września 2018 r. |
+| ReL 18-09 | [4457426] | Internet Explorer | 2.78, 3.65, 4.58 | 11 września 2018 r. |
+| ND | [4343900] | Pakiet zbiorczy sierpnia niezwiązane z zabezpieczeniami | 2.78 | 14 sierpnia 2018 r. |
+| ND | [4344152] | Pakiet zbiorczy sierpnia niezwiązane z zabezpieczeniami platformy .NET 3.5 | 2.78 | 14 sierpnia 2018 r. |
+| ND | [4344149] | X rollup sierpnia niezwiązane z zabezpieczeniami .NET 4 | 2.78 | 14 sierpnia 2018 r. |
+| ND | [4343901] | Pakiet zbiorczy sierpnia niezwiązane z zabezpieczeniami | 3.65 | 14 sierpnia 2018 r. |
+| ND | [4344150] | Pakiet zbiorczy sierpnia niezwiązane z zabezpieczeniami platformy .NET 3.5 | 3.65 | 14 sierpnia 2018 r. |
+| ND | [4344148] | X rollup sierpnia niezwiązane z zabezpieczeniami .NET 4 | 3.65 | 14 sierpnia 2018 r. |
+| ND | [4343898] | Pakiet zbiorczy sierpnia niezwiązane z zabezpieczeniami | 4.58 | 14 sierpnia 2018 r. |
+| ND | [4344153] | Pakiet zbiorczy sierpnia niezwiązane z zabezpieczeniami platformy .NET 3.5 | 4.58 | 14 sierpnia 2018 r. |
+| ND | [4344147] | X rollup sierpnia niezwiązane z zabezpieczeniami .NET 4 | 4.58 | 14 sierpnia 2018 r. |
 
 ## <a name="august-guest-os"></a>System operacyjny gościa sierpnia
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
@@ -45,7 +70,6 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4338815] |Pakiet zbiorczy lipca niezwiązane z zabezpieczeniami |4.57 | 10 lipca 2018 r. |
 | ND | [4338424] |Pakiet zbiorczy lipca niezwiązane z zabezpieczeniami platformy .NET 3.5 |3.64 | 10 lipca 2018 r. |
 | ND | [4338415] |X rollup lipca niezwiązane z zabezpieczeniami .NET 4 |3.64 | 10 lipca 2018 r. |
-
 
 ## <a name="july-guest-os"></a>System operacyjny gościa lipca
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
@@ -717,6 +741,27 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND |[2999802] |Linia ciągła zamiast linii kropkowanej są drukowane w Windows |4.15, 3.22, 2.34 |2015 r. 13 stycznia |
 | ND |[2896881] |Długi czas logowania, kiedy używasz polecenia AddPrinterConnection VBScript mapować drukarki dla użytkowników podczas procesu logowania w Windows |4.15, 3.22, 2.34 |2015 r. 13 stycznia |
 
+[4457131]: http://support.microsoft.com/kb/4457131
+[4457145]: http://support.microsoft.com/kb/4457145
+[4457140]: http://support.microsoft.com/kb/4457140
+[4457143]: http://support.microsoft.com/kb/4457143
+[4457055]: http://support.microsoft.com/kb/4457055
+[4457030]: http://support.microsoft.com/kb/4457030
+[4457053]: http://support.microsoft.com/kb/4457053
+[4457029]: http://support.microsoft.com/kb/4457029
+[4457056]: http://support.microsoft.com/kb/4457056
+[4457028]: http://support.microsoft.com/kb/4457028
+[4457146]: http://support.microsoft.com/kb/4457146
+[4457426]: http://support.microsoft.com/kb/4457426
+[4343900]: http://support.microsoft.com/kb/4343900
+[4344152]: http://support.microsoft.com/kb/4344152
+[4344149]: http://support.microsoft.com/kb/4344149
+[4343901]: http://support.microsoft.com/kb/4343901
+[4344150]: http://support.microsoft.com/kb/4344150
+[4344148]: http://support.microsoft.com/kb/4344148
+[4343898]: http://support.microsoft.com/kb/4343898
+[4344153]: http://support.microsoft.com/kb/4344153
+[4344147]: http://support.microsoft.com/kb/4344147
 
 [4343887]: http://support.microsoft.com/kb/4343887
 [4343899]: http://support.microsoft.com/kb/4343899

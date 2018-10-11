@@ -1,6 +1,6 @@
 ---
 title: Samouczek — zabezpieczanie serwera internetowego z systemem Linux za pomocą certyfikatów SSL na platformie Azure | Microsoft Docs
-description: W tym samouczku dowiesz się, jak używać interfejsu wiersza polecenia platformy Azure 2.0 do zabezpieczania maszyny wirtualnej z systemem Linux, na której działa internetowy serwer NGINX z certyfikatami SSL przechowywanymi w usłudze Azure Key Vault.
+description: Z tego samouczka dowiesz się, jak można korzystać z interfejsu wiersza polecenia platformy Azure do zabezpieczania maszyny wirtualnej z systemem Linux, na której działa internetowy serwer NGINX z certyfikatami SSL przechowywanymi w usłudze Azure Key Vault.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 11d884d9f1e7f805dd0796696152dda063ed7755
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: a0156167142e87ffb7935828de1000a302f12e31
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886135"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981707"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Samouczek: zabezpieczanie internetowego serwera na maszynie wirtualnej z systemem Linux na platformie Azure z certyfikatami SSL zapisanymi w usłudze Key Vault
 Aby zabezpieczyć serwery sieci Web, można używać certyfikatu SSL (Secure Sockets Layer) do szyfrowania ruchu w sieci Web. Te certyfikaty SSL mogą być przechowywane w usłudze Azure Key Vault i umożliwiają bezpieczne wdrażanie certyfikatów na maszynach wirtualnych z systemem Linux na platformie Azure. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -34,7 +34,7 @@ Aby zabezpieczyć serwery sieci Web, można używać certyfikatu SSL (Secure Soc
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 
 ## <a name="overview"></a>Omówienie

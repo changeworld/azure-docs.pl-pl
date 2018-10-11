@@ -3,22 +3,22 @@ title: Użyj usługi Azure Stack interfejsu API | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak pobrać uwierzytelniania z platformy Azure w celu wysyłania żądań interfejsu API do usługi Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: cblackuk
+author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 10/10/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 3b89564bf17a9884640b51faa1c3966dce93f89a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 945c5df9aa76cef6d55b759e3cef7c00bf54e1c4
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346794"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078334"
 ---
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
@@ -28,7 +28,7 @@ ms.locfileid: "37346794"
 
 Interfejs programowania aplikacji (API) umożliwia automatyzowanie operacji, takich jak dodawanie maszyny Wirtualnej z Twoją chmurą usługi Azure Stack.
 
-Interfejs API wymaga klienta do uwierzytelniania punkt końcowy logowania Microsoft Azure. Punkt końcowy zwraca token do użycia w nagłówku każdego żądania wysyłane do interfejsu API usługi Azure Stack. Microsoft Azure korzysta z protokołu Oauth 2.0.
+Interfejs API wymaga klienta do uwierzytelniania punktu końcowego logowania Microsoft Azure. Punkt końcowy zwraca token do użycia w nagłówku każdego żądania wysyłane do interfejsu API usługi Azure Stack. Microsoft Azure korzysta z protokołu Oauth 2.0.
 
 Ten artykuł zawiera przykłady z zastosowaniem **cURL** narzędzia do tworzenia żądań usługi Azure Stack. Aplikacja programu cURL, jest narzędziem wiersza polecenia za pomocą biblioteki do przesyłania danych. Te przykłady prowadzą użytkownika przez proces pobierania tokenu dostępu do interfejsu API usługi Azure Stack. Większość języków programowania udostępniają biblioteki protokołu Oauth 2.0, które mają niezawodne tokenu zadania zarządzania i obsługują takie odświeżanie tokenu.
 

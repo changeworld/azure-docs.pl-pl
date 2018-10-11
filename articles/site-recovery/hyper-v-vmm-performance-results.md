@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: cae9e5f2a50bc97be7c5cb42e490d8ba44666c91
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: c97247a14915ea3b8396f7179b4f8ca13bf92c8f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056882"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079399"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Wyniki testu dla replikacji funkcji Hyper-V do lokacji dodatkowej
 
@@ -164,7 +164,7 @@ Wyniki wyraźnego wyświetlania informacji dotyczących odzyskiwania lokacji, w 
 | PrimaryCloudRpo15m |142 |15 min. |Brak |
 | PrimaryCloudRpo30s |47 |30 sekund |Brak |
 | PrimaryCloudRpo30sArp1 |47 |30 sekund |1 |
-| PrimaryCloudRpo5m |235 |5 minut. |Brak |
+| PrimaryCloudRpo5m |235 |5 min |Brak |
 
 ### <a name="performance-metrics"></a>Metryki wydajności
 

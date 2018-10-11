@@ -11,17 +11,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/29/2018
+ms.date: 10/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: ef79ff7c8e238a0a90912d099b4b9dfe2a387c1d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 5ea026de228f3c93eed04770ad931d072387aa95
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45577228"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079076"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Zbieranie, przechowywanie i magazynowanie danych w usłudze Application Insights
-
 
 Po zainstalowaniu [usługi Azure Application Insights] [ start] zestawu SDK w Twojej aplikacji wysyła telemetrię dotyczącą swojej aplikacji w chmurze. Oczywiście deweloperzy odpowiada chcą wiedzieć, dokładnie przesyłanych danych, co się dzieje z danymi i jak można zachować kontrolę nad nim. W szczególności można było wysłać dane poufne, gdzie są przechowywane i jak bezpieczne jest? 
 
@@ -90,6 +89,8 @@ Będzie to możliwe, pisząc [wtyczki procesora telemetrii](app-insights-api-fil
 Punkty danych pierwotnych (czyli elementów, które można wykonywać zapytania w usłudze Analytics i sprawdzanie w wyszukiwaniu) są przechowywane przez 90 dni. Jeśli zachodzi potrzeba przechowywać danych dłużej niż ta, możesz użyć [Eksport ciągły](app-insights-export-telemetry.md) skopiowania go do konta magazynu.
 
 Zagregowane dane (oznacza to, liczby, średnie i innych danych statystycznych, który zostanie wyświetlony w Eksploratorze metryk) są zachowane w ziarna wynoszącym 1 minutę przez 90 dni.
+
+[Debugowanie migawek](app-insights-snapshot-debugger.md) są przechowywane przez 7 dni. Te zasady przechowywania jest ustawiona na podstawie poszczególnych aplikacji. Jeśli potrzebujesz zwiększyć tę wartość, możesz poprosić o zwiększenie przez otwarcie zgłoszenia do pomocy technicznej w witrynie Azure portal.
 
 ## <a name="who-can-access-the-data"></a>Kto ma dostęp do danych?
 Dane są widoczne dla użytkownika oraz, jeśli masz konto organizacji, członków zespołu. 
@@ -203,7 +204,7 @@ Firma Microsoft nie zaleca się jawne ustawienie bezwzględnie konieczne, poniew
 | Azure App Services  | Obsługiwane, może być wymagana konfiguracja. | Obsługa zostało zapowiedziane w kwietniu 2018. Przeczytaj ogłoszenie dla [szczegóły konfiguracji](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/).  |
 | Aplikacje funkcji platformy Azure | Obsługiwane, może być wymagana konfiguracja. | Obsługa zostało zapowiedziane w kwietniu 2018. Przeczytaj ogłoszenie dla [szczegóły konfiguracji](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/). |
 |.NET | Obsługiwane, konfiguracja jest zależna od wersji. | Informacje o konfiguracji szczegółowe dla platformy .NET 4.7 i wcześniejsze wersje można znaleźć [w instrukcjach](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).  |
-|Monitor stanu usługi | Obsługiwane, wymagana jest Konfiguracja | Monitor stanu opiera się na [Konfiguracja systemu operacyjnego](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [konfiguracja .NET](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) do obsługi protokołu TLS 1.2.
+|Monitor stanu | Obsługiwane, wymagana jest Konfiguracja | Monitor stanu opiera się na [Konfiguracja systemu operacyjnego](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [konfiguracja .NET](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) do obsługi protokołu TLS 1.2.
 |Node.js |  Obsługiwane w v10.5.0, może być wymagana konfiguracja. | Użyj [oficjalnej dokumentacji środowiska Node.js protokołów TLS/SSL](https://nodejs.org/api/tls.html) dla żadnej konfiguracji określonej aplikacji. |
 |Java | Obsługiwane, zestawu JDK obsługę protokołu TLS 1.2 został dodany w [zestaw JDK 6 aktualizacja 121](http://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) i [JDK 7](http://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | Używa JDK 8 [protokołu TLS 1.2, domyślnie](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
 |Linux | Dystrybucje systemu Linux, zwykle zależą od [OpenSSL](https://www.openssl.org) obsługę protokołu TLS 1.2.  | Sprawdź [dziennika zmian OpenSSL](https://www.openssl.org/news/changelog.html) aby upewnić się, używana wersja biblioteki openssl jest obsługiwana.|

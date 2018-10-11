@@ -12,14 +12,14 @@ ms.topic: article
 ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: hirsin, jeedes
-ms.openlocfilehash: c188b800e2227a5c9f3a11d7d8d752af3efdf66a
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 43b17c54014d2f1beedd02f9ec627dd087e65d5a
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/10/2018
-ms.locfileid: "48904325"
+ms.locfileid: "49069271"
 ---
-# <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-public-preview"></a>Porady: dostosowywanie oświadczeń emitowane w tokenach dla konkretnej aplikacji w dzierżawie (publiczna wersja zapoznawcza)
+# <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Porady: dostosowywanie oświadczeń emitowane w tokenach dla konkretnej aplikacji w dzierżawie (wersja zapoznawcza)
 
 > [!NOTE]
 > Ta funkcja zastępuje i zastępuje [oświadczeń dostosowywania](active-directory-saml-claims-customization.md) do obecnie oferowanych w portalu. W tej samej aplikacji Jeśli dostosujesz oświadczeń przy użyciu portalu, oprócz metoda wykres/programu PowerShell, szczegółowo opisanych w tym dokumencie tokenów wystawiony dla czy aplikacja będzie ignorować konfiguracji w portalu. Konfiguracje wprowadzone za pomocą metod podanych w tym dokumencie nie zostaną odzwierciedlone w portalu.
