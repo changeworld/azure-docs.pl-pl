@@ -1,200 +1,323 @@
 ---
-title: Pojęcia, terminologia oraz jednostki związane z usługą Scheduler | Microsoft Docs
-description: Pojęcia, terminologia oraz hierarchia jednostek związane z usługą Azure Scheduler, w tym zadania i kolekcje zadań.  Kompleksowy przykład zaplanowanego zadania.
+title: Pojęcia, terminologia oraz jednostki — Azure Scheduler | Microsoft Docs
+description: Poznaj pojęcia, terminologię oraz hierarchię jednostek w usłudze Azure Scheduler, w tym zadania i kolekcje zadań.
 services: scheduler
-documentationcenter: .NET
-author: derek1ee
-manager: kevinlam1
-editor: ''
-ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.service: scheduler
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+ms.suite: infrastructure-services
+author: derek1ee
+ms.author: deli
+ms.reviewer: klam
+ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.topic: get-started-article
 ms.date: 08/18/2016
-ms.author: deli
-ms.openlocfilehash: 91302d57c43a6c9d14aeeee95df3d61fa6f73172
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 07b7cce4b026464ba34296b54c4ae90d6d2b1afa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31418846"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981165"
 ---
-# <a name="scheduler-concepts-terminology--entity-hierarchy"></a>Pojęcia i terminologia dotyczące usługi Scheduler oraz hierarchia jednostek
-## <a name="scheduler-entity-hierarchy"></a>Hierarchia jednostek w ramach usługi Scheduler
-W poniższej tabeli opisano główne zasoby udostępniane lub wykorzystywane przez interfejs API usługi Scheduler:
+# <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Pojęcia, terminologia i jednostki w usłudze Azure Scheduler
 
-| Zasób | Opis |
-| --- | --- |
-| **Kolekcja zadań** |Kolekcja zadań zawiera grupę zadań wraz z ustawieniami, przydziałami i limitami wspólnymi dla zadań należących do kolekcji. Kolekcja zadań jest tworzona przez właściciela subskrypcji i stanowi grupę zadań utworzoną na podstawie granic użycia lub zastosowania. Jest ograniczona do jednego regionu. Umożliwia także wymuszanie przydziałów w celu ograniczenia użycia wszystkich zadań z danej kolekcji. Przykłady przydziałów to MaxJobs (Maksymalna liczba zadań) i MaxRecurrence (Maksymalna liczba cykli). |
-| **Zadanie** |Zadanie definiuje jedną powtarzającą się akcję powiązaną z prostymi lub złożonymi strategiami wykonania. Akcje mogą obejmować żądania HTTP, żądania kolejki magazynu i żądania kolejki magistrali usług lub tematu magistrali usług. |
-| **Historia zadania** |Historia zadania zawiera szczegółowe informacje dotyczące wykonywania zadania. Zawiera ona informacje na temat pomyślnych wykonań i niepowodzeń, a także wszelkie szczegóły odpowiedzi. niepowodzeń, a także wszelkie szczegóły odpowiedzi. |
+> [!IMPORTANT]
+> Usługa [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługę Azure Scheduler, która zostanie wycofana. Zamiast niej [spróbuj używać usługi Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) do planowania zadań. 
 
-## <a name="scheduler-entity-management"></a>Zarządzanie jednostkami usługi Scheduler
-Ogólne możliwości interfejsu API usługi Scheduler i zarządzania usługami pozwalają wykonywać następujące operacje na zasobach:
+## <a name="entity-hierarchy"></a>Hierarchia jednostek
 
-| Możliwości | Opis i adres URI |
-| --- | --- |
-| **Zarządzanie kolekcją zadań** |Obsługa żądań GET, PUT i DELETE wykorzystywanych do tworzenia i modyfikowania kolekcji zadań oraz składających się na nie zadań. Kolekcja zadań to kontener zadań z mapowaniem przydziałów i wspólnych ustawień. Przykłady przydziałów, które zostały opisane w dalszej części artykułu, dotyczą maksymalnej liczby zadań oraz najmniejszego interwału cyklu. <p>PUT i DELETE: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`</p><p>GET: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`</p> |
-| **Zarządzanie zadaniami** |Obsługa żądań GET, PUT, POST, PATCH i DELETE służących do tworzenia i modyfikowania zadań. Wszystkie zadania muszą należeć do kolekcji zadań, która już istnieje, w związku z czym nie mają miejsca żadne operacje niejawnego tworzenia. <p>`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}`</p> |
-| **Zarządzanie historią zadania** |Obsługa żądania GET umożliwiającego pobranie historii wykonywania zadania z 60 dni obejmującej m.in. informacje o czasie, który upłynął podczas zadania, oraz o wynikach wykonania zadania. Dodaje obsługę parametru ciągu zapytania służącego do filtrowania na podstawie stanu i statusu. <P>`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history`</p> |
+Interfejs API REST usługi Azure Scheduler uwidacznia następujące jednostki główne, czyli zasoby, i korzysta z nich:
+
+| Jednostka | Opis |
+|--------|-------------|
+| **Zadanie** | Definiuje jedną akcję cykliczną powiązaną z prostymi lub złożonymi strategiami wykonania. Akcje mogą obejmować żądania HTTP, żądania kolejki usługi Storage i żądania kolejki usługi Service Bus lub tematu usługi Service Bus. | 
+| **Kolekcja zadań** | Zawiera grupę zadań wraz z ustawieniami, przydziałami i limitami wspólnymi dla zadań należących do kolekcji. Jako właściciel subskrypcji platformy Azure możesz tworzyć kolekcje zadań i grupować zadania na podstawie ich użycia lub granic zastosowania. Kolekcja zadań ma następujące atrybuty: <p>– Jest ograniczona do jednego regionu. <br>– Umożliwia wymuszanie limitów przydziałów, dzięki czemu można ograniczyć użycie dla wszystkich zadań w kolekcji. <br>– Przykłady przydziałów to MaxJobs (Maksymalna liczba zadań) i MaxRecurrence (Maksymalna liczba cykli). | 
+| **Historia zadania** | Opisuje szczegóły dotyczące wykonania zadania, na przykład stan i wszelkie szczegóły odpowiedzi. |
+||| 
+
+## <a name="entity-management"></a>Zarządzanie jednostkami
+
+Na wysokim poziomie interfejs API REST usługi Scheduler uwidacznia te operacje na potrzeby zarządzania jednostkami.
+
+### <a name="job-management"></a>Zarządzanie zadaniami
+
+Obsługuje operacje tworzenia i edytowania zadań. Wszystkie zadania muszą należeć do istniejącej kolekcji zadań, w związku z czym nie mają miejsca żadne operacje niejawnego tworzenia. Aby uzyskać więcej informacji, zobacz [Interfejs API REST usługi Scheduler — zadania](https://docs.microsoft.com/rest/api/scheduler/jobs). Oto adres URI dla tych operacji:
+
+`https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}`
+
+### <a name="job-collection-management"></a>Zarządzanie kolekcją zadań
+
+Obsługuje operacje tworzenia i edytowania zadań i kolekcji zadań, które są mapowane na przydziały i wspólne ustawienia. Przydziały dotyczą na przykład maksymalnej liczby zadań oraz najmniejszego interwału cyklu. Aby uzyskać więcej informacji, zobacz [Interfejs API REST usługi Scheduler — kolekcje zadań](https://docs.microsoft.com/rest/api/scheduler/jobcollections). Oto adres URI dla tych operacji:
+
+`https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`
+
+### <a name="job-history-management"></a>Zarządzanie historią zadania
+
+Obsługuje operację GET umożliwiającą pobranie historii wykonywania zadania z 60 dni, obejmującej m.in. informacje o czasie, który upłynął podczas zadania, oraz o wynikach wykonania zadania. Obejmuje obsługę parametru ciągu zapytania służącego do filtrowania na podstawie stanu i statusu. Aby uzyskać więcej informacji, zobacz [Interfejs API REST usługi Scheduler — lista historii zadania](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory). Oto adres URI dla tej operacji:
+
+`https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history`
 
 ## <a name="job-types"></a>Typy zadań
-Istnieje wiele typów zadań: zadania HTTP (w tym zadania protokołu HTTPS, które obsługują protokół SSL), zadania kolejki magazynu, zadania kolejki magistrali usług i zadania tematu magistrali usług. Zadania HTTP są odpowiednie, jeśli istnieje punkt końcowy danego obciążenia lub usługi. Zadania kolejki magazynu umożliwiają przesyłanie komunikatów do kolejek magazynu, są więc odpowiednie w przypadku obciążeń, które korzystają z kolejek magazynu. Podobnie zadania magistrali usług są odpowiednie dla obciążeń wykorzystujących kolejki i tematy magistrali usług.
 
-## <a name="the-job-entity-in-detail"></a>Szczegółowy opis jednostki „zadanie”
-Ogólna struktura zaplanowanego zadania obejmuje kilka elementów:
+Usługa Azure Scheduler obsługuje wiele typów zadań: 
 
-* Akcja do wykonania po aktywacji czasomierza zadania  
-* (Opcjonalnie) Czas uruchomienia zadania  
-* (Opcjonalnie) Termin i częstotliwość powtarzania zadania  
-* (Opcjonalnie) Akcja wyzwalana, jeśli akcja podstawowa zakończy się niepowodzeniem  
+* Zadania HTTP, w tym zadania protokołu HTTPS, które obsługują protokół SSL, używane w scenariuszach, gdy znany jest punkt końcowy dla istniejącej usługi lub istniejącego obciążenia
+* Zadania kolejki usługi Storage dla obciążeń korzystających z kolejek usługi Storage, takich jak publikowanie komunikatów w kolejkach usługi Storage
+* Zadania kolejki usługi Service Bus dla obciążeń korzystających z kolejek usługi Service Bus
+* Zadania tematów usługi Service Bus dla obciążeń korzystających z tematów usługi Service Bus
 
-Wewnętrzna struktura zaplanowanego zadania obejmuje również dane dostarczane przez system, takie jak czas następnego zaplanowanego wykonania.
+## <a name="job-definition"></a>Definicja zadania
 
-Poniższy kod stanowi kompleksowy przykład zaplanowanego zadania. Szczegóły można znaleźć w kolejnych sekcjach.
+Na wysokim poziomie zadanie usługi Scheduler składa się z następujących elementów podstawowych:
 
-    {
-        "startTime": "2012-08-04T00:00Z",               // optional
-        "action":
-        {
-            "type": "http",
-            "retryPolicy": { "retryType":"none" },
-            "request":
-            {
-                "uri": "http://contoso.com/foo",        // required
-                "method": "PUT",                        // required
-                "body": "Posting from a timer",         // optional
-                "headers":                              // optional
+* Akcja uruchamiana po wyzwoleniu czasomierza zadania
+* Opcjonalnie: czas uruchomienia zadania
+* Opcjonalnie: termin i częstotliwość powtarzania zadania
+* Opcjonalnie: akcja błędu uruchamiana, jeśli akcja podstawowa zakończy się niepowodzeniem
 
-                {
-                    "Content-Type": "application/json"
-                },
-            },
-           "errorAction":
-           {
-               "type": "http",
-               "request":
-               {
-                   "uri": "http://contoso.com/notifyError",
-                   "method": "POST",
-               },
-           },
-        },
-        "recurrence":                                   // optional
-        {
-            "frequency": "week",                        // can be "year" "month" "day" "week" "minute"
-            "interval": 1,                              // optional, how often to fire (default to 1)
-            "schedule":                                 // optional (advanced scheduling specifics)
-            {
-                "weekDays": ["monday", "wednesday", "friday"],
-                "hours": [10, 22]
-            },
-            "count": 10,                                 // optional (default to recur infinitely)
-            "endTime": "2012-11-04",                     // optional (default to recur infinitely)
-        },
-        "state": "disabled",                           // enabled or disabled
-        "status":                                       // controlled by Scheduler service
-        {
-            "lastExecutionTime": "2007-03-01T13:00:00Z",
-            "nextExecutionTime": "2007-03-01T14:00:00Z ",
-            "executionCount": 3,
-                                                "failureCount": 0,
-                                                "faultedCount": 0
-        },
-    }
+Zadanie zawiera również dane dostarczane przez system, takie jak czas następnego zaplanowanego uruchomienia zadania. Definicja kodu zadania jest następująca: obiekt w formacie JavaScript Object Notation (JSON), który zawiera następujące elementy:
 
-Jak widać na przykładzie powyższego zaplanowanego zadania, definicja zadania obejmuje kilka elementów:
+| Element | Wymagany | Opis | 
+|---------|----------|-------------| 
+| [**startTime**](#start-time) | Nie | Godzina rozpoczęcia zadania z przesunięciem strefy czasowej w [formacie ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) | 
+| [**action**](#action) | Yes | Szczegóły akcji podstawowej, które mogą zawierać obiekt **errorAction** | 
+| [**errorAction**](#error-action) | Nie | Szczegóły akcji pomocniczej, która jest uruchamiana, gdy akcja podstawowa zakończy się niepowodzeniem |
+| [**recurrence**](#recurrence) | Nie | Szczegóły, takie jak częstotliwość i interwał, dla zadania cyklicznego | 
+| [**retryPolicy**](#retry-policy) | Nie | Szczegóły dotyczące częstotliwości ponawiania próby wykonania akcji | 
+| [**state**](#state) | Yes | Szczegóły dotyczące bieżącego stanu zadania |
+| [**status**](#status) | Yes | Szczegóły dotyczące bieżącego stanu zadania, który jest kontrolowany przez usługę |
+||||
 
-* Czas rozpoczęcia (“startTime”)  
-* Akcja („action”), w tym akcja w przypadku błędu („errorAction”)
-* Cykl („recurrence”)  
-* Stan („state”)  
-* Status („status”)  
-* Zasady ponawiania („retryPolicy”)  
+Oto przykład pokazujący kompleksową definicję zadania dla akcji HTTP z pełniejszymi szczegółami elementu opisanymi w kolejnych sekcjach: 
 
-Przeanalizujmy szczegółowo każdy z nich:
+```json
+"properties": {
+   "startTime": "2012-08-04T00:00Z",
+   "action": {
+      "type": "Http",
+      "request": {
+         "uri": "http://contoso.com/some-method", 
+         "method": "PUT",          
+         "body": "Posting from a timer",
+         "headers": {
+            "Content-Type": "application/json"
+         },
+         "retryPolicy": { 
+             "retryType": "None" 
+         },
+      },
+      "errorAction": {
+         "type": "Http",
+         "request": {
+            "uri": "http://contoso.com/notifyError",
+            "method": "POST"
+         }
+      }
+   },
+   "recurrence": {
+      "frequency": "Week",
+      "interval": 1,
+      "schedule": {
+         "weekDays": ["Monday", "Wednesday", "Friday"],
+         "hours": [10, 22]
+      },
+      "count": 10,
+      "endTime": "2012-11-04"
+   },
+   "state": "Disabled",
+   "status": {
+      "lastExecutionTime": "2007-03-01T13:00:00Z",
+      "nextExecutionTime": "2007-03-01T14:00:00Z ",
+      "executionCount": 3,
+      "failureCount": 0,
+      "faultedCount": 0
+   }
+}
+```
+
+<a name="start-time"></a>
 
 ## <a name="starttime"></a>startTime
-Parametr „startTime” oznacza czas rozpoczęcia i umożliwia obiektowi wywołującemu określenie przesunięcia strefy czasowej w sieci w [formacie ISO-8601](http://en.wikipedia.org/wiki/ISO_8601).
 
-## <a name="action-and-erroraction"></a>action i errorAction
-Wartość parametru „action” odnosi się do akcji wywoływanej przy każdym wystąpieniu i opisuje typ wywołania usługi. Wskazana akcja będzie wykonywana zgodnie z harmonogramem. Usługa Scheduler obsługuje akcje HTTP, akcje kolejki magazynu oraz akcje tematu i kolejki magistrali usług.
+W obiekcie **startTime** możesz określić godzinę rozpoczęcia i przesunięcie strefy czasowej w [formacie ISO 8601](http://en.wikipedia.org/wiki/ISO_8601).
 
-Akcja w powyższym przykładzie to akcja HTTP. Poniżej znajduje się przykład akcji kolejki magazynu:
+<a name="action"></a>
 
-    {
-            "type": "storageQueue",
-            "queueMessage":
-            {
-                "storageAccount": "myStorageAccount",  // required
-                "queueName": "myqueue",                // required
-                "sasToken": "TOKEN",                   // required
-                "message":                             // required
-                    "My message body",
-            },
+## <a name="action"></a>action
+
+Twoje zadanie usługi Scheduler uruchamia **akcję** podstawową na podstawie określonego harmonogramu. Usługa Scheduler obsługuje akcje HTTP, akcje kolejki usługi Storage, akcje kolejki usługi Service Bus i akcje tematów usługi Service Bus. Jeśli **akcja** podstawowa zakończy się niepowodzeniem, usługa Scheduler może uruchomić pomocniczą akcję [**errorAction**](#errorAction), która obsługuje błąd. Obiekt **action** opisuje następujące elementy:
+
+* Typ usługi akcji
+* Szczegóły akcji
+* Alternatywną akcję **errorAction**
+
+Poprzedni przykład opisuje akcję HTTP. Oto przykład akcji kolejki usługi Storage:
+
+```json
+"action": {
+   "type": "storageQueue",
+   "queueMessage": {
+      "storageAccount": "myStorageAccount",  
+      "queueName": "myqueue",                
+      "sasToken": "TOKEN",                   
+      "message": "My message body"
     }
+}
+```
 
-Poniżej znajduje się przykład akcji tematu magistrali usług:
+Oto przykład akcji kolejki usługi Service Bus:
 
-  "action": { "type": "serviceBusTopic", "serviceBusTopicMessage": { "topicPath": "t1",  
-      "namespace": "mySBNamespace", "transportType": "netMessaging", // Możliwe opcje to netMessaging i AMQP "authentication": { "sasKeyName": "QPolicy", "type": "sharedAccessKey" }, "message": "Wybrany komunikat", "brokeredMessageProperties": {}, "customMessageProperties": { "appname": "FromScheduler" } }, }
+```json
+"action": {
+   "type": "serviceBusQueue",
+   "serviceBusQueueMessage": {
+      "queueName": "q1",  
+      "namespace": "mySBNamespace",
+      "transportType": "netMessaging", // Either netMessaging or AMQP
+      "authentication": {  
+         "sasKeyName": "QPolicy",
+         "type": "sharedAccessKey"
+      },
+      "message": "Some message",  
+      "brokeredMessageProperties": {},
+      "customMessageProperties": {
+         "appname": "FromScheduler"
+      }
+   }
+},
+```
 
-Poniżej znajduje się przykład akcji kolejki magistrali usług:
+Oto przykład akcji tematu usługi Service Bus:
 
-  "action": { "serviceBusQueueMessage": { "queueName": "q1",  
-      "namespace": "mySBNamespace", "transportType": "netMessaging", // Możliwe opcje to netMessaging i AMQP "authentication": {  
-        "sasKeyName": "QPolicy", "type": "sharedAccessKey" }, "message": "Wybrany komunikat",  
-      "brokeredMessageProperties": {}, "customMessageProperties": { "appname": "FromScheduler" } }, "type": "serviceBusQueue" }
+```json
+"action": {
+   "type": "serviceBusTopic",
+   "serviceBusTopicMessage": {
+      "topicPath": "t1",  
+      "namespace": "mySBNamespace",
+      "transportType": "netMessaging", // Either netMessaging or AMQP
+      "authentication": {
+         "sasKeyName": "QPolicy",
+         "type": "sharedAccessKey"
+      },
+      "message": "Some message",
+      "brokeredMessageProperties": {},
+      "customMessageProperties": {
+         "appname": "FromScheduler"
+      }
+   }
+},
+```
 
-Obiekt „errorAction” oznacza procedurę obsługi błędów, czyli akcję wywoływaną, gdy akcja podstawowa zakończy się niepowodzeniem. Ta zmienna umożliwia wywołanie punktu końcowego obsługi błędów lub wysłanie powiadomienia użytkownikowi. Można jej użyć w celu połączenia się z dodatkowym punktem końcowym, jeśli podstawowy punkt końcowy nie jest dostępny (np. w przypadku awarii w lokalizacji punktu końcowego) lub w celu powiadamiania punktu końcowego obsługi błędu. Podobnie jak akcja podstawowa, akcja w przypadku błędu także może charakteryzować się logiką prostą lub złożoną w oparciu o inne akcje. Aby dowiedzieć się, jak utworzyć token SAS, zapoznaj się z artykułem [Create and Use a Shared Access Signature](https://msdn.microsoft.com/library/azure/jj721951.aspx) (Tworzenie i używanie sygnatury dostępu współdzielonego).
+Aby uzyskać więcej informacji na temat tokenów sygnatury dostępu współdzielonego (SAS), zobacz [Autoryzacja za pomocą sygnatur dostępu współdzielonego](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+
+<a name="error-action"></a>
+
+## <a name="erroraction"></a>errorAction
+
+Jeśli **akcja** podstawowa zadania zakończy się niepowodzeniem, usługa Scheduler może uruchomić akcję **errorAction**, która obsługuje błąd. W **akcji** podstawowej można określić obiekt **errorAction**, aby usługa Scheduler mogła wywołać punkt końcowy obsługi błędów lub wysłać użytkownikowi powiadomienie. 
+
+Jeśli na przykład podstawowy punkt końcowy ulegnie awarii, możesz użyć obiektu **errorAction** w celu wywołania pomocniczego punktu końcowego lub w celu powiadomienia punktu końcowego obsługującego błędy. 
+
+Podobnie jak **akcja** podstawowa, akcja błędu może także charakteryzować się logiką prostą lub złożoną w oparciu o inne akcje. 
+
+<a name="recurrence"></a>
 
 ## <a name="recurrence"></a>recurrence
-Na cykl składa się kilka elementów:
 
-* Częstotliwość (frequency): minuta, godzina, dzień, tydzień, miesiąc lub rok  
-* Interwał (interval): odstęp czasu przy podanej częstotliwości dla cyklu  
-* Określony harmonogram (schedule): określ minuty, godziny, dni tygodnia, miesiące oraz dni miesiąca cyklu  
-* Liczba (count): liczba wystąpień  
-* Czas zakończenia (endTime): po jego upływie zadanie nie będzie już wykonywane  
+Zadanie jest uruchamiane cyklicznie, jeśli definicja JSON zadania zawiera obiekt **recurrence**, na przykład:
 
-Zadanie określa się jako cykliczne, jeśli jego definicja JSON zawiera obiekt cykliczny. Jeśli określono zarówno zmienną count, jak i endTime, uznawana jest ta reguła ukończenia, która zostanie zrealizowana jako pierwsza.
+```json
+"recurrence": {
+   "frequency": "Week",
+   "interval": 1,
+   "schedule": {
+      "hours": [10, 22],
+      "minutes": [0, 30],
+      "weekDays": ["Monday", "Wednesday", "Friday"]
+   },
+   "count": 10,
+   "endTime": "2012-11-04"
+},
+```
 
-## <a name="state"></a>state
-Stan zadania stanowi jedną z czterech wartości: „enabled” (włączone), „disabled” (wyłączone), „completed” (ukończone) lub „faulted” (wystąpił błąd). Zadania z żądaniami PUT i PATCH można ustawić tak, aby były one aktualizowane do stanu włączonego lub wyłączonego. Jeśli zadanie zostało wykonane (stan „completed”) lub jeśli wystąpił błąd (stan „faulted”), to stan zadania ma charakter ostateczny i nie można go zaktualizować (choć nadal można użyć żądania DELETE w celu usunięcia). Przykład właściwości stanu:
+| Właściwość | Wymagany | Wartość | Opis | 
+|----------|----------|-------|-------------| 
+| **frequency** | Tak, gdy jest używany obiekt **recurrence** | „Minute”, „Hour”, „Day”, „Week”, „Month”, „Year” | Jednostka czasu między wystąpieniami | 
+| **interval** | Nie | od 1 do 1000 (włącznie) | Dodatnia liczba całkowita określająca liczbę jednostek czasu między każdym wystąpieniem na podstawie właściwości **frequency** (częstotliwość) | 
+| **schedule** | Nie | Różna | Szczegółowe informacje dla bardziej złożonych i zaawansowanych harmonogramów. Zobacz właściwości **hours**, **minutes**, **weekDays**, **months** i **monthDays** | 
+| **hours** | Nie | Od 1 do 24 | Tablica z oznaczeniami godzin dla czasu uruchomienia zadania | 
+| **minutes** | Nie | Od 1 do 24 | Tablica z oznaczeniami minut dla czasu uruchomienia zadania | 
+| **months** | Nie | Od 1 do 12 | Tablica z miesiącami dla czasu uruchomienia zadania | 
+| **monthDays** | Nie | Różna | Tablica z dniami miesiąca dla czasu uruchomienia zadania | 
+| **weekDays** | Nie | „Monday”, „Tuesday”, „Wednesday”, „Thursday”, „Friday”, „Saturday” lub „Sunday” | Tablica z dniami tygodnia dla czasu uruchomienia zadania | 
+| **count** | Nie | <*none*> | Liczba cykli. Wartość domyślna to cykl nieskończony. Nie można używać jednocześnie właściwości **count** i **endTime**. Obowiązuje zasada, że uwzględniana jest wartość, która kończy zadanie jako pierwsza. | 
+| **endTime** | Nie | <*none*> | Data i godzina zakończenia cyklu. Wartość domyślna to cykl nieskończony. Nie można używać jednocześnie właściwości **count** i **endTime**. Obowiązuje zasada, że uwzględniana jest wartość, która kończy zadanie jako pierwsza. | 
+||||
 
-        "state": "disabled", // enabled, disabled, completed, or faulted
-Zadania ukończone oraz zadania z błędami są usuwane po upływie 60 dni.
+Aby uzyskać więcej informacji na temat tych elementów, zobacz [Tworzenie złożonych i zaawansowanych harmonogramów cyklicznych](../scheduler/scheduler-advanced-complexity.md).
 
-## <a name="status"></a>status
-Po rozpoczęciu zadania usługi Scheduler zostaną zwrócone informacje o bieżącym statusie zadania. Nie jest możliwe ustawienie tego obiektu przez użytkownika — jest on ustawiony przez system. Jednak wchodzi on w skład obiektu zadania (a nie oddzielnego powiązanego zasobu), dzięki czemu można łatwo sprawdzić status zadania.
-
-Status zadania obejmuje dane na temat czasu poprzedniego wykonania (jeśli miało miejsce), czasu następnego zaplanowanego wykonania (dotyczy zadań w toku) oraz liczby wykonań zadania.
+<a name="retry-policy"></a>
 
 ## <a name="retrypolicy"></a>retryPolicy
-Na wypadek niepowodzenia zadania usługi Scheduler można zdefiniować zasady ponawiania, aby określić, czy i w jaki sposób akcja zostanie ponowiona. Do tego celu służy obiekt **retryType** — w przypadku braku zasad ponawiania wartość tego obiektu to **none**, jak pokazano powyżej. Jeśli istnieją zasady ponawiania, należy ustawić wartość **fixed**.
 
-Aby ustawić zasady ponawiania, można określić dwa dodatkowe ustawienia: interwał ponawiania (**retryInterval**) i liczbę ponowień (**retryCount**).
+Dla przypadków, w których zadanie usługi Scheduler może zakończyć się niepowodzeniem, możesz skonfigurować zasadę ponawiania określającą, czy i w jaki sposób usługa Scheduler ponawia akcję. Domyślnie usługa Scheduler ponawia zadanie cztery razy w odstępach 30 sekund. Tę zasadę można zmienić tak, aby była bardziej lub mniej agresywna. Na przykład poniższa zasada ponawia akcję dwa razy dziennie:
 
-Interwał ponawiania określony z użyciem obiektu **retryInterval** to odstęp czasu dzielący kolejne próby. Jego wartość domyślna to 30 sekund. Minimalna wartość, jaką można skonfigurować, wynosi 15 sekund, a wartość maksymalna — 18 miesięcy. Ta wartość jest definiowana w formacie ISO 8601. Wartość liczby ponowień określa się z użyciem obiektu **retryCount**, którego wartość określa liczbę ponownych prób wykonania zadania. Jego wartość domyślna to 4, a wartość maksymalna to 20. Zarówno obiekt **retryInterval**, jak i **retryCount** są opcjonalne. Jeśli dla obiektu **retryType** wybrana zostanie opcja **fixed** i żadne wartości nie zostaną wyraźnie wskazane, obu obiektom zostaje przypisana wartość domyślna.
+```json
+"retryPolicy": { 
+   "retryType": "Fixed",
+   "retryInterval": "PT1D",
+   "retryCount": 2
+},
+```
+
+| Właściwość | Wymagany | Wartość | Opis | 
+|----------|----------|-------|-------------| 
+| **retryType** | Yes | **Fixed**, **None** | Określa, czy zasada ponawiania jest zdefiniowana (**fixed**), czy nie (**none**). | 
+| **retryInterval** | Nie | PT30S | Określa interwał i częstotliwość między ponownymi próbami w [formacie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Wartość minimalna wynosi 15 sekund, natomiast wartość maksymalna to 18 miesięcy. | 
+| **retryCount** | Nie | 4 | Określa liczbę ponownych prób. Wartość maksymalna to 20. | 
+||||
+
+Aby uzyskać więcej informacji, zobacz [Wysoka dostępność i niezawodność](../scheduler/scheduler-high-availability-reliability.md).
+
+<a name="status"></a>
+
+## <a name="state"></a>state
+
+Stan zadania może mieć wartość **Enabled** (włączone), **Disabled** (wyłączone), **Completed** (ukończone) lub **Faulted** (wystąpił błąd), na przykład: 
+
+`"state": "Disabled"`
+
+Aby zmienić stan zadania na **Enabled** lub **Disabled**, można użyć operacji PUT lub PATCH na tych zadaniach.
+Jeśli jednak zadanie ma stan **Completed** lub **Faulted**, nie można zaktualizować stanu, ale można wykonać operację DELETE na zadaniu. Usługa Scheduler usuwa zadania ukończone oraz zadania z błędami po upływie 60 dni. 
+
+<a name="status"></a>
+
+## <a name="status"></a>status
+
+Po rozpoczęciu zadania usługa Scheduler zwraca informacje dotyczące statusu zadania za pośrednictwem obiektu **status**, który kontroluje tylko usługa Scheduler. Jednakże możesz znaleźć obiekt **status** wewnątrz obiektu **job**. Poniżej przedstawiono informacje, które zawiera status zadania:
+
+* Czas poprzedniego wykonywania, jeśli istnieje
+* Czas następnego zaplanowanego wykonania dla zadań w toku
+* Liczba wykonań zadania
+* Liczba niepowodzeń, jeśli wystąpiły
+* Liczba błędów, jeśli wystąpiły
+
+Na przykład:
+
+```json
+"status": {
+   "lastExecutionTime": "2007-03-01T13:00:00Z",
+   "nextExecutionTime": "2007-03-01T14:00:00Z ",
+   "executionCount": 3,
+   "failureCount": 0,
+   "faultedCount": 0
+}
+```
 
 ## <a name="see-also"></a>Zobacz też
- [Co to jest usługa Scheduler?](scheduler-intro.md)
 
- [Rozpoczynanie pracy z usługą Scheduler w witrynie Azure Portal](scheduler-get-started-portal.md)
-
- [Plany i rozliczenia w usłudze Azure Scheduler](scheduler-plans-billing.md)
-
- [Tworzenie złożonych harmonogramów i zaawansowanych cykli z użyciem usługi Azure Scheduler](scheduler-advanced-complexity.md)
-
- [Dokumentacja interfejsu API REST usługi Azure Scheduler](https://msdn.microsoft.com/library/mt629143)
-
- [Dokumentacja poleceń cmdlet programu PowerShell dla usługi Azure Scheduler](scheduler-powershell-reference.md)
-
- [Wysoka dostępność i niezawodność usługi Azure Scheduler](scheduler-high-availability-reliability.md)
-
- [Limity, wartości domyślne i kody błędów usługi Azure Scheduler](scheduler-limits-defaults-errors.md)
-
- [Uwierzytelnianie połączeń wychodzących usługi Azure Scheduler](scheduler-outbound-authentication.md)
-
+* [Czym jest Azure Scheduler?](scheduler-intro.md)
+* [Pojęcia, terminologia oraz hierarchia jednostek](scheduler-concepts-terms.md)
+* [Tworzenie złożonych i zaawansowanych harmonogramów cyklicznych](scheduler-advanced-complexity.md)
+* [Limity, limity przydziału, wartości domyślne i kody błędów](scheduler-limits-defaults-errors.md)
+* [Dokumentacja interfejsu API REST usługi Azure Scheduler](https://docs.microsoft.com/rest/api/schedule)
+* [Dokumentacja poleceń cmdlet programu PowerShell dla usługi Azure Scheduler](scheduler-powershell-reference.md)
