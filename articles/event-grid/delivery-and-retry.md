@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 10/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 15d68e4da6dd03751300f87ea5830c2db0470b60
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 4d53c33daefaadb4c58ce500a5d564af7988b606
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604862"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077092"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Dostarczanie komunikatów siatki zdarzeń, a następnie spróbuj ponownie
 
@@ -22,7 +22,7 @@ Usługi Event Grid oferuje niezawodne dostarczanie. System ten zapewnia każdy k
 
 Obecnie usługa Event Grid wysyła każde zdarzenie indywidualnie do subskrybentów. Subskrybent otrzymuje tablicy o liczbie pojedyncze zdarzenie.
 
-## <a name="retry-intervals-and-duration"></a>Interwałami ponawiania prób i czas trwania
+## <a name="retry-schedule-and-duration"></a>Harmonogram ponownych prób i czas trwania
 
 Usługa Event Grid używa zasady ponawiania wykładniczego wycofywania, podczas dostarczania zdarzeń. Jeśli punkt końcowy przestaje odpowiadać, zwraca kod błędu usługi Event Grid ponawia próbę dostarczania według następującego harmonogramu:
 
@@ -34,7 +34,7 @@ Usługa Event Grid używa zasady ponawiania wykładniczego wycofywania, podczas 
 6. 30 minut
 7. 1 godzina
 
-Usługa Event Grid dodaje małe losowe do wszystkich interwałów ponawiania. Po upływie godziny dostarczania zdarzeń próba jest ponawiana co godzinę.
+Usługa Event Grid dodaje małe losowe do wszystkich kroków ponownych prób. Po upływie godziny dostarczania zdarzeń próba jest ponawiana co godzinę.
 
 Domyślnie usługi Event Grid wygasa wszystkie zdarzenia, które nie są dostarczane w ciągu 24 godzin. Możesz [Dostosuj zasady ponawiania](manage-event-delivery.md) podczas tworzenia subskrypcji zdarzeń. Podaj maksymalną liczbę prób dostarczenia (wartość domyślna to 30) i zdarzenia time to live (wartość domyślna to 1440 minut).
 

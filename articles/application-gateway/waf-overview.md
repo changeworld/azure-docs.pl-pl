@@ -4,14 +4,14 @@ description: Ten artykuł zawiera omówienie zapory aplikacji sieci web (WAF) w 
 services: application-gateway
 author: amsriva
 ms.service: application-gateway
-ms.date: 10/6/2017
+ms.date: 10/11/2018
 ms.author: amsriva
-ms.openlocfilehash: a16f8d988c900d015810bfe72b04ff5e9eb0682a
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 10a67eab142287cf9303e54005b6b167e9890df0
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815669"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068455"
 ---
 # <a name="web-application-firewall-waf"></a>Zapora aplikacji internetowej
 
@@ -47,21 +47,43 @@ Poniżej przedstawiono główne korzyści wynikające ze stosowania usługi Appl
 
 ## <a name="features"></a>Funkcje
 
-Zapora aplikacji internetowej jest domyślnie wstępnie skonfigurowana przy użyciu zestawu CRS 3.0, ale możesz używać wersji 2.2.9. Zestaw CRS 3.0 oferuje mniejszą liczbę wyników fałszywie dodatnich niż wersja 2.2.9. Umożliwiono [dostosowywanie reguł do określonych wymagań](application-gateway-customize-waf-rules-portal.md). Oto niektóre typowe luki w zabezpieczeniach w Internecie, przed którymi chroni zapora aplikacji internetowej:
+- Ochrona przed atakami polegającymi na iniekcji SQL
+- Ochrona przed atakami z użyciem skryptów wykorzystywanych w obrębie wielu witryn
+- Częste ataki w ramach sieci Web polegające na iniekcji poleceń, przemycaniu żądań HTTP, rozdzielaniu odpowiedzi HTTP i zdalnym dołączaniu plików
+- Ochrona przed naruszeniami protokołu HTTP
+- Ochrona przed nieprawidłowościami protokołu HTTP, takimi jak brakujące powiązania agenta i użytkownika hosta oraz akceptowanie nagłówków
+- Zapobieganie atakom z użyciem robotów, przeszukiwarek i skanerów
+- Wykrywanie typowych błędów konfiguracji aplikacji (czyli Apache, usługi IIS itp.)
 
-* Ochrona przed atakami polegającymi na iniekcji SQL
-* Ochrona przed atakami z użyciem skryptów wykorzystywanych w obrębie wielu witryn
-* Częste ataki w ramach sieci Web polegające na iniekcji poleceń, przemycaniu żądań HTTP, rozdzielaniu odpowiedzi HTTP i zdalnym dołączaniu plików
-* Ochrona przed naruszeniami protokołu HTTP
-* Ochrona przed nieprawidłowościami protokołu HTTP, takimi jak brakujące powiązania agenta i użytkownika hosta oraz akceptowanie nagłówków
-* Zapobieganie atakom z użyciem robotów, przeszukiwarek i skanerów
-* Wykrywanie typowych błędów konfiguracji aplikacji (czyli Apache, usługi IIS itp.)
+### <a name="public-preview-features"></a>Funkcje w publicznej wersji zapoznawczej
 
-Bardziej szczegółową listę reguł i metod ochrony przed nimi można znaleźć na następującej liście [podstawowych zestawów reguł](#core-rule-sets).
+Bieżący publiczny zapory aplikacji sieci Web w wersji zapoznawczej jednostki SKU incudes następujące funkcje:
+
+- **Limity rozmiaru żądań** — Zapora aplikacji sieci Web pozwala użytkownikom na Konfigurowanie ograniczeń rozmiar żądania w ramach dolną i górną granicę.
+- **Listy wykluczeń** — Zapora aplikacji sieci Web listy wykluczeń Zezwalaj użytkownikom na pominięcie niektórych atrybutów żądania oceny zapory aplikacji sieci Web. Typowym przykładem jest, że usługi Active Directory włożony tokenów, które są używane do uwierzytelniania lub pola hasła.
+
+Aby uzyskać więcej informacji na temat publicznej wersji zapoznawczej zapory aplikacji sieci Web, zobacz [internetowych limity rozmiaru żądanie zapory aplikacji oraz listy wykluczeń (publiczna wersja zapoznawcza)](application-gateway-waf-configuration.md).
+
+
+
+
 
 ### <a name="core-rule-sets"></a>Podstawowe zestawy reguł
 
 Usługa Application Gateway obsługuje dwa zestawy reguł: CRS 3.0 i CRS 2.2.9. Są to kolekcje reguł, które chronią aplikacje internetowe przed złośliwymi działaniami.
+
+Zapora aplikacji internetowej jest domyślnie wstępnie skonfigurowana przy użyciu zestawu CRS 3.0, ale możesz używać wersji 2.2.9. Zestaw CRS 3.0 oferuje mniejszą liczbę wyników fałszywie dodatnich niż wersja 2.2.9. Umożliwiono [dostosowywanie reguł do określonych wymagań](application-gateway-customize-waf-rules-portal.md). Oto niektóre typowe luki w zabezpieczeniach w Internecie, przed którymi chroni zapora aplikacji internetowej:
+
+- Ochrona przed atakami polegającymi na iniekcji SQL
+- Ochrona przed atakami z użyciem skryptów wykorzystywanych w obrębie wielu witryn
+- Częste ataki w ramach sieci Web polegające na iniekcji poleceń, przemycaniu żądań HTTP, rozdzielaniu odpowiedzi HTTP i zdalnym dołączaniu plików
+- Ochrona przed naruszeniami protokołu HTTP
+- Ochrona przed nieprawidłowościami protokołu HTTP, takimi jak brakujące powiązania agenta i użytkownika hosta oraz akceptowanie nagłówków
+- Zapobieganie atakom z użyciem robotów, przeszukiwarek i skanerów
+- Wykrywanie typowych błędów konfiguracji aplikacji (np. Apache, usługi IIS itp.)
+
+Bardziej szczegółowe listę reguł i ich ochrony w artykule [podstawowych zestawów reguł](#core-rule-sets).
+
 
 #### <a name="owasp30"></a>OWASP_3.0
 

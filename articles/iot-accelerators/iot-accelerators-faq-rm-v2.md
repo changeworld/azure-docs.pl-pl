@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: ba0d81761904be74632f8f0025488b7f501bd715
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 59b52163ba7f5abd53c60264f10f5352e3e4f6cd
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186003"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067792"
 ---
 # <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Często zadawane pytania dotyczące zdalnego monitorowania akceleratora rozwiązań
 
@@ -37,6 +37,10 @@ Każdej opcji wdrażania odnosi się do różnych potrzeb. Podstawowe wdrożenie
 ### <a name="how-do-i-configure-a-dynamic-map-on-the-dashboard"></a>Jak skonfigurować dynamiczne mapy na pulpicie nawigacyjnym?
 
 Aby uzyskać więcej informacji, zobacz [uaktualnienia mapy klawisz, aby wyświetlić urządzenia na mapie dynamiczne](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map).
+
+### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Gdzie można znaleźć informacje o poprzednią wersję rozwiązania do zdalnego monitorowania?
+
+Poprzednią wersję akceleratora rozwiązania monitorowania zdalnego jest znane jako rozwiązanie IoT zdalnego monitorowania pakietu wstępnie skonfigurowane. Można znaleźć dokumentację zarchiwizowane w [ https://docs.microsoft.com/previous-versions/azure/iot-suite/ ](https://docs.microsoft.com/previous-versions/azure/iot-suite/).
 
 ### <a name="next-steps"></a>Kolejne kroki
 

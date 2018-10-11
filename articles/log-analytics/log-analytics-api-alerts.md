@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 6aaf9b42677064b31c56be96775692c75812e145
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: b178744911d03547509de58e35be5cd99e046391
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044624"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079059"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Tworzenie i zarządzanie nimi reguły alertów w usłudze Log Analytics przy użyciu interfejsu API REST
 Log Analytics alertu interfejsu API REST umożliwia tworzenie i Zarządzanie alertami w Operations Management Suite (OMS).  Ten artykuł zawiera szczegółowe informacje o interfejsie API i przykłady do wykonywania różnych operacji.
@@ -138,6 +138,7 @@ Harmonogram powinien mieć jeden i tylko jeden Akcja alertu.  Akcje alertu mają
 |:--- |:--- |:--- |
 | Próg |Kryteria dla uruchomienia działania.| Wymagane dla każdego alertu przed lub po ich zostały rozszerzone na platformę Azure. |
 | Ważność |Etykieta służy do klasyfikowania alertów po ich wyzwoleniu.| Wymagane dla każdego alertu przed lub po ich zostały rozszerzone na platformę Azure. |
+| Pomiń |Opcję, aby wyłączyć powiadomienia z alertu. | Opcjonalne dla każdego alertu przed lub po ich zostały rozszerzone na platformę Azure. |
 | Grupy akcji |Identyfikatory ActionGroup platformy Azure, w których akcje wymagane są określone, takie jak - wiadomości E-mail, Menedżer SMSs, połączenia głosowe, elementy Webhook, elementy Runbook usługi Automation, łączniki ITSM itd.| Wymagane, gdy alerty zostały rozszerzone na platformę Azure|
 | Dostosuj akcje|Modyfikowanie standardowe dane wyjściowe akcji select z ActionGroup| Można opcjonalnie dla każdego alertu, po alerty zostały rozszerzone na platformę Azure. |
 | EmailNotification |Wysyłanie wiadomości e-mail do wielu odbiorców. | Nie jest to wymagane, jeśli alerty zostały rozszerzone na platformę Azure|
@@ -213,6 +214,37 @@ Za pomocą metody Put istniejący identyfikator akcji do modyfikowania akcją wa
 
     $thresholdWithSevJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
+
+#### <a name="suppress"></a>Pomiń
+Usługa log Analytics na podstawie zapytania, które alerty będą uruchamiane za każdym razem, gdy spełnione lub przekroczeniu progu. Oparte na logice podany w kwerendzie, może to spowodować wprowadzenie wyzwolony w przypadku serii interwałów alert i dlatego powiadomienia również wysyłane stale. Aby zapobiec taki scenariusz, użytkownik może ustawić opcję Pomiń poinstruowanie usługi Log Analytics poczekaj, aż określony przedział czasu, po którym powiadomień jest uruchamiany po raz drugi dla reguły alertu. Pomiń więc jeśli jest ustawiona na 30 minut; alert będą uruchamiane po raz pierwszy i wysyłać powiadomienia skonfigurowane. Ale Zaczekaj 30 minut, zanim zostaną ponownie użyte powiadomień dla reguły alertu. W okresie przejściowym będzie kontynuował działanie reguły alertu — tylko powiadomienia są pomijane przez usługę Log Analytics określony czas, niezależnie od tego, ile razy regułę alertu są uruchamiane w tym okresie.
+
+Pomiń właściwości usługi Log Analytics, reguła alertu jest określony, przy użyciu *ograniczania* wartość i pomijania okresu używania *DurationInMinutes* wartości.
+
+Następujący jest przykładowej odpowiedzi na akcję o tylko progu, ważność i Pomiń właściwość
+
+    "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
+    "properties": {
+        "Type": "Alert",
+        "Name": "My threshold action",
+        "Threshold": {
+            "Operator": "gt",
+            "Value": 10
+        },
+        "Throttling": {
+          "DurationInMinutes": 30
+        },
+        "Severity": "critical",
+        "Version": 1    }
+
+Za pomocą metody Put identyfikator unikatowy akcji do utworzenia nowej akcji dla harmonogramu o ważności.  
+
+    $AlertSuppressJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
+
+Za pomocą metody Put istniejący identyfikator akcji do modyfikowania akcją ważności dla harmonogramu.  Treść żądania musi zawierać element etag akcji.
+
+    $AlertSuppressJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
 
 #### <a name="action-groups"></a>Grupy akcji
 Wszystkie alerty na platformie Azure, użyj akcji grupy jako domyślnego mechanizmu do obsługi akcji. Grupy akcji możesz określić swoje działania raz i skojarz grupę akcji do wielu alertów — na platformie Azure. Bez konieczności wielokrotnego wielokrotnie zadeklarować te same akcje. Grupy akcji obsługują wiele akcji — w tym wiadomości e-mail, wiadomości SMS, połączenie głosowe, połączenia narzędzia ITSM, element Runbook usługi Automation, identyfikator URI elementu Webhook i innych. 

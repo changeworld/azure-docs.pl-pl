@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: makohli
-ms.openlocfilehash: 541ab91bf3a79b1b91fa237880f48bd8e0ccc152
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 2216b915c47ea05d3303ca02e51e976490ea36c6
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348076"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068359"
 ---
 # <a name="advisor-high-availability-recommendations"></a>Zalecenia dotyczące wysokiej dostępności usługi Advisor
 
@@ -82,7 +82,7 @@ Włącz [usuwania nietrwałego](https://docs.microsoft.com/azure/storage/blobs/s
 Aby uzyskać więcej informacji na temat zalecenia usługi Advisor zobacz:
 * [Wprowadzenie do usługi Azure Advisor](advisor-overview.md)
 * [Wprowadzenie do usługi Advisor](advisor-get-started.md)
-* [Rekomendacji dotyczących kosztu usługi Advisor](advisor-performance-recommendations.md)
+* [Rekomendacji dotyczących kosztu usługi Advisor](advisor-cost-recommendations.md)
 * [Zalecenia dotyczące wydajności usługi Advisor](advisor-performance-recommendations.md)
 * [Zalecenia dotyczące zabezpieczeń usługi Advisor](advisor-security-recommendations.md)
 

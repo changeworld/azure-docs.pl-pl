@@ -1,5 +1,5 @@
 ---
-title: Czynniki mające wpływ na wydajność programu Azure AD Connect
+title: Czynniki wpływające na wydajność programu Azure AD Connect
 description: W tym dokumencie wyjaśniono, jak różne czynniki mają wpływ na program Azure AD Connect, inicjowanie obsługi administracyjnej aparatu. Poniższe zagadnienia pomogą organizacji, aby zaplanować wdrożenie ich program Azure AD Connect, aby upewnić się, że spełnia on wymagania dotyczące ich synchronizacji.
 services: active-directory
 author: billmath
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
-ms.openlocfilehash: 6ad8e04a3cd61061b44ca9b6a216f92d69a70f6b
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 7cf0e2b211f9d34f6d8f4fe89a230d8a2e97512a
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902998"
+ms.locfileid: "49069017"
 ---
-# <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Czynniki mające wpływ na wydajność programu Azure AD Connect
+# <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Czynniki wpływające na wydajność programu Azure AD Connect
 
 Program Azure AD Connect synchronizuje usługi Active Directory do usługi Azure AD. Ten serwer jest kluczowym elementem przenoszenie tożsamości użytkowników w chmurze. Podstawowe czynniki, które mają wpływ na wydajność programu Azure AD Connect są:
 
@@ -62,15 +62,13 @@ Profil synchronizacji początkowej polega na odczytywanie połączonych katalogi
 
 ### <a name="delta-sync-profile"></a>Profil synchronizacji różnicowej
 
-Aby zoptymalizować proces synchronizacji to profilu uruchamiania tylko proces zmiany (tworzy, usuwa i aktualizuje) obiektów w połączonych katalogów, od momentu ostatniego procesu synchronizacji. Domyślnie profilu synchronizacja różnicowa jest uruchamiane co 30 minut. Organizacje powinny wszelkich starań, aby zachować czas potrzebny na poniżej 30 minut, aby upewnić się, że usługi Azure AD jest aktualny. Aby monitorować kondycję platformy Azure AD Connect, należy użyć [agenta monitorowania kondycji](how-to-connect-health-sync.md) aby zobaczyć wszystkie problemy procesu. Profil synchronizacji różnicowej obejmuje następujące kroki:
+Aby zoptymalizować proces synchronizacji to profilu uruchamiania tylko proces zmiany (tworzy, usuwa i aktualizuje) obiektów w połączonych katalogów, od momentu ostatniego procesu synchronizacji. Domyślnie profilu synchronizacja różnicowa jest uruchamiane co 30 minut. Organizacje powinny wszelkich starań, aby zachować czas potrzebny na poniżej 30 minut, aby upewnić się, że usługi Azure AD jest aktualny. Aby monitorować kondycję platformy Azure AD Connect, należy użyć [agenta monitorowania kondycji](how-to-connect-health-sync.md) aby zobaczyć wszystkie problemy z procesu. Profil synchronizacji różnicowej obejmuje następujące kroki:
 
 1. Import zmian na wszystkich łączników
 2. Synchronizacja różnicowa na wszystkich łączników
 3. Eksport na wszystkich łączników
 
 Scenariusz synchronizacji różnicowej organizacji typowego przedsiębiorstwa jest:
-
-
 
 - około 1% obiektów są usuwane.
 - około 1% obiektów są tworzone.
@@ -94,7 +92,7 @@ Następujące operacje są uwzględnione w cyklu pełnej synchronizacji:
 3. Eksport na wszystkich łączników
 
 > [!NOTE]
-> Starannego planowania jest wymagana podczas wykonywania aktualizacji zbiorczych do wielu obiektów w usłudze Active Directory lub w usłudze Azure AD. Aktualizacje zbiorcze spowoduje, że proces synchronizacji różnicowej trwać dłużej, podczas importowania, ponieważ zmieniono wiele obiektów. Importy długo może się zdarzyć, nawet wtedy, gdy aktualizacja zbiorcza nie ma wpływu procesu synchronizacji. Na przykład przypisywanie licencji do wielu użytkowników w usłudze Azure AD spowoduje, że cyklu długie importowania z usługi Azure AD, ale nie powoduje zmiany atrybutów w usłudze Active Directory.
+> Starannego planowania jest wymagana podczas wykonywania aktualizacji zbiorczych do wielu obiektów w usłudze Active Directory lub w usłudze Azure AD. Aktualizacje zbiorcze spowoduje, że proces synchronizacji różnicowej trwać dłużej, podczas importowania, ponieważ zmieniono wiele obiektów. Importy długo może się zdarzyć, nawet wtedy, gdy aktualizacja zbiorcza nie wpływają procesu synchronizacji. Na przykład przypisywanie licencji do wielu użytkowników w usłudze Azure AD spowoduje, że cyklu długie importowania z usługi Azure AD, ale nie powoduje zmiany atrybutów w usłudze Active Directory.
 
 ### <a name="synchronization"></a>Synchronizacja
 
@@ -103,7 +101,7 @@ W czasie wykonywania procesu synchronizacji ma następujące cechy wydajności:
 * Synchronizacja jest pojedynczego wątku, co oznacza, że aparat inicjowania obsługi administracyjnej nie wszystkie przetwarzania równoległego profile uruchamiania połączonych katalogów, obiektów lub atrybutów.
 * Czas importowania rośnie liniowo wraz ze liczbę obiektów, które są synchronizowane. Na przykład jeśli obiekty 10 000 10 minut, aby zaimportować, następnie 20 000 obiektów potrwa około 20 minut na tym samym serwerze.
 * Eksport jest również liniowego.
-* Synchronizacja będzie rosnąć wykładniczo na podstawie liczby obiektów z odwołaniami do innych obiektów. Członkostwa w grupie grup zagnieżdżonych się głównym ten wpływ na wydajność, ponieważ elementy członkowskie odnoszą się do obiektów użytkowników lub innych grup. Te odwołania, należy znaleźć i w odwołaniu do rzeczywistych obiektów w MV, aby zakończyć cykl synchronizacji.
+* Synchronizacja będzie rosnąć wykładniczo na podstawie liczby obiektów z odwołaniami do innych obiektów. Członkostwa w grupie grup zagnieżdżonych się głównym ten wpływ na wydajność, ponieważ składowe odnoszą się do obiektów użytkowników lub innych grup. Te odwołania, należy znaleźć i w odwołaniu do rzeczywistych obiektów w MV, aby zakończyć cykl synchronizacji.
 
 ### <a name="filtering"></a>Filtrowanie
 
@@ -147,7 +145,7 @@ Wydajność programu Azure AD Connect jest zależna od wydajności połączonych
 
 ### <a name="active-directory-factors"></a>Active Directory czynniki
 
-Jak wspomniano wcześniej, liczba obiektów do zaimportowania znacznie wpływa wydajności. [Sprzęt i wymagania wstępne programu Azure AD Connect](how-to-connect-install-prerequisites.md) konturu warstwami sprzętu, w zależności od rozmiaru wdrożenia. Program Azure AD Connect obsługują tylko określonych topologii zgodnie z opisem w [topologie obsługiwane w programie Azure AD Connect](plan-connect-topologies.md). Istnieją, bez optymalizacji wydajności i zalecenia dotyczące topologii nieobsługiwany.
+Jak wspomniano wcześniej, liczba obiektów do zaimportowania ma wpływ na wydajność znacznie. [Sprzęt i wymagania wstępne programu Azure AD Connect](how-to-connect-install-prerequisites.md) konturu warstwami sprzętu, w zależności od rozmiaru wdrożenia. Program Azure AD Connect obsługują tylko określonych topologii zgodnie z opisem w [topologie obsługiwane w programie Azure AD Connect](plan-connect-topologies.md). Istnieją, bez optymalizacji wydajności i zalecenia dotyczące topologii nieobsługiwany.
 
 Upewnij się, że serwer usługi Azure AD Connect spełnia wymagania sprzętowe na podstawie rozmiaru usługi Active Directory, który chcesz zaimportować. Niepoprawna lub powolne łączności między serwerem usługi Azure AD Connect i kontrolery domeny usługi Active Directory może spowolnić importu.
 
@@ -183,10 +181,10 @@ Aby zoptymalizować wydajność wdrożenia usługi Azure AD Connect, należy wzi
 - Użyj [zalecana konfiguracja sprzętu](how-to-connect-install-prerequisites.md) oparte na rozmiarze wdrożenia serwera usługi Azure AD Connect.
 - Podczas uaktualniania program Azure AD Connect w przypadku wdrożeń na dużą skalę, należy wziąć pod uwagę przy użyciu [metody migracji swing](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version#swing-migration), aby upewnić się, że masz co najmniej przestojów i uzyskać większą niezawodność. 
 - Na użytek bazy danych SQL, aby uzyskać najlepszą wydajność zapisu dysków SSD.
-- Zakres usługi Active Directory, tylko do obiektów, które musi być obsługiwana w usłudze Azure AD, przy użyciu domeny, jednostki Organizacyjnej lub filtrowanie atrybutów filtru.
+- Zakres usługi Active Directory, obejmujący tylko obiekty, które należy aprowizować w usłudze Azure AD, przy użyciu domeny, jednostki Organizacyjnej lub filtrowanie atrybutów filtru.
 - Jeśli potrzebujesz zmienić domyślne reguły przepływu atrybutu, najpierw skopiować regułę, a następnie zmień kopii i Wyłącz istniejącą regułę. Pamiętaj, aby ponownie uruchomić pełną synchronizację.
 - Zaplanuj czas wystarczający dla pełnej synchronizacji początkowej profilu uruchamiania.
-- Dokładamy wszelkich starań, synchronizacja różnicowa cykl zostanie ukończone w ciągu 30 minut. Jeśli profil synchronizacja różnicowa nie wykona w ciągu 30 minut, zmodyfikuj domyślna częstotliwość synchronizacji obejmujący cykl synchronizacji różnicowej kompletny.
+- Dokładamy wszelkich starań zakończyć cykl synchronizacji różnicowej w ciągu 30 minut. Jeśli profil synchronizacja różnicowa nie wykona w ciągu 30 minut, zmodyfikuj domyślna częstotliwość synchronizacji obejmujący cykl synchronizacji różnicowej kompletny.
 - Monitor usługi [program Azure AD Connect sync kondycji](how-to-connect-health-agent-install.md) w usłudze Azure AD.
 
 ## <a name="next-steps"></a>Kolejne kroki

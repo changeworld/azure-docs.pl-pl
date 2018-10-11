@@ -16,14 +16,15 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 292783d3710914af27870b1ae5259b43e284242d
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 1fa5a2f9d63dfd9af006285beec256395d7ac668
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/10/2018
-ms.locfileid: "48904318"
+ms.locfileid: "49069509"
 ---
-# <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Można skonfigurować okresów istnienia tokenu w usłudze Azure Active Directory (publiczna wersja zapoznawcza)
+# <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Można skonfigurować okresów istnienia tokenu w usłudze Azure Active Directory (wersja zapoznawcza)
+
 Można określić okres istnienia tokenu wystawionego przez usługę Azure Active Directory (Azure AD). Możesz ustawić okresów istnienia tokenu dla wszystkich aplikacji w Twojej organizacji, dla aplikacji wielodostępnych (dla wielu organizacji) lub dla określonej jednostki usługi w Twojej organizacji.
 
 > [!IMPORTANT]
@@ -47,7 +48,7 @@ Można ustawić zasady okres istnienia tokenu dla tokenów odświeżania, tokeny
 Klienci używają tokenów dostępu do uzyskania dostępu do chronionego zasobu. Token dostępu może służyć tylko dla określonej kombinacji użytkowników, klient i zasobów. Tokeny dostępu nie można odwołać i obowiązują do momentu wygaśnięcia ich. Złośliwy aktora, który ma uzyskać token dostępu można go użyć dla zakresu cały okres ich istnienia. Dostosowywanie okresu istnienia tokenu dostępu jest kompromis między zwiększanie wydajności systemu i zwiększenie ilości czasu, że klient zachowuje dostępu po wyłączeniu konta użytkownika. Ulepszony system wydajność jest osiągana, zmniejszając liczbę razy, gdy klient musi uzyskać tokenu dostępu od nowa.  Wartość domyślna to 1 godzina — po 1 godzinie, klient musi być tokenu odświeżania (zwykle w trybie dyskretnym) uzyskać nowy token odświeżania i tokenu dostępu. 
 
 ### <a name="refresh-tokens"></a>Tokenów odświeżania
-Gdy klient uzyskuje token dostępu, aby uzyskać dostęp do chronionego zasobu, klient również odbiera token odświeżania. Token odświeżania jest używany do uzyskiwania dostępu do nowych/odświeżania tokenu pary, po upływie bieżącego tokenu dostępu. Token odświeżania jest powiązany z kombinacją użytkownika i klienta. Token odświeżania może być [w dowolnej chwili odebrać](v1-id-and-access-tokens.md#token-revocation), a ważności tokenu jest sprawdzana za każdym razem, gdy token jest używany.  
+Gdy klient uzyskuje token dostępu, aby uzyskać dostęp do chronionego zasobu, klient również odbiera token odświeżania. Token odświeżania jest używany do uzyskiwania dostępu do nowych/odświeżania tokenu pary, po upływie bieżącego tokenu dostępu. Token odświeżania jest powiązany z kombinacją użytkownika i klienta. Token odświeżania może być [w dowolnej chwili odebrać](access-tokens.md#token-revocation), a ważności tokenu jest sprawdzana za każdym razem, gdy token jest używany.  
 
 Ważne jest do rozróżnienia między klientami poufnymi i klientów publicznych, jak ma to wpływ na jak długo można użyć tokenów odświeżania. Aby uzyskać więcej informacji na temat różnych typów klientów, zobacz [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1).
 

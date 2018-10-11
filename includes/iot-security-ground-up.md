@@ -1,19 +1,19 @@
 ---
 title: Plik dyrektywy include
 description: Plik dyrektywy include
-services: iot-suite
-author: dominicbetts
-ms.service: iot-suite
+services: iot-fundamentals
+author: robinsh
+ms.service: iot-fundamentals
 ms.topic: include
 ms.date: 04/24/2018
-ms.author: dobett
+ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 181432c3050bbc614898b1ddf779bc90239a35be
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 8137a292045377c5dccb69c21a8118d0dc17874e
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39189340"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069948"
 ---
 # <a name="internet-of-things-security-from-the-ground-up"></a>Bezpieczeństwo Internetu rzeczy od podstaw
 
@@ -62,7 +62,9 @@ Zasady kontroli dostępu Centrum IoT platformy Azure w chmurze Włącz aktywacji
 Funkcje zabezpieczeń urządzeń:
 
 * Urządzenia nie akceptują niechcianej komunikacji z sieci połączeń. Wszystkie połączenia i trasy one ustanowić w sposób umożliwiający tylko ruchu wychodzącego. Dla urządzenia, aby odebrać polecenie z zaplecza urządzenia muszą inicjować połączenia, aby sprawdzić, czy istnieją oczekujące polecenia do przetworzenia. Po bezpiecznie nawiązaniu połączenia między urządzeniem i Centrum IoT Hub komunikatów z chmury do urządzenia i urządzenia do chmury mogą być wysyłane sposób niewidoczny dla użytkownika.
+
 * Urządzenia tylko połączyć się z lub ustanowić trasy, aby dobrze znane usługi, z którymi one równorzędne, takie jak usługi Azure IoT Hub.
+
 * Uwierzytelnianie na poziomie systemu i uwierzytelniania używają tożsamościach poszczególnych urządzeń, dzięki czemu poświadczenia dostępu i uprawnień w pobliżu — natychmiast odwoływalny.
 
 ### <a name="secure-connectivity"></a>Łączność z protokołem Secure
@@ -76,7 +78,9 @@ Skalowalność wymaga możliwości bezpiecznie współpracować z szerokiej gamy
 Funkcje zabezpieczeń dodatkowego połączenia:
 
 * Ścieżka komunikacji między urządzeniami i usługi Azure IoT Hub lub między bramami i usługi Azure IoT Hub, jest zabezpieczony za pomocą usługi Azure IoT Hub dokonało uwierzytelnienia przy użyciu protokołu X.509 przy użyciu standardowych zabezpieczeń TLS (Transport Layer).
+
 * W celu ochrony urządzeń przed niechciane połączenia przychodzące, usługi Azure IoT Hub nie otworzy wszystkie połączenia z urządzeniem. Urządzenie inicjuje wszystkie połączenia.
+
 * Usługa Azure IoT Hub trwale przechowuje komunikaty dla urządzeń i czeka na podłączenie urządzenia. Te polecenia są przechowywane przez dwa dni, konfigurowanie urządzeń, które sporadycznie, łączenie się ze względu na wątpliwości zasilaniem lub łącznością, aby otrzymać te polecenia. Usługa Azure IoT Hub utrzymuje kolejki na urządzenie, dla każdego urządzenia.
 
 ### <a name="secure-processing-and-storage-in-the-cloud"></a>Zabezpieczanie przetwarzania i magazynowania w chmurze
@@ -100,8 +104,13 @@ Akceleratory rozwiązań kompilacja w środki bezpieczeństwa, zgodnie z projekt
 Każdy akcelerator rozwiązań tworzy wystąpienia usług platformy Azure, takich jak:
 
 * [**Usługa Azure IoT Hub**](https://azure.microsoft.com/services/iot-hub/): bramy łączącej z chmury do urządzeń. Dzięki obsłudze uwierzytelniania poszczególnych urządzeń pomaga zabezpieczyć rozwiązanie sieci, można skalować do milionów połączeń dla jednej Centrum i przetwarzania dużych ilości danych.
+
 * [**Usługa Azure Cosmos DB**](https://azure.microsoft.com/services/cosmos-db/): skalowalne, w pełni indeksowane usługa bazy danych dla danych z częściową strukturą, zarządzającą metadanych dla urządzeń możesz aprowizować, takie jak atrybuty, konfiguracji i właściwości zabezpieczeń. Usługa Azure Cosmos DB oferuje przetwarzanie o wysokiej wydajności i dużej przepustowości, niezależny od schematów indeksowanie danych i interfejs zaawansowanych zapytań SQL.
+
 * [**Usługa Azure Stream Analytics**](https://azure.microsoft.com/services/stream-analytics/): strumienia w czasie rzeczywistym, przetwarzanie w chmurze, która pozwala na szybkie tworzenie i wdrażanie rozwiązania analizy ekonomiczne zdobywania w czasie rzeczywistym z urządzeń, czujników, infrastruktury i aplikacji . Dane z tej w pełni zarządzanej usługi można skalować do żadnego woluminu przy zachowaniu wysokiej przepływności, małego opóźnienia i elastyczność.
+
 * [**Usługi Azure App Services**](https://azure.microsoft.com/services/app-service/): Platforma usług w chmurze do tworzenia zaawansowanych aplikacji internetowych i mobilnych łączących dane w dowolnym miejscu; w chmurze lub lokalnie. Twórz interesujące aplikacje mobilne dla systemów iOS, Android i Windows. Integracja z oprogramowaniem jako usługa (SaaS) oraz aplikacje dla przedsiębiorstw z łącznością poza pole do wielu usług w chmurze i aplikacje dla przedsiębiorstw. Kod w ulubionym języku i środowisku IDE — .NET, Node.js, PHP, Python lub Java — tworzenie aplikacji sieci web i interfejsy API szybciej niż kiedykolwiek wcześniej.
+
 * [**Usługa Logic Apps**](https://azure.microsoft.com/services/app-service/logic/): funkcji Logic Apps w usłudze Azure App Service ułatwia integrowanie rozwiązania IoT do istniejących systemów line-of-business oraz automatyzowanie procesów przepływu pracy. Usługa Logic Apps umożliwia deweloperom projektowanie przepływów pracy rozpoczynających się od wyzwalacza, a następnie wykonanie serii czynności — reguły i akcje, które umożliwia zaawansowane łączniki integracji z procesów biznesowych. Usługa Logic Apps oferuje out-of--box łączności z obszernym ekosystemem SaaS i opartych na chmurze i aplikacji lokalnych.
-* [**Usługa Azure blob storage**](https://azure.microsoft.com/services/storage/): przechowywanie w chmurze niezawodnego i ekonomicznego danych, które urządzenia są wysyłane do chmury.
+
+* [**Usługa Azure Blob storage**](https://azure.microsoft.com/services/storage/): przechowywanie w chmurze niezawodnego i ekonomicznego danych, które urządzenia są wysyłane do chmury.

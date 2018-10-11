@@ -5,16 +5,16 @@ description: Dowiedz się, jak rozpoznawać mowę w języku C++ w systemie Windo
 services: cognitive-services
 author: wolfma61
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: e6f8b8f2a3bcdf78de28bddc73502872e851da12
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 12faf7ae7e45e6f6ede739b24d9ead28ff26313e
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434300"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886333"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Przewodnik Szybki start: Rozpoznawanie mowy w języku C++ w systemie Windows przy użyciu zestawu Speech SDK
 
@@ -89,7 +89,7 @@ Po zainstalowaniu pakietu w konsoli Menedżera pakietów zostanie wyświetlone p
 
    ![Zrzut ekranu aplikacji Visual Studio z wyróżnioną opcją Rozpocznij debugowanie](media/sdk/qs-cpp-windows-07-start-debugging.png)
 
-1. Zostanie wyświetlone okno konsoli z monitem o wypowiedź ustną. Wypowiedz frazę lub zdanie w języku angielskim. Wypowiedź zostanie przesłana do usługi rozpoznawania mowy i nastąpi jest transkrypcja na tekst, który zostanie wyświetlony w tym samym oknie.
+1. Zostanie wyświetlone okno konsoli z monitem o wypowiedź ustną. Wypowiedz zwrot lub zdanie w języku angielskim. Wypowiedź zostanie przesłana do usługi rozpoznawania mowy i nastąpi jest transkrypcja na tekst, który zostanie wyświetlony w tym samym oknie.
 
    ![Zrzut ekranu przedstawiający dane wyjściowe konsoli po pomyślnym ukończeniu rozpoznawania](media/sdk/qs-cpp-windows-08-console-output-release.png)
 
@@ -103,6 +103,6 @@ Poszukaj tego przykładu w folderze `quickstart/cpp-windows`.
 
 ## <a name="see-also"></a>Zobacz też
 
-- [Translate speech](how-to-translate-speech-csharp.md) (Tłumaczenie mowy)
-- [Customize acoustic models](how-to-customize-acoustic-models.md) (Dostosowywanie modeli akustycznych)
-- [Dostosowywanie modeli językowych](how-to-customize-language-model.md)
+- [Translate speech with the Cognitive Services Speech SDK for C#](how-to-translate-speech-csharp.md) (Tłumaczenie mowy za pomocą zestawu Speech SDK usługi Cognitive Services dla języka C#)
+- [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
+- [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)

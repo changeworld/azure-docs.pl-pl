@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/08/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 59b637e6887a645430d902cd846cacda13b14cfe
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6042aa4dd8b26a0986737edc3c89b8e165ae970a
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972814"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067707"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą interfejsu wiersza polecenia platformy Azure w usłudze Azure Stack
 
@@ -168,7 +168,8 @@ Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
 
 1. Zaloguj się do środowiska usługi Azure Stack przy użyciu `az login` polecenia. Możesz zalogować się do środowiska usługi Azure Stack jako użytkownik lub [nazwy głównej usługi](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects). 
 
-   * Zaloguj się jako *użytkownika*: można określić nazwę użytkownika i hasło bezpośrednio w ramach `az login` polecenie lub uwierzytelniania za pomocą przeglądarki. Musisz wykonać jego, jeśli konto ma włączonego uwierzytelniania wieloskładnikowego.
+    * Środowiska usługi AAD
+      * Zaloguj się jako *użytkownika*: można określić nazwę użytkownika i hasło bezpośrednio w ramach `az login` polecenie lub uwierzytelniania za pomocą przeglądarki. Musisz wykonać jego, jeśli konto ma włączonego uwierzytelniania wieloskładnikowego.
 
       ```azurecli
       az login \
@@ -179,7 +180,7 @@ Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
       > [!NOTE]
       > Jeśli Twoje konto użytkownika ma włączonego uwierzytelniania wieloskładnikowego, możesz użyć `az login command` bez podawania `-u` parametru. Uruchamiając polecenie udostępnia adres URL i kodu, które muszą użyć do uwierzytelniania.
    
-   * Zaloguj się jako *nazwy głównej usługi*: przed zalogowaniem, [utworzyć nazwę główną usługi za pośrednictwem witryny Azure portal](azure-stack-create-service-principals.md) lub interfejsu wiersza polecenia i przypisz mu roli. Teraz Zaloguj się przy użyciu następującego polecenia:
+      * Zaloguj się jako *nazwy głównej usługi*: przed zalogowaniem, [utworzyć nazwę główną usługi za pośrednictwem witryny Azure portal](azure-stack-create-service-principals.md) lub interfejsu wiersza polecenia i przypisz mu roli. Teraz Zaloguj się przy użyciu następującego polecenia:
 
       ```azurecli
       az login \
@@ -188,6 +189,22 @@ Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
         -u <Application Id of the Service Principal> \
         -p <Key generated for the Service Principal>
       ```
+    * Usługi AD FS środowisk
+
+        * Zaloguj się jako *nazwy głównej usługi*: 
+          1.    Przygotuj plik PEM, który ma być używany dla logowania jednostki usługi.
+                * Na komputerze klienckim, w której utworzono podmiot zabezpieczeń, eksportowanie certyfikatu nazwy głównej usługi jako plik pfx przy użyciu klucza prywatnego (znajdujący się w cert: \CurrentUser\My; nazwa certyfikatu ma taką samą nazwę jak podmiot zabezpieczeń).
+
+                *   Konwertuj plik pfx na pem (Użyj biblioteki OpenSSL narzędzie).
+
+          1.    Zaloguj się do interfejsu wiersza polecenia. :
+                ```azurecli
+                az login --service-principal \
+                 -u <Client ID from the Service Principal details> \
+                 -p <Certificate's fully qualified name. Eg. C:\certs\spn.pem>
+                 --tenant <Tenant ID> \
+                 --debug 
+                ```
 
 ## <a name="test-the-connectivity"></a>Testowanie łączności
 

@@ -10,12 +10,12 @@ ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: 9d09115d3d55d5ba44d35cb0b2009d800ab42a2b
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 63c8ebe8eda049a770cecfd445757e4b5a2de1ea
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886655"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067045"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Obsługa języka i regionu dla interfejsu API analizy tekstu
 
@@ -50,11 +50,13 @@ Obsługa języków początkowo jest udostępniona w wersji zapoznawczej, tłumac
 | Portugalski (Portugalia) | `pt-PT`| ✔        |  ✔          |       |`pt` również zaakceptowana|
 | Portugalski (Brazylia)   | `pt-BR`|          |  ✔   |         |     |
 | Rosyjski     | `ru`          | ✔ \*     | ✔           |             |     |
-| Hiszpański     | `es`          | ✔        | ✔           |     |     |
+| Hiszpański     | `es`          | ✔        | ✔           |   ✔ \*\*      |     |
 | Szwedzki     | `sv`          | ✔ \*     | ✔           |             |     |
 | Turecki     | `tr`          | ✔ \*     |             |             |  |
 
 \* Wskazuje obsługę języka w wersji zapoznawczej
+
+\*\* Wyodrębnianie jednostek dla języka hiszpańskiego jest dostępna tylko w [(w wersji 2.1 — wersja zapoznawcza)](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)
 
 ## <a name="see-also"></a>Zobacz także
 

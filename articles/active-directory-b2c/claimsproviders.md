@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: a9159ade6e16c1d14149197e85cee8720dd98b09
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: b226aeac86084c56a49d00c2a2f8deddaf7b0f68
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381490"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068778"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders 
 
@@ -52,7 +52,7 @@ Dostawcy oświadczeń zawiera zbiór [profile techniczne](technicalprofiles.md).
 
 | Element | Wystąpienia | Opis |
 | ------- | ---------- | ----------- |
-| Domain | 0:1 | Ciąg, który zawiera nazwę domeny dla dostawcy oświadczeń. Na przykład jeśli Twój dostawca oświadczeń zawiera profilu technicznego usługi Facebook, nazwa domeny jest Facebook.com. Ta nazwa domeny jest używana we wszystkich profilach techniczne zdefiniowane w dostawcy oświadczeń, chyba że zostaną zastąpione profilu technicznego. |
+| Domain | 0:1 | Ciąg, który zawiera nazwę domeny dla dostawcy oświadczeń. Na przykład jeśli Twój dostawca oświadczeń zawiera profilu technicznego usługi Facebook, nazwa domeny jest Facebook.com. Ta nazwa domeny jest używana we wszystkich profilach techniczne zdefiniowane w dostawcy oświadczeń, chyba że zostaną zastąpione profilu technicznego. Nazwa domeny może także odwoływać się **domain_hint**. Aby uzyskać więcej informacji, zobacz **przekierowania Zaloguj się do dostawcy społecznościowych** części [skonfigurować bezpośrednie logowanie przy użyciu usługi Azure Active Directory B2C](direct-signin.md). |
 | Nazwa wyświetlana | 0:1 | Ciąg, który zawiera nazwę dostawcy oświadczeń, które mogą być wyświetlane użytkownikom. |
 | [TechnicalProfiles](technicalprofiles.md) | 0:1 | Zbiór profilów Technical Preview obsługiwana przez dostawcę oświadczeń |
 

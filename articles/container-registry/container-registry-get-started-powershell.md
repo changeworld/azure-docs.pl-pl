@@ -2,19 +2,18 @@
 title: Szybki start — tworzenie rejestru prywatnego platformy Docker na platformie Azure przy użyciu programu PowerShell
 description: Szybko naucz się tworzyć prywatny rejestr kontenerów platformy Docker na platformie Azure przy użyciu programu PowerShell.
 services: container-registry
-author: marsma
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 05/08/2018
-ms.author: marsma
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: e6c3330519692eb829803af2582b711be2fb3efe
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: fe21ab3e29b7a4cbf204be82246d37a4b91128e4
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43092882"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856687"
 ---
 # <a name="quickstart-create-an-azure-container-registry-using-powershell"></a>Szybki start: tworzenie usługi Azure Container Registry przy użyciu programu PowerShell
 

@@ -3,18 +3,16 @@ title: Wdrażanie kontenerów przy użyciu narzędzia Helm w usłudze Kubernetes
 description: Użyj narzędzia pakietu Narzędzia Helm do wdrażania kontenerów w klastrze usługi Azure Kubernetes Service (AKS)
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 10/01/2018
 ms.author: iainfou
-ms.custom: mvc
-ms.openlocfilehash: dd2deba25615373765dd3492d03c1ba547c8ba8c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d95f7ad337e52aed47656c2ea60e6b193a427946
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39055138"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068581"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Instalowanie aplikacji za pomocą narzędzia Helm w usłudze Azure Kubernetes Service (AKS)
 
@@ -26,32 +24,11 @@ W tym artykule przedstawiono sposób konfigurowania i używania narzędzia Helm 
 
 W krokach szczegółowo opisanych w tym dokumencie przyjęto założenie, został utworzony klaster usługi AKS i ustalonymi `kubectl` połączenia z klastrem. Jeśli potrzebujesz tych elementów znajduje się pozycja [szybkiego startu usługi AKS][aks-quickstart].
 
-## <a name="install-helm-cli"></a>Zainstaluj narzędzie Helm interfejsu wiersza polecenia
-
-Interfejs wiersza polecenia narzędzia Helm to klient, który działa w systemie deweloperskim i pozwala na uruchamianie, zatrzymywanie i zarządzać aplikacjami za pomocą narzędzia Helm.
-
-Jeśli używasz usługi Azure Cloud Shell, interfejs wiersza polecenia narzędzia Helm jest już zainstalowana. Aby zainstalować interfejs wiersza polecenia narzędzia Helm na komputerze Mac, należy użyć `brew`. Aby uzyskać więcej informacji, zobacz opcje [instalowanie narzędzia Helm][helm-install-options].
-
-```console
-brew install kubernetes-helm
-```
-
-Dane wyjściowe:
-
-```
-==> Downloading https://homebrew.bintray.com/bottles/kubernetes-helm-2.9.1.high_sierra.bottle.tar.gz
-######################################################################## 100.0%
-==> Pouring kubernetes-helm-2.9.1.high_sierra.bottle.tar.gz
-==> Caveats
-Bash completion has been installed to:
-  /usr/local/etc/bash_completion.d
-==> Summary
-🍺  /usr/local/Cellar/kubernetes-helm/2.9.1: 50 files, 66.2MB
-```
+Należy również narzędzia Helm zainstalować interfejs wiersza polecenia, klient, który działa w systemie deweloperskim i pozwala na uruchamianie, zatrzymywanie i zarządzać aplikacjami za pomocą narzędzia Helm. Jeśli używasz usługi Azure Cloud Shell, interfejs wiersza polecenia narzędzia Helm jest już zainstalowana. Aby, zobacz instrukcje dotyczące instalacji na lokalnym platformie [instalowanie narzędzia Helm][helm-install].
 
 ## <a name="create-a-service-account"></a>Tworzenie konta usługi
 
-Przed wdrożeniem narzędzia Helm w klastrze z włączoną funkcją RBAC, potrzebujesz konta usługi i powiązania roli usługi Tiller. Aby uzyskać więcej informacji na temat zabezpieczenia Helm / Tiller w RBAC włączone klastra, zobacz [Tiller, przestrzenie nazw i RBAC][tiller-rbac]. Jeśli klaster nie jest włączone RBAC, Pomiń ten krok.
+Przed wdrożeniem narzędzia Helm w klastrze AKS z włączoną funkcją RBAC, potrzebujesz konta usługi i powiązania roli usługi Tiller. Aby uzyskać więcej informacji na temat zabezpieczenia Helm / Tiller w RBAC włączone klastra, zobacz [Tiller, przestrzenie nazw i RBAC][tiller-rbac]. Jeśli klaster AKS nie jest włączone RBAC, Pomiń ten krok.
 
 Utwórz plik o nazwie `helm-rbac.yaml` i skopiuj do poniższego kodu YAML:
 
@@ -76,10 +53,10 @@ subjects:
     namespace: kube-system
 ```
 
-Tworzenie konta usługi i powiązanie roli za pomocą `kubectl create` polecenia:
+Tworzenie konta usługi i powiązanie roli za pomocą `kubectl apply` polecenia:
 
 ```console
-kubectl create -f helm-rbac.yaml
+kubectl apply -f helm-rbac.yaml
 ```
 
 ## <a name="secure-tiller-and-helm"></a>Zabezpieczanie Tiller i Helm
@@ -96,7 +73,7 @@ Aby wdrożyć podstawowe Tiller w klastrze AKS, wykonaj [polecenia helm init] [ 
 helm init --service-account tiller
 ```
 
-Jeśli skonfigurowano protokół TLS/SSL między Helm i Tiller zapewniają `--tiller-tls-` parametrów i nazwy własne certyfikaty, jak pokazano w poniższym przykładzie:
+Jeśli skonfigurowano protokół TLS/SSL między Helm i Tiller zapewniają `--tiller-tls-*` parametrów i nazwy własne certyfikaty, jak pokazano w poniższym przykładzie:
 
 ```console
 helm init \

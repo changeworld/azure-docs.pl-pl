@@ -16,12 +16,12 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 56b0f0ce39d421e80890ad0dbad9b7cfe0812cdb
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: c42e8978a94730669f3c3f879d1d26c4426bd9da
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902879"
+ms.locfileid: "49079142"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Porady: dostarczanie opcjonalnych oświadczeń do aplikacji usługi Azure AD (publiczna wersja zapoznawcza)
 
@@ -35,18 +35,22 @@ Ta funkcja jest używana przez deweloperów aplikacji, aby określić, które o�
 
 Listę standardowych oświadczeń i jak są używane w tokenach, zobacz [podstawy tokeny wystawione przez usługę Azure AD](v1-id-and-access-tokens.md). 
 
-Jednym z celów [punktu końcowego v2.0 usługi Azure AD](active-directory-appmodel-v2-overview.md) jest mniejsze rozmiary tokenu, aby zapewnić optymalną wydajność przez klientów.  W wyniku kilku oświadczenia, wcześniej uwzględnione w dostępu i identyfikator tokenów nie są już dostępne w wersji 2.0 tokenów i musi monit o wpisanie specjalnie dla poszczególnych aplikacji.  
+Jednym z celów [punktu końcowego v2.0 usługi Azure AD](active-directory-appmodel-v2-overview.md) jest mniejsze rozmiary tokenu, aby zapewnić optymalną wydajność przez klientów.  W wyniku kilku oświadczenia, wcześniej uwzględnione w dostępu i identyfikator tokenów nie są już dostępne w wersji 2.0 tokenów i musi monit o wpisanie specjalnie dla poszczególnych aplikacji.
+
+  
 
 **Tabela 1: zastosowanie**
 
 | Typ konta | Punkt końcowy w wersji 1.0 | Punkt końcowy v2.0  |
 |--------------|---------------|----------------|
 | Osobiste konto Microsoft  | N/d - użyty RPS biletów | Obsługa dostępne |
-| Konto Azure AD            | Obsługiwane                          | Obsługiwane      |
+| Konto Azure AD          | Obsługiwane                          | Obsługiwane z zastrzeżeniami      |
+
+> [!Important]
+> W tej chwili aplikacji obsługujących konta osobiste i usługi Azure AD (za pośrednictwem [portalu rejestracji aplikacji](https://apps.dev.microsoft.com)) nie można użyć oświadczeń opcjonalne.  Jednak aplikacje zarejestrowane dla właśnie Azure AD przy użyciu punktu końcowego v2.0 można uzyskać opcjonalnych oświadczenia, które są wymagane w manifeście.
 
 ## <a name="standard-optional-claims-set"></a>Zestaw standardowych opcjonalnych oświadczeń
-
-Zestaw oświadczeń opcjonalne, domyślnie dostępne do użycia przez aplikacje są wymienione poniżej.  Aby dodać opcjonalny oświadczenia niestandardowe dla swojej aplikacji, zobacz [rozszerzenia katalogów](active-directory-optional-claims.md#Configuring-custom-claims-via-directory-extensions)poniżej. 
+Zestaw oświadczeń opcjonalne, domyślnie dostępne do użycia przez aplikacje są wymienione poniżej.  Aby dodać opcjonalny oświadczenia niestandardowe dla swojej aplikacji, zobacz [rozszerzenia katalogów](active-directory-optional-claims.md#Configuring-custom-claims-via-directory-extensions)poniżej.  Należy pamiętać, że podczas dodawania oświadczeń **token dostępu**, zostaną zastosowane do tokenów dostępu do żądanego *dla* aplikacji (internetowego interfejsu API), nie tych *przez* aplikacji.  Dzięki temu niezależnie od tego klienta, uzyskiwanie dostępu do interfejsu API, odpowiednie dane są obecne w tokenie dostępu, których używają do uwierzytelniania względem interfejsu API.
 
 > [!Note]
 >Większość te oświadczenia mogą być dołączane w tokenów Jwt dla wersji 1.0 i tokenów w wersji 2.0, ale nie tokeny SAML, z wyjątkiem w przypadku, gdy wskazane w kolumnie Typ tokenu.  Ponadto podczas opcjonalnych oświadczeń tylko obecnie są obsługiwane dla użytkowników usługi AAD, zarządzanych kont usług pomocy technicznej jest dodawany.  Gdy MSA ma opcjonalnych oświadczeń obsługuje punktu końcowego v2.0, kolumna typu użytkownika określa, czy roszczenie jest dostępna dla użytkowników usługi AAD lub zarządzanych kont usług.  
@@ -241,7 +245,7 @@ Brak dostępnych wiele opcji do aktualizacji właściwości na konfigurację to�
             ]
       }
       ```
-      W tym przypadku różne oświadczenia opcjonalne zostały dodane do każdego rodzaju token, który aplikacja może odbierać. Tokeny Identyfikatora będą teraz zawierać nazwę UPN dla użytkowników federacyjnych w pełnej postaci (`<upn>_<homedomain>#EXT#@<resourcedomain>`). Tokeny dostępu otrzyma oświadczenia auth_time. Tokeny SAML będzie teraz zawierać rozszerzenia schematu katalogu skypeId (w tym przykładzie identyfikator aplikacji dla tej aplikacji jest ab603c56068041afb2f6832e2a17e237).  Tokeny SAML udostępni Identyfikator Skype jako `extension_skypeId`.
+      W tym przypadku różne oświadczenia opcjonalne zostały dodane do każdego rodzaju token, który aplikacja może odbierać. Tokeny Identyfikatora będą teraz zawierać nazwę UPN dla użytkowników federacyjnych w pełnej postaci (`<upn>_<homedomain>#EXT#@<resourcedomain>`). Tokeny dostępu, które inne komputery klienckie zażądają tej aplikacji będzie teraz obejmować oświadczenia auth_time. Tokeny SAML będzie teraz zawierać rozszerzenia schematu katalogu skypeId (w tym przykładzie identyfikator aplikacji dla tej aplikacji jest ab603c56068041afb2f6832e2a17e237).  Tokeny SAML udostępni Identyfikator Skype jako `extension_skypeId`.
 
 1. Po zakończeniu aktualizowania manifestu kliknij **Zapisz** można zapisać manifestu
 

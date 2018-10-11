@@ -5,17 +5,17 @@ services: azure-stack
 keywords: ''
 author: mattbriggs
 manager: femila
-ms.author: brenduns
 ms.date: 08/02/2018
 ms.topic: article
 ms.service: azure-stack
+ms.author: mabrigg
 ms.reviewer: scottnap
-ms.openlocfilehash: 50fe3c0c7fda745047c71afb8eedf7fa8806c4ec
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 1863236a51d89dd311cd8aacfcd737faddf21ab0
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42055502"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079195"
 ---
 # <a name="considerations-for-azure-stack-networking"></a>Zagadnienia dotyczące sieci usługi Azure Stack
 
@@ -40,7 +40,7 @@ Ten artykuł zawiera przegląd unikatową zagadnienia dotyczące sieci usługi A
 |  | Konfiguracje adresów IP zestawu skalowania | Obsługiwane | Nie jest jeszcze obsługiwany. |
 |  | Usługi dostępu do prywatnych (podsieć) | Obsługiwane | Nie jest jeszcze obsługiwany. |
 |  | Punkty końcowe usługi | Obsługiwane w przypadku wewnętrznego połączenie (innych niż Internet) z usługami Azure. | Nie jest jeszcze obsługiwany. |
-| Obsługiwany jest tylko protokół IPv4. | Zasad punktów końcowych usługi | Obsługiwane | Nie jest jeszcze obsługiwany. |
+| Obsługiwany jest tylko protokół IPv4. | Zasady punktów końcowych usługi | Obsługiwane | Nie jest jeszcze obsługiwany. |
 |  | Tunele usługi | Obsługiwane | Nie jest jeszcze obsługiwany.  |
 | Grupy zabezpieczeń sieci | Rozszerzone reguły zabezpieczeń | Obsługiwane | Nie jest jeszcze obsługiwany. |
 |  | Efektywne reguły zabezpieczeń | Obsługiwane | Nie jest jeszcze obsługiwany. |

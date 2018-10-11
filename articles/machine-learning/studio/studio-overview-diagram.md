@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 04/04/2017
-ms.openlocfilehash: f1364435d2f7b50c642d1bb5b41708ec52bda533
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 240be0e7dc199a84130739244743d245b780b608
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946208"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902080"
 ---
 # <a name="overview-diagram-of-azure-machine-learning-studio-capabilities"></a>Diagram przeglądowy możliwości usługi Azure Machine Learning Studio
 Diagram **Przegląd możliwości usługi Microsoft Azure Machine Learning Studio** przedstawia ogólny przegląd sposobu użycia usługi Machine Learning Studio w celu opracowania modelu analizy predykcyjnej i operacjonalizacji go w chmurze Azure.
@@ -47,7 +47,7 @@ Pobierz diagram **Przegląd możliwości usługi Microsoft Azure Machine Learnin
 
 
 ## <a name="more-help-with-machine-learning-studio"></a>Więcej pomocy na temat usługi Machine Learning Studio
-* Przegląd usługi Microsoft Azure Machine Learning zawiera temat [Wprowadzenie do uczenia maszynowego na platformie Microsoft Azure](what-is-machine-learning.md)
+* Przegląd usługi Microsoft Azure Machine Learning zawiera temat [Wprowadzenie do uczenia maszynowego na platformie Microsoft Azure](../service/overview-what-is-azure-ml.md)
 * Przegląd usługi Machine Learning Studio zawiera temat [Co to jest usługa Azure Machine Learning Studio?](what-is-ml-studio.md).
 * Szczegółowe omówienie algorytmów uczenia maszynowego dostępnych w usłudze Machine Learning Studio zawiera temat [How to choose algorithms for Microsoft Azure Machine Learning](algorithm-choice.md) (Jak wybierać algorytmy w usłudze Microsoft Azure Machine Learning).
 

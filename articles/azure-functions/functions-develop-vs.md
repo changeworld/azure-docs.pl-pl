@@ -8,14 +8,14 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 63a2d5a62cf2cdfa2a1a08c56ef5a87aaaa13529
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 3ba8919a499da0db8e2deb626d8cf4d5067c1c25
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395547"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069181"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Tworzenie funkcji platformy Azure przy użyciu programu Visual Studio  
 
@@ -198,6 +198,20 @@ Można również zarządzać ustawienia aplikacji w jednym z tych sposobów:
 * [Za pomocą witryny Azure portal](functions-how-to-use-azure-function-app-settings.md#settings).
 * [Za pomocą `--publish-local-settings` opcja publikowania w podstawowych narzędzi usługi Azure Functions](functions-run-local.md#publish).
 * [Przy użyciu wiersza polecenia platformy Azure](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). 
+
+## <a name="monitoring-functions"></a>Funkcje monitorowania
+
+Jest to zalecany sposób Monitoruj wykonywanie funkcji na platformie Azure dzięki integracji z usługą Azure Application Insights. Po utworzeniu aplikacji funkcji w witrynie Azure portal, ta Integracja jest wykonywane domyślnie. Jednak po utworzeniu aplikacji funkcji podczas publikowania w programie Visual Studio nie jest wykonywane integracji w Twojej aplikacji funkcji na platformie Azure. Zamiast tego należy pobrać wbudowanych rejestrowania, która nie jest zalecane.
+
+Aby włączyć usługę Application Insights dla aplikacji funkcji na platformie Azure:
+
+1. Utwórz wystąpienie usługi Application Insights w [witryny Azure portal](https://portal.azure.com) i skopiuj klucz instrumentacji. Aby dowiedzieć się więcej, zobacz temat [ręcznie połączyć zasobu usługi App Insights](functions-monitoring.md#manually-connect-an-app-insights-resource).  
+
+1. Dodaj aplikację, ustawienie o nazwie `APPINSIGHTS_INSTRUMENTATIONKEY` do ustawień aplikacji funkcji na platformie Azure, zgodnie z opisem w [ustawień aplikacji funkcji](#function-app-settings). To ustawienie aplikacji zawiera klucz instrumentacji, który został utworzony w poprzednim kroku.
+
+1. Usuń `AzureWebJobsDashboard` ustawienia aplikacji na podstawie aplikacji funkcji na platformie Azure, która wyłącza wbudowane funkcje rejestrowania.  
+
+Aby dowiedzieć się więcej, zobacz [monitora usługi Azure Functions](functions-monitoring.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -5,16 +5,16 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: e5518ebb2985635507368943774e6be803cfffa8
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 1a8609dbf5fa1c1e7d5f4e35b081ecaa09994eb6
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409059"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068081"
 ---
-# <a name="manually-create-and-use-an-azure-files-share-in-azure-kubernetes-service-aks"></a>Ręcznie utworzyć i używać udziału plików platformy Azure w usłudze Azure Kubernetes Service (AKS)
+# <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Ręcznie utworzyć i korzystać z woluminu z udziałem plików platformy Azure w usłudze Azure Kubernetes Service (AKS)
 
 Oparte na kontenerach aplikacje często muszą uzyskać dostęp do utrwalania danych w woluminie danych zewnętrznych. Jeśli wielu zasobnikach równoczesny dostęp do tego samego woluminu magazynu, można użyć usługi Azure Files, połączyć się przy użyciu [protokołu bloku komunikatów serwera (SMB)][smb-overview]. W tym artykule pokazano, jak ręcznie utworzyć udział plików platformy Azure i dołączyć go do zasobników w usłudze AKS.
 
@@ -65,10 +65,10 @@ Zanotuj nazwę konta magazynu i klucz podanym na końcu danych wyjściowych skry
 
 Kubernetes wymaga poświadczeń dostępu do udziału plików utworzonych w poprzednim kroku. Te poświadczenia są przechowywane w [wpisie tajnym rozwiązania Kubernetes][kubernetes-secret], który odwołuje się podczas tworzenia zasobnika Kubernetes.
 
-Użyj `kubectl create secret` polecenie, aby utworzyć wpis tajny. Poniższy przykład obejmuje tworzenie udostępnionego o nazwie *azure-secret*. Zastąp *STORAGE_ACCOUNT_NAME* nazwą konta magazynu w danych wyjściowych poprzedniego kroku i *STORAGE_ACCOUNT_KEY* przy użyciu klucza magazynu:
+Użyj `kubectl create secret` polecenie, aby utworzyć wpis tajny. Poniższy przykład obejmuje tworzenie udostępnionego o nazwie *azure-secret* i wypełnia *azurestorageaccountname* i *azurestorageaccountkey* z poprzedniego kroku. Aby użyć istniejącego konta usługi Azure storage, należy podać nazwę konta i klucz.
 
 ```console
-kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=STORAGE_ACCOUNT_KEY
+kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$AKS_PERS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY
 ```
 
 ## <a name="mount-the-file-share-as-a-volume"></a>Instalowanie udziału plików jako wolumin
@@ -79,15 +79,22 @@ Aby zainstalować udział plików platformy Azure, w tym zasobniku, skonfiguruj 
 apiVersion: v1
 kind: Pod
 metadata:
- name: azure-files-pod
+  name: mypod
 spec:
- containers:
-  - image: microsoft/sample-aks-helloworld
-    name: azure
+  containers:
+  - image: nginx:1.15.5
+    name: mypod
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
     volumeMounts:
       - name: azure
         mountPath: /mnt/azure
- volumes:
+  volumes:
   - name: azure
     azureFile:
       secretName: azure-secret
@@ -101,7 +108,32 @@ Użyj `kubectl` polecenie, aby utworzyć zasobnik.
 kubectl apply -f azure-files-pod.yaml
 ```
 
-Masz teraz uruchomiony zasobnik z udziału plików platformy Azure zainstalowany w lokalizacji */mnt/azure*. Możesz użyć `kubectl describe pod azure-files-pod` Aby sprawdzić udział jest pomyślnie zainstalowany.
+Masz teraz uruchomiony zasobnik z udziału plików platformy Azure zainstalowany w lokalizacji */mnt/azure*. Możesz użyć `kubectl describe pod mypod` Aby sprawdzić udział jest pomyślnie zainstalowany. Następujące dane wyjściowe skróconego przykładu przedstawia wolumin zainstalowany w kontenerze:
+
+```
+Containers:
+  mypod:
+    Container ID:   docker://86d244cfc7c4822401e88f55fd75217d213aa9c3c6a3df169e76e8e25ed28166
+    Image:          nginx:1.15.5
+    Image ID:       docker-pullable://nginx@sha256:9ad0746d8f2ea6df3a17ba89eca40b48c47066dfab55a75e08e2b70fc80d929e
+    State:          Running
+      Started:      Mon, 08 Oct 2018 19:28:34 +0000
+    Ready:          True
+    Mounts:
+      /mnt/azure from azure (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-z5sd7 (ro)
+[...]
+Volumes:
+  azure:
+    Type:        AzureFile (an Azure File Service mount on the host and bind mount to the pod)
+    SecretName:  azure-secret
+    ShareName:   aksshare
+    ReadOnly:    false
+  default-token-z5sd7:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-z5sd7
+[...]
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

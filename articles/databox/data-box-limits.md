@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/05/2018
+ms.date: 10/10/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: fe42380288c0f139a2bae80a12f0ebc428a4c286
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d1aeabd2de529d2c6b3159d9cd65996fb5096d0a
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993086"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069373"
 ---
 # <a name="azure-data-box-limits"></a>Limity usługi Azure Data Box
 
@@ -35,7 +35,7 @@ Te limity wziąć pod uwagę wdrażania i obsługi usługi Microsoft Azure Data 
 
 ## <a name="data-box-limits"></a>Ogranicza urządzenia Data Box
 
-- Urządzenie Data Box można przechowywać maksymalnie 5 milionów plików.
+- Urządzenie Data Box można przechowywać maksymalnie 500 milionów plików.
 
 ## <a name="azure-storage-limits"></a>Limity usługi Azure storage
 
@@ -44,7 +44,7 @@ W tej sekcji opisano limity dla usługi Azure Storage i wymagane konwencje nazew
 Aby uzyskać najnowsze informacje o limitach magazynu platformy Azure i najlepsze rozwiązania dotyczące nazewnictwa udziałów, kontenerów i plików przejdź do:
 
 - [Nazewnictwo i odwołania do kontenerów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
-- [Nazewnictwo i odwoływanie się do akcji](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
+- [Nazywanie i przywoływanie udziałów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
 - [Blokowe obiekty BLOB i konwencje blob strony](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 > [!IMPORTANT]

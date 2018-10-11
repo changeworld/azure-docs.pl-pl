@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: c223e8fb000686aedefa1c02e93c1c8cbb30ec73
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 0c2adcfa4e11e444f66e1a9c04bea6e3d352f117
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888297"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077730"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Kup i skonfiguruj certyfikat SSL dla usługi Azure App Service
 
@@ -198,14 +198,6 @@ Aby zamiast tego ręcznie odnowić certyfikat, kliknij przycisk **odnowienie rę
 
 > [!NOTE]
 > Odnowionego certyfikatu nie jest automatycznie powiązany z aplikacją, czy ręcznie odnowić automatyczne odnawianie. Aby powiązać go z aplikacją, zobacz [odnawiania certyfikatów](./app-service-web-tutorial-custom-ssl.md#renew-certificates). 
-
-<a name="notrenewed"></a>
-## <a name="why-is-my-certificate-not-auto-renewed"></a>Dlaczego mój certyfikat nie zostanie automatycznie odnowiony?
-
-Jeśli certyfikat protokołu SSL jest skonfigurowany do automatycznego odnawiania, ale nie są automatycznie odnawiane, może być weryfikacji domeny oczekujące. Należy pamiętać, że: 
-
-- Firma GoDaddy, która generuje certyfikaty usługi App Service, wymaga weryfikacji domeny raz na dwa lata. Administrator domeny otrzymuje wiadomość e-mail co trzy lata próbę weryfikacji domeny. Nie można sprawdzić wiadomości e-mail lub zweryfikuj domenę zapobiega certyfikatu usługi App Service są automatycznie odnawiane. 
-- Ze względu na zmiany w zasadach GoDaddy wszystkie certyfikaty usługi App Service wydane przed 1 marca 2017 r. wymagają reverification domeny w momencie odnawiania dalej (nawet jeśli automatyczne odnowienie jest włączona dla certyfikatu). Sprawdź pocztę e-mail i ukończyć weryfikacji tej jednorazowej domeny w taki sposób, aby kontynuować z automatycznego odnawiania certyfikatu usługi App Service. 
 
 ## <a name="more-resources"></a>Więcej zasobów
 

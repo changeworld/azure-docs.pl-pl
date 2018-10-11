@@ -1,19 +1,19 @@
 ---
 title: Plik dyrektywy include
 description: Plik dyrektywy include
-services: iot-suite
-author: dominicbetts
-ms.service: iot-suite
+services: iot-fundamentals
+author: robinsh
+ms.service: iot-fundamentals
 ms.topic: include
-ms.date: 04/24/2018
-ms.author: dobett
+ms.date: 08/07/2018
+ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 1137f1dac9570b56dc202194e5f94dfd72c31c9f
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 64c7525be9bd44b0d33fdcd8da717e9fe893e057
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39030022"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49070189"
 ---
 # <a name="internet-of-things-security-architecture"></a>Architektura zabezpieczeń Internet of Things
 
@@ -185,7 +185,7 @@ W każdej kategorii, opisane w architekturze usługi Azure IoT, w tym przykładz
 
 Poniżej przedstawiono kilka przykładów zagrożenia w tej kategorii:
 
-Fałszowanie: Osoba atakująca może wyodrębnić materiału klucza kryptograficznego z urządzenia, albo w oprogramowania lub poziomie sprzętu, a następnie dostępu do systemu za pomocą innego urządzenia fizycznego lub wirtualnego z tożsamością urządzenia materiału klucza jest zajęty z.
+**Fałszowanie**: osoba atakująca może wyodrębnić materiału klucza kryptograficznego z urządzenia, na poziomie oprogramowania lub sprzętu, a następnie ma dostęp do systemu za pomocą innego urządzenia fizycznego lub wirtualnego z tożsamością urządzenia materiału klucza została pobrana z.
 
 **Odmowa usługi**: urządzenie może być renderowany zdolny do funkcjonowania lub komunikacji przez nie zakłócają częstotliwości lub cuttinga przewodów. Na przykład kamery nadzoru, który miał jego zasilania lub połączenia sieciowego celowo wycinane nie danych raportu, w ogóle.
 

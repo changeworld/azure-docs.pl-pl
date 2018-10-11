@@ -10,63 +10,122 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2018
+ms.date: 10/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9cb9fcbb6750bf854cca74ed6bd08a91caed9e26
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 06719f3a92dae805081ea85c346df97ebed0e0dc
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717594"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078074"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Użyj usługi Azure Key Vault, aby przekazać wartość parametru secure podczas wdrażania
 
 Gdy potrzebujesz przekazać wartość bezpieczną (na przykład hasło) jako parametr podczas wdrażania można pobrać wartości z [usługi Azure Key Vault](../key-vault/key-vault-whatis.md). Możesz pobrać wartość przez odwołanie się do magazynu kluczy i klucz tajny w pliku parametrów. Wartość nigdy nie jest uwidaczniana, ponieważ możesz odwoływać się tylko do jego identyfikator magazynu kluczy. Magazyn kluczy może znajdować się w innej subskrypcji niż grupa zasobów, które są wdrażane do.
 
-## <a name="enable-access-to-the-secret"></a>Zapewnianie dostępu do klucza tajnego
-
-Istnieją dwie ważne warunki, które muszą istnieć w celu uzyskania dostępu do magazynu kluczy podczas wdrażania szablonu:
-
-1. Właściwości magazynu kluczy `enabledForTemplateDeployment` musi być `true`.
-2. Użytkownik, o których wdrożenie szablonu musi mieć dostęp do klucza tajnego. Użytkownik musi mieć `Microsoft.KeyVault/vaults/deploy/action` uprawnień dla usługi key vault. [Właściciela](../role-based-access-control/built-in-roles.md#owner) i [Współautor](../role-based-access-control/built-in-roles.md#contributor) zarówno rola udzielenia tego dostępu.
-
-Korzystając z usługi Key Vault z szablonem [zarządzanej aplikacji](../managed-applications/overview.md), musi udzielić dostępu do **dostawcy zasobów urządzenia** nazwy głównej usługi. Aby uzyskać więcej informacji, zobacz [wpisu tajnego usługi Key Vault dostęp, podczas wdrażania usługi Azure Managed Applications](../managed-applications/key-vault-access.md).
-
-
 ## <a name="deploy-a-key-vault-and-secret"></a>Wdrażanie usługi key vault i klucz tajny
 
-Aby utworzyć magazyn kluczy i klucz tajny, należy użyć wiersza polecenia platformy Azure lub programu PowerShell. Należy zauważyć, że magazyn kluczy jest włączone dla wdrożenia szablonu. 
+Aby utworzyć magazyn kluczy i klucz tajny, należy użyć wiersza polecenia platformy Azure lub programu PowerShell. `enabledForTemplateDeployment` jest to właściwość magazynu kluczy. Dostęp do kluczy tajnych wewnątrz tej usługi Key Vault z wdrożenia usługi Resource Manager `enabledForTemplateDeployment` musi być `true`. 
+
+Poniższy skrypt programu Azure PowerShell i wiersza polecenia platformy Azure przykład przedstawia sposób tworzenia magazynu kluczy i klucz tajny.
 
 W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 
 ```azurecli-interactive
-vaultname={your-unique-vault-name}
-password={password-value}
+keyVaultName='{your-unique-vault-name}'
+resourceGroupName='{your-resource-group-name}'
+location='centralus'
+userPrincipalName='{your-email-address-associated-with-your-subscription}'
 
-az group create --name examplegroup --location 'South Central US'
+# Create a resource group
+az group create --name $resourceGroupName --location $location
+
+# Create a Key Vault
 az keyvault create \
-  --name $vaultname \
-  --resource-group examplegroup \
-  --location 'South Central US' \
+  --name $keyVaultName \
+  --resource-group $resourceGroupName \
+  --location $location \
   --enabled-for-template-deployment true
-az keyvault secret set --vault-name $vaultname --name examplesecret --value $password
+az keyvault set-policy --upn $userPrincipalName --name $keyVaultName --secret-permissions set delete get list
+
+# Create a secret with the name, vmAdminPassword
+password=$(openssl rand -base64 32)
+echo $password
+az keyvault secret set --vault-name $keyVaultName --name 'vmAdminPassword' --value $password
 ```
 
 W przypadku programu PowerShell użyj polecenia:
 
-```powershell
-$vaultname = "{your-unique-vault-name}"
-$password = "{password-value}"
+```azurepowershell-interactive
+$keyVaultName = "{your-unique-vault-name}"
+$resourceGroupName="{your-resource-group-name}"
+$location='Central US'
+$userPrincipalName='{your-email-address-associated-with-your-subscription}'
 
-New-AzureRmResourceGroup -Name examplegroup -Location "South Central US"
+New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
 New-AzureRmKeyVault `
-  -VaultName $vaultname `
-  -ResourceGroupName examplegroup `
-  -Location "South Central US" `
+  -VaultName $keyVaultName `
+  -resourceGroupName $resourceGroupName `
+  -Location $location `
   -EnabledForTemplateDeployment
+Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userPrincipalName -PermissionsToSecrets set,delete,get,list
+
+$password = openssl rand -base64 32
+echo $password
 $secretvalue = ConvertTo-SecureString $password -AsPlainText -Force
-Set-AzureKeyVaultSecret -VaultName $vaultname -Name "examplesecret" -SecretValue $secretvalue
+Set-AzureKeyVaultSecret -VaultName $keyVaultName -Name "vmAdminPassword" -SecretValue $secretvalue
 ```
+
+Jeśli uruchomienie skryptu programu PowerShell, poza usłudze Cloud Shell, użyj następującego polecenia, można zamiast niego wygenerować hasła:
+
+```powershell
+Add-Type -AssemblyName System.Web
+[System.Web.Security.Membership]::GeneratePassword(16,3)
+```
+
+Dla przy użyciu szablonu usługi Resource Manager: zobacz [samouczek: integracja usługi Azure Key Vault we wdrożeniu szablonu usługi Resource Manager](./resource-manager-tutorial-use-key-vault.md#prepare-the-key-vault).
+
+> [!NOTE]
+> Każda usługa ma określone wymagania dotyczące hasła. Na przykład wymagania dotyczące maszyny wirtualnej platformy Azure znajduje się w temacie [jakie są wymagania dotyczące hasła, podczas tworzenia maszyny Wirtualnej?](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
+
+## <a name="enable-access-to-the-secret"></a>Zapewnianie dostępu do klucza tajnego
+
+Inne niż ustawienie `enabledForTemplateDeployment` do `true`, użytkownik wdrożenie szablonu musi mieć `Microsoft.KeyVault/vaults/deploy/action` uprawnień dla zakresu, który zawiera usługi Key Vault, łącznie z grupy zasobów i usługi Key Vault. [Właściciela](../role-based-access-control/built-in-roles.md#owner) i [Współautor](../role-based-access-control/built-in-roles.md#contributor) zarówno rola udzielenia tego dostępu. Jeśli utworzysz usługę Key Vault, jesteś właścicielem, dzięki czemu masz uprawnienia. W przypadku usługi Key Vault w ramach różnych subskrypcji, właściciel usługi Key Vault musi grand dostępu.
+
+Poniższa procedura pokazuje, jak utworzyć rolę z minimalną permssion i przypisywania użytkownika
+1. Utwórz plik JSON definicji roli niestandardowej:
+
+    ```json
+    {
+      "Name": "Key Vault resource manager template deployment operator",
+      "IsCustom": true,
+      "Description": "Lets you deploy a resource manager template with the access to the secrets in the Key Vault.",
+      "Actions": [
+        "Microsoft.KeyVault/vaults/deploy/action"
+      ],
+      "NotActions": [],
+      "DataActions": [],
+      "NotDataActions": [],
+      "AssignableScopes": [
+        "/subscriptions/00000000-0000-0000-0000-000000000000"
+      ]
+    }
+    ```
+    Zastąp identyfikator subskrypcji użytkownika, który wymaga, aby wdrożyć szablony "00000000-0000-0000-0000-000000000000".
+
+2. Utwórz nową rolę za pomocą pliku JSON:
+
+    ```azurepowershell
+    $resourceGroupName= "<Resource Group Name>" # the resource group which contains the Key Vault
+    $userPrincipalName = "<Email Address of the deployment operator>"
+    New-AzureRmRoleDefinition -InputFile "<PathToTheJSONFile>" 
+    New-AzureRmRoleAssignment -ResourceGroupName $resourceGroupName -RoleDefinitionName "Key Vault resource manager template deployment operator" -SignInName $userPrincipalName
+    ```
+
+    `New-AzureRmRoleAssignment` Przykładowe przypisać rolę niestandardową dla użytkownika na poziomie grupy zasobów.  
+
+Korzystając z usługi Key Vault z szablonem [zarządzanej aplikacji](../managed-applications/overview.md), musi udzielić dostępu do **dostawcy zasobów urządzenia** nazwy głównej usługi. Aby uzyskać więcej informacji, zobacz [wpisu tajnego usługi Key Vault dostęp, podczas wdrażania usługi Azure Managed Applications](../managed-applications/key-vault-access.md).
 
 ## <a name="reference-a-secret-with-static-id"></a>Odwołanie wpisu tajnego z Identyfikatorem statyczne
 
@@ -147,7 +206,7 @@ Teraz Wdróż szablon i przekazać plik parametrów. Można użyć szablonu przy
 W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 
 ```azurecli-interactive
-az group create --name datagroup --location "South Central US"
+az group create --name datagroup --location $location
 az group deployment create \
     --name exampledeployment \
     --resource-group datagroup \
@@ -157,8 +216,8 @@ az group deployment create \
 
 W przypadku programu PowerShell użyj polecenia:
 
-```powershell
-New-AzureRmResourceGroup -Name datagroup -Location "South Central US"
+```powershell-interactive
+New-AzureRmResourceGroup -Name datagroup -Location $location
 New-AzureRmResourceGroupDeployment `
   -Name exampledeployment `
   -ResourceGroupName datagroup `
@@ -274,7 +333,7 @@ Wdróż Powyższy szablon i podaj wartości parametrów. Można użyć szablonu 
 W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 
 ```azurecli-interactive
-az group create --name datagroup --location "South Central US"
+az group create --name datagroup --location $location
 az group deployment create \
     --name exampledeployment \
     --resource-group datagroup \
@@ -285,7 +344,7 @@ az group deployment create \
 W przypadku programu PowerShell użyj polecenia:
 
 ```powershell
-New-AzureRmResourceGroup -Name datagroup -Location "South Central US"
+New-AzureRmResourceGroup -Name datagroup -Location $location
 New-AzureRmResourceGroupDeployment `
   -Name exampledeployment `
   -ResourceGroupName datagroup `

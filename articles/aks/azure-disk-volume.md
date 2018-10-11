@@ -1,22 +1,25 @@
 ---
 title: Tworzenie woluminu statyczne zasobników w usłudze Azure Kubernetes Service (AKS)
-description: Dowiedz się, jak ręcznie utworzyć wolumin z dyskami platformy Azure do użytku z zasobników w usłudze Azure Kubernetes Service (AKS)
+description: Dowiedz się, jak ręcznie utworzyć wolumin z dyskami platformy Azure do użytku z programem zasobnik w usłudze Azure Kubernetes Service (AKS)
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 20c7d20399392e653668953029bcb81886863ce4
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 9c5879474568885d9a705e7bfd16e2a4e2304b96
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47404623"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068188"
 ---
-# <a name="manually-create-and-use-kubernetes-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Ręcznie utworzyć i wolumin Kubernetes za pomocą usługi Azure disks w usłudze Azure Kubernetes Service (AKS)
+# <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Ręcznie utworzyć i korzystać z woluminu z dyskami platformy Azure w usłudze Azure Kubernetes Service (AKS)
 
-Oparte na kontenerach aplikacje często muszą uzyskać dostęp do utrwalania danych w woluminie danych zewnętrznych. Dyski platformy Azure może służyć jako ten magazyn danych zewnętrznych. W usłudze AKS woluminy można tworzyć dynamicznie przy użyciu oświadczeń trwały wolumin lub można ręcznie utworzyć i dołączyć bezpośrednio dysku platformy Azure. W tym artykule pokazano, jak ręcznie utworzyć dysku platformy Azure i dołączyć go do zasobników w usłudze AKS.
+Oparte na kontenerach aplikacje często muszą uzyskać dostęp do utrwalania danych w woluminie danych zewnętrznych. Jeśli pojedynczy zasobnik potrzebuje dostępu do magazynu, można użyć dysków platformy Azure do przedstawienia natywnych woluminu do użytku aplikacji. W tym artykule pokazano, jak ręcznie utworzyć dysku platformy Azure i dołączyć go do zasobników w usłudze AKS.
+
+> [!NOTE]
+> Dysku platformy Azure można instalować tylko pojedynczy zasobnik w danym momencie. Jeśli musisz udostępniać trwały wolumin w wielu zasobnikach, użyj [usługi Azure Files][azure-files-volume].
 
 Aby uzyskać więcej informacji na woluminach Kubernetes, zobacz [woluminów Kubernetes][kubernetes-volumes].
 
@@ -65,15 +68,22 @@ Aby zainstalować dysku platformy Azure, w tym zasobniku, skonfiguruj wolumin w 
 apiVersion: v1
 kind: Pod
 metadata:
- name: azure-disk-pod
+  name: mypod
 spec:
- containers:
-  - image: microsoft/sample-aks-helloworld
-    name: azure
+  containers:
+  - image: nginx:1.15.5
+    name: mypod
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
     volumeMounts:
       - name: azure
         mountPath: /mnt/azure
- volumes:
+  volumes:
       - name: azure
         azureDisk:
           kind: Managed
@@ -87,7 +97,32 @@ Użyj `kubectl` polecenie, aby utworzyć zasobnik.
 kubectl apply -f azure-disk-pod.yaml
 ```
 
-Masz teraz uruchomiony zasobnik z dysku platformy Azure zainstalowany w lokalizacji `/mnt/azure`. Możesz użyć `kubectl describe pod azure-disk-pod` Aby sprawdzić, dysk jest zainstalowany pomyślnie.
+Masz teraz uruchomiony zasobnik z dysku platformy Azure zainstalowany w lokalizacji `/mnt/azure`. Możesz użyć `kubectl describe pod mypod` Aby sprawdzić, dysk jest zainstalowany pomyślnie. Następujące dane wyjściowe skróconego przykładu przedstawia wolumin zainstalowany w kontenerze:
+
+```
+[...]
+Volumes:
+  azure:
+    Type:         AzureDisk (an Azure Data Disk mount on the host and bind mount to the pod)
+    DiskName:     myAKSDisk
+    DiskURI:      /subscriptions/<subscriptionID/resourceGroups/MC_myResourceGroupAKS_myAKSCluster_eastus/providers/Microsoft.Compute/disks/myAKSDisk
+    Kind:         Managed
+    FSType:       ext4
+    CachingMode:  ReadWrite
+    ReadOnly:     false
+  default-token-z5sd7:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-z5sd7
+    Optional:    false
+[...]
+Events:
+  Type    Reason                 Age   From                               Message
+  ----    ------                 ----  ----                               -------
+  Normal  Scheduled              1m    default-scheduler                  Successfully assigned mypod to aks-nodepool1-79590246-0
+  Normal  SuccessfulMountVolume  1m    kubelet, aks-nodepool1-79590246-0  MountVolume.SetUp succeeded for volume "default-token-z5sd7"
+  Normal  SuccessfulMountVolume  41s   kubelet, aks-nodepool1-79590246-0  MountVolume.SetUp succeeded for volume "azure"
+[...]
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -107,3 +142,4 @@ Aby uzyskać więcej informacji o usłudze AKS klastrów oddziałują na dyskach
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [install-azure-cli]: /cli/azure/install-azure-cli
+[azure-files-volume]: azure-files-volume.md

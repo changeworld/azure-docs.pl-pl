@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: 24f7faa0fb111e4e537a7db3f5e1eea709d1ca59
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c4206b3178cd02082b8e0815081fedf59a6836b1
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957737"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068308"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions JavaScript
 Ten przewodnik zawiera informacje dotyczące niewymagającego pisania usługi Azure Functions za pomocą języka JavaScript.
@@ -66,6 +66,8 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
     // function logic goes here :)
     context.done();
 };
+```
+```javascript
 // You can also use 'arguments' to dynamically handle inputs
 module.exports = async function(context) {
     context.log('Number of inputs: ' + arguments.length);
@@ -79,6 +81,37 @@ module.exports = async function(context) {
 Wyzwalacze i powiązania danych wejściowych (vazby prvku `direction === "in"`) może być przekazywany do funkcji jako parametrów. Są one przekazywane do funkcji w tej samej kolejności, które są zdefiniowane w *function.json*. Można również dynamiczne obsługi danych wejściowych przy użyciu języka JavaScript [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx) obiektu. Na przykład, jeśli masz `function(context, a, b)` i zmień go na `function(context, a)`, nadal można pobrać wartości `b` w kodzie funkcji, odwołując się do `arguments[2]`.
 
 Wszystkie powiązania, niezależnie od tego, w kierunku, również są przekazywane `context` przy użyciu `context.bindings` właściwości.
+
+### <a name="exporting-an-async-function"></a>Eksportowanie funkcji asynchronicznej
+Korzystając z języka JavaScript [ `async function` ](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) deklaracji lub JavaScript zwykły [obietnic](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) (nie są dostępne w funkcji v1.x), nie jawnie trzeba wywołać [ `context.done` ](#contextdone-method) wywołania zwrotnego do sygnalizowania, że funkcja została zakończona. Funkcja zakończy się po zakończeniu async eksportowanych funkcji/Promise.
+
+Na przykład to proste funkcja, która została wyzwolona i natychmiast kończy wykonywanie dzienników.
+``` javascript
+module.exports = async function (context) {
+    context.log('JavaScript trigger function processed a request.');
+};
+```
+
+Podczas eksportowania funkcji asynchronicznej, można również skonfigurować powiązania danych wyjściowych, aby móc `return` wartość. Jest to alternatywny sposób przypisywania danych wyjściowych za pomocą [ `context.bindings` ](#contextbindings-property) właściwości.
+
+Aby przypisać dane wyjściowe przy użyciu `return`, zmień `name` właściwości `$return` w `function.json`.
+```json
+{
+  "type": "http",
+  "direction": "out",
+  "name": "$return"
+}
+```
+Kod funkcji JavaScript może wyglądać następująco:
+```javascript
+module.exports = async function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+    // You can call and await an async method here
+    return {
+        body: "Hello, world!"
+    };
+}
+```
 
 ## <a name="context-object"></a>Obiekt kontekstu
 Środowisko wykonawcze używa `context` obiekt do przekazywania danych do i z funkcji i umożliwienie komunikowania się ze środowiskiem uruchomieniowym.

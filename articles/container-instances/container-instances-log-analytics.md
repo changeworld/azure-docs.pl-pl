@@ -2,18 +2,17 @@
 title: Rejestrowanie wystąpienia kontenera za pomocą usługi Azure Log Analytics
 description: Dowiedz się, jak wysyłać dane wyjściowe kontenera (STDOUT i STDERR) do usługi Azure Log Analytics.
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: overview
 ms.date: 07/17/2018
-ms.author: marsma
-ms.openlocfilehash: 9d967cc7509ef0d558327da2299b0478b62de430
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: danlep
+ms.openlocfilehash: 62457fe5b0336cb6ae6ac4fc63f4884ed14cf9d3
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960723"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856041"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>Rejestrowanie wystąpienia kontenera za pomocą usługi Azure Log Analytics
 

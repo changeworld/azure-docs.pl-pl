@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: rajraj
-ms.openlocfilehash: 1ca0ec7185707d9b9f9712c2ace8dacb361f7b5b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: cf25d08fc9a0e1ae458d350be93af31447928ecb
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394373"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069458"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatyczne uaktualnienia obrazu systemu operacyjnego zestawu skalowania maszyn wirtualnych platformy Azure
 
@@ -92,7 +92,12 @@ PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/p
 } 
 ```
 
-Obsługa konfigurowania tej właściwości, za pomocą programu Azure PowerShell i interfejsu wiersza polecenia w wersji 2.0 będzie wdrażana na 10/09.
+W poniższym przykładzie użyto interfejsu wiersza polecenia platformy Azure (2.0.47 lub nowszy) Aby skonfigurować automatyczne uaktualnienia dla zestawu skalowania o nazwie *myVMSS* w grupie zasobów o nazwie *myResourceGroup*:
+
+```azurecli
+az vmss update --name myVMSS --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
+```
+Obsługa konfigurowania tej właściwości, za pomocą programu Azure PowerShell zostanie udostępniona wkrótce.
 
 ## <a name="using-application-health-probes"></a>Za pomocą kondycji aplikacji sondy 
 
@@ -139,10 +144,10 @@ Get-AzureRmVmss -ResourceGroupName myResourceGroup -VMScaleSetName myVMSS -OSUpg
 ```
 
 ### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure 2.0
-W poniższym przykładzie użyto interfejsu wiersza polecenia platformy Azure (2.0.20 lub nowszej) można sprawdzić stanu dla zestawu skalowania o nazwie *myVMSS* w grupie zasobów o nazwie *myResourceGroup*:
+W poniższym przykładzie użyto interfejsu wiersza polecenia platformy Azure (2.0.47 lub nowszy) aby sprawdzić stan dla zestawu skalowania o nazwie *myVMSS* w grupie zasobów o nazwie *myResourceGroup*:
 
 ```azurecli
-az vmss rolling-upgrade get-latest --resource-group myResourceGroup --name myVMSS
+az vmss get-os-upgrade-history --resource-group myResourceGroup --name myVMSS
 ```
 
 ### <a name="rest-api"></a>Interfejs API REST
@@ -192,10 +197,18 @@ Wywołanie GET zwraca właściwości podobne do następujących przykładowych d
 
 ## <a name="how-to-get-the-latest-version-of-a-platform-os-image"></a>Jak uzyskać najnowszą wersję obrazu platformy systemu operacyjnego? 
 
-Można uzyskać wersji obrazu dla systemu operacyjnego automatycznego uaktualniania obsługiwane jednostki SKU, przy użyciu poniższych poleceń cmdlet programu PowerShell: 
+Można uzyskać wersji obrazu dla systemu operacyjnego automatycznego uaktualniania obsługiwane jednostki SKU, przy użyciu poniższych przykładów: 
+
+```
+GET on `/subscriptions/subscription_id/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions?api-version=2018-10-01`
+```
 
 ```powershell
 Get-AzureRmVmImage -Location "westus" -PublisherName "Canonical" -Offer "UbuntuServer" -Skus "16.04-LTS"
+```
+
+```azurecli
+az vm image list --location "westus" --publisher "Canonical" --offer "UbuntuServer" --sku "16.04-LTS" --all
 ```
 
 ## <a name="deploy-with-a-template"></a>Wdrażanie przy użyciu szablonu

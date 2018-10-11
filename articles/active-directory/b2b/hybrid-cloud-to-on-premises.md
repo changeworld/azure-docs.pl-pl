@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 10/10/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 65f43eb28ef2ef51409469934d59e1add7e83666
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 57c807b7729b58d2537ee09ddd5d05d4f2afb55e
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297218"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068847"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Użytkowników B2B przydział w usłudze Azure AD dostęp do aplikacji w środowisku lokalnym
 
@@ -65,9 +65,9 @@ Możesz zarządzać obiektów użytkownika B2B w środowisku lokalnym przy użyc
 - Zasady uwierzytelniania wieloskładnikowego (MFA) dla użytkownika gościa można skonfigurować tak, aby usługa MFA jest używany podczas uwierzytelniania serwera Proxy aplikacji. Aby uzyskać więcej informacji, zobacz [dostęp warunkowy dla użytkowników współpracy B2B](conditional-access.md).
 - Wszelkie dostęp sponsorowany przeglądów dostępu, weryfikacji konta, itp., które są wykonywane w chmurze B2B, po którym użytkownik ma zastosowanie do użytkowników w środowisku lokalnym. Na przykład usunięcie użytkownika chmury za pomocą zasad zarządzania cyklem życia użytkownika lokalnego również jest usunięte, usługa synchronizacji programu MIM lub za pomocą synchronizacji programu Azure AD Connect. Aby uzyskać więcej informacji, zobacz [przeglądy zarządzanie dostępem gości za pomocą usługi Azure AD access](../governance/manage-guest-access-with-access-reviews.md).
 
-### <a name="create-b2b-guest-user-objects-through-mim-preview"></a>Tworzenie obiektów użytkowników gości B2B przy użyciu programu MIM (wersja zapoznawcza)
+### <a name="create-b2b-guest-user-objects-through-mim"></a>Tworzenie obiektów użytkowników gości B2B przy użyciu programu MIM
 
-Aby uzyskać informacje o tym, jak używać programu MIM 2016 Service Pack 1 i agenta zarządzania programu MIM dla programu Microsoft Graph w celu utworzenia obiektów użytkownika gościa w katalogu lokalnym, zobacz [współpracy business-to-business (B2B) usługi Azure AD za pomocą programu Microsoft Identity Manager (MIM) 2016 z dodatkiem SP1 za pomocą serwera Proxy aplikacji platformy Azure (publiczna wersja zapoznawcza)](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario).
+Aby uzyskać informacje o tym, jak używać programu MIM 2016 Service Pack 1 i agenta zarządzania programu MIM dla programu Microsoft Graph w celu utworzenia obiektów użytkownika gościa w katalogu lokalnym, zobacz [współpracy business-to-business (B2B) usługi Azure AD za pomocą programu Microsoft Identity Manager (MIM) 2016 z dodatkiem SP1 za pomocą serwera Proxy aplikacji platformy Azure](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario).
 
 ### <a name="create-b2b-guest-user-objects-through-a-script-preview"></a>Tworzenie obiektów użytkowników gości B2B za pomocą skryptu (wersja zapoznawcza)
 

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 941c29506aa8f17dcb6262495b28dd26e78194d5
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: e0cdda629ddded121a424af61377c04ee8d958d3
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036065"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867548"
 ---
 # <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>Samouczek 7: wyodrębnianie nazw przy użyciu prostej jednostki i listy fraz
 
@@ -299,7 +299,7 @@ Otwórz plik [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/bl
 
     [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Zrzut ekranu podręcznego okna dialogowego tworzenia nowej listy fraz z wyrazami w polu wartości listy fraz")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
-5. [Naucz](#train-the-luis-app) i [opublikuj](#publish-the-app-to-get-the-endpoint-URL) aplikację ponownie, aby użyć listy fraz.
+5. [Naucz](#train) i [opublikuj](#publish) aplikację ponownie, aby użyć listy fraz.
 
 6. Wykonaj ponownie zapytanie w punkcie końcowym dla tej samej wypowiedzi: `This is the lead welder paperwork.`
 

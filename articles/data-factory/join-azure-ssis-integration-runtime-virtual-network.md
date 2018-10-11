@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 10/10/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: e6950c38db83efb57e5f3b1809aa6baa56532cd0
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: cc206e1134fe6df0280512e89447336a32a2d810
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/10/2018
-ms.locfileid: "48903049"
+ms.locfileid: "49068370"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Dołącz do środowiska Azure-SSIS integration runtime do sieci wirtualnej
 Dołącz do środowiska Azure-SSIS integration runtime (IR) z siecią wirtualną platformy Azure w następujących scenariuszach: 
@@ -70,6 +70,8 @@ Więcej szczegółów można znaleźć w poniższych sekcjach.
 -   Upewnij się, grupy zasobów w sieci wirtualnej można tworzyć i usuwać niektórych zasobów sieciowych platformy Azure. Zobacz [wymagania dla grupy zasobów](#resource-group). 
 
 ### <a name="perms"></a> Wymagane uprawnienia
+
+Użytkownik, który tworzy środowisko Azure-SSIS Integration Runtime musi mieć następujące uprawnienia:
 
 - Jeśli dołączasz SSIS IR do sieci wirtualnej platformy Azure w bieżącej wersji, masz dwie opcje:
 

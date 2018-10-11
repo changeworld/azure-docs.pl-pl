@@ -9,16 +9,17 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: 80601ed30785af37346f801b7e4f1c90e897b3cd
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: b5b30f7f5ffc7fcbef918162bc736c1f0a888d1b
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888124"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067741"
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Klucze konta magazynu usługi Azure Key Vault
 
-[!NOTE] [Usługa Azure storage obsługuje teraz autoryzacji AAD](https://docs.microsoft.com/azure/storage/common/storage-auth-aad). Zalecamy używanie usługi Azure Active Directory do uwierzytelniania i autoryzacji do magazynu, ponieważ użytkownicy nie mają już martwić się o rotacji kluczy konta magazynu, ich. 
+> [!NOTE]
+> [Usługa Azure storage obsługuje teraz autoryzacji AAD](https://docs.microsoft.com/azure/storage/common/storage-auth-aad). Zalecamy używanie usługi Azure Active Directory do uwierzytelniania i autoryzacji do magazynu, ponieważ użytkownicy nie mają już martwić się o rotacji kluczy konta magazynu, ich.
 
 - Usługa Azure Key Vault umożliwia zarządzanie kluczami z konta magazynu platformy Azure (ASA).
     - Wewnętrznie usługa Azure Key Vault można wyświetlić listę kluczy (synchronizacja) za pomocą konta usługi Azure Storage.    

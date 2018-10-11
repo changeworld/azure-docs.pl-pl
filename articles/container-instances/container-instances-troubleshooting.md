@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 6f57bc41cddc997a69f92ba4e8ca66faaeb29738
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d2e4491f2ee21deedd674a5a8a64e4dd99149924
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424606"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079362"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Rozwiązywanie typowych problemów w usłudze Azure Container Instances
 
@@ -89,11 +89,24 @@ Jeśli nie można ściągnąć obrazu, zdarzenia, podobnie do poniższego są wy
 ],
 ```
 
-## <a name="container-continually-exits-and-restarts"></a>Kontener stale kończy działanie i uruchamia ponownie
+## <a name="container-continually-exits-and-restarts-no-long-running-process"></a>Kontener stale kończy działanie i uruchamia ponownie (żaden proces długotrwałych)
 
-Jeśli kontener zostaje ukończone i zostanie automatycznie uruchomiony ponownie, konieczne może być ustawiony [zasady ponownego uruchamiania](container-instances-restart-policy.md) z **OnFailure** lub **nigdy**. Jeśli określisz **OnFailure** i nadal znaleźć ciągłe ponowne uruchomienie, może to być problem z aplikacją lub skrypt wykonywany w kontenerze.
+Domyślnie grupy kontenerów [zasady ponownego uruchamiania](container-instances-restart-policy.md) z **zawsze**, więc kontenerów w grupie kontenerów zawsze po ponowne uruchomienie zostało ukończone. Konieczne może być to można zmienić **OnFailure** lub **nigdy** Jeśli zamierzasz uruchamiać kontenery opartego na zadaniach. Jeśli określisz **OnFailure** i nadal znaleźć ciągłe ponowne uruchomienie, może to być problem z aplikacją lub skrypt wykonywany w kontenerze.
 
-Interfejs API wystąpienia kontenera obejmuje `restartCount` właściwości. Aby sprawdzić liczbę ponownych uruchomień dla kontenera, można użyć [az container show] [ az-container-show] polecenia w interfejsie wiersza polecenia platformy Azure. W poniższych przykładowych danych wyjściowych (który został obcięty dla zwięzłości), zobacz `restartCount` właściwości na końcu danych wyjściowych.
+Podczas uruchamiania grupy kontenerów bez długotrwałe procesy mogą pojawić się powtarzanych umożliwia zamknięcie i ponowne uruchomienie komputera przy użyciu obrazów, takie jak Ubuntu lub Alpine. Łączenie za pośrednictwem [EXEC](container-instances-exec.md) nie będzie działać w kontenerze ma żaden proces, utrzymywanie jej aktywności. Aby rozwiązać to start polecenia podobnego do poniższego, przy użyciu wdrożenia grupy kontenerów, który zapewnienie działanie kontenera.
+
+```azurecli-interactive
+## Deploying a Linux container
+az container create -g MyResourceGroup --name myapp --image ubuntu --command-line "tail -f /dev/null"
+```
+
+```azurecli-interactive 
+## Deploying a Windows container
+az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image windowsservercore:ltsc2016
+ --command-line "ping -t localhost"
+```
+
+Interfejs API wystąpień kontenera i Azure portal zawiera `restartCount` właściwości. Aby sprawdzić liczbę ponownych uruchomień dla kontenera, można użyć [az container show] [ az-container-show] polecenia w interfejsie wiersza polecenia platformy Azure. W poniższym przykładzie danych wyjściowych (który został obcięty dla zwięzłości), możesz zobaczyć `restartCount` właściwości na końcu danych wyjściowych.
 
 ```json
 ...

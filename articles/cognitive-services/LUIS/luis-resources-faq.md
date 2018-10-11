@@ -1,5 +1,5 @@
 ---
-title: Często zadawane pytania — usługi Language Understanding (LUIS)
+title: Często zadawane pytania — często zadawane pytania — Language Understanding (LUIS)
 titleSuffix: Azure Cognitive Services
 description: Ten artykuł zawiera odpowiedzi na często zadawane pytania na temat Language Understanding (LUIS).
 author: diberry
@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 10/10/2018
 ms.author: diberry
-ms.openlocfilehash: 0e604138c35e476d1635cb695923bb7d2b83de82
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: b5433ea0a92635b5bf9c2a4887451f1e64ec62e6
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831266"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067772"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding często zadawane pytania
 
@@ -112,6 +112,10 @@ Zobacz [testowania partii](luis-tutorial-batch-testing.md) samouczka.
 ### <a name="when-an-app-is-exported-then-reimported-into-a-new-app-with-a-new-app-id-the-luis-prediction-scores-are-different-why-does-this-happen"></a>Gdy aplikacja jest wyeksportowane, a następnie importowane z powrotem do nowej aplikacji (z nowym Identyfikatorem aplikacji), usługa LUIS wyniki prognozy różnią się. Dlaczego tak się dzieje?
 
 Zobacz [prognozowania różnice między kopie tej samej aplikacji](luis-concept-prediction-score.md#differences-with-predictions).
+
+### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>Niektóre wypowiedzi przejdź do niewłaściwej intencji po zmiany wprowadzone do mojej aplikacji. Podejrzenie zniknięcie losowo. Jak go naprawić? 
+
+Zobacz [szkolenie z wszystkimi danymi](luis-how-to-train.md#train-with-all-data).
 
 ## <a name="app-publishing"></a>Publikowanie aplikacji
 

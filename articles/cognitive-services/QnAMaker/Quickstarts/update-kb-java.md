@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: f78e9bca7b1b4ce048826b887f99c6dc12f596b7
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 215773d14b98db52c4de62bab70457c134c0b47d
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040010"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854392"
 ---
 # <a name="update-a-knowledge-base-in-java"></a>Aktualizowanie bazy wiedzy za pomocą języka Java
 
@@ -32,7 +32,7 @@ Jeśli nie masz jeszcze bazy wiedzy, możesz utworzyć przykładową bazę na po
 
     ![Identyfikator bazy wiedzy usługi QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-1. Będziesz potrzebować biblioteki [apache httpclient](http://hc.apache.org/downloads.cgi). Na przykład pobierz plik binarny HttpClient 4.x.x.tar.gz, aby znaleźć wszystkie pliki JAR, które musisz zaimportować do projektu.
+1. Będziesz potrzebować biblioteki [apache httpclient](https://hc.apache.org/downloads.cgi). Na przykład pobierz plik binarny HttpClient 4.x.x.tar.gz, aby znaleźć wszystkie pliki JAR, które musisz zaimportować do projektu.
 1. Ponadto będzie wymagana biblioteka [GSON](https://github.com/google/gson). Ręcznie [utwórz](https://stackoverflow.com/questions/5258159/how-to-make-an-executable-jar-file) i zaimportuj plik JAR lub dodaj zależność do preferowanego narzędzia do zarządzania projektem, na przykład Maven.
 1. Uruchom program.
 
@@ -61,7 +61,7 @@ import com.google.gson.reflect.TypeToken;
 
 /**
  * Java does not natively support HTTP PATCH requests; Apache HttpClient is required.
- * HttpClient: http://hc.apache.org/downloads.cgi
+ * HttpClient: https://hc.apache.org/downloads.cgi
  * Maven info:
  *    <dependency>
  *      <groupId>org.apache.httpcomponents</groupId>
@@ -215,14 +215,14 @@ public class UpdateKB {
         // HttpPatch implements HttpMessage, which includes addHeader.
         // See: <a href="https://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/
         // apache/http/client/methods/HttpPatch.html">HttpPatch</a>
-        // See: <a href="http://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/
+        // See: <a href="https://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/
         // HttpMessage.html">HttpMessage</a>
         patch.addHeader("Content-Type", "application/json");
         // Note: Adding the Content-Length header causes the exception:
         // "Content-Length header already present."
         patch.addHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
         // HttpPatch implements HttpEntityEnclosingRequest, which includes setEntity.
-        // See: <a href="http://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/
+        // See: <a href="https://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/
         // HttpEntityEnclosingRequest.html">HttpEntityEnclosingRequest</a>
         HttpEntity entity = new ByteArrayEntity(content.getBytes("UTF-8"));
         patch.setEntity(entity);
@@ -234,9 +234,9 @@ public class UpdateKB {
         // See: <a href="https://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/
         // client/methods/CloseableHttpResponse.html">CloseableHttpResponse</a>
         // Header implements NameValuePair.
-        // See: <a href="http://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/Header.html">
+        // See: <a href="https://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/Header.html">
         // Header</a>
-        // See: <a href="http://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/
+        // See: <a href="https://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/
         // NameValuePair.html">NameValuePair</a>
         Map<String, List<String>> headers = new HashMap<String, List<String>>();
         for (Header header : response.getAllHeaders()) {
@@ -249,10 +249,10 @@ public class UpdateKB {
         }
 
         // CloseableHttpResponse implements HttpResponse, which includes getEntity.
-        // See: <a href="http://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/
+        // See: <a href="https://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/
         // HttpResponse.html">HttpResponse</a>
         // HttpEntity implements getContent, which returns an InputStream.
-        // See: <a href="http://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/
+        // See: <a href="https://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/
         // HttpEntity.html">HttpEntity</a>
         StringBuilder output = new StringBuilder ();
         BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity()
