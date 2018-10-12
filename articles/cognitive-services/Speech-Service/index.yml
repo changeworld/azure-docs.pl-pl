@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 01b288136036fc5ff719c179821801aeac95c5c5
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 7bfa1becd3eed5bcf3e2d0bec160a4b4e2f254a3
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830536"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091883"
 documentType: LandingData
 title: Dokumentacja zestawu SDK usługi Speech Service
 metadata:
@@ -26,15 +26,6 @@ metadata:
   ms.author: nitinme
 abstract:
   description: Dowiedz się, jak korzystać z funkcji usługi Speech Service i jej zestawu SDK w celu dodawania funkcji rozpoznawania mowy do aplikacji. Zestaw SDK rozpoznawania mowy umożliwia dodawanie do aplikacji funkcji <i>zamiany mowy na tekst</i> (rozpoznawanie mowy/SR) <i>intencji</i>, <i>tłumaczenia</i>, i <i>zamiany tekstu na mowę</i> (TTS). Usługa Speech Service ma również interfejs API REST współpracujący z dowolnym językiem programowania, który może wysyłać żądania HTTP.
-  aside:
-    image:
-      alt: 
-      height: 110
-      src: ../media/index/speech-landing-page-video.png
-      width: 250
-    title: Omówienie usługi Speech Service (10:34)
-    href: https://azure.microsoft.com/resources/videos/connect-2017-microsoft-cognitive-services-overview-of-advanced-speech-capabilities/
-    width: 250
 sections:
 - items:
   - type: list

@@ -257,8 +257,8 @@ items:
   items:
   - name: Pomoc techniczna w społeczności platformy Azure
     href: https://azure.microsoft.com/support/community/?product=search
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/?tag=azure-search
+  - name: Aktualizacje platformy Azure
+    href: https://azure.microsoft.com/updates/?product=search
   - name: Witryny demonstracyjne
     items:
     - name: Pokaz plików finansowych
@@ -275,13 +275,11 @@ items:
     href: search-faq-frequently-asked-questions.md
   - name: Cennik
     href: https://azure.microsoft.com/pricing/details/search/
-  - name: Aktualizacje usług
-    href: https://azure.microsoft.com/updates/?product=search
   - name: Filmy wideo
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: 473b6940dda9ea906cf6ad2ddb400357fc8df7b9
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 1ce3cf4ff32037d8e1e70a7c724aa4c53c2539ea
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831164"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116073"

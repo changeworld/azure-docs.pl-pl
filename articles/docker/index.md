@@ -11,12 +11,12 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: carolz
-ms.openlocfilehash: 76afc558048f1890e5e2440fd002361172acbea2
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: c1dab114ddd010daa88222f380ad7a47f1dd1767
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433840"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49090709"
 ---
 <div class="content">
    <h1>Rozwiązanie Docker na platformie Azure</h1>   
@@ -38,7 +38,7 @@ Docker to popularna platforma do zarządzania kontenerami i tworzenia ich obraz�
 </ol>
 <h2>Zasoby</h2>
 <p>Aby uzyskać dodatkowe materiały referencyjne i narzędzia do pracy z platformą Docker na platformie Azure, zobacz poniższe linki.</p>
-<a href="https://www.docker.com/docker-azure">Witryna platformy Azure dla platformy Docker</a><br/>
+<a href="https://docs.docker.com/docker-for-azure/why/">Witryna platformy Azure dla platformy Docker</a><br/>
 <a href="https://docs.docker.com/machine/drivers/azure/">Sterownik platformy Azure dla platformy Docker</a><br/>
 <a href="https://docker.com">Informacje na temat platformy Docker</a><br/>
 </div>
