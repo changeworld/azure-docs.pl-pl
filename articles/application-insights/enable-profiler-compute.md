@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.reviewer: ramach
 ms.author: mbullwin
-ms.openlocfilehash: 2da281f52a85992c6fade360c94fbf473c38dc20
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: eb2ec0c0b77e71a54d1e7f852a22d82203abf7b6
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424028"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091984"
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-azure-cloud-services"></a>Włącz Application Insights Profiler dla maszyn wirtualnych platformy Azure, Usługa Service Fabric i usługi Azure Cloud Services
 
@@ -48,7 +48,7 @@ Aby w pełni włączyć Profiler, należy zmienić konfigurację w trzech miejsc
 
    ![Lokalizacja klucza Instrumentacji](./media/enable-profiler-compute/CopyAIKey.png)
 
-1. Aby zakończyć konfigurowanie wystąpienia usługi Application Insights Profiler, wykonaj procedurę opisaną w [Włącz Profiler. Nie trzeba połączyć aplikacji sieci web, ponieważ kroki są specyficzne dla zasobów usługi aplikacji. Upewnij się, że Profiler jest włączone w **skonfigurować Profiler** okienka.
+1. Aby zakończyć konfigurowanie wystąpienia usługi Application Insights Profiler, wykonaj procedurę opisaną w [Włącz Profiler](https://docs.microsoft.com/azure/application-insights/app-insights-profiler). Nie trzeba połączyć aplikacji sieci web, ponieważ kroki są specyficzne dla zasobów usługi aplikacji. Upewnij się, że Profiler jest włączone w **skonfigurować Profiler** okienka.
 
 
 ## <a name="set-up-the-application-source-code"></a>Konfigurowanie kodu aplikacji
@@ -163,7 +163,7 @@ Aby skonfigurować środowisko, wykonaj następujące czynności:
 
 ### <a name="azure-cloud-services"></a>usług Azure Cloud Services
 
-1. Aby upewnić się, że używasz [platformy .NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) lub nowszym będą wystarczające, aby potwierdzić, że *ServiceConfiguration.\*. cscfg* pliki mają `osFamily` wartość "5" lub nowszej.
+1. Aby upewnić się, że używasz [platformy .NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) lub nowszym będą wystarczające, aby potwierdzić, że *ServiceConfiguration.\*.cscfg* pliki mają `osFamily` wartość "5" lub nowszej.
 
 1. Znajdź [diagnostyki Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) *diagnostics.wadcfgx* plików dla roli użytkownika aplikacji, jak pokazano poniżej:  
 
@@ -191,7 +191,7 @@ Aby skonfigurować środowisko, wykonaj następujące czynności:
 >  * Klucz, który jest używany przez `ApplicationInsights` ujścia.  
 >  * Klucz, który jest używany przez `ApplicationInsightsProfiler` ujścia.  
 >
-> Można znaleźć wartości klucza Instrumentacji rzeczywiste, używanego przez `ApplicationInsights` ujścia *ServiceConfiguration.\*. cscfg* plików.  
+> Można znaleźć wartości klucza Instrumentacji rzeczywiste, używanego przez `ApplicationInsights` ujścia *ServiceConfiguration.\*.cscfg* plików.  
 > Po wydaniu programu Visual Studio 15.5 Azure SDK, kluczy instrumentacji, które są używane przez aplikację i `ApplicationInsightsProfiler` konieczność ujścia ze sobą zgodne.
 
 

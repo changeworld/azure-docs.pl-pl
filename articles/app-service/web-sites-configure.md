@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 84bd2019e9586fa008560dba07119323ecb7f02e
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: cf3a6fe24082a10db6a5b1267b70435d9e36b720
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293720"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115526"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Konfigurowanie aplikacji sieci Web w usłudze Azure App Service
 
-W tym temacie opisano sposób konfigurowania aplikacji sieci web za pomocą [Azure Portal].
+W tym temacie wyjaśniono, jak skonfigurować aplikację internetową przy użyciu [Azure Portal].
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -33,133 +33,134 @@ W tym temacie opisano sposób konfigurowania aplikacji sieci web za pomocą [Azu
 
 ![Ustawienia aplikacji][configure01]
 
-**Ustawienia aplikacji** bloku ma ustawienia pogrupowane w różne kategorie.
+**Ustawienia aplikacji** blok zawiera ustawienia zgrupowane w kilku kategorii.
 
 ### <a name="general-settings"></a>Ustawienia ogólne
-**Framework w wersji**. Ustaw tych opcji, jeśli aplikacja używa tych platform: 
+**Framework w wersji**. Jeśli aplikacja korzysta z żadnego następujące struktury, należy ustawić te opcje: 
 
-* **.NET framework**: Ustaw wersji programu .NET framework. 
-* **PHP**: Ustaw wersję PHP lub **OFF** wyłączyć PHP. 
-* **Java**: Wybierz wersję Java lub **OFF** wyłączyć Java. Użyj **kontener sieci Web** opcję, aby wybrać Tomcat i Jetty wersji.
-* **Python**: Wybierz wersję języka Python lub **OFF** wyłączyć Python.
+* **.NET framework**: Ustaw wersję .NET framework. 
+* **PHP**: Ustawianie wersji języka PHP lub **OFF** można wyłączyć języka PHP. 
+* **Java**: Wybierz wersję języka Java lub **OFF** można wyłączyć języka Java. Użyj **kontener sieci Web** możliwość wyboru między wersjami Tomcat i Jetty.
+* **Python**: Wybierz wersję języka Python lub **OFF** można wyłączyć języka Python.
 
-Ze względów technicznych włączenie Java aplikacji powoduje wyłączenie opcji .NET, PHP i Python.
+Technical Preview ze względu na włączenie Java aplikacji powoduje wyłączenie opcji .NET, PHP i Python.
 
 <a name="platform"></a>
-**Platforma**. Wybiera, czy aplikacja sieci web jest uruchamiana w środowisku 32-bitowy lub 64-bitowych. 64-bitowego środowiska wymaga warstwy Basic lub Standard. Zwolnij i warstwy współużytkowane są zawsze uruchamiane w środowisku 32-bitowym.
+**Platforma**. Zaznacza, czy działa aplikacja sieci web w środowisku 32-bitową lub 64-bitowych. 64-bitowego środowiska wymaga warstwy podstawowa lub standardowa. Bezpłatne, a warstwa współdzielona są zawsze uruchamiane w środowisku 32-bitowym.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-**Sieci Web Sockets**. Ustaw **ON** Aby włączyć protokół WebSocket; na przykład, jeśli aplikacja sieci web używa [Biblioteka SignalR platformy ASP.NET] lub [użyciu biblioteki socket.io](https://socket.io/).
+**Web Sockets**. Ustaw **ON** powoduje włączenie protokołu WebSocket; na przykład, jeśli aplikacja internetowa używa [Biblioteki SignalR platformy ASP.NET] lub [biblioteki socket.io](https://socket.io/).
 
 <a name="alwayson"></a>
-**Zawsze włączone**. Domyślnie aplikacje sieci web są usuwane, jeśli są one bezczynności przez niektóre czas. Pozwala to zaoszczędzić zasoby systemu. W trybie Basic lub Standard, aby umożliwić **zawsze na** do zachowania aplikacji załadowana przez cały czas. Jeśli aplikacja będzie działać ciągłe zadania Webjob lub uruchamia zadania Webjob wyzwolone przy użyciu wyrażenia CRON, należy włączyć **zawsze na**, lub zadania sieci web mogą nie działać prawidłowo.
+**Zawsze włączone**. Domyślnie aplikacje sieci web są usuwane, jeśli są one bezczynne przez pewien czas. Dzięki temu system zaoszczędzenia zasobów. W trybie Basic lub Standard, aby umożliwić **Always On** do zachowania aplikacji załadowana przez cały czas. Jeśli aplikacja działa ciągłych zadań Webjob lub uruchomienia zadania Webjob wyzwalane za pomocą wyrażenia CRON, należy włączyć **Always On**, lub zadania w sieci web może nie działać niezawodnie.
 
-**Zarządzane wersji potoku**. Ustawia IIS [tryb potokowy]. Pozostaw tego zestawu na zintegrowane (ustawienie domyślne), chyba że masz starszej wersji aplikacji, która wymaga starszej wersji programu IIS.
+**Wersja potoku zarządzanego**. Ustawia IIS [tryb potokowy]. Pozostaw ten zestaw zintegrowany (ustawienie domyślne), chyba że masz starszych aplikacji, która wymaga starszej wersji usług IIS.
 
-**Wersja protokołu HTTP**. Ustaw **2.0** włączyć obsługę [HTTPS/2](https://wikipedia.org/wiki/HTTP/2) protokołu. 
+**Wersja HTTP**. Ustaw **2.0** włączyć obsługę [HTTPS/2](https://wikipedia.org/wiki/HTTP/2) protokołu. 
 
 > [!NOTE]
-> Większość nowoczesnych przeglądarek obsługi protokołu HTTP/2 za pośrednictwem protokołu TLS, podczas gdy niezaszyfrowane ruchu w dalszym ciągu używa protokołu HTTP/1.1. Aby upewnić się, że klient przeglądarki połączyć się z aplikacji za pomocą protokołu HTTP/2, albo [kupić certyfikat usługi aplikacji](web-sites-purchase-ssl-web-site.md) dla domeny niestandardowej aplikacji lub [Powiąż certyfikat innej](app-service-web-tutorial-custom-ssl.md).
+> Większość nowoczesnych przeglądarek obsługuje protokół HTTP/2 za pośrednictwem protokołu TLS tylko wtedy, gdy niezaszyfrowane ruch w dalszym ciągu używa protokołu HTTP/1.1. Aby upewnić się, że klient przeglądarki połączyć się z aplikacji przy użyciu protokołu HTTP/2 albo [zakup certyfikatu usługi App Service](web-sites-purchase-ssl-web-site.md) dla domeny niestandardowej aplikacji lub [powiązać certyfikat innej](app-service-web-tutorial-custom-ssl.md).
 
-**Moduł ARR koligacji**. W aplikacji, która jest skalowana w poziomie do wielu wystąpień maszyny Wirtualnej, koligacji ARR plików cookie gwarantuje, że klient jest kierowane do tego samego wystąpienia przez cały okres istnienia sesji. Aby zwiększyć wydajność aplikacji bezstanowych, ustaw tę opcję, **poza**.   
+**Koligacja ARR**. W aplikacji, jest skalowana w poziomie do wielu wystąpień maszyn wirtualnych, koligacja ARR plików cookie gwarantuje, że klient jest kierowane do tego samego wystąpienia, przez cały okres istnienia sesji. Aby zwiększyć wydajność aplikacji bezstanowych, należy ustawić tę opcję na **poza**.   
 
-**Automatycznie wymiany**. Po włączeniu automatycznej wymiany dla miejsca wdrożenia usługi aplikacji — automatycznie zamianę aplikacji sieci web w środowisku produkcyjnym po naciśnięciu aktualizacji do tego miejsca. Aby uzyskać więcej informacji, zobacz [wdrażanie na tymczasowej miejsc aplikacji sieci web w usłudze Azure App Service](web-sites-staged-publishing.md).
+**Auto-Swap**. Po włączeniu automatycznej wymiany dla miejsca wdrożenia usługi App Service automatycznie zamianę aplikacji sieci web w środowisku produkcyjnym po wypchnięciu aktualizacji do tego miejsca. Aby uzyskać więcej informacji, zobacz [wdrażanie do miejsc aplikacji sieci web w usłudze Azure App Service przejściowych](web-sites-staged-publishing.md).
 
 ### <a name="debugging"></a>Debugowanie
-**Debugowanie zdalne**. Umożliwia zdalne debugowanie. Po włączeniu można użyć zdalnego debugera w programie Visual Studio, aby połączyć się bezpośrednio z aplikacji sieci web. Debugowanie zdalne pozostanie włączony 48 godzin. 
+**Zdalne debugowanie**. Umożliwia zdalne debugowanie. Po włączeniu, aby połączyć się bezpośrednio z aplikacji sieci web za pomocą zdalnego debugera w programie Visual Studio. Zdalne debugowanie pozostanie włączony w ciągu 48 godzin. 
 
 ### <a name="app-settings"></a>Ustawienia aplikacji
-Ta sekcja zawiera pary nazwa/wartość, które Twoja aplikacja sieci web zostanie załadowany po uruchomieniu się. 
+Ta sekcja zawiera pary nazwa/wartość, które Twoja aplikacja sieci web załaduje się w menu start. 
 
 * W przypadku aplikacji .NET, te ustawienia są wstrzykiwane do konfiguracji .NET `AppSettings` w czasie wykonywania, zastępowanie istniejących ustawień. 
-* Aplikacje PHP, Python, Java i węzła mają dostęp do tych ustawień jako zmienne środowiskowe w czasie wykonywania. Dla każdego ustawienia aplikacji są tworzone dwie zmienne środowiskowe; jeden z nazwą określoną przez ustawienie wpis aplikacji, a druga z prefiksem APPSETTING_. Zawierają tę samą wartość.
+* Dla usługi App Service w systemie Linux lub Web App for Containers, jeśli można zagnieżdżać json struktury klucza w imieniu użytkownika, takie jak `ApplicationInsights:InstrumentationKey` musisz mieć `ApplicationInsights__InstrumentationKey` jako nazwę klucza. Dlatego należy zauważyć, że wszelkie `:` powinna zostać zastąpiona przez `__` (np. podwójnym podkreśleniem).
+* Aplikacje PHP, Python, Java i języka Node można uzyskać dostęp do tych ustawień, jako zmienne środowiskowe w czasie wykonywania. Dla każdego ustawienia aplikacji są tworzone dwie zmienne środowiskowe; jeden z nazwą określoną przez wpis ustawienie aplikacji, a druga z prefiksem APPSETTING_. Oba zawierają tę samą wartość.
 
-Ustawienia aplikacji są zawsze szyfrowane, gdy przechowywane (szyfrowane podczas spoczynku).
+Ustawienia aplikacji są zawsze szyfrowane, gdy przechowywany (zaszyfrowanych danych w spoczynku).
 
 ### <a name="connection-strings"></a>Parametry połączeń
 Parametry połączenia dla połączonych zasobów. 
 
-W przypadku aplikacji .NET, te parametry połączenia są wstrzykiwane do konfiguracji .NET `connectionStrings` ustawienia w czasie wykonywania, zastępowanie istniejących wpisów, gdy klucz jest równe nazwy połączonej bazy danych. 
+W przypadku aplikacji .NET, te parametry połączenia są wstrzykiwane do konfiguracji .NET `connectionStrings` ustawienia w czasie wykonywania, zastępując istniejące wpisy, gdy klucz jest równe nazwy połączonej bazy danych. 
 
-W przypadku aplikacji PHP, Python, Java i węzła te ustawienia będą dostępne jako zmienne środowiskowe w czasie wykonywania, prefiksem typu połączenia. Prefiksy zmiennej środowiskowej są następujące: 
+W przypadku aplikacji PHP, Python, Java i języka Node ustawienia te będą dostępne jako zmienne środowiskowe w czasie wykonywania, prefiks z typu połączenia. Prefiksy zmiennych środowiskowych są następujące: 
 
 * Program SQL Server: `SQLCONNSTR_`
 * MySQL: `MYSQLCONNSTR_`
 * Baza danych SQL: `SQLAZURECONNSTR_`
-* Niestandardowe: `CUSTOMCONNSTR_`
+* Niestandardowy: `CUSTOMCONNSTR_`
 
-Na przykład, jeśli parametry połączenia MySql nazwany `connectionstring1`, czy dostęp do niej za pomocą zmiennej środowiskowej `MYSQLCONNSTR_connectionString1`.
+Na przykład, jeśli nazwany ciąg połączenia MySql `connectionstring1`, będzie można uzyskać dostęp za pośrednictwem zmiennej środowiskowej `MYSQLCONNSTR_connectionString1`.
 
-Parametry połączenia są zawsze szyfrowane, gdy przechowywane (szyfrowane podczas spoczynku).
+Parametry połączenia są zawsze szyfrowane, gdy przechowywany (zaszyfrowanych danych w spoczynku).
 
 ### <a name="default-documents"></a>Domyślne dokumenty
-Dokument domyślny jest strony sieci web wyświetlaną w głównego adresu URL witryny sieci Web.  Pierwszy odpowiedniego pliku na liście jest używany. 
+Dokument domyślny jest strony sieci web, która jest wyświetlana na główny adres URL witryny sieci Web.  Pierwszy plik dopasowania na liście jest używany. 
 
-Aplikacje sieci Web może używać modułów, że trasy na podstawie adresu URL, a nie obsługujących zawartość statyczną, w którym to przypadku nie jest dokument domyślny, w związku.    
+Aplikacje sieci Web może używać modułów, że trasy na podstawie adresu URL, a nie obsługująca zawartość statyczną, w którym to przypadku nie jest dokument domyślny w związku z tym.    
 
 ### <a name="handler-mappings"></a>Mapowania procedur obsługi
-Aby dodać procesorów skryptu niestandardowego do obsługi żądań określonych rozszerzeń plików, użyj tego obszaru. 
+Użyj tego obszaru można dodać procesorów skryptu niestandardowego do obsługi żądań dla określonych rozszerzeń plików. 
 
-* **Rozszerzenie**. Rozszerzenie pliku, które mają być obsługiwane, takie jak *.php lub handler.fcgi. 
-* **Ścieżka do procesora skryptów**. Ścieżka bezwzględna procesora skryptów. Żądania dostępu do plików, zgodne z rozszerzeniem pliku zostanie przetworzony przez procesora skryptów. Użyj ścieżki `D:\home\site\wwwroot` do odwoływania się do katalogu głównego aplikacji.
-* **Dodatkowe argumenty**. Opcjonalne argumenty wiersza polecenia do procesora skryptów 
+* **Rozszerzenie**. Rozszerzenie pliku, które mają być obsługiwane, takich jak *.php lub handler.fcgi. 
+* **Ścieżka procesora skryptów**. Ścieżka bezwzględna procesora skryptów. Żądania dostępu do plików, zgodne z rozszerzeniem pliku zostanie przetworzone przez procesor skryptu. Użyj ścieżki `D:\home\site\wwwroot` do odwoływania się do katalogu głównego aplikacji.
+* **Dodatkowe argumenty**. Opcjonalne argumenty wiersza polecenia dla procesora skryptów 
 
 ### <a name="virtual-applications-and-directories"></a>Wirtualne aplikacje i katalogi
-Aby skonfigurować wirtualne aplikacje i katalogi, określ każdy katalog wirtualny i jego odpowiedniego ścieżka fizyczna względem katalogu głównego witryny sieci Web. Opcjonalnie można wybrać **aplikacji** pole wyboru, aby oznaczyć katalogu wirtualnego jako aplikacji.
+Aby skonfigurować wirtualne aplikacje i katalogi, należy określić każdy katalog wirtualny i jego odpowiedniego ścieżka fizyczna względem katalogu głównego witryny sieci Web. Opcjonalnie można wybrać **aplikacji** pole wyboru, aby oznaczyć katalog wirtualny jako aplikacja.
 
 ## <a name="enabling-diagnostic-logs"></a>Włączanie dzienników diagnostycznych
 Aby włączyć dzienniki diagnostyczne:
 
-1. W bloku dla aplikacji sieci web, kliknij **wszystkie ustawienia**.
-2. Kliknij przycisk **dzienniki diagnostyczne**. 
+1. W bloku aplikacji sieci web kliknij **wszystkie ustawienia**.
+2. Kliknij pozycję **Dzienniki diagnostyczne**. 
 
-Opcje zapisywania dzienników diagnostycznych z aplikacji sieci web, która obsługuje rejestrowanie: 
+Opcje do zapisywania dzienników diagnostycznych z aplikacji sieci web, która obsługuje rejestrowanie: 
 
-* **Rejestrowanie aplikacji**. Zapisuje Dzienniki aplikacji w systemie plików. Rejestrowanie okresu w okresie 12 godzin. 
+* **Rejestrowanie aplikacji**. Zapisuje Dzienniki aplikacji w systemie plików. Rejestrowanie jest dostępna na okres 12 godzin. 
 
-**Poziom**. Po włączeniu rejestrowania aplikacji, ta opcja określa, że ilość informacji, które będą rejestrowane (błąd, ostrzeżenie, informacje lub pełne).
+**Poziom**. Gdy jest włączone rejestrowanie aplikacji, ta opcja określa, że ilość informacji, które będą rejestrowane (błąd, ostrzeżenie, informacje lub pełne).
 
-**Rejestrowanie pracy serwera sieci Web**. Dzienniki są zapisywane w rozszerzonym formacie W3C dziennika pliku. 
+**Rejestrowanie serwera sieci Web**. Dzienniki są zapisywane w rozszerzonym formacie W3C dziennika plików. 
 
-**Szczegółowe komunikaty o błędach**. Zapisuje szczegółowe informacje o błędzie komunikatów pliki htm. Pliki są zapisywane w obszarze /LogFiles/DetailedErrors. 
+**Szczegółowe komunikaty o błędach**. Zapisuje szczegółowy komunikat o błędzie komunikatów pliki .htm. Pliki są zapisywane w obszarze /LogFiles/DetailedErrors. 
 
-**Śledzenie nieudanych żądań**. Dzienniki nieudane żądania do plików XML. Pliki są zapisywane w obszarze/LogFiles/W3SVC*xxx*, gdzie xxx jest unikatowy identyfikator. Ten folder zawiera plik XSL i co najmniej jeden plik XML. Upewnij się, że Pobierz plik XSL, ponieważ zapewnia funkcje dotyczące formatowania i filtrowanie zawartości plików XML.
+**Śledzenie żądań zakończonych niepowodzeniem**. Dzienniki nieudanych żądań do plików XML. Pliki są zapisywane w obszarze/LogFiles/W3SVC*xxx*, gdzie xxx to unikatowy identyfikator. Ten folder zawiera pliku XSL i co najmniej jeden plik XML. Upewnij się, że pobieranie pliku XSL, ponieważ zapewnia funkcje dotyczące formatowania i filtrowania zawartości plików XML.
 
-Aby wyświetlić pliki dziennika, należy utworzyć poświadczenia FTP w następujący sposób:
+Aby wyświetlić pliki dziennika, należy utworzyć poświadczeń protokołu FTP w następujący sposób:
 
-1. W bloku dla aplikacji sieci web, kliknij **wszystkie ustawienia**.
-2. Kliknij przycisk **poświadczenia wdrażania**.
+1. W bloku aplikacji sieci web kliknij **wszystkie ustawienia**.
+2. Kliknij przycisk **poświadczenia wdrożenia**.
 3. Wprowadź nazwę użytkownika i hasło.
 4. Kliknij pozycję **Zapisz**.
 
 ![Konfigurowanie poświadczeń wdrożenia][configure03]
 
-Pełna nazwa użytkownika FTP jest "app\username", gdzie *aplikacji* to nazwa aplikacji sieci web. Nazwa użytkownika jest wymieniony w bloku aplikacja sieci web, w obszarze **Essentials**.
+Gdzie jest pełna nazwa użytkownika protokołu FTP "app\username" *aplikacji* to nazwa aplikacji sieci web. Nazwa użytkownika znajduje się w bloku aplikacji sieci web, w obszarze **Essentials**.
 
-![Poświadczenia wdrożenia FTP][configure02]
+![Poświadczeń wdrożenia FTP][configure02]
 
 ## <a name="other-configuration-tasks"></a>Inne zadania konfiguracji
 ### <a name="ssl"></a>Protokół SSL
-W trybie Basic lub Standard możesz przekazać certyfikatów SSL dla domeny niestandardowej. Aby uzyskać więcej informacji, zobacz [Włącz protokół HTTPS dla aplikacji sieci web](app-service-web-tutorial-custom-ssl.md). 
+W trybie Basic lub Standard możesz przekazać certyfikaty SSL dla domeny niestandardowej. Aby uzyskać więcej informacji, zobacz [Włącz protokół HTTPS dla aplikacji sieci web](app-service-web-tutorial-custom-ssl.md). 
 
-Aby wyświetlić przekazane certyfikaty, kliknij przycisk **wszystkie ustawienia** > **domen niestandardowych i SSL**.
+Aby wyświetlić przekazany certyfikatów, kliknij **wszystkie ustawienia** > **domeny niestandardowe i protokół SSL**.
 
 ### <a name="domain-names"></a>Nazwy domen
 Dodawanie niestandardowych nazw domen dla aplikacji sieci web. Aby uzyskać więcej informacji, zobacz [Konfigurowanie niestandardowej nazwy domeny dla aplikacji sieci web w usłudze Azure App Service](app-service-web-tutorial-custom-domain.md).
 
-Aby wyświetlić nazwy domeny, kliknij przycisk **wszystkie ustawienia** > **domen niestandardowych i SSL**.
+Aby wyświetlić nazwy domeny, kliknij **wszystkie ustawienia** > **domeny niestandardowe i protokół SSL**.
 
 ### <a name="deployments"></a>Wdrożenia
-* Konfigurowanie ciągłego wdrażania. Zobacz [przy użyciu narzędzia Git do wdrożenia aplikacji Web Apps w usłudze Azure App Service](app-service-deploy-local-git.md).
-* Miejsc wdrożenia. Zobacz [Wdrażanie na środowisk przejściowych dla aplikacji sieci Web w usłudze aplikacji Azure].
+* Konfigurowanie ciągłego wdrażania. Zobacz [przy użyciu narzędzia Git do wdrożenia aplikacji sieci Web w usłudze Azure App Service](app-service-deploy-local-git.md).
+* Miejsca wdrożenia. Zobacz [Wdróż do środowisk przejściowych dla aplikacji sieci Web w usłudze Azure App Service].
 
-Aby wyświetlić Twojego miejsca wdrożenia, kliknij przycisk **wszystkie ustawienia** > **miejsc wdrożenia**.
+Aby wyświetlić swoje miejsc wdrożenia, kliknij **wszystkie ustawienia** > **miejsc wdrożenia**.
 
 ### <a name="monitoring"></a>Monitorowanie
-W trybie Basic lub Standard można sprawdzić dostępności punktów końcowych HTTP lub HTTPS, z maksymalnie trzech rozproszona geograficznie lokalizacji. Test monitorowania kończy się niepowodzeniem, jeśli kod odpowiedzi HTTP jest błąd (4xx lub 5xx) lub odpowiedzi trwa dłużej niż 30 sekund. Punkt końcowy jest traktowany jako dostępne w przypadku powodzenia testów monitorowania w określonych lokalizacjach. 
+W trybie Basic lub Standard można sprawdzić dostępności punktów końcowych HTTP lub HTTPS, z maksymalnie trzy rozproszone geograficznie lokalizacje. Test monitorowania kończy się niepowodzeniem, jeśli kod odpowiedzi HTTP jest błąd (4xx lub 5xx) lub odpowiedzi trwa dłużej niż 30 sekund. Punkt końcowy jest uważana za dostępną, jeśli testów monitorowania z określonych lokalizacji. 
 
-Aby uzyskać więcej informacji, zobacz [porady: monitorować stan punktu końcowego sieci web].
+Aby uzyskać więcej informacji, zobacz [Porady: monitorowanie stanu punktu końcowego sieci web].
 
 > [!NOTE]
 > Jeśli chcesz zacząć korzystać z usługi Azure App Service przed utworzeniem konta platformy Azure, przejdź do artykułu [Wypróbuj usługę App Service] (Wypróbuj usługę App Service), w którym wyjaśniono, jak od razu utworzyć początkową aplikację internetową o krótkim okresie istnienia w usłudze App Service. Bez kart kredytowych i bez zobowiązań.
@@ -168,19 +169,19 @@ Aby uzyskać więcej informacji, zobacz [porady: monitorować stan punktu końco
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Konfigurowanie niestandardowej nazwy domeny w usłudze Azure App Service]
-* [Włącz protokół HTTPS dla aplikacji w usłudze aplikacji Azure]
+* [Włącz protokół HTTPS dla aplikacji w usłudze Azure App Service]
 * [Skalowanie aplikacji sieci web w usłudze Azure App Service]
-* [Podstawy monitorowania aplikacji sieci Web w usłudze Azure App Service]
+* [Podstawy monitorowania dla aplikacji sieci Web w usłudze Azure App Service]
 
 <!-- URL List -->
 
-[Biblioteka SignalR platformy ASP.NET]: http://www.asp.net/signalr
+[Biblioteki SignalR platformy ASP.NET]: http://www.asp.net/signalr
 [Azure Portal]: https://portal.azure.com/
 [Konfigurowanie niestandardowej nazwy domeny w usłudze Azure App Service]: ./app-service-web-tutorial-custom-domain.md
-[Wdrażanie na środowisk przejściowych dla aplikacji sieci Web w usłudze aplikacji Azure]: ./web-sites-staged-publishing.md
-[Włącz protokół HTTPS dla aplikacji w usłudze aplikacji Azure]: ./app-service-web-tutorial-custom-ssl.md
-[Porady: monitorować stan punktu końcowego sieci web]: http://go.microsoft.com/fwLink/?LinkID=279906
-[Podstawy monitorowania aplikacji sieci Web w usłudze Azure App Service]: ./web-sites-monitor.md
+[Wdróż do środowisk przejściowych dla aplikacji sieci Web w usłudze Azure App Service]: ./web-sites-staged-publishing.md
+[Włącz protokół HTTPS dla aplikacji w usłudze Azure App Service]: ./app-service-web-tutorial-custom-ssl.md
+[Porady: monitorowanie stanu punktu końcowego sieci web]: http://go.microsoft.com/fwLink/?LinkID=279906
+[Podstawy monitorowania dla aplikacji sieci Web w usłudze Azure App Service]: ./web-sites-monitor.md
 [Tryb potokowy]: http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
 [Skalowanie aplikacji sieci web w usłudze Azure App Service]: ./web-sites-scale.md
 [Wypróbuj usługę App Service]: https://azure.microsoft.com/try/app-service/

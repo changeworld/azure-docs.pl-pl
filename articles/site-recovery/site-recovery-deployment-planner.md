@@ -11,20 +11,20 @@ ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 66dda70e2f9b4c0235434fd91a061b43e2489bdf
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
-ms.translationtype: HT
+ms.openlocfilehash: a04a372e52c682af428938514eac5d5e0f4274f0
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915864"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093718"
 ---
 # <a name="azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Planista wdrażania usługi Azure Site Recovery dla oprogramowania VMware na platformie Azure
 Ten artykuł to podręcznik użytkownika planisty wdrażania usługi Azure Site Recovery dla wdrożeń produkcyjnych oprogramowania VMware na platformie Azure.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Zanim zaczniesz chronić maszyny wirtualne oprogramowania VMware za pomocą usługi Azure Site Recovery, przydziel odpowiednią przepustowość zgodnie z częstotliwością dziennych zmian danych, aby osiągnąć założony cel punktu odzyskiwania. Pamiętaj o lokalnym wdrożeniu odpowiedniej liczby serwerów konfiguracji i serwerów przetwarzania.
 
@@ -84,8 +84,8 @@ Narzędzie obejmuje dwa główne etapy — profilowanie i generowanie raportu. J
 
 | Wymaganie dotyczące serwera | Opis|
 |---|---|
-|Profilowanie i pomiar przepływności| <ul><li>System operacyjny: Windows Server 2016 lub Windows Server 2012 R2<br>(w idealnej sytuacji spełniający co najmniej [zalecenia dotyczące rozmiaru serwera konfiguracji](https://aka.ms/asr-v2a-on-prem-components))</li><li>Konfiguracja maszyny: 8 wirtualnych procesorów CPU, 16 GB pamięci RAM, dysk twardy o rozmiarze 300 GB</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Pakiet redystrybucyjny Visual C++ dla Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Dostęp do platformy Azure przez Internet z tego serwera</li><li>Konto magazynu Azure</li><li>Dostęp administratora na serwerze</li><li>Minimalnie 100 GB wolnego miejsca na dysku (przy założeniu 1000 maszyn wirtualnych z średnio trzema dyskami na każdej z nich i profilowanych przez 30 dni)</li><li>Ustawienia poziomu statystyk programu VMware vCenter powinny być na poziomie 2 lub wyższym</li><li>Zezwalaj na port 443: planista wdrażania usługi Site Recovery używa tego portu do nawiązywania połączenia z serwerem vCenter/hostem ESXi</ul></ul>|
-| Generowanie raportu | Dowolny komputer z systemem Windows lub Windows Server i programem Excel 2013 lub nowszym |
+|Profilowanie i pomiar przepływności| <ul><li>System operacyjny: Windows Server 2016 lub Windows Server 2012 R2<br>(w idealnej sytuacji spełniający co najmniej [zalecenia dotyczące rozmiaru serwera konfiguracji](https://aka.ms/asr-v2a-on-prem-components))</li><li>Konfiguracja maszyny: 8 wirtualnych procesorów CPU, 16 GB pamięci RAM, dysk twardy o rozmiarze 300 GB</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Pakiet redystrybucyjny Visual C++ dla Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Dostęp do platformy Azure przez Internet z tego serwera</li><li>Konto magazynu Azure</li><li>Dostęp administratora na serwerze</li><li>Minimalnie 100 GB wolnego miejsca na dysku (przy założeniu 1000 maszyn wirtualnych z średnio trzema dyskami na każdej z nich i profilowanych przez 30 dni)</li><li>Ustawienia poziomu statystyk programu VMware vCenter może być poziomu 1 lub nowszym</li><li>Zezwalaj na port vCenter (domyślnie 443): planista wdrażania usługi Site Recovery używa tego portu, aby nawiązać połączenie z serwerem vCenter/hostem ESXi</ul></ul>|
+| Generowanie raportu | Komputer Windows lub Windows Server z programem Excel 2013 lub nowszym.<li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Pakiet redystrybucyjny Visual C++ dla Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>[Oprogramowania VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli) jest wymagany tylko wtedy, gdy przekazujesz — opcja użytkownika w polecenie generowania raportu, aby pobrać najnowsze informacje o konfiguracji maszyn wirtualnych maszyn wirtualnych. Planista Depolyment łączy z programem vCenter server. Zezwalaj na port portu (domyślnie 443), aby połączyć się z serwerem vCenter vCenter.</li>|
 | Uprawnienia użytkowników | Uprawnienia tylko do odczytu dla konta użytkownika używanego do uzyskiwania dostępu do serwera VMware vCenter/hosta VMware vSphere ESXi podczas profilowania |
 
 > [!NOTE]
@@ -127,5 +127,5 @@ Jeśli masz wcześniejszą wersję planisty wdrażania, wykonaj jedną z następ
 Najnowszą wersją narzędzia Planista wdrażania usługi Site Recovery jest wersja 2.2.
 Informacje na temat poprawek, które zostały dodane w poszczególnych aktualizacjach, możesz znaleźć na stronie [Historia wersji narzędzia Planista wdrażania usługi Site Recovery](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 [Uruchamianie planisty wdrażania usługi Site Recovery](site-recovery-vmware-deployment-planner-run.md)

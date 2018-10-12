@@ -22,6 +22,10 @@ items:
     href: tutorial-deploy-models-with-aml.md
   - name: Szkolenie zautomatyzowanych modeli uczenia maszynowego
     href: tutorial-auto-train-models.md
+- name: Przykłady
+  items:
+  - name: Notesy Jupyter (GitHub)
+    href: http://aka.ms/aml-notebooks
 - name: Pojęcia
   items:
   - name: Jak działa usługa
@@ -115,6 +119,8 @@ items:
   items:
   - name: Zestaw SDK uczenia maszynowego
     href: http://aka.ms/aml-sdk
+  - name: Zestaw SDK do przygotowywania danych
+    href: http://aka.ms/data-prep-sdk
   - name: Interfejs wiersza polecenia uczenia maszynowego
     href: reference-azure-machine-learning-cli.md
 - name: Zasoby
@@ -333,9 +339,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: Stare problemy
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: f5d778c032383f0573ce7e60f6bf0ab46b0126b3
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 6e0224a614bdf457e210b00f186bd531b5053bf4
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079518"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49113685"

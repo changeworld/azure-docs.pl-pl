@@ -13,16 +13,16 @@ ms.topic: reference
 ms.date: 08/09/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4585b6d4e9e3f6c64e1c583b947f979b8edc5a74
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 5f597425fc3813f243950b16f5debbd63ce3a805
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830263"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49113941"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Funkcje Azure podlegają skalowaniu i hosting
 
-Usługa Azure Functions jest uruchamiany w dwóch różnych trybach: plan zużycie i plan usługi Azure App Service. Plan zużycie automatycznie przydziela moc obliczeniową, gdy kod jest uruchomiony. Twoja aplikacja jest skalowana w poziomie, gdy trzeba obsłużyć obciążenie i skalowane w dół, gdy kod nie jest uruchomiony. Nie trzeba płacić za bezczynnych maszyn wirtualnych lub zarezerwować pojemności z wyprzedzeniem. Ten artykuł koncentruje się na plan zużycie [bezserwerowe](https://azure.microsoft.com/overview/serverless-computing/) modelu aplikacji. Aby uzyskać szczegółowe informacje dotyczące sposobu działania dedykowanego planu usługi App Service, zobacz [szczegółowe omówienie planów usługi Azure App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
+Usługa Azure Functions jest uruchamiany w dwóch różnych trybach: plan zużycie i plan usługi Azure App Service. Plan zużycie automatycznie przydziela moc obliczeniową, gdy kod jest uruchomiony. Twoja aplikacja jest skalowana w poziomie, gdy trzeba obsłużyć obciążenie i skalowane w dół, gdy kod nie jest uruchomiony. Nie trzeba płacić za bezczynnych maszyn wirtualnych lub zarezerwować pojemności z wyprzedzeniem. Ten artykuł koncentruje się na plan zużycie [bezserwerowe](https://azure.microsoft.com/solutions/serverless/) modelu aplikacji. Aby uzyskać szczegółowe informacje dotyczące sposobu działania dedykowanego planu usługi App Service, zobacz [szczegółowe omówienie planów usługi Azure App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
 
 > [!NOTE]  
 > [Hosting systemu Linux](functions-create-first-azure-function-azure-cli-linux.md) jest obecnie dostępna tylko w planie usługi App Service.
