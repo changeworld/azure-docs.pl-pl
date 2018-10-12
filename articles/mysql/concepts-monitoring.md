@@ -8,16 +8,16 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 09/17/2018
-ms.openlocfilehash: 3c9e0acfe9f8ffb159cacf50923f249be175ea77
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.date: 10/03/2018
+ms.openlocfilehash: c2248f185c5c1c5dd8c4e1d4a24e6145a82ec5cb
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981944"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091559"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Monitorowanie usługi Azure Database for MySQL
-Dane dotyczące serwerów monitorowania ułatwia rozwiązywanie problemów i zoptymalizować dla obciążenia. Usługa Azure Database for MySQL zapewnia różne metryki, które zapewniają wgląd w zachowanie zasobach obsługujących serwera MySQL. 
+Dane dotyczące serwerów monitorowania ułatwia rozwiązywanie problemów i zoptymalizować dla obciążenia. Usługa Azure Database for MySQL zapewnia różne metryki, które zapewniają wgląd w zachowania serwera.
 
 ## <a name="metrics"></a>Metryki
 Wszystkie metryki usługi Azure mieć częstotliwość co minutę, a wszystkie metryki zapewnia 30 dni historii. Można skonfigurować alerty dotyczące metryk. Aby uzyskać wskazówki krok po kroku, zobacz [jak skonfigurować alerty](howto-alert-on-metric.md). Inne zadania obejmują skonfigurowanie zautomatyzowanych akcji, wykonywanie zaawansowanych analiz i archiwizowanie historii. Aby uzyskać więcej informacji, zobacz [Przegląd metryk usługi Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
@@ -41,6 +41,9 @@ Te metryki są dostępne dla usługi Azure Database for MySQL:
 |seconds_behind_master|Opóźnienie replikacji w ciągu kilku sekund|Licznik|Liczba sekund, przez serwer repliki jest opóźnione względem serwera głównego.|
 |network_bytes_egress|Sieć — wyjście|Bajty|Sieć się między aktywnych połączeń.|
 |network_bytes_ingress|Sieć — wejście|Bajty|Sieć w różnych aktywnych połączeń.|
+
+## <a name="server-logs"></a>Dzienniki serwera
+Można włączyć wolnych zapytań rejestrowania na serwerze. Te dzienniki są również dostępne dzienniki diagnostyczne platformy Azure w usłudze OMS Log Analytics, usługi Event Hubs i konto magazynu. Aby dowiedzieć się więcej na temat rejestrowania, odwiedź stronę [dzienniki serwera](concepts-server-logs.md) strony.
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Zobacz [jak skonfigurować alerty](howto-alert-on-metric.md) wskazówki dotyczące tworzenia alertu na metrykę.

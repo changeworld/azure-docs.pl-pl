@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 8c6736d52ea0854a83bb213077c21946dc23141f
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 3565793347a8c9704e51e893e5aa916cf54cab8e
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857435"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115577"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -131,7 +131,7 @@ Ten problem może wystąpić, jeśli proces Monitor synchronizacji magazynu nie 
 
 Aby rozwiązać ten problem, wykonaj następujące czynności:
 
-1. Otwórz Menedżera zadań na serwerze i upewnij się, że proces Monitor synchronizacji magazynu (AzureStorageSyncMonitor.exe) jest uruchomiony. Jeśli nie jest uruchomiony proces, najpierw spróbują ponowne uruchomienie serwera. Jeśli ponowne uruchomienie serwera nie rozwiąże problemu, odinstaluj i ponownie zainstaluj agenta usługi Azure File Sync (Uwaga: ustawienia serwera są zachowywane po odinstalowanie i ponowne zainstalowanie agenta).
+1. Otwórz Menedżera zadań na serwerze i upewnij się, że proces Monitor synchronizacji magazynu (AzureStorageSyncMonitor.exe) jest uruchomiony. Jeśli nie jest uruchomiony proces, najpierw spróbują ponowne uruchomienie serwera. Jeśli ponowne uruchomienie serwera nie rozwiąże problemu, Uaktualnij agenta usługi Azure File Sync do wersji [3.3.0.0]( https://support.microsoft.com/help/4457484/update-rollup-for-azure-file-sync-agent-september-2018) Jeśli nie jest obecnie zainstalowane.
 2. Sprawdź, czy ustawienia zapory i serwera Proxy zostały prawidłowo skonfigurowane:
     - Jeśli serwer znajduje się za zaporą, sprawdź, czy jest dozwolony przez port 443 wychodzących. Jeśli zapora będzie ograniczała ruch do określonych domen, upewnij się, domen, na liście w zaporze [dokumentacji](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) są dostępne.
     - Jeśli serwer znajduje się za serwerem proxy, skonfiguruj ustawienia serwera proxy dla komputera lub specyficzne dla aplikacji, wykonując kroki na serwerze proxy [dokumentacji](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy).

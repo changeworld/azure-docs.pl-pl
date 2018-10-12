@@ -13,52 +13,52 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 8fd88a0e3c5b387ce3ea586f6f23b3643a03e58d
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 22e28e208d46a23a2dd7e36e1c3ba4be13be928a
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618171"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091959"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Przekazywanie uogólnionego wirtualnego dysku twardego i użyć go do utworzenia nowych maszyn wirtualnych na platformie Azure
 
-Ten temat przeprowadzi Cię przez przy użyciu programu PowerShell do przekazania dysku VHD uogólnionej maszyny wirtualnej na platformie Azure, utworzyć obraz z wirtualnego dysku twardego i tworzenie nowej maszyny Wirtualnej na podstawie tego obrazu. Możesz przekazać wirtualny dysk twardy wyeksportowane z narzędzia wirtualizacji w środowisku lokalnym lub innej chmury. Za pomocą [Managed Disks](managed-disks-overview.md) dla nowej maszyny Wirtualnej upraszcza zarządzanie maszyny Wirtualnej i zapewnia lepszą dostępność, gdy maszyna wirtualna jest umieszczany w zestawie dostępności. 
+Ten artykuł przeprowadzi przy użyciu programu PowerShell do przekazania dysku VHD uogólnionej maszyny wirtualnej na platformie Azure, utworzyć obraz z wirtualnego dysku twardego i tworzenie nowej maszyny Wirtualnej na podstawie tego obrazu. Możesz przekazać wirtualny dysk twardy wyeksportowane z narzędzia wirtualizacji w środowisku lokalnym lub innej chmury. Za pomocą [Managed Disks](managed-disks-overview.md) dla nowej maszyny Wirtualnej upraszcza zarządzanie maszyny Wirtualnej i zapewnia lepszą dostępność, gdy maszyna wirtualna jest umieszczany w zestawie dostępności. 
 
-Jeśli chcesz użyć przykładowego skryptu, zobacz [przykładowy skrypt w celu przekazania dysku VHD na platformie Azure i Utwórz nową maszynę Wirtualną](../scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+Aby uzyskać przykładowy skrypt, zobacz [przykładowy skrypt w celu przekazania dysku VHD na platformie Azure i Utwórz nową maszynę Wirtualną](../scripts/virtual-machines-windows-powershell-upload-generalized-script.md).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-- Przed przekazaniem jakiegokolwiek dysku VHD na platformie Azure, należy przestrzegać [przygotowanie Windows dysku VHD lub VHDX można przekazać na platformę Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- Przed przekazaniem jakiegokolwiek dysku VHD na platformie Azure, należy przestrzegać [przygotowanie Windows dysku VHD lub VHDX można przekazać na platformę Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 - Przegląd [zaplanować migrację do usługi Managed Disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) przed rozpoczęciem migracji do [Managed Disks](managed-disks-overview.md).
-- Ten artykuł wymaga AzureRM modułu w wersji 5.6 lub nowszej. Uruchom polecenie ` Get-Module -ListAvailable AzureRM.Compute`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+- Ten artykuł wymaga modułu AzureRM w wersji 5.6 lub nowszy. Uruchom ` Get-Module -ListAvailable AzureRM.Compute` można znaleźć wersji. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 
-## <a name="generalize-the-source-vm-using-sysprep"></a>Uogólnianie źródłowej maszyny Wirtualnej za pomocą programu Sysprep
+## <a name="generalize-the-source-vm-by-using-sysprep"></a>Uogólnianie źródłowej maszyny Wirtualnej przy użyciu narzędzia Sysprep
 
 Narzędzie Sysprep między innymi usuwa wszystkie informacje osobiste związane z kontem i przygotowuje maszynę do używania jako obraz. Aby uzyskać szczegółowe informacje o narzędziu Sysprep, zobacz [Omówienie programu Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
-Upewnij się, że role serwera uruchomionego na maszynie są obsługiwane przez program Sysprep. Aby uzyskać więcej informacji, zobacz [Obsługa narzędzia Sysprep dla ról serwera](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+Upewnij się, że role serwera uruchomionego na maszynie są obsługiwane przez program Sysprep. Aby uzyskać więcej informacji, zobacz [Obsługa narzędzia Sysprep dla ról serwera](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
 
 > [!IMPORTANT]
-> Jeśli używasz narzędzia Sysprep przed przekazaniem wirtualnego dysku twardego na platformie Azure po raz pierwszy, upewnij się, że masz [przygotować maszyny Wirtualnej](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) przed uruchomieniem programu Sysprep. 
+> Jeśli użytkownik chce uruchomić programu Sysprep przed przekazaniem wirtualnego dysku twardego na platformie Azure po raz pierwszy, upewnij się, masz [przygotować maszyny Wirtualnej](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 > 
 > 
 
 1. Zaloguj się do maszyny wirtualnej Windows.
-2. Otwórz okno wiersza polecenia jako administrator. Zmień katalog na **%windir%\system32\sysprep**, a następnie uruchom `sysprep.exe`.
-3. W oknie dialogowym **Narzędzie przygotowywania systemu** wybierz pozycję **Włącz systemowy tryb OOBE** i upewnij się, że pole wyboru **Uogólnij** jest zaznaczone.
-4. W **opcje zamykania**, wybierz opcję **zamknięcia**.
+2. Otwórz okno wiersza polecenia jako administrator. Zmień katalog na % windir%\system32\sysprep, a następnie uruchom `sysprep.exe`.
+3. W **narzędzie przygotowywania systemu** okno dialogowe, wybierz opcję **wprowadź System Out-of-Box środowiska (OOBE)** i upewnij się, że **Generalize** pole wyboru jest włączone.
+4. Aby uzyskać **opcje zamykania**, wybierz opcję **zamknięcia**.
 5. Kliknij przycisk **OK**.
    
     ![Uruchom program Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
-6. Gdy narzędzie Sysprep zakończy działanie, maszyna wirtualna zostanie wyłączona. Nie uruchamiaj ponownie maszyny Wirtualnej.
+6. Po zakończeniu zamknięcie maszyny wirtualnej. Nie uruchamiaj ponownie maszyny Wirtualnej.
 
 
-## <a name="get-the-storage-account"></a>Pobierz konto magazynu
+## <a name="get-a-storage-account"></a>Utwórz konto magazynu
 
-Wymagane jest konto magazynu na platformie Azure do przechowywania przekazanego obrazu maszyny Wirtualnej. Możesz użyć istniejącego konta magazynu lub Utwórz nową. 
+Musisz mieć konto magazynu, na platformie Azure do przechowywania przekazanego obrazu maszyny Wirtualnej. Możesz użyć istniejącego konta magazynu lub Utwórz nową. 
 
 Jeśli wirtualny dysk twardy będzie używany do utworzenia dysku zarządzanego dla maszyny Wirtualnej, Lokalizacja konta magazynu musi być w tej samej lokalizacji, w którym zostanie utworzona maszyna wirtualna.
 
@@ -70,7 +70,7 @@ Get-AzureRmStorageAccount | Format-Table
 
 ## <a name="upload-the-vhd-to-your-storage-account"></a>Przekazanie dysku VHD do konta magazynu
 
-Użyj [Add-AzureRmVhd](https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd) polecenia cmdlet do przekazania dysku VHD do kontenera na koncie magazynu. Ten przykładowy przekazuje plik *myVHD.vhd* z *"dyski twarde C:\Users\Public\Documents\Virtual\"*  na konto magazynu o nazwie *mystorageaccount* w *myResourceGroup* grupy zasobów. Plik zostanie umieszczony w kontenerze o nazwie *mycontainer* nową nazwę pliku. zostanie ona *myUploadedVHD.vhd*.
+Użyj [Add-AzureRmVhd](https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd) polecenia cmdlet do przekazania dysku VHD do kontenera na koncie magazynu. Ten przykładowy przekazuje plik *myVHD.vhd* z *dyski twarde C:\Users\Public\Documents\Virtual\\*  na konto magazynu o nazwie *mystorageaccount* w *myResourceGroup* grupy zasobów. Plik zostanie umieszczony w kontenerze o nazwie *mycontainer* nową nazwę pliku. zostanie ona *myUploadedVHD.vhd*.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -94,7 +94,7 @@ LocalFilePath           DestinationUri
 C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
 ```
 
-W zależności od połączenia sieciowego i rozmiar pliku wirtualnego dysku twardego tego polecenia może potrwać trochę czasu
+W zależności od połączenia sieciowego i rozmiar pliku wirtualnego dysku twardego tego polecenia może potrwać trochę czasu.
 
 ### <a name="other-options-for-uploading-a-vhd"></a>Inne opcje do przekazania dysku VHD
  
@@ -108,7 +108,7 @@ Możesz również przekazać dysku VHD do konta magazynu przy użyciu jednej z n
     Import/Export może służyć do skopiowania do konta magazynu w warstwie standardowa. Należy skopiować z magazynu standard storage do konta usługi premium storage przy użyciu narzędzia, takiego jak narzędzie AzCopy.
 
 > [!IMPORTANT]
-> Jeśli używasz narzędzia AzCopy przekazywanie wirtualnego dysku twardego na platformie Azure, upewnij się, zostały ustawione [/BlobType:page](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#blobtypeblock--page--append) przed uruchomieniem przekazywanie skryptu. Jeśli obiektem docelowym jest obiekt blob, a ta opcja nie jest określona, domyślnie narzędzie AzCopy utworzy blokowych obiektów blob.
+> Jeśli przekazywanie wirtualnego dysku twardego do systemu Azure przy użyciu narzędzia AzCopy upewnij się, zostało ustawione [ **/BlobType:page** ](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#blobtypeblock--page--append) przed uruchomieniem skryptu przekazywania. Jeśli obiektem docelowym jest obiekt blob, a ta opcja nie jest określona, narzędzie AzCopy domyślnie tworzy blokowych obiektów blob.
 > 
 > 
 
@@ -116,7 +116,7 @@ Możesz również przekazać dysku VHD do konta magazynu przy użyciu jednej z n
 
 ## <a name="create-a-managed-image-from-the-uploaded-vhd"></a>Tworzenie obrazu zarządzanego na podstawie przekazanych wirtualnego dysku twardego 
 
-Utworzenie obrazu zarządzanego przy użyciu uogólnionego wirtualnego dysku twardego systemu operacyjnego. Zastąp wartości, podając własne informacje.
+Utworzenie obrazu zarządzanego z uogólnionego wirtualnego dysku twardego systemu operacyjnego. Zastąp następujące wartości, podając własne informacje.
 
 
 Najpierw należy ustawić niektóre parametry:

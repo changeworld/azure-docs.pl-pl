@@ -3,8 +3,8 @@ title: Funkcje aparatu reguł usługi Azure CDN | Dokumentacja firmy Microsoft
 description: Dokumentacja dotycząca usługi Azure CDN funkcje aparatu reguł.
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: v-deasim
-ms.openlocfilehash: 57648486e515b5438f937c4295b33843583e622e
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.author: magattus
+ms.openlocfilehash: c5f486498e357927880ae51c1fec13a00296b457
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42057547"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093362"
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Funkcje aparatu reguł usługi Azure CDN
 W tym artykule przedstawiono szczegółowe opisy dostępnych funkcji dla usługi Azure Content Delivery Network (CDN) [aparat reguł](cdn-rules-engine.md).
@@ -942,7 +942,7 @@ Informacje o kluczu:
     - content-encoding
     - content-length
     - zakres zawartości
-    - data
+    - date
     - serwer
     - Zwiastuny —
     - kodowanie transferu

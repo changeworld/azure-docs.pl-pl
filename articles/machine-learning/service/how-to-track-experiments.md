@@ -9,12 +9,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: ced10a54d569531b06ee47b646130f43cedd2963
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3256c8815b19f9b070cce3cd422f92c296e3e5c3
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984606"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115186"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Śledzenie eksperymentów i szkolenia metryk w usłudze Azure Machine Learning
 
@@ -148,7 +148,7 @@ W tym przykładzie stanowi rozszerzenie podstawowego modelu Ridge skryptu sklear
           "test": {"X": X_test, "y": y_test}}
 
   # list of numbers from 0.0 to 1.0 with a 0.05 interval
-  alphas = np.arange(0.0, 1.0, 0.05)
+  alphas = mylib.get_alphas()
 
   for alpha in alphas:
       # Use Ridge algorithm to create a regression model
@@ -213,7 +213,7 @@ W tym przykładzie stanowi rozszerzenie podstawowego modelu Ridge skryptu sklear
 ## <a name="view-run-details"></a>Wyświetl szczegóły przebiegu
 
 ### <a name="monitor-run-with-jupyter-notebook-widgets"></a>Monitorowanie uruchomienia widżetów notesu programu Jupyter
-Kiedy używasz **ScriptRunConfig** metodę, aby przesłać działa, możesz obserwować postęp wykonywania za pomocą elementu widget notesu programu Jupyter. Np. wykonywania przesyłania widżet jest asynchroniczny i udostępnia jej aktualizacje na żywo co 10 – 15 sekund, aż do zakończenia zadania.
+Kiedy używasz **ScriptRunConfig** metodę, aby przesłać działa, możesz obserwować postęp wykonywania za pomocą elementu widget notesu programu Jupyter. Podobnie jak przesyłanie przebiegu, widżet jest asynchroniczny i udostępnia aktualizacje na bieżąco co 10–15 sekund aż do zakończenia zadania.
 
 1. Wyświetl element widget Jupyter podczas oczekiwania na przebieg zakończyć.
 
@@ -224,7 +224,7 @@ Kiedy używasz **ScriptRunConfig** metodę, aby przesłać działa, możesz obse
 
   ![Zrzut ekranu aplikacji Jupyter notebook widżetu](./media/how-to-track-experiments/widgets.PNG)
 
-### <a name="get-log-results-upon-completion"></a>Pobierz wyniki dziennika po zakończeniu
+### <a name="get-log-results-upon-completion"></a>Pobieranie wyników dziennika po zakończeniu
 
 Model uczenia i monitorowania wystąpić w tle, aby uruchomić inne zadania podczas oczekiwania. Można również poczekać, aż modelu została zakończona szkolenia przed uruchomieniem więcej kodu. Kiedy używasz **ScriptRunConfig**, możesz użyć ```run.wait_for_completion(show_output = True)``` do wyświetlenia po zakończeniu szkolenia modelu. ```show_output``` Flagi zapewnia pełne dane wyjściowe. 
   
@@ -247,8 +247,8 @@ Można również wyświetlić wszystkie dane wyjściowe lub dzienniki dla urucho
 
 ## <a name="example-notebooks"></a>Przykład notesów
 Następujące notesów zademonstrowania koncepcji w tym artykule:
-* `01.getting-started/01.train-within-notebook/01.train-within-notebook.ipynb`
-* `01.getting-started/02.train-on-local/02.train-on-local.ipynb`
+* [01.Getting-Started/01.Train-WITHIN-notebook/01.Train-WITHIN-notebook.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/01.train-within-notebook)
+* [01.Getting-Started/02.Train-on-Local/02.Train-on-Local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local)
 
 Pobierz te notesy: [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

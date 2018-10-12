@@ -10,16 +10,15 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 2927521a76e74686592fbc4b3ccb931ece7981fd
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: df86b8466291ee6b1cb5baf7f0a16bec9c719c6f
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803311"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115131"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak, które wymuszają weryfikację dwuetapową dla użytkownika
-
-Można wybrać jedno z dwóch podejść do wymagania weryfikacji dwuetapowej. Pierwszym z nich jest umożliwienie każdy użytkownik usługi Azure Multi-Factor Authentication (MFA). Gdy użytkownicy są włączone indywidualnie, wykonują weryfikacji dwuetapowej każdym logowaniu (z pewnymi wyjątkami, takie jak podczas logowania z zaufanego adresu IP adresów lub _zapamiętanych urządzeniach_ jest włączona funkcja). Drugą opcją jest, aby skonfigurować zasady dostępu warunkowego, które wymagają weryfikacji dwuetapowej pod pewnymi warunkami.
+Można wybrać jedno z dwóch metod do wymagania weryfikacji dwuetapowej, które wymagają przy użyciu konta administratora globalnego. Pierwszym z nich jest umożliwienie każdy użytkownik usługi Azure Multi-Factor Authentication (MFA). Gdy użytkownicy są włączone indywidualnie, wykonują weryfikacji dwuetapowej każdym logowaniu (z pewnymi wyjątkami, takie jak podczas logowania z zaufanego adresu IP adresów lub _zapamiętanych urządzeniach_ jest włączona funkcja). Drugą opcją jest, aby skonfigurować zasady dostępu warunkowego, które wymagają weryfikacji dwuetapowej pod pewnymi warunkami.
 
 > [!TIP]
 > Wybierz jedną z następujących metod, które wymuszają weryfikację dwuetapową, nie obydwa. Włączanie usługi Azure Multi-Factor Authentication użytkownik zastępuje wszystkie zasady dostępu warunkowego.
@@ -36,7 +35,7 @@ Obsługiwane przez usługę Azure AD Identity Protection — ta metoda używa za
 > Więcej informacji na temat licencji i ceny można znaleźć na [usługi Azure AD](https://azure.microsoft.com/pricing/details/active-directory/
 ) i [uwierzytelnianie wieloskładnikowe](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) stronach z cennikami.
 
-## <a name="enable-azure-mfa-by-changing-user-status"></a>Włącz usługę Azure MFA, zmieniając stan użytkownika
+## <a name="enable-azure-mfa-by-changing-user-state"></a>Włącz usługę Azure MFA, zmieniając stanu użytkownika
 
 Konta użytkowników w usłudze Azure Multi-Factor Authentication mają następujące trzy różne stany:
 

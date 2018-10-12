@@ -14,26 +14,168 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: e3efb19010f36a6ef1fa0a191695a0e2c9f39d19
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 70e4e131cd83c6e80bc9b61a91cfd98adee0c952
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190525"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116950"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Informacje o wersji programu Microsoft Azure Storage Explorer
 
-Ten artykuł zawiera informacje o wersji programu Azure Storage Explorer 1.4.1 wersji, a także informacje o wersji dla wcześniejszych wersji.
+Ten artykuł zawiera informacje o wersji programu Azure Storage Explorer 1.4.3 wersji, a także informacje o wersji dla wcześniejszych wersji.
 
 [Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) jest aplikacją autonomiczną, która umożliwia łatwą obsługę danych w usłudze Azure Storage w Windows, macOS i Linux.
 
+## <a name="version-143"></a>Wersja 1.4.3
+10/11/2018 r.
+
+### <a name="download-azure-storage-explorer-143"></a>Pobierz bezpłatnie Eksplorator magazynu Azure 1.4.3
+- [Usługa Azure Storage Explorer 1.4.3 dla Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Eksplorator usługi Azure Storage 1.4.3 dla komputerów Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Eksplorator usługi Azure Storage 1.4.3 dla systemu Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="hotfixes"></a>Poprawki
+* Wersja interfejsu Api Azure Resource Management została wycofana odblokowania użytkowników dla administracji USA. [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
+* Trwa ładowanie pokręteł teraz używają animacji CSS skrócenie GPU wykorzystywane przez Eksploratora magazynu. [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
+
+### <a name="new"></a>Nowa
+* Załączniki zewnętrznego zasobu, takie jak w przypadku połączenia SAS i emulatorów, została znacznie ulepszona. Teraz możesz wykonywać następujące czynności:
+   * Dostosuj nazwę wyświetlaną zasób, który jest podłączany. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
+   * Dołącz do wielu emulatorów lokalnego przy użyciu różnych portów. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
+   * Dodaj zasoby dołączone do paska szybki dostęp. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
+* Eksplorator usługi Storage obsługuje teraz usuwanie nietrwałe. Możesz:
+   * Skonfiguruj zasady usuwanie nietrwałe, klikając prawym przyciskiem myszy w węźle kontenery obiektów Blob konta magazynu.
+   * Widok nietrwale usunięte obiekty BLOB w Edytorze obiektów Blob, wybierając pozycję "Active i usunięte obiekty BLOB" w menu rozwijanym obok paska nawigacji.
+   * Usuniętych nietrwale usunięte obiekty BLOB.
+
+### <a name="fixes"></a>Poprawki
+* Akcja "Konfiguruj ustawienia specyfikacji CORS" nie jest już dostępna dla kont usługi Premium Storage ponieważ kont usługi Premium Storage nie obsługują mechanizmu CORS. [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
+* Teraz jest właściwością sygnatura dostępu współdzielonego dla usługi z dołączoną sygnatury dostępu Współdzielonego. [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
+* Akcja "Ustaw domyślna Warstwa dostępu" jest teraz dostępne dla obiektów Blob i magazynu GPV2 konta, które zostały przypięte do paska szybki dostęp. [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
+* Czasami Eksploratora usługi Storage zakończy się niepowodzeniem pokazać klasycznych kont magazynu. [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
+
+### <a name="known-issues"></a>Znane problemy
+* Przy użyciu emulatorów, takich jak Emulator usługi Azure Storage lub Azurite, należy je nasłuchiwać połączeń na ich domyślne porty. W przeciwnym razie Eksploratora usługi Storage nie będzie można połączyć się z nimi.
+* Jeśli używasz programu VS dla komputerów Mac i nigdy nie zostały utworzone niestandardowej konfiguracji usługi AAD, możesz nie mieć możliwości logowania. Aby obejść ten problem, usuń zawartość ~ /. IdentityService/AadConfigurations. Jeśli to nie niedogodność, należy dodać komentarz dotyczący [ten problem](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* Azurite nie została jeszcze w pełni zaimplementowana wszystkie interfejsy API usługi Storage. W związku z tym może występować nieoczekiwanych błędów lub zachowanie w przypadku używania Azurite dla magazynem projektowym.
+* W rzadkich przypadkach fokus drzewa może zakończyć się zatrzymaniem na szybki dostęp. Aby odklej fokus, można na nim Odśwież wszystko.
+* Przekazywanie z folderu usługi OneDrive nie działa z powodu błędów w środowisku NodeJS. Błąd został rozwiązany, ale nie są jeszcze zintegrowane z elektronów.
+* Przeznaczone dla usługi Azure Stack, przekazywanie pewne pliki jako uzupełnialnych obiektów blob może zakończyć się niepowodzeniem.
+* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. To dlatego używamy opisane obejście filtr Anuluj [tutaj](https://github.com/Azure/azure-storage-node/issues/317).
+* Jeśli wybrano nieprawidłowy numer PIN/certyfikatu karty inteligentnej, należy uruchomić ponownie, aby mogła mieć Eksploratora usługi Storage zapomnij tej decyzji.
+* Zmiana nazwy obiektów blob (pojedynczo lub w kontenerze obiektów blob zmieniono nazwę) nie zostaną zachowane migawki. Wszystkie właściwości i metadanych obiektów blob, plików oraz jednostki są zachowywane podczas zmiany nazwy.
+* Mimo że usługę Azure Stack, obecnie nie obsługuje udziałów plików, udziały plików nadal pojawia się pod węzłem dołączone konto magazynu usługi Azure Stack.
+* Powłoka elektronów wykorzystywane przez Eksploratora magazynu ma problemy z niektórych przyspieszania sprzętowego procesora GPU (jednostka przetwarzania grafiki). Jeśli Eksplorator usługi Storage wyświetla puste okno główne (pusty), możesz spróbować uruchomienie Eksploratora usługi Storage z poziomu wiersza polecenia i wyłączanie przyspieszenie procesora GPU, dodając `--disable-gpu` przełącznika:
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* Użytkownicy systemu Linux, musisz zainstalować [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Dla użytkowników w systemie Ubuntu 14.04, konieczne będzie upewnij się, GCC jest aktualne — można to zrobić, uruchamiając następujące polecenia, a następnie ponownym uruchomieniu komputera:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Dla użytkowników w systemie Ubuntu 17.04 będą musieli zainstalować GConf — można to zrobić, uruchamiając następujące polecenia, a następnie ponownym uruchomieniu komputera:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="previous-releases"></a>Poprzednie wersje
+
+* [W wersji 1.4.2](#version-142)
+* [Wersja 1.4.1](#version-141)
+* [Wersja 1.3.0](#version-130)
+* [Wersji 1.2.0 lub nowszej](#version-120)
+* [Wersji 1.1.0](#version-110)
+* [Wersja 1.0.0](#version-100)
+* [Wersja 0.9.6](#version-096)
+* [Wersja 0.9.5](#version-095)
+* [Wersja 0.9.4 i 0.9.3](#version-094-and-093)
+* [Wersja 0.9.2](#version-092)
+* [Wersja 0.9.1 i 0.9.0](#version-091-and-090)
+* [Wersja 0.8.16](#version-0816)
+* [Wersja 0.8.14](#version-0814)
+* [Wersja 0.8.13](#version-0813)
+* [Wersja 0.8.12 i 0.8.11 i 0.8.10](#version-0812-and-0811-and-0810)
+* [Wersja 0.8.9 i 0.8.8](#version-089-and-088)
+* [Wersja 0.8.7](#version-087)
+* [Wersja 0.8.6](#version-086)
+* [Wersja 0.8.5](#version-085)
+* [Wersja 0.8.4](#version-084)
+* [Wersja 0.8.3](#version-083)
+* [Wersja 0.8.2](#version-082)
+* [Wersja 0.8.0](#version-080)
+* [Wersja 0.7.20160509.0](#version-07201605090)
+* [Wersja 0.7.20160325.0](#version-07201603250)
+* [Wersja 0.7.20160129.1](#version-07201601291)
+* [Wersja 0.7.20160105.0](#version-07201601050)
+* [Wersja 0.7.20151116.0](#version-07201511160)
+
+## <a name="version-142"></a>W wersji 1.4.2
+09/24/2018 r.
+
+### <a name="hotfixes"></a>Poprawki
+* Aktualizowanie wersji interfejsu Api zarządzania zasobów platformy Azure na 2018-07-01, aby dodać obsługę nowego rodzaju konta usługi Azure Storage. [#652](https://github.com/Microsoft/AzureStorageExplorer/issues/652)
+
+### <a name="new"></a>Nowa
+* Załączniki zewnętrznego zasobu, takie jak w przypadku połączenia SAS i emulatorów, została znacznie ulepszona. Teraz możesz wykonywać następujące czynności:
+   * Dostosuj nazwę wyświetlaną zasób, który jest podłączany. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
+   * Dołącz do wielu emulatorów lokalnego przy użyciu różnych portów. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
+   * Dodaj zasoby dołączone do paska szybki dostęp. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
+* Eksplorator usługi Storage obsługuje teraz usuwanie nietrwałe. Możesz:
+   * Skonfiguruj zasady usuwanie nietrwałe, klikając prawym przyciskiem myszy w węźle kontenery obiektów Blob konta magazynu.
+   * Widok nietrwale usunięte obiekty BLOB w Edytorze obiektów Blob, wybierając pozycję "Active i usunięte obiekty BLOB" w menu rozwijanym obok paska nawigacji.
+   * Usuniętych nietrwale usunięte obiekty BLOB.
+
+### <a name="fixes"></a>Poprawki
+* Akcja "Konfiguruj ustawienia specyfikacji CORS" nie jest już dostępna dla kont usługi Premium Storage ponieważ kont usługi Premium Storage nie obsługują mechanizmu CORS. [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
+* Teraz jest właściwością sygnatura dostępu współdzielonego dla usługi z dołączoną sygnatury dostępu Współdzielonego. [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
+* Akcja "Ustaw domyślna Warstwa dostępu" jest teraz dostępne dla obiektów Blob i magazynu GPV2 konta, które zostały przypięte do paska szybki dostęp. [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
+* Czasami Eksploratora usługi Storage zakończy się niepowodzeniem pokazać klasycznych kont magazynu. [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
+
+### <a name="known-issues"></a>Znane problemy
+* Przy użyciu emulatorów, takich jak Emulator usługi Azure Storage lub Azurite, należy je nasłuchiwać połączeń na ich domyślne porty. W przeciwnym razie Eksploratora usługi Storage nie będzie można połączyć się z nimi.
+* Jeśli używasz programu VS dla komputerów Mac i nigdy nie zostały utworzone niestandardowej konfiguracji usługi AAD, możesz nie mieć możliwości logowania. Aby obejść ten problem, usuń zawartość ~ /. IdentityService/AadConfigurations. Jeśli to nie niedogodność, należy dodać komentarz dotyczący [ten problem](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* Azurite nie została jeszcze w pełni zaimplementowana wszystkie interfejsy API usługi Storage. W związku z tym może występować nieoczekiwanych błędów lub zachowanie w przypadku używania Azurite dla magazynem projektowym.
+* W rzadkich przypadkach fokus drzewa może zakończyć się zatrzymaniem na szybki dostęp. Aby odklej fokus, można na nim Odśwież wszystko.
+* Przekazywanie z folderu usługi OneDrive nie działa z powodu błędów w środowisku NodeJS. Błąd został rozwiązany, ale nie są jeszcze zintegrowane z elektronów.
+* Przeznaczone dla usługi Azure Stack, przekazywanie pewne pliki jako uzupełnialnych obiektów blob może zakończyć się niepowodzeniem.
+* Po kliknięciu przycisku "Anuluj" do zadania, może upłynąć trochę czasu tego zadania anulować. To dlatego używamy opisane obejście filtr Anuluj [tutaj](https://github.com/Azure/azure-storage-node/issues/317).
+* Jeśli wybrano nieprawidłowy numer PIN/certyfikatu karty inteligentnej, należy uruchomić ponownie, aby mogła mieć Eksploratora usługi Storage zapomnij tej decyzji.
+* Zmiana nazwy obiektów blob (pojedynczo lub w kontenerze obiektów blob zmieniono nazwę) nie zostaną zachowane migawki. Wszystkie właściwości i metadanych obiektów blob, plików oraz jednostki są zachowywane podczas zmiany nazwy.
+* Mimo że usługę Azure Stack, obecnie nie obsługuje udziałów plików, udziały plików nadal pojawia się pod węzłem dołączone konto magazynu usługi Azure Stack.
+* Powłoka elektronów wykorzystywane przez Eksploratora magazynu ma problemy z niektórych przyspieszania sprzętowego procesora GPU (jednostka przetwarzania grafiki). Jeśli Eksplorator usługi Storage wyświetla puste okno główne (pusty), możesz spróbować uruchomienie Eksploratora usługi Storage z poziomu wiersza polecenia i wyłączanie przyspieszenie procesora GPU, dodając `--disable-gpu` przełącznika:
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* Użytkownicy systemu Linux, musisz zainstalować [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Dla użytkowników w systemie Ubuntu 14.04, konieczne będzie upewnij się, GCC jest aktualne — można to zrobić, uruchamiając następujące polecenia, a następnie ponownym uruchomieniu komputera:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Dla użytkowników w systemie Ubuntu 17.04 będą musieli zainstalować GConf — można to zrobić, uruchamiając następujące polecenia, a następnie ponownym uruchomieniu komputera:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
 ## <a name="version-141"></a>Wersja 1.4.1
 08/28/2018 r.
-
-### <a name="download-azure-storage-explorer-141"></a>Pobierz bezpłatnie Eksplorator magazynu Azure 1.4.1
-- [Usługa Azure Storage Explorer 1.4.1 dla Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Eksplorator usługi Azure Storage 1.4.1 dla komputerów Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Eksplorator usługi Azure Storage 1.4.1 dla systemu Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="hotfixes"></a>Poprawki
 * Przy pierwszym uruchomieniu programu Storage Explorer nie mógł wygenerować klucz używany do szyfrowania poufnych danych. Może to spowodować problemy, korzystając z paska szybki dostęp i dołączanie zasobów. [#535](https://github.com/Microsoft/AzureStorageExplorer/issues/535)
@@ -91,35 +233,6 @@ Ten artykuł zawiera informacje o wersji programu Azure Storage Explorer 1.4.1 w
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-## <a name="previous-releases"></a>Poprzednie wersje
-
-* [Wersja 1.3.0](#version-130)
-* [Wersji 1.2.0 lub nowszej](#version-120)
-* [Wersji 1.1.0](#version-110)
-* [Wersja 1.0.0](#version-100)
-* [Wersja 0.9.6](#version-096)
-* [Wersja 0.9.5](#version-095)
-* [Wersja 0.9.4 i 0.9.3](#version-094-and-093)
-* [Wersja 0.9.2](#version-092)
-* [Wersja 0.9.1 i 0.9.0](#version-091-and-090)
-* [Wersja 0.8.16](#version-0816)
-* [Wersja 0.8.14](#version-0814)
-* [Wersja 0.8.13](#version-0813)
-* [Wersja 0.8.12 i 0.8.11 i 0.8.10](#version-0812-and-0811-and-0810)
-* [Wersja 0.8.9 i 0.8.8](#version-089-and-088)
-* [Wersja 0.8.7](#version-087)
-* [Wersja 0.8.6](#version-086)
-* [Wersja 0.8.5](#version-085)
-* [Wersja 0.8.4](#version-084)
-* [Wersja 0.8.3](#version-083)
-* [Wersja 0.8.2](#version-082)
-* [Wersja 0.8.0](#version-080)
-* [Wersja 0.7.20160509.0](#version-07201605090)
-* [Wersja 0.7.20160325.0](#version-07201603250)
-* [Wersja 0.7.20160129.1](#version-07201601291)
-* [Wersja 0.7.20160105.0](#version-07201601050)
-* [Wersja 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-130"></a>Wersja 1.3.0
 07/09/2018 r.

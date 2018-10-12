@@ -10,12 +10,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 2ec0dea7e50747f8af337874c8f12463cecb8df7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 1297881373943143578695490531d147d7f5523d
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163481"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115326"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Szkolenie modeli za pomocą automatycznych machine learning w chmurze
 
@@ -190,10 +190,10 @@ Można użyć tego samego elementu widget Jupyter niż w [samouczek szkolenia](t
 from azureml.train.widgets import RunDetails
 RunDetails(remote_run).show()
 ```
-Oto obraz statyczny elementu widget.  W notesie możesz kliknąć każdego wiersza w tabeli, aby wyświetlić właściwości wykonywania i danych wyjściowych dzienników, uruchamiania.   Można również Użyj listy rozwijanej powyżej wykresu, aby wyświetlić wykres wszystkie dostępne metryki dla każdej iteracji.
+Oto obraz statyczny widżetu.  W notesie możesz kliknąć każdego wiersza w tabeli, aby wyświetlić właściwości wykonywania i danych wyjściowych dzienników, uruchamiania.   Można również Użyj listy rozwijanej powyżej wykresu, aby wyświetlić wykres wszystkie dostępne metryki dla każdej iteracji.
 
-![element widget tabeli](./media/how-to-auto-train-remote/table.png)
-![widżet wykresu](./media/how-to-auto-train-remote/plot.png)
+![tabela widżetu](./media/how-to-auto-train-remote/table.png)
+![wykres widżetu](./media/how-to-auto-train-remote/plot.png)
 
 Widżet Wyświetla adres URL można użyć, aby zobaczyć i zapoznaj się z osobą szczegóły przebiegu.
  
@@ -203,7 +203,7 @@ Znajdowanie dzienników na DSVM w folderze/tmp/azureml_run / {iterationid} / dzi
 
 ## <a name="example"></a>Przykład
 
-`automl/03.auto-ml-remote-execution.ipynb` Koncepcji w tym artykule pokazano, notesu.  Pobierz ten notes:
+[Automl/03.auto-ml-remote-execution.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/automl/03.auto-ml-remote-execution.ipynb) koncepcji w tym artykule pokazano, notesu.  Pobierz ten notes:
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

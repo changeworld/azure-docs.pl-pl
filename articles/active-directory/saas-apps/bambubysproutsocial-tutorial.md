@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 1240049fd84633365aa55cd07dfb0e4ef75d24d5
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 317fb1dd1235793d31ab39f5cb2a99766ca33150
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447510"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116163"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>Samouczek: Integracja usługi Azure Active Directory z Bambu przez Sprout społecznościowych
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Do konfigurowania integracji z usługą Azure AD z Bambu przez Sprout społecznościowych, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Bambu przez Sprout społecznościowych logowania jednokrotnego włączonych subskrypcji
 
 > [!NOTE]

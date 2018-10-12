@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b28e7b158af939defd37734c3ff9fe2309e3ab85
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: d641688b5e2da7bf571b536aa9cc340e9a5b2ace
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094403"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115424"
 ---
 # <a name="create-your-first-function-with-java-and-intellij-preview"></a>Tworzenie pierwszej funkcji przy użyciu języka Java i IntelliJ (wersja zapoznawcza)
 
 > [!NOTE] 
 > Język Java dla usługi Azure Functions jest obecnie w wersji zapoznawczej.
 
-W tym artykule przedstawiono sposób tworzenia [bezserwerowe](https://azure.microsoft.com/overview/serverless-computing/) projektu funkcji przy użyciu rozwiązania IntelliJ IDEA i narzędzia Apache Maven testowanie i debugowanie na komputerze z poziomu środowiska IDE i wdrożyć ją do usługi Azure Functions. 
+W tym artykule przedstawiono sposób tworzenia [bezserwerowe](https://azure.microsoft.com/solutions/serverless/) projektu funkcji przy użyciu rozwiązania IntelliJ IDEA i narzędzia Apache Maven testowanie i debugowanie na komputerze z poziomu środowiska IDE i wdrożyć ją do usługi Azure Functions. 
 
 <!-- TODO ![Access a Hello World function from the command line with cURL](media/functions-create-java-maven/hello-azure.png) -->
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: d1d17ff331d3e770b77ce729904e57cf88ebc16c
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 86099c5385c14ce7cf10bbc84ebe1b5e70b2b3e6
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348572"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49094211"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Zagadnienia dotyczące planowania pojemności klastra usługi Service Fabric
 Dla wszystkich wdrożeń produkcyjnych planowania pojemności jest ważnym krokiem. Poniżej przedstawiono niektóre elementy, które należy wziąć pod uwagę jako część tego procesu.
@@ -165,6 +165,7 @@ W przypadku obciążeń produkcyjnych:
 - 14 GB lokalny dysk SSD stanowi wymaganie minimalne. Nasze zalecenie jest co najmniej 50 GB. Dla obciążeń, szczególnie podczas korzystania z kontenerów Windows większe dyski są wymagane. 
 - Częściowe podstawowych wersji SKU maszyn wirtualnych, takich jak standard_a0 nie są obsługiwane w przypadku obciążeń produkcyjnych.
 - Standardowa A1 jednostka SKU nie jest obsługiwana w przypadku obciążeń produkcyjnych ze względu na wydajność.
+- Maszyny wirtualne o niskim priorytecie nie są obsługiwane.
 
 > [!WARNING]
 > Zmiana węzła podstawowego rozmiar jednostki SKU maszyny Wirtualnej w klastrze uruchomiona operacja skalowania jest i udokumentowane w artykule [zestawu skalowania maszyn wirtualnych skalowania w poziomie](virtual-machine-scale-set-scale-node-type-scale-out.md) dokumentacji.

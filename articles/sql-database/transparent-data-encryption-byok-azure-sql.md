@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 2308897737014befb831cbef9880065856c20c77
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: aff1d59000a95f2b8f029b9db30ff1facb2f8ba6
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868800"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114672"
 ---
 # <a name="azure-sql-transparent-data-encryption-bring-your-own-key-support"></a>Usługa Azure SQL Transparent Data Encryption: Bring Your Own Key pomocy technicznej
 
@@ -66,7 +66,14 @@ Gdy TDE najpierw jest skonfigurowany do używania funkcji ochrony TDE z usługi 
   > [!NOTE]
   > Jeśli usługa Azure AD Identity **jest przypadkowo usunięty lub uprawnienia do serwera zostaną odwołane** za pomocą zasad dostępu magazynu kluczy, serwer utraci dostęp do magazynu kluczy i baz danych funkcja TDE szyfrowane są porzucane w ciągu 24 godzin.
 
-- Konfigurowanie usługi Azure Key Vault bez sieci wirtualnej lub zapory.  Jeśli SQL utraci dostęp do magazynu kluczy, baz danych funkcja TDE szyfrowane są porzucane w ciągu 24 godzin.
+- Korzystając z zapór i sieci wirtualnych za pomocą usługi Azure Key Vault, należy skonfigurować następujące czynności: 
+  - Zezwalaj na dostęp z "Wybrane sieci" 
+  - Dodaj istniejące sieci wirtualne, a następnie wybierz sieć bazy danych SQL, jeśli ma to zastosowanie, (jest to opcjonalne dla pojedynczych baz danych i wymaganych dla wystąpienia zarządzanego) 
+  - Zezwalaj na zaufanych usług firmy Microsoft na pomijanie zapory — wybrana opcja tak 
+         
+    > [!NOTE] 
+    > Jeśli funkcja TDE jest zaszyfrowany baz danych SQL utrata dostępu do magazynu kluczy, ponieważ nie można ich obejścia zapory, baz danych są porzucane w ciągu 24 godzin.
+
 - Włączanie inspekcji i raporty dotyczące wszystkich kluczy szyfrowania: Key Vault zapewnia dzienników, które są łatwe do dodania do innych informacjami i zdarzeniami (SIEM) narzędzia do zarządzania zabezpieczeniami. Operations Management Suite (OMS) [usługi Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault) jest przykładem usługi, która jest już zintegrowana.
 - W celu zapewnienia wysokiej dostępności szyfrowanymi bazami danych, należy skonfigurować każdy serwer logiczny za pomocą dwóch usługi Azure Key Vault, które znajdują się w różnych regionach.
 

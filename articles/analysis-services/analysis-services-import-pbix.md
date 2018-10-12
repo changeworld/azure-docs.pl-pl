@@ -5,25 +5,27 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/27/2018
+ms.date: 10/11/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e164488a1bf176d5b6c0e28a84cd1ec22cae4cce
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 8882a44b0b6db1b3c23c017a072ebddfe9aa20f5
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423582"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49090876"
 ---
 # <a name="import-a-power-bi-desktop-file"></a>Importowanie pliku programu Power BI Desktop
 
 Model danych w pliku programu Power BI Desktop (pbix) można zaimportować do usługi Azure Analysis Services. Metadane modelu danych w pamięci podręcznej i połączenia źródła danych są importowane. Raporty i wizualizacje nie są importowane. Zaimportowane dane, które są modele z programu Power BI Desktop, na poziomie zgodności 1400.
 
+> [!IMPORTANT]
+> Ta funkcja jest przestarzała. Może być usunięty lub znacznie zmodyfikowany w ramach przyszłej aktualizacji. Zalecane jest, że należy przerwać korzystanie z tej funkcji nowych i istniejących projektów, aby zachować zgodność z przyszłymi aktualizacjami. Dla bardziej zaawansowanych modeli programowania i testowania najlepiej jest używać programu Visual Studio (SSDT) i SQL Server Management Studio (SSMS).
+
 **Ograniczenia**   
 
-- Importowanie pliku pbix używa funkcji projektanta internetowego w portalu, który jest **Podgląd**. Funkcja jest ograniczona. Dla bardziej zaawansowanych modeli programowania i testowania najlepiej jest używać programu Visual Studio (SSDT) i SQL Server Management Studio (SSMS).
-- Jeśli model danych jest tworzona w programie Power BI Desktop lipca 2018 r. Zaktualizuj (2.60.5169.3201) lub nowszy, upewnij się, że nie funkcje wersji zapoznawczej. Funkcje w wersji zapoznawczej nie są jeszcze obsługiwane w usługach Azure Analysis Services.  
-Jeśli zostanie wyświetlony następujący błąd podczas importowania, plik pbix ma włączone funkcje wersji zapoznawczej, które nie są jeszcze obsługiwane w usługach Azure Analysis Services.
+
+- Jeśli model danych jest tworzona w programie Power BI Desktop lipca 2018 r. Zaktualizuj (2.60.5169.3201) lub nowszy, upewnij się, że nie funkcje wersji zapoznawczej. Funkcje w wersji zapoznawczej nie są jeszcze obsługiwane w usługach Azure Analysis Services. Jeśli zostanie wyświetlony następujący błąd podczas importowania, plik pbix ma włączone funkcje wersji zapoznawczej, które nie są jeszcze obsługiwane w usługach Azure Analysis Services.
 
     ![Ostrzeżenie poziomu zgodności](./media/analysis-services-import-pbix/aas-import-pbix-cl-warning.png)   
 - Musi mieć uprawnienia administratora serwera, aby zaimportować z pliku pbix.

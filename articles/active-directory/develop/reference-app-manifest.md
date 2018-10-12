@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 74bcd1e795186eba652d2da986c290e1989dd1d1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bc7999d56da8398b4f54b0144a595ee7c2e2ea35
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47041578"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115114"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Manifest aplikacji w usłudze Azure Active Directory
 
@@ -43,7 +43,7 @@ Aplikacje, które integrują się z usługą Azure Active Directory (Azure AD) m
 | `appId` | Ciąg identyfikatora | Określa unikatowy identyfikator aplikacji, który jest przypisany do aplikacji przez usługę Azure AD. | `"601790de-b632-4f57-9523-ee7cb6ceba95"` |
 | `appRoles` | Typ tablicy | Określa kolekcję ról, które aplikacja może deklarować. Te role można przypisać do użytkowników, grup lub jednostki usługi. Aby uzyskać więcej przykładów i informacje, zobacz [Dodaj role aplikacji w aplikacji i odbierać je w tokenie](howto-add-app-roles-in-azure-ad-apps.md) | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"allowedMemberTypes": [<br>&emsp;&nbsp;&nbsp;&nbsp;"User"<br>&nbsp;&nbsp;&nbsp;],<br>&nbsp;&nbsp;&nbsp;"description":"Read-only access to device information",<br>&nbsp;&nbsp;&nbsp;"displayName":"Read Only",<br>&nbsp;&nbsp;&nbsp;"id":guid,<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"value":"ReadOnly"<br>&nbsp;&nbsp;}<br>]</code>  |
 | `groupMembershipClaims` | ciąg | Maska bitów, który konfiguruje `groups` oświadczenia wydane w użytkownika lub token dostępu OAuth 2.0, który oczekuje, że aplikacja. Wartości maski bitów to:<br>0: Brak<br>1: grupy zabezpieczeń i role usługi Azure AD<br>2: zarezerwowane<br>4: zarezerwowane<br>Ustawienie maski bitów na 7 otrzyma wszystkich grup zabezpieczeń, grup dystrybucyjnych i ról katalogu usługi Azure AD, które zalogowany użytkownik jest członkiem. | `1` |
-| `optionalClaims` | ciąg | Opcjonalne oświadczenia zwrócone w tokenie przez usługę tokenu zabezpieczającego dla tej konkretnej aplikacji. Aby uzyskać więcej informacji, zobacz [opcjonalnych oświadczeń](active-directory-optional-claims.md). | `null` |
+| `optionalClaims` | ciąg | Opcjonalne oświadczenia zwrócone w tokenie przez usługę tokenu zabezpieczającego dla tej konkretnej aplikacji.<br>W tej chwili aplikacji obsługujących konta osobiste i usługi Azure AD (zarejestrowane za pośrednictwem portalu rejestracji aplikacji) nie można użyć oświadczeń opcjonalne. Jednak aplikacje zarejestrowane dla właśnie Azure AD przy użyciu punktu końcowego v2.0 można uzyskać opcjonalnych oświadczenia, które są wymagane w manifeście. Aby uzyskać więcej informacji, zobacz [opcjonalnych oświadczeń](active-directory-optional-claims.md). | `null` |
 | `id` | Ciąg identyfikatora | Unikatowy identyfikator dla aplikacji w katalogu. Ten identyfikator nie jest to identyfikator używany do identyfikowania aplikacji w każdej transakcji protokołu. Służy do odwoływania się do obiektu w katalogu zapytania. | `"f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"` |
 | `identifierUris` | Tablica ciągów | URI(s) zdefiniowanych przez użytkownika, który jednoznacznie zidentyfikować aplikacji sieci Web w swojej dzierżawie usługi Azure AD, lub w zweryfikowanej domenie niestandardowej, jeśli aplikacja jest wielodostępne. | <code>[<br>&nbsp;&nbsp;"https://MyRegistererdApp"<br>]</code> |
 | `informationalUrls` | ciąg | Określa łącza do aplikacji warunków usługi i zasady zachowania poufności. Warunki usługi i zasady zachowania poufności są udostępniane użytkownikom za pośrednictwem środowiska zgody użytkownika. Aby uzyskać więcej informacji, zobacz [porady: Dodawanie warunków usługi i zasady zachowania poufności dla zarejestrowane aplikacje usługi Azure AD](howto-add-terms-of-service-privacy-statement.md). | <code>{<br>&nbsp;&nbsp;&nbsp;"marketing":"https://MyRegisteredApp/marketing",<br>&nbsp;&nbsp;&nbsp;"privacy":"https://MyRegisteredApp/privacystatement",<br>&nbsp;&nbsp;&nbsp;"support":"https://MyRegisteredApp/support",<br>&nbsp;&nbsp;&nbsp;"termsOfService":"https://MyRegisteredApp/termsofservice"<br>}</code> |

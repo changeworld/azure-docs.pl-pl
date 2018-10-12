@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/9/2018
-ms.openlocfilehash: c56158a5e8df2e8781ec8e4431c75beadd154297
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 93a6480cdab0153d0febad376c93b9321a87deda
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901655"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114897"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurowanie klastra HDInsight z pakietem Enterprise Security za pomocą usługi Azure Active Directory Domain Services
 
@@ -33,7 +33,7 @@ Włączanie usługi Azure AD DS jest wymaganiem wstępnym, przed utworzeniem kla
 
 Po włączeniu usług AD DS Azure wszystkich użytkowników i obiekty rozpocząć synchronizowanie z usługi Azure Active Directory do usługi Azure AD — DS domyślnie. Długość operacji synchronizacji jest zależna od liczby obiektów w usłudze Azure AD. Synchronizacja może potrwać kilka dni w setkach tysięcy obiektów. 
 
-Klienci mogą wybrać opcję Synchronizuj tylko grupy, którzy potrzebują dostępu do klastrów HDInsight. Tej opcji tylko określone grupy synchronizacji jest nazywany *zakresu synchronizacji*. Zobacz [konfigurowania zakresu synchronizacji z usługi Azure AD do domeny zarządzanej](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-scoped-synchronization) instrukcje.
+Klienci mogą wybrać opcję Synchronizuj tylko grupy, którzy potrzebują dostępu do klastrów HDInsight. Tej opcji tylko określone grupy synchronizacji jest nazywany *zakresu synchronizacji*. Zobacz [konfigurowania zakresu synchronizacji z usługi Azure AD do domeny zarządzanej](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-scoped-synchronization) instrukcje.
 
 Po włączeniu usług AD DS platformy Azure, lokalnego serwera usługi nazw domen (DNS, Domain Name System) działa na maszynach wirtualnych (VM) AD. Konfigurowanie usługi Azure usług AD DS Virtual Network (VNET) do użycia tych niestandardowych serwerów DNS. Aby znaleźć odpowiednie adresy IP, wybierz **właściwości** w obszarze **Zarządzaj** kategorii i spójrz na adresy IP na liście poniżej **adresu IP w sieci wirtualnej**.
 
@@ -47,31 +47,38 @@ Zmień konfigurację serwerów DNS w sieci Wirtualnej usług AD DS platformy Azu
 
 Podczas włączania bezpiecznego protokołu LDAP, umieść nazwę domeny do nazwy podmiotu lub alternatywną nazwę podmiotu w certyfikacie. Na przykład, jeśli nazwa domeny to *contoso.com*, upewnij się, takiej samej nazwie istnieje w nazwie podmiotu certyfikatu lub alternatywnej nazwy podmiotu. Aby uzyskać więcej informacji, zobacz [domeny zarządzanej przez Konfigurowanie bezpiecznego protokołu LDAP dla usługi Azure AD — DS](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md).
 
-## <a name="check-azure-ad-ds-health-status"></a>Sprawdź stan kondycji usług AD DS platformy Azure
 
+## <a name="check-azure-ad-ds-health-status"></a>Sprawdź stan kondycji usług AD DS platformy Azure
 Wyświetlanie stanu kondycji usługi Azure Active Directory Domain Services, wybierając **kondycji** w obszarze **Zarządzaj** kategorii. Upewnij się, że jest w stanie usługi Azure AD — DS kolor zielony (uruchomione), a synchronizacja została zakończona.
 
 ![Kondycja usługi Azure Active Directory Domain Services](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-health.png)
 
-## <a name="add-managed-identity"></a>Dodaj tożsamość zarządzaną
+Upewnij się, że wszystkie [wymagane porty](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) dozwolonych elementów znajdują się w podsieci usługi AAD DS reguły sieciowej grupy zabezpieczeń, gdy DS usługi AAD jest zabezpieczony przez sieciową grupę zabezpieczeń. 
 
-Tworzenie tożsamości zarządzanych przypisanych przez użytkownika, jeśli nie masz jeszcze takiego. Zobacz [Utwórz, listy, usuwania lub przypisać rolę do przypisanych przez użytkownika tożsamości zarządzanej przy użyciu witryny Azure portal](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) instrukcje. 
+## <a name="create-and-authorize-a-managed-identity"></a>Tworzenie i autoryzować tożsamości zarządzanej
+> [!NOTE]
+> Tylko Administratorzy usługi AAD DS mają uprawnienia do autoryzowania to tożsamość zarządzaną.
 
-Tożsamość zarządzana jest używany do upraszczają operacje usługi domeny. Ta tożsamość ma dostęp do odczytu, tworzenie, modyfikowanie i usuwanie operacji usług domeny, które są wymagane przez pakiet zabezpieczeń przedsiębiorstwa HDInsight, takie jak tworzenie jednostek organizacyjnych i zasad usługi.
+A **przypisanych przez użytkownika z tożsamości zarządzanej** służy do upraszczają operacje usługi domeny. Po przypisaniu tożsamość zarządzaną roli współautora usługi domeny HDInsight go odczytać, tworzenia, modyfikacji i Usuń operacje usługi domeny. Niektóre operacje, takie jak tworzenie jednostek organizacyjnych usług domain services i zasad usługi są wymagane przez pakiet HDInsight Enterprise Security. W każdej subskrypcji można utworzyć zarządzanych tożsamości. Aby uzyskać więcej informacji, zobacz [zarządzanych tożsamości dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Po włączeniu usług AD DS platformy Azure, tworzenie zarządzanych tożsamości przypisanych przez użytkownika i przypisz ją do **Współautor usługi domeny HDInsight** roli kontroli dostępu usług AD DS w platformie Azure.
+Aby skonfigurować tożsamość zarządzaną, do użytku z klastrami HDInsight ESP, Utwórz tożsamości zarządzanej przypisanych przez użytkownika, jeśli nie masz jeszcze takiego. Zobacz [Utwórz, listy, usuwania lub przypisać rolę do przypisanych przez użytkownika tożsamości zarządzanej przy użyciu witryny Azure portal](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) instrukcje. Następnie przypisz tożsamość zarządzaną do **Współautor usługi domeny HDInsight** roli kontrolę dostępu do usługi Azure AD DS (wymagane dokonanie tego przypisania roli są uprawnienia administratora DS usługi AAD).
 
 ![Usługa Azure Active Directory Domain Services dostępu formantu](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-configure-managed-identity.png)
 
-Przypisywanie zarządzanych tożsamości w celu **Współautor usługi domeny HDInsight** roli gwarantuje, że tożsamość ma prawidłowy dostęp do wykonywania pewnych operacji usług domeny w domenie usług AD DS platformy Azure. Aby uzyskać więcej informacji, zobacz [co to jest zarządzanych tożsamości dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md).
+Przypisywanie zarządzanych tożsamości w celu **Współautor usługi domeny HDInsight** roli gwarantuje, że tożsamość ma prawidłowy dostęp do wykonywania pewnych operacji usług domeny w domenie usługi Katalogowej usługi AAD.
+
+Po utworzeniu tożsamości zarządzanej i biorąc pod uwagę odpowiednią rolę, administrator usługi AAD DS można zdefiniować kto może korzystać z tej tożsamości zarządzanej. Aby skonfigurować użytkowników na potrzeby tożsamości zarządzanej, administrator powinien wybrać tożsamość zarządzaną w portalu, a następnie kliknij **kontrola dostępu (IAM)** w obszarze **Przegląd**. Następnie po prawej stronie, przypisz do użytkowników lub grup, które chcesz utworzyć klastry HDInsight ESP rolę "Operator tożsamości zarządzanych". Na przykład administrator usługi AAD DS można przypisać tę rolę do grupy "MarketingTeam" tożsamość "sjmsi" zarządzanych, jak pokazano na poniższej ilustracji.
+
+![HDInsight zarządzane przypisania roli Operator tożsamości](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-managed-identity-operator-role-assignment.png)
+
 
 ## <a name="create-a-hdinsight-cluster-with-esp"></a>Tworzenie klastra HDInsight z ESP
 
 Następnym krokiem jest do utworzenia klastra HDInsight z ESP włączone za pomocą usług AD DS platformy Azure.
 
-Łatwiej można umieścić wystąpienia usług AD DS Azure wraz z klastrów HDInsight w tej samej sieci wirtualnej platformy Azure. Jeśli są one w różnych sieciach wirtualnych, tak aby maszyny wirtualne HDInsight są widoczne na kontrolerze domeny i mogą być dodawane do domeny musi komunikacji równorzędnej tych sieci wirtualnych. Aby uzyskać więcej informacji, zobacz [komunikacja równorzędna sieci wirtualnych](../../virtual-network/virtual-network-peering-overview.md). Aby sprawdzić, czy komunikacja równorzędna jest prawidłowa, dołączyć Maszynę wirtualną do HDInsight sieci Wirtualnej/podsieci i wysłać polecenie ping nazwa domeny lub uruchom **ldp.exe** uzyskać dostępu do domeny usług AD DS platformy Azure.
+Łatwiej można umieścić wystąpienia usług AD DS Azure wraz z klastrów HDInsight w tej samej sieci wirtualnej platformy Azure. Jeśli są one w różnych sieciach wirtualnych, tak aby maszyny wirtualne HDInsight są widoczne na kontrolerze domeny i mogą być dodawane do domeny musi komunikacji równorzędnej tych sieci wirtualnych. Aby uzyskać więcej informacji, zobacz [komunikacja równorzędna sieci wirtualnych](../../virtual-network/virtual-network-peering-overview.md). 
 
-Po nawiązaniu komunikacji równorzędnej między sieciami wirtualnymi, należy skonfigurować HDInsight sieci Wirtualnej do użycia niestandardowego serwera DNS i wprowadzić prywatnych adresów IP usług AD DS Azure jako adresy serwera DNS. Obie sieci wirtualne, używając tych samych serwerów DNS, niestandardową nazwę domeny zostanie rozwiązany do prawego adresu IP i będzie dostępny z HDInsight. Na przykład jeśli nazwa domeny "contoso.com" następnie po wykonaniu tego kroku pingowanie "contoso.com" powinna być rozpoznawana adresów IP usług AD DS platformy Azure po prawej stronie. Następnie możesz dołączyć Maszynę wirtualną do tej domeny.
+Po nawiązaniu komunikacji równorzędnej między sieciami wirtualnymi, należy skonfigurować HDInsight sieci Wirtualnej do użycia niestandardowego serwera DNS i wprowadzić prywatnych adresów IP usług AD DS Azure jako adresy serwera DNS. Obie sieci wirtualne, używając tych samych serwerów DNS, niestandardową nazwę domeny zostanie rozwiązany do prawego adresu IP i będzie dostępny z HDInsight. Na przykład jeśli nazwa domeny "contoso.com" następnie po wykonaniu tego kroku pingowanie "contoso.com" powinna być rozpoznawana adresów IP usług AD DS platformy Azure po prawej stronie. Aby sprawdzić, czy komunikacja równorzędna jest prawidłowo wykonane, Dołącz do HDInsight sieci Wirtualnej/podsieci maszyny Wirtualnej systemu windows i wysłać polecenie ping nazwa domeny lub uruchom **ldp.exe** uzyskać dostępu do domeny usług AD DS platformy Azure. Następnie można przyłączyć maszyny Wirtualnej systemu windows do domeny, aby upewnić się, że wszystkie wymagane wywołania RPC powiedzie się między klientem i serwerem.
 
 ![Konfigurowanie serwerów DNS niestandardowe dla wirtualnej sieci równorzędnej](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 

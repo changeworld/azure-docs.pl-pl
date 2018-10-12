@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: jeedes
-ms.openlocfilehash: 0b50e317fc8a94a5cd8ddd19dbe24d4f9125fedc
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6a3fa8db14f2b155a471fd42d0d20ccf543fdbba
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432997"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115759"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fuze"></a>Samouczek: Integracja usługi Azure Active Directory z Fuze
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą Fuze, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Fuze logowania jednokrotnego włączonych subskrypcji
 
 

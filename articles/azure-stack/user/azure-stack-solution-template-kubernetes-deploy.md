@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 10/09/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 71fdf609badd6c8a9f4db5a5a1d2aa70c8c2e5f5
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 62eb28c6cdb2dd6c1ddff1487826c01ef3bf6e3e
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887476"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091593"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Wdrażanie rozwiązania Kubernetes do usługi Azure Stack
 
@@ -39,6 +39,8 @@ Rozwiązanie Kubernetes można użyć:
 - Twórz wysoce skalowalne, można uaktualnić, aplikacje, które można wdrożyć w kilka sekund. 
 - Uproszczenie projektowania aplikacji i zwiększyć jej niezawodność przez różne aplikacje narzędzia Helm. [Polecenie Helm](https://github.com/kubernetes/helm) to narzędzie open source pakietu, które pomaga zainstalować i zarządzanie cyklem życia aplikacji platformy Kubernetes.
 - Łatwe monitorowanie i diagnozowanie kondycji aplikacji w skali i uaktualniania funkcji.
+
+Użytkownik zostanie naliczona tylko za wykorzystanie mocy obliczeniowej, wymagane przez węzły obsługi klastra. Aby uzyskać więcej informacji, zobacz [użycie i rozliczenia w usłudze Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-billing-and-chargeback).
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 

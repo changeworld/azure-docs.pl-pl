@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: raynew
-ms.openlocfilehash: 82674aec8d62388d0d0f26e730f66b8b078a5d75
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 5c1858fca1ca5f6bc48f5225ecf2d52dee055c91
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48904354"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092751"
 ---
 # <a name="contoso---scale-a-migration-to-azure"></a>Contoso — skalowanie migracji na platformę Azure
 
@@ -37,7 +37,7 @@ W tym artykule jest jednym z serii artykułów, które dokumentują sposób fikc
 [Artykuł 11: Refaktoryzacja Team Foundation Server w usługach Azure DevOps](contoso-migration-tfs-vsts.md) | Contoso migruje jego lokalnego wdrożenia Team Foundation Server do usługi Azure DevOps Services na platformie Azure. | Dostępne
 [Artykuł 12: Przekształcanie aplikacji kontenerów platformy Azure i usługi Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Contoso migruje jego SmartHotel aplikacji na platformie Azure. Następnie rearchitects warstwy sieci web aplikacji jako kontener Windows w usłudze Azure Service Fabric i bazy danych aplikacji przy użyciu usługi Azure SQL Database. | Dostępne    
 [Artykuł 13: Ponownie skompilować aplikację na platformie Azure](contoso-migration-rebuild.md) | Contoso odbudowuje swojej aplikacji SmartHotel, korzystając z możliwości platformy Azure i usług, w tym usługi Azure App Service, Azure Kubernetes Service (AKS), usługi Azure Functions, Azure Cognitive Services i Azure Cosmos DB. | Dostępne 
-Artykuł 14: Skalowanie migracji na platformę Azure | Po wypróbowanie kombinacje migracji, Contoso jest teraz przygotowywanie aby możliwe było skalowanie pełną migrację na platformę Azure. | W tym artykule
+Artykuł 14: Skalowanie migracji na platformę Azure | Po wypróbowanie kombinacje migracji, Contoso przygotowuje aby możliwe było skalowanie pełną migrację na platformę Azure. | W tym artykule
 
 ## <a name="business-drivers"></a>Czynniki biznesowe
 
@@ -65,7 +65,7 @@ Zespół chmury firmy Contoso ma przypięte dół cele tej migracji. Te cele zos
 
 Po przypięciu dół celami i wymaganiami, Contoso przeglądy przestrzeni IT przedsiębiorstwa i identyfikuje proces migracji.
 
-## <a name="current-app"></a>Bieżącej aplikacji
+## <a name="current-deployment"></a>Bieżące wdrożenie
 
 Po planowaniu i konfigurowaniu [infrastruktury platformy Azure](contoso-migration-infrastructure.md) i Wypróbowując różne kombinacje migracji zgodnie z opisem w powyższej tabeli weryfikacji koncepcji (POC), Contoso jest gotowy do rozpoczęcia pełnej migracji na platformę Azure na dużą skalę. Oto, co firma Contoso chce, aby przeprowadzić migrację.
 

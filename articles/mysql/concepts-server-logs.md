@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 09/17/2018
-ms.openlocfilehash: ac5be20815b552c08e5cd1054bf24d7a10b56498
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.date: 10/03/2018
+ms.openlocfilehash: 73be0e4ecff4bc0d9b69249430bba69a93cc54ae
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124273"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093786"
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>Dzienniki serwera w usłudze Azure Database for MySQL
 W usłudze Azure Database for MySQL w dzienniku wolnych zapytań jest dostępna dla użytkowników. Dostęp do dziennika transakcji nie jest obsługiwane. Dziennik dotyczący wolnego zapytania może służyć do identyfikowania wąskich gardeł wydajności w celu rozwiązywania problemów. 
@@ -45,6 +45,39 @@ Inne parametry, które można dostosować obejmują:
 - **log_throttle_queries_not_using_indexes**: ten parametr ogranicza liczbę zapytań — indeksowanie, które mogą być zapisywane w dzienniku wolnych zapytań. Ten parametr staje się skuteczny po log_queries_not_using_indexes jest ustawiona na wartość ON.
 
 Zobacz MySQL [wolne dokumentacji dziennika zapytań](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) pełne opisy parametrów dziennik wolnych zapytań.
+
+## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
+Usługa Azure Database for MySQL jest zintegrowany z dzienników diagnostycznych usługi Azure Monitor. Po włączeniu dzienniki wolnych zapytań na Twoim serwerze MySQL możesz je wysyłanego do usługi Log Analytics, usługi Event Hubs lub usługi Azure Storage. Aby dowiedzieć się więcej na temat włączania dzienników diagnostycznych, zobacz, jak części [dokumentacja dzienników diagnostycznych](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+
+W poniższej tabeli opisano, co znajduje się w każdym dzienniku. W zależności od danych wyjściowych metody, pola, znajdujące się i kolejność, w jakiej są wyświetlane mogą się różnić.
+
+| **Właściwość** | **Opis** |
+|---|---|---|
+| Identyfikator dzierżawy | Identyfikator dzierżawy |
+| SourceSystem | `Azure` |
+| TimeGenerated [UTC] | Sygnatura czasowa podczas rejestrowania w formacie UTC |
+| Typ | Typ dziennika. zawsze `AzureDiagnostics` |
+| SubscriptionId | Identyfikator GUID dla subskrypcji, do której należy serwer |
+| ResourceGroup | Nazwa grupy zasobów, do której należy serwer |
+| ResourceProvider | Nazwa dostawcy zasobów. zawsze `MICROSOFT.DBFORMYSQL` |
+| ResourceType | `Servers` |
+| ResourceId | Identyfikator URI zasobu |
+| Zasób | Nazwa serwera |
+| Kategoria | `MySqlSlowLogs` |
+| OperationName | `LogEvent` |
+| Logical_server_name_s | Nazwa serwera |
+| start_time_t [UTC] | Czas rozpoczęcia zapytania |
+| query_time_s | Całkowity czas trwania zapytania zajęło wykonanie |
+| lock_time_s | Całkowity czas trwania zapytania został zablokowany. |
+| user_host_s | Nazwa użytkownika |
+| rows_sent_s | Liczba wierszy, wysłane |
+| rows_examined_s | Liczba wierszy, które badania |
+| last_insert_id_s | [last_insert_id](https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_last-insert-id) |
+| insert_id_s | Wstaw identyfikator |
+| sql_text_s | Pełne zapytanie w języku |
+| server_id_s | Identyfikator serwera |
+| thread_id_s | Identyfikator wątku |
+| \_Identyfikator zasobu | Identyfikator URI zasobu |
 
 ## <a name="next-steps"></a>Następne kroki
 - [Jak skonfigurować i uzyskać dostęp do dzienników serwera z wiersza polecenia platformy Azure](howto-configure-server-logs-in-cli.md).

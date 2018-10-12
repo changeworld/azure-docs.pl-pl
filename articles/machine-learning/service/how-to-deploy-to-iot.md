@@ -10,12 +10,12 @@ author: shivanipatel
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 66370aec76044454ab4f11eb432fe2e9b0cdb9cf
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 7d706cf71761496fd740c729224ee4331eeb2911
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248589"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091627"
 ---
 # <a name="prepare-to-deploy-models-on-iot-edge"></a>Przygotowywanie do wdrażania modeli na brzegowych urządzeniach IoT
 
@@ -45,9 +45,6 @@ Aby dowiedzieć się, jak zarejestrować urządzenie i zainstalować środowisko
 
 Moduły usługi IoT Edge platformy Azure są oparte na obrazów kontenerów. Aby wdrożyć model do urządzenia usługi IoT Edge, umożliwia następujące czynności zarejestrować modelu w obszarze roboczym usługi Azure Machine Learning i utworzyć obraz platformy Docker. 
 
-> [!IMPORTANT]
-> Jeśli używasz usługi Azure Machine Learning do nauczenia modelu, który może on już zarejestrowany w obszarze roboczym, w tym przypadku pominąć krok 3.
-
 1. Inicjowanie obszaru roboczego i załadować pliku config.json:
 
     ```python
@@ -58,6 +55,9 @@ Moduły usługi IoT Edge platformy Azure są oparte na obrazów kontenerów. Aby
     ```    
 
 1. W obszarze roboczym, należy zarejestrować model. Zastąp tekst domyślna ścieżka modelu, nazwa, tagi i opis:
+
+    > [!IMPORTANT]
+    > Jeśli używasz usługi Azure Machine Learning do nauczenia modelu, może on już zarejestrowany w obszarze roboczym. Jeśli tak, Pomiń ten krok. Aby wyświetlić listę modeli zarejestrowana z tym obszarem roboczym, użyj `Model.list(ws)`.
 
     ```python
     from azureml.core.model import Model
@@ -81,9 +81,9 @@ Moduły usługi IoT Edge platformy Azure są oparte na obrazów kontenerów. Aby
 
 1. Tworzenie **skrypt oceniania** o nazwie `score.py`. Ten plik jest używany do uruchamiania model w obrazie. Musi zawierać następujące funkcje:
 
-    * `init()` Funkcji, która zazwyczaj ładuje modelu do obiektów globalnych. Ta funkcja jest uruchamiany tylko raz, po uruchomieniu kontenera platformy Docker. 
+    * Funkcja `init()`, która zazwyczaj ładuje model do obiektu globalnego. Ta funkcja jest uruchamiana tylko raz, po uruchomieniu kontenera platformy Docker. 
 
-    * `run(input_data)` Funkcja wykorzystuje model do przewidywania wartości w oparciu o dane wejściowe. Dane wejściowe i wyjściowe do uruchomienia w ramach serializacji i deserializacji zazwyczaj korzystają JSON, ale inne formaty są obsługiwane.
+    * Funkcja `run(input_data)` używa modelu do przewidywania wartości w oparciu o dane wejściowe. Dane wejściowe i wyjściowe do uruchomienia zazwyczaj używają formatu JSON na potrzeby serializacji i deserializacji, ale obsługiwane są też inne formaty.
 
     Aby uzyskać przykład, zobacz [samouczek klasyfikacji obrazów](tutorial-deploy-models-with-aml.md#make-script).
 
@@ -120,7 +120,7 @@ Moduły usługi IoT Edge platformy Azure są oparte na obrazów kontenerów. Aby
 
 Usługa Azure IoT potrzebuje poświadczeń dla rejestru kontenerów, w którym usługi Azure Machine Learning, są przechowywane obrazy platformy docker w. Aby uzyskać poświadczenia, wykonaj następujące kroki:
 
-1. Zaloguj się w [Portalu Azure](https://portal.azure.com/signin/index).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/signin/index).
 
 1. Przejdź do obszaru roboczego usługi Azure Machine Learning i wybierz __Przegląd__. Aby przejść do ustawienia usługi container registry, wybierz __rejestru__ łącza.
 

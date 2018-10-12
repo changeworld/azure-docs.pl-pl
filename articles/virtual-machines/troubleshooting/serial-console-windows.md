@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 705366dbb055679a2d0adc628938fa419609f6ed
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ceff8f6134f04409a4df1045a764c06597d997fc
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885123"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092834"
 ---
 # <a name="virtual-machine-serial-console"></a>Konsola szeregowa maszyny wirtualnej
 
@@ -83,12 +83,12 @@ Jeśli musisz włączyć moduł ładujący rozruchu Windows monituje o do wyświ
 1. Połącz się z maszyną wirtualną Windows za pomocą pulpitu zdalnego
 2. W administracyjnym wierszu polecenia Uruchom następujące polecenia 
 * `bcdedit /set {bootmgr} displaybootmenu yes`
-* `bcdedit /set {bootmgr} timeout 30`
+* `bcdedit /set {bootmgr} timeout 10`
 * `bcdedit /set {bootmgr} bootems yes`
 3. Ponowne uruchomienie systemu pod kątem menu rozruchu jest włączona
 
 > [!NOTE] 
-> Limit czasu, ustawionego dla menu Menedżera rozruchu pojawienie się będzie miało wpływ na czas rozruchu systemu operacyjnego w przyszłości. Może być akceptowalne z niektórymi dodać 30 drugi limit czasu, aby upewnić się, że Menedżera rozruchu jest widoczny za pośrednictwem konsoli szeregowej, innych może być krótszy limit czasu. Wartość potrafisz, należy ustawić wartość limitu czasu.
+> Limit czasu, ustawionego dla menu Menedżera rozruchu pojawienie się będzie miało wpływ na czas rozruchu systemu operacyjnego w przyszłości. Może być akceptowalne z niektórymi dodać 10 drugi limit czasu, aby upewnić się, że Menedżera rozruchu jest widoczny za pośrednictwem konsoli szeregowej, innych może być krótszy lub dłuższy limit czasu. Wartość potrafisz, należy ustawić wartość limitu czasu.
 
 ## <a name="use-serial-console-for-nmi-calls-in-windows-vms"></a>Użyj konsoli szeregowej NMI wywołań na maszynach wirtualnych Windows
 Niemaskowalnego przerwania (NMI) jest przeznaczone do tworzenia sygnał, który nie zignoruje oprogramowania na maszynie wirtualnej. W przeszłości NMIs zostały użyte w celu monitorowania problemów ze sprzętem w systemach, które są wymagane określone czasy.  Dzisiaj, programistów i system Administratorzy często używają NMI jako mechanizm do debugowania i rozwiązywanie problemów z systemów, które są zawieszone.

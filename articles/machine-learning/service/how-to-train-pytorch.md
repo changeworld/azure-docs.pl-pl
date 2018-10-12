@@ -9,12 +9,12 @@ ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 281fafe858f2000a19fe3c6a26a4ffd587557361
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 27d4ad03e4a7f911fe3c9981618337a2fff51317
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816025"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114621"
 ---
 # <a name="how-to-train-pytorch-models"></a>Sposób trenowania modeli PyTorch
 
@@ -101,10 +101,10 @@ run = exp.submit(pt_est)
 
 ## <a name="examples"></a>Przykłady
 Samouczek dotyczący szkolenia PyTorch jednym węzłem zobacz:
-* `training/01.train-hyperparameter-tune-deploy-with-pytorch`
+* [Training/01.Train-hyperparameter-Tune-Deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/training/01.train-hyperparameter-tune-deploy-with-pytorch)
 
 Samouczek dotyczący rozproszonego PyTorch z Horovod zobacz:
-* `training/02.distributed-pytorch-with-horovod`
+* [szkolenie/02.distributed-pytorch z horovod](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/02.distributed-pytorch-with-horovod)
 
 Pobierz te notesy:
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/02/2018
 ms.author: manayar
-ms.openlocfilehash: 2e8df15da0572e037dedb9e0dd27a0728953ba4a
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: c3fc8edf1601b3bb6f670df64d444edc9dcfbd6d
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079433"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114880"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrowanie usługi Azure ExpressRoute za pomocą odzyskiwania po awarii dla maszyn wirtualnych platformy Azure
 
@@ -166,7 +166,7 @@ Ta konfiguracja wpiera ochronę przed awariami głównej obwodu usługi ExpressR
 
 W tej konfiguracji jest tylko jeden obwód usługi Expressroute. Mimo, że obwód jest nadmiarowe połączenie w przypadku, gdy ulegnie awarii jednego, obwodu jedną trasę nie zapewnia odporności na błędy, jeśli ulegnie awarii komunikacji równorzędnej regionu. Należy pamiętać, że:
 
-- Można replikować maszyny wirtualne platformy Azure, aby do dowolnego regionu Azure w [tej samej lokalizacji geograficznej](azure-to-azure-support-matrix.md#region-support). Jeśli docelowy region platformy Azure nie jest w tej samej lokalizacji co źródłowa, musisz włączyć ExpressRoute Premium, jeśli używasz jednego obwodu usługi ExpressRoute. Dowiedz się więcej o [lokalizacji usługi ExpressRoute](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) i [ExpressRoute — cennik](https://azure.microsoft.com/pricing/details/expressroute/).
+- Teraz można replikować maszyny wirtualne platformy Azure do dowolnego regionu Azure w [tej samej lokalizacji geograficznej](azure-to-azure-support-matrix.md#region-support). Jeśli docelowy region platformy Azure nie jest w tej samej lokalizacji co źródłowa, musisz włączyć ExpressRoute Premium, jeśli używasz jednego obwodu usługi ExpressRoute. Dowiedz się więcej o [lokalizacji usługi ExpressRoute](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) i [ExpressRoute — cennik](https://azure.microsoft.com/pricing/details/expressroute/).
 - Nie można nawiązać połączenia sieci wirtualnych źródłowych i docelowych jednocześnie obwodu Jeśli tą samą przestrzenią adresów IP jest używany w regionie docelowym. W tym scenariuszu:    
     -  Rozłącz połączenie po stronie źródła, a następnie ustanawiać połączenie po stronie docelowej. Ta zmiana połączenia umożliwia pisanie skryptów, w ramach planu odzyskiwania Usługa Site Recovery. Należy pamiętać, że:
         - W przypadku regionalnej awarii jeśli region podstawowy jest niedostępny, może nie działać operację rozłączania. Może to mieć wpływ na region docelowy tworzenia połączenia.

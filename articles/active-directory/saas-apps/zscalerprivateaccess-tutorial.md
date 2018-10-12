@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-ms.openlocfilehash: a967272442c4b05657fbd3567fe89a4eec8418f4
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5858ab1846ccdc2e2b78f2be4173ea3cc17a3605
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425163"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116576"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-zpa"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą rozwiązania Zscaler prywatny dostęp (ZPA)
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą rozwiązania Zscaler prywatny dostęp (ZPA), potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Rozwiązania Zscaler prywatny dostęp (ZPA) logowania jednokrotnego włączonych subskrypcji
 
 

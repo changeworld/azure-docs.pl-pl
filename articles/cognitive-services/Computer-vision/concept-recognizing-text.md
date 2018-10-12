@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: v-deken
-ms.openlocfilehash: 49cba0e9b6958beb07b6f074e6dc748679514525
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 2a77306f408e87d5055a292d6f403cc041790eba
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985315"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093871"
 ---
 # <a name="recognizing-printed-and-handwritten-text"></a>Rozpoznawanie tekstu drukowanego i pisma odręcznego
 
@@ -29,7 +29,7 @@ Przetwarzanie obrazów może rozpoznać tekstu drukowanego i pisma odręcznego w
 
 - Obraz, który przedstawia w formacie JPEG, PNG lub BMP
 - Rozmiar pliku obrazu musi być mniejszy niż 4 megabajty (MB)
-- Wymiary obrazu musi należeć do zakresu od 40 x 40 i 3200 x 3200 pikseli
+- Wymiary obrazu musi należeć do zakresu od 50 x 50 i 4200 x 4200 pikseli
 
 > [!NOTE]
 > Ta technologia jest obecnie dostępna w wersji zapoznawczej i jest dostępna tylko dla tekstu w języku angielskim.

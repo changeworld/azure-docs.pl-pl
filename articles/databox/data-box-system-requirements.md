@@ -1,25 +1,19 @@
 ---
 title: Wymagania dotyczące systemu Microsoft Azure Data Box | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o oprogramowaniu i wymaganiach sieciowych dotyczących urządzenia Azure Data Box
+description: Informacje na temat wymagań dotyczących oprogramowania i sieci dla urządzenia Azure Data Box
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: f97c6174adf454a031e94942843075c457236575
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 957100e042da1d41fb7c8fa27a5663cf99a41c20
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982982"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093939"
 ---
 # <a name="azure-data-box-system-requirements"></a>Wymagania systemowe w usłudze Azure Data Box
 
@@ -88,7 +82,7 @@ Poniżej przedstawiono listę przeglądarek sieci web obsługiwane w przypadku l
 
 ## <a name="networking-requirements"></a>Wymagania dotyczące sieci
 
-Centrum danych musi mieć szybkie sieci. Zdecydowanie zaleca się mieć co najmniej jedną 10 GbE połączenia. 10 GbE połączenie nie jest dostępna, 1 GbE danych link może służyć do skopiowania danych, ale dotyczy szybkości kopiowania.
+Twoje centrum danych musi mieć dostęp do szybkiej sieci. Zdecydowanie zaleca się posiadanie co najmniej jednego połączenia 10 GbE. 10 GbE połączenie nie jest dostępna, 1 GbE danych link może służyć do skopiowania danych, ale dotyczy szybkości kopiowania.
 
 ## <a name="next-step"></a>Następny krok
 

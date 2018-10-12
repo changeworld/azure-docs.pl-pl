@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
-ms.openlocfilehash: d58f580ecd4a4bcd984602f4efda8a2291573bc4
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 190b7fff24c9d6b3dee86471b56ad68c962e51ce
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239289"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116882"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX i Azure Machine Learning: tworzenie i wdrażanie interoperacyjne modeli sztucznej Inteligencji
 
@@ -197,10 +197,10 @@ Następujące notesów pokazują, jak tworzyć modele ONNX i wdrażać je za pom
 + `/onnx/onnx-train-pytorch-aml-deploy-mnist.ipynb`
 
 Następujące notesów pokazują, jak wdrażać istniejące modele ONNX za pomocą usługi Azure Machine Learning: 
-+ `/onnx/onnx-inference-mnist.ipynb` 
-+ `/onnx/onnx-inference-emotion-recognition.ipynb`
++ [onnx/onnx wnioskowania mnist.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-inference-mnist.ipynb) 
++ [onnx/onnx wnioskowania-rozpoznawania emocji — recognition.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-inference-emotion-recognition.ipynb)
  
-Pobierz ten notes:
+Pobierz te notesy:
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

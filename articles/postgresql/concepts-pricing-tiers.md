@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 09/27/2018
-ms.openlocfilehash: 696932135cdd3850e04d25370867c0273b99b3bf
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.date: 10/10/2018
+ms.openlocfilehash: aab867e5c58ba9de17b3c68c8e507fca5354eb90
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423548"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093445"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Usługa Azure Database for postgresql w warstwie warstw cenowych
 
@@ -46,8 +46,8 @@ Obliczenia, że zasoby są dostarczane jako rdzeni wirtualnych, który reprezent
 
 | **Region platformy Azure** | **4. generacji** | **5. generacji** |
 |:---|:----------:|:--------------------:|
-| Środkowe stany USA | X | X |
-| Wschodnie stany USA | X | X |
+| Środkowe stany USA |  | X |
+| Wschodnie stany USA |  | X |
 | Wschodnie stany USA 2 | X | X |
 | Środkowo-północne stany USA | X | X |
 | Środkowo-południowe stany USA | X | X |
@@ -97,7 +97,7 @@ Można monitorować swoje użycie operacji We/Wy w witrynie Azure portal lub za 
 
 ### <a name="reaching-the-storage-limit"></a>Przekroczony limit magazynu
 
-Serwer zostanie oznaczony jako tylko do odczytu, gdy osiągnie ilość wolnego miejsca w magazynie, mniejszy niż 5 GB lub 5% aprowizowanego magazynu, ta wartość jest mniejsza. Przykładowo po aprowizowaniu 100 GB miejsca do magazynowania i rzeczywiste użycie przechodzi przez 95 GB, serwer jest oznaczony jako tylko do odczytu. Alternatywnie Jeśli aprowizowaniu 5 GB miejsca do magazynowania, serwer zostanie oznaczony jako tylko do odczytu po mniej niż 250 MB wolnego miejsca.  
+Serwer zostanie oznaczony jako tylko do odczytu, gdy ilość wolnego miejsca w magazynie spadnie poniżej 5 GB lub 5% zaaprowizowanej pojemności magazynu, w zależności od tego, która wartość będzie niższa. Przykładowo po aprowizowaniu 100 GB miejsca do magazynowania i rzeczywiste użycie przechodzi przez 95 GB, serwer jest oznaczony jako tylko do odczytu. Alternatywnie, jeśli zaaprowizowano 5 GB pojemności magazynu, serwer zostanie oznaczony jako tylko do odczytu, gdy ilość wolnego miejsca spanie poniżej 250 MB.  
 
 Gdy serwer jest wartość tylko do odczytu, wszystkie istniejące sesje są odłączone i niezatwierdzone transakcje są wycofywane. Wszystkie operacje zapisu w kolejnych i transakcji zatwierdza kończyć się niepowodzeniem. Wszystkie kolejne zapytania odczytu będzie działać nieprzerwanie.  
 

@@ -1,48 +1,43 @@
 ---
 title: Aprowizowanie puli Azure Batch w sieci wirtualnej | Dokumentacja firmy Microsoft
-description: Tak, aby węzły obliczeniowe mogą bezpiecznego komunikowania się z innymi maszynami wirtualnymi w sieci, takich jak serwer plików, można utworzyć pulę usługi Batch w sieci wirtualnej.
+description: Jak utworzyć pulę usługi Batch w sieci wirtualnej platformy Azure, dzięki czemu węzły obliczeniowe mogą bezpiecznego komunikowania się z innymi maszynami wirtualnymi w sieci, takich jak serwer plików.
 services: batch
 author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 10/05/2018
 ms.author: danlep
-ms.openlocfilehash: 9e8bd6819601cc4436e3432ee390f2ae82a0d94a
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: ef37d482e86e4ae05d3f14c78404dc395792b236
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42057020"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091964"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Tworzenie puli usługi Azure Batch w sieci wirtualnej
 
-
 Podczas tworzenia puli usługi Azure Batch możesz aprowizować puli w podsieci [sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md) (VNet), który określisz. W tym artykule opisano sposób konfigurowania puli usługi Batch w sieci wirtualnej. 
-
-
 
 ## <a name="why-use-a-vnet"></a>Dlaczego warto używać sieci wirtualnej?
 
-
 Puli usługi Azure Batch ma ustawienia, aby umożliwić węzłów obliczeniowych do komunikowania się ze sobą — na przykład, aby uruchamiać zadania obejmujące wiele wystąpień. Te ustawienia nie wymagają oddzielną sieć wirtualną. Jednak domyślnie węzłów nie może komunikować się z maszynami wirtualnymi, które nie są częścią puli usługi Batch, np. serwera licencji lub na serwerze plików. Aby zezwolić na pulę węzłów obliczeniowych do bezpiecznego komunikowania się z maszynami wirtualnymi lub między siecią lokalną, można udostępnić puli w podsieci sieci wirtualnej platformy Azure. 
-
-
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * **Uwierzytelnianie**. Aby użyć sieci wirtualnej platformy Azure, interfejs API klienta usługi Batch musi korzystać z uwierzytelniania usługi Azure Active Directory (AD). Obsługa usługi Azure Batch dla usługi Azure AD jest udokumentowana w temacie [Authenticate Batch service solutions with Active Directory (Uwierzytelnianie rozwiązań usługi Batch za pomocą usługi Active Directory)](batch-aad-auth.md). 
 
-* **Sieci wirtualnej platformy Azure**. Aby przygotować sieć wirtualną przy użyciu co najmniej jednej podsieci z wyprzedzeniem, można użyć witryny Azure portal, programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure (CLI) lub innych metod. Aby utworzyć sieć wirtualną na podstawie usługi Azure Resource Manager, zobacz [tworzenie sieci wirtualnej](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Aby utworzyć klasyczną sieć wirtualną, zobacz [tworzenie sieci wirtualnej (klasycznej) z wieloma podsieciami](../virtual-network/create-virtual-network-classic.md).
+* **Sieci wirtualnej platformy Azure**. Zobacz w poniższej sekcji wymagania dotyczące sieci wirtualnej i konfigurację. Aby przygotować sieć wirtualną przy użyciu co najmniej jednej podsieci z wyprzedzeniem, można użyć witryny Azure portal, programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure (CLI) lub innych metod.  
+  * Aby utworzyć sieć wirtualną na podstawie usługi Azure Resource Manager, zobacz [tworzenie sieci wirtualnej](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Sieć wirtualna opartych na usłudze Resource Manager jest zalecane w przypadku nowych wdrożeń i jest obsługiwana tylko w pulach w konfiguracji maszyny wirtualnej.
+  * Aby utworzyć klasyczną sieć wirtualną, zobacz [tworzenie sieci wirtualnej (klasycznej) z wieloma podsieciami](../virtual-network/create-virtual-network-classic.md). Klasyczna sieć wirtualna jest obsługiwana tylko w pulach w konfiguracji usługi w chmurze.
 
-### <a name="vnet-requirements"></a>Wymagania dotyczące sieci wirtualnej
+## <a name="vnet-requirements"></a>Wymagania dotyczące sieci wirtualnej
+
 [!INCLUDE [batch-virtual-network-ports](../../includes/batch-virtual-network-ports.md)]
-    
+
 ## <a name="create-a-pool-with-a-vnet-in-the-portal"></a>Utwórz pulę z siecią wirtualną w portalu
 
 Po utworzeniu sieci wirtualnej i do niej przypisany podsieci, można utworzyć pulę usługi Batch za pomocą tej sieci wirtualnej. Wykonaj następujące kroki, aby utworzyć pulę w witrynie Azure portal: 
-
-
 
 1. W witrynie Azure Portal przejdź do swojego konta usługi Batch. To konto musi być w tej samej subskrypcji i regionie co grupa zasobów zawierająca sieć wirtualną, których zamierzasz używać. 
 2. W **ustawienia** oknie po lewej stronie, wybierz opcję **pule** elementu menu.

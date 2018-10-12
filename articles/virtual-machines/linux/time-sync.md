@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: f79b1d4c1afc4d5a516a46a9bf6cb1790034b279
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 58fd3afa37d965cfbe21dcf23823ddb8425442b9
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45986301"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116715"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Synchronizacja czasu dla maszyn wirtualnych systemu Linux na platformie Azure
 
@@ -44,7 +44,7 @@ Maszyna wirtualna interakcji z hostem może również wpływać na zegara. Podcz
 
 Bez pracy synchronizacji czasu, zegar na maszynie Wirtualnej może wzrosnąć błędy. Gdy istnieje tylko jedna maszyna wirtualna, efekt mogą nie być istotne, chyba że obciążenie wymaga bardzo dokładnych. Jednak w większości przypadków, firma Microsoft ma wielu, wzajemnie połączonych maszyn wirtualnych, które umożliwiają śledzenie transakcji i spójne całe wdrożenie wymaga czasu czasu. Gdy czas między maszynami wirtualnymi jest inny, można uzyskać następujące skutki:
 
-- Protokoły zabezpieczeń, takie jak protokół Kerberos lub certyfikatów zależnych od technologii zależą od czasu są spójne we wszystkich systemach. 
+- Uwierzytelnianie nie powiedzie się. Protokoły zabezpieczeń, takie jak protokół Kerberos lub certyfikatów zależnych od technologii zależą od czasu są spójne we wszystkich systemach.
 - Jest to bardzo trudne ustalić, co wydarzyło, w systemie dzienników (lub innymi danymi) nie zgadzam się na czas. Te same zdarzenia będzie wyglądał jak pojawił się w różnym czasie, wprowadzania korelacji trudne.
 - Jeśli zegar jest wyłączona, rozliczenia może niepoprawnie obliczone.
 

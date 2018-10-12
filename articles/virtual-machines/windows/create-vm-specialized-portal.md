@@ -1,6 +1,6 @@
 ---
-title: Tworzenie maszyny Wirtualnej systemu Windows z dysku VHD specjalne w portalu Azure | Dokumentacja firmy Microsoft
-description: Utwórz nową maszynę Wirtualną systemu Windows z dysku VHD w portalu Azure.
+title: Tworzenie maszyny Wirtualnej z systemem Windows na podstawie wyspecjalizowanego wirtualnego dysku twardego w witrynie Azure portal | Dokumentacja firmy Microsoft
+description: Utwórz nową maszynę Wirtualną Windows z poziomu dysku VHD w witrynie Azure portal.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -12,67 +12,70 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 09/20/2018
 ms.author: cynthn
-ms.openlocfilehash: 428003747b7c746a2849a042e54647e86361c562
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 905f00842c5ce74f681a6c5c09ff8bf6c7a9e162
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716564"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091253"
 ---
-# <a name="create-a-vm-from-a-vhd-using-the-azure-portal"></a>Utwórz maszynę Wirtualną z wirtualnego dysku twardego za pomocą portalu Azure
+# <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Utwórz Maszynę wirtualną z poziomu dysku VHD za pomocą witryny Azure portal
 
+Istnieje kilka sposobów, aby utworzyć maszynę wirtualną (VM) na platformie Azure: 
 
-Istnieje kilka sposobów tworzenia maszyn wirtualnych na platformie Azure. Jeśli masz już wirtualnego dysku twardego lub skopiować wirtualnego dysku twardego ze i istniejącą maszynę Wirtualną do użycia, można utworzyć nowej maszyny Wirtualnej, dołączając wirtualny dysk twardy jako dysk systemu operacyjnego. Ten proces *dołącza* dysk VHD do nowej maszyny Wirtualnej jako dysk systemu operacyjnego.
+- Jeśli masz już wirtualny dysk twardy (VHD) do użycia lub chcesz skopiować wirtualny dysk twardy z istniejącej maszyny Wirtualnej do użycia, możesz utworzyć nową maszynę Wirtualną przez *dołączanie* wirtualnego dysku twardego do nowej maszyny Wirtualnej jako dysk systemu operacyjnego. 
 
-Można również utworzyć nową maszynę Wirtualną z wirtualnego dysku twardego maszyny wirtualnej, która została usunięta. Na przykład jeśli masz maszyny Wirtualnej platformy Azure nie działa prawidłowo, należy usunąć maszynę Wirtualną i umożliwia utworzenie nowej maszyny Wirtualnej wirtualny dysk twardy. Można ponownie użyć tego samego dysku VHD lub utworzyć kopię wirtualnego dysku twardego przez tworzenie migawek, a następnie utworzenie nowego dysku zarządzanego z migawki. Trwa kilka większej liczby kroków, ale zapewnia można zachować oryginalny dysk VHD, a także tworzy migawkę wrócił do w razie potrzeby.
+- Możesz utworzyć nową maszynę Wirtualną z wirtualnego dysku twardego maszyny wirtualnej, która została usunięta. Na przykład jeśli masz maszyny Wirtualnej platformy Azure, która nie działa prawidłowo, możesz usunąć maszynę Wirtualną i użyj jej wirtualnego dysku twardego, aby utworzyć nową maszynę Wirtualną. Możesz ponownie użyć tego samego pliku VHD lub tworzenie kopii wirtualnego dysku twardego przez utworzenie migawki, a następnie utworzenie nowego dysku zarządzanego z migawki. Chociaż tworzenie migawek zajmuje kilka kroków, zachowuje oryginalny dysk VHD i zapewnia rezerwowe.
+ 
+- Możesz utworzyć Maszynę wirtualną platformy Azure z dysku VHD w środowisku lokalnym przez przekazanie dysku VHD w środowisku lokalnym i dołączania ich do nowej maszyny Wirtualnej. Użyj programu PowerShell lub innego narzędzia do przekazania dysku VHD do konta magazynu, a następnie tworzenie dysku zarządzanego z dysku VHD. Aby uzyskać więcej informacji, zobacz [przekazywanie wyspecjalizowanego wirtualnego dysku twardego](create-vm-specialized.md#option-2-upload-a-specialized-vhd). 
 
-Masz lokalnej maszyny Wirtualnej, który ma być używana do tworzenia maszyny Wirtualnej na platformie Azure. Można przekazać wirtualny dysk twardy i dołączenie go do nowej maszyny Wirtualnej. W celu przekazania dysku VHD, należy użyć programu PowerShell lub inne narzędzie do przekaż go do konta magazynu, a następnie utworzyć dysków zarządzanych z dysku VHD. Aby uzyskać więcej informacji, zobacz [przekazanie specjalne dysku VHD](create-vm-specialized.md#option-2-upload-a-specialized-vhd)
-
-Jeśli chcesz utworzyć wiele maszyn wirtualnych za pomocą maszyny Wirtualnej lub wirtualnego dysku twardego, nie można używać tej metody. W przypadku większych wdrożeń, wykonaj następujące czynności [Tworzenie obrazu](capture-image-resource.md) , a następnie [umożliwia tworzenie wielu maszyn wirtualnych obrazu](create-vm-generalized-managed.md).
+Nie używaj wyspecjalizowanego dysku, jeśli chcesz utworzyć wiele maszyn wirtualnych. Zamiast tego w przypadku większych wdrożeń [utworzyć obraz](capture-image-resource.md) i następnie [umożliwia tworzenie wielu maszyn wirtualnych tego obrazu](create-vm-generalized-managed.md).
 
 
 ## <a name="copy-a-disk"></a>Kopiowanie dysku
 
-Utwórz migawkę, a następnie utwórz dysk z migawki. Dzięki temu można zachować oryginalny dysk VHD jest ponownie.
+Utwórz migawkę, a następnie utwórz dysku z migawki. Ta strategia pozwala zachować oryginalny dysk VHD jako rezerwowe:
 
-1. W menu po lewej stronie kliknij **wszystkie zasoby**.
-2. W **wszystkie typy** listy rozwijanej, usuń zaznaczenie pola wyboru **Zaznacz wszystko** , a następnie przewiń w dół i wybierz **dysków** można znaleźć dostępne dyski.
-3. Kliknij dysk, który chcesz użyć. **Omówienie** strony dla otwiera dysku.
-4. Na stronie przeglądu, w menu u góry, kliknij przycisk **+ Utwórz migawkę**. 
-5. Wpisz nazwę migawki.
-6. Wybierz **grupy zasobów** dla migawki. Można użyć istniejącej grupy zasobów lub Utwórz nową.
-7. Określ, czy używać (HDD) standard lub Premium (SDD) magazynu.
-8. Gdy wszystko będzie gotowe, kliknij przycisk **Utwórz** do utworzenia migawki.
-9. Po utworzeniu migawki, wybierz polecenie **+ Utwórz zasób** w lewym menu.
-10. Na pasku wyszukiwania wpisz **dysków zarządzanych w** i wybierz **dysków zarządzanych** z listy.
-11. Na **dysków zarządzanych** kliknij przycisk **Utwórz**.
-12. Wpisz nazwę dysku.
-13. Wybierz **grupy zasobów** dla dysku. Można użyć istniejącej grupy zasobów lub Utwórz nową. Są także to grupa zasobów gdzie utworzyć maszynę Wirtualną z dysku.
-14. Określ, czy używać (HDD) standard lub Premium (SDD) magazynu.
-15. W **typ źródła**, upewnij się, że **migawki** jest zaznaczone.
-16. W **migawki źródła** listy rozwijanej, wybierz migawki, którego chcesz użyć.
-17. Wprowadź wszelkie inne dostosowania, zgodnie z potrzebami, a następnie kliknij przycisk **Utwórz** można utworzyć na dysku.
+1. Z [witryny Azure portal](https://portal.azure.com), w menu po lewej stronie wybierz **wszystkich usług**.
+2. W **wszystkich usług** polu wyszukiwania, wprowadź **dysków** , a następnie wybierz **dysków** Aby wyświetlić listę dostępnych dysków.
+3. Wybierz dysk, którego chcesz użyć. **Dysku** ten dysk zostanie wyświetlona strona.
+4. W menu u góry wybierz **Utwórz migawkę**. 
+5. Wprowadź **nazwa** migawki.
+6. Wybierz **grupy zasobów** migawki. Można użyć istniejącej grupy zasobów lub Utwórz nową.
+7. Aby uzyskać **typ konta**, wybierają **standardowa (HDD)** lub **Premium (SSD)** magazynu.
+8. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz** można utworzyć migawki.
+9. Po utworzeniu migawki, wybierz **Utwórz zasób** w menu po lewej stronie.
+10. W polu wyszukiwania wprowadź **dysku zarządzanego** , a następnie wybierz **Managed Disks** z listy.
+11. Na **Managed Disks** wybierz opcję **Utwórz**.
+12. Wprowadź **nazwa** dla dysku.
+13. Wybierz **grupy zasobów** dla dysku. Można użyć istniejącej grupy zasobów lub Utwórz nową. Zaznacz to pole wyboru zostanie również jako grupa zasobów której utworzono maszynę Wirtualną z dysku.
+14. Aby uzyskać **typ konta**, wybierają **standardowa (HDD)** lub **Premium (SSD)** magazynu.
+15. W **typ źródła**, upewnij się, **migawki** jest zaznaczone.
+16. W **migawka źródła** listę rozwijaną, wybierz migawki, w której chcesz użyć.
+17. Wprowadź wszelkie inne dostosowania, zgodnie z potrzebami, a następnie wybierz pozycję **Utwórz** do utworzenia dysku.
 
 ## <a name="create-a-vm-from-a-disk"></a>Tworzenie maszyny Wirtualnej z dysku
 
-Po utworzeniu zarządzanych dysku wirtualnego dysku twardego, który ma być używany, można utworzyć maszyny Wirtualnej w portalu.
+Po utworzeniu dysku zarządzanego wirtualny dysk twardy, którego chcesz używać, możesz utworzyć maszynę Wirtualną w portalu:
 
-1. W menu po lewej stronie kliknij **wszystkie zasoby**.
-2. W **wszystkie typy** listy rozwijanej, usuń zaznaczenie pola wyboru **Zaznacz wszystko** , a następnie przewiń w dół i wybierz **dysków** można znaleźć dostępne dyski.
-3. Kliknij dysk, który chcesz użyć. **Omówienie** strony dla otwiera dysku.
-Upewnij się, że na stronie przeglądu **stan dysku** jest wymienione jako **odłączonego**. Jeśli nie, konieczne może odłączyć dysku od maszyny Wirtualnej albo Usuń maszynę Wirtualną, aby zwolnić dysku.
-4. W menu u góry okienka kliknij **+ Utwórz wirtualna**.
-5. Na **podstawy** strony dla nowej maszyny Wirtualnej, wpisz nazwę i wybierz istniejącą grupę zasobów lub Utwórz nową.
-6. Na **rozmiar** strony, wybierz stronę rozmiar maszyny Wirtualnej, a następnie kliknij przycisk **wybierz**.
-7. Na **ustawienia** strony, albo poczekać na portalu, tworzenie wszystkich nowych zasobów lub wybrać istniejącą **sieci wirtualnej** i **sieciowej grupy zabezpieczeń**. Portalu Zawsze twórz nowe karty Sieciowej i publiczny adres IP dla nowej maszyny Wirtualnej. 
-8. Zmiany opcji monitorowania i w razie potrzeby dodaj wszystkich rozszerzeń.
-9. Gdy skończysz, kliknij przycisk **OK**. 
-10. Konfiguracja maszyny Wirtualnej przeszedł sprawdzania poprawności, kliknij przycisk **OK** do wdrożenia.
+1. Z [witryny Azure portal](https://portal.azure.com), w menu po lewej stronie wybierz **wszystkich usług**.
+2. W **wszystkich usług** polu wyszukiwania, wprowadź **dysków** , a następnie wybierz **dysków** Aby wyświetlić listę dostępnych dysków.
+3. Wybierz dysk, którego chcesz użyć. **Dysku** ten dysk zostanie otwarta strona.
+4. W **Przegląd** strony, upewnij się, że **stan dysku** jest wymieniony jako **odłączonego**. Jeśli nie, może być konieczne Odłącz dysk od maszyny Wirtualnej lub Usuń maszynę Wirtualną, aby zwolnić dysku.
+4. W menu w górnej części strony wybierz **Utwórz maszynę Wirtualną**.
+5. Na **podstawy** strony dla nowej maszyny Wirtualnej, wprowadź **nazwę maszyny wirtualnej** i wybierz istniejącą **grupy zasobów** lub utworzyć nowy.
+6. Dla **rozmiar**, wybierz opcję **Zmień rozmiar** dostęp do **rozmiar** strony.
+7. Zaznacz wiersz rozmiar maszyny Wirtualnej, a następnie wybierz **wybierz**.
+8. Na **sieć** strony, można albo pozwolić portalu tworzyć wszystkie nowe zasoby, lub wybrać istniejącą **sieć wirtualna** i **sieciowej grupy zabezpieczeń**. Portal zawsze tworzy nowy interfejs sieciowy i publiczny adres IP dla nowej maszyny Wirtualnej. 
+9. Na **zarządzania** strony, wprowadź zmiany w opcji monitorowania.
+10. Na **config gościa** strony, należy dodać wszystkie rozszerzenia, zgodnie z potrzebami.
+11. Gdy wszystko będzie gotowe, wybierz pozycję **przeglądu + Utwórz**. 
+12. Jeśli konfiguracja maszyny Wirtualnej pozytywnie przejdą weryfikację, wybierz opcję **Utwórz** rozpocząć wdrażanie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Można również użyć programu PowerShell do [przekazania dysku VHD na platformie Azure i utworzyć Maszynę wirtualną specjalne](create-vm-specialized.md).
+Możesz również użyć programu PowerShell, aby [przekazywanie wirtualnego dysku twardego na platformie Azure i tworzenie wyspecjalizowanej maszyny Wirtualnej](create-vm-specialized.md).
 
 

@@ -3,15 +3,15 @@ title: Niepowodzenie powrót po awarii z platformy Azure do programu VMware przy
 description: Po przejściu w tryb failover maszyn wirtualnych na platformie Azure można uruchomić podczas powrotu po awarii, aby przywrócić maszyny wirtualne do środowiska lokalnego. Dowiedz się, procedurę powrotu po awarii.
 author: nsoneji
 ms.service: site-recovery
-ms.date: 07/06/2018
+ms.date: 10/11/2018
 ms.topic: conceptual
 ms.author: nisoneji
-ms.openlocfilehash: 9d8398582766a27f1457e3a59bdde0c59298ed50
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 841e036555723051dfeaf946f31eaf9eedaee798
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919839"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093514"
 ---
 # <a name="fail-back-from-azure-to-an-on-premises-site"></a>Niepowodzenie powrót po awarii z platformy Azure do lokacji lokalnej
 

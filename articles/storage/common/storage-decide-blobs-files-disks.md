@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/28/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 3f2609ea57ea5a5a0cce2544a1031c55199d137b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: bc6d615409f3c2d0f46286d2ad2ba20c32574afd
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39531351"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091722"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Kiedy używać obiektów blob platformy Azure, Azure Files lub Azure Disks
 
@@ -64,8 +64,8 @@ W poniższej tabeli porównano usługi Azure Files z usługi Azure Disks.
 |Czyszczenie|Automatyczny|Ręczne|  
 |Dostęp przy użyciu usługi REST|Nie można uzyskać dostępu do plików w ramach dysku VHD|Przechowywana w udziale plików jest możliwy|  
 |Maksymalny rozmiar|4 TiB dysków|Udziału plików w usłudze 5 TiB i plików w udziale: 1 TiB|  
-|Maks. IOps 8KB|500 operacji We/Wy|1000 operacji We/Wy|  
-|Przepływność|Maksymalnie 60 MiB/s na dysk|Maksymalnie 60 MiB/s na jeden udział plików|  
+|Maksymalna liczba operacji We/Wy|500 operacji We/Wy|1000 operacji We/Wy|  
+|Przepływność|Maksymalnie 60 MiB/s na dysk|Element docelowy jest 60 MiB/s na jeden udział plików (można uzyskać wyższy wyższe rozmiarów We/Wy)|  
 
 ## <a name="next-steps"></a>Kolejne kroki
 

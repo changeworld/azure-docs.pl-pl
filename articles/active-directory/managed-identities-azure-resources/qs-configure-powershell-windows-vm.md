@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: e8d85144b89d81e67d5ac225f0b6467230608ce0
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 3cd0a88747379edb15385014fcc93287d95295e0
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47106908"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114043"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure przy użyciu programu PowerShell
 
@@ -175,6 +175,9 @@ Aby przypisać tożsamości zarządzanej użytkownik przypisany do istniejącej 
    ```
 3. Pobierz właściwości maszyny Wirtualnej przy użyciu `Get-AzureRmVM` polecenia cmdlet. Następnie można przypisać przypisanych przez użytkownika tożsamości zarządzanej maszyny Wirtualnej platformy Azure, należy użyć `-IdentityType` i `-IdentityID` Włącz [Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) polecenia cmdlet.  Wartość`-IdentityId` parametr `Id` zauważyć w poprzednim kroku.  Zastąp `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, i `<USER ASSIGNED IDENTITY NAME>` własnymi wartościami.
 
+   > [!WARNING]
+   > Aby zachować żadnych wcześniej przypisanych przez użytkownika tożsamości zarządzanych przypisane do maszyny Wirtualnej, należy zbadać `Identity` własności obiektu maszyny Wirtualnej (na przykład `$vm.Identity`).  Jeśli żaden użytkownik przypisany tożsamości zarządzanych powrócisz, objęte następujące polecenie, wraz z nowego zarządzanych tożsamości przypisanych przez użytkownika, który chcesz przypisać do maszyny Wirtualnej.
+
    ```powershell
    $vm = Get-AzureRmVM -ResourceGroupName <RESOURCE GROUP> -Name <VM NAME>
    Update-AzureRmVM -ResourceGroupName <RESOURCE GROUP> -VM $vm -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>"
@@ -189,7 +192,7 @@ Aby przypisać tożsamości zarządzanej użytkownik przypisany do istniejącej 
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Usuń przypisanych przez użytkownika tożsamości zarządzanej maszyny wirtualnej platformy Azure
 
-Jeśli maszyna wirtualna ma wiele tożsamości zarządzanych przypisanych przez użytkownika, możesz usunąć wszystkie oprócz ostatni z nich przy użyciu następujących poleceń. Upewnij się, że parametry `<RESOURCE GROUP>` i `<VM NAME>` zostały zastąpione własnymi wartościami. `<USER ASSIGNED IDENTITY NAME>` Jest przypisanych do użytkowników zarządzanych tożsamości nazwę właściwości, która powinna pozostać na maszynie Wirtualnej. Te informacje można znaleźć w sekcji tożsamości maszyny Wirtualnej przy użyciu `az vm show`:
+Jeśli maszyna wirtualna ma wiele tożsamości zarządzanych przypisanych przez użytkownika, możesz usunąć wszystkie oprócz ostatni z nich przy użyciu następujących poleceń. Upewnij się, że parametry `<RESOURCE GROUP>` i `<VM NAME>` zostały zastąpione własnymi wartościami. `<USER ASSIGNED IDENTITY NAME>` Jest przypisanych do użytkowników zarządzanych tożsamości nazwę właściwości, która powinna pozostać na maszynie Wirtualnej. Te informacje można znaleźć, badając `Identity` własności obiektu maszyny Wirtualnej.  Na przykład `$vm.Identity`:
 
 ```powershell
 $vm = Get-AzureRmVm -ResourceGroupName myResourceGroup -Name myVm

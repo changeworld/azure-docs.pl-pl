@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/05/2018
+ms.date: 10/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8cdff34078c759379b5b939bdcdbc55155b51251
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 6127e300ee46dbd33f8537f0138963cd4e3b5cc8
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887459"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49094143"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -517,7 +517,7 @@ Aby dowiedzieć się, jak zintegrować rozwiązanie do zarządzania z System Cen
 
 Włączenie aktualizacji można określić określonej aktualizacji do zastosowania. Poprawki lub pakietów, które są ustawione w celu uwzględnienia są zainstalowane. Podczas poprawki lub pakietów, które są ustawione do uwzględnienia, a także wybrano klasyfikację, instalowane są uwzględnione elementy i elementy, które spełniają klasyfikacji.
 
-Dla maszyn z systemem Linux Jeśli pakiet jest uwzględniony, ale zawiera pakiet zależnych, który został wykluczony, specifcally pakiet nie jest zainstalowany.
+Jest ważne dowiedzieć się, że wykluczenia zastąpienia dołączenia. Na przykład jeśli zdefiniujesz regułę wykluczania z `*`, a następnie żadnych poprawek ani pakiety są zainstalowane, ponieważ są one wszystkie wyłączone. Dla maszyn z systemem Linux Jeśli pakiet jest uwzględniony, ale zawiera pakiet zależnych, który został wykluczony, specifcally pakiet nie jest zainstalowany.
 
 ## <a name="patch-linux-machines"></a>Maszyny z systemem Linux poprawki
 

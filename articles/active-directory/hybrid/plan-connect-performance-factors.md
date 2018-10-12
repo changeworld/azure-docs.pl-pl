@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
-ms.openlocfilehash: 7cf0e2b211f9d34f6d8f4fe89a230d8a2e97512a
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: cdca1b31f9b6cf10113dc0dba70b8f8991bafa2b
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069017"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093973"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Czynniki wpływające na wydajność programu Azure AD Connect
 
@@ -30,7 +30,7 @@ Program Azure AD Connect synchronizuje usługi Active Directory do usługi Azure
 | Konfigurowanie| Jak usługa Azure AD Connect procesy katalogów i informacji. |
 | Ładowanie| Częstotliwość zmian obiektu. Obciążenia mogą się różnić w ciągu godziny, dnia lub tygodnia. W zależności od tego składnika wiążące się projektowania pod kątem obciążenia szczytowego lub średniego. |
 
-Ten dokument ma na celu opisano zagadnienia związane z wydajnością wywieranie wpływu na wydajność aparatu inicjowania obsługi administracyjnej Azure AD Connect. Inne składniki programu Azure AD Connect, takich jak [program Azure AD Connect health](how-to-connect-health-agent-install.md) i agenci nie są opisane tutaj.
+Ten dokument ma na celu opisania czynników wpływających na wydajność programu Azure AD Connect, inicjowanie obsługi administracyjnej aparatu. Organizacje dużych lub złożonych (ponad 100 000 obiektów inicjowania obsługi organizacje) mogą używać zaleceń do optymalizacji ich implementacji usługi Azure AD Connect, w przypadku wystąpienia problemów z wydajnością opisana w tym temacie. Inne składniki programu Azure AD Connect, takich jak [program Azure AD Connect health](how-to-connect-health-agent-install.md) i agenci nie są opisane tutaj.
 
 > [!IMPORTANT]
 > Firma Microsoft nie obsługuje modyfikowania ani działania usługi Azure AD Connect poza akcjami, które zostały formalnie udokumentowane. Każda z tych akcji może spowodować niespójny lub nieobsługiwany stan synchronizacji programu Azure AD Connect. W związku z tym firma Microsoft nie może świadczyć pomocy technicznej w przypadku takich wdrożeń.

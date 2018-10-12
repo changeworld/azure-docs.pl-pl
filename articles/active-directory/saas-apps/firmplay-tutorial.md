@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 6e3d8a3951a42e448eff005b055b3cf5169179f1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: abc29480e5f5531857cbf973d5386727c3d7f2ac
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443453"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114532"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Samouczek: Integracja usługi Azure Active Directory z FirmPlay - propagowanie pracowników dla Rekrutacja
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Do konfigurowania integracji z usługą Azure AD z FirmPlay - propagowanie pracowników dla Rekrutacja, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - FirmPlay - propagowanie pracowników dla rekrutacji logowania jednokrotnego włączonych subskrypcji
 
 

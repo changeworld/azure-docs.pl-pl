@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: f8f12263ca71b8e88033484bc03fc4cff9e25bc8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8b11b5e3e420577590e95c6839673f54c52d078b
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435217"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116180"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą usługi LinkedIn podnieść poziom
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą usługi LinkedIn podnieść poziom, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Podniesienie poziomu LinkedIn logowania jednokrotnego włączonych subskrypcji
 
 > [!NOTE]

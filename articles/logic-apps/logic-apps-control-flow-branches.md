@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 344768e08fbd70aaae4fdb250b00cc968ed8eae1
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 41823d697139e039703cd47e0bfe3380fd2d20d6
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067028"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116090"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Utwórz lub przyłącz gałęzi równoległej dla akcji przepływu pracy w usłudze Azure Logic Apps
 

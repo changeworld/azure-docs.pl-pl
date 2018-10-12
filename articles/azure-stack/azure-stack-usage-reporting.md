@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/30/2018
 ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: 54a81e6c5c6e1fe5c37b985e40174dc369edfe6d
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: cf6604730ab3bd9ee04fac36e703022f63dcb949
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630413"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49090369"
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>Raport danych użycia usługi Azure Stack na platformie Azure 
 
@@ -95,10 +95,6 @@ W przypadku multinode usługi Azure Stack subskrypcji Enterprise Agreement (EA) 
 ## <a name="does-usage-data-reporting-work-in-sovereign-clouds"></a>Odbywa się praca w chmurach suwerennych raportowanie danych użycia?
 
 W usłudze Azure Stack Development Kit raportowanie danych użycia wymaga subskrypcji, które są tworzone w globalnego systemu Azure. Nie można zarejestrować subskrypcji utworzonych w jednym z chmur suwerennych (chmury Azure Government, Azure (Niemcy) i Azure — Chiny) na platformie Azure, dzięki czemu nie obsługują raportowanie danych użycia.
-
-## <a name="how-can-users-identify-azure-stack-usage-data-in-the-azure-billing-portal"></a>Jak użytkownicy rozpoznać danych użycia usługi Azure Stack w portalu rozliczeń systemu Azure?
-
-Użytkownicy widzą danych użycia usługi Azure Stack w pliku szczegółów użycia. Aby dowiedzieć się o tym, jak można pobrać pliku szczegóły użycia, zobacz [pobierania pliku użycia z artykułu Centrum konta platformy Azure](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv). Plik szczegółów użycia zawiera liczników usługi Azure Stack, które identyfikują maszyn wirtualnych i magazynu usługi Azure Stack. Wszystkie zasoby używane w usłudze Azure Stack są zgłaszane w regionie, o nazwie "Usługa Azure Stack."
 
 ## <a name="why-doesnt-the-usage-reported-in-azure-stack-match-the-report-generated-from-azure-account-center"></a>Dlaczego użycia zgłoszonych w usłudze Azure Stack nie odpowiada Raport wygenerowany na podstawie Centrum konta platformy Azure?
 

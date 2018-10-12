@@ -5,17 +5,17 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 10/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: f6067a6270010aaf57a404f66b8a99cbafa525ca
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 4a90dc1d97121426e7b161b1d5c92df78b0925a6
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041700"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114162"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Jak to działa: Usługa Azure Multi-Factor Authentication
 
@@ -42,15 +42,6 @@ Uwierzytelnianie Multi-Factor Authentication jest dostępna w ramach następują
 > [!NOTE]
 > Nowi klienci nie mogą kupować usługi Azure Multi-Factor Authentication jako autonomiczny oferty od 1 września 2018 r. Uwierzytelnianie wieloskładnikowe będzie dostępna funkcja licencje usługi Azure AD Premium w.
 
-### <a name="auth-provider-or-mfa-license"></a>Licencja dostawcy uwierzytelniania lub uwierzytelnianie wieloskładnikowe
-
-Jeśli masz usługi Azure AD Premium lub inny pakiet licencji, która obejmuje usługi Azure AD Premium, masz już usługę Azure MFA. Twoja organizacja nie musi nic więcej, aby rozszerzyć możliwości weryfikacji dwuetapowej dla wszystkich użytkowników. Musisz przypisać licencję do użytkownika, a następnie włączyć uwierzytelnianie wieloskładnikowe.
-
-Jeśli nie masz licencji, które obejmują usługi Azure MFA lub nie masz wystarczającą liczbę licencji, aby obejmowały wszystkich użytkowników, możesz utworzyć [dostawcy usługi MFA](concept-mfa-authprovider.md) rozszerzenie pełnego zestawu funkcji uwierzytelniania Wieloskładnikowego dla użytkowników, którzy ich potrzebują.
-
-> [!IMPORTANT]
-> Jeśli nie masz wystarczającą liczbę licencji dla wszystkich użytkowników, można utworzyć dostawcy usługi Multi-Factor Authentication na użytkownika, aby pokrywał pozostałej części organizacji. Nie należy tworzyć dostawcy usługi Multi-Factor Authentication na uwierzytelnienie. Jeśli to zrobisz, może wystąpić płacić za weryfikację żądań od użytkowników, które już masz licencje.
-
 ## <a name="supportability"></a>Możliwości obsługi
 
 Ponieważ większość użytkowników są przyzwyczajeni do korzystania z tylko hasła do uwierzytelniania, ważne jest, że Twoja organizacja komunikuje się do wszystkich użytkowników dotyczące tego procesu. Rozpoznawanie może zmniejszyć prawdopodobieństwo, że użytkownicy wywołania pomocy technicznej dla drobne problemy związane z usługi MFA. Jednak istnieją pewne scenariusze, w których tymczasowo wyłączyć uwierzytelnianie wieloskładnikowe jest konieczne. Skorzystaj z poniższych wskazówek, aby zrozumieć sposób obsługi tych scenariuszy:
@@ -65,8 +56,8 @@ Ponieważ większość użytkowników są przyzwyczajeni do korzystania z tylko 
 
 - Uzyskaj instrukcje krok po kroku MFA [plan wdrożenia](https://aka.ms/MFADeploymentPlan)
 
-- Informacje o [licencji użytkowników](concept-mfa-licensing.md)
+- Uzyskanie szczegółowych informacji o [licencjonowaniu użytkowników](concept-mfa-licensing.md)
 
-- Uzyskiwanie szczegółowych informacji [wersji do wdrożenia](concept-mfa-whichversion.md)
+- Uzyskanie szczegółowych informacji o [wersji do wdrożenia](concept-mfa-whichversion.md)
 
-- Znajdź odpowiedzi na [— często zadawane pytania](multi-factor-authentication-faq.md)
+- Uzyskanie odpowiedzi na [często zadawane pytania](multi-factor-authentication-faq.md)

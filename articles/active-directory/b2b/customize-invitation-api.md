@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 20c824da82d6e3e66bfa2d7447c8a9573cbdce69
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 8809a5a8b4f76d6e33bbb934e13931e86f2d681c
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985817"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091777"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Dostosowywanie i współpracy usługi Azure Active Directory B2B interfejsu API
 
@@ -79,7 +79,7 @@ Aby uzyskać więcej informacji można znaleźć: https://graph.microsoft.io/doc
 
 
 ## <a name="powershell"></a>PowerShell
-Teraz istnieje możliwość dodawania i łatwo zaprosić użytkowników zewnętrznych dla organizacji przy użyciu programu PowerShell. Utwórz zaproszenia przy użyciu polecenia cmdlet:
+Aby dodać, a następnie łatwo zaprosić użytkowników zewnętrznych dla organizacji, można użyć programu PowerShell. Utwórz zaproszenia przy użyciu polecenia cmdlet:
 
 ```
 New-AzureADMSInvitation
@@ -92,7 +92,25 @@ Można użyć następujących opcji:
 * -SendInvitationMessage
 * -InvitedUserMessageInfo
 
-Możesz również sprawdzić dokumentacja interfejsu API zaproszenie w [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
+### <a name="invitation-status"></a>Stan zaproszenia
+
+Po użytkownik zewnętrzny wysłać zaproszenie, można użyć **Get-AzureADUser** polecenia cmdlet, aby zobaczyć, jeśli została zaakceptowana go. Następujące właściwości Get-AzureADUser są wypełniane, gdy użytkownik zewnętrzny jest wysyłana wiadomość z zaproszeniem:
+
+* **UserState** wskazuje, czy to zaproszenie **PendingAcceptance** lub **zaakceptowano**.
+* **UserStateChangedOn** zawiera sygnaturę czasową, aby najnowsze zmiany **UserState** właściwości.
+
+Możesz użyć **filtru** opcję, aby przefiltrować wyniki według **UserState**. W poniższym przykładzie pokazano sposób filtrowania wyników do wyświetlenia tylko tych użytkowników, którzy mają oczekujące zaproszenie. W przykładzie pokazano również **Format-Lista** opcja, która umożliwia określenie właściwości do wyświetlenia. 
+ 
+```
+Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Property DisplayName,UserPrincipalName,UserState,UserStateChangedOn
+```
+
+> [!NOTE]
+> Upewnij się, że masz najnowszą wersję modułu AzureAD PowerShell lub module AzureADPreview programu PowerShell. 
+
+## <a name="see-also"></a>Zobacz także
+
+Zapoznaj się z odwołanie zaproszenia interfejsu API w [ https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation ](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

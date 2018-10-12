@@ -1,6 +1,6 @@
 ---
-title: Jak do odczytu lub zapisu na partycje danych w fabryce danych Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak odczytu lub zapisu danych podzielonej na partycje w fabryce danych Azure.
+title: Jak Odczyt lub zapis partycjonowania danych w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak Odczyt lub zapis danych partycjonowanych w usłudze Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,18 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: shlo
-ms.openlocfilehash: 59644f3318e2bf9c4f0ea6c3f5699fe1d19f2089
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 24464d110b00508cfb3fde4ab1a050773511e255
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053714"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091053"
 ---
-# <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory"></a>Jak do odczytu lub zapisu na partycje danych w fabryce danych Azure
-W wersji 1 usługi fabryka danych Azure obsługiwane odczytu lub zapisu danych podzielonej na partycje przy użyciu SliceStart/SliceEnd/WindowStart/WindowEnd zmienne systemowe. W bieżącej wersji fabryki danych to zachowanie można osiągnąć za pomocą parametru potoku i czas/zaplanowana godzina rozpoczęcia tego wyzwalacza jako wartość parametru. 
+# <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory"></a>Jak Odczyt lub zapis partycjonowania danych w usłudze Azure Data Factory
 
-## <a name="use-a-pipeline-parameter"></a>Użyj parametru potoku 
-W wersji 1 można użyć właściwości partitionedBy i SliceStart zmiennej systemowej, jak pokazano w poniższym przykładzie: 
+W usłudze Azure Data Factory w wersji 1 można odczytu lub zapisu danych podzielonych na partycje za pomocą **SliceStart**, **SliceEnd**, **WindowStart**, i **WindowEnd** zmiennych systemowych. W bieżącej wersji usługi fabryka danych to zachowanie można osiągnąć za pomocą parametru potoku i wyzwalacza godziny rozpoczęcia lub zaplanowanego czasu jako wartość parametru. 
+
+## <a name="use-a-pipeline-parameter"></a>Parametr potoku 
+
+W usłudze Data Factory w wersji 1, można użyć **partitionedBy** właściwości i **SliceStart** zmiennej systemowej, jak pokazano w poniższym przykładzie: 
 
 ```json
 "folderPath": "adfcustomerprofilingsample/logs/marketingcampaigneffectiveness/{Year}/{Month}/{Day}/",
@@ -35,13 +37,13 @@ W wersji 1 można użyć właściwości partitionedBy i SliceStart zmiennej syst
 ],
 ```
 
-Aby uzyskać więcej informacji na temat właściwości partitonedBy, zobacz [łącznika obiektów Blob platformy Azure w wersji 1](v1/data-factory-azure-blob-connector.md#dataset-properties) artykułu. 
+Aby uzyskać więcej informacji na temat **partitonedBy** właściwości, zobacz [kopiowanie danych do i z usługi Azure Blob storage za pomocą usługi Azure Data Factory](v1/data-factory-azure-blob-connector.md#dataset-properties). 
 
-W bieżącej wersji fabryki danych oraz sposobów osiągnięcia tego zachowania jest wykonywanie następujących czynności: 
+Aby uzyskać takie zachowanie w bieżącej wersji usługi fabryka danych: 
 
-1. Zdefiniuj **potoku parametru** typu String. W poniższym przykładzie nazwa parametru potoku jest **windowStartTime**. 
-2. Ustaw **folderPath** w definicji zestawu danych, aby odwołać wartość parametru potoku. 
-3. Przekaż rzeczywista wartość dla parametru podczas wywoływania procesu na żądanie, lub Przekaż czas/zaplanowana godzina rozpoczęcia tego wyzwalacza dynamicznie w czasie wykonywania. 
+1. Zdefiniuj *potoku parametr* typu **ciąg**. W poniższym przykładzie jest nazwa parametru potoku **windowStartTime**. 
+2. Ustaw **folderPath** w definicji zestawu danych, aby odwoływać się do wartości parametrów potoku. 
+3. Kiedy wywołujesz potoku na żądanie, należy przekazać rzeczywistej wartości parametru. Można również przekazać wyzwalacza godziny rozpoczęcia lub zaplanowanym terminie dynamicznie w czasie wykonywania. 
 
 ```json
 "folderPath": {
@@ -50,8 +52,9 @@ W bieżącej wersji fabryki danych oraz sposobów osiągnięcia tego zachowania 
 },
 ```
 
-## <a name="pass-in-value-from-a-trigger"></a>Podaj wartość od wyzwalacza
-W następujących definicji wyzwalacza okno wirowania, godzina rozpoczęcia okna wyzwalacza jest przekazywany jako wartość parametru potoku **windowStartTime**: 
+## <a name="pass-in-a-value-from-a-trigger"></a>Przekazywanie wartości przy użyciu wyzwalacza
+
+W poniższej definicji wyzwalacza okna wirowania, godzina rozpoczęcia okna wyzwalacza jest przekazywany jako wartość parametru potoku **windowStartTime**: 
 
 ```json
 {
@@ -80,7 +83,7 @@ W następujących definicji wyzwalacza okno wirowania, godzina rozpoczęcia okna
 
 ## <a name="example"></a>Przykład
 
-Oto przykład definicji zestawu danych:
+Oto przykładowa Definicja zestawu danych:
 
 ```json
 {
@@ -176,4 +179,6 @@ Definicja potoku:
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać pełny Przewodnik tworzenia fabryka danych z potokiem, zobacz [Szybki Start: tworzenie fabryki danych](quickstart-create-data-factory-powershell.md). 
+
+Aby uzyskać szczegółowy przewodnik, jak utworzyć fabrykę danych, która zawiera potok, zobacz [Szybki Start: tworzenie fabryki danych](quickstart-create-data-factory-powershell.md). 
+

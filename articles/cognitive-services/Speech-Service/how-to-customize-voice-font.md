@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 843ff39f49141ff78219771a6d4af2e9e6e7644b
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 21b37d2b61af81e6481de4c5e7537a3382d895b6
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017486"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49113924"
 ---
 # <a name="creating-custom-voice-fonts"></a>Tworzenie niestandardowych voice czcionek
 
@@ -22,12 +22,9 @@ Aby utworzyć czcionki głosowe, tworzenie nagrania studio i przekaż skojarzone
 
 Możesz rozpocząć pracę z małą ilością danych do weryfikacji koncepcji. Jednak im więcej danych podasz, tym bardziej naturalnych i professional brzmi Twojego głosu.
 
-
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-**Zamiany tekstu na mowę** funkcja dostosowywania głosu jest obecnie dostępna w prywatnej wersji zapoznawczej. [Wypełnij formularz zgłoszeniowy](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0N8Vcdi8MZBllkZb70o6KdURjRaUzhBVkhUNklCUEMxU0tQMEFPMjVHVi4u) wziąć pod uwagę dostępu.
-
-Należy również konto platformy Azure i subskrypcji usługi mowy. [Utwórz je](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started) Jeśli jeszcze go. Połącz z subskrypcją do portalu usługi Custom Voice w następujący sposób:
+Potrzebujesz konta platformy Azure i subskrypcji usługi mowy. [Utwórz je](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started) Jeśli jeszcze go. Twoja subskrypcja połączyć się z portalu usługi Custom Voice jak pokazano poniżej.
 
 1. Zaloguj się do [portal Custom Voice](https://customvoice.ai) przy użyciu tego samego konta Microsoft, który służy do zastosowania do uzyskiwania dostępu.
 
@@ -37,7 +34,6 @@ Należy również konto platformy Azure i subskrypcji usługi mowy. [Utwórz je]
 
 3. Na stronie subskrypcji wybierz **połączyć z istniejącą subskrypcją**. Należy pamiętać, że usługi mowy obsługują różnych regionach. Sprawdź region, gdzie został utworzony klucz subskrypcji i upewnij się, Połącz swój klucz do portalu podrzędnych poprawne.  
 
-     
 4. Wklej swój klucz subskrypcji do tabeli, jak pokazano w poniższym przykładzie. Każda subskrypcja ma dwa klucze, a następnie można użyć dowolnego z nich.
 
      ![Dodaj subskrypcję](media/custom-voice/add-subscription.png)

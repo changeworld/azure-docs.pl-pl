@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 9b521f48f5bed8ae44d8406eb692a3ce244cf221
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: c5cbeed7f689a7ae159d753963c35281b051f632
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902267"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114196"
 ---
 # <a name="azure-storage-replication"></a>Replikacja usługi Azure Storage
 
@@ -39,7 +39,7 @@ Poniższa tabela zawiera krótkie omówienie zakres trwałości i dostępności,
 | Awaria obejmujących cały region                                                                                     | Nie                              | Nie                               | Yes                                  | Yes                                  |
 | Dostęp do odczytu do danych (w zdalnym, replikowany geograficznie region) w przypadku niedostępności obejmujących cały region | Nie                              | Nie                               | Nie                                   | Yes                                  |
 | Umożliwia zapewnienie trwałości ___ obiektów w danym roku                                          | co najmniej 99,999999999% (11 9) | co najmniej 99,9999999999% (12 9) | co najmniej 99,99999999999999% (16 9) | co najmniej 99,99999999999999% (16 9) |
-| Typy kont magazynu obsługiwanych                                                                   | GPv1, GPv2, Blob                | Konta GPv1 (za pośrednictwem programu PowerShell, interfejsu wiersza polecenia platformy Azure lub zasobów dostawcy interfejsu API), GPv2                             | GPv1, GPv2, Blob                     | GPv1, GPv2, Blob                     |
+| Typy kont magazynu obsługiwanych                                                                   | Konta GPv1, GPv2 obiektów Blob                | Konta GPv2, GPv1 (za pośrednictwem programu PowerShell, interfejsu wiersza polecenia platformy Azure lub zasobów dostawcy interfejsu API)                             | Konta GPv1, GPv2 obiektów Blob                     | Konta GPv1, GPv2 obiektów Blob                     |
 | Umowa SLA dotycząca dostępności dla żądań odczytu | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,99% (99,9% w przypadku warstwy dostępu chłodnego) |
 | Umowa SLA dotycząca dostępności dla żądań zapisu | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) |
 

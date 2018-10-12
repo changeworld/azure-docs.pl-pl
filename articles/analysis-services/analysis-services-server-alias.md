@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/11/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d0aebbe115be9e9af697b5d93d158a263fefe55c
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: dc649379ffc375282b853687573266ded2bf80eb
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448044"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093769"
 ---
 # <a name="alias-server-names"></a>Alias serwera nazw
 
@@ -34,7 +34,7 @@ Podczas nawiązywania połączenia z klientem, nazwę serwera aliasu jest wprowa
 
 ![Połączenie programu Power BI Desktop](media/analysis-services-alias/aas-alias-connect-pbid.png)
 
-## <a name="create-an-alias"></a>Utwórz alias
+## <a name="create-an-alias"></a>Tworzenie aliasu
 
 Aby utworzyć punkt końcowy aliasu, można użyć dowolnej metody, która zwraca prawidłową nazwę serwera usług Azure Analysis Services. Na przykład odwołanie do pliku w usłudze Azure Storage Blob zawierają rzeczywiste server name, lub Utwórz i Opublikuj aplikację formularzy sieci Web ASP.NET.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 8a08155dd67c6fcf2fb080325840bc163dc6da60
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 220b5a486f5bb5d22c671ac6935e610a6eef62cf
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447360"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115989"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>Samouczek: Integracja usługi Azure Active Directory z FilesAnywhere
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą FilesAnywhere, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - FilesAnywhere logowania jednokrotnego włączonych subskrypcji
 
 

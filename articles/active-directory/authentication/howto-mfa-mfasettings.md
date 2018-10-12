@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 8ba1286f7283a1062b2b94d58c2439e8461c1573
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: a66a7537632aac2190cd39f13665bcd8d4ed6ce7
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817130"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114995"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurowanie ustawień usługi Azure Multi-Factor Authentication
 
@@ -322,11 +322,11 @@ _Należy pamiętać, uwierzytelnianie wieloskładnikowe_ funkcja dla urządzeń 
 
 ### <a name="how-the-feature-works"></a>Jak działa funkcja
 
-Zapamiętaj funkcji uwierzytelniania wieloskładnikowego ustawia trwały plik cookie w przeglądarce, gdy użytkownik wybierze **nie pytaj ponownie przez X dni** opcji podczas logowania. Użytkownik nie jest monitowany ponownie dla uwierzytelniania wieloskładnikowego z tej samej przeglądarki do momentu wygaśnięcia ważności pliku cookie. Jeśli użytkownik otwiera innej przeglądarki, w tym samym urządzeniu lub czyści ich pliki cookie, otrzymuje monit ponownie zweryfikować. 
+Zapamiętaj funkcji uwierzytelniania wieloskładnikowego ustawia trwały plik cookie w przeglądarce, gdy użytkownik wybierze **nie pytaj ponownie przez X dni** opcji podczas logowania. Użytkownik nie jest monitowany ponownie dla uwierzytelniania wieloskładnikowego z tej samej przeglądarki do momentu wygaśnięcia ważności pliku cookie. Jeśli użytkownik otwiera innej przeglądarki, w tym samym urządzeniu lub czyści ich pliki cookie, otrzymuje monit ponownie zweryfikować.
 
-**Nie pytaj ponownie przez X dni** opcja nie jest wyświetlana w aplikacjach nie korzystających z przeglądarki, niezależnie od tego, czy aplikacja obsługuje nowoczesnego uwierzytelniania. Te aplikacje korzystają _tokenów odświeżania_ dostarczające nowych tokenów dostępu co godzinę. Podczas weryfikowania tokenu odświeżania usługi Azure AD sprawdza ostatniej weryfikacji dwuetapowej, które wystąpiły w ciągu określonej liczby dni. 
+**Nie pytaj ponownie przez X dni** opcja nie jest wyświetlana w aplikacjach nie korzystających z przeglądarki, niezależnie od tego, czy aplikacja obsługuje nowoczesnego uwierzytelniania. Te aplikacje korzystają _tokenów odświeżania_ dostarczające nowych tokenów dostępu co godzinę. Podczas weryfikowania tokenu odświeżania usługi Azure AD sprawdza ostatniej weryfikacji dwuetapowej, które wystąpiły w ciągu określonej liczby dni.
 
-Ta funkcja zmniejsza liczbę uwierzytelnień w aplikacji sieci web, które zwykle monit o każdym razem, gdy. Ta funkcja zwiększa liczbę uwierzytelnień dla klientów z nowoczesnego uwierzytelniania, które zwykle monit co 90 dni.
+Ta funkcja zmniejsza liczbę uwierzytelnień w aplikacji sieci web, które zwykle monit o każdym razem, gdy. Ta funkcja zwiększa liczbę uwierzytelnień dla klientów z nowoczesnego uwierzytelniania, które zwykle monit co 90 dni. Może również zwiększyć liczbę uwierzytelnień, w połączeniu z zasadami dostępu warunkowego.
 
 >[!IMPORTANT]
 >**Należy pamiętać, uwierzytelnianie wieloskładnikowe** funkcja nie jest zgodny z **nie wylogowuj mnie** funkcji usług AD FS, gdy użytkownicy wykonają weryfikację dwuetapową dla usług AD FS za pomocą usługi Azure Multi-Factor Authentication Serwer uwierzytelniania lub rozwiązanie innej firmy, uwierzytelnianie wieloskładnikowe.

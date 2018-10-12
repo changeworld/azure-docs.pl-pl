@@ -9,12 +9,12 @@ ms.date: 10/03/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6094236269df881eac6f8cd2fd04183dd9d6df3b
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 2a52735a7f573534c6d643e778a898a888dfc81f
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068761"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114587"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Store danych na urządzeniach brzegowych za pomocą usługi Azure Blob Storage na urządzeniach brzegowych IoT Edge (wersja zapoznawcza)
 
@@ -241,7 +241,7 @@ Nieobsługiwane:
 ### <a name="block-blobs"></a>Obiekty BLOB typu Block
 
 Obsługiwane: 
-* Umieść bloku
+* Umieść bloku:-bloku musi być mniejsza niż 4 MB rozmiar
 * Umieszczanie i Uzyskaj listę zablokowanych
 
 Nieobsługiwane:
