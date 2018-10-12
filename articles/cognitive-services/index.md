@@ -11,12 +11,12 @@ ms.date: 09/24/2018
 ms.topic: hub-page
 ms.prod: cognitive-services
 ms.technology: cognitive-services
-ms.openlocfilehash: 5403ec448725504c0b0a57a3d82853d0884c7c48
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1c07a02369af90580615fd9e7eaf6e239949ea36
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985438"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068472"
 ---
 <h1>Dokumentacja usług Azure Cognitive Services</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">Dowiedz się, jak wbudować w swoje aplikacje, witryny i boty inteligentne algorytmy umożliwiające dostrzeganie, słyszenie, wypowiadanie i interpretowanie potrzeb użytkowników naturalnymi metodami komunikacji. Samouczki, przewodniki Szybki start, dokumentacja interfejsu API i przykłady przedstawiają, jak to zrobić.</p>
@@ -28,7 +28,7 @@ ms.locfileid: "46985438"
                     <div class="cardPadding">
                         <div class="card">
                             <div class="cardImageOuter">
-                                <div class="cardImage"> 
+                                <div class="cardImage">
                                     <img src="media/index/i_overview.svg" alt="" />
                                 </div>
                             </div>
@@ -115,6 +115,8 @@ ms.locfileid: "46985438"
                         <h3>Rozpoznawanie mowy za pomocą usługi Speech Service</h3>
                         <p><a href="/azure/cognitive-services/speech-service/quickstart-csharp-windows/">Korzystanie z języka C#</a></p>
                         <p><a href="/azure/cognitive-services/speech-service/quickstart-java-jre">Korzystanie z języka Java</a></p>
+                        <p><a href="/azure/cognitive-services/speech-service/quickstart-objectivec-ios">Korzystanie z języka Objective-C</a></p>
+                        <p><a href="/azure/cognitive-services/speech-service/quickstart-js-browser">Korzystanie z języka JavaScript</a></p>
                         <p><a href="/azure/cognitive-services/speech-service/quickstart-cpp-windows">Korzystanie z języka C++</a></p>
                     </div>
                 </div>
@@ -274,7 +276,7 @@ ms.locfileid: "46985438"
                 <div class="card">
                     <div class="cardText">
                         <h3>Interfejs API rozpoznawania mowy</h3>
-                        <p><a href="/azure/cognitive-services/speech-service">Speech Service</a></p>
+                        <p><a href="/azure/cognitive-services/speech-service">Interfejs API usługi rozpoznawania mowy</a></p>
                         <p><a href="/azure/cognitive-services/speech/home">Interfejs API rozpoznawania mowy Bing</a></p>
                         <p><a href="/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home"><span>Custom Speech Service&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
                         <p><a href="/azure/cognitive-services/speaker-recognition/home"><span>Rozpoznawanie osoby mówiącej&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>

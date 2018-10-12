@@ -1,0 +1,51 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: ceab905b2baf87446238d44151146b5066e55335
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079744"
+documentType: LandingData
+title: Dokumentacja dotycząca dostosowywania witryny Azure Portal
+metadata:
+  description: Dowiedz się, jak dostosować witrynę Azure Portal.
+  services: azure portal
+  documentationcenter: ''
+  author: cwatson-cat
+  manager: dougeby
+  editor: ''
+  ms.assetid: 3e12c488-9c8c-4d0d-9b07-e018dec42fc6
+  ms.service: azure-portal
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.tgt_pltfrm: na
+  ms.workload: na
+  ms.date: 10/08/2018
+  ms.author: cwatson
+abstract:
+  description: Witryna Azure Portal to ujednolicona konsola internetowa umożliwiająca tworzenie i monitorowanie wszelkiego rodzaju aplikacji — od prostych aplikacji internetowych po złożone aplikacje w chmurze — oraz zarządzanie nimi. Obejmuje ona dostosowywalny pulpit nawigacyjny oraz opcje ułatwień dostępu.
+sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/azure-preview-portal-supported-browsers-devices
+      html: <p>Witryna Azure Portal działa na wszystkich nowoczesnych komputerach i tabletach oraz w nowoczesnych przeglądarkach.</p>
+      title: Obsługiwane przeglądarki i urządzenia
+    - href: /azure/azure-portal/azure-portal-change-theme-high-contrast
+      html: <p>Zmień kontrast lub schemat kolorów w witrynie Azure Portal.</p>
+      title: Włączanie wysokiego kontrastu
+    - href: /azure/azure-portal/azure-portal-keyboard-shortcuts
+      html: <p>Więcej informacji na temat skrótów klawiaturowych, które działają w całej witrynie Azure Portal.</p>
+      title: Skróty klawiaturowe
+    - href: /azure/azure-portal/azure-portal-dashboards
+      html: <p>Twórz wiele pulpitów nawigacyjnych i udostępniaj je innym osobom, które mają dostęp do Twoich subskrypcji platformy Azure.</p>
+      title: Tworzenie i udostępnianie pulpitu nawigacyjnego platformy Azure
+    - href: /azure/azure-portal/azure-portal-dashboard-share-access
+      html: <p>Opublikuj pulpit nawigacyjny i udostępnij go innym użytkownikom w Twojej organizacji.</p>
+      title: Udostępnianie pulpitów nawigacyjnych przy użyciu kontroli RBAC
+    - href: /azure/azure-portal/azure-portal-dashboards-create-programmatically
+      html: <p>Programowe tworzenie i publikowanie pulpitów nawigacyjnych dla organizacji</p>
+      title: Programowe tworzenie pulpitów nawigacyjnych platformy Azure
