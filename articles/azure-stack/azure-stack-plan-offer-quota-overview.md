@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/07/2018
+ms.date: 10/12/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 70ed5d45701133434c708ad80aaafc58645297e8
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 343c29db4ac5fba37d8ea1b17862b86566ae15ca
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077123"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309199"
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>Omówienie planu, oferty, przydziału i subskrypcji
 
@@ -40,7 +40,7 @@ Gdy można dostarczać usługi, postępuj zgodnie z następującą ogólną proc
 2. Utwórz plan, który ma co najmniej jednej usługi. Podczas tworzenia planu, wybierz lub utwórz przydziały, które definiują limity zasobów dla każdej usługi w planie.
 3. Utwórz ofertę, która zawiera co najmniej jeden plan. Oferta może zawierać planów podstawowych i planów dodatków opcjonalne.
 
-Po utworzeniu oferty użytkowników może być subskrybowana przez dostęp do usług i zasobów, których oferta obejmuje stały przydział. Użytkownicy mogą subskrybować oferty tyle, jak chcą. Na poniższym diagramie przedstawiono prosty przykład użytkownika, który subskrybuje dwóch ofert. Każda oferta ma plan lub dwa, a każdy plan umożliwi im dostęp do usług.
+Po utworzeniu oferty użytkowników może być subskrybowana przez dostęp do usług i zasobów, których oferta obejmuje stały przydział. Użytkownicy mogą subskrybować oferty tyle, jak chcą. Na poniższej ilustracji przedstawiono prosty przykład użytkownika, który subskrybuje dwóch ofert. Każda oferta ma plan lub dwa, a każdy plan umożliwi im dostęp do usług.
 
 ![Subskrypcji dzierżawcy przy użyciu oferty i plany](media/azure-stack-key-features/image4.png)
 
@@ -50,7 +50,7 @@ Plany są grupowania co najmniej jednej usługi. Jako operatorów usługi Azure 
 
 ### <a name="quotas"></a>Przydziały
 
-Aby ułatwić zarządzanie pojemnością chmury, możesz użyć wstępnie skonfigurowane limity przydziału lub tworzenie nowego limitu przydziału dla każdej usługi w ramach planu. Przydziały definiują limity górny zasobów, które subskrypcji użytkownika można aprowizować lub zużywają. Na przykład limit przydziału mogą zezwalać na użytkownika, aby utworzyć do pięciu maszyn wirtualnych (VM). Możesz ustawić dodatkowe przydziały na maszynach wirtualnych, takie jak ilość pamięci RAM i procesora CPU rdzeni.
+Aby ułatwić zarządzanie pojemnością chmury, możesz użyć wstępnie skonfigurowane *przydziały*, lub Utwórz nowy limit przydziału dla każdej usługi w ramach planu. Przydziały definiują limity górny zasobów, które subskrypcji użytkownika można aprowizować lub zużywają. Na przykład limit przydziału mogą zezwalać na użytkownika, aby utworzyć do pięciu maszyn wirtualnych (VM).
 
 Można skonfigurować przydziały uporządkowane według regionów. Na przykład plan, które świadczy usługi compute dla regionu, A może mieć limit przydziału dwie maszyny wirtualne z 4 GB pamięci RAM i 8 rdzeni procesora CPU.
 
@@ -61,11 +61,11 @@ Dowiedz się więcej o [typy limitów przydziału w usłudze Azure Stack](azure-
 
 ### <a name="base-plan"></a>Plan podstawowy
 
-Podczas tworzenia oferty, administrator usługi może zawierać plan podstawowy. Te plany podstawowe znajdują się domyślnie, gdy użytkownik subskrybuje tę ofertę. Gdy użytkownik subskrybuje, mają dostęp do wszystkich dostawców zasobów, określone w tych planów podstawowych (z odpowiedniej limitów przydziału.)
+Podczas tworzenia oferty, administrator usługi może zawierać plan podstawowy. Te plany podstawowe znajdują się domyślnie, gdy użytkownik subskrybuje tę ofertę. Gdy użytkownik subskrybuje, mają dostęp do wszystkich dostawców zasobów, określone w tych planów podstawowych (z odpowiednie limity przydziału).
 
 ### <a name="add-on-plans"></a>Plany dodatkowe
 
-Plany dodatkowe są opcjonalne plany, które możesz dodać do oferty. Plany dodatkowe nie są domyślnie włączone w subskrypcji. Plany dodatkowe są plany dodatkowe (z limitami przydziału) dostępnych w ofercie, subskrybent można dodać do swojej subskrypcji. Na przykład możesz zaoferować plan podstawowy z ograniczonymi zasobami z wersji próbnej i planu dodatku z zasobami bardziej znaczące klienci, którzy zdecydują się podczas wdrażania usługi.
+Plany dodatkowe są opcjonalne plany, które możesz dodać do oferty. Plany dodatkowe nie są uwzględniane domyślnie w ramach subskrypcji. Plany dodatkowe są plany dodatkowe (z limitami przydziału) dostępnych w ofercie, subskrybent można dodać do swojej subskrypcji. Na przykład możesz zaoferować plan podstawowy z ograniczonymi zasobami z wersji próbnej i planu dodatku z zasobami bardziej znaczące klienci, którzy zdecydują się podczas wdrażania usługi.
 
 ## <a name="offers"></a>Oferta
 
@@ -81,8 +81,8 @@ Każda kombinacja użytkownika z ofertą jest unikatowy subskrypcji. Użytkownik
 
 ### <a name="default-provider-subscription"></a>Domyślną subskrypcję dostawcy
 
-Subskrypcję dostawcy domyślne jest tworzone automatycznie podczas wdrażania usługi Azure Stack Development Kit. Ta subskrypcja może służyć do zarządzania usługi Azure Stack, wdrażanie dostawców dodatkowych zasobów i utworzyć plany i oferty dla użytkowników. Dla zabezpieczeń i licencjonowania przyczyny należy ich używać do uruchamiania obciążeń klientów i aplikacji.
+Automatycznie zostanie utworzona domyślna subskrypcja dostawcy, podczas wdrażania usługi Azure Stack Development Kit. Ta subskrypcja może służyć do zarządzania usługi Azure Stack, wdrażanie dostawców dodatkowych zasobów i utworzyć plany i oferty dla użytkowników. Dla zabezpieczeń i powodów licencjonowania nie ją stosować do uruchamiania obciążeń klientów i aplikacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Tworzenie planu](azure-stack-create-plan.md)
+Aby uzyskać więcej informacji na temat planów i ofert, zobacz [Utwórz plan](azure-stack-create-plan.md).
