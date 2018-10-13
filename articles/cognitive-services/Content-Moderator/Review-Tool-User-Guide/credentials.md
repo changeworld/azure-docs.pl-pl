@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 6477879953dc2bb2c7503eb0b2d4b5effa7b6a11
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 911d62fc2baa50cce6d40f8b5bcc455f308d21d7
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024659"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309659"
 ---
 # <a name="manage-credentials"></a>Zarządzanie poświadczeniami
 
@@ -66,11 +66,11 @@ Należy również zauważyć, że identyfikator region dla punktu końcowego int
 
 ### <a name="resource-id"></a>Identyfikator zasobu
 
-Pokrótce informacje omówione w tej sekcji w [przy użyciu konta platformy Azure za pomocą narzędzia do przeglądu i API](credentials.md#how-to-use-your-azure-account-with-the-review-tool) sekcji. To pole jest zwykle puste, chyba że dodasz do tego pola Identyfikator zasobu usługi Azure zgodnie z opisem w poprzedniej sekcji.
+Ten zestaw pól są omówione w poprzedniej sekcji [konta platformy Azure za pomocą narzędzia do przeglądu i interfejsu API](credentials.md#use-the-azure-account-with-the-review-tool-and-review-api). To pole jest zwykle puste, chyba że dodasz do tego pola Identyfikator zasobu usługi Azure zgodnie z opisem w poprzedniej sekcji.
 
 ### <a name="workflows"></a>Przepływy
 
-Omówiono to zbiór pól w poprzedniej sekcji na [za pomocą klucza usługi platformy Azure do obsługiwania przepływów pracy](credentials.md#use-the-azure-account-with-the-workflows-in-the-review-tool). Domyślnie narzędzie do przeglądu używa jej wygenerowany automatycznie klucz wersji próbnej do uruchamiania przepływów pracy, i to, co wyświetla rozpoczynać się. Zezwalaj na dwa pola, przy użyciu list termin i obrazu w operacjach tekst na ekranie i ocenić obraz odpowiednio.
+Ten zestaw pól są omówione w poprzedniej sekcji [konta platformy Azure za pomocą przepływów pracy za pomocą narzędzia przeglądu](credentials.md#use-the-azure-account-with-the-workflows-in-the-review-tool). Domyślnie narzędzie do przeglądu używa jej wygenerowany automatycznie klucz wersji próbnej do uruchamiania przepływów pracy, i to, co wyświetla rozpoczynać się. Zezwalaj na dwa pola, przy użyciu list termin i obrazu w operacjach tekst na ekranie i ocenić obraz odpowiednio.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

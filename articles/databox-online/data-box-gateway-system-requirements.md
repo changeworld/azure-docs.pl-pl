@@ -1,25 +1,19 @@
 ---
 title: Wymagania dotyczące systemu Microsoft Azure Data Box Gateway | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o oprogramowaniu i wymagania sieciowe dla bramy pola danych platformy Azure
-services: databox-edge-gateway
-documentationcenter: NA
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
-ms.service: databox-edge-gateway
-ms.devlang: NA
+ms.service: databox
+ms.subservice: gateway
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 915190f6f2773d22d14c75be1140f96b7dd40559
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 16d9604100d3ec37cef7ad4ebbdc376967006e15
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991576"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166699"
 ---
 # <a name="azure-data-box-gateway-system-requirements-preview"></a>Wymagania systemowe bramy pola danych platformy Azure (wersja zapoznawcza)
 
@@ -31,7 +25,7 @@ Wymagania systemowe dla urządzenia wirtualnego bramy pola danych obejmują:
 - **Wymagania dotyczące sieci dla urządzenia** — informacje na temat wszelkie wymagania sieciowe związane z działaniem urządzenia wirtualnego.
 
 > [!IMPORTANT]
-> Brama pole danych jest w wersji zapoznawczej. Przejrzyj [warunki użytkowania dotyczące wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) przed wdrożeniem tego rozwiązania. 
+> Usługa Data Box Gateway jest dostępna w wersji zapoznawczej. Zapoznaj się z [warunkami użytkowania wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) przed wdrożeniem tego rozwiązania. 
 
 ## <a name="supported-os-for-clients-connected-to-device"></a>Obsługiwane systemy operacyjne dla klientów podłączonych do urządzenia
 
@@ -134,7 +128,7 @@ Firma Microsoft zaleca ustawienie reguły zapory dla ruchu wychodzącego, oparte
 
 Poniższe wymagania dotyczą minimalnej przepustowości Internetu, dostępne dla urządzenia bramy pola danych.
 
-- Twoja brama Data Gateway pole ma dedykowany 20 przepustowości Internetu MB/s (lub więcej) dostępnych przez cały czas. Przepustowość nie powinny być udostępniane innym żadne inne aplikacje. 
+- Twoja usługa Data Box Gateway dysponuje przez cały czas dedykowanym połączeniem internetowym o przepustowości co najmniej 20 Mb/s. Ta przepustowość nie powinna być współużytkowana z żadną inną aplikacją. 
 - Twoja brama Data Gateway pole ma dedykowany 32 przepustowości Internetu MB/s (lub więcej) przy użyciu ograniczanie przepustowości sieci.
 
 ## <a name="next-step"></a>Następny krok

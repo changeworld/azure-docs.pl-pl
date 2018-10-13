@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: anwestg
-ms.openlocfilehash: 9f584213a65b9f2408d4ca2a06108cf18222376d
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 08f08d926a9e27e421ff8db46051d8a1e7229041
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268803"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166886"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Dodaj dostawcę zasobów usługi App Service do usługi Azure Stack
 
@@ -130,7 +130,7 @@ Aby wdrożyć dostawcy zasobów usługi App Service, wykonaj następujące kroki
 11. Podaj szczegóły programu SQL Server dla wystąpienia serwera, używane do hostowania baz danych dostawcy zasobów usługi App Service, a następnie wybierz pozycję **dalej**. Instalator sprawdza właściwości połączenia SQL.
 
     > [!NOTE]
-    > Instalator spróbuje ją przetestować łączność z serwerem SQL Server przed kontynuowaniem. Jednak jeśli wdrażasz do istniejącej sieci wirtualnej, może być plik ten test łączności. Otrzymuje ostrzeżenie i monit, aby kontynuować. Jeśli informacje programu SQL Server jest poprawna, nadal wdrożenia.
+    > Instalator spróbuje ją przetestować łączność z serwerem SQL Server przed kontynuowaniem. Jednak jeśli wdrażasz do istniejącej sieci wirtualnej, ten test łączności może się nie powieść. Otrzymuje ostrzeżenie i monit, aby kontynuować. Jeśli informacje programu SQL Server jest poprawna, nadal wdrożenia.
     >
     > Usługi Azure App Service na usługi Azure Stack i nowszych wersjach 1.3 Instalator sprawdzi, czy serwer SQL jest zawierania bazy danych, włączone na poziomie serwera SQL.  Jeśli nie jest dostępne, zostanie wyświetlony monit z następującym wyjątkiem:
     > ```sql

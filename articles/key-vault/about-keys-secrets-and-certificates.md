@@ -12,21 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 10/12/2018
 ms.author: bryanla
-ms.openlocfilehash: b1330f2f912f3e5974a43e43f649576561fbcc11
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 1d6f84612dd2bac34c238ad7eaf323dc7fa00ba3
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079229"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311358"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informacje o kluczach, wpisów tajnych i certyfikatów
 
 Usługa Azure Key Vault umożliwia aplikacji Microsoft Azure i użytkowników do przechowywania i korzystania z kilku typów danych do/z klucz tajny:
 
 - Klucze kryptograficzne: obsługuje wiele typów kluczy i algorytmów i umożliwia użycie sprzętowych modułów zabezpieczeń (HSM) o wysokiej wartości kluczy. 
-- Wpisy tajne: Umożliwia użytkownikom bezpieczne przechowywanie wpisów tajnych, takich jak hasła. Klucze tajne są obiektami octet ograniczony rozmiar z nie określonej semantyką. 
+- Wpisy tajne: Pozwala na bezpieczne przechowywanie wpisów tajnych, takich jak hasła i parametry połączenia bazy danych.
 - Certyfikaty: Certyfikaty obsługuje, które są oparte na kluczach i wpisach tajnych i dodać funkcję automatycznego odnawiania.
 - Usługa Azure Storage: Mogą zarządzać klucze konta usługi Azure Storage dla Ciebie. Wewnętrznie usługa Key Vault można wyświetlić listę kluczy (synchronizacja) za pomocą konta usługi Azure Storage i ponownie wygenerować (Obróć) okresowo kluczy. 
 
@@ -94,7 +94,7 @@ Klucze szyfrowania w usłudze Key Vault jest reprezentowane przez obiekty klucza
 
      Aby uzyskać więcej informacji o granicach geograficznych, zobacz [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/privacy/)  
 
-Usługa Key Vault obsługuje jedynie klucze RSA i krzywej eliptycznej. Przyszłe wersje może obsługiwać inne typy kluczy, takie jak symetryczne.
+Usługa Key Vault obsługuje jedynie klucze RSA i krzywej eliptycznej. 
 
 -   **WE**: klucz "Elastyczne" krzywej eliptycznej.
 -   **Modułu HSM we**: klucz "Twardym" krzywej eliptycznej.
@@ -105,7 +105,7 @@ Usługa Key Vault obsługuje klucze RSA rozmiarów, 2048, 3072 do 4096. Key Vaul
 
 ### <a name="cryptographic-protection"></a>Kryptograficzna ochrona
 
-Modułów kryptograficznych, które korzysta z usługi Key Vault, czy oprogramowania, lub przez moduł HSM są zweryfikowane w trybie FIPS (Federal Information przetwarzania normy). Nie trzeba podejmować żadnych działań specjalne do uruchamiania w trybie FIPS. Jeśli użytkownik **tworzenie** lub **zaimportować** klucze jako chroniony przez moduł HSM, są one gwarantowane mają być przetwarzane w ramach modułu HSM zweryfikowane FIPS 140-2 poziom 2 lub nowszej. Jeśli użytkownik **tworzenie** lub **zaimportować** klucze jako chronionego przez oprogramowanie, są one przetworzone wewnątrz modułów kryptograficznych służących do sprawdzania poprawności certyfikatu FIPS 140-2 poziom 1 lub nowszy. Aby uzyskać więcej informacji, zobacz [kluczy i typy kluczy](#keys-and-key-types).
+Modułów kryptograficznych, które korzysta z usługi Key Vault, czy oprogramowania, lub przez moduł HSM są zweryfikowane w trybie FIPS (Federal Information przetwarzania normy). Nie trzeba podejmować żadnych działań specjalne do uruchamiania w trybie FIPS. Klucze **utworzone** lub **zaimportowane** jako chroniony przez sprzętowy moduł zabezpieczeń są przetwarzane w sprzętowym module zabezpieczeń, zatwierdzone zgodnych ze standardami FIPS 140-2 poziom 2 lub nowszej. Klucze **utworzone** lub **zaimportowane** jako chronionego przez oprogramowanie, są przetwarzane w ramach modułów kryptograficznych służących do sprawdzania poprawności certyfikatu FIPS 140-2 poziom 1 lub nowszym. Aby uzyskać więcej informacji, zobacz [kluczy i typy kluczy](#keys-and-key-types).
 
 ###  <a name="ec-algorithms"></a>Algorytmy WE
  Następujące identyfikatory algorytm są obsługiwane przy użyciu kluczy WE i WE modułu HSM w usłudze Key Vault. 
@@ -136,8 +136,8 @@ Modułów kryptograficznych, które korzysta z usługi Key Vault, czy oprogramow
 
 Usługa Key Vault obsługuje następujące operacje na obiektach klucza:  
 
--   **Utwórz**: umożliwia klientowi utworzyć klucz w usłudze Key Vault. Wartość klucza jest generowany przez usługę Key Vault i przechowywane, a nie do klienta. Asymetryczny (i w przyszłości krzywej eliptycznej i Symmetric) mogą zostać utworzone w usłudze Key Vault.  
--   **Importowanie**: umożliwia klientowi zaimportować istniejący klucz usługi Key Vault. Klucze asymetryczne może zaimportować do usługi Key Vault przy użyciu szeregu metod tworzenia różnych pakietów w konstrukcji JWK. W przyszłości krzywej eliptycznej i Symmetric również będą takie same w pakiecie.
+-   **Utwórz**: umożliwia klientowi utworzyć klucz w usłudze Key Vault. Wartość klucza jest generowany przez usługę Key Vault i przechowywane, a nie do klienta. Klucze asymetryczne może utworzyć w usłudze Key Vault.  
+-   **Importowanie**: umożliwia klientowi zaimportować istniejący klucz usługi Key Vault. Klucze asymetryczne może zaimportować do usługi Key Vault przy użyciu szeregu metod tworzenia różnych pakietów w konstrukcji JWK. 
 -   **Aktualizacja**: umożliwia klientowi z wystarczającymi uprawnieniami do modyfikowania metadanych (atrybutów kluczy) skojarzony z kluczem, który został wcześniej są przechowywane w usłudze Key Vault.  
 -   **Usuń**: umożliwia klientowi z wystarczającymi uprawnieniami do usunięcia klucza z usługi Key Vault.  
 -   **Lista**: umożliwia klientowi wyświetlić listę wszystkich kluczy w danej usłudze Key Vault.  
@@ -226,7 +226,7 @@ Aby uzyskać więcej informacji na temat pracy z kluczami, zobacz [klucza operac
 
 ### <a name="working-with-secrets"></a>Praca z wpisami tajnymi
 
-Klucze tajne w usłudze Key Vault to sekwencje oktetu o maksymalnym rozmiarze 25 KB każdego. Usługa Key Vault nie zapewnia semantykę, dotyczących wpisów tajnych. Go jedynie akceptuje dane, szyfruje je, przechowuje go i zwraca identyfikator wpisu tajnego ("id"). Identyfikator może służyć do pobierania klucza tajnego w późniejszym czasie.  
+Z perspektywy dewelopera Key Vault API Zaakceptuj i zwracane wartości klucza tajnego jako ciągi. Wewnętrznie usługi Key Vault przechowuje i zarządza wpisów tajnych jako sekwencje oktetów (8-bitową w bajtach), o maksymalnym rozmiarze 25 KB każdego. Usługa Key Vault nie zapewnia semantykę, dotyczących wpisów tajnych. Go jedynie akceptuje dane, szyfruje je, przechowuje go i zwraca identyfikator wpisu tajnego ("id"). Identyfikator może służyć do pobierania klucza tajnego w późniejszym czasie.  
 
 W przypadku wysoce poufnych danych klientów należy wziąć pod uwagę dodatkowych warstw ochrony danych. Szyfruje dane przy użyciu oddzielnych ochrony klucza przed magazynu w usłudze Key Vault jest jednym z przykładów.  
 
@@ -247,7 +247,7 @@ Istnieją dodatkowe atrybuty tylko do odczytu, które są objęte żadnej odpowi
 
 #### <a name="date-time-controlled-operations"></a>Data i godzina kontrolowane operacji
 
-Klucz tajny **uzyskać** operacji będzie działać w przypadku nie zostały jeszcze nieprawidłowe lub wygasłe wpisów tajnych oraz ich poza *nbf* / *exp* okna. Klucz tajny podczas wywoływania **uzyskać** nie zostały jeszcze prawidłowy klucz tajny, operacja może służyć do celów testowych. Trwa pobieranie (**uzyskać**ing) wygasły klucz tajny, może służyć do operacji odzyskiwania.
+Klucz tajny **uzyskać** operacji będzie działać w przypadku nie zostały jeszcze nieprawidłowe lub wygasłe wpisów tajnych oraz ich poza *nbf* / *exp* okna. Klucz tajny podczas wywoływania **uzyskać** nie zostały jeszcze prawidłowy klucz tajny, operacja może służyć do celów testowych. Trwa pobieranie (**uzyskać**Klasyfikacja) wygasły klucz tajny, może służyć do operacji odzyskiwania.
 
 Aby uzyskać więcej informacji na temat typów danych, zobacz [typy danych](#data-types).  
 
@@ -263,7 +263,7 @@ Następujące uprawnienia mogą być używane, na podstawie na jednostkę w wpis
   - *Ustaw*: Tworzenie klucza tajnego  
   - *Usuń*: Usuń klucz tajny  
   - *Odzyskaj*: odzyskania usuniętego wpisu tajnego
-  - *kopii zapasowej*: kopii zapasowej wpisu tajnego w magazynie kluczy
+  - *kopii zapasowej*: tworzenie kopii zapasowej wpisu tajnego w magazynie kluczy
   - *Przywróć*: Przywracanie kopii zapasowej klucza tajnego do magazynu kluczy
 
 - Uprawnienia dla uprzywilejowanych operacji korzystających z
@@ -281,7 +281,7 @@ Można określić dodatkowe metadane specyficzne dla aplikacji w postaci tagów.
 
 Pomoc techniczna certyfikaty usługi Key Vault zapewnia zarządzanie x509 swoje certyfikaty i następujące zachowania:  
 
--   Umożliwia właściciela certyfikatu utworzyć certyfikat za pośrednictwem procesu tworzenia usługi Key Vault lub importowania istniejącego certyfikatu. Dotyczy to zarówno z podpisem własnym, a urząd certyfikacji generowanych certyfikaty.
+-   Umożliwia właściciela certyfikatu utworzyć certyfikat za pośrednictwem procesu tworzenia usługi Key Vault lub importowania istniejącego certyfikatu. Obejmuje zarówno z podpisem własnym i urzędu certyfikacji generowanych certyfikaty.
 -   Umożliwia właścicielowi certyfikatu usługi Key Vault, do zaimplementowania bezpieczne przechowywanie i zarządzania X509 certyfikaty bez interakcji z materiał klucza prywatnego.  
 -   Umożliwia właściciela certyfikatu utworzyć zasadę, który kieruje Key Vault, aby zarządzać cyklem życia certyfikatu.  
 -   Umożliwia właścicielom certyfikat, podaj informacje kontaktowe dla powiadomień dotyczących zdarzeń cyklu życia wygaśnięcia i odnawiania certyfikatu.  
@@ -406,7 +406,7 @@ Jeśli ustawiono zasady dotyczące certyfikatów automatycznego odnawiania, powi
 -   Odnowienia certyfikatów
 -   Po odnowieniu certyfikatu, podając, jeśli certyfikat został pomyślnie odnowiony, lub jeśli wystąpił błąd, wymagających ręczne odnowienie certyfikatu.  
 
- Jeśli ustawiono zasady dotyczące certyfikatów można ręcznie odnowione (tylko do wiadomości e-mail), a następnie powiadomienie jest wysyłane, gdy nadszedł czas, aby odnowić certyfikat.  
+ Gdy zasady certyfikatów, który jest ustawiony na być ręcznie odnowić (tylko do wiadomości e-mail), to powiadomienie jest wysyłane, gdy nadejdzie czas, aby odnowić certyfikat.  
 
 ### <a name="certificate-access-control"></a>Kontrola dostępu do certyfikatu
 

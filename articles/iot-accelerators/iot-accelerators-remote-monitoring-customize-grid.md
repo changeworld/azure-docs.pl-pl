@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: 71f2164c9c419604c513261df7e1264060a2c374
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: e1c694847a1ec16d4d7a7b1118df71cb06396186
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094593"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165934"
 ---
 # <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Dodaj niestandardowe siatki do monitorowania zdalnego rozwiązania akceleratora internetowego interfejsu użytkownika
 
@@ -38,7 +38,7 @@ Przed kontynuowaniem należy wykonać czynności opisane w następujących artyk
 - [Dodawanie niestandardowej strony do monitorowania zdalnego rozwiązania akceleratora internetowy interfejs użytkownika](iot-accelerators-remote-monitoring-customize-page.md).
 - [Dodaj niestandardowe usługi do monitorowania zdalnego rozwiązania akceleratora internetowego interfejsu użytkownika](iot-accelerators-remote-monitoring-customize-service.md)
 
-## <a name="add-a-grid"></a>Dodać siatkę
+## <a name="add-a-grid"></a>Dodawanie siatki
 
 Aby dodać siatkę do interfejsu użytkownika sieci web, należy dodać pliki źródłowe, które definiują siatki i zmodyfikować niektóre istniejące pliki, aby uświadomić interfejsu użytkownika sieci web nowego składnika.
 
@@ -192,7 +192,7 @@ Istnieją dwie opcje umożliwiające użytkownika do wybrania wierszy do siatki:
 
 Jeśli użytkownik musi działać w wielu wierszach, w tym samym czasie, użyj pól wyboru w wierszach:
 
-1. Włącz wybór twardych wierszy, dodając **checkboxColumn** do **columnDefs** dostarczane do siatki. **checkboxColumn** jest zdefiniowany w **/src/components/shared/pcsGrid/pcsGrid.js**:
+1. Włącz twardych zaznaczenia wierszy, dodając **checkboxColumn** do **columnDefs** dostarczane do siatki. **checkboxColumn** jest zdefiniowany w **/src/components/shared/pcsGrid/pcsGrid.js**:
 
     ```js
     this.columnDefs = [
@@ -214,7 +214,7 @@ Jeśli użytkownik musi działać w wielu wierszach, w tym samym czasie, użyj p
     };
     ```
 
-1. Wybranie wiersza w siatce jest trudne, należy podać przyciski kontekstu do strony:
+1. Podaj przyciski kontekstu do strony po wiersza w siatce twardych wybrane:
 
     ```js
     this.contextBtns = [
@@ -234,7 +234,7 @@ Jeśli użytkownik musi działać w wielu wierszach, w tym samym czasie, użyj p
     }
     ```
 
-1. Po kliknięciu przycisku kontekstu, Pobierz ciężko wybrane elementy do pracy na:
+1. Po kliknięciu przycisku kontekstu, Pobierz twardych wybrane elementy do pracy na:
 
     ```js
     doSomething = () => {
@@ -243,9 +243,9 @@ Jeśli użytkownik musi działać w wielu wierszach, w tym samym czasie, użyj p
     };
     ```
 
-### <a name="soft-select-rows"></a>Elastyczne wybierz wiersze
+### <a name="soft-select-rows"></a>Wybierz elastyczne wierszy
 
-Jeśli użytkownik musi jedynie do działania w jednym wierszu, skonfiguruj nietrwałego wybierz link do co najmniej jedną kolumnę w **columnDefs**.
+Jeśli użytkownik musi jedynie do działania w jednym wierszu, skonfiguruj soft wybierz link do co najmniej jedną kolumnę w **columnDefs**.
 
 1. W **exampleGridConfig.js**, Dodaj **SoftSelectLinkRenderer** jako **cellRendererFramework** dla **columnDef**.
 
@@ -260,7 +260,7 @@ Jeśli użytkownik musi jedynie do działania w jednym wierszu, skonfiguruj niet
     };
     ```
 
-1. Po kliknięciu nietrwałego łącza wybierz wyzwala **onSoftSelectChange** zdarzeń. Wykonaj dowolną akcję jest pożądane dla tego wiersza, takich jak otwieranie szczegółów staną się. W tym przykładzie po prostu zapisuje do konsoli:
+1. Po kliknięciu łącza soft-select, wyzwala **onSoftSelectChange** zdarzeń. Wykonaj dowolną akcję jest pożądane dla tego wiersza, np. otwierając menu wysuwanego szczegółowe informacje. W tym przykładzie po prostu zapisuje do konsoli:
 
     ```js
     onSoftSelectChange = (rowId, rowEvent) => {
@@ -281,6 +281,6 @@ Jeśli użytkownik musi jedynie do działania w jednym wierszu, skonfiguruj niet
 
 W tym artykule opisano dostępnych zasobów umożliwiających można dodawać lub dostosowywanie stron w internetowym interfejsie użytkownika w akceleratora rozwiązania monitorowania zdalnego.
 
-Po zdefiniowaniu siatki, następnym krokiem jest [dodać niestandardowe staną się do monitorowania zdalnego rozwiązania akceleratora internetowy interfejs użytkownika](iot-accelerators-remote-monitoring-customize-flyout.md) wyświetlającą na przykładowej stronie.
+Po zdefiniowaniu siatki, następnym krokiem jest [dodać niestandardowe okno wysuwane do monitorowania zdalnego rozwiązania akceleratora internetowy interfejs użytkownika](iot-accelerators-remote-monitoring-customize-flyout.md) wyświetlającą na przykładowej stronie.
 
 Aby uzyskać obszerniejszych informacji koncepcyjnych związanych akceleratora rozwiązania monitorowania zdalnego, zobacz [Architektura zdalnego monitorowania](iot-accelerators-remote-monitoring-sample-walkthrough.md).

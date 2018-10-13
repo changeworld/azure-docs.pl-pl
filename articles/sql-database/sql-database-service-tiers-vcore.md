@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 10/09/2018
-ms.openlocfilehash: e93de9b3642e0b01bf65b6761d8832b0d4c2a431
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.date: 10/12/2018
+ms.openlocfilehash: a0d8e225718361c096b914245d73064edb1715c4
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901689"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166359"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-use-benefit-and-migration"></a>Rdzeń wirtualny warstwy usługi, korzyści z używania hybrydowej platformy Azure i migracji
 
@@ -66,9 +66,13 @@ Oparty na rdzeniach wirtualnych model zakupu mogą wymieniać swoich istniejący
 
 ## <a name="migration-from-dtu-model-to-vcore-model"></a>Migracja z modelu jednostek DTU do modelu rdzenia wirtualnego
 
-### <a name="migration-of-single-databases-with-geo-replication-links"></a>Migracja pojedynczej bazy danych za pomocą łącza replikacji geograficznej
+### <a name="migration-of-a-database"></a>Migracja bazy danych
 
-Migrowanie do modelu opartego na jednostkach DTU do modelu opartego na rdzeniach wirtualnych jest podobny do uaktualnienia lub zmiany na starszą wersję relacje replikacji geograficznej między bazami danych w warstwach standardowa i Premium. Nie jest wymagane, czy zakończenie replikacji geograficznej, ale użytkownik musi być zgodna z zasadami sekwencjonowania. Podczas uaktualniania, należy najpierw uaktualnić pomocnicze bazy danych, a następnie Uaktualnij podstawowy. Przed obniżeniem, odwrócić kolejność: należy najpierw obniżyć podstawowej bazy danych, a następnie obniżenia poziomu pomocniczej. 
+Migrowanie bazy danych z modelu zakupu opartego na jednostkach DTU do modelu zakupu opartego na rdzeniach wirtualnych jest podobny do uaktualnienia lub zmiany na starszą wersję między Standard i Premium baz danych w modelu zakupu opartego na jednostkach DTU.
+
+### <a name="migration-of-databases-with-geo-replication-links"></a>Migracja baz danych za pomocą łącza replikacji geograficznej
+
+Migrowanie do modelu opartego na jednostkach DTU do modelu opartego na rdzeniach wirtualnych jest podobny do uaktualnienia lub zmiany na starszą wersję relacje replikacji geograficznej między bazami danych w warstwach standardowa i Premium. Nie jest wymagane, czy zakończenie replikacji geograficznej, ale użytkownik musi być zgodna z zasadami sekwencjonowania. Podczas uaktualniania, należy najpierw uaktualnić pomocnicze bazy danych, a następnie Uaktualnij podstawowy. Przed obniżeniem, odwrócić kolejność: należy najpierw obniżyć podstawowej bazy danych, a następnie obniżenia poziomu pomocniczej.
 
 Korzystając z replikacją geograficzną między dwie pule elastyczne, zaleca się wyznaczyć jedną pulę jako podstawowy, a druga — jako pomocnicza. W takim przypadku Migrowanie pul elastycznych, należy użyć te same wskazówki.  Jednak jest technicznie jest to możliwe, że pula elastyczna zawiera podstawowych i pomocniczych baz danych. W tym przypadku prawidłowo migracji możesz należy traktować puli z lepszego wykorzystania jako "primary" i postępuj zgodnie z zasadami sekwencjonowania.  
 
@@ -88,15 +92,15 @@ W poniższej tabeli przedstawiono wskazówki dotyczące scenariuszy migracji:
 
 \* Każdy 100 jednostek DTU w warstwie standardowa wymaga co najmniej 1 rdzeń wirtualny, a każdy 125 jednostek DTU w warstwie Premium co najmniej 1 rdzeń wirtualny
 
-### <a name="migration-of-failover-groups"></a>Migracja grupy trybu failover 
+### <a name="migration-of-failover-groups"></a>Migracja grupy trybu failover
 
-Migracja grup trybu failover z wieloma bazami danych wymaga migracji poszczególnych baz danych podstawowych i pomocniczych. Podczas tego procesu rozważenia tych samych czynników i sekwencjonowania zasady są stosowane. Po przekonwertowaniu baz danych do modelu opartego na rdzeniach wirtualnych, grupy trybu failover będzie obowiązywać z tymi samymi ustawieniami zasad. 
+Migracja grup trybu failover z wieloma bazami danych wymaga migracji poszczególnych baz danych podstawowych i pomocniczych. Podczas tego procesu rozważenia tych samych czynników i sekwencjonowania zasady są stosowane. Po przekonwertowaniu baz danych do modelu opartego na rdzeniach wirtualnych, grupy trybu failover będzie obowiązywać z tymi samymi ustawieniami zasad.
 
 ### <a name="creation-of-a-geo-replication-secondary"></a>Tworzenie pomocniczej replikacji geograficznej
 
 Można utworzyć tylko przy użyciu tej samej warstwy usługi jako podstawowy pomocniczej geograficznej. Baza danych o szybkości generowania rekordów dziennika wysoka zalecane jest, czy pomocniczy został utworzony przy użyciu tego samego rozmiaru obliczeń jako podstawowy. Jeśli tworzysz pomocniczej geograficznej w puli elastycznej dla pojedynczej podstawowej bazy danych, zaleca się że pula ma `maxVCore` ustawienie odpowiada rozmiarowi obliczeń podstawowej bazy danych. Jeśli tworzysz pomocniczej geograficznej w puli elastycznej dla podstawowego w innej puli elastycznej, zalecane pule mają taką samą `maxVCore` ustawienia
 
-### <a name="using-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Przy użyciu kopii bazy danych do przekonwertowania bazy danych oparty na jednostkach DTU na bazę danych oparty na rdzeniach wirtualnych.
+### <a name="using-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Przy użyciu kopii bazy danych do przekonwertowania bazy danych oparty na jednostkach DTU na bazę danych oparty na rdzeniach wirtualnych
 
 Można skopiować dowolną bazę danych o rozmiarze mocą obliczeniową opartą na jednostkach DTU do bazy danych o rozmiarze oparty na rdzeniach wirtualnych obliczeń bez ograniczeń lub specjalne sekwencjonowania, tak długo, jak rozmiar obliczeń docelowej obsługuje maksymalny rozmiar bazy danych źródłowej bazy danych. Kopiowanie bazy danych tworzy migawkę danych od godziny rozpoczęcia operacji kopiowania i nie wykonuje synchronizację danych między źródłowym a docelowym.
 

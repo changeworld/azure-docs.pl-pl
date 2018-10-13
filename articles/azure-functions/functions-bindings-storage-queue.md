@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 68352db238b92d39119b420ed0d573e88a95bc78
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: cb72b3f6b0a665f1a4d39d1e8533be51faa4c107
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394458"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167141"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Powiązania magazynu dla usługi Azure Functions dla kolejki platformy Azure
 
@@ -146,11 +146,16 @@ Oto *function.json* pliku:
 
 [Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
 
+> [!NOTE]
+> Parametr name odzwierciedla jako `context.bindings.<name>` w kodzie JavaScript, który zawiera ładunek elementu kolejki. Ten ładunek również jest przekazywany jako drugi parametr funkcji.
+
 Poniżej przedstawiono kod JavaScript:
 
 ```javascript
-module.exports = function (context) {
-    context.log('Node.js queue trigger function processed work item', context.bindings.myQueueItem);
+module.exports = async function (context, message) {
+    context.log('Node.js queue trigger function processed work item', message);
+    // OR access using context.bindings.<name>
+    // context.log('Node.js queue trigger function processed work item', context.bindings.myQueueItem);
     context.log('queueTrigger =', context.bindingData.queueTrigger);
     context.log('expirationTime =', context.bindingData.expirationTime);
     context.log('insertionTime =', context.bindingData.insertionTime);
@@ -244,7 +249,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |---------|---------|----------------------|
 |**type** | Nie dotyczy| Musi być równa `queueTrigger`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
 |**direction**| Nie dotyczy | W *function.json* tylko plik. Musi być równa `in`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
-|**Nazwa** | Nie dotyczy |Nazwa zmiennej, która reprezentuje kolejkę w kodzie funkcji.  | 
+|**Nazwa** | Nie dotyczy |Nazwa zmiennej, która zawiera ładunek elementu kolejki w kodzie funkcji.  | 
 |**queueName** | **QueueName**| Nazwa kolejki do sondowania. | 
 |**połączenia** | **połączenia** |Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.|
 

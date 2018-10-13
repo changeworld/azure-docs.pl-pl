@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 410566e62daeb42100443e72f2d8a1acb8dad5a3
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: c9106557c7c113281b04d37f1bc3d8b29e2087cc
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902284"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310457"
 ---
 # <a name="register-azure-stack-with-azure"></a>Rejestrowania usługi Azure Stack na platformie Azure
 
@@ -45,7 +45,7 @@ Będą potrzebne następujące elementy w miejscu, przed zarejestrowaniem:
 
 Przed zarejestrowaniem usługi Azure Stack przy użyciu platformy Azure, musisz mieć:
 
-- Identyfikator subskrypcji dla subskrypcji platformy Azure. Umowy EA, dostawcy usług Kryptograficznych lub dostawcy usług Kryptograficznych udostępnionych usług, których subskrypcje są obsługiwane w przypadku rejestracji. Dostawcy usług kryptograficznych, musisz zdecydować, czy [korzystania z subskrypcji dostawcy usług Kryptograficznych lub CSPSS](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-cspss-subscription).<br><br>Aby uzyskać identyfikator, zaloguj się do platformy Azure, kliknij przycisk **wszystkich usług**. Następnie w obszarze **ogólne** kategorii, wybierz opcję **subskrypcje**, kliknij subskrypcję, dla którego chcesz użyć, a następnie w obszarze **Essentials** można znaleźć identyfikatora subskrypcji.
+- Identyfikator subskrypcji dla subskrypcji platformy Azure. Umowy EA, dostawcy usług Kryptograficznych lub dostawcy usług Kryptograficznych udostępnionych usług, których subskrypcje są obsługiwane w przypadku rejestracji. Dostawcy usług kryptograficznych, musisz zdecydować, czy [korzystania z subskrypcji dostawcy usług Kryptograficznych lub APSS](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription).<br><br>Aby uzyskać identyfikator, zaloguj się do platformy Azure, kliknij przycisk **wszystkich usług**. Następnie w obszarze **ogólne** kategorii, wybierz opcję **subskrypcje**, kliknij subskrypcję, dla którego chcesz użyć, a następnie w obszarze **Essentials** można znaleźć identyfikatora subskrypcji.
 
   > [!Note]  
   > Subskrypcje w chmurze (Niemcy) nie są obecnie obsługiwane.

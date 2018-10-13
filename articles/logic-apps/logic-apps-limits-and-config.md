@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 10/03/2018
-ms.openlocfilehash: ac13080ec6100734a5b777cc7cb243720f8424a6
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.date: 10/11/2018
+ms.openlocfilehash: 8aa2627f46be1e375fb3c3e565848a930ba6726b
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817161"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167447"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limity i informacje o konfiguracji dla usługi Azure Logic Apps
 
@@ -143,6 +143,18 @@ Niektóre operacje łącznika wykonywać wywołania asynchronicznego lub wysyła
 | Liczba ponownych prób | 90 | Wartość domyślna to 4. Aby zmienić domyślny, należy użyć [ponów parametru zasad](../logic-apps/logic-apps-workflow-actions-triggers.md). | 
 | Maksymalna opóźnienie ponowienia próby | 1 dzień | Aby zmienić domyślny, należy użyć [ponów parametru zasad](../logic-apps/logic-apps-workflow-actions-triggers.md). | 
 | Min. opóźnienie ponowienia próby | 5 sekund | Aby zmienić domyślny, należy użyć [ponów parametru zasad](../logic-apps/logic-apps-workflow-actions-triggers.md). |
+|||| 
+
+<a name="sftp"></a>
+
+## <a name="sftp-and-sftp-ssh-limits"></a>Limity SFTP i SFTP — SSH
+
+### <a name="file-size"></a>Rozmiar pliku
+
+| Name (Nazwa) | Limit | Uwagi |
+|------|-------|-------|
+| SFTP | 50 MB | Aby obejść to ograniczenie, należy użyć [łącznika SFTP-SSH](../connectors/connectors-sftp-ssh.md) lub zobacz [Obsługa dużych komunikatów z segmentu](../logic-apps/logic-apps-handle-large-messages.md). Jednak niektóre łączniki i interfejsy API nie obsługuje segmentu lub nawet domyślny limit. | 
+| SFTP-SSH | 1 GB | Aby obejść to ograniczenie, zobacz [Obsługa dużych komunikatów z segmentu](../logic-apps/logic-apps-handle-large-messages.md). Jednak niektóre łączniki i interfejsy API nie obsługuje segmentu lub nawet domyślny limit. | 
 |||| 
 
 <a name="custom-connector-limits"></a>

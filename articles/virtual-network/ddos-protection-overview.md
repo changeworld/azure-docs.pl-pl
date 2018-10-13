@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/29/2018
+ms.date: 10/13/2018
 ms.author: jdial
-ms.openlocfilehash: f25da8c1eedc31209a67ae05aef9dded45b706e0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ae1a77921cdb3eba003ff6dc8b4885866f2fbe5e
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962406"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310363"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Omówienie usługi Azure DDoS Protection standardowe
 
@@ -29,7 +29,7 @@ Rozproszone atakom typu odmowa usługi (DDoS) przedstawiono niektóre z najwięk
 Usługa Azure DDoS protection, w połączeniu z najlepszych rozwiązań projektowania aplikacji zapewniają ochronę przed atakami DDoS. Usługa Azure DDoS protection zapewnia następujących warstwach usługi:
 
 - **Podstawowe**: automatycznie włączone w ramach platformy Azure. Zawsze włączone monitorowanie ruchu, a także w czasie rzeczywistym ograniczenie typowych ataków na poziomie sieci, należy podać tych samych mechanizmów obronnych wartościowa usług online firmy Microsoft. Cały skali globalnej sieci platformy Azure może służyć do dystrybucji, a także zmniejszyć ruch ataku w regionach. Ochrony praw dla protokołów IPv4 i IPv6 Azure [publiczne adresy IP](virtual-network-public-ip-address.md).
-- **Standardowa**: udostępnia dodatkowe ograniczenia możliwości w porównaniu z warstwa podstawowa usług, które są specjalnie przeznaczone specjalnie do zasobów usługi Azure Virtual Network. Standard ochrony przed atakami DDoS jest proste włączyć i nie wymaga żadnych zmian w aplikacji. Za pomocą dedykowanego monitorowania i ruchu algorytmów uczenia maszynowego dostosowanych zasad ochrony. Zasady są stosowane do publicznych adresów IP skojarzonych z zasobami wdrożonymi w sieciach wirtualnych, takich jak wystąpienia usługi Azure Load Balancer, Azure Application Gateway i Azure Service Fabric. W czasie rzeczywistym danych telemetrycznych jest dostępna za pośrednictwem usługi Azure Monitor widoków, podczas ataku i historii. Analizy ograniczania ryzyka ataków zaawansowane są dostępne za pomocą ustawień diagnostycznych. Ochrona warstwy aplikacji można dodać za pomocą [zapory aplikacji sieci Web usługi Azure Application Gateway](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub dzięki zainstalowaniu 3rd zapory innych firm w witrynie Azure Marketplace. Ochrony praw IPv4 Azure [publiczne adresy IP](virtual-network-public-ip-address.md).
+- **Standardowa**: udostępnia dodatkowe ograniczenia możliwości w porównaniu z warstwa podstawowa usług, które są specjalnie przeznaczone specjalnie do zasobów usługi Azure Virtual Network. Standard ochrony przed atakami DDoS jest proste włączyć i nie wymaga żadnych zmian w aplikacji. Za pomocą dedykowanego monitorowania i ruchu algorytmów uczenia maszynowego dostosowanych zasad ochrony. Zasady są stosowane do publicznych adresów IP skojarzonych z zasobami wdrożonymi w sieciach wirtualnych, takich jak usługa Azure Load Balancer, Azure Application Gateway i wystąpień usługi Azure Service Fabric, ale ta ochrona nie ma zastosowania do środowiska usługi App Service. W czasie rzeczywistym danych telemetrycznych jest dostępna za pośrednictwem usługi Azure Monitor widoków, podczas ataku i historii. Analizy ograniczania ryzyka ataków zaawansowane są dostępne za pomocą ustawień diagnostycznych. Ochrona warstwy aplikacji można dodać za pomocą [zapory aplikacji sieci Web usługi Azure Application Gateway](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub dzięki zainstalowaniu 3rd zapory innych firm w witrynie Azure Marketplace. Ochrony praw IPv4 Azure [publiczne adresy IP](virtual-network-public-ip-address.md).
 
 ![Platforma Azure a Podstawowa ochrona przed atakami DDoS Standardowa (Standard)](./media/ddos-protection-overview/ddoscomparison.png)
 

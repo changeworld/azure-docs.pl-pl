@@ -5,15 +5,15 @@ services: storage
 author: lakasa
 ms.service: storage
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 10/11/2018
 ms.author: lakasa
 ms.component: common
-ms.openlocfilehash: 6b73a802b186e5fcf2380f5f4c80c1bb67d253fa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0ed05cab774360c4165e89399ba16f7443debb85
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981869"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165163"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Szyfrowanie usługi Storage przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault
 Platforma Microsoft Azure jest zobowiązana do ochrony i chronić dane zgodnie z wymaganiami co do bezpieczeństwa organizacji i zobowiązaniami w zakresie zgodności. Jednym ze sposobów, że platforma Azure storage chroni dane jest za pośrednictwem szyfrowanie usługi Storage (SSE), który szyfruje dane podczas zapisywanie w magazynie i odszyfrowuje dane podczas pobierania go. Szyfrowanie i odszyfrowywanie jest automatyczne, przejrzyste i korzysta z 256-bitowego [szyfrowania AES](https://wikipedia.org/wiki/Advanced_Encryption_Standard), jeden blok najsilniejszych szyfrów.
@@ -101,7 +101,7 @@ $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName "myresourcegroup"
 $keyVault = Get-AzureRmKeyVault -VaultName "mykeyvault"
 $key = Get-AzureKeyVaultKey -VaultName $keyVault.VaultName -Name "keytoencrypt"
 Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVault.VaultName -ObjectId $storageAccount.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
-Set-AzureRmStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName -AccountName $storageAccount.StorageAccountName -EnableEncryptionService "Blob" -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
+Set-AzureRmStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName -AccountName $storageAccount.StorageAccountName -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
 ```
 
 ### <a name="step-5-copy-data-to-storage-account"></a>Krok 5: Kopiowanie danych do konta magazynu

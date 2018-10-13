@@ -10,12 +10,12 @@ ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: cephalin
-ms.openlocfilehash: dfc0a13c1804d8ea74c78a61bfa85e9f5bdd1685
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 2355fa5e3e7fd83b5d9f22d87c19f8152659fc97
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42819074"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309359"
 ---
 # <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>Jak przygotować się na wychodzące zmiana adresu IP
 
@@ -47,4 +47,4 @@ Nowe wychodzące adresy IP są wyświetlane w portalu, zaczęły obowiązywać. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule opisano sposób przygotowania do zmiany adresu IP, które zostało zainicjowane przez platformę Azure. Aby uzyskać więcej informacji na temat adresów IP w usłudze Azure App Service, zobacz [wychodzące i wychodzące adresy IP w usłudze Azure App Service](app-service-ip-addresses.md).
+W tym artykule opisano sposób przygotowania do zmiany adresu IP, które zostało zainicjowane przez platformę Azure. Aby uzyskać więcej informacji na temat adresów IP w usłudze Azure App Service, zobacz [przychodzące i wychodzące adresy IP w usłudze Azure App Service](app-service-ip-addresses.md).

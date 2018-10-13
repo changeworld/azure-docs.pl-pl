@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6127e300ee46dbd33f8537f0138963cd4e3b5cc8
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 67a987d9b491ba6813e900c293529ed677c45757
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094143"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167685"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -35,30 +35,30 @@ Na poniższym diagramie przedstawiono koncepcyjny widok działania i przepływu 
 
 ![Przepływ procesu zarządzania aktualizacjami](media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Rozwiązanie Update Management może służyć do natywnie dołączanie maszyn w wielu subskrypcji w ramach tej samej dzierżawy. Do zarządzania maszynami w innej dzierżawie, należy najpierw dodać je jako [maszyny spoza platformy Azure](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine). 
+Rozwiązanie Update Management może służyć do natywnie dołączanie maszyn w wielu subskrypcji w ramach tej samej dzierżawy. Zarządzanie maszynami w innej dzierżawie, należy najpierw dodać je jako [maszyny spoza platformy Azure](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine).
 
-CVE po wersji może potrwać 2 – 3 godziny poprawki pojawienie się maszyn z systemem Linux dla oceny.  W przypadku komputerów Windows zajmuje 12 – 15 godzin poprawki do wyświetlenia dla oceny po udostępnieniu.
+CVE po wersji może potrwać 2 – 3 godziny poprawki pojawienie się maszyn z systemem Linux dla oceny.  W przypadku maszyn Windows zajmuje 12 – 15 godzin poprawki do wyświetlenia dla oceny po udostępnieniu.
 
-Po komputer przeprowadzi skanowanie pod kątem zgodności aktualizacji, agent przekazuje zbiorczo informacje do usługi Azure Log Analytics. Na komputerze Windows skanowanie pod kątem zgodności jest domyślnie przeprowadzane co 12 godzin.
+Po ukończeniu skanowania pod kątem zgodności aktualizacji komputera agenta przekazuje zbiorczo informacje do usługi Azure Log Analytics. Na komputerze Windows skanowanie pod kątem zgodności uruchomiono domyślnie co 12 godzin.
 
 Oprócz harmonogramem skanowania pod kątem zgodności aktualizacji jest inicjowane w ciągu 15 minut po uruchomieniu programu MMA, przed instalacją aktualizacji i po zainstalowaniu aktualizacji.
 
 Komputera z systemem Linux skanowanie pod kątem zgodności jest domyślnie przeprowadzane co 3 godziny. Jeśli ponownego uruchomienia agenta MMA skanowania pod kątem zgodności jest inicjowane w ciągu 15 minut.
 
-Rozwiązanie informuje, jak aktualne, komputer jest oparty na źródle jest skonfigurowany do synchronizacji z usługą. Jeśli komputer Windows jest skonfigurowany do raportu w programie WSUS, w zależności od tego, kiedy usługi WSUS od ostatniej synchronizacji upłynęła z usługą Microsoft Update, wyniki mogą różnić się od pokazuje Microsoft Updates. To jest taka sama dla komputerów z systemem Linux, które są skonfigurowane do raportu, aby zamiast z lokalnego repozytorium do repozytorium publicznego.
+Rozwiązanie informuje, jak aktualne, komputer jest oparty na źródle jest skonfigurowany do synchronizacji z usługą. Jeśli komputer Windows jest skonfigurowany do raportu w programie WSUS, w zależności od tego, kiedy usługi WSUS od ostatniej synchronizacji upłynęła z usługą Microsoft Update, wyniki mogą różnić się od pokazuje Microsoft Updates. To zachowanie jest takie same dla komputerów z systemem Linux, które są skonfigurowane do raportu, aby zamiast z lokalnego repozytorium do repozytorium publicznego.
 
 > [!NOTE]
 > Aby poprawnie zgłosić do usługi, rozwiązanie Update Management wymaga określonych adresów URL i portów, aby włączyć. Aby dowiedzieć się więcej na temat tych wymagań, zobacz [sieci, planowanie hybrydowych procesów roboczych](automation-hybrid-runbook-worker.md#network-planning).
 
 Aktualizacje oprogramowania można wdrożyć i zainstalować na komputerach, które ich wymagają, tworząc zaplanowane wdrożenie. Aktualizacje sklasyfikowane jako *opcjonalnie* nie są uwzględnione w zakresie wdrożenia dla komputerów Windows. Tylko wymagane aktualizacje są uwzględnione w zakresie wdrażania. 
 
-Zaplanowane wdrożenie definiuje, które komputery docelowe otrzymywać odpowiednie aktualizacje, jawnie określając komputerów lub wybierając [grupa](../log-analytics/log-analytics-computer-groups.md) opartego na dziennikach z konkretnego zestawu komputerów. Należy również określić harmonogram zatwierdzania i wyznaczyć okres, w którym można instalować aktualizacje.
+Zaplanowane wdrożenie definiuje, które komputery docelowe otrzymywać odpowiednie aktualizacje, jawnie określając komputerów lub wybierając [grupa](../log-analytics/log-analytics-computer-groups.md) opartego na dziennikach z konkretnego zestawu komputerów. Należy również określić harmonogram zatwierdzania i ustawić okres, w którym można instalować aktualizacje.
 
-Aktualizacje są instalowane przez elementy runbook w usłudze Azure Automation. Nie można wyświetlić tych elementów runbook i elementy runbook nie wymaga żadnej konfiguracji. Po utworzeniu wdrożenia aktualizacji wdrożenia aktualizacji powoduje utworzenie harmonogramu, który uruchamia główny element runbook aktualizacji w określonym czasie na uwzględnionych komputerach. Główny element runbook uruchamia podrzędny element runbook na każdym agencie, aby przeprowadzić instalację wymaganych aktualizacji.
+Aktualizacje są instalowane przez elementy runbook w usłudze Azure Automation. Nie można wyświetlić tych elementów runbook i elementy runbook nie wymaga żadnej konfiguracji. Po utworzeniu wdrożenia aktualizacji wdrożenia aktualizacji powoduje utworzenie harmonogramu, który uruchamia główny element runbook aktualizacji w określonym czasie na uwzględnionych komputerach. Główny element runbook uruchamia podrzędny element runbook na każdym agencie w celu zainstalowania wymaganych aktualizacji.
 
-Od daty i czasu określony we wdrożeniu aktualizacji komputery docelowe równolegle uruchomić wdrożenie. Przed rozpoczęciem instalacji Aby sprawdzić, czy aktualizacje są nadal wymagane odbywa się skanowanie. Dla komputerów klienckich programu WSUS Jeśli aktualizacje nie są zatwierdzone w programie WSUS, wdrożenie aktualizacji kończy się niepowodzeniem.
+Od daty i czasu określony we wdrożeniu aktualizacji komputery docelowe równolegle uruchomić wdrożenie. Przed rozpoczęciem instalacji uruchomiono skanowanie, aby sprawdzić, czy aktualizacje są nadal wymagane. Dla komputerów klienckich programu WSUS Jeśli aktualizacje nie są zatwierdzone w programie WSUS, wdrożenie aktualizacji kończy się niepowodzeniem.
 
-Masz maszynę zarejestrowane do zarządzania aktualizacjami w wielu Analytics obszary robocze usługi Log (Obsługa wielu regionów) nie jest obsługiwane.
+Masz maszynę zarejestrowane do zarządzania aktualizacjami w więcej niż jeden Analytics obszary robocze usługi Log (Obsługa wielu regionów) nie jest obsługiwane.
 
 ## <a name="clients"></a>Klienci
 
@@ -70,7 +70,7 @@ W poniższej tabeli przedstawiono listę obsługiwanych systemów operacyjnych:
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Obsługuje tylko zaktualizować oceny.         |
 |Windows Server 2008 R2 z dodatkiem SP1 lub nowszy     |.NET framework 4.5 lub nowszy jest wymagany. ([Pobierz program .NET Framework](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0 lub nowszy jest wymagany. ([Pobierz platformę WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Programu Windows PowerShell 5.1 jest zalecane w celu zwiększenia niezawodności.  ([Pobierz platformę WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616))        |
-|CentOS 6 (x86/x64) i 7 (x64)      | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji. Oparte na klasyfikacji poprawek wymaga "yum", aby zwrócić dane zabezpieczeń, która CentOS nie ma gotowych.         |
+|CentOS 6 (x86/x64) i 7 (x64)      | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji. Oparte na klasyfikacji poprawek wymaga "yum", aby zwrócić dane zabezpieczeń, które CentOS nie ma gotowych.         |
 |Red Hat Enterprise 6 (x86/x64) i 7 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) i 12 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
 |Ubuntu 14.04 LTS i 16.04 LTS — x86/x64 64      |Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.         |
@@ -92,7 +92,7 @@ Agenci Windows musi być skonfigurowany do komunikowania się z serwerem usług 
 
 #### <a name="linux"></a>Linux
 
-Dla systemu Linux komputer musi mieć dostęp do repozytorium aktualizacji. Repozytorium aktualizacji może być prywatny lub publiczny. Protokół TLS 1.1 i TLS 1.2 jest wymagany do interakcji z rozwiązania Update Management. Log Analytics Agent dla systemu Linux, który jest skonfigurowany do raportowania do wielu obszarów roboczych usługi Log Analytics nie jest obsługiwana za pomocą tego rozwiązania.
+Dla systemu Linux komputer musi mieć dostęp do repozytorium aktualizacji. Repozytorium aktualizacji może być prywatny lub publiczny. Protokół TLS 1.1 i TLS 1.2 jest wymagany do interakcji z rozwiązania Update Management. Log Analytics Agent dla systemu Linux, który jest skonfigurowany do raportowania do więcej niż jeden obszarów roboczych usługi Log Analytics nie jest obsługiwana za pomocą tego rozwiązania.
 
 Aby uzyskać informacje o sposobach instalowania agenta usługi Log Analytics dla systemu Linux i Pobierz najnowszą wersję, zobacz [Operations Management Suite Agent dla systemu Linux](https://github.com/microsoft/oms-agent-for-linux). Aby uzyskać informacje o sposobie instalowania Log Analytics Agent for Windows, zobacz [Operations Management Suite Agent dla Windows](../log-analytics/log-analytics-windows-agent.md).
 
@@ -212,10 +212,10 @@ Aby utworzyć nowe wdrożenie aktualizacji, wybierz **Zaplanuj wdrażanie aktual
 | Grupy można zaktualizować (wersja zapoznawcza)|Definiowanie zapytań, w zależności od kombinacji subskrypcji, grupy zasobów, lokalizacje i tagi, do tworzenia grupy dynamicznej maszyn wirtualnych platformy Azure, aby uwzględnić w danym wdrożeniu. Aby dowiedzieć się więcej, zobacz [grupy dynamiczne](automation-update-management.md#using-dynamic-groups)|
 | Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub wybrać maszynę z listy rozwijanej i wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Grupy komputerów w usłudze Log Analytics](../log-analytics/log-analytics-computer-groups.md) |
 |Aktualizuj klasyfikacje|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne|
-|Uwzględnianie/wykluczanie aktualizacji|Spowoduje to otwarcie **uwzględniania/wykluczania** strony. Na osobnych kartach są aktualizacje być dołączone lub wykluczone. Aby uzyskać dodatkowe informacje na temat sposobu obsługi dołączania, zobacz [zachowanie dołączania](automation-update-management.md#inclusion-behavior) |
+|Uwzględnianie/wykluczanie aktualizacji|Spowoduje to otwarcie **uwzględniania/wykluczania** strony. Na osobnych kartach są aktualizacje być dołączone lub wykluczone. Aby uzyskać więcej informacji na temat sposobu obsługi dołączania, zobacz [zachowanie dołączania](automation-update-management.md#inclusion-behavior) |
 |Ustawienia harmonogramu|Wybierz godzinę do uruchomienia i wybrać jednorazowo lub cykliczne cyklu|
 | Skrypty przed i skryptu używanego po utworzeniu|Wybierz skrypty do uruchomienia przed i po wdrożeniu|
-| Okno obsługi |Liczba minut dla aktualizacji. Wartość może nie być mniej niż 30 minut, a nie więcej niż 6 godzin |
+| Okno obsługi |Liczba minut dla aktualizacji. Wartość nie może być mniejsza niż 30 minut, a nie więcej niż 6 godzin |
 | Ponowne uruchomienie kontroli| Określa sposób obsługi jest uruchamiany ponownie. Dostępne opcje:</br>Ponowne uruchomienie, jeśli jest to wymagane (ustawienie domyślne)</br>Zawsze uruchamiaj ponownie</br>Nigdy nie uruchamiaj ponownie</br>Tylko ponowne uruchomienie — aktualizacje nie zostaną zainstalowane|
 
 Można także programowo tworzyć wdrożenia aktualizacji. Aby dowiedzieć się, jak utworzyć wdrożenie aktualizacji za pomocą interfejsu API REST, zobacz [konfiguracji aktualizacji oprogramowania — tworzenie](/rest/api/automation/softwareupdateconfigurations/create). Istnieje również przykładowy element runbook, który może służyć do tworzenia tygodniowy wdrożenia aktualizacji. Aby dowiedzieć się więcej na temat tego elementu runbook, zobacz [utworzyć tygodniowy wdrożenie aktualizacji dla jednego lub więcej maszyn wirtualnych w grupie zasobów](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
@@ -273,6 +273,7 @@ Następujące adresy są wymagane dla rozwiązania Update Management. Na te adre
 |*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
+|*.azure-automation.net|*.Azure automation.us|
 
 Aby uzyskać więcej informacji na temat porty wymagane przez hybrydowy proces roboczy elementu Runbook, zobacz [porty roli hybrydowego procesu roboczego](automation-hybrid-runbook-worker.md#hybrid-worker-role).
 
@@ -494,7 +495,7 @@ Update
 
 ## <a name="using-dynamic-groups"></a>Za pomocą grup dynamicznych (wersja zapoznawcza)
 
-Rozwiązanie Update Management umożliwia dynamiczne grupy maszyn wirtualnych platformy Azure w celu wdrażania aktualizacji. Te grupy są definiowane przez kwerendę, gdy rozpocznie się wdrożenie aktualizacji, Członkowie tej grupy są oceniane. Podczas definiowania kwerendy następujących elementów może być używane razem do wypełniania grupy dynamicznej
+Rozwiązanie Update Management umożliwia dynamiczne grupy maszyn wirtualnych platformy Azure w celu wdrażania aktualizacji. Te grupy są definiowane przez kwerendę, gdy rozpocznie się wdrożenie aktualizacji, Członkowie tej grupy są oceniane. Podczas definiowania kwerendy, następujące elementy można ze sobą do wypełniania grupy dynamicznej
 
 * Subskrypcja
 * Grupy zasobów
@@ -515,9 +516,9 @@ Aby dowiedzieć się, jak zintegrować rozwiązanie do zarządzania z System Cen
 
 ## <a name="inclusion-behavior"></a>Zachowanie dołączania
 
-Włączenie aktualizacji można określić określonej aktualizacji do zastosowania. Poprawki lub pakietów, które są ustawione w celu uwzględnienia są zainstalowane. Podczas poprawki lub pakietów, które są ustawione do uwzględnienia, a także wybrano klasyfikację, instalowane są uwzględnione elementy i elementy, które spełniają klasyfikacji.
+Włączenie aktualizacji można określić określonej aktualizacji do zastosowania. Poprawki lub pakietów, które są uwzględniane są zainstalowane. Po wybraniu klasyfikacji również i uwzględniono poprawki lub pakietów, dołączone elementy i elementy, które spełniają klasyfikacji są instalowane.
 
-Jest ważne dowiedzieć się, że wykluczenia zastąpienia dołączenia. Na przykład jeśli zdefiniujesz regułę wykluczania z `*`, a następnie żadnych poprawek ani pakiety są zainstalowane, ponieważ są one wszystkie wyłączone. Dla maszyn z systemem Linux Jeśli pakiet jest uwzględniony, ale zawiera pakiet zależnych, który został wykluczony, specifcally pakiet nie jest zainstalowany.
+Jest ważne dowiedzieć się, że wykluczenia zastąpienia dołączenia. Na przykład jeśli zdefiniujesz regułę wykluczania z `*`, a następnie żadnych poprawek ani pakiety są zainstalowane, ponieważ są one wszystkie wyłączone. Dla maszyn z systemem Linux Jeśli pakiet jest dołączony, ale ma z pakietu zależnego, który został wykluczony, pakiet nie jest zainstalowany.
 
 ## <a name="patch-linux-machines"></a>Maszyny z systemem Linux poprawki
 
@@ -535,13 +536,13 @@ W systemie Red Hat Enterprise Linux nazwy pakietu, które mają zostać wykluczo
 
 ### <a name="critical--security-patches-arent-applied"></a>Krytyczne / poprawek zabezpieczeń nie są stosowane.
 
-Wdrażając aktualizacje na maszynę z systemem Linux, możesz wybrać klasyfikacje aktualizacji. Filtruje aktualizacje, które są stosowane do tych, które spełniają określone kryteria. Ten filtr jest stosowany lokalnie na komputerze po wdrożeniu aktualizacji.
+Wdrażając aktualizacje na maszynę z systemem Linux, możesz wybrać klasyfikacje aktualizacji. Filtruje aktualizacji, które są stosowane do maszyny, które spełniają określone kryteria. Ten filtr jest stosowany lokalnie na komputerze po wdrożeniu aktualizacji.
 
 Bo zarządzania aktualizacjami wzbogacania aktualizacji w chmurze, niektóre aktualizacje mogą oflagowane w zarządzania aktualizacjami jako mające wpływ na bezpieczeństwo, nawet jeśli komputer lokalny nie ma tych informacji. W rezultacie zastosowanie aktualizacji krytycznych na maszynę z systemem Linux, mogą istnieć aktualizacje, które nie są oznaczone jako mające wpływ na zabezpieczenia na maszynie i aktualizacje nie są stosowane.
 
 Jednak zarządzania aktualizacjami, nadal może raportować tej maszyny, co jest niezgodne, ponieważ ma ona dodatkowe informacje o odpowiednich aktualizacji.
 
-Wdrażanie aktualizacji według klasyfikacji aktualizacji nie działa na CentOS gotowe. Dla SUSE wybierając *tylko* inne aktualizacje klasyfikacji może spowodować pewne zabezpieczenia aktualizuje również zainstalowania aktualizacji zabezpieczeń związane z zypper (Menedżera pakietów) oraz jego zależności wymagane najpierw. To ograniczenie zypper. W niektórych przypadkach może być wymagane ponowne uruchomienie wdrożenia aktualizacji, aby sprawdzić, sprawdź w dzienniku aktualizacji.
+Wdrażanie aktualizacji według klasyfikacji aktualizacji nie działa w przypadku CentOS gotowe. Dla SUSE wybierając *tylko* inne aktualizacje klasyfikacji może spowodować pewne zabezpieczenia aktualizuje również zainstalowania aktualizacji zabezpieczeń związane z zypper (Menedżera pakietów) oraz jego zależności wymagane najpierw. To ograniczenie zypper. W niektórych przypadkach może być wymagane ponowne uruchomienie wdrożenia aktualizacji, aby sprawdzić, sprawdź w dzienniku aktualizacji.
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 

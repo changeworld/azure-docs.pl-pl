@@ -1,25 +1,19 @@
 ---
 title: Informacje o wersji Preivew bramy pola danych platformy Azure | Dokumentacja firmy Microsoft
 description: Opisuje krytyczne nierozwiązane problemy i rozwiązania dla usługi Azure Gateway pole danych, systemem w wersji zapoznawczej.
-services: databox-edge-gateway
-documentationcenter: ''
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
-ms.service: databox-edge-gateway
-ms.devlang: NA
+ms.service: databox
+ms.subservice: gateway
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 2668279b33d2d8d1c0adf92c138cc6347c95bd4d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f5e19d59dfddc3be849700f3678519179b5b39ba
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035355"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49164573"
 ---
 # <a name="azure-data-box-gateway-preview-release-notes"></a>Informacje o wersji usługi Azure Data Box — wersja zapoznawcza bramy
 

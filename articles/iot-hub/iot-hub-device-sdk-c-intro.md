@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: 0c2f39ed1610598ab4f7f857da3df817089bcb38
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 5e29dcde80da75fa70fe6dcbf35d7f319a5ca3cb
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044743"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311155"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Usługa Azure zestaw SDK urządzeń IoT dla języka C
 
@@ -87,29 +87,29 @@ Jeśli nie znasz narzędzie device explorer, Poniższa procedura opisuje jak z n
 
 1. Aby zainstalować narzędzie device explorer, zobacz [sposób używania Device Explorer dla urządzeń usługi IoT Hub](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
 
-2. Kiedy uruchamiasz program, zostanie wyświetlony ten interfejs:
+1. Kiedy uruchamiasz program, zostanie wyświetlony ten interfejs:
 
   ![Zrzut ekranu z bliźniaczej reprezentacji Device Explorer](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinConfigTab.png)
 
-3. Wprowadź swoje **parametry połączenia Centrum IoT Hub** w pierwszym polu i kliknij **aktualizacji**. Ten krok obejmuje skonfigurowanie narzędzie tak, aby umożliwić komunikację z usługą IoT Hub. 
+1. Wprowadź swoje **parametry połączenia Centrum IoT Hub** w pierwszym polu i kliknij **aktualizacji**. Ten krok obejmuje skonfigurowanie narzędzie tak, aby umożliwić komunikację z usługą IoT Hub. 
 
 **Parametry połączenia** znajduje się w obszarze **usługi IoT Hub** > **ustawienia** > **zasady dostępu współużytkowanego**  >  **iothubowner**.
 
-4. Po skonfigurowaniu parametry połączenia Centrum IoT kliknij **zarządzania** karty:
+1. Po skonfigurowaniu parametry połączenia Centrum IoT kliknij **zarządzania** karty:
 
   ![Bliźniacza reprezentacja Device Explorer / zarządzania zrzut ekranu](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab.png)
 
 Ta karta jest, którym zarządzasz urządzeń zarejestrowanych w usłudze IoT hub.
 
-5. Tworzenie urządzenia, klikając **Utwórz** przycisku. Wyświetla okno dialogowe z zestawem wstępnie wypełnionych klucze (podstawowe i pomocnicze). Wprowadź **identyfikator urządzenia** a następnie kliknij przycisk **Utwórz**.
+1. Tworzenie urządzenia, klikając **Utwórz** przycisku. Wyświetla okno dialogowe z zestawem wstępnie wypełnionych klucze (podstawowe i pomocnicze). Wprowadź **identyfikator urządzenia** a następnie kliknij przycisk **Utwórz**.
 
   ![Utwórz zrzut ekranu urządzenia](./media/iot-hub-device-sdk-c-intro/CreateDevice.png)
 
-6. Po utworzeniu urządzenia urządzenia Wyświetl listę wszystkich zarejestrowanych urządzeń, który został utworzony w tym aktualizacje. Kliknięcie prawym przyciskiem myszy nowe urządzenie, zostanie wyświetlony w tym menu:
+1. Po utworzeniu urządzenia urządzenia Wyświetl listę wszystkich zarejestrowanych urządzeń, który został utworzony w tym aktualizacje. Kliknięcie prawym przyciskiem myszy nowe urządzenie, zostanie wyświetlony w tym menu:
 
   ![Wyników kliknij prawym przyciskiem myszy bliźniaczej reprezentacji Device Explorer](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab_RightClick.png)
 
-7. Jeśli wybierzesz **skopiuj parametry połączenia dla wybranego urządzenia**, parametry połączenia urządzenia są kopiowane do Schowka. Zachowaj kopię parametry połączenia urządzenia. Będzie on potrzebny podczas uruchamiania aplikacji przykładowej, opisane w poniższych sekcjach.
+1. Jeśli wybierzesz **skopiuj parametry połączenia dla wybranego urządzenia**, parametry połączenia urządzenia są kopiowane do Schowka. Zachowaj kopię parametry połączenia urządzenia. Będzie on potrzebny podczas uruchamiania aplikacji przykładowej, opisane w poniższych sekcjach.
 
 Po ukończeniu powyższych kroków, wszystko będzie gotowe rozpocząć uruchamianie kodu. Większość przykładów ma stałą w górnej części pliku źródłowego głównego, który umożliwia wprowadzanie parametrów połączenia. Na przykład, odpowiedni wiersz z **iothub\_klienta\_przykładowe\_mqtt** aplikacja pojawi się w następujący sposób.
 
@@ -320,7 +320,7 @@ Użyj **IoTHubMessage\_GetByteArray** funkcję, aby pobrać wiadomości, czyli w
 
 Po zakończeniu zdarzenia wysyłanie i odbieranie wiadomości możesz uninitialize biblioteki IoT. Aby to zrobić, wykonaj poniższe wywołanie funkcji:
 
-```
+```c
 IoTHubClient_LL_Destroy(iotHubClientHandle);
 ```
 

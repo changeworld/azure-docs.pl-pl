@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: a4ebb64d14b325680a65ffd52f6a07836c1e6ede
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: abc32b726eea55f08a052f29a12f1eb237d4f5d6
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585683"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311324"
 ---
 # <a name="use-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Umożliwia routing komunikatów wysyłać komunikaty urządzenie chmura do różnych punktów końcowych
 
@@ -21,7 +21,7 @@ ms.locfileid: "47585683"
 
 Routing komunikatów umożliwia wysyłanie komunikatów z urządzenia do usług w chmurze w sposób zautomatyzowanych, skalowalnych i niezawodnych. Routing komunikatów może służyć do: 
 
-* **Wysyłanie messsages telemetrii urządzenia, a także zdarzenia** , zdarzenia cyklu życia urządzenia i zdarzenia zmian do wbudowanych-endpoint i niestandardowych punktów końcowych bliźniaczej reprezentacji urządzenia. Dowiedz się więcej o [routingu punktów końcowych](##routing-endpoints).
+* **Wysyłanie messsages telemetrii urządzenia, a także zdarzenia** , zdarzenia cyklu życia urządzenia i zdarzenia zmian do wbudowanych-endpoint i niestandardowych punktów końcowych bliźniaczej reprezentacji urządzenia. Dowiedz się więcej o [routingu punktów końcowych](#routing-endpoints).
 
 * **Filtrowanie danych przed przesłaniem go do różnych punktów końcowych** przez zastosowanie zaawansowanych zapytań. Routing komunikatów umożliwia zapytania właściwości wiadomości oraz treść wiadomości, a także tagów bliźniaczych reprezentacji urządzeń i właściwości bliźniaczych reprezentacji urządzeń. Dowiedz się więcej o korzystaniu z [zapytania w routingu komunikatów](iot-hub-devguide-routing-query-syntax.md).
 

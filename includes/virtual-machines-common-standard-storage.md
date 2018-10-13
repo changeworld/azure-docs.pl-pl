@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: e3d904358282f303a2d1ab35cf4fdc8026d7db55
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f1fe45283ef2886a50bf6a36e50e7ffe42055ee2
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060507"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49312439"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Ekonomicznego magazynu w warstwie standardowa oraz zarządzane i niezarządzane dyski maszyny Wirtualnej platformy Azure
 
@@ -25,7 +25,7 @@ Ten artykuł koncentruje się na korzystanie z dysków SSD i HDD w warstwie stan
 
 Istnieją dwa sposoby tworzenia dysków w warstwie standardowa dla maszyn wirtualnych platformy Azure:
 
-**Niezarządzane dyski**: ten typ dysku jest oryginalnej metody, w których zarządzasz konta magazynu używany do przechowywania plików wirtualnego dysku twardego, które odpowiadają na dyskach maszyny Wirtualnej. Pliki VHD są przechowywane jako stronicowe obiekty BLOB na kontach magazynu. Usługa Unmanaged disks można dołączyć do dowolnego rozmiaru maszyny Wirtualnej platformy Azure, w tym o maszynach wirtualnych, które przede wszystkim używasz usługi Premium Storage, takich jak seria DSv2 i GS. Maszyny wirtualne platformy Azure obsługują dołączanie kilka dyski w warstwie standardowa, umożliwiając 256 PiB magazynu na maszynę Wirtualną. Jeśli używasz rozmiary dysków (wersja zapoznawcza), możesz mieć maksymalnie około 2 PiB magazynu na maszynę Wirtualną. 
+**Niezarządzane dyski**: ten typ dysku jest oryginalnej metody, w których zarządzasz konta magazynu używany do przechowywania plików wirtualnego dysku twardego, które odpowiadają na dyskach maszyny Wirtualnej. Pliki VHD są przechowywane jako stronicowe obiekty BLOB na kontach magazynu. Usługa Unmanaged disks można dołączyć do dowolnego rozmiaru maszyny Wirtualnej platformy Azure, w tym o maszynach wirtualnych, które przede wszystkim używasz usługi Premium Storage, takich jak seria DSv2 i GS. Maszyny wirtualne platformy Azure obsługują dołączanie kilka dyski w warstwie standardowa, dzięki czemu do 256 TiB pamięci na maszynę Wirtualną. Jeśli używasz rozmiary dysków (wersja zapoznawcza), możesz mieć maksymalnie około 2 PiB magazynu na maszynę Wirtualną.
 
 [**Usługa Azure Managed Disks**](../articles/virtual-machines/windows/managed-disks-overview.md): Ta funkcja zarządza kont magazynu dla dysków maszyn wirtualnych dla Ciebie. Określ typ (w warstwie Premium SSD, SSD w warstwie standardowa lub standardowych dysków Twardych) i rozmiar dysku należy i platforma Azure utworzy i zarządza dysku. Nie trzeba martwić się o umieszczenie dysków na wielu kontach magazynu w celu zapewnienia przekroczysz limity skalowalności konta magazynu — Azure sobie z nimi poradzi dla Ciebie.
 

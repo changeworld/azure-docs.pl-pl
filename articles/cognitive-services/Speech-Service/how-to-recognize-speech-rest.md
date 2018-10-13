@@ -3,18 +3,18 @@ title: Rozpoznawanie mowy, korzystając z interfejsu API REST
 description: Dowiedz się, jak używać funkcji rozpoznawania mowy do interfejsu API tłumaczenia tekstu w usłudze mowy w usłudze Cognitive Services.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
-ms.author: v-jerkin
-ms.openlocfilehash: eafec2dd262098bc4b7e485293818b79debe3d27
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.author: erhopf
+ms.openlocfilehash: 4e87feae7e3321efe7adcdbf1302762f539f034d
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126850"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167277"
 ---
 # <a name="recognize-speech-by-using-the-rest-api"></a>Rozpoznawanie mowy, korzystając z interfejsu API REST
 

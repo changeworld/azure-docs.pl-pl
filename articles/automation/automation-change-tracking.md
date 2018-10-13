@@ -6,16 +6,16 @@ ms.service: automation
 ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/31/2018
+ms.date: 10/12/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 713c0f676067cb32a84361dd7801031295e2244f
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 2678b9a1b80b1c9de6f1b554ce43bcd4f2dd5d50
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634442"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167005"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Śledź zmiany w środowisku przy użyciu rozwiązania Change Tracking
 
@@ -224,6 +224,17 @@ Monitorowanie zmian w kluczach rejestru ma na celu wykrywanie punkty rozszerzeń
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitoruje listę znanych lub często używane system biblioteki dll; Ten system uniemożliwia osób wykorzystanie uprawnienia katalogu aplikacji słabe przez usunięcie koń trojański wersji systemowej biblioteki dll.|
 > |**HKEY\_lokalnego\_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitoruje listę pakietów mogli otrzymywać powiadomienia o zdarzeniach logowania do systemu Windows, model pomocy technicznej interakcyjnego logowania dla systemu operacyjnego Windows.|
+
+## <a name="network-requirements"></a>Wymagania dotyczące sieci
+
+Następujące adresy są wymagane dla śledzenia zmian. Komunikacja z tych adresów odbywa się za pośrednictwem portu 443.
+
+|Azure Public  |Azure Government  |
+|---------|---------|
+|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
+|*.azure-automation.net|*.Azure automation.us|
 
 ## <a name="use-change-tracking"></a>Korzystanie ze śledzenia zmian
 

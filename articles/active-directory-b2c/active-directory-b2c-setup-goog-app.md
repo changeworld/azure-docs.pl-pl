@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1ddcbba4eacad040420efaf087f170e6c06ab2a0
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 5f6ce3564cf4056dc9295e1885be425bbe3d7701
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182403"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165304"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Konfigurowanie rejestracji i logowania za pomocą konta Google przy użyciu usługi Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Aby użyć konta Google jako dostawcy tożsamości w usłudze Azure Active Direc
 3. Wprowadź **Nazwa projektu**, kliknij przycisk **Utwórz**, a następnie upewnij się, czy przy użyciu nowego projektu.
 3. Wybierz **poświadczenia** w menu po lewej stronie, a następnie wybierz **Utwórz poświadczenia** > **identyfikator klienta Oauth**.
 4. Wybierz **ekranie wyrażania zgody Konfiguruj**.
-5. Wybierz lub Określ prawidłową **adres E-mail**, podaj **nazwa produktu pokazywana użytkownikom**i kliknij przycisk **Zapisz**.
+5. Wybierz lub Określ prawidłową **adres E-mail**, podaj **nazwa produktu pokazywana użytkownikom**, Dodaj `b2clogin.com` do **autoryzacji domen**i kliknij przycisk **Zapisz** .
 6. W obszarze **typ aplikacji**, wybierz opcję **aplikacji sieci Web**.
 7. Wprowadź **nazwa** dla aplikacji, wprowadź `https://your-tenant-name.b2clogin.com` w **JavaScript autoryzowanych źródeł**, i `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` w **identyfikatory URI przekierowania autoryzowanych**. Zastąp `your-tenant-name` nazwą Twojej dzierżawy. Należy używać małych liter, podczas wprowadzania nazwa dzierżawy, nawet jeśli dzierżawa jest zdefiniowana z wielkich liter w usłudze Azure AD B2C.
 8. Kliknij pozycję **Utwórz**.

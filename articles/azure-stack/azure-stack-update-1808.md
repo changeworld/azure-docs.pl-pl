@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2018
+ms.date: 10/12/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: a870ba238239a20af154f611f88e7c2fdb95f9f7
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 2e913881faadd4892ad1ebc8cb404efe6489eb0d
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870931"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310902"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizacja usługi Azure Stack 1808
 
@@ -40,7 +40,7 @@ Numerem kompilacji aktualizacji usługi Azure Stack 1808 **1.1808.0.97**.
 Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack.
 
 <!--  2682594   | IS  --> 
-- **Wszystkie środowiska Azure Stack teraz używać format strefy czasowej uniwersalnego czasu koordynowanego (UTC).**  Wszystkie dane dziennika, a teraz powiązane informacje wyświetlane w formacie UTC. Jeśli zaktualizujesz z poprzedniej wersji, który nie został zainstalowany przy użyciu czasu UTC, środowiska jest aktualizowany do używają czasu UTC. 
+- **Wszystkie środowiska Azure Stack teraz używać format strefy czasowej uniwersalnego czasu koordynowanego (UTC).**  Wszystkie dane dzienników i teraz powiązane informacje są wyświetlane w formacie UTC. Jeśli zaktualizujesz z poprzedniej wersji, który nie został zainstalowany przy użyciu czasu UTC, środowiska jest aktualizowany do używają czasu UTC. 
 
 <!-- 2437250  | IS  ASDK --> 
 - **Dyski zarządzane są obsługiwane.** Możesz teraz używać usługi Managed Disks w maszynach wirtualnych usługi Azure Stack i zestawy skalowania maszyn wirtualnych. Aby uzyskać więcej informacji, zobacz [stosu usługi Azure Managed Disks: różnice i zagadnienia](/azure/azure-stack/user/azure-stack-managed-disk-considerations).
@@ -52,7 +52,7 @@ Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack.
 - **Przygotowanie do hosta rozszerzenia**. Można użyć host rozszerzenia ułatwiające bezpieczne usługi Azure Stack, zmniejszając liczbę wymaganych portów TCP/IP. Dzięki aktualizacji 1808 można przygotować, przygotowanie hosta rozszerzenia usługi Azure Stack. Aby uzyskać więcej informacji, zobacz [przygotować się do hosta rozszerzenia dla usługi Azure Stack](/azure/azure-stack/azure-stack-extension-host-prepare).
 
 <!-- IS --> 
-- **Galeria elementów dla zestawów skalowania maszyn wirtualnych są teraz wbudowane**. Element galerii zestawu skalowania maszyn wirtualnych jest teraz udostępniane w portalach użytkowników i administratorów bez konieczności pobierania go.  Po uaktualnieniu do 1808 będzie dostępna po zakończeniu procesu uaktualniania.  
+- **Galeria elementów dla zestawów skalowania maszyn wirtualnych są teraz wbudowane w**. Element galerii zestawu skalowania maszyn wirtualnych jest teraz udostępniane w portalach użytkowników i administratorów bez konieczności pobierania go.  Po uaktualnieniu do 1808 będzie dostępna po zakończeniu procesu uaktualniania.  
 
 <!-- IS, ASDK --> 
 - **Skalowanie zestawu skalowania maszyn wirtualnych**. Można użyć portalu [skalowanie zestawu skalowania maszyn wirtualnych](azure-stack-compute-add-scalesets.md#scale-a-virtual-machine-scale-set) (zestawu skalowania maszyn wirtualnych).    
@@ -61,10 +61,10 @@ Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack.
 - **Obsługa niestandardowych konfiguracji zasad protokołu IPSec/IKE** dla [bram sieci VPN w usłudze Azure Stack](/azure/azure-stack/azure-stack-vpn-gateway-about-vpn-gateways).
 
 <!-- | IS ASDK--> 
-- **Elementu portalu marketplace Kubernetes**. Teraz można wdrożyć klastry Kubernetes za pomocą [elementu portalu Kubernetes Marketplace](azure-stack-solution-template-kubernetes-cluster-add.md). Użytkownicy mogą wybrać element Kubernetes i wypełnij kilka parametrów do wdrażania klastra Kubernetes w usłudze Azure Stack. Szablony ma na celu ułatwić użytkownikom w celu wdrożenia rozwiązania Kubernetes i testowania instalacji w kilku krokach.
+- **Elementu portalu marketplace Kubernetes**. Teraz można wdrożyć klastry Kubernetes za pomocą [elementu portalu Kubernetes Marketplace](azure-stack-solution-template-kubernetes-cluster-add.md). Użytkownicy mogą wybrać element Kubernetes i wypełnij kilka parametrów do wdrażania klastra Kubernetes w usłudze Azure Stack. Szablony ma na celu ułatwić użytkownikom, aby skonfigurować tworzenie i testowanie wdrożenia rozwiązania Kubernetes w kilku krokach.
 
 <!-- | IS ASDK--> 
-- **Łańcuch bloków szablony**. Można teraz wykonać [wdrożeń konsorcjum Ethereum](azure-stack-ethereum.md) w usłudze Azure Stack. Można znaleźć trzy nowe szablony w [usługi Azure Stack szablonów Szybki Start](https://github.com/Azure/AzureStack-QuickStart-Templates). Umożliwiają one użytkownikowi wdrażanie i konfigurowanie sieci Ethereum konsorcjum zawierającym wiele elementów członkowskich przy minimalnej znajomości platformy Azure i Ethereum. Szablony ma na celu ułatwić użytkownikom do instalacji i testowania aplikacji łańcucha bloków wdrożeń w kilku krokach.
+- **Łańcuch bloków szablony**. Można teraz wykonać [wdrożeń konsorcjum Ethereum](azure-stack-ethereum.md) w usłudze Azure Stack. Można znaleźć trzy nowe szablony w [usługi Azure Stack szablonów Szybki Start](https://github.com/Azure/AzureStack-QuickStart-Templates). Umożliwiają one użytkownikowi wdrażanie i konfigurowanie sieci Ethereum konsorcjum zawierającym wiele elementów członkowskich przy minimalnej znajomości platformy Azure i Ethereum. Szablony ma na celu ułatwić użytkownikom w celu konfigurowania i testowania wdrożeń łańcucha bloków w kilku krokach.
 
 <!-- | IS ASDK--> 
 - **Interfejs API w wersji profilu 2017-03-09-profile została zaktualizowana w celu 2018-03-01-hybrydowego**. Profile interfejsu API Określ dostawca zasobów platformy Azure i wersja interfejsu API dla punkty końcowe REST platformy Azure. Aby uzyskać więcej informacji na temat profilów, zobacz [Zarządzanie profilami wersji interfejsu API w usłudze Azure Stack](/azure/azure-stack/user/azure-stack-version-profiles).
@@ -144,6 +144,13 @@ Ta aktualizacja zawiera także ograniczania ryzyka związanego z wykonywaniem sp
   ```   
 
 ### <a name="known-issues-with-the-update-process"></a>Znane problemy związane z procesem aktualizacji
+
+<!-- TBD - IS -->
+- Możesz zobaczyć następujące alerty regularnie pojawiają się i następnie znikają w systemie Azure Stack:
+   - *Infrastruktura wystąpienie roli jest niedostępne*
+   - *Węzeł jednostka skalowania jest w trybie offline*
+   
+  Uruchom [AzureStack testu](azure-stack-diagnostic-test.md) polecenia cmdlet, aby sprawdzić kondycję wystąpień roli infrastruktury i skalowanie węzłów jednostki. Brak problemów w przypadku wykrycia przez [AzureStack testu](azure-stack-diagnostic-test.md), można zignorować te alerty. W przypadku wykrycia problemu można spróbować uruchomić wystąpienie roli infrastruktury lub węzła przy użyciu portalu administracyjnego lub programu PowerShell.
 
 - Po uruchomieniu [AzureStack testu](azure-stack-diagnostic-test.md) po 1808 aktualizacji, wyświetlany jest komunikat ostrzegawczy z kontrolera zarządzania płytą główną (BMC). Można bezpiecznie zignorować to ostrzeżenie.
 
@@ -226,7 +233,7 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 
 
 <!-- 2812138 | IS --> 
-- Można napotkać alert w przypadku **magazynu** składnik, który ma następujące informacje:
+- Można napotkać alert w przypadku **magazynu** składnika, który zawiera następujące informacje:
 
    - Nazwa: Magazyn usługi wewnętrzny błąd komunikacji  
    - Waga: krytyczny  

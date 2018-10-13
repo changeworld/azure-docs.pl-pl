@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 3565793347a8c9704e51e893e5aa916cf54cab8e
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: b53be5a5683ca8fcc8760a2d4cb7e766904a44a3
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115577"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167668"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -135,6 +135,21 @@ Aby rozwiązać ten problem, wykonaj następujące czynności:
 2. Sprawdź, czy ustawienia zapory i serwera Proxy zostały prawidłowo skonfigurowane:
     - Jeśli serwer znajduje się za zaporą, sprawdź, czy jest dozwolony przez port 443 wychodzących. Jeśli zapora będzie ograniczała ruch do określonych domen, upewnij się, domen, na liście w zaporze [dokumentacji](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) są dostępne.
     - Jeśli serwer znajduje się za serwerem proxy, skonfiguruj ustawienia serwera proxy dla komputera lub specyficzne dla aplikacji, wykonując kroki na serwerze proxy [dokumentacji](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy).
+
+<a id="endpoint-noactivity-sync"></a>**Punkt końcowy serwera ma stan kondycji, aktywności"No", i stanu serwera w bloku zarejestrowane serwery "Online"**  
+
+Kondycja punktu końcowego serwera działania"nie" oznacza, że punkt końcowy serwera nie zarejestrował działanie synchronizacji w ciągu ostatnich dwóch godzin.
+
+Punkt końcowy serwera nie mogą rejestrować działanie synchronizacji z następujących powodów:
+
+- Serwer osiągnął maksymalną liczbę sesji jednoczesnych synchronizacji. Usługa Azure File Sync obecnie obsługuje 2 sesji ActiveSync na procesor lub maksymalnie 8 sesji ActiveSync na serwerze.
+
+- Serwer ma aktywną sesję synchronizacji usługi VSS (SnapshotSync). Podczas sesji synchronizacji usługi VSS jest aktywny dla punktu końcowego serwera, inne punkty końcowe serwera na serwerze nie można uruchomić sesji synchronizacji start zakończenie sesji synchronizacji Usługa VSS.
+
+Aby sprawdzić bieżące działanie synchronizacji na serwerze, zobacz [jak monitorować postęp bieżącej sesji synchronizacji?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
+
+> [!Note]  
+> Jeśli stan serwera w bloku zarejestrowanych serwerów jest "Pojawia się w trybie Offline", wykonaj kroki opisane w temacie [punkt końcowy serwera ma stan kondycji "No Activity" lub "Pending" i stanu serwera w bloku zarejestrowane serwery "Pojawia się w trybie offline" ](#server-endpoint-noactivity) sekcji.
 
 ## <a name="sync"></a>Sync
 <a id="afs-change-detection"></a>**Jeśli utworzono plik bezpośrednio w mojej udziału plików platformy Azure za pośrednictwem protokołu SMB lub za pośrednictwem portalu, jak długo trwa dla pliku, aby zsynchronizować z serwerów w grupie synchronizacji?**  

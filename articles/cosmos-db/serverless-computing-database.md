@@ -9,16 +9,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: b7908f9f9aef51857f0ffb07102e1df245b7a259
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: c183bbe2c20bdc1772160cbbd8260dece0b6eb54
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064462"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309505"
 ---
-# <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB: Bezserwerowa baza danych przetwarzanie za pomocą usługi Azure Functions
+# <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Bezserwerowa baza danych obliczeń z użyciem usługi Azure Cosmos DB i Azure Functions
 
-Operacje obliczeniowe jest możliwość skupić się na poszczególnych elementach logiki, które są powtarzalne i bezstanowych. Te elementy wymagają nie zarządzania infrastrukturą i ich używanie zasobów tylko w przypadku sekund, czyli milisekund, ich uruchamiania dla. W samym sercu przepływu obliczeniowych bez użycia serwera są funkcje, które są udostępniane w ekosystemie platformy Azure przez [usługi Azure Functions](https://azure.microsoft.com/services/functions).
+Operacje obliczeniowe jest możliwość skupić się na poszczególnych elementach logiki, które są powtarzalne i bezstanowych. Te elementy wymagają nie zarządzania infrastrukturą i ich używanie zasobów tylko w przypadku sekund, czyli milisekund, ich uruchamiania dla. W samym sercu przepływu obliczeniowych bez użycia serwera są funkcje, które są udostępniane w ekosystemie platformy Azure przez [usługi Azure Functions](https://azure.microsoft.com/services/functions). Aby dowiedzieć się więcej o innych środowisk wykonywania bezserwerowego Azure widzą [Praca bezserwerowa na platformie Azure](https://azure.microsoft.com/solutions/serverless/) strony. 
 
 Za pomocą natywna integracja pomiędzy usługą [usługi Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db) i usługi Azure Functions, można utworzyć wyzwalacze bazy danych, powiązania danych wejściowych i powiązania danych wyjściowych bezpośrednio z konta usługi Azure Cosmos DB. Za pomocą usługi Azure Functions i Azure Cosmos DB, można tworzyć i wdrażać oparte na zdarzeniach aplikacje niewymagające użycia serwera, z małymi opóźnieniami dostępem do zaawansowanych danych dla globalnej bazy użytkowników.
 

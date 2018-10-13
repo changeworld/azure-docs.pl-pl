@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: c6d7268a8501c602354d21edc5a0feaae9b1a0b2
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 19351d31331431e3b5137676061aadc681c496a7
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575478"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166631"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Interfejsy API protokołu HTTP w funkcje trwałe (usługa Azure Functions)
 
@@ -197,6 +197,9 @@ Oto przykład ładunek odpowiedzi, tym aranżacji wykonywania historii i działa
 ### <a name="get-all-instances-status"></a>Pobierz stan dla wszystkich wystąpień
 
 Możesz także zbadać stan dla wszystkich wystąpień. Usuń `instanceId` w żądaniu "Pobierz stan wystąpienia". Parametry są takie same jak "Pobierz stan wystąpienia". 
+
+Jest to jedno należy pamiętać, że `connection` i `code` są opcjonalne. Jeśli uwierzytelnianie anonimowe dla funkcji, a następnie kod nie jest wymagane.
+Jeśli nie chcesz używać różnych obiektów blob parametry połączenia magazynu innego niż zdefiniowane w ustawieniach aplikacji AzureWebJobsStorage, można bezpiecznie zignorować parametr ciągu zapytania połączenia.
 
 #### <a name="request"></a>Żądanie
 

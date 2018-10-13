@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 9b22890bceba6205c995a01105cdf11a08a9c10b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 551fe303994f6c72f8a4bf39e76f12c62f58026b
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998750"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309539"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>Migracja bazy danych MariaDB do usługi Azure Database dla serwera MariaDB przy użyciu zrzutu i przywracania
 W tym artykule opisano dwa podstawowe sposoby kopii zapasowej i przywracanie baz danych w usłudze Azure Database dla serwera MariaDB
@@ -30,7 +30,9 @@ Do wykonania kroków w tym przewodniku, musisz mieć:
 Umożliwia wspólne narzędzia i narzędzia, takie jak połączenia aplikacji MySQL Workbench, polecenia mysqldump, Toad lub Navicat zdalne łączenie i przywrócić dane do usługi Azure Database dla serwera MariaDB. Użyj takich narzędzi na komputerze klienckim przy użyciu połączenia internetowego do łączenia z usługą Azure Database dla serwera MariaDB. Użyj połączenia zaszyfrowane protokołem SSL najlepsze rozwiązania dotyczące zabezpieczeń, zobacz też [Konfigurowanie łączności SSL w usłudze Azure Database dla serwera MariaDB](concepts-ssl-connection-security.md). Nie trzeba przenieść pliki zrzutu do dowolnej lokalizacji w chmurze specjalne, podczas migracji do usługi Azure Database dla serwera MariaDB. 
 
 ## <a name="common-uses-for-dump-and-restore"></a>Typowe zastosowania zrzutu i przywracania
-Można użyć narzędzia MySQL, takie jak polecenia mysqldump i mysqlpump instrukcje dump i load baz danych do usługi Azure Database dla serwera MariaDB w kilka typowych scenariuszy. <!--In other scenarios, you may use the [Import and Export](concepts-migrate-import-export.md) approach instead.-->
+Można użyć narzędzia MySQL, takie jak polecenia mysqldump i mysqlpump instrukcje dump i load baz danych do usługi Azure Database dla serwera MariaDB w kilka typowych scenariuszy. 
+
+<!--In other scenarios, you may use the [Import and Export](howto-migrate-import-export.md) approach instead.-->
 
 - Korzystaj z bazy danych zrzuty, migrując całą bazę danych. To zalecenie przechowuje podczas przenoszenia dużych ilości danych lub jeśli chcesz zminimalizować zakłócenia usługi dla witryny na żywo lub aplikacji. 
 -  Upewnij się, że wszystkie tabele w bazie danych, użyj aparatu InnoDB aparatu magazynu podczas ładowania danych do usługi Azure Database dla serwera MariaDB. Azure Database dla serwera MariaDB obsługuje tylko aparatu magazynu aparatu InnoDB i dlatego nie obsługuje magazynu alternatywnych aparatów. Jeśli tabele są skonfigurowane z innymi aparatami magazynu, należy przekonwertować je na format aparatu aparatu InnoDB przed migracją do usługi Azure Database dla serwera MariaDB.

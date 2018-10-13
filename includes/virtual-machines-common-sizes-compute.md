@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 033ae1de25fbaada0c2bce715e6bdd71818b341a
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 0c071fbfb962de1bf077dfa720cd66bc06e42178
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37906806"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49312590"
 ---
 <!-- F-series, Fs-series* -->
 
@@ -37,15 +37,16 @@ Usługa Premium Storage: obsługiwane
 
 Buforowanie magazynu Premium: obsługiwane
 
-| Rozmiar             | procesory wirtualne | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
-|------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|------------------------------------------------|
-| Standard_F2s_v2  | 2      | 4           | 16             | 4              | 4000 (32)                                                             | 2 / 875                                        |
-| Standard_F4s_v2  | 4      | 8           | 32             | 8              | 8000 (64)                                                             | 2 / 1,750                                      |
-| Standard_F8s_v2   | 8      | 16          | 64             | 16             | 16000 (128)                                                           | 4 / 3500                                      |
-| Standard_F16s_v2 | 16     | 32          | 128            | 32             | 32000 (256)                                                           | 4 / 7000                                      |
-| Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64000 (512)                                                           | 8 / 14 000                                     |
-| Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128000 (1024)                                                         | 8 / używane 28 000                                     |
-| Standard_F72s_v2<sup>2, 3</sup> | 72     | 144         | 576            | 32             | 144000 (1520)                                                         | 8 / 30,000                                     |
+| Rozmiar             | procesory wirtualne | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
+|------------------|--------|-------------|----------------|----------------|--------------------------|--------------------------|------------------------------------------------|
+| Standard_F2s_v2  | 2      | 4           | 16             | 4              | 4000 / 31 (32)           | 3200 / 47                | Średnia                                       |
+| Standard_F4s_v2  | 4      | 8           | 32             | 8              | 8000 / 63 (64)           | 6400 / 95                | Średnia                                       |
+| Standard_F8s_v2  | 8      | 16          | 64             | 16             | 16000 / 127 znaków (128)        | 12800 / 190              | Wysoka                                           |
+| Standard_F16s_v2 | 16     | 32          | 128            | 32             | 32000 / 255 (256)        | 25600 / 380              | Wysoka                                           |
+| Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64000 / 512 (512)        | 51200 / 750              | Bardzo wysoka                                 |
+| Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128000 / 1024 (1024)     | 80000 / 1100             | Bardzo wysoka                                 |
+| Standard_F72s_v2<sup>2, 3</sup> | 72 | 144 | 576         | 32             | 144000 / 1152 (1520)     | 80000 / 1100             | Bardzo wysoka                                 |
+
 
 <sup>1</sup> maszyny Wirtualne serii Fsv2 są wyposażone w technologię Intel® Hyper-Threading
 

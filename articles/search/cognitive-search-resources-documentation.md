@@ -1,6 +1,6 @@
 ---
-title: Zasoby dokumentacji kognitywnych wyszukiwania (Azure Search) | Dokumentacja firmy Microsoft
-description: Adnotacjami listę artykułów, samouczki, przykłady i blog granicznej obciążeń związanych z kognitywnych wyszukiwania w usłudze Azure Search.
+title: Zasoby dokumentacji wyszukiwanie kognitywne (Azure Search) | Dokumentacja firmy Microsoft
+description: Adnotacjami listę artykułów, samouczki, przykłady i blog publikuje obciążeń związanych z cognitive wyszukiwania w usłudze Azure Search.
 services: search
 manager: cgronlun
 author: HeidiSteen
@@ -9,32 +9,32 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: heidist
-ms.openlocfilehash: cee479b81cb5d8b6cd3306e3735d72c9e64e6045
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bad73d2bf8bdf4adee4ce6e40550e506a35a2083
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640357"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165682"
 ---
-# <a name="documentation-resources-for-cognitive-search-workloads"></a>Zasoby dokumentacji dla obciążeń kognitywnych wyszukiwania
+# <a name="documentation-resources-for-cognitive-search-workloads"></a>Zasoby dokumentacji dla obciążeń wyszukiwania kognitywnego
 
-Wyszukiwanie kognitywnych teraz w publicznej wersji zapoznawczej, jest nową wzbogacenia warstwę usługi Azure Search indeksowanie wyszukującą ukryty informacji w nietekstowych źródeł i niesortowalne tekstu, przekształcania go w zawartości wyszukiwanie pełnotekstowe w usłudze Azure Search.
+Usługa cognitive search teraz w publicznej wersji zapoznawczej, jest nową wzbogacania warstwę usługi Azure Search indeksowanie, odnajduje informacje ukryte w źródłach innych niż tekst i tekstu takimi samymi, przekształcania go w zawartość do przeszukiwania pełnotekstowego w usłudze Azure Search.
 
-Pełną dokumentację kognitywnych wyszukiwania są następujące artykuły.
+Pełną dokumentację usługi cognitive search są następujące artykuły.
 
 ## <a name="getting-started"></a>Wprowadzenie
-+ [Co to jest kognitywnych wyszukiwania?](cognitive-search-concept-intro.md)
-+ [Szybki Start: Spróbuj kognitywnych wyszukiwania w portalu](cognitive-search-quickstart-blob.md)
-+ [Samouczek: Dowiedz się kognitywnych wyszukiwania interfejsów API](cognitive-search-tutorial-blob.md)
++ [Co to jest usługa cognitive search?](cognitive-search-concept-intro.md)
++ [Szybki Start: Wypróbuj wyszukiwanie kognitywne w portalu](cognitive-search-quickstart-blob.md)
++ [Samouczek: Dowiedz się, usługa cognitive search interfejsów API](cognitive-search-tutorial-blob.md)
 + [Przykład: tworzenie umiejętności niestandardowej](cognitive-search-create-custom-skill-example.md)
 
-## <a name="how-to-guidance"></a>Wskazówki porad
-+ [Sposób definiowania skillset](cognitive-search-defining-skillset.md)
-+ [Jak adnotacje odwołania w skillset](cognitive-search-concept-annotations-syntax.md)
+## <a name="how-to-guidance"></a>Wskazówki dotyczące wykonywania określonych zadań
++ [Jak Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md)
++ [Jak odwoływać się do adnotacji w zestawu umiejętności](cognitive-search-concept-annotations-syntax.md)
 + [Sposób mapowania pól do indeksu](cognitive-search-output-field-mapping.md)
-+ [Jak informacje o procesie i wyodrębniania z obrazów](cognitive-search-concept-image-scenarios.md)
++ [Jak przetwarzanie i wyodrębnianie informacji z obrazów](cognitive-search-concept-image-scenarios.md)
 + [Jak odbudować indeksu usługi Azure Search](search-howto-reindex.md)
-+ [Sposób definiowania interfejsu umiejętności niestandardowych](cognitive-search-custom-skill-interface.md)
++ [Jak zdefiniować interfejs umiejętności niestandardowe](cognitive-search-custom-skill-interface.md)
 + [Wskazówki dotyczące rozwiązywania problemów](cognitive-search-concept-troubleshooting.md)
 
 ## <a name="reference"></a>Informacje ogólne
@@ -43,19 +43,19 @@ Pełną dokumentację kognitywnych wyszukiwania są następujące artykuły.
   + [Microsoft.Skills.Text.KeyPhraseSkill](cognitive-search-skill-keyphrases.md)
   + [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)
   + [Microsoft.Skills.Text.NamedEntityRecognitionSkill](cognitive-search-skill-named-entity-recognition.md)
-  + [Microsoft.Skills.Text.MergerSkill](cognitive-search-skill-textmerger.md)
+  + [Microsoft.Skills.Text.MergeSkill](cognitive-search-skill-textmerger.md)
   + [Microsoft.Skills.Text.SplitSkill](cognitive-search-skill-textsplit.md)
   + [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)
   + [Microsoft.Skills.Vision.ImageAnalysisSkill](cognitive-search-skill-image-analysis.md)
   + [Microsoft.Skills.Vision.OcrSkill](cognitive-search-skill-ocr.md)
   + [Microsoft.Skills.Util.ShaperSkill](cognitive-search-skill-shaper.md)
 
-+ [Podgląd interfejsu API REST](search-api-2017-11-11-preview.md)
-  + [Utwórz Skillset (interfejs api-version = 2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-  + [Utwórz indeksator (interfejs api-version = 2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Interfejs API REST (wersja zapoznawcza)](search-api-2017-11-11-preview.md)
+  + [Tworzenie zestawu umiejętności (wersja api-version = 2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
+  + [Tworzenie indeksatora (wersja api-version = 2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
 ## <a name="see-also"></a>Zobacz także
 
-+ [Interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/)
++ [Interfejs API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/)
 + [Indeksatory w usłudze Azure Search](search-indexer-overview.md)
 + [Co to jest usługa Azure Search?](search-what-is-azure-search.md)

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 07e9126b73b0282f61567fe8d06f785bf9a04fef
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: bd2f796ab2feee4bb862d8de2c44efc742163f06
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803481"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167532"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Wdrażanie oparte na chmurze usługi Azure Multi-Factor Authentication
 
@@ -105,6 +105,8 @@ Aby upewnić się, że zasady dostępu warunkowego działa, przetestuj logowanie
 ## <a name="next-steps"></a>Kolejne kroki
 
 Gratulacje, po skonfigurowaniu usługi Azure Multi-Factor Authentication w chmurze.
+
+Dlaczego został użytkownika zostanie wyświetlony monit lub bez wyświetlania monitu o wykonać uwierzytelnianie wieloskładnikowe? Zobacz sekcję [raport logowania usługi Azure AD w raportach w dokumencie usługi Azure Multi-Factor Authentication](howto-mfa-reporting.md#azure-ad-sign-ins-report).
 
 Aby skonfigurować dodatkowe ustawienia, takie jak zaufane adresy IP, niestandardowe wiadomości głosowe i alertów oszustwa, zobacz artykuł [ustawienia skonfiguruj usługę Azure Multi-Factor Authentication](howto-mfa-mfasettings.md).
 

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: 5897740a1b5a183738c08b4dfde571be652aff3e
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: f92b49ebdff71fc0561cc490cb70ffb479f7fc9e
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092253"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310950"
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Łączenie usługi Azure SQL Database do usługi Azure Search przy użyciu indeksatorów
 
@@ -277,7 +277,7 @@ Gdy korzystające z techniki opcji soft-delete, można określić zasady usuwani
         }
     }
 
-**SoftDeleteMarkerValue** musi być ciągiem — ciąg reprezentujący wartość rzeczywistego użycia. Na przykład jeśli kolumna liczb całkowitych, gdzie oznaczone jako usunięte wiersze z wartością 1, użyć `"1"`. Jeśli masz kolumnę BITOWA, gdzie usunięte wiersze są oznaczone wartość logiczną PRAWDA, użyj `"True"`.
+**SoftDeleteMarkerValue** musi być ciągiem — ciąg reprezentujący wartość rzeczywistego użycia. Na przykład jeśli kolumna liczb całkowitych, gdzie oznaczone jako usunięte wiersze z wartością 1, użyć `"1"`. Jeśli masz kolumnę BITOWA, gdzie usunięte wiersze są oznaczone wartość logiczną PRAWDA, należy użyć literału ciągu `True` lub `true`, nie ma znaczenia w przypadku.
 
 <a name="TypeMapping"></a>
 

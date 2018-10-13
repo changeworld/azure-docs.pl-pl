@@ -1,6 +1,6 @@
 ---
-title: Dodaj staną się z rozwiązaniem monitorowania zdalnego interfejsu użytkownika — Azure | Dokumentacja firmy Microsoft
-description: W tym artykule przedstawiono sposób dodawania nowych staną się na stronie zdalne monitorowanie rozwiązań akceleratora internetowego interfejsu użytkownika.
+title: Dodawanie menu wysuwane z rozwiązaniem monitorowania zdalnego interfejsu użytkownika — Azure | Dokumentacja firmy Microsoft
+description: W tym artykule pokazano, jak dodać nowe okno wysuwane w zdalne monitorowanie rozwiązań akceleratora internetowego interfejsu użytkownika strony.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,21 +8,21 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9ba58ca887332d2ea224320951b25031cacbef0d
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ccb1a7ff6abbc68f42c7632a8ba7a392b2c48794
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094610"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167430"
 ---
-# <a name="add-a-custom-fly-out-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Dodaj niestandardowe staną się do monitorowania zdalnego rozwiązania akceleratora internetowego interfejsu użytkownika
+# <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Dodaj niestandardowe okno wysuwane do monitorowania zdalnego rozwiązania akceleratora internetowego interfejsu użytkownika
 
-W tym artykule pokazano, jak dodać nowe w staną się na stronie w zdalne monitorowanie rozwiązań akceleratora internetowego interfejsu użytkownika. W artykule opisano:
+W tym artykule pokazano, jak dodać nowe okno wysuwane na stronę w zdalne monitorowanie rozwiązań akceleratora internetowego interfejsu użytkownika. W artykule opisano:
 
 - Jak przygotować lokalne Środowisko deweloperskie.
-- Jak dodać nowe staną się do strony w internetowym interfejsie użytkownika.
+- Jak dodać nowe okno wysuwane do strony w internetowym interfejsie użytkownika.
 
-Przykład staną się w w tym artykule są wyświetlane na stronie siatki, [dodać siatkę niestandardowych do monitorowania zdalnego rozwiązania akceleratora internetowego interfejsu użytkownika](iot-accelerators-remote-monitoring-customize-grid.md) artykule przedstawiono sposób dodawania.
+Okno wysuwane przykład, w tym artykule wyświetla na stronie siatki, [dodać siatkę niestandardowych do monitorowania zdalnego rozwiązania akceleratora internetowego interfejsu użytkownika](iot-accelerators-remote-monitoring-customize-grid.md) artykule przedstawiono sposób dodawania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -39,27 +39,27 @@ Przed kontynuowaniem należy wykonać czynności opisane w następujących artyk
 - [Dodaj niestandardowe usługi do monitorowania zdalnego rozwiązania akceleratora internetowego interfejsu użytkownika](iot-accelerators-remote-monitoring-customize-service.md)
 - [Dodaj niestandardowe siatki do monitorowania zdalnego rozwiązania akceleratora internetowego interfejsu użytkownika](iot-accelerators-remote-monitoring-customize-grid.md)
 
-## <a name="add-a-fly-out"></a>Dodaj staną się
+## <a name="add-a-flyout"></a>Dodawanie menu wysuwanego
 
-Aby dodać staną się do interfejsu użytkownika sieci web, należy dodać pliki źródłowe, które definiują staną się i zmodyfikować niektóre istniejące pliki, aby uświadomić interfejsu użytkownika sieci web nowego składnika.
+Aby dodać menu wysuwanego do interfejsu użytkownika sieci web, należy dodać pliki źródłowe, które definiują okno wysuwane i zmodyfikować niektóre istniejące pliki, aby uświadomić interfejsu użytkownika sieci web nowego składnika.
 
-### <a name="add-the-new-files-that-define-the-fly-out"></a>Dodawaj nowe pliki, które definiują staną się
+### <a name="add-the-new-files-that-define-the-flyout"></a>Dodawaj nowe pliki, które definiują okno wysuwane
 
-Aby rozpocząć pracę, **src/wskazówki/składniki/stron/pageWithFlyout/menu wysuwanych/exampleFlyout** folder zawiera pliki, które definiują staną się:
+Aby rozpocząć pracę, **src/wskazówki/składniki/stron/pageWithFlyout/menu wysuwanych/exampleFlyout** folder zawiera pliki, które definiują menu wysuwanego:
 
 **exampleFlyout.container.js**
 
-[!code-javascript[Example fly-out container](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.container.js?name=flyoutcontainer "Example fly-out container")]
+[!code-javascript[Example flyout container](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.container.js?name=flyoutcontainer "Example flyout container")]
 
 **exampleFlyout.js**
 
-[!code-javascript[Example fly-out](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.js?name=flyout "Example fly-out")]
+[!code-javascript[Example flyout](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.js?name=flyout "Example flyout")]
 
 Kopiuj **src/wskazówki/składniki/stron/pageWithFlyout/menu wysuwanych** folder do **src/składniki/stron/przykład** folderu.
 
-### <a name="add-the-fly-out-to-the-page"></a>Dodaj staną się do strony
+### <a name="add-the-flyout-to-the-page"></a>Na stronie Dodaj okno wysuwane
 
-Modyfikowanie **src/components/pages/example/basicPage.js** dodać staną się.
+Modyfikowanie **src/components/pages/example/basicPage.js** można dodać menu wysuwane.
 
 Dodaj **Btn** do przywozu z **/udostępnione składniki** i dodać Import dla **svgs** i **ExampleFlyoutContainer**:
 
@@ -104,7 +104,7 @@ Dodaj następujący kod **const** definicje **renderowania** funkcji:
     const isExampleFlyoutOpen = openFlyoutName === 'example';
 ```
 
-Dodaj przycisk, aby otworzyć staną się do menu kontekstowego:
+Dodaj przycisk, aby otworzyć menu wysuwane do menu kontekstowego:
 
 ```js
       <ContextMenu key="context-menu">
@@ -113,7 +113,7 @@ Dodaj przycisk, aby otworzyć staną się do menu kontekstowego:
       </ContextMenu>,
 ```
 
-Dodaj tekst i kontener staną się do zawartości strony:
+Dodaj tekst i kontener okno wysuwane do zawartości strony:
 
 ```js
       <PageContent className="basic-page-container" key="page-content">
@@ -125,7 +125,7 @@ Dodaj tekst i kontener staną się do zawartości strony:
       </PageContent>
 ```
 
-## <a name="test-the-fly-out"></a>Testowanie staną się
+## <a name="test-the-flyout"></a>Testowanie okno wysuwane
 
 Jeśli internetowy interfejs użytkownika nie jest jeszcze uruchomiona lokalnie, uruchom następujące polecenie w folderze głównym lokalnej kopii repozytorium:
 
@@ -139,6 +139,6 @@ Poprzednie polecenie uruchamia interfejsu użytkownika lokalnie [ http://localho
 
 W tym artykule opisano dostępnych zasobów umożliwiających można dodawać lub dostosowywanie stron w internetowym interfejsie użytkownika w akceleratora rozwiązania monitorowania zdalnego.
 
-Po zdefiniowaniu staną się na stronie, następnym krokiem jest [Dodawanie panelu do pulpitu nawigacyjnego w zdalne monitorowanie rozwiązań akceleratora internetowy interfejs użytkownika](iot-accelerators-remote-monitoring-customize-panel.md).
+Po zdefiniowaniu menu wysuwanego na stronie, następnym krokiem jest [Dodawanie panelu do pulpitu nawigacyjnego w zdalne monitorowanie rozwiązań akceleratora internetowy interfejs użytkownika](iot-accelerators-remote-monitoring-customize-panel.md).
 
 Aby uzyskać obszerniejszych informacji koncepcyjnych związanych akceleratora rozwiązania monitorowania zdalnego, zobacz [Architektura zdalnego monitorowania](iot-accelerators-remote-monitoring-sample-walkthrough.md).

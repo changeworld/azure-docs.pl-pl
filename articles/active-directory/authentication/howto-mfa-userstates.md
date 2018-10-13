@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: df86b8466291ee6b1cb5baf7f0a16bec9c719c6f
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 302cf047ee1ffea685a939bddee84551de7042ec
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115131"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166767"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak, które wymuszają weryfikację dwuetapową dla użytkownika
 Można wybrać jedno z dwóch metod do wymagania weryfikacji dwuetapowej, które wymagają przy użyciu konta administratora globalnego. Pierwszym z nich jest umożliwienie każdy użytkownik usługi Azure Multi-Factor Authentication (MFA). Gdy użytkownicy są włączone indywidualnie, wykonują weryfikacji dwuetapowej każdym logowaniu (z pewnymi wyjątkami, takie jak podczas logowania z zaufanego adresu IP adresów lub _zapamiętanych urządzeniach_ jest włączona funkcja). Drugą opcją jest, aby skonfigurować zasady dostępu warunkowego, które wymagają weryfikacji dwuetapowej pod pewnymi warunkami.
@@ -124,6 +124,8 @@ lub może być również skracać:
     Set-MsolUser -UserPrincipalName user@domain.com -StrongAuthenticationRequirements @()
 
 ## <a name="next-steps"></a>Kolejne kroki
+
+Dlaczego został użytkownika zostanie wyświetlony monit lub bez wyświetlania monitu o wykonać uwierzytelnianie wieloskładnikowe? Zobacz sekcję [raport logowania usługi Azure AD w raportach w dokumencie usługi Azure Multi-Factor Authentication](howto-mfa-reporting.md#azure-ad-sign-ins-report).
 
 Aby skonfigurować dodatkowe ustawienia, takie jak zaufane adresy IP, niestandardowe wiadomości głosowe i alertów oszustwa, zobacz artykuł [ustawienia skonfigurować uwierzytelnianie wieloskładnikowe systemu Azure](howto-mfa-mfasettings.md)
 

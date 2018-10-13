@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 08/31/2018
 ms.author: cynthn
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: 488f7fa123692a908c36619e17166cee27d17612
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 2a119e110d9d3687f24ebf7f72b2b4506674d4e3
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735870"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310134"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Co to są strefy dostępności na platformie Azure?
 Strefy dostępności to oferta, która chroni aplikacje i dane przed awariami centrów danych o wysokiej dostępności. Strefy dostępności to unikatowe fizycznie lokalizacje w regionie platformy Azure. Każda strefa składa się z co najmniej jeden centrów danych, wyposażone w niezależne zasilanie, chłodzenie i usługi sieciowe. Aby zapewnić odporność, istnieje co najmniej trzy osobne strefy we wszystkich regionach włączone. Fizyczne rozdzielenie stref dostępności w obrębie regionu chroni aplikacje i dane przed awariami centrum danych. Strefowo nadmiarowe usługi replikować aplikacji i danych w różnych strefach dostępności, aby zapewnić ochronę przed pojedynczej punktami z awarią. Dzięki strefom dostępności platforma Azure oferuje branży najlepsze dostępność przez 99,99% maszyny Wirtualnej SLA dotyczącą czasu dostępności. Pełna treść [umowy SLA dotyczącej usługi Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/) wyjaśnia w całości kwestię gwarantowanej dostępności platformy Azure.
@@ -64,6 +64,7 @@ Usługi platformy Azure, które obsługują strefy dostępności są:
 - Service Bus
 - VPN Gateway
 - ExpressRoute
+- Usługa Application Gateway (wersja zapoznawcza)
 
 
 ## <a name="pricing"></a>Cennik

@@ -1,26 +1,19 @@
 ---
 title: Nawiązywanie połączenia, konfigurowanie i aktywować bramy pola danych platformy Azure w witrynie Azure portal | Dokumentacja firmy Microsoft
 description: Trzeci samouczek do wdrożenia bramy pola danych powoduje, że możesz się połączyć, konfigurowanie i Aktywuj urządzenia wirtualnego.
-services: databox-edge-gateway
-documentationcenter: NA
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
-ms.service: databox-edge-gateway
-ms.devlang: NA
+ms.service: databox
+ms.subservice: gateway
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.custom: ''
-ms.openlocfilehash: 77ccc6ebbb48ab3d7ce22d6c593bd62aa8dec3ac
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: 2126871472b044f9b8c0df99c7cb14df348eab0e
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419484"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166750"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway-preview"></a>Samouczek: Łączenie, konfigurowanie, Aktywuj bramy pola danych platformy Azure (wersja zapoznawcza) 
 
@@ -40,7 +33,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 
 > [!IMPORTANT]
-> - Brama pole danych jest w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> - Usługa Data Box Gateway jest dostępna w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -88,7 +81,7 @@ Jesteś teraz w **pulpit nawigacyjny** urządzenia.
    
     Podczas konfigurowania ustawień sieciowych należy pamiętać o następujących czynności:
 
-    - Jeżeli DHCP jest włączona w danym środowisku, interfejsy sieciowe są konfigurowane automatycznie. Dlatego adres IP, podsieci, bramy i DNS są automatycznie przypisywane.
+    - Jeżeli w Twoim środowisku włączony jest protokół DHCP, interfejsy sieciowe są automatycznie konfigurowane. Dlatego adres IP, podsieci, bramy i DNS są automatycznie przypisywane.
     - Jeśli DHCP nie jest włączone, można przypisać statyczne adresy IP, jeśli to konieczne.
     - Możesz skonfigurować interfejsu sieciowego w przypadku protokołu IPv4.
    
@@ -127,7 +120,7 @@ Jesteś teraz w **pulpit nawigacyjny** urządzenia.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku omówiono tematy bramy pola danych takich jak:
+W tym samouczku przedstawiono zagadnienia dotyczące usługi Data Box Gateway, takie jak:
 
 > [!div class="checklist"]
 > * Nawiązać połączenie z urządzeniem wirtualnym

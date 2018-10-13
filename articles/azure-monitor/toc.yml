@@ -699,16 +699,6 @@ items:
     items:
     - name: Alerty
       items:
-      - name: Tworzenie reguł alertów
-        items:
-        - name: Konfigurowanie nowych alertów dotyczących metryk lub dzienników w witrynie Azure Portal
-          href: ../monitoring-and-diagnostics/monitor-alerts-unified-usage.md?toc=/azure/azure-monitor/toc.json
-        - name: Konfigurowanie alertów klasycznych w witrynie Azure Portal
-          href: ../monitoring-and-diagnostics/insights-alerts-portal.md?toc=/azure/azure-monitor/toc.json
-        - name: Konfigurowanie alertów klasycznych za pomocą interfejsu wiersza polecenia
-          href: ../monitoring-and-diagnostics/insights-alerts-command-line-interface.md?toc=/azure/azure-monitor/toc.json
-        - name: Konfigurowanie alertów klasycznych przy użyciu programu Azure PowerShell
-          href: ../monitoring-and-diagnostics/insights-alerts-powershell.md?toc=/azure/azure-monitor/toc.json
       - name: Użycie alertów metryk
         items:
         - name: Tworzenie i wyświetlanie alertów metryk oraz zarządzanie nimi w usłudze Azure Monitor
@@ -986,9 +976,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Przykłady kodu
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 521bcef045b39c442e4a981b07fff8099ece0c1d
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 5b7956ee962c7f7bde31646617b86c55aaf32234
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116423"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311035"

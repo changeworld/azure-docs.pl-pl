@@ -3,18 +3,18 @@ title: Wprowadzenie do zestawu Speech Devices SDK
 description: Wymagania wstępne i instrukcje dla klientów zaczynających się od zestawu Speech Devices SDK.
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: speech
 ms.topic: article
 ms.date: 05/18/2018
-ms.author: v-jerkin
-ms.openlocfilehash: f972d10820b2a115671a3597274f18408277ee31
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.author: erhopf
+ms.openlocfilehash: 53e159c7fc357d0c3776102294f4871863cbf4a5
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883809"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167379"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Wprowadzenie do zestawu Speech Devices SDK
 

@@ -10,13 +10,13 @@ ms.reviewer: klam, LADocs
 ms.assetid: 697eb8b0-4a66-40c7-be7b-6aa6b131c7ad
 ms.topic: article
 tags: connectors
-ms.date: 08/24/2018
-ms.openlocfilehash: 8f430477883543aa8f87eb3fb0fb49ab31e2d723
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 10/11/2018
+ms.openlocfilehash: 77a76aa4fbb051e5999053279798c1b0147ae8e9
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042042"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166784"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Monitorowanie, tworzenie i zarządzanie plikami SFTP przy użyciu usługi Azure Logic Apps
 
@@ -27,8 +27,10 @@ Korzystając z usługi Azure Logic Apps i łącznika SFTP, można utworzyć zaut
 * Pobierz zawartość pliku i metadanych.
 * Wyodrębnij archiwum do folderów.
 
-Możesz użyć wyzwalaczy, które uzyskiwanie odpowiedzi z serwera SFTP oraz udostępnić dane wyjściowe do innych działań. Akcje w aplikacjach logic apps umożliwia wykonywanie zadań z plikami na serwerze SFTP. Mogą też istnieć inne akcje użyć danych wyjściowych z akcji SFTP. Na przykład jeśli regularnie możesz pobrać pliki z serwera SFTP, możesz wysłać pocztą e-mail informacje dotyczące tych plików i ich zawartości za pomocą łącznika usługi Office 365 Outlook lub łącznik usługi Outlook.com.
-Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Możesz użyć wyzwalaczy, które uzyskiwanie odpowiedzi z serwera SFTP oraz udostępnić dane wyjściowe do innych działań. Akcje w aplikacjach logic apps umożliwia wykonywanie zadań z plikami na serwerze SFTP. Mogą też istnieć inne akcje użyć danych wyjściowych z akcji SFTP. Na przykład jeśli regularnie możesz pobrać pliki z serwera SFTP, możesz wysłać pocztą e-mail informacje dotyczące tych plików i ich zawartości za pomocą łącznika usługi Office 365 Outlook lub łącznik usługi Outlook.com. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+
+> [!NOTE]
+> W przypadku plików większych niż 50 MB się 1 GB użyj [łącznika SFTP-SSH](../connectors/connectors-sftp-ssh.md). Łącznik SFTP obsługuje tylko pliki, które są 50 MB lub mniej, chyba że używasz [segmentu do obsługi dużych komunikatów](../logic-apps/logic-apps-handle-large-messages.md). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

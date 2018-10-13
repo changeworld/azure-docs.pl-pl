@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/17/2018
 ms.author: barclayn
-ms.openlocfilehash: f6640e7d179199fbfb5b0c2b0c384729b6f53bcf
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: b1002d046014abd15452489e343ecf7c30b00d73
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498253"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311341"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure Identity Management i kontrolę dostępu najlepsze rozwiązania dotyczące zabezpieczeń
 
@@ -113,7 +113,7 @@ Istnieje wiele opcji do wymagania weryfikacji dwuetapowej. Najlepszym rozwiązan
 
 Poniżej przedstawiono opcje oraz włączenie weryfikacji dwuetapowej korzyści:
 
-**Opcja 1**: [Włączanie uwierzytelniania wieloskładnikowego przez zmianę stanu użytkownika](../active-directory/authentication/howto-mfa-userstates.md#enable-azure-mfa-by-changing-user-status).   
+**Opcja 1**: [Włączanie uwierzytelniania wieloskładnikowego przez zmianę stanu użytkownika](../active-directory/authentication/howto-mfa-userstates.md).   
 **Korzyści z**: jest to tradycyjne metody do wymagania weryfikacji dwuetapowej. Współdziała ona z obu [usługi Azure Multi-Factor Authentication w chmurze i serwera Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-whichversion.md). Za pomocą tej metody wymaga od użytkowników przeprowadzenia weryfikacji dwuetapowej, za każdym razem, gdy zalogują się w i zastąpień zasad dostępu warunkowego.
 
 **Opcja 2**: [Włączanie uwierzytelniania wieloskładnikowego za pomocą zasad dostępu warunkowego](../active-directory/authentication/howto-mfa-getstarted.md#enable-multi-factor-authentication-with-conditional-access).   
@@ -121,7 +121,7 @@ Poniżej przedstawiono opcje oraz włączenie weryfikacji dwuetapowej korzyści:
 
 Jest to najbardziej elastyczny sposób, aby włączyć weryfikację dwuetapową dla użytkowników. Włączenie zasad dostępu warunkowego działa tylko w przypadku usługi Azure Multi-Factor Authentication w chmurze i jest funkcją premium usługi Azure AD. Można znaleźć więcej informacji na temat tej metody w [wdrażanie oparte na chmurze usługi Azure Multi-Factor Authentication](../active-directory/authentication/howto-mfa-getstarted.md).
 
-**Opcja 3**: Włączanie uwierzytelniania wieloskładnikowego za pomocą zasad dostępu warunkowego poprzez ocenę ryzyka użytkownika i logowania [usługi Azure AD Identity Protection](../active-directory/active-directory-identityprotection.md).   
+**Opcja 3**: Włączanie uwierzytelniania wieloskładnikowego za pomocą zasad dostępu warunkowego poprzez ocenę ryzyka użytkownika i logowania [usługi Azure AD Identity Protection](../active-directory/authentication/tutorial-risk-based-sspr-mfa.md).   
 **Korzyści z**: Ta opcja umożliwia:
 
 - Wykrywanie potencjalnych luk w zabezpieczeniach, które mają wpływ na tożsamości w organizacji.

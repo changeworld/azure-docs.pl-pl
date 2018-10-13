@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: b0fe9acc187aab87e8ee0528cf998e2ef923f897
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: cc7b1b9e96e32b090c0ec9ec9ab029588e5ec4ce
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722014"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166971"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Obróć klucze tajne w usłudze Azure Stack
 
@@ -81,7 +81,8 @@ Obrót wpisu tajnego wykonując poniższe instrukcje uruchamiania będą skorygo
 
    > [!IMPORTANT]  
    > Upewnij się, że obrotu tajne nie zostało pomyślnie wykonany w swoim środowisku. Jeśli została już wykonana obrotu wpisu tajnego, należy zaktualizować usługi Azure Stack do wersji 1807 lub nowszej, przed wykonaniem wpisu tajnego obrotu. 
-1.  Powiadom użytkowników, wszelkich operacji konserwacji. Planowanie okna obsługi normalnych, jak to możliwe, podczas poza godzinami. Operacje konserwacji może mieć wpływ na użytkownika obciążeń i operacje w portalu.
+1.  Operatorzy mogą zauważyć alerty otwierających i zamykających automatycznie w trakcie rotacji kluczy tajnych w usłudze Azure Stack.  To zachowanie jest przewidywane i alerty można zignorować.  Operatory można sprawdzić poprawność te alerty, uruchamiając AzureStack testu.  Dla operatorów do monitorowania za pomocą programu SCOM systemy usługi Azure Stack, wprowadzenie do systemu w trybie konserwacji uniemożliwi ich systemami ITSM osiągnięcie tych alertów, ale będzie w dalszym ciągu alert, jeśli system usługi Azure Stack staje się niedostępny. 
+2. Powiadom użytkowników, wszelkich operacji konserwacji. Planowanie okna obsługi normalnych, jak to możliwe, podczas poza godzinami. Operacje konserwacji może mieć wpływ na użytkownika obciążeń i operacje w portalu.
     > [!note]  
     > Następne kroki stosowane tylko wtedy, gdy obracanie zewnętrzne wpisy tajne w usłudze Azure Stack.
 3. Przygotuj nowy zestaw zastępczy certyfikatów zewnętrznych. Nowy zestaw pasuje do specyfikacji certyfikatu, opisane w temacie [wymagania dotyczące certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs).

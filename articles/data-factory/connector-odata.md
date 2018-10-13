@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z źródła OData przy użyciu fabryki danych Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skopiować dane ze źródeł OData do zbiornika obsługiwanych magazynów danych za pomocą działania kopiowania w potoku fabryki danych Azure.
+title: Kopiowanie danych ze źródła danych OData przy użyciu usługi Azure Data Factory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak kopiować dane ze źródła danych OData do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,49 +13,50 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
-ms.openlocfilehash: aaec710dd6c12f96a479a1f41603351512da1df6
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: c8bee6902fb74cb77c34395fd05c1c861b4f630e
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054674"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166138"
 ---
-# <a name="copy-data-from-odata-source-using-azure-data-factory"></a>Kopiowanie danych ze źródła OData przy użyciu fabryki danych Azure
+# <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Kopiowanie danych ze źródła danych OData przy użyciu usługi Azure Data Factory
+
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [W wersji 1](v1/data-factory-odata-connector.md)
+> * [Wersja 1](v1/data-factory-odata-connector.md)
 > * [Bieżąca wersja](connector-odata.md)
 
-W tym artykule omówiono sposób użycia działanie kopiowania w fabryce danych Azure, aby skopiować dane ze źródła danych OData. Opiera się na [skopiuj omówienie działania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych ze źródła OData. Artykuł opiera się na [działania kopiowania w usłudze Azure Data Factory](copy-activity-overview.md), który ma ogólne omówienie działania kopiowania.
 
-## <a name="supported-capabilities"></a>Obsługiwane możliwości
+## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Można skopiować danych ze źródła OData do żadnych obsługiwanych ujścia magazynu danych. Lista magazynów danych, które są obsługiwane jako źródła/wychwytywanie przez działanie kopiowania, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Można skopiować danych ze źródła danych OData, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę danych przechowywane na tym, że działanie kopiowania obsługuje jako źródła i ujścia, zobacz [obsługiwane magazyny danych i formatów](copy-activity-overview.md#supported-data-stores-and-formats).
 
 W szczególności ten łącznik OData obsługuje:
 
-- OData **w wersji 3.0 i 4.0**.
-- Kopiowanie danych przy użyciu następujących uwierzytelnienia: **anonimowe**, **podstawowe**, i **Windows**.
+- Protokołu OData w wersji 3.0 i 4.0.
+- Kopiowanie danych przy użyciu jednej z następujących uwierzytelnień: **anonimowe**, **podstawowe**, lub **Windows**.
 
-## <a name="getting-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek fabryki danych określonej do łącznika OData.
+Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które służy do definiowania jednostek usługi Data Factory, które są specyficzne dla łącznika usługi OData.
 
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
-Obsługiwane są następujące właściwości usługi OData połączone:
+Następujące właściwości są obsługiwane przez usługę OData połączone:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi mieć ustawioną: **OData** |Yes |
+| type | **Typu** właściwość musi być równa **OData**. |Yes |
 | url | Główny adres URL usługi OData. |Yes |
-| Typ authenticationType | Typ uwierzytelniania używany do nawiązania połączenia źródła OData.<br/>Dozwolone wartości to: **anonimowe**, **podstawowe**, i **Windows**. Należy pamiętać, że OAuth nie jest obsługiwane. | Yes |
-| userName | Określ nazwę użytkownika, jeśli korzystasz z uwierzytelniania podstawowego lub systemu Windows. | Nie |
-| hasło | Określ hasło dla konta użytkownika, określone nazwy użytkownika. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
-| connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. (Jeśli w magazynie danych znajduje się w sieci prywatnej), można użyć środowiska uruchomieniowego integracji Azure lub Self-hosted integracji w czasie wykonywania. Jeśli nie zostanie określony, używa domyślnej środowiska uruchomieniowego integracji Azure. |Nie |
+| Element authenticationType | Typ uwierzytelniania używany do łączenia z źródła OData. Dozwolone wartości to **anonimowe**, **podstawowe**, i **Windows**. OAuth nie jest obsługiwane. | Yes |
+| userName | Określ **userName** uwierzytelnianie Basic lub Windows. | Nie |
+| hasło | Określ **hasło** dla użytkownika, konto określone dla **userName**. Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
+| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) nawiązywania połączenia z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej) możesz wybrać środowisko IR Azure lub własnego środowiska Integration Runtime. Jeśli nie zostanie określona, używana jest domyślna Azure Integration Runtime. |Nie |
 
-**Przykład 1: użycie uwierzytelniania anonimowego**
+**Przykład 1: Przy użyciu uwierzytelniania anonimowego**
 
 ```json
 {
@@ -74,7 +75,7 @@ Obsługiwane są następujące właściwości usługi OData połączone:
 }
 ```
 
-**Przykład 2: przy użyciu uwierzytelniania podstawowego**
+**Przykład 2: Przy użyciu uwierzytelniania podstawowego**
 
 ```json
 {
@@ -84,7 +85,7 @@ Obsługiwane są następujące właściwości usługi OData połączone:
         "typeProperties": {
             "url": "<endpoint of OData source>",
             "authenticationType": "Basic",
-            "userName": "<username>",
+            "userName": "<user name>",
             "password": {
                 "type": "SecureString",
                 "value": "<password>"
@@ -98,7 +99,7 @@ Obsługiwane są następujące właściwości usługi OData połączone:
 }
 ```
 
-**Przykład 3: przy użyciu uwierzytelniania systemu Windows**
+**Przykład 3: Przy użyciu uwierzytelniania Windows**
 
 ```json
 {
@@ -124,13 +125,15 @@ Obsługiwane są następujące właściwości usługi OData połączone:
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę właściwości dostępnych do definiowania zestawów danych i sekcje zobacz artykuł zestawów danych. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych OData.
+Ta sekcja zawiera listę właściwości, które obsługuje zestaw danych OData.
 
-Aby skopiować dane z OData, ustaw właściwość Typ zestawu danych do **ODataResource**. Obsługiwane są następujące właściwości:
+Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do definiowania zestawów danych, zobacz [zestawy danych i połączone usługi](concepts-datasets-linked-services.md). 
+
+Aby skopiować dane z OData, należy ustawić **typu** właściwości zestawu danych na **ODataResource**. Obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi mieć ustawioną właściwość type zestawu danych: **ODataResource** | Yes |
+| type | **Typu** właściwości zestawu danych musi być równa **ODataResource**. | Yes |
 | ścieżka | Ścieżka do zasobu OData. | Yes |
 
 **Przykład**
@@ -155,18 +158,20 @@ Aby skopiować dane z OData, ustaw właściwość Typ zestawu danych do **ODataR
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Pełną listę sekcje i właściwości dostępnych dla definiowania działań, zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwane przez źródło OData.
+Ta sekcja zawiera listę właściwości, które obsługuje źródła OData.
+
+Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do definiowania działań, zobacz [potoki](concepts-pipelines-activities.md). 
 
 ### <a name="odata-as-source"></a>OData jako źródło
 
-Aby skopiować dane z OData, należy ustawić typ źródła w przypadku działania kopiowania do **RelationalSource**. Następujące właściwości są obsługiwane w przypadku działania kopiowania **źródła** sekcji:
+Aby skopiować dane z OData, należy ustawić **źródła** typ w działaniu kopiowania, aby **RelationalSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi mieć ustawioną właściwość type źródła działania kopiowania: **RelationalSource** | Yes |
-| query | Opcje zapytania OData do filtrowania danych. Przykład: "? $select = nazwa, opis i $top = 5".<br/><br/>Należy pamiętać, ostatnio, łącznik OData kopiuje dane z połączonego adresu URL: `[url specified in linked service]/[path specified in dataset][query specified in copy activity source]`. Zapoznaj się [składniki adresu URL OData](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nie |
+| type | **Typu** właściwość źródła działania kopiowania musi być równa **RelationalSource**. | Yes |
+| query | Opcje zapytania OData do filtrowania danych. Przykład: `"?$select=Name,Description&$top=5"`.<br/><br/>**Uwaga**: łącznik OData kopiuje dane z połączonych adresu URL: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. Aby uzyskać więcej informacji, zobacz [części adresu URL OData](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nie |
 
-**Przykład:**
+**Przykład**
 
 ```json
 "activities":[
@@ -198,9 +203,9 @@ Aby skopiować dane z OData, należy ustawić typ źródła w przypadku działan
 ]
 ```
 
-## <a name="data-type-mapping-for-odata"></a>Mapowanie dla protokołu OData typu danych
+## <a name="data-type-mapping-for-odata"></a>Typ danych mapowania dla protokołu OData
 
-Podczas kopiowania danych z OData, następujące mapowania są używane z typów danych OData do typów danych tymczasowych fabryki danych Azure. Zobacz [schemat i dane typu mapowania](copy-activity-schema-and-type-mapping.md) Aby poznać sposób działania kopiowania mapowania typu źródłowego: schemat i dane sink.
+Po skopiowaniu danych na podstawie OData następujące mapowania są używane między typami danych OData i typy danych tymczasowych usługi Azure Data Factory. Aby dowiedzieć się, jak działania kopiowania mapuje typ schematu i danych źródła do ujścia, zobacz [schemat i dane mapowanie typu](copy-activity-schema-and-type-mapping.md).
 
 | Typ danych OData | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
@@ -208,8 +213,8 @@ Podczas kopiowania danych z OData, następujące mapowania są używane z typów
 | Edm.Boolean | wartość logiczna |
 | Edm.Byte | Byte[] |
 | Edm.DateTime | DateTime |
-| Edm.Decimal | Decimal |
-| Edm.Double | podwójne |
+| Edm.Decimal | Dziesiętna |
+| Edm.Double | Podwójne |
 | Edm.Single | Pojedyncze |
 | Edm.Guid | Identyfikator GUID |
 | Edm.Int16 | Int16 |
@@ -217,12 +222,13 @@ Podczas kopiowania danych z OData, następujące mapowania są używane z typów
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
 | Edm.String | Ciąg |
-| Edm.Time | Zakres czasu |
+| Edm.Time | Przedział czasu |
 | Edm.DateTimeOffset | DateTimeOffset |
 
-> [!Note]
-> Typy złożone danych OData (na przykład obiekt) nie są obsługiwane.
+> [!NOTE]
+> OData złożone typy danych (takich jak **obiektu**) nie są obsługiwane.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Lista magazynów danych obsługiwane jako źródła i wychwytywanie przez działanie kopiowania w fabryce danych Azure, zobacz [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).
+
+Aby uzyskać listę magazynów danych, które działania kopiowania obsługuje jako źródła i sink w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych i formatów](copy-activity-overview.md##supported-data-stores-and-formats).

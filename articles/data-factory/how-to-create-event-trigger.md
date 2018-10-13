@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/23/2018
+ms.date: 10/11/2018
 ms.author: douglasl
-ms.openlocfilehash: 38fbb62de60bc5604210c8ad7339368a04967c27
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 20ee69654a6b19365c9b7c46e1fa11e102168365
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867056"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309364"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Utwórz wyzwalacz, który uruchamia potok w odpowiedzi na zdarzenie
 
@@ -80,7 +80,7 @@ Poniższa tabela zawiera omówienie elementów schematu that are related to Wyzw
 Ta sekcja zawiera przykłady ustawień wyzwalacza opartego na zdarzeniach.
 
 -   **Ścieżka obiektu blob, który rozpoczyna się od**("/ containername /") — odbiera zdarzenia dla dowolnego obiektu blob w kontenerze.
--   **Ścieżka obiektu blob, który rozpoczyna się od**("/ containername/obiekty BLOB/foldername") — odbiera zdarzenia dla żadnych obiektów blob w kontenerze containername i folderze nazwa_folderu.
+-   **Ścieżka obiektu blob, który rozpoczyna się od**("/ containername/obiekty BLOB/foldername") — odbiera zdarzenia dla żadnych obiektów blob w kontenerze containername i folderze nazwa_folderu. Możesz też przywołać podfolder; na przykład "/ containername/obiekty BLOB/nazwa folderu/nazwa podfolderu /".
 -   **Ścieżka obiektu blob, który rozpoczyna się od**("/ containername/blobs/foldername/file.txt") — odbiera zdarzenia dla obiektu blob o nazwie plik.txt w folderze nazwa_folderu containername kontener.
 -   **Ścieżka obiektu blob kończy się**("plik.txt") — odbiera zdarzenia dla obiektu blob o nazwie plik.txt wszystkie ścieżce.
 -   **Ścieżka obiektu blob kończy się**("/ containername/blobs/file.txt") — odbiera zdarzenia dla obiektu blob o nazwie plik.txt w obszarze containername kontener.

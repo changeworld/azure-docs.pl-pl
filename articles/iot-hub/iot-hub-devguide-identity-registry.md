@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: dobett
-ms.openlocfilehash: 041eed3a65faeb4e6c19cd9220a9e6393e18532a
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 3e6e42da7f3c1423ecf2de507f3c2f0257fbb21f
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452211"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311239"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Informacje w rejestrze tożsamości w Centrum IoT hub
 
@@ -29,7 +29,9 @@ Za pomocą rejestru tożsamości należy:
 * Kontrola dostępu na — urządzenie/na — modułu na urządzeniu lub punktów końcowych modułu skierowaną do Twojego Centrum.
 
 > [!NOTE]
-> Rejestr tożsamości nie zawiera żadnych metadanych specyficznych dla aplikacji.
+> * Rejestr tożsamości nie zawiera żadnych metadanych specyficznych dla aplikacji.
+> * Bliźniacza reprezentacja modułu i tożsamości modułu jest w publicznej wersji zapoznawczej. Poniżej funkcji będą obsługiwane tożsamości modułu gdy jest ona ogólnych dostępne.
+>
 
 ## <a name="identity-registry-operations"></a>Operacje rejestru tożsamości
 
@@ -40,7 +42,6 @@ Rejestr tożsamości usługi IoT Hub udostępnia następujące operacje:
 * Pobieranie tożsamości urządzenia lub moduł według Identyfikatora
 * Usuń tożsamość urządzenia lub modułu
 * Listy maksymalnie 1000 tożsamości
-> Bliźniacza reprezentacja modułu i tożsamości modułu jest w publicznej wersji zapoznawczej. Poniżej funkcji będą obsługiwane tożsamości modułu gdy jest ona ogólnych dostępne.
 * Eksportuj tożsamości urządzeń do usługi Azure blob storage
 * Importuj tożsamości urządzenia z usługi Azure blob storage
 

@@ -12,27 +12,29 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 10/12/2018
 ms.author: ambapat
-ms.openlocfilehash: 639dfb6e3231a5eba3d6ecb9cd0198f5718b4aef
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 4ad6a18f9937fcc7d24bebc3ac197e23990ff59e
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079025"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309250"
 ---
-# <a name="grant-permission-to-many-applications-to-access-a-key-vault"></a>Udziel uprawnień do wielu aplikacji do dostępu do magazynu kluczy
+# <a name="grant-several-applications-access-to-a-key-vault"></a>Przyznaj kilka aplikacji, dostęp do magazynu kluczy
 
-## <a name="q-i-have-several-applications-that-need-to-access-a-key-vault-how-can-i-give-these-applications-up-to-1024-access-to-key-vault"></a>Pytanie: Mam kilka aplikacji, które chcą korzystać z magazynu kluczy, jak I przyznać te aplikacje (maksymalnie 1024) prawa dostępu do usługi Key Vault?
+Zasady kontroli dostępu mogą służyć do udzielenia kilka aplikacji, dostęp do magazynu kluczy. Zasady kontroli dostępu może obsłużyć maksymalnie 1024 aplikacji i jest skonfigurowany w następujący sposób:
 
-Zasady kontroli dostępu do usługi Key Vault obsługuje maksymalnie 1024 wpisów. Można jednak utworzyć grupę zabezpieczeń usługi Azure Active Directory. Dodaj wszystkie jednostki usługi skojarzonego do tej grupy zabezpieczeń, a następnie przyznać dostęp do tej grupy zabezpieczeń w usłudze Key Vault.
+1. Utwórz grupę zabezpieczeń usługi Azure Active Directory. 
+2. Dodaj wszystkie aplikacje skojarzoną z jednostki usługi do grupy zabezpieczeń.
+3. Przyznaj grupy zabezpieczeń dostęp do usługi Key Vault.
 
 Poniżej przedstawiono wymagania wstępne:
 * [Instalowanie modułu programu PowerShell usługi Azure Active Directory w wersji 2](https://www.powershellgallery.com/packages/AzureAD).
 * [Zainstalowanie programu Azure PowerShell](/powershell/azure/overview).
 * Aby uruchomić następujące polecenia, niezbędne są uprawnienia do tworzenia/edycji grup w dzierżawie usługi Azure Active Directory. Jeśli nie masz uprawnień, może być konieczne skontaktuj się z administratorem usługi Azure Active Directory. Zobacz [klucze, wpisy tajne i certyfikaty usługi Azure Key Vault](about-keys-secrets-and-certificates.md) szczegółowe informacje na temat usługi Key Vault zasady uprawnień dostępu.
 
-Teraz uruchom następujące polecenia w programie PowerShell.
+Teraz uruchom następujące polecenia w programie PowerShell:
 
 ```powershell
 # Connect to Azure AD 

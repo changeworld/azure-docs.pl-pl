@@ -1,6 +1,6 @@
 ---
 title: What's new in zarządzania aplikacjami przedsiębiorstwa w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, co jest nowego w zarządzania aplikacjami przedsiębiorstwa w usłudze Azure Active Directory.
+description: Dowiedz się, co nowego w zarządzaniu aplikacja dla przedsiębiorstw w usłudze Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: ajamess
@@ -15,143 +15,142 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.author: asteen
 ms.reviewer: asteen
-ms.openlocfilehash: 30b3fbd415fac1e11a77b3905cb01e5935a62839
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fefc508679a309262d07a582fc8f5bdf9f67cfe5
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34350869"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310122"
 ---
 # <a name="whats-new-in-enterprise-application-management-in-azure-active-directory"></a>What's new in zarządzania aplikacjami przedsiębiorstwa w usłudze Azure Active Directory 
 
-Azure Active Directory (Azure AD) rozszerzona enterprise narzędzia do zarządzania aplikacjami, z nowych funkcji i możliwości, aby prostszy i wydajne zarządzanie aplikacjami.
+Azure Active Directory (Azure AD) rozszerzona enterprise narzędzia do zarządzania aplikacjami, o nowe funkcje i możliwości wprowadzania aplikacji zarządzania jest prostszy i wydajne.
 
-Oto niektóre ulepszenia dla usługi Azure AD w [portalu Azure](https://portal.azure.com).
+Poniżej przedstawiono niektóre usprawnienia dla usługi Azure AD w [witryny Azure portal](https://portal.azure.com).
 
-- Galerii aplikacji ulepszone wystąpić z modelem tworzenia aplikacji uproszczone i obsługę wszystkich typów aplikacji, których użyto do. 
-- Środowisko całkowicie nowy Szybki Start, które mogą pomóc rozpocząć korzystanie z pilotażu aplikacji. 
-- Konfigurowanie zasad samoobsługi za pomocą kilku kliknięć. 
-- Ulepszenia serwera proxy aplikacji, z jednym konfiguracji logowania jednokrotnego, a następnie przełącz własnego środowiska aplikacji, umożliwiające uzyskanie bardziej gotowe niż przed.
+- Galerię aplikacji ulepszone środowisko przy użyciu modelu tworzenia aplikacji uproszczone i obsługa techniczna dla wszystkich typów aplikacji, których użyto do. 
+- Środowisko dobór Szybki Start, która pomoże Ci rozpocząć korzystanie z pilota aplikacji. 
+- Skonfiguruj zasady samoobsługi za pomocą kilku kliknięć. 
+- Ulepszenia serwera proxy aplikacji, pojedynczy konfiguracji logowania jednokrotnego, a następnie przełącz własnych środowisk aplikacji, co pozwala uzyskać wydajność niż przed.
 
-## <a name="improvements-to-the-azure-active-directory-application-gallery"></a>Ulepszenia dotyczące galerii aplikacji Azure Active Directory
+## <a name="improvements-to-the-azure-active-directory-application-gallery"></a>Ulepszenia dotyczące galerii aplikacji usługi Azure Active Directory
 
-Dodawanie ulubionych aplikacji, czy są one z [galerii aplikacji](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery), niestandardowych aplikacji, jest rozszerzenie w chmurze lub nowe aplikacje projektujesz.  Możesz rozpocząć pracę z nowe środowisko, klikając **Dodaj** w obszarze **aplikacje dla przedsiębiorstw** lub **wszystkie aplikacje**.
+Dodaj ulubione aplikacje, czy są one z [galerii aplikacji](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery), niestandardowych aplikacji jest rozszerzenie w chmurze lub nowe aplikacje, które tworzysz.  Możesz zacząć korzystać z tego nowego środowiska, klikając **Dodaj** w obszarze **aplikacje dla przedsiębiorstw** lub **wszystkie aplikacje**.
  
   ![Dodawanie aplikacji](./media/active-directory-enterprise-apps-whats-new-azure-portal/01.png)
 
-Raz w galerii, zobaczysz przodu center wyświetlone wszystkie dostępne aplikacje, które obsługują, inicjowanie obsługi użytkowników. Możesz przeglądać szerokiej gamy różne kategorie, aby przejść do aplikacji, które są dla Ciebie ważne lub można szybko znaleźć aplikacji, którą chcesz zintegrować wyników wyszukiwania.
+Raz w galerii, zobaczysz, że wszystkie polecane aplikacje zapewniające obsługę użytkownika wyświetlane frontonu i Centrum. Możesz przeglądać szeroką gamę różnych kategorii, aby przejść do aplikacji, które Cię interesują lub środowisko wyszukiwania umożliwia szybkie znajdowanie aplikacji, którą chcesz zintegrować.
 
-  ![Galerii aplikacji](./media/active-directory-enterprise-apps-whats-new-azure-portal/02.png)
+  ![Galeria aplikacji](./media/active-directory-enterprise-apps-whats-new-azure-portal/02.png)
 
-## <a name="add-custom-applications-from-one-place"></a>Dodawanie niestandardowych aplikacji w jednym miejscu
+## <a name="add-custom-applications-from-one-place"></a>Dodawanie niestandardowych aplikacji z jednego miejsca
 
-Oprócz dodania wstępnie zintegrowanych aplikacji z poziomu galerii, konfiguracji niestandardowej aplikacji napotyka, aby były używane do w portalu klasycznym zarządzania się teraz w nowego portalu. Czy to rozszerzenie aplikacji lokalnych przy użyciu serwera proxy aplikacji, integrowanie własnego hasła lub aplikacji federacyjnej logowania jednokrotnego, lub tworzenia zupełnie nowym aplikacji za pomocą rejestru aplikacji, można uzyskać do niego z tym jednym miejscu.
+Oprócz dodawania wstępnie zintegrowanych aplikacji z galerii, wszystko, czego konfiguracji niestandardowej aplikacji środowisk, aby były używane do w portalu klasycznym zarządzania są teraz możliwe w nowym portalu. Czy rozszerzania aplikacji ze środowiska lokalnego przy użyciu serwera proxy aplikacji, integrowania własnego hasła lub aplikacja Federacyjna usługa rejestracji Jednokrotnej, lub tworzenia zupełnie nowym aplikacji za pomocą rejestru aplikacji, możesz uzyskać do niego z tym jednym miejscu.
 
-  ![Dodawanie aplikacji](./media/active-directory-enterprise-apps-whats-new-azure-portal/03.png)
+  ![Dodawanie własnej aplikacji](./media/active-directory-enterprise-apps-whats-new-azure-portal/03.png)
 
  
 **Aby rozpocząć dodawanie własnych aplikacji**:
 
-1. Kliknij przycisk **dodać własne łącze** w górnej części galerii aplikacji. 
-2. Zostaną wyświetlone dwie opcje przed możesz: **wdrażania istniejącej aplikacji** lub **Tworzenie nowej aplikacji**. W dalszej różnice między dwóch opcji i sposobu ich używania.
+1. Kliknij przycisk **dodać łącze własne** w górnej części galerii aplikacji. 
+1. Zostaną wyświetlone dwie opcje masz przed sobą: **wdrożyć istniejącą aplikację** lub **opracowanie nowej aplikacji**. Czytaj dalej, aby dowiedzieć się różnią się dwie opcje i sposób ich użycia.
 
-### <a name="deploying-existing-applications"></a>Wdrażanie aplikacji
+### <a name="deploying-existing-applications"></a>Wdrażanie istniejącej aplikacji
 
-1. Jeśli otrzymasz aplikacji już uruchomiona i po prostu chcesz zintegrować ją z usługą Azure AD, jednokrotnego na lub inicjowania obsługi administracyjnej, wybierz **wdrażania istniejącej aplikacji** opcji. Wybierz nazwę dla aplikacji, kliknij przycisk **Dodaj**.
-2. Gotowe. Zamiast konieczności poznać wszystkie szczegóły dotyczące Twojej aplikacji na początku, można teraz skonfigurować działanie nowej aplikacji przechodząc za pośrednictwem menu po lewej stronie i konfigurowanie aplikacji do potrzeb użytkownika w dowolnym momencie.
+1. Jeśli coś już uruchomioną aplikację i po prostu chcesz zintegrować ją z usługi Azure AD na potrzeby logowania jednokrotnego na lub inicjowania obsługi administracyjnej, wybierz **wdrożyć istniejącą aplikację** opcji. Wybierz nazwę swojej aplikacji, kliknij przycisk **Dodaj**.
+1. Gotowe. Zamiast konieczności poznać wszystkie szczegóły dotyczące aplikacji na początku, możesz teraz skonfigurować działania swoją nową aplikację, przechodząc do menu po lewej stronie i konfigurowanie aplikacji do swoich potrzeb w dowolnym momencie.
 
-  ![Dodawanie istniejącej aplikacji jednym kliknięciem](./media/active-directory-enterprise-apps-whats-new-azure-portal/04.png)
+  ![Dodawanie istniejącej aplikacji za pomocą jednego kliknięcia](./media/active-directory-enterprise-apps-whats-new-azure-portal/04.png)
  
 ### <a name="developing-new-applications"></a>Tworzenie nowej aplikacji
 
-1. W przypadku tworzenia nowej aplikacji, istnieje łatwy sposób na uzyskanie dostępu do rejestru aplikacji prawo z poziomu galerii:
-2. Kliknij przycisk **dodać własną** opcję z galerii aplikacji, wybierz **opracowanie istniejącej aplikacji**, zostaną wyświetlone szybkie łącze prawo do obsługi Dodaj aplikacji.
+1. Jeśli tworzysz nową aplikację, istnieje łatwy sposób można uzyskać w rejestrze aplikacji odpowiednie z galerii:
+1. Kliknij przycisk **dodać własne** galerii aplikacji, wybierz opcję **tworzenia istniejącej aplikacji**, a zobaczysz szybki link bezpośrednio do środowiska Dodaj aplikacji.
 
-  ![Dodawanie do aplikacji nowo utworzone za pomocą kilku kliknięć](./media/active-directory-enterprise-apps-whats-new-azure-portal/05.png)
+  ![Dodawanie aplikacji nowo opracowane za pomocą kilku kliknięć](./media/active-directory-enterprise-apps-whats-new-azure-portal/05.png)
 
 
 >[!NOTE]
->Po dodaniu aplikacji za pomocą rejestru aplikacji, zobaczysz je na liście aplikacji przedsiębiorstwa, w której będziesz mieć możliwość konfigurowania rejestracji jednokrotnej i zarządzania zasady dostępu dla nowej aplikacji.
+>Po dodaniu aplikacji przy użyciu rejest aplikacji, zobaczysz go wyświetlane na liście aplikacji przedsiębiorstwa, w której będziesz mieć możliwość konfigurowania logowania jednokrotnego i zarządzanie zasadami dostępu dla nowej aplikacji.
 
-  ![Zarządzanie dostępem do nowych aplikacji w aplikacjach dla przedsiębiorstw](./media/active-directory-enterprise-apps-whats-new-azure-portal/06.png)
+  ![Zarządzanie dostępem do nowej aplikacji w obszarze aplikacje dla przedsiębiorstw](./media/active-directory-enterprise-apps-whats-new-azure-portal/06.png)
 
 
-## <a name="quickstart-get-going-with-your-new-application-right-away"></a>Szybki Start: Rozpocząć korzystanie z nowej aplikacji natychmiast 
+## <a name="quickstart-get-going-with-your-new-application-right-away"></a>Szybki Start: Rozpocznij pracę z usługą razu swoją nową aplikację 
 
-Po dodaniu aplikacji, czy też być wstępnie zintegrowanych lub własną aplikację, utworzyliśmy dostosowane środowisko szybki start, umożliwiające szybkie uziemione w nowym środowisku aplikacji. Jeśli wykonujesz systematycznie poszczególnych opcji, firma Microsoft będzie przeprowadzenie interfejsu użytkownika i opisano, jak rozpocząć korzystanie z pilotażu nowej aplikacji tak szybko jak to możliwe. 
+Po dodaniu aplikacji, czy należy wstępnie zintegrowanych lub własnej aplikacji, utworzyliśmy dopasowane środowisko szybki start, aby ułatwić szybkie zaangażowaniu w nowym środowisku aplikacji. Jeśli stosujesz systematycznie każdej opcji, utworzymy przeprowadzą Cię przez interfejs użytkownika i pokazują, jak rozpocząć korzystanie z pilota nowych aplikacji tak szybko, jak to możliwe. 
  
-  ![Nowe środowisko aplikacji Szybki Start](./media/active-directory-enterprise-apps-whats-new-azure-portal/07.png)
+  ![Nowe środowisko aplikacji w przewodniku Szybki Start](./media/active-directory-enterprise-apps-whats-new-azure-portal/07.png)
 
- Nowe środowisko szybkiego startu w dowolnym momencie, a dla dowolnej aplikacji, mogą odwiedzać, klikając **szybkiego startu** w menu nawigacji po lewej stronie aplikacji.
+ Ten przewodnik Szybki Start środowiska w dowolnym momencie, a także dla dowolnej aplikacji można znaleźć, klikając **Szybki Start** menu nawigacji po lewej stronie aplikacji.
 
 
-## <a name="updated-application-proxy-configuration"></a>Konfiguracja serwera proxy aplikacji zaktualizowane
-Teraz załóżmy powiedzieć jedną z nowych aplikacji, dodane jest uruchomiony w środowisku lokalnym i chcesz zintegrować ją z usługą Azure AD.  Jeden z chłodnych nowe obiekty o nowe środowisko konfiguracji aplikacji w nowej usłudze Azure AD portalu jest, że dzielenie aplikacji logowania w trybie z jego konfigurację serwera proxy aplikacji, mogą teraz łatwo naraża hasło logowania jednokrotnego lub aplikacje, które są uruchomione w sieci firmowej bezpośrednio do chmury, bez konieczności tworzenia wielu wystąpień aplikacji federacyjnych.
+## <a name="updated-application-proxy-configuration"></a>Konfiguracja serwera proxy aplikacji
 
-Można również skonfigurować wszelkie nowe aplikacje, które zostały dodane do użycia z prawej strony serwera Proxy aplikacji usługi Azure AD z nowego portalu, w tym aplikacje, które obsługują macierzysty środowiska uwierzytelniania systemu Windows.
+Teraz Przyjrzyjmy powiedzieć, jedną z nowych aplikacji, którą dodałeś działa w środowiska lokalne i chcesz ją zintegrować z usługą Azure AD.  Jedną z najfajniejszych rzeczy nowe nowe środowisko konfiguracji aplikacji w nowej usłudze Azure AD portal to, czy, dzieląc aplikację tryb logowania jednokrotnego z jej konfiguracji serwera proxy aplikacji, można teraz łatwo udostępnić hasło logowania jednokrotnego lub aplikacji federacyjnych są uruchomione w sieci firmowej prawa do chmury bez konieczności tworzenia wielu wystąpień aplikacji.
 
-  ![Konfigurowanie aplikacji do korzystania z opcji logowania jednokrotnego zintegrowane uwierzytelnianie systemu Windows](./media/active-directory-enterprise-apps-whats-new-azure-portal/08.png)
+Można również skonfigurować dowolne nowe aplikacje, które zostały dodane do użytku z prawej strony serwera Proxy aplikacji usługi Azure AD z nowego portalu, w tym aplikacje, które obsługują natywnych środowisk uwierzytelniania Windows.
+
+  ![Konfigurowanie aplikacji do korzystania z opcji logowania jednokrotnego zintegrowanego uwierzytelniania Windows](./media/active-directory-enterprise-apps-whats-new-azure-portal/08.png)
  
-
-Aby rozpocząć konfigurowanie aplikacji natywnej uwierzytelniania systemu Windows przy użyciu serwera Proxy aplikacji:
-1. Kliknij element nawigacji rejestracji jednokrotnej i wybierz polecenie **zintegrowane uwierzytelnianie systemu Windows** w obszarze Ustawienia logowania jednokrotnego i skonfiguruj ustawienia do swoich potrzeb.
-2. U góry obsługi tych nowych tryby uwierzytelniania, możesz teraz również przekazać certyfikatów z niestandardowych domen do obsługi aplikacji działających na bezpieczne punkty końcowe w ramach danej organizacji.  
+Aby rozpocząć konfigurowanie natywnej aplikacji uwierzytelniania Windows przy użyciu serwera Proxy aplikacji:
+1. Kliknij element nawigacji rejestracji jednokrotnej i wybierz polecenie **zintegrowane uwierzytelnianie Windows** w obszarze ustawień logowania jednokrotnego i skonfiguruj ustawienia do swoich potrzeb.
+1. Na podstawie obsługuje te nowe tryby uwierzytelniania, można teraz również przekazywać certyfikaty z domeny niestandardowe do obsługi aplikacji działających na bezpieczne punkty końcowe w ramach Twojej organizacji.  
  
    ![Przekazywanie certyfikatu do użycia z serwera Proxy aplikacji](./media/active-directory-enterprise-apps-whats-new-azure-portal/09.png)
 
-3. Aby przekazać nowy certyfikat dla aplikacji lokalnych Ulubione, kliknij **serwera proxy aplikacji** opcję w menu nawigacji po lewej stronie, kliknij przycisk **certyfikatu** selektor i przekazywanie pliku certyfikatu, możemy użyć do zaszyfrowania żądania z naszych punktu końcowego w chmurze do aplikacji.
+1. Aby przekazać nowy certyfikat dla aplikacji ulubionych w środowisku lokalnym, kliknij polecenie **serwera proxy aplikacji** opcję z menu nawigacji po lewej stronie, kliknij przycisk **certyfikatu** selektor i przekaż certyfikat plik, który możemy użyć w celu zaszyfrowania żądania z naszego punktu końcowego w chmurze do aplikacji.
 
-## <a name="advanced-federated-single-sign-on-configuration"></a>Federacyjnych pojedynczego logowania jednokrotnego Konfiguracja zaawansowana
+## <a name="advanced-federated-single-sign-on-configuration"></a>Zaawansowane federacyjnego pojedynczego konfiguracji logowania jednokrotnego
 
-Dla osób, które obecnie za pomocą aplikacji federacyjnych istnieje wiele nowych funkcji w podstawie SAML logowania w konfiguracji. Do uruchomienia z teraz możesz można całkowicie dostosować, dodawania, usuwania i mapowanie istniejących atrybutów użytkownika wystawione jako oświadczenia w tokenach SAML.
+Dla osób, które już dziś przy użyciu aplikacji federacyjnych istnieje wiele nowych funkcji w opartej na SAML logowania jednokrotnego konfiguracji. Na początek z teraz możesz można całkowicie dostosować, dodawania, usuwania i mapowanie istniejących atrybutów użytkownika wystawione jako oświadczenia w tokeny SAML.
  
   ![Dostosowywanie atrybutów użytkownika tokenu SAML przekazane do aplikacji federacyjnych](./media/active-directory-enterprise-apps-whats-new-azure-portal/10.png)
 
+Aby sprawdzić, się z nowym Federacyjna usługa rejestracji Jednokrotnej w konfiguracji:
+1. Otwieranie aplikacji federacyjnych **logowanie jednokrotne** menu nawigacji po lewej stronie i upewnij się, że "*opartej na SAML logowania jednokrotnego** wybrany tryb. 
+1. Jeden raz, zaznacz pole wyboru w obszarze **atrybutów użytkownika** nagłówek, aby zmodyfikować wszystkie atrybuty uwzględnione w tokenie języka SAML przekazany do tej aplikacji.
 
-Aby sprawdzić się z nowym Federacyjna usługa rejestracji Jednokrotnej w konfiguracji:
-1. Otwórz aplikacji federacyjnych **logowanie jednokrotne** z menu nawigacji po lewej stronie i upewnij się, że "*na języku SAML logowania jednokrotnego** wybrany tryb. 
-2. Raz istnieje, włączyć pole wyboru w obszarze **atrybuty użytkownika** nagłówek, aby zmodyfikować wszystkie atrybuty uwzględnione w tokenie SAML przekazany do tej aplikacji.
-
-Możesz można również utworzyć, przerzucania i zarządzanie certyfikatami używanymi do federacyjnego logowania jednokrotnego, a także edytować, który pobiera powiadamiani się wygaśnięciu certyfikatu. Zobaczysz tych nowych opcji w obszarze **certyfikaty** pozycji na tym samym pojedynczego logowania jednokrotnego w okienku.
+Możesz można również utworzyć, przerzucania i zarządzanie certyfikatami używanymi do federacyjnego logowania jednokrotnego, a także edytować, który pobiera powiadomienie, gdy Twój certyfikat wkrótce wygaśnie. Zostaną wyświetlone te nowe opcje w obszarze **certyfikaty** na tym samym — okienko logowanie jednokrotne.
  
-  ![Tworzenie nowego świadectwa, dostosowywanie wygaśnięcia powiadomienia e-mail i opcje podpisywania certyfikatu](./media/active-directory-enterprise-apps-whats-new-azure-portal/11.png)
+  ![Tworzenie nowego certyfikatu, dostosowywanie wygaśnięcia powiadomienia e-mail i opcje podpisywania certyfikatu](./media/active-directory-enterprise-apps-whats-new-azure-portal/11.png)
 
-### <a name="relay-state-parameter"></a>Parametr State przekazywania
-Na koniec możemy zostały również rozszerzony zestaw parametrów, adres URL SAML obsługujemy obejmują **parametr Stan przekazywania**, czyli strony użytkownicy przeniesie na wewnątrz aplikacji federacyjnych po przy logowaniu. Jest to przydatne ustawienie, aby skonfigurować, jeśli chcesz wysłać użytkowników do określonego miejsca w aplikacji, aby udostępnić je szybko przerywaj.
+### <a name="relay-state-parameter"></a>Stan przekazywania parametru
+Na koniec możemy została również rozszerzony zestaw parametrów adresu URL protokołu SAML, firma Microsoft obsługuje do uwzględnienia **stan przekazywania parametru**, czyli stronę użytkownicy nastąpi przejście wewnątrz aplikacji federacyjnych po zalogowaniu zostanie ukończona. Jest to przydatne ustawienie, aby skonfigurować, aby wysłać użytkownikom do określonego miejsca w aplikacji, szybko je przerywaj.
 
-  ![Ustawienie parametru stan przekazywania SAML](./media/active-directory-enterprise-apps-whats-new-azure-portal/12.png)
+  ![Ustawienie parametru tan przekaźnika SAML](./media/active-directory-enterprise-apps-whats-new-azure-portal/12.png)
  
 **Aby ustawić parametr Stan przekazywania**:
 
-1. Włącz **Pokaż zaawansowane ustawienia adresu URL** pole wyboru w obszarze **domeny i adres URL** nagłówek jednokrotnego okienko konfiguracji. 
-2. Pola są wyświetlane, który pozwala na ustawienie tego parametru i inne ustawienia adresu URL SAML wejściowej zestaw nowego adresu URL.
+1. Włącz **Pokaż zaawansowane ustawienia adresu URL** pole wyboru w obszarze **domena i adresy URL** na jednokrotnego okienko konfiguracji. 
+1. Zbiór nowy adres URL danych wejściowych, że pola są wyświetlane, która pozwala na ustawienie tego parametru i inne ustawienia adresu URL protokołu SAML.
 
-## <a name="bring-your-own-password-sso-applications"></a>Przenoszenie własnego hasła aplikacji rejestracji Jednokrotnej
+## <a name="bring-your-own-password-sso-applications"></a>Przenoszenie własne hasło logowania jednokrotnego aplikacji
 
-Wiemy, że nie każda aplikacja obsługuje federacyjnego dodatkowych zabiegów. Na przykład może być jedną z nowych aplikacji, dodane ma ekran logowania niestandardowe, w której korzystają użytkownicy nazwy użytkownika i hasła do logowania się na. Aplikacje tego typu nadal można zintegrować z usługą Azure AD za pomocą naszych **Przenoszenie własnych aplikacji** funkcji, która jest teraz dostępna do skonfigurowania w nowego portalu.
+Wiemy, że nie każda aplikacja obsługuje federacyjnego gotową do. Na przykład może być jedną z nowych aplikacji, którą dodałeś ma ekran logowania niestandardowe wykorzystywanym przez użytkowników nazwy użytkownika i hasła do logowania się na. Nadal możesz zintegrować aplikacje tego typu za pomocą usługi Azure AD przy użyciu naszego **Przenoszenie własnych aplikacji** funkcji, która jest teraz dostępna do skonfigurowania w nowym portalu.
  
-  ![Integrowanie niestandardowych hasła vaulting aplikacji za pomocą usługi Azure AD](./media/active-directory-enterprise-apps-whats-new-azure-portal/13.png)
+  ![Integrowanie niestandardowych hasło vaulting aplikacji z usługą Azure AD](./media/active-directory-enterprise-apps-whats-new-azure-portal/13.png)
 
-**Aby zapoznać się z funkcji "Przynieś własne aplikacje"**:
+**Aby wyewidencjonować funkcji "Przenoszenie własnych aplikacji"**:
 
-1. Po ustawieniu jeden tryb logowania jednokrotnego dla nowej aplikacji niestandardowych, które zostały dodane do **opartego na hasłach logowania jednokrotnego**, wprowadź adres URL, w którym aplikacja renderuje jego ekran logowania i 
-2. Kliknij pozycję **Zapisz**.  
-2. Po wykonaniu tej czynności, firma Microsoft będzie automatycznie scrape tego adresu URL dla nazwy użytkownika i hasło pole wprowadzania i umożliwiają używanie usługi Azure AD do bezpiecznego przesyłania hasła do tej aplikacji przy użyciu rozszerzenia przeglądarki panelu dostępu.
+1. Po ustawieniu jednej tryb logowania jednokrotnego dla nowej aplikacji niestandardowej, które zostały dodane do **opartego na hasłach logowania jednokrotnego**, wprowadź adres URL, w którym aplikacja renderuje ekran logowania i 
+1. Kliknij pozycję **Zapisz**.  
+1. Po wykonaniu tej czynności, firma Microsoft będzie automatycznie scrape tego adresu URL o nazwę użytkownika i hasło pole wprowadzania i pozwalają na korzystanie z usługi Azure AD na bezpieczne przesyłanie haseł do tej aplikacji przy użyciu rozszerzenia przeglądarki panelu dostępu.
 
-## <a name="configure-self-service-application-access"></a>Konfigurowanie dostępu do aplikacji Sklep internetowy
+## <a name="configure-self-service-application-access"></a>Konfigurowanie samoobsługowego dostępu do aplikacji
 
-Po dodaniu wiele nowych aplikacji może być chcesz zezwolić użytkownikom przeglądać i dodać te aplikacje do ich własnych paneli dostępu, bez konieczności odblokowane jako administrator. Teraz w tej najnowszej wersji, można skonfigurować i zarządzanie dostępem do aplikacji Sklep internetowy z nowego portalu.
+Po dodaniu wiele nowych aplikacji może chcesz umożliwić użytkownikom przeglądanie i dodać te aplikacje do ich własnych panelach dostępu bez konieczności odblokowane jako administrator. Teraz za pomocą tej najnowszej wersji, można skonfigurować i zarządzać samoobsługowego dostępu do aplikacji bezpośrednio z nowego portalu.
 
-  ![Konfigurowanie dostępu do aplikacji Sklep internetowy hasła aplikacji rejestracji Jednokrotnej](./media/active-directory-enterprise-apps-whats-new-azure-portal/14.png)
+  ![Konfigurowanie samoobsługowego dostępu do aplikacji o hasło logowania jednokrotnego aplikacji](./media/active-directory-enterprise-apps-whats-new-azure-portal/14.png)
  
-**Aby skonfigurować i zarządzać dostępem do aplikacji Sklep internetowy**:
+**Aby skonfigurować i zarządzać dostępem do aplikacji samoobsługowej**:
 
-1. Aby rozpocząć pracę, możesz zaznaczyć **samoobsługi** menu nawigacji w lewo i ustaw opcję z aplikacji **Zezwalaj użytkownikom na żądanie dostępu do tej aplikacji?** opcje "**tak**". 
-2. Można konfigurować, kto może zatwierdzić dostęp do tej aplikacji i grup samoobsługi użytkowników, którzy zostaną dodane zostaną włączone. Ponadto jeśli aplikacja jest skonfigurowana pod kątem hasła jednokrotnego, również zobaczysz inną opcją opcjonalnie zezwolić tych osób zatwierdzających do zarządzania hasłami przypisany do aplikacji.
+1. Aby rozpocząć pracę, możesz wybrać **samoobsługi** opcji z aplikacji w lewym menu nawigacji i ustaw **zezwalać użytkownikom na żądanie dostępu do tej aplikacji?** opcję "**tak**". 
+1. Spowoduje to włączenie można skonfigurować, kto może zatwierdzać dostęp do tej aplikacji, a grupa samoobsługi użytkowników, którzy zostaną dodane. Ponadto jeśli aplikacja jest skonfigurowana dla hasła logowania jednokrotnego, widoczna będzie również inne rozwiązanie, które umożliwia opcjonalnie tych osób zatwierdzających zarządzać hasłami, przypisany do aplikacji.
 
 ## <a name="feedback"></a>Opinia
 
-Mamy nadzieję przy użyciu udoskonalone środowisko usługi Azure AD. Pamiętaj o opinie przesyłanych! Opinie i pomysły dotyczące poprawy **portalu administracyjnego** sekcji naszych [forum opinii](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Firma Microsoft jest podekscytowani, informacje o kompilowaniu chłodnych nowości codziennie i użyj wskazówek z kształtem i zdefiniować, co mamy utworzyć w następnej kolejności.
+Mamy nadzieję, że możesz takimi jak wymaganie użycia ulepszone środowisko usługi Azure AD. Pamiętaj o opinie dostępne! Opinie i pomysły dotyczące poprawy **portalu administracyjnego** części naszych [forum z opiniami](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Firma Microsoft jest podekscytowani o tworzeniu nowego ciekawostki codziennie, użyj wskazówek z kształtem i zdefiniować, co mamy utworzyć w następnej kolejności.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

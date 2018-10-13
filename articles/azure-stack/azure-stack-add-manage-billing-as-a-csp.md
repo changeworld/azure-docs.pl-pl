@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.author: sethm
 ms.reviewer: alfredo
-ms.openlocfilehash: b8c00795c7777e5485f4725e1da63fc764973f43
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: b4df9d3b107945b2c0797875718f3266b7fd0b10
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45628934"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166547"
 ---
 # <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-service-provider"></a>Zarządzanie użycia i rozliczeń dla usługi Azure Stack jako dostawca usług w chmurze 
 
@@ -35,7 +35,7 @@ Na poniższym diagramie przedstawiono kroki, które należy wybrać konta usług
 
 ![Proces włączania użycia i zarządzania jako dostawca usług w chmurze.](media\azure-stack-add-manage-billing-as-a-csp\process-add-useage-as-a-csp.png)
 
-## <a name="create-a-csp-or-cspss-subscription"></a>Tworzenie dostawcy usług Kryptograficznych lub CSPSS subskrypcji
+## <a name="create-a-csp-or-apss-subscription"></a>Tworzenie dostawcy usług Kryptograficznych lub APSS subskrypcji
 
 ### <a name="cloud-service-provider-subscription-types"></a>Typy subskrypcji dostawcy usług w chmurze
 
@@ -44,13 +44,13 @@ Należy wybrać typ konta usług udostępnionych, które jest używane dla usłu
  - Dostawca usług w chmurze 
  - Subskrypcja usług udostępnionych partnera 
 
-#### <a name="csp-shared-services"></a>Dostawcy usług Kryptograficznych usług udostępnionych
+#### <a name="azure-partner-shared-services"></a>Usługi udostępnione przez partnerów platformy Azure
 
-Subskrypcje usługi dostawcy udostępnionych usług (CSPSS) w chmurze są preferowanych przez rejestracji podczas bezpośredniego programu CSP lub dystrybutora dostawcy usług Kryptograficznych działa usługa Azure Stack.
+Subskrypcje platformy Azure Partner udostępnionych usług (APSS) są preferowanych przez rejestracji podczas bezpośredniego programu CSP lub dystrybutora dostawcy usług Kryptograficznych działa usługa Azure Stack.
 
-Subskrypcje CSPSS są skojarzone z dzierżawą usług udostępnionych. Podczas rejestrowania usługi Azure Stack, musisz podać poświadczenia dla konta które jest właścicielem subskrypcji. Konto, które służy do rejestrowania usługi Azure Stack może być inne niż konto administratora, którego używasz do wdrożenia. Ponadto, wykonaj dwa konta *nie* muszą należeć do tej samej domenie. Innymi słowy mogą wdrażać przy użyciu dzierżawy, które są już używane. Może na przykład użyć ContosoCSP.onmicrosoft.com następnie zarejestrować się przy użyciu innej dzierżawy, na przykład IURContosoCSP.onmicrosoft.com. Należy pamiętać, zaloguj się przy użyciu ContosoCSP.onmicrosoft.com po wykonaniu administracji usługi Azure Stack dzień do wykonania. Po zalogowaniu do platformy Azure przy użyciu IURContosoCSP.onmicrosoft.com, gdy trzeba wykonywać operacje rejestracji.
+Subskrypcje APSS są skojarzone z dzierżawą usług udostępnionych. Podczas rejestrowania usługi Azure Stack, musisz podać poświadczenia dla konta które jest właścicielem subskrypcji. Konto, które służy do rejestrowania usługi Azure Stack może być inne niż konto administratora, którego używasz do wdrożenia. Ponadto, wykonaj dwa konta *nie* muszą należeć do tej samej domenie. Innymi słowy mogą wdrażać przy użyciu dzierżawy, które są już używane. Może na przykład użyć ContosoCSP.onmicrosoft.com następnie zarejestrować się przy użyciu innej dzierżawy, na przykład IURContosoCSP.onmicrosoft.com. Należy pamiętać, zaloguj się przy użyciu ContosoCSP.onmicrosoft.com po wykonaniu administracji usługi Azure Stack dzień do wykonania. Po zalogowaniu do platformy Azure przy użyciu IURContosoCSP.onmicrosoft.com, gdy trzeba wykonywać operacje rejestracji.
 
-Zapoznaj się z poniższymi opis subskrypcji CSPSS i instrukcje dotyczące sposobu tworzenia subskrypcji [Dodawanie usług udostępnionych partnerem Azure](https://msdn.microsoft.com/partner-center/shared-services).
+Zapoznaj się z poniższymi opis subskrypcji APSS i instrukcje dotyczące sposobu tworzenia subskrypcji [Dodawanie usług udostępnionych partnerem Azure](https://msdn.microsoft.com/partner-center/shared-services).
 
 #### <a name="csp-subscriptions"></a>Subskrypcje dostawcy usług Kryptograficznych
 
@@ -58,7 +58,7 @@ Subskrypcje chmury programu Service Provider (CSP) są preferowanych przez rejes
 
 ## <a name="register-azure-stack"></a>Rejestrowanie usługi Azure Stack
 
-Użyj subskrypcji CSPSS utworzone następujące informacje w poprzedniej sekcji, aby rejestrowania usługi Azure Stack na platformie Azure. Aby uzyskać więcej informacji, zobacz [zarejestrować w usłudze Azure Stack z subskrypcją platformy Azure](azure-stack-registration.md).
+Użyj subskrypcji APSS utworzone następujące informacje w poprzedniej sekcji, aby rejestrowania usługi Azure Stack na platformie Azure. Aby uzyskać więcej informacji, zobacz [zarejestrować w usłudze Azure Stack z subskrypcją platformy Azure](azure-stack-registration.md).
 
 ## <a name="add-end-customer"></a>Dodaj klienta końcowego
 
@@ -72,7 +72,7 @@ Korzystanie z rejestracji usługi Azure Stack wykonywać następujące czynnośc
  - Przesyła dane dotyczące użycia usługi Azure Stack Commerce platformy Azure i płatności subskrypcji platformy Azure.
  - Raport użycia każdego klienta w innej subskrypcji przy użyciu wdrożenia wielodostępnego usługi Azure Stack. Wielodostępność umożliwia usłudze Azure Stack obsługiwać różne organizacje w jednym wystąpieniu usługi Azure Stack.
 
-Dla każdej usługi Azure Stack jest jedną subskrypcję domyślną i wiele dzierżawy subskrypcji. Domyślna subskrypcja jest subskrypcji platformy Azure, która jest naliczana, jeśli nie ma subskrypcji specyficznym dla dzierżawy. Musi być pierwszym dla subskrypcji zarejestrowanej. Użycie wielu obcych dzierżaw raportowania do pracy subskrypcja musi być dostawca usług Kryptograficznych lub CSPSS subskrypcji.
+Dla każdej usługi Azure Stack jest jedną subskrypcję domyślną i wiele dzierżawy subskrypcji. Domyślna subskrypcja jest subskrypcji platformy Azure, która jest naliczana, jeśli nie ma subskrypcji specyficznym dla dzierżawy. Musi być pierwszym dla subskrypcji zarejestrowanej. Użycie wielu obcych dzierżaw raportowania do pracy subskrypcja musi być dostawca usług Kryptograficznych lub APSS subskrypcji.
 
 Następnie w rejestracji jest aktualizowany z subskrypcją platformy Azure dla każdego dzierżawcy, która będzie używać usługi Azure Stack. Subskrypcje dzierżawy musi być typu Dostawca usług Kryptograficznych i należy rzutować z partnerem, który jest właścicielem subskrypcji domyślnej. Innymi słowy nie można zarejestrować klientów innego użytkownika.
 

@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 01/26/2017
 ms.author: kefre
-ms.openlocfilehash: 5c0a4e981a290b9a758c8401a75e546c61618b45
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 55b474d0edbb8dc01b9f35d4f8799e53e37862df
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983905"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166376"
 ---
 # <a name="computer-vision-api-frequently-asked-questions"></a>Interfejs API przetwarzania obrazów — często zadawane pytania
 
@@ -44,7 +44,7 @@ ms.locfileid: "45983905"
 | Duński (da k)  | Holenderski (nl-NL)     | Polski           | Fiński (fi-FI)            |Francuski (fr-FR)
 | Niemiecki (de-DE)  | Grecki (el-GR)     | Węgierski (hu-HU) | Włoski (it-IT)            | Japoński (ja-JP)
 | Koreański (ko-KR)  | Norweski (nb nie) | Polski (pl-PL)    | Portugalski (pt-BR) (pt-PT) | Rosyjski (ru-RU)
-| Hiszpański (es-ES)   | Szwedzki (sv SV)     | Turecki (tr TU)   |                            |
+| Hiszpański (es-ES)   | Szwedzki (sv SV)     | Turecki (tr-TR)   |                            |
 
 -----
 

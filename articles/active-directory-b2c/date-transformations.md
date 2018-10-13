@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ff96b9a63e7340788ef2474ce9934145c184e1e1
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: b287e7f3846de4391de02cce2cedd6a5df3cbc4a
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542773"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167651"
 ---
 # <a name="date-claims-transformations"></a>Data oświadczeń przekształcenia
 
@@ -33,7 +33,7 @@ Sprawdza, czy jeden daty i godziny oświadczenia (string — typ danych) jest wi
 | Oświadczenie InputClaim | rightOperand | ciąg | Typ drugiego oświadczenia, która powinna być mniejsza od pierwszego oświadczenia. |
 | InputParameter | AssertIfEqualTo | wartość logiczna | Określa, czy ta asercja należy przekazać, jeśli lewy operand jest równa prawy operand. |
 | InputParameter | AssertIfRightOperandIsNotPresent | wartość logiczna | Określa, czy ta asercja należy przekazywać, jeśli brakuje prawy operand. |
-| InputParameter | TreatAsEqualIfWithinMillseconds | Int | Określa liczbę milisekund, aby umożliwić między tymi dwoma daty i godziny wziąć pod uwagę czas, w którym równe (na przykład konto dla zegara). |
+| InputParameter | TreatAsEqualIfWithinMillseconds | int | Określa liczbę milisekund, aby umożliwić między tymi dwoma daty i godziny wziąć pod uwagę czas, w którym równe (na przykład konto dla zegara). |
 
 **AssertDateTimeIsGreaterThan** przekształcania oświadczeń jest zawsze wykonywana z [profilu technicznego weryfikacji](validation-technical-profile.md) który jest wywoływany [własnym potwierdzone profilu technicznego](self-asserted-technical-profile.md). **DateTimeGreaterThan** samodzielnie profilu technicznego określa profil techniczny wyświetlane dla użytkownika komunikat o błędzie.
 
@@ -92,7 +92,7 @@ Konwertuje **data** oświadczenia do **daty/godziny** typu oświadczenia. Przeks
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | Oświadczenie InputClaim | data | Oświadczenia, który ma zostać przekonwertowany. |
+| Oświadczenie InputClaim | Oświadczenie InputClaim | date | Oświadczenia, który ma zostać przekonwertowany. |
 | oświadczenie outputClaim | oświadczenie outputClaim | Data i godzina | Typ oświadczenia, które są generowane po wywołaniu tego ClaimsTransformation. |
 
 W poniższym przykładzie pokazano konwersji oświadczenia `dateOfBirth` (Data — typ danych) do innego roszczenia `dateOfBirthWithTime` (typ danych Data/godzina).
@@ -145,7 +145,7 @@ Ustal, czy jeden daty/godziny jest większa, mniejszy lub równy innemu. Wynik j
 | Oświadczenie InputClaim | firstDateTime | Data i godzina | Pierwszą datę i godzinę do porównania. Wartość null zgłasza wyjątek. |
 | Oświadczenie InputClaim | secondDateTime | Data i godzina | Drugi element dateTime do ukończenia. Wartość null traktuje jako bieżący datetTime. |
 | InputParameter | Operator | ciąg | Jedną z następujących wartości: ten sam, późniejsza niż lub wcześniejsza niż. |
-| InputParameter | timeSpanInSeconds | Int | Dodaj zakres czasu do pierwszego daty/godziny. |
+| InputParameter | timeSpanInSeconds | int | Dodaj zakres czasu do pierwszego daty/godziny. |
 | oświadczenie outputClaim | wynik | wartość logiczna | Typ oświadczenia, które są generowane po wywołaniu tego ClaimsTransformation. |
 
 Użycie oświadczeń to przekształcenie, aby określić, czy dwa ClaimTypes są równe, większe lub mniejsze od siebie nawzajem. Na przykład mogą przechowywać czas ostatniego użytkownika zaakceptowano warunków użytkowania usługi (TOS). Po upływie 3 miesięcy możesz poprosić użytkownika o ponowne dostępu OT.
@@ -158,7 +158,7 @@ Aby uruchomić przekształcania oświadczeń, należy najpierw uzyskać od bież
     <InputClaim ClaimTypeReferenceId="extension_LastTOSAccepted" TransformationClaimType="secondDateTime" />
   </InputClaims>
   <InputParameters>
-    <InputParameter Id="operator" DataType="string" Value="greater than" />
+    <InputParameter Id="operator" DataType="string" Value="later than" />
     <InputParameter Id="timeSpanInSeconds" DataType="int" Value="7776000" />
   </InputParameters>
   <OutputClaims>
@@ -173,7 +173,7 @@ Aby uruchomić przekształcania oświadczeń, należy najpierw uzyskać od bież
     - **firstDateTime**: 2018-01-01T00:00:00.100000Z
     - **secondDateTime**: 2018-04-01T00:00:00.100000Z
 - Parametry wejściowe:
-    - **operator**: większa niż
+    - **operator**: późniejsza niż
     - **timeSpanInSeconds**: 7776000 (90 dni)
 - Oświadczeń danych wyjściowych: 
     - **wynik**: true

@@ -3,19 +3,19 @@ title: Obsługa języków — interfejs API mowy usługi
 description: Lista języków naturalnych obsługiwane przez usługę rozpoznawania mowy.
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: v-jerkin
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 09/25/2018
-ms.author: v-jerkin
-ms.openlocfilehash: 9a867289cffa17030e397ef170e9055451057410
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.author: erhopf
+ms.openlocfilehash: 5bf680d22f990e6a93c622271bbb8ccd4c19437e
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237742"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166920"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Obsługa języka i regionu dla interfejsu API mowy usługi
 

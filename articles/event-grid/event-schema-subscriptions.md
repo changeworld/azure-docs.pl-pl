@@ -5,24 +5,24 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/17/2018
+ms.date: 10/12/2018
 ms.author: tomfitz
-ms.openlocfilehash: 18f2a64a4354fbd99f1a471c21cc35cbf5df6619
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: ae6513c503b930d9c953f5245a9c98ea096109bb
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054397"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310240"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Schemat zdarzeń Azure Event Grid dla subskrypcji
 
 Ten artykuł zawiera właściwości i schematu dla zdarzeń dotyczących subskrypcji platformy Azure. Aby zapoznać się z wprowadzeniem do schematów zdarzeń, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md).
 
-Subskrypcje platformy Azure i grup zasobów emitują te same typy zdarzeń. Typy zdarzeń, które odnoszą się do zmian w zasobach. Główną różnicą jest, że grupy zasobów emitować zdarzenia dla zasobów w grupie zasobów i subskrypcji platformy Azure emitować zdarzenia dla zasobów w subskrypcji.
+Subskrypcje platformy Azure i grup zasobów emitują te same typy zdarzeń. Typy zdarzeń, które odnoszą się do zmian zasobów lub akcji. Główną różnicą jest, że grupy zasobów emitować zdarzenia dla zasobów w grupie zasobów i subskrypcji platformy Azure emitować zdarzenia dla zasobów w subskrypcji.
 
-Zasób zdarzenia są tworzone dla PUT, PATCH i Usuń operacje, które są wysyłane do `management.azure.com`. Operacje GET i POST nie twórz zdarzeń. Wysłane do płaszczyzny danych operacje (takie jak `myaccount.blob.core.windows.net`) nie twórz zdarzeń.
+Zasób zdarzenia są tworzone dla WPIS PUT, PATCH i Usuń operacje, które są wysyłane do `management.azure.com`. Pobierz operacje nie twórz zdarzeń. Wysłane do płaszczyzny danych operacje (takie jak `myaccount.blob.core.windows.net`) nie należy tworzyć zdarzenia. Zdarzenia działań udostępniają danych zdarzenia dla operacji takich jak lista kluczy dla zasobu.
 
-Podczas subskrybowania zdarzeń dla subskrypcji platformy Azure do punktu końcowego odbiera wszystkie zdarzenia dla tej subskrypcji. Zdarzenia mogą obejmować zdarzenia, które chcesz wyświetlić, takie jak aktualizowanie maszynę wirtualną, ale także zdarzenia, które być może nie są szczególnie ważne, takie jak zapisywanie nowy wpis w historii wdrażania. Możesz otrzymywać wszystkie zdarzenia w punkcie końcowym usługi i napisać kod, który przetwarza zdarzenia, które mają być obsługiwane, lub można ustawić filtr, podczas tworzenia subskrypcji zdarzeń.
+Podczas subskrybowania zdarzeń dla subskrypcji platformy Azure do punktu końcowego odbiera wszystkie zdarzenia dla tej subskrypcji. Zdarzenia mogą obejmować zdarzenia, które chcesz wyświetlić, takie jak aktualizowanie maszynę wirtualną, ale także zdarzenia, które być może nie są szczególnie ważne, takie jak zapisywanie nowy wpis w historii wdrażania. Możesz otrzymywać wszystkie zdarzenia w punkcie końcowym usługi i napisać kod, który przetwarza zdarzenia, które mają być obsługiwane. Alternatywnie można zdefiniować filtr, podczas tworzenia subskrypcji zdarzeń.
 
 Programowe obsługi zdarzeń, zdarzenia można sortować, analizując `operationName` wartość. Na przykład zdarzenie punktu końcowego może przetwarzać tylko zdarzenia dla operacji, które są równe `Microsoft.Compute/virtualMachines/write` lub `Microsoft.Storage/storageAccounts/write`.
 
@@ -36,12 +36,15 @@ Subskrypcje platformy Azure emitować zdarzenia zarządzania z usługi Azure Res
 
 | Typ zdarzenia | Opis |
 | ---------- | ----------- |
-| Microsoft.Resources.ResourceWriteSuccess | Wywoływane, gdy zasób utworzyć lub zaktualizować operacji powiedzie się. |
-| Microsoft.Resources.ResourceWriteFailure | Wywoływane, gdy tworzenie zasobu lub operacja aktualizacji nie powiedzie się. |
-| Microsoft.Resources.ResourceWriteCancel | Wywoływane, gdy zasób utworzyć lub zaktualizować operacji zostało anulowane. |
-| Microsoft.Resources.ResourceDeleteSuccess | Wywoływane, gdy operacja usuwania zasobu zakończy się pomyślnie. |
-| Microsoft.Resources.ResourceDeleteFailure | Wywoływane, gdy operacja usuwania zasobu nie powiodło się. |
-| Microsoft.Resources.ResourceDeleteCancel | Wywoływane, gdy operacja usuwania zasobu zostało anulowane. To zdarzenie występuje, gdy wdrożenie szablonu zostanie anulowane. |
+| Microsoft.Resources.ResourceActionCancel | Wywoływane, gdy akcja zasobu została anulowana. |
+| Microsoft.Resources.ResourceActionFailure | Wywoływane, gdy akcja zasobu zakończy się niepowodzeniem. |
+| Microsoft.Resources.ResourceActionSuccess | Wywoływane, gdy akcja zasobu zakończy się pomyślnie. |
+| Microsoft.Resources.ResourceDeleteCancel | Wywołane, gdy usuwanie operacja została anulowana. To zdarzenie występuje, gdy wdrożenie szablonu zostanie anulowane. |
+| Microsoft.Resources.ResourceDeleteFailure | Wywołane, gdy usunięcie operacji nie powiodło się. |
+| Microsoft.Resources.ResourceDeleteSuccess | Wywołane, gdy operacja usuwania powiedzie się. |
+| Microsoft.Resources.ResourceWriteCancel | Wywołane, gdy tworzenie lub operacja aktualizacji została anulowana. |
+| Microsoft.Resources.ResourceWriteFailure | Wywołane, gdy tworzenie lub aktualizowanie operacja kończy się niepowodzeniem. |
+| Microsoft.Resources.ResourceWriteSuccess | Wywołane, gdy tworzenie lub operacji aktualizacji zakończy się pomyślnie. |
 
 ## <a name="example-event"></a>Przykład zdarzenia
 
@@ -171,6 +174,62 @@ W poniższym przykładzie przedstawiono schematu dla **ResourceDeleteSuccess** z
 }]
 ```
 
+W poniższym przykładzie przedstawiono schematu dla **ResourceActionSuccess** zdarzeń. Ten sam schemat jest używany dla **ResourceActionFailure** i **ResourceActionCancel** zdarzenia z różnymi wartościami dla `eventType`.
+
+```json
+[{   
+  "subject": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey",
+  "eventType": "Microsoft.Resources.ResourceActionSuccess",
+  "eventTime": "2018-10-08T22:46:22.6022559Z",
+  "id": "{ID}",
+  "data": {
+    "authorization": {
+      "scope": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey",
+      "action": "Microsoft.EventHub/namespaces/AuthorizationRules/listKeys/action",
+      "evidence": {
+        "role": "Contributor",
+        "roleAssignmentScope": "/subscriptions/{subscription-id}",
+        "roleAssignmentId": "{ID}",
+        "roleDefinitionId": "{ID}",
+        "principalId": "{ID}",
+        "principalType": "ServicePrincipal"
+      }     
+    },
+    "claims": {
+      "aud": "{audience-claim}",
+      "iss": "{issuer-claim}",
+      "iat": "{issued-at-claim}",
+      "nbf": "{not-before-claim}",
+      "exp": "{expiration-claim}",
+      "aio": "{token}",
+      "appid": "{ID}",
+      "appidacr": "2",
+      "http://schemas.microsoft.com/identity/claims/identityprovider": "{URL}",
+      "http://schemas.microsoft.com/identity/claims/objectidentifier": "{ID}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "{ID}",       "http://schemas.microsoft.com/identity/claims/tenantid": "{ID}",
+      "uti": "{ID}",
+      "ver": "1.0"
+    },
+    "correlationId": "{ID}",
+    "httpRequest": {
+      "clientRequestId": "{ID}",
+      "clientIpAddress": "{IP-address}",
+      "method": "POST",
+      "url": "https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey/listKeys?api-version=2017-04-01"
+    },
+    "resourceProvider": "Microsoft.EventHub",
+    "resourceUri": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey",
+    "operationName": "Microsoft.EventHub/namespaces/AuthorizationRules/listKeys/action",
+    "status": "Succeeded",
+    "subscriptionId": "{subscription-id}",
+    "tenantId": "{tenant-id}"
+  },
+  "dataVersion": "2",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/{subscription-id}" 
+}]
+```
+
 ## <a name="event-properties"></a>Właściwości zdarzenia
 
 Zdarzenie zawiera następujące dane najwyższego poziomu:
@@ -183,7 +242,7 @@ Zdarzenie zawiera następujące dane najwyższego poziomu:
 | eventTime | ciąg | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
 | id | ciąg | Unikatowy identyfikator zdarzenia. |
 | dane | obiekt | Dane zdarzeń dla subskrypcji. |
-| dataVersion | ciąg | Wersja schematu obiektu danych. Wydawca Określa wersję schematu. |
+| dataVersion | ciąg | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
 | metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
 
 Obiekt danych ma następujące właściwości:
@@ -194,7 +253,7 @@ Obiekt danych ma następujące właściwości:
 | oświadczenia | obiekt | Właściwości oświadczenia. Aby uzyskać więcej informacji, zobacz [specyfikacji JWT](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
 | correlationId | ciąg | Identyfikator operacji do rozwiązywania problemów. |
 | httpRequest | obiekt | Szczegóły operacji. Ten obiekt jest tylko uwzględnione podczas aktualizowania istniejącego zasobu lub usunięcie zasobu. |
-| resourceProvider | ciąg | Dostawca zasobów wykonującego operację. |
+| resourceProvider | ciąg | Dostawca zasobów dla tej operacji. |
 | resourceUri | ciąg | Identyfikator URI zasobów w ramach operacji. |
 | operationName | ciąg | Operacja, która została wykonana. |
 | status | ciąg | Stan operacji. |

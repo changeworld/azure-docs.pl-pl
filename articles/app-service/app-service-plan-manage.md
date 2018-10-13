@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: 2c08522df598bd5c6313c3f026efe48e1c4a2c56
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f426982163a5e49264bc4f222f6869d9cbb40c89
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449363"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166070"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Zarządzanie plan usługi App Service na platformie Azure
 
@@ -57,6 +57,12 @@ Można utworzyć pustego planu usługi App Service lub utworzyć plan, jako czę
 
 Przenoszenie aplikacji do innego planu usługi App Service, tak długo, jak planu źródłowego i docelowego planu znajdują się w _tej samej grupie zasobów i region geograficzny_.
 
+> [!NOTE]
+> Platforma Azure wdroży każdego nowego planu usługi App Service do jednostki wdrożenia, wywoływana wewnętrznie przestrzeń sieci Web. Każdy region może mieć wiele przestrzeni internetowych, ale aplikacji mogą być tylko przenoszone między plany, które są tworzone w tej samej przestrzeni internetowej. Środowiska usługi App Service jest izolowane przestrzeni internetowej, dzięki czemu aplikacje mogą być przenoszone między planami w tym samym środowisku usługi App Service, ale nie między planami w różnych środowiskach usługi App Service.
+>
+> Nie można określić podczas tworzenia planu przestrzeni internetowej, ale istnieje możliwość upewnić się, że plan jest tworzony w tej samej przestrzeni internetowej jako istniejącego planu. Krótko mówiąc wszystkie plany utworzone za pomocą tej samej grupie zasobów i region kombinacji są wdrażane w tej samej przestrzeni internetowej. Na przykład jeśli utworzono planu w grupie zasobów, A i region B wszelkie planu, który następnie utworzysz w grupie zasobów, A i region B jest wdrażana w tej samej przestrzeni internetowej. Pamiętaj, że planów nie można przenieść przestrzeni internetowych po ich utworzeniu, więc planu nie można przenieść do "tej samej przestrzeni internetowej" jako innego planu przez przeniesienie ich do innej grupy zasobów.
+> 
+
 1. W [witryny Azure portal](https://portal.azure.com), przejdź do aplikacji, którą chcesz przenieść.
 
 1. W menu Wyszukaj **planu usługi App Service** sekcji.
@@ -67,16 +73,7 @@ Przenoszenie aplikacji do innego planu usługi App Service, tak długo, jak plan
 
 1. W **planu usługi App Service** selektor, wybierz istniejący plan można przenieść tej aplikacji do.   
 
-> [!IMPORTANT]
-> **Planu usługi App Service wybierz** strona jest filtrowana według następujących kryteriów: 
-> - Istnieje w tej samej grupie zasobów 
-> - Istnieje w tym samym regionie geograficznym 
-> - W tej samej przestrzeni internetowej istnieje  
-> 
-> A _przestrzeni internetowej_ jest konstrukcją logiczną, w usłudze App Service, który definiuje grupowania zasobów serwera. Region geograficzny (na przykład zachodnie stany USA) zawiera wiele przestrzeni internetowych, aby można było przydzielić klientów, którzy korzystają z usługi App Service. Obecnie nie można przenieść zasobów usługi App Service między przestrzeni internetowych. 
-> 
-
-[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
+**Planu usługi App Service wybierz** strona zawiera tylko te plany, które znajdują się w tej samej grupie zasobów i regionu geograficznego co planu usługi App Service w bieżącej aplikacji.
 
 Każdy plan ma swoją własną warstwę cenową. Na przykład przejście do lokacji **bezpłatna** warstwy do **standardowa** warstwy umożliwia wszystkie aplikacje przypisane do niego, można korzystać z funkcji i zasobów **standardowa** warstwy. Przenoszenie aplikacji z wyższej warstwy planu plan z warstwy niższej oznacza jednak, że nie masz już dostęp do pewnych funkcji. Jeśli aplikacja korzysta z funkcji, która nie jest dostępna w ramach planu docelowego, otrzymasz błąd, który pokazuje, która funkcja jest używana, która nie jest dostępna. 
 

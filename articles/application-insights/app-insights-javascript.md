@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 70269fc71fcb2ef9158b50d3bb281097abee0740
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 6d826702d8302246a225ebfcdf0a5987cf9d2045
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991328"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167056"
 ---
 # <a name="application-insights-for-web-pages"></a>Usługa Application Insights dla stron sieci Web
 Poznaj wydajność i użycie strony sieci Web lub aplikacji. Jeśli dodasz usługę [Application Insights](app-insights-overview.md) do skryptu strony, uzyskasz chronometraż ładowania strony i wywołań AJAX, liczniki i szczegóły dotyczące wyjątków przeglądarki i błędów AJAX, a także liczniki użytkowników i sesji. Wszystkie te dane możesz rozdzielić według strony, systemu operacyjnego klienta i wersji przeglądarki, lokalizacji geograficznej i innych wymiarów. Możesz ustawić alerty związane z liczbami błędów lub powolnym ładowaniem strony. A wstawiając wywołania śledzenia w kodzie JavaScript, możesz śledzić sposób użycia różnych funkcji aplikacji strony sieci Web.
@@ -48,12 +48,6 @@ Jeśli nie ma zasobu, utwórz go:
 *Już masz pytania?* [Więcej informacji na temat tworzenia zasobu](app-insights-create-new-resource.md).
 
 ### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>Dodawanie skryptu zestawu SDK do aplikacji lub stron sieci Web
-Ze strony Szybki start pobierz skrypt dla stron sieci Web:
-
-![W bloku przeglądu aplikacji wybierz kolejno opcje Szybki start, Pobierz kod umożliwiający monitorowanie stron sieci Web. Skopiuj skrypt.](./media/app-insights-javascript/02-monitor-web-page.png)
-
-> [!NOTE]
-> *Wprowadzenie* różni się w zależności od typu aplikacji wybranej podczas tworzenia zasobu usługi Application Insights. Jeśli dla Twojej aplikacji nie ma skryptu, jaki jest widoczny na poprzednim zrzucie ekranu, użyj po prostu poniższego skryptu.
 
 ```HTML
 <!-- 
@@ -127,7 +121,7 @@ Otwórz blok Przeglądarka, aby wyświetlić agregowane dane wydajności z przeg
 
 ![W witrynie portal.azure.com otwórz zasób swojej aplikacji, a następnie kliknij kolejno opcje Ustawienia, Przeglądarki](./media/app-insights-javascript/03.png)
 
-Jeszcze nie ma danych? Kliknij przycisk **Odśwież** w górnej części strony. Nadal nic? Zobacz [Rozwiązywanie problemów](app-insights-troubleshoot-faq.md).
+Jeszcze nie ma danych? Kliknij przycisk **Odśwież w górnej części strony. Nadal nic? Zobacz [Rozwiązywanie problemów](app-insights-troubleshoot-faq.md).
 
 Blok Przeglądarka jest [blokiem Eksploratora metryk](app-insights-metrics-explorer.md) z wstępnie ustawionymi filtrami i wybranymi wykresami. Jeśli chcesz, możesz edytować przedział czasu, filtry i konfiguracje wykresów, a następnie zapisać wynik jako ulubiony. Kliknij przycisk **Przywróć domyślne**, aby wrócić do oryginalnej konfiguracji bloku.
 

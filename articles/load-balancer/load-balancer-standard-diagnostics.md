@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/9/2018
+ms.date: 10/11/2018
 ms.author: Kumud
-ms.openlocfilehash: 0711b52b76a22e32d05f27e6aae6c981bd2c148a
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 6c730455e2d8b590a4e4b9ca0392985918678bf4
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902607"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167702"
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Metryki i kondycji diagnostyki dla standardowego modułu równoważenia obciążenia
 
@@ -220,6 +220,6 @@ W poniższej tabeli przedstawiono różne stany kondycji zasobów i ich opisy:
 - Dowiedz się więcej o [usłudze Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md).
 - Dowiedz się więcej o swojej [łączności wychodzącej modułu równoważenia obciążenia](https://aka.ms/lboutbound).
 - Dowiedz się więcej o [usługa Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview).
-- Dowiedz się więcej o [metryk usługi Azure Monitor interfejsu API REST](https://docs.microsoft.com/rest/api/monitor/metrics/).
+- Dowiedz się więcej o [interfejsu API REST usługi Azure Monitor](https://docs.microsoft.com/rest/api/monitor/) i [sposób pobierania metryk za pośrednictwem interfejsu API REST](https://docs.microsoft.com/rest/api/monitor/metrics/metrics_list).
 
 
