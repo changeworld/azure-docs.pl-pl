@@ -1,6 +1,12 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: fbe7b703df033a3feacfa20e17868885e459c7e7
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311138"
 documentType: LandingData
-title: Dokumentacja usługi Azure Lab Services w wersji zapoznawczej (dawniej DevTest Labs)
+title: Dokumentacja usług Azure Lab Services (wersja zapoznawcza) i Azure DevTest Labs
 metadata:
   title: Dokumentacja usługi Azure Lab Services — samouczki i dokumentacja interfejsu API | Microsoft Docs
   description: Dowiedz się, jak użyć usługi Azure Lab Services do szybkiego skonfigurowania laboratorium badawczego lub testowego bądź laboratorium na potrzeby maratonu programistycznego lub zajęć dla Twojego zespołu lub studentów w chmurze. W samouczkach, przykładach i innych zasobach dotyczących platformy Azure pokazano, jak tworzyć i zabezpieczać laboratoria oraz zarządzać z nimi.
@@ -13,12 +19,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/06/2018
   ms.author: spelluru
-  ms.openlocfilehash: 1b37824b113fd9b1aaf225c5cb24b2dd27f1b47f
-  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-  ms.translationtype: HT
-  ms.contentlocale: pl-PL
-  ms.lasthandoff: 06/01/2018
-  ms.locfileid: "34636702"
 abstract:
   description: Dowiedz się, jak użyć usługi Azure Lab Services do szybkiego skonfigurowania laboratorium badawczego lub testowego bądź laboratorium na potrzeby maratonu programistycznego lub zajęć dla Twojego zespołu lub studentów w chmurze. W samouczkach, przykładach i innych zasobach dotyczących platformy Azure pokazano, jak tworzyć i zabezpieczać laboratoria oraz zarządzać z nimi.
 sections:

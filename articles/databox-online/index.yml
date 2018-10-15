@@ -1,23 +1,22 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 467d4d982d76f4defe8ed887ebcc3f99100af313
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: cd544367113986b3a3959c2bf50fac80a8b36bc5
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068999"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309080"
 documentType: LandingData
-title: Dokumentacja usługi Azure Data Box na potrzeby transferu danych offline
+title: Dokumentacja usługi Azure Data Box — transfer danych w trybie online
 metadata:
-  title: Dokumentacja usługi Azure Data Box na potrzeby transferu danych offline
-  description: Rodzina Azure Data Box umożliwia szybkie, niedrogie i niezawodne przesyłanie setek terabajtów danych na platformę Azure. Używaj urządzeń Data Box do obsługi transferów danych o wysokiej wydajności przez sieć.
-  services: databox-edge-gateway
+  title: Dokumentacja usługi Azure Data Box — transfer danych w trybie online
+  description: Urządzenia Data Box umożliwiają szybkie, niedrogie i niezawodne transfery danych na platformę Azure przez sieć.
+  services: databox
   author: alkohli
   manager: twooley
-  ms.service: databox-edge-gateway
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.service: databox
+  ms.subservice: edge
   ms.topic: landing-page
-  ms.date: 09/26/2018
+  ms.date: 10/12/2018
   ms.author: alkohli
 abstract:
   description: Rodzina Azure Data Box umożliwia szybkie, niedrogie i niezawodne przesyłanie setek terabajtów danych na platformę Azure. Używaj urządzeń Data Box do obsługi transferów danych o wysokiej wydajności przez sieć.<p>Wybierz usługę Data Box Gateway<SUP>wersja zapoznawcza</SUP> do wysyłania danych na potrzeby archiwizowania w chmurze, odzyskiwania po awarii lub przetwarzania danych w skali chmury.  Usługa Data Box Edge<SUP>wersja zapoznawcza</SUP> umożliwia filtrowanie, analizowanie i przekształcanie danych podczas przenoszenia ich na platformę Azure.</p><p>Z naszych samouczków dowiesz się, jak korzystać z usług Data Box Gateway i Data Box Edge do obsługi opartych na sieci transferów danych.</p>
@@ -30,13 +29,17 @@ sections:
     style: ordered
     items:
     - html: <a href="data-box-gateway-deploy-prep">Przygotowywanie do wdrażania usługi Azure Data Box Gateway</a>
-    - html: <a href="/azure/databox/data-box-deploy-provision-hyperv">Aprowizowanie usługi Azure Data Box Gateway w funkcji Hyper-V</a>
+    - html: <a href="data-box-gateway-deploy-provision-hyperv">Aprowizowanie usługi Azure Data Box Gateway w funkcji Hyper-V</a>
     - html: <a href="data-box-gateway-deploy-provision-vmware">Aprowizowanie usługi Azure Data Box Gateway w oprogramowaniu VMware</a>
     - html: <a href="data-box-gateway-deploy-connect-setup-activate">Łączenie, konfigurowanie i aktywowanie usługi Azure Data Box Gateway</a>
-    - html: <a href=data-box-gateway-deploy-add-shares">Transferowanie danych za pomocą usługi Azure Data Box Gateway</a>
+    - html: <a href="data-box-gateway-deploy-add-shares">Transfer danych za pomocą usługi Azure Data Box Gateway</a>
   - type: paragraph
     text: <b>Dla usługi Data Box Edge<SUP>wersja zapoznawcza</SUP></b>
   - type: list
     style: ordered
     items:
-    - html: <a href="data-box-edge-overview#sign-up">Utwórz konto</a>
+    - html: <a href="data-box-edge-deploy-prep">Przygotowywanie do wdrażania usługi Azure Data Box Edge</a>
+    - html: <a href="data-box-edge-deploy-install">Instalowanie usługi Azure Data Box Edge</a>
+    - html: <a href="data-box-edge-deploy-connect-setup-activate">Łączenie, konfigurowanie i aktywowanie usługi Azure Data Box Edge</a>
+    - html: <a href="data-box-edge-deploy-add-shares">Transfer danych za pomocą usługi Azure Data Box Edge</a>
+    - html: <a href="data-box-edge-deploy-configure-compute">Przekształcanie danych za pomocą usługi Azure Data Box Edge</a>

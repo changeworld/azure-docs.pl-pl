@@ -77,6 +77,7 @@
 #### [Wysoka dostępność w systemie Windows z udostępnionym dyskiem na potrzeby wystąpienia (A)SCS](sap-high-availability-guide-wsfc-shared-disk.md)
 #### [Wysoka dostępność w systemie Windows z udziałem plików SOFS na potrzeby wystąpienia (A)SCS](sap-high-availability-guide-wsfc-file-share.md)
 #### [Wysoka dostępność w systemie SUSE Linux na potrzeby wystąpienia (A)SCS](high-availability-guide-suse.md)
+#### [Wysoka dostępność w systemie Red Hat Enterprise Linux na potrzeby wystąpienia (A)SCS](high-availability-guide-rhel.md)
 ### Przygotowywanie infrastruktury platformy Azure
 #### [System Windows z udostępnionym dyskiem na potrzeby wystąpienia (A)SCS](sap-high-availability-infrastructure-wsfc-shared-disk.md)
 #### [System Windows z udziałem plików SOFS na potrzeby wystąpienia (A)SCS](sap-high-availability-infrastructure-wsfc-file-share.md)

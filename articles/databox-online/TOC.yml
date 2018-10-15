@@ -1,5 +1,5 @@
 items:
-- name: Usługa Azure Data Box do transferu danych online — dokumentacja
+- name: Dokumentacja usługi Azure Data Box — transfer danych w trybie online
   href: /azure/databox-online/
   expanded: true
 - name: Data Box Gateway
@@ -62,17 +62,13 @@ items:
       href: data-box-edge-deploy-configure-compute.md
 - name: Zasoby
   items:
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/?category=storage
-  - name: Azure Data Box — marketing
-    href: https://azure.microsoft.com/services/storage/databox-online
+  - name: Produkt Data Box Edge/Gateway
+    href: https://azure.microsoft.com/services/storage/databox/edge/
   - name: Cennik
-    href: https://azure.microsoft.com/pricing/
-  - name: Aktualizacje usług
-    href: https://azure.microsoft.com/updates/?product=databox
-ms.openlocfilehash: ddffcf431f93d81b2a91b81e5d1d1834c1e07883
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+    href: https://azure.microsoft.com/pricing/details/storage/databox/edge/
+ms.openlocfilehash: bfe9650709808df7ceb8dd127564c9d87fc18795
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068013"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309139"

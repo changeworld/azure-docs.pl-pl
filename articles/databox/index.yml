@@ -1,23 +1,22 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f4ef48157896d7cf4947fbc8ef6eba8b59ec414b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7056f5478838eec1cccf6329e172d86ea90d4dd8
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986522"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311052"
 documentType: LandingData
-title: Usługa Azure Data Box na potrzeby transferu danych offline
+title: Dokumentacja usługi Azure Data Box — transfer danych offline
 metadata:
-  title: Dokumentacja usługi Azure Data Box na potrzeby transferu danych offline
-  description: Rodzina Azure Data Box umożliwia szybkie, niedrogie i niezawodne przesyłanie setek terabajtów danych na platformę Azure. Urządzenia Data Box umożliwiają transfer danych w trybie offline, gdy istnieją ograniczenia związane z czasem, siecią lub kosztami.
+  title: Dokumentacja usługi Azure Data Box — transfer danych offline
+  description: Urządzenia Data Box umożliwiają transfer danych na platformę Azure w trybie offline, gdy istnieją ograniczenia związane z czasem, siecią lub kosztami.
   services: databox
   author: alkohli
   manager: twooley
   ms.service: databox
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: pod
   ms.topic: landing-page
-  ms.date: 09/24/2018
+  ms.date: 10/12/2018
   ms.author: alkohli
 abstract:
   description: Rodzina Azure Data Box umożliwia szybkie, niedrogie i niezawodne przesyłanie setek terabajtów danych na platformę Azure. Urządzenia Data Box umożliwiają transfer danych w trybie offline, gdy istnieją ograniczenia związane z czasem, siecią lub kosztami.<p>W zależności od rozmiaru danych wybierz wersję Data Box Disk, Data Box<SUP>wersja zapoznawcza</SUP> lub Data Box Heavy<SUP>wersja zapoznawcza</SUP>. Na każdym urządzeniu transfer danych na platformę Azure odbywa się w 4 prostych krokach — zamawianie, odbieranie, kopiowanie danych do urządzenia i zwracanie urządzenia na platformę Azure. W centrum danych platformy Azure dane są przekazywane, a następnie usuwane.</p><p>Dowiedz się, jak korzystać z usługi Data Box w celu transferowania danych w trybie offline dzięki naszym przewodnikom Szybki start i samouczkom.</p>
