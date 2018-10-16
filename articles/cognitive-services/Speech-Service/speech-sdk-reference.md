@@ -3,18 +3,18 @@ title: Odwołanie do zestawu SDK rozpoznawania mowy
 description: Odwołania do zestawu SDK funkcji rozpoznawania mowy.
 services: cognitive-services
 titleSuffix: Azure Cognitive Services
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 09/24/2018
-ms.author: v-jerkin
-ms.openlocfilehash: 76a20a5ce45e9711026897d885f3024a3322bcab
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.author: erhopf
+ms.openlocfilehash: cc43d1588f51afadcbecf041870fdaf119bad025
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816973"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165576"
 ---
 # <a name="speech-sdk-reference"></a>Odwołanie do zestawu SDK rozpoznawania mowy
 
