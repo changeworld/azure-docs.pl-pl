@@ -1,6 +1,6 @@
 ---
-title: Ocena Azure stosu Development Kit | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wdrożyć Azure stosu Development Kit do celów oceny.
+title: Ocena usługi Azure Stack Development Kit | Dokumentacja firmy Microsoft
+description: Informacje o sposobie wdrażania usługi Azure Stack Development Kit do celów oceny.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,83 +12,83 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 06/04/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.custom: mvc
-ms.openlocfilehash: a0e742ab3ac43cc7977761dd94c9689e3a7c2e0b
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: bf07fe56c65e53f5485b9927e0d704f80842cf3a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235189"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49338709"
 ---
-# <a name="quickstart-evaluate-the-azure-stack-development-kit"></a>Szybki Start: ocena Azure stosu Development Kit
+# <a name="quickstart-evaluate-the-azure-stack-development-kit"></a>Szybki Start: oceny usługi Azure Stack Development Kit
 
-[Azure stosu Development Kit (ASDK)](.\asdk\asdk-what-is.md) jest środowiskiem badań i rozwoju, które można wdrożyć do oceny i Wykaż stosu Azure funkcji i usług. Aby rozpocząć pracę z ASDK, należy przygotować hosta komputera, a następnie uruchom niektóre skrypty (instalacja zajmuje kilka godzin). Po wykonaniu tej można Zaloguj się do portali administratora lub użytkownika na rozpoczęcie korzystania z usługi Azure stosu.
+[Usługi Azure Stack Development Kit (ASDK)](.\asdk\asdk-what-is.md) jest środowiskiem środowisk testowych i programistycznych, które można wdrożyć do oceny i zademonstrowania funkcji usługi Azure Stack i usług. Aby rozpocząć pracę z ASDK, należy przygotować hosta sprzęt komputerowy, a następnie uruchom kilka skryptów (instalacja zajmuje kilka godzin). Po tym można Zaloguj się do portali administratora lub użytkownika Aby rozpocząć korzystanie z usługi Azure Stack.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="asdk-host-computer-requirements"></a>Wymagania dotyczące komputera hosta ASDK
 
-Przed zainstalowaniem ASDK, należy przygotować komputer, który będzie hostem zestaw deweloperski. Na komputerze deweloperskim zestaw host musi spełniać sprzętu, oprogramowania i wymagania dotyczące sieci opisanych w  **[przejrzyj zagadnienia związane z planowaniem wdrożenia ASDK](.\asdk\asdk-deploy-considerations.md)**.
+Przed zainstalowaniem ASDK, należy przygotować komputer, który będzie hostem deweloperski. Na komputerze deweloperskim zestaw host musi spełniać sprzętu, oprogramowania i wymagania dotyczące sieci opisane w  **[przejrzyj zagadnienia dotyczące planowania wdrożenia ASDK](.\asdk\asdk-deploy-considerations.md)**.
 
 > [!TIP]
-> Można użyć [wymagania dotyczące wdrażania stosu Azure Sprawdź narzędzie](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) po zainstalowaniu systemu operacyjnego na komputerze hosta programowanie zestawu, aby upewnić się, że sprzęt spełnia wszystkie wymagania.
+> Możesz użyć [wymagania dotyczące wdrażania usługi Azure Stack Sprawdź narzędzie](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) po zainstalowaniu systemu operacyjnego na komputerze deweloperskim zestaw hosta aby upewnić się, że sprzęt spełnia wszystkie wymagania.
 
 ### <a name="account-requirements"></a>Wymagania dotyczące konta
 
-Należy również wybrać za pomocą usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) jako rozwiązanie tożsamości dla danego wdrożenia. Przejrzyj wymagania dotyczące konta w  **[zagadnienia dotyczące wdrażania](.\asdk\asdk-deploy-considerations.md#account-requirements)**
+Należy również wybrać między za pomocą usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) jako rozwiązanie tożsamości dla danego wdrożenia. Przejrzyj wymagania dotyczące konta w  **[zagadnienia dotyczące wdrażania](.\asdk\asdk-deploy-considerations.md#account-requirements)**
 
-## <a name="download-and-extract-the-deployment-package"></a>Pobierać i wyodrębniać pakiet wdrożeniowy
+## <a name="download-and-extract-the-deployment-package"></a>Pobierz i Wyodrębnij pakiet wdrożeniowy
 
-Po przygotowaniu komputera development kit hosta, pobierać i wyodrębniać ASDK pakietu wdrożeniowego. Pakiet wdrażania zawiera pliki instalacyjne stosu Azure i pliku Cloudbuilder.vhdx, czyli wirtualnego dysku twardego (VHD) z systemem operacyjnym rozruchowego.
+Po przygotowaniu komputera-hosta kit programowania, Pobierz i Wyodrębnij pakiet wdrożeniowy ASDK. Pakiet wdrożeniowy zawiera pliki instalacyjne usługi Azure Stack i pliku Cloudbuilder.vhdx, czyli wirtualnego dysku twardego (VHD) z rozruchowego systemu operacyjnego.
 
-Możesz pobrać pakiet wdrożeniowy hosta zestawu rozwoju lub do innego komputera. Pliki wyodrębnionego wdrożenia podjąć 60 GB wolnego miejsca na dysku, więc za pomocą innego komputera może pomóc zmniejszyć wymagania dotyczące magazynu na hoście development kit.
+Możesz pobrać pakiet wdrożeniowy na hoście kit rozwoju lub na innym komputerze. Pliki wdrożenia wyodrębnione potrwać 60 GB wolnego miejsca na dysku, dzięki czemu za pomocą innego komputera może pomóc zmniejszyć wymagania dotyczące magazynu na hoście development kit.
 
-**[Pobierać i wyodrębniać Azure stosu Development Kit (ASDK)](.\asdk\asdk-download.md)**
+**[Pobierz i Wyodrębnij usługi Azure Stack Development Kit (ASDK)](.\asdk\asdk-download.md)**
 
 ## <a name="prepare-the-host-computer"></a>Przygotuj komputer-host
 
-Przed zainstalowaniem ASDK, należy przygotować środowisko hosta, a system jest skonfigurowany do uruchamiania z zestaw deweloperski wirtualnego dysku twardego. Po ponownym uruchomieniu hosta rozruchu z CloudBuilder.vhdx i możesz przystąpić do wdrażania ASDK.
+Przed zainstalowaniem ASDK należy przygotować środowisko hosta, a system jest skonfigurowany do uruchamiania z zestawu SDK wirtualnego dysku twardego. Po ponownym uruchomieniu hosta uruchamia się z CloudBuilder.vhdx i możesz przystąpić do wdrażania ASDK.
 
 **[Przygotuj komputer-host ASDK](.\asdk\asdk-prepare-host.md)**
 
-## <a name="install-the-asdk-on-the-host-computer"></a>Zainstaluj ASDK na komputerze hosta
+## <a name="install-the-asdk-on-the-host-computer"></a>Zainstaluj ASDK na komputerze-hoście
 
-Po uruchomieniu komputera hosta z dysku VHD, można wdrożyć zestaw deweloperski Cloudbuilder środowiska wirtualnego. Można wdrożyć ASDK przy użyciu graficznego interfejsu użytkownika (GUI), uruchamiając skrypt programu PowerShell asdk installer.ps1 lub z [wiersza polecenia programu PowerShell](.\asdk\asdk-deploy-powershell.md)
+Po rozruchu komputera hosta z wirtualnego dysku twardego można wdrożyć zestaw development kit Cloudbuilder środowiska wirtualnego. Możesz wdrożyć ASDK przy użyciu graficznego interfejsu użytkownika (GUI), pod warunkiem, uruchamiając skrypt programu PowerShell asdk installer.ps1 lub z [wiersza polecenia programu PowerShell](.\asdk\asdk-deploy-powershell.md)
 
 > [!NOTE]
-> Po uruchomieniu hosta z obrazu Cloudbuilder.vhdx, istnieje możliwość konfigurowania [ustawieniami telemetrii stosu Azure](.\asdk\asdk-telemetry.md#set-telemetry-level-in-the-windows-registry) *przed* instalowanie ASDK.
+> Po uruchomieniu hosta za pomocą obrazu Cloudbuilder.vhdx, istnieje możliwość konfigurowania [ustawieniami telemetrii usługi Azure Stack](.\asdk\asdk-telemetry.md#set-telemetry-level-in-the-windows-registry) *przed* instalowanie ASDK.
 
-**[Zainstaluj zestaw Azure stosu Development Kit (ASDK)](.\asdk\asdk-install.md)**
+**[Zainstaluj zestaw Azure Stack Development Kit (ASDK)](.\asdk\asdk-install.md)**
 
 ## <a name="perform-post-deployment-configurations"></a>Przeprowadź konfiguracje po wdrożeniu
 
-Po zainstalowaniu ASDK, istnieje kilka zalecanych kontroli po instalacji i zmian konfiguracji, które należy utworzyć.
+Po zainstalowaniu ASDK, istnieje kilka zalecanych kontroli po instalacji i zmian konfiguracji, które powinny być.
 
 **Narzędzia**
 
-Instalowanie narzędzi Azure PowerShell stosu i GitHub i sprawdzić, powodzenia instalacji przy użyciu polecenia cmdlet test-AzureStack.
+Instalowanie narzędzi usługi Azure Stack PowerShell i serwisu GitHub i sprawdź powodzenia instalacji przy użyciu polecenia cmdlet test-AzureStack.
 
 **Rozwiązania z tożsamością**
 
-Do wdrożenia, który używa usługi Azure AD musisz aktywować zarówno stosu Azure administratora i dzierżawcy portali. Aktywacja zgadza się na zapewnieniu stosu Azure portalu i usługi Azure Resource Manager odpowiednie uprawnienia (wyświetlane na stronie zgoda) dla wszystkich użytkowników z katalogu.
+Dla wdrożenia, które używa usługi Azure AD możesz aktywować zarówno usługi Azure Stack administratora i dzierżawy portali. Aktywacja wyraża zgodę dające w portalu Azure Stack i Azure Resource Manager odpowiednie uprawnienia (na liście na stronie zgoda) do wszystkich użytkowników katalogu.
 
 **Wygaśnięcie hasła**
 
-Należy zresetować zasady wygasania haseł, aby upewnić się, że hasło dla hosta development kit nie wygasa przed zakończeniem okresu oceny.
+Należy zresetować zasady wygasania haseł, aby upewnić się, że hasło dla hosta kit rozwoju nie wygasa przed zakończeniem okresu Twojej oceny.
 
 > [!NOTE]
-> Istnieje również możliwość skonfigurowania [ustawieniami telemetrii stosu Azure](.\asdk\asdk-telemetry.md#enable-or-disable-telemetry-after-deployment) *po* instalowanie ASDK.
+> Istnieje również możliwość skonfigurowania [ustawieniami telemetrii usługi Azure Stack](.\asdk\asdk-telemetry.md#enable-or-disable-telemetry-after-deployment) *po* instalowanie ASDK.
 
-**[Zadania wdrażania POST ASDK](.\asdk\asdk-post-deploy.md)**
+**[Wpis ASDK zadania związane z wdrażaniem](.\asdk\asdk-post-deploy.md)**
 
-## <a name="register-with-azure"></a>Zarejestrować w usłudze Azure
+## <a name="register-with-azure"></a>Rejestrowania na platformie Azure
 
-Należy zarejestrować stosu Azure przy użyciu platformy Azure, co pozwala [pobieranie elementów witrynę Azure marketplace](.\asdk\asdk-marketplace-item.md) stos Azure.
+Należy zarejestrować usługi Azure Stack przy użyciu platformy Azure, aby można było [pobieranie elementów portalu Azure marketplace](.\asdk\asdk-marketplace-item.md) do usługi Azure Stack.
 
-**[Zarejestruj stosu Azure przy użyciu platformy Azure](.\asdk\asdk-register.md)**
+**[Rejestrowania usługi Azure Stack na platformie Azure](.\asdk\asdk-register.md)**
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Gratulacje! Wykonując kroki tego przewodnika Szybki Start masz środowisko ASDK z [administratora](https://adminportal.local.azurestack.external) portalu i [użytkownika](https://portal.local.azurestack.external) portalu.
+Gratulacje! Wykonując czynności opisane w tym przewodniku Szybki Start masz środowisko ASDK z [administratora](https://adminportal.local.azurestack.external) portalu i [użytkownika](https://portal.local.azurestack.external) portalu.

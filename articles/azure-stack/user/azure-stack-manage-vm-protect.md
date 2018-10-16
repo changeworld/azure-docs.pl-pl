@@ -1,6 +1,6 @@
 ---
-title: Ochrona maszyn wirtualnych wdrożonych na stosie Azure | Dokumentacja firmy Microsoft
-description: Wskazówki na temat ochrony maszyn wirtualnych wdrożonych na stosie Azure.
+title: Ochrona maszyn wirtualnych wdrożonych w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Wskazówki na temat ochrony maszyn wirtualnych wdrożonych w usłudze Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,158 +12,158 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/14/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: hector.linares
-ms.openlocfilehash: 734ee0e6ffb0dab660a2b63b431780208e0e0484
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 3c27aecf18fcb5e14347d8f02d71891b351292be
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165268"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341841"
 ---
-# <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Ochrona maszyn wirtualnych wdrożonych na stosie Azure
+# <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Ochrona maszyn wirtualnych wdrożonych w usłudze Azure Stack
 
-Użyj w tym artykule jako przewodnik dotyczący tworzenia planu ochrony maszyn wirtualnych (VM), które użytkownicy wdrażanie na stosie Azure.
+Użyj tego artykułu jako przewodnika do opracowywania planu ochrony maszyn wirtualnych (VM), które użytkownicy wdrożenia w usłudze Azure Stack.
 
-Do ochrony przed utratą danych i nieplanowanych przestojów, należy wdrożyć plan odzyskiwania kopii zapasowej lub odzyskiwania po awarii dla swoich danych i aplikacji użytkownika. Ten plan muszą być unikatowe dla każdej aplikacji, ale następuje struktury ustala ciągłość kompleksowe Twojej organizacji i strategia odzyskiwania (BC i odzyskiwania po awarii). Dobry punkt wyjścia jest [projektowanie aplikacji odporne na platformie Azure](https://docs.microsoft.com/azure/architecture/resiliency), co umożliwia ogólne wzorce i rozwiązania w zakresie dostępności aplikacji i odporność.
+Do ochrony przed utratą danych i nieplanowanych przestojów, konieczne jest wdrożenie planu odzyskiwania kopii zapasowej lub odzyskiwania po awarii dla aplikacji użytkownika i ich danych. Ten plan muszą być unikatowe dla każdej aplikacji, ale platforma ustanowione przez kompleksowy zestaw funkcji ciągłości Twojej organizacji i strategia odzyskiwania (BC i odzyskiwania po awarii) jest zgodna. To dobry punkt wyjścia [projektowanie aplikacji odpornych na błędy dla platformy Azure](https://docs.microsoft.com/azure/architecture/resiliency), co umożliwia ogólne wzorce i rozwiązania dostępności aplikacji i zwiększa odporność.
 
 >[!IMPORTANT]
-> Testowanie planów odzyskiwania kopii zapasowej i odzyskiwania po awarii w sposób ciągły. Musisz tutaj, aby upewnić się, że:
-> * Plany pracy
-> * Plany nadal spełniają wymagania, które zostały zaprojektowane tak, aby uzyskać.
+> Testowanie planów odzyskiwania kopii zapasowych i odzyskiwania po awarii w sposób ciągły. Musisz tutaj, aby upewnić się, że:
+> * Plany działają
+> * Plany nadal spełniają wymagania, które zostały zaprojektowane dla.
 
-## <a name="azure-stack-infrastructure-recovery"></a>Usługa Azure recovery infrastruktury stosu
+## <a name="azure-stack-infrastructure-recovery"></a>Usługa Azure Stack infrastruktury odzyskiwania
 
-Użytkownicy są zobowiązani do ochrony ich maszyn wirtualnych oddzielnie z usług infrastruktury platformy Azure stosu.
+Użytkownicy są odpowiedzialni za ochronę maszyn wirtualnych osobno w usługach infrastruktury Azure Stack.
 
-Plan odzyskiwania usługi infrastruktury platformy Azure stosu **nie** obejmują odzyskiwania maszyny wirtualne użytkowników, konta magazynu i bazy danych. Jako właściciel aplikacji jest odpowiedzialny za wdrażanie plan odzyskiwania danych i aplikacji.
+Plan odzyskiwania dla usług infrastruktury Azure Stack **nie** obejmują odzyskiwanie maszyn wirtualnych użytkowników, kont magazynu lub baz danych. Jako właściciel aplikacji jesteś odpowiedzialny za realizację planu odzyskiwania w przypadku aplikacji i danych.
 
-Jeśli chmury Azure stosu jest w trybie offline przez dłuższy czas lub trwale nieodwracalny, musisz mieć odzyskiwania planowanie w miejsce którego:
+Czy chmurą usługi Azure Stack jest w trybie offline przez dłuższy czas trwale nieodwracalny, musisz mieć odzyskiwania planu w miejscu, które:
 
-* Zapewnia minimalnym czasem przestojów
-* Przechowuje krytyczne maszyn wirtualnych, np. serwerów bazy danych
-* Umożliwia aplikacjom zachować obsługi żądań użytkowników
+* Zapewnia minimalnych przestojach
+* Przechowuje newralgicznych maszyn wirtualnych, takich jak serwery bazy danych, sieci
+* Umożliwia aplikacjom zapewnić obsługę żądań użytkowników
 
-Operator chmury Azure stosu jest odpowiedzialny za tworzenie planu odzyskiwania dla podstawowej infrastruktury stosu Azure i usług. Aby dowiedzieć się więcej, przeczytaj artykuł na temat [odzyskać przed utratą danych w wyniku katastrofy](https://docs.microsoft.com/azure/azure-stack/azure-stack-backup-recover-data).
+Operator chmury Azure Stack jest odpowiedzialny za tworzenie planu odzyskiwania dla podstawowej infrastruktury Azure Stack i usług. Aby dowiedzieć się więcej, przeczytaj artykuł [sprawności po utracie danych w wyniku katastrofy](https://docs.microsoft.com/azure/azure-stack/azure-stack-backup-recover-data).
 
-## <a name="sourcetarget-combinations"></a>Kombinacje źródłowego/docelowego
+## <a name="sourcetarget-combinations"></a>Źródłowymi/docelowymi kombinacje
 
-Każdej chmury Azure stosu jest wdrażany do jednego centrum danych. Oddzielne środowiska jest wymagana, więc można odzyskać aplikacji. Środowisko odzyskiwania może być innej chmury Azure stosu w różnych centrach danych lub w chmurze publicznej Azure. Twoje suwerenności danych i wymagania dotyczące zachowania poufności danych określi środowiska odzyskiwania dla aplikacji. Jak można włączyć ochrony dla każdej aplikacji, należy wybrać opcję odzyskiwania określonych dla każdej z nich. Aplikacje mogą mieć w jednej subskrypcji wykonywanie kopii zapasowych danych do innego centrum danych. W ramach innej subskrypcji można replikować danych w chmurze publicznej platformy Azure.
+Każda chmura usługi Azure Stack jest wdrażany w jednym centrum danych. Oddzielnego środowiska jest wymagany, dzięki czemu można odzyskać Twojej aplikacji. Środowisko odzyskiwania może być innej chmury Azure Stack w innym centrum danych lub chmury publicznej platformy Azure. Swoje wymagania ochrony prywatności danych i niezależność danych określi środowisko odzyskiwania aplikacji. Jak można włączyć ochrony dla każdej aplikacji, masz swobodę wyboru określonych opcji odzyskiwania dla każdej z nich. Aplikacje mogą mieć w jednej subskrypcji, tworzenie kopii zapasowych danych do innego centrum danych. W innej subskrypcji można replikować dane do chmury publicznej platformy Azure.
 
-Zaplanuj strategię odzyskiwania kopii zapasowej i odzyskiwania po awarii dla każdej aplikacji określić obiekt docelowy dla każdej aplikacji. Plan odzyskiwania może pomóc organizacji poprawnie rozmiaru magazynu wymaganą wydajność lokalną i projektu zużycie w chmurze publicznej.
+Zaplanuj strategię odzyskiwania kopii zapasowych i odzyskiwania po awarii dla każdej aplikacji określić cel dla każdej aplikacji. Plan odzyskiwania ułatwi Twojej organizacji, prawidłowo rozmiar magazynu wymaganą pojemność lokalnej i projektu zużycia w chmurze publicznej.
 
-|  | Globalne Azure | Azure stosu wdrożone w centrum danych dostawcy usług Kryptograficznych i obsługiwanej przez dostawcy usług Kryptograficznych | Azure stosu wdrożone w centrum danych klienta i obsługiwanej przez klienta |
+|  | Global Azure | Usługa Azure Stack wdrożone w centrum danych dostawcy usług Kryptograficznych i eksploatowane przy pomocy dostawcy CSP | Usługa Azure Stack wdrożone w centrum danych klienta i obsługiwane przez klienta |
 |------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
-| **Azure stosu wdrożone w centrum danych dostawcy usług Kryptograficznych i obsługiwanej przez dostawcy usług Kryptograficznych** | Maszyny wirtualne użytkowników są wdrażane na stosie Azure obsługiwane dostawcy usług Kryptograficznych. Maszyny wirtualne użytkowników są przywrócone z kopii zapasowej lub przekazała pracę awaryjną bezpośrednio na platformie Azure. | Dostawca usług Kryptograficznych działa podstawowych i pomocniczych wystąpień Azure stosu w ich własnych centrach danych. Maszyny wirtualne użytkowników są przywracane lub przejścia w tryb failover między dwoma wystąpieniami stosu Azure. | Dostawca usług Kryptograficznych działa Azure stosu w lokacji głównej. Centrum danych klienta jest elementem docelowym przywracania lub pracy awaryjnej. |
-| **Azure stosu wdrożone w centrum danych klienta i obsługiwanej przez klienta** | Maszyny wirtualne użytkowników są wdrażane do klienta obsługiwane stosu Azure. Maszyny wirtualne użytkowników są przywrócone z kopii zapasowej lub przekazała pracę awaryjną bezpośrednio na platformie Azure. | Klient działa podstawowych i pomocniczych wystąpień Azure stosu w ich własnych centrach danych. Maszyny wirtualne użytkowników są przywracane lub przejścia w tryb failover między dwoma wystąpieniami stosu Azure. | Klient działa Azure stosu w lokacji głównej. Dostawca usług Kryptograficznych w centrum danych jest elementem docelowym przywracania lub pracy awaryjnej. |
+| **Usługa Azure Stack wdrożone w centrum danych dostawcy usług Kryptograficznych i eksploatowane przy pomocy dostawcy CSP** | Użytkownik maszyny wirtualne są wdrażane do dostawcy usług Kryptograficznych obsługiwane usługi Azure Stack. Maszyny wirtualne użytkowników przywróconej z kopii zapasowej lub Failover bezpośrednio na platformie Azure. | Dostawcy usług Kryptograficznych działa głównych i dodatkowych wystąpień usługi Azure Stack w ich własnych centrach danych. Maszyny wirtualne użytkowników są przywracane lub przełączone w tryb failover między dwoma wystąpieniami usługi Azure Stack. | Dostawcy usług Kryptograficznych działa w usłudze Azure Stack w lokacji głównej. Centrum danych klienta jest celem przywracania lub pracy awaryjnej. |
+| **Usługa Azure Stack wdrożone w centrum danych klienta i obsługiwane przez klienta** | Użytkownik maszyny wirtualne są wdrażane na klienta obsługiwane w usłudze Azure Stack. Maszyny wirtualne użytkowników przywróconej z kopii zapasowej lub Failover bezpośrednio na platformie Azure. | Klient działa głównych i dodatkowych wystąpień usługi Azure Stack w ich własnych centrach danych. Maszyny wirtualne użytkowników są przywracane lub przełączone w tryb failover między dwoma wystąpieniami usługi Azure Stack. | Klient działa w usłudze Azure Stack w lokacji głównej. Centrum danych dostawcy rozwiązań w Chmurze jest celem przywracania lub pracy awaryjnej. |
 
-![Kombinacje źródłowy i docelowy](media\azure-stack-manage-vm-backup\vm_backupdataflow_01.png)
+![Kombinacje źródło cel](media\azure-stack-manage-vm-backup\vm_backupdataflow_01.png)
 
 ## <a name="application-recovery-objectives"></a>Cele odzyskiwania aplikacji
 
-Należy określić ilość utraconych czasem przestoju oraz danych, które organizacja może tolerować dla każdej aplikacji. Za kwantyfikacja Przestój i utraty danych można utworzyć plan odzyskiwania, który minimalizuje wpływ awarii w Twojej organizacji. Dla każdej aplikacji należy wziąć pod uwagę:
+Należy określić ilość przestoju i utraty danych, które Twoja organizacja może tolerować dla każdej aplikacji. Za kwantyfikacja przestoju i utraty danych można utworzyć plan odzyskiwania, które minimalizuje wpływ awarii w Twojej organizacji. Dla każdej aplikacji należy wziąć pod uwagę:
 
- - **Celu czasu odzyskiwania (RTO)**  
-RTO to maksymalny czas dopuszczalne aplikacji mogą być niedostępne po incydentu. Na przykład RTO 90 minut oznacza, że musi mieć możliwość przywrócenia stosowania do uruchomione w ciągu 90 minut od początku awarii. Jeśli masz mało RTO może przechowywać drugie wdrożenie stale uruchomione w stan wstrzymania, aby zapewnić ochronę przed regionalnej awarii.
+ - **Cel czasu odzyskiwania (RTO)**  
+Czas RTO wynosi maksymalny dopuszczalny czas, który aplikacja może być niedostępna po incydencie. Na przykład RTO 90 minut oznacza, że użytkownik musi być możliwe do przywrócenia aplikacji do stanu roboczego w ciągu 90 minut od początku awarii. Jeśli masz niski wskaźnik RTO, możesz przechowywać stale uruchomione w stan wstrzymania, aby zapewnić ochronę przed awarią regionalną drugie wdrożenie.
  - **Cel punktu odzyskiwania (RPO)**  
-Cel punktu odzyskiwania to maksymalny czas trwania utraty danych, która jest dopuszczalny podczas awarii. Jeśli na przykład przechowujesz dane w pojedynczej bazie danych bez replikacji do innych baz danych i co godzinę wykonujesz kopię zapasową, możesz stracić nawet godzinę danych.
+Cel punktu odzyskiwania jest maksymalny czas trwania utraty danych, który jest dopuszczalny podczas awarii. Jeśli na przykład przechowujesz dane w pojedynczej bazie danych bez replikacji do innych baz danych i co godzinę wykonujesz kopię zapasową, możesz stracić nawet godzinę danych.
 
-RTO i RPO są wymaganiami biznesowymi. Przeprowadzenia oceny ryzyka do definiowania RTO aplikacji i cel punktu odzyskiwania.
+RTO i RPO są wymaganiami biznesowymi. Należy przeprowadzić ocenę ryzyka, aby zdefiniować RTO i RPO aplikacji.
 
-Metryka innego **średniego czasu Odzyskaj** (MTTR), która jest średni czas potrzebny do przywrócenia aplikacji po awarii. MTTR jest wartością empiryczne dla systemu. Jeśli czas MTTR przekracza czas RTO, wówczas awaria w systemie spowoduje niedopuszczalną przerwę w działalności biznesowej, ponieważ nie będzie możliwe przywrócenie systemu w ramach określonego czasu RTO.
+Jest kolejną metrykę **średniego czasu odzyskiwanie** (MTTR), czyli Średni czas potrzebny do przywrócenia aplikacji po awarii. MTTR to empiryczny wartości dla systemu. Jeśli czas MTTR przekracza czas RTO, wówczas awaria w systemie spowoduje niedopuszczalną przerwę w działalności biznesowej, ponieważ nie będzie możliwe przywrócenie systemu w ramach określonego czasu RTO.
 
 ### <a name="backup-restore"></a>Przywracanie kopii zapasowej
 
-Najbardziej typowe schemat ochrony dla aplikacji opartych na maszyna wirtualna ma używać oprogramowania kopii zapasowej. Tworzenie kopii zapasowych maszyn wirtualnych zwykle zawiera system operacyjny, konfiguracja systemu operacyjnego, plików binarnych aplikacji i danych aplikacji. Kopie zapasowe są tworzone przez tworzenie migawki woluminu, dysków lub całą maszynę Wirtualną. Stosu Azure elastyczność tworzenia kopii zapasowych z w kontekście systemu operacyjnego gościa lub z magazynu Azure stosu i obliczeniowe interfejsów API. Stos Azure nie obsługuje pobierania tworzenia kopii zapasowych na poziomie funkcji hypervisor.
+Najbardziej typowe schemat ochrony dla aplikacji opartych na maszynie Wirtualnej jest użycie oprogramowania do tworzenia kopii zapasowej. Tworzenie kopii zapasowej maszyny Wirtualnej zwykle zawiera system operacyjny, konfiguracja systemu operacyjnego, plików binarnych aplikacji i danych aplikacji. Kopie zapasowe są tworzone przez wykonanie migawki woluminów, dysków lub całą maszynę Wirtualną. Dzięki usłudze Azure Stack elastyczność tworzenia kopii zapasowych z w ramach systemu operacyjnego gościa lub z magazynu usługi Azure Stack i obliczenia interfejsów API. Usługa Azure Stack nie obsługuje wykonywanie kopii zapasowych, na poziomie funkcji hypervisor.
  
-![Restor kopii zapasowej](media\azure-stack-manage-vm-backup\vm_backupdataflow_03.png)
+![Kopia zapasowa restor](media\azure-stack-manage-vm-backup\vm_backupdataflow_03.png)
 
-Odzyskiwanie aplikacji wymaga Przywracanie przynajmniej jednej maszyny wirtualnej do tej samej chmury, lub do nowej chmury. Możesz zastosować chmury w centrum danych lub w chmurze publicznej. Wybrana chmura znajduje się całkowicie w formantu i opierają się na wymagań suwerenności i poufności informacji w danych.
+Odzyskiwanie aplikacji wymaga, aby przywracanie przynajmniej jednej maszyny wirtualnej do tej samej chmurze lub do nowej chmury. Można wskazać chmurę w centrum danych lub chmury publicznej. Chmury, któremu możesz wybrać, jest w całości w ramach kontroli nad i opiera się na wymagania dotyczące ochrony prywatności i niezależność danych.
  
- - RTO: Przestój mierzony w godzinach
- - Cel punktu odzyskiwania: Utraty danych zmiennej (w zależności od częstotliwości tworzenia kopii zapasowej)
+ - Cel czasu odzyskiwania: Przestój mierzonego w godzinach
+ - Cel punktu odzyskiwania: Utraty danych zmiennej (w zależności od częstotliwości wykonywania kopii zapasowych)
  - Topologia wdrażania: aktywny/pasywny
 
 #### <a name="planning-your-backup-strategy"></a>Planowanie strategii tworzenia kopii zapasowych
 
-Planowanie strategii tworzenia kopii zapasowych i definiowania wymagań skali rozpoczyna się od określającą liczbę wystąpień maszyn wirtualnych, które muszą być chronione. Tworzenie kopii zapasowych wszystkich maszyn wirtualnych na wszystkich serwerach w środowisku jest wspólnej strategii. Jednak z stosu Azure są niektóre maszyny wirtualne, które należy wykonać kopię zapasową. Na przykład maszyn wirtualnych w zestawie skalowania są traktowane jako tymczasowych zasoby, które mogą występować i przejść, czasami bez powiadomienia. Trwałe dane, które wymagają ochrony są przechowywane w oddzielnych repozytorium, takie jak Magazyn bazy danych lub obiektu.
+Planowanie strategii tworzenia kopii zapasowych i definiowanie wymagań skali rozpoczyna się od określającą liczbę wystąpień maszyn wirtualnych, które muszą być chronione. Tworzenie kopii zapasowych wszystkich maszyn wirtualnych na wszystkich serwerach w środowisku jest typowych strategii. Dzięki usłudze Azure Stack, istnieją niektóre maszyny wirtualne, które należy wykonać kopię. Na przykład maszyny wirtualne w zestawie skalowania są traktowane jako efemeryczne zasoby, które mogą występować i przejść, czasami bez powiadomienia. Trwałość danych, które muszą być chronione znajduje się w oddzielnych repozytorium, takich jak sklep bazy danych lub obiektu.
 
-Ważne uwagi dotyczące tworzenia kopii zapasowej maszyn wirtualnych na stosie Azure:
+Ważne uwagi dotyczące tworzenia kopii zapasowych maszyn wirtualnych w usłudze Azure Stack:
 
  - **Kategoryzacji**
-    - Należy wziąć pod uwagę modelu, w której użytkownicy będą chcieli w kopii zapasowej maszyny Wirtualnej.
-    - Zdefiniuj odzyskiwania umowy dotyczącej poziomu usług (SLA) na podstawie priorytetu aplikacji lub wpływ na działalność biznesową.
+    - Należy wziąć pod uwagę modelu, w którym użytkownicy Zezwól na korzystanie z kopii zapasowych maszyn wirtualnych.
+    - Zdefiniuj odzyskiwania Umowa dotycząca poziomu usług (SLA) na podstawie priorytetu aplikacji lub wpływ na działalność.
  - **Skalowanie**
-    - Podczas dołączania dużą liczbą nowych maszyn wirtualnych (jeśli kopia zapasowa jest wymagana), należy wziąć pod uwagę rozłożona kopii zapasowych.
-    - Ocena kopii zapasowej produktów, które można skutecznie przechwytywanie i przesyłanie danych kopii zapasowej, aby zminimalizować zawartości zasobów w ramach rozwiązania.
-    - Ocena kopii zapasowej produktów, które skutecznie przechowywać dane kopii zapasowej przy użyciu przyrostowej lub różnicowej kopii zapasowych można zminimalizować pełnych kopii zapasowych na wszystkich maszynach wirtualnych w środowisku.
+    - Podczas dołączania opartego dużą liczbą nowych maszyn wirtualnych (jeśli jest to kopia zapasowa jest wymagana), należy wziąć pod uwagę samodzielnym kopii zapasowych.
+    - Ocena kopii zapasowej produktów, które mogą efektywnie przechwytywanie i przesyłanie danych kopii zapasowej, aby zminimalizować zawartości zasobów rozwiązania.
+    - Oceń produkty kopii zapasowej, które wydajnie przechowywać dane kopii zapasowej za pomocą przyrostowych lub różnicowej kopii zapasowej, aby zminimalizować konieczność wykonywania pełnych kopii zapasowych dla wszystkich maszyn wirtualnych w środowisku.
  - **Przywracanie**
-    - Dyski wirtualne, dane aplikacji w ramach istniejącej maszyny Wirtualnej, lub całego zasobu maszyny Wirtualnej i skojarzone dyski wirtualne, można przywrócić kopii zapasowej produktów. Schemat przywracania, który należy zależy od tego, jak zamierzasz przywrócić aplikację i będą miały wpływ czasu aplikacji do odzyskiwania. Na przykład może być łatwiejsze do wdrożenia programu SQL server z szablonu, a następnie przywróć bazy danych zamiast Przywracanie całą maszynę Wirtualną lub zestaw maszyn wirtualnych.
+    - Produkty kopii zapasowej można przywrócić dyski wirtualne, dane aplikacji w ramach istniejącej maszyny Wirtualnej lub całego zasobu maszyny Wirtualnej i powiązanymi dyskami wirtualnymi. Schemat przywracania, czego potrzebujesz zależy od tego, jak zamierzasz przywrócić aplikację i będzie mieć wpływ na czas odzyskiwania aplikacji. Na przykład może być łatwiejsze do ponownego wdrożenia programu SQL server na podstawie szablonu, a następnie przywróć bazy danych zamiast całej maszyny Wirtualnej lub zestawu maszyn wirtualnych.
 
-### <a name="replicationmanual-failover"></a>Replikacja/ręczną pracę awaryjną
+### <a name="replicationmanual-failover"></a>Replikacja/ręcznej pracy awaryjnej
 
-Alternatywne podejście do obsługi wysokiej dostępności jest replikowanie maszyn wirtualnych z aplikacji do innej i zależne od ręcznego przełączania trybu failover. Replikacja systemu operacyjnego, plików binarnych aplikacji i danych aplikacji można przeprowadzić na poziomie systemu operacyjnego gościa lub poziom maszyny Wirtualnej. Tryb failover odbywa się przy użyciu dodatkowego oprogramowania, który nie jest częścią aplikacji.
+Alternatywne podejście do obsługi wysokiej dostępności jest replikacja maszyn wirtualnych aplikacji do innej chmury i polegać na ręcznej pracy awaryjnej. Replikacja systemu operacyjnego, plików binarnych aplikacji i danych aplikacji można wykonać na poziomie maszyny Wirtualnej lub na poziomie systemu operacyjnego gościa. Przełączenie w tryb failover odbywa się przy użyciu dodatkowego oprogramowania, który nie jest częścią aplikacji.
 
-Takie podejście aplikacja jest wdrażana w jednej chmury i jej maszyny Wirtualnej są replikowane do innych chmury. Jeśli trybu failover zostanie wywołany, pomocniczej maszyny wirtualne muszą włączony w chmurze drugiego. W niektórych scenariuszach pracy awaryjnej tworzy dyski maszyn wirtualnych i dołącza do nich. Ten proces może potrwać długo, szczególnie w przypadku wymaga sekwencji rozruchu określonych aplikacji wielowarstwowych. Można również kroki, które należy uruchomić, zanim aplikacja jest gotowa do uruchomienia, obsługi żądań.
+Dzięki tej metodzie aplikacja jest wdrażana w chmurze jeden i jego maszyny Wirtualnej są replikowane do innych chmury. W przypadku przejścia w tryb failover zostaje wyzwolona, pomocniczej maszyny wirtualne muszą włączony w chmurze drugiego. W niektórych scenariuszach tryb failover tworzy dyski maszyn wirtualnych oraz dołącza do nich. Ten proces może potrwać długo, szczególnie w przypadku aplikacji wielowarstwowych, wymagającego sekwencji rozruchu określone. Można również kroki, które mają zostać wykonane, zanim aplikacja jest gotowa do uruchomienia, obsługi żądań.
 
-![Replikacja ręczną pracę awaryjną](media\azure-stack-manage-vm-backup\vm_backupdataflow_02.png)
+![Replikacja ręcznej pracy awaryjnej](media\azure-stack-manage-vm-backup\vm_backupdataflow_02.png)
 
- - RTO: Przestój mierzony w minutach
+ - Cel czasu odzyskiwania: Przestojów w minutach
  - Cel punktu odzyskiwania: Utraty danych zmiennej (w zależności od częstotliwości replikacji)
- - Topologia wdrażania: czuwania aktywny/pasywny
+ - Topologia wdrożenia: autonomiczną przez aktywny/pasywny
  
-### <a name="high-availabilityautomatic-failover"></a>Tryb failover wysokiej dostępności/automatyczne
+### <a name="high-availabilityautomatic-failover"></a>Wysoka dostępność/automatyczny tryb failover
 
-Dla aplikacji, w którym firma może tolerować kilka sekund lub minut przestoju i minimalna utrata danych należy wziąć pod uwagę konfiguracji o wysokiej dostępności. Aplikacje wysokiej dostępności są zaprojektowane do szybkiego i automatycznie odzyskać z błędami. Dla błędów sprzętu lokalnego stosu Azure infrastruktury implementuje wysokiej dostępności w sieci fizycznej za pomocą dwóch pierwszych stojak przełączników. Dla błędów poziomu obliczeniowej stosu Azure korzysta z wielu węzłów w jednostce skalowania. Na poziomie maszyny Wirtualnej można zestawy skalowania w połączeniu z domen błędów upewnij się, że awarii węzła nie przyjmują dół aplikacji.
+W przypadku aplikacji, w którym firmy mogą tolerować kilka sekund lub minut przestojów i minimalną utratą danych należy wziąć pod uwagę konfiguracji o wysokiej dostępności. Aplikacje o wysokiej dostępności są przeznaczone do szybkiego i automatycznie odzyskać z błędami. Dla błędów sprzętu lokalnego infrastruktury Azure Stack implementuje wysokiej dostępności w ramach sieci fizycznej za pomocą dwóch pierwszych stojak przełączników. Dla błędów poziomu obliczeniowego usługi Azure Stack używa wielu węzłów w jednostce skalowania. Na poziomie maszyny Wirtualnej umożliwia zestawów skalowania w połączeniu z domenami błędów upewnij się, że awarie węzłów nie może wyłączyć aplikację.
 
-W połączeniu z zestawy skalowania aplikacji należy natywnie obsługuje wysoką dostępność lub obsługuje klastrowanie oprogramowania. Na przykład Microsoft SQL Server obsługuje wysoką dostępność natywnie dla baz danych w trybie zatwierdzania synchronicznego. Jednak jeśli może obsługiwać tylko asynchroniczną replikację, będą utratę danych. Aplikacje można wdrażać w taki sposób, w którym oprogramowanie klastrowania obsługuje automatycznej pracy awaryjnej aplikacji klastra pracy awaryjnej.
+W połączeniu z zestawami skalowania aplikacji należy zapewnić wysoką dostępność w sposób natywny lub obsługuje klastrowanie oprogramowania. Na przykład Microsoft SQL Server obsługuje wysoką dostępność natywnie dla baz danych przy użyciu trybu zatwierdzania synchronicznego. Jednak w przypadku replikacji asynchronicznej może obsługiwać tylko, następnie nastąpi utrata danych. Aplikacje można wdrożyć w taki sposób, w klastrze trybu failover, gdzie klastrowania oprogramowania obsługuje automatycznej pracy awaryjnej w aplikacji.
 
-W ten sposób aplikacja jest aktywna tylko w jednej chmury, ale oprogramowanie zostanie wdrożone do wielu chmur. Innych chmur włączony jest tryb wstrzymania przy zachowaniu gotowy do uruchomienia aplikacji, po wyzwoleniu pracy awaryjnej.
+W ten sposób aplikacja jest aktywny tylko w jednej chmury, ale oprogramowanie zostanie wdrożone do wielu chmur. Inne chmury są w trybie gotowości gotowe do uruchomienia aplikacji, gdy zostanie wyzwolony przełączenie w tryb failover.
 
- - RTO: Przestój mierzony w sekundach
- - Cel punktu odzyskiwania: Minimalna utrata danych
- - Topologia wdrażania: czuwania aktywny/aktywny
+ - Cel czasu odzyskiwania: Przestój mierzony w sekundach
+ - Cel punktu odzyskiwania: Minimalną utratą danych
+ - Topologia wdrożenia: autonomiczną przez aktywny/aktywny
 
 ### <a name="fault-tolerance"></a>Odporność na uszkodzenia
 
-Azure stosu dostępności usługi nadmiarowości i infrastruktury fizycznej tylko ochronę przed sprzętu poziom błędów/błędy takie dysku, zasilacz, port sieci lub węzeł. Jednak jeśli aplikacja musi być zawsze dostępny i nigdy nie może spowodować utratę danych, musisz zaimplementować odporność na uszkodzenia natywnie w aplikacji lub użyj dodatkowego oprogramowania, aby zapewnić odporność na uszkodzenia.
+Usługi Azure Stack dostępności usługi nadmiarowość i infrastruktury fizycznej chronić tylko względem sprzętu poziomu błędów/błędy takie dysku, zasilacz, port sieci lub węzeł. Jednak jeśli aplikacja musi być zawsze dostępny i nigdy nie może utracić wszelkie dane, musisz zaimplementować odporności na uszkodzenia natywnie w aplikacji lub użyj dodatkowego oprogramowania, aby zapewnić odporność na uszkodzenia.
 
-Najpierw należy upewnić się, że maszyny wirtualne są wdrażane przy użyciu skalowania aplikacji ustawia chronić przed awariami poziomu węzła. Aby zapewnić ochronę przed chmury przechodzi do trybu offline, tej samej aplikacji musi już zostać wdrożony do nowej chmury, więc będzie możliwe kontynuowanie obsługi żądań bez przeszkód. Ten model jest zwykle określonych wdrożenia aktywny aktywny.
+Najpierw należy upewnić się, że ustawia zapewnić ochronę przed awariami węzła na poziomie aplikacji, którą maszyny wirtualne są wdrażane przy użyciu skalowania. Aby chronić przed chmury, przechodzi do trybu offline, ta sama aplikacja już należy wdrożyć do nowej chmury, dzięki czemu można kontynuować, obsługi żądań bez przeszkód korzystać z programu. Ten model jest zwykle określany wdrożenie aktywny aktywny.
 
-Należy pamiętać, że każdej chmury Azure stosu jest niezależne od siebie, więc chmury zawsze są traktowane jako aktywne z perspektywy infrastruktury. W takim przypadku wiele aktywnych wystąpień aplikacji są wdrażane na co najmniej jedną chmurę aktywne.
+Należy pamiętać, że każda chmura usługi Azure Stack znajduje niezależne od siebie nawzajem, dlatego chmury są zawsze traktowane jako aktywne z perspektywy infrastruktury. W tym przypadku wiele aktywnych wystąpień aplikacji są wdrażane do co najmniej jedna chmura active.
 
- - RTO: Brak przestojów
- - Cel punktu odzyskiwania: Brak utraty danych
+ - Cel czasu odzyskiwania: Bez przestojów.
+ - Cel punktu odzyskiwania: Bez utraty danych
  - Topologia wdrażania: aktywny/aktywny
 
 ### <a name="no-recovery"></a>Brak odzyskiwania
 
-Niektóre aplikacje w danym środowisku nie może być konieczne ochrony przed nieplanowane przestoje lub utraty danych. Na przykład maszyn wirtualnych jest używany do tworzenia i testowania zazwyczaj nie jest konieczne do odzyskania. Należy zdecydować, czy bez ochrony dla aplikacji lub określonej maszyny Wirtualnej. Stos Azure oferuje replikacji maszyn wirtualnych lub kopii zapasowej podstawowej infrastruktury. Podobnie jak Azure, musisz wyrazić zgodę na ochronę dla każdej maszyny Wirtualnej w ramach każdej subskrypcji.
+Niektóre aplikacje w danym środowisku nie może być konieczne ochrony przed nieplanowane przestoje lub utraty danych. Na przykład maszyny wirtualne używane do tworzenia i testowania zazwyczaj nie trzeba go odzyskać. Należy zdecydować, czy bez ochrony dla aplikacji lub określonej maszyny Wirtualnej. Usługa Azure Stack nie oferuje tworzenia kopii zapasowej lub replikacji maszyn wirtualnych z podstawową infrastrukturą. Podobnie jak na platformie Azure, musisz wyrazić zgodę na ochronę dla każdej maszyny Wirtualnej w każdej subskrypcji.
 
- - RTO: nieodwracalny
- - Cel punktu odzyskiwania: Całkowita utrata danych
+ - Cel czasu odzyskiwania: nieodwracalny
+ - Celu punktu odzyskiwania: Całkowita utrata danych
 
 ## <a name="recommended-topologies"></a>Zalecane topologie
 
-Ważne uwagi dotyczące wdrożenia usługi Azure stosu:
+Istotne zagadnienia dotyczące wdrożenia usługi Azure Stack:
 
 |     | Zalecenie | Komentarze |
 |-------------------------------------------------------------------------------------------------|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Wykonywania kopii zapasowej/przywracania maszyn wirtualnych do zewnętrzne miejsce docelowe kopii zapasowej, już wdrożone w centrum danych. | Zalecane | Skorzystaj z istniejącą infrastrukturą kopii zapasowej i operacyjne umiejętności. Upewnij się, że rozmiar kopii zapasowej infrastruktury gotowego do ochrony dodatkowe wystąpienia maszyny Wirtualnej. Upewnij się, że infrastruktura kopii zapasowej nie znajduje się w pobliżu źródła. Maszyny wirtualne można przywrócić do źródła stosu Azure do dodatkowej wystąpienia stosu Azure lub usługi Azure. |
-| Wykonywania kopii zapasowej/przywracania maszyn wirtualnych do zewnętrzne miejsce docelowe kopii zapasowej dedykowanych stos Azure | Zalecane | Możesz kupić nowa infrastruktura kopii zapasowej lub udostępnić dedykowanej infrastruktury kopii zapasowych Azure stosu. Upewnij się, że infrastruktura kopii zapasowej nie znajduje się w pobliżu źródła. Maszyny wirtualne można przywrócić do źródła stosu Azure do dodatkowej wystąpienia stosu Azure lub usługi Azure. |
-| Maszyny wirtualne bezpośrednio do globalnego Azure lub dostawcy usługi zaufanej kopii zapasowych/przywracania | Zalecane | Tak długo, jak mogą zaspokoić prywatności danych i przepisami dotyczącymi działalności, można przechowywać kopie zapasowe w globalnej Azure lub dostawcy usługi zaufanej. W idealnym przypadku dostawcy usług jest uruchomiona stosu Azure tak uzyskiwanie spójności środowisko operacyjne podczas przywracania. |
-| Maszyny wirtualne replikacji i pracy awaryjnej do oddzielnego wystąpienia usługi Azure stosu | Zalecane | W przypadku trybu failover konieczne będzie posiadanie drugi chmury Azure stosu pełnej funkcjonalności, aby uniknąć przestoju rozszerzonej aplikacji. |
-| Maszyny wirtualne replikacji i pracy awaryjnej bezpośrednio do platformy Azure lub zaufany usługodawca | Zalecane | Spełniasz prywatności danych i przepisami dotyczącymi działalności, replikujesz danych globalnych Azure lub dostawcy usługi zaufanej. W idealnym przypadku dostawcy usług jest uruchomiona stosu Azure tak uzyskiwanie spójności środowisko operacyjne po pracy awaryjnej. |
-| Wdrażanie miejsce docelowe kopii zapasowej na tej samej chmury Azure stosu z danych aplikacji | Niezalecane | Unikaj przechowywania kopii zapasowych w ramach tej samej chmury Azure stosu. Nieplanowane przestoje chmury pozwalają śledzić z danych podstawowych i dane kopii zapasowej. Jeśli wybierzesz do wdrożenia miejsce docelowe kopii zapasowej jako urządzenie wirtualne (do celów optymalizacji dla kopii zapasowej i przywracania), upewnij się, wszystkie dane stale są kopiowane do lokalizacji zewnętrznej kopii zapasowej. |
-| Wdrażanie fizyczne urządzenia kopii zapasowej do tego samego stojaku zainstalowanym rozwiązania Azure stosu | Nieobsługiwane | W tym momencie nie można połączyć inne urządzenia na początku przełączników stojaku, które nie są częścią oryginalnym rozwiązaniu. |
+| / Przywracania kopii zapasowej maszyn wirtualnych do zewnętrznych docelowa kopia zapasowa już wdrożone w Twoim centrum danych | Zalecane | Skorzystaj z istniejącej infrastruktury kopii zapasowych i operacyjne umiejętności. Upewnij się, że rozmiar infrastruktury kopii zapasowych, aby był gotowy do ochrony dodatkowych wystąpień maszyn wirtualnych. Upewnij się, że infrastruktura kopii zapasowej nie znajduje się w bliskim sąsiedztwie ze źródłem. Maszyny wirtualne można przywrócić do źródła usługi Azure Stack do dodatkowej wystąpienia usługi Azure Stack lub na platformie Azure. |
+| / Przywracania kopii zapasowej maszyn wirtualnych do zewnętrznych docelowa kopia zapasowa dedykowanego dla usługi Azure Stack | Zalecane | Możesz kupić nowej infrastruktury kopii zapasowych lub aprowizacja dedykowana infrastruktura kopii zapasowej dla usługi Azure Stack. Upewnij się, że infrastruktura kopii zapasowej nie znajduje się w bliskim sąsiedztwie ze źródłem. Maszyny wirtualne można przywrócić do źródła usługi Azure Stack do dodatkowej wystąpienia usługi Azure Stack lub na platformie Azure. |
+| / Przywracania kopii zapasowej maszyn wirtualnych bezpośrednio do globalnej platformy Azure lub dostawcy usług zaufanych | Zalecane | Tak długo, jak możesz zaspokoić swoje wymagania prawne i prywatność danych, kopie zapasowe można przechowywać w globalnej platformy Azure lub dostawcy usług zaufanych. Najlepiej dostawcy usług uruchomiono również usługę Azure Stack, więc otrzymujesz środowisko operacyjne spójności podczas przywracania. |
+| Replikacja i pracy awaryjnej maszyn wirtualnych, do oddzielnego wystąpienia usługi Azure Stack | Zalecane | W przypadku pracy awaryjnej należy mieć drugi chmurą usługi Azure Stack pełni funkcjonalne, więc można uniknąć przerwy w działaniu aplikacji rozszerzonej. |
+| Replikacja i pracy awaryjnej maszyn wirtualnych bezpośrednio platformy Azure lub dostawcy usług zaufanych | Zalecane | Tak długo, jak możesz zaspokoić swoje wymagania prawne i prywatność danych, można replikować dane do globalnej platformy Azure lub dostawcy usług zaufanych. Najlepiej dostawcy usług uruchomiono również usługę Azure Stack, więc otrzymujesz spójności w środowisku operacyjnych po włączeniu trybu failover. |
+| Wdrażanie kopii zapasowych lokalizację docelową na tej samej chmury Azure Stack przy użyciu danych aplikacji | Nie zaleca się | Unikaj przechowywania kopii zapasowych w ramach tej samej chmurze usługi Azure Stack. Nieplanowane przestoje chmury mogą informować Cię z danych podstawowych i dane kopii zapasowej. Jeśli zdecydujesz się wdrożyć miejsce docelowe kopii zapasowej jako urządzenie wirtualne (na potrzeby optymalizacji dla kopii zapasowej i przywracania), upewnij się, wszystkie dane stale są kopiowane do lokalizacji zewnętrznej kopii zapasowej. |
+| Wdrażanie kopii zapasowych urządzenia fizycznego do tego samego stojaku zainstalowanym rozwiązania usługi Azure Stack | Nieobsługiwane | W tym momencie nie można połączyć inne urządzenia na początku przełączników stojaku, które nie są częścią oryginalnej rozwiązania. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule podano ogólne wskazówki dotyczące ochrony użytkownika maszyn wirtualnych wdrożonych na stosie Azure. Informacje o ochrona maszyn wirtualnych użytkownika za pomocą usług Azure można znaleźć:
+W tym artykule podano ogólne wskazówki dotyczące ochrony użytkownik maszyn wirtualnych wdrożonych w usłudze Azure Stack. Aby dowiedzieć się, jak przy użyciu usług platformy Azure, aby chronić maszyny wirtualne użytkowników można znaleźć:
 
- - [Tworzyć kopie zapasowe plików i aplikacji na stosie Azure przy użyciu usługi Kopia zapasowa Azure](https://docs.microsoft.com/azure/backup/backup-mabs-files-applications-azure-stack)
- - [Azure obsługi Utwórz kopię zapasową serwera Azure stosu](https://docs.microsoft.com/azure/backup/ ) 
- - [Azure Site Recovery obsługę Azure stosu](https://docs.microsoft.com/azure/site-recovery/)  
+ - [Usługa Azure Backup umożliwia tworzenie kopii zapasowych plików i aplikacji w usłudze Azure Stack](https://docs.microsoft.com/azure/backup/backup-mabs-files-applications-azure-stack)
+ - [Pomoc techniczna platformy Azure Backup Server dla usługi Azure Stack](https://docs.microsoft.com/azure/backup/ ) 
+ - [Pomoc techniczna platformy Azure Site Recovery dla usługi Azure Stack](https://docs.microsoft.com/azure/site-recovery/)  
 
-Aby dowiedzieć się więcej na temat produktów partnera, które zapewniają ochronę maszyny Wirtualnej na stosie Azure, zobacz "[ochrona aplikacji i danych na stosie Azure](https://azure.microsoft.com/blog/protecting-applications-and-data-on-azure-stack/)."
+Aby dowiedzieć się więcej na temat produktów partnerów, które zapewniają ochronę maszyn wirtualnych w usłudze Azure Stack, zobacz "[ochrona aplikacji i danych w usłudze Azure Stack](https://azure.microsoft.com/blog/protecting-applications-and-data-on-azure-stack/)."

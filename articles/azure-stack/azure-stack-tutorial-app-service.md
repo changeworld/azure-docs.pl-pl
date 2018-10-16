@@ -1,6 +1,6 @@
 ---
-title: Udostępnić w sieci web i aplikacji API apps użytkownikom stosu Azure | Dokumentacja firmy Microsoft
-description: Samouczek, aby zainstalować dostawcę zasobów usługi aplikacji i utworzyć oferuje który zapewnić użytkownikom stosu Azure możliwość tworzenia sieci web i aplikacji API apps.
+title: Udostępnij sieci web i aplikacji interfejsu API użytkowników usługi Azure Stack | Dokumentacja firmy Microsoft
+description: Samouczek, aby zainstalować dostawcę zasobów usługi App Service i utworzyć oferuje, które powodują użytkowników usługi Azure Stack zdolność do tworzenia sieci web i aplikacji API apps.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,80 +12,80 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/05/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: 0171dba639e480a04cdd1c7f23d546d01121fb42
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 0a9b87ccfd49ba04a8dff8ef48bea023ff94b222
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35247402"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340733"
 ---
-# <a name="tutorial-make-web-and-api-apps-available-to-your-azure-stack-users"></a>Samouczek: udostępnić w sieci web i aplikacji API apps użytkownikom Azure stosu
+# <a name="tutorial-make-web-and-api-apps-available-to-your-azure-stack-users"></a>Samouczek: udostępnić w sieci web i aplikacje interfejsu API użytkowników usługi Azure Stack
 
-Jako administrator chmury Azure stosu tworzenia oferty, które pozwalają użytkownikom (dzierżawcami), tworzenie aplikacji usługi Azure Functions i sieci web i interfejsu API. Przez przyznawanie użytkownikom dostępu do tych aplikacji na żądanie, oparte na chmurze, można je zapisać czasu i zasobów.
+Jako administrator chmury Azure Stack można utworzyć oferty, które pozwalają użytkownikom (dzierżawcy) tworzenie aplikacji usługi Azure Functions i sieci web i interfejsów API. Przy zapewnieniu użytkownikom dostępu do tych aplikacji na żądanie, oparte na chmurze, można je oszczędność czasu i zasobów.
 
-Aby to skonfigurować, obejmują:
+Aby skonfigurować tę funkcjonalność, wykonasz następujące czynności:
 
 > [!div class="checklist"]
-> * Wdrażanie dostawcy zasobów usługi aplikacji
+> * Wdrażanie dostawcy zasobów usługi App Service
 > * Tworzenie oferty
 > * Testowanie oferty
 
-## <a name="deploy-the-app-service-resource-provider"></a>Wdrażanie dostawcy zasobów usługi aplikacji
+## <a name="deploy-the-app-service-resource-provider"></a>Wdrażanie dostawcy zasobów usługi App Service
 
-1. [Przygotowywanie hostów Azure stosu Development Kit](azure-stack-app-service-before-you-get-started.md). W tym wdrażanie dostawcy zasobów programu SQL Server, który jest wymagany do tworzenia niektórych aplikacji.
-2. [Pobierz skrypty Instalatora i Pomocnika](azure-stack-app-service-deploy.md).
-3. [Uruchom skrypt pomocnika do tworzenia wymaganych certyfikatów](azure-stack-app-service-deploy.md).
-4. [Zainstaluj dostawcę zasobów usługi aplikacji](azure-stack-app-service-deploy.md) (potrwa kilka godzin, aby zainstalować i dla wszystkich ról procesu roboczego się pojawić.)
-5. [Sprawdź poprawność instalacji](azure-stack-app-service-deploy.md#validate-the-app-service-on-azure-stack-installation).
+1. [Przygotowanie hosta usługi Azure Stack Development Kit](azure-stack-app-service-before-you-get-started.md). W tym wdrażanie dostawcy zasobów programu SQL Server, który jest wymagany do tworzenia niektórych aplikacji.
+2. [Pobieranie skryptów Instalatora i Pomocnika](azure-stack-app-service-deploy.md).
+3. [Uruchom skrypt pomocnika, aby utworzyć wymagane certyfikaty](azure-stack-app-service-deploy.md).
+4. [Zainstaluj dostawcę zasobów usługi App Service](azure-stack-app-service-deploy.md) (potrwa kilka godzin, aby zainstalować i dla wszystkich ról procesów roboczych się pojawić.)
+5. [Weryfikowania instalacji](azure-stack-app-service-deploy.md#validate-the-app-service-on-azure-stack-installation).
 
 ## <a name="create-an-offer"></a>Tworzenie oferty
 
-Na przykład można utworzyć ofertę, która umożliwia użytkownikom tworzenie systemów zarządzania zawartością sieci web DNN. Wymaga usługi SQL Server, który jest już włączony, instalując dostawcy zasobów programu SQL Server.
+Na przykład można utworzyć ofertę, która pozwala użytkownikom na tworzenie systemów zarządzania zawartością sieci web DNN. Wymaga usługi SQL Server, który jest już włączona po zainstalowaniu dostawcy zasobów programu SQL Server.
 
-1.  [Ustaw limit przydziału](azure-stack-setting-quotas.md) i nadaj mu nazwę *AppServiceQuota*. Wybierz **Microsoft.Web** dla **Namespace** pola.
-2.  [Tworzenie planu](azure-stack-create-plan.md). Nadaj mu nazwę *TestAppServicePlan*, wybierz pozycję **Microsoft.SQL** usługi i **przydziału AppService** przydziału.
+1.  [Ustawiono limit przydziału](azure-stack-setting-quotas.md) i nadaj mu nazwę *AppServiceQuota*. Wybierz **Microsoft.Web** dla **Namespace** pola.
+2.  [Utwórz plan](azure-stack-create-plan.md). Nadaj mu nazwę *TestAppServicePlan*, wybierz opcję **Microsoft.SQL** usługi i **limitu przydziału usługi App Service** limitu przydziału.
 
     > [!NOTE]
-    > Aby zezwolić użytkownikom na tworzenie inne aplikacje, innych usług mogą być wymagane w planie. Na przykład wymaga usługi Azure Functions **Microsoft.Storage** usługi w planie, podczas gdy Wordpress wymaga **Microsoft.MySQL**.
+    > Aby umożliwić użytkownikom tworzenie innych aplikacji, innych usług może być konieczne w planie. Na przykład usługa Azure Functions wymaga **Microsoft.Storage** usługi w planie, podczas gdy Wordpress wymaga **Microsoft.MySQL**.
 
 3.  [Utwórz ofertę](azure-stack-create-offer.md), nadaj jej nazwę **TestAppServiceOffer** i wybierz **TestAppServicePlan** planu.
 
 ## <a name="test-the-offer"></a>Testowanie oferty
 
-Po wdrożeniu dostawcy zasobów usługi aplikacji i utworzyć ofertę, może zalogować się jako użytkownik, subskrybować oferty i tworzenie aplikacji.
+Teraz, udało Ci się wdrożyć dostawcy zasobów usługi App Service i utworzeniu oferty, możesz zalogować się jako użytkownik, Subskrybuj ofertę i utworzyć aplikację.
 
-Na przykład utworzymy system zarządzania zawartością DNN platformy. Najpierw należy utworzyć bazę danych SQL, a następnie DNN aplikacji sieci web.
+W tym przykładzie utworzymy system zarządzania zawartością witryny platformy DNN. Najpierw utwórz bazę danych SQL, a następnie DNN aplikacji sieci web.
 
-### <a name="subscribe-to-the-offer"></a>Subskrybuj oferty
+### <a name="subscribe-to-the-offer"></a>Subskrybuj ofertę
 
-1. Zaloguj się do portalu Azure stosu (https://portal.local.azurestack.external) dzierżawcy.
-2. Wybierz **uzyskania subskrypcji** >, wprowadź **TestAppServiceSubscription** w obszarze **Nazwa wyświetlana** > **wybierz ofertę**  >  **TestAppServiceOffer** > **utworzyć**.
+1. Zaloguj się do portalu usługi Azure Stack (https://portal.local.azurestack.external) jako dzierżawca.
+2. Wybierz **Uzyskaj subskrypcję** >, wprowadź **TestAppServiceSubscription** w obszarze **nazwę wyświetlaną** > **wybierz ofertę**  >  **TestAppServiceOffer** > **tworzenie**.
 
 ### <a name="create-a-sql-database"></a>Tworzenie bazy danych SQL
 
-1. Wybierz **+**  >  **dane i magazyn** > **bazy danych SQL**.
+1. Wybierz **+**  >  **dane + magazyn** > **bazy danych SQL**.
 2. Zachowaj wartości domyślne, z wyjątkiem następujących pól:
 
     - **Nazwa bazy danych**: DNNdb
-    - **Maksymalny rozmiar w MB**: 100
+    - **Maksymalny rozmiar w Megabajtach**: 100
     - **Subskrypcja**: TestAppServiceOffer
-    - **Grupa zasobów**: zarządcy zasobów DNN
+    - **Grupa zasobów**: DNN-RG
 
 3. Wybierz **ustawienia logowania**, wprowadź poświadczenia dla bazy danych, a następnie wybierz **OK**. Te poświadczenia będą używane w dalszej części tego samouczka.
-4. W obszarze **SKU** > Wybierz jednostki SKU SQL utworzony dla programu SQL Server obsługującego >, a następnie wybierz **OK**.
+4. W obszarze **jednostki SKU** > Wybierz jednostkę SKU SQL, który został utworzony dla programu SQL Server obsługującego >, a następnie wybierz **OK**.
 5. Wybierz pozycję **Utwórz**.
 
 ### <a name="create-a-dnn-app"></a>Tworzenie aplikacji DNN
 
-1. Wybierz **+**  >  **zobaczyć wszystkie** > **DNN platformy w wersji zapoznawczej** > **Utwórz** .
-2. Wprowadź *DNNapp* w obszarze **Nazwa aplikacji** i wybierz **TestAppServiceOffer** w obszarze **subskrypcji**.
-3. Wybierz **Skonfiguruj wymagane ustawienia** > **Utwórz nowy** > Wprowadzenie **planu usługi aplikacji** nazwy.
-4. Wybierz **warstwa cenowa** > **F1 bezpłatna** > **wybierz** > **OK**.
-5. Wybierz **bazy danych** , a następnie wprowadź poświadczenia dla bazy danych SQL utworzony wcześniej.
+1. Wybierz **+**  >  **holograficznych** > **witryny platformy DNN w wersji zapoznawczej** > **Utwórz** .
+2. Wprowadź *DNNapp* w obszarze **nazwy aplikacji** i wybierz **TestAppServiceOffer** w obszarze **subskrypcji**.
+3. Wybierz **Skonfiguruj wymagane ustawienia** > **Utwórz nowy** > Wprowadzenie **planu usługi App Service** nazwy.
+4. Wybierz **warstwa cenowa** > **bezpłatna F1** > **wybierz** > **OK**.
+5. Wybierz **bazy danych** i wprowadź poświadczenia dla bazy danych SQL została utworzona wcześniej.
 6. Wybierz pozycję **Utwórz**.
 
 ## <a name="next-steps"></a>Kolejne kroki
@@ -93,11 +93,11 @@ Na przykład utworzymy system zarządzania zawartością DNN platformy. Najpierw
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Wdrażanie dostawcy zasobów usługi aplikacji
+> * Wdrażanie dostawcy zasobów usługi App Service
 > * Tworzenie oferty
 > * Testowanie oferty
 
-ADVANCE do samouczka dalej, aby dowiedzieć się, jak:
+Przejdź do następnego samouczka, aby dowiedzieć się, jak:
 
 > [!div class="nextstepaction"]
-> [Wdrażanie aplikacji na platformie Azure oraz Azure stosu](user/azure-stack-solution-pipeline.md)
+> [Wdrażanie aplikacji na platformie Azure i usługi Azure Stack](user/azure-stack-solution-pipeline.md)
