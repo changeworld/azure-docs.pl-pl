@@ -1,5 +1,5 @@
 ---
-title: Omówienie usługi Azure Batch AI | Microsoft Docs
+title: Usługa Azure Batch AI — szkolenie modeli sztucznej inteligencji | Microsoft Docs
 description: Dowiedz się, jak używać zarządzanej usługi Azure Batch AI do szkolenia modeli sztucznej inteligencji (AI) i innych modeli uczenia maszynowego w klastrach procesorów GPU i procesorów CPU.
 services: batch-ai
 documentationcenter: ''
@@ -12,86 +12,63 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/13/2017
-ms.author: asutton
-ms.custom: ''
-ms.openlocfilehash: 504504f278907536e89055cd5c912d2d1f280931
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.date: 08/01/2018
+ms.author: danlep
+ms.openlocfilehash: 98497812e75d07fc153e0e351331c05484164fdd
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627206"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052703"
 ---
-# <a name="what-is-batch-ai-in-azure"></a>Czym jest usługa Batch AI na platformie Azure?
-Batch AI to zarządzana usługa, która umożliwia naukowcom zajmującym się danymi oraz badaczom sztucznej inteligencji szkolenie modeli sztucznej inteligencji i innych modeli uczenia maszynowego w klastrach z maszynami wirtualnymi platformy Azure, w tym maszynami wirtualnymi z obsługą procesorów GPU. Użytkownik opisuje wymagania dotyczące zadania, miejsce wyszukiwania danych wejściowych oraz miejsce przechowywania danych wyjściowych, a usługa Batch AI zajmuje się resztą.  
- 
-## <a name="why-batch-ai"></a>Dlaczego warto korzystać z usługi Batch AI? 
-Tworzenie zaawansowanych algorytmów sztucznej inteligencji to proces iteracyjny wymagający dużych nakładów w zakresie obliczeń. Naukowcy zajmujący się danymi oraz badacze sztucznej inteligencji pracują z coraz większymi zestawami danych. Opracowują modele o większej liczbie warstw, korzystając z wielu eksperymentów w zakresie projektowania sieci i bardzo szczegółowego dostosowywania parametrów. Efektywne działania w tym zakresie wymagają wielu procesorów CPU lub GPU na model, równoległego uruchamiania eksperymentów oraz zapewnienia udostępnionego magazynu do przechowywania danych szkoleniowych, dzienników i danych wyjściowych modelu.   
- 
-![Proces usługi Batch AI](media/overview/batchai-context.png)
+# <a name="what-is-azure-batch-ai"></a>Co to jest Azure Batch AI?
 
-Naukowcy zajmujący się danymi i badacze sztucznej inteligencji to eksperci w swoich dziedzinach, niemniej problem może stanowić zarządzanie infrastrukturą w odpowiedniej skali. Opracowywanie sztucznej inteligencji w skali wymaga wielu zadań związanych z infrastrukturą, takich jak aprowizacja klastrów maszyn wirtualnych, instalowanie oprogramowania i kontenerów, prace związane z kolejkowaniem, ustalanie priorytetów i harmonogramów zadań, obsługa błędów, dystrybuowanie danych, udostępnianie wyników, skalowanie zasobów w ramach zarządzania kosztami oraz integrowanie z narzędziami i przepływami pracy. Usługa Batch AI zajmuje się tymi zadaniami. 
- 
-## <a name="what-is-batch-ai"></a>Co to jest Batch AI? 
+Azure Batch AI to zarządzana usługa, która ułatwia analitykom danych i badaczom SI uczenie i testowanie modeli SI oraz uczenia maszynowego na dużą skalę na platformie Azure bez konieczności zarządzania złożoną infrastrukturą. Użytkownik opisuje zasoby obliczeniowe, zadania, które chce uruchomić, miejsca, gdzie będą przechowywane dane wejściowe i dane wyjściowe modelu, a usługa Batch AI zajmuje się resztą.
 
-Usługa Batch AI zapewnia zarządzanie zasobami oraz planowanie zadań specjalnie na potrzeby szkolenia i testowania sztucznej inteligencji. Do najważniejszych możliwości należą: 
+Można użyć usługi Batch AI jako usługi autonomicznej albo przeprowadzić szkolenie modeli w ramach większego przepływu pracy tworzenia oprogramowania:
 
-* Uruchamianie długoterminowych zadań wsadowych, eksperymenty iteracyjne oraz szkolenie interaktywne 
-* Automatyczne lub ręczne skalowanie klastrów maszyn wirtualnych przy użyciu procesorów GPU lub CPU 
-* Konfigurowanie komunikacji SSH pomiędzy maszynami wirtualnymi i na potrzeby dostępu zdalnego 
-* Obsługa wszelkich struktur uczenia głębokiego lub uczenia maszynowego, ze zoptymalizowaną konfiguracją dla popularnych zestawów narzędzi, np. [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK) (CNTK), [TensorFlow](https://www.tensorflow.org/) i [Chainer](https://chainer.org/) 
-* Kolejki zadań oparte na priorytetach umożliwiające udostępnianie klastrów oraz wykorzystywanie maszyn wirtualnych o niskim priorytecie i rezerwacji platformy Azure  
-* Elastyczne opcje magazynowania obejmujące usługę Azure Files i zarządzany serwer NFS 
-* Instalowanie zdalnych udziałów plików na maszynie wirtualnej i w opcjonalnym kontenerze 
-* Zapewnianie stanu zadań oraz ponownego uruchamiania w przypadku awarii maszyny wirtualnej 
-* Dostęp do dzienników danych wyjściowych, stdout, stderr i modeli, w tym przesyłanych strumieniowo z usługi Azure Storage 
-* [Interfejs wiersza polecenia](/cli/azure) (CLI) platformy Azure, zestawy SDK dla języków [Python](https://github.com/Azure/azure-sdk-for-python), [C#](https://www.nuget.org/packages/Microsoft.Azure.Management.BatchAI/1.0.0-preview) i Java, monitorowanie w witrynie Azure Portal oraz integracja z narzędziami Microsoft AI 
+* Używaj samej usługi Batch AI do szkolenia, testowania i oceniania modeli uczenia maszynowego i sztucznej inteligencji w klastrach procesorów [GPU](../virtual-machines/linux/sizes-gpu.md) lub CPU. 
 
-Zestaw SDK usługi Batch AI obsługuje pisanie skryptów lub aplikacji na potrzeby zarządzania potokami szkolenia oraz integracji z narzędziami. Zestaw SDK obecnie zapewnia interfejsy API dla języków Python, C# i Java oraz interfejs API REST.  
- 
+* Na potrzeby klastra usługi Batch AI w przepływie pracy zastosuj usługę [Azure Machine Learning](../machine-learning/service/overview-what-is-azure-ml.md) lub inne [narzędzia platformy Azure AI](https://azure.microsoft.com/overview/ai-platform/). Usługa Azure ML oferuje zaawansowane środowisko na potrzeby przygotowywania danych, eksperymentowania oraz historii zadań. Usługa Azure ML umożliwia również utworzenie pakietu przeszkolonego modelu w kontenerze oraz wdrożenie modelu na potrzeby wnioskowania lub na urządzeniach IoT.  
 
-Usługa Batch AI używa usługi Azure Resource Manager do operacji na płaszczyźnie kontroli (create, list, get, delete). Usługa Azure Active Directory jest używana do uwierzytelniania i kontroli dostępu opartej na rolach.  
- 
-## <a name="how-to-use-batch-ai"></a>Jak używać usługi Batch AI 
+## <a name="train-machine-learning-and-ai-models"></a>Szkolenie modeli sztucznej inteligencji i uczenia maszynowego
 
-Aby użyć usługi Batch AI, należy zdefiniować *klastry* i *zadania* oraz nimi zarządzać. 
+Za pomocą usługi Batch AI można szkolić modele uczenia maszynowego i głębokie sieci neuronowe (uczenie głębokie) oraz inne rozwiązania sztucznej inteligencji. Usługa Batch AI oferuje wbudowaną obsługę popularnych bibliotek i struktur sztucznej inteligencji typu open source, w tym [TensorFlow](https://github.com/tensorflow/tensorflow), [PyTorch](https://github.com/pytorch/pytorch), [Chainer](https://github.com/chainer/chainer) i [Microsoft Cognitive Toolkit (CNTK)](https://github.com/Microsoft/CNTK).
 
- 
-**Klastry** opisują wymagania dotyczące obliczeń: 
-* Region świadczenia usługi Azure, w którym ma nastąpić uruchomienie 
-* Rodzina i rozmiar maszyny wirtualnej do użycia — na przykład maszyna wirtualna NC24 VM, która zawiera 4 procesory GPU NVIDIA K80 
-* Liczba maszyn wirtualnych lub minimalna i maksymalna liczba na potrzeby skalowania automatycznego 
-* Obraz maszyny wirtualnej — na przykład Ubuntu 16.04 LTS lub [maszyna wirtualna do uczenia głębokiego firmy Microsoft](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning)
-* Wszelkie woluminy zdalnych udziałów plików do zainstalowania — np. z usługi Azure Files lub serwera NFS zarządzanego przez usługę Batch AI 
-* Nazwa użytkownika i klucz SSH lub hasło do skonfigurowania na maszynach wirtualnych w celu włączenia interaktywnego logowania na potrzeby debugowania  
- 
+Po zidentyfikowaniu problematycznego obszaru i przygotowaniu danych współpracuj interaktywnie z usługą Batch AI, aby przetestować koncepcje modelu. Następnie, gdy wszystko będzie gotowe do eksperymentowania na dużą skalę, uruchom zadania na wielu procesorach GPU za pomocą MPI lub innych bibliotek komunikacyjnych i równolegle przeprowadź więcej eksperymentów.
 
-**Zadania** opisują następujące elementy: 
-* Klaster i region do użycia 
-* Liczbę maszyn wirtualnych dla zadania 
-* Katalogi wejściowe i wyjściowe do przekazania do zadania podczas uruchomienia. Typowo używany jest udostępniony system plików zainstalowany podczas konfiguracji klastra 
-* Opcjonalny kontener do uruchomienia oprogramowania lub skryptu instalacji 
-* Konfiguracja właściwa dla struktury sztucznej inteligencji lub wiersz polecenia i parametry na potrzeby uruchamiania zadania 
- 
+Usługa Batch AI ułatwia szkolenie modeli na dużą skalę na kilka sposobów. Na przykład: 
 
-Rozpocznij pracę przy użyciu usługi Batch AI z [interfejsem wiersza polecenia platformy Azure](/cli/azure) oraz plikami konfiguracyjnymi dla klastrów i zadań. Użyj tej metody, aby szybko utworzyć klaster w razie potrzeby i uruchamiać zadania, aby eksperymentować z projektem sieci lub hiper parametrami.  
- 
+|  |  |
+|---------|---------|
+| **Dystrybucja szkolenia**<br/>![Szkolenie rozproszone](./media/overview/distributed-training.png)  | Skaluj w górę szkolenie na potrzeby jednego zadania na wielu połączonych z siecią procesorach GPU w celu szkolenia większych sieci z dużą ilością danych.|
+| **Eksperymentowanie**<br/>![Eksperymentowanie](./media/overview/experimentation.png) | Skaluj w poziomie szkolenie przy użyciu wielu zadań. Uruchom czyszczenie parametrów, aby przetestować nowe koncepcje, lub dostrój hiperparametry, aby zoptymalizować dokładność i wydajność. |
+| **Wykonywanie równoległe**![Wykonywanie równoległe](./media/overview/parallel-execution.png) | Szkól lub oceniaj wiele modeli jednocześnie, uruchamiając równolegle na wielu serwerach, aby szybciej wykonywać zadania.|
 
-Usługa Batch AI ułatwia równoległe pracowanie z wieloma procesorami GPU. Kiedy zadania należy skalować w wielu procesorach GPU, usługa Batch AI konfiguruje bezpieczną łączność sieciową pomiędzy maszynami wirtualnymi. W przypadku użycia standardu InfiniBand usługa Batch AI konfiguruje sterowniki i uruchamia MPI w węzłach w zadaniu.  
+Po przeszkoleniu modelu użyj usługi Batch AI do testowania modelu, jeśli skrypt szkolenia tej czynności nie obejmował, lub przeprowadź ocenianie w usłudze Batch.
 
-## <a name="data-management"></a>Zarządzanie danymi
-Usługa Batch AI zapewnia elastyczne opcje obsługi skryptów szkolenia, danych i danych wyjściowych:
-  
-* Użyj **dysku lokalnego** na potrzeby wczesnych eksperymentów i mniejszych zestawów danych. W tym scenariuszu możesz nawiązać połączenie z maszyną wirtualną za pośrednictwem protokołu SSH, aby edytować skrypty i odczytywać dzienniki. 
+## <a name="how-it-works"></a>Jak to działa
 
-* Użyj usługi **Azure Files**, aby udostępniać dane szkoleniowe w wielu zadaniach, a także przechowywać dzienniki danych wyjściowych i modele w jednym miejscu. 
+Używaj zestawów SDK usługi Batch AI, skryptów wiersza polecenia lub witryny Azure Portal, aby zarządzać zasobami obliczeniowymi i planować zadania na potrzeby szkolenia i testowania sztucznej inteligencji: 
 
-* Skonfiguruj **serwer NFS**, aby obsługiwać większe skale danych i maszyny wirtualne na potrzeby szkolenia. Usługa Batch AI może skonfigurować serwer NFS jako specjalny typ klastra z dyskami z kopiami zapasowymi w usłudze Azure Storage. 
- 
-* **Równoległy system plików** zapewnia dalszą skalowalność na potrzeby danych i szkolenia równoległego. Usługa Batch AI nie zarządza równoległymi systemami plików, ale dostępne są przykładowe szablony wdrożenia dla rozwiązań Lustre, Gluster i BeeGFS.  
+* **Ustanawiaj i skaluj klastry maszyn wirtualnych** — wybierz liczbę węzłów (maszyn wirtualnych) oraz rozmiar maszyn wirtualnych z procesorem GPU lub innego typu, który odpowiada Twoim potrzebom w zakresie szkolenia. Skaluj liczbę węzłów w górę lub w dół automatycznie lub ręcznie, aby używać zasobów tylko wtedy, gdy jest to konieczne. 
+
+* **Zarządzaj zależnościami i kontenerami** — domyślnie klastry usługi Batch AI obsługują obrazy maszyn wirtualnych z systemem Linux, które mają wstępnie zainstalowane zależności na potrzeby uruchamiania struktur szkoleniowych opartych na kontenerach na procesorach GPU lub CPU. W przypadku konieczności dodatkowej konfiguracji zastosuj obrazy niestandardowe lub uruchom skrypty uruchamiania.
+
+* **Rozpowszechniaj dane** — wybierz co najmniej jedną opcję magazynu, aby zarządzać danymi wejściowymi, skryptami i danymi wyjściowymi zadań: Azure Files, Azure Blob Storage lub zarządzany serwer NFS. Usługa Batch AI obsługuje również niestandardowe rozwiązania magazynu, m.in. równoległe systemy plików o wysokiej wydajności. Zainstaluj systemy plików magazynu na węzłach kastra i w kontenerach zadań przy użyciu prostych plików konfiguracji.
+
+* **Planuj zadania** — przesyłaj zadania do kolejki zadań opartej na priorytetach, umożliwiającej współużytkowanie zasobów klastra oraz wykorzystywanie maszyn wirtualnych o niskim priorytecie i wystąpień zarezerwowanych.
+
+* **Obsługuj błędy** — monitoruj stan zadania i uruchamiaj ponownie zadania w przypadku awarii maszyn wirtualnych w trakcie wykonywania potencjalnie długotrwałych zadań.
+
+* **Zbieraj wyniki** — łatwo uzyskuj dostęp do dzienników danych wyjściowych, Stdout, Stderr oraz przeszkolonych modeli. Konfiguruj zadania usługi Batch AI, aby wypychać dane wyjściowe bezpośrednio do zainstalowanego magazynu.
+
+Będąc usługą platformy Azure, usługa Batch AI obsługuje na potrzeby bezpieczeństwa popularne narzędzia, takie jak kontrola dostępu na podstawie ról (RBAC) oraz sieci wirtualne platformy Azure.  
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Rozpocznij tworzenie pierwszego zadania szkoleniowego Batch AI przy użyciu [interfejsu wiersza polecenia platformy Azure](quickstart-cli.md) lub języka [Python](quickstart-python.md).
-* Sprawdź przykładowe [przepisy na szkolenie](https://github.com/Azure/BatchAI) dla różnych platform.
+* Dowiedz się więcej na temat [zasobów usługi Batch AI](resource-concepts.md) na potrzeby szkolenia modelu uczenia maszynowego lub sztucznej inteligencji.
 
+* Rozpocznij [szkolenie przykładowego modelu uczenia głębokiego](quickstart-tensorflow-training-cli.md) za pomocą usługi Batch AI.
+
+* Sprawdź przykładowe [przepisy na szkolenie](https://github.com/Azure/BatchAI/blob/master/recipes) dla popularnych struktur sztucznej inteligencji.

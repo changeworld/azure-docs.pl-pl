@@ -3,7 +3,7 @@ title: 'Szybki start: Azure Security Center — dołączanie komputerów z syste
 description: Ten przewodnik Szybki start przedstawia sposób dołączania komputerów z systemem Linux do usługi Security Center.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
-ms.author: terrylan
-ms.openlocfilehash: 05e4bed0f9b4dfb6d1879408085447ef53db8655
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 09/02/2018
+ms.author: rkarlin
+ms.openlocfilehash: 1eab54d16dcc0facace9a51a4cf5b5d1243baf4f
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630101"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025397"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Szybki start: dołączanie komputerów z systemem Linux do usługi Azure Security Center
 Po dołączeniu subskrypcji platformy Azure możesz włączyć usługę Security Center dla zasobów z systemem Linux uruchomionych poza platformą Azure, np. lokalnych lub znajdujących się w innych chmurach, aprowizując agenta systemu Linux.
@@ -39,13 +39,12 @@ Musisz korzystać z warstwy cenowej Standardowa usługi Security Center przed ro
 
  ![Security Center — Przegląd][2]
 
-3. W menu głównym usługi Security Center wybierz pozycję **Dołączanie do zabezpieczeń zaawansowanych**.
-4. Wybierz pozycję **Czy chcesz dodać komputery spoza platformy Azure**.
-   ![Dołączanie do zabezpieczeń zaawansowanych][3]
+3. W menu głównym usługi Security Center wybierz pozycję **Wprowadzenie**.
+4. Wybierz kartę **Rozpoczęcie pracy**. ![Rozpoczęcie pracy][3]
 
-5. W oknie **Dodawanie nowych komputerów spoza platformy Azure** jest wyświetlana lista obszarów roboczych usługi Log Analytics. Jeśli ma to zastosowanie, lista zawiera domyślny obszar roboczy utworzony przez usługę Security Center po włączeniu automatycznej aprowizacji. Wybierz ten obszar roboczy lub inny obszar roboczy, którego chcesz użyć.
+5. Kliknij przycisk **Konfiguruj** w obszarze **Dodaj nowe komputery spoza platformy Azure**, zostanie wyświetlona lista obszarów roboczych usługi Log Analytics. Jeśli ma to zastosowanie, lista zawiera domyślny obszar roboczy utworzony przez usługę Security Center po włączeniu automatycznej aprowizacji. Wybierz ten obszar roboczy lub inny obszar roboczy, którego chcesz użyć.
 
-    ![Dodawanie komputera spoza platformy Azure][4]
+    ![Dodawanie komputera spoza platformy Azure](./media/quick-onboard-linux-computer/non-azure.png)
 
 6.  Na stronie **Agent bezpośredni** w obszarze **POBIERANIE I DOŁĄCZANIE AGENTA DLA SYSTEMU LINUX** wybierz przycisk **kopiowania**, aby skopiować polecenie *wget*.
 
@@ -91,7 +90,7 @@ W tym przewodniku Szybki start aprowizowano agenta na komputerze z systemem Linu
 <!--Image references-->
 [1]: ./media/quick-onboard-linux-computer/portal.png
 [2]: ./media/quick-onboard-linux-computer/overview.png
-[3]: ./media/quick-onboard-linux-computer/onboard-windows-computer.png
+[3]: ./media/quick-onboard-linux-computer/get-started.png
 [4]: ./media/quick-onboard-linux-computer/add-computer.png
 [5]: ./media/quick-onboard-linux-computer/pgrep-command.png
 [6]: ./media/quick-onboard-linux-computer/logs-for-agent.png

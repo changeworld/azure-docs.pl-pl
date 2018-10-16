@@ -3,7 +3,7 @@ title: 'Szybki start: Azure Security Center — dołączanie komputerów z syste
 description: Ten przewodnik Szybki start przedstawia sposób aprowizowania agenta Microsoft Monitoring Agent na komputerze z systemem Windows.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
-ms.author: terrylan
-ms.openlocfilehash: b872153278810ce92f19c7c71fe473a2b77def35
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 09/2/2018
+ms.author: rkarlin
+ms.openlocfilehash: 55bb7242427bf85d10fac0a44e2b2eac3a5181ad
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38702661"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023004"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Szybki start: dołączanie komputerów z systemem Windows do usługi Azure Security Center
 Po dołączeniu subskrypcji platformy Azure możesz włączyć usługę Security Center dla zasobów uruchomionych poza platformą Azure, np. lokalnych lub znajdujących się w innych chmurach, aprowizując agenta Microsoft Monitoring Agent.
@@ -39,14 +39,14 @@ Musisz korzystać z warstwy cenowej Standardowa usługi Security Center przed ro
 
  ![Security Center — Przegląd][2]
 
-3. W menu głównym usługi Security Center wybierz pozycję **Dołączanie do zabezpieczeń zaawansowanych**.
-4. Wybierz pozycję **Czy chcesz dodać komputery spoza platformy Azure**.
+3. W menu głównym usługi Security Center wybierz pozycję **Wprowadzenie**.
+4. Wybierz kartę **Rozpoczęcie pracy**.
 
-   ![Dołączanie do zabezpieczeń zaawansowanych][3]
+   ![Rozpoczęcie pracy][3]
 
-5. W oknie **Dodawanie nowych komputerów spoza platformy Azure** jest wyświetlana lista obszarów roboczych usługi Log Analytics. Jeśli ma to zastosowanie, lista zawiera domyślny obszar roboczy utworzony przez usługę Security Center po włączeniu automatycznej aprowizacji. Wybierz ten obszar roboczy lub inny obszar roboczy, którego chcesz użyć.
+5. Kliknij przycisk **Konfiguruj** w obszarze **Dodaj nowe komputery spoza platformy Azure**. Zostanie wyświetlona lista obszarów roboczych usługi Log Analytics. Jeśli ma to zastosowanie, lista zawiera domyślny obszar roboczy utworzony przez usługę Security Center po włączeniu automatycznej aprowizacji. Wybierz ten obszar roboczy lub inny obszar roboczy, którego chcesz użyć.
 
-    ![Dodawanie komputera spoza platformy Azure][4]
+    ![Dodawanie komputera spoza platformy Azure](./media/quick-onboard-windows-computer/non-azure.png)
 
   Zostanie otwarty blok **Agent bezpośredni** z linkiem umożliwiającym pobieranie agenta systemu Windows i kluczami identyfikatora obszaru roboczego do użycia podczas konfigurowania agenta.
 
@@ -104,7 +104,7 @@ W tym przewodniku Szybki start aprowizowano agenta Microsoft Monitoring Agent na
 
 <!--Image references-->
 [2]: ./media/quick-onboard-windows-computer/overview.png
-[3]: ./media/quick-onboard-windows-computer/onboard-windows-computer.png
+[3]: ./media/quick-onboard-windows-computer/get-started.png
 [4]: ./media/quick-onboard-windows-computer/add-computer.png
 [5]: ./media/quick-onboard-windows-computer/log-analytics-mma-setup-laworkspace.png
 [6]: ./media/quick-onboard-windows-computer/compute.png

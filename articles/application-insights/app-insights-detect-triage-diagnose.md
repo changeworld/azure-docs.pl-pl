@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.custom: mvc
 ms.topic: overview
-ms.date: 06/26/2017
+ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: b83d08b9dac4fccc033ad4537afd343a6fbe02c2
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 799593758bf24924d91d38bd6a626b945247183b
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
-ms.locfileid: "23947319"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050242"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Omówienie usługi Azure Application Insights dla metodyki DevOps
 
@@ -37,7 +37,7 @@ Zespół działa według cyklu DevOps przedstawionego na poniższej ilustracji:
 
 Wymagania zostają wprowadzone na listę prac programistycznych (listę zadań). Członkowie zespołu pracują w krótkich przebiegach, często dostarczając działające oprogramowanie — zwykle w formie poprawek i rozszerzeń istniejącej aplikacji. Działająca aplikacja jest często aktualizowana w celu dodania nowych funkcji. Gdy działa, zespół monitoruje jej wydajność i użycie za pomocą usługi Application Insights. Te dane APM są ponownie wprowadzane na listę prac programistycznych.
 
-Zespół korzysta z usługi Application Insights, aby uważnie monitorować aktywną aplikację pod kątem następujących elementów:
+Zespół korzysta z usługi Application Insights, aby uważnie monitorować aktywną aplikację internetową pod kątem następujących elementów:
 
 * Wydajność. Chcą wiedzieć, jak różnią się czasy odpowiedzi w zależności od liczby żądań; w jakim stopniu wykorzystywany jest procesor, dysk i inne zasoby; który kod aplikacji zmniejsza wydajność; gdzie znajdują się wąskie gardła.
 * Błędy. Jeśli pojawią się wyjątki lub żądania zakończone niepowodzeniem lub jeśli licznik wydajności wykroczy poza bezpieczny zakres, zespół musi się o tym dowiedzieć jak najszybciej, aby podjąć odpowiednie działania.
@@ -50,7 +50,7 @@ Skupmy się na części cyklu dotyczącej informacji zwrotnej:
 ## <a name="detect-poor-availability"></a>Wykrywanie niskiej dostępności
 Marcela Markova jest starszym deweloperem w zespole ds. systemu bankowości internetowej i jest główną osobą monitorującą wydajność w trybie online. Skonfigurowała kilka [testów dostępności](app-insights-monitor-web-app-availability.md):
 
-* Test pojedynczego adresu URL dla głównej strony docelowej aplikacji — http://fabrikambank.com/onlinebanking/. Ustawia kryteria kodu HTTP 200 i tekst „Witaj!”. Jeśli test zakończy się niepowodzeniem, powodem może być poważna awaria sieci lub serwerów albo problem z wdrożeniem. Ewentualnie ktoś mógł zmienić komunikat „Witaj!” na stronie bez jej wiedzy.
+* Test pojedynczego adresu URL dla głównej strony docelowej aplikacji, http://fabrikambank.com/onlinebanking/. Ustawia kryteria kodu HTTP 200 i tekst „Witaj!”. Jeśli test zakończy się niepowodzeniem, powodem może być poważna awaria sieci lub serwerów albo problem z wdrożeniem. Ewentualnie ktoś mógł zmienić komunikat „Witaj!” na stronie bez jej wiedzy.
 * Pogłębiony kilkustopniowy test, obejmujący zalogowanie i pobranie aktualnej listy kont oraz sprawdzenie określonych kluczowych szczegółów na każdej stronie. Ten test sprawdza, czy działa link do bazy danych kont. Marcela korzysta z fikcyjnego identyfikatora klienta: ma kilka do dyspozycji do celów testowych.
 
 Po skonfigurowaniu tych testów Marcela jest pewna, że zespół szybko dowie się o ewentualnej awarii.  
@@ -64,7 +64,7 @@ Ale co ważniejsze, zespół deweloperów otrzymuje wiadomość e-mail z alertem
 ## <a name="monitor-performance"></a>Monitorowanie wydajności
 Na stronie Przegląd usługi Application Insights znajduje się wykres przedstawiający różne [kluczowe metryki](app-insights-web-monitor-performance.md).
 
-![Różne metryki](./media/app-insights-detect-triage-diagnose/05-perfMetrics.png)
+![Zrzut ekranu przedstawiający wykresy wskaźników KPI w ramach przeglądu wydajności](./media/app-insights-detect-triage-diagnose/overview-graphs.png)
 
 Czas ładowania strony w przeglądarce jest uzyskiwany na podstawie danych telemetrycznych wysłanych bezpośrednio ze stron internetowych. Czas odpowiedzi serwera, liczba żądań serwera i liczba żądań zakończonych niepowodzeniem są mierzone na serwerze internetowym i wysyłane z niego do usługi Application Insights.
 
@@ -72,7 +72,7 @@ Marcela jest nieco zaniepokojona wykresem odpowiedzi serwera. Ten wykres pokazuj
 
 Marcela otwiera wykresy serwerów:
 
-![Różne metryki](./media/app-insights-detect-triage-diagnose/06.png)
+![Różne metryki](./media/app-insights-detect-triage-diagnose/002-servers.png)
 
 Nic nie wskazuje, że występują ograniczenia zasobów, więc być może nagłe skoki na wykresach odpowiedzi serwera są przypadkowe.
 
@@ -154,7 +154,7 @@ Wyjątki i zdarzenia pojawiają się w bloku [Wyszukiwanie diagnostyczne](app-in
 ## <a name="monitor-proactively"></a>Aktywne monitorowanie
 Marcela nie chce tylko siedzieć bezczynnie i czekać na alerty. Wkrótce po każdym ponownym wdrożeniu zapoznaje się z [czasami odpowiedzi](app-insights-web-monitor-performance.md) — zarówno z ogólną wartością, jak i z tabelą najwolniejszych żądań i liczbą wyjątków.  
 
-![Wykres czasu odpowiedzi i siatka czasu odpowiedzi serwera.](./media/app-insights-detect-triage-diagnose/09-dependencies.png)
+![Wykres czasu odpowiedzi i siatka czasu odpowiedzi serwera.](./media/app-insights-detect-triage-diagnose/response-time.png)
 
 Może ocenić wpływ każdego wdrożenia na wydajność, zwykle porównując dany tydzień z poprzednim. W przypadku nagłego pogorszenia wyników zgłasza to deweloperom.
 
@@ -168,8 +168,6 @@ Z kolei poważny i stabilny wzrost na wykresie liczby wyjątków lub czasów odp
 Przydatną taktyką klasyfikacji jest taktyka Spróbuj sam. Jeśli napotkasz ten sam problem, będzie wiadomo, że jest prawdziwy.
 
 Jakiej części użytkowników dotyczy problem? Aby uzyskać przybliżoną odpowiedź, podziel liczbę błędów przez liczbę sesji.
-
-![Wykresy żądań zakończonych niepowodzeniem i sesji](./media/app-insights-detect-triage-diagnose/10-failureRate.png)
 
 Jeśli czas odpowiedzi jest długi, porównaj tabelę najwolniej odpowiadających żądań z częstotliwością korzystania z każdej strony.
 
@@ -203,7 +201,6 @@ Odkąd zespół deweloperów Fabrikam Bank korzysta z usługi Application Insigh
 * Na stronie Przegląd w usłudze Application Insights zespół skonfigurował cele wydajności przy użyciu określonych miar.
 * Od początku tworzenia aplikacji umieszczane są w niej miary wydajności, takie jak metryki, które mierzą postęp użytkownika przy użyciu „lejków”.  
 
-
 ## <a name="monitor-user-activity"></a>Monitorowanie działań użytkowników
 Jeśli czas odpowiedzi jest na ogół prawidłowy i występuje niewiele wyjątków, zespół deweloperów może przejść do kwestii użyteczności. Może zastanawiać się, w jaki sposób poprawić doświadczenia użytkowników i jak zachęcić większą liczbę użytkowników do osiągania zamierzonych celów.
 
@@ -211,7 +208,7 @@ Usługi Application Insights można również użyć, aby dowiedzieć się, co u
 
 Na przykład podróż typowego użytkownika przez witrynę internetową tworzy widoczny „lejek”. Wielu klientów zapoznaje się z kosztami różnych typów pożyczek. Mniejsza liczba zdecyduje się na wypełnienie formularza wyceny. Spośród tych, którzy otrzymają wycenę, kilku zdecyduje się na zaciągnięcie pożyczki.
 
-![Liczba wyświetleń strony](./media/app-insights-detect-triage-diagnose/12-funnel.png)
+![Liczba wyświetleń strony](./media/app-insights-detect-triage-diagnose/funnel.png)
 
 Dzięki określeniu, na którym etapie rezygnuje największa liczba klientów, firma może wypracować metody przyciągnięcia większej liczby użytkowników do końcowej części lejka. W niektórych przypadkach może być to kwestia złego środowiska użytkownika — na przykład jeśli trudno znaleźć przycisk „Dalej” lub instrukcje nie są czytelne. Jest również bardzo prawdopodobne, że klienci opuszczają stronę z przyczyn ściśle biznesowych: być może oprocentowanie pożyczek jest zbyt wysokie.
 

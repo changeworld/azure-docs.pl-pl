@@ -1,48 +1,48 @@
 ---
-title: 'Szybki Start: Wysyłania zapytania przy użyciu interfejsu API wyszukiwania obrazów Bing przy użyciu środowiska Node.js'
+title: 'Szybki start: Wykonywanie wyszukiwania obrazów za pomocą środowiska Node.js — interfejs API wyszukiwania obrazów Bing'
 titleSuffix: Azure Cognitive Services
-description: Ten przewodnik Szybki Start umożliwia wyszukiwanie i znajdowanie obrazów w sieci web za pomocą API wyszukiwania w Internecie Bing.
+description: Ten przewodnik Szybki start umożliwia utworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbieranie odpowiedzi w formacie JSON. Ta prosta aplikacja JavaScript wysyła zapytanie wyszukiwania do interfejsu API i wyświetla nieprzetworzone wyniki.
 services: cognitive-services
 documentationcenter: ''
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: 43f0cfec6aa2d4263b6a627736c2a432b2943145
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: MT
+ms.openlocfilehash: 1584b3e0a1e1c560d42b5f8320d0e15ad6242918
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576650"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294598"
 ---
-# <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-nodejs"></a>Szybki Start: Wysyłanie zapytania przy użyciu interfejsu API REST wyszukiwania obrazów Bing i Node.js
+# <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-nodejs"></a>Szybki start: Wysyłanie zapytania przy użyciu interfejsu API REST wyszukiwania obrazów Bing i środowiska Node.js
 
-Ten przewodnik Szybki Start umożliwia utworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbierać odpowiedź w formacie JSON. Ta prosta aplikacja JavaScript wysyła zapytanie wyszukiwania do interfejsu API i wyświetli nieprzetworzone wyniki.
+Ten przewodnik Szybki start umożliwia utworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbieranie odpowiedzi w formacie JSON. Ta prosta aplikacja JavaScript wysyła zapytanie wyszukiwania do interfejsu API i wyświetla nieprzetworzone wyniki.
 
-Podczas tej aplikacji jest napisany w języku JavaScript i działa w środowisku Node.js, interfejs API jest RESTful sieci Web usługi zgodne większość języków programowania.
+Ta aplikacja jest napisana w języku JavaScript i uruchamiana w środowisku Node.js, a interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
-Kod źródłowy dla tego przykładu jest dostępny [w serwisie GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingImageSearchv7Quickstart.js) obsługi dodatkowych błędów i adnotacje kodu.
+Kod źródłowy dla tego przykładu jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingImageSearchv7Quickstart.js) wraz z dodatkową obsługą błędów i adnotacjami kodu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Najnowszą wersję [Node.js](https://nodejs.org/en/download/).
+* Najnowsza wersja środowiska [Node.js](https://nodejs.org/en/download/).
 
-* [Biblioteki JavaScript żądania](https://github.com/request/request)
+* [Biblioteka żądań języka JavaScript](https://github.com/request/request)
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-## <a name="create-and-initialize-the-application"></a>Tworzenie i Inicjowanie aplikacji
+## <a name="create-and-initialize-the-application"></a>Tworzenie i inicjowanie aplikacji
 
-1. Utwórz nowy plik JavaScript w Twoim ulubionym środowiskiem IDE lub edytora, a następnie ustaw wymagania dotyczące poziom ścisłości i https.
+1. Utwórz nowy plik JavaScript w swoim ulubionym środowisku IDE lub edytorze i ustaw wymagania dotyczące poziomu ścisłości oraz protokołu HTTPS.
 
     ```javascript
     'use strict';
     let https = require('https');
     ```
 
-2. Utwórz zmienne dla punktu końcowego interfejsu API, ścieżki wyszukiwania interfejs API obrazów, klucz subskrypcji i szukanego terminu.
+2. Utwórz zmienne dla punktu końcowego interfejsu API, ścieżki wyszukiwania interfejsu API obrazów, klucza subskrypcji i terminu wyszukiwania.
     ```javascript
     let subscriptionKey = 'enter key here';
     let host = 'api.cognitive.microsoft.com';
@@ -50,9 +50,9 @@ Kod źródłowy dla tego przykładu jest dostępny [w serwisie GitHub](https://g
     let term = 'tropical ocean';
     ```
 
-## <a name="construct-the-search-request-and-query"></a>Konstruowania żądania wyszukiwania i zapytań.
+## <a name="construct-the-search-request-and-query"></a>Konstruowanie żądania wyszukiwania i zapytania
 
-1. Używać zmiennych w ostatnim kroku, aby sformatować adres URL żądania interfejsu API wyszukiwania. Należy pamiętać, że termin wyszukiwania musi być zakodowane w adresie URL przed wysłaniem do interfejsu API.
+1. Użyj zmiennych utworzonych w ostatnim kroku, aby sformatować adres URL wyszukiwania dla żądania interfejsu API. Należy pamiętać, że termin wyszukiwania musi być zakodowany w adresie URL przed wysłaniem go do interfejsu API.
 
     ```javascript
     let request_params = {
@@ -65,32 +65,32 @@ Kod źródłowy dla tego przykładu jest dostępny [w serwisie GitHub](https://g
     };
     ```
 
-2. Biblioteka żądania służy do wysyłania zapytania do interfejsu API. `response_handler` zostanie zdefiniowany w następnej sekcji.
+2. Użyj biblioteki żądań, aby wysłać zapytanie do interfejsu API. Funkcja `response_handler` zostanie zdefiniowana w następnej sekcji.
     ```javascript
     let req = https.request(request_params, response_handler);
     req.end();
     ```
 
-## <a name="handle-and-parse-the-response"></a>Obsługa i przeanalizować odpowiedzi
+## <a name="handle-and-parse-the-response"></a>Obsługa i analizowanie odpowiedzi
 
-1. Zdefiniuj funkcję o nazwie `response_handler` przyjmującej wywołanie HTTP `response`, jako parametr. w ramach tej funkcji wykonaj następujące czynności:
-    
-    1. Definiowanie zmiennej, by zawierała treści odpowiedzi JSON.  
+1. Zdefiniuj funkcję o nazwie `response_handler`, która przyjmuje wywołanie HTTP `response`, jako parametr. W ramach tej funkcji wykonaj następujące czynności:
+
+    1. Definiowanie zmiennej, by zawierała treść odpowiedzi JSON.  
         ```javascript
         let response_handler = function (response) {
             let body = '';
         };
         ```
 
-    2. Store Zamorska odpowiedzi podczas **danych** flaga jest wywoływana. 
+    2. Zapisanie treści odpowiedzi, gdy wywoływana jest flaga **data**.
         ```javascript
         response.on('data', function (d) {
             body += d;
         });
         ```
 
-    3. Gdy **zakończenia** zgłaszane jest flaga, za pomocą pliku JSON, które mogą być przetwarzane i adres URL obrazu może zostać zrealizowane, wraz z całkowitą liczbę obrazów zwrócony.
-    
+    3. Gdy zgłaszana jest flaga **end**, plik JSON może zostać przetworzony, a adres URL obrazu może zostać wydrukowany wraz z łączną liczbą zwróconych obrazów.
+
         ```javascript
         response.on('end', function () {
             let firstImageResult = imageResults.value[0];
@@ -102,7 +102,7 @@ Kod źródłowy dla tego przykładu jest dostępny [w serwisie GitHub](https://g
 
 ## <a name="json-response"></a>Odpowiedź w formacie JSON
 
-Odpowiedzi z interfejsu API wyszukiwania obrazów Bing są zwracane w formacie JSON. Ta przykładowa odpowiedź została obcięta do Pokaż jeden wynik.
+Odpowiedzi z interfejsu API wyszukiwania obrazów Bing są zwracane w formacie JSON. Ta przykładowa odpowiedź została obcięta w celu pokazania pojedynczego wyniku.
 
 ```json
 {
@@ -148,15 +148,15 @@ Odpowiedzi z interfejsu API wyszukiwania obrazów Bing są zwracane w formacie J
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek dotyczący aplikacji jednostronicowej wyszukiwania obrazów Bing](../tutorial-bing-image-search-single-page-app.md)
+> [Samouczek dotyczący jednostronicowej aplikacji wyszukiwania obrazów Bing](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz także 
+## <a name="see-also"></a>Zobacz też
 
-* [Co to jest wyszukiwanie obrazów Bing?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Wypróbuj prezentację online dla interaktywne](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-* [Uzyskaj bezpłatne klucza dostępu usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Dokumentacja usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Czym jest funkcja wyszukiwania obrazów Bing?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Wypróbuj interaktywny pokaz online](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Pobieranie bezpłatnego klucza dostępu usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [Dokumentacja usług Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Dokumentacja interfejsu API wyszukiwania obrazów Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

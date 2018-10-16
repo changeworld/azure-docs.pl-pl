@@ -1,36 +1,36 @@
 ---
-title: Dodaj kroje przy użyciu interfejsu API krój | Dokumentacja firmy Microsoft
-titleSuffix: Microsoft Cognitive Services
-description: Dodaj kroje obrazów za pomocą interfejsu API krój w usługach kognitywnych.
+title: 'Przykład: Dodawanie twarzy — interfejs API rozpoznawania twarzy'
+titleSuffix: Azure Cognitive Services
+description: Dodawanie twarzy na obrazach za pomocą interfejsu API rozpoznawania twarzy.
 services: cognitive-services
 author: SteveMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: article
+ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 3306c13d6c3d231ddbda38cfcbc5419fcdbd30db
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: fb5d03e2cb3c11daf7a94966fda46345ee910ded
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347000"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125106"
 ---
-# <a name="how-to-add-faces"></a>Jak dodać powierzchni
+# <a name="example-how-to-add-faces"></a>Przykład: Jak dodawać twarze
 
-W tym przewodniku przedstawiono najlepsze rozwiązanie, aby dodać bardzo dużej liczby osób i kroje PersonGroup.
-Tej samej strategii dotyczą również FaceList i LargePersonGroup.
-Przykłady są zapisywane w języku C# za pomocą biblioteki klienta powierzchni interfejsu API.
+Ten przewodnik prezentuje najlepsze rozwiązanie w zakresie dodawania dużej liczby osób i twarzy do obiektu PersonGroup.
+Ta sama strategia dotyczy także obiektów FaceList i LargePersonGroup.
+Przykłady są zapisywane w języku C# przy użyciu biblioteki klienta interfejsu API rozpoznawania twarzy.
 
-## <a name="step1"></a> Krok 1: inicjowanie
+## <a name="step-1-initialization"></a>Krok 1: Inicjowanie
 
-Kilka zadeklarować i zaimplementowano funkcji pomocnika można zaplanować żądania.
+Deklaruje się kilka zmiennych i implementowana jest funkcja pomocnika w celu zaplanowania żądań.
 
-- `PersonCount` jest to całkowita liczba osób.
-- `CallLimitPerSecond` jest maksymalną wywołania na sekundę, zgodnie z poziomu subskrypcji.
-- `_timeStampQueue` jest kolejką do rejestrowania sygnatury czasowe żądania.
-- `await WaitCallLimitPerSecondAsync()` czeka na zakończenie jest ważny do wysłania następnego żądania.
+- `PersonCount` jest łączną liczbą osób.
+- `CallLimitPerSecond` jest maksymalną liczbą wywołań na sekundę, zgodnie z warstwą subskrypcji.
+- `_timeStampQueue` jest kolejką do rejestrowania znaczników czasu żądań.
+- `await WaitCallLimitPerSecondAsync()` powoduje oczekiwanie na moment, kiedy można prawidłowo wysłać kolejne żądanie.
 
 ```CSharp
 const int PersonCount = 10000;
@@ -60,20 +60,20 @@ static async Task WaitCallLimitPerSecondAsync()
 }
 ```
 
-## <a name="step2"></a> Krok 2: Autoryzowanie wywołania interfejsu API
+## <a name="step-2-authorize-the-api-call"></a>Krok 2: Autoryzowanie wywołania interfejsu API
 
-Podczas korzystania z biblioteki klienta, klucz subskrypcji jest przekazywana w konstruktorze klasy FaceServiceClient. Na przykład:
+Jeśli korzystasz z biblioteki klienta, klucz subskrypcji jest przekazywany w konstruktorze klasy FaceServiceClient. Na przykład:
 
 ```CSharp
 FaceServiceClient faceServiceClient = new FaceServiceClient("<Subscription Key>");
 ```
 
-Klucz subskrypcji można uzyskać ze strony użytkownika portalu Azure Marketplace. Zobacz [subskrypcje](https://www.microsoft.com/cognitive-services/en-us/sign-up).
+Klucz subskrypcji można uzyskać na stronie portalu Marketplace witryny Azure Portal. Zobacz [Subskrypcje](https://www.microsoft.com/cognitive-services/en-us/sign-up).
 
-## <a name="step3"></a> Krok 3: Tworzenie PersonGroup
+## <a name="step-3-create-the-persongroup"></a>Krok 3: Tworzenie obiektu PersonGroup
 
-PersonGroup o nazwie "MyPersonGroup" jest tworzony zapisać osób.
-Czas żądania jest umieszczonych w kolejce do `_timeStampQueue` zapewnienie ogólnej sprawdzania poprawności.
+Tworzony jest obiekt PersonGroup o nazwie „MyPersonGroup” w celu zapisania osób.
+Czas żądania jest umieszczany w kolejce `_timeStampQueue` w celu zapewnienia ogólnej walidacji.
 
 ```CSharp
 const string personGroupId = "mypersongroupid";
@@ -82,9 +82,9 @@ _timeStampQueue.Enqueue(DateTime.UtcNow);
 await faceServiceClient.CreatePersonGroupAsync(personGroupId, personGroupName);
 ```
 
-## <a name="step4"></a> Krok 4: Tworzenie osobom PersonGroup
+## <a name="step-4-create-the-persons-to-the-persongroup"></a>Krok 4: Tworzenie osób w obiekcie PersonGroup
 
-Osoby są tworzone jednocześnie i `await WaitCallLimitPerSecondAsync()` jest również stosowane w celu uniknięcia przekroczenia limitu wywołania.
+Osoby są tworzone jednocześnie i stosowana jest także funkcja `await WaitCallLimitPerSecondAsync()` w celu uniknięcia przekroczenia limitu wywołań.
 
 ```CSharp
 CreatePersonResult[] persons = new CreatePersonResult[PersonCount];
@@ -97,10 +97,10 @@ Parallel.For(0, PersonCount, async i =>
 });
 ```
 
-## <a name="step5"></a> Krok 5: Dodawanie kroje osobom
+## <a name="step-5-add-faces-to-the-persons"></a>Krok 5: Dodawanie twarzy do osób
 
-Dodawanie kroje do innej osoby są przetwarzane współbieżnie, natomiast w przypadku jednego określonej osoby jest Sekwencyjna.
-Ponownie `await WaitCallLimitPerSecondAsync()` wywoływana w celu zapewnienia częstotliwość żądanie znajduje się w zakresie ograniczenia.
+Operacje dodawania twarzy do różnych osób są przetwarzane współbieżnie, natomiast w przypadku jednej określonej osoby jest to operacja sekwencyjna.
+Ponownie wywoływana jest funkcja `await WaitCallLimitPerSecondAsync()` w celu zapewnienia, że częstotliwość żądań znajduje się w zakresie ograniczenia.
 
 ```CSharp
 Parallel.For(0, PersonCount, async i =>
@@ -120,22 +120,23 @@ Parallel.For(0, PersonCount, async i =>
 });
 ```
 
-## <a name="summary"></a> Podsumowanie
+## <a name="summary"></a>Podsumowanie
 
-W tym przewodniku uzyskanych w procesie tworzenia PersonGroup bardzo dużej liczby osób i powierzchni. Kilka przypomnienia:
+W tym przewodniku przedstawiono proces tworzenia obiektu PersonGroup z dużą liczbą osób i twarzy. Kilka przypomnień:
 
-- Ta strategia dotyczą również FaceList i LargePersonGroup.
-- Dodawanie/usuwanie kroje różnych FaceLists lub osób pełniących LargePersonGroup mogą być przetwarzane współbieżnie.
-- Te same operacje dla jednego określonego FaceList lub osoby w LargePersonGroup powinno być wykonywane sekwencyjnie.
-- Aby zachować prostotę, obsługa wyjątków potencjalnych pominięto w tym przewodniku. Jeśli chcesz zwiększyć niezawodność więcej, powinny być stosowane zasady ponawiania właściwe.
+- Ta strategia dotyczy także obiektów FaceList i LargePersonGroup.
+- Dodawanie/usuwanie twarzy dla różnych obiektów FaceLists lub Persons w LargePersonGroup może być przetwarzane współbieżnie.
+- Te same operacje dla jednego określonego obiektu FaceList lub Person w LargePersonGroup powinny być wykonywane sekwencyjnie.
+- Aby zachować prostotę, obsługa potencjalnych wyjątków została pominięta w tym przewodniku. Jeśli chcesz zwiększyć niezawodność, należy zastosować właściwe zasady ponawiania.
 
-Bieżące informacje o funkcji wcześniej wyjaśniono i sprawdzono są następujące:
+Poniżej podano krótkie przypomnienie wcześniej opisanych i przedstawionych funkcji:
 
-- Tworzenie za pomocą PersonGroups [PersonGroup — tworzenie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) interfejsu API
-- Tworzenie osoby za pomocą [osoba PersonGroup - utworzyć](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) interfejsu API
-- Dodawanie kroje do osoby za pomocą [PersonGroup osoba — Dodaj krój](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) interfejsu API
+- Tworzenie grup osób za pomocą interfejsu API [PersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)
+- Tworzenie osób za pomocą interfejsu API [PersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)
+- Dodawanie twarzy do osób za pomocą interfejsu API [PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)
 
-## <a name="related"></a> Tematy pokrewne
-- [Jak zidentyfikować skierowany w obrazie](HowtoIdentifyFacesinImage.md)
-- [Jak wykryć skierowany w obrazie](HowtoDetectFacesinImage.md)
+## <a name="related-topics"></a>Tematy pokrewne
+
+- [Identyfikowanie twarzy na obrazie](HowtoIdentifyFacesinImage.md)
+- [Wykrywanie twarzy na obrazie](HowtoDetectFacesinImage.md)
 - [Jak używać funkcji na dużą skalę](how-to-use-large-scale.md)

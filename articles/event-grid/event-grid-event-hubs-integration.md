@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: tutorial
 ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 432436ee13519cf342313ad369c168ba764f9264
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: aad7a24d8b0e0bc74815cad3604db1cc21a6db96
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616519"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44163230"
 ---
 # <a name="stream-big-data-into-a-data-warehouse"></a>Przesyłanie strumieniowe danych Big Data do magazynu danych
 
@@ -184,6 +184,7 @@ Konfiguracja centrum zdarzeń, magazynu danych SQL, aplikacji funkcji platformy 
 
 ## <a name="next-steps"></a>Następne kroki
 
+* Aby poznać różnice miedzy usługami obsługi komunikatów na platformie Azure, zobacz [Wybieranie między usługami platformy Azure dostarczającymi komunikaty](compare-messaging-services.md).
 * Aby zapoznać się z wprowadzeniem do usługi Event Grid, zobacz [Wprowadzenie do usługi Azure Event Grid](overview.md).
 * Aby zapoznać się z wprowadzeniem do funkcji Event Hubs Capture, zobacz [Włączanie funkcji przechwytywania usługi Event Hubs przy użyciu witryny Azure Portal](../event-hubs/event-hubs-capture-enable-through-portal.md).
 * Aby uzyskać więcej informacji na temat konfigurowania i uruchamiania przykładu, zobacz [Przykład funkcji Event Hubs Capture i usługi Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo).

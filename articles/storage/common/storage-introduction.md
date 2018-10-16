@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 07/11/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 59e6f4126e8a39ab695015fae2a2013529383418
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 693ba07e46900ba6f3e025d97cb34aad9e244ace
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41918958"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027048"
 ---
 # <a name="introduction-to-azure-storage"></a>Wprowadzenie do usługi Azure Storage
 
@@ -93,7 +93,7 @@ W poniższej tabeli przedstawiono różne rodzaje kont magazynu i obiekty, któr
 
 |**Typ konta magazynu**|**Przeznaczenie ogólne w warstwie Standardowa**|**Przeznaczenie ogólne w warstwie Premium**|**Usługa Blob Storage w gorącej i chłodnej warstwie dostępu**|
 |-----|-----|-----|-----|
-|**Obsługiwane usługi**| Usługi Blob, File i Queue | Usługa Blob | Usługa Blob|
+|**Obsługiwane usługi**| Usługi Blob, File, Queue i Table | Usługa Blob | Usługa Blob|
 |**Obsługiwane typy obiektów blob**|Blokowe obiekty blob, stronicowe obiekty blob, uzupełnialne obiekty blob | Stronicowe obiekty blob | Blokowe obiekty blob i uzupełnialne obiekty blob|
 
 ### <a name="general-purpose-storage-accounts"></a>Konta magazynu ogólnego przeznaczenia
