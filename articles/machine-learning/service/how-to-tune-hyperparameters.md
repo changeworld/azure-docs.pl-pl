@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 1171ff64bea99d7bc736a5a4fe88d9c08324b9d9
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 950d985ca87cce484edeb7930ca1bda34d812f33
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116474"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344136"
 ---
 # <a name="tune-hyperparameters-for-your-model"></a>Dostosowywanie hiperparametrów dla modelu
 
@@ -36,6 +36,8 @@ W scenariuszach uczenie głębokie uczenie / machine modelu wydajność zależy 
 
 Usługa Azure Machine Learning pozwala na zautomatyzowanie eksploracji hiperparametrycznego w sposób efektywny, zaoszczędzić znaczną ilość czasu i zasobów. Określ zakres wartości hiperparametrycznego i maksymalna liczba szkolenia przebiegów. System następnie uruchamia wielu równoczesnych uruchomień przy użyciu różnych parametrów konfiguracji i automatycznie wyszukuje konfigurację, która powoduje najlepszą wydajność, mierzone metryki, które wybierzesz. Nieprawidłowo działających przebiegów szkoleniowych są automatycznie wczesne zakończone, zmniejszając nadmierne użycie nadmierny zasobów obliczeniowych. Te zasoby zamiast tego są używane do eksplorowania inne konfiguracje hiperparametrycznego.
 
+>[!NOTE]
+> Kod w tym artykule został przetestowany przy użyciu zestawu SDK usługi Azure Machine Learning wersji 0.168 
 
 ## <a name="define-search-space"></a>Definiowanie przestrzeni wyszukiwania
 
@@ -164,7 +166,7 @@ Ta metryka Zaloguj się następującym fragmentem kodu przykładowy skrypt szkol
 
 ```Python
 from azureml.core.run import Run
-run_logger = Run.get_submitted_run()
+run_logger = Run.get_context()
 run_logger.log("accuracy", float(val_accuracy))
 ```
 

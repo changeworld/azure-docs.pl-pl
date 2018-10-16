@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 10/15/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fb0fb4e0f23413cb56b1bb5ec419c44dfc52e7b6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a2f66078a817f5e6ad7296df11634a1a6130a055
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996846"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321669"
 ---
 # <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Podniesienie poziomu dostępu administratora globalnego usługi Azure Active Directory
 
@@ -31,29 +31,37 @@ Jeśli jesteś [administratora globalnego](../active-directory/users-groups-role
 - Zobacz wszystkie subskrypcje systemu Azure w organizacji
 - Zezwól aplikacji automatyzacji (na przykład aplikacja fakturowania lub inspekcji) na dostęp do wszystkich subskrypcji platformy Azure
 
-Domyślnie role administratora usługi Azure AD i Azure opartej na rolach kontrolę dostępu ról (RBAC) nie zakresu usługi Azure AD i Azure. Jednakże jeśli jesteś administratorem globalnym w usłudze Azure AD, możesz podnieść poziom konta dostępu do zarządzania subskrypcjami platformy Azure i grup zarządzania. Gdy możesz podnieść poziom dostępu, zostanie nadany [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator) roli (rola RBAC) na wszystkie subskrypcje dla określonej dzierżawy. Rola Administrator dostępu użytkowników umożliwia przyznawanie innym użytkownikom dostęp do zasobów platformy Azure w zakresie głównym (`/`).
-
-Podniesienie uprawnień powinna być tymczasowe i tylko wykonywane, kiedy potrzebne.
+W tym artykule opisano różne sposoby, możesz podnieść poziom konta dostępu do usługi w usłudze Azure AD.
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
+
+## <a name="overview"></a>Przegląd
+
+Usługa Azure AD i zasobów platformy Azure są zabezpieczone niezależnie od siebie nawzajem. Oznacza to przypisania roli usługi Azure AD nie może udzielać dostępu do zasobów platformy Azure i przypisań ról platformy Azure nie może udzielać dostępu do usługi Azure AD. Jednak jeśli jesteś administratorem globalnym w usłudze Azure AD można przypisać sobie dostęp do wszystkich subskrypcji platformy Azure i grup zarządzania w Twoim katalogu. Użyj tej funkcji, jeśli nie masz dostępu do zasobów subskrypcji platformy Azure, takich jak maszyny wirtualne lub kont magazynu, i chcesz używać z uprawnieniami administratora globalnego w celu uzyskania dostępu do tych zasobów.
+
+Po użytkownik podniesienie poziomu dostępu, użytkownik zostanie przypisany [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator) roli na platformie Azure na zakres głównego (`/`). Dzięki temu można wyświetlić wszystkie zasoby i przypisać dostęp w dowolnej subskrypcji lub grupy zarządzania w katalogu. Można usunąć przypisania roli Administrator dostępu użytkowników przy użyciu programu PowerShell.
+
+Po wprowadzeniu zmiany, które należy wprowadzić w zakresie głównym, należy usunąć ten podwyższonego poziomu dostępu.
+
+![Podniesienie poziomu dostępu](./media/elevate-access-global-admin/elevate-access.png)
 
 ## <a name="azure-portal"></a>Azure Portal
 
 Wykonaj następujące kroki w celu podniesienie poziomu dostępu administratora globalnego przy użyciu witryny Azure portal.
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) lub [Centrum administracyjne usługi Azure Active Directory](https://aad.portal.azure.com).
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) lub [Centrum administracyjne usługi Azure Active Directory](https://aad.portal.azure.com) jako Administrator globalny.
 
 1. Na liście w okienku nawigacji kliknij **usługi Azure Active Directory** a następnie kliknij przycisk **właściwości**.
 
    ![Właściwości usługi AD platformy Azure — zrzut ekranu](./media/elevate-access-global-admin/aad-properties.png)
 
-1. W obszarze **Administrator globalny może zarządzać subskrypcjami platformy Azure i grup zarządzania**, ustaw przełącznik na **tak**.
+1. W obszarze **Access management dla zasobów platformy Azure**, ustaw przełącznik na **tak**.
 
-   ![Administrator globalny może zarządzać subskrypcjami platformy Azure i zarządzania grupy — zrzut ekranu](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
+   ![Zarządzanie dostępem do zasobów platformy Azure — zrzut ekranu](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
 
-   Po ustawieniu przełącznika na **tak**, konta administratora globalnego (aktualnie zalogowany użytkownik) zostanie dodany do roli Administrator dostępu użytkowników w usłudze Azure RBAC w zakresie głównym (`/`), która przyznaje dostęp do widoku i raportowanie na wszystkie subskrypcje systemu Azure skojarzone z dzierżawą usługi Azure AD.
+   Po ustawieniu przełącznika na **tak**, masz przypisaną rolę administratora dostępu użytkowników w usłudze Azure RBAC w zakresie głównym (/). Przyznaje uprawnienia do przypisywania ról we wszystkich subskrypcjach platformy Azure i skojarzone z tego katalogu usługi Azure AD grupy zarządzania. Ta opcja jest dostępna tylko dla użytkowników, którzy mają przypisaną rolę administratora globalnego w usłudze Azure AD.
 
-   Po ustawieniu przełącznika na **nie**, konta administratora globalnego (aktualnie zalogowany użytkownik) zostanie usunięty z roli Administrator dostępu użytkowników w RBAC platformy Azure. Nie można wyświetlić wszystkie subskrypcje systemu Azure, które są skojarzone z dzierżawą usługi Azure AD i można wyświetlać i zarządzać nimi tylko subskrypcji platformy Azure do których użytkownik ma dostęp.
+   Po ustawieniu przełącznika na **nie**, rolę Administrator dostępu użytkowników w RBAC platformy Azure zostanie usunięty z konta użytkownika. Nie można przypisać ról we wszystkich subskrypcjach platformy Azure i grup zarządzania, które są skojarzone z tego katalogu usługi Azure AD. Można wyświetlać i zarządzać tylko subskrypcji platformy Azure i grup zarządzania, do których użytkownik ma dostęp.
 
 1. Kliknij przycisk **Zapisz** można zapisać ustawień użytkownika.
 
@@ -190,16 +198,16 @@ Gdy wywołujesz `elevateAccess`, możesz utworzyć przypisania roli dla siebie, 
 
     Zapisz identyfikator z `name` parametru, w tym przypadku `18d7d88d-d35e-4fb5-a5c3-7773c20a72d9`.
 
-2. Należy również listy przypisania roli administrator dzierżawy w zakresie dzierżawy. Lista wszystkich przypisań w zakresie dzierżawy dla `principalId` administratora dzierżawy, który wprowadzone podniesienie uprawnień dostępu, wywołania. Spowoduje to wyświetlenie listy wszystkich przypisań w dzierżawie, aby uzyskać identyfikator obiektu.
+2. Należy również listy przypisania roli administrator katalogu, w zakresie katalogu. Lista wszystkich przypisań w zakresie katalogu dla `principalId` administratora katalogu, który wprowadzone podniesienie uprawnień dostępu, wywołania. Spowoduje to wyświetlenie listy wszystkich przypisań w bieżącym katalogu dla objectid.
 
     ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectid}'
     ```
     
     >[!NOTE] 
-    >Administrator dzierżawy nie powinny mieć wielu przypisań, jeśli poprzednie zapytanie zwraca zbyt wiele przypisania, można także badać dla wszystkich przypisań tylko na poziomie zakresu dzierżawy, a następnie filtrować wyniki: `GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
+    >Administrator katalogu nie powinny mieć wielu przypisań, jeśli poprzednie zapytanie zwraca zbyt wiele przypisania, można także badać dla wszystkich przypisań tylko na poziomie zakresu w katalogu, a następnie filtrować wyniki: `GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
         
-    2. Poprzednie wywołania zwracają listę przypisań ról. Znajdź przypisania roli, której zakres jest `"/"` i `roleDefinitionId` kończy się na identyfikator nazwy roli w kroku 1 i `principalId` odpowiada objectId administratora dzierżawy. 
+    2. Poprzednie wywołania zwracają listę przypisań ról. Znajdź przypisania roli, której zakres jest `"/"` i `roleDefinitionId` kończy się na identyfikator nazwy roli w kroku 1 i `principalId` odpowiada objectId administratorem katalogu. 
     
     Przykład przypisania roli:
 
@@ -235,6 +243,5 @@ Gdy wywołujesz `elevateAccess`, możesz utworzyć przypisania roli dla siebie, 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
+- [Zrozumienie różnych ról](rbac-and-directory-admin-roles.md)
 - [Kontrola dostępu oparta na rolach, z użyciem usług REST](role-assignments-rest.md)
-- [Zarządzanie dostępem do zasobów platformy Azure Privileged Identity Management](pim-azure-resource.md)
-- [Zarządzanie dostępem do zarządzania platformy Azure przy użyciu dostępu warunkowego](conditional-access-azure-management.md)

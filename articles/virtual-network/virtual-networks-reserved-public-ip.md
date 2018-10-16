@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie Azure zastrzeżone adresy IP (klasyczne) - PowerShell | Dokumentacja firmy Microsoft
-description: Zrozumienie zastrzeżone adresy IP (klasyczne) i jak nimi zarządzać przy użyciu programu PowerShell.
+title: Zarządzanie Azure zastrzeżone adresy IP (klasyczny) | Dokumentacja firmy Microsoft
+description: Zastrzeżone adresy IP (klasyczny) i jak nimi zarządzać przy użyciu programu Azure PowerShell i wiersza polecenia platformy Azure.
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -12,60 +12,56 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/10/2016
+ms.date: 10/12/2018
 ms.author: genli
-ms.openlocfilehash: 25fe3c5361ff58f8d62d5d083b7a69f517d2a267
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: df48e0dbf5a6c010f659e1019e56b7670c264234
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798958"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319697"
 ---
-# <a name="reserved-ip-addresses-classic"></a>Zastrzeżone adresy IP (klasyczne)
+# <a name="reserved-ip-addresses-classic-deployment"></a>Zastrzeżone adresy IP (wdrażanie klasyczne)
 
-> [!div class="op_single_selector"]
-> * [Azure Portal](virtual-network-deploy-static-pip-arm-portal.md)
-> * [Program PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
-> * [Interfejs wiersza polecenia platformy Azure](virtual-network-deploy-static-pip-arm-cli.md)
-> * [PowerShell (klasyczny)](virtual-networks-reserved-public-ip.md)
+ Adresy IP na platformie Azure można podzielić na dwie kategorie: dynamiczne i zastrzeżonych. Publiczne adresy IP, zarządzane przez platformę Azure są dynamiczne domyślnie. Oznacza to, że adres IP używany dla danej usługi w chmurze (VIP) lub do dostępu do maszyny Wirtualnej lub wystąpienia roli bezpośrednio (ILPIP) można zmienić od czasu do czasu, gdy zasoby są zamknięty lub zatrzymana (przydział zostanie cofnięty).
 
-Adresy IP na platformie Azure można podzielić na dwie kategorie: dynamiczne i zastrzeżone. Publiczne adresy IP, zarządzane przez usługę Azure są dynamiczne domyślnie. Oznacza to, że adres IP używany dla określonej chmury usługi (VIP) lub uzyskać dostępu do maszyny Wirtualnej lub bezpośrednio wystąpienia roli (ILPIP) mogą ulec zmianie od czasu do czasu, po zasoby są zamknięte lub zatrzymana (cofnięciu przydziału).
-
-Aby uniemożliwić zmianę adresów IP, można zastrzec adresu IP. Zastrzeżonych adresów IP może służyć wyłącznie jako adresu VIP, zapewniając, że adres IP dla usługi w chmurze jest taka sama, nawet jeśli zasoby są zamknięte lub zatrzymana (cofnięciu przydziału). Ponadto można przekonwertować istniejące dynamiczne adresy IP używane jako adresu VIP do zastrzeżonego adresu IP.
+Aby uniemożliwić zmianę adresów IP, możesz zarezerwować adres IP. Zastrzeżone adresy IP, może służyć jedynie jako adres VIP, zapewniając, że adres IP dla usługi w chmurze pozostaje taki sam, nawet gdy zasoby są zamknięty lub zatrzymana (przydział zostanie cofnięty). Ponadto można przekonwertować istniejących dynamiczne adresy IP używane jako adres VIP do zastrzeżonego adresu IP.
 
 > [!IMPORTANT]
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Azure Resource Manager i model klasyczny](../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Dowiedz się, jak Zarezerwuj statyczny publiczny adres IP przy użyciu [modelu wdrażania usługi Resource Manager](virtual-network-ip-addresses-overview-arm.md).
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Azure Resource Manager i model klasyczny](../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Dowiedz się, jak Zarezerwuj statyczny publiczny adres IP, korzystając [modelu wdrażania usługi Resource Manager](virtual-network-ip-addresses-overview-arm.md).
 
-Aby dowiedzieć się więcej na temat adresów IP na platformie Azure, przeczytaj [adresów IP](virtual-network-ip-addresses-overview-classic.md) artykułu.
+Aby dowiedzieć się więcej o adresach IP na platformie Azure, przeczytaj [adresów IP](virtual-network-ip-addresses-overview-classic.md) artykułu.
 
-## <a name="when-do-i-need-a-reserved-ip"></a>Jeśli potrzebujesz zastrzeżony adres IP?
-* **Aby upewnić się, że adres IP jest zarezerwowana w ramach subskrypcji**. Jeśli chcesz zastrzeżenia adresu IP, który nie jest zwalniany z subskrypcją w żadnym przypadku należy używać zastrzeżonego publicznego adresu IP.  
-* **Ma IP pozostanie z usługi w chmurze nawet w poprzek zatrzymana lub alokację stanu (VM)**. Jeśli chcesz, aby usługi można uzyskać dostęp przy użyciu adresu IP który nie powoduje zmiany, nawet wtedy, gdy maszyny wirtualne w usłudze w chmurze są zamknięte lub zatrzymać (cofnięciu przydziału).
-* **Aby zagwarantować, że ruch wychodzący z platformy Azure używał przewidywalną adres IP**. Może być Zapora lokalnymi skonfigurowany tak, aby zezwolić tylko na ruch z określonych adresów IP. Przez zarezerwowanie adresów IP, które znasz źródłowy adres IP i nie trzeba zaktualizować reguł zapory z powodu zmiany adresu IP.
+## <a name="when-do-i-need-a-reserved-ip"></a>Jeśli potrzebujesz zastrzeżonego adresu IP?
+* **Chcesz się upewnić, że adres IP jest zarezerwowana w ramach subskrypcji**. Jeśli chcesz zarezerwować adres IP, który nie jest zwalniane z subskrypcji w żadnym wypadku, należy używać zastrzeżonych publicznych adresów IP.  
+* **Ma adres IP pozostanie z usługi w chmurze nawet na zatrzymane lub stanu (VM) z cofniętą alokacją**. Jeśli chcesz, aby usługi były dostępne przy użyciu adresu IP to nie ulega zmianie, nawet wtedy, gdy maszyny wirtualne w usłudze w chmurze są zamykane lub zatrzymano (cofnięto przydział).
+* **Chcesz się upewnić, że ruch wychodzący z platformy Azure używa przewidywalne adresu IP**. Może być skonfigurowany tak, aby zezwolić tylko na ruch z określonych adresów IP zapory w środowisku lokalnym. Rezerwowanie adresów IP, możesz znać adres IP źródła i trzeba zaktualizować reguły zapory z powodu zmiany adresu IP.
 
-## <a name="faq"></a>Często zadawane pytania
-1. Dla wszystkich usług platformy Azure można używać zastrzeżonego adresu IP? <br>
-    Nie. Zastrzeżonych adresów IP można używać tylko dla maszyn wirtualnych i role wystąpienia usługi w chmurze za pośrednictwem adresu VIP.
-2. Jak wiele zastrzeżonych adresów IP może mieć? <br>
-    Aby uzyskać więcej informacji, zobacz [Azure ogranicza](../azure-subscription-service-limits.md#networking-limits) artykułu.
-3. Dla zarezerwowanych adresów IP jest opłatę? <br>
-    Czasami. Aby uzyskać szczegółowe informacje o cenach, zobacz [zastrzeżonego adresu IP Address szczegóły cennika](http://go.microsoft.com/fwlink/?LinkID=398482) strony.
-4. Jak zastrzeżenia adresu IP? <br>
-    Korzystając z programu PowerShell, [interfejsu API REST zarządzania Azure](https://msdn.microsoft.com/library/azure/dn722420.aspx), lub [portalu Azure](https://portal.azure.com) do zarezerwowania adresu IP w regionie platformy Azure. Zastrzeżony adres IP jest skojarzony z subskrypcją.
-5. Czy można używać zastrzeżonego adresu IP z sieci oparte na grupach koligacji wirtualnych? <br>
-    Nie. Zastrzeżonych adresów IP są obsługiwane tylko w regionalnych sieci wirtualnych. Zastrzeżonych adresów IP nie są obsługiwane dla sieci wirtualnych, które są skojarzone z grup koligacji. Aby uzyskać więcej informacji o sposobie kojarzenia sieci wirtualnej z region lub grupę koligacji, zobacz [o sieci regionalnych wirtualnych i grup koligacji](virtual-networks-migrate-to-regional-vnet.md) artykułu.
+## <a name="faqs"></a>Często zadawane pytania
+- Czy można używać zastrzeżonego adresu IP, dla wszystkich usług platformy Azure?
+    Nie. Zastrzeżone adresy IP należy używać tylko dla maszyn wirtualnych i ról wystąpień usługi w chmurze dostępnych za pośrednictwem adresu VIP.
+- Jak wiele zastrzeżonych adresów IP można mieć?
+    Aby uzyskać więcej informacji, zobacz [limitów platformy Azure](../azure-subscription-service-limits.md#networking-limits) artykułu.
+- Zastrzeżone adresy IP jest opłaty?
+    Czasami. Aby uzyskać szczegółowe informacje o cenach, zobacz [zastrzeżonego adresu IP adres — szczegóły cennika](http://go.microsoft.com/fwlink/?LinkID=398482) strony.
+- Jak zastrzec adres IP?
+    Można użyć programu PowerShell, [interfejsu API REST zarządzania Azure](https://msdn.microsoft.com/library/azure/dn722420.aspx), lub [witryny Azure portal](https://portal.azure.com) do rezerwowania adresu IP w regionie platformy Azure. Zastrzeżony adres IP jest skojarzony z subskrypcją.
+- Czy można używać zastrzeżonego adresu IP, za pomocą sieci wirtualne oparte na grupie koligacji?
+    Nie. Zastrzeżone adresy IP są obsługiwane tylko w regionalnych sieciach wirtualnych. Zastrzeżone adresy IP nie są obsługiwane dla sieci wirtualnych, które są skojarzone z grup koligacji. Aby uzyskać więcej informacji o kojarzeniu sieci wirtualnej z region lub grupa koligacji, zobacz [o regionalnej sieci i grup koligacji](virtual-networks-migrate-to-regional-vnet.md) artykułu.
 
 ## <a name="manage-reserved-vips"></a>Zarządzanie zarezerwowanych adresów VIP
 
-Upewnij się, zostanie zainstalowany i skonfigurowany programu PowerShell, wykonując kroki opisane w [Instalowanie i konfigurowanie programu PowerShell](/powershell/azure/overview) artykułu. 
+### <a name="using-azure-powershell-classic"></a>Przy użyciu programu Azure PowerShell (wersja klasyczna)
 
-Przed użyciem zastrzeżonych adresów IP, należy ją dodać do subskrypcji. Aby utworzyć zastrzeżonego adresu IP z puli publicznych adresów IP dostępne w *środkowe stany USA* lokalizacji, uruchom następujące polecenie:
+Przed użyciem zarezerwowane adresy IP, należy dodać go do swojej subskrypcji. Utwórz zastrzeżony adres IP z puli publicznych adresów IP dostępne w *środkowe stany USA* lokalizacji w następujący sposób:
 
-```powershell
-New-AzureReservedIP –ReservedIPName MyReservedIP –Location "Central US"
-```
+> [!NOTE]
+> Dla klasycznego modelu wdrażania należy zainstalować wersję zarządzania usługą programu Azure PowerShell. Aby uzyskać więcej informacji, zobacz [Instalowanie modułu Azure PowerShell Service Management](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0). 
 
-Zwróć uwagę, że nie można określić adresu IP, jakie są zastrzeżone. Aby wyświetlić adresy IP, które są zastrzeżone w ramach subskrypcji, uruchom następujące polecenie programu PowerShell i zwróć uwagę na wartości dla *nazwa zastrzeżonego adresu IP* i *adres*:
+  ```powershell
+    New-AzureReservedIP –ReservedIPName MyReservedIP –Location "Central US"
+  ```
+Należy zauważyć, że nie można określić adresu IP, co jest zarezerwowana. Aby zobaczyć, jakie adresy IP są zarezerwowane w ramach subskrypcji, uruchom następujące polecenie programu PowerShell i zwróć uwagę na wartości dla *nazwa zastrzeżonego adresu IP* i *adres*:
 
 ```powershell
 Get-AzureReservedIP
@@ -87,24 +83,74 @@ Oczekiwane dane wyjściowe:
     OperationStatus      : Succeeded
 
 >[!NOTE]
->Po utworzeniu zastrzeżonego adresu IP przy użyciu programu PowerShell nie można określić grupę zasobów, aby utworzyć zastrzeżonego adresu IP w. Azure miejsca go do grupy zasobów o nazwie *sieci domyślne* automatycznie. Jeśli utworzysz zastrzeżonego adresu IP za pomocą [portalu Azure](http://portal.azure.com), można określić dowolną grupę zasobów, możesz wybrać. Jeśli utworzysz zastrzeżonego adresu IP w grupie zasobów innych niż *sieci domyślne* jednak zawsze, gdy odwołanie zastrzeżonego adresu IP za pomocą polecenia takie jak `Get-AzureReservedIP` i `Remove-AzureReservedIP`, musi odwoływać się do nazwy  *Zarezerwowana nazwa grupy zasobów ip — Nazwa grupy*.  Na przykład w przypadku utworzenia zastrzeżony adres IP o nazwie *myReservedIP* w grupie zasobów o nazwie *myResourceGroup*, musi odwoływać się do nazwy zastrzeżonego adresu IP jako *myResourceGroup grupy myReservedIP*.   
+>Kiedy tworzysz zastrzeżonego adresu IP przy użyciu programu PowerShell, nie można określić grupę zasobów, aby utworzyć zastrzeżonego adresu IP w. Azure umieszcza go do grupy zasobów o nazwie *domyślnej sieci* automatycznie. Jeśli tworzysz zastrzeżonego adresu IP za pomocą [witryny Azure portal](http://portal.azure.com), możesz określić wszystkie grupy zasobów, możesz wybrać. Jeśli tworzysz zastrzeżonego adresu IP w grupie zasobów innej niż *domyślnej sieci* jednak zawsze, gdy odwołujesz się zastrzeżonego adresu IP za pomocą poleceń takich jak `Get-AzureReservedIP` i `Remove-AzureReservedIP`, musi odwoływać się do nazwy  *Nazwa grupy zasobów zarezerwowanych adresów ip — Nazwa grupy*.  Na przykład, jeśli tworzysz zastrzeżony adres IP o nazwie *myReservedIP* w grupie zasobów o nazwie *myResourceGroup*, musi odwoływać się nazwa zastrzeżonego adresu IP jako *grupie myResourceGroup myReservedIP*.   
 
-Gdy adres IP jest zarezerwowany, pozostaje skojarzona z subskrypcją dopóki nie zostaną usunięte. Aby usunąć zastrzeżonego adresu IP, uruchom następujące polecenie programu PowerShell:
+
+Po jest zastrzeżony adres IP, pozostaje skojarzona z subskrypcji do momentu ich usunięcia. Usuń zastrzeżony adres IP w następujący sposób:
 
 ```powershell
 Remove-AzureReservedIP -ReservedIPName "MyReservedIP"
 ```
 
-## <a name="reserve-the-ip-address-of-an-existing-cloud-service"></a>Rezerwacja adresu IP istniejącej usługi w chmurze
-Adres IP istniejącej usługi w chmurze może zarezerwować przez dodanie `-ServiceName` parametru. Do zarezerwowania adresu IP usługi w chmurze *TestService* w *środkowe stany USA* lokalizacji, uruchom następujące polecenie programu PowerShell:
+### <a name="using-azure-cli-classic"></a>Przy użyciu wiersza polecenia platformy Azure (wersja klasyczna)
+Utwórz zastrzeżony adres IP z puli publicznych adresów IP dostępne w *środkowe stany USA* lokalizacji przy użyciu następuje klasyczny interfejs wiersza polecenia platformy Azure:
 
-```powershell
-New-AzureReservedIP –ReservedIPName MyReservedIP –Location "Central US" -ServiceName TestService
+> [!NOTE]
+> Dla wdrożenia klasycznego należy użyć klasycznego wiersza polecenia platformy Azure. Aby uzyskać informacje o instalowaniu klasycznego wiersza polecenia platformy Azure, zobacz [zainstalować Azure klasyczny interfejs wiersza polecenia](https://docs.microsoft.com/cli/azure/install-classic-cli?view=azure-cli-latest)
+  
+ Polecenie:
+ 
+```azurecli
+azure network reserved-ip create <name> <location>
 ```
+Przykład:
+ ```azurecli
+ azure network reserved-ip create MyReservedIP centralus
+ ```
 
-## <a name="associate-a-reserved-ip-to-a-new-cloud-service"></a>Skojarzyć zastrzeżonego adresu IP do nowej usługi w chmurze
+Można wyświetlić, jakie adresy IP zostało zastrzeżonych w subskrypcji przy użyciu wiersza polecenia platformy Azure w następujący sposób: 
+
+Polecenie:
+```azurecli
+azure network reserved-ip list
+```
+Po jest zastrzeżony adres IP, pozostaje skojarzona z subskrypcji do momentu ich usunięcia. Usuń zastrzeżony adres IP w następujący sposób:
+
+Polecenie:
+
+ ```azurecli
+ azure network reserved-ip delete <name>
+ ```
+  Przykład:  
+ ```azurecli
+ azure network reserved-ip delete MyReservedIP
+ ```
+## <a name="reserve-the-ip-address-of-an-existing-cloud-service"></a>Zastrzec adres IP istniejącej usługi w chmurze
+Możesz zarezerwować adres IP istniejącej usługi w chmurze, dodając `-ServiceName` parametru. Zastrzec adres IP usługi w chmurze *TestService* w *środkowe stany USA* lokalizacji w następujący sposób:
+
+- Przy użyciu programu Azure PowerShell (klasyczny):
+
+  ```powershell
+  New-AzureReservedIP –ReservedIPName MyReservedIP –Location "Central US" -ServiceName TestService
+  ```
+
+- Przy użyciu wiersza polecenia platformy Azure (model klasyczny):
+  
+    Polecenie:
+
+    ```azurecli
+     azure network reserved-ip create <name> <location> -r <service-name> -d <deployment-name>
+    ```
+    Przykład:
+
+    ```azurecli
+      azure network reserved-ip create MyReservedIP centralus -r TestService -d asmtest8942
+    ```
+
+## <a name="associate-a-reserved-ip-to-a-new-cloud-service"></a>Skojarzenie zastrzeżonego adresu IP z nową usługą w chmurze
 Poniższy skrypt tworzy nowy zastrzeżony adres IP, a następnie kojarzy ją do nowej usługi w chmurze o nazwie *TestService*.
 
+### <a name="using-azure-powershell-classic"></a>Przy użyciu programu Azure PowerShell (wersja klasyczna)
 ```powershell
 New-AzureReservedIP –ReservedIPName MyReservedIP –Location "Central US"
 
@@ -114,24 +160,54 @@ New-AzureVMConfig -Name TestVM -InstanceSize Small -ImageName $image.ImageName `
 | Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! `
 | New-AzureVM -ServiceName TestService -ReservedIPName MyReservedIP -Location "Central US"
 ```
-
 > [!NOTE]
-> Podczas tworzenia zastrzeżonego adresu IP do użycia z usługą w chmurze, nadal odwołujesz się do maszyny Wirtualnej za pomocą *VIP:&lt;numer portu >* dla komunikacji przychodzącej. Rezerwacja adresu IP oznacza to, że można połączyć się z maszyną Wirtualną bezpośrednio. Zastrzeżony adres IP jest przypisany do usługi w chmurze, która została wdrożona maszyna wirtualna. Jeśli chcesz się połączyć z maszyną wirtualną przez IP bezpośrednio, należy skonfigurować publicznego adresu IP poziomie wystąpienia. Publiczny adres IP poziomie wystąpienia jest typu publicznego adresu IP (nazywane ILPIP) przypisanej bezpośrednio do maszyny Wirtualnej. Nie można zarezerwować. Aby uzyskać więcej informacji, przeczytaj [poziomie wystąpienia publicznego adresu IP (ILPIP)](virtual-networks-instance-level-public-ip.md) artykułu.
+> Kiedy tworzysz zastrzeżonego adresu IP do użycia z usługą w chmurze, możesz nadal odwołują się do maszyny Wirtualnej przy użyciu *adresów VIP:&lt;numer portu >* dla komunikacji przychodzącej. Rezerwowanie adresów IP nie oznacza, że możesz bezpośrednio łączyć się maszyna wirtualna. Zastrzeżony adres IP jest przypisany do usługi w chmurze, która została wdrożona maszyna wirtualna do. Jeśli chcesz połączyć z maszyną wirtualną na podstawie IP bezpośrednio, należy skonfigurować publiczny adres IP na poziomie wystąpienia. Publiczny adres IP na poziomie wystąpienia jest typem publicznym adresem IP (nazywanego ILPIP), to przypisać bezpośrednio do maszyny Wirtualnej. Nie można zarezerwować. Aby uzyskać więcej informacji, przeczytaj [publicznego adresu IP na poziomie wystąpienia (ILPIP)](virtual-networks-instance-level-public-ip.md) artykułu.
 > 
 
-## <a name="remove-a-reserved-ip-from-a-running-deployment"></a>Usuwanie zastrzeżonego adresu IP z wykonywanego wdrożenia
-Aby usunąć zastrzeżonego adresu IP, dodać do nowej usługi w chmurze, uruchom następujące polecenie programu PowerShell:
+## <a name="remove-a-reserved-ip-from-a-running-deployment"></a>Usuń zastrzeżony adres IP z bieżącym wdrożeniu
+
+Usuń zastrzeżony adres IP, dodawane do nowej usługi w chmurze w następujący sposób: 
+### <a name="using-azure-powershell-classic"></a>Przy użyciu programu Azure PowerShell (wersja klasyczna)
 
 ```powershell
 Remove-AzureReservedIPAssociation -ReservedIPName MyReservedIP -ServiceName TestService
 ```
 
+### <a name="using-azure-cli-classic"></a>Przy użyciu wiersza polecenia platformy Azure (wersja klasyczna)
+Polecenie:
+
+```azurecli
+azure network reserved-ip disassociate <name> <service-name> <deployment-name>
+```
+
+Przykład:
+
+```azurecli
+azure network reserved-ip disassociate MyReservedIP TestService asmtest8942
+```
+
 > [!NOTE]
-> Usuwanie zastrzeżonego adresu IP z wykonywanego wdrożenia nie powoduje usunięcia zastrzeżenia z subskrypcji. Po prostu powoduje zwolnienie IP ma być używany przez inny zasób w ramach subskrypcji.
+> Usuwanie zastrzeżonego adresu IP z bieżącym wdrożeniu nie powoduje usunięcia rezerwacji z Twojej subskrypcji. Po prostu powoduje zwolnienie adresu IP, który będzie używany przez inny zasób w ramach subskrypcji.
 > 
 
-## <a name="associate-a-reserved-ip-to-a-running-deployment"></a>Skojarzyć zastrzeżonego adresu IP do uruchomionego wdrożenia
-Następujące polecenia tworzenia usługi w chmurze o nazwie *TestService2* z nowej maszyny Wirtualnej o nazwie *TestVM2*. Istniejącego zastrzeżonego adresu IP o nazwie *MyReservedIP* jest następnie skojarzonego z usługą w chmurze.
+Aby całkowicie usunąć zastrzeżonego adresu IP z subskrypcji, uruchom następujące polecenie:
+
+Polecenie:
+
+```azurecli
+azure network reserved-ip delete <name>
+```
+Przykład:
+
+```azurecli
+azure network reserved-ip delete MyReservedIP
+```
+
+## <a name="associate-a-reserved-ip-to-a-running-deployment"></a>Skojarzenie zastrzeżonego adresu IP do uruchomionego wdrożenia
+
+### <a name="using-azure-powershell-classic"></a>Przy użyciu programu Azure PowerShell (wersja klasyczna)
+
+Następujące polecenia tworzą usługi w chmurze o nazwie *TestService2* przy użyciu nowej maszyny Wirtualnej o nazwie *TestVM2*. Istniejące zarezerwowanych adresów IP o nazwie *MyReservedIP* jest następnie powiązanych z usługą w chmurze.
 
 ```powershell
 $image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
@@ -143,10 +219,21 @@ New-AzureVMConfig -Name TestVM2 -InstanceSize Small -ImageName $image.ImageName 
 Set-AzureReservedIPAssociation -ReservedIPName MyReservedIP -ServiceName TestService2
 ```
 
-## <a name="associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file"></a>Skojarzyć zastrzeżonego adresu IP do usługi w chmurze przy użyciu pliku konfiguracji usługi
-Można również skojarzyć zastrzeżonego adresu IP do usługi w chmurze przy użyciu pliku konfiguracji (CSCFG) usługi. Następujące xml przykładowych pokazano, jak skonfigurować usługi w chmurze Użyj zastrzeżonego adresu VIP o nazwie *MyReservedIP*:
+### <a name="using-azure-cli-classic"></a>Przy użyciu wiersza polecenia platformy Azure (wersja klasyczna)
+Nowy zastrzeżony adres IP można skojarzyć do Twojej uruchomionego wdrażania usługi w chmurze przy użyciu wiersza polecenia platformy Azure w następujący sposób:
 
-    <?xml version="1.0" encoding="utf-8"?>
+Polecenie:
+```azurecli
+azure network reserved-ip associate <name> <service-name> <deployment-name>
+```
+Przykład:
+```azurecli
+azure network reserved-ip associate MyReservedIP TestService asmtest8942
+```
+## <a name="associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file"></a>Skojarzenie zastrzeżonego adresu ip do usługi w chmurze przy użyciu pliku konfiguracji usługi
+Można również skojarzyć zastrzeżonego adresu IP do usługi w chmurze przy użyciu pliku konfiguracji (CSCFG) usługi. Następujący przykładowy kod xml pokazuje, jak skonfigurować usługę chmurową, aby używać zastrzeżonego adresu VIP o nazwie *MyReservedIP*:
+```
+   <?xml version="1.0" encoding="utf-8"?>
     <ServiceConfiguration serviceName="ReservedIPSample" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2014-01.2.3">
       <Role name="WebRole1">
         <Instances count="1" />
@@ -162,9 +249,9 @@ Można również skojarzyć zastrzeżonego adresu IP do usługi w chmurze przy u
         </AddressAssignments>
       </NetworkConfiguration>
     </ServiceConfiguration>
-
+```
 ## <a name="next-steps"></a>Kolejne kroki
-* Zrozumienie sposobu [adresowanie IP](virtual-network-ip-addresses-overview-classic.md) działa w klasycznym modelu wdrażania.
+* Zrozumienie sposobu [adresowania IP](virtual-network-ip-addresses-overview-classic.md) działa w klasycznym modelu wdrażania.
 * Dowiedz się więcej o [prywatne adresy IP zarezerwowane](virtual-networks-reserved-private-ip.md).
-* Dowiedz się więcej o [adresy IP publicznego poziom wystąpienia (ILPIP)](virtual-networks-instance-level-public-ip.md).
+* Dowiedz się więcej o [adresy IP publicznego poziomie wystąpienia (ILPIP)](virtual-networks-instance-level-public-ip.md).
 

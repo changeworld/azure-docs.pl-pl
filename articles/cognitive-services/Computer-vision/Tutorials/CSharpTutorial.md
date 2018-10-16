@@ -3,19 +3,19 @@ title: 'Samouczek: Tworzenie obrazów, przetwarzania aplikacji — C#'
 titleSuffix: Computer Vision - Cognitive Services - Azure
 description: Zapoznaj się z podstawowej aplikacji Windows, który używa interfejsu API przetwarzania obrazów w usługach Microsoft Cognitive Services. Wykonaj optyczne rozpoznawanie znaków, tworzenia miniatur i korzystania z funkcji visual w obrazie.
 services: cognitive-services
-author: deken
+author: PatrickFarley
 manager: nolachar
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: article
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 9ea562e7fa2ec3e32da2f0f1453db36dda319303
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.author: pafarley
+ms.openlocfilehash: d1fa468874cdc51bad3421f700a69f3ffb268635
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295856"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342657"
 ---
 # <a name="tutorial-build-an-image-processing-app---c35"></a>Samouczek: Tworzenie obrazów, przetwarzania aplikacji - C&#35;
 
@@ -32,7 +32,7 @@ Poznaj podstawowe aplikacji Windows, która używa przetwarzania obrazów, aby w
 Przed rozpoczęciem pracy z przykładowej aplikacji, upewnij się, że zostały spełnione następujące wymagania wstępne:
 
 * Konieczne jest posiadanie [programu Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) lub nowszej.
-* Musi mieć klucz subskrypcji dla przetwarzania obrazów. Aby uzyskać klucz subskrypcji, zobacz [uzyskiwanie kluczy subskrypcji](../Vision-API-How-to-Topics/HowToSubscribe.md).
+* Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Aby uzyskać klucz subskrypcji, zobacz [Obtaining Subscription Keys (Uzyskiwanie kluczy subskrypcji)](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
 ## <a name="get-the-sample-app"></a>Pobieranie przykładowej aplikacji
 

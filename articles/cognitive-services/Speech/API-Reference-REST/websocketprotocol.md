@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: 6ee61a38615ac8cbf4c4fcf6b8d631c5f9a8f7d1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0bbc6b638d11335e6d46501fa651996f05957dd5
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962780"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341824"
 ---
 # <a name="bing-speech-websocket-protocol"></a>Protokół WebSocket rozpoznawania mowy Bing
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 Rozpoznawanie mowy Bing jest oparte na chmurze platformy, która oferuje najbardziej zaawansowanych algorytmów do konwertowania dźwięk mówiony na tekst. Protokół rozpoznawania mowy Bing definiuje [ustawienia połączenia](#connection-establishment) między aplikacjami klienta i usługę i komunikaty rozpoznawania mowy, które są wymieniane między odpowiedniki ([komunikatów pochodzących od klientów](#client-originated-messages) i [pochodzi z usługi wiadomości](#service-originated-messages)). Ponadto [komunikaty telemetryczne](#telemetry-schema) i [obsługi błędów](#error-handling) są opisane.
 

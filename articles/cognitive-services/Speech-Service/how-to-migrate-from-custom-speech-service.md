@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 10/01/2018
 ms.author: panosper
-ms.openlocfilehash: 4b5d0b66c4d39320a082cb9e76252bfc00db6c3a
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: db09a85daff553dc911d039d37c826343e93d240
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854143"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49338526"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>Migrowanie z usługi Custom Speech usługi mowy
 
@@ -58,8 +58,6 @@ Istniejący klienci są wymagane do migracji ich istniejące klucze zasobu z us�
 2. Wybierz **migracji wybranych subskrypcji**.
 
 3. Wprowadź klucz subskrypcji w polu tekstowym, a następnie wybierz pozycję **migracji**.
-
-    ![Wprowadź subskrypcję do migracji](./media/migrate-from-custom-speech-service/migrate-dialog.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 84cba0cb156e1d847c92596a9f2f6017a429b9d2
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 18188b8c0572057fb9277294c381de12df196439
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113822"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343932"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>Wybierz, a następnie użyć obliczeniowego elementu docelowego do nauczenia modelu
 
@@ -24,6 +24,9 @@ Za pomocą usługi Azure Machine Learning możesz uczyć modelu w kilku różnyc
 Cel obliczenia jest zasobem, który jest uruchamiany skrypt szkolenia lub hosty modelu po jego wdrożeniu jako usługę sieci web. One mogą być tworzone i zarządzane przy użyciu zestawu SDK usługi Azure Machine Learning lub interfejsu wiersza polecenia. Jeśli masz obliczeniowych elementów docelowych, które zostały utworzone przez inny proces (na przykład, witryny Azure portal lub interfejsu wiersza polecenia platformy Azure), możesz ich używać, dołączanie ich do obszaru roboczego usługi Azure Machine Learning.
 
 Można rozpoczynać przebiegów lokalnych na komputerze, a następnie skalowania w górę i do innych środowisk, takich jak zdalnych maszyn wirtualnych do nauki o danych z procesorem GPU lub usługi Azure Batch AI. 
+
+>[!NOTE]
+> Kod w tym artykule został przetestowany przy użyciu zestawu SDK usługi Azure Machine Learning wersji 0.168 
 
 ## <a name="supported-compute-targets"></a>Obsługiwane obliczeniowych elementów docelowych
 
@@ -106,7 +109,7 @@ from azureml.core.conda_dependencies import CondaDependencies
 run_config_system_managed = RunConfiguration()
 
 run_config_system_managed.environment.python.user_managed_dependencies = False
-run_config_system_managed.prepare_environment = True
+run_config_system_managed.auto_prepare_environment = True
 
 # Specify conda dependencies with scikit-learn
 

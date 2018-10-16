@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8055faad3cd546e538def5e7292287b49ce96cb4
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 4ae84ff481b25f1e91a29c067dea74ba25f924aa
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314510"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320326"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Logowanie użytkownika przy użyciu uwierzytelniania przekazywanego usługi Azure Active Directory
 
@@ -38,7 +38,7 @@ Można połączyć uwierzytelniania przekazywanego z [bezproblemowego logowania 
 
 ## <a name="key-benefits-of-using-azure-ad-pass-through-authentication"></a>Najważniejsze zalety stosowania uwierzytelniania przekazywanego usługi AD platformy Azure
 
-- *Doskonałe środowisko użytkownika*
+- *Fantastyczne środowisko pracy użytkownika*
   - Użytkownicy używać tego samego hasła do logowania się do zarówno lokalnych, jak i aplikacji działających w chmurze.
   - Użytkownicy poświęcają mniej czasu, rozmawiając z działu pomocy technicznej rozwiązywanie związane z hasłami problemów informatycznych.
   - Użytkownicy mogą wykonać [Samoobsługowe zarządzanie hasłami](../authentication/active-directory-passwords-overview.md) zadania w chmurze.
@@ -69,7 +69,7 @@ Można połączyć uwierzytelniania przekazywanego z [bezproblemowego logowania 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Przewodnik Szybki Start](how-to-connect-pta-quick-start.md) — Rozpocznij pracę, a systemem uwierzytelniania przekazywanego usługi AD platformy Azure.
-- [Migrowanie z usług AD FS do uwierzytelniania przekazywanego](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) — szczegółowy przewodnik dotyczący migracji z usług AD FS (lub inne technologie federacyjnych) do uwierzytelniania przekazywanego.
+- [Migrowanie z usług AD FS do uwierzytelniania przekazywanego](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) — szczegółowy przewodnik dotyczący migracji z usług AD FS (lub inne technologie federacyjnych) do uwierzytelniania przekazywanego.
 - [Blokada Smart](../authentication/howto-password-smart-lockout.md) — możliwości konfigurowania inteligentnej blokady w dzierżawie usługi ochrony kont użytkowników.
 - [Bieżące ograniczenia](how-to-connect-pta-current-limitations.md) — Dowiedz się, jakie scenariusze są obsługiwane i te, które nie są.
 - [Rozbudowana technicznie](how-to-connect-pta-how-it-works.md) -zrozumienie sposobu działania tej funkcji.

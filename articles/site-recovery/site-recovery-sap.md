@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: asgang
-ms.openlocfilehash: 95e5c53da2556293fc676fa5b1db9b4585038300
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: a498ac9f973bbcf87bec104f18b542cc7e8b5800
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921430"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318694"
 ---
 # <a name="protect-a-multi-tier-sap-netweaver-application-deployment-by-using-site-recovery"></a>Ochrona wdrożenia obejmujące wiele warstw aplikacji SAP NetWeaver przy użyciu usługi Site Recovery
 
@@ -71,10 +71,10 @@ Do odzyskiwania po awarii (DR) musi być możliwe do trybu failover do regionu p
 #### <a name="vms-running-sap-web-dispatcher-pool"></a>Maszyny wirtualne z systemem SAP Web Dispatcher puli 
 Składnik Web Dispatcher służy jako moduł równoważenia obciążenia dla ruchu SAP na serwery aplikacji SAP. Uzyskanie wysokiej dostępności dla składnika Web Dispatcher, usługi Azure Load Balancer umożliwia wdrożenie równoległe Instalator Web Dispatcher w konfiguracji działania okrężnego dla ruchu HTTP (S) rozkład dostępne dyspozytorów sieci Web w puli usługi równoważenia. To będą replikowane, za pomocą Recovery (ASR) do usługi Azure Site i skrypty automatyzacji będzie służyć do konfigurowania modułu równoważenia obciążenia w regionie odzyskiwania po awarii. 
 
-####<a name="vms-running-application-servers-pool"></a>Maszyny wirtualne z puli serwerów aplikacji
+#### <a name="vms-running-application-servers-pool"></a>Maszyny wirtualne z puli serwerów aplikacji
 Aby zarządzać grupami logowania dla serwerów aplikacji ABAP, transakcji SMLG jest używany. Używa ona funkcji w ramach serwera wiadomości centralnej usług równoważenia obciążenia do dystrybucji obciążeń między puli serwerów aplikacji SAP SAPGUIs i RFC ruchu. To będą replikowane, za pomocą usługi Azure Site Recovery 
 
-####<a name="vms-running-sap-central-services-cluster"></a>Maszyny wirtualne działające w klastrze usług SAP Central Services
+#### <a name="vms-running-sap-central-services-cluster"></a>Maszyny wirtualne działające w klastrze usług SAP Central Services
 Ta architektura referencyjna uruchamia centralnej usług na maszynach wirtualnych w warstwie aplikacji. Central Services jest potencjalnym pojedynczym punktem awarii (SPOF), po wdrożeniu na jednej maszynie Wirtualnej — typowe wdrożenie w przypadku wysokiej dostępności nie jest wymagane.<br>
 
 Aby zaimplementować rozwiązanie zapewniające wysoką dostępność, można użyć udostępnionych klastrów dysku lub klastrze udziału plików. Aby skonfigurować maszyn wirtualnych do udostępnionych klastrów dysku, należy użyć klastra trybu Failover systemu Windows Server. Zaleca się monitor w chmurze jako monitor kworum. 
@@ -110,7 +110,7 @@ Poniżej przedstawiono zalecenia dotyczące odzyskiwania po awarii dla każdej w
 **Maszyny wirtualne usługi Active directory** |  Replikacja usługi Active directory 
 **Serwery baz danych SQL** |  Zawsze włączone replikacji programu SQL Server
 
-##<a name="replicate-virtual-machines"></a>Replikowanie maszyn wirtualnych
+## <a name="replicate-virtual-machines"></a>Replikowanie maszyn wirtualnych
 
 Aby rozpocząć replikowanie wszystkich SAP aplikacji maszyn wirtualnych do centrum danych odzyskiwania po awarii platformy Azure, postępuj zgodnie ze wskazówkami w [replikacji maszyny wirtualnej na platformie Azure](azure-to-azure-walkthrough-enable-replication.md).
 

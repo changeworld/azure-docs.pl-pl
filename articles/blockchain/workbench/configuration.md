@@ -5,23 +5,23 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 10/4/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: fd3ff0087ee51c392d9cebb32c8bcc969f9a4601
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: caaee4cb155fc05b78bc47f1e53c79ecb0597183
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48243153"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341943"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Informacje o konfiguracji platformy Azure Blockchain Workbench
 
  Aplikacji Azure Blockchain Workbench są wieloosobowa przepływy pracy, zdefiniowana za pomocą metadanych konfiguracji i kodu kontraktu inteligentne. Metadane konfiguracji definiuje wysokiego poziomu przepływów pracy i model interakcji aplikacji łańcucha bloków. Kontrakty inteligentne zdefiniowanie logiki biznesowej, aplikacji łańcucha bloków. Usługa Workbench używa konfiguracji i kodu kontraktu inteligentnych do generowania środowisk użytkownika aplikacji łańcucha bloków.
 
-Metadane konfiguracji określa następujące informacje dla każdej aplikacji łańcucha bloków: 
+Metadane konfiguracji określa następujące informacje dla każdej aplikacji łańcucha bloków:
 
 * Nazwa i opis aplikacji łańcucha bloków
 * Unikatowe role dla użytkowników, którzy mogą działać lub wziąć udział w ramach aplikacji łańcucha bloków
@@ -73,17 +73,44 @@ Obsługiwane typy danych.
 
 | Typ | Opis |
 |-------|-------------|
-| Adres  | Łańcuch bloków adresów typu, takie jak *umów* lub *użytkowników* |
-| wartość logiczna     | Boolean — typ danych |
-| kontrakt | Adres typu kontraktu |
-| Wyliczenia     | Wyliczany zestaw nazwanych wartości. Korzystając z typu wyliczeniowego, możesz również określić listy EnumValues. Każda wartość jest ograniczone do 255 znaków. Znaki prawidłowe wartości to górna i małe litery (A – Z, a – z) i cyfry (0 – 9). |
-| Int      | Integer — typ danych |
-| pieniędzy    | Typ danych pieniędzy |
-| state    | Stan przepływu pracy |
-| ciąg   | String — typ danych |
-| Użytkownik     | Adres typu użytkownika |
-| time     | Typ danych czasowych |
+| Adres  | Łańcuch bloków adresów typu, takie jak *umów* lub *użytkowników*. |
+| tablica    | Pojedynczą tablicę poziomu typu integer, bool, pieniędzy i czasu. Tablice mogą być statyczne lub dynamiczne. Użyj **ElementType** na określony typ danych elementów w tablicy. Zobacz [Przykładowa konfiguracja](#example-configuration-of-type-array). |
+| wartość logiczna     | Typ danych logicznych. |
+| kontrakt | Adres typ kontraktu. |
+| Wyliczenia     | Wyliczany zestaw nazwanych wartości. Korzystając z typu wyliczeniowego, możesz również określić listy EnumValues. Każda wartość jest ograniczone do 255 znaków. Znaki prawidłowe wartości to górna i małe litery (A – Z, a – z) i cyfry (0 – 9). Zobacz [przykładową konfigurację i użycie w Solidity](#example-configuration-of-type-enum). |
+| int      | Integer — typ danych. |
+| pieniędzy    | Typ danych walutowych. |
+| state    | Stan przepływu pracy. |
+| ciąg  | String — typ danych. Maksymalna liczba znaków 4000. Zobacz [Przykładowa konfiguracja](#example-configuration-of-type-string). |
+| Użytkownik     | Adres typu użytkownika. |
+| time     | Typ danych w czasie. |
 |`[ Application Role Name ]`| Dowolna nazwa określona w roli aplikacji. Ogranicza użytkownikom dostęp do tego typu roli. |
+
+### <a name="example-configuration-of-type-array"></a>Przykładowa konfiguracja nagłówkową typu tablicy
+
+```json
+{
+  "Name": "Quotes",
+  "Description": "Market quotes",
+  "DisplayName": "Quotes",
+  "Type": {
+    "Name": "array",
+    "ElementType": {
+        "Name": "int"
+    }
+  }
+}
+```
+
+#### <a name="using-a-property-of-type-array"></a>Przy użyciu właściwości typu tablicowego
+
+Jeśli właściwość jest zdefiniowana jako typ tablicy w konfiguracji, należy uwzględnić funkcję get jawne, aby zwrócić publiczny właściwości typu tablicy w trwałość. Na przykład:
+
+```
+function GetQuotes() public constant returns (int[]) {
+     return Quotes;
+}
+```
 
 ### <a name="example-configuration-of-type-string"></a>Przykładowa konfiguracja typu String
 

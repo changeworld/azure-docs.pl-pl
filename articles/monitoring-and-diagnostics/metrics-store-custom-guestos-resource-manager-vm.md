@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 4ed911766a14dd35ea662326a5d50df11cf81698
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f3076054eb6e18eb5143a34ba558c1f9e43ea4a5
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984078"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345190"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Wyślij metryki systemu operacyjnego gościa, aby metryki usługi Azure Monitor przechowywania, przy użyciu szablonu usługi Resource Manager dla Windows maszyny wirtualnej
 
@@ -64,7 +64,7 @@ Identyfikator konta magazynu, aby dodać **zmienne** części szablonu po wejśc
     "accountid": "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]", 
 ```
 
-To rozszerzenie tożsamości usługi zarządzanej (MSI) należy dodać do szablonu w górnej części sekcję "zasoby".  Rozszerzenie zapewnia, że usługa Azure Monitor akceptuje metryk jest emitowane.  
+Dodaj ten zarządzanych tożsamości dla rozszerzenia zasobów platformy Azure do szablonu w górnej części sekcję "zasoby".  Rozszerzenie zapewnia, że usługa Azure Monitor akceptuje metryk jest emitowane.  
 
 ```json
 //Find this code 

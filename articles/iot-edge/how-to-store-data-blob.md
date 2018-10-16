@@ -9,12 +9,12 @@ ms.date: 10/03/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2a52735a7f573534c6d643e778a898a888dfc81f
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 6fdfc1002528fa48145e577dfee3eac935f31fcd
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114587"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344850"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Store danych na urządzeniach brzegowych za pomocą usługi Azure Blob Storage na urządzeniach brzegowych IoT Edge (wersja zapoznawcza)
 
@@ -81,7 +81,7 @@ Użyj następującego szablonu JSON dla **opcje tworzenia kontenera** pola. Skon
    }
    ```   
    
-W opcji tworzenia JSON, zaktualizuj `\<your storage account name\>` o dowolnej nazwie. Aktualizacja `\<your storage account key\>` kluczem base64 64 bajtów. Możesz wygenerować klucz za pomocą narzędzi, takich jak [GeneratePlus](https://generate.plus/en/base64) umożliwia wybierz długość w bajtach. Użyjesz tych poświadczeń do uzyskania dostępu do magazynu obiektów blob z innych modułów.
+W opcji tworzenia JSON, zaktualizuj `\<your storage account name\>` o dowolnej nazwie. Aktualizacja `\<your storage account key\>` kluczem base64 64 bajtów. Możesz wygenerować klucz za pomocą narzędzi, takich jak [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64) umożliwia wybierz długość w bajtach. Użyjesz tych poświadczeń do uzyskania dostępu do magazynu obiektów blob z innych modułów.
 
 W opcji tworzenia JSON, zaktualizuj `<storage directory bind>` w zależności od używanego systemu operacyjnego kontenera. Podaj nazwę [woluminu](https://docs.docker.com/storage/volumes/) bramy lub bezwzględna do katalogu na urządzeniu usługi IoT Edge, którego moduł obiektu blob do przechowywania swoich danych.  
 
@@ -150,7 +150,7 @@ Szablon rozwiązania, tworzy szablon manifestu wdrożenia, który zawiera obraz 
    STORAGE_ACCOUNT_KEY=
    ```
 
-8. Podaj dowolnej nazwy dla nazwy konta magazynu, a następnie podaj klucz 64 bajtów w formacie base64 dla klucza konta magazynu. Możesz wygenerować klucz za pomocą narzędzi, takich jak [GeneratePlus](https://generate.plus/en/base64). Użyjesz tych poświadczeń do uzyskania dostępu do magazynu obiektów blob z innych modułów. 
+8. Podaj dowolnej nazwy dla nazwy konta magazynu, a następnie podaj klucz 64 bajtów w formacie base64 dla klucza konta magazynu. Możesz wygenerować klucz za pomocą narzędzi, takich jak [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Użyjesz tych poświadczeń do uzyskania dostępu do magazynu obiektów blob z innych modułów. 
 
 9. Zapisz **ENV**. 
 

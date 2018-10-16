@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: dobett
-ms.openlocfilehash: 3e6e42da7f3c1423ecf2de507f3c2f0257fbb21f
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 6291350cab41c123b41f7fee811bf72a21d9ff35
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311239"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319136"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Informacje w rejestrze tożsamości w Centrum IoT hub
 
@@ -198,6 +198,9 @@ Tożsamości urządzeń są reprezentowane jako dokumenty JSON z następującymi
 > [!NOTE]
 > Stan połączenia może być reprezentowana przez widok stanu połączenia usługi IoT Hub. Aktualizacje do tego stanu mogą być opóźnione w zależności od tego, czy stan sieci i konfiguracji.
 
+> [!NOTE]
+> Obecnie urządzenia zestawy SDK nie obsługują przy użyciu `+` i `#` znaki w **deviceId**.
+
 ## <a name="module-identity-properties"></a>Właściwości tożsamości modułu
 
 Moduł tożsamości są reprezentowane jako dokumenty JSON z następującymi właściwościami:
@@ -216,6 +219,9 @@ Moduł tożsamości są reprezentowane jako dokumenty JSON z następującymi wł
 | Element connectionState |tylko do odczytu |Pola wskazujący stan połączenia: albo **połączono** lub **Disconnected**. To pole reprezentuje widok IoT Hub stanu połączenia urządzenia. **Ważne**: to pole powinno używane tylko do celów projektowania/debugowanie. Stan połączenia zostanie zaktualizowany tylko w przypadku urządzeń korzystających z protokołu MQTT lub AMQP. Ponadto jest on oparty na poziomie protokołu ping (polecenia ping protokołu MQTT lub polecenia ping protokołu AMQP) i może mieć Maksymalne opóźnienie tylko 5 minut. Z tego względu może istnieć wyniki fałszywie dodatnie, takie jak urządzeń zgłoszonych jako połączone, ale które są odłączone. |
 | connectionStateUpdatedTime |tylko do odczytu |Wskaźnik danych czasowych przedstawiająca stan połączenia datę i godzinę ostatniego został zaktualizowany. |
 | lastActivityTime |tylko do odczytu |Wskaźnik danych czasowych zawierający datę i godzinę ostatniego urządzenie połączenia, odebranych lub wysłanych wiadomości. |
+
+> [!NOTE]
+> Obecnie urządzenia zestawy SDK nie obsługują przy użyciu `+` i `#` znaki w **deviceId** i **moduleId**.
 
 ## <a name="additional-reference-material"></a>Dodatkowe materiały
 

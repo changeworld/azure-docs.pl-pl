@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: 4d4b9f43b6b3a4127d70989414d467f724f6ec28
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e3bfdcfaaf752321997636811b282ea920e6144a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972797"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344204"
 ---
 # <a name="authenticate-to-the-speech-api"></a>Uwierzytelnianie interfejsu API mowy
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 Rozpoznawanie mowy Bing obsługuje uwierzytelnianie przy użyciu:
 

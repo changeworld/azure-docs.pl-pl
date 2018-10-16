@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 13b21c4f8fde2b11722d012c207ed75447a7f970
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 3e3b608d3928536d654a594c42cbcc955d620d98
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114653"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321737"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zasady dotyczące haseł i ograniczenia dotyczące usługi Azure Active Directory
 
@@ -27,7 +27,7 @@ W tym artykule opisano zasady haseł i wymagań dotyczących złożoności skoja
 
 Za pomocą zasad dwóch bram **administratorzy nie mają możliwość Użyj pytań zabezpieczających**.
 
- Zasada dwóch bram wymaga dwóch rodzajów danych uwierzytelniania, takich jak adres e-mail *i* numeru telefonu. Zasada dwóch bram ma zastosowanie w następujących okolicznościach:
+Zasada dwóch bram wymaga dwóch rodzajów danych uwierzytelniania, takich jak adres e-mail *i* numeru telefonu. Zasada dwóch bram ma zastosowanie w następujących okolicznościach:
 
 * Uwzględnione są następujące role administratora platformy Azure:
   * Administrator pomocy technicznej
@@ -50,29 +50,17 @@ Za pomocą zasad dwóch bram **administratorzy nie mają możliwość Użyj pyta
   * Administrator usługi CRM
   * Administrator usługi Power BI
 
-* Po upływie 30 dni w ramach subskrypcji wersji próbnej
-
-  lub
-
-* Domena jest obecny, np. contoso.com
-
-  lub
-
+* Po upływie 30 dni w ramach wersji próbnej subskrypcji; lub
+* Domena jest obecny, np. contoso.com; lub
 * Usługa Azure AD Connect synchronizuje tożsamości z katalogu lokalnego
 
 ### <a name="exceptions"></a>Wyjątki
 
 Zasada jednej bramy wymaga jednego elementu danych uwierzytelniania, takich jak adres e-mail *lub* numer telefonu. Zasada jednej bramy ma zastosowanie w następujących okolicznościach:
 
-* Jest w wersji próbnej subskrypcji przez pierwsze 30 dni
-
-  lub
-
-* Domena nie jest obecny (*. onmicrosoft.com)
-
-  i
-
-  Program Azure AD Connect nie jest synchronizowanie tożsamości
+* Znajduje się w 30-dniowego okresu próbnego subskrypcji; lub
+* Domena nie jest obecny (*. onmicrosoft.com); i
+* Program Azure AD Connect nie jest synchronizowanie tożsamości
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>UserPrincipalName zasady, które są stosowane do wszystkich kont użytkowników
 
@@ -117,7 +105,7 @@ Aby rozpocząć pracę, musisz [Pobierz i zainstaluj moduł programu Azure AD Po
 ### <a name="check-the-expiration-policy-for-a-password"></a>Sprawdzanie zasad wygasania haseł
 
 1. Łączenie z programu Windows PowerShell za pomocą poświadczeń administratora firmy.
-2. Wykonaj jedną z następujących poleceń:
+1. Wykonaj jedną z następujących poleceń:
 
    * Aby zobaczyć, jeśli ustawiono pojedynczego użytkownika, hasło nigdy nie wygasa, uruchom następujące polecenie cmdlet przy użyciu nazwy UPN (na przykład *aprilr@contoso.onmicrosoft.com*) lub identyfikator użytkownika ma być sprawdzana: `Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
    * Aby wyświetlić **hasło nigdy nie wygasa** ustawienia dla wszystkich użytkowników, uruchom następujące polecenie cmdlet: `Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
@@ -125,7 +113,7 @@ Aby rozpocząć pracę, musisz [Pobierz i zainstaluj moduł programu Azure AD Po
 ### <a name="set-a-password-to-expire"></a>Ustaw hasło wygaśnie
 
 1. Łączenie z programu Windows PowerShell za pomocą poświadczeń administratora firmy.
-2. Wykonaj jedną z następujących poleceń:
+1. Wykonaj jedną z następujących poleceń:
 
    * Konfigurowanie hasła jednego użytkownika i hasło wygaśnie, należy uruchomić następujące polecenie cmdlet przy użyciu nazwy UPN lub identyfikator użytkownika, użytkownik: `Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None`
    * Aby ustawić hasła wszystkich użytkowników w organizacji tak, aby wygasną, należy użyć następującego polecenia cmdlet: `Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies None`
@@ -133,7 +121,7 @@ Aby rozpocząć pracę, musisz [Pobierz i zainstaluj moduł programu Azure AD Po
 ### <a name="set-a-password-to-never-expire"></a>Ustaw hasło nigdy nie wygasa
 
 1. Łączenie z programu Windows PowerShell za pomocą poświadczeń administratora firmy.
-2. Wykonaj jedną z następujących poleceń:
+1. Wykonaj jedną z następujących poleceń:
 
    * Aby ustawić hasło jeden użytkownik nigdy nie wygasa, uruchom następujące polecenie cmdlet przy użyciu nazwy UPN lub identyfikator użytkownika, użytkownik: `Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration`
    * Aby ustawić hasła wszystkich użytkowników w organizacji nigdy nie wygasa, uruchom następujące polecenie cmdlet: `Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies DisablePasswordExpiration`

@@ -1,19 +1,19 @@
 ---
 title: Omówienie pomocy technicznej usługi Azure IoT Hub MQTT | Dokumentacja firmy Microsoft
 description: Przewodnik dewelopera — Obsługa urządzeń nawiązujących połączenie z punktem końcowym skierowaną do urządzenia usługi IoT Hub przy użyciu protokołu MQTT. Zawiera informacje o wbudowanych MQTT obsługi w zestawy SDK urządzeń Azure IoT.
-author: fsautomata
+author: rezasherafat
 manager: ''
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 03/05/2018
-ms.author: elioda
-ms.openlocfilehash: 2e45422ca6a861894193600eff17f192bc20b357
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.date: 10/12/2018
+ms.author: rezas
+ms.openlocfilehash: 6e2ab773f865a8e52c7b04b94a188dd244540e0d
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42057307"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344969"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikować się z Centrum IoT hub przy użyciu protokołu MQTT
 
@@ -107,7 +107,7 @@ Aby uzyskać Device Explorer:
 
 Dla protokołu MQTT połączenia i odłączyć pakietów, usługi IoT Hub wysyła zdarzenia w **monitorowanie operacji** kanału. To zdarzenie zawiera dodatkowe informacje, które mogą ułatwić rozwiązywanie problemów z łącznością.
 
-Można określić aplikacji urządzenia **będzie** wiadomość **CONNECT** pakietów. Skorzystaj z aplikacji urządzenia `devices/{device_id}/messages/events/{property_bag}` lub `devices/{device_id}/messages/events/{property_bag}` jako **będzie** nazwy tematu, aby zdefiniować **będzie** mają być przekazywane jako komunikaty telemetryczne wiadomości. W tym przypadku Jeśli zamknięto połączenie sieciowe, ale **ROZŁĄCZENIA** pakietów nie otrzymano wcześniej z urządzenia, a następnie wysyła usługi IoT Hub **będzie** wiadomości podano w **CONNECT** pakietów do kanału danych telemetrycznych. Kanał danych telemetrycznych można albo domyślnie **zdarzenia** punkt końcowy lub niestandardowy punkt końcowy zdefiniowany przez usługę IoT Hub routingu. Komunikat ma **iothub MessageType** właściwość z wartością **będzie** do niej przypisany.
+Można określić aplikacji urządzenia **będzie** wiadomość **CONNECT** pakietów. Skorzystaj z aplikacji urządzenia `devices/{device_id}/messages/events/` lub `devices/{device_id}/messages/events/{property_bag}` jako **będzie** nazwy tematu, aby zdefiniować **będzie** mają być przekazywane jako komunikaty telemetryczne wiadomości. W tym przypadku Jeśli zamknięto połączenie sieciowe, ale **ROZŁĄCZENIA** pakietów nie otrzymano wcześniej z urządzenia, a następnie wysyła usługi IoT Hub **będzie** wiadomości podano w **CONNECT** pakietów do kanału danych telemetrycznych. Kanał danych telemetrycznych można albo domyślnie **zdarzenia** punkt końcowy lub niestandardowy punkt końcowy zdefiniowany przez usługę IoT Hub routingu. Komunikat ma **iothub MessageType** właściwość z wartością **będzie** do niej przypisany.
 
 ### <a name="tlsssl-configuration"></a>Konfiguracja protokołu TLS/SSL
 
@@ -228,6 +228,8 @@ Aby uzyskać więcej informacji, zobacz [— przewodnik dewelopera bliźniaczych
 
 ### <a name="update-device-twins-reported-properties"></a>Zgłoszonych właściwości bliźniaka urządzenia aktualizacji
 
+Do aktualizowania zgłoszonych właściwości, urządzenie generuje żądanie do usługi IoT Hub za pośrednictwem publikacji w wyznaczonym tematu MQTT. Po przetworzeniu żądania, usługi IoT Hub odpowiada stanie powodzenie lub Niepowodzenie operacji aktualizacji za pośrednictwem publikacji innego tematu. W tym temacie może być subskrybowana przez urządzenie aby powiadomić go o wyniku jego żądanie aktualizacji bliźniaczej reprezentacji. Aby implment tego typu żądanie/odpowiedź interakcji z protokołu MQTT, możemy skorzystać z pojęcie identyfikator żądania (`$rid`) udostępniane początkowo przez urządzenie w jego żądanie aktualizacji. Ten identyfikator żądania znajduje się również w odpowiedzi z usługi IoT Hub umożliwia skorelowanie odpowiedzi na żądanie wcześniej określonego urządzenia.
+
 Poniższa sekwencja opisuje, jak urządzenie aktualizuje zgłoszonych właściwości w bliźniaczej reprezentacji urządzenia w usłudze IoT Hub:
 
 1. Urządzenia muszą najpierw zasubskrybować `$iothub/twin/res/#` tematu, aby otrzymywać odpowiedzi operacji w usłudze IoT Hub.
@@ -253,6 +255,20 @@ Możliwe kody są:
 | 400 | Nieprawidłowe żądanie. Nieprawidłowo sformatowany kod JSON |
 | 429 | Za dużo żądań (ograniczone), jak na [usługi IoT Hub, ograniczanie przepustowości][lnk-quotas] |
 | 5** | Błędy serwera |
+
+Fragment kodu języka python poniżej, przedstawiono bliźniaczą reprezentację zgłaszane właściwości proces aktualizacji za pośrednictwem protokołu MQTT (przy użyciu klienta protokołu MQTT Paho):
+```python
+from paho.mqtt import client as mqtt
+
+# authenticate the client with IoT Hub (not shown here)
+
+client.subscribe("$iothub/twin/res/#")
+rid = "1"
+twin_reported_property_patch = "{\"firmware_version\": \"v1.1\"}"
+client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" + rid, twin_reported_property_patch, qos=0)
+```
+
+W razie powodzenia bliźniaczej reprezentacji zgłaszane właściwości operacji aktualizacji powyżej, komunikat publikacji z usługi IoT Hub będzie miał następujący temat: `$iothub/twin/res/204/?$rid=1&$version=6`, gdzie `204` jest kod stanu wskazujący Powodzenie. `$rid=1` odnosi się do Identyfikatora żądania udostępnianym przez urządzenie w kodzie i `$version` odnosi się do wersji sekcji zgłaszane właściwości bliźniaczych reprezentacji urządzeń po aktualizacji.
 
 Aby uzyskać więcej informacji, zobacz [— przewodnik dewelopera bliźniaczych reprezentacji urządzeń][lnk-devguide-twin].
 

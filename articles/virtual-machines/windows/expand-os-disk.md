@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: kirpas
-ms.openlocfilehash: 3ea57a834bfbb1583c53bbb1be80daffe1f05de6
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 097aa128affb6a7ac0770c861ab70ec9d04e2d98
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380271"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319119"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Sposobu rozszerzania dysku systemu operacyjnego maszyny wirtualnej
 
@@ -210,9 +210,6 @@ Po rozwinięciu dysku dla maszyny Wirtualnej, musisz przejść do systemu operac
 4.  W **narzędzia DISKPART** należy wpisać `extend [size=<size>]`. Spowoduje to rozszerzenie wybranego woluminu przez *rozmiar* wyrażony w megabajtach (MB).
 
 
-##<a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Można również dołączyć dyski przy użyciu [witryny Azure portal](attach-managed-disk-portal.md).
-
-
-

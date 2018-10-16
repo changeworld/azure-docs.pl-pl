@@ -17,12 +17,12 @@ ms.date: 06/06/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: da13b7b7b9bd39692db422a315383e0f12aae453
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 8ff46246d46a6028bc83b8fdf9c984e87f5578a5
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344880"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320309"
 ---
 # <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>Azure Active Directory w wersji 2.0 i przepływ OAuth 2.0 "w imieniu"
 OAuth 2.0 "w imieniu" który przepływ służy przypadek użycia, w którym aplikacja wywołuje usługi/interfejsu web API, która z kolei musi wywołać inną usługę/internetowy interfejs API. Chodzi o to propagację delegowany użytkownik tożsamości i uprawnień w łańcuchu żądanie. Usługi warstwy środkowej na wysyłanie żądań uwierzytelnionych usługi transmisji musi ona secure token dostępu z usługi Azure Active Directory (Azure AD) w imieniu użytkownika.
@@ -33,7 +33,7 @@ OAuth 2.0 "w imieniu" który przepływ służy przypadek użycia, w którym apli
 
 
 > [!IMPORTANT]
-> [Przyznawanie niejawne](v2-oauth2-implicit-grant-flow.md) nie można użyć przepływu w imieniu z - aplikacji jednostronicowych musi przekazać ich token dostępu (niejawny przepływ) do warstwy środkowej poufne klienta do wykonania przepływu OBO. Zobacz [ograniczenia](#client-limitations) Aby uzyskać więcej informacji, na których klienci będą mogli wykonywać w imieniu z wywołania.  
+> Od maja 2018 r. `id_token` nie można używać dla przepływu w imieniu z — należy przekazać aplikacji jednostronicowych **dostępu** przepływy poufne klienta do wykonania OBO tokenu do warstwy środkowej. Zobacz [ograniczenia](#client-limitations) Aby uzyskać więcej informacji, na których klienci będą mogli wykonywać w imieniu z wywołania.
 
 ## <a name="protocol-diagram"></a>Diagram protokołu
 Przyjęto założenie, że użytkownik został uwierzytelniony w aplikacji za pomocą [kod autoryzacji OAuth 2.0 udzielić przepływ](v2-oauth2-auth-code-flow.md). W tym momencie aplikacja ma token dostępu *dla interfejsu API* (token A) przy użyciu oświadczeń użytkowników i zgody na dostęp do warstwy środkowej sieci web interfejsu API (interfejs API A). Teraz A interfejs API musi dokonać uwierzytelnionego żądania podrzędnego internetowego interfejsu API (interfejs API B).
@@ -71,7 +71,7 @@ Korzystając z wspólny klucz tajny, żądania tokenu dostępu do usługi zawier
 | client_id |wymagane | Identyfikator aplikacji [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) przypisany do aplikacji. |
 | client_secret |wymagane | Klucz tajny aplikacji, który został wygenerowany dla aplikacji w portalu rejestracji aplikacji. |
 | potwierdzenie |wymagane | Wartość tokenu użytego w żądaniu. |
-| zakres |wymagane | Spacjami listy zakresów dla żądania tokenu. Aby uzyskać więcej informacji, zobacz [zakresy](v2-permissions-and-consent.md).|
+| scope |wymagane | Spacjami listy zakresów dla żądania tokenu. Aby uzyskać więcej informacji, zobacz [zakresy](v2-permissions-and-consent.md).|
 | requested_token_use |wymagane | Określa, jak można przetworzyć żądania. W przepływie w imieniu z, wartość musi być **on_behalf_of**. |
 
 #### <a name="example"></a>Przykład
@@ -103,7 +103,7 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 | client_assertion |wymagane | Potwierdzenie (JSON Web Token), musisz utworzyć i podpisać za pomocą certyfikatu rejestracji w charakterze poświadczenia dla aplikacji. Przeczytaj o [certyfikatu poświadczeń](active-directory-certificate-credentials.md) informacje na temat rejestracji certyfikatu i format potwierdzenia.|
 | potwierdzenie |wymagane | Wartość tokenu użytego w żądaniu. |
 | requested_token_use |wymagane | Określa, jak można przetworzyć żądania. W przepływie w imieniu z, wartość musi być **on_behalf_of**. |
-| zakres |wymagane | Spacjami listy zakresów dla żądania tokenu. Aby uzyskać więcej informacji, zobacz [zakresy](v2-permissions-and-consent.md).|
+| scope |wymagane | Spacjami listy zakresów dla żądania tokenu. Aby uzyskać więcej informacji, zobacz [zakresy](v2-permissions-and-consent.md).|
 
 Należy zauważyć, że parametry są prawie takie same jak w przypadku żądania przez Wspólny klucz tajny, z tą różnicą, że parametr client_secret zostaje zastąpiona przez dwa parametry: client_assertion_type i client_assertion.
 
@@ -132,7 +132,7 @@ Odpowiedź sukcesu jest odpowiedź JSON OAuth 2.0, z następującymi parametrami
 | Parametr | Opis |
 | --- | --- |
 | token_type |Wskazuje typ tokenu. Jedynym typem, który obsługuje usługi Azure AD jest **elementu nośnego**. Aby uzyskać więcej informacji na temat tokenów elementu nośnego, zobacz [OAuth 2.0 autoryzacji Framework: użycie tokenu elementu nośnego (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt). |
-| zakres |Zakres dostępu przyznane w tokenie. |
+| scope |Zakres dostępu przyznane w tokenie. |
 | expires_in |Długość czasu, przez który token dostępu jest prawidłowy (w sekundach). |
 | access_token |Token żądanego dostępu. Wywoływania usługi można użyć tego tokenu do uwierzytelnienia w usłudze odbierania. |
 | refresh_token |Token odświeżania dla tokenu żądanego dostępu. Wywoływania usługi można użyć tego tokenu do żądania inny token dostępu po wygaśnięciu bieżącego tokenu dostępu. Token odświeżania jest podawana tylko wtedy, gdy `offline_access` zażądano zakresu.|

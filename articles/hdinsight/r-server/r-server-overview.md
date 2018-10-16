@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: af143ef1ec79868294af7d7511548dc54f8ceb8d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: ca596b2d33a6248dac94ddd7eef9a9c44daac3c8
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049274"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343745"
 ---
 # <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>Wprowadzenie do usługi uczenie Maszynowe i możliwości języka R typu open source w HDInsight
 
@@ -148,6 +148,6 @@ Ceny, które są skojarzone z klastrem usługi HDInsight usługi ML mają strukt
 
 Aby dowiedzieć się więcej na temat korzystania z usług uczenia Maszynowego w klastrach HDInsight, zobacz następujące tematy:
 
-* [Rozpoczynanie pracy z klastrem Serices uczenia Maszynowego na HDInsight](r-server-get-started.md)
+* [Rozpoczynanie pracy z klastrem usługi ML w HDInsight](r-server-get-started.md)
 * [Compute context options for ML Services cluster on HDInsight (Opcje kontekstu obliczeniowego dla klastra usług ML w usłudze HDInsight)](r-server-compute-contexts.md)
 * [Opcje magazynu dla klastra usługi ML na HDInsight](r-server-storage.md)

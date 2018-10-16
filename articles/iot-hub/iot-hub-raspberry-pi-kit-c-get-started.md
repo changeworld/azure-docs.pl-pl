@@ -10,12 +10,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 8962f41d971ac88134f639a61ef0b42c60bbd419
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: c8e2dcfef1db8bfe3d76ac917f8c14a4060e3968
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161496"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318762"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Łączenie urządzenia Raspberry Pi do IoT Hub (C) platformy Azure
 
@@ -61,10 +61,9 @@ Opcjonalne są następujące elementy:
 * Przewodów jumper 6 F/M.
 * Rozproszona LED 10 mm.
 
-
 > [!NOTE] 
-Te elementy są opcjonalne, ponieważ obsługa próbki kodu symulowane dane czujników.
-
+> Te elementy są opcjonalne, ponieważ obsługa próbki kodu symulowane dane czujników.
+>
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
@@ -97,7 +96,8 @@ Przygotuj karcie microSD instalacji obrazu Raspbian.
    ![Włącz SPI i ustawieniami SSH na urządzeniu Raspberry Pi](media/iot-hub-raspberry-pi-kit-c-get-started/2_enable-spi-ssh-on-raspberry-pi.png)
 
 > [!NOTE] 
-Aby włączyć protokół SSH i SPI, można znaleźć więcej dokumentów odwołania na [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) i [RASPI-CONFIG](https://www.raspberrypi.org/documentation/configuration/raspi-config.md).
+> Aby włączyć protokół SSH i SPI, można znaleźć więcej dokumentów odwołania na [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) i [RASPI-CONFIG](https://www.raspberrypi.org/documentation/configuration/raspi-config.md).
+>
 
 ### <a name="connect-the-sensor-to-pi"></a>Łączenie z czujnika do Pi
 
@@ -171,6 +171,7 @@ Włącz Pi przy użyciu micro kabla USB i zasilacz. Użyj kabla Ethernet do łą
 
    > [!NOTE] 
    > Jeśli możesz **nie masz fizycznego BME280**, można użyć "--symulowane dane" jako parametr wiersza polecenia, aby zasymulować dane temperatury i wilgotności. `sudo ./setup.sh --simulated-data`
+   >
 
 ### <a name="build-and-run-the-sample-application"></a>Kompilowanie i uruchamianie przykładowej aplikacji
 
@@ -179,6 +180,7 @@ Włącz Pi przy użyciu micro kabla USB i zasilacz. Użyj kabla Ethernet do łą
    ```bash
    cmake . && make
    ```
+   
    ![Dane wyjściowe kompilacji](media/iot-hub-raspberry-pi-kit-c-get-started/7_build-output.png)
 
 1. Uruchamianie przykładowej aplikacji, uruchamiając następujące polecenie:
@@ -188,8 +190,8 @@ Włącz Pi przy użyciu micro kabla USB i zasilacz. Użyj kabla Ethernet do łą
    ```
 
    > [!NOTE] 
-   Upewnij się, możesz kopiowania i wklejania parametry połączenia urządzenia w apostrofy.
-
+   > Upewnij się, możesz kopiowania i wklejania parametry połączenia urządzenia w apostrofy.
+   >
 
 Powinny być widoczne następujące dane wyjściowe, dane czujników i komunikaty, które są wysyłane do usługi IoT hub.
 

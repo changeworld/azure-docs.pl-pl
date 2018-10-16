@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 6fe85d7ac527179ab39e89739f5744f3aa1ef8e2
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1c2294004245e0ef64b9b708a5b57ec0d34cc45f
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297559"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321992"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Zabezpieczenia platformy Azure i zgodności planu: PaaS Web Hosting aplikacji w przypadku obciążeń oficjalne UK
 
@@ -52,7 +52,6 @@ Architektura wdrożenia, aprowizowanie bezpiecznego magazynu, monitorowania & re
 To rozwiązanie korzysta z poniższych usług platformy Azure. Szczegółowe informacje na temat architektury wdrożenia [architektura wdrożenia](#deployment-architecture) sekcji.
 
 - Usługa Azure Active Directory
-- Tożsamość usługi zarządzanej
 - App Service
 - Aplikacja internetowa
 - Aplikacja interfejsu API
@@ -107,13 +106,13 @@ Usługa Azure Web Apps zapewnia w pełni zarządzane środowisko dla aplikacji s
 
 App Service to [ISO, SOC i PCI](https://www.microsoft.com/TrustCenter/) i mogą uwierzytelniać użytkowników za pomocą [usługi Azure Active Directory](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication) lub logowania z serwisów społecznościowych ([Google](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-google-authentication), [wserwisieFacebook](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-facebook-authentication), [Twitter](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-twitter-authentication), i [uwierzytelnianie firmy Microsoft](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-microsoft-authentication).
 
-Basic, Standard i plany Premium są przeznaczone dla obciążeń produkcyjnych i działają na dedykowanych wystąpieniach maszyn wirtualnych. Każde wystąpienie może obsługiwać wiele aplikacji i domen. Usługi App services również obsługę [ograniczenia adresów IP](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions) zabezpieczyć ruch do zaufanych adresów IP, jeśli jest to wymagane, a także [tożsamości usługi zarządzanej](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) dla bezpiecznego połączenia z innymi usługami PaaS, takich jak [ Magazyn kluczy](https://azure.microsoft.com/services/key-vault/) i [usługi Azure SQL Database](https://azure.microsoft.com/services/sql-database/). W przypadku, gdy są wymagane dodatkowe zabezpieczenia naszego planu izolowanego hostowanie aplikacji w prywatnym, dedykowanym środowisku platformy Azure i jest idealne dla aplikacji, które wymagają bezpiecznego połączenia z Twojej sieci lokalnej lub dodatkowej wydajności i skali.
+Basic, Standard i plany Premium są przeznaczone dla obciążeń produkcyjnych i działają na dedykowanych wystąpieniach maszyn wirtualnych. Każde wystąpienie może obsługiwać wiele aplikacji i domen. Usługi App services również obsługę [ograniczenia adresów IP](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions) zabezpieczyć ruch do zaufanych adresów IP, jeśli jest to wymagane, a także [zarządzanych tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) dla bezpiecznego połączenia do innych usług PaaS takie jak [magazyn kluczy](https://azure.microsoft.com/services/key-vault/) i [usługi Azure SQL Database](https://azure.microsoft.com/services/sql-database/). W przypadku, gdy są wymagane dodatkowe zabezpieczenia naszego planu izolowanego hostowanie aplikacji w prywatnym, dedykowanym środowisku platformy Azure i jest idealne dla aplikacji, które wymagają bezpiecznego połączenia z Twojej sieci lokalnej lub dodatkowej wydajności i skali.
 
 Ten szablon wdraża następujące funkcje usługi App Service:
 
 - [Standardowa](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview) warstwę planu usługi App Service
 - Wiele aplikacji sieci Web [miejsc wdrożenia](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing): deweloperów, w wersji zapoznawczej, odpowiedzi na pytania, przeprowadzających testowanie Akceptacyjne i oczywiście produkcyjnych (domyślne miejsce).
-- [Tożsamość usługi zarządzanej](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) nawiązać [usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/) (to może również służyć do zapewnienia dostępu do [usługi Azure SQL Database](https://azure.microsoft.com/services/sql-database/) 
+- [Zarządzane tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) nawiązać [usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/) (to może również służyć do zapewnienia dostępu do [usługi Azure SQL Database](https://azure.microsoft.com/services/sql-database/) 
 - Integracja z usługą [usługi Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-azure-web-apps) do monitorowania wydajności
 - [Dzienniki diagnostyczne](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) 
 - Metryka [alertów](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) 
@@ -164,7 +163,7 @@ Szczegółowe informacje dotyczące zabezpieczania usługi Azure Storage można 
 
 #### <a name="azure-key-vault-in-this-blueprint"></a>Usługa Azure Key Vault, w tym planie
 
-- Przechowuje klucz dostępu do magazynu z dostępem do odczytu przyznane [tożsamości usługi zarządzanej](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) klienta aplikacji sieci web umożliwiający dostęp do Internetu
+- Przechowuje klucz dostępu do magazynu z dostępem do odczytu przyznane [tożsamości zarządzanej](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) klienta aplikacji sieci web umożliwiający dostęp do Internetu
 - Przechowuje hasła DBA serwera SQL (w osobnym magazynie)
 - Rejestrowanie diagnostyczne
 

@@ -11,33 +11,37 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 10/15/2018
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: 9396d49f455f8f4af1abf7f0020e95e8fd0a14cc
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 67e1e22bc5569e7d6e20332ee86ffe4c7dd6a354
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729590"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343847"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Zarządzanie rejestracją dzierżawy w usłudze Azure Stack
 
 *Dotyczy: zintegrowane systemy usługi Azure Stack*
 
-Ten artykuł zawiera szczegółowe informacje o operacjach, których można użyć do zarządzania rejestracje dzierżawy i sposób śledzenia użycia przez dzierżawcę. Można znaleźć szczegółowe informacje na temat dodawania listy, lub usunąć mapowania dzierżawy. Do zarządzania użytkowanie śledzenia, można użyć programu PowerShell lub punkty końcowe interfejsu API rozliczeń.
+Ten artykuł zawiera szczegółowe informacje o operacji rejestracji. Można użyć tych operacji, aby:
+- Zarządzanie rejestracjami dzierżawy
+- Zarządzanie śledzenia użycia dzierżawy
+
+Można znaleźć szczegółowe informacje na temat dodawania listy, lub usunąć mapowania dzierżawy. Do zarządzania użytkowanie śledzenia, można użyć programu PowerShell lub punkty końcowe interfejsu API rozliczeń. Można znaleźć szczegółowe informacje na temat dodawania listy, lub usunąć mapowania dzierżawy. Do zarządzania użytkowanie śledzenia, można użyć programu PowerShell lub punkty końcowe interfejsu API rozliczeń.
 
 ## <a name="add-tenant-to-registration"></a>Dodawanie dzierżawy do rejestracji
 
-Należy użyć tej operacji, gdy chcesz dodać nową dzierżawę do rejestracji, dzięki czemu ich użycie jest zgłaszana w ramach subskrypcji platformy Azure związanych ze swojej dzierżawy usługi Azure Active Directory (Azure AD).
+Użyj operacji, jeśli chcesz dodać nową dzierżawę do rejestracji. Wykorzystanie dzierżaw jest zgłaszana w ramach subskrypcji platformy Azure związanych ze swojej dzierżawy usługi Azure Active Directory (Azure AD).
 
-Umożliwia także tę operację, jeśli chcesz zmienić subskrypcję skojarzonych dzierżawę, można wywołać PUT/New-AzureRMResource ponownie. Stary mapowanie zostanie zastąpiona.
+Umożliwia także wykonać operację, jeśli chcesz zmienić subskrypcję skojarzoną z dzierżawą. Wywołania PUT/New-AzureRMResource zastąpienie poprzedniej mapowania.
 
-Należy zauważyć, że tylko jedną subskrypcję platformy Azure może być skojarzony z dzierżawą. Jeśli spróbujesz dodać drugi subskrypcji do istniejącej dzierżawy, pierwszy subskrypcja jest nadmiernie napisane. 
+Można skojarzyć pojedynczej subskrypcji platformy Azure z dzierżawą. Jeśli spróbujesz dodać drugi subskrypcji do istniejącej dzierżawy, pierwszy subskrypcja jest nadmiernie napisane.
 
 ### <a name="use-api-profiles"></a>Użycie profilów interfejsu API
 
-Polecenia cmdlet w tym artykule wymaga określić profil interfejsu API, podczas uruchamiania programu PowerShell. Profile interfejsu API reprezentuje zestaw dostawców zasobów platformy Azure i ich wersje interfejsu API. Ułatwiają one Użyj właściwej wersji interfejsu API podczas interakcji z wieloma chmurami platformy Azure, na przykład podczas pracy z globalnej platformy Azure i usługi Azure Stack. Profile są określone przez nazwę, która odpowiada ich daty wydania. Z tego artykułu, należy użyć **2017-09-03** profilu.
+Polecenia cmdlet rejestracji wymagają określić profil interfejsu API, podczas uruchamiania programu PowerShell. Profile interfejsu API reprezentuje zestaw dostawców zasobów platformy Azure i ich wersje interfejsu API. Ułatwiają one Użyj właściwej wersji interfejsu API podczas interakcji z wieloma chmurami platformy Azure. Na przykład możesz pracować z wieloma chmurami podczas pracy z globalnej platformy Azure i usługi Azure Stack. Profile, określ nazwę, która odpowiada ich daty wydania. Należy użyć **2017-09-03** profilu.
 
 Aby uzyskać więcej informacji na temat usługi Azure Stack i profilami interfejsu API, zobacz [Zarządzanie profilami wersji interfejsu API w usłudze Azure Stack](user/azure-stack-version-profiles.md). Aby uzyskać instrukcje i przeprowadzanie z profilem interfejsu API przy użyciu programu PowerShell, zobacz [korzystanie z interfejsu API w wersji profilów dla programu PowerShell w usłudze Azure Stack](user/azure-stack-version-profiles-powershell.md).
 
@@ -46,7 +50,7 @@ Aby uzyskać więcej informacji na temat usługi Azure Stack i profilami interfe
 | Parametr                  | Opis |
 |---                         | --- |
 | registrationSubscriptionID | Subskrypcja platformy Azure, który został użyty podczas wstępnej rejestracji. |
-| customerSubscriptionID     | Subskrypcja platformy Azure (nie usługi Azure Stack) należące do klientów do zarejestrowania. Musi zostać utworzona w ramach oferty dostawcy usług chmury (CSP). W praktyce oznacza to, za pośrednictwem Centrum partnerskiego. Jeśli klient ma więcej niż jednej dzierżawy, należy utworzyć tej subskrypcji w ramach dzierżawy, która będzie służyć do logowania się do usługi Azure Stack. |
+| customerSubscriptionID     | Subskrypcja platformy Azure (nie usługi Azure Stack) należące do klientów do zarejestrowania. Musi zostać utworzona w ramach oferty dostawcy usług chmury (CSP), za pośrednictwem Centrum partnerskiego. Jeśli klient ma więcej niż jedną dzierżawę, utworzono subskrypcję dla dzierżawy zalogować się do usługi Azure Stack. |
 | resourceGroup              | Grupa zasobów na platformie Azure, w którym przechowywany jest rejestracja. |
 | registrationName           | Nazwa rejestracji usługi Azure Stack. Jest to obiekt przechowywanych na platformie Azure. Nazwa jest zwykle azurestack formularza-CloudID, gdzie CloudID jest identyfikator chmurze wdrożenia usługi Azure Stack. |
 

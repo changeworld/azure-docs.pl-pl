@@ -7,21 +7,21 @@ author: fmegen
 ms.service: cognitive-services
 ms.component: Speech
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 10/12/2018
 ms.author: fmegen
-ms.openlocfilehash: 75dcda643741e3aeb1238f82128e4c5b058be840
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 2667d398141b53c87328eec7b608c4f613c15ea4
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883662"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340277"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-cognitive-services-speech-sdk"></a>Szybki Start: Rozpoznawanie mowy w języku JavaScript w przeglądarce, za pomocą Cognitive Services SDK rozpoznawania mowy
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 W tym artykule dowiesz się, jak utworzyć witrynę sieci Web, za pomocą powiązanie JavaScript Cognitive Services SDK mowy transkrypcja mowy na tekst.
-Ta aplikacja jest oparta na Microsoft Cognitive Services SDK mowy ([pobierania wersji 1.0.0](https://aka.ms/csspeech/jsbrowserpackage)).
+Ta aplikacja jest oparta na Microsoft Cognitive Services SDK mowy ([pobierania wersji 1.0.1](https://aka.ms/csspeech/jsbrowserpackage)).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -103,7 +103,7 @@ Aby uruchomić aplikację, kliknij dwukrotnie plik index.html lub Otwórz przegl
 Aby uruchomić aplikację, otwórz przeglądarkę internetową i wskaż publiczny adres URL, który hostował folder na, wprowadź swoje [region](regions.md)i wyzwalać rozpoznawanie mikrofonu. Jeśli skonfigurowano, pobierane będą token ze źródła tokenu.
 
 [!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Poszukaj tego przykładu w `quickstart/js-browser` folderu.
+Poszukaj tego przykładu w folderze `quickstart/js-browser`.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

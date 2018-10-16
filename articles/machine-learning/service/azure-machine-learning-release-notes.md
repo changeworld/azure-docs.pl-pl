@@ -9,16 +9,34 @@ author: hning86
 ms.author: haining
 ms.reviewer: j-martens
 ms.date: 03/28/2018
-ms.openlocfilehash: be12a9ef0d6b520c741f95903d43f81727bc3b9b
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: c45ce91735dc47ecb5a2741395ed79d4fa7b6f3f
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238014"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321794"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
 Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning. 
+
+## <a name="2018-10-12"></a>2018-10-12
+
+### <a name="azure-machine-learning-sdk-for-python-v0168"></a>Usługi Azure Machine Learning zestawu SDK dla języka Python v0.1.68
+
+#### <a name="new-features"></a>Nowe funkcje
+ * Wiele Obsługa dzierżawy podczas tworzenia nowego obszaru roboczego.
+
+#### <a name="breaking-changes"></a>Zmiany powodujące niezgodność
+ * **Nadchodzące w następnej wersji** *Workspace.compute_targets, magazynów danych, eksperymentów, obrazy, modele* i *usług sieci Web* staną się właściwości zamiast metod. Na przykład Zastąp ciąg *Workspace.compute_targets()* z *Workspace.compute_targets*.
+
+#### <a name="bugs-fixed"></a>Usterki usunięte
+ * Pynacl wersji biblioteki nie musi już przypięty, wdrażając internetowej.
+
+### <a name="azure-machine-learning-data-prep-sdk-v030"></a>Zestaw SDK v0.3.0 przeznaczonego do przygotowania danych usługi Azure Machine Learning
+
+#### <a name="new-features"></a>Nowe funkcje:
+* Dodano transform_partition_with_file(script_path) metody, która umożliwia użytkownikom na przekazywanie, ścieżkę pliku Python do wykonywania
 
 ## <a name="2018-10-01"></a>2018-10-01
 

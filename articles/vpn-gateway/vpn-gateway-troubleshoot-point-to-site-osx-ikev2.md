@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: bc8e95b07d984505fc0e5fdad41fe120463b5b0e
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: c370808d06f31f9d79c99ca0f20f613d9e335d60
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585530"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339055"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Rozwiązywanie problemów z połączeniami sieci VPN typu punkt-lokacja z klientów Mac OS X w sieci VPN
 
@@ -66,7 +66,9 @@ Jeśli spróbujesz poprzednich kroków i wszystko jest poprawnie skonfigurowana,
 1. Filtrowanie według *isakmp* i przyjrzyj się **IKE_SA** pakietów. Powinno być możliwe wyświetlić szczegóły propozycji skojarzeń zabezpieczeń, w obszarze **ładunek: oferty skojarzeń zabezpieczeń**. 
 2. Sprawdź, czy klient i serwer cechują się wspólnym zestawem.
 
-  ![pakiet](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/packet5.jpg)
+  ![pakiet](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/packet5.jpg) 
+  
+3. Jeśli istnieje serwer nie odpowiedział na danych śledzenia sieci, sprawdź, czy włączono protokół IKEv2, na stronie konfiguracji bramy platformy Azure w witrynie Azure Portal.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać dodatkową pomoc, zobacz [Microsoft Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

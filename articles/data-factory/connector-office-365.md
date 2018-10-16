@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 3caae8ecae66178bc538d0b9d1240293028f33ad
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 8a36053fe3189a72c33ea14445a6b064260eec01
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867361"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318320"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Kopiowanie danych z usługi Office 365 na platformie Azure przy użyciu usługi Azure Data Factory (wersja zapoznawcza) 
 
@@ -55,7 +55,7 @@ Aby skopiować dane z usługi Office 365 na platformie Azure, musisz wykonać na
 
 Jeśli po raz pierwszy są wnioskujące o udostępnienie danych dla tego kontekstu (kombinację danych, które tabeli jest dostęp, lokalizację docelową konta znajdują się dane są ładowane i tożsamości użytkownika, który osiągnął dane żądanie dostępu), zostanie wyświetlony działania kopiowania stan jako "W toku", a tylko wtedy, gdy klikniesz w ["Szczegóły" link w kolumnie Akcje](copy-activity-overview.md#monitoring) będzie widoczny stan jako "RequestingConsent".  Członek grupy osoba zatwierdzająca dostęp do danych musi zatwierdzić żądanie w zarządzania dostępem uprzywilejowanym, wyodrębnianie danych mógł kontynuować działanie.
 
-Zapoznaj się [tutaj](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/Approving-a-data-access-request) na jak osoba zatwierdzająca mogą zatwierdzać dostęp do żądania danych, a można znaleźć [tutaj](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/On-boarding) objaśnienia na ogólną integrację z usługa Privileged Access Management, w tym sposób konfigurowania danych Grupa osoba zatwierdzająca dostęp.
+Zapoznaj się [tutaj](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Approving-data-access-requests) na jak osoba zatwierdzająca mogą zatwierdzać dostęp do żądania danych, a można znaleźć [tutaj](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#integration-with-privileged-access-management) objaśnienia na ogólną integrację z usługa Privileged Access Management, w tym sposób konfigurowania danych Grupa osoba zatwierdzająca dostęp.
 
 ## <a name="policy-validation"></a>Sprawdzanie poprawności zasad
 
@@ -124,7 +124,7 @@ Aby skopiować dane z usługi Office 365, obsługiwane są następujące właśc
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość typu elementu dataset musi być równa: **Office365Table** | Yes |
-| tableName | Nazwa zestawu danych w celu wyodrębnienia z usługi Office 365. Zapoznaj się tutaj, aby uzyskać listę zestawów danych w usłudze Office 365 dostępne do wyodrębnienia. | Yes |
+| tableName | Nazwa zestawu danych w celu wyodrębnienia z usługi Office 365. Zapoznaj się [tutaj](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#datasets) listę zestawów danych w usłudze Office 365 dostępne do wyodrębnienia. | Yes |
 | Predykat | Wyrażenie predykatu, który może służyć do filtrowania określonych wierszy w celu wyodrębnienia z usługi Office 365.  Zapoznaj się tutaj, aby dowiedzieć się, kolumny, które mogą służyć do filtrowania przewidywania dla każdej tabeli i format wyrażenia filtru. | Nie<br>(Jeśli nie dostarczono żadnych predykat, wartość domyślna to do wyodrębniania danych w ciągu ostatnich 30 dni) |
 
 **Przykład**

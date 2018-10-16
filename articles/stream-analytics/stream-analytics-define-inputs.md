@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/27/2018
-ms.openlocfilehash: 2da388ef2fc0df8b08658900fe91ecc9d440fd3a
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 9b75db835b0bdcc18cb82f427250630fb936d817
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579296"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341222"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream data jako dane wejściowe do usługi Stream Analytics
 
@@ -39,7 +39,7 @@ Usługa Azure Event Hubs oferuje wysoce skalowalną publikowania/subskrybowania 
 `EventEnqueuedUtcTime` jest to sygnatura czasowa odebrania zdarzeń w Centrum zdarzeń i jest to domyślny sygnatura czasowa zdarzenia pochodzące z usługi Event Hubs do usługi Stream Analytics. Do przetwarzania danych w formie strumienia za pomocą znacznika czasu w przypadku ładunek, należy użyć [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) — słowo kluczowe.
 
 ### <a name="consumer-groups"></a>Grupy odbiorców
-Należy skonfigurować każdy Centrum zdarzeń usługi Stream Analytics, danych wejściowych w celu ma swoje własne grupy odbiorców. Gdy zadanie zawiera samosprzężenie lub ma wielu danych wejściowych, niektórych danych wejściowych może przeczytać przez więcej niż jeden czytnik podrzędne. Taka sytuacja wpływa na liczbę czytników w grupie jednego konsumenta. Aby zapobiec przekroczeniu limitu usługi Event Hubs pięć czytników dla każdej grupy odbiorców dla każdej partycji, jest najlepszym rozwiązaniem, aby wyznaczyć grupy odbiorców dla każdego zadania usługi Stream Analytics. Istnieje również limit 20 grup odbiorców dla Centrum zdarzeń. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics z odbiorników usługi Event Hub](stream-analytics-event-hub-consumer-groups.md).
+Należy skonfigurować każdy Centrum zdarzeń usługi Stream Analytics, danych wejściowych w celu ma swoje własne grupy odbiorców. Gdy zadanie zawiera samosprzężenie lub ma wielu danych wejściowych, niektórych danych wejściowych może przeczytać przez więcej niż jeden czytnik podrzędne. Taka sytuacja wpływa na liczbę czytników w grupie jednego konsumenta. Aby zapobiec przekroczeniu limitu usługi Event Hubs pięć czytników dla każdej grupy odbiorców dla każdej partycji, jest najlepszym rozwiązaniem, aby wyznaczyć grupy odbiorców dla każdego zadania usługi Stream Analytics. Istnieje również limit 20 grup odbiorców dla Centrum zdarzeń. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics w danych wejściowych](stream-analytics-troubleshoot-input.md).
 
 ### <a name="stream-data-from-event-hubs"></a>Przesyłanie strumieniowe danych z usługi Event Hubs
 W poniższej tabeli opisano każdej właściwości w **nowe dane wejściowe** strony w witrynie Azure portal do strumienia danych wejściowych z Centrum zdarzeń:

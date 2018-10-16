@@ -1,5 +1,5 @@
 ---
-title: Co to jest ochrona linii bazowej dostępu warunkowego usługi Azure Active Directory? -preview | Dokumentacja firmy Microsoft
+title: Co to jest ochrona linii bazowej dostępu warunkowego usługi Azure Active Directory? — wersja zapoznawcza | Microsoft Docs
 description: Dowiedz się, jak ochronę gwarantuje, że masz co najmniej poziomu linii bazowej zabezpieczeń włączone w danym środowisku usługi Azure Active Directory.
 services: active-directory
 keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, zabezpieczenia dostępu do zasobów firmy, zasady dostępu warunkowego
@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: ef2b5dd393974ddf700235991b60ec66031e34c2
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 6ee89aa901c9553d22470a0481909e9cd62d60cf
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222271"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345134"
 ---
 # <a name="what-is-baseline-protection-preview"></a>Co to jest ochrona linii bazowej (wersja zapoznawcza)?  
 
@@ -86,7 +86,7 @@ Podczas zarządzania niestandardowe zasady dostępu warunkowego wymaga licencji 
 
 Role katalogu, które znajdują się w zasadach linii bazowej są najbardziej uprzywilejowanych ról usługi Azure AD. 
 
-Jeśli ma uprzywilejowane konta, które są używane w skryptach, należy zastąpić je za pomocą [tożsamości usługi zarządzanej (MSI)](../managed-identities-azure-resources/overview.md) lub [jednostki przy użyciu certyfikatów usług](../../azure-resource-manager/resource-group-authenticate-service-principal.md). Jako rozwiązanie tymczasowe można wykluczyć określone konta użytkowników z zasad linii bazowej. 
+Jeśli ma uprzywilejowane konta, które są używane w skryptach, należy zastąpić je za pomocą [zarządzanych tożsamości dla zasobów platformy Azure](../managed-identities-azure-resources/overview.md) lub [jednostki przy użyciu certyfikatów usług](../../azure-resource-manager/resource-group-authenticate-service-principal.md). Jako rozwiązanie tymczasowe można wykluczyć określone konta użytkowników z zasad linii bazowej. 
 
 Plan bazowy zasady mają zastosowanie do przepływów uwierzytelniania starszej wersji, takich jak POP, IMAP, starsze kliencie komputerowym pakietu Office. 
 

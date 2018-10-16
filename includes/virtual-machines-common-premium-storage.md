@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 097fc837807d28e02732cf8820afac74c33e16d9
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: a05d0c623c1abdb5713c1d49b0b577298c1d6c7d
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48240008"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49347040"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Magazyn w warstwie Premium o wysokiej wydajności i dysków zarządzanych dla maszyn wirtualnych
 
@@ -51,7 +51,7 @@ Poniżej przedstawiono niektóre funkcje usługi Premium Storage:
 
 * **Dysków magazynu Premium storage**
 
-    Usługa Premium Storage obsługuje dyski maszyn wirtualnych, które mogą być dołączane do określonego rozmiaru maszyny wirtualne. Usługa Premium Storage obsługuje szeroką gamę maszyn wirtualnych platformy Azure. Masz do wyboru osiem rozmiary dysków GA: P4 (32 GiB) P6 (64 GiB) P10 (128 GiB) P15 (256 GiB), P20 (512 GiB) P30 (1024 GiB) P40 (2048 GiB) P50 (4095 GiB). Także w trzech rozmiarach dysków w wersji zapoznawczej: P60 8192 GiB (8 TiB) P70 16,348 GiB (16 TiB) P80 32 767 GiB (32 TiB). Rozmiary dysków P4 P6, P60, P70 i P80 są obecnie obsługiwane tylko w przypadku dysków zarządzanych. Rozmiar każdego dysku ma swój własny specyfikacje wydajności. W zależności od wymagań aplikacji możesz dołączyć co najmniej jeden dysk do maszyny Wirtualnej. Opisujemy specyfikacje bardziej szczegółowo w [cele dotyczące skalowalności i wydajności Usługa Premium Storage](#scalability-and-performance-targets).
+    Usługa Premium Storage obsługuje dyski maszyn wirtualnych, które mogą być dołączane do określonego rozmiaru maszyny wirtualne. Usługa Premium Storage obsługuje szeroką gamę maszyn wirtualnych platformy Azure. Masz do wyboru osiem rozmiary dysków GA: P4 (32 GiB) P6 (64 GiB) P10 (128 GiB) P15 (256 GiB), P20 (512 GiB) P30 (1024 GiB) P40 (2048 GiB) P50 (4095 GiB). Także w trzech rozmiarach dysków w wersji zapoznawczej: P60 8192 GiB (8 TiB) P70 16,348 GiB (16 TiB) P80 32 767 GiB (32 TiB). Rozmiary dysków P4, P6, P15 P60, P70 i P80 są obecnie obsługiwane tylko w przypadku dysków zarządzanych. Rozmiar każdego dysku ma swój własny specyfikacje wydajności. W zależności od wymagań aplikacji możesz dołączyć co najmniej jeden dysk do maszyny Wirtualnej. Opisujemy specyfikacje bardziej szczegółowo w [cele dotyczące skalowalności i wydajności Usługa Premium Storage](#scalability-and-performance-targets).
 
 * **Stronicowe obiekty BLOB w warstwie Premium**
 
@@ -149,7 +149,7 @@ Aby uzyskać więcej informacji, zobacz [cele dotyczące skalowalności i wydajn
 Jeśli używasz kont usługi premium storage dla dysków niezarządzanych aplikacji przekracza cele skalowalności z jednego konta magazynu, można migrować do usługi managed disks. Jeśli nie chcesz przeprowadzić migrację do usługi managed disks, tworzenie aplikacji na używanie wielu kont magazynu. Następnie podzielić dane na tych kontach magazynu. Na przykład jeśli chcesz dołączyć dyski 51 – TB na wielu maszynach wirtualnych, rozkładają się je na dwa konta magazynu. 35 TB jest limit dla konta magazynu premium jednego. Upewnij się, że konto magazynu premium pojedynczego nigdy nie ma więcej niż 35 TB aprowizowanego dysku.
 
 ### <a name="premium-storage-disk-limits"></a>Limity dysku usługi Premium Storage
-Podczas aprowizowania dysku magazynu premium rozmiar dysku określa maksymalny operacje We/Wy i przepływność (przepustowość). Platforma Azure oferuje osiem typów dysków magazynu premium storage: P4 (Managed Disks tylko) P6 (zarządzane tylko dysków), P10, P15, P20, P30, P40 i P50. Każdy typ dysku magazynu premium storage ma określone limity dla operacji We/Wy i przepływność. W poniższej tabeli opisano limity dla typów dysków:
+Podczas aprowizowania dysku magazynu premium rozmiar dysku określa maksymalny operacje We/Wy i przepływność (przepustowość). Platforma Azure oferuje osiem typów usług ogólnie dostępnych dysków magazynu premium storage: P4 (zarządzane tylko dysków), poziom P6 odpowiada P10 (Managed Disks tylko), P15 (zarządzane tylko dysków), P20, P30, P40 i P50. Także w trzech rozmiarach dysków w wersji zapoznawczej: P60 P70 i P80. Każdy typ dysku magazynu premium storage ma określone limity dla operacji We/Wy i przepływność. W poniższej tabeli opisano limity dla typów dysków:
 
 | Dyski Premium z typu | P4 | POZIOM P6 ODPOWIADA | P10 | P15 | P20 | P30 | P40 | P50 | P60 | P70 | P80 | |---|---|---|---|---|---|---|---|---|| -------|| -------|| -------| | Rozmiar dysku jest | 32 giB | 64 giB | 128 giB | 256 giB | 512 giB | 1024 giB (1 TiB) | 2048 giB (2 TiB) | 4095 giB (4 TiB) | 8192 giB (8 TiB) | 16 384 giB (16 TiB) | 32 767 giB (32 TiB) || Operacje We/Wy na dysk | 120 | 240 | 500 | 1100 | 2300 | 5000 | 7500 | 7500 | 12 500 | 15 000 | 20 000 || Przepływność na dysk | 25 MB na sekundę | 50 MB na sekundę | 100 MB na sekundę | 125 MB na sekundę | 150 MB na sekundę | 200 MB na sekundę | 250 MB na sekundę | 250 MB na sekundę | 480 MB na sekundę | 750 MB na sekundę | 750 MB na sekundę |
 

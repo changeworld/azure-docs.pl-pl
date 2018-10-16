@@ -10,14 +10,14 @@ ms.component: manage
 ms.date: 10/08/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: 3206895b455238033dbb93347e0c06fd71027b0a
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: f2fe1bc06f4122a1d27b22288784b3db167c300c
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48904297"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321703"
 ---
-# <a name="whats-new-in-azure-sql-data-warehouse-september-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Września 2018 r.
+# <a name="whats-new-in-azure-sql-data-warehouse-september-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Wrzesień 2018 r.
 Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w września 2018 r.
 
 ## <a name="new-lower-entry-point-for-sql-data-warehouse-gen2"></a>Nowy punkt wejścia niższe dla Gen2 magazynu danych SQL
@@ -59,7 +59,7 @@ WHERE
     RTRIM(value) <> '';
 ```
 
-###<a name="compressdecompress-functions"></a>KOMPRESUJ/błąd funkcji
+### <a name="compressdecompress-functions"></a>KOMPRESUJ/błąd funkcji
 [SKOMPRESOWAĆ](https://docs.microsoft.com/sql/t-sql/functions/compress-transact-sql) / [błąd](https://docs.microsoft.com/sql/t-sql/functions/decompress-transact-sql) funkcje umożliwiają kompresja lub dekompresja ciąg wejściowy za pomocą algorytmu GZIP.
 
 #### <a name="example"></a>Przykład

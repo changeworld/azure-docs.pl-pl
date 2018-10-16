@@ -1,9 +1,9 @@
 ---
-title: Platformy są obsługiwane w usłudze Azure Security Center | Dokumentacja firmy Microsoft
-description: Ten dokument zawiera listę systemów Windows i Linux operatings obsługiwane w usłudze Azure Security Center.
+title: Funkcje i platformach obsługiwanych przez usługę Azure Security Center | Dokumentacja firmy Microsoft
+description: Ten dokument zawiera listę funkcji i platformach obsługiwanych przez usługę Azure Security Center.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2018
-ms.author: terrylan
-ms.openlocfilehash: 54d173caa0e3eb4bbd8bda7c924e56d546a99662
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/10/2018
+ms.author: rkarlin
+ms.openlocfilehash: 279818e6b43e53206deb9e33591f75ef381a8962
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297506"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319986"
 ---
-# <a name="supported-platforms-in-azure-security-center"></a>Obsługiwane platformy w usłudze Azure Security Center
+# <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy i funkcji obsługiwanych przez usługę Azure Security Center
+
 Monitorowanie stanu zabezpieczeń i zalecenia są dostępne dla maszyn wirtualnych (VM) utworzone za pomocą zarówno klasyczny i modelem wdrażania usługi Resource Manager i komputery.
 
 > [!NOTE]
@@ -29,7 +30,11 @@ Monitorowanie stanu zabezpieczeń i zalecenia są dostępne dla maszyn wirtualny
 >
 >
 
-## <a name="supported-platforms-for-windows-computers-and-vms"></a>Obsługiwane platformy dla maszyn wirtualnych i komputerów Windows
+## <a name="supported-platforms"></a>Obsługiwane platformy 
+
+W tej sekcji przedstawiono platform, na których można uruchomić agenta usługi Azure Security Center i z którego mógł zbierać dane.
+
+### <a name="supported-platforms-for-windows-computers-and-vms"></a>Obsługiwane platformy dla maszyn wirtualnych i komputerów Windows
 Obsługiwane systemy operacyjne Windows:
 
 * Windows Server 2008
@@ -39,7 +44,7 @@ Obsługiwane systemy operacyjne Windows:
 * Windows Server 2016
 
 
-## <a name="supported-platforms-for-linux-computers-and-vms"></a>Obsługiwane platformy dla maszyn wirtualnych i komputerów z systemem Linux
+### <a name="supported-platforms-for-linux-computers-and-vms"></a>Obsługiwane platformy dla maszyn wirtualnych i komputerów z systemem Linux
 Obsługiwane systemy operacyjne Linux:
 
 * Wersje Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS
@@ -58,6 +63,62 @@ Obsługiwane systemy operacyjne Linux:
 
 ## <a name="vms-and-cloud-services"></a>Maszyny wirtualne i usługi w chmurze
 Obsługiwane są również maszyny wirtualne działające w usłudze w chmurze. Jedyna chmura usług ról sieć web i procesów roboczych działających w środowisku produkcyjnym, które mają być monitorowane przez miejsc. Aby dowiedzieć się więcej na temat usługi w chmurze, zobacz [Omówienie usług w chmurze](../cloud-services/cloud-services-choose-me.md).
+
+
+## <a name="supported-iaas-features"></a>Obsługiwane funkcje IaaS
+
+> [!div class="mx-tableFixed"]
+> 
+
+|Serwer|Windows||Linux||
+|----|----|----|----|----|
+|Środowisko|Azure|Poza platformą Azure|Azure|Poza platformą Azure|
+|Alerty wykrywania zagrożeń VMBA|✔|✔|✔ (w obsługiwanych wersjach)|✔|
+|Alerty wykrywania zagrożeń sieci|✔|X|✔|X|
+|Integracja usługi Windows Defender ATP *|✔ (w obsługiwanych wersjach)|✔|X|X|
+|Brakujące poprawki|✔|✔|✔|✔|
+|Konfiguracje zabezpieczeń|✔|✔|✔|✔|
+|Chroniące przed złośliwym kodem|✔|✔|X|X|
+|Dostęp JIT do maszyny wirtualnej|✔|X|✔|X|
+|Funkcje adaptacyjnego sterowania aplikacjami|✔ (tylko platforma Azure)|X|X|X|
+|USŁUGI FIM|✔|✔|✔|✔|
+|Szyfrowanie dysków|✔|X|✔|X|
+|Wdrożenie innych firm|✔|X|✔|X|
+|Sieciowe grupy zabezpieczeń|✔|X|✔|X|
+|Filess V1|✔|✔|X|X|
+|Mapa sieci|✔|X|✔|X|
+|Zaostrzanie poziomu zabezpieczeń adaptacyjnych sieci|✔|X|✔|X|
+
+* Te funkcje są obecnie obsługiwane w publicznej wersji zapoznawczej.
+
+
+## <a name="supported-paas-features"></a>Obsługiwane funkcje PaaS
+
+
+|Usługa|Zalecenia|Wykrywanie zagrożeń|
+|----|----|----|
+|SQL|✔| ✔|
+|PostGreSQL *|✔| ✔|
+|MySQL *|✔| ✔|
+|Konta magazynu obiektów blob *|✔| ✔|
+|Usługi aplikacji|✔| ✔|
+|Usługi w chmurze|✔| X|
+|Pamięć podręczna Redis|✔| X|
+|Usługa Service fabric|✔| X|
+|Azure Automation|✔| X|
+|Data Lake |✔| X|
+|Magazyn kluczy|✔| X|
+|Usługa Service bus|✔| X|
+|Stream analytics|✔| X|
+|Batch|✔| X|
+|Aplikacje logiki|✔| X|
+|Sieci wirtualne|✔| Nie dotyczy|
+|Podsieci|✔| Nie dotyczy|
+|Karty interfejsów sieciowych|✔| ✔|
+|Sieciowe grupy zabezpieczeń|✔| Nie dotyczy|
+|Subskrypcja|✔| ✔|
+
+* Te funkcje są obecnie obsługiwane w publicznej wersji zapoznawczej.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

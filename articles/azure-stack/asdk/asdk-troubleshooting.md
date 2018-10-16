@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z Microsoft Azure stosu | Dokumentacja firmy Microsoft
-description: Azure stosu Development Kit (ASDK) informacje dotyczące rozwiązywania problemów.
+title: Rozwiązywanie problemów z usługi Microsoft Azure Stack | Dokumentacja firmy Microsoft
+description: Usługa Azure Stack Development Kit (ASDK) informacje dotyczące rozwiązywania problemów.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,64 +12,64 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 6c715f07f75c9196b7cf2cc8659c6e541e1260da
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 999017e24f6c4c24735b7e0cc818bf20aaabab62
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30167904"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49338577"
 ---
-# <a name="microsoft-azure-stack-development-kit-asdk-troubleshooting"></a>Rozwiązywanie problemów z Microsoft Azure stosu Development Kit (ASDK)
-Ten dokument zawiera typowe informacje dotyczące rozwiązywania problemów dla ASDK. Jeśli występuje problem, który nie jest udokumentowany, upewnij się, że sprawdzanie [Forum MSDN stosu Azure](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) dalszą pomoc i informacje.  
+# <a name="microsoft-azure-stack-development-kit-asdk-troubleshooting"></a>Rozwiązywanie problemów z systemu Microsoft Azure Stack Development Kit (ASDK)
+Ten dokument zawiera informacje dotyczące ASDK typowych rozwiązywania problemów. Jeśli występuje problem, który nie jest udokumentowany, upewnij się sprawdzić [Forum MSDN usługi Azure Stack](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) dalszą pomoc i informacje.  
 
 > [!IMPORTANT]
-> Ponieważ ASDK środowiska do oceny, nie jest oficjalną obsługiwane oferowane za pośrednictwem usług obsługi klienta firmy Microsoft (CSS).
+> Ponieważ ASDK jest środowisko wersji ewaluacyjnej, nie jest oficjalnym obsługiwane oferowane za pośrednictwem usług obsługi klienta firmy Microsoft (CSS).
 
-Zalecenia dotyczące rozwiązywania problemów, które zostały opisane w tej sekcji są uzyskiwane z wielu źródeł i może lub nie może rozpoznać określonego problemu. Przykłady kodu są dostarczane "w jakim jest" i nie można zagwarantować oczekiwanych rezultatów. W tej sekcji podlega częste zmiany i aktualizacje zaimplementowanego ulepszenia produktu.
+Zalecenia dotyczące rozwiązywania problemów, które są opisane w tej sekcji są uzyskiwane z wielu źródeł i może lub nie może rozpoznać określonego problemu. Przykłady kodu są dostarczane "w jakim jest" i nie można zagwarantować oczekiwanych wyników. W tej sekcji podlega częste zmiany i aktualizacje zaimplementowanego ulepszenia produktu.
 
 ## <a name="deployment"></a>Wdrożenie
-### <a name="deployment-failure"></a>Niepowodzenie wdrożenia
-Jeśli wystąpi błąd podczas instalacji, możesz ponownie uruchomić wdrażania z kroku nie powiodło się przy użyciu opcja ponownego uruchamiania skryptu wdrażania, jak w poniższym przykładzie:
+### <a name="deployment-failure"></a>Wdrożenie zakończyło się niepowodzeniem
+Jeśli nastąpi awaria podczas instalacji należy ponownie uruchomić wdrożenie z krok zakończony niepowodzeniem przy użyciu opcję ponownego uruchamiania skryptu wdrażania, jak w poniższym przykładzie:
 
   ```powershell
   cd C:\CloudDeployment\Setup
   .\InstallAzureStackPOC.ps1 -Rerun
   ```
 
-### <a name="at-the-end-of-the-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>Po zakończeniu wdrożenia sesji programu PowerShell jest wciąż otwarty i nie wyświetla żadnych danych wyjściowych
-To zachowanie jest prawdopodobnie tylko wynik domyślne zachowanie okno poleceń programu PowerShell, gdy została wybrana. Rozwój wdrożenie zestawu zakończyła się pomyślnie, ale skrypt został wstrzymany, wybierając okna. Możesz sprawdzić, czy instalacja została ukończona, wyszukując słowa "Wybierz" pasek tytułu okna wiersza polecenia. Naciśnij klawisz ESC, aby usunąć jej zaznaczenie, a powinien być wyświetlany komunikat o zakończeniu po nim.
+### <a name="at-the-end-of-the-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>Po zakończeniu wdrożenia sesji programu PowerShell jest wciąż otwarty, a nie wyświetla żadnych danych wyjściowych
+To zachowanie jest prawdopodobnie tylko wynik domyślne zachowanie okno poleceń programu PowerShell, jeśli został wybrany. Deployment kit rozwoju zakończyła się pomyślnie, ale skrypt został wstrzymany, wybierając okno. Możesz sprawdzić, czy instalacja została ukończona, wyszukując słowo "Wybierz" pasek tytułu okna wiersza polecenia. Naciśnij klawisz ESC, aby usunąć jej zaznaczenie, a powinien być wyświetlany komunikat o zakończeniu po nim.
 
 ## <a name="virtual-machines"></a>Maszyny wirtualne
 ### <a name="default-image-and-gallery-item"></a>Element domyślny obraz i galerii
-Przed wdrożeniem maszyn wirtualnych w stosie Azure należy dodać element obrazu i galerii systemu Windows Server.
+Element obrazu i galerii systemu Windows Server, należy dodać przed wdrożeniem maszyn wirtualnych w usłudze Azure Stack.
 
-### <a name="after-restarting-my-azure-stack-host-some-vms-may-not-automatically-start"></a>Po ponownym uruchomieniu hosta Moje stosu Azure, niektóre maszyny wirtualne nie może automatycznie uruchomić.
-Po jego ponownym uruchomieniu hosta, można zauważyć, że usługi Azure stosu nie są natychmiast dostępne. Jest to spowodowane stosu Azure [infrastruktury maszyn wirtualnych](asdk-architecture.md#virtual-machine-roles) i podejmij RPs niektóre czas na sprawdzanie spójności, ale ostatecznie rozpocznie się automatycznie.
+### <a name="after-restarting-my-azure-stack-host-some-vms-may-not-automatically-start"></a>Po ponownym uruchomieniu mojej hosta usługi Azure Stack, niektóre maszyny wirtualne nie może automatycznie uruchomić.
+Po ponownym uruchomieniu hosta, może być Zauważ, że nie są natychmiast dostępne usługi Azure Stack. Jest to spowodowane Azure Stack [maszynach wirtualnych infrastruktury](asdk-architecture.md#virtual-machine-roles) i podejmij RPs niektóre czas na sprawdzanie spójności, ale ostatecznie rozpocznie się automatycznie.
 
-Ponadto tej dzierżawy maszyn wirtualnych nie automatycznie uruchomić po ponownym uruchomieniu hosta zestawu programowanie stosu Azure. Jest to znany problem i wymaga kilku ręczne czynności w celu ich Przełącz do trybu online:
+Ponadto tej dzierżawy maszyn wirtualnych nie automatycznie uruchomiony po ponownym uruchomieniu hosta usługi Azure Stack development zestawu. Jest to znany problem i wymaga tylko kilku ręcznych kroków, aby przełączyć w tryb online:
 
-1.  Na hoście zestawu programowanie stosu Azure, należy uruchomić **Menedżera klastra trybu Failover** z Start Menu.
+1.  Na hoście usługi Azure Stack development kit start **Menedżera klastra trybu Failover** w Start Menu.
 2.  Wybierz klaster **S Cluster.azurestack.local**.
-3.  Wybierz **ról**.
-4.  Maszyny wirtualne dzierżawy są wyświetlane w *zapisane* stanu. Po wszystkich maszyn wirtualnych infrastruktury są uruchomione, kliknij prawym przyciskiem myszy dzierżawione maszyny wirtualne i wybierz **Start** wznowienie maszyny Wirtualnej.
+3.  Wybierz **role**.
+4.  Maszyny wirtualne dzierżawy są wyświetlane w *zapisane* stanu. Gdy są uruchomione wszystkie maszyny wirtualne infrastruktury, kliknij prawym przyciskiem myszy maszyny wirtualne dzierżawcy i wybierz **Start** Aby wznowić działanie maszyny Wirtualnej.
 
-### <a name="i-have-deleted-some-virtual-machines-but-still-see-the-vhd-files-on-disk-is-this-behavior-expected"></a>Usunięto niektóre maszyny wirtualne, ale również widzieć plików VHD na dysk. Jest to zachowanie oczekiwane?
-Tak, to zachowanie oczekiwane. Ponieważ została zaprojektowana w ten sposób:
+### <a name="i-have-deleted-some-virtual-machines-but-still-see-the-vhd-files-on-disk-is-this-behavior-expected"></a>Usunięto niektóre maszyny wirtualne, ale nadal Zobacz pliki wirtualnego dysku twardego na dysku. To zachowanie jest oczekiwane?
+Tak, jest to oczekiwane zachowanie. Ponieważ została zaprojektowana w ten sposób:
 
-* Po usunięciu maszyny Wirtualnej, wirtualne dyski twarde nie są usuwane. Dyski są oddzielne zasoby w grupie zasobów.
-* Usunięcie konta magazynu pobiera usunięcia jest widoczna od razu za pośrednictwem usługi Azure Resource Manager, ale dyski, które może on zawierać nadal są przechowywane w magazynie do momentu uruchamia wyrzucanie elementów bezużytecznych.
+* Jeśli usuniesz Maszynę wirtualną, wirtualne dyski twarde nie są usuwane. Dyski są oddzielne zasoby w grupie zasobów.
+* Gdy konto magazynu zostaje usunięte, usunięcie jest widoczna od razu za pośrednictwem usługi Azure Resource Manager, ale dyski które może ona zawierać nadal są przechowywane w magazynie, dopóki działa wyrzucanie elementów bezużytecznych.
 
-Jeśli widzisz "oddzielony" wirtualne dyski twarde, należy znać, jeśli są one częścią folderu dla konta magazynu, który został usunięty. Jeśli konto magazynu nie została usunięta, jest normalne, że są one nadal istnieje.
+Jeśli widzisz "oddzielony" wirtualne dyski twarde, należy znać, jeśli są one częścią folderu dla konta magazynu, który został usunięty. Jeśli nie można usunąć konta magazynu, jest normalnym, że są one nadal istnieje.
 
-Więcej o konfigurowaniu przechowywania odzyskiwanie próg i na żądanie w [Zarządzanie kontami magazynu](.\.\azure-stack-manage-storage-accounts.md).
+Możesz dowiedzieć się więcej o konfigurowaniu przechowywania odzyskiwanie próg i na żądanie w [Zarządzanie kontami magazynu](.\.\azure-stack-manage-storage-accounts.md).
 
 ## <a name="storage"></a>Magazyn
 ### <a name="storage-reclamation"></a>Odzyskiwanie pamięci masowej
-Może upłynąć do 14 godzin regeneracji pojemność były wyświetlane w portalu. Odzyskiwanie miejsca zależy od różnych czynników, takich jak procent użycia plików wewnętrzny kontenera w magazynie obiektów blob bloku. W związku z tym w zależności od tego, jak dużo danych zostanie usunięty, nie ma żadnej gwarancji na ilość miejsca, które można odzyskać po uruchomieniu przez moduł Garbage Collector.
+Może upłynąć do 14 godzin odzyskiwanego pojemności wyświetlani w portalu. Odzyskiwanie miejsca zależy od różnych czynników, w tym procent użycia plików pojemnika wewnętrznego w magazyn blokowych obiektów blob. W związku z tym w zależności od ilości danych zostanie usunięty, nie ma żadnej gwarancji ilości miejsca, które można odzyskać po uruchomieniu modułu zbierającego elementy bezużyteczne.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Odwiedź forum pomocy technicznej platformy Azure stosu](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)
+[Odwiedź forum pomocy technicznej usługi Azure Stack](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)
 

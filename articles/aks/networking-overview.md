@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 08/31/2018
+ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: d278e47979e696183b703f7e67e39757d854fdb2
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 258eb744cf86fcd14250be8f2e8ec18b5a0fada3
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857741"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319425"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Konfiguracja sieci w usłudze Azure Kubernetes Service (AKS)
 
@@ -73,23 +73,19 @@ Plan adresów IP dla klastra usługi AKS, który składa się z wirtualnej sieci
 
 Domyślne maksymalną liczbę zasobników w każdym węźle w klastrze AKS waha się między podstawowe i zaawansowane sieci i metody wdrażania klastra.
 
-### <a name="default-maximum"></a>Domyślna wartość maksymalna
-
-Są to *domyślne* maksymalne wartości podczas wdrażania usługi AKS klastra bez określania maksymalna liczba zasobników w czasie wdrażania:
-
 | Metoda wdrażania | Podstawowa | Advanced | Możliwość konfiguracji podczas wdrażania |
 | -- | :--: | :--: | -- |
-| Interfejs wiersza polecenia platformy Azure | 110 | 30 | Yes |
-| Szablon usługi Resource Manager | 110 | 30 | Yes |
+| Interfejs wiersza polecenia platformy Azure | 110 | 30 | Tak (maksymalnie 110) |
+| Szablon usługi Resource Manager | 110 | 30 | Tak (maksymalnie 110) |
 | Portal | 110 | 30 | Nie |
 
 ### <a name="configure-maximum---new-clusters"></a>Konfigurowanie maksimum – nowych klastrów
 
-Aby określić różne maksymalna liczba zasobników w każdym węźle, w przypadku wdrażania klastra usługi AKS:
+Możesz skonfigurować maksymalną liczbę zasobników w każdym węźle *tylko w czasie wdrażania klastra*. W przypadku wdrożenia przy użyciu wiersza polecenia platformy Azure lub przy użyciu szablonu usługi Resource Manager, można ustawić maksymalny zasobników na możliwie jak 110 wartość węzła.
 
-* **Wiersza polecenia platformy Azure**: Określ `--max-pods` argumentu, w przypadku wdrażania klastra za pomocą [tworzenie az aks] [ az-aks-create] polecenia.
-* **Szablon usługi Resource Manager**: Określ `maxPods` właściwość [ManagedClusterAgentPoolProfile] obiektu w przypadku wdrażania klastra za pomocą szablonu usługi Resource Manager.
-* **Witryna Azure portal**: nie można zmodyfikować maksymalna liczba zasobników w każdym węźle, w przypadku wdrażania klastra za pomocą witryny Azure portal. Zaawansowane sieci klastrów mogą zawierać maksymalnie 30 zasobniki w każdym węźle po wdrożeniu w witrynie Azure portal.
+* **Wiersza polecenia platformy Azure**: Określ `--max-pods` argumentu, w przypadku wdrażania klastra za pomocą [tworzenie az aks] [ az-aks-create] polecenia. Maksymalna wartość wynosi 110.
+* **Szablon usługi Resource Manager**: Określ `maxPods` właściwość [ManagedClusterAgentPoolProfile] obiektu w przypadku wdrażania klastra za pomocą szablonu usługi Resource Manager. Maksymalna wartość wynosi 110.
+* **Witryna Azure portal**: nie można zmienić maksymalną liczbę zasobników w każdym węźle, w przypadku wdrażania klastra za pomocą witryny Azure portal. Zaawansowane sieci klastrów są ograniczone do 30 zasobniki w każdym węźle, gdy wdrażasz za pomocą witryny Azure portal.
 
 ### <a name="configure-maximum---existing-clusters"></a>Konfigurowanie maksimum – istniejących klastrów
 

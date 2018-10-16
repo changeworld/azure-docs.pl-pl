@@ -10,19 +10,20 @@ ms.component: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ROBOTS: NOINDEX
-ms.openlocfilehash: 46aeab52014a28d1a962195de802d0e000b62509
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1fc48687141ea8a7e8cb30d3438d81e8f1088e4f
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978713"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340447"
 ---
 # <a name="translator-speech-api"></a>Interfejs API tłumaczenia mowy w usłudze Translator
 
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
+
 Usługa ta oferuje interfejs API przesyłania strumieniowego do transkrypcja mowy konwersacji z jednego języka w tekst z innego języka. Interfejs API jest też zintegrowany możliwości zamiany tekstu na mowę w celu czytanie przetłumaczonego tekstu ponownie. Interfejs API mowy usługi Translator umożliwia scenariuszy, takich jak w czasie rzeczywistym tłumaczenie rozmowy w Skype Translator.
 
-Za pomocą interfejsu API tłumaczenia mowy aplikacje klienckie przesyłanie strumieniowe audio mowy do usługi i ponownie otrzymywać strumień tekstowy wyniki, które obejmują rozpoznany tekst w języku źródła i ich tłumaczeniem w języku docelowym. Wyniki tekstu są produkowane przez zastosowanie automatycznego rozpoznawania mowy (ASR) obsługiwane przez głębokich sieciach neuronowych przychodzący strumień audio. Nowe techniki, aby lepiej odzwierciedlać intencji użytkownika o nazwie TrueText dodatkowo lepsza nieprzetworzone dane wyjściowe usługi ASR. Na przykład TrueText usuwa disfluencies (hmms i coughs) i znaki interpunkcyjne odpowiednie przywracania i wielkość liter. Zdolność do zamaskowania lub wykluczyć profanities jest również uwzględniony. Aparaty rozpoznawania i tłumaczenia są specjalnie przeszkolony do obsługi mowy konwersacji. Usługa tłumaczenia mowy używa wyciszenia wykrywania, aby określić koniec wypowiedź. Po przerwie w działaniu głosowej usługa zostanie strumienia wynik końcowy dla ukończonych wypowiedź. Usługa może także wysłać ponownie częściowe wyniki, które zapewniają rozpoznawań pośrednich i tłumaczeń wypowiedź w toku. Dla wyników końcowych usługa zapewnia możliwość syntetyzowania mowy (zamiana tekstu na mowę) z tekstu mówionego w języku docelowym. Audio tekstu na mowę, jest tworzony w formacie określonym przez klienta. Formaty WAV i MP3 są dostępne.
+Za pomocą interfejsu API tłumaczenia mowy aplikacje klienckie przesyłanie strumieniowe audio mowy do usługi i ponownie otrzymywać strumień tekstowy wyniki, które obejmują rozpoznany tekst w języku źródła i ich tłumaczeniem w języku docelowym. Wyniki tekstowe są tworzone przez zastosowanie automatycznego rozpoznawania mowy (ASR, Automatic Speech Recognition) obsługiwanego przez głębokie sieci neuronowe do przychodzącego strumienia audio. Nowe techniki, aby lepiej odzwierciedlać intencji użytkownika o nazwie TrueText dodatkowo lepsza nieprzetworzone dane wyjściowe usługi ASR. Na przykład TrueText usuwa disfluencies (hmms i coughs) i znaki interpunkcyjne odpowiednie przywracania i wielkość liter. Oferuje ona również możliwość maskowania lub wykluczania przekleństw. Aparaty rozpoznawania i tłumaczenia są specjalnie uczone pod kątem obsługi rozmów. Usługa tłumaczenia mowy używa wyciszenia wykrywania, aby określić koniec wypowiedź. Po przerwie w użyciu głosu usługa strumieniowo prześle wynik końcowy dotyczący zakończonej wypowiedzi. Usługa może także wysyłać z powrotem wyniki częściowe, które umożliwiają pośrednie rozpoznawanie i tłumaczenie trwającej wypowiedzi. Dla wyników końcowych usługa zapewnia możliwość syntetyzowania mowy (zamiana tekstu na mowę) z tekstu mówionego w języku docelowym. W przypadku zamiany tekstu na mowę dźwięk jest tworzony w formacie określonym przez klienta. Dostępne formaty to WAV i MP3.
 
 Interfejs API mowy usługi Translator korzysta z protokołu WebSocket, aby zapewnić komunikację pełnodupleksową kanał między klientem a serwerem. Aplikacja będzie wymagać następujące kroki, aby korzystać z niej:
 

@@ -8,12 +8,12 @@ ms.date: 09/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f4afad753da4a314ade3fb7433c6be3e489e05b0
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 30b85f15d8718e21af66634db5a4afd5623a77e6
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033689"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340175"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Zrozumienie rozszerzone możliwości w trybie offline dla urządzeń usługi IoT Edge, moduły i podrzędny urządzenia (wersja zapoznawcza)
 
@@ -126,11 +126,11 @@ Można skonfigurować zmienne środowiskowe i opcjami tworzenia moduł Centrum u
     "type": "docker",
     "settings": {
         "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-        "createOptions": "{\"HostConfig\":{\"Binds\":[\"C:\\\\HostStoragePath:C:\\\\ModuleStoragePath\"],\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}]}}}"
+        "createOptions": "{\"HostConfig\":{\"Binds\":[\"<HostStoragePath>:<ModuleStoragePath>\"],\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}]}}}"
     },
     "env": {
         "storageFolder": {
-            "value": "C:\\\\ModuleStoragePath"
+            "value": "<ModuleStoragePath>"
         }
     },
     "status": "running",
@@ -138,6 +138,8 @@ Można skonfigurować zmienne środowiskowe i opcjami tworzenia moduł Centrum u
 }
 ```
 
+Zastąp `<HostStoragePath>` i `<ModuleStoragePath>` z hosta i modułu magazynu ścieżka magazynu ścieżki; hosta i moduł musi być ścieżką bezwzględną.  Na przykład `\"Binds\":[\"/etc/iotedge/storage/:/iotedge/storage/"` oznacza, że hostowanie ścieżki `/etc/iotedge/storage` jest mapowany na ścieżkę kontenera `/iotedge/storage/`.  Możesz również znaleźć więcej szczegółów na temat CreateOptions, można żądań z [dokumentacja platformy docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-Włącz rozszerzone operacji w trybie offline w swoich scenariuszy przezroczystej bramy dla [Linux](how-to-create-transparent-gateway-linux.md) lub [Windows](how-to-create-transparent-gateway-windows.md) urządzeń. 
+Włącz rozszerzone operacji w trybie offline w swoich scenariuszy przezroczystej bramy dla [Linux](how-to-create-transparent-gateway-linux.md) lub [Windows](how-to-create-transparent-gateway-windows.md) urządzeń.

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 10/10/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 83c23933acf1ed621728991fbdeea088911cf36c
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 7c5316aea2bfdb9a96b9aeb2dd5387b2643a92b2
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078668"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319731"
 ---
 # <a name="common-questions---hyper-v-to-azure-replication"></a>Często zadawane pytania — funkcji Hyper-V replikacja usługi Azure
 
@@ -135,7 +135,7 @@ Podczas replikacji do platformy Azure, ruch związany z replikacją osiągnie pu
 
 W przypadku replikacji maszyny Wirtualnej funkcji Hyper-V musi działać obsługiwany system operacyjny. Ponadto maszyna wirtualna musi spełniać wymagania dotyczące maszyn wirtualnych platformy Azure. [Dowiedz się więcej](hyper-v-azure-support-matrix.md#replicated-vms) w macierzy obsługi.
 
-###<a name="how-often-can-i-replicate-to-azure"></a>Jak często można replikować na platformę Azure?
+### <a name="how-often-can-i-replicate-to-azure"></a>Jak często można replikować na platformę Azure?
 
 Maszyny wirtualne funkcji Hyper-V mogą być replikowane co 30 sekund (z wyjątkiem usługi premium storage), 5 minut lub 15 minut.
 
@@ -207,6 +207,3 @@ Gdy infrastruktury lokalnej będzie uruchomione ponownie, możesz można wykona�
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>Może nie do innej lokalizacji?
 Tak, jeśli Failover na platformie Azure można powrotu po awarii do innej lokalizacji Jeśli oryginalny jest niedostępna. [Dowiedz się więcej](hyper-v-azure-failback.md#failback-to-an-alternate-location-in-hyper-v-environment).
-
-
-

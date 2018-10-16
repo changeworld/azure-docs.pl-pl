@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 297ba626d8b80d9362476ca4578e34140df5f91a
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: f0a982e8a0cb358e29375e05c1752a33b15ec255
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248657"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319714"
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Wysyłanie danych do usługi Log Analytics przy użyciu interfejsu API modułu zbierającego dane HTTP (publiczna wersja zapoznawcza)
 W tym artykule pokazano, jak używać interfejsu API modułu zbierającego dane HTTP do wysyłania danych do usługi Log Analytics z klienta interfejsu API REST.  Przedstawiono sposób formatowania danych zbieranych przez skrypt lub aplikację, uwzględnić go w żądaniu i ma to żądanie autoryzacji przez usługę Log Analytics.  Przykłady są udostępniane dla programu PowerShell, C# i Python.
@@ -101,7 +101,7 @@ Przykłady w kolejnych sekcjach mają przykładowego kodu w celu utworzenia nag�
 ## <a name="request-body"></a>Treść żądania
 Treść wiadomości musi być w formacie JSON. Musi zawierać co najmniej jeden rekord z pary nazw i wartości właściwości w następującym formacie:
 
-```
+```json
 [
     {
         "property 1": "value1",
@@ -114,7 +114,7 @@ Treść wiadomości musi być w formacie JSON. Musi zawierać co najmniej jeden 
 
 Wiele rekordów ze sobą w pojedynczym żądaniu może batch przy użyciu następującego formatu. Wszystkie rekordy muszą być tego samego typu rekordu.
 
-```
+```json
 [
     {
         "property 1": "value1",
@@ -218,7 +218,7 @@ Dla każdego przykładu wykonaj następujące kroki, aby ustawić zmienne dla na
 Alternatywnie można zmienić zmienne typu dziennika i danych JSON.
 
 ### <a name="powershell-sample"></a>Przykładowy skrypt programu PowerShell
-```
+```powershell
 # Replace with your Workspace ID
 $CustomerId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"  
 
@@ -301,7 +301,7 @@ Post-LogAnalyticsData -customerId $customerId -sharedKey $sharedKey -body ([Syst
 ```
 
 ### <a name="c-sample"></a>Przykład w języku C#
-```
+```csharp
 using System;
 using System.Net;
 using System.Net.Http;
@@ -387,7 +387,7 @@ namespace OIAPIExample
 ```
 
 ### <a name="python-2-sample"></a>Przykład języka Python 2
-```
+```python
 import json
 import requests
 import datetime

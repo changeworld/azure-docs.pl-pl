@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 0c2adcfa4e11e444f66e1a9c04bea6e3d352f117
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 38f7f82d293409a49c41381cedaa1f7600068cd3
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077730"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319408"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Kup i skonfiguruj certyfikat SSL dla usługi Azure App Service
 
@@ -78,7 +78,7 @@ Z tej samej **konfigurację certyfikatu** została użyta w kroku 3 kliknij **kr
 
 Wybierz metodę weryfikacji domeny preferowanych. 
 
-Istnieją cztery typy weryfikacji domeny obsługiwane przez certyfikaty usługi App Service: App Service, domeny i Weryfikacja ręczna. Te typy weryfikacji omówiona bardziej szczegółowo w [zaawansowane sekcji](#advanced).
+Istnieją trzy typy weryfikacji domeny obsługiwane przez certyfikaty usługi App Service: App Service, domeny i Weryfikacja ręczna. Te typy weryfikacji omówiona bardziej szczegółowo w [zaawansowane sekcji](#advanced).
 
 > [!NOTE]
 > **Weryfikacja usługi App** to najwygodniejsza opcja, gdy domeny, którą chcesz zweryfikować jest już zamapowana na aplikację usługi App Service w tej samej subskrypcji. Wykorzystuje ona fakt, czy aplikacja usługi App Service ma już zweryfikowana własność domeny.

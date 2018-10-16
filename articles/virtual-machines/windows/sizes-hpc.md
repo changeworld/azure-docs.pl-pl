@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/06/2018
+ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 31e81741d2a627888e478b3871bdbab4e6b6d6f5
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: e00a4c5f5ee307a2d574702844e481894d28cb93
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37902643"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340311"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>Rozmiary maszyn wirtualnych obliczeń o wysokiej wydajności
 
@@ -50,12 +50,19 @@ ms.locfileid: "37902643"
   
   Aby uzyskać więcej informacji, zobacz [rozszerzeniach i funkcjach maszyn wirtualnych](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Możesz także pracować z rozszerzeniami dla maszyn wirtualnych wdrożonych w [klasycznego modelu wdrażania](classic/manage-extensions.md).
 
+### <a name="cluster-configuration-options"></a>Opcje konfiguracji klastra
 
-## <a name="using-hpc-pack"></a>Za pomocą pakietu HPC Pack
+System Azure oferuje kilka opcji tworzenia klastrów HPC maszyn wirtualnych Windows, który może komunikować się za pośrednictwem sieci RDMA, w tym: 
 
-[Pakiet Microsoft HPC Pack](https://technet.microsoft.com/library/jj899572.aspx), rozwiązanie firmy Microsoft wolnego HPC klastra i zadania zarządzania, stanowi jedną z opcji w celu utworzenia klastra obliczeniowego na platformie Azure do uruchamiania aplikacji MPI z systemem Windows i innych obciążeń HPC. HPC Pack 2012 R2 i nowszych obejmują środowiska uruchomieniowego dla MPI MS, który używa sieci Azure RDMA po wdrożeniu na maszynach wirtualnych z funkcją RDMA.
+* **Maszyny wirtualne** — wdrażanie maszyn wirtualnych z funkcją RDMA HPC w ten sam zestaw dostępności (podczas użycie modelu wdrażania usługi Azure Resource Manager). Jeśli używasz klasycznego modelu wdrażania, należy wdrożyć maszyny wirtualne w tej samej usłudze w chmurze. 
 
+* **Zestawy skalowania maszyn wirtualnych** — skalowania maszyn wirtualnych zestawu, upewnij się, ograniczenie wdrożenia do pojedynczej grupy umieszczania. Na przykład w szablonie usługi Resource Manager, należy ustawić `singlePlacementGroup` właściwość `true`. 
 
+* **Azure CycleCloud** — Tworzenie klastra HPC w [Azure CycleCloud](/azure/cyclecloud/) do uruchamiania zadań MPI w węzłach Windows.
+
+* **Usługa Azure Batch** — tworzenie [usługi Azure Batch](/azure/batch/) węzłów obliczeniowych w puli w celu uruchamiania obciążeń MPI w systemie Windows Server. Aby uzyskać więcej informacji, zobacz [Użyj obsługą dostępu RDMA lub włączonymi procesorami GPU wystąpień w pulach usługi Batch](../../batch/batch-pool-compute-intensive-sizes.md). Zobacz też [usługa Batch Shipyard](https://github.com/Azure/batch-shipyard) projektu do uruchamiania obciążeń opartych na kontenerach w usłudze Batch.
+
+* **Pakiet Microsoft HPC Pack** - [pakietu HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) zawiera środowiska uruchomieniowego MPI MS, który używa sieci Azure RDMA po wdrożeniu na maszynach wirtualnych z funkcją RDMA Windows. Na przykład wdrożenia, zobacz [Konfigurowanie klastra Windows RDMA za pomocą pakietu HPC Pack do uruchamiania aplikacji MPI](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="other-sizes"></a>O innych rozmiarach
 - [Zastosowania ogólne](sizes-general.md)

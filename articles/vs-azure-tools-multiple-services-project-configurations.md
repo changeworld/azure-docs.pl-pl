@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/11/2017
 ms.author: ghogen
-ms.openlocfilehash: 56b01855a5996bb62f721bda2bfc207684227854
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 1ec587f4a4519f86efceb7cefa0acb372035a9a9
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42058218"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318218"
 ---
 # <a name="configuring-your-azure-project-in-visual-studio-to-use-multiple-service-configurations"></a>Konfigurowanie projektu platformy Azure w programie Visual Studio do wykorzystania wielu konfiguracji usługi
 
@@ -75,8 +75,9 @@ Aby utworzyć parametry połączenia, wybierz **Dodaj ustawienie** i ustaw **typ
 Dla parametrów połączenia w nowym lub istniejącym, wybierz **...** * po prawej stronie **wartość** pole, aby otworzyć **utworzyć parametry połączenia magazynu** okno dialogowe:
 
 1. W obszarze **nawiązywanie połączenia przy użyciu**, wybierz **subskrypcji** opcję, aby wybrać konto magazynu z subskrypcji. Program Visual Studio następnie uzyskuje poświadczeń konta magazynu, który automatycznie z `.publishsettings` pliku.
-1. Wybieranie **ręcznie wprowadzić poświadczenia** pozwala określić nazwę konta i klucza bezpośrednio przy użyciu informacji z witryny Azure portal. Aby skopiować klucz konta:. Przejdź do konta magazynu w witrynie Azure portal i wybierz **zarządzanie kluczami**.
-    2. Aby skopiować klucz konta, przejdź do konta magazynu w witrynie Azure portal, wybierz opcję **Ustawienia > klucze dostępu**, następnie użyj przycisku kopiowania, aby skopiuj podstawowy klucz dostępu do Schowka.
+1. Wybieranie **ręcznie wprowadzić poświadczenia** pozwala określić nazwę konta i klucza bezpośrednio przy użyciu informacji z witryny Azure portal. Aby skopiować klucz konta:
+    1. Przejdź do konta magazynu w witrynie Azure portal i wybierz **zarządzanie kluczami**.
+    1. Aby skopiować klucz konta, przejdź do konta magazynu w witrynie Azure portal, wybierz opcję **Ustawienia > klucze dostępu**, następnie użyj przycisku kopiowania, aby skopiuj podstawowy klucz dostępu do Schowka.
 1. Wybierz jedną z opcji połączenia. **Określ niestandardowe punkty końcowe** prosi o określenie określonych adresów URL dla obiektów blob, tabele i kolejki. Niestandardowe punkty końcowe umożliwiają używanie [domen niestandardowych](storage/blobs/storage-custom-domain-name.md) i kontrolować dostęp do bardziej dokładnie. Zobacz [Konfigurowanie parametrów połączenia usługi Azure Storage](./storage/common/storage-configure-connection-string.md).
 1. Wybierz **OK**, następnie **Plik > Zapisz** można zaktualizować konfiguracji za pomocą nowych parametrów połączenia.
 

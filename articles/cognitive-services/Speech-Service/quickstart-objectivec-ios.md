@@ -7,14 +7,14 @@ author: chlandsi
 ms.service: cognitive-services
 ms.component: Speech
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 10/12/2018
 ms.author: chlandsi
-ms.openlocfilehash: 3945bf0ae6edc0af0db90efca6811aeb22494592
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ce9979d8d300f2308a4b7a22791c242409f2c988
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883436"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341178"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-cognitive-services-speech-sdk"></a>Szybki Start: Rozpoznawanie mowy w języku Objective C w systemie iOS przy użyciu Cognitive Services SDK rozpoznawania mowy
 
@@ -31,11 +31,10 @@ W tym artykule dowiesz się, jak utworzyć aplikację dla systemu iOS w języku 
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Bieżąca wersja zestawu SDK mowy usługi Cognitive Services to `1.0.0`.
+Bieżąca wersja zestawu Speech SDK usługi Cognitive Services to `1.0.1`.
 
 Cognitive Services mowy zestawu SDK dla systemów Mac i iOS aktualnie jest rozpowszechniany jako struktura Cocoa.
 Można go pobrać ze https://aka.ms/csspeech/iosbinary. Pobierz plik do katalogu macierzystego.
-
 
 ## <a name="create-an-xcode-project"></a>Tworzenie projektu Xcode 
 
@@ -46,7 +45,7 @@ W oknach dialogowych, należy wykonać, wybierz następujące opcje:
 
 1. Okno dialogowe Opcje projektu
     1. Wprowadź nazwę aplikacji Szybki Start, na przykład `helloworld`.
-    1. Wprowadź nazwę odpowiedniej organizacji i identyfikator organizacji, jeśli masz już konto programu Apple developer. Do celów testowych możesz po prostu wybrać dowolną nazwę, takich jak `testorg`. Aby zarejestrować aplikację, należy również prawidłowego profilu aprowizacji za. Zapoznaj się [witryny dla deweloperów firmy Apple](https://developer.apple.com/) Aby uzyskać szczegółowe informacje.
+    1. Wprowadź nazwę odpowiedniej organizacji i identyfikator organizacji, jeśli masz już konto programu Apple developer. Do celów testowych możesz po prostu wybrać dowolną nazwę, takich jak `testorg`. Aby zarejestrować aplikację, musisz mieć również prawidłowego profilu aprowizacji. Zapoznaj się [witryny dla deweloperów firmy Apple](https://developer.apple.com/) Aby uzyskać szczegółowe informacje.
     1. Upewnij się, że języka Objective-C jest wybierany jako język dla projektu.
     1. Wyłącz wszystkie pola wyboru dla danych podstawowych i testów.
     ![Ustawienia projektu](media/sdk/qs-objectivec-project-settings.png)
@@ -60,10 +59,9 @@ W oknach dialogowych, należy wykonać, wybierz następujące opcje:
         1. Dodaj katalog `$(SRCROOT)/..` do *ścieżki wyszukiwania struktur* w obszarze **ścieżki wyszukiwania** nagłówka.
         ![Ustawienia ścieżki wyszukiwania Framework](media/sdk/qs-objectivec-framework-search-paths.png)
 
-
 ## <a name="set-up-the-ui"></a>Konfiguruj interfejs użytkownika
 
-Przykładowa aplikacja będzie mieć bardzo prosty interfejs użytkownika: przycisk, aby rozpocząć przetwarzanie pliku i etykietę tekstową, aby wyświetlić wynik.
+Przykładowa aplikacja będzie mieć bardzo prosty interfejs użytkownika: dwóch przycisków, aby uruchomić rozpoznawanie mowy z pliku lub z mikrofonu w danych wejściowych i etykietę tekstową, aby wyświetlić wynik.
 Interfejs użytkownika jest skonfigurowana w `Main.storyboard` wchodzi w skład projektu.
 Otwórz Widok XML scenorysu, klikając prawym przyciskiem myszy `Main.storyboard` wpis projektu drzewa i wybierając polecenie **Otwórz jako...**   >  **Kod źródłowy**.
 Zastąp wygenerowany automatycznie XML to:
@@ -77,28 +75,31 @@ Kliknij przycisk **Zakończ** w oknie dialogowym poniżej bez modyfikowania usta
 1. Zastąp zawartość wygenerowany automatycznie `ViewController.m` pliku przez:
 
    [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-ios/helloworld/helloworld/ViewController.m#code)]
-1. Dodaj żądanie, aby uzyskać dostęp do mikrofonu. Kliknij prawym przyciskiem myszy wpis w pliku info.plist drzewa projektu i wybierz **Otwórz jako...**   >  **Kod źródłowy**. Dodaj następujące wiersze do `<dict>` sekcji, a następnie zapisz plik.
+1. Zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji.
+1. Zastąp ciąg `YourServiceRegion` [regionem](regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
+1. Dodaj żądanie, aby uzyskać dostęp do mikrofonu. Kliknij prawym przyciskiem myszy `Info.plist` wpis w drzewie projektu, a następnie wybierz pozycję **Otwórz jako...**   >  **Kod źródłowy**. Dodaj następujące wiersze do `<dict>` sekcji, a następnie zapisz plik.
     ```xml
     <key>NSMicrophoneUsageDescription</key>
-
     <string>Need microphone access for speech recognition from microphone.</string>
     ```
-1. Zastąp ciąg `YourSubscriptionKey` z kluczem subskrypcji.
-1. Zastąp ciąg `YourServiceRegion` z [region](regions.md) skojarzonych z subskrypcją (na przykład `westus` bezpłatnej subskrypcji wersji próbnej).
-
 
 ## <a name="building-and-running-the-sample"></a>Tworzenie i uruchamianie przykładu
 
 1. Uwidacznianie danych wyjściowych debugowania (**widoku** > **debugowania obszaru** > **aktywować konsoli**).
-1. Kompilowanie i uruchamianie przykładowego kodu w symulatorze systemu iOS, wybierając **produktu** -> **Uruchom** z menu lub klikając **Odtwórz** przycisku. Aby uruchomić na urządzeniu z systemem iOS, podłącz urządzenie do komputera deweloperskiego, a następnie wybierz urządzenie, jako cel uruchomionego. Zestaw SDK rozpoznawania mowy aktualnie obsługuje tylko 64-bitowej platformy systemu iOS.
-1. Po kliknięciu pozycji "Rozpoznaj!" znajdujący się w aplikacji, powinna zostać wyświetlona zawartość audio pliku "Nowości pogodowych, np." w dolnej części ekranu.
+1. Wybierz symulatora systemu iOS lub urządzeniem z systemem iOS połączone na maszynie deweloperskiej jako lokalizacja docelowa dla aplikacji z listy w **produktu** -> **docelowy** menu.
+1. Kompilowanie i uruchamianie przykładowego kodu w symulatorze systemu iOS, wybierając **produktu** -> **Uruchom** z menu lub klikając **Odtwórz** przycisku.
+Zestaw SDK rozpoznawania mowy aktualnie obsługuje tylko 64-bitowym z systemem iOS platform.
+1. Po kliknięciu przycisku "Rozpoznaj (plik)" w aplikacji powinno zostać wyświetlone zawartość pliku audio "Nowości pogodowych, np." w dolnej części ekranu.
 
  ![Symulowane aplikacji dla systemu iOS](media/sdk/qs-objectivec-simulated-app.png)
 
+1. Po kliknij przycisk "Rozpoznaj (mikrofon)" w aplikacji i podać kilka słów, tekst, który ma być używany powinny być widoczne w dolnej części ekranu.
+
 [!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Poszukaj tego przykładu w `quickstart/objectivec-ios` folderu.
+Poszukaj tego przykładu w folderze `quickstart/objectivec-ios`.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Pobierz nasze przykłady](speech-sdk.md#get-the-samples)
+

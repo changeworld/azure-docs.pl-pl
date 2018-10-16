@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 10/15/2018
 ms.author: sethm
 ms.reviewer: alfredo
-ms.openlocfilehash: b4df9d3b107945b2c0797875718f3266b7fd0b10
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 209152b157ef2cfae872490bcff4f2a7100c3a4d
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166547"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339342"
 ---
 # <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-service-provider"></a>Zarządzanie użycia i rozliczeń dla usługi Azure Stack jako dostawca usług w chmurze 
 
@@ -33,7 +33,7 @@ Na poniższym diagramie przedstawiono kroki, które należy wybrać konta usług
 
 **Kroki w celu dodania śledzenia jako dostawca CSP użycia**
 
-![Proces włączania użycia i zarządzania jako dostawca usług w chmurze.](media\azure-stack-add-manage-billing-as-a-csp\process-add-useage-as-a-csp.png)
+[ ![Proces włączania użycia i zarządzania jako dostawca usług w chmurze](media\azure-stack-add-manage-billing-as-a-csp\process-add-useage-as-a-csp.png "procesu włączania użycia i zarządzania jako dostawca usług w chmurze") ](media\azure-stack-add-manage-billing-as-a-csp\process-add-useage-as-a-csp.png#lightbox)
 
 ## <a name="create-a-csp-or-apss-subscription"></a>Tworzenie dostawcy usług Kryptograficznych lub APSS subskrypcji
 

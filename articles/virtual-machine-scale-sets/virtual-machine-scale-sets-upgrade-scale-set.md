@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: 628d407869d24f466b5a7c056d51d76217e29798
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 49414b06010cf83c10bbc9519f2bced2126661a4
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996659"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49322077"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Modyfikowanie zestawu skalowania maszyn wirtualnych
 W całym cyklem życia aplikacji może być konieczne modyfikują lub aktualizują zestawu skalowania maszyn wirtualnych. Te aktualizacje mogą obejmować jak zaktualizowanie konfiguracji zestawu skalowania lub zmienić konfigurację aplikacji. W tym artykule opisano sposób modyfikowania istniejącego zestawu skalowania przy użyciu interfejsów API REST, programu Azure PowerShell lub wiersza polecenia platformy Azure.
@@ -126,7 +126,7 @@ Te właściwości tej sekcji przedstawiono podsumowanie bieżącego stanu środo
 
 
 ### <a name="the-scale-set-vm-model-view"></a>Widok modelu maszyny Wirtualnej zestawu skalowania
-Podobnie jak zestaw skalowania jest widokiem modelu, poszczególnych maszyn wirtualnych w zestawie skalowania ma swój własny widok modelu. Aby zbadać widok modelu dla zestawu skalowania, można użyć:
+Podobnie jak zestaw skalowania jest widokiem modelu, poszczególnych wystąpień maszyn wirtualnych w zestawie skalowania ma swój własny widok modelu. Aby zbadać widok modelu dla określonego wystąpienia maszyny Wirtualnej w zestawie skalowania, można użyć:
 
 - Interfejs API REST przy użyciu [get-compute/virtualmachinescalesetvms](/rest/api/compute/virtualmachinescalesetvms/get) w następujący sposób:
 
@@ -162,11 +162,11 @@ $ az vmss show --resource-group myResourceGroup --name myScaleSet
 }
 ```
 
-Te właściwości opisują konfigurację maszyny Wirtualnej, nie konfiguracji skalowania Ustaw jako całości. Na przykład modelu zestawu skalowania ma `overprovision` jako właściwość, a nie w modelu maszyny wirtualnej w zestawie skalowania. Różnica ta ma ponieważ celi właściwość jest w przypadku skalowania Ustaw jako całości, nie do poszczególnych maszyn wirtualnych w zestawie skalowania (Aby uzyskać więcej informacji na temat udostępniania, zobacz [zagadnienia dotyczące projektu zestawów skalowania](virtual-machine-scale-sets-design-overview.md#overprovisioning)).
+Te właściwości opisują konfigurację wystąpienia maszyny Wirtualnej, a nie konfiguracji skalowania Ustaw jako całości. Na przykład modelu zestawu skalowania ma `overprovision` jako właściwość, a nie w modelu dla wystąpień maszyn wirtualnych w zestawie skalowania. Różnica ta ma ponieważ celi właściwość jest w przypadku skalowania Ustaw jako całości, nie do poszczególnych wystąpień maszyn wirtualnych w zestawie skalowania (Aby uzyskać więcej informacji na temat udostępniania, zobacz [zagadnienia dotyczące projektu zestawów skalowania](virtual-machine-scale-sets-design-overview.md#overprovisioning)).
 
 
 ### <a name="the-scale-set-vm-instance-view"></a>Widok wystąpienia maszyny Wirtualnej zestawu skalowania
-Podobnie jak ma widok wystąpienia w zestawie skalowania, poszczególnych maszyn wirtualnych w zestawie skalowania ma swój własny widok wystąpienia. Aby zbadać widok wystąpienia zestawu skalowania, można użyć:
+Podobnie jak ma widok wystąpienia w zestawie skalowania, każde wystąpienie maszyny Wirtualnej w zestawie skalowania ma swój własny widok wystąpienia. Aby zbadać widok wystąpienia dla konkretnego wystąpienia maszyny Wirtualnej w zestawie skalowania, można użyć:
 
 - Interfejs API REST przy użyciu [obliczeń/virtualmachinescalesetvms/getinstanceview](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) w następujący sposób:
 
@@ -239,7 +239,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 }
 ```
 
-Te właściwości opisują bieżący stan środowiska uruchomieniowego samą maszynę Wirtualną, która obejmuje wszystkie rozszerzenia, stosowane do zestawu skalowania.
+Te właściwości opisują bieżący stan środowiska uruchomieniowego wystąpienia maszyny Wirtualnej, która obejmuje wszystkie rozszerzenia, stosowane do zestawu skalowania.
 
 
 ## <a name="how-to-update-global-scale-set-properties"></a>Jak zaktualizować globalną skalę, ustaw właściwości

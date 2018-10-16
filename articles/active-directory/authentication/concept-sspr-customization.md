@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 69f6ed7814feacbd5adf60325aae123d388ffb61
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: f523e2e2d55a34825bbb76a5a879c7c046b6b554
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222792"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318966"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Dostosowywanie funkcji usługi Azure AD dla samoobsługowego resetowania haseł
 
@@ -55,7 +55,9 @@ Administratorów usługi Active Directory Federation Services (AD FS) można dod
 
 Aby dodać łącze do strony logowania usług AD FS, wpisz następujące polecenie na serwerze usług AD FS. Użytkownicy mogą ta strona umożliwia wprowadź przepływu pracy funkcji samoobsługowego resetowania HASEŁ.
 
-``` Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwordreset.microsoftonline.com' target='_blank'>Can’t access your account?</A></p>" ```
+``` powershell
+Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwordreset.microsoftonline.com' target='_blank'>Can’t access your account?</A></p>"
+```
 
 ## <a name="customize-the-sign-in-page-and-access-panel-look-and-feel"></a>Dostosowywanie logowania strony i dostęp do panelu wyglądu i działania
 
@@ -65,8 +67,8 @@ Grafiki, które wybierzesz są wyświetlane w następujących okolicznościach:
 
 * Po użytkownik musi wprowadzić swoją nazwę użytkownika
 * Jeśli użytkownik uzyskuje dostęp do dostosowany adres URL:
-    * Przekazując *Wh* parametr hasła resetowania strony, takie jak "https://login.microsoftonline.com/?whr=contoso.com"
-    * Przekazując *username* parametr hasła resetowania strony, takie jak "https://login.microsoftonline.com/?username=admin@contoso.com"
+    * Przekazując `whr` parametr hasła resetowania strony, takie jak "https://login.microsoftonline.com/?whr=contoso.com"
+    * Przekazując `username` parametr hasła resetowania strony, takie jak "https://login.microsoftonline.com/?username=admin@contoso.com"
 
 Informacje dotyczące sposobu konfigurowania firmowe w artykule [dodać znakowanie firmowe do strony logowania w usłudze Azure AD](../fundamentals/customize-branding.md).
 

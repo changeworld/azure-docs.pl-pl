@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
-ms.openlocfilehash: ce4fd27c89f529b9c12999689152c3025648d2ce
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: c85aa2f7a41511d809405f3b92c9ded2eb0693ad
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42061359"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319867"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integracja usługi API Management w wewnętrznej sieci Wirtualnej z usługą Application Gateway
 
-##<a name="overview"> </a> Przegląd
+## <a name="overview"> </a> Przegląd
 
 Usługa API Management można skonfigurować w sieci wirtualnej w trybie wewnętrznego, dzięki czemu dostępny tylko w obrębie sieci wirtualnej. Usługa Azure Application Gateway to usługa PAAS, co zapewnia modułu równoważenia obciążenia warstwy 7. Ona działa jako usługa zwrotnego serwera proxy i zapewnia między oferty zapory aplikacji sieci Web (WAF).
 
@@ -43,7 +43,7 @@ Aby wykonać kroki opisane w tym artykule, musisz mieć:
 
 * Certyfikaty — plik pfx i podaj cer dla nazwy hosta interfejsu API i pfx dla nazwy hosta portalu dla deweloperów.
 
-##<a name="scenario"> </a> Scenariusz
+## <a name="scenario"> </a> Scenariusz
 
 W tym artykule opisano sposób użycia jednej usługi API Management dla wewnętrznych i zewnętrznych klientów i przypisz ją do działania jako pojedynczy frontonu dla obu lokalnie i w chmurze interfejsów API. Zobaczysz również jak udostępniać tylko podzbioru interfejsów API (w tym przykładzie, które zostaną one wyróżnione w kolorze zielonym) do użytku zewnętrznego za pomocą funkcji routingu, które są dostępne w usłudze Application Gateway.
 
@@ -349,7 +349,7 @@ Aby utworzyć rekord CNAME, który wskazuje nazwę hosta serwera proxy usługi A
 Get-AzureRmPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"
 ```
 
-##<a name="summary"> </a> Podsumowanie
+## <a name="summary"> </a> Podsumowanie
 Usługa Azure API Management skonfigurowany w sieci Wirtualnej zapewnia interfejs jednej bramy dla wszystkich skonfigurowanych interfejsów API, czy są one hostowane lokalnie lub w chmurze. Integrowanie bramy aplikacji z usługą API Management zapewnia elastyczność selektywnie Włączanie określonego interfejsy API dostępne w Internecie, a także zapewnianie zapory aplikacji sieci Web jako frontonu do Twojego wystąpienia usługi API Management.
 
 ##<a name="next-steps"> </a> Następne kroki

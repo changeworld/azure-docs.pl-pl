@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 56adc97f6872bc3e87e6ba3426cd8f24aa8703e1
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 951ac39e1bb6ce050da26fa8ff3f93fd4e27e7d7
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311591"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318394"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Synchronizacja programu Azure Active Directory Connect: Konfigurowanie Preferowana lokalizacja danych dla zasobów usługi Office 365
 Celem tego tematu jest przeprowadzi Cię przez Konfigurowanie atrybutu Preferowana lokalizacja danych podczas synchronizacji usługi Azure Active Directory (Azure AD) Connect. Gdy ktoś będzie korzystać z możliwości wielu regionów geograficznych w usłudze Office 365 możesz użyć tego atrybutu do wyznaczenia lokalizacja geograficzna użytkownika danych usługi Office 365. (Warunki *region* i *geograficznie* są używane zamiennie.)
@@ -31,7 +31,7 @@ Domyślnie zasobów usług Office 365 dla użytkowników, znajdują się w tej s
 Przez ustawienie atrybutu **preferredDataLocation**, można zdefiniować geograficznej użytkownika. Możesz mieć użytkownika usługi Office 365 zasoby, takie jak skrzynki pocztowej i OneDrive, w tym samym obszarze geograficznym, jako użytkownik i nadal masz jedną dzierżawę dla całej organizacji.
 
 > [!IMPORTANT]
-> Wielu regionów geograficznych jest obecnie dostępny dla klientów z co najmniej 5000 subskrypcji usługi Office 365 Services. Skontaktuj się z przedstawicielem firmy Microsoft, aby uzyskać szczegółowe informacje.
+> Wielu regionów geograficznych jest obecnie dostępny dla klientów z co najmniej 2500 subskrypcji usługi Office 365 Services. Skontaktuj się z przedstawicielem firmy Microsoft, aby uzyskać szczegółowe informacje.
 >
 >
 
@@ -49,7 +49,7 @@ Obszarach geograficznych w usłudze Office 365 dostępne dla wielu regionów geo
 | Indie | ZNAJDŹ |
 | Japonia | JPN |
 | Korea | KOR |
-| Zjednoczone Królestwo | GBR |
+| Wielka Brytania | GBR |
 | Stany Zjednoczone | NAZWA |
 
 * Jeśli georegionu nie znajduje się w tej tabeli (na przykład, Ameryka Południowa), następnie go nie można używać dla wielu regionów geograficznych.
@@ -130,7 +130,7 @@ Reguła synchronizacji ruchu przychodzącego zezwala na wartość atrybutu mogą
     | Połączonego systemu | *Wybierz łącznik usługi Active Directory w środowisku lokalnym* |  |
     | Połączony System typu obiektu | **Użytkownik** |  |
     | Typ obiektu Metaverse | **Osoby** |  |
-    | Typ linku | **Join** |  |
+    | Typ linku | **Dołącz** |  |
     | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 – 99* | 1 – 99 jest zarezerwowana dla reguły synchronizacji niestandardowych. Nie wybierz wartość, która jest używana przez inną regułę synchronizacji. |
 
 5. Zachowaj **filtru Scoping** puste, aby uwzględnić wszystkie obiekty. Może być konieczne dostosowanie filtru określania zakresu, zgodnie z wdrożenia usługi Azure AD Connect.
@@ -159,7 +159,7 @@ Reguła synchronizacji ruchu wychodzącego zezwala na wartość atrybutu mogą p
     | Połączonego systemu | *Wybierz łącznik usługi Azure AD* ||
     | Połączony System typu obiektu | **Użytkownik** ||
     | Typ obiektu Metaverse | **Osoby** ||
-    | Typ linku | **Join** ||
+    | Typ linku | **Dołącz** ||
     | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 – 99* | 1 – 99 jest zarezerwowana dla reguły synchronizacji niestandardowych. Nie wybierz wartość, która jest używana przez inną regułę synchronizacji. |
 
 5. Przejdź do **filtru Scoping** karta i Dodaj pojedynczą grupę filtrów określania zakresu przy użyciu dwóch klauzul:

@@ -1,6 +1,6 @@
 ---
-title: Architektura zestawu programowanie stosu Azure | Dokumentacja firmy Microsoft
-description: Opis architektury Azure stosu Development Kit (ASDK).
+title: Usługi Azure Stack Development Kit architektury | Dokumentacja firmy Microsoft
+description: Opis architektury usługi Azure Stack Development Kit (ASDK).
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,42 +12,42 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 68da3ac0eb135f5956dfea76e186d9c57beea79c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 21c54e2e996bb987f7a27ac3e6333df6f74d6f4b
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29975867"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49338628"
 ---
-# <a name="microsoft-azure-stack-development-kit-architecture"></a>Architektura Microsoft Azure stosu Development Kit
-Azure stosu Development Kit (ASDK) to wdrożenie jednowęzłowej stosu Azure. Wszystkie składniki są instalowane na maszynach wirtualnych uruchomionych na maszynie jednego hosta. 
+# <a name="microsoft-azure-stack-development-kit-architecture"></a>Architektura systemu Microsoft Azure Stack Development Kit
+Azure Stack Development Kit (ASDK) jest wdrożenia z pojedynczym węzłem usługi Azure Stack. Wszystkie składniki są instalowane na maszynach wirtualnych z systemem jednego komputera-hosta. 
 
 ## <a name="logical-architecture-diagram"></a>Diagram architektury logiczne
-Na poniższym diagramie przedstawiono architektura logiczna ASDK i jego składniki.
+Poniższy diagram ilustruje logiczną architekturę ASDK i jego składników.
 
 ![Architektura ASDK](media/asdk-architecture/image1.png)
 
 ## <a name="virtual-machine-roles"></a>Role maszyny wirtualnej
-ASDK oferuje usługi przy użyciu następujących maszyn wirtualnych hostowanych na komputerze hosta development kit:
+ASDK oferuje przy użyciu następujących maszyn wirtualnych hostowanych na komputerze deweloperskim zestaw hosta usługi:
 
 | Name (Nazwa) | Opis |
 | ----- | ----- |
-| **AzS-ACS01** | Usługi magazynu Azure stosu.|
-| **AzS-ADFS01** | Usługi federacyjne Active Directory (AD FS).  |
-| **AzS-BGPNAT01** | Krawędzi router i zapewnia możliwości translatora adresów Sieciowych i sieci VPN Azure stosu. |
-| **AzS-CA01** | Urząd usług Azure stosu roli usług certyfikatów.|
-| **AzS-DC01** | Active Directory, DNS i DHCP usługi Microsoft Azure stosu.|
-| **AzS-ERCS01** | Konsola awaryjnego odzyskiwania maszyny Wirtualnej. |
-| **AzS-GWY01** | Brama brzegowa usług takich jak połączenia sieci VPN lokacja lokacja dla sieci dzierżawcy.|
-| **AzS-NC01** | Kontroler sieci, który zarządza usługi sieciowe Azure stosu.  |
-| **AzS-SLB01** | Równoważenia obciążenia multiplekser usług Azure stosu dla zarówno dzierżawców, jak i usługi infrastruktury platformy Azure stosu.  |
-| **AzS-SQL01** | Dane wewnętrzne przechowywania dla ról infrastruktury Azure stosu.  |
-| **AzS-WAS01** | Portal administracyjny stosu platformy Azure i usługi Azure Resource Manager.|
-| **AzS-WASP01**| Portalu użytkownika (dzierżawcy) stosu Azure i usługi Azure Resource Manager.|
-| **AzS-XRP01** | Kontroler zarządzania infrastruktury dla programu Microsoft Azure stosu, w tym dostawców zasobów obliczeniowych, sieci i magazynu.|
+| **AzS-ACS01** | Usługi magazynu platformy Azure Stack.|
+| **AzS-ADFS01** | Usługi Active Directory Federation Services (ADFS).  |
+| **AzS-BGPNAT01** | Krawędzi routera i udostępnia możliwości translatora adresów Sieciowych i sieci VPN dla usługi Azure Stack. |
+| **AzS-CA01** | Certyfikat usługi urzędu usług roli usługi Azure Stack.|
+| **AzS-DC01** | Active Directory, DNS i DHCP usługi dla usługi Microsoft Azure Stack.|
+| **AzS-ERCS01** | Konsola odzyskiwania awaryjnego maszyny Wirtualnej. |
+| **AzS-GWY01** | Brama brzegowa usługach, takich jak połączenia lokacja lokacja sieci VPN dla sieci dzierżawcy.|
+| **AzS-NC01** | Kontroler sieci, która zarządza usługami sieciowymi w usłudze Azure Stack.  |
+| **AzS-SLB01** | Równoważenie obciążenia multiplekser usługi w usłudze Azure Stack dla dzierżawcy i usługach infrastruktury Azure Stack.  |
+| **AzS-SQL01** | Wewnętrzny magazyn danych dla ról infrastruktury Azure Stack.  |
+| **AzS-WAS01** | Usługi Azure Resource Manager i portalu administracyjnego usługi Azure Stack.|
+| **AzS-WASP01**| Usługi Azure Resource Manager i portalu użytkowników (dzierżawcy) w usłudze Azure Stack.|
+| **AzS-XRP01** | Kontroler zarządzania infrastruktury Microsoft Azure Stack, w tym dostawców zasobów obliczeniowych, sieci i magazynu.|
 
 
 ## <a name="next-steps"></a>Kolejne kroki

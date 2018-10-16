@@ -5,21 +5,20 @@ services: azure-stack
 author: mattbriggs
 manager: femila
 cloud: azure-stack
-ms.assetid: D44641CB-BF3C-46FE-BCF1-D7F7E1D01AFA
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 10/15/2018
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: a70c736489b25f6e8fd0d838c4c7b4b4db96a4f2
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 3f4dc6e4136d8d2e3eb1ca5e822306aae2217e3b
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188799"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340855"
 ---
 # <a name="run-a-validation-test-for-azure-stack"></a>Uruchamianie testów sprawdzania poprawności dla usługi Azure Stack
 
@@ -64,7 +63,7 @@ Sprawdza stan usługi Azure Stack. Polecenie cmdlet zgłasza stan usługi Azure 
 
 | Parametr               | Wartość           | Wymagane | Domyślne |
 | ---                     | ---             | ---      | ---     |
-| ServiceAdminCredentials | PSCredential    | Nie       | WARTOŚĆ FALSE   |
+| ServiceAdminCredentials | Ciąg    | Nie       | WARTOŚĆ FALSE   |
 | DoNotDeployTenantVm     | SwitchParameter | Nie       | WARTOŚĆ FALSE   |
 | AdminCredential         | PSCredential    | Nie       | Nie dotyczy      |
 | List                    | SwitchParameter | Nie       | WARTOŚĆ FALSE   |

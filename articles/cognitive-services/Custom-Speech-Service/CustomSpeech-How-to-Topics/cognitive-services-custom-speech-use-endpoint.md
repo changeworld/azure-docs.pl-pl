@@ -1,24 +1,25 @@
 ---
-title: Użyj mowy niestandardowego punktu końcowego — usługa Custom Speech Service
-titlesuffix: Azure Cognitive Services
-description: Dowiedz się, jak używać niestandardowego punktu końcowego mowy na tekst z usługa Custom Speech Service.
+title: Punkt końcowy niestandardowego mowy za pomocą usługa Custom Speech Service na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać niestandardowego punktu końcowego mowy na tekst z usługa Custom Speech Service w usługach Cognitive Services.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: conceptual
+ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: 98c1b58e58490199b0258dfcc8df183c3fe9a8bd
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 9f1a21d6f099bc27c81e8c254f7df73d6c3e585d
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223376"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341807"
 ---
 # <a name="use-a-custom-speech-to-text-endpoint"></a>Korzystanie z niestandardowego punktu końcowego funkcji zamiany mowy na tekst
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
+
 Mogą wysyłać żądania do punktu końcowego usługi Azure Custom Speech Service mowy na tekst, w podobny sposób, jak to możliwe do domyślny punkt końcowy rozpoznawania mowy usług Cognitive Services. Te punkty końcowe są funkcjonalnie identyczny domyślne punkty końcowe interfejsu API rozpoznawania mowy. Dlatego taką samą funkcjonalność, która jest dostępna za pośrednictwem biblioteki klienta lub interfejsu API REST dla interfejsu API rozpoznawania mowy jest również dostępna dla niestandardowego punktu końcowego.
 
 Punktów końcowych, które tworzysz przy użyciu tej usługi może przetwarzać różną liczbę jednoczesnych żądań. Wolumin zależy od warstwy cenowej skojarzonych z Twoją subskrypcją. Odebranie zbyt wiele żądań, wystąpi błąd. Warstwa bezpłatna ma limit miesięczny żądań.

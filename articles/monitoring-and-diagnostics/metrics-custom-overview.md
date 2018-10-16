@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: c136772e27dab014c22234f1ef1d2baddd2ffe58
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1bdf1e1f5e58ecb0939d5876e0cef349e32de517
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978084"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344754"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Metryki niestandardowe w usłudze Azure Monitor
 
@@ -31,14 +31,14 @@ Metryki niestandardowe jest wysyłany do usługi Azure Monitor, każdy danych pu
 
 ### <a name="authentication"></a>Authentication
 Do przesyłania metryki niestandardowe do usługi Azure Monitor jednostki przesyłania Metryka musi mieć prawidłowy token usługi Azure Active Directory w nagłówku "Bearer" żądania. Istnieją na kilka sposobów obsługiwane można uzyskać tokenu elementu nośnego prawidłowy:
-1. [MSI (tożsamość usługi zarządzanej)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) — zapewnia tożsamość do samego zasobu platformy Azure (np. maszyna wirtualna). MSI został zaprojektowany do zasobom uprawnienia do wykonywania określonych operacji — na przykład, co zasób emitują metryki o sobie samym. Zasób (lub jego MSI) można udzielić uprawnienia "Monitorowanie metryk Publisher" inny zasób, umożliwiając w ten sposób MSI emitować metryki dla innych zasobów, jak również.
+1. [Zarządzane tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) — zapewnia tożsamość do samego zasobu platformy Azure (np. maszyna wirtualna). MSI został zaprojektowany do zasobom uprawnienia do wykonywania określonych operacji — na przykład, co zasób emitują metryki o sobie samym. Zasób (lub jego MSI) można udzielić uprawnienia "Monitorowanie metryk Publisher" inny zasób, umożliwiając w ten sposób MSI emitować metryki dla innych zasobów, jak również.
 2. [Nazwa główna usługi AAD](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) — scenariusz, w tym miejscu jest aplikacja usługi AAD (usługa) można przypisać uprawnienia do emitowania metryk dotyczących zasobów platformy Azure.
 W celu uwierzytelnienia żądania usługi Azure Monitor sprawdza poprawność tokenu aplikacji przy użyciu usługi AAD kluczy publicznych. Istniejącą rolę "Monitorowanie metryk Publisher" ma już to uprawnienie, który jest dostępny w witrynie Azure portal. Jednostki usługi, w zależności od tego, jakie zasoby będą do niej emitowania metryki niestandardowe, mogą być podawane w roli "Monitorowanie metryk Publisher" w zakresie wymaganych (subskrypcji, grupy zasobów lub określonego zasobu).
 
 > [!NOTE]
 > Podczas żądania tokenu usługi AAD, aby emitować metryki niestandardowe upewnij się, token jest wymagany dla odbiorców lub zasobu https://monitoring.azure.com/ (Pamiętaj o uwzględnieniu "/")
 
-### <a name="subject"></a>Temat
+### <a name="subject"></a>Podmiot
 Ta właściwość umożliwia przechwytywanie identyfikator zasobu platformy Azure, w którym jest zgłaszany Metryka niestandardowa. Te informacje będą zakodowane w adresie URL wywołanie interfejsu API. Każdy interfejs API może przesłać tylko wartości metryk do jednego zasobu platformy Azure.
 
 > [!NOTE]

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.author: cshoe
 ms.component: common
-ms.openlocfilehash: 268459fde7a622079656e637d2c51562cea358a4
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 584db1400ddd2b4f447b7ca397f2c98b701c7848
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730953"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341875"
 ---
 # <a name="azure-storage-security-guide"></a>Przewodnik po zabezpieczeniach magazynu platformy Azure
 
@@ -22,7 +22,7 @@ Usługa Azure Storage udostępnia rozbudowany zestaw funkcji zabezpieczeń, umo�
 - Wszystkie dane zapisane w usłudze Azure Storage są automatycznie szyfrowane przy użyciu [szyfrowanie usługi Storage (SSE)](storage-service-encryption.md). Aby uzyskać więcej informacji, zobacz [ogłoszenie domyślne szyfrowanie obiektów blob platformy Azure, pliki, tabela i Queue Storage](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
 - Azure Active Directory (Azure AD) i kontrola dostępu oparta na rolach (RBAC) są obsługiwane dla usługi Azure Storage zarówno dla zasobów operacje zarządzania i operacje na danych, w następujący sposób:   
     - Można przypisać role RBAC ograniczone do konta magazynu do podmiotów zabezpieczeń i użyj usługi Azure AD, aby autoryzować operacji zarządzania zasobów, takich jak zarządzanie kluczami.
-    - Integracja z usługą Azure AD jest obsługiwana w wersji zapoznawczej dla operacje na danych w usługach obiektów Blob i kolejek. Można przypisać role RBAC do subskrypcji, grupy zasobów, konto magazynu lub pojedynczy kontener lub kolejki do podmiotu zabezpieczeń lub tożsamości usługi zarządzanej zakresu. Aby uzyskać więcej informacji, zobacz [uwierzytelniania dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md).   
+    - Integracja z usługą Azure AD jest obsługiwana w wersji zapoznawczej dla operacje na danych w usługach obiektów Blob i kolejek. Można przypisać role RBAC ograniczone do subskrypcji, grupy zasobów, konto magazynu lub pojedynczy kontener lub kolejki do podmiotu zabezpieczeń lub tożsamość zarządzaną dla zasobów platformy Azure. Aby uzyskać więcej informacji, zobacz [uwierzytelniania dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md).   
 - Dane mogą być chronione przesyłane między aplikacją i platformy Azure przy użyciu [szyfrowania po stronie klienta](../storage-client-side-encryption.md), HTTPS lub SMB 3.0.  
 - Dysków systemu operacyjnego i danych, które są używane przez maszyny wirtualne platformy Azure może być szyfrowana przy użyciu [usługi Azure Disk Encryption](../../security/azure-security-disk-encryption.md). 
 - Delegowanego dostępu do obiektów danych w usłudze Azure Storage można przyznać za pomocą [sygnatur dostępu współdzielonego](../storage-dotnet-shared-access-signature-part-1.md).

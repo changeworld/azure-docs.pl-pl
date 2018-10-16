@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: dd1e64d5ad6982c85a8205e3036d30a2ede92f7c
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 6da81ab90a87285f9e1874e3f10eff4570124192
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930294"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344017"
 ---
 # <a name="start-and-stop-azure-stack"></a>Uruchamianie i zatrzymywanie usługi Azure Stack
 Należy wykonać procedury opisane w tym artykule, aby poprawnie zamknąć i ponownie uruchomić usługi Azure Stack. Zamknięcie fizycznie będzie wyłączyć całego środowiska usługi Azure Stack. Uruchamianie włącza wszystkie role infrastruktury i zwraca zasoby dzierżawcy do jego stanu zasilania, w jakim były przed zamknięciem.
@@ -90,4 +90,4 @@ Wykonaj następujące czynności, jeśli usług infrastruktury i dzierżawcy nie
 
 ## <a name="next-steps"></a>Kolejne kroki 
 
-Dowiedz się więcej na temat narzędzia diagnostycznego usługi Azure Stack i wystawiać rejestrowania, zobacz [narzędzi diagnostycznych w usłudze Azure Stack](azure-stack-diagnostics.md).
+Dowiedz się więcej o [narzędzi diagnostycznych w usłudze Azure Stack](azure-stack-diagnostics.md)

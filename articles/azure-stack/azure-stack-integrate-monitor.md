@@ -1,6 +1,6 @@
 ---
-title: Integracja rozwiązania monitorowania zewnętrznych z stosu Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zintegrować stosu Azure z zewnętrznego rozwiązanie monitorowania w centrum danych.
+title: Integracja zewnętrznej rozwiązania do monitorowania za pomocą usługi Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zintegrować usługę Azure Stack z zewnętrznego rozwiązania do monitorowania w centrum danych.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -11,90 +11,90 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: thoroet
-ms.openlocfilehash: d7c8520602132722fd0c7138de4a276b9ac2208a
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 66cd20eaa401261bcb18bedbbc16f5bcf40ee192
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807343"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342987"
 ---
-# <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Integracja rozwiązania monitorowania zewnętrznych z Azure stosu
+# <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Integracja zewnętrznej rozwiązania do monitorowania za pomocą usługi Azure Stack
 
-Dla zewnętrznych monitorowania infrastruktury stosu Azure, należy monitorować oprogramowania stosu Azure, komputery fizyczne i przełączniki sieci fizycznej. Każdy z tych obszarów udostępnia metody można pobrać informacji o kondycji i alertów:
+Dla zewnętrznych monitorowania infrastruktury Azure Stack, należy monitorować oprogramowania Azure Stack, komputery fizyczne i przełączniki sieci fizycznej. Każda z tych obszarów udostępnia metodę, aby pobrać informacje o kondycji i alertów:
 
-- Oprogramowanie stosu Azure oferuje opartego na interfejsie REST interfejsu API można pobrać kondycji i alertów. Korzystanie z technologii zdefiniowanych przez oprogramowanie, takie jak bezpośrednie miejsca do magazynowania, kondycję magazynu i alerty są częścią monitorowania oprogramowania.
-- Komputerów fizycznych można udostępnić kondycji i informacji o alertach za pomocą kontrolerów zarządzania płytą główną (BMC).
-- Fizyczne urządzenia sieciowe można udostępnić kondycji i informacji o alertach za pośrednictwem protokołu SNMP.
+- Oprogramowania platformy Azure Stack oferuje interfejs API oparty na protokole REST do pobierania kondycji i alertów. Korzystanie z technologii zdefiniowanych przez oprogramowanie, takich jak bezpośrednimi miejscami do magazynowania magazynu kondycji i alerty są częścią oprogramowania monitorowania.
+- Komputerów fizycznych można udostępnić kondycji i informacje o alertach za pomocą kontrolerów zarządzania płytą główną (BMC).
+- Fizyczne urządzenia sieciowe można udostępnić kondycji i informacje o alertach za pośrednictwem protokołu SNMP.
 
-Każde rozwiązanie stosu Azure jest dostarczany z hostem cyklu życia sprzętu. Ten host uruchamia monitorowania oprogramowania dostawcy sprzętu Original Equipment Manufacturer (OEM) dla serwerów fizycznych i urządzeń sieciowych. W razie potrzeby można pominąć te rozwiązania monitorowania i bezpośrednio zintegrować z istniejącymi rozwiązaniami do monitorowania w centrum danych.
+Każde z tych rozwiązań usługi Azure Stack jest dostarczany z cyklem życia sprzętu hosta. Ten host uruchamia monitorujący oprogramowanie dostawcy sprzętu Original Equipment Manufacturer (OEM) dla serwerów fizycznych i urządzeniami sieciowymi. Jeśli to konieczne, można pominąć te rozwiązania do monitorowania i bezpośrednio integrować z istniejącymi rozwiązaniami monitorowania w centrum danych.
 
 > [!IMPORTANT]
-> Zewnętrznych rozwiązanie monitorowania, którego używasz, musi być bez wykorzystania agentów. Nie można zainstalować agentów innych firm wewnątrz składniki stosu Azure.
+> Zewnętrzne rozwiązanie monitorowania, którego używasz, musi być bez wykorzystania agentów. Nie można zainstalować agentów firm wewnątrz składników usługi Azure Stack.
 
-Na poniższym diagramie przedstawiono przepływ ruchu między systemu Azure stosu zintegrowane, hosta cyklu życia sprzętu zewnętrznych rozwiązanie monitorowania i system biletów/danych zewnętrznych kolekcji.
+Na poniższym diagramie przedstawiono przepływ ruchu między zintegrowanym systemie Azure Stack, sprzętu hosta cyklu życia, rozwiązanie do monitorowania zewnętrznych i systemem tworzenia biletów/dane zewnętrzne kolekcji.
 
-![Diagram przedstawiający ruchu między Azure stosu, monitorowania i wystawiania biletów rozwiązania.](media/azure-stack-integrate-monitor/MonitoringIntegration.png)  
+![Diagram przedstawiający ruchu między usługi Azure Stack, monitorowania i tworzenia biletów rozwiązania.](media/azure-stack-integrate-monitor/MonitoringIntegration.png)  
 
-W tym artykule wyjaśniono, jak zintegrować stosu Azure z zewnętrznego monitorowania rozwiązań, takich jak System Center Operations Manager i Nagios. Zawiera również sposób pracy z alertami programowo przy użyciu programu PowerShell lub za pośrednictwem interfejsu API REST.
+W tym artykule wyjaśniono, jak zintegrować usługę Azure Stack z zewnętrznego monitorowania rozwiązań, takich jak System Center Operations Manager i Nagios. Obejmuje to również sposób pracy z alertami programowo przy użyciu programu PowerShell lub za pomocą wywołań interfejsu API REST.
 
 ## <a name="integrate-with-operations-manager"></a>Integracja z programem Operations Manager
 
-Operations Manager służy do monitorowania zewnętrznych stosu Azure. Pakiet administracyjny System Center dla programu Microsoft Azure stosu umożliwia monitorowanie wielu wdrożeń stosu Azure przy użyciu pojedynczego wystąpienia programu Operations Manager. Pakiet zarządzania korzysta z dostawcy zasobów kondycji i dostawcy zasobów aktualizacji interfejsów API REST do komunikowania się z stosu Azure. Jeśli planujesz obejścia OEM monitorowania oprogramowania, które jest uruchomiona na hoście cyklu życia sprzętu, należy zainstalować pakiety administracyjne dostawcy do monitorowania serwerów fizycznych. Aby monitorować przełączników sieciowych umożliwia także odnajdywania urządzeń sieciowych programu Operations Manager.
+Za pomocą programu Operations Manager do monitorowania zewnętrznych usługi Azure Stack. Pakiet administracyjny System Center dla usługi Microsoft Azure Stack umożliwia monitorowanie wielu wdrożeń będących częścią usługi Azure Stack przy użyciu jednego wystąpienia programu Operations Manager. Pakiet administracyjny używa dostawcy zasobów kondycji i dostawcy zasobów aktualizacji interfejsów API REST do komunikowania się z usługą Azure Stack. Jeśli planujesz obejścia OEM monitorowaniem oprogramowania, która została uruchomiona na hoście cyklu życia sprzętu, można zainstalować pakiety administracyjne dostawcy do monitorowania serwerów fizycznych. Odnajdywanie urządzeń sieciowych programu Operations Manager umożliwia również monitorowanie przełączników sieciowych.
 
-Pakiet administracyjny dla stosu Azure oferuje następujące możliwości:
+Pakiet administracyjny dla usługi Azure Stack oferuje następujące możliwości:
 
-- Możesz zarządzać wielu wdrożeń Azure stosu
-- Brak obsługi dla usługi Azure Active Directory (Azure AD) i Active Directory Federation Services (AD FS)
-- Możesz pobrać i Zamknij alerty
-- Brak kondycję i wydajność pulpit nawigacyjny
+- Można zarządzać wieloma wdrożeniami usługi Azure Stack
+- Brak pomocy technicznej dla usługi Azure Active Directory (Azure AD) i Active Directory Federation Services (AD FS)
+- Można pobierać i Zamknij alerty
+- Brak kondycji i wydajności pulpit nawigacyjny
 - Obejmuje wykrywania automatycznego trybu konserwacji dla gdy poprawek i aktualizacji (P & U) jest w toku
-- Obejmuje zadania Wymuszanie aktualizacji do wdrożenia i regionu
-- Możesz dodawać niestandardowe informacje w regionie
-- Obsługa powiadomień i raportowanie
+- Obejmuje Wymuszanie aktualizacji zadania dotyczące wdrażania i region
+- Możesz dodawać niestandardowe informacje do regionu
+- Obsługuje powiadamianie i raportowanie
 
-Możesz pobrać pakiet administracyjny programu System Center dla programu Microsoft Azure stosu oraz skojarzonych z nimi [Podręcznik użytkownika](https://www.microsoft.com/en-us/download/details.aspx?id=55184), lub bezpośrednio z programu Operations Manager.
+Możesz pobrać pakiet administracyjny programu System Center dla usługi Microsoft Azure Stack oraz skojarzonych z nimi [Podręcznik użytkownika](https://www.microsoft.com/en-us/download/details.aspx?id=55184), lub bezpośrednio z programu Operations Manager.
 
-W przypadku obsługi biletów rozwiązania można zintegrować programu Operations Manager z programem System Center Service Manager. Łącznik produktu zintegrowane umożliwia komunikację dwukierunkową, który umożliwia zamknięcie alertu w stosie Azure a programem Operations Manager po rozwiązaniu żądania obsługi w programie Service Manager.
+W przypadku obsługi biletów rozwiązania można zintegrować programu Operations Manager z programem System Center Service Manager. Łącznik produktu zintegrowane umożliwia komunikację dwukierunkową, która umożliwia zamknięcie alertu w usłudze Azure Stack oraz programu Operations Manager, po rozwiązaniu żądania obsługi w programie Service Manager.
 
-Na poniższym diagramie przedstawiono integracji stosu Azure z istniejącego wdrożenia programu System Center. Można zautomatyzować programu Service Manager dalsze z programu System Center Orchestrator lub automatyzacji zarządzania usługi (SMA) do uruchamiania operacji w stosie Azure.
+Na poniższym diagramie przedstawiono integracji usługi Azure Stack z istniejącego wdrożenia programu System Center. Można zautomatyzować programu Service Manager dalsze za pomocą programu System Center Orchestrator lub Service Management Automation (SMA) umożliwiające uruchamianie operacji w usłudze Azure Stack.
 
-![Diagram przedstawiający integrację z modelu obiektów programu Service Manager i SMA.](media/azure-stack-integrate-monitor/SystemCenterIntegration.png)
+![Diagram przedstawiający integrację z modelu obiektów programu Service Manager i programu SMA.](media/azure-stack-integrate-monitor/SystemCenterIntegration.png)
 
-## <a name="integrate-with-nagios"></a>Integracja z Nagios
+## <a name="integrate-with-nagios"></a>Integracja z usługą Nagios
 
-Nagios, monitorowanie wtyczki opracowano wraz z rozwiązań Cloudbase partnerskich, który jest dostępny w ramach licencji ograniczająca bezpłatnego oprogramowania — MIT (Massachusetts Institute of Technology).
+Nagios, monitorowanie wtyczki opracowano wraz z rozwiązania Cloudbase partnera, który jest dostępny w ramach licencji ograniczająca bezpłatne oprogramowanie — MIT (Massachusetts Institute of Technology).
 
-Wtyczka jest napisany w języku Python i wykorzystuje dostawcy zasobów kondycji interfejsu API REST. Zapewnia podstawowe funkcje do pobierania i Zamknij alerty w stosie Azure. Podobnie jak pakiet administracyjny programu System Center umożliwia dodawanie wielu wdrożeń stosu Azure oraz wysyłać powiadomienia.
+Wtyczka jest napisany w języku Python i wykorzystuje interfejs API REST dostawcy zasobów kondycji. Oferuje podstawowe funkcje, aby pobrać i Zamknij alerty w usłudze Azure Stack. Pakiet administracyjny programu System Center, np. pozwala ona dodawać wielu wdrożeń będących częścią usługi Azure Stack i wysyłania powiadomień.
 
-Wtyczka współpracuje z Nagios przedsiębiorstwa i Nagios podstawowe. Można go pobrać [tutaj](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details). Pobieranie zawiera także szczegóły instalacji i konfiguracji.
+Wtyczka działa w Nagios przedsiębiorstwa i Nagios Core. Możesz ją pobrać [tutaj](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details). Witryna pobierania zawiera także szczegóły instalacji i konfiguracji.
 
 ### <a name="plugin-parameters"></a>Parametry wtyczki
 
-Konfigurowanie pliku wtyczki "Azurestack_plugin.py" z następującymi parametrami:
+Skonfiguruj plik wtyczki "Azurestack_plugin.py" z następującymi parametrami:
 
 | Parametr | Opis | Przykład |
 |---------|---------|---------|
-| *arm_endpoint* | Punktu końcowego platformy Azure Resource Manager (administrator) |https://adminmanagement.local.azurestack.external |
-| *api_endpoint* | Punktu końcowego platformy Azure Resource Manager (administrator)  | https://adminmanagement.local.azurestack.external |
-| *Tenant_id* | Identyfikator subskrypcji administratora | Pobrać za pomocą portalu administratora lub programu PowerShell |
-| *nazwa_użytkownika* | Nazwa użytkownika subskrypcji — operator | operator@myazuredirectory.onmicrosoft.com |
-| *User_password* | Hasło subskrypcji — operator | mojehasło |
+| *arm_endpoint* | Punkt końcowy usługi Azure Resource Manager (administrator) |https://adminmanagement.local.azurestack.external |
+| *api_endpoint* | Punkt końcowy usługi Azure Resource Manager (administrator)  | https://adminmanagement.local.azurestack.external |
+| *Tenant_id* | Identyfikator subskrypcji administratora | Pobieranie za pośrednictwem portalu administratora lub programu PowerShell |
+| *Nazwa_użytkownika* | Nazwa operatora subskrypcji użytkownika | operator@myazuredirectory.onmicrosoft.com |
+| *User_password* | Hasła subskrypcji — operator | mojehasło |
 | *Client_id* | Klient | 0a7bdc5c-7b57-40be-9939-d4c5fc7cd417* |
-| *region* |  Nazwa regionu platformy Azure stosu | lokalne |
+| *region* |  Nazwa regionu w usłudze Azure Stack | lokalne |
 |  |  |
 
-* PowerShell identyfikator GUID, który jest dostarczany jest uniwersalny. Służy on do każdego wdrożenia.
+* PowerShell identyfikator GUID, który jest dostarczany jest uniwersalnym. Służy on do każdego wdrożenia.
 
-## <a name="use-powershell-to-monitor-health-and-alerts"></a>Monitor kondycji i alerty przy użyciu programu PowerShell
+## <a name="use-powershell-to-monitor-health-and-alerts"></a>Monitorowanie kondycji i alertów za pomocą programu PowerShell
 
-Jeśli nie używasz programu Operations Manager, Nagios lub rozwiązanie oparte na Nagios, można włączyć szeroki zakres monitorowania rozwiązania do integracji z stosu Azure za pomocą programu PowerShell.
+Jeśli nie używasz programu Operations Manager, Nagios lub rozwiązaniem opartym na Nagios, można użyć programu PowerShell umożliwiające szerokiej gamy monitorowanie rozwiązań do integracji z usługą Azure Stack.
 
-1. Przy użyciu programu PowerShell, upewnij się, że masz [PowerShell zainstalowany i skonfigurowany](azure-stack-powershell-configure-quickstart.md) dla środowiska operator stosu Azure. Instalowanie programu PowerShell na komputerze lokalnym, który można osiągnąć punktu końcowego Menedżera zasobów (administrator) (https://adminmanagement. [ Region]. [External_FQDN]).
+1. Przy użyciu programu PowerShell, upewnij się, że masz [PowerShell zainstalowaną i skonfigurowaną](azure-stack-powershell-configure-quickstart.md) dla środowiska operatora usługi Azure Stack. Instalowanie programu PowerShell na komputerze lokalnym, który można osiągnąć punktu końcowego usługi Resource Manager (administrator) (https://adminmanagement. [ Region]. [External_FQDN]).
 
-2. Uruchom następujące polecenia, aby Połącz ze środowiskiem Azure stosu jako operator Azure stosu:
+2. Uruchom następujące polecenia, aby połączyć się z środowiskiem usługi Azure Stack jako operatorów usługi Azure Stack:
 
    ```PowerShell  
     Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint https://adminmanagement.[Region].[External_FQDN]
@@ -102,7 +102,7 @@ Jeśli nie używasz programu Operations Manager, Nagios lub rozwiązanie oparte 
    Add-AzureRmAccount -EnvironmentName "AzureStackAdmin"
    ```
 
-3. Użyj polecenia takie jak następujące przykłady do pracy z alertami:
+3. Użyj poleceń, takich jak poniższe przykłady do pracy z alertami:
    ```PowerShell
     #Retrieve all alerts
     Get-AzsAlert
@@ -125,7 +125,7 @@ Jeśli nie używasz programu Operations Manager, Nagios lub rozwiązanie oparte 
 
 ## <a name="learn-more"></a>Dowiedz się więcej
 
-Informacje o monitorowaniu kondycji wbudowanych, zobacz [monitorowania kondycji i alertów w stosie Azure](azure-stack-monitor-health.md).
+Aby uzyskać informacji na temat monitorowania kondycji wbudowanych, zobacz [monitorowania kondycji i alertów w usłudze Azure Stack](azure-stack-monitor-health.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

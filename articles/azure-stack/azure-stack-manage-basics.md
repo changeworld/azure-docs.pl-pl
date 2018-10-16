@@ -3,7 +3,7 @@ title: Podstawy administracji w usłudze Azure Stack | Dokumentacja firmy Micros
 description: Dowiedz się, co musisz wiedzieć, aby administrować usługi Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: 856738a7-1510-442a-88a8-d316c67c757c
@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
-ms.author: mabrigg
-ms.openlocfilehash: ead76fd2f03a5d445f9fdbb6c10edb852fd046cf
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.date: 10/15/2018
+ms.author: jeffgilb
+ms.openlocfilehash: 37b8eff2d4ed89c90f1fa6f128673ed5bacaaa90
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585768"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339954"
 ---
 # <a name="azure-stack-administration-basics"></a>Podstawy administracji w usłudze Azure Stack
 Istnieje kilka kwestii, o których należy wiedzieć, jeśli jesteś nowym użytkownikiem usługi Azure Stack administracji. Niniejsze wskazówki zawiera omówienie Twojej roli jako operatorów usługi Azure Stack i co jest potrzebne do Poinformuj użytkowników dla nich, aby szybko stać się produktywności.
@@ -144,6 +144,6 @@ Dla zestawu SDK, możesz zadawać pytania dotyczące pomocy technicznej, w [fora
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Zarządzanie regionami w usłudze Azure Stack](azure-stack-region-management.md)
+[Zarządzanie regionami w usłudze Azure Stack](azure-stack-region-management.md)
 
 

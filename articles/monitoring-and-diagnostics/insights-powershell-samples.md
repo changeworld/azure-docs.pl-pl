@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/14/2018
 ms.author: robb
 ms.component: ''
-ms.openlocfilehash: c6189291a9e944acde751a66cdb58f2052c73999
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 5566b169b3d4503746d12789addf4eb682d16733
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42060822"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321618"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Przykłady — szybki start usługi Azure Monitor programu PowerShell
 Ten artykuł przedstawia przykładowe polecenia programu PowerShell, aby ułatwić dostęp do funkcji usługi Azure Monitor.
@@ -200,12 +200,12 @@ Możesz użyć `Set-AzureRmActivityLogAlert` polecenia cmdlet, aby ustawić aler
 
 ```PowerShell
 
-$condition1 = New-AzureRmActivityLogAlertCondition -Field 'category' -Equals 'Administrative'
-$condition2 = New-AzureRmActivityLogAlertCondition -Field 'operationName' -Equals 'Microsoft.Compute/virtualMachines/write'
+$condition1 = New-AzureRmActivityLogAlertCondition -Field 'category' -Equal 'Administrative'
+$condition2 = New-AzureRmActivityLogAlertCondition -Field 'operationName' -Equal 'Microsoft.Compute/virtualMachines/write'
 $additionalWebhookProperties = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
 $additionalWebhookProperties.Add('customProperty', 'someValue')
-$actionGrp1 = New-AzureRmActionGroup -ActionGroupId 'actiongr1' -WebhookProperties $dict
-Set-AzureRmActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGroupName 'myResourceGroup' -Scope '/' -Action $actionGrp1 -Condition $condition1, $condition2
+$actionGrp1 = New-AzureRmActionGroup -ActionGroupId '/subscriptions/<subid>/providers/Microsoft.Insights/actiongr1' -WebhookProperty $additionalWebhookProperties
+Set-AzureRmActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGroupName 'myResourceGroup' -Scope '/subscriptions/<subid>' -Action $actionGrp1 -Condition $condition1, $condition2
 
 ```
 

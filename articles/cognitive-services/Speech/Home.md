@@ -10,23 +10,21 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: ca1045bcec889e1de47b44a44322579f8b60598f
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 960d2d402f223b306aa6ff05b567d13525e3d525
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586193"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340362"
 ---
 # <a name="what-is-bing-speech"></a>Co to jest rozpoznawanie mowy Bing?
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 API rozpoznawania mowy Bing firmy Microsoft oparte na chmurze oferuje deweloperom łatwy sposób tworzyć zaawansowane funkcje obsługujące rozpoznawanie mowy w swoich aplikacjach, takich jak formant polecenia głosowe, użytkownika okna dialogowego, używając konwersacji naturalnych mowy i transkrypcja mowy i dyktowania. Interfejs API mowy firmy Microsoft obsługuje zarówno *zamiana mowy na tekst* i *zamiany tekstu na mowę* konwersji.
 
 - **Zamiana mowy na tekst** interfejs API konwertuje ludzkiej mowy na tekst, który może służyć jako dane wejściowe i polecenia do kontrolowania aplikacji.
 - **Zamiana tekstu na mowę** interfejs API konwertuje tekst do strumieni audio, które może zostać odtworzony użytkownikowi aplikacji.
-
-> [!NOTE] 
-> Od września 2018 r. nowe [usługa rozpoznawania mowy](../speech-service/index.yml) stanie się ogólnie dostępna. Firma Microsoft zachęca do [za darmo wypróbować](../speech-service/get-started.md).
 
 ## <a name="speech-to-text-speech-recognition"></a>Zamiana mowy na tekst (rozpoznawanie mowy)
 

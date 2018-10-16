@@ -7,16 +7,30 @@ author: wolfma61
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 10/12/2018
 ms.author: wolfma
-ms.openlocfilehash: cfc8f973ac9bced9396a081f7fb2ab6a4a1b2f7f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3a9da3b0f2165dadd99691c6dc9e41cbf3d48620
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963087"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340005"
 ---
 # <a name="release-notes"></a>Informacje o wersji
+
+## <a name="cognitive-services-speech-sdk-101"></a>Mowy usług cognitive Services SDK 1.0.1
+
+Ulepszenia niezawodności i poprawki:
+
+* Napraw potencjalny błąd krytyczny ze względu na warunki sytuacji wyścigu w operacji Dispose rozpoznawania
+* Napraw potencjalny błąd krytyczny, jeśli nie ustawiono właściwości.
+* Dodatkowe błędów i Sprawdzanie parametrów.
+* Cel C: Napraw możliwy błąd krytyczny spowodowane przez zastępowanie w NSString nazwy.
+* Objectice C: dostosować widoczność interfejsu API
+* JavaScript: poprawki dotyczące zdarzenia i ich ładunków.
+* Udoskonalenia dokumentacji.
+
+W naszym [przykładowego repozytorium](https://aka.ms/csspeech/samples), dodano nowe próbki dla języka JavaScript.
 
 ## <a name="cognitive-services-speech-sdk-100-2018-september-release"></a>Services cognitive mowy wersji zestawu SDK 1.0.0: września 2018 r.
 

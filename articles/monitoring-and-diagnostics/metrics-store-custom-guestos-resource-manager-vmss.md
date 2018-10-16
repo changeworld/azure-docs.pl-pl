@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: b9808233e08e545c31e171afe104173dccc6abed
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 7b600bd699ce7f9e4a6c7cba1a41b6bdece16bf0
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434929"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343730"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Wyślij metryki systemu operacyjnego gościa, aby metryki usługi Azure Monitor przechowywania dla zestawu skalowania maszyn wirtualnych Windows przy użyciu szablonu usługi Resource Manager
 
@@ -81,7 +81,7 @@ Znaleźć definicji zestawu skalowania maszyn wirtualnych w sekcji zasobów i Do
 Na maszynie wirtualnej zasobów zestawu skalowania, Znajdź **virtualMachineProfile** sekcji. Dodaj nowy profil o nazwie **extensionsProfile** do zarządzania rozszerzeniami.  
 
 
-W **extensionProfile**, Dodaj nowe rozszerzenie do szablonu, jak to przedstawiono w **sekcji VMSS WAD rozszerzeń**.  Ta sekcja jest rozszerzenie tożsamości usługi zarządzanej (MSI), który gwarantuje, że metryki jest emitowane są akceptowane przez usługi Azure Monitor. **Nazwa** pole może zawierać dowolną nazwę. 
+W **extensionProfile**, Dodaj nowe rozszerzenie do szablonu, jak to przedstawiono w **sekcji VMSS WAD rozszerzeń**.  Ta sekcja dotyczy zarządzanych tożsamości dla rozszerzenia zasobów platformy Azure, która gwarantuje, że metryki jest emitowane są akceptowane przez usługi Azure Monitor. **Nazwa** pole może zawierać dowolną nazwę. 
 
 Poniższy kod z rozszerzeniem MSI dodaje także rozszerzenie diagnostyki i konfiguracji jako rozszerzenie zasobu do zasobu zestawu skalowania maszyny wirtualnej. Możesz dodawać i usuwać liczniki wydajności, zgodnie z potrzebami. 
 
@@ -89,7 +89,7 @@ Poniższy kod z rozszerzeniem MSI dodaje także rozszerzenie diagnostyki i konfi
           "extensionProfile": { 
             "extensions": [ 
             // BEGINNING of added code  
-            // Managed service identity   
+            // Managed identites for Azure resources   
                 { 
                  "name": "VMSS-WAD-extension", 
                  "properties": { 

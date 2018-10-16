@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/06/2018
+ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 748cb4612b2b5aed26ba8197cfad0782f2645e1e
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 70dca655d5300fcd34b4198093e136f6a971963b
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37902133"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344493"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>Wysoka wydajność obliczenia rozmiarów maszyn wirtualnych
 
@@ -56,9 +56,21 @@ Wdróż intensywnych obliczeń maszyny Wirtualnej z jednego z obrazów w portalu
   > W obrazach opartych na systemie CentOS HPC aktualizacji jądra są wyłączone w **yum** pliku konfiguracji. Jest to spowodowane sterowniki RDMA systemu Linux są dystrybuowane jako pakiet RPM i aktualizacje sterowników może nie działać, jeśli jest aktualizowana w jądrze.
   > 
  
-### <a name="cluster-configuration"></a>Konfiguracja klastra 
-    
-Konfiguracja systemu dodatkowe jest potrzebna do uruchamiania zadań MPI w klastrowanych maszyn wirtualnych. Na przykład w klastrze maszyn wirtualnych, należy ustanowić relację zaufania między węzły obliczeniowe. W przypadku typowych ustawień, zobacz [Konfigurowanie klastra RDMA systemu Linux do uruchamiania aplikacji MPI](classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+### <a name="cluster-configuration-options"></a>Opcje konfiguracji klastra
+
+System Azure oferuje kilka opcji tworzenia klastrów HPC maszyn wirtualnych systemu Linux, który może komunikować się za pośrednictwem sieci RDMA, w tym: 
+
+* **Maszyny wirtualne** — wdrażanie maszyn wirtualnych z funkcją RDMA HPC w ten sam zestaw dostępności (podczas użycie modelu wdrażania usługi Azure Resource Manager). Jeśli używasz klasycznego modelu wdrażania, należy wdrożyć maszyny wirtualne w tej samej usłudze w chmurze. 
+
+* **Zestawy skalowania maszyn wirtualnych** — skalowania maszyn wirtualnych zestawu, upewnij się, ograniczenie wdrożenia do pojedynczej grupy umieszczania. Na przykład w szablonie usługi Resource Manager, należy ustawić `singlePlacementGroup` właściwość `true`. 
+
+* **Azure CycleCloud** — Tworzenie klastra HPC w [Azure CycleCloud](/azure/cyclecloud/) do uruchamiania zadań MPI w węzłach systemu Linux.
+
+* **Usługa Azure Batch** — tworzenie [usługi Azure Batch](/azure/batch/) węzłów obliczeniowych w puli w celu uruchamiania obciążeń MPI w systemie Linux. Aby uzyskać więcej informacji, zobacz [Użyj obsługą dostępu RDMA lub włączonymi procesorami GPU wystąpień w pulach usługi Batch](../../batch/batch-pool-compute-intensive-sizes.md). Zobacz też [usługa Batch Shipyard](https://github.com/Azure/batch-shipyard) projektu do uruchamiania obciążeń opartych na kontenerach w usłudze Batch.
+
+* **Pakiet Microsoft HPC Pack** - [pakietu HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) obsługuje wdrożonych na maszynach wirtualnych Azure funkcją RDMA, węzłów obliczeniowych kilku dystrybucje systemu Linux do uruchamiania na zarządzanych przez węzłem systemu Windows Server. Przykład wdrożenia, zobacz [Utwórz pakiet systemu Linux RDMA klastra HPC na platformie Azure](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
+
+W zależności od wybranego narzędzia do zarządzania klastrem dodatkowy system konfiguracji mogą być potrzebne do uruchamiania zadań MPI. Na przykład w klastrze maszyn wirtualnych, konieczne może być ustanowienie relacji zaufania między węzłami klastra, generowanie kluczy SSH lub ustanawianie bez hasła SSH zaufania.
 
 ### <a name="network-topology-considerations"></a>Zagadnienia dotyczące topologii sieci
 * W przypadku komputerów z obsługą funkcji RDMA maszyn wirtualnych systemu Linux na platformie Azure Eth1 jest zarezerwowana dla ruchu sieciowego RDMA. Nie zmieniaj żadnych ustawień Eth1 lub wszelkie informacje zawarte w pliku konfiguracji odnoszące się do tej sieci. Eth0 jest zarezerwowana do regularnego ruchu sieci platformy Azure.
@@ -66,8 +78,7 @@ Konfiguracja systemu dodatkowe jest potrzebna do uruchamiania zadań MPI w klast
 * Sieć RDMA na platformie Azure rezerwuje 172.16.0.0/16 przestrzeni adresowej. 
 
 
-## <a name="using-hpc-pack"></a>Za pomocą pakietu HPC Pack
-[Pakiet HPC Pack](https://technet.microsoft.com/library/jj899572.aspx), rozwiązanie firmy Microsoft wolnego HPC klastra i zadania zarządzania, stanowi jedną z opcji umożliwiają użycie wystąpień obliczeniowych z systemem Linux. Zainstalowane najnowsze wersje pakietu HPC Pack pomocy technicznej kilka dystrybucje systemu Linux do uruchamiania na wdrożonych na maszynach wirtualnych platformy Azure, zarządzane przez system Windows Server węzłem węzłów obliczeniowych. Z węzłów obliczeniowych z obsługą dostępu RDMA systemu Linux systemem Intel MPI pakietu HPC Pack można zaplanować i uruchomić Linux MPI aplikacji uzyskujących dostęp do sieci RDMA. Zobacz [wprowadzenie do węzłów obliczeniowych systemu Linux w klastrze pakietu HPC Pack na platformie Azure](classic/hpcpack-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+
 
 ## <a name="other-sizes"></a>O innych rozmiarach
 - [Zastosowania ogólne](sizes-general.md)
@@ -78,8 +89,6 @@ Konfiguracja systemu dodatkowe jest potrzebna do uruchamiania zadań MPI w klast
 - [Poprzednie generacje](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
-
-- Aby rozpocząć pracę, wdrażania i używania rozmiary wystąpień intensywnie funkcję RDMA w systemie Linux, zobacz [Konfigurowanie klastra RDMA systemu Linux do uruchamiania aplikacji MPI](classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
 - Dowiedz się więcej o tym, jak [usługi Azure compute jednostki (ACU)](acu.md) pozwalają porównać wydajności obliczeń w jednostkach SKU platformy Azure.
 

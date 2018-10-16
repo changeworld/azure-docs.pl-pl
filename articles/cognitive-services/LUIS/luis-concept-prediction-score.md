@@ -1,26 +1,26 @@
 ---
-title: Zrozumienie wynik prognozowania zwracane przez usługi LUIS
+title: Prognozowanie wynik — intencji, jednostek — usługi LUIS
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, co wynik prognozowania oznacza usługi LUIS
+description: Wynik prognozowania wskazuje stopień zaufania, LUIS, ma dla wyników przewidywań.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 10/15/2018
 ms.author: diberry
-ms.openlocfilehash: dc19151e82f44159533050e60ba2f1c6d65466fe
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 56bec5ef4730e47b5c79263af5d1942df5a73f04
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032241"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341348"
 ---
 # <a name="prediction-score"></a>Współczynnik przewidywania
 Wynik prognozowania wskazuje stopień zaufania, LUIS, ma dla wyników przewidywań. 
 
-Wynik prognoz jest zazwyczaj między zero (0) i jeden (1). Przykład wysoce pewność oceny usługi LUIS wynosi 0,99. Przykładem wynik niskim poziomem pewności, że jest 0,01. 
+Wynik prognoz jest między zero (0) i jeden (1). Przykład wysoce pewność oceny usługi LUIS wynosi 0,99. Przykładem wynik niskim poziomem pewności, że jest 0,01. 
 
 |Wartość|Ufność|
 |--|--|

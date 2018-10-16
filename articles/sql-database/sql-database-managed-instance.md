@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 52726d9145d2065da70eea55a03b47ad1602f1f7
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.date: 10/15/2018
+ms.openlocfilehash: f1b2f9c7ee9d2fbeec51315a5e348b197fb4c06b
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868558"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342504"
 ---
 # <a name="azure-sql-database-managed-instance-deployment-model-with-virtual-network-and-near-100-sql-server-compatibility"></a>Azure model wdrożenia wystąpienia zarządzanego usługi SQL Database przy użyciu sieci wirtualnej i w prawie 100%, zgodność programu SQL Server
 
@@ -105,7 +105,7 @@ Znajdź więcej informacji na temat różnic między warstwami usług w [limity 
 
 ### <a name="business-critical-service-tier-preview"></a>Warstwy usług krytycznych Business (wersja zapoznawcza)
 
-Warstwy usług krytycznych firm zaprojektowano pod kątem aplikacji za pomocą wysokie wymagania dotyczące operacji We/Wy. Oferuje ona najwyższą odporność na awarie, korzystając z kilku izolowanych zawsze włączonych replik.
+Warstwy usług krytycznych firm zaprojektowano pod kątem aplikacji za pomocą wysokie wymagania dotyczące operacji We/Wy. Oferuje ona najwyższą odporność na awarie, korzystając z kilku izolowanych replik.
 
 Poniższa lista zawiera opis kluczowych charakterystyk krytyczne dla działania firmy warstwy usług:
 
@@ -209,7 +209,7 @@ Poniższy diagram przedstawia zgodność powierzchni w wystąpieniu zarządzanym
 
 Korzyści z wystąpienia zarządzanego nie zawsze w górę — od początku w chmurze, która oznacza, że niektóre funkcje programu SQL Server w środowisku lokalnym mogą być nieaktualne, wycofania lub mieć alternatyw. Istnieją szczególnych przypadkach, gdy konieczne rozpoznaje, że dana funkcja działa w sposób nieco lub usługa nie jest uruchomiona w środowisku, które nie mają pełnej kontroli nad narzędzi:
 
-- Wysoka dostępność jest wbudowane i wstępnie skonfigurowane. Zawsze włączone funkcje wysokiej dostępności nie są widoczne w taki sam sposób jak w implementacji SQL IaaS
+- Wysoka dostępność jest wbudowana w i wstępnie skonfigurowane przy użyciu technologii, podobnie jak [zawsze włączonych grup dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server).
 - Automatyczne kopie zapasowe i punktu w czasie przywracania. Klient może zainicjować `copy-only` kopie zapasowe, które nie kolidują z automatycznego łańcuch kopii zapasowych.
 - Wystąpienie zarządzane nie zezwala na określanie ścieżek Pełna fizyczna, dzięki czemu wszystkie scenariusze odpowiedniego mają być obsługiwane inaczej: Przywracanie bazy danych nie obsługuje opcji WITH MOVE, tworzenie bazy danych nie zezwala na ścieżki fizyczne, BULK INSERT współpracuje z obiektów blob platformy Azure, tylko itp.
 - Zarządzane wystąpienie obsługuje [uwierzytelniania usługi Azure AD](sql-database-aad-authentication.md) chmury alternatywę dla uwierzytelniania Windows.

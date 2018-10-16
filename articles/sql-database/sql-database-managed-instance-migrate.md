@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/26/2018
-ms.openlocfilehash: 6d03a6016d26e7885bedd4a0b56cbab9dab4873e
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.date: 10/15/2018
+ms.openlocfilehash: 6868b842f22a6d107936fcb1e49c46b0c1f58469
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869886"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345309"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migracja wystąpienia programu SQL Server do wystąpienia zarządzanego Azure SQL Database
 
@@ -38,9 +38,9 @@ Na wysokim poziomie proces migracji bazy danych wygląda następująco:
 
 ## <a name="assess-managed-instance-compatibility"></a>Ocena zgodności wystąpienia zarządzanego
 
-Najpierw Ustal, czy wystąpienie zarządzane jest zgodny z wymagania bazy danych aplikacji. Wystąpienie zarządzane jest zaprojektowany w celu zapewnienia łatwego lift- and -shift migracji dla większości istniejących aplikacji, które używają programu SQL Server w środowisku lokalnym lub na maszynach wirtualnych. Jednak czasami może być wymagane funkcje lub możliwości, które nie są jeszcze obsługiwane i kosztów wdrożenia obejście tego problemu jest zbyt wysokie. 
+Najpierw Ustal, czy wystąpienie zarządzane jest zgodny z wymagania bazy danych aplikacji. Wystąpienie zarządzane jest zaprojektowany w celu zapewnienia łatwego lift- and -shift migracji dla większości istniejących aplikacji, które używają programu SQL Server w środowisku lokalnym lub na maszynach wirtualnych. Jednak czasami może być wymagane funkcje lub możliwości, które nie są jeszcze obsługiwane i kosztów wdrożenia obejście tego problemu jest zbyt wysokie.
 
-Użyj [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) do wykrywania potencjalnych problemy ze zgodnością mogących mieć wpływ na funkcjonalność bazy danych w usłudze Azure SQL Database. Program DMA nie obsługuje jeszcze zarządzane wystąpienia jako lokalizację docelową migracji, ale zalecane do uruchamiania oceny w bazie danych Azure SQL i dokładnie przejrzyj listę zgłoszonych potrafiło i problemy ze zgodnością z dokumentacji produktu. Zobacz [funkcji usługi Azure SQL Database](sql-database-features.md) Aby sprawdzić, czy istnieją niektóre zgłoszone problemy z blokowaniem, nie blokują w wystąpieniu zarządzanym, ponieważ większość blokowania problemy, co uniemożliwia migracji do usługi Azure SQL Database zostały usunięte z zarządzanego Wystąpienie. Dla wystąpienia funkcji, takich jak zapytania wielu baz danych, transakcje między bazami danych w ramach tego samego wystąpienia serwera połączonego innych SQL źródeł, CLR, globalne tabele tymczasowe, widoki poziomu wystąpienia, Usługa Service Broker i podobne są dostępne w wystąpieniach zarządzanych. 
+Użyj [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) do wykrywania potencjalnych problemy ze zgodnością mogących mieć wpływ na funkcjonalność bazy danych w usłudze Azure SQL Database. Program DMA nie obsługuje jeszcze zarządzane wystąpienia jako lokalizację docelową migracji, ale zalecane do uruchamiania oceny w bazie danych Azure SQL i dokładnie przejrzyj listę zgłoszonych potrafiło i problemy ze zgodnością z dokumentacji produktu. Zobacz [funkcji usługi Azure SQL Database](sql-database-features.md) Aby sprawdzić, czy istnieją niektóre zgłoszone problemy z blokowaniem, nie blokują w wystąpieniu zarządzanym, ponieważ większość blokowania problemy, co uniemożliwia migracji do usługi Azure SQL Database zostały usunięte z zarządzanego Wystąpienie. Dla wystąpienia funkcji, takich jak zapytania wielu baz danych, transakcje między bazami danych w ramach tego samego wystąpienia serwera połączonego innych SQL źródeł, CLR, globalne tabele tymczasowe, widoki poziomu wystąpienia, Usługa Service Broker i podobne są dostępne w wystąpieniach zarządzanych.
 
 W przypadku niektórych zgłaszane problemy z blokowaniem, które nie są usuwane w wystąpieniu zarządzanym usługi Azure SQL Database, może być konieczne należy wziąć pod uwagę alternatywnych opcji, takich jak [programu SQL Server na maszynach wirtualnych platformy Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Oto kilka przykładów:
 
@@ -64,12 +64,12 @@ Aby dowiedzieć się, jak utworzyć infrastrukturę sieci wirtualnej i wystąpie
 
 ## <a name="select-migration-method-and-migrate"></a>Wybierz metodę migracji, a następnie przeprowadzić migrację
 
-Zarządzane scenariusze użytkownika elementy docelowe wystąpienie wymagających migracji pamięci masowej bazy danych ze środowiska lokalnego lub implementacji bazy danych IaaS. Są one optymalnym wyborem, gdy trzeba lift- and -shift zaplecza aplikacji, które regularnie Użyj poziomu wystąpienia i / lub funkcje między bazami danych. Jeśli jest to scenariusz, można przenieść całe wystąpienie do odpowiedniego środowiska na platformie Azure bez konieczności rearchitecture aplikacji. 
+Zarządzane scenariusze użytkownika elementy docelowe wystąpienie wymagających migracji pamięci masowej bazy danych ze środowiska lokalnego lub implementacji bazy danych IaaS. Są one optymalnym wyborem, gdy trzeba lift- and -shift zaplecza aplikacji, które regularnie Użyj poziomu wystąpienia i / lub funkcje między bazami danych. W przypadku tego scenariusza, całe wystąpienie można przenieść do odpowiedniego środowiska na platformie Azure bez konieczności ponownego projektowania Twojej aplikacji.
 
 Aby przenieść wystąpienia programu SQL, musisz starannie zaplanować:
 
--   Migracja wszystkich baz danych, które muszą być wspólnie rozmieszczonych (tymi uruchomionych na tym samym wystąpieniu)
--   Migracja obiektów na poziomie wystąpienia, które zależy aplikacja, tym logowania, poświadczenia, operatorów i zadań agenta SQL i wyzwalaczy na poziomie serwera. 
+- Migracja wszystkich baz danych, które muszą być wspólnie rozmieszczonych (tymi uruchomionych na tym samym wystąpieniu)
+- Migracja obiektów na poziomie wystąpienia, które zależy aplikacja, tym logowania, poświadczenia, operatorów i zadań agenta SQL i wyzwalaczy na poziomie serwera.
 
 Wystąpienie zarządzane to w pełni zarządzana usługa, która umożliwia delegowanie niektórych działań DBA regularne do platformy, jak są wbudowane. W związku z tym, niektórych danych na poziomie wystąpienia nie należy migrować, np. zadań konserwacyjnych regularnie Twórz kopie zapasowe lub konfiguracji zawsze włączonej jako [wysokiej dostępności](sql-database-high-availability.md) jest wbudowany.
 
@@ -80,7 +80,7 @@ Wystąpienie zarządzane obsługuje następujące opcje migracji bazy danych (ob
 
 ### <a name="azure-database-migration-service"></a>Azure Database Migration Service
 
-[Usługi Azure Database Migration Service (DMS)](../dms/dms-overview.md) to w pełni zarządzana usługa ustalono, aby umożliwić bezproblemowe migracje z wielu źródłowych baz danych do platformy danych Azure przy minimalnych przestojach. Ta usługa usprawnia zadania wymagane do przenoszenia istniejących innych firm i baz danych programu SQL Server na platformie Azure. Opcje wdrożenia w publicznej wersji zapoznawczej obejmują usługi Azure SQL Database, wystąpienia zarządzanego i programu SQL Server w maszynie wirtualnej platformy Azure. Usługa DMS jest zalecaną metodą migracji obciążenia przedsiębiorstwa. 
+[Usługi Azure Database Migration Service (DMS)](../dms/dms-overview.md) to w pełni zarządzana usługa ustalono, aby umożliwić bezproblemowe migracje z wielu źródłowych baz danych do platformy danych Azure przy minimalnych przestojach. Ta usługa usprawnia zadania wymagane do przenoszenia istniejących innych firm i baz danych programu SQL Server na platformie Azure. Opcje wdrożenia w publicznej wersji zapoznawczej obejmują usługi Azure SQL Database, wystąpienia zarządzanego i programu SQL Server w maszynie wirtualnej platformy Azure. Usługa DMS jest zalecaną metodą migracji obciążenia przedsiębiorstwa.
 
 Jeśli używasz programu SQL Server Integration Services (SSIS) na program SQL Server w środowisku lokalnym, usługa DMS nie obsługuje jeszcze Migrowanie wykazu usług SSIS (SSISDB), która przechowuje pakietów usług SSIS, ale mogą aprowizować środowiska Azure-SSIS Integration Runtime (IR) w usłudze Azure Data Factory (ADF), których będzie Tworzenie nowej bazy danych SSISDB w usłudze Azure SQL Database/wystąpienia zarządzanego, a następnie ponownie wdrożyć pakiety do niego, zobacz [tworzenie środowiska Azure-SSIS IR w usłudze ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
 
@@ -88,7 +88,7 @@ Aby dowiedzieć się więcej na temat tego scenariusza i konfiguracji kroki prze
 
 ### <a name="native-restore-from-url"></a>Natywne przywracania z adresu URL
 
-Przywróć natywnego wykonywania kopii zapasowych (pliki z rozszerzeniem bak) pobrane z lokalnego programu SQL Server lub [programu SQL Server na maszynach wirtualnych](https://azure.microsoft.com/services/virtual-machines/sql-server/), która jest dostępna na [usługi Azure Storage](https://azure.microsoft.com/services/storage/), jest jednym z kluczowych możliwości na wystąpieniu zarządzanym bazy danych SQL, Migracja bazy danych umożliwia szybkie i łatwe w trybie offline. 
+Przywróć natywnego wykonywania kopii zapasowych (pliki z rozszerzeniem bak) pobrane z lokalnego programu SQL Server lub [programu SQL Server na maszynach wirtualnych](https://azure.microsoft.com/services/virtual-machines/sql-server/), która jest dostępna na [usługi Azure Storage](https://azure.microsoft.com/services/storage/), jest jednym z kluczowych możliwości na wystąpieniu zarządzanym bazy danych SQL, Migracja bazy danych umożliwia szybkie i łatwe w trybie offline.
 
 Na poniższym diagramie przedstawiono ogólny przegląd procesu:
 
@@ -121,6 +121,7 @@ Po użytkownik pracuje na w pełni zarządzanej platformy, należy wykonać korz
 Ponadto nie trzeba już martwić się o Konfigurowanie wysokiej dostępności jako [wysokiej dostępności](sql-database-high-availability.md) jest wbudowany.
 
 Do zwiększenia poziomu zabezpieczeń, należy rozważyć zastosowanie niektórych funkcji, które są dostępne:
+
 - Uwierzytelnianie usługi Azure Active Directory na poziomie bazy danych
 - Użyj [zaawansowane funkcje zabezpieczeń](sql-database-security-overview.md) takich jak [inspekcji](sql-database-managed-instance-auditing.md), [wykrywania zagrożeń](sql-advanced-threat-protection.md), [zabezpieczenia na poziomie wiersza](https://docs.microsoft.com/sql/relational-databases/security/row-level-security), i [dynamiczne Maskowanie danych](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking) ) do zabezpieczenia Twojego wystąpienia.
 

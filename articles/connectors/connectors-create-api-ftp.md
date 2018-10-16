@@ -1,92 +1,136 @@
 ---
 title: Nawiązać połączenie z serwerem FTP — Azure Logic Apps | Dokumentacja firmy Microsoft
 description: Tworzenie, monitorowanie i zarządzanie plikami na serwerze FTP za pomocą usługi Azure Logic Apps
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 07/22/2016
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
+ms.service: logic-apps
 ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.topic: article
+ms.date: 10/15/2018
 tags: connectors
-ms.openlocfilehash: 4355a767d2ecd500662cdf4522e8a7e12de86b80
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: e72b7e5ac3c66283116925e8e36c1c33e777042c
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866155"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318917"
 ---
-# <a name="get-started-with-the-ftp-connector"></a>Rozpoczynanie pracy z łącznikiem usługi FTP
-Łącznik FTP umożliwia monitorowanie, zarządzanie i tworzenia plików na serwerze FTP. 
+# <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Tworzenie, monitorowanie i zarządzanie plikami FTP za pomocą usługi Azure Logic Apps
 
-Aby użyć [każdy łącznik](apis-list.md), najpierw musisz utworzyć aplikację logiki. Możesz rozpocząć od [teraz tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Korzystając z usługi Azure Logic Apps i łącznik FTP można utworzyć automatycznych zadań i przepływów pracy, tworzenia, monitorowania, wysyłania i odbierania plików za pośrednictwem Twojego konta na serwerze FTP oraz inne czynności, na przykład:
 
-## <a name="connect-to-ftp"></a>Nawiązać połączenie FTP
-Zanim aplikacja logiki może uzyskać dostęp do dowolnej usługi, należy najpierw utworzyć *połączenia* do usługi. A [połączenia](connectors-overview.md) zapewnia łączność między aplikacją logiki i inną usługę.  
+* Monitor, gdy pliki są dodane lub zmienione.
+* Pobieranie, tworzenie, kopiowanie, aktualizacji listy i Usuń pliki.
+* Pobierz zawartość pliku i metadanych.
+* Wyodrębnij archiwum do folderów.
 
-### <a name="create-a-connection-to-ftp"></a>Utwórz połączenie FTP
-> [!INCLUDE [Steps to create a connection to FTP](../../includes/connectors-create-api-ftp.md)]
-> 
-> 
-
-## <a name="use-a-ftp-trigger"></a>Użyj wyzwalacza FTP
-Wyzwalacz to zdarzenie, który może służyć do uruchamiania tego przepływu, zdefiniowane w aplikacji logiki. [Dowiedz się więcej na temat wyzwalaczy](../logic-apps/logic-apps-overview.md#logic-app-concepts).  
-
-> [!IMPORTANT]
-> Łącznik FTP wymaga serwer FTP, który jest dostępny z Internetu i jest skonfigurowany do pracy w trybie PASYWNYM. Ponadto łącznik FTP jest **nie jest zgodna z niejawne FTPS (FTP za pośrednictwem protokołu SSL)**. Łącznik FTP obsługuje tylko jawne FTPS (FTP za pośrednictwem protokołu SSL).  
-> 
-> 
-
-W tym przykładzie I opisano, jak używać **FTP — po dodaniu lub zmodyfikowaniu pliku** wyzwalacz tak, aby zainicjować przepływ pracy aplikacji logiki, gdy plik zostanie dodany do lub zmodyfikowane na serwerze FTP. W przykładzie przedsiębiorstwa można użyć do monitorowania folderu FTP dla nowych plików, które reprezentują zamówień klientów korzystających z tego wyzwalacza.  Możesz także użyć akcji łącznik FTP takich jak **Pobierz zawartość pliku** można pobrać zawartości kolejność potrzeby dalszego przetwarzania i przechowywania w bazie danych zamówień.
-
-1. Wprowadź *ftp* w polu wyszukiwania w Projektancie aplikacji usługi Logic Apps a następnie zaznacz **FTP — po dodaniu lub zmodyfikowaniu pliku** wyzwalacza   
-   ![Obraz wyzwalacza FTP 1](./media/connectors-create-api-ftp/ftp-trigger-1.png)  
-   **Po dodaniu lub zmodyfikowaniu pliku** otwiera kontrolki  
-   ![Obraz wyzwalacza FTP 2](./media/connectors-create-api-ftp/ftp-trigger-2.png)  
-2. Wybierz **...**  znajdujący się po prawej stronie formantu. Spowoduje to otwarcie kontrolkę selektora folderów  
-   ![Obraz wyzwalacza FTP 3](./media/connectors-create-api-ftp/ftp-trigger-3.png)  
-3. Wybierz **>** (Strzałka w prawo) i przejdź do folderu, który chcesz monitorować, czy nowe lub zmodyfikowane pliki. Wybierz folder i zwróć uwagę, folder jest teraz wyświetlany w **folderu** kontroli.  
-   ![Obraz wyzwalacza FTP 4](./media/connectors-create-api-ftp/ftp-trigger-4.png)   
-
-W tym momencie skonfigurowano aplikację logiki z wyzwalaczem, który spowoduje rozpoczęcie wykonywania innych wyzwalaczy i akcji w przepływie pracy, gdy plik zostanie zmodyfikowany lub utworzony w określonym folderze FTP. 
+Możesz użyć wyzwalaczy, które uzyskać odpowiedzi z serwera FTP i udostępnić dane wyjściowe innych działań. Akcje w aplikacjach logic apps umożliwia wykonywanie zadań z plikami na serwerze FTP. Mogą też istnieć inne akcje użyć danych wyjściowych z akcji FTP. Na przykład jeśli regularnie możesz pobrać pliki z serwera FTP, możesz wysłać pocztą e-mail informacje dotyczące tych plików i ich zawartości za pomocą łącznika usługi Office 365 Outlook lub łącznik usługi Outlook.com. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 > [!NOTE]
-> Dla aplikacji logiki działała prawidłowo musi zawierać co najmniej jeden wyzwalacz i jedną akcję. Wykonaj kroki opisane w następnej sekcji, aby dodać akcję.  
-> 
-> 
+> Łącznik FTP obsługuje tylko pliki, które są 50 MB lub mniej, chyba że używasz [segmentu do obsługi dużych komunikatów](../logic-apps/logic-apps-handle-large-messages.md). 
+>
+> Ponadto łącznik FTP obsługuje tylko jawne FTP over SSL (FTPS) i nie jest zgodny z niejawne protokołu FTPS. 
 
-## <a name="use-a-ftp-action"></a>Używanie akcji FTP
-Akcja jest operacją przeprowadzanych przez przepływ pracy zdefiniowane w aplikacji logiki. [Dowiedz się więcej o akcjach](../logic-apps/logic-apps-overview.md#logic-app-concepts).  
+## <a name="prerequisites"></a>Wymagania wstępne
 
-Teraz, że dodano wyzwalacza, wykonaj następujące kroki, aby dodać akcję, która pobierze zawartość pliku nowe lub zmodyfikowane przez wyzwalacz.    
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. 
 
-1. Wybierz **+ nowy krok** do dodawania akcji, aby pobrać zawartość pliku na serwerze FTP  
-2. Wybierz **Dodaj akcję** łącza.  
-   ![Obraz akcji FTP 1](./media/connectors-create-api-ftp/ftp-action-1.png)  
-3. Wprowadź *FTP* aby wyszukać wszystkie akcje związane z FTP.
-4. Wybierz **FTP — Pobierz zawartość pliku** jako akcję do wykonania, gdy nowy lub zmodyfikowany plik znajduje się w folderze FTP.      
-   ![Obraz akcji FTP 2](./media/connectors-create-api-ftp/ftp-action-2.png)  
-   **Pobierz zawartość pliku** sterowania zostanie otwarta. **Uwaga**: zostanie wyświetlony monit, aby autoryzować aplikację logiki, aby uzyskać dostęp do konta serwera FTP, gdy użytkownik nie zostało zrobione wcześniej.  
-   ![Obraz akcji FTP 3](./media/connectors-create-api-ftp/ftp-action-3.png)   
-5. Wybierz **pliku** kontroli (biały znajdujący się poniżej ** pliku ***). W tym miejscu służy różne właściwości z pliku nowe lub zmodyfikowane na serwerze FTP.  
-6. Wybierz **zawartość pliku** opcji.  
-   ![Obraz akcji FTP 4](./media/connectors-create-api-ftp/ftp-action-4.png)   
-7. Kontrolka jest aktualizowany, co oznacza, że **FTP — Pobierz zawartość pliku** akcji otrzymają *zawartość pliku* pliku nowe lub zmodyfikowane na serwerze FTP.      
-   ![Obraz akcji FTP 5](./media/connectors-create-api-ftp/ftp-action-5.png)     
-8. Zapisz swoją pracę, a następnie dodaj plik do folderu FTP, aby przetestować przepływ pracy.    
+* FTP hosta adres i konta poświadczeń serwera
 
-W tym momencie skonfigurowano aplikację logiki z wyzwalaczem do monitorowania folderu na serwerze FTP i inicjować przepływ pracy, gdy znajdzie się nowy plik lub zmodyfikowanego pliku na serwerze FTP. 
+  Łącznik FTP wymaga, że serwer FTP jest dostępny z Internetu i skonfiguruj działanie w *pasywnym* trybu. Poświadczenia Autoryzuj aplikację logiki, aby utworzyć połączenie i uzyskać dostęp do konta użytkownika FTP.
 
-Aplikacja logiki również została skonfigurowana przy użyciu akcji, aby pobrać zawartość pliku nowe lub zmodyfikowane.
+* Podstawową wiedzę na temat o [sposób tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-Teraz możesz dodać kolejną akcję taką jak [programu SQL Server — Wstaw wiersz](connectors-create-api-sqlazure.md) akcji, aby wstawić zawartość pliku nowych lub zmodyfikowanych do tabeli bazy danych SQL.  
+* Aplikacja logiki, w której chcesz uzyskać dostęp do konta użytkownika FTP. Można uruchomić przy użyciu wyzwalacza usługi FTP [Tworzenie pustej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby użyć akcji FTP, uruchom aplikację logiki za pomocą wyzwalacza innego, na przykład, **cyklu** wyzwalacza.
 
-## <a name="connector-specific-details"></a>Szczegóły specyficzne dla łącznika
+## <a name="connect-to-ftp"></a>Nawiązać połączenie FTP
 
-Wyświetlanie wszystkich wyzwalaczy i akcji zdefiniowanych w strukturze swagger i zobacz też jakiekolwiek ograniczenia w [szczegóły łącznika](/connectors/ftpconnector/). 
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-## <a name="next-steps"></a>Następne kroki
-[Tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i Otwórz swoją aplikację logiki w Projektancie aplikacji logiki, jeśli nie otwarto już.
 
+1. Puste logic apps w polu wyszukiwania wprowadź "ftp" jako filtr. W obszarze listy wyzwalaczy wybierz wyzwalacz, który ma. 
+
+   — lub —
+
+   Dla istniejących aplikacji logiki w ostatnim kroku, które chcesz dodać akcję, wybierz **nowy krok**, a następnie wybierz pozycję **Dodaj akcję**. 
+   W polu wyszukiwania wprowadź "ftp" jako filtr. 
+   W obszarze listy akcji wybierz akcję, którą chcesz.
+
+   Aby dodać akcję między krokami, wskaźnik myszy nad strzałką znajdującą się między krokami. 
+   Wybierz znak plus (**+**) pojawia się, a następnie wybierz **Dodaj akcję**.
+
+1. Podaj odpowiednie szczegóły połączenia, a następnie wybierz **Utwórz**.
+
+1. Podaj odpowiednie szczegóły wybranego wyzwalacza lub akcji i kontynuuj tworzenie przepływu pracy aplikacji logiki.
+
+## <a name="examples"></a>Przykłady
+
+### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>Wyzwalacz FTP: po dodaniu lub zmodyfikowaniu pliku
+
+Ten wyzwalacz jest uruchamiany przepływ pracy aplikacji logiki po wykryciu wyzwalacz, gdy plik zostanie dodane lub zmienione na serwerze FTP. Na przykład można dodać warunek, który sprawdza, czy zawartość pliku i decyduje o tym, czy można pobrać tej zawartości na podstawie tego, czy tę zawartość spełnia określony warunek. Na koniec możesz dodać akcję, która pobiera zawartość pliku i umieścić tę zawartość w folderze na serwerze SFTP. 
+
+**Przykład Enterprise**: tego wyzwalacza można używać do monitorowania folderu FTP dla nowych plików, które reprezentują zamówienia. Można następnie użyć akcji FTP takich jak **Pobierz zawartość pliku**, dzięki czemu można uzyskać zawartość kolejności do dalszego przetwarzania i przechowywania tej kolejności w bazie danych zamówień.
+
+Aplikacja logiki prawidłowe i funkcjonalności wymaga wyzwalacza i co najmniej jedną akcję. Dlatego upewnij się, że akcja zostanie dodana po dodaniu wyzwalacza.
+
+Oto przykład pokazujący tego wyzwalacza: **po dodaniu lub zmodyfikowaniu pliku**
+
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i Otwórz swoją aplikację logiki w Projektancie aplikacji logiki, jeśli nie otwarto już.
+
+1. Puste logic apps w polu wyszukiwania wprowadź "ftp" jako filtr. W obszarze listy wyzwalaczy wybierz następujący wyzwalacz: **gdy zachowanej jest dodawany lub modyfikowany — FTP**
+
+   ![Znajdź i wybierz wyzwalacz FTP](./media/connectors-create-api-ftp/select-ftp-trigger.png)  
+
+1. Podaj odpowiednie szczegóły połączenia, a następnie wybierz **Utwórz**.
+
+   ![Utwórz połączenie z serwerem FTP](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)  
+
+1. Obok pozycji **folderu** , wybierz ikonę folderu, więc zostanie wyświetlona lista. Aby znaleźć folder, który chcesz monitorować nowe lub zmodyfikowane pliki, wybierz strzałkę pod kątem prostym (**>**), przejdź do folderu, a następnie wybierz folder.
+
+   ![Znajdź i wybierz folder do monitorowania](./media/connectors-create-api-ftp/select-folder.png)  
+
+   Wybranym folderze, który pojawia się w **folderu** pole.
+
+   ![Wybrany folder](./media/connectors-create-api-ftp/selected-folder.png)  
+
+Teraz, że Twoja aplikacja logiki ma wyzwalacz, należy dodać akcje, które chcesz uruchomić, gdy Twoja aplikacja logiki znajdzie nowe lub zmodyfikowane pliku. Na przykład możesz dodać akcję FTP, która pobiera zawartość nowe lub zaktualizowane.
+
+### <a name="ftp-action-get-content"></a>Akcja FTP: pobieranie zawartości
+
+Ta akcja pobiera zawartość z pliku na serwerze FTP, gdy ten plik jest dodane lub zaktualizowane. Na przykład można dodać wyzwalacza z poprzedniego przykładu i akcji, która pobiera zawartość pliku, po dodaniu lub edytować tego pliku. 
+
+1. W obszarze wyzwalacza lub innych akcji, wybierz opcję **nowy krok**. 
+
+1. W polu wyszukiwania wprowadź "ftp" jako filtr. W obszarze listy akcji wybierz następującą akcję: **Pobierz zawartość pliku — FTP**
+
+   ![Wybierz akcję, FTP](./media/connectors-create-api-ftp/select-ftp-action.png)  
+
+1. Jeśli masz już połączenie z serwerem FTP a konta, przejdź do następnego kroku. W przeciwnym razie, wprowadź wymagane szczegóły dla tego połączenia, a następnie wybierz **Utwórz**. 
+
+   ![Utwórz połączenie z serwerem FTP](./media/connectors-create-api-ftp/create-ftp-connection-action.png)
+
+1. Po **Pobierz zawartość pliku** akcja zostanie otwarta, kliknij wewnątrz **pliku** pola tak, aby wyświetlić listę zawartości dynamicznej. Teraz można wybrać właściwości dane wyjściowe z poprzednich kroków. Wybierz z listy zawartości dynamicznej **zawartość pliku** właściwość, która ma zawartość pliku dodane lub zaktualizowane.  
+
+   ![Znajdź i wybierz plik](./media/connectors-create-api-ftp/ftp-action-get-file-content.png)
+
+   **Zawartość pliku** właściwość pojawia się teraz w **pliku** pole.
+
+   ![Wybrana właściwość "Zawartość pliku"](./media/connectors-create-api-ftp/ftp-action-selected-file-content-property.png)
+
+1. Zapisz aplikację logiki. Aby przetestować przepływ pracy, należy dodać plik do folderu FTP, który teraz monitoruje aplikację logiki.
+
+## <a name="connector-reference"></a>Dokumentacja łączników
+
+Szczegółowe informacje techniczne dotyczące wyzwalaczy, akcje i ograniczeń, które opisano przez standard OpenAPI łącznika (dawniej Swagger) opis, przejrzyj łącznika [strona referencyjna](/connectors/ftpconnector/).
+
+## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+
+* Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](http://aka.ms/logicapps-wish).
+
+## <a name="next-steps"></a>Kolejne kroki
+
+* Dowiedz się więcej o innych [łączników Logic Apps](../connectors/apis-list.md)

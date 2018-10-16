@@ -2,19 +2,19 @@
 title: Menedżer zabezpieczeń w usłudze Azure IoT Edge | Dokumentacja firmy Microsoft
 description: Zarządza wystąpienie zabezpieczeń urządzenia usługi IoT Edge i integralności usługi zabezpieczeń.
 services: iot-edge
-keywords: bezpieczeństwo, element, enklawy, IoT Edge
+keywords: bezpieczeństwo, element bezpieczny, enklawy, TEE, IoT Edge
 author: eustacea
 manager: timlt
 ms.author: eustacea
 ms.date: 07/30/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4594685291396b8b80e62abe57be109f0abbd81d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: f0e548cdd1c59dc894899ddbac127dd76db7db26
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126347"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321189"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Menedżer zabezpieczeń w usłudze Azure IoT Edge
 
@@ -113,7 +113,7 @@ HSM PAL przenosi wszystkie głównym zaufania sprzętu do izolowania dewelopera 
 
 ## <a name="secure-silicon-root-of-trust-hardware"></a>Zabezpieczenia głównego dolina sprzętu zaufania
 
-Dolina bezpieczne jest kotwicy zaufania wewnątrz usługi IoT Edge urządzeń sprzętowych.  Dolina bezpiecznego są dostępne w różnych Trusted Platform Module (TPM), osadzonego elementu bezpieczne (eSM), ARM Trustzone, Intel SGX i technologii niestandardowe dolina bezpieczne.  Korzystanie z bezpiecznej dolina elementu głównego zaufania na urządzeniach zdecydowanie zaleca się podane zagrożeniach związanych z fizycznie ułatwień dostępu z urządzeń IoT.
+Dolina bezpieczne jest kotwicy zaufania wewnątrz usługi IoT Edge urządzeń sprzętowych.  Dolina bezpiecznego są dostępne w różnych Trusted Platform Module (TPM), osadzonego elementu bezpieczne (eSE), ARM TrustZone, SGX firmy Intel i technologii niestandardowe dolina bezpieczne.  Korzystanie z bezpiecznej dolina elementu głównego zaufania na urządzeniach zdecydowanie zaleca się podane zagrożeniach związanych z fizycznie ułatwień dostępu z urządzeń IoT.
 
 ## <a name="iot-edge-security-manager-integration-and-maintenance"></a>Integracja Menedżera zabezpieczeń usługi IoT Edge i konserwacja
 

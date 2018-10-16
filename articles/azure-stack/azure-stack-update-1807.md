@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/07/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: bce76827c56fd660b6ab4353fed1c43f88132587
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: b4ee3354d024034fd47ee50ae78d25d5bb4a38f5
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868823"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345275"
 ---
 # <a name="azure-stack-1807-update"></a>Aktualizacja usługi Azure Stack 1807
 
@@ -232,6 +232,14 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 
 
 ### <a name="health-and-monitoring"></a>Monitorowanie kondycji i
+
+<!-- TBD - IS -->
+- Możesz zobaczyć następujące alerty regularnie pojawiają się i następnie znikają w systemie Azure Stack:
+   - *Infrastruktura wystąpienie roli jest niedostępne*
+   - *Węzeł jednostka skalowania jest w trybie offline*
+   
+  Uruchom [AzureStack testu](azure-stack-diagnostic-test.md) polecenia cmdlet, aby sprawdzić kondycję wystąpień roli infrastruktury i skalowanie węzłów jednostki. Brak problemów w przypadku wykrycia przez [AzureStack testu](azure-stack-diagnostic-test.md), można zignorować te alerty. W przypadku wykrycia problemu można spróbować uruchomić wystąpienie roli infrastruktury lub węzła przy użyciu portalu administracyjnego lub programu PowerShell.
+
 <!-- 1264761 - IS ASDK -->  
 - Użytkownik może widzieć alerty dla **kondycji kontrolera** składnik, który ma następujące informacje:  
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/05/2018
-ms.openlocfilehash: 124e936b619e3078c71094156bf91a437a28492b
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 77c761ce72449f91cf91c66219ebc815d1620e94
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48862774"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343678"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Funkcje w wersji zapoznawczej usługa Azure Stream Analytics
 
@@ -67,9 +67,9 @@ Deweloperzy teraz wdrożyć deserializers niestandardowych w języku C# do deser
 
 Teraz jest możliwa do partycjonowania danych wyjściowych usługi Azure Stream Analytics do magazynu obiektów Blob opartego na dowolną kolumnę w zapytaniu.
 
-### <a name="managed-service-identity-msi-authentication-to-azure-data-lake-storage"></a>Zarządzane uwierzytelnianie usługi Identity (MSI) do usługi Azure Data Lake Storage
+### <a name="managed-identities-for-azure-resources-authentication-to-azure-data-lake-storage"></a>Zarządzanych tożsamości do uwierzytelniania zasobów platformy Azure do usługi Azure Data Lake Storage
 
-Teraz możesz operacjonalizować potoków w czasie rzeczywistym przy użyciu uwierzytelniania opartego na MSI, podczas zapisywania do usługi Azure Data Lake Storage Gen1 umożliwia programowe tworzenie zadań. Aby uzyskać więcej informacji, odwiedź stronę [Użyj zarządzanych tożsamości do uwierzytelniania usługi Azure Stream Analytics zadania, aby dane wyjściowe usługi Azure Data Lake Storage Gen1](stream-analytics-managed-identities-adls.md).
+Teraz możesz operacjonalizować potoków w czasie rzeczywistym przy użyciu zarządzanych tożsamości do uwierzytelniania na podstawie zasobów platformy Azure podczas zapisywania do usługi Azure Data Lake Storage Gen1 umożliwia programowe tworzenie zadań. Aby uzyskać więcej informacji, odwiedź stronę [używaj zarządzanych tożsamości dla zasobów platformy Azure do uwierzytelniania usługi Azure Stream Analytics zadania, aby dane wyjściowe usługi Azure Data Lake Storage Gen1](stream-analytics-managed-identities-adls.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

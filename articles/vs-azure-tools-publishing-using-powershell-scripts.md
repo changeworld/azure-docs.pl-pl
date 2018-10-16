@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/11/2016
 ms.author: ghogen
-ms.openlocfilehash: dac5425f72ff57e412be664e1bc0c84aee3dec1f
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 99d723eee6bd5b60289af5490e4b1cd6a855cabb
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055822"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319153"
 ---
 # <a name="using-windows-powershell-scripts-to-publish-to-dev-and-test-environments"></a>Używanie skryptów programu Windows PowerShell w celu publikowania w środowisku deweloperskim i testowym
 
@@ -52,6 +52,7 @@ Skrypt publikowania zawiera Publikuj określone kroki wdrażania witryny sieci W
 Moduł programu Windows PowerShell, który generuje programie Visual Studio zawiera funkcje, które używa skryptów publikowania. Te funkcje programu Azure PowerShell nie są przeznaczone do zmodyfikowania. Zobacz artykuł [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
 
 ### <a name="json-configuration-file"></a>Plik JSON konfiguracji
+
 Plik JSON jest tworzony w **konfiguracje** folder i zawiera dane konfiguracji, który określa dokładnie które zasoby należy wdrożyć na platformie Azure. Nazwa pliku, który generuje programie Visual Studio jest projektu name-WAWS-dev.json Jeśli podczas tworzenia witryny sieci Web lub projektu Nazwa-maszyny Wirtualnej — dev.json, jeśli utworzono maszynę wirtualną. Oto przykład z pliku konfiguracji JSON, który jest generowany podczas tworzenia witryny sieci Web. Większość wartości jest oczywista. Nazwa witryny sieci Web jest generowany przez platformę Azure, dzięki czemu mogą być niezgodne Nazwa projektu.
 
 ```json
@@ -150,7 +151,7 @@ Jeśli masz witrynę internetową, która zawiera wiele środowisk wdrażania (n
 
 Jeśli nigdy nie uruchomiono skrypt programu Windows PowerShell przed, należy najpierw ustawić zasady wykonywania, aby umożliwić uruchamianie skryptów. Zasady jest to funkcja zabezpieczeń, aby uniemożliwić użytkownikom uruchamianie skryptów programu Windows PowerShell, jeśli są one podatne na przed złośliwym oprogramowaniem i wirusami, które obejmują wykonywania skryptów.
 
-### <a name="run-the-script"></a>Uruchom skrypt
+### <a name="run-the-script"></a>Uruchamianie skryptu
 
 1. Utwórz pakiet Web Deploy dla Twojego projektu. Pakiet Web Deploy jest skompresowane archiwum (plik zip), który zawiera pliki, które ma zostać skopiowany do witryny sieci Web lub maszyny wirtualnej. Pakiety programu Web Deploy w programie Visual Studio można utworzyć dla dowolnej aplikacji sieci web.
 
@@ -159,29 +160,29 @@ Jeśli nigdy nie uruchomiono skrypt programu Windows PowerShell przed, należy n
 Aby uzyskać więcej informacji, zobacz [jak: utworzyć pakiet wdrożeniowy sieci Web w programie Visual Studio](https://msdn.microsoft.com/library/dd465323.aspx). Możesz też zautomatyzować tworzenie pakietu Narzędzia Web Deploy, zgodnie z opisem w [dostosowywanie i rozszerzanie scripts[(#customizing-and-extending-publish-scripts) Publikuj]
 
 1. W **Eksploratora rozwiązań**, otwórz menu kontekstowe dla skryptu, a następnie wybierz **Otwórz za pomocą programu PowerShell ISE**.
-2. Jeśli uruchamianie skryptów programu Windows PowerShell na tym komputerze po raz pierwszy, Otwórz okno wiersza polecenia z uprawnieniami administratora i wpisz następujące polecenie:
+1. Jeśli uruchamianie skryptów programu Windows PowerShell na tym komputerze po raz pierwszy, Otwórz okno wiersza polecenia z uprawnieniami administratora i wpisz następujące polecenie:
 
     ```powershell
     Set-ExecutionPolicy RemoteSigned
     ```
 
-3. Zaloguj się na platformie Azure przy użyciu następującego polecenia.
+1. Zaloguj się na platformie Azure przy użyciu następującego polecenia.
 
     ```powershell
     Add-AzureAccount
     ```
 
-    Po wyświetleniu monitu podaj nazwę użytkownika i hasło.
+Po wyświetleniu monitu podaj nazwę użytkownika i hasło.
 
-    Należy pamiętać, że podczas automatyzacji skryptu tej metody udostępniania poświadczeń platformy Azure nie działa. Zamiast tego należy używać `.publishsettings` pliku o podanie poświadczeń. Jeden raz, możesz użyć polecenia **Get AzurePublishSettingsFile** można pobrać plik z platformy Azure, a następnie użyć **AzurePublishSettingsFile importu** Aby zaimportować plik. Aby uzyskać szczegółowe informacje, zobacz [How to install and configure Azure PowerShell (Jak zainstalować i skonfigurować program Azure PowerShell)](/powershell/azure/overview).
+Należy pamiętać, że podczas automatyzacji skryptu tej metody udostępniania poświadczeń platformy Azure nie działa. Zamiast tego należy używać `.publishsettings` pliku o podanie poświadczeń. Jeden raz, możesz użyć polecenia **Get AzurePublishSettingsFile** można pobrać plik z platformy Azure, a następnie użyć **AzurePublishSettingsFile importu** Aby zaimportować plik. Aby uzyskać szczegółowe informacje, zobacz [How to install and configure Azure PowerShell (Jak zainstalować i skonfigurować program Azure PowerShell)](/powershell/azure/overview).
 
-4. (Opcjonalnie) Jeśli chcesz tworzyć zasoby platformy Azure, takie jak maszyny wirtualne, bazy danych i witryny sieci Web bez publikowania aplikacji sieci web używają **WebApplication.ps1 Publikuj** polecenia **-konfiguracji**argument wartość do pliku konfiguracji JSON. Ten wiersz polecenia korzysta z pliku konfiguracji JSON do określenia, które zasoby do utworzenia. Ponieważ używa ona domyślne ustawienia dla innych argumentów wiersza poleceń, tworzy zasoby, ale nie publikować aplikację sieci web. Verbose opcja umożliwia dowiedzieć się więcej o tym, co się dzieje.
+1. (Opcjonalnie) Jeśli chcesz tworzyć zasoby platformy Azure, takie jak maszyny wirtualne, bazy danych i witryny sieci Web bez publikowania aplikacji sieci web używają **WebApplication.ps1 Publikuj** polecenia **-konfiguracji**argument wartość do pliku konfiguracji JSON. Ten wiersz polecenia korzysta z pliku konfiguracji JSON do określenia, które zasoby do utworzenia. Ponieważ używa ona domyślne ustawienia dla innych argumentów wiersza poleceń, tworzy zasoby, ale nie publikować aplikację sieci web. Verbose opcja umożliwia dowiedzieć się więcej o tym, co się dzieje.
 
     ```powershell
     Publish-WebApplication.ps1 -Verbose –Configuration C:\Path\WebProject-WAWS-dev.json
     ```
 
-5. Użyj **WebApplication.ps1 Publikuj** polecenia, jak pokazano w jednej z poniższych przykładów, które wywołuje skrypt i opublikować aplikację sieci web. Jeśli zachodzi potrzeba zastępują ustawienia domyślne dla wszystkich innych argumentów, takie jak nazwa subskrypcji, publikowanie, nazwy pakietu, poświadczenia maszyny wirtualnej lub poświadczenia serwera bazy danych, można określić tych parametrów. Użyj **— pełne** opcje, aby wyświetlić więcej informacji na temat postępu procesu publikowania.
+1. Użyj **WebApplication.ps1 Publikuj** polecenia, jak pokazano w jednej z poniższych przykładów, które wywołuje skrypt i opublikować aplikację sieci web. Jeśli zachodzi potrzeba zastępują ustawienia domyślne dla wszystkich innych argumentów, takie jak nazwa subskrypcji, publikowanie, nazwy pakietu, poświadczenia maszyny wirtualnej lub poświadczenia serwera bazy danych, można określić tych parametrów. Użyj **— pełne** opcje, aby wyświetlić więcej informacji na temat postępu procesu publikowania.
 
     ```powershell
     Publish-WebApplication.ps1 –Configuration C:\Path\WebProject-WAWS-dev-json `
@@ -191,27 +192,29 @@ Aby uzyskać więcej informacji, zobacz [jak: utworzyć pakiet wdrożeniowy siec
     -Verbose
     ```
 
-    Jeśli tworzysz maszynę wirtualną, polecenie wygląda podobnie do poniższego. W tym przykładzie przedstawiono również sposób podania poświadczeń dla wielu baz danych. Dla maszyn wirtualnych tworzonych przez te skrypty certyfikat SSL nie pochodzi z zaufanego głównego urzędu certyfikacji. W związku z tym, należy użyć **— AllowUntrusted** opcji.
+Jeśli tworzysz maszynę wirtualną, polecenie wygląda podobnie do poniższego. W tym przykładzie przedstawiono również sposób podania poświadczeń dla wielu baz danych. Dla maszyn wirtualnych tworzonych przez te skrypty certyfikat SSL nie pochodzi z zaufanego głównego urzędu certyfikacji. W związku z tym, należy użyć **— AllowUntrusted** opcji.
 
-    ```powershell
-    Publish-WebApplication.ps1 `
-    -Configuration C:\Path\ADVM-VM-test.json `
-    -SubscriptionName Contoso `
-    -WebDeployPackage C:\Path\ADVM.zip `
-    -AllowUntrusted `
-    -VMPassword @{name = "vmUserName"; password = "YourPasswordHere"} `
-    -DatabaseServerPassword @{Name="server1";Password="adminPassword1"}, @{Name="server2";Password="adminPassword2"} `
-    -Verbose
-    ```
+```powershell
+Publish-WebApplication.ps1 `
+-Configuration C:\Path\ADVM-VM-test.json `
+-SubscriptionName Contoso `
+-WebDeployPackage C:\Path\ADVM.zip `
+-AllowUntrusted `
+-VMPassword @{name = "vmUserName"; password = "YourPasswordHere"} `
+-DatabaseServerPassword @{Name="server1";Password="adminPassword1"}, @{Name="server2";Password="adminPassword2"} `
+-Verbose
+```
 
-    Skrypt można tworzyć bazy danych, ale nie tworzy, serwerów baz danych. Jeśli chcesz utworzyć serwer bazy danych, możesz użyć **New AzureSqlDatabaseServer** funkcja w module platformy Azure.
+Skrypt można tworzyć bazy danych, ale nie tworzy, serwerów baz danych. Jeśli chcesz utworzyć serwer bazy danych, możesz użyć **New AzureSqlDatabaseServer** funkcja w module platformy Azure.
 
 ## <a name="customizing-and-extending-the-publish-scripts"></a>Dostosowywanie i rozszerzanie skryptów publikowania
+
 Można dostosować skrypt publikowania i pliku konfiguracji JSON. Funkcje w module Windows PowerShell **AzureWebAppPublishModule.psm1** nie są przeznaczone do zmodyfikowania. Jeśli chcesz określić inną bazę danych lub zmienić niektóre właściwości maszyny wirtualnej, należy edytować plik konfiguracji JSON. Jeśli chcesz rozszerzyć funkcjonalność skryptu, aby zautomatyzować tworzenie i testowanie projektu, można zaimplementować wycinki funkcji w **WebApplication.ps1 Publikuj**.
 
 Aby zautomatyzować tworzenie projektu, Dodaj kod, który wywołuje program MSBuild `New-WebDeployPackage` jak pokazano w poniższym przykładzie kodu. Ścieżka do polecenia MSBuild różni się zależnie od wersji programu Visual Studio zostały zainstalowane. Aby uzyskać prawidłowej ścieżki, można użyć funkcji **Get MSBuildCmd**, jak pokazano w poniższym przykładzie.
 
 ### <a name="to-automate-building-your-project"></a>Aby zautomatyzować tworzenie projektu
+
 1. Dodaj `$ProjectFile` parametru w sekcji parametrów globalnych.
 
     ```powershell
@@ -221,7 +224,7 @@ Aby zautomatyzować tworzenie projektu, Dodaj kod, który wywołuje program MSBu
     $ProjectFile,
     ```
 
-2. Copy — funkcja `Get-MSBuildCmd` do pliku skryptu.
+1. Copy — funkcja `Get-MSBuildCmd` do pliku skryptu.
 
     ```powershell
     function Get-MSBuildCmd
@@ -242,7 +245,7 @@ Aby zautomatyzować tworzenie projektu, Dodaj kod, który wywołuje program MSBu
     }
     ```
 
-3. Zastąp `New-WebDeployPackage` z następującym kodem i zastąp symbole zastępcze w wywołaniach konstruowanie wiersza `$msbuildCmd`. Ten kod jest w programie Visual Studio 2017. Jeśli używasz programu Visual Studio 2015, zmień **VisualStudioVersion** właściwości `14.0` (`12.0` dla programu Visual Studio 2013).
+1. Zastąp `New-WebDeployPackage` z następującym kodem i zastąp symbole zastępcze w wywołaniach konstruowanie wiersza `$msbuildCmd`. Ten kod jest w programie Visual Studio 2017. Jeśli używasz programu Visual Studio 2015, zmień **VisualStudioVersion** właściwości `14.0` (`12.0` dla programu Visual Studio 2013).
 
     ```powershell
     function New-WebDeployPackage
@@ -250,15 +253,15 @@ Aby zautomatyzować tworzenie projektu, Dodaj kod, który wywołuje program MSBu
         #Write a function to build and package your web application
     ```
 
-    Aby utworzyć aplikację sieci web, należy użyć MsBuild.exe. Aby uzyskać pomoc zobacz informacje wiersza polecenia programu MSBuild na: [http://go.microsoft.com/fwlink/?LinkId=391339](http://go.microsoft.com/fwlink/?LinkId=391339)
+Aby utworzyć aplikację sieci web, należy użyć MsBuild.exe. Aby uzyskać pomoc zobacz informacje wiersza polecenia programu MSBuild na: [http://go.microsoft.com/fwlink/?LinkId=391339](http://go.microsoft.com/fwlink/?LinkId=391339)
 
-    ```powershell
-    Write-VerboseWithTime 'Build-WebDeployPackage: Start'
+```powershell
+Write-VerboseWithTime 'Build-WebDeployPackage: Start'
 
-    $msbuildCmd = '"{0}" "{1}" /T:Rebuild;Package /P:VisualStudioVersion=15.0 /p:OutputPath="{2}\MSBuildOutputPath" /flp:logfile=msbuild.log,v=d' -f (Get-MSBuildCmd), $ProjectFile, $scriptDirectory
+$msbuildCmd = '"{0}" "{1}" /T:Rebuild;Package /P:VisualStudioVersion=15.0 /p:OutputPath="{2}\MSBuildOutputPath" /flp:logfile=msbuild.log,v=d' -f (Get-MSBuildCmd), $ProjectFile, $scriptDirectory
 
-    Write-VerboseWithTime ('Build-WebDeployPackage: ' + $msbuildCmd)
-    ```
+Write-VerboseWithTime ('Build-WebDeployPackage: ' + $msbuildCmd)
+```
 
 ### <a name="start-execution-of-the-build-command"></a>Rozpocznij wykonywanie polecenia kompilacji
 
@@ -293,7 +296,7 @@ return $WebDeployPackage
     }
     ```
 
-2. Wywoływanie niestandardowych skryptów z wiersza polecenia przy użyciu przekazywania `$Project` argumentu, jak w poniższym przykładzie:
+1. Wywoływanie niestandardowych skryptów z wiersza polecenia przy użyciu przekazywania `$Project` argumentu, jak w poniższym przykładzie:
 
     ```powershell
     .\Publish-WebApplicationVM.ps1 -Configuration .\Configurations\WebApplication5-VM-dev.json `
@@ -303,9 +306,10 @@ return $WebDeployPackage
     -Verbose
     ```
 
-    Aby zautomatyzować testowanie aplikacji, Dodaj kod, aby `Test-WebApplication`. Należy koniecznie Usuń komentarz wiersze **WebApplication.ps1 Publikuj** gdzie te funkcje są wywoływane. Jeśli nie zapewniają implementacji, można ręcznie utworzyć projektu za pomocą programu Visual Studio, a następnie uruchom skrypt publish do publikowania na platformie Azure.
+Aby zautomatyzować testowanie aplikacji, Dodaj kod, aby `Test-WebApplication`. Należy koniecznie Usuń komentarz wiersze **WebApplication.ps1 Publikuj** gdzie te funkcje są wywoływane. Jeśli nie zapewniają implementacji, można ręcznie utworzyć projektu za pomocą programu Visual Studio, a następnie uruchom skrypt publish do publikowania na platformie Azure.
 
 ## <a name="publishing-function-summary"></a>Podsumowanie funkcji publikowania
+
 Aby uzyskać pomoc dotyczącą funkcji, można użyć w wierszu polecenia programu Windows PowerShell, użyj polecenia `Get-Help function-name`. Pomoc zawiera pomocy do parametrów i przykłady. Ten sam tekst pomocy jest również w plikach źródłowych skryptów **AzureWebAppPublishModule.psm1** i **WebApplication.ps1 Publikuj**. Skrypt i pomocy są zlokalizowane w języku Visual Studio.
 
 **AzureWebAppPublishModule**

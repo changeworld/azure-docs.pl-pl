@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 229f3dd11a90c4f6d65c9cae2a5dd3447eedf83e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 1f2c8233e0385c58df66703f3611c51072f7118a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225263"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341793"
 ---
 # <a name="azure-instance-metadata-service"></a>Usługa Azure Instance Metadata service
 
@@ -289,7 +289,7 @@ name | Nazwa maszyny Wirtualnej | 2017-04-02
 oferta | Oferuje informacje dotyczące obrazu maszyny Wirtualnej. Ta wartość dotyczy tylko obrazy wdrożone z galerii obrazów systemu Azure. | 2017-04-02
 Wydawcy | Wydawca obrazu maszyny Wirtualnej | 2017-04-02
 sku | Określone jednostki SKU dla obrazu maszyny Wirtualnej | 2017-04-02
-wersja | Wersja obrazu maszyny Wirtualnej | 2017-04-02
+version | Wersja obrazu maszyny Wirtualnej | 2017-04-02
 osType | System Linux lub Windows | 2017-04-02
 platformUpdateDomain |  [Domena aktualizacji](manage-availability.md) maszyna wirtualna jest uruchomiona | 2017-04-02
 platformFaultDomain | [Domena błędów](manage-availability.md) maszyna wirtualna jest uruchomiona | 2017-04-02
@@ -310,7 +310,7 @@ podsieci/prefiks | Prefiks podsieci, przykład 24 | 2017-04-02
 adres IPv6/IP | Lokalny adres IPv6 maszyny wirtualnej | 2017-04-02 
 macAddress | Adres mac dla maszyny Wirtualnej | 2017-04-02 
 scheduledevents | Zobacz [zaplanowane zdarzenia](scheduled-events.md) | 2017-08-01
-identity | (Wersja zapoznawcza) Tożsamość usługi zarządzanej. Zobacz [uzyskiwanie tokenu dostępu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01 
+identity | (Wersja zapoznawcza) Zarządzanych tożsamości dla zasobów platformy Azure. Zobacz [uzyskiwanie tokenu dostępu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01 
 
 ## <a name="example-scenarios-for-usage"></a>Przykładowe scenariusze użycia  
 

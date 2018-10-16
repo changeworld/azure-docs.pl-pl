@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 84869a93dfe2f979e207257ebac80773a172a776
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 04f233384ad0d02cb5b7056df1e5fdfc74b9bec8
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017928"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344629"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Zwrotny serwer proxy w usłudze Azure Service Fabric
 Zwrotny serwer proxy, wbudowana w usłudze Azure Service Fabric pomaga mikrousług działającego w klastrze usługi Service Fabric, odnajdywanie i komunikować się z innymi usługami, które mają punktów końcowych http.
@@ -155,6 +155,8 @@ W przypadku usług działających w kontenerach, można użyć zmiennej środowi
     var serviceUrl = $"http://{fqdn}:19081/DockerSFApp/UserApiContainer";
 ```
 Dla klastra lokalnego `Fabric_NodeIPOrFQDN` jest domyślnie do "localhost". Uruchom lokalny klaster przy użyciu `-UseMachineName` parametru, aby upewnić się, kontenerów może osiągnąć zwrotny serwer proxy, uruchomione w węźle. Aby uzyskać więcej informacji, zobacz [konfigurowania środowiska dewelopera w celu debugowania kontenery](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers).
+
+Usługi Service Fabric, działających w kontenerach Docker Compose wymagają specjalnych docker-compose.yml *porty sekcji* http: lub https: konfiguracji. Aby uzyskać więcej informacji, zobacz [narzędzia Docker Compose Obsługa wdrażania w usłudze Azure Service Fabric](service-fabric-docker-compose.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Instalowanie i konfigurowanie zwrotnego serwera proxy w klastrze](service-fabric-reverseproxy-setup.md).

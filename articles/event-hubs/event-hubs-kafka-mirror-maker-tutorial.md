@@ -10,12 +10,12 @@ ms.topic: mirror-maker
 ms.custom: mvc
 ms.date: 08/07/2018
 ms.author: bahariri
-ms.openlocfilehash: f3881d4448f44d44515ddb25072401d775d69b90
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 2812ba42ee9e6cd49d7ab4d72fb5df461959a2b7
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42747192"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319833"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Przy użyciu narzędzia MirrorMaker platformy Kafka z usługą Event Hubs dla platformy Apache Kafka
 
@@ -24,7 +24,7 @@ W tym samouczku pokazano, jak duplikatów brokerem platformy Kafka w Centrum zda
    ![Narzędzia MirrorMaker platformy Kafka w usłudze Event Hubs](./media/event-hubs-kafka-mirror-maker-tutorial/evnent-hubs-mirror-maker1.png)
 
 > [!NOTE]
-> Ten przykład jest dostępny w witrynie [GitHub](https://github.com/Azure/azure-event-hubs)
+> Ten przykład jest dostępny w witrynie [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker)
 
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -44,7 +44,7 @@ Punkt końcowy usługi Azure Event Hubs Kafka umożliwiają łączenie usługi A
 
 Aby ukończyć kroki tego samouczka, upewnij się, że dysponujesz następującymi elementami:
 
-* Zapoznaj się z artykułem [usługi Event Hubs dla platformy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) artykułu. 
+* Zapoznaj się z artykułem [Usługa Event Hubs dla platformy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md). 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * [Zestaw Java Development Kit (JDK) 1.7+](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
     * W systemie Ubuntu uruchom polecenie `apt-get install default-jdk`, aby zainstalować zestaw JDK.
@@ -60,11 +60,11 @@ Przestrzeń nazw usługi Event Hubs jest wymagana do wysyłania i odbierania z d
 
 ## <a name="clone-the-example-project"></a>Sklonuj projekt przykładowy
 
-Teraz, gdy masz platformy Kafka włączone parametry połączenia usługi Event Hubs, sklonuj repozytorium usługi Azure Event Hubs i przejdź do `mirror-maker` podfolder:
+Teraz, gdy masz platformy Kafka włączone parametry połączenia usługi Event Hubs, Azure Event Hubs dla platformy Kafka repozytorium klonowanie i przejdź do `mirror-maker` podfolder:
 
 ```shell
-git clone https://github.com/Azure/azure-event-hubs.git
-cd azure-event-hubs/samples/kafka/mirror-maker
+git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
+cd azure-event-hubs-for-kafka/tutorials/mirror-maker
 ```
 
 ## <a name="set-up-a-kafka-cluster"></a>Konfigurowanie klastra Kafka
@@ -130,7 +130,9 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Konfigurowanie narzędzia MirrorMaker platformy Kafka
 > * Uruchom narzędzia MirrorMaker platformy Kafka
 
-Przejdź do następnego artykułu, aby dowiedzieć się więcej o usłudze Event Hubs dla platformy Apache Kafka:
+Aby dowiedzieć się więcej na temat usługi Event Hubs i usługi Event Hubs dla platformy Kafka, zobacz następujący temat:  
 
-> [!div class="nextstepaction"]
-> [Za pomocą Apache Flink usługi Azure Event Hubs dla platformy Kafka](event-hubs-kafka-flink-tutorial.md)
+* [Dowiedz się więcej na temat usługi Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Dowiedz się więcej o usłudze Event Hubs dla platformy Kafka](event-hubs-for-kafka-ecosystem-overview.md)
+* [Poznaj więcej przykładów na usługi Event Hubs dla platformy Kafka w usłudze GitHub](https://github.com/Azure/azure-event-hubs-for-kafka)
+* Dowiedz się, jak przesyłać strumieniowo do platformy Kafka włączone za pomocą usługi Event Hubs [natywnych aplikacji platformy Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md), [Apache Flink](event-hubs-kafka-flink-tutorial.md), lub [Akka strumieni](event-hubs-kafka-akka-streams-tutorial.md)

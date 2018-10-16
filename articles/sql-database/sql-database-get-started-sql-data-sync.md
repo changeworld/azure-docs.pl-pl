@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 82390ae304fc4d6873efc4a5073725a02b915eaa
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 98d30d2987d42a2c4893e00c3ba2ea6acd471bef
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870591"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318813"
 ---
 # <a name="set-up-sql-data-sync-to-sync-data-between-azure-sql-database-and-sql-server-on-premises"></a>Skonfiguruj SQL Data Sync na synchronizowanie danych między Azure SQL Database i programu SQL Server w środowisku lokalnym
 
@@ -61,7 +61,7 @@ Aby uzyskać kompletny przykład programu PowerShell, które pokazują, jak skon
    2. W **bazy danych metadanych synchronizacji** pozycję Wybierz, czy do tworzenia nowej bazy danych (zalecane) lub użyj istniejącej bazy danych.
 
         > [!NOTE]
-        > Firma Microsoft zaleca, aby utworzyć nową, pustą bazę danych do użycia jako baza metadanych synchronizacji. Synchronizacja danych tworzy tabele w tej bazie danych i uruchamia częste obciążenia. Ta baza danych jest automatycznie udostępniany jako baza danych metadanych synchronizacji dla wszystkich grup synchronizacji w wybranym regionie. Nie można zmienić bazy danych metadanych synchronizacji lub jego nazwę bez usuwania go.
+        > Firma Microsoft zaleca, aby utworzyć nową, pustą bazę danych do użycia jako baza metadanych synchronizacji. Synchronizacja danych tworzy tabele w tej bazie danych i uruchamia częste obciążenia. Ta baza danych jest automatycznie udostępniany jako baza danych metadanych synchronizacji dla wszystkich grup synchronizacji w wybranym regionie. Nie można zmienić bazy danych metadanych synchronizacji lub jego nazwę bez usuwania grupy synchronizacji i agenci synchronizacji w regionie.
 
         Jeśli została wybrana opcja **nową bazę danych**, wybierz opcję **Utwórz nową bazę danych.** **Bazy danych SQL** zostanie otwarta strona. Na **bazy danych SQL** strony, nazwać i skonfigurować nową bazę danych. Następnie wybierz przycisk **OK**.
 

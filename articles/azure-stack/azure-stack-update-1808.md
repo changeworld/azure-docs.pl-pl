@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 2e913881faadd4892ad1ebc8cb404efe6489eb0d
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 2e40f0520c0f5e605974f883b3327699ff26313e
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310902"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321822"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizacja usługi Azure Stack 1808
 
@@ -145,13 +145,6 @@ Ta aktualizacja zawiera także ograniczania ryzyka związanego z wykonywaniem sp
 
 ### <a name="known-issues-with-the-update-process"></a>Znane problemy związane z procesem aktualizacji
 
-<!-- TBD - IS -->
-- Możesz zobaczyć następujące alerty regularnie pojawiają się i następnie znikają w systemie Azure Stack:
-   - *Infrastruktura wystąpienie roli jest niedostępne*
-   - *Węzeł jednostka skalowania jest w trybie offline*
-   
-  Uruchom [AzureStack testu](azure-stack-diagnostic-test.md) polecenia cmdlet, aby sprawdzić kondycję wystąpień roli infrastruktury i skalowanie węzłów jednostki. Brak problemów w przypadku wykrycia przez [AzureStack testu](azure-stack-diagnostic-test.md), można zignorować te alerty. W przypadku wykrycia problemu można spróbować uruchomić wystąpienie roli infrastruktury lub węzła przy użyciu portalu administracyjnego lub programu PowerShell.
-
 - Po uruchomieniu [AzureStack testu](azure-stack-diagnostic-test.md) po 1808 aktualizacji, wyświetlany jest komunikat ostrzegawczy z kontrolera zarządzania płytą główną (BMC). Można bezpiecznie zignorować to ostrzeżenie.
 
 <!-- 2468613 - IS --> 
@@ -174,7 +167,7 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 
 ### <a name="portal"></a>Portal
 
-- Dokumentacja techniczna usługi Azure Stack koncentruje się na najnowszej wersji. Z powodu portalu zmian między wersjami Zobacz podczas przy użyciu portali usługi Azure Stack mogą różnić się od wyświetlanych w dokumentacji. 
+- Dokumentacja techniczna usługi Azure Stack koncentruje się na najnowszej wersji zestawu Azure Stack. Z powodu portalu zmian między wersjami Zobacz podczas przy użyciu portali usługi Azure Stack mogą różnić się od wyświetlanych w dokumentacji. 
 
 <!-- TBD - IS ASDK --> 
 - Możesz zobaczyć pustego pulpitu nawigacyjnego w portalu. Aby odzyskać pulpitu nawigacyjnego, kliknij **Edytuj pulpit nawigacyjny**, a następnie kliknij prawym przyciskiem myszy i wybierz **przywrócony stan domyślny**.
@@ -214,6 +207,14 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 
 
 ### <a name="health-and-monitoring"></a>Monitorowanie kondycji i
+
+<!-- TBD - IS -->
+- Możesz zobaczyć następujące alerty regularnie pojawiają się i następnie znikają w systemie Azure Stack:
+   - *Infrastruktura wystąpienie roli jest niedostępne*
+   - *Węzeł jednostka skalowania jest w trybie offline*
+   
+  Uruchom [AzureStack testu](azure-stack-diagnostic-test.md) polecenia cmdlet, aby sprawdzić kondycję wystąpień roli infrastruktury i skalowanie węzłów jednostki. Brak problemów w przypadku wykrycia przez [AzureStack testu](azure-stack-diagnostic-test.md), można zignorować te alerty. W przypadku wykrycia problemu można spróbować uruchomić wystąpienie roli infrastruktury lub węzła przy użyciu portalu administracyjnego lub programu PowerShell.
+
 <!-- 1264761 - IS ASDK --> 
 - Użytkownik może widzieć alerty dla **kondycji kontrolera** składnik, który ma następujące informacje:  
 

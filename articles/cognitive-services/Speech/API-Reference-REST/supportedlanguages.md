@@ -1,28 +1,29 @@
 ---
-title: Obsługa języków — interfejs API rozpoznawania mowy
-titleSuffix: Azure Cognitive Services
-description: Lista języków naturalnych, które są obsługiwane przez interfejs API rozpoznawania mowy.
+title: Rozpoznawanie mowy Bing obsługiwane języki | Dokumentacja firmy Microsoft
+titlesuffix: Azure Cognitive Services
+description: Lista języków obsługiwanych przez rozpoznawania mowy Bing.
 services: cognitive-services
 author: zhouwangzw
-manager: cgronlun
+manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: eeb0f475193a43ab8b0b0ca562364cbdef8a21d2
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 961bc2f5d8d619c5a1815b0f4be3b837f72513f4
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433144"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340039"
 ---
-# <a name="language-and-region-support-for-speech-api"></a>Obsługa języka i regionu dla interfejsu API rozpoznawania mowy
+# <a name="supported-languages"></a>Obsługiwane języki
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 ## <a name="interactive-and-dictation-mode"></a>Tryb interaktywny i dyktowanie
 
-Interfejs API rozpoznawania mowy firmy Microsoft obsługuje następujące języki w `interactive` i `dictation` tryby.
+Interfejs API rozpoznawania mowy firmy Microsoft obsługuje następujące języki w `interactive` i `dictation` tryby. 
 
 |Kod | Język | Kod | Język |
 |-----|-----|-----|-----|
@@ -40,12 +41,11 @@ Interfejs API rozpoznawania mowy firmy Microsoft obsługuje następujące język
 | es-MX | Hiszpański (Meksyk) |zh-CN | Chiński (mandaryński uproszczony)  |
 | fi-FI | Fiński (Finlandia) |zh-HK | Chiński (Hongkong SAR) |
 | fr-CA | Francuski (Kanada) | zh-TW | Chiński (mandaryński, tajwańskich)|
-| fr-FR | Francuski (Francja) | w gu | Gudżarati (Indie) |
-| Ta w |Tamilski (Indie) | Twórz w | Telugu (Indie) |
+| fr-FR | Francuski (Francja) | ||
 
 ## <a name="conversation-mode"></a>Tryb konwersacji
 
-Interfejs API rozpoznawania mowy firmy Microsoft obsługuje następujące języki w `conversation` tryby.
+Interfejs API rozpoznawania mowy firmy Microsoft obsługuje następujące języki w `conversation` tryby. 
 
 | Kod | Język | Kod | Język |
 |-----|-----|-----|-----|

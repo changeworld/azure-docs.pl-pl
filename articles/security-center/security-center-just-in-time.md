@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 10/10/2018
 ms.author: rkarlin
-ms.openlocfilehash: cb13da7ad9387b7170882752b1620c2756bc3675
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 98533e3c1454867ff09c53902f0f575d198452a3
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124155"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320343"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Zarządzanie dostępem maszyny wirtualnej przy użyciu dokładnie na czas
 
@@ -111,6 +111,33 @@ W obszarze **Konfiguracja dostępu do maszyn wirtualnych JIT**, można także do
 > [!NOTE]
 >Gdy dostęp do maszyn wirtualnych JIT jest włączone dla maszyny Wirtualnej, usługa Azure Security Center tworzy odmówić wszystkich reguł ruchu przychodzącego dla wybranych portów w grupach zabezpieczeń sieci skojarzonych z nim. Zasady będzie najwyższy priorytet o sieciowych grupach zabezpieczeń lub niższy priorytet niż istniejące reguły, które zostały już istnieje. Zależy to od analizy wykonywane przez usługę Azure Security Center, która określa, czy reguła jest bezpieczne.
 >
+
+
+## <a name="set-just-in-time-within-a-vm"></a>Ustaw just-in-time w ramach maszyny Wirtualnej
+
+Ułatwia to dystrybucję dostępu just in time dla maszyn wirtualnych, można ustawić maszynę Wirtualną, aby zezwolić na dostęp tylko just in time do bezpośrednio z poziomu maszyny Wirtualnej.
+
+1. W witrynie Azure portal wybierz **maszyn wirtualnych**.
+2. Kliknij maszynę wirtualną, którą chcesz ograniczyć dostęp just in time do.
+3. W menu, kliknij **konfiguracji**.
+4. W obszarze **tylko w czasie dostępu** kliknij **Włącz zasady just-in-time**. 
+
+Dzięki temu dostęp just in time do maszyny wirtualnej, używając następujących ustawień:
+
+- Serwery Windows:
+    - Port 3389 protokołu RDP
+    - dostęp do 3 godzin
+    - Dozwolone źródłowe adresy IP ustawiono na żądanie
+- Serwery z systemem Linux:
+    - Port 22 protokołu SSH
+    - dostęp do 3 godzin
+    - Dozwolone źródłowe adresy IP ustawiono na żądanie
+     
+Jeśli maszyna wirtualna ma już just-in-time włączone, po przejściu do strony konfiguracji będzie czy just in time jest włączone, i użyć linku, aby otworzyć zasady w usłudze Azure Security Center, aby wyświetlić i zmienić ustawienia.
+
+![Konfiguracja JIT na maszynie wirtualnej](./media/security-center-just-in-time/jit-vm-config.png)
+
+
 ## <a name="requesting-access-to-a-vm"></a>Żądanie dostępu do maszyny Wirtualnej
 
 Aby poprosić o dostęp do maszyny Wirtualnej:

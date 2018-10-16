@@ -1,24 +1,24 @@
 ---
-title: Rozpoczynanie pracy z usługą Custom Speech Service
-titlesuffix: Azure Cognitive Services
+title: Rozpoczynanie pracy z usługą Custom Speech Service na platformie Azure | Dokumentacja firmy Microsoft
 description: Subskrybowanie usługi Custom Speech i połącz działania usługi subskrypcji platformy Azure do uczenia modelu i wdrożenie.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: conceptual
+ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: ae72edd626bd91dea7cd2812a3ef821b905f59a4
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 4bbd4c57556fd4bfd176c915e26be4a4d198418a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225246"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339937"
 ---
 # <a name="get-started-with-custom-speech-service"></a>Rozpoczynanie pracy z usługą Custom Speech Service
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
 
 Zapoznaj się z najważniejszych funkcji Custom Speech Service i Dowiedz się, jak tworzenie, wdrażanie i używanie akustyczne i językowe modeli do potrzeb aplikacji. Bardziej szczegółową dokumentację i instrukcje krok po kroku można znaleźć po zarejestrowaniu się w portalu niestandardowych usług przetwarzania mowy.
 
@@ -34,7 +34,7 @@ Przed gry z powyższych przykładu, należy zasubskrybować Custom Speech Servic
 Możesz ją pobrać bibliotekę klienta oraz przykład za pośrednictwem [SDK](https://www.microsoft.com/cognitive-services/en-us/SDK-Sample?api=bing%20speech&category=sdk). Plik zip pobranego musi zostać wyodrębniona do wybranego folderu, wielu użytkowników, wybierz folder programu Visual Studio 2015.
 
 ## <a name="creating-a-custom-acoustic-model"></a>Tworzenie niestandardowych modeli akustycznych
-Aby dostosować model akustyczny do określonej domeny, to zbiór danych mowy jest wymagany. Ta kolekcja składa się z zestawu plików dźwiękowych z danymi mowy oraz pliku tekstowego z transkrypcjami wszystkich plików dźwiękowych. Dane audio powinna być reprezentatywna dla scenariusza, w której chcesz użyć aparatu rozpoznawania
+Aby dostosować model akustyczny pod kątem wybranej domeny, wymagana jest kolekcja danych mowy. Ta kolekcja składa się z zestawu plików dźwiękowych z danymi mowy oraz pliku tekstowego z transkrypcjami wszystkich plików dźwiękowych. Dane audio powinna być reprezentatywna dla scenariusza, w której chcesz użyć aparatu rozpoznawania
 
 Na przykład: Jeśli chcesz lepiej rozpoznawanie mowy w środowisku fabryki generujące dużo alertów, pliki audio powinna składać się z osób wypowiedzi w fabryce generujące dużo alertów.
 Jeśli interesuje Cię Optymalizacja wydajności dla pojedynczej osoby mówiącej, może np. Czy chcesz także wszystkie rozmowy Fireside FDR firmy, a następnie pliki audio powinna składać się z wielu przykładów tylko tej osoby mówiącej.
@@ -52,7 +52,7 @@ Po utworzeniu niestandardowych modeli akustycznych i/lub modeli językowych, mo�
 Szczegółowy opis można znaleźć o tym, jak utworzyć punkt końcowy niestandardowego tekstu mowy [tutaj](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-endpoint.md).
 
 ## <a name="using-a-custom-speech-endpoint"></a>Przy użyciu punktu końcowego niestandardowa zamiana mowy
-Żądania mogą być wysyłane w punkcie końcowym zamiany mowy na tekst CRI w bardzo podobny sposób jako domyślny punkt końcowy rozpoznawania mowy usług Azure Cognitive Services. Należy pamiętać, że te punkty końcowe są funkcjonalnie identyczny domyślne punkty końcowe interfejsu API rozpoznawania mowy. W związku z tym te same funkcje dostępne za pośrednictwem biblioteki klienta lub interfejsu API REST dla interfejsu API rozpoznawania mowy jest również dostępna dla niestandardowego punktu końcowego.
+Żądania mogą być wysyłane w punkcie końcowym zamiany mowy na tekst CRI w bardzo podobny sposób jako domyślny punkt końcowy rozpoznawania mowy usługi Microsoft Cognitive Services. Należy pamiętać, że te punkty końcowe są funkcjonalnie identyczny domyślne punkty końcowe interfejsu API rozpoznawania mowy. W związku z tym te same funkcje dostępne za pośrednictwem biblioteki klienta lub interfejsu API REST dla interfejsu API rozpoznawania mowy jest również dostępna dla niestandardowego punktu końcowego.
 
 Szczegółowy opis można znaleźć na temat korzystania z niestandardowego punktu końcowego mowy na tekst [tutaj](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-use-endpoint.md).
 

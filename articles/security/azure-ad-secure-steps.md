@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 2a6c94d902c639a2529e501347876d63a3f56d7e
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 94d96cab28f738984b3d05d5eee0754e8c5e75b6
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505613"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341583"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pięć kroków do zabezpieczania infrastruktury tożsamości
 
@@ -44,7 +44,7 @@ Wszystko jest gotowe? Zacznijmy listy kontrolnej.
 
 ## <a name="step-1---strengthen-your-credentials"></a>Krok 1 — zwiększanie poświadczeń 
 
-Większości naruszeń zabezpieczeń przedsiębiorstwa pochodzą z kontem naruszona za pomocą jednej z kilku metod, takich jak hasła osłony, powtarzanie naruszenia lub wyłudzania informacji. Dowiedz się więcej na temat tych ataków, w tym filmie pokazano:
+Większości naruszeń zabezpieczeń przedsiębiorstwa pochodzą z kontem naruszona za pomocą jednej z kilku metod, takich jak hasła osłony, powtarzanie naruszenia lub wyłudzania informacji. Dowiedz się więcej na temat tych ataków, w tym filmie pokazano (1 godz. 15 min):
 > [!VIDEO https://channel9.msdn.com/events/Ignite/Microsoft-Ignite-Orlando-2017/BRK3016/player]
 
 Jeśli użytkownicy w Twoim systemie tożsamości korzysta słabe hasła i nie wzmocnienia je przy użyciu uwierzytelniania wieloskładnikowego, nie jest kwestią lub gdy można pobrać naruszenia zabezpieczeń — po prostu "jak często."

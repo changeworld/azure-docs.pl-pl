@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/06/2018
 ms.author: manayar
-ms.openlocfilehash: aed804a257376308c668ce0c2f3e8ce652ee9b3f
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 0e73abf0fc170079d4b2bc093df45c998e68d184
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42060660"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320530"
 ---
 # <a name="map-virtual-networks-in-different-azure-regions"></a>Mapowanie sieci wirtualnych w różnych regionach platformy Azure
 
@@ -106,7 +106,7 @@ Jeśli podsieć źródłowa i docelowa podsieć ma różne przestrzenie adresowe
 Maszyna wirtualna trybie failed-over zostaną przypisane przy użyciu - następnego dostępnego adresu IP od końca zakresu adresów podsieci, która jest: 10.0.0.254 </br>
 
 **Uwaga:** terminologii **sieci wirtualnej w środowisku produkcyjnym** jest określana "Sieć docelowa" zamapowanych podczas konfiguracji odzyskiwania po awarii.
-####<a name="2-if-the-target-network-chosen-is-not-the-production-vnet-but-has-the-same-subnet-range-as-production-network"></a>2. Jeśli wybrana sieć docelowa nie jest w sieci wirtualnej w środowisku produkcyjnym, ale ma z tego samego zakresu podsieci w sieci w środowisku produkcyjnym 
+#### <a name="2-if-the-target-network-chosen-is-not-the-production-vnet-but-has-the-same-subnet-range-as-production-network"></a>2. Jeśli wybrana sieć docelowa nie jest w sieci wirtualnej w środowisku produkcyjnym, ale ma z tego samego zakresu podsieci w sieci w środowisku produkcyjnym 
 
 - Adres IP odzyskiwania (docelowy adres IP) będzie statyczny adres IP z **ten sam adres IP** (czyli skonfigurować statyczny adres IP) jako zarezerwowane dla trybu Failover. Pod warunkiem, że ten sam adres IP jest dostępna.
 - Jeśli skonfigurowane statyczny adres IP jest już przypisana do niektórych innych maszyn wirtualnych/urządzeń, IP odzyskiwania będzie następnego dostępnego adresu IP od końca zakresu adresów podsieci.

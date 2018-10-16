@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: c894fed56393e1504f54999e57bba6f9ffed27a7
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 18a6234eb56902625fdcc8f150a41b7551d229cc
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288258"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318541"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Przeprowadzanie inspekcji w usłudze Azure SQL Data Warehouse
 
@@ -112,7 +112,7 @@ Przed rozpoczęciem konfigurowania inspekcji inspekcje wyboru, jeśli używasz [
 
 ## <a id="subheading-3"></a>Analizowanie dzienników inspekcji i raporty
 
-###<a name="server-level-policy-audit-logs"></a>Dzienniki inspekcji zasad na poziomie serwera
+### <a name="server-level-policy-audit-logs"></a>Dzienniki inspekcji zasad na poziomie serwera
 Dzienniki inspekcji na poziomie serwera są zapisywane w **obiekty BLOB dołączania** w usłudze Azure Blob storage w ramach subskrypcji platformy Azure. Są one zapisywane jako zbiór plików obiektów blob w kontenerze o nazwie **sqldbauditlogs**.
 
 Aby uzyskać więcej informacji o hierarchii folderu przechowywania konwencji nazewnictwa i format dziennika zobacz [odwołanie Format dziennika inspekcji obiektów Blob](https://go.microsoft.com/fwlink/?linkid=829599).
@@ -147,7 +147,7 @@ Istnieje kilka metod, których można użyć, aby wyświetlić dzienniki inspekc
 
 
 <br>
-###<a name="database-level-policy-audit-logs"></a>Dzienniki inspekcji zasad na poziomie bazy danych
+### <a name="database-level-policy-audit-logs"></a>Dzienniki inspekcji zasad na poziomie bazy danych
 Dzienniki inspekcji na poziomie bazy danych są agregowane w kolekcji Store tabel z **SQLDBAuditLogs** prefiksu w ramach konta usługi Azure storage, wybrana w Instalatorze. Możesz wyświetlić pliki dziennika przy użyciu narzędzia, takie jak [Eksploratora usługi Azure Storage](http://azurestorageexplorer.codeplex.com).
 
 Szablon raportu wstępnie skonfigurowany pulpit nawigacyjny jest dostępny jako [arkusz kalkulacyjny programu Excel do pobrania](http://go.microsoft.com/fwlink/?LinkId=403540) ułatwiające szybsze analizowanie danych dzienników. Aby użyć szablonu w dziennikach inspekcji, potrzebujesz programu Excel 2013 lub nowszy i dodatku Power Query, który można [pobrać tutaj](http://www.microsoft.com/download/details.aspx?id=39379).

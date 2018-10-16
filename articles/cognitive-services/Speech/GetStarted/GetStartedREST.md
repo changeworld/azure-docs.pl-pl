@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: 0f98182a73cebdd4df9f7849b2306f89c620f24b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a9f74f4032a78ee51ea2a8f020cd1418bb3330ca
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973953"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345360"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Szybki Start: Używanie rozpoznawania mowy Bing interfejsu API REST
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 Za pomocą opartej na chmurze usługa rozpoznawania mowy Bing aplikacje można tworzyć przy użyciu interfejsu API REST do Konwertuj dźwięk mówiony na tekst.
 
@@ -78,7 +79,7 @@ Następujące pola musi być ustawiona w nagłówku żądania:
 - `Ocp-Apim-Subscription-Key`: Za każdym razem, należy wywołać usługę, należy przekazać swój klucz subskrypcji w `Ocp-Apim-Subscription-Key` nagłówka. Usługa rozpoznawania mowy obsługuje również operacji związanych z autoryzacją tokeny zamiast kluczy subskrypcji. Aby uzyskać więcej informacji, zobacz [uwierzytelniania](../How-to/how-to-authentication.md).
 - `Content-type``Content-type` Opisuje format i kodera-dekodera audio strumienia. Obecnie tylko plik WAV i PCM Mono 16000 kodowanie jest obsługiwane. Wartość Content-type ten format jest `audio/wav; codec=audio/pcm; samplerate=16000`.
 
-`Transfer-Encoding` Pole jest opcjonalne. Jeśli to pole jest ustawiona na `chunked`, audio mogą być skalowane na małe fragmenty. Aby uzyskać więcej informacji, zobacz [transferu pakietowego](../How-to/how-to-chunked-transfer.md).
+Pole `Transfer-Encoding` jest opcjonalne. Jeśli to pole jest ustawiona na `chunked`, audio mogą być skalowane na małe fragmenty. Aby uzyskać więcej informacji, zobacz [transferu pakietowego](../How-to/how-to-chunked-transfer.md).
 
 Poniżej przedstawiono przykładowy nagłówek żądania:
 

@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/06/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 5c54505625f40d7c0bd00111e2ff260dc9afaf1c
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: c7d2211ca69fcd18588ea1b20b638b2970b8439c
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288008"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318847"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-july-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Lipiec 2018 r.
 Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w lipca 2018 r.
@@ -30,7 +30,7 @@ Poza wydajność środowiska uruchomieniowego [badań Joego](https://gigaom.com/
 ![Usługa Azure SQL Data Warehouse jest szybsze i tańsze niż usługi Amazon Redshift](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/cb76447e-621e-414b-861e-732ffee5345a.png)
 <sub>źródło: [raport analityka badawczy Joego: Data Warehouse za pomocą testu wydajności chmury](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
 
-###<a name="query-concurrency"></a>Zapytanie współbieżności
+### <a name="query-concurrency"></a>Zapytanie współbieżności
 Usługa SQL Data Warehouse gwarantuje również, że dane są dostępne w Twojej organizacji. Microsoft oferuje ulepszone usługi dotyczące obsługi nawet 128 zapytań jednoczesnych, dzięki czemu większej liczby użytkowników mogą wysyłać zapytania tej samej bazy danych i nie zablokowane przez innych żądań. W odróżnieniu od usługi Amazon Redshift ogranicza maksymalna liczba jednoczesnych kwerend do 50, ograniczanie dostępu do danych w organizacji.
 
 Usługa SQL Data Warehouse zapewnia te zapytania wydajności i zapytania współbieżności zyski bez żadnych wzrost ceny i tworzenie po jego unikatowa architektura Dzięki rozdzieleniu magazynu i mocy obliczeniowej.

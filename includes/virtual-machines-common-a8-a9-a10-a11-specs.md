@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 05/29/2018
 ms.author: azcspmt;jonbeck;cynthn;danlep
 ms.custom: include file
-ms.openlocfilehash: 296e92d803bb69376f286aa60cfb4a955b08010f
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: c12fff63cdb7241d89e7511a3dac2ff9c1363ae6
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "34669350"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49346108"
 ---
 ## <a name="deployment-considerations"></a>Zagadnienia dotyczące wdrażania
 * **Subskrypcja platformy Azure** — Aby wdrożyć więcej niż kilka wystąpień obliczeniowych, należy wziąć pod uwagę subskrypcji zgodnie z rzeczywistym użyciem lub inne opcje zakupu. Jeśli używasz [bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/), możesz użyć ograniczonej liczby rdzeni obliczeniowych platformy Azure.
 
-* **Ceny i dostępności** -rozmiarów maszyn wirtualnych te są oferowane tylko w standardowej warstwy cenowej. Sprawdź [dostępne produkty według regionu] (https://azure.microsoft.com/regions/services/) dostępność w regionach platformy Azure. 
+* **Ceny i dostępności** -rozmiarów maszyn wirtualnych te są oferowane tylko w standardowej warstwy cenowej. Sprawdź [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/) dostępność w regionach platformy Azure. 
 * **Limit przydziału rdzeni** — może być konieczne zwiększyć limit przydziału rdzeni w ramach subskrypcji platformy Azure z wartości domyślnej. Twoja subskrypcja może także ograniczać liczbę rdzeni, które można wdrożyć w maszynie Wirtualnej rodzinach o określonym rozmiarze, łącznie z serii h. Aby zażądać zwiększenia limitu przydziału [Otwórz żądanie obsługi klienta online](../articles/azure-supportability/how-to-create-azure-support-request.md) bez dodatkowych opłat. (Domyślne limity mogą się różnić w zależności od kategorii subskrypcji).
   
   > [!NOTE]
@@ -37,4 +37,3 @@ Ten interfejs umożliwia obsługą dostępu RDMA wystąpień do komunikowania si
 > IP over IB nie jest obsługiwana na platformie Azure. Tylko RDMA over IB jest obsługiwane.
 >
 
-Wdróż obsługą dostępu RDMA maszyn wirtualnych HPC, w tym samym zestawie dostępności lub zestawie skalowania maszyn wirtualnych (Jeśli używasz modelu wdrażania usługi Azure Resource Manager) lub samej usługi w chmurze (Jeśli używasz klasycznego modelu wdrażania). Jeśli używasz zestawu skalowania maszyn wirtualnych, upewnij się, ograniczenie wdrożenia do pojedynczej grupy umieszczania; na przykład w szablonie usługi Resource Manager, należy ustawić *singlePlacementGroup* właściwości *true*. Wykonaj dodatkowe wymagania z funkcją RDMA HPC maszyn wirtualnych dostęp do sieci RDMA na platformie Azure.

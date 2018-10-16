@@ -7,13 +7,13 @@ ms.author: jasonh
 manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/03/2018
-ms.openlocfilehash: 136b21f026d208c09b50dfa8601de692e518774e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 10/15/2018
+ms.openlocfilehash: 661aa85a200d4eafa1c521b06f6e12378d61e93e
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699114"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343591"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Poziom zgodności dla zadań usługi Azure Stream Analytics
  
@@ -68,5 +68,5 @@ Następujące istotne zmiany są wprowadzane przy poziomie zgodności 1.1:
   * **Bieżąca wersja:** ma nie więcej automatycznie upcast — wartości ciągu daty/godziny/strefy informacje umożliwiające typu DateTime. W rezultacie są przechowywane informacje dotyczące strefy czasowej. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Przewodnik rozwiązywania problemów dla usługi Azure Stream Analytics](stream-analytics-troubleshooting-guide.md)
+* [Rozwiązywanie problemów z danych wejściowych usługi Azure Stream Analytics](stream-analytics-troubleshoot-input.md)
 * [Stream Analytics Resource health bloku](stream-analytics-resource-health.md)

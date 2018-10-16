@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 manager: jlembicz
 ms.author: nateko
-ms.openlocfilehash: 579d92f41e41cdb38d4a1eb0bb6e56ce4d4b2a45
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 9f887b065cf4fcc295873ee969030c67d17d9e2f
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093218"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318473"
 ---
 # <a name="synonyms-in-azure-search"></a>Synonimy w usłudze Azure Search
 
@@ -148,6 +148,8 @@ Funkcję synonimów ponownie zapisuje oryginalnego zapytania z synonimy za pomoc
 Funkcja synonimów dotyczy zapytań wyszukiwania tworzonych i nie ma zastosowania do filtrów lub zestawów reguł. Podobnie sugestie dotyczą tylko oryginalny warunek; synonim dopasowania nie są wyświetlane w odpowiedzi.
 
 Synonim rozszerzenia nie dotyczą terminy wyszukiwania symboli wieloznacznych; Prefiks rozmyte oraz postanowienia wyrażenie regularne nie są rozwinięte.
+
+Jeśli zachodzi potrzeba zrobić pojedyncze zapytanie, które mają zastosowanie rozszerzenia synonimów i symboli wieloznacznych, wyrażenie regularne lub wyszukiwania rozmytego, możesz połączyć zapytań przy użyciu składni OR. Na przykład aby połączyć synonimy z symbolami wieloznacznymi dla prosta składnia zapytań, termin będzie `<query> | <query>*`.
 
 ## <a name="tips-for-building-a-synonym-map"></a>Porady dotyczące tworzenia mapy synonimów
 

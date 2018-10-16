@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: b40004e80bf12782b29f5e156a59fb40c807fe57
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e2521fe3c7ff14765878a7e98a605a9ebbac7cc7
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296043"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345173"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wybierz metodę uwierzytelniania odpowiednie dla Twojego rozwiązania tożsamości hybrydowej usługi Azure Active Directory 
 
@@ -52,11 +52,11 @@ W przypadku wybrania tej metody uwierzytelniania, usługi Azure AD obsługuje pr
 **Synchronizacja skrótów haseł w usłudze Azure AD**. Najprostszym sposobem, aby włączyć uwierzytelnianie dla obiektów katalogu lokalnego, w usłudze Azure AD. Użytkownicy mogą używać tej samej nazwy użytkownika i hasło, którego używają lokalnie bez konieczności wdrażania jakiejkolwiek dodatkowej infrastruktury. Niektóre funkcje premium usługi Azure AD, takie jak ochrona tożsamości wymagają synchronizacji skrótów haseł dla niezależnie od tego, którą metodę uwierzytelniania wybierz.
 
 > [!NOTE] 
-> Hasła nigdy nie są przechowywane w postaci zwykłego tekstu lub szyfrowane przy użyciu algorytmu odwracalnego w usłudze Azure AD. Aby uzyskać więcej informacji na temat procesu rzeczywistej synchronizacji skrótów haseł, zobacz [Implementowanie synchronizacji skrótów haseł z usługą Azure AD Connect sync](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-synchronization). 
+> Hasła nigdy nie są przechowywane w postaci zwykłego tekstu lub szyfrowane przy użyciu algorytmu odwracalnego w usłudze Azure AD. Aby uzyskać więcej informacji na temat procesu rzeczywistej synchronizacji skrótów haseł, zobacz [Implementowanie synchronizacji skrótów haseł z usługą Azure AD Connect sync](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization). 
 
 **Uwierzytelnianie przekazywane usługi Azure AD**. Udostępnia weryfikację prostych haseł, usługi uwierzytelniania usługi Azure AD za pomocą agenta oprogramowania, które jest uruchamiane na lokalnych serwerach. Serwery weryfikowanie użytkowników bezpośrednio ze środowiska lokalnego usługi Active Directory, który zapewnia, że sprawdzenie poprawności hasła nie jest realizowane w chmurze. 
 
-Firm z wymaganiami bezpieczeństwa, o natychmiastowym wymuszeniu użytkownika lokalnego konta stany, zasady haseł i godziny logowania może użyć tej metody uwierzytelniania. Aby uzyskać więcej informacji na temat procesu rzeczywistej uwierzytelniania przekazywanego, zobacz [użytkownika Zaloguj się przy użyciu uwierzytelniania przekazywanego usługi Azure AD](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication).
+Firm z wymaganiami bezpieczeństwa, o natychmiastowym wymuszeniu użytkownika lokalnego konta stany, zasady haseł i godziny logowania może użyć tej metody uwierzytelniania. Aby uzyskać więcej informacji na temat procesu rzeczywistej uwierzytelniania przekazywanego, zobacz [użytkownika Zaloguj się przy użyciu uwierzytelniania przekazywanego usługi Azure AD](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta).
 
 ### <a name="federated-authentication"></a>Uwierzytelnianie federacyjne
 W przypadku wybrania tej metody uwierzytelniania, ręce usługi Azure AD wyłączone procesu uwierzytelniania, aby oddzielnym zaufanych systemem uwierzytelniania, takich jak lokalne Active Directory Federation Services (AD FS), aby zweryfikować hasła użytkownika.
@@ -88,17 +88,17 @@ Poniższa sekcja pomoże Ci zdecydować, której metody uwierzytelniania jest od
 > [!NOTE]
 > Hasło wygasło i Stany zablokowanego konta nie są obecnie synchronizowane z usługą Azure AD z usługą Azure AD Connect. 
 
-Zapoznaj się [Implementowanie synchronizacji skrótów haseł](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-synchronization) dla procedury wdrażania.
+Zapoznaj się [Implementowanie synchronizacji skrótów haseł](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) dla procedury wdrażania.
 
 ### <a name="cloud-authentication-pass-through-authentication"></a>Uwierzytelnianie w chmurze: uwierzytelnianie przekazywane  
 
 * **Nakład pracy**. Dla uwierzytelniania przekazywanego, potrzebujesz co najmniej jeden (zalecamy trzy) uproszczone agentów zainstalowanych na istniejących serwerach. Agenty muszą mieć dostęp do swojej lokalnej Active Directory Domain Services, łącznie z lokalną kontrolery domeny usługi AD. Potrzebują wychodzącego dostępu do Internetu oraz dostęp do kontrolerów domeny. Z tego powodu nie jest obsługiwane wdrażanie agentów w sieci obwodowej. 
 
-    Uwierzytelnianie przekazywane wymaga dostępu do sieci nieograniczonego na kontrolerach domeny. Cały ruch sieciowy jest szyfrowany i ograniczone do żądań uwierzytelniania. Aby uzyskać więcej informacji na temat tego procesu, zobacz [zagłębia zabezpieczeń](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-security-deep-dive) uwierzytelnianie przekazujących.
+    Uwierzytelnianie przekazywane wymaga dostępu do sieci nieograniczonego na kontrolerach domeny. Cały ruch sieciowy jest szyfrowany i ograniczone do żądań uwierzytelniania. Aby uzyskać więcej informacji na temat tego procesu, zobacz [zagłębia zabezpieczeń](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-security-deep-dive) uwierzytelnianie przekazujących.
 
 * **Środowisko użytkownika**. Aby poprawić środowisko logowania użytkowników, należy wdrożyć bezproblemowe logowanie Jednokrotne przy użyciu uwierzytelniania przekazywanego. Bezproblemowe logowanie Jednokrotne eliminuje niepotrzebne monity po logowania.
 
-* **Zaawansowane scenariusze**. Uwierzytelnianie przekazywane wymusza w lokalnych zasadach konta podczas logowania. Na przykład odmowa dostępu, gdy konto użytkownika lokalnego, stan jest wyłączony, zablokowane, lub [hasło wygasło](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) lub znajduje się poza godzinami po użytkownik może się zalogować. 
+* **Zaawansowane scenariusze**. Uwierzytelnianie przekazywane wymusza w lokalnych zasadach konta podczas logowania. Na przykład odmowa dostępu, gdy konto użytkownika lokalnego, stan jest wyłączony, zablokowane, lub [hasło wygasło](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) lub znajduje się poza godzinami po użytkownik może się zalogować. 
 
     Organizacje, które wymagają uwierzytelniania wieloskładnikowego przy użyciu uwierzytelniania przekazywanego, należy użyć usługi Azure Multi-Factor Authentication (MFA). Organizacje, nie można użyć innych firm lub lokalne metody uwierzytelniania wieloskładnikowego. Zaawansowane funkcje wymagają, że synchronizacja skrótów haseł jest wdrażany informację określającą, czy wybierzesz uwierzytelnianie przekazywane. Przykładem jest raport ujawnione poświadczenia Identity Protection.
 
@@ -108,9 +108,9 @@ Zapoznaj się [Implementowanie synchronizacji skrótów haseł](https://docs.mic
 
 * **Zagadnienia dotyczące**. Synchronizacja skrótów haseł służy jako metody uwierzytelniania kopii zapasowej dla uwierzytelniania przekazywanego po agentów nie można zweryfikować poświadczeń użytkownika z powodu niepowodzenia lokalnego znaczące. Tryb failover do synchronizacji skrótów haseł nie jest realizowane automatycznie, a musi być ręcznie przełączać metody logowania jednokrotnego przez program Azure AD Connect. 
 
-    Inne zagadnienia na uwierzytelnianie przekazujących, w tym alternatywny identyfikator pomocy technicznej, zobacz [— często zadawane pytania](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq).
+    Inne zagadnienia na uwierzytelnianie przekazujących, w tym alternatywny identyfikator pomocy technicznej, zobacz [— często zadawane pytania](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq).
 
-Zapoznaj się [Implementowanie uwierzytelniania przekazywanego](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication) dla procedury wdrażania.
+Zapoznaj się [Implementowanie uwierzytelniania przekazywanego](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta) dla procedury wdrażania.
 
 ### <a name="federated-authentication"></a>Uwierzytelnianie federacyjne
 
@@ -122,7 +122,7 @@ Zapoznaj się [Implementowanie uwierzytelniania przekazywanego](https://docs.mic
 
     * Uwierzytelnianie, które wymaga kart inteligentnych lub certyfikatów.
     * Lokalne serwery usługi MFA lub wieloskładnikowej dostawców.
-    * Uwierzytelnianie przy użyciu rozwiązania do uwierzytelniania innych firm. Zobacz [listę zgodności federacyjnych usługi Azure AD](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-compatibility).
+    * Uwierzytelnianie przy użyciu rozwiązania do uwierzytelniania innych firm. Zobacz [listę zgodności federacyjnych usługi Azure AD](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-compatibility).
     * Na przykład sAMAccountName, na przykład domena\nazwa_użytkownika, zamiast nazwy głównej nazwy użytkownika (UPN), wymaga logowania user@domain.com.
 
 * **Ciągłość prowadzenia działalności biznesowej**. Systemy federacyjnego zwykle wymagają tablicą ze zrównoważonym obciążeniem serwerów, znane jako farmy. Tej farmy został skonfigurowany w sieci wewnętrznej i topologii sieci obwodowej, aby zapewnić wysoką dostępność dla żądań uwierzytelniania.
@@ -136,7 +136,7 @@ Domeny nonroutable, którego nie można zweryfikować w usłudze Azure AD wymaga
 Zapoznaj się [wdrażania serwerów federacyjnych](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/deploying-federation-servers) dla procedury wdrażania.
 
 > [!NOTE] 
-> Podczas wdrażania rozwiązania tożsamości hybrydowej usługi Azure AD, musi implementować jeden z obsługiwanych topologii program Azure AD Connect. Dowiedz się więcej o obsługiwane i nieobsługiwane konfiguracje w [topologie obsługiwane w programie Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-topologies).
+> Podczas wdrażania rozwiązania tożsamości hybrydowej usługi Azure AD, musi implementować jeden z obsługiwanych topologii program Azure AD Connect. Dowiedz się więcej o obsługiwane i nieobsługiwane konfiguracje w [topologie obsługiwane w programie Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-topologies).
 
 ## <a name="architecture-diagrams"></a>Diagramy architektury
 
@@ -160,11 +160,11 @@ Następujące diagramy przedstawiają składniki Architektura wysokiego poziomu 
 |:-----|:-----|:-----|:-----|
 |Gdy odbywa się uwierzytelnianie?|W chmurze|W chmurze po wymianie weryfikacji bezpieczne hasło, za pomocą agenta uwierzytelniania w środowisku lokalnym|Lokalnie|
 |Jakie są wymagania dotyczące serwera lokalnego poza inicjowania obsługi administracyjnej systemu: program Azure AD Connect?|Brak|Jeden serwer dla każdego dodatkowego uwierzytelniania agenta|Co najmniej dwóch serwerów usług AD FS<br><br>Co najmniej dwóch serwerów proxy aplikacji sieci Web w sieci obwodowej/sieci Obwodowej|
-|Jakie są wymagania dotyczące Internet w środowisku lokalnym i sieci poza inicjowania obsługi administracyjnej systemu?|Brak|[Ruch wychodzący do Internetu](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start) z serwerów uruchomionych agentów uwierzytelniania|[Dostęp do Internetu przychodzący](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) na serwerach proxy aplikacji sieci Web w sieci obwodowej<br><br>Dostęp do sieci dla ruchu przychodzącego do serwerów usług AD FS z serwerów proxy aplikacji sieci Web w sieci obwodowej<br><br>Równoważenie obciążenia sieciowego|
+|Jakie są wymagania dotyczące Internet w środowisku lokalnym i sieci poza inicjowania obsługi administracyjnej systemu?|Brak|[Ruch wychodzący do Internetu](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) z serwerów uruchomionych agentów uwierzytelniania|[Dostęp do Internetu przychodzący](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) na serwerach proxy aplikacji sieci Web w sieci obwodowej<br><br>Dostęp do sieci dla ruchu przychodzącego do serwerów usług AD FS z serwerów proxy aplikacji sieci Web w sieci obwodowej<br><br>Równoważenie obciążenia sieciowego|
 |Jest to wymaganie dotyczące certyfikatów SSL?|Nie|Nie|Yes|
-|Czy istnieje rozwiązanie do monitorowania kondycji?|Niewymagane|Stan agenta, dostarczone przez [Centrum administracyjne usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-pass-through-authentication)|[Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-adfs)|
-|Czy użytkownicy uzyskują logowanie jednokrotne do zasobów w chmurze z urządzeń przyłączonych do domeny w sieci firmowej?|Tak, za pomocą [bezproblemowe logowanie Jednokrotne](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)|Tak, za pomocą [bezproblemowe logowanie Jednokrotne](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)|Yes|
-|Jakie typy logowania są obsługiwane?|UserPrincipalName i hasło<br><br>Zintegrowane uwierzytelnianie Windows za pomocą [bezproblemowe logowanie Jednokrotne](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)<br><br>[Identyfikatora logowania alternatywnej](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-custom)|UserPrincipalName i hasło<br><br>Zintegrowane uwierzytelnianie Windows za pomocą [bezproblemowe logowanie Jednokrotne](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)<br><br>[Identyfikatora logowania alternatywnej](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq)|UserPrincipalName i hasło<br><br>Element sAMAccountName + hasła<br><br>Zintegrowane uwierzytelnianie systemu Windows<br><br>[Uwierzytelnianie certyfikatu i kart inteligentnych](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Identyfikatora logowania alternatywnej](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
+|Czy istnieje rozwiązanie do monitorowania kondycji?|Niewymagane|Stan agenta, dostarczone przez [Centrum administracyjne usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-pass-through-authentication)|[Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)|
+|Czy użytkownicy uzyskują logowanie jednokrotne do zasobów w chmurze z urządzeń przyłączonych do domeny w sieci firmowej?|Tak, za pomocą [bezproblemowe logowanie Jednokrotne](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)|Tak, za pomocą [bezproblemowe logowanie Jednokrotne](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)|Yes|
+|Jakie typy logowania są obsługiwane?|UserPrincipalName i hasło<br><br>Zintegrowane uwierzytelnianie Windows za pomocą [bezproblemowe logowanie Jednokrotne](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)<br><br>[Identyfikatora logowania alternatywnej](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom)|UserPrincipalName i hasło<br><br>Zintegrowane uwierzytelnianie Windows za pomocą [bezproblemowe logowanie Jednokrotne](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)<br><br>[Identyfikatora logowania alternatywnej](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq)|UserPrincipalName i hasło<br><br>Element sAMAccountName + hasła<br><br>Zintegrowane uwierzytelnianie systemu Windows<br><br>[Uwierzytelnianie certyfikatu i kart inteligentnych](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Identyfikatora logowania alternatywnej](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
 |Czy Windows Hello dla firm obsługiwane?|[Model zaufania klucza](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Model zaufania certyfikatów przy użyciu usługi Intune](https://blogs.technet.microsoft.com/microscott/setting-up-windows-hello-for-business-with-intune/)|[Model zaufania klucza](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Model zaufania certyfikatów przy użyciu usługi Intune](https://blogs.technet.microsoft.com/microscott/setting-up-windows-hello-for-business-with-intune/)|[Model zaufania klucza](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Model zaufania certyfikatu](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
 |Jakie są opcje uwierzytelniania wieloskładnikowego?|[Usługa Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Kontrolki niestandardowe przy użyciu dostępu warunkowego *](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/controls#custom-controls-1)|[Usługa Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Kontrolki niestandardowe przy użyciu dostępu warunkowego *](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/controls#custom-controls-1)|[Usługa Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Serwer usługi Azure MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy)<br><br>[Usługa MFA innych firm](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Kontrolki niestandardowe przy użyciu dostępu warunkowego *](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/controls#custom-controls-1)|
 |Jakie stanów konta użytkowników są obsługiwane?|Wyłączone konta<br>(maksymalnie 30 minut)|Wyłączone konta<br><br>Konto zablokowane<br><br>Konto wygasło<br><br>Hasło wygasło<br><br>Godziny logowania|Wyłączone konta<br><br>Konto zablokowane<br><br>Konto wygasło<br><br>Hasło wygasło<br><br>Godziny logowania|
@@ -195,7 +195,7 @@ Użyj lub włączanie synchronizacji skrótów haseł, niezależnie od metody uw
 
 Wreszcie, zgodnie z opisem w [firmy Gartner](https://info.microsoft.com/landingIAMGartnerreportregistration.html), firma Microsoft ma zestaw najbardziej kompleksowe funkcje zarządzania tożsamościami i dostępem. Uchwyty Microsoft [450 MLD uwierzytelnień](https://www.microsoft.com/en-us/security/intelligence-report) co miesiąc, aby uzyskać dostęp do tysięcy aplikacji SaaS, takich jak Office 365 z niemal każdego urządzenia. 
 
-## <a name="conclusion"></a>Wniosek
+## <a name="conclusion"></a>Podsumowanie
 
 W tym artykule opisano różne opcje uwierzytelniania, które w organizacji można skonfigurować i wdrożyć do obsługi dostępu do aplikacji w chmurze. Aby spełnić różne, zabezpieczeń, wymagania biznesowe i techniczne, organizacje mogą wybrać między synchronizacji skrótów haseł, uwierzytelniania przekazywanego i federacji. 
 

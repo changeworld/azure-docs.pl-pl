@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 43d2ba496be90e9e87185e6365dd998adccfa09d
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 3d9d6aef4fafd6013c86fd5d5883222c0f32b34d
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804535"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319376"
 ---
 # <a name="what-is-password-writeback"></a>Co to jest funkcja zapisywania zwrotnego haseł?
 
@@ -43,6 +43,7 @@ Oferuje funkcję zapisywania zwrotnego haseł:
 
 > [!Note]
 > Nie można użyć kont użytkowników, które istnieją w ramach grup ochrony w usłudze Active Directory w środowisku lokalnym za pomocą funkcji zapisywania zwrotnego haseł. Aby uzyskać więcej informacji na temat grup ochrony, zobacz [chronione kont i grup w usłudze Active Directory](https://technet.microsoft.com/library/dn535499.aspx).
+>
 
 ## <a name="licensing-requirements-for-password-writeback"></a>Wymagania licencyjne dla funkcji zapisywania zwrotnego haseł
 
@@ -69,28 +70,30 @@ Skrót federacyjnego lub hasło są synchronizowane użytkownik próbuje Resetow
 1. Sprawdzanie jest wykonywane, aby sprawdzić, jakiego rodzaju hasła użytkownika. Jeśli hasło jest zarządzane lokalnie:
    * Sprawdzanie jest wykonywane, aby zobaczyć, czy usługa zapisywania zwrotnego jest uruchomiony. Jeśli tak jest, użytkownik może kontynuować.
    * Jeśli usługa zapisywania zwrotnego nie działa, użytkownik jest informowany, że nie można zresetować swoje hasło teraz.
-2. Następnie przekazuje bramy uwierzytelniania użytkownika i osiągnie **Resetuj hasło** strony.
-3. Użytkownik wybiera nowe hasło i potwierdza go.
-4. Gdy użytkownik wybierze **przesyłania**, przechowywała hasła są szyfrowane przy użyciu klucza symetrycznego tworzone podczas procesu instalacji funkcji zapisywania zwrotnego.
-5. Zaszyfrowane hasło znajduje się w ładunku, które są przesyłane za pośrednictwem kanału protokołu HTTPS do usługi specyficznym dla dzierżawy usługi service bus relay (który jest skonfigurowany dla Ciebie podczas procesu instalacji funkcji zapisywania zwrotnego). To relay są chronione przez losowo wygenerowane hasło, który zna instalacji lokalnych.
-6. Po komunikat dociera do usługi service bus, resetowania haseł punktu końcowego budzi i automatycznie widzi, że ma on oczekujące żądanie resetowania.
-7. Za pomocą atrybutu zakotwiczenia chmury usługi wygląda dla użytkownika. Dla tego obszaru wyszukiwania została wykonana pomyślnie:
+1. Następnie przekazuje bramy uwierzytelniania użytkownika i osiągnie **Resetuj hasło** strony.
+1. Użytkownik wybiera nowe hasło i potwierdza go.
+1. Gdy użytkownik wybierze **przesyłania**, przechowywała hasła są szyfrowane przy użyciu klucza symetrycznego tworzone podczas procesu instalacji funkcji zapisywania zwrotnego.
+1. Zaszyfrowane hasło znajduje się w ładunku, które są przesyłane za pośrednictwem kanału protokołu HTTPS do usługi specyficznym dla dzierżawy usługi service bus relay (który jest skonfigurowany dla Ciebie podczas procesu instalacji funkcji zapisywania zwrotnego). To relay są chronione przez losowo wygenerowane hasło, który zna instalacji lokalnych.
+1. Po komunikat dociera do usługi service bus, resetowania haseł punktu końcowego budzi i automatycznie widzi, że ma on oczekujące żądanie resetowania.
+1. Za pomocą atrybutu zakotwiczenia chmury usługi wygląda dla użytkownika. Dla tego obszaru wyszukiwania została wykonana pomyślnie:
 
    * Obiekt użytkownika muszą istnieć w przestrzeni łącznika usługi Active Directory.
    * Obiekt użytkownika muszą być połączone z odpowiedniego obiektu metaverse (MV).
    * Obiekt użytkownika muszą być połączone z odpowiedni obiekt łącznika usługi Azure Active Directory.
-   * Link z obiektu łącznika usługi Active Directory, aby MV musi mieć reguły synchronizacji `Microsoft.InfromADUserAccountEnabled.xxx` łącze. <br> <br>
+   * Link z obiektu łącznika usługi Active Directory, aby MV musi mieć reguły synchronizacji `Microsoft.InfromADUserAccountEnabled.xxx` łącze.
+   
    Po wywołaniu pochodzą z chmury, korzysta z aparatu synchronizacji **atrybutu cloudAnchor** atrybutu, aby wyszukać obiektu przestrzeni łącznika usługi Azure Active Directory. Następnie lokalizuje łącze obiektu MV, a następnie lokalizuje łącze obiektu usługi Active Directory. Ponieważ może istnieć wiele obiektów usługi Active Directory (obejmującego wiele lasów) dla tego samego użytkownika, aparat synchronizacji opiera się na `Microsoft.InfromADUserAccountEnabled.xxx` link, aby wybrać właściwy.
 
    > [!Note]
    > W wyniku tę logikę dla hasła funkcja zapisywania zwrotnego działała usługa Azure AD Connect musi mieć możliwość komunikowania się z emulator podstawowego kontrolera domeny (PDC). Jeśli musisz ręcznie włączyć, możesz połączyć program Azure AD Connect z emulatorem podstawowego kontrolera domeny. Kliknij prawym przyciskiem myszy **właściwości** łącznika synchronizacji usługi Active Directory, następnie wybierz pozycję **Konfigurowanie partycji katalogu**. Z tego miejsca poszukaj **ustawienia połączenia kontrolera domeny** sekcji, a następnie zaznacz pole o nazwie **korzystają z kontrolerów domeny preferowanych**. Nawet jeśli kontroler domeny preferowanych nie jest to emulator podstawowego kontrolera domeny, program Azure AD Connect próbuje nawiązać połączenie podstawowego kontrolera domeny na potrzeby zapisywania zwrotnego haseł.
 
-8. Po użytkownik konta zostanie znaleziony, zostanie podjęta próba resetowania hasła bezpośrednio w odpowiedniej lasu usługi Active Directory.
-9. W przypadku powodzenia operacji Ustaw hasło użytkownika jest informację, że ich hasło zostało zmienione.
+1. Po użytkownik konta zostanie znaleziony, zostanie podjęta próba resetowania hasła bezpośrednio w odpowiedniej lasu usługi Active Directory.
+1. W przypadku powodzenia operacji Ustaw hasło użytkownika jest informację, że ich hasło zostało zmienione.
    > [!NOTE]
    > Jeśli skrót hasła użytkownika jest zsynchronizowany z usługą Azure AD za pomocą synchronizacji skrótów haseł, istnieje prawdopodobieństwo, że w lokalnych zasadach haseł jest mniejsze niż zasady haseł w chmurze. W tym przypadku są wymuszane w lokalnych zasadach. Te zasady zapewniają, że zasady lokalne jest wymuszone w chmurze, niezależnie od tego w celu zapewnienia logowania jednokrotnego za pomocą synchronizacji skrótów haseł lub federacji.
+   >
 
-10. Jeśli hasło ustawione operacja kończy się niepowodzeniem, błąd monituje użytkownika, aby spróbować ponownie. Operacja może zakończyć się niepowodzeniem, ponieważ:
+1. Jeśli hasło ustawione operacja kończy się niepowodzeniem, błąd monituje użytkownika, aby spróbować ponownie. Operacja może zakończyć się niepowodzeniem, ponieważ:
    * Usługa nie działał.
    * Hasło, które są wybrane nie spełniło zasad organizacji.
    * Nie można odnaleźć użytkownika w lokalnej usłudze Active Directory.
@@ -107,10 +110,10 @@ Zapisywanie zwrotne haseł jest wysoce bezpieczna usługa. Aby upewnić się, ż
    * Po utworzeniu usługi Service bus relay silnego klucza symetrycznego jest tworzony, który jest używany do szyfrowania hasła, ponieważ pochodzi przewodowo. Ten klucz znajduje się tylko w firmie magazynu wpisów tajnych w chmurze, co intensywnie jest zablokowana i inspekcji, podobnie jak każde inne hasło w katalogu.
 * **Branżowy standard zabezpieczeń TLS (Transport Layer)**
    1. Gdy hasło Resetowanie lub zmienianie operacja odbywa się w chmurze, przechowywała hasła jest szyfrowana za pomocą klucza publicznego.
-   2. Zaszyfrowane hasło jest umieszczany w komunikat protokołu HTTPS, który był wysyłany za pośrednictwem szyfrowanego kanału przy użyciu certyfikatów SSL firmy Microsoft do swojej usługi Service bus relay.
-   3. Po odebraniu wiadomości w usłudze Service bus Twojego lokalnego agenta zostanie wznowiona i uwierzytelnia się z usługą service bus przy użyciu silnego hasła, który wcześniej został wygenerowany.
-   4. Agent środowiska lokalnego przejmuje zaszyfrowanego komunikatu i odszyfrowuje ją przy użyciu klucza prywatnego.
-   5. Lokalnego agenta podejmuje próbę ustawienia hasła, za pośrednictwem interfejsu API usługi AD DS SetPassword. Ten krok jest, co umożliwia wymuszanie zasad haseł lokalnej usługi Active Directory (na przykład złożoności, wieku, Historia i filtrów) w chmurze.
+   1. Zaszyfrowane hasło jest umieszczany w komunikat protokołu HTTPS, który był wysyłany za pośrednictwem szyfrowanego kanału przy użyciu certyfikatów SSL firmy Microsoft do swojej usługi Service bus relay.
+   1. Po odebraniu wiadomości w usłudze Service bus Twojego lokalnego agenta zostanie wznowiona i uwierzytelnia się z usługą service bus przy użyciu silnego hasła, który wcześniej został wygenerowany.
+   1. Agent środowiska lokalnego przejmuje zaszyfrowanego komunikatu i odszyfrowuje ją przy użyciu klucza prywatnego.
+   1. Lokalnego agenta podejmuje próbę ustawienia hasła, za pośrednictwem interfejsu API usługi AD DS SetPassword. Ten krok jest, co umożliwia wymuszanie zasad haseł lokalnej usługi Active Directory (na przykład złożoności, wieku, Historia i filtrów) w chmurze.
 * **Zasady wygasania wiadomości**
    * Jeśli komunikat znajduje się w usłudze Service bus, ponieważ Twoja usługa lokalna jest wyłączona, upłynie limit czasu i zostanie usunięta po kilku minutach. Zwiększa bezpieczeństwo jeszcze bardziej, limit czasu i usuwanie wiadomości.
 

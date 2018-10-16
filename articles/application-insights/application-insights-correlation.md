@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/09/2018
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 78ae04d3c51cf8039dcdd067594afafae606f5e3
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: d9b6f5c08eed5efceafc71feaf654ad8f4fcafa0
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310559"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341127"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelacja telemetrii w usłudze Application Insights
 
@@ -105,17 +105,19 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="open-tracing-and-application-insights"></a>Usługa Application Insights i Otwórz śledzenie
 
-[Otwórz śledzenie](http://opentracing.io/) i wygląda modele danych w usłudze Application Insights 
+[Specyfikacją modelu danych Otwórz śledzenie](http://opentracing.io/) i modeli danych usługi Application Insights mapowanie w następujący sposób:
 
-- `request`, `pageView` mapuje **zakres** z `span.kind = server`
-- `dependency` mapuje **zakres** z `span.kind = client`
-- `id` z `request` i `dependency` mapuje **Span.Id**
-- `operation_Id` mapuje **TraceId**
-- `operation_ParentId` mapuje **odwołania** typu `ChildOf`
+| Application Insights                  | Otwórz śledzenie                                      |
+|------------------------------------   |-------------------------------------------------  |
+| `Request`, `PageView`                 | `Span` za pomocą `span.kind = server`                  |
+| `Dependency`                          | `Span` za pomocą `span.kind = client`                  |
+| `Id` z `Request` i `Dependency`    | `SpanId`                                          |
+| `Operation_Id`                        | `TraceId`                                         |
+| `Operation_ParentId`                  | `Reference` typu `ChildOf` (zakres nadrzędny)   |
 
-Zobacz [modelu danych](application-insights-data-model.md) dla usługi Application Insights typów i danych modelu.
+Aby uzyskać więcej informacji na temat modelu danych usługi Application Insights, zobacz [modelu danych](application-insights-data-model.md). 
 
-Zobacz [specyfikacji](https://github.com/opentracing/specification/blob/master/specification.md) i [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) definicji Otwórz śledzenie pojęcia.
+Zobacz, Otwórz śledzenie [specyfikacji](https://github.com/opentracing/specification/blob/master/specification.md) i [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) definicji Otwórz śledzenie pojęcia.
 
 
 ## <a name="telemetry-correlation-in-net"></a>Korelacja telemetrii na platformie .NET

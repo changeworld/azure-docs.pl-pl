@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 057af5e0e5b467ab60e8de7534e9f4428b96c3dc
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 668882b8b39052c3c8e7d7b72c881a64c5c05a10
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298323"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321802"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Rozwiązywanie problemów z samoobsługowego resetowania haseł
 
@@ -173,16 +173,14 @@ Większą szczegółowość odwoływać się zaktualizowaną listę [zakresów I
 
 Aby uzyskać więcej informacji, zapoznaj się z wymaganiami wstępnymi łączności w [wymagania wstępne programu Azure AD Connect](../hybrid/how-to-connect-install-prerequisites.md) artykułu.
 
-
-
 ### <a name="restart-the-azure-ad-connect-sync-service"></a>Uruchom ponownie usługę Azure AD Connect Sync
 
 Aby rozwiązać problemy z łącznością lub inne przejściowe problemy z usługą, uruchom ponownie usługę Azure AD Connect Sync:
 
    1. Jako administrator, wybierz **Start** na serwerze z programem Azure AD Connect.
-   2. Wprowadź **services.msc** w polu wyszukiwania i wybierz pozycję **Enter**.
-   3. Wyszukaj **Microsoft Azure AD Sync** wpisu.
-   4. Kliknij prawym przyciskiem myszy wpisu usługi, wybierz **ponowne uruchomienie**, a następnie poczekaj na zakończenie operacji.
+   1. Wprowadź **services.msc** w polu wyszukiwania i wybierz pozycję **Enter**.
+   1. Wyszukaj **Microsoft Azure AD Sync** wpisu.
+   1. Kliknij prawym przyciskiem myszy wpisu usługi, wybierz **ponowne uruchomienie**, a następnie poczekaj na zakończenie operacji.
 
    ![Uruchom ponownie usługę Azure AD Sync][Service restart]
 
@@ -193,15 +191,15 @@ Te kroki ponownie ustanowić połączenia z usługą w chmurze i rozwiązać prz
 Aby rozwiązać problemy z łącznością, wyłącz i ponownie włączyć funkcję zapisywania zwrotnego haseł:
 
    1. Jako administrator Otwórz kreatora Konfiguracja usłudze Azure AD Connect.
-   2. W **nawiązywanie połączenia z usługi Azure AD**, wprowadź swoje poświadczenia administratora globalnego usługi Azure AD.
-   3. W **łączenie z usługami AD DS**, wprowadź swoje poświadczenia administratora usługi AD Domain Services.
-   4. W **unikatowa identyfikacja użytkowników**, wybierz opcję **dalej** przycisku.
-   5. W **funkcje opcjonalne**, wyczyść **funkcji zapisywania zwrotnego haseł** pole wyboru.
-   6. Wybierz **dalej** na pozostałych stronach okno dialogowe bez wprowadzania żadnych zmian, aż dojdziesz do **wszystko gotowe do skonfigurowania** strony.
-   7. Upewnij się, że **wszystko gotowe do skonfigurowania strony** pokazuje **funkcji zapisywania zwrotnego haseł** opcję **wyłączone** , a następnie wybierz zielony **Konfiguruj** przycisk, aby zatwierdzić zmiany.
-   8. W **Zakończono**, wyczyść **Synchronizuj teraz** opcji, a następnie wybierz **Zakończ** aby zamknąć kreatora.
-   9. Otwórz kreatora Konfiguracja usłudze Azure AD Connect.
-   10. Powtórz kroki od 2 do 8, z wyjątkiem upewnij się, że **funkcji zapisywania zwrotnego haseł** opcja **funkcje opcjonalne** strony, aby ponownie włączyć usługę.
+   1. W **nawiązywanie połączenia z usługi Azure AD**, wprowadź swoje poświadczenia administratora globalnego usługi Azure AD.
+   1. W **łączenie z usługami AD DS**, wprowadź swoje poświadczenia administratora usługi AD Domain Services.
+   1. W **unikatowa identyfikacja użytkowników**, wybierz opcję **dalej** przycisku.
+   1. W **funkcje opcjonalne**, wyczyść **funkcji zapisywania zwrotnego haseł** pole wyboru.
+   1. Wybierz **dalej** na pozostałych stronach okno dialogowe bez wprowadzania żadnych zmian, aż dojdziesz do **wszystko gotowe do skonfigurowania** strony.
+   1. Upewnij się, że **wszystko gotowe do skonfigurowania strony** pokazuje **funkcji zapisywania zwrotnego haseł** opcję **wyłączone** , a następnie wybierz zielony **Konfiguruj** przycisk, aby zatwierdzić zmiany.
+   1. W **Zakończono**, wyczyść **Synchronizuj teraz** opcji, a następnie wybierz **Zakończ** aby zamknąć kreatora.
+   1. Otwórz kreatora Konfiguracja usłudze Azure AD Connect.
+   1. Powtórz kroki od 2 do 8, z wyjątkiem upewnij się, że **funkcji zapisywania zwrotnego haseł** opcja **funkcje opcjonalne** strony, aby ponownie włączyć usługę.
 
 Te kroki ponownie ustanowić połączenie przy użyciu naszej usługi w chmurze i rozwiązać przerw, który może występować.
 
@@ -215,10 +213,11 @@ Firma Microsoft zaleca wykonanie tego kroku, tylko wtedy, gdy spróbujesz pierws
 
 > [!WARNING]
 > Jeśli dostosowano reguły synchronizacji poza pole *wykonać ich kopię zapasową przed kontynuowaniem uaktualniania, a następnie ręcznie je wdrożyć ponownie po zakończeniu.*
+>
 
-   1. Pobierz najnowszą wersję programu Azure AD Connect z [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=615771).
-   2. Ponieważ masz już zainstalowany program Azure AD Connect, musisz wykonać uaktualnienie w miejscu do aktualizacji instalacji programu Azure AD Connect do najnowszej wersji.
-   3. Wykonaj pobranego pakietu i postępuj zgodnie z wyświetlanymi instrukcjami, aby zaktualizować swojej maszyny, program Azure AD Connect.
+1. Pobierz najnowszą wersję programu Azure AD Connect z [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=615771).
+1. Ponieważ masz już zainstalowany program Azure AD Connect, musisz wykonać uaktualnienie w miejscu do aktualizacji instalacji programu Azure AD Connect do najnowszej wersji.
+1. Wykonaj pobranego pakietu i postępuj zgodnie z wyświetlanymi instrukcjami, aby zaktualizować swojej maszyny, program Azure AD Connect.
 
 Poprzednie kroki, należy ponownie ustanowić połączenie przy użyciu naszej usługi w chmurze i rozwiązać przerw, który może występować.
 
@@ -228,34 +227,33 @@ Zainstalowanie najnowszej wersji serwera Azure AD Connect nie rozwiąże problem
 
 Azure AD Connect wymaga usługi Active Directory **Resetuj hasło** uprawnienia do wykonywania funkcji zapisywania zwrotnego haseł. Aby dowiedzieć się, jeśli program Azure AD Connect ma wymagane uprawnienia dla danego środowiska lokalnego konta użytkownika usługi Active Directory, możesz użyć funkcji Windows czynnych uprawnień:
 
-   1. Zaloguj się do serwera Azure AD Connect i uruchom **Menedżera usługi synchronizacji** , wybierając **Start** > **usługi synchronizacji**.
-   2. W obszarze **łączników** , a następnie wybierz lokalną **Active Directory Domain Services** łącznika, a następnie wybierz **właściwości**.  
-
+1. Zaloguj się do serwera Azure AD Connect i uruchom **Menedżera usługi synchronizacji** , wybierając **Start** > **usługi synchronizacji**.
+1. W obszarze **łączników** , a następnie wybierz lokalną **Active Directory Domain Services** łącznika, a następnie wybierz **właściwości**.  
    ![Czynnych uprawnień — krok 2](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
   
-   3. W oknie podręcznym wybierz **nawiązywanie połączenia z lasu usługi Active Directory** i zanotuj **nazwa_użytkownika** właściwości. Ta właściwość jest konto usług AD DS używany przez program Azure AD Connect do wykonywania synchronizacji katalogów. Dla usługi Azure AD Connect, aby wykonać funkcję zapisywania zwrotnego haseł konto usług AD DS należy zresetować hasło uprawnień.  
+1. W oknie podręcznym wybierz **nawiązywanie połączenia z lasu usługi Active Directory** i zanotuj **nazwa_użytkownika** właściwości. Ta właściwość jest konto usług AD DS używany przez program Azure AD Connect do wykonywania synchronizacji katalogów. Dla usługi Azure AD Connect, aby wykonać funkcję zapisywania zwrotnego haseł konto usług AD DS należy zresetować hasło uprawnień.  
    
    ![Czynnych uprawnień — krok 3](./media/active-directory-passwords-troubleshoot/checkpermission02.png) 
   
-   4. Zaloguj się do kontrolera domeny w środowisku lokalnym i rozpocząć **użytkownicy usługi Active Directory i komputery** aplikacji.
-   5. Wybierz **widoku** i upewnij się, że **funkcje zaawansowane** opcja jest włączona.  
+1. Zaloguj się do kontrolera domeny w środowisku lokalnym i rozpocząć **użytkownicy usługi Active Directory i komputery** aplikacji.
+1. Wybierz **widoku** i upewnij się, że **funkcje zaawansowane** opcja jest włączona.  
    
    ![Czynnych uprawnień — krok 5](./media/active-directory-passwords-troubleshoot/checkpermission03.png) 
   
-   6. Wyszukaj konta użytkownika usługi Active Directory, którą chcesz zweryfikować. Kliknij prawym przyciskiem myszy nazwę konta i wybierz **właściwości**.  
+1. Wyszukaj konta użytkownika usługi Active Directory, którą chcesz zweryfikować. Kliknij prawym przyciskiem myszy nazwę konta i wybierz **właściwości**.  
    
    ![Czynnych uprawnień — krok 6](./media/active-directory-passwords-troubleshoot/checkpermission04.png) 
 
-   7. W oknie podręcznym, przejdź do **zabezpieczeń** kartę, a następnie wybierz pozycję **zaawansowane**.  
+1. W oknie podręcznym, przejdź do **zabezpieczeń** kartę, a następnie wybierz pozycję **zaawansowane**.  
    
    ![Czynnych uprawnień — krok 7](./media/active-directory-passwords-troubleshoot/checkpermission05.png) 
    
-   8. W **Zaawansowane ustawienia zabezpieczeń dla administratora** oknie podręcznym, przejdź do **dostęp czynny** kartę.
-   9. Wybierz **wybierz użytkownika**, wybierz konto usług AD DS używany przez usługę Azure AD Connect (zobacz krok 3), a następnie wybierz **wyświetlić skutecznego dostępu**.  
-   
+1. W **Zaawansowane ustawienia zabezpieczeń dla administratora** oknie podręcznym, przejdź do **dostęp czynny** kartę.
+1. Wybierz **wybierz użytkownika**, wybierz konto usług AD DS używany przez usługę Azure AD Connect (zobacz krok 3), a następnie wybierz **wyświetlić skutecznego dostępu**.
+
    ![Czynnych uprawnień — kroku 9](./media/active-directory-passwords-troubleshoot/checkpermission06.png) 
   
-   10. Przewiń w dół i poszukaj **Resetuj hasło**. Jeśli zaznaczono pozycję konto usług AD DS ma uprawnienia do resetowania hasła wybranego konta użytkownika usługi Active Directory.  
+1. Przewiń w dół i poszukaj **Resetuj hasło**. Jeśli zaznaczono pozycję konto usług AD DS ma uprawnienia do resetowania hasła wybranego konta użytkownika usługi Active Directory.  
    
    ![Czynnych uprawnień — kroku 10](./media/active-directory-passwords-troubleshoot/checkpermission07.png)  
 
@@ -285,8 +283,6 @@ Aby prawidłowo pomóc, poprosimy Podaj jak najdokładniejsze informacje jak to 
     * Jest to użytkowników tylko w chmurze?
 * **Licencjonowanie**: czy użytkownik ma przypisaną licencję usługi Azure AD Premium lub usługi Azure AD podstawowa?
 * **Dziennik zdarzeń aplikacji**: Jeśli używasz zapisywania zwrotnego haseł i błąd, to w infrastrukturze lokalnej, dołączenie zip kopii dziennika zdarzeń aplikacji z serwera usługi Azure AD Connect.
-
-
 
 [Service restart]: ./media/active-directory-passwords-troubleshoot/servicerestart.png "Uruchom ponownie usługę Azure AD Sync"
 [Support code]: ./media/active-directory-passwords-troubleshoot/supportcode.png "Kod pomocy technicznej znajduje się w prawym dolnym rogu okna"

@@ -17,14 +17,15 @@ ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b190e539c411811e8e77b39e7b0738e9d7c3c8c6
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 51711e3cb0a2e26e8e10590e98414d4d72cc4d59
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227609"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320581"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, planowania i implementacji środowiska SAP NetWeaver
+
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
 [826037]:https://launchpad.support.sap.com/#/notes/826037
@@ -600,8 +601,8 @@ Jeśli są wyewidencjonowywanie część maszyny wirtualne serii DS, w [w tym ar
 
 Więcej informacji na temat usługi Premium Storage można znaleźć tutaj: <http://azure.microsoft.com/blog/2015/04/16/azure-premium-storage-now-generally-available-2>
 
-
 #### <a name="azure-storage-accounts"></a>Konta usługi Azure Storage
+
 Podczas wdrażania usług lub maszynami wirtualnymi na platformie Azure, można organizować wdrożenia wirtualne dyski twarde i obrazy maszyn wirtualnych w jednostce o nazwie kont usługi Azure Storage. Podczas planowania wdrożenia usługi Azure, należy dokładnie rozważyć ograniczenia platformy Azure. Po jednej stronie istnieje ograniczona liczba kont magazynu na subskrypcję platformy Azure. Mimo że każde konto magazynu platformy Azure może zawierać dużą liczbę plików wirtualnego dysku twardego, na łączna liczba operacji We/Wy na konto magazynu jest stały limit. W przypadku wdrażania setek SAP maszyn wirtualnych z systemami DBMS tworzenia znaczące wywołań operacji We/Wy, zalecane jest rozpraszanie wysokiej maszyn wirtualnych systemu DBMS na operacje We/Wy między wieloma kontami magazynu Azure. Należy uważać, aby nie przekroczyć bieżący limit kont usługi Azure Storage na subskrypcję. Ponieważ magazynu jest to ważna część wdrożenia bazy danych z systemem SAP, to pojęcie omówiono bardziej szczegółowo w już występujących w odwołaniu [przewodnik wdrażania systemu DBMS][dbms-guide].
 
 Więcej informacji o kontach magazynu Azure znajdują się w [w tym artykule][storage-scalability-targets]. Przeczytaniu tego artykułu, możesz należy pamiętać, że istnieją różnice w ograniczenia kont usługi Azure Standard Storage i kont usługi Premium Storage. Najważniejsze różnice są ilości danych, które mogą być przechowywane w ramach konta magazynu. W magazynie Standard Storage wolumin jest większy niż dzięki usłudze Premium Storage powstanie. Na tej stronie, standardowe konto magazynu jest poważnie ograniczony operacje We/Wy (zobacz kolumnę **całkowita liczba żądań**), a konto usługi Azure Premium Storage jest takie ograniczenie nie. Omówimy szczegóły i wyniki tych różnic Omawiając wdrożeń systemów SAP, zwłaszcza na serwerach systemu DBMS.
@@ -615,13 +616,14 @@ W ramach platformy Azure Nazwa wirtualnego dysku twardego następujące następu
 Ciąg, który powyżej musi jednoznacznie zidentyfikować wirtualnego dysku twardego, który jest przechowywany w usłudze Azure Storage.
 
 #### <a name="c55b2c6e-3ca1-4476-be16-16c81927550f"></a>Dyski zarządzane
+
 Dyski zarządzane są nowego typu zasobu w usłudze Azure Resource Manager używany zamiast wirtualnych dysków twardych, które są przechowywane na kontach magazynu Azure. Dyski zarządzane automatycznie wyrównane z zestawu dostępności maszyny wirtualnej, które są dołączone i w związku z tym zwiększyć dostępność maszyny wirtualnej i usługi, które są uruchomione na maszynie wirtualnej. Aby uzyskać więcej informacji, przeczytaj [artykuł z omówieniem](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview).
 
 Zaleca się używanie dysków zarządzanych, ponieważ mogą uprościć wdrażanie i zarządzanie maszynami wirtualnymi.
 SAP aktualnie obsługuje tylko dyski zarządzane w warstwie Premium. Aby uzyskać więcej informacji, przeczytaj Uwaga SAP [1928533].
 
-
 #### <a name="microsoft-azure-storage-resiliency"></a>Odporność usługi Microsoft Azure Storage
+
 Usługa Microsoft Azure Storage przechowuje podstawowy dysk VHD (z systemem operacyjnym) i dołączonych dysków lub obiektów blob na co najmniej trzech oddzielnych węzłów do magazynowania. Fakt ten nosi nazwę lokalny magazyn nadmiarowy (LRS). Magazyn LRS jest domyślnie dla wszystkich typów magazynu na platformie Azure. 
 
 Dostępnych jest kilka więcej nadmiarowości metod, które są wszystkie opisane w artykule [replikacja usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).
@@ -635,6 +637,7 @@ Dostępnych jest kilka więcej nadmiarowości metod, które są wszystkie opisan
 
 
 ### <a name="61678387-8868-435d-9f8c-450b2424f5bd"></a>Sieci platformy Microsoft Azure
+
 Microsoft Azure udostępnia infrastrukturę sieciową, która umożliwia mapowanie wszystkich scenariuszy, które chcemy weź pod uwagę przy użyciu oprogramowania SAP. Dostępne są następujące możliwości:
 
 * Dostęp z zewnątrz, bezpośrednio do maszyn wirtualnych za pomocą usług terminalowych Windows lub protokołu ssh/VNC
@@ -652,6 +655,7 @@ Dla scenariuszy obejmujących wiele lokalizacji, firma Microsoft korzysta z fakt
 Ponieważ sieć i rozpoznawanie nazw to ważna część wdrożenia bazy danych z systemem SAP, to pojęcie jest omówiona bardziej szczegółowo w [przewodnik wdrażania systemu DBMS][dbms-guide].
 
 ##### <a name="azure-virtual-networks"></a>Sieci wirtualne platformy Azure
+
 Tworząc się z siecią wirtualną platformy Azure, można zdefiniować zakres adresów prywatnych adresów IP przydzielony przez funkcje Azure DHCP. W scenariuszach obejmujących zakres adresów IP, które są zdefiniowane wciąż jest przydzielony przy użyciu protokołu DHCP przez platformę Azure. Jednak rozpoznawanie nazw domeny jest wykonywane w środowisku lokalnym (przy założeniu, że maszyny wirtualne są częścią domeny w środowisku lokalnym) i dlatego może rozpoznać adresów poza różnych usługach w chmurze platformy Azure.
 
 Do każdej maszyny wirtualnej na platformie Azure musi być podłączony do sieci wirtualnej.
@@ -670,11 +674,12 @@ Adres MAC karty sieci wirtualnej mogą ulec zmianie, na przykład po zmieniania 
 Istnieje możliwość przypisać stałe lub zastrzeżone adresy IP do maszyn wirtualnych w ramach usługi Azure Virtual Network. Uruchamianie maszyn wirtualnych w usłudze Azure Virtual Network otwiera doskonałe możliwości można korzystać z tej funkcji, czy potrzebne wymagane w niektórych scenariuszach. Przypisanie adresu IP pozostaje ważny przez cały istnienie maszyn wirtualnych, niezależnie od tego, czy maszyna wirtualna jest uruchomiona lub zamykania. W rezultacie należy wykonać ogólną liczbę maszyn wirtualnych (maszyny wirtualne uruchomione i zatrzymane) pod uwagę podczas definiowania zakresu adresów IP dla sieci wirtualnej. Adres IP pozostanie przydzielony do momentu usunięcia maszyny Wirtualnej i jej interfejsu sieciowego lub do momentu przypisany adres IP pobiera cofnąć ponownie. Aby uzyskać więcej informacji, przeczytaj [w tym artykule][virtual-networks-static-private-ip-arm-pportal].
 
 > [!NOTE]
-> Należy przypisać statyczne adresy IP za pośrednictwem platformy Azure oznacza, że do poszczególnych kart sieciowych. Nie należy przypisywać statyczne adresy IP w ramach systemu operacyjnego gościa do wirtualnej karty sieciowej. Niektórych usług platformy Azure, takich jak usługa Kopia zapasowa Azure opierają się na fakcie, że w co najmniej podstawowego wirtualnej karty sieciowej jest ustawiony, DHCP, a nie statycznych adresów IP. Zobacz też dokumentu [kopii zapasowej maszyny wirtualnej Azure Rozwiązywanie problemów z](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#networking). Musisz przypisać wiele statycznych adresów IP do maszyny Wirtualnej, należy przypisać wiele kart sieciowych do maszyny Wirtualnej.
+> Należy przypisać statyczne adresy IP za pośrednictwem platformy Azure oznacza, że do poszczególnych kart sieciowych. Nie należy przypisywać statyczne adresy IP w ramach systemu operacyjnego gościa do wirtualnej karty sieciowej. Niektórych usług platformy Azure, takich jak usługa Kopia zapasowa Azure opierają się na fakcie, że w co najmniej podstawowego wirtualnej karty sieciowej jest ustawiony, DHCP, a nie statycznych adresów IP. Zobacz też dokumentu [kopii zapasowej maszyny wirtualnej Azure Rozwiązywanie problemów z](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#networking).
 >
 >
 
 ##### <a name="multiple-nics-per-vm"></a>Wiele kart sieciowych na maszynę Wirtualną
+
 Można zdefiniować wiele kart sieci wirtualnej (vNIC) na maszynie wirtualnej platformy Azure. Dzięki możliwości mają wiele kart sieciowych, które można uruchomić, aby skonfigurować ruch sieciowy rozdzielenie w przypadku gdy, na przykład klient ruch jest kierowany przez jeden ruch w sieci wirtualnej karty sieciowej i wewnętrznej bazy danych odbywa się za pomocą drugiego wirtualnej karty sieciowej. Zależne od typu maszyny Wirtualnej są różne ograniczenia związane z liczbą kart sieciowych. Szczegółowymi informacjami na temat, funkcje i ograniczenia dotyczące można znaleźć w następujących artykułach:
 
 * [Tworzenie maszyny Wirtualnej z systemem Windows z wieloma kartami sieciowymi][virtual-networks-multiple-nics-windows]
@@ -684,9 +689,11 @@ Można zdefiniować wiele kart sieci wirtualnej (vNIC) na maszynie wirtualnej pl
 * [Wdrażanie maszyn wirtualnych kart Sieciowych multi przy użyciu wiersza polecenia platformy Azure][virtual-network-deploy-multinic-arm-cli]
 
 #### <a name="site-to-site-connectivity"></a>Połączenie lokacja lokacja
+
 Między lokalizacjami jest maszyn wirtualnych platformy Azure i lokalnymi powiązanym z przejrzystych i trwałe połączenie sieci VPN. Oczekuje się stać się Najczęstszym wzorcem wdrożenia SAP na platformie Azure. Zakłada się, że procedury operacyjne i procesów przy użyciu wystąpieniami platformy SAP na platformie Azure należy działają w sposób przezroczysty. To oznacza, że powinno być możliwe do drukowania z tych systemów, a także korzystanie z systemu zarządzania transportu (TMS) SAP, transportem zmieni się z systemem programowanie na platformie Azure na system testowy, który jest wdrożony w środowisku lokalnym. Więcej dokumentacji wokół lokacja lokacja można znaleźć w [w tym artykule][vpn-gateway-create-site-to-site-rm-powershell]
 
 ##### <a name="vpn-tunnel-device"></a>Urządzenia z tunelu sieci VPN
+
 Aby utworzyć połączenie lokacja lokacja (w środowisku lokalnym centrum danych do centrum danych platformy Azure), należy uzyskać i skonfigurować urządzenie sieci VPN albo użyj usługi Routing i dostęp zdalny (RRAS), która została wprowadzona jako składnika oprogramowania w systemie Windows Server 2012.
 
 * [Tworzenie sieci wirtualnej za pomocą połączenia sieci VPN lokacja lokacja przy użyciu programu PowerShell][vpn-gateway-create-site-to-site-rm-powershell]
@@ -698,6 +705,7 @@ Aby utworzyć połączenie lokacja lokacja (w środowisku lokalnym centrum danyc
 Powyższy rysunek przedstawia, że obie subskrypcje platformy Azure mają podzakresów adres IP zarezerwowany do użycia w sieciach wirtualnych na platformie Azure. Łączność z siecią lokalną na platformę Azure zostanie nawiązane za pośrednictwem sieci VPN.
 
 #### <a name="point-to-site-vpn"></a>Sieci VPN typu punkt lokacja
+
 Sieci VPN typu punkt lokacja wymaga do każdej maszyny klienta do łączenia z własnej sieci VPN na platformie Azure. W przypadku scenariuszy SAP czekamy na, połączenia punkt lokacja nie jest możliwe. W związku z tym otrzymują żadnych dalszych odwołań do połączeń sieci VPN punkt lokacja.
 
 Więcej informacji można znaleźć tutaj
@@ -705,16 +713,17 @@ Więcej informacji można znaleźć tutaj
 * [Konfigurowanie połączenia typu punkt-lokacja z siecią wirtualną przy użyciu programu PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
 
 #### <a name="multi-site-vpn"></a>Połączenia obejmujące wiele lokacji sieci VPN
+
 Platforma Azure oferuje również dzisiaj możliwość tworzenia połączenia sieci VPN z wieloma lokacjami dla jednej subskrypcji platformy Azure. Wcześniej pojedynczej subskrypcji została ograniczona do jednego połączenia sieci VPN typu lokacja lokacja. To ograniczenie zostało usunięte z połączenia obejmujące wiele lokacji sieci VPN dla jednej subskrypcji. Umożliwia korzystanie z więcej niż jeden Region platformy Azure dla określonej subskrypcji za pomocą konfiguracji między środowiskami lokalnymi.
 
 Aby uzyskać więcej dokumentacji, zobacz [w tym artykule][vpn-gateway-create-site-to-site-rm-powershell]
 
-
-
 #### <a name="vnet-to-vnet-connection"></a>Połączenie między sieciami wirtualnymi
+
 Przy użyciu połączenia obejmujące wiele lokacji sieci VPN, należy skonfigurować oddzielne sieci wirtualnej platformy Azure we wszystkich regionach. Często jednak masz wymagania, które składniki oprogramowania w różnych regionach skontaktować się ze sobą. Najlepiej tej komunikacji powinny być kierowane z jednego regionu platformy Azure do środowiska lokalnego i z tego miejsca do innego regionu platformy Azure. Ze skrótem platforma Azure oferuje możliwość, aby skonfigurować połączenie z jednej sieci wirtualnej platformy Azure w jednym regionie do innej sieci wirtualnej platformy Azure hostowanej w innym regionie. Ta funkcja nosi nazwę połączenia sieć wirtualna-sieć wirtualna. Szczegółowe informacje na temat tej funkcji można znaleźć tutaj: <https://azure.microsoft.com/documentation/articles/vpn-gateway-vnet-vnet-rm-ps/>.
 
 #### <a name="private-connection-to-azure-expressroute"></a>Prywatnego połączenia z usługą Azure ExpressRoute
+
 Usługa Microsoft Azure ExpressRoute umożliwia tworzenie prywatnych połączeń między centrami danych platformy Azure i przez klienta na infrastrukturę lokalną lub działającą we wspólnej lokalizacji. Usługa ExpressRoute jest oferowany przez MPLS różnych dostawców sieci VPN (przełączaniem pakietów,) lub innych dostawców usług sieciowych. Połączenia ExpressRoute nie odbywają się za pośrednictwem publicznego Internetu. Połączenia ExpressRoute zapewniają wyższy poziom zabezpieczeń, więcej niezawodność aplikacji przy użyciu wielu obwodów równoległych, większe szybkości i krótsze opóźnienia niż typowe połączenia przez za pośrednictwem Internetu.
 
 Znajdź szczegółowe informacje na temat usługi Azure ExpressRoute i ofert poniżej:
@@ -736,6 +745,7 @@ Aby uniknąć takich bezpośrednie połączenie z Internetem, można skonfigurow
 Wymuszone tunelowanie przy użyciu usługi ExpressRoute jest włączona, klienci anonsuje trasę domyślną za pośrednictwem sesje komunikacji równorzędnej BGP usługi ExpressRoute.
 
 #### <a name="summary-of-azure-networking"></a>Podsumowanie sieci platformy Azure
+
 Ten rozdział zawiera wiele ważnych punktów o sieci platformy Azure. Poniżej przedstawiono podsumowanie głównych punktów:
 
 * Sieci wirtualne platformy Azure umożliwiają umieść struktury sieci wdrożenie systemu Azure. Sieci wirtualne mogą być odizolowane od siebie wzajemnie lub za pomocą sieciowych grup zabezpieczeń ruchu między sieciami wirtualnymi można sterować.
@@ -778,7 +788,9 @@ Zobacz też ten blog i dołączony dokument w przypadku ustalania rozmiaru SAP n
 * Liczba dysków VHD systemu DBMS na maszynie wirtualnej w celu zapewnienia wystarczającej liczby operacji We/Wy
 
 ## <a name="managing-azure-assets"></a>Zarządzanie zasobami platformy Azure
+
 ### <a name="azure-portal"></a>Azure Portal
+
 Azure portal to jeden z trzech interfejsów zarządzania wdrożeniami maszyn wirtualnych platformy Azure. Podstawowe zadania zarządzania, takich jak wdrażanie maszyn wirtualnych z obrazów, może odbywać się za pośrednictwem witryny Azure portal. Ponadto Tworzenie konta magazynu, sieci wirtualnych i innymi składnikami platformy Azure są również zadania, które witryny Azure portal może również obsługiwać. Jednak funkcji, takich jak przekazywanie wirtualne dyski twarde ze środowiska lokalnego do platformy Azure lub kopiowania wirtualnego dysku twardego w ramach platformy Azure są zadania, które wymagają narzędzi innych firm lub administracyjnej za pomocą programu PowerShell lub interfejsu wiersza polecenia.
 
 ![Portal Microsoft Azure — omówienie maszyny wirtualnej][planning-guide-figure-800]
@@ -800,6 +812,7 @@ Azure portal udostępnia podstawowe funkcje wdrażania i konfigurowania maszyn w
 [comment]: <> (MSSedusch również dowolnego typu automatyzacji, dotyczące wdrożenia nie jest możliwe w witrynie Azure portal. Zadania, takie jak inicjowanych przez skrypty wdrażania wielu maszyn wirtualnych nie jest możliwe za pośrednictwem witryny Azure portal.)
 
 ### <a name="management-via-microsoft-azure-powershell-cmdlets"></a>Zarządzanie za pomocą poleceń cmdlet programu PowerShell Azure firmy Microsoft
+
 Windows PowerShell to wydajna i rozszerzalna struktura, która ma powszechnie zaakceptowany przez klientów wdrażających większą liczbą systemów na platformie Azure. Po zakończeniu instalacji poleceń cmdlet programu PowerShell na komputerze stacjonarnym, laptop lub dedykowane stacji można zdalnie uruchamiać polecenia cmdlet programu PowerShell.
 
 Proces w celu włączenia pulpitu/laptopie lokalnym użycia poleceń cmdlet programu Azure PowerShell i sposobie konfigurowania tych, do użycia z subskrypcji platformy Azure jest opisana w [w tym artykule][powershell-install-configure].
@@ -818,6 +831,7 @@ Jak platforma Azure oferuje więcej funkcji, nowe polecenia cmdlet PS są mają 
 Ogólną listę dotyczących platformy Azure PowerShell polecenia znaleźć tutaj: <https://docs.microsoft.com/powershell/azure/overview>.
 
 ### <a name="management-via-microsoft-azure-cli-commands"></a>Zarządzanie za pomocą poleceń interfejsu wiersza polecenia Microsoft Azure
+
 Dla klientów korzystających z systemu Linux i chcesz zarządzać Azure zasobów programu Powershell może nie być opcję. Firma Microsoft oferuje wiersza polecenia platformy Azure jako alternatywa.
 Interfejs wiersza polecenia platformy Azure udostępnia zestaw typu "open source", międzyplatformowych poleceń do pracy z platformą Azure. Interfejs wiersza polecenia platformy Azure udostępnia wiele funkcji w witrynie Azure portal.
 
@@ -830,15 +844,19 @@ Aby uzyskać informacje dotyczące instalacji, konfiguracji i jak używać inter
 Przeczytaj również rozdział [wiersza polecenia platformy Azure dla maszyn wirtualnych z systemem Linux] [ deployment-guide-4.5.2] w [przewodnik wdrażania] [ planning-guide] na temat wdrażania, monitorowania platformy Azure przy użyciu wiersza polecenia platformy Azure Rozszerzenie dla rozwiązania SAP.
 
 ## <a name="different-ways-to-deploy-vms-for-sap-in-azure"></a>Różne sposoby, aby wdrożyć maszyny wirtualne dla rozwiązania SAP na platformie Azure
+
 W tym rozdziale dowiesz się różne sposoby, aby wdrożyć Maszynę wirtualną na platformie Azure. Obsługa wirtualnych dysków twardych i maszyny wirtualne na platformie Azure, a także procedury dodatkowych przygotowań zostały omówione w tym rozdziale.
 
 ### <a name="deployment-of-vms-for-sap"></a>Wdrażanie maszyn wirtualnych dla rozwiązania SAP
+
 Platforma Microsoft Azure oferuje wiele sposobów, aby wdrożyć maszyny wirtualne i skojarzone dyski. Dlatego ważne jest zrozumienie różnic, ponieważ przygotowań maszyny wirtualne mogą się różnić w zależności od metody wdrażania. Ogólnie rzecz biorąc firma Microsoft, zapoznaj się w następujących scenariuszach:
 
 #### <a name="4d175f1b-7353-4137-9d2f-817683c26e53"></a>Przenoszenie maszyny Wirtualnej ze środowiska lokalnego do platformy Azure z dyskiem uogólniony
+
 Zamierzasz przenieść określonego systemu SAP ze środowiska lokalnego na platformę Azure. Można to zrobić przez przekazanie wirtualnego dysku twardego, który zawiera system operacyjny i pliki binarne SAP, pliki binarne systemu DBMS oraz wirtualne dyski twarde, plikami danych i dziennika systemu DBMS na platformie Azure. W przeciwieństwie do [scenariusza #2 poniżej][planning-guide-5.1.2]Zachowaj nazwę hosta, SAP SID i SAP użytkownika konta w maszynie Wirtualnej platformy Azure, jak zostały skonfigurowane w środowisku lokalnym. W związku z tym uogólnianie obrazu nie jest konieczne. Zobacz rozdziały [przygotowania do przenoszenia maszyny Wirtualnej ze środowiska lokalnego na platformę Azure z dyskiem uogólniony] [ planning-guide-5.2.1] niniejszego dokumentu procedury przygotowania w środowisku lokalnym i przekazywania — uogólniony maszyn wirtualnych lub wirtualnych dysków twardych na platformie Azure. Rozdział odczytu [Scenariusz 3: przenoszenie maszyny Wirtualnej ze środowiska lokalnego przy użyciu-uogólniony wirtualny dysk twardy platformy Azure z oprogramowaniem SAP] [ deployment-guide-3.4] w [przewodnik wdrażania] [ deployment-guide] dla szczegółowy opis kroków wdrażania obrazu na platformie Azure.
 
 #### <a name="e18f7839-c0e2-4385-b1e6-4538453a285c"></a>Wdrażanie maszyny Wirtualnej przy użyciu obrazu właściwe dla klienta
+
 Ze względu na wymagania określone poprawki wersji systemu operacyjnego lub DBMS podana obrazów w portalu Azure Marketplace może nie spełniać Twoich wymagań. W związku z tym może być konieczne Utwórz Maszynę wirtualną przy użyciu własnych maszyn wirtualnych systemu operacyjnego/DBMS obrazu prywatnego, który można wdrożyć w kilka razy później. Aby przygotować obrazu prywatnego pod kątem duplikatów, powinny być traktowane następujące elementy:
 
 - - -
@@ -857,12 +875,15 @@ Ze względu na wymagania określone poprawki wersji systemu operacyjnego lub DBM
 Jeśli zainstalowano już SAP zawartość w swojej lokalnej maszyny Wirtualnej (szczególnie w przypadku systemów warstwy 2), możesz dostosować ustawienia systemu SAP po wdrożenie maszyny Wirtualnej platformy Azure za pośrednictwem wystąpienia nazwy procedury obsługiwane przez oprogramowanie SAP oprogramowania inicjowania obsługi administracyjnej Menedżera (SAP Należy pamiętać, [1619720]). Zobacz rozdziały [przygotowania do wdrożenia maszyny Wirtualnej przy użyciu obrazu właściwe dla klienta dla rozwiązania SAP] [ planning-guide-5.2.2] i [przekazywanie wirtualnego dysku twardego ze środowiska lokalnego na platformę Azure] [ planning-guide-5.3.2]tego dokumentu dla lokalnej procedury przygotowywania i przekazywania uogólnionej maszyny Wirtualnej na platformie Azure. Rozdział odczytu [Scenariusz 2: Wdrażanie maszyny Wirtualnej przy użyciu niestandardowego obrazu dla rozwiązania SAP] [ deployment-guide-3.3] w [przewodnik wdrażania] [ deployment-guide] szczegółowy opis kroków wdrażania taki obraz na platformie Azure.
 
 #### <a name="deploying-a-vm-out-of-the-azure-marketplace"></a>Wdrażanie maszyny Wirtualnej z portalu Azure Marketplace
+
 Czy chcesz korzystać z usługi Microsoft lub innych firm podany obraz maszyny Wirtualnej w portalu Azure Marketplace, aby wdrożyć maszynę Wirtualną. Po wdrożeniu maszyny Wirtualnej na platformie Azure, wykonaj te same wskazówki i narzędzia do zainstalowania oprogramowania SAP i/lub DBMS wewnątrz maszyny Wirtualnej, tak jak w środowisku lokalnym. Aby uzyskać bardziej szczegółowe opis wdrożenia, zobacz rozdział [scenariusz 1: Wdrażanie maszyny Wirtualnej z portalu Azure Marketplace dla rozwiązania SAP] [ deployment-guide-3.2] w [przewodnik wdrażania] [ deployment-guide].
 
 ### <a name="6ffb9f41-a292-40bf-9e70-8204448559e7"></a>Przygotowywanie maszyn wirtualnych z oprogramowaniem SAP na platformie Azure
+
 Przed przekazaniem maszyn wirtualnych na platformie Azure, musisz upewnij się, że maszyny wirtualne i wirtualne dyski twarde spełnienia określonych wymagań. Istnieją niewielkie różnice w zależności od metody wdrażania, który jest używany.
 
 #### <a name="1b287330-944b-495d-9ea7-94b83aff73ef"></a>Przygotowanie do przenoszenia maszyny Wirtualnej ze środowiska lokalnego na platformę Azure z dyskiem uogólniony
+
 Typowe metody wdrożenia jest przenoszenie istniejącej maszyny Wirtualnej, która jest uruchamiana z systemem SAP ze środowiska lokalnego do platformy Azure. Tej maszyny Wirtualnej i systemem SAP na maszynie wirtualnej po prostu należy uruchamiać na platformie Azure przy użyciu tej samej nazwy hosta i prawdopodobnie tego samego identyfikatora SID SAP. W takim przypadku system operacyjny maszyny Wirtualnej gościa nie powinien być uogólniony podczas wielu wdrożeń. Jeśli sieć lokalna został rozszerzony na platformę Azure (zobacz rozdział [między środowiskami lokalnymi - wdrażania jednego lub wielu SAP maszyn wirtualnych na platformie Azure przy użyciu wymaganie jest w pełni zintegrowany z siecią lokalną] [ planning-guide-2.2] w tym dokumencie), a następnie nawet tego samego konta domeny mogą być używane w maszynie Wirtualnej, zgodnie z tymi były używane przed w środowisku lokalnym.
 
 Wymagania, przygotowując swoje własne dysku maszyny Wirtualnej platformy Azure są następujące:
@@ -891,6 +912,7 @@ Wymagania, przygotowując swoje własne dysku maszyny Wirtualnej platformy Azure
 
 - - -
 #### <a name="57f32b1c-0cba-4e57-ab6e-c39fe22b6ec3"></a>Przygotowanie do wdrożenia maszyny Wirtualnej przy użyciu obrazu właściwe dla klienta dla rozwiązania SAP
+
 Pliki wirtualnego dysku twardego, które zawierają uogólnionego systemu operacyjnego są przechowywane w kontenerach na kontach magazynu Azure lub obrazy dysków zarządzanych. Można wdrożyć nową maszynę Wirtualną z takiego obrazu, odwołując się do obrazu wirtualnego dysku twardego lub dysku zarządzanego jako źródło w plikach szablonu wdrożenia zgodnie z opisem w rozdziale [Scenariusz 2: Wdrażanie maszyny Wirtualnej przy użyciu niestandardowego obrazu dla rozwiązania SAP] [ deployment-guide-3.3]z [przewodnik wdrażania][deployment-guide].
 
 Wymagania podczas przygotowywania swój własny obraz maszyny Wirtualnej platformy Azure są następujące:
@@ -1055,7 +1077,9 @@ Podczas pobierania wirtualnych dysków twardych lub dysków Managed Disks nie mo
   ```
 
 ### <a name="transferring-vms-and-disks-within-azure"></a>Przenoszenie maszyn wirtualnych i dysków w ramach platformy Azure
+
 #### <a name="copying-sap-systems-within-azure"></a>Kopiowanie systemów SAP na platformie Azure
+
 System SAP lub nawet dedykowanego systemu DBMS na serwer obsługujący warstwy aplikacji SAP prawdopodobnie będą obejmować kilka dysków, które zawierają system operacyjny przy użyciu plików binarnych albo plików danych i dziennika bazy danych SAP. Funkcjonalność platformy Azure kopiowania dysków ani funkcjonalność platformy Azure, zapisywać dysków na dysku lokalnym nie posiada mechanizm synchronizacji, które migawek wielu dysków w spójny sposób. W związku z tym stan dysków skopiowane i zapisane nawet wtedy, gdy te są instalowane z tej samej maszyny Wirtualnej będzie inny. Oznacza to, że w przypadku konkretnego wystąpienia w różnych danych i logfile(s) znajdujących się na różnych dyskach, bazy danych w końcu byłoby niezgodne.
 
 **Wniosek: Aby można było skopiować lub zapisać dyski, które są częścią konfiguracji systemu SAP należy zatrzymać systemu SAP i trzeba także zamykanie wdrożonej maszyny Wirtualnej. Dopiero wtedy można skopiować lub pobrać zestaw dysków, aby utworzyć kopię systemu SAP na platformie Azure lub lokalnie.**
@@ -1067,6 +1091,7 @@ Dyski danych mogą być przechowywane jako pliki VHD na koncie usługi Azure Sto
 Dyski danych mogą być również Managed Disks. W takim przypadku dysk zarządzany jest używany do utworzenia nowego dysku zarządzanego przed dołączony do maszyny wirtualnej. Nazwa dysku zarządzanego musi być unikatowa w obrębie grupy zasobów.
 
 ##### <a name="powershell"></a>PowerShell
+
 Polecenia cmdlet programu Azure PowerShell umożliwiają Skopiuj wirtualny dysk twardy, jak pokazano na [w tym artykule][storage-powershell-guide-full-copy-vhd]. Aby utworzyć nowego dysku zarządzanego, jak pokazano w poniższym przykładzie należy użyć New-AzureRmDiskConfig i New-AzureRmDisk.
 
 ```powershell
@@ -1075,6 +1100,7 @@ New-AzureRmDisk -ResourceGroupName <resource group name> -DiskName <disk name> -
 ```
 
 ##### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
+
 Wiersza polecenia platformy Azure umożliwia skopiowanie wirtualnego dysku twardego, jak pokazano na [w tym artykule][storage-azure-cli-copy-blobs]. Aby utworzyć nowy dysk zarządzany, użyj *tworzenia dysku az* jak pokazano w poniższym przykładzie.
 
 ```
@@ -1082,6 +1108,7 @@ az disk create --source "/subscriptions/<subscription id>/resourceGroups/<resour
 ```
 
 ##### <a name="azure-storage-tools"></a>Narzędzia usługi Azure Storage
+
 * <http://storageexplorer.com/>
 
 Profesjonalne wersje Eksploratory usługi Azure Storage można znaleźć tutaj:
@@ -1092,6 +1119,7 @@ Profesjonalne wersje Eksploratory usługi Azure Storage można znaleźć tutaj:
 Kopię samego dysku VHD na koncie magazynu jest procesem, który zajmuje tylko kilka sekund (podobnie jak na sprzęcie sieci SAN, Tworzenie migawki z opóźnioną kopię i kopii przy zapisie). Po utworzeniu kopii pliku wirtualnego dysku twardego, możesz dołączyć do maszyny wirtualnej lub go użyć jako obraz, aby dołączyć kopie dysk VHD do maszyn wirtualnych.
 
 ##### <a name="powershell"></a>PowerShell
+
 ```powershell
 # attach a vhd to a vm
 $vm = Get-AzureRmVM -ResourceGroupName <resource group name> -Name <vm name>
@@ -1116,6 +1144,7 @@ $vm = Add-AzureRmVMDataDisk -VM $vm -Caching <caching option> -Lun <lun, for exa
 $vm | Update-AzureRmVM
 ```
 ##### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
+
 ```
 
 # attach a vhd to a vm
@@ -1176,7 +1205,9 @@ az storage blob show --name <target blob name> --container <target container nam
 Aby uzyskać przykłady zobacz [w tym artykule][storage-azure-cli-copy-blobs].
 
 ### <a name="disk-handling"></a>Obsługa dysku
+
 #### <a name="4efec401-91e0-40c0-8e64-f2dceadff646"></a>Maszyna wirtualna/dysk struktury dla wdrożeń SAP
+
 W idealnym obsługi struktury Maszynę wirtualną i skojarzone dyski powinny być łatwe. W przypadku instalacji lokalnej klienci opracowała wiele sposobów tworzenia struktury instalacji na serwerze.
 
 * Jeden dysk podstawowy, który zawiera systemu operacyjnego i wszystkich plików binarnych systemu DBMS i/lub SAP. Od marca 2015 r. ten dysk może być maksymalnie 1TB w rozmiarze zamiast wcześniejszych ograniczeń, które maksymalnie 127 GB.
@@ -1240,6 +1271,7 @@ Należy pamiętać, że dysk, który zawiera system operacyjny, a firma Microsof
 Aby uzyskać więcej sugestii i uzyskać więcej informacji, specjalnie dla systemu DBMS na maszynach wirtualnych, zapoznaj się [przewodnik wdrażania systemu DBMS][dbms-guide]
 
 #### <a name="disk-handling"></a>Obsługa dysku
+
 W większości przypadków należy utworzyć dodatkowe dyski w celu wdrożenia bazy danych SAP do maszyny Wirtualnej. Wspomnieliśmy o kwestiach związanych z liczby dysków w rozdziale [struktury maszyna wirtualna/dysk dla wdrożeń SAP] [ planning-guide-5.5.1] tego dokumentu. Witryna Azure portal umożliwia dołączanie lub odłączanie dysków, po wdrożeniu podstawowej maszyny Wirtualnej. Dysków może być dołączony/odłączony po ponownym uruchomieniu maszyny Wirtualnej i uruchomione oraz kiedy została zatrzymana. Podczas podłączania na dysku, witryny Azure portal oferuje Dołącz pusty dysk lub istniejącego dysku, który w tym momencie nie jest dołączony do innej maszyny Wirtualnej.
 
 **Uwaga**: dyski mogą być dołączane tylko do jednej maszyny Wirtualnej w danym momencie.
@@ -1299,14 +1331,17 @@ Replikacja geograficzna platformy Azure działa lokalnie na poszczególnych wirt
 
 - - -
 ### <a name="final-deployment"></a>Ostateczny wdrożenia
+
 Ostateczny wdrożenia i konkretne kroki, szczególnie w odniesieniu do wdrożenia SAP rozszerzone monitorowanie, można znaleźć [przewodnik wdrażania][deployment-guide].
 
 ## <a name="accessing-sap-systems-running-within-azure-vms"></a>Uzyskiwanie dostępu do systemów SAP w ramach maszyn wirtualnych platformy Azure
+
 W przypadku scenariuszy tylko w chmurze można połączyć się z tych systemów SAP w publicznej sieci internet, przy użyciu graficznego interfejsu użytkownika SAP. W takich przypadkach należy zastosować następujące procedury.
 
 W dalszej części dokumentu omówimy innych głównych scenariuszy nawiązywania połączenia z systemów SAP w przypadku wdrożeń obejmujących wiele lokalizacji połączenia lokacja lokacja (s2s) lub połączenia usługi Azure ExpressRoute między systemami lokalnymi a systemami platformy Azure.
 
 ### <a name="remote-access-to-sap-systems"></a>Zdalny dostęp do systemów SAP
+
 Za pomocą usługi Azure Resource Manager istnieją domyślne punkty końcowe nie już podobnie jak w poprzedniej wersji portalu klasycznego modelu. Wszystkie porty Maszynie wirtualnej platformy Azure Resource Manager są otwarte tak długo, jak:
 
 1. Nie sieciowej grupy zabezpieczeń jest zdefiniowany dla podsieci lub interfejsu sieciowego. Ruch sieciowy do maszyn wirtualnych platformy Azure mogą być chronione za pomocą tak zwane "sieciowe grupy zabezpieczeń". Aby uzyskać więcej informacji, zobacz [co to jest grupa zabezpieczeń sieci (NSG)?][virtual-networks-nsg]
@@ -1315,9 +1350,11 @@ Za pomocą usługi Azure Resource Manager istnieją domyślne punkty końcowe ni
 Zobacz architektury różnica między klasycznym modelem i ARM, zgodnie z opisem w [w tym artykule][virtual-machines-azure-resource-manager-architecture].
 
 #### <a name="configuration-of-the-sap-system-and-sap-gui-connectivity-for-cloud-only-scenario"></a>Konfiguracja łączności systemu SAP i SAP graficznego interfejsu użytkownika dla scenariusza tylko w chmurze
+
 Można znaleźć w tym artykule opisano szczegóły, aby w tym temacie: <http://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
 
 #### <a name="changing-firewall-settings-within-vm"></a>Zmiana ustawień zapory na maszynie wirtualnej
+
 Może być konieczne skonfigurowanie zapory na maszynach wirtualnych, aby zezwolić na ruch przychodzący do systemu SAP.
 
 - - -
@@ -1346,6 +1383,7 @@ Może być konieczne skonfigurowanie zapory na maszynach wirtualnych, aby zezwol
 
 - - -
 #### <a name="security-recommendations"></a>Zalecenia dotyczące zabezpieczeń
+
 Graficzny interfejs użytkownika SAP nie natychmiast połączyć się z dowolnego z wystąpień SAP (port 32xx), które są uruchomione, ale najpierw łączy się za pośrednictwem portu otwarty do procesu serwera SAP komunikat (port 36xx). W przeszłości tego samego portu został użyty przez serwer wiadomości do komunikacji wewnętrznej w wystąpieniach aplikacji. Aby zapobiec przypadkowo podczas komunikowania się z serwerem wiadomości na platformie Azure serwerów aplikacji w środowisku lokalnym, można zmienić portów komunikacji wewnętrznej. Zdecydowanie zaleca się zmienić wewnętrznej komunikacji między serwerem komunikat SAP i jego wystąpienia aplikacji na inny numer portu w systemach, które zostały sklonowane z systemów lokalnych, takich jak klon opracowywania rozwiązań dla projektów testowych itp. Można to zrobić przy użyciu domyślnego parametru profilu:
 
 > rdisp/msserv_internal
@@ -1355,7 +1393,9 @@ Graficzny interfejs użytkownika SAP nie natychmiast połączyć się z dowolneg
 zgodnie z opisem w [ustawienia zabezpieczeń dla serwera SAP wiadomości ](https://help.sap.com/saphelp_nwpi71/helpdata/en/47/c56a6938fb2d65e10000000a42189c/content.htm)
 
 ## <a name="96a77628-a05e-475d-9df3-fb82217e8f14"></a>Pojęcia dotyczące tylko na chmurze wdrożenia wystąpieniami platformy SAP
+
 ### <a name="3e9c3690-da67-421a-bc3f-12c520d99a30"></a>Pojedyncza maszyna wirtualna z oprogramowaniem SAP NetWeaver pokaz/szkolenia scenariusza
+
 ![Systemami pojedynczego SAP maszyny Wirtualnej pokazu za pomocą tej samej nazwy maszyn wirtualnych, samodzielnie w usługach Azure Cloud Services][planning-guide-figure-1700]
 
 W tym scenariuszu (zobacz rozdział [tylko na chmurze] [ planning-guide-2.1] tego dokumentu) firma Microsoft wdraża typowe szkolenia/pokaz scenariusza systemu, gdzie znajduje się w scenariuszu pełną szkolenia/wersję demonstracyjną w pojedynczej maszyny Wirtualnej. Przyjęto założenie, że wdrożenie jest przeprowadzane za pomocą szablonów obrazu maszyny Wirtualnej. Przyjęto również założenie, że wiele z tych wersji demonstracyjnej/szkoleniach konieczność maszyny wirtualne można wdrażać maszyny wirtualne o takiej samej nazwie.
@@ -1365,6 +1405,7 @@ Zakłada się, utworzyć obraz maszyny Wirtualnej, zgodnie z opisem w sekcjach r
 Kolejność zdarzeń, aby zaimplementować scenariusz wygląda następująco:
 
 ##### <a name="powershell"></a>PowerShell
+
 * Utwórz nową grupę zasobów dla każdego pozioma szkolenia/pokaz
 
 ```powershell
@@ -1479,6 +1520,7 @@ Add-AzureRmVMDataDisk -VM $vm -Name datadisk -DiskSizeInGB 1023 -CreateOption em
 ```
 
 ##### <a name="cli"></a>Interfejs wiersza polecenia
+
 Poniższy przykład kodu może służyć w systemie Linux. Dla Windows, zgodnie z powyższym opisem przy użyciu programu PowerShell lub dostosować przykład użycia rgName % zamiast $rgName i ustawić zmienną środowiskową przy użyciu polecenia Windows *ustaw*.
 
 * Utwórz nową grupę zasobów dla każdego pozioma szkolenia/pokaz
@@ -1563,6 +1605,7 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 ```
 
 ##### <a name="template"></a>Szablon
+
 Można użyć przykładowych szablonów w repozytorium azure-quickstart-templates w witrynie github.
 
 * [Proste maszyny Wirtualnej systemu Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
@@ -1570,6 +1613,7 @@ Można użyć przykładowych szablonów w repozytorium azure-quickstart-template
 * [Maszynę Wirtualną z obrazu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
 
 ### <a name="implement-a-set-of-vms-that-communicate-within-azure"></a>Implementowanie zestawu maszyn wirtualnych, które komunikują się w obrębie platformy Azure
+
 W tym scenariuszu tylko w chmurze jest to typowy scenariusz, szkolenia i pokaz do celów gdzie oprogramowania reprezentujący pokaz/szkolenia scenariusza jest rozłożona na wiele maszyn wirtualnych. Różne składniki, które są zainstalowane na różnych maszynach wirtualnych muszą komunikować się ze sobą. Ponownie w tym scenariuszu komunikacja sieciowa braku lokalnej lub scenariuszy obejmujących wiele lokalizacji jest wymagana.
 
 Ten scenariusz jest rozszerzeniem instalacji opisane w rozdziale [pojedyncza maszyna wirtualna z oprogramowaniem SAP NetWeaver pokaz/szkolenia scenariusza] [ planning-guide-7.1] tego dokumentu. W tym przypadku jedna maszyna wirtualna zostanie dodany do istniejącej grupy zasobów. W poniższym przykładzie pozioma szkolenia składa się z SAP ASCS/SCS maszynę Wirtualną, maszynę Wirtualną z systemem DBMS i wystąpienia serwera aplikacji SAP maszyny Wirtualnej.
@@ -1577,11 +1621,13 @@ Ten scenariusz jest rozszerzeniem instalacji opisane w rozdziale [pojedyncza mas
 Przed utworzeniem tego scenariusza, należy wziąć pod uwagę ustawienia podstawowe, jak już wykonywane w scenariuszu przed.
 
 #### <a name="resource-group-and-virtual-machine-naming"></a>Grupa zasobów i nazwy maszyny wirtualnej
+
 Wszystkie nazwy grupy zasobów musi być unikatowa. Twórz własny schemat nazewnictwa zasobów, takich jak `<rg-name`>-sufiks.
 
 Nazwa maszyny wirtualnej musi być unikatowa w obrębie grupy zasobów.
 
 #### <a name="set-up-network-for-communication-between-the-different-vms"></a>Konfigurowanie sieci dla komunikacji między różnych maszyn wirtualnych
+
 ![Zestaw maszyn wirtualnych w ramach sieci wirtualnej platformy Azure][planning-guide-figure-1900]
 
 Aby zapobiec nazw kolizji z klony tego samego krajobrazów szkolenia/pokaz, musisz utworzyć usługi Azure Virtual Network dla każdego poziomym. Rozpoznawanie nazw DNS będzie świadczona przez platformę Azure lub własnego serwera DNS, poza systemem Azure (nie w celu dalszego dokładniej omówione w tym miejscu) można skonfigurować. W tym scenariuszu firma Microsoft nie Konfiguruj własną DNS. W przypadku wszystkich maszyn wirtualnych w jednej sieci wirtualnej platformy Azure komunikację za pomocą nazwy hostów zostaną włączone.
@@ -1594,11 +1640,13 @@ Powody do oddzielania szkolenia lub pokaz krajobrazów, sieciami wirtualnymi i n
 Więcej informacji o usłudze Azure Virtual Networks i sposób definiowania ich można znaleźć w [w tym artykule][virtual-networks-create-vnet-arm-pportal].
 
 ## <a name="deploying-sap-vms-with-corporate-network-connectivity-cross-premises"></a>Wdrażanie maszyn wirtualnych SAP z połączeniem sieci firmowej (Cross-Premises)
+
 Uruchom środowisko SAP i dzielenia wdrożenia od zera dla serwerów z systemem DBMS wysokiej klasy, dla zwirtualizowanych środowisk lokalnych dla warstw aplikacji i niższy poziom 2 skonfigurowane systemów SAP i IaaS platformy Azure. Przyjmowane jest założenie podstawowych systemów SAP w jednym środowiskiem SAP muszą komunikować się ze sobą i z wieloma innymi składnikami oprogramowania wdrożone w firmie, niezależnie od ich formularza wdrożenia. Również powinno być żadnych różnic wprowadzone przez formularz wdrożenia dla użytkownika końcowego, łączenie z interfejsem GUI SAP lub innych interfejsów. Te warunki mogą zostać spełnione tylko, gdy mamy Active Directory/OpenLDAP lokalnych i usług DNS rozszerzona na systemy platformy Azure za pośrednictwem połączenia lokacja do witryny/wielu lokalizacji lub prywatnych połączeń, takich jak usługi Azure ExpressRoute.
 
 Aby uzyskać więcej ogólnych informacji na temat szczegółów implementacji oprogramowania SAP na platformie Azure, firma Microsoft zachęca do odczytu rozdział [pojęcia Cloud-Only wdrożenia wystąpieniami platformy SAP] [ planning-guide-7] z tym dokumencie omówiono konstrukcji podstawy platformy Azure i jak są używane z aplikacjami SAP na platformie Azure.
 
 ### <a name="scenario-of-an-sap-landscape"></a>Scenariusz środowisko SAP
+
 Scenariusz między środowiskami lokalnymi można około opisać podobnie jak w grafice poniżej:
 
 ![Połączenie lokacja-lokacja między magazynami lokalnymi i zasobów platformy Azure][planning-guide-figure-2100]
@@ -1606,6 +1654,7 @@ Scenariusz między środowiskami lokalnymi można około opisać podobnie jak w 
 Scenariuszu przedstawionym powyżej opisano scenariusz, gdzie lokalnej usługi AD/OpenLDAP i DNS zostały rozszerzone na platformę Azure. Na tej stronie w środowisku lokalnym określonego zakresu adresów IP jest zastrzeżony na subskrypcję platformy Azure. Zakres adresów IP zostanie przypisany do usługi Azure Virtual Network na stronie platformy Azure.
 
 #### <a name="security-considerations"></a>Zagadnienia związane z zabezpieczeniami
+
 Minimalnym wymaganiem jest użycie protokołów bezpiecznej komunikacji, takich jak protokół SSL/TLS dla opartych na sieci VPN połączeń, aby uzyskać dostęp do systemu usług platformy Azure lub dostęp za pomocą przeglądarki. Zakłada się, firm inaczej obsługi połączenia sieci VPN między siecią firmową i platformy Azure. Niektóre firmy może zostać otwarta blankly wszystkie porty. Niektóre innych firm może być była precyzyjna, w które porty należy otworzyć itp.
 
 W tabeli poniżej SAP typowe porty komunikacyjne są wyświetlane. Zasadniczo jest wystarczające, aby otworzyć port bramy SAP.
@@ -1627,10 +1676,13 @@ Z tym dokumentem można otworzyć porty dedykowanych w niezbędne dla określony
 Inne zabezpieczeń mierzy podczas wdrażania maszyn wirtualnych w takiej sytuacji można utworzyć [sieciowej grupy zabezpieczeń] [ virtual-networks-nsg] do zdefiniowania reguł dostępu.
 
 ### <a name="dealing-with-different-virtual-machine-series"></a>Zajmowanie się innej serii maszyny wirtualnej
+
 Firma Microsoft dodała wiele więcej typów maszyn wirtualnych, które różnią się w liczba wirtualnych procesorów CPU, pamięci, lub ważniejsze na sprzęcie, którym jest uruchomiony. Nie wszystkie te maszyny wirtualne są obsługiwane z oprogramowaniem SAP (zobacz obsługiwane typy maszyn wirtualnych w Uwaga SAP [1928533]). Niektóre z tych maszyn wirtualnych uruchamiane na inny host generacji sprzętu. Te generacji sprzętu hosta wdrożonych wprowadzenie w stopień szczegółowości z platformy Azure — jednostka skalowania. Przypadki mogą wystąpić, gdy różnych typach maszyn wirtualnych, które wybrałeś nie można uruchomić w tej samej jednostce skali. Zestaw dostępności, jest ograniczona możliwość span jednostek skalowania w zależności od innego sprzętu.  Na przykład jeśli korzystasz z warstwy systemu SAP DBMS na maszynie Wirtualnej E64s_v3, który znajduje się w zestawie dostępności wraz z maszyną Wirtualną uruchomione dodatkowej wystąpienie DBMS w konfiguracji wysokiej dostępności, możesz nie wystarczy zatrzymać i ponownie uruchomić pomocniczej maszyny Wirtualnej jako maszyna wirtualna serii M ponieważ warto u aktualnij maszyny Wirtualnej. Przyczyną jest to, że maszyny wirtualne serii M i maszyny wirtualne z serii Ev3 są uruchomione na różnym sprzęcie i korzystając z niego w różnych jednostkach skalowania. Musisz utworzyć nowy zestaw dostępności, Usuń pomocniczej maszyny Wirtualnej serii Ev3 bez usuwania magazynu i ponowne wdrażanie maszyny Wirtualnej jako maszyna wirtualna serii M do nowego zestawu dostępności.
 
 #### <a name="printing-on-a-local-network-printer-from-sap-instance-in-azure"></a>Drukowanie na drukarce lokalnej sieci z wystąpienia SAP na platformie Azure
+
 ##### <a name="printing-over-tcpip-in-cross-premises-scenario"></a>Drukowanie za pośrednictwem protokołu TCP/IP w scenariuszu między środowiskami lokalnymi
+
 Skonfigurowanie lokalnych drukarek sieciowych na podstawie protokołu TCP/IP w Maszynie wirtualnej platformy Azure ogólnie jest taki sam jak w sieci firmowej, przy założeniu, że masz tunelu sieci VPN lokacja-lokacja lub nawiązano połączenie usługi ExpressRoute.
 
 - - -
@@ -1656,6 +1708,7 @@ Skonfigurowanie lokalnych drukarek sieciowych na podstawie protokołu TCP/IP w M
 ![Drukowanie w sieci][planning-guide-figure-2200]
 
 ##### <a name="host-based-printer-over-smb-shared-printer-in-cross-premises-scenario"></a>Drukarki oparte na hoście przy użyciu protokołu SMB (drukarki udostępnionej) w scenariuszu między środowiskami lokalnymi
+
 Drukarki oparte na hoście nie są zgodne z sieci zgodnie z projektem. Ale drukarki oparte na hoście mogą być współużytkowane przez komputery w sieci, tak długo, jak drukarka jest podłączona do zasilania na komputerze. Łączenie sieci firmowej sieci lokacja-lokacja lub ExpressRoute i udostępnianie drukarki lokalnej. Protokół SMB używa NetBIOS zamiast DNS jako nazwa usługi. Nazwę NetBIOS hosta może różnić się od nazwy hosta DNS. Standardowa przypadek jest nazwą hosta NetBIOS i nazwę hosta DNS są identyczne. Domena DNS nie ma sensu w przestrzeni nazw NetBIOS. W związku z tym w pełni kwalifikowana nazwa hosta DNS, składające się z nazwy hosta DNS i domeny DNS nie stosuje się w przestrzeni nazw NetBIOS.
 
 Udziału drukarki jest identyfikowane przez unikatową nazwę w sieci:
@@ -1685,6 +1738,7 @@ Instrukcje:
 
 - - -
 ##### <a name="usb-printer-printer-forwarding"></a>USB drukarki (drukarki przekazywania)
+
 Na platformie Azure możliwości usług pulpitu zdalnego do udzielania dostępu do swoich urządzeń drukarki lokalnej w sesji zdalnej nie jest dostępna.
 
 - - -
@@ -1696,9 +1750,11 @@ Na platformie Azure możliwości usług pulpitu zdalnego do udzielania dostępu 
 
 - - -
 #### <a name="integration-of-sap-azure-systems-into-correction-and-transport-system-tms-in-cross-premises"></a>Integracja oprogramowania SAP systemy platformy Azure do korekcji i Transport systemu (TMS) między środowiskami lokalnymi
+
 Zmiana SAP i System transportu (TMS) musi być skonfigurowana do eksportowania i importowania transportu żądania we wszystkich systemach w orientacji poziomej. Przyjęto założenie, że wystąpienia rozwoju systemu SAP (DEV) znajdują się na platformie Azure, systemów produktywność (PRD) i zapewniania jakości (QA) są w środowisku lokalnym. Ponadto przyjęto założenie, że jest katalogiem transportu centralnego.
 
 ##### <a name="configuring-the-transport-domain"></a>— Konfigurowanie domeny transportu
+
 Skonfiguruj domenę transportu w systemie wyznaczony jako kontroler domeny transportu, zgodnie z opisem w [konfigurowania kontrolera domeny transportu](http://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm). Użytkownik systemu TMSADM zostanie utworzony i wymagane miejsce docelowe RFC zostanie wygenerowany. Można sprawdzać te połączenia RFC przy użyciu transakcji SM59. Rozpoznawanie nazwy hosta musi być włączona w Twojej domenie transportu.
 
 Instrukcje:
@@ -1709,6 +1765,7 @@ Instrukcje:
 ![Ekran początkowy transakcji STMS na kontrolerze domeny][planning-guide-figure-2300]
 
 #### <a name="including-sap-systems-in-the-transport-domain"></a>W tym systemów SAP w domenie transportu
+
 Sekwencja, w tym z systemem SAP w domenie transportu wygląda następująco:
 
 * W systemie Deweloperskim na platformie Azure przejdź do systemu transportu (klient 000) i wywoływać transakcji STMS. Wybierz inne konfigurację z okna dialogowego, a następnie kontynuuj obejmują systemu w domenie. Określ kontroler domeny jako hosta docelowego ([w tym systemów SAP w domenie transportu](http://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0c17acc11d1899e0000e829fbbd/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm)). System oczekuje się teraz do uwzględnienia w domenie transportu.
@@ -1738,18 +1795,23 @@ Instrukcje:
 * Przekazują konfigurację do połączonego systemu.
 
 #### <a name="rfc-traffic-between-sap-instances-located-in-azure-and-on-premises-cross-premises"></a>RFC ruchu między wystąpieniami platformy SAP znajdujących się na platformie Azure i w środowisku lokalnym (Cross-Premises)
+
 RFC ruchu między systemami, które są w środowisku lokalnym i na platformie Azure potrzebne do pracy. Aby skonfigurować połączenie transakcji wywołania SM59 w systemie źródłowym gdzie należy zdefiniować połączeniu RFC do systemu docelowego. Konfiguracja jest podobna do ustawienia standardowe połączenia RFC.
 
 Firma Microsoft przyjęto założenie, że w tym scenariuszu obejmujących maszyny wirtualne, które uruchamiania systemów SAP, które muszą komunikować się ze sobą znajdują się w tej samej domenie. W związku z tym instalacji połączeniu RFC między systemami SAP nie różni się od kroków instalacji i dane wejściowe w scenariuszach lokalnych.
 
 #### <a name="accessing-local-fileshares-from-sap-instances-located-in-azure-or-vice-versa"></a>Uzyskiwanie dostępu do lokalnych udziałów plików z wystąpieniami platformy SAP znajdujących się na platformie Azure lub na odwrót
+
 Wystąpienia SAP znajdujących się na platformie Azure konieczne dostęp do udziałów plików, które znajdują się w siedzibie firmy. Ponadto w środowisku lokalnym wystąpieniami platformy SAP konieczne dostęp do udziałów plików, które znajdują się na platformie Azure. Aby włączyć udziałów plików, należy skonfigurować uprawnienia i opcje udostępniania w systemie lokalnym. Upewnij się otworzyć porty dla połączenia sieci VPN lub usługi ExpressRoute między platformą Azure i Twoim centrum danych.
 
 ## <a name="supportability"></a>Możliwości obsługi
+
 ### <a name="6f0a47f3-a289-4090-a053-2521618a28c3"></a>Azure rozwiązanie do monitorowania dla rozwiązania SAP
+
 Aby włączyć monitorowanie Najważniejsze systemy SAP na platformie Azure SAP monitorowanie narzędzi SAPOSCOL lub Agent hosta SAP uzyskać danych poza hosta usługi maszyny wirtualnej platformy Azure za pomocą rozszerzenia monitorowania platformy Azure dla rozwiązania SAP. Ponieważ żądania przez firmę SAP były specyficzne dla aplikacji SAP, Microsoft zrezygnowała z ogólną implementacji wymaganej funkcji na platformie Azure, ale pozostawienie jej klienci będą mogli wdrażać wymagane składniki monitorowania i konfiguracje w ich wirtualnej Komputery działające na platformie Azure. Jednak wdrożenie i zarządzanie cyklem życia składników monitorowania będzie najczęściej zautomatyzowany przez platformę Azure.
 
 #### <a name="solution-design"></a>Projekt rozwiązania
+
 Rozwiązanie opracowany, aby włączyć monitorowanie SAP zależy od architektury agenta maszyny Wirtualnej platformy Azure i platformy rozszerzeń. Chodzi agenta maszyny Wirtualnej platformy Azure i rozszerzenie platformy o to, aby zezwolić na instalację aplikacji oprogramowania dostępnych w galerii rozszerzenia maszyny Wirtualnej platformy Azure na maszynie wirtualnej. Zasada idei to pojęcie jest umożliwienie (w takich przypadkach rozszerzenie monitorowania platformy Azure dla oprogramowania SAP), wdrożenie specjalne funkcje do maszyny Wirtualnej i konfiguracji oprogramowania w czasie wdrażania.
 
 "Azure agenta maszyny Wirtualnej" umożliwiający obsługę określonych rozszerzeń maszyn wirtualnych platformy Azure na maszynie wirtualnej są wstrzykiwane do maszyn wirtualnych Windows domyślnie po utworzeniu maszyny Wirtualnej w witrynie Azure portal. W przypadku SUSE, Red Hat lub Oracle Linux agent maszyny Wirtualnej jest już częścią obrazu z witryny Azure Marketplace. W przypadku, gdy jeden czy przekazać Maszynę wirtualną systemu Linux ze środowiska lokalnego do platformy Azure, agent maszyny Wirtualnej musi być zainstalowany ręcznie.
@@ -1771,6 +1833,7 @@ Ogólna Architektura rozwiązania do monitorowania platformy Azure dla rozwiąza
 **Aby uzyskać dokładne instrukcje i aby uzyskać szczegółowe instrukcje korzystania z tych poleceń cmdlet programu PowerShell lub interfejsu wiersza polecenia podczas wdrażania, postępuj zgodnie z instrukcjami, podany w [przewodnik wdrażania][deployment-guide].**
 
 ### <a name="integration-of-azure-located-sap-instance-into-saprouter"></a>Integracja usługi Azure znajduje się wystąpienie SAP do SAProuter
+
 Wystąpieniami platformy SAP działające na platformie Azure muszą być dostępne z SAProuter także.
 
 ![Połączenie sieciowe routera SAP][planning-guide-figure-2600]
@@ -1779,9 +1842,11 @@ SAProuter umożliwia komunikację protokołu TCP/IP między systemami uczestnicz
 Do łączenia z wystąpieniami platformy SAP za pośrednictwem SAProuter należy nadać nazwę ciągu i hosta SAProuter z próba nawiązania połączenia.
 
 ## <a name="sap-netweaver-as-java"></a>Oprogramowanie SAP NetWeaver AS w języku Java
+
 Do tej pory fokus dokument został oprogramowanie SAP NetWeaver ogólnie rzecz biorąc lub SAP NetWeaver ABAP stosu. W tej sekcji małe są wyświetlane określone informacje dotyczące stosu SAP Java. Jednym z najważniejszych aplikacji SAP NetWeaver wyłącznie opartymi na języku Java jest SAP Enterprise Portal. Inne oprogramowanie SAP NetWeaver aplikacje oparte na jak SAP PI i SAP Menedżerze rozwiązania SAP NetWeaver ABAP i stosy języka Java. W związku z tym bez obaw istnieje potrzeba należy wziąć pod uwagę określone aspekty związane ze stosu SAP NetWeaver w języku Java.
 
 ### <a name="sap-enterprise-portal"></a>SAP Enterprise Portal
+
 Instalator portalu SAP w maszynie wirtualnej platformy Azure nie różnią się od w instalacji lokalnej, jeśli są wdrażane w scenariuszach obejmujących wiele lokalizacji. Ponieważ DNS odbywa się przez lokalną, ustawienia portów dla poszczególnych wystąpień może odbywać się jako skonfigurowanych w środowisku lokalnym. Zalecenia i ograniczenia opisane w niniejszym dokumencie do tej pory zastosowanie ogólnie rzecz biorąc dla aplikacji, takich jak SAP Enterprise Portal lub stos SAP NetWeaver w języku Java.
 
 ![Portal narażonych SAP][planning-guide-figure-2700]
@@ -1798,12 +1863,15 @@ Jeśli chcesz dostosować adresu URL i/lub porty witryny Enterprise Portal SAP, 
 * [Zmień domyślne numery portów, numery portów portalu](http://wiki.scn.sap.com/wiki/display/NWTech/Change+Default++port+numbers%2C+Portal+port+numbers)
 
 ## <a name="high-availability-ha-and-disaster-recovery-dr-for-sap-netweaver-running-on-azure-virtual-machines"></a>Wysoka dostępność (HA) i odzyskiwania po awarii (DR) dla oprogramowania SAP NetWeaver uruchomione na maszynach wirtualnych platformy Azure
+
 ### <a name="definition-of-terminologies"></a>Definicja terminologii
+
 Termin **wysokiej dostępności (HA)** powiązany ogólnie jest to zestaw technologii minimalizujące zakłócenia IT, zapewniając ciągłość usług IT za pomocą nadmiarowe, odpornej na uszkodzenia, lub pracy awaryjnej chronione składników wewnątrz **tego samego** centrum danych. W naszym przypadku w ramach jednego regionu platformy Azure.
 
 **Odzyskiwanie po awarii (DR)** jest także przeznaczonych dla zminimalizować zakłócenia usług IT oraz ich odzyskiwanie ale na **różnych** centrów danych, które są zazwyczaj znajduje się setki kilometrów natychmiast. W naszym przypadku zwykle od różnych regionów platformy Azure, w tym samym regionie geograficznymi lub określone przez Ciebie jako klient.
 
 ### <a name="overview-of-high-availability"></a>Omówienie wysokiej dostępności
+
 Firma Microsoft można oddzielić dyskusji o SAP o wysokiej dostępności na platformie Azure na dwie części:
 
 * **Wysoka dostępność infrastruktury platformy Azure**, na przykład HA obliczeniowych (maszyn wirtualnych), sieć, Magazyn itp. oraz korzyści dla zwiększenia dostępności aplikacji SAP.
@@ -1817,6 +1885,7 @@ i jak można ją połączyć z infrastrukturą platformy Azure o wysokiej dostę
 SAP wysokiej dostępności na platformie Azure ma pewne różnice w porównaniu do SAP o wysokiej dostępności w lokalnym środowisku fizycznym lub wirtualnym. Poniższy dokument z systemu SAP w tym artykule opisano standardowy SAP konfiguracjach wysokiej dostępności w środowiskach zwirtualizowanych na Windows: <http://scn.sap.com/docs/DOC-44415>. Brak zintegrowane sapinst SAP-zaświadczanie o kondycji konfiguracji dla systemu Linux takie jak istnieje Windows. Dotyczące SAP HA lokalnych dla systemu Linux znaleźć artykuły zawierają więcej informacji: <http://scn.sap.com/docs/DOC-8541>.
 
 ### <a name="azure-infrastructure-high-availability"></a>Wysoka dostępność infrastruktury platformy Azure
+
 Obecnie jest maszyn wirtualnych na jednym umów SLA na poziomie 99,9%. Aby uzyskać pomysł, jak może wyglądać dostępności jednej maszyny Wirtualnej, możesz tworzyć produktu różne dostępne umowy SLA platformy Azure: <https://azure.microsoft.com/support/legal/sla/>.
 
 Podstawą obliczeń jest 30 dni, każdego miesiąca lub 43200 minut. Dlatego przestój 0,05% odnosi się do 21,6 minut. Dostępność różnych usług będą w zwykły sposób, należy pomnożyć w następujący sposób:
@@ -1828,6 +1897,7 @@ Na przykład:
 (99,95/100) * (99,9/100) * (99,9/100) = 0.9975 lub ogólnej dostępności 99.75%.
 
 #### <a name="virtual-machine-vm-high-availability"></a>Maszyna wirtualna (VM) o wysokiej dostępności
+
 Istnieją dwa typy zdarzeń platformy Azure, które mogą wpłynąć na dostępność maszyn wirtualnych: Planowana Konserwacja i nieplanowana konserwacja.
 
 * Zdarzenia planowanej konserwacji są okresowe aktualizacje przeprowadzane przez firmę Microsoft dla podstawowej platformy Azure w celu zwiększenia ogólnej niezawodności, wydajności i bezpieczeństwa infrastruktury platformy, które są uruchamiane maszyny wirtualne.
@@ -1836,6 +1906,7 @@ Istnieją dwa typy zdarzeń platformy Azure, które mogą wpłynąć na dostępn
 Więcej szczegółów można znaleźć w tej dokumentacji: <http://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability>
 
 #### <a name="azure-storage-redundancy"></a>Nadmiarowość magazynu platformy Azure
+
 Dane konta usługi Microsoft Azure Storage są zawsze replikowane w celu zapewnienia trwałości i wysokiej dostępności, spełnia wymagania umowy SLA magazynu platformy Azure nawet w wypadku przejściowych awarii sprzętu.
 
 Ponieważ usługi Azure Storage może być utrzymywanie trzy obrazy danych domyślnie, RAID5 lub RAID1 na wielu dyskach platformy Azure nie są konieczne.
@@ -1843,6 +1914,7 @@ Ponieważ usługi Azure Storage może być utrzymywanie trzy obrazy danych domy�
 Więcej szczegółów można znaleźć w tym artykule: <http://azure.microsoft.com/documentation/articles/storage-redundancy/>
 
 #### <a name="utilizing-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-sap-applications"></a>Przy użyciu ponownego uruchamiania maszyny Wirtualnej infrastruktury platformy Azure, aby osiągnąć wyższą dostępność aplikacji SAP
+
 Jeśli nie chcesz używać funkcje, takie jak Windows Server Failover Clustering (WSFC) lub program Pacemaker w systemie Linux (obecnie obsługiwany tylko dla systemu SLES 12 lub nowszym), uruchom ponownie maszynę Wirtualną platformy Azure służy do ochrony systemu SAP przed planowanych lub nieplanowanych przestojów platformy Azure Serwer fizyczny, infrastruktury i ogólną podstawowej platformy Azure.
 
 > [!NOTE]
@@ -1885,9 +1957,11 @@ Dla krytycznych składników SAP możemy osiągnąć następujące do tej pory:
   System DBMS, uruchomiony w jednej maszyny Wirtualnej jest również SPOF i jest dominującego współczynnik dostępność całe środowisko SAP.
 
 ### <a name="sap-application-high-availability-on-azure-iaas"></a>Wysoka dostępność aplikacji SAP w usłudze IaaS platformy Azure
+
 Uzyskanie pełnej SAP system wysokiej dostępności, należy chronić wszystkie krytyczne składniki systemu SAP, na przykład nadmiarowych serwerów aplikacji SAP i unikatowy składników (na przykład pojedynczy punkt awarii), takich jak wystąpienia SAP (A) SCS i DBMS.
 
 #### <a name="5d9d36f9-9058-435d-8367-5ad05f00de77"></a>Wysoka dostępność dla serwerów aplikacji SAP
+
 Wystąpienia serwerów/okna dialogowego aplikacji SAP nie jest konieczne wziąć pod uwagę rozwiązanie określonych wysokiej dostępności. Wysoka dostępność jest osiągana przez nadmiarowości i tym samym masz wystarczającą ilość je na różnych maszynach wirtualnych. One wszystkie będzie umieszczona w tej samej platformy Azure zestawie dostępności w celu uniknięcia czy maszyny wirtualne mogły zostać zaktualizowane w tym samym czasie podczas planowanej konserwacji przestojów. Podstawowe funkcje, która opiera się na różnych uaktualniania i domen błędów w ramach jednostki skalowania Azure już została wprowadzona w rozdziale [domen uaktualnienia][planning-guide-3.2.2]. Zestawy dostępności platformy Azure były widoczne w rozdziale [zestawami dostępności Azure] [ planning-guide-3.2.3] tego dokumentu.
 
 Nie ma żadnych nieskończona liczba domenach błędów i uaktualnienia, które mogą być używane przez zestawu dostępności platformy Azure w ramach jednostki skalowania Azure. Oznacza to, że umieszczenie liczbę maszyn wirtualnych w jednym zestawie dostępności, wcześniej czy później więcej niż jednej maszyny Wirtualnej kończy się w tej samej domeny uaktualnienia lub błędów.
@@ -1899,20 +1973,24 @@ Wdrażanie kilka wystąpień serwera aplikacji SAP w ich dedykowanych maszyn wir
 Więcej szczegółów można znaleźć w tej dokumentacji: <http://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability>
 
 #### <a name="high-availability-for-sap-central-services-on-azure"></a>Wysoka dostępność dla usług SAP Central Services na platformie Azure
+
 Architektura wysokiej dostępności usług SAP Central Services na platformie Azure, można znaleźć w artykule [architektury wysokiej dostępności i scenariusze SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios) jako informacje do wpisu. Wskazuje artykułu bardziej szczegółowe opisy dla systemów operacyjnych.
 
 #### <a name="high-availability-for-the-sap-database-instance"></a>Wysoka dostępność dla wystąpienia bazy danych SAP
+
 Typowe SAP DBMS zaświadczanie o kondycji konfiguracji opiera się na dwóch systemu DBMS na maszynach wirtualnych z użycia funkcji wysokiej dostępności systemu DBMS na replikowanie danych z aktywnego wystąpienia systemu DBMS na drugą maszynę Wirtualną do pasywne wystąpienia systemu DBMS.
 
 Wysoka dostępność i odzyskiwanie po awarii z funkcji odzyskiwania systemu DBMS, ogólnie rzecz biorąc również jako określonego systemu DBMS są opisane w [przewodnik wdrażania systemu DBMS][dbms-guide].
 
 #### <a name="end-to-end-high-availability-for-the-complete-sap-system"></a>End-to-End wysokiej dostępności dla systemu SAP ukończone
+
 Poniżej przedstawiono dwa przykłady pełnej SAP NetWeaver HA architektury na platformie Azure — jeden dla Windows i jeden dla systemu Linux.
 
 Tylko dysków niezarządzanych: pojęcia, jak wyjaśniono poniżej może być konieczne być narażone na ataki nieco podczas wdrażania wielu systemów SAP i liczba wdrożonych maszyn wirtualnych przekraczają maksymalny limit kont magazynu na subskrypcję. W takich przypadkach wirtualnych dysków twardych maszyn wirtualnych konieczne można łączyć w ramach jednego konta magazynu. Zwykle będzie tak zrobisz, łącząc warstwy aplikacji wirtualnych dysków twardych SAP maszyn wirtualnych z różnych systemów SAP.  Firma Microsoft również łączyć różne wirtualne dyski twarde różnych systemu DBMS na maszynach wirtualnych w różnych systemów SAP na jednym koncie magazynu platformy Azure. Dzięki temu pamiętając o granicach operacje We/Wy kont usługi Azure Storage (<https://azure.microsoft.com/documentation/articles/storage-scalability-targets>)
 
 
 ##### <a name="windowslogowindows-ha-on-windows"></a>![Windows][Logo_Windows] Zaświadczanie o kondycji na Windows
+
 ![Architektura SAP NetWeaver aplikacji o wysokiej dostępności programu SQL Server w usłudze Azure IaaS][planning-guide-figure-3200]
 
 Następujące konstrukcje platformy Azure są używane w systemie SAP NetWeaver do zminimalizowania wpływu problemami związanymi z infrastrukturą i stosowanie poprawek:
@@ -1934,9 +2012,11 @@ Poniższej ilustracji przedstawiono pozioma tego samego, przy użyciu dysków za
 ![Architektura SAP NetWeaver aplikacji o wysokiej dostępności programu SQL Server w usłudze Azure IaaS][planning-guide-figure-3201]
 
 ##### <a name="linuxlogolinux-ha-on-linux"></a>![Linux][Logo_Linux] Wysoka dostępność w systemie Linux
+
 Architektura SAP wysokiej dostępności w systemie Linux na platformie Azure jest zasadniczo takie same jak dla Windows zgodnie z powyższym opisem. Zapoznaj się uwagę [1928533] listę rozwiązań obsługiwanych wysokiej dostępności.
 
 ### <a name="4e165b58-74ca-474f-a7f4-5e695a93204f"></a>Za pomocą funkcji Autostart dla wystąpieniami platformy SAP
+
 SAP oferuje funkcje, które można uruchomić wystąpień SAP natychmiast po rozpoczęciu systemu operacyjnego na maszynie wirtualnej. Konkretne kroki zostały opisane w artykule bazy wiedzy SAP [1909114]. Jednak SAP nie jest zalecania ustawienia dłużej, ponieważ nie ma żadnej kontroli zgodnie z kolejnością ponownego uruchomienia wystąpienia, zakładając, że więcej niż jedna maszyna wirtualna stało się narażony lub wiele wystąpień uruchomiono na maszynę Wirtualną. Zakładając, że typowy scenariusz Azure jednego wystąpienia serwera aplikacji SAP w Maszynę wirtualną i wielkość liter jednej maszyny Wirtualnej, po pewnym czasie ponownie uruchomić pobieranie, Autostart nie jest krytyczna i może zostać włączona przez dodanie tego parametru:
 
     Autostart = 1
@@ -1974,6 +2054,7 @@ W tym artykule przedstawiono przykładowy skrypt ten proces w programie Powershe
 Upewnij się zainstalować nową licencję na oprogramowanie SAP, ponieważ przywracanie kopii zapasowej maszyny Wirtualnej, zgodnie z powyższym opisem powoduje utworzenie nowego klucza sprzętowego.
 
 ### <a name="online-backup-of-an-sap-system"></a>Kopii zapasowych online systemu SAP
+
 Kopia zapasowa systemu DBMS odbywa się za pomocą metod specyficznych dla systemu DBMS, zgodnie z opisem w [przewodnik systemu DBMS][dbms-guide].
 
 Inne maszyny wirtualne w systemie SAP utworzeniem kopii zapasowej za pomocą funkcji Kopia zapasowa maszyny wirtualnej platformy Azure. Kopia zapasowa maszyny wirtualnej platformy Azure jest standardową metodę, aby utworzyć kopię zapasową całej maszyny Wirtualnej na platformie Azure. Usługa Azure Backup przechowuje kopie zapasowe na platformie Azure i umożliwia przywrócenie maszyny wirtualnej ponownie.
@@ -1997,11 +2078,13 @@ Inne maszyny wirtualne w systemie SAP utworzeniem kopii zapasowej za pomocą fun
 >
 
 ### <a name="azure-as-dr-site-for-production-sap-landscapes"></a>Platformy Azure jako lokacji odzyskiwania po awarii dla krajobrazów SAP w środowisku produkcyjnym
+
 Od średniej 2014 r. rozszerzenia do różnych składników funkcji Hyper-V, programu System Center i Azure umożliwiają użycie platformy Azure jako lokacji odzyskiwania po awarii dla maszyn wirtualnych uruchomionych w środowisku lokalnym oparte na funkcji Hyper-V.
 
 Blog szczegółowych informacji na temat sposobu wdrażania tego rozwiązania opisano tutaj: <http://blogs.msdn.com/b/saponsqlserver/archive/2014/11/19/protecting-sap-solutions-with-azure-site-recovery.aspx>.
 
 ## <a name="summary"></a>Podsumowanie
+
 Kluczowe punkty wysoką dostępność dla systemów SAP na platformie Azure są:
 
 * W tym momencie SAP pojedynczego punktu awarii nie może zostać zabezpieczona dokładnie tak samo, jak jest możliwe w przypadku wdrożeń lokalnych. Przyczyną jest ten dysk udostępnionych klastrów jeszcze nie można utworzyć na platformie Azure, bez 3 oprogramowania.
@@ -2015,7 +2098,7 @@ Kluczowe punkty wysoką dostępność dla systemów SAP na platformie Azure są:
 * Tworzenie kopii zapasowych wystąpienia SAP w oknie dialogowym sens nieco, ponieważ jest zwykle szybsze ponowne wdrażanie wystąpień proste okno dialogowe.
 * Tworzenie kopii zapasowej maszynę Wirtualną, która zawiera katalog globalnego systemu SAP i z niego wszystkie profile z różnymi wystąpieniami sensu i powinny być wykonywane przy użyciu kopii zapasowej Windows lub, na przykład celowa w systemie Linux. Ponieważ różnią się od systemu Windows Server 2008 (R2) i Windows Server 2012 (R2), które ułatwiają tworzenie kopii zapasowej przy użyciu nowszego systemu Windows Server zwalnia, zaleca się uruchomienie systemu Windows Server 2012 (R2) jako systemu operacyjnego gościa Windows.
 
-##<a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Przeczytaj artykuły:
 
 - [Wdrażania maszyn wirtualnych platformy Azure dla oprogramowania SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)
