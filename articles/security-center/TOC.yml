@@ -5,6 +5,8 @@ items:
   items:
   - name: Informacje o usłudze Security Center
     href: security-center-intro.md
+  - name: Security Center — obsługiwane platformy i funkcje
+    href: security-center-os-coverage.md
 - name: Przewodniki Szybki start
   items:
   - name: Subskrypcje platformy Azure
@@ -117,10 +119,10 @@ items:
         href: security-center-enable-transparent-data-encryption.md
     - name: Monitorowanie tożsamość i dostępu
       href: security-center-identity-access.md
-    - name: Zarządzanie dostępem Just In Time
-      href: security-center-just-in-time.md
   - name: Stosowanie zabezpieczeń chmury
     items:
+    - name: Zarządzanie dostępem Just In Time
+      href: security-center-just-in-time.md
     - name: Funkcje adaptacyjnego sterowania aplikacjami
       href: security-center-adaptive-application.md
     - name: Monitorowanie integralności plików
@@ -203,8 +205,6 @@ items:
     href: security-center-privacy.md
   - name: Często zadawane pytania
     href: security-center-faq.md
-  - name: Obsługiwane platformy
-    href: security-center-os-coverage.md
   - name: Planowanie i operacje
     href: security-center-planning-and-operations-guide.md
   - name: Zabezpieczenia platformy Azure
@@ -225,9 +225,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=security-center
   - name: Dostępność regionalna
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 77742b337a109bb1d9f81a16c9b614268859f35e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 60bb35519dec1dc08dd9ed82633c594c56fdd893
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47041867"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318082"

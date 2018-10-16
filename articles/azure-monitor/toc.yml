@@ -229,9 +229,9 @@ items:
           href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-classic-cloud-service.md?toc=/azure/azure-monitor/toc.json
       - name: Rozwiązywanie problemów
         items:
-        - name: Rozwiązywanie problemów z rozszerzeniem maszyny wirtualnej dziennika
+        - name: Rozszerzenie maszyny wirtualnej usługi Log Analytics
           href: ../log-analytics/log-analytics-azure-vmext-troubleshoot.md?toc=/azure/azure-monitor/toc.json
-        - name: Rozwiązywanie problemów z agentem dzienników w systemie Linux
+        - name: Agent usługi Log Analytics dla systemu Linux
           href: ../log-analytics/log-analytics-agent-linux-support.md?toc=/azure/azure-monitor/toc.json
     - name: Źródła danych agentów
       items:
@@ -405,9 +405,9 @@ items:
         href: ../application-insights/app-insights-custom-data-correlation.md?toc=/azure/azure-monitor/toc.json
     - name: Zbieranie danych niestandardowych
       items:
-      - name: Interfejs API modułu zbierającego dane magazynu dzienników
+      - name: Interfejs API modułu zbierającego dane usługi Log Analytics
         href: ../log-analytics/log-analytics-data-collector-api.md?toc=/azure/azure-monitor/toc.json
-      - name: Przykładowy potok interfejsu API modułu zbierającego dane magazynu dzienników
+      - name: Przykładowy potok interfejsu API modułu zbierającego dane usługi Log Analytics
         href: ../log-analytics/log-analytics-create-pipeline-datacollector-api.md?toc=/azure/azure-monitor/toc.json
       - name: Dane aplikacji
         href: ../application-insights/app-insights-analytics-import.md?toc=/azure/azure-monitor/toc.json
@@ -976,9 +976,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Przykłady kodu
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 5b7956ee962c7f7bde31646617b86c55aaf32234
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 81c83444280a3641ca210d9014d12e989249f4cd
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311035"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318932"
