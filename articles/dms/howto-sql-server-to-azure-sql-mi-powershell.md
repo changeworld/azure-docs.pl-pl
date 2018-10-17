@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: 6760d2832b6c39759f9287797363fcd5a116ccfb
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 9a0c427b8beec3984a9fdd5d41ba3705fd21fd4c
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883671"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365000"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-db-using-azure-powershell"></a>Migrowanie lokalnego programu SQL Server do bazy danych SQL Azure przy użyciu programu Azure PowerShell
 W tym artykule, wykonywana jest migracja **Adventureworks2012** bazy danych przywróconej do lokalnego wystąpienia programu SQL Server 2005 lub nowszego do usługi Azure SQL Database przy użyciu programu Microsoft Azure PowerShell. Można migrować bazy danych z lokalnego wystąpienia programu SQL Server do usługi Azure SQL Database przy użyciu `AzureRM.DataMigration` modułu w programie Microsoft Azure PowerShell.
@@ -195,7 +195,7 @@ $selectedAgentJobs = @("agentJob1", "agentJob2")
 ### <a name="create-and-start-a-migration-task"></a>Tworzenie i uruchamianie zadania migracji
 
 Użyj `New-AzureRmDataMigrationTask` polecenia cmdlet, aby utworzyć i uruchomić zadanie migracji. To polecenie cmdlet oczekuje, że następujące parametry:
-- *TaskType*. Typ tworzonego zadania migracji dla programu SQL Server do wystąpienia serwera Azure SQL Database Managaged migracji typu *MigrateSqlServerSqlDbMi* oczekuje. 
+- *TaskType*. Typ tworzonego zadania migracji dla programu SQL Server do wystąpienia zarządzanego Azure SQL Database migracji typu *MigrateSqlServerSqlDbMi* oczekuje. 
 - *Nazwa grupy zasobów*. Nazwa grupy zasobów platformy Azure, w której chcesz utworzyć zadanie.
 - *ServiceName*. Wystąpienie usługi Azure Database Migration Service w której chcesz utworzyć zadanie.
 - *ProjectName*. Nazwa projektu Azure Database Migration Service, w której chcesz utworzyć zadanie. 

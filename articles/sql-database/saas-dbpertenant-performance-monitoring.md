@@ -1,5 +1,5 @@
 ---
-title: Monitorowanie wydajności wielu baz danych Azure SQL w aplikacji SaaS z wieloma dzierżawami | Dokumentacja firmy Microsoft
+title: 'Aplikacja Saas: monitorowanie wydajności wielu baz danych Azure SQL | Dokumentacja firmy Microsoft'
 description: Monitorowanie i zarządzanie wydajnością bazy danych Azure SQL i pul baz danych w aplikacji SaaS z wieloma dzierżawami
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: b0e1cf976552754070b939a1463d033d66a0119c
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 86fdd7b0bd8ac76ddb2ac30ff324b80101c177e8
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830043"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353904"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Monitorowanie i zarządzanie wydajnością bazy danych Azure SQL i pul baz danych w aplikacji SaaS z wieloma dzierżawami
 

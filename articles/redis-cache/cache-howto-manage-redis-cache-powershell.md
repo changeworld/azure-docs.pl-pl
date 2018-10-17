@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 980a183261c394bd83292170ab133fe17229013d
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 11b399bdbbbe92d1e1544f4cbae0824140ce52c1
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055721"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364510"
 ---
 # <a name="manage-azure-redis-cache-with-azure-powershell"></a>Zarządzanie usługi Azure Redis Cache za pomocą programu Azure PowerShell
 > [!div class="op_single_selector"]
@@ -783,7 +783,7 @@ Aby dowiedzieć się więcej na temat programu Windows PowerShell przy użyciu p
 * [Dokumentacja polecenia cmdlet usługi Azure Redis Cache w witrynie MSDN](https://docs.microsoft.com/powershell/module/azurerm.rediscache/?view=azurermps-6.6.0)
 * [Polecenia cmdlet usługi Azure Resource Manager](http://go.microsoft.com/fwlink/?LinkID=394765): Dowiedz się, jak korzystać z poleceń cmdlet w module usługi Azure Resource Manager.
 * [Używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/resource-group-template-deploy-portal.md): Dowiedz się, jak tworzenie i zarządzanie grupami zasobów w witrynie Azure portal.
-* [Blog dotyczący platformy Azure](https://azure.microsoft.com/en-us/blog/): informacje o nowych funkcjach w systemie Azure.
+* [Blog dotyczący platformy Azure](https://azure.microsoft.com/blog/): informacje o nowych funkcjach w systemie Azure.
 * [Blog programu Windows PowerShell](http://blogs.msdn.com/powershell): informacje o nowych funkcjach w programie Windows PowerShell.
 * ["Witaj, twórco skryptów!" Blog](http://blogs.technet.com/b/heyscriptingguy/): Uzyskaj praktyczne wskazówki i porady od społeczności programu Windows PowerShell.
 

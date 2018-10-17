@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 19351d31331431e3b5137676061aadc681c496a7
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 4c5f99ed9d20076e3e25ebca261253e576572786
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166631"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354261"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Interfejsy API protokołu HTTP w funkcje trwałe (usługa Azure Functions)
 
@@ -92,6 +92,9 @@ Wszystkie interfejsy API protokołu HTTP implementowany przez rozszerzenie wype�
 | systemKey  | Ciąg zapytania    | Klucz autoryzacji wymaganych do wywołania interfejsu API. |
 | showHistory| Ciąg zapytania    | Parametr opcjonalny. Jeśli ustawiono `true`, historię wykonywania aranżacji zostaną uwzględnione w ładunku odpowiedzi.| 
 | showHistoryOutput| Ciąg zapytania    | Parametr opcjonalny. Jeśli ustawiono `true`, wyjściem działania zostaną uwzględnione w historii wykonywania aranżacji.| 
+| createdTimeFrom  | Ciąg zapytania    | Parametr opcjonalny. Jeśli zostanie określony, filtruje listę zwracane wystąpienia, które zostały utworzone na lub po podanej sygnaturze czasowej ISO8601.|
+| createdTimeTo    | Ciąg zapytania    | Parametr opcjonalny. Jeśli zostanie określony, filtruje listę zwracane wystąpienia, które zostały utworzone w lub przed podaną sygnaturą czasową ISO8601.|
+| runtimeStatus    | Ciąg zapytania    | Parametr opcjonalny. Jeśli zostanie określony, filtry listę wystąpień zwrócona na podstawie ich stanu środowiska uruchomieniowego. Aby wyświetlić listę wartości stanu środowiska uruchomieniowego możliwe, zobacz [zapytań wystąpień](durable-functions-instance-management.md) tematu. |
 
 `systemKey` jest klucz autoryzacji wygenerowany automatycznie przez hosta usługi Azure Functions. W szczególności nieograniczony dostęp do rozszerzenia zadań trwałe interfejsów API i można zarządzać w taki sam sposób jak [inne klucze autoryzacji](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). Najprostszym sposobem odnajdywanie `systemKey` wartość przy użyciu `CreateCheckStatusResponse` API wymienionych wcześniej.
 
@@ -194,6 +197,7 @@ Oto przykład ładunek odpowiedzi, tym aranżacji wykonywania historii i działa
 
 **HTTP 202** Odpowiedz zawiera też **lokalizacji** nagłówek odpowiedzi, który odwołuje się do tego samego adresu URL jako `statusQueryGetUri` pola wymienionych wcześniej.
 
+
 ### <a name="get-all-instances-status"></a>Pobierz stan dla wszystkich wystąpień
 
 Możesz także zbadać stan dla wszystkich wystąpień. Usuń `instanceId` w żądaniu "Pobierz stan wystąpienia". Parametry są takie same jak "Pobierz stan wystąpienia". 
@@ -213,6 +217,22 @@ Format funkcje w wersji 2.0 ma te same parametry, ale nieco inny prefiks adresu 
 
 ```http
 GET /runtime/webhooks/durabletask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
+```
+
+#### <a name="request-with-filters"></a>Żądania z filtrami
+
+Można filtrować żądania.
+
+Funkcje wersji 1.0 format żądania jest następująca:
+
+```http
+GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&createdTimeFrom={createdTimeFrom}&createdTimeTo={createdTimeTo}&runtimeStatus={runtimeStatus,runtimeStatus,...}
+```
+
+Format funkcje w wersji 2.0 ma te same parametry, ale nieco inny prefiks adresu URL: 
+
+```http
+GET /runtime/webhooks/durableTask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&createdTimeFrom={createdTimeFrom}&createdTimeTo={createdTimeTo}&runtimeStatus={runtimeStatus,runtimeStatus,...}
 ```
 
 #### <a name="response"></a>Odpowiedź
@@ -271,6 +291,7 @@ Oto przykład ładunków odpowiedzi, takich jak stan aranżacji (sformatowane, a
 > [!NOTE]
 > Ta operacja może być bardzo kosztowna pod względem operacji We/Wy do usługi Azure Storage, jeśli jest dostępnych wiele wierszy w tabeli wystąpień. Szczegółowe informacje na temat wystąpienia tabeli znajdują się w [wydajności i skali w funkcje trwałe (usługi Azure Functions)](https://docs.microsoft.com/azure/azure-functions/durable-functions-perf-and-scale#instances-table) dokumentacji.
 > 
+
 
 ### <a name="raise-event"></a>Wywołaj zdarzenie
 

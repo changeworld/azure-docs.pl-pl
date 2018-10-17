@@ -1,6 +1,6 @@
 ---
-title: Obsługa dostawcy zasobów MySQL na stosie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można zachować usługi Dostawca zasobów MySQL na stosie Azure.
+title: Obsługa dostawcy zasobów MySQL w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak możesz zachować usługi dostawcy zasobów MySQL w usłudze Azure Stack.
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,50 +11,50 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2018
+ms.date: 10/16/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: bc1c96d2f027d459ca20fccb70cd94ac9e5cae94
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.reviewer: quying
+ms.openlocfilehash: 76a164ffcf918ebedcf4647f24a61ca3a271e967
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130142"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49361919"
 ---
-# <a name="mysql-resource-provider-maintenance-operations"></a>Operacje konserwacji dostawcy zasobów MySQL
+# <a name="mysql-resource-provider-maintenance-operations"></a>Operacje obsługi dostawcy zasobów MySQL
 
-Dostawca zasobów programu MySQL działa na zablokowanym maszyny wirtualnej. Aby włączyć operacji konserwacji, musisz zaktualizować zabezpieczeń maszyny wirtualnej. Aby to zrobić za pomocą zasadą najniższych uprawnień, można punktu końcowego programu PowerShell tylko tyle administracyjnej (JEA) DBAdapterMaintenance. Pakiet instalacyjny dostawcy zasobów zawiera skrypt do wykonania tej operacji.
+Dostawcy zasobów bazy danych MySQL działa na maszynie wirtualnej zablokowane. Aby włączyć operacji konserwacji, musisz zaktualizować zabezpieczenia maszyn wirtualnych. Aby to zrobić za pomocą zasadę najmniejszych uprawnień, można użyć programu PowerShell tylko tyle administracji (JEA) punktu końcowego DBAdapterMaintenance. Pakiet instalacyjny dostawcy zasobu zawiera skrypt do wykonania tej operacji.
 
-## <a name="update-the-virtual-machine-operating-system"></a>Zaktualizuj system operacyjny maszyny wirtualnej
+## <a name="update-the-virtual-machine-operating-system"></a>Aktualizowanie systemu operacyjnego maszyny wirtualnej
 
-Ponieważ dostawca zasobów jest uruchamiana na *użytkownika* maszyny wirtualnej, należy zastosować wymagane poprawki i aktualizacje, gdy są one wydane. Pakiety aktualizacji systemu Windows, które znajdują się w ramach cyklu poprawek i aktualizacji służy do stosowania aktualizacji do maszyny Wirtualnej.
+Ponieważ dostawca zasobów jest uruchamiana na *użytkownika* maszyny wirtualnej, należy zastosować wymaganych poprawek i aktualizacji, po ich wydaniu. Pakiety aktualizacji Windows, które są dostarczane jako część cyklu poprawek i aktualizacji służy do stosowania aktualizacji do maszyny Wirtualnej.
 
-Zaktualizuj maszynę wirtualną dostawcy przy użyciu jednej z następujących metod:
+Aktualizowanie dostawcy maszyny wirtualnej przy użyciu jednej z następujących metod:
 
-- Zainstaluj najnowszy pakiet dostawcy zasobów przy użyciu obecnie poprawioną obrazu systemu Windows Server 2016 Core.
-- Instalowanie pakietów usługi Windows Update podczas instalacji lub aktualizacji do dostawcy zasobów.
+- Zainstaluj najnowszy pakiet dostawcy zasobów przy użyciu aktualnie poprawionego obrazu systemu Windows Server 2016 Core.
+- Zainstalować pakiet aktualizacji Windows podczas instalacji lub aktualizacji na potrzeby dostawcy zasobów.
 
-## <a name="update-the-virtual-machine-windows-defender-definitions"></a>Aktualizacji definicji programu Windows Defender maszyny wirtualnej
+## <a name="update-the-virtual-machine-windows-defender-definitions"></a>Aktualizacja definicji usługi Windows Defender maszyny wirtualnej
 
-Aby zaktualizować definicje Defender, wykonaj następujące kroki:
+Do aktualizacji definicji programu Defender, wykonaj następujące kroki:
 
-1. Pobieranie aktualizacji definicji programu Windows Defender [Windows Defender definicji](https://www.microsoft.com/en-us/wdsi/definitions).
+1. Pobieranie aktualizacji definicji usługi Windows Defender [Windows Defender definicji](https://www.microsoft.com/en-us/wdsi/definitions).
 
-    Na stronie Definicje przewiń w dół do "Ręcznie pobrać i zainstalować definicje". Pobierz plik 64-bitowe "Windows Defender oprogramowanie antywirusowe dla systemu Windows 10 i Windows 8.1".
+    Na stronie Definicje przewiń w dół do "Ręcznie Pobierz i zainstaluj definicje". Pobierz plik 64-bitowy "Programu antywirusowego Windows Defender dla systemu Windows 10 i Windows 8.1".
 
-    Można również użyć [tego łącza bezpośrednie](https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64) do pobierania/Uruchom plik fpam fe.exe.
+    Można również użyć [to bezpośredni link](https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64) pobierania/Uruchom plik fpam fe.exe.
 
 2. Otwórz sesję programu PowerShell do punktu końcowego obsługi MySQL zasobów dostawcy karty maszyny wirtualnej.
 
-3. Skopiuj plik aktualizacji definicji do karty maszyny Wirtualnej przy użyciu sesji punktu końcowego obsługi dostawcy zasobów.
+3. Skopiuj plik aktualizacji definicji do karty dostawcy zasobów maszyny Wirtualnej przy użyciu sesji punktu końcowego obsługi.
 
-4. W tej sesji programu PowerShell konserwacji Uruchom _DBAdapterWindowsDefenderDefinitions aktualizacji_ polecenia.
+4. W sesji programu PowerShell konserwacji Uruchom _DBAdapterWindowsDefenderDefinitions aktualizacji_ polecenia.
 
-5. Po zainstalowaniu definicje, zaleca się usunięcie pliku aktualizacji definicji przy użyciu _ItemOnUserDrive Usuń)_ polecenia.
+5. Po zainstalowaniu definicje, zaleca się usuwanie plików aktualizacji definicji przy użyciu _Remove-ItemOnUserDrive)_ polecenia.
 
-**Przykładowy skrypt programu PowerShell dla aktualizacji definicji.**
+**Przykładowy skrypt programu PowerShell do aktualizacji definicji.**
 
-Można edytować i uruchomić następujący skrypt w celu aktualizacji definicji programu Defender. Zastąp wartości w skrypcie wartości ze środowiska.
+Można edytować i uruchomić następujący skrypt w celu aktualizacji definicji programu Defender. Zastąp wartości w skrypcie wartościami z używanego środowiska.
 
 ```powershell
 # Set credentials for the local admin on the resource provider VM.
@@ -90,19 +90,19 @@ $session | Remove-PSSession
 
 ```
 
-## <a name="secrets-rotation"></a>Rotacją kluczy tajnych
+## <a name="secrets-rotation"></a>Obrót kluczy tajnych
 
-*Te instrukcje dotyczą tylko 1804 wersji systemów zintegrowanego stosu Azure i później. Nie należy próbować Obróć kluczy tajnych w wersji pre-1804 stosu Azure.*
+*Te instrukcje dotyczą tylko zintegrowane systemy usługi Azure Stack.*
 
-Gdy przy użyciu dostawców zasobów SQL i MySQL stosu Azure zintegrowanych systemów, można obracać następujące klucze tajne infrastruktury (wdrożenia):
+Gdy za pomocą dostawcy zasobów SQL i bazy danych MySQL z usługą Azure Stack zintegrowane systemy, operatora infrastruktury Azure Stack jest odpowiedzialny za obracanie następujących zasobów dostawcy infrastruktury kluczy tajnych upewnij się, że ich wygaśnie:
 
 - Certyfikat SSL zewnętrzny [podana podczas wdrażania](azure-stack-pki-certs.md).
-- Zasób dostawcy wirtualna hasło administratora lokalnego konta podana podczas wdrażania.
+- Zasób dostawcy maszyny Wirtualnej hasło administratora lokalnego konta podana podczas wdrażania.
 - Hasło użytkownika diagnostyczne (dbadapterdiag) dostawcy zasobów.
 
-### <a name="powershell-examples-for-rotating-secrets"></a>Przykłady programu PowerShell związany z rotacją kluczy tajnych
+### <a name="powershell-examples-for-rotating-secrets"></a>Przykłady programu PowerShell do rotacji kluczy tajnych
 
-**Zmień wszystkich kluczy tajnych w tym samym czasie.**
+**W tym samym czasie, należy zmienić wszystkich wpisów tajnych.**
 
 ```powershell
 .\SecretRotationMySQLProvider.ps1 `
@@ -116,7 +116,7 @@ Gdy przy użyciu dostawców zasobów SQL i MySQL stosu Azure zintegrowanych syst
 
 ```
 
-**Zmień hasło użytkownika diagnostycznych.**
+**Zmień hasło użytkownika do diagnozowania.**
 
 ```powershell
 .\SecretRotationMySQLProvider.ps1 `
@@ -127,7 +127,7 @@ Gdy przy użyciu dostawców zasobów SQL i MySQL stosu Azure zintegrowanych syst
 
 ```
 
-**Zmień hasło konta administratora lokalnego maszyny Wirtualnej.**
+**Zmień hasło konta administratora lokalnego maszyn wirtualnych.**
 
 ```powershell
 .\SecretRotationMySQLProvider.ps1 `
@@ -138,7 +138,7 @@ Gdy przy użyciu dostawców zasobów SQL i MySQL stosu Azure zintegrowanych syst
 
 ```
 
-**Zmień hasło certyfikatu SSL.**
+**Zmień hasło certyfikatu protokołu SSL.**
 
 ```powershell
 .\SecretRotationMySQLProvider.ps1 `
@@ -154,11 +154,11 @@ Gdy przy użyciu dostawców zasobów SQL i MySQL stosu Azure zintegrowanych syst
 
 |Parametr|Opis|
 |-----|-----|
-|AzCredential|Azure poświadczeń dla konta administratora usługi stosu.|
-|CloudAdminCredential|Azure stosu chmury administratora domeny poświadczeń dla konta.|
-|PrivilegedEndpoint|Uprzywilejowany punktu końcowego dostępu Get-AzureStackStampInformation.|
+|AzCredential|Poświadczeń konta w usłudze Azure Stack administratora usługi.|
+|CloudAdminCredential|Usługa Azure Stack chmury administratora poświadczenie konta domeny.|
+|PrivilegedEndpoint|Uprzywilejowane punkt końcowy dostępu do Get AzureStackStampInformation.|
 |DiagnosticsUserPassword|Diagnostyka hasło do konta użytkownika.|
-|VMLocalCredential|Konto administratora lokalnego na Maszynie wirtualnej MySQLAdapter.|
+|VMLocalCredential|Konto administratora lokalnego na maszynie Wirtualnej MySQLAdapter.|
 |DefaultSSLCertificatePassword|Domyślny certyfikat SSL (* pfx) hasła.|
 |DependencyFilesLocalPath|Ścieżka lokalna plików zależności.|
 |     |     |
@@ -166,31 +166,31 @@ Gdy przy użyciu dostawców zasobów SQL i MySQL stosu Azure zintegrowanych syst
 ### <a name="known-issues"></a>Znane problemy
 
 **Problem:**<br>
-Automatycznie nie są zbierane w dziennikach rotacją kluczy tajnych, jeśli skrypt tajny obrotu zakończy się niepowodzeniem, po jego uruchomieniu.
+Dzienniki Aby uzyskać rotacji kluczy tajnych nie są automatycznie zbierane, jeśli po uruchomieniu skryptu rotacji wpisu tajnego zakończy się niepowodzeniem.
 
-**Obejście problemu:**<br>
-Zbieranie wszystkich zasobów dostawcy dzienników, w tym AzureStack.DatabaseAdapter.SecretRotation.ps1_*.log zapisane w C:\Logs za pomocą polecenia cmdlet Get-AzsDBAdapterLogs.
+**Obejście:**<br>
+Użyj polecenia cmdlet Get-AzsDBAdapterLogs do zbierania wszystkich zasobów dostawcy dzienników, w tym AzureStack.DatabaseAdapter.SecretRotation.ps1_*.log, zapisane w C:\Logs.
 
 ## <a name="collect-diagnostic-logs"></a>Zbieranie dzienników diagnostycznych
 
-Do zbierania dzienników z zablokowanym maszyny wirtualnej, używając punktu końcowego programu PowerShell tylko tyle administracyjnej (JEA) DBAdapterDiagnostics. Ten punkt końcowy zawiera następujące polecenia:
+Aby zebrać dzienników zablokowanym maszyny wirtualnej, można użyć punktu końcowego DBAdapterDiagnostics PowerShell tylko tyle administracji (JEA). Ten punkt końcowy zawiera następujące polecenia:
 
-- **Get-AzsDBAdapterLog**. To polecenie tworzy pakiet zip dzienników diagnostycznych dostawcy zasobów i zapisuje go na dysku użytkownika tej sesji. Można uruchomić tego polecenia, bez żadnych parametrów i ostatnich czterech godzin dzienniki są zbierane.
+- **Get-AzsDBAdapterLog**. To polecenie tworzy pakiet zip dzienniki diagnostyczne dostawcy zasobów i zapisuje plik na dysku użytkownika tej sesji. Możesz uruchomić to polecenie bez parametrów, a ostatnie cztery godziny dzienniki są zbierane.
 
-- **Usuń AzsDBAdapterLog**. To polecenie usuwa istniejące pakiety dziennika na dostawcy zasobów maszyny Wirtualnej.
+- **Usuń AzsDBAdapterLog**. To polecenie usuwa istniejące pakiety dziennika dla dostawcy zasobów maszyny Wirtualnej.
 
-### <a name="endpoint-requirements-and-process"></a>Punkt końcowy wymagań i procesu
+### <a name="endpoint-requirements-and-process"></a>Punkt końcowy wymagania i proces
 
-Po zainstalowaniu dostawcy zasobów lub zaktualizowaniu, utworzono konto użytkownika dbadapterdiag. To konto będzie używać do zbierania dzienników diagnostycznych.
+Po zainstalowaniu lub zaktualizowaniu dostawcy zasobów, konto użytkownika dbadapterdiag jest tworzone. To konto będzie używane do zbierania dzienników diagnostycznych.
 
 >[!NOTE]
->Hasło konta dbadapterdiag jest taka sama jak hasło używane na potrzeby lokalnego administratora na maszynę wirtualną, która jest tworzona podczas wdrażania dostawcy lub aktualizacji.
+>Hasło do konta dbadapterdiag jest taka sama jak hasło używane do administratora lokalnego na maszynie wirtualnej, utworzonego podczas wdrażania dostawcy lub aktualizacji.
 
-Aby użyć _DBAdapterDiagnostics_ poleceń, utwórz sesję zdalną programu PowerShell do maszyny wirtualnej dostawcy zasobów i uruchom **Get-AzsDBAdapterLog** polecenia.
+Aby użyć _DBAdapterDiagnostics_ poleceń, Utwórz zdalną sesję programu PowerShell do maszyny wirtualnej dostawcy zasobów i uruchom **Get AzsDBAdapterLog** polecenia.
 
-Należy określić przedział czasu zbierania dzienników przy użyciu **FromDate** i **ToDate** parametrów. Jeśli nie określisz jedno lub oba te parametry są używane następujące wartości domyślne:
+Należy określić przedział czasu dla zbieranie dzienników przy użyciu **FromDate** i **ToDate** parametrów. Jeśli nie określisz jedno lub oba te parametry są używane następujące wartości domyślne:
 
-* Data rozpoczęcia odpowiada czterem godzinom przed bieżącym czasem.
+* FromDate odpowiada czterem godzinom przed aktualną godziną.
 * ToDate jest bieżący czas.
 
 **Przykładowy skrypt programu PowerShell do zbierania dzienników.**
@@ -227,4 +227,4 @@ $session | Remove-PSSession
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Usuń dostawcę zasobów MySQL](azure-stack-mysql-resource-provider-remove.md)
+[Usuwanie dostawcy zasobów bazy danych MySQL](azure-stack-mysql-resource-provider-remove.md)

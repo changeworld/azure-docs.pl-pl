@@ -3,18 +3,18 @@ title: Usługa ExpressRoute systemu Azure za pomocą usługi Azure Site Recovery
 description: Opisuje sposób używania usługi Azure ExpressRoute za pomocą usługi Azure Site Recovery na potrzeby odzyskiwania po awarii i migracji
 services: site-recovery
 documentationcenter: ''
-author: mayanknayar
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
-ms.author: manayar
-ms.openlocfilehash: eb28a3d165bcb6cc5e63162053029ce14b0d7f8f
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.topic: conceptual
+ms.date: 10/16/2018
+ms.author: mayg
+ms.openlocfilehash: 13d07546f1d82782e211213816b53373913e80b3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078141"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353887"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Usługa ExpressRoute systemu Azure za pomocą usługi Azure Site Recovery
 

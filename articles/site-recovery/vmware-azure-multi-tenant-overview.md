@@ -2,19 +2,19 @@
 title: Omówienie obsługi wielodostępu do replikacji maszyn wirtualnych programu VMware do platformy Azure (CSP) przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: Omówienie pomocy technicznej usługi Azure Site Recovery dla dzierżawy subskrypcji w środowisku z wieloma dzierżawami przy użyciu programu CSP.
 services: site-recovery
-author: mayanknayar
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
-ms.topic: article
-ms.date: 07/06/2018
-ms.author: manayar
-ms.openlocfilehash: 2f1a158b6ff4ec603c77f834212cb92fa862b424
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.topic: conceptual
+ms.date: 10/16/2018
+ms.author: mayg
+ms.openlocfilehash: 4cd0c3baf385a864e2173de9bbce897bb5066dae
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919941"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352875"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-replication-to-azure-with-csp"></a>Omówienie obsługi wielodostępu na potrzeby replikacji oprogramowania VMware na platformę Azure za pomocą programu CSP
 

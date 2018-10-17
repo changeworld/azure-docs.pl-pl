@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 67e0731c1f10bb635baa4e0d1a26dce0a336b555
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: c06dc83f8b460e6215448fbc9e4ac42c749b5922
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44090359"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354006"
 ---
-# <a name="authenticate-access-to-blobs-and-queues-with-azure-managed-identities-for-azure-resources-preview"></a>Uwierzytelnianie dostępu do obiektów blob i kolejki przy użyciu platformy Azure zarządzanych tożsamości dla zasobów platformy Azure (wersja zapoznawcza)
+# <a name="authenticate-access-to-blobs-and-queues-with-managed-identities-for-azure-resources-preview"></a>Uwierzytelnianie dostępu do obiektów blob i kolejki z zarządzanych tożsamości dla zasobów platformy Azure (wersja zapoznawcza)
 
 Usługa Azure storage Blob i kolejki obsługuje uwierzytelnianie usługi Azure Active Directory (Azure AD) przy użyciu [zarządzanych tożsamości dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md). Zarządzanych tożsamości dla zasobów platformy Azure służy do uwierzytelniania dostępu do obiektów blob i kolejki z aplikacjami uruchomionymi na maszynach wirtualnych platformy Azure (maszyny wirtualne), aplikacji funkcji, zestawy skalowania maszyn wirtualnych i innych. Korzystając z zarządzanych tożsamości dla zasobów platformy Azure i możliwości usługi uwierzytelniania usługi Azure AD, można uniknąć przechowywania poświadczeń za pomocą aplikacji działających w chmurze.  
 

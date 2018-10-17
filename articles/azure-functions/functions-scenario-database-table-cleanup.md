@@ -11,17 +11,20 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 05/22/2017
 ms.author: glenga
-ms.openlocfilehash: a257948c97437d6045f705acb02054928d22ff89
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 024958d8a548313b53fc24ade5805de036a89afb
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092873"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49351919"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Łączenie z bazą danych SQL Azure za pomocą usługi Azure Functions
 W tym temacie dowiesz się, jak używać usługi Azure Functions, aby utworzyć zaplanowane zadanie, które utraciły wierszy w tabeli w bazie danych SQL Azure. Nowa funkcja skryptu języka C# jest tworzony na podstawie szablonu wyzwalacza czasomierza wstępnie zdefiniowanych w witrynie Azure portal. Aby zapewnić obsługę tego scenariusza, należy ustawić parametry połączenia bazy danych jako ustawienia aplikacji w aplikacji funkcji. W tym scenariuszu operacja zbiorcza w bazie danych. 
 
 Zapewnienie swojego osobistego procesu funkcji tworzenia, odczytu, aktualizacji i operacje usuwania (CRUD) w tabeli funkcji Mobile Apps, należy w zamian użyć [powiązania funkcji Mobile Apps](functions-bindings-mobile-apps.md).
+
+> [!IMPORTANT]
+> Przykłady w tym dokumencie mają zastosowanie do środowisko uruchomieniowe 1.x. Informacje na temat tworzenia aplikacji funkcji w wersji 1.x [można znaleźć tutaj](./functions-versions.md#creating-1x-apps).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

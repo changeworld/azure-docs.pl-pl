@@ -11,23 +11,23 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: effaa9b0b3fec36974a2bc850eeb1f36181ca0c7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/15/2018
+ms.openlocfilehash: 83db2bcfe21edc9f8f2649ef8c2b3a23e412e39d
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166439"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353989"
 ---
 # <a name="azure-sql-database-logical-servers-and-their-management"></a>Serwerami logicznymi usługi Azure SQL Database i zarządzanie nimi
 
-## <a name="what-is-an-azure-sql-logical-server"></a>Co to jest serwer logiczny Azure SQL?
+## <a name="what-is-an-azure-sql-logical-server"></a>Co to jest serwer logiczny Azure SQL
 
 Serwer logiczny działa jako centralny punkt administracyjny dla wielu pojedynczego lub [puli](sql-database-elastic-pool.md) baz danych, [logowania](sql-database-manage-logins.md), [reguły zapory](sql-database-firewall-configure.md), [zasadyinspekcji](sql-database-auditing.md), [zasady wykrywania zagrożeń](sql-database-threat-detection.md), i [grupy trybu failover](sql-database-geo-replication-overview.md). Serwer logiczny może być w regionie innym niż jego grupie zasobów. Serwer logiczny musi istnieć przed utworzeniem bazy danych Azure SQL. Wszystkie bazy danych na serwerze są tworzone w tym samym regionie co serwer logiczny.
 
 Serwer logiczny jest konstrukcją logiczną, która różni się od wystąpienia programu SQL Server, który można zapoznać się z w środowisku lokalnym. W szczególności usługa SQL Database nie udziela żadnych gwarancji dotyczących lokalizacji baz danych w odniesieniu do ich serwerów logicznych i nie uwidacznia dostępu ani żadnych funkcji na poziomie wystąpienia. Z kolei server w wystąpieniu zarządzanym bazy danych SQL jest podobny do wystąpienia programu SQL Server, który można zapoznać się z w środowisku lokalnym.
 
-Po utworzeniu serwera logicznego, podaj serwer konto logowania i hasło, które ma prawa administracyjne do głównej bazy danych na tym serwerze i wszystkimi bazami danych, utworzony na tym serwerze. To konto początkowej jest konto logowania SQL. Usługa Azure SQL Database obsługuje uwierzytelnianie SQL i uwierzytelniania usługi Azure Active Directory do uwierzytelniania. Aby uzyskać informacji na temat nazw logowania i uwierzytelniania, zobacz [Zarządzanie bazami danych i nazwami logowania w usłudze Azure SQL Database](sql-database-manage-logins.md). Uwierzytelnianie systemu Windows nie jest obsługiwane. 
+Po utworzeniu serwera logicznego, podaj serwer konto logowania i hasło, które ma prawa administracyjne do głównej bazy danych na tym serwerze i wszystkimi bazami danych, utworzony na tym serwerze. To konto początkowej jest konto logowania SQL. Usługa Azure SQL Database obsługuje uwierzytelnianie SQL i uwierzytelniania usługi Azure Active Directory do uwierzytelniania. Aby uzyskać informacji na temat nazw logowania i uwierzytelniania, zobacz [Zarządzanie bazami danych i nazwami logowania w usłudze Azure SQL Database](sql-database-manage-logins.md). Uwierzytelnianie systemu Windows nie jest obsługiwane.
 
 Serwer logiczny bazy danych Azure:
 
@@ -38,19 +38,19 @@ Serwer logiczny bazy danych Azure:
 - Uczestniczy w [kontroli dostępu opartej na rolach na platformie Azure (RBAC)](/azure/role-based-access-control/overview) -baz danych, pul elastycznych i magazynów danych na serwerze dziedziczą uprawnienia dostępu z serwera
 - Jest elementem wyższego rzędu tożsamości baz danych, pul elastycznych i magazynów danych dla zasobów platformy Azure do celów zarządzania (Zobacz Schemat adresu URL dla baz danych i pul)
 - Rozmieszcza zasoby w regionie
-- Udostępnia punkt końcowy połączenia dla dostępu do baz danych (<serverName>.database.windows.net)
-- Zapewnia dostęp do metadanych dotyczących zawartych zasobów przy użyciu dynamicznych widoków zarządzania, łącząc się z główną bazą danych 
-- Określa zakres dla zasad zarządzania, które stosuje się do jego baz danych — identyfikatory logowania, zapory, inspekcji, zagrożeń, wykrywanie itp. 
+- Udostępnia punkt końcowy połączenia dla dostępu do baz danych (`<serverName>`.database.windows.net)
+- Zapewnia dostęp do metadanych dotyczących zawartych zasobów przy użyciu dynamicznych widoków zarządzania, łącząc się z główną bazą danych
+- Określa zakres dla zasad zarządzania, które są stosowane do jego baz danych — identyfikatory logowania, zapory, inspekcji, wykrywanie zagrożeń i takie
 - Jest ograniczony przez limit przydziału w ramach subskrypcji nadrzędnej (sześć serwerów na subskrypcję domyślnie - [Zobacz tutaj limity subskrypcji](../azure-subscription-service-limits.md))
 - Określa zakres dla limitu przydziału bazy danych i limit przydziału jednostek DTU i rdzeniach wirtualnych dla zasobów, które zawiera (np. 45 000 jednostek DTU)
-- Zakres przechowywania wersji dla możliwości włączonych w zawartych zasobach 
+- Zakres przechowywania wersji dla możliwości włączonych w zawartych zasobach
 - Logowania główne na poziomie serwera mogą zarządzać wszystkimi bazami danych na serwerze
 - Może zawierać logowania podobne do tych w lokalnych wystąpieniach programu SQL Server, którym udzielono dostępu do co najmniej jednej bazy danych na serwerze, i może otrzymać ograniczone prawa administracyjne. Aby uzyskać więcej informacji, zobacz temat [Logowania](sql-database-manage-logins.md).
 - Jest sortowanie domyślne dla wszystkich baz danych użytkownika, utworzony na serwerze logicznym `SQL_LATIN1_GENERAL_CP1_CI_AS`, gdzie `LATIN1_GENERAL` oznacza język angielski (Stany Zjednoczone) `CP1` oznacza stronę kodową 1252, `CI` jest rozróżniana wielkość liter, a `AS` jest akcentów.
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-portal"></a>Zarządzanie serwerami usługi Azure SQL, bazy danych i zapory za pomocą witryny Azure portal
 
-Można utworzyć grupę zasobów Azure SQL database wcześniej lub podczas tworzenia serwera. Istnieje wiele metod uzyskiwania nowy formularz serwera SQL, tworząc nowy serwer SQL lub jako część tworzenia nowej bazy danych. 
+Można utworzyć grupę zasobów Azure SQL database wcześniej lub podczas tworzenia serwera. Istnieje wiele metod uzyskiwania nowy formularz serwera SQL, tworząc nowy serwer SQL lub jako część tworzenia nowej bazy danych.
 
 ### <a name="create-a-blank-sql-server-logical-server"></a>Tworzenie pustego serwera SQL (serwer logiczny)
 
@@ -58,7 +58,7 @@ Do utworzenia serwera (bez bazy danych) usługi Azure SQL Database przy użyciu 
 
 ### <a name="create-a-blank-or-sample-sql-database"></a>Tworzenie pustego lub przykładowy bazy danych SQL
 
-Aby utworzyć bazę danych Azure SQL za pomocą [witryny Azure portal](https://portal.azure.com), przejdź do pustego formularza SQL Database i podaj wymagane informacje. Można utworzyć grupę zasobów i serwer logiczny wcześniej lub podczas tworzenia bazy danych Azure SQL database. Możesz utworzyć pustą bazę danych lub tworzenie przykładowej bazy danych oparte na Adventure Works LT. 
+Aby utworzyć bazę danych Azure SQL za pomocą [witryny Azure portal](https://portal.azure.com), przejdź do pustego formularza SQL Database i podaj wymagane informacje. Można utworzyć grupę zasobów i serwer logiczny wcześniej lub podczas tworzenia bazy danych Azure SQL database. Możesz utworzyć pustą bazę danych lub tworzenie przykładowej bazy danych oparte na Adventure Works LT.
 
   ![tworzenie bazy danych 1](./media/sql-database-get-started-portal/create-database-1.png)
 
@@ -69,19 +69,16 @@ Aby utworzyć wystąpienie zarządzane, zobacz [utworzysz wystąpienie zarządza
 
 ### <a name="manage-an-existing-sql-server"></a>Zarządzanie istniejącego serwera SQL
 
-Aby zarządzać istniejącego serwera, przejdź do serwera przy użyciu szeregu metod — np. informacji od określonej strony bazy danych SQL, **serwerów SQL** strony, lub **wszystkie zasoby** strony. 
+Aby zarządzać istniejącego serwera, przejdź do serwera przy użyciu szeregu metod — np. informacji od określonej strony bazy danych SQL, **serwerów SQL** strony, lub **wszystkie zasoby** strony.
 
-Aby zarządzać istniejącej bazy danych, przejdź do **baz danych SQL** strony, a następnie kliknij bazę danych, którą chcesz zarządzać. Poniższy zrzut ekranu pokazuje, jak rozpocząć, ustawienia zapory na poziomie serwera, bazy danych, z **Przegląd** stron dla bazy danych. 
+Aby zarządzać istniejącej bazy danych, przejdź do **baz danych SQL** strony, a następnie kliknij bazę danych, którą chcesz zarządzać. Poniższy zrzut ekranu pokazuje, jak rozpocząć, ustawienia zapory na poziomie serwera, bazy danych, z **Przegląd** stron dla bazy danych.
 
-   ![reguła zapory serwera](./media/sql-database-get-started-portal/server-firewall-rule.png) 
+   ![reguła zapory serwera](./media/sql-database-get-started-portal/server-firewall-rule.png)
 
 > [!IMPORTANT]
 > Aby skonfigurować właściwości wydajności bazy danych, zobacz [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
->
-
 > [!TIP]
 > Dla portalu szybkiego startu platformy Azure, zobacz [utworzyć bazę danych Azure SQL database w witrynie Azure portal](sql-database-get-started-portal.md).
->
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-powershell"></a>Zarządzanie serwerami Azure SQL, bazy danych i zapory przy użyciu programu PowerShell
 
@@ -164,7 +161,6 @@ Tworzenie i zarządzanie nimi w usłudze Azure SQL server, baz danych i zapory z
 |[sys.database_firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Zwraca informacje dotyczące ustawień zapory na poziomie bazy danych, skojarzonych z usługi Microsoft Azure SQL Database. |
 |[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Usuwa ustawienie zapory na poziomie bazy danych z usługi Azure SQL Database lub SQL Data Warehouse. |
 
-
 > [!TIP]
 > Aby uzyskać szybki start za pomocą programu SQL Server Management Studio na Microsoft Windows, zobacz [usługi Azure SQL Database: Użyj programu SQL Server Management Studio do nawiązywania połączeń i wykonywanie zapytań dotyczących danych](sql-database-connect-query-ssms.md). Aby uzyskać szybki start w systemie macOS, Linux lub Windows przy użyciu programu Visual Studio Code, zobacz [usługi Azure SQL Database: Użyj programu Visual Studio Code do nawiązywania połączeń i wykonywanie zapytań dotyczących danych](sql-database-connect-query-vscode.md).
 
@@ -174,21 +170,22 @@ Tworzenie i zarządzanie nimi w usłudze Azure SQL server, baz danych i zapór, 
 
 | Polecenie | Opis |
 | --- | --- |
-|[Serwery — Utwórz lub zaktualizuj](/rest/api/sql/servers/createorupdate)|Tworzy lub aktualizuje nowego serwera.|
-|[Serwery — usuwanie](/rest/api/sql/servers/delete)|Usuwa serwer SQL.|
-|[Serwery - Get](/rest/api/sql/servers/get)|Pobiera serwera.|
-|[Serwery — lista](/rest/api/sql/servers/list)|Zwraca listę serwerów.|
-|[Serwery — listy według grupy zasobów](/rest/api/sql/servers/listbyresourcegroup)|Zwraca listę serwerów w grupie zasobów.|
-|[Serwery — aktualizacja](/rest/api/sql/servers/update)|Aktualizuje istniejący serwer.|
-|[Bazy danych — Utwórz lub zaktualizuj](/rest/api/sql/databases/createorupdate)|Tworzy nową bazę danych lub aktualizuje istniejącą bazę danych.|
-|[Bazy danych — Get](/rest/api/sql/databases/get)|Pobiera bazy danych.|
-|[Bazy danych — listę według puli elastycznej](/rest/api/sql/databases/listbyelasticpool)|Zwraca listę baz danych w puli elastycznej.|
-|[Bazy danych — lista przez serwer](/rest/api/sql/databases/listbyserver)|Zwraca listę baz danych na serwerze.|
-|[Bazy danych — aktualizacja](/rest/api/sql/databases/update)|Aktualizuje istniejącą bazę danych.|
-|[Reguły - zapory Utwórz lub zaktualizuj](/rest/api/sql/firewallrules/createorupdate)|Tworzy lub aktualizuje reguły zapory.|
-|[Reguły zapory - Delete](/rest/api/sql/firewallrules/delete)|Usuwa reguły zapory.|
-|[Reguły zapory - Get](/rest/api/sql/firewallrules/get)|Pobiera regułę zapory.|
-|[Reguły zapory — lista przez serwer](/rest/api/sql/firewallrules/listbyserver)|Zwraca listę reguł zapory.|
+|[Serwery — Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/servers/servers_createorupdate/rest/api)|Tworzy lub aktualizuje nowego serwera.|
+|[Serwery — usuwanie](https://docs.microsoft.com/rest/api/sql/servers/servers_delete)|Usuwa serwer SQL.|
+|[Serwery - Get](https://docs.microsoft.com/rest/api/sql/servers/servers_get)|Pobiera serwera.|
+|[Serwery — lista](https://docs.microsoft.com/rest/api/sql/servers/servers_list)|Zwraca listę serwerów.|
+|[Serwery — listy według grupy zasobów](https://docs.microsoft.com/rest/api/sql/servers/servers_listbyresourcegroup)|Zwraca listę serwerów w grupie zasobów.|
+|[Serwery — aktualizacja](https://docs.microsoft.com/rest/api/sql/servers/servers_update)|Aktualizuje istniejący serwer.|
+|[Bazy danych — Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)|Tworzy nową bazę danych lub aktualizuje istniejącą bazę danych.|
+|[Bazy danych — usunięcia](https://docs.microsoft.com/rest/api/sql/databases/databases_delete)|Usuwa bazę danych.|
+|[Bazy danych — Get](https://docs.microsoft.com/rest/api/sql/databases/databases_get)|Pobiera bazy danych.|
+|[Bazy danych — listę według puli elastycznej](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyelasticpool)|Zwraca listę baz danych w puli elastycznej.|
+|[Bazy danych — lista przez serwer](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyserver)|Zwraca listę baz danych na serwerze.|
+|[Bazy danych — aktualizacja](https://docs.microsoft.com/rest/api/sql/databases/databases_update)|Aktualizuje istniejącą bazę danych.|
+|[Reguły - zapory Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_createorupdate)|Tworzy lub aktualizuje reguły zapory.|
+|[Reguły zapory - Delete](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_delete)|Usuwa reguły zapory.|
+|[Reguły zapory - Get](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_get)|Pobiera regułę zapory.|
+|[Reguły zapory — lista przez serwer](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_listbyserver)|Zwraca listę reguł zapory.|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

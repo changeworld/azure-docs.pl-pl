@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 5bfc11fdf6cbde9c9eed131bbcc7f7ab1dfbc442
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 1cbb46f5238c2019225ab724abaf49e878d19598
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830697"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353870"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Rozwiązywanie problemów z wydajnością usługi Azure SQL Database dzięki inteligentnej analizie
 
@@ -61,7 +61,7 @@ W poniższej sekcji opisano wzorców wydajności wykrywalny bardziej szczegóło
 
 Wzorzec ten wykrywalny wydajność łączy problemy z wydajnością, that are related to osiągnięcia limitów dostępnych zasobów, procesów roboczych ograniczenia i limity sesji. Po wykryciu problemu z wydajnością, pole opisu dziennik diagnostyczny wskazuje, czy problem z wydajnością powiązany zasobów, procesów roboczych lub ograniczenia sesji.
 
-Zasoby w bazie danych SQL są zwykle określane [jednostek DTU](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu) lub [vCore](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-vcore) zasobów. Wzorzec osiągnięcia limitów zasobów jest rozpoznawany w przypadku wykrycia obniżenia wydajności zapytań jest spowodowany przez żadnego ograniczenia zasobów mierzonego osiągnięcia.
+Zasoby w bazie danych SQL są zwykle określane [jednostek DTU](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu) lub [vCore](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore) zasobów. Wzorzec osiągnięcia limitów zasobów jest rozpoznawany w przypadku wykrycia obniżenia wydajności zapytań jest spowodowany przez żadnego ograniczenia zasobów mierzonego osiągnięcia.
 
 Zasób limity sesji wskazuje, że liczba dostępnych współbieżnych logowań w bazie danych SQL. Tego wzorca wydajności został rozpoznany, gdy liczba dostępnych współbieżnych logowań do bazy danych osiągnęła aplikacje, które są podłączone do bazy danych SQL. Jeśli aplikacje próbują używać więcej sesji, niż jest dostępne w bazie danych, ma wpływ wydajności zapytań.
 

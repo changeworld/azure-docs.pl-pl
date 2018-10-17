@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/2/2018
 ms.author: markgal
-ms.openlocfilehash: 561b5d3d9769b509e21a3005d771529f342e2171
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 2151733a5d91fb17c69fa1f4f6aac64a70928824
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067498"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364306"
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Pytania dotyczące usługi Azure Backup
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące składników usługi Azure Backup. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Aby zadać pytanie dotyczące usługi Azure Backup, kliknij pozycję **Komentarze** (po prawej stronie). Komentarze są wyświetlane na dole tego artykułu. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -31,7 +31,7 @@ Tak. Możesz utworzyć maksymalnie 500 magazynów usługi Recovery Services na o
 Można zarejestrować maksymalnie 1000 maszynach wirtualnych platformy Azure na magazyn. Jeśli używasz agenta MAB, można zarejestrować maksymalnie 50 MAB agentów na magazyn. I można zarejestrować 50 MAB serwerów/serwerów programu DPM w magazynie.
 
 ### <a name="can-i-use-a-rest-api-to-query-the-size-of-protected-items-in-a-vault-br"></a>Czy można użyć interfejsu API REST do wykonywania zapytań rozmiar chronionych elementów w magazynie? <br/>
-Tak, artykuł [użycia — listy za magazyny](https://t.co/2lgIrIaF0J), wyświetla informacje, które można uzyskać z magazynu usługi Recovery Services.
+Tak, artykuł [użycia — listy za magazyny](https://docs.microsoft.com/rest/api/recoveryservices/usages/usages_listbyvaults), wyświetla informacje, które można uzyskać z magazynu usługi Recovery Services.
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>Jeśli organizacja ma jeden magazyn, to w jaki sposób można odizolować dane z jednego serwera od danych z innego serwera podczas przywracania danych?<br/>
 Wszystkie serwery, które są zarejestrowane w tym samym magazynie, mogą odzyskać dane umieszczone w kopii zapasowej przez inne serwery, *które korzystają z tego samego hasła*. Jeśli dane kopii zapasowej pewnych serwerów mają zostać odizolowane od innych serwerów w organizacji, należy użyć w przypadku tych serwerów innego hasła. Na przykład serwery zarządzania zasobami ludzkimi mogą korzystać z jednego hasła szyfrowania, serwery księgowości z drugiego, a serwery pamięci masowej z trzeciego.

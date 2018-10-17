@@ -11,17 +11,17 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 10/04/2018
-ms.openlocfilehash: 053bcd46f5b0f7e06997bb0bcd57f448617b9911
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.date: 10/15/2018
+ms.openlocfilehash: 15fd86a88c3025f81741d614b03d5c4c7c60262c
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48832248"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49351746"
 ---
 # <a name="general-purpose-and-business-critical-service-tiers"></a>Warstwy usług ogólnego przeznaczenia i krytyczne dla działania firmy
 
-W tym artykule omówiono zagadnienia magazynu i kopii zapasowych dla warstwy usług ogólnego przeznaczenia i krytyczne dla działania firmy w modelu zakupu opartego na rdzeniach wirtualnych. 
+W tym artykule omówiono zagadnienia magazynu i kopii zapasowych dla warstwy usług ogólnego przeznaczenia i krytyczne dla działania firmy w modelu zakupu opartego na rdzeniach wirtualnych.
 
 > [!NOTE]
 > Szczegółowe informacje na temat warstwy usług na dużą skalę w modelu zakupu opartego na rdzeniach wirtualnych, [warstwy usługi w Hiperskali](sql-database-service-tier-hyperscale.md). Dla porównania modelu zakupu opartego na rdzeniach wirtualnych za pomocą modelu zakupu opartego na jednostkach DTU, zobacz [zakupu modeli i zasobów bazy danych SQL Azure](sql-database-service-tiers.md).
@@ -57,5 +57,5 @@ Magazyn kopii zapasowych bazy danych jest przydzielany do obsługi punktu w czas
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby uzyskać szczegółowe informacje na temat określonych zasobów obliczeniowych, rozmiary i opcje rozmiaru magazynu jest dostępna dla pojedynczej bazy danych w warstwach ogólnego przeznaczenia i krytyczne usługa biznesowa, zobacz [limity zasobów opartych na rdzeniach wirtualnych bazy danych SQL Database dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)
-- Aby uzyskać szczegółowe informacje na temat określonych zasobów obliczeniowych, rozmiary i opcje rozmiaru magazynu jest dostępne dla elastycznych pul w warstwach ogólnego przeznaczenia i krytyczne usługa biznesowa, zobacz [bazy danych SQL Database oparty na rdzeniach wirtualnych zasobów limity dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).
+- Aby uzyskać szczegółowe informacje na temat określonych zasobów obliczeniowych, rozmiary i opcje rozmiaru magazynu jest dostępna dla pojedynczej bazy danych w warstwach ogólnego przeznaczenia i krytyczne usługa biznesowa, zobacz [limity zasobów opartych na rdzeniach wirtualnych bazy danych SQL Database dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-storage-sizes-and-compute-sizes)
+- Aby uzyskać szczegółowe informacje na temat określonych zasobów obliczeniowych, rozmiary i opcje rozmiaru magazynu jest dostępne dla elastycznych pul w warstwach ogólnego przeznaczenia i krytyczne usługa biznesowa, zobacz [bazy danych SQL Database oparty na rdzeniach wirtualnych zasobów limity dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).

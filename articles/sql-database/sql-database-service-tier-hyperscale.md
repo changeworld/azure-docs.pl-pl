@@ -11,15 +11,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 47a2404361c8ce3f30a0564378857f5a86232a52
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.date: 10/15/2018
+ms.openlocfilehash: 372f1a0b7e2ad07612caaac478aea14693e002fa
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868097"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352306"
 ---
-# <a name="hyperscale-service-tier-preview"></a>Warstwy usług na dużą skalę (wersja zapoznawcza)
+# <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Warstwy usług na dużą skalę (wersja zapoznawcza) do 100 TB
 
 Warstwy usług na dużą skalę w usłudze Azure SQL Database jest najnowsza warstwy usług w modelu zakupu opartego na rdzeniach wirtualnych. Ta warstwa usługi jest wysoce skalowalny magazyn i warstwy wydajności obliczeniowej, który korzysta z architektury platformy Azure do skalowania magazynu i zasoby obliczeniowe dla usługi Azure SQL Database w znacznym stopniu po przekroczeniu limitów dostępnych dla firm i ogólnego przeznaczenia Warstwy usług krytycznych.
 
@@ -30,11 +30,11 @@ Warstwy usług na dużą skalę w usłudze Azure SQL Database jest najnowsza war
 > [!IMPORTANT]
 > Warstwy usług na dużą skalę jest obecnie w publicznej wersji zapoznawczej. Nie zaleca się jeszcze uruchamianie dowolnego obciążenia produkcyjnego w bazach danych na dużą skalę. Nie można zaktualizować bazy danych na dużą skalę do innych warstw usług. W celu badania zaleca się, Utwórz kopię bieżącej bazy danych i zaktualizowania kopii do warstwy usług na dużą skalę.
 
-## <a name="what-are-the-capabilities-of-the-hyperscale-service-tier"></a>Jakie są możliwości warstwy usług na dużą skalę
+## <a name="what-are-the-hyperscale-capabilities"></a>Jakie są możliwości na dużą skalę
 
 Warstwy usług na dużą skalę w usłudze Azure SQL Database zapewnia następujące dodatkowe funkcje:
 
-- Obsługa maksymalnie 100 TB rozmiar bazy danych
+- Obsługa do 100 TB, rozmiar bazy danych
 - Niemal natychmiastowych kopii zapasowych, (na podstawie migawki plików przechowywanych w usłudze Azure Blob storage) bazy danych bez względu na rozmiar wpływu we/wy na obliczeń
 - Szybkie przywracanie bazy danych (na podstawie migawki plików) w ciągu kilku minut, a nie godzin lub dni (nie rozmiar operacji na danych)
 - Ogólną wydajność ze względu na większą przepływność dziennika i krótszy czas zatwierdzenia transakcji, niezależnie od ilości danych
@@ -56,13 +56,13 @@ Warstwy usługi w Hiperskali obsługuje wszystkich obciążeń programu SQL Serv
 > [!IMPORTANT]
 > Pule elastyczne nie obsługują warstwy usług na dużą skalę.
 
-## <a name="understand-hyperscale-pricing"></a>Zrozumienie cennika w Hiperskali
+## <a name="hyperscale-pricing-model"></a>Model cen na dużą skalę
 
 Warstwy usługi w Hiperskali jest dostępna tylko w [modelu rdzenia wirtualnego](sql-database-service-tiers-vcore.md). Aby wyrównać za pomocą nowej architektury, model rozliczania usług jest nieco różne od ogólnego przeznaczenia i krytyczne dla działania firmy warstwach usługi:
 
 - **Obliczenia**:
 
-  Cena jednostkowa obliczeń na dużą skalę odbywa się dla repliki. [Benifit hybrydowych Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) cena jest stosowana do odczytu replik skalowania automatycznego. W publicznej wersji zapoznawczej możemy utworzyć dwie repliki dla bazy danych na dużą skalę, domyślnie.
+  Cena jednostkowa obliczeń na dużą skalę odbywa się dla repliki. [Korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) cena jest stosowana do odczytu replik skalowania automatycznego. W publicznej wersji zapoznawczej możemy utworzyć dwie repliki dla bazy danych na dużą skalę, domyślnie.
 
 - **Magazyn**:
 
@@ -70,9 +70,9 @@ Warstwy usługi w Hiperskali jest dostępna tylko w [modelu rdzenia wirtualnego]
 
 Aby uzyskać więcej informacji na temat cen na dużą skalę, zobacz [cennik usługi Azure SQL Database](https://azure.microsoft.com/pricing/details/sql-database/single/)
 
-## <a name="architecture-distributing-functions-to-isolate-capabilities"></a>Architektura: Dystrybucja funkcji do izolowania możliwości
+## <a name="distributed-functions-architecture"></a>Architektura rozproszona funkcji
 
-W przeciwieństwie do tradycyjnych baz danych, które mają scentralizowane wszystkie funkcje zarządzania danych w jednej lokalizacji/process (nawet więc o nazwie rozproszonych baz danych w środowisku produkcyjnym już dziś wiele kopii aparatu monolityczne danych) oddziela bazę danych na dużą skalę aparat przetwarzania zapytań, gdzie semantyka różnych aparatów danych rozdzielić ze składników, które zapewniają długoterminowego przechowywania i trwałości dla danych. W ten sposób pojemności magazynu można sprawnie skalować w poziomie w zakresie, w jakim potrzebne (początkowa docelowy to 100 TB). Repliki tylko do odczytu udostępniać te same składniki obliczeniowych, więc żadna kopia danych jest wymagany do uruchomienia nowej repliki do odczytu.
+W przeciwieństwie do tradycyjnych baz danych, które mają scentralizowane wszystkie funkcje zarządzania danych w jednej lokalizacji/process (nawet więc o nazwie rozproszonych baz danych w środowisku produkcyjnym już dziś wiele kopii aparatu monolityczne danych) oddziela bazę danych na dużą skalę aparat przetwarzania zapytań, gdzie semantyka różnych aparatów danych rozdzielić ze składników, które zapewniają długoterminowego przechowywania i trwałości dla danych. W ten sposób pojemności magazynu można sprawnie skalować w poziomie w zakresie, w jakim potrzebne (początkowa docelowy to 100 TB). Repliki tylko do odczytu udostępniać te same składniki obliczeniowych, więc żadna kopia danych jest wymagany do uruchomienia nowej repliki do odczytu. W trakcie okresu zapoznawczego jest obsługiwana tylko 1 repliki tylko do odczytu.
 
 Na poniższym diagramie przedstawiono różne rodzaje węzłów w bazie danych o dużej skali:
 
@@ -104,12 +104,60 @@ Kopie zapasowe są base migawki plików i dlatego są prawie natychmiastowe. Roz
 
 Dzięki możliwości szybkiego uruchomienia dodatkowych tylko do odczytu węzłów obliczeniowych w górę/w dół Hiperskali architektura umożliwia znaczne odczyt możliwości skalowania i można także zwolnić węzła obliczeniowego podstawowego do obsługi liczby żądań zapisu. Ponadto węzły obliczeniowe można skalować w górę/w dół szybko z uwagi na architekturę magazyn udostępniony architektury na dużą skalę.
 
+## <a name="create-a-hyperscale-database"></a>Tworzenie bazy danych na dużą skalę
+
+Można utworzyć bazę danych na dużą skalę za pomocą [witryny Azure portal](https://portal.azure.com), [języka T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) lub [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create). Bazy danych w Hiperskali są dostępne, tylko przy użyciu [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
+
+Następujące polecenie języka T-SQL tworzy bazę danych na dużą skalę. Należy określić zarówno wersji, jak i usługa cel w `CREATE DATABASE` instrukcji.
+
+```sql
+-- Create a HyperScale Database
+CREATE DATABASE [HyperScaleDB1] (EDITION = 'HyperScale', SERVICE_OBJECTIVE = 'HS_Gen4_4');
+GO
+```
+
+## <a name="migrate-an-existing-azure-sql-database-to-the-hyperscale-service-tier"></a>Migrowanie istniejącej bazy danych SQL Azure do warstwy usług na dużą skalę
+
+Można przenieść istniejące bazy danych Azure SQL na dużą skalę za pomocą [witryny Azure portal](https://portal.azure.com), [języka T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) lub [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update). W publicznej wersji zapoznawczej jest to jednokierunkowe migracji. Nie można przenieść bazy danych w Hiperskali, do innej warstwy usług. Firma Microsoft zaleca, Utwórz kopię produkcyjnych bazach danych i migrację do w Hiperskali dla weryfikacji koncepcji (weryfikacji koncepcji).
+
+Następujące polecenie języka T-SQL przenosi bazę danych do warstwy usług na dużą skalę. Należy określić zarówno wersji, jak i usługa cel w `ALTER DATABASE` instrukcji.
+
+```sql
+-- Alter a database to make it a HyperScale Database
+ALTER DATABASE [DB2] MODIFY (EDITION = 'HyperScale', SERVICE_OBJECTIVE = 'HS_Gen4_4');
+GO
+```
+
+> [!IMPORTANT]
+> [Przezroczyste szyfrowanie bazy danych (TDE)](transparent-data-encryption-azure-sql.md) powinno zostać wyłączone przed zmianą bazy danych — na dużą skalę na dużą skalę.
+
+## <a name="connect-to-a-read-scale-replica-of-a-hyperscale-database"></a>Połącz się z repliką skalę odczytywania, bazy danych na dużą skalę
+
+W przypadku baz danych na dużą skalę `ApplicationIntent` argumentu w ciągu połączenia, udostępniane przez klienta określa, czy połączenie jest kierowany do repliki zapisu lub tylko do odczytu repliki pomocniczej. Jeśli `ApplicationIntent` równa `READONLY` i bazy danych nie ma w replice pomocniczej, połączenia będą kierowane do repliki podstawowej i wartość domyślna to `ReadWrite` zachowanie.
+
+```cmd
+-- Connection string with application intent
+Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationIntent=ReadOnly;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
+```
+
 ## <a name="available-regions"></a>Dostępne regiony
 
 Warstwy usług na dużą skalę jest obecnie w publicznej wersji zapoznawczej i jest dostępna w następujących regionach świadczenia usługi Azure: EastUS1 EastUS2, WestUS2, CentralUS, NorthCentralUS, WestEurope, NorthEurope, UKWest, AustraliaEast, AustraliaSouthEast, SouthEastAsia, JapanEast, KoreaCentral
 
+## <a name="known-limitations"></a>Znane ograniczenia
+
+| Problem | Opis |
+| :---- | :--------- |
+| W okienku ManageBackups dla serwera logicznego nie pokazuje, że będą filtrowane baz danych na dużą skalę z programu SQL server ->  | W Hiperskali ma oddzielne metodę zarządzania kopiami zapasowymi i jako takie długotrwałego przechowywania danych i punktu w czasie tworzenia kopii zapasowej ustawień przechowywania nie stosuje się / są unieważniane. W związku z tym baz danych na dużą skalę, nie są wyświetlane w okienku Zarządzanie kopii zapasowej. |
+| Przywracanie do określonego momentu | Po migracji bazy danych w warstwie usługi w Hiperskali, przywracanie do punktu w czasie nie jest obsługiwane.|
+| Jeśli plik bazy danych zwiększa się podczas migracji ze względu na to aktywne obciążenie i przekracza 1 TB na granicy pliku, migracja nie powiedzie się | Środki zaradcze: <br> — Jeśli to możliwe, migracji bazy danych, po nie obciążenia aktualizacji.<br> -Ponów próbę migracji, zakończy się powodzeniem tak długo, jak granica 1 TB nie jest przekroczony podczas migracji.|
+| Wystąpienie zarządzane nie jest obecnie obsługiwane. | Nie jest obecnie obsługiwany |
+| Operacja jednokierunkowa trwa w migracji do usługi w Hiperskali | Po migracji bazy danych na dużą skalę, nie można migrować bezpośrednio do warstwy usług — na dużą skalę. Obecnie jedynym sposobem na migrację bazy danych w Hiperskali do innego niż w Hiperskali jest eksportu/importu za pomocą pliku BACPAC.|
+| Migracja bazy danych z obiektów w pamięci nie jest obecnie obsługiwane. | Obiekty w pamięci, należy porzucić i tworzony ponownie jako obiektów innych niż w pamięci, przed przeprowadzeniem migracji bazy danych do warstwy usług na dużą skalę.
+
 ## <a name="next-steps"></a>Kolejne kroki
 
+- Aby — często zadawane pytania na dużą skalę, zobacz [często zadawane pytania dotyczące Hiperskali](sql-database-service-tier-hyperscale-faq.md).
 - Aby uzyskać informacji o warstwach usługi, zobacz [warstwy usług](sql-database-service-tiers.md)
 - Zobacz [Przegląd zasobów limity na serwerze logicznym](sql-database-resource-limits-logical-server.md) uzyskać informacji dotyczących ograniczeń na poziomach serwera i subskrypcji.
 - Zakupu limity modelu pojedynczej bazy danych, zobacz [usługi Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pojedynczej bazy danych](sql-database-vcore-resource-limits-single-databases.md).

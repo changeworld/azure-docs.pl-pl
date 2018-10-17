@@ -11,39 +11,56 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 10/04/2018
-ms.openlocfilehash: e40f2f3f0a6551fd9fc38ad138d92f694a09879f
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 10/15/2018
+ms.openlocfilehash: 36269392db785e7d2d203f032a84cccc8a6c62e0
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803243"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352972"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Usługi Azure SQL Database Data odnajdywanie i klasyfikacja
+
 Odnajdywanie i klasyfikacja (obecnie w wersji zapoznawczej) danych zapewnia zaawansowane możliwości wbudowane w usłudze Azure SQL Database dla **odnajdywania**, **klasyfikowania**, **etykietowania**  &  **ochrony** poufnych danych w bazach danych.
 Odnajdowanie i klasyfikowanie najbardziej poufnych danych (biznesowe, finansowych, ochrony zdrowia, dane osobowe (PII) i itp.), można odtwarzać zasadniczą rolę w stature ochrony Twojej organizacji. Może służyć jako infrastruktury:
-* Pomaga zaspokoić potrzeby dotyczące standardów ochrony prywatności danych i wymagania dotyczące zgodności z przepisami.
-* Różne scenariusze zabezpieczeń, takich jak monitorowanie (inspekcji) i alarmując nietypowego dostępu do poufnych danych.
-* Kontrolowanie dostępu do i wzmacniania ochrony bezpieczeństwa baz danych zawierających poufne dane.
+
+- Pomaga zaspokoić potrzeby dotyczące standardów ochrony prywatności danych i wymagania dotyczące zgodności z przepisami.
+- Różne scenariusze zabezpieczeń, takich jak monitorowanie (inspekcji) i alarmując nietypowego dostępu do poufnych danych.
+- Kontrolowanie dostępu do i wzmacniania ochrony bezpieczeństwa baz danych zawierających poufne dane.
 
 Odnajdywanie i klasyfikacja danych jest częścią [SQL Zaawansowana ochrona przed zagrożeniami](sql-advanced-threat-protection.md) oferty (ATP), która to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Odnajdywanie i klasyfikacja danych można uzyskać dostęp i zarządzane za pośrednictwem centralnej portal SQL ATP.
 
 > [!NOTE]
 > Ten dokument dotyczy tylko usługi Azure SQL Database. Dla programu SQL Server (lokalnie), zobacz [odnajdywanie danych SQL i klasyfikacji](https://go.microsoft.com/fwlink/?linkid=866999).
 
-## <a id="subheading-1"></a>Co to jest danych, odnajdowanie i klasyfikację?
+## <a id="subheading-1"></a>Co to jest danych, odnajdowanie i klasyfikację
+
 Odnajdywanie i klasyfikacja danych wprowadza zestaw zaawansowanych usług i nowe funkcje programu SQL, tworzących paradygmatu SQL Information Protection mających na celu ochronę danych, a nie tylko bazy danych:
-* **Odnajdywanie i zalecenia dotyczące** — aparat klasyfikacji skanuje bazy danych i identyfikuje kolumny zawierające potencjalnie poufnych danych. Następnie umożliwia łatwe przeglądanie i stosowania zaleceń dotyczących odpowiedniej klasyfikacji w witrynie Azure portal.
-* **Etykietowanie** — czułości etykiet klasyfikacji, które mogą być trwałe oznaczane w kolumnach za pomocą nowych atrybutów metadanych klasyfikacji wprowadzane do aparatu programu SQL. Te metadane mogą następnie wykorzystywane w celu zaawansowane czułości opartych na inspekcje i ochrony scenariuszach.
-* **Wynik zapytania ustawić czułość** — czułość zestawu wyników zapytania jest obliczana w czasie rzeczywistym na potrzeby inspekcji.
-* **Widoczność** — stan klasyfikacji bazy danych mogą być wyświetlane w szczegółowego pulpitu nawigacyjnego w portalu. Ponadto możesz pobrać raport (w formacie programu Excel) ma być używany dla zgodności i celów inspekcji, a także innych potrzeb.
+
+- **Odnajdywanie i zalecenia dotyczące**
+
+  Aparat klasyfikacji skanuje bazy danych i identyfikuje kolumny zawierające potencjalnie poufnych danych. Następnie umożliwia łatwe przeglądanie i stosowania zaleceń dotyczących odpowiedniej klasyfikacji w witrynie Azure portal.
+
+- **Etykietowania**
+
+  Czułość etykiet klasyfikacji mogą być oznaczane trwałe w kolumnach za pomocą nowych atrybutów metadanych klasyfikacji wprowadzane do aparatu programu SQL. Te metadane mogą następnie wykorzystywane w celu zaawansowane czułości opartych na inspekcje i ochrony scenariuszach.
+
+- **Czułość zestawu wyników zapytania**
+
+  Czułość zestawu wyników zapytania jest obliczana w czasie rzeczywistym na potrzeby inspekcji.
+
+- **Widoczność**
+
+  Stan klasyfikacji bazy danych mogą być wyświetlane w szczegółowego pulpitu nawigacyjnego w portalu. Ponadto możesz pobrać raport (w formacie programu Excel) ma być używany dla zgodności i celów inspekcji, a także innych potrzeb.
 
 ## <a id="subheading-2"></a>Odnajdywanie, klasyfikowanie i etykiety kolumn poufnych
+
 W poniższej sekcji opisano proces odnajdywania, klasyfikowania i etykietowania kolumn zawierających dane poufne w bazy danych, a także wyświetlanie bieżącego stanu klasyfikacji bazy danych i eksportowanie raportów.
 
 Klasyfikacja zawiera dwa atrybuty metadanych:
-* Etykiety — atrybuty głównego klasyfikacji są używane do definiowania poziomu poufności danych przechowywanych w kolumnie.  
-* Typy informacji — zapewniają dodatkowe poziom szczegółowości na typ danych przechowywanych w kolumnie.
+
+- Etykiety — atrybuty głównego klasyfikacji są używane do definiowania poziomu poufności danych przechowywanych w kolumnie.  
+- Typy informacji — zapewniają dodatkowe poziom szczegółowości na typ danych przechowywanych w kolumnie.
 
 ## <a name="define-and-customize-your-classification-taxonomy"></a>Definiowanie i dostosowywanie taksonomii klasyfikacji
 
@@ -72,31 +89,31 @@ Po zdefiniowaniu zasad obowiązujących w całej dzierżawy możesz kontynuować
 
    ![Eksportuj do programu Excel](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
 
-5.  <a id="step-5"></a>Aby rozpocząć, klasyfikacji danych, kliknij pozycję **kartę klasyfikacji** w górnej części okna.
+5. <a id="step-5"></a>Aby rozpocząć, klasyfikacji danych, kliknij pozycję **kartę klasyfikacji** w górnej części okna.
 
     ![Klasyfikowanie możesz danych](./media/sql-data-discovery-and-classification/4_data_classification_classification_tab_click.png)
 
 6. Aparat klasyfikacji skanuje bazę danych pod kątem kolumn zawierających potencjalnie poufnych danych i zapewnia listę **zalecane klasyfikacje kolumn**. Aby wyświetlić i stosowania zaleceń klasyfikacji:
 
-    * Aby wyświetlić listę kolumn zalecane klasyfikacje, kliknij panel zalecenia w dolnej części okna:
+   - Aby wyświetlić listę kolumn zalecane klasyfikacje, kliknij panel zalecenia w dolnej części okna:
 
       ![Klasyfikowanie danych](./media/sql-data-discovery-and-classification/5_data_classification_recommendations_panel.png)
 
-    * Przejrzyj listę zaleceń — aby zaakceptować zalecenie dla określonej kolumny, zaznacz pole wyboru w lewej kolumnie odpowiedni wiersz. Można również oznaczyć *wszystkich zaleceń dotyczących* jako zaakceptowane, zaznaczając pole wyboru w nagłówku tabeli zalecenia.
+   - Przejrzyj listę zaleceń — aby zaakceptować zalecenie dla określonej kolumny, zaznacz pole wyboru w lewej kolumnie odpowiedni wiersz. Można również oznaczyć *wszystkich zaleceń dotyczących* jako zaakceptowane, zaznaczając pole wyboru w nagłówku tabeli zalecenia.
 
        ![Lista zaleceń przeglądu](./media/sql-data-discovery-and-classification/6_data_classification_recommendations_list.png)
 
-    * Aby zastosować wybrane zalecenia, kliknij niebieski **Zaakceptuj wybrane zalecenia** przycisku.
+   - Aby zastosować wybrane zalecenia, kliknij niebieski **Zaakceptuj wybrane zalecenia** przycisku.
 
       ![Stosowanie zalecenia](./media/sql-data-discovery-and-classification/7_data_classification_accept_selected_recommendations.png)
 
 7. Możesz również **ręcznie sklasyfikować** kolumny zamiast lub oprócz klasyfikacja na podstawie zaleceń:
 
-    * Kliknij pozycję **Dodaj klasyfikację** w menu u góry okna.
+   - Kliknij pozycję **Dodaj klasyfikację** w menu u góry okna.
 
       ![Ręcznie Dodaj klasyfikację](./media/sql-data-discovery-and-classification/8_data_classification_add_classification_button.png)
 
-    * W otwartym oknie kontekstu wybierz schemat > tabeli > kolumny, które chcesz sklasyfikować i etykiety typu i poufności informacji. Następnie kliknij przycisk na niebieskim **Dodaj klasyfikację** znajdujący się u dołu okna kontekstu.
+   - W otwartym oknie kontekstu wybierz schemat > tabeli > kolumny, które chcesz sklasyfikować i etykiety typu i poufności informacji. Następnie kliknij przycisk na niebieskim **Dodaj klasyfikację** znajdujący się u dołu okna kontekstu.
 
       ![Wybierz kolumnę do klasyfikowania](./media/sql-data-discovery-and-classification/9_data_classification_manual_classification.png)
 
@@ -117,16 +134,16 @@ T-SQL umożliwia dodawanie/usuwanie klasyfikacje kolumn, a także pobrać wszyst
 > [!NOTE]
 > Zarządzanie etykiety za pomocą języka T-SQL, nie ma możliwości weryfikacji etykiety dodawane do kolumny istniejące w organizacji zasad usługi information protection (zestaw etykiet, które są wyświetlane w portalu zalecenia). Jest do nich można to sprawdzić.
 
-* Dodawanie/aktualizowanie klasyfikacji co najmniej jedna kolumna: [Dodaj klasyfikacji charakteru](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-* Usunąć klasyfikację z co najmniej jedna kolumna: [PORZUCIĆ klasyfikacji charakteru](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
-* Wyświetl wszystkie klasyfikacje w bazie danych: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+- Dodawanie/aktualizowanie klasyfikacji co najmniej jedna kolumna: [Dodaj klasyfikacji charakteru](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+- Usunąć klasyfikację z co najmniej jedna kolumna: [PORZUCIĆ klasyfikacji charakteru](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+- Wyświetl wszystkie klasyfikacje w bazie danych: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 Interfejsów API REST można również użyć do programowego zarządzania klasyfikacje. Opublikowanych interfejsów API REST obsługują następujące operacje:
-* [Tworzenie lub aktualizowanie](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) — tworzy lub aktualizuje etykieta poufności danej kolumny
-* [Usuń](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) -usuwa etykietę czułości w danej kolumnie
-* [Pobierz](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) — pobiera etykieta poufności danej kolumny
-* [Lista przez bazę danych](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listbydatabase) — pobiera etykiety ważności określonej bazy danych
 
+- [Tworzenie lub aktualizowanie](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/sensitivitylabels_createorupdate) — tworzy lub aktualizuje etykieta poufności danej kolumny
+- [Usuń](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/sensitivitylabels_delete) -usuwa etykietę czułości w danej kolumnie
+- [Pobierz](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/sensitivitylabels_get) — pobiera etykieta poufności danej kolumny
+- [Lista przez bazę danych](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/sensitivitylabels_listbydatabase) — pobiera etykiety ważności określonej bazy danych
 
 ## <a id="subheading-5"></a>Następne kroki
 

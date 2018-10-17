@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: nobun
 ms.custom: mvc
-ms.openlocfilehash: cb143998ac46f7f86b2dbf47b69cee7843418f5d
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: d26e849cf775e0c645ae97e4b67b5918bbbabd55
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43191608"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49361382"
 ---
 # <a name="migrating-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>Migrowanie z usługi Azure Container Service (ACS) do usługi Azure Kubernetes Service (AKS)
 
@@ -29,7 +29,7 @@ Usługi ACS oraz AKS różnią się w niektórych kluczowych obszarów, które m
     * Niestandardowe `StorageClass` obiektów dla usługi Azure disks należy można zmienić z `unmanaged` do `managed`
     * Wszelkie `PersistentVolumes` będą musieli używać `kind: Managed`
 * AKS aktualnie obsługuje tylko jeden agent puli
-* Węzły na serwerze z systemem Windows jest obecnie oferowana [prywatnej wersji zapoznawczej](https://azure.microsoft.com/en-us/blog/kubernetes-on-azure/)
+* Węzły na serwerze z systemem Windows jest obecnie oferowana [prywatnej wersji zapoznawczej](https://azure.microsoft.com/blog/kubernetes-on-azure/)
 * Zapoznaj się z listą AKS [obsługiwane regiony](https://docs.microsoft.com/azure/aks/container-service-quotas)
 * AKS to usługa zarządzana przy płaszczyznę kontroli hostowanej platformy Kubernetes. Może być konieczne zmodyfikowanie aplikacji, jeśli wcześniej zmodyfikowano konfigurację serwerów głównych usługi ACS
 

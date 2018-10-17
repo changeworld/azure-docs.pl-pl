@@ -3,24 +3,24 @@ title: Usługa Azure Traffic Manager za pomocą usługi Azure Site Recovery | Do
 description: Opisuje sposób używania usługi Azure Traffic Manager z usługą Azure Site Recovery na potrzeby odzyskiwania po awarii i migracji
 services: site-recovery
 documentationcenter: ''
-author: mayanknayar
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
-ms.author: manayar
-ms.openlocfilehash: 0be013a1b8d2c619d58034157240eafb241c4e59
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.topic: conceptual
+ms.date: 10/16/2018
+ms.author: mayg
+ms.openlocfilehash: 8f303ec3349b0003ef764e437c6f06cf498dcc57
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919040"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353258"
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>Usługa Azure Traffic Manager z usługą Azure Site Recovery
 
-Usługa Azure Traffic Manager umożliwia kontrolowanie dystrybucji ruchu między punktami końcowymi usługi aplikacji. Punkt końcowy jest dowolnej usługi połączone z Internetem, hostowaną wewnątrz lub poza platformą Azure.
+Usługa Azure Traffic Manager umożliwia kontrolowanie dystrybucji ruchu między punktami końcowymi usługi aplikacji. Punkt końcowy to dowolna internetowa usługa hostowana wewnątrz platformy Azure lub poza nią.
 
-Usługi Traffic Manager używa systemu nazw domen (DNS), aby kierować żądania klientów do najbardziej odpowiednich punktów końcowych na podstawie metody routingu ruchu i kondycji punktów końcowych. Usługa Traffic Manager udostępnia szereg [metody routingu ruchu](../traffic-manager/traffic-manager-routing-methods.md) i [opcje monitorowania punktu końcowego](../traffic-manager/traffic-manager-monitoring.md) do własnych potrzeb różnych aplikacji i modele automatycznej pracy awaryjnej. Klienci łączą się z wybranego punktu końcowego bezpośrednio. Usługa Traffic Manager nie jest serwer proxy lub bramy, a nie widzi ruch przekazywanie między klientem a usługą.
+Usługi Traffic Manager używa systemu nazw domen (DNS), aby kierować żądania klientów do najbardziej odpowiednich punktów końcowych na podstawie metody routingu ruchu i kondycji punktów końcowych. Usługa Traffic Manager udostępnia szereg [metod routingu ruchu](../traffic-manager/traffic-manager-routing-methods.md) oraz [opcji monitorowania punktów końcowych](../traffic-manager/traffic-manager-monitoring.md), które zaspokoją potrzeby różnych aplikacji i modeli automatycznej pracy w trybie failover. Klienci łączą się z wybranego punktu końcowego bezpośrednio. Usługa Traffic Manager nie jest serwer proxy lub bramy, a nie widzi ruch przekazywanie między klientem a usługą.
 
 W tym artykule opisano, jak łączenie, monitorowanie ruchu Azure inteligentnego routingu z odzyskiwaniem zaawansowane usługi Azure Site Recovery i możliwości migracji.
 

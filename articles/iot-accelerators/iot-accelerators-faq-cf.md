@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 737a76ba313dddaa58c302f1df501f16a5c4e9e8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e9e88fc9aa3aad902c140ac176e31571b9e55ee3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966561"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353745"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Często zadawane pytania dotyczące akcelerator rozwiązania połączonej fabryki
 
@@ -140,33 +140,21 @@ Jeśli są wyświetlane żadne dane wysyłane do usługi IoT Hub, występuje pro
 
 ### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>Jak włączyć mapę interaktywną w mojej rozwiązania połączonej fabryki?
 
-Aby włączyć mapę interaktywną w rozwiązaniu połączonej fabryki, konieczne jest posiadanie istniejącego interfejsu API map Bing planu Enterprise.
+Aby włączyć mapę interaktywną w rozwiązaniu połączonej fabryki, musi mieć konto usługi Azure Maps.
 
-W przypadku wdrażania z [www.azureiotsolutions.com](http://www.azureiotsolutions.com), proces wdrażania sprawdza, czy Twoja subskrypcja ma włączone interfejsu API map Bing planu Enterprise i automatycznie wdraża mapę interaktywną do połączonej fabryki. Jeśli nie jest tak, można włączyć mapę interaktywną we wdrożeniu w następujący sposób:
+W przypadku wdrażania z [www.azureiotsolutions.com](http://www.azureiotsolutions.com), proces wdrażania dodaje konto usługi Azure Maps grupę zasobów, która zawiera usługi akcelerator rozwiązań.
 
-Podczas wdrażania za pomocą `build.ps1` skryptu w usłudze GitHub fabryki połączone repozytorium i mieć interfejsu API map Bing planu Enterprise, ustaw zmienną środowiskową `$env:MapApiQueryKey` w oknie kompilacji klucza zapytania określonego planu. Interaktywnej mapie jest włączana automatycznie.
+Podczas wdrażania za pomocą `build.ps1` skryptu w zestawie repozytorium GitHub połączona fabryka zmiennej środowiskowej `$env:MapApiQueryKey` w oknie kompilacji, aby [klucza konta usługi Azure Maps](../azure-maps/how-to-manage-account-keys.md). Interaktywnej mapie jest włączana automatycznie.
 
-Jeśli nie masz interfejsu API map Bing planu Enterprise należy wdrażać rozwiązania połączonej fabryki z [www.azureiotsolutions.com](http://www.azureiotsolutions.com) lub za pomocą `build.ps1` skryptu. Następnie dodaj interfejsu API map Bing planu Enterprise z subskrypcją, zgodnie z objaśnieniem w [jak utworzyć interfejsu API map Bing dla przedsiębiorstw konta?](#how-do-i-create-a-bing-maps-api-for-enterprise-account). Wyszukiwanie klucza zapytania tego konta, jak wyjaśniono w [uzyskiwania Twojego interfejsu API usługi mapy Bing dla elementu QueryKey Enterprise](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) i Zapisz ten klucz. Przejdź do witryny Azure portal i uzyskać dostęp do zasobu usługi App Service w danym wdrożeniu połączonej fabryki. Przejdź do **ustawienia aplikacji**, gdzie znaleźć sekcję **ustawienia aplikacji**. Ustaw **MapApiQueryKey** uzyskany klucz zapytania. Zapisz ustawienia, a następnie przejdź do **Przegląd** i uruchom ponownie usługi App Service.
+Klucz konta usługi Azure Maps można również dodać do Twój akcelerator rozwiązań, po wdrożeniu. Przejdź do witryny Azure portal i uzyskać dostęp do zasobu usługi App Service w danym wdrożeniu połączonej fabryki. Przejdź do **ustawienia aplikacji**, gdzie znaleźć sekcję **ustawienia aplikacji**. Ustaw **MapApiQueryKey** do [klucza konta usługi Azure Maps](../azure-maps/how-to-manage-account-keys.md). Zapisz ustawienia, a następnie przejdź do **Przegląd** i uruchom ponownie usługi App Service.
 
-### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Jak utworzyć interfejsu API map Bing dla przedsiębiorstw konta
+### <a name="how-do-i-create-a-azure-maps-account"></a>Jak utworzyć konto usługi Azure Maps?
 
-Możesz uzyskać bezpłatne *wewnętrzne transakcje poziomu 1 mapy Bing dla przedsiębiorstw* planu. Jednak można jedynie dodać dwa z tych planów z subskrypcją platformy Azure. Jeśli nie masz interfejsu API map Bing dla przedsiębiorstw konta, zrób to w witrynie Azure portal, klikając **+ Utwórz zasób**. Następnie wyszukaj **interfejsu API usługi mapy Bing dla przedsiębiorstw** i postępuj zgodnie z monitami, aby go utworzyć.
+Zobacz, [jak zarządzać swoim kontem usługi Azure Maps i klucze](../azure-maps/how-to-manage-account-keys.md).
 
-![Klucz usługi Bing](./media/iot-accelerators-faq-cf/bing.png)
+### <a name="how-to-obtain-your-azure-maps-account-key"></a>Jak uzyskać klucz konta usługi Azure Maps
 
-### <a name="how-to-obtain-your-bing-maps-api-for-enterprise-querykey"></a>Jak uzyskać Twojego interfejsu API usługi mapy Bing dla elementu QueryKey przedsiębiorstwa
-
-Po utworzeniu usługi interfejsu API map Bing planu Enterprise usługi mapy Bing dla przedsiębiorstw zasobu należy dodać do grupy zasobów w witrynie Azure portal rozwiązania połączonej fabryki.
-
-1. W witrynie Azure portal przejdź do grupy zasobów, który zawiera interfejs API map Bing planu Enterprise.
-
-1. Kliknij przycisk **wszystkie ustawienia**, następnie **zarządzanie kluczami**.
-
-1. Dostępne są dwa klucze: **MasterKey** i **QueryKey**. Kopiuj **QueryKey** wartości.
-
-1. Znajdować się klucz odebrane przez `build.ps1` skryptu, ustaw zmienną środowiskową `$env:MapApiQueryKey` w środowisku PowerShell w celu **QueryKey** planu. Skrypt kompilacji następnie automatycznie doda wartość do ustawienia usługi App Service.
-
-1. Przeprowadź wdrożenie lokalne lub w chmurze przy użyciu wdrożenia `build.ps1` skryptu.
+Zobacz, [jak zarządzać swoim kontem usługi Azure Maps i klucze](../azure-maps/how-to-manage-account-keys.md).
 
 ### <a name="how-do-enable-the-interactive-map-while-debugging-locally"></a>Jak włączyć interaktywnej mapie podczas lokalnego debugowania?
 

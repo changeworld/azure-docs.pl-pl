@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 47333a7b5ad7d76ee8bbac19884ba8246eadc05e
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 9d2745f1211aa6f818f89d9597867e1b3b2de03f
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855786"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362657"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>Zarządzanie potencjalnych klientów dla portalu marketplace w chmurze
 
@@ -214,7 +214,7 @@ Istnieje możliwość, że domena poczty e-mail przez użytkownika końcowego po
 
  **Skonfigurowano Azure tabeli/obiektów BLOB platformy Azure jako miejsce docelowe Moje potencjalny klient, jak wyświetlić potencjalnych klientów?** 
 
-Będą mieć dostęp obiektów blob lub tabel, z witryny Azure Portal lub pobrać i zainstalować [Eksploratora usługi Azure Storage](https://azure.microsoft.com/en-us/features/storage-explorer/) bezpłatnie, aby wyświetlić tabele/obiekty BLOB konta magazynu platformy Azure. 
+Będą mieć dostęp obiektów blob lub tabel, z witryny Azure Portal lub pobrać i zainstalować [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) bezpłatnie, aby wyświetlić tabele/obiekty BLOB konta magazynu platformy Azure. 
 
 
 **Skonfigurowano usługi Azure Table jako miejsce docelowe Moje potencjalnych klientów, można otrzymywać powiadomienia przy każdym wysłaniu nowego potencjalnego klienta w portalu Marketplace?** 

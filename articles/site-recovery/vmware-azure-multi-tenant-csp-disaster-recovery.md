@@ -2,18 +2,18 @@
 title: Konfigurowanie replikacji oprogramowania VMware do platformy Azure w środowisku wielu dzierżawców Site Recovery i program Cloud Solution Provider (CSP) | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób tworzenia i zarządzania subskrypcjami dzierżawy za pośrednictwem dostawcy usług Kryptograficznych i wdrażanie usługi Azure Site Recovery w konfiguracji z wieloma dzierżawami
 services: site-recovery
-author: mayanknayar
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
-ms.author: manayar
-ms.openlocfilehash: d384a77054cdcab0305b9e6d3fe5bb824e49bb16
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.topic: conceptual
+ms.date: 10/16/2018
+ms.author: mayg
+ms.openlocfilehash: bd356a7e4285f8663b91da1f200cc2ae3c266bf3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916806"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354125"
 ---
 # <a name="set-up-vmware-replication-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Konfigurowanie replikacji VMware w środowisku wielu dzierżawców w ramach programu Cloud Solution Provider (CSP)
 

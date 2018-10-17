@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: f613fb9bd3e9cf6d070b34403bab617e23261c56
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: e24c12dd5891b0ee58263a1e0a4e3af1ebffe711
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226452"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365008"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Rozwiązania Virtual Kubelet za pomocą usługi Azure Kubernetes Service (AKS)
 
@@ -45,7 +45,7 @@ metadata:
   name: tiller
   namespace: kube-system
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: tiller
@@ -118,7 +118,7 @@ virtual-kubelet-virtual-kubelet-win     Ready     agent     4m        v1.8.3
 Utwórz plik o nazwie `virtual-kubelet-linux.yaml` i skopiuj do poniższego kodu YAML. Zastąp `kubernetes.io/hostname` wartości o nazwie węzła rozwiązania Virtual Kubelet w systemie Linux. Zwróć uwagę, że [nodeSelector] [ node-selector] i [toleration] [ toleration] są używane do zaplanowania kontenerów w węźle.
 
 ```yaml
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: aci-helloworld
@@ -163,7 +163,7 @@ aci-helloworld-2559879000-8vmjw     1/1       Running   0          39s       52.
 Utwórz plik o nazwie `virtual-kubelet-windows.yaml` i skopiuj do poniższego kodu YAML. Zastąp `kubernetes.io/hostname` wartości o nazwie węzła rozwiązania Virtual Kubelet Windows. Zwróć uwagę, że [nodeSelector] [ node-selector] i [toleration] [ toleration] są używane do zaplanowania kontenerów w węźle.
 
 ```yaml
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nanoserver-iis

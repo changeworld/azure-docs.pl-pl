@@ -14,32 +14,31 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: qianw211
-ms.openlocfilehash: d7fd09928c0a687755d216e7f10f7eac23677c63
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 3ad9308f3bc714ee2877627da8fdb328459b9fe4
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45986425"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49351953"
 ---
-# <a name="enable-a-microsoft-appsource-and-azure-marketplace-listing-by-using-azure-active-directory"></a>Włącz listę Microsoft AppSource i portalu Azure Marketplace przy użyciu usługi Azure Active Directory
+# <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Włącz listę usługi AppSource i Portal Marketplace przy użyciu usługi Azure Active Directory
 
-Microsoft Azure Active Directory (Azure AD) to usługa tożsamości w chmurze umożliwia uwierzytelnianie za pomocą konta Microsoft przy użyciu środowisk standardowych.  Aby uzyskać więcej informacji na temat usługi Azure AD, zobacz [usługi Azure Active Directory](https://azure.microsoft.com/services/active-directory).
+ Azure Active Directory (Azure AD) to chmurze Usługa zarządzania tożsamościami, która umożliwia uwierzytelnianie za pomocą konta Microsoft. Usługa Azure AD używa standardowych środowisk. [Dowiedz się więcej o usłudze Azure Active Directory](https://azure.microsoft.com/services/active-directory).
 
-## <a name="benefits-of-using-azure-active-directory"></a>Korzyści z używania usługi Azure Active Directory
+## <a name="azure-ad-benefits"></a>Korzyści z platformy Azure AD
 
-Microsoft AppSource i portalu Azure Marketplace klienci Użyj środowiska w ramach produktu, aby wyszukać katalogach listy, które będą musieli zalogować się do produktu.  Integrowanie aplikacji z usługi Azure AD, możesz przyspieszyć zaangażowania i optymalizować środowisko klienta. Usługa Azure AD:
+Microsoft AppSource i portalu Azure Marketplace klienci Użyj środowiska w ramach produktu, aby wyszukać katalogi listy. Te akcje wymaga od klientów do logowania się na produkt. Integracja z usługą Azure AD zapewnia następujące korzyści:
 
-- Umożliwia logowanie jednokrotne (SSO) dla milionów użytkowników w przedsiębiorstwach.
-- Umożliwia użytkownikom spójne środowisko logowania jednokrotnego w opublikowanych przez partnerów w różnych aplikacjach.
-- Zapewnia skalowalne, Międzyplatformowe uwierzytelnianie dla aplikacji mobilnych i chmury aplikacji.
+- Szybsze zaangażowania i zoptymalizowane komfort
+- Logowanie jednokrotne (SSO) dla milionów użytkowników w przedsiębiorstwach
+- Spójne środowisko logowania w aplikacjach opublikowanych przez różnych partnerów
+- Skalowalne, Międzyplatformowe uwierzytelnianie dla urządzeń przenośnych i aplikacji w chmurze
 
-Zgodnie z opisem w dalszej części tego artykułu niektóre oferty są wymagane do wdrożenia usługi Azure AD, aby opublikować w portalu Marketplace.
+## <a name="offers-that-require-azure-ad"></a>Oferty, które wymagają usługi Azure AD
 
-## <a name="azure-active-directory-requirements"></a>Wymagania dotyczące usługi Azure Active Directory
+Różne [opcje listowania ilości pamięci i stanowią typy](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) dla usługi AppSource i portalu Azure Marketplace, mają różne wymagania dotyczące wdrożenia usługi Azure AD. Zobacz poniższą tabelę, aby uzyskać szczegółowe informacje:
 
-Istnieją różne [opcje listowania ilości pamięci i stanowią typy](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) Microsoft AppSource i portalu Azure Marketplace.  Poniżej przedstawiono wymagania platformy Azure AD, te opcje wyświetlania i typów ofert:
-
-| **Typ oferty**    | **Wymagane logowanie Jednokrotne usługi AAD?**  |  |   |  |
+| **Typ oferty**    | **Wymagane logowania jednokrotnego usługi Azure AD?**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
 |  | Kontakt ze mną | Wersja próbna | Wersja testowa | Transakcja |
 | Maszyna wirtualna | ND | Nie | Nie | Nie |
@@ -51,52 +50,49 @@ Istnieją różne [opcje listowania ilości pamięci i stanowią typy](https://d
 
 Aby uzyskać więcej informacji na temat wymagań technicznych SaaS, zobacz [aplikacji SaaS oferują Podręcznik publikowania](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
 
-## <a name="integration-with-azure-active-directory"></a>Integracja z usługą Azure Active Directory
+## <a name="azure-ad-integration"></a>Integracja z usługą Azure AD
 
-Aby uzyskać informacje na temat integracji z usługą Azure AD, aby włączyć logowanie Jednokrotne, odwiedź stronę https://aka.ms/aaddev.
+- Aby uzyskać informacje o sposobie włączania logowania jednokrotnego przez Integrowanie usługi Azure AD z listy, zobacz [usługi Azure Active Directory dla deweloperów]( https://aka.ms/aaddev).
+- Aby uzyskać szczegółowe informacje o usłudze Azure AD logowanie jednokrotne, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-Aby uzyskać więcej informacji na temat logowania jednokrotnego usługi Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)?
+## <a name="enable-a-trial-listing"></a>Włącz listę wersji próbnej
 
-## <a name="enable-a-trial-listing-by-using-azure-active-directory"></a>Włączanie wersji próbnej listę przy użyciu usługi Azure Active Directory
+Ustawienia automatycznego odbiorcy mogą zwiększyć prawdopodobieństwo konwersji. Gdy klient wybiera Twojej listy wersji próbnej i jest przekierowywany do środowiska próbnego, możesz skonfigurować klienta bezpośrednio, bez konieczności dodatkowe kroki logowania.
 
-Po klient wybierze okres próbny w witrynie Marketplace, klient jest przekierowywane do środowiska próbnego. W środowisku wersji próbnej można skonfigurować klienta bezpośrednio, bez konieczności dodatkowe kroki logowania. Oferty lub aplikacja odbiera token z usługi Azure AD podczas uwierzytelniania. Token zawiera informacje przydatne użytkownika, które są używane do utworzenia konta użytkownika w aplikacji lub oferty. Można zautomatyzować instalację klienta i zwiększyć prawdopodobieństwo konwersji.
+Podczas uwierzytelniania usługi Azure AD wysyła token do aplikacji lub oferty. Informacje o użytkowniku, dostarczone przez token umożliwia tworzenie konta użytkownika w aplikacji lub oferty. Aby dowiedzieć się więcej, zobacz [przykładowy tokenów](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens).
 
-Aby uzyskać więcej informacji na temat token, który jest wysyłany z usługi Azure AD podczas uwierzytelniania, zobacz [przykładowy tokenów](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens).
+Kiedy używać usługi Azure AD w celu umożliwienia uwierzytelniania jednym kliknięciem w swojej aplikacji lub listę wersji próbnej, możesz:
 
-Używaj usługi Azure AD, aby włączyć uwierzytelnianie jednym kliknięciem w aplikacji lub wersji próbnej. Usługa Azure AD zapewnia następujące korzyści: 
-*   Usprawnij środowiska klienta w portalu Marketplace w wersji próbnej.
-*   Obsługa działania środowiska w ramach produktu, nawet wtedy, gdy użytkownik jest przekierowywany z witryny Marketplace do środowiska domeny lub wersji próbnej.
-*   Zmniejszyć prawdopodobieństwo porzucania na przekierowanie, ponieważ istnieją żadne dodatkowe kroki logowania.
-*   Zmniejsz bariery wdrożenia dla dużych populacji użytkowników usługi Azure AD.
+- Usprawnij komfort z witryny Marketplace do Twojej listy wersji próbnej.
+- Użytkownik jest przekierowywany z witryny Marketplace do środowiska domeny lub wersja próbna Obsługa nawet działania środowiska w ramach produktu.
+- Gdy użytkownicy są przekierowywani, ponieważ istnieją żadne dodatkowe kroki logowania, należy zmniejszyć prawdopodobieństwo porzucania.
+- Zmniejsz bariery wdrożenia dla dużych populacji użytkowników usługi Azure AD.
 
-### <a name="verify-your-azure-ad-integration-in-the-marketplace-multitenant-apps"></a>Sprawdź integracji usługi Azure AD w portalu Marketplace: aplikacje wielodostępne
-Używaj usługi Azure AD, aby obsługiwać następujące opcje dla Twojego rozwiązania:
-*   Zarejestruj swoją aplikację w sklepów w portalu Marketplace.
-*   Włącz funkcję obsługi wielodostępności w usłudze Azure AD, aby korzystać z jednym kliknięciem wersji próbnej.
+## <a name="verify-azure-ad-integration"></a>Sprawdź integracji z usługą Azure AD
 
-Aby uzyskać więcej informacji na temat rejestracji aplikacji, zobacz [Integrowanie aplikacji z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
+### <a name="multitenant-solutions"></a>Wielodostępne rozwiązania
 
-Jeśli dopiero zaczynasz za pomocą usługi Azure AD federacyjnego pojedynczego logowania jednokrotnego (SSO), wykonaj następujące kroki:
-1.  Zarejestruj swoją aplikację w portalu Marketplace. 
-2.  Twórz logowanie Jednokrotne z usługą Azure AD przy użyciu protokołu OAuth 2.0 lub OpenID Connect.
-    *   Aby uzyskać więcej informacji na temat protokołu OAuth 2.0, zobacz [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code).
-    *   Aby uzyskać więcej informacji na temat Open ID Connect zobacz [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code).
-3.  Włącz funkcję obsługi wielodostępności w usłudze Azure AD, aby zapewnić środowisko próbne jednym kliknięciem.
-    
-    Aby uzyskać więcej informacji na temat certyfikacja usługi AppSource, zobacz [certyfikacja usługi AppSource](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified). 
+Użyj usługi Azure AD, aby wesprzeć następujące czynności:
 
-### <a name="verify-your-azure-ad-integration-in-the-marketplace-single-tenant-apps"></a>Sprawdź integracji usługi Azure AD w portalu Marketplace: aplikacje z jedną dzierżawą
-Umożliwia obsługę jednej z następujących opcji rozwiązania do pojedynczej dzierżawy usługi Azure AD: 
-*   Dodawanie użytkowników do katalogu jako użytkowników (gości) przy użyciu usługi Azure Active Directory B2B (Azure AD B2B). Aby uzyskać więcej informacji na temat usługi Azure AD B2B, zobacz [czym jest współpraca B2B w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
-*   Ręcznie skonfigurować prób dla klientów przy użyciu kontaktu mnie opcji publikowania.
-*   Tworzenie wersji testowej na klienta.
-*   Tworzenie wielodostępnych przykładową aplikację wersji demonstracyjnej, która korzysta z logowania jednokrotnego.
+- Rejestrowanie aplikacji w jednym z witryny sklepów. Widok [rejestracji aplikacji](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) lub [certyfikacja usługi AppSource](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified) Aby uzyskać więcej informacji.
+- Włącz funkcję obsługi wielodostępności w usłudze Azure AD, aby korzystać z jednym kliknięciem wersji próbnej.
+
+Jeśli jesteś nowym użytkownikiem przy użyciu usługi Azure AD federacyjnego logowania jednokrotnego, wykonaj następujące czynności:
+
+1. Zarejestruj swoją aplikację w portalu Marketplace.
+1. Tworzenie logowanie Jednokrotne z usługą Azure AD przy użyciu [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) lub [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code).
+1. Włącz funkcję obsługi wielodostępności w usłudze Azure AD, aby zapewnić środowisko próbne jednym kliknięciem.
+
+### <a name="single-tenant-solutions"></a>Rozwiązania z jedną dzierżawą
+
+Używaj usługi Azure AD do działu pomocy technicznej jedną z następujących czynności:
+
+- Dodawanie użytkowników-gości do katalogu przy użyciu [usługi Azure AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+- Ręczne konfigurowanie prób dla klientów przy użyciu **skontaktuj się ze mną** opcji publikowania.
+- Tworzenie wersji testowej na klienta.
+- Tworzenie wielodostępnych przykładową aplikację wersji demonstracyjnej, która korzysta z logowania jednokrotnego.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli użytkownik jeszcze tego nie zrobiono, 
-- [Zarejestruj](https://azuremarketplace.microsoft.com/sell) w portalu marketplace.
-
-Jeśli jesteś zarejestrowanym i tworzysz nową ofertę czy działa na podstawie istniejącego
-- [Zaloguj się do portalu Cloud Partner](https://cloudpartner.azure.com/) do utworzenia lub zakończyć oferty.
-
+- Upewnij się, że masz [zarejestrowany w witrynie Azure Marketplace](https://azuremarketplace.microsoft.com/sell).
+- Zaloguj się do [portalu Cloud Partner](https://cloudpartner.azure.com/) do utworzenia lub zakończyć oferty.

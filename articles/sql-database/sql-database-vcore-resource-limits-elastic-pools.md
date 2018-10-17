@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 7459ae5153434887ade74f841a2239c76a7caef9
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.date: 10/15/2018
+ms.openlocfilehash: 6673fa9d377400d7e80fc95dc7d0ce12f4b2e60e
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043716"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354176"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Usługa Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pul elastycznych
 
@@ -28,16 +28,15 @@ Oparte na jednostkach DTU limitów zakupu modelu zobacz [limity zasobów na pods
 > [!IMPORTANT]
 > W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
 
-## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Elastyczna pula: magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych
-
-W przypadku pul elastycznych SQL Database w poniższych tabelach wyświetlanie zasobów dostępnych w poszczególnych warstwach usług i obliczenia rozmiaru. Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwota [witryny Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), [wiersza polecenia platformy Azure](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases), lub [interfejsu API REST](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
+Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwota [witryny Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), [wiersza polecenia platformy Azure](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases), lub [interfejsu API REST](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
 
 > [!NOTE]
 > Limity zasobów pojedynczych baz danych w pulach elastycznych są ogólnie takie same jak dla pojedynczych baz danych poza pule, które ma taką samą obliczenia rozmiaru. Na przykład maksymalna współbieżnych procesów roboczych dla bazy danych GP_Gen4_1 to 200 pracowników. Dlatego maksymalny współbieżnych procesów roboczych dla bazy danych w puli GP_Gen4_1 jest również 200 pracowników. Uwaga: łączna liczba współbieżnych procesów roboczych w puli GP_Gen4_1 to 210.
 
-### <a name="general-purpose-service-tier"></a>Warstwy usług w usłudze ogólnego przeznaczenia
+## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Ogólnego przeznaczenia usługi warstwy: magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych
 
-#### <a name="generation-4-compute-platform"></a>Platforma obliczeniowa generacja 4
+### <a name="generation-4-compute-platform"></a>Platforma obliczeniowa generacja 4
+
 |Obliczenia rozmiaru|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Generowanie H: odczytu i zapisu|4|4|4|4|4|4|
@@ -61,7 +60,8 @@ W przypadku pul elastycznych SQL Database w poniższych tabelach wyświetlanie z
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 |||
 
-#### <a name="generation-5-compute-platform"></a>Platforma obliczeniowa generowania 5
+### <a name="generation-5-compute-platform"></a>Platforma obliczeniowa generowania 5
+
 |Obliczenia rozmiaru|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|5|
@@ -85,9 +85,10 @@ W przypadku pul elastycznych SQL Database w poniższych tabelach wyświetlanie z
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 |||
 
-### <a name="business-critical-service-tier"></a>Warstwy usług krytycznych biznesowych
+## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Warstwy usług krytycznych Business: magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych
 
-#### <a name="generation-4-compute-platform"></a>Platforma obliczeniowa generacja 4
+### <a name="generation-4-compute-platform"></a>Platforma obliczeniowa generacja 4
+
 |Obliczenia rozmiaru|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Generowanie H: odczytu i zapisu|4|4|4|4|4|4|
@@ -112,6 +113,7 @@ W przypadku pul elastycznych SQL Database w poniższych tabelach wyświetlanie z
 |||
 
 #### <a name="generation-5-compute-platform"></a>Platforma obliczeniowa generowania 5
+
 |Obliczenia rozmiaru|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|5|
@@ -137,17 +139,17 @@ W przypadku pul elastycznych SQL Database w poniższych tabelach wyświetlanie z
 
 Jeśli wszystkie rdzenie wirtualne w puli elastycznej są zajęte, każda baza danych w puli otrzymuje taką samą ilość zasobów obliczeniowych do przetwarzania zapytań. Usługa SQL Database zapewnia sprawiedliwe udostępnianie zasobów między bazami danych przez zapewnienie równych okresów czasu obliczeń. Sprawiedliwe udostępnianie zasobów puli elastycznej jest Oprócz zapewniania dowolnej ilości zasobów, w przeciwnym razie gwarantowanej dla każdej bazy danych, gdy minimalna liczba rdzeni wirtualnych na bazę danych jest ustawiona na wartość inną niż zero.
 
-### <a name="database-properties-for-pooled-databases"></a>Właściwości bazy danych dla bazy danych w puli
+## <a name="database-properties-for-pooled-databases"></a>Właściwości bazy danych dla bazy danych w puli
 
 W poniższej tabeli opisano właściwości dla bazy danych w puli.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Maksymalna liczba rdzeni na bazę danych |Maksymalna liczba rdzeni wirtualnych, które dowolnej bazy danych w puli mogą użyć, jeśli jest dostępna na podstawie użycia innych baz danych w puli. Maksymalna liczba rdzeni na bazę danych nie jest gwarancją zasobów dla bazy danych. To ustawienie jest ustawieniem globalnym, które ma zastosowanie do wszystkich baz danych w puli. Ustaw maksymalny rdzeni wirtualnych na bazę danych jest wystarczająco wysoka, aby obsłużyć szczytowe użycia baz danych. Oczekiwany jest pewien stopień nadmiernego przydzielania, ponieważ pula ogólnie zakłada wzorce gorącego i zimnego użycia dla baz danych, w których nie wszystkie bazy danych jednocześnie osiągają szczytowe użycie.|
+| Maksymalna liczba rdzeni na bazę danych |Maksymalna liczba rdzeni wirtualnych, które dowolnej bazy danych w puli mogą użyć, jeśli jest dostępna na podstawie użycia innych baz danych w puli. Maksymalna liczba rdzeni na bazę danych nie jest gwarancją zasobów dla bazy danych. To ustawienie jest ustawieniem globalnym, które ma zastosowanie do wszystkich baz danych w puli. Ustaw maksymalny rdzeni wirtualnych na bazę danych jest wystarczająco wysoka, aby obsłużyć szczytowe użycia baz danych. Pewien stopień nadmiernego zatwierdzania oczekuje się, ponieważ pula ogólnie zakłada wzorce gorącego i zimnego użycia dla baz danych gdzie wszystkich baz danych są nie jednocześnie osiągają szczytowe użycie.|
 | Rdzenie min na bazę danych |Minimalna liczba rdzeni wirtualnych, który gwarantuje dowolnej bazy danych w puli. To ustawienie jest ustawieniem globalnym, które ma zastosowanie do wszystkich baz danych w puli. Rdzenie wirtualne min na bazę danych może być równa 0 i jest również wartością domyślną. Ta właściwość jest równa dowolne miejsce między 0 a użycie średni rdzeni wirtualnych na bazę danych. Iloczyn liczby baz danych w puli i rdzeni wirtualnych min na bazę danych nie może przekraczać rdzeni wirtualnych na pulę.|
 | Maksymalny rozmiar magazynu na bazę danych |Maksymalny rozmiar bazy danych ustawiony przez użytkownika dla bazy danych w puli. Bazy danych w puli współużytkują magazyn puli przydzielone, więc rozmiar bazy danych może osiągnąć jest ograniczony do mniejszego z pozostałych puli magazynu i rozmiar bazy danych. Maksymalny rozmiar bazy danych odnosi się do maksymalnego rozmiaru plików danych i nie obejmuje przestrzeni używanej przez pliki dziennika. |
 |||
- 
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Zobacz [— często zadawane pytania dla bazy danych SQL](sql-database-faq.md) odpowiedzi na często zadawane pytania.

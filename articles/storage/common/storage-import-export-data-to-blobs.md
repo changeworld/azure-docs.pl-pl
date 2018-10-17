@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 10/15/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 8b91ae9a4f258e52b032dca1484be70469094c2e
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 3a647d9f821007dc0f2b48864b937aee84924d8f
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585734"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353175"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Usługa Azure Import/Export umożliwia importowanie danych do usługi Azure Blob Storage
 
@@ -96,7 +96,7 @@ Wykonaj poniższe kroki, aby utworzyć zadanie importu w witrynie Azure portal.
 
     - Wybierz **Importuj na platformę Azure**.
     - Wprowadź opisową nazwę zadania importowania. Użyj nazwy w celu śledzenia postępu zadań.
-        - Nazwa może zawierać tylko małe litery, cyfry, łączniki i podkreślenia.
+        - Nazwa może zawierać tylko małe litery, cyfry i łączniki.
         - Nazwa musi zaczynać się literą i nie może zawierać spacji.
     - Wybierz subskrypcję.
     - Wprowadź lub wybierz grupę zasobów.  

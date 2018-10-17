@@ -8,37 +8,45 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2018
 ms.author: lyrana
-ms.openlocfilehash: 1d5b1869428cec6bf80b8518485f685e38ad5997
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: ef7838c41bb479da273123c2eb3def8e12802390
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324203"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49351306"
 ---
 # <a name="connect-and-authenticate-to-apis"></a>Się i została uwierzytelniona do interfejsów API
 
-Azure Twins cyfrowego używa usługi Azure Active Directory (Azure AD) do uwierzytelniania użytkowników oraz chronić aplikacji.
+Azure Twins cyfrowego używa usługi Azure Active Directory (Azure AD) do uwierzytelniania użytkowników oraz chronić aplikacji. Usługa Azure AD obsługuje uwierzytelnianie dla szerokiego zakresu nowoczesnych architekturach, wszystkie z nich na podstawie standardowych protokołów uwierzytelniania OAuth 2.0 lub OpenID Connect. Ponadto usługa Azure AD umożliwia deweloperom tworzenie zarówno pojedynczej dzierżawy, line-of-business aplikacje (biznesowe LOB), jak i deweloperów chcących tworzyć aplikacje wielodostępne.
 
-Jeśli jesteś zaznajomiony z usługi Azure AD, więcej informacji znajduje się w [przewodnik dla deweloperów](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-developers-guide). Biblioteki uwierzytelniania usługi Windows Azure oferuje wiele sposobów uzyskania tokenów usługi Active Directory. Aby uzyskać szczegółowy wgląd w bibliotece, zapoznaj się [tutaj](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki).
+Omówienie usługi Azure AD, odwiedź stronę [strony podstawy](https://docs.microsoft.com/azure/active-directory/fundamentals/index) przewodniki krok po kroku, pojęcia i przewodników Szybki Start.
 
-Ten artykuł zawiera omówienie dwóch scenariuszy: Scenariusz produkcyjny przy użyciu interfejsu API warstwy środkowej i uwierzytelniania w aplikacji klienckiej narzędzia Postman do szybkiego uruchamiania i testowania.
+Aby zintegrować aplikację lub usługę z usługą Azure AD, deweloper musi najpierw zarejestrować aplikację w usłudze Azure AD. Aby uzyskać szczegółowe instrukcje i zrzuty ekranu widoku instrukcje [tutaj](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
 
-## <a name="authentication-in-production"></a>Uwierzytelnianie w środowisku produkcyjnym
+Są to [pięciu scenariuszy aplikacji głównej](https://docs.microsoft.com/azure/active-directory/develop/v2-app-types) obsługiwane przez usługę Azure AD:
 
-Deweloperzy rozwiązań ma dwa sposoby nawiązywania połączenia cyfrowego bliźniaczych reprezentacji.  Deweloperzy rozwiązań połączyć Twins cyfrowych platformy Azure w następujący sposób:
+* Aplikacja jednostronicowa (SPA): użytkownik musi zalogować się do aplikacji jednostronicowej, która jest zabezpieczony przez usługę Azure AD.
+* Przeglądarki sieci Web do aplikacji sieci web: użytkownik musi zalogować się do aplikacji sieci web, która jest zabezpieczony przez usługę Azure AD.
+* Aplikacja natywna do internetowego interfejsu API: natywnych aplikacji, która działa na telefonie, tablecie lub komputerze wymaga uwierzytelnienia użytkownika można pobrać zasobów z internetowego interfejsu API, która jest zabezpieczony przez usługę Azure AD.
+* Aplikacja do internetowego interfejsu API sieci Web: aplikacja sieci web musi pobrać zasoby z internetowego interfejsu API zabezpieczony przez usługę Azure AD.
+* Demon lub serwera aplikacji do internetowego interfejsu API: aplikacji demona albo aplikacja serwera bez interfejsu użytkownika sieci web musi pobrać zasoby z internetowego interfejsu API zabezpieczony przez usługę Azure AD.
 
-* Może być utworzona aplikacja kliencka lub interfejsu API warstwy środkowej. Aplikacje klienckie wymagać od użytkowników uwierzytelniania, a następnie użyj [OAuth 2.0 "w imieniu"](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow) przepływ zabezpieczeń do wywoływania podrzędnego interfejsu API.
-* Utwórz lub skorzystać z istniejącej aplikacji usługi Azure AD. Przejrzyj dokumentację [tutaj](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad).
-    1. Określ **logowania jednokrotnego i identyfikatory URI przekierowań** (jeśli jest to konieczne).
-    1. W aplikacji manifestu zestawu `oauth2AllowImplicitFlow` na wartość true.
-    1. W **wymagane uprawnienia**, Dodaj reprezentacje urządzeń cyfrowych, wyszukując "Twins cyfrowych platformy Azure." Wybierz **delegowane uprawnienia odczytu i zapisu** i kliknij przycisk **Udziel uprawnień** przycisku.
+Biblioteki uwierzytelniania usługi Windows Azure oferuje wiele sposobów uzyskania tokenów usługi Active Directory. Aby uzyskać szczegółowy wgląd w bibliotece, a także kod przykłady zapoznaj się [tutaj](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki).
 
-Można znaleźć szczegółowe instrukcje dotyczące sposobu organizowania przepływu w imieniu z [tę stronę](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). Można również wyświetlić przykłady kodu [tutaj](https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapi-onbehalfof/).
+## <a name="calling-digital-twins-from-a-middle-tier-web-api"></a>Wywoływanie cyfrowego bliźniaczych elementów z internetowego interfejsu API warstwy środkowej
+
+Podczas projektowanie często deweloperzy rozwiązań cyfrowych Twins wybrać do utworzenia aplikacji warstwy środkowej lub interfejsu API, który następnie wywołuje cyfrowego API bliźniaczych elementów podrzędnych. Użytkownicy będą najpierw zostać uwierzytelnione aplikacji warstwy średniej, a następnie w imieniu użytkownika z tokenu przepływ będzie używany podczas wywoływania podrzędnego. Można znaleźć szczegółowe instrukcje dotyczące sposobu organizowania przepływu w imieniu z [tę stronę](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). Można również wyświetlić przykłady kodu [tutaj](https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapi-onbehalfof/).
+
 
 ## <a name="test-with-the-postman-client"></a>Testowanie za pomocą klienta programu Postman
 
-1. Wykonaj początkową powyższe kroki, aby utworzyć (lub zmodyfikować) aplikacji usługi Azure Active Directory. Następnie ustaw `oauth2AllowImplicitFlow` wartość true w manifeście aplikacji i udzielić uprawnień "Twins cyfrowych platformy Azure."
-1. Ustaw adres url odpowiedzi [ https://www.getpostman.com/oauth2/callback ](https://www.getpostman.com/oauth2/callback).
+Aby rozpocząć pracę z interfejsami API usługi cyfrowego bliźniaczych reprezentacji klienta, takiego jak narzędzie Postman służy jako środowisko interfejsu API. Postman ułatwia szybkie tworzenie złożonych żądań HTTP. W poniższych instrukcjach koncentruje się na temat sposobu uzyskania tokenu usługi Azure AD wymagane do wywołania bliźniaczych cyfrowych elementów w Interfejsie użytkownika narzędzia Postman.
+
+
+1. Przejdź do https://www.getpostman.com/ do pobrania
+1. Postępuj zgodnie z instrukcjami [tutaj](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) do tworzenia aplikacji usługi Azure Active Directory (lub istnieje możliwość ponownego użycia istniejącej rejestracji). 
+1. W obszarze wymaganych uprawnień Dodaj "Twins cyfrowych platformy Azure", a następnie wybierz delegowane uprawnienia. Nie zapomnij kliknąć przycisk Udziel uprawnień, aby zakończyć.
+1. Adres url odpowiedzi, aby skonfigurować [ https://www.getpostman.com/oauth2/callback ](https://www.getpostman.com/oauth2/callback).
 1. Wybierz **kartę autoryzacji**, kliknij pozycję **OAuth 2.0**i wybierz **uzyskać nowy Token dostępu**.
 
     |**Pole**  |**Wartość** |
@@ -53,11 +61,10 @@ Można znaleźć szczegółowe instrukcje dotyczące sposobu organizowania przep
 
 1. Kliknij przycisk **wysłania żądania tokenu**.
 
-    >[!TIP]
-    >Jeśli zostanie wyświetlony komunikat o błędzie "Nie można ukończyć OAuth 2", wypróbuj jedną z następujących czynności:
+    >[!NOTE]
+    >Jeśli zostanie wyświetlony komunikat o błędzie "Nie można ukończyć OAuth 2", spróbuj wykonać następujące czynności:
     > * Zamknij narzędzie Postman i otwórz go ponownie i spróbuj ponownie.
-    > * Usuń klucz tajny w swojej aplikacji, ponownie utwórz nową i jest wartość w formularzu powyżej.
-
+   
 1. Przewiń w dół i kliknij przycisk **użycia tokenu**.
 
 ## <a name="next-steps"></a>Kolejne kroki

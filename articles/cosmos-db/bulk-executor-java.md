@@ -1,25 +1,26 @@
 ---
-title: Przy użyciu biblioteki Java wykonawca zbiorcze, aby wykonywały operacje zbiorcze w usłudze Azure Cosmos DB | Dokumentacja firmy Microsoft
-description: Biblioteka języka Java wykonawca zbiorcze usługi Azure Cosmos DB umożliwia zbiorcze importowanie i aktualizowanie dokumentów z kontenerami usługi Azure Cosmos DB.
-keywords: Wykonawca zbiorczego języka Java
+title: Przy użyciu biblioteki Java wykonawca zbiorcze można wykonać operacji importu zbiorczego operacje i aktualizacji w usłudze Azure Cosmos DB | Dokumentacja firmy Microsoft
+description: Zbiorcze importowanie i aktualizowanie dokumentów usługi Azure Cosmos DB przy użyciu biblioteki języka Java przetwarzania zbiorczego.
 services: cosmos-db
 author: tknandu
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: 9285b0ea50b7207aa40cea2dcab50f79863ffda9
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: a22cd65ef5d4ef22038a8506359d1036e829db4d
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050191"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362113"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Wykonywały operacje zbiorcze na danych usługi Azure Cosmos DB za pomocą biblioteki języka Java przetwarzania zbiorczego
 
 Ten samouczek zawiera instrukcje na temat korzystania z usługi Azure Cosmos DB zbiorcze wykonawca Java biblioteki do zaimportowania, a następnie zaktualizować dokumenty usługi Azure Cosmos DB. Aby dowiedzieć się o biblioteki wykonawca zbiorcze oraz jak pomaga w ogromnej przepustowości i magazynu, zobacz [zbiorczo Przegląd biblioteki wykonawca](bulk-executor-overview.md) artykułu. W tym samouczku tworzenie aplikacji w języku Java, która generuje losowe dokumentów i są zbiorcze zaimportowane do kontenera usługi Azure Cosmos DB. Po zaimportowaniu będą zbiorczo zaktualizować niektóre właściwości dokumentu. 
+
+Obecnie zbiorcze wykonawca biblioteka jest obsługiwana przez interfejsu API SQL usługi Azure Cosmos DB i tylko konta interfejsu API języka Gremlin. W tym artykule opisano, jak biblioteka .net wykonawca zbiorcze za pomocą konta interfejsu API SQL. Aby dowiedzieć się więcej o korzystaniu z biblioteki .NET wykonawca zbiorcze za pomocą interfejsu API języka Gremlin, zobacz [wykonywały operacje zbiorcze w usłudze Azure Cosmos DB — interfejs API Gremlin](bulk-executor-graph-dotnet.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

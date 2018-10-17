@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 10/04/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: b3aca33bea8f7847b7069bba3f2a6dcd143cf29c
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 20a87148e3c0df29e5f4dffd74a8f5389e3658b9
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079133"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364562"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania (FAQ) dotyczące usługi Azure Files
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem będące standardami branżowymi [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można zainstalować równolegle na chmurowych lub lokalnych wdrożeń systemu Windows, Linux i macOS. Udziały plików platformy Azure na komputerach z systemem Windows Server, również buforujesz przy użyciu usługi Azure File Sync w celu zapewnienia szybkiego dostępu blisko użycia danych.
@@ -182,7 +182,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 * <a id="ad-support-regions"></a>
 **Jest wersja zapoznawcza usługi Azure AD przy użyciu protokołu SMB dla usługi Azure Files dostępne we wszystkich regionach platformy Azure?**
 
-    Podgląd jest dostępny we wszystkich publicznych regionach z wyjątkiem: zachodnie stany USA, południowo-środkowe stany USA, środkowe stany USA, Europa Zachodnia, Europa Północna.
+    Podgląd jest dostępny we wszystkich publicznych regionach z wyjątkiem: Europa Północna.
 
 * <a id="ad-support-on-premises"></a>
 **Uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB dla usługi Azure Files (wersja zapoznawcza) obsługuje uwierzytelnianie przy użyciu usługi Azure AD z maszyn w środowisku lokalnym?**

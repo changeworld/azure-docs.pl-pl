@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 021ab6cd29634c2e2f17234e188edce2a14449cf
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 02ca9065107b999fa0182c89ae2b9d8ca0c8607a
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054602"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362878"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Tworzenie autonomicznego konta usługi Azure Automation
 
@@ -61,14 +61,15 @@ Aby utworzyć konto usługi Azure Automation w witrynie Azure portal, wykonaj na
    ![Wyszukaj i wybierz pozycję Automation & Control w witrynie Azure Marketplace](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)
 
 1. Na następnym ekranie Wybierz **Utwórz**.
+
   ![Dodawanie konta usługi Automation](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
 
   > [!NOTE]
   > Jeśli zostanie wyświetlony następujący komunikat w **Dodawanie konta usługi Automation** okienko, Twoje konto nie jest członkiem roli Administratorzy subskrypcji i współadministrator subskrypcji.
   >
   > ![Dodaj ostrzeżenie konta usługi Automation](media/automation-create-standalone-account/create-account-without-perms.png)
-  >
-1. W **Dodawanie konta usługi Automation** okienku w obszarze **nazwa** wprowadź nazwę dla nowego konta usługi Automation. Nie można zmienić tę nazwę, po jego wybraniu.
+
+1. W **Dodawanie konta usługi Automation** okienku w obszarze **nazwa** wprowadź nazwę dla nowego konta usługi Automation. Nie można zmienić tę nazwę, po jego wybraniu. *Nazwy kont usługi Automation są unikatowe dla regionie i grupie zasobów.*
 1. Jeśli masz więcej niż jedną subskrypcję w **subskrypcji** określ subskrypcję, dla którego chcesz użyć dla nowego konta.
 1. Aby uzyskać **grupy zasobów**wprowadź lub wybierz grupę zasobów do nowej lub istniejącej.
 1. Aby uzyskać **lokalizacji**, wybierz taką lokalizację centrum danych platformy Azure.

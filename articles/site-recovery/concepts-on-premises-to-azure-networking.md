@@ -3,18 +3,18 @@ title: Konfigurowanie adresów IP, aby połączyć po włączeniu trybu failover
 description: W tym artykule opisano sposób konfigurowania adresu IP adresowania połączyć się z maszynami wirtualnymi platformy Azure po włączeniu trybu failover ze środowiska lokalnego z usługą Azure Site Recovery
 services: site-recovery
 documentationcenter: ''
-author: mayanknayar
-manager: carmonm
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
-ms.author: manayar
-ms.openlocfilehash: 99b8287b79a7cf9802ab3b71ce4c90032706bc63
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.topic: conceptual
+ms.date: 10/16/2018
+ms.author: mayg
+ms.openlocfilehash: 9b7797ba58a44e64460f4dbc58d562b4c470c043
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919247"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353091"
 ---
 # <a name="set-up-ip-addressing-to-connect-after-failover-to-azure"></a>Konfigurowanie adresów IP adresowania połączyć po włączeniu trybu failover na platformie Azure
 

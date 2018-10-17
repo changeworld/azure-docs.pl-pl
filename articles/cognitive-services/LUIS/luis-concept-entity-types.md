@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 3ed10ac428b7ce2e528ccf46e34c1d394523bdec
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: e6bb0735de94d0baaac3a8504ec1811cfbfff27f
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042452"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353921"
 ---
 # <a name="entities-in-luis"></a>Jednostki w usługi LUIS
 
@@ -93,7 +93,7 @@ Usługa LUIS oferuje wiele typów jednostek; wstępnie utworzonych jednostek nie
 Przegląd [limity](luis-boundaries.md#model-boundaries) Aby dowiedzieć się, ile poszczególnych typów obiektu można dodać do modelu.
 
 ## <a name="entity-roles"></a>Role jednostki
-Jednostka [role](luis-concept-roles.md) są używane we wzorcach tylko. 
+Jednostka [role](luis-concept-roles.md) dotyczą jednostek niestandardowych i wbudowanych i są używane we wzorcach tylko. 
 
 ## <a name="composite-vs-hierarchical-entities"></a>Jednostki hierarchiczne złożonego programu vs
 Composite jednostek i hierarchiczne jednostek zarówno mają relacji nadrzędny podrzędny i przedstawiono maszyny. Usługi machine learning umożliwia usługi LUIS do informacje o jednostkach, w oparciu o różne konteksty (rozmieszczenie wyrazów). Złożone jednostki są bardziej elastyczne, ponieważ umożliwiają one typów jednostek innej jako elementy podrzędne. Hierarchiczna jednostki podrzędne są tylko proste jednostki. 

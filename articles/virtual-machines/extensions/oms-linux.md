@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: roiyz
-ms.openlocfilehash: b8a946588d09eb05e1609344318c91f76c7ee106
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: bab579b540dbeed8ecbff8925547509edb1d78c9
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452126"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352380"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Zaloguj się rozszerzenie maszyny wirtualnej Analytics dla systemu Linux
 
@@ -80,9 +80,9 @@ Następujący kod JSON zawiera schemat dla rozszerzenia Log Analytics Agent. Roz
 
 ```json
 {
-  "type": "extensions",
+  "type": "Microsoft.Compute/virtualMachines/extensions",
   "name": "OMSExtension",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2018-06-01",
   "location": "<location>",
   "dependsOn": [
     "[concat('Microsoft.Compute/virtualMachines/', <vm-name>)]"
@@ -101,11 +101,15 @@ Następujący kod JSON zawiera schemat dla rozszerzenia Log Analytics Agent. Roz
 }
 ```
 
+>[!NOTE]
+>Powyższego schematu przyjęto założenie, że zostaną umieszczone na poziomie głównym szablonu. Jeśli umieścisz wewnątrz zasobu maszyny wirtualnej w szablonie, `type` i `name` właściwości, należy zmienić, zgodnie z opisem [w dół](#template-deployment).
+>
+
 ### <a name="property-values"></a>Wartości właściwości
 
 | Name (Nazwa) | Wartość / przykład |
 | ---- | ---- |
-| apiVersion | 2015-06-15 |
+| apiVersion | 2018-06-01 |
 | Wydawcy | Microsoft.EnterpriseCloud.Monitoring |
 | type | OmsAgentForLinux |
 | typeHandlerVersion | 1.7 |
@@ -125,7 +129,7 @@ W poniższym przykładzie założono, że rozszerzenie maszyny Wirtualnej jest z
 {
   "type": "extensions",
   "name": "OMSExtension",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2018-06-01",
   "location": "<location>",
   "dependsOn": [
     "[concat('Microsoft.Compute/virtualMachines/', <vm-name>)]"
@@ -150,7 +154,7 @@ Podczas umieszczania rozszerzenia JSON w katalogu głównym szablonu, nazwa zaso
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
   "name": "<parentVmResource>/OMSExtension",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2018-06-01",
   "location": "<location>",
   "dependsOn": [
     "[concat('Microsoft.Compute/virtualMachines/', <vm-name>)]"

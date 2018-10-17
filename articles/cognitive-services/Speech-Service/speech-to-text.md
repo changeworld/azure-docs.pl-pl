@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: erhopf
-ms.openlocfilehash: 3d03cd6a5cceb805ed8ee34548bd1a3973e9d78b
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 5a19366f6aeec2422ec8671ba3c32f642b5e01ac
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167090"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49361440"
 ---
 # <a name="about-the-speech-to-text-api"></a>Zamiana mowy na tekst interfejsu API — informacje
 
@@ -38,7 +38,7 @@ ms.locfileid: "49167090"
 
 ## <a name="api-capabilities"></a>Funkcje interfejsu API
 
-Niektóre z możliwości **zamiana mowy na tekst** interfejsu API — zwłaszcza w części dotyczącej dostosowywania — są dostępne za pośrednictwem interfejsu REST. Poniższa tabela zawiera podsumowanie możliwości każdej metody uzyskiwania dostępu do interfejsu API. 
+Niektóre z możliwości **zamiana mowy na tekst** interfejsu API, zwłaszcza w części dotyczącej dostosowywania, są dostępne za pośrednictwem interfejsu REST. Poniższa tabela zawiera podsumowanie możliwości każdej metody uzyskiwania dostępu do interfejsu API. Aby uzyskać pełną listę możliwości i szczegóły interfejsu API, zobacz [Swagger odwołania](https://westus.cris.ai/swagger/ui/index).
 
 | Przypadek użycia | REST | Zestawy SDK |
 |-----|-----|-----|----|
@@ -55,7 +55,7 @@ Niektóre z możliwości **zamiana mowy na tekst** interfejsu API — zwłaszcza
 | Tworzenie i zarządzanie wdrożeniami modelu | Yes | Nie |
 
 > [!NOTE]
-> Interfejs API REST implementuje, że limity żądań interfejsu API 25 na 5-sekundowego ograniczania przepływności. Hearders komunikat informuje o limicie
+> Interfejs API REST implementuje, że limity żądań interfejsu API 25 na 5-sekundowego ograniczania przepływności. Nagłówki komunikatów poinformuje o limicie
 
 \* *Usługa LUIS intencje i podmioty mogą być uzyskane przy użyciu oddzielnej subskrypcji usługi LUIS. Z tą subskrypcją zestawu SDK można wywołać usługi LUIS i zawierają jednostki i przeznaczenie wyniki, a także transkrypcje mowy. Za pomocą interfejsu API REST, można wywołać usługi LUIS samodzielnie do wyprowadzenia intencje i podmioty ze swoją subskrypcją usługi LUIS.*
 

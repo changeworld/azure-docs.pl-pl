@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 57033de3224b5966b2dfa80dd1cb45fafd83b26b
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: a0a482e44617732c9dc6cd6609672e8204001dbc
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238736"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362062"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Dodawanie serwerów hostingu dla dostawcy zasobów bazy danych SQL
 
@@ -173,23 +173,24 @@ Aby ustawić opcję zawartej bazy danych uwierzytelniania serwera dla każdego w
    > Nie można mieszać serwerów autonomicznych z wystąpieniami Always On w tej samej jednostki SKU. Podjęto próbę mieszać typy po dodaniu pierwszego wyników z serwera hostingu wystąpienie błędu.
 
 ## <a name="sku-notes"></a>Informacje o jednostce SKU
-
-Jednostki SKU służy do rozróżnienia ofert usług. Na przykład można mieć wystąpienia programu SQL Enterprise, który ma następujące cechy:
+Użyj nazwy jednostek SKU, która zawiera opis możliwości serwerów w ramach jednostki SKU, takich jak pojemność i wydajność. Nazwa służy jako pomocy, aby ułatwić użytkownikom wdrożyć swoje bazy danych do odpowiedniej jednostki SKU. Na przykład służy nazwy jednostki SKU do odróżnienia oferty usługi przez następujące cechy:
   
 * Wysoka pojemność
 * o wysokiej wydajności
 * Wysoka dostępność
 
-Nie można przypisać jednostki SKU do określonych użytkowników lub grup w tej wersji.
-
- Jednostki SKU może potrwać do godziny mają być wyświetlane w portalu. Użytkownicy nie mogą tworzyć bazy danych, dopóki nie jest w pełni utworzona jednostka SKU.
-
->[!TIP]
->Użyj nazwy jednostki SKU, która odzwierciedla opisano możliwości serwerów w ramach jednostki SKU, takich jak pojemność i wydajność. Nazwa służy jako pomocy, aby ułatwić użytkownikom wdrożyć swoje bazy danych do odpowiedniej jednostki SKU.
-
 Najlepszym rozwiązaniem jest serwerami hostingu w jednostce SKU powinny mieć takie same charakterystyki zasobów i wydajności.
 
-## <a name="make-the-sql-databases-available-to-users"></a>Udostępnić użytkownikom bazy danych SQL
+Nie można przypisać jednostki SKU do określonych użytkowników lub grup.
+
+Jednostki SKU może potrwać do godziny mają być wyświetlane w portalu. Użytkownicy nie mogą tworzyć bazy danych, dopóki nie jest w pełni utworzona jednostka SKU.
+
+Aby edytować jednostki SKU, przejdź do **wszystkich usług** > **SQL Adapter** > **jednostki SKU**. Wybierz jednostkę SKU, aby zmodyfikować, wprowadź niezbędne zmiany i kliknij przycisk **Zapisz** można zapisać zmian. Aby usunąć jednostkę SKU, która nie jest już potrzebny, przejdź do **wszystkich usług** > **SQL Adapter** > **jednostki SKU**. Kliknij prawym przyciskiem myszy nazwę jednostki SKU, a następnie wybierz pozycję **Usuń** go usunąć.
+
+> [!TIP]
+> Można edytować lub usunąć SQL limity przydziałów dostawcy zasobów w tej samej lokalizacji.
+
+## <a name="make-sql-databases-available-to-users"></a>Udostępnić użytkownikom baz danych SQL
 
 Utwórz plany i oferty, aby udostępnić użytkownikom baz danych SQL. Dodaj **Microsoft.SqlAdapter** usługi zgodnie z planem i tworzenie nowego limitu przydziału.
 

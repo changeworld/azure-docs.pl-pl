@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: adgera
-ms.openlocfilehash: 412e0d42744c9defa3fef6b3ae9643166e6c3b5c
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 28eb8b5dc0f75b5e031070803d35c8a1ceb1f000
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324230"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364346"
 ---
 # <a name="security-best-practices"></a>Najlepsze rozwiązania dotyczące zabezpieczeń
 
@@ -54,7 +54,7 @@ Monitorowanie zasobów IoT, aby wyszukiwać elementy odstające, zagrożeń lub 
 Azure Twins cyfrowego używa usługi Azure Active Directory do uwierzytelniania użytkowników oraz chronić aplikacji. Usługa Azure Active Directory obsługuje uwierzytelnianie w wielu nowoczesnych architekturach z nich oparte na protokoły będące standardami branżowymi, takie jak OAuth 2.0 lub OpenID Connect. Kilka kluczowych rozwiązania do zabezpieczania obszaru IoT usługi Azure Active Directory obejmują:
 
 > [!div class="checklist"]
-> * Store kluczy tajnych aplikacji w usłudze Azure Active Directory i klucze w bezpiecznym miejscu, takich jak [usługi Key Vault](https://azure.microsoft.com/en-us/services/key-vault/).
+> * Store kluczy tajnych aplikacji w usłudze Azure Active Directory i klucze w bezpiecznym miejscu, takich jak [usługi Key Vault](https://azure.microsoft.com/services/key-vault/).
 > * Używany certyfikat wystawiony przez zaufanego [urzędów certyfikacji](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-certificate-based-authentication-get-started) zamiast kluczy tajnych aplikacji w celu uwierzytelnienia.
 > * Ogranicz zakres dostępu dla tokenu protokołu OAuth 2.0.
 > * Sprawdź czas, który token jest prawidłowy i czy token jest prawidłowy.

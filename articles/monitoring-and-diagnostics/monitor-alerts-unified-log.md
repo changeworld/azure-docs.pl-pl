@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 1490e60f3c6537a661fc1e76907b502a586547c9
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: bcede1f985937058196b75a93f539cb34da73992
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248883"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365066"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Alerty dzienników w usłudze Azure Monitor
 Ten artykuł zawiera szczegółowe informacje o alertów dzienników są jednym z typów alertów, które obsługują [Azure Alerts](monitoring-overview-unified-alerts.md) i zezwolić użytkownikom na stosowanie platforma analiz platformy Azure jako podstawa dla alertów.
@@ -110,7 +110,7 @@ Jednak w przypadku wymienionych powyżej o 13:15 - alertów platformy Azure nie 
 
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>Cennik i rozliczenia alertów dziennika
-Ceny dla dziennika alertów jest podany w [cennik usługi Azure Monitor](https://azure.microsoft.com/en-us/pricing/details/monitor/) strony. W platformie Azure są naliczane, alertów dzienników są reprezentowane jako typ `microsoft.insights/scheduledqueryrules` za pomocą:
+Ceny dla dziennika alertów jest podany w [cennik usługi Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/) strony. W platformie Azure są naliczane, alertów dzienników są reprezentowane jako typ `microsoft.insights/scheduledqueryrules` za pomocą:
 - Alerty dzienników w usłudze Application Insights wyświetlane z dokładną nazwę alertu wraz z grupy zasobów i właściwości alertu
 - Zaloguj się alerty w usłudze Log Analytics widoczna nazwa alertu jako `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` wraz z grupy zasobów i właściwości alertu
 

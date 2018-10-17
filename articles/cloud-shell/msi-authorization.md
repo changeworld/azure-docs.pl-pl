@@ -1,5 +1,5 @@
 ---
-title: Użyj tożsamości zarządzanych zasobów platformy Azure w usłudze Azure Cloud Shell | Dokumentacja firmy Microsoft
+title: Użyj zarządzanych tożsamości dla zasobów platformy Azure w usłudze Azure Cloud Shell | Dokumentacja firmy Microsoft
 description: Uwierzytelnianie kodu za pomocą tożsamości usługi Zarządzanej w usłudze Azure Cloud Shell
 services: azure
 documentationcenter: ''
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: juluk
-ms.openlocfilehash: 09f54efaf3ff89711c34b7960a271438f38cf224
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: fe77deeedc34bf769065e34ac2f81d631b0004d6
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345088"
+ms.locfileid: "49352952"
 ---
-# <a name="use-msi-in-azure-cloud-shell"></a>W usłudze Azure Cloud Shell przy użyciu pliku MSI
+# <a name="use-managed-identities-for-azure-resources-in-azure-cloud-shell"></a>Użyj zarządzanych tożsamości dla zasobów platformy Azure w usłudze Azure Cloud Shell
 
-Usługa Azure Cloud Shell obsługuje autoryzacji przy użyciu tożsamości usługi zarządzanej (MSI). Korzystać, aby pobrać tokenów dostępu w celu bezpiecznego komunikowania się z usługami platformy Azure.
+Usługa Azure Cloud Shell obsługuje autoryzacji z zarządzanych tożsamości dla zasobów platformy Azure. Korzystać, aby pobrać tokenów dostępu w celu bezpiecznego komunikowania się z usługami platformy Azure.
 
-## <a name="about-managed-service-identity-msi"></a>O tożsamości usługi zarządzanej (MSI)
+## <a name="about-managed-identities-for-azure-resources"></a>Informacje o tożsamościach zarządzanych dla zasobów platformy Azure
 Typowe wyzwania, podczas tworzenia aplikacji w chmurze jest sposób bezpiecznego zarządzania poświadczeniami, które powinny znajdować się w kodzie do uwierzytelniania w usługach w chmurze. W usłudze Cloud Shell może być konieczne pobierania z usługi Key Vault dla poświadczeń, które skrypt może wymagać uwierzytelniania.
 
-Tożsamość usługi zarządzanej (MSI) ułatwia rozwiązywanie tego problemu, udostępniając usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure Active Directory (Azure AD). Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD, w tym w usłudze Key Vault, bez konieczności przechowywania poświadczeń w kodzie.
+Zarządzanych tożsamości dla zasobów platformy Azure sprawia, że rozwiązywania tego problemu, prostsze, zapewniając tożsamości automatycznie zarządzanych usług platformy Azure w usłudze Azure Active Directory (Azure AD). Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD, w tym w usłudze Key Vault, bez konieczności przechowywania poświadczeń w kodzie.
 
 ## <a name="acquire-access-token-in-cloud-shell"></a>Uzyskiwanie tokenu dostępu w usłudze Cloud Shell
 

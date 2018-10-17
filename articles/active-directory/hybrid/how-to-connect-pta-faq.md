@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 611eabd377705af7758276a3d920f9cb4c38ac55
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 4f2ceae349c921ce0d83fb7401e3b18404722763
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311129"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362912"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory uwierzytelnianie przekazywane: Często zadawane pytania
 
@@ -92,7 +92,7 @@ Jeśli zaznaczysz bloku uwierzytelniania przekazywanego na [Centrum administracy
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>Mam już używanie usług AD FS do logowania do usługi Azure AD. Jak przełączyć go do uwierzytelniania przekazywanego?
 
-Jeśli migrujesz z usług AD FS (lub inne technologie federacyjnych) do uwierzytelniania przekazywanego, zdecydowanie zalecamy, skorzystaj z naszego przewodnika wdrożenia są szczegółowo opublikowane [tutaj](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx).
+Jeśli migrujesz z usług AD FS (lub inne technologie federacyjnych) do uwierzytelniania przekazywanego, zdecydowanie zalecamy, skorzystaj z naszego przewodnika wdrożenia są szczegółowo opublikowane [tutaj](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true).
 
 ## <a name="can-i-use-pass-through-authentication-in-a-multi-forest-active-directory-environment"></a>Czy można używać uwierzytelniania przekazywanego, w środowisku wielu lasów usługi Active Directory?
 
@@ -132,7 +132,7 @@ Po odinstalowaniu agenta uwierzytelniania przekazywanego z serwera powoduje serw
 ## <a name="next-steps"></a>Kolejne kroki
 - [Bieżące ograniczenia](how-to-connect-pta-current-limitations.md): Dowiedz się, jakie scenariusze są obsługiwane i te, które nie są.
 - [Szybki start](how-to-connect-pta-quick-start.md): Rozpocznij pracę na uwierzytelnianie przekazywane usługi AD platformy Azure.
-- [Migrowanie z usług AD FS do uwierzytelniania przekazywanego](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) — szczegółowy przewodnik dotyczący migracji z usług AD FS (lub inne technologie federacyjnych) do uwierzytelniania przekazywanego.
+- [Migrowanie z usług AD FS do uwierzytelniania przekazywanego](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) — szczegółowy przewodnik dotyczący migracji z usług AD FS (lub inne technologie federacyjnych) do uwierzytelniania przekazywanego.
 - [Blokada Smart](../authentication/howto-password-smart-lockout.md): informacje dotyczące konfigurowania funkcji inteligentnej blokady na swoją dzierżawę, aby chronić kont użytkowników.
 - [Rozbudowana technicznie](how-to-connect-pta-how-it-works.md): zrozumienie sposobu działania funkcji uwierzytelniania przekazywanego.
 - [Rozwiązywanie problemów z](tshoot-connect-pass-through-authentication.md): Dowiedz się, jak rozwiązać typowe problemy przy użyciu funkcji uwierzytelniania przekazywanego.

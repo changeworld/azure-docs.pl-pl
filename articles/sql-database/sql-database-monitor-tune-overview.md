@@ -11,13 +11,13 @@ author: danimir
 ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: fc97aa18328fafc299ad941e6bf12dd21e9029d0
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 10/16/2018
+ms.openlocfilehash: dca23940053fa6bf1f716ffa1a6fa0bcd7b41c91
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345292"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362623"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorowanie i dostrajanie wydajności
 
@@ -29,7 +29,7 @@ Aby poprawić wydajność usługi Azure SQL Database, Dowiedz się, że każde �
 
 ![Stany obciążenia](./media/sql-database-monitor-tune-overview/workload-states.png)
 
-W przypadku obciążeń z problemów z wydajnością, wydajność wystawiania Moje się z powodu rywalizacji o zasoby procesora CPU ( **dotyczące uruchamiania** warunku) lub poszczególnych zapytań oczekuje na coś ( **oczekiwania dotyczące** warunku) .
+W przypadku obciążeń z problemów z wydajnością, to problem z wydajnością może być spowodowane rywalizacji o zasoby procesora CPU ( **dotyczące uruchamiania** warunku) lub poszczególnych zapytań oczekuje na coś ( **oczekiwania dotyczące** warunku ).
 
 - **Intensywne użycie procesora CPU w usłudze Azure SQL database**:
 
@@ -62,7 +62,7 @@ Można zidentyfikować problemy z wydajnością dotyczące uruchamiania przy uż
 
 Najpierw mieć pewność, że nie jest problem z wydajnością procesora CPU na wysoki, powiązanego z uruchomiona. Jeśli nie jest dostępne, następnym krokiem jest określenie najważniejszych czeka skojarzone z obciążenia aplikacji.  Typowe metody wyświetlane u góry oczekiwania kategorii typów:
 
-- [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) udostępnia statystyki oczekiwania na zapytanie wraz z upływem czasu. W Store zapytania oczekiwania typów są połączone w kategoriach oczekiwania. Mapowanie oczekiwania kategorie typów oczekiwania jest dostępna w [sys.query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql.md#wait-categories-mapping-table).
+- [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) udostępnia statystyki oczekiwania na zapytanie wraz z upływem czasu. W Store zapytania oczekiwania typów są połączone w kategoriach oczekiwania. Mapowanie oczekiwania kategorie typów oczekiwania jest dostępna w [sys.query_store_wait_stats](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql?view=sql-server-2017#wait-categories-mapping-table).
 - [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) zwraca informacje o wszystkich czeka napotykanych przez wątki, które są wykonywane podczas operacji. Ten widok zagregowane umożliwia diagnozowanie problemów z wydajnością za pomocą usługi Azure SQL Database, a także przy użyciu określonego zapytania i partie.
 - [sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) zwraca informacje o kolejce oczekiwania zadań, które oczekują na niektórych zasobów.
 
@@ -91,20 +91,20 @@ Możesz również pozwalają bazy danych Azure SQL, aby [automatycznie zoptymali
 
 ## <a name="monitor-databases-using-the-azure-portal"></a>Monitorowanie baz danych za pomocą witryny Azure Portal
 
-W witrynie [Azure Portal](https://portal.azure.com/) możesz wybrać bazę danych i kliknąć wykres **Monitorowanie**, aby monitorować wykorzystanie pojedynczej bazy danych. Spowoduje to wyświetlenie okna **Metryka**, które możesz zmienić, klikając przycisk **Edytuj wykres**. Dodaj następujące metryki:
+W [witryny Azure portal](https://portal.azure.com/), możesz monitorować wykorzystanie pojedynczej bazy danych s, wybrać bazę danych, a następnie klikając polecenie **monitorowanie** wykresu. Spowoduje to wyświetlenie okna **Metryka**, które możesz zmienić, klikając przycisk **Edytuj wykres**. Dodaj następujące metryki:
 
 - Procent użycia procesora CPU
 - Procent użycia jednostek DTU
 - Procent użycia operacji we/wy na danych
 - Procent użycia rozmiaru bazy danych
 
-Po dodaniu tych metryk możesz nadal wyświetlać je w **monitorowanie** wykresu z dodatkowymi informacjami na **metryki** okna. Wszystkie cztery metryki pokazują średnią wartość procentową wykorzystania względem jednostek **DTU** bazy danych. Zobacz [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) artykuły, aby uzyskać więcej informacji na temat warstw usługi.  
+Po dodaniu tych metryk był można nadal przeglądać je **monitorowanie** wykresu z dodatkowymi informacjami na **metryki** okna. Wszystkie cztery metryki pokazują średnią wartość procentową wykorzystania względem jednostek **DTU** bazy danych. Zobacz [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) artykuły, aby uzyskać więcej informacji na temat warstw usługi.  
 
 ![Monitorowanie warstw usług pod względem wydajności bazy danych.](./media/sql-database-single-database-monitoring/sqldb_service_tier_monitoring.png)
 
 Możesz również skonfigurować alerty dotyczące metryk wydajności. Kliknij przycisk **Dodaj alert** w oknie **Metryka**. Użyj kreatora, aby skonfigurować alert. Istnieje możliwość ustawienia alertu, który będzie wysyłany, gdy metryki przekroczą określony próg lub spadną poniżej określonego progu.
 
-Jeśli na przykład spodziewasz się, że obciążenie bazy danych wzrośnie, możesz skonfigurować alert polegający na wysłaniu wiadomości e-mail, gdy dowolna z metryk wydajności osiągnie 80%. Umożliwia to jako wczesne ostrzeżenie zorientować się, kiedy może być konieczne Przełącz na następny większy rozmiar obliczeń.
+Jeśli na przykład spodziewasz się, że obciążenie bazy danych wzrośnie, możesz skonfigurować alert polegający na wysłaniu wiadomości e-mail, gdy dowolna z metryk wydajności osiągnie 80%. Umożliwia to jako wczesne ostrzeżenie zorientować się, kiedy może być konieczne przejdź do następnego najwyższy rozmiaru obliczeń.
 
 Metryki wydajności może również pomóc w określeniu, jeśli jesteś w stanie zmiany na starszą niższe rozmiaru obliczeń. Załóżmy, że używasz bazy danych, której warstwa i poziom to Standardowa S2, a wszystkie metryki wydajności pokazują, że baza danych wykorzystuje średnio nie więcej niż 10% w określonym czasie. Istnieje prawdopodobieństwo, że baza danych będzie działać równie dobrze na poziomie Standardowa S1. Jednak należy pamiętać o obciążeniach, które chwilowo wzrastają przed podjęciem decyzji o przeniesieniu na niższym rozmiaru obliczeń lub.
 

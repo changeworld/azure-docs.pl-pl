@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: 953a004f48bfd9bd68b9500d312240c45cbf3292
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 634958265193a1dedb7c860c34f712160e4120d2
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321907"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353295"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor rozwiązanie na platformie Azure
 
@@ -257,7 +257,7 @@ Wszystkie dane, które są uwidocznione w formie graficznej za pośrednictwem pu
 
 Rozwiązanie Network Performance Monitor korzysta z możliwości alertów [usługi Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts).
 
-Oznacza to, że wszystkie alerty odbywa się przy użyciu [grup akcji](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview).  
+Oznacza to, że wszystkie powiadomienia są zarządzane przy użyciu [grup akcji](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview).  
 
 Jeśli jesteś użytkownikiem NPM tworzenia alertu za pomocą pakietu OMS: 
 1. Zostanie wyświetlony link, do którego nastąpi przekierowanie do witryny Azure Portal. Kliknij go, aby uzyskać dostęp do portalu.
@@ -270,6 +270,10 @@ Jeśli jesteś użytkownikiem NPM tworzenia alertu za pośrednictwem witryny Azu
 2. Jeśli zdecydujesz się bezpośrednio wprowadź swój adres e-mail, akcji grupy o nazwie **NPM Email ActionGroup** jest tworzony i identyfikator poczty e-mail zostanie dodany do tej grupy akcji.
 3. Jeśli zdecydujesz się użyć grup akcji, należy wybrać grupy akcji utworzone wcześniej. Możesz dowiedzieć się, jak utworzyć grupy akcji [tutaj.](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) 
 4. Po pomyślnym utworzeniu alertu, można użyć łącza Zarządzanie alertami zarządzania alertami. 
+
+W przypadku tworzenia alertu, NPM tworzy na podstawie zapytania reguł alertów dzienników w usłudze Azure Monitor. To zapytanie jest triggerred co 5 minut, domyślnie. Usługa Azure monitor nie jest opłata w wysokości 250 pierwszego logowania reguły alertów utworzone, a wszystkie reguły alertów powyżej limit 250 reguł alertów dzienników będą naliczane zgodnie [alerty ceny w usłudze Azure Monitor stronę z cennikiem](https://azure.microsoft.com/en-us/pricing/details/monitor/).
+Powiadomienia są rozliczane osobno zgodnie [powiadomienia o cenach usługi Azure Monitor na stronie pricig](https://azure.microsoft.com/en-us/pricing/details/monitor/).
+
 
 ## <a name="pricing"></a>Cennik
 

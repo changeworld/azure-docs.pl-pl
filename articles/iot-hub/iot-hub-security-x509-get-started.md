@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/10/2017
 ms.author: dobett
-ms.openlocfilehash: 19f6f5d360981c743d819da81eb2f68db1853c8b
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: f10f1da93df6a313525e102e4906cfe67a5f6ae3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783121"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49351886"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Konfigurowanie zabezpieczeń X.509 w usłudze Azure IoT hub
 
@@ -72,9 +72,9 @@ Te kroki pokazują, jak dodać nowego urzędu certyfikacji do Centrum IoT hub za
 
 ## <a name="create-an-x509-device-for-your-iot-hub"></a>Tworzenie urządzenia X.509 dla usługi IoT hub
 
-1. W witrynie Azure portal przejdź do usługi IoT hub **Device Explorer**.
+1. W witrynie Azure portal przejdź do usługi IoT hub **Eksploratory > urządzenia IoT** strony.
 
-2. Kliknij przycisk **Dodaj** można dodać nowe urządzenie. 
+2. Kliknij przycisk **+ Dodaj** można dodać nowe urządzenie.
 
 3. Nadaj przyjazną nazwę wyświetlaną dla **identyfikator urządzenia**i wybierz **_podpisany urzędu certyfikacji X.509_** jako **typ uwierzytelniania**. Kliknij pozycję **Zapisz**.
 

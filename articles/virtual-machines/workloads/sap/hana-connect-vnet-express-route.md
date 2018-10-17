@@ -14,25 +14,25 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5efdda485e4e1f5013948c6636b267f0d388f4d5
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: a64a60603cd9898386a975313afc676e3b253326
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44164737"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353601"
 ---
-# <a name="connecting-a-vnet-to-hana-large-instance-expressroute"></a>Łączenie sieci wirtualnej usługi expressroute dużych wystąpień HANA
+# <a name="connect-a-virtual-network-to-hana-large-instances"></a>Łączenie sieci wirtualnej do dużych wystąpień HANA
 
-Zdefiniowane wszystkie zakresy adresów IP, a teraz stało się dane firmy Microsoft, możesz rozpocząć łączenie sieci wirtualnej, zostało utworzone przed do dużych wystąpień HANA. Po utworzeniu sieci wirtualnej platformy Azure, należy utworzyć bramę usługi ExpressRoute w sieci wirtualnej do łączenia sieci wirtualnej z obwodem usługi ExpressRoute łączący się do dzierżawy klienta w sygnaturze dużego wystąpienia.
+Po utworzeniu sieci wirtualnej platformy Azure, możesz połączyć tę sieć do platformy SAP HANA na platformie Azure. Utwórz bramę usługi ExpressRoute systemu Azure w sieci wirtualnej. Ta brama umożliwia łączenie sieci wirtualnej z obwodem usługi ExpressRoute łączący się do dzierżawy klienta w sygnaturze dużego wystąpienia.
 
 > [!NOTE] 
-> W tym kroku może potrwać do 30 minut, zgodnie z nową bramą jest tworzony w wyznaczonym subskrypcji platformy Azure i następnie jest podłączone do określonej sieci wirtualnej platformy Azure.
+> W tym kroku może potrwać do 30 minut. Nowa brama jest utworzony w wyznaczonym subskrypcji platformy Azure, a następnie jest podłączone do określonej sieci wirtualnej platformy Azure.
 
-Jeśli ta brama już istnieje, sprawdź, czy jest brama usługi ExpressRoute. W przeciwnym razie jest usunięcie bramy i tworzony ponownie jako bramę usługi ExpressRoute. Jeśli brama usługi ExpressRoute jest już ustanowione, ponieważ sieć wirtualną platformy Azure jest już połączony z obwodem usługi ExpressRoute dla łączności lokalnej, należy przejść do poniższej sekcji Łączenie z sieciami wirtualnymi.
+Jeśli ta brama już istnieje, sprawdź, czy jest brama usługi ExpressRoute. W przeciwnym razie Usuń bramę, a następnie utworzyć ją ponownie jako brama usługi ExpressRoute. Jeśli brama usługi ExpressRoute jest już ustanowione, zobacz sekcję następujące części tego artykułu "Łącze sieci wirtualne". 
 
-- Albo (nowe) użyj [witryny Azure portal](https://portal.azure.com/), lub programu PowerShell, aby utworzyć bramę sieci VPN ExpressRoute połączenie z siecią wirtualną.
-  - Jeśli używasz witryny Azure portal, Dodaj nowy **bramy sieci wirtualnej** , a następnie wybierz **ExpressRoute** jako typ bramy.
-  - Jeśli została wybrana opcja zamiast tego programu PowerShell, należy najpierw pobrać i użyć najnowszej wersji [Azure PowerShell SDK](https://azure.microsoft.com/downloads/) zapewnienie zapewnienia optymalnego działania. Następujące polecenia Utwórz bramę usługi ExpressRoute. Teksty poprzedzone _$_ to zmienne zdefiniowane przez użytkownika, które muszą zostać zaktualizowane przy użyciu konkretnych informacji.
+- Użyj jednej [witryny Azure portal](https://portal.azure.com/) lub programu PowerShell do tworzenia bramy sieci VPN usługi ExpressRoute jest podłączony do sieci wirtualnej.
+  - Jeśli używasz witryny Azure portal, Dodaj nowy **bramy sieci wirtualnej**, a następnie wybierz pozycję **ExpressRoute** jako typ bramy.
+  - Jeśli używasz programu PowerShell, należy najpierw pobrać i użyć najnowszej wersji [Azure PowerShell SDK](https://azure.microsoft.com/downloads/). Następujące polecenia Utwórz bramę usługi ExpressRoute. Teksty poprzedzone _$_ to zmienne zdefiniowane przez użytkownika, które powinien być zaktualizowany o konkretnych informacji.
 
 ```PowerShell
 # These Values should already exist, update to match your environment
@@ -44,7 +44,7 @@ $myVNetName = "VNet01"
 $myGWName = "VNet01GW"
 $myGWConfig = "VNet01GWConfig"
 $myGWPIPName = "VNet01GWPIP"
-$myGWSku = "HighPerformance" # Supported values for HANA Large Instances are: HighPerformance or UltraPerformance
+$myGWSku = "HighPerformance" # Supported values for HANA large instances are: HighPerformance or UltraPerformance
 
 # These Commands create the Public IP and ExpressRoute Gateway
 $vnet = Get-AzureRmVirtualNetwork -Name $myVNetName -ResourceGroupName $myGroupName
@@ -63,20 +63,20 @@ New-AzureRmVirtualNetworkGateway -Name $myGWName -ResourceGroupName $myGroupName
 W tym przykładzie użyto bramy jednostki SKU HighPerformance. Opcje są HighPerformance lub UltraPerformance jako bramę tylko jednostki SKU, które są obsługiwane w przypadku oprogramowania SAP HANA na platformie Azure (duże wystąpienia).
 
 > [!IMPORTANT]
-> Dla dużych wystąpień HANA z classs typu II jednostki SKU użycie jednostki SKU bramy UltraPerformance jest obowiązkowy.
+> Dla dużych wystąpień HANA klasy jednostek SKU typu II należy użyć jednostki SKU bramy UltraPerformance.
 
-**Łączenie sieci wirtualnych**
+## <a name="link-virtual-networks"></a>Link sieci wirtualnych
 
-Teraz, że sieć wirtualna platformy Azure ma bramę usługi ExpressRoute, używasz obsługiwane przez firmę Microsoft informacji o autoryzacji do łączenia bramę usługi ExpressRoute z platformą SAP HANA w obwodzie usługi Azure ExpressRoute (duże wystąpienia) utworzone dla tego połączenia. Ten krok można wykonać przy użyciu witryny Azure portal lub programu PowerShell. Zaleca się portalu, jednak są instrukcje dotyczące programu PowerShell w następujący sposób. 
+Usługa Azure virtual network ma teraz bramę usługi ExpressRoute. Za pomocą informacji o autoryzacji, obsługiwane przez firmę Microsoft, aby połączyć bramę usługi ExpressRoute z platformą SAP HANA na obwód usługi ExpressRoute platformy Azure (duże wystąpienia). Możesz połączyć się przy użyciu witryny Azure portal lub programu PowerShell. Portal jest zalecane, ale jeśli chcesz użyć programu PowerShell, instrukcje są następujące. 
 
-- Możesz wykonaj następujące polecenia, dla każdej bramy sieci wirtualnej przy użyciu różnych AuthGUID dla każdego połączenia. Pierwsze dwie pozycje pokazane w następującym skryptu pochodzą z informacji podanych przez firmę Microsoft. Ponadto AuthGUID jest specyficzne dla każdej sieci wirtualnej i bramy. Oznacza, jeśli chcesz dodać inną siecią wirtualną platformy Azure, należy uzyskać inny AuthID dla obwodu usługi ExpressRoute łączący dużych wystąpień HANA na platformie Azure. 
+Uruchom następujące polecenia dla każdej bramy sieci wirtualnej przy użyciu różnych AuthGUID dla każdego połączenia. Pierwsze dwie pozycje pokazano w poniższym skrypcie pochodzą z informacji podanych przez firmę Microsoft. Ponadto AuthGUID jest specyficzne dla każdej sieci wirtualnej i bramy. Aby dodać kolejną sieć wirtualną platformy Azure, musisz uzyskać inny AuthID obwód usługi ExpressRoute, który łączy dużych wystąpień HANA na platformie Azure. 
 
 ```PowerShell
 # Populate with information provided by Microsoft Onboarding team
 $PeerID = "/subscriptions/9cb43037-9195-4420-a798-f87681a0e380/resourceGroups/Customer-USE-Circuits/providers/Microsoft.Network/expressRouteCircuits/Customer-USE01"
 $AuthGUID = "76d40466-c458-4d14-adcf-3d1b56d1cd61"
 
-# Your ExpressRoute Gateway Information
+# Your ExpressRoute Gateway information
 $myGroupName = "SAP-East-Coast"
 $myGWName = "VNet01GW"
 $myGWLocation = "East US"
@@ -92,8 +92,8 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $myConnectionName `
 -PeerId $PeerID -ConnectionType ExpressRoute -AuthorizationKey $AuthGUID
 ```
 
-Jeśli chcesz połączyć bramę wieloma obwodami usługi ExpressRoute, które są skojarzone z Twoją subskrypcją, może być konieczne wykonanie tego kroku w więcej niż jeden raz. Na przykład prawdopodobnie ma połączyć z tą samą bramą sieci wirtualnej z obwodem usługi ExpressRoute z sieci wirtualnej nawiązanie połączenia z siecią lokalną.
+Aby połączyć z bramy do więcej niż jeden obwód usługi ExpressRoute skojarzonych z subskrypcją, konieczne może być więcej niż jeden raz uruchom ten krok. Na przykład prawdopodobnie zamierzasz do łączenia z tą samą bramą sieci wirtualnej z obwodem usługi ExpressRoute, który nawiązuje połączenie sieci wirtualnej do sieci lokalnej.
 
-**Następne kroki**
+## <a name="next-steps"></a>Kolejne kroki
 
-- Zapoznaj się [sieci dodatkowe wymagania dotyczące HLI](hana-additional-network-requirements.md).
+- [Wymagania dodatkowe sieci dla HLI](hana-additional-network-requirements.md)

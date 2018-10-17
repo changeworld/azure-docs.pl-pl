@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: 99df133b9f626f970189df578c6d107086b9dab9
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: a0b3c220a1cd857bc8bea0eb5ab41625845fcc5d
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855004"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365629"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Uznanie autorstwa użycia klienta partnerów platformy Azure
 
@@ -44,17 +44,19 @@ Wiele rozwiązań partnerskich są wdrażane w ramach subskrypcji klienta przy u
 
 Aby dodać unikatowy identyfikator globalny (GUID), upewnij się jednym modyfikacji pliku głównego szablonu:
 
-1. Utwórz identyfikator GUID (na przykład eb7927c8-dd66-43e1-b0cf-c346a422063).
+1. [Utwórz identyfikator GUID](#create-guids) (np. eb7927c8-dd66-43e1-b0cf-c346a422063) i [zarejestrować identyfikatora GUID](#register-guids-and-offers).
 
 1. Otwórz szablon usługi Resource Manager.
 
 1. Dodaj nowy zasób w pliku głównym szablonu. Zasób musi być zapisana w **mainTemplate.json** lub **azuredeploy.json** pliku tylko, a nie w żadnym zagnieżdżone lub połączone szablony.
 
-1. Wprowadź wartość identyfikatora GUID po **pid -** prefiksu (na przykład pid-eb7927c8-dd66-43e1-b0cf-c346a422063).
+1. Wprowadź wartość identyfikatora GUID po **pid -** prefiks (np. pid-eb7927c8-dd66-43e1-b0cf-c346a422063).
 
 1. Sprawdź szablon pod kątem błędów.
 
 1. Ponownie opublikować szablon w odpowiednich repozytoriach.
+
+1. [Sprawdzić, czy identyfikator GUID we wdrożeniu szablonu](#verify-the-guid-deployment).
 
 ### <a name="sample-template-code"></a>Przykładowy kod szablonu
 
@@ -99,6 +101,24 @@ Korzystając z wiersza polecenia platformy Azure do dołączenia z identyfikator
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
+
+## <a name="create-guids"></a>Utwórz GUID
+
+Identyfikator GUID jest unikatowy numer, zawierającej 32 cyfry szesnastkowe. Aby utworzyć identyfikatorów GUID dla śledzenia, należy użyć GUID generator. Zaleca się, że możesz korzystać z [formie generator GUID usługi Azure Storage](https://aka.ms/StoragePartners). Jednak jeśli wolisz nie korzystała z usługi Azure Storage, generator GUID, dostępnych jest wiele [online generatorów GUID](https://www.bing.com/search?q=guid%20generator) , można użyć.
+
+> [!Note]
+> Jest zdecydowanie zaleca się używanie [formie generator GUID usługi Azure Storage](https://aka.ms/StoragePartners) do utworzenia z identyfikatorem GUID. Aby uzyskać więcej informacji, zobacz nasze [— często zadawane pytania](#faq).
+
+Utwórz unikatowy identyfikator GUID dla każdego kanału oferty i dystrybucji. Jeśli są wdrażane dwa rozwiązania przy użyciu szablonu i każdej z nich jest dostępna w witrynie Azure Marketplace i w witrynie GitHub, musisz utworzyć cztery identyfikatorów GUID:
+
+*   Oferty w portalu Azure Marketplace 
+*   Oferty, A w witrynie GitHub
+*   Oferta B w witrynie Azure Marketplace 
+*   Oferta B w witrynie GitHub
+
+Raportowanie będzie odbywać się przez wartość partnera (identyfikator partnera firmy Microsoft) i identyfikator GUID. 
+
+Można także śledzić identyfikatorów GUID na bardziej szczegółowym poziomie, takie jak SKU, których jednostek SKU są wariantów oferty.
 
 ## <a name="register-guids-and-offers"></a>Rejestrowanie identyfikatorów GUID i oferty
 
@@ -183,21 +203,6 @@ foreach ($deployment in $deployments){
 }
 ```
 
-## <a name="create-guids"></a>Utwórz GUID
-
-Identyfikator GUID jest unikatowy numer, zawierającej 32 cyfry szesnastkowe. Aby utworzyć identyfikatorów GUID dla śledzenia, należy użyć GUID generator. Dostępnych jest wiele [online generatorów GUID](https://www.bing.com/search?q=guid%20generator&qs=n&form=QBRE&sp=-1&ghc=2&pq=guid%20g&sc=8-6&sk=&cvid=0BAFAFCD70B34E4296BB97FBFA3E1B4E) , można użyć.
-
-Utwórz unikatowy identyfikator GUID dla każdego kanału oferty i dystrybucji. Jeśli są wdrażane dwa rozwiązania przy użyciu szablonu i każdej z nich jest dostępna w witrynie Azure Marketplace i w witrynie GitHub, musisz utworzyć cztery identyfikatorów GUID:
-
-*   Oferty w portalu Azure Marketplace 
-*   Oferty, A w witrynie GitHub
-*   Oferta B w witrynie Azure Marketplace 
-*   Oferta B w witrynie GitHub
-
-Raportowanie będzie odbywać się przez wartość partnera (identyfikator partnera firmy Microsoft) i identyfikator GUID. 
-
-Można także śledzić identyfikatorów GUID na bardziej szczegółowym poziomie, takie jak SKU, których jednostek SKU są wariantów oferty.
-
 ## <a name="notify-your-customers"></a>Powiadom klientów
 
 Partnerzy powinien poinformować swoich klientów dotyczące wdrożenia, które używają śledzenia identyfikator GUID Menedżera zasobów. Firmy Microsoft raporty użycia platformy Azure, skojarzony z tych wdrożeń do partnera. Poniższe przykłady obejmują zawartość, która służy do powiadamiania klientów o tych wdrożeń. W przykładach należy zastąpić \<partnera > z nazwą Twojej firmy. Partnerzy upewnij się, że powiadomienie jest wyrównywany z danymi zasad ochrony prywatności i kolekcji, w tym opcje dla klientów, które mają być wykluczone ze śledzenia. 
@@ -275,3 +280,7 @@ Klienci mogą śledzić ich użycie funkcji pojedyncze zasoby lub grupy zasobów
 **Ta metoda śledzenia jest podobne do cyfrowego partnera z rekordu (partnera DPOR)?**
 
 Ta nowa metoda nawiązywania rozwiązania partnerskiego wdrożenia i użycia udostępnia mechanizm połączyć rozwiązania partnerskiego do użycia platformy Azure. Jako uprawniony partner CYFROWY jest przeznaczona do skojarzenia z konsultacji (Integrator systemów) lub partnera zarządzania (Managed Service Provider) z subskrypcją Azure klienta.   
+
+**Co to jest korzyść za pomocą formularza GUID Generator usługi Azure Storage?**
+
+Formularz GUID Generator usługi Azure Storage jest gwarantowane do generowania identyfikatora GUID z wymaganym formatem. Ponadto jeśli używasz dowolnej metody śledzenia płaszczyzny danych usługi Azure Storage, możesz korzystać z tego samego identyfikatora GUID dla portalu Marketplace płaszczyznę kontroli śledzenia. Dzięki temu można korzystać z trasą jednolitego identyfikatora GUID dla partnerów: uznanie autorstwa bez konieczności obsługi oddzielnych identyfikatorów GUID.

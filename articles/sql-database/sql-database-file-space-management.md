@@ -12,25 +12,35 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: a46192c79d32ddf5f178541c3be128893e8f6109
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ee3b8c274b769cd570d70c5e0dfae939e030ecf5
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159945"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352433"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Zarządzanie przestrzenią pliku w usłudze Azure SQL Database
 W tym artykule opisano różne rodzaje miejsca do magazynowania w usłudze Azure SQL Database i czynności, które mogą być wykonywane, gdy przydzielone miejsce plików baz danych i pul elastycznych musi odbywać się jawnie.
 
 ## <a name="overview"></a>Przegląd
 
-W usłudze Azure SQL Database większość metryk miejsce magazynowania wyświetlane w witrynie Azure portal oraz następujące interfejsy API pomiaru liczba stron używanych danych dla baz danych i pul elastycznych:
+W usłudze Azure SQL Database są wzorce obciążenia gdzie alokacji podstawowych plików danych dla baz danych może stać się większy niż ilość danych używanych stron. Taka sytuacja może wystąpić, gdy miejsce używane zwiększa i dane są usuwane. Jest to spowodowane pliku miejsce przydzielone nie jest automatycznie odzyskane po usunięciu danych.
+
+Monitorowanie użycia miejsca na plik lub zmniejszania rozmiaru plików danych może być konieczne w następujących scenariuszach:
+- Zezwalaj na wzrostu ilości danych w puli elastycznej, gdy obszar pliku przydzielonych do jego baz danych osiągnie maksymalny rozmiar puli.
+- Zezwalaj na zmniejszanie maksymalny rozmiar pojedynczej bazy danych lub elastycznej puli.
+- Zezwalaj na zmienianie pojedynczą bazę danych lub elastycznej puli do innej usługi warstwy lub warstwy wydajności z niższym maksymalny rozmiar.
+
+### <a name="monitoring-file-space-usage"></a>Monitorowanie użycia miejsca na plik
+Większość metryk miejsce magazynowania wyświetlane w witrynie Azure portal oraz następujące interfejsy API pomiaru tylko ilość danych używanych stron:
 - Usługa Azure Resource Manager, na podstawie metryk interfejsów API w tym program PowerShell [get-metrics](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermmetric)
 - T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
+
+Jednak następujące interfejsy API pomiaru ilość miejsca przydzielonego dla baz danych i elastyczne pule:
 - T-SQL: [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 - T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
-Brak wzorców obciążenia gdzie alokacji podstawowych plików danych dla baz danych może stać się większy niż ilość danych używanych stron.  Taka sytuacja może wystąpić, gdy miejsce używane zwiększa i dane są usuwane.  Jest to spowodowane pliku miejsce przydzielone nie jest automatycznie odzyskane po usunięciu danych.  W takich scenariuszach przydzielonego miejsca dla bazy danych lub puli może przekracza obsługiwany limit i zapobiec wzrostu ilości danych lub uniemożliwić warstwy usług obliczeniowych zmiany rozmiaru i wymagają, zmniejszając pliki danych, aby uniknąć.
+### <a name="shrinking-data-files"></a>Zmniejszanie rozmiaru plików danych
 
 Usługa SQL DB nie zmniejsza automatycznie plików danych, aby odzyskać nieużywane miejsce przydzielone z powodu potencjalnego wpływu na wydajność bazy danych.  Jednak klientów może spowodować zmniejszenie pliki danych za pomocą samoobsługowej w momencie ich wyboru, wykonując kroki opisane w [odzyskać nieużywane miejsca przydzielonego](#reclaim-unused-allocated-space). 
 

@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 08/09/2018
-ms.openlocfilehash: 602bbdcd21e56bb64515a19623e08ae617c99a59
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: dfa5929daffb27617d3d1047f044a5af037e42ff
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870916"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362241"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizowanie danych w wielu bazach danych w chmurze i lokalnych z usługą SQL Data Sync
 
@@ -152,7 +152,7 @@ Synchronizacja danych nie można zsynchronizować tylko do odczytu lub generowan
 | **Wymiary**                                                      | **Limit**              | **Obejście problemu**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | Maksymalna liczba grup synchronizacji dowolnej bazy danych może należeć do.       | 5                      |                             |
-| Maksymalna liczba punktów końcowych w grupie jednej synchronizacji              | 30                     | Utwórz wiele grup synchronizacji |
+| Maksymalna liczba punktów końcowych w grupie jednej synchronizacji              | 30                     |                             |
 | Maksymalna liczba lokalne punkty końcowe w grupie pojedynczej synchronizacji. | 5                      | Utwórz wiele grup synchronizacji |
 | Nazwy bazy danych, tabel, schematu i kolumn                       | 50 znaków w nazwie |                             |
 | Tabele w grupie synchronizacji                                          | 500                    | Utwórz wiele grup synchronizacji |
@@ -160,6 +160,8 @@ Synchronizacja danych nie można zsynchronizować tylko do odczytu lub generowan
 | Rozmiar wiersza danych w tabeli                                        | 24 Mb                  |                             |
 | Interwał synchronizacji minimalne                                           | 5 minut              |                             |
 |||
+> [!NOTE]
+> Może istnieć maksymalnie 30 punktów końcowych w grupie synchronizacji pojedynczego Jeśli istnieje tylko jedna grupa synchronizacji. Jeśli istnieje więcej niż jednej grupy synchronizacji, całkowitej liczby punktów końcowych we wszystkich grupach synchronizacji nie może przekraczać 30. Jeśli bazy danych należy do wielu grup synchronizacji, jest ona traktowana jako wiele punktów końcowych, nie jeden.
 
 ## <a name="faq-about-sql-data-sync"></a>Często zadawane pytania dotyczące SQL Data Sync
 

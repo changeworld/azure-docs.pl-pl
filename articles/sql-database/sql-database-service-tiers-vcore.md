@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 10/12/2018
-ms.openlocfilehash: a0d8e225718361c096b914245d73064edb1715c4
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.date: 10/15/2018
+ms.openlocfilehash: 52f49e0b590219c34750501ae85ccc0def572f44
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166359"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352858"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-use-benefit-and-migration"></a>Rdzeń wirtualny warstwy usługi, korzyści z używania hybrydowej platformy Azure i migracji
 
@@ -106,5 +106,5 @@ Można skopiować dowolną bazę danych o rozmiarze mocą obliczeniową opartą 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby uzyskać szczegółowe informacje na temat określonych zasobów obliczeniowych, rozmiary i opcje rozmiaru magazynu jest dostępny dla pojedynczej bazy danych, zobacz [limity zasobów opartych na rdzeniach wirtualnych bazy danych SQL Database dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)
-- Aby uzyskać szczegółowe informacje na temat określonych zasobów obliczeniowych, rozmiary i opcje rozmiaru magazynu jest dostępne dla pul elastycznych, zobacz [bazy danych SQL Database oparty na rdzeniach wirtualnych zasobów limity dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).
+- Aby uzyskać szczegółowe informacje na temat określonych zasobów obliczeniowych, rozmiary i opcje rozmiaru magazynu jest dostępny dla pojedynczej bazy danych, zobacz [limity zasobów opartych na rdzeniach wirtualnych bazy danych SQL Database dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-storage-sizes-and-compute-sizes)
+- Aby uzyskać szczegółowe informacje na temat określonych zasobów obliczeniowych, rozmiary i opcje rozmiaru magazynu jest dostępne dla pul elastycznych, zobacz [bazy danych SQL Database oparty na rdzeniach wirtualnych zasobów limity dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).

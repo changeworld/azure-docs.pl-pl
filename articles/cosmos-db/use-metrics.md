@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: govindk
-ms.openlocfilehash: 792e0b3f8fdfe4ab1b79fec5f45d0587033eca0d
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 5c9dded95fe3ae36a716544368e3dc44c9b86afe
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055203"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365496"
 ---
 # <a name="monitoring-and-debugging-with-metrics-in-azure-cosmos-db"></a>Monitorowanie i debugowaniu za pomocą metryk w usłudze Azure Cosmos DB
 
@@ -54,7 +54,8 @@ Po identyfikacji klucza partycji, który jest przyczyną pochylenia dystrybucji,
 
 ## <a name="comparing-data-size-against-index-size"></a>Porównując rozmiar danych względem rozmiar indeksu
 
-W usłudze Azure Cosmos DB całkowita ilość miejsca wykorzystanych jest kombinacja rozmiar danych i rozmiar indeksu. Zazwyczaj rozmiar indeksu jest ułamek rozmiaru danych. W bloku metryk w [witryny Azure portal](https://portal.azure.com), karty magazyn przedstawia podział użycia magazynu na podstawie danych i indeksu. Obraz (być może) również z zestawu SDK, można znaleźć bieżące użycie pamięci masowej w kolekcji, przeczytaj.
+W usłudze Azure Cosmos DB całkowita ilość miejsca wykorzystanych jest kombinacja rozmiar danych i rozmiar indeksu. Zazwyczaj rozmiar indeksu jest ułamek rozmiaru danych. W bloku metryk w [witryny Azure portal](https://portal.azure.com), karty magazyn przedstawia podział użycia magazynu na podstawie danych i indeksu. 
+
 ```csharp
 // Measure the document size usage (which includes the index size)  
 ResourceResponse<DocumentCollection> collectionInfo = await client.ReadDocumentCollectionAsync(UriFactory.CreateDocumentCollectionUri("db", "coll")); 

@@ -4,7 +4,7 @@ description: Dowiedz się, jak uruchamiać zadania w tle w usłudze Azure App Se
 services: app-service
 documentationcenter: ''
 author: ggailey777
-manager: erikre
+manager: jeconnoc
 editor: jimbe
 ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.service: app-service
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/09/2017
-ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: c3a41733dd193d10349a0126bfa9c25ce4ba56e7
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.date: 10/16/2018
+ms.author: glenga;msangapu;david.ebbo;suwatch;pbatum;naren.soni;
+ms.openlocfilehash: 901cf32557e0a437e938ceb50ecd500c69c8c3be
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577681"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364034"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Uruchamianie zadań w tle za pomocą zadań Webjob w usłudze Azure App Service
 
@@ -44,7 +44,7 @@ W poniższej tabeli opisano różnice między *ciągłe* i *wyzwalane* zadań We
 | Obsługuje zdalne debugowanie. | Nie obsługuje debugowania zdalnego.|
 
 > [!NOTE]
-> Aplikacja sieci web można limit czasu po upływie 20 minut braku aktywności. Tylko żądania do witryny scm (wdrażanie) lub stron aplikacji sieci web w portalu zresetowanie czasomierza. Żądania do rzeczywistej lokacji nie Resetuj czasomierza. Jeśli aplikacja działa w ciągłej lub Włącz zaplanowane zadania Webjob, **Always On** aby zapewnić niezawodne uruchamianie zadania Webjob. Ta funkcja jest dostępna tylko w języku Basic, Standard i Premium [warstw cenowych](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+> Aplikacja sieci web można limit czasu po upływie 20 minut braku aktywności. Tylko żądania do aplikacji internetowej rzeczywiste zresetowanie czasomierza. Wyświetlanie konfiguracji aplikacji w witrynie Azure portal lub wysyłania żądań do lokacji zaawansowane narzędzia (https:// < nazwa_aplikacji >. scm.azurewebsites.net) nie Resetuj czasomierza. Jeśli aplikacja działa w ciągłej lub Włącz zaplanowane zadania Webjob, **Always On** aby zapewnić niezawodne uruchamianie zadania Webjob. Ta funkcja jest dostępna tylko w języku Basic, Standard i Premium [warstw cenowych](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 ## <a name="acceptablefiles"></a>Obsługiwane typy plików do skryptów lub programów
 

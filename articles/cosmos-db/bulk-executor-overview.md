@@ -1,21 +1,20 @@
 ---
-title: Omówienie biblioteki wykonawca zbiorczego usługi Azure Cosmos DB | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat biblioteki Azure Cosmos DB do przetwarzania zbiorczego, korzyści z używania biblioteki oraz jej architektury.
-keywords: Wykonawca zbiorczego języka Java
+title: Zbiorcze importowanie i zaktualizować dane w usługi Azure Cosmos DB przy użyciu biblioteki wykonawca zbiorcze | Dokumentacja firmy Microsoft
+description: Wykonywały operacje zbiorcze w usłudze Azure Cosmos DB za pomocą importowania zbiorczego i Zbiorcza aktualizacja interfejsów API oferowane przez bibliotekę przetwarzania zbiorczego.
 services: cosmos-db
 author: tknandu
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: 823cb536a1cd0b8f5da7442906b14447c15ae044
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: a760de998c78ce2afdd24a15d9dd6e5d0cf44dc1
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091357"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363548"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Omówienie biblioteki wykonawca zbiorczego usługi Azure Cosmos DB
  
@@ -27,7 +26,7 @@ Usługa Azure Cosmos DB to usługa szybkie, elastyczne i globalnie rozproszonej 
 Biblioteka przetwarzania zbiorczego pomaga korzystać z tej ogromnej przepustowości i magazynu. Biblioteka przetwarzania zbiorczego można wykonywać zbiorcze operacje w usłudze Azure Cosmos DB za pomocą importowania zbiorczego i wykonywania zbiorczych aktualizacji interfejsów API. Możesz dowiedzieć się więcej o funkcjach biblioteki przetwarzania zbiorczego w poniższych sekcjach. 
 
 > [!NOTE] 
-> Obecnie zbiorcze wykonawca biblioteka obsługuje import i operacje aktualizacji i ta biblioteka jest obsługiwana przez tylko konta interfejsu API SQL usługi Azure Cosmos DB. Zobacz [.NET](sql-api-sdk-bulk-executor-dot-net.md) i [Java](sql-api-sdk-bulk-executor-java.md) wersji, aby wszelkie aktualizacje do biblioteki.
+> Obecnie zbiorcze wykonawca biblioteka obsługuje import i operacje aktualizacji i ta biblioteka jest obsługiwana przez tylko konta interfejsu API SQL usługi Azure Cosmos DB i interfejs API Gremlin.
  
 ## <a name="key-features-of-the-bulk-executor-library"></a>Najważniejsze funkcje biblioteki przetwarzania zbiorczego  
  

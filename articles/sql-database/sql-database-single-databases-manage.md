@@ -11,21 +11,21 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: c2855a9cdbb2abc01b3d3b55b12b979a2dbbf8bb
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/15/2018
+ms.openlocfilehash: f74577a5f8042a7b373d1ff1944088036a0c94f5
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165361"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354210"
 ---
-# <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Tworzenie i zarządzanie serwerami logicznymi i pojedynczych baz danych w usłudze Azure SQL Database 
+# <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Tworzenie i zarządzanie serwerami logicznymi i pojedynczych baz danych w usłudze Azure SQL Database
 
 Można tworzyć i zarządzać serwerami logicznymi usługi Azure SQL database i pojedynczych baz danych przy użyciu witryny Azure portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure, interfejsu API REST i języka Transact-SQL.
 
 ## <a name="azure-portal-manage-logical-servers-and-databases"></a>Witryna Azure portal: Zarządzanie serwerów logicznych i baz danych
 
-Można utworzyć grupę zasobów Azure SQL database wcześniej lub podczas tworzenia serwera. Istnieje wiele metod uzyskiwania nowy formularz serwera SQL, tworząc nowy serwer SQL lub jako część tworzenia nowej bazy danych. 
+Można utworzyć grupę zasobów Azure SQL database wcześniej lub podczas tworzenia serwera. Istnieje wiele metod uzyskiwania nowy formularz serwera SQL, tworząc nowy serwer SQL lub jako część tworzenia nowej bazy danych.
 
 ### <a name="create-a-blank-sql-server-logical-server"></a>Tworzenie pustego serwera SQL (serwer logiczny)
 
@@ -33,7 +33,7 @@ Do utworzenia serwera (bez bazy danych) usługi Azure SQL Database przy użyciu 
 
 ### <a name="create-a-blank-or-sample-sql-database"></a>Tworzenie pustego lub przykładowy bazy danych SQL
 
-Aby utworzyć bazę danych Azure SQL za pomocą [witryny Azure portal](https://portal.azure.com), przejdź do pustego formularza SQL Database i podaj wymagane informacje. Można utworzyć grupę zasobów i serwer logiczny wcześniej lub podczas tworzenia bazy danych Azure SQL database. Możesz utworzyć pustą bazę danych lub tworzenie przykładowej bazy danych oparte na Adventure Works LT. 
+Aby utworzyć bazę danych Azure SQL za pomocą [witryny Azure portal](https://portal.azure.com), przejdź do pustego formularza SQL Database i podaj wymagane informacje. Można utworzyć grupę zasobów i serwer logiczny wcześniej lub podczas tworzenia bazy danych Azure SQL database. Możesz utworzyć pustą bazę danych lub tworzenie przykładowej bazy danych oparte na Adventure Works LT.
 
   ![tworzenie bazy danych 1](./media/sql-database-get-started-portal/create-database-1.png)
 
@@ -42,28 +42,25 @@ Aby utworzyć bazę danych Azure SQL za pomocą [witryny Azure portal](https://p
 
 Aby utworzyć wystąpienie zarządzane, zobacz [utworzysz wystąpienie zarządzane](sql-database-managed-instance-get-started.md)
 
-### <a name="manage-an-existing-sql-server"></a>Zarządzanie istniejącego serwera SQL
+## <a name="manage-an-existing-sql-server"></a>Zarządzanie istniejącego serwera SQL
 
-Aby zarządzać istniejącego serwera, przejdź do serwera przy użyciu szeregu metod — np. informacji od określonej strony bazy danych SQL, **serwerów SQL** strony, lub **wszystkie zasoby** strony. 
+Aby zarządzać istniejącego serwera, przejdź do serwera przy użyciu szeregu metod — np. informacji od określonej strony bazy danych SQL, **serwerów SQL** strony, lub **wszystkie zasoby** strony.
 
-Aby zarządzać istniejącej bazy danych, przejdź do **baz danych SQL** strony, a następnie kliknij bazę danych, którą chcesz zarządzać. Poniższy zrzut ekranu pokazuje, jak rozpocząć, ustawienia zapory na poziomie serwera, bazy danych, z **Przegląd** stron dla bazy danych. 
+Aby zarządzać istniejącej bazy danych, przejdź do **baz danych SQL** strony, a następnie kliknij bazę danych, którą chcesz zarządzać. Poniższy zrzut ekranu pokazuje, jak rozpocząć, ustawienia zapory na poziomie serwera, bazy danych, z **Przegląd** stron dla bazy danych.
 
-   ![reguła zapory serwera](./media/sql-database-get-started-portal/server-firewall-rule.png) 
+   ![reguła zapory serwera](./media/sql-database-get-started-portal/server-firewall-rule.png)
 
 > [!IMPORTANT]
 > Aby skonfigurować właściwości wydajności bazy danych, zobacz [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
->
-
 > [!TIP]
 > Dla portalu szybkiego startu platformy Azure, zobacz [utworzyć bazę danych Azure SQL database w witrynie Azure portal](sql-database-get-started-portal.md).
 
 ## <a name="powershell-manage-logical-servers-and-databases"></a>Program PowerShell: Zarządzanie serwerów logicznych i baz danych
 
-Aby utworzyć i zarządzać nimi, Azure SQL server, baz danych i zapory za pomocą programu Azure PowerShell, użyj następujących poleceń cmdlet programu PowerShell. Jeśli musisz zainstalować lub uaktualnić programu PowerShell, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
+Aby utworzyć i zarządzać nimi, Azure SQL server, baz danych i zapory za pomocą programu Azure PowerShell, użyj następujących poleceń cmdlet programu PowerShell. Jeśli musisz zainstalować lub uaktualnić programu PowerShell, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 > [!TIP]
 > Dla programu PowerShell przewodnika Szybki Start zobacz [tworzenie pojedynczej bazy danych Azure SQL przy użyciu programu PowerShell](sql-database-get-started-portal.md). W przypadku skryptów przykład programu PowerShell, zobacz [Użyj programu PowerShell do tworzenia pojedynczej bazy danych Azure SQL i konfigurowanie reguły zapory](scripts/sql-database-create-and-configure-database-powershell.md) i [Monitor i skalowanie pojedynczej SQL bazy danych przy użyciu programu PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).
->
 
 | Polecenie cmdlet | Opis |
 | --- | --- |
@@ -116,13 +113,10 @@ Tworzenie i zarządzanie nimi, Azure SQL server, baz danych i zapory za pomocą 
 
 Tworzenie i zarządzanie nimi w usłudze Azure SQL server, baz danych i zapory za pomocą instrukcji języka Transact-SQL, użyj następujących poleceń języka T-SQL. Tych poleceń przy użyciu portalu Azure można wydać [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [programu Visual Studio Code](https://code.visualstudio.com/docs), lub innego programu, który może połączyć się z serwerem usługi Azure SQL Database i przekazać języka Transact-SQL polecenia. Aby zarządzać pul elastycznych, zobacz [pul elastycznych](sql-database-elastic-pool.md).
 
-
 > [!TIP]
 > Aby uzyskać szybki start za pomocą programu SQL Server Management Studio na Microsoft Windows, zobacz [usługi Azure SQL Database: Użyj programu SQL Server Management Studio do nawiązywania połączeń i wykonywanie zapytań dotyczących danych](sql-database-connect-query-ssms.md). Aby uzyskać szybki start w systemie macOS, Linux lub Windows przy użyciu programu Visual Studio Code, zobacz [usługi Azure SQL Database: Użyj programu Visual Studio Code do nawiązywania połączeń i wykonywanie zapytań dotyczących danych](sql-database-connect-query-vscode.md).
-
 > [!IMPORTANT]
 > Nie można utworzyć ani usunąć serwera przy użyciu języka Transact-SQL.
->
 
 | Polecenie | Opis |
 | --- | --- |
@@ -142,29 +136,28 @@ Tworzenie i zarządzanie nimi w usłudze Azure SQL server, baz danych i zapory z
 |[sys.database_firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Zwraca informacje dotyczące ustawień zapory na poziomie bazy danych, skojarzonych z usługi Microsoft Azure SQL Database. |
 |[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Usuwa ustawienie zapory na poziomie bazy danych z usługi Azure SQL Database lub SQL Data Warehouse. |
 
-
-
 ## <a name="rest-api-manage-logical-servers-and-databases"></a>Interfejs API REST: Zarządzanie serwerów logicznych i baz danych
 
 Tworzenie i zarządzanie nimi w usłudze Azure SQL server, baz danych i zapór, użyj tych żądań interfejsu API REST.
 
 | Polecenie | Opis |
 | --- | --- |
-|[Serwery — Utwórz lub zaktualizuj](/rest/api/sql/servers/createorupdate)|Tworzy lub aktualizuje nowego serwera.|
-|[Serwery — usuwanie](/rest/api/sql/servers/delete)|Usuwa serwer SQL.|
-|[Serwery - Get](/rest/api/sql/servers/get)|Pobiera serwera.|
-|[Serwery — lista](/rest/api/sql/servers/list)|Zwraca listę serwerów.|
-|[Serwery — listy według grupy zasobów](/rest/api/sql/servers/listbyresourcegroup)|Zwraca listę serwerów w grupie zasobów.|
-|[Serwery — aktualizacja](/rest/api/sql/servers/update)|Aktualizuje istniejący serwer.|
-|[Bazy danych — Utwórz lub zaktualizuj](/rest/api/sql/databases/createorupdate)|Tworzy nową bazę danych lub aktualizuje istniejącą bazę danych.|
-|[Bazy danych — Get](/rest/api/sql/databases/get)|Pobiera bazy danych.|
-|[Bazy danych — listę według puli elastycznej](/rest/api/sql/databases/listbyelasticpool)|Zwraca listę baz danych w puli elastycznej.|
-|[Bazy danych — lista przez serwer](/rest/api/sql/databases/listbyserver)|Zwraca listę baz danych na serwerze.|
-|[Bazy danych — aktualizacja](/rest/api/sql/databases/update)|Aktualizuje istniejącą bazę danych.|
-|[Reguły - zapory Utwórz lub zaktualizuj](/rest/api/sql/firewallrules/createorupdate)|Tworzy lub aktualizuje reguły zapory.|
-|[Reguły zapory - Delete](/rest/api/sql/firewallrules/delete)|Usuwa reguły zapory.|
-|[Reguły zapory - Get](/rest/api/sql/firewallrules/get)|Pobiera regułę zapory.|
-|[Reguły zapory — lista przez serwer](/rest/api/sql/firewallrules/listbyserver)|Zwraca listę reguł zapory.|
+|[Serwery — Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/servers/servers_createorupdate/rest/api)|Tworzy lub aktualizuje nowego serwera.|
+|[Serwery — usuwanie](https://docs.microsoft.com/rest/api/sql/servers/servers_delete)|Usuwa serwer SQL.|
+|[Serwery - Get](https://docs.microsoft.com/rest/api/sql/servers/servers_get)|Pobiera serwera.|
+|[Serwery — lista](https://docs.microsoft.com/rest/api/sql/servers/servers_list)|Zwraca listę serwerów.|
+|[Serwery — listy według grupy zasobów](https://docs.microsoft.com/rest/api/sql/servers/servers_listbyresourcegroup)|Zwraca listę serwerów w grupie zasobów.|
+|[Serwery — aktualizacja](https://docs.microsoft.com/rest/api/sql/servers/servers_update)|Aktualizuje istniejący serwer.|
+|[Bazy danych — Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)|Tworzy nową bazę danych lub aktualizuje istniejącą bazę danych.|
+|[Bazy danych — usunięcia](https://docs.microsoft.com/rest/api/sql/databases/databases_delete)|Usuwa bazę danych.|
+|[Bazy danych — Get](https://docs.microsoft.com/rest/api/sql/databases/databases_get)|Pobiera bazy danych.|
+|[Bazy danych — listę według puli elastycznej](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyelasticpool)|Zwraca listę baz danych w puli elastycznej.|
+|[Bazy danych — lista przez serwer](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyserver)|Zwraca listę baz danych na serwerze.|
+|[Bazy danych — aktualizacja](https://docs.microsoft.com/rest/api/sql/databases/databases_update)|Aktualizuje istniejącą bazę danych.|
+|[Reguły - zapory Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_createorupdate)|Tworzy lub aktualizuje reguły zapory.|
+|[Reguły zapory - Delete](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_delete)|Usuwa reguły zapory.|
+|[Reguły zapory - Get](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_get)|Pobiera regułę zapory.|
+|[Reguły zapory — lista przez serwer](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_listbyserver)|Zwraca listę reguł zapory.|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

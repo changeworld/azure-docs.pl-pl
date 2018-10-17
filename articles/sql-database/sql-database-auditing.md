@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 10/02/2018
-ms.openlocfilehash: 7362fc634f27227d037b08cd93f0f406fd250e22
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.date: 10/15/2018
+ms.openlocfilehash: bd40faf8a77a8940dc78375ec516c39742540231
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115611"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352842"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 
@@ -30,7 +30,6 @@ Inspekcji usługi Azure SQL database śledzi zdarzenia bazy danych i zapisuje je
 ## <a id="subheading-1"></a>Omówienie inspekcji usługi Azure SQL database
 
 Można użyć inspekcji usługi SQL database do:
-
 
 - **Zachowaj** dziennik inspekcji wybranych zdarzeń. Można zdefiniować kategorie działań bazy danych powinien być poddany inspekcji.
 - **Raport** aktywność bazy danych. Wstępnie skonfigurowane raporty i pulpit nawigacyjny umożliwia szybkie rozpoczynanie pracy z działaniem i raportowanie zdarzeń.
@@ -98,7 +97,7 @@ W poniższej sekcji opisano konfigurację inspekcji przy użyciu witryny Azure p
 
 9. Kliknij pozycję **Zapisz**.
 10. Jeśli chcesz dostosować zdarzenia poddawane inspekcji, to zrobić za pomocą [poleceń cmdlet programu PowerShell](#subheading-7) lub [interfejsu API REST](#subheading-9).
-11. Po skonfigurowaniu ustawień inspekcji można włączyć funkcji wykrywania zagrożeń i skonfigurować wiadomości e-mail, aby otrzymywać alerty zabezpieczeń. Korzystając z wykrywania zagrożeń, otrzymujesz alerty proaktywne na nietypowe działania bazy danych, które mogą wskazywać potencjalne zagrożenia bezpieczeństwa. Aby uzyskać więcej informacji, zobacz [wprowadzenie do wykrywania zagrożeń](sql-database-threat-detection-get-started.md). 
+11. Po skonfigurowaniu ustawień inspekcji można włączyć funkcji wykrywania zagrożeń i skonfigurować wiadomości e-mail, aby otrzymywać alerty zabezpieczeń. Korzystając z wykrywania zagrożeń, otrzymujesz alerty proaktywne na nietypowe działania bazy danych, które mogą wskazywać potencjalne zagrożenia bezpieczeństwa. Aby uzyskać więcej informacji, zobacz [wprowadzenie do wykrywania zagrożeń](sql-database-threat-detection-get-started.md).
 
 ## <a id="subheading-3"></a>Analizowanie dzienników inspekcji i raporty
 
@@ -223,16 +222,17 @@ Aby uzyskać przykładowy skrypt, zobacz [skonfigurować inspekcję i wykrywanie
 
 **Interfejs API REST — Inspekcja obiektów Blob**:
 
-- [Utwórz lub zaktualizuj bazę danych obiektów Blob, zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
-- [Utwórz lub zaktualizuj obiektów Blob serwera zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [Pobieranie obiektu Blob bazy danych, zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
-- [Pobieranie obiektów Blob serwera zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [Utwórz lub zaktualizuj bazę danych obiektów Blob, zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/databaseblobauditingpolicies_createorupdate)
+- [Utwórz lub zaktualizuj obiektów Blob serwera zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/serverblobauditingpolicies_createorupdate)
+- [Pobieranie obiektu Blob bazy danych, zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/databaseblobauditingpolicies_get)
+- [Pobieranie obiektów Blob serwera zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/serverblobauditingpolicies_get)
 
 Rozszerzone zasady, z którym klauzuli pomocy technicznej w celu filtrowania dodatkowych:
-- [Utwórz lub zaktualizuj bazę danych *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
-- [Utwórz lub zaktualizuj serwer *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20extended%20auditing%20settings/createorupdate)
-- [Pobierz bazę danych *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
-- [Pobierz serwer *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20extended%20auditing%20settings/get)
+
+- [Utwórz lub zaktualizuj bazę danych *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/extendeddatabaseblobauditingpolicies_createorupdate)
+- [Utwórz lub zaktualizuj serwer *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/serverblobauditingpolicies_createorupdate)
+- [Pobierz bazę danych *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/extendeddatabaseblobauditingpolicies_get)
+- [Pobierz serwer *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/serverblobauditingpolicies_get)
 
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1

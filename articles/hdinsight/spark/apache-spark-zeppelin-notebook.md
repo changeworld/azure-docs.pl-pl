@@ -9,20 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: 9b076709ee24c61b2699672d28bd61204c88a744
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 8e32939f3e253bfdd6f8d989f616f30e1b9f27eb
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048045"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364867"
 ---
 # <a name="use-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Korzystanie z notesów Zeppelin w klastrze platformy Apache Spark w usłudze Azure HDInsight
 
 Klastry HDInsight Spark obejmują z notesów Zeppelin używane do uruchamiania zadań platformy Spark. W tym artykule dowiesz się, jak używać Notes Zeppelin w klastrze usługi HDInsight.
-
-> [!NOTE]
-> Z notesów Zeppelin są dostępne tylko w przypadku platformy Spark 1.6.3 w HDInsight 3.5 i platformy Spark 2.1.0 w HDInsight 3.6.
->
 
 **Wymagania wstępne:**
 
@@ -50,7 +46,7 @@ Klastry HDInsight Spark obejmują z notesów Zeppelin używane do uruchamiania z
    
     Wklej poniższy fragment kodu w pusty akapit, który jest tworzony domyślnie w nowy notes.
    
-        %livy.spark
+        %livy2.spark
         //The above magic instructs Zeppelin to use the Livy Scala interpreter
    
         // Create an RDD using the default Spark context, sc
@@ -77,6 +73,11 @@ Klastry HDInsight Spark obejmują z notesów Zeppelin używane do uruchamiania z
     ![Tworzenie tabeli tymczasowej na podstawie danych pierwotnych](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png "utworzyć tabelę tymczasową na podstawie nieprzetworzonych danych")
    
     Można również dołączyć tytuł do każdego akapitu. W prawym rogu kliknij **ustawienia** ikonę, a następnie kliknij przycisk **Pokaż tytuł**.
+
+> [!NOTE]
+> % spark2 interpreter nie jest obsługiwana w z notesów Zeppelin we wszystkich wersjach HDInsight i % sh interpreter nie będą obsługiwane z HDInsight 4.0 lub nowszy.
+>
+
 1. Możesz teraz uruchomić instrukcji rozwiązania Spark SQL **hvac** tabeli. Wklej poniższe zapytanie nowy akapit. Zapytanie pobiera identyfikator budynku i różnica między elementem docelowym i rzeczywiste temperatur w danym dniu każdego tworzenia. Naciśnij klawisz **SHIFT + ENTER**.
    
         %sql

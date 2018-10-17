@@ -5,16 +5,16 @@ ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/06/2018
-author: mayanknayar
+ms.date: 10/16/2018
+author: mayurigupta13
 ms.topic: conceptual
-ms.author: manayar
-ms.openlocfilehash: dfd880b6ff3a7e199ea259acc5e5ec59f89c897d
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.author: mayg
+ms.openlocfilehash: 9ec9acab4ad83af22504058c21b102df94b8692d
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919730"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353241"
 ---
 # <a name="use-role-based-access-control-to-manage-site-recovery-access"></a>Zarządzanie dostępem Site Recovery za pomocą kontroli dostępu opartej na rolach
 
@@ -23,7 +23,7 @@ Kontrola dostępu oparta na rolach (Role-Based Access Control, RBAC) na platform
 Usługa Azure Site Recovery zapewnia 3 role wbudowane, umożliwiające kontrolowanie operacji zarządzania usługą Site Recovery. Aby dowiedzieć się więcej, zobacz [Wbudowane role RBAC na platformie Azure](../role-based-access-control/built-in-roles.md).
 
 * [Współautor usługi Site Recovery](../role-based-access-control/built-in-roles.md#site-recovery-contributor) — ta rola ma wszystkie uprawnienia wymagane do zarządzania operacjami usługi Azure Site Recovery w magazynie usługi Recovery Services. Użytkownik z tą rolą nie może jednak tworzyć ani usuwać magazynu usługi Recovery Services, ani przypisywać praw dostępu innym użytkownikom. Ta rola jest najbardziej odpowiednia dla administratorów odzyskiwania po awarii, którzy można włączyć i zarządzać w przypadku odzyskiwania po awarii dla aplikacji lub całej organizacji.
-* [Operator usługi Site Recovery](../role-based-access-control/built-in-roles.md#site-recovery-operator) — ta rola ma uprawnienia do wykonywania i zarządzanie operacjami trybu Failover i powrotu po awarii. Użytkownik z tą rolą nie można włączyć lub wyłączyć replikację, Utwórz lub usuwać magazynów, rejestrować nowej infrastruktury ani przypisywać praw dostępu innym użytkownikom. Ta rola jest najbardziej odpowiednia dla operatora odzyskiwania po awarii, który można trybu failover maszyny wirtualne lub przejść do aplikacji po uzyskaniu odpowiednich instrukcji od właścicieli aplikacji i administratorów IT w sytuacji rzeczywistych lub symulowanych po awarii, takich jak odzyskiwanie po awarii. Po usunięciu, operatora odzyskiwania po awarii można ponownie włączyć ochronę i powrotu po awarii maszyn wirtualnych.
+* [Operator usługi Site Recovery](../role-based-access-control/built-in-roles.md#site-recovery-operator) — ta rola ma uprawnienia do uruchamiania operacji trybu failover i powrotu po awarii oraz zarządzania nimi. Użytkownik z tą rolą nie można włączyć lub wyłączyć replikację, Utwórz lub usuwać magazynów, rejestrować nowej infrastruktury ani przypisywać praw dostępu innym użytkownikom. Ta rola jest najbardziej odpowiednia dla operatora odzyskiwania po awarii, który można trybu failover maszyny wirtualne lub przejść do aplikacji po uzyskaniu odpowiednich instrukcji od właścicieli aplikacji i administratorów IT w sytuacji rzeczywistych lub symulowanych po awarii, takich jak odzyskiwanie po awarii. Po usunięciu, operatora odzyskiwania po awarii można ponownie włączyć ochronę i powrotu po awarii maszyn wirtualnych.
 * [Czytelnik usługi Site Recovery](../role-based-access-control/built-in-roles.md#site-recovery-reader) — ta rola ma uprawnienia do wyświetlania wszystkich operacji zarządzania usługą Site Recovery. Ta rola jest najbardziej odpowiednie dla IT zarządzający monitorowania, kto może monitorowania ich bieżącego stanu ochrony i podnieść biletami pomocy technicznej, jeśli jest to wymagane.
 
 Jeśli chcesz zdefiniować własne role, aby uzyskać większą kontrolę, zobacz temat jak [Tworzenie niestandardowych ról](../role-based-access-control/custom-roles.md) na platformie Azure.

@@ -12,15 +12,15 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2018
+ms.date: 10/15/2018
 ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: 7cdcd8b7e9814c206255077fae0af2029fab6583
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: a769bb4cce84fe78f442cce8440e6e828ed7f76d
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078117"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354142"
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Planowanie pojemności dla ról serwera usługi Azure App Service w usłudze Azure Stack
 
@@ -30,7 +30,7 @@ Aby skonfigurować wdrożenie produkcyjne gotowości usługi Azure App Service w
 
 Ten artykuł zawiera wskazówki dotyczące minimalnej liczby wystąpień obliczeniowych i mocy obliczeniowej jednostki SKU należy używać w przypadku wszystkich wdrożeń produkcyjnych.
 
-Możesz zaplanować swoją strategię pojemność usługi App Service przy użyciu następujących wytycznych. Przyszłe wersje usługi Azure Stack zapewni opcje wysokiej dostępności dla usługi App Service.
+Możesz zaplanować swoją strategię pojemność usługi App Service przy użyciu następujących wytycznych.
 
 | Rola serwera usługi App Service | Minimalna zalecana liczba wystąpień | Zalecane obliczeń jednostki SKU|
 | --- | --- | --- |
@@ -45,68 +45,69 @@ Możesz zaplanować swoją strategię pojemność usługi App Service przy użyc
 
 **Minimalna zalecana**: dwa wystąpienia Standard A1
 
-Azure App Service Controller środowisk zazwyczaj niskie użycie procesora CPU, pamięci i zasobów sieciowych. Jednak wysokiej dostępności, musi mieć dwa kontrolery. Dwa kontrolery są również maksymalną liczbę dozwolonych kontrolerów. Możesz utworzyć drugi kontroler witryn sieci Web bezpośredniego z poziomu Instalatora podczas wdrażania.
+Kontroler usługi Azure App Service jest zazwyczaj środowisk niskie użycie procesora CPU, pamięci i zasobów sieciowych. Jednak wysokiej dostępności, musi mieć dwa kontrolery. Dwa kontrolery są również maksymalną liczbę dozwolonych kontrolerów. Możesz utworzyć drugi kontroler witryn sieci web bezpośredniego z poziomu Instalatora podczas wdrażania.
 
-## <a name="front-end-role"></a>Front End role
+## <a name="front-end-role"></a>Rola frontonu
 
 **Minimalna zalecana**: dwa wystąpienia Standard A1
 
-Fronton kieruje żądania do internetowych procesów roboczych, w zależności od dostępności internetowy proces roboczy. Wysoką dostępność powinny mieć więcej niż jeden serwer sieci Web i może mieć więcej niż dwóch. Dla celów planowania pojemności należy wziąć pod uwagę że każdego rdzenia może obsługiwać około 100 żądań na sekundę.
+Fronton kieruje żądania do internetowych procesów roboczych w zależności od dostępności procesów roboczych w sieci web. Wysoką dostępność powinny mieć więcej niż jeden serwer sieci Web i może mieć więcej niż dwóch. Dla celów planowania pojemności należy wziąć pod uwagę że każdego rdzenia może obsługiwać około 100 żądań na sekundę.
 
 ## <a name="management-role"></a>Rola zarządzania
 
 **Minimalna zalecana**: dwa wystąpienia Standard A3
 
-Rola zarządzania usługi aplikacji Azure jest odpowiedzialny za aplikację usługi Azure Resource Manager i punktów końcowych interfejsu API, rozszerzenia portalu (administratora, dzierżawcy, portalu funkcji) i usługi danych. Rola serwera zarządzania, która jest zwykle wymaga tylko o 4 GB pamięci RAM w środowisku produkcyjnym. Jednak gdy wykonywane są wiele zadań zarządzania (takich jak tworzenie witryny sieci web) może ulegać wysoki poziom użycia Procesora. Wysoką dostępność powinny mieć więcej niż jeden serwer przypisany do tej roli, i co najmniej dwa rdzenie na serwer.
+Rola zarządzania usługi Azure App Service jest odpowiedzialny za aplikację usługi Azure Resource Manager i punkty końcowe interfejsu API, rozszerzenia portalu (administratora, dzierżawcy, portalu funkcji) i usługi danych. Rola serwera zarządzania, która jest zwykle wymaga tylko o 4 GB pamięci RAM w środowisku produkcyjnym. Jednak gdy wykonywane są wiele zadań zarządzania (takich jak tworzenie witryny sieci web) może ulegać wysoki poziom użycia Procesora. Wysoką dostępność powinny mieć więcej niż jeden serwer przypisany do tej roli, i co najmniej dwa rdzenie na serwer.
 
 ## <a name="publisher-role"></a>Rola wydawcy
 
 **Minimalna zalecana**: dwa wystąpienia Standard A1
 
-Jeśli jednoczesne publikowanie wielu użytkowników w roli wydawcy mogą występować duże użycie procesora CPU. Aby uzyskać wysoką dostępność udostępnić więcej niż jednej roli wydawcy.  Wydawcy obsługuje tylko ruch FTP/FTPS.
+Jeśli jednoczesne publikowanie wielu użytkowników w roli wydawcy mogą występować duże użycie procesora CPU. Wysoką dostępność upewnij się, że dostępnych jest więcej niż jednej roli wydawcy. Wydawcy obsługuje tylko ruch FTP/FTPS.
 
 ## <a name="web-worker-role"></a>Rola procesu roboczego w sieci Web
 
 **Minimalna zalecana**: dwa wystąpienia Standard A1
 
-Wysoką dostępność powinien mieć co najmniej cztery ról procesów roboczych w sieci Web, współdzielona tryb witryny sieci web i dla każdej warstwy dedykowanych procesów roboczych możesz planować. Współdzielonych lub tryby dedykowanych obliczeń zapewnia różne poziomy usług dzierżawcom. Możesz potrzebować więcej pracowników w sieci Web, jeśli wielu klientów są:
+Wysoka dostępność powinny mieć co najmniej cztery ról procesów roboczych w sieci web, tryb udostępnione witryny sieci web i dla każdej warstwy dedykowanych procesów roboczych, które mają do zaoferowania. Udostępnione i dedykowane obliczeniowe tryby zapewnia różne poziomy usług dzierżawcom. Możesz potrzebować więcej pracowników w sieci web, jeśli wielu klientów są:
 
 - Za pomocą obliczeń dedykowane warstwy procesu roboczego trybu, (które są intensywnie korzystających z zasobów).
 - Uruchamiany w współdzielony tryb obliczania.
 
-Po użytkownik został utworzony Plan usługi App Service dla dedykowany tryb obliczania jednostki SKU i liczbę procesach roboczych w sieci Web, określone w tym planie usługi App Service nie będzie już dostępna dla użytkowników.
+Po użytkownik został utworzony plan usługi App Service dla dedykowany tryb obliczania jednostki SKU, liczba pracowników w sieci web, określone w tym planie usługi App Service nie jest już dostępna dla użytkowników.
 
-Aby zapewnić usłudze Azure Functions dla użytkowników w modelu planu zużycie, należy wdrożyć udostępnione internetowych procesów roboczych.
+Aby zapewnić usłudze Azure Functions dla użytkowników w modelu planu zużycie, należy wdrożyć udostępnionego internetowych procesów roboczych.
 
-Przy podejmowaniu decyzji o liczbę udostępnionych ról internetowych procesów roboczych do użycia, należy przejrzeć następujące zagadnienia:
+Podczas podejmowania decyzji o liczby ról procesów roboczych udostępniony w sieci web do używania, przejrzyj następujące zagadnienia:
 
-- **Pamięć**: pamięć jest najbardziej krytycznym zasobem dla roli proces roboczy w sieci Web. Za mało pamięci ma wpływ na wydajność witryny sieci web, gdy pamięć wirtualna jest wymieniany z dysku. Każdy serwer wymaga około 1,2 GB pamięci RAM dla systemu operacyjnego. Pamięć RAM powyżej tego progu może służyć do uruchomienia witryny sieci web.
-- **Odsetek aktywnych witryn sieci web**: zazwyczaj o około 5 procent aplikacji w usłudze Azure App Service w usłudze Azure Stack wdrożenia są aktywne. Jednak procent aplikacji, które są aktywne w danym momencie może być wyższe lub niższe. Z równym 5 procent aktywnej aplikacji maksymalną liczbę aplikacji do umieszczenia w usłudze Azure App Service na wdrożenie usługi Azure Stack powinna być mniejsza niż:
-  - 20 razy liczba aktywnych witryn sieci web (5 x 20 = 100).
-- **Zużycie pamięci średni**: średnia ilość pamięci zajmowaną dla aplikacji w środowiskach produkcyjnych wynosi około 70 MB. Korzystając z tego miejsca, ilość pamięci przydzielonej dla wszystkich komputerów roli internetowych procesów roboczych lub maszyn wirtualnych można obliczyć w następujący sposób:
+- **Pamięć**: pamięć jest najbardziej krytycznym zasobem dla roli procesu roboczego w sieci web. Za mało pamięci ma wpływ na wydajność witryny sieci web, gdy pamięć wirtualna jest wymieniany z dysku. Każdy serwer wymaga około 1,2 GB pamięci RAM dla systemu operacyjnego. Pamięć RAM powyżej tego progu może służyć do uruchomienia witryny sieci web.
+- **Odsetek aktywnych witryn sieci web**: zazwyczaj o około 5 procent aplikacji w usłudze Azure App Service w usłudze Azure Stack wdrożenia są aktywne. Jednak procent aplikacji, które są aktywne w danym momencie może być wyższe lub niższe. O częstotliwości 5 procent aktywnej aplikacji maksymalną liczbę aplikacji do umieszczenia w usłudze Azure App Service na wdrożenie usługi Azure Stack powinny być mniej niż 20 razy liczba aktywnych witryn sieci web (5 x 20 = 100).
+- **Zużycie pamięci średni**: średnia ilość pamięci zajmowaną dla aplikacji w środowiskach produkcyjnych wynosi około 70 MB. Korzystając z tego miejsca, ilość pamięci przydzielonej dla wszystkich komputerów roli procesu roboczego internetowych lub maszyn wirtualnych można obliczyć w następujący sposób:
 
-    *Liczba aplikacji Aprowizowana * 70 MB * 5% — (numer sieci Web ról procesów roboczych * 1044 MB)*
+   `Number of provisioned applications * 70 MB * 5% - (number of web worker roles * 1044 MB)`
 
-   Na przykład w przypadku 5000 aplikacji w środowisku, w którym działa 10 ról proces roboczy w sieci Web poszczególnych ról internetowego procesu roboczego maszyn wirtualnych powinny mieć 7060 MB pamięci RAM:
+   Na przykład jeśli istnieją 5000 aplikacji w środowisku, w którym działa 10 ról proces roboczy w sieci web, każda rola proces roboczy w sieci web, maszyn wirtualnych powinny mieć 7060 MB pamięci RAM:
 
-   5000 * 70 * 0,05 — (10 * 1044) = 7060 (= około 7 GB)
+   `5,000 * 70 * 0.05 – (10 * 1044) = 7060 (= about 7 GB)`
 
-   Aby uzyskać informacje na temat dodawania większej liczby wystąpień procesu roboczego, zobacz [dodanie większej liczby ról procesów roboczych](azure-stack-app-service-add-worker-roles.md).
+   Aby uzyskać informacje o dodawaniu większej liczby wystąpień procesu roboczego, zobacz [dodanie większej liczby ról procesów roboczych](azure-stack-app-service-add-worker-roles.md).
 
 ## <a name="file-server-role"></a>Rola serwera plików
 
-Autonomiczny serwer plików dla roli serwera plików, można użyć opracowywania i testowania, na przykład podczas wdrażania usługi Azure App Service w usłudze Azure Stack Development Kit możesz użyć tego szablonu — <https://aka.ms/appsvconmasdkfstemplate>. Do celów produkcyjnych należy użyć wstępnie skonfigurowanego serwera plików Windows lub serwer wstępnie skonfigurowane plików innych niż Windows.
+Autonomiczny serwer plików dla roli serwera plików, można użyć do tworzenia i testowania; na przykład podczas wdrażania usługi Azure App Service w usłudze Azure Stack Development Kit (ASDK) możesz użyć tego szablonu: https://aka.ms/appsvconmasdkfstemplate. Do celów produkcyjnych należy użyć wstępnie skonfigurowanego serwera plików Windows lub serwer wstępnie skonfigurowane plików innych niż Windows.
 
-W środowiskach produkcyjnych w roli serwera plików środowisk dysku intensywnie korzystających z operacji We/Wy. Ponieważ zawiera wszystkie wszystkie pliki zawartości i aplikacji, witryn sieci web użytkownika, należy wstępnie skonfigurować jedną z następujących dla tej roli:
+W środowiskach produkcyjnych rolę serwera plików środowisk dysku intensywnie korzystających z operacji We/Wy. Ponieważ zawiera wszystkie wszystkie pliki zawartości i aplikacji, witryn sieci web użytkownika, należy wstępnie można skonfigurować jedną z następujących zasobów dla tej roli:
 
 - Serwer plików Windows
 - Klaster serwera plików Windows
-- Serwer plików innych niż Windows
-- klaster serwera plików innych niż Windows
-- urządzenie NAS (magazyn podłączany sieci)
+- Plik non-Windows server
+- Klaster serwera plików non-Windows
+- Urządzenie NAS (magazyn podłączany sieci)
 
-Aby uzyskać więcej informacji, zobacz [aprowizowanie serwera plików](azure-stack-app-service-before-you-get-started.md#prepare-the-file-server).
+Aby uzyskać więcej informacji, zobacz [Aprowizowanie serwera plików](azure-stack-app-service-before-you-get-started.md#prepare-the-file-server).
 
 ## <a name="next-steps"></a>Kolejne kroki
+
+Zobacz następujący artykuł, aby uzyskać więcej informacji:
 
 [Przed rozpoczęciem pracy z usługą App Service w usłudze Azure Stack](azure-stack-app-service-before-you-get-started.md)

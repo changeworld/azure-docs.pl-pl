@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 08/31/2018
 ms.author: danlep
-ms.openlocfilehash: dde40b8f53aa40f1c15fe0efd810889b8c4510fb
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 41c9302d280d6027e12f2516bca26a98d224f301
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854868"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354193"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Użyj usługi Azure Container Instances jako Jenkins agenta kompilacji
 
@@ -47,7 +47,7 @@ Aby uzyskać więcej informacji na temat usługi Azure Container Instances, zoba
 
    ![Dodatkowe ustawienia wdrażania w portalu narzędzia Jenkins](./media/container-instances-jenkins/jenkins-portal-02.png)
 
-4. Integracja nazwy głównej usługi, wybierz **Auto(MSI)** mieć [tożsamości usługi zarządzanej platformy Azure] [zarządzanych tożsamości azure zasobów] automatycznie utworzyć tożsamością uwierzytelniania dla wystąpienia usługi Jenkins. Wybierz **ręczne** zapewnienie własne poświadczenia nazwy głównej usługi.
+4. Integracja nazwy głównej usługi, wybierz **Auto(MSI)** mają [Zarządzanie tożsamościami dla zasobów platformy Azure] [zarządzanych tożsamości azure zasobów] automatycznie utworzyć tożsamością uwierzytelniania dla wystąpienia usługi Jenkins. Wybierz **ręczne** zapewnienie własne poświadczenia nazwy głównej usługi.
 
 5. Agentów w chmurze skonfiguruj platformy z opartych na chmurze dla zadań kompilacji usługi Jenkins. Dla tego artykułu, wybierz **ACI**. W agencie chmury ACI każdego zadania kompilacji usługi Jenkins jest uruchamiane w wystąpienia kontenera.
 

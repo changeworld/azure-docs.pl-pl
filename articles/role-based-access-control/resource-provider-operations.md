@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/27/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ee2a72a65902347a2e58f79d0f621c9d08178104
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: d9cf46a1fd28985d9ca98d173bbef17380b7de21
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410310"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354397"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów w usłudze Azure Resource Manager
 
@@ -3129,7 +3129,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Media/mediaservices/streamingPolicies/write | Utwórz lub zaktualizuj wszelkie zasady przesyłania strumieniowego |
 > | Akcja | Microsoft.Media/mediaservices/syncStorageKeys/action | Synchronizuj klucze magazynu dla konta usługi Azure Storage dołączone |
 > | Akcja | Microsoft.Media/mediaservices/transforms/delete | Usuń wszystkie przekształcenia |
-> | Akcja | Microsoft.Media/mediaservices/transforms/jobs/cancelJob/action | Anuluj zadanie |
+> | Akcja | Microsoft.Media/mediaservices/transforms/jobs/cancelJob/action | Anulowanie zadania |
 > | Akcja | Microsoft.Media/mediaservices/transforms/jobs/delete | Usuń wszystkie zadania |
 > | Akcja | Microsoft.Media/mediaservices/transforms/jobs/read | Odczytaj wszelkie zadanie |
 > | Akcja | Microsoft.Media/mediaservices/transforms/jobs/write | Utwórz lub zaktualizuj wszystkie zadania |
@@ -3346,8 +3346,6 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Dołącza do puli adresów zaplecza modułu równoważenia obciążenia |
 > | Akcja | Microsoft.Network/loadBalancers/backendAddressPools/read | Pobiera definicji puli adresów wewnętrznej bazy danych modułu równoważenia obciążenia |
 > | Akcja | Microsoft.Network/loadBalancers/delete | Usuwa moduł równoważenia obciążenia |
-> | Akcja | Microsoft.Network/loadBalancers/frontendIPConfigurations/join/action | Dołącza do konfiguracji adresu IP frontonu modułu równoważenia obciążenia. |
-> | Akcja | Microsoft.Network/loadBalancers/frontendIPConfigurations/read | Pobiera definicję konfiguracji IP frontonu modułu równoważenia obciążenia |
 > | Akcja | Microsoft.Network/loadBalancers/inboundNatPools/join/action | Dołącza modułu równoważenia obciążenia dla ruchu przychodzącego translatora adresów sieciowych puli |
 > | Akcja | Microsoft.Network/loadBalancers/inboundNatPools/read | Pobiera moduł równoważenia obciążenia dla ruchu przychodzącego translatora adresów sieciowych definicji puli |
 > | Akcja | Microsoft.Network/loadBalancers/inboundNatRules/delete | Usuwa regułę nat dla ruchu przychodzącego modułu równoważenia obciążenia |
@@ -3477,10 +3475,6 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/publicIPAddresses/dnsAliases/read | Pobiera zasób publicznego Dns Alias adresu Ip |
 > | Akcja | Microsoft.Network/publicIPAddresses/dnsAliases/write | Utworzenie zasobu publicznego Dns Alias adresu Ip |
 > | Akcja | Microsoft.Network/publicIPAddresses/join/action | Dołącza publicznego adresu ip |
-> | Akcja | Microsoft.Network/publicIPAddresses/loadBalancerPools/delete | Usuwa puli zaplecza modułu równoważenia obciążenia w usłudze publiczny adres IP |
-> | Akcja | Microsoft.Network/publicIPAddresses/loadBalancerPools/join/action | Dołącza do puli zaplecza modułu równoważenia obciążenia w usłudze publiczny adres IP |
-> | Akcja | Microsoft.Network/publicIPAddresses/loadBalancerPools/read | Pobiera publiczny adres IP obciążenia równoważenia zaplecza definicji puli |
-> | Akcja | Microsoft.Network/publicIPAddresses/loadBalancerPools/write | Tworzy pulę zaplecza modułu równoważenia obciążenia w usłudze publiczny adres IP lub aktualizuje istniejące publiczny adres IP obciążenia puli zaplecza modułu równoważenia |
 > | Akcja | Microsoft.Network/publicIPAddresses/providers/Microsoft.Insights/diagnosticSettings/read | Pobierz ustawienia diagnostyczne publicznego adresu IP |
 > | Akcja | Microsoft.Network/publicIPAddresses/providers/Microsoft.Insights/diagnosticSettings/write | Utwórz lub zaktualizuj ustawienia diagnostyczne publicznego adresu IP |
 > | Akcja | Microsoft.Network/publicIPAddresses/providers/Microsoft.Insights/logDefinitions/read | Pobierz definicje dziennika publicznego adresu IP |

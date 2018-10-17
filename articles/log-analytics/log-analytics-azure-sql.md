@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: ''
-ms.openlocfilehash: cc7dccd52bf5d3af383f807a5edfcb9c1088c5bf
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: bc82e030742bb5ea9621e972fcce2435cdda61ea
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237097"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353462"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorowanie usługi Azure SQL Database przy użyciu usługi Azure SQL Analytics (wersja zapoznawcza)
 
@@ -35,6 +35,8 @@ Praktyczne omówienie na temat korzystania z rozwiązania Azure SQL Analytics i 
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
 >
+
+W trakcie można używać bezpłatnie rozwiązanie ma zastosowanie użycie dane diagnostyczne i telemetryczne powyżej bezpłatne jednostki pozyskiwanie danych przydzielone każdego miesiąca, zobacz [cen usługi Log Analytics](https://azure.microsoft.com/en-us/pricing/details/monitor). Bezpłatne jednostki pozyskiwanie danych, pod warunkiem włączyć, bezpłatne monitorowanie kilka baz danych każdego miesiąca. Należy pamiętać, że aktywnych baz danych o większych obciążeń będzie pozyskiwania większej ilości danych i baz danych w stanie bezczynności. Możesz łatwo monitorować swoje użycie pozyskiwania danych w rozwiązaniu, wybierając obszar roboczy pakietu OMS w menu nawigacji usługi Azure SQL Analytics, a następnie wybierając użycie i szacowane koszty.
 
 ## <a name="connected-sources"></a>Połączone źródła
 

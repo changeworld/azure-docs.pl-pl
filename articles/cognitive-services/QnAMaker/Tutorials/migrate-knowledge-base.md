@@ -10,17 +10,17 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: a06a04ba992c8d7e9691e4838d38faaafd48de7a
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 6eaa4859ea6346390514325980835750d8e4b6d5
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48853916"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365564"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migrowanie bazy wiedzy przy użyciu eksportu / importu
 Narzędzie QnA Maker ogłosiliśmy ogólną dostępność 7 maja 2018 r. w \\\build\ konferencji. Usługa QnA Maker GA ma Nowa architektura oparta na platformie Azure. Baz wiedzy utworzonych za pomocą bezpłatnej wersji zapoznawczej usługi QnA Maker będą musieli przeprowadzić migrację do usługi QnA Maker GA. Usługa QnA Maker w wersji zapoznawczej zostaną wycofane w listopada 2018 r. Aby uzyskać więcej informacji na temat zmian w wersji ogólnie dostępnej usługi QnA Maker, zobacz powiadomienie usługi QnA Maker GA [wpis w blogu](https://aka.ms/qnamakerga-blog).
 
-Usługa QnA Maker ma teraz [modelu cen](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/qna-maker/).
+Usługa QnA Maker ma teraz [modelu cen](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/).
 
 Wymagania wstępne
 > [!div class="checklist"]

@@ -11,12 +11,12 @@ ms.topic: article
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 manager: douge
-ms.openlocfilehash: 91bec065b2c83eac6b646ae6a55bc1ae0aae01db
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 3f30a62a2f351aecabc37206607c3e28ec5e3ab5
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226895"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353362"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -76,6 +76,23 @@ W programie Visual Studio:
 
     ![Zrzut ekranu opcji narzędzi okna dialogowego](media/common/VerbositySetting.PNG)
     
+Ten błąd może zostać wyświetlony podczas próby użycia wieloetapowych pliku Dockerfile. Pełne dane wyjściowe będą wyglądać następująco:
+
+```cmd
+$ azds up
+Using dev space 'default' with target 'AksClusterName'
+Synchronizing files...6s
+Installing Helm chart...2s
+Waiting for container image build...10s
+Building container image...
+Step 1/12 : FROM [imagename:tag] AS base
+Error parsing reference: "[imagename:tag] AS base" is not a valid repository/tag: invalid reference format
+Failed to build container image.
+Service cannot be started.
+```
+
+Jest to spowodowane węzłów AKS uruchomić starszej wersji platformy docker, który nie obsługuje wieloetapowych kompilacji. Konieczne będzie ponowne zapisywanie adresów z pliku Dockerfile, aby uniknąć wieloetapowych kompilacji.
+
 ## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Rozpoznawanie nazw DNS nie powiedzie się publiczny adres URL skojarzony z usługą Dev miejsca do magazynowania
 
 Podczas rozpoznawania nazw DNS zakończy się niepowodzeniem, może zostać wyświetlony "Nie można wyświetlić strony" lub "tej witryny nie można nawiązać połączenia" Błąd w przeglądarce sieci web podczas próby połączenia z publiczny adres URL skojarzony z usługą Dev miejsca do magazynowania.
@@ -206,6 +223,14 @@ Dostęp właściciela lub współautora do subskrypcji platformy Azure można ur
 ```cmd
 az provider register --namespace Microsoft.DevSpaces
 ```
+
+## <a name="error-could-not-find-a-ready-tiller-pod-when-launching-dev-spaces"></a>"Błąd: nie można znaleźć pod tiller gotowe" podczas uruchamiania Dev miejsca do magazynowania
+
+### <a name="reason"></a>Przyczyna
+Ten błąd występuje, jeśli klient narzędzia Helm już nie może komunikować się pod Tiller uruchomionych w klastrze.
+
+### <a name="try"></a>Wypróbuj:
+Ponowne uruchamianie węzłów agenta w klastrze zwykle rozwiązuje ten problem.
 
 ## <a name="azure-dev-spaces-doesnt-seem-to-use-my-existing-dockerfile-to-build-a-container"></a>Usługa Azure Dev spacje wydają się użyć Mój istniejący plik Dockerfile do utworzenia kontenera 
 

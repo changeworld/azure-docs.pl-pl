@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 37b11eea5c37103c0bc296a5f466658fbc77ed24
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 5cd56abd02c55dbf72c92ed070f9988fae2b6762
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42057640"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365258"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Włączanie rejestrowania diagnostycznego dla aplikacji sieci web w usłudze Azure App Service
 ## <a name="overview"></a>Przegląd
@@ -82,7 +82,7 @@ Dowolną kombinację systemu plików, usługi table storage lub usługi blob sto
 Gdy wszystkie trzy lokalizacje magazynu zapewnić tym samym podstawowe informacje dotyczące zarejestrowanych zdarzeń **magazyn tabel** i **magazynu obiektów blob** rejestrować dodatkowe informacje, takie jak identyfikator wystąpienia, identyfikator wątku i bardziej szczegółowe sygnatura czasowa (format taktu) niż rejestrowania **system plików**.
 
 > [!NOTE]
-> Informacje przechowywane w **magazyn tabel** lub **magazynu obiektów blob** może zostać oceniony jedynie przy użyciu klienta usługi storage lub aplikacji, która bezpośrednio może współpracować z tych systemów magazynowania. Na przykład programu Visual Studio 2013 zawiera Eksploratora magazynu, który może służyć do zapoznaj się z tabelą lub obiektem blob storage i HDInsight dostęp do danych przechowywanych w magazynie obiektów blob. Możesz również zapisywać dane aplikacji, która uzyskuje dostęp do usługi Azure Storage przy użyciu jednej z [zestawami SDK Azure](https://azure.microsoft.com/en-us/downloads/).
+> Informacje przechowywane w **magazyn tabel** lub **magazynu obiektów blob** może zostać oceniony jedynie przy użyciu klienta usługi storage lub aplikacji, która bezpośrednio może współpracować z tych systemów magazynowania. Na przykład programu Visual Studio 2013 zawiera Eksploratora magazynu, który może służyć do zapoznaj się z tabelą lub obiektem blob storage i HDInsight dostęp do danych przechowywanych w magazynie obiektów blob. Możesz również zapisywać dane aplikacji, która uzyskuje dostęp do usługi Azure Storage przy użyciu jednej z [zestawami SDK Azure](https://azure.microsoft.com/downloads/).
 >
 > [!NOTE]
 > Można również włączyć diagnostyki za pomocą programu Azure PowerShell przy użyciu **Set-AzureWebsite** polecenia cmdlet. Jeśli nie zainstalowano programu Azure PowerShell lub nie skonfigurowano do użycia w Twojej subskrypcji platformy Azure, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).

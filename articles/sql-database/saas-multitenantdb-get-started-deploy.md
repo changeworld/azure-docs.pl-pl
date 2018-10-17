@@ -12,14 +12,14 @@ ms.author: genemi
 ms.reviewer: billgib, stein
 manager: craigg
 ms.date: 04/02/2018
-ms.openlocfilehash: b91960920f0181939e634a221080d493fb8cea63
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: ff09a5f09393ad642ddb2059b58bd69a17591aff
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056662"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352215"
 ---
-# <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Wdrażanie i eksplorowanie podzielonej na fragmenty aplikacji z wieloma dzierżawami korzystającej z usługi Azure SQL Database
+# <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Wdrażanie i eksplorowanie aplikacji z wieloma dzierżawami podzielonej na fragmenty
 
 W tym samouczku, wdrażanie i eksplorowanie przykładowej aplikacji SaaS wielu dzierżawców o nazwie Wtp. Aplikacja Wtp jest przeznaczona do prezentowania funkcji usługi Azure SQL Database, które upraszczająca implementację elementów scenariuszy SaaS.
 
@@ -27,7 +27,7 @@ Ta implementacja aplikacja Wtp korzysta ze wzorca podzielonej na fragmenty wielo
 
 Ten wzorzec bazy danych umożliwia przechowywanie co najmniej jednego dzierżawcy w każdym fragmencie lub bazy danych. Na najniższym koszcie można zoptymalizować przez każdą bazę danych, być współużytkowane przez wielu dzierżaw. Lub można zoptymalizować izolacji dzięki każda baza danych jest przechowywanie tylko jednej dzierżawy. Wybór optymalizacji można robić niezależnie dla każdej określonej dzierżawy. Wybór można wprowadzić, gdy dzierżawy, najpierw jest przechowywany lub później zmieni zdanie. Aplikacja jest przeznaczona do pracy także w obu przypadkach.
 
-#### <a name="app-deploys-quickly"></a>Aplikację wdraża się szybko
+## <a name="app-deploys-quickly"></a>Aplikację wdraża się szybko
 
 Aplikacja działa w chmurze platformy Azure i korzysta z usługi Azure SQL Database. Poniższa sekcja wdrożenia zawiera niebieski **Wdróż na platformie Azure** przycisku. Po naciśnięciu przycisku aplikacja jest w pełni wdrożony do subskrypcji platformy Azure w ciągu pięciu minut. Masz pełny dostęp do pracy z poszczególnych składników aplikacji.
 
@@ -35,7 +35,7 @@ Aplikacja jest wdrażana przy użyciu danych dla trzema przykładowymi dzierżaw
 
 Każda osoba może pobrać kod źródłowy języka C# i programu PowerShell o nazwie Wingtip Tickets z [jako repozytorium GitHub][link-github-wingtip-multitenantdb-55g].
 
-#### <a name="learn-in-this-tutorial"></a>Dowiedz się, w tym samouczku
+## <a name="learn-in-this-tutorial"></a>Dowiedz się, w tym samouczku
 
 > [!div class="checklist"]
 > - Jak wdrożyć aplikację SaaS o nazwie Wingtip Tickets.
@@ -55,15 +55,15 @@ Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie nastę
 
 ## <a name="deploy-the-wingtip-tickets-app"></a>Wdrażanie aplikacji Wingtip Tickets aplikacji
 
-#### <a name="plan-the-names"></a>Planowanie nazwy
+### <a name="plan-the-names"></a>Planowanie nazwy
 
 W krokach w tej sekcji podaj *użytkownika* wartość, która służy do zapewnienia zasobów nazwy są globalnie unikatowe oraz nazwę *grupy zasobów* zawierającą wszystkie zasoby utworzone przez wdrożenie aplikacji. Dla osoby o nazwie *Finley pods*, sugerujemy:
-- *Użytkownik:* **af1***(jej inicjały i cyfry.   Użyj innej wartości (np. af2), gdy wdrożysz aplikację po raz drugi).*
+- *Użytkownik:* **af1***(jej inicjały i cyfry. Użyj innej wartości (np. af2), gdy wdrożysz aplikację po raz drugi).*
 - *Grupa zasobów:* **wingtip-mt-af1** *(o nazwie wingtip-mt wskazuje to aplikacji wielodostępnych podzielonej na fragmenty. Dołączanie af1 nazwa użytkownika jest skorelowane z nazwami zasobów, które zawiera nazwy grupy zasobów.)*
 
 Teraz wybierz nazwy i zanotuj je. 
 
-#### <a name="steps"></a>Kroki
+### <a name="steps"></a>Kroki
 
 1. Kliknij poniższy niebieski **Wdróż na platformie Azure** przycisku.
     - Zostanie otwarta witryna Azure portal za pomocą szablonu wdrożenia SaaS o nazwie Wingtip Tickets.
@@ -133,7 +133,7 @@ Centralna **Centrum zdarzeń** strony sieci Web zawiera listę linków dla dzier
 
    ![Zdarzenia](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
-#### <a name="azure-traffic-manager"></a>Azure Traffic Manager
+### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
 Aby kontrolować dystrybucję żądań przychodzących, aplikacja Wingtip używa [usługi Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Na stronie zdarzenia dla każdej dzierżawy zawiera nazwę dzierżawy w jego adresie URL. Każdy adres URL zawiera również wartość określonego użytkownika. Każdy adres URL przestrzegają pokazano format wykonując następujące kroki:
 
@@ -144,7 +144,7 @@ Aby kontrolować dystrybucję żądań przychodzących, aplikacja Wingtip używa
 3. Aplikacja umożliwia znalezienie klucza w katalogu i uzyskuje odpowiedniej lokalizacji bazy danych dzierżaw.
 4. Aplikacja używa informacji o lokalizacji, aby znaleźć i uzyskać dostęp jedną bazę danych, który zawiera wszystkie dane dla dzierżawy.
 
-#### <a name="events-hub"></a>Centrum zdarzeń
+### <a name="events-hub"></a>Centrum zdarzeń
 
 1. **Centrum zdarzeń** Wyświetla listę wszystkich dzierżaw, które są zarejestrowane w wykazie i ich lokalizacje.
 2. **Centrum zdarzeń** używa rozszerzonych metadanych zawartych w wykazie do pobierania nazwy dzierżawy skojarzonej z każdego mapowania do konstruowania adresów URL.
@@ -185,6 +185,7 @@ Odśwież **Centrum zdarzeń**, oraz nowej dzierżawy pojawi się na liście.
 ## <a name="provision-a-new-tenant-in-its-own-database"></a>Aprowizacja nowej dzierżawy w oddzielnej bazie danych
 
 Podzielonej na fragmenty modelu wielodostępnym umożliwia wybranie, czy aprowizacja nowej dzierżawy do bazy danych, który zawiera innych dzierżaw lub do własnej bazy danych. Dzierżawca samodzielnie w własną bazę danych ma następujące korzyści:
+
 - Wydajność bazy danych dzierżawy mogą być zarządzane bez konieczności naruszyć o potrzebach innych dzierżaw.
 - Jeśli to konieczne, bazy danych można przywrócić do wcześniejszego punktu w czasie, ponieważ wpłynęłoby nie innych dzierżaw.
 
@@ -221,7 +222,6 @@ Teraz przyjrzymy się niektóre zasoby, które zostały wdrożone:
 
    ![Serwer dzierżaw](./media/saas-multitenantdb-get-started-deploy/tenants-server.png)
 
-
 ## <a name="monitor-the-performance-of-the-database"></a>Monitorowanie wydajności bazy danych
 
 Jeśli generator obciążenia działa od kilku minut, taką ilość telemetrii, jest dostępna do wyszukiwania w bazie danych monitorowania funkcji wbudowanych w witrynie Azure portal.
@@ -238,7 +238,7 @@ Jeśli generator obciążenia działa od kilku minut, taką ilość telemetrii, 
 
 Generator obciążenia są stosowane obciążenia podobne do każdej dzierżawy, niezależnie od tego, w której bazy danych jest każdego dzierżawcy. Przy użyciu tylko jednej dzierżawy w **salixsalsa** bazy danych, widać, że baza danych może kontynuować działanie znacznie wyższe obciążenie niż bazy danych z wielu dzierżaw. 
 
-#### <a name="resource-allocations-vary-by-workload"></a>Alokacji zasobów zależy od obciążenia
+### <a name="resource-allocations-vary-by-workload"></a>Alokacji zasobów zależy od obciążenia
 
 Czasami wielodostępną bazą danych wymaga więcej zasobów na dobrą wydajność niż bazę pojedynczego dzierżawy, ale nie zawsze. Optymalne alokacji zasobów zależy od konkretnego charakterystyki przez dzierżawców w systemie.
 
@@ -249,8 +249,9 @@ Obciążeń generowanych przez skryptu generatora obciążenia są wyłącznie w
 - Aby dowiedzieć się więcej o wielodostępnych aplikacji SaaS, zobacz [wzorce projektowe dla wielodostępnych aplikacji SaaS](saas-tenancy-app-design-patterns.md).
 
 - Aby dowiedzieć się więcej o elastycznych pulach, zobacz:
-    - [Pul elastycznych pozwalają na zarządzanie i skalowania wielu baz danych Azure SQL](sql-database-elastic-pool.md)
-    - [Scaling out with Azure SQL Database (Skalowanie w poziomie za pomocą usługi Azure SQL Database)](sql-database-elastic-scale-introduction.md)
+
+  - [Pul elastycznych pozwalają na zarządzanie i skalowania wielu baz danych Azure SQL](sql-database-elastic-pool.md)
+  - [Scaling out with Azure SQL Database (Skalowanie w poziomie za pomocą usługi Azure SQL Database)](sql-database-elastic-scale-introduction.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

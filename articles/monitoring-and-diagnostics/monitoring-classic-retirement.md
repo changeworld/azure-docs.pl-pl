@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 64d135ba336ca31fe6db5193f9f19c8c2340b454
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 93bd04ce654b8403ab3cd69ecd6837b97063e5e8
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854853"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363950"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Ujednolicone alerty i monitorowanie w usłudze Azure Monitor zastępuje klasycznego alerty i monitorowanie
 
-Usługa Azure Monitor stał się teraz am ujednoliconego pełnego stosu monitorowania usługi, który obsługuje teraz "Jednej metryki" i "Alerty jednego" między zasobami; Aby uzyskać więcej informacji, zobacz nasze [wpis w blogu na nowej usługi Azure Monitor](https://azure.microsoft.com/en-us/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/). Nowa platforma monitorowania i zgłaszania alertów platformy Azure została opracowana jako szybciej i MĄDRZEJ i rozszerzalny — przechowywanie tempa z rosnącą expanse chmury obliczeniowej i wiersz z filozofią inteligentnej chmury firmy Microsoft. 
+Usługa Azure Monitor stał się teraz am ujednoliconego pełnego stosu monitorowania usługi, który obsługuje teraz "Jednej metryki" i "Alerty jednego" między zasobami; Aby uzyskać więcej informacji, zobacz nasze [wpis w blogu na nowej usługi Azure Monitor](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/). Nowa platforma monitorowania i zgłaszania alertów platformy Azure została opracowana jako szybciej i MĄDRZEJ i rozszerzalny — przechowywanie tempa z rosnącą expanse chmury obliczeniowej i wiersz z filozofią inteligentnej chmury firmy Microsoft. 
 
 Nowe monitorowania platformy Azure i zgłaszania alertów platformy w miejscu, firma Microsoft będzie wycofywana "klasyczny", monitorowania i zgłaszania alertów platformy — hostowanych na platformie *wyświetlanie alertów klasycznych* sekcji alertów platformy Azure, zostanie uznana za przestarzałą czerwca 2019 r.
 
@@ -57,9 +57,9 @@ Wszystkie klasyczne monitorowania i zgłaszania alertów systemy w tym odpowiada
 
 Wszystkie alerty, które pozostały w klasycznym monitorowanie i alerty platformy poza 2019 czerwca zostaną automatycznie przeniesione przez firmę Microsoft na ich odpowiedniki w nowej platformie usługi Azure monitor w lipcu 2019 r. Proces będzie być bezproblemowe bez żadnych przestojów i upewnij się, że klienci mają bez utraty monitorowania pokrycia.
 
-Wkrótce udostępnimy narzędzia, aby możliwe było dobrowolnie migracji alerty z [alerty (klasyczne) sekcji](monitoring-overview-alerts-classic.md) z witryny Azure portal do nowych alertów platformy Azure. Wszystkie reguły skonfigurowanych w alertach (model klasyczny), które są migrowane do nowej usługi Azure Monitor pozostaną bezpłatne ale nie opłatami. Zmigrowane z klasycznego reguł alertów będzie mieć nie opłatami wypychanie powiadomień pocztą e-mail, element webhook lub aplikacji LogicApp. Jednak użycie nowszej typów powiadomień lub akcję (np. wiadomości SMS, połączenie głosowe, integracji z rozwiązaniami ITSM itd.) będą naliczane czy dodane do migracji lub nowego alertu. Aby uzyskać więcej informacji, zobacz [cennik usługi Azure Monitor](https://azure.microsoft.com/en-us/pricing/details/monitor/).
+Wkrótce udostępnimy narzędzia, aby możliwe było dobrowolnie migracji alerty z [alerty (klasyczne) sekcji](monitoring-overview-alerts-classic.md) z witryny Azure portal do nowych alertów platformy Azure. Wszystkie reguły skonfigurowanych w alertach (model klasyczny), które są migrowane do nowej usługi Azure Monitor pozostaną bezpłatne ale nie opłatami. Zmigrowane z klasycznego reguł alertów będzie mieć nie opłatami wypychanie powiadomień pocztą e-mail, element webhook lub aplikacji LogicApp. Jednak użycie nowszej typów powiadomień lub akcję (np. wiadomości SMS, połączenie głosowe, integracji z rozwiązaniami ITSM itd.) będą naliczane czy dodane do migracji lub nowego alertu. Aby uzyskać więcej informacji, zobacz [cennik usługi Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).
 
-Ponadto następujące będą naliczane w ramach mieszczący [cennik usługi Azure Monitor](https://azure.microsoft.com/en-us/pricing/details/monitor/):
+Ponadto następujące będą naliczane w ramach mieszczący [cennik usługi Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/):
 
 - Wszelkie nowe (nieprzeniesione) reguły alertu przekraczające bezpłatny limit jednostek na nowej platformie usługi Azure Monitor
 - Wszystkie dane pozyskiwane i przechowywane dłużej niż bezpłatny limit jednostek usługi Azure Monitor

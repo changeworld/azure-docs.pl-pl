@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: c4206b3178cd02082b8e0815081fedf59a6836b1
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: eb9387cec98621e27aff7dcb40b8897e326c6706
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068308"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353496"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions JavaScript
 Ten przewodnik zawiera informacje dotyczące niewymagającego pisania usługi Azure Functions za pomocą języka JavaScript.
@@ -375,7 +375,10 @@ module.exports = function(context) {
         .where(context.bindings.myInput.names, {first: 'Carla'});
 ```
 
-Należy zauważyć, że należy zdefiniować `package.json` pliku w katalogu głównym aplikacji funkcji. Definiowanie pliku umożliwia wszystkich funkcji w aplikacji i udostępniać te same pakiety pamięci podręcznej, co daje najlepszą wydajność. Jeśli wystąpi konflikt wersji, można rozwiązać go, dodając `package.json` pliku w folderze określoną funkcję.  
+> [!NOTE]
+> Należy zdefiniować `package.json` pliku w katalogu głównym aplikacji funkcji. Definiowanie pliku umożliwia wszystkich funkcji w aplikacji i udostępniać te same pakiety pamięci podręcznej, co daje najlepszą wydajność. Jeśli wystąpi konflikt wersji, można rozwiązać go, dodając `package.json` pliku w folderze określoną funkcję.  
+
+W przypadku wdrażania aplikacji funkcji z kontroli źródła, wszelkie `package.json` plików w repozytorium, wywoła `npm install` w folderze podczas wdrażania. Jednak w przypadku wdrażania przy użyciu portalu lub interfejsu wiersza polecenia, trzeba będzie ręcznie zainstalować pakiety.
 
 Istnieją dwa sposoby, aby zainstalować pakiety na aplikację funkcji: 
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 0f99913ab252b94d475f920bd734e68ff5f3b3d3
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 31a0ffc2937f6d93a630bf6ce474d7dcf20c923f
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525124"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364391"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Rozwiązywanie problemów z usługą Azure Files w systemie Linux
 
@@ -82,7 +82,7 @@ Niektórych dystrybucjach systemu Linux nie jest jeszcze obsługiwany funkcje sz
 
 ### <a name="solution"></a>Rozwiązanie
 
-Funkcja szyfrowania protokołu SMB 3.0 dla systemu Linux została wprowadzona w 4.11 jądra. Ta funkcja umożliwia instalowanie udziału plików platformy Azure ze środowiska lokalnego lub innego regionu platformy Azure. W czasie publikowania ta funkcja została backported Ubuntu 17.04 i Ubuntu 16.10. Jeśli Twój klient SMB w systemie Linux nie obsługuje szyfrowania, instalowanie usługi Azure Files przy użyciu protokołu SMB 2.1 maszyny wirtualnej systemu Linux platformy Azure, który znajduje się w tym samym centrum danych jako konto magazynu plików.
+Funkcja szyfrowania protokołu SMB 3.0 dla systemu Linux została wprowadzona w 4.11 jądra. Ta funkcja umożliwia instalowanie udziału plików platformy Azure ze środowiska lokalnego lub innego regionu platformy Azure. W czasie publikowania ta funkcja została backported Ubuntu 17.04 i Ubuntu 16.10. Jeśli Twój klient SMB w systemie Linux nie obsługuje szyfrowania, instalowanie usługi Azure plików przy użyciu protokołu SMB 2.1 maszyny wirtualnej systemu Linux platformy Azure, który znajduje się w tym samym centrum danych, co plik udostępnianie i sprawdź [Wymagany bezpieczny transfer]( https://docs.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer) ustawienie jest wyłączone z ilością przestrzeni dyskowej konto. 
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Niska wydajność w udziale plików platformy Azure zainstalowany na maszynie Wirtualnej systemu Linux
@@ -149,7 +149,8 @@ Typowe przyczyny tego problemu są:
 - Minimalna SMB/CIFS wersji 2.1 nie jest zainstalowany na komputerze klienckim.
 - Protokół SMB 3.0 szyfrowania nie jest obsługiwana na komputerze klienckim. Protokół SMB 3.0 szyfrowanie jest dostępne w Ubuntu 16.4 i nowszej wersji, SUSE 12.3 i nowszej wersji. Inne dystrybucje wymagają jądra 4.11 i nowszej wersji.
 - Próbujesz połączyć się z kontem magazynu za pośrednictwem portu TCP 445, która nie jest obsługiwana.
-- Podjęto próby nawiązania połączenia z udziałem plików platformy Azure z Maszyną wirtualną platformy Azure, a maszyna wirtualna nie znajduje się w tym samym regionie co konto magazynu.
+- Próbujesz nawiązać połączenie z udziałem plików platformy Azure z Maszyną wirtualną platformy Azure, a maszyna wirtualna nie znajduje się w tym samym regionie co konto magazynu.
+- Jeśli [Wymagany bezpieczny transfer]( https://docs.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer) ustawienie jest włączone na koncie magazynu, usługi Azure Files będzie Zezwalaj na połączenia tylko z szyfrowaniem przy użyciu protokołu SMB 3.0.
 
 ### <a name="solution"></a>Rozwiązanie
 

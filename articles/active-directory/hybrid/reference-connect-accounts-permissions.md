@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2018
+ms.date: 10/12/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 96d8977a63d26576d4d783dd0661409fdcee90f8
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 03f096bf160c44f7a35f54a73cff6ea701b87d22
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314034"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352923"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konta i uprawnienia
 
@@ -113,6 +113,12 @@ Oto Podsumowanie informacje na temat niestandardowych stron kreatora, poświadcz
 | Strona usług AD FS, konto usługi, "Użyj opcji konta użytkownika domeny" |Poświadczenia konta użytkownika usługi AD |Domena użytkownik |AD konto użytkownika, którego poświadczenia są udostępniane jest używane jako konto logowania usługi AD FS. |
 
 ### <a name="create-the-ad-ds-connector-account"></a>Tworzenie konta usługi AD DS łącznika
+
+>[!IMPORTANT]
+>Moduł programu PowerShell o nazwie ADSyncConfig.psm1 wprowadzono w systemie kompilacji **1.1.880.0** (wydanej w sierpniu 2018 r.), zawiera kolekcję poleceń cmdlet ułatwiają konfigurowanie odpowiednich uprawnień usługi Active Directory do usługi Azure AD DS Konta łącznika.
+>
+>Aby uzyskać więcej informacji, zobacz [program Azure AD Connect: Konfigurowanie usługi AD DS łącznika kontu uprawnienia](how-to-connect-configure-ad-ds-connector-account.md)
+
 Konta określane na **Podłączanie katalogów** strony musi być obecny w usłudze Active Directory przed instalacją.  Usługa Azure AD Connect w wersji w 1.1.524.0, a później ma opcję, aby umożliwić Kreator Azure AD Connect, Utwórz **konta usługi AD DS łącznika** używane do łączenia z usługą Active Directory.  
 
 Musi również mieć wymagane uprawnienia. Kreator instalacji nie Sprawdź, czy uprawnienia i wszelkie problemy mogą znajdować się tylko podczas synchronizacji.

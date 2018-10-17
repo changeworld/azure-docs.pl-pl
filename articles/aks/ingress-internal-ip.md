@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: iainfou
-ms.openlocfilehash: 76ad9d21f7b328e7f201d227cdd9ace51c62a3fd
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: ffa6aa3b9e65577761343e2e09a44ce16a05631f
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357276"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365598"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Utworzyć kontroler ruch przychodzący z siecią wirtualną wewnętrzny w usłudze Azure Kubernetes Service (AKS)
 
@@ -47,13 +47,16 @@ controller:
       service.beta.kubernetes.io/azure-load-balancer-internal: "true"
 ```
 
-Teraz wdrożyć *ruch przychodzący serwera nginx* wykresu za pomocą narzędzia Helm. Aby użyć pliku manifestu utworzonego w poprzednim kroku, należy dodać `-f internal-ingress.yaml` parametru:
+Teraz wdrożyć *ruch przychodzący serwera nginx* wykresu za pomocą narzędzia Helm. Aby użyć pliku manifestu utworzonego w poprzednim kroku, należy dodać `-f internal-ingress.yaml` parametru. Dodano nadmiarowość dwóch replik kontrolerów ruch przychodzący serwera NGINX są wdrażane przy użyciu `--set controller.replicaCount` parametru. Aby w pełni korzystać z systemem replik kontrolera danych przychodzących, upewnij się, że istnieje więcej niż jeden węzeł w klastrze AKS.
 
 > [!TIP]
 > W poniższym przykładzie instalowana kontroler danych przychodzących w `kube-system` przestrzeni nazw. Jeśli to konieczne, można określić innej przestrzeni nazw dla Twojego środowiska. Jeśli klaster AKS nie jest włączone RBAC, Dodaj `--set rbac.create=false` poleceń.
 
 ```console
-helm install stable/nginx-ingress --namespace kube-system -f internal-ingress.yaml
+helm install stable/nginx-ingress \
+    --namespace kube-system \
+    -f internal-ingress.yaml \
+    --set controller.replicaCount=2
 ```
 
 Po utworzeniu rozwiązania Kubernetes usługi równoważenia obciążenia dla kontrolera danych przychodzących NGINX swoje wewnętrzny adres IP jest przypisywany, jak pokazano w następujących przykładowych danych wyjściowych:
@@ -173,6 +176,41 @@ $ curl -L -k http://10.240.0.42/hello-world-two
     <link rel="stylesheet" type="text/css" href="/static/default.css">
     <title>AKS Ingress Demo</title>
 [...]
+```
+
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+W tym artykule używane narzędzia Helm do zainstalowania składników transferu danych przychodzących i przykładowe aplikacje. Podczas wdrażania wykresu Helm tworzonych wiele zasobów Kubernetes. Te zasoby obejmują zasobników, wdrożenia i usług. Aby wyczyścić te zasoby, najpierw listy wersji narzędzia Helm przy użyciu `helm list` polecenia. Wyszukaj wykresy o nazwie *ruch przychodzący serwera nginx* i *aks-helloworld*, jak pokazano w następujących przykładowych danych wyjściowych:
+
+```
+$ helm list
+
+NAME                REVISION    UPDATED                     STATUS      CHART                   APP VERSION NAMESPACE
+kissing-ferret      1           Tue Oct 16 17:13:39 2018    DEPLOYED    nginx-ingress-0.22.1    0.15.0      kube-system
+intended-lemur      1           Tue Oct 16 17:20:59 2018    DEPLOYED    aks-helloworld-0.1.0                default
+pioneering-wombat   1           Tue Oct 16 17:21:05 2018    DEPLOYED    aks-helloworld-0.1.0                default
+```
+
+Usuń wersjach z `helm delete` polecenia. Poniższy przykład usuwa wdrażania ruch przychodzący serwera NGINX i dwie przykładowe AKS Witaj świecie aplikacje.
+
+```
+$ helm delete kissing-ferret intended-lemur pioneering-wombat
+
+release "kissing-ferret" deleted
+release "intended-lemur" deleted
+release "pioneering-wombat" deleted
+```
+
+Następnie usuń repozytorium narzędzia Helm dla usługi AKS hello world aplikacji:
+
+```console
+helm repo remove azure-samples
+```
+
+Na koniec usunąć trasę ruchu przychodzącego, który kierowany ruch do aplikacji przykładowej:
+
+```console
+kubectl delete -f hello-world-ingress.yaml
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

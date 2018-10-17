@@ -8,18 +8,21 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: 181a37504569088e44dbe39da9113257bfb35c4e
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 9a096588c5a8fda64343e001fdbd895d02153f58
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068947"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362708"
 ---
 # <a name="http-application-routing"></a>Routing aplikacji protokołu HTTP
 
 Rozwiązanie routing aplikacji protokołu HTTP można łatwo uzyskiwać dostęp do aplikacji, które są wdrażane w klastrze usługi Azure Kubernetes Service (AKS). Po włączeniu rozwiązania konfiguruje kontrolera danych przychodzących w klastrze AKS. Podczas wdrażania aplikacji, rozwiązania wzrasta, powstaje publicznie dostępne nazwy DNS dla punktów końcowych aplikacji.
 
 Gdy dodatek jest włączona, tworzy strefę DNS w ramach subskrypcji. Aby uzyskać więcej informacji na temat kosztu DNS Zobacz [ceny DNS][dns-pricing].
+
+> [!CAUTION]
+> Dodatek routing aplikacji protokołu HTTP jest przeznaczona do umożliwiają szybkie tworzenie kontrolera danych przychodzących i dostęp do aplikacji. Ten dodatek nie jest zalecane do użytku produkcyjnego. Dla obsługi wdrożenia gotowe do produkcji transferu danych przychodzących, które obejmują wiele replik i TLS, zobacz [utworzyć kontroler danych przychodzących HTTPS](https://docs.microsoft.com/en-us/azure/aks/ingress-tls).
 
 ## <a name="http-routing-solution-overview"></a>Omówienie rozwiązania routingu protokołu HTTP
 

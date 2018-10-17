@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: iainfou
-ms.openlocfilehash: 87ea88ad84114c4059e9a461beedb656c1d66bf5
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 4679b800126f75596dcb78b46c65c6ac2b616729
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356947"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364629"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Tworzenie kontrolera danych przychodzących HTTPS w usłudze Azure Kubernetes Service (AKS)
 
@@ -35,13 +35,13 @@ W tym artykule wymaga również, czy korzystasz z wiersza polecenia platformy Az
 
 ## <a name="create-an-ingress-controller"></a>Tworzenie kontrolera danych przychodzących
 
-Aby utworzyć kontroler danych przychodzących, użyj `Helm` zainstalował *ruch przychodzący serwera nginx*.
+Aby utworzyć kontroler danych przychodzących, użyj `Helm` zainstalował *ruch przychodzący serwera nginx*. Dodano nadmiarowość dwóch replik kontrolerów ruch przychodzący serwera NGINX są wdrażane przy użyciu `--set controller.replicaCount` parametru. Aby w pełni korzystać z systemem replik kontrolera danych przychodzących, upewnij się, że istnieje więcej niż jeden węzeł w klastrze AKS.
 
 > [!TIP]
 > W poniższym przykładzie instalowana kontroler danych przychodzących w `kube-system` przestrzeni nazw. Jeśli to konieczne, można określić innej przestrzeni nazw dla Twojego środowiska. Jeśli klaster AKS nie jest włączone RBAC, Dodaj `--set rbac.create=false` poleceń.
 
 ```console
-helm install stable/nginx-ingress --namespace kube-system
+helm install stable/nginx-ingress --namespace kube-system --set controller.replicaCount=2
 ```
 
 Podczas instalacji Azure publiczny adres IP jest tworzona dla kontrolera danych przychodzących. Ten publiczny adres IP to statyczny dla żywotności kontrolera danych przychodzących. Jeśli usuniesz kontrolera danych przychodzących, przypisanie publicznego adresu IP zostanie utracony. Jeśli następnie utworzysz kontroler dodatkowy ruch przychodzący, nowy publiczny adres IP zostanie przypisany. Jeśli chcesz zachować użycie publicznego adresu IP, możesz zamiast tego [utworzyć kontroler danych przychodzących z statyczny publiczny adres IP][aks-ingress-static-tls].
@@ -90,17 +90,21 @@ Kontroler danych przychodzących NGINX obsługuje kończenie żądań protokołu
 Aby zainstalować kontroler Menedżera certyfikatów w klastrze z włączoną funkcją RBAC, należy użyć następującego `helm install` polecenia:
 
 ```console
-helm install stable/cert-manager --set ingressShim.defaultIssuerName=letsencrypt-staging --set ingressShim.defaultIssuerKind=ClusterIssuer
+helm install stable/cert-manager \
+    --namespace kube-system \
+    --set ingressShim.defaultIssuerName=letsencrypt-staging \
+    --set ingressShim.defaultIssuerKind=ClusterIssuer
 ```
 
 Jeśli klaster nie jest włączone RBAC, zamiast tego użyj następującego polecenia:
 
 ```console
 helm install stable/cert-manager \
-  --set ingressShim.defaultIssuerName=letsencrypt-staging \
-  --set ingressShim.defaultIssuerKind=ClusterIssuer \
-  --set rbac.create=false \
-  --set serviceAccount.create=false
+    --namespace kube-system \
+    --set ingressShim.defaultIssuerName=letsencrypt-staging \
+    --set ingressShim.defaultIssuerKind=ClusterIssuer \
+    --set rbac.create=false \
+    --set serviceAccount.create=false
 ```
 
 Aby uzyskać więcej informacji na temat konfiguracji Menedżera certyfikatów, zobacz [projektu Menedżera certyfikatów][cert-manager].
@@ -252,6 +256,50 @@ Aplikacji demonstracyjnej jest wyświetlany w przeglądarce sieci web:
 Teraz Dodaj */hello-world-two* ścieżkę do pełni kwalifikowaną nazwę domeny, takich jak *https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two*. Pokazano drugiej aplikacji demonstracyjnej z tytułem niestandardowe:
 
 ![Przykładowa aplikacja dwóch](media/ingress/app-two.png)
+
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+W tym artykule używane narzędzia Helm do zainstalowania składników transferu danych przychodzących, certyfikaty i przykładowe aplikacje. Podczas wdrażania wykresu Helm tworzonych wiele zasobów Kubernetes. Te zasoby obejmują zasobników, wdrożenia i usług. Aby wyczyścić, należy najpierw usunąć zasoby certyfikatu:
+
+```console
+kubectl delete -f certificates.yaml
+kubectl delete -f cluster-issuer.yaml
+```
+
+Teraz wyświetlić listę wersji narzędzia Helm przy użyciu `helm list` polecenia. Wyszukaj wykresy o nazwie *ruch przychodzący serwera nginx*, *Menedżera certyfikatów*, i *aks-helloworld*, jak pokazano w następujących przykładowych danych wyjściowych:
+
+```
+$ helm list
+
+NAME                    REVISION    UPDATED                     STATUS      CHART                   APP VERSION NAMESPACE
+billowing-kitten        1           Tue Oct 16 17:24:05 2018    DEPLOYED    nginx-ingress-0.22.1    0.15.0      kube-system
+loitering-waterbuffalo  1           Tue Oct 16 17:26:16 2018    DEPLOYED    cert-manager-v0.3.4     v0.3.2      kube-system
+flabby-deer             1           Tue Oct 16 17:27:06 2018    DEPLOYED    aks-helloworld-0.1.0                default
+linting-echidna         1           Tue Oct 16 17:27:02 2018    DEPLOYED    aks-helloworld-0.1.0                default
+```
+
+Usuń wersjach z `helm delete` polecenia. Poniższy przykład usuwa wdrożenia ruch przychodzący serwera NGINX, Menedżer certyfikatów i dwie przykładowe AKS Witaj świecie aplikacje.
+
+```
+$ helm delete billowing-kitten loitering-waterbuffalo flabby-deer linting-echidna
+
+release "billowing-kitten" deleted
+release "loitering-waterbuffalo" deleted
+release "flabby-deer" deleted
+release "linting-echidna" deleted
+```
+
+Następnie usuń repozytorium narzędzia Helm dla usługi AKS hello world aplikacji:
+
+```console
+helm repo remove azure-samples
+```
+
+Na koniec usunąć trasę ruchu przychodzącego, który kierowany ruch do aplikacji przykładowej:
+
+```console
+kubectl delete -f hello-world-ingress.yaml
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

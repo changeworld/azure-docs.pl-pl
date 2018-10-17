@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: ace95d39cf7c2d183249b0b6c4094835132b3198
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 90f6841ddc2fe1c017dbfc7e9046fae4a0ceb097
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249387"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363813"
 ---
 # <a name="create-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Tworzenie środowiska Azure-SSIS integration runtime w usłudze Azure Data Factory
 Ten artykuł zawiera instrukcje aprowizacji środowiska Azure-SSIS integration runtime w usłudze Azure Data Factory. Następnie możesz użyć programu SQL Server Data Tools (SSDT) lub SQL Server Management Studio (SSMS) do wdrożenia pakietów usług SQL Server Integration Services (SSIS) w tym środowisku uruchomieniowym na platformie Azure. 
@@ -43,7 +43,7 @@ Podczas aprowizowania wystąpienia środowiska Azure-SSIS IR są instalowane ró
 ## <a name="prerequisites"></a>Wymagania wstępne 
 - **Subskrypcja platformy Azure**. Jeśli nie masz subskrypcji, możesz utworzyć konto [bezpłatnej wersji próbnej](http://azure.microsoft.com/pricing/free-trial/). 
 
-- **Serwer logiczny usługi Azure SQL Database lub wystąpienia zarządzanego**. Jeśli nie masz jeszcze serwera bazy danych, utwórz go w witrynie Azure Portal, zanim zaczniesz. Ten serwer hostuje bazę danych katalogu usług SSIS (SSISDB). Zaleca się utworzenie serwera bazy danych w tym samym regionie platformy Azure, co środowisko Integration Runtime. Ta konfiguracja pozwala środowisku Integration Runtime zapisywać dzienniki wykonywania SSISDB bez wykraczania poza granice regionów świadczenia usług platformy Azure. Na podstawie wybranej bazy danych serwera, bazy danych SSISDB można utworzyć w Twoim imieniu jako pojedynczej bazy danych, część puli elastycznej, lub w wystąpieniu zarządzanym i dostępne w sieci publicznej lub po dołączeniu do sieci wirtualnej. Aby uzyskać listę obsługiwanych warstw cenowych usługi Azure SQL Database, zobacz [limity zasobów bazy danych SQL](../sql-database/sql-database-resource-limits.md). 
+- **Serwer logiczny usługi Azure SQL Database lub wystąpienia zarządzanego**. Jeśli nie masz jeszcze serwera bazy danych, utwórz go w witrynie Azure Portal, zanim zaczniesz. Ten serwer hostuje bazę danych katalogu usług SSIS (SSISDB). Zaleca się utworzenie serwera bazy danych w tym samym regionie platformy Azure, co środowisko Integration Runtime. Ta konfiguracja pozwala środowisku Integration Runtime zapisywać dzienniki wykonywania SSISDB bez wykraczania poza granice regionów świadczenia usług platformy Azure. W zależności od wybranego serwera bazy danych baza danych SSISDB może zostać utworzona w Twoim imieniu jako pojedyncza baza danych, jako część elastycznej puli lub w ramach wystąpienia zarządzanego i może być dostępna w sieci publicznej lub przez dołączenie do sieci wirtualnej. Aby uzyskać listę obsługiwanych warstw cenowych usługi Azure SQL Database, zobacz [limity zasobów bazy danych SQL](../sql-database/sql-database-resource-limits.md). 
 
     Upewnij się, że usługi serwera logicznego usługi Azure SQL Database lub wystąpienia zarządzanego nie ma jeszcze katalogu usług SSIS (baza danych SSIDB). Aprowizacja środowiska IR Azure-SSIS nie obsługuje istniejącego katalogu usług SSIS. 
 
@@ -68,7 +68,7 @@ W poniższej tabeli porównano określonymi funkcjami serwera logicznego bazy da
 | **Uwierzytelnianie** | Można utworzyć bazę danych przy użyciu konta użytkownika zawartej bazy danych, który reprezentuje dowolnego użytkownika usługi Azure Active Directory **dbmanager** roli.<br/><br/>Zobacz [włączyć usługi Azure AD w usłudze Azure SQL Database](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Nie można utworzyć bazę danych przy użyciu konta użytkownika zawartej bazy danych, który reprezentuje wszystkie konta użytkownika usługi Azure Active Directory niż administrator usługi Azure AD <br/><br/>Zobacz [włączyć usługi Azure AD na wystąpienie zarządzane usługi Azure SQL Database](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance). |
 | **Warstwa usług** | Podczas tworzenia środowiska Azure-SSIS IR w bazie danych SQL, można wybrać warstwę usług dla bazy danych SSISDB. Istnieje wiele warstw usług. | Po utworzeniu środowiska IR Azure-SSIS na wystąpieniu zarządzanym nie można wybrać warstwę usług dla bazy danych SSISDB. Wszystkie bazy danych na tym samym wystąpieniu zarządzanym współużytkują ten sam zasób przydzielony do tego wystąpienia. |
 | **Sieć wirtualna** | Obsługuje zarówno usługi Azure Resource Manager i klasycznych sieci wirtualnych. | Obsługuje tylko sieć wirtualną usługi Azure Resource Manager. Sieć wirtualna jest wymagana.<br/><br/>Jeśli dołączysz do środowiska Azure-SSIS IR do tej samej sieci wirtualnej jako wystąpienia zarządzanego, upewnij się, że Azure-SSIS IR znajduje się w innej podsieci niż wystąpienia zarządzanego. Jeśli dołączysz do środowiska Azure-SSIS IR do sieci wirtualnej inną niż wystąpienie zarządzane, firma Microsoft zaleca komunikacji równorzędnej sieci wirtualnej (który jest ograniczona do tego samego regionu) lub sieci wirtualnej do połączenia sieci wirtualnej. Zobacz [połączyć aplikację z wystąpienia zarządzanego Azure SQL Database](../sql-database/sql-database-managed-instance-connect-app.md). |
-| **Transakcje rozproszone** | Transakcje rozproszone transakcji Koordynator MSDTC (Microsoft) nie są obsługiwane. Jeśli pakiety koordynowanie transakcji rozproszonych za pomocą usługi MSDTC, można zaimplementować rozwiązanie tymczasowe przy użyciu transakcje elastyczne usługi SQL Database. W tej chwili SSIS nie ma wbudowaną obsługę transakcje elastyczne. Aby móc używać transakcji elastycznych w pakiecie usług SSIS, masz pisania niestandardowego kodu ADO.NET w zadaniu skryptu. To zadanie skryptu musi zawierać początku i końcu transakcji, a wszystkie czynności, które muszą występować wewnątrz transakcji.<br/><br/>Aby uzyskać więcej informacji na temat kodowania transakcje elastyczne, zobacz [transakcje elastyczne w usłudze Azure SQL Database](https://azure.microsoft.com/en-us/blog/elastic-database-transactions-with-azure-sql-database/). Aby uzyskać więcej informacji na temat transakcje elastyczne, zobacz [transakcje rozproszone w bazach danych w chmurze](../sql-database/sql-database-elastic-transactions-overview.md). | Nieobsługiwane. |
+| **Transakcje rozproszone** | Transakcje rozproszone transakcji Koordynator MSDTC (Microsoft) nie są obsługiwane. Jeśli pakiety koordynowanie transakcji rozproszonych za pomocą usługi MSDTC, można zaimplementować rozwiązanie tymczasowe przy użyciu transakcje elastyczne usługi SQL Database. W tej chwili SSIS nie ma wbudowaną obsługę transakcje elastyczne. Aby móc używać transakcji elastycznych w pakiecie usług SSIS, masz pisania niestandardowego kodu ADO.NET w zadaniu skryptu. To zadanie skryptu musi zawierać początku i końcu transakcji, a wszystkie czynności, które muszą występować wewnątrz transakcji.<br/><br/>Aby uzyskać więcej informacji na temat kodowania transakcje elastyczne, zobacz [transakcje elastyczne w usłudze Azure SQL Database](https://azure.microsoft.com/blog/elastic-database-transactions-with-azure-sql-database/). Aby uzyskać więcej informacji na temat transakcje elastyczne, zobacz [transakcje rozproszone w bazach danych w chmurze](../sql-database/sql-database-elastic-transactions-overview.md). | Nieobsługiwane. |
 | | | |
 
 ## <a name="azure-portal"></a>Azure Portal
@@ -144,7 +144,7 @@ W tej sekcji użyjesz witryny Azure portal, specjalnie Interfejsie Data Factory,
 
     b. W polu **Lokalizacja** określ lokalizację serwera bazy danych hostującego bazę danych SSISDB. Zalecamy wybranie tej samej lokalizacji co w przypadku środowiska Integration Runtime. 
 
-    d. W polu **Punkt końcowy serwera bazy danych wykazu** wybierz punkt końcowy serwera bazy danych hostującego bazę danych SSISDB. Na podstawie wybranej bazy danych serwera, bazy danych SSISDB można utworzyć w Twoim imieniu jako pojedynczej bazy danych, część puli elastycznej, lub w wystąpieniu zarządzanym i dostępne w sieci publicznej lub po dołączeniu do sieci wirtualnej. 
+    d. W polu **Punkt końcowy serwera bazy danych wykazu** wybierz punkt końcowy serwera bazy danych hostującego bazę danych SSISDB. W zależności od wybranego serwera bazy danych baza danych SSISDB może zostać utworzona w Twoim imieniu jako pojedyncza baza danych, jako część elastycznej puli lub w ramach wystąpienia zarządzanego i może być dostępna w sieci publicznej lub przez dołączenie do sieci wirtualnej. 
 
     d. Na **uwierzytelnianie w usłudze AAD użycia...**  pole wyboru, wybierz metodę uwierzytelniania dla serwera bazy danych do hostowania bazy SSISDB: bazy danych SQL lub Azure Active Directory (AAD) przy użyciu usługi Azure Data Factory tożsamości zarządzanej dla zasobów platformy Azure. Jeśli możesz sprawdzić, musisz dodać swoje MSI fabryki danych do grupy usługi AAD ma uprawnienia dostępu do serwera bazy danych, zobacz [Włącz uwierzytelnianie usługi AAD dla środowiska Azure-SSIS IR](https://docs.microsoft.com/en-us/azure/data-factory/enable-aad-authentication-azure-ssis-ir). 
 
@@ -152,7 +152,7 @@ W tej sekcji użyjesz witryny Azure portal, specjalnie Interfejsie Data Factory,
 
     f. W polu **Hasło administratora** wprowadź hasło uwierzytelnienia SQL dla serwera bazy danych hostującego bazę danych SSISDB. 
 
-    g. Aby uzyskać **warstwy usługi bazy danych wykazu**, wybierz warstwę usługi dla serwera bazy danych do hostowania bazy SSISDB: Nazwa podstawowa/standardowa/Premium warstwy lub elastycznej puli. 
+    g. W polu **Warstwa usługi bazy danych katalogu** wybierz warstwę usługi dla serwera bazy hostującego bazę danych SSISDB: warstwa Podstawowa/Standardowa/Premium lub nazwa puli elastycznej. 
 
     h. Kliknij pozycję **Testuj połączenie**. Jeśli test zakończył się pomyślnie, kliknij przycisk **Dalej**. 
 

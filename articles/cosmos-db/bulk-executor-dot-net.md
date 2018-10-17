@@ -1,25 +1,26 @@
 ---
-title: Za pomocą biblioteki .NET wykonawca zbiorcze, aby wykonywały operacje zbiorcze w usłudze Azure Cosmos DB | Dokumentacja firmy Microsoft
-description: Biblioteka .NET wykonawca zbiorcze usługi Azure Cosmos DB umożliwia zbiorcze importowanie i aktualizowanie dokumentów z kontenerami usługi Azure Cosmos DB.
-keywords: Program .net przetwarzania zbiorczego
+title: Za pomocą biblioteki .NET wykonawca zbiorcze można wykonać operacji importu zbiorczego operacje i aktualizacji w usłudze Azure Cosmos DB | Dokumentacja firmy Microsoft
+description: Zbiorcze importowanie i aktualizowanie dokumentów usługi Azure Cosmos DB za pomocą biblioteki .NET przetwarzania zbiorczego.
 services: cosmos-db
 author: tknandu
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: cc0faa44501ea130309a02bb48d02f9c5b33febd
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 04894fdd0ffff38ad129097ce839259f2993332c
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053384"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363402"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Wykonywały operacje zbiorcze w usłudze Azure Cosmos DB za pomocą biblioteki .NET przetwarzania zbiorczego
 
-Ten samouczek zawiera instrukcje na temat korzystania z usługi Azure Cosmos DB zbiorcze wykonawca biblioteki .NET do importowania i aktualizowania dokumentów do kontenera usługi Azure Cosmos DB. Aby dowiedzieć się o biblioteki wykonawca zbiorcze oraz jak pomaga w ogromnej przepustowości i magazynu, zobacz [Przegląd biblioteki wykonawca zbiorcze](bulk-executor-overview.md) artykułu. Ten samouczek przeprowadzi Cię przykładowej aplikacji .NET, która zbiorczo Importy generowany losowo dokumentów do kontenera usługi Azure Cosmos DB. Po zaimportowaniu go pokazuje jak można dokonywać zbiorczej aktualizacji importowanych danych, określając poprawki jako operacje do wykonania w polach określonego dokumentu.
+Ten samouczek zawiera instrukcje na temat korzystania z usługi Azure Cosmos DB zbiorcze wykonawca biblioteki .NET do importowania i aktualizowania dokumentów do kontenera usługi Azure Cosmos DB. Aby dowiedzieć się o biblioteki wykonawca zbiorcze oraz jak pomaga w ogromnej przepustowości i magazynu, zobacz [Przegląd biblioteki wykonawca zbiorcze](bulk-executor-overview.md) artykułu. W tym samouczku zobaczysz, że przykładowej aplikacji .NET, która zbiorczo Importy losowo generowany dokumentów do kontenera usługi Azure Cosmos DB. Po zaimportowaniu go pokazuje jak można dokonywać zbiorczej aktualizacji importowanych danych, określając poprawki jako operacje do wykonania w polach określonego dokumentu. 
+
+Obecnie zbiorcze wykonawca biblioteka jest obsługiwana przez interfejsu API SQL usługi Azure Cosmos DB i tylko konta interfejsu API języka Gremlin. W tym artykule opisano, jak biblioteka .NET wykonawca zbiorcze za pomocą konta interfejsu API SQL. Aby dowiedzieć się więcej o korzystaniu z biblioteki .NET wykonawca zbiorcze za pomocą interfejsu API języka Gremlin, zobacz [wykonywały operacje zbiorcze w usłudze Azure Cosmos DB — interfejs API Gremlin](bulk-executor-graph-dotnet.md). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

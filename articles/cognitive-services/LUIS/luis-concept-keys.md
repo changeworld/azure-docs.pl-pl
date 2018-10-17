@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: a4bd20f9f8a6a8317e161b1d84e948391cd08140
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d0e7c3f7aeb42fd1525519b7908b1be6fc48aa65
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034930"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362521"
 ---
 # <a name="keys-in-luis"></a>Klucze usługi LUIS
 Usługa LUIS wykorzystuje dwa klucze: [tworzenia](#programmatic-key) i [punktu końcowego](#endpoint-key). Podczas tworzenia konta usługi LUIS tworzenia klucza jest tworzony automatycznie. Gdy wszystko jest gotowe do opublikowania z aplikacją usługi LUIS, musisz [tworzenia klucza punktu końcowego](luis-how-to-azure-subscription.md#create-luis-endpoint-key), [ją przypisać](luis-how-to-manage-keys.md#assign-endpoint-key) z aplikacją usługi LUIS i [pomocą kwerendy punktu końcowego](#use-endpoint-key-in-query). 
@@ -60,7 +60,7 @@ Punkt końcowy usługi LUIS akceptuje dwa style zapytania, ale klucza punktu ko�
 |[GET](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|`https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn%20on%20the%20lights`<br><br>wartość ciągu zapytania `subscription-key`<br><br>Zmień wartość kwerendy punktu końcowego dla `subscription-key` z tworzenia klucza (starter), do nowego klucza punktu końcowego, aby można było używać współczynnik przydziału klucza punktu końcowego usługi LUIS. Jeśli klucz zostanie utworzony i przypisać klawisz ale nie zmieniaj wartości kwerendy punktu końcowego dla klucza subskrypcji ", nie używasz przydziału klucza punktu końcowego.|
 |[POST](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2`<br><br> wartość nagłówka `Ocp-Apim-Subscription-Key`<br><br>Zmień wartość kwerendy punktu końcowego dla `Ocp-Apim-Subscription-Key` z tworzenia klucza (starter), do nowego klucza punktu końcowego, aby można było używać współczynnik przydziału klucza punktu końcowego usługi LUIS. Jeśli klucz zostanie utworzony i przypisz klucza, ale nie zmieniaj wartości kwerendy punktu końcowego dla `Ocp-Apim-Subscription-Key`, nie używasz przydziału klucza punktu końcowego.|
 
-Identyfikator aplikacji używane w poprzednich adresów URL, `df67dcdb-c37d-46af-88e1-8b97951ca1c2`, jest publiczny aplikacja IoT, używana do [pokaz interaktywny](https://azure.microsoft.com/en-us/services/cognitive-services/language-understanding-intelligent-service/). 
+Identyfikator aplikacji używane w poprzednich adresów URL, `df67dcdb-c37d-46af-88e1-8b97951ca1c2`, jest publiczny aplikacja IoT, używana do [pokaz interaktywny](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/). 
 
 ## <a name="api-usage-of-ocp-apim-subscription-key"></a>Użycie interfejsu API Ocp-Apim-Subscription-Key
 Interfejsy API usługi LUIS Użyj wartości header `Ocp-Apim-Subscription-Key`. Nazwa nagłówka nie zmienia się zależnie od którego klucz i zestaw interfejsów API używają. Ustaw nagłówek do tworzenia klucza do tworzenia interfejsów API. Jeśli używasz punktu końcowego Ustaw nagłówek do klucza punktu końcowego. 

@@ -5,16 +5,16 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/06/2018
+ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 5b906b4a90dbceb62c6f2381d0ffa8bc1bee7ef1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1ed76b0505747831363ea829f1cb91b3e056282a
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033825"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352450"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Dołączanie rozwiązania Update Management, śledzenia zmian i spisu
 
@@ -93,11 +93,11 @@ Wybierz **zarządzać maszynami**. Spowoduje to otwarcie **Zarządzaj maszynami*
 
 ### <a name="all-available-machines"></a>Wszystkich dostępnych maszynach
 
-Aby włączyć rozwiązanie dla wszystkich dostępnych maszynach, zaznacz **Włącz na wszystkich dostępnych maszynach**. Powoduje to wyłączenie kontroli w celu dodania maszyn indywidualnie. To zadanie dodaje wszystkie nazwy maszyn raportujących do obszaru roboczego do grupy komputerów, zapisane zapytania wyszukiwania.
+Aby włączyć rozwiązanie dla wszystkich dostępnych maszynach, zaznacz **Włącz na wszystkich dostępnych maszynach**. Powoduje to wyłączenie kontroli w celu dodania maszyn indywidualnie. To zadanie dodaje wszystkie nazwy maszyn raportujących do obszaru roboczego do grupy komputerów, zapisane zapytania wyszukiwania. Gdy zaznaczone, powoduje to wyłączenie **Zarządzaj maszynami** przycisku.
 
 ### <a name="all-available-and-future-machines"></a>Wszystkich dostępnych i przyszłych maszynach
 
-Aby włączyć rozwiązanie dla wszystkich dostępnych maszynach i wszystkich przyszłych maszynach, zaznacz **Włącz na wszystkich dostępnych i przyszłych maszynach**. Ta opcja usuwa zapisane wyszukiwania i konfiguracje zakresów z obszaru roboczego. Spowoduje to otwarcie rozwiązania do wszystkich platformy Azure i maszyn nienależących do platformy Azure, które raportują do obszaru roboczego.
+Aby włączyć rozwiązanie dla wszystkich dostępnych maszynach i wszystkich przyszłych maszynach, zaznacz **Włącz na wszystkich dostępnych i przyszłych maszynach**. Ta opcja usuwa zapisane wyszukiwania i konfiguracje zakresów z obszaru roboczego. Spowoduje to otwarcie rozwiązania do wszystkich platformy Azure i maszyn nienależących do platformy Azure, które raportują do obszaru roboczego. Gdy zaznaczone, powoduje to wyłączenie **Zarządzaj maszynami** przycisku.
 
 ### <a name="selected-machines"></a>Wybrane maszyny
 
@@ -120,13 +120,13 @@ Po usunięciu tych rozwiązań, można wykonać poniższe kroki, aby odłączyć
 
 1. W witrynie Azure Portal otwórz konto usługi Automation, a na automatyzację konta wybierz stronę **połączony obszar roboczy** sekcji **powiązane zasoby** po lewej stronie.
 
-1. Na stronie odłączania obszaru roboczego kliknij **odłączanie obszaru roboczego**.
+2. Na stronie odłączania obszaru roboczego kliknij **odłączanie obszaru roboczego**.
 
    ![Odłącz strona obszaru roboczego](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png).
 
    Zostanie wyświetlony monit sprawdzający, czy chcesz kontynuować.
 
-1. Gdy usługa Azure Automation usiłuje odłączyć konto obszaru roboczego usługi Log Analytics, możesz śledzić postęp w obszarze **powiadomienia** z menu.
+3. Gdy usługa Azure Automation usiłuje odłączyć konto obszaru roboczego usługi Log Analytics, możesz śledzić postęp w obszarze **powiadomienia** z menu.
 
 Jeśli używane jest rozwiązanie do zarządzania aktualizacjami, opcjonalnie można usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
 

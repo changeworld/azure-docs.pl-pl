@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: luisca
-ms.openlocfilehash: b428e6e7738c8a9052c3fcfe2ad5284bfd5293d6
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 4dfc4d250cae80e7837db5cfbcc3af15390b2bb4
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39307997"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352340"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>Przykład: Tworzenie niestandardowego umiejętności, przy użyciu interfejsu API tłumaczenia tekstu
 
@@ -37,6 +37,8 @@ Chociaż ten przykład używa funkcji platformy Azure do hostowania interfejsu A
 1. W programie Visual Studio, wybierz **New** > **projektu** za pomocą menu Plik.
 
 1. W oknie dialogowym Nowy projekt, wybierz **zainstalowane**, rozwiń węzeł **Visual C#** > **chmury**, wybierz opcję **usługi Azure Functions**, wpisz Nazwa projektu, a następnie wybierz pozycję **OK**. Nazwa aplikacji funkcji musi być prawidłową nazwą przestrzeni nazw C#, dlatego nie należy używać znaków podkreślenia, łączników ani znaków innych niż alfanumeryczne.
+
+1. Wybierz **usługi Azure Functions w wersji 2 (.Net Core)**. Można też zrobić to z wersją 1, ale kod napisany poniżej jest oparty na szablonie v2.
 
 1. Wybierz typ jako **wyzwalacz HTTP**
 

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 033e5e5e054b0a29961ad60e72b1466b51d1df0c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 5fda0ac590e5faeaa8b6ec44a7d649d2c0122eeb
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035202"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352989"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>Role jednostki we wzorcach są podtypy kontekstowych
 Role są podtypy nazwanych, kontekstowych podmiotu używana tylko w [wzorców](luis-concept-patterns.md).
@@ -28,6 +28,8 @@ Role nadaj nazwę różnic:
 |--|--|--|
 |Lokalizacja|źródło|Jeżeli płaszczyzny pozostawia z|
 |Lokalizacja|miejsce docelowe|gdzie wyładowuje płaszczyzna|
+|Wstępnie utworzone datetimeV2|na|Data zakończenia|
+|Wstępnie utworzone datetimeV2|z|Data rozpoczęcia|
 
 ## <a name="how-are-roles-used-in-patterns"></a>Jak role są używane we wzorcach?
 W polu wypowiedź szablonu wzorca role są używane w ramach wypowiedź: 
@@ -47,6 +49,14 @@ Jednostki hierarchiczną zapewnia te same informacje kontekstowe jako role, ale 
 |--|--|
 |Hierarchiczna jednostek|Intencji|
 |role|Wzorce|
+
+## <a name="roles-with-prebuilt-entities"></a>Role z wstępnie utworzonych jednostek
+
+Za pomocą ról wstępnie utworzonych jednostek oferowanie znaczenie różnych wystąpień wstępnie utworzone jednostki w ramach wypowiedź. 
+
+### <a name="roles-with-datetimev2"></a>Role z datetimeV2
+
+Wstępnie utworzone jednostki, datetimeV2, wykonuje świetnie zrozumienia szeroką gamę różnych w daty i godziny w wypowiedzi. Można określić daty i zakresy dat inaczej niż wstępnie utworzone jednostki domyślnej interpretacji. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: iainfou
-ms.openlocfilehash: 71a2409f91927b7584aef629109a6da363857f62
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 0ffa1541439890a0591b52c1fdbc717c7d5aa5ff
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036647"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362560"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Tworzenie kontrolera danych przychodzących za pomocą statyczny publiczny adres IP w usłudze Azure Kubernetes Service (AKS)
 
@@ -49,13 +49,16 @@ Następnie utwórz publiczny adres IP z *statyczne* przy użyciu metody alokacji
 az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --allocation-method static
 ```
 
-Teraz wdrożyć *ruch przychodzący serwera nginx* wykresu za pomocą narzędzia Helm. Dodaj `--set controller.service.loadBalancerIP` parametru i Podaj własny publiczny adres IP utworzony w poprzednim kroku.
+Teraz wdrożyć *ruch przychodzący serwera nginx* wykresu za pomocą narzędzia Helm. Dodaj `--set controller.service.loadBalancerIP` parametru i Podaj własny publiczny adres IP utworzony w poprzednim kroku. Dodano nadmiarowość dwóch replik kontrolerów ruch przychodzący serwera NGINX są wdrażane przy użyciu `--set controller.replicaCount` parametru. Aby w pełni korzystać z systemem replik kontrolera danych przychodzących, upewnij się, że istnieje więcej niż jeden węzeł w klastrze AKS.
 
 > [!TIP]
 > Poniższe przykłady instalowania kontrolera danych przychodzących i certyfikaty w `kube-system` przestrzeni nazw. Jeśli to konieczne, można określić innej przestrzeni nazw dla Twojego środowiska. Ponadto jeśli klastra usługi AKS nie jest włączone RBAC, Dodaj `--set rbac.create=false` poleceń.
 
 ```console
-helm install stable/nginx-ingress --namespace kube-system --set controller.service.loadBalancerIP="40.121.63.72"
+helm install stable/nginx-ingress \
+    --namespace kube-system \
+    --set controller.service.loadBalancerIP="40.121.63.72"  \
+    --set controller.replicaCount=2
 ```
 
 Po utworzeniu rozwiązania Kubernetes usługi równoważenia obciążenia dla kontrolera danych przychodzących NGINX jest przypisany statycznego adresu IP, jak pokazano w następujących przykładowych danych wyjściowych:
@@ -268,6 +271,56 @@ Aplikacji demonstracyjnej jest wyświetlany w przeglądarce sieci web:
 Teraz Dodaj */hello-world-two* ścieżkę do pełni kwalifikowaną nazwę domeny, takich jak *https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two*. Pokazano drugiej aplikacji demonstracyjnej z tytułem niestandardowe:
 
 ![Przykładowa aplikacja dwóch](media/ingress/app-two.png)
+
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+W tym artykule używane narzędzia Helm do zainstalowania składników transferu danych przychodzących, certyfikaty i przykładowe aplikacje. Podczas wdrażania wykresu Helm tworzonych wiele zasobów Kubernetes. Te zasoby obejmują zasobników, wdrożenia i usług. Aby wyczyścić, należy najpierw usunąć zasoby certyfikatu:
+
+```console
+kubectl delete -f certificates.yaml
+kubectl delete -f cluster-issuer.yaml
+```
+
+Teraz wyświetlić listę wersji narzędzia Helm przy użyciu `helm list` polecenia. Wyszukaj wykresy o nazwie *ruch przychodzący serwera nginx*, *Menedżera certyfikatów*, i *aks-helloworld*, jak pokazano w następujących przykładowych danych wyjściowych:
+
+```
+$ helm list
+
+NAME                    REVISION    UPDATED                     STATUS      CHART                   APP VERSION NAMESPACE
+waxen-hamster           1           Tue Oct 16 17:44:28 2018    DEPLOYED    nginx-ingress-0.22.1    0.15.0      kube-system
+alliterating-peacock    1           Tue Oct 16 18:03:11 2018    DEPLOYED    cert-manager-v0.3.4     v0.3.2      kube-system
+mollified-armadillo     1           Tue Oct 16 18:04:53 2018    DEPLOYED    aks-helloworld-0.1.0                default
+wondering-clam          1           Tue Oct 16 18:04:56 2018    DEPLOYED    aks-helloworld-0.1.0                default
+```
+
+Usuń wersjach z `helm delete` polecenia. Poniższy przykład usuwa wdrożenia ruch przychodzący serwera NGINX, Menedżer certyfikatów i dwie przykładowe AKS Witaj świecie aplikacje.
+
+```
+$ helm delete waxen-hamster alliterating-peacock mollified-armadillo wondering-clam
+
+release "billowing-kitten" deleted
+release "loitering-waterbuffalo" deleted
+release "flabby-deer" deleted
+release "linting-echidna" deleted
+```
+
+Następnie usuń repozytorium narzędzia Helm dla usługi AKS hello world aplikacji:
+
+```console
+helm repo remove azure-samples
+```
+
+Usuwanie trasy transferu danych przychodzących, który kierowany ruch do aplikacji przykładowej:
+
+```console
+kubectl delete -f hello-world-ingress.yaml
+```
+
+Na koniec usunąć statyczny publiczny adres IP utworzony dla kontrolera danych przychodzących. Podaj swoje *MC_* Nazwa grupy zasobów klastra uzyskanych w pierwszym kroku tego artykułu, takich jak *MC_myResourceGroup_myAKSCluster_eastus*:
+
+```azurecli
+az network public-ip delete --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 935e2b9e861a889bef48c1d7ba119ab694cddfb3
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 4809881276da752ac6eb08773fb8be145dc5f4c7
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43094022"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49367038"
 ---
 ## <a name="create-a-device-identity"></a>Tworzenie tożsamości urządzenia
 
@@ -31,11 +31,11 @@ W tej sekcji użyjesz [witryny Azure portal](https://portal.azure.com) do tworze
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
-   ![Dodaj nowe urządzenie](./media/iot-hub-get-started-create-device-identity-portal/add-device.png)
+   ![Dodaj nowe urządzenie](./media/iot-hub-get-started-create-device-identity-portal/create-a-device.png)
 
 1. Na liście urządzeń kliknij nowo utworzoną urządzenia i skopiować **parametry połączenia---klucza podstawowego** do późniejszego użycia.
 
-    ![Parametry połączenia urządzenia](./media/iot-hub-get-started-create-device-identity-portal/device-connection-string.png)
+    ![Parametry połączenia urządzenia](./media/iot-hub-get-started-create-device-identity-portal/device-details.png)
 
 > [!NOTE]
 > Rejestr tożsamości usługi IoT Hub przechowuje tożsamości urządzenia tylko po to, aby umożliwić bezpieczny dostęp do centrum IoT. Przechowuje identyfikatory urządzeń i klucze, które będą używane jako poświadczenia zabezpieczeń, oraz flagę włączone/wyłączone, która umożliwia wyłączenie dostępu do poszczególnych urządzeń. Jeśli aplikacja wymaga przechowywania innych metadanych dla określonego urządzenia, powinna korzystać z magazynu określonego dla aplikacji. Aby uzyskać więcej informacji, zobacz [usługi IoT Hub — przewodnik dewelopera](../articles/iot-hub/iot-hub-devguide-identity-registry.md).

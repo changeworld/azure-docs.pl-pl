@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: db4f83d0d407ad3d9e895759ea2a687662f5620a
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: fbaf6b92a2605d284a749365d542c223e09f730d
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053299"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362606"
 ---
 # <a name="introduction-to-auto-scaling"></a>Wprowadzenie do automatycznego skalowania
 Automatyczne skalowanie jest dodatkowe możliwości usługi Service Fabric dynamicznie skalować swoje usługi, w oparciu o obciążenie, które usługi są raportowania lub na podstawie ich użycia zasobów. Automatyczne skalowanie zapewnia dużą elastyczność i umożliwia inicjowanie obsługi administracyjnej dodatkowych wystąpień lub partycje usługi na żądanie. Cały automatycznego skalowania procesu jest zautomatyzowanych i przejrzystości, a po skonfigurowaniu zasad w usłudze nie ma potrzeby ręcznego operacji skalowania na poziomie usługi. Automatyczne skalowanie może zostać włączona podczas tworzenia usługi lub w dowolnej chwili, aktualizując usługę.
@@ -120,7 +120,7 @@ Drugi wyzwalacz zależy od obciążenia wszystkich partycji w jednej usłudze. M
 * _Próg ładowania górny_ jest wartością, która określa, kiedy usługa będzie **skalowana w poziomie**. Jeśli średnie obciążenie wszystkich partycji usługi jest wyższa niż ta wartość, następnie usługi będzie można skalować w poziomie.
 * _Interwału skalowania_ Określa, jak często będą sprawdzane wyzwalacza. Gdy wyzwalacz jest zaznaczone, w razie potrzeby skalowania jest mechanizm zostaną zastosowane. Jeśli skalowanie nie jest wymagana, żadna akcja zostaną wykonane. W obu przypadkach wyzwalacz nie będą sprawdzane ponownie wygaśnięcia interwału skalowania ponownie.
 
-Tego wyzwalacza można używać zarówno usługi stanowe i bezstanowe. Tylko mechanizm, który może być używany z tego wyzwalacza jest AddRemoveIncrementalNamedParitionScalingMechanism. Gdy usługa jest skalowana w poziomie, a następnie dodaje się nową partycję i podczas skalowania usługi w jednej z istniejących partycji jest usuwany. Ma ograniczeń, które będą sprawdzane, gdy usługa jest tworzony lub aktualizowany i tworzenia/aktualizacji usługi zakończy się niepowodzeniem, jeśli te warunki nie są spełnione:
+Tego wyzwalacza można używać zarówno usługi stanowe i bezstanowe. Tylko mechanizm, który może być używany z tego wyzwalacza jest AddRemoveIncrementalNamedPartitionScalingMechanism. Gdy usługa jest skalowana w poziomie, a następnie dodaje się nową partycję i podczas skalowania usługi w jednej z istniejących partycji jest usuwany. Ma ograniczeń, które będą sprawdzane, gdy usługa jest tworzony lub aktualizowany i tworzenia/aktualizacji usługi zakończy się niepowodzeniem, jeśli te warunki nie są spełnione:
 * Schemat partycji nazwanej, należy użyć dla usługi.
 * Nazwy partycji musi być liczby całkowite kolejnych, takie jak "0", "1"...
 * Pierwsza partycji musi mieć nazwę "0".
@@ -137,7 +137,7 @@ Takie same jak w przypadku mechanizm, który używa skalowania, dodając lub usu
 * _Minimalna liczba wystąpień_ określa dolną granicę dla skalowania. Jeśli liczba partycji usługi osiągnie ten limit, następnie usługa nie będzie skalowana w niezależnie od obciążenia.
 
 > [!WARNING] 
-> Stosowania AddRemoveIncrementalNamedParitionScalingMechanism usługi stanowej usługi Service Fabric spowoduje dodanie lub usunięcie partycji **bez powiadomienia i ostrzeżenie**. Ponowny podział danych nie zostanie wykonane po wyzwoleniu mechanizm skalowania. W przypadku, gdy operacja skalowania w górę, nowe partycje będzie pusty, a w przypadku skalowania w dół operacji **partycji zostaną usunięte wraz z danymi, które zawiera**.
+> Stosowania AddRemoveIncrementalNamedPartitionScalingMechanism usługi stanowej usługi Service Fabric spowoduje dodanie lub usunięcie partycji **bez powiadomienia i ostrzeżenie**. Ponowny podział danych nie zostanie wykonane po wyzwoleniu mechanizm skalowania. W przypadku, gdy operacja skalowania w górę, nowe partycje będzie pusty, a w przypadku skalowania w dół operacji **partycji zostaną usunięte wraz z danymi, które zawiera**.
 
 ## <a name="setting-auto-scaling-policy"></a>Ustawienie automatycznego skalowania zasad
 
@@ -146,7 +146,7 @@ Takie same jak w przypadku mechanizm, który używa skalowania, dodając lub usu
 <ServiceScalingPolicies>
     <ScalingPolicy>
         <AverageServiceLoadScalingTrigger MetricName="servicefabric:/_MemoryInMB" LowerLoadThreshold="300" UpperLoadThreshold="500" ScaleIntervalInSeconds="600"/>
-        <AddRemoveIncrementalNamedParitionScalingMechanism MinPartitionCount="1" MaxPartitionCount="3" ScaleIncrement="1"/>
+        <AddRemoveIncrementalNamedPartitionScalingMechanism MinPartitionCount="1" MaxPartitionCount="3" ScaleIncrement="1"/>
     </ScalingPolicy>
 </ServiceScalingPolicies>
 ```
@@ -155,7 +155,7 @@ Takie same jak w przypadku mechanizm, który używa skalowania, dodając lub usu
 FabricClient fabricClient = new FabricClient();
 StatefulServiceUpdateDescription serviceUpdate = new StatefulServiceUpdateDescription();
 AveragePartitionLoadScalingTrigger trigger = new AverageServiceLoadScalingTrigger();
-PartitionInstanceCountScaleMechanism mechanism = new AddRemoveIncrementalNamedParitionScalingMechanism();
+PartitionInstanceCountScaleMechanism mechanism = new AddRemoveIncrementalNamedPartitionScalingMechanism();
 mechanism.MaxPartitionCount = 4;
 mechanism.MinPartitionCount = 1;
 mechanism.ScaleIncrement = 1;
@@ -171,7 +171,7 @@ await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/AppName/Se
 ```
 ### <a name="using-powershell"></a>Przy użyciu programu Powershell
 ```posh
-$mechanism = New-Object -TypeName System.Fabric.Description.AddRemoveIncrementalNamedParitionScalingMechanism
+$mechanism = New-Object -TypeName System.Fabric.Description.AddRemoveIncrementalNamedPartitionScalingMechanism
 $mechanism.MinPartitionCount = 1
 $mechanism.MaxPartitionCount = 3
 $mechanism.ScaleIncrement = 2

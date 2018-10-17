@@ -12,14 +12,14 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: f1b2f9c7ee9d2fbeec51315a5e348b197fb4c06b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: aaffdb2f0d21dbb7a5baf029a90e452658c5bd31
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342504"
+ms.locfileid: "49353640"
 ---
-# <a name="azure-sql-database-managed-instance-deployment-model-with-virtual-network-and-near-100-sql-server-compatibility"></a>Azure model wdrożenia wystąpienia zarządzanego usługi SQL Database przy użyciu sieci wirtualnej i w prawie 100%, zgodność programu SQL Server
+# <a name="use-sql-database-managed-instance-with-virtual-networks-and-near-100-compatibility"></a>Użyj wystąpienia zarządzanego usługi SQL Database przy użyciu sieci wirtualnych i w prawie 100% zgodności
 
 Wystąpienie usługi Azure SQL Database Managed jest nowy model wdrażania usługi Azure SQL Database, zapewniając prawie 100% utrzymywania zgodności z najnowszą programu SQL Server w środowisku lokalnym aparatu bazy danych (Enterprise Edition), zapewniających macierzystej [sieć wirtualną (VNet)](../virtual-network/virtual-networks-overview.md) implementacji, odnoszący się do typowe problemy dotyczące zabezpieczeń i [modelu biznesowego](https://azure.microsoft.com/pricing/details/sql-database/) korzystna dla klientów programu SQL Server w środowisku lokalnym. Wystąpienie zarządzane umożliwia istniejących klientów programu SQL Server do lift- and -shift ich aplikacji lokalnych do chmury przy minimalnych zmianach aplikacji i baz danych. W tym samym czasie, wystąpienie zarządzane zachowuje wszystkie możliwości PaaS (Aktualizacje automatyczne stosowanie poprawek i wersja, [automatyczne kopie zapasowe](sql-database-automated-backups.md), [wysokiej dostępności](sql-database-high-availability.md) ), która znacząco zmniejsza obciążenie zarządzania a całkowity koszt posiadania.
 

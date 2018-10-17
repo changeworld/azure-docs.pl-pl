@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, sashan
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 004a097a50129c444ad3facf8133295c5de49585
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 0b2fa1541eafa3acf28690005a6d40fac76deba6
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345003"
+ms.locfileid: "49353479"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Wysoka dostępność i Azure SQL Database
 
@@ -42,7 +42,7 @@ Na poniższej ilustracji przedstawiono cztery węzły w standardowych architektu
 
 W modelu standardowego dostępności istnieją dwie warstwy:
 
-- Warstwy obliczeniowej bezstanowych, który jest uruchomiony proces sqlserver.exe i zawiera tylko błędy przejściowe i buforowanych danych (na przykład — pamięci podręcznej planu, puli buforów, pula magazynu kolumn). To bezstanowe węzła programu SQL Server jest obsługiwany przez usługi Azure Service Fabric inicjuje proces, który kontroluje kondycji węzła i wykonuje trybu failover w inne miejsce, jeśli to konieczne.
+- Warstwy obliczeniowej bezstanowe uruchomioną `sqlserver.exe` przetwarzania i zawiera tylko błędy przejściowe i buforowanych danych (na przykład — pamięci podręcznej planu, puli buforów, pula magazynu kolumn). To bezstanowe węzła programu SQL Server jest obsługiwany przez usługi Azure Service Fabric inicjuje proces, który kontroluje kondycji węzła i wykonuje trybu failover w inne miejsce, jeśli to konieczne.
 - Warstwy danych stanowych z plikami bazy danych (.mdf/.ldf), które są przechowywane w usłudze Azure Premium Storage. Usługa Azure Storage gwarantuje, że będzie bez utraty danych, dla dowolnego rekordu, który znajduje się w dowolnym pliku bazy danych. Usługa Azure Storage ma wbudowane dostępność/nadmiarowości danych gwarantuje, że każdy rekord w pliku dziennika lub strony w pliku danych zostaną zachowane nawet, jeśli wystąpiła awaria procesu programu SQL Server.
 
 Zawsze, gdy aparat bazy danych lub system operacyjny zostanie uaktualniony, część podstawowej infrastruktury nie powiedzie się lub jeśli jakiś problem krytyczny zostanie wykryte w procesie programu Sql Server, usługi Azure Service Fabric zostanie przesunięty bezstanowe procesu programu SQL Server do innego węzła obliczeniowego o bezstanowa. Istnieje zestaw węzłów zapasowych, który oczekuje na uruchomienie nowej usługi obliczeniowe w przypadku pracy awaryjnej, aby zminimalizować czas pracy awaryjnej. W warstwie usługi Azure Storage to nie miało wpływu na dane i pliki danych/dziennika są dołączone do nowo utworzonym procesu programu SQL Server. Tego procesu gwarantuje dostępność przez 99,99%, ale może mieć wpływ na niektóre wydajności na duże obciążenie, które działa ze względu na czas przejścia i fakt nowego węzła programu SQL Server, który rozpoczyna się od zimnych pamięci podręcznej.
@@ -72,6 +72,10 @@ Poniższy diagram przedstawia nadmiarowe strefy wersję architektura wysokiej do
 
 ![Wysoka dostępność architektury strefowo nadmiarowe](./media/sql-database-high-availability/high-availability-architecture-zone-redundant.png)
 
+## <a name="accelerated-database-recovery-adr"></a>Odzyskiwanie bazy danych jej jako przyspieszonej (ADR)
+
+[Przyspieszone odzyskiwanie bazy danych (ADR)](sql-database-accelerated-database-recovery.md) nową funkcję do aparatu bazy danych SQL, która znacznie zwiększa dostępność bazy danych, szczególnie obecności długo działa transakcji, przeprojektowanie proces odzyskiwania aparatu bazy danych SQL. Reguły ADR jest obecnie dostępna dla pojedynczych baz danych, pul elastycznych i Azure SQL Data Warehouse.
+
 ## <a name="conclusion"></a>Podsumowanie
 
 Usługa Azure SQL Database jest ściśle zintegrowana z platformą Azure i zależy od wysoce usługi Service Fabric wykrywania awarii i odzyskiwania w obiektach blob magazynu Azure do ochrony danych i strefy dostępności wyższych odporności na uszkodzenia. W tym samym czasie bazy danych Azure SQL w pełni korzysta z technologii zawsze włączonej grupy dostępności z programu SQL Server gotowym produkcie podczas replikacji i trybu failover. Kombinacja tych technologii umożliwia aplikacjom w pełni korzystać z zalet modelu mieszane pamięci masowej i obsługuje najbardziej wymagające umowy SLA.
@@ -81,3 +85,4 @@ Usługa Azure SQL Database jest ściśle zintegrowana z platformą Azure i zale�
 - Dowiedz się więcej o [strefy dostępności platformy Azure](../availability-zones/az-overview.md)
 - Dowiedz się więcej o [usługi Service Fabric](../service-fabric/service-fabric-overview.md)
 - Dowiedz się więcej o [usługa Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)
+- Aby uzyskać więcej opcji wysokiej dostępności i odzyskiwania po awarii, zobacz [ciągłość prowadzenia działalności biznesowej](sql-database-business-continuity.md)

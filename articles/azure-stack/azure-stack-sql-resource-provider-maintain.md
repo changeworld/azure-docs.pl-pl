@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 10/16/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: ad899739dab1dc51d64368d2136ab87f73f6f3a0
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.reviewer: quying
+ms.openlocfilehash: 360661402289ab9b06eb01be447dc98942c93302
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "36300914"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364099"
 ---
 # <a name="sql-resource-provider-maintenance-operations"></a>Operacje obsługi dostawcy zasobów SQL
 
-Dostawcy zasobów bazy danych SQL działa na maszynie wirtualnej zablokowane. Aby włączyć operacji konserwacji, musisz zaktualizować zabezpieczenia maszyn wirtualnych. Aby to zrobić za pomocą zasadę najmniejszych uprawnień, można użyć [PowerShell tylko tyle administracji (JEA)](https://docs.microsoft.com/en-us/powershell/jea/overview) punktu końcowego *DBAdapterMaintenance*. Pakiet instalacyjny dostawcy zasobu zawiera skrypt do wykonania tej operacji.
+Dostawcy zasobów bazy danych SQL działa na maszynie wirtualnej zablokowane. Aby włączyć operacji konserwacji, musisz zaktualizować zabezpieczenia maszyn wirtualnych. Aby to zrobić za pomocą zasadę najmniejszych uprawnień, można użyć [PowerShell tylko tyle administracji (JEA)](https://docs.microsoft.com/powershell/jea/overview) punktu końcowego *DBAdapterMaintenance*. Pakiet instalacyjny dostawcy zasobu zawiera skrypt do wykonania tej operacji.
 
 ## <a name="patching-and-updating"></a>Stosowanie poprawek i aktualizacji
 
@@ -53,9 +53,9 @@ Aby zmodyfikować ustawienia, wybierz pozycję **Przeglądaj** &gt; **zasoby adm
 
 ## <a name="secrets-rotation"></a>Obrót kluczy tajnych
 
-*Te instrukcje dotyczą tylko usługi Azure Stack zintegrowanych systemów wersji 1804 i nowsze. Nie należy próbować Obróć klucze tajne pre 1804 Azure Stack wersji.*
+*Te instrukcje dotyczą tylko zintegrowane systemy usługi Azure Stack.*
 
-Gdy za pomocą dostawcy zasobów SQL i bazy danych MySQL z usługą Azure Stack zintegrowane systemy, można też obrócić następujące wpisy tajne infrastruktury (wdrażanie):
+Gdy za pomocą dostawcy zasobów SQL i bazy danych MySQL z usługą Azure Stack zintegrowane systemy, operatora infrastruktury Azure Stack jest odpowiedzialny za obracanie następujących zasobów dostawcy infrastruktury kluczy tajnych upewnij się, że ich wygaśnie:
 
 - Certyfikat SSL zewnętrzny [podana podczas wdrażania](azure-stack-pki-certs.md).
 - Zasób dostawcy maszyny Wirtualnej hasło administratora lokalnego konta podana podczas wdrażania.

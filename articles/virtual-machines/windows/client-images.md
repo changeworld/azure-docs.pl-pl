@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: a2b9a06e8e3b1bda91050e1607c7265d6fe66bb1
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: eb227b4b4cbdc40a4e708726bbe0f5d0c7eacb74
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931793"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364677"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Używać klienta Windows na platformie Azure na potrzeby scenariuszy tworzenia i testowania
 Możesz użyć Windows 7, Windows 8 lub Windows 10 Enterprise (x64) na platformie Azure na potrzeby scenariuszy deweloperskich/testowych, pod warunkiem, że masz odpowiednią subskrypcję programu Visual Studio (dawniej MSDN). W tym artykule opisano wymagania kwalifikacyjne dotyczące uruchamiania Windows 7, Windows 8.1, Windows 10 Enterprise na platformie Azure i korzystania z następujących obrazów w galerii platformy Azure.
@@ -48,7 +48,7 @@ W poniższej tabeli przedstawiono oferty identyfikatorów, które kwalifikują s
 | [Visual Studio Premium z subskrypcją MSDN (korzyści)](https://azure.microsoft.com/offers/ms-azr-0061p/) |0061P |Windows 10 |
 | [Subskrybenci programu Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) |0063P |Windows 10 |
 | [Subskrybenci programu Visual Studio Enterprise (BizSpark)](https://azure.microsoft.com/offers/ms-azr-0064p/) |0064P |Windows 10 |
-| [Enterprise Dev/Test](https://azure.microsoft.com/en-us/offers/ms-azr-0148p/) |0148P |Windows 10 |
+| [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/) |0148P |Windows 10 |
 
 ## <a name="check-your-azure-subscription"></a>Sprawdź swoją subskrypcję platformy Azure
 Jeśli nie znasz Identyfikatora oferty, możesz uzyskać go w witrynie Azure portal w jednym z następujących dwóch sposobów:  

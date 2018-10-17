@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2018
+ms.date: 10/15/2018
 ms.author: jeedes
-ms.openlocfilehash: a7d77df4d6be1572d2076684cfa4702cb32b5ed6
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: a9acb9539497c85f408ce7417fa5983072ea80b9
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391916"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365666"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>Samouczek: Integracja usługi Azure Active Directory z wieloma kontami usług Amazon Web Services (AWS)
 
@@ -35,6 +35,19 @@ Integrowanie usług Amazon Web Services (AWS) z usługą Azure AD zapewnia nast�
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ![Amazon Web Services (AWS) na liście wyników](./media/aws-multi-accounts-tutorial/amazonwebservice.png)
+
+>[!NOTE]
+>Należy pamiętać, że łączenia jednej aplikacji AWS do wszystkich kont platformy AWS nie jest naszym Zalecanym podejściem. Zamiast tego zaleca się używać [to](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) podejście do skonfigurowania kilku wystąpień konta usług AWS do wielu wystąpień usługi AWS aplikacji w usłudze Azure AD.
+
+**Należy pamiętać, że nie jest zalecane na potrzeby tego podejścia z następujących przyczyn:**
+
+* Masz podejście Graph Explorer umożliwia stosowanie poprawek do wszystkich ról w aplikacji. Nie zaleca się przy użyciu podejścia pliku manifestu.
+
+* Zaobserwowaliśmy klienci raportowania, po dodaniu ~ 1200 role aplikacji w ramach jednej aplikacji AWS, żadnych operacji na jej uruchomienia zgłaszanie błędów związanych z nimi do rozmiaru. Istnieje stały limit rozmiaru w obiekcie aplikacji.
+
+* Musisz ręcznie zaktualizować roli, ponieważ role poproś o dodanie Cię we wszystkich kont, czyli Niestety Zastąp podejście, a nie dołączania. Jeśli Twoje konta są coraz następnie ten staje się również n x n relacji z klientami i rolami.
+
+* Wszystkich kont platformy AWS będzie korzystać z tego samego pliku XML metadanych federacji z czym w czasie Przerzucanie certyfikatów dysku tego ćwiczenia dużych aktualizacji certyfikatu na wszystkich kont platformy AWS, w tym samym czasie
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -64,19 +77,19 @@ Aby skonfigurować integrację z usługi Amazon Web Services (AWS) do usługi Az
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
-    ![Przycisk usługi Azure Active Directory][1]
+    ![image](./media/aws-multi-accounts-tutorial/selectazuread.png)
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
+    ![image](./media/aws-multi-accounts-tutorial/a_select_app.png)
     
 3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![image](./media/aws-multi-accounts-tutorial/a_new_app.png)
 
 4. W polu wyszukiwania wpisz **Amazon Web Services (AWS)**, wybierz opcję **Amazon Web Services (AWS)** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
-    ![Amazon Web Services (AWS) na liście wyników](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_addfromgallery.png)
+     ![image](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_addfromgallery.png)
 
 5. Po dodaniu aplikacji przejdź do obszaru **właściwości** strony i skopiuj **obiektu o identyfikatorze**.
 
@@ -101,62 +114,61 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 **Aby skonfigurować usługi Azure AD logowanie jednokrotne za pomocą usługi Amazon Web Services (AWS), wykonaj następujące czynności:**
 
-1. W witrynie Azure portal na **Amazon Web Services (AWS)** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W [witryny Azure portal](https://portal.azure.com/)na **Amazon Web Services (AWS)** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![image](./media/aws-multi-accounts-tutorial/B1_B2_Select_SSO.png)
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_samlbase.png)
+2. Na **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, wybierz **SAML** trybu, aby włączyć logowanie jednokrotne.
 
-3. Na **Amazon Web Services (AWS) domena i adresy URL** sekcji, użytkownik nie ma do wykonywania żadnych czynności, jak aplikacja już jest wstępnie zintegrowana z platformą Azure.
+    ![image](./media/aws-multi-accounts-tutorial/b1_b2_saml_sso.png)
 
-    ![Domena usługi Amazon Web Services (AWS) i adresy URL pojedynczego logowania jednokrotnego informacji](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_url.png)
+3. Na **Ustaw się logowanie jednokrotne z SAML** kliknij **Edytuj** przycisk, aby otworzyć **podstawową konfigurację protokołu SAML** okna dialogowego.
 
-4. Aplikacja oprogramowania usług Amazon Web Services (AWS) oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z "**atrybutów użytkownika**" sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego.
+    ![image](./media/aws-multi-accounts-tutorial/b1-domains_and_urlsedit.png)
 
-    ![Konfigurowanie logowania jednokrotnego, atrybut](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_attribute.png)    
+4. Na **podstawową konfigurację protokołu SAML** sekcji użytkownik nie musiał wykonać każdy krok, ponieważ aplikacja już jest wstępnie zintegrowana z platformą Azure.
 
-5. W **atrybutów użytkownika** sekcji na **logowanie jednokrotne** okno dialogowe, skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej i wykonaj następujące czynności:
+    ![image](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_url.png)
 
-    | Nazwa atrybutu  | Wartość atrybutu | Przestrzeń nazw |
+5. Aplikacja usługi Amazon Web Services (AWS) oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z **atrybutów użytkowników i oświadczeń** sekcji na stronie integracji aplikacji. Na **Ustaw się logowanie jednokrotne z SAML** kliknij **Edytuj** przycisk, aby otworzyć **atrybutów użytkowników i oświadczeń** okna dialogowego.
+
+    ![image](./media/aws-multi-accounts-tutorial/i4-attribute.png)
+
+6. W **oświadczenia użytkownika** sekcji na **atrybutów użytkowników i oświadczeń** okno dialogowe, skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej i wykonaj następujące czynności:
+    
+    | Name (Nazwa)  | Atrybut źródłowy  | Przestrzeń nazw |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
     | Rola            | User.assignedroles |  https://aws.amazon.com/SAML/Attributes |
-    | SessionDuration             | "Podaj wartość czas trwania sesji na potrzeby" |  https://aws.amazon.com/SAML/Attributes |
+    | SessionDuration             | "Podaj wartość z zakresu od 900 sekund (15 minut) na 43200 sekund (12 godzin)" |  https://aws.amazon.com/SAML/Attributes |
 
-    >[!TIP]
-    >Należy skonfigurować aprowizację użytkowników w usłudze Azure AD, aby pobrać wszystkie role z konsoli usług AWS. Zobacz poniższe kroki inicjowania obsługi administracyjnej.
+    a. Kliknij przycisk **Dodaj nowe oświadczenie** otworzyć **Zarządzanie oświadczenia użytkownika** okna dialogowego.
 
-    a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
+    ![image](./media/aws-multi-accounts-tutorial/i2-attribute.png)
 
-    ![Konfigurowanie logowania jednokrotnego Dodaj](./media/aws-multi-accounts-tutorial/tutorial_attribute_04.png)
-
-    ![Konfigurowanie logowania jednokrotnego, atrybut](./media/aws-multi-accounts-tutorial/tutorial_attribute_05.png)
+    ![image](./media/aws-multi-accounts-tutorial/i3-attribute.png)
 
     b. W **nazwa** polu tekstowym wpisz nazwę atrybutu, wyświetlanego dla tego wiersza.
 
-    c. Z **wartość** wpisz wartość atrybutu wyświetlanego dla tego wiersza.
+    c. Wprowadź **Namespace** wartość.
 
-    d. W **Namespace** polu tekstowym wpisz wartość przestrzeni nazw wyświetlanego dla tego wiersza.
+    d. Wybierz źródło jako **atrybutu**.
 
-    d. Kliknij przycisk **OK**.
+    e. Z **atrybut źródłowy** wpisz wartość atrybutu wyświetlanego dla tego wiersza.
 
-6. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+    f. Kliknij pozycję **Zapisz**.
 
-    ![Link pobierania certyfikatu](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_certificate.png) 
+7. Na **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML** strony w **certyfikat podpisywania SAML** kliknij **Pobierz** można pobrać **XML metadanych Federacji**  i zapisz go na komputerze.
 
-7. Kliknij przycisk **Zapisz** przycisku.
+    ![image](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_certificate.png) 
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/aws-multi-accounts-tutorial/tutorial_general_400.png)
-
-8. W oknie innej przeglądarki Zaloguj się do witryny firmy Amazon Web Services (AWS) jako Administrator.
+8. W oknie innej przeglądarki Zaloguj się do witryny firmy Amazon Web Services (AWS) jako administrator.
 
 9. Kliknij przycisk **strona główna usług AWS**.
 
     ![Konfigurowanie logowania jednokrotnego głównej][11]
 
-10. Kliknij przycisk **IAM** (Zarządzanie tożsamościami i dostępem).
+10. Kliknij przycisk **Zarządzanie tożsamościami i dostępem**.
 
     ![Konfigurowanie tożsamości rejestracji jednokrotnej][12]
 
@@ -196,7 +208,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
   
     d. Kliknij przycisk **dalej: uprawnienia**.
 
-16. Na **Dołącz zasady uprawnień** okno dialogowe, kliknij przycisk **dalej: Przejrzyj**.  
+16. Na **Dołącz zasady uprawnień** okno dialogowe, nie trzeba dołączać żadnych zasad. Kliknij przycisk **dalej: Przejrzyj**.  
 
     ![Konfigurowanie zasad rejestracji jednokrotnej][33]
 
@@ -208,9 +220,9 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     b. W **opis roli** polu tekstowym wprowadź opis.
 
-    a. Kliknij przycisk **utworzyć rolę**.
+    c. Kliknij przycisk **utworzyć rolę**.
 
-    b. Utwórz tyle ról stosownie do potrzeb i mapować je do dostawcy tożsamości.
+    d. Utwórz tyle ról stosownie do potrzeb i mapować je do dostawcy tożsamości.
 
 18. Wyloguj z bieżącego konta usługi AWS i zaloguj się przy użyciu innego konta, które chcesz skonfigurować funkcję logowania jednokrotnego na usłudze Azure AD.
 
@@ -349,17 +361,6 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 <!--Image references-->
 
-[1]: ./media/aws-multi-accounts-tutorial/tutorial_general_01.png
-[2]: ./media/aws-multi-accounts-tutorial/tutorial_general_02.png
-[3]: ./media/aws-multi-accounts-tutorial/tutorial_general_03.png
-[4]: ./media/aws-multi-accounts-tutorial/tutorial_general_04.png
-
-[100]: ./media/aws-multi-accounts-tutorial/tutorial_general_100.png
-
-[200]: ./media/aws-multi-accounts-tutorial/tutorial_general_200.png
-[201]: ./media/aws-multi-accounts-tutorial/tutorial_general_201.png
-[202]: ./media/aws-multi-accounts-tutorial/tutorial_general_202.png
-[203]: ./media/aws-multi-accounts-tutorial/tutorial_general_203.png
 [11]: ./media/aws-multi-accounts-tutorial/ic795031.png
 [12]: ./media/aws-multi-accounts-tutorial/ic795032.png
 [13]: ./media/aws-multi-accounts-tutorial/ic795033.png
@@ -378,5 +379,4 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 [38]: ./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices_createnewaccesskey.png
 [39]: ./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices_provisioning_automatic.png
 [40]: ./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices_provisioning_testconnection.png
-[41]: ./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices_provisioning_on.png
-
+[41]: ./media/aws-multi-accounts-tutorial/

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: aefb9142e5954b2e4598c73eb36fa25de99e9584
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: b4e2971b5bb4ed5add2e68c1aabbc82443a61160
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452262"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363387"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Rozszerzenia maszyn wirtualnych i funkcji dla systemu Linux
 
@@ -408,7 +408,7 @@ Możesz również usunąć rozszerzenie w witrynie Azure portal w następujący 
 | Rozszerzenie niestandardowego skryptu dla systemu Linux |Uruchamianie skryptów na maszynie wirtualnej platformy Azure |[Rozszerzenie niestandardowego skryptu dla systemu Linux](custom-script-linux.md) |
 | Rozszerzenie dostępu do maszyny wirtualnej |Odzyskać dostęp do maszyny wirtualnej platformy Azure |[Rozszerzenie dostępu do maszyny wirtualnej](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |
 | Rozszerzenie Diagnostyki Azure |Zarządzanie diagnostyki platformy Azure |[Rozszerzenie diagnostyki platformy Azure](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
-| Rozszerzenie dostępu do maszyny Wirtualnej platformy Azure |Zarządzanie użytkownikami i poświadczeń |[Rozszerzenie dostępu do maszyny Wirtualnej dla systemu Linux](https://azure.microsoft.com/en-us/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
+| Rozszerzenie dostępu do maszyny Wirtualnej platformy Azure |Zarządzanie użytkownikami i poświadczeń |[Rozszerzenie dostępu do maszyny Wirtualnej dla systemu Linux](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -4,68 +4,67 @@ description: Często zadawane pytania (FAQ)
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
-ms.assetid: 5374f7f4-c189-43ef-8b7f-f2f4141e2748
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: a47163d06e24814ca5724d1fabea84058f8764cf
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d4b7d8ec5cb162e5fc844f107fbd5eb08fb00639
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788536"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353537"
 ---
 # <a name="frequently-asked-questions"></a>Często zadawane pytania
 
 W tym artykule opisano często zadawane pytania zgłoszone przez społeczność użytkowników usługi Azure Media Services (AMS).
 
-## <a name="general-ams-faqs"></a>Często zadawane pytania ogólne AMS
+## <a name="general-ams-faqs"></a>Często zadawane pytania ogólne usługi AMS
 
-Pytanie: jak przesyłania strumieniowego do urządzeń z systemem iOS firmy Apple
+P: jak należy strumienia do urządzeń z systemem iOS firmy Apple
 
-A: Dodaj "(format = m3u8-aapl)" Ścieżka do części "/ Manifest" adres URL przesyłania strumieniowego serwerze źródłowym do zwrócenia wstecz zawartości HLS wykorzystania w systemie iOS firmy Apple urządzenia natywnego (Aby uzyskać szczegółowe informacje, zobacz (dostarczania zawartości) [Poinformuj Media usług dostarczyć zawartości overview.md]),
+Odpowiedź: Dodaj "(format = m3u8-aapl)" Ścieżka "/ Manifest" część adresu URL, aby poinformować serwer pochodzenia przesyłania strumieniowego do zwrócenia wstecz zawartości HLS do użycia w systemie iOS firmy Apple urządzenia z natywnym (Aby uzyskać szczegółowe informacje, zobacz (dostarczania zawartości) [ Media-services dostarczanie — zawartość — overview.md]),
 
-Pytanie: jak można skalować, indeksowania?
+P: jak można skalować, indeksowanie?
 
-Odpowiedź: jednostki zarezerwowanego są takie same dla zadania kodowania i indeksowania. Postępuj zgodnie z instrukcjami wyświetlanymi [jak kodowanie zarezerwowanych jednostek skalowania](media-services-scale-media-processing-overview.md). **Uwaga** czy wydajność indeksatora nie ma wpływu na typ jednostki zarezerwowane.
+Odpowiedź zastrzeżone jednostki są takie same, kodowanie i indeksowanie zadań. Postępuj zgodnie z instrukcjami wyświetlanymi na [sposób skalowania zastrzeżonych jednostek kodowania](media-services-scale-media-processing-overview.md). **Uwaga** czy wydajność indeksatora nie oddziałuje zastrzeżony typ jednostki.
 
-Pytanie: I przekazany, zakodowany i publikowane wideo. Jakie byłyby Przyczyna wideo nie jest odtwarzany podczas próby strumienia go?
+P: czy mogę przekazany, zakodowany i opublikowany film wideo. Jaki byłyby Przyczyna wideo nie jest odtwarzany podczas próby Prześlij go strumieniowo?
 
-Odpowiedź: jednym z najbardziej typowych przyczyn jest nie ma punktu końcowego przesyłania strumieniowego, z którym próbujesz się odtwarzanie w **systemem** stanu.  
+Odp.: jednym z najbardziej typowych przyczyn jest bez punktu końcowego przesyłania strumieniowego, z którego próbujesz odtwarzania w **systemem** stanu.  
 
-Pytanie: czy można składania na strumień na żywo?
+P: czy można zrobić składania na strumień na żywo?
 
-A: składania na strumienie na żywo aktualnie nie jest oferowany usługi Azure Media Services, dlatego należy wcześniej została utworzona na komputerze.
+A: składania strumieni na żywo aktualnie nie jest dostępna w usłudze Azure Media Services, dlatego należy wcześniej została utworzona na tym komputerze.
 
-Pytanie: czy za pomocą usługi Azure CDN transmisji strumieniowej na żywo?
+P: czy mogę używać usługi Azure CDN transmisji strumieniowej na żywo?
 
-Odpowiedź: Media Services obsługuje integrację z usługą Azure CDN (Aby uzyskać więcej informacji, zobacz [jak zarządzać punktami końcowymi przesyłania strumieniowego w konta usługi Media Services](media-services-portal-manage-streaming-endpoints.md)).  Możesz użyć Live streaming sieci CDN. Azure Media Services udostępnia Smooth Streaming, HLS i MPEG-DASH danych wyjściowych. Wszystkie te formaty do przesyłania danych za pomocą protokołu HTTP i uzyskać korzyści buforowania HTTP. W rzeczywistych danych audio/wideo jest podzielona na fragmenty, a to poszczególne fragmenty uzyskać zbuforowana w sieci CDN strumieniowych na żywo. Tylko danych należy odświeżyć to dane manifestu. CDN okresowo odświeża dane manifestu.
+Odp.: usługa Media Services obsługuje integrację z usługą Azure CDN (Aby uzyskać więcej informacji, zobacz [jak zarządzać punkty końcowe przesyłania strumieniowego w konto usługi Media Services](media-services-portal-manage-streaming-endpoints.md)).  Można użyć na żywo, przesyłanie strumieniowe przy użyciu usługi CDN. Usługa Azure Media Services udostępnia Smooth Streaming, HLS i MPEG-DASH danych wyjściowych. Wszystkie te formaty korzystanie z protokołu HTTP do przesyłania danych i Uzyskaj korzyści o wartości buforowanie HTTP. W transmisji strumieniowej na żywo rzeczywistych danych audio/wideo jest podzielony na fragmenty i tym poszczególne fragmenty Pobieranie pamięci podręcznej w usłudze CDN. Tylko dane muszą być odświeżane są dane manifestu. Usługa CDN okresowo odświeża dane manifestu.
 
-Pytanie: jest usługa Azure Media services obsługuje przechowywania obrazów?
+P: czy jest usługi Azure Media services obsługuje przechowywania obrazów?
 
-Odpowiedź: Jeśli chcesz tylko do przechowywania obrazów JPEG lub PNG, należy przechowywać w magazynie obiektów Blob Azure. Rozwiązanie nie przynosi żadnych do umieszczania ich w konta usługi Media Services, chyba że chcesz zachować skojarzone z wideo lub Audio zasoby. Lub jeśli może zajść potrzeba użycia obrazów jako nakładki na koder wideo. Media Encoder Standard obsługuje nakładanie obrazów na górze wideo i to, co wyświetlane JPEG lub PNG jako obsługiwane formaty wejściowych. Aby uzyskać więcej informacji, zobacz [tworzenie nakładki](media-services-advanced-encoding-with-mes.md#overlay).
+Odp.: Jeśli po prostu chcesz przechowywać obrazy JPEG lub PNG, należy zachować w usłudze Azure Blob Storage. Nie ma żadnych korzyści, umieszczając je w konto usługi Media Services, chyba że chcesz zachować skojarzonych zasobów Audio lub wideo. Czy może zajść konieczność stosowania obrazów jako nakładki w koder wideo. Usługi Media Encoder Standard obsługuje nałożenie obrazy na podstawie wideo, a to, co Wyświetla listę JPEG lub PNG jako obsługiwane formaty wejściowych. Aby uzyskać więcej informacji, zobacz [Tworzenie nakładek](media-services-advanced-encoding-with-mes.md#overlay).
 
-Pytanie: jak mogę Kopiowanie zasobów z jednego konta usługi Media Services do innego.
+P: jak mogę skopiować zasoby z jednego konta usługi Media Services do innego.
 
-A: Aby kopiowanie zasobów z jednego konta usługi Media Services do innego przy użyciu platformy .NET, użyj [IAsset.Copy](https://github.com/Azure/azure-sdk-for-media-services-extensions/blob/dev/MediaServices.Client.Extensions/IAssetExtensions.cs#L354) — metoda rozszerzenia dostępne w [rozszerzenia SDK .NET usługi Azure Media Services](https://github.com/Azure/azure-sdk-for-media-services-extensions/) repozytorium. Aby uzyskać więcej informacji, zobacz [to](https://social.msdn.microsoft.com/Forums/azure/28912d5d-6733-41c1-b27d-5d5dff2695ca/migrate-media-services-across-subscription?forum=MediaServices) forum wątku.
+Odp.: związane z kopiowaniem zasobów z jednego konta usługi Media Services do innej przy użyciu platformy .NET, użyj [IAsset.Copy](https://github.com/Azure/azure-sdk-for-media-services-extensions/blob/dev/MediaServices.Client.Extensions/IAssetExtensions.cs#L354) metody rozszerzenia są dostępne w [rozszerzenia SDK .NET usługi Azure Media Services](https://github.com/Azure/azure-sdk-for-media-services-extensions/) repozytorium. Aby uzyskać więcej informacji, zobacz [to](https://social.msdn.microsoft.com/Forums/azure/28912d5d-6733-41c1-b27d-5d5dff2695ca/migrate-media-services-across-subscription?forum=MediaServices) wątku forum.
 
-Pytanie: jakie są obsługiwane znaki nazewnictwa plików podczas pracy z AMS?
+Pytanie: jakie są obsługiwane znaki nazewnictwa plików, pracując przy użyciu usługi AMS?
 
-Odpowiedź: Media Services używa wartości właściwości IAssetFile.Name podczas kompilowania adresy URL przesyłania strumieniowego zawartości (na przykład http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Z tego powodu kodowania procent jest niedozwolone. Wartość **nazwa** właściwość nie może mieć następujące [procent kodowanie zarezerwowanych znaków](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Ponadto może istnieć tylko jeden "." dla rozszerzenia nazwy pliku.
+Odp.: usługa Media Services używa wartości właściwości IAssetFile.Name podczas tworzenia adresów URL przesyłania strumieniowego zawartości (na przykład http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Z tego powodu kodowania procent nie jest dozwolone. Wartość **nazwa** właściwość nie może zawierać żadnych z następujących [procent kodowanie — zastrzeżone znaki](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! * "();: @& = + $, /? [] % #". Ponadto może istnieć tylko jeden "." dla rozszerzenia nazwy pliku.
 
-Pytanie: jak połączyć, używając REST?
+Pytanie: jak połączyć przy użyciu interfejsu REST?
 
-A: Aby uzyskać informacje na temat nawiązywania połączenia z interfejsu API usług AMS, zobacz [dostępu Azure Media Services API przy użyciu uwierzytelniania usługi Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Odp.: Aby uzyskać informacje o tym, jak połączyć się z interfejsem API usługi AMS, zobacz [dostęp do interfejsu API usługi multimediów Azure przy użyciu uwierzytelniania usługi Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
-Pytanie: jak obrócić wideo podczas kodowania.
+P: jak obrócić wideo podczas procesu kodowania.
 
-Odpowiedź: [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) obsługuje obrotu kątami 90/180/270. Domyślne zachowanie to "Auto", gdy próbuje wykryć metadanych obrotu w pliku MP4/MOV przychodzących, a także kompensuje go. Obejmują **źródeł** elementu predefiniowanych json zdefiniowane [tutaj](media-services-mes-presets-overview.md):
+Odp.: [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) obsługuje obrotu kątami 90/180/270. Domyślne zachowanie to "Auto", gdzie próbuje wykryć metadanych obrotu w pliku w formacie MP4/MOV przychodzących, a także kompensuje ona. Obejmują następujące elementy **źródeł** elementu wstępne json, zdefiniowana [tutaj](media-services-mes-presets-overview.md):
 
     "Version": 1.0,
     "Sources": [

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 9ad43ecf2aa5649e582f1aa4159352edf9c8fa5b
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.date: 10/15/2018
+ms.openlocfilehash: 12074ad28e27a249a6dc378986f014ede1cd2ab3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042601"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353584"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Usługa Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pojedynczej bazy danych
 
@@ -28,14 +28,12 @@ Oparte na jednostkach DTU zakupu modelu limitów dla pojedynczych baz danych na 
 > [!IMPORTANT]
 > W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
 
+Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazynie dla pojedynczej bazy danych za pomocą [witryny Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [języka Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-logical-servers-and-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases), [ Interfejs wiersza polecenia Azure](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases), lub [interfejsu API REST](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases).
 
-## <a name="single-database-storage-sizes-and-compute-sizes"></a>Pojedyncza baza danych: magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych
+## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Ogólnego przeznaczenia usługi warstwy: magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych
 
-Dla pojedynczych baz danych w poniższych tabelach Pokaż zasoby dostępne dla pojedynczej bazy danych w poszczególnych warstwach usług i obliczenia rozmiaru. Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazynie dla pojedynczej bazy danych za pomocą [witryny Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [języka Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-logical-servers-and-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases), [ Interfejs wiersza polecenia Azure](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases), lub [interfejsu API REST](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases).
+### <a name="generation-4-compute-platform"></a>Platforma obliczeniowa generacja 4
 
-### <a name="general-purpose-service-tier"></a>Warstwy usług w usłudze ogólnego przeznaczenia
-
-#### <a name="generation-4-compute-platform"></a>Platforma obliczeniowa generacja 4
 |Obliczenia rozmiaru|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24
 |:--- | --: |--: |--: |--: |--: |--: |
 |Generowanie H: odczytu i zapisu|4|4|4|4|4|4|
@@ -57,7 +55,8 @@ Dla pojedynczych baz danych w poniższych tabelach Pokaż zasoby dostępne dla p
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 |||
 
-#### <a name="generation-5-compute-platform"></a>Platforma obliczeniowa generowania 5
+### <a name="generation-5-compute-platform"></a>Platforma obliczeniowa generowania 5
+
 |Obliczenia rozmiaru|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40| GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |
 |Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|
@@ -79,9 +78,10 @@ Dla pojedynczych baz danych w poniższych tabelach Pokaż zasoby dostępne dla p
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 |||
 
-### <a name="business-critical-service-tier"></a>Warstwy usług krytycznych biznesowych
+## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Warstwy usług krytycznych Business: magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych
 
-#### <a name="generation-4-compute-platform"></a>Platforma obliczeniowa generacja 4
+### <a name="generation-4-compute-platform"></a>Platforma obliczeniowa generacja 4
+
 |Obliczenia rozmiaru|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Generowanie H: odczytu i zapisu|4|4|4|4|4|4|
@@ -103,7 +103,8 @@ Dla pojedynczych baz danych w poniższych tabelach Pokaż zasoby dostępne dla p
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 |||
 
-#### <a name="generation-5-compute-platform"></a>Platforma obliczeniowa generowania 5
+### <a name="generation-5-compute-platform"></a>Platforma obliczeniowa generowania 5
+
 |Obliczenia rozmiaru|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
 |Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|5|
@@ -125,9 +126,10 @@ Dla pojedynczych baz danych w poniższych tabelach Pokaż zasoby dostępne dla p
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 |||
 
-### <a name="hyperscale-service-tier-preview"></a>Warstwy usług na dużą skalę (wersja zapoznawcza)
+## <a name="hyperscale-service-tier-preview"></a>Warstwy usług na dużą skalę (wersja zapoznawcza)
 
-#### <a name="generation-4-compute-platform"></a>Platforma obliczeniowa generacja 4
+### <a name="generation-4-compute-platform-storage-sizes-and-compute-sizes"></a>Generacja 4 obliczeń platformy: magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych
+
 |Poziom wydajności|HS_Gen4_1|HS_Gen4_2|HS_Gen4_4|HS_Gen4_8|HS_Gen4_16|HS_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |--: |
 |Generowanie H: odczytu i zapisu|4|4|4|4|4|4|
@@ -148,7 +150,9 @@ Dla pojedynczych baz danych w poniższych tabelach Pokaż zasoby dostępne dla p
 |Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|
 |Uwzględniony magazyn kopii zapasowych|7|7|7|7|7|7|
 |||
+
 ### <a name="generation-5-compute-platform"></a>Platforma obliczeniowa generowania 5
+
 |Poziom wydajności|HS_Gen5_2|HS_Gen5_4|HS_Gen5_8|HS_Gen5_16|HS_Gen5_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
 |Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|5|

@@ -9,17 +9,17 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: 045d7623c3f00ee984dad406247e3197a4ecc45a
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 2f35f54c7ec5ad169673aebe08602294270f470a
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586175"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364459"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Wykrywanie anomalii w usłudze Azure Stream Analytics
 
 > [!IMPORTANT]
-> Ta funkcja jest w trakcie wycofywane, ale zostanie zastąpiony nowych funkcji. Aby uzyskać więcej informacji, odwiedź stronę [osiem nowych funkcji w usłudze Azure Stream Analytics](https://azure.microsoft.com/en-us/blog/eight-new-features-in-azure-stream-analytics/) wpis w blogu.
+> Ta funkcja jest w trakcie wycofywane, ale zostanie zastąpiony nowych funkcji. Aby uzyskać więcej informacji, odwiedź stronę [osiem nowych funkcji w usłudze Azure Stream Analytics](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/) wpis w blogu.
 
 **AnomalyDetection** operator jest używany do wykrywania różne rodzaje anomalii w strumieniach zdarzeń. Na przykład powolne spadek wolnej pamięci przez dłuższy czas może wskazywać przeciek pamięci lub liczbę żądań usług sieci web, które są trwałe w zakresie może znacznie zwiększyć lub zmniejszyć.  
 

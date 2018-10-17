@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: c3b9422ebdb0a5d93f92644d9fea5d9c5ba9fa29
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: c40229eaa589d696c557d5ac126515576593443c
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47185617"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49367016"
 ---
 Zoptymalizowane pod kątem pamięci oferty rozmiarów maszyny Wirtualnej wysokiego współczynnika pamięci do Procesora, który jest najlepszy w przypadku serwerów relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizowania w pamięci. Ten artykuł zawiera informacje o liczbie procesorów wirtualnych, dysków z danymi i kart sieciowych, a także przepustowość przepływności i sieć magazynu dla każdego rozmiaru w tej metodzie grupowania. 
 
@@ -26,7 +26,7 @@ Zoptymalizowane pod kątem pamięci oferty rozmiarów maszyny Wirtualnej wysokie
 
 * Seria Ev3 funkcji E5-2673 v4 2,3 GHz (broadwell z zegarem) procesora w konfiguracji funkcji hyper Threading, zapewniając lepsze korzyści, w przypadku większości obciążeń cel i zapewniania Ev3 wyrównanie innych chmur przy użyciu maszyn wirtualnych ogólnego przeznaczenia.  Pamięci została rozwinięta (z 7 GiB/procesora wirtualnego vCPU do 8 GiB/vCPU), gdy zostały dostosowane limity dysku i sieci na podstawie za rdzeń w celu zapewnienia zgodności z przejścia na wielowątkowość.  Ev3 to uzupełnianie rozmiarów maszyn wirtualnych dużą ilość pamięci rodzin D/Dv2.
 
-* Usługa Azure Compute oferuje różne rozmiary maszyn wirtualnych, które są izolowane pod kątem konkretnego rodzaju sprzętu i przeznaczone dla jednego klienta.  Te rozmiary maszyn wirtualnych są dostosowane do obciążeń wymagających wysokiego stopnia izolacji od innych klientów, a zwłaszcza obciążeń związanych z takimi elementami jak zgodność z przepisami i wymogi prawne.  Klienci mogą również wybrać w celu dalszego podziału zasobów izolowanych maszyn wirtualnych przy użyciu [pomocy technicznej platformy Azure dla zagnieżdżonych maszyn wirtualnych](https://azure.microsoft.com/en-us/blog/nested-virtualization-in-azure/).  Zobacz tabele rodziny maszyn wirtualnych poniżej dla izolowanego opcji maszyny Wirtualnej.
+* Usługa Azure Compute oferuje różne rozmiary maszyn wirtualnych, które są izolowane pod kątem konkretnego rodzaju sprzętu i przeznaczone dla jednego klienta.  Te rozmiary maszyn wirtualnych są dostosowane do obciążeń wymagających wysokiego stopnia izolacji od innych klientów, a zwłaszcza obciążeń związanych z takimi elementami jak zgodność z przepisami i wymogi prawne.  Klienci mogą również wybrać w celu dalszego podziału zasobów izolowanych maszyn wirtualnych przy użyciu [pomocy technicznej platformy Azure dla zagnieżdżonych maszyn wirtualnych](https://azure.microsoft.com/blog/nested-virtualization-in-azure/).  Zobacz tabele rodziny maszyn wirtualnych poniżej dla izolowanego opcji maszyny Wirtualnej.
 
 ## <a name="esv3-series"></a>Serii Esv3 
 

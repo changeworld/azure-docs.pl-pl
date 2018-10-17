@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: iainfou
-ms.openlocfilehash: 3ae7a3193e0a4bacc64524f477b6c179ead20b6b
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 3b6a0bb47e070c094fd955257e6ed041b6634db8
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357258"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362983"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Tworzenie kontrolera danych przychodzących w usłudze Azure Kubernetes Service (AKS)
 
@@ -35,13 +35,13 @@ W tym artykule wymaga również, czy korzystasz z wiersza polecenia platformy Az
 
 ## <a name="create-an-ingress-controller"></a>Tworzenie kontrolera danych przychodzących
 
-Aby utworzyć kontroler danych przychodzących, użyj `Helm` zainstalował *ruch przychodzący serwera nginx*.
+Aby utworzyć kontroler danych przychodzących, użyj `Helm` zainstalował *ruch przychodzący serwera nginx*. Dodano nadmiarowość dwóch replik kontrolerów ruch przychodzący serwera NGINX są wdrażane przy użyciu `--set controller.replicaCount` parametru. Aby w pełni korzystać z systemem replik kontrolera danych przychodzących, upewnij się, że istnieje więcej niż jeden węzeł w klastrze AKS.
 
 > [!TIP]
 > W poniższym przykładzie instalowana kontroler danych przychodzących w `kube-system` przestrzeni nazw. Jeśli to konieczne, można określić innej przestrzeni nazw dla Twojego środowiska. Jeśli klaster AKS nie jest włączone RBAC, Dodaj `--set rbac.create=false` poleceń.
 
 ```console
-helm install stable/nginx-ingress --namespace kube-system
+helm install stable/nginx-ingress --namespace kube-system --set controller.replicaCount=2
 ```
 
 Po utworzeniu rozwiązania Kubernetes usługi równoważenia obciążenia dla kontrolera danych przychodzących NGINX jest przypisany dynamicznego publicznego adresu IP, jak pokazano w następujących przykładowych danych wyjściowych:
@@ -126,6 +126,41 @@ Aby przetestować trasy dla kontrolera danych przychodzących, przejdź do dwóc
 Teraz Dodaj */hello-world-two* ścieżki do adresu IP adres, takie jak *http://40.117.74.8/hello-world-two*. Zostanie wyświetlony drugi aplikacji demonstracyjnej z tytułem niestandardowe:
 
 ![Drugiej aplikacji działające poza usługą kontrolera danych przychodzących](media/ingress-basic/app-two.png)
+
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+W tym artykule używane narzędzia Helm do zainstalowania składników transferu danych przychodzących i przykładowe aplikacje. Podczas wdrażania wykresu Helm tworzonych wiele zasobów Kubernetes. Te zasoby obejmują zasobników, wdrożenia i usług. Aby wyczyścić te zasoby, najpierw listy wersji narzędzia Helm przy użyciu `helm list` polecenia. Wyszukaj wykresy o nazwie *ruch przychodzący serwera nginx* i *aks-helloworld*, jak pokazano w następujących przykładowych danych wyjściowych:
+
+```
+$ helm list
+
+NAME                REVISION    UPDATED                     STATUS      CHART                   APP VERSION NAMESPACE
+gilded-duck         1           Tue Oct 16 16:52:25 2018    DEPLOYED    nginx-ingress-0.22.1    0.15.0      kube-system
+righteous-numbat    1           Tue Oct 16 16:53:53 2018    DEPLOYED    aks-helloworld-0.1.0                default
+looming-moth        1           Tue Oct 16 16:53:59 2018    DEPLOYED    aks-helloworld-0.1.0                default
+```
+
+Usuń wersjach z `helm delete` polecenia. Poniższy przykład usuwa wdrażania ruch przychodzący serwera NGINX i dwie przykładowe AKS Witaj świecie aplikacje.
+
+```
+$ helm delete gilded-duck righteous-numbat looming-moth
+
+release "gilded-duck" deleted
+release "righteous-numbat" deleted
+release "looming-moth" deleted
+```
+
+Następnie usuń repozytorium narzędzia Helm dla usługi AKS hello world aplikacji:
+
+```console
+helm repo remove azure-samples
+```
+
+Na koniec usunąć trasę ruchu przychodzącego, który kierowany ruch do aplikacji przykładowej:
+
+```console
+kubectl delete -f hello-world-ingress.yaml
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

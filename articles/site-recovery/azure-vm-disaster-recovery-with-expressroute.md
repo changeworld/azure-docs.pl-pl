@@ -2,25 +2,25 @@
 title: Integrowanie usługi Azure ExpressRoute za pomocą odzyskiwania po awarii dla maszyn wirtualnych platformy Azure przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób konfigurowania odzyskiwania po awarii dla maszyn wirtualnych platformy Azure przy użyciu usługi Azure Site Recovery i Azure ExpressRoute
 services: site-recovery
-author: mayanknayar
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 10/02/2018
-ms.author: manayar
-ms.openlocfilehash: c3fc8edf1601b3bb6f670df64d444edc9dcfbd6d
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.topic: conceptual
+ms.date: 10/16/2018
+ms.author: mayg
+ms.openlocfilehash: 03fac23ea17a6baa1b43e748a4390cf142661a19
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114880"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353545"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrowanie usługi Azure ExpressRoute za pomocą odzyskiwania po awarii dla maszyn wirtualnych platformy Azure
 
 
 W tym artykule opisano sposób integracji usługi Azure ExpressRoute za pomocą [usługi Azure Site Recovery](site-recovery-overview.md), podczas konfigurowania odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure.
 
-Usługa Site Recovery umożliwia odzyskiwanie po awarii maszyn wirtualnych platformy Azure przez replikację danych maszyny Wirtualnej platformy Azure do platformy Azure. 
+Usługa Site Recovery umożliwia odzyskiwanie po awarii maszyn wirtualnych platformy Azure przez replikację danych maszyny Wirtualnej platformy Azure do platformy Azure.
 
 - Jeśli używasz maszyn wirtualnych platformy Azure [usługi Azure managed disks](../virtual-machines/windows/managed-disks-overview.md), dane maszyny Wirtualnej są replikowane do replikowanego dysku zarządzanego w regionie pomocniczym.
 - Jeśli maszyny wirtualne platformy Azure nie korzystają z dysków zarządzanych, maszyna wirtualna dane są replikowane do konta usługi Azure storage.
@@ -76,7 +76,7 @@ Jeśli chcesz skonfigurować replikację dla maszyn wirtualnych platformy Azure 
     - Domyślną trasę systemową platformy Azure do replikacji maszyn wirtualnych platformy Azure jest 0.0.0.0/0.
     - Zazwyczaj urządzenia WUS wdrożeń również zdefiniować trasy domyślnej (0.0.0.0/0), która wymusza ruch wychodzący z Internetu do przepływu przez urządzenie WUS. Trasy domyślnej jest używany, gdy znajduje się żadna inna konfiguracja określoną trasę.
     - Jeśli jest to możliwe, może być przeciążony urządzenie WUS, jeśli cały ruch replikacji przechodzą przez urządzenie WUS.
-    - Takie samo ograniczenie występuje ma również zastosowanie w przypadku używania tras domyślnych dla routingu cały ruch maszyny Wirtualnej platformy Azure do lokalnych wdrożeń. 
+    - Takie samo ograniczenie występuje ma również zastosowanie w przypadku używania tras domyślnych dla routingu cały ruch maszyny Wirtualnej platformy Azure do lokalnych wdrożeń.
     - W tym scenariuszu zaleca się, że możesz [Tworzenie punktu końcowego usługi sieci](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) w Twojej sieci wirtualnej dla usługi Microsoft.Storage tak, aby ruch związany z replikacją nie opuszczają platformy Azure.
 
 ## <a name="replication-example"></a>Przykład replikacji
@@ -87,8 +87,8 @@ Zazwyczaj wdrożeń w przedsiębiorstwach mają obciążeń podzielone między w
 
 - **Region**. Aplikacje są wdrażane w regionie Azja Wschodnia platformy Azure.
 - **Sieci wirtualne będące szprychami**. Aplikacje są wdrażane w dwie sieci wirtualne będące szprychami:
-    - **Źródło vNet1**: 10.1.0.0/24. 
-    - **Źródło vNet2**: 10.2.0.0/24. 
+    - **Źródło vNet1**: 10.1.0.0/24.
+    - **Źródło vNet2**: 10.2.0.0/24.
     - Każda sieć wirtualna gwiazdy jest podłączony do **piastą**.
 - **Piastą**. Brak sieci wirtualnej koncentratora **źródła piastą**: 10.10.10.0/24.
     - Tej sieci wirtualnej koncentratora pełnić rolę strażnika.
@@ -124,14 +124,14 @@ Piasta do szprychy | Za pomocą bram remove | Disabled (Wyłączony)
 
  ![Centrum typu gwiazda konfiguracji komunikacji równorzędnej](./media/azure-vm-disaster-recovery-with-expressroute/hub-to-spoke-peering-configuration.png)
 
-### <a name="example-steps"></a>Przykład kroki 
+### <a name="example-steps"></a>Przykład kroki
 
 W naszym przykładzie następujące powinno mieć miejsce po włączeniu replikacji dla maszyn wirtualnych platformy Azure w sieci źródłowej:
 
 1. Możesz [włączyć replikację](azure-to-azure-tutorial-enable-replication.md) dla maszyny Wirtualnej.
 2. Usługa Site Recovery utworzy repliki w sieciach wirtualnych, podsieci i podsieć bramy w regionie docelowym.
 3. Usługa Site Recovery tworzy mapowania między sieciami źródła i sieci docelowych repliki, który on generuje.
-4. Ręcznie utworzyć bramy sieci wirtualnej, połączeń bramy sieci wirtualnej, wirtualnych sieci równorzędnych, lub wszelkich innych sieci zasobów lub połączenia. 
+4. Ręcznie utworzyć bramy sieci wirtualnej, połączeń bramy sieci wirtualnej, wirtualnych sieci równorzędnych, lub wszelkich innych sieci zasobów lub połączenia.
 
 
 ## <a name="fail-over-azure-vms-when-using-expressroute"></a>Tryb failover maszyn wirtualnych platformy Azure przy użyciu usługi ExpressRoute
@@ -148,7 +148,7 @@ Po maszyny wirtualne platformy Azure przejścia w tryb failover do docelowego re
 
 Dzięki temu konfiguracja chroni obwodów usługi ExpressRoute względem regionalnej awarii. Jeśli Twojej podstawowej położenie komunikacji równorzędnej ulegnie awarii, nadal połączenia z innej lokalizacji.
 
-- Obwód podłączone do środowiska produkcyjnego jest zazwyczaj podstawowym. Obwód pomocniczy ma zazwyczaj mniejszej przepustowości, która może być zwiększana w przypadku wystąpienia awarii. 
+- Obwód podłączone do środowiska produkcyjnego jest zazwyczaj podstawowym. Obwód pomocniczy ma zazwyczaj mniejszej przepustowości, która może być zwiększana w przypadku wystąpienia awarii.
 - Po włączeniu trybu failover można ustanowić połączenia z pomocniczego obwodu usługi ExpressRoute w docelowej sieci wirtualnej. Alternatywnie możesz mieć połączenia skonfigurowane i można w razie awarii, aby zmniejszyć ogólny czas odzyskiwania.
 - Jednoczesnych połączeń podstawowych i docelowych, sieciami wirtualnymi upewnij się, że lokalne tylko routing używa obwód pomocniczy i połączenia po włączeniu trybu failover.
 - Sieci wirtualne źródłowych i docelowych może odbierać nowe adresy IP, lub zachować te same po włączeniu trybu failover. W obu przypadkach dodatkowych połączeń, może zostać nawiązana przed trybu failover.
@@ -156,7 +156,7 @@ Dzięki temu konfiguracja chroni obwodów usługi ExpressRoute względem regiona
 
 #### <a name="two-circuits-with-single-peering-location"></a>Dwa obwody z jednej lokalizacji komunikacji równorzędnej
 
-Ta konfiguracja wpiera ochronę przed awariami głównej obwodu usługi ExpressRoute, ale nie wtedy, gdy ulegnie awarii jednej lokalizacji komunikacji równorzędnej usługi ExpressRoute, wpływ na obu obwodów. 
+Ta konfiguracja wpiera ochronę przed awariami głównej obwodu usługi ExpressRoute, ale nie wtedy, gdy ulegnie awarii jednej lokalizacji komunikacji równorzędnej usługi ExpressRoute, wpływ na obu obwodów.
 
 - Może mieć jednocześnie połączenia z lokalnym centrum danych, źródłowa sieć wirtualna za pomocą obwód podstawowy i docelowej sieci wirtualnej przy użyciu pomocniczego obwodu.
 - Jednoczesnych połączeń z podstawowego, jak i obiektem docelowym upewnij się, że lokalne tylko routing używa pomocniczego obwodu i połączenia po włączeniu trybu failover.
