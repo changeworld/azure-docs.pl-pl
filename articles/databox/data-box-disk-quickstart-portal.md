@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/28/2018
+ms.date: 09/07/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 596c4b15ea6ef76d4471bca6994377bf4d5ddc01
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: b4ec329fc5b1f3df9e6641bee3e1378c3a4d09c6
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143427"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378350"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>Szybki start: wdrażanie usługi Azure Data Box Disk (w wersji zapoznawczej) za pomocą witryny Azure Portal
 
@@ -68,12 +68,12 @@ Urządzenia Data Box Disk są wysyłane w opakowaniu UPS Express Box. Otwórz op
 
 Ten krok zajmuje około 5 minut.
 
-1. Podłącz dysk do komputera z obsługiwaną wersją systemu Windows za pomocą dołączonego kabla. Aby uzyskać więcej informacji na temat obsługiwanych wersji systemu operacyjnego, zapoznaj się z [wymaganiami systemowymi rozwiązania Azure Data Box Disk](data-box-disk-system-requirements.md). 
+1. Podłącz dysk do komputera z obsługiwaną wersją systemu Windows/Linux za pomocą dołączonego kabla. Aby uzyskać więcej informacji na temat obsługiwanych wersji systemu operacyjnego, zapoznaj się z [wymaganiami systemowymi rozwiązania Azure Data Box Disk](data-box-disk-system-requirements.md). 
 2. Aby odblokować dysk:
 
     1. W witrynie Azure Portal przejdź do pozycji **Ogólne > Szczegóły urządzenia** i uzyskaj klucz dostępu.
-    2. Pobierz i wyodrębnij narzędzie do odblokowywania dysków Data Box na komputerze, którego używasz do skopiowania danych na dyski. 
-    3. Uruchom plik *DataBoxDiskUnlock.exe* i podaj klucz dostępu. W przypadku ponownego użycia dysku uruchom ponownie narzędzie do odblokowywania i podaj klucz dostępu. **Do odblokowania dysku nie należy używać okna dialogowego funkcji BitLocker ani klucza funkcji BitLocker.** 
+    2. Pobierz i wyodrębnij przeznaczone dla danego systemu operacyjnego narzędzie do odblokowywania urządzenia Data Box Disk na komputerze, którego używasz do skopiowania danych na dyski. 
+    3. Uruchom narzędzie do odblokowywania urządzenia Data Box Disk i podaj klucz dostępu. W przypadku ponownego użycia dysku uruchom ponownie narzędzie do odblokowywania i podaj klucz dostępu. **Do odblokowania dysku nie należy używać okna dialogowego funkcji BitLocker ani klucza funkcji BitLocker.** Aby uzyskać więcej informacji na temat sposobu odblokowywania dysków, zobacz [Odblokowywanie dysków na komputerze klienckim z systemem Windows]() lub [Odblokowywanie dysków na komputerze klienckim z systemem Linux]().
     4. W narzędziu jest wyświetlana litera dysku przypisana do danego dysku. Zanotuj tę literę dysku. Będzie używana w kolejnych krokach.
 
 ## <a name="copy-data-and-verify"></a>Kopiowanie danych i weryfikacja
@@ -86,9 +86,9 @@ Czas wymagany do ukończenia tej operacji zależy od rozmiaru danych.
 
     > [!NOTE] 
     > - Wszystkie kontenery i obiekty blob powinny mieć nazwy zgodne z [konwencją nazewnictwa platformy Azure](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions). W przypadku niezgodności z tymi regułami przekazywanie danych na platformę Azure zakończy się niepowodzeniem.
-    > - Rozmiar plików nie może przekraczać ~4.7 TiB w przypadku blokowych obiektów blob, a ~8 TiB w przypadku stronicowych obiektów blob.
+    > - Rozmiar plików nie może przekraczać ok. 4,75 TiB w przypadku blokowych obiektów blob i ok. 8 TiB w przypadku stronicowych obiektów blob.
 
-2. (Opcjonalnie) Po zakończeniu kopiowania zalecamy uruchomienie narzędzia `AzureExpressDiskService.cmd` znajdującego się w folderze *AzureImportExport* w celu wygenerowania sum kontrolnych na potrzeby sprawdzania poprawności. Czas wykonywania tej operacji zależy od rozmiaru danych. 
+2. (Opcjonalnie) Po zakończeniu kopiowania zalecamy uruchomienie narzędzia `DataBoxDiskValidation.cmd` znajdującego się w folderze *AzureImportExport* w celu wygenerowania sum kontrolnych na potrzeby sprawdzania poprawności. Czas wykonywania tej operacji zależy od rozmiaru danych. 
 3. Odłącz dysk. 
 
 

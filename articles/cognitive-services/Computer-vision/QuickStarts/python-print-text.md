@@ -1,49 +1,49 @@
 ---
-title: Przewodnik Szybki start dla języka Python dotyczący optycznego rozpoznawania znaków za pomocą interfejsu API przetwarzania obrazów | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: W tym przewodniku Szybki start wyodrębnisz z obrazu tekst drukowany przy użyciu funkcji przetwarzania obrazów i języka Python w usługach Cognitive Services.
+title: 'Szybki start: wyodrębnianie tekstu wydrukowanego (OCR) — REST, Python — przetwarzanie obrazów'
+titleSuffix: Azure Cognitive Services
+description: W tym przewodniku Szybki start wyodrębnisz z obrazu tekst drukowany przy użyciu interfejsu API przetwarzania obrazów i języka Python.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 60d0435083bdb38b3aee4ff8a8f022e76d06407f
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: b02a3f382dd0049b635ca2ca99c2e102d364a1f6
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43771909"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629390"
 ---
-# <a name="quickstart-extract-printed-text-ocr---rest-python"></a>Szybki start: wyodrębnianie tekstu drukowanego (OCR) — REST, Python
+# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-python-in-computer-vision"></a>Szybki start: wyodrębnianie tekstu drukowanego (OCR) przy użyciu interfejsu API REST i języka Python w przetwarzaniu obrazów
 
-W tym przewodniku Szybki start dowiesz się, jak wyodrębnić z obrazu tekst drukowany przy użyciu przetwarzania obrazów. Czasem nazywa się to optycznym rozpoznawaniem znaków (OCR, Optical Character Recognition).
+W tym przewodniku Szybki start dowiesz się, jak wyodrębnić tekst drukowany za pomocą optycznego rozpoznawania znaków (OCR) z obrazu przy użyciu interfejsu API REST przetwarzania obrazów. Metoda optycznego rozpoznawania znaków ([OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)) pozwala wykrywać na obrazie tekst wydrukowany i wyodrębniać rozpoznane znaki do strumienia znaków, którego mogą używać komputery.
 
 Możesz pracować z tym przewodnikiem Szybki start krok po kroku, korzystając z aplikacji Jupyter Notebook w usłudze [MyBinder](https://mybinder.org). Aby uruchomić usługę Binder, wybierz poniższy przycisk:
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services).
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby korzystać z funkcji przetwarzania obrazów, musisz mieć klucz subskrypcji — zobacz [Obtaining Subscription Keys (Uzyskiwanie kluczy subskrypcji)](../Vision-API-How-to-Topics/HowToSubscribe.md).
+- Jeśli chcesz uruchomić próbkę lokalnie, musisz mieć zainstalowany język [Python](https://www.python.org/downloads/).
+- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Aby uzyskać klucz subskrypcji, zobacz [Obtaining Subscription Keys (Uzyskiwanie kluczy subskrypcji)](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="extract-printed-text"></a>Wyodrębnianie tekstu drukowanego
+## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie próbki
 
-[Metoda optycznego rozpoznawania znaków (OCR)](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) pozwala wykrywać na obrazie tekst wydrukowany i wyodrębniać rozpoznane znaki do strumienia znaków, którego mogą używać komputery.
+Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 
-Aby uruchomić przykład, wykonaj następujące kroki:
-
-1. Skopiuj poniższy kod do nowego pliku skryptu w języku Python.
-1. Zastąp wartość `<Subscription Key>` prawidłowym kluczem subskrypcji.
-1. Zmień wartość `vision_base_url` na lokalizację, z której uzyskano klucze subskrypcji, jeśli jest to konieczne.
-1. Opcjonalnie możesz zmienić wartość `image_url` na inny obraz.
-1. Uruchom skrypt.
-
-W poniższym kodzie użyto biblioteki `requests` języka Python, aby wywołać żądanie Analyze Image interfejsu API przetwarzania obrazów. Wyniki są zwracane w formie obiektu JSON. Klucz interfejsu API jest przekazywany za pośrednictwem słownika `headers`.
-
-## <a name="ocr-request"></a>Żądanie OCR
+1. Skopiuj następujący kod do edytora tekstów.
+1. W razie potrzeby wprowadź w kodzie następujące zmiany:
+    1. Zastąp wartość `subscription_key` kluczem subskrypcji.
+    1. W razie potrzeby zastąp wartość `vision_base_url` adresem URL punktu końcowego dla zasobu przetwarzania obrazów z regionu platformy Azure, z którego uzyskano klucze subskrypcji.
+    1. Opcjonalnie zastąp wartość `image_url` adresem URL innego obrazu, z którego chcesz wyodrębnić tekst drukowany.
+1. Zapisz kod jako plik z rozszerzeniem `.py`. Na przykład `get-printed-text.py`.
+1. Otwórz okno wiersza polecenia.
+1. W wierszu polecenia użyj polecenia `python`, aby uruchomić próbkę. Na przykład `python get-printed-text.py`.
 
 ```python
 import requests
@@ -104,9 +104,9 @@ for word in word_infos:
 plt.axis("off")
 ```
 
-## <a name="ocr-response"></a>Odpowiedź na żądanie OCR
+## <a name="examine-the-response"></a>Sprawdzanie odpowiedzi
 
-Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, na przykład:
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON. Przykładowa strona sieci Web analizuje i wyświetla pomyślną odpowiedź w oknie wiersza polecenia, podobnie jak w poniższym przykładzie:
 
 ```json
 {
@@ -207,9 +207,13 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Gdy plik nie będzie już potrzebny, usuń go.
+
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z aplikacją w języku Python, w której zastosowano interfejs API przetwarzania obrazów do optycznego rozpoznawania znaków (OCR), inteligentnego przycinania miniatur oraz wykrywania, kategoryzowania, tagowania i opisywania elementów wizualnych, w tym twarzy, na obrazie. Aby szybko zacząć eksperymentować z interfejsami API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Zapoznaj się z aplikacją w języku Python, w której zastosowano interfejs API przetwarzania obrazów do optycznego rozpoznawania znaków (OCR), inteligentnego przycinania miniatur oraz wykrywania, kategoryzowania, tagowania i opisywania elementów wizualnych, w tym twarzy, na obrazie. Aby szybko zacząć eksperymentować z interfejsem API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
 > [Computer Vision API Python Tutorial (Samouczek dla języka Python dotyczący interfejsu API przetwarzania obrazów)](../Tutorials/PythonTutorial.md)

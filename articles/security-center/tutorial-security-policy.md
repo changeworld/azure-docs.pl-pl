@@ -3,7 +3,7 @@ title: Samouczek dotyczący usługi Azure Security Center — Definiowanie i oce
 description: Samouczek dotyczący usługi Azure Security Center — Definiowanie i ocenianie zasad zabezpieczeń
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/30/2018
-ms.author: terrylan
-ms.openlocfilehash: 15c69bce87ede96eb3a7bc0bada4e4f6a6669abb
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.date: 08/30/2018
+ms.author: rkarlin
+ms.openlocfilehash: fcd3c2a95cea0a838fc16149a0a74fad95ea3300
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358612"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027065"
 ---
 # <a name="tutorial-define-and-assess-security-policies"></a>Samouczek: Definiowanie i ocenianie zasad zabezpieczeń
 Usługa Security Center pomaga zapewnić zgodność z wymaganiami dotyczącymi zabezpieczeń określonymi przez firmę lub przepisy, definiując pożądaną konfigurację Twoich obciążeń przy użyciu zasad zabezpieczeń. Gdy zdefiniujesz zasady dla Twoich subskrypcji platformy Azure oraz dostosujesz je do typu obciążenia lub wrażliwości danych, usługa Security Center może podać zalecenia dotyczące zabezpieczeń zasobów obliczeniowych, aplikacji sieciowych, SQL i magazynowych oraz tożsamości i uzyskiwania dostępu do zasobów. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -42,8 +42,7 @@ Usługa Security Center automatycznie tworzy domyślne zasady zabezpieczeń dla 
 
   ![Zasady zabezpieczeń](./media/tutorial-security-policy/tutorial-security-policy-fig1.png)  
 
-3. W sekcji **SKŁADNIKI ZASAD** wybierz pozycję **Zasady zabezpieczeń**
-4. Dla każdej konfiguracji zabezpieczeń, którą chcesz monitorować, wybierz pozycję **Włącz**. Usługa Security Center w sposób ciągły będzie oceniać konfigurację środowiska i jeśli istnieje luka w zabezpieczeniach, wygeneruje zalecenie dotyczące zabezpieczeń. Wybierz pozycję **Wyłącz**, jeśli konfiguracja zabezpieczeń jest niezalecana lub nieodpowiednia. Na przykład w środowisku programistycznym/testowym może nie być wymagany taki sam poziom zabezpieczeń jak w środowisku produkcyjnym. Po wybraniu zasad odpowiednich dla danego środowiska kliknij pozycję **Zapisz**.
+3. W obszarach **Obliczenia i aplikacje**, **Sieć** i **Dane** ustaw każdą konfigurację zabezpieczeń, którą chcesz monitorować, na **Włączona**. Usługa Security Center w sposób ciągły będzie oceniać konfigurację środowiska i jeśli istnieje luka w zabezpieczeniach, wygeneruje zalecenie dotyczące zabezpieczeń. Wybierz pozycję **Wyłącz**, jeśli konfiguracja zabezpieczeń jest niezalecana lub nieodpowiednia. Na przykład w środowisku programistycznym/testowym może nie być wymagany taki sam poziom zabezpieczeń jak w środowisku produkcyjnym. Po wybraniu zasad odpowiednich dla danego środowiska kliknij pozycję **Zapisz**.
 
   ![Konfiguracja zabezpieczeń](./media/tutorial-security-policy/tutorial-security-policy-fig6.png)  
 

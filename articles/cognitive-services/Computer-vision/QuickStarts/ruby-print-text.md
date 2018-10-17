@@ -1,42 +1,45 @@
 ---
-title: Przewodnik Szybki start dla języka Ruby dotyczący optycznego rozpoznawania znaków przy użyciu interfejsu API przetwarzania obrazów | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Z tego przewodnika Szybki start dowiesz się, jak wyodrębnić z obrazu tekst drukowany za pomocą interfejsu API przetwarzania obrazów i języka Ruby w usługach Cognitive Services.
+title: 'Szybki start: wyodrębnianie tekstu wydrukowanego (OCR) — REST, Ruby — przetwarzanie obrazów'
+titleSuffix: Azure Cognitive Services
+description: W tym przewodniku Szybki start wyodrębnisz z obrazu tekst drukowany przy użyciu interfejsu API przetwarzania obrazów i języka Ruby.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 4f381444401718906bb352860aec525d73da1eb2
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: d222615e3c6a884fa77f34dd1f87c3211f631c39
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43772402"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629530"
 ---
-# <a name="quickstart-extract-printed-text-ocr---rest-ruby"></a>Szybki start: wyodrębnianie tekstu drukowanego (OCR) — REST, Ruby
+# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-ruby-in-computer-vision"></a>Szybki start: wyodrębnianie tekstu drukowanego (OCR) przy użyciu interfejsu API REST i języka Ruby w przetwarzaniu obrazów
 
-W tym przewodniku Szybki start dowiesz się, jak wyodrębnić z obrazu tekst drukowany przy użyciu przetwarzania obrazów. Czasem nazywa się to optycznym rozpoznawaniem znaków (OCR, Optical Character Recognition).
+W tym przewodniku Szybki start dowiesz się, jak wyodrębnić tekst drukowany za pomocą optycznego rozpoznawania znaków (OCR) z obrazu przy użyciu interfejsu API REST przetwarzania obrazów. Metoda optycznego rozpoznawania znaków ([OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)) pozwala wykrywać na obrazie tekst wydrukowany i wyodrębniać rozpoznane znaki do strumienia znaków, którego mogą używać komputery.
+
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby korzystać z funkcji przetwarzania obrazów, musisz mieć klucz subskrypcji — zobacz [Obtaining Subscription Keys (Uzyskiwanie kluczy subskrypcji)](../Vision-API-How-to-Topics/HowToSubscribe.md).
+- Musisz mieć zainstalowany język [Ruby](https://www.ruby-lang.org/en/downloads/) w wersji 2.4.x lub nowszej.
+- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Aby uzyskać klucz subskrypcji, zobacz [Obtaining Subscription Keys (Uzyskiwanie kluczy subskrypcji)](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="ocr-request"></a>Żądanie OCR
+## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie próbki
 
-[Metoda optycznego rozpoznawania znaków (OCR)](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) pozwala wykrywać na obrazie tekst wydrukowany i wyodrębniać rozpoznane znaki do strumienia znaków, którego mogą używać komputery.
+Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 
-Aby uruchomić przykład, wykonaj następujące kroki:
-
-1. Skopiuj następujący kod do edytora.
-1. Zastąp wartość `<Subscription Key>` prawidłowym kluczem subskrypcji.
-1. Zmień wartość `uri` na lokalizację, z której uzyskano klucze subskrypcji, jeśli jest to konieczne.
-1. Opcjonalnie możesz zmienić obraz (`{\"url\":\"...`) do analizy.
-1. Zapisz plik z rozszerzeniem `.rb`.
-1. Otwórz wiersz polecenia języka Ruby i uruchom plik, na przykład: `ruby myfile.rb`.
+1. Skopiuj następujący kod do edytora tekstów.
+1. W razie potrzeby wprowadź w kodzie następujące zmiany:
+    1. Zastąp element `<Subscription Key>` kluczem subskrypcji.
+    1. W razie potrzeby zastąp `https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr` adresem URL punktu końcowego dla metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) z regionu platformy Azure, z którego uzyskano klucze subskrypcji.
+    1. Opcjonalnie zastąp wartość `https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png\` adresem URL innego obrazu, z którego chcesz wyodrębnić tekst drukowany.
+1. Zapisz kod jako plik z rozszerzeniem `.rb`. Na przykład `get-printed-text.rb`.
+1. Otwórz okno wiersza polecenia.
+1. W wierszu polecenia użyj polecenia `ruby`, aby uruchomić próbkę. Na przykład `ruby get-printed-text.rb`.
 
 ```ruby
 require 'net/http'
@@ -69,9 +72,9 @@ end
 puts response.body
 ```
 
-## <a name="ocr-response"></a>Odpowiedź na żądanie OCR
+## <a name="examine-the-response"></a>Sprawdzanie odpowiedzi
 
-Po pomyślnym przetworzeniu żądania są zwracane wyniki OCR obejmujące tekst oraz pole ograniczenia dla regionów, wierszy i słów, na przykład:
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON. Próbka analizuje i wyświetla pomyślną odpowiedź w oknie wiersza polecenia, podobnie jak w poniższym przykładzie:
 
 ```json
 {
@@ -139,9 +142,13 @@ Po pomyślnym przetworzeniu żądania są zwracane wyniki OCR obejmujące tekst 
 }
 ```
 
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Gdy plik nie będzie już potrzebny, usuń go.
+
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z interfejsami API przetwarzania obrazów używanymi do analizy obrazu, wykrywania osobistości i charakterystycznych elementów krajobrazu, tworzenia miniatur oraz wyodrębniania tekstu drukowanego i odręcznego. Aby szybko zacząć eksperymentować z interfejsami API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Zapoznaj się z interfejsami API przetwarzania obrazów używanymi do analizy obrazu, wykrywania celebrytów i charakterystycznych elementów krajobrazu, tworzenia miniatur oraz wyodrębniania tekstu drukowanego i odręcznego. Aby szybko zacząć eksperymentować z interfejsem API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
-> [Poznaj interfejsy API przetwarzania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [Zobacz, jak działa interfejs API przetwarzania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

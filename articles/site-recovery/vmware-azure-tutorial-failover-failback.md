@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 09/11/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1f7856edef3bb93300fce0ff00d9434400e239f8
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: e9ed0ba8d24f30f67dbb315848dc4c260cae4f50
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917051"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391372"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Przechodzenie do trybu failover i powrót po awarii maszyn wirtualnych VMware i fizycznych serwerów replikowanych na platformie Azure
 
@@ -67,7 +67,7 @@ Sprawdź właściwości maszyny wirtualnej i upewnij się, że maszyna wirtualna
 1. W obszarze **Ustawienia** > **Zreplikowane elementy** kliknij kolejno pozycje maszyna wirtualna > **Tryb failover**.
 
 2. W obszarze **Tryb failover** wybierz **Punkt odzyskiwania**, do którego przełączenie w tryb failover ma zostać wykonane. Możesz użyć jednej z następujących opcji:
-   - **Najnowszy** (domyślna): ta opcja najpierw przetwarza wszystkie dane wysyłane do usługi Site Recovery. Zapewnia najniższą wartość celu puntu odzyskiwania, ponieważ maszyna wirtualna platformy Azure utworzona po przejściu do trybu failover zawiera wszystkie dane, które zostały zreplikowane w usłudze Site Recovery do momentu włączenia trybu failover.
+   - **Najnowszy**: ta opcja najpierw przetwarza wszystkie dane wysyłane do usługi Site Recovery. Zapewnia najniższą wartość celu puntu odzyskiwania, ponieważ maszyna wirtualna platformy Azure utworzona po przejściu do trybu failover zawiera wszystkie dane, które zostały zreplikowane w usłudze Site Recovery do momentu włączenia trybu failover.
    - **Najnowszy przetworzony**: ta opcja wprowadza maszynę wirtualną w tryb failover z użyciem najnowszego punktu odzyskiwania przetworzonego przez usługę Site Recovery. Ta opcja zapewnia niską wartość celu czasu odzyskiwania, ponieważ nie wymaga przetwarzania nieprzetworzonych danych.
    - **Najnowszy spójny na poziomie aplikacji**: ta opcja wprowadza maszynę wirtualną w tryb failover z użyciem najnowszego spójnego na poziomie aplikacji punktu odzyskiwania przetworzonego przez usługę Site Recovery.
    - **Niestandardowy**: umożliwia określenie punktu odzyskiwania.
@@ -82,11 +82,14 @@ W niektórych scenariuszach tryb failover wymaga dodatkowego przetwarzania, któ
 
 ## <a name="connect-to-failed-over-virtual-machine-in-azure"></a>Nawiązywanie połączenia z maszyną wirtualną przełączoną w tryb failover na platformie Azure
 
-1. Po przełączeniu do trybu failover przejdź do maszyny wirtualnej, a następnie zweryfikuj ją, nawiązując z nią [połączenie](../virtual-machines/windows/connect-logon.md).
-2. Po weryfikacji kliknij pozycję **Zatwierdź**, aby sfinalizować punkt odzyskiwania maszyny wirtualnej po przełączeniu do trybu failover. Po zatwierdzeniu wszystkie inne dostępne punkty odzyskiwania zostaną usunięte. Na tym kończy się działanie trybu failover.
+1. Jeśli chcesz nawiązać połączenie z maszynami wirtualnymi platformy Azure przy użyciu protokołu RDP/SSH po przejściu do trybu failover, upewnij się, że zostały spełnione wymagania podsumowane w [tej](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover) tabeli.
+2. Po przełączeniu do trybu failover przejdź do maszyny wirtualnej, a następnie zweryfikuj ją, nawiązując z nią [połączenie](../virtual-machines/windows/connect-logon.md).
+3. Po weryfikacji kliknij pozycję **Zatwierdź**, aby sfinalizować punkt odzyskiwania maszyny wirtualnej po przełączeniu do trybu failover. Po zatwierdzeniu wszystkie inne dostępne punkty odzyskiwania zostaną usunięte. Na tym kończy się działanie trybu failover.
 
 >[!TIP]
 > Opcja **Zmień punkt odzyskiwania** pomaga wybrać inny punkt odzyskiwania po przełączeniu do trybu failover, jeśli maszyna wirtualna przełączona w tryb failover nie jest zadowalająca. Po **zatwierdzeniu** ta opcja nie będzie już dostępna.
+
+Wykonaj czynności opisane [tutaj](site-recovery-failover-to-azure-troubleshoot.md), aby rozwiązać wszystkie problemy z łącznością po przejściu do trybu failover.
 
 ## <a name="preparing-for-reprotection-of-azure-vm"></a>Przygotowywanie do ponownego włączenia ochrony maszyny wirtualnej platformy Azure
 

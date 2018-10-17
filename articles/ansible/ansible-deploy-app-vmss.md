@@ -7,13 +7,13 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 08/24/2018
-ms.openlocfilehash: 762c14b5b6e30f6410a8d572d69651c803f079c2
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.date: 09/11/2018
+ms.openlocfilehash: 3512cb7eda9f9e5a6e18dc83f6523029b17a9de2
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918090"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391474"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Wdrażanie aplikacji w zestawach skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania Ansible
 Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zasobów w Twoim środowisku. Możesz go użyć do wdrażania aplikacji na platformie Azure. W tym artykule przedstawiono sposób wdrażania aplikacji Java w zestawie skalowania maszyn wirtualnych platformy Azure (VMSS).  
@@ -31,7 +31,7 @@ Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zas
 
 ## <a name="get-host-information"></a>Pobieranie informacji o hoście
 
-W tej sekcji pokazano, jak za pomocą rozwiązania Ansible można pobrać informacje o hoście dla grupy maszyn wirtualnych platformy Azure. Poniżej znajduje się przykładowy podręcznik rozwiązania Ansible. Ten kod pobiera publiczne adresy IP i moduł równoważenia obciążenia w ramach określonej grupy zasobów i tworzy grupę hostów o nazwie **saclesethosts** w spisie. 
+W tej sekcji pokazano, jak za pomocą rozwiązania Ansible można pobrać informacje o hoście dla grupy maszyn wirtualnych platformy Azure. Poniżej znajduje się przykładowy podręcznik rozwiązania Ansible. Ten kod pobiera publiczne adresy IP i moduł równoważenia obciążenia w ramach określonej grupy zasobów i tworzy grupę hostów o nazwie **scalesethosts** w spisie. 
 
 Zapisz następujący przykładowy podręcznik jako `get-hosts-tasks.yml`: 
 

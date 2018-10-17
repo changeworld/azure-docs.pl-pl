@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: dd68b65825c9c22453e0191d42a0fcce3b65ca64
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 2e01f61ff915a8fe4327aa78c8867d666dc36fda
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236090"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983230"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Samouczek: dodawanie rzeczywistego urządzenia do aplikacji usługi Azure IoT Central
 
@@ -56,7 +56,7 @@ Aby dodać rzeczywiste urządzenie do aplikacji, należy użyć szablonu urządz
 
    ![Rozpoczynanie dodawania nowego rzeczywistego połączonego klimatyzatora](media/tutorial-add-device/newreal.png)
 
-3. Opcjonalnie możesz zmienić nazwę nowego urządzenia, wybierając nazwę urządzenia i modyfikując wartość:
+3. Wprowadź identyfikator urządzenia (**powinien być podany małymi literami**) lub użyj sugerowanego identyfikatora. Możesz także wprowadzić nazwę nowego urządzenia.  
 
    ![Zmienianie nazwy urządzenia](media/tutorial-add-device/rename.png)
 
@@ -68,23 +68,36 @@ Rzeczywiste urządzenie jest tworzone na podstawie szablonu urządzenia **Połą
 
     ![Synchronizowanie ustawień](media/tutorial-add-device/settingssyncing.png)
 
-2. Na stronie **Właściwości** nowego rzeczywistego połączonego klimatyzatora ustaw dla pola **Numer seryjny** wartość **rcac0010** i dla pola **Wersja oprogramowania układowego** wartość 9.75. Następnie wybierz polecenie **Zapisz**:
+2. Na stronie **Właściwości** nowego rzeczywistego połączonego klimatyzatora ustaw dla pola **Numer seryjny** wartość **10001**, a dla pola **Wersja oprogramowania układowego** wartość 9.75. Następnie wybierz polecenie **Zapisz**:
 
     ![Ustawianie właściwości rzeczywistego urządzenia](media/tutorial-add-device/setproperties.png)
 
 3. Jako konstruktor możesz wyświetlić strony **Miary**, **Reguły** i **Pulpit nawigacyjny** dla rzeczywistego urządzenia.
 
-## <a name="get-connection-string-for-real-device-from-application"></a>Pobieranie parametrów połączenia dla rzeczywistego urządzenia z aplikacji
+## <a name="get-connection-details-for-real-device-from-application"></a>Pobieranie z aplikacji szczegółów połączenia rzeczywistego urządzenia
 
-Deweloper urządzenia musi osadzić *parametry połączenia* rzeczywistego urządzenia w kodzie uruchamianym na urządzeniu. Parametry połączenia umożliwiają urządzeniu nawiązanie zabezpieczonego połączenia z aplikacją usługi Azure IoT Central. Każde wystąpienie urządzenia ma unikatowe parametry połączenia. Poniższe kroki pokazują sposób określania parametrów połączenia dla wystąpienia urządzenia w aplikacji:
+Deweloper urządzenia musi osadzić *szczegóły połączenia urządzenia* dla rzeczywistego urządzenia w uruchamianym na nim kodzie. Parametry połączenia umożliwiają urządzeniu nawiązanie zabezpieczonego połączenia z aplikacją usługi Azure IoT Central. Poniższe kroki pokazują sposób określania parametrów połączenia dla wystąpienia urządzenia w aplikacji:
 
 1. Na ekranie **Urządzenie** rzeczywistego połączonego klimatyzatora wybierz pozycję **Połącz to urządzenie**:
 
     ![Strona Urządzenie przedstawiająca link umożliwiający wyświetlenie informacji o połączeniu](media/tutorial-add-device/connectionlink.png)
 
-2. Na stronie **Łączenie** skopiuj wartość **Podstawowe parametry połączenia** i zapisz ją. Ta wartość zostanie użyta w drugiej połowie tego samouczka. Deweloper urządzenia używa tej wartości w aplikacji klienckiej uruchamianej na urządzeniu:
+2. Na stronie **Połącz** skopiuj **identyfikator zakresu, identyfikator urządzenia i klucz podstawowy** i zapisz je.
 
-    ![Wartości parametrów połączenia](media/tutorial-add-device/connectionstring.png)
+   ![Szczegóły połączenia](media/tutorial-add-device/device-connect.PNG)
+
+   Aby uzyskać parametry połączenia urządzenia, użyj poniższego narzędzia wiersza polecenia  
+
+    ```cmd/sh
+    npm i -g dps-keygen
+    ```
+    **Użycie**
+    
+    W celu utworzenia parametrów połączenia znajdź plik binarny w folderze bin/
+    ```cmd/sh
+    dps_cstr <scope_id> <device_id> <Primary Key(for device)>
+    ```
+    Dowiedz się więcej na temat [narzędzia wiersza polecenia w tym miejscu](https://www.npmjs.com/package/dps-keygen).
 
 ## <a name="prepare-the-client-code"></a>Przygotowywanie kodu klienta
 
@@ -130,14 +143,17 @@ W poniższej procedurze pokazano, jak przygotować przykład dla oprogramowania 
 
 8. Dodaj następujące deklaracje zmiennych do pliku:
 
+ 
+
    ```javascript
    var connectionString = '{your device connection string}';
    var targetTemperature = 0;
    var client = clientFromConnectionString(connectionString);
    ```
+   
 
    > [!NOTE]
-   > Symbol zastępczy `{your device connection string}` zostanie zaktualizowany w późniejszym kroku.
+   > Symbol zastępczy `{your device connection string}` zostanie zaktualizowany w późniejszym kroku. 
 
 9. Zapisz zmiany wprowadzone do tej pory, ale pozostaw plik otwarty.
 
@@ -248,8 +264,7 @@ W poprzedniej sekcji utworzono szkielet projektu oprogramowania Node.js dla apli
 
 ## <a name="configure-client-code-for-the-real-device"></a>Konfigurowanie kodu klienta dla rzeczywistego urządzenia
 
-<!-- Add the connection string to the sample code, build, and run -->
-Aby skonfigurować kod klienta pod kątem nawiązywania połączenia z aplikacją usługi Azure IoT Central, dodaj parametry połączenia dla rzeczywistego urządzenia zanotowane wcześniej w tym samouczku.
+<!-- Add the connection string to the sample code, build, and run -->Aby skonfigurować kod klienta pod kątem nawiązywania połączenia z aplikacją usługi Azure IoT Central, dodaj zanotowane wcześniej w tym samouczku parametry połączenia dla rzeczywistego urządzenia.
 
 1. W pliku **ConnectedAirConditioner.js** znajdź następujący wiersz kodu:
 

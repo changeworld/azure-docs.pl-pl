@@ -1,36 +1,38 @@
 ---
-title: Artykuł personalizacji - kognitywnych usług Azure | Dokumentacja firmy Microsoft
-description: Samouczek dotyczący personalizacji artykułu w usłudze Azure niestandardowe decyzji, oparte na chmurze interfejsu API kontekstowe podejmowania decyzji.
+title: 'Samouczek: personalizacja artykułów — Custom Decision Service'
+titlesuffix: Azure Cognitive Services
+description: Samouczek dotyczący personalizacji artykułów na potrzeby kontekstowego podejmowania decyzji.
 services: cognitive-services
 author: slivkins
-manager: slivkins
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: tutorial
 ms.date: 05/08/2018
-ms.author: slivkins;marcozo;alekh;marossi
-ms.openlocfilehash: 35d0567f81a23d4726461059eb6fd31e04228697
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: slivkins
+ms.openlocfilehash: b142fe2051c017d0c0ec3c4cac6aaedd563f6cd7
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349009"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366339"
 ---
-# <a name="article-personalization"></a>Artykuł personalizacji
+# <a name="tutorial-article-personalization-for-contextual-decision-making"></a>Samouczek: personalizacja artykułów na potrzeby kontekstowego podejmowania decyzji
 
-Ten samouczek koncentruje się na personalizowanie zaznaczenie artykułów na stronie frontonu witryny sieci Web. Wpływa na usługę decyzji niestandardowe *wiele* listę artykułów na pierwszej stronie dla wystąpienia. Być może strona jest wiadomości sieci Web, która obejmuje tylko polityka i sportowych. Czy Pokaż trzy listy uporządkowanej według rangi artykułów: polityka, oraz informacji sportowych, a ostatnie.
+Ten samouczek dotyczy personalizacji artykułów wyświetlanych na stronie głównej witryny internetowej. Usługa Custom Decision Service może mieć na przykład wpływ na *wiele* list artykułów na stronie głównej. Strona może na przykład znajdować się w witrynie wiadomości dotyczących jedynie polityki i sportu. Pokazuje ona trzy uporządkowane listy artykułów: polityka, sport i najnowsze.
 
 ## <a name="applications-and-action-sets"></a>Aplikacje i zestawy akcji
 
-Poniżej przedstawiono sposób mieści się w ramach danego scenariusza. Teraz załóżmy trzech aplikacji, po jednej dla każdej listy, który jest optymalizowana: polityka aplikacji, oraz informacji sportowych aplikacji, a ostatnie aplikacji. Aby określić artykuły candidate dla każdej aplikacji, dostępne są dwa zestawy akcji: jeden dla polityka i jeden dla aplikacji sportowych. Akcję ustawioną dla aplikacji ostatnie automatycznie jest dostarczany jako złożenie dwóch zestawów.
+Poniżej opisano sposób dopasowania scenariusza do tej struktury. Wyobraźmy sobie trzy aplikacje, po jednej dla każdej optymalizowanej listy: app-politics, app-sports i app-recent. Aby określić kandydujące artykuły dla każdej z tych aplikacji, mamy dwa zestawy akcji: jeden dla polityki i jeden dla sportu. Zestaw akcji dla aplikacji app-recent jest tworzony automatycznie jako połączenie dwóch pozostałych zestawów.
 
 > [!TIP]
-> Ustawia akcji mogą być współużytkowane przez aplikacje w usłudze decyzji niestandardowe.
+> Zestawy akcji można udostępniać między aplikacjami w usłudze Custom Decision Service.
 
-## <a name="prepare-action-set-feeds"></a>Przygotowanie źródła zestaw akcji
+## <a name="prepare-action-set-feeds"></a>Przygotowywanie źródeł danych zestawu akcji
 
-Usługa niestandardowa decyzji zużywa zestawów akcji za pomocą takich źródeł dostarczone przez klienta. Musisz podać dwa źródła danych: jeden dla polityka i jeden dla aplikacji sportowych. Załóżmy, że są one udostępniane przez `http://www.domain.com/feeds/<feed-name>`.
+Usługa Custom Decision Service używa zestawów akcji za pośrednictwem źródeł danych RSS lub Atom udostępnianych przez klienta. Należy podać dwa źródła danych: jedno dla polityki i jedno dla sportu. Załóżmy, że są one udostępniane z adresu `http://www.domain.com/feeds/<feed-name>`.
 
-Każdego źródła danych zawiera listę artykułów. RSS, każdy z nich jest określona przez `<item>` elementu w następujący sposób:
+Każde źródło danych zawiera listę artykułów. W źródle danych RSS każdy z nich jest określany przez element `<item>`, jak pokazano poniżej:
 
 ```xml
 <rss version="2.0"><channel>
@@ -42,41 +44,41 @@ Każdego źródła danych zawiera listę artykułów. RSS, każdy z nich jest ok
 </channel></rss>
 ```
 
-Kolejność artykułów jest ważne. Określa klasyfikację domyślny, który jest najbardziej prawdopodobną odpowiedź dla uporządkowanie artykułów. Domyślnie jest stosowana jest następnie używany do porównania wydajności na [pulpitu nawigacyjnego](#performance-dashboard).
+Kolejność artykułów jest ważna. Określa ona klasyfikację domyślną, która jest najlepszą podpowiedzią dotyczącą kolejności artykułów na liście. Klasyfikacja domyślna jest następnie stosowana na potrzeby porównania wydajności w [pulpicie nawigacyjnym](#performance-dashboard).
 
-Aby uzyskać więcej informacji na formatu źródła danych, zobacz [dokumentacja interfejsu API](custom-decision-service-api-reference.md#action-set-api-customer-provided).
+Aby uzyskać więcej informacji o formacie źródła danych, zobacz [dokumentację interfejsu API](custom-decision-service-api-reference.md#action-set-api-customer-provided).
 
-## <a name="register-a-new-app"></a>Zarejestrować nową aplikację
+## <a name="register-a-new-app"></a>Rejestrowanie nowej aplikacji
 
-1. Zaloguj się przy użyciu programu [konta Microsoft](https://account.microsoft.com/account). Na wstążce kliknij **portalu Moje**.
+1. Zaloguj się za pomocą [konta Microsoft](https://account.microsoft.com/account). Na wstążce kliknij pozycję **My Portal** (Mój portal).
 
-2. Aby zarejestrować nową aplikację, kliknij przycisk **nową aplikację** przycisku.
+2. Aby zarejestrować nową aplikację, kliknij przycisk **New App** (Nowa aplikacja).
 
     ![Portal usługi Custom Decision Service](./media/custom-decision-service-tutorial/portal.png)
 
-3. Wprowadź unikatową nazwę dla aplikacji w **identyfikator aplikacji** pola tekstowego. Jeśli ta nazwa jest już używany przez innego klienta, system wyświetla monit o pobranie identyfikatora dla różnych aplikacji. Wybierz **zaawansowane** pole wyboru, a następnie wprowadź [ciąg połączenia](../../storage/common/storage-configure-connection-string.md) dla konta magazynu Azure. Zwykle Użyj tego samego konta magazynu dla wszystkich aplikacji.
+3. Wprowadź unikatową nazwę aplikacji w polu tekstowym **App ID** (Identyfikator aplikacji). Jeśli nazwa jest już używana przez innego klienta, system wyświetli monit o wybranie innego identyfikatora aplikacji. Zaznacz pole wyboru **Advanced** (Zaawansowane), a następnie wprowadź [parametry połączenia](../../storage/common/storage-configure-connection-string.md) dla konta magazynu platformy Azure. Zwykle używa się tego samego konta magazynu dla wszystkich aplikacji.
 
-    ![Okno dialogowe Nowy aplikacji](./media/custom-decision-service-tutorial/new-app-dialog.png)
+    ![Okno dialogowe nowej aplikacji](./media/custom-decision-service-tutorial/new-app-dialog.png)
 
-    Po zarejestrowaniu wszystkie trzy aplikacje w powyższym scenariuszu są wyświetlane:
+    Po zarejestrowaniu wszystkich trzech aplikacji w powyższym scenariuszu zostaną one wyświetlone:
 
     ![Lista aplikacji](./media/custom-decision-service-tutorial/apps.png)
 
-    Możesz wrócić do tej listy, klikając **aplikacji** przycisku.
+    Możesz wrócić do tej listy, klikając przycisk **Apps** (Aplikacje).
 
-4. W **nową aplikację** oknie dialogowym Określ źródło akcji. Akcja źródeł danych można również określić, klikając **źródła** , a następnie przez **nowego źródła danych** przycisku. Wprowadź **nazwa** dla nowego źródła danych, wprowadź **adres URL** z którym jest obsługiwany, a następnie wprowadź **czasu odświeżania**. Czas odświeżania Określa, jak często niestandardowy decyzji usługi należy odświeżyć źródło.
+4. W oknie dialogowym **New App** (Nowa aplikacja) określ źródło danych akcji. Źródła danych akcji można również określić, klikając przycisk **Feeds** (Źródła danych), a następnie klikając przycisk **New Feed** (Nowe źródło danych). Wprowadź **nazwę** dla nowego źródła danych, **adres URL**, z którego jest udostępniane, a następnie wprowadź wartość w polu **Refresh Time** (Czas odświeżania). Czas odświeżania określa, jak często usługa Custom Decision Service ma odświeżać to źródło danych.
 
-    ![Nowe okno dialogowe źródła](./media/custom-decision-service-tutorial/new-feed-dialog.png)
+    ![Okno dialogowe nowego źródła danych](./media/custom-decision-service-tutorial/new-feed-dialog.png)
 
-    Akcja źródła może służyć przez dowolną aplikację, niezależnie od tego, gdzie jest określona. Po określeniu obu źródeł akcji w scenariuszu, są one wyświetlane:
+    Źródła danych akcji mogą być używane przez dowolną aplikację, niezależnie od tego, gdzie są określone. Po określeniu obu źródeł danych akcji dla naszego scenariusza zostaną one wyświetlone:
 
     ![Lista źródeł danych](./media/custom-decision-service-tutorial/feeds.png)
 
-    Możesz wrócić do tej listy, klikając **źródła** przycisku.
+    Możesz wrócić do tej listy, klikając przycisk **Feeds** (Źródła danych).
 
-## <a name="use-the-apis"></a>Korzystanie z interfejsów API
+## <a name="use-the-apis"></a>Używanie interfejsów API
 
-Usługa decyzji niestandardowe szereguje artykuły za pomocą interfejsu API klasyfikacji. Aby używać tego interfejsu API, Wstaw następujący kod do head HTML front strony:
+Usługa Custom Decision Service klasyfikuje artykuły za pośrednictwem interfejsu API klasyfikowania (Ranking API). Aby użyć tego interfejsu API, wstaw następujący kod w nagłówku HTML strony głównej:
 
 ```html
 <!-- Define the "callback function" to render UI -->
@@ -89,7 +91,7 @@ Usługa decyzji niestandardowe szereguje artykuły za pomocą interfejsu API kla
 <!-- NB: action feeds for 'app-recent' are listed one after another. -->
 ```
 
-Odpowiedź HTTP z interfejsu API Klasyfikacja to ciąg sformatowany JSONP. Dla polityka aplikacji na przykład ciąg wygląda następująco:
+Odpowiedź HTTP z interfejsu API klasyfikowania jest ciągiem w formacie JSONP. Na przykład dla aplikacji app-politics ciąg ten wygląda następująco:
 
 ```json
 callback({
@@ -99,14 +101,14 @@ callback({
    "actionSets":[{"id":"feed-politics","lastRefresh":"date"}] });
 ```
 
-Przeglądarka następnie wykonuje tego ciągu jako wywołanie `callback()` funkcji. `data` Argument `callback()` funkcja zawiera identyfikator aplikacji i klasyfikacji adresów URL do renderowania. W szczególności `callback()` należy używać `data.appId` odróżnienie trzech aplikacji. `eventId` jest używana wewnętrznie przez usługę decyzji niestandardowe do dopasowania podana Klasyfikacja kliknąć odpowiednie, jeśli istnieje.
+Następnie przeglądarka wykonuje ten ciąg jako wywołanie funkcji `callback()`. Argument `data` funkcji `callback()` zawiera identyfikator aplikacji i klasyfikację adresów URL, które mają zostać zrenderowane. W szczególności funkcja `callback()` powinna używać argumentu `data.appId`, aby rozróżnić nasze trzy aplikacje. Element `eventId` jest używany wewnętrznie przez usługę Custom Decision Service w celu dopasowania podanej klasyfikacji do odpowiedniego kliknięcia, jeśli takie istnieje.
 
 > [!TIP]
-> `callback()` Sprawdź każda akcja źródła danych dla świeżości przy użyciu `lastRefresh` pola. Jeśli danego źródła danych nie jest wystarczająco nowa `callback()` może ignorowanie podanych klasyfikację, bezpośrednio wywołać tego źródła danych i korzystać z klasyfikacji domyślne obsługiwane przez źródło.
+> Funkcja `callback()` może sprawdzać świeżość każdego źródła danych akcji, używając pola `lastRefresh`. Jeśli określone źródło danych nie jest wystarczająco świeże, funkcja `callback()` może zignorować podaną klasyfikację, wywołać to źródło danych bezpośrednio i zastosować domyślna klasyfikację udostępnianą przez to źródło.
 
-Aby uzyskać więcej informacji o specyfikacjach i dodatkowe opcje udostępniony przez interfejs API klasyfikacji, zobacz [dokumentacja interfejsu API](custom-decision-service-api-reference.md).
+Aby uzyskać więcej informacji na temat specyfikacji i dodatkowych opcji udostępnianych przez interfejs API klasyfikowania, zobacz [dokumentację interfejsu API](custom-decision-service-api-reference.md).
 
-Opcje istotny artykuł przez użytkownika są zwracane przez wywołanie interfejsu API osób trzecich. Po odebraniu wyboru Istotny artykuł następujący kod powinna być wywoływana na stronie witryny:
+Artykuły wybierane najczęściej przez użytkownika są zwracane przez wywołanie interfejsu API nagradzania (Reward API). Po otrzymaniu informacji o najczęściej wybieranym artykule na stronie głównej powinien zostać wyzwolony następujący kod:
 
 ```javascript
 $.ajax({
@@ -115,7 +117,7 @@ $.ajax({
     contentType: "application/json" })
 ```
 
-Przy użyciu `appId` i `eventId` w kodzie obsługi kliknij wymaga niektórych szczególną uwagę. Na przykład można zaimplementować `callback()` działają w następujący sposób:
+Użycie argumentów `appId` i `eventId` w kodzie obsługującym kliknięcia wymaga nieco uwagi. Na przykład funkcję `callback()` można zaimplementować w następujący sposób:
 
 ```javascript
 function callback(data) {
@@ -133,8 +135,8 @@ function callback(data) {
 }}
 ```
 
-W tym przykładzie wdrożenia `render()` funkcji do renderowania danym artykule dla danej aplikacji. Ta funkcja danych wejściowych Identyfikatora aplikacji oraz artykuł (w formacie z klasyfikacji interfejsu API). `onClick` Parametr jest funkcją, która powinna być wywoływana z `render()` do obsługi kliknięcia. Sprawdza, czy kliknięcie jest na najwyższym miejsca. Następnie wywołuje API opłatą o identyfikatorze odpowiednich aplikacji i identyfikatora zdarzenia.
+W tym przykładzie funkcję `render()` zaimplementowano w celu renderowania określonego artykułu dla określonej aplikacji. Ta funkcja jako danych wejściowych używa identyfikatora aplikacji i artykułu (w formacie z interfejsu API klasyfikowania). Parametr `onClick` jest funkcją, która powinna zostać wywołana z funkcji `render()`, aby obsłużyć kliknięcie. Sprawdza ona, czy kliknięcie dotyczy pierwszego miejsca. Następnie wywołuje interfejs API nagradzania z odpowiednim identyfikatorem aplikacji i identyfikatorem zdarzenia.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Zapoznaj się [dokumentacja interfejsu API](custom-decision-service-api-reference.md) Aby dowiedzieć się więcej o funkcjach podana.
+* Zapoznaj się z [dokumentacją interfejsu API](custom-decision-service-api-reference.md), aby dowiedzieć się więcej o funkcjach usługi.

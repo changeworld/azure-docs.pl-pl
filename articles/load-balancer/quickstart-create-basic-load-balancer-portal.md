@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 49fa4cf9b24c432b0956f930a1429e1cdf827f1b
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 7451d6ade7f8b042a68f456e604e2919cacab0a5
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304882"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378435"
 ---
 # <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>Szybki start: tworzenie publicznego podstawowego modułu równoważenia obciążenia przy użyciu witryny Azure Portal
 
@@ -36,7 +36,7 @@ W przypadku wszystkich zadań z tego przewodnika Szybki start musisz zalogować 
 
 ## <a name="create-a-basic-load-balancer"></a>Tworzenie podstawowego modułu równoważenia obciążenia
 
-W tej sekcji utworzysz publiczny podstawowy moduł równoważenia obciążenia przy użyciu portalu. Publiczny adres IP jest automatycznie konfigurowany jako fronton modułu równoważenia obciążenia w przypadku tworzenia zasobu publicznego adresu IP i modułu równoważenia obciążenia za pomocą portalu. Nazwa frontonu to **LoadBalancerFrontend**.
+W tej sekcji utworzysz publiczny podstawowy moduł równoważenia obciążenia przy użyciu portalu. Publiczny adres IP jest automatycznie konfigurowany jako fronton modułu równoważenia obciążenia w przypadku tworzenia zasobu publicznego adresu IP i modułu równoważenia obciążenia za pomocą portalu. Nazwa frontonu to **myLoadBalancer**.
 
 1. W lewym górnym rogu portalu wybierz pozycję **Utwórz zasób** > **Sieć** > **Moduł równoważenia obciążenia**.
 2. W okienku **Tworzenie modułu równoważenia obciążenia** wprowadź następujące wartości:

@@ -1,56 +1,57 @@
 ---
-title: Obiekt wykrywanie przy użyciu języka Python i niestandardowy interfejs API przetwarzania - usług Azure Cognitive Services | Dokumentacja firmy Microsoft
-description: Zapoznaj się z podstawowej aplikacji Windows, który używa niestandardowego interfejsu API przetwarzania w usługach Microsoft Cognitive Services. Utwórz projekt, dodać tagi, przekazywać obrazy, szkolenie projektu i przewiduje przy użyciu domyślnego punktu końcowego.
+title: 'Samouczek: tworzenie projektu wykrywania obiektów — interfejs API Custom Vision, Python'
+titlesuffix: Azure Cognitive Services
+description: Utwórz projekt, dodaj tagi, prześlij obrazy, wyszkol projekt i wykonaj przewidywanie przy użyciu domyślnego punktu końcowego.
 services: cognitive-services
 author: areddish
-manager: chbuehle
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/03/2018
 ms.author: areddish
-ms.openlocfilehash: 37bdb9ebf7c74586c728e171a9897903b8ad2ee8
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
-ms.translationtype: MT
+ms.openlocfilehash: f49f5ab32d834b32de54be2d96c3671ad46f79f3
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213585"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363704"
 ---
-# <a name="use-custom-vision-api-to-build-an-object-detection-project-with-python"></a>Użyj interfejsu API usługi Custom Vision, aby skompilować projekt wykrywania obiektów przy użyciu języka Python
+# <a name="tutorial-build-an-object-detection-project-with-python"></a>Samouczek: tworzenie projektu wykrywania obiektów w języku Python
 
-Poznaj podstawowe skrypt w języku Python, który używa interfejsu API przetwarzania obrazów w celu utworzenia projektu wykrywanie obiektów. Po jego utworzeniu można można dodać oznakowane regionów, przekazywać obrazy, szkolenie projektu, projektu domyślne prognozowania — adres URL punktu końcowego uzyskać i używać punktu końcowego programowo testować obrazu. Użyj w tym przykładzie typu open-source jako szablon do tworzenia własnych aplikacji przy użyciu interfejsu API usługi Custom Vision.
+Poznaj podstawowy skrypt w języku Python, w którym interfejs API przetwarzania obrazów jest używany do tworzenia projektu wykrywania obiektów. Po jego utworzeniu możesz dodać oznaczone regiony, przesłać obrazy, wyszkoiić projekt, uzyskać adres URL domyślnego punktu końcowego przewidywania i użyć tego punktu końcowego do programowego przetestowania obrazu. Ta przykładowa aplikacja open source może posłużyć jako szablon do utworzenia własnej aplikacji przy użyciu interfejsu API Custom Vision.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby korzystać z tego samouczka, należy wykonać następujące czynności:
 
-- Instalowanie języka Python 2.7 + lub Python 3.5 +.
-- Instalovat modul pip.
+- Zainstalować język Python 2.7+ lub Python 3.5+.
+- Zainstalować program pip.
 
 ### <a name="platform-requirements"></a>Wymagania dotyczące platformy
-W tym przykładzie został opracowany dla języka Python.
+Ten przykład został napisany w języku Python.
 
-### <a name="get-the-custom-vision-sdk"></a>Uzyskaj usługi Custom Vision Service SDK
+### <a name="get-the-custom-vision-sdk"></a>Pobierz pakiet Custom Vision SDK
 
-Aby skompilować ten przykład, należy zainstalować zestaw SDK języka Python dla interfejsu API usługi Custom Vision:
+Aby skompilować ten przykład, musisz zainstalować pakiet Python SDK dla interfejsu API Custom Vision:
 
 ```
 pip install azure-cognitiveservices-vision-customvision
 ```
 
-Możesz pobrać obrazów za pomocą [przykłady w języku Python](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples).
+Obrazy można pobrać razem z [przykładami w języku Python](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples).
 
-## <a name="step-1-get-the-training-and-prediction-keys"></a>Krok 1: Uzyskiwanie kluczy uczenia i przewidywania
+## <a name="step-1-get-the-training-and-prediction-keys"></a>Krok 1: Uzyskanie kluczy interfejsów trenowania i przewidywania
 
-Aby uzyskać klucze używane w tym przykładzie, odwiedź stronę [lokacji Custom Vision](https://customvision.ai) i wybierz __ikonę koła zębatego__ w prawym górnym rogu. W __kont__ sekcji, skopiuj wartości z __klucz szkolenia__ i __klucz prognozowania__ pola.
+Aby uzyskać klucze używane w tym przykładzie, przejdź na [stronę Custom Vision](https://customvision.ai) i wybierz __ikonę koła zębatego__ w prawym górnym rogu. W sekcji __Accounts__ (Konta) skopiuj wartości z pól __Training Key__ (Klucz szkolenia) i __Prediction Key__ (Klucz przewidywania).
 
-![Obraz przedstawiający klucze interfejsu użytkownika](./media/python-tutorial/training-prediction-keys.png)
+![Obraz interfejsu użytkownika do uzyskiwania kluczy](./media/python-tutorial/training-prediction-keys.png)
 
-W tym przykładzie użyto obrazów z [tej lokalizacji](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images).
+W tym przykładzie używane są obrazy z [tej lokalizacji](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images).
 
-## <a name="step-2-create-a-custom-vision-service-project"></a>Krok 2: Tworzenie projektu usługi Custom Vision Service
+## <a name="step-2-create-a-custom-vision-service-project"></a>Krok 2: Utworzenie projektu Custom Vision Service
 
-Aby utworzyć nowy projekt usługi Custom Vision Service, Utwórz plik skryptu sample.py i dodaj następującą zawartość. Należy zanotować różnicę między tworzenia wykrywanie obiektów, a projekt klasyfikacji obrazów jest domeny, który jest określony w wywołaniu create_project.
+Aby utworzyć nowy projekt Custom Vision Service, utwórz plik skryptu sample.py i dodaj do niego następującą zawartość. Zwróć uwagę, że tworzenie projektu do wykrywania obiektów różni się od tworzenia projektu do klasyfikacji obrazów domeną podaną w wywołaniu create_project.
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import training_api
@@ -70,9 +71,9 @@ print ("Creating project...")
 project = trainer.create_project("My Detection Project", domain_id=obj_detection_domain.id)
 ```
 
-## <a name="step-3-add-tags-to-your-project"></a>Krok 3: Dodawanie tagów do projektu
+## <a name="step-3-add-tags-to-your-project"></a>Krok 3: Dodanie tagów do projektu
 
-Aby dodać znaczniki do swojego projektu, Wstaw następujący kod, aby utworzyć dwa tagi:
+Aby dodać tagi do projektu, wstaw następujący kod tworzący dwa tagi:
 
 ```Python
 # Make two tags in the new project
@@ -80,11 +81,11 @@ fork_tag = trainer.create_tag(project.id, "fork")
 scissors_tag = trainer.create_tag(project.id, "scissors")
 ```
 
-## <a name="step-4-upload-images-to-the-project"></a>Krok 4: Przekazywanie obrazów do projektu
+## <a name="step-4-upload-images-to-the-project"></a>Krok 4: Przeyłanie obrazów do projektu
 
-Dla obiektu wykrywania projektu należy przekazać obraz, regionów i tagów. Region jest znormalizowana coordiantes i określa lokalizację obiektu oznakowane.
+W przypadku projektu do wykrywania obiektów musisz przesłać obraz, regiony i tagi. Region to znormalizowane współrzędne wskazujące połączenie oznakowanego obiektu.
 
-Aby dodać obrazy, region i tagi do projektu, Wstaw następujący kod do tworzenia tagu. Należy zauważyć, że w tym samouczku regionów zapisane na stałe wbudowanego kodu. Regiony Określ pole w znormalizowanych współrzędnych.
+Aby dodać obrazy, region i tagi do projektu, po utworzeniu tagów wstaw następujący kod. Uwaga: w tym samouczku regiony są zapisane przy użyciu stałych w kodzie. Region to prostokąt, wewnątrz którego znajduje się obiekt, zdefiniowany przy użyciu znormalizowanych współrzędnych.
 
 ```Python
 
@@ -156,12 +157,12 @@ for file_name in scissors_image_regions.keys():
 trainer.create_images_from_files(project.id, images=tagged_images_with_regions)
 ```
 
-## <a name="step-5-train-the-project"></a>Krok 5: Uczenie projektu
+## <a name="step-5-train-the-project"></a>Krok 5: Szkolenie projektu
 
-Teraz, po dodaniu tagów i obrazów do projektu, możesz go później: 
+Po dodaniu tagów i obrazów można wyszkolić projekt: 
 
-1. Wstaw następujący kod. Spowoduje to utworzenie pierwszej iteracji w projekcie. 
-2. Oznaczyć tę iterację jako domyślnej iteracji.
+1. Wstaw następujący kod. Spowoduje on utworzenie pierwszej iteracji projektu. 
+2. Oznacz tę iterację jako domyślną.
 
 ```Python
 import time
@@ -178,12 +179,12 @@ trainer.update_iteration(project.id, iteration.id, is_default=True)
 print ("Done!")
 ```
 
-## <a name="step-6-get-and-use-the-default-prediction-endpoint"></a>Krok 6: I korzystaj z domyślnego punktu końcowego prognoz
+## <a name="step-6-get-and-use-the-default-prediction-endpoint"></a>Krok 6: Uzyskanie adresu domyślnego punktu końcowego do przewidywania
 
-Teraz możesz przystąpić do korzystania z modelu do prognozowania: 
+Teraz możesz użyć modelu do przewidywania: 
 
-1. Uzyskaj punkt końcowy skojarzony z domyślnej iteracji. 
-2. Wyślij obraz testowy do projektu przy użyciu tego punktu końcowego.
+1. Uzyskaj adres punktu końcowego powiązanego z iteracją domyślną. 
+2. Używając tego punktu końcowego, wyślij do projektu obraz testowy.
 
 ```Python
 from azure.cognitiveservices.vision.customvision.prediction import prediction_endpoint
@@ -202,9 +203,9 @@ for prediction in results.predictions:
     print ("\t" + prediction.tag_name + ": {0:.2f}%".format(prediction.probability * 100), prediction.bounding_box.left, prediction.bounding_box.top, prediction.bounding_box.width, prediction.bounding_box.height)
 ```
 
-## <a name="step-7-run-the-example"></a>Krok 7: Uruchomić przykład
+## <a name="step-7-run-the-example"></a>Krok 7: Uruchomienie przykładu
 
-Uruchom rozwiązanie. Przewidywane wyniki są wyświetlane w konsoli.
+Uruchom rozwiązanie. W konsoli zostaną wyświetlone wyniki przewidywania.
 
 ```
 python sample.py

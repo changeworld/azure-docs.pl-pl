@@ -1,6 +1,6 @@
 ---
-title: Zabezpieczanie połączenia usługi Azure SQL Database z usługi App Service za pomocą tożsamości usługi zarządzanej | Microsoft Docs
-description: Dowiedz się, jak zabezpieczyć połączenie z bazą danych za pomocą tożsamości usługi zarządzanej, a także jak zastosować ją do innych usług platformy Azure.
+title: Zabezpieczanie połączenia usługi Azure SQL Database z usługi App Service za pomocą tożsamości zarządzanej | Microsoft Docs
+description: Dowiedz się, jak zabezpieczyć połączenie z bazą danych za pomocą tożsamości zarządzanej, a także jak zastosować ją do innych usług platformy Azure.
 services: app-service\web
 documentationcenter: dotnet
 author: cephalin
@@ -14,24 +14,24 @@ ms.topic: tutorial
 ms.date: 04/17/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 173588c0200666c52f3ac0a5d2e70d667cfe3294
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3125db03dc13f70524fd094736f50b563ef712a4
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445565"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379931"
 ---
-# <a name="tutorial-secure-sql-database-connection-with-managed-service-identity"></a>Samouczek: zabezpieczanie połączenia z bazą danych SQL za pomocą tożsamości usługi zarządzanej
+# <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Samouczek: zabezpieczanie połączenia usługi Azure SQL Database z usługi App Service za pomocą tożsamości zarządzanej
 
-Usługa [App Service](app-service-web-overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie na platformie Azure. Zapewnia także [tożsamość usługi zarządzanej](app-service-managed-service-identity.md) dla aplikacji, czyli gotowe rozwiązanie do zabezpieczania dostępu do usługi [Azure SQL Database](/azure/sql-database/) i innych usług Azure. Tożsamości usługi zarządzanej w usłudze App Service zwiększają bezpieczeństwo aplikacji przez wyeliminowanie wpisów tajnych z aplikacji, takich jak poświadczenia w parametrach połączenia. W tym samouczku dodasz tożsamość usługi zarządzanej do przykładowej aplikacji internetowej ASP.NET skompilowanej w artykule [Samouczek: tworzenie aplikacji ASP.NET na platformie Azure przy użyciu usługi SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md). Po zakończeniu Twoja przykładowa aplikacja będzie bezpiecznie łączyć się z usługą SQL Database bez konieczności podawania nazwy użytkownika i hasła.
+Usługa [App Service](app-service-web-overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie na platformie Azure. Zapewnia także [tożsamość zarządzaną](app-service-managed-service-identity.md) dla aplikacji, czyli gotowe rozwiązanie do zabezpieczania dostępu do usługi [Azure SQL Database](/azure/sql-database/) i innych usług platformy Azure. Tożsamości zarządzane w usłudze App Service zwiększają bezpieczeństwo aplikacji przez wyeliminowanie wpisów tajnych z aplikacji, takich jak poświadczenia w parametrach połączenia. W tym samouczku dodasz tożsamość zarządzaną do przykładowej aplikacji internetowej ASP.NET skompilowanej w artykule [Samouczek: tworzenie aplikacji ASP.NET na platformie Azure przy użyciu usługi SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md). Po zakończeniu Twoja przykładowa aplikacja będzie bezpiecznie łączyć się z usługą SQL Database bez konieczności podawania nazwy użytkownika i hasła.
 
 Omawiane kwestie:
 
 > [!div class="checklist"]
-> * Włączanie tożsamości usługi zarządzanej
-> * Udzielanie usłudze SQL Database dostępu do tożsamości usługi
+> * Włączanie tożsamości zarządzanych
+> * Udzielanie usłudze SQL Database dostępu do tożsamości zarządzanej
 > * Konfigurowanie kodu aplikacji do uwierzytelniania w usłudze SQL Database przy użyciu uwierzytelniania usługi Azure Active Directory
-> * Przyznawanie minimalnych uprawnień tożsamości usługi w usłudze SQL Database
+> * Przyznawanie minimalnych uprawnień tożsamości zarządzanej w usłudze SQL Database
 
 > [!NOTE]
 > Uwierzytelnianie usługi Azure Active Directory _różni się_ od [zintegrowanego uwierzytelniania systemu Windows](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10)) w lokalnej usłudze Active Directory (AD DS). W usługach AD DS i Azure Active Directory są używane całkowicie różne protokoły uwierzytelniania. Aby uzyskać więcej informacji, zobacz [The difference between Windows Server AD DS and Azure AD (Różnice między usługą AD DS w systemie Windows Server a usługą Azure AD)](../active-directory/fundamentals/understand-azure-identity-solutions.md#the-difference-between-windows-server-ad-ds-and-azure-ad).
@@ -46,9 +46,9 @@ Ten artykuł jest kontynuacją samouczka [Samouczek: tworzenie aplikacji ASP.NET
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="enable-managed-service-identity"></a>Włączanie tożsamości usługi zarządzanej
+## <a name="enable-managed-identities"></a>Włączanie tożsamości zarządzanych
 
-Aby włączyć tożsamość usługi dla aplikacji platformy Azure, użyj polecenia [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) w usłudze Cloud Shell. W poniższym poleceniu zastąp ciąg *\<nazwa aplikacji>*.
+Aby włączyć tożsamość zarządzanej dla aplikacji platformy Azure, użyj polecenia [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) w usłudze Cloud Shell. W poniższym poleceniu zastąp ciąg *\<nazwa aplikacji>*.
 
 ```azurecli-interactive
 az webapp identity assign --resource-group myResourceGroup --name <app name>
@@ -73,13 +73,13 @@ az ad sp show --id <principalid>
 
 ## <a name="grant-database-access-to-identity"></a>Udzielanie tożsamości dostępu do bazy danych
 
-Następnie należy przyznać tożsamości usługi aplikacji dostęp do bazy danych, używając polecenia [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin_create) w usłudze Cloud Shell. W poniższym poleceniu zastąp ciągi *\<nazwa_serwera >* i <principalid_from_last_step>. Wpisz nazwę administratora dla parametru *\<administrator>*.
+Następnie należy przyznać tożsamości zarządzanej aplikacji dostęp do bazy danych, używając polecenia [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin_create) w usłudze Cloud Shell. W poniższym poleceniu zastąp ciągi *\<nazwa_serwera >* i <principalid_from_last_step>. Wpisz nazwę administratora dla parametru *\<administrator>*.
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server_name> --display-name <admin_user> --object-id <principalid_from_last_step>
 ```
 
-Tożsamość usługi zarządzanej ma teraz dostęp do serwera usługi Azure SQL Database.
+Tożsamość zarządzana ma teraz dostęp do serwera usługi Azure SQL Database.
 
 ## <a name="modify-connection-string"></a>Modyfikowanie parametrów połączenia
 
@@ -119,7 +119,7 @@ public MyDatabaseContext(SqlConnection conn) : base(conn, true)
 }
 ```
 
-Ten konstruktor konfiguruje niestandardowy obiekt SqlConnection w celu używania tokenu dostępu do usługi Azure SQL Database z usługi App Service. Token dostęp jest używany przez aplikację usługi App Service do uwierzytelniania w usłudze Azure SQL Database za pomocą jej tożsamości usługi zarządzanej. Aby uzyskać więcej informacji, zobacz artykuł [Obtaining tokens for Azure resources](app-service-managed-service-identity.md#obtaining-tokens-for-azure-resources) (Uzyskiwanie tokenów dla zasobów platformy Azure). Instrukcja `if` pozwala kontynuować testowanie aplikacji lokalnie za pomocą bazy LocalDB.
+Ten konstruktor konfiguruje niestandardowy obiekt SqlConnection w celu używania tokenu dostępu do usługi Azure SQL Database z usługi App Service. Token dostępu jest używany przez aplikację usługi App Service do uwierzytelniania w usłudze Azure SQL Database za pomocą jej tożsamości zarządzanej. Aby uzyskać więcej informacji, zobacz artykuł [Obtaining tokens for Azure resources](app-service-managed-service-identity.md#obtaining-tokens-for-azure-resources) (Uzyskiwanie tokenów dla zasobów platformy Azure). Instrukcja `if` pozwala kontynuować testowanie aplikacji lokalnie za pomocą bazy LocalDB.
 
 > [!NOTE]
 > Właściwość `SqlConnection.AccessToken` jest obecnie obsługiwana tylko w programie .NET Framework 4.6 lub nowszym, nie na platformie [.NET Core](https://www.microsoft.com/net/learn/get-started/windows).
@@ -141,7 +141,7 @@ W obszarze **Eksplorator rozwiązań** kliknij prawym przyciskiem myszy projekt 
 
 ![Publikowanie z Eksploratora rozwiązań](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
-Na stronie publikowania kliknij przycisk **Publikuj**. Gdy nowa strona internetowa wyświetla listę zadań do wykonania, aplikacja nawiązuje połączenie z bazą danych za pomocą tożsamości usługi zarządzanej.
+Na stronie publikowania kliknij przycisk **Publikuj**. Gdy nowa strona internetowa wyświetla listę zadań do wykonania, aplikacja nawiązuje połączenie z bazą danych za pomocą tożsamości zarządzanej.
 
 ![Aplikacja internetowa platformy Azure po zakończeniu migracji Code First](./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png)
 
@@ -151,11 +151,11 @@ Teraz powinno być możliwe edytowanie listy zadań do wykonania tak jak wcześn
 
 ## <a name="grant-minimal-privileges-to-identity"></a>Udzielanie tożsamości minimalnych uprawnień
 
-W poprzednich krokach można zauważyć, że tożsamość usługi zarządzanej jest połączona z programem SQL Server jako administrator usługi Azure AD. Aby przyznać tożsamości usługi zarządzanej minimalne uprawnienia, należy zalogować się na serwerze usługi Azure SQL Database jako administrator usługi Azure AD, a następnie dodać grupę usługi Azure Active Directory zawierającą tożsamość usługi. 
+W poprzednich krokach można zauważyć, że tożsamość zarządzana jest połączona z programem SQL Server jako administrator usługi Azure AD. Aby przyznać tożsamości zarządzanej minimalne uprawnienia, należy zalogować się na serwerze usługi Azure SQL Database jako administrator usługi Azure AD, a następnie dodać grupę usługi Azure Active Directory zawierającą tożsamość zarządzaną. 
 
-### <a name="add-managed-service-identity-to-an-azure-active-directory-group"></a>Dodawanie tożsamości usługi zarządzanej do grupy usługi Azure Active Directory
+### <a name="add-managed-identity-to-an-azure-active-directory-group"></a>Dodawanie tożsamości zarządzanej do grupy usługi Azure Active Directory
 
-W usłudze Cloud Shell dodaj tożsamość usługi zarządzanej aplikacji do nowej grupy usługi Azure Active Directory o nazwie _myAzureSQLDBAccessGroup_, jak pokazano w poniższym skrypcie:
+W usłudze Cloud Shell dodaj tożsamość zarządzaną aplikacji do nowej grupy usługi Azure Active Directory o nazwie _myAzureSQLDBAccessGroup_, jak pokazano w poniższym skrypcie:
 
 ```azurecli-interactive
 groupid=$(az ad group create --display-name myAzureSQLDBAccessGroup --mail-nickname myAzureSQLDBAccessGroup --query objectId --output tsv)
@@ -168,7 +168,7 @@ Jeśli chcesz wyświetlić pełne dane wyjściowe JSON dla każdego polecenia, p
 
 ### <a name="reconfigure-azure-ad-administrator"></a>Ponowne konfigurowanie administratora usługi Azure AD
 
-Wcześniej przypisano tożsamość usługi zarządzanej jako administratora usługi Azure AD dla usługi SQL Database. Tej tożsamości nie można użyć do logowania interaktywnego (aby dodać użytkowników bazy danych), więc należy użyć rzeczywistego użytkownika usługi Azure AD. Aby dodać użytkownika usługi Azure AD, wykonaj kroki opisane w temacie [Provision an Azure Active Directory administrator for your Azure SQL Database Server](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) (Udostępnianie administratora usługi Azure Active Directory dla serwera usługi Azure SQL Database). 
+Wcześniej przypisano tożsamość zarządzaną jako administrator usługi Azure AD dla usługi SQL Database. Tej tożsamości nie można użyć do logowania interaktywnego (aby dodać użytkowników bazy danych), więc należy użyć rzeczywistego użytkownika usługi Azure AD. Aby dodać użytkownika usługi Azure AD, wykonaj kroki opisane w temacie [Provision an Azure Active Directory administrator for your Azure SQL Database Server](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) (Udostępnianie administratora usługi Azure Active Directory dla serwera usługi Azure SQL Database). 
 
 ### <a name="grant-permissions-to-azure-active-directory-group"></a>Nadawanie uprawnień grupie usługi Azure Active Directory
 
@@ -204,10 +204,10 @@ GO
 Które czynności umiesz wykonać:
 
 > [!div class="checklist"]
-> * Włączanie tożsamości usługi zarządzanej
-> * Udzielanie usłudze SQL Database dostępu do tożsamości usługi
+> * Włączanie tożsamości zarządzanych
+> * Udzielanie usłudze SQL Database dostępu do tożsamości zarządzanej
 > * Konfigurowanie kodu aplikacji do uwierzytelniania w usłudze SQL Database przy użyciu uwierzytelniania usługi Azure Active Directory
-> * Przyznawanie minimalnych uprawnień tożsamości usługi w usłudze SQL Database
+> * Przyznawanie minimalnych uprawnień tożsamości zarządzanej w usłudze SQL Database
 
 Przejdź do następnego samouczka, aby dowiedzieć się, jak zmapować niestandardową nazwę DNS na aplikację internetową.
 

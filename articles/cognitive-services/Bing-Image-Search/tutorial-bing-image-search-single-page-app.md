@@ -1,86 +1,89 @@
 ---
-title: Wyszukiwania usługi Bing obrazu jednostronicowej aplikacji sieci Web | Dokumentacja firmy Microsoft
-description: Przedstawia sposób użycia interfejsu API wyszukiwania usługi Bing obrazu w aplikacji jednej strony sieci Web.
+title: 'Samouczek: tworzenie jednostronicowej aplikacji internetowej — interfejs API wyszukiwania obrazów Bing'
+titleSuffix: Azure cognitive services
+description: Interfejs API wyszukiwania obrazów Bing umożliwia wyszukiwanie w Internecie odpowiednich obrazów o wysokiej jakości. Przy użyciu tego samouczka możesz utworzyć jednostronicową aplikację internetową, która wysyła zapytania wyszukiwania do interfejsu API i wyświetla wyniki na stronie internetowej.
 services: cognitive-services
-author: v-jerkin
-manager: ehansen
+author: aahi
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
-ms.date: 10/04/2017
-ms.author: v-jerkin
-ms.openlocfilehash: d0e1dc24513c8fc3a405cf1c18f531a0c58fad13
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.topic: tutorial
+ms.date: 9/12/2018
+ms.author: aahi
+ms.openlocfilehash: e37cb9b9412d257ab238f23b90e4a1077070b2b6
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349017"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297455"
 ---
-# <a name="tutorial-single-page-web-app"></a>Samouczek: Aplikacji jednej strony sieci Web
+# <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Samouczek: tworzenie aplikacji jednostronicowej przy użyciu interfejsu API wyszukiwania obrazów Bing
 
-Interfejs API wyszukiwania usługi Bing obraz umożliwia wyszukiwanie w sieci Web i uzyskiwać wyniki obrazu, które są istotne dla kwerendy wyszukiwania. W tym samouczku budujemy jednostronicowej aplikacji sieci Web, która używa interfejsu API wyszukiwania usługi Bing obrazu do wyświetlania wyników wyszukiwania po prawej stronie. Aplikacja zawiera składniki HTML, CSS i JavaScript.
+Interfejs API wyszukiwania obrazów Bing umożliwia wyszukiwanie w Internecie odpowiednich obrazów o wysokiej jakości. Przy użyciu tego samouczka możesz utworzyć jednostronicową aplikację internetową, która wysyła zapytania wyszukiwania do interfejsu API i wyświetla wyniki na stronie internetowej. Ten samouczek jest podobny do [odpowiadającego mu samouczka](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md) dotyczącego wyszukiwania w sieci Web Bing.
 
-<!-- Remove until we can sanitize images
-![[Single-page Bing Image Search app]](media/cognitive-services-bing-images-api/image-search-spa-demo.png)
--->
-
-> [!NOTE]
-> Nagłówki JSON i HTTP w dolnej części strony ujawnić odpowiedź w formacie JSON i informacje o żądaniu HTTP po kliknięciu. Informacje te są przydatne podczas szczegółowego eksplorowania usługi.
-
-Samouczek aplikacji ilustruje sposób:
+Aplikacja samouczka ilustruje sposób wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Wykonywać wywołanie interfejsu API Bing obraz wyszukiwania w języku JavaScript
-> * Przeniesienie opcje wyszukiwania do interfejsu API wyszukiwania usługi Bing obrazu
-> * Wyświetl wyniki wyszukiwania
-> * Przejrzyj wyniki wyszukiwania
-> * Dojście Bing interfejsów API i identyfikator subskrypcji klucz klienta
-> * Obsługa błędów, które mogą wystąpić
+> * Wywołanie interfejsu API wyszukiwania obrazów Bing w języku JavaScript
+> * Poprawianie wyników wyszukiwania za pomocą opcji wyszukiwania
+> * Wyświetlanie wyników wyszukiwania i dzielenie ich na strony
+> * Żądanie i obsługa klucza subskrypcji interfejsu API oraz identyfikatora klienta usługi Bing
 
-Samouczek strony są całkowicie niezależne; nie używa żadnych platform zewnętrznych, arkuszy stylów lub nawet pliki obrazów. Umożliwia ona używa tylko powszechnie obsługiwane funkcje języka JavaScript i działa z bieżącymi wersjami wszystkie główne przeglądarki sieci Web.
+Pełny kod źródłowy dla tego samouczka jest dostępny w serwisie [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Image-Search).
 
-W tym samouczku omówiono tylko wybrane części kodu źródłowego. Pełny kod źródłowy jest dostępny [na osobnej stronie](tutorial-bing-image-search-single-page-app-source.md). Skopiuj i wklej ten kod w edytorze tekstu i zapisz go jako `bing.html`.
+## <a name="prerequisites"></a>Wymagania wstępne
 
-> [!NOTE]
-> W tym samouczku jest podobne do [samouczek aplikacji wyszukiwania usługi Bing w sieci Web jednej strony](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md), ale dotyczy tylko wyniki wyszukiwania obrazu.
+* Najnowsza wersja środowiska [Node.js](https://nodejs.org/).
+* Struktura [Express.js](https://expressjs.com/) dla środowiska Node.js. Instrukcje instalacji kodu źródłowego są dostępne w pliku readme przykładu w serwisie GitHub.
 
-## <a name="app-components"></a>Składniki aplikacji
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-Tak jak każda aplikacja sieci Web jednej strony samouczek aplikacja obejmuje trzy części:
+## <a name="manage-and-store-user-subscription-keys"></a>Przechowywanie kluczy subskrypcji użytkownika i zarządzanie nimi
 
-> [!div class="checklist"]
-> * HTML — definiuje struktury i zawartości strony
-> * CSS — definiuje wygląd strony
-> * JavaScript — określa zachowanie strony
+W tej aplikacji do przechowywania kluczy subskrypcji interfejsu API jest używany magazyn trwały przeglądarki internetowej. Jeśli żaden klucz nie jest przechowywany, strona internetowa wyświetli monit o podanie klucza użytkownika i zachowa go do późniejszego użytku. Jeśli klucz zostanie później odrzucony przez interfejs API, aplikacja usunie go z magazynu.
 
-W tym samouczku nie obejmuje większość HTML i CSS szczegółowo, ponieważ są one proste.
 
-HTML zawierający formularz wyszukiwania, w którym użytkownik wprowadza zapytania i wybiera opcje wyszukiwania. Formularz jest połączony JavaScript, które faktycznie wykonuje wyszukiwanie według `<form>` znacznika `onsubmit` atrybutu:
-
-```html
-<form name="bing" onsubmit="return newBingImageSearch(this)">
-```
-
-`onsubmit` Obsługi zwraca `false`, co pozwala formularza są przesyłane do serwera. Kod JavaScript jest rzeczywiście pracy zbierania niezbędne informacje z formularza i wyszukiwania.
-
-Kod HTML zawiera także działów (HTML `<div>` tagów) gdzie zostaną wyświetlone wyniki wyszukiwania.
-
-## <a name="managing-subscription-key"></a>Zarządzanie subskrypcją klucza
-
-Aby uniknąć konieczności dołączania klucz interfejsu API wyszukiwania usługi Bing subskrypcji w kodzie, używamy przeglądarki trwałego magazynu do przechowywania klucza. Jeśli klucz nie jest przechowywana, możemy monit o podanie klucza użytkownika i zapisze go na przyszłość. Jeśli klucz później został odrzucony przez interfejs API, możemy unieważnienie przechowywanych klucza, użytkownik jest ponownie.
-
-Definiujemy `storeValue` i `retrieveValue` funkcje programu wykorzystujące albo `localStorage` obiektu (Jeśli przeglądarka obsługuje) lub plik cookie. Nasze `getSubscriptionKey()` funkcja używa tych funkcji do przechowywania i pobierania klucza użytkownika.
+Zdefiniuj funkcje `storeValue` i `retrieveValue` tak, aby używały obiektu `localStorage` (jeśli przeglądarka go obsługuje) lub pliku cookie.
 
 ```javascript
-// cookie names for data we store
+// Cookie names for data being stored
 API_KEY_COOKIE   = "bing-search-api-key";
 CLIENT_ID_COOKIE = "bing-search-client-id";
-
+// The Bing Image Search API endpoint
 BING_ENDPOINT = "https://api.cognitive.microsoft.com/bing/v7.0/images/search";
 
-// ... omitted definitions of storeValue() and retrieveValue()
+try { //Try to use localStorage first
+    localStorage.getItem;   
 
-// get stored API subscription key, or prompt if it's not found
+    window.retrieveValue = function (name) {
+        return localStorage.getItem(name) || "";
+    }
+    window.storeValue = function(name, value) {
+        localStorage.setItem(name, value);
+    }
+} catch (e) {
+    //If the browser doesn't support localStorage, try a cookie
+    window.retrieveValue = function (name) {
+        var cookies = document.cookie.split(";");
+        for (var i = 0; i < cookies.length; i++) {
+            var keyvalue = cookies[i].split("=");
+            if (keyvalue[0].trim() === name) return keyvalue[1];
+        }
+        return "";
+    }
+    window.storeValue = function (name, value) {
+        var expiry = new Date();
+        expiry.setFullYear(expiry.getFullYear() + 1);
+        document.cookie = name + "=" + value.trim() + "; expires=" + expiry.toUTCString();
+    }
+}
+```
+
+Funkcja `getSubscriptionKey()` spróbuje pobrać wcześniej przechowywany klucz za pomocą obiektu `retrieveValue`. Jeśli klucza nie będzie, funkcja wyświetli monit o podanie klucza użytkownika i przechowa go przy użyciu obiektu `storeValue`.
+
+```javascript
+
+// Get the stored API subscription key, or prompt if it's not found
 function getSubscriptionKey() {
     var key = retrieveValue(API_KEY_COOKIE);
     while (key.length !== 32) {
@@ -92,39 +95,46 @@ function getSubscriptionKey() {
 }
 ```
 
-Kod HTML `<form>` tag `onsubmit` wywołania `bingWebSearch` funkcja zwraca wyniki wyszukiwania. `bingWebSearch` używa `getSubscriptionKey` do uwierzytelniania każdego zapytania. Jak pokazano w poprzednim definicji `getSubscriptionKey` monituje użytkownika o klucz, jeśli klucz nie został wprowadzony. Klucz jest następnie przechowywany dla dalszego użytku przez aplikację.
+Tag HTML `<form>` `onsubmit` wywołuje funkcję `bingWebSearch`, aby zwrócić wyniki wyszukiwania. Funkcja `bingWebSearch` używa funkcji `getSubscriptionKey` w celu uwierzytelnienia każdego zapytania. Jak pokazano w poprzedniej definicji, funkcja `getSubscriptionKey` monituje użytkownika o klucz, jeśli klucz nie został wprowadzony. Klucz jest następnie przechowywany w celu ciągłego używania przez aplikację.
 
 ```html
-<form name="bing" onsubmit="this.offset.value = 0; return bingWebSearch(this.query.value, 
-    bingSearchOptions(this), getSubscriptionKey())">
+<form name="bing" onsubmit="this.offset.value = 0; return bingWebSearch(this.query.value,
+bingSearchOptions(this), getSubscriptionKey())">
 ```
 
-## <a name="selecting-search-options"></a>Wybranie opcji wyszukiwania
+## <a name="send-search-requests"></a>Wysyłanie żądań wyszukiwania
 
-![[Wyszukiwania usługi Bing obraz formularza]](media/cognitive-services-bing-images-api/image-search-spa-form.png)
+Ta aplikacja korzysta z kodu HTML `<form>`, aby początkowo wysyłać żądania wyszukiwania użytkowników, używając atrybutu `onsubmit` w celu wywołania funkcji `newBingImageSearch()`.
 
-Formularz HTML są dostępne następujące kontrolki:
+```html
+<form name="bing" onsubmit="return newBingImageSearch(this)">
+```
 
-| | |
-|-|-|
-|`where`|Menu rozwijane wyboru rynku (lokalizacji i language) używane do wyszukiwania.|
-|`query`|Pole tekstowe, w którym ma zostać wprowadź terminy wyszukiwania.|
-|`aspect`|Przyciski dotyczące wybierania proporcje znaleziono obrazów radiowe: około kwadratowe szerokość lub wysokość.|
-|`color`|Wybiera kolor lub czarno-białe lub dominujący kolor.
-|`when`|Menu rozwijane opcjonalnie ograniczania wyszukiwanie do ostatniego dnia, tygodnia lub miesiąca.|
-|`safe`|Pole wyboru, oznaczająca, czy funkcja bezpieczne wyszukiwanie w usłudze Bing filtrowanie wyników "dla dorosłych".|
-|`count`|Ukryte pole. Liczba wyników wyszukiwania do zwrócenia na każdym żądaniu. Zmień, aby wyświetlić mniej lub więcej wyników na stronie.|
-|`offset`|Ukryte pole. Przesunięcie pierwszego wyniku wyszukiwania w żądaniu; służący do stronicowania. Jest resetowany do `0` na nowe żądanie.|
-|`nextoffset`|Ukryte pole. Po otrzymaniu wyników wyszukiwania, to pole jest ustawione na wartość `nextOffset` w odpowiedzi. Za pomocą tego pola pozwala uniknąć nakładające się wyników na kolejnych stronach.|
-|`stack`|Ukryte pole. Zakodowane w formacie JSON listę przesunięć poprzednich strony wyników wyszukiwania do nawigowania wstecz do poprzedniej strony.|
+Domyślnie procedura obsługi `onsubmit` zwraca wynik `false`, który zapobiega przesłaniu formularza.
 
-> [!NOTE]
-> Wyszukiwania usługi Bing obrazu oferuje wiele więcej parametrów zapytania. Firma Microsoft korzysta z tylko niektóre z nich w tym miejscu.
+## <a name="select-search-options"></a>Wybieranie opcji wyszukiwania
 
-Nasze funkcji JavaScript `bingSearchOptions()` konwertuje tych pól na ciąg zapytania z częściowa w formacie wymagane przez interfejs API wyszukiwania usługi Bing.
+![[Formularz wyszukiwania obrazów Bing]](media/cognitive-services-bing-images-api/image-search-spa-form.png)
+
+Interfejs API wyszukiwania obrazów Bing oferuje kilka [parametrów w zapytaniu filtru](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#filter-query-parameters) w celu zawężenia i przefiltrowania wyników wyszukiwania. Formularz HTML w tej aplikacji używa i wyświetla następujące opcje parametrów:
+
+|              |                                                                                                                                                                                    |
+|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `where`      | Menu rozwijane umożliwiające wybranie rynku (lokalizacji i języka) używanego na potrzeby wyszukiwania.                                                                                             |
+| `query`      | Pole tekstowe do wprowadzania terminów wyszukiwania.                                                                                                                                 |
+| `aspect`     | Przyciski radiowe do wybierania proporcji znalezionych obrazów: prawie kwadratowe, szerokie lub wąskie.                                                                                     |
+| `color`      |                                                                                                                                                                                    |
+| `when`       | Menu rozwijane umożliwiające opcjonalne ograniczenie wyszukiwania do ostatniego dnia, tygodnia lub miesiąca.                                                                                          |
+| `safe`       | Pole wyboru wskazujące, czy użyć funkcji Bezpieczne wyszukiwanie Bing, aby odfiltrować wyniki zawierające „treści dla dorosłych”.                                                                                      |
+| `count`      | Ukryte pole. Liczba wyników wyszukiwania, jaka ma być zwrócona dla każdego żądania. Zmień, aby wyświetlić mniej lub więcej wyników na stronie.                                                            |
+| `offset`     | Ukryte pole. Przesunięcie pierwszego wyniku wyszukiwania w żądaniu; używane na potrzeby stronicowania. Jest resetowane do wartości `0` dla nowego żądania.                                                           |
+| `nextoffset` | Ukryte pole. Po otrzymaniu wyników wyszukiwania to pole jest ustawione na wartość `nextOffset` w odpowiedzi. Użycie tego pola pozwala uniknąć nakładających się wyników na kolejnych stronach. |
+| `stack`      | Ukryte pole. Zakodowana w formacie JSON lista przesunięć poprzednich stron wyników wyszukiwania na potrzeby przechodzenia wstecz do poprzednich stron.                                                      |
+
+Funkcja `bingSearchOptions()` formatuje te opcje jako częściowy ciąg zapytania, którego można użyć w żądaniach interfejsu API aplikacji.  
 
 ```javascript
-// build query options from the HTML form
+// Build query options from the HTML form
 function bingSearchOptions(form) {
 
     var options = [];
@@ -146,11 +156,10 @@ function bingSearchOptions(form) {
 }
 ```
 
-Na przykład może być funkcji bezpieczne wyszukiwanie `strict`, `moderate`, lub `off`, z `moderate` jest wartość domyślna. Ale naszego formularza jest pole wyboru ma tylko dwa stany. Konwertuje kod JavaScript, to ustawienie jako `strict` lub `off` (nie używamy `moderate`).
-
 ## <a name="performing-the-request"></a>Wykonywanie żądania
 
-Zapytanie, ciąg opcje i klucz interfejsu API `BingImageSearch` używa `XMLHttpRequest` obiektu do wysłania żądania do punktu końcowego wyszukiwania usługi Bing obrazu.
+Korzystając z zapytania wyszukiwania, ciągu opcji i klucza interfejsu API, funkcja `BingImageSearch()` używa obiektu XMLHttpRequest, aby wysłać żądanie do punktu końcowego wyszukiwania obrazów Bing.
+
 
 ```javascript
 // perform a search given query, options string, and API key
@@ -169,7 +178,7 @@ function bingImageSearch(query, options, key) {
     // open the request
     try {
         request.open("GET", queryurl);
-    } 
+    }
     catch (e) {
         renderErrorMessage("Bad request (invalid URL)\n" + queryurl);
         return false;
@@ -180,10 +189,10 @@ function bingImageSearch(query, options, key) {
     request.setRequestHeader("Accept", "application/json");
     var clientid = retrieveValue(CLIENT_ID_COOKIE);
     if (clientid) request.setRequestHeader("X-MSEdge-ClientID", clientid);
-    
+
     // event handler for successful response
     request.addEventListener("load", handleBingResponse);
-    
+
     // event handler for erorrs
     request.addEventListener("error", function() {
         renderErrorMessage("Error completing request");
@@ -200,7 +209,7 @@ function bingImageSearch(query, options, key) {
 }
 ```
 
-Po pomyślnym ukończeniu żądania HTTP, wywołania języka JavaScript naszych `load` program obsługi zdarzeń, `handleBingResponse()` funkcja obsłużyć pomyślnego żądania HTTP GET do interfejsu API. 
+Po pomyślnym zakończeniu żądania HTTP język JavaScript wywołuje obsługę zdarzeń „load”, `handleBingResponse()`, aby obsłużyć pomyślne żądanie GET kodu HTTP.
 
 ```javascript
 // handle Bing search request results
@@ -219,7 +228,7 @@ function handleBingResponse() {
 
     // show raw JSON and HTTP request
     showDiv("json", preFormat(JSON.stringify(jsobj, null, 2)));
-    showDiv("http", preFormat("GET " + this.responseURL + "\n\nStatus: " + this.status + " " + 
+    showDiv("http", preFormat("GET " + this.responseURL + "\n\nStatus: " + this.status + " " +
         this.statusText + "\n" + this.getAllResponseHeaders()));
 
     // if HTTP response is 200 OK, try to render search results
@@ -267,21 +276,11 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> Powiodło się żądanie HTTP jest *nie* musi to oznaczać, że całego wyszukiwania zakończyło się pomyślnie. Jeśli wystąpi błąd podczas operacji wyszukiwania, interfejsu API wyszukiwania usługi Bing obrazu zwraca kod stanu 200 HTTP i zawiera informacje o błędzie w odpowiedzi JSON. Ponadto jeśli żądanie zostało ograniczone szybkości, interfejsu API zwraca pustą odpowiedź.
+> Pomyślne żądania HTTP mogą zawierać informacje o wyszukiwaniu zakończonym niepowodzeniem. Jeśli podczas operacji wyszukiwania wystąpi błąd, interfejs API wyszukiwania obrazów Bing zwraca kod stanu HTTP inny niż 200 i umieszcza informacje o błędzie w odpowiedzi JSON. Ponadto, jeśli żądanie podlegało ograniczeniu przepustowości, interfejs API zwróci pustą odpowiedź.
 
-Większość kodu w obu tych funkcji jest przeznaczona do obsługi błędów. Błędy mogą wystąpić w następujących etapów:
+## <a name="display-the-search-results"></a>Wyświetlanie wyników wyszukiwania
 
-|Etap|Potencjalne błędy|Obsługiwane przez|
-|-|-|-|
-|Obiekt żądania tworzenia JavaScript|Nieprawidłowy adres URL|`try`/`catch` Blok|
-|W żądaniu skierowanym|Błędy sieciowe, połączenia zostało przerwane|`error` i `abort` procedury obsługi zdarzeń|
-|W wyszukiwaniu|Nieprawidłowe żądania, nieprawidłowy JSON, limity szybkości|testów w `load` obsługi zdarzeń|
-
-Błędy są obsługiwane przez wywołanie metody `renderErrorMessage()` z żadnych szczegółów znane o tym błędzie. Odpowiedź przeszedł pełny gauntlet błąd testów, nazywamy `renderSearchResults()` Aby wyświetlić wyniki wyszukiwania na stronie.
-
-## <a name="displaying-search-results"></a>Wyświetlanie wyników wyszukiwania
-
-Funkcja main do wyświetlania wyników wyszukiwania jest `renderSearchResults()`. Ta funkcja przyjmuje JSON zwrócony przez usługę wyszukiwania usługi Bing obrazu i renderowanie obrazów i wyszukiwań pokrewnych, jeśli istnieją.
+Wyniki wyszukiwania są wyświetlane przez funkcję `renderSearchResults()`, która pobiera odpowiedź JSON zwróconą przez usługę wyszukiwania obrazów Bing i wywołuje odpowiednią funkcję modułu renderowania na wszystkich zwróconych obrazach i powiązanych wyszukiwaniach.
 
 ```javascript
 function renderSearchResults(results) {
@@ -290,14 +289,14 @@ function renderSearchResults(results) {
     var pagingLinks = renderPagingLinks(results);
     showDiv("paging1", pagingLinks);
     showDiv("paging2", pagingLinks);
-    
+
     showDiv("results", renderImageResults(results.value));
     if (results.relatedSearches)
         showDiv("sidebar", renderRelatedItems(results.relatedSearches));
 }
 ```
 
-Wyniki wyszukiwania głównego obrazu są zwracane jako najwyższego poziomu `value` obiektu w odpowiedzi JSON. Możemy przekazać do naszej funkcji `renderImageResults()`, który iteruje po ich i wywołuje funkcję oddzielne do renderowania każdej pozycji w kodzie HTML. Wynikowa HTML jest zwracana do `renderSearchResults()`, w którym znajduje się `results` dzielenia na stronie.
+Wyniki wyszukiwania obrazów są zawarte w obiekcie `value` najwyższego poziomu w odpowiedzi JSON. Są one przekazywane do funkcji `renderImageResults()`, która iteruje wyniki i konwertuje każdy element na kod HTML.
 
 ```javascript
 function renderImageResults(items) {
@@ -315,39 +314,42 @@ function renderImageResults(items) {
 }
 ```
 
-Zwraca interfejs API wyszukiwania usługi Bing obrazu maksymalnie cztery różne rodzaje wyniki, każdej z nich w jego własnej obiektu najwyższego poziomu. Oto one:
+Interfejs API wyszukiwania obrazów Bing może zwrócić cztery rodzaje sugestii wyszukiwania, aby ułatwić użytkownikom wyszukiwanie — każda we własnym obiekcie najwyższego poziomu:
 
-|||
-|-|-|
-|`pivotSuggestions`|Kwerendy, które Zamień słowo pivot pierwotnego wyszukiwania innego. Na przykład wyszukiwania "red kwiaty" pivot word może być "red", a sugestię pivot może "żółty kwiaty".|
-|`queryExpansions`|Kwerendy, które zawęzić pierwotnego wyszukiwania przez dodanie więcej warunków. Na przykład, jeśli wyszukiwanie "Microsoft Surface" rozszerzenia zapytania może być "Microsoft Surface Pro."|
-|`relatedSearches`|Kwerendy, które również zostały wprowadzone przez innych użytkowników, którzy wprowadzona pierwotnego wyszukiwania. Na przykład jeśli wyszukiwanie "Roman instalacji" powiązane wyszukiwania może być "patrz hasło Mt. Ds. Saint."|
-|`similarTerms`|Kwerendy, które są podobne w rozumieniu do pierwotnego wyszukiwania. Na przykład jeśli wyszukiwanie "kocięta" podobny okres może być "cute".|
+| Sugestia         | Opis                                                                                                                                                                                                         |
+|--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `pivotSuggestions` | Zapytania, które zamieniają wyraz przestawny w oryginalnym wyszukiwaniu na inny. Jeśli na przykład wyszukujesz frazę „czerwone kwiaty”, wyrazem przestawnym może być „czerwone” i sugestia przestawna może brzmieć „żółte kwiaty”. |
+| `queryExpansions`  | Zapytania, które zawężają oryginalne wyszukiwanie, dodając więcej terminów. Jeśli na przykład wyszukujesz frazę „Microsoft Surface”, rozszerzeniem zapytania może być fraza „Microsoft Surface Pro”.                                   |
+| `relatedSearches`  | Zapytania, które również zostały wprowadzone przez innych użytkowników, którzy wprowadzili oryginalne wyszukiwanie. Jeśli na przykład wyszukujesz frazę „Mount Rainier”, powiązanym wyszukiwaniem może być fraza „Mt. Saint Helens”.                       |
+| `similarTerms`     | Zapytania, które mają podobne znaczenie, co oryginalne wyszukiwanie. Jeśli na przykład wyszukujesz wyraz „kotki”, podobnym terminem może być „milusie”.                                                                   |
 
-Jak poprzednio widziano w `renderSearchResults()`, możemy renderowania tylko `relatedItems` sugestie i miejscu powstałe w ten sposób łączy na pasku bocznym strony.
+Ta aplikacja renderuje tylko sugestie `relatedItems` i umieszcza wynikowe linki na pasku bocznym strony.
 
-## <a name="rendering-result-items"></a>Renderowanie elementów wyników
+## <a name="rendering-search-results"></a>Renderowanie wyników wyszukiwania
 
-W naszym JavaScript kodu jest obiektem `searchItemRenderers`, zawierający *renderowania:* funkcje, które generują kod HTML dla każdego rodzaju wynik wyszukiwania.
+W tej aplikacji obiekt `searchItemRenderers` zawiera funkcje modułu renderowania, które generują kod HTML dla każdego rodzaju wyniku wyszukiwania.
 
 ```javascript
-searchItemRenderers = { 
+searchItemRenderers = {
     images: function(item, index, count) { ... },
     relatedSearches: function(item) { ... }
 }
 ```
 
-Funkcja renderowania może przyjmować następujące parametry:
+Te funkcje modułu renderowania akceptują następujące parametry:
 
-| | |
-|-|-|
-|`item`|Obiektu JavaScript zawierający właściwości elementu, takie jak adres URL i jego opis.|
-|`index`|Indeks elementu wyników w swojej kolekcji.|
-|`count`|Liczba elementów w kolekcji elementów wyników wyszukiwania.|
+| Parametr         | Opis                                                                                              |
+|---------|----------------------------------------------------------------------------------------------|
+| `item`  | Obiekt JavaScript, który zawiera właściwości elementu, takie jak adres URL i opis. |
+| `index` | Indeks elementu wyniku w ramach jego kolekcji.                                          |
+| `count` | Liczba elementów w kolekcji elementów wyników wyszukiwania.                                  |
 
-`index` i `count` parametry mogą służyć do liczba wyników do wygenerowania specjalne HTML na początku lub na końcu kolekcji, aby wstawić podziały wiersza po określonej liczby elementów i tak dalej. Jeśli mechanizm renderujący nie muszą tej funkcji, nie musisz zaakceptować te dwa parametry.
+Parametry `index` i `count` są używane do numerowania wyników, generowania kodu HTML dla kolekcji i organizowania zawartości. W szczególności:
 
-Spójrzmy bliższe spojrzenie na `images` renderowania:
+* oblicza rozmiar miniatury obrazu (szerokość jest różna i wynosi co najmniej 120 pikseli, a wysokość jest stała i wynosi 90 pikseli);
+* tworzy tag `<img>` kodu HTML, aby wyświetlić miniaturę obrazu;
+* tworzy tagi `<a>` kodu HTML, które prowadzą do obrazu i do zawierającej go strony;
+* tworzy opis, który wyświetla informacje dotyczące obrazu i witryny, w której się znajduje.
 
 ```javascript
     images: function (item, index, count) {
@@ -357,7 +359,7 @@ Spójrzmy bliższe spojrzenie na `images` renderowania:
         if (index === 0) html.push("<p class='images'>");
         var title = escape(item.name) + "\n" + getHost(item.hostPageDisplayUrl);
         html.push("<p class='images' style='max-width: " + width + "px'>");
-        html.push("<img src='"+ item.thumbnailUrl + "&h=" + height + "&w=" + width + 
+        html.push("<img src='"+ item.thumbnailUrl + "&h=" + height + "&w=" + width +
             "' height=" + height + " width=" + width + "'>");
         html.push("<br>");
         html.push("<nobr><a href='" + item.contentUrl + "'>Image</a> - ");
@@ -367,51 +369,44 @@ Spójrzmy bliższe spojrzenie na `images` renderowania:
     }, // relatedSearches renderer omitted
 ```
 
-Nasze funkcja renderowania obrazu:
+Wymiary `height` i `width` obrazu miniatury są używane zarówno w tagu `<img>`, jak i w polach `h` oraz `w` w adresie URL miniatury. Dzięki temu usługa Bing może zwrócić [miniaturę](resize-and-crop-thumbnails.md) dokładnie tego rozmiaru.
 
-> [!div class="checklist"]
-> * Oblicza rozmiar miniatur obrazu (szerokość różni się z co najmniej 120 pikseli, podczas gdy wysokość jest ustalony na 90 pikseli).
-> * Tworzy HTML `<img>` tag, aby wyświetlić obraz miniatury. 
-> * Tworzy HTML `<a>` tagi, które łącze do obrazu i strona, która go zawiera.
-> * Tworzy opis, który zawiera informacje o obrazie i lokacji, który nie znajduje się na.
+## <a name="persisting-client-id"></a>Trwały identyfikator klienta
 
-Firma Microsoft testuje `index` zmiennej, aby można było wstawić `<p>` tag przed pierwszego wyniku obrazu. W przeciwnym razie miniatur spoiny sprawdzania i każdej zawijania zgodnie z potrzebami w oknie przeglądarki.
+Odpowiedzi z interfejsów API wyszukiwania Bing mogą zawierać nagłówek `X-MSEdge-ClientID`, który powinien być wysłany z powrotem do interfejsu API z kolejnymi żądaniami. Jeśli jest używanych wiele interfejsów API wyszukiwania Bing, dla każdego z nich powinien być stosowany ten sam identyfikator klienta, jeśli jest to możliwe.
 
-Rozmiaru miniatur jest używany zarówno w `<img>` tagu i `h` i `w` pól w adresie URL miniatury. [Miniatur usługi Bing](resize-and-crop-thumbnails.md) następnie dostarcza Miniatura dokładnie tego rozmiaru.
+Podanie nagłówka `X-MSEdge-ClientID` umożliwia interfejsom API usługi Bing skojarzenie wszystkich wyszukiwań użytkownika, co jest użyteczne z następujących względów.
 
-## <a name="persisting-client-id"></a>Utrwalanie identyfikator klienta
+Po pierwsze umożliwia aparatowi wyszukiwania Bing zastosowanie do wyszukiwań wcześniejszego kontekstu, co pozwala znaleźć bardziej satysfakcjonujące użytkownika wyniki. Jeśli na przykład użytkownik wcześniej wyszukiwał terminy związane z żeglowaniem, późniejsze wyszukiwanie terminu „węzły” może preferencyjnie zwrócić informacje na temat węzłów używanych w żeglarstwie.
 
-Odpowiedzi z interfejsy API wyszukiwania usługi Bing mogą obejmować `X-MSEdge-ClientID` nagłówek, który powinien zostać odesłany do interfejsu API z kolejnych żądań. Jeśli wiele interfejsy API wyszukiwania usługi Bing są używane, ten sam identyfikator klienta należy używać z wszystkich z nich, jeśli to możliwe.
+Po drugie usługa Bing może losowo wybierać użytkowników, którzy będą korzystali z nowych funkcji, zanim zostaną one udostępnione publicznie. Podanie tego samego identyfikatora klienta z każdym żądaniem gwarantuje, że użytkownicy, którzy widzą tę funkcję, zawsze będą ją widzieć. Bez identyfikatora klienta użytkownik może widzieć, jak funkcja pojawia się i znika w wynikach wyszukiwania, pozornie losowo.
 
-Zapewnianie `X-MSEdge-ClientID` nagłówka umożliwia interfejsy API usługi Bing w celu skojarzenia wszystkich wyszukiwania użytkownika, która ma dwa istotne zalety.
-
-Po pierwsze umożliwia Bing aparatu wyszukiwania w celu dotyczą wyszukiwania, aby znaleźć wyników spełniających kryteria lepiej użytkownika wcześniejszą kontekstu. Jeśli użytkownik został wcześniej wyszukiwane terminy związane z prowadzenia, na przykład nowsze Wyszukaj "węzłów" może preferencyjnie zwracają informacje o używane w prowadzenia węzłów.
-
-Po drugie Bing mogą losowo wybierać użytkownikom wystąpić nowe funkcje, zanim staną się ogólnie dostępne. Podanie Identyfikatora klienta z każdym żądaniem zapewnia użytkowników, którzy wybrano, aby zobaczyć funkcji zawsze Zobacz go. Bez Identyfikatora klienta użytkownik może zobaczyć funkcji pojawiają się i znikają, pozornie losowo, w wynikach wyszukiwania.
-
-Zasady zabezpieczeń przeglądarki (CORS) może uniemożliwiać `X-MSEdge-ClientID` nagłówka jest dostępne dla języka JavaScript. To ograniczenie występuje, gdy różne źródła ze strony, którego żąda on ma odpowiedzi wyszukiwania. W środowisku produkcyjnym należy spełnić te zasady, obsługując skryptu po stronie serwera, który wykonuje wywołanie interfejsu API w tej samej domenie co stronę sieci Web. Ponieważ skrypt ma to samo źródło jako strona sieci Web `X-MSEdge-ClientID` nagłówka jest następnie udostępniana JavaScript.
+Zasady zabezpieczeń przeglądarki (CORS) mogą powodować, że nagłówek `X-MSEdge-ClientID` będzie niedostępny dla kodu JavaScript. To ograniczenie występuje, gdy odpowiedź wyszukiwania ma inne źródło niż strona, z której pochodzi żądanie. W środowisku produkcyjnym, aby rozwiązać ten problem, należy udostępnić skrypt po stronie serwera, który wykonuje wywołanie interfejsu API w tej samej domenie, co strona internetowa. Ponieważ skrypt ma to samo źródło co strona internetowa, nagłówek `X-MSEdge-ClientID` jest dostępny dla kodu JavaScript.
 
 > [!NOTE]
-> W środowisku produkcyjnym aplikacji sieci Web należy wykonać po stronie serwera żądania mimo to. W przeciwnym razie wartość klucza interfejsu API wyszukiwania usługi Bing musi być uwzględniona na stronie sieci Web, gdy są one dostępne dla każdego, kto widoków źródła. Dla wszystkich użycia są rozliczane interfejsu API klucza subskrypcji nawet żądań przez osoby nieupoważnione, dlatego ważne jest, aby nie uwidacznia klucz.
+> W aplikacji internetowej w środowisku produkcyjnym należy wykonać to żądanie po stronie serwera. W przeciwnym razie należy dołączyć klucz interfejsu API wyszukiwania Bing do strony internetowej, aby był on dostępny dla każdego, kto wyświetli źródło. Płacisz za wszystkie użycia związane z Twoim kluczem subskrypcji interfejsu API, nawet za żądania wykonane przez osoby nieupoważnione, zatem ważne jest, aby nie ujawniać swojego klucza.
 
-Do celów programistycznych możesz wprowadzić żądania interfejsu API Bing sieci Web wyszukiwania przez serwer proxy CORS. Odpowiedź z serwera proxy ma `Access-Control-Expose-Headers` Nagłówek tego whitelists nagłówki odpowiedzi i udostępnia je JavaScript.
+W celach programistycznych możesz wykonywać żądania interfejsu API wyszukiwania w sieci Web Bing za pośrednictwem serwera proxy CORS. Odpowiedź z tego serwera proxy zawiera nagłówek `Access-Control-Expose-Headers`, który zezwala na nagłówki odpowiedzi i udostępnia je dla języka JavaScript.
 
-To proste zainstalować serwer proxy CORS, aby umożliwić samouczek aplikacji dostępu klienta do nagłówka Identyfikatora. Pierwsza strona, jeśli nie masz jeszcze, [instalowania programu Node.js](https://nodejs.org/en/download/). Następnie należy wydać następujące polecenie w oknie poleceń:
+Zainstalowanie serwera proxy CORS w celu zezwolenia naszej aplikacji samouczka na dostęp do nagłówka identyfikatora klienta jest łatwe. Najpierw [zainstaluj platformę Node.js](https://nodejs.org/en/download/), jeśli jeszcze jej nie masz. Następnie wykonaj następujące polecenie w oknie polecenia:
 
     npm install -g cors-proxy-server
 
-Następnie można zmienić punktu końcowego wyszukiwania usługi Bing w sieci Web w pliku w formacie HTML do:
+Następnie zmień punkt końcowy wyszukiwania w sieci Web Bing w pliku HTML na:
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
 
-Na koniec uruchom CORS proxy za pomocą następującego polecenia:
+Na koniec uruchom serwer proxy CORS za pomocą następującego polecenia:
 
     cors-proxy-server
 
-Pozostaw otwarte okno wiersza poleceń podczas korzystania z samouczka aplikacji; Zamyka okno zatrzymuje serwer proxy. W sekcji nagłówków HTTP rozwijanych poniżej wyniki wyszukiwania, możesz teraz przeglądać `X-MSEdge-ClientID` nagłówka (między innymi) i sprawdź, czy jest taka sama dla każdego żądania.
+Podczas korzystania z aplikacji samouczka pozostaw okno polecenia otwarte, ponieważ jego zamknięcie spowoduje zatrzymanie serwera proxy. W rozwijanej sekcji nagłówków HTML poniżej wyników wyszukiwania można teraz zobaczyć nagłówek `X-MSEdge-ClientID` (pomiędzy innymi) i sprawdzić, czy jest on taki sam dla każdego żądania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dokumentacja interfejsu API Bing obraz wyszukiwania](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+> [Wyodrębnianie szczegółów obrazu przy użyciu interfejsu API wyszukiwania obrazów Bing](tutorial-image-post.md)
 
+## <a name="see-also"></a>Zobacz też
+
+* [Dokumentacja interfejsu API wyszukiwania obrazów Bing](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

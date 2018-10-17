@@ -1,21 +1,21 @@
 ---
-title: Omówienie przewodników Szybki start dotyczących przetwarzania obrazów | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: W tych przewodnikach Szybki start przeprowadzisz analizę obrazu, utworzysz miniaturę i wyodrębnisz tekst drukowany i odręczny za pomocą funkcji przetwarzania obrazów w usługach Cognitive Services.
+title: Omówienie przewodników Szybki start dotyczących przetwarzania obrazów
+titleSuffix: Azure Cognitive Services
+description: W tych przewodnikach Szybki start przeprowadzisz analizę obrazu, utworzysz miniaturę oraz wyodrębnisz tekst drukowany i odręczny za pomocą interfejsu API przetwarzania obrazów.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 94424de3f175e82cf8490bad98f4a775761979e4
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 89502fe49f5eb4b9692d7ee4233c7c46d645b3fb
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43772287"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576888"
 ---
 # <a name="quickstart-summary"></a>Szybki start: omówienie
 

@@ -1,44 +1,46 @@
 ---
-title: Przewodnik Szybki start dla języka Go dotyczący tworzenia miniatur przy użyciu interfejsu API przetwarzania obrazów | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: W tym przewodniku Szybki start wygenerujesz miniaturę na podstawie obrazu, korzystając z funkcji przetwarzania obrazów i języka Go w usługach Cognitive Services.
+title: 'Szybki start: generowanie miniatur — REST, Go — przetwarzanie obrazów'
+titleSuffix: Azure Cognitive Services
+description: W tym przewodniku Szybki start wygenerujesz miniaturę obrazu za pomocą interfejsu API przetwarzania obrazów przy użyciu języka Go.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 02ac30d295b0637b97187dbb7e1fbb1b10a2972b
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: e49c664fc17750d427d33fbb49b3af9ea10002ad
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43772248"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629547"
 ---
-# <a name="quickstart-generate-a-thumbnail---rest-go"></a>Szybki start: generowanie miniatur — REST, Go
+# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-go-in-computer-vision"></a>Szybki start: generowanie miniatury przy użyciu interfejsu API REST i języka Go podczas przetwarzania obrazów
 
-W tym przewodniku Szybki start wygenerujesz miniaturę na podstawie obrazu, korzystając z interfejsu API przetwarzania obrazów.
+W tym przewodniku Szybki start wygenerujesz miniaturę na podstawie obrazu, korzystając z interfejsu API REST przetwarzania obrazów. Metoda [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) umożliwia wygenerowanie miniatury obrazu. Należy określić wysokość i szerokość, które mogą mieć inny współczynnik proporcji niż obraz wejściowy. Interfejs API przetwarzania obrazów wykorzystuje inteligentne przycinanie, aby określić obszar zainteresowania i wygenerować współrzędne przycinania na podstawie tego obszaru.
+
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby korzystać z funkcji przetwarzania obrazów, musisz mieć klucz subskrypcji — zobacz [Obtaining Subscription Keys (Uzyskiwanie kluczy subskrypcji)](../Vision-API-How-to-Topics/HowToSubscribe.md).
+- Musisz mieć zainstalowany język [Go](https://golang.org/dl/).
+- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Aby uzyskać klucz subskrypcji, zobacz [Obtaining Subscription Keys ](../Vision-API-How-to-Topics/HowToSubscribe.md) (Uzyskiwanie kluczy subskrypcji).
 
-## <a name="get-thumbnail-request"></a>Żądanie Get Thumbnail
+## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie próbki
 
-[Metoda Get Thumbnail](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) umożliwia wygenerowanie miniatury obrazu. Należy określić wysokość i szerokość, które mogą mieć inny współczynnik proporcji niż obraz wejściowy. Interfejs API przetwarzania obrazów wykorzystuje inteligentne przycinanie, aby określić obszar zainteresowania i wygenerować współrzędne przycinania na podstawie tego obszaru.
+Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 
-Aby uruchomić przykład, wykonaj następujące kroki:
-
-1. Skopiuj następujący kod do edytora.
-1. Zastąp wartość `<Subscription Key>` prawidłowym kluczem subskrypcji.
-1. Zmień wartość `uriBase` na lokalizację, w której przechowywane są klucze subskrypcji, jeśli jest to konieczne.
-1. Opcjonalnie możesz zmienić wartość `imageUrl` na obraz, który chcesz przeanalizować.
-1. Zapisz plik z rozszerzeniem `.go`.
-1. Otwórz wiersz polecenia na komputerze, na którym zainstalowano środowisko języka Go.
-1. Skompiluj plik, na przykład za pomocą polecenia: `go build get-thumbnail.go`.
-1. Uruchom plik, na przykład: `get-thumbnail`.
+1. Skopiuj następujący kod do edytora tekstów.
+1. W razie potrzeby wprowadź w kodzie następujące zmiany:
+    1. Zastąp wartość `subscriptionKey` kluczem subskrypcji.
+    1. W razie potrzeby zastąp wartość `uriBase` adresem URL punktu końcowego dla metody [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) z regionu platformy Azure, z którego uzyskano klucze subskrypcji.
+    1. Opcjonalnie zastąp wartość `imageUrl` adresem URL innego obrazu, z którego chcesz wygenerować miniaturę.
+1. Zapisz kod jako plik z rozszerzeniem `.go`. Na przykład `get-thumbnail.go`.
+1. Otwórz okno wiersza polecenia.
+1. W wierszu polecenia uruchom polecenie `go build`, aby skompilować pakiet na podstawie pliku. Na przykład `go build get-thumbnail.go`.
+1. W wierszu polecenia uruchom skompilowany pakiet. Na przykład `get-thumbnail`.
 
 ```go
 package main
@@ -53,12 +55,17 @@ import (
 )
 
 func main() {
-    // For example, subscriptionKey = "0123456789abcdef0123456789ABCDEF"
+    // Replace <Subscription Key> with your valid subscription key.
     const subscriptionKey = "<Subscription Key>"
 
-    // You must use the same location in your REST call as you used to get your
-    // subscription keys. For example, if you got your subscription keys from
-    // westus, replace "westcentralus" in the URL below with "westus".
+    // You must use the same Azure region in your REST API method as you used to
+    // get your subscription keys. For example, if you got your subscription keys
+    // from the West US region, replace "westcentralus" in the URL
+    // below with "westus".
+    //
+    // Free trial subscription keys are generated in the West Central US region.
+    // If you use a free trial subscription key, you shouldn't need to change
+    // this region.
     const uriBase =
         "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/generateThumbnail"
     const imageUrl =
@@ -70,12 +77,12 @@ func main() {
 
     reader := strings.NewReader(imageUrlEnc)
 
-    // Create the Http client
+    // Create the HTTP client
     client := &http.Client{
         Timeout: time.Second * 2,
     }
 
-    // Create the Post request, passing the image URL in the request body
+    // Create the POST request, passing the image URL in the request body
     req, err := http.NewRequest("POST", uri, reader)
     if err != nil {
         panic(err)
@@ -100,23 +107,27 @@ func main() {
         panic(err)
     }
 
-    // Parse the Json data
+    // Parse the JSON data
     var f interface{}
     json.Unmarshal(data, &f)
 
-    // Format and display the Json result
+    // Format and display the JSON result
     jsonFormatted, _ := json.MarshalIndent(f, "", "  ")
     fmt.Println(string(jsonFormatted))
 }
 ```
 
-## <a name="get-thumbnail-response"></a>Odpowiedź na żądanie Get Thumbnail
+## <a name="examine-the-response"></a>Sprawdzanie odpowiedzi
 
-Po pomyślnym przetworzeniu żądania jest zwracana odpowiedź zawierająca dane binarne obrazu miniatury. Jeśli żądanie zakończy się niepowodzeniem, w odpowiedzi zostanie wyświetlony kod błędu oraz komunikat, który umożliwi określenie, co poszło nie tak.
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź zawierająca dane binarne obrazu miniatury. Jeśli żądanie zakończy się niepowodzeniem, w odpowiedzi zostanie wyświetlony kod błędu oraz komunikat, który umożliwi określenie, co poszło nie tak.
+
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Jeśli skompilowany pakiet i plik, na podstawie którego pakiet został skompilowany, nie są już potrzebne, usuń je, a następnie zamknij okno wiersza polecenia i edytor tekstów.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z interfejsami API przetwarzania obrazów używanymi do analizy obrazu, wykrywania osobistości i charakterystycznych elementów krajobrazu, tworzenia miniatur oraz wyodrębniania tekstu drukowanego i odręcznego. Aby szybko zacząć eksperymentować z interfejsami API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Zapoznaj się z interfejsami API przetwarzania obrazów używanymi do analizy obrazu, wykrywania celebrytów i charakterystycznych elementów krajobrazu, tworzenia miniatur oraz wyodrębniania tekstu drukowanego i odręcznego. Aby szybko zacząć eksperymentować z interfejsem API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
-> [Poznaj interfejsy API przetwarzania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [Zobacz, jak działa interfejs API przetwarzania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

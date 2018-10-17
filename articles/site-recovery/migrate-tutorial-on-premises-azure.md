@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/16/2018
+ms.date: 09/12/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: bc04483c35162c0b461fd03c63aaa894b1bc199a
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: bd41244192efa1333bc90bec8c00f38aaaa7f612
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070681"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714993"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrowanie maszyn lokalnych do platformy Azure
 
@@ -40,10 +40,7 @@ Przed rozpoczęciem warto zapoznać się z architekturami [VMware](vmware-azure-
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Urządzenia eksportowane przez sterowniki parawirtualne nie są obsługiwane.
- 
-> [!WARNING]
-> Istnieje możliwość migrowania maszyn wirtualnych na inne (niż VMware i Hyper-V) platformy wirtualizacji, na przykład XenServer, poprzez traktowanie maszyn wirtualnych jak serwerów fizycznych. Ta metoda nie została jednak zbadana i zwalidowana przez firmę Microsoft i może nie działać. Na przykład maszyna wirtualna uruchomiona na platformie XenServer może nie działać na platformie Azure, chyba że narzędzia platformy XenServer i magazyn para-zwirtualizowany oraz sterowniki sieci zostaną odinstalowane z maszyny wirtualnej przed rozpoczęciem migracji.
+Urządzenia eksportowane przez sterowniki parawirtualne nie są obsługiwane.
 
 
 ## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
@@ -124,10 +121,43 @@ Uruchom tryb failover dla maszyn, które chcesz migrować.
 
 W niektórych scenariuszach tryb failover wymaga dodatkowego przetwarzania, którego przeprowadzenie zajmuje około 8–10 minut. Dłuższy czas testu trybu failover może występować w przypadku serwerów fizycznych; maszyn VMware z systemem Linux; maszyn wirtualnych VMware, które nie mają włączonej usługi DHCP, oraz maszyn wirtualnych VMware, które nie mają następujących sterowników rozruchowych: storvsc, vmbus, storflt, intelide, atapi.
 
+## <a name="after-migration"></a>Po migracji
+
+Po zmigrowaniu maszyn do platformy Azure należy wykonać kilka czynności.
+
+Niektóre czynności można zautomatyzować w ramach procesu migracji przy użyciu wbudowanej funkcji skryptów automatyzacji w [planach odzyskiwania]( https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation).   
+
+
+### <a name="post-migration-steps-in-azure"></a>Czynności wykonywane na platformie Azure po migracji
+
+- Po zakończeniu migracji wykonaj wszystkie potrzebne czynności konfiguracyjne, takie jak aktualizacja parametrów połączenia bazy danych i serwera sieci Web. 
+- Wykonaj dla zmigrowanej aplikacji uruchomionej na platformie Azure testy końcowe aplikacji i akceptacji migracji.
+- [Agent maszyny wirtualnej platformy Azure](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) umożliwia zarządzanie interakcją maszyny wirtualnej z usługą Azure Fabric Controller. Jest to wymagane w przypadku niektórych usług platformy Azure, takich jak Azure Backup, Site Recovery i Azure Security.
+    - Podczas migrowania maszyn VMware i serwerów fizycznych razem z usługą mobilności na maszynach z systemem Windows jest instalowany dostępny agent maszyny wirtualnej platformy Azure. Na maszynach wirtualnych z systemem Linux zaleca się zainstalowanie agenta po włączeniu trybu failover. a
+    - Podczas migrowania maszyn wirtualnych platformy Azure do regionu pomocniczego agenta maszyny Wirtualnej platformy Azure należy ustanowić na maszynie wirtualnej przed migracją.
+    - Podczas migrowania maszyn wirtualnych funkcji Hyper-V do platformy Azure agenta maszyny wirtualnej platformy Azure na maszynie wirtualnej platformy Azure instaluje się po zakończeniu migracji.
+- Usuń ręcznie z maszyny wirtualnej wszelkie programy typu dostawca/agent usługi Site Recovery. Podczas migrowania maszyn wirtualnych VMware lub serwerów fizycznych [odinstaluj usługę mobilności][vmware-azure-install-mobility-service.md#uninstall-mobility-service-on-a-windows-server-computer] z maszyny wirtualnej.
+- Aby zwiększyć elastyczność:
+    - Zapewnij bezpieczeństwo danych – utwórz kopie zapasowe maszyn wirtualnych platformy Azure przy użyciu usługi Azure Backup. [Dowiedz się więcej]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal).
+    - Zadbaj, aby pakiety robocze były uruchomione i stale dostępne, replikując maszyny wirtualne platformy Azure do regionu pomocniczego za pomocą usługi Site Recovery. [Dowiedz się więcej](azure-to-azure-quickstart.md).
+- Aby zwiększyć bezpieczeństwo:
+    - Zablokuj i ogranicz dostęp do ruchu przychodzącego za pomocą funkcji [administrowania na czas]( https://docs.microsoft.com/azure/security-center/security-center-just-in-time) usługi Azure Security Center.
+    - Ogranicz ruch sieciowy do punktów końcowych zarządzania za pomocą [sieciowych grup zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview).
+    - Wdróż usługę [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview), aby ułatwić zabezpieczenie dysków i zabezpieczyć dane przed kradzieżą lub nieautoryzowanym dostępem.
+    - Przeczytaj więcej na temat [zabezpieczania zasobów IaaS]( https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/ ) i skorzystaj z usługi [Azure Security Center](https://azure.microsoft.com/services/security-center/ ).
+- Na potrzeby monitorowania i zarządzania:
+    - Rozważ wdrożenie usługi [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/overview), aby monitorować użycie zasobu i wydatki.
+
+### <a name="post-migration-steps-on-premises"></a>Czynności wykonywane lokalnie po migracji
+
+- Przenieś ruch aplikacji do aplikacji uruchomionej na zmigrowanym wystąpieniu maszyny wirtualnej platformy Azure.
+- Usuń lokalne maszyny wirtualne z lokalnego spisu maszyn wirtualnych.
+- Usuń lokalne maszyny wirtualne z lokalnych kopii zapasowych.
+- Zaktualizuj wszystkie dokumenty wewnętrzne, aby wyświetlić nową lokalizację i adres IP maszyn wirtualnych platformy Azure.
+
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przeprowadzono migrację lokalnych maszyn wirtualnych do maszyn wirtualnych platformy Azure. Teraz po pomyślnej migracji maszyn wirtualnych możesz wykonać następujące czynności:
-- [Set up disaster recovery (Konfigurowanie odzyskiwania po awarii)](azure-to-azure-replicate-after-migration.md) dla migrowanych maszyn wirtualnych.
-- Skorzystaj z możliwości, jakie daje [bezpieczna i dobrze zarządzana usługa w chmurze](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/), aby zarządzać maszynami wirtualnymi na platformie Azure.
+W tym samouczku przeprowadzono migrację lokalnych maszyn wirtualnych do maszyn wirtualnych platformy Azure. Teraz można [skonfigurować odzyskiwanie po awarii](azure-to-azure-replicate-after-migration.md) w regionie pomocniczym platformy Azure dla maszyn wirtualnych platformy Azure.
+
   

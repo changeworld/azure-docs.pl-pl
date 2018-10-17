@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: a2601f55bbc7e99321689afdafcab3135b94bd5b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 7121c83aea75f3b23820a7b0504fa704ec9f3016
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702548"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984309"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Samouczek: Definiowanie nowego typu urządzenia w aplikacji usługi Azure IoT Central
 
@@ -427,7 +427,7 @@ Po zdefiniowaniu szablonu urządzenia **Połączony klimatyzator** możesz dosto
     | Tytuł                   | Numer seryjny |
     | Ustawienia i właściwości | Numer seryjny |
 
-    ![Ustawienia właściwości numeru seryjnego](./media/tutorial-define-device-type/propertysettings1.png)
+    ![Ustawienia właściwości numeru seryjnego](./media/tutorial-define-device-type/propertysettings3.png)
 
     Następnie wybierz polecenie **Zapisz**.
 
@@ -442,7 +442,7 @@ Po zdefiniowaniu szablonu urządzenia **Połączony klimatyzator** możesz dosto
     | Tytuł                   | Wersja oprogramowania układowego |
     | Ustawienia i właściwości | Wersja oprogramowania układowego |
 
-    ![Ustawienia właściwości numeru seryjnego](./media/tutorial-define-device-type/propertysettings2.png)
+    ![Ustawienia właściwości numeru seryjnego](./media/tutorial-define-device-type/propertysettings3.png)
 
     Następnie wybierz polecenie **Zapisz**.
 

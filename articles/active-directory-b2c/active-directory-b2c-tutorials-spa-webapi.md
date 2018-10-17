@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 54ddafbf0e4fe02bfc1445aad23ac3e20b42acb0
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: efe975fa4f89a262faef82df3cc79820d393b60e
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339390"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605763"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-app-using-azure-active-directory-b2c"></a>Samouczek: udzielanie dostępu do internetowego interfejsu API platformy ASP.NET Core z aplikacji jednostronicowej przy użyciu usługi Azure Active Directory B2C
 
@@ -46,9 +46,9 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administr
 
 [!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
 
-1. Wybierz usługę **Azure AD B2C** z listy usług w witrynie Azure Portal.
+1. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**. Teraz powinna być używana dzierżawa utworzona w poprzednim samouczku.
 
-2. W ustawieniach usługi B2C kliknij pozycję **Aplikacje**, a następnie kliknij pozycję **Dodaj**.
+2. Wybierz pozycję **Aplikacje**, a następnie wybierz polecenie **Dodaj**.
 
     Aby zarejestrować przykładowy internetowy interfejs API w dzierżawie, użyj następujących ustawień.
     
@@ -59,7 +59,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administr
     | **Nazwa** | Interfejs Hello Core API | Wprowadź wartość **Nazwa** opisującą internetowy interfejs API dla deweloperów. |
     | **Uwzględnij aplikację internetową/internetowy interfejs API** | Yes | Wybierz pozycję **Tak** dla internetowego interfejsu API. |
     | **Zezwalaj na niejawny przepływ** | Yes | Wybierz pozycję **Tak**, ponieważ interfejs API używa [logowania OpenID Connect](active-directory-b2c-reference-oidc.md). |
-    | **Adres URL odpowiedzi** | `http://localhost:44332` | Adresy URL odpowiedzi to punkty końcowe, do których usługa Azure AD B2C zwraca wszelkie tokeny żądane przez interfejs API. W tym samouczku przykładowy internetowy interfejs API jest uruchamiany lokalnie (localhost) i nasłuchuje na porcie 5000. |
+    | **Adres URL odpowiedzi** | `http://localhost:5000` | Adresy URL odpowiedzi to punkty końcowe, do których usługa Azure AD B2C zwraca wszelkie tokeny żądane przez interfejs API. W tym samouczku przykładowy internetowy interfejs API jest uruchamiany lokalnie (localhost) i nasłuchuje na porcie 5000 (po skonfigurowaniu do nowszej wersji w tym samouczku). |
     | **Identyfikator URI identyfikatora aplikacji** | HelloCoreAPI | Identyfikator URI unikatowo identyfikuje interfejs API w dzierżawie. Dzięki temu można zarejestrować wiele interfejsów API w dzierżawie. [Zakresy](../active-directory/develop/developer-glossary.md#scopes) umożliwiają zarządzanie dostępem do chronionego zasobu interfejsu API i są definiowane dla identyfikatora URI aplikacji. |
     | **Natywny klient** | Nie | Ponieważ jest to internetowy interfejs API, a nie klient natywny, wybierz pozycję Nie. |
     
@@ -111,7 +111,7 @@ Aby wywoływać chroniony internetowy interfejs API z aplikacji, należy udzieli
 
 5. Kliknij przycisk **OK**.
 
-Twoja aplikacja o nazwie **Moja przykładowa aplikacja jednostronicowa** została zarejestrowana do wywołania chronionego interfejsu **Hello Core API**. Użytkownik [uwierzytelnia się](../active-directory/develop/developer-glossary.md#authentication) w usłudze Azure AD B2C, aby korzystać z aplikacji klasycznej WPF. Aplikacja klasyczna uzyskuje [autoryzację](../active-directory/develop/developer-glossary.md#authorization-grant) z usługi Azure AD B2C w celu uzyskiwania dostępu do chronionego internetowego interfejsu API.
+Twoja aplikacja o nazwie **Moja przykładowa aplikacja jednostronicowa** została zarejestrowana do wywołania chronionego interfejsu **Hello Core API**. Użytkownik [uwierzytelnia się](../active-directory/develop/developer-glossary.md#authentication) w usłudze Azure AD B2C, aby korzystać z aplikacji jednostronicowej. Aplikacja jednostronicowa uzyskuje [autoryzację](../active-directory/develop/developer-glossary.md#authorization-grant) z usługi Azure AD B2C w celu uzyskiwania dostępu do chronionego internetowego interfejsu API.
 
 ## <a name="update-code"></a>Aktualizowanie kodu
 
@@ -158,7 +158,7 @@ Aby umożliwić aplikacji jednostronicowej wywoływanie internetowego interfejsu
         builder.WithOrigins("http://localhost:6420").AllowAnyHeader().AllowAnyMethod());
     ```
 
-3. Otwórz plik **launchSettings.json** w obszarze **Właściwości**, znajdź ustawienie *applicationURL* i zapisz jego wartość do użycia w kolejnej sekcji.
+3. Otwórz plik **launchSettings.json** w obszarze **Właściwości**, zlokalizuj ustawienie **iisSettings** *applicationURL* i ustaw numer portu na jeden z numerów zarejestrowanych dla adresu URL odpowiedzi interfejsu API `http://localhost:5000`.
 
 ### <a name="configure-the-single-page-app"></a>Konfigurowanie aplikacji jednostronicowej
 
@@ -174,7 +174,7 @@ Aby zmienić ustawienia aplikacji:
         clientID: '<Application ID for your SPA obtained from portal app registration>',
         authority: "https://<your-tenant-name>.b2clogin.com/tfp/<your-tenant-name>.onmicrosoft.com/B2C_1_SiUpIn",
         b2cScopes: ["https://<Your tenant name>.onmicrosoft.com/HelloCoreAPI/demo.read"],
-        webApi: 'http://localhost:64791/api/values',
+        webApi: 'http://localhost:5000/api/values',
     };
     ```
 

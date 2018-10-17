@@ -8,57 +8,42 @@ ms.service: cosmos-db
 ms.component: cosmosdb-graph
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/05/2017
+ms.date: 09/05/2018
 ms.author: lbosq
-ms.openlocfilehash: a0eec8aec315eefcbcc859828fa68ea0ccee6190
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 143aa1f26110b68e4dcf417c93b04f65e2993e89
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43695354"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051650"
 ---
 # <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Wprowadzenie do usługi Azure Cosmos DB: interfejs API języka Gremlin
 
-[Azure Cosmos DB](introduction.md) to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft do aplikacji o krytycznym znaczeniu. Usługa Azure Cosmos DB zapewnia następujące funkcje, z których wszystkie bazują na [wiodących w branży umowach SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/):
+[Azure Cosmos DB](introduction.md) to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft do aplikacji o krytycznym znaczeniu. Ta wielomodelowa baza danych obsługuje modele danych dokumentów, par klucz-wartość, grafów i danych kolumnowych. Interfejs API języka Gremlin usługi Azure Cosmos DB służy do przechowywania danych grafów i pracy z nimi. Interfejs API języka Gremlin obsługuje modelowanie danych programu Graph i udostępnia interfejsy API służące do przechodzenia przez dane grafu.
 
-* [Gotowa do użytku dystrybucja globalna](distribute-data-globally.md)
-* [Elastyczne skalowanie przepływności i magazynu](partition-data.md) na całym świecie
-* Opóźnienie rzędu kilku milisekund wyrażone przy użyciu jednej cyfry na poziomie 99. percentyla
-* [Pięć dokładnie zdefiniowanych poziomów spójności](consistency-levels.md)
-* Gwarantowana wysoka dostępność 
+Ten artykuł zawiera omówienie interfejsu API języka Gremlin usługi Azure Cosmos DB i przedstawia jak można go użyć do przechowywania dużych grafów zawierających miliardy wierzchołków i krawędzi. Można wykonać zapytania dla grafów z opóźnieniem rzędu kilku milisekund i łatwo rozwinąć strukturę i schemat graf. Aby wysłać zapytanie do usługi Azure Cosmos DB, możesz użyć języka przechodzenia grafu [Apache TinkerPop](http://tinkerpop.apache.org) lub [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps).
 
-Usługa Azure Cosmos DB [automatycznie indeksuje dane](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) bez konieczności zarządzania schematami i indeksami. To usługa wielomodelowa, obsługująca modele danych dokumentów, par klucz-wartość, grafów i kolumn.
-
-Interfejs API języka Gremlin usługi Azure Cosmos DB udostępnia:
-
-- Modelowanie grafów.
-- Interfejsy API przejścia.
-- Gotową do użytku dystrybucję globalną.
-- Elastyczne skalowanie pamięci masowej i przepływności z opóźnieniami odczytu poniżej 10 ms oraz poniżej 15 ms na poziomie 99. percentyla.
-- Automatyczne indeksowanie z błyskawiczną dostępnością zapytań.
-- Poziomy z możliwością dostosowania spójności.
-- Kompleksowe umowy SLA gwarantujące dostępność na poziomie co najmniej 99,99% dla wszystkich kont w obrębie jednego regionu i wszystkich kont w wielu regionach w przypadku rozluźnionej spójności, a także dostępność do odczytu na poziomie co najmniej 99,999% dla wszystkich kont bazy danych w wielu regionach.
-
-Aby wysłać zapytanie do usługi Azure Cosmos DB, możesz użyć języka przechodzenia grafu [Apache TinkerPop](http://tinkerpop.apache.org) lub [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps).
-
-Ten artykuł zawiera omówienie interfejsu API języka Gremlin usługi Azure Cosmos DB i przedstawia jak można go użyć do przechowywania dużych grafów zawierających miliardy wierzchołków i krawędzi. Można wykonać zapytania dla grafów z opóźnieniem rzędu kilku milisekund i łatwo rozwinąć strukturę i schemat graf.
-
-## <a name="graph-database"></a>Baza danych grafu
+## <a name="what-is-a-graph-database"></a>Co to jest baza danych grafów
 W świecie rzeczywistym dane w sposób naturalny łączą się ze sobą. Tradycyjne modelowanie danych skupia się na obiektach. W przypadku wielu aplikacji również występuje potrzeba naturalnego modelowania lub modelowania zarówno obiektów, jak i relacji.
 
-[Graf](http://mathworld.wolfram.com/Graph.html) jest strukturą składającą się z [wierzchołków](http://mathworld.wolfram.com/GraphVertex.html) i [krawędzi](http://mathworld.wolfram.com/GraphEdge.html). Zarówno wierzchołki, jak i krawędzie mogą mieć dowolną liczbę właściwości. Wierzchołki określają odrębne obiekty, takie jak osoby, miejsca lub zdarzenia. Krawędzi określają relacje między wierzchołkami. Na przykład dana osoba może znać inną osobę, brać udział w wydarzeniu lub była niedawno w danej lokalizacji. Właściwości zawierają informacje na temat wierzchołków i krawędzi. Przykładowe właściwości obejmują wierzchołek, który ma nazwę i wiek oraz krawędź, która ma sygnaturę czasową i/lub wagę. Bardziej oficjalnie model ten jest określany jak [graf właściwości](http://tinkerpop.apache.org/docs/current/reference/#intro). Usługa Azure Cosmos DB obsługuje model grafu właściwości.
+[Graf](http://mathworld.wolfram.com/Graph.html) jest strukturą składającą się z [wierzchołków](http://mathworld.wolfram.com/GraphVertex.html) i [krawędzi](http://mathworld.wolfram.com/GraphEdge.html). Zarówno wierzchołki, jak i krawędzie mogą mieć dowolną liczbę właściwości. 
+
+* **Wierzchołki** — wierzchołki określają odrębne obiekty, takie jak osoby, miejsca lub zdarzenia. 
+
+* **Krawędzie** — krawędzie określają relacje między wierzchołkami. Na przykład dana osoba może znać inną osobę, brać udział w wydarzeniu lub była niedawno w danej lokalizacji. 
+
+* **Właściwości** — właściwości zawierają informacje na temat wierzchołków i krawędzi. Przykładowe właściwości obejmują wierzchołek, który ma nazwę i wiek. Krawędź, która zawiera znacznik czasowy i/lub wagę. Bardziej oficjalnie model ten jest określany jak [graf właściwości](http://tinkerpop.apache.org/docs/current/reference/#intro). Usługa Azure Cosmos DB obsługuje model grafu właściwości.
 
 Na przykład poniższy przykładowy graf przedstawia relacje między ludźmi, urządzeniami przenośnymi, zainteresowaniami oraz systemami operacyjnymi:
 
 ![Przykładowa baza danych przedstawiająca osoby, urządzenia i zainteresowania](./media/graph-introduction/sample-graph.png)
 
-Grafy pomagają zrozumieć najróżniejsze zestawy danych dotyczących nauki, technologii i biznesu. Bazy danych programu Graph umożliwiają modelowanie i przechowywanie grafów w naturalny i skuteczny sposób, dzięki czemu są przydatne w wielu scenariuszach. Bazy danych programu Graph są zwykle bazami danych NoSQL, ponieważ te przypadki użycia często wymagają również elastyczności schematów i szybkiej iteracji.
-
-Grafy oferują nowatorską i zaawansowaną technikę modelowania danych. Jednak ten fakt sam w sobie nie jest wystarczającym powodem używania bazy danych grafów. Dla wielu przypadków użycia i wzorców, które obejmują przejścia grafów, grafy przewyższają tradycyjne bazy danych SQL i NoSQL w zakresie rzędów wielkości. Ta różnica w wydajności staje się jeszcze większa w przypadku przechodzenia poza więcej niż jedną relację, np. gdy chodzi o znajomego znajomego.
+Bazy danych programu Graph umożliwiają modelowanie i przechowywanie grafów w naturalny i skuteczny sposób, dzięki czemu są przydatne w wielu scenariuszach. Bazy danych programu Graph są zwykle bazami danych NoSQL, ponieważ te przypadki użycia często wymagają również elastyczności schematów i szybkiej iteracji.
 
 Do szybkich przejść, które oferują bazy danych grafów, można dołączyć algorytmy grafów, np. wyszukiwanie pierwszej głębi, wyszukiwanie pierwszej szerokości oraz algorytm Dijkstry w celu rozwiązania różnego typu problemów, np. dotyczących sieci społecznościowych, zarządzania zawartością, danych geoprzestrzennych oraz rekomendacji.
 
-## <a name="planet-scale-graphs-with-azure-cosmos-db"></a>Grafy w skali globalnej przy użyciu usługi Azure Cosmos DB
+## <a name="features-of-azure-cosmos-db-graph-database"></a>Funkcje bazy danych grafów usługi Azure Cosmos DB
+ 
 Usługa Azure Cosmos DB jest w pełni zarządzaną bazą danych grafów, która oferuje globalną dystrybucję, elastyczne skalowanie magazynu i przepływności, automatyczne indeksowanie i wykonywanie zapytań, dostosowywalne poziomy spójności oraz obsługę standardu TinkerPop.
 
 ![Architektura grafów w usłudze Azure Cosmos DB](./media/graph-introduction/cosmosdb-graph-architecture.png)
@@ -96,7 +81,8 @@ W porównaniu z innymi bazami danych grafów na rynku usługa Azure Cosmos DB of
 Usługa Azure Cosmos DB może również korzystać z wielu modeli, np. dokumentów lub grafów, w tych samych kontenerach/bazach danych. Kontener dokumentów służy do przechowywania danych grafów równolegle z dokumentami. Aby wykonać zapytania dla tych samych danych w formie grafu, można użyć zarówno zapytań SQL w formacie JSON, jak i zapytań Gremlin.
 
 ## <a name="get-started"></a>Rozpoczęcie pracy
-Do tworzenia kont usługi Azure Cosmos DB można użyć interfejsu wiersza polecenia (CLI) platformy Azure, programu Azure PowerShell lub witryny Azure Portal z obsługą interfejsu API języka Gremlin. Po utworzeniu kont witryna Azure Portal zapewnia punkt końcowy usługi, np. `https://<youraccount>.gremlin.cosmosdb.azure.com`, który dostarcza fronton WebSocket dla środowiska Gremlin. Można skonfigurować narzędzia zgodne z witryną TinkerPop, np. [Konsolę Gremlin](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console), aby podłączyć się do tego punktu końcowego i tworzyć aplikacje w środowisku Java, Node.js lub w dowolnym sterowniku klienta Gremlin.
+
+Do tworzenia kont interfejsu API języka Gremlin usługi Azure Cosmos DB i zarządzania nimi można użyć interfejsu wiersza polecenia platformy Azure, programu Azure PowerShell lub witryny Azure Portal. Po utworzeniu konta usługi można uzyskiwać dostęp do baz danych grafów w ramach tego konta, używając punktu końcowego usługi interfejsu API języka Gremlin `https://<youraccount>.gremlin.cosmosdb.azure.com`, który udostępnia fronton WebSocket dla języka Gremlin. Można skonfigurować narzędzia zgodne z witryną TinkerPop, np. [Konsolę Gremlin](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console), aby podłączyć się do tego punktu końcowego i tworzyć aplikacje w środowisku Java, Node.js lub w dowolnym sterowniku klienta Gremlin.
 
 W poniższej tabeli przedstawiono popularne sterowniki Gremlin, których można użyć do usługi Azure Cosmos DB:
 
@@ -109,7 +95,33 @@ W poniższej tabeli przedstawiono popularne sterowniki Gremlin, których można 
 | [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Gremlin-PHP w witrynie GitHub](https://github.com/PommeVerte/gremlin-php) | [Tworzenie grafu przy użyciu środowiska PHP](create-graph-php.md) |
 | [Konsola Gremlin](https://tinkerpop.apache.org/downloads.html) | [Dokumentacja dotycząca witryny TinkerPop](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Tworzenie grafu przy użyciu Konsoli Gremlin](create-graph-gremlin-console.md) |
 
-## <a name="scenarios-for-graph-support-of-azure-cosmos-db"></a>Scenariusze obsługi grafów w usłudze Azure Cosmos DB
+## <a name="graph-database-design-considerations"></a>Zagadnienia dotyczące projektowania bazy danych grafów
+
+Podczas projektowania grafu decyzja dotycząca modelowania jednostki jako samodzielnego wierzchołka, a nie właściwości innych jednostek wierzchołków, ma wpływ na wydajność i koszty. Głównym czynnikiem związanym z tą decyzją jest informacja na temat sposobu wykonywania zapytań o dane, a także skalowalności samego modelu.
+
+Przed zaplanowaniem sposobu modelowania jednostki należy wziąć pod uwagę następujące kwestie:
+
+* Które jednostki muszą zostać pobrane jako wierzchołki w większości zapytań?
+
+* Jakie informacje są dodawane na wykresie dla celów związanych z filtrowaniem danych?
+
+* Jakie jednostki są jedynie połączeniami z innymi obiektami, które następnie są pobierane z powodu swoich wartości?
+
+* Jakie informacje musi pobrać zapytanie i jaka opłata za jednostkę żądania zostanie wygenerowana?
+
+Załóżmy na przykład, że tworzymy następujący projekt grafu:
+
+![Przykładowe zagadnienia dotyczące projektowania grafu](./media/graph-introduction/graph-design-considerations-example.png)
+
+* W zależności od zapytania jest możliwe, że relacja District (Region) -> Store (Sklep) jest używana unikatowo do filtrowania wierzchołków Store (Sklep). Jeśli na przykład zapytania mają następujący format: „pobierz wszystkie sklepy znajdujące się na terenie określonego regionu”. W takiej sytuacji warto rozważyć rozwinięcie jednostki District (Region) z własnego wierzchołka do właściwości wierzchołka Store (Sklep). 
+
+* Zaletą takiego podejścia jest możliwość obniżenia kosztu pobierania każdego wierzchołka Store (Sklep) dzięki równoczesnemu pobieraniu trzech obiektów wykresu (District, District->Store, Store) do pojedynczego wierzchołka Store (Sklep). Ta opcja oferuje ulepszenia wydajności oraz mniejszy koszt na zapytanie.
+
+* Ponieważ wierzchołek Store (Sklep) łączy się z dwoma różnymi jednostkami — Employee (Pracownik) i Product (Produkt). Z tego powodu wierzchołek Store (Sklep) jest niezbędny, ponieważ ma dodatkowe możliwości przechodzenia.  
+
+
+
+## <a name="scenarios-that-can-use-gremlin-api"></a>Scenariusze, w których można używać interfejsu API języka Gremlin
 Poniżej przedstawiono kilka scenariuszy, w których można użyć obsługi grafów w usłudze Azure Cosmos DB:
 
 * Sieci społecznościowe

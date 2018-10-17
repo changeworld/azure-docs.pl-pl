@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/14/2017
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 030774716e1af4a7d6817d64ae66ded2bcaf4081
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: fde063cb593ca1f610dc35cd044fe41e34ab9202
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "41918227"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578374"
 ---
 # <a name="users-flagged-for-risk-security-report-in-the-azure-active-directory-portal"></a>Raport o zabezpieczeniach dotyczący użytkowników oflagowanych w związku z ryzykiem w portalu usługi Azure Active Directory
 
@@ -29,9 +29,9 @@ Usługa Azure Active Directory wykrywa podejrzane akcje powiązane z kontami uż
 
 Za pomocą wykrytych zdarzeń o podwyższonym ryzyku obliczane są:
 
-- **Ryzykowne logowania** — ryzykowne logowanie jest wskaźnikiem próby logowania, które mogło zostać wykonane przez osobę, która nie jest prawowitym właścicielem konta użytkownika. Aby uzyskać więcej informacji, zobacz [Ryzykowne logowania](../identity-protection/overview.md#risky-sign-ins). 
+- **Ryzykowne logowania** — ryzykowne logowanie jest wskaźnikiem próby logowania, które mogło zostać wykonane przez osobę, która nie jest prawowitym właścicielem konta użytkownika. Aby uzyskać więcej informacji, zobacz temat [How To: Configure the sign-in risk policy](../identity-protection/howto-sign-in-risk-policy.md) (Jak skonfigurować zasady dotyczące ryzyka związanego z logowaniem). 
 
-- **Użytkownicy oflagowani w związku z ryzykiem** — ryzykowny użytkownik jest wskaźnikiem konta użytkownika, którego bezpieczeństwo mogło zostać naruszone. Aby uzyskać więcej informacji, zobacz [Użytkownicy oflagowani w związku z ryzykiem](../identity-protection/overview.md#users-flagged-for-risk).  
+- **Użytkownicy oflagowani w związku z ryzykiem** — ryzykowny użytkownik jest wskaźnikiem konta użytkownika, którego bezpieczeństwo mogło zostać naruszone. Aby uzyskać więcej informacji, zobacz temat [How To: Configure the user risk policy](../identity-protection/howto-user-risk-policy.md) (Jak skonfigurować zasady dotyczące ryzyka związanego z użytkownikiem).  
 
 W witrynie Azure Portal raporty dotyczące zabezpieczeń można znaleźć w bloku **Azure Active Directory** w sekcji **Zabezpieczenia**.  
 
@@ -78,13 +78,13 @@ To okno dialogowe oferuje opcję:
 
 Raport dotyczący użytkowników oflagowanych w związku z ryzykiem w usłudze Azure Active Directory w wersjach Premium zawiera następujące elementy:
 
-- [Lista kont użytkowników](../identity-protection/overview.md#users-flagged-for-risk), których bezpieczeństwo mogło zostać naruszone 
+- Lista kont użytkowników, których bezpieczeństwo mogło zostać naruszone 
 
 - Zagregowane informacje o wykrytych [typach zdarzeń o podwyższonym ryzyku](concept-risk-events.md)
 
 - Opcja pobrania raportu
 
-- Opcja skonfigurowania [zasad podejmowania działań naprawczych dotyczących ryzyka związanego z użytkownikiem](../identity-protection/overview.md#user-risk-security-policy)  
+- Opcja skonfigurowania [zasad podejmowania działań naprawczych dotyczących ryzyka związanego z użytkownikiem](../identity-protection/howto-user-risk-policy.md)  
 
 
 ![Ryzykowne logowania](./media/concept-user-at-risk/71.png)
@@ -103,7 +103,7 @@ Po wybraniu użytkownika jest dla niego wyświetlany szczegółowy widok raportu
 ![Ryzykowne logowania](./media/concept-user-at-risk/324.png)
 
 
-Aby zbadać zdarzenia o podwyższonym ryzyku, wybierz zdarzenie z listy w celu otwarcia bloku **Szczegóły** dla tego zdarzenia o podwyższonym ryzyku. W bloku **Szczegóły** jest opcja [ręcznego zamknięcia zdarzenia o podwyższonym ryzyku](../identity-protection/overview.md#closing-risk-events-manually) lub ponownego aktywowania ręcznie zamkniętego zdarzenia o podwyższonym ryzyku. 
+Aby zbadać zdarzenia o podwyższonym ryzyku, wybierz zdarzenie z listy w celu otwarcia bloku **Szczegóły** dla tego zdarzenia o podwyższonym ryzyku. W bloku **Szczegóły** jest opcja ręcznego zamknięcia zdarzenia o podwyższonym ryzyku lub ponownego aktywowania ręcznie zamkniętego zdarzenia o podwyższonym ryzyku. 
 
 
 ![Ryzykowne logowania](./media/concept-user-at-risk/325.png)

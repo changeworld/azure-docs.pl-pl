@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
-ms.date: 06/21/2018
+ms.date: 09/11/2018
 ms.author: jingwang
-ms.openlocfilehash: 1be4769a8a07ac5d4a968ed5aa15ed2e0a2b6db2
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: c1f94c04db69ad44203ef1ada1c3b9fa3df2d779
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43086830"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718093"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Kopiowanie danych z usługi Azure Blob Storage do usługi SQL Database przy użyciu narzędzia do kopiowania danych
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -72,13 +72,7 @@ Przygotuj usługi Blob Storage i SQL Database pod kątem tego samouczka, wykonuj
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-1. Zezwól usługom platformy Azure na dostęp do programu SQL Server. Sprawdź, czy ustawienie **Zezwalaj na dostęp do usług platformy Azure** jest włączone na serwerze, na którym działa program SQL Server. To ustawienie umożliwia usłudze Data Factory zapisywanie danych do Twojego wystąpienia programu SQL Server. W celu sprawdzenia i włączenia tego ustawienia wykonaj następujące kroki:
-
-    a. Po lewej stronie wybierz pozycję **Więcej usług**, a następnie wybierz pozycję **Serwery SQL**.
-
-    b. Wybierz swój serwer, a następnie wybierz pozycję **USTAWIENIA** > **Zapora**.
-
-    d. Na stronie **Ustawienia zapory** ustaw wartość opcji **Zezwalaj na dostęp do usług platformy Azure** na **WŁĄCZ**.
+2. Zezwól usługom platformy Azure na dostęp do programu SQL Server. Sprawdź, czy ustawienie **Zezwalaj na dostęp do usług platformy Azure** jest włączone na serwerze, na którym działa usługa SQL Database. To ustawienie umożliwia usłudze Data Factory zapisywanie danych w danym wystąpieniu bazy danych. Aby sprawdzić i włączyć to ustawienie, przejdź do serwera Azure SQL i wybierz kolejno > **Zabezpieczenia** > **Zapory i sieci wirtualne** > ustaw opcję **Zezwalaj na dostęp do usług platformy Azure** na **WŁ**.
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 

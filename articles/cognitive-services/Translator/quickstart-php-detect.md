@@ -1,21 +1,21 @@
 ---
-title: Rozpoznawanie języka tekstu w usłudze Translator przy użyciu języka PHP | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: W tym przewodniku Szybki start rozpoznasz język tekstu źródłowego przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka PHP w usługach Cognitive Services.
+title: 'Szybki start: rozpoznawanie języka tekstu — tłumaczenie tekstu w usłudze Translator, PHP'
+titleSuffix: Azure Cognitive Services
+description: W tym przewodniku Szybki start rozpoznasz język tekstu źródłowego przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka PHP.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: 2888ea96ac31d56f6870b2f2ccbb04ff8328a1b8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: cb643503f72f9cf21c83f35477ca6878d8938339
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43771187"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125973"
 ---
 # <a name="quickstart-identify-language-from-text-with-php"></a>Szybki start: rozpoznawanie języka tekstu w języku PHP
 

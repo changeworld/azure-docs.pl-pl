@@ -1,38 +1,38 @@
 ---
-title: Kod współpracy w usłudze Azure Active Directory B2B oraz przykłady programu PowerShell | Dokumentacja firmy Microsoft
-description: Przykłady kodu i programu PowerShell do współpracy B2B usługi Azure Active Directory
+title: Przykłady kodu i programu PowerShell na potrzeby współpracy B2B w usłudze Azure Active Directory | Microsoft Docs
+description: Przykłady kodu i programu PowerShell na potrzeby współpracy B2B w usłudze Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: sample
 ms.date: 04/11/2017
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: f9740aba27b7a593fdf2b465f539d305d24333de
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
-ms.translationtype: MT
+ms.openlocfilehash: d0f2669610f2086c29d52d95c9796e6a2939622e
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35649256"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985449"
 ---
-# <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Kod współpracy w usłudze Azure Active Directory B2B oraz przykłady programu PowerShell
+# <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Przykłady kodu i programu PowerShell na potrzeby współpracy B2B w usłudze Azure Active Directory
 
 ## <a name="powershell-example"></a>Przykład programu PowerShell
-Możesz można zbiorczo zaproszenia użytkowników zewnętrznych dla organizacji z adresów e-mail, które mają być przechowywane w. Plik CSV.
+Można zbiorczo zaprosić do organizacji użytkowników zewnętrznych za pomocą adresów e-mail przechowywanych w pliku CSV.
 
-1. Przygotowywanie. CSV Utwórz nowy plik CSV i nazwij go invitations.csv. W tym przykładzie plik jest zapisywany w C:\Data i zawiera następujące informacje:
+1. Przygotuj plik CSV. Utwórz nowy plik CSV i nadaj mu nazwę invitations.csv. W tym przykładzie plik został zapisany w folderze C:\data i zawiera następujące informacje:
   
   Name (Nazwa)                  |  InvitedUserEmailAddress
   --------------------- | --------------------------
-  Osoby zaproszonej B2B w usłudze Gmail     | b2binvitee@gmail.com
-  Osoby zaproszonej B2B programu Outlook   | b2binvitee@outlook.com
+  Osoba zaproszona B2B w usłudze Gmail     | b2binvitee@gmail.com
+  Osoba zaproszona B2B w usłudze Outlook   | b2binvitee@outlook.com
 
 
-2. Pobierz najnowszy program Azure AD PowerShell za pomocą nowych poleceń cmdlet, należy zainstalować zaktualizowany moduł programu PowerShell usługi Azure AD, który można pobrać z [stronie wersji modułu programu Powershell](https://www.powershellgallery.com/packages/AzureADPreview)
+2. Pobierz najnowszy program PowerShell dla usługi Azure AD. Aby użyć nowych poleceń cmdlet, musisz zainstalować zaktualizowany moduł programu PowerShell dla usługi Azure AD, który możesz pobrać ze [strony wydania modułu programu PowerShell](https://www.powershellgallery.com/packages/AzureADPreview)
 
-3. Zaloguj się w Twojej dzierżawie
+3. Zaloguj się do dzierżawy
 
     ```
     $cred = Get-Credential
@@ -48,13 +48,13 @@ Możesz można zbiorczo zaproszenia użytkowników zewnętrznych dla organizacji
   foreach ($email in $invitations) {New-AzureADMSInvitation -InvitedUserEmailAddress $email.InvitedUserEmailAddress -InvitedUserDisplayName $email.Name -InviteRedirectUrl https://wingtiptoysonline-dev-ed.my.salesforce.com -InvitedUserMessageInfo $messageInfo -SendInvitationMessage $true}
   ```
 
-To polecenie cmdlet wysyła zaproszenia do adresów e-mail w invitations.csv. Dodatkowe funkcje tego polecenia cmdlet:
-- Tekst w wiadomości e-mail
-- W tym nazwę wyświetlaną dla zaproszonego użytkownika
-- Wysyłanie komunikatów do CCs lub całkowicie pomijanie wiadomości e-mail
+To polecenie cmdlet wysyła zaproszenie na adresy e-mail podane w pliku invitations.csv. Dodatkowe funkcje tego polecenia cmdlet:
+- Dostosowany tekst w wiadomości e-mail
+- Dodanie nazwy wyświetlanej dla zaproszonego użytkownika
+- Wysyłanie wiadomości na adresy DW lub całkowite pominięcie wiadomości e-mail
 
 ## <a name="code-sample"></a>Przykład kodu
-W tym miejscu firma Microsoft pokazują, jak wywołać zaproszenia do interfejsu API, w trybie "tylko do aplikacji", aby uzyskać adres URL realizacji dla zasobu, do której są zapraszania użytkownika B2B. Celem jest wysyłanie wiadomości e-mail z zaproszeniem niestandardowych. Wiadomość e-mail może składać się przy użyciu klienta HTTP, dzięki czemu można dostosować, jak wygląda i wyślij go za pośrednictwem interfejsu API programu Graph.
+Poniżej pokazano, jak wywoływać interfejs API zaproszenia w trybie „tylko dotyczący aplikacji”, aby pobrać adres URL realizacji dla zasobu, do którego zapraszasz użytkownika B2B. Celem jest wysłanie niestandardowej wiadomości e-mail z zaproszeniem. Wiadomość e-mail może zostać utworzona za pomocą klienta HTTP, więc można dostosować jej wygląd oraz wysłać za pośrednictwem interfejsu API programu Graph.
 
 ```
 namespace SampleInviteApp
@@ -227,7 +227,7 @@ namespace SampleInviteApp
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Czym jest współpraca B2B w usłudze Azure AD?](what-is-b2b.md)
 

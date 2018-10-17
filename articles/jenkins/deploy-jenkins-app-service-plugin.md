@@ -8,22 +8,22 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: b364dfb033c3af640892bb305d7df3c916dd3fef
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a6ad40f90e12bbf4dd85c3cbd22839d39a734ca1
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095771"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391169"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Wdrażanie w usłudze Azure App Service przy użyciu wtyczki Jenkins 
 
 Aby wdrożyć aplikację internetową Java na platformie Azure, można użyć interfejsu wiersza polecenia platformy Azure w [potoku Jenkins](/azure/jenkins/execute-cli-jenkins-pipeline) lub [wtyczki Jenkins usługi Azure App Service](https://plugins.jenkins.io/azure-app-service). Wtyczka Jenkins w wersji 1.0 obsługuje ciągłe wdrażanie za pomocą funkcji Web Apps usługi Azure App Service za pośrednictwem:
-* usługi Git lub protokołu FTP,
+* przekazywania pliku.
 * platformy Docker dla usługi Web Apps on Linux.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
-> * Konfigurowanie serwera Jenkins w celu wdrożenia funkcji Web Apps za pośrednictwem usługi Git lub protokołu FTP.
+> * Konfigurowanie serwera Jenkins w celu wdrożenia funkcji Web Apps za pośrednictwem przekazywania plików.
 > * Konfigurowanie serwera Jenkins w celu wdrożenia funkcji Web App for Containers.
 
 ## <a name="create-and-configure-a-jenkins-instance"></a>Tworzenie i konfigurowanie wystąpienia serwera Jenkins
@@ -37,7 +37,7 @@ Jeśli nie masz jeszcze głównego serwera Jenkins, zacznij od tego [szablonu ro
 
 Przy użyciu wtyczki Jenkins można wdrożyć aplikację internetową w dowolnym języku, który jest obsługiwany przez funkcję Web Apps, na przykład C#, PHP, Java i Node.js. W tym samouczku użyjemy [prostej aplikacji internetowej Java dla platformy Azure](https://github.com/azure-devops/javawebappsample). Aby utworzyć rozwidlenie repozytorium na swoim koncie usługi GitHub, wybierz przycisk **Fork** (Rozwidlenie) w prawym górnym rogu interfejsu usługi GitHub.  
 > [!NOTE]
-> Do utworzenia projektu języka Java wymagany jest zestaw Java JDK i narzędzie Maven. Zainstaluj te składniki na głównym serwerze Jenkins lub na agencie maszyny wirtualnej, jeśli używasz agenta w celu zapewnienia ciągłej integracji. 
+> Do utworzenia projektu języka Java wymagany jest zestaw Java JDK i narzędzie Maven. Zainstaluj te składniki na głównym serwerze Jenkins lub na agencie maszyny wirtualnej, jeśli używasz agenta w celu zapewnienia ciągłej integracji. Jeśli wdrażasz aplikację Java SE, na serwerze kompilacji jest również wymagany plik ZIP.
 
 Aby je zainstalować, zaloguj się na wystąpieniu serwera Jenkins za pomocą protokołu SSH i uruchom następujące polecenia:
 
@@ -60,7 +60,11 @@ W celu wdrażania na platformie Azure potrzebna jest jednostka usługi platformy
 
 ## <a name="configure-jenkins-to-deploy-web-apps-by-uploading-files"></a>Konfigurowanie serwera Jenkins w celu wdrożenia funkcji Web Apps przez przekazanie plików
 
-Aby wdrożyć swój projekt dla funkcji Web Apps, możesz przekazać artefakty kompilacji (na przykład plik WAR w języku Java) przy użyciu narzędzia Git lub protokołu FTP.
+Aby wdrożyć projekt w funkcji Web Apps, możesz przekazać artefakty kompilacji za pośrednictwem przekazywania pliku. Usługa Azure App Service obsługuje wiele opcji wdrażania. Dodatek Jenkins dla usługi Azure App Service upraszcza wdrażanie i oferuje opcję wdrażania w zależności od typu pliku. 
+
+* W przypadku aplikacji Java EE jest używane [wdrożenie WAR](/azure/app-service/app-service-deploy-zip#deploy-war-file).
+* W przypadku aplikacji Java SE jest używane [wdrożenie ZIP](/azure/app-service/app-service-deploy-zip#deploy-zip-file).
+* W przypadku innych języków jest używane [wdrożenie Git](/azure/app-service/app-service-deploy-local-git).
 
 Zanim skonfigurujesz zadanie na serwerze Jenkins, potrzebujesz planu usługi Azure App Service i aplikacji internetowej do uruchomienia aplikacji Java.
 
@@ -127,7 +131,7 @@ Wtyczka Jenkins dla usługi Azure App Service obsługuje potok. Możesz zapozna�
 
 Funkcja Web Apps w systemie Linux obsługuje wdrażanie przy użyciu platformy Docker. Aby wdrożyć aplikację internetową za pomocą platformy Docker, należy podać plik Dockerfile, który pakuje aplikację internetową wraz ze środowiskiem uruchomieniowym usługi do obrazu platformy Docker. Następnie wtyczka Jenkins kompiluje ten obraz, wypycha go do rejestru platformy Docker i wdraża obraz do aplikacji internetowej.
 
-Usługa Web App on Linux obsługuje również tradycyjne metody wdrażania, takie jak usługa Git i protokół FTP, ale tylko dla wbudowanych języków (.NET Core, Node.js, PHP i Ruby). W przypadku innych języków należy spakować swój kod aplikacji i środowisko uruchomieniowe usługi razem w obraz platformy Docker i użyć platformy Docker w celu wdrożenia.
+Usługa Web App on Linux obsługuje również tradycyjne metody wdrażania, takie jak usługa Git i przekazywanie plików, ale tylko dla wbudowanych języków (.NET Core, Node.js, PHP i Ruby). W przypadku innych języków należy spakować swój kod aplikacji i środowisko uruchomieniowe usługi razem w obraz platformy Docker i użyć platformy Docker w celu wdrożenia.
 
 Przed skonfigurowaniem zadania na serwerze Jenkins potrzebujesz aplikacji internetowej systemu Linux. Potrzebujesz również rejestru kontenerów w celu przechowywania prywatnych obrazów kontenerów platformy Docker i zarządzania nimi. Aby utworzyć rejestr kontenerów, możesz użyć usługi DockerHub. W tym przykładzie użyjemy usługi Azure Container Registry.
 
@@ -232,5 +236,5 @@ W tym samouczku przeprowadziliśmy wdrożenie na platformie Azure za pomocą wty
 W tym samouczku omówiono:
 
 > [!div class="checklist"]
-> * Konfigurowanie serwera Jenkins w celu wdrożenia usługi Azure App Service za pośrednictwem protokołu FTP 
+> * Konfigurowanie serwera Jenkins w celu wdrożenia usługi Azure App Service za pośrednictwem przekazywania plików 
 > * Konfigurowanie serwera Jenkins w celu wdrożenia dla funkcji Web App for Containers 

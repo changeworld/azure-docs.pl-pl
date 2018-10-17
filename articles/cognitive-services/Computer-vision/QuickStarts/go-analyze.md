@@ -1,52 +1,46 @@
 ---
-title: Przewodnik Szybki start dla języka Go dotyczący analizowania obrazów przy użyciu interfejsu API przetwarzania obrazów | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: W tym przewodniku Szybki start przeprowadzisz analizę obrazu, korzystając z funkcji przetwarzania obrazów i języka Go w usługach Cognitive Services.
+title: 'Szybki start: analizowanie obrazu zdalnego — REST, Go — przetwarzanie obrazów'
+titleSuffix: Azure Cognitive Services
+description: W tym przewodniku Szybki start przeprowadzisz analizę obrazu za pomocą interfejsu API przetwarzania obrazów i języka Go.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: ef7d6ac818f517615fc98f40ac073e6bfc9a65fd
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: ccdd8922993fb1ea3e723a68f28f95f7b6ffe93b
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43772290"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632232"
 ---
-# <a name="quickstart-analyze-a-remote-image---rest-go"></a>Szybki start: analizowanie obrazu zdalnego — REST, Go
+# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-go-in-computer-vision"></a>Szybki start: analizowanie obrazu zdalnego w funkcji przetwarzania obrazów przy użyciu interfejsu API REST i języka Go
 
-W tym przewodniku Szybki start przeprowadzisz analizę obrazu w celu wyodrębnienia elementów wizualnych przy użyciu funkcji przetwarzania obrazów.
+W tym przewodniku Szybki start przeprowadzisz analizę przechowywanego zdalnie obrazu w celu wyodrębnienia elementów wizualnych przy użyciu interfejsu API REST przetwarzania obrazów. Metoda [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) umożliwia wyodrębnienie elementów wizualnych na podstawie zawartości obrazu.
+
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby korzystać z funkcji przetwarzania obrazów, musisz mieć klucz subskrypcji — zobacz [Obtaining Subscription Keys (Uzyskiwanie kluczy subskrypcji)](../Vision-API-How-to-Topics/HowToSubscribe.md).
+- Musisz mieć zainstalowany język [Go](https://golang.org/dl/).
+- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Aby uzyskać klucz subskrypcji, zobacz [Obtaining Subscription Keys (Uzyskiwanie kluczy subskrypcji)](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="analyze-image-request"></a>Żądanie Analyze Image
+## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie przykładowego kodu
 
-[Metoda Analyze Image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) umożliwia wyodrębnienie elementów wizualnych na podstawie zawartości obrazu. Możesz przekazać obraz lub określić adres URL obrazu i wybrać, które elementy mają zostać zwrócone. Może być to na przykład:
+Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 
-* Szczegółowa lista tagów związanych z zawartością obrazu.
-* Opis zawartości obrazu w formie pełnego zdania.
-* Współrzędne, płeć i wiek wszystkich twarzy znajdujących się na obrazie.
-* Typ obrazu (clipart lub rysunek).
-* Dominujący kolor, kolor akcentu lub to, czy obraz jest czarno-biały.
-* Kategoria zdefiniowana w tej [taksonomii](../Category-Taxonomy.md).
-* Czy na obrazie znajduje się zawartość przeznaczona dla osób dorosłych lub o charakterze seksualnym?
-
-Aby uruchomić przykład, wykonaj następujące kroki:
-
-1. Skopiuj następujący kod do edytora.
-1. Zastąp wartość `<Subscription Key>` prawidłowym kluczem subskrypcji.
-1. Zmień wartość `uriBase` na lokalizację, w której przechowywane są klucze subskrypcji, jeśli jest to konieczne.
-1. Opcjonalnie możesz zmienić wartość `imageUrl` na obraz, który chcesz przeanalizować.
-1. Zapisz plik z rozszerzeniem `.go`.
-1. Otwórz wiersz polecenia na komputerze, na którym zainstalowano środowisko języka Go.
-1. Skompiluj plik, na przykład za pomocą polecenia: `go build analyze-image.go`.
-1. Uruchom plik, na przykład: `analyze-image`.
+1. Skopiuj następujący kod do edytora tekstów.
+1. W razie potrzeby wprowadź następujące zmiany w kodzie:
+    1. Zastąp wartość `subscriptionKey` kluczem subskrypcji.
+    1. W razie potrzeby zastąp wartość `uriBase` adresem URL punktu końcowego dla metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) w regionie świadczenia usługi Azure, z którego uzyskano klucze subskrypcji.
+    1. Opcjonalnie zastąp wartość `imageUrl` adresem URL innego obrazu, który chcesz analizować.
+1. Zapisz kod jako plik z rozszerzeniem `.go`. Na przykład `analyze-image.go`.
+1. Otwórz okno wiersza polecenia.
+1. W tym oknie uruchom polecenie `go build`, aby skompilować pakiet z pliku. Na przykład `go build analyze-image.go`.
+1. W oknie wiersza polecenia uruchom skompilowany pakiet. Na przykład `analyze-image`.
 
 ```go
 package main
@@ -61,12 +55,17 @@ import (
 )
 
 func main() {
-    // For example, subscriptionKey = "0123456789abcdef0123456789ABCDEF"
+    // Replace <Subscription Key> with your valid subscription key.
     const subscriptionKey = "<Subscription Key>"
 
-    // You must use the same location in your REST call as you used to get your
-    // subscription keys. For example, if you got your subscription keys from
-    // westus, replace "westcentralus" in the URL below with "westus".
+    // You must use the same Azure region in your REST API method as you used to
+    // get your subscription keys. For example, if you got your subscription keys
+    // from the West US region, replace "westcentralus" in the URL
+    // below with "westus".
+    //
+    // Free trial subscription keys are generated in the West Central US region.
+    // If you use a free trial subscription key, you shouldn't need to change
+    // this region.
     const uriBase =
         "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze"
     const imageUrl =
@@ -78,18 +77,18 @@ func main() {
 
     reader := strings.NewReader(imageUrlEnc)
 
-    // Create the Http client
+    // Create the HTTP client
     client := &http.Client{
         Timeout: time.Second * 2,
     }
 
-    // Create the Post request, passing the image URL in the request body
+    // Create the POST request, passing the image URL in the request body
     req, err := http.NewRequest("POST", uri, reader)
     if err != nil {
         panic(err)
     }
 
-    // Add headers
+    // Add request headers
     req.Header.Add("Content-Type", "application/json")
     req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
 
@@ -101,26 +100,26 @@ func main() {
 
     defer resp.Body.Close()
 
-    // Read the response body.
+    // Read the response body
     // Note, data is a byte array
     data, err := ioutil.ReadAll(resp.Body)
     if err != nil {
         panic(err)
     }
 
-    // Parse the Json data
+    // Parse the JSON data from the byte array
     var f interface{}
     json.Unmarshal(data, &f)
 
-    // Format and display the Json result
+    // Format and display the JSON result
     jsonFormatted, _ := json.MarshalIndent(f, "", "  ")
     fmt.Println(string(jsonFormatted))
 }
 ```
 
-## <a name="analyze-image-response"></a>Odpowiedź na żądanie Analyze Image
+## <a name="examine-the-response"></a>Sprawdzanie odpowiedzi
 
-Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, na przykład:
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON. Przykładowa aplikacja analizuje i wyświetla pomyślną odpowiedź w oknie wiersza polecenia, podobnie jak w poniższym przykładzie:
 
 ```json
 {
@@ -178,9 +177,13 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Jeśli skompilowany pakiet i plik, z którego pakiet został skompilowany, nie są już potrzebne, usuń je, a następnie zamknij okno wiersza polecenia i edytor tekstów.
+
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z interfejsami API przetwarzania obrazów używanymi do analizy obrazu, wykrywania osobistości i charakterystycznych elementów krajobrazu, tworzenia miniatur oraz wyodrębniania tekstu drukowanego i odręcznego. Aby szybko zacząć eksperymentować z interfejsami API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Zapoznaj się z interfejsem API przetwarzania obrazów używanym do analizy obrazu, wykrywania osobistości i charakterystycznych elementów krajobrazu, tworzenia miniatur oraz wyodrębniania tekstu drukowanego i odręcznego. Aby szybko zacząć eksperymentować z interfejsem API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
-> [Poznaj interfejsy API przetwarzania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [Poznaj interfejs API przetwarzania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

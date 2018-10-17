@@ -1,35 +1,37 @@
 ---
-title: W czasie rzeczywistym analizy wideo przy użyciu interfejsu API przetwarzania obrazów komputera | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przeprowadzić analizę w pobliżu czasie rzeczywistym w pobranych z strumienia wideo na żywo przy użyciu interfejsu API przetwarzania obrazów komputera w usługach kognitywnych ramki.
+title: 'Przykład: Analiza wideo w czasie rzeczywistym za pomocą interfejsu API przetwarzania obrazów'
+titlesuffix: Azure Cognitive Services
+description: Dowiedz się, jak można wykonywać analizę niemalże w czasie rzeczywistym na ramkach pobieranych ze strumienia wideo na żywo za pomocą interfejsu API przetwarzania obrazów.
 services: cognitive-services
 author: KellyDF
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: sample
 ms.date: 01/20/2017
 ms.author: kefre
-ms.openlocfilehash: d75b1a887e5e4557d5464d8062e1bde628e7adab
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 058f2ad58665a88d2d3cf3ce20b43ac0fad30000
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347588"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983199"
 ---
 # <a name="how-to-analyze-videos-in-real-time"></a>Jak analizować wideo w czasie rzeczywistym
-W tym przewodniku przedstawiono sposób przeprowadzania analizy niemal czasie rzeczywistym dla ramki z strumienia wideo na żywo. Podstawowe składniki w takich systemów to:
-- Możliwość nabycia ramki ze źródła wideo
-- Wybierz, które ramki do analizy
-- Przesyłania tych ramek do interfejsu API
-- Korzystać z każdego wyników analizy, która jest zwracana z wywołania interfejsu API
+W przewodniku pokazano, jak można prowadzić analizę niemalże w czasie rzeczywistym na ramkach pobieranych ze strumienia wideo na żywo. Podstawowe składniki takiego systemu to:
 
-Te przykłady są napisane w języku C# i kod można znaleźć w witrynie GitHub tutaj: [ https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis ](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/).
+- Uzyskanie ramek ze źródła wideo
+- Wybór ramek do analizy
+- Przesłanie wybranych ramek do interfejsu API
+- Wykorzystanie wyniku każdej analizy, który jest zwracany z wywołania interfejsu API
+
+Te przykłady są napisane w języku C#, a ich kod można znaleźć w witrynie GitHub w tym miejscu: [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/).
 
 ## <a name="the-approach"></a>Podejście
-Istnieje wiele sposobów, aby rozwiązać problem uruchamiania analizy niemal czasie rzeczywistym na strumienie wideo. Firma Microsoft będzie uruchomić zwijania trzech metod w coraz większe poziomy wiedzy.
+Istnieje wiele sposobów podejścia do kwestii uruchamiania analizy niemalże w czasie rzeczywistym dotyczącej strumieniowych transmisji wideo. Zaczniemy od zarysowania trzech z nich, poczynając od najmniej skomplikowanego.
 
-### <a name="a-simple-approach"></a>To podejście proste
-Najprostszym projekt dla systemu analizy niemal czasie rzeczywistym jest nieskończoną pętlę, gdzie w każdej iteracji możemy przechwycić ramki, analizować i korzystać z wynikiem:
+### <a name="a-simple-approach"></a>Podejście proste
+Najprostszy projekt systemu analizy niemalże w czasie rzeczywistym to nieskończona pętla, w ramach której w każdej iteracji pobieramy ramkę, analizujemy ją, a następnie wykorzystujemy wynik:
 ```CSharp
 while (true)
 {
@@ -41,10 +43,10 @@ while (true)
     }
 }
 ```
-Jeśli nasze analizy obejmował lekkie algorytmu po stronie klienta, to podejście będzie odpowiedni. Jednak po naszej analiza jest przeprowadzana w chmurze, opóźnienia związanego oznacza, że wywołanie interfejsu API może zająć kilka sekund, w tym czasie nie możemy przechwytywania obrazów i naszych wątku zasadniczo robi nic. Nasze maksymalną szybkość klatek jest ograniczona przez opóźnienie wywołań interfejsu API.
+Jeśli nasza analiza opiera się na prostym algorytmie po stronie klienta, to podejście może być odpowiednie. Jednak w przypadku, gdy analiza odbywa się w chmurze, związane z tym opóźnienie oznacza, że wywołanie interfejsu API może potrwać kilka sekund, w czasie których nie przechwytujemy obrazów i nasz wątek w zasadzie nic nie robi. Maksymalna szybkość ramek w naszym przypadku jest ograniczona przez opóźnienia wywołań interfejsu API.
 
-### <a name="parallelizing-api-calls"></a>Parallelizing wywołań interfejsu API
-Gdy proste pętli jednowątkowe sens dla lekkich algorytmu po stronie klienta, nie mieści się prawidłowo w przypadku opóźnienia związane z wywołań interfejsu API chmury. Rozwiązanie tego problemu jest umożliwienie długotrwałe wywołań interfejsu API do wykonania równolegle z Przechwytywanie ramki. W języku C# firma Microsoft można to osiągnąć za pomocą opartego na zadaniach równoległości, na przykład:
+### <a name="parallelizing-api-calls"></a>Równoległe wywołania interfejsu API
+Podczas gdy prosta jednowątkowa pętla ma sens dla uproszczonego algorytmu po stronie klienta, nie jest ona odpowiednia, gdy występuje opóźnienie związane z wywołaniami interfejsu API w chmurze. Rozwiązanie tego problemu polega na dopuszczeniu długo działających wywołań interfejsu API równolegle z przechwytywaniem ramki. W języku C# możemy uzyskać ten efekt przy użyciu równoległości opartej na zadaniach, na przykład:
 ```CSharp
 while (true)
 {
@@ -59,10 +61,10 @@ while (true)
     }
 }
 ```
-Spowoduje to uruchomienie analizy każdego w osobnym zadaniem, które można uruchomić w tle, gdy w dalszym ciągu Przechwytywanie nowej ramki. Dzięki temu można uniknąć blokuje wątku głównego podczas oczekiwania na wywołania interfejsu API wrócić, jednak firma Microsoft utracić niektóre gwarancji, że proste wersja podana — wiele wywołań interfejsu API mogą wystąpić równolegle, a wyniki może pobrać zwrócony w niewłaściwej kolejności. Może to spowodować wiele wątków jednocześnie wprowadzić funkcja ConsumeResult(), które może być niebezpieczne, jeśli funkcja nie jest bezpieczne wątkowo. Na koniec tego prostego kodu nie zachować informacje o zadań, które są tworzone, aby dyskretnie zniknie wyjątków. W związku z tym ostatnim składnika firmie Microsoft w celu dodania jest wątku "konsumentów", który będzie śledzić zadania analizy, zgłaszaj wyjątków kill długotrwałych zadań i upewnij się, że wyniki uzyskać używane we właściwej kolejności, pojedynczo.
+To podejście zakłada uruchomienie każdej analizy w osobnym zadaniu, które można uruchomić w tle, podczas gdy my będziemy nadal przechwytywać ramki. Pozwala ono uniknąć blokowania głównego wątku podczas oczekiwania na zakończenie wywołania interfejsu API. Jednocześnie jednak tracimy pewne gwarantowane cechy zapewniane przez prostą wersję — wiele wywołań interfejsu API może wystąpić równolegle, ale ich wyniki mogą być zwracane w nieprawidłowej kolejności. Takie podejście może także spowodować równoczesne wprowadzenie wielu wątków do funkcji ConsumeResult(), co może okazać się niebezpieczne, jeśli funkcja nie jest wątkowo bezpieczna. Wreszcie ten prosty kod nie śledzi tworzonych zadań, dlatego wyjątki nie będą zauważane. W związku z tym końcowym składnikiem, jaki musimy dodać, jest wątek „konsumenta”, który będzie śledzić zadania analizy, zgłaszać wyjątki, zabijać długo trwające zadania i gwarantować, że wyniki będą używane pojedynczo w odpowiedniej kolejności.
 
-### <a name="a-producer-consumer-design"></a>Projekt producent — konsument
-W naszym systemie końcowe "producent — konsument" mamy producent wątku, który wygląda bardzo podobnie do naszej poprzedniej nieskończoną pętlę. Jednak zamiast używania wyniki analizy, jak są one dostępne, producenta po prostu umieszcza zadania do kolejki, aby śledzić je.
+### <a name="a-producer-consumer-design"></a>Wzorzec producent — konsument
+W naszym docelowym systemie „producent — konsument” mamy wątek producenta, który wygląda podobnie do naszej poprzedniej nieskończonej pętli. Jednak zamiast natychmiastowego wykorzystywania wyników analizy zaraz po ich udostępnieniu producent po prostu umieszcza zadania w kolejce, co pozwala na ich śledzenie.
 ```CSharp
 // Queue that will contain the API call tasks. 
 var taskQueue = new BlockingCollection<Task<ResultWrapper>>();
@@ -97,7 +99,7 @@ while (true)
     }
 }
 ```
-Mamy także wątku konsumenta, zużywający zadań poza kolejki oczekiwanie na zakończenie, oraz wyświetlanie wynik lub wywoływanie wyjątek, który został zgłoszony. Przy użyciu kolejki, możemy zagwarantować, wyniki uzyskać wykorzystanych pojedynczo, we właściwej kolejności, nie ograniczając maksymalną szybkość klatek systemu.
+Mamy również wątek konsumenta, który pobiera zadania z kolejki, czeka na ich ukończenie, po czym wyświetla wynik lub zgłasza wyjątek. Dzięki zastosowaniu kolejki możemy mieć pewność, że wyniki są wykorzystywane pojedynczo, we właściwej kolejności i bez ograniczenia maksymalnej szybkości ramek systemu.
 ```CSharp
 // Consumer thread. 
 while (true)
@@ -122,11 +124,11 @@ while (true)
 
 ## <a name="implementing-the-solution"></a>Implementowanie rozwiązania
 ### <a name="getting-started"></a>Wprowadzenie
-Na uruchomienie aplikacji zapasową tak szybko jak to możliwe, wdrożonych systemu opisane powyżej, pomyślny przebieg się wystarczająco elastyczny, aby zaimplementować wiele scenariuszy, będąc w użyciu. Aby uzyskać dostęp do kodu, przejdź do [ https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis ](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis).
+Aby jak najszybciej uzyskać gotową działającą aplikację, zaimplementowano opisany powyżej system w sposób wystarczająco elastyczny, aby implementował wiele scenariuszy, pozostając jednocześnie łatwy w użyciu. Aby uzyskać dostęp do kodu, przejdź do strony [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis).
 
-Biblioteka zawiera klasy FrameGrabber, która implementuje systemu producent — konsument opisanych wyżej przetworzyć klatek wideo z kamery internetowej. Użytkownik może określić dokładną formę wywołania interfejsu API i klasy używa zdarzeń, aby wiedzieć, gdy nowej ramki są uzyskiwane lub jest dostępny nowy wynik analizy kodu wywołującego.
+Biblioteka zawiera klasę FrameGrabber, która implementuje omówiony powyżej system producent — konsument, pozwalający na przetwarzanie ramek wideo z kamery internetowej. Użytkownik może określić dokładną formę wywołania interfejsu API, a klasa korzysta ze zdarzeń, aby przekazać do wywołującego kodu informację o tym, kiedy nowa ramka została pozyskana lub dostępny jest nowy wynik analizy.
 
-Aby zilustrować niektóre możliwości, istnieją dwie przykładowe aplikacje, które korzysta z biblioteki. Pierwsza to aplikacji konsoli simple i uproszczonej wersji to jest przedstawiony poniżej. Grabs ramek z kamery internetowej domyślne i przekazuje je do powierzchni interfejsu API wykrywania twarzy na obrazie.
+Dwie przykładowe aplikacje korzystające z biblioteki ilustrują niektóre z tych możliwości. Pierwsza z nich to prosta aplikacja konsolowa, której uproszczoną wersję przedstawiono poniżej. Pobiera ona ramki z domyślnej kamery internetowej i przekazuje je do interfejsu API rozpoznawania twarzy w celu wykrycia twarzy.
 ```CSharp
 using System;
 using VideoFrameAnalyzer;
@@ -171,39 +173,39 @@ namespace VideoFrameConsoleApplication
     }
 }
 ```
-Druga Przykładowa aplikacja jest bardziej interesujące i umożliwia określenie, które interfejs API do wywoływania w ramkach wideo. Na stronie po lewej stronie aplikacji pokazuje podgląd wideo na żywo, po prawej stronie zawiera najnowsze wyniku interfejsu API umieszczenia na odpowiednich ramki.
+Druga przykładowa aplikacja jest trochę bardziej interesująca i umożliwia wybranie, który interfejs API może przyjmować ramki wideo. Po lewej stronie aplikacja przedstawia podgląd wideo na żywo, a po prawej stronie pokazuje najnowszy wynik interfejsu API nałożony na odpowiadającą mu ramkę.
 
-W większości trybów będzie widoczny opóźnienia między wideo na żywo po lewej stronie, a wizualizowanego analizy po prawej stronie. Opóźnienie to czas potrzebny do wywoływania interfejsu API. Wyjątkiem jest w trybie "EmotionsWithClientFaceDetect", który wykonuje wykrywania twarzy na obrazie lokalnie na komputerze klienckim przy użyciu OpenCV, przed przesłaniem żadnych obrazów do usług kognitywnych. Dzięki temu firma Microsoft wizualizacji wykryto kroju natychmiast, a następnie zaktualizuj emocji później po wywołaniu interfejsu API zwraca. Oznacza to możliwość podejście "hybrydowe", gdzie proste przetwarza można wykonać na kliencie, a następnie kognitywnych interfejsów API usługi można rozszerzyć to bardziej zaawansowane analizy, gdy jest to konieczne.
+W większości trybów będzie występować widoczne opóźnienie między wideo prezentowanym na żywo po lewej stronie a wizualizowaną analizą po prawej stronie. To opóźnienie wynika z czasu potrzebnego na realizację wywołania interfejsu API. Wyjątkiem od tej reguły jest tryb „EmotionsWithClientFaceDetect” (wykrywanie emocji na twarzy po stronie klienta), który przed przesłaniem jakichkolwiek obrazów do usług Cognitive Services przeprowadza lokalny proces wykrywania twarzy na komputerze klienckim za pomocą biblioteki OpenCV. W ten sposób natychmiast dokonujemy wizualizacji wykrytej twarzy, a następnie aktualizujemy emocje po zakończeniu wywołania interfejsu API. Ten przykład demonstruje podejście „hybrydowe”, w którym pewna prosta część przetwarzania może być wykonywana na komputerze klienckim, po czym, jeśli jest to konieczne, za pomocą interfejsów API usług Cognitive Services można rozszerzyć jej wyniki, przeprowadzając bardziej zaawansowaną analizę.
 
-![HowToAnalyzeVideo](../../Video/Images/FramebyFrame.jpg)
+![HowToAnalyzeVideo (Jak analizować wideo)](../../Video/Images/FramebyFrame.jpg)
 
-### <a name="integrating-into-your-codebase"></a>Integrowanie baza kodu
-Aby zacząć korzystać z tego przykładu, wykonaj następujące kroki:
+### <a name="integrating-into-your-codebase"></a>Integrowanie z bazą kodu
+Aby zacząć pracę z tym przykładem, wykonaj następujące kroki:
 
-1. Pobieranie kluczy interfejsu API dla API przetwarzania obrazów z [subskrypcje](https://azure.microsoft.com/try/cognitive-services/). Analiza ramek wideo są stosowane interfejsy API:
+1. Pobierz z [Subskrypcji](https://azure.microsoft.com/try/cognitive-services/) klucze interfejsu API dla interfejsów API wizualizacji. Odpowiednimi interfejsami API do analizy ramek wideo są:
     - [Interfejs API przetwarzania obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
-    - [Emocji interfejsu API](https://docs.microsoft.com/azure/cognitive-services/emotion/home)
+    - [Interfejs API rozpoznawania emocji](https://docs.microsoft.com/azure/cognitive-services/emotion/home)
     - [Interfejs API rozpoznawania twarzy](https://docs.microsoft.com/azure/cognitive-services/face/overview)
-2. Klonowanie [Cognitive — przykłady-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) repozytorium GitHub
+2. Sklonuj repozytorium GitHub [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/).
 
-3. Otwórz w programie Visual Studio 2015 próbki, tworzenie i uruchamianie przykładowych aplikacji:
-    - Dla BasicConsoleSample, klucz interfejsu API krój jest ustalony bezpośrednio w [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs).
-    - Dla LiveCameraSample należy wprowadzić klucze do panelu Ustawienia aplikacji. Zostaną one utrwalone między sesjami jako dane użytkownika.
+3. Otwórz przykład w programie Visual Studio 2015, skompiluj i uruchom przykładowe aplikacje:
+    - W przypadku aplikacji BasicConsoleSample klucz interfejsu API rozpoznawania twarzy jest zapisany bezpośrednio w kodzie w pliku [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs).
+    - W przypadku aplikacji LiveCameraSample klucze należy wprowadzić w okienku Ustawienia aplikacji. Zostaną one utrwalone pomiędzy sesjami jako dane użytkownika.
         
 
-Jeśli wszystko jest gotowe do integracji, **po prostu odwołuje się do biblioteki VideoFrameAnalyzer z własnych projektów.** 
+Gdy wszystko będzie gotowe do integracji, wystarczy **po prostu odwoływać się do biblioteki VideoFrameAnalyzer z własnych projektów.** 
 
 
 
 ## <a name="developer-code-of-conduct"></a>Kodeks postępowania dewelopera
-Zgodnie ze wszystkimi usługami kognitywnych deweloperom tworzenie z naszych interfejsów API i przykłady są wymagane do wykonania "[Developer Kodeks postępowania dla usług Microsoft Cognitive](https://azure.microsoft.com/support/legal/developer-code-of-conduct/)." 
+Podobnie jak w przypadku wszystkich usług Cognitive Services deweloperzy aplikacji korzystający z naszych interfejsów API i przykładów są zobowiązani do przestrzegania „[Kodeksu postępowania dewelopera usług Microsoft Cognitive Services](https://azure.microsoft.com/support/legal/developer-code-of-conduct/)”. 
 
 
-Obraz, głosu, wideo lub tekst zrozumienie możliwości VideoFrameAnalyzer używa kognitywnych usług firmy Microsoft. Microsoft otrzyma obrazy, audio, wideo i innych danych, możesz przekazać (za pomocą tej aplikacji) i może używać ich do celów poprawy jakości obsługi. Firma Microsoft poprosić o pomoc w ochrony osoby, dla którego dane aplikacji wysyła do usługi kognitywnych firmy Microsoft. 
+Funkcje pozwalające na interpretację obrazu, głosu, wideo lub tekstu z biblioteki VideoFrameAnalyzer korzystają z usług Azure Cognitive Services. Microsoft otrzyma obrazy, pliki audio i wideo oraz inne przekazane dane (za pośrednictwem tej aplikacji) i może z nich korzystać w celu doskonalenia usługi. Prosimy użytkowników o pomoc w ochronie osób, których dane aplikacja wysyła do usług Azure Cognitive Services. 
 
 
 ## <a name="summary"></a>Podsumowanie
-W tym przewodniku przedstawiono sposób uruchamiania analizy niemal czasie rzeczywistym na żywo strumieni wideo przy użyciu krój, wizji komputera i interfejsy API rozpoznawania emocji — warstwa i wykorzystania naszym przykładowym kodzie aby rozpocząć pracę. Można rozpocząć tworzenie aplikacji z wolnego klucze interfejsu API w [stronę tworzenia konta usługi kognitywnych](https://azure.microsoft.com/try/cognitive-services/). 
+W tym przewodniku pokazano, jak przeprowadzać analizę niemalże w czasie rzeczywistym dotyczącą transmisji strumieniowych wideo na żywo przy użyciu interfejsów API rozpoznawania twarzy, przetwarzania obrazów i rozpoznawania emocji oraz jak można wykorzystać nasz przykładowy kod, aby rozpocząć pracę. Tworzenie aplikacji możesz rozpocząć za pomocą bezpłatnych kluczy interfejsu API na [stronie tworzenia konta usługi Microsoft Cognitive Services](https://azure.microsoft.com/try/cognitive-services/). 
 
-Aby zapewnić opinii i sugestii w [repozytorium GitHub](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/), lub więcej szerokie opinii interfejsu API na naszych [witryny UserVoice](https://cognitive.uservoice.com/).
+Zachęcamy do przekazywania opinii i sugestii w [repozytorium GitHub](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) lub, w przypadku szerszych informacji zwrotnych dotyczących interfejsów API, na naszej [witrynie UserVoice](https://cognitive.uservoice.com/).
 

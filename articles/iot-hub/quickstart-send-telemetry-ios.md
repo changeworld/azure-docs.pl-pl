@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/20/2018
 ms.author: kgremban
-ms.openlocfilehash: dbc1cc4a72d0346c92d506358c39a66a4d780b32
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: aecb9a1819060e0da6338e8e16bf681fad42dd22
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38309749"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161921"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>Szybki start: wysyłanie danych telemetrycznych z urządzenia do centrum IoT (iOS)
 
@@ -33,16 +33,10 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 - Pobierz przykładowy kod z [przykładów dla platformy Azure](https://github.com/Azure-Samples/azure-iot-samples-ios/archive/master.zip) 
 - Najnowsza wersja środowiska [XCode](https://developer.apple.com/xcode/) korzystająca z najnowszej wersji zestawu SDK systemu iOS. Ten przewodnik Szybki start przetestowano przy użyciu środowiska XCode 9.3 i systemu iOS 11.3.
 - Najnowsza wersja menedżera [CocoaPods](https://guides.cocoapods.org/using/getting-started.html).
-- Narzędzie interfejsu wiersza polecenia iothub-explorer, które odczytuje dane telemetryczne z usługi IoT Hub. Aby je zainstalować, należy najpierw zainstalować środowisko [Node.js](https://nodejs.org) w wersji v4.x.x lub nowszej, a następnie uruchomić następujące polecenie: 
 
-   ```sh
-   sudo npm install -g iothub-explorer
-   ```
-
-## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT
+## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
 [!INCLUDE [iot-hub-quickstarts-create-hub](../../includes/iot-hub-quickstarts-create-hub.md)]
-
 
 ## <a name="register-a-device"></a>Rejestrowanie urządzenia
 
@@ -64,14 +58,6 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
    ```
 
    Zanotuj parametry połączenia urządzenia, które wyglądają następująco: `Hostname=...=`. Użyjesz tej wartości w dalszej części tego artykułu.
-
-1. Potrzebne będą także _parametry połączenia usługi_, aby umożliwić aplikacji zaplecza nawiązywanie połączenia z centrum IoT i pobieranie komunikatów z urządzenia do chmury. Następujące polecenie pobiera parametry połączenia usługi dla centrum IoT:
-
-   ```azurecli-interactive
-   az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
-   ```
-
-   Zanotuj parametry połączenia usługi, które wyglądają następująco: `Hostname=...=`. Użyjesz tej wartości w dalszej części tego artykułu.
 
 ## <a name="send-simulated-telemetry"></a>Wysyłanie symulowanych danych telemetrycznych
 
@@ -119,19 +105,19 @@ Poniższy zrzut ekranu przedstawia przykładowe dane wyjściowe w momencie wysy�
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Odczytywanie danych telemetrycznych z centrum
 
-Przykładowa aplikacja uruchomiona w emulatorze środowiska XCode wyświetla dane dotyczące komunikatów wysłanych z urządzenia. Dane możesz wyświetlić także za pośrednictwem centrum IoT, gdy są odbierane. Narzędzie interfejsu wiersza polecenia `iothub-explorer` łączy się z punktem końcowym **Zdarzenia** po stronie usługi w centrum IoT. 
+Przykładowa aplikacja uruchomiona w emulatorze środowiska XCode wyświetla dane dotyczące komunikatów wysłanych z urządzenia. Dane możesz wyświetlić także za pośrednictwem centrum IoT, gdy są odbierane. Rozszerzenie interfejsu wiersza polecenia usługi IoT Hub może połączyć się z punktem końcowym **Zdarzenia** po stronie usługi w usłudze IoT Hub. Rozszerzenie odbiera komunikaty z urządzenia do chmury wysyłane z urządzenia symulowanego. Aplikacja zaplecza usługi IoT Hub zwykle działa w chmurze, aby odbierać i przetwarzać komunikaty urządzenie-chmura.
 
-Otwórz nowe okno terminalu. Uruchom następujące polecenie, zastępując ciąg {your hub service connection string} parametrami połączenia usługi pobranymi na początku tego artykułu:
+Uruchom następujące polecenia interfejsu wiersza polecenia platformy Azure, zastępując ciąg `{YourIoTHubName}` nazwą centrum IoT Hub:
 
-```sh
-iothub-explorer monitor-events myiOSdevice --login "{your hub service connection string}"
+```azurecli-interactive
+az iot hub monitor-events --device-id myiOSdevice --hub-name {YourIoTHubName}
 ```
+
+Poniższy zrzut ekranu przedstawia dane wyjściowe w momencie odbierania przez rozszerzenie danych telemetrycznych wysyłanych przez urządzenie symulowane do centrum:
 
 Poniższy zrzut ekranu przedstawia typ danych telemetrycznych wyświetlanych w oknie terminalu:
 
 ![Wyświetlanie danych telemetrycznych](media/quickstart-send-telemetry-ios/view-telemetry.png)
-
-Jeśli podczas uruchamiania polecenia narzędzia iothub-explorer wystąpi błąd, sprawdź, czy używasz *parametrów połączenia usługi* dla centrum IoT, a nie *parametrów połączenia urządzenia* dla urządzenia IoT. Oba parametry połączenia zaczynają się od ciągu **Hostname={iothubname}**, ale parametry połączenia usługi zawierają właściwość **SharedAccessKeyName**, podczas gdy parametry połączenia urządzenia zawierają właściwość **DeviceID**. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

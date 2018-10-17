@@ -1,53 +1,57 @@
 ---
-title: Przewodnik Szybki start dla języka PHP dotyczący analizowania obrazów przy użyciu interfejsu API przetwarzania obrazów | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: W tym przewodniku Szybki start przeprowadzisz analizę obrazu, korzystając z funkcji przetwarzania obrazów i języka PHP w usługach Cognitive Services.
+title: 'Szybki start: analizowanie obrazu zdalnego — REST, PHP — przetwarzanie obrazów'
+titleSuffix: Azure Cognitive Services
+description: W tym przewodniku Szybki start przeprowadzisz analizę obrazu za pomocą interfejsu API przetwarzania obrazów w języku PHP.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 09/10/2018
 ms.author: v-deken
-ms.openlocfilehash: 114674f47ee945717e866d97ffed747ae45decc8
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: bc7803860e092d23c245bd425fc27f11fac41047
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43771951"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629421"
 ---
-# <a name="quickstart-analyze-a-remote-image---rest-php"></a>Szybki start: analizowanie obrazu zdalnego — REST, PHP
+# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-php-in-computer-vision"></a>Szybki start: analizowanie obrazu zdalnego przy użyciu interfejsu API REST i języka PHP podczas przetwarzania obrazów
 
-W tym przewodniku Szybki start przeprowadzisz analizę obrazu w celu wyodrębnienia elementów wizualnych przy użyciu funkcji przetwarzania obrazów.
+W tym przewodniku Szybki start przeprowadzisz analizę przechowywanego zdalnie obrazu w celu wyodrębnienia elementów wizualnych przy użyciu interfejsu API REST przetwarzania obrazów. Metoda [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) umożliwia wyodrębnienie elementów wizualnych na podstawie zawartości obrazu.
+
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby korzystać z funkcji przetwarzania obrazów, musisz mieć klucz subskrypcji — zobacz [Obtaining Subscription Keys (Uzyskiwanie kluczy subskrypcji)](../Vision-API-How-to-Topics/HowToSubscribe.md).
+- Musisz mieć zainstalowany język [PHP](https://secure.php.net/downloads.php).
+- Musisz mieć zainstalowane repozytorium [Pear](https://pear.php.net).
+- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Aby uzyskać klucz subskrypcji, zobacz [Obtaining Subscription Keys (Uzyskiwanie kluczy subskrypcji)](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="analyze-image-request"></a>Żądanie Analyze Image
+## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie próbki
 
-[Metoda Analyze Image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) umożliwia wyodrębnienie elementów wizualnych na podstawie zawartości obrazu. Możesz przekazać obraz lub określić adres URL obrazu i wybrać, które elementy mają zostać zwrócone. Może być to na przykład:
+Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 
-* Szczegółowa lista tagów związanych z zawartością obrazu.
-* Opis zawartości obrazu w formie pełnego zdania.
-* Współrzędne, płeć i wiek wszystkich twarzy znajdujących się na obrazie.
-* Typ obrazu (clipart lub rysunek).
-* Dominujący kolor, kolor akcentu lub to, czy obraz jest czarno-biały.
-* Kategoria zdefiniowana w tej [taksonomii](../Category-Taxonomy.md).
-* Czy na obrazie znajduje się zawartość przeznaczona dla osób dorosłych lub o charakterze seksualnym?
+1. Zainstaluj pakiet [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2) PHP5.
+   1. Otwórz okno wiersza polecenia jako administrator.
+   1. Uruchom następujące polecenie:
 
-Aby uruchomić przykład, wykonaj następujące kroki:
+      ```console
+      pear install HTTP_Request2
+      ```
 
-1. Skopiuj następujący kod do edytora.
-1. Zastąp wartość `<Subscription Key>` prawidłowym kluczem subskrypcji.
-1. Zmień element `uriBase`, aby użyć lokalizacji, z której uzyskano klucze subskrypcji, jeśli jest to potrzebne.
-1. Opcjonalnie możesz ustawić element `imageUrl` na obraz do analizy.
-1. Opcjonalnie możesz zmienić język odpowiedzi (`'language' => 'en'`).
-1. Zapisz plik z rozszerzeniem `.php`.
-1. Otwórz plik w przeglądarce, która obsługuje język PHP.
+   1. Po pomyślnym zainstalowaniu pakietu zamknij okno wiersza polecenia.
 
-W tym przykładzie użyto pakietu PHP5 [HTTP_Request2](http://pear.php.net/package/HTTP_Request2).
+1. Skopiuj następujący kod do edytora tekstów.
+1. W razie potrzeby wprowadź w kodzie następujące zmiany:
+    1. Zastąp wartość `subscriptionKey` kluczem subskrypcji.
+    1. W razie potrzeby zastąp wartość `uriBase` adresem URL punktu końcowego dla metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) z regionu platformy Azure, z którego uzyskano klucze subskrypcji.
+    1. Opcjonalnie zastąp wartość `imageUrl` adresem URL innego obrazu, który chcesz analizować.
+    1. Opcjonalnie zastąp wartość parametru żądania `language` innym językiem.
+1. Zapisz kod jako plik z rozszerzeniem `.php`. Na przykład `analyze-image.php`.
+1. Otwórz okno przeglądarki, która obsługuje język PHP.
+1. Przeciągnij i upuść plik w oknie przeglądarki.
 
 ```php
 <html>
@@ -109,9 +113,9 @@ catch (HttpException $ex)
 </html>
 ```
 
-## <a name="analyze-image-response"></a>Odpowiedź na żądanie Analyze Image
+## <a name="examine-the-response"></a>Sprawdzanie odpowiedzi
 
-Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, na przykład:
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON. Przykładowa witryna internetowa analizuje i wyświetla pomyślną odpowiedź w oknie przeglądarki, podobnie jak w poniższym przykładzie:
 
 ```json
 {
@@ -169,9 +173,22 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Jeśli plik nie jest już potrzebny, usuń to, a następnie odinstaluj pakiet `HTTP_Request2` PHP5. Aby odinstalować pakiet, wykonaj następujące czynności:
+
+1. Otwórz okno wiersza polecenia jako administrator.
+2. Uruchom następujące polecenie:
+
+   ```console
+   pear uninstall HTTP_Request2
+   ```
+
+3. Po pomyślnym odinstalowaniu pakietu zamknij okno wiersza polecenia.
+
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z interfejsami API przetwarzania obrazów używanymi do analizy obrazu, wykrywania osobistości i charakterystycznych elementów krajobrazu, tworzenia miniatur oraz wyodrębniania tekstu drukowanego i odręcznego. Aby szybko zacząć eksperymentować z interfejsami API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Zapoznaj się z interfejsami API przetwarzania obrazów używanymi do analizy obrazu, wykrywania celebrytów i charakterystycznych elementów krajobrazu, tworzenia miniatur oraz wyodrębniania tekstu drukowanego i odręcznego. Aby szybko zacząć eksperymentować z interfejsem API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
-> [Poznaj interfejsy API przetwarzania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [Zobacz, jak działa interfejs API przetwarzania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

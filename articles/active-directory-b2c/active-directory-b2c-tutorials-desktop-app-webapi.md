@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 98c86f5613116dce5423aa9ca6a2ff43e5414592
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: b8cdf6cb07215f4c1e2a472f60513aff765dcfb5
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39594784"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603198"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Samouczek — udzielanie dostępu do internetowego interfejsu API platformy Node.js z aplikacji klasycznej przy użyciu usługi Azure Active Directory B2C
 
@@ -110,7 +110,7 @@ Aby wywoływać chroniony internetowy interfejs API z aplikacji, należy udzieli
 
 5. Kliknij przycisk **OK**.
 
-Aplikacja **Moja przykładowa aplikacja WPF** zostanie zarejestrowana w celu wywoływania chronionego interfejsu **Mój przykładowy internetowy interfejs API platformy Node.js**. Użytkownik [uwierzytelnia się](../active-directory/develop/developer-glossary.md#authentication) w usłudze Azure AD B2C, aby korzystać z aplikacji klasycznej WPF. Aplikacja klasyczna uzyskuje [autoryzację](../active-directory/develop/developer-glossary.md#authorization-grant) z usługi Azure AD B2C w celu uzyskiwania dostępu do chronionego internetowego interfejsu API.
+Aplikacja **Moja przykładowa aplikacja WPF** zostanie zarejestrowana w celu wywoływania chronionego interfejsu **Mój przykładowy internetowy interfejs API platformy Node.js**. Użytkownik [uwierzytelnia się](../active-directory/develop/developer-glossary.md#authentication) w usłudze Azure AD B2C, aby korzystać z klasycznej aplikacji WPF. Aplikacja klasyczna uzyskuje [autoryzację](../active-directory/develop/developer-glossary.md#authorization-grant) z usługi Azure AD B2C w celu uzyskiwania dostępu do chronionego internetowego interfejsu API.
 
 ## <a name="update-web-api-code"></a>Aktualizowanie kodu internetowego interfejsu API
 

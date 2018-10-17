@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: a1e8c53263093554bb616ec130cd17a0d6d4339c
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 7573746b91f057d83a299d54801785118cc1c878
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302919"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380135"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Samouczek: wdrażanie aplikacji .NET w kontenerze systemu Windows w usłudze Azure Service Fabric
 
@@ -225,7 +225,7 @@ Kiedy aplikacja jest gotowa, można wdrożyć ją w klastrze platformy Azure bez
 ![Przykład internetowy dla firmy Fabrikam][fabrikam-web-page-deployed]
 
 ## <a name="set-up-continuous-integration-and-deployment-cicd-with-a-service-fabric-cluster"></a>Konfigurowanie ciągłej integracji i ciągłego wdrażania (CI/CD) przy użyciu klastra usługi Service Fabric
-Aby dowiedzieć się, jak skonfigurować wdrożenie aplikacji ciągłej integracji/ciągłego wdrażania w klastrze usługi Service Fabric za pomocą usługi VSTS, zobacz [Samouczek: Wdrażanie aplikacji przy użyciu ciągłej integracji/ciągłego wdrażania w klastrze usługi Service Fabric](service-fabric-tutorial-deploy-app-with-cicd-vsts.md). Proces opisany w tym samouczku jest taki sam dla tego projektu (FabrikamFiber) — wystarczy po prostu pominąć pobieranie przykładu Voting i zastąpić nazwę repozytorium Voting nazwą FabrikamFiber.
+Aby dowiedzieć się, jak skonfigurować wdrożenie aplikacji ciągłej integracji/ciągłego wdrażania w klastrze usługi Service Fabric za pomocą usługi Azure DevOps, zobacz [Samouczek: wdrażanie aplikacji przy użyciu ciągłej integracji/ciągłego wdrażania w klastrze usługi Service Fabric](service-fabric-tutorial-deploy-app-with-cicd-vsts.md). Proces opisany w tym samouczku jest taki sam dla tego projektu (FabrikamFiber) — wystarczy po prostu pominąć pobieranie przykładu Voting i zastąpić nazwę repozytorium Voting nazwą FabrikamFiber.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Po zakończeniu pracy usuń wszystkie utworzone zasoby.  Najprostszym sposobem jest usunięcie grup zasobów, które zawierają klaster usługi Service Fabric, usługę Azure SQL DB i usługę Azure Container Registry.
@@ -254,8 +254,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Tworzenie usługi Azure Container Registry
 > * Wdrażanie aplikacji usługi Service Fabric na platformie Azure
 
-W następnej części tego samouczka dowiesz się, jak skonfigurować [monitorowanie kontenera](service-fabric-tutorial-monitoring-wincontainers.md).
-
+Z następnej części samouczka dowiesz się, jak [wdrażać aplikację kontenera przy użyciu ciągłej integracji/ciągłego wdrażania w klastrze usługi Service Fabric](service-fabric-tutorial-deploy-container-app-with-cicd-vsts.md).
 
 [link-fabrikam-github]: https://aka.ms/fabrikamcontainer
 [link-azure-powershell-install]: /powershell/azure/install-azurerm-ps

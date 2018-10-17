@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 31a3a0618330b74c611afcdf70560ce47eeb85e3
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 7cccb47bd7489e88649ee82c4d52c72af0d91e8e
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42023837"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44390949"
 ---
 # <a name="what-is-azure-network-watcher"></a>Co to jest Azure Network Watcher?
 
@@ -36,6 +36,8 @@ Punkty końcowe mogą być inną maszyną wirtualną (VM), w pełni kwalifikowan
 Jeśli punkt końcowy staje się niedostępny, funkcja rozwiązywania problemów z połączeniem informuje o przyczynie. Potencjalne przyczyny to problem z rozpoznawaniem nazw DNS, procesorem, pamięcią lub zaporą w systemie operacyjnym maszyny wirtualnej lub typ przeskoku w trasie niestandardowej albo też reguła zabezpieczeń dla maszyny wirtualnej lub podsieci dla połączenia wychodzącego. Dowiedz się więcej o [regułach zabezpieczeń](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#security-rules) i [typach przeskoku trasy](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) na platformie Azure.
 
 Monitor połączenia dostarcza również informacje o zmianach w czasie minimalnego, średniego i maksymalnego obserwowanego opóźnienia. Po zapoznaniu się z danymi o opóźnieniu połączenia może okazać się możliwe zmniejszenia opóźnienia dzięki przeniesieniu zasobów platformy Azure do innych regionów platformy. Dowiedz się więcej na temat określania [względnych opóźnień między regionami platformy Azure i dostawcami usług internetowych](#determine-relative-latencies-between-azure-regions-and-internet-service-providers) oraz o sposobach monitorowania komunikacji między maszyną wirtualną a punktem końcowym za pomocą [monitora połączenia](connection-monitor.md). Jeśli zamiast tego chcesz przetestować połączenie w określonym momencie, zamiast monitorować jego zachowanie w czasie za pomocą monitora połączenia, użyj funkcji [rozwiązywania problemów z połączeniem](#connection-troubleshoot).
+
+Network Performance Monitor to oparte na chmurze hybrydowe rozwiązanie do monitorowania sieci, które pomaga monitorować wydajność sieci między różnymi punktami w jej infrastrukturze. Ułatwia ono również monitorowanie łączności sieciowej z punktami końcowymi usług i aplikacji oraz monitorowanie wydajności usługi Azure ExpressRoute. Rozwiązanie Network Performance Monitor wykrywa problemy sieciowe, takie jak czarne dziury ruchu, błędy routingu i problemy, których nie mogą wykrywać konwencjonalne metody monitorowania sieci. Rozwiązanie generuje alerty i powiadamia użytkownika, gdy nastąpi naruszenie progu związanego z połączeniem sieciowym. Ponadto gwarantuje ono szybkie wykrywanie problemów z wydajnością sieci i lokalizuje źródło problemu w określonym segmencie lub urządzeniu w sieci. Dowiedz się więcej na temat rozwiązania [Network Performance Monitor](../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
 ### <a name="view-resources-in-a-virtual-network-and-their-relationships"></a>Wyświetlanie zasobów i ich relacji w sieci wirtualnej
 

@@ -1,47 +1,57 @@
 ---
-title: Przewodnik Szybki start dla języka PHP dotyczący modelu domeny i interfejsu API przetwarzania obrazów | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: W tym przewodniku Szybki start użyjesz modeli domeny do rozpoznania charakterystycznych elementów krajobrazu na obrazie przy użyciu funkcji przetwarzania obrazów i języka PHP w usługach Cognitive Services.
+title: 'Szybki start: korzystanie z modelu domeny — REST, PHP — przetwarzanie obrazów'
+titleSuffix: Azure Cognitive Services
+description: W tym przewodniku Szybki start użyjesz modeli domeny do rozpoznania elementów krajobrazu na obrazie przy użyciu interfejsu API przetwarzania obrazów oraz języka PHP.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 335065b45781dd2712f5416fb03a2f8726182472
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 40a4fa90442a5771f6b221a25ddca46d3ebc4f5c
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43772259"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629495"
 ---
-# <a name="quickstart-use-a-domain-model---rest-php"></a>Szybki start: korzystanie z modelu domeny — REST, PHP
+# <a name="quickstart-use-a-domain-model-using-the-rest-api-and-php-in-computer-vision"></a>Szybki start: korzystanie z modelu domeny przy użyciu interfejsu API REST i języka PHP w przetwarzaniu obrazów
 
-W tym przewodniku Szybki start użyjesz modeli domeny do rozpoznania elementów krajobrazu i osobistości na obrazie przy użyciu funkcji przetwarzania obrazów.
+W tym przewodniku Szybki start użyjesz modelu domeny do rozpoznania elementów krajobrazu lub, opcjonalnie, celebrytów na zdalnie przechowywanym obrazie za pomocą interfejsu API REST przetwarzania obrazów. Metoda [Recognize Domain Specific Content](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) umożliwia zastosowanie modelu specyficznego dla domeny do rozpoznawania zawartości w ramach obrazu.
+
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby korzystać z funkcji przetwarzania obrazów, musisz mieć klucz subskrypcji — zobacz [Obtaining Subscription Keys (Uzyskiwanie kluczy subskrypcji)](../Vision-API-How-to-Topics/HowToSubscribe.md).
+- Musisz mieć zainstalowany język [PHP](https://secure.php.net/downloads.php).
+- Musisz mieć zainstalowane repozytorium [Pear](https://pear.php.net).
+- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Aby uzyskać klucz subskrypcji, zobacz [Obtaining Subscription Keys (Uzyskiwanie kluczy subskrypcji)](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="recognize-landmark-request"></a>Żądanie Recognize Landmark
+## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie próbki
 
-[Metoda Recognize Domain Specific Content](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) umożliwia rozpoznawanie określonego zbioru obiektów na obrazie. Dwa modele specyficzne dla domeny, które są obecnie dostępne, umożliwiają rozpoznawanie _osobistości_ i _charakterystycznych elementów krajobrazu_.
+Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 
-Aby uruchomić przykład, wykonaj następujące kroki:
+1. Zainstaluj pakiet [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2) PHP5.
+   1. Otwórz okno wiersza polecenia jako administrator.
+   1. Uruchom następujące polecenie:
 
-1. Skopiuj następujący kod do edytora.
-1. Zastąp wartość `<Subscription Key>` prawidłowym kluczem subskrypcji.
-1. Zmień element `uriBase`, aby użyć lokalizacji, z której uzyskano klucze subskrypcji, jeśli jest to potrzebne.
-1. Opcjonalnie możesz ustawić element `imageUrl` na obraz do analizy.
-1. Opcjonalnie możesz ustawić element `domain` na wartość `celebrities`, aby korzystał z modelu rozpoznawania osobistości.
-1. Zapisz plik z rozszerzeniem `.php`.
-1. Otwórz plik w przeglądarce, która obsługuje język PHP.
+      ```console
+      pear install HTTP_Request2
+      ```
 
-W poniższym przykładzie zostanie rozpoznany element krajobrazu na obrazie.
+   1. Po pomyślnym zainstalowaniu pakietu zamknij okno wiersza polecenia.
 
-W tym przykładzie użyto pakietu PHP5 [HTTP_Request2](http://pear.php.net/package/HTTP_Request2).
+1. Skopiuj następujący kod do edytora tekstów.
+1. W razie potrzeby wprowadź w kodzie następujące zmiany:
+    1. Zastąp wartość `subscriptionKey` kluczem subskrypcji.
+    1. W razie potrzeby zastąp wartość `uriBase` adresem URL punktu końcowego dla metody [Recognize Domain Specific Content](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) z regionu platformy Azure, z którego uzyskano klucze subskrypcji.
+    1. Opcjonalnie zastąp wartość `imageUrl` adresem URL innego obrazu, który chcesz analizować.
+    1. Opcjonalnie zastąp wartość parametru żądania `domain` wartością `celebrites`, jeśli chcesz używać modelu domeny `celebrities` zamiast modelu domeny `landmarks`.
+1. Zapisz kod jako plik z rozszerzeniem `.php`. Na przykład `use-domain-model.php`.
+1. Otwórz okno przeglądarki, która obsługuje język PHP.
+1. Przeciągnij i upuść plik w oknie przeglądarki.
 
 ```php
 <html>
@@ -105,9 +115,9 @@ catch (HttpException $ex)
 </html>
 ```
 
-## <a name="recognize-landmark-response"></a>Odpowiedź na żądanie Recognize Landmark
+## <a name="examine-the-response"></a>Sprawdzanie odpowiedzi
 
-Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, na przykład:
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON. Przykładowa witryna internetowa analizuje i wyświetla pomyślną odpowiedź w oknie przeglądarki, podobnie jak w poniższym przykładzie:
 
 ```json
 {
@@ -128,9 +138,22 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Jeśli plik nie jest już potrzebny, usuń go, a następnie odinstaluj pakiet `HTTP_Request2` PHP5. Aby odinstalować pakiet, wykonaj następujące czynności:
+
+1. Otwórz okno wiersza polecenia jako administrator.
+2. Uruchom następujące polecenie:
+
+   ```console
+   pear uninstall HTTP_Request2
+   ```
+
+3. Po pomyślnym odinstalowaniu pakietu zamknij okno wiersza polecenia.
+
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z interfejsami API przetwarzania obrazów używanymi do analizy obrazu, wykrywania osobistości i charakterystycznych elementów krajobrazu, tworzenia miniatur oraz wyodrębniania tekstu drukowanego i odręcznego. Aby szybko zacząć eksperymentować z interfejsami API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Zapoznaj się z interfejsami API przetwarzania obrazów używanymi do analizy obrazu, wykrywania celebrytów i charakterystycznych elementów krajobrazu, tworzenia miniatur oraz wyodrębniania tekstu drukowanego i odręcznego. Aby szybko zacząć eksperymentować z interfejsem API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
-> [Poznaj interfejsy API przetwarzania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [Zobacz, jak działa interfejs API przetwarzania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

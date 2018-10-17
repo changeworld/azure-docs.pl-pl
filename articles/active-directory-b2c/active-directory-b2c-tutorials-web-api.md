@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 469a3662b5bc4db467dde3285d557ac8bbae368e
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 2b70ed174331b88f9afc9aa30d14a585986496a5
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39609093"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604345"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-from-a-web-app-using-azure-active-directory-b2c"></a>Samouczek: udzielanie dostępu do internetowego interfejsu API platformy ASP.NET z aplikacji internetowej przy użyciu usługi Azure Active Directory B2C
 
@@ -40,19 +40,13 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Należy zarejestrować zasoby internetowego interfejsu API w dzierżawie, zanim będzie on mógł akceptować i odpowiadać na [żądania chronionych zasobów](../active-directory/develop/developer-glossary.md#resource-server) wysyłane przez [aplikacje klienckie](../active-directory/develop/developer-glossary.md#client-application) przedstawiające [token dostępu](../active-directory/develop/developer-glossary.md#access-token) z usługi Azure Active Directory. Rejestracja powoduje ustanowienie [obiektu aplikacji i jednostki usługi](../active-directory/develop/developer-glossary.md#application-object) w dzierżawie. 
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administrator globalny dzierżawy usługi Azure AD B2C.
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administrator globalny dzierżawy usługi Azure AD B2C.
 
-2. Upewnij się, że używasz katalogu, który zawiera Twoją dzierżawę usługi Azure AD B2C, przełączając się na niego w prawym górnym rogu witryny Azure Portal. Wybierz informacje o subskrypcji, a następnie wybierz pozycję **Przełącz katalog**.
+[!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
 
-    ![Przełączanie katalogów](./media/active-directory-b2c-tutorials-web-api/switch-directories.png)
+1. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**. Teraz powinna być używana dzierżawa utworzona w poprzednim samouczku.
 
-3. Wybierz katalog zawierający Twoją dzierżawę.
-
-    ![Wybieranie katalogu](./media/active-directory-b2c-tutorials-web-api/select-directory.png)
-
-4. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**. Teraz powinna być używana dzierżawa utworzona w poprzednim samouczku.
-
-5. Wybierz pozycję **Aplikacje**, a następnie wybierz polecenie **Dodaj**.
+2. Wybierz pozycję **Aplikacje**, a następnie wybierz polecenie **Dodaj**.
 
     Aby zarejestrować przykładowy internetowy interfejs API w dzierżawie, użyj następujących ustawień.
     
@@ -67,7 +61,7 @@ Należy zarejestrować zasoby internetowego interfejsu API w dzierżawie, zanim 
     | **Identyfikator URI identyfikatora aplikacji** | myAPISample | Identyfikator URI unikatowo identyfikuje interfejs API w dzierżawie. Dzięki temu można zarejestrować wiele interfejsów API w dzierżawie. [Zakresy](../active-directory/develop/developer-glossary.md#scopes) umożliwiają zarządzanie dostępem do chronionego zasobu interfejsu API i są definiowane dla identyfikatora URI aplikacji. |
     | **Natywny klient** | Nie | Ponieważ jest to internetowy interfejs API, a nie klient natywny, wybierz pozycję Nie. |
     
-6. Kliknij pozycję **Utwórz**, aby zarejestrować interfejs API.
+3. Kliknij pozycję **Utwórz**, aby zarejestrować interfejs API.
 
 Zarejestrowane interfejsy API są wyświetlane na liście aplikacji dla dzierżawy usługi Azure AD B2C. Wybierz swój internetowy interfejs API z listy. Zostanie wyświetlone okienko właściwości interfejsu API.
 
@@ -192,7 +186,7 @@ Należy uruchomić zarówno projekt **TaskWebApp**, jak i **TaskService**.
 5. Naciśnij klawisz **F5**, aby uruchomić obie aplikacje. Każda aplikacja zostanie otwarta na własnej karcie przeglądarki. `https://localhost:44316/` to aplikacja internetowa.
     `https://localhost:44332/` to internetowy interfejs API.
 
-6. W aplikacji internetowej kliknij link Sign up / Sign in (Zarejestruj się / Zaloguj się) na banerze menu, aby zarejestrować się w aplikacji internetowej. Użyj konta utworzonego w [samouczku dotyczącym aplikacji internetowej](active-directory-b2c-tutorials-web-app.md). 
+6. W aplikacji internetowej kliknij łącze Sign up / Sign in (Zarejestruj się / Zaloguj się) na banerze menu, aby zarejestrować się w aplikacji internetowej. Użyj konta utworzonego w [samouczku dotyczącym aplikacji internetowej](active-directory-b2c-tutorials-web-app.md). 
 7. Po zalogowaniu kliknij link **To-do list** (Lista zadań do wykonania) i utwórz element listy zadań do wykonania.
 
 Podczas tworzenia elementu listy zadań do wykonania aplikacja internetowa wysyła żądanie do internetowego interfejsu API, aby wygenerować element listy zadań do wykonania. Chroniona aplikacja internetowa wywołuje chroniony internetowy interfejs API w dzierżawie usługi Azure AD B2C.

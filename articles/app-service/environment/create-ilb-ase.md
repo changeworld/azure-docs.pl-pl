@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: df4730078b890353c697b0e9213fb66cdb4e7f9b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e9d1f77a85d4b5cfb5bb7d3cb80380be3c79315d
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436696"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378282"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Tworzenie i używanie wewnętrznego modułu równoważenia obciążenia ze środowiskiem App Service Environment #
 
@@ -56,7 +56,7 @@ Pewnych zadań nie można realizować w przypadku używania środowiska ASE z we
 
 Aby utworzyć środowisko ASE z wewnętrznym modułem równoważenia obciążenia:
 
-1. W witrynie Azure Portal wybierz pozycję **Utwórz zasób** > **Sieć Web + aplikacje mobilne** > **App Service Environment**.
+1. W witrynie Azure Portal wybierz pozycję **Utwórz zasób** > **Internet** > **App Service Environment**.
 
 1. Wybierz subskrypcję.
 
@@ -209,7 +209,7 @@ Nazwa witryny SCM umożliwia przejście do konsoli Kudu, nazywanej **portalem za
 
 W przypadku wielodostępnej usługi App Service i zewnętrznego środowiska ASE obsługiwane jest logowanie jednokrotne między konsolą Kudu a witryną Azure Portal. Jednak w przypadku środowiska ASE z wewnętrznym modułem równoważenia obciążenia do logowania się do konsoli Kudu należy używać poświadczeń publikowania.
 
-Internetowe systemy ciągłej integracji, takie jak usługi GitHub i Visual Studio Team Services, będą nadal działać ze środowiskiem ASE z wewnętrznym modułem równoważenia obciążenia, jeśli agent kompilacji jest dostępny w Internecie i w tej samej sieci co to środowisko. Dlatego w przypadku usługi Visual Studio Team Services, jeśli agent kompilacji został utworzony w tej samej sieci wirtualnej co środowisko ASE z wewnętrznym modułem równoważenia obciążenia (być może w innej podsieci), to będzie mógł ściągnąć kod z usługi Git VSTS i wdrożyć go w tym środowisku. Jeśli nie chcesz tworzyć własnego agenta kompilacji, musisz użyć systemu ciągłej integracji wykorzystującego model ściągania, takiego jak Dropbox.
+Internetowe systemy ciągłej integracji, takie jak usługi GitHub i Azure DevOps, będą nadal działać ze środowiskiem ASE z wewnętrznym modułem równoważenia obciążenia, jeśli agent kompilacji jest dostępny w Internecie i w tej samej sieci co to środowisko. Dlatego w przypadku usługi Azure DevOps, jeśli agent kompilacji został utworzony w tej samej sieci wirtualnej co środowisko ASE z wewnętrznym modułem równoważenia obciążenia (być może w innej podsieci), to będzie mógł ściągnąć kod z usługi Git Azure DevOps i wdrożyć go w tym środowisku. Jeśli nie chcesz tworzyć własnego agenta kompilacji, musisz użyć systemu ciągłej integracji wykorzystującego model ściągania, takiego jak Dropbox.
 
 Punkty końcowe publikowania dla aplikacji w środowisku ASE z wewnętrznym modułem równoważenia obciążenia używają domeny, za pomocą której utworzono to środowisko. Ta domena jest wyświetlana w profilu publikowania aplikacji i w bloku portalu aplikacji (**Przegląd** > **Podstawy** oraz **Właściwości**). Jeśli masz środowisko ASE z wewnętrznym modułem równoważenia obciążenia z poddomeną *contoso.net* i aplikację o nazwie *testowa*, użyj adresu *testowa.contoso.net* dla protokołu FTP i *testowa.scm.contoso.net* dla wdrożenia w Internecie.
 

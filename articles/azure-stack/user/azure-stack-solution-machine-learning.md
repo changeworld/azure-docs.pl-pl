@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: c195f2ee24b61a57c098d5214a37f65e80845074
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 28ff8dbf073596e5f9565c56ae903af6af68f3e2
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410208"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353720"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>Samouczek: Tworzenie przeglądarki edge rozwiązanie uczenia maszynowego z platformą Azure i usługi Azure Stack
 
@@ -210,7 +210,7 @@ W tej samej grupie zasobów co konto nowo utworzonego magazynu, należy umieści
 
     d.  Aby uzyskać **konto magazynu diagnostyki**, wybierz utworzone wcześniej konto magazynu.
 
-    e.  Uwaga: Przy użyciu usługi AAD, włączona i skonfigurowana dla subskrypcji platformy Azure tożsamości usługi zarządzanej można włączyć również.
+    e.  Uwaga: Przy użyciu usługi AAD, włączona i skonfigurowana dla subskrypcji platformy Azure zarządzanych tożsamości dla zasobów platformy Azure można włączyć również.
 
 2.  Kliknij przycisk **OK**.
 
