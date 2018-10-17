@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: juliako
-ms.openlocfilehash: 9168a66c3afcd8dd0b05de15f5833c516ddb2250
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: abed9fd8d466b582b534b365f4be4257f4986435
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38767106"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736006"
 ---
 # <a name="quickstart-create-an-azure-media-services-account"></a>Szybki start: tworzenie konta usługi Azure Media Services
 
@@ -58,7 +58,7 @@ az group create -n <myresourcegroup> -l westus2
 
 Podczas tworzenia konta usługi Media Services musisz podać identyfikator zasobu konta usługi Azure Storage. Podane konto magazynu jest dołączane do konta usługi Media Services. 
 
-Musisz mieć jedno **główne** konto magazynu i możesz mieć dowolną liczbę **dodatkowych** kont magazynu skojarzonych z Twoim kontem usługi Media Services. Usługa Media Services obsługuje konta **Ogólnego przeznaczenia, wersja 2** (GPv2) i **Ogólnego przeznaczenia, wersja 1** (GPv1). Konta tylko obiektów blob nie są dozwolone jako **główne**. Jeśli chcesz dowiedzieć się więcej o kontach magazynu, zobacz [Opcje konta usługi Azure Storage](../../storage/common/storage-account-options.md). 
+Musisz mieć jedno **główne** konto magazynu i możesz mieć dowolną liczbę **dodatkowych** kont magazynu skojarzonych z Twoim kontem usługi Media Services. Usługa Media Services obsługuje konta **ogólnego przeznaczenia, wersja 2** i **ogólnego przeznaczenia, wersja 1**. Konta usługi Blob Storage nie są dozwolone jako **główne**. Aby uzyskać więcej informacji dotyczących kont magazynu, zobacz temat [Azure Storage account overview (Omówienie konta usługi Azure Storage)](../../storage/common/storage-account-overview.md). 
 
 Poniższe polecenie tworzy konto usługi Storage, które ma być skojarzone z kontem usługi Media Services (głównym). W poniższym skrypcie zamień symbol zastępczy *storageaccountforams*. Wartość „nazwa_konta” musi mieć długość mniejszą niż 24.
 

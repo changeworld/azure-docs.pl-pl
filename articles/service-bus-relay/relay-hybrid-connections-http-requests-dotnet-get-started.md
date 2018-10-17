@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: spelluru
-ms.openlocfilehash: 4f7aa0b0c5142237f3b6fc66bb8593302c95f5af
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: e66a1651a46cfaeb7fb8b232eeb7cf6a2fb8044d
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41918660"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451226"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-net"></a>Wprowadzenie do żądań HTTP połączeń hybrydowych usługi Relay na platformie .NET
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -64,9 +64,14 @@ W programie Visual Studio napisz aplikację konsoli w języku C#, aby wysyłać 
 [!INCLUDE [relay-hybrid-connections-http-requests-dotnet-get-started-client](../../includes/relay-hybrid-connections-http-requests-dotnet-get-started-client.md)]
 
 ## <a name="5-run-the-applications"></a>5. Uruchamianie aplikacji
-1. Uruchom aplikację serwera.
-2. Uruchom aplikację klienta i wprowadź jakiś tekst.
-3. Upewnij się, że w konsoli aplikacji serwera jest wyświetlany tekst wprowadzony w aplikacji klienta.
+1. Uruchom aplikację serwera. W oknie konsoli zobaczysz następujący tekst:
+
+    ```
+    Online
+    Server listening
+    ```
+1. Uruchom aplikację kliencką. W oknie klienta zobaczysz ciąg `hello!`. Klient wysłał żądanie HTTP do serwera, a serwer zwrócił ciąg `hello!`. 
+3. Teraz, aby zamknąć okna konsoli, naciśnij klawisz **ENTER** w obu oknach konsoli. 
 
 Gratulacje, aplikacja end-to-end do obsługi połączeń hybrydowych jest gotowa.
 

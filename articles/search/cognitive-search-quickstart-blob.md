@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 3dda4c330f2dc620662c476aa4e5dbfe3a60fa76
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 85016ffb412b9f8773606639eb1496ac8ad251a7
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003700"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729996"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Szybki start: tworzenie potoku wyszukiwania poznawczego przy użyciu umiejętności i przykładowych danych
 
@@ -32,6 +32,9 @@ Wyszukiwanie poznawcze możesz wypróbować w usłudze Azure Search utworzonej w
 * Europa Zachodnia
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+> [!NOTE]
+> Wyszukiwanie poznawcze jest dostępne w publicznej wersji zapoznawczej. Możliwości wykonywania zestawów umiejętności oraz wyodrębniania i normalizacji obrazów są obecnie oferowane bezpłatnie. Cennik dla tych możliwości zostanie opublikowany w późniejszym czasie. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

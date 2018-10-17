@@ -22,7 +22,7 @@
 #### [Moduły usługi IoT Edge](./iot-edge-module.md) 
 #### [Usługa konsultingowa](./consulting-services.md)  
 #### [Podręcznik publikowania dla usług Office 365, Dynamics 365 i Power BI](./appsource-offer-publishing-guide.md)
-#### [Włączanie wyświetlania listy usługi Microsoft AppSource i Azure Marketplace przy użyciu usługi Azure Active Directory](./enable-appsource-marketplace-using-azure-ad.md)
+#### [Włączanie możliwości publikowania ofert w witrynach AppSource i Marketplace z użyciem usługi Azure Active Directory](./enable-appsource-marketplace-using-azure-ad.md)
 
 ### [Rozwijanie firmy dzięki witrynie Marketplace](./grow-your-business-with-azure-marketplace.md)  
 #### [Preferowane rozwiązania](./preferred-solutions.md) 

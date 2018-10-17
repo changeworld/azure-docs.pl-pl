@@ -1,41 +1,41 @@
 ---
-title: Powierzchni interfejsu API języka Python samouczek | Dokumentacja firmy Microsoft
-titleSuffix: Microsoft Cognitive Services
-description: Dowiedz się, jak wykryć człowieka kroje obrazu w usługach kognitywnych za pomocą interfejsu API krój przy użyciu zestawu SDK Python.
+title: 'Samouczek: Wykrywanie i oznaczanie ramką twarzy na obrazie — interfejs API rozpoznawania twarzy, Python'
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak za pomocą interfejsu API rozpoznawania twarzy z zestawem SDK języka Python wykrywać ludzkie twarze na obrazie.
 services: cognitive-services
 author: SteveMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 90d74d8df2ed59e6f3313ef7c620284d1022a667
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
-ms.translationtype: MT
+ms.openlocfilehash: 6cc3ac25d2196c0275b445503b79b9ac06a791d3
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049115"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127741"
 ---
-# <a name="getting-started-with-face-api-in-python-tutorial"></a>Wprowadzenie do korzystania z powierzchni interfejsu API w samouczku Python
+# <a name="tutorial-detect-and-frame-faces-with-the-face-api-and-python"></a>Samouczek: Wykrywanie i oznaczanie ramką twarzy za pomocą interfejsu API rozpoznawania twarzy i języka Python 
 
-Z tego samouczka dowiesz się do wywołania interfejsu API krój przez zestaw SDK Python, aby wykryć człowieka kroje obrazu.
+W ramach tego samouczka nauczysz się wywoływać interfejs API rozpoznawania twarzy za pomocą zestawu SDK języka Python w celu wykrywania ludzkich twarzy na obrazie.
 
-## <a name="prerequisites"></a> Wymagania wstępne
+## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby korzystać z tego samouczka, należy wykonać następujące czynności:
+Aby korzystać z tego samouczka, musisz wykonać następujące czynności:
 
-- Zainstaluj środowisko Python 2.7 + lub Python 3.5 +.
-- Zainstaluj narzędzie pip.
-- Zainstaluj zestaw SDK Python dla powierzchni interfejsu API w następujący sposób:
+- Zainstaluj język Python 2.7+ lub Python 3.5+.
+- Zainstaluj program pip.
+- Zainstaluj zestaw SDK języka Python na potrzeby interfejsu API rozpoznawania twarzy w następujący sposób:
 
 ```bash
 pip install cognitive_face
 ```
 
-- Uzyskaj [klucza subskrypcji](https://azure.microsoft.com/try/cognitive-services/) kognitywnych usług firmy Microsoft. W tym samouczku, można użyć sieci podstawowej lub dodatkowej klucza. (Należy pamiętać, że aby korzystać z żadnych powierzchni interfejsu API, musi mieć klucz ważnej subskrypcji).
+- Uzyskaj [klucz subskrypcji](https://azure.microsoft.com/try/cognitive-services/) dla usług Microsoft Cognitive Services. W tym samouczku możesz użyć klucza podstawowego lub pomocniczego. (Zwróć uwagę, że aby korzystać z dowolnego interfejsu API rozpoznawania twarzy, musisz mieć ważny klucz subskrypcji).
 
-## <a name="sdk-example"></a> Wykrywanie twarzy na obrazie
+## <a name="detect-a-face-in-an-image"></a>Wykrywanie twarzy na obrazie
 
 ```python
 import cognitive_face as CF
@@ -52,15 +52,15 @@ faces = CF.face.detect(img_url)
 print(faces)
 ```
 
-Poniżej znajduje się przykład wynik. Jest `list` z wykrytych powierzchni. Każdy element na liście jest `dict` wystąpienie where `faceId` jest unikatowy identyfikator dla powierzchni wykryte i `faceRectangle` opisuje pozycji wykryto powierzchni. Identyfikator krój wygaśnie w ciągu 24 godzin.
+Poniżej przedstawiono przykładowy wynik. Jest to `list` wykrytych twarzy. Każdy element na liście to wystąpienie `dict`, w którym `faceId` jest unikatowym identyfikatorem wykrytej twarzy, a `faceRectangle` opisuje położenie wykrytej twarzy. Identyfikator twarzy wygasa w ciągu 24 godzin.
 
 ```python
 [{u'faceId': u'68a0f8cf-9dba-4a25-afb3-f9cdf57cca51', u'faceRectangle': {u'width': 89, u'top': 66, u'height': 89, u'left': 446}}]
 ```
 
-## <a name="draw-rectangles-around-the-faces"></a>Rysowanie prostokątów wokół powierzchni
+## <a name="draw-rectangles-around-the-faces"></a>Rysowanie prostokątów wokół twarzy
 
-Przy użyciu współrzędnych json, które odebrano od poprzedniego polecenia, można Rysowanie prostokątów obrazu do wizualnego reprezentowania każdej powierzchni. Konieczne będzie `pip install Pillow` do używania `PIL` modułu obsługi obrazów.  W górnej części pliku Dodaj następujące informacje:
+Używając współrzędnych json otrzymanych w wyniku działania poprzedniego polecenia, możesz rysować na obrazie prostokąty reprezentujące wizualnie poszczególne twarze. Aby używać modułu przetwarzania obrazów `PIL`, potrzebujesz polecenia `pip install Pillow`.  W górnej części pliku dodaj następujący fragment kodu:
 
 ```python
 import requests
@@ -68,7 +68,7 @@ from io import BytesIO
 from PIL import Image, ImageDraw
 ```
 
-Następnie po `print(faces)`, są następujące w skrypcie:
+Następnie po instrukcji `print(faces)` dodaj w skrypcie następujący fragment kodu:
 
 ```python
 #Convert width height to a point in a rectangle
@@ -93,9 +93,9 @@ for face in faces:
 img.show()
 ```
 
-## <a name='further'></a> Dalszych badań
+## <a name="further-exploration"></a>Dalsza eksploracja
 
-Aby ułatwić dalszą analizę powierzchni interfejsu API, w tym samouczku omówiono przykładowe graficznego interfejsu użytkownika. Aby go uruchomić, należy najpierw zainstalować [wxPython](https://wxpython.org/pages/downloads/) następnie uruchom poniższe polecenia.
+Aby ułatwić dalszą eksplorację interfejsu API rozpoznawania twarzy, ten samouczek zawiera przykład graficznego interfejsu użytkownika. Aby go uruchomić, najpierw zainstaluj program [wxPython](https://wxpython.org/pages/downloads/), a następnie uruchom poniższe polecenia.
 
 ```bash
 git clone https://github.com/Microsoft/Cognitive-Face-Python.git
@@ -103,11 +103,11 @@ cd Cognitive-Face-Python
 python sample
 ```
 
-## <a name="summary"></a> Podsumowanie
+## <a name="summary"></a>Podsumowanie
 
-W tym samouczku uzyskanych podstawowy proces podczas korzystania z interfejsu API krój za pośrednictwem wywołania Python SDK. Aby uzyskać więcej informacji na szczegóły interfejsu API, zapoznaj się instrukcje i [dokumentacja interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+W ramach tego samouczka poznaliśmy podstawowy proces korzystania z interfejsu API rozpoznawania twarzy za pośrednictwem wywołania zestawu SDK języka Python. Aby uzyskać więcej szczegółowych informacji na temat interfejsu API, zapoznaj się z instrukcjami i [dokumentacją interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
-## <a name="related"></a> Tematy pokrewne
+## <a name="related-topics"></a>Tematy pokrewne
 
-- [Wprowadzenie do powierzchni interfejsu API w CSharp](FaceAPIinCSharpTutorial.md)
-- [Wprowadzenie do korzystania z powierzchni interfejsu API w języku Java dla systemu Android](FaceAPIinJavaForAndroidTutorial.md)
+- [Wprowadzenie do interfejsu API rozpoznawania twarzy w języku CSharp](FaceAPIinCSharpTutorial.md)
+- [Wprowadzenie do interfejsu API rozpoznawania twarzy w języku Java dla systemu Android](FaceAPIinJavaForAndroidTutorial.md)

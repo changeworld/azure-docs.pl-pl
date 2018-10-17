@@ -1,42 +1,43 @@
 ---
-title: Analiza porad wskaźniki nastrojów klientów w programie interfejsu API REST Analytics tekst (Microsoft kognitywnych usług Azure) | Dokumentacja firmy Microsoft
-description: Jak wykryć przy użyciu interfejsu API REST analizy tekstu w kognitywnych usług Microsoft Azure w tym samouczku wskazówki wskaźniki nastrojów klientów.
+title: 'Przykład: Analizowanie opinii przy użyciu interfejsu API REST analizy tekstu'
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak wykrywać opinię przy użyciu interfejsu API REST analizy tekstu.
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
-ms.topic: article
-ms.date: 12/11/2017
+ms.topic: sample
+ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 7ffd8bbe47409b459fdd308cd8d670d32f56649b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 981e663b6a93abed1da9c2765a1b43063c70ad43
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347441"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605899"
 ---
-# <a name="how-to-detect-sentiment-in-text-analytics"></a>Jak wykryć wskaźniki nastrojów klientów w Analiza tekstu
+# <a name="example-how-to-detect-sentiment-in-text-analytics"></a>Przykład: Jak wykrywać opinię przy użyciu analizy tekstu
 
-[API analizy wskaźniki nastrojów klientów](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) ocenia wprowadzanie tekstu i zwraca wynik wskaźniki nastrojów klientów dla każdego dokumentu z zakresu od 0 (ujemne) do 1 (dodatni).
+[Interfejs API analizy tonacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) ocenia tekst wejściowy i zwraca wynik opinii dla każdego dokumentu z zakresu od 0 (negatywna) do 1 (pozytywna).
 
-Ta funkcja jest przydatna do wykrywania mediów społecznościowych, recenzje klientów i forów dyskusyjnych dodatnie i ujemne wskaźniki nastrojów klientów. Zawartość jest dostarczana przez Ciebie; modele i dane szkoleniowe są dostarczane przez usługę.
+Ta możliwość jest przydatna do wykrywania pozytywnych i negatywnych opinii w mediach społecznościowych, recenzjach klientów i na forach dyskusyjnych. Zawartość udostępniasz Ty, a modele i dane uczenia są dostarczane przez usługę.
 
-Obecnie analizy wskaźniki nastrojów klientów obsługuje język angielski, niemiecki, hiszpański i francuski. Inne języki są w wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [obsługiwanych języków](../text-analytics-supported-languages.md).
+Aktualnie analiza tonacji obsługuje angielski, niemiecki, hiszpański i francuski. Inne języki są dostępne w wersji zapoznawczej. Więcej informacji, zobacz [Obsługiwane języki](../text-analytics-supported-languages.md).
 
 ## <a name="concepts"></a>Pojęcia
 
-Analiza tekstu używa klasyfikacji Algorytm uczenia maszynowego można wygenerować wynik wskaźniki nastrojów klientów od 0 do 1. Wyniki bliższa 1, wskazują dodatnią wskaźniki nastrojów klientów, gdy wyniki bliższa 0 wskazuje ujemna wskaźniki nastrojów klientów. Model jest pretrained z dużą ilością treścią tekstu z skojarzenia wskaźniki nastrojów klientów. Obecnie nie jest możliwe zapewnienie danych szkoleniowych. Model korzysta z kombinacji technik podczas analizy tekstu, w tym tekst przetwarzania, analizy części z mowy umieszczania programu word i skojarzenia programu word. Aby uzyskać więcej informacji na temat algorytm zobacz [analiza wprowadzenie tekstu](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/).
+Analiza tekstu używa algorytmu klasyfikacji uczenia maszynowego do wygenerowania oceny opinii z zakresu od 0 do 1. Wyniki zbliżone do wartości 1 wskazują na pozytywną opinię, a wyniki zbliżone do wartości 0 wskazują na negatywną opinię. Model jest wstępnie uczony za pomocą rozbudowanego zestawu tekstów ze skojarzonymi opiniami. Obecnie nie można określić własnych danych uczenia. Model używa kombinacji technik podczas analizy tekstu, w tym przetwarzania tekstu, analizy części mowy, rozmieszczenia słów i skojarzeń słów. Aby uzyskać więcej informacji na temat algorytmu, zobacz [Introducing Text Analytics (Wprowadzenie do analizy tekstu)](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/).
 
-Analiza wskaźniki nastrojów klientów odbywa się na cały dokument, w przeciwieństwie do wyodrębniania wskaźniki nastrojów klientów dla określonej jednostki w tekście. W praktyce istnieje tendencja do oceniania dokładność zwiększające gdy dokumenty zawiera jeden lub dwa zdania zamiast dużej bloku tekstu. W fazie oceny obiektywizmu modelu określa, czy jest celem dokumentu jako całość, czy zawiera wskaźniki nastrojów klientów. A dokumentu, który nie jest przeważnie celu ma postępu frazy wykrywania wskaźniki nastrojów klientów, co powoduje.50 wynik, z żadne dalsze przetwarzanie nie. W przypadku dokumentów kontynuowanie w potoku kolejną fazą generuje wynik powyżej lub poniżej.50, w zależności od stopnia wykryte w dokumencie wskaźniki nastrojów klientów.
+Analiza opinii odbywa się dla całego dokumentu, w przeciwieństwie do wyodrębniania opinii dla konkretnej jednostki w tekście. W praktyce dokładność określania opinii ma tendencję do poprawiania się, jeśli dokumenty zawierają jedno lub dwa zdania, a nie duży blok tekstu. W fazie oceny obiektywizmu model określa, czy dokumentu jako całość jest obiektywny, czy też zawiera opinię. Dokument w większości obiektywny nie przechodzi do fazy wykrywania tonacji, co daje wynik 0,50 bez dalszego przetwarzania. W przypadku dokumentów, których przetwarzanie jest kontynuowane, następna faza generuje wynik większy lub mniejszy niż 0,50 w zależności od opinii wykrytej w dokumencie.
 
-## <a name="preparation"></a>Przygotowanie
+## <a name="preparation"></a>Przygotowywanie
 
-Analizy wskaźniki nastrojów klientów zapewnia nadaj mu mniejsze fragmenty tekstu do pracy w wyniku wyższej jakości. To jest przeciwny ekstrakcji frazy klucza, który działa lepiej na większych bloków tekstu. Aby uzyskać najlepsze wyniki z operacjami, należy wziąć pod uwagę odpowiednio restrukturyzacji danych wejściowych.
+Analiza tonacji daje wynik wyższej jakości, jeśli pracuje na mniejszych fragmentach tekstu. Jest to przeciwieństwo wyodrębniania kluczowych fraz, które działa lepiej na większych blokach tekstu. Aby uzyskać najlepsze wyniki dla obu operacji, rozważ odpowiednią zmianę struktury danych wejściowych.
 
-Musi mieć dokumentów JSON w następującym formacie: id, tekstu, język
+Dokumenty JSON muszą mieć następujący format: identyfikator, tekst, język
 
-Rozmiar dokumentu musi być w obszarze 5000 znaków na dokument, i może zawierać maksymalnie 1000 elementów (ID) w jednej kolekcji. Kolekcja jest przesyłany w treści żądania. Oto przykład zawartości, które mogą przesyłać do analizy wskaźniki nastrojów klientów.
+Dokument musi mieć mniej niż 5000 znaków, a kolekcja może zawierać maksymalnie 1000 elementów (identyfikatorów). Kolekcja jest przesyłana w treści żądania. Oto przykład zawartości, dla której można analizować tonację.
 
 ```
     {
@@ -70,35 +71,35 @@ Rozmiar dokumentu musi być w obszarze 5000 znaków na dokument, i może zawiera
     }
 ```
 
-## <a name="step-1-structure-the-request"></a>Krok 1: Struktury żądania
+## <a name="step-1-structure-the-request"></a>Krok 1: Określenie struktury żądania
 
-Szczegółowe informacje o definicji żądania można znaleźć w [sposób wywołania interfejsu API z analizy tekstu](text-analytics-how-to-call-api.md). Dla wygody są przekształcane, następujące kwestie:
+Szczegółowe informacje na temat definicji żądania można znaleźć w artykule [Jak wywołać interfejs API analizy tekstu](text-analytics-how-to-call-api.md). Dla wygody poniżej ponownie podano odpowiednie kroki:
 
-+ Utwórz **POST** żądania. Zapoznaj się z dokumentacją interfejsu API dla tego żądania: [API analizy wskaźniki nastrojów klientów](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)
++ Utwórz żądanie **POST**. Zapoznaj się z dokumentacją interfejsu API dla tego żądania: [Interfejs API analizy tonacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)
 
-+ Ustaw punkt końcowy HTTP w celu wyodrębnienia hasło klucza. Musi on zawierać `/sentiment` zasobów: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
++ Ustaw punkt końcowy HTTP pod kątem wyodrębniania kluczowych fraz. Musi on obejmować zasób `/sentiment`: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
 
-+ Ustaw nagłówek żądania, aby uwzględnić klucza dostępu dla operacji analizy tekstu. Aby uzyskać więcej informacji, zobacz [znajdowanie punktów końcowych i klucze dostępu](text-analytics-how-to-access-key.md).
++ Ustaw nagłówek żądania, tak aby zawierał klucz dostępu dla operacji analizy tekstu. Aby uzyskać więcej informacji, zobacz [How to find endpoints and access keys (Jak znajdować punkty końcowe i klucze dostępu)](text-analytics-how-to-access-key.md).
 
-+ W treści żądania Podaj kolekcji dokumentów JSON, które zostały przygotowane na potrzeby tej analizy.
++ W treści żądania podaj kolekcję dokumentów JSON przygotowaną na potrzeby tej analizy.
 
 > [!Tip]
-> Użyj [Postman](text-analytics-how-to-call-api.md) lub Otwórz **konsoli testowania interfejsu API** w [dokumentacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) struktury żądania i OPUBLIKUJ go do usługi.
+> Użyj programu [Postman](text-analytics-how-to-call-api.md) lub otwórz **konsolę testowania interfejsu API** w [dokumentacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9), aby określić strukturę żądania i przesłać je do usługi za pomocą operacji POST.
 
-## <a name="step-2-post-the-request"></a>Krok 2: Żądanie Post
+## <a name="step-2-post-the-request"></a>Krok 2: Wysłanie żądania
 
-Analiza jest przeprowadzana po otrzymaniu żądania. Usługa akceptuje maksymalnie 100 żądań na minutę. Każde żądanie może zawierać maksymalnie 1 MB.
+Analiza jest wykonywana po odebraniu żądania. Usługa akceptuje maksymalnie 100 żądań na minutę. Maksymalny rozmiar każdego żądania to 1 MB.
 
-Odwołaj, że usługa jest bezstanowe. Dane nie są przechowywane na koncie. Wyniki są zwracane natychmiast w odpowiedzi.
+Pamiętaj, że usługa jest bezstanowa. Żadne dane nie są przechowywane na koncie. Wyniki są zwracane natychmiast w odpowiedzi.
 
 
-## <a name="step-3-view-results"></a>Krok 3: Wyświetlanie wyników
+## <a name="step-3-view-results"></a>Krok 3: Wyświetlenie wyników
 
-Analizator wskaźniki nastrojów klientów klasyfikuje tekst zawiera głównie dodatnie lub ujemne, przypisując z zakresu od 0 do 1. Wartości bliski 0,5 są neutralne lub nieokreślony. Wynik 0,5 oznacza nienaruszalności. Ciąg nie może być przeanalizowane pod kątem wskaźniki nastrojów klientów lub ma nie wskaźniki nastrojów klientów, wynik jest zawsze 0,5 dokładnie. Na przykład w przypadku przekazania w hiszpańskim ciąg z kodem języka angielskiego, wynik wynosi 0,5.
+Gdy analizator opinii sklasyfikuje tekst jako przeważnie pozytywny lub negatywny, przypisze mu wartość z zakresu od 0 do 1. Wartości zbliżone do 0,5 oznaczają opinię neutralną lub brak opinii. Wynik 0,5 oznacza opinię neutralną. Jeśli ciągu nie można przeanalizować pod kątem opinii lub nie zawiera on opinii, wynik zawsze wynosi dokładnie 0,5. Na przykład jeśli przekażesz ciąg w języku hiszpańskim z kodem języka angielskiego, wynik będzie wynosić 0,5.
 
-Dane wyjściowe są zwracane natychmiast. Można strumienia wyniki do aplikacji, która akceptuje JSON lub zapisać dane wyjściowe do pliku w systemie lokalnym, a następnie zaimportuj go do aplikacji, która pozwala na sortowanie, wyszukiwanie i manipulowanie danymi.
+Dane wyjściowe są zwracane natychmiast. Wyniki można przesłać strumieniowo do aplikacji, która akceptuje kod JSON, lub zapisać do pliku w systemie lokalnym, a następnie zaimportować do aplikacji, która umożliwia sortowanie i wyszukiwanie danych oraz manipulowanie nimi.
 
-Poniższy przykład przedstawia odpowiedzi dla kolekcji dokumentów, w tym artykule.
+Poniższy przykład pokazuje odpowiedź dla kolekcji dokumentów w tym artykule.
 
 ```
 {
@@ -130,20 +131,20 @@ Poniższy przykład przedstawia odpowiedzi dla kolekcji dokumentów, w tym artyk
 
 ## <a name="summary"></a>Podsumowanie
 
-W tym artykule przedstawiono pojęcia i przepływ pracy do korzystania z analizy tekstu w usługach kognitywnych analizy wskaźniki nastrojów klientów. Podsumowując:
+W tym artykule przedstawiono pojęcia i przepływ pracy analizy tonacji za pomocą analizy tekstu w usłudze Cognitive Services. Podsumowanie:
 
-+ [Wskaźniki nastrojów klientów analizy interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) jest dostępna w wybranych językach.
-+ Dokumenty JSON w treści żądania obejmują identyfikator, tekst i języka kodu.
-+ Wysłanie żądania POST jest `/sentiment` punktu końcowego, za pomocą spersonalizowanych [dostępu do klucza i punkt końcowy](text-analytics-how-to-access-key.md) obowiązuje dla Twojej subskrypcji.
-+ Dane wyjściowe odpowiedzi, która składa się z wynikiem wskaźniki nastrojów klientów dla każdego Identyfikatora dokumentu, można przesłać strumieniowo do wszystkich aplikacji, który akceptuje JSON, łącznie z programu Excel i usługi Power BI kilka.
++ [Interfejs API analizy tonacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) jest dostępny dla wybranych języków.
++ Dokumenty JSON zawierają w treści żądania identyfikator, tekst i kod języka.
++ Żądanie POST jest wysyłane do punktu końcowego `/sentiment` za pomocą spersonalizowanego [klucza dostępu i punktu końcowego](text-analytics-how-to-access-key.md) prawidłowego dla używanej subskrypcji.
++ Dane wyjściowe odpowiedzi składające się z oceny opinii dla każdego identyfikatora dokumentu można przesłać strumieniowo do każdej aplikacji akceptującej kod JSON, w tym na przykład do programu Excel i usługi Power BI.
 
-## <a name="see-also"></a>Zobacz także 
+## <a name="see-also"></a>Zobacz też 
 
- [Omówienie Analiza tekstu](../overview.md)  
- [Często zadawane pytania (FAQ)](../text-analytics-resource-faq.md)</br>
- [Strona produktu Analiza tekstu](//go.microsoft.com/fwlink/?LinkID=759712) 
+ [Text Analytics overview (Omówienie analizy tekstu)](../overview.md)  
+ [Często zadawane pytania](../text-analytics-resource-faq.md)</br>
+ [Strona produktu analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759712) 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Wyodrębnij fraz klucza](text-analytics-how-to-keyword-extraction.md)
+> [Wyodrębnianie kluczowych fraz](text-analytics-how-to-keyword-extraction.md)

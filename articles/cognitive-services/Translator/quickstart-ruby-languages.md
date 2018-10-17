@@ -1,21 +1,21 @@
 ---
-title: Tłumaczenie tekstu w usłudze Translator — uzyskiwanie obsługiwanych języków przy użyciu języka Ruby | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji, wyszukiwania w słowniku oraz wyszukiwania przykładów przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka Ruby w usługach Cognitive Services.
+title: 'Szybki start: uzyskiwanie obsługiwanych języków — tłumaczenie tekstu w usłudze Translator, język Ruby'
+titleSuffix: Azure Cognitive Services
+description: W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji, wyszukiwania w słowniku oraz wyszukiwania przykładów przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka Ruby.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: 1080d79f6dddfd57816989b7d1c4f95348493ad6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f000d2c4c1519f26b4d82a36803b86f016716c5e
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43771047"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121842"
 ---
 # <a name="quickstart-get-supported-languages-with-ruby"></a>Szybki start: uzyskiwanie obsługiwanych języków w języku Ruby
 

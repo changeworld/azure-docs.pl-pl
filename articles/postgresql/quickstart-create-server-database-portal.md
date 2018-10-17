@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 03/20/2018
-ms.openlocfilehash: 002ec2f99e488af76654c2391416e4b90e16e4c0
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: d32fb6e1a85865d89a2f8ee1483eb8fd599b4bb6
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050231"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408916"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Szybki start: tworzenie serwera usługi Azure Database for PostgreSQL w witrynie Azure Portal
 
@@ -50,7 +50,7 @@ Aby utworzyć serwer usługi Azure Database for PostgreSQL, wykonaj następując
     Identyfikator logowania administratora serwera |*myadmin*| Własne konto logowania do użycia podczas łączenia z serwerem. Nazwą logowania administratora nie może być **azure_superuser**, **azure_pg_admin**, **admin**, **administrator**, **root**, **guest** ani **public**. Nie może ona zaczynać się od **pg_**.
     Hasło |Twoje hasło| Nowe hasło do konta administratora serwera. Musi zawierać od 8 do 128 znaków. Hasło musi zawierać znaki z trzech z następujących kategorii: wielkie litery angielskie, małe litery angielskie, cyfry (od 0 do 9) i znaki inne niż alfanumeryczne (!, $, #, % itp.).
     Lokalizacja|Region najbliżej Twoich użytkowników| Lokalizacja znajdująca się najbliżej użytkowników.
-    Wersja|Najnowsza wersja| Najnowsza wersja usługi PostgreSQL, chyba że masz inne określone wymagania.
+    Wersja|Najnowsza wersja główna| Najnowsza wersja główna usługi PostgreSQL, chyba że masz inne określone wymagania.
     Warstwa cenowa | **Ogólnego przeznaczenia**, **generacja 4**, **2 rdzenie wirtualne**, **5 GB**, **7 dni**, **Geograficznie nadmiarowa** | Konfiguracje obliczania, magazynu i kopii zapasowej dla nowego serwera. Wybierz **warstwę cenową**. Następnie wybierz kartę **Ogólnego przeznaczenia**. *Generacja 4*, *2 rdzenie wirtualne*, *5 GB* oraz *7 dni* to wartości domyślne opcji **Generowanie obliczeń**, **Rdzeń wirtualny**, **Magazyn** oraz **Okres przechowywania kopii zapasowej**. Te suwaki możesz zostawić bez zmian. Aby włączyć kopie zapasowe serwera w magazynie geograficznie nadmiarowym, wybierz opcję **Geograficznie nadmiarowy** w pozycji **Opcje nadmiarowości kopii zapasowej**. Aby zapisać tę wybraną warstwę cenową, wybierz przycisk **OK**. Następny zrzut ekranu przedstawia te wybory.
 
     > [!IMPORTANT]
@@ -78,17 +78,10 @@ Usługa Azure Database for PostgreSQL tworzy zaporę na poziomie serwera. Uniemo
 
 3. W obszarze **Reguły zapory** w kolumnie **Nazwa reguły** wybierz puste pole tekstowe, aby rozpocząć tworzenie reguły zapory. 
 
-    Dla tego przewodnika Szybki start zezwólmy na korzystanie ze wszystkich adresów IP na serwerze. Wypełnij pola tekstowe w poszczególnych kolumnach następującymi wartościami:
+   Wpisz w pola tekstowe nazwę oraz początek i koniec zakresu adresów IP klientów, którzy będą uzyskiwać dostęp do serwera. Jeśli jest to pojedynczy adres IP, użyj tej samej wartości dla początkowego i końcowego adresu IP.
 
-    Nazwa reguły | Początkowy adres IP | Końcowy adres IP 
-    ---|---|---
-    AllowAllIps | 0.0.0.0 | 255.255.255.255
-
-     ![Ustawianie reguł zapory](./media/quickstart-create-database-portal/5-firewall-2.png)
+   ![Ustawianie reguł zapory](./media/quickstart-create-database-portal/5-firewall-2.png)
      
-      > [!NOTE]
-      > W przypadku wystąpień produkcyjnych ustaw reguły zapory, aby akceptowały tylko żądania przychodzące ze znanych adresów IP.  Te ustawienia są używane wyłącznie w celach związanych z przykładem.
-      >
 
 4. Na górnym pasku narzędzi strony **Zabezpieczenia połączeń** wybierz pozycję **Zapisz**. Przed kontynuowaniem zaczekaj, aż pojawi się powiadomienie, że aktualizacja zabezpieczeń połączeń została zakończona pomyślnie.
 

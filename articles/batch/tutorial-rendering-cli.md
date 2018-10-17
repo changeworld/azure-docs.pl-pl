@@ -6,19 +6,19 @@ author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: tutorial
-ms.date: 06/18/2018
+ms.date: 09/25/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f721af16e894ec24e85cdb1ff100d83d58ffadd8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ff52c0fa647dd0e86b22bcfdf7af04062a135f94
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954606"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392809"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Samouczek: renderowanie sceny w usłudze Azure Batch 
 
-Usługa Azure Batch oferuje możliwości renderowania w skali chmury z opłatami za użycie. Usługa Batch Rendering obsługuje aplikacje służące do renderowania, w tym programy Autodesk Maya, 3ds Max, Arnold i V-Ray. W tym samouczku przedstawiono procedurę renderowania niewielkiej sceny przy użyciu usługi Batch i interfejsu wiersza polecenia platformy Azure. Omawiane kwestie:
+Usługa Azure Batch oferuje możliwości renderowania w skali chmury z opłatami za użycie. Usługa Azure Batch obsługuje aplikacje służące do renderowania, w tym programy Autodesk Maya, 3ds Max, Arnold i V-Ray. W tym samouczku przedstawiono procedurę renderowania niewielkiej sceny przy użyciu usługi Batch i interfejsu wiersza polecenia platformy Azure. Omawiane kwestie:
 
 > [!div class="checklist"]
 > * Przekazywanie sceny do usługi Azure Storage
@@ -27,11 +27,11 @@ Usługa Azure Batch oferuje możliwości renderowania w skali chmury z opłatami
 > * Skalowanie puli i renderowanie sceny z wieloma ramkami
 > * Pobieranie wyniku renderowania
 
-Ten samouczek obejmuje renderowanie sceny programu 3ds Max przy użyciu usługi Batch oraz programu renderującego metodą śledzenia promieni, [Arnold](https://www.autodesk.com/products/arnold/overview). 
-
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
+Ten samouczek obejmuje renderowanie sceny programu 3ds Max przy użyciu usługi Batch oraz programu renderującego metodą śledzenia promieni, [Arnold](https://www.autodesk.com/products/arnold/overview). Pula usługi Batch używa obrazu witryny Azure Marketplace z wstępnie zainstalowanymi aplikacjami graficznymi i renderującymi, które udostępniają licencjonowanie na zasadzie płatności za użycie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
+Aby korzystać z aplikacji renderujących w usłudze Batch z opłatami za użycie, potrzebujesz subskrypcji z płatnością zgodnie z rzeczywistym użyciem lub innej opcji zakupu platformy Azure. Licencjonowanie na zasadzie płatności za użycie nie jest obsługiwane, jeśli korzystasz z bezpłatnej oferty platformy Azure, w ramach której otrzymujesz środki pieniężne.
 
 Przykładową scenę programu 3ds Max na potrzeby tego samouczka, przykładowy skrypt powłoki Bash oraz pliki konfiguracyjne w formacie JSON znajdziesz w witrynie [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene). Scenę programu 3ds Max zawierają [pliki przykładowe dla programu Autodesk 3ds Max](http://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe). (Pliki przykładowe programu Autodesk 3ds Max są dostępne w ramach licencji Creative Commons Attribution-NonCommercial-Share Alike. Copyright © Autodesk, Inc.)
 

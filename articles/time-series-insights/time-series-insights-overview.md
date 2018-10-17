@@ -10,12 +10,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: overview
 ms.date: 01/26/2018
-ms.openlocfilehash: fa66ded9a35109f874bda00a4bde3af78b436cd5
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: f865086a7e57898adb7d43ec0c02c7d38ef0da9c
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630725"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365576"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Co to jest usługa Azure Time Series Insights?
 
@@ -33,6 +33,12 @@ Usługa Time Series Insights ma cztery kluczowe zadania:
 Jeśli tworzysz aplikację na użytek wewnętrzny lub dla klientów zewnętrznych, usługa Time Series Insights może służyć jako zaplecze do indeksowania, przechowywania i agregowania danych szeregów czasowych. Na jej bazie można tworzyć wizualizacje niestandardowe oraz środowisko użytkownika.  Usługa Time Series Insights uwidacznia interfejsy API zapytań pozwalające na realizację tego scenariusza.  
 
 Jeśli nie wiesz, czy Twoje dane mają postać szeregów czasowych, oto informacje, z którymi warto się zapoznać.  Dane szeregów czasowych przedstawiają, jak zasób lub proces zmienia się wraz z upływem czasu.  Charakterystyczne jest to, że dane te zawierają sygnatury czasowe, a czas najlepiej jest przedstawiać jako oś.  Dane szeregów czasowych zazwyczaj są dostarczane jako uszeregowane według czasu i zwykle są traktowane jako dane, które są dodawane do bazy danych, a nie w niej aktualizowane.  Ponieważ usługa Time Series Insights przechwytuje i magazynuje każde nowe zdarzenie jako wiersz, zmiana jest mierzona w czasie, umożliwiając spoglądanie wstecz i przewidywanie przyszłych zmian.  W przypadku dużych woluminów przechowywanie, indeksowanie, odpytywanie, analizowanie i wizualizowanie danych szeregów czasowych może być trudne.  
+
+## <a name="video"></a>Wideo: 
+
+### <a name="in-this-video-we-provide-an-overview-of-time-series-insights-a-cloud-based-iot-analytics-platformbr"></a>W tym wideo omawiamy usługę Time Series Insights, platformę do analizy IoT w chmurze.</br>
+
+> [!VIDEO https://www.youtube.com/embed/qNc9gQTLROs]
 
 ## <a name="primary-scenarios"></a>Podstawowe scenariusze
 

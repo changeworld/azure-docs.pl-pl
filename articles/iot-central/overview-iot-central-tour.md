@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 69898358026eab716c057f339d8594df43db136f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 11112e01e38f85db9f71280c53c27b130275d86f
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629375"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498270"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Przewodnik po interfejsie użytkownika usługi Azure IoT Central
 
@@ -39,7 +39,7 @@ Lewe menu nawigacji umożliwia uzyskiwanie dostępu do różnych obszarów aplik
 
 | Menu | Opis |
 | ---- | ----------- |
-| ![Lewe menu nawigacji](media/overview-iot-central-tour/navigationbar.png) | <ul><li>Przycisk **Strona główna** umożliwia wyświetlenie strony głównej aplikacji. Konstruktor może dostosować tę stronę główną dla operatorów.</li><li>Przycisk **Device Explorer** umożliwia wyświetlenie szablonów urządzeń zdefiniowanych w aplikacji oraz symulowanych i rzeczywistych urządzeń skojarzonych z poszczególnymi szablonami urządzeń. Operator używa narzędzia **Device Explorer**, aby zarządzać połączonymi urządzeniami.</li><li>Przycisk **Zestawy urządzeń** umożliwia wyświetlenie i tworzenie zestawów urządzeń. Operator może tworzyć zestawy urządzeń w formie logicznych zbiorów urządzeń określonych w zapytaniu.</li><li>Przycisk **Analiza** umożliwia wyświetlenie analiz na podstawie danych telemetrycznych urządzeń i zestawów urządzeń. Operator może tworzyć widoki niestandardowe na podstawie danych urządzenia w celu uzyskania szczegółowych informacji z aplikacji.</li><li>Przycisk **Konstruktor aplikacji** umożliwia wyświetlenie narzędzi używanych przez konstruktora, takich jak **Utwórz szablon urządzenia**.</li><li>Przycisk **Administracja** umożliwia wyświetlenie stron administracyjnych aplikacji, na których administrator może zarządzać użytkownikami, rolami i ustawieniami aplikacji.</li></ul> |
+| ![Lewe menu nawigacji](media/overview-iot-central-tour/navigationbar.png) | <ul><li>Przycisk **Strona główna** umożliwia wyświetlenie strony głównej aplikacji. Konstruktor może dostosować tę stronę główną dla operatorów.</li><li>Przycisk **Device Explorer** umożliwia wyświetlenie szablonów urządzeń zdefiniowanych w aplikacji oraz symulowanych i rzeczywistych urządzeń skojarzonych z poszczególnymi szablonami urządzeń. Operator używa narzędzia **Device Explorer**, aby zarządzać połączonymi urządzeniami.</li><li>Przycisk **Zestawy urządzeń** umożliwia wyświetlenie i tworzenie zestawów urządzeń. Operator może tworzyć zestawy urządzeń w formie logicznych zbiorów urządzeń określonych w zapytaniu.</li><li>Przycisk **Analiza** umożliwia wyświetlenie analiz na podstawie danych telemetrycznych urządzeń i zestawów urządzeń. Operator może tworzyć widoki niestandardowe na podstawie danych urządzenia w celu uzyskania szczegółowych informacji z aplikacji.</li><li>Przycisk **Zadania** umożliwia zbiorcze zarządzanie urządzeniami przez tworzenie i uruchamianie zadań przeprowadzających aktualizacje w dużej skali.</li><li>Przycisk **Konstruktor aplikacji** umożliwia wyświetlenie narzędzi używanych przez konstruktora, takich jak **Utwórz szablon urządzenia**.</li><li>Przycisk **Administracja** umożliwia wyświetlenie stron administracyjnych aplikacji, na których administrator może zarządzać użytkownikami, rolami i ustawieniami aplikacji.</li></ul> |
 
 ## <a name="search-help-and-support"></a>Wyszukiwanie, pomoc i pomoc techniczna
 
@@ -81,6 +81,12 @@ Na stronie _Zestawy urządzeń_ są wyświetlane zestawy urządzeń utworzone pr
 ![Strona Analiza](media/overview-iot-central-tour/analytics.png)
 
 Strona analizy przedstawia wykresy, które ułatwiają zrozumienie zachowania urządzeń połączonych z aplikacją. Operator używa tej strony do monitorowania i badania problemów z połączonymi urządzeniami. Konstruktor może zdefiniować wykresy wyświetlane na tej stronie. Aby dowiedzieć się więcej, zobacz artykuł [Create custom analytics for your Azure IoT Central application (Tworzenie niestandardowej analizy dla aplikacji usługi Azure IoT Central)](howto-create-analytics.md).
+
+## <a name="jobs"></a>Zadania
+
+![Strona zadań](media/overview-iot-central-tour/jobs.png)
+
+Strona zadań umożliwia wykonywanie zbiorczych operacji zarządzania urządzeniami na Twoich urządzeniach. Konstruktor używa tej strony do aktualizowania właściwości urządzeń, ustawień i poleceń. Aby dowiedzieć się więcej, zobacz artykuł [Uruchamianie zadania](howto-run-a-job.md).
 
 ## <a name="application-builder"></a>Konstruktor aplikacji
 

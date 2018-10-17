@@ -1,21 +1,21 @@
 ---
-title: Tłumaczenie tekstu w usłudze Translator — wyszukiwanie alternatywnych tłumaczeń przy użyciu języka Python | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: W tym przewodniku Szybki start znajdziesz alternatywne tłumaczenia i przykłady terminów użytych w kontekście, korzystając z interfejsu API tłumaczenia tekstu w usłudze Translator i języka Python w usługach Cognitive Services.
+title: 'Szybki start: znajdowanie alternatywnych tłumaczeń — tłumaczenie tekstu w usłudze Translator, język Python'
+titleSuffix: Azure Cognitive Services
+description: W tym przewodniku Szybki start znajdziesz alternatywne tłumaczenia i przykłady terminów użytych w kontekście, korzystając z interfejsu API tłumaczenia tekstu w usłudze Translator i języka Python.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 4f7c91bfa6fe82f19e84e13b4b7442b59b126cb9
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 9035f718dda4cd1a8b34aa72272cfa376be99cac
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "43770875"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46122726"
 ---
 # <a name="quickstart-find-alternate-translations-and-usage-with-python"></a>Szybki start: znajdowanie alternatywnych tłumaczeń i przykładów użycia za pomocą języka Python
 

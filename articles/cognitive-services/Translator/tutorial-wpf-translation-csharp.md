@@ -1,21 +1,21 @@
 ---
-title: 'Samouczek: Pisanie aplikacji WPF dla interfejsu API tłumaczenia tekstu w usłudze Translator w języku C# | Microsoft Docs'
-titleSuffix: Microsoft Cognitive Services
+title: 'Samouczek: pisanie aplikacji WPF dla interfejsu API tłumaczenia tekstu w usłudze Translator w języku C#'
+titleSuffix: Azure Cognitive Services
 description: W tym samouczku utworzysz aplikację WPF w języku C#, aby dowiedzieć się, jak tłumaczyć tekst, pobierać zlokalizowaną listę obsługiwanych języków i wykonywać inne operacje przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: nolachar
-ms.openlocfilehash: 353c1d91b7925a84667ef1bb7c38ab87c6a89cc1
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 97660985b275bbe4384acb3fc92be8aaa0b57881
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716376"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123967"
 ---
 # <a name="tutorial-write-a-wpf-application-for-translator-text-using-c35"></a>Samouczek: Pisanie aplikacji WPF dla interfejsu API tłumaczenia tekstu w usłudze Translator w języku C#&#35;
 

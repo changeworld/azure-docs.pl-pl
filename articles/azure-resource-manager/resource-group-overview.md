@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2018
+ms.date: 09/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 24add63639f5fffe18e4b4468bfd78600a38c5f3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dc73bbd775da31faecf236716a2b028171438b7c
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969295"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220891"
 ---
 # <a name="azure-resource-manager-overview"></a>Omówienie usługi Azure Resource Manager
 Infrastruktura aplikacji zwykle obejmuje wiele składników — może to być maszyna wirtualna, konto magazynu i sieć wirtualna albo aplikacja internetowa, baza danych, serwer bazy danych i usługi zewnętrzne. Te składniki nie są widoczne jako osobne jednostki, tylko jako powiązane i zależne od siebie nawzajem części jednej całości. Dlatego najlepiej wdrażać i monitorować je oraz zarządzać nimi grupowo. Usługa Azure Resource Manager umożliwia pracę z zasobami tworzącymi rozwiązanie w formie grupy. Wszystkie zasoby danego rozwiązania można wdrożyć, zaktualizować lub usunąć w ramach jednej skoordynowanej operacji. Wdrażanie wykonuje się przy użyciu szablonu, którego można następnie używać w różnych środowiskach (testowanie, etap przejściowy i produkcja). Usługa Resource Manager zapewnia funkcje zabezpieczeń, inspekcji i znakowania ułatwiające zarządzanie zasobami po wdrożeniu. 
@@ -155,6 +155,12 @@ Po zdefiniowaniu szablonu można przystąpić do wdrażania zasobów na platform
 * [Deploy resources with Resource Manager templates and Azure portal (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i witryny Azure Portal)](resource-group-template-deploy-portal.md)
 * [Deploy resources with Resource Manager templates and Resource Manager REST API (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu API REST usługi Resource Manager)](resource-group-template-deploy-rest.md)
 
+## <a name="safe-deployment-practices"></a>Praktyki bezpiecznego wdrażania
+
+Podczas wdrażania złożonej usługi na platformie Azure może być konieczne wdrożenie swojej usługi w wielu regionach i sprawdzenie jej kondycji przed przejściem do następnego kroku. Użyj usługi [Azure Deployment Manager](deployment-manager-overview.md) do koordynowania etapowego wdrażania usługi. Dzięki etapowemu wdrażaniu Twojej usługi możesz znaleźć potencjalne problemy zanim zostanie ona wdrożona we wszystkich regionach. Jeśli nie potrzebujesz tych środków ostrożności, operacje wdrażania w poprzedniej sekcji są lepszym rozwiązaniem.
+
+Usługa Deployment Manager jest obecnie w publicznej wersji zapoznawczej.
+
 ## <a name="tags"></a>Tagi
 Usługa Resource Manager udostępnia funkcję tagowania umożliwiającą dzielenie zasobów na kategorie zgodnie z wymaganiami zarządzania lub rozliczeń. Tagi są przydatne w przypadku złożonych kolekcji grup zasobów i zasobów, które trzeba uporządkować wizualnie w możliwie logicznej formie. Można na przykład oznaczyć tagami zasoby, które pełnią podobną rolę w organizacji lub należą do tego samego działu. Bez użycia tagów użytkownicy w organizacji mogą tworzyć wiele zasobów, które będą później bardzo trudne do znalezienia i zarządzania. Na przykład możesz chcieć usunąć wszystkie zasoby dla określonego projektu. Jeśli te zasoby nie są opatrzone tagiem dla projektu, trzeba je znaleźć ręcznie. Tagowanie może być istotnym sposobem na zredukowanie niepotrzebnych kosztów w ramach subskrypcji. 
 
@@ -176,20 +182,6 @@ W poniższym przykładzie przedstawiono tag zastosowany względem maszyny wirtua
   }
 ]
 ```
-
-Aby pobrać wszystkie zasoby z wartością tagu, użyj następującego polecenia cmdlet programu PowerShell:
-
-```powershell
-Find-AzureRmResource -TagName costCenter -TagValue Finance
-```
-
-Innym rozwiązaniem jest użycie następującego polecenia interfejsu wiersza polecenia platformy Azure:
-
-```azurecli
-az resource list --tag costCenter=Finance
-```
-
-Oznakowane zasoby można również wyświetlić za pośrednictwem witryny Azure Portal.
 
 [Raport użycia](../billing/billing-understand-your-bill.md) dla subskrypcji obejmuje nazwy i wartości tagów, co pozwala na rozbicie kosztów według tagów. Aby uzyskać więcej informacji na temat tagów, zobacz [Porządkowanie zasobów na platformie Azure za pomocą tagów](resource-group-using-tags.md).
 
@@ -228,29 +220,8 @@ W niektórych przypadkach istnieje potrzeba uruchomienia kodu lub skryptu, któr
 
 Można również jawnie zablokować dostęp do kluczowych zasobów, aby uniemożliwić użytkownikom ich usuwanie i modyfikowanie. Aby uzyskać więcej informacji, zobacz [Lock resources with Azure Resource Manager](resource-group-lock-resources.md) (Blokowanie zasobów w usłudze Azure Resource Manager).
 
-## <a name="activity-logs"></a>Dzienniki aktywności
-Usługa Resource Manager rejestruje wszystkie operacje służące do tworzenia, modyfikowania lub usuwania zasobu. Dzienników aktywności można użyć do znalezienia błędu podczas rozwiązywania problemów lub do monitorowania sposobu, w jaki zasób został zmodyfikowany przez użytkownika w organizacji. Dzienniki można filtrować według wielu różnych wartości, w tym według użytkownika, który zainicjował operację. Aby uzyskać informacje dotyczące pracy z dziennikami aktywności, zobacz [View activity logs to manage Azure resources](resource-group-audit.md) (Wyświetlanie dzienników aktywności w celu zarządzania zasobami platformy Azure).
-
 ## <a name="customized-policies"></a>Zasady niestandardowe
 Usługa Resource Manager umożliwia tworzenie zasad niestandardowych na potrzeby zarządzania zasobami. Typy tworzonych zasad mogą obejmować różne scenariusze. Można wymusić konwencję nazewnictwa zasobów, ograniczyć typy i wystąpienia zasobów, które można wdrożyć, lub wprowadzić ograniczenia dotyczące regionów, które mogą hostować dany typ zasobu. Można wymagać wartości tagu dla zasobów w celu organizowania rozliczania według działów. Tworzenie zasad umożliwia obniżenie kosztów i zachowanie spójności w ramach subskrypcji. 
-
-Zasady są definiowane za pomocą pliku JSON, a następnie stosowane w ramach subskrypcji lub grupy zasobów. Zasady są inne niż kontrola dostępu oparta na rolach, ponieważ są stosowane względem typów zasobów.
-
-W poniższym przykładzie przedstawiono zasady, które zapewniają spójność tagów dzięki określeniu, że wszystkie zasoby zawierają tag costCenter.
-
-```json
-{
-  "if": {
-    "not" : {
-      "field" : "tags",
-      "containsKey" : "costCenter"
-    }
-  },
-  "then" : {
-    "effect" : "deny"
-  }
-}
-```
 
 Można utworzyć o wiele więcej typów zasad. Aby uzyskać więcej informacji, zobacz artykuł [Co to jest usługa Azure Policy?](../azure-policy/azure-policy-introduction.md).
 

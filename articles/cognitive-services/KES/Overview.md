@@ -1,39 +1,42 @@
 ---
-title: Omówienie usługi eksploracji wiedzy | Dokumentacja firmy Microsoft
-description: Dodawanie interaktywnych wyszukiwania i uściślenia do aplikacji z usługi eksploracji wiedzy (KES) w usługach kognitywnych.
+title: Co to jest usługa Knowledge Exploration Service?
+titlesuffix: Azure Cognitive Services
+description: Dodaj interaktywne wyszukiwanie i uściślanie do aplikacji przy użyciu usługi Knowledge Exploration Service (KES).
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: overview
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: a53bd1fa0f95e96c42be4df74dbbe45836dd3028
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: a34396a7f707ed5f9982e20dbd1b49cddce98251
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347008"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121808"
 ---
 # <a name="knowledge-exploration-service"></a>Usługa Knowledge Exploration
-Zapraszamy usługi eksploracji wiedzy firmy Microsoft.  Usługa eksploracji wiedzy (KES) pozwala szybkie i skuteczne Dodawanie interaktywnych wyszukiwania i uściślenia do aplikacji.  Z KES można utworzyć skompresowany indeks z danych strukturalnych, autora gramatyki, która interpretacji języka naturalnego zapytania i udostępniać formułowanie zapytania interaktywne z automatycznego uzupełniania sugestie.
 
-Zobacz [wprowadzenie](GettingStarted.md) przewodnik przykładowy sposób użycia KES utworzyć interfejs interakcyjne wyszukiwania dla domeny academic publikacji.
+Witamy w usłudze Microsoft Knowledge Exploration Service.  Usługa Knowledge Exploration Service (KES) to prosty i skuteczny sposób dodania obsługi interaktywnego wyszukiwania i uściślania do aplikacji.  Usługa KES umożliwia utworzenie skompresowanego indeksu na podstawie danych ze strukturą i opracowanie gramatyki interpretującej zapytania w języku naturalnym oraz udostępnia interaktywne środowisko budowania zapytań z podpowiedziami automatycznego uzupełniania.
+
+Zobacz artykuł [Wprowadzenie](GettingStarted.md), który zawiera przykładowy scenariusz użycia usługi KES do utworzenia interaktywnego interfejsu wyszukiwania dla dziedziny publikacji akademickich.
 
 ![AcademicAutoComplete](AutoComplete.png)
 
-KES został przeniesiony z kognitywnych podglądu usług kognitywnych Labs usług. Nowe strony głównej projektu jest [ http://labs.cognitive.microsoft.com/en-us/project-knowledge-exploration ](http://labs.cognitive.microsoft.com/en-us/project-knowledge-exploration).
+Usługa KES została przeniesiony z usługi Cognitive Services w wersji zapoznawczej do usługi Cognitive Services Labs. Nowa strona główna projektu to [http://labs.cognitive.microsoft.com/en-us/project-knowledge-exploration](http://labs.cognitive.microsoft.com/en-us/project-knowledge-exploration).
 
-## <a name="reference"></a>Informacje ogólne
+## <a name="reference"></a>Dokumentacja
+
 * [Interfejs wiersza polecenia](CommandLine.md)
 * [Format schematu](SchemaFormat.md)
 * [Format danych](DataFormat.md)
 * [Format gramatyki](GrammarFormat.md)
-* [Interpretacji semantyki](SemanticInterpretation.md)
-* [Interfejs API sieci Web](WebAPI.md)
-  * [zinterpretować żądania](interpretMethod.md)
-  * [Ocena żądania](evaluateMethod.md)
-  * [calchistogram żądania](calchistogramMethod.md)
-* [Structured Query — wyrażenie](Expressions.md)
+* [Interpretacja semantyczna](SemanticInterpretation.md)
+* [Internetowy interfejs API](WebAPI.md)
+  * [Żądanie interpret](interpretMethod.md)
+  * [Żądanie evaluate](evaluateMethod.md)
+  * [Żądanie calchistogram](calchistogramMethod.md)
+* [Wyrażenia zapytań strukturalnych](Expressions.md)
 

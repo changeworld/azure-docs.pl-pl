@@ -4,7 +4,7 @@ description: Ten artykuł zawiera ogólne omówienie usługi Media Services i za
 services: media-services
 documentationcenter: na
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 tags: ''
 keywords: azure media services, stream, broadcast, live, offline
@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 07/14/2018
+ms.date: 09/25/2018
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 6c3fb7391c25628ba12526a04c022215bdbd9d40
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 3641806870c3eab0b3a05f538015a72d9a0b34ef
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325935"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221938"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Co to jest usługa Azure Media Services w wersji 3?
 
@@ -55,7 +55,7 @@ Wersja 3 opiera się na ujednoliconej powierzchni interfejsu API, która udostę
 Ta wersja oferuje następujące możliwości:  
 
 * **Przekształcenia**, które pomagają definiować proste przepływy pracy zadań przetwarzania lub analizy multimediów. Przekształcenie to przepis na przetwarzanie plików audio i wideo. Następnie możesz wielokrotnie je stosować, aby przetworzyć wszystkie pliki w Twojej bibliotece zawartości, przesyłając zadania do przekształcenia.
-* **Zadania** przetwarzania (kodowania lub analizowania) Twoich plików wideo. Zawartość wejściową można określić dla zadania przy użyciu adresów URL HTTP, adresów URL SAS lub ścieżek do plików znajdujących się w magazynie obiektów blob platformy Azure. 
+* **Zadania** przetwarzania (kodowania lub analizowania) Twoich plików wideo. Zawartość wejściową można określić dla zadania przy użyciu adresów URL HTTPS, adresów URL sygnatury dostępu współdzielonego lub ścieżek do plików znajdujących się w magazynie obiektów blob platformy Azure. Obecnie usługa AMS w wersji 3 nie obsługuje fragmentarycznego kodowania transferu przez adresy URL HTTPS.
 * **Powiadomienia**, które monitorują postęp zadania lub stany albo uruchomienie/zatrzymanie kanału na żywo i błędy. Powiadomienia są zintegrowane z systemem powiadomień usługi Azure Event Grid. Możesz łatwo subskrybować zdarzenia dla kilku zasobów w usłudze Azure Media Services. 
 * Szablony usługi **Azure Resource Management** mogą służyć do tworzenia i wdrażania przekształceń, punktów końcowych przesyłania strumieniowego, kanałów itd.
 * **Kontrola dostępu oparta na rolach** może zostać ustawiona na poziomie zasobów, co umożliwia zablokowanie dostępu do określonych zasobów, takich jak przekształcenia, kanały i inne.

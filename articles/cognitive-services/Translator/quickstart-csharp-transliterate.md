@@ -1,25 +1,27 @@
 ---
-title: Tłumaczenie tekstu w usłudze Translator — konwertowanie zapisu tekstu przy użyciu języka C# | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: W tym przewodniku Szybki start przekonwertujesz tekst w jednym języku z danego systemu zapisu na inny przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka C# w usługach Cognitive Services.
+title: 'Szybki start: konwertowanie skryptu tekstowego — tłumaczenie tekstu w usłudze Translator, C#'
+titleSuffix: Azure Cognitive Services
+description: W tym przewodniku Szybki start przekonwertujesz tekst w jednym języku z danego systemu zapisu na inny przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka C#.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: 66d649c0015be8c6a74e9925af68297334bfdb30
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 53ac3f4aa85e889c86d09927ece7df012427e4a9
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "43770613"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367597"
 ---
 # <a name="quickstart-transliterate-text-with-c35"></a>Szybki start: transliteracja tekstu przy użyciu języka C&#35;
 
 W tym przewodniku Szybki start przekonwertujesz tekst w jednym języku z danego systemu zapisu na inny przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
+
+Kod źródłowy tego przykładu jest dostępny w usłudze [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

@@ -1,21 +1,21 @@
 ---
-title: Otrzymywanie obsługiwanych języków tekstu w usłudze Translator przy użyciu języka Go | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: W tym przewodniku Szybki start otrzymasz listę obsługiwanych języków do tłumaczenia, transliteracji, wyszukiwania w słowniku oraz wyszukiwania przykładów przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka Go w usługach Cognitive Services.
+title: 'Szybki start: uzyskiwanie obsługiwanych języków — tłumaczenie tekstu w usłudze Translator, Go'
+titleSuffix: Azure Cognitive Services
+description: W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji, wyszukiwania w słowniku oraz przykładów przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka Go.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
 ms.author: nolachar
-ms.openlocfilehash: 91ba39f072d97a87250a2d6284df8571905c1b0f
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 6f8725c834e4417321722f7d49e09765e19a3b6d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "43771324"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127775"
 ---
 # <a name="quickstart-get-supported-languages-with-go"></a>Szybki start: uzyskiwanie obsługiwanych języków w języku Go
 

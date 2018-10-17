@@ -1,21 +1,21 @@
 ---
-title: Odnajdywanie alternatywnych tłumaczeń tekstu w usłudze Translator przy użyciu języka Java | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: W tym przewodniku Szybki start odnajdziesz alternatywne tłumaczenia i przykłady terminów użytych w kontekście, korzystając z interfejsu API tłumaczenia tekstu w usłudze Translator i języka Java w usługach Cognitive Services.
+title: 'Szybki start: znajdowanie alternatywnych tłumaczeń — tłumaczenie tekstu w usłudze Translator, Java'
+titleSuffix: Azure Cognitive Services
+description: W tym przewodniku Szybki start znajdziesz alternatywne tłumaczenia i przykłady terminów użytych w kontekście, korzystając z interfejsu API tłumaczenia tekstu w usłudze Translator i języka Java.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 0abb9c1a39b8183730bacde285eff05607754191
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c0e7fc3d51772df40bd5da7c762c15c40ad5744f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43771131"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127078"
 ---
 # <a name="quickstart-find-alternate-translations-and-usage-with-java"></a>Szybki start: odnajdywanie alternatywnych tłumaczeń i przykładów użycia za pomocą języka Java
 

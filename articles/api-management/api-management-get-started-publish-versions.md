@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/19/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 1cbe63184578f7d1e72992577a11c58b9b83a002
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a7e5051248a579b0943fa69620215b060bd1e235
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33937321"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092697"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>Publikowanie wielu wersji interfejsu API 
 
@@ -44,7 +44,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ![Menu kontekstowe interfejsu API — dodawanie wersji](media/api-management-getstarted-publish-versions/AddVersionMenu.png)
 
-1. Wybierz pozycję **Interfejs API konferencji** z listy interfejsów API.
+1. Z listy interfejsów API wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
 2. Wybierz menu kontekstowe (**...**) obok niego.
 3. Wybierz opcję **+ Dodaj wersję**.
 
@@ -58,37 +58,39 @@ Usługa Azure API Management umożliwia wybranie sposobu określania przez wywo�
 ![Ekran dodawania wersji](media/api-management-getstarted-publish-versions/AddVersion.PNG)
 
 1. Zostaw **ścieżkę** wybraną jako **schemat przechowywania wersji**.
-2. Dodaj cyfrę **v1** jako **identyfikator wersji**.
+2. Dodaj **v1** jako **nazwę** i **identyfikator wersji**.
 
     > [!TIP]
     > Jeśli wybierzesz **nagłówek** lub **ciąg zapytania** jako schemat przechowywania wersji, musisz podać dodatkową wartość — nazwę nagłówka lub parametr ciągu zapytania.
 
-3. Podaj opis, jeśli chcesz.
-4. Wybierz opcję **Utwórz**, aby skonfigurować nową wersję.
-5. W obszarze **Interfejs API dużej konferencji** na liście interfejsów API będą teraz widoczne dwa różne interfejsy API — **Oryginalny** i **v1**.
+3. Wybierz opcję **Utwórz**, aby skonfigurować nową wersję.
+4. W obszarze **Wersja demonstracyjna interfejsu API konferencji** na liście interfejsów API będą teraz widoczne dwa różne interfejsy API — **Oryginalny** i **v1**.
 
     ![Wersje wymienione na liście w sekcji interfejsów API w witrynie Azure Portal](media/api-management-getstarted-publish-versions/VersionList.PNG)
 
     > [!Note]
     > Jeśli dodasz wersję do niewersjonowanego interfejsu API, automatycznie zostanie utworzony **Oryginalny** interfejs API — odpowiadający pod domyślnym adresem URL. Dzięki temu zapewnia się, że nie wystąpią przerwy dla istniejących wywołujących spowodowane dodawaniem wersji. Jeśli tworzysz nowy interfejs API z wersjami włączonymi od początku, oryginalny interfejs API nie zostanie utworzony.
 
-6. Teraz możesz edytować i konfigurować interfejs API **v1** oddzielnie od interfejsu **Oryginalny**. Zmiany wprowadzane w jednej wersji nie wpływają na drugą.
+5. Teraz możesz edytować i konfigurować interfejs API **v1** oddzielnie od interfejsu **Oryginalny**. Zmiany wprowadzane w jednej wersji nie wpływają na drugą.
 
 ## <a name="add-the-version-to-a-product"></a>Dodawanie wersji do produktu
 
 Aby wywołujący mogli zobaczyć nową wersję, musi zostać ona dodana do **produktu**.
 
 1. Wybierz pozycję **Produkty** na stronie klasycznego modelu wdrażania.
+
+    ![Produkty przeznaczone do usługi API Management](media/api-management-getstarted-publish-versions/Products.png)
+
 2. Wybierz pozycję **Bez ograniczeń**.
 3. Wybierz pozycję **Interfejsy API**.
 4. Wybierz pozycję **Dodaj**.
-5. Wybierz pozycję **Interfejs API konferencji, wersja v1**.
+5. Wybierz pozycję **Interfejs API Pokaz konferencji, wersja v1**.
 6. Przejdź do strony zarządzania usługami i wybierz pozycję **Interfejsy API**.
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>Przeglądanie portalu dla deweloperów w celu wyświetlenia wersji
 
 1. Wybierz opcję **Portal dla deweloperów** z górnego menu.
-2. Wybierz opcję **Interfejsy API**. Zauważ, że **Interfejs API konferencji** ma wersje **Oryginalny** i **v1**.
+2. Wybierz opcję **Interfejsy API**. Zauważ, że pozycja **Interfejs API Pokaz konferencji** ma wersje **Oryginalny** i **v1**.
 3. Wybierz opcję **v1**.
 4. Zwróć uwagę na **Adres URL żądania** pierwszej operacji na liście. Pozycja pokazuje, że ścieżka adresu URL interfejsu API uwzględnia ciąg **v1**.
 
@@ -107,4 +109,4 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 Przejdź do następnego samouczka:
 
 > [!div class="nextstepaction"]
-> [Uaktualnienie i skalowanie](upgrade-and-scale.md)
+> [Dostosowywanie stylu stron portalu dla deweloperów](api-management-customize-styles.md)

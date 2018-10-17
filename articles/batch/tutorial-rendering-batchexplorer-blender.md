@@ -6,12 +6,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: 8df9054e069540398c137290e682bb4160b4a799
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 46c65cd7ac5734134fa7c4ad6fd85f39d1188e28
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40036642"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392557"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Samouczek: renderowanie sceny programu Blender przy użyciu narzędzia Batch Explorer
 
@@ -24,11 +24,11 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Renderowanie wielu ramek
 > * Wyświetlanie i pobieranie plików renderowanych ramek
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
-
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Konto usługi Azure Batch ze skojarzonym kontem magazynu.  Zobacz dowolny z artykułów przewodników Szybki start usługi Batch, na przykład [artykuł dotyczący interfejsu wiersza polecenia](https://docs.microsoft.com/azure/batch/quick-create-cli), aby utworzyć konto usługi Batch.
+Aby korzystać z aplikacji renderujących w usłudze Batch z opłatami za użycie, potrzebujesz subskrypcji z płatnością zgodnie z rzeczywistym użyciem lub innej opcji zakupu platformy Azure. Licencjonowanie na zasadzie płatności za użycie nie jest obsługiwane, jeśli korzystasz z bezpłatnej oferty platformy Azure, w ramach której otrzymujesz środki pieniężne.
+
+Potrzebujesz konta usługi Azure Batch ze skojarzonym kontem magazynu.  Zobacz dowolny z artykułów przewodników Szybki start usługi Batch, na przykład [artykuł dotyczący interfejsu wiersza polecenia](https://docs.microsoft.com/azure/batch/quick-create-cli), aby utworzyć konto usługi Batch.
 
 Dla rozmiaru maszyny wirtualnej i liczby maszyn wirtualnych określonych w tym samouczku wymagany jest limit przydziału rdzeni o niskim priorytecie wynoszący co najmniej 50 rdzeni. Można użyć domyślnego limitu przydziału, ale wymaga to użycia mniejszego rozmiaru maszyny wirtualnej, co oznacza, że renderowanie obrazów będzie trwało dłużej. Proces żądania zwiększonego limitu przydziału rdzeni został szczegółowo opisany w [tym artykule](https://docs.microsoft.com/azure/batch/batch-quota-limit).
 

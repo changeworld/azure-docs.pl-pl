@@ -1,5 +1,5 @@
 ---
-title: Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla istniejącego kodu za pomocą projektu DevOps platformy Azure | Samouczek usługi VSTS
+title: Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla istniejącego kodu za pomocą projektu usługi Azure DevOps | Samouczek usług Azure DevOps Services
 description: Projekt DevOps ułatwia rozpoczęcie pracy na platformie Azure. Pomaga wykorzystać własny kod i repozytorium GitHub w celu uruchomienia aplikacji w wybranej przez użytkownika usłudze platformy Azure w kilku prostych krokach.
 services: vsts
 documentationcenter: vs-devops-build
@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 192992917432a64c2f9f81761e22bf7d9205703a
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 4e0e28ff9ea14e42e1df7ce35bb90e8720a0d0b6
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205565"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407301"
 ---
 # <a name="create-a-cicd-pipeline-for-your-existing-code-with-the-azure-devops-project"></a>Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla istniejącego kodu za pomocą projektu DevOps platformy Azure
 
@@ -31,11 +31,11 @@ Projekt DevOps platformy Azure stanowi uproszczone środowisko, do którego moż
 Wykonasz następujące zadania:
 
 > [!div class="checklist"]
-> * Tworzenie projektu DevOps platformy Azure
+> * Tworzenie projektu usługi Azure DevOps
 > * Konfigurowanie dostępu do repozytorium GitHub i wybieranie platformy
-> * Konfigurowanie usługi VSTS i subskrypcji platformy Azure 
+> * Konfigurowanie usługi Azure DevOps Services i subskrypcji platformy Azure 
 > * Zatwierdzanie zmian w usłudze GitHub i automatyczne wdrażanie na platformie Azure
-> * Przeglądanie potoku ciągłej integracji/ciągłego wdrażania w usłudze VSTS
+> * Sprawdzanie potoku ciągłej integracji/ciągłego wdrażania usługi Azure DevOps Services
 > * Konfigurowanie monitorowania usługi Azure Application Insights
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -45,7 +45,7 @@ Wykonasz następujące zadania:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Projekt DevOps platformy Azure tworzy potok ciągłej integracji/ciągłego wdrażania w usłudze VSTS.  Możesz utworzyć **nowe konto usługi VSTS** lub użyć **istniejącego konta**.  Projekt DevOps platformy Azure tworzy również **zasoby platformy Azure** w wybranej przez użytkownika **subskrypcji platformy Azure**.
+Projekt usługi Azure DevOps tworzy potok ciągłej integracji/ciągłego wdrażania w usłudze Azure DevOps Services.  Możesz utworzyć **nową organizację usługi Azure DevOps Services** lub użyć **istniejącej organizacji**.  Projekt DevOps platformy Azure tworzy również **zasoby platformy Azure** w wybranej przez użytkownika **subskrypcji platformy Azure**.
 
 1. Zaloguj się do witryny [Microsoft Azure Portal](https://portal.azure.com).
 
@@ -65,55 +65,53 @@ Projekt DevOps platformy Azure tworzy potok ciągłej integracji/ciągłego wdra
 
 1. Struktura aplikacji wybrana w poprzednich krokach decyduje o dostępnym w tym miejscu typie celu wdrożenia usługi platformy Azure.  Wybierz **usługę docelową**.  Gdy wszystko będzie gotowe, wybierz pozycję **Dalej**.
 
-## <a name="configure-vsts-and-an-azure-subscription"></a>Konfigurowanie usługi VSTS i subskrypcji platformy Azure 
+## <a name="configure-azure-devops-services-and-an-azure-subscription"></a>Konfigurowanie usługi Azure DevOps Services i subskrypcji platformy Azure 
 
-1. Utwórz **nowe** konto usługi VSTS lub wybierz **istniejące** konto.  Wybierz **nazwę** projektu usługi VSTS.  Wybierz swoją **subskrypcję platformy Azure**, **lokalizację** i **nazwę** aplikacji.  Gdy wszystko będzie gotowe, wybierz pozycję **Gotowe**.
+1. Utwórz **nową** organizację usługi Azure DevOps Services lub wybierz **istniejącą** organizację.  Wybierz **nazwę** swojego projektu usługi Azure DevOps.  Wybierz swoją **subskrypcję platformy Azure**, **lokalizację** i **nazwę** aplikacji.  Gdy wszystko będzie gotowe, wybierz pozycję **Gotowe**.
 
-    ![Wprowadzanie informacji o usłudze VSTS](_img/azure-devops-project-github/vstsazureinfo.png)
-
-1. W ciągu kilku minut w witrynie Azure Portal zostanie załadowany **pulpit nawigacyjny projektu**.  Aplikacja przykładowa zostanie skonfigurowana w repozytorium na koncie usługi VSTS, skompilowana i wdrożona na platformie Azure.  Ten pulpit nawigacyjny zapewnia wgląd do **repozytorium kodu** GitHub, **potoku ciągłej integracji/ciągłego wdrażania usługi VSTS** i **aplikacji na platformie Azure**.  Po prawej stronie pulpitu nawigacyjnego wybierz pozycję **Przeglądaj**, aby wyświetlić uruchomioną aplikację.
+1. W ciągu kilku minut w witrynie Azure Portal zostanie załadowany **pulpit nawigacyjny projektu usługi Azure DevOps**.  Aplikacja przykładowa zostanie skonfigurowana w repozytorium w organizacji usługi Azure DevOps Services, skompilowana i wdrożona na platformie Azure.  Ten pulpit nawigacyjny zapewnia wgląd do **repozytorium kodu** GitHub, **potoku ciągłej integracji/ciągłego wdrażania usług Azure DevOps Services** i **aplikacji na platformie Azure**.  Po prawej stronie pulpitu nawigacyjnego wybierz pozycję **Przeglądaj**, aby wyświetlić uruchomioną aplikację.
 
     ![Widok pulpitu nawigacyjnego](_img/azure-devops-project-github/dashboardnopreview.png) 
     
-Projekt DevOps platformy Azure automatycznie konfiguruje wyzwalacz kompilacji i wydania ciągłej integracji.  Twój kod pozostaje w usłudze GitHub lub innym zewnętrznym repozytorium.  
+Projekt usługi Azure DevOps automatycznie konfiguruje wyzwalacz kompilacji i wydania ciągłej integracji.  Twój kod pozostaje w usłudze GitHub lub innym zewnętrznym repozytorium.  
 
 ## <a name="commit-changes-to-github-and-automatically-deploy-to-azure"></a>Zatwierdzanie zmian w usłudze GitHub i automatyczne wdrażanie na platformie Azure 
 
-Możesz teraz rozpocząć pracę w zespole nad aplikacją w ramach procesu ciągłej integracji/ciągłego wdrażania, który umożliwia automatyczne wdrażanie najnowszej wersji w witrynie internetowej.  Każda zmiana w repozytorium GitHub rozpoczyna tworzenie kompilacji w usłudze VSTS, a definicja zarządzania wydaniem usługi VSTS wykonuje wdrożenie na platformie Azure.
+Możesz teraz rozpocząć pracę w zespole nad aplikacją w ramach procesu ciągłej integracji/ciągłego wdrażania, który umożliwia automatyczne wdrażanie najnowszej wersji w witrynie internetowej.  Każda zmiana w repozytorium GitHub rozpoczyna kompilację w usłudze Azure DevOps, a potok ciągłego wdrażania usługi Azure DevOps wykonuje wdrażanie na platformie Azure.
 
 1.  Wprowadź zmiany w aplikacji, a następnie **zatwierdź** zmiany w repozytorium GitHub.
-2.  W ciągu kilku chwil rozpocznie się kompilacja w usłudze VSTS.  Możesz monitorować stan kompilacji na pulpicie nawigacyjnym projektu DevOps lub w przeglądarce przy użyciu konta usługi VSTS.
+2.  W ciągu kilku chwil rozpocznie się kompilacja w usłudze Azure DevOps Services.  Możesz monitorować stan kompilacji na pulpicie nawigacyjnym projektu usługi Azure DevOps lub w przeglądarce przy użyciu Twojej organizacji usługi Azure DevOps Services.
 3.  Po zakończeniu kompilacji **odśwież aplikację** w przeglądarce, aby sprawdzić, czy zmiany są wyświetlane.
 
-## <a name="examine-the-vsts-cicd-pipeline"></a>Przeglądanie potoku ciągłej integracji/ciągłego wdrażania w usłudze VSTS
+## <a name="examine-the-azure-devops-services-cicd-pipeline"></a>Sprawdzanie potoku ciągłej integracji/ciągłego wdrażania usługi Azure DevOps Services
 
-Projekt DevOps platformy Azure automatycznie konfiguruje pełny potok ciągłej integracji/ciągłego wdrażania usługi VSTS na koncie usługi VSTS.  Możesz przeglądać i dostosowywać potok według potrzeb.  Wykonaj poniższe kroki, aby zapoznać się z definicjami kompilacji i wydania w usłudze VSTS.
+Projekt usługi Azure DevOps automatycznie skonfigurował potok ciągłej integracji/ciągłego wdrażania usługi Azure DevOps Services w Twojej organizacji usługi Azure DevOps Services.  Możesz przeglądać i dostosowywać potok według potrzeb.  Wykonaj poniższe kroki, aby zapoznać się z kompilacją usługi Azure DevOps Services i potokami wersji.
 
-1. Wybierz pozycję **Potoki kompilacji** w **górnej części** pulpitu nawigacyjnego projektu DevOps platformy Azure.  Ten link otwiera kartę przeglądarki i definicję kompilacji usługi VSTS dla nowego projektu.
+1. Wybierz pozycję **Potoki kompilacji** w **górnej części** pulpitu nawigacyjnego projektu usługi Azure DevOps.  Ten link otwiera kartę przeglądarki i otwiera potok kompilacji usługi Azure DevOps Services dla Twojego nowego projektu.
 
-1. Przesuń wskaźnik myszy na prawo od definicji kompilacji, obok pola **Stan**. Wybierz symbol **wielokropka**, który się pojawi.  Ta czynność spowoduje otwarcie menu, w którym możesz uruchomić kilka działań, takich jak dodawanie nowych kompilacji do kolejki, wstrzymywanie kompilacji i edytowanie definicji kompilacji.
+1. Przesuń wskaźnik myszy na prawo od potoku kompilacji, obok pola **Stan**. Wybierz symbol **wielokropka**, który się pojawi.  Ta czynność spowoduje otwarcie menu, w którym możesz uruchomić kilka działań, takich jak dodawanie nowych kompilacji do kolejki, wstrzymywanie kompilacji i edytowanie potoku kompilacji.
 
 1. Wybierz pozycję **Edit** (Edytuj).
 
-1. Z poziomu tego widoku **zapoznaj się z różnymi zadaniami** w definicji kompilacji.  W ramach kompilacji są wykonywane różne zadania, takie jak pobieranie źródeł z repozytorium Git, przywracanie zależności i publikowanie danych wyjściowych używanych do wdrożenia.
+1. Z poziomu tego widoku **zapoznaj się z różnymi zadaniami** w potoku kompilacji.  W ramach kompilacji są wykonywane różne zadania, takie jak pobieranie źródeł z repozytorium Git, przywracanie zależności i publikowanie danych wyjściowych używanych do wdrożenia.
 
-1. W górnej części definicji kompilacji wybierz **nazwę definicji kompilacji**.
+1. W górnej części potoku kompilacji wybierz pozycję **Nazwa potoku kompilacji**.
 
-1. Zmień **nazwę** definicji kompilacji na bardziej opisową.  Wybierz pozycję **Zapisz i dodaj do kolejki**, a następnie wybierz pozycję **Zapisz**.
+1. Zmień **nazwę** potoku kompilacji na bardziej opisową.  Wybierz pozycję **Zapisz i dodaj do kolejki**, a następnie wybierz pozycję **Zapisz**.
 
-1. W obszarze nazwy definicji kompilacji wybierz pozycję **Historia**.  Zostanie wyświetlony dziennik inspekcji ostatnio wprowadzonych zmian w kompilacji.  Usługa VSTS śledzi wszystkie zmiany wprowadzone w definicji kompilacji i pozwala na porównanie wersji.
+1. W obszarze nazwy potoku kompilacji wybierz pozycję **Historia**.  Zostanie wyświetlony dziennik inspekcji ostatnio wprowadzonych zmian w kompilacji.  Usługa Azure DevOps Services śledzi wszelkie zmiany wprowadzone do potoku kompilacji i pozwala na porównanie wersji.
 
-1. Wybierz pozycję **Wyzwalacze**.  Projekt DevOps platformy Azure automatycznie utworzył wyzwalacz ciągłej integracji, a każde zatwierdzenie w repozytorium uruchamia nową kompilację.  Opcjonalnie możesz zdecydować się dołączyć gałęzie do procesu ciągłej integracji lub je wykluczyć.
+1. Wybierz pozycję **Wyzwalacze**.  Projekt usługi Azure DevOps automatycznie utworzył wyzwalacz ciągłej integracji, a każde zatwierdzenie w repozytorium uruchamia nową kompilację.  Opcjonalnie możesz zdecydować się dołączyć gałęzie do procesu ciągłej integracji lub je wykluczyć.
 
 1. Wybierz pozycję **Przechowywanie**.  W zależności od scenariusza możesz określić zasady przechowywania lub usuwania pewnej liczby kompilacji.
 
-1. Wybierz pozycję **Kompilacja i wydanie**, a następnie wybierz pozycję **Wydania**.  Projekt DevOps platformy Azure utworzył definicję wydania usługi VSTS w celu zarządzania wdrożeniami na platformie Azure.
+1. Wybierz pozycję **Kompilacja i wydanie**, a następnie wybierz pozycję **Wydania**.  Projekt usługi Azure DevOps utworzył potok wersji usługi Azure DevOps Services w celu zarządzania wdrożeniami na platformie Azure.
 
-1. Po lewej stronie okna przeglądarki wybierz symbol **wielokropka** obok definicji wydania, następnie wybierz pozycję **Edytuj**.
+1. Po lewej stronie okna przeglądarki wybierz symbol **wielokropka** obok potoku wydania, a następnie wybierz pozycję **Edytuj**.
 
-1. Definicja wydania zawiera **potok**, który definiuje proces tworzenia wydania.  W obszarze **Artefakty** wybierz polecenie **Porzuć**.  Definicja kompilacji przedstawiona w poprzednich krokach generuje dane wyjściowe używane na potrzeby artefaktu. 
+1. Potok wydania zawiera **potok**, który definiuje proces tworzenia wydania.  W obszarze **Artefakty** wybierz polecenie **Porzuć**.  Potok kompilacji przedstawiony w poprzednich krokach generuje dane wyjściowe używane na potrzeby artefaktu. 
 
-1. Z prawej strony ikony **Porzuć** wybierz pozycję **Wyzwalacz ciągłego wdrażania**.  Ta definicja wydania ma włączony wyzwalacz ciągłego wdrażania, który przeprowadza wdrożenie za każdym razem, gdy dostępny jest nowy artefakt kompilacji.  Opcjonalnie możesz wyłączyć wyzwalacz. Wtedy wdrożenia będą wymagać ręcznego wykonania. 
+1. Z prawej strony ikony **Porzuć** wybierz pozycję **Wyzwalacz ciągłego wdrażania**.  Ten potok wydania ma włączony wyzwalacz ciągłego wdrażania, który przeprowadza wdrożenie za każdym razem, gdy dostępny jest nowy artefakt kompilacji.  Opcjonalnie możesz wyłączyć wyzwalacz. Wtedy wdrożenia będą wymagać ręcznego wykonania. 
 
 1. Po lewej stronie okna przeglądarki wybierz pozycję **Zadania**.  Zadania to czynności wykonywane w procesie wdrażania.  W tym przykładzie zostało utworzone zadanie w celu wdrożenia w usłudze **Azure App Service**.
 
@@ -127,7 +125,7 @@ Projekt DevOps platformy Azure automatycznie konfiguruje pełny potok ciągłej 
 
 ## <a name="configure-azure-application-insights-monitoring"></a>Konfigurowanie monitorowania usługi Azure Application Insights
 
-Usługa Azure Application Insights umożliwia łatwe monitorowanie wydajności i użycia aplikacji.  Projekt DevOps platformy Azure automatycznie skonfigurował zasób usługi Application Insights dla aplikacji.  Możesz dodatkowo skonfigurować różne alerty i możliwości monitorowania stosownie do potrzeb.
+Usługa Azure Application Insights umożliwia łatwe monitorowanie wydajności i użycia aplikacji.  Projekt usługi Azure DevOps automatycznie skonfigurował zasób usługi Application Insights dla aplikacji.  Możesz dodatkowo skonfigurować różne alerty i możliwości monitorowania stosownie do potrzeb.
 
 1. Przejdź do pulpitu nawigacyjnego **projektu DevOps platformy Azure** w witrynie Azure Portal.  W prawym dolnym rogu pulpitu nawigacyjnego wybierz link **Application Insights** dla aplikacji.
 
@@ -159,17 +157,17 @@ Jeśli usługa Azure App Service nie jest już potrzebna, możesz ją usunąć w
 
 ## <a name="next-steps"></a>Następne kroki
 
-Podczas pracy z tym samouczkiem skonfigurowano proces ciągłej integracji/ciągłego wdrażania i utworzono automatycznie definicję kompilacji i wydania w projekcie usługi VSTS. Możesz zmodyfikować definicje kompilacji i wydania, aby dopasować je do potrzeb swojego zespołu. W tym samouczku omówiono:
+Podczas pracy z tym samouczkiem skonfigurowano proces ciągłej integracji/ciągłego wdrażania oraz utworzono automatycznie potok kompilacji i wydania w projekcie usługi Azure DevOps. Możesz zmodyfikować potoki kompilacji i wydania, aby dopasować je do potrzeb swojego zespołu. W tym samouczku omówiono:
 
 > [!div class="checklist"]
-> * Tworzenie projektu DevOps platformy Azure
+> * Tworzenie projektu usługi Azure DevOps
 > * Konfigurowanie dostępu do repozytorium GitHub i wybieranie platformy
-> * Konfigurowanie usługi VSTS i subskrypcji platformy Azure 
+> * Konfigurowanie usługi Azure DevOps Services i subskrypcji platformy Azure 
 > * Zatwierdzanie zmian w usłudze GitHub i automatyczne wdrażanie na platformie Azure
-> * Przeglądanie potoku ciągłej integracji/ciągłego wdrażania w usłudze VSTS
+> * Sprawdzanie potoku ciągłej integracji/ciągłego wdrażania usługi Azure DevOps Services
 > * Konfigurowanie monitorowania usługi Azure Application Insights
 
-Aby dowiedzieć się więcej na temat potoku usługi VSTS, zapoznaj się z tym samouczkiem:
+Aby dowiedzieć się więcej o potoku ciągłej integracji/ciągłego wdrażania usługi Azure DevOps Services, zobacz ten samouczek:
 
 > [!div class="nextstepaction"]
-> [Dostosowywanie procesu ciągłego wdrażania](https://docs.microsoft.com/vsts/pipelines/release/define-multistage-release-process?view=vsts)
+> [Dostosowywanie procesu ciągłego wdrażania](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

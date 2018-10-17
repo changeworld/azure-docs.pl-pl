@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 05/25/2018
+ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: b2dafbcf0e41e7387157590e145f74430686321c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ef371447e851fece207d77fe656283abe3dc4164
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307123"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063867"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Tworzenie aplikacji platformy Xamarin.Forms na platformie Azure
 
@@ -181,7 +181,9 @@ Ta akcja spowoduje wysłanie żądania POST do nowego zaplecza funkcji Mobile Ap
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli masz problemy z kompilowaniem rozwiązania, uruchom menedżera pakietów NuGet i przeprowadź aktualizację do najnowszej wersji rozszerzenia Xamarin.Forms, a w projekcie systemu Android zaktualizuj pakiety obsługi rozszerzenia Xamarin.Android. Projekty typu Szybki start nie zawsze zawierają najnowsze wersje.
+Jeśli masz problemy z kompilowaniem rozwiązania, uruchom menedżera pakietów NuGet i przeprowadź aktualizację rozszerzenia `Xamarin.Forms` do najnowszej wersji, a w projekcie systemu Android zaktualizuj pakiety obsługi rozszerzenia `Xamarin.Android`. Projekty typu Szybki start nie zawsze zawierają najnowsze wersje.
+
+Pamiętaj, że wszystkie pakiety dla pomocy technicznej, do których odwołuje się projekt systemu Android, muszą mieć tę samą wersję. [Pakiet NuGet usługi Azure Mobile Apps](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) ma zależność `Xamarin.Android.Support.CustomTabs` dla platformy Android, więc jeśli projekt używa nowszych pakietów dla pomocy technicznej, musisz bezpośrednio zainstalować ten pakiet w wymaganej wersji w celu uniknięcia konfliktów.
 
 ## <a name="next-steps"></a>Następne kroki
 

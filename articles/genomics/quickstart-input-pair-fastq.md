@@ -1,24 +1,22 @@
 ---
-title: 'Szybki start: Przesyłanie przepływu pracy przy użyciu plików wejściowych FASTQ | Microsoft Docs'
+title: 'Szybki start: przesyłanie przepływu pracy przy użyciu plików wejściowych FASTQ — Microsoft Genomics'
 titleSuffix: Azure
 description: W tym poradniku Szybki start założono, że użytkownik ma zainstalowanego klienta msgen i pomyślnie uruchomił przykładowe dane za pośrednictwem usługi.
-services: microsoft-genomics
+services: genomics
 author: grhuynh
-manager: jhubbard
-editor: jasonwhowell
+manager: cgronlun
 ms.author: grhuynh
-ms.service: microsoft-genomics
-ms.workload: genomics
+ms.service: genomics
 ms.topic: quickstart
 ms.date: 12/07/2017
-ms.openlocfilehash: f093397803f21c023a2c32e42709ecfcd0e3aec7
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: acbcceb32ec54ab85db05ef743e9c10cd8cf025c
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2017
-ms.locfileid: "26684487"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735853"
 ---
-# <a name="submit-a-workflow-using-fastq-file-inputs"></a>Przesyłanie przepływu pracy przy użyciu plików wejściowych FASTQ
+# <a name="submit-a-workflow-using-fastq-file-inputs-in-microsoft-genomics"></a>Przesyłanie przepływu pracy przy użyciu plików wejściowych FASTQ w usłudze Microsoft Genomics
 
 Ten poradnik Szybki start przedstawia sposób przesyłania przepływu pracy do usługi Microsoft Genomics, jeśli pliki wejściowe to jedna para plików FASTQ. W tym temacie założono, że użytkownik zainstalował i uruchomił klienta `msgen` oraz że zna sposób korzystania z usługi Azure Storage. Po pomyślnym przesłaniu przepływu pracy przy użyciu podanych przykładowych danych masz wszystko gotowe, aby kontynuować pracę z tym poradnikiem Szybki start. 
 

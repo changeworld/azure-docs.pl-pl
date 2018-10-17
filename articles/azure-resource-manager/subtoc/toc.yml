@@ -168,7 +168,7 @@ items:
     - name: Poświadczenia
       href: /azure/templates/Microsoft.Automation/automationAccounts/credentials
       maintainContext: true
-    - name: Zadania
+    - name: Stanowiska
       href: /azure/templates/Microsoft.Automation/automationAccounts/jobs
       maintainContext: true
     - name: Harmonogramy zadań
@@ -208,6 +208,13 @@ items:
   - name: Konta usługi Batch
     href: /azure/templates/Microsoft.Batch/batchAccounts
     items:
+    - name: Aplikacje
+      href: /azure/templates/Microsoft.Batch/batchAccounts/applications
+      items:
+      - name: Wersje
+        href: /azure/templates/Microsoft.Batch/batchAccounts/applications/versions
+        maintainContext: true
+      maintainContext: true
     - name: Certyfikaty
       href: /azure/templates/Microsoft.Batch/batchAccounts/certificates
       maintainContext: true
@@ -223,8 +230,25 @@ items:
   - name: Serwery plików
     href: /azure/templates/Microsoft.BatchAI/fileServers
     maintainContext: true
-  - name: Zadania
+  - name: Stanowiska
     href: /azure/templates/Microsoft.BatchAI/jobs
+    maintainContext: true
+  - name: Obszary robocze
+    href: /azure/templates/Microsoft.BatchAI/workspaces
+    items:
+    - name: Klastry
+      href: /azure/templates/Microsoft.BatchAI/workspaces/clusters
+      maintainContext: true
+    - name: Eksperymenty
+      href: /azure/templates/Microsoft.BatchAI/workspaces/experiments
+      items:
+      - name: Stanowiska
+        href: /azure/templates/Microsoft.BatchAI/workspaces/experiments/jobs
+        maintainContext: true
+      maintainContext: true
+    - name: Serwery plików
+      href: /azure/templates/Microsoft.BatchAI/workspaces/fileServers
+      maintainContext: true
     maintainContext: true
 - name: Pamięć podręczna
   items:
@@ -407,6 +431,10 @@ items:
       maintainContext: true
     - name: Wyzwalacze
       href: /azure/templates/Microsoft.DataFactory/factories/triggers
+      items:
+      - name: Wyzwalacze ponownego uruchamiania
+        href: /azure/templates/Microsoft.DataFactory/factories/triggers/rerunTriggers
+        maintainContext: true
       maintainContext: true
     maintainContext: true
 - name: Data Lake Analytics
@@ -592,7 +620,7 @@ items:
     maintainContext: true
 - name: Importowanie i eksportowanie
   items:
-  - name: Zadania
+  - name: Stanowiska
     href: /azure/templates/Microsoft.ImportExport/jobs
     maintainContext: true
 - name: Insights
@@ -623,6 +651,11 @@ items:
     maintainContext: true
   - name: Testy internetowe
     href: /azure/templates/Microsoft.insights/webtests
+    maintainContext: true
+- name: IoT Central
+  items:
+  - name: Aplikacje IoT
+    href: /azure/templates/Microsoft.IotCentral/IotApps
     maintainContext: true
 - name: Usługa Key Vault
   items:
@@ -721,7 +754,7 @@ items:
     - name: Przekształcenia
       href: /azure/templates/microsoft.media/mediaservices/transforms
       items:
-      - name: Zadania
+      - name: Stanowiska
         href: /azure/templates/microsoft.media/mediaservices/transforms/jobs
         maintainContext: true
       maintainContext: true
@@ -1080,7 +1113,7 @@ items:
   - name: Kolekcje zadań
     href: /azure/templates/Microsoft.Scheduler/jobCollections
     items:
-    - name: Zadania
+    - name: Stanowiska
       href: /azure/templates/Microsoft.Scheduler/jobCollections/jobs
       maintainContext: true
     maintainContext: true
@@ -1246,7 +1279,7 @@ items:
       - name: Poświadczenia
         href: /azure/templates/Microsoft.Sql/servers/jobAgents/credentials
         maintainContext: true
-      - name: Zadania
+      - name: Stanowiska
         href: /azure/templates/Microsoft.Sql/servers/jobAgents/jobs
         items:
         - name: Wykonania
@@ -1433,9 +1466,9 @@ items:
         maintainContext: true
       maintainContext: true
     maintainContext: true
-ms.openlocfilehash: ca2143fbe061561b27f8d8f6f0181820181634a0
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 773ae8c38cb98e9c8daff6ef2819d4a3dc687739
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902658"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353955"

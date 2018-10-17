@@ -1,21 +1,21 @@
 ---
-title: Tłumaczenie tekstu w usłudze Translator — znajdowanie alternatywnych tłumaczeń przy użyciu oprogramowania Node.js | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: W tym przewodniku Szybki start znajdziesz alternatywne tłumaczenia i przykłady terminów użytych w kontekście, korzystając z interfejsu API tłumaczenia tekstu w usłudze Translator i oprogramowania Node.js w usługach Cognitive Services.
+title: 'Szybki start: znajdowanie alternatywnych tłumaczeń — tłumaczenie tekstu w usłudze Translator, Node.js'
+titleSuffix: Azure Cognitive Services
+description: W tym przewodniku Szybki start znajdziesz alternatywne tłumaczenia i przykłady terminów użytych w kontekście, korzystając z interfejsu API tłumaczenia tekstu w usłudze Translator i oprogramowania Node.js.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: aeb97e1c4e7c4e8df852bea55383e857f7d5a690
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5361dce567743e239e0499352affa179b7d40382
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43771086"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127231"
 ---
 # <a name="quickstart-find-alternate-translations-and-usage-with-nodejs"></a>Szybki start: znajdowanie alternatywnych tłumaczeń i przykładów użycia za pomocą oprogramowania Node.js
 

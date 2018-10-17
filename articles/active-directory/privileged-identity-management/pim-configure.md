@@ -13,16 +13,16 @@ ms.topic: overview
 ms.date: 03/07/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: ff4e5322ac9ccc0bbfd0706ca9f4863670bbf1b5
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: af93ade2a7031aeda5b4108649c59a8d6c1393ce
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43186215"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465864"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co to jest usługa Azure AD Privileged Identity Management?
 
-Aplikacja Azure Active Directory (AD) Privileged Identity Management umożliwia kontrolę i monitorowanie dostępu, a także zarządzanie nim w ramach danej organizacji. Dotyczy to również dostępu do zasobów platformy Azure (w wersji zapoznawczej) oraz zasobów w usłudze Azure AD i w innych usługach online firmy Microsoft, takich jak Office 365 lub Microsoft Intune.
+Usługa Azure Active Directory (Azure AD) Privileged Identity Management umożliwia kontrolę i monitorowanie dostępu, a także zarządzanie nim w ramach danej organizacji. Dotyczy to również dostępu do zasobów platformy Azure oraz zasobów w usłudze Azure AD i w innych usługach online firmy Microsoft, takich jak Office 365 lub Microsoft Intune.
 
 > [!NOTE]
 > W przypadku włączenia usługi Privileged Identity Management dla dzierżawy licencja płatna lub licencja wersji próbnej Azure AD Premium P2 lub Enterprise Mobility + Security E5 jest wymagana dla każdego użytkownika, który wchodzi w interakcję z usługą lub otrzymuje korzyść z tej usługi. Przykłady obejmują użytkowników/użytkowników w grupie, którzy:
@@ -39,11 +39,11 @@ Organizacje dążą do zminimalizowania liczby osób, które mają dostęp do za
 
 Usługa Azure AD Privileged Identity Management ułatwia organizacji:
 
-- Sprawdzanie, którzy użytkownicy mają przypisane role uprzywilejowane do zarządzania zasobami platformy Azure (w wersji zapoznawczej), a także którzy użytkownicy mają przypisane role administracyjne w usłudze Azure AD.
-- Włączanie dostępu administracyjnego „just in time” na żądanie do usług online firmy Microsoft, takich jak usługa Office 365 i usługa Intune, oraz do subskrypcji, grup zasobów i poszczególnych zasobów platformy Azure (w wersji zapoznawczej), na przykład maszyn wirtualnych. 
--   Wyświetlanie historii aktywności administratorów, w tym zmian wprowadzanych przez administratorów w zasobach platformy Azure (w wersji zapoznawczej).
+- Sprawdzanie, którzy użytkownicy mają przypisane role uprzywilejowane do zarządzania zasobami platformy Azure oraz którzy użytkownicy mają przypisane role administracyjne w usłudze Azure AD.
+- Włączanie dostępu administracyjnego „just in time” na żądanie do usług online firmy Microsoft, takich jak usługa Office 365 i usługa Intune, oraz do zasobów platformy Azure w postaci subskrypcji, grup zasobów i poszczególnych zasobów, na przykład maszyn wirtualnych. 
+- Wyświetlanie historii aktywności administratorów, w tym zmian wprowadzanych przez administratorów w zasobach platformy Azure.
 - Otrzymywanie alertów o zmianach wprowadzonych w przypisaniach administratorów.
-- Wymaganie zatwierdzenia w celu aktywacji uprzywilejowanych ról administratora usługi Azure AD (w wersji zapoznawczej). 
+- Wymaganie zatwierdzenia w celu aktywacji uprzywilejowanych ról administratora usługi Azure AD.
 - Przeglądanie członkostwa w rolach administracyjnych i wymaganie od użytkowników uzasadnienia dalszego członkostwa.
 
 W usłudze Azure AD usługa Azure AD Privileged Identity Management umożliwia zarządzanie użytkownikami przypisanymi do wbudowanych ról usługi Azure AD w organizacji, takich jak Administrator globalny. Na platformie Azure usługa Azure AD Privileged Identity Management umożliwia zarządzanie użytkownikami i grupami przypisanymi za pośrednictwem ról RBAC platformy Azure, takich jak Właściciel lub Współautor.
@@ -100,17 +100,17 @@ W przypadku ról RBAC platformy Azure tylko administrator subskrypcji, właścic
 
 ## <a name="privileged-identity-management-overview-entry-point"></a>Privileged Identity Management — przegląd (punkt wejścia)
 
-Usługa Azure AD Privileged Identity Management obsługuje administrowanie rolami katalogu usługi Azure AD i rolami dla zasobów platformy Azure (w wersji zapoznawczej). Funkcja ról dla zasobów platformy Azure jest inna niż funkcja ról administracyjnych w usłudze Azure AD. Role zasobów platformy Azure zapewniają szczegółowe uprawnienia dotyczące zasobu, dla którego są przypisywane, oraz wszystkich zasobów podrzędnych w hierarchii zasobów (co nazywa się dziedziczeniem). [Dowiedz się więcej na temat kontroli dostępu opartej na rolach (RBAC), hierarchii zasobów i dziedziczenia](../../role-based-access-control/role-assignments-portal.md). Aby administrować usługą PIM dla ról katalogu usługi Azure AD i zasobów platformy Azure (w wersji zapoznawczej), użyj odpowiedniego linku w sekcji Zarządzanie w lewym menu nawigacji punktu wejścia PIM — przegląd.
+Usługa Azure AD Privileged Identity Management obsługuje administrowanie rolami katalogu usługi Azure AD i rolami dla zasobów platformy Azure. Funkcja ról dla zasobów platformy Azure jest inna niż funkcja ról administracyjnych w usłudze Azure AD. Role zasobów platformy Azure zapewniają szczegółowe uprawnienia dotyczące zasobu, dla którego są przypisywane, oraz wszystkich zasobów podrzędnych w hierarchii zasobów (co nazywa się dziedziczeniem). [Dowiedz się więcej na temat kontroli dostępu opartej na rolach (RBAC), hierarchii zasobów i dziedziczenia](../../role-based-access-control/role-assignments-portal.md). Aby administrować usługą PIM dla ról katalogu usługi Azure AD i zasobów platformy Azure, użyj odpowiedniego linku w sekcji Zarządzanie w lewym menu nawigacji punktu wejścia PIM — przegląd.
 
 Sekcja Zadania w menu nawigacji po lewej stronie zapewnia wygodny dostęp do funkcji usługi PIM: aktywowania ról, wyświetlania oczekujących aktywacji/żądań, oczekujących zatwierdzeń (dla ról katalogu usługi Azure AD) i przeglądów oczekujących na odpowiedź.
 
-Gdy przejdziesz do dowolnego elementu menu Zadania z punktu wejścia Przegląd, widok będzie zawierał wyniki dotyczące ról katalogu usługi Azure AD i ról zasobów platformy Azure (w wersji zapoznawczej).
+Gdy przejdziesz do dowolnego elementu menu Zadania z punktu wejścia Przegląd, widok będzie zawierał wyniki dotyczące ról katalogu usługi Azure AD i ról zasobów platformy Azure.
 
 ![Szybki start](./media/pim-configure/quick-start.png)
 
-W obszarze Moje role znajduje się lista przypisań ról — aktywnych i kwalifikujących się — w katalogu usługi Azure AD i w zasobach platformy Azure (w wersji zapoznawczej). [Dowiedz się więcej na temat aktywowania kwalifikujących się przypisań ról](pim-how-to-activate-role.md).
+W obszarze Moje role znajduje się lista przypisań ról — aktywnych i kwalifikujących się — w katalogu usługi Azure AD i w zasobach platformy Azure. [Dowiedz się więcej na temat aktywowania kwalifikujących się przypisań ról](pim-how-to-activate-role.md).
 
-Aktywacja ról dla zasobów platformy Azure (w wersji zapoznawczej) wprowadza nową funkcję, która umożliwia kwalifikującym się członkom roli zaplanowanie aktywacji na przyszłą datę/godzinę i wybranie czasu trwania konkretnej aktywacji w ramach maksymalnego czasu dozwolonego przez administratorów.
+Aktywacja ról dla zasobów platformy Azure wprowadza nową funkcję, która umożliwia kwalifikującym się członkom roli zaplanowanie aktywacji na przyszłą datę/godzinę i wybranie czasu trwania konkretnej aktywacji w ramach maksymalnego czasu dozwolonego przez administratorów.
 
 ![](./media/pim-configure/activations.png)
 
@@ -126,15 +126,15 @@ Usługa Azure AD Privileged Identity Manager udostępnia pulpit nawigacyjny admi
 * Liczba użytkowników przypisanych do poszczególnych ról uprzywilejowanych.  
 * Liczba administratorów uprawnionych i trwałych.
 * Wykres aktywacji ról uprzywilejowanych w katalogu.
-*   Liczba przypisań just in time, ograniczonych czasowo i trwałych dla ról zasobów platformy Azure (w wersji zapoznawczej).
-*   Użytkownicy i grupy z nowymi przypisaniami roli w ciągu ostatnich 30 dni (role zasobów platformy Azure).
+* Liczba przypisań just in time, ograniczonych czasowo i trwałych dla ról zasobów platformy Azure.
+* Użytkownicy i grupy z nowymi przypisaniami roli w ciągu ostatnich 30 dni (role zasobów platformy Azure).
 
 
 ![Pulpit nawigacyjny usługi PIM — zrzut ekranu](./media/pim-configure/PIM_Admin_Overview.png)
 
 ## <a name="privileged-role-management"></a>Zarządzanie rolami uprzywilejowanymi
 
-Za pomocą usługi Azure AD Privileged Identity Management można zarządzać administratorami, dodając lub usuwając administratorów trwałych i uprawnionych w poszczególnych rolach katalogu usługi Azure AD. Za pomocą usługi PIM dla zasobów platformy Azure (w wersji zapoznawczej) właściciele, administratorzy dostępu użytkowników i administratorzy globalni, którzy włączą zarządzanie subskrypcjami w ramach dzierżawy, mogą przypisywać użytkowników lub grupy do ról zasobów platformy Azure jako uprawnionych (dostęp just in time), z dostępem ograniczonym czasowo (bez konieczności aktywacj) przy użyciu daty/godziny rozpoczęcia i zakończenia lub trwałych (jeśli włączono tę opcję w ustawieniach roli).
+Za pomocą usługi Azure AD Privileged Identity Management można zarządzać administratorami, dodając lub usuwając administratorów trwałych i uprawnionych w poszczególnych rolach katalogu usługi Azure AD. Za pomocą usługi PIM dla zasobów platformy Azure właściciele, administratorzy dostępu użytkowników i administratorzy globalni, którzy włączą zarządzanie subskrypcjami w ramach dzierżawy, mogą przypisywać użytkowników lub grupy do ról zasobów platformy Azure jako uprawnionych (dostęp just in time), z dostępem ograniczonym czasowo (bez konieczności aktywacji) przy użyciu daty/godziny rozpoczęcia i zakończenia lub trwale (jeśli włączono tę opcję w ustawieniach roli).
 
 ![Dodawanie/usuwanie administratorów w usłudze PIM — zrzut ekranu](./media/pim-configure/PIM_AddRemove.png)
 
@@ -146,13 +146,13 @@ Za pomocą [ustawień roli](pim-how-to-change-default-settings.md) można skonfi
 * Powiadomienie dotyczące aktywacji roli.
 * Informacje, które użytkownik musi podać w procesie aktywacji roli.
 * Numer zdarzenia lub biletu usługi.
-* [Wymagania dotyczące przepływu pracy zatwierdzania — wersja zapoznawcza](./azure-ad-pim-approval-workflow.md).
+* [Wymagania dotyczące przepływu pracy zatwierdzania](./azure-ad-pim-approval-workflow.md).
 
 ![Ustawienia usługi PIM — aktywacja administratora — zrzut ekranu](./media/pim-configure/PIM_Settings_w_Approval_Disabled.png)
 
 Zwróć uwagę, że na ilustracji przyciski usługi **Multi-Factor Authentication** są wyłączone. W przypadku niektórych, wysoko uprzywilejowanych ról w celu zapewnienia podwyższonej ochrony jest wymaganie uwierzytelnianie wieloskładnikowe.
 
-Ustawienia ról zasobów platformy Azure (w wersji zapoznawczej) umożliwiają administratorom skonfigurowanie ustawień przypisań just in time i bezpośrednich, w tym:
+Ustawienia ról zasobów platformy Azure umożliwiają administratorom skonfigurowanie ustawień przypisań just in time i bezpośrednich, w tym:
 
 - Możliwość przypisywania użytkowników lub grup do ról bez daty/godziny zakończenia (przypisanie trwałe).
 - Domyślny czas trwania przypisania (jeśli nie jest trwałe).
@@ -173,7 +173,7 @@ Aktywacje roli można dostosowywać. W ustawieniach usługi PIM można określi�
 
 ## <a name="review-role-activity"></a>Przegląd działań roli
 
-Istnieją dwa sposoby, aby śledzić, jak pracownicy i administratorzy korzystają z ról uprzywilejowanych. Pierwszą opcją jest korzystanie z [historii inspekcji ról katalogu](pim-how-to-use-audit-log.md). W dziennikach historii inspekcji są rejestrowane zmiany w przypisaniach ról uprzywilejowanych, historia aktywacji ról oraz zmiany ustawień ról zasobów platformy Azure (w wersji zapoznawczej). 
+Istnieją dwa sposoby, aby śledzić, jak pracownicy i administratorzy korzystają z ról uprzywilejowanych. Pierwszą opcją jest korzystanie z [historii inspekcji ról katalogu](pim-how-to-use-audit-log.md). W dziennikach historii inspekcji są rejestrowane zmiany w przypisaniach ról uprzywilejowanych, historia aktywacji ról oraz zmiany ustawień ról zasobów platformy Azure. 
 
 ![Historia aktywacji w usłudze PIM — zrzut ekranu](./media/pim-configure/PIM_ActivationHistory.png)
 

@@ -9,13 +9,13 @@ editor: jasonwhowell
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 03/20/2018
-ms.openlocfilehash: dea380378aa1b6c2203c76f5c48e5af400ec8719
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 09/12/2018
+ms.openlocfilehash: f26cadf28205359b111a8f92b8fadcbd9f26f958
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266707"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407625"
 ---
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Tworzenie serwera usługi Azure Database for MySQL za pomocą witryny Azure Portal
 
@@ -51,7 +51,7 @@ Wykonaj następujące kroki, aby utworzyć serwer usługi Azure Database for MyS
     Hasło | *Wartość wybrana przez użytkownika* | Podaj nowe hasło dla konta administratora serwera. Musi zawierać od 8 do 128 znaków. Hasło musi zawierać znaki z trzech z następujących kategorii: wielkie litery angielskie, małe litery angielskie, cyfry (0–9) i znaki inne niż alfanumeryczne (!, $, #, % itp.).
     Potwierdź hasło | *Wartość wybrana przez użytkownika*| Potwierdź hasło do konta administratora.
     Lokalizacja | *Region najbliżej Twoich użytkowników*| Wybierz lokalizację najbliżej użytkowników lub innych aplikacji Azure.
-    Wersja | *Najnowsza wersja*| Najnowsza wersja, chyba że z konkretnych powodów wymagana jest inna wersja.
+    Wersja | *Najnowsza wersja główna*| Najnowsza wersja główna, chyba że z konkretnych powodów wymagana jest inna wersja.
     Warstwa cenowa | **Ogólnego przeznaczenia**, **generacja 4**, **2 rdzenie wirtualne**, **5 GB**, **7 dni**, **Geograficznie nadmiarowa** | Konfiguracje obliczania, magazynu i kopii zapasowej dla nowego serwera. Wybierz **warstwę cenową**. Następnie wybierz kartę **Ogólnego przeznaczenia**. *Generacja 4*, *2 rdzenie wirtualne*, *5 GB* oraz *7 dni* to wartości domyślne opcji **Generowanie obliczeń**, **Rdzeń wirtualny**, **Magazyn** oraz **Okres przechowywania kopii zapasowej**. Te suwaki możesz zostawić bez zmian. Aby włączyć kopie zapasowe serwera w magazynie geograficznie nadmiarowym, wybierz opcję **Geograficznie nadmiarowy** w pozycji **Opcje nadmiarowości kopii zapasowej**. Aby zapisać tę wybraną warstwę cenową, wybierz przycisk **OK**. Następny zrzut ekranu przedstawia te wybory.
   
     > [!IMPORTANT]
@@ -74,17 +74,11 @@ Usługa Azure Database for MySQL tworzy zaporę na poziomie serwera. Uniemożliw
 
 2. Na stronie serwera wybierz pozycję **Zabezpieczenia połączeń**.
 
-3.  W obszarze z nagłówkiem **Reguły zapory** wybierz puste pole tekstowe w kolumnie **Nazwa reguły**, aby rozpocząć tworzenie reguły zapory. 
-
-   W tym przewodniku Szybki start zezwolimy na wszystkie adresy IP na serwerze, wypełniając pola w poszczególnych kolumnach następującymi wartościami:
-
-   Nazwa reguły | Początkowy adres IP | Końcowy adres IP 
-   ---|---|---
-   AllowAllIps |  0.0.0.0 | 255.255.255.255
+3.  W obszarze z nagłówkiem **Reguły zapory** wybierz puste pole tekstowe w kolumnie **Nazwa reguły**, aby rozpocząć tworzenie reguły zapory. Wprowadź dokładny zakres adresów IP klientów, którzy będą uzyskiwać dostęp do tego serwera.
    
-   ![Zabezpieczenia połączeń — reguły zapory](./media/quickstart-create-mysql-server-database-using-azure-portal/5_firewall-settings.png)
+   ![Zabezpieczenia połączeń — reguły zapory](./media/quickstart-create-mysql-server-database-using-azure-portal/5-firewall-2.png)
 
-   Zezwalanie na wszystkie adresy IP nie jest bezpieczne. Ten przykład podano dla uproszczenia, ale w rzeczywistym scenariuszu musisz dokładnie znać zakresy adresów IP, które chcesz dodać dla aplikacji i użytkowników. 
+
 
 4. Na górnym pasku narzędzi strony **Zabezpieczenia połączeń** wybierz pozycję **Zapisz**. Przed kontynuowaniem zaczekaj, aż pojawi się powiadomienie, że aktualizacja została zakończona pomyślnie. 
 

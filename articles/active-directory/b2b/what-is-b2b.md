@@ -1,90 +1,85 @@
 ---
-title: Czym jest współpraca B2B usługi Azure Active Directory? | Microsoft Docs
-description: Współpraca z usługą Azure Active Directory B2B obsługuje relacje między firmami, umożliwiając partnerom biznesowym na selektywny dostęp do aplikacji firmowych.
+title: Co to jest współpraca w usłudze Azure Active Directory B2B? | Microsoft Docs
+description: Model współpracy w usłudze Azure Active Directory B2B przyznaje prawa dostępu użytkownika-gościa, aby móc bezpiecznie udostępniać zasoby i współpracować z partnerami zewnętrznymi.
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
-ms.date: 04/26/2018
+ms.topic: overview
+ms.date: 09/14/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
-ms.reviewer: sasubram
-ms.openlocfilehash: 51a969ae215583a0be8d75ff1de11173e0696a22
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
-ms.translationtype: MT
+ms.reviewer: mal
+ms.openlocfilehash: 609f48d0c2ba41d658850ade367d9b225941b105
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35649261"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982612"
 ---
-# <a name="what-is-azure-ad-b2b-collaboration"></a>Czym jest współpraca B2B w usłudze Azure AD?
+# <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Co to jest dostęp użytkowników-gości w usłudze Azure Active Directory B2B?
 
-Usługa Azure Active Directory (Azure AD) business-to-business (B2B) udostępnia funkcje pracy zespołowej Włącz każdej organizacji za pomocą usługi Azure AD do pracy z użytkownikami z dowolnej innej organizacji, małych lub dużych bezpieczne. Te organizacje mogą być z lub bez usługi Azure AD i nie musi nawet firma ma dział IT.
+Model współpracy między firmami (B2B) w usłudze Azure Active Directory (Azure AD) umożliwia bezpieczne udostępnianie aplikacji i usług firmy użytkownikom-gościom z dowolnej organizacji, zachowując kontrolę nad własnymi danymi firmowymi. Pracuj bezpiecznie z partnerami zewnętrznymi, dużymi lub małymi, nawet jeśli nie korzystają oni z usługi Azure AD lub nie mają działu IT. Prosty proces zapraszania i realizacji umożliwia partnerom uzyskiwanie dostępu do zasobów firmy przy użyciu własnych poświadczeń. Deweloperzy mogą używać międzyfirmowych interfejsów API usługi Azure AD do dostosowywania procesu zapraszania lub pisania aplikacji, takich jak samoobsługowe portale tworzenia kont.
 
-Organizacje za pomocą usługi Azure AD umożliwia dostęp do dokumentów, zasobów i aplikacjom partnerów, zachowując pełną kontrolę nad ich danymi firmowymi. Deweloperzy mogą używać usługi Azure AD business-to-business interfejsów API do pisania aplikacji, które łączą dwie organizacje ze sobą w większej liczbie bezpiecznie. Ponadto jest łatwa dla użytkowników końcowych przejść.
+Obejrzyj film wideo, aby dowiedzieć się, jak bezpiecznie współpracować z użytkownikami-gośćmi, zapraszając ich do logowania do aplikacji i usług firmy przy użyciu ich własnych tożsamości.
 
-Poniższy klip wideo zawiera omówienie przydatne.
+Poniższy film oferuje przydatne omówienie tej możliwości.
+
 >[!VIDEO https://www.youtube.com/embed/AhwrweCBdsc]
 
-## <a name="key-benefits-of-azure-ad-b2b-collaboration"></a>Do najważniejszych korzyści zapewnianych współpracy B2B usługi Azure AD
+## <a name="collaborate-with-any-partner-using-their-identities"></a>Współpraca z dowolnym partnerem z użyciem jego tożsamości
+Dzięki usłudze Azure AD B2B partner używa własnego rozwiązania do zarządzania tożsamościami, dlatego nie ma żadnych zewnętrznych kosztów administracyjnych dla organizacji. 
+- Partner korzysta z własnych tożsamości i poświadczeń; usługa Azure AD nie jest wymagana. 
+- Nie trzeba zarządzać zewnętrznymi kontami lub hasłami. 
+- Nie trzeba zsynchronizować konta ani zarządzać cyklami życia kont.  
 
-### <a name="work-with-any-user-from-any-partner"></a>Praca z żadnym użytkownikiem, od dowolnego partnera
+![dodawanie członka](media/what-is-b2b/add-member.png)
 
-- Czy partnerzy korzystać z własnych poświadczeń
-- Nie jest wymagany dla partnerów używać usługi Azure AD
-- Żadne katalogi zewnętrzne ani skomplikowane, wymagane
+## <a name="invite-guest-users-with-a-simple-invitation-and-redemption-process"></a>Zapraszanie użytkowników-gości za pomocą prostego procesu zapraszania i realizacji
+Użytkownicy-goście logują się do aplikacji i usług za pomocą własnych tożsamości służbowych lub społecznościowych. Jeśli użytkownik-gość nie ma konta Microsoft lub konta usługi Azure AD, zostanie ono utworzone, gdy użytkownik zrealizuje zaproszenie. 
+- Zaproś użytkowników-gości przy użyciu wybranych przez nich tożsamości poczty e-mail.
+- Wyślij bezpośredni link do aplikacji lub wyślij zaproszenie do własnego portalu dostępu użytkownika-gościa. 
+- Użytkownicy-goście wykonują kilka prostych kroków w celu realizacji.
 
-### <a name="simple-and-secure-collaboration"></a>Proste i bezpieczne współpracy
+![panel dostępu](media/what-is-b2b/consentscreen.png)
 
-- Zapewnianie dostępu do firmowych aplikacji ani danych, podczas stosowania zaawansowanych, Azure obsługiwane przez usługi AD zasady autoryzacji w
-- Łatwe
-- Zapewniania bezpieczeństwa danych przedsiębiorstwa dla aplikacji i danych
+## <a name="use-policies-to-securely-share-your-apps-and-services"></a>Bezpieczne udostępnianie aplikacji i usług przy użyciu zasad
+Zasady autoryzacji umożliwiają ochronę zawartości firmowej. Zasady dostępu warunkowego, takie jak uwierzytelnianie wieloskładnikowe, można wymuszać:
+- Na poziomie dzierżawy.
+- Na poziomie aplikacji.
+- W przypadku określonych gości w celu ochrony aplikacji i danych firmowych.
 
-### <a name="no-management-overhead"></a>Narzut na zarządzanie
+![dodawanie użytkowników-gości](media/what-is-b2b/tutorial-mfa-policy-2.png)
 
-- Brak zewnętrznych zarządzania konta lub hasła
-- Nie synchronizacji lub ręcznego zarządzania cyklem życia konta
-- Nie zewnętrznych koszty administracyjne
 
-## <a name="easily-add-b2b-collaboration-users"></a>Łatwe dodawanie użytkowników we współpracy B2B
+## <a name="easily-add-guest-users-in-the-azure-ad-portal"></a>Łatwe dodawanie użytkowników-gości w portalu usługi Azure AD
 
-Jako administrator, można łatwo dodać użytkowników (gości) we współpracy B2B do Twojej organizacji w [witryny Azure portal](https://portal.azure.com).
+Jako administrator możesz łatwo dodawać użytkowników-gości do organizacji w witrynie Azure Portal.
+- Utwórz nowego użytkownika-gościa w usłudze Azure AD podobnie jak w przypadku dodawania nowego użytkownika.
+- Użytkownik-gość natychmiast otrzymuje możliwe do dostosowania zaproszenie, które pozwala mu na zalogowanie się do panelu dostępu.
+- Użytkowników-gości w katalogu można przypisywać do aplikacji lub grup.  
 
-![dodać użytkowników-gości](media/what-is-b2b/adding-b2b-users-admin.png)
+![dodawanie użytkowników-gości](media/what-is-b2b/adding-b2b-users-admin.png)
 
-### <a name="enable-your-collaborators-to-bring-their-own-identity"></a>Włącz współpracownicy w taki sposób wyświetlić jego własnej tożsamości
+## <a name="let-application-and-group-owners-manage-their-own-guest-users"></a>Zezwalanie właścicielom aplikacji i grup na zarządzanie własnymi użytkownikami-gośćmi
 
-B2B współpracownicy mogą zalogować się przy użyciu tożsamości wybranych przez nich. Jeśli użytkownik nie ma konta Microsoft lub konta usługi Azure AD — utworzony dla nich bezproblemowo w czasie realizacji oferty.
+Zarządzanie użytkownikami-gośćmi można delegować do właścicieli aplikacji, aby mogli oni bezpośrednio dodawać użytkowników-gości do dowolnej aplikacji firmy Microsoft lub innej firmy. 
+ - Administratorzy konfigurują samoobsługowe zarządzanie aplikacjami i grupami.
+ - Użytkownicy inni niż administratorzy używają własnego [panelu dostępu](https://myapps.microsoft.com) w celu dodania użytkowników-gości do aplikacji lub grup.
 
-### <a name="delegate-to-application-and-group-owners"></a>Delegowanie do aplikacji i właścicieli grupy
+![dodawanie użytkowników-gości](media/what-is-b2b/access-panel-manage-app.png)
 
-Jako właściciela grupy lub aplikacji możesz dodać użytkowników B2B bezpośrednio do dowolnej aplikacji, które Cię interesują, czy jest aplikacją firmy Microsoft. Administratorzy mogą delegować uprawnienia do dodawania użytkowników B2B do użytkowników niebędących administratorami. Użytkownicy niebędący administratorami mogą używać [panelu dostępu do aplikacji w usłudze Azure AD](https://myapps.microsoft.com) do dodawania użytkowników we współpracy B2B do aplikacji lub grupy.
+## <a name="use-apis-and-sample-code-to-easily-build-applications-to-onboard"></a>Używanie interfejsów API i przykładowego kodu do prostego tworzenia aplikacji do dodania
 
-![Panel dostępu](media/what-is-b2b/access-panel.png)
+Zaproś partnerów zewnętrznych do współpracy w sposób dostosowany do potrzeb swojej organizacji.
+- Skorzystaj z [interfejsów API zapraszania do współpracy w usłudze B2B](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) w celu dostosowywania środowisk dodawania, w tym budowania samoobsługowych portali tworzenia kont. 
+- Skorzystaj z przykładowego kodu, który udostępniamy na potrzeby portalu samoobsługowego [w serwisie Github](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web).
 
-![Dodawanie elementu członkowskiego](media/what-is-b2b/add-member.png)
+![portal tworzenia konta](media/what-is-b2b/sign-up-portal.png)
 
-### <a name="authorization-policies-protect-your-corporate-content"></a>Zasady autoryzacji ochrony Twojej zawartości firmowej
+## <a name="next-steps"></a>Następne kroki
 
-Można wymusić zasady dostępu warunkowego, takie jak uwierzytelnianie wieloskładnikowe:
-- Na poziomie dzierżawy
-- Na poziomie aplikacji
-- Dla określonych użytkowników w celu ochrony danych i aplikacji firmowych
-
-### <a name="use-apis-and-sample-code-to-easily-build-applications-to-onboard"></a>Korzystanie z interfejsów API i przykładowy kod, aby łatwo tworzyć aplikacje do dołączenia
-
-Przenieś swoje partnerom zewnętrznym na pokładzie w sposób dostosowany do potrzeb swojej organizacji.
-
-Użyj [zaproszenie współpracy B2B interfejsów API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) w celu dostosowywania dołączanie środowisk, takich jak tworzenie portale Samoobsługowe dla rejestracji. Firma Microsoft zapewnia przykładowy kod dla portalu samoobsługowego [w serwisie Github](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web).
-
-![portal rejestracji](media/what-is-b2b/sign-up-portal.png)
-
-Przy użyciu funkcji współpracy B2B usługi Azure AD można korzystać z pełnej mocy usługi Azure AD, aby chronić Twoje relacjami z partnerami w taki sposób, że użytkownicy końcowi mogą znaleźć proste i intuicyjne.
-
-## <a name="next-steps"></a>Kolejne kroki
-
-- [Jak Administratorzy usługi Azure Active Directory dodać użytkowników we współpracy B2B?](add-users-administrator.md)
-- [Jak pracownicy przetwarzający informacje mogą dodać użytkowników we współpracy B2B?](add-users-information-worker.md)
-- [Realizacja zaproszenia współpracy B2B](redemption-experience.md)
-- [Licencjonowanie współpracy platformy Azure w usłudze AD B2B](licensing-guidance.md)
-- A jak zawsze, połącz się z zespołem produktu, wszelkie opinie, dyskusji i sugestie za pośrednictwem naszego [społeczności technicznej firmy Microsoft](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b).
+- [Licensing guidance for Azure AD B2B collaboration (Wskazówki dotyczące licencjonowania w ramach współpracy B2B w usłudze Azure AD)](licensing-guidance.md)
+- [Add B2B collaboration guest users in the portal (Dodawanie użytkowników-gości współpracy B2B w portalu)](add-users-administrator.md)
+- [Understand the invitation redemption process (Opis procesu realizacji zaproszenia)](redemption-experience.md)
+- Jak zawsze możesz skontaktować się z zespołem ds. produktu, aby podzielić się opiniami, problemami i sugestiami za pośrednictwem naszej [społeczności technicznej firmy Microsoft](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b).

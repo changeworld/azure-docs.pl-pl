@@ -1,21 +1,21 @@
 ---
-title: Tłumaczenie tekstu w usłudze Translator — tłumaczenie tekstu przy użyciu oprogramowania Node.js | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: W tym przewodniku Szybki start przetłumaczysz tekst z jednego języka na inny przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i oprogramowania Node.js w usługach Cognitive Services.
+title: 'Szybki start: tłumaczenie tekstu w usłudze Translator — tłumaczenie tekstu w usłudze Translator, oprogramowanie Node.js'
+titleSuffix: Azure Cognitive Services
+description: W tym przewodniku Szybki start przetłumaczysz tekst z jednego języka na inny przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i oprogramowania Node.js.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 6d862125dc6c248afa8d8322ec1b008959abb7cd
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: fe81b7fffd1705cb940e3aa52f397cf0f2cf1b14
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "43770843"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46122188"
 ---
 # <a name="quickstart-translate-text-with-nodejs"></a>Szybki start: tłumaczenie tekstu za pomocą oprogramowania Node.js
 

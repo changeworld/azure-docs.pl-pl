@@ -4,25 +4,21 @@ description: Informacje na temat sposobu używania usługi Azure Functions do op
 services: functions
 documentationcenter: na
 author: mattchenderson
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: usługa Azure Functions, funkcje, przetwarzanie zdarzeń, elementy webhook, obliczanie dynamiczne, architektura bez serwera
 ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: overview
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 10/03/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: d60c898225b944801504f38d536262134a31e021
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: bf3ebbf0c607bd87254ad7b9f8fae0a99ca66278
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2017
-ms.locfileid: "24877905"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392741"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Wprowadzenie do usługi Azure Functions  
 Azure Functions to rozwiązanie umożliwiające łatwe uruchamianie małych fragmentów kodu („funkcji”) w chmurze. Możesz napisać tylko kod rozwiązujący aktualny problem, nie martwiąc się o całą aplikację ani infrastrukturę do jej uruchomienia. Dzięki usłudze Functions programowanie może być jeszcze wydajniejsze i można korzystać z wybranego języka programowania, takiego jak C#, F#, Node.js, Java lub PHP. Płać tylko za czas działania kodu — platforma Azure jest skalowana zgodnie z potrzebami. Usługa Azure Functions pozwala tworzyć na platformie Microsoft Azure aplikacje [bezserwerowe](https://azure.microsoft.com/overview/serverless-computing/).
@@ -37,7 +33,7 @@ Oto główne funkcje usługi Functions:
 * **Korzystaj z własnych zależności** — środowisko Functions obsługuje rozwiązania NuGet i NPM, dzięki czemu można używać ulubionych bibliotek.  
 * **Zintegrowane zabezpieczenia** — ochrona funkcji wyzwalanych przez protokół HTTP za pośrednictwem dostawców uwierzytelniania OAuth, takich jak Azure Active Directory, Facebook, Google, Twitter i konto Microsoft.  
 * **Uproszczona integracja** — łatwe korzystanie z usług platformy Azure i ofert oprogramowania jako usługi (SaaS). Kilka przykładów można znaleźć w [sekcji dotyczącej integracji](#integrations).  
-* **Elastyczne programowanie** — kodowanie funkcji bezpośrednio w portalu lub konfigurowanie ciągłej integracji i wdrażanie kodu za pomocą usług [GitHub](../app-service/scripts/app-service-cli-continuous-deployment-github.md), [Visual Studio Team Services](../app-service/scripts/app-service-cli-continuous-deployment-vsts.md) i innych [obsługiwanych narzędzi deweloperskich](../app-service/app-service-deploy-local-git.md).  
+* **Elastyczne programowanie** — kodowanie funkcji bezpośrednio w portalu lub konfigurowanie ciągłej integracji i wdrażanie kodu za pomocą usług [GitHub](../app-service/scripts/app-service-cli-continuous-deployment-github.md), [Azure DevOps Services](../app-service/scripts/app-service-cli-continuous-deployment-vsts.md) i innych [obsługiwanych narzędzi deweloperskich](../app-service/app-service-deploy-local-git.md).  
 * **Open source** — środowisko uruchomieniowe Functions typu open source jest [dostępne w serwisie GitHub](https://github.com/azure/azure-webjobs-sdk-script).  
 
 ## <a name="what-can-i-do-with-functions"></a>Co można zrobić w środowisku Functions?
@@ -47,11 +43,10 @@ Oto główne funkcje usługi Functions:
 
 * **HTTPTrigger** — wyzwalanie wykonywania kodu za pomocą żądania HTTP. Aby zapoznać się z przykładem, zobacz [Tworzenie pierwszej funkcji](functions-create-first-azure-function.md).
 * **TimerTrigger** — wykonywanie oczyszczania lub innych zadań wsadowych zgodnie ze wstępnie zdefiniowanym harmonogramem. Aby zapoznać się z przykładem, zobacz [Tworzenie funkcji wyzwalanej przez czasomierz](functions-create-scheduled-function.md).
-* **Element webhook GitHub** — odpowiadanie na zdarzenia występujące w repozytoriach usługi GitHub. Aby zapoznać się z przykładem, zobacz [Tworzenie funkcji wyzwalanej przez element webhook GitHub](functions-create-github-webhook-triggered-function.md).
-* **Ogólny element webhook** — przetwarzanie żądań HTTP elementu webhook z dowolnej usługi obsługującej takie elementy. Aby zapoznać się z przykładem, zobacz [Tworzenie funkcji wyzwalanej przez ogólny element webhook](functions-create-generic-webhook-triggered-function.md).
-* **CosmosDBTrigger** — przetwarzanie dokumentów usługi Azure Cosmos DB, gdy są one dodawane lub aktualizowane w kolekcjach w bazie danych NoSQL. Aby zapoznać się z przykładem, zobacz [Tworzenie funkcji wyzwalanej przez usługę Azure Cosmos DB](functions-create-cosmos-db-triggered-function.md).
+* **CosmosDBTrigger** — przetwarzanie dokumentów usługi Azure Cosmos DB, gdy są one dodawane lub aktualizowane w kolekcjach w bazie danych NoSQL. Aby uzyskać więcej informacji, zobacz [Powiązania usługi Azure Cosmos DB](functions-bindings-cosmosdb-v2.md).
 * **BlobTrigger** — przetwarzanie obiektów blob usługi Azure Storage dodawanych do kontenerów. Tej funkcji można użyć do zmiany rozmiaru obrazu. Więcej informacji zawiera artykuł [Powiązania magazynu Blob Storage](functions-bindings-storage-blob.md).
-* **QueueTrigger** — odpowiadanie na komunikaty przychodzące w kolejce usługi Azure Storage. Aby zapoznać się z przykładem, zobacz [Tworzenie funkcji wyzwalanej przez usługę Azure Queue](functions-create-storage-queue-triggered-function.md).
+* **QueueTrigger** — odpowiadanie na komunikaty przychodzące w kolejce usługi Azure Storage. Aby uzyskać więcej informacji, zobacz [Powiązania usługi Azure Queue Storage](functions-bindings-storage-queue.md).
+* **EventGridTrigger** — odpowiadanie na zdarzenia dostarczone do subskrypcji w usłudze Azure Event Grid. Obsługuje oparty na subskrypcji model odbierania zdarzeń, a w tym filtrowania. Jest dobrym rozwiązaniem w przypadku tworzenia architektur opartych na zdarzeniach. Aby zapoznać się z przykładem, zobacz [Automatyzowanie zmiany rozmiaru przekazanych obrazów za pomocą usługi Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md).
 * **EventHubTrigger** — odpowiadanie na zdarzenia dostarczone do usługi Azure Event Hub. Opcja szczególnie przydatna podczas instrumentacji aplikacji, przetwarzania środowiska użytkownika lub przepływu pracy oraz pracy ze scenariuszami Internetu rzeczy (IoT). Aby uzyskać więcej informacji, zobacz [Powiązania usługi Event Hubs](functions-bindings-event-hubs.md).
 * **ServiceBusQueueTrigger** — łączenie kodu z innymi usługami platformy Azure lub usługami lokalnymi przez nasłuchiwanie w kolejkach komunikatów. Aby uzyskać więcej informacji, zobacz [Powiązania usługi Service Bus](functions-bindings-service-bus.md).
 * **ServiceBusTopicTrigger** — łączenie kodu z innymi usługami platformy Azure lub usługami lokalnymi przez subskrybowanie tematów. Aby uzyskać więcej informacji, zobacz [Powiązania usługi Service Bus](functions-bindings-service-bus.md).
@@ -62,13 +57,11 @@ Oto główne funkcje usługi Functions:
 Usługę Azure Functions można integrować z różnymi usługami platformy Azure i firm zewnętrznych. Te usługi umożliwiają wyzwalanie funkcji i uruchamianie wykonywania. Mogą również służyć jako dane wejściowe i wyjściowe dla kodu. W środowisku usługi Azure Functions obsługiwane są poniższe integracje usług:
 
 * Azure Cosmos DB
-* Azure Event Hubs 
+* Azure Event Hubs
 * Azure Event Grid
-* Azure Mobile Apps (tabele)
 * Azure Notification Hubs
 * Azure Service Bus (kolejki i tematy)
-* Azure Storage (obiekty blob, kolejki i tabele) 
-* GitHub (elementy webhook)
+* Azure Storage (obiekty blob, kolejki i tabele)
 * Lokalne (za pomocą usługi Service Bus)
 * Twilio (wiadomości SMS)
 
@@ -76,7 +69,7 @@ Usługę Azure Functions można integrować z różnymi usługami platformy Azur
 Usługa Azure Functions oferuje dwa rodzaje planów cenowych. Wybierz ten, który najlepiej odpowiada Twoim potrzebom: 
 
 * **Plan zużycia** — po uruchomieniu funkcji platforma Azure udostępnia wszystkie niezbędne zasoby obliczeniowe. Nie musisz martwić się o zarządzanie zasobami i płacisz tylko za czas działania kodu. 
-* **Plan usługi App Service** — uruchamianie funkcji tak samo jak aplikacji sieci Web, mobilnych i interfejsu API. Jeśli już używasz usługi App Service dla innych aplikacji, możesz uruchamiać swoje funkcje w ramach tego samego planu bez dodatkowych kosztów. 
+* **Plan usługi App Service** — uruchamianie funkcji tak samo, jak aplikacji internetowych. Jeśli już używasz usługi App Service dla innych aplikacji, możesz uruchamiać swoje funkcje w ramach tego samego planu bez dodatkowych kosztów. 
 
 Aby uzyskać więcej informacji o planach hostingu, zobacz [Porównanie planów hostingu usługi Azure Functions](functions-scale.md). Szczegółowe informacje są dostępne na [stronie cennika usługi Functions](https://azure.microsoft.com/pricing/details/functions/).
 

@@ -1,25 +1,25 @@
 ---
-title: 'Szybki start: Uruchamianie przepływu za pośrednictwem usługi Microsoft Genomics | Microsoft Docs'
+title: 'Szybki start: Uruchamianie przepływu za pośrednictwem usługi Microsoft Genomics'
 description: Ten poradnik Szybki start opisuje sposób ładowania danych wejściowych do usługi Azure Blob Storage oraz uruchamiania przepływu pracy za pośrednictwem usługi Microsoft Genomics.
-services: microsoft-genomics
+services: genomics
 author: grhuynh
-manager: jhubbard
-editor: jasonwhowell
+manager: cgronlun
 ms.author: grhuynh
-ms.service: microsoft-genomics
-ms.workload: genomics
+ms.service: genomics
 ms.topic: quickstart
 ms.date: 12/07/2017
-ms.openlocfilehash: 4387e1c935ada99e1f9c335fb7e1b67905c01188
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: e1d10b578d33ba8d96f43666b82e94ef5503fe77
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42023076"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731091"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Szybki start: Uruchamianie przepływu za pośrednictwem usługi Microsoft Genomics
 
-Microsoft Genomics to skalowalna, bezpieczna usługa umożliwiająca dodatkową analizę zapewniającą szybkie przetwarzanie genomów, począwszy od pierwotnych operacji odczytywania i tworzenia dopasowanych operacji odczytywania i wywołań odmian. Rozpocznij pracę przy użyciu kilku kroków: 
+Ten poradnik Szybki start opisuje sposób ładowania danych wejściowych do usługi Azure Blob Storage oraz uruchamiania przepływu pracy za pośrednictwem usługi Microsoft Genomics. Microsoft Genomics to skalowalna, bezpieczna usługa umożliwiająca dodatkową analizę zapewniającą szybkie przetwarzanie genomów, począwszy od pierwotnych operacji odczytywania i tworzenia dopasowanych operacji odczytywania i wywołań odmian. 
+
+Rozpocznij pracę przy użyciu kilku kroków: 
 1.  Konfiguracja: utwórz konto usługi Microsoft Genomics za pośrednictwem witryny Azure Portal, a następnie zainstaluj klienta Microsoft Genomics Python w środowisku lokalnym. 
 2.  Przekazywanie danych wejściowych: utwórz konto magazynu platformy Microsoft Azure za pośrednictwem witryny Azure Portal i przekaż pliki wejściowe. Pliki wejściowe powinny być sparowanymi odczytami końcowymi (pliki fastq lub bam).
 3.  Uruchomienie: użyj interfejsu wiersza polecenia usługi Microsoft Genomics, aby uruchomić przepływy pracy za pośrednictwem usługi Microsoft Genomics. 

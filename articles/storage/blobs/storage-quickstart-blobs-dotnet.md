@@ -1,27 +1,27 @@
 ---
-title: Szybki start Azure — Tworzenie obiektu blob w magazynie obiektów przy użyciu platformy .NET | Microsoft Docs
-description: Ten przewodnik Szybki start przedstawia tworzenie konta magazynu i kontenera w magazynie obiektów (blob). Następnie przy użyciu biblioteki klienta platformy .NET przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz listę obiektów blob w kontenerze.
+title: 'Szybki start: tworzenie obiektu blob w magazynie obiektów za pomocą platformy .NET — Azure Storage'
+description: Z tego przewodnika Szybki start dowiesz się, jak używać biblioteki klienta usługi Azure Storage dla platformy .NET do tworzenia kontenera i obiektu blob w magazynie obiektów blob (obiektów). Następnie dowiesz się, jak pobrać obiekt blob na komputer lokalny i jak wyświetlać listę wszystkich obiektów blob w kontenerze.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 05/22/2018
+ms.date: 08/27/2018
 ms.author: tamram
-ms.openlocfilehash: d5a9c87246a175cc7455113c36caa59d59a79226
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: cde8516b93c2aac0cb74d9c9599168c8e6a70472
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399689"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734137"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-net"></a>Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą platformy .NET
+# <a name="quickstart-use-net-to-create-a-blob-in-object-storage"></a>Szybki start: tworzenie obiektu blob w magazynie obiektów za pomocą platformy .NET
 
-Dzięki temu przewodnikowi Szybki start dowiesz się, w jaki sposób za pomocą biblioteki klienckiej platformy .NET dla usługi Azure Storage przekazywać, pobierać i wyświetlać listę blokowych obiektów blob w kontenerze.
-
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Z tego przewodnika Szybki start dowiesz się, jak używać biblioteki klienta usługi Azure Storage dla platformy .NET do tworzenia kontenera i obiektu blob w magazynie obiektów blob (obiektów). Następnie dowiesz się, jak pobrać obiekt blob na komputer lokalny i jak wyświetlać listę wszystkich obiektów blob w kontenerze.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Aby ukończyć ten przewodnik Szybki start, najpierw utwórz konto usługi Azure Storage w witrynie [Azure Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM). Aby uzyskać pomoc przy tworzeniu konta, zobacz [Tworzenie konta magazynu](../common/storage-quickstart-create-account.md).
 

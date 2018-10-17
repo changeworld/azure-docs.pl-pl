@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 08/27/2018
+ms.date: 09/07/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 57d5f7039831c9fd617926f20f3ff001b22ef314
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: d48374d7919be3d141ea199e8238a220dbfe0332
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43097889"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419529"
 ---
 # <a name="tutorial-create-an-azure-resource-manager-template-for-deploying-an-encrypted-storage-account"></a>Samouczek: tworzenie szablonu usługi Azure Resource Manager na potrzeby wdrażania szyfrowanego konta magazynu
 
@@ -112,9 +112,14 @@ Aby użyć zmiennej zdefiniowanej w szablonie:
 Celem tego samouczka jest zdefiniowanie szablonu w celu utworzenia zaszyfrowanego konta magazynu.  Na podstawie przykładowego szablonu można utworzyć tylko podstawowe, niezaszyfrowane konto magazynu. Aby znaleźć konfigurację związaną z szyfrowaniem, możesz zajrzeć do dokumentacji szablonu dla konta usługi Azure Storage.
 
 1. Przejdź do pozycji [Szablony platformy Azure](https://docs.microsoft.com/azure/templates/).
-2. W spisie treści po lewej stronie wybierz pozycję **Dokumentacja**->**Magazyn**->**Konta magazynu**. Możesz również wprowadzić ciąg **magazyn** w polu **Filtruj według tytułu**.  Strona zawiera schemat umożliwiający zdefiniowanie informacji o koncie magazynu.
-3. Przejrzyj informacje związane z szyfrowaniem.  
-4. Wewnątrz elementu properties w definicji zasobu konta magazynu dodaj następujący kod json:
+2. W polu **Filtruj według tytułu** wprowadź ciąg **konta magazynu**.
+3. Wybierz pozycję **Odwołanie/Szablon odwołania/Magazyn/Konta magazynu** w sposób pokazany na poniższym zrzucie ekranu:
+
+    ![Konto magazynu odwołania do szablonu usługi Resource Manager](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
+
+    resource-manager-template-resources-reference-storage-accounts
+1. Przejrzyj informacje związane z szyfrowaniem.  
+1. Wewnątrz elementu properties w definicji zasobu konta magazynu dodaj następujący kod json:
 
     ```json
     "encryption": {
@@ -151,7 +156,7 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób użycia dokumentacji szablonu w celu dostosowania istniejącego szablonu. Szablon używany w tym samouczku zawiera tylko jeden zasób platformy Azure.  W następnym samouczku zostanie utworzony szablon z wieloma zasobami. Niektóre zasoby zawierają zasoby zależne.
+W tym samouczku przedstawiono sposób użycia dokumentacji szablonu w celu dostosowania istniejącego szablonu. Aby dowiedzieć się, jak utworzyć wiele wystąpień konta magazynu, zobacz:
 
 > [!div class="nextstepaction"]
-> [Tworzenie wielu zasobów](./resource-manager-tutorial-create-templates-with-dependent-resources.md)
+> [Tworzenie wielu wystąpień](./resource-manager-tutorial-create-multiple-instances.md)

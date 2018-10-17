@@ -10,7 +10,7 @@ items:
   items:
   - name: Kompilowanie aplikacji dla wstępnie utworzonej domeny
     href: luis-get-started-create-app.md
-  - name: Korzystanie z interfejsów API
+  - name: Używanie interfejsów API REST
     items:
     - name: Uzyskiwanie intencji
       items:
@@ -164,7 +164,7 @@ items:
       href: luis-how-to-add-example-utterances.md
     - name: Dodawanie jednostek
       href: luis-how-to-add-entities.md
-    - name: Za pomocą interfejsów API
+    - name: Za pomocą interfejsów API REST
       items:
       - name: Programowe tworzenie aplikacji przy użyciu środowiska Node.js
         href: luis-tutorial-node-import-utterances-csv.md
@@ -172,7 +172,7 @@ items:
         href: luis-tutorial-list-entity.md
   - name: Integracja
     items:
-    - name: Za pomocą interfejsu API sprawdzania pisowni Bing w wersji 7
+    - name: Za pomocą sprawdzania pisowni Bing w wersji 7
       href: luis-tutorial-bing-spellcheck.md
     - name: Za pomocą usługi rozpoznawania mowy
       href: luis-tutorial-speech-to-intent.md
@@ -234,13 +234,13 @@ items:
         href: luis-how-to-manage-from-cloud-shell.md
       - name: Rozszerzanie limitu przydziału punktu końcowego między kluczami za pomocą usługi Traffic Manager
         href: luis-traffic-manager.md
-  - name: Migrowanie do interfejsu API V2
+  - name: Migrowanie do interfejsu API REST w wersji 2
     href: luis-migration-api-v1-to-v2.md
   - name: Programowe znajdywanie regionu
     items:
-    - name: Przy użyciu języka C#
+    - name: Korzystanie z interfejsu API REST i języka C#
       href: luis-find-region-csharp.md
-    - name: Używanie środowiska Node.js
+    - name: Korzystanie z interfejsu API REST i języka Node.js
       href: luis-find-region-nodejs.md
 - name: Dokumentacja
   items:
@@ -286,16 +286,18 @@ items:
       href: luis-reference-prebuilt-url.md
   - name: Dokumentacja wstępnie utworzonych domen
     href: luis-reference-prebuilt-domains.md
-  - name: Interfejs API V2 tworzenia
-    href: https://aka.ms/luis-authoring-apis
-  - name: Interfejs API V2 punktu końcowego
-    href: https://aka.ms/luis-endpoint-apis
-  - name: Kody HTTP
-    href: luis-reference-response-codes.md
   - name: Interfejs wiersza polecenia platformy Azure
     href: https://aka.ms/az-cli-cognitiveservices
   - name: Azure RM PowerShell
     href: https://aka.ms/azure-powershell-cognitiveservices
+  - name: Interfejsy API REST
+    items:
+    - name: Tworzenie interfejsów API REST w wersji 2
+      href: https://aka.ms/luis-authoring-apis
+    - name: Interfejs API REST punktu końcowego w wersji 2
+      href: https://aka.ms/luis-endpoint-apis
+    - name: Kody HTTP
+      href: luis-reference-response-codes.md
   - name: Zestawy SDK
     items:
     - name: C#
@@ -374,9 +376,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: Baza wiedzy
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: bf82f62fac518c0442ad67c346c422b06aa73088
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: fe393a2c92cf9391dc620acae4878996d107a68e
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432775"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364544"

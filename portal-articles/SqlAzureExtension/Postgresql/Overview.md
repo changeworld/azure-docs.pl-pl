@@ -8,16 +8,16 @@ ms.service: postgresql
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: sewatson
-ms.openlocfilehash: 9c930d1171b77ddf0bb6621fbf012f98816fd763
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6282acaf165d2f31a1a1ac525dad75ebc64a2a7c
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23073847"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434793"
 ---
 # <a name="azure-database-for-postgresql-documentation"></a>Dokumentacja usługi Azure Database dla PostgreSQL
 
-Usługa Azure Database dla PostgreSQL jest usługą relacyjnej bazy danych opartą na aparacie bazy danych Postgres typu open source. Jest to w pełni zarządzana baza danych oferowana jako usługa, za pomocą której można obsługiwać obciążenia o krytycznym znaczeniu — z przewidywalną wydajnością, zabezpieczeniami, wysoką dostępnością i dynamiczną skalowalnością.  Twórz aplikacje za pomocą usługi Azure Database dla PostgreSQL, korzystając z narzędzi open source i wybranej platformy.  Dowiedz się, jak używać usługi Azure Database dla PostgreSQL, korzystając z przewodników Szybki Start, samouczków i przykładów.
+Usługa Azure Database for PostgreSQL jest usługą relacyjnej bazy danych opartą na aparacie bazy danych Postgres typu open source. Jest to w pełni zarządzana baza danych oferowana jako usługa, za pomocą której można obsługiwać obciążenia o krytycznym znaczeniu — z przewidywalną wydajnością, zabezpieczeniami, wysoką dostępnością i dynamiczną skalowalnością.  Twórz aplikacje za pomocą usługi Azure Database for PostgreSQL, korzystając z narzędzi open source i wybranej platformy.  Dowiedz się, jak używać usługi Azure Database dla PostgreSQL, korzystając z przewodników Szybki Start, samouczków i przykładów.
 
 ## <a name="5-minute-quickstarts"></a>5-minutowe przewodniki Szybki start
 
@@ -31,7 +31,7 @@ Dowiedz się, jak utworzyć bazę danych PostgreSQL za pomocą następujących e
 Instrukcje:
 
 - Projektowanie bazy danych: [Azure Portal](/azure/postgresql/tutorial-design-database-using-azure-portal) |  [Interfejs wiersza polecenia platformy Azure](/azure/postgresql/tutorial-design-database-using-azure-cli)
-- [Tworzenie aplikacji internetowej za pomocą języka Python i interfejsu wiersza polecenia](/azure/app-service-web/app-service-web-tutorial-docker-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json)
+- [Tworzenie aplikacji internetowej za pomocą języka Python i interfejsu wiersza polecenia](/azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json)
 
 ## <a name="samples"></a>Przykłady 
 

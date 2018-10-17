@@ -1,21 +1,21 @@
 ---
-title: Uzyskiwanie długości zdania tekstu w usłudze Translator przy użyciu języka Go | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: W tym przewodniku Szybki start odnajdziesz długość zdań w tekście przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka Go w usługach Cognitive Services.
+title: 'Szybki start: uzyskiwanie długości zdań — tłumaczenie tekstu w usłudze Translator, Go'
+titleSuffix: Azure Cognitive Services
+description: W tym przewodniku Szybki start określisz długości zdań w tekście przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka Go.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
 ms.author: nolachar
-ms.openlocfilehash: 441f7c9ced91899896b63f4925f1ec204a9f52fb
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 34b30179d674a42f6c9c2c358c0feb6e083089f6
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "43771310"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129458"
 ---
 # <a name="quickstart-get-sentence-lengths-with-go"></a>Szybki start: uzyskiwanie długości zdania przy użyciu języka Go
 

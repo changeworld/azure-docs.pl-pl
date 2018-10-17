@@ -1,21 +1,21 @@
 ---
-title: Tłumaczenie tekstu w usłudze Translator — rozpoznawanie języka tekstu przy użyciu oprogramowania Node.js | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: W tym przewodniku Szybki start rozpoznasz język tekstu źródłowego przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i oprogramowania Node.js w usługach Cognitive Services.
+title: 'Szybki start: rozpoznawanie języka tekstu — tłumaczenie tekstu w usłudze Translator, Node.js'
+titleSuffix: Azure Cognitive Services
+description: W tym przewodniku Szybki start rozpoznasz język tekstu źródłowego przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator w środowisku Node.js.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 8e6fecf74d1291e9660076572d385bb234edc222
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: bb2118c9c05cff093bb5affe91a388986ba85a38
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "43770808"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126211"
 ---
 # <a name="quickstart-identify-language-from-text-with-nodejs"></a>Szybki start: identyfikowanie języka tekstu za pomocą oprogramowania Node.js
 

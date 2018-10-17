@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: c0b42c3efd5e015eaf1fbd750f835d8de8818de9
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: d99b76faf618439e51735d5f1096fd4f1cfd2364
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43185855"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038293"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Samouczek: Dostosowywanie widoku operatora usługi Azure IoT Central
 
@@ -50,9 +50,9 @@ Jako konstruktor możesz zdefiniować informacje wyświetlane na pulpicie nawiga
 
     ![Wybieranie połączonego klimatyzatora](media/tutorial-customize-operator/selectdevice.png)
 
-    Po wprowadzeniu zmiany dla urządzenia, takiego jak **Połączony klimatyzator-1**, możesz wprowadzić zmianę do bazowego szablonu. Aby uzyskać więcej informacji, zobacz [Tworzenie nowej wersji szablonu urządzenia](howto-version-devicetemplate.md).
+    Po przejściu do urządzenia, takiego jak **Połączony klimatyzator-1**, możesz wybrać pozycję **Edytuj szablon**, aby wprowadzić zmianę do szablonu bazowego. Aby uzyskać więcej informacji, zobacz [Tworzenie nowej wersji szablonu urządzenia](howto-version-devicetemplate.md).
 
-3. Aby zmodyfikować pulpit nawigacyjny, wybierz pozycję **Pulpit nawigacyjny**:
+3. Aby edytować pulpit nawigacyjny, wybierz pozycję **Pulpit nawigacyjny**, a następnie wybierz przycisk **Edytuj szablon**:
 
     ![Strona pulpitu nawigacyjnego szablonu urządzenia](media/tutorial-customize-operator/dashboard.png)
 
@@ -77,11 +77,13 @@ Jako konstruktor możesz zdefiniować informacje wyświetlane na pulpicie nawiga
 
     ![Edytowanie układu pulpitu nawigacyjnego](media/tutorial-customize-operator/dashboardlayout.png)
 
+7. Kliknij przycisk **Gotowe** po zakończeniu wprowadzania zmian.
+
 ## <a name="configure-your-settings-layout"></a>Konfigurowanie układu ustawień
 
 Jako konstruktor możesz także skonfigurować widok operatora dla ustawień urządzenia. Operator używa strony ustawień urządzenia do konfigurowania urządzenia. Na przykład operator może użyć strony ustawień do ustawienia temperatury docelowej dla lodówki.
 
-1. Aby zmodyfikować układ ustawień dla połączonego klimatyzatora, wybierz pozycję **Ustawienia**:
+1. Aby edytować układ ustawień dla połączonego klimatyzatora, wybierz pozycję **Ustawienia**, a następnie wybierz przycisk **Edytuj szablon**:
 
     ![Strona Ustawienia](media/tutorial-customize-operator/settings.png)
 
@@ -89,14 +91,16 @@ Jako konstruktor możesz także skonfigurować widok operatora dla ustawień urz
 
     ![Edytowanie układu ustawień](media/tutorial-customize-operator/settingslayout.png)
 
+3. Kliknij przycisk **Gotowe** po zakończeniu wprowadzania zmian.
+
 > [!NOTE]
-> W **trybie projektowania** nie można edytować wartości ustawień.
+> W trybie **Edytowanie szablonu** nie można edytować wartości ustawień.
 
 ## <a name="configure-your-properties-layout"></a>Konfigurowanie układu właściwości
 
 Poza pulpitem nawigacyjnym i ustawieniami możesz także skonfigurować widok operatora dla właściwości urządzenia. Operator używa strony właściwości urządzenia do zarządzania metadanymi urządzenia. Na przykład operator może użyć strony właściwości do wyświetlenia numeru seryjnego urządzenia lub zaktualizowania danych kontaktowych producenta.
 
-1. Aby zmodyfikować układ właściwości dla połączonego klimatyzatora, wybierz pozycję **Właściwości**:
+1. Aby edytować układ właściwości dla połączonego klimatyzatora, wybierz pozycję **Właściwości**, a następnie wybierz przycisk **Edytuj szablon**:
 
     ![Strona właściwości](media/tutorial-customize-operator/properties.png)
 
@@ -104,16 +108,18 @@ Poza pulpitem nawigacyjnym i ustawieniami możesz także skonfigurować widok op
 
     ![Edytowanie układu właściwości](media/tutorial-customize-operator/propertieslayout.png)
 
+3. Kliknij przycisk **Gotowe** po zakończeniu wprowadzania zmian.
+
 > [!NOTE]
-> W **trybie projektowania** nie można edytować wartości właściwości.
+> W trybie **Edytowanie szablonu** nie można edytować wartości właściwości.
 
 ## <a name="preview-the-connected-air-conditioner-device-as-an-operator"></a>Wyświetlanie podglądu połączonego klimatyzatora jako operator
 
-W **trybie projektowania** możesz dostosować pulpit nawigacyjny oraz strony ustawień i właściwości dla operatora. Po wyłączeniu **trybu projektowania** możesz wyświetlić aplikację jako operator.
+W trybie **Edytowanie szablonu** możesz dostosować pulpit nawigacyjny oraz strony ustawień i właściwości dla operatora. Jeśli nie pracujesz w trybie **Edytowanie szablonu**, możesz wyświetlić aplikację jako operator.
 
-1. Aby wyświetlić połączony klimatyzator jako operator, musisz wyłączyć **tryb projektowania**. Aby wyłączyć **tryb projektowania**, przełącz element **Tryb projektowania** w prawej górnej części strony.
+1. Aby wyświetlić połączone urządzenie klimatyzatora jako operator, musisz kliknąć przycisk **Gotowe** w celu zatrzymania edycji szablonu. Spowoduje to powrót do widoku operatora urządzenia.
 
-2. Aby zaktualizować numer seryjny urządzenia, zmodyfikuj wartość na kafelku numeru seryjnego i wybierz polecenie **Zapisz**:
+2. Aby zaktualizować lokalizację tego urządzenia, zmodyfikuj wartość na kafelku Lokalizacja, a następnie wybierz przycisk **Zapisz**:
 
     ![Edytowanie wartości właściwości](media/tutorial-customize-operator/editproperty.png)
 
@@ -131,7 +137,7 @@ W **trybie projektowania** możesz dostosować pulpit nawigacyjny oraz strony us
 
 Gdy konstruktor lub operator zaloguje się do aplikacji usługi Azure IoT Central, widzi stronę główną. Jako konstruktor możesz skonfigurować zawartość strony głównej, umieszczając na niej zawartość najbardziej przydatną dla operatora.
 
-1. Aby dostosować domyślną stronę główną, przejdź na stronę **Strona główna** i przełącz element **Tryb projektowania** w prawej górnej części strony. Po włączeniu **trybu projektowania** z prawej strony wysuwa się panel z listą obiektów, które można dodać do strony głównej.
+1. Aby dostosować domyślną stronę główną, przejdź na stronę **Strona główna** i wybierz pozycję **Edycja** w prawej górnej części strony. Po wybraniu pozycji **Edycja** z prawej strony wysuwa się panel z listą obiektów, które można dodać do strony głównej.
 
     ![Strona Konstruktor aplikacji](media/tutorial-customize-operator/builderhome.png)
 
@@ -150,7 +156,7 @@ Gdy konstruktor lub operator zaloguje się do aplikacji usługi Azure IoT Centra
 
 ## <a name="preview-the-default-home-page-as-an-operator"></a>Wyświetlanie podglądu domyślnej strony głównej jako operator
 
-Aby wyświetlić podgląd strony głównej jako operator, wyłącz pozycję **Tryb projektowania** w prawej górnej części strony:
+Aby wyświetlić podgląd strony głównej jako operator i już jej nie edytować, wybierz pozycję **Gotowe** w prawej górnej części strony
 
 ![Przełączanie trybu projektowania](media/tutorial-customize-operator/operatorviewhome.png)
 

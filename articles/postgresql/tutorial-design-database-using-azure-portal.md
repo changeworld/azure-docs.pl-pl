@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 03/20/2018
-ms.openlocfilehash: 181e31530960f031dd2785b852c0ae15c21af782
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6a3241e15cc72d1d50862a9dec14c23712ec4226
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30186312"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406386"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>Samouczek: Projektowanie bazy danych usługi Azure Database for PostgreSQL przy użyciu witryny Azure Portal
 
@@ -85,7 +85,7 @@ Usługa Azure Database for PostgreSQL używa zapory na poziomie serwera. Domyśl
 
 2.  Na stronie serwera wybierz pozycję **Zabezpieczenia połączeń**. 
 
-3.  Kliknij w polu tekstowym w obszarze **Nazwa reguły** i dodaj nową regułę zapory, aby na liście dozwolonych umieścić zakres adresów IP służących do łączności. W tym samouczku przyjmijmy, że zezwalamy na wszystkie adresy IP, wpisując w polach **Nazwa reguły = AllowAllIps**, **Początkowy adres IP = 0.0.0.0** i **Końcowy adres IP = 255.255.255.255**, a następnie klikając przycisk **Zapisz**. Możesz ustawić konkretną regułę zapory uwzględniającą mniejszy zakres adresów IP, aby mieć możliwość nawiązywania połączeń z Twojej sieci.
+3.  Kliknij w polu tekstowym w obszarze **Nazwa reguły** i dodaj nową regułę zapory, aby na liście dozwolonych umieścić zakres adresów IP służących do łączności. Wprowadź zakres adresów IP. Kliknij pozycję **Zapisz**.
 
    ![Usługa Azure Database for PostgreSQL — tworzenie reguły zapory](./media/tutorial-design-database-using-azure-portal/5-firewall-2.png)
 
