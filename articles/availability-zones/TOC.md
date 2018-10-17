@@ -38,7 +38,7 @@
 ### [Publiczny adres IP](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 
 ### SQL Database
-#### [Strefy dostępności z usługą SQL Database](../sql-database/sql-database-high-availability.md#availability-zones)
+#### [Strefy dostępności z usługą SQL Database](../sql-database/sql-database-high-availability.md#zone-redundant-configuration)
 
 ### Magazyn
 #### [Magazyn strefowo nadmiarowy](../storage/common/storage-redundancy-zrs.md)

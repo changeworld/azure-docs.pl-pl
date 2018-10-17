@@ -3,7 +3,7 @@ title: 'Szybki start: Azure Security Center — dołączanie subskrypcji platfor
 description: Ten przewodnik Szybki start przedstawia, jak zmienić warstwę cenową usługi Security Center na wyższą warstwę Standardowa w celu zapewnienia dodatkowych zabezpieczeń.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/26/2018
-ms.author: terrylan
-ms.openlocfilehash: d10cef33ef0c325d41c9539107b9a4cab5e916d8
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.date: 09/2/2018
+ms.author: rkarlin
+ms.openlocfilehash: dc4c07b54085dfea6d97f2ca43a8cdddfcb9e57c
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37059858"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025468"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Szybki start: dołączanie subskrypcji platformy Azure do usługi Security Center w warstwie Standardowa
 Usługa Azure Security Center zapewnia ujednolicone zarządzanie zabezpieczeniami i ochronę przed zagrożeniami na potrzeby różnych obciążeń chmury hybrydowej. Warstwa Bezpłatna zapewnia ograniczone bezpieczeństwo jedynie zasobów platformy Azure, natomiast warstwa Standardowa rozszerza te możliwości na środowisko lokalne i inne chmury. Usługa Security Center w warstwie Standardowa pomaga w wyszukiwaniu i naprawianiu luk w zabezpieczeniach, stosowaniu kontroli dostępu i aplikacji w celu blokowania złośliwych działań, wykrywaniu zagrożeń przy użyciu analizy oraz szybkim reagowaniu podczas ataku. Standardową warstwę cenową usługi Security Center możesz wypróbować bezpłatnie przez pierwsze 60 dni.
@@ -53,20 +53,18 @@ Aby w pełni korzystać z usługi Security Center, należy wykonać poniższe kr
 ## <a name="upgrade-to-the-standard-tier"></a>Zmiana warstwy na wyższą warstwę Standardowa
 Na potrzeby przewodników Szybki start i samouczków usługi Security Center musisz zmienić warstwę na wyższą warstwę Standardowa. Jest ona bezpłatna przez pierwsze 60 dni, a w dowolnej chwili możesz wrócić do warstwy Bezpłatna.
 
-1. W menu głównym usługi Security Center wybierz pozycję **Dołączanie do zabezpieczeń zaawansowanych**.
+1. W menu głównym usługi Security Center wybierz pozycję **Wprowadzenie**.
+ 
+  ![Rozpoczęcie pracy][4]
 
-2. W obszarze **Dołączanie do zabezpieczeń zaawansowanych** usługa Security Center wyświetla listę subskrypcji i obszarów roboczych, które kwalifikują się do dołączenia. Wybierz subskrypcję z listy.
+2. W obszarze **Uaktualnienie** usługa Security Center wyświetla listę subskrypcji i obszarów roboczych, które kwalifikują się do dołączenia. 
+   - Możesz kliknąć listę rozwijaną **Zastosuj wersję próbną**, aby wyświetlić listę wszystkich subskrypcji i obszarów roboczych ze stanem kwalifikacji do korzystania z wersji próbnej.
+   -    Możesz uaktualnić subskrypcje i obszary robocze, które nie kwalifikują się do korzystania z wersji próbnej.
+   -    Możesz wybrać kwalifikujące się obszary robocze i subskrypcje i rozpocząć korzystanie z wersji próbnej.
+3.  Kliknij przycisk **Rozpocznij okres próbny**, aby rozpocząć okres próbny w ramach wybranych subskrypcji.
 
-  ![Wybieranie subskrypcji][4]
 
-3. Obszar **Zasady zabezpieczeń** zapewnia informacje na temat grup zasobów zawartych w subskrypcji. Otwiera się również obszar **Ceny**.
-4. W obszarze **Ceny** wybierz pozycję **Standardowa**, aby zmienić warstwę Bezpłatna na wyższą warstwę Standardowa i kliknij przycisk **Zapisz**.
-
-  ![Wybieranie warstwy Standardowa][5]
-
-Teraz, gdy warstwa została zmieniona na warstwę Standardowa, masz dostęp do dodatkowych funkcji usługi Security Center, takich jak **adaptacyjna kontrola aplikacji**, **dostęp do maszyny wirtualnej dokładnie na czas**, **alerty zabezpieczeń**, **analiza zagrożeń**, **elementy playbook automatyzacji** itd. Pamiętaj, że alerty zabezpieczeń będą wyświetlane tylko wtedy, gdy usługa Security Center wykryje złośliwe działania.
-
-  ![Alerty zabezpieczeń][7]
+  ![Alerty zabezpieczeń][9]
 
 ## <a name="automate-data-collection"></a>Automatyzacja zbierania danych
 Usługa Security Center zbiera dane z maszyn wirtualnych platformy Azure i komputerów spoza platformy Azure w celu monitorowania pod kątem luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą programu Microsoft Monitoring Agent, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z maszyn oraz kopiuje dane do Twojego obszaru roboczego na potrzeby analizy. Domyślnie usługa Security Center utworzy nowy obszar roboczy.
@@ -76,11 +74,10 @@ Jeśli jest włączona automatyczna aprowizacja, usługa Security Center instalu
 Aby włączyć automatyczną aprowizację programu Microsoft Monitoring Agent:
 
 1. W menu głównym usługi Security Center wybierz pozycję **Zasady zabezpieczeń**.
-2. Wybierz subskrypcję.
-3. W obszarze **Zasady zabezpieczeń** wybierz pozycję **Zbieranie danych**.
-4. W obszarze **Zbieranie danych** wybierz pozycję **Włącz**, aby włączyć automatyczną aprowizację.
-5. Wybierz pozycję **Zapisz**.
-
+2. W wierszu subskrypcji wybierz pozycję **Edytuj ustawienia>**.
+3. Na karcie **Zbieranie danych** ustaw opcję **Automatyczna aprowizacja** na wartość **Wł**.
+4. Wybierz pozycję **Zapisz**.
+****
   ![Włączanie automatycznej aprowizacji][6]
 
 Dzięki temu nowemu wglądowi w maszyny wirtualne platformy Azure usługa Security Center może udostępniać dodatkowe zalecenia dotyczące stanu aktualizacji systemu, konfiguracji zabezpieczeń systemu operacyjnego i ochrony punktów końcowych, a także generować dodatkowe alerty zabezpieczeń.
@@ -91,16 +88,15 @@ Dzięki temu nowemu wglądowi w maszyny wirtualne platformy Azure usługa Securi
 Inne przewodniki szybkiego startu i samouczki w tej kolekcji bazują na tym przewodniku. Jeśli zamierzasz kontynuować pracę z kolejnymi przewodnikami szybkiego startu i samouczkami, w dalszym ciągu korzystaj z warstwy standardowej i zachowaj włączoną automatyczną aprowizację. Jeśli nie zamierzasz kontynuować lub chcesz wrócić do warstwy bezpłatnej:
 
 1. Wróć do menu głównego usługi Security Center i wybierz pozycję **Zasady zabezpieczeń**.
-2. Wybierz subskrypcję lub zasady, którym chcesz przywrócić warstwę bezpłatną. Zostanie otwarte okno **Zasady zabezpieczeń**.
-3. W obszarze **SKŁADNIKI ZASAD** wybierz pozycję **Warstwa cenowa**.
-4. Wybierz pozycję **Bezpłatna**, aby zmienić subskrypcję z warstwy standardowej na warstwę bezpłatną.
+2. W wierszu subskrypcji, którą chcesz cofnąć do bezpłatnej, wybierz opcję **Edytuj ustawienia>**.
+3. Wybierz pozycje **Warstwa cenowa** i **Bezpłatna**, aby zmienić subskrypcję z warstwy standardowej na warstwę bezpłatną.
 5. Wybierz pozycję **Zapisz**.
 
 Jeśli chcesz wyłączyć automatyczną aprowizację:
 
 1. Wróć do menu głównego usługi Security Center i wybierz pozycję **Zasady zabezpieczeń**.
-2. Wybierz subskrypcję, dla której chcesz wyłączyć automatyczną aprowizację.
-3. W sekcji **Zasady zabezpieczeń — zbieranie danych** wybierz pozycję **Wyłącz** w obszarze **Dołączanie**, aby wyłączyć automatyczną aprowizację.
+2. W wierszu subskrypcji, dla której chcesz wyłączyć automatyczną aprowizację, wybierz pozycję **Edytuj ustawienia>**.
+3. Na karcie **Zbieranie danych** ustaw opcję **Automatyczna aprowizacja** na wartość **Wył**.
 4. Wybierz pozycję **Zapisz**.
 
 >[!NOTE]
@@ -115,8 +111,9 @@ W ramach tego przewodnika Szybki start zmieniono warstwę usługi na wyższą wa
 
 <!--Image references-->
 [2]: ./media/security-center-get-started/overview.png
-[4]: ./media/security-center-get-started/onboarding.png
+[4]: ./media/security-center-get-started/get-started.png
 [5]: ./media/security-center-get-started/pricing.png
 [6]: ./media/security-center-get-started/enable-automatic-provisioning.png
 [7]: ./media/security-center-get-started/security-alerts.png
 [8]: ./media/security-center-get-started/recommendations.png
+[9]: ./media/security-center-get-started/select-subscription.png
