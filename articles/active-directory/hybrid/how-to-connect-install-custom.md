@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 10/04/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e984dc985100bcdabbee4fb86bd1819a329301a5
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 95a0ffc6deecb7fd3bd6fce740f578352fdf2d66
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452636"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888151"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Niestandardowa instalacja programu Azure AD Connect
 Opcja **Ustawienia niestandardowe** programu Azure AD Connect umożliwia skorzystanie z większej liczby opcji instalacji. Jest używana w przypadku występowania wielu lasów lub w celu skonfigurowania funkcji opcjonalnych, których nie obejmuje instalacja ekspresowa. Jest przydatna w każdej sytuacji, gdy opcja [**instalacji ekspresowej**](how-to-connect-install-express.md) nie zaspokaja potrzeb związanych z wdrożeniem lub topologią.
@@ -156,12 +156,19 @@ W pełnej wersji środowiska produkcyjnego bardzo trudno będzie utrzymać jedn�
 ### <a name="optional-features"></a>Funkcje opcjonalne
 Na tym ekranie można wybrać funkcje opcjonalne dla określonych scenariuszy.
 
+>[!WARNING]
+>Wersje **1.0.8641.0** i starsze programu Azure AD Connect polegają na usłudze Azure Access Control w ramach zapisywania zwrotnego haseł.  Ta usługa zostanie wycofana w dniu **7 listopada 2018 r**.  Jeśli używasz jakiejkolwiek z tych wersji programu Azure AD Connect i masz włączoną funkcję zapisywania zwrotnego haseł, użytkownicy mogą stracić możliwość zmiany lub resetowania haseł po wycofaniu usługi. Zapisywanie zwrotne haseł w tych wersjach programu Azure AD Connect nie będzie obsługiwane.
+>
+>Aby uzyskać więcej informacji o usłudze Azure Access Control, zobacz [Instrukcje: migrowanie z usługi Azure Access Control Service](../develop/active-directory-acs-migration.md)
+>
+>Aby pobrać najnowszą wersję programu Azure AD Connect, kliknij [tutaj](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
+
 ![Funkcje opcjonalne](./media/how-to-connect-install-custom/optional2.png)
 
 > [!WARNING]
 > Jeśli narzędzie DirSync lub program Azure AD Sync są obecnie aktywne, nie należy aktywować żadnych funkcji zapisywania zwrotnego w programie Azure AD Connect.
->
->
+
+
 
 | Funkcje opcjonalne | Opis |
 | --- | --- |
@@ -190,6 +197,9 @@ W oparciu o usługi wybrane w poprzednim kroku na tej stronie wyświetlane są w
 
 ### <a name="directory-extension-attribute-sync"></a>Synchronizacja atrybutów rozszerzeń katalogów
 Można rozszerzyć schemat w usłudze Azure AD o atrybuty niestandardowe dodane przez organizację użytkownika lub inne atrybuty w usłudze Active Directory. Aby użyć tej funkcji, wybierz opcję **Synchronizacja atrybutów rozszerzeń katalogu** na stronie **Funkcje opcjonalne**. Na tej stronie można wybrać więcej atrybutów do synchronizacji.
+
+>[!NOTE]
+>W polu Dostępne atrybuty rozróżniana jest wielkość liter.
 
 ![Rozszerzenia katalogów](./media/how-to-connect-install-custom/extension2.png)
 

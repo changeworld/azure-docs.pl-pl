@@ -11,16 +11,16 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: eb03d2dae42d656e62b8f02eeccf1f7312f07732
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a77018d5ee1738f24518742c2386e6e261a7c6a8
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962445"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901452"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>Tworzenie funkcji w systemie Linux przy użyciu niestandardowego obrazu (wersja zapoznawcza)
 
-Usługa Azure Functions umożliwia hostowanie funkcji w systemie Linux w utworzonym przez użytkownika kontenerze niestandardowym. Można również [hostować w domyślnym kontenerze usługi Azure App Service](functions-create-first-azure-function-azure-cli-linux.md). Ta funkcja jest obecnie w wersji zapoznawczej i wymaga [środowiska uruchomieniowego usługi Functions 2.0](functions-versions.md), które jest również dostępne w wersji zapoznawczej.
+Usługa Azure Functions umożliwia hostowanie funkcji w systemie Linux w utworzonym przez użytkownika kontenerze niestandardowym. Można również [hostować w domyślnym kontenerze usługi Azure App Service](functions-create-first-azure-function-azure-cli-linux.md). Ta funkcja jest obecnie w wersji zapoznawczej i wymaga [środowiska uruchomieniowego usługi Functions 2.0](functions-versions.md).
 
 W tym samouczku dowiesz się, jak wdrożyć aplikację funkcji jako obraz niestandardowy platformy Docker. Ten wzorzec jest przydatny, gdy musisz dostosować wbudowany obraz kontenera usługi App Service. Użycie obrazu niestandardowego może być przydatne w przypadku, kiedy funkcje wymagają konkretnej wersji języka lub konkretnej zależności bądź konfiguracji, które nie są dostarczone w obrazie wbudowanym.
 

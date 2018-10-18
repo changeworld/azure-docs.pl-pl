@@ -1,24 +1,24 @@
 ---
-title: 'Szybki Start: Tworzenie KB — QnA Maker'
+title: 'Szybki start: tworzenie bazy wiedzy — QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Z własnej zawartości, takich jak często zadawanych pytań lub podręczników, można utworzyć usługi QnA Maker bazy wiedzy (KB). KB QnA Maker, w tym przykładzie jest tworzony z prostą stronę często zadawane pytania dotyczące odpowiedzi na pytania dotyczące klucza odzyskiwania funkcji BitLocker.
+description: Na podstawie własnej zawartości, takiej jak często zadawane pytania lub podręczniki produktów, możesz utworzyć bazę wiedzy usługi QnA Maker. Baza wiedzy usługi QnA Maker w tym przykładzie jest tworzona na podstawie prostej strony internetowej często zadawanych pytań w celu udzielania odpowiedzi na pytania dotyczące klucza odzyskiwania funkcji BitLocker.
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: f7af86687a8a61fb7aed028d2868752faaa8045a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: MT
+ms.openlocfilehash: 85b4630492d5f5b3fb71d563b0947d8a72ae4e1d
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47030258"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886571"
 ---
-# <a name="create-train-and-publish-your-knowledge-base"></a>Tworzenie, uczenie i publikowanie bazy wiedzy
+# <a name="quickstart-create-train-and-publish-your-knowledge-base"></a>Szybki start: tworzenie, szkolenie i publikowanie bazy wiedzy
 
-Z własnej zawartości, takich jak często zadawanych pytań lub podręczników, można utworzyć usługi QnA Maker bazy wiedzy (KB). KB QnA Maker, w tym przykładzie jest tworzony z prostą stronę często zadawane pytania dotyczące odpowiedzi na pytania dotyczące klucza odzyskiwania funkcji BitLocker.
+Na podstawie własnej zawartości, takiej jak często zadawane pytania lub podręczniki produktów, możesz utworzyć bazę wiedzy usługi QnA Maker. Baza wiedzy usługi QnA Maker w tym przykładzie jest tworzona na podstawie prostej strony internetowej często zadawanych pytań w celu udzielania odpowiedzi na pytania dotyczące klucza odzyskiwania funkcji BitLocker.
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 
@@ -27,53 +27,53 @@ Z własnej zawartości, takich jak często zadawanych pytań lub podręczników,
 
 ## <a name="create-a-qna-maker-knowledge-base"></a>Tworzenie bazy wiedzy usługi QnA Maker
 
-1. Zaloguj się do QnAMaker.ai przy użyciu swoich poświadczeń platformy Azure.
+1. Zaloguj się do witryny QnAMaker.ai przy użyciu swoich poświadczeń platformy Azure.
 
-2. W witrynie usługi QnA Maker wybierz **tworzenie bazy wiedzy**.
+2. W witrynie usługi QnA Maker wybierz pozycję **Utwórz bazę wiedzy**.
 
    ![Tworzenie nowej bazy wiedzy](../media/qna-maker-create-kb.png)
 
-3. Na **Utwórz** strony w kroku 1, wybierz opcję **tworzenie pytań i odpowiedzi usługi**. Nastąpi przekierowanie do [witryny Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) do skonfigurowania usługi QnA Maker, w ramach subskrypcji. Jeśli upłynie limit czasu witryny Azure portal, wybierz opcję **ponownie** w witrynie. Po nawiązaniu połączenia, pojawi się pulpit nawigacyjny platformy Azure.
+3. Na stronie **Tworzenie** w kroku 1 wybierz pozycję **Utwórz usługę QnA**. Nastąpi przekierowanie do witryny [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) w celu skonfigurowania usługi QnA Maker w ramach subskrypcji. Jeśli upłynie limit czasu witryny Azure Portal, wybierz w witrynie pozycję **Ponów próbę**. Po nawiązaniu połączenia zostanie wyświetlony pulpit nawigacyjny platformy Azure.
 
-4. Po pomyślnym utworzeniu nowej usługi QnA Maker na platformie Azure powrócić do qnamaker.ai/create. Wybierz usługę pytań i odpowiedzi z listy rozwijanej w kroku 2. Jeśli utworzono nową usługę pytań i odpowiedzi, pamiętaj odświeżyć stronę.
+4. Po pomyślnym utworzeniu nowej usługi QnA Maker na platformie Azure wróć do strony qnamaker.ai/create. Wybierz swoją usługę QnA z listy rozwijanej w kroku 2. Jeśli została utworzona nowa usługa QnA, pamiętaj aby odświeżyć stronę.
 
-   ![Wybierz usługę bazy wiedzy pytań i odpowiedzi](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
+   ![Wybieranie bazy wiedzy usługi QnA](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
-5. W kroku 3 nadaj nazwę wiedzy **Moje bazy wiedzy pytań i odpowiedzi przykładowe**.
+5. W kroku 3 nadaj bazie wiedzy nazwę **My Sample QnA KB**.
 
-6. Do dodawania zawartości do wiedzy, wybierz trzy rodzaje źródeł danych. W kroku 4, w obszarze **wypełnić wiedzy**, Dodaj [— często zadawane pytania dla odzyskiwania funkcji BitLocker](https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-overview-and-requirements-faq) adresu URL w **adresu URL** pole.
+6. Aby dodać zawartość do swojej bazy wiedzy, wybierz trzy rodzaje źródeł danych. W kroku 4, w obszarze **Wypełnij bazę wiedzy** dodaj adres URL [Często zadawane pytania dotyczące odzyskiwania funkcji BitLocker](https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-overview-and-requirements-faq) w polu **adresu URL**.
 
-   ![Wybierz usługę bazy wiedzy pytań i odpowiedzi](../media/qnamaker-quickstart-kb/add-datasources.png)
+   ![Wybieranie bazy wiedzy usługi QnA](../media/qnamaker-quickstart-kb/add-datasources.png)
 
-7. W kroku 5 wybierz **tworzenie wiedzy**.
+7. W kroku 5 wybierz pozycję **Tworzenie bazy wiedzy**.
 
-8. Gdy poprawka KB jest tworzony, pojawi się okno podręczne. Proces wyodrębniania zajmuje kilka minut, przeczytaj stronę HTML i zidentyfikować pytań i odpowiedzi.
+8. Gdy baza wiedzy jest tworzona, pojawi się okno podręczne. Proces wyodrębniania zajmuje kilka minut, możesz więc przeczytać stronę HTML i zidentyfikować pytania i odpowiedzi.
 
-9. Po pomyślnym utworzeniu KB **wiedzy** zostanie otwarta strona. Możesz edytować zawartość bazy wiedzy na tej stronie.
+9. Po pomyślnym utworzeniu bazy wiedzy zostanie otwarta strona **Baza wiedzy**. Na tej stronie możesz edytować zawartość bazy wiedzy.
 
-10. W prawym górnym rogu wybierz **pary dodawanie pytań i odpowiedzi** Aby dodać nowy wiersz w **redakcyjnych** sekcji KB. W obszarze **pytanie**, wprowadź **cześć.** W obszarze **odpowiedzi**, wprowadź **Hello. Pytaj pytań w funkcji bitlocker.**
+10. W prawym górnym rogu wybierz pozycję **Dodaj parę pytań i odpowiedzi**, aby dodać nowy wiersz w sekcji **Redakcja** bazy wiedzy. W obszarze **Pytanie** wprowadź **Hi.** (Cześć). W obszarze **Odpowiedź** wprowadź **Hello. Ask me bitlocker questions.** (Witam. Zadaj mi pytanie dotyczące funkcji BitLocker).
 
-   ![Dodaj parę pytań i odpowiedzi](../media/qnamaker-quickstart-kb/add-qna-pair.png)
+   ![Dodawanie pary pytań i odpowiedzi](../media/qnamaker-quickstart-kb/add-qna-pair.png)
 
-11. W prawym górnym rogu wybierz **Zapisz i szkolenie** zapisać zmiany wprowadzone do nauczenia modelu usługi QnA Maker. Zmiany nie są przechowywane, chyba że są zapisywane.
+11. W prawym górnym rogu wybierz pozycję **Zapisz i przeszkol**, aby zapisać wprowadzone zmiany i przeszkolić model usługi QnA Maker. Zmiany nie są przechowywane, o ile nie zostaną zapisane.
 
-   ![Zapisz i szkolenie](../media/qnamaker-quickstart-kb/add-qna-pair2.png)
+   ![Zapisywanie i szkolenie](../media/qnamaker-quickstart-kb/add-qna-pair2.png)
 
-12. W prawym górnym rogu wybierz **Test** do przetestowania, czy zmiany wprowadzone weszło w życie. Wprowadź **cześć istnieje** w polu, a następnie naciśnij klawisz Enter. Powinien zostać wyświetlony odpowiedzi, który został utworzony w odpowiedzi.
+12. W prawym górnym rogu wybierz pozycję **Test**, aby przetestować, czy wprowadzone zmiany weszły w życie. Wprowadź w polu **hi there** (Hej), a następnie naciśnij klawisz Enter. Powinna zostać wyświetlona odpowiedź utworzona jako reakcja.
 
-13. Wybierz **Sprawdź** zbadać odpowiedź bardziej szczegółowo. Okna testów służy do testowania zmian w KB, zanim są publikowane.
+13. Wybierz pozycję **Zbadaj**, aby bardziej szczegółowo sprawdzić odpowiedź. Okno testów służy do testowania Twoich zmian w bazie wiedzy zanim zostaną opublikowane.
 
    ![Panel testu](../media/qnamaker-quickstart-kb/inspect-panel.png)
 
-14. Wybierz **testu** ponownie, aby zamknąć **testu** wyskakujących.
+14. Wybierz ponownie pozycję **Test**, aby zamknąć wyskakujące okienko **Testowanie**.
 
-15. W menu obok **Edytuj**, wybierz opcję **Publikuj**. Aby potwierdzić, zaznacz **Publikuj** na stronie.
+15. W menu obok pozycji **Edycja** wybierz pozycję **Opublikuj**. Aby potwierdzić, wybierz na stronie pozycję **Opublikuj**.
 
-16. Usługa QnA Maker zostały pomyślnie opublikowane. Możesz użyć punktu końcowego w aplikacji lub kodu botów.
+16. Usługa QnA Maker została teraz pomyślnie opublikowana. Możesz użyć punktu końcowego w swojej aplikacji lub kodu bota.
 
    ![Publikowanie](../media/qnamaker-quickstart-kb/publish-sucess.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie bazy wiedzy](../How-To/create-knowledge-base.md)

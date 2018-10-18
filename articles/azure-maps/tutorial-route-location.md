@@ -3,18 +3,18 @@ title: Znajdowanie trasy przy użyciu usługi Azure Maps | Microsoft Docs
 description: Znajdowanie trasy do punktu orientacyjnego przy użyciu usługi Azure Maps
 author: dsk-2015
 ms.author: dkshir
-ms.date: 09/04/2018
+ms.date: 10/02/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 68d7df575e3d413780b8181c11dd59a22469708b
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 3bf1aa6d1b9bd65c28ef99ddbac71fb75daf99e7
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578941"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816722"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Znajdowanie trasy do punktu orientacyjnego przy użyciu usługi Azure Maps
 
@@ -126,14 +126,16 @@ W tym samouczku ustawimy punkt początkowy w siedzibie firmy Microsoft, a punkt 
         padding: 50
     });
 
-    // Add pins to the map for the start and end point of the route
-    map.addPins([startPin, destinationPin], {
-        name: "route-pins",
-        textFont: "SegoeUi-Regular",
-        textOffset: [0, -20]
+    map.addEventListener("load", function () { 
+        // Add pins to the map for the start and end point of the route
+        map.addPins([startPin, destinationPin], {
+            name: "route-pins",
+            textFont: "SegoeUi-Regular",
+            textOffset: [0, -20]
+        });
     });
     ```
-    Wywołanie **map.setCameraBounds** dostosowuje okno mapy według współrzędnych punktu początkowego i punktu końcowego. Wywołanie interfejsu API **map.addPins** dodaje punkty do kontrolki mapy jako składniki wizualne.
+    Wywołanie **map.setCameraBounds** dostosowuje okno mapy według współrzędnych punktu początkowego i punktu końcowego. Wywołanie **map.addEventListener** zapewnia, że wszystkie funkcje map dodane do mapy zostaną załadowane po pełnym załadowaniu mapy. Wywołanie interfejsu API **map.addPins** w odbiorniku zdarzeń dodaje punkty do kontrolki mapy jako składniki wizualne.
 
 3. Zapisz plik **MapRoute.html** i odśwież przeglądarkę. Mapa jest teraz wyśrodkowana na Seattle. Punkt początkowy jest oznaczony niebieskim kółkiem, a punkt końcowy — niebieskim znacznikiem.
 
@@ -143,7 +145,7 @@ W tym samouczku ustawimy punkt początkowy w siedzibie firmy Microsoft, a punkt 
 
 ## <a name="get-directions"></a>Uzyskiwanie wskazówek dojazdu
 
-W tej sekcji pokazano, jak używać interfejsu API usługi Route Service w usłudze Maps do znajdowania trasy z danego punktu początkowego do punktu docelowego. Usługa Route Service udostępnia interfejsy API do planowania *najszybszej*, *najkrótszej*, *najciekawszej* lub *najbardziej ekologicznej* trasy między dwiema lokalizacjami. Umożliwia ona też użytkownikom planowanie tras w przyszłości, korzystając z obszernej historycznej bazy danych ruchu drogowego na platformie Azure i przewidując długość podróży trasami w dowolnym dniu i czasie. Aby uzyskać więcej informacji, zobacz [Get route directions (Uzyskiwanie wskazówek dojazdu)](https://docs.microsoft.com/rest/api/maps/route/getroutedirections).
+W tej sekcji pokazano, jak używać interfejsu API usługi Route Service w usłudze Maps do znajdowania trasy z danego punktu początkowego do punktu docelowego. Usługa Route Service udostępnia interfejsy API do planowania *najszybszej*, *najkrótszej*, *najciekawszej* lub *najbardziej ekologicznej* trasy między dwiema lokalizacjami. Umożliwia ona też użytkownikom planowanie tras w przyszłości, korzystając z obszernej historycznej bazy danych ruchu drogowego na platformie Azure i przewidując długość podróży trasami w dowolnym dniu i czasie. Aby uzyskać więcej informacji, zobacz [Get route directions (Uzyskiwanie wskazówek dojazdu)](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Wszystkie poniższe funkcje powinny zostać dodane **w elemencie eventListener ładowania mapy** w celu zagwarantowania ich załadowania po pełnym załadowaniu mapy.
 
 1. Najpierw dodaj nową warstwę na mapie, umożliwiającą wyświetlenie trasy — element *linestring*. Dodaj następujący kod JavaScript do bloku *script*.
 
@@ -204,6 +206,10 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Tworzenie nowej strony internetowej przy użyciu interfejsu API kontrolki mapy
 > * Ustawianie współrzędnych adresu
 > * Wysyłanie do usługi Route Service zapytania dotyczącego wskazówek dojazdu do punktu orientacyjnego
+
+Przykładowy kod z tego samouczka jest dostępny tutaj:
+
+> [Znajdowanie trasy przy użyciu usługi Azure Maps](https://github.com/Azure-Samples/azure-maps-samples/blob/master/src/route.html)
 
 Następny samouczek przedstawia tworzenie zapytania o trasę z ograniczeniami dotyczącymi np. sposobu podróży lub rodzaju ładunku, a następnie wyświetlanie wielu tras na tej samej mapie.
 

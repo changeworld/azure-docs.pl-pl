@@ -1,53 +1,54 @@
 ---
-title: Przewodnik przykładowej Akustyka projektu — Cognitive Services
-description: Ten przewodnik opisuje sceny przykładowe Unity Akustyka projektu, łącznie z wdrożenia pulpitu i VR.
+title: 'Przykład: akustyka projektu'
+titlesuffix: Azure Cognitive Services
+description: Ten przewodnik opisuje przykładową scenę Unity na potrzeby akustyki projektu, wraz z wdrożeniem na komputery i VR.
 services: cognitive-services
 author: kegodin
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
-ms.topic: article
+ms.topic: sample
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: eaf7ff9f7f791fd6d04e6b76d256b4987c50cd13
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
-ms.translationtype: MT
+ms.openlocfilehash: f5ea565e68579dfad601d1037daeb4113e3daa43
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434096"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901162"
 ---
-# <a name="unity-sample-walkthrough"></a>Przewodnik po przykładzie aparatu Unity
-Jest to przewodnik po przykładowej Akustyka projektu. Aby dowiedzieć się więcej o jakie Akustyka projektu jest, zapoznaj się z [wprowadzenie do projektu Akustyka](what-is-acoustics.md). Aby uzyskać pomoc podczas dodawania pakietu Akustyka projektu do istniejącego projektu środowiska Unity, użyj [Wprowadzenie — przewodnik](getting-started.md).
+# <a name="unity-sample-walkthrough"></a>Przewodnik po przykładzie Unity
+Jest to przewodnik po przykładzie Akustyka projektu. Aby uzyskać więcej informacji o tym, czym jest akustyka projektu, zobacz [Wprowadzenie do akustyki projektu](what-is-acoustics.md). Aby uzyskać pomoc w dodawaniu pakietu akustyki projektu do już istniejącego projektu środowiska Unity, użyj [przewodnika Wprowadzenie](getting-started.md).
 
 ## <a name="requirements-for-running-the-sample-project"></a>Wymagania dotyczące uruchamiania przykładowego projektu
-* Unity 2018.2 +, za pomocą skryptów wersji środowiska uruchomieniowego .NET 4.x
+* Unity 2018.2+, z wersją środowiska uruchomieniowego skryptów .NET 4.x
 * Unity Editor — wersja 64-bitowa dla systemu Windows
-* Przykład obsługuje pulpitu Windows, platformy uniwersalnej systemu Windows i Android obiekty docelowe, łącznie z zainstalowanym head Wyświetla (HMDs)
-* Wymagane dla procesu Tworzenie subskrypcji platformy Azure Batch
+* Przykładowe rozwiązanie obsługuje komputery z systemem Windows, platformę uniwersalną systemu Windows oraz obiekty docelowe z systemem Android, w tym wyświetlacze mocowane na głowie (HMD).
+* Subskrypcja Azure Batch jest wymagana na potrzeby procesu tworzenia
 
-## <a name="sample-project-setup"></a>Przykładowe ustawienia projektu
-Pobierz i zaimportuj **MicrosoftAcoustics.Sample.unitypackage**. Przy imporcie, ustawienia, w tym projektu **Spatializer** i **skryptów wersji środowiska uruchomieniowego** zostały zaktualizowane pod kątem wymagań wtyczki. Po zakończeniu tej operacji zostanie wyświetlony błąd w konsoli programu Unity z **AcousticsGeometry.cs** o zmienianiu wersji środowiska uruchomieniowego skryptów, aby **.NET 4.x odpowiednik**. Zmiany tego ustawienia jest wykonywane w ramach importowania pakietu, ale wymaga ponownego uruchomienia aparatu Unity zaczęły obowiązywać. Ponowne uruchomienie aparatu Unity.
+## <a name="sample-project-setup"></a>Konfiguracja przykładowego projektu
+Pobierz i zaimportuj pakiet **MicrosoftAcoustics.Sample.unitypackage**. Po zaimportowaniu ustawienia projektu obejmujące wtyczkę **Spatializer** oraz opcję **Wersja środowiska uruchomieniowego skryptów** są aktualizowane, aby spełniać wymagania wtyczki. Po zakończeniu operacji zobaczysz błąd w konsoli środowiska Unity pochodzący z pliku **AcousticsGeometry.cs** i dotyczący zmiany wersji środowiska uruchomieniowego skryptów na **odpowiednik .NET 4.x**. Ta zmiana ustawień jest wykonywana w ramach importu pakietu, ale wymaga ponownego uruchomienia środowiska Unity w celu zastosowania. Uruchom ponownie środowisko Unity.
 
 ## <a name="running-the-sample"></a>Uruchamianie przykładowej aplikacji
-Przykład obejmuje scenę pokaz **Assets/AcousticsDemo/ProjectAcousticsDemo.unity**. Ta sceny ma trzy źródła dźwięku. Domyślnie tylko jedno źródło dźwięk jest odtwarzany, a pozostałe dwa są wstrzymane. Te znajdują się w obszarze **źródła dźwięku** w **hierarchii**. Aby skrypt rodzajowy nawigacji, kamera główny jest element podrzędny obiektu CameraHolder. 
+Przykład obejmuje scenę pokazową **Assets/AcousticsDemo/ProjectAcousticsDemo.unity**. Ta scena zawiera trzy źródła dźwięku. Domyślnie tylko jedno źródło dźwięku jest odtwarzane, a dwa pozostałe są wstrzymane. Znajdują się one w obszarze **Źródła dźwięku** w **hierarchii**. Aby ułatwić tworzenie ogólnego skryptu nawigacji, główna kamera jest elementem podrzędnym obiektu CameraHolder. 
 
 ![Widok hierarchii](media/SampleHierarchyView.png)
 
-Sceny ma już rozszerzania i plik ACE skojarzone z **MicrosoftAcoustics** prefab w **hierarchii**. 
+Scena została już utworzona i ma plik ACE skojarzony z obiektem **MicrosoftAcoustics** w **hierarchii**. 
 
-Posłuchaj, jak brzmi sceny, klikając przycisk odtwarzania w programie Unity editor. Na komputerze stacjonarnym, należy użyć W, A, S, D i myszy, aby poruszać się. Aby porównać, jak sceny brzmi z lub bez Akustyka, naciśnij klawisz **R** przycisk aż do tekstu nakładki zmieni kolor na czerwony i jest wyświetlany komunikat "Akustyka: wyłączone." Aby wyświetlić skróty klawiaturowe dla większej liczby kontrolek, naciśnij klawisz **F1**. Wszystkie kontrolki są również użyteczny przez kliknięcie prawym przyciskiem myszy, aby wybrać akcję do wykonania, pozostanie kliknięcie do wykonania akcji.
+Posłuchaj brzmienia sceny, klikając przycisk odtwarzania w edytorze Unity. Na komputerze użyj klawiszy W, A, S, D oraz myszy, aby się poruszać. Aby porównać, jak brzmi scena z akustyką i bez niej, naciśnij przycisk **R** do momentu, w którym tekst nakładki zmieni się na czerwony i będzie wyświetlany komunikat „Akustyka: wyłączona”. Aby wyświetlić skróty klawiaturowe zapewniające większą liczbę kontrolek, naciśnij klawisz **F1**. Wszystkich kontrolek można również użyć poprzez kliknięcie prawym przyciskiem myszy akcji do wykonania, a następnie kliknięcie lewym przyciskiem myszy w celu wykonania akcji.
 
-## <a name="targeting-other-platforms"></a>Inne platformy
-Przykład zawiera ustawienia do uruchomienia na pulpit Windows, platformy uniwersalnej systemu Windows, Windows Mixed Reality, Android i Oculus z rzeczywistym użyciem. Domyślnie projekt został skonfigurowany dla Windows Desktop. Pod kątem platformy VR, przejdź do ustawienia odtwarzacza (**Edytuj > Ustawienia projektu > Player**), Znajdź **ustawienia XR**i sprawdź **obsługiwane rzeczywistości wirtualnej** pole wyboru.
+## <a name="targeting-other-platforms"></a>Określanie celu na innych platformach
+Przykład zawiera ustawienia do uruchamiania na następujących platformach: komputery z systemem Windows, platforma uniwersalna systemu Windows, rzeczywistość mieszana systemu Windows, urządzenia z systemem Android oraz Oculus Go. Domyślnie projekt został skonfigurowany pod kątem komputerów z systemem Windows Desktop. Aby użyć platformy VR, przejdź do ustawień odtwarzacza (**Edytuj > Ustawienia projektu > Odtwarzacz**), znajdź pozycję **Ustawienia XR**, a następnie zaznacz pole wyboru **Obsługiwana rzeczywistość wirtualna**.
 
-![Włącz VR](media/VRSupport.png)  
+![Włączanie VR](media/VRSupport.png)  
 
-Połącz zestaw słuchawkowy VR do Twojego komputera. Przejdź do **Plik > Ustawienia kompilacji**i kliknij przycisk **kompilowanie i uruchamianie** na wdrażanie przykładu w usłudze usługi zestaw nagłowny rzeczywistości Wirtualnej. Nawigowanie po sceny przy użyciu kontrolerów ruchu dla Twojego słuchawkowy, lub spróbuj użyć W, A, S, D na klawiaturze.    
-Przeznaczony dla systemu Android oraz Oculus z rzeczywistym użyciem, wybierz systemu Android z **ustawieniach kompilacji** menu. Kliknij przycisk **Przełącz docelowej**, następnie **kompilowanie i uruchamianie**. Połączone urządzenia z systemem Android spowoduje to wdrożenie sceny próbki. Aby uzyskać informacje o programowaniu dla platformy Unity dla systemu Android, zobacz [dokumentacja aparatu Unity](https://docs.unity3d.com/Manual/android-GettingStarted.html).
+Podłącz zestaw VR do komputera. Przejdź do pozycji **Plik > Ustawienia kompilacji**, a następnie kliknij opcję **Skompiluj i uruchom**, aby wdrożyć przykład do zestawu VR. Nawiguj w scenie przy użyciu kontrolerów ruchu dla zestawu lub spróbuj użyć klawiszy W, A, S, D na klawiaturze.    
+Aby użyć systemu Android i Oculus Go, wybierz opcję Android w menu **Ustawienia kompilacji**. Kliknij przycisk **Przełącz cel**, a następnie kliknij opcję **Skompiluj i uruchom**. Spowoduje to wdrożenie przykładowej sceny do podłączonego urządzenia z systemem Android. Aby uzyskać więcej informacji o wdrażaniu środowiska Unity dla systemu Android, zobacz [dokumentację aparatu Unity](https://docs.unity3d.com/Manual/android-GettingStarted.html).
 
-![Docelowym systemem Android](media/TargetAndroid.png)  
+![Nakierowywanie na system Android](media/TargetAndroid.png)  
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Utwórz konto platformy Azure](create-azure-account.md) dla własnego tworzony
-* Zapoznaj się z [Projektowanie procesu](design-process.md)
+## <a name="next-steps"></a>Następne kroki
+* [Utwórz konto platformy Azure](create-azure-account.md) dla własnych przypadków tworzenia
+* Eksploruj [proces projektowania](design-process.md)
 

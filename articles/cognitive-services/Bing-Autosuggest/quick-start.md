@@ -1,34 +1,34 @@
 ---
-title: Automatycznego sugerowania szybkiego startu interfejsu API | Dokumentacja firmy Microsoft
-description: Pokazuje, jak rozpocząć pracę przy użyciu interfejsu API automatycznego sugerowania usługi Bing.
+title: 'Szybki start: interfejs API automatycznego sugerowania Bing'
+titlesuffix: Azure Cognitive Services
+description: Jak rozpocząć korzystanie z interfejsu API automatycznego sugerowania Bing.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 1482E781-7352-4A3F-B1D5-B896381348C4
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: a7b54a1fb0b7c76eb72097357a6b51aa02e6e2fd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 446d271854a4e45bcea8c261a0dc078e549f8229
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349004"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830757"
 ---
-# <a name="making-your-first-autosuggest-query"></a>Tworzenie pierwszego zapytania Autosugerowanie
+# <a name="quickstart-making-your-first-autosuggest-query"></a>Szybki start: tworzenie pierwszego zapytania automatycznego sugerowania
 
-Przed skonfigurowaniem pierwszego połączenia, należy uzyskać klucz subskrypcji usługi kognitywnych. Aby uzyskać klucz, zobacz [spróbuj kognitywnych usług](https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api).
+Przed wykonaniem pierwszego wywołania należy uzyskać klucz subskrypcji usług Cognitive Services. Aby uzyskać klucz, zobacz [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api).
 
-Aby uzyskać wyniki wyszukiwania w sieci Web, czy wysłać żądania GET do następujący punkt końcowy:
+Aby uzyskać wyniki wyszukiwania w Internecie, należy wysłać żądanie GET do następującego punktu końcowego:
 
 ```http
 https://api.cognitive.microsoft.com/bing/v5.0/Suggestions
 ```
 
 > [!NOTE]
-> Punkt końcowy w wersji 7 w wersji zapoznawczej:
+> Punkt końcowy w wersji 7 (wersja zapoznawcza):
 >
 > ```http
 > https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
@@ -36,26 +36,26 @@ https://api.cognitive.microsoft.com/bing/v5.0/Suggestions
 
 Żądanie musi używać protokołu HTTPS.
 
-Zaleca się, że wszystkie żądania pochodzi z serwera. Dystrybucja klucza w ramach aplikacji klienta zawiera więcej możliwości złośliwego innej do niego dostęp. Ponadto nawiązywanie połączeń z serwerem zapewnia jeden punkt uaktualniania wersji interfejsu API.
+Zalecamy, aby wszystkie żądania były wysyłane z serwera. Dystrybuowanie klucza w ramach aplikacji klienckiej dostarcza więcej okazji do przejęcia go przez złośliwy kod innych firm. Ponadto wykonywanie wywołań z serwera zapewnia jeden punkt uaktualniania dla przyszłych wersji interfejsu API.
 
-Żądanie musi określać [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query) parametru zapytania, który zawiera użytkownika częściowe wyszukiwanego terminu. Chociaż jest to opcjonalne, powinny również określać żądanie [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#mkt) parametru zapytania, który identyfikuje rynku miejscu wyniki pochodzą z. Listę parametrów opcjonalnych zapytania, zobacz [parametry zapytania](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query-parameters). Wszystkie wartości parametrów zapytania musi być zakodowane w adresie URL.
+Żądanie musi określać parametr zapytania [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query), który zawiera częściowy termin wyszukiwany przez użytkownika. Chociaż jest to opcjonalne, żądanie powinno również określać parametr zapytania [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#mkt), który identyfikuje rynek, z którego mają pochodzić wyniki. Aby uzyskać listę opcjonalnych parametrów zapytania, zobacz [Query Parameters (Parametry zapytania)](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query-parameters). Wszystkie wartości parametrów zapytania muszą być zakodowane w adresie URL.
 
-Żądanie musi określać [Ocp-Apim-subskrypcji — klucz](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#subscriptionkey) nagłówka. Mimo że jest to opcjonalne, zachęca się także określić następujące nagłówki:
+Żądanie musi określać nagłówek [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#subscriptionkey). Mimo że jest to opcjonalne, zachęcamy, aby określić również następujące nagłówki:
 
-- [Agent użytkownika](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#useragent)
+- [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#useragent)
 - [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientid)
-- [ClientIP-X-wyszukiwania](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientip)
-- [X wyszukiwania lokalizacji](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#location)
+- [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientip)
+- [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#location)
 
-Nagłówki adresów IP i lokalizacji klienta są ważne dla zwracania zawartości pamiętać lokalizacji.
+Nagłówki adresu IP klienta i lokalizacji są ważne z punktu widzenia zwracania zawartości odpowiedniej dla danej lokalizacji.
 
-Aby uzyskać listę wszystkich nagłówków żądań i odpowiedzi, zobacz [nagłówki](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#headers).
+Aby uzyskać listę wszystkich nagłówków żądań i odpowiedzi, zobacz [Nagłówki](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#headers).
 
 ## <a name="the-request"></a>Żądanie
 
-Żądanie powinna zawierać wszystkie parametry sugerowane zapytania i nagłówków. Ten interfejs API spowodowałoby wywołanie w każdym razem, użytkownik wpisze nowego znaku w polu wyszukiwania. Zwraca informacje były kompletne wpływów ciąg zapytania, że znaczenie zapytania sugerowane warunki interfejsu API. Im więcej ukończyć ciąg zapytania, tym większe znaczenie czy listę sugerowane są warunki zapytania. Na przykład sugestii, które interfejs API może zwrócić dla *s* mogą być istotne mniej niż zapytanie zwraca dla *dinghies prowadzenia*. 
+Żądanie powinno zawierać wszystkie sugerowane parametry żądania i nagłówki. Ten interfejs API jest wywoływany za każdym razem, kiedy użytkownik wpisuje nowy znak w polu wyszukiwania. Kompletność ciągu zapytania ma wpływ na istotność sugerowanych terminów zapytania zwracanych przez interfejs API. Im bardziej kompletny jest ciąg zapytania, tym bardziej istotne są sugerowane terminy zapytania na wyświetlanej liście. Na przykład sugestie, które może zwrócić interfejs API po wpisaniu litery *p*, mogą być mniej istotne niż zapytania zwrócone dla terminu *pływanie łódką*. 
 
-W poniższym przykładzie przedstawiono żądanie, które zwraca ciągi zapytań sugerowane dla *kierowania*.
+W poniższym przykładzie przedstawiono żądanie, które zwraca sugerowane ciągi zapytania dla terminu *sail*.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v5.0/suggestions?q=sail&mkt=en-us HTTP/1.1  
@@ -67,7 +67,7 @@ Host: api.cognitive.microsoft.com
 ```
 
 > [!NOTE]
-> Żądanie w wersji 7 w wersji zapoznawczej:
+> Żądanie w wersji 7 (wersja zapoznawcza):
 
 > ```http
 > GET https://api.cognitive.microsoft.com/bing/v7.0/suggestions?q=sail&mkt=en-us HTTP/1.1
@@ -78,13 +78,13 @@ Host: api.cognitive.microsoft.com
 > Host: api.cognitive.microsoft.com
 > ```
 
-Jeśli pierwsza wywoływania żadnego z interfejsów API Bing, nie dołączaj nagłówka Identyfikatora klienta. Tylko Dołącz nagłówka Identyfikatora klienta, jeżeli zostały wcześniej wywołuje interfejs API Bing i Bing zwrócony identyfikator klienta dla użytkownika lub kombinacji urządzeń.
+Jeśli jest to Twoje pierwsze wywoływanie dowolnego z interfejsów API Bing, nie dołączaj nagłówka identyfikatora klienta. Nagłówek identyfikatora klienta należy uwzględnić tylko wtedy, gdy interfejs API Bing został już wywołany i usługa Bing zwróciła identyfikator klienta dla kombinacji użytkownika i urządzenia.
 
-Poniżej przedstawiono odpowiedzi na poprzedniego żądania. Odpowiedź zawiera grupy sugestię sieci web, która zawiera listę sugestie dotyczące zapytań wyszukiwania. Obejmuje każdego sugestię `displayText`, `query`, i `url` pola.
+Poniższy kod jest odpowiedzią na poprzednie żądanie. Odpowiedź zawiera grupę sugestii internetowych, która z kolei zawiera listę sugestii zapytania wyszukiwania. Każda sugestia obejmuje pola `displayText`, `query` oraz `url`.
 
-`displayText` Pole zawiera sugerowane zapytania, który ma zostać użyty do wypełnienia listy rozwijanej pole wyszukiwania. Konieczne jest wyświetlenie wszystkich sugestii, które zawiera odpowiedź, a w podanej kolejności.  
+Pole `displayText` zawiera sugerowane zapytanie, używane do wypełnienia listy rozwijanej w polu wyszukiwania. Należy wyświetlić wszystkie sugestie, które zawiera odpowiedź, w podanej kolejności.  
 
-Jeśli użytkownik wybierze zapytania z listy rozwijanej, można skorzystać z ciągu zapytania w `query` pola do wywołania [API wyszukiwania usługi Bing](../bing-web-search/search-the-web.md) i wyświetlić wyniki samodzielnie. Można użyć adresu URL na liście `url` strona wyników pola, aby wysłać do użytkownika do wyszukiwania usługi Bing.
+Jeśli użytkownik wybierze zapytanie z listy rozwijanej, ciąg zapytania z pola `query` zostanie użyty w celu wywołania [interfejsu API wyszukiwania Bing](../bing-web-search/search-the-web.md) i wyświetlenia wyników. Można też użyć adresu URL z pola `url` w celu przeniesienia użytkownika na stronę wyników wyszukiwania usługi Bing.
 
 ```  
 BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC
@@ -150,8 +150,8 @@ BingAPIs-Market: en-US
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Wypróbuj interfejsu API. Przejdź do [automatycznego sugerowania API testowania konsoli](https://dev.cognitive.microsoft.com/docs/services/56c7694ecf5ff801a090fbd1/operations/56c769a2cf5ff801a090fbd2).
+Wypróbuj interfejs API. Przejdź do [konsoli testów interfejsu API automatycznego sugerowania Bing](https://dev.cognitive.microsoft.com/docs/services/56c7694ecf5ff801a090fbd1/operations/56c769a2cf5ff801a090fbd2)
 
-Aby uzyskać więcej informacji o korzystanie z obiektów odpowiedzi, zobacz [pobierania sugerowane terminy wyszukiwania](./get-suggested-search-terms.md).
+Aby uzyskać szczegółowe informacje dotyczące korzystania z obiektów odpowiedzi, zobacz [Getting Suggested Search Terms (Uzyskiwanie sugerowanych terminów wyszukiwania)](./get-suggested-search-terms.md).

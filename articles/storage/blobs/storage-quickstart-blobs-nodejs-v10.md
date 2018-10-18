@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 09/19/2018
 ms.author: cshoe
-ms.openlocfilehash: a325029ded60a1cd8274743a88f7a4d410466dea
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6e23e888a1c90e1c6c7eecf25491f048e9077f11
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987581"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857894"
 ---
 # <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript-preview"></a>Szybki start: przekazywanie, pobieranie, wyświetlanie i usuwanie obiektów blob za pomocą zestawu SDK usługi Azure Storage w wersji 10 dla języka JavaScript (wersja zapoznawcza)
 
@@ -128,7 +128,7 @@ Kolejny zestaw stałych pozwala ujawnić intencje obliczeń rozmiaru pliku podcz
 const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
-Żądania wysyłane przez interfejs API można ustawić tak, aby wygasały po upływie określonego interwału. Klasa *Aborter* jest odpowiedzialna za zarządzanie sposobem wygasania żądań, a poniższa stała służy do definiowania limitów czasu używanych w tym przykładzie.
+Żądania wysyłane przez interfejs API można ustawić tak, aby wygasały po upływie określonego interwału. Klasa [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-preview) jest odpowiedzialna za zarządzanie sposobem wygasania żądań, a poniższa stała służy do definiowania limitów czasu używanych w tym przykładzie.
 ```javascript
 const ONE_MINUTE = 60 * 1000;
 ```
@@ -163,13 +163,13 @@ const serviceURL = new ServiceURL(`https://${STORAGE_ACCOUNT_NAME}.blob.core.win
 ```
 W tym bloku kodu są używane następujące klasy:
 
-- Klasa *SharedKeyCredential* jest odpowiedzialna za opakowywanie poświadczeń konta magazynu w celu dostarczenia ich do potoku żądań.
+- Klasa [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-preview) jest odpowiedzialna za opakowywanie poświadczeń konta magazynu w celu dostarczenia ich do potoku żądań.
 
-- Klasa *StorageURL* jest odpowiedzialna za tworzenie nowego potoku.
+- Klasa [StorageURL](/javascript/api/%40azure/storage-blob/storageurl?view=azure-node-preview) jest odpowiedzialna za tworzenie nowego potoku.
 
-- Klasa *ServiceURL* modeluje adres URL używany w interfejsie API REST. Wystąpienia tej klasy umożliwiają wykonywanie akcji, takich jak wyświetlanie kontenerów i podawanie informacji o kontekście w celu generowania adresów URL kontenerów.
+- Klasa [ServiceURL](/javascript/api/%40azure/storage-blob/serviceurl?view=azure-node-preview) modeluje adres URL używany w interfejsie API REST. Wystąpienia tej klasy umożliwiają wykonywanie akcji, takich jak wyświetlanie kontenerów i podawanie informacji o kontekście w celu generowania adresów URL kontenerów.
 
-Wystąpienie klasy *ServiceURL* jest używane z wystąpieniami *ContainerURL* i *BlockBlobURL* w celu zarządzania kontenerami i obiektami blob na koncie magazynu.
+Wystąpienie klasy *ServiceURL* jest używane z wystąpieniami [ContainerURL](/javascript/api/%40azure/storage-blob/containerurl?view=azure-node-preview) i [BlockBlobURL](/javascript/api/%40azure/storage-blob/blockbloburl?view=azure-node-preview) w celu zarządzania kontenerami i obiektami blob na koncie magazynu.
 
 ```javascript
 const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);
@@ -202,7 +202,7 @@ Klasy Aborter zapewniają kontrolę nad żądaniami, umożliwiając:
 - wyznaczanie ilości czasu dla partii żądań
 - wyznaczanie czasu na wykonanie pojedynczego żądania w partii
 - anulowanie żądań
-- używanie elementu statycznego *Aborter.None* w celu zatrzymania upływu limitu czasu dla wszystkich żądań
+- używanie elementu statycznego *Aborter.none* w celu zatrzymania upływu limitu czasu dla wszystkich żądań
 
 ### <a name="show-container-names"></a>Wyświetlanie nazw kontenerów
 Na kontach można przechowywać ogromną liczbę kontenerów. Poniższy kod przedstawia sposób wyświetlania listy kontenerów podzielonej na segmenty, co umożliwia przeglądanie dużej liczby kontenerów. Funkcja *ShowContainerNames* przekazuje wystąpienia klas *ServiceURL* i *Aborter*.

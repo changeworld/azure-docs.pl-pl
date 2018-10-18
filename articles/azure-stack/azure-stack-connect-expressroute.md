@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 09/12/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: eee4407af8d7def94061002941d758a99237645f
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: c30e70802d125744432f428f903f6ac6789f631e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078702"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389229"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Łączenie usługi Azure Stack na platformie Azure przy użyciu usługi Azure ExpressRoute
 
@@ -313,7 +313,7 @@ Zasoby, które można wdrożyć na platformie Azure są podobne do zasobów, kt�
 
 Przykład infrastruktury sieci platformy Azure jest skonfigurowane w następujący sposób:
 
-* Standardowa usługi centra (192.168.2.0/24) i model sieci wirtualnej gwiazdy (10.100.0.0./16). Aby uzyskać więcej informacji na temat topologii sieci piasty i szprych zobacz [zaimplementować topologii sieci piasty i szprych na platformie Azure](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke).
+* Standardowa usługi centra (192.168.2.0/24) i model sieci wirtualnej gwiazdy (10.100.0.0./16). Aby uzyskać więcej informacji na temat topologii sieci piasty i szprych zobacz [zaimplementować topologii sieci piasty i szprych na platformie Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke).
 * Obciążenia są wdrażane w sieć wirtualną będącą szprychą i obwód usługi ExpressRoute jest podłączony do sieci wirtualnej serwera centralnego.
 * Dwie sieci wirtualne są połączone za pomocą komunikacji równorzędnej sieci wirtualnych.
 

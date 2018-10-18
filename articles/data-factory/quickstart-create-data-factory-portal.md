@@ -11,19 +11,19 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 0638aaa9165bcf760dabca330f6ee396807e4597
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: fc4b1dce1b01d9294cf422c910f39d68cbd49c87
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43087958"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018251"
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Tworzenie fabryki danych za pomocą interfejsu użytkownika usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
 > * [Wersja 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Bieżąca wersja](quickstart-create-data-factory-portal.md)
 
-W tym przewodniku Szybki start opisano sposób używania interfejsu użytkownika usługi Azure Data Factory w celu tworzenia i monitorowania fabryki danych. Potok tworzony w tej fabryce danych *kopiuje* dane z jednego folderu do innego folderu w usłudze Azure Blob Storage. Aby zapoznać się z samouczkiem dotyczącym *przekształcania* danych za pomocą usługi Azure Data Factory, zobacz [Tutorial: Transform data by using Spark (Samouczek: przekształcanie danych przy użyciu usługi Spark)](tutorial-transform-data-spark-portal.md). 
+W tym przewodniku Szybki start opisano sposób używania interfejsu użytkownika usługi Azure Data Factory w celu tworzenia i monitorowania fabryki danych. Potok tworzony w tej fabryce danych *kopiuje* dane z jednego folderu do innego folderu w usłudze Azure Blob Storage. Aby zapoznać się z samouczkiem dotyczącym *przekształcania* danych za pomocą usługi Azure Data Factory, zobacz [Tutorial: Transform data by using Spark (Samouczek: przekształcanie danych przy użyciu usługi Spark)](tutorial-transform-data-spark-portal.md).
 
 > [!NOTE]
 > Jeśli jesteś nowym użytkownikiem usługi Azure Data Factory, przed wykonaniem kroków zawartych w tym przewodniku Szybki start zobacz [Wprowadzenie do usługi Azure Data Factory](data-factory-introduction.md). 
@@ -38,7 +38,7 @@ Obejrzenie tego filmu wideo ułatwi zapoznanie się z interfejsem użytkownika u
 
 1. Uruchom przeglądarkę internetową **Microsoft Edge** lub **Google Chrome**. Obecnie interfejs użytkownika usługi Data Factory jest obsługiwany tylko przez przeglądarki internetowe Microsoft Edge i Google Chrome.
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com). 
-1. Wybierz pozycję **Nowy** w menu po lewej stronie, wybierz pozycję **Dane + analiza**, a następnie wybierz pozycję **Data Factory**. 
+1. Wybierz pozycję **Utwórz zasób** w menu po lewej stronie, a następnie pozycje **Analiza** i **Data Factory**. 
    
    ![Wybór usługi Data Factory w okienku „Nowy”](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 1. Na stronie **Nowa fabryka danych** wprowadź wartość **ADFTutorialDataFactory** w polu **Nazwa**. 
@@ -58,12 +58,10 @@ Obejrzenie tego filmu wideo ułatwi zapoznanie się z interfejsem użytkownika u
 1. W obszarze **Wersja** wybierz pozycję **V2**.
 1. W obszarze **Lokalizacja** wybierz lokalizację fabryki danych.
 
-   Lista zawiera tylko lokalizacje obsługiwane przez usługę Data Factory. Magazyny danych (na przykład Azure Storage lub Azure SQL Database) i jednostki obliczeniowe (takie jak HDInsight) używane przez usługę Data Factory mogą znajdować się w innych lokalizacjach.
-1. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
-1. Wybierz pozycję **Utwórz**.
-1. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem **Wdrażanie fabryki danych**: 
+   Ta lista zawiera tylko lokalizacje, które są obsługiwane przez usługę Data Factory i w których będą przechowywane metadane usługi Azure Data Factory. Pamiętaj, że skojarzone magazyny danych (na przykład Azure Storage lub Azure SQL Database) i jednostki obliczeniowe (na przykład HDInsight) używane przez tę usługę Data Factory mogą być uruchomione w innych regionach.
 
-   ![Kafelek „Wdrażanie fabryki danych”](media//quickstart-create-data-factory-portal/deploying-data-factory.png)
+1. Wybierz pozycję **Utwórz**.
+
 1. Po zakończeniu tworzenia zostanie wyświetlona strona **Fabryka danych**. Wybierz kafelek **Tworzenie i monitorowanie**, aby na osobnej karcie uruchomić aplikację interfejsu użytkownika usługi Azure Data Factory.
    
    ![Strona główna fabryki danych z kafelkiem „Tworzenie i monitorowanie”](./media/quickstart-create-data-factory-portal/data-factory-home-page.png)
@@ -88,7 +86,7 @@ Podczas tej procedury utworzysz połączoną usługę służącą do łączenia 
 
    d. Wybierz pozycję **Testuj połączenie**, aby sprawdzić, czy usługa Data Factory może nawiązać połączenie z kontem magazynu. 
 
-   d. Wybierz opcję **Zapisz**, aby zapisać połączoną usługę. 
+   d. Aby zapisać połączoną usługę, wybierz pozycję **Zakończ**. 
 
    ![Połączona usługa Azure Storage — ustawienia](./media/quickstart-create-data-factory-portal/azure-storage-linked-service.png) 
 
@@ -128,7 +126,7 @@ W ustawieniach połączonej usługi określono konto usługi Azure Storage, któ
 
    d. Na karcie **Ogólne** określ wartość **OutputDataset** jako nazwę.
 
-   d. Na karcie **Połączenie** wybierz pozycję **AzureStorageLinkedService** jako połączoną usługę, a następnie wprowadź **adftutorial/output** jako folder. Jeśli folder **output** nie istnieje, działanie kopiowania utworzy go w czasie wykonywania.
+   d. Na karcie **Połączenie** wybierz pozycję **AzureStorageLinkedService** jako połączoną usługę, a następnie wprowadź **adftutorial/output** jako folder w polu katalogu. Jeśli folder **output** nie istnieje, działanie kopiowania utworzy go w czasie wykonywania.
 
 ## <a name="create-a-pipeline"></a>Tworzenie potoku 
 Podczas tej procedury utworzysz potok i zweryfikujesz go za pomocą działania kopiowania, które korzysta z wejściowego i wyjściowego zestawu danych. Działanie kopiowania służy do kopiowania danych z pliku określonego w ustawieniach wejściowego zestawu danych do pliku określonego w ustawieniach wyjściowego zestawu danych. Jeśli wejściowy zestaw danych określa tylko folder (a nie nazwę pliku), działanie kopiowania kopiuje wszystkie pliki w folderze źródłowym do lokalizacji docelowej. 
@@ -138,7 +136,7 @@ Podczas tej procedury utworzysz potok i zweryfikujesz go za pomocą działania k
    ![Menu do tworzenia nowego potoku](./media/quickstart-create-data-factory-portal/new-pipeline-menu.png)
 1. Na karcie **Ogólne** określ wartość **CopyPipeline** w polu **Nazwa**. 
 
-1. W przyborniku **Działania** rozwiń pozycję **Przepływ danych**. Przeciągnij działanie **Copy** (Kopiowanie) z przybornika **Działania** na powierzchnię projektanta potoku. Możesz również wyszukać działania w przyborniku **Działania**. Wprowadź wartość **CopyFromBlobToBlob** w polu **Nazwa**.
+1. W przyborniku **Działania** rozwiń pozycję **Przenoszenie i przekształcanie**. Przeciągnij działanie **Copy** (Kopiowanie) z przybornika **Działania** na powierzchnię projektanta potoku. Możesz również wyszukać działania w przyborniku **Działania**. Wprowadź wartość **CopyFromBlobToBlob** w polu **Nazwa**.
 
    ![Ustawienia ogólne działania kopiowania](./media/quickstart-create-data-factory-portal/copy-activity-general-settings.png)
 1. Przejdź do karty **Źródło** w ustawieniach działania kopiowania, a następnie wybierz wartość **InputDataset** w polu **Zestaw danych źródłowych**.
@@ -205,7 +203,7 @@ W tym samouczku ta procedura jest opcjonalna. Możesz utworzyć *wyzwalacz harmo
    Zwróć uwagę na wartości w kolumnie **Wyzwolone przez**. Ręczne uruchomienie wyzwalacza pochodzi z kroku wykonanego wcześniej (**Wyzwól teraz**). 
 
    ![Lista wyzwolonych uruchomień](./media/quickstart-create-data-factory-portal/monitor-triggered-runs.png)
-1. Wybierz strzałkę w dół obok pozycji **Uruchomienia potoków**, aby przejść do widoku **Uruchomienia wyzwalacza**. 
+1. Przełącz się do widoku **Uruchomienia wyzwalacza**. 
 
    ![Przełączanie do widoku „Uruchomienia wyzwalacza”](./media/quickstart-create-data-factory-portal/monitor-trigger-runs.png)    
 1. Sprawdź, czy plik wyjściowy jest tworzony w folderze **output** dla każdego uruchomienia potoku aż do określonej daty/godziny zakończenia. 

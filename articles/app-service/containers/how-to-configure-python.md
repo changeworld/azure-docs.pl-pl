@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie wbudowanego obrazu w języku Python w usłudze Azure App Service
-description: W tym samouczku opisano opcje tworzenia i konfigurowania aplikacji w języku Python w usłudze Azure App Service za pomocą wbudowanego obrazu w języku Python.
+title: Konfigurowanie aplikacji języka Python dla usługi Azure App Service w systemie Linux
+description: W tym samouczku opisano opcje tworzenia i konfigurowania aplikacji języka Python dla usługi Azure App Service w systemie Linux.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -12,70 +12,103 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/25/2018
-ms.author: astay;cephalin
+ms.date: 10/09/2018
+ms.author: astay;cephalin;kraigb
 ms.custom: mvc
-ms.openlocfilehash: 9316805993b81e4d2511e833e0cc8f240807a1f9
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 71cbf0bb31a72e3b257f25c159d9d9eea31dbfbb
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47228556"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901622"
 ---
-# <a name="configure-built-in-python-image-in-azure-app-service-preview"></a>Konfigurowanie wbudowanego obrazu w języku Python w usłudze Azure App Service (wersja zapoznawcza)
+# <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>Konfigurowanie aplikacji języka Python dla usługi Azure App Service w systemie Linux
 
-W tym artykule opisano, jak skonfigurować wbudowany obraz w języku Python w usłudze [App Service w systemie Linux](app-service-linux-intro.md) do uruchamiania aplikacji w języku Python.
+W tym artykule opisano, jak [usługa Azure App Service w systemie Linux](app-service-linux-intro.md) uruchamia aplikacje języka Python i jak można dostosować zachowanie usługi App Service w razie potrzeby.
 
-## <a name="python-version"></a>Wersja języka Python
+## <a name="container-characteristics"></a>Właściwości kontenera
 
-Środowisko uruchomieniowe języka Python w usłudze App Service w systemie Linux używa wersji `python-3.7.0`.
+Aplikacje języka Python wdrażane w usłudze App Service w systemie Linux działają w kontenerze Docker, który jest zdefiniowany w repozytorium GitHub [Azure-App-Service/python container](https://github.com/Azure-App-Service/python/tree/master/3.7.0).
 
-## <a name="supported-frameworks"></a>Obsługiwane struktury
+Ten kontener ma następujące cechy:
 
-Obsługiwane są wszystkie wersje struktur internetowych zgodnych z interfejsem Web Server Gateway Interface(WSGI), które są zgodne ze środowiskiem uruchomieniowym `python-3.7`.
+- Podstawowy obraz kontenera to `python-3.7.0-slim-stretch`, co oznacza, że aplikacje są uruchamiane przy użyciu języka Python 3.7. Jeśli potrzebujesz innej wersji języka Python, należy zamiast tego utworzyć i wdrożyć własny obraz kontenera. Aby uzyskać więcej informacji, zobacz [Używanie niestandardowego obrazu platformy Docker dla usługi Web App for Containers](tutorial-custom-docker-image.md).
 
-## <a name="package-management"></a>Zarządzanie pakietami
+- Aplikacje są uruchamiane przy użyciu [serwera HTTP Gunicorn WSGI](http://gunicorn.org/) z dodatkowymi argumentami `--bind=0.0.0.0 --timeout 600`.
 
-Podczas publikowania w usłudze Git aparat Kudu wyszukuje plik [requirements.txt](https://pip.pypa.io/en/stable/user_guide/#requirements-files) w katalogu głównym repozytorium i automatycznie instaluje pakiety na platformie Azure przy użyciu `pip`.
+- Domyślnie obraz podstawowy zawiera platformę internetową Flask, ale kontener obsługuje inne platformy zgodne z interfejsem WSGI i językiem Python 3.7, takie jak Django.
 
-Aby wygenerować ten plik przed opublikowaniem, przejdź do katalogu głównego repozytorium i uruchom następujące polecenie w środowisku języka Python:
+- Aby zainstalować dodatkowe pakiety, takie jak Django, utwórz plik [*requirements.txt*](https://pip.pypa.io/en/stable/user_guide/#requirements-files) w katalogu głównym projektu, używając polecenia `pip freeze > requirements.txt`. Następnie opublikuj projekt w usłudze App Service przy użyciu wdrożenia narzędzia Git, co spowoduje automatyczne uruchomienie polecenia `pip install -r requirements.txt` w kontenerze w celu zainstalowania zależności aplikacji.
 
-```bash
-pip freeze > requirements.txt
-```
+## <a name="container-startup-process-and-customizations"></a>Proces uruchamiania kontenera oraz dostosowania
 
-## <a name="configure-your-python-app"></a>Konfigurowanie aplikacji w języku Python
+Podczas uruchamiania kontener usługi App Service w systemie Linux wykonuje następujące kroki:
 
-Wbudowany obraz języka Python w usłudze App Service używa serwera [Gunicorn](http://gunicorn.org/) do uruchomienia aplikacji w języku Python. Gunicorn to serwer HTTP interfejsu WSGI języka Python dla systemu UNIX. Usługa App Service automatyzuje serwer Gunicorn pod kątem projektów Django i Flask.
+1. Sprawdzenie obecności niestandardowego polecenia uruchamiania i zastosowanie go, jeśli zostało podane.
+1. Sprawdzenie obecności pliku *wsgi.py* aplikacji Django oraz (jeśli plik istnieje) uruchomienie serwera Gunicorn przy użyciu tego pliku.
+1. Sprawdzenie obecności pliku o nazwie *application.py* oraz (jeśli plik istnieje) uruchomienie serwera Gunicorn z użyciem wartości `application:app` przy założeniu aplikacji Flask.
+1. Jeśli nie została znaleziona żadna inna aplikacja, uruchomienie domyślnej aplikacji wbudowanej w kontener.
+
+Poniższe sekcje zawierają dodatkowe szczegóły dla każdej z tych opcji.
 
 ### <a name="django-app"></a>Aplikacja platformy Django
 
-Podczas publikowania projektu Django, który zawiera moduł `wsgi.py`, platforma Azure automatycznie wywołuje serwer Gunicorn przy użyciu następującego polecenia:
+W przypadku aplikacji Django usługa App Service szuka pliku o nazwie `wsgi.py` w kodzie aplikacji, a następnie uruchamia serwer Gunicorn przy użyciu następującego polecenia:
 
 ```bash
-gunicorn <path_to_wsgi>
+# <module> is the path to the folder containing wsgi.py
+gunicorn --bind=0.0.0.0 --timeout 600 <module>.wsgi
 ```
+
+Jeśli chcesz mieć większą kontrolę nad poleceniem uruchamiania, użyj [niestandardowego polecenia uruchamiania](#custom-startup-command) i zamień wartość `<module>` na nazwę modułu zawierającego plik *wsgi.py*.
 
 ### <a name="flask-app"></a>Aplikacja Flask
 
-Jeśli publikujesz aplikację Flask i punkt wejścia znajduje się w module `application.py` lub `app.py`, platforma Azure automatycznie wywołuje serwer Gunicorn przy użyciu jednego z następujących poleceń:
+W przypadku aplikacji Flask usługa App Service szuka pliku o nazwie *application.py* i uruchamia serwer Gunicorn w następujący sposób:
 
 ```bash
-gunicorn application:app
+gunicorn --bind=0.0.0.0 --timeout 600 application:app
 ```
 
-Lub 
+Jeśli główny moduł aplikacji znajduje się w innym pliku, użyj innej nazwy dla obiektu aplikacji, a jeśli chcesz podać dodatkowe argumenty dla serwera Gunicorn, użyj [niestandardowego polecenia uruchamiania](#custom-startup-command). Ta sekcja zawiera przykład dla platformy Flask z użyciem kodu początkowego w pliku *hello.py* i obiekt aplikacji Flask o nazwie `myapp`.
+
+### <a name="custom-startup-command"></a>Niestandardowe polecenie uruchamiania
+
+Aby kontrolować zachowanie kontenera podczas uruchamiania, możesz podać niestandardowe polecenie uruchamiania serwera Gunicorn. Jeśli na przykład masz aplikację Flask z głównym modułem *hello.py*, a obiekt aplikacji Flask nosi nazwę `myapp`, to polecenie wygląda następująco:
 
 ```bash
-gunicorn app:app
+gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
 ```
 
-### <a name="customize-start-up"></a>Dostosowywanie uruchamiania
+Możesz też dodać do polecenia inne argumenty dla serwera Gunicorn, takie jak `--workers=4`. Aby uzyskać więcej informacji, zobacz [Running Gunicorn](http://docs.gunicorn.org/en/stable/run.html) (Uruchamianie serwera Gunicorn) (docs.gunicorn.org).
 
-Aby zdefiniować niestandardowy punkt wejścia dla aplikacji, najpierw utwórz plik _.txt_ zawierający niestandardowe polecenie serwera Gunicorn i umieść go w katalogu głównym projektu. Na przykład, aby uruchomić serwer za pomocą modułu _helloworld.py_ i zmiennej `app`, utwórz plik _startup.txt_ o następującej zawartości:
+Aby określić polecenie niestandardowe, wykonaj następujące czynności:
 
-```bash
-gunicorn helloworld:app
-```
+1. Przejdź do strony [Ustawienia aplikacji](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) w witrynie Azure Portal.
 
-Na stronie [Ustawienia aplikacji](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) wybierz **Python|3.7** w polu **Stos środowiska uruchomieniowego** i podaj nazwę w polu **Plik uruchomieniowy** z poprzedniego kroku. Na przykład _startup.txt_.
+1. W ustawieniach **Środowisko uruchomieniowe** ustaw opcję **Stos** na wartość **Python 3.7**, a następnie wprowadź polecenie bezpośrednio w polu **Plik startowy**.
+
+    Możesz też zapisać polecenie w pliku tekstowym w katalogu głównym projektu, używając nazwy takiej jak *startup.txt* (lub dowolnej innej). Następnie wdróż ten plik w usłudze App Service i określ jego nazwę w polu **Plik startowy**. Ta opcja umożliwia zarządzanie poleceniem w repozytorium kodu źródłowego zamiast w witrynie Azure Portal.
+
+1. Wybierz pozycję **Zapisz**. Usługa App Service zostanie automatycznie uruchomiona ponownie, a niestandardowe polecenie startowe powinno zostać zastosowane po kilku sekundach.
+
+> [!Note]
+> Usługa App Service ignoruje wszelkie błędy występujące podczas przetwarzania pliku polecenia niestandardowego oraz kontynuuje proces uruchamiania, wyszukując aplikacje Django i Flask. Jeśli nie widzisz oczekiwanego zachowania, sprawdź, czy plik startowy jest wdrożony w usłudze App Service i czy nie zawiera błędów.
+
+### <a name="default-behavior"></a>Zachowanie domyślne
+
+Jeśli usługa App Service nie znajdzie polecenia niestandardowego, aplikacji Django ani aplikacji Flask, uruchomi domyślną aplikację dostępną tylko do odczytu, która znajduje się w folderze _opt/defaultsite_. Aplikacja domyślna wygląda następująco:
+
+![Domyślna strona internetowa usługi App Service w systemie Linux](media/how-to-configure-python/default-python-app.png)
+
+## <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+- **Po wdrożeniu własnego kodu aplikacji wyświetlana jest aplikacja domyślna.**  Aplikacja domyślna jest wyświetlana dlatego, że kod Twojej aplikacji nie został faktycznie wdrożony w usłudze App Service albo usługa App Service nie znalazła kodu aplikacji i zamiast niej uruchomiła aplikację domyślną.
+  - Uruchom ponownie usługę App Service, poczekaj 15–20 sekund i sprawdź ponownie aplikację.
+  - Połącz się bezpośrednio z usługą App Service przy użyciu konsoli SSH lub Kudu, a następnie sprawdź, czy Twoje pliki znajdują się w katalogu *site/wwwroot*. Jeśli pliki nie istnieją, sprawdź proces wdrażania i ponownie wdróż aplikację.
+  - Jeśli pliki istnieją, oznacza to, że usługa App Service nie mogła zidentyfikować określonego pliku startowego. Sprawdź, czy aplikacja ma strukturę zgodną z oczekiwaniami usługi App Service dla platformy [Django](#django-app) lub [Flask](#flask-app), albo użyj [niestandardowego polecenia uruchamiania](#custom-startup-command).
+
+- **W przeglądarce jest wyświetlany komunikat „Usługa niedostępna”.** W przeglądarce upłynął limit czasu oczekiwania na odpowiedź usługi App Service, co wskazuje, że usługa App Service uruchomiła serwer Gunicorn, ale argumenty określające kod aplikacji są niepoprawne.
+  - Odśwież okno przeglądarki, zwłaszcza jeśli korzystasz z niższych warstw cenowych w planie usługi App Service. Na przykład podczas korzystania z warstw bezpłatnych aplikacja może być uruchamiana dłużej i zacznie odpowiadać po odświeżeniu okna przeglądarki.
+  - Sprawdź, czy aplikacja ma strukturę zgodną z oczekiwaniami usługi App Service dla platformy [Django](#django-app) lub [Flask](#flask-app), albo użyj [niestandardowego polecenia uruchamiania](#custom-startup-command).
+  - Połącz się z usługą App Service przy użyciu konsoli SSH lub Kudu, a następnie sprawdź dzienniki diagnostyczne przechowywane w folderze *LogFiles*. Aby uzyskać więcej informacji o rejestrowaniu, zobacz [Enable diagnostics logging for web apps in Azure App Service](../web-sites-enable-diagnostic-log.md) (Włączanie rejestrowania diagnostycznego dla aplikacji internetowych w usłudze Azure App Service).

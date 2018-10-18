@@ -1,35 +1,37 @@
 ---
-title: Szybki start cURL emocji interfejsu API | Dokumentacja firmy Microsoft
-description: Pobierz informacje i przykładowy kod w celu szybkiego Rozpoczynanie pracy przy użyciu interfejsu API rozpoznawania emocji — warstwa z cURL w usługach kognitywnych.
+title: 'Szybki start: rozpoznawanie emocji na twarzach na obrazie — interfejs API rozpoznawania emocji, cURL'
+titlesuffix: Azure Cognitive Services
+description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API rozpoznawania emocji z biblioteką cURL.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: a7ca2cac718797462bb4dc889b3f1361b252435e
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: dfdaa89c9d29e419539f385f601dc7f264bf838e
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021102"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237079"
 ---
-# <a name="emotion-api-curl-quick-start"></a>Szybki Start cURL emocji interfejsu API
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Szybki start: tworzenie aplikacji do rozpoznawania emocji na twarzach na obrazie.
 
 > [!IMPORTANT]
-> Interfejs API podglądu kończy się 30 października 2017 r. Testowanie nowego [wideo indeksatora interfejsu API w wersji zapoznawczej](https://azure.microsoft.com/services/cognitive-services/video-indexer/) można łatwo wyodrębnić szczegółowych informacji z wideo i celu ułatwienia pracy funkcję odnajdowania zawartości, takich jak wyniki wyszukiwania został określony poprzez wykrycie słowa rozmowy, kroje znaków i emocji. [Dowiedz się więcej](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
+> Interfejs API rozpoznawania emocji zostanie wycofany w dniu 15 lutego 2019 r. Rozpoznawanie emocji jest teraz ogólnie dostępne jako część [interfejsu API rozpoznawania twarzy](https://docs.microsoft.com/azure/cognitive-services/face/).
 
-Ten artykuł zawiera informacje i przykłady kodu, aby szybko rozpocząć korzystanie z [metody rozpoznaje interfejsu API rozpoznawania emocji — warstwa](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) z cURL do rozpoznawania emocji wyrażonych przez osoby na obrazie. 
+Ten artykuł zawiera informacje i przykłady kodu, które pomogą w szybkim rozpoczęciu korzystania z [metody Recognize interfejsu API rozpoznawania emocji](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) z biblioteką cURL do rozpoznawania emocji wyrażonych przez co najmniej jedną osobę na obrazie.
 
 ## <a name="prerequisite"></a>Wymagania wstępne
-* Uzyskaj swój klucz bezpłatnej subskrypcji [tutaj](https://azure.microsoft.com/try/cognitive-services/)
+* Pobierz swój bezpłatny klucz subskrypcji [stąd](https://azure.microsoft.com/try/cognitive-services/)
 
-## <a name="recognize-emotions-curl-example-request"></a>Uznają, że emocji cURL przykładowe żądanie
+## <a name="recognize-emotions-curl-example-request"></a>Przykładowe żądanie rozpoznawania emocji z użyciem biblioteki cURL
 
 > [!NOTE]
-> W wywołania REST podczas uzyskiwania kluczy subskrypcji, należy użyć tej samej lokalizacji. Na przykład jeśli klucze subskrypcji został uzyskany z westcentralus, zastąp "westus" w adresie URL poniżej "westcentralus".
+> Lokalizacja użyta w wywołaniu REST i lokalizacja użyta do otrzymania kluczy subskrypcji muszą być takie same. Jeśli na przykład masz klucze subskrypcji z lokalizacji westcentralus, zastąp ciąg „westus” w poniższym adresie URL ciągiem „westcentralus”.
 
 ```json
 @ECHO OFF
@@ -38,16 +40,16 @@ curl -v -X POST "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recogni
 -H "Content-Type: application/json"
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
 
---data-ascii "{body}" 
+--data-ascii "{body}"
 ```
 
-## <a name="recognize-emotions-sample-response"></a>Rozpoznaje emocji przykładowa odpowiedź
-Pomyślnego połączenia zwraca tablicę wpisów krój oraz wyniki emocji skojarzony, uszeregowane według rozmiaru prostokąt krój w kolejności malejącej. Pustą odpowiedź wskazuje, że zostały wykryte nie kroje. Wpis emocji zawiera następujące pola:
-* faceRectangle - lokalizacji prostokąta powierzchni w obrazie.
-* wyniki - emocji wyniki dla każdej powierzchni w obrazie. 
+## <a name="recognize-emotions-sample-response"></a>Przykładowa odpowiedź dotycząca rozpoznawania emocji
+Pomyślne wywołanie zwraca tablicę wpisów twarzy oraz skojarzonych z nimi ocen emocji uporządkowanych według rozmiaru prostokąta twarzy w kolejności malejącej. Pusta odpowiedź wskazuje, że nie wykryto żadnych twarzy. Wpis rozpoznawania emocji zawiera następujące pola:
+* faceRectangle — lokalizacja prostokąta twarzy na obrazie.
+* scores — ocena emocji dla każdej twarzy na obrazie.
 
 ```json
-application/json 
+application/json
 [
   {
     "faceRectangle": {
@@ -68,4 +70,3 @@ application/json
     }
   }
 ]
-

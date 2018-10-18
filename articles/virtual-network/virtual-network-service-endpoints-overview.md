@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: anithaa
 ms.custom: ''
-ms.openlocfilehash: dcc0456637c17e779593b121025596149398afba
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 3bae20a7d6eea298dd09d24c0c5b53365784b3d0
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410225"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239187"
 ---
 # <a name="virtual-network-service-endpoints"></a>Punkty końcowe usługi sieci wirtualnej
 
@@ -49,7 +49,7 @@ Najbardziej aktualne powiadomienia można znaleźć na stronie [aktualizacji us�
 
 Punkty końcowe usługi oferują następujące korzyści:
 
-- **Lepsze zabezpieczenia zasobów usługi platformy Azure**: dzięki punktom końcowym zasoby usługi platformy Azure mogą być chronione w sieci wirtualnej. Zabezpieczenie zasobów usługi w sieci wirtualnej zapewnia większe bezpieczeństwo dzięki całkowitemu usunięciu publicznego dostępu do Internetu dla tych zasobów i zezwolenie na ruch tylko z Twojej sieci wirtualnej.
+- **Lepsze zabezpieczenia zasobów usługi platformy Azure**: przestrzenie adresowe prywatnych sieci wirtualnych mogą się nakładać, przez co nie można za ich pomocą jednoznacznie identyfikować ruchu pochodzącego z Twojej sieci wirtualnej. Punkty końcowe usługi dają możliwość zabezpieczania zasobów usługi platformy Azure w sieci wirtualnej przez rozszerzenie tożsamości sieci wirtualnej na usługę. Po włączeniu punktów końcowych usługi w sieci wirtualnej można zabezpieczyć zasoby usług usługi platformy Azure w sieci wirtualnej przez dodanie reguły sieci wirtualnej do zasobów. Zwiększa to bezpieczeństwo przez całkowite uniemożliwienie publicznego dostępu z Internetu do tych zasobów i zezwolenie na ruch tylko z Twojej sieci wirtualnej.
 - **Optymalny routing ruchu usług sieci platformy Azure z sieci wirtualnej**: obecnie wszystkie trasy w sieci wirtualnej, które wymuszają ruch internetowy za pomocą urządzeń lokalnych i/lub wirtualnych (sytuacja znana jako tunelowanie wymuszane), wymuszają również ruch w ramach usługi platformy Azure po tej samej trasie co ruch internetowy. Punkty końcowe usługi zapewniają optymalny routing ruchu platformy Azure. 
 
   Punkty końcowe zawsze pobierają ruch bezpośrednio z sieci wirtualnej do usługi w sieci szkieletowej platformy Microsoft Azure. Zachowywanie ruchu w sieci szkieletowej platformy Azure umożliwia kontynuowanie inspekcji i monitorowania wychodzącego ruchu internetowego z sieci wirtualnych za pośrednictwem tunelowania wymuszanego, bez wywierania wpływu na ruch usługi. Dowiedz się więcej na temat [tras definiowanych przez użytkownika i tunelowania wymuszanego](virtual-networks-udr-overview.md).

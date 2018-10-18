@@ -1,27 +1,27 @@
 ---
-title: Interfejs API wyszukiwania wiadomości — szybki start | Dokumentacja firmy Microsoft
-description: Pokazuje, jak rozpocząć korzystanie z interfejsu API wyszukiwania wiadomości Bing.
+title: 'Szybki start: interfejs API wyszukiwania wiadomości Bing'
+titlesuffix: Azure Cognitive Services
+description: Jak rozpocząć korzystanie z interfejsu API wyszukiwania wiadomości Bing.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 9CF6EAF3-42D8-4321-983C-4AC3896E8E03
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: b3f2b36034ab33b4f5eec2d138103c3e4d8e21f4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: MT
+ms.openlocfilehash: bc3d2e43983791cf8f666660675a7dd537f04d77
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034335"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802529"
 ---
-# <a name="your-first-news-search-query"></a>Pierwsze zapytanie wyszukiwania wiadomości
+# <a name="quickstart-your-first-news-search-query"></a>Szybki start: pierwsze zapytanie wyszukiwania wiadomości
 
-Przed skonfigurowaniem pierwszego wywołania, należy uzyskać klucz subskrypcji usług Cognitive Services. Aby uzyskać klucz, zobacz [spróbuj usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api).
+Przed wykonaniem pierwszego wywołania należy uzyskać klucz subskrypcji usług Cognitive Services. Aby uzyskać klucz, zobacz [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api).
 
-Aby uzyskać wyniki wyszukiwania tylko do grup dyskusyjnych, czy Wyślij żądanie Pobierz do następujący punkt końcowy:
+Aby uzyskać wyniki wyszukiwania obejmujące tylko wiadomości, należy wysłać żądanie GET do następującego punktu końcowego:
 
 ```http
 https://api.cognitive.microsoft.com/bing/v7.0/news/search
@@ -29,24 +29,24 @@ https://api.cognitive.microsoft.com/bing/v7.0/news/search
 
 Żądanie musi używać protokołu HTTPS.
 
-Zaleca się, że wszystkie żądania pochodzą z serwera. Dystrybucja klucza jako część aplikacji klienckiej oferuje więcej możliwości dla osób trzecich złośliwego dostępu do niego. Ponadto nawiązywania połączeń z serwerem zapewnia jeden punkt uaktualnienia w przyszłych wersjach interfejsu API.
+Zalecamy, aby wszystkie żądania były wysyłane z serwera. Dystrybuowanie klucza w ramach aplikacji klienckiej dostarcza więcej okazji do przejęcia go przez złośliwy kod innych firm. Ponadto wykonywanie wywołań z serwera zapewnia jeden punkt uaktualniania dla przyszłych wersji interfejsu API.
 
-Żądanie musi określać [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query) parametr zapytania, która zawiera użytkownika wyszukiwany termin. Chociaż jest to opcjonalne, żądanie należy określić również [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#mkt) parametr zapytania, który identyfikuje na rynku, którego wyniki pochodzą. Aby uzyskać listę opcjonalne parametry zapytania takie jak `freshness` i `textDecorations`, zobacz [parametry zapytania](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters). Wszystkie wartości parametrów zapytania musi być zakodowane w adresie URL.
+Żądanie musi określać parametr zapytania [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query), który zawiera termin wyszukiwania użytkownika. Chociaż jest to opcjonalne, żądanie powinno również określać parametr zapytania [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#mkt), który identyfikuje rynek, z którego mają pochodzić wyniki. Aby uzyskać listę opcjonalnych parametrów zapytania, takich jak `freshness` czy `textDecorations`, zobacz [Query Parameters (Parametry zapytania)](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters). Wszystkie wartości parametrów zapytania muszą być zakodowane w adresie URL.
 
-Żądanie musi określać [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#subscriptionkey) nagłówka. Mimo że jest to opcjonalne, zachęcamy też określić następujące nagłówki:
+Żądanie musi określać nagłówek [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#subscriptionkey). Mimo że jest to opcjonalne, zachęcamy, aby określić również następujące nagłówki:
 
-- [Agent użytkownika](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#useragent)
-- [ClientID-X-MSEdge](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#clientid)
+- [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#useragent)
+- [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#clientid)
 - [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#clientip)
-- [Lokalizacja w przypadku wyszukiwania X](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#location)
+- [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#location)
 
-Nagłówki IP i lokalizacji klienta są ważne w przypadku zwracania zawartości pamiętać lokalizacji.
+Nagłówki adresu IP klienta i lokalizacji są ważne z punktu widzenia zwracania zawartości odpowiedniej dla danej lokalizacji.
 
-Aby uzyskać listę wszystkich nagłówków żądań i odpowiedzi, zobacz [nagłówki](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#headers).
+Aby uzyskać listę wszystkich nagłówków żądań i odpowiedzi, zobacz [Nagłówki](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#headers).
 
 ## <a name="the-request"></a>Żądanie
 
-Na poniższym obrazie przedstawiono żądanie wiadomości, który zawiera wszystkie parametry sugerowane zapytania i nagłówków. Jeśli jest to Twoje pierwsze wywoływanie dowolnego z interfejsów API Bing, nie dołączaj nagłówka identyfikatora klienta. Identyfikator klienta należy uwzględnić tylko wtedy, gdy interfejs API Bing został już wywołany i usługa Bing zwróciła identyfikator klienta dla kombinacji użytkownika i urządzenia.
+Poniżej przedstawiono żądanie wyszukiwania wiadomości, które zawiera wszystkie sugerowane parametry zapytania i nagłówki. Jeśli jest to Twoje pierwsze wywoływanie dowolnego z interfejsów API Bing, nie dołączaj nagłówka identyfikatora klienta. Identyfikator klienta należy uwzględnić tylko wtedy, gdy interfejs API Bing został już wywołany i usługa Bing zwróciła identyfikator klienta dla kombinacji użytkownika i urządzenia.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies&mkt=en-us HTTP/1.1
@@ -280,12 +280,12 @@ X-MSEdge-Ref: Ref A: 994974CC8D994C95A5C31387296A510A Ref B: BY3EDGE0207 Ref C: 
 
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Wypróbuj interfejs API. Przejdź do [konsoli testowanie interfejsu API wyszukiwania wiadomości](https://dev.cognitive.microsoft.com/docs/services/56b43f72cf5ff8098cef380a/operations/56f02400dbe2d91900c68553).
+Wypróbuj interfejs API. Przejdź do [konsoli testowania interfejsu API wyszukiwania wiadomości](https://dev.cognitive.microsoft.com/docs/services/56b43f72cf5ff8098cef380a/operations/56f02400dbe2d91900c68553).
 
-Aby uzyskać szczegółowe informacje dotyczące używania obiektów odpowiedzi, zobacz [co to jest wyszukiwanie wiadomości Bing?](./search-the-web.md). Można również znaleźć więcej informacji na temat następujące typowe akcje:
+Aby uzyskać szczegółowe informacje dotyczące korzystania z obiektów odpowiedzi, zobacz [Co to jest wyszukiwanie wiadomości Bing?](./search-the-web.md). Możesz też znaleźć więcej informacji na temat następujących typowych działań:
 
-- [Pobieranie bieżącej najważniejszych wiadomości](./search-the-web.md#getting-todays-top-news)
-- [Wprowadzenie wiadomości według kategorii](./search-the-web.md#getting-news-by-category)
-- [Wprowadzenie popularne wiadomości](./search-the-web.md#getting-trending-news)
+- [Pobieranie najważniejszych wiadomości z dnia dzisiejszego](./search-the-web.md#getting-todays-top-news)
+- [Pobieranie wiadomości według kategorii](./search-the-web.md#getting-news-by-category)
+- [Pobieranie popularnych wiadomości](./search-the-web.md#getting-trending-news)

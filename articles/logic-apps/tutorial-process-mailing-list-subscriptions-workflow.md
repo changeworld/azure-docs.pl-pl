@@ -10,14 +10,14 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: 4ac5861dabbc473099886b4f099824cde60f38b9
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 96a151b3de5d59ad74eaf7061b1a3ff91d602759
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122873"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044420"
 ---
-# <a name="manage-mailing-list-requests-with-a-logic-app"></a>Zarządzanie żądaniami listy adresowej za pomocą aplikacji logiki
+# <a name="manage-mailing-list-requests-with-azure-logic-apps"></a>Zarządzanie żądaniami listy adresowej za pomocą usługi Azure Logic Apps
 
 Usługa Azure Logic Apps pomaga automatyzować przepływy pracy i integrować dane w usługach platformy Azure, usługach firmy Microsoft, innych aplikacjach typu oprogramowanie jako usługa (SaaS) oraz systemach lokalnych. Ten samouczek pokazuje, jak można tworzyć [aplikację logiki](../logic-apps/logic-apps-overview.md), która przetwarza żądania subskrypcji dla listy adresowej zarządzanej przez usługę [MailChimp](https://mailchimp.com/).
 Ta aplikacja logiki monitoruje konto e-mail pod kątem tych żądań, wysyła te żądania do zatwierdzenia i dodaje zatwierdzone elementy członkowskie do listy adresowej.

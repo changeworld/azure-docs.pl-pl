@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/16/2018
-ms.openlocfilehash: 5ef15b7a757b87c14bf0bd764bdd6ca6e6da64e0
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
-ms.translationtype: MT
+ms.openlocfilehash: dca23940053fa6bf1f716ffa1a6fa0bcd7b41c91
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379053"
+ms.locfileid: "49362623"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorowanie i dostrajanie wydajności
 
@@ -37,7 +37,7 @@ W przypadku obciążeń z problemów z wydajnością, to problem z wydajnością
 
   - Zbyt wiele uruchomionych zapytań
   - Zbyt wiele kompilacji zapytań
-  - Jedna lub więcej wykonywanie kwerend korzystają z planu optymalne zapytania
+  - Co najmniej jeden wykonywanie zapytań jest przy użyciu planu optymalne zapytania
 
   Jeśli jest to w przypadku obciążenia, celem użytkownika jest identyfikowanie i dostosowywanie skojarzone zapytania lub Uaktualnij rozmiar obliczeń lub warstwę można zwiększyć pojemność usługi Azure SQL database w celu ochrony przed rozproszonymi wymagania dotyczące procesora CPU usługi. Aby uzyskać więcej informacji w skalowaniu zasobów dla pojedynczych baz danych, zobacz [skalowanie pojedynczej bazy danych zasobów w usłudze Azure SQL Database](sql-database-single-database-scale.md) i skalowania zasobów dla pul elastycznych, zobacz [skalowanie elastycznej puli zasobów w usłudze Azure SQL Baza danych](sql-database-elastic-pool-scale.md).
 
@@ -62,7 +62,7 @@ Można zidentyfikować problemy z wydajnością dotyczące uruchamiania przy uż
 
 Najpierw mieć pewność, że nie jest problem z wydajnością procesora CPU na wysoki, powiązanego z uruchomiona. Jeśli nie jest dostępne, następnym krokiem jest określenie najważniejszych czeka skojarzone z obciążenia aplikacji.  Typowe metody wyświetlane u góry oczekiwania kategorii typów:
 
-- [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) udostępnia statystyki oczekiwania na zapytanie wraz z upływem czasu. W Store zapytania oczekiwania typów są połączone w kategoriach oczekiwania. Mapowanie oczekiwania kategorie typów oczekiwania jest dostępna w [sys.query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql?view=sql-server-2017#wait-categories-mapping-table).
+- [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) udostępnia statystyki oczekiwania na zapytanie wraz z upływem czasu. W Store zapytania oczekiwania typów są połączone w kategoriach oczekiwania. Mapowanie oczekiwania kategorie typów oczekiwania jest dostępna w [sys.query_store_wait_stats](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql?view=sql-server-2017#wait-categories-mapping-table).
 - [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) zwraca informacje o wszystkich czeka napotykanych przez wątki, które są wykonywane podczas operacji. Ten widok zagregowane umożliwia diagnozowanie problemów z wydajnością za pomocą usługi Azure SQL Database, a także przy użyciu określonego zapytania i partie.
 - [sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) zwraca informacje o kolejce oczekiwania zadań, które oczekują na niektórych zasobów.
 

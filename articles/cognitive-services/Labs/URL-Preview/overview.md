@@ -1,25 +1,26 @@
 ---
-title: Co to jest podgląd adres URL projektu? -Microsoft kognitywnych usług | Dokumentacja firmy Microsoft
-description: Wprowadzenie do podglądu adres URL projektu.
+title: Czym jest laboratorium Project URL Preview?
+titlesuffix: Azure Cognitive Services
+description: Wprowadzenie do laboratorium Project URL Preview.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: overview
 ms.date: 03/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 6b486e0ab4092bef4fe829a5f166311a572a2900
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: 5d0b8260bf1c58af915c1be18c32cec678f4f09c
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348609"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869437"
 ---
-# <a name="what-is-project-url-preview"></a>Co to jest podgląd adres URL projektu?
-Punkt końcowy adres URL podglądu przyjmuje parametr zapytania adresu URL i zwraca odpowiedź w formacie JSON z nazwą zasobu docelowego, krótki opis i łącze do obrazu do wyświetlenia w podglądzie. Odpowiedź zawiera także [isFamilyFriendly](url-preview-reference.md#query-parameters) flagę wskazującą, czy adres URL zawiera niedozwolony zawartość dla dorosłych, pirackie lub innych. 
+# <a name="what-is-project-url-preview"></a>Czym jest laboratorium Project URL Preview?
+Punkt końcowy laboratorium URL Preview pobiera parametr zapytania adresu URL i zwraca odpowiedź JSON z nazwą zasobu docelowego, krótkim opisem i linkiem do obrazu, czyli treściami, które mają zostać wyświetlone w podglądzie. Odpowiedź zawiera także flagę [isFamilyFriendly](url-preview-reference.md#query-parameters), która wskazuje na to, czy adres URL zawiera treści pirackie, dla dorosłych lub inną nielegalną zawartość. 
 
-Aby uzyskać adres URL Podgląd wyników, Prześlij żądanie GET i obejmują *Ocp-Apim-subskrypcji — klucz* nagłówek z prawidłowym tokenem:  
+Aby uzyskać podgląd adresu URL, należy przesłać żądanie GET oraz dołączyć nagłówek *Ocp-Apim-Subscription-Key* z prawidłowym tokenem:  
 ```
 https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=https://swiftkey.com
 
@@ -46,22 +47,22 @@ X-MSEdge-Ref: Ref A: 3CC74C94769440C0851D9DF0869FCE7F Ref B: CO1EDGE0315 Ref C: 
 ````
 ## <a name="scenarios"></a>Scenariusze 
 
-Adres URL interfejsu API w wersji zapoznawczej obsługuje krótkie opisy zasobów sieci Web. Deweloperzy Użyj, aby tworzyć środowiska podglądu.  Użytkownicy mogą udostępniać lub zakładki stron sieci Web, grup dyskusyjnych, blogów, forów itp. Ten interfejs API można również uzyskać łagodzenia zawartości.    
+Interfejs URL Preview API obsługuje krótkie opisy zasobów internetowych. Deweloperzy używają go do tworzenia zaawansowanych podglądów.  Użytkownicy mogą udostępniać lub oznaczać zakładkami strony internetowe, grupy dyskusyjne, blogi, fora itp. Ten interfejs API może również służyć do moderowania zawartości.    
 
-Aplikacje Podgląd adres URL do wysyłania żądań sieci Web do punktu końcowego za pomocą kwerendy przypisana do adresu URL do podglądu.  Odpowiedź JSON zawiera informacje o wersji zapoznawczej: nazwa, opis zasobu, *familyFriendly* flagę i linki, które zapewniają dostęp do reprezentatywnego obrazu oraz pełną zasób w tryb online. 
+Aplikacje korzystają z laboratorium URL Preview na potrzeby wysyłania żądań internetowych do punktu końcowego za pomocą zapytania przypisanego do adresu URL, dla którego ma zostać wyświetlony podgląd.  Odpowiedź JSON zawiera informacje dotyczące podglądu: nazwę, opis zasobu, flagę *familyFriendly* i linki, które zapewniają dostęp do obrazu odpowiadającego treści podglądu i pełnego zasobu w trybie online. 
 
 ## <a name="terms-of-use"></a>Warunki użytkowania
-Tylko dane z wersji zapoznawczej adres URL projektu umożliwia wyświetlenie wstawki podglądu i miniatur Link do ich lokacji źródłowych w adresie URL inicjowanych przez użytkownika końcowego, udostępniania mediów społecznościowych, rozmów bot lub podobne oferty. D nie kopiuje magazynu lub pamięci podręcznej danych otrzymywanych z podglądu adres URL projektu. Należy uwzględnić wszystkie żądania, aby wyłączyć podglądy, które mogą otrzymywać Właściciele witryny sieci Web lub zawartości.
+Wyświetlając fragmenty podglądu i miniaturki powiązane linkami z witrynami źródłowymi, należy korzystać wyłącznie z danych udostępnianych w laboratorium Project URL Preview. Dotyczy to udostępniania adresu URL inicjowanego przez użytkownika końcowego w mediach społecznościowych, czatbocie lub podobnych usługach. Nie należy kopiować, przechowywać ani też zapisywać do pamięci podręcznej żadnych danych otrzymywanych z laboratorium Project URL Preview. Należy uwzględniać wszystkie żądania z prośbą o wyłączenie podglądów, które mogą pochodzić od właścicieli treści lub witryn.
 
-Możesz lub innej firmy w Twoim imieniu może nie, Zachowaj, przechowywania, pamięci podręcznej, udział, albo dystrybucji żadnych danych z interfejsu API w wersji zapoznawczej adres URL do testowania, tworzenie, uczenie, dystrybucja lub udostępnia usługi firmy Microsoft lub funkcji. 
+Użytkownik ani żaden inny podmiot w jego imieniu nie może używać, zachowywać, przechowywać, zapisywać w pamięci podręcznej, udostępniać ani rozpowszechniać żadnych danych z interfejsu URL Preview API do celów testowania, opracowywania, przeprowadzania szkoleń, rozpowszechniania lub udostępniania jakiejkolwiek usługi lub funkcji firmy innej niż Microsoft. 
 
 ## <a name="throttling-requests"></a>Ograniczanie żądań
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
-- [C# — Szybki Start](csharp.md)
-- [Szybki Start Java](java-quickstart.md)
-- [JavaScript — Szybki Start](javascript.md)
-- [Węzeł Szybki Start](node-quickstart.md)
-- [Krótkie wprowadzenie do języka Python](python-quickstart.md)
+## <a name="next-steps"></a>Następne kroki
+- [Przewodnik Szybki start dla języka C#](csharp.md)
+- [Przewodnik Szybki start dla języka Java](java-quickstart.md)
+- [Przewodnik Szybki start dla języka JavaScript](javascript.md)
+- [Przewodnik Szybki start dla środowiska Node](node-quickstart.md)
+- [Przewodnik Szybki start dla języka Python](python-quickstart.md)

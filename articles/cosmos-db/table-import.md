@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/28/2017
 ms.author: sngun
-ms.openlocfilehash: 905815259707116759e0b980690fac108ab81c7b
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 8614bf7009afab8c005d2ffb8b1a78f3694d2af7
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43186834"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247513"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Migrowanie danych na konto interfejsu API tabel w usłudze Azure Cosmos DB
 
@@ -30,7 +30,9 @@ Ten samouczek obejmuje następujące zadania:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Zwiększenie przepływności: czas trwania migracji danych zależy od przepływności skonfigurowanej dla pojedynczego kontenera lub dla zestawu kontenerów. Pamiętaj o zwiększeniu przepływności w przypadku większych migracji danych. Po ukończeniu migracji zmniejsz przepływność, aby ograniczyć koszty. Aby uzyskać więcej informacji na temat zwiększania przepływności w witrynie Azure Portal, zobacz Performance levels and pricing tiers in Azure Cosmos DB (Poziomy wydajności i warstwy cenowe w usłudze Azure Cosmos DB).
+* **Zwiększenie przepływności**: czas trwania migracji danych zależy od przepływności skonfigurowanej dla pojedynczego kontenera lub dla zestawu kontenerów. Pamiętaj o zwiększeniu przepływności w przypadku większych migracji danych. Po ukończeniu migracji zmniejsz przepływność, aby ograniczyć koszty. Aby uzyskać więcej informacji na temat zwiększania przepływności w witrynie Azure Portal, zobacz Performance levels and pricing tiers in Azure Cosmos DB (Poziomy wydajności i warstwy cenowe w usłudze Azure Cosmos DB).
+
+* **Utworzenie zasobów usługi Azure Cosmos DB:** przed rozpoczęciem migracji danych utwórz wstępnie wszystkie tabele z poziomu witryny Azure Portal. W przypadku migracji do konta usługi Azure Cosmos DB, która ma przepływność poziomu bazy danych, pamiętaj o podaniu klucza partycji podczas tworzenia tabel usługi Azure Cosmos DB.
 
 ## <a name="data-migration-tool"></a>Narzędzie do migracji danych
 

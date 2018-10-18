@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/28/2018
+ms.date: 10/09/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 776f70b6b24288006d52cb0e91797d1074180160
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 7eb17138f42cdada10edd5ef08873eb2afee91fe
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452619"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068982"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Samouczek: kopiowanie danych na urządzenie Azure Data Box Disk i ich weryfikacja
 
@@ -163,7 +163,75 @@ Aby podłączyć urządzenia Data Box Disk do komputera i skopiować na nie dane
 > -  Podczas kopiowania danych upewni się, że rozmiar danych jest zgodny z ograniczeniami rozmiaru opisanymi w temacie [Azure storage and Data Box Disk limits (Ograniczenia usług Azure Storage i Data Box Disk)](data-box-disk-limits.md). 
 > - Jeśli dane przekazywane przy użyciu usługi Data Box Disk będą jednocześnie przekazywane przez inne aplikacje, poza usługą Data Box Disk, skutkiem może być niepowodzenie zadania przekazywania oraz uszkodzenie danych.
 
-## <a name="verify-data"></a>Weryfikacja danych 
+### <a name="split-and-copy-data-to-disks"></a>Dzielenie i kopiowanie danych na dyski
+
+Ta opcjonalna procedura może być używana w przypadku korzystania z wielu dysków i dużego zestawu danych, który należy podzielić i skopiować na wszystkie dyski. Narzędzie do dzielenia skopiowanych dysków Data Box pomaga w dzieleniu i kopiowaniu danych na komputerze z systemem Windows.
+
+1. Upewnij się, że narzędzie do dzielenia skopiowanych dysków Data Box zostało pobrane i wyodrębnione w folderze lokalnym na komputerze z systemem Windows. To narzędzie zostało pobrane podczas pobierania zestawu narzędzi Data Box Disk dla systemu Windows.
+2. Otwórz Eksploratora plików. Zanotuj literę dysku źródła danych i litery dysków przypisane do usługi Data Box Disk. 
+
+     ![Dzielenie skopiowanych danych ](media/data-box-disk-deploy-copy-data/split-copy-1.png)
+ 
+3. Określ źródło danych do skopiowania. Na przykład w tym przypadku:
+    - Zidentyfikowano następujące dane blokowego obiektu blob.
+
+         ![Dzielenie skopiowanych danych ](media/data-box-disk-deploy-copy-data/split-copy-2.png)    
+
+    - Zidentyfikowano następujące dane stronicowego obiektu blob.
+
+         ![Dzielenie skopiowanych danych ](media/data-box-disk-deploy-copy-data/split-copy-3.png)
+ 
+4. Przejdź do folderu, w którym wyodrębniono oprogramowanie. Znajdź w tym folderze plik SampleConfig.json. Jest to plik tylko do odczytu, który można modyfikować i zapisywać.
+
+   ![Dzielenie skopiowanych danych ](media/data-box-disk-deploy-copy-data/split-copy-4.png)
+ 
+5. Zmodyfikuj plik SampleConfig.json.
+ 
+    - Podaj nazwę zadania. Spowoduje to utworzenie folderu w usłudze Data Box Disk, który w ostateczności stanie się kontenerem na koncie usługi Azure Storage powiązanym z tymi dyskami. Nazwa zadania musi być zgodna z konwencjami nazewnictwa kontenera platformy Azure. 
+    - Podaj ścieżkę źródłową, zwracając uwagę na format ścieżki w pliku SampleConfigFile.json. 
+    - Wprowadź litery dysku odpowiadające dyskom docelowym. Dane zostaną pobrane ze ścieżki źródłowej i skopiowane na wiele dysków.
+    - Podaj ścieżkę dla plików dziennika. Domyślnie są one wysyłane do bieżącego katalogu, w którym znajduje się plik EXE.
+
+     ![Dzielenie skopiowanych danych ](media/data-box-disk-deploy-copy-data/split-copy-5.png)
+
+6. Aby sprawdzić poprawność formatu pliku, przejdź do narzędzia JSONlint. Zapisz plik jako ConfigFile.json. 
+
+     ![Dzielenie skopiowanych danych ](media/data-box-disk-deploy-copy-data/split-copy-6.png)
+ 
+7. Otwórz okno wiersza polecenia. 
+
+8. Uruchom plik DataBoxDiskSplitCopy.exe. Typ
+
+    `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
+
+     ![Dzielenie skopiowanych danych ](media/data-box-disk-deploy-copy-data/split-copy-7.png)
+ 
+9. Naciśnij klawisz Enter, aby kontynuować wykonywanie skryptu.
+
+    ![Dzielenie skopiowanych danych ](media/data-box-disk-deploy-copy-data/split-copy-8.png)
+  
+10. W czasie dzielenia i kopiowania zestawu danych zostanie wyświetlone podsumowanie sesji kopiowania przekazane przez narzędzie do dzielenia skopiowanych dysków. Poniżej pokazano przykładowe dane wyjściowe.
+
+    ![Dzielenie skopiowanych danych ](media/data-box-disk-deploy-copy-data/split-copy-9.png)
+ 
+11. Upewnij się, że dane zostały rozdzielone między dyski docelowe. 
+ 
+    ![Dzielenie skopiowanych danych ](media/data-box-disk-deploy-copy-data/split-copy-10.png)
+    ![Dzielenie skopiowanych danych ](media/data-box-disk-deploy-copy-data/split-copy-11.png)
+     
+    Jeśli sprawdzisz zawartość dysku n:, zobaczysz, że dwa tworzone podfoldery odpowiadają formatowi danych blokowego obiektu blob i stronicowego obiektu blob.
+    
+     ![Dzielenie skopiowanych danych ](media/data-box-disk-deploy-copy-data/split-copy-12.png)
+
+12. Jeśli sesja kopiowania zakończy się niepowodzeniem, użyj następującego polecenia, aby odzyskać dane i wznowić operację:
+
+    `DataBoxDiskSplitCopy.exe PrepImport /config:<configFile.json> /ResumeSession`
+
+
+Po zakończeniu kopiowania danych należy sprawdzić ich poprawność. 
+
+
+## <a name="validate-data"></a>Sprawdzanie poprawności danych 
 
 Aby zweryfikować dane, wykonaj następujące czynności:
 

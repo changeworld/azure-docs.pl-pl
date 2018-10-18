@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 10/10/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 61b354dfd6f704eb0677991c02f28de08e49ee37
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 1c9af5c94aa05f60220080b779921a2c79c322f3
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917503"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067435"
 ---
 # <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>Przełączanie maszyn wirtualnych platformy Azure w tryb failover i przywracanie po awarii między regionami świadczenia usługi Azure
 
@@ -71,4 +71,4 @@ Po przełączeniu maszyny wirtualnej w tryb failover należy ponownie włączyć
 
 ## <a name="fail-back-to-the-primary-region"></a>Powrót po awarii do regionu podstawowego
 
-Po ponownym włączeniu ochrony maszyn wirtualnych możesz wykonać powrót po awarii do regionu podstawowego. Aby to zrobić, postępuj zgodnie z instrukcjami dotyczącymi [przełączania w tryb failover](#run-a-failover).
+Po ponownym włączeniu ochrony maszyn wirtualnych możesz wykonać powrót po awarii do regionu podstawowego. W tym celu skonfiguruj przełączanie w tryb failover z regionu pomocniczego do regionu podstawowego, według opisu w tym artykule.

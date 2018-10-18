@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 59eb0ddad72f5e54a23a97a260477f84019eb62c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: MT
+ms.openlocfilehash: a0a330d3ea7362ffabb20a5d390cee87cbf7d8ff
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386345"
+ms.locfileid: "49365409"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Rozwiązywanie problemów z usługą Azure Files w Windows
 
@@ -32,13 +32,13 @@ Podczas próby instalacji udziału plików ze środowiska lokalnego lub z innego
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>Przyczyny 1: Kanał komunikacyjny niezaszyfrowane
 
-Ze względów bezpieczeństwa połączenia z udziałami plików platformy Azure są blokowane, jeśli nie jest szyfrowany kanał komunikacyjny, a w tym samym centrum danych nie jest podejmowana próba połączenia, gdzie znajdują się udziałów plików platformy Azure. Również może zostać zablokowany nieszyfrowanego połączenia, w tym samym centrum danych, jeśli [Wymagany bezpieczny transfer](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ustawienie jest włączone na koncie magazynu. Szyfrowanie kanału komunikacji znajduje się tylko wtedy, gdy system operacyjny klienta użytkownika obsługuje szyfrowanie protokołu SMB.
+Ze względów bezpieczeństwa połączenia z udziałami plików platformy Azure są blokowane, jeśli nie jest szyfrowany kanał komunikacyjny, a w tym samym centrum danych nie jest podejmowana próba połączenia, gdzie znajdują się udziałów plików platformy Azure. Również może zostać zablokowany nieszyfrowanego połączenia, w tym samym centrum danych, jeśli [Wymagany bezpieczny transfer](https://docs.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer) ustawienie jest włączone na koncie magazynu. Szyfrowanie kanału komunikacji znajduje się tylko wtedy, gdy system operacyjny klienta użytkownika obsługuje szyfrowanie protokołu SMB.
 
 Windows 8, Windows Server 2012 i nowszych wersjach każdego systemu negocjowania żądań, które obejmują protokół SMB 3.0, który obsługuje szyfrowanie.
 
 ### <a name="solution-for-cause-1"></a>Rozwiązanie przyczyny 1
 
-1. Sprawdź [Wymagany bezpieczny transfer](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ustawienie jest wyłączone na koncie magazynu.
+1. Sprawdź [Wymagany bezpieczny transfer](https://docs.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer) ustawienie jest wyłączone na koncie magazynu.
 2. Połączenie od klienta, który wykonuje jedną z następujących czynności:
 
     - Spełnia wymagania dotyczące systemu Windows 8 i Windows Server 2012 lub nowszy

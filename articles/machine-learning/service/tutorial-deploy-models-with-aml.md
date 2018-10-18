@@ -9,12 +9,12 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: eda4a1dabd20eee73cfbfa4dc0dd2b0eaa56788e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: b1ae3fb5de3e28f44ef39731f49a33e2086255a1
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031241"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785345"
 ---
 # <a name="tutorial-2--deploy-an-image-classification-model-in-azure-container-instance-aci"></a>Samouczek 2: wdrażanie modelu klasyfikacji obrazów w wystąpieniu kontenera platformy Azure (ACI)
 
@@ -35,14 +35,14 @@ Usługa ACI nie jest idealnym rozwiązaniem w przypadku wdrożeń produkcyjnych,
 
 ## <a name="get-the-notebook"></a>Pobieranie notesu
 
-Dla Twojej wygody ten samouczek jest dostępny jako notes Jupyter. Do uruchomienia notesu `tutorials/02.deploy-models.ipynb` użyj jednej z następujących metod:
+Dla Twojej wygody ten samouczek jest dostępny jako [notes Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/02.deploy-models.ipynb). Uruchom notes `02.deploy-models.ipynb` w usłudze Azure Notebooks lub na własnym serwerze notesów Jupyter.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ukończ szkolenie modelu opisane w notesie [Samouczek 1: szkolenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).  
+Ukończ trenowanie modelu opisane w notesie [Samouczek 1: trenowanie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).  
 
 
 ## <a name="set-up-the-environment"></a>Konfigurowanie środowiska

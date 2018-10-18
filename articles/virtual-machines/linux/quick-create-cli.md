@@ -13,25 +13,29 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/24/2018
+ms.date: 10/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 87a36e027515319c4bdfeaa559f55fd6e5a1c75b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: beb70b03198589808c20ab17498902367a1c6a3d
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958530"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067499"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>Szybki start: tworzenie maszyny wirtualnej z systemem Linux za pomocą interfejsu wiersza polecenia platformy Azure
 
-Interfejs wiersza polecenia platformy Azure umożliwia tworzenie zasobów Azure i zarządzanie nimi z poziomu wiersza polecenia lub skryptów. Z tego przewodnika Szybki start dowiesz się, jak za pomocą interfejsu wiersza polecenia platformy Azure wdrożyć maszynę wirtualną platformy Azure z systemem Ubuntu. Aby następnie zobaczyć działanie maszyny wirtualnej, połączysz się z nią za pomocą protokołu SSH i zainstalujesz serwer internetowy NGINX.
+Interfejs wiersza polecenia platformy Azure umożliwia tworzenie zasobów Azure i zarządzanie nimi z poziomu wiersza polecenia lub skryptów. Z tego przewodnika Szybki start dowiesz się, jak za pomocą interfejsu wiersza polecenia platformy Azure wdrożyć maszynę wirtualną platformy Azure. W tym samouczku zostanie zainstalowany system Ubuntu 160.04 LTS. Aby zobaczyć działanie maszyny wirtualnej, należy nawiązać z nią połączenie przy użyciu protokołu SSH i zainstalować serwer internetowy NGINX.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+## <a name="launch-azure-cloud-shell"></a>Uruchamianie usługi Azure Cloud Shell
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten przewodnik Szybki start wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
+Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. 
+
+Aby otworzyć usługę Cloud Shell, wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. Możesz również uruchomić usługę Cloud Shell w oddzielnej karcie przeglądarki, przechodząc do strony [https://shell.azure.com/bash](https://shell.azure.com/bash). Wybierz przycisk **Kopiuj**, aby skopiować bloki kodu, wklej je do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby je uruchomić.
+
+Jeśli wolisz zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten przewodnik Szybki start wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -45,7 +49,7 @@ az group create --name myResourceGroup --location eastus
 
 Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create).
 
-W poniższym przykładzie pokazano tworzenie maszyny wirtualnej o nazwie *myVM*, dodawanie konta użytkownika o nazwie *azureuser* i generowanie kluczy SSH, jeśli jeszcze nie istnieją w domyślnej lokalizacji kluczy (*~/.ssh*). Aby użyć określonego zestawu kluczy, podaj opcję `--ssh-key-value`:
+W poniższym przykładzie zostanie utworzona maszyna wirtualna o nazwie *myVM* i dodane konto użytkownika o nazwie *azureuser*. Parametr `--generate-ssh-keys` jest używany, aby automatycznie wygenerować klucz SSH i umieścić go w domyślnej lokalizacji klucza (*~/.ssh*). Aby zamiast niego użyć określonego zestawu kluczy, skorzystaj z opcji `--ssh-key-value`.
 
 ```azurecli-interactive
 az vm create \
@@ -58,7 +62,7 @@ az vm create \
 
 Utworzenie maszyny wirtualnej i zasobów pomocniczych potrwa kilka minut. Następujące przykładowe dane wyjściowe pokazują, że operacja utworzenia maszyny wirtualnej zakończyła się pomyślnie.
 
-```azurecli-interactive
+```
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -91,27 +95,24 @@ ssh azureuser@publicIpAddress
 
 ## <a name="install-web-server"></a>Instalowanie serwera internetowego
 
-Aby zobaczyć działanie maszyny wirtualnej, zainstaluj serwer internetowy NGINX. Aby zaktualizować źródła pakietów i zainstalować najnowszy pakiet NGINX, uruchom następujące polecenia w sesji SSH:
+Aby zobaczyć działanie maszyny wirtualnej, zainstaluj serwer internetowy NGINX. Zaktualizuj zasoby pakietu, a następnie zainstaluj najnowszą wersję pakietu NGINX.
 
 ```bash
-# update packages
 sudo apt-get -y update
-
-# install NGINX
 sudo apt-get -y install nginx
 ```
 
-Po zakończeniu zamknij sesję SSH za pomocą polecenia `exit`.
+Gdy skończysz, wpisz polecenie `exit`, aby opuścić sesję SSH.
 
 ## <a name="view-the-web-server-in-action"></a>Oglądanie działającego serwera internetowego
 
-Po zainstalowaniu serwera NGINX i otwarciu portu 80 na maszynie wirtualnej dla ruchu z Internetu wyświetl domyślną stronę powitalną serwera NGINX przy użyciu wybranej przeglądarki internetowej. Użyj publicznego adresu IP maszyny wirtualnej uzyskanego w poprzednim kroku. W poniższym przykładzie przedstawiono domyślną witrynę internetową serwera NGINX:
+Użyj wybranej przeglądarki internetowej, aby wyświetlić domyślną strona główną serwera NGINX. Użyj publicznego adresu IP maszyny wirtualnej jako adresu internetowego. W poniższym przykładzie przedstawiono domyślną witrynę internetową serwera NGINX:
 
 ![Domyślna witryna serwera NGINX](./media/quick-create-cli/nginx.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy grupa zasobów, maszyna wirtualna i wszystkie pokrewne zasoby nie będą już potrzebne, można je usunąć za pomocą polecenia [az group delete](/cli/azure/group#az_group_delete). Upewnij się, że sesja SSH z maszyną wirtualną została zamknięta, a następnie usuń zasoby w następujący sposób:
+Gdy grupa zasobów, maszyna wirtualna i wszystkie pokrewne zasoby nie będą już potrzebne, można je usunąć za pomocą polecenia [az group delete](/cli/azure/group#az_group_delete). 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

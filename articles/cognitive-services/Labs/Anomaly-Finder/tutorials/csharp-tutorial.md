@@ -1,71 +1,72 @@
 ---
-title: Anomalii wykrywania języka C# aplikacji — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
-description: Zapoznaj się z aplikacją C#, która korzysta z interfejsu API wykrywania anomalii w usługach Microsoft Cognitive Services. Wyślij oryginalnego punkty danych do interfejsu API i uzyskać oczekiwaną wartość i anomalii punktów.
+title: 'Samouczek: wykrywanie anomalii, język C#'
+titlesuffix: Azure Cognitive Services
+description: Zapoznaj się z aplikacją w języku C#, która korzysta z interfejsu API wykrywania anomalii. Wyślij oryginalne punkty danych do interfejsu API i uzyskaj oczekiwaną wartość oraz punkty anomalii.
 services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-detection
-ms.topic: article
+ms.component: anomaly-detection
+ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: fb434bd668b065fbdbaac39f2926676bcc90e794
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
-ms.translationtype: MT
+ms.openlocfilehash: f99ce765c1d9417fd5ca88b49214eca8a3b0bf49
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247828"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887653"
 ---
-# <a name="anomaly-detection-c-application"></a>Anomalii wykrywania aplikacji języku C#
+# <a name="tutorial-anomaly-detection-with-c-application"></a>Samouczek: wykrywanie anomalii przy użyciu aplikacji języka C#
 
 [!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
-Poznaj podstawowe aplikacji Windows, która używa interfejsu API wykrywania anomalii w celu wykrycia anomalii w danych wejściowych. Przykład przesyła danych szeregów czasowych do interfejsu API wykrywania anomalii z kluczem subskrypcji, a następnie pobiera wszystkie punkty anomalii i oczekiwana wartość dla każdego punktu danych z interfejsu API.
+Poznaj podstawową aplikację systemu Windows, która używa interfejsu API wykrywania anomalii w celu wykrycia anomalii w danych wejściowych. Przykład przesyła dane szeregów czasowych do interfejsu API wykrywania anomalii za pomocą klucza subskrypcji, a następnie pobiera wszystkie punkty anomalii i oczekiwaną wartość dla każdego punktu danych z interfejsu API.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="platform-requirements"></a>Wymagania dotyczące platformy
 
-Przykład został opracowany dla programu .NET Framework za pomocą [programu Visual Studio 2017, wersja Community](https://www.visualstudio.com/products/visual-studio-community-vs). 
+Przykład został opracowany dla programu .NET Framework za pomocą [programu Visual Studio 2017 w wersji Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs). 
 
-### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Subskrybowanie do wykrywania anomalii i Uzyskaj klucz subskrypcji 
+### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Subskrybowanie wykrywania anomalii i uzyskiwanie klucza subskrypcji 
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
 
-## <a name="get-and-use-the-example"></a>Pobierz i skorzystaj z tego przykładu
+## <a name="get-and-use-the-example"></a>Pobieranie przykładu i korzystanie z niego
 
-Można sklonować wykrywania anomalii przykładowej aplikacji na komputer z [Github](https://github.com/MicrosoftAnomalyDetection/csharp-sample.git). 
+Można sklonować przykładową aplikację wykrywania anomalii na swój komputer z usługi [Github](https://github.com/MicrosoftAnomalyDetection/csharp-sample.git). 
 <a name="Step1"></a>
-### <a name="install-the-example"></a>Przykład instalacji
+### <a name="install-the-example"></a>Instalowanie przykładu
 
-Otwórz Sample\AnomalyDetectionSample.sln w pulpit usługi GitHub.
+W programie GitHub Desktop otwórz plik Sample\AnomalyDetectionSample.sln.
 
 <a name="Step2"></a>
-### <a name="build-the-example"></a>Budowanie przykładu
+### <a name="build-the-example"></a>Kompilowanie przykładu
 
-Naciśnij klawisze Ctrl + Shift + B, lub kliknij polecenie kompilacji w menu wstążki, a następnie wybierz rozwiązanie kompilacji.
+Naciśnij klawisze Ctrl+Shift+B lub kliknij polecenie Kompiluj w menu wstążki, a następnie wybierz pozycję Kompiluj rozwiązanie.
 
 <a name="Step3"></a>
-### <a name="run-the-example"></a>Uruchomić przykład
+### <a name="run-the-example"></a>Uruchamianie przykładu
 
-1. Po ukończeniu kompilacji, naciśnij przycisk **F5** lub kliknij przycisk **Start** w menu wstążki, aby uruchomić przykład.
-2. Znajdź okno interfejsu użytkownika wykrywanie anomalii przy użyciu pole edycji tekstu odczytu "{your_subscription_key}".
-3. Zastąp plik request.json, który zawiera przykładowe dane z użyciem własnych danych, a następnie kliknij przycisk "Wyślij". Firma Microsoft odbierze danych, przekazywanie i ich używać, aby wykryć wszystkie punkty anomalii między następnie. Dane, które ładujesz nie zostaną utrwalone w server firmy Microsoft. Do wykrywania anomalii punkt ponownie, możesz należy przekazać dane ponownie.
-4. Jeśli dane są dobre, znajdziesz wynik wykrywania anomalii w polu "Response". Jeśli wystąpi jakiś błąd, informacje o błędzie będą wyświetlane w tym polu odpowiedzi.
+1. Po ukończeniu kompilacji naciśnij przycisk **F5** lub kliknij przycisk **Start** w menu wstążki, aby uruchomić przykład.
+2. Znajdź okno interfejsu użytkownika wykrywania anomalii przy użyciu pola edycji tekstu zawierającego „{Twój_klucz_subskrypcji}”.
+3. Zastąp plik request.json, który zawiera przykładowe dane, własnymi danymi, a następnie kliknij przycisk Wyślij. Firma Microsoft odbierze przekazane dane i użyje ich, aby wykryć między nimi wszelkie punkty anomalii. Dane, które ładujesz, nie zostaną utrwalone na serwerze firmy Microsoft. Aby ponownie wykryć punkt anomalii, musisz ponownie przekazać dane.
+4. Jeśli dane są dobre, znajdziesz wynik wykrywania anomalii w polu Odpowiedź. Jeśli wystąpi jakikolwiek błąd, informacje o błędzie zostaną również wyświetlone w polu odpowiedzi.
 
 <a name="Review"></a>
-### <a name="read-the-result"></a>Przeczytaj wynik
+### <a name="read-the-result"></a>Odczytywanie wyniku
 
 [!INCLUDE [diagrams](../includes/diagrams.md)]
 
 <a name="Review"></a>
-### <a name="review-and-learn"></a>Przejrzyj i Dowiedz się więcej
+### <a name="review-and-learn"></a>Przeglądanie i nauka
 
-Skoro masz uruchomioną aplikację, Podsumujmy, jak przykładowa aplikacja integruje się z technologii usług Cognitive Services. W tym kroku ułatwi tworzenie własnych aplikacji przy użyciu wykrywania anomalii w usłudze firmy Microsoft lub Kontynuuj tworzenie na tę aplikację.
+Teraz, gdy masz uruchomioną aplikację, sprawdźmy, jak przykładowa aplikacja integruje się z technologią usług Cognitive Services. Ten krok ułatwi zarówno kontynuację tworzenia na podstawie tej aplikacji, jak i opracowanie własnej aplikacji przy użyciu wykrywania anomalii firmy Microsoft.
 
-Ta przykładowa aplikacja korzysta z interfejsu API Restful wykrywania anomalii punktu końcowego.
+Ta przykładowa aplikacja korzysta z punktu końcowego interfejsu API Restful wykrywania anomalii.
 
-Przegląd, jak interfejs API Restful zostanie wykorzystany w przykładowej aplikacji, Przyjrzyjmy się fragment kodu z **AnomalyDetectionClient.cs**. Plik zawiera komentarze w kodzie wskazujący "Klucz przykładowy kod URUCHAMIA tutaj" i "Klucz przykładowy kod kończy się tutaj" Aby zlokalizować kod, który fragmenty przedstawionym poniżej.
+Sprawdzając, jak interfejs API Restful zostanie wykorzystany w przykładowej aplikacji, przyjrzyjmy się fragmentowi kodu z pliku **AnomalyDetectionClient.cs**. Plik zawiera komentarze w kodzie wskazujące „PRZYKŁADOWY KOD KLUCZA ZACZYNA SIĘ TUTAJ” i „PRZYKŁADOWY KOD KLUCZA KOŃCZY SIĘ TUTAJ”pomagające zlokalizować fragmenty kodu przedstawione poniżej.
 
 ```csharp
             // ----------------------------------------------------------------------
@@ -80,7 +81,7 @@ Przegląd, jak interfejs API Restful zostanie wykorzystany w przykładowej aplik
 
 ```
 ### <a name="request"></a>**Żądanie**
-Poniższy fragment kodu przedstawia sposób użycia klasy HttpClient przesłać Twojej subskrypcji klucza i danych punktów do punktu końcowego interfejsu API wykrywania anomalii.
+Poniższy fragment kodu przedstawia sposób użycia klasy HttpClient do przesyłania klucza subskrypcji i punktów danych do punktu końcowego interfejsu API wykrywania anomalii.
 
 ```csharp
     public async Task<string> Request(string baseAddress, string endpoint, string subscriptionKey, string requestData)
@@ -126,7 +127,7 @@ Poniższy fragment kodu przedstawia sposób użycia klasy HttpClient przesłać 
     }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Dokumentacja interfejsu API REST](https://dev.labs.cognitive.microsoft.com/docs/services/anomaly-detection/operations/post-anomalydetection)

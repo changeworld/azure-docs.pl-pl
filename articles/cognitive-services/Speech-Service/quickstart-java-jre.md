@@ -5,16 +5,16 @@ description: Dowiedz się, jak rozpoznawać mowę w języku Java (system Windows
 services: cognitive-services
 author: fmegen
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: fmegen
-ms.openlocfilehash: 00603c467ec96e52fc2b7745263153a68d20f584
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: c0963fa8453dd51dfb05af20a5468e1eed1fc7cf
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47053966"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885222"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-windows-or-linux-by-using-the-speech-sdk"></a>Szybki start: rozpoznawanie mowy w języku Java w systemie Windows lub Linux przy użyciu zestawu Speech SDK
 
@@ -23,11 +23,11 @@ ms.locfileid: "47053966"
 W tym artykule utworzysz aplikację konsolową w języku Java przy użyciu [zestawu Speech SDK](speech-sdk.md). Transkrypcja mowy na tekst będzie odbywać się w czasie rzeczywistym z mikrofonu komputera. Aplikacja jest kompilowana przy użyciu pakietu Maven zestawu Speech SDK i środowiska IDE Eclipse Java (wersja 4.8) w systemie Windows w wersji 64-bitowej lub Ubuntu Linux 16.04. Działa ona w 64-bitowym środowisku uruchomieniowym Java 8 języka Java (JRE).
 
 > [!NOTE]
-> W przypadku zestawu Speech Devices SDK i urządzenia Roobo zobacz [Speech Devices SDK](speech-devices-sdk.md).
+> Aby uzyskać informacje dotyczące zestawu Speech Devices SDK oraz urządzenia Roobo, zobacz [Speech Devices SDK](speech-devices-sdk.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do ukończenia kroków tego przewodnika Szybki start potrzebujesz klucza subskrypcji usługi rozpoznawania mowy. Możesz uzyskać go bezpłatnie. Zobacz [Wypróbuj bezpłatnie usługę rozpoznawania mowy](get-started.md), aby uzyskać szczegółowe informacje.
+Do ukończenia kroków tego przewodnika Szybki start potrzebujesz klucza subskrypcji usługi rozpoznawania mowy. Możesz go uzyskać bezpłatnie. Zobacz [Wypróbuj bezpłatnie usługę rozpoznawania mowy](get-started.md), aby uzyskać szczegółowe informacje.
 
 
 ## <a name="create-and-configure-project"></a>Tworzenie i konfigurowanie projektu
@@ -69,11 +69,11 @@ W przypadku korzystania z systemu Ubuntu 16.04 przed uruchomieniem środowiska E
 
 1. Otwórz plik **pom.xml** i edytuj go.
 
-   * Na końcu pliku przed tagiem zamykającym `</project>` utwórz sekcję repozytoriów z odwołaniem do repozytorium narzędzia Maven dla zestawu Speech SDK, jak pokazano poniżej:
+   * Na końcu pliku przed tagiem zamykającym `</project>` utwórz element `repositories` z odwołaniem do repozytorium narzędzia Maven dla zestawu Speech SDK, jak pokazano poniżej:
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#repositories)]
 
-  * Ponadto dodaj po niej sekcję zależności z zestawem Speech SDK w wersji 1.0.0 jako zależność:
+  * Dodaj również element `dependencies` z zestawem Speech SDK w wersji 1.0.0 jako zależność:
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#dependencies)]
 
@@ -95,7 +95,7 @@ W przypadku korzystania z systemu Ubuntu 16.04 przed uruchomieniem środowiska E
 
 1. Zastąp ciąg `YourServiceRegion` [regionem](regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
 
-1. Zapisz zmiany projektu.
+1. Zapisz zmiany w projekcie.
 
 ## <a name="build-and-run-the-app"></a>Kompilowanie i uruchamianie aplikacji
 
@@ -114,6 +114,6 @@ Poszukaj tego przykładu w folderze `quickstart/java-jre`.
 
 ## <a name="see-also"></a>Zobacz też
 
-- [Translate speech](how-to-translate-speech-csharp.md) (Tłumaczenie mowy)
-- [Customize acoustic models](how-to-customize-acoustic-models.md) (Dostosowywanie modeli akustycznych)
-- [Dostosowywanie modeli językowych](how-to-customize-language-model.md)
+- [Translate speech with the Cognitive Services Speech SDK for C#](how-to-translate-speech-csharp.md) (Tłumaczenie mowy za pomocą zestawu Speech SDK usługi Cognitive Services dla języka C#)
+- [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
+- [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)

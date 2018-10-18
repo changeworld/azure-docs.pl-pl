@@ -1,41 +1,43 @@
 ---
-title: Przewodnik Szybki Start języka C# dla usług Microsoft Cognitive Services, Project odpowiedzi wyszukiwania | Dokumentacja firmy Microsoft
-description: Przykładowy kod, aby rozpocząć pracę, używając przycisku Wyszukaj odpowiedzi projektu, usług Microsoft Cognitive Services na platformie Azure.
+title: 'Szybki start: laboratorium Project Answer Search, C#'
+titlesuffix: Azure Cognitive Services
+description: Przykładowy kod ułatwiający rozpoczęcie pracy z laboratorium Project Answer Search w języku C#.
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/13/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: c8e2a6a7fc3609932a7a1139d7b34553e5f9c291
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: bea98ac4c4f7da42d0b41a279508253b987ad9a6
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888327"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867225"
 ---
-# <a name="project-answer-search-query-in-c"></a>Zapytanie wyszukiwania odpowiedzi projektów w języku C#
+# <a name="quickstart-project-answer-search-query-in-c"></a>Szybki start: laboratorium Project Answer Search — zapytanie w języku C#
 
-Poniższy przykład C# tworzy i wysyła zapytanie, aby uzyskać informacje dotyczące trzeciego wymiaru sprawiedliwości calculus.
+Poniższy przykład w języku C# tworzy i wysyła zapytanie w celu uzyskania informacji dotyczących trzeciego prawa rachunku różniczkowego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Konieczne będzie [programu Visual Studio 2017](https://www.visualstudio.com/downloads/) do uruchamiania tego kodu na Windows. (Można korzystać z bezpłatnej wersji Community Edition).
+Do uruchamiania tego kodu w systemie Windows jest potrzebny [program Visual Studio 2017](https://www.visualstudio.com/downloads/). (Można korzystać z bezpłatnej wersji Community Edition).
 
-Uzyskiwanie klucza dostępu dla bezpłatnej wersji próbnej [Cognitive Services Labs](https://aka.ms/answersearchsubscription)
+Pobierz klucz dostępu dla bezpłatnej wersji próbnej zestawu [Cognitive Services Labs](https://aka.ms/answersearchsubscription).
 
 ## <a name="code-scenario"></a>Scenariusz kodu
 
-Poniższy kod C# tworzy i wysyła to zapytanie. 
+Poniższy kod w języku C# tworzy i wysyła zapytanie. 
 
-Jest zaimplementowana w poniższych krokach:
-1. Deklarowanie zmiennych, aby określić punktu końcowego i URL zapytania, aby wyświetlić podgląd.  
+W celu zaimplementowania kodu wykonaj następujące kroki:
+1. Zadeklaruj zmienne, aby określić punkt końcowy i adres URL zapytania, dla którego ma zostać wyświetlony podgląd.  
 2. Utwórz żądanie.
-3. Dodaj *Ocp-Apim-Subscription-Key* nagłówka. 
-4. Żądania sieci Web ma być uruchamiane asynchronicznie. 
-5. Uzyskać odpowiedzi.
-6. Drukowanie nagłówków i wyniki JSON do konsoli.
+3. Dodaj nagłówek *Ocp-Apim-Subscription-Key*. 
+4. Uruchom asynchronicznie żądanie internetowe. 
+5. Odczytaj odpowiedź.
+6. Wydrukuj w konsoli nagłówki i wyniki w formacie JSON.
 
 **Kod źródłowy**
 
@@ -187,10 +189,10 @@ namespace Answers_csharp
 
 Aby uruchomić aplikację:
 
-1. Utwórz nowe rozwiązanie konsoli w programie Visual Studio.
-2. Zastąp `Program.cs` przy użyciu podanego kodu.
-3. Zastąp `YOUR-ACCESS-KEY` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
+1. Utwórz nowe rozwiązanie konsolowe w programie Visual Studio.
+2. Zastąp zawartość pliku `Program.cs` udostępnionym kodem.
+3. Zastąp wartość `YOUR-ACCESS-KEY` prawidłowym kluczem dostępu dla Twojej subskrypcji.
 4. Uruchom program.
 
-## <a name="next-steps"></a>Kolejne kroki
-[Przewodnik Szybki Start języka Java](java-quickstart.md)
+## <a name="next-steps"></a>Następne kroki
+[Przewodnik Szybki start dla języka Java](java-quickstart.md)

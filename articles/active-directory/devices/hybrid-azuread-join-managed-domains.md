@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: ff2a161cbc39cdb4cf35cad2b8bd403ef2d3260c
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: b3a3baaf22fa9c382bb45a5b2a2065ef7678faf5
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222171"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855958"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Samouczek: konfigurowanie dołączania hybrydowego do usługi Azure Active Directory dla domen zarządzanych
 
@@ -68,7 +68,7 @@ Dołączenie hybrydowe do usługi Azure AD wymaga urządzeń z dostępem do nast
 - https://device.login.microsoftonline.com
 - https://autologon.microsoftazuread-sso.com (jeśli używasz lub planujesz użycie bezproblemowego logowania jednokrotnego)
 
-Jeśli organizacja wymaga dostępu do Internetu za pośrednictwem serwera proxy ruchu wychodzącego, począwszy od systemu Windows 10 w wersji 1709 możesz skonfigurować ustawienia serwera proxy na komputerze przy użyciu obiektu zasad grupy (GPO). Jeśli na komputerze masz system Windows 10 w wersji starszej niż 1709, musisz wdrożyć usługę autowykrywania internetowego serwera proxy (WPAD), aby umożliwić komputerom z systemem Windows 10 przeprowadzenie rejestracji urządzenia w usłudze Azure AD. 
+Jeśli organizacja wymaga dostępu do Internetu za pośrednictwem serwera proxy ruchu wychodzącego, począwszy od systemu Windows 10 w wersji 1709 możesz [skonfigurować ustawienia serwera proxy na komputerze przy użyciu obiektu zasad grupy (GPO)](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/). Jeśli na komputerze masz system Windows 10 w wersji starszej niż 1709, musisz wdrożyć usługę autowykrywania internetowego serwera proxy (WPAD), aby umożliwić komputerom z systemem Windows 10 przeprowadzenie rejestracji urządzenia w usłudze Azure AD. 
 
 Jeśli organizacja wymaga dostępu do Internetu za pośrednictwem uwierzytelnionego serwera proxy ruchu wychodzącego, musisz upewnić się, że komputery z systemem Windows 10 mogą pomyślnie uwierzytelnić się na serwerze proxy ruchu wychodzącego. Ponieważ komputery z systemem Windows 10 uruchamiają rejestrację urządzenia przy użyciu kontekstu maszyny, konfigurowanie uwierzytelniania serwera proxy ruchu wychodzącego należy wykonać właśnie przy użyciu kontekstu maszyny. Skontaktuj się z dostawcą serwera proxy ruchu wychodzącego, aby uzyskać informacje na temat wymagań dotyczących konfiguracji. 
 

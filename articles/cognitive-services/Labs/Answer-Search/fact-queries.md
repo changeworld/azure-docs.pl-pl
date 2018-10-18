@@ -1,28 +1,29 @@
 ---
-title: Projekt odpowiedzi fakt wyszukiwania - kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
-description: Zapytania dotyczące faktów w wyszukiwaniu odpowiedzi projektu
+title: 'Szybki start: laboratorium Project Answer Search — zapytania dotyczące faktów'
+titlesuffix: Azure Cognitive Services
+description: Wykonywanie zapytań dotyczących faktów przy użyciu laboratorium Project Answer Search
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 0a9d1925d5ae26f40824676fbebdcb0ffc450c53
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: ae8a42b95df70cff9cb845d4d553fbbb33cbdec9
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348589"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868350"
 ---
-# <a name="query-for-facts"></a>Zapytanie dla faktów
+# <a name="quickstart-query-for-facts"></a>Szybki start: wykonywanie zapytań dotyczących powszechnie znanych faktów
 
-Jeśli zapytanie jest fakt, takie jak data lub do zidentyfikowania wiedzy, odpowiedź może zawierać `facts` odpowiedzi. Fakt odpowiedzi zawiera odpowiednie wyniki wyodrębniony z akapitów w dokumentach sieci web.  Te zapytania zawsze zwracają stron sieci Web, i [fakty](fact-queries.md) i/lub [jednostek](entity-queries.md) są zależne od zapytania.
+Jeśli zapytanie dotyczy powszechnie znanego faktu, np. daty lub możliwej do zidentyfikowania informacji, zwracanym typem odpowiedzi może być `facts`. Odpowiedzi dotyczące faktów zawierają odpowiednie wyniki wyodrębnione z akapitów w dokumentach internetowych.  Te zapytania zawsze zwracają strony internetowe, [fakty](fact-queries.md) i/lub [jednostki](entity-queries.md). Jest to zależne od zapytania.
 
-Zapytania, takie jak valentines + 2016, gdy + jest + ramadan są traktowane jako zapytania związane z datą. Jeśli Bing Określa, że zapytanie jest związane z datą, odpowiedź zawiera `facts` odpowiedzi. 
+Zapytania, takie jak valentines+2016 (walentynki+2016) i when+is+ramadan (kiedy+jest+ramadan), są traktowane jako zapytania związane z datą. Jeśli usługa Bing ustali, że zapytanie jest związane z datą, zwracanym typem odpowiedzi jest `facts`. 
 
-Poniższy przykład jest związane z datą `facts` odpowiedzi. 
+Poniższy przykład dotyczy odpowiedzi typu `facts` związanej z datą. 
 
 **Zapytanie:**
 ````
@@ -30,7 +31,7 @@ https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
 
 ````
 
-**Odpowiedź:** `subjectName` pole zawiera wersję wyświetlania zapytania użytkownika, które mogą służyć jako etykietę, gdy wyświetlanie fakt. Jeśli ciąg zapytania jest valentines + 2016, Bing może zmienić walentynkowe dniu 2016. Pole opisu zawiera fakt.
+**Odpowiedź:** Pole `subjectName` zawiera wyświetlaną wersję zapytania użytkownika, które może posłużyć jako etykieta podczas wyświetlania faktu. Jeśli ciąg zapytania to valentines+2016 (walentynki+2016), usługa Bing może zmienić jego brzmienie na Valentine's Day 2016 (Walentynki 2016). Pole opisu zawiera stwierdzenie faktu.
 
 ````
 {   
@@ -58,7 +59,7 @@ https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
 
 ````
 
-Zapytanie "Dlaczego jest niebo niebieski?" Zwraca przykład odpowiedzi dotyczące wiedzy.
+Zapytanie „Why is the sky blue?” (Dlaczego niebo jest niebieskie?) zwraca przykład odpowiedzi opartej na powszechnie obowiązującej wiedzy.
 
 **Zapytanie:**
 
@@ -67,7 +68,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+s
 
 ````
 
-**Odpowiedź:** `value/description` pole zawiera wiedzy lub informacji wymaganych przez zapytanie.
+**Odpowiedź:** Pole `value/description` zawiera odpowiedź opartą na wiedzy lub informację żądaną przez wysłane zapytanie.
 
 ````
   "facts": {
@@ -114,13 +115,13 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+s
 ````
 
 ## <a name="tabular-data"></a>Dane tabelaryczne
-W niektórych przypadkach może być zwracany faktów jako `_type: StructuredValue/TabularData`. Następujące zapytanie pobiera dane tabelaryczne kontrastujące informacje o kawy i zepołowy.
+W niektórych przypadkach fakty mogą być zwracane w postaci `_type: StructuredValue/TabularData`. Następujące zapytanie pobiera dane tabelaryczne z kontrastującymi ze sobą informacjami na temat kawy i herbaty.
 
 ````
 https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=coffee+vs+tea&mkt=en-us 
 
 ````
-`facts` Wyniki obejmują następujące wiersze i komórki:
+Wyniki dla odpowiedzi typu `facts` obejmują następujące wiersze i komórki:
 ````
     "value": [
       {
@@ -197,8 +198,8 @@ https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=coffee+vs+tea&mkt
 
 ````
 
-## <a name="next-steps"></a>Kolejne kroki
-- [C# — Szybki Start](c-sharp-quickstart.md)
-- [Szybki Start Java](java-quickstart.md)
-- [Węzeł Szybki Start](node-quickstart.md)
-- [Krótkie wprowadzenie do języka Python](python-quickstart.md)
+## <a name="next-steps"></a>Następne kroki
+- [Przewodnik Szybki start dla języka C#](c-sharp-quickstart.md)
+- [Przewodnik Szybki start dla języka Java](java-quickstart.md)
+- [Przewodnik Szybki start dla środowiska Node](node-quickstart.md)
+- [Przewodnik Szybki start dla języka Python](python-quickstart.md)

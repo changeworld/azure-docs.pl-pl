@@ -6,13 +6,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: overview
-ms.date: 09/24/2018
-ms.openlocfilehash: 152a145601dcf4282ec0a3a3b6ebcf37bd11848b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 10/04/2018
+ms.openlocfilehash: ade162d0261b765336cbff9ea8a6429f9bd2d871
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992970"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801837"
 ---
 # <a name="hdinsight-40-overview-preview"></a>Przegląd usługi HDInsight 4.0 (wersja zapoznawcza)
 
@@ -93,6 +93,12 @@ Nie ma żadnych obsługiwanych ścieżek uaktualniania z poprzednich wersji usł
 * Usługa HDI 4.0 nie obsługuje środowiska MapReduce. Zamiast tego należy skorzystać ze środowiska Tez. Dowiedz się więcej o środowisku [Apache Tez](https://tez.apache.org/).
 
 * Widok Hive nie jest już dostępny w usłudze HDI 4.0. 
+
+* Interpreter powłoki w rozwiązaniu Apache Zeppelin nie jest obsługiwany w klastrach Spark i klastrach zapytań interakcyjnych.
+
+* Nie można *wyłączyć* funkcji LLAP w klastrze Spark LLAP. Można tylko wyłączyć funkcję LLAP.
+
+* Usługa Azure Data Lake Storage Gen2 nie pozwala zapisywać notesów Juypter w klastrze Spark.
 
 ## <a name="next-steps"></a>Następne kroki
 

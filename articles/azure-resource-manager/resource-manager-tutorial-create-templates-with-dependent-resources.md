@@ -13,18 +13,18 @@ ms.devlang: na
 ms.date: 09/07/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e5ced038d5f1ab57939221a0392ab436560c348d
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: fe6313c059a1dd1050240ead5f7ca8e3e1512aa6
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160514"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584517"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Samouczek: tworzenie szablonów usługi Azure Resource Manager z zasobami zależnymi
 
 Dowiedz się, jak utworzyć szablon usługi Azure Resource Manager, aby wdrożyć wiele zasobów.  Po utworzeniu szablonu możesz wdrożyć go przy użyciu usługi Cloud Shell w witrynie Azure Portal.
 
-Niektórych zasobów nie można wdrożyć, dopóki nie istnieje inny zasób. Przykładowo nie można utworzyć maszyny wirtualnej, jeżeli nie istnieje konto magazynu i interfejs sieciowy. Relację tę definiuje się, ustawiając jeden zasób jako zależny od innych zasobów. Usługa Resource Manager ocenia zależności pomiędzy zasobami i wdraża je w kolejności opartej na zależności. Gdy zasoby nie zależą od siebie nawzajem, usługa Resource Manager wdraża je równolegle. Aby uzyskać więcej informacji, zobacz [Definiowanie kolejności wdrażania zasobów w szablonach usługi Azure Resource Manager](./resource-group-define-dependencies.md).
+Instrukcje w tym samouczku pozwalają utworzyć konto magazynu, maszynę wirtualną, sieć wirtualną oraz niektóre inne zasoby zależne. Niektórych zasobów nie można wdrożyć, dopóki nie istnieje inny zasób. Przykładowo nie można utworzyć maszyny wirtualnej, jeżeli nie istnieje konto magazynu i interfejs sieciowy. Relację tę definiuje się, ustawiając jeden zasób jako zależny od innych zasobów. Usługa Resource Manager ocenia zależności pomiędzy zasobami i wdraża je w kolejności opartej na zależności. Gdy zasoby nie zależą od siebie nawzajem, usługa Resource Manager wdraża je równolegle. Aby uzyskać więcej informacji, zobacz [Definiowanie kolejności wdrażania zasobów w szablonach usługi Azure Resource Manager](./resource-group-define-dependencies.md).
 
 Ten samouczek obejmuje następujące zadania:
 
@@ -33,7 +33,7 @@ Ten samouczek obejmuje następujące zadania:
 > * Eksplorowanie szablonu
 > * Wdrożenie szablonu
 
-Instrukcje w tym samouczku pozwalają utworzyć maszynę wirtualną, sieć wirtualną oraz niektóre zasoby zależne. 
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -176,4 +176,9 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku tworzy się i wdraża szablon, aby utworzyć maszynę wirtualną, sieć wirtualną i zasoby zależne. Aby uzyskać więcej informacji o szablonach, zobacz [Omówienie struktury i składni szablonów usługi Azure Resource Manager](./resource-group-authoring-templates.md).
+W tym samouczku tworzy się i wdraża szablon, aby utworzyć maszynę wirtualną, sieć wirtualną i zasoby zależne. Aby dowiedzieć się, jak wdrażać zasoby platformy Azure na podstawie warunków, zobacz:
+
+
+> [!div class="nextstepaction"]
+> [Używanie warunków](./resource-manager-tutorial-use-conditions.md)
+

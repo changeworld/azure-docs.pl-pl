@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: bc2b391457d7652b62558c9a752376b07b50a8c1
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 2f020bdf79811c959e07d753231fc133fe597861
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391814"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855186"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Samouczek: konfigurowanie dołączania hybrydowego do usługi Azure Active Directory dla domen federacyjnych
 
@@ -78,7 +78,9 @@ Dołączenie hybrydowe do usługi Azure AD wymaga urządzeń z dostępem do nast
 - Usługa STS (domen federacyjnych) w organizacji
 - https://autologon.microsoftazuread-sso.com (jeśli używasz lub planujesz użycie bezproblemowego logowania jednokrotnego)
 
-Jeśli organizacja wymaga dostępu do Internetu za pośrednictwem serwera proxy ruchu wychodzącego, począwszy od systemu Windows 10 w wersji 1709 możesz skonfigurować ustawienia serwera proxy na komputerze przy użyciu obiektu zasad grupy (GPO). Jeśli na komputerze masz system Windows 10 w wersji starszej niż 1709, musisz wdrożyć usługę autowykrywania internetowego serwera proxy (WPAD), aby umożliwić komputerom z systemem Windows 10 przeprowadzenie rejestracji urządzenia w usłudze Azure AD. 
+Od wersji systemu Windows 10 1803, jeśli natychmiastowe dołączenie hybrydowe do usługi Azure AD w przypadku domeny federacyjnej, na przykład AD FS, zakończy się niepowodzeniem, usługa Azure AD Connect jest używana do synchronizacji obiektu komputera w usłudze Azure AD, który jest następnie używany do ukończenia rejestracji urządzenia na potrzeby hybrydowego dołączenia do usługi Azure AD.
+
+Jeśli organizacja wymaga dostępu do Internetu za pośrednictwem serwera proxy ruchu wychodzącego, począwszy od systemu Windows 10 w wersji 1709 możesz [skonfigurować ustawienia serwera proxy na komputerze przy użyciu obiektu zasad grupy (GPO)](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/). Jeśli na komputerze masz system Windows 10 w wersji starszej niż 1709, musisz wdrożyć usługę autowykrywania internetowego serwera proxy (WPAD), aby umożliwić komputerom z systemem Windows 10 przeprowadzenie rejestracji urządzenia w usłudze Azure AD. 
 
 Jeśli organizacja wymaga dostępu do Internetu za pośrednictwem uwierzytelnionego serwera proxy ruchu wychodzącego, musisz upewnić się, że komputery z systemem Windows 10 mogą pomyślnie uwierzytelnić się na serwerze proxy ruchu wychodzącego. Ponieważ komputery z systemem Windows 10 uruchamiają rejestrację urządzenia przy użyciu kontekstu maszyny, konfigurowanie uwierzytelniania serwera proxy ruchu wychodzącego należy wykonać właśnie przy użyciu kontekstu maszyny. Skontaktuj się z dostawcą serwera proxy ruchu wychodzącego, aby uzyskać informacje na temat wymagań dotyczących konfiguracji. 
 

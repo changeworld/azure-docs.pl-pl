@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: cb659a79f374b7a48cd3cc29f9f46bc6598c04dc
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 17f06a08388720c4483ef1c187edf20ec8359121
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49366699"
+ms.locfileid: "49386387"
 ---
 # <a name="tutorial-offer-highly-available-sql-databases"></a>Samouczek: Oferują wysoką dostępność bazy danych SQL
 
@@ -123,7 +123,7 @@ Na pomocniczej wystąpienia SQL (Zastąp < availability_group_name > Nazwa grupy
 >  ![Pomocniczy skrypt wystąpienia SQL](./media/azure-stack-tutorial-sqlrp/sql2.png)
 
 ### <a name="configure-contained-database-authentication"></a>Konfigurowanie uwierzytelniania zawartej bazy danych
-Przed dodaniem zawartej bazy danych do grupy dostępności, upewnij się, czy opcja serwer uwierzytelniania zawartej bazy danych jest ustawiona na 1 na każde wystąpienie serwera, który jest hostem repliki dostępności dla grupy dostępności. Aby uzyskać więcej informacji, zobacz [uwierzytelniania zawartej bazy danych](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017).
+Przed dodaniem zawartej bazy danych do grupy dostępności, upewnij się, czy opcja serwer uwierzytelniania zawartej bazy danych jest ustawiona na 1 na każde wystąpienie serwera, który jest hostem repliki dostępności dla grupy dostępności. Aby uzyskać więcej informacji, zobacz [uwierzytelniania zawartej bazy danych](https://docs.microsoft.com/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017).
 
 Aby ustawić opcję zawartej bazy danych uwierzytelniania serwera dla każdego wystąpienia programu SQL Server w grupie dostępności, należy użyć tych poleceń:
 

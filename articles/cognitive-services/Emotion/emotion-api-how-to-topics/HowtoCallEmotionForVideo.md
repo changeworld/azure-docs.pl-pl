@@ -1,55 +1,57 @@
 ---
-title: Wywołania emocji interfejsu API dla wideo | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wywołać interfejs API rozpoznawania emocji — warstwa wideo w usługach kognitywnych.
+title: 'Przykład: wywoływanie interfejsu API rozpoznawania emocji dla wideo'
+titlesuffix: Azure Cognitive Services
+description: Dowiedz się, jak wywoływać interfejs API rozpoznawania emocji dla wideo w usługach Cognitive Services.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: sample
 ms.date: 02/06/2017
 ms.author: anroth
-ms.openlocfilehash: 0875013b2061a84e3e23ae90c1106382672fdca6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2687145a89c11efb4a3bcb1494a39806e9aae551
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347581"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238611"
 ---
-# <a name="how-to-call-emotion-api-for-video"></a>Wywoływanie interfejsu API emocji wideo
+# <a name="example-call-emotion-api-for-video"></a>Przykład: wywoływanie interfejsu API rozpoznawania emocji dla wideo
 
 > [!IMPORTANT]
-> Interfejs API podglądu kończy się 30 października 2017 r. Testowanie nowego [wideo indeksatora interfejsu API w wersji zapoznawczej](https://azure.microsoft.com/services/cognitive-services/video-indexer/) można łatwo wyodrębnić szczegółowych informacji z wideo i celu ułatwienia pracy funkcję odnajdowania zawartości, takich jak wyniki wyszukiwania został określony poprzez wykrycie słowa rozmowy, kroje znaków i emocji. [Dowiedz się więcej](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
+> Interfejs API rozpoznawania emocji zostanie wycofany w dniu 15 lutego 2019 r. Rozpoznawanie emocji jest teraz ogólnie dostępne jako część [interfejsu API rozpoznawania twarzy](https://docs.microsoft.com/azure/cognitive-services/face/). 
 
-W tym przewodniku pokazano, jak wywołać interfejs API rozpoznawania emocji — warstwa wideo. Przykłady są zapisywane w języku C# przy użyciu interfejsu API rozpoznawania emocji — warstwa wideo klienta biblioteki.
+W tym przewodniku pokazano, jak wywołać interfejs API rozpoznawania emocji dla wideo. Przykłady napisano w języku C# z użyciem biblioteki klienckiej interfejsu API rozpoznawania emocji dla wideo.
 
-### <a name="Prep">Przygotowanie</a> 
-Aby korzystać z interfejsu API rozpoznawania emocji — warstwa wideo, konieczne będzie wideo, zawierającą osoby, najlepiej wideo, gdy osoby stoją aparatu.
+### <a name="Prep">Przygotowywanie</a>
+Aby można było użyć interfejsu API rozpoznawania emocji dla wideo, konieczne będzie wideo z zarejestrowanymi osobami, najlepiej z twarzami zwróconymi w stronę kamery.
 
-### <a name="Step1">Krok 1: Autoryzowanie wywołania interfejsu API</a> 
-Każdego wywołania funkcji API rozpoznawania emocji — warstwa wideo wymaga klucza subskrypcji. Ten klucz musi być przekazywane przy użyciu parametru ciągu zapytania albo określonym w nagłówku żądania. Aby przekazać klucz subskrypcji przy użyciu ciągu zapytania, można znaleźć adres URL żądania poniżej dla interfejsu API rozpoznawania emocji — warstwa wideo na przykład:
+### <a name="Step1">Krok 1. Autoryzacja wywołania interfejsu API</a>
+Każde wywołanie interfejsu API rozpoznawania emocji dla wideo wymaga klucza subskrypcji. Ten klucz musi zostać albo przekazany przez parametr ciągu zapytania, albo określony w nagłówku żądania. Aby przekazać klucz subskrypcji w ciągu zapytania, użyj jako przykładu adresu URL żądania do interfejsu API rozpoznawania emocji dla wideo:
 
 ```
 https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognizeInVideo&subscription-key=<Your subscription key>
 ```
 
-Alternatywnie można również określić w nagłówku żądania HTTP klucza subskrypcji:
+Klucz subskrypcji możesz też określić nagłówku żądania HTTP:
 
 ```
 ocp-apim-subscription-key: <Your subscription key>
 ```
 
-Podczas korzystania z biblioteki klienta, klucz subskrypcji jest przekazywana w konstruktorze klasy VideoServiceClient. Na przykład:
+Jeśli korzystasz z biblioteki klienckiej, klucz subskrypcji jest przekazywany za pośrednictwem konstruktora klasy VideoServiceClient. Na przykład:
 
 ```
 var emotionServiceClient = new emotionServiceClient("Your subscription key");
 ```
-Aby uzyskać klucz subskrypcji, zobacz [subskrypcji] (https://azure.microsoft.com/try/cognitive-services/). 
+Aby uzyskać klucz subskrypcji, zobacz [Subskrypcje] (https://azure.microsoft.com/try/cognitive-services/).
 
-### <a name="Step2">Krok 2: Przekazywanie pliku wideo do usługi i sprawdź stan</a>
-Najprostszym sposobem wykonaj jedną z interfejsu API rozpoznawania emocji — warstwa dla wywołań wideo jest bezpośrednio przekazywanie pliku wideo. Jest to realizowane przez wysłanie żądania "POST" z typem zawartości application/octet-stream oraz dane odczytane z pliku wideo. Maksymalny rozmiar wideo wynosi 100MB.
+### <a name="Step2">Krok 2. Przekazywanie wideo do usługi i sprawdzanie stanu</a>
+Najbardziej podstawowym sposobem wykonywania dowolnych wywołań interfejsu API rozpoznawania emocji dla wideo jest bezpośrednie przekazanie wideo. Robi się to przez wysłanie żądania „POST” z typem zawartości application/octet-stream wraz z danymi odczytanymi z pliku wideo. Maksymalny rozmiar wideo to 100 MB.
 
-Za pomocą biblioteki klienta, stabilizacji za pomocą przekazywanie odbywa się przez przekazywanie obiektu strumienia. Zobacz poniższy przykład:
+Gdy używana jest biblioteka kliencka, stabilizacja za pomocą przekazywania jest realizowana przez przekazanie obiektu strumienia. Zapoznaj się z poniższym przykładem:
 
 ```
 Operation videoOperation;
@@ -59,10 +61,10 @@ using (var fs = new FileStream(@"C:\Videos\Sample.mp4", FileMode.Open))
 }
 ```
 
-Należy pamiętać, że metoda CreateOperationAsync VideoServiceClient jest asynchroniczne. Wywołanie metody powinien być oznaczony jako async oraz aby można było używać klauzuli await.
-Jeśli wideo jest już w sieci web i publiczny adres URL, podając adres URL są dostępne API rozpoznawania emocji — warstwa wideo. W tym przykładzie treści żądania będzie ciągu JSON, który zawiera adres URL.
+Pamiętaj, że metoda CreateOperationAsync klasy VideoServiceClient jest asynchroniczna. Także metoda wywołująca powinna być oznaczona jako asynchroniczna, aby można było użyć klauzuli await.
+Jeśli wideo jest już w Internecie i ma publiczny adres URL, dostęp do interfejsu API rozpoznawania emocji dla wideo jest możliwy przez podanie adresu URL. W tym przykładzie treścią żądania będzie ciąg JSON, który zawiera adres URL.
 
-Za pomocą biblioteki klienta, stabilizacji za pomocą adresu URL można łatwo można wykonać przy użyciu innego przeciążenia metody CreateOperationAsync.
+Gdy używana jest biblioteka kliencka, stabilizacji za pomocą adresu URL może być łatwo zrealizowana przez użycie innego przeciążenia metody CreateOperationAsync.
 
 
 ```
@@ -71,18 +73,18 @@ Operation videoOperation = await videoServiceClient.CreateOperationAsync(videoUr
 
 ```
 
-Ta metoda przekazywania będzie taka sama dla wszystkich API rozpoznawania emocji — warstwa dla wywołań wideo. 
+Ta metoda przekazywania będzie taka sama dla wszystkich wywołań interfejsu API rozpoznawania emocji dla wideo.
 
-Zostały przekazane wideo, następnej operacji, które można wykonać po sprawdź jej status. Ponieważ pliki wideo są zwykle większych i bardziej różnorodnych niż pozostałe pliki, użytkownicy mogą oczekiwać długi czas przetwarzania w tym kroku. Czas zależy od rozmiaru i długość pliku.
+Po przekazaniu wideo następną operacją do wykonania jest sprawdzenie jego stanu. Ponieważ pliki wideo są zwykle większe i bardziej zróżnicowane niż inne pliki, użytkownicy mogą spodziewać się na tym etapie długiego czasu przetwarzania. Czas zależy od rozmiaru i długość pliku.
 
-Za pomocą biblioteki klienta, możesz pobrać stan operacji i wyników przy użyciu metody GetOperationResultAsync.
+Gdy używana jest biblioteka kliencka, możesz pobrać stan i wynik operacji, stosując metodę GetOperationResultAsync.
 
 
 ```
 var operationResult = await videoServiceClient.GetOperationResultAsync(videoOperation);
 
 ```
-Zwykle po stronie klienta należy okresowo pobrać stan operacji, dopóki nie zostanie wyświetlony stan "Powodzenie" lub "Niepowodzenie".
+Zazwyczaj po stronie klienta okresowo pobierany jest stan operacji do czasu, aż będzie on miał wartość „Succeeded” lub „Failed”.
 
 ```
 OperationResult operationResult;
@@ -99,48 +101,48 @@ while (true)
 
 ```
 
-Gdy stan VideoOperationResult jest wyświetlana jako "Powiodło się" wynik mogą zostać pobrane przez rzutowanie VideoOperationResult do VideoOperationInfoResult<VideoAggregateRecognitionResult> i uzyskiwania dostępu do pola ProcessingResult.
+Gdy stanem elementu VideoOperationResult będzie „Succeeded”, wynik będzie można pobrać przez rzutowanie elementu VideoOperationResult na element VideoOperationInfoResult<VideoAggregateRecognitionResult> i uzyskanie dostępu do pola ProcessingResult.
 
 ```
 var emotionRecognitionJsonString = ((VideoOperationInfoResult<VideoAggregateRecognitionResult>)operationResult).ProcessingResult;
 ```
 
-### <a name="Step3">Krok 3: Pobieranie i opis rozpoznawania emocji i śledzenie danych wyjściowych JSON</a>
+### <a name="Step3">Krok 3. Pobieranie i interpretowanie danych wyjściowych JSON rozpoznawania i śledzenia emocji</a>
 
-Wynik danych wyjściowych zawiera metadanych z powierzchni w danym pliku w formacie JSON.
+Wynik wyjściowy zawiera metadane w formacie JSON dotyczące twarzy w pliku.
 
-Zgodnie z objaśnieniem w kroku 2, dane wyjściowe JSON jest dostępna w polu ProcessingResult klasy OperationResult, gdy jego stan jest wyświetlany jako "Powodzenie".
+Zgodnie z opisem w kroku 2, dane wyjściowe JSON są dostępne w polu ProcessingResult elementu OperationResult, gdy jego stan to „Succeeded”.
 
-Wykrywanie twarzy na obrazie i śledzenie JSON zawiera następujące atrybuty:
+Dane JSON wykrywania i śledzenia twarzy zawierają następujące atrybuty:
 
 Atrybut | Opis
 -------------|-------------
-Wersja | Odwołuje się do wersji interfejsu API rozpoznawania emocji — warstwa dla formatu JSON wideo.
-Skali czasu | "Impulsów" na sekundę wideo.
-Przesunięcie  |Przesunięcie czasu sygnatur czasowych. W wersji 1.0 API rozpoznawania emocji — warstwa filmy ta będzie zawsze równa 0. W przyszłości obsługiwane scenariusze i może zmienić tę wartość.
-Szybkość klatek | Klatek na sekundę wideo.
-Fragmenty   | Metadane zostanie obcięty w na różnych mniejsze części o nazwie fragmenty. Każdy fragmentu zawiera rozpoczęcia, czas trwania, liczba interwałów i zdarzenia.
-Uruchamianie   | Godzina rozpoczęcia pierwsze zdarzenie, znaczniki osi.
-Czas trwania |  Długość w taktach fragmentu.
-Interwał |  Długość każdego zdarzenia w obrębie fragmentu, w taktach.
-Zdarzenia  | Tablica zdarzeń. Zewnętrzne tablicy reprezentuje jeden interwał czasu. Wewnętrzny tablicy składa się z 0 lub więcej zdarzeń, które wystąpiły w danym momencie.
-windowFaceDistribution |    Procent kroje ma konkretnego emocji podczas zdarzenia.
-windowMeanScores |  Średnie wyniki dla każdego emocji kroje w obrazie.
+Version | Odnosi się do wersji danych JSON interfejsu API rozpoznawania emocji dla wideo.
+Skala czasu | Liczba „taktów” na sekundę wideo.
+Offset  |Przesunięcie czasu dla sygnatur czasowych. W wersji 1.0 interfejsu API rozpoznawania emocji dla wideo ta wartość będzie zawsze równa 0. W przyszłych scenariuszach ta wartość może ulec zmianie.
+Framerate | Liczba klatek na sekundę w wideo.
+Fragments   | Metadane są cięte na różne mniejsze kawałki nazywane fragmentami. Każdy fragment zawiera rozpoczęcie, czas trwania, wartość interwału i zdarzenia.
+Start   | Czas rozpoczęcia pierwszego zdarzenia, w taktach.
+Duration |  Długość fragmentu, w taktach.
+Interval |  Długość każdego zdarzenia w obrębie fragmentu, w taktach.
+Zdarzenia  | Tablica zdarzeń. Zewnętrzna tablica reprezentuje jeden interwał czasu. Wewnętrzna tablica składa się z 0 lub większej liczby zdarzeń, które wystąpiły w danym momencie.
+windowFaceDistribution |    Procent twarzy z określoną emocją podczas zdarzenia.
+windowMeanScores |  Średnia ocena każdej emocji dla twarzy na obrazie.
 
-Przyczyna formatowania JSON w ten sposób jest ustawienie interfejsów API dla przyszłych scenariuszy, której będzie on potrzebny do pobierania metadanych szybko i zarządzania nimi dużych strumień wyników. Formatowanie jest przy użyciu technik fragmentacji (umożliwiając podzielić metadanych na podstawie czasu części, której można pobrać tylko potrzebnych) i segmentacji (dzięki czemu można podzielić zdarzenia, jeśli otrzymują zbyt duży). Niektórych prostych obliczeń może pomóc przekształcania danych. Na przykład, jeśli zdarzenie rozpoczęty o godzinie 6300 (znaczniki) z skali czasu 2997 (Takty/s) i szybkość klatek z 29,97 (ramek na sekundę), następnie:
+Przyczyną sformatowania kodu JSON w ten sposób jest przygotowanie interfejsów API pod kątem przyszłych scenariuszy, w których może być ważne szybkie pobieranie metadanych i zarządzanie dużym strumieniem wyników. To formatowanie korzysta z techniki fragmentacji (umożliwia podział metadanych na porcje bazujące na czasie, pozwalając pobrać tylko potrzebne dane) i segmentacji (umożliwia podział zdarzeń, gdy staną się zbyt duże). W transformacji danych może pomóc kilka prostych obliczeń. Przykładowo: zdarzenie rozpoczęło się w punkcie 6300 (taktów), skala czasu to 2997 (taktów/s), a szybkość klatek to 29,97 (klatki/s):
 
-*   Start/skali czasu = sekund 2.1
-*   Sekund x (szybkość klatek/skali czasu) = 63 ramki
+*   Pocżątek/skala czasu= 2,1 s
+*   Liczba sekund x (szybkość klatek/skala czasu) = 63 klatki
 
-Poniżej przedstawiono prosty przykład wyodrębniania w formacie JSON na format ramki wykrywania twarzy na obrazie i śledzenia:
+Poniżej przedstawiono prosty przykład wyodrębniania danych JSON do formatu ramek na potrzeby wykrywania i śledzenia twarzy:
 
 ```
 var emotionRecognitionTrackingResultJsonString = operationResult.ProcessingResult;
 var emotionRecognitionTracking = JsonConvert.DeserializeObject<EmotionRecognitionResult>(emotionRecognitionTrackingResultJsonString, settings);
 ```
-Ponieważ emocji są wygładzane wraz z upływem czasu, jeśli kiedykolwiek utworzyć wizualizację do nakładki wyniki w górnej części oryginalnego wideo, odjąć 250 milisekund z podanych sygnatur czasowych.
+Ponieważ emocje z czasem ulegają wygładzeniu, jeśli kiedykolwiek zdecydujesz się utworzyć wizualizację do nałożenia uzyskanych wyników na wideo, odejmij 250 milisekund od podanych sygnatur czasowych.
 
 ### <a name="Summary">Podsumowanie</a>
-W tym przewodniku uzyskanych o funkcje API rozpoznawania emocji — warstwa wideo: w jaki sposób można przekazać pliku wideo, sprawdź jej stan, pobierania metadanych rozpoznawania emocji.
+W tym przewodniku przedstawiono funkcje interfejsu API rozpoznawania emocji dla wideo: jak przekazywać wideo, sprawdzać jego stan i pobierać metadane rozpoznawania emocji.
 
-Aby uzyskać więcej informacji o szczegóły interfejsu API, zobacz Podręcznik interfejsu API "[API rozpoznawania emocji — warstwa wideo odwołania](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/56f8d40e1984551ec0a0984e)".
+Aby uzyskać więcej szczegółowych informacji o interfejsie API, zobacz przewodnik z dokumentacją interfejsu API „[Emotion API for Video Reference](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/56f8d40e1984551ec0a0984e)” (Dokumentacja interfejsu API rozpoznawania emocji dla wideo).

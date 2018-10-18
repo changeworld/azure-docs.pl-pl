@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 328a54e01fb46fca5b7b90a707c0c0bdbdcb4a4f
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 97ec3db40279f12fd0e0f53b11b5d7f9ca7063d5
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47454599"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48020878"
 ---
 > [!IMPORTANT]
-> Pobierając dowolny ze składników zestawu Cognitive Services Speech SDK na tej stronie, zgadzasz się na jego licencję, zobacz [umowa licencyjna zestawu Speech SDK](https://aka.ms/csspeech/license201809).
+> Pobierając dowolny ze składników zestawu SDK rozpoznawania mowy usług Cognitive Services na tej stronie, zgadzasz się na warunki określone w licencji. Zobacz [umowę licencyjną zestawu SDK rozpoznawania mowy](https://aka.ms/csspeech/license201809).

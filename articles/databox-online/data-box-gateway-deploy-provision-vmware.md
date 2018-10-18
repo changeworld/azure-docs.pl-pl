@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/26/2018
+ms.date: 10/01/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 5a173340be424c74c76da659816b1b95b74c465f
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: a96aa2ee8b474bcc4e3e9362d6b1ba755e3fdbc3
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419546"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017452"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>Samouczek: aprowizowanie usługi Azure Data Box Gateway w programie VMware (wersja zapoznawcza)
 
@@ -96,7 +96,7 @@ Wykonaj następujące czynności, aby aprowizować urządzenie wirtualne w funkc
 
 1. Skopiuj obraz urządzenia wirtualnego do swojego systemu. Ten obraz urządzenia wirtualnego (dwa pliki) został pobrany za pośrednictwem witryny Azure Portal. Zanotuj lokalizację, do której został skopiowany obraz, ponieważ będzie on używany w dalszej części tej procedury.
 
-2. Zaloguj się na serwerze ESXi przy użyciu klienta vSphere. Musisz mieć uprawnienia administratora, aby utworzyć maszynę wirtualną.
+2. Zaloguj się na serwerze ESXi przy użyciu klienta internetowego vSphere. Musisz mieć uprawnienia administratora, aby utworzyć maszynę wirtualną.
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image1.png)
   
@@ -104,7 +104,10 @@ Wykonaj następujące czynności, aby aprowizować urządzenie wirtualne w funkc
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image2.png)
 
-4. W okienku po prawej stronie, w obszarze **Datastores** (Magazyny danych), wybierz magazyn danych, do którego chcesz przekazać dysk VMDK. Magazyn danych musi mieć typ VMFS 5. Magazyn danych musi również mieć wystarczającą ilość wolnego miejsca dla dysków systemu operacyjnego i danych.
+4. W okienku po prawej stronie, w obszarze **Datastores** (Magazyny danych), wybierz magazyn danych, do którego chcesz przekazać dysk VMDK. 
+
+    - Magazyn danych musi być typu VMFS5. 
+    - Magazyn danych musi również mieć wystarczającą ilość wolnego miejsca dla dysków systemu operacyjnego i danych.
    
 5. Kliknij prawym przyciskiem myszy i wybierz polecenie **Browse Datastore** (Przeglądaj magazyn danych).
 
@@ -145,11 +148,11 @@ Wykonaj następujące czynności, aby aprowizować urządzenie wirtualne w funkc
 15. Na stronie **Select storage** (Wybór magazynu) wybierz magazyn danych, którego chcesz użyć do aprowizowania maszyny wirtualnej. Kliknij przycisk **Dalej**.
 
     ![](./media/data-box-gateway-deploy-provision-vmware/image12.png)
-16. Na stronie **Customize settings** (Dostosowywanie ustawień) ustaw wartość **CPU** (Procesor CPU) na 4, **Memory** (Pamięć) na co najmniej 8192 MB, a **Hard disk 1** (Dysk twardy 1) na co najmniej 2 TB. W polu **SCSI hard disk** (Dysk twardy SCSI) wybierz typ dysku do dodania. W tym przypadku był to typ LSI Logic SAS. **Statyczne dyski IDE nie są obsługiwane.** **Hard disk 1** (Dysk twardy 1) jest wirtualnym dyskiem danych. Pamiętaj, że po aprowizowaniu dysku nie można zmniejszyć jego rozmiaru.
+16. Na stronie **Customize settings** (Dostosowywanie ustawień) ustaw wartość **CPU** (Procesor CPU) na 4, **Memory** (Pamięć) na co najmniej 8192 MB, a **Hard disk 1** (Dysk twardy 1) na co najmniej 2 TB. Wybierz **dysk twardy SCSI** do dodania. W tym przypadku był to typ LSI Logic SAS. **Statyczne dyski IDE nie są obsługiwane.** **Hard disk 1** (Dysk twardy 1) jest wirtualnym dyskiem danych. Pamiętaj, że po aprowizowaniu dysku nie można zmniejszyć jego rozmiaru.
 
     ![](./media/data-box-gateway-deploy-provision-vmware/image13.png)
 
-    Na tej samej stronie kliknij pozycję **Add hard disk** (Dodaj dysk twardy), a następnie wybierz pozycję **Existing hard disk** (Istniejący dysk twardy). Spowoduje to dodanie dysku systemu operacyjnego. 
+    Na tej samej stronie kliknij pozycję **Add hard disk** (Dodaj dysk twardy), a następnie wybierz pozycję **Existing hard disk** (Istniejący dysk twardy). Wybierz plik VMDK w magazynie danych. Spowoduje to dodanie dysku systemu operacyjnego. 
 
      ![](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 

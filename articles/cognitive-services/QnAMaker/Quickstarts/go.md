@@ -1,41 +1,41 @@
 ---
-title: 'Szybki Start: Przejdź do usługi QnA Maker API (V4)'
+title: 'Szybki start: język Go dla interfejsu API usługi QnA Maker (wersja 4)'
 titleSuffix: Azure Cognitive Services
-description: Pobierz informacje oraz przykłady kodu w celu szybkiego Rozpocznij pracę przy użyciu interfejsu API tekstu usługi Translator firmy Microsoft w usługach Microsoft Cognitive Services na platformie Azure.
+description: Uzyskaj informacje oraz przykłady kodu, które umożliwią Ci szybkie rozpoczęcie korzystania z interfejsu API tłumaczenia tekstu przy użyciu usługi Microsoft Translator w usłudze Microsoft Cognitive Services na platformie Azure.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: qna-maker
-ms.topic: article
+ms.component: qna-maker
+ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: 320eb7b643d785899482a00bfc0bda1d89e61b3b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: MT
+ms.openlocfilehash: b34574ed7d94873a9a01222c944e1b4033848f91
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042384"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887510"
 ---
-# <a name="quickstart-for-microsoft-qna-maker-api-with-go"></a>Przewodnik Szybki start dotyczący usługi QnA Maker API za pomocą języka Go dla firmy Microsoft 
+# <a name="quickstart-for-microsoft-qna-maker-api-with-go"></a>Przewodnik Szybki start dotyczący interfejsu API usługi Microsoft QnA Maker w języku Go 
 <a name="HOLTop"></a>
 
-W tym artykule dowiesz się, jak używać [interfejsu API programu Microsoft QnA Maker](../Overview/overview.md) za pomocą języka Go, aby wykonać następujące czynności.
+W tym artykule dowiesz się, jak używać [interfejsu API usługi Microsoft QnA Maker](../Overview/overview.md) w języku Go, aby wykonać następujące czynności.
 
 - [Tworzenie nowej bazy wiedzy.](#Create)
-- [Aktualizowanie istniejącej bazy wiedzy knowledge base.](#Update)
-- [Pobierz stan żądania można utworzyć lub zaktualizować wiedzy.](#Status)
-- [Publikowanie istniejącej bazy wiedzy knowledge base.](#Publish)
-- [Zastąp zawartość istniejącej bazy wiedzy knowledge base.](#Replace)
-- [Pobierz zawartość bazy wiedzy.](#GetQnA)
-- [Uzyskaj odpowiedzi na pytanie przy użyciu wiedzy.](#GetAnswers)
-- [Pobierz informacje o wiedzy.](#GetKB)
-- [Pobierz informacje o wszystkich baz wiedzy należące do określonego użytkownika.](#GetKBsByUser)
-- [Usuń z bazy wiedzy.](#Delete)
-- [Uzyskaj bieżące klucze punktu końcowego.](#GetKeys)
-- [Ponowne generowanie bieżące klucze punktu końcowego.](#PutKeys)
-- [Uzyskaj bieżący zestaw zmian w programie word.](#GetAlterations)
-- [Zastąp bieżący zestaw zmian w programie word.](#PutAlterations)
+- [Aktualizowanie istniejącej bazy wiedzy.](#Update)
+- [Pobieranie stanu żądania w celu utworzenia lub zaktualizowania bazy wiedzy.](#Status)
+- [Publikowanie istniejącej bazy wiedzy.](#Publish)
+- [Zastępowanie zawartości istniejącej bazy wiedzy.](#Replace)
+- [Pobieranie zawartości bazy wiedzy.](#GetQnA)
+- [Uzyskiwanie odpowiedzi na pytanie przy użyciu bazy wiedzy.](#GetAnswers)
+- [Pobieranie informacji o bazie wiedzy.](#GetKB)
+- [Pobieranie informacji o wszystkich bazach wiedzy należących do określonego użytkownika.](#GetKBsByUser)
+- [Usuwanie bazy wiedzy.](#Delete)
+- [Uzyskiwanie bieżących kluczy punktu końcowego.](#GetKeys)
+- [Ponowne generowanie bieżących kluczy punktu końcowego.](#PutKeys)
+- [Uzyskiwanie bieżącego zestawu zmian słów.](#GetAlterations)
+- [Zastępowanie bieżącego zestawu zmian słów.](#PutAlterations)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -188,7 +188,7 @@ func main() {
 }
 ```
 
-**Tworzenie bazy wiedzy knowledge base odpowiedzi**
+**Tworzenie odpowiedzi bazy wiedzy**
 
 Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
@@ -371,7 +371,7 @@ func main() {
 }
 ```
 
-**Aktualizowanie bazy wiedzy knowledge base odpowiedzi**
+**Aktualizowanie odpowiedzi bazy wiedzy**
 
 Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
@@ -483,7 +483,7 @@ func main() {
 }
 ```
 
-**Publikowanie bazy wiedzy knowledge base odpowiedzi**
+**Publikowanie odpowiedzi bazy wiedzy**
 
 Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
@@ -497,9 +497,9 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 <a name="Replace"></a>
 
-## <a name="replace-knowledge-base"></a>Zastąp bazy wiedzy
+## <a name="replace-knowledge-base"></a>Zastępowanie bazy wiedzy
 
-Poniższy kod zastępuje zawartość określonego wiedzy, za pomocą [Zastąp](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) metody.
+Poniższy kod zastępuje zawartość określonej bazy wiedzy za pomocą metody [Replace](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish).
 
 1. Utwórz nowy projekt języka Go w ulubionym środowisku IDE.
 2. Dodaj kod przedstawiony poniżej.
@@ -591,7 +591,7 @@ func main() {
 }
 ```
 
-**Zastąp odpowiedzi bazy wiedzy**
+**Zastępowanie odpowiedzi bazy wiedzy**
 
 Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
@@ -605,9 +605,9 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 <a name="GetQnA"></a>
 
-## <a name="download-the-contents-of-a-knowledge-base"></a>Pobierz zawartość bazy wiedzy
+## <a name="download-the-contents-of-a-knowledge-base"></a>Pobieranie zawartości bazy wiedzy
 
-Poniższy kod pobiera zawartość określonej wiedzy, za pomocą [Pobierz wiedzy](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) metody.
+Poniższy kod pobiera zawartość określonej bazy wiedzy za pomocą metody [Download knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download).
 
 1. Utwórz nowy projekt języka Go w ulubionym środowisku IDE.
 2. Dodaj kod przedstawiony poniżej.
@@ -675,7 +675,7 @@ func main() {
 }
 ```
 
-**Pobierz odpowiedzi bazy wiedzy**
+**Pobieranie odpowiedzi bazy wiedzy**
 
 Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
@@ -714,15 +714,15 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 <a name="GetAnswers"></a>
 
-## <a name="get-answers-to-a-question-by-using-a-knowledge-base"></a>Uzyskaj odpowiedzi na pytanie przy użyciu wiedzy
+## <a name="get-answers-to-a-question-by-using-a-knowledge-base"></a>Uzyskiwanie odpowiedzi na pytanie przy użyciu bazy wiedzy
 
-Poniższy kod pobiera odpowiedzi na pytania przy użyciu określonej bazie wiedzy knowledge base, przy użyciu **Generowanie odpowiedzi** metody.
+Poniższy kod pobiera odpowiedzi na pytanie za pomocą określonej bazy wiedzy za pomocą metody **Generate answers**.
 
 1. Utwórz nowy projekt języka Go w ulubionym środowisku IDE.
 1. Dodaj kod przedstawiony poniżej.
-1. Zastąp `host` wartość nazwą witryny sieci Web dla Twojej subskrypcji usługi QnA Maker. Aby uzyskać więcej informacji, zobacz [Tworzenie usługi QnA Maker](../How-To/set-up-qnamaker-service-azure.md).
-1. Zastąp `endpoint_key` wartość za pomocą klucza prawidłowego punktu końcowego dla Twojej subskrypcji. Należy pamiętać, że to nie jest taka sama jak klucz subskrypcji. Możesz uzyskać klucze punktu końcowego przy użyciu [Pobieranie kluczy punktu końcowego](#GetKeys) metody.
-1. Zastąp `kb` wartość o identyfikatorze wiedzy, które chcesz zbadać odpowiedzi. Należy pamiętać, tej wiedzy musi już zostały opublikowane za pomocą [Publikuj](#Publish) metody.
+1. Zastąp wartość `host` nazwą witryny internetowej dla Twojej subskrypcji usługi QnA Maker. Aby uzyskać więcej informacji, zobacz [Tworzenie usługi QnA Maker](../How-To/set-up-qnamaker-service-azure.md).
+1. Zastąp wartość `endpoint_key` prawidłowym kluczem punktu końcowego subskrypcji. Pamiętaj, że to nie jest to samo, co klucz subskrypcji. Klucze punktu końcowego możesz uzyskać za pomocą metody [Get endpoint keys](#GetKeys).
+1. Zastąp wartość `kb` identyfikatorem bazy wiedzy, do której chcesz wysłać zapytanie o odpowiedzi. Pamiętaj, że ta baza wiedzy musiała już zostać opublikowana za pomocą metody [Publish](#Publish).
 1. Uruchom program.
 
 ```go
@@ -789,7 +789,7 @@ func main() {
 }
 ```
 
-**Uzyskaj odpowiedzi odpowiedzi**
+**Uzyskiwanie odpowiedzi**
 
 Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
@@ -815,9 +815,9 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 <a name="GetKB"></a>
 
-## <a name="get-information-about-a-knowledge-base"></a>Pobierz informacje o wiedzy
+## <a name="get-information-about-a-knowledge-base"></a>Pobieranie informacji o bazie wiedzy
 
-Poniższy kod umożliwia pobranie informacji o określonym wiedzy podstawowego tworzonego przy użyciu [uzyskiwanie szczegółowych informacji w bazie wiedzy knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) metody.
+Poniższy kod pobiera informacje o określonej bazie wiedzy za pomocą metody [Get knowledge base details](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails).
 
 1. Utwórz nowy projekt języka Go w ulubionym środowisku IDE.
 2. Dodaj kod przedstawiony poniżej.
@@ -881,7 +881,7 @@ func main() {
 }
 ```
 
-**Uzyskiwanie wiedzy szczegóły odpowiedzi**
+**Uzyskiwanie odpowiedzi zawierającej szczegóły bazy wiedzy**
 
 Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
@@ -907,9 +907,9 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 <a name="GetKBsByUser"></a>
 
-## <a name="get-all-knowledge-bases-for-a-user"></a>Pobierz wszystkie bazy wiedzy dla użytkownika
+## <a name="get-all-knowledge-bases-for-a-user"></a>Pobieranie wszystkich baz wiedzy użytkownika
 
-Poniższy kod umożliwia pobranie informacji o wszystkich baz wiedzy dla określonego użytkownika przy użyciu [Pobierz bazy wiedzy dla użytkownika](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) metody.
+Poniższy kod pobiera informacje o wszystkich bazach wiedzy dla określonego użytkownika za pomocą metody [Get knowledge bases for user](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser).
 
 1. Utwórz nowy projekt języka Go w ulubionym środowisku IDE.
 2. Dodaj kod przedstawiony poniżej.
@@ -970,7 +970,7 @@ func main() {
 }
 ```
 
-**Pobieranie baz wiedzy o odpowiedź użytkownika**
+**Pobieranie baz wiedzy dla odpowiedzi użytkownika**
 
 Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
@@ -1012,9 +1012,9 @@ Press any key to continue.
 
 <a name="Delete"></a>
 
-## <a name="delete-a-knowledge-base"></a>Usuń z bazy wiedzy
+## <a name="delete-a-knowledge-base"></a>Usuwanie bazy wiedzy
 
-Poniższy kod usuwa określony wiedzy, za pomocą [usuwania z bazy wiedzy knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) metody.
+Poniższy kod usuwa określoną bazę wiedzy za pomocą metody [Delete knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete).
 
 1. Utwórz nowy projekt języka Go w ulubionym środowisku IDE.
 2. Dodaj kod przedstawiony poniżej.
@@ -1084,7 +1084,7 @@ func main() {
 }
 ```
 
-**Usuń odpowiedź z bazy wiedzy**
+**Usuwanie odpowiedzi bazy wiedzy**
 
 Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
@@ -1098,9 +1098,9 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 <a name="GetKeys"></a>
 
-## <a name="get-endpoint-keys"></a>Pobierz klucze punktu końcowego
+## <a name="get-endpoint-keys"></a>Pobieranie kluczy punktu końcowego
 
-Poniższy kod pobiera bieżące klucze punktu końcowego przy użyciu [Pobieranie kluczy punktu końcowego](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys) metody.
+Poniższy kod pobiera bieżące klucze punktu końcowego za pomocą metody [Get endpoint keys](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys).
 
 1. Utwórz nowy projekt języka Go w ulubionym środowisku IDE.
 2. Dodaj kod przedstawiony poniżej.
@@ -1161,7 +1161,7 @@ func main() {
 }
 ```
 
-**Uzyskaj odpowiedzi klucze punktu końcowego**
+**Pobieranie odpowiedzi kluczy punktu końcowego**
 
 Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
@@ -1176,9 +1176,9 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 <a name="PutKeys"></a>
 
-## <a name="refresh-endpoint-keys"></a>Odśwież klucze punktu końcowego
+## <a name="refresh-endpoint-keys"></a>Odświeżanie kluczy punktu końcowego
 
-Poniższy kod generuje ponownie bieżące klucze punktu końcowego przy użyciu [odświeżyć klucze punktu końcowego](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys) metody.
+Poniższy kod ponownie generuje bieżące klucze punktu końcowego za pomocą metody [Refresh endpoint keys](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys).
 
 1. Utwórz nowy projekt języka Go w ulubionym środowisku IDE.
 2. Dodaj kod przedstawiony poniżej.
@@ -1247,7 +1247,7 @@ func main() {
 }
 ```
 
-**Odświeżenie punktu końcowego klucze odpowiedzi**
+**Odświeżenie odpowiedzi kluczy punktu końcowego**
 
 Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
@@ -1262,9 +1262,9 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 <a name="GetAlterations"></a>
 
-## <a name="get-word-alterations"></a>Pobieranie zmian w programie word
+## <a name="get-word-alterations"></a>Pobieranie zmian słów
 
-Poniższy kod pobiera bieżące zmiany programu word, za pomocą [pobrać zmiany](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc) metody.
+Poniższy kod pobiera bieżące zmiany słów za pomocą metody [Download alterations](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc).
 
 1. Utwórz nowy projekt języka Go w ulubionym środowisku IDE.
 2. Dodaj kod przedstawiony poniżej.
@@ -1325,7 +1325,7 @@ func main() {
 }
 ```
 
-**Uzyskaj odpowiedzi zmiany programu word**
+**Pobieranie odpowiedzi zmian słów**
 
 Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
@@ -1346,9 +1346,9 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 <a name="PutAlterations"></a>
 
-## <a name="replace-word-alterations"></a>Zastąp zmiany programu word
+## <a name="replace-word-alterations"></a>Zastępowanie zmian słów
 
-Poniższy kod zastępuje bieżące zmiany programu word, za pomocą [Zastąp zmiany](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) metody.
+Poniższy kod zastępuje bieżące zmiany słów za pomocą metody [Replace alterations](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd).
 
 1. Utwórz nowy projekt języka Go w ulubionym środowisku IDE.
 2. Dodaj kod przedstawiony poniżej.
@@ -1429,7 +1429,7 @@ func main() {
 }
 ```
 
-**Zastąp odpowiedzi zmiany programu word**
+**Zastępowanie odpowiedzi zmiany słów**
 
 Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
@@ -1441,11 +1441,11 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 [Powrót do początku](#HOLTop)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API Reference (Dokumentacja interfejsu API REST usługi QnA Maker w wersji 4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
 
-## <a name="see-also"></a>Zobacz także 
+## <a name="see-also"></a>Zobacz też 
 
 [Omówienie usługi QnA Maker](../Overview/overview.md)

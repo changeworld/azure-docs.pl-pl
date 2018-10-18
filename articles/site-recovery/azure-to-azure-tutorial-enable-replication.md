@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 10/10/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 4638b697dcaa0d4c11bae1878a94f76f6237d4a4
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 0404774f1cb347ceead8b78d1a9a6506712dea5c
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42154785"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069101"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure
 
@@ -169,6 +169,19 @@ Aby zastąpić domyślne ustawienia zasad replikacji, kliknij przycisk **Dostosu
 
 > [!IMPORTANT]
   Jeśli włączono spójność między wieloma maszynami wirtualnymi, maszyny z grupy replikacji komunikują się między sobą przez port 20004. Upewnij się, że żadne urządzenie zapory nie blokuje wewnętrznej komunikacji między maszynami wirtualnymi za pośrednictwem portu 20004. Jeśli do grupy replikacji chcesz dodać maszyny wirtualne z systemem Linux, musisz ręcznie otworzyć port 20004 dla ruchu wychodzącego zgodnie ze wskazówkami dla konkretnej wersji systemu Linux.
+
+### <a name="configure-encryption-settings"></a>Konfigurowanie ustawień szyfrowania
+
+Jeśli źródłowa maszyna wirtualna ma włączoną usługę Azure Disk Encryption, pojawi się poniższa sekcja dotycząca ustawień szyfrowania.
+
+- **Magazyny kluczy usługi Azure Disk Encryption**: domyślnie usługa Azure Site Recovery tworzy nowy magazyn kluczy w regionie docelowym — sufiks „asr” w jego nazwie pochodzi od kluczy szyfrowania dysku źródłowej maszyny wirtualnej. Jeśli magazyn kluczy utworzony przez usługę Azure Site Recovery już istnieje, zostanie ponownie użyty.
+- **Magazyny kluczy szyfrowania kluczy**: domyślnie usługa Azure Site Recovery tworzy nowy magazyn kluczy w regionie docelowym — sufiks „asr” w jego nazwie pochodzi od kluczy szyfrowania klucza źródłowej maszyny wirtualnej. Jeśli magazyn kluczy utworzony przez usługę Azure Site Recovery już istnieje, zostanie ponownie użyty.
+
+Kliknij przycisk „Dostosuj” obok ustawień szyfrowania, aby zastąpić ustawienia domyślne i wybrać niestandardowe magazyny kluczy.
+
+>[!NOTE]
+>Tylko maszyny wirtualne platformy Azure z systemem operacyjnym Windows i [włączoną funkcją szyfrowania za pomocą aplikacji usługi Azure AD](https://aka.ms/ade-aad-app) są obecnie obsługiwane przez usługę Azure Site Recovery.
+>
 
 ### <a name="track-replication-status"></a>Śledzenie stanu replikacji
 

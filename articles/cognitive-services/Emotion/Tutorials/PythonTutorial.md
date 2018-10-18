@@ -1,38 +1,40 @@
 ---
-title: Samouczek Python interfejsu API rozpoznawania emocji — warstwa | Dokumentacja firmy Microsoft
-description: Umożliwia korzystanie z języka Python kognitywnych API rozpoznawania emocji — warstwa usług notesu Jupyter. Wizualizacja wyników przy użyciu popularnych bibliotek.
+title: 'Samouczek: rozpoznawanie emocji na twarzy na obrazie — interfejs API rozpoznawania emocji, Python'
+titlesuffix: Azure Cognitive Services
+description: Aby dowiedzieć się, jak używać interfejsu API rozpoznawania emocji z językiem Python, użyj notesu Jupyter. Wyniki wizualizuj przy użyciu popularnych bibliotek.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: 70c8ca48c651601f3d7cbb3717c32bfe112176fe
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 31e346cd9a3f43f8181ebee4474ae6c9ee2cc6fc
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347549"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237861"
 ---
-# <a name="emotion-api-using-python-tutorial"></a>Emocji interfejsu API przy użyciu języka Python — samouczek
+# <a name="tutorial-use-the-emotion-api-with-a-jupyter-notebook--python"></a>Samouczek: używaj interfejsu API rozpoznawania emocji z notesem Jupyter i językiem Python.
 
 > [!IMPORTANT]
-> Interfejs API podglądu kończy się 30 października 2017 r. Testowanie nowego [wideo indeksatora interfejsu API w wersji zapoznawczej](https://azure.microsoft.com/services/cognitive-services/video-indexer/) można łatwo wyodrębnić szczegółowych informacji z wideo i celu ułatwienia pracy funkcję odnajdowania zawartości, takich jak wyniki wyszukiwania został określony poprzez wykrycie słowa rozmowy, kroje znaków i emocji. [Dowiedz się więcej](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
+> Interfejs API rozpoznawania emocji zostanie wycofany w dniu 15 lutego 2019 r. Rozpoznawanie emocji jest teraz ogólnie dostępne jako część [interfejsu API rozpoznawania twarzy](https://docs.microsoft.com/azure/cognitive-services/face/). 
 
-Aby ułatwić szybkie wprowadzenie do interfejsu API rozpoznawania emocji — warstwa notesu Jupyter linki znajdują się poniżej przedstawiono sposób za pomocą interfejsu API w języku Python i wizualizować wyniki za pomocą niektórych popularnych bibliotek. 
+Aby rozpoczęcie korzystania z interfejsu API rozpoznawania emocji było łatwiejsze, notes Jupyter, do którego link znajduje się poniżej, pokazuje, jak korzystać z interfejsu API w języku Python oraz jak wizualizować wyniki za pomocą pewnych popularnych bibliotek.
 
-[Łącze do notesu w serwisie GitHub](https://github.com/Microsoft/Cognitive-Emotion-Python/blob/master/Jupyter%20Notebook/Emotion%20Analysis%20Example.ipynb)
+[Link do notesu w usłudze GitHub](https://github.com/Microsoft/Cognitive-Emotion-Python/blob/master/Jupyter%20Notebook/Emotion%20Analysis%20Example.ipynb)
 
-### <a name="using-the-jupyter-notebook"></a>Za pomocą notesu Jupyter
+### <a name="using-the-jupyter-notebook"></a>Korzystanie z notesu Jupyter
 
-Aby użyć notesu interaktywne, należy ją sklonować i uruchom go w oprogramowaniu Jupyter. Aby dowiedzieć się, jak rozpocząć pracę z notesów Jupyter interaktywne, postępuj zgodnie z instrukcjami w http://jupyter.readthedocs.org/en/latest/install.html. 
+Aby używać notesu interakcyjnie, będzie trzeba go sklonować i uruchomić w programie Jupyter. Aby dowiedzieć się, jak rozpocząć pracę z interaktywnymi notesami Jupyter, postępuj zgodnie z instrukcjami na stronie http://jupyter.readthedocs.org/en/latest/install.html.
 
-Aby użyć tego notesu, konieczne będzie klucza subskrypcji dla interfejsu API rozpoznawania emocji — warstwa. Odwiedź stronę [stronę subskrypcji](https://azure.microsoft.com/try/cognitive-services/) zasubskrybowanie. Na stronie "Logowanie" Użyj konta Microsoft do logowania i będzie można umożliwia subskrybowanie i uzyskać bezpłatne klucze. Po zakończeniu procesu rejestracji, Wklej klucz w sekcji zmiennych, pokazano poniżej. Podstawowy lub pomocniczy klucz działa.
+Aby użyć tego notesu, konieczny będzie klucz subskrypcji dla interfejsu API rozpoznawania emocji. Odwiedź [stronę subskrypcji](https://azure.microsoft.com/try/cognitive-services/), aby się zarejestrować. Na stronie „Logowanie” użyj swojego konta Microsoft, aby zalogować się. Następnie aktywuj subskrypcję i uzyskaj bezpłatne klucze. Po zakończeniu procesu rejestracji wklej swój klucz w sekcji zmiennych pokazanej poniżej. Działają oba klucze, podstawowy i pomocniczy.
 
 ```
-Python Example 
+Python Example
 
 #Variables
 

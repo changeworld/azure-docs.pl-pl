@@ -9,14 +9,14 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 6fbca5e83d8ab4b3c34c6448c7a2303697da623b
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 7110d8df5ee837829f97fec8ab26d929689e3436
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181402"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785142"
 ---
-# <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning"></a>Samouczek 1. Uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning
+# <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>Samouczek nr 1: uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning
 
 W tym samouczku przeprowadzisz uczenie modelu uczenia maszynowego zarówno lokalnie, jak i na zdalnych zasobach obliczeniowych. Zastosujesz przepływ pracy uczenia i wdrażania dla usługi Azure Machine Learning (wersja zapoznawcza) w notesie Jupyter języka Python.  Następnie możesz użyć notesu jako szablonu do uczenia własnego modelu uczenia maszynowego z użyciem własnych danych. Ten samouczek jest **pierwszą częścią dwuczęściowej serii**.  
 
@@ -37,7 +37,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="get-the-notebook"></a>Pobieranie notesu
 
-Dla Twojej wygody ten samouczek jest dostępny jako notes Jupyter. Za pomocą jednej z dwóch poniższych metod sklonuj [repozytorium GitHub przykładowych notesów uczenia maszynowego](https://github.com/Azure/MachineLearningNotebooks), a następnie uruchom notes `tutorials/01.train-models.ipynb`:
+Dla Twojej wygody ten samouczek jest dostępny jako [notes Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/01.train-models.ipynb). Uruchom notes `01.train-models.ipynb` w usłudze Azure Notebooks lub na własnym serwerze notesów Jupyter.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/21/2018s
+ms.date: 10/10/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 9092629c7bef46cdb7c464fca5e22d4aea0da9fc
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 12b7a605350b07565660e9e4d1334b286aa5ac00
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47041544"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079110"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Szybki start: eksplorowanie kosztów za pomocą funkcji analizy kosztów
 
@@ -34,13 +34,21 @@ W tym przewodniku Szybki start zawarto informacje na temat wykonywania następuj
 
 Analiza kosztów jest dostępna dla wszystkich klientów z umową [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/). Aby wyświetlać dane kosztów, musisz mieć co najmniej prawa dostępu do odczytu co najmniej jednego z poniższych zakresów.
 
-- Konto billingowe
-- Dział
-- Konto rejestracji
-- Grupa zarządzania
-- Subskrypcja
-- Grupa zasobów
+- Zakres *billing account* (konto billingowe) jest definiowany w witrynie https://ea.azure.com i wymaga dostępu na poziomie administratora przedsiębiorstwa. Nie jest wymagane żadne wstępne ustawienie administratora przedsiębiorstwa. Informacje billingowe w analizie kosztów są konsolidowane dla wszystkich subskrypcji w ramach umowy Enterprise Agreement. Konto billingowe jest często określane jako konto *umowy Enterprise Agreement* lub *rejestracji*.
 
+- Zakres *department* (dział) jest definiowany w witrynie https://ea.azure.com i wymaga dostępu na poziomie administratora działu. Wymagane jest włączenie ustawienia **wyświetlania opłat przez administratora działu** w portalu EA. Informacje billingowe w analizie kosztów są skonsolidowane dla wszystkich subskrypcji, które należą do konta rejestracji połączonego z działem.
+
+- Zakres *enrollment account* (konto rejestracji) jest definiowany w witrynie https://ea.azure.com i wymaga dostępu na poziomie właściciela konta. Wymagane jest włączenie ustawienia **wyświetlania opłat przez właściciela konta** w portalu EA. Informacje billingowe w analizie kosztów są skonsolidowane dla wszystkich subskrypcji, które należą do konta rejestracji. Konto rejestracji jest często nazywane *właścicielem konta*.
+
+- Zakres *management group* (grupa zarządzania) jest definiowany w witrynie https://portal.azure.com i wymaga dostępu na poziomie czytelnika zarządzania kosztami (czytelnika). Wymagane jest włączenie ustawienia **wyświetlania opłat przez właściciela konta** w portalu EA. Informacje billingowe w analizie kosztów są konsolidowane dla wszystkich subskrypcji w ramach grupy zarządzania.
+
+- Zakres *subscription* (subskrypcja) jest definiowany w witrynie https://portal.azure.com i wymaga dostępu na poziomie czytelnika zarządzania kosztami (czytelnika). Wymagane jest włączenie ustawienia **wyświetlania opłat przez właściciela konta** w portalu EA. Informacje billingowe w analizie kosztów są konsolidowane dla wszystkich zasobów i grup zasobów w subskrypcji.
+
+- Zakres *resource group* (grupa zasobów) jest definiowany w witrynie https://portal.azure.com i wymaga dostępu na poziomie czytelnika zarządzania kosztami (czytelnika). Wymagane jest włączenie ustawienia **wyświetlania opłat przez właściciela konta** w portalu EA. Informacje billingowe w analizie kosztów są konsolidowane dla wszystkich zasobów w grupie zasobów.
+
+
+
+Aby uzyskać więcej informacji na temat konfigurowania ustawień **wyświetlania opłat przez administratora działu**  i **właściciela konta** , zobacz [Enabling access to costs (Umożliwianie dostępu do kosztów)](../billing/billing-enterprise-mgmt-grp-troubleshoot-cost-view.md#enabling-access-to-costs).
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
@@ -94,6 +102,11 @@ Wykresy przestawne w górnym widoku sumy pokazują widoki dla różnych kategori
 ![Pełne dane dla widoku bieżącego](./media/quick-acm-cost-analysis/full-data-set.png)
 
 Na poprzedniej ilustracji pokazano nazwy grup zasobów. Wyświetlanie tagów zasobów nie jest dostępne we wszystkich widokach, filtrach i grupowaniach analizy kosztów.
+
+Podczas grupowania kosztów według konkretnego atrybutu dziesięć największych składników kosztów jest pokazanych od najwyższego do najniższego. Jeśli jest więcej niż dziesięć grup, pokazanych jest dziewięć grup o najwyższych kosztach oraz jedna grupa **Inne**, która obejmuje wszystkie pozostałe grupy łącznie.
+
+*Klasyczne* maszyny wirtualne (usługi Azure Service Management, ASM), sieci i zasoby magazynu nie udostępniają szczegółowych danych dotyczących rozliczeń. Są one scalane jako **Usługi klasyczne** podczas grupowania kosztów.
+
 
 ## <a name="download-cost-analysis-data"></a>Pobieranie danych analizy kosztów
 

@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 10/10/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 93626e6a8f199841b285fb8a6e302e6c3054db0d
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: b1b903b945a60cebe2001a1ae41201b9b665c556
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918037"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078821"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Konfigurowanie odzyskiwania po awarii na platformie Azure dla lokalnych maszyn wirtualnych VMware
 
@@ -132,7 +132,7 @@ Aby dodać kolejną kartę sieciową do serwera konfiguracji, zrób to przed zar
 4. Wybierz pozycję **Zainstaluj interfejs PowerCLI programu VMware**. Przed wykonaniem tej czynności zamknij wszystkie okna przeglądarki. Następnie wybierz pozycję **Kontynuuj**.
 5. W obszarze **Weryfikowanie konfiguracji urządzenia** zostaną zweryfikowane wymagania wstępne, a następnie będzie można kontynuować.
 6. W obszarze **Skonfiguruj poświadczenia serwera vCenter Server/vSphere ESXi** wprowadź nazwę FQDN bądź adres IP serwera vCenter lub hosta vSphere, na którym znajdują się maszyny wirtualne, które chcesz replikować. Wprowadź port, na którym nasłuchuje serwer. Wprowadź przyjazną nazwę, która ma być używana dla serwera VMware w magazynie.
-7. Wprowadź poświadczenia, za pomocą których serwer konfiguracji będzie łączył się z serwerem VMware. Przy użyciu tych poświadczeń usługa Site Recovery automatycznie odnajduje maszyny wirtualne VMware dostępne do replikacji. Wybierz pozycję **Dodaj**, a następnie wybierz pozycję **Kontynuuj**.
+7. Wprowadź poświadczenia użytkownika, za pomocą których serwer konfiguracji będzie łączył się z serwerem VMware. Upewnij się, że nazwa użytkownika i hasło są prawidłowe, oraz że użytkownik należy do grupy administratorów na maszynie wirtualnej, która ma być chroniona. Przy użyciu tych poświadczeń usługa Site Recovery automatycznie odnajduje maszyny wirtualne VMware dostępne do replikacji. Wybierz pozycję **Dodaj**, a następnie wybierz pozycję **Kontynuuj**.
 8. W obszarze **Skonfiguruj poświadczenia maszyny wirtualnej** wprowadź nazwę użytkownika i hasło, które będą używane do automatycznego instalowania usługi Mobility na maszynach wirtualnych po włączeniu replikacji.
     - W przypadku maszyn z systemem Windows konto wymaga uprawnień administratora lokalnego na replikowanych maszynach.
     - W przypadku systemu Linux należy podać dane superużytkownika.

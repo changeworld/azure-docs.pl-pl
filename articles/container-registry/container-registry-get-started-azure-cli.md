@@ -2,19 +2,18 @@
 title: Szybki start — tworzenie rejestru prywatnego platformy Docker na platformie Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 description: Szybka nauka tworzenia rejestru prywatnego platformy Docker przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 03/03/2018
-ms.author: marsma
+ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: b17df81dd1d972f3e559140e9f43963e9c8cab2a
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 57c72056b669865278fa8109cd7f4963a1f0887a
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42022992"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855242"
 ---
 # <a name="quickstart-create-a-container-registry-using-the-azure-cli"></a>Szybki start: Tworzenie rejestru kontenerów za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -22,7 +21,7 @@ Usługa Azure Container Registry to zarządzana usługa rejestru kontenerów pla
 
 Ten przewodnik Szybki start wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.27 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli].
 
-Musisz mieć również zainstalowane lokalnie środowisko Docker. Środowisko Docker zawiera pakiety, które umożliwiają łatwe konfigurowanie platformy Docker w systemie [Mac][docker-mac], [Windows][docker-windows] lub [Linux][docker-linux].
+Musisz mieć również zainstalowane lokalnie środowisko Docker. Środowisko Docker zawiera pakiety, które umożliwiają łatwe konfigurowanie platformy Docker w systemie [macOS][docker-mac], [Windows][docker-windows] lub [Linux][docker-linux].
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 

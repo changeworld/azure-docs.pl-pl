@@ -9,12 +9,12 @@ author: rastala
 ms.author: roastala
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 296bbc12cb326c416c87948db0ce6d7b5ff114da
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 856f9629e97f8cf7cf811e7d591cbcad6067f47a
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972729"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237164"
 ---
 # <a name="quickstart-get-started-with-azure-machine-learning-using-the-cli-extension"></a>Szybki start: rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu rozszerzenia interfejsu wiersza polecenia
 
@@ -83,7 +83,7 @@ W tym przewodniku Szybki start przyjęto następujące założenia:
 
 ## <a name="create-a-workspace-and-a-project-folder"></a>Tworzenie obszaru roboczego i folderu projektu
 
-W oknie wiersza polecenia utwórz Obszar roboczy usługi Azure Machine Learning w ramach grupy zasobów.
+W oknie wiersza polecenia utwórz Obszar roboczy usługi Azure Machine Learning Service w ramach grupy zasobów.
 
 
    W tym przewodniku Szybki start przyjęto następujące założenia:

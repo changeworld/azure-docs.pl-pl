@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/27/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 1ee3000ab26dbb0eea33de828812959fe709aaa2
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 2f503a534f79440e6e6c572b7fb29ce3048ee7bc
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410021"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831573"
 ---
 # <a name="tutorial-deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Samouczek: wdrażanie klastra usługi Service Fabric z systemem Windows w sieci wirtualnej platformy Azure
 
@@ -88,7 +88,7 @@ Ten szablon umożliwia wdrożenie zabezpieczonego klastra pięciu maszyn wirtual
 
 ### <a name="service-fabric-cluster"></a>Klaster usługi Service Fabric
 
-Klaster z systemem Windows jest wdrażany z następującą charakterystyką:
+W zasobie **Microsoft.ServiceFabric/clusters** skonfigurowano klaster systemu Windows o następujących właściwościach:
 
 * Jeden typ węzła
 * Pięć węzłów o podstawowym typie (z możliwością konfiguracji za pomocą parametrów szablonu)
@@ -103,7 +103,7 @@ Klaster z systemem Windows jest wdrażany z następującą charakterystyką:
 
 ### <a name="azure-load-balancer"></a>Moduł równoważenia obciążenia platformy Azure
 
-Wdrażany jest moduł równoważenia obciążenia i konfigurowane są sondy oraz reguły dla następujących portów:
+W zasobie **Microsoft.Network/loadBalancers** skonfigurowano moduł równoważenia obciążenia, a sondy i reguły skonfigurowano dla następujących portów:
 
 * Punkt końcowy połączenia klienta: 19000
 * Punkt końcowy bramy protokołu HTTP: 19080
@@ -111,16 +111,16 @@ Wdrażany jest moduł równoważenia obciążenia i konfigurowane są sondy oraz
 * Port aplikacji: 443
 * Odwrotny serwer proxy usługi Service Fabric: 19081
 
-Jeśli będą potrzebne dowolne inne porty aplikacji, będzie trzeba dostosować zasoby Microsoft.Network/loadBalancers i Microsoft.Network/networkSecurityGroups, aby umożliwić ruch przychodzący.
+Jeśli będą potrzebne inne porty aplikacji, będzie trzeba dostosować zasoby **Microsoft.Network/loadBalancers** i **Microsoft.Network/networkSecurityGroups**, aby zezwalać na ruch przychodzący.
 
 ### <a name="virtual-network-subnet-and-network-security-group"></a>Sieć wirtualna, podsieć i sieciowa grupa zabezpieczeń
 
-Nazwy sieci wirtualnej, podsieci i sieciowej grupy zabezpieczeń są deklarowane w parametrach szablonu.  Przestrzenie adresowe sieci wirtualnej i podsieci również są deklarowane w parametrach szablonu:
+Nazwy sieci wirtualnej, podsieci i sieciowej grupy zabezpieczeń są deklarowane w parametrach szablonu.  Przestrzenie adresowe sieci wirtualnej i podsieci również są deklarowane w parametrach szablonu i skonfigurowane w zasobie **Microsoft.Network/virtualNetworks**:
 
 * Przestrzeń adresowa sieci wirtualnej: 172.16.0.0/20
 * Przestrzeń adresowa podsieci usługi Service Fabric: 172.16.2.0/23
 
-W sieciowej grupie zabezpieczeń są włączane poniższe reguły ruchu przychodzącego. Wartości portów można zmienić, modyfikując zmienne szablonu.
+Poniższe reguły ruchu przychodzącego są włączone w zasobie **Microsoft.Network/networkSecurityGroups**. Wartości portów można zmienić, modyfikując zmienne szablonu.
 
 * ClientConnectionEndpoint (TCP): 19000
 * HttpGatewayEndpoint (HTTP/TCP): 19080
@@ -131,7 +131,7 @@ W sieciowej grupie zabezpieczeń są włączane poniższe reguły ruchu przychod
 * Zakres portów aplikacji: od 49152 do 65534 (używane do komunikacji między usługami, ale nie są otwarte w przypadku modułu równoważenia obciążenia)
 * Wszystkie pozostałe porty są zablokowane
 
-Jeśli będą potrzebne dowolne inne porty aplikacji, będzie trzeba dostosować zasoby Microsoft.Network/loadBalancers i Microsoft.Network/networkSecurityGroups, aby umożliwić ruch przychodzący.
+Jeśli będą potrzebne inne porty aplikacji, będzie trzeba dostosować zasoby **Microsoft.Network/loadBalancers** i **Microsoft.Network/networkSecurityGroups**, aby zezwalać na ruch przychodzący.
 
 ## <a name="set-template-parameters"></a>Ustawianie parametrów szablonu
 

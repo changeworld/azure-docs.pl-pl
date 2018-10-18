@@ -5,24 +5,24 @@ services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-finder
+ms.component: anomaly-finder
 ms.topic: include
 ms.date: 04/13/2018
 ms.author: chliang
 ms.custom: include file
-ms.openlocfilehash: df7326cb8e671d0f71924e813a1354dfef1e20c7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: a1cda1cea2089363331ae437cb7ad802429779f4
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348152"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888700"
 ---
-Dane zwrócone z oczekiwaną wartością i domyślne marginesy górny i dolny. W praktyce należy można zdefiniować parametr [czułości], a następnie użyj (ExpectedValue + czułości * UpperMargin) jako górna granica i (ExpectedValue - czułości * LowerMargin) jako dolna granica dostrajania anomalii punktów przez yourselves. Wartość [czułości] powinna być większa niż 1. Poniżej przedstawiono niektóre diagramy dostrojenia.
+Zwracane dane z oczekiwaną wartością oraz domyślnymi marginesami (górnym i dolnym). W praktyce możesz zdefiniować parametr [sensitivity], a następnie użyć polecenia (ExpectedValue + sensitivity * UpperMargin) jako górnej granicy oraz (ExpectedValue - sensitivity * LowerMargin) jako dolnej granicy, aby samodzielnie dostosować punkt anomalii. Wartość parametru [sensitivity] powinna być wyższa niż 1. Poniżej przedstawiono niektóre diagramy dotyczące dostosowywania.
 
 > [!NOTE]
-> Diagramy nie zostały wygenerowane przez przykładowej aplikacji. Są one tworzone przez osobnego narzędzia z przykładowej aplikacji.
+> Diagramy nie są generowane przez przykładową aplikację. Są one tworzone przez osobne narzędzie przy użyciu przykładowej aplikacji.
 
-![Podpowiedzi: czułość = 1.0](../media/sensitivity_1.png)
-![podpowiedzi: czułość = 1.5](../media/sensitivity_1.5.png)
-![podpowiedzi: czułość = 2](../media/sensitivity_2.png)
-![podpowiedzi: czułość = 3.5](../media/sensitivity_3.5.png)
+![Tunning: sensitivity = 1.0](../media/sensitivity_1.png)
+![Tunning: sensitivity = 1.5](../media/sensitivity_1.5.png)
+![Tunning: sensitivity = 2](../media/sensitivity_2.png)
+![Tunning: sensitivity = 3.5](../media/sensitivity_3.5.png)

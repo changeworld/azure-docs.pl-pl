@@ -8,12 +8,12 @@ ms.author: jasonh
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 05/23/2018
-ms.openlocfilehash: c8ec39c6962c4044810d0ae65d2736043bdd4d72
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 82979adb3dd640c238bd4e5fcd1bc4d645f018fe
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620216"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069492"
 ---
 # <a name="quickstart-create-a-kafka-on-hdinsight-cluster"></a>Szybki start: tworzenie platformy Kafka w klastrze usługi HDInsight
 
@@ -69,7 +69,7 @@ Aby utworzyć klaster platformy Kafka w usłudze HDInsight, wykonaj następując
     | Ustawienie | Wartość |
     | --- | --- |
     | Typ klastra | Kafka |
-    | Wersja | Kafka 1.0.0 (HDI 3.6) |
+    | Wersja | Kafka 1.1.0 (HDI 3.6) |
 
     Użyj przycisku **Wybierz**, aby zapisać ustawienia typu klastra, i wróć do bloku __Podstawowe__.
 

@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 6/13/2018
 ms.author: victorh
-ms.openlocfilehash: 3ec2c44c168b47fd66d1ffa9a0c8d0069600ecb0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0acb5bf18c078d8b7eb6a5c14a61fcef622f9f2d
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958105"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831131"
 ---
 # <a name="quickstart-configure-azure-dns-for-name-resolution-using-the-azure-portal"></a>Szybki start: konfigurowanie usługi Azure DNS do rozpoznawania nazw w witrynie Azure Portal
 
@@ -38,12 +38,12 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
     ![Strefa DNS](./media/dns-getstarted-portal/openzone650.png)
 
-4. Na stronie **Tworzenie strefy DNS** wprowadź następujące wartości, a następnie kliknij pozycję **Utwórz**:
+4. Na stronie **Tworzenie strefy DNS** wprowadź następujące wartości i kliknij pozycję **Utwórz**:
 
 
    | **Ustawienie** | **Wartość** | **Szczegóły** |
    |---|---|---|
-   |**Nazwa**|contoso.xyz|Nazwa strefy DNS dla tego przykładu. Na potrzeby tego przewodnika Szybki start możesz użyć dowolnie wybranej wartości, o ile taka wartość nie została jeszcze skonfigurowana na serwerach usługi Azure DNS. W rzeczywistym scenariuszu tą wartością byłaby domena kupiona u rejestratora nazw domen.|
+   |**Nazwa**|contoso.xyz|Nazwa strefy DNS w tym przykładzie może być dowolną wartością, której chcesz użyć na potrzeby tego przewodnika Szybki start, o ile taka wartość nie została jeszcze skonfigurowana na serwerach usługi Azure DNS. W rzeczywistym scenariuszu tą wartością byłaby domena kupiona u rejestratora nazw domen.|
    |**Subskrypcja**|[Twoja subskrypcja]|Wybierz subskrypcję, aby utworzyć w jej ramach strefę DNS.|
    |**Grupa zasobów**|**Utwórz nową:** dns-test|Utwórz grupę zasobów. Nazwa grupy zasobów musi być unikatowa w obrębie wybranej subskrypcji. |
    |**Lokalizacja**|Wschodnie stany USA||
@@ -74,7 +74,7 @@ Ponieważ w tym przewodniku Szybki start nazwa domeny nie została faktycznie ku
 
 ## <a name="test-the-name-resolution"></a>Testowanie rozpoznawania nazw
 
-Po utworzeniu strefy z rekordem A na potrzeby testów możesz przetestować rozpoznawanie nazw za pomocą narzędzia o nazwie nslookup. 
+Po utworzeniu strefy z rekordem A na potrzeby testów możesz przetestować rozpoznawanie nazw za pomocą narzędzia o nazwie *nslookup*. 
 
 1. Najpierw należy zanotować serwery nazw usługi Azure DNS, które będą używane w narzędziu nslookup. 
 

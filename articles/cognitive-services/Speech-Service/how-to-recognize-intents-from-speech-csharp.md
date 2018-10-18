@@ -6,16 +6,16 @@ description: >
 services: cognitive-services
 author: wolfma61
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 16424c44003be14e3ba04f6b5cce0ce518a0d7e8
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 9210aaf2ddfa917ff480f4126c02137f46788dc3
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063034"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884347"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Samouczek: rozpoznawanie intencji z mowy przy użyciu zestawu Speech SDK dla języka C#
 
@@ -123,7 +123,7 @@ Poniższe sekcje zawierają omówienie kodu.
 Pierwszym krokiem rozpoznawania intencji w mowie jest utworzenie konfiguracji mowy przy użyciu regionu i klucza punktu końcowego usługi LUIS. Konfiguracje mowy mogą służyć do tworzenia aparatów rozpoznawania w przypadku różnych możliwości zestawu SDK rozpoznawania mowy. Konfiguracja mowy oferuje wiele sposobów określania subskrypcji do użycia. W tym miejscu użyjemy opcji `FromSubscription`, która uwzględnia region i klucz subskrypcji.
 
 > [!NOTE]
-> Użyj klucza i regionu subskrypcji usługi LUIS, a nie subskrypcji usługi rozpoznawania mowy.
+> Użyj klucza i regionu subskrypcji usługi LUIS, a nie subskrypcji usługi mowy.
 
 Następnie utwórz aparat rozpoznawania mowy przy użyciu elementu `new IntentRecognizer(config)`. Ponieważ konfiguracja już wie, której subskrypcji użyć, nie trzeba ponownie określać punktu końcowego i klucza subskrypcji podczas tworzenia aparatu rozpoznawania.
 
@@ -166,7 +166,7 @@ Aplikacja z samouczka nie analizuje wyniku w formacie JSON, tylko wyświetla go 
 
 ## <a name="specify-recognition-language"></a>Określanie języka na potrzeby rozpoznawania
 
-Domyślnie usługa LUIS rozpoznaje intencje w języku angielskim (Stany Zjednoczone) (`en-us`). Przypisanie kodu ustawień regionalnych do właściwości `SpeechRecognitionLanguage` konfiguracji mowy umożliwia rozpoznawanie intencji w innych językach. Na przykład dodaj element `config.SpeechRecognitionLanguage = "de-de";` w naszej aplikacji z samouczka przed utworzeniem aparatu rozpoznawania, aby rozpoznawać intencje w języku niemieckim. Zobacz [Obsługiwane języki](supported-languages.md#speech-to-text).
+Domyślnie usługa LUIS rozpoznaje intencje w języku angielskim (Stany Zjednoczone) (`en-us`). Przypisanie kodu ustawień regionalnych do właściwości `SpeechRecognitionLanguage` konfiguracji mowy umożliwia rozpoznawanie intencji w innych językach. Na przykład dodaj element `config.SpeechRecognitionLanguage = "de-de";` w naszej aplikacji z samouczka przed utworzeniem aparatu rozpoznawania, aby rozpoznawać intencje w języku niemieckim. Zobacz [Obsługiwane języki](language-support.md#speech-to-text).
 
 ## <a name="continuous-recognition-from-a-file"></a>Ciągłe rozpoznawanie z pliku
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/19/2018
 ms.author: dobett
-ms.openlocfilehash: dc255a36e2347aac204f7bd32fe3e9cf25d54b19
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 8a5a6ff2eab8a9ef5fb631ef81818a30db00078b
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42023518"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48784954"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-nodejs"></a>Szybki start: wysyłanie danych telemetrycznych z urządzenia do centrum IoT oraz odczytywanie danych telemetrycznych z centrum przy użyciu aplikacji zaplecza (Node.js)
 
@@ -49,44 +49,59 @@ Pobierz przykładowy projekt Node.js z https://github.com/Azure-Samples/azure-io
 
 ## <a name="register-a-device"></a>Rejestrowanie urządzenia
 
-Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw zarejestrować w centrum IoT. W tym przewodniku Szybki start urządzenie symulowane jest rejestrowane przy użyciu interfejsu wiersza polecenia platformy Azure.
+Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw zarejestrować w centrum IoT. W tym przewodniku Szybki start opisano rejestrowanie urządzenia symulowanego przy użyciu usługi Azure Cloud Shell.
 
-1. Dodaj rozszerzenie interfejsu wiersza polecenia usługi IoT Hub i utwórz tożsamość urządzenia. Zastąp ciąg `{YourIoTHubName}` nazwą wybraną dla centrum IoT:
+1. Uruchom następujące polecenia w usłudze Azure Cloud Shell, aby dodać rozszerzenie interfejsu wiersza polecenia usługi IoT Hub i utworzyć tożsamość urządzenia. 
+
+   **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT.
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
-    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyNodeDevice
+    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyNodeDevice
     ```
 
     Jeśli wybierzesz inną nazwę dla swojego urządzenia, zaktualizuj nazwę urządzenia w przykładowych aplikacjach przed ich uruchomieniem.
 
-1. Uruchom następujące polecenie, aby uzyskać _parametry połączenia urządzenia_ dla urządzenia, które właśnie zostało zarejestrowane:
+1. Uruchom następujące polecenia w usłudze Azure Cloud Shell, aby uzyskać _parametry połączenia urządzenia_ dla urządzenia, które właśnie zostało zarejestrowane:
+
+   **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyNodeDevice --output table
+    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyNodeDevice --output table
     ```
+    
+    Zanotuj parametry połączenia urządzenia, które wyglądają następująco:
 
-    Zanotuj parametry połączenia urządzenia, które wyglądają następująco: `Hostname=...=`. Użyjesz tej wartości w dalszej części tego przewodnika Szybki start.
+   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
 
-1. Potrzebne będą także _parametry połączenia usługi_, aby umożliwić aplikacji zaplecza nawiązywanie połączenia z centrum IoT i pobieranie komunikatów. Następujące polecenie pobiera parametry połączenia usługi dla centrum IoT:
+    Użyjesz tej wartości w dalszej części tego przewodnika Szybki start.
+
+1. Potrzebne będą także _parametry połączenia usługi_, aby umożliwić aplikacji zaplecza nawiązywanie połączenia z centrum IoT w celu pobrania komunikatów. Następujące polecenie pobiera parametry połączenia usługi dla centrum IoT:
+   
+   **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT.
 
     ```azurecli-interactive
-    az iot hub show-connection-string --name {YourIoTHubName} --output table
+    az iot hub show-connection-string --hub-name YourIoTHubName --output table
     ```
+     
+    Zanotuj parametry połączenia usługi, które wyglądają następująco:
 
-    Zanotuj parametry połączenia usługi, które wyglądają następująco: `Hostname=...=`. Użyjesz tej wartości w dalszej części tego przewodnika Szybki start. Parametry połączenia usługi różnią się od parametrów połączenia urządzenia.
+   `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={YourSharedAccessKey}`
+
+    Użyjesz tej wartości w dalszej części tego przewodnika Szybki start. Parametry połączenia usługi różnią się od parametrów połączenia urządzenia.
+
 
 ## <a name="send-simulated-telemetry"></a>Wysyłanie symulowanych danych telemetrycznych
 
 Aplikacja urządzenia symulowanego łączy się z punktem końcowym specyficznym dla urządzenia w centrum IoT i wysyła symulowane dane telemetryczne dotyczące temperatury oraz wilgotności.
 
-1. W oknie terminalu przejdź do folderu głównego przykładowego projektu Node.js. Następnie przejdź do folderu **iot-hub\Quickstarts\simulated-device**.
+1. Otwórz lokalne okno terminalu i przejdź do folderu głównego przykładowego projektu Node.js. Następnie przejdź do folderu **iot-hub\Quickstarts\simulated-device**.
 
 1. Otwórz plik **SimulatedDevice.js** w wybranym edytorze tekstów.
 
     Zastąp wartość zmiennej `connectionString` parametrami połączenia urządzenia zanotowanymi w poprzednim kroku. Następnie zapisz zmiany w pliku **SimulatedDevice.js**.
 
-1. W oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane biblioteki i uruchomić aplikację urządzenia symulowanego:
+1. W lokalnym oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane biblioteki i uruchomić aplikację urządzenia symulowanego:
 
     ```cmd/sh
     npm install
@@ -101,13 +116,13 @@ Aplikacja urządzenia symulowanego łączy się z punktem końcowym specyficznym
 
 Aplikacja zaplecza łączy się z punktem końcowym **Zdarzenia** po stronie usługi w usłudze IoT Hub. Aplikacja odbiera komunikaty urządzenie-chmura wysyłane z urządzenia symulowanego. Aplikacja zaplecza usługi IoT Hub zwykle działa w chmurze, aby odbierać i przetwarzać komunikaty urządzenie-chmura.
 
-1. W innym oknie terminalu przejdź do folderu głównego przykładowego projektu Node.js. Następnie przejdź do folderu **read-d2c-messages**.
+1. Otwórz inne okno terminalu i przejdź do folderu głównego przykładowego projektu Node.js. Następnie przejdź do folderu **iot-hub\Quickstarts\read-d2c-messages**.
 
-1. Otwórz plik **iot-hub\Quickstarts\ReadDeviceToCloudMessages.js** w wybranym edytorze tekstów.
+1. Otwórz plik **ReadDeviceToCloudMessages.js** w wybranym edytorze.
 
     Zastąp wartość zmiennej `connectionString` parametrami połączenia usługi zanotowanymi w poprzednim kroku. Następnie zapisz zmiany w pliku **ReadDeviceToCloudMessages.js**.
 
-1. W oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane biblioteki i uruchomić aplikację zaplecza:
+1. W lokalnym oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane biblioteki i uruchomić aplikację zaplecza:
 
     ```cmd/sh
     npm install

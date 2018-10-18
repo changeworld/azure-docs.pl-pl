@@ -1,41 +1,43 @@
 ---
-title: Emocji interfejsu API języka C# szybki start | Dokumentacja firmy Microsoft
-description: Pobierz informacje i przykładowy kod, aby szybko rozpocząć pracę przy użyciu interfejsu API rozpoznawania emocji — warstwa w języku C# w usługach kognitywnych.
+title: 'Szybki start: rozpoznawanie emocji na twarzach na obrazie — interfejs API rozpoznawania emocji, C#'
+titlesuffix: Azure Cognitive Services
+description: Uzyskaj informacje i przykładowy kod, które pomogą Ci szybko rozpocząć korzystanie z interfejsu API rozpoznawania emocji w języku C#.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/02/2017
 ms.author: anroth
-ms.openlocfilehash: 89735ae54395447e3cb421f45db3d6b99001ecd6
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 530d05887e585884b184635e01031c1332fad3fb
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37016569"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239374"
 ---
-# <a name="emotion-api-c-quick-start"></a>Emocji interfejsu API języka C# szybki start
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Szybki start: tworzenie aplikacji do rozpoznawania emocji na twarzach na obrazie.
 
 > [!IMPORTANT]
-> Wersja zapoznawcza interfejsu API wideo była dostępna do 30 października 2017. Można łatwo wyodrębnić szczegółowe informacje z plików wideo, spróbuj nowe [wideo indeksatora interfejsu API w wersji zapoznawczej](https://azure.microsoft.com/services/cognitive-services/video-indexer/). Możesz również służy do ułatwienia pracy funkcję odnajdowania zawartości, takich jak wyniki wyszukiwania został określony poprzez wykrycie słowa rozmowy, kroje znaków i emocji. Aby dowiedzieć się więcej, zobacz [Podgląd indeksatora wideo](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview) omówienie.
+> Interfejs API rozpoznawania emocji zostanie wycofany w dniu 15 lutego 2019 r. Rozpoznawanie emocji jest teraz ogólnie dostępne jako część [interfejsu API rozpoznawania twarzy](https://docs.microsoft.com/azure/cognitive-services/face/).
 
-Ten artykuł zawiera informacje i przykładowy kod, aby szybko rozpocząć pracę za pomocą [metody rozpoznaje interfejsu API rozpoznawania emocji — warstwa](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) języku C#. Służy on do rozpoznawania emocji wyrażonych przez osoby na obrazie. 
+Ten artykuł zawiera informacje i przykładowy kod, które pomogą Ci szybko rozpocząć korzystanie z [metody Recognize interfejsu API rozpoznawania emocji](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) w języku C#. Służy ona do rozpoznawanie emocji wyrażanej przez co najmniej jedną osobę na obrazie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Pobierz usługi kognitywnych [interfejsu API rozpoznawania emocji — warstwa zestaw Windows SDK](https://www.nuget.org/packages/Microsoft.ProjectOxford.Emotion/).
-* Pobierz bezpłatny [klucza subskrypcji](https://azure.microsoft.com/try/cognitive-services/).
+* Pobierz [zestaw SDK interfejsu API rozpoznawania emocji usług Cognitive Services dla systemu Windows](https://www.nuget.org/packages/Microsoft.ProjectOxford.Emotion/).
+* Uzyskaj bezpłatny [klucz subskrypcji](https://azure.microsoft.com/try/cognitive-services/).
 
-## <a name="emotion-recognition-c-example-request"></a>Przykładowe żądanie, na emocji rozpoznawania C#
+## <a name="emotion-recognition-c-example-request"></a>Przykładowe żądanie rozpoznania emocji w języku C#
 
-Utwórz nowe rozwiązanie konsoli w programie Visual Studio, a następnie zastąp plik Program.cs następującym kodem. Zmień `string uri` do użycia regionu, w którym uzyskać klucze subskrypcji. Zastąp **Ocp-Apim-subskrypcji — klucz** wartości z klucza ważnej subskrypcji. Aby znaleźć klucz subskrypcję, przejdź do portalu Azure. W okienku nawigacji po lewej stronie w obszarze **klucze** sekcji, przejdź do zasobu interfejsu API rozpoznawania emocji — warstwa. Podobnie można uzyskać odpowiednią połączyć identyfikator URI w **omówienie** panelu zasobu kategorii **punktu końcowego**.
+Utwórz nowe rozwiązanie konsoli w programie Visual Studio, a następnie zastąp plik Program.cs poniższym kodem. Zmień wartość `string uri` tak, aby używany był region, z którego masz klucze subskrypcji. Zastąp wartość **Ocp-Apim-Subscription-Key** prawidłowym kluczem subskrypcji. Aby znaleźć klucz subskrypcji, przejdź do witryny Azure Portal. W okienku nawigacji po lewej stronie w sekcji **Klucze** przejdź do zasobu Interfejs API rozpoznawania emocji. Podobnie możesz uzyskać odpowiedni identyfikator URI połączenia, przechodząc do panelu **Przegląd** dla zasobu wymienionego w obszarze **Punkt końcowy**.
 
-![Klucze interfejsu API zasobów](../../media/emotion-api/keys.png)
+![Twoje klucze zasobu interfejsu API](../../media/emotion-api/keys.png)
 
-Aby przetwarzać żądania odpowiedzi, należy użyć biblioteki, takich jak `Newtonsoft.Json`. W ten sposób można obsługiwać ciągu JSON jako serię zarządzanych obiektów o nazwie tokenów. Aby dodać tej biblioteki do pakietu, kliknij prawym przyciskiem myszy projekt w Eksploratorze rozwiązań i wybierz **Zarządzaj pakietami Nuget**. Następnie wyszukaj **Newtonsoft**. Pierwszy wynik powinien być **Newtonsoft.Json**. Wybierz pozycję **Zainstaluj**. Teraz możesz odwoływać tej biblioteki w aplikacji.
+Aby przetworzyć odpowiedź na żądanie, użyj biblioteki takiej jak `Newtonsoft.Json`. W ten sposób możesz obsłużyć ciąg JSON jako serię zarządzalnych obiektów nazywanych tokenami. Aby dodać tę bibliotekę do swojego pakietu, kliknij prawym przyciskiem myszy swój projekt w Eksploratorze rozwiązań i wybierz pozycję **Zarządzaj pakietami Nuget**. Następnie wyszukaj nazwę **Newtonsoft**. Pierwszym wynikiem powinna być pozycja **Newtonsoft.Json**. Wybierz pozycję **Zainstaluj**. Możesz teraz odwoływać się do tej biblioteki w swojej aplikacji.
 
-![Zainstaluj Newtonsoft.Json](../../media/emotion-api/newtonsoft-nuget.png)
+![Instalowanie pakietu Newtonsoft.Json](../../media/emotion-api/newtonsoft-nuget.png)
 
 ```csharp
 using System;
@@ -71,10 +73,10 @@ namespace CSHttpClientSample
             var client = new HttpClient();
 
             // Request headers - replace this example key with your valid key.
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "<your-subscription-key>"); // 
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "<your-subscription-key>"); //
 
             // NOTE: You must use the same region in your REST call as you used to obtain your subscription keys.
-            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the 
+            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
             //   URI below with "westcentralus".
             string uri = "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?";
             HttpResponseMessage response;
@@ -120,14 +122,14 @@ namespace CSHttpClientSample
 }
 ```
 
-## <a name="recognize-emotions-sample-response"></a>Rozpoznaje, że emocji przykładowa odpowiedź
-Pomyślnego połączenia zwraca tablicę wpisów krój oraz wyniki emocji skojarzone. Są one uporządkowane według krój rozmiar prostokąta w kolejności malejącej. Pustą odpowiedź wskazuje, że zostały wykryte nie kroje. Wpis emocji zawiera następujące pola:
+## <a name="recognize-emotions-sample-response"></a>Przykładowa odpowiedź dotycząca rozpoznawania emocji
+Pomyślne wywołanie zwraca tablicę wpisów twarzy oraz skojarzonych z nimi ocen emocji. Są one uporządkowane według rozmiaru prostokąta twarzy w kolejności malejącej. Pusta odpowiedź wskazuje, że nie wykryto żadnych twarzy. Wpis rozpoznawania emocji zawiera następujące pola:
 
-* faceRectangle: lokalizacji prostokąta powierzchni w obrazie
-* wyniki: emocji wyników dla każdej powierzchni w obrazie 
+* faceRectangle: lokalizacja prostokąta twarzy na obrazie
+* scores: ocena emocji dla każdej twarzy na obrazie
 
 ```json
-application/json 
+application/json
 [
   {
     "faceRectangle": {

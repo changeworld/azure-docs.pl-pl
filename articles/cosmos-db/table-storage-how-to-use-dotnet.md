@@ -1,6 +1,6 @@
 ---
-title: Rozpoczynanie pracy z usługą Azure Table Storage oraz interfejsem API tabel usługi Azure Cosmos DB przy użyciu platformy .NET | Microsoft Docs
-description: Przechowywanie danych strukturalnych w chmurze za pomocą usługi Azure Table Storage lub interfejsu Table API usługi Azure Cosmos DB.
+title: Rozpoczynanie pracy z usługą Azure Table Storage oraz interfejsem API tabel usługi Azure Cosmos DB przy użyciu platformy .NET
+description: Przechowywanie danych strukturalnych w chmurze za pomocą usługi Azure Table Storage lub interfejsu API tabel usługi Azure Cosmos DB.
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: sample
 ms.date: 08/17/2018
 ms.author: sngun
-ms.openlocfilehash: c084a08ffef868af751d065c5857a9b67a12485f
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 00bc950493e7b4eaad4a2165779f5c8151070aee
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41918417"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042584"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-net"></a>Rozpoczynanie pracy z usługą Azure Table Storage oraz interfejsem API tabel usługi Azure Cosmos DB przy użyciu platformy .NET
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -105,7 +105,7 @@ W przypadku uruchamiania przykładów w tym przewodniku istnieją trzy opcje śr
 * Można uruchomić kod dla konta usługi Azure Cosmos DB w chmurze.
 * Można uruchomić kod dla emulatora usługi Azure Storage. Emulator magazynu jest lokalnym środowiskiem, które emuluje konto usługi Azure Storage w chmurze. Emulator jest bezpłatną opcją do testowania i debugowania kodu, gdy aplikacja jest w fazie projektowania. Emulator używa dobrze znanego konta i klucza. Aby uzyskać więcej informacji, zobacz [Używanie emulatora usługi Azure Storage do programowania i testowania](../storage/common/storage-use-emulator.md).
 
-Jeśli obiektem docelowym jest konto magazynu w chmurze, skopiuj podstawowy klucz dostępu dla konta magazynu z witryny Azure Portal. Aby uzyskać więcej informacji, zobacz temat [View and copy storage access keys](../storage/common/storage-create-storage-account.md#view-and-copy-storage-access-keys) (Wyświetlanie i kopiowanie kluczy dostępu kopiowania).
+Jeśli obiektem docelowym jest konto magazynu w chmurze, skopiuj podstawowy klucz dostępu dla konta magazynu z witryny Azure Portal. Aby uzyskać więcej informacji, zobacz [Klucze dostępu do konta magazynu](../storage/common/storage-account-manage.md#access-keys).
 
 > [!NOTE]
 > Na obiekt docelowy można wybrać emulator magazynu, aby uniknąć ponoszenia kosztów związanych z usługą Azure Storage. Jednak jeśli wybranym obiektem docelowym będzie konto usługi Azure Storage w chmurze, koszty związane z wykonaniem instrukcji w tym przykładzie będą niewielkie.
@@ -121,7 +121,6 @@ Aby uzyskać więcej informacji dotyczących parametrów połączenia, zobacz [K
 
 > [!NOTE]
 > Klucz konta jest podobny do hasła głównego konta magazynu. Zawsze chroń klucz konta magazynu. Nie udostępniaj go innym użytkownikom, nie koduj go trwale ani nie zapisuj w zwykłym pliku tekstowym, do którego mają dostęp inne osoby. Wygeneruj ponownie klucz za pośrednictwem witryny Azure Portal, jeśli uważasz, że jego zabezpieczenia mogły zostać naruszone.
-> 
 > 
 
 Aby skonfigurować parametry połączenia, otwórz plik `app.config` z Eksploratora rozwiązań w programie Visual Studio. Dodaj zawartość elementu `<appSettings>` widocznego poniżej. Zastąp ciąg `account-name` nazwą konta, a ciąg `account-key` kluczem dostępu do konta:

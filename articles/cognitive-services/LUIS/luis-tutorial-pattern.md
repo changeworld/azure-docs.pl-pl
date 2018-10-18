@@ -1,54 +1,54 @@
 ---
-title: 'Samouczek 3: Wzorce ulepszania prognoz usługi LUIS'
+title: 'Samouczek 3: wzorce służące ulepszaniu przewidywania usługi LUIS'
 titleSuffix: Azure Cognitive Services
-description: Aby zwiększyć intencji i jednostek prognozowania przy jednoczesnym zapewnieniu mniej wypowiedzi przykładu, należy użyć wzorców. Wzorzec jest dostarczany za pomocą przykładu wypowiedź szablonu, który zawiera Składnia służąca do identyfikowania jednostki i tekstu można zignorować.
+description: Aby zwiększyć przewidywanie intencji i jednostek przy jednoczesnym zapewnieniu mniejszej liczby przykładowych wypowiedzi, należy użyć wzorców. Wzorzec jest dostarczany za pomocą przykładowej wypowiedzi szablonu, która zawiera składnię służącą do identyfikowania jednostki i tekstu możliwego do zignorowania.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: language-understanding
-ms.topic: article
+ms.component: language-understanding
+ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: f4b267dda3c05d490d91fe02fbcfde4e49674603
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
-ms.translationtype: MT
+ms.openlocfilehash: b09ebbb358b909c98df4eb05154c29b4b3cb7ee9
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166405"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888258"
 ---
-# <a name="tutorial-3-add-common-utterance-formats"></a>Samouczek 3: Dodawanie typowe formaty wypowiedź
+# <a name="tutorial-3-add-common-utterance-formats"></a>Samouczek 3: dodawanie typowych formatów wypowiedzi
 
-W ramach tego samouczka Aby zwiększyć intencji i jednostek prognozowania przy jednoczesnym zapewnieniu mniej wypowiedzi przykładu należy użyć wzorców. Wzorzec jest dostarczany za pomocą przykładu wypowiedź szablonu, który zawiera Składnia służąca do identyfikowania jednostki i tekstu można zignorować. Wzorzec jest kombinacją Dopasowywanie wyrażeń i uczenia maszynowego.  Przykład wypowiedź szablonu, wraz z intencji wypowiedzi zapewniają LUIS lepiej zrozumieć, z jakiego wypowiedzi Dopasuj intencji. 
+W ramach tego samouczka w celu zwiększenia przewidywania intencji i jednostek przy jednoczesnym zapewnieniu mniejszej liczby przykładowych wypowiedzi należy użyć wzorców. Wzorzec jest dostarczany za pomocą przykładowej wypowiedzi szablonu, która zawiera składnię służącą do identyfikowania jednostki i tekstu możliwego do zignorowania. Wzorzec jest kombinacją dopasowywania wyrażeń i uczenia maszynowego.  Przykładowa wypowiedź szablonu wraz z wypowiedziami intencji pozwala usłudze LUIS lepiej zrozumieć, jakie wypowiedzi pasują do intencji. 
 
-**W tym samouczku dowiesz się, jak:**
+**Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
 > [!div class="checklist"]
-> * Użyj istniejącego samouczek aplikacji 
-> * Utwórz opcję
+> * Korzystanie z istniejącej aplikacji samouczka 
+> * Tworzenie intencji
 > * Szkolenie
 > * Publikowanie
-> * Pobierz intencje i podmioty z punktu końcowego
+> * Pobieranie intencji i jednostek z punktu końcowego
 > * Tworzenie wzorca
-> * Sprawdź ulepszenia prognozowania wzorzec
-> * Można zignorować, tekstu i zagnieździć w ramach wzorzec
-> * Użyj panelu test, aby sprawdzić, czy wzorzec
+> * Sprawdzanie ulepszeń przewidywania wzorców
+> * Oznaczanie tekstu jako możliwego do zignorowania i zagnieżdżanie we wzorcu
+> * Używanie panelu testowego do sprawdzania powodzenia wzorca
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>Użyj istniejącej aplikacji
+## <a name="use-existing-app"></a>Korzystanie z istniejącej aplikacji
 
-Kontynuuj aplikację utworzoną w samouczku ostatni o nazwie **kadry**. 
+Przejdź do aplikacji o nazwie **HumanResources** utworzonej w ostatnim samouczku. 
 
-Jeśli nie masz aplikacji kadry z poprzedniego samouczka, należy użyć następujących czynności:
+Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj następujące kroki:
 
-1.  Pobierz i Zapisz [pliku JSON aplikacji](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json).
+1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json).
 
-2. Importuj dane JSON do nowej aplikacji.
+2. Zaimportuj plik JSON do nowej aplikacji.
 
-3. Z **Zarządzaj** sekcji na **wersji** kartę, klonowanie wersji i nadaj mu nazwę `patterns`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używany jako część trasy adresu URL, nazwa nie może zawierać żadnych znaków, które nie są prawidłowe w adresie URL.
+3. W sekcji **Manage** (Zarządzanie) na karcie **Versions** (Wersje) sklonuj wersję i nadaj jej nazwę `patterns`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używana jako część trasy adresu URL, nie może ona zawierać żadnych znaków, które są nieprawidłowe w adresie URL.
 
-## <a name="create-new-intents-and-their-utterances"></a>Utwórz nowy intencje i ich wypowiedzi
+## <a name="create-new-intents-and-their-utterances"></a>Tworzenie nowych intencji i ich wypowiedzi
 
 1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
@@ -56,21 +56,21 @@ Jeśli nie masz aplikacji kadry z poprzedniego samouczka, należy użyć następ
 
 3. Wprowadź ciąg `OrgChart-Manager` w wyświetlonym oknie dialogowym, a następnie wybierz pozycję **Done** (Gotowe).
 
-    ![Utwórz nowe okno podręczne wiadomości](media/luis-tutorial-pattern/hr-create-new-intent-popup.png)
+    ![Okno podręczne Create new message (Tworzenie nowej wiadomości)](media/luis-tutorial-pattern/hr-create-new-intent-popup.png)
 
 4. Dodaj przykładowe wypowiedzi do intencji.
 
     |Przykładowe wypowiedzi|
     |--|
-    |Jan Kowalski W. kto jest podwładnym?|
-    |Kto Jan Kowalski W. zgłosić do?|
-    |Kto jest Menedżer Jan W. Kowalski?|
-    |Kto Jill Jones raporty bezpośrednio?|
-    |Kto jest Jill Jones, kierownik?|
+    |Who is John W. Smith the subordinate of? (Czyim podwładnym jest John W. Smith?)|
+    |Who does John W. Smith report to? (Kto jest przełożonym Johna W. Smitha?)|
+    |Who is John W. Smith's manager? (Kto jest menedżerem Johna W. Smitha?)|
+    |Who does Jill Jones directly report to? (Kto jest bezpośrednim przełożonym Jill Jones?)|
+    |Who is Jill Jones supervisor? (Kto jest przełożonym Jill Jones?)|
 
-    [![Zrzut ekranu dodawania nowej wypowiedzi na intencje LUIS](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png "zrzut ekranu dodawania nowej wypowiedzi na intencje LUIS")](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png#lightbox)
+    [![Zrzut ekranu przedstawiający dodawanie nowych wypowiedzi do intencji w usłudze LUIS](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png "Zrzut ekranu przedstawiający dodawanie nowych wypowiedzi do intencji w usłudze LUIS")](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png#lightbox)
 
-    Nie martw się, jeśli jednostka keyPhrase jest oznaczona etykietą w wypowiedzi intencji zamiast jednostki pracownika. Oba są poprawnie przewidzieć, w okienku testu i w punkcie końcowym. 
+    Nie martw się, jeśli jednostka keyPhrase jest oznaczona etykietą w wypowiedziach intencji zamiast jednostki pracownika. Oba elementy są poprawnie przewidywane w okienku testu i w punkcie końcowym. 
 
 5. Wybierz pozycję **Intents** (Intencje) na lewym pasku nawigacyjnym.
 
@@ -82,13 +82,13 @@ Jeśli nie masz aplikacji kadry z poprzedniego samouczka, należy użyć następ
 
     |Przykładowe wypowiedzi|
     |--|
-    |Kim są podwładnych Jan W. Kowalski?|
-    |Kto raporty do Jan Kowalski W.?|
-    |Kto zarządza Jan Kowalski W.|
-    |Kim są Jill Jones bezpośrednich podwładnych?|
-    |Kto nadzorowania Jill Jones?|
+    |Who are John W. Smith's subordinates? (Kim są podwładni Johna W. Smitha?)|
+    |Who reports to John W. Smith? (Kto podlega Johnowi W. Smithowi?)|
+    |Who does John W. Smith manage? (Kim zarządza John W. Smith?)|
+    |Who are Jill Jones direct reports? (Kim są bezpośredni podwładni Jill Jones?)|
+    |Who does Jill Jones supervise? (Kogo nadzoruje Jill Jones?)|
 
-## <a name="caution-about-example-utterance-quantity"></a>Ostrzeżenie o ilości wypowiedź przykład
+## <a name="caution-about-example-utterance-quantity"></a>Ostrzeżenie o liczbie przykładowych wypowiedzi
 
 [!include[Too few examples](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]
 
@@ -100,7 +100,7 @@ Jeśli nie masz aplikacji kadry z poprzedniego samouczka, należy użyć następ
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entities-from-endpoint"></a>Pobierz intencje i podmioty z punktu końcowego
+## <a name="get-intent-and-entities-from-endpoint"></a>Pobieranie intencji i jednostek z punktu końcowego
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
@@ -189,45 +189,45 @@ Jeśli nie masz aplikacji kadry z poprzedniego samouczka, należy użyć następ
     }
     ```
 
-To zapytanie pomyślnie? Dla tego cyklu szkolenia pomyślnie. Zamknij są wyniki dwa najważniejsze intencji. Ponieważ usługa LUIS szkolenia nie jest dokładnie taka sama każdorazowo, jest nieco odmiany, te dwa wyniki można odwrócić w następnym cyklu szkolenia. Wynik jest nieprawidłowy zamiar mogą być zwracane. 
+Czy to zapytanie się powiodło? Dla tego cyklu szkolenia przebiegło pomyślnie. Wyniki dwóch najważniejszych intencji są zbliżone. Ponieważ uczenie usługi LUIS nie jest dokładnie takie samo za każdym razem, istnieje pewna zmienność i te dwa wyniki mogą się odwrócić w następnym cyklu szkoleniowym. Wynikiem jest to, że może zostać zwrócona nieprawidłowa intencja. 
 
-Aby wynik poprawne intencji znacznie wyższe w postaci wartości procentowej i dalej od następnego najwyższym wynikiem, należy użyć wzorców. 
+Aby poprawny wynik intencji był znacznie wyższy procentowo i bardziej oddalony od następnego najwyższego wyniku, należy użyć wzorców. 
 
-Pozostaw to drugie okno przeglądarki jest otwarte. Możesz użyć później w samouczku. 
+Pozostaw drugie okno przeglądarki otwarte. Będzie potrzebne w dalszej części samouczka. 
 
-## <a name="template-utterances"></a>Szablon wypowiedzi
-Ze względu na charakter domeny zarządzania zasobami ludzkimi istnieje kilka typowych sposobów z pytaniem o relacjach pracowników w organizacji. Na przykład:
+## <a name="template-utterances"></a>Wypowiedzi szablonu
+Ze względu na charakter domeny zarządzania zasobami ludzkimi istnieje kilka typowych sposobów pytania o relacje pracowników w organizacji. Na przykład:
 
 |Wypowiedzi|
 |--|
-|Kto Jill Jones zgłosić do?|
-|Kto raporty do Jill Jones?|
+|Who does Jill Jones report to? (Kto jest przełożonym Jill Jones?)|
+|Who reports to Jill Jones? (Kto podlega Jill Jones?)|
 
-Te wypowiedzi są zbyt Zamknij, aby określić kontekstowych unikatowości każdego bez podawania wiele przykładów wypowiedź. Dodając wzorzec intencji, LUIS uczy się typowe wzorce wypowiedź intencji bez podawania wiele przykładów wypowiedź. 
+Te wypowiedzi są za bardzo zbliżone, aby określić kontekstową unikatowość każdej bez podawania wielu przykładowych wypowiedzi. Dodając wzorzec do intencji, usługa LUIS uczy się typowych wzorców wypowiedzi dla intencji bez podawania wielu przykładowych wypowiedzi. 
 
-Przykłady wypowiedź szablonu konwersji między innymi:
+Przykładowe wypowiedzi szablonu dla tej intencji obejmują:
 
-|Przykłady wypowiedzi szablonów|znaczenie składni|
+|Przykładowe wypowiedzi szablonu|Znaczenie składni|
 |--|--|
-|Tego, kto wykonuje {pracowników} raportować do [?]|wymienne {pracowników}, ignorowanie [?]}|
-|Kto raporty pracownikowi {} [?]|wymienne {pracowników}, ignorowanie [?]}|
+|Who does {Employee} report to[?] (Kto jest przełożonym {Pracownik}[?])|jednostka {Employee} wymienna, ignoruj [?]}|
+|Who reports to {Employee}[?] (Kto podlega {Pracownikowi}[?])|jednostka {Employee} wymienna, ignoruj [?]}|
 
-`{Employee}` Składni oznacza lokalizację jednostki w ramach wypowiedź szablonu jako jest również jako jakiej encji. Opcjonalnych składni `[?]`, oznacza słowa lub znaki interpunkcyjne, które są opcjonalne. Usługa LUIS dopasowuje wypowiedź, ignorowanie opcjonalny tekst w nawiasie.
+Składnia `{Employee}` oznacza lokalizację jednostki w ramach wypowiedzi szablonu oraz to, która to jednostka. Opcjonalna składnia `[?]` oznacza słowa lub znaki interpunkcyjne, które są opcjonalne. Usługa LUIS dopasowuje wypowiedź, ignorując opcjonalny tekst w nawiasie.
 
-Gdy składnia wygląda wyrażeń regularnych, nie jest wyrażeń regularnych. Tylko nawias klamrowy `{}`, a nawias kwadratowy `[]`, składnia jest obsługiwana. One może być zagnieżdżona w maksymalnie dwa poziomy.
+Mimo że składnia wygląda jak wyrażenia regularne, nie jest wyrażeniem regularnym. Obsługiwana jest tylko składnia w nawiasie klamrowym, `{}`, i nawiasie kwadratowym, `[]`. Mogą być one zagnieżdżone na najwyżej dwóch poziomach.
 
-Aby wzorzec można dopasować do wypowiedź jednostek w ramach wypowiedź musi odpowiadać jednostek w wypowiedź szablon najpierw. Jednak szablonu nie ułatwiania prognozowania jednostki, tylko intencji. 
+Aby wzorzec mógł zostać dopasowany do wypowiedzi, jednostki w ramach wypowiedzi muszą najpierw odpowiadać jednostkom w wypowiedzi szablonu. Jednak szablon nie pomaga w przewidywaniu jednostek, tylko intencji. 
 
-**Gdy wzorce umożliwiają mniej wypowiedzi przykład, jeśli obiekty nie są wykrywane, wzorzec jest niezgodny.**
+**Wzorce umożliwiają dostarczenie mniejszej liczby wypowiedzi przykładowych, jednak jeśli jednostki nie zostaną wykryte, nie zostanie znalezione dopasowanie dla wzorca.**
 
-W tym samouczku należy dodać dwa nowe intencji: `OrgChart-Manager` i `OrgChart-Reports`. 
+W tym samouczku dodamy dwie nowe intencje: `OrgChart-Manager` i `OrgChart-Reports`. 
 
 |Intencja|Wypowiedź|
 |--|--|
-|Schemat organizacyjny — Manager|Kto Jill Jones zgłosić do?|
-|Schemat organizacyjny — raporty|Kto raporty do Jill Jones?|
+|OrgChart-Manager|Who does Jill Jones report to? (Kto jest przełożonym Jill Jones?)|
+|OrgChart-Reports (Schemat organizacyjny — podwładni)|Who reports to Jill Jones? (Kto podlega Jill Jones?)|
 
-Gdy usługa LUIS zwraca prognozowania do aplikacji klienckiej intencji nazwy mogą być używane jako nazwy funkcji w aplikacji klienckiej, a jednostka pracownik może być używana jako parametr do tej funkcji.
+Gdy usługa LUIS zwraca przewidywanie do aplikacji klienckiej, nazwa intencji może być użyta jako nazwa funkcji w aplikacji klienckiej, a jednostka Employee (Pracownik) może być użyta jako parametr tej funkcji.
 
 ```Javascript
 OrgChartManager(employee){
@@ -235,47 +235,47 @@ OrgChartManager(employee){
 }
 ```
 
-Należy pamiętać, że pracownicy zostały utworzone w [jednostki samouczek](luis-quickstart-intent-and-list-entity.md).
+Należy pamiętać, że pracownicy zostali utworzeni w [samouczku dotyczącym jednostki listy](luis-quickstart-intent-and-list-entity.md).
 
-1. Wybierz **kompilacji** w górnym menu.
+1. Wybierz pozycję **Build** (Kompiluj) w górnym menu.
 
-2. W lewym obszarze nawigacji w obszarze **lepsza wydajność aplikacji**, wybierz opcję **wzorców** w lewym obszarze nawigacji.
+2. Na lewym pasku nawigacyjnym w obszarze **Improve app performance** (Popraw wydajność aplikacji) wybierz opcję **Patterns** (Wzorce).
 
-3. Wybierz **schemat organizacyjny — Manager** przeznaczenie, wprowadź następujące wypowiedzi szablonu:
+3. Wybierz intencję **OrgChart-Manager** (Schemat organizacyjny — menedżer), a następnie wprowadź następujące wypowiedzi szablonu:
 
-    |Szablon wypowiedzi|
+    |Wypowiedzi szablonu|
     |:--|
-    |Kto jest podwładnym [?] {pracowników}|
-    |Tego, kto wykonuje {pracowników} raportować do [?]|
-    |Kto jest menedżera pracownika {} [w] [?]|
-    |Tego, kto wykonuje {pracowników} raporty bezpośrednio [?]|
-    |Kto jest {} [w] przełożonego [?]|
-    |Kto jest szefa {pracownika} [?]|
+    |Who is {Employee} the subordinate of[?] (Czyim podwładnym jest {Pracownik}[?])|
+    |Who does {Employee} report to[?] (Kto jest przełożonym {Pracownik}[?])|
+    |Who is {Employee}['s] manager[?] (Kto jest menedżerem {Pracownik}[?])|
+    |Who does {Employee} directly report to[?] (Komu bezpośrednio podlega {Pracownik}[?])|
+    |Who is {Employee}['s] supervisor[?] (Kto jest przełożonym {Pracownik}[?])|
+    |Who is the boss of {Employee}[?] (Kto jest szefem {Pracownik}[?])|
 
-    Jednostki przy użyciu ról należy użyć składni, która zawiera nazwę roli i są objęte [oddzielne samouczek dotyczący ról](luis-tutorial-pattern-roles.md). 
+    Jednostki z rolami używają składni, która zawiera nazwę roli, i są objęte [oddzielnym samouczkiem dotyczącym ról](luis-tutorial-pattern-roles.md). 
 
-    Jeśli wpiszesz wypowiedź szablonu, pomaga LUIS wypełnienie w jednostce po wprowadzeniu lewy nawias klamrowy `{`.
+    Jeśli wpiszesz wypowiedź szablonu, usługa LUIS pomoże w wypełnieniu jednostki po wprowadzeniu lewego nawiasu klamrowego `{`.
 
     [![Zrzut ekranu przedstawiający wprowadzanie wypowiedzi szablonu dla intencji](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png)](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png#lightbox)
 
-4. Wybierz **schemat organizacyjny — raporty** przeznaczenie, wprowadź następujące wypowiedzi szablonu:
+4. Wybierz intencję **OrgChart-Reports** (Schemat organizacyjny — podwładni) i wprowadź następujące wypowiedzi szablonu:
 
-    |Szablon wypowiedzi|
+    |Wypowiedzi szablonu|
     |:--|
-    |Kim są {pracowników} [w] podwładnych [?]|
-    |Kto raporty pracownikowi {} [?]|
-    |Tego, kto wykonuje {pracowników} Zarządzanie [?]|
-    |Kim są {pracowników} bezpośrednich podwładnych [?]|
-    |Tego, kto wykonuje {pracowników} nadzorowania [?]|
-    |Tego, kto wykonuje {pracowników} szefa [?]|
+    |Who are {Employee}['s] subordinates[?] (Kim są podwładni {Pracownika}[?])|
+    |Who reports to {Employee}[?] (Kto podlega {Pracownikowi}[?])|
+    |Who does {Employee} manage[?] (Kim zarządza {Pracownik}[?])|
+    |Who are {Employee} direct reports[?] (Kim są bezpośredni podwładni {Pracownika}[?])|
+    |Who does {Employee} supervise[?] (Kogo nadzoruje {Pracownik}[?])|
+    |Who does {Employee} boss[?] (Czyim szefem jest {Pracownik}[?])|
 
-## <a name="query-endpoint-when-patterns-are-used"></a>Zapytania punktu końcowego, gdy są używane wzorce
+## <a name="query-endpoint-when-patterns-are-used"></a>Punkt końcowy zapytania, gdy są używane wzorce
 
-1. Nauczanie i ponownie Opublikuj aplikację.
+1. Przeszkol i ponownie opublikuj aplikację.
 
-2. Karty przeglądarki przejdź do karty adres URL punktu końcowego.
+2. Zmień karty przeglądarki z powrotem na kartę adresu URL punktu końcowego.
 
-3. Przejdź na końcu adresu URL w adres, a następnie wprowadź `Who is the boss of Jill Jones?` jako wypowiedź. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. 
+3. Przejdź na koniec tego adresu URL i wprowadź ciąg `Who is the boss of Jill Jones?` jako wypowiedź. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. 
 
     ```JSON
     {
@@ -361,90 +361,90 @@ Należy pamiętać, że pracownicy zostały utworzone w [jednostki samouczek](lu
     }
     ```
 
-Funkcja prognozowania jest teraz znacznie wyższa.
+Przewidywanie intencji jest teraz znacznie wyższe.
 
-## <a name="working-with-optional-text-and-prebuilt-entities"></a>Praca z opcjonalnego tekstu i wstępnie utworzonych jednostek
+## <a name="working-with-optional-text-and-prebuilt-entities"></a>Praca z tekstem opcjonalnym i wstępnie skompilowanymi jednostkami
 
-Poprzednie wypowiedzi szablonu wzorca, w tym samouczku ma kilka przykładów opcjonalnego tekstu, takie jak użycie dzierżawczego literę s, `'s`i stosowania znaku zapytania `?`. Załóżmy, że wypowiedzi punktu końcowego pokazują, że menedżerów i przedstawiciele kadry szukasz danych historycznych także planowane przenosi pracowników w firmie, dzieje się w przyszłości.
+Poprzednie wypowiedzi szablonu wzorca w tym samouczku miały kilka przykładów opcjonalnego tekstu, np. użycie formy dzierżawczej pod postacią litery s `'s` (dotyczy języka angielskiego) i stosowanie znaku zapytania `?`. Załóżmy, że wypowiedzi punktu końcowego pokazują, że menedżerowie i przedstawiciele działu zasobów ludzkich szukają danych historycznych oraz zaplanowanych na przyszłość przesunięć pracowników w firmie.
 
-Przykład wypowiedzi są następujące:
+Przykładowe wypowiedzi:
 
-|Intencja|Przykład wypowiedzi za pomocą opcjonalnego tekstu i wstępnie utworzonych jednostek|
+|Intencja|Przykładowe wypowiedzi z opcjonalnym tekstem i wstępnie skompilowanymi jednostkami|
 |:--|:--|
-|Schemat organizacyjny — Manager|`Who was Jill Jones manager on March 3?`|
-|Schemat organizacyjny — Manager|`Who is Jill Jones manager now?`|
-|Schemat organizacyjny — Manager|`Who will be Jill Jones manager in a month?`|
-|Schemat organizacyjny — Manager|`Who will be Jill Jones manager on March 3?`|
+|OrgChart-Manager|`Who was Jill Jones manager on March 3?`|
+|OrgChart-Manager|`Who is Jill Jones manager now?`|
+|OrgChart-Manager|`Who will be Jill Jones manager in a month?`|
+|OrgChart-Manager|`Who will be Jill Jones manager on March 3?`|
 
-Każda z tych przykładów używa czasu teraźniejszego zlecenie, `was`, `is`, `will be`, a także datę, `March 3`, `now`, i `in a month`, wymagającym usługi LUIS do przewidzenia poprawnie. Należy zauważyć, że w ostatnich dwóch przykładach użyto prawie ten sam tekst z wyjątkiem `in` i `on`.
+Każdy z tych przykładów używa czasowników w różnych czasach: `was`, `is`, `will be`, a także daty: `March 3`, `now` i `in a month`, których usługa LUIS potrzebuje do poprawnego przewidywania. Należy zauważyć, że w ostatnich dwóch przykładach użyto prawie tego samego tekstu oprócz `in` i `on`.
 
-Przykład wypowiedzi szablonu:
-|Intencja|Przykład wypowiedzi za pomocą opcjonalnego tekstu i wstępnie utworzonych jednostek|
+Przykładowe wypowiedzi szablonu:
+|Intencja|Przykładowe wypowiedzi z opcjonalnym tekstem i wstępnie skompilowanymi jednostkami|
 |:--|:--|
-|Schemat organizacyjny — Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?`]|
-|Schemat organizacyjny — Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
-|Schemat organizacyjny — Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
-|Schemat organizacyjny — Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?`]|
+|OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
+|OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
 
-Korzystanie z opcjonalnych składni z nawiasami kwadratowymi `[]`, sprawia, że ten opcjonalny tekst jest łatwe do dodania do wypowiedź szablonu i mogą być zagnieżdżane do drugiego poziomu `[[]]`i zawierają tekst lub jednostki.
+Korzystanie z opcjonalnych składni z nawiasami kwadratowymi, `[]`, sprawia, że ten opcjonalny tekst jest łatwy do dodania do wypowiedzi szablonu i może być zagnieżdżony najwyżej do drugiego poziomu, `[[]]`, a także może zawierać tekst lub jednostki.
 
-**Pytanie: Dlaczego nie wypowiedzi ostatnie dwa przykładowe połączyć w wypowiedź pojedynczy szablon?** Szablon wzorca nie obsługuje składni OR. Aby przechwycić zarówno `in` wersji i `on` wersji, każdy z nich musi być wypowiedź oddzielne szablonu.
+**Pytanie: dlaczego ostatnie dwie przykładowe wypowiedzi nie mogły połączyć się w jedną wypowiedź szablonu?** Szablon wzorca nie obsługuje składni OR. Aby przechwycić zarówno wersję `in`, jak i wersję `on`, każda z nich musi być oddzielną wypowiedzią szablonu.
 
-**Pytanie: Dlaczego są wszystkie `w` liter, pierwsza litera w każdym wypowiedź szablonu, małe litery? Nie powinny one być opcjonalnie wielkich lub małych?** Wypowiedź przesłane do endpoint zapytania, aplikacja kliencka jest konwertowane na małe litery. Wypowiedź szablonu może być wielkimi lub małymi literami i wypowiedź punktu końcowego może również być. Porównanie odbywa się zawsze po konwersji na małe litery.
+**Pytanie: dlaczego wszystkie wypowiedzi szablonu zaczynają się małą literą `w`? Nie powinny one być opcjonalnie duże lub małe?** Wypowiedź przesłana do punktu końcowego zapytania przez aplikację kliencką jest konwertowana na małe litery. Wypowiedź szablonu może zaczynać się dużą lub małą literą, podobnie jak wypowiedź punktu końcowego. Porównanie odbywa się zawsze po konwersji na małe litery.
 
-**Pytanie: Dlaczego nie ma wbudowanych numer części szablonu wypowiedź przypadku 3 marca przewidzieć zarówno jako liczba `3` Data i godzina `March 3`?** Wypowiedź szablonu kontekstowe używa datę, albo dosłownie w `March 3` lub abstrakcyjną jako `in a month`. Wartość typu date może zawierać wiele, ale liczbą nie może być zawsze widoczne jako data. Zawsze używaj jednostki, która najlepiej reprezentuje typ, które mają być zwracane w wynikach JSON prognozy.  
+**Pytanie: dlaczego wstępnie skompilowany numer nie jest częścią wypowiedzi szablonu, jeśli March 3 (3 marca) jest przewidziany zarówno jako liczba `3`, jak i data `March 3`?** Wypowiedź szablonu kontekstowo używa daty — albo dosłownie jak w wypowiedzi `March 3`, albo abstrakcyjnie jak w wypowiedzi `in a month`. Data może zawierać liczbę, ale liczba nie musi być zawsze postrzegana jako data. Należy zawsze używać jednostki najlepiej reprezentującej typ, który ma być zwracany w wynikach przewidywania JSON.  
 
-**Pytanie: Jak wygląda niewłaściwie ma inną pisownię wypowiedzi takich jak `Who will {Employee}['s] manager be on March 3?`.** Gramatycznie różnych czasowników, takie jak ta gdzie `will` i `be` są rozdzielone muszą być nowe wypowiedź szablonu. Istniejące wypowiedź szablonu nie będą zgodne go. Gdy celem wypowiedź nie została zmieniona, umieszczania programu word w wypowiedź został zmieniony. Ta zmiana ma wpływ na prognozowania w usługi LUIS.
+**Pytanie: co z niepoprawnie zapisanymi wypowiedziami, takimi jak `Who will {Employee}['s] manager be on March 3?`.** Gramatycznie różne czasy czasowników, takie jak tu, gdzie `will` i `be` są rozdzielone, muszą być nową wypowiedzią szablonu. Istniejąca wypowiedź szablonu nie będzie z tym zgodna. Mimo że intencja wypowiedzi nie została zmieniona, zmieniło się umieszczenie słowa w wypowiedzi. Ta zmiana ma wpływ na przewidywanie w usłudze LUIS.
 
-**Pamiętaj: jednostki znajdują się najpierw, a następnie odbywa się dopasowanie.**
+**Pamiętaj: najpierw znajdowane są jednostki, a następnie dopasowywany jest wzorzec.**
 
-## <a name="edit-the-existing-pattern-template-utterance"></a>Edytuj istniejący wypowiedź szablonu wzorca
+## <a name="edit-the-existing-pattern-template-utterance"></a>Edytowanie istniejącej wypowiedzi szablonu wzorca
 
-1. W witrynie usługi LUIS wybierz **kompilacji** w górnym menu wybierz **wzorców** w menu po lewej stronie. 
+1. W witrynie usługi LUIS wybierz pozycję **Build** (Kompiluj) w górnym menu, a następnie wybierz pozycję **Patterns** (Wzorce) w menu po lewej stronie. 
 
-2. Znajdź istniejący wypowiedź szablonu, `Who is {Employee}['s] manager[?]`i wybierz przycisk wielokropka (***...*** ) po prawej stronie. 
+2. Znajdź istniejącą wypowiedź szablonu, `Who is {Employee}['s] manager[?]`, i wybierz wielokropek (***...*** ) po prawej stronie. 
 
-3. Wybierz **Edytuj** z menu podręcznego. 
+3. Wybierz polecenie **Edit** (Edytuj) z menu podręcznego. 
 
-4. Zmień wypowiedź szablonu, aby: `who is {Employee}['s] manager [[on]{datetimeV2}?]]`
+4. Zmień wypowiedź szablonu na: `who is {Employee}['s] manager [[on]{datetimeV2}?]]`
 
-## <a name="add-new-pattern-template-utterances"></a>Dodawanie nowego wzorca szablonu wypowiedzi
+## <a name="add-new-pattern-template-utterances"></a>Dodawanie nowych wypowiedzi szablonu wzorca
 
-1. W **wzorców** części **kompilacji**, dodaj kilka nowych wzorca wypowiedzi szablonu. Wybierz **schemat organizacyjny — Manager** z menu rozwijanego intencji i wprowadź każdego z następujących wypowiedzi szablonu:
+1. W sekcji **Patterns** (Wzorce) części **Build** (Kompiluj) dodaj kilka nowych wypowiedzi szablonu wzorca. Wybierz pozycję **OrgChart-Manager** (Schemat organizacyjny — menedżer) z menu rozwijanego Intent (Intencja) i wprowadź każdą z następujących wypowiedzi szablonu:
 
-    |Intencja|Przykład wypowiedzi za pomocą opcjonalnego tekstu i wstępnie utworzonych jednostek|
+    |Intencja|Przykładowe wypowiedzi z opcjonalnym tekstem i wstępnie skompilowanymi jednostkami|
     |--|--|
-    |Schemat organizacyjny — Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
-    |Schemat organizacyjny — Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
-    |Schemat organizacyjny — Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
-    |Schemat organizacyjny — Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+    |OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
+    |OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
+    |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
+    |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
 
-2. Uczenie aplikacji.
+2. Przeszkol aplikację.
 
-3. Wybierz **testu** w górnej części panelu, aby otworzyć panel testowania. 
+3. Wybierz pozycję **Test** (Testuj) w górnej części panelu, aby otworzyć panel testowania. 
 
-4. Wprowadź kilka wypowiedzi test, aby sprawdzić, czy odbywa się dopasowanie i wynik konwersji jest znacznie wysoka. 
+4. Wprowadź kilka testowych wypowiedzi, aby sprawdzić, czy wzorzec jest dopasowany i czy wynik intencji jest znacząco wysoki. 
 
-    Po wprowadzeniu pierwszego wypowiedź, wybierz **Sprawdź** w wyniku, dzięki czemu można zobaczyć wszystkie wyniki prognozy.
+    Po wprowadzeniu pierwszej wypowiedzi wybierz polecenie **Inspect** (Sprawdź) w obszarze wyniku, dzięki czemu można zobaczyć wszystkie wyniki przewidywania.
 
     |Wypowiedź|
     |--|
-    |Dla kogo jest Jill Jones, Menedżer|
-    |dla kogo jest jill jones, Menedżer|
-    |Dla kogo jest Jill Jones, Menedżer?|
-    |dla kogo jest Menedżer jones Jill 3 marca|
-    |Dla kogo jest Jill Jones, Menedżer następnego miesiąca|
-    |Dla kogo jest Jill Jones, Menedżer w ciągu miesiąca?|
+    |Who will be Jill Jones manager (Kto będzie menedżerem Jill Jones)|
+    |who will be jill jones's manager (kto będzie menedżerem jill jones)|
+    |Who will be Jill Jones's manager? (Kto będzie menedżerem Jill Jones?)|
+    |who will be Jill jones manager on March 3 (kto będzie menedżerem Jill jones 3 marca)|
+    |Who will be Jill Jones manager next Month (Kto będzie menedżerem Jill Jones w następnym miesiącu)|
+    |Who will be Jill Jones manager in a month? (Kto będzie menedżerem Jill Jones za miesiąc?)|
 
-Wszystkie te wypowiedzi znaleziono jednostek wewnątrz, w związku z tym one pasuje do tego samego wzorca i mają wynik wysokiej prognozy.
+Wszystkie te wypowiedzi znalazły jednostki wewnątrz, dlatego pasują do tego samego wzorca i mają wysoki wynik przewidywania.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku dodaje dwa intencji dla wypowiedzi były trudne do prognozowania o wysokiej dokładności bez konieczności wiele wypowiedzi przykład. Dodawanie wzorce te dozwolone LUIS, aby lepiej przewiduj intencji za pomocą znacznie więcej punktów. Oznaczanie jednostek i można zignorować tekst dozwolone LUIS zastosować wzorzec do szerszego zakresu wypowiedzi.
+W tym samouczku dodajemy dwie intencje do wypowiedzi trudnych do przewidzenia z wysoką dokładnością bez konieczności podawania wielu przykładowych wypowiedzi. Dodanie do tego wzorców pozwoliło usłudze LUIS na lepsze przewidywanie intencji ze znacznie wyższym wynikiem. Oznaczanie jednostek i tekst możliwy do zignorowania pozwoliły usłudze LUIS na zastosowanie wzorca do szerszego zakresu wypowiedzi.
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak użyć ról z wzorcem](luis-tutorial-pattern-roles.md)
+> [Dowiedz się, jak używać ról ze wzorcem](luis-tutorial-pattern-roles.md)

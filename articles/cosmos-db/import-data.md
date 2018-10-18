@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/30/2018
 ms.author: dech
 ms.custom: mvc
-ms.openlocfilehash: 771c4a33603ddf262df3b35992d318d34de6c2dc
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: af6faa6abcc54ef11e066d3a348dac28b23c7af4
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698115"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079093"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Migrowanie danych do usługi Azure Cosmos DB za pomocą narzędzia do migracji danych 
 
@@ -42,7 +42,9 @@ Przed wykonaniem instrukcji zawartych w tym artykule upewnij się, że masz zain
 
 * Program [Microsoft .NET Framework 4.51](https://www.microsoft.com/download/developer-tools.aspx) lub nowszy.
 
-* Zwiększenie przepływności: czas trwania migracji danych zależy od przepływności skonfigurowanej dla pojedynczej kolekcji lub dla zestawu kolekcji. Pamiętaj o zwiększeniu przepływności w przypadku większych migracji danych. Po ukończeniu migracji zmniejsz przepływność, aby ograniczyć koszty. Aby uzyskać więcej informacji na temat zwiększania przepływności w witrynie Azure Portal, zobacz Performance levels and pricing tiers in Azure Cosmos DB (Poziomy wydajności i warstwy cenowe w usłudze Azure Cosmos DB).
+* **Zwiększenie przepływności:** czas trwania migracji danych zależy od przepływności skonfigurowanej dla pojedynczej kolekcji lub dla zestawu kolekcji. Pamiętaj o zwiększeniu przepływności w przypadku większych migracji danych. Po ukończeniu migracji zmniejsz przepływność, aby ograniczyć koszty. Aby uzyskać więcej informacji na temat zwiększania przepływności w witrynie Azure Portal, zobacz Performance levels and pricing tiers in Azure Cosmos DB (Poziomy wydajności i warstwy cenowe w usłudze Azure Cosmos DB).
+
+* **Utworzenie zasobów usługi Azure Cosmos DB:** przed rozpoczęciem migracji danych utwórz wstępnie wszystkie kolekcje w witrynie Azure Portal. W przypadku migracji na konto usługi Azure Cosmos DB z przepływnością poziomu bazy danych pamiętaj o podaniu klucza partycji podczas tworzenia kolekcji usługi Azure Cosmos DB.
 
 ## <a id="Overviewl"></a>Omówienie
 Narzędzie do migracji danych to rozwiązanie typu open source, które importuje dane do usługi Azure Cosmos DB z różnych źródeł, takich jak:
@@ -201,7 +203,7 @@ Narzędzie importowania próbuje wywnioskować informacje dotyczące typu dla wa
 Istnieją dwie kwestie, o których warto wspomnieć w związku z importem plików CSV:
 
 1. Domyślnie wartości bez cudzysłowów są zawsze przycinane o tabulatory i spacje, a wartości w cudzysłowie są zachowywane w oryginalnej postaci. To zachowanie można przesłonić przy użyciu pola wyboru Przytnij wartości w cudzysłowie lub opcji wiersza polecenia /s.TrimQuoted.
-2. Domyślnie wartość null bez cudzysłowów jest traktowana jako wartość null. To zachowanie można przesłonić (czyli traktować wartość null bez cudzysłowów null jako ciąg „null”) przy użyciu pola wyboru Traktuj wartość NULL bez cudzysłowów jako ciąg lub opcji wiersza polecenia /s.NoUnquotedNulls.
+2. Domyślnie wartość null bez cudzysłowów jest traktowana jako wartość null. To zachowanie można przesłonić (czyli traktować wartość null bez cudzysłowów jako ciąg „null”) przy użyciu pola wyboru Traktuj wartość NULL bez cudzysłowów jako ciąg lub opcji wiersza polecenia /s.NoUnquotedNulls.
 
 Oto przykład wiersza polecenia dotyczący importowania danych CSV:
 
@@ -522,6 +524,14 @@ Opcjonalnie można wybrać opcję ulepszenia wynikowego pliku JSON, co spowoduje
       }
     ]
     }]
+
+Poniżej przedstawiono przykład wiersza polecenia umożliwiający wyeksportowanie pliku JSON do usługi Azure Blob Storage:
+
+```
+dt.exe /ErrorDetails:All /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB database_name>" /s.Collection:<CosmosDB collection_name>
+/t:JsonFile /t.File:"blobs://<Storage account key>@<Storage account name>.blob.core.windows.net:443/<Container_name>/<Blob_name>"
+/t.Overwrite
+```
 
 ## <a name="advanced-configuration"></a>Konfiguracja zaawansowana
 Na ekranie konfiguracji zaawansowanej określ lokalizację pliku dziennika, w którym chcesz zapisywać błędy. Na tej stronie obowiązują następujące reguły:

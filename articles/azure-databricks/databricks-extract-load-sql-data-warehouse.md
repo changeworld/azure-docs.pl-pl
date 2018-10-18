@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
 ms.date: 07/26/2018
-ms.openlocfilehash: 11046089bd25e1ca9e117d5d8908471858450e6d
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: c416937f98f6bcb49f86fce18213ca4ed349c513
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308800"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902063"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu usługi Azure Databricks
 
@@ -47,7 +47,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 Przed rozpoczęciem pracy z tym samouczkiem upewnij się, że zostały spełnione następujące wymagania:
 - Utwórz magazyn danych Azure SQL Data Warehouse, utwórz regułę zapory na poziomie serwera i nawiąż połączenie z serwerem jako administrator serwera. Postępuj zgodnie z instrukcjami w przewodniku [Szybki start: Tworzenie magazynu danych Azure SQL Data Warehouse](../sql-data-warehouse/create-data-warehouse-portal.md)
 - Utwórz klucz główny bazy danych dla magazynu danych Azure SQL Data Warehouse. Postępuj zgodnie z instrukcjami w artykule [Tworzenie klucza głównego bazy danych](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
-- Utwórz konto usługi Azure Blob Storage i zawarty w nim kontener. Ponadto pobierz klucz dostępu, aby uzyskać dostęp do konta magazynu. Postępuj zgodnie z instrukcjami w przewodniku [Szybki start: Tworzenie konta usługi Azure Blob Storage](../storage/blobs/storage-quickstart-blobs-portal.md).
+- Utwórz konto usługi Azure Blob Storage i zawarty w nim kontener. Ponadto pobierz klucz dostępu, aby uzyskać dostęp do konta magazynu. Postępuj zgodnie z instrukcjami w przewodniku [Szybki start: tworzenie konta usługi Azure Blob Storage](../storage/blobs/storage-quickstart-blobs-portal.md).
 
 ## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
 

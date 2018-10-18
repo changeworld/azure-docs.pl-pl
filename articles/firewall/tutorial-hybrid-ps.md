@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 9/25/2018
+ms.date: 10/2/2018
 ms.author: victorh
-ms.openlocfilehash: 919051a945d423a104b286e9c5703c5b749cf026
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 27221ac4b23f52dd6976a959e6e5529eb0cc89fa
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946463"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856075"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w sieci hybrydowej za pomocą programu Azure PowerShell
 
@@ -134,6 +134,28 @@ $VNetSpoke = New-AzureRmVirtualNetwork -Name $VnetNameSpoke -ResourceGroupName $
 -Location $Location1 -AddressPrefix $VNetSpokePrefix -Subnet $Spokesub,$GWsubSpoke
 ```
 
+## <a name="create-and-configure-the-onprem-vnet"></a>Tworzenie i konfigurowanie sieci wirtualnej OnPrem
+
+Zdefiniuj podsieci, które mają być dołączone do sieci wirtualnej:
+
+```azurepowershell
+$Onpremsub = New-AzureRmVirtualNetworkSubnetConfig -Name $SNNameOnprem -AddressPrefix $SNOnpremPrefix
+$GWOnpremsub = New-AzureRmVirtualNetworkSubnetConfig -Name $SNnameGW -AddressPrefix $SNGWOnpremPrefix
+```
+
+Teraz utwórz sieć wirtualną OnPrem:
+
+```azurepowershell
+$VNetOnprem = New-AzureRmVirtualNetwork -Name $VNetnameOnprem -ResourceGroupName $RG1 `
+-Location $Location1 -AddressPrefix $VNetOnpremPrefix -Subnet $Onpremsub,$GWOnpremsub
+```
+Następnie zostanie przesłane żądanie przydzielenia publicznego adresu IP do bramy, która zostanie utworzona dla sieci wirtualnej. Należy zauważyć, że metoda *AllocationMethod* jest **dynamiczna**. Nie możesz określić adresu IP, którego chcesz użyć. Jest on przydzielany dynamicznie do bramy. 
+
+  ```azurepowershell
+  $gwOnprempip = New-AzureRmPublicIpAddress -Name $GWOnprempipName -ResourceGroupName $RG1 `
+  -Location $Location1 -AllocationMethod Dynamic
+```
+
 ## <a name="configure-and-deploy-the-firewall"></a>Konfigurowanie i wdrażanie zapory
 
 Teraz należy wdrożyć zaporę w sieci wirtualnej koncentratora.
@@ -154,11 +176,13 @@ $AzfwPrivateIP
 
 ### <a name="configure-network-rules"></a>Konfigurowanie reguł sieci
 
+<!--- $Rule2 = New-AzureRmFirewallNetworkRule -Name "AllowPing" -Protocol ICMP -SourceAddress $SNOnpremPrefix `
+   -DestinationAddress $VNetSpokePrefix -DestinationPort *--->
+
 ```azurepowershell
 $Rule1 = New-AzureRmFirewallNetworkRule -Name "AllowWeb" -Protocol TCP -SourceAddress $SNOnpremPrefix `
    -DestinationAddress $VNetSpokePrefix -DestinationPort 80
-$Rule2 = New-AzureRmFirewallNetworkRule -Name "AllowPing" -Protocol ICMP -SourceAddress $SNOnpremPrefix `
-   -DestinationAddress $VNetSpokePrefix -DestinationPort *
+
 $Rule3 = New-AzureRmFirewallNetworkRule -Name "AllowRDP" -Protocol TCP -SourceAddress $SNOnpremPrefix `
    -DestinationAddress $VNetSpokePrefix -DestinationPort 3389
 
@@ -262,27 +286,7 @@ Po zakończeniu działania polecenia cmdlet sprawdź wartości. W następującym
 "egressBytesTransferred": 4142431
 ```
 
-## <a name="create-and-configure-the-onprem-vnet"></a>Tworzenie i konfigurowanie sieci wirtualnej OnPrem
 
-Zdefiniuj podsieci, które mają być dołączone do sieci wirtualnej:
-
-```azurepowershell
-$Onpremsub = New-AzureRmVirtualNetworkSubnetConfig -Name $SNNameOnprem -AddressPrefix $SNOnpremPrefix
-$GWOnpremsub = New-AzureRmVirtualNetworkSubnetConfig -Name $SNnameGW -AddressPrefix $SNGWOnpremPrefix
-```
-
-Teraz utwórz sieć wirtualną OnPrem:
-
-```azurepowershell
-$VNetOnprem = New-AzureRmVirtualNetwork -Name $VNetnameOnprem -ResourceGroupName $RG1 `
--Location $Location1 -AddressPrefix $VNetOnpremPrefix -Subnet $Onpremsub,$GWOnpremsub
-```
-Następnie zostanie przesłane żądanie przydzielenia publicznego adresu IP do bramy, która zostanie utworzona dla sieci wirtualnej. Należy zauważyć, że metoda *AllocationMethod* jest **dynamiczna**. Nie możesz określić adresu IP, którego chcesz użyć. Jest on przydzielany dynamicznie do bramy. 
-
-  ```azurepowershell
-  $gwOnprempip = New-AzureRmPublicIpAddress -Name $GWOnprempipName -ResourceGroupName $RG1 `
-  -Location $Location1 -AllocationMethod Dynamic
-```
 
 ## <a name="peer-the-hub-and-spoke-vnets"></a>Komunikacja równorzędna pomiędzy sieciami wirtualnymi koncentratora i szprychy
 
@@ -300,6 +304,9 @@ Add-AzureRmVirtualNetworkPeering -Name SpoketoHub -VirtualNetwork $VNetSpoke -Re
 Następnie należy utworzyć kilka tras: 
 - Trasa z podsieci bramy koncentratora do podsieci będącej szprychą za pośrednictwem adresu IP zapory
 - Trasa domyślna z podsieci będącej szprychą za pośrednictwem adresu IP zapory
+
+> [!NOTE]
+> Usługa Azure Firewall rozpoznaje Twoje lokalne sieci na podstawie protokołu BGP. Może to obejmować domyślną trasę, która trasuje ruch internetowy z powrotem przez sieć lokalną. Jeśli jednak chcesz, aby ruch internetowy był wysyłany bezpośrednio z zapory do Internetu, dodaj domyślną trasę zdefiniowaną przez użytkownika (0.0.0.0/0) w podsieci AzureFirewallSubnet z typem następnego skoku **Internet**. Nadal jest wymuszane tunelowanie ruchu przychodzącego do środowiska lokalnego za pośrednictwem bramy VPN/ExpressRoute przy użyciu bardziej szczegółowych tras nauczonych na podstawie protokołu BGP.
 
 ```azurepowershell
 #Create a route table
@@ -397,8 +404,9 @@ Set-AzureRmVMExtension `
     -TypeHandlerVersion 1.4 `
     -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server"}' `
     -Location $Location1
+```
 
-#Create a host firewall rule to allow ping in
+<!---#Create a host firewall rule to allow ping in
 Set-AzureRmVMExtension `
     -ResourceGroupName $RG1 `
     -ExtensionName IIS `
@@ -407,8 +415,8 @@ Set-AzureRmVMExtension `
     -ExtensionType CustomScriptExtension `
     -TypeHandlerVersion 1.4 `
     -SettingString '{"commandToExecute":"powershell New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4"}' `
-    -Location $Location1
-```
+    -Location $Location1--->
+
 
 ### <a name="create-the-onprem-virtual-machine"></a>Tworzenie maszyny wirtualnej OnPrem
 Jest to prosta maszyna wirtualna, którą można połączyć z publicznym adresem IP przy użyciu pulpitu zdalnego. Z tego miejsca możesz nawiązać połączenie z serwerem OnPrem za pośrednictwem zapory. Po wyświetleniu monitu wpisz nazwę użytkownika i hasło maszyny wirtualnej.
@@ -431,10 +439,10 @@ $NIC.IpConfigurations.privateipaddress
 ```
 
 1. W witrynie Azure Portal połącz się z maszyną wirtualną **VM-Onprem**.
-2. Otwórz wiersz polecenia programu Windows PowerShell na maszynie wirtualnej **Vm-Onprem**, i wyślij polecenie ping na prywatny adres IP maszyny wirtualnej **VM-spoke-01**.
+<!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
-   Powinna pojawić się odpowiedź.
-1. Otwórz przeglądarkę internetową na maszynie wirtualnej **VM-Onprem**, a następnie przejdź do lokalizacji http://\<VM-spoke-01 private IP\>.
+   You should get a reply.--->
+2. Otwórz przeglądarkę internetową na maszynie wirtualnej **VM-Onprem**, a następnie przejdź do lokalizacji http://\<VM-spoke-01 private IP\>.
 
    Powinna zostać wyświetlona domyślna strona usług Internet Information Services.
 
@@ -444,7 +452,7 @@ $NIC.IpConfigurations.privateipaddress
 
 Teraz upewnij się, czy reguły zapory działają:
 
-- Możesz wysłać polecenie ping do serwera w sieci wirtualnej będącej szprychą.
+<!---- You can ping the server on the spoke VNet.--->
 - Możesz przeglądać serwer internetowy w sieci wirtualnej będącej szprychą.
 - Możesz nawiązać połączenie z serwerem w sieci wirtualnej będącej szprychą, korzystając z protokołu RDP.
 

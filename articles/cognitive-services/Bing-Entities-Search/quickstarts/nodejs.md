@@ -1,39 +1,39 @@
 ---
-title: Szybki Start Node.JS dla usług Azure kognitywnych, wyszukiwania usługi Bing jednostki interfejsu API | Dokumentacja firmy Microsoft
-description: Pobierz informacje i przykładowy kod w celu szybkiego Rozpoczynanie pracy przy użyciu interfejsu API wyszukiwania usługi Bing jednostki w kognitywnych usług Microsoft Azure.
+title: 'Szybki start: interfejs API wyszukiwania jednostek Bing, Node.js'
+titlesuffix: Azure Cognitive Services
+description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API wyszukiwania jednostek Bing.
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/28/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 7396976453c240d5ea9a767f8c26ac96d10d1e1f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: b14bcece77b17e79ec9e39bbb6bb64ae34abd3a0
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349184"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815158"
 ---
-# <a name="quickstart-for-microsoft-bing-entity-search-api-with-nodejs"></a>Szybki Start Bing firmy Microsoft encji wyszukiwania interfejsu API za pomocą języka Node.JS 
-<a name="HOLTop"></a>
+# <a name="quickstart-for-bing-entity-search-api-with-nodejs"></a>Przewodnik Szybki start dotyczący korzystania z interfejsu API wyszukiwania jednostek Bing za pomocą środowiska Node.js
 
-W tym artykule przedstawiono sposób użycia [wyszukiwania usługi Bing jednostki](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) interfejsu API za pomocą języka Node.JS.
+W tym artykule dowiesz się, jak korzystać z interfejsu API [wyszukiwania jednostek Bing](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) przy użyciu środowiska Node.js.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Konieczne będzie [Node.js 6](https://nodejs.org/en/download/) do uruchomienia tego kodu.
+Aby uruchomić ten kod, potrzebne jest środowisko [Node.js 6](https://nodejs.org/en/download/).
 
-Musi mieć [kognitywnych interfejsu API usług konta](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsu API Bing encji wyszukiwania**. [Bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api) jest wystarczająca dla tego przewodnika Szybki Start. Należy klucz dostępu podany przy wywołaniu metody aktywacji bezpłatną wersję próbną lub może używać klucza płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.
+Trzeba mieć [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do **interfejsu API wyszukiwania jednostek Bing**. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api) jest wystarczająca na potrzeby tego przewodnika Szybki start. Potrzebny jest klucz dostępu podany przy aktywacji bezpłatnej wersji próbnej lub klucz płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.
 
-## <a name="search-entities"></a>Jednostek wyszukiwania
+## <a name="search-entities"></a>Wyszukiwanie jednostek
 
-Aby uruchomić tę aplikację, wykonaj następujące kroki.
+Aby uruchomić tę aplikację, wykonaj następujące czynności.
 
-1. Utwórz nowy projekt programu Node.JS w Twoje ulubione IDE.
-2. Dodaj kod poniżej.
-3. Zastąp `key` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
+1. Utwórz nowy projekt środowiska Node.js w ulubionym środowisku IDE.
+2. Dodaj kod przedstawiony poniżej.
+3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```nodejs
@@ -90,7 +90,7 @@ Search ();
 
 **Odpowiedź**
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
 ```json
 {
@@ -155,9 +155,9 @@ Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w
 
 [Powrót do początku](#HOLTop)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek wyszukiwania usługi Bing jednostki](../tutorial-bing-entities-search-single-page-app.md)
-> [Omówienie wyszukiwania usługi Bing jednostki](../search-the-web.md )
-> [dokumentacja interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+> [Bing Entity Search tutorial (Samouczek dotyczący wyszukiwania jednostek Bing)](../tutorial-bing-entities-search-single-page-app.md)
+> [Omówienie wyszukiwania jednostek Bing](../search-the-web.md )
+> [API Reference (Dokumentacja interfejsu API)](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)

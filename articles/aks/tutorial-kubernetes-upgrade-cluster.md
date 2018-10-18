@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/14/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 11e082ae235706613b0a60b12bc2b27896953508
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 1c0710be11b95b66d16661b5aff9cbf739ccda92
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41919951"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901943"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Samouczek: uaktualnianie rozwiązania Kubernetes w usłudze Azure Kubernetes Service (AKS)
 
@@ -101,6 +101,17 @@ Name          Location    ResourceGroup    KubernetesVersion    ProvisioningStat
 myAKSCluster  eastus      myResourceGroup  1.10.6               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
+## <a name="delete-the-cluster"></a>Usuwanie klastra
+
+Jest to ostatnia część serii samouczków, więc możesz usunąć klaster usługi AKS. Gdy węzły rozwiązania Kubernetes działają na maszynach wirtualnych platformy Azure, nadal są naliczane opłaty, nawet jeśli nie korzystasz z klastra. Usuń grupę zasobów, usługę kontenera i wszystkie powiązane zasoby za pomocą polecenia [az group delete][az-group-delete].
+
+```azurecli-interactive
+az group delete --name myResourceGroup --yes --no-wait
+```
+
+> [!NOTE]
+> Po usunięciu klastra jednostka usługi Azure Active Directory używana przez klaster usługi AKS nie jest usuwana. Aby sprawdzić, jak usunąć jednostkę usługi, zobacz [AKS service principal considerations and deletion (Uwagi dotyczące jednostki usługi AKS i jej usuwanie)][sp-delete].
+
 ## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku uaktualniane jest rozwiązanie Kubernetes w klastrze AKS. W tym samouczku omówiono:
@@ -125,3 +136,5 @@ Skorzystaj z tego linku, aby dowiedzieć się więcej o usłudze AKS.
 [az aks get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
 [az aks upgrade]: /cli/azure/aks#az-aks-upgrade
 [azure-cli-install]: /cli/azure/install-azure-cli
+[az-group-delete]: /cli/azure/group#az-group-delete
+[sp-delete]: kubernetes-service-principal.md#additional-considerations

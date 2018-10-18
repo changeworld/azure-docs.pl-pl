@@ -1,24 +1,25 @@
 ---
-title: Uruchom TensorFlow modelu w usługach kognitywnych Python - niestandardowe wizji Service - Azure | Dokumentacja firmy Microsoft
-description: Uruchom TensorFlow modelu w języku Python
+title: 'Samouczek: uruchamianie modelu TensorFlow w języku Python — Custom Vision Service'
+titlesuffix: Azure Cognitive Services
+description: Uruchom model TensorFlow w języku Python.
 services: cognitive-services
 author: areddish
-manager: chbuehle
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/17/2018
 ms.author: areddish
-ms.openlocfilehash: d31036404604104ca28328b6c8bc5d3ca74d83ea
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 26427406b045b96f2f3f612e4444b7dc2afcefc6
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349576"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247316"
 ---
-# <a name="run-tensorflow-model-in-python"></a>Uruchom TensorFlow modelu w języku Python
+# <a name="tutorial-run-tensorflow-model-in-python"></a>Samouczek: uruchamianie modelu TensorFlow w języku Python
 
-Po utworzeniu [wyeksportowany do modelu TensorFlow](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) usługi wizji niestandardowe tego przewodnika Szybki Start opisano, jak używać tego modelu lokalnie do klasyfikowania obrazów.
+W tym przewodniku Szybki start opisano, jak po [wyeksportowaniu modelu TensorFlow](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) z usługi Custom Vision Service użyć tego modelu lokalnie w celu klasyfikowania obrazów.
 
 ## <a name="install-required-components"></a>Instalacja wymaganych składników
 
@@ -26,10 +27,10 @@ Po utworzeniu [wyeksportowany do modelu TensorFlow](https://docs.microsoft.com/a
 
 Aby korzystać z tego samouczka, należy wykonać następujące czynności:
 
-- Zainstaluj środowisko Python 2.7 + lub Python 3.5 +.
-- Zainstaluj narzędzie pip.
+- Zainstalować język Python 2.7+ lub Python 3.5+.
+- Zainstalować program pip.
 
-Należy również zainstalować następujących pakietów:
+Należy również zainstalować następujące pakiety:
 
 ```
 pip install tensorflow
@@ -38,9 +39,9 @@ pip install numpy
 pip install opencv-python
 ```
 
-## <a name="load-your-model-and-tags"></a>Załaduj model i tagów
+## <a name="load-your-model-and-tags"></a>Ładowanie modelu i tagów
 
-Plik zip pobranego zawiera model.pb i labels.txt. Te pliki reprezentują trenowanego modelu i etykiet klasyfikacji. Pierwszym krokiem jest można załadować modelu do projektu.
+Pobrany plik zip zawiera pliki model.pb i labels.txt. Te pliki stanowią uczony model i etykiety klasyfikacji. Pierwszym krokiem jest załadowanie modelu do projektu.
 
 ```Python
 import tensorflow as tf
@@ -60,11 +61,11 @@ with open(labels_filename, 'rt') as lf:
         labels.append(l.strip())
 ```
 
-## <a name="prepare-an-image-for-prediction"></a>Przygotowanie obrazu do prognozowania
+## <a name="prepare-an-image-for-prediction"></a>Przygotowanie obrazu do przewidywania
 
-Istnieje kilka kroków przygotowania obrazu, aby była ona prawidłowy kształt prognozowania. Te kroki naśladować obrazami wykonywane podczas uczenia:
+Przygotowanie obrazu tak, aby miał odpowiedni kształt do przewidywania, wymaga wykonania kilku czynności. Te kroki są podobne do manipulacji obrazem podczas uczenia:
 
-### <a name="open-the-file-and-create-an-image-in-the-bgr-color-space"></a>Otwórz plik i utworzyć obraz w miejscu color BGR
+### <a name="open-the-file-and-create-an-image-in-the-bgr-color-space"></a>Otwieranie pliku i tworzenie obrazu w przestrzeni kolorów BGR
 
 ```Python
 from PIL import Image
@@ -82,7 +83,7 @@ image = update_orientation(image)
 image = convert_to_opencv(image)
 ```
 
-### <a name="deal-with-images-with-a-dimension-1600"></a>Postępowania w przypadku obrazów o wymiarze > 1600
+### <a name="deal-with-images-with-a-dimension-1600"></a>Praca z obrazami i wymiarze >1600
 
 ```Python
 # If the image has either w or h greater than 1600 we resize it down respecting
@@ -90,7 +91,7 @@ image = convert_to_opencv(image)
 image = resize_down_to_1600_max_dim(image)
 ```
 
-### <a name="crop-the-largest-center-square"></a>Przytnij największy kwadratowe center
+### <a name="crop-the-largest-center-square"></a>Przycinanie największego środkowego kwadratu
 
 ```Python
 # We next get the largest center square
@@ -99,7 +100,7 @@ min_dim = min(w,h)
 max_square_image = crop_center(image, min_dim, min_dim)
 ```
 
-### <a name="resize-down-to-256x256"></a>Zmień rozmiar do 256 x 256
+### <a name="resize-down-to-256x256"></a>Zmiana rozmiaru w dół do 256x256
 
 ```Python
 # Resize that square down to 256x256
@@ -107,7 +108,7 @@ augmented_image = resize_to_256_square(max_square_image)
 ```
 
 
-### <a name="crop-the-center-for-the-specific-input-size-for-the-model"></a>Przytnij Centrum dla określonego rozmiaru wejściowego dla modelu
+### <a name="crop-the-center-for-the-specific-input-size-for-the-model"></a>Przycinanie środka do określonego rozmiaru danych wejściowych dla modelu
 
 ```Python
 # The compact models have a network size of 227x227, the model requires this size.
@@ -118,7 +119,7 @@ augmented_image = crop_center(augmented_image, network_input_size, network_input
 
 ```
 
-Powyższe kroki należy użyć następujących funkcji pomocnika:
+W powyższych krokach używane są następujące funkcje pomocnicze:
 
 ```Python
 def convert_to_opencv(image):
@@ -164,7 +165,7 @@ def update_orientation(image):
 
 ## <a name="predict-an-image"></a>Przewidywanie obrazu
 
-Po przygotowaniu obrazu jako tensor firma Microsoft może wysyłać, przez model do przewidywania:
+Po przygotowaniu obrazu jako tensora można go wysłać za pośrednictwem modelu na potrzeby przewidywania:
 
 ```Python
 
@@ -177,9 +178,9 @@ with tf.Session() as sess:
     predictions, = sess.run(prob_tensor, {input_node: [augmented_image] })
 ```
 
-## <a name="view-the-results"></a>Wyświetlenie wyników
+## <a name="view-the-results"></a>Wyświetlanie wyników
 
-Wyniki działania tensor obrazów za pośrednictwem modelu należy być mapowane z powrotem na etykiety.
+Wyniki uruchomienia tensora obrazu za pośrednictwem modelu trzeb będzie wtedy zamapować z powrotem na etykiety.
 
 ```Python
     # Print the highest probability label
@@ -189,15 +190,15 @@ Wyniki działania tensor obrazów za pośrednictwem modelu należy być mapowane
 
     # Or you can print out all of the results mapping labels to probabilities.
     label_index = 0
-    for p in predictions:
-        truncated_probablity = np.float64(round(p,8))
+    for p in predictions[0]:
+        truncated_probablity = np.float64(np.round(p,8))
         print (labels[label_index], truncated_probablity)
         label_index += 1
 ```
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Można również zawijać modelu w aplikacji mobilnej:
-* [Użyj modelu Tensorflow wyeksportowanego w aplikacji systemu Android](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)
-* [Użyj modelu CoreML wyeksportowanego w aplikacji systemu iOS Swift](https://go.microsoft.com/fwlink/?linkid=857726)
-* [Użyj modelu CoreML wyeksportowanego w aplikacji systemu iOS za pomocą platformy Xamarin](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)
+Można również opakować model w aplikację mobilną:
+* [Używanie wyeksportowanego modelu TensorFlow w aplikacji systemu Android](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)
+* [Używanie wyeksportowanego modelu CoreML w aplikacji języka Swift systemu iOS](https://go.microsoft.com/fwlink/?linkid=857726)
+* [Używanie wyeksportowanego modelu CoreML w aplikacji systemu iOS na platformie Xamarin](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)
 

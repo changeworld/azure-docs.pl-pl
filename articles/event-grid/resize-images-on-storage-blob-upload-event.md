@@ -9,15 +9,15 @@ ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/20/2018
+ms.date: 09/29/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 922c87f2d577aff86d51a1fde53f221ebd2fa82c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 2d94389ade02cb6e61f192e9b9e8adb8f8ceec31
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446694"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585581"
 ---
 # <a name="automate-resizing-uploaded-images-using-event-grid"></a>Automatyzowanie zmiany rozmiaru przekazanych obrazów za pomocą usługi Event Grid
 
@@ -43,6 +43,16 @@ W celu ukończenia tego samouczka:
 Musisz wcześniej ukończyć poprzedni samouczek na temat usługi Blob Storage: [Przekazywanie danych obrazu w chmurze za pomocą usługi Azure Storage][previous-tutorial].
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+Jeśli wcześniej dostawca zasobów usługi Event Grid nie został zarejestrowany w ramach subskrypcji, upewnij się, że teraz jest on zarejestrowany.
+
+```azurepowershell-interactive
+Register-AzureRmResourceProvider -ProviderNamespace Microsoft.EventGrid
+```
+
+```azurecli-interactive
+az provider register --namespace Microsoft.EventGrid
+```
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -91,8 +101,10 @@ storageConnectionString=$(az storage account show-connection-string \
 az functionapp config appsettings set --name <function_app> \
 --resource-group myResourceGroup \
 --settings myblobstorage_STORAGE=$storageConnectionString \
-myContainerName=thumbnails
+myContainerName=thumbnails FUNCTIONS_EXTENSION_VERSION=~2
 ```
+
+Ustawienie `FUNCTIONS_EXTENSION_VERSION=~2` sprawia, że aplikacja funkcji jest uruchamiana w ramach wersji 2.x środowiska uruchomieniowego usługi Azure Functions.
 
 Teraz możesz wdrożyć projekt kodu funkcji do tej aplikacji funkcji.
 
@@ -111,8 +123,7 @@ az functionapp deployment source config --name <function_app> \
 ```
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
-Przykładowa funkcja zmiany rozmiaru w formacie Node.js jest dostępna w usłudze [GitHub](https://github.com/Azure-Samples/storage-blob-resize-function-node). Wdróż ten projekt kodu funkcji do aplikacji funkcji, używając polecenia [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#config). 
-
+Przykładowa funkcja zmiany rozmiaru w formacie Node.js jest dostępna w usłudze [GitHub](https://github.com/Azure-Samples/storage-blob-resize-function-node). Wdróż ten projekt kodu funkcji do aplikacji funkcji, używając polecenia [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#config).
 
 W poniższym poleceniu `<function_app>` to nazwa wcześniej utworzonej aplikacji funkcji.
 

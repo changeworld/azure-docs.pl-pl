@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 02/15/2018
+ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 2b6f46c10603e54f0f77a635b3233073aadac0cd
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 9e7e853ad7562bf5d449479ad730a5dabd6a97b8
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700127"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585428"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Omówienie integracji usług Azure Service Bus i Event Grid
 
@@ -129,9 +129,9 @@ Aby utworzyć nową subskrypcję usługi Event Grid, wykonaj następujące czynn
 2. W okienku po lewej stronie wybierz pozycję **Event Grid**. 
 3. Wybierz pozycję **Subskrypcja zdarzeń**.  
 
-   Poniższa ilustracja przedstawia przestrzeń nazw, która zawiera kilka subskrypcji usługi Event Grid:
+   Poniższa ilustracja przedstawia przestrzeń nazw z subskrypcją usługi Event Grid:
 
-   ![20][]
+   ![Subskrypcje usługi Event Grid](./media/service-bus-to-event-grid-integration-concept/sbtoeventgridportal.png)
 
    Na poniższej ilustracji przedstawiono sposób subskrybowania funkcji lub elementu webhook bez żadnego konkretnego filtru:
 
@@ -176,7 +176,7 @@ W tym miejscu możesz eksplorować inne opcje instalacji lub [przetestować prze
 ## <a name="next-steps"></a>Następne kroki
 
 * Pobierz [przykłady](service-bus-to-event-grid-integration-example.md) dla usług Service Bus i Event Grid.
-* Dowiedz się więcej o usłudze [Event Grid](https://docs.microsoft.com/azure/azure-functions/).
+* Dowiedz się więcej o usłudze [Event Grid](https://docs.microsoft.com/azure/event-grid/).
 * Dowiedz się więcej na temat usługi [Azure Functions](https://docs.microsoft.com/azure/azure-functions/).
 * Dowiedz się więcej na temat usługi [Logic Apps](https://docs.microsoft.com/azure/logic-apps/).
 * Dowiedz się więcej na temat usługi [Service Bus](https://docs.microsoft.com/azure/azure-functions/).

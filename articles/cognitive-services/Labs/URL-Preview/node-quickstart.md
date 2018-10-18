@@ -1,39 +1,41 @@
 ---
-title: Szybki Start node.js projektu adres URL podglądu - kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
-description: Rozpoczynanie pracy przy użyciu adresu URL w wersji zapoznawczej w kognitywnych usług Microsoft Azure.
+title: 'Szybki start: laboratorium Project URL Preview, Node.js'
+titlesuffix: Azure Cognitive Services
+description: Rozpocznij korzystanie z podglądu adresu URL w usługach Microsoft Cognitive Services na platformie Azure.
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 03/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 195033d2740b11873baae095cec028dc8d19ce49
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: b8410127ed9a0444ab400eb3242868a85bd5b2c9
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348625"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883571"
 ---
-# <a name="url-preview-node-quickstart"></a>Adres URL podglądu węzła Szybki Start
+# <a name="quickstart-url-preview-with-nodejs"></a>Szybki start: podgląd adresu URL w języku Node.js 
 
-W poniższym przykładzie węzła tworzy podgląd adres Url witryny sieci SwiftKey Web: https://swiftkey.com/en.
+Poniższy przykład w języku Node tworzy podgląd adresu URL witryny internetowej SwiftKey: https://swiftkey.com/en.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Pobierz klucz dostępu dla bezpłatnej wersji próbnej [kognitywnych Labs usług](https://aka.ms/answersearchsubscription)
+Pobierz klucz dostępu dla bezpłatnej wersji próbnej zestawu [Cognitive Services Labs](https://aka.ms/answersearchsubscription).
 
 ## <a name="code-scenario"></a>Scenariusz kodu 
 
-Poniższy kod pobiera adres URL podglądu danych.
-Jest stosowana w poniższych krokach:
-1. Zadeklaruj zmienne, aby określić punkt końcowy przez hosta i ścieżkę.
-2. Podaj adres URL zapytania, aby wyświetlić podgląd i dodać parametr zapytania.  
-3. Utwórz funkcję obsługi dla odpowiedzi.
-4. Zdefiniuj funkcję wyszukiwania, która tworzy żądanie i dodaje *Ocp-Apim-subskrypcji — klucz* nagłówka.
+Poniższy kod pobiera dane podglądu adresu URL.
+W celu zaimplementowania kodu wykonaj następujące kroki:
+1. Zadeklaruj zmienne, aby określić punkt końcowy na podstawie hosta i ścieżki.
+2. Określ adres URL zapytania, dla którego ma zostać wyświetlony podgląd, a następnie dodaj parametr zapytania.  
+3. Utwórz funkcję procedury obsługi odpowiedzi.
+4. Zdefiniuj funkcję wyszukiwania, która tworzy żądanie i dodaje nagłówek *Ocp-Apim-Subscription-Key*.
 5. Uruchom funkcję wyszukiwania. 
 
-Kompletny kod dla tego pokazu następująco:
+Pełny kod tej wersji demonstracyjnej wygląda następująco:
 
 ````
 'use strict';
@@ -83,8 +85,8 @@ Search();
 
 ````
 
-## <a name="next-steps"></a>Kolejne kroki
-- [Przykład kodu C#](csharp.md)
-- [Szybki Start Java](java-quickstart.md)
-- [JavaScript — Szybki Start](javascript.md)
-- [Krótkie wprowadzenie do języka Python](python-quickstart.md)
+## <a name="next-steps"></a>Następne kroki
+- [Przykładowy kod w języku C#](csharp.md)
+- [Przewodnik Szybki start dla języka Java](java-quickstart.md)
+- [Przewodnik Szybki start dla języka JavaScript](javascript.md)
+- [Przewodnik Szybki start dla języka Python](python-quickstart.md)

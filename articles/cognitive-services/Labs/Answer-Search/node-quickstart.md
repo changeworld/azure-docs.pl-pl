@@ -1,41 +1,42 @@
 ---
-title: Węzeł typu Szybki Start dla usług kognitywnych firmy Microsoft, wyszukiwanie odpowiedzi projektu | Dokumentacja firmy Microsoft
-description: Rozpoczynanie pracy przy użyciu projektu odpowiedzi wyszukiwania, kognitywnych usług Microsoft Azure.
+title: 'Szybki start: laboratorium Project Answer Search, Node'
+description: Rozpocznij pracę z laboratorium Project Answer Search w środowisku Node.
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/13/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 36b2709d39230aae7929164ba4c9306f57043b43
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: 99dba482c9dec4448110301201c7c9e79a7a6380
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348600"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867429"
 ---
-# <a name="project-answer-search-node-quickstart"></a>Szybki Start odpowiedzi wyszukiwania węzła projektu
+# <a name="quickstart-project-answer-search-with-node"></a>Szybki start: laboratorium Project Answer Search w środowisku Node
 
-W poniższym przykładzie węzła tworzy zapytanie informacji o Yosemite National wstrzymywanie.
+W poniższym przykładzie w środowisku Node tworzone jest zapytanie o informacje dotyczące Parku Narodowego Yosemite.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Pobierz klucz dostępu dla bezpłatnej wersji próbnej [kognitywnych Labs usług](https://aka.ms/answersearchsubscription)
+Pobierz klucz dostępu dla bezpłatnej wersji próbnej zestawu [Cognitive Services Labs](https://aka.ms/answersearchsubscription).
 
-W tym przykładzie użyto v8.9.4 węzła
+W tym przykładzie użyto środowiska Node w wersji 8.9.4.
 
 ## <a name="code-scenario"></a>Scenariusz kodu 
 
-Poniższy kod pobiera odpowiedzi.
-Jest stosowana w poniższych krokach:
-1. Zadeklaruj zmienne, aby określić punkt końcowy przez hosta i ścieżkę.
-2. Podaj adres URL zapytania, aby wyświetlić podgląd i dodać parametr zapytania.  
-3. Utwórz funkcję obsługi dla odpowiedzi.
-4. Zdefiniuj funkcję wyszukiwania, która tworzy żądanie i dodaje *Ocp-Apim-subskrypcji — klucz* nagłówka.
+Zadaniem poniższego kodu jest uzyskiwanie odpowiedzi.
+W celu zaimplementowania kodu wykonaj następujące kroki:
+1. Zadeklaruj zmienne, aby określić punkt końcowy na podstawie hosta i ścieżki.
+2. Określ adres URL zapytania, dla którego ma zostać wyświetlony podgląd, a następnie dodaj parametr zapytania.  
+3. Utwórz funkcję procedury obsługi odpowiedzi.
+4. Zdefiniuj funkcję wyszukiwania, która tworzy żądanie i dodaje nagłówek *Ocp-Apim-Subscription-Key*.
 5. Uruchom funkcję wyszukiwania. 
 
-Kompletny kod dla tego pokazu następująco:
+Pełny kod tej wersji demonstracyjnej wygląda następująco:
 
 ````
 'use strict';
@@ -86,7 +87,7 @@ Search();
 
 ````
 
-## <a name="next-steps"></a>Kolejne kroki
-- [Przykład kodu C#](c-sharp-quickstart.md)
-- [Szybki Start Java](java-quickstart.md)
-- [Krótkie wprowadzenie do języka Python](python-quickstart.md)
+## <a name="next-steps"></a>Następne kroki
+- [Przykładowy kod w języku C#](c-sharp-quickstart.md)
+- [Przewodnik Szybki start dla języka Java](java-quickstart.md)
+- [Przewodnik Szybki start dla języka Python](python-quickstart.md)

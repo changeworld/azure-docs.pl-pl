@@ -1,6 +1,6 @@
 ---
-title: Co się stało z aplikacją Azure Machine Learning Workbench? | Microsoft Docs
-description: Dowiedz się, co się stało z aplikacją Workbench, co zmieniło się w usłudze Azure Machine Learning i jaka jest oś czasu pomocy technicznej.
+title: Co się dzieje z aplikacją Azure Machine Learning Workbench? | Microsoft Docs
+description: Dowiedz się, co się dzieje z aplikacją Workbench, co zmieniło się w usłudze Azure Machine Learning i jaka jest oś czasu pomocy technicznej.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,28 +9,28 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 620d8b370b050a4d91ee6d94cba2c133b4313aed
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 88e7dad15a7080c4132a6983d949f9451ad5ce69
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159988"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239267"
 ---
-# <a name="what-happened-to-workbench-in-azure-machine-learning-preview"></a>Co się stało z aplikacją Workbench w usłudze Azure Machine Learning (wersja zapoznawcza)?
+# <a name="what-is-happening-to-workbench-in-azure-machine-learning-preview"></a>Co się dzieje z aplikacją Workbench w usłudze Azure Machine Learning (wersja zapoznawcza)?
 
-Aplikacja Workbench i niektóre inne wczesne funkcje zostały wycofane z wersji z września 2018 r., aby zwolnić miejsce na ulepszoną [architekturę](concept-azure-machine-learning-architecture.md). Wersja zawiera wiele znaczących aktualizacji wprowadzonych w oparciu o opinie klientów, które mają na celu udoskonalenie środowiska użytkownika. Podstawowe funkcje od przebiegów eksperymentalnych do wdrożenia modelu nie zmieniły się, ale teraz można używać niezawodnego <a href="http://aka.ms/aml-sdk" target="_blank">zestawu SDK</a> i [interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md) do wykonywania zadań i potoków uczenia maszynowego.  
+Aplikacja Workbench i niektóre inne wczesne funkcje zostały zastąpione w wersji z września 2018 r., aby zwolnić miejsce na ulepszoną [architekturę](concept-azure-machine-learning-architecture.md). Wersja zawiera wiele znaczących aktualizacji wprowadzonych w oparciu o opinie klientów, które mają na celu udoskonalenie środowiska użytkownika. Podstawowe funkcje od przebiegów eksperymentalnych do wdrożenia modelu nie zmieniły się, ale teraz można używać niezawodnego <a href="http://aka.ms/aml-sdk" target="_blank">zestawu SDK</a> i [interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md) do wykonywania zadań i potoków uczenia maszynowego.  
 
 Z tego artykułu dowiesz się, co się zmieniło i jak zmiany wpłynęły na zadania wykonywane obecnie przy użyciu usługi Azure Machine Learning.
 
 ## <a name="what-changed"></a>Co się zmieniło?
 
-Najnowsza wersja usługi Azure Machine Learning obejmuje:
+Najnowsza wersja usługi Azure Machine Learning Service obejmuje:
 + [Uproszczony model zasobów platformy Azure](concept-azure-machine-learning-architecture.md)
 + [Nowy interfejs użytkownika portalu](how-to-track-experiments.md) służący do zarządzania eksperymentami i celami obliczeniowymi
 + Nowy, bardziej kompleksowy <a href="http://aka.ms/aml-sdk" target="_blank">zestaw SDK</a> języka Python
 + Nowe, rozbudowane [rozszerzenie interfejsu wiersza polecenia platformy Azure](reference-azure-machine-learning-cli.md) na potrzeby uczenia maszynowego
 
-[Architektura](concept-azure-machine-learning-architecture.md) została zaprojektowana od nowa z myślą o ułatwieniu użycia. Zamiast wielu zasobów i kont platformy Azure, będziesz potrzebować tylko aplikacji [Azure Machine Learning Workspace](concept-azure-machine-learning-architecture.md#workspace).  Obszary robocze można szybko tworzyć w witrynie [Azure Portal](quickstart-get-started.md).  Obszar roboczy może być używany przez wielu użytkowników do przechowywania celów obliczeniowych szkoleń i wdrożeń, eksperymentów dotyczących modeli, obrazów platformy Docker, wdrożonych modeli itd.
+[Architektura](concept-azure-machine-learning-architecture.md) została zaprojektowana od nowa z myślą o ułatwieniu użycia. Zamiast wielu zasobów i kont platformy Azure, będziesz potrzebować tylko aplikacji [Azure Machine Learning Service Workspace](concept-azure-machine-learning-architecture.md#workspace).  Obszary robocze można szybko tworzyć w witrynie [Azure Portal](quickstart-get-started.md).  Obszar roboczy może być używany przez wielu użytkowników do przechowywania celów obliczeniowych szkoleń i wdrożeń, eksperymentów dotyczących modeli, obrazów platformy Docker, wdrożonych modeli itd.
 
 Bieżąca wersja oferuje nowych, ulepszonych klientów interfejsu wiersza polecenia i zestawu SDK, ale sama klasyczna aplikacja Workbench jest traktowana jako przestarzała. Teraz możesz monitorować eksperymenty na [pulpicie nawigacyjnym obszaru roboczego w internetowej witrynie Azure Portal](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal). Pulpit nawigacyjny umożliwia pobieranie historii, zarządzanie celami obliczeniowymi dołączonymi do obszaru roboczego, zarządzanie modelami i obrazami platformy Docker, a nawet wdrażanie usług internetowych.
 
@@ -73,7 +73,7 @@ W przypadku dużych zestawów danych można użyć tego samego <a href="http://a
 
 ## <a name="will-projects-persist"></a>Czy projekty będą utrwalane?
 
-Nie stracisz żadnego kodu ani wykonanej pracy. W starszej wersji projekty są jednostkami chmury z katalogiem lokalnym. W najnowszej wersji można dołączać katalogi lokalne do aplikacji Azure Machine Learning Workspace przy użyciu lokalnego pliku konfiguracji. [Zobacz diagram przedstawiający najnowszą architekturę](concept-azure-machine-learning-architecture.md).
+Nie stracisz żadnego kodu ani wykonanej pracy. W starszej wersji projekty są jednostkami chmury z katalogiem lokalnym. W najnowszej wersji można dołączać katalogi lokalne do aplikacji Azure Machine Learning Service Workspace przy użyciu lokalnego pliku konfiguracji. [Zobacz diagram przedstawiający najnowszą architekturę](concept-azure-machine-learning-architecture.md).
 
 Ponieważ większość zawartości projektu była już na komputerze lokalnym, wystarczy utworzyć plik konfiguracji w tym katalogu i odwołać się do niego w kodzie, aby nawiązać połączenie z obszarem roboczym. [Dowiedz się, jak migrować istniejące projekty.](how-to-migrate.md#projects)
 

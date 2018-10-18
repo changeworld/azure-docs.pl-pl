@@ -1,37 +1,37 @@
 ---
-title: Szybki Start dla usługi Bing automatycznego sugerowania interfejsu API za pomocą języka Java | Dokumentacja firmy Microsoft
-description: Pobierz informacje i przykładowy kod w celu szybkiego Rozpoczynanie pracy przy użyciu interfejsu API automatycznego sugerowania usługi Bing w kognitywnych usług Azure.
+title: 'Szybki start: interfejs API automatycznego sugerowania Bing, Java'
+titlesuffix: Azure Cognitive Services
+description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API automatycznego sugerowania Bing.
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: c3a6b7119521772dbb60f3702c84e9bbd94217c4
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 6f79416c28631a47209558fd0c415ae79cff93bc
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349132"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831402"
 ---
-# <a name="quickstart-for-bing-autosuggest-api-with-java"></a>Szybki Start dla usługi Bing automatycznego sugerowania interfejsu API z językiem Java
-<a name="HOLTop"></a>
+# <a name="quickstart-for-bing-autosuggest-api-with-java"></a>Przewodnik Szybki start dotyczący interfejsu API automatycznego sugerowania Bing w języku Java
 
-W tym artykule przedstawiono sposób użycia [API automatycznego sugerowania usługi Bing](https://azure.microsoft.com/services/cognitive-services/autosuggest/) z językiem Java. Interfejs API automatycznego sugerowania usługi Bing zwraca listę sugerowane zapytań opartych na ciąg zapytania z częściowa się, że użytkownik musi wprowadzić w polu wyszukiwania. Zwykle czy wywołać tego interfejsu API za każdym razem, użytkownik wpisze nowego znaku w polu wyszukiwania, a następnie Wyświetl sugestie na liście rozwijanej pola wyszukiwania. W tym artykule przedstawiono sposób Wyślij żądanie zwraca ciągi zapytań sugerowane dla *kierowania*.
+W tym artykule pokazano, jak korzystać z [interfejsu API automatycznego sugerowania Bing](https://azure.microsoft.com/services/cognitive-services/autosuggest/) w języku Java. Interfejs API automatycznego sugerowania Bing zwraca listę proponowanych zapytań na podstawie częściowego ciągu zapytania wprowadzanego przez użytkownika w polu wyszukiwania. Ten interfejs API jest zwykle wywoływany za każdym razem, kiedy użytkownik wpisuje nowy znak w polu wyszukiwania, a następnie wyświetla sugestie na liście rozwijanej pola wyszukiwania. W tym artykule pokazano, w jaki sposób przesłać żądanie, które zwraca sugerowane ciągi zapytania dla terminu *sail*.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Konieczne będzie [JDK 7 lub 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) Aby skompilować i uruchomić ten kod. Jeśli masz element ulubiony, ale wystarczy edytora tekstu, może używać IDE języka Java.
+Musisz mieć zestaw [JDK 7 lub 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), aby skompilować i uruchomić ten kod. Możesz użyć środowiska projektowego Java, jeśli masz ulubione, ale edytor tekstu również wystarczy.
 
-Musi mieć [kognitywnych interfejsu API usług konta](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **API automatycznego sugerowania usługi Bing w wersji 7**. [Bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/#search) jest wystarczająca dla tego przewodnika Szybki Start. Należy klucz dostępu podany przy wywołaniu metody aktywacji bezpłatną wersję próbną lub może używać klucza płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.
+Trzeba mieć [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do **interfejsu API automatycznego sugerowania Bing w wersji 7**. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/#search) jest wystarczająca na potrzeby tego przewodnika Szybki start. Potrzebny jest klucz dostępu podany przy aktywacji bezpłatnej wersji próbnej lub klucz płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.
 
-## <a name="get-autosuggest-results"></a>Pobierz wyniki Autosugerowanie
+## <a name="get-autosuggest-results"></a>Pobieranie wyników automatycznego sugerowania
 
-1. Utwórz nowy projekt języka Java w Twoje ulubione IDE.
-2. Dodaj kod poniżej.
-3. Zastąp `subscriptionKey` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
+1. Utwórz nowy projekt języka Java w ulubionym środowisku IDE.
+2. Dodaj kod przedstawiony poniżej.
+3. Zastąp wartość `subscriptionKey` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```java
@@ -117,7 +117,7 @@ public class Autosuggest {
 
 ### <a name="response"></a>Odpowiedź
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
 ```json
 {
@@ -183,12 +183,12 @@ Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek automatycznego sugerowania usługi Bing](../tutorials/autosuggest.md)
+> [Bing Autosuggest tutorial (Samouczek dotyczący automatycznego sugerowania Bing)](../tutorials/autosuggest.md)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
-- [Co to jest automatycznego sugerowania usługi Bing?](../get-suggested-search-terms.md)
-- [Odwołanie do API automatycznego sugerowania usługi Bing w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)
+- [Czym jest funkcja automatycznego sugerowania Bing?](../get-suggested-search-terms.md)
+- [Bing Autosuggest API v7 reference (Dokumentacja dotycząca automatycznego sugerowania Bing w wersji 7)](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)

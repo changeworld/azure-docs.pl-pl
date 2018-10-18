@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 09/27/2018
 ms.author: cephalin;msangapu
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 05dd53fdfda5446cf848a7b8503a09bc5e5c2d20
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 347fc291fc7357481bfdc88c9019c3d688925c2f
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433467"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067521"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Tworzenie aplikacji internetowej Node.js na platformie Azure
 
@@ -46,10 +46,15 @@ Aby ukończyć ten przewodnik Szybki start:
 
 Pobierz przykładowy projekt Node.js z [https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip](https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip) i wyodrębnij archiwum ZIP.
 
-W oknie terminalu przejdź do katalogu głównego przykładowego projektu Node.js (zawierającego plik _index.js_).
+Otwórz plik _index.js_ i znajdź następujący wiersz:
 
-> [!NOTE]
-> Nie musisz używać przykładowej aplikacji. Jeśli chcesz, możesz użyć własnego kodu platformy Node. Pamiętaj jednak, że PORT Twojej aplikacji zostanie ustawiony w środowisku uruchomieniowym przez platformę Azure i jest dostępny jako `process.env.PORT`. Jeśli używasz programu Express, pamiętaj, aby przeprowadzić kontrolę podczas uruchamiania (`app.listen`) dla `process.env.PORT || 3000`. Jeśli tego nie zrobisz, a port nie jest zgodny z ustawieniami wprowadzonymi podczas uruchamiania przez platformę Azure, zostanie wyświetlony komunikat `Service Unavailable`. 
+```javascript
+var port = process.env.PORT || 1337;
+```
+
+Usługa App Service wprowadza zmienną process.env.PORT do aplikacji, a kod wykorzystuje tę zmienną do określenia, którego portu należy nasłuchiwać. 
+
+W oknie terminalu przejdź do katalogu głównego przykładowego projektu Node.js (zawierającego plik _index.js_).
 
 ## <a name="run-the-app-locally"></a>Lokalne uruchamianie aplikacji
 
@@ -68,7 +73,7 @@ Na stronie zostanie wyświetlony komunikat **Hello World** z przykładowej aplik
 W oknie terminalu naciśnij kombinację klawiszy **Ctrl + C**, aby zamknąć serwer sieci Web.
 
 > [!NOTE]
-> W usłudze Azure App Service aplikacja jest uruchamiana w usłudze IIS przy użyciu programu [iisnode](https://github.com/tjanczuk/iisnode). Aby umożliwić uruchomienie aplikacji w programie iisnode, główny katalog aplikacji zawiera plik web.config. Plik jest możliwy do odczytu przez usługę IIS, a ustawienia związane z programem iisnode są udokumentowane w [repozytorium GitHub programu iisnode](https://github.com/tjanczuk/iisnode/blob/master/src/samples/configuration/web.config).
+> W usłudze Azure App Service aplikacja jest uruchamiana w usłudze IIS przy użyciu programu [iisnode](https://github.com/Azure/iisnode). Aby umożliwić uruchomienie aplikacji w programie iisnode, główny katalog aplikacji zawiera plik web.config. Plik jest możliwy do odczytu przez usługę IIS, a ustawienia związane z programem iisnode są udokumentowane w [repozytorium GitHub programu iisnode](https://github.com/Azure/iisnode/blob/master/src/samples/configuration/web.config).
 
 [!INCLUDE [Create ZIP file](../../includes/app-service-web-create-zip.md)]
 

@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: b52e491162dcf17eff2ca07bc067586358aa9a35
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
-ms.translationtype: MT
+ms.openlocfilehash: e24c12dd5891b0ee58263a1e0a4e3af1ebffe711
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393296"
+ms.locfileid: "49365008"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Rozwiązania Virtual Kubelet za pomocą usługi Azure Kubernetes Service (AKS)
 
@@ -124,9 +124,6 @@ metadata:
   name: aci-helloworld
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: aci-helloworld
   template:
     metadata:
       labels:
@@ -172,9 +169,6 @@ metadata:
   name: nanoserver-iis
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: aci-helloworld
   template:
     metadata:
       labels:

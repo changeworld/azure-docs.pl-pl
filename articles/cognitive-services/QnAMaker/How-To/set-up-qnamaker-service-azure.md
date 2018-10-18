@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 103da0c65bcf9b9bd24130082f844b9bd12a9a02
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: MT
+ms.openlocfilehash: c4175a22cc503113f3b3ef64f03f0ae0913bd20e
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389721"
+ms.locfileid: "49364901"
 ---
 # <a name="create-a-qna-maker-service"></a>Tworzenie usługi QnA Maker
 
@@ -44,7 +44,7 @@ Ten Instalator wdraża kilka zasobów platformy Azure. Razem te zasoby zarządza
     * Wybierz **warstwa cenowa wyszukiwania** usługi Azure Search. Jeśli widzisz opcję w warstwie bezpłatna wyszarzone, oznacza to, że masz już wdrożone w subskrypcji warstwy bezpłatna usługi Azure Search. W takim przypadku konieczne będzie rozpoczęcie od warstwy podstawowa usługi Azure Search. Zobacz szczegóły cennika usługi Azure search [tutaj](https://azure.microsoft.com/pricing/details/search/).
     * Wybierz **Lokalizacja wyszukiwania** miejscu danych usługi Azure Search do wdrożenia. Ograniczenia, w której muszą być przechowywane dane klientów poinformuje lokalizacji, wybrany dla usługi Azure Search.
     * Nadaj nazwę usłudze App service w **nazwy aplikacji**.
-    * Domyślnie usługa App service domyślnie do warstwy standardowa (S1). Plan można zmienić po utworzeniu. Zobacz więcej szczegółów dotyczących App service — ceny [tutaj](https://azure.microsoft.com/pricing/details/app-service/).
+    * Domyślnie usługa App service domyślnie do warstwy standardowa (S1). Plan można zmienić po utworzeniu. Zobacz więcej szczegółów dotyczących App service — ceny [tutaj](https://azure.microsoft.com/en-in/pricing/details/app-service/).
     * Wybierz **lokalizacja witryny sieci Web** wdrożonym usługi App Service.
 
         > [!NOTE]

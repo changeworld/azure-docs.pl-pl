@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/13/2018
+ms.date: 10/09/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: c3089ad11dc951d3105b25b6857b7697f8c38d1a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 52429d44c41d990fb0de4c01c63d4af9fe5863d4
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432073"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902896"
 ---
 # <a name="create-a-python-web-app-in-azure-app-service-on-linux-preview"></a>Tworzenie aplikacji internetowej języka Python w usłudze Azure App Service w systemie Linux (wersja zapoznawcza)
 
@@ -172,13 +172,13 @@ Menu po lewej stronie zawiera różne strony służące do konfigurowania aplika
 
 ## <a name="next-steps"></a>Następne kroki
 
-Wbudowany obraz języka Python w usłudze App Service w systemie Linux jest obecnie w wersji zapoznawczej. Zamiast tego można utworzyć aplikacje produkcyjne w języku Python przy użyciu kontenera niestandardowego.
+Wbudowany obraz języka Python w usłudze App Service w systemie Linux jest obecnie w wersji zapoznawczej. Można dostosować polecenie używane do uruchamiania aplikacji. Można też tworzyć aplikacje produkcyjne w języku Python przy użyciu kontenera niestandardowego.
 
 > [!div class="nextstepaction"]
 > [Python z PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [Konfigurowanie wbudowanego obrazu języka Python](how-to-configure-python.md)
+> [Konfigurowanie niestandardowego polecenia uruchamiania](how-to-configure-python.md#custom-startup-command)
 
 > [!div class="nextstepaction"]
 > [Używanie niestandardowych obrazów](tutorial-custom-docker-image.md)

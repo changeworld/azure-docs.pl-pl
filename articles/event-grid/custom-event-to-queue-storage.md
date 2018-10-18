@@ -5,15 +5,15 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 07/05/2018
+ms.date: 10/09/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: d550812f9cb23fd17d3c73c851a306190be293fa
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7ca8311c97faed980555c46d977a5df85c20353d
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423644"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067464"
 ---
 # <a name="route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Kierowanie zdarzeń niestandardowych do usługi Azure Queue Storage za pomocą interfejsu wiersza polecenia platformy Azure i usługi Event Grid
 
@@ -39,7 +39,7 @@ az group create --name gridResourceGroup --location westus2
 
 ## <a name="create-a-custom-topic"></a>Tworzenie tematu niestandardowego
 
-Temat usługi Event Grid udostępnia zdefiniowany przez użytkownika punkt końcowy, w którym publikowane są zdarzenia. Poniższy przykład obejmuje tworzenie tematu niestandardowego w grupie zasobów. Zamień `<topic_name>` na unikatową nazwę tematu. Nazwa tematu musi być unikatowa, ponieważ jest reprezentowana przez wpis DNS.
+Temat usługi Event Grid udostępnia zdefiniowany przez użytkownika punkt końcowy, w którym publikowane są zdarzenia. Poniższy przykład obejmuje tworzenie tematu niestandardowego w grupie zasobów. Zamień nazwę `<topic_name>` na unikatową nazwę tematu niestandardowego. Nazwa tematu usługi Event Grid musi być unikatowa, ponieważ jest reprezentowana przez wpis DNS.
 
 ```azurecli-interactive
 # if you have not already installed the extension, do it now.
@@ -51,7 +51,7 @@ az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
 
 ## <a name="create-queue-storage"></a>Tworzenie magazynu kolejek
 
-Przed zasubskrybowaniem tematu utwórzmy punkt końcowy dla komunikatów o zdarzeniach. Utworzysz magazyn kolejek w celu zbierania zdarzeń.
+Przed subskrybowaniem tematu niestandardowego utwórzmy punkt końcowy dla komunikatu o zdarzeniach. Utworzysz magazyn kolejek w celu zbierania zdarzeń.
 
 ```azurecli-interactive
 storagename="<unique-storage-name>"
@@ -61,9 +61,9 @@ az storage account create -n $storagename -g gridResourceGroup -l westus2 --sku 
 az storage queue create --name $queuename --account-name $storagename
 ```
 
-## <a name="subscribe-to-a-topic"></a>Subskrybowanie tematu
+## <a name="subscribe-to-a-custom-topic"></a>Subskrybowanie tematu niestandardowego
 
-Subskrybowanie tematu ma poinformować usługę Event Grid o tym, które zdarzenia chcesz śledzić. Poniższy przykład ilustruje subskrybowanie utworzonego tematu i przekazanie identyfikatora zasobu do magazynu kolejek dla punktu końcowego. Za pomocą interfejsu wiersza polecenia platformy Azure przekaż identyfikator magazynu kolejek jako punkt końcowy. Punkt końcowy ma następujący format:
+Subskrybowanie tematu niestandardowego ma poinformować usługę Event Grid o tym, które zdarzenia chcesz śledzić. Poniższy przykład ilustruje subskrybowanie utworzonego tematu niestandardowego i przekazanie identyfikatora zasobu do magazynu kolejek dla punktu końcowego. Za pomocą interfejsu wiersza polecenia platformy Azure przekaż identyfikator magazynu kolejek jako punkt końcowy. Punkt końcowy ma następujący format:
 
 `/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/queueservices/default/queues/<queue-name>`
 
@@ -81,6 +81,8 @@ az eventgrid event-subscription create \
   --endpoint $queueid
 ```
 
+Konto używane do tworzenia subskrypcji zdarzeń musi mieć dostęp do zapisu w magazynie kolejek.
+
 Jeśli korzystasz z interfejsu API REST do utworzenia subskrypcji, identyfikator konta magazynu i nazwa kolejki są przekazywane jako oddzielne parametry.
 
 ```json
@@ -93,22 +95,22 @@ Jeśli korzystasz z interfejsu API REST do utworzenia subskrypcji, identyfikator
   ...
 ```
 
-## <a name="send-an-event-to-your-topic"></a>Wysyłanie zdarzenia do tematu
+## <a name="send-an-event-to-your-custom-topic"></a>Wysyłanie zdarzenia do tematu niestandardowego
 
-Wyzwólmy zdarzenie, aby zobaczyć, jak usługa Event Grid dystrybuuje komunikat do punktu końcowego. Po pierwsze uzyskajmy adres URL i klucz tematu niestandardowego. Ponownie użyj nazwy tematu dla wartości `<topic_name>`.
+Wyzwólmy zdarzenie, aby zobaczyć, jak usługa Event Grid dystrybuuje komunikat do punktu końcowego. Po pierwsze uzyskajmy adres URL i klucz tematu niestandardowego. Ponownie użyj nazwy tematu niestandardowego dla wartości `<topic_name>`.
 
 ```azurecli-interactive
 endpoint=$(az eventgrid topic show --name <topic_name> -g gridResourceGroup --query "endpoint" --output tsv)
 key=$(az eventgrid topic key list --name <topic_name> -g gridResourceGroup --query "key1" --output tsv)
 ```
 
-Aby uprościć ten artykuł, użyj przykładowych danych zdarzenia do wysłania do tematu. Zwykle dane zdarzenia są wysyłane przez aplikację lub usługę platformy Azure. CURL to narzędzie, które wysyła żądania HTTP. W tym artykule do wysłania zdarzenia do tematu używane jest narzędzie CURL.  W poniższym przykładzie są wysyłane trzy zdarzenia do tematu usługi Event Grid:
+Dla uproszczenia czynności opisanych w tym artykule do tematu niestandardowego zostaną wysłane przykładowe dane zdarzenia. Zwykle dane zdarzenia są wysyłane przez aplikację lub usługę platformy Azure. CURL to narzędzie, które wysyła żądania HTTP. W tym artykule do wysłania zdarzenia do tematu niestandardowego jest używane narzędzie CURL.  W poniższym przykładzie są wysyłane trzy zdarzenia do tematu usługi Event Grid:
 
 ```azurecli-interactive
 for i in 1 2 3
 do
-   body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/customevent.json)'")
-   curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
+   event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/vehicles/motorcycles", "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'", "data":{ "make": "Ducati", "model": "Monster"},"dataVersion": "1.0"} ]'
+   curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 done
 ```
 

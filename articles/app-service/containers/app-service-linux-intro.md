@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 02/16/2017
+ms.date: 10/09/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 5ab5452aec5b0371caaf437b6e364ed7b922db3a
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 9efa6dc8427c58c82702fd5b3449fcd4805bf9e3
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162261"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902097"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Wprowadzenie do usługi Azure App Service w systemie Linux
 
@@ -33,12 +33,12 @@ Usługa App Service w systemie Linux obsługuje szereg wbudowanych obrazów w ce
 
 | Język | Obsługiwane wersje |
 |---|---|
-| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 9.4 |
+| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 8.11, 9.4, 10.1 |
 | Java * | 8.0 |
 | PHP | 5.6, 7.0, 7.2 |
+| Python (wersja zapoznawcza) | 3.7 |
 | .NET Core | 1.0, 1.1, 2.0 |
 | Ruby | 2.3 |
-| Przejdź | 1.0 |
 | Apache Tomcat | 8.5, 9.0 |
 
 Więcej szczegółów można znaleźć w temacie [Tworzenie aplikacji internetowej w języku Java w usłudze App Service w systemie Linux](https://docs.microsoft.com/azure/app-service/containers/quickstart-java).
@@ -91,15 +91,25 @@ Dostęp do witryny SCM można uzyskać za pomocą opcji **Narzędzia zaawansowan
 
 ## <a name="next-steps"></a>Następne kroki
 
-Skorzystaj z następujących linków, aby rozpocząć pracę z usługą App Service w systemie Linux. Pytania i uwagi można zamieszczać na [naszym forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview).
+Następujące artykuły ułatwią rozpoczęcie pracy z usługą App Service w systemie Linux w przypadku aplikacji internetowych napisanych w różnych językach:
 
-* [How to use a custom Docker image for Web App for Containers](quickstart-docker-go.md) (Używanie niestandardowego obrazu platformy Docker dla usługi Web App for Containers)
-* [Using .NET Core in Azure App Service on Linux](quickstart-dotnetcore.md) (Korzystanie z platformy .NET Core w usłudze Azure App Service w systemie Linux)
-* [Using Ruby in Azure App Service on Linux](quickstart-ruby.md) (Używanie języka Ruby w usłudze Azure App Service w systemie Linux)
-* [Azure App Service Web App for Containers FAQ](app-service-linux-faq.md) (Usługa Web App for Containers w usłudze Azure App Service — często zadawane pytania)
-* [SSH support for Azure App Service on Linux](app-service-linux-ssh-support.md) (Obsługa protokołu SSH dla usługi Azure App Service w systemie Linux)
-* [Konfigurowanie środowisk przejściowych w usłudze Azure App Service](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-* [Docker Hub Continuous Deployment with Web App for Containers](./app-service-linux-ci-cd.md) (Ciągłe wdrażanie w usłudze Docker Hub za pomocą usługi Web App for Containers)
+* [.NET Core](quickstart-dotnetcore.md)
+* [PHP](quickstart-dotnetcore.md)
+* [Node.js](quickstart-nodejs.md)
+* [Java](quickstart-java.md)
+* [Python](quickstart-python.md)
+* [Ruby](quickstart-ruby.md)
+* [Go](quickstart-docker-go.md)
+* [Aplikacje z wieloma kontenerami](quickstart-multi-container.md)
+
+Zobacz też następujące artykuły, aby uzyskać więcej informacji o usłudze App Service w systemie Linux:
+
+* [Usługa App Service dla systemu Linux — często zadawane pytania](app-service-linux-faq.md)
+* [Obsługa protokołu SSH dla usługi App Service w systemie Linux](app-service-linux-ssh-support.md)
+* [Konfigurowanie środowisk przejściowych w usłudze App Service](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+* [Ciągłe wdrażanie w usłudze Docker Hub](app-service-linux-ci-cd.md)
+
+Pytania i uwagi można zamieszczać na [naszym forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview).
 
 <!--Image references-->
 [1]: ./media/app-service-linux-intro/kudu-docker-logs.png

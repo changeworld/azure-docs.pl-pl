@@ -3,21 +3,20 @@ title: Tworzenie i publikowanie aplikacji zarządzanej katalogu usług platformy
 description: Przedstawia sposób tworzenia aplikacji zarządzanej platformy Azure przeznaczonej dla członków Twojej organizacji.
 services: managed-applications
 author: tfitzmac
-manager: timlt
 ms.service: managed-applications
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 06/08/2018
+ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3b1da6e9068be3c96cce5973f29344fe7e4b4872
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: a2e6e78268f97136533b4f72ce28373642b6c394
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095844"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801271"
 ---
-# <a name="publish-a-managed-application-for-internal-consumption"></a>Publikowanie aplikacji zarządzanej do użytku wewnątrz organizacji
+# <a name="create-and-publish-a-managed-application-definition"></a>Tworzenie i publikowanie definicji aplikacji zarządzanej
 
 Możesz tworzyć i publikować [aplikacje zarządzane](overview.md) na platformie Azure, przeznaczone dla członków Twojej organizacji. Na przykład dział IT może publikować aplikacje zarządzane zapewniające zgodność z normami obowiązującymi w organizacji. Takie aplikacje zarządzane są dostępne w katalogu usług, a nie w witrynie Azure Marketplace.
 
@@ -215,80 +214,7 @@ New-AzureRmManagedApplicationDefinition `
 
 Masz dostęp do definicji aplikacji zarządzanej, ale chcesz mieć pewność, że inni użytkownicy w Twojej organizacji również mają do niej dostęp. Z definicji przyznaj im co najmniej rolę czytelnika. Użytkownicy mogą odziedziczyć ten poziom dostępu z subskrypcji lub grupy zasobów. Aby sprawdzić, kto ma dostęp do definicji, i dodać użytkowników lub grupy, zobacz [Używanie kontroli dostępu opartej na rolach do zarządzania dostępem do zasobów subskrypcji platformy Azure](../role-based-access-control/role-assignments-portal.md).
 
-## <a name="create-the-managed-application"></a>Tworzenie aplikacji zarządzanej
-
-Możesz wdrożyć aplikację zarządzaną przy użyciu witryny Azure Portal, programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
-
-### <a name="powershell"></a>PowerShell
-
-Najpierw przedstawione zostanie wdrożenie aplikacji zarządzanej za pomocą programu PowerShell.
-
-```powershell
-# Create resource group
-New-AzureRmResourceGroup -Name applicationGroup -Location westcentralus
-
-# Get ID of managed application definition
-$appid=(Get-AzureRmManagedApplicationDefinition -ResourceGroupName appDefinitionGroup -Name ManagedStorage).ManagedApplicationDefinitionId
-
-# Create the managed application
-New-AzureRmManagedApplication `
-  -Name storageApp `
-  -Location westcentralus `
-  -Kind ServiceCatalog `
-  -ResourceGroupName applicationGroup `
-  -ManagedApplicationDefinitionId $appid `
-  -ManagedResourceGroupName "InfrastructureGroup" `
-  -Parameter "{`"storageAccountNamePrefix`": {`"value`": `"demostorage`"}, `"storageAccountType`": {`"value`": `"Standard_LRS`"}}"
-```
-
-W ramach subskrypcji istnieje teraz aplikacja zarządzana i infrastruktura zarządzana.
-
-### <a name="portal"></a>Portal
-
-Teraz przedstawione zostanie wdrożenie aplikacji zarządzanej w witrynie Azure Portal. Zobaczysz interfejs użytkownika utworzony w ramach pakietu.
-
-1. Przejdź do witryny Azure Portal. Wybierz polecenie **+ Utwórz zasób** i wyszukaj **katalog usług**.
-
-   ![Wyszukiwanie katalogu usług](./media/publish-service-catalog-app/create-new.png)
-
-1. Wybierz pozycję **Aplikacja zarządzana katalogu usług**.
-
-   ![Wybieranie katalogu usług](./media/publish-service-catalog-app/select-service-catalog-managed-app.png)
-
-1. Wybierz pozycję **Utwórz**.
-
-   ![Wybieranie pozycji Utwórz](./media/publish-service-catalog-app/select-create.png)
-
-1. Znajdź aplikację zarządzaną, którą chcesz utworzyć, na liście dostępnych rozwiązań i wybierz ją. Wybierz pozycję **Utwórz**.
-
-   ![Znajdowanie aplikacji zarządzanej](./media/publish-service-catalog-app/find-application.png)
-
-   Jeśli definicja aplikacji zarządzanych nie jest widoczna za pośrednictwem portalu, może być konieczna zmiana ustawień portalu. Wybierz opcję **Filtr katalogów i subskrypcji**.
-
-   ![Wybieranie filtru subskrypcji](./media/publish-service-catalog-app/select-filter.png)
-
-   Sprawdź, czy globalny filtr subskrypcji obejmuje subskrypcję, która zawiera definicję aplikacji zarządzanej.
-
-   ![Sprawdzanie filtru subskrypcji](./media/publish-service-catalog-app/check-global-filter.png)
-
-   Po wybraniu subskrypcji rozpocznij od nowa tworzenie katalogu usług aplikacji zarządzanych. Powinny być teraz widoczne.
-
-1. Podaj wymagane podstawowe informacje dotyczące aplikacji zarządzanej. Określ subskrypcję i nową grupę zasobów, która będzie zawierała aplikację zarządzaną. Wybierz lokalizację **Zachodnio-środkowe stany USA**. Po zakończeniu wybierz polecenie **Zamknij**.
-
-   ![Określanie parametrów aplikacji zarządzanej](./media/publish-service-catalog-app/add-basics.png)
-
-1. Wprowadź wartości właściwe dla zasobów aplikacji zarządzanej. Po zakończeniu wybierz polecenie **Zamknij**.
-
-   ![Określanie parametrów zasobów](./media/publish-service-catalog-app/add-storage-settings.png)
-
-1. Szablon weryfikuje podane wartości. Jeśli weryfikacja zakończy się powodzeniem, wybierz przycisk **OK**, aby rozpocząć wdrażanie.
-
-   ![Weryfikowanie aplikacji zarządzanej](./media/publish-service-catalog-app/view-summary.png)
-
-Po ukończeniu wdrażania aplikacja zarządzana będzie znajdowała się w grupie zasobów o nazwie applicationGroup. Konto magazynu będzie znajdowało się w grupie zasobów o nazwie applicationGroup z dodanym skrótem wartości ciągu.
-
 ## <a name="next-steps"></a>Następne kroki
 
-* Zobacz artykuł [Omówienie aplikacji zarządzanych](overview.md) zawierający wprowadzenie do aplikacji zarządzanych.
-* Aby zapoznać się z przykładowymi projektami, zobacz [Sample projects for Azure managed applications](sample-projects.md) (Przykładowe projekty aplikacji zarządzanych platformy Azure).
-* Aby dowiedzieć się, jak utworzyć plik definicji interfejsu użytkownika dla aplikacji zarządzanej, zobacz [Rozpoczynanie pracy z plikiem CreateUiDefinition](create-uidefinition-overview.md).
+* Aby opublikować aplikację zarządzaną w witrynie Azure Marketplace, zobacz [Aplikacje zarządzane platformy Azure w witrynie Marketplace](publish-marketplace-app.md).
+* Aby wdrożyć wystąpienie aplikacji zarządzanej, zobacz [Deploy service catalog app through Azure portal (Wdrażanie aplikacji wykazu usług przy użyciu witryny Azure Portal)](deploy-service-catalog-quickstart.md).

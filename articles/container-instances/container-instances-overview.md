@@ -6,15 +6,15 @@ author: seanmck
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
-ms.date: 07/19/2018
+ms.date: 10/02/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 953d1dfd633f2fee52a2e6d197c6f32e7ab053f7
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 33d6d89e91ecdec00c1b17ecddf91128e9d07526
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160454"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802104"
 ---
 # <a name="azure-container-instances"></a>Azure Container Instances
 
@@ -54,9 +54,19 @@ Usługa Azure Container Instances obsługuje obrazy systemu Windows na podstawie
 
 Usługa Azure Container Instances obsługuje planowanie [grup wielu kontenerów](container-instances-container-groups.md), które współużytkują maszynę hosta, sieć lokalną, magazyn i cykl życia. Dzięki temu można łączyć główny kontener aplikacji z innymi kontenerami pełniącymi rolę pomocniczą, np. przyczepkami rejestrowania.
 
+## <a name="virtual-network-deployment-preview"></a>Wdrażanie sieci wirtualnej (wersja zapoznawcza)
+
+Ta funkcja usługi Azure Container Instances (obecnie dostępna w wersji zapoznawczej) umożliwia [wdrażanie wystąpień kontenerów w sieci wirtualnej platformy Azure](container-instances-vnet.md). Wdrożenie wystąpień kontenerów w podsieci w sieci wirtualnej umożliwia bezpieczną komunikację z innymi zasobami w sieci wirtualnej, w tym z zasobami lokalnymi (przy użyciu [bramy sieci VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) lub [usługi ExpressRoute](../expressroute/expressroute-introduction.md)).
+
+> [!IMPORTANT]
+> Wdrażanie grup kontenerów w sieci wirtualnej jest obecnie dostępne w wersji zapoznawczej i [obowiązują pewne ograniczenia](container-instances-vnet.md#preview-limitations). Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania][terms-of-use]. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
+
 ## <a name="next-steps"></a>Następne kroki
 
 Spróbuj wdrożyć kontener na platformie Azure za pomocą jednego polecenia, korzystając z naszego przewodnika Szybki start:
 
 > [!div class="nextstepaction"]
 > [Azure Container Instances — Szybki start](container-instances-quickstart.md)
+
+<!-- LINKS - External -->
+[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

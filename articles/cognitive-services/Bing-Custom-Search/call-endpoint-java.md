@@ -1,40 +1,41 @@
 ---
-title: Wywoływanie punktu końcowego za pomocą języka Java — wyszukiwanie niestandardowe Bing — Microsoft Cognitive Services
-description: Ten przewodnik Szybki Start pokazano, jak żądanie wyniki wyszukiwania z wystąpienia wyszukiwania niestandardowego przy użyciu platformy Java, aby wywołać punkt końcowy wyszukiwania niestandardowego Bing.
+title: 'Szybki start: wywoływanie punktu końcowego za pomocą języka Java — wyszukiwanie niestandardowe Bing'
+titlesuffix: Azure Cognitive Services
+description: W tym przewodniku Szybki start pokazano, jak wysłać żądanie wyników wyszukiwania z poziomu wystąpienia usługi wyszukiwania niestandardowego, wywołując punkt końcowy wyszukiwania niestandardowego Bing za pomocą języka Java.
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 7ef4de749d5b9152bbe043a26d3c60fe7f09f869
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: MT
+ms.openlocfilehash: ba1eb9799bc95dede081c6f1a6d972896c126da6
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951818"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814121"
 ---
-# <a name="call-bing-custom-search-endpoint-java"></a>Wywołanie punktu końcowego usługi Bing Custom Search (Java)
+# <a name="quickstart-call-bing-custom-search-endpoint-java"></a>Szybki start: wywoływanie punktu końcowego wyszukiwania niestandardowego Bing (Java)
 
-Ten przewodnik Szybki Start pokazano, jak żądanie wyniki wyszukiwania z wystąpienia wyszukiwania niestandardowego za pomocą języka Java, aby wywołać punkt końcowy wyszukiwania niestandardowego Bing. 
+W tym przewodniku Szybki start pokazano, jak wysłać żądanie wyników wyszukiwania z poziomu wystąpienia usługi wyszukiwania niestandardowego, wywołując punkt końcowy wyszukiwania niestandardowego Bing za pomocą języka Java. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warunki:
 
-- Wystąpienie wyszukiwania niestandardowego gotowych do użycia. Zobacz [Tworzenie pierwszego wystąpienia wyszukiwania niestandardowego Bing](quick-start.md).
-- [Java](https://www.java.com) zainstalowane.
-- Klucz subskrypcji. Klucz subskrypcji możesz uzyskać po aktywowaniu usługi [bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search), lub za pomocą klucza płatnej subskrypcji w pulpicie nawigacyjnym platformy Azure (zobacz [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
+- Gotowe do użycia wystąpienie usługi wyszukiwania niestandardowego. Zobacz [Tworzenie pierwszego wystąpienia usługi wyszukiwania niestandardowego Bing](quick-start.md).
+- Zainstalowane środowisko języka [Java](https://www.java.com).
+- Klucz subskrypcji. Klucz subskrypcji możesz uzyskać, aktywując [bezpłatną wersję próbną](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search), lub użyć klucza płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure (zobacz [Konto interfejsu Cognitive Services API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
 
 ## <a name="run-the-code"></a>Uruchamianie kodu
 
 Aby uruchomić ten przykład, wykonaj następujące kroki:
 
-1. Za pomocą środowiska IDE Java wybranego, Utwórz pakiet.  
+1. Utwórz pakiet za pomocą wybranego środowiska projektowego Java.  
   
-2. Utwórz plik o nazwie CustomSrchJava.java w pakiecie i skopiuj następujący kod do niego. Zastąp **YOUR-SUBSCRIPTION-KEY** i **YOUR-CUSTOM-CONFIG-ID** klucz subskrypcji i konfiguracji identyfikatora.  
+2. W tym pakiecie utwórz plik o nazwie CustomSrchJava.java i skopiuj do niego następujący kod. Zastąp wartości **YOUR-SUBSCRIPTION-KEY** i **YOUR-CUSTOM-CONFIG-ID** odpowiednio kluczem subskrypcji i identyfikatorem konfiguracji.  
   
     ```java
     import java.io.InputStream;
@@ -134,7 +135,7 @@ Aby uruchomić ten przykład, wykonaj następujące kroki:
   
 4. Uruchom program.
     
-## <a name="next-steps"></a>Kolejne kroki
-- [Konfigurowanie środowiska obsługiwanego interfejsu użytkownika](./hosted-ui.md)
-- [Korzystanie ze znaczników dekoracji, aby wyróżnić tekst](./hit-highlighting.md)
-- [Strona stron sieci Web](./page-webpages.md)
+## <a name="next-steps"></a>Następne kroki
+- [Konfigurowanie środowiska hostowanego interfejsu użytkownika](./hosted-ui.md)
+- [Wyróżnianie tekstu za pomocą znaczników dekoracji](./hit-highlighting.md)
+- [Dzielenie na strony wyników wyszukiwania stron internetowych](./page-webpages.md)

@@ -1,56 +1,57 @@
 ---
-title: Utwórz samouczek Custom Vision usługi Java — Azure Cognitive Services | Dokumentacja firmy Microsoft
-description: Zapoznaj się z podstawową aplikację Java, który używa niestandardowego interfejsu API przetwarzania w usługach Microsoft Cognitive Services. Utwórz projekt, dodać tagi, przekazywać obrazy, szkolenie projektu i przewiduje przy użyciu domyślnego punktu końcowego.
+title: 'Samouczek: kompilowanie projektu klasyfikacji obrazów – Custom Vision Service, Java'
+titlesuffix: Azure Cognitive Services
+description: Utwórz projekt, dodaj tagi, prześlij obrazy, wyszkol projekt i wykonaj przewidywanie przy użyciu domyślnego punktu końcowego.
 services: cognitive-services
 author: areddish
-manager: chbuehle
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: a83a2f5cac9281a4cd79c1a0cead0f2af82d73df
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: MT
+ms.openlocfilehash: 9a7f50e0eb33016d6a2d8f28be047b327135c51f
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44305713"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367359"
 ---
-# <a name="use-custom-vision-api-to-build-an-image-classification-project-with-java"></a>Użyj interfejsu API usługi Custom Vision do utworzenia projektu Klasyfikacja obrazów przy użyciu języka Java
+# <a name="tutorial-build-an-image-classification-project-with-java"></a>Samouczek: kompilowanie projektu klasyfikacji obrazów w języku Java
 
-Dowiedz się, jak utworzyć projekt klasyfikacji obrazów za pomocą usługi Custom Vision Service przy użyciu języka Java. Po jego utworzeniu można można Dodawanie tagów, przekazywać obrazy, szkolenie projektu, pobrać projektu domyślne prognozowania — adres URL punktu końcowego i go używać do testowania programowo obrazu. Użyj w tym przykładzie typu open-source jako szablon do tworzenia własnych aplikacji przy użyciu interfejsu API usługi Custom Vision.
+Dowiedz się, jak utworzyć projekt klasyfikacji obrazów za pomocą usługi Custom Vision Service przy użyciu języka Java. Po jego utworzeniu możesz dodać tagi, przesłać obrazy, wyszkolić projekt, uzyskać adres URL domyślnego punktu końcowego przewidywania projektu i użyć go do programowego przetestowania obrazu. Ta przykładowa aplikacja open source może posłużyć jako szablon do utworzenia własnej aplikacji przy użyciu interfejsu API Custom Vision.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Zestaw JDK 7 lub 8.
-- Zainstalowane narzędzia maven.
+- Zainstalowany zestaw JDK 7 lub 8.
+- Zainstalowane narzędzia Maven.
 
-## <a name="get-the-training-and-prediction-keys"></a>Pobierz klucze uczenia i przewidywania
+## <a name="get-the-training-and-prediction-keys"></a>Uzyskanie kluczy szkoleniowego i predykcyjnego
 
-Aby uzyskać klucze używane w tym przykładzie, odwiedź stronę [strony sieci web Custom Vision](https://customvision.ai) i wybierz __ikonę koła zębatego__ w prawym górnym rogu. W __kont__ sekcji, skopiuj wartości z __klucz szkolenia__ i __klucz prognozowania__ pola.
+Aby uzyskać klucze używane w tym przykładzie, przejdź na [stronę Custom Vision](https://customvision.ai) i wybierz __ikonę koła zębatego__ w prawym górnym rogu. W sekcji __Accounts__ (Konta) skopiuj wartości z pól __Training Key__ (Klucz szkoleniowy) i __Prediction Key__ (Klucz predykcyjny).
 
-![Obraz przedstawiający klucze interfejsu użytkownika](./media/python-tutorial/training-prediction-keys.png)
+![Obraz interfejsu użytkownika do uzyskiwania kluczy](./media/python-tutorial/training-prediction-keys.png)
 
-## <a name="install-the-custom-vision-service-sdk"></a>Instalowanie zestawu SDK usługi Custom Vision
+## <a name="install-the-custom-vision-service-sdk"></a>Zainstalowanie pakietu SDK Custom Vision Service
 
-SDK wizji niestandardowe można zainstalować w centralnym repozytorium maven:
-* [Szkolenie zestawu SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
-* [Prognozowanie zestawu SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
+Pakiet SDK Custom Vision można zainstalować z centralnego repozytorium Maven:
+* [Pakiet SDK do szkolenia](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
+* [Pakiet SDK do przewidywania](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
 
 ## <a name="understand-the-code"></a>Zrozumienie kodu
 
-Pełne projektu, w tym obrazów, jest dostępne z [przykłady Custom Vision Azure dla języka Java repozytorium](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master). 
+Cały projekt, razem z obrazami, jest dostępny w [repozytorium przykładów Custom Vision Azure dla języka Java ](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master). 
 
-Użyj ulubionego środowiska IDE Java, aby otworzyć `Vision/CustomVision` projektu. 
+Otwórz projekt `Vision/CustomVision` w swoim ulubionym zintegrowanym środowisku projektowym Java. 
 
-Ta aplikacja używa klucza szkolenia pobranym wcześniej do utworzenia nowego projektu o nazwie __przykładowego projektu języka Java__. Następnie przekazuje obrazy do nauczenia i przetestowania klasyfikatora. Klasyfikator Określa, czy drzewo __Lipa__ lub __japoński wykonywanie operacji Cherry__.
+W tej aplikacji do utworzenia nowego projektu o nazwie __Przykładowy projekt Java__ zostanie użyty pobrany wcześniej klucz szkoleniowy. Następnie zostaną przesłane obrazy do szkolenia i testowania klasyfikatora. Klasyfikator określa, czy drzewo jest __Choiną__ czy __Wiśnią japońską__.
 
-Poniższe fragmenty kodu implementuje podstawowe funkcje w tym przykładzie:
+Poniższe fragmenty kodu implementują podstawową funkcjonalność tej przykładowej aplikacji:
 
-## <a name="create-a-custom-vision-service-project"></a>Tworzenie projektu usługi Custom Vision Service
+## <a name="create-a-custom-vision-service-project"></a>Utworzenie projektu Custom Vision Service
 
 > [!IMPORTANT]
-> Ustaw `trainingApiKey` wartość klucza szkolenia pobranym wcześniej.
+> Ustaw `trainingApiKey` na wartość uzyskanego wcześniej klucza szkoleniowego.
 
 ```java
 final String trainingApiKey = "insert your training key here";
@@ -64,7 +65,7 @@ Project project = trainer.createProject()
             .execute();
 ```
 
-## <a name="add-tags-to-your-project"></a>Dodawanie tagów do projektu
+## <a name="add-tags-to-your-project"></a>Dodanie tagów do projektu
 
 ```java
 // create hemlock tag
@@ -80,9 +81,9 @@ Tag cherryTag = trainer.createTag()
     .execute();
 ```
 
-## <a name="upload-images-to-the-project"></a>Przekazywanie obrazów do projektu
+## <a name="upload-images-to-the-project"></a>Przesłanie obrazów do projektu
 
-Próbka jest Instalatora w celu uwzględnienia obrazów w pakiecie końcowym. Obrazy są odczytywane sekcji zasobów plik jar i przekazany do usługi.
+Przykład jest skonfigurowany w taki sposób, aby zawierał obrazy w pakiecie końcowym. Obrazy są odczytywane z sekcji zasobów pliku jar i przesyłane do usługi.
 
 ```java
 System.out.println("Adding images...");
@@ -99,7 +100,7 @@ for (int i = 1; i <= 10; i++) {
 }
 ```
 
-Poprzednie fragment kodu sprawia, że użycie dwóch funkcji pomocnika, które odbierają obrazów jako zasób strumieni i przekazać je do usługi.
+W poprzednim fragmencie kodu używane były dwie funkcje pomocnicze pobierające obrazy jako strumienie zasobów i przesyłające je do usługi.
 
 ```java
 private static void AddImageToProject(Trainings trainer, Project project, String fileName, byte[] contents, UUID tag)
@@ -133,7 +134,7 @@ private static byte[] GetImage(String folder, String fileName)
 
 ## <a name="train-the-project"></a>Szkolenie projektu
 
-Utworzenie pierwszej iteracji w projekcie i oznacza tej iteracji jako domyślnej iteracji. 
+Utworzenie pierwszej iteracji w projekcie i oznaczenie jej jako domyślnej. 
 
 ```java
 System.out.println("Training...");
@@ -150,10 +151,10 @@ System.out.println("Training Status: "+ iteration.status());
 trainer.updateIteration(project.id(), iteration.id(), iteration.withIsDefault(true));
 ```
 
-## <a name="get-and-use-the-default-prediction-endpoint"></a>I korzystaj z domyślnego punktu końcowego prognoz
+## <a name="get-and-use-the-default-prediction-endpoint"></a>Uzyskanie domyślnego punktu końcowego do przewidywania i użycie go
 
 > [!IMPORTANT]
-> Ustaw `predictionApiKey` do przewidywania wartości klucza pobranym wcześniej.
+> Ustaw `predictionApiKey` na wartość uzyskanego wcześniej klucza do przewidywania.
 
 ```java
 final String predictionApiKey = "insert your prediction key here";
@@ -181,15 +182,15 @@ for (Prediction prediction: results.predictions())
 }
 ```
 
-## <a name="run-the-example"></a>Uruchomić przykład
+## <a name="run-the-example"></a>Uruchomienie przykładu
 
-Aby skompilować i uruchomić rozwiązanie przy użyciu narzędzia maven:
+Kompilacja i uruchomienie rozwiązania przy użyciu narzędzia Maven:
 
 ```
 mvn compile exec:java
 ```
 
-Dane wyjściowe aplikacji będą podobne do następującego tekstu:
+Dane wyjściowe aplikacji będą podobne do poniższego przykładu:
 
 ```
 Creating project...

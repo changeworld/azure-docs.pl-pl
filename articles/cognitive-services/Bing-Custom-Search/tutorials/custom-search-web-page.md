@@ -1,39 +1,40 @@
 ---
-title: 'Wyszukiwanie niestandardowe Bing: Tworzenie strony internetowej wyszukiwania niestandardowego | Dokumentacja firmy Microsoft'
-description: W tym artykule opisano sposób konfigurowania wystąpienia wyszukiwania niestandardowego i włączenie go do strony sieci web
+title: 'Samouczek: tworzenie strony internetowej z funkcją wyszukiwania niestandardowego — wyszukiwanie niestandardowe Bing'
+titlesuffix: Azure Cognitive Services
+description: W tym artykule opisano, jak skonfigurować wystąpienie wyszukiwania niestandardowego i zintegrować je ze stroną internetową.
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/16/2017
 ms.author: v-brapel
-ms.openlocfilehash: 8bc1520325afc256ac62cc1f1dfaf24c53da4b83
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: MT
+ms.openlocfilehash: 3e892131a0109d2fff924940542b5d8b2b701950
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980002"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815379"
 ---
-# <a name="build-a-custom-search-web-page"></a>Tworzenie strony internetowej z funkcją wyszukiwania niestandardowego
+# <a name="tutorial-build-a-custom-search-web-page"></a>Samouczek: tworzenie strony internetowej z funkcją wyszukiwania niestandardowego
 
-Usługa Bing Custom Search umożliwia utworzenie środowiska wyszukiwania dostosowane dla tematów, które Cię interesują. Na przykład jeśli jesteś właścicielem walki zapewniającej środowisko wyszukiwania, możesz określić, domen, Lokacje podrzędne i stron sieci Web, która wyszukuje Bing. Użytkownicy zobaczą wyniki wyszukiwania, dostosowane do zawartości, które ich interesują zamiast stronicować wyniki wyszukiwania, zawierające zawartości nie ma znaczenia. 
+Wyszukiwanie niestandardowe Bing umożliwia tworzenie dostosowanych funkcji wyszukiwania dla interesujących Cię tematów. Jeśli na przykład masz witrynę internetową poświęconą sztukom walki, w której znajduje się funkcja wyszukiwania, możesz określić domeny, witryny podrzędne i strony internetowe, które będą przeszukiwane przez usługę Bing. Użytkownicy zobaczą wyniki dostosowane do zawartości, która ich interesuje, zamiast przewijać strony ogólnych wyników wyszukiwania, które mogą zawierać nieistotną zawartość. 
 
-W tym samouczku pokazano, jak skonfigurować wystąpienia wyszukiwania niestandardowego i zintegrować ją nową stronę sieci web.
+W tym samouczku opisano, jak skonfigurować wystąpienie wyszukiwania niestandardowego i zintegrować je ze stroną internetową.
 
-Zadania omówione są następujące:
+Wykonane zadania:
 
 > [!div class="checklist"]
 > - Tworzenie wystąpienia wyszukiwania niestandardowego
-> - Dodaj aktywne wpisy
-> - Dodaj pozycje zablokowane
-> - Dodaj pozycje przypięte
-> - Integrowanie wyszukiwanie niestandardowe strony sieci web
+> - Dodawanie aktywnych wpisów
+> - Dodawanie wpisów zablokowanych
+> - Dodawanie wpisów przypiętych
+> - Integrowanie wyszukiwania niestandardowego ze stroną internetową
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Dla interfejsu API wyszukiwania niestandardowego Bing, aby skorzystać z samouczka, potrzebujesz klucza subskrypcji.  Aby uzyskać klucz, zobacz [spróbuj usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search).
+- Aby skorzystać z samouczka, potrzebny jest klucz subskrypcji interfejsu API wyszukiwania niestandardowego Bing.  Aby uzyskać klucz, zobacz [Możliwość wypróbowania usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search).
 - Jeśli nie masz jeszcze zainstalowanego programu Visual Studio 2017, możesz pobrać program [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) i używać go **bezpłatnie**.
 
 ## <a name="create-a-custom-search-instance"></a>Tworzenie wystąpienia wyszukiwania niestandardowego
@@ -42,94 +43,94 @@ Aby utworzyć wystąpienie wyszukiwania niestandardowego Bing:
 
 1. Otwórz przeglądarkę internetową.  
   
-2. Przejdź do wyszukiwania niestandardowego [portal](https://customsearch.ai).  
+2. Przejdź do [portalu](https://customsearch.ai) wyszukiwania niestandardowego.  
   
-3. Zaloguj się do portalu przy użyciu konta Microsoft (MSA). Jeśli nie masz konta Microsoft, kliknij przycisk **Utwórz konto Microsoft**. Jeśli po raz pierwszy przy użyciu portalu, zostanie wyświetlony monit uprawnień dostępu do danych. Kliknij przycisk **Yes** (Tak).  
+3. Zaloguj się do portalu przy użyciu konta Microsoft (MSA). Jeśli nie masz konta MSA, kliknij pozycję **Create a Microsoft account** (Utwórz konto Microsoft). Jeśli korzystasz z portalu po raz pierwszy, zostanie wyświetlony monit o udzielenie uprawnień dostępu do danych. Kliknij przycisk **Yes** (Tak).  
   
-4. Po zarejestrowaniu się kliknij **nowego wyszukiwania niestandardowego**. W **utworzenia nowego wystąpienia wyszukiwania niestandardowego** okna, wprowadź nazwę, która ma znaczenie i opisuje typ zawartości, ponieważ funkcja wyszukiwania. Nazwę można zmienić w dowolnym momencie.  
+4. Po zalogowaniu się kliknij pozycję **New custom search** (Nowe wyszukiwanie niestandardowe). W oknie **Create a new custom search instance** (Tworzenie nowego wystąpienia wyszukiwania niestandardowego) wprowadź istotną nazwę opisową typu zawartości zwracanej przez funkcję wyszukiwania. Nazwę można zmienić w dowolnym momencie.  
   
-  ![Zrzut ekranu przedstawiający Utwórz nowe pole wystąpienia wyszukiwania niestandardowego](../media/newCustomSrch.png)  
+  ![Zrzut ekranu pola Create a new custom search instance (Tworzenie nowego wystąpienia wyszukiwania niestandardowego)](../media/newCustomSrch.png)  
   
-5. Kliknij przycisk OK, określ adres URL i czy mają zostać dołączone podstrony adresu URL.  
+5. Kliknij przycisk OK, określ adres URL oraz czy mają zostać dołączone podstrony adresu URL.  
   
-  ![Strona definicji zrzut ekranu z adresu URL](../media/newCustomSrch1-a.png)  
+  ![Zrzut ekranu strony definicji adresu URL](../media/newCustomSrch1-a.png)  
 
 
-## <a name="add-active-entries"></a>Dodaj aktywne wpisy
+## <a name="add-active-entries"></a>Dodawanie aktywnych wpisów
 
-Aby dołączyć wyniki z określonych witryn internetowych lub adresy URL, dodaj je do **Active** kartę.
+Aby uwzględnić wyniki z określonych witryn internetowych lub adresów URL, dodaj je do karty **Active** (Aktywne).
 
-1.  Na **konfiguracji** kliknij **Active** kartę, a następnie wprowadź adres URL jednego lub więcej witryn sieci Web, które chcesz uwzględnić w wyszukiwaniu.
+1.  Na stronie **Configuration** (Konfiguracja) kliknij kartę **Active** (Aktywne) i wprowadź adres URL jednej lub większej liczby witryn internetowych, które mają zostać uwzględnione w wyszukiwaniu.
 
-    ![Zrzut ekranu przedstawiający aktywną kartę Edytor definicji](../media/customSrchEditor.png)
+    ![Zrzut ekranu przedstawiający kartę wpisów aktywnych w edytorze definicji](../media/customSrchEditor.png)
 
-2.  Aby upewnić się, że wystąpienie zwraca wyniki, należy wprowadzić kwerendę w okienku podglądu, po prawej stronie. Wyszukiwarka Bing zwraca tylko wyniki dla witryn publicznych, które ma on indeksowane.
+2.  Aby upewnić się, że wystąpienie zwraca wyniki, wprowadź zapytanie w okienku podglądu po prawej stronie. Wyszukiwarka Bing zwraca tylko wyniki z witryn publicznych, które zostały przez nią zindeksowane.
 
-## <a name="add-blocked-entries"></a>Dodaj pozycje zablokowane
+## <a name="add-blocked-entries"></a>Dodawanie wpisów zablokowanych
 
-Aby wykluczyć wyniki z określonych witryn internetowych lub adresy URL, dodaj je do **zablokowane** kartę.
+Aby wykluczyć wyniki z określonych witryn internetowych lub adresów URL, dodaj je do karty **Blocked** (Zablokowane).
 
-1. Na **konfiguracji** kliknij **zablokowane** kartę, a następnie wprowadź adres URL jednego lub więcej witryn sieci Web, które chcesz wykluczyć z wyszukiwania.
+1. Na stronie **Configuration** (Konfiguracja) kliknij kartę **Blocked** (Zablokowane) i wprowadź adres URL jednej lub większej liczby witryn internetowych, które mają zostać wykluczone z wyszukiwania.
 
-    ![Zrzut ekranu przedstawiający kartę zablokowanych Edytor definicji](../media/blockedCustomSrch.png)
+    ![Zrzut ekranu przedstawiający kartę wpisów zablokowanych w edytorze definicji](../media/blockedCustomSrch.png)
 
 
-2. Aby upewnić się, że wystąpienie usługi nie zwracania wyników z zablokowanych witryn sieci Web, wprowadź kwerendę w okienku podglądu, po prawej stronie. 
+2. Aby upewnić się, że wystąpienie nie zwraca wyników z zablokowanych witryn, wprowadź zapytanie w okienku podglądu po prawej stronie. 
 
-## <a name="add-pinned-entries"></a>Dodaj pozycje przypięte
+## <a name="add-pinned-entries"></a>Dodawanie wpisów przypiętych
 
-Aby przypiąć konkretnej strony sieci Web na początku wyników wyszukiwania, należy dodać termin strony sieci Web i zapytania, aby **Pinned** kartę. **Pinned** karta zawiera listę par termin do strony sieci Web i zapytania, określających strony sieci Web, który jest wyświetlany jako najlepszy wynik dla określonej kwerendy. Strony sieci Web jest przypięty, tylko wtedy, gdy ciąg zapytania użytkownika pasuje do ciągu zapytania numeru pin, na podstawie warunku dopasowania numeru pin. [Dowiedz się więcej](../define-your-custom-view.md#pin-to-top).
+Aby przypiąć określoną stronę internetową na początku wyników wyszukiwania, dodaj stronę internetową i termin zapytania do karty **Pinned** (Przypięte). Karta **Pinned** (Przypięte) zawiera listę par stron internetowych i terminów zapytań określających stronę internetową, która jest wyświetlana jako najlepszy wynik dla określonego zapytania. Ta strona internetowa zostaje przypięta tylko wtedy, gdy ciąg zapytania użytkownika jest zgodny z ciągiem zapytania przypiętego elementu na podstawie jego warunku dopasowania. [Dowiedz się więcej](../define-your-custom-view.md#pin-to-top).
 
-1. Na **konfiguracji** kliknij **Pinned** kartę, a następnie wprowadź termin strony sieci Web i zapytania, strony sieci Web, które mają być zwracane w wyniku najważniejsze.  
+1. Na stronie **Configuration** (Konfiguracja) kliknij kartę **Pinned** (Przypięte) i wprowadź stronę internetową oraz termin zapytania strony internetowej, które mają być zwracane jako najlepszy wynik.  
   
-2. Domyślnie ciąg zapytania użytkownika musi dokładnie odpowiadać ciągu zapytania numeru pin, Bing powrócić na stronę sieci Web jako najlepszy wynik. Aby zmienić warunek dopasowania, Edytuj numer pin (kliknij ikonę ołówka), kliknij Exact w **warunek dopasowania zapytania** kolumny, a następnie wybierz warunek dopasowania, który jest odpowiedni dla danej aplikacji.  
+2. Domyślnie ciąg zapytania użytkownika musi dokładnie odpowiadać ciągowi zapytania przypiętego elementu, aby usługa Bing zwróciła stronę internetową jako najlepszy wynik. Aby zmienić warunek dopasowania, edytuj przypięty element (kliknij ikonę ołówka), kliknij pozycję Exact (Dokładne) w kolumnie **Query match condition** (Warunek dopasowania zapytania) i wybierz warunek dopasowania odpowiedni dla aplikacji.  
   
-    ![Zrzut ekranu edytora definicji przypięte karty](../media/pinnedCustomSrch.png)
+    ![Zrzut ekranu przedstawiający kartę wpisów przypiętych w edytorze definicji](../media/pinnedCustomSrch.png)
   
-3. Aby upewnić się, że wystąpienie zwraca określona strona sieci Web jako najlepszy wynik, wprowadź termin kwerendy, przypięte przez Ciebie w okienku podglądu, po prawej stronie.
+3. Ab upewnić się, że wystąpienie zwraca określoną stronę internetową jako najlepszy wynik, wprowadź przypięty termin zapytania w okienku podglądu po prawej stronie.
 
-## <a name="configure-hosted-ui"></a>Konfigurowanie hostowanej interfejsu użytkownika
+## <a name="configure-hosted-ui"></a>Konfigurowanie hostowanego interfejsu użytkownika
 
-Custom Search udostępnia hostowanej interfejsu użytkownika do renderowania odpowiedzi JSON wystąpienia wyszukiwania niestandardowego. Aby zdefiniować środowiska interfejsu użytkownika:
+Wyszukiwanie niestandardowe zapewnia hostowany interfejs użytkownika do renderowania odpowiedzi JSON wystąpienia wyszukiwania niestandardowego. Aby zdefiniować środowisko interfejsu użytkownika:
 
-1. Kliknij przycisk **hostowanych interfejsu użytkownika** kartę.  
+1. Kliknij kartę **Hosted UI** (Hostowany interfejs użytkownika).  
   
 2. Wybierz układ.  
   
-  ![Zrzut ekranu przedstawiający interfejs użytkownika obsługiwany wybierz krok układu](./media/custom-search-hosted-ui-select-layout.png)  
+  ![Zrzut ekranu przedstawiający krok wyboru układu na karcie Hosted UI (Hostowany interfejs użytkownika)](./media/custom-search-hosted-ui-select-layout.png)  
   
 3. Wybierz motyw kolorów.  
   
-  ![Zrzut ekranu przedstawiający interfejs użytkownika obsługiwany wybierz motyw kolorów](./media/custom-search-hosted-ui-select-color-theme.png)  
+  ![Zrzut ekranu przedstawiający wybieranie motywu kolorów na karcie Hosted UI (Hostowany interfejs użytkownika)](./media/custom-search-hosted-ui-select-color-theme.png)  
 
-  Jeśli musisz dostosowywać motyw kolorów, aby lepiej Integracja z aplikacją sieci web, kliknij przycisk **motyw Dostosuj**. Nie wszystkie konfiguracje kolor mają zastosowanie do wszystkich motywy układu. Aby zmienić kolor, wprowadź wartość SZESNASTKOWY RGB koloru (na przykład #366eb8) w odpowiednim polu tekstowym. Ewentualnie kliknij przycisk koloru, a następnie kliknij przycisk odcienia, który Ci odpowiada. Zawsze wziąć pod uwagę ułatwienia dostępu podczas wybierania kolorów.
+  Aby dostosować motyw kolorów w celu zapewnienia lepszej integracji z aplikacją internetową, kliknij pozycję **Customize theme** (Dostosuj motyw). Nie wszystkie konfiguracje kolorów mają zastosowanie do wszystkich motywów układu. Aby zmienić kolor, wprowadź wartość SZESNASTKOWĄ RGB (na przykład #366eb8) w odpowiednim polu tekstowym. Możesz również kliknąć przycisk koloru i wybrać odpowiedni odcień. Podczas wybierania kolorów należy zawsze brać pod uwagę ułatwienia dostępu.
   
-  ![Zrzut ekranu przedstawiający interfejs użytkownika obsługiwany dostosować motyw kolorów](./media/custom-search-hosted-ui-customize-color-theme.png)  
+  ![Zrzut ekranu przedstawiający dostosowywanie motywu kolorów hostowanego interfejsu użytkownika](./media/custom-search-hosted-ui-customize-color-theme.png)  
 
   
 4. Określ dodatkowe opcje konfiguracji.  
   
-  ![Zrzut ekranu przedstawiający kroku dodatkowe konfiguracje obsługiwane interfejsu użytkownika](./media/custom-search-hosted-ui-additional-configurations.png)  
+  ![Zrzut ekranu przedstawiający krok wybierania dodatkowych opcji konfiguracji hostowanego interfejsu użytkownika](./media/custom-search-hosted-ui-additional-configurations.png)  
   
-  Aby uzyskać zaawansowane konfiguracje, kliknij przycisk **Pokaż zaawansowane konfiguracje**. Spowoduje to dodanie konfiguracji takich jak *cel łącza* do opcji wyszukiwania w sieci Web, *Włącz filtry* opcje obrazów i wideo, i *symbol zastępczy tekstu pole wyszukiwania* na różne Opcje.
+  Aby uzyskać dostęp do zaawansowanych opcji konfiguracji, kliknij pozycję **Show advanced configurations** (Pokaż zaawansowane opcje konfiguracji). Spowoduje to dodanie opcji konfiguracji, takich jak *Link target* (Element docelowy linku), do opcji wyszukiwania w Internecie, *Enable filters* (Włącz filtry) do opcji obrazów i wideo oraz *Search box text placeholder* (Symbol zastępczy tekstu pola wyszukiwania) do obszaru opcji Miscellaneous (Różne).
 
-  ![Zrzut ekranu przedstawiający kroku zaawansowane konfiguracje obsługiwane interfejsu użytkownika](./media/custom-search-hosted-ui-advanced-configurations.png)  
+  ![Zrzut ekranu przedstawiający krok wybierania zaawansowanych opcji konfiguracji hostowanego interfejsu użytkownika](./media/custom-search-hosted-ui-advanced-configurations.png)  
   
-5. Wybierz klucze subskrypcji z listy rozwijanej. Alternatywnie możesz ręcznie wprowadzić klucz subskrypcji. Aby uzyskać informacji na temat uzyskiwania kluczy, zobacz [spróbuj usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api).  
+5. Wybierz klucze subskrypcji z list rozwijanych. Alternatywnie możesz ręcznie wprowadzić klucz subskrypcji. Więcej informacji na temat uzyskiwania kluczy można znaleźć na stronie [Możliwość wypróbowania usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api).  
   
-  ![Zrzut ekranu przedstawiający kroku dodatkowe konfiguracje obsługiwane interfejsu użytkownika](./media/custom-search-hosted-ui-subscription-key.png)
+  ![Zrzut ekranu przedstawiający krok wybierania dodatkowych opcji konfiguracji hostowanego interfejsu użytkownika](./media/custom-search-hosted-ui-subscription-key.png)
 
 [!INCLUDE[publish or revert](../includes/publish-revert.md)]
 
 <a name="consuminghostedui"></a>
-## <a name="consuming-hosted-ui"></a>Korzystanie z hostowanej interfejsu użytkownika
+## <a name="consuming-hosted-ui"></a>Korzystanie z hostowanego interfejsu użytkownika
 
-Istnieją dwa sposoby korzystania z obsługiwanego interfejsu użytkownika.  
+Istnieją dwa sposoby korzystania z hostowanego interfejsu użytkownika.  
 
-- Opcja 1: Integrowanie podana fragment kodu JavaScript w aplikacji.
-- Opcja 2: Używać punktu końcowego HTML, pod warunkiem.
+- Opcja 1. Zintegrowanie dostarczonego fragmentu kodu JavaScript z aplikacją.
+- Opcja 2. Użycie dostarczonego punktu końcowego HTML.
 
-W pozostałej części tego samouczka przedstawiono **opcja 1: fragment kodu Javascript**.  
+W dalszej części tego samouczka przedstawiono **opcję 1 — fragment kodu Javascript**.  
 
 ## <a name="set-up-your-visual-studio-solution"></a>Konfigurowanie rozwiązania programu Visual Studio
 
@@ -137,21 +138,21 @@ W pozostałej części tego samouczka przedstawiono **opcja 1: fragment kodu Jav
   
 2. W menu **Plik** wybierz polecenie **Nowy**, a następnie wybierz pozycję **Projekt**.  
   
-3. W **nowy projekt** wybierz **Visual C# / Web / aplikacja sieci Web programu ASP.NET Core**, podaj nazwę projektu, a następnie kliknij przycisk **OK**.  
+3. W oknie **Nowy projekt** wybierz pozycję **Aplikacja internetowa / Aplikacja internetowa platformy Visual C# / ASP.NET Core**, nazwij swój projekt, a następnie kliknij przycisk **OK**.  
   
-  ![Zrzut ekranu przedstawiający okno nowy projekt](./media/custom-search-new-project.png)  
+  ![Zrzut ekranu przedstawiający okno nowego projektu](./media/custom-search-new-project.png)  
   
-4. W **Nowa aplikacja internetowa ASP.NET Core** wybierz **aplikacji sieci Web** i kliknij przycisk **OK**.  
+4. W oknie **Nowa aplikacja internetowa platformy ASP.NET Core** wybierz pozycję **Aplikacja internetowa** i kliknij przycisk **OK**.  
   
-  ![Zrzut ekranu przedstawiający okno nowy projekt](./media/custom-search-new-webapp.png)  
+  ![Zrzut ekranu przedstawiający okno nowego projektu](./media/custom-search-new-webapp.png)  
 
-## <a name="edit-indexcshtml"></a>Edytuj index.cshtml
+## <a name="edit-indexcshtml"></a>Edytowanie pliku index.cshtml
 
-1. W **Eksploratora rozwiązań**, rozwiń węzeł **stron** i kliknij dwukrotnie **index.cshtml** można otworzyć pliku.  
+1. W **Eksploratorze rozwiązań** rozwiń węzeł **Strony** i kliknij dwukrotnie plik **index.cshtml**, aby go otworzyć.  
   
-  ![Zrzut ekranu przedstawiający Eksploratora rozwiązań za pomocą strony rozwinięte i index.cshtml wybrane](./media/custom-search-visual-studio-webapp-solution-explorer-index.png)  
+  ![Zrzut ekranu przedstawiający Eksploratora rozwiązań z rozwiniętym węzłem Strony i wybranym plikiem index.cshtml](./media/custom-search-visual-studio-webapp-solution-explorer-index.png)  
   
-2. W index.cshtml Usuń wszystko, od wiersz 7, jak i poniżej.  
+2. W pliku index.cshtml usuń całą zawartość od wiersza 7 w dół.  
   
   ```razor
   @page
@@ -161,7 +162,7 @@ W pozostałej części tego samouczka przedstawiono **opcja 1: fragment kodu Jav
   }    
   ```  
   
-3. Dodaj element podziału wiersza i div do działania jako kontener.  
+3. Dodaj element podziału wiersza i tag div pełniący rolę kontenera.  
   
   ```html
   @page
@@ -173,13 +174,13 @@ W pozostałej części tego samouczka przedstawiono **opcja 1: fragment kodu Jav
   <div id="customSearch"></div>
   ```  
   
-4. W **hostowanych interfejsu użytkownika** strony, przewiń w dół do sekcji **korzystanie z interfejsu użytkownika**. Kliknij przycisk *punktów końcowych* do uzyskania dostępu do fragmentu kodu JavaScript. Można także uzyskać się do fragmentu kodu, klikając **produkcji** i następnie **hostowanych interfejsu użytkownika** kartę.
+4. Na stronie **Hosted UI** (Hostowany interfejs użytkownika) przewiń w dół do sekcji o nazwie **Consuming the UI** (Korzystanie z interfejsu użytkownika). Kliknij pozycję *Endpoints* (Punkty końcowe), aby uzyskać dostęp do fragmentu kodu JavaScript. Fragment kodu możesz wyświetlić również, klikając pozycję **Production** (Produkcja), a następnie wybierając kartę **Hosted UI** (Hostowany interfejs użytkownika).
   
   <!-- Get new screenshot after prod gets new bits
   ![Screenshot of the Hosted UI save button](./media/custom-search-hosted-ui-consuming-ui.png)  
   -->
   
-5. Wklej script element w kontenerze, który został dodany.  
+5. Wklej element script w kontenerze, którzy został dodany.  
   
   ``` html
   @page
@@ -196,19 +197,19 @@ W pozostałej części tego samouczka przedstawiono **opcja 1: fragment kodu Jav
   </div>
   ```  
   
-6. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy **wwwroot** i kliknij przycisk **Pokaż w przeglądarce**.  
+6. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy pozycję **wwwroot** i kliknij polecenie **Wyświetl w przeglądarce**.  
   
-  ![Zrzut ekranu przedstawiający Eksploratora rozwiązań z wybraniu widoku w przeglądarce z poziomu menu kontekstowego wwwroot](./media/custom-search-webapp-view-in-browser.png)  
+  ![Zrzut ekranu przedstawiający wybieranie polecenia Wyświetl w przeglądarce w menu kontekstowym elementu wwwroot w Eksploratorze rozwiązań](./media/custom-search-webapp-view-in-browser.png)  
 
-Strony sieci web wyszukiwania niestandardowego powinien wyglądać mniej więcej tak:
+Twoja nowa strona wyszukiwania niestandardowego powinna wyglądać mniej więcej tak:
 
-![Zrzut ekranu przedstawiający stronę sieci web wyszukiwania niestandardowego](./media/custom-search-webapp-browse-index.png)
+![Zrzut ekranu przedstawiający stronę internetową wyszukiwania niestandardowego](./media/custom-search-webapp-browse-index.png)
 
-Wykonywanie wyszukiwania renderuje wyniki w następujący sposób:
+Wykonanie wyszukiwania powoduje renderowanie wyników na następujący sposób:
 
 ![Zrzut ekranu przedstawiający wyniki wyszukiwania niestandardowego](./media/custom-search-webapp-results.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Wywołanie punktu końcowego usługi Bing Custom Search (C#)](../call-endpoint-csharp.md)
+> [Wywoływanie punktu końcowego wyszukiwania niestandardowego Bing (C#)](../call-endpoint-csharp.md)

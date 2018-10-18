@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 6308710a12e983ba35d9bd20d9926cba4ae27c5c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: c40229eaa589d696c557d5ac126515576593443c
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49400168"
+ms.locfileid: "49367016"
 ---
 Zoptymalizowane pod kątem pamięci oferty rozmiarów maszyny Wirtualnej wysokiego współczynnika pamięci do Procesora, który jest najlepszy w przypadku serwerów relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizowania w pamięci. Ten artykuł zawiera informacje o liczbie procesorów wirtualnych, dysków z danymi i kart sieciowych, a także przepustowość przepływności i sieć magazynu dla każdego rozmiaru w tej metodzie grupowania. 
 
@@ -97,7 +97,7 @@ Usługa Premium Storage: obsługiwane
 
 Buforowanie magazynu Premium: obsługiwane
 
-Akcelerator zapisu: [obsługiwane](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+Akcelerator zapisu: [obsługiwane](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
 | Rozmiar            | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|

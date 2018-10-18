@@ -1,33 +1,32 @@
 ---
-title: Jednostek wyszukiwania API szybki start | Dokumentacja firmy Microsoft
-description: Pokazano, jak rozpocząć korzystanie z interfejsem API Bing jednostek wyszukiwania.
+title: 'Szybki start: interfejs API wyszukiwania jednostek Bing'
+description: Jak rozpocząć korzystanie z interfejsu API wyszukiwania jednostek Bing.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: B206A254-B7E9-49FF-AFD5-87B1E4D6D30B
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 07/06/2017
 ms.author: scottwhi
-ms.openlocfilehash: 12031d2447920c7e2d6180f35cf4fb29aa1b6150
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: ffc9ebb21c6646b1a39af4659053adf4157d204b
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346968"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48813961"
 ---
-# <a name="making-your-first-entities-request"></a>Tworzenie pierwszego jednostki żądania
+# <a name="quickstart-making-your-first-bing-entity-search-request"></a>Szybki start: tworzenie pierwszego żądania wyszukiwania jednostek Bing
 
-Interfejsu API Search jednostki wysyła kwerendę wyszukiwania usługi Bing i pobiera wyniki obejmujące jednostki i miejsca. Miejsce wyniki obejmują restauracji, hoteli lub innych firm lokalnego. Dla miejsca zapytanie można określić nazwy lokalnej firmy lub można zadawać listę (na przykład restauracji pobliżu). Jednostki wyniki obejmują osoby, miejsca lub rzeczy. Miejsce w tym kontekście jest atrakcji, stanów, krajach itp. 
+Interfejs API wyszukiwania jednostek Bing wysyła zapytanie wyszukiwania do usługi Bing i pobiera wyniki, które zawierają jednostki i miejsca. Wyniki dotyczące miejsc to między innymi restauracje, hotele i inne lokalne firmy. W zapytaniu można na przykład określić nazwę lokalnej firmy lub zadać pytanie o listę miejsc (na przykład „restaurants near me” — restauracje w pobliżu). Wyniki dotyczące jednostek to między innymi osoby, miejsca i rzeczy. W tym kontekście miejscem może być na przykład atrakcja turystyczna, kraj, czy region. 
 
 ## <a name="first-steps"></a>Pierwsze kroki
 
-Przed skonfigurowaniem pierwszego połączenia, należy uzyskać klucz subskrypcji usługi kognitywnych. Aby uzyskać klucz, zobacz [spróbuj kognitywnych usług](https://azure.microsoft.com/try/cognitive-services/?api=bing-entities-search-api). (Interfejs API jednostek wyszukiwania nie jest widoczny u góry, kliknij przycisk **wyszukiwania** karcie, a następnie przewiń w dół, aż zostanie wyświetlony.)
+Przed wykonaniem pierwszego wywołania należy uzyskać klucz subskrypcji usług Cognitive Services. Aby uzyskać klucz, zobacz [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-entities-search-api). Jeśli interfejs API wyszukiwania jednostek nie jest widoczny na początku listy, kliknij kartę **Wyszukiwanie** i przewijaj w dół do momentu znalezienia tego interfejsu API.
 
 ## <a name="the-endpoint"></a>Punkt końcowy
 
-Aby uzyskać jednostki i umieścić wyniki wyszukiwania, Wyślij żądanie GET do następujący punkt końcowy:  
+Aby uzyskać wyniki wyszukiwania jednostek i miejsc, należy wysłać żądanie GET do następującego punktu końcowego:  
   
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/entities
@@ -35,26 +34,26 @@ https://api.cognitive.microsoft.com/bing/v7.0/entities
 
 Żądanie musi używać protokołu HTTPS.
 
-Zaleca się, że wszystkie żądania pochodzi z serwera. Dystrybucja klucza w ramach aplikacji klienta oferuje więcej możliwości złośliwego innych firm do niego dostęp. Ponadto nawiązywanie połączeń z serwerem zapewnia jeden punkt uaktualniania wersji interfejsu API.
+Zalecamy, aby wszystkie żądania były wysyłane z serwera. Dystrybuowanie klucza w ramach aplikacji klienckiej dostarcza więcej okazji do przejęcia go przez złośliwy kod innych firm. Ponadto wykonywanie wywołań z serwera zapewnia jeden punkt uaktualniania dla przyszłych wersji interfejsu API.
 
 ## <a name="specifying-query-parameters-and-headers"></a>Określanie parametrów zapytania i nagłówków
 
-Żądanie musi określać [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#query) parametru zapytania, który zawiera użytkownika terminu wyszukiwania. Żądanie musi również określać [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#mkt) parametru zapytania, który identyfikuje rynku miejscu wyniki pochodzą z. Listę parametrów opcjonalnych zapytania, zobacz [parametry zapytania](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#query-parameters). Adres URL kodowania wszystkie parametry zapytania.  
+Żądanie musi określać parametr zapytania [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#query), który zawiera termin wyszukiwania użytkownika. Żądanie musi również określać parametr zapytania [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#mkt) identyfikujący rynek, z którego mają pochodzić wyniki. Aby uzyskać listę opcjonalnych parametrów zapytania, zobacz [Query Parameters (Parametry zapytania)](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#query-parameters). Wszystkie parametry zapytania muszą być kodowane w formacie URL.  
   
-Żądanie musi określać [Ocp-Apim-subskrypcji — klucz](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#subscriptionkey) nagłówka. Mimo że jest to opcjonalne, zachęca się także określić następujące nagłówki:  
+Żądanie musi określać nagłówek [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#subscriptionkey). Mimo że jest to opcjonalne, zachęcamy, aby określić również następujące nagłówki:  
   
--   [Agent użytkownika](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#useragent)  
+-   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#useragent)  
 -   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#clientid)  
 -   [X-MSEdge-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#clientip)  
--   [X wyszukiwania lokalizacji](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#location)  
+-   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#location)  
 
-Nagłówki adresów IP i lokalizacji klienta są ważne dla zwracania zawartości pamiętać lokalizacji.  
+Nagłówki adresu IP klienta i lokalizacji są ważne z punktu widzenia zwracania zawartości odpowiedniej dla danej lokalizacji.  
 
-Aby uzyskać listę wszystkich nagłówków żądań i odpowiedzi, zobacz [nagłówki](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#headers).
+Aby uzyskać listę wszystkich nagłówków żądań i odpowiedzi, zobacz [Nagłówki](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#headers).
 
 ## <a name="the-request"></a>Żądanie
 
-Poniżej przedstawiono żądania jednostek, który zawiera wszystkie parametry sugerowane zapytania i nagłówków. 
+Poniżej przedstawiono żądanie wyszukiwania jednostek, które zawiera wszystkie sugerowane parametry zapytania i nagłówki. 
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/entities?q=mount+rainier&mkt=en-us HTTP/1.1  
@@ -66,11 +65,11 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Jeśli pierwsza wywoływania żadnego z interfejsów API Bing, nie dołączaj nagłówka Identyfikatora klienta. Identyfikator klienta należy uwzględnić tylko, jeśli został wcześniej wywołuje interfejs API Bing i Bing zwrócony identyfikator klienta dla użytkownika lub kombinacji urządzeń.
+Jeśli jest to Twoje pierwsze wywoływanie dowolnego z interfejsów API Bing, nie dołączaj nagłówka identyfikatora klienta. Identyfikator klienta należy uwzględnić tylko wtedy, gdy interfejs API Bing został już wywołany i usługa Bing zwróciła identyfikator klienta dla kombinacji użytkownika i urządzenia.
 
 ## <a name="the-response"></a>Odpowiedź
 
-Poniżej przedstawiono odpowiedź na wcześniejsze żądanie. W przykładzie przedstawiono również nagłówki odpowiedzi specyficzne dla usługi Bing. Informacje dla obiekt odpowiedzi, zobacz [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#searchresponse).
+Poniżej przedstawiono odpowiedź na poprzednie żądanie. W przykładzie pokazano również nagłówki odpowiedzi specyficzne dla usługi Bing. Aby uzyskać informacji o obiekcie odpowiedzi, zobacz [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#searchresponse).
 
 ```
 BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC
@@ -135,10 +134,10 @@ BingAPIs-Market: en-US
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Wypróbuj interfejsu API. Przejdź do [jednostek wyszukiwania API testowania konsoli](https://dev.cognitive.microsoft.com/docs/services/7a3fb374be374859a823b79fd938cc65/). 
+Wypróbuj interfejs API. Przejdź do [konsoli testowania interfejsu API wyszukiwania jednostek](https://dev.cognitive.microsoft.com/docs/services/7a3fb374be374859a823b79fd938cc65/). 
 
-Aby uzyskać więcej informacji o korzystanie z obiektów odpowiedzi, zobacz [wyszukiwanie w sieci Web jednostki i miejsca](./search-the-web.md).
+Aby uzyskać szczegółowe informacje dotyczące korzystania z obiektów odpowiedzi, zobacz [Wyszukiwanie jednostek i miejsc w Internecie](./search-the-web.md).
 
-Należy przeczytać [Bing oraz wymagania dotyczące wyświetlania](./use-display-requirements.md) , nie zostanie przerwane dowolne zasady dotyczące korzystania z wyników wyszukiwania.
+Nie zapomnij przeczytać [wymagań w zakresie korzystania z usługi Bing i wyświetlania danych z niej](./use-display-requirements.md), aby nie złamać żadnych reguł dotyczących korzystania z wyników wyszukiwania.

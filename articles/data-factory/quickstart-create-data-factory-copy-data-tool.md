@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: d314c04a40155fccc99660bacdb9f646ce77b22f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a4e41408a3af2e6bb68c14f2e34bf1141bf349c1
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107592"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017811"
 ---
 # <a name="use-the-copy-data-tool-to-copy-data"></a>Kopiowanie danych przy użyciu narzędzia do kopiowania danych 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -52,13 +52,9 @@ W tym przewodniku Szybki start utworzysz fabrykę danych przy użyciu witryny Az
 1. W obszarze **Wersja** wybierz pozycję **V2**.
 1. W obszarze **Lokalizacja** wybierz lokalizację fabryki danych. 
 
-   Na liście wyświetlane są tylko obsługiwane lokalizacje. Magazyny danych (na przykład Azure Storage lub Azure SQL Database) i jednostki obliczeniowe (na przykład HDInsight) używane przez fabrykę danych mogą mieścić się w innych lokalizacjach/regionach.
+   Ta lista zawiera tylko lokalizacje, które są obsługiwane przez usługę Data Factory i w których będą przechowywane metadane usługi Azure Data Factory. Pamiętaj, że skojarzone magazyny danych (na przykład Azure Storage lub Azure SQL Database) i jednostki obliczeniowe (na przykład HDInsight) używane przez tę usługę Data Factory mogą być uruchomione w innych regionach.
 
-1. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
 1. Wybierz pozycję **Utwórz**.
-1. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem **Wdrażanie fabryki danych**: 
-
-    ![Kafelek „Wdrażanie fabryki danych”](media/quickstart-create-data-factory-copy-data-tool/deploying-data-factory.png)
 1. Po zakończeniu tworzenia zostanie wyświetlona strona **Fabryka danych**. Wybierz kafelek **Tworzenie i monitorowanie**, aby na osobnej karcie uruchomić aplikację interfejsu użytkownika usługi Azure Data Factory.
    
    ![Strona główna fabryki danych z kafelkiem „Tworzenie i monitorowanie”](./media/quickstart-create-data-factory-copy-data-tool/data-factory-home-page.png)

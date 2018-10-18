@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 09/24/2018
-ms.openlocfilehash: 6e0294f99d1c2291e84bf2ac5d5b1f771222b551
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 660e5515b765e133d5bc9309be5439209b957353
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433416"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238523"
 ---
 # <a name="what-is-azure-machine-learning-service-preview"></a>Co to jest usługa Azure Machine Learning (wersja zapoznawcza)?
 
@@ -48,7 +48,7 @@ Można zarządzać wdrożonymi modelami i śledzić wiele przebiegów, eksperyme
 Usługa Azure Machine Learning może automatycznie wygenerować model i automatycznie go dla Ciebie dostroić.
 Na przykład zobacz temat [Tutorial: Automatically train a classification model with Azure Automated Machine Learning](tutorial-auto-train-models.md) (Samouczek: szkolenie modelu klasyfikacji za pomocą zautomatyzowanego uczenia maszynowego w usłudze Azure Machine Learning).
 
-Używając zestawu <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> usługi Azure Machine Learning dla języka Python razem z pakietami języka Python typu „open source”, możesz również samodzielnie tworzyć i szkolić bardzo precyzyjne modele uczenia maszynowego i uczenia głębokiego w obszarze roboczym usługi Azure Machine Learning.
+Używając zestawu Azure Machine Learning <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> dla języka Python razem z pakietami języka Python typu „open source”, możesz również samodzielnie tworzyć i szkolić bardzo precyzyjne modele uczenia maszynowego i uczenia głębokiego w obszarze roboczym usługi Azure Machine Learning Service.
 Możesz korzystać z wielu składników uczenia maszynowego dostępnych w pakietach języka Python typu „open source”, np. z następujących:
 
 - <a href="http://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>
@@ -80,7 +80,7 @@ Jeśli nie masz subskrypcji, możesz [otworzyć bezpłatne konto platformy Azure
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Utwórz obszar roboczy uczenia maszynowego, korzystając z informacji zawartych w artykule [Use Azure Portal to get started](quickstart-get-started.md) (Korzystanie z witryny Azure Portal, aby rozpocząć pracę)
+- Utwórz obszar roboczy usługi Azure Learning Service, korzystając z informacji zawartych w artykule [Rozpoczynanie pracy przy użyciu usługi Azure Portal](quickstart-get-started.md)
  
 - Postępuj zgodnie z instrukcjami zawartymi w gotowym artykule [Train an image classification model with Azure Machine Learning](tutorial-train-models-with-aml.md) (Uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning), aby dowiedzieć się, jak uczyć i wdrażać modele za pomocą usługi Azure Machine Learning
 

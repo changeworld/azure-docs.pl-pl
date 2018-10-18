@@ -1,52 +1,53 @@
 ---
-title: Użyj usługi Custom Vision Service z aplikacji C# — usług Azure Cognitive Services | Dokumentacja firmy Microsoft
-description: Poznaj podstawowe języka C# aplikacją, która używa niestandardowego interfejsu API przetwarzania w usługach Microsoft Cognitive Services. Utwórz projekt, dodać tagi, przekazywać obrazy, szkolenie projektu i przewiduje przy użyciu domyślnego punktu końcowego.
+title: 'Samouczek: kompilowanie aplikacji Windows for Custom Vision Service w języku C#'
+titlesuffix: Azure Cognitive Services
+description: Utwórz projekt, dodaj tagi, prześlij obrazy, wyszkol projekt i wykonaj przewidywanie przy użyciu domyślnego punktu końcowego.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: d3c2ffb0fd9578458bd07241eed4a87cf70d3c3c
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
-ms.translationtype: MT
+ms.openlocfilehash: 9e5ed71d4620f7ffeac8acb15f90d67964a86870
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617438"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366645"
 ---
-# <a name="use-the-custom-vision-service-from-a-c35-application"></a>Użyj usługi Custom Vision Service from C&#35; aplikacji
+# <a name="tutorial-use-the-custom-vision-service-from-a-c-application"></a>Samouczek: używanie funkcji Custom Vision Service z poziomu aplikacji C#
 
-Dowiedz się, jak używać usługi Custom Vision Service z aplikacją C#. Po jego utworzeniu możesz można dodać tagi, przekazywać obrazy, szkolenie projektu, projektu domyślne prognozowania — adres URL punktu końcowego uzyskać i używać punktu końcowego programowo testować obrazu. Użyj w tym przykładzie typu open-source jako szablon do tworzenia własnych aplikacji dla Windows za pomocą interfejsu API usługi Custom Vision.
+Dowiedz się, jak używać funkcji Custom Vision Service z poziomu aplikacji C#. Po jej utworzeniu możesz dodać tagi, przesłać obrazy, wyszkolić projekt, uzyskać adres URL punktu końcowego domyślnego przewidywania projektu i użyć punktu końcowego do programowego przetestowania obrazu. Wykorzystaj ten przykład open-source jako szablon do kompilowania własnych aplikacji dla systemu Windows przy użyciu interfejsu API usługi Custom Vision Service.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Dowolnej wersji programu Visual Studio 2017 for Windows.
+* Dowolna wersja programu Visual Studio 2017.
 
-## <a name="get-the-custom-vision-sdk-and-samples"></a>Custom Vision SDK i przykłady
-Aby skompilować ten przykład, potrzebne są pakiety NuGet zestawu SDK wizji niestandardowe:
+## <a name="get-the-custom-vision-sdk-and-samples"></a>Pobranie pakietu Custom Vision SDK i przykładów
+Aby skompilować ten przykład, potrzebne są pakiety NuGet zestawu SDK Custom Vision:
 
 * [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
 * [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
 
-Możesz pobrać obrazy wraz z [przykłady w języku C#](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/CustomVision).
+Obrazy można pobrać razem z [przykładami w języku C#](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/CustomVision).
 
-## <a name="get-the-training-and-prediction-keys"></a>Pobierz klucze uczenia i przewidywania
+## <a name="get-the-training-and-prediction-keys"></a>Uzyskanie kluczy szkoleniowego i predykcyjnego
 
-Aby uzyskać klucze używane w tym przykładzie, odwiedź stronę [strony sieci web Custom Vision](https://customvision.ai) i wybierz __ikonę koła zębatego__ w prawym górnym rogu. W __kont__ sekcji, skopiuj wartości z __klucz szkolenia__ i __klucz prognozowania__ pola.
+Aby uzyskać klucze używane w tym przykładzie, przejdź na [stronę Custom Vision](https://customvision.ai) i wybierz __ikonę koła zębatego__ w prawym górnym rogu. W sekcji __Accounts__ (Konta) skopiuj wartości z pól __Training Key__ (Klucz szkoleniowy) i __Prediction Key__ (Klucz predykcyjny).
 
-![Obraz przedstawiający klucze interfejsu użytkownika](./media/csharp-tutorial/training-prediction-keys.png)
+![Obraz interfejsu użytkownika do uzyskiwania kluczy](./media/csharp-tutorial/training-prediction-keys.png)
 
 ## <a name="understand-the-code"></a>Zrozumienie kodu
 
-W programie Visual Studio, otwórz projekt na terenie `Samples/CustomVision.Sample/` katalogu projekt zestawu SDK.
+W programie Visual Studio otwórz projekt w katalogu `Samples/CustomVision.Sample/` projektu SDK.
 
-Ta aplikacja używa klucza szkolenia pobranym wcześniej do utworzenia nowego projektu o nazwie __mój projekt nowej__. Następnie przekazuje obrazy do nauczenia i przetestowania klasyfikatora. Klasyfikator Określa, czy drzewo __Lipa__ lub __japoński wykonywanie operacji Cherry__.
+Ta aplikacja używa uzyskanego wcześniej klucza szkoleniowego do utworzenia nowego projektu o nazwie __Mój nowy projekt__. Następnie zostaną przesłane obrazy do szkolenia i testowania klasyfikatora. Klasyfikator określa, czy drzewo jest __Choiną__ czy __Wiśnią japońską__.
 
-Poniższe fragmenty kodu implementuje podstawowe funkcje w tym przykładzie:
+Poniższe fragmenty kodu implementują podstawową funkcjonalność tej przykładowej aplikacji:
 
-* __Utwórz nowy projekt usługi Custom Vision Service__:
+* __Utwórz nowy projekt Custom Vision Service__:
 
     ```csharp
      // Create a new project
@@ -54,7 +55,7 @@ Poniższe fragmenty kodu implementuje podstawowe funkcje w tym przykładzie:
     var project = trainingApi.CreateProject("My New Project");
     ```
 
-* __Utworzenie tagów w projekcie__:
+* __Utwórz tagi w projekcie__:
 
     ```csharp
     // Make two tags in the new project
@@ -62,7 +63,7 @@ Poniższe fragmenty kodu implementuje podstawowe funkcje w tym przykładzie:
     var japaneseCherryTag = trainingApi.CreateTag(project.Id, "Japanese Cherry");
     ```
 
-* __Przekazywanie i tagować obrazy__:
+* __Prześlij i oznacz tagami obrazy__:
 
     ```csharp
     // Add some images to the tags
@@ -83,7 +84,7 @@ Poniższe fragmenty kodu implementuje podstawowe funkcje w tym przykładzie:
     trainingApi.CreateImagesFromFiles(project.Id, new ImageFileCreateBatch(imageFiles, new List<Guid>() { japaneseCherryTag.Id }));
     ```
 
-* __Szkolenie klasyfikatora__:
+* __Wykonaj szkolenie klasyfikatora__:
 
     ```csharp
     // Now there are images with tags start training the project
@@ -100,7 +101,7 @@ Poniższe fragmenty kodu implementuje podstawowe funkcje w tym przykładzie:
     }
     ```
 
-* __Ustawianie domyślnej iteracji do endpoint prognoz__:
+* __Ustaw domyślną iterację dla punktu końcowego przewidywania__:
 
     ```csharp
     // The iteration is now trained. Make it the default project endpoint
@@ -109,14 +110,14 @@ Poniższe fragmenty kodu implementuje podstawowe funkcje w tym przykładzie:
     Console.WriteLine("Done!\n");
     ```
 
-* __Tworzenie punktu końcowego prognozowania__:
+* __Utwórz punkt końcowy przewidywania__:
  
     ```csharp
     // Create a prediction endpoint, passing in obtained prediction key
     PredictionEndpoint endpoint = new PredictionEndpoint() { ApiKey = predictionKey };
     ```
  
-* __Wysyłanie obrazu do endpoint prognoz__:
+* __Wyślij obraz do punktu końcowego przewidywania__:
 
     ```csharp
     // Make a prediction against the new project
@@ -132,21 +133,21 @@ Poniższe fragmenty kodu implementuje podstawowe funkcje w tym przykładzie:
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
-1. Wprowadź następujące zmiany do Dodaj klucze uczenia i przewidywania do aplikacji:
+1. Aby dodać klucze szkoleniowe i predykcyjne do aplikacji, należy wprowadzić następujące zmiany:
 
-    * Dodaj swoje __klucz szkolenia__ na następujący wiersz:
+    * Dodaj swój __klucz szkoleniowy__ do poniższej linii:
 
         ```csharp
         string trainingKey = "<your key here>";
         ```
 
-    * Dodaj swoje __klucz prognozowania__ na następujący wiersz:
+    * Dodaj swój __klucz predykcyjny__ do poniższej linii:
 
         ```csharp
         string predictionKey = "<your key here>";
         ```
 
-2. Uruchom aplikację. Po uruchomieniu aplikacji następujące dane wyjściowe są zapisywane do konsoli:
+2. Uruchom aplikację. Po uruchomieniu aplikacji następujące dane wyjściowe są zapisywane w konsoli:
 
     ```
     Creating new project:

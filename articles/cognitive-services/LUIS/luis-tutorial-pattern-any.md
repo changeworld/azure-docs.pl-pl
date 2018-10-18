@@ -1,149 +1,149 @@
 ---
-title: 'Samouczek 5: Jednostki Pattern.any tekst w dowolnej postaci'
+title: 'Samouczek 5: jednostka Pattern.any dla tekstu o formacie swobodnym'
 titleSuffix: Azure Cognitive Services
-description: Służy do wyodrębniania danych z wypowiedzi jednostki pattern.any, gdzie jest prawidłowo sformatowaną wypowiedzi i gdzie końca danych może łatwo pomylić z pozostałych wyrazów wypowiedź.
+description: Jednostka Pattern.any służy do wyodrębniania danych z wypowiedzi, gdzie wypowiedź jest prawidłowo sformatowana i gdzie koniec danych można łatwo pomylić z pozostałymi wyrazami wypowiedzi.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: language-understanding
-ms.topic: article
+ms.component: language-understanding
+ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 4ff4a7085a8caeedebe2a734014afb1cb46d9fbf
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
-ms.translationtype: MT
+ms.openlocfilehash: 90dc7b8bc69c86128b65c16920886b7c4af5c5cf
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164399"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888309"
 ---
-# <a name="tutorial-5-extract-free-form-data"></a>Samouczek 5: Wyodrębnianie danych z dowolnych
+# <a name="tutorial-5-extract-free-form-data"></a>Samouczek 5: wyodrębnianie danych o formacie swobodnym
 
-W tym samouczku Użyj jednostki pattern.any do wyodrębniania danych z wypowiedzi, gdzie są prawidłowo sformatowaną wypowiedzi i gdzie końca danych może łatwo pomylić z pozostałych wyrazów wypowiedź. 
+W tym samouczku używamy jednostki Pattern.any do wyodrębniania danych z wypowiedzi, gdzie wypowiedzi są prawidłowo sformatowane i gdzie koniec danych można łatwo pomylić z pozostałymi wyrazami wypowiedzi. 
 
-Jednostka pattern.any umożliwia wyszukiwanie dowolnych danych, w którym treść jednostki sprawia, że trudno ustalić koniec jednostki od reszty wypowiedź. 
+Jednostka Pattern.any umożliwia wyszukiwanie danych o swobodnym formacie, gdzie treść jednostki sprawia, że trudno rozróżnić koniec jednostki od reszty wypowiedzi. 
 
-Ta aplikacja zarządzania zasobami ludzkimi pomaga pracownikom Znajdź formy firmy. 
-
-|Wypowiedź|
-|--|
-|Gdzie jest **HRF 123456**?|
-|Autora **HRF 123234**?|
-|**HRF 456098** jest publikowany w języku francuskim?|
-
-Jednak każdy formularz zarówno o nazwie sformatowane, używane w powyższej tabeli, a także przyjazną nazwę, taką jak `Request relocation from employee new to the company 2018 version 5`. 
-
-Wypowiedzi o nazwie przyjazna formularza wyglądać następująco:
+Ta aplikacja zarządzania zasobami ludzkimi pomaga pracownikom znajdować formularze firmy. 
 
 |Wypowiedź|
 |--|
-|Gdzie jest **żądania przeniesienia z pracowników jest nowym składnikiem w wersji 2018 firmy 5**?|
-|Autora **"Żądania relokacji z nowym składnikiem w wersji 2018 firmy 5 pracownika"**?|
-|**Żądanie przeniesienia z nowym składnikiem w wersji 2018 firmy 5 pracownika** jest publikowany w języku francuskim?|
+|Where is **HRF-123456**? (Gdzie jest formularz HRF-123456?)|
+|Who authored **HRF-123234**? (Kto jest autorem formularza HRF-123456?)|
+|**HRF-456098** is published in French? (Czy formularz HRF-123456 jest publikowany w języku francuskim?)|
 
-Różnej długości zawiera wyrazy, które mogą mylić LUIS, o którym kończy się jednostki. Przy użyciu jednostki Pattern.any we wzorcu umożliwia określenie początku i na końcu nazwy formularza, dzięki czemu usługa LUIS poprawnie wyodrębnia nazwę formularza.
+Jednak każdy formularz ma zarówno nazwę sformatowaną, używaną w powyższej tabeli, jak i nazwę przyjazną, taką jak `Request relocation from employee new to the company 2018 version 5`. 
 
-|Przykład wypowiedź szablonu|
+Wypowiedzi z przyjazną formą wyglądają następująco:
+
+|Wypowiedź|
 |--|
-|Gdzie jest {Nazwa_formularza} [?]|
-|Autora {Nazwa_formularza} [?]|
-|{Nazwa formularza} jest publikowany w języku francuskim [?]|
+|Where is **Request relocation from employee new to the company 2018 version 5**? (Gdzie jest formularz Żądanie przeniesienia nowego pracownika do firmy 2018 wersja 5?)|
+|Who authored **Request relocation from employee new to the company 2018 version 5**? (Kto jest autorem formularza Żądanie przeniesienia nowego pracownika do firmy 2018 wersja 5?)|
+|**Request relocation from employee new to the company 2018 version 5** is published in French? (Czy formularz Żądanie przeniesienia nowego pracownika do firmy 2018 wersja 5 jest publikowany w języku francuskim?)|
 
-**W tym samouczku dowiesz się, jak:**
+Różna długość zawiera wyrazy, które mogą wprowadzać usługę LUIS w błąd co do tego, gdzie kończy się dana jednostka. Użycie jednostki Pattern.any we wzorcu umożliwia określenie początku i końca nazwy formularza, dzięki czemu usługa LUIS poprawnie wyodrębnia nazwę formularza.
+
+|Przykładowa wypowiedź szablonu|
+|--|
+|Where is {FormName}[?] (Gdzie jest {Nazwa_formularza}[?])|
+|Who authored {FormName}[?] (Kto jest autorem {Nazwa_formularza}[?])|
+|{FormName} is published in French[?] (Czy {Nazwa_formularza} jest publikowany w języku francuskim [?])|
+
+**Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
 > [!div class="checklist"]
-> * Użyj istniejącego samouczek aplikacji
-> * Dodawanie wypowiedzi przykład do istniejącej jednostki
+> * Korzystanie z istniejącej aplikacji samouczka
+> * Dodawanie przykładowych wypowiedzi do istniejącej jednostki
 > * Tworzenie jednostki Pattern.any
 > * Tworzenie wzorca
 > * Szkolenie
-> * Wzór nowego testu
+> * Testowanie nowego wzorca
 
 [!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>Użyj istniejącej aplikacji
-Kontynuuj aplikację utworzoną w samouczku ostatni o nazwie **kadry**. 
+## <a name="use-existing-app"></a>Korzystanie z istniejącej aplikacji
+Przejdź do aplikacji o nazwie **HumanResources** utworzonej w ostatnim samouczku. 
 
-Jeśli nie masz aplikacji kadry z poprzedniego samouczka, należy użyć następujących czynności:
+Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj następujące kroki:
 
-1.  Pobierz i Zapisz [pliku JSON aplikacji](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-roles-HumanResources.json).
+1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-roles-HumanResources.json).
 
-2. Importuj dane JSON do nowej aplikacji.
+2. Zaimportuj plik JSON do nowej aplikacji.
 
-3. Z **Zarządzaj** sekcji na **wersji** kartę, klonowanie wersji i nadaj mu nazwę `patt-any`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używany jako część trasy adresu URL, nazwa nie może zawierać żadnych znaków, które nie są prawidłowe w adresie URL.
+3. W sekcji **Manage** (Zarządzanie) na karcie **Versions** (Wersje) sklonuj wersję i nadaj jej nazwę `patt-any`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używana jako część trasy adresu URL, nie może ona zawierać żadnych znaków, które są nieprawidłowe w adresie URL.
 
-## <a name="add-example-utterances"></a>Dodawanie wypowiedzi przykład 
-Usuń keyPhrase wstępnie utworzone jednostki, jeśli jest trudny do tworzenia i oznaczanie jednostek Nazwa_formularza. 
+## <a name="add-example-utterances"></a>Dodawanie przykładowych wypowiedzi 
+Usuń wstępnie utworzoną jednostkę keyPhrase, jeśli jest trudna do utworzenia, i oznacz etykietą jednostkę FormName (Nazwa_formularza). 
 
-1. Wybierz **kompilacji** w górnym menu nawigacyjnym i w wybierz **intencji** nawigacji po lewej stronie.
+1. Wybierz pozycję **Build** (Kompiluj) na górnym pasku nawigacyjnym i wybierz pozycję **Intents** (Intencje) na lewym pasku nawigacyjnym.
 
-2. Wybierz **FindForm** z listy opcji.
+2. Z listy intencji wybierz pozycję **FindForm** (Znajdź formularz).
 
-3. Dodawanie wypowiedzi niektóre przykładowe:
+3. Dodaj przykładowe wypowiedzi:
 
-    |Przykład wypowiedź|
+    |Przykładowa wypowiedź|
     |--|
-    |Gdzie jest to forma **o postępowaniu pożar dzieli w środowisku laboratoryjnym** i kogo należy podpisać go po jego odczytu?|
-    |Gdzie jest **żądania przeniesienia z nowym użytkownikiem firmy pracownika** na serwerze?|
-    |Autora "**kondycji i uroda żądań na uczelniach głównego**" i co to jest najbardziej aktualną wersję?|
-    |Szukam formularz o nazwie "**Office przenieść żądanie, w tym zasoby fizyczne**". |
+    |Where is the form **What to do when a fire breaks out in the Lab** and who needs to sign it after I read it? (Gdzie jest formularz Postępowanie w razie pożaru w laboratorium i kto musi go podpisać, gdy go przeczytam?)|
+    |Where is **Request relocation from employee new to the company 2018 version 5** on the server? (Gdzie jest formularz Żądanie przeniesienia nowego pracownika do firmy 2018 wersja 5 na serwerze?)|
+    |Who authored "**Health and wellness requests on the main campus**" and what is the most current version? (Kto jest autorem formularza „Wymagania dotyczące zdrowia i dobrego samopoczucia na głównym kampusie” i jaka jest najbardziej aktualna wersja?)|
+    |I'm looking for the form named "**Office move request including physical assets**". (Szukam formularza o nazwie „Żądanie przeniesienia biura łącznie z zasobami fizycznymi”.) |
 
-    Bez jednostka Pattern.any go może sprawiać trudności dla usługi LUIS dowiedzieć się, których tytuł formularza kończy się ze względu na wiele zmian nazw formularzy.
+    Bez jednostki Pattern.any usługa LUIS może mieć trudność ze zrozumieniem, gdzie kończy się tytuł formularza ze względu na wiele różnych nazw formularzy.
 
 ## <a name="create-a-patternany-entity"></a>Tworzenie jednostki Pattern.any
-Jednostka Pattern.any wyodrębnia jednostki o różnej długości. Działa tylko we wzorcu ponieważ wzorca oznacza początek i koniec jednostki. Jeśli zauważysz, że Twoje wzorzec, gdy zawiera on Pattern.any, wyodrębnia jednostek, użyj [jawną listę](luis-concept-patterns.md#explicit-lists) Aby rozwiązać ten problem. 
+Jednostka Pattern.any wyodrębnia jednostki o różnej długości. Działa tylko we wzorcu, ponieważ wzorzec oznacza początek i koniec jednostki. Jeśli zauważysz, że Twój wzorzec, gdy zawiera jednostkę Pattern.any, niepoprawnie wyodrębnia jednostki, użyj elementu [explicit list](luis-concept-patterns.md#explicit-lists) (listy jawnej), aby rozwiązać ten problem. 
 
-1. Wybierz **jednostek** w nawigacji po lewej stronie.
+1. Wybierz pozycję **Entities** (Jednostki) na lewym pasku nawigacyjnym.
 
-2. Wybierz **Utwórz nową jednostkę**, wprowadź nazwę `FormName`i wybierz **Pattern.any** jako typu. Wybierz pozycję **Done** (Gotowe). 
+2. Wybierz polecenie **Create new entity** (Utwórz nową jednostkę), wprowadź nazwę `FormName` i wybierz jednostkę **Pattern.any** jako typ. Wybierz pozycję **Done** (Gotowe). 
 
-    Jednostki w celu nie etykiety, ponieważ Pattern.any obowiązuje tylko we wzorcu. 
+    Jednostki w intencji nie można oznaczyć etykietą, ponieważ jednostka Pattern.any obowiązuje tylko we wzorcu. 
 
-    Wyodrębnione dane, aby uwzględnić inne jednostki, takie jak liczba lub datetimeV2, należy utworzyć złożone jednostki, która obejmuje Pattern.any, a także liczbę i datetimeV2.
+    Jeśli chcesz, aby wyodrębnione dane uwzględniały inne jednostki, takie jak liczba lub jednostka datetimeV2, musisz utworzyć złożoną jednostkę, która obejmuje jednostkę Pattern.any, a także liczbę i jednostkę datetimeV2.
 
-## <a name="add-a-pattern-that-uses-the-patternany"></a>Dodawanie wzorca, który używa Pattern.any
+## <a name="add-a-pattern-that-uses-the-patternany"></a>Dodawanie wzorca, który używa jednostki Pattern.any
 
-1. Wybierz **wzorców** w lewym obszarze nawigacji.
+1. Wybierz pozycję **Patterns** (Wzorce) na lewym pasku nawigacyjnym.
 
-2. Wybierz **FindForm** intencji.
+2. Wybierz intencję **FindForm** (Znajdź formularz).
 
 3. Wprowadź następujące wypowiedzi szablonu, które używają nowej jednostki:
 
-    |Szablon wypowiedzi|
+    |Wypowiedzi szablonu|
     |--|
-    |Gdzie jest to forma ["] {Nazwa_formularza} ["] i kogo należy podpisać go po czy mogę odczytywać je [?]|
-    |Gdzie to ["] {Nazwa_formularza} ["] na serwerze [?]|
-    |Autora ["] {Nazwa_formularza} ["] i co to jest najbardziej aktualnej wersji [?]|
-    |Szukam formularz o nazwie ["] {Nazwa_formularza} ["] [.]|
+    |Where is the form ["]{FormName}["] and who needs to sign it after I read it[?] (Gdzie jest formularz [„]{Nazwa_formularza}[”] i kto musi go podpisać, gdy go przeczytam[?])|
+    |Where is ["]{FormName}["] on the server[?] (Gdzie jest [„]{Nazawa_formularza}[”] na serwerze[?])|
+    |Who authored ["]{FormName}["] and what is the most current version[?] (Kto jest autorem formularza [„]{Nazwa_formularza}[”] i jaka jest najbardziej aktualna wersja[?])|
+    |I'm looking for the form named ["]{FormName}["][.] (Szukam formularza o nazwie [„]{Nazwa_formularza}[”][.])|
 
-    Jeśli chcesz uwzględnić zmiany w formularzu, takie jak apostrofy zamiast podwójne cudzysłowy lub okres zamiast znaku zapytania, należy utworzyć nowy szablon dla poszczególnych odmian.
+    Jeśli chcesz uwzględnić różne warianty w formularzu, takie jak pojedyncze cudzysłowy zamiast cudzysłowów podwójnych lub kropka zamiast znaku zapytania, utwórz nowy wzór dla każdego wariantu.
 
-4. Usunięcie jednostki keyPhrase należy dodać go do aplikacji. 
+4. Jeśli usunięto jednostkę keyPhrase, należy dodać ją z powrotem do aplikacji. 
 
 ## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Testowanie nowego wzorca do wyodrębnienia dowolnych danych
-1. Wybierz **Test** z paskiem górnym, aby otworzyć panel testu. 
+## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Testowanie nowego wzorca do wyodrębnienia danych o formacie swobodnym
+1. Na górnym pasku wybierz pozycję **Test** (Testuj), aby otworzyć panel testu. 
 
-2. Wprowadź następujące wypowiedź: 
+2. Wprowadź następującą wypowiedź: 
 
     `Where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`
 
-3. Wybierz **Sprawdź** w obszarze wynik, aby zobaczyć wyniki testu jednostki i przeznaczenie.
+3. W obszarze wyniku wybierz pozycję **Inspect** (Sprawdź), aby zobaczyć wyniki testu jednostki i intencji.
 
-    Jednostka `FormName` znajduje się najpierw, a następnie zostanie odnaleziony wzorzec określania intencji. Jeśli wynik testu, w którym obiekty nie są wykrywane, a w związku z tym nie zostanie odnaleziony wzorzec, należy dodać więcej wypowiedzi przykład na intencji (nie wzorzec).
+    Najpierw znaleziono jednostkę `FormName`, następnie znaleziono wzorzec określający intencję. Jeśli otrzymano wynik testu, w którym jednostki nie zostały wykryte, a w związku z tym nie znaleziono wzorca, należy dodać więcej przykładowych wypowiedzi do intencji (nie wzorca).
 
-4. Zamknij panel testu, wybierając **Test** przycisku w górnym menu nawigacyjnym.
+4. Zamknij panel testu, wybierając przycisk **Test** (Testuj) na górnym pasku nawigacyjnym.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku dodany przykład wypowiedzi do istniejących intencji, a następnie tworzone nowe Pattern.any nazwa formularza. Następnie samouczka utworzona szablon dla istniejącej intencji z nowy przykład wypowiedzi i jednostek. Testowanie interaktywne wykazało, że wzorzec i jego celem były przewidzieć, ponieważ znaleziono jednostki. 
+W tym samouczku dodano przykładowe wypowiedzi do istniejącej intencji, a następnie utworzono nową jednostkę Pattern.any dla nazwy formularza. Następnie w samouczku utworzono wzorzec dla istniejącej intencji z nowymi przykładowymi wypowiedziami i jednostką. Testowanie interaktywne wykazało, że wzorzec i jego intencja zostały przewidziane, ponieważ znaleziono jednostkę. 
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak użyć ról z wzorcem](luis-tutorial-pattern-roles.md)
+> [Dowiedz się, jak używać ról ze wzorcem](luis-tutorial-pattern-roles.md)

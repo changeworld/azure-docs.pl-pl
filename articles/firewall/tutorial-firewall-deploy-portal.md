@@ -6,15 +6,15 @@ author: vhorne
 manager: jpconnock
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 10/5/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: ff8df51011ef664950ecfeb9eef0b201306c8ad5
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 8fb459d197c15cf7760a924c7161fed59cc1caac
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221659"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801883"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w witrynie Azure Portal
 
@@ -186,6 +186,10 @@ Na potrzeby podsieci **Workload-SN** skonfiguruj trasę domyślną ruchu wychodz
 10. Kliknij pozycję **Podsieci**, a następnie kliknij pozycję **Skojarz**.
 11. Kliknij pozycję **Sieć wirtualna**, a następnie wybierz pozycję **Test-FW-VN**.
 12. W polu **Podsieć** kliknij pozycję **Workload-SN**.
+
+    > [!IMPORTANT]
+    > Upewnij się, że wybrano tylko podsieć **Workload-SN** dla tej trasy. W przeciwnym razie zapora nie będzie działać poprawnie.
+
 13. Kliknij przycisk **OK**.
 14. Kliknij pozycję **Trasy**, a następnie kliknij pozycję **Dodaj**.
 15. W polu **Nazwa trasy** wpisz wartość **FW-DG**.
@@ -193,8 +197,8 @@ Na potrzeby podsieci **Workload-SN** skonfiguruj trasę domyślną ruchu wychodz
 17. W obszarze **Typ następnego skoku** wybierz pozycję **Urządzenie wirtualne**.
 
     Usługa Azure Firewall to w rzeczywistości usługa zarządzana, ale urządzenie wirtualne działa w tej sytuacji.
-1. W polu **Adres następnego skoku** wpisz wcześniej zanotowany prywatny adres IP zapory.
-2. Kliknij przycisk **OK**.
+18. W polu **Adres następnego skoku** wpisz wcześniej zanotowany prywatny adres IP zapory.
+19. Kliknij przycisk **OK**.
 
 
 ## <a name="configure-application-rules"></a>Konfigurowanie reguł aplikacji

@@ -1,24 +1,25 @@
 ---
-title: Uzyskiwanie wyników automatycznego sugerowania za pomocą API automatycznego sugerowania usługi Bing (kognitywnych usług Azure) | Dokumentacja firmy Microsoft
-description: Kod źródłowy Samouczek przedstawiający sposób użycia interfejsu API automatycznego sugerowania usługi Bing w aplikacji jednej strony sieci Web.
+title: 'Samouczek: uzyskiwanie wyników automatycznego sugerowania przy użyciu interfejsu API automatycznego sugerowania Bing'
+titlesuffix: Azure Cognitive Services
+description: Kod źródłowy do tego samouczka przedstawia sposób użycia interfejsu API automatycznego sugerowania Bing w jednostronicowej aplikacji internetowej.
 services: cognitive-services
 author: v-jaswel
-manager: kamrani
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 687183acb209ba6faae37865aa6a05fded5c26dc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 6124b831c11f0d72c8072c903d4d05f665448208
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348949"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831419"
 ---
-# <a name="tutorial-single-page-web-app"></a>Samouczek: Aplikacji jednej strony sieci Web
+# <a name="tutorial-single-page-web-app"></a>Samouczek: jednostronicowa aplikacja internetowa
 
-To jest kod źródłowy pełną omówione w [samouczek aplikacji jednej strony](autosuggest.md) dla interfejsu API automatycznego sugerowania usługi Bing. Aby uruchomić aplikację, skopiuj kod źródłowy w edytorze tekstu i Zapisz plik jako `autosuggest.html`. Następnie otwórz zapisany plik w przeglądarce sieci Web.
+Jest to pełen kod źródłowy omówiony w [samouczku dotyczącym aplikacji jednostronicowej](autosuggest.md) do interfejsu API automatycznego sugerowania Bing. Aby uruchomić aplikację, skopiuj kod źródłowy do edytora tekstu, a następnie zapisz go jako plik `autosuggest.html`. Następnie otwórz zapisany plik w przeglądarce internetowej.
 
 ```html
 <!DOCTYPE html>

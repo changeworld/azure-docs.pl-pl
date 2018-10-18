@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 255fe84f0d155902b2a3ac477a1e677efef42bb4
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: MT
+ms.openlocfilehash: b4e2971b5bb4ed5add2e68c1aabbc82443a61160
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386663"
+ms.locfileid: "49363387"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Rozszerzenia maszyn wirtualnych i funkcji dla systemu Linux
 
@@ -65,7 +65,7 @@ Pakiety rozszerzeń są pobierane z usługi Azure Storage repozytorium rozszerze
 > [!IMPORTANT]
 > Zablokowanie dostępu do *168.63.129.1* przy użyciu zapory gościa, następnie rozszerzenia kończą się niepowodzeniem niezależnie od powyższych.
 
-Agentów należy używać tylko do pobierania pakietów rozszerzeń i stanu raportowania. Na przykład, czy instalacja rozszerzenia musi pobrać skrypt z usługi GitHub (niestandardowego skryptu) wymagany jest dostęp do usługi Azure Storage (usługa Azure Backup), następnie dodatkowe zapory i sieci zabezpieczeń grupy portów muszą być otwarte. Inne rozszerzenia mają różne wymagania, ponieważ są one aplikacje w ich własnych po prawej stronie. Dla rozszerzeń, które wymagają dostępu do usługi Azure Storage, można zezwolić na dostęp przy użyciu tagów usługi sieciowej grupy zabezpieczeń platformy Azure dla [magazynu](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
+Agentów należy używać tylko do pobierania pakietów rozszerzeń i stanu raportowania. Na przykład, czy instalacja rozszerzenia musi pobrać skrypt z usługi GitHub (niestandardowego skryptu) wymagany jest dostęp do usługi Azure Storage (usługa Azure Backup), następnie dodatkowe zapory i sieci zabezpieczeń grupy portów muszą być otwarte. Inne rozszerzenia mają różne wymagania, ponieważ są one aplikacje w ich własnych po prawej stronie. Dla rozszerzeń, które wymagają dostępu do usługi Azure Storage, można zezwolić na dostęp przy użyciu tagów usługi sieciowej grupy zabezpieczeń platformy Azure dla [magazynu](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags).
 
 Aby przekierować żądania ruchu agenta, Agent systemu Linux ma Obsługa serwerów proxy. Jednak ta obsługa serwerów proxy, nie ma zastosowania rozszerzenia. Należy skonfigurować każde rozszerzenie poszczególnych do pracy z serwerem proxy.
 
@@ -259,7 +259,7 @@ W powyższym przykładzie danych wyjściowych, jest nadrzędnym lub "pakiet wdro
 
 Agent cel — stan jest automatycznie zaktualizowanej wersji.
 
-Zdecydowanie zaleca się posiadanie aktualizacje automatyczne agenta, [AutoUpdate.Enabled=y](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent). Nie mających oznacza to włączone, należy zachować ręczna aktualizacja agenta, a nie uzyskać poprawki usterek i zabezpieczeń.
+Zdecydowanie zaleca się posiadanie aktualizacje automatyczne agenta, [AutoUpdate.Enabled=y](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/update-agent). Nie mających oznacza to włączone, należy zachować ręczna aktualizacja agenta, a nie uzyskać poprawki usterek i zabezpieczeń.
 
 #### <a name="extension-updates"></a>Aktualizacje rozszerzenia
 

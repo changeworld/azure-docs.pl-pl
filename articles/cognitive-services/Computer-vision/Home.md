@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/22/2018
 ms.author: v-deken
-ms.openlocfilehash: 030a8351a8f41c7404fa4ca8d243fff1ad818c2f
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 9a0acae20a6361f5a9b69e427d46dd1b9c7db05e
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433603"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869350"
 ---
 # <a name="what-is-computer-vision"></a>Czym jest przetwarzanie obrazów?
 
@@ -61,7 +61,7 @@ Przetwarzanie obrazów umożliwia analizowanie obrazów, które spełniają nast
 - Obraz musi być w formacie JPEG, PNG, GIF lub BMP
 - Rozmiar pliku obrazu musi być mniejszy niż 4 megabajty (MB)
 - Wymiary obrazu muszą być większe niż 50x50 pikseli  
-  W przypadku optycznego rozpoznawania znaków obraz musi mieć wymiary z zakresu od 50x50 do 4200x4200 pikseli oraz nie może być większy niż 10 megapikseli.
+  W przypadku funkcji optycznego rozpoznawania znaków wymiary obrazu muszą wynosić od 50x50 pikseli do 4200x4200 pikseli
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/20/2018
 ms.author: daveba
-ms.openlocfilehash: a6e5e96757caeda267aa068db0868b1aa8ddb0fd
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: e208c8b52c14b99129bf3fce9ae54ba11f1c0a28
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220674"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584306"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Samouczek: używanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Windows w celu uzyskiwania dostępu do interfejsu API funkcji Azure AD Graph
 
@@ -136,7 +136,7 @@ Ta opcja wymaga użycia programu PowerShell usługi Azure AD. Jeśli nie jest on
    Remove-AzureADServiceAppRoleAssignment -AppRoleAssignmentId $ServiceAppRoleAssignment.ObjectId -ObjectId $ManagedIdentitiesServicePrincipal.ObjectId
    ```
  
-## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-ad-graph"></a>Uzyskiwanie tokenu dostępu przy użyciu tożsamości maszyny wirtualnej oraz używanie go do wywołania funkcji Azure AD Graph 
+## <a name="get-an-access-token-using-the-vms-identity-to-call-azure-ad-graph"></a>Uzyskiwanie tokenu dostępu przy użyciu tożsamości maszyny wirtualnej na potrzeby wywołania funkcji Azure AD Graph 
 
 Aby użyć przypisanej przez system tożsamości zarządzanej maszyny wirtualnej na potrzeby uwierzytelniania w funkcji Azure AD Graph, musisz wysłać żądania z maszyny wirtualnej.
 

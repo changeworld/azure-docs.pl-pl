@@ -1,45 +1,46 @@
 ---
-title: Tworzenie pierwszego wystąpienia wyszukiwania niestandardowego Bing — Microsoft Cognitive Services
-description: Aby korzystać z usługi Bing Custom Search, musisz utworzyć wystąpienie wyszukiwania niestandardowego, definiujący widoku lub wycinek sieci web. Wystąpienie zawiera ustawienia, które określają domeny publicznej, Lokacje podrzędne i stron sieci Web, które Bing, wyszukiwanie i wszelkie dostosowania klasyfikacji.
+title: 'Szybki start: tworzenie pierwszego wystąpienia usługi wyszukiwania niestandardowego Bing'
+titlesuffix: Azure Cognitive Services
+description: Aby móc skorzystać z usługi wyszukiwania niestandardowego Bing, należy utworzyć wystąpienie wyszukiwania niestandardowego definiujące widok lub wycinek sieci Internet. Wystąpienie zawiera ustawienia określające domeny publiczne, lokacje podrzędne i strony internetowe, które mają być przeszukiwane przez usługę Bing, oraz wszelkie dostosowania klasyfikacji.
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 05/07/2017
 ms.author: v-brapel
-ms.openlocfilehash: 25d622772fe47ffad001834d476e612f8c606904
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: MT
+ms.openlocfilehash: 866d32aa4de45076fcbc4e413d8c2e67d5346878
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981662"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816243"
 ---
-# <a name="create-your-first-bing-custom-search-instance"></a>Tworzenie pierwszego wystąpienia wyszukiwania niestandardowego Bing
-Aby korzystać z usługi Bing Custom Search, musisz utworzyć wystąpienie wyszukiwania niestandardowego, definiujący widoku lub wycinek sieci web. Wystąpienie zawiera ustawienia, które określają domeny publicznej, witryn sieci Web i stron sieci Web, które Bing, wyszukiwanie i wszelkie dostosowania klasyfikacji. Aby utworzyć wystąpienie, użyj wyszukiwania niestandardowego Bing [portal](https://customsearch.ai). 
+# <a name="quickstart-create-your-first-bing-custom-search-instance"></a>Szybki start: tworzenie pierwszego wystąpienia usługi wyszukiwania niestandardowego Bing
+Aby móc skorzystać z usługi wyszukiwania niestandardowego Bing, należy utworzyć wystąpienie wyszukiwania niestandardowego definiujące widok lub wycinek sieci Internet. Wystąpienie zawiera ustawienia, które określają domeny publiczne, witryny i strony internetowe, które mają być wyszukiwane przez usługę Bing, oraz wszelkie dostosowania klasyfikacji. Aby utworzyć wystąpienie, użyj [portalu](https://customsearch.ai) usługi wyszukiwania niestandardowego Bing. 
 
 ## <a name="create-a-custom-search-instance"></a>Tworzenie wystąpienia wyszukiwania niestandardowego
 
 Aby utworzyć wystąpienie wyszukiwania niestandardowego Bing:
 
-1.  Uzyskiwanie klucza interfejsu API wyszukiwania niestandardowego. Zobacz [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search).
-2.  Kliknij przycisk **Zaloguj** znajdujący się i zaloguj się do portalu przy użyciu konta Microsoft (MSA). 
-    - Jeśli nie masz konta Microsoft, kliknij przycisk **Utwórz konto Microsoft**. Portal poprosi o podanie uprawnień, aby uzyskiwać dostęp do danych. Kliknij przycisk **Yes** (Tak).
-    - Zgodę na warunki usługi Cognitive Services. Sprawdź **zgodę** i kliknij przycisk **Zgadzam się**.  
-3.  Po zarejestrowaniu się kliknij **nowe wystąpienie** i nazwę wystąpienia. Użyj nazwy, która ma znaczenie i opisuje typ zawartości, którego funkcja wyszukiwania. Nazwę można zmienić w dowolnym momencie. 
-4.  Na **Active** karcie **środowisko wyszukiwania**, wprowadź adres URL jednego lub więcej witryn sieci Web, które chcesz uwzględnić w wyszukiwaniu.
-5.  Aby upewnić się, że wystąpienie zwraca wyniki, należy wprowadzić kwerendę w okienku podglądu, po prawej stronie. Jeśli nie ma żadnych wyników, należy określić nową witrynę sieci Web. Wyszukiwarka Bing zwróci wyniki tylko dla witryn publicznych, które ma on indeksowane.
-6.  Kliknij przycisk **Publikuj** do publikowania zmian w konfiguracji do środowiska produkcyjnego. Po wyświetleniu monitu kliknij **Publikuj** o potwierdzenie.
-7.  Kliknij przycisk **produkcji** > **punktów końcowych** i skopiuj **niestandardowy identyfikator konfiguracji**. Ten identyfikator, aby wywołać niestandardowy interfejs API wyszukiwania będzie potrzebny.
+1.  Uzyskaj klucz interfejsu API wyszukiwania niestandardowego. Zobacz [Możliwość wypróbowania usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search).
+2.  Kliknij przycisk **Sign in** (Zaloguj się) i zaloguj się do portalu przy użyciu konta Microsoft (MSA). 
+    - Jeśli nie masz konta MSA, kliknij pozycję **Create a Microsoft account** (Utwórz konto Microsoft). Portal poprosi o udzielenie uprawnień dostępu do danych. Kliknij przycisk **Yes** (Tak).
+    - Zaakceptuj warunki usługi Cognitive Services. Zaznacz pole wyboru **I agree** (Zgadzam się) i kliknij przycisk **Agree** (Zgadzam się).  
+3.  Po zalogowaniu się kliknij pozycję **New instance** (Nowe wystąpienie) i podaj nazwę wystąpienia. Wprowadź istotną nazwę opisową typu zawartości zwracanej przez wyszukiwanie. Nazwę można zmienić w dowolnym momencie. 
+4.  Na karcie **Active** (Aktywne) w obszarze **Search Experience** (Funkcja wyszukiwania) wprowadź adres URL jednej lub większej liczby witryn internetowych, które mają zostać uwzględnione w wyszukiwaniu.
+5.  Aby upewnić się, że wystąpienie zwraca wyniki, wprowadź zapytanie w okienku podglądu po prawej stronie. Jeśli nie ma żadnych wyników, należy określić nową witrynę internetową. Wyszukiwarka Bing zwraca tylko wyniki z witryn publicznych, które zostały przez nią zindeksowane.
+6.  Kliknij przycisk **Publish** (Publikuj), aby opublikować zmiany konfiguracji w środowisku produkcyjnym. Po wyświetleniu monitu kliknij przycisk **Publish** (Publikuj), aby potwierdzić.
+7.  Kliknij opcję **Production** > **Endpoints** (Produkcja, Punkty końcowe) i skopiuj wartość **Custom Configuration ID** (Identyfikator konfiguracji niestandardowej). Ten identyfikator jest potrzebny do wywołania interfejsu API wyszukiwania niestandardowego.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Przejdź do pracy z wystąpienia wyszukiwania niestandardowego, które właśnie utworzoną postępując zgodnie z instrukcjami opisanymi w tych przewodnikach instruktażowych:
+Kontynuuj pracę z utworzonym wystąpieniem wyszukiwania niestandardowego, postępując zgodnie z instrukcjami w następujących przewodnikach:
 
 - [Konfigurowanie środowiska wyszukiwania niestandardowego](./define-your-custom-view.md)
-- [Wywołanie usługi wyszukiwania niestandardowego](./search-your-custom-view.md)
-- [Udostępnianie wyników wyszukiwania niestandardowego](./share-your-custom-search.md)
-- [Konfigurowanie środowiska obsługiwanego interfejsu użytkownika](./hosted-ui.md)
-- [Korzystanie ze znaczników dekoracji, aby wyróżnić tekst](./hit-highlighting.md)
-- [Strona stron sieci Web](./page-webpages.md)
+- [Wywoływanie wyszukiwania niestandardowego](./search-your-custom-view.md)
+- [Udostępnianie wyszukiwania niestandardowego](./share-your-custom-search.md)
+- [Konfigurowanie środowiska hostowanego interfejsu użytkownika](./hosted-ui.md)
+- [Wyróżnianie tekstu za pomocą znaczników dekoracji](./hit-highlighting.md)
+- [Dzielenie na strony wyników wyszukiwania stron internetowych](./page-webpages.md)

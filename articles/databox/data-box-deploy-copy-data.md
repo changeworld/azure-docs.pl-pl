@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/25/2018
+ms.date: 10/10/2018
 ms.author: alkohli
-ms.openlocfilehash: 9bc84a9b08c4cfbdf7f24416c923e0dbd7076556
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: d606b7b536147b7e1d96bfb6cebf2522e5b4f85f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161934"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078861"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box"></a>Samouczek: kopiowanie danych na urządzenie Azure Data Box 
 
@@ -88,11 +88,11 @@ Jeśli używasz komputera-hosta z systemem Windows Server, wykonaj następujące
     The command completed successfully.
     ```
 
-4. Naciśnij klawisze Windows + R. W oknie **Uruchamianie** podaj `\\<device IP address>`. Kliknij przycisk **OK**. Spowoduje to otworzenie Eksploratora plików.
+4. Naciśnij klawisze Windows + R. W oknie **Uruchamianie** podaj `\\<device IP address>`. Kliknij przycisk **OK**. Spowoduje to otworzenie Eksploratora plików. Teraz udziały powinny być widoczne jako foldery.
     
     ![Nawiązywanie połączenia z udziałem za pomocą Eksploratora plików 2](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
-5. Teraz udziały powinny być widoczne jako foldery. Utwórz folder dla plików, które mają zostać skopiowane (w tym przypadku jest to folder templates). Czasami na ikonie folderu może być wyświetlany szary krzyżyk. Ten krzyżyk nie oznacza warunku błędu. Foldery są oflagowywane przez aplikację w celu śledzenia stanu.
+5.  **Zawsze należy utworzyć w udziale folder na pliki, które chcesz skopiować, a następnie skopiować pliki do tego folderu**. Czasami na ikonie folderu może być wyświetlany szary krzyżyk. Ten krzyżyk nie oznacza warunku błędu. Foldery są oflagowywane przez aplikację w celu śledzenia stanu.
     
     ![Nawiązywanie połączenia z udziałem za pomocą Eksploratora plików 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) ![Nawiązywanie połączenia z udziałem za pomocą Eksploratora plików 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) 
 
@@ -239,11 +239,14 @@ W przypadku korzystania z opcji rsync na potrzeby kopiowania wielowątkowego nal
 
  - Zainstaluj pakiet **CIFS Utils** lub **NFS Utils** w zależności od systemu plików używanego przez Twojego klienta systemu Linux.
 
-    `sudo apt-get install cifs-utils` `sudo apt-get install nfs-utils`
+    `sudo apt-get install cifs-utils`
+
+    `sudo apt-get install nfs-utils`
 
  -  Zainstaluj narzędzia **Rsync** i **Parallel** (polecenia różnią się w zależności od wersji dystrybucji systemu Linux).
 
     `sudo apt-get install rsync`
+   
     `sudo apt-get install parallel` 
 
  - Utwórz punkt instalacji.

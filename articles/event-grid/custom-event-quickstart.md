@@ -5,15 +5,15 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 08/23/2018
+ms.date: 10/02/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 5d980e480c6a730ad66dfaee56459c8bb36605e8
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: fe48125da881cd30b8a2645b5406840e2eef7e96
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42744189"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041569"
 ---
 # <a name="create-and-route-custom-events-with-azure-cli-and-event-grid"></a>Tworzenie i kierowanie zdarzeń niestandardowych za pomocą interfejsu wiersza polecenia platformy Azure i usługi Event Grid
 
@@ -47,7 +47,7 @@ az group create --name gridResourceGroup --location westus2
 
 ## <a name="create-a-custom-topic"></a>Tworzenie tematu niestandardowego
 
-Temat usługi Event Grid udostępnia zdefiniowany przez użytkownika punkt końcowy, w którym publikowane są zdarzenia. Poniższy przykład obejmuje tworzenie tematu niestandardowego w grupie zasobów. Zamień `<your-topic-name>` na unikatową nazwę tematu. Nazwa tematu musi być unikatowa, ponieważ stanowi część wpisu DNS.
+Temat usługi Event Grid udostępnia zdefiniowany przez użytkownika punkt końcowy, w którym publikowane są zdarzenia. Poniższy przykład obejmuje tworzenie tematu niestandardowego w grupie zasobów. Zamień `<your-topic-name>` na unikatową nazwę tematu. Nazwa tematu niestandardowego musi być unikatowa, ponieważ stanowi część wpisu DNS.
 
 ```azurecli-interactive
 topicname=<your-topic-name>
@@ -57,7 +57,7 @@ az eventgrid topic create --name $topicname -l westus2 -g gridResourceGroup
 
 ## <a name="create-a-message-endpoint"></a>Tworzenie punktu końcowego komunikatów
 
-Przed zasubskrybowaniem tematu utwórzmy punkt końcowy dla komunikatów o zdarzeniach. Zazwyczaj w punkcie końcowym akcje są wykonywane na podstawie danych zdarzenia. Aby uprościć ten przewodnik Szybki Start, wdrożysz [wstępnie zbudowaną aplikację sieci Web](https://github.com/Azure-Samples/azure-event-grid-viewer), która będzie wyświetlać komunikaty o zdarzeniach. Wdrożone rozwiązanie zawiera plan usługi App Service, aplikację internetową usługi App Service i kod źródłowy z repozytorium GitHub.
+Przed subskrybowaniem tematu niestandardowego utwórzmy punkt końcowy dla komunikatu o zdarzeniach. Zazwyczaj w punkcie końcowym akcje są wykonywane na podstawie danych zdarzenia. Aby uprościć ten przewodnik Szybki Start, wdrożysz [wstępnie zbudowaną aplikację sieci Web](https://github.com/Azure-Samples/azure-event-grid-viewer), która będzie wyświetlać komunikaty o zdarzeniach. Wdrożone rozwiązanie zawiera plan usługi App Service, aplikację internetową usługi App Service i kod źródłowy z repozytorium GitHub.
 
 Zastąp `<your-site-name>` unikatową nazwą aplikacji sieci Web. Nazwa aplikacji sieci Web musi być unikatowa, ponieważ stanowi część wpisu DNS.
 
@@ -74,9 +74,9 @@ Wdrożenie może potrwać kilka minut. Po pomyślnym wdrożeniu należy wyświet
 
 Powinna być widoczna witryna internetowa bez żadnych aktualnie wyświetlanych komunikatów.
 
-## <a name="subscribe-to-a-topic"></a>Subskrybowanie tematu
+## <a name="subscribe-to-a-custom-topic"></a>Subskrybowanie tematu niestandardowego
 
-Subskrybowanie tematu to dla usługi Event Grid informacja o tym, które zdarzenia chcesz śledzić i gdzie mają być one wysyłane. Poniższy przykład ilustruje subskrybowanie utworzonego tematu i przekazanie adresu URL z aplikacji sieci Web jako punktu końcowego dla powiadomień o zdarzeniach.
+Zasubskrybowanie tematu pozwala poinformować usługę Event Grid o tym, które zdarzenia chcesz śledzić i gdzie mają być one wysyłane. Poniższy przykład ilustruje subskrybowanie utworzonego tematu niestandardowego i przekazanie adresu URL z aplikacji internetowej jako punktu końcowego dla powiadomień o zdarzeniach.
 
 Punkt końcowy dla aplikacji sieci Web musi zawierać sufiks `/api/updates/`.
 
@@ -94,7 +94,7 @@ Wyświetl aplikację sieci Web ponownie i zwróć uwagę, że zdarzenie sprawdza
 
 ![Wyświetlanie zdarzenia subskrypcji](./media/custom-event-quickstart/view-subscription-event.png)
 
-## <a name="send-an-event-to-your-topic"></a>Wysyłanie zdarzenia do tematu
+## <a name="send-an-event-to-your-custom-topic"></a>Wysyłanie zdarzenia do tematu niestandardowego
 
 Wyzwólmy zdarzenie, aby zobaczyć, jak usługa Event Grid dystrybuuje komunikat do punktu końcowego. Po pierwsze uzyskajmy adres URL i klucz tematu niestandardowego.
 
@@ -103,18 +103,18 @@ endpoint=$(az eventgrid topic show --name $topicname -g gridResourceGroup --quer
 key=$(az eventgrid topic key list --name $topicname -g gridResourceGroup --query "key1" --output tsv)
 ```
 
-Aby uprościć ten artykuł, użyj przykładowych danych zdarzenia do wysłania do tematu. Zwykle dane zdarzenia są wysyłane przez aplikację lub usługę platformy Azure. Poniższy przykład pobiera dane zdarzenia:
+Dla uproszczenia czynności opisanych w tym artykule do tematu niestandardowego zostaną wysłane przykładowe dane zdarzenia. Zwykle dane zdarzenia są wysyłane przez aplikację lub usługę platformy Azure. Poniższy przykład tworzy przykładowe dane zdarzenia:
 
 ```azurecli-interactive
-body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/customevent.json)'")
+event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/vehicles/motorcycles", "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'", "data":{ "make": "Ducati", "model": "Monster"},"dataVersion": "1.0"} ]'
 ```
 
-Aby wyświetlić pełne zdarzenie, użyj polecenia `echo "$body"`. Element `data` danych JSON to ładunek zdarzenia. W tym polu można umieścić dowolną poprawnie sformułowaną zawartość JSON. Można też używać pola tematu do zaawansowanego routingu i filtrowania.
+Element `data` danych JSON to ładunek zdarzenia. W tym polu można umieścić dowolną poprawnie sformułowaną zawartość JSON. Można też używać pola tematu do zaawansowanego routingu i filtrowania.
 
 CURL to narzędzie, które wysyła żądania HTTP. W tym artykule do wysłania zdarzenia do tematu używane jest narzędzie CURL. 
 
 ```azurecli-interactive
-curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
+curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 ```
 
 Zdarzenie zostało wyzwolone, a usługa Event Grid wysłała komunikat do punktu końcowego skonfigurowanego podczas subskrybowania. Wyświetl aplikację sieci Web, aby wyświetlić właśnie wysłane zdarzenie.

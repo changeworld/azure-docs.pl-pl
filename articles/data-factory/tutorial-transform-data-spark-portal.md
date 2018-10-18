@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/10/2018
 ms.author: douglasl
-ms.openlocfilehash: c6817fa20d4177efd3e38f1454f3142f6d40a07d
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: f1cc1b728a91c22f9b4b2062ed5c423314e561c8
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108622"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017588"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Przekształcanie danych w chmurze za pomocą działania platformy Spark w usłudze Azure Data Factory
 W tym samouczku utworzysz potok usługi Azure Data Factory za pomocą witryny Azure Portal. Ten potok przekształca dane przy użyciu działania Spark i połączonej usługi Azure HDInsight dostępnej na żądanie. 
@@ -34,6 +34,10 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * **Konto usługi Azure Storage**. Utworzysz skrypt w języku Python i plik wejściowy, a następnie przekażesz je do usługi Azure Storage. Dane wyjściowe programu platformy Spark są przechowywane na tym koncie magazynu. Klaster platformy Spark na żądanie używa tego samego konta magazynu, jako swojego podstawowego magazynu.  
+
+> [!NOTE]
+> Usługa HdInsight obsługuje tylko konta magazynu ogólnego przeznaczenia w warstwie Standardowa. Upewnij się, że konto nie jest kontem magazynu w warstwie Premium ani kontem magazynu obsługującym tylko obiekty blob.
+
 * Zainstalowanie programu **Azure PowerShell**. Wykonaj instrukcje podane w temacie [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 
@@ -99,11 +103,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 1. W obszarze **Lokalizacja** wybierz lokalizację fabryki danych. 
 
    Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (na przykład Azure Storage lub Azure SQL Database) i jednostki obliczeniowe (takie jak HDInsight) używane przez usługę Data Factory mogą znajdować się w innych regionach.
-1. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
-1. Wybierz pozycję **Utwórz**.
-1. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem **Wdrażanie fabryki danych**: 
 
-   ![Kafelek „Wdrażanie fabryki danych”](media//tutorial-transform-data-spark-portal/deploying-data-factory.png)
+1. Wybierz pozycję **Utwórz**.
+
 1. Po zakończeniu tworzenia zostanie wyświetlona strona **Fabryka danych**. Wybierz kafelek **Tworzenie i monitorowanie**, aby na osobnej karcie uruchomić aplikację interfejsu użytkownika usługi Data Factory.
 
     ![Strona główna fabryki danych z kafelkiem „Tworzenie i monitorowanie”](./media/tutorial-transform-data-spark-portal/data-factory-home-page.png)
@@ -157,11 +159,11 @@ W tej sekcji zredagujesz dwie połączone usługi:
    
    h. Rozwiń węzeł **Typ systemu operacyjnego**.
    
-   i. Wprowadź nazwę użytkownika klastra. 
+   i. Podaj nazwę w polu **Nazwa użytkownika klastra**. 
    
-   j. Wprowadź hasło użytkownika. 
+   j. Określ wartość pola **Hasło klastra** dla użytkownika. 
    
-   k. Wybierz pozycję **Zapisz**. 
+   k. Wybierz pozycję **Finish** (Zakończ). 
 
    ![Ustawienia połączonej usługi HDInsight](./media/tutorial-transform-data-spark-portal/azure-hdinsight-linked-service-settings.png)
 

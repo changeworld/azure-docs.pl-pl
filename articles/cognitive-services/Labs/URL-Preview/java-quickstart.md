@@ -1,31 +1,33 @@
 ---
-title: Szybki Start Java projektu adres URL podglądu - kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
-description: Przykład skryptu, aby rozpocząć korzystanie z podglądu adres URL projektu w kognitywnych usług Microsoft Azure.
+title: 'Szybki start: laboratorium Project URL Preview, Java'
+titlesuffix: Azure Cognitive Services
+description: Przykładowy skrypt umożliwiający rozpoczęcie pracy z laboratorium Project URL Preview w języku Java.
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 04/24/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 2de74f48882605bfcf05f65723ba5d8993587f51
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 95e33ceddc2fbbab51d3c4f0164b410847430244
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348637"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867120"
 ---
-# <a name="url-preview-java-quickstart"></a>Adres URL podglądu Java — Szybki Start
+# <a name="quickstart-url-preview-with-java"></a>Szybki start: podgląd adresu URL w języku Java
 
-W poniższym przykładzie Java tworzy podgląd adres Url witryny sieci SwiftKey Web: https://swiftkey.com/en.
+Poniższy przykład w języku Java tworzy podgląd adresu URL witryny internetowej SwiftKey: https://swiftkey.com/en.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Pobierz klucz dostępu dla bezpłatnej wersji próbnej [kognitywnych Labs usług](https://aka.ms/answersearchsubscription)
+Pobierz klucz dostępu dla bezpłatnej wersji próbnej zestawu [Cognitive Services Labs](https://aka.ms/answersearchsubscription).
 
 ## <a name="request"></a>Żądanie 
 
-Poniższy kod tworzy `WebRequest`, ustawia nagłówek klucza dostępu i dodaje ciąg zapytania dla "https://swiftkey.com/en".  Następnie wysyła żądanie i przypisuje odpowiedź na ciąg tekstowy JSON.
+Poniższy kod tworzy obiekt `WebRequest`, ustawia nagłówek klucza dostępu i dodaje ciąg zapytania dla adresu „https://swiftkey.com/en”.  Następnie wysyła żądanie i przypisuje odpowiedź do ciągu zawierającego tekst w formacie JSON.
 
 ````
     // construct URL of search request (endpoint + query string)
@@ -49,11 +51,11 @@ Poniższy kod tworzy `WebRequest`, ustawia nagłówek klucza dostępu i dodaje c
 
 ## <a name="complete-code"></a>Kompletny kod
 
-Interfejs API wyszukiwania usługi Bing odpowiedzi zwraca wyniki z aparatu wyszukiwania usługi Bing.
-1. Pobierz i zainstaluj biblioteki gson.
-2. Utwórz nowy projekt języka Java w ulubionych IDE lub edytora.
-3. Dodaj kod poniżej.
-4. Zamień wartość subscriptionKey prawidłowy klucza dostępu dla Twojej subskrypcji.
+Interfejs API wyszukiwania odpowiedzi Bing zwraca wyniki z wyszukiwarki Bing.
+1. Pobierz i zainstaluj bibliotekę gson.
+2. Utwórz nowy projekt języka Java w ulubionym środowisku IDE lub edytorze.
+3. Dodaj kod przedstawiony poniżej.
+4. Zastąp wartość subscriptionKey kluczem dostępu właściwym dla Twojej subskrypcji.
 5. Uruchom program.
 
 ````
@@ -165,8 +167,8 @@ class SearchResults{
 
 ````
 
-## <a name="next-steps"></a>Kolejne kroki
-- [C# — Szybki Start](csharp.md)
-- [JavaScript — Szybki Start](javascript.md)
-- [Węzeł Szybki Start](node-quickstart.md)
-- [Krótkie wprowadzenie do języka PYthon](python-quickstart.md)
+## <a name="next-steps"></a>Następne kroki
+- [Przewodnik Szybki start dla języka C#](csharp.md)
+- [Przewodnik Szybki start dla języka JavaScript](javascript.md)
+- [Przewodnik Szybki start dla środowiska Node](node-quickstart.md)
+- [Przewodnik Szybki start dla języka Python](python-quickstart.md)

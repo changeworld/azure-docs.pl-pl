@@ -1,27 +1,28 @@
 ---
 title: Technologie i rozwiązania Internetu rzeczy (IoT) na platformie Azure
 description: Przedstawia różne technologie i rozwiązania PaaS/SaaS dostępne w przypadku tworzenia rozwiązania Azure IoT.
-author: BryanLa
-manager: timlt
+author: robinsh
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
-ms.date: 05/18/2018
-ms.author: bryanla
-ms.openlocfilehash: e875ec599323b3d037ba704d4cc54a48ff9b1b57
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 10/09/2018
+ms.author: robinsh
+ms.openlocfilehash: 6a44c36b5dd87c28db3de34a6858e29fb5730117
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631415"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067338"
 ---
 # <a name="azure-iot-technologies-and-solutions-paas-and-saas"></a>Technologie i rozwiązania IoT na platformie Azure: PaaS and SaaS
 
 Rozbudowana oferta firmy Microsoft może zaspokoić potrzeby wszystkich klientów, dzięki czemu każdy może mieć dostęp do korzyści wynikających z cyfrowej rewolucji. Ten opis produktów Azure IoT jest omówieniem dostępnych technologii i rozwiązań PaaS/SaaS. Przedstawiono tu dwie ścieżki dostępne podczas tworzenia własnego rozwiązania:
+
 - Platform as a Service (PaaS) — utwórz własną aplikację przy użyciu [akceleratorów rozwiązań usługi Azure IoT](https://www.azureiotsolutions.com/), które są kolekcjami wstępnie skonfigurowanych rozwiązań klasy korporacyjnej umożliwiających przyspieszenie rozwoju niestandardowych rozwiązań IoT.
+
 - Oprogramowanie jako usługa (SaaS) — szybko rozpocznij pracę dzięki usłudze [Azure IoT Central](https://azure.microsoft.com/services/iot-central/), nowemu rozwiązaniu SaaS, i opracuj aplikacje IoT bez styczności ze złożonością rozwiązania IoT. Jeśli Twoja organizacja nie ma zasobów do utworzenia własnego rozwiązania IoT, usługa Azure IoT Central jest bezkodowym rozwiązaniem IoT, który pozwala na tworzenie modeli urządzeń, pulpitów nawigacyjnych oraz reguł w ciągu kilku minut.
 
-![Technologie i rozwiązania usługi Azure IoT][img-paas-saas-technologies-solutions]
+![Technologie i rozwiązania usługi Azure IoT](./media/iot-comparison/paas-saas-technologies-solutions.png)
 
 ## <a name="solutions"></a>Rozwiązania
 
@@ -77,9 +78,9 @@ Wybór produktu IoT Azure to decydujący etap planowania rozwiązania IoT. IoT H
 
 Podjęcie decyzji, którego produktu użyć w celu zbudowania rozwiązania IoT, zależy od następujących czynników:
 
-* Wymagania biznesowe.
+* Wymagania biznesowe
 * Typ budowanego rozwiązania.
-* Posiadany przez organizację zestaw umiejętności do tworzenia i obsługi rozwiązania w długim okresie.
+* Posiadany przez organizację zestaw umiejętności do tworzenia i obsługi rozwiązania w długim okresie
 
 ## <a name="technologies-paas"></a>Technologie (PaaS)
 
@@ -96,20 +97,12 @@ Połącz wszystkie swoje urządzenia z usługą Azure IoT przy użyciu [zestawó
 ### <a name="edge"></a>Brzeg
 [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) jest usługą Internetu rzeczy (IoT). Ta usługa jest przeznaczona dla klientów, którzy chcą analizować dane na urządzeniach, czyli „na brzegu”. Przez przeniesienie części obciążenia na brzeg zapewnisz mniejsze opóźnienia i zyskasz możliwość użycia scenariuszy w trybie offline.
 
-
 ### <a name="data-and-analytics"></a>Dane i analiza
 Skorzystaj z tablicy ofert PaaS w zakresie danych i analityki platformy Azure w ramach swojego rozwiązania IoT: przeprowadź zaawansowaną analizę chmury przy użyciu Azure Machine Learning, przechowuj dane urządzenia IoT w wydajny sposób dzięki rozwiązaniu Azure Data Lake, wizualizuj duże ilości danych z urządzeń IoT za pomocą usługi [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/).
 
 ### <a name="visualization-and-integration"></a>Wizualizacja i integracja
 Platforma Microsoft Azure oferuje pełne rozwiązanie w chmurze, które stanowi połączenie stale rosnącego zbioru zintegrowanych usług w chmurze oraz wyjątkowego w branży zaangażowania w kwestie ochrony danych i zapewnienia prywatności. Dowiedz się więcej na temat platformy [Microsoft Azure](https://azure.microsoft.com/).
 
-
-
-
-
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z sekcją [Wprowadzenie](/azure/iot-hub/iot-hub-get-started), aby móc szybko i łatwo korzystać z funkcji IoT. Aby uzyskać wskazówki praktyczne, wypróbuj jeden z [samouczków](/azure/iot-edge/tutorial-simulate-device-windows).
-
-[img-paas-saas-technologies-solutions]: media/iot-comparison/paas-saas-technologies-solutions.png
-
+Zapoznaj się z sekcją [Wprowadzenie w dokumentacji usługi IoT Hub](/azure/iot-hub/iot-hub-get-started), aby móc szybko i łatwo korzystać z funkcji IoT. Aby uzyskać wskazówki praktyczne, wypróbuj jeden z [samouczków dotyczących usługi IoT Edge](/azure/iot-edge/tutorial-simulate-device-windows).

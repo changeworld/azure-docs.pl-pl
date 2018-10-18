@@ -6,19 +6,19 @@ author: jeffpatt24
 tags: storage
 ms.service: storage
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 05/11/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 87190a7f46a209ae66ca47d9346ed4b5929ac8fd
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
-ms.translationtype: MT
+ms.openlocfilehash: 31a0ffc2937f6d93a630bf6ce474d7dcf20c923f
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394205"
+ms.locfileid: "49364391"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Rozwiązywanie problemów z usługą Azure Files w systemie Linux
 
-W tym artykule wymieniono typowe problemy, które są powiązane z plików pakietu Microsoft Azure, po nawiązaniu połączenia z klientami z systemem Linux. Zapewnia także możliwe przyczyny i rozwiązania tych problemów. Oprócz kroki rozwiązywania problemów, w tym artykule, można również użyć [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) do systemu Linux upewnij się, klient ma poprawne warunki wstępne. AzFileDiagnostics automatyzuje wykrywania większość objawy wymienionych w tym artykule i ułatwia konfigurowanie środowiska w celu uzyskania optymalnej wydajności. Można również znaleźć te informacje w [udziałów plików platformy Azure do rozwiązywania problemów z](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) zawierający kroki, aby pomóc z problemami z udziałów plików platformy Azure łączenie/mapowania/instalowanie.
+W tym artykule wymieniono typowe problemy, które są powiązane z plików pakietu Microsoft Azure, po nawiązaniu połączenia z klientami z systemem Linux. Zapewnia także możliwe przyczyny i rozwiązania tych problemów.
 
 <a id="permissiondenied"></a>
 ## <a name="permission-denied-disk-quota-exceeded-when-you-try-to-open-a-file"></a>"Przekroczono przydział dysku [odmowa uprawnień]" podczas próby otwarcia pliku
@@ -82,7 +82,7 @@ Niektórych dystrybucjach systemu Linux nie jest jeszcze obsługiwany funkcje sz
 
 ### <a name="solution"></a>Rozwiązanie
 
-Funkcja szyfrowania protokołu SMB 3.0 dla systemu Linux została wprowadzona w 4.11 jądra. Ta funkcja umożliwia instalowanie udziału plików platformy Azure ze środowiska lokalnego lub innego regionu platformy Azure. W czasie publikowania ta funkcja została backported Ubuntu 17.04 i Ubuntu 16.10. Jeśli Twój klient SMB w systemie Linux nie obsługuje szyfrowania, instalowanie usługi Azure plików przy użyciu protokołu SMB 2.1 maszyny wirtualnej systemu Linux platformy Azure, który znajduje się w tym samym centrum danych, co plik udostępnianie i sprawdź [Wymagany bezpieczny transfer]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ustawienie jest wyłączone z ilością przestrzeni dyskowej konto. 
+Funkcja szyfrowania protokołu SMB 3.0 dla systemu Linux została wprowadzona w 4.11 jądra. Ta funkcja umożliwia instalowanie udziału plików platformy Azure ze środowiska lokalnego lub innego regionu platformy Azure. W czasie publikowania ta funkcja została backported Ubuntu 17.04 i Ubuntu 16.10. Jeśli Twój klient SMB w systemie Linux nie obsługuje szyfrowania, instalowanie usługi Azure plików przy użyciu protokołu SMB 2.1 maszyny wirtualnej systemu Linux platformy Azure, który znajduje się w tym samym centrum danych, co plik udostępnianie i sprawdź [Wymagany bezpieczny transfer]( https://docs.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer) ustawienie jest wyłączone z ilością przestrzeni dyskowej konto. 
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Niska wydajność w udziale plików platformy Azure zainstalowany na maszynie Wirtualnej systemu Linux
@@ -150,7 +150,7 @@ Typowe przyczyny tego problemu są:
 - Protokół SMB 3.0 szyfrowania nie jest obsługiwana na komputerze klienckim. Protokół SMB 3.0 szyfrowanie jest dostępne w Ubuntu 16.4 i nowszej wersji, SUSE 12.3 i nowszej wersji. Inne dystrybucje wymagają jądra 4.11 i nowszej wersji.
 - Próbujesz połączyć się z kontem magazynu za pośrednictwem portu TCP 445, która nie jest obsługiwana.
 - Próbujesz nawiązać połączenie z udziałem plików platformy Azure z Maszyną wirtualną platformy Azure, a maszyna wirtualna nie znajduje się w tym samym regionie co konto magazynu.
-- Jeśli [Wymagany bezpieczny transfer]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ustawienie jest włączone na koncie magazynu, usługi Azure Files będzie Zezwalaj na połączenia tylko z szyfrowaniem przy użyciu protokołu SMB 3.0.
+- Jeśli [Wymagany bezpieczny transfer]( https://docs.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer) ustawienie jest włączone na koncie magazynu, usługi Azure Files będzie Zezwalaj na połączenia tylko z szyfrowaniem przy użyciu protokołu SMB 3.0.
 
 ### <a name="solution"></a>Rozwiązanie
 
@@ -191,7 +191,7 @@ Aby można było używać łączy symbolicznych, Dodaj następujący element do 
 To polecenie będzie wyglądać następująco:
 
 ```
-sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <mount-point> -o vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino,mfsymlinks
+sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <mount-point> -o vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino,mfsynlinks
 ```
 
 Po dodaniu, można utworzyć łączy symbolicznych jako sugerowane na [Wiki](https://wiki.samba.org/index.php/UNIX_Extensions#Storing_symlinks_on_Windows_servers).

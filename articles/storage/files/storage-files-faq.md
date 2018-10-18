@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 10/04/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 29f09034988acde3643eebe368445caab035fabd
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: MT
+ms.openlocfilehash: 20a87148e3c0df29e5f4dffd74a8f5389e3658b9
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387507"
+ms.locfileid: "49364562"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania (FAQ) dotyczące usługi Azure Files
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem będące standardami branżowymi [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można zainstalować równolegle na chmurowych lub lokalnych wdrożeń systemu Windows, Linux i macOS. Udziały plików platformy Azure na komputerach z systemem Windows Server, również buforujesz przy użyciu usługi Azure File Sync w celu zapewnienia szybkiego dostępu blisko użycia danych.
@@ -242,7 +242,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 * <a id="data-compliance-policies"></a>
 **Jakie zasady zgodności danych obsługuje usługa Azure Files?**  
 
-   Usługa pliki systemu Azure działa w oparciu o takiej samej architekturze magazynu, która jest używana w innych usługach magazynu w usłudze Azure Storage. Usługa pliki Azure mają zastosowanie te same zasady zgodności danych, które są używane w innych usługach magazynu platformy Azure. Aby uzyskać więcej informacji na temat zgodności danych usługi Azure Storage mogą odwoływać się do [ofert zgodności usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings), a następnie przejdź do [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx).
+   Usługa pliki systemu Azure działa w oparciu o takiej samej architekturze magazynu, która jest używana w innych usługach magazynu w usłudze Azure Storage. Usługa pliki Azure mają zastosowanie te same zasady zgodności danych, które są używane w innych usługach magazynu platformy Azure. Aby uzyskać więcej informacji na temat zgodności danych usługi Azure Storage mogą odwoływać się do [ofert zgodności usługi Azure Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-compliance-offerings), a następnie przejdź do [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx).
 
 ## <a name="on-premises-access"></a>Dostęp lokalny
 * <a id="expressroute-not-required"></a>
@@ -258,7 +258,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 ## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **Jak tworzenie kopii zapasowej pliku Azure udostępnić?**  
-    Możesz użyć okresowe [udostępniać migawki](storage-snapshots-files.md) ochrony przed przypadkowymi usunięciami. Również służy narzędzie AzCopy, Robocopy lub narzędzie kopii zapasowej innych firm, które można utworzyć kopię zapasową udziału zainstalowanego pliku. Usługa Azure Backup oferuje kopii zapasowej plików platformy Azure. Dowiedz się więcej o [udziałów przez usługę Azure Backup plików — wykonywanie kopii zapasowych Azure](https://docs.microsoft.com/azure/backup/backup-azure-files).
+    Możesz użyć okresowe [udostępniać migawki](storage-snapshots-files.md) ochrony przed przypadkowymi usunięciami. Również służy narzędzie AzCopy, Robocopy lub narzędzie kopii zapasowej innych firm, które można utworzyć kopię zapasową udziału zainstalowanego pliku. Usługa Azure Backup oferuje kopii zapasowej plików platformy Azure. Dowiedz się więcej o [udziałów przez usługę Azure Backup plików — wykonywanie kopii zapasowych Azure](https://docs.microsoft.com/en-us/azure/backup/backup-azure-files).
 
 ## <a name="share-snapshots"></a>Migawki udziału
 

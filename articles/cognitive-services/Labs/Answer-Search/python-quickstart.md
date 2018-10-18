@@ -1,43 +1,45 @@
 ---
-title: Szybki Start języka Python dla usług kognitywnych firmy Microsoft, wyszukiwanie odpowiedzi projektu | Dokumentacja firmy Microsoft
-description: Przykład Python rozpocząć korzystanie z projektu odpowiedzi wyszukiwania, kognitywnych usług Microsoft Azure.
+title: 'Szybki start: laboratorium Project Answer Search, Python'
+titlesuffix: Azure Cognitive Services
+description: Wprowadzenie do korzystania z laboratorium Project Answer Search na przykładzie języka Python.
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 9cb5406c616ed8e96d73c00c788a0d20f66dcabd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: c33a88b65dcdf5ddddff9f5109afbe0cca7247c4
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348572"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869833"
 ---
-# <a name="project-answer-search-python-quickstart"></a>Szybki Start odpowiedzi wyszukiwania Python projektu
+# <a name="quickstart-project-answer-search-with-python"></a>Szybki start: laboratorium Project Answer Search w języku Python
 
-W poniższym przykładzie Python tworzy i wysyła żądanie informacji o "Skale Gibraltarze".
+Poniższy przykład w języku Python tworzy i wysyła żądanie dotyczące informacji na temat Skały Gibraltarskiej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Pobierz klucz dostępu dla bezpłatnej wersji próbnej [kognitywnych Labs usług](https://aka.ms/answersearchsubscription)
+Pobierz klucz dostępu dla bezpłatnej wersji próbnej zestawu [Cognitive Services Labs](https://aka.ms/answersearchsubscription).
 
-W tym przykładzie użyto Python 3.6.4
+W tym przykładzie użyto języka Python 3.6.4
 
 ## <a name="code-scenario"></a>Scenariusz kodu 
 
-Poniższy kod tworzy Podgląd adresu URL.
-Jest stosowana w poniższych krokach:
-1. Zadeklaruj zmienne, aby określić punkt końcowy przez hosta i ścieżkę.
-2. Podaj adres URL zapytania, aby wyświetlić podgląd i dodać parametr zapytania.  
-3. Ustaw dla parametru zapytania.
-4. Zdefiniuj funkcję wyszukiwania, która tworzy żądanie i dodaje *Ocp-Apim-subskrypcji — klucz* nagłówka.
-5. Ustaw *Ocp-Apim-subskrypcji — klucz* nagłówka. 
-6. Nawiązywania połączeń i wysłać żądanie.
-7. Drukowanie wyników JSON.
+Poniższy kod tworzy podgląd adresu URL.
+W celu zaimplementowania kodu wykonaj następujące kroki:
+1. Zadeklaruj zmienne, aby określić punkt końcowy na podstawie hosta i ścieżki.
+2. Określ adres URL zapytania, dla którego ma zostać wyświetlony podgląd, a następnie dodaj parametr zapytania.  
+3. Ustaw parametr zapytania.
+4. Zdefiniuj funkcję wyszukiwania, która tworzy żądanie i dodaje nagłówek *Ocp-Apim-Subscription-Key*.
+5. Ustaw nagłówek *Ocp-Apim-Subscription-Key*. 
+6. Nawiąż połączenie i wyślij żądanie.
+7. Wydrukuj wyniki w formacie JSON.
 
-Kompletny kod dla tego pokazu następująco:
+Pełny kod tej wersji demonstracyjnej wygląda następująco:
 
 ````
 import http.client, urllib.parse
@@ -64,7 +66,7 @@ result = get_local()
 print (json.dumps(json.loads(result), indent=4))
 
 ````
-## <a name="next-steps"></a>Kolejne kroki
-- [C# — Szybki Start](c-sharp-quickstart.md)
-- [Szybki Start Java](java-quickstart.md)
-- [Węzeł Szybki Start](node-quickstart.md)
+## <a name="next-steps"></a>Następne kroki
+- [Przewodnik Szybki start dla języka C#](c-sharp-quickstart.md)
+- [Przewodnik Szybki start dla języka Java](java-quickstart.md)
+- [Przewodnik Szybki start dla środowiska Node](node-quickstart.md)

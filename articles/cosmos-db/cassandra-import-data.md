@@ -9,12 +9,12 @@ ms.author: govindk
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 0bf5e47513ded4b2c65e7291db497e53a42776a8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f73a201a25bb2f975e8a261a6c21aa7b066c3a7c
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976180"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247854"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-cassandra-api-account"></a>Migrowanie danych na konto interfejsu API Cassandra w usłudze Azure Cosmos DB
 
@@ -62,7 +62,7 @@ Po zidentyfikowaniu wymagań dotyczących istniejącego obciążenia musisz utwo
 
 ## <a name="prerequisites-for-migration"></a>Wymagania wstępne dotyczące migracji
 
-* **Utworzenie tabel na koncie interfejsu API Cassandra w usłudze Azure Cosmos DB.** Przed rozpoczęciem migracji danych utwórz wstępnie wszystkie tabele z poziomu witryny Azure Portal lub serwera cqlsh.
+* **Utworzenie tabel na koncie interfejsu API Cassandra w usłudze Azure Cosmos DB.** Przed rozpoczęciem migracji danych utwórz wstępnie wszystkie tabele z poziomu witryny Azure Portal lub serwera cqlsh. W przypadku migracji do konta usługi Azure Cosmos DB, która ma przepływność poziomu bazy danych, pamiętaj o podaniu klucza partycji podczas tworzenia kontenerów usługi Azure Cosmos DB.
 
 * **Zwiększenie przepływności.** Czas trwania migracji danych zależy od przepływności aprowizowanej dla tabel w usłudze Azure Cosmos DB. Na czas trwania migracji zwiększ przepływność. Dzięki większej przepływności można uniknąć ograniczania przepustowości i przeprowadzać migrację w krótszym czasie. Po ukończeniu migracji zmniejsz przepływność, aby ograniczyć koszty. Aby uzyskać więcej informacji na temat zwiększania przepływności, zobacz [ustawianie przepływności](set-throughput.md) dla kontenerów usługi Azure Cosmos DB. Zalecane jest również posiadanie konta usługi Azure Cosmos DB w tym samym regionie, w którym znajduje się źródłowa baza danych. 
 

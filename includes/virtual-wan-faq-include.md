@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 09/10/2018
+ms.date: 10/05/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: de744a4a23b246223ed0f42f3d079b1ac2e5521a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 761b68ca99df8ae5b4d379b95e7d2a300f7e6238
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47008829"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48874027"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Jaka jest różnica między bramą sieci wirtualnej platformy Azure (VPN Gateway) i Azure bramą VPN Gateway wirtualnej sieci WAN platformy Azure?
 
@@ -21,7 +21,11 @@ Wirtualna sieć WAN zapewnia łączność typu lokacja-lokacja w dużej skali or
 
 ### <a name="which-device-providers-virtual-wan-partners-are-supported-at-launch-time"></a>Którzy dostawcy urządzeń (partnerzy wirtualnej sieci WAN) są obsługiwani w czasie wprowadzenia oferty? 
 
-Obecnie firmy Citrix i Riverbed obsługują w pełni zautomatyzowane środowisko wirtualnej sieci WAN. Aby uzyskać więcej informacji, zobacz [Virtual WAN partners (Partnerzy wirtualnej sieci WAN)](https://go.microsoft.com/fwlink/p/?linkid=2019615).
+Obecnie wielu partnerów obsługuje w pełni zautomatyzowane środowisko usługi Virtual WAN. Aby uzyskać więcej informacji, zobacz [Virtual WAN partners (Partnerzy wirtualnej sieci WAN)](https://go.microsoft.com/fwlink/p/?linkid=2019615). 
+
+### <a name="what-are-the-virtual-wan-partner-automation-steps"></a>Jakie są kroki automatyzacji dla partnerów usługi Virtual WAN?
+
+Aby uzyskać informacje o krokach automatyzacji dla partnerów, zobacz [Virtual WAN partner automation](../articles/virtual-wan/virtual-wan-configure-automation-providers.md) (Automatyzacja dla partnerów usługi Virtual WAN).
 
 ### <a name="am-i-required-to-use-a-preferred-partner-device"></a>Czy muszę korzystać z urządzenia preferowanego przez partnera?
 
@@ -41,7 +45,7 @@ Tak. Wraz z wirtualną siecią WAN wprowadzono nowe zasoby usługi Resource Mana
 
 ### <a name="how-many-vpn-devices-can-connect-to-a-single-hub"></a>Ile urządzeń sieci VPN można połączyć z jednym koncentratorem?
 
-Obsługiwanych jest do 100 połączeń na koncentrator wirtualny. Każde połączenie obejmuje dwa tunele w konfiguracji aktywne-aktywne. Tunele kończą się w bramie VPN Gateway koncentratora wirtualnego platformy Azure.
+Obsługiwanych jest do 1000 połączeń na koncentrator wirtualny. Każde połączenie obejmuje dwa tunele w konfiguracji aktywne-aktywne. Tunele kończą się w bramie VPN Gateway koncentratora wirtualnego platformy Azure.
 
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>Czy lokalne urządzenie sieci VPN może łączyć się z wieloma koncentratorami?
 
@@ -66,7 +70,6 @@ Nie. Sieć wirtualna wirtualnego urządzenia sieciowego nie może mieć bramy si
 ### <a name="is-there-support-for-bgp"></a>Czy jest obsługiwany protokół BGP?
 
 Tak. Protokół BGP jest obsługiwany. Aby upewnić się, że trasy z sieci wirtualnej wirtualnego urządzenia sieciowego są odpowiednio anonsowane, szprychy muszą wyłączyć protokół BGP, jeśli są połączone z siecią wirtualną wirtualnego urządzenia sieciowego, które jest połączone z koncentratorem wirtualnym. Ponadto sieci wirtualne będące szprychami należy połączyć z koncentratorem wirtualnym, aby zapewnić propagowanie tras tych sieci do systemów lokalnych.
-Czy można kierować ruchem przy użyciu trasy zdefiniowanej przez użytkownika w koncentratorze wirtualnym?
 
 ### <a name="can-i-direct-traffic-using-udr-in-the-virtual-hub"></a>Czy można kierować ruchem przy użyciu trasy zdefiniowanej przez użytkownika w koncentratorze wirtualnym?
 
@@ -94,7 +97,7 @@ Tak.
 
 ### <a name="how-is-virtual-wan-different-from-the-existing-azure-virtual-network-gateway"></a>Czym różni się usługa Virtual WAN od istniejącej bramy sieci wirtualnej platformy Azure?
 
-Sieć VPN bramy sieci wirtualnej jest ograniczona do 30 tuneli. W przypadku połączeń należy używać usługi Virtual WAN dla sieci VPN na dużą skalę. W koncentratorze można połączyć maksymalnie 100 połączeń oddziałów z prędkością 2 Gb/s. Połączenie to tunel typu aktywny-aktywny od lokalnego urządzenia sieci VPN do koncentratora wirtualnego. Możesz mieć jeden koncentrator na region, co oznacza, że możesz połączyć więcej niż 100 oddziałów w koncentratorach.
+Sieć VPN bramy sieci wirtualnej jest ograniczona do 30 tuneli. W przypadku połączeń należy używać usługi Virtual WAN dla sieci VPN na dużą skalę. W koncentratorze można połączyć maksymalnie 1000 połączeń oddziałów z prędkością 2 Gb/s we wszystkich regionach z wyjątkiem regionu Zachodnio-środkowe stany USA. W regionie Zachodnio-środkowe stany USA dostępna jest szybkość 20 Gb/s. W przyszłości będziemy wprowadzać standard 20 Gb/s w dodatkowych regionach. Połączenie to tunel typu aktywny-aktywny od lokalnego urządzenia sieci VPN do koncentratora wirtualnego. Możesz mieć jeden koncentrator na region, co oznacza, że możesz połączyć więcej niż 1000 oddziałów w koncentratorach.
 
 ### <a name="does-this-virtual-wan-require-expressroute-from-each-site"></a>Czy usługa Virtual WAN wymaga usługi ExpressRoute w każdej lokacji?
 
@@ -102,7 +105,7 @@ Nie. Usługa Virtual WAN nie wymaga usługi ExpressRoute w każdej lokacji. Uży
 
 ### <a name="is-there-a-network-throughput-limit-when-using-azure-virtual-wan"></a>Czy istnieje limit przepływności sieci podczas korzystania z usługi Azure Virtual WAN?
 
-Liczba oddziałów jest ograniczona do 100 połączeń na koncentrator/region, a łączna szybkość do 2 Gb/s w koncentratorze.
+Liczba oddziałów jest ograniczona do 1000 połączeń na koncentrator/region, a łączna szybkość do 2 Gb/s w koncentratorze. Wyjątek stanowi region Zachodnio-środkowe stany USA, w którym łączna szybkość wynosi 20 Gb/s. W przyszłości będziemy wprowadzać standard 20 Gb/s w innych regionach.
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>Czy usługa Virtual WAN umożliwia urządzeniu lokalnemu równoległe korzystanie z wielu usługodawców internetowych, czy jest to zawsze pojedynczy tunel sieci VPN?
 

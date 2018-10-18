@@ -1,52 +1,53 @@
 ---
-title: Użyj usługi Custom Vision Service endpoint prognoz - usług Azure Cognitive Services | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak programowo testować obrazów przy użyciu klasyfikatora usługi Custom Vision Service za pomocą interfejsu API.
+title: 'Przykład: użycie punktu końcowego przewidywania do programowego testowania obrazów przy użyciu klasyfikatora — Custom Vision'
+titlesuffix: Azure Cognitive Services
+description: Dowiedz się, jak programowo testować obrazy za pomocą interfejsu API przy użyciu klasyfikatora usługi Custom Vision Service.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: sample
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: d7f9b90db06811e16cd0cd6ad2b32a27912cfee5
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
-ms.translationtype: MT
+ms.openlocfilehash: 3a81f3cef6aaeb5c98022d9fc93f4d84f3f58a6e
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43341797"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363653"
 ---
-# <a name="use-the-prediction-endpoint-to-test-images-programmatically-with-a-custom-vision-service-classifier"></a>Użyj endpoint prognoz, aby przetestować obrazy programowo przy użyciu klasyfikatora usługi Custom Vision Service
+# <a name="use-the-prediction-endpoint-to-test-images-programmatically-with-a-custom-vision-service-classifier"></a>Użyj punktu końcowego przewidywania, aby przetestować obrazy programowo przy użyciu klasyfikatora usługi Custom Vision Service
 
-Po użytkownik nauczenia modelu, można przetestować obrazy programowo, przesyłając je do interfejsu API prognoz. 
+Po wyszkoleniu modelu można przetestować obrazy programowo, przesyłając je do interfejsu API przewidywania. 
 
 > [!NOTE]
-> W tym dokumencie przedstawiono przy użyciu języka C# przesyłanie obrazu do interfejsu API prognoz. Aby uzyskać więcej informacji i przykładów użycia interfejsu API, zobacz [dokumentacja interfejsu API prognoz](https://go.microsoft.com/fwlink/?linkid=865445).
+> W tym dokumencie przedstawiono przesyłanie obrazu do interfejsu API przewidywania przy użyciu języka C#. Aby uzyskać więcej informacji i przykładów użycia interfejsu API, zobacz [dokumentację interfejsu API przewidywania](https://go.microsoft.com/fwlink/?linkid=865445).
 
-## <a name="get-the-url-and-prediction-key"></a>Pobieranie adresu URL i prognozowania klucza
+## <a name="get-the-url-and-prediction-key"></a>Pobieranie adresu URL i klucza predykcyjnego
 
-Z [strony sieci web Custom Vision](https://customvision.ai), wybierz swój projekt, a następnie wybierz __wydajności__ kartę. Do wyświetlania informacji o korzystaniu z interfejsu API prognoz, w tym __prognozowania klucz__, wybierz opcję __URL prognozowania__. Dla projektów dołączonych do zasobu platformy Azure Twoje __prognozowania klucz__ można także znaleźć w [witryny Azure Portal](https://portal.azure.com) strona skojarzonego zasobu platformy Azure w ramach __klucze__. Skopiuj następujące informacje do użycia w aplikacji:
+Na stronie [Custom Vision ](https://customvision.ai) wybierz swój projekt, a następnie kartę __Wydajność__. Aby wyświetlić informacje o korzystaniu z interfejsu API przewidywania w tym __Klucza predykcyjnego__, wybierz __Adres URL przewidywania__. W przypadku projektów dołączonych do zasobu platformy Azure __Klucz predykcyjny__ można również znaleźć na stronie [Azure Portal](https://portal.azure.com) dotyczącej powiązanego zasobu platformy Azure, pod nagłówkiem __Klucze__. Skopiuj następujące informacje, aby ich użyć w aplikacji:
 
-* __Adres URL__ używania __plik obrazu__.
-* __Klucz prognozowania__ wartość.
+* __Adres URL__ do korzystania z __pliku obrazu__.
+* Wartość __Klucza predykcyjnego__.
 
 > [!TIP]
-> Jeśli masz wiele iteracji, można kontrolować, które z nich jest używany przez ustawienie go jako domyślny. Wybierz iteracji z __iteracji__ sekcji, a następnie wybierz __Ustaw jako domyślny__ w górnej części strony.
+> Jeśli masz wiele iteracji, możesz określić, która z nich będzie używana, ustawiając ją jako domyślną. Wybierz iterację w sekcji __Iteracje__, a następnie zaznacz opcję __Ustaw jako domyślną__ w górnej części strony.
 
-![Na karcie Wydajność jest wyświetlany za pomocą czerwonego prostokąta otaczającego URL prognozowania.](./media/use-prediction-api/prediction-url.png)
+![Na karcie wydajności czerwonym prostokątem otoczono adres URL przewidywania.](./media/use-prediction-api/prediction-url.png)
 
 ## <a name="create-the-application"></a>Tworzenie aplikacji
 
-1. Z programu Visual Studio Utwórz nową aplikację konsoli C#.
+1. Utwórz nową aplikację konsoli w języku C# w programie Visual Studio.
 
-2. Użyj poniższego kodu, treści __Program.cs__ pliku.
+2. Użyj poniższego kodu jako treści pliku __Program.cs__.
 
     > [!IMPORTANT]
     > Zmień następujące informacje:
     >
-    > * Ustaw __przestrzeni nazw__ do nazwy projektu.
-    > * Ustaw __klucz prognozowania__ otrzymany wcześniej w wierszu, który rozpoczyna się od wartości `client.DefaultRequestHeaders.Add("Prediction-Key",`.
-    > * Ustaw __adresu URL__ otrzymany wcześniej w wierszu, który rozpoczyna się od wartości `string url =`.
+    > * Ustaw __przestrzeń nazw__ na nazwę projektu.
+    > * Ustaw wartość __klucza predykcyjnego__ otrzymaną wcześniej w linii, która rozpoczyna się od `client.DefaultRequestHeaders.Add("Prediction-Key",`.
+    > * Ustaw wartość __adresu URL__ otrzymanego wcześniej w linii, która rozpoczyna się od `string url =`.
 
     ```csharp
     using System;
@@ -103,9 +104,9 @@ Z [strony sieci web Custom Vision](https://customvision.ai), wybierz swój proje
     }
     ```
 
-## <a name="use-the-application"></a>Użyj aplikacji
+## <a name="use-the-application"></a>Użycie aplikacji
 
-Podczas uruchamiania aplikacji, należy wprowadzić ścieżkę do pliku obrazu. Obraz, który jest przesyłany do interfejsu API, a wyniki są zwracane jako dokument JSON. Następujący kod JSON jest przykładem odpowiedzi
+Podczas uruchamiania aplikacji należy wprowadzić ścieżkę do pliku obrazu. Obraz jest przesyłany do interfejsu API, a wyniki są zwracane jako dokument JSON. Następujący kod JSON jest przykładem odpowiedzi
 
 ```json
 {
@@ -120,6 +121,6 @@ Podczas uruchamiania aplikacji, należy wprowadzić ścieżkę do pliku obrazu. 
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Eksportowanie modelu na potrzeby mobilnych](export-your-model.md)
+[Eksportowanie modelu na potrzeby urządzeń mobilnych](export-your-model.md)

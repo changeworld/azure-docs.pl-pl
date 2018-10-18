@@ -2,27 +2,24 @@
 title: Przeprowadzanie migracji do wystąpienia zarządzanego usługi Azure SQL Database przy użyciu usługi DMS | Microsoft Docs
 description: Dowiedz się, w jaki sposób przeprowadzić migrację z lokalnego programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database za pomocą usługi Azure Database Migration Service.
 services: dms
-author: edmacauley
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: ''
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 08/24/2018
-ms.openlocfilehash: dbf71b1fcc15743f4670c4072921f1a167a90e97
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.date: 10/10/2018
+ms.openlocfilehash: 2e8e9706a9572b85030a636dd75d4809447eabbc
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887306"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067895"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-managed-instance-offline-using-dms"></a>Migracja programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database w trybie offline przy użyciu usługi DMS
 Usługa Azure Database Migration Service służy do migrowania baz danych z lokalnego wystąpienia programu SQL Server do [wystąpienia zarządzanego usługi Azure SQL Database](../sql-database/sql-database-managed-instance.md). Dodatkowe metody, które mogą wymagać ręcznej pracy, są dostępne w artykule [SQL Server instance migration to Azure SQL Database Managed Instance (Migracja wystąpienia programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database)](../sql-database/sql-database-managed-instance-migrate.md).
-
-> [!IMPORTANT]
-> Projekty migracji z programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database są w wersji zapoznawczej i podlegają [dodatkowym warunkom użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 W tym samouczku przeprowadzisz migrację bazy danych **Adventureworks2012** z lokalnego wystąpienia programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database, używając usługi Azure Database Migration Service.
 
@@ -173,7 +170,7 @@ Po utworzeniu wystąpienia usługi znajdź je w witrynie Azure Portal, otwórz j
     |**Nazwa użytkownika** | Upewnij się, że użytkownik systemu Windows ma uprawnienia pełnej kontroli w udziale sieciowym, który podano powyżej. Usługa Azure Database Migration Service personifikuje poświadczenia użytkownika w celu przekazania plików kopii zapasowej do kontenera usługi Azure Storage na potrzeby operacji przywracania. W przypadku wybrania baz danych obsługujących szyfrowanie TDE użytkownik systemu Windows musi korzystać z wbudowanego konta administratora, a [kontrola konta użytkownika](https://docs.microsoft.com/windows/security/identity-protection/user-account-control/user-account-control-overview) musi być wyłączona, aby usługa Azure Database Migration Service mogła przekazywać i usuwać pliki certyfikatów. |
     |**Hasło** | Hasło użytkownika. |
     |**Ustawienia konta magazynu** | Identyfikator URI sygnatury dostępu współdzielonego umożliwiający usłudze Azure Database Migration Service uzyskiwanie dostępu do kontenera konta magazynu, do którego usługa przekazuje pliki kopii zapasowej i którego używa na potrzeby migracji baz danych do wystąpienia zarządzanego usługi Azure SQL Database. [Dowiedz się, jak uzyskać identyfikator URI sygnatury dostępu współdzielonego dla kontenera obiektów blob](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).|
-    |**Ustawienia szyfrowania TDE** | W przypadku migrowania źródłowych baz danych z włączonym szyfrowaniem TDE (Transparent Data Encryption) mogą być wymagane uprawnienia zapisu w docelowym wystąpieniu zarządzanym usługi Azure SQL DB.  Wybierz z menu rozwijanego subskrypcję, w której aprowizowano wystąpienie zarządzane usługi Azure SQL DB.  Wybierz docelowe wystąpienie zarządzane usługi Azure SQL DB z menu rozwijanego. |
+    |**Ustawienia szyfrowania TDE** | W przypadku migrowania źródłowych baz danych z włączonym szyfrowaniem TDE (Transparent Data Encryption) mogą być wymagane uprawnienia zapisu w docelowym wystąpieniu zarządzanym usługi Azure SQL Database.  Wybierz z menu rozwijanego subskrypcję, w której aprowizowano wystąpienie zarządzane usługi Azure SQL DB.  Wybierz docelowe **wystąpienie zarządzane usługi Azure SQL Database** z menu rozwijanego. |
     
     ![Konfigurowanie ustawień migracji](media\tutorial-sql-server-to-managed-instance\dms-configure-migration-settings3.png)
 

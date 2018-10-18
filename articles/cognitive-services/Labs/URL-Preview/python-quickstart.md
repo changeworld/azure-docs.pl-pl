@@ -1,43 +1,45 @@
 ---
-title: Szybki Start Python projektu adres URL podglądu - kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
-description: Przykład skryptu, aby szybko rozpocząć korzystanie z podglądu adres URL projektu w kognitywnych usług Microsoft Azure.
+title: 'Szybki start: laboratorium Project URL Preview, Python'
+titlesuffix: Azure Cognitive Services
+description: Przykładowy skrypt umożliwiający szybkie rozpoczęcie pracy z laboratorium Project URL Preview w języku Python.
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 03/29/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 78b2d83b02aa9ea32509029c7456e04e420b8572
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: c4af701188c6453bd3c067b838519c32862af13d
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348628"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867276"
 ---
-# <a name="url-preview-python-quickstart"></a>Adres URL podglądu Python — Szybki Start
+# <a name="quickstart-url-preview-with-python"></a>Szybki start: podgląd adresu URL w języku Python
 
-W poniższym przykładzie Python tworzy podgląd adres Url witryny sieci SwiftKey Web: https://swiftkey.com/en.
+Poniższy przykład w języku Python tworzy podgląd adresu URL witryny internetowej SwiftKey: https://swiftkey.com/en.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Pobierz klucz dostępu dla bezpłatnej wersji próbnej [kognitywnych Labs usług](https://aka.ms/answersearchsubscription)
+Pobierz klucz dostępu dla bezpłatnej wersji próbnej zestawu [Cognitive Services Labs](https://aka.ms/answersearchsubscription).
 
-W tym przykładzie użyto 3,6 Python.
+W tym przykładzie użyto języka Python 3.6.
 
 ## <a name="code-scenario"></a>Scenariusz kodu 
 
-Poniższy kod tworzy Podgląd adresu URL.
-Jest stosowana w poniższych krokach:
-1. Zadeklaruj zmienne, aby określić punkt końcowy przez hosta i ścieżkę.
-2. Podaj adres URL zapytania, aby wyświetlić podgląd i dodać parametr zapytania.  
-3. Ustaw dla parametru zapytania.
-4. Zdefiniuj funkcję wyszukiwania, która tworzy żądanie i dodaje *Ocp-Apim-subskrypcji — klucz* nagłówka.
-5. Ustaw *Ocp-Apim-subskrypcji — klucz* nagłówka. 
-6. Nawiązywania połączeń i wysłać żądanie.
-7. Drukowanie wyników JSON.
+Poniższy kod tworzy podgląd adresu URL.
+W celu zaimplementowania kodu wykonaj następujące kroki:
+1. Zadeklaruj zmienne, aby określić punkt końcowy na podstawie hosta i ścieżki.
+2. Określ adres URL zapytania, dla którego ma zostać wyświetlony podgląd, a następnie dodaj parametr zapytania.  
+3. Ustaw parametr zapytania.
+4. Zdefiniuj funkcję wyszukiwania, która tworzy żądanie i dodaje nagłówek *Ocp-Apim-Subscription-Key*.
+5. Ustaw nagłówek *Ocp-Apim-Subscription-Key*. 
+6. Nawiąż połączenie i wyślij żądanie.
+7. Wydrukuj wyniki w formacie JSON.
 
-Kompletny kod dla tego pokazu następująco:
+Pełny kod tej wersji demonstracyjnej wygląda następująco:
 
 ````
 import http.client, urllib.parse
@@ -63,8 +65,8 @@ def get_preview ():
 result = get_preview ()
 print (json.dumps(json.loads(result), indent=4))
 ````
-## <a name="next-steps"></a>Kolejne kroki
-- [C# — Szybki Start](csharp.md)
-- [Szybki Start Java](java-quickstart.md)
-- [JavaScript — Szybki Start](javascript.md)
-- [Adres URL węzła — Szybki Start](node-quickstart.md)
+## <a name="next-steps"></a>Następne kroki
+- [Przewodnik Szybki start dla języka C#](csharp.md)
+- [Przewodnik Szybki start dla języka Java](java-quickstart.md)
+- [Przewodnik Szybki start dla języka JavaScript](javascript.md)
+- [Przewodnik Szybki start dla języka Node.js](node-quickstart.md)

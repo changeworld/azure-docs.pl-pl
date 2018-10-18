@@ -1,39 +1,40 @@
 ---
-title: 'Szybki Start: Przy użyciu języka Python do wywoływania interfejsu API analizy tekstu | Dokumentacja firmy Microsoft'
+title: 'Szybki start: wywoływanie interfejsu API analizy tekstu przy użyciu języka Python'
 titleSuffix: Azure Cognitive Services
-description: Pobierz informacje oraz przykłady kodu w celu szybkiego Rozpocznij pracę przy użyciu interfejsu API analizy tekstu usług Microsoft Cognitive Services na platformie Azure.
+description: Uzyskaj informacje oraz przykłady kodu, które umożliwią Ci szybkie rozpoczęcie korzystania z interfejsu API analizy tekstu w usłudze Microsoft Cognitive Services na platformie Azure.
 services: cognitive-services
 author: ashmaka
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
-ms.topic: article
-ms.date: 05/02/2018
+ms.topic: quickstart
+ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: 8e570aac2c2d89a8147d179c4b0f9155497c5188
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: MT
+ms.openlocfilehash: 07b7327b01987d79a6447ed67de27b69c02c14ee
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298696"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268363"
 ---
-# <a name="quickstart-using-python-to-call-the-text-analytics-cognitive-service"></a>Szybki Start: Przy użyciu języka Python do wywoływania usług Cognitive analizy tekstu
+# <a name="quickstart-using-python-to-call-the-text-analytics-cognitive-service"></a>Szybki start: wywoływanie analizy tekstu usługi Cognitive Service przy użyciu języka Python 
 <a name="HOLTop"></a>
 
-W tym instruktażu przedstawiono sposób do [Wykryj język](#Detect), [analizowanie tonacji](#SentimentAnalysis), i [wyodrębnianie kluczowych fraz](#KeyPhraseExtraction) przy użyciu [interfejsów API analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759711)za pomocą języka Python.
+W tym przewodniku opisano, jak [wykrywać język](#Detect), [analizować tonację](#SentimentAnalysis) i [wyodrębniać kluczowe frazy](#KeyPhraseExtraction) przy użyciu [interfejsów API analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759711) i języka Python.
 
-W tym przykładzie można uruchomić jako notesu programu Jupyter na [MyBinder](https://mybinder.org) , klikając polecenie Uruchom integratora znaczków: 
+Ten przykład można uruchomić jako notes programu Jupyter w witrynie [MyBinder](https://mybinder.org). W tym celu należy kliknąć ikonę Launch Binder: 
 
-[![Obiekt wiążący](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=TextAnalytics.ipynb)
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=TextAnalytics.ipynb)
 
-Zapoznaj się [definicji interfejsu API](//go.microsoft.com/fwlink/?LinkID=759346) dokumentacja techniczna w przypadku interfejsów API.
+Zapoznaj się z tematem [API definitions (Definicje interfejsu API)](//go.microsoft.com/fwlink/?LinkID=759346), zawierającym dokumentację techniczną interfejsów API.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Konieczne jest posiadanie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsu API analizy tekstu**. Możesz użyć **5000 transakcji miesięcznie w warstwie bezpłatna** do przeprowadzenia tego instruktażu.
+Konieczne jest posiadanie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsem API analizy tekstu**. Możesz skorzystać z **warstwy Bezpłatna, która obejmuje 5000 transakcji miesięcznie**, aby ukończyć ten przewodnik.
 
-Musisz również posiadać [punktu końcowego i klucza dostępu](../How-tos/text-analytics-how-to-access-key.md) wygenerowany dla Ciebie podczas tworzenia konta. 
+Musisz również mieć [punkt końcowy i klucz dostępu](../How-tos/text-analytics-how-to-access-key.md) wygenerowany dla Ciebie podczas tworzenia konta. 
 
-Aby kontynuować z tego przewodnika, Zastąp `subscription_key` z kluczem ważnej subskrypcji, który został uzyskany wcześniej.
+Aby kontynuować pracę z tym przewodnikiem, zastąp element `subscription_key` uzyskanym wcześniej prawidłowym kluczem subskrypcji.
 
 
 ```python
@@ -41,7 +42,7 @@ subscription_key = None
 assert subscription_key
 ```
 
-Następnie upewnij się, że region w `text_analytics_base_url` odnosi się do używana podczas konfigurowania usługi. Jeśli używasz bezpłatnej wersji próbnej klucza nie musisz wprowadzić zmiany.
+Następnie upewnij się, że region w elemencie `text_analytics_base_url` jest zgodny z regionem użytym podczas konfigurowania usługi. Jeśli używasz klucza bezpłatnej wersji próbnej, nie musisz wprowadzać zmiany.
 
 
 ```python
@@ -52,7 +53,7 @@ text_analytics_base_url = "https://westcentralus.api.cognitive.microsoft.com/tex
 
 ## <a name="detect-languages"></a>Wykrywanie języków
 
-Interfejs API wykrywania języka wykrywa język tekstu dokumentu, za pomocą [metody wykrywania języka](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7). Punkt końcowy usługi wykrywania języka interfejsu API w Twoim regionie jest dostępna za pośrednictwem następującego adresu URL:
+Interfejs API wykrywania języka wykrywa język dokumentu tekstowego przy użyciu [metody Detect Language](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7). Punkt końcowy usługi interfejsu API wykrywania języka w Twoim regionie jest dostępny za pośrednictwem następującego adresu URL:
 
 
 ```python
@@ -63,9 +64,9 @@ print(language_api_url)
     https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/languages
 
 
-Ładunek do interfejsu API składa się z listy `documents`, każdy z którym z kolei zawiera `id` i `text` atrybutu. `text` Atrybut przechowuje tekst, który ma być analizowane. 
+Ładunek interfejsu API składa się z listy elementów `documents`, z których każdy zawiera atrybut `id` i `text`. Atrybut `text` przechowuje tekst do przeanalizowania. 
 
-Zastąp `documents` słownika przy użyciu wszelki inny tekst do wykrywania języka. 
+Zastąp słownik `documents` dowolnym innym tekstem, którego język ma zostać wykryty. 
 
 
 ```python
@@ -76,7 +77,7 @@ documents = { 'documents': [
 ]}
 ```
 
-Dalej kilku wierszy kodu, wyróżnienia za pomocą interfejsu API wykrywania języka `requests` biblioteki w języku Python, można ustalić języka w dokumentach.
+Poniższe wiersze kodu wywołują interfejs API wykrywania języka przy użyciu biblioteki `requests` w języku Python, aby określić język w dokumentach.
 
 
 ```python
@@ -103,7 +104,7 @@ pprint(languages)
      'errors': []}
 
 
-Następujące wiersze kodu dane JSON są renderowane jako tabela HTML.
+Następujące wiersze kodu renderują dane JSON jako tabelę HTML.
 
 
 ```python
@@ -120,9 +121,9 @@ HTML("<table><tr><th>Text</th><th>Detected languages(scores)</th></tr>{0}</table
 
 ## <a name="analyze-sentiment"></a>Analiza tonacji
 
-Interfejs API analizy tonacji detexts tonacji zestaw rekordów tekstowych, za pomocą [metoda tonacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Poniższy przykład ocenia dwa dokumenty, jeden w języku angielskim, a drugi w języku hiszpańskim.
+Interfejs API analizy tonacji wykrywa tonację zestawu rekordów tekstowych przy użyciu [metody Sentiment](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). W poniższym przykładzie oceniane są dwa dokumenty, jeden w języku angielskim, a drugi w hiszpańskim.
 
-Punkt końcowy usługi do analizy tonacji jest niedostępna w Twoim regionie za pośrednictwem następującego adresu URL:
+Punkt końcowy usługi analizy tonacji jest dostępny w Twoim regionie za pośrednictwem następującego adresu URL:
 
 
 ```python
@@ -133,7 +134,7 @@ print(sentiment_api_url)
     https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment
 
 
-Jako przykład wykrywanie języka, usługa jest świadczona za pomocą słownika przy użyciu `documents` klucza, który składa się z listy dokumentów. Każdy dokument jest spójna kolekcja składająca się z `id`, `text` do analizy i `language` tekstu. Interfejs API wykrywania języka w poprzedniej sekcji służy do wypełnienia tego pola. 
+Podobnie jak w przykładzie dotyczącym wykrywania języka usługa jest dostarczana ze słownikiem z kluczem `documents` zawierającym listę dokumentów. Każdy dokument jest spójną kolekcją składająca się z elementów `id` i `text` do przeanalizowania oraz elementem `language` tekstu. To pole można wypełnić przy użyciu interfejsu API wykrywania języka z poprzedniej sekcji. 
 
 
 ```python
@@ -145,7 +146,7 @@ documents = {'documents' : [
 ]}
 ```
 
-Tonacji interfejsu API może teraz służyć do analizowania dokumentów dla jego tonacji.
+Przy użyciu interfejsu API tonacji można teraz analizować dokumenty pod kątem tonacji.
 
 
 ```python
@@ -161,15 +162,15 @@ pprint(sentiments)
      'errors': []}
 
 
-Ocenę tonacji dla dokumentu jest między $ 0 USD i $ $1, z wyższą ocenę wskazująca, bardziej dodatnie wskaźniki nastrojów klientów.
+Wynik tonacji dla dokumentu wynosi od $0$ do $1$, a wyższy wynik oznacza bardziej pozytywną tonację.
 
 <a name="KeyPhraseExtraction"></a>
 
 ## <a name="extract-key-phrases"></a>Wyodrębnianie kluczowych fraz
 
-Klucz frazy wyodrębniania wyodrębnia kluczowych fraz z tekstu dokumentu, za pomocą [metoda kluczowych fraz](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Ta część przewodnika wyodrębnianie kluczowych fraz dla dokumentów w języku angielskim i hiszpańskim.
+Interfejs API wyodrębniania kluczowych fraz wyodrębnia kluczowe frazy w dokumencie tekstowym przy użyciu [metody Key Phrases](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). W tej sekcji przewodnika opisano wyodrębnianie kluczowych fraz z dokumentów w języku angielskim i hiszpańskim.
 
-Punkt końcowy usługi dla usługi wyodrębnianie kluczowych fraz jest dostępna za pośrednictwem następującego adresu URL:
+Punkt końcowy usługi wyodrębniania kluczowych fraz jest dostępny za pośrednictwem następującego adresu URL:
 
 
 ```python
@@ -180,7 +181,7 @@ print(key_phrase_api_url)
     https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases
 
 
-Kolekcja dokumentów jest taka sama jak użytymi do analizy tonacji.
+Kolekcja dokumentów jest taka sama jak w przypadku analizy tonacji.
 
 
 ```python
@@ -206,7 +207,7 @@ pprint(key_phrases)
     }
 
 
-Obiekt JSON ponownie może być renderowany jako tabela HTML przy użyciu następujące wiersze kodu:
+Obiekt JSON można ponownie wyrenderować jako tabelę HTML przy użyciu następujących wierszy kodu:
 
 
 ```python
@@ -219,11 +220,11 @@ for document in key_phrases["documents"]:
 HTML("<table><tr><th>Text</th><th>Key phrases</th></tr>{0}</table>".format("\n".join(table)))
 ```
 
-## <a name="identify-linked-entities"></a>Identyfikowanie połączonych jednostek
+## <a name="identify-entities"></a>Identyfikowanie jednostek
 
-Interfejs API Entity Linking identyfikuje dobrze znanych jednostek w tekście dokumentu, za pomocą [łączenie podmiotów metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634). Poniższy przykład określa jednostki dla dokumentów w języku angielskim.
+Interfejs API jednostek identyfikuje dobrze znane jednostki w dokumencie tekstowym przy użyciu [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634). W poniższym przykładzie zidentyfikowano jednostki dla dokumentów w języku angielskim.
 
-Punkt końcowy usługi dla jednostki usługi łączenia jest dostępna za pośrednictwem następującego adresu URL:
+Punkt końcowy usługi łączenia jednostek jest dostępny za pośrednictwem następującego adresu URL:
 
 
 ```python
@@ -231,7 +232,7 @@ entity_linking_api_url = text_analytics_base_url + "entities"
 print(entity_linking_api_url)
 ```
 
-    https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/entities
+    https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities
 
 
 Kolekcja dokumentów znajduje się poniżej:
@@ -239,82 +240,181 @@ Kolekcja dokumentów znajduje się poniżej:
 
 ```python
 documents = {'documents' : [
-  {'id': '1', 'text': 'I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.'},
-  {'id': '2', 'text': 'The Seattle Seahawks won the Super Bowl in 2014.'}
+  {'id': '1', 'text': 'Jeff bought three dozen eggs because there was a 50% discount.'},
+  {'id': '2', 'text': 'The Great Depression began in 1929. By 1933, the GDP in America fell by 25%.'}
 ]}
 ```
 
-Teraz dokumenty mogą być wysyłane do interfejsu API analizy tekstu, aby otrzymać odpowiedź.
+Teraz dokumenty można wysłać do interfejsu API analizy tekstu w celu otrzymania odpowiedzi.
 
 ```python
 headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
 response  = requests.post(entity_linking_api_url, headers=headers, json=documents)
 entities = response.json()
 ```
-    {
-        "documents": [
-            {
-                "id": "1",
-                "entities": [
-                    {
-                        "name": "Xbox One",
-                        "matches": [
-                            {
-                                "text": "XBox One",
-                                "offset": 23,
-                                "length": 8
-                            }
-                        ],
-                        "wikipediaLanguage": "en",
-                        "wikipediaId": "Xbox One",
-                        "wikipediaUrl": "https://en.wikipedia.org/wiki/Xbox_One",
-                        "bingId": "446bb4df-4999-4243-84c0-74e0f6c60e75"
-                    },
-                    {
-                        "name": "Ultra-high-definition television",
-                        "matches": [
-                            {
-                                "text": "4K",
-                                "offset": 63,
-                                "length": 2
-                            }
-                        ],
-                        "wikipediaLanguage": "en",
-                        "wikipediaId": "Ultra-high-definition television",
-                        "wikipediaUrl": "https://en.wikipedia.org/wiki/Ultra-high-definition_television",
-                        "bingId": "7ee02026-b6ec-878b-f4de-f0bc7b0ab8c4"
-                    }
-                ]
-            },
-            {
-                "id": "2",
-                "entities": [
-                    {
-                        "name": "2013 Seattle Seahawks season",
-                        "matches": [
-                            {
-                                "text": "Seattle Seahawks",
-                                "offset": 4,
-                                "length": 16
-                            }
-                        ],
-                        "wikipediaLanguage": "en",
-                        "wikipediaId": "2013 Seattle Seahawks season",
-                        "wikipediaUrl": "https://en.wikipedia.org/wiki/2013_Seattle_Seahawks_season",
-                        "bingId": "eb637865-4722-4eca-be9e-0ac0c376d361"
-                    }
-                ]
-            }
-        ],
-        "errors": []
-    }
 
-## <a name="next-steps"></a>Kolejne kroki
+```json
+{
+    "Documents": [
+        {
+            "Id": "1",
+            "Entities": [
+                {
+                    "Name": "Jeff",
+                    "Matches": [
+                        {
+                            "Text": "Jeff",
+                            "Offset": 0,
+                            "Length": 4
+                        }
+                    ],
+                    "Type": "Person"
+                },
+                {
+                    "Name": "three dozen",
+                    "Matches": [
+                        {
+                            "Text": "three dozen",
+                            "Offset": 12,
+                            "Length": 11
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "50",
+                    "Matches": [
+                        {
+                            "Text": "50",
+                            "Offset": 49,
+                            "Length": 2
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "50%",
+                    "Matches": [
+                        {
+                            "Text": "50%",
+                            "Offset": 49,
+                            "Length": 3
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Percentage"
+                }
+            ]
+        },
+        {
+            "Id": "2",
+            "Entities": [
+                {
+                    "Name": "Great Depression",
+                    "Matches": [
+                        {
+                            "Text": "The Great Depression",
+                            "Offset": 0,
+                            "Length": 20
+                        }
+                    ],
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "Great Depression",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/Great_Depression",
+                    "BingId": "d9364681-98ad-1a66-f869-a3f1c8ae8ef8"
+                },
+                {
+                    "Name": "1929",
+                    "Matches": [
+                        {
+                            "Text": "1929",
+                            "Offset": 30,
+                            "Length": 4
+                        }
+                    ],
+                    "Type": "DateTime",
+                    "SubType": "DateRange"
+                },
+                {
+                    "Name": "By 1933",
+                    "Matches": [
+                        {
+                            "Text": "By 1933",
+                            "Offset": 36,
+                            "Length": 7
+                        }
+                    ],
+                    "Type": "DateTime",
+                    "SubType": "DateRange"
+                },
+                {
+                    "Name": "Gross domestic product",
+                    "Matches": [
+                        {
+                            "Text": "GDP",
+                            "Offset": 49,
+                            "Length": 3
+                        }
+                    ],
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "Gross domestic product",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/Gross_domestic_product",
+                    "BingId": "c859ed84-c0dd-e18f-394a-530cae5468a2"
+                },
+                {
+                    "Name": "United States",
+                    "Matches": [
+                        {
+                            "Text": "America",
+                            "Offset": 56,
+                            "Length": 7
+                        }
+                    ],
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "United States",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/United_States",
+                    "BingId": "5232ed96-85b1-2edb-12c6-63e6c597a1de",
+                    "Type": "Location"
+                },
+                {
+                    "Name": "25",
+                    "Matches": [
+                        {
+                            "Text": "25",
+                            "Offset": 72,
+                            "Length": 2
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "25%",
+                    "Matches": [
+                        {
+                            "Text": "25%",
+                            "Offset": 72,
+                            "Length": 3
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Percentage"
+                }
+            ]
+        }
+    ],
+    "Errors": []
+}
+```
+
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Analiza tekstu przy użyciu usługi Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Zobacz także 
+## <a name="see-also"></a>Zobacz też 
 
- [Omówienie analizy tekstu](../overview.md)  
+ [Text Analytics overview (Omówienie analizy tekstu)](../overview.md)  
  [Często zadawane pytania](../text-analytics-resource-faq.md)

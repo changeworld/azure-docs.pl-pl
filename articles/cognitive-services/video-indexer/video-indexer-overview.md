@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: video-indexer
 ms.topic: overview
-ms.date: 09/15/2018
+ms.date: 10/10/2018
 ms.author: nolachar
-ms.openlocfilehash: fd92e91989bd1a37626227b327d644c9d704ab6c
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: cf761342bb434100920c3888f2f441b9f8c8de08
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983018"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077920"
 ---
 # <a name="what-is-video-indexer"></a>Co to jest Video Indexer?
 
@@ -38,8 +38,8 @@ Usługa Azure Video Indexer to aplikacja w chmurze utworzona za pomocą usługi 
 - **Wyodrębnianie marek**: wyodrębnia marki z wypowiedzianych słów i widocznego tekstu.
 - **Wykrywanie twarzy**: wykrywa i grupuje twarze pojawiające się w nagraniu wideo.
 - **Wyodrębnianie miniatur dla twarzy („najlepsza wersja twarzy”)**: automatycznie identyfikuje najlepszą wersję twarzy przechwyconą w każdej grupie twarzy (na podstawie jakości, rozmiaru i skierowania w stronę obiektywu) i wyodrębnia ją jako zasób obrazu.
-- **Rozpoznawanie osobistości**: rozpoznaje osobistości w nagraniu wideo na podstawie bazy danych z informacjami o milionie osobistości. Źródłami są witryny IMDB i Wikipedia oraz lista najważniejszych influencerów w serwisie LinkedIn.
-- **Niestandardowe rozpoznawanie twarzy**: rozpoznaje twarze w nagraniu wideo na podstawie modelu niestandardowego szkolonego dla konkretnego konta.
+- **Rozpoznawanie osobistości**: usługa Video Indexer automatycznie rozpoznaje ponad milion osobistości — światowych przywódców, aktorów i aktorki, znane osoby ze świata sportu, nauki i biznesu. Dane dotyczące tych osobistości można znaleźć również w różnych znanych witrynach internetowych, takich jak IMDB czy Wikipedia.
+- **Identyfikowanie twarzy na podstawie konta**: usługa Video Indexer szkoli model na podstawie określonego konta. Następnie rozpoznaje twarze w nagraniu wideo na podstawie modelu wyszkolonego specjalnie na potrzeby filmów wideo na tym koncie.
 - **Moderowanie zawartości tekstowej**: wykrywa jawny tekst w transkrypcji audio.
 - **Wykrywanie ujęć**: wykrywa zmiany scen w nagraniu wideo.
 - **Wykrywanie czarnych ramek**: identyfikuje pojawiające się w nagraniu wideo czarne ramki.

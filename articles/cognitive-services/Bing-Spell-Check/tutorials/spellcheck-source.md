@@ -1,24 +1,25 @@
 ---
-title: Uzyskiwanie wyników sprawdzania pisowni za pomocą API Sprawdź pisowni usługi Bing (Microsoft kognitywnych usług Azure) | Dokumentacja firmy Microsoft
-description: Kod źródłowy Samouczek przedstawiający sposób użycia API sprawdzania pisowni usługi Bing w aplikacji jednej strony sieci Web.
+title: 'Samouczek: uzyskiwanie wyników sprawdzania pisowni za pomocą interfejsu API sprawdzania pisowni Bing'
+titlesuffix: Azure Cognitive Services
+description: Kod źródłowy do tego samouczka przedstawia sposób użycia interfejsu API sprawdzania pisowni Bing w jednostronicowej aplikacji internetowej.
 services: cognitive-services
 author: v-jaswel
-manager: kamrani
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-spell-check
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 1f2f75a51324bb05e1b95dc3a3c4e438f3aa593c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: baa618929b1f7b401c619681dce4e085b16543e7
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346868"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48800965"
 ---
-# <a name="tutorial-single-page-web-app"></a>Samouczek: Aplikacji jednej strony sieci Web
+# <a name="tutorial-single-page-web-app"></a>Samouczek: jednostronicowa aplikacja internetowa
 
-To jest kod źródłowy pełną omówione w [samouczek aplikacji jednej strony](spellcheck.md) dla API sprawdzania pisowni usługi Bing. Aby uruchomić aplikację, skopiuj kod źródłowy w edytorze tekstu i Zapisz plik jako `spellcheck.html`. Następnie otwórz zapisany plik w przeglądarce sieci Web.
+Jest to pełny kod źródłowy omówiony w [samouczku dotyczącym aplikacji jednostronicowej](spellcheck.md) na potrzeby interfejsu API sprawdzania pisowni Bing. Aby uruchomić aplikację, skopiuj kod źródłowy do edytora tekstu, a następnie zapisz go jako plik `spellcheck.html`. Następnie otwórz zapisany plik w przeglądarce internetowej.
 
 ```html
 <!DOCTYPE html>

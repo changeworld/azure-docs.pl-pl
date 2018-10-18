@@ -1,41 +1,43 @@
 ---
-title: Szybki Start C# Podgląd adres URL projektu - kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
-description: Rozpoczynanie pracy przy użyciu adresu URL projektu w wersji zapoznawczej w kognitywnych usług Microsoft Azure.
+title: 'Szybki start: laboratorium Project URL Preview, C#'
+titlesuffix: Azure Cognitive Services
+description: Rozpocznij korzystanie z laboratorium Project URL Preview z użyciem języka C#.
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 03/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 17d44bd0c23d0a1e67da5a0e91248700d3166c1a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: 8d31d3a83f9873ce550b9c78626eea0d96ac39bb
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348636"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867446"
 ---
-# <a name="url-preview-query-in-c"></a>Adres URL podglądu kwerendy w języku C#
+# <a name="quickstart-url-preview-query-in-c"></a>Szybki start: podgląd adresu URL — zapytanie w języku C#
 
-W poniższym przykładzie C# tworzy podgląd adres Url witryny sieci SwiftKey Web: https://swiftkey.com/en.
+Poniższy przykład w języku C# tworzy podgląd adresu URL witryny internetowej SwiftKey: https://swiftkey.com/en.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Konieczne będzie [programu Visual Studio 2017](https://www.visualstudio.com/downloads/) tego kodu dla systemu Windows. (Bezpłatna wersja Community będzie działać.)
+Do uruchamiania tego kodu w systemie Windows jest potrzebny [program Visual Studio 2017](https://www.visualstudio.com/downloads/). (Można korzystać z bezpłatnej wersji Community Edition).
 
-Pobierz klucz dostępu dla bezpłatnej wersji próbnej [kognitywnych Labs usług](https://aka.ms/answersearchsubscription)
+Pobierz klucz dostępu dla bezpłatnej wersji próbnej zestawu [Cognitive Services Labs](https://aka.ms/answersearchsubscription).
 
 ## <a name="code-scenario"></a>Scenariusz kodu
 
-Poniższy kod C# tworzy podgląd adres URL witryny sieci SwiftKey Web: https://swiftkey.com/en. 
+Poniższy kod w języku C# tworzy podgląd adresu URL witryny internetowej SwiftKey: https://swiftkey.com/en. 
 
-Jest stosowana w poniższych krokach:
-1. Zadeklaruj zmienne w celu określenia punktu końcowego i adresu URL zapytania, aby wyświetlić podgląd.  
+W celu zaimplementowania kodu wykonaj następujące kroki:
+1. Zadeklaruj zmienne, aby określić punkt końcowy i adres URL zapytania, dla którego ma zostać wyświetlony podgląd.  
 2. Utwórz żądanie.
-3. Dodaj *Ocp-Apim-subskrypcji — klucz* nagłówka. 
-4. Wykonywane asynchronicznie żądanie sieci Web. 
-5. Przeczytaj odpowiedzi.
-6. Drukowanie nagłówków i wyniki JSON do konsoli.
+3. Dodaj nagłówek *Ocp-Apim-Subscription-Key*. 
+4. Uruchom asynchronicznie żądanie internetowe. 
+5. Odczytaj odpowiedź.
+6. Wydrukuj w konsoli nagłówki i wyniki w formacie JSON.
 
 **Kod źródłowy**
 
@@ -155,13 +157,13 @@ namespace UrlPrevCshp
 
 Aby uruchomić aplikację:
 
-1. Utwórz nowe rozwiązanie konsoli w programie Visual Studio.
-2. Zastąp `Program.cs` podany kod.
-3. Zastąp `YOUR-ACCESS-KEY` wartość kluczem dostępu prawidłową dla Twojej subskrypcji.
+1. Utwórz nowe rozwiązanie konsolowe w programie Visual Studio.
+2. Zastąp zawartość pliku `Program.cs` udostępnionym kodem.
+3. Zastąp wartość `YOUR-ACCESS-KEY` prawidłowym kluczem dostępu dla Twojej subskrypcji.
 4. Uruchom program.
 
-## <a name="next-steps"></a>Kolejne kroki
-- [Szybki Start Java](java-quickstart.md)
-- [JavaScript — Szybki Start](javascript.md)
-- [Węzeł Szybki Start](node-quickstart.md)
-- [Krótkie wprowadzenie do języka Python](python-quickstart.md)
+## <a name="next-steps"></a>Następne kroki
+- [Przewodnik Szybki start dla języka Java](java-quickstart.md)
+- [Przewodnik Szybki start dla języka JavaScript](javascript.md)
+- [Przewodnik Szybki start dla środowiska Node](node-quickstart.md)
+- [Przewodnik Szybki start dla języka Python](python-quickstart.md)

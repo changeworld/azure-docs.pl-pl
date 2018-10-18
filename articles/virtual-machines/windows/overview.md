@@ -1,5 +1,5 @@
 ---
-title: Omówienie maszyn wirtualnych z systemem Windows | Microsoft Docs
+title: Omówienie maszyn wirtualnych z systemem Windows — Azure | Microsoft Docs
 description: Dowiedz się więcej na temat tworzenia maszyn wirtualnych z systemem Windows na platformie Azure oraz zarządzania nimi.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/17/2017
+ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e12b8153494eaefb1f7e2d27fc667ef0070c68d0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 6ec151222bda3d87386cc3be4c54821775880795
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41919794"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816841"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Omówienie maszyn wirtualnych z systemem Windows na platformie Azure
 
@@ -83,9 +83,9 @@ W poniższej tabeli pokazano, jak można znaleźć informacje o obrazie.
 | Metoda | Opis |
 | --- | --- |
 | Azure Portal |Wartości są podawane automatycznie po wybraniu obrazu, który ma zostać użyty. |
-| Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimagepublisher) -Location "lokalizacja"<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimageoffer) -Location "lokalizacja" -Publisher "nazwa_wydawcy"<BR>[Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location "lokalizacja" -Publisher "nazwa_wydawcy" -Offer "nazwa_oferty" |
+| Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimagepublisher) -Location *lokalizacja*<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimageoffer) -Location *lokalizacja* -Publisher *nazwa_wydawcy*<BR>[Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location *lokalizacja* -Publisher *nazwa_wydawcy* -Offer *nazwa_oferty* |
 | Interfejsy API REST |[Wyświetl listę wydawców obrazów](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[Wyświetl listę ofert obrazów](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[Wyświetl listę jednostek SKU obrazów](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
-| Interfejs wiersza polecenia platformy Azure |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_publishers) --location "lokalizacja"<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_offers) --location "lokalizacja" --publisher "nazwa_wydawcy"<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az_vm_list_skus) --location "lokalizacja" --publisher "nazwa_wydawcy" --offer "nazwa_oferty"|
+| Interfejs wiersza polecenia platformy Azure |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_publishers) --location *lokalizacja*<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_offers) --location *lokalizacja* --publisher *nazwa_wydawcy*<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az_vm_list_skus) --location *lokalizacja* --publisher *nazwa_wydawcy* --offer *nazwa_oferty*|
 
 Istnieje możliwość [przesłania i użycia własnego obrazu](upload-generalized-managed.md#upload-the-vhd-to-your-storage-account) — nazwa wydawcy, oferta i jednostka SKU nie są wtedy używane.
 
@@ -124,7 +124,7 @@ Ta tabela zawiera informacje ułatwiające utworzenie maszyny wirtualnej.
 | Interfejsy API REST |[Tworzenie lub aktualizowanie maszyny wirtualnej](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-create-or-update) |
 | Interfejs wiersza polecenia platformy Azure |[Tworzenie maszyny wirtualnej za pomocą interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-cli-sample-create-vm) |
 
-Nikt tego nie lubi, ale czasem coś może pójść nie tak. Warto zapoznać się wtedy z artykułem [Troubleshoot Resource Manager deployment issues with creating a Windows virtual machine in Azure](troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Rozwiązywanie problemów z wdrażaniem programu Resource Manager dotyczących tworzenia maszyny wirtualnej z systemem Windows na platformie Azure).
+Nikt tego nie lubi, ale czasem coś może pójść nie tak. Warto zapoznać się wtedy z artykułem [Troubleshoot Resource Manager deployment issues with creating a Windows virtual machine in Azure](../troubleshooting/troubleshoot-deployment-new-vm-windows.md) (Rozwiązywanie problemów z wdrażaniem programu Resource Manager dotyczących tworzenia maszyny wirtualnej z systemem Windows na platformie Azure).
 
 ## <a name="how-do-i-manage-the-vm-that-i-created"></a>Jak zarządzać maszyną wirtualną?
 Maszynami wirtualnymi można zarządzać w portalu w przeglądarce internetowej, a także przy użyciu narzędzi wiersza polecenia z obsługą skryptów oraz bezpośrednio za pomocą interfejsów API. Najczęściej wykonywane zadania administracyjne to np. uzyskiwanie informacji na temat maszyny wirtualnej, logowanie się do niej, zarządzanie dostępnością oraz wykonywanie kopii zapasowych.
@@ -141,10 +141,10 @@ W tej tabeli opisano, w jaki sposób można uzyskiwać informacje o maszynie wir
 | Interfejs wiersza polecenia platformy Azure |Aby uzyskać informacje o zarządzaniu maszynami wirtualnymi za pomocą interfejsu wiersza polecenia platformy Azure, zobacz [Dokumentacja interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/vm). |
 
 ### <a name="log-on-to-the-vm"></a>Logowanie się do maszyny wirtualnej
-Korzystając z przycisku Połącz w witrynie Azure, można [uruchomić sesję pulpitu zdalnego (RDP)](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Podczas próby użycia połączenia zdalnego mogą czasami występować problemy. W takiej sytuacji zapoznaj się z artykułem [Rozwiązywanie problemów z połączeniami Pulpitu zdalnego z maszynami wirtualnymi systemu Windows na platformie Azure](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Korzystając z przycisku Połącz w witrynie Azure, można [uruchomić sesję pulpitu zdalnego (RDP)](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Podczas próby użycia połączenia zdalnego mogą czasami występować problemy. W takiej sytuacji zapoznaj się z artykułem [Rozwiązywanie problemów z połączeniami Pulpitu zdalnego z maszynami wirtualnymi systemu Windows na platformie Azure](../troubleshooting/troubleshoot-rdp-connection.md).
 
 ### <a name="manage-availability"></a>Zarządzanie dostępnością
-Ważne jest zrozumienie, jak można [zapewnić wysoką dostępność](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) aplikacji. Ta konfiguracja obejmuje utworzenie wielu maszyn wirtualnych w celu zagwarantowania, że przynajmniej jednak z nich na pewno działa.
+Ważne jest zrozumienie, jak można [zapewnić wysoką dostępność](manage-availability.md) aplikacji. Ta konfiguracja obejmuje utworzenie wielu maszyn wirtualnych w celu zagwarantowania, że przynajmniej jednak z nich na pewno działa.
 
 Aby wdrożenie kwalifikowało się do naszej Umowy dotyczącej poziomu usług (SLA) uwzględniającej dostępność maszyn wirtualnych na poziomie 99,95%, wymagane jest wdrożenie co najmniej dwóch maszyn wirtualnych z uruchomionym obciążeniem w obrębie [zestawu dostępności](tutorial-availability-sets.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Ta konfiguracja daje gwarancję, że maszyny wirtualne są rozproszone w wielu domenach błędów i wdrożone na hostach z różnymi okresami konserwacji. Pełna treść [umowy SLA dotyczącej usługi Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/) wyjaśnia w całości kwestię gwarantowanej dostępności platformy Azure.
 
@@ -152,5 +152,5 @@ Aby wdrożenie kwalifikowało się do naszej Umowy dotyczącej poziomu usług (S
 [Magazyn usługi Recovery Services](../../backup/backup-introduction-to-azure-backup.md) służy do ochrony danych i zasobów w usługach Azure Backup i Azure Site Recovery. Magazynu usługi Recovery Services można użyć do [wdrażania kopii zapasowych maszyn wirtualnych wdrożonych przy użyciu usługi Resource Manager oraz zarządzania nimi przy użyciu programu PowerShell](../../backup/backup-azure-vms-automation.md). 
 
 ## <a name="next-steps"></a>Następne kroki
-* Użytkownicy korzystający z maszyn wirtualnych z systemem Linux powinni zapoznać się z tematem [Azure and Linux](../linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Usługa Azure a system Linux).
-* Więcej informacji na temat wytycznych dotyczących konfigurowania infrastruktury można znaleźć w artykule [Example Azure infrastructure walkthrough](infrastructure-example.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Przewodnik po konfigurowaniu przykładowej infrastruktury na platformie Azure).
+* Użytkownicy korzystający z maszyn wirtualnych z systemem Linux powinni zapoznać się z tematem [Azure and Linux](../linux/overview.md) (Usługa Azure a system Linux).
+* Więcej informacji na temat wytycznych dotyczących konfigurowania infrastruktury można znaleźć w artykule [Example Azure infrastructure walkthrough](infrastructure-example.md) (Przewodnik po konfigurowaniu przykładowej infrastruktury na platformie Azure).

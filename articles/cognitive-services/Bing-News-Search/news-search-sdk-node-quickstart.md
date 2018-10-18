@@ -1,44 +1,44 @@
 ---
-title: Szybki Start węzła zestawu SDK wyszukiwania wiadomości | Dokumentacja firmy Microsoft
-description: Konfigurowanie aplikacji konsoli SDK wyszukiwania wiadomości
-titleSuffix: Azure cognitive services
+title: 'Szybki start: zestaw SDK wyszukiwania wiadomości Bing, Node'
+titleSuffix: Azure Cognitive Services
+description: Konfigurowanie aplikacji konsolowej zestawu SDK wyszukiwania wiadomości Bing
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/12/2018
 ms.author: v-gedod
-ms.openlocfilehash: 4ae99aa100b697a0dd75863c6f0c3c556dfa3d21
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 2279a6475ab8c39b3ff599f7244caea59d622651
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349473"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803005"
 ---
-# <a name="news-search-sdk-node-quickstart"></a>Szybki Start węzła zestawu SDK wyszukiwania wiadomości
+# <a name="quickstart-bing-news-search-sdk-with-node"></a>Szybki start: zestaw SDK wyszukiwania wiadomości Bing na platformie Node
 
-Zestaw SDK wyszukiwania usługi Bing wiadomości zawiera funkcje interfejsu API REST dla zapytań wiadomości oraz wyniki analizy. 
+Zestaw SDK wyszukiwania wiadomości Bing używa funkcji interfejsu API REST do wykonywania zapytań dotyczących wiadomości i analizowania wyników. 
 
-[Kod dla przykładów SDK wyszukiwania wiadomości Bing węzeł źródłowy](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js) jest dostępna w Centrum Git.
+[Kod źródłowy przykładów zestawu SDK wyszukiwania wiadomości Bing dla platformy Node](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js) jest dostępny w serwisie Git Hub.
 
 ## <a name="application-dependencies"></a>Zależności aplikacji
 
-Aby skonfigurować aplikację konsoli przy użyciu zestawu SDK Search wiadomości Bing, uruchom `npm install azure-cognitiveservices-newssearch` w środowisku projektowania.
+Aby skonfigurować aplikację konsolową przy użyciu zestawu SDK wyszukiwania wiadomości Bing, uruchom pakiet `npm install azure-cognitiveservices-newssearch` w środowisku deweloperskim.
 
 ## <a name="news-search-client"></a>Klient wyszukiwania wiadomości
-Pobierz [klucz dostępu usługi kognitywnych](https://azure.microsoft.com/try/cognitive-services/) w obszarze *wyszukiwania*. Utwórz wystąpienie `CognitiveServicesCredentials`:
+Pobierz [klucz dostępu usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) w obszarze *Wyszukiwanie*. Utwórz wystąpienie elementu `CognitiveServicesCredentials`:
 ```
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
 ```
-Następnie można utworzyć wystąpienia klienta:
+Następnie utwórz wystąpienie klienta:
 ```
 const NewsSearchAPIClient = require('azure-cognitiveservices-newssearch');
 let client = new NewsSearchAPIClient(credentials);
 ```
-Używanie klienta do wyszukiwania tekstem zapytania w tym przypadku "Zima Olimpiada":
+Użyj klienta, aby przeprowadzić wyszukiwanie przy użyciu tekstu zapytania — w tym przykładzie jest to „Winter Olympics” (zimowe igrzyska olimpijskie):
 ```
 client.newsOperations.search('Winter Olympics').then((result) => {
     console.log(result.value);
@@ -47,16 +47,16 @@ client.newsOperations.search('Winter Olympics').then((result) => {
 });
 
 ```
-Wyświetla kod `result.value` elementy do konsoli bez podczas analizowania tekstu. Wyniki, jeśli występują dla każdej kategorii, obejmują:
-- _wprowadź: "NewsArticle"
-- _wprowadź: "Strona sieci Web"
-- _wprowadź: "VideoObject"
-- _wprowadź: "ImageObject"
+Ten kod wyświetla elementy `result.value` w konsoli bez analizowania tekstu. Wyniki, jeśli zostały zwrócone w danej kategorii, obejmują następujące elementy:
+- _type: 'NewsArticle' (typ: artykuł wiadomości)
+- _type: 'WebPage' (typ: strona internetowa)
+- _type: 'VideoObject' (typ: obiekt wideo)
+- _type: 'ImageObject' (typ: obraz)
 
 <!-- Remove until we can replace with santized version
 ![News results](media/node-sdk-quickstart-results.png)
 -->
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Usługi kognitywnych przykłady Node.js SDK](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+[Przykłady zastosowania zestawu Cognitive Services SDK dla platformy Node.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)

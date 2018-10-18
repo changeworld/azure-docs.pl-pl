@@ -8,14 +8,14 @@ ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
 ms.workload: infrastructure-services
-ms.date: 5/15/2018
+ms.date: 10/11/2018
 ms.author: victorh
-ms.openlocfilehash: 045443637c06745472458dd9e33670875a33352b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8352a95fa0701f6d2a0261d8d2fe2431971eccef
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193071"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068099"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co to jest Azure Application Gateway?
 
@@ -27,17 +27,48 @@ Tradycyjne moduły równoważenia obciążenia działają w warstwie transportu 
 
 Ten typ routingu jest nazywany równoważeniem obciążenia warstwy aplikacji (warstwy OSI 7). Usługa Azure Application Gateway może wykonywać routing oparty na adresach URL i nie tylko. 
 
-W usłudze Azure Application Gateway są dostępne następujące funkcje: 
+W usłudze Azure Application Gateway są dostępne następujące funkcje:
+
+## <a name="autoscaling-public-preview"></a>Skalowanie automatyczne w publicznej wersji zapoznawczej
+
+Oprócz funkcji opisanych w tym artykule usługa Application Gateway oferuje również nową jednostkę SKU [Standard_V2] w publicznej wersji zapoznawczej, oferującą skalowanie automatyczne i inne udoskonalenia kluczowe dla poprawy wydajności.
+
+- **Skalowanie automatyczne** — wdrożenie usługi Application Gateway lub WAF w ramach skalowania automatycznego jednostki SKU umożliwia skalowanie w górę lub dół na podstawie zmieniających się wzorców obciążenia ruchu. Dzięki skalowaniu automatycznemu nie trzeba również wybierać rozmiaru wdrożenia ani liczby wystąpień podczas aprowizowania usługi. 
+
+- **Nadmiarowość strefy** — wdrożenie usługi Application Gateway lub WAF może obejmować kilka stref dostępności, dzięki czemu nie trzeba już aprowizować i uruchamiać oddzielnych wystąpień usługi Application Gateway w każdej strefie przy użyciu usługi Traffic Manager.
+
+- **Statyczny adres VIP** — adres VIP usługi Application Gateway teraz obsługuje wyłącznie typ statyczny adresu VIP. Dzięki temu adres VIP skojarzony z usługą Application Gateway nie zmienia się nawet po ponownym uruchomieniu.
+
+- **Krótszy czas wdrożenia i aktualizacji** w porównaniu z ogólnie dostępną jednostką SKU. 
+
+- **Pięć razy lepsza wydajność odciążenia protokołu SSL** w porównaniu z ogólnie dostępną jednostką SKU.
+
+Aby uzyskać więcej informacji na temat funkcji usługi Application Gateway w publicznej wersji zapoznawczej, zobacz [Autoscaling and Zone-redundant Application Gateway — Public Preview (Skalowanie automatyczne oraz nadmiarowość strefy w usłudze Application Gateway — publiczna wersja zapoznawcza)](application-gateway-autoscaling-zone-redundant.md).
+
+## <a name="azure-kubernetes-service-aks-ingress-controller-preview"></a>Kontroler ruchu przychodzącego w usłudze Azure Kubernetes Service (AKS) — wersja zapoznawcza 
+
+Kontroler ruchu przychodzącego w usłudze Application Gateway jest uruchamiany jako zasobnik w ramach klastra usługi AKS i umożliwia usłudze Application Gateway obsługę ruchu przychodzącego do klastra usługi AKS. 
+
+Aby uzyskać więcej informacji, zobacz [Azure Application Gateway Ingress Controller (Kontroler ruchu przychodzącego w usłudze Azure Application Gateway)](https://azure.github.io/application-gateway-kubernetes-ingress/).
+
+## <a name="connection-draining"></a>Opróżnianie połączeń
+
+Opróżnianie połączeń umożliwia bezproblemowe usunięcie członków puli zaplecza podczas planowanych aktualizacji usługi. To ustawienie jest włączane za pośrednictwem ustawienia http zaplecza i można je zastosować do wszystkich członków puli zaplecza podczas tworzenia reguły. Po włączeniu tego ustawienia usługa Application Gateway zapewnia, że żadne wyrejestrowane wystąpienia puli zaplecza nie otrzymują nowych żądań, ale jednocześnie umożliwia wykonanie istniejących żądań w ramach skonfigurowanego limitu czasu. Dotyczy to zarówno wystąpień zaplecza, które są jawnie usuwane z puli zaplecza przez wywołanie interfejsu API, jak i wystąpień zaplecza, które zostały zgłoszone jako niepoprawne według oceny sond kondycji.
+
+## <a name="custom-error-pages"></a>Niestandardowe strony błędów
+Usługa Application Gateway umożliwia tworzenie niestandardowych stron błędów wyświetlanych zamiast domyślnych strony błędów. W przypadku niestandardowych stron błędów możesz użyć własnych oznakowań i układu.
+
+Aby uzyskać więcej informacji, zobacz [Create Application Gateway custom error pages (Tworzenie niestandardowych stron błędów w usłudze Application Gateway)](custom-error.md).
 
 ## <a name="secure-sockets-layer-ssl-termination"></a>Kończenie żądań protokołu Secure Sockets Layer (SSL)
 
 Usługa Application Gateway obsługuje przerywanie połączenia SSL na bramie, po którym ruch na ogół płynie niezaszyfrowany do serwerów zaplecza. Ta funkcja umożliwia odciążenie serwerów sieci Web z nadmiaru kosztownych operacji szyfrowania i odszyfrowywania. Jednak czasami nieszyfrowana komunikacja z serwerami jest opcją niemożliwą do zaakceptowania. Może to być spowodowane wymaganiami dotyczącymi zabezpieczeń lub zgodności albo aplikacja może akceptować jedynie bezpieczne połączenia. Na potrzeby takich aplikacji brama aplikacji obsługuje kompleksowe szyfrowanie SSL.
 
-## <a name="web-application-firewall"></a>Zapora aplikacji sieci Web
+## <a name="web-application-firewall"></a>Zapora aplikacji internetowej
 
-Zapora aplikacji sieci Web (WAF) to funkcja usługi Application Gateway, która zapewnia scentralizowaną ochronę aplikacji sieci Web przed typowymi programami wykorzystującymi luki i lukami w zabezpieczeniach. Zapora aplikacji internetowych zapewnia ochronę na podstawie reguł z [podstawowych zestawów reguł OWASP (Open Web Application Security Project)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) w wersji 3.0 lub 2.2.9. 
+Zapora aplikacji internetowej (WAF) to funkcja usługi Application Gateway, która zapewnia scentralizowaną ochronę aplikacji internetowych przed typowymi programami wykorzystującymi luki i lukami w zabezpieczeniach. Zapora aplikacji internetowych zapewnia ochronę na podstawie reguł z [podstawowych zestawów reguł OWASP (Open Web Application Security Project)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) w wersji 3.0 lub 2.2.9. 
 
-Aplikacje sieci Web coraz częściej stają się obiektami złośliwych ataków wykorzystujących znane luki w zabezpieczeniach. Wśród nich często zdarzają się np. ataki polegające na iniekcji SQL i ataki z użyciem skryptów wykorzystywanych w wielu witrynach. Zapobieganie takim atakom z poziomu kodu aplikacji może być trudne. Może też wymagać rygorystycznego przestrzegania harmonogramu konserwacji, poprawek i monitorowania na wielu warstwach topologii aplikacji. Scentralizowana zapora aplikacji sieci Web ułatwia zarządzanie zabezpieczeniami oraz zapewnia lepszą ochronę administratorów aplikacji przed zagrożeniami i intruzami. Zapora aplikacji sieci Web może reagować na zagrożenia bezpieczeństwa szybciej — poprzez wdrażanie poprawek zapobiegających wykorzystaniu znanych luk w zabezpieczeniach w centralnej lokalizacji zamiast w poszczególnych aplikacjach sieci Web. Istniejące bramy Application Gateway można łatwo przekonwertować na bramę Application Gateway obsługującą zaporę aplikacji sieci Web.
+Aplikacje internetowe coraz częściej stają się obiektami złośliwych ataków wykorzystujących znane luki w zabezpieczeniach. Wśród nich często zdarzają się np. ataki polegające na iniekcji SQL i ataki z użyciem skryptów wykorzystywanych w wielu witrynach. Zapobieganie takim atakom z poziomu kodu aplikacji może być trudne. Może też wymagać rygorystycznego przestrzegania harmonogramu konserwacji, poprawek i monitorowania na wielu warstwach topologii aplikacji. Scentralizowana zapora aplikacji internetowej ułatwia zarządzanie zabezpieczeniami oraz zapewnia lepszą ochronę administratorów aplikacji przed zagrożeniami i intruzami. Zapora aplikacji internetowej może reagować na zagrożenia bezpieczeństwa szybciej — poprzez wdrażanie poprawek zapobiegających wykorzystaniu znanych luk w zabezpieczeniach w centralnej lokalizacji zamiast w poszczególnych aplikacjach internetowych. Istniejące bramy Application Gateway można łatwo przekonwertować na bramę Application Gateway obsługującą zaporę aplikacji internetowej.
 
 ## <a name="url-based-routing"></a>Routing oparty na adresach URL
 

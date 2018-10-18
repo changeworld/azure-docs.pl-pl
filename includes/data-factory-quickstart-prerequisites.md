@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 08/20/2018
+ms.date: 10/01/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: ac6b53926ca6c44c8ec1e71db67321366aacb00e
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 4b209953e957d0c2892bc5c6bca7a577992c5dee
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617604"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843060"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -21,18 +21,26 @@ ms.locfileid: "42617604"
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
 ### <a name="azure-roles"></a>Role platformy Azure
-Aby utworzyć wystąpienia usługi Data Factory, konto użytkownika używane do logowania się na platformie Azure musi być członkiem roli *współautora* lub *właściciela* albo *administratorem* subskrypcji platformy Azure. W witrynie Azure Portal wybierz swoją nazwę użytkownika w prawym górnym rogu i wybierz pozycję **Uprawnienia**, aby wyświetlić uprawnienia, które masz w subskrypcji. Jeśli masz dostęp do wielu subskrypcji, wybierz odpowiednią subskrypcję. Aby uzyskać przykładowe instrukcje dotyczące dodawania użytkownika do roli, zobacz artykuł [Dodawanie ról](../articles/billing/billing-add-change-azure-subscription-administrator.md).
+Aby utworzyć wystąpienia usługi Data Factory, konto użytkownika używane do logowania się na platformie Azure musi być członkiem roli *współautora* lub *właściciela* albo *administratorem* subskrypcji platformy Azure. W witrynie Azure Portal wybierz swoją nazwę użytkownika w prawym górnym rogu, a następnie wybierz pozycję **Uprawnienia**, aby wyświetlić uprawnienia, które masz w subskrypcji. Jeśli masz dostęp do wielu subskrypcji, wybierz odpowiednią subskrypcję. 
 
-Aby utworzyć zasoby podrzędne (w tym zestawy danych, połączone usługi, potoki, wyzwalacze i środowiska integration Runtime) oraz zarządzać nimi w usłudze Data Factory za pomocą interfejsu użytkownika Author & Monitor w witrynie Azure Portal, trzeba należeć do roli **Współautor w usłudze Data Factory** . W przypadku tworzenia zasobów podrzędnych i zarządzania nimi za pomocą programu Powershell lub zestawu SDK rola **współautora** jest wystarczająca.
+Aby utworzyć zasoby podrzędne — w tym zestawy danych, połączone usługi, potoki, wyzwalacze i środowiska Integration Runtime — oraz nimi zarządzać w usłudze Data Factory, należy spełnić następujące wymagania:
+- Aby utworzyć zasoby podrzędne i nimi zarządzać, trzeba należeć do roli **Współautor w usłudze Data Factory** na poziomie grupy zasobów lub wyższej.
+- W przypadku tworzenia zasobów podrzędnych i zarządzania nimi za pomocą programu PowerShell lub zestawu SDK rola **współautora** na poziomie grupy zasobów lub wyższej jest wystarczająca.
+
+Aby uzyskać przykładowe instrukcje dotyczące dodawania użytkownika do roli, zobacz artykuł [Add roles (Dodawanie ról)](../articles/billing/billing-add-change-azure-subscription-administrator.md).
+
+Aby uzyskać więcej informacji, zobacz następujące artykuły:
+- [Data Factory Contributor role (Rola współautora w usłudze Data Factory)](../articles/role-based-access-control/built-in-roles.md#data-factory-contributor)
+- [Roles and permissions for Azure Data Factory (Role i uprawnienia w usłudze Data Factory)](../articles/data-factory/concepts-roles-permissions.md)
 
 ### <a name="azure-storage-account"></a>Konto magazynu Azure
 W tym samouczku Szybki start używasz konta usługi Azure Storage ogólnego przeznaczenia (w szczególności usługi Blob Storage) jako *źródłowego* i *docelowego* magazynu danych. Jeśli nie masz konta usługi Azure Storage ogólnego przeznaczenia, zobacz [Tworzenie konta magazynu](../articles/storage/common/storage-quickstart-create-account.md), aby uzyskać informacje o jego tworzeniu. 
 
 #### <a name="get-the-storage-account-name-and-account-key"></a>Pobieranie nazwy konta i klucza konta magazynu
-W tym samouczku Szybki start używasz nazwy i klucza konta magazynu platformy Azure. Poniższa procedura służy do pobierania nazwy i klucza konta magazynu: 
+W tym przewodniku Szybki start będzie potrzebna nazwa i klucz konta usługi Azure Storage. Poniższa procedura służy do pobierania nazwy i klucza konta magazynu: 
 
 1. Otwórz witrynę [Azure Portal](https://portal.azure.com) w przeglądarce internetowej. Zaloguj się przy użyciu nazwy użytkownika i hasła platformy Azure. 
-2. Wybierz pozycję **Więcej usług** w menu po lewej stronie, odfiltruj listę przy użyciu słowa kluczowego **Storage** i wybierz pozycję **Konta usługi Storage**.
+2. Wybierz pozycję **Wszystkie usługi** w menu po lewej stronie, odfiltruj listę przy użyciu słowa kluczowego **Storage** i wybierz pozycję **Konta usługi Storage**.
 
    ![Wyszukiwanie konta magazynu](media/data-factory-quickstart-prerequisites/search-storage-account.png)
 3. Na liście kont magazynu znajdź swoje konto magazynu, w razie potrzeby używając filtrowania, a następnie wybierz to konto. 
@@ -56,7 +64,7 @@ W tej sekcji utworzysz kontener obiektów blob o nazwie **adftutorial** w usłud
 4. Wybierz pozycję **adftutorial** na liście kontenerów. 
 
    ![Wybieranie kontenera](media/data-factory-quickstart-prerequisites/seelct-adftutorial-container.png)
-1. Na stronie **Kontener** wybierz pozycję **Przekaż** na pasku narzędzi.  
+5. Na stronie **Kontener** wybierz pozycję **Przekaż** na pasku narzędzi.  
 
    ![Przycisk Przekaż](media/data-factory-quickstart-prerequisites/upload-toolbar-button.png)
 6. Na stronie **Przekazywanie obiektu blob** wybierz pozycję **Zaawansowane**.

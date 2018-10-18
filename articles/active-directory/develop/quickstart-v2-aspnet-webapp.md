@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/24/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 7196cd6c18680583494a485c136081d90960464d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cabc4f2212e18d774066efad70d9654bb70020d5
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991287"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831504"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Szybki start: dodawanie logowania przy użyciu konta Microsoft do aplikacji internetowej ASP.NET
 
@@ -58,7 +58,7 @@ W tym przewodniku Szybki start dowiesz się, w jaki sposób aplikacja internetow
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3. Konfigurowanie projektu programu Visual Studio
 
-1. Wyodrębnij plik zip do folderu lokalnego (na przykład **C:\Azure-Samples**)
+1. Wyodrębnij plik zip do folderu lokalnego bliższego folderowi głównemu, na przykład **C:\Azure-Samples**
 1. Otwórz rozwiązanie w programie Visual Studio (AppModelv2-WebApp-OpenIDConnect-DotNet.sln)
 1. Dokonaj edycji pliku **Web.config** i zastąp ciąg `Enter_the_Application_Id_here` identyfikatorem aplikacji skopiowanym z zarejestrowanej właśnie aplikacji:
 

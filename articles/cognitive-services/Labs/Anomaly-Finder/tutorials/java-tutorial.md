@@ -1,56 +1,57 @@
 ---
-title: Wykrywanie anomalii aplikacji Java — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
-description: Zapoznaj się z aplikacji w języku Java, która używa interfejsu API wykrywania anomalii w usługach Microsoft Cognitive Services. Wyślij oryginalnego punkty danych do interfejsu API i uzyskać oczekiwaną wartość i anomalii punktów.
+title: 'Samouczek: wykrywanie anomalii, język Java'
+titlesuffix: Azure Cognitive Services
+description: Zapoznaj się z aplikacją w języku Java, która korzysta z interfejsu API wykrywania anomalii. Wyślij oryginalne punkty danych do interfejsu API i uzyskaj oczekiwaną wartość oraz punkty anomalii.
 services: cognitive-services
 author: wenya
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-detection
-ms.topic: article
+ms.component: anomaly-detection
+ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: wenya
-ms.openlocfilehash: ac26e29f4a839f69b123489600c2c83fe395c48a
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
-ms.translationtype: MT
+ms.openlocfilehash: 4b544e2e59a40cebf75042c4040b84bceebcecf7
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247909"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887704"
 ---
-# <a name="anomaly-detection-java-application"></a>Aplikacja Java wykrywania anomalii
+# <a name="tutorial-anomaly-detection-with-java-application"></a>Samouczek: wykrywanie anomalii przy użyciu aplikacji języka Java
 
 [!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
-W tym artykule przedstawiono, przy użyciu prostej aplikacji języka Java do wywołania interfejsu API wykrywania anomalii.  
-Przykład przesyła danych szeregów czasowych do interfejsu API wykrywania anomalii z kluczem subskrypcji, a następnie pobiera wszystkie punkty anomalii i oczekiwana wartość dla każdego punktu danych z interfejsu API.
+W tym artykule przedstawiono wywoływanie interfejsu API wykrywania anomalii przy użyciu prostej aplikacji języka Java.  
+Przykład przesyła dane szeregów czasowych do interfejsu API wykrywania anomalii za pomocą klucza subskrypcji, a następnie pobiera wszystkie punkty anomalii i oczekiwaną wartość dla każdego punktu danych z interfejsu API.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="platform-requirements"></a>Wymagania dotyczące platformy
 
-W tym samouczku został utworzony przy użyciu [IntelliJ IDEA](https://www.jetbrains.com/idea). I należy również zainstalować [Java Development Kit (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/index.html) wersji 1.8 + a aktualne [firmy Apache Maven](http://maven.apache.org/) narzędzie kompilacji.
+Ten samouczek opracowano przy użyciu programu [IntelliJ IDEA](https://www.jetbrains.com/idea). Należy też zainstalować zestaw [Java Development Kit (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/index.html) w wersji 1.8 lub nowszej oraz aktualne narzędzie do kompilacji [Apache Maven](http://maven.apache.org/).
 
-### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Subskrybowanie do wykrywania anomalii i Uzyskaj klucz subskrypcji 
+### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Subskrybowanie wykrywania anomalii i uzyskiwanie klucza subskrypcji 
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
  
 
-## <a name="download-the-tutorial-project"></a>Pobierz samouczek projekt
+## <a name="download-the-tutorial-project"></a>Pobieranie projektu samouczka
 
-1. Przejdź do MicrosoftAnomalyDetection [repozytorium Java](https://github.com/MicrosoftAnomalyDetection/java-sample).
-2. Kliknij przycisk klonu, lub przycisk Pobierz.
-3. Kliknij przycisk Pobierz ZIP, aby pobrać plik zip w projekcie samouczka.
+1. Przejdź do [repozytorium Java](https://github.com/MicrosoftAnomalyDetection/java-sample) MicrosoftAnomalyDetection.
+2. Kliknij przycisk Clone or download (Sklonuj lub pobierz).
+3. Kliknij pozycję Download ZIP (Pobierz plik ZIP), aby pobrać plik zip z projektem samouczka.
 
 <a name="Step1"></a>
-### <a name="open-the-tutorial-project"></a>Otwórz projekt samouczka
+### <a name="open-the-tutorial-project"></a>Otwieranie projektu samouczka
 
-1. Wyodrębnij plik zip projektu samouczka.
-2. IntelliJ IDEA kliknij **Plik > Otwórz**, pojawi się okno dialogowe Otwieranie pliku lub projektu.
-3. Wybierz projekt wyodrębniony ścieżki katalogu głównego, a następnie kliknij przycisk OK.
-4. Na panelu projekty rozwiń **src > główny > java**.
-5. Kliknij dwukrotnie com.microsoft.cognitiveservice.anomalydetection.Main.java można załadować pliku do edytora.
+1. Wyodrębnij plik zip z projektem samouczka.
+2. W programie IntelliJ IDEA kliknij kolejno pozycje **File > Open** (Plik > Otwórz). Pojawi się okno dialogowe Open File or Project (Otwieranie pliku lub projektu).
+3. Wybierz ścieżkę katalogu głównego w wyodrębnionym projekcie, a następnie kliknij pozycję OK.
+4. Na panelu Projects (Projekty) rozwiń gałąź **src > main > java**.
+5. Kliknij dwukrotnie plik com.microsoft.cognitiveservice.anomalydetection.Main.java, aby załadować pliku w edytorze.
 
 <a name="Step2"></a>
-### <a name="replace-subscriptionkey-and-uri-region"></a>Zastąp subscriptionKey i region, identyfikator URI
+### <a name="replace-subscriptionkey-and-uri-region"></a>Zamienianie wartości subscriptionKey i regionu identyfikatora URI
 
 ```
 // **********************************************
@@ -65,17 +66,17 @@ public static final String uriBase = "https://api.labs.cognitive.microsoft.com/a
 ```
 
 <a name="Step3"></a>
-### <a name="build-and-run-the-tutorial-project"></a>Skompiluj i uruchom projekt samouczka
+### <a name="build-and-run-the-tutorial-project"></a>Kompilowanie i uruchamianie projektu samouczka
 
-1. Wyświetlić menu, kliknij prawym przyciskiem myszy w dowolnym miejscu na karcie kodu źródłowego com.microsoft.cognitiveservice.anomalydetection.Main.java. 
-2. Wybierz opcję uruchamiania Main.main()
-3. Wynik przykładowe żądanie zostanie zwrócony i wyświetlane w terminalu.
+1. Wyświetl menu, klikając prawym przyciskiem myszy w dowolnym miejscu na karcie kodu źródłowego com.microsoft.cognitiveservice.anomalydetection.Main.java. 
+2. Wybierz pozycję Run 'Main.main()' (Uruchom funkcję „Main.main()”).
+3. Wynik przykładowego żądania zostanie zwrócony i wyświetlony w terminalu.
 
-### <a name="result-of-the-tutorial-project"></a>Wynik w projekcie samouczka
+### <a name="result-of-the-tutorial-project"></a>Wynik projektu samouczka
 
 [!INCLUDE [diagrams](../includes/diagrams.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Dokumentacja interfejsu API REST](https://dev.labs.cognitive.microsoft.com/docs/services/anomaly-detection/operations/post-anomalydetection)

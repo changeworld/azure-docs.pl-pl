@@ -6,18 +6,18 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: qna-maker
+ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: a625151a0f6595e02ed899f2f8f7273c8e4f5cde
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: defd0cb7fc22423db9b2c7d25960b5dc27042506
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036926"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885088"
 ---
-# <a name="publish-a-knowledge-base-in-java"></a>Publikowanie bazy wiedzy w języku Java
+# <a name="quickstart-publish-a-knowledge-base-in-java"></a>Szybki start: publikowanie bazy wiedzy w języku Java
 
 Poniższy kod publikuje istniejącą bazę wiedzy za pomocą metody [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe).
 

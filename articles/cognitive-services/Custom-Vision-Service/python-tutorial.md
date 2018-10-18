@@ -1,58 +1,59 @@
 ---
-title: Utwórz samouczek Custom Vision Service dla języka Python — Azure Cognitive Services | Dokumentacja firmy Microsoft
-description: Zapoznaj się z podstawową aplikację języka Python, który używa niestandardowego interfejsu API przetwarzania w usługach Microsoft Cognitive Services. Utwórz projekt, dodać tagi, przekazywać obrazy, szkolenie projektu i przewiduje przy użyciu domyślnego punktu końcowego.
+title: 'Samouczek: tworzenie projektu klasyfikacji obrazów – Custom Vision Service, Python'
+titlesuffix: Azure Cognitive Services
+description: Utwórz projekt, dodaj tagi, prześlij obrazy, wyszkol projekt i wykonaj przewidywanie przy użyciu domyślnego punktu końcowego.
 services: cognitive-services
 author: areddish
-manager: chbuehle
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: df0bdc0bbd2768566336323851f366c9ae280a88
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: MT
+ms.openlocfilehash: 14b805a60637a889698132e169d5a41670a8bce0
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301603"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363381"
 ---
-# <a name="custom-vision-api-python-tutorial"></a>Niestandardowy samouczek Vision API Python
+# <a name="tutorial-create-an-image-classification-project-using-the-custom-vision-service-with-python"></a>Samouczek: tworzenie projektu klasyfikacji obrazów – Custom Vision Service, Python
 
-Dowiedz się, jak utworzyć projekt Klasyfikacja obrazów przy użyciu usługi Custom Vision Service i podstawowe skrypt w języku Python. Po jego utworzeniu można można Dodawanie tagów, przekazywać obrazy, szkolenie projektu, pobrać projektu domyślne prognozowania — adres URL punktu końcowego i go używać do testowania programowo obrazu. Użyj w tym przykładzie typu open-source jako szablon do tworzenia własnych aplikacji przy użyciu interfejsu API usługi Custom Vision.
+Dowiedz się, jak utworzyć projekt klasyfikacji obrazów za pomocą usługi Custom Vision Service i prostego skryptu języka Python. Po jego utworzeniu możesz dodać tagi, przesłać obrazy, wyszkolić projekt, uzyskać adres URL domyślnego punktu końcowego przewidywania projektu i użyć go do programowego przetestowania obrazu. Ta przykładowa aplikacja open source może posłużyć jako szablon do utworzenia własnej aplikacji przy użyciu interfejsu API Custom Vision.
 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Python 2.7 + lub Python 3.5 +.
+- Python 2.7+ lub Python 3.5 +.
 - Narzędzie pip.
 
-## <a name="get-the-training-and-prediction-keys"></a>Pobierz klucze uczenia i przewidywania
+## <a name="get-the-training-and-prediction-keys"></a>Uzyskanie kluczy szkoleniowego i predykcyjnego
 
-Aby uzyskać klucze używane w tym przykładzie, odwiedź stronę [strony sieci web Custom Vision](https://customvision.ai) i wybierz __ikonę koła zębatego__ w prawym górnym rogu. W __kont__ sekcji, skopiuj wartości z __klucz szkolenia__ i __klucz prognozowania__ pola.
+Aby uzyskać klucze używane w tym przykładzie, przejdź na [stronę Custom Vision](https://customvision.ai) i wybierz __ikonę koła zębatego__ w prawym górnym rogu. W sekcji __Accounts__ (Konta) skopiuj wartości z pól __Training Key__ (Klucz szkoleniowy) i __Prediction Key__ (Klucz predykcyjny).
 
-![Obraz przedstawiający klucze interfejsu użytkownika](./media/python-tutorial/training-prediction-keys.png)
+![Obraz interfejsu użytkownika do uzyskiwania kluczy](./media/python-tutorial/training-prediction-keys.png)
 
-## <a name="install-the-custom-vision-service-sdk"></a>Instalowanie zestawu SDK usługi Custom Vision
+## <a name="install-the-custom-vision-service-sdk"></a>Zainstalowanie pakietu SDK Custom Vision Service
 
-Aby Zainstaluj usługę Custom Vision Service SDK, użyj następującego polecenia:
+Aby zainstalować usługę Custom Vision Service SDK, użyj następującego polecenia:
 
 ```
 pip install azure-cognitiveservices-vision-customvision
 ```
 
-## <a name="get-example-images"></a>Pobierz przykład obrazów
+## <a name="get-example-images"></a>Pobranie przykładowych obrazów
 
-W tym przykładzie użyto obrazów z `Samples/Images` katalogu [ https://github.com/Microsoft/Cognitive-CustomVision-Windows ](https://github.com/Microsoft/Cognitive-CustomVision-Windows/tree/master/Samples/Images) projektu. Klonuj lub Pobierz i Wyodrębnij projektu do swojego środowiska projektowego.
+W tym przykładzie użyto obrazów z katalogu `Samples/Images` projektu [ https://github.com/Microsoft/Cognitive-CustomVision-Windows ](https://github.com/Microsoft/Cognitive-CustomVision-Windows/tree/master/Samples/Images). Sklonuj lub pobierz i wyodrębnij projekt do swojego środowiska projektowego.
 
-## <a name="create-a-custom-vision-service-project"></a>Tworzenie projektu usługi Custom Vision Service
+## <a name="create-a-custom-vision-service-project"></a>Utworzenie projektu Custom Vision Service
 
-Aby utworzyć nowy projekt usługi Custom Vision Service, Utwórz nowy plik o nazwie `sample.py`. Użyj poniższego kodu, jako zawartość pliku:
+Aby utworzyć nowy projekt usługi Custom Vision Service, utwórz nowy plik o nazwie `sample.py`. Użyj poniższego kodu jako zawartości pliku:
 
 > [!IMPORTANT]
-> Ustaw `training_key` wartość klucza szkolenia pobranym wcześniej.
+> Ustaw `training_key` na wartość uzyskanego wcześniej klucza szkoleniowego.
 >
-> Ustaw `prediction_key` do przewidywania wartości klucza pobranym wcześniej.
+> Ustaw `prediction_key` na wartość uzyskanego wcześniej klucza do predykcyjnego.
 
 ```python
 from azure.cognitiveservices.vision.customvision.training import training_api
@@ -69,9 +70,9 @@ print ("Creating project...")
 project = trainer.create_project("My Project")
 ```
 
-## <a name="add-tags-to-your-project"></a>Dodawanie tagów do projektu
+## <a name="add-tags-to-your-project"></a>Dodanie tagów do projektu
 
-Aby dodać znaczniki do swojego projektu, Dodaj następujący kod na końcu `sample.py` pliku:
+Aby dodać tagi do projektu, wstaw następujący kod na końcu pliku `sample.py`:
 
 ```python
 # Make two tags in the new project
@@ -79,13 +80,13 @@ hemlock_tag = trainer.create_tag(project.id, "Hemlock")
 cherry_tag = trainer.create_tag(project.id, "Japanese Cherry")
 ```
 
-## <a name="upload-images-to-the-project"></a>Przekazywanie obrazów do projektu
+## <a name="upload-images-to-the-project"></a>Przesłanie obrazów do projektu
 
-Aby dodać przykładowe obrazy do projektu, Wstaw następujący kod do tworzenia tagu. Ten kod przekazuje obraz z odpowiednim tagu:
+Aby dodać przykładowe obrazy do projektu, po utworzeniu tagów wstaw następujący kod. Ten kod przesyła obraz z odpowiednim tagiem:
 
 > [!IMPORTANT]
 >
-> Zmień ścieżkę, aby obrazy oparte na którego projekt Cognitive — CustomVision — Windows został pobrany wcześniej.
+> Zmień ścieżkę do obrazów odpowiednio do lokalizacji, do której wcześniej pobrano projekt Cognitive-CustomVision-Windows.
 
 ```python
 base_image_url = "https://raw.githubusercontent.com/Microsoft/Cognitive-CustomVision-Windows/master/Samples/"
@@ -117,7 +118,7 @@ for image_num in range(1,10):
 
 ## <a name="train-the-project"></a>Szkolenie projektu
 
-To w opracowywaniu klasyfikatora, Dodaj następujący kod na końcu `sample.py` pliku:
+Aby wyszkolić klasyfikator, dodaj na końcu pliku `sample.py` poniższy kod:
 
 ```python
 import time
@@ -134,9 +135,9 @@ trainer.update_iteration(project.id, iteration.id, is_default=True)
 print ("Done!")
 ```
 
-## <a name="get-and-use-the-default-prediction-endpoint"></a>I korzystaj z domyślnego punktu końcowego prognoz
+## <a name="get-and-use-the-default-prediction-endpoint"></a>Uzyskanie domyślnego punktu końcowego do przewidywania i użycie go
 
-Wysyłanie obrazu do endpoint prognoz i pobieranie prognozowania, Dodaj następujący kod na końcu `sample.py` pliku:
+Aby uzyskać obraz do punktu końcowego przewidywania i uzyskać przewidywanie, dodaj na końcu pliku `sample.py` następujący kod:
 
 ```python
 from azure.cognitiveservices.vision.customvision.prediction import prediction_endpoint
@@ -161,15 +162,15 @@ for prediction in results.predictions:
     print ("\t" + prediction.tag_name + ": {0:.2f}%".format(prediction.probability * 100))
 ```
 
-## <a name="run-the-example"></a>Uruchomić przykład
+## <a name="run-the-example"></a>Uruchomienie przykładu
 
-Uruchom rozwiązanie. Przewidywane wyniki są wyświetlane w konsoli.
+Uruchom rozwiązanie. W konsoli zostaną wyświetlone wyniki przewidywania.
 
 ```
 python sample.py
 ```
 
-Dane wyjściowe aplikacji będą podobne do następującego tekstu:
+Dane wyjściowe aplikacji będą podobne do poniższego przykładu:
 
 ```
 Creating project...

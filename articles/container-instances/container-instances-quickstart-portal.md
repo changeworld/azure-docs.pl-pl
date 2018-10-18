@@ -1,26 +1,25 @@
 ---
-title: Szybki start — Tworzenie pierwszego kontenera usługi Azure Container Instances w witrynie Azure Portal
-description: W tym przewodniku Szybki start witryna Azure Portal zostanie użyta do wdrożenia kontenera w usłudze Azure Container Instances
+title: Przewodnik Szybki start — Uruchamianie aplikacji w usłudze Azure Container Instances
+description: W tym przewodniku Szybki start wdrożysz aplikację działającą w kontenerze Docker w usłudze Azure Container Instances przy użyciu witryny Azure Portal
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 05/11/2018
-ms.author: marsma
+ms.date: 10/02/2018
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 6aa6fb27b2aa7c8b9614e5812fadc629b1e185f8
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 6ab7680559400c0a270142563ecf7e251c2cd1b8
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34076242"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857724"
 ---
-# <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>Szybki start: Tworzenie pierwszego kontenera w usłudze Azure Container Instances
+# <a name="quickstart-run-an-application-in-azure-container-instances"></a>Szybki start: uruchamianie aplikacji w usłudze Azure Container Instances
 
-Usługa Azure Container Instances ułatwia tworzenie kontenerów Docker na platformie Azure oraz zarządzanie nimi bez konieczności inicjowania obsługi maszyn wirtualnych czy adoptowania usługi wyższego poziomu. Podczas pracy z tym przewodnikiem Szybki start utworzysz kontener na platformie Azure przy użyciu witryny Azure Portal i uwidocznisz go w Internecie przy użyciu w pełni kwalifikowanej nazwy domeny. Po skonfigurowaniu kilku ustawień w przeglądarce pojawi się następujący ekran:
+Używając usługi Azure Container Instances, możesz łatwo i szybko uruchamiać kontenery Docker na platformie Azure. Nie musisz wdrażać maszyn wirtualnych ani korzystać z pełnej platformy orkiestracji kontenerów, takiej jak Kubernetes. Podczas pracy z tym przewodnikiem Szybki start utworzysz kontener na platformie Azure przy użyciu witryny Azure Portal i udostępnisz jego aplikację za pomocą w pełni kwalifikowanej nazwy domeny (FQDN). Po skonfigurowaniu kilku ustawień i wdrożeniu kontenera możesz przejść do uruchomionej aplikacji:
 
-![Widziana w przeglądarce aplikacja wdrożona za pomocą usługi Azure Container Instances][aci-portal-07]
+![Aplikacja wdrożona w usłudze Azure Container Instances widziana w przeglądarce][aci-portal-07]
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
@@ -38,7 +37,7 @@ Wprowadź następujące wartości w polach tekstowych **Nazwa kontenera**, **Obr
 
 * Nazwa kontenera: `mycontainer`
 * Obraz kontenera: `microsoft/aci-helloworld`
-* Grupa zasobów: `myResourceGroup`
+* Grupa zasobów: **Utwórz nową** > `myResourceGroup`
 
 ![Konfigurowanie podstawowych ustawień nowego wystąpienia kontenera w witrynie Azure Portal][aci-portal-03]
 
@@ -54,11 +53,11 @@ Po zakończeniu weryfikacji zostanie wyświetlone podsumowanie ustawień kontene
 
 ![Podsumowanie ustawień nowego wystąpienia kontenera w witrynie Azure Portal][aci-portal-05]
 
-Po rozpoczęciu wdrażania na pulpicie nawigacyjnym portalu pojawi się kafelek wskazujący postęp wdrażania. Po wdrożeniu kafelek wyświetla nowe wystąpienie kontenera.
+Po rozpoczęciu wdrażania zostanie wyświetlone powiadomienie wskazujące postęp wdrażania. Kolejne powiadomienie zostanie wyświetlone, gdy grupa kontenerów zostanie wdrożona.
 
 ![Postęp tworzenia nowego wystąpienia kontenera w witrynie Azure Portal][aci-portal-08]
 
-Wybierz wystąpienie kontenera **mycontainer**, aby wyświetlić jego właściwości. Zwróć uwagę na wartość **FQDN** (w pełni kwalifikowana nazwa domeny) wystąpienia kontenera, a także na jego **Stan**.
+Otwórz przegląd dla grupy kontenerów, przechodząc do ekranu **Grupy zasobów** > **myResourceGroup** > **mycontainer**. Zwróć uwagę na wartość **FQDN** (w pełni kwalifikowana nazwa domeny) wystąpienia kontenera, a także na jego **Stan**.
 
 ![Przegląd grupy kontenerów w witrynie Azure Portal][aci-portal-06]
 
@@ -70,9 +69,9 @@ Gratulacje! Konfigurując zaledwie kilku ustawień, udało Ci się wdrożyć pub
 
 ## <a name="view-container-logs"></a>Wyświetlanie dzienników kontenerów
 
-W przypadku rozwiązywania problemów z kontenerem lub uruchomioną w nim aplikacją przydatne jest przeglądanie dzienników wystąpienia kontenera.
+W przypadku rozwiązywania problemów z kontenerem lub uruchomioną aplikacją przydatne jest przeglądanie dzienników wystąpienia kontenera.
 
-Aby wyświetlić dzienniki kontenera, w obszarze **USTAWIENIA** wybierz pozycję **Kontenery**, a następnie **Dzienniki**. Powinno pojawić się żądanie HTTP GET generowane podczas wyświetlania aplikacji w przeglądarce.
+Aby wyświetlić dzienniki kontenera, w obszarze **Ustawienia** wybierz pozycję **Kontenery**, a następnie **Dzienniki**. Powinno pojawić się żądanie HTTP GET generowane podczas wyświetlania aplikacji w przeglądarce.
 
 ![Dzienniki kontenera w witrynie Azure Portal][aci-portal-11]
 
@@ -88,7 +87,7 @@ Po pojawieniu się okna dialogowego potwierdzenia wybierz pozycję **Tak**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Podczas pracy z tym przewodnikiem Szybki start utworzono wystąpienie kontenera platformy Azure na podstawie obrazu z publicznego rejestru Docker Hub. Jeśli chcesz samodzielnie skompilować obraz kontenera i wdrożyć go w usłudze Azure Container Instances za pomocą prywatnej usługi Azure Container Registry, przejdź do samouczka dotyczącego usługi Azure Container Instances.
+Podczas pracy z tym przewodnikiem Szybki start utworzono wystąpienie kontenera platformy Azure na podstawie obrazu z publicznego rejestru Docker Hub. Jeśli chcesz skompilować obraz kontenera i wdrożyć go za pomocą prywatnej usługi Azure Container Registry, przejdź do samouczka dotyczącego usługi Azure Container Instances.
 
 > [!div class="nextstepaction"]
 > [Samouczek dotyczący usługi Azure Container Instances](./container-instances-tutorial-prepare-app.md)

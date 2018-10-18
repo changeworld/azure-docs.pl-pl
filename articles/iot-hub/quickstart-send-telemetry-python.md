@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/30/2018
+ms.date: 09/07/2018
 ms.author: dobett
-ms.openlocfilehash: 7d5f2246eec20144a30e0abbc31038bdf04ab2b0
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 2d851bc8d5af7f824512cc9f14e6b1120026dd07
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339280"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785159"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-python"></a>Szybki start: wysyłanie danych telemetrycznych z urządzenia do centrum IoT oraz odczytywanie danych telemetrycznych z centrum przy użyciu aplikacji zaplecza (Python)
 
@@ -33,7 +33,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Dwie przykładowe aplikacje uruchamiane w tym przewodniku Szybki start zostały napisane w języku Python. Potrzebujesz języka Python w wersji 2.7.x lub 3.5.x na komputerze deweloperskim.
 
-Możesz pobrać język Python dla wielu platform ze strony [Python.org](https://www.python.org/downloads/).
+Możesz pobrać język Python dla wielu platform ze strony [Python.org](https://www.python.org/downloads/). Wybrany instalator języka Python powinien być oparty na architekturze systemu, którego używasz. Jeśli architektura procesora CPU systemu jest 32-bitowa, pobierz wersję x86, która jest domyślną wersją instalatora w witrynie Python.org, a jeśli architektura jest 64-bitowa, pobierz instalator w wersji x86-64.
 
 Możesz sprawdzić bieżącą wersję języka Python na komputerze deweloperskim przy użyciu jednego z następujących poleceń:
 
@@ -46,20 +46,6 @@ python3 --version
 ```
 
 Pobierz przykładowy projekt Python z https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip i wyodrębnij archiwum ZIP.
-
-Aby zainstalować narzędzie interfejsu wiersza polecenia, które będzie odczytywać dane telemetryczne z centrum IoT, najpierw zainstaluj środowisko Node.js w wersji v4.x.x lub nowszej na komputerze deweloperskim. Możesz pobrać środowisko Node.js dla wielu platform ze strony [nodejs.org](https://nodejs.org).
-
-Możesz sprawdzić bieżącą wersję środowiska Node.js na komputerze deweloperskim przy użyciu następującego polecenia:
-
-```cmd/sh
-node --version
-```
-
-Aby zainstalować narzędzie interfejsu wiersza polecenia `iothub-explorer`, uruchom następujące polecenie:
-
-```cmd/sh
-npm install -g iothub-explorer
-```
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
@@ -85,14 +71,6 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
     ```
 
     Zanotuj parametry połączenia urządzenia, które wyglądają następująco: `Hostname=...=`. Użyjesz tej wartości w dalszej części tego przewodnika Szybki start.
-
-1. Potrzebne będą także _parametry połączenia usługi_, aby umożliwić narzędziu interfejsu wiersza polecenia `iothub-explorer` nawiązywanie połączenia z centrum IoT i pobieranie komunikatów. Następujące polecenie pobiera parametry połączenia usługi dla centrum IoT:
-
-    ```azurecli-interactive
-    az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
-    ```
-
-    Zanotuj parametry połączenia usługi, które wyglądają następująco: `Hostname=...=`. Użyjesz tej wartości w dalszej części tego przewodnika Szybki start. Parametry połączenia usługi różnią się od parametrów połączenia urządzenia.
 
 ## <a name="send-simulated-telemetry"></a>Wysyłanie symulowanych danych telemetrycznych
 
@@ -122,15 +100,15 @@ Aplikacja urządzenia symulowanego łączy się z punktem końcowym specyficznym
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Odczytywanie danych telemetrycznych z centrum
 
-Narzędzie interfejsu wiersza polecenia `iothub-explorer` łączy się z punktem końcowym **Zdarzenia** po stronie usługi w centrum IoT. Narzędzie odbiera komunikaty urządzenie-chmura wysyłane z urządzenia symulowanego. Aplikacja zaplecza usługi IoT Hub zwykle działa w chmurze, aby odbierać i przetwarzać komunikaty urządzenie-chmura.
+Rozszerzenie interfejsu wiersza polecenia usługi IoT Hub może połączyć się z punktem końcowym **Zdarzenia** po stronie usługi w usłudze IoT Hub. Rozszerzenie odbiera komunikaty z urządzenia do chmury wysyłane z urządzenia symulowanego. Aplikacja zaplecza usługi IoT Hub zwykle działa w chmurze, aby odbierać i przetwarzać komunikaty urządzenie-chmura.
 
-W innym oknie terminalu uruchom następujące polecenia, zastępując ciąg `{your hub service connection string}` parametrami połączenia usługi zanotowanymi wcześniej:
+Uruchom następujące polecenia interfejsu wiersza polecenia platformy Azure, zastępując ciąg `{YourIoTHubName}` nazwą centrum IoT:
 
-```cmd/sh
-iothub-explorer monitor-events MyPythonDevice --login "{your hub service connection string}"
+```azurecli-interactive
+az iot hub monitor-events --device-id MyPythonDevice --hub-name {YourIoTHubName}
 ```
 
-Poniższy zrzut ekranu przedstawia dane wyjściowe w momencie odbierania przez narzędzie danych telemetrycznych wysyłanych przez urządzenie symulowane do centrum:
+Poniższy zrzut ekranu przedstawia dane wyjściowe w momencie odbierania przez rozszerzenie danych telemetrycznych wysyłanych przez urządzenie symulowane do centrum:
 
 ![Uruchamianie aplikacji zaplecza](media/quickstart-send-telemetry-python/ReadDeviceToCloud.png)
 

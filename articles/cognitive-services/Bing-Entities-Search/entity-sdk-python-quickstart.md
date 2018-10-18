@@ -1,42 +1,42 @@
 ---
-title: Jednostka wyszukiwania zestawu SDK Python — Szybki Start | Dokumentacja firmy Microsoft
-description: Instalator encji wyszukiwania zestawu SDK aplikacji konsoli.
-titleSuffix: Azure Entity Search SDK Python quickstart
+title: 'Szybki start: zestaw Bing Entity Search SDK, język Python'
+titlesuffix: Azure Cognitive Services
+description: Konfiguracja pod kątem aplikacji konsoli zestawu Bing Entity Search SDK.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/15/2018
 ms.author: v-gedod
-ms.openlocfilehash: 95449fa3753291269e1a83d1431df3bf0cbe372f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 908373a216d0b14bb2dd41d3bb740b5582ac3ab1
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349452"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814240"
 ---
-# <a name="entity-search-sdk-python-quickstart"></a>Jednostka wyszukiwania zestawu SDK Python — Szybki Start
+# <a name="quickstart-bing-entity-search-sdk-with-python"></a>Szybki start: zestaw Bing Entity Search SDK i język Python
 
-Zestaw SDK wyszukiwania jednostki zawiera funkcje interfejsu API REST dla zapytań sieci web oraz wyniki analizy.
+Zestaw Entity Search SDK zawiera funkcje interfejsu API REST przeznaczone do wykonywania zapytań internetowych i analizowania wyników.
 
-[Źródła kodu dla przykładów zestaw SDK Python usługi Bing encji wyszukiwania](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/entity_search_samples.py) jest dostępna w Centrum Git.
+[Kod źródłowy przykładów zestawu Bing Entity Search SDK dla języka Python](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/entity_search_samples.py) jest dostępny w witrynie Git Hub.
 
 ## <a name="application-dependencies"></a>Zależności aplikacji
-Jeśli nie masz jeszcze go, należy zainstalować Python. Zestaw SDK jest zgodny z języka Python 2.7, 3.3 3.4, 3.5 i 3,6.
+Jeśli nie masz języka Python, zainstaluj go. Zestaw SDK jest zgodny z językiem Python w wersjach 2.7, 3.3, 3.4, 3.5 i 3.6.
 
-Ogólne zalecenia dotyczące programowania Python jest użycie [środowiska wirtualnego](https://docs.python.org/3/tutorial/venv.html). Zainstaluj i zainicjować środowiska wirtualnego z [venv modułu](https://pypi.python.org/pypi/virtualenv). Musisz zainstalować virtualenv dla języka Python 2.7.
+W przypadku programowania w języku Python zalecane jest użycie [środowiska wirtualnego](https://docs.python.org/3/tutorial/venv.html). Zainstaluj i zainicjuj środowisko wirtualne przy użyciu [modułu venv](https://pypi.python.org/pypi/virtualenv). Zainstaluj moduł virtualenv dla języka Python 2.7.
 ```
 python -m venv mytestenv
 ```
-Zainstaluj zależności Bing encji wyszukiwania SDK:
+Zainstaluj zależności zestawu Bing Entity Search SDK:
 ```
 cd mytestenv
 python -m pip install azure-cognitiveservices-search-entitysearch
 ```
-## <a name="entity-search-client"></a>Jednostka wyszukiwania klienta
-Pobierz [klucz dostępu usługi kognitywnych](https://azure.microsoft.com/try/cognitive-services/) w obszarze *wyszukiwania*. Dodaj importów:
+## <a name="entity-search-client"></a>Klient wyszukiwania jednostek
+Pobierz [klucz dostępu usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) w obszarze *Wyszukiwanie*. Dodaj importy:
 ```
 from azure.cognitiveservices.search.entitysearch import EntitySearchAPI
 from azure.cognitiveservices.search.entitysearch.models import Place, ErrorResponseException
@@ -44,11 +44,11 @@ from msrest.authentication import CognitiveServicesCredentials
 
 subscription_key = "YOUR-SUBSCRIPTION-KEY"
 ```
-Utwórz wystąpienie `CognitiveServicesCredentials`. Utwórz wystąpienie klienta:
+Utwórz wystąpienie elementu `CognitiveServicesCredentials`. Utwórz wystąpienie klienta:
 ```
 client = EntitySearchAPI(CognitiveServicesCredentials(subscription_key))
 ```
-Wyszukaj pojedynczej jednostki (Gibralter), a następnie wydrukuj krótki opis:
+Wyszukaj pojedynczą jednostkę (Gibralter) i wyświetl krótki opis:
 ```
 entity_data = client.entities.search(query="Gibralter")
 
@@ -68,7 +68,7 @@ else:
     print("Didn't see any data..")
 
 ```
-Wyszukiwanie i dojście wyniki Uściślanie dla zapytania niejednoznaczne (łączy bramy).
+Wykonaj wyszukiwanie i obsłuż wyniki uściślania dla niejednoznacznego zapytania (William Gates).
 ```
 def handling_disambiguation(subscription_key):
 
@@ -112,7 +112,7 @@ def handling_disambiguation(subscription_key):
         print("Encountered exception. {}".format(err))
 
 ```
-Wyszukaj jeden magazyn (Microsoft Store), a następnie wydrukuj jego numeru telefonu.
+Wyszukaj pojedynczy sklep (Microsoft Store) i wyświetl jego numer telefonu.
 ```
 def store_lookup(subscription_key):
 
@@ -153,7 +153,7 @@ def store_lookup(subscription_key):
         print("Encountered exception. {}".format(err))
 
 ```
-Wyszukaj listę restauracji (restauracji Seattle) i drukować ich nazwy i numery telefonów.
+Wyszukaj listę restauracji (Seattle restaurants) i wyświetl ich nazwy i numery telefonów.
 ```
 def multiple_restaurant_lookup(subscription_key):
 
@@ -192,7 +192,7 @@ def multiple_restaurant_lookup(subscription_key):
         print("Encountered exception. {}".format(err))
 
 ```
-Nieprawidłowe żądanie wyzwolenia i odczytu odpowiedzi na błąd.
+Wyzwól niepoprawne żądanie i przeczytaj odpowiedź z błędem.
 ```
 def error(subscription_key):
 
@@ -214,7 +214,7 @@ def error(subscription_key):
         else:
             print("There was no details on the error.")
 ```
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Zestaw SDK Python usługi kognitywnych — przykłady](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[Przykłady dotyczące zestawu SDK dla języka Python dla usług Cognitive Services](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 

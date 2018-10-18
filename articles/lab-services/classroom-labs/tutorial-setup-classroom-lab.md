@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 07/23/2018
+ms.date: 10/05/2018
 ms.author: spelluru
-ms.openlocfilehash: fe41728b6f08ba767dbcb40d0595b9f7cdc79615
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6696d6e7e53e98dfab2a65c7c66825936020f33c
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420203"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856642"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Samouczek: konfigurowanie laboratorium na potrzeby zajęć 
 W tym samouczku skonfigurujesz laboratorium na potrzeby zajęć z maszynami wirtualnymi używanymi przez uczniów podczas zajęć.  
@@ -40,76 +40,66 @@ Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium,
 1. Przejdź do [witryny internetowej usługi Azure Lab Services](https://labs.azure.com). 
 2. Wybierz pozycję **Zaloguj się** i wprowadź swoje poświadczenia. Usługa Azure Lab Services obsługuje konta organizacji i konta Microsoft. 
 3. W oknie **Nowe laboratorium** wykonaj następujące czynności: 
-    1. Określ **nazwę** laboratorium na potrzeby zajęć. 
-    2. Wybierz **rozmiar** maszyny wirtualnej, której zamierzasz używać podczas zajęć.
-    3. Wybierz **obraz**, za pomocą którego ma zostać utworzona maszyna wirtualna.
-    4. Określ **domyślne poświadczenia** logowania do maszyn wirtualnych w laboratorium. 
-    7. Wybierz pozycję **Zapisz**.
+    1. Określ **nazwę** dla swojego laboratorium. 
+    2. Określ maksymalną dozwoloną **liczbę użytkowników** w laboratorium. 
+    6. Wybierz pozycję **Zapisz**.
 
         ![Tworzenie laboratorium na potrzeby zajęć](../media/tutorial-setup-classroom-lab/new-lab-window.png)
-1. Po utworzeniu laboratorium wybierz pozycję **Przejdź do mojego laboratorium**. 
+4. Na stronie **Wybór specyfikacji maszyny wirtualnej** wykonaj następujące czynności:
+    1. Wybierz **rozmiar** maszyn wirtualnych tworzonych w laboratorium. 
+    2. Wybierz **region**, w którym mają być tworzone maszyny wirtualne. 
+    3. Wybierz **obraz maszyny wirtualnej**, którego chcesz używać do tworzenia maszyn wirtualnych w laboratorium. 
+    4. Wybierz opcję **Dalej**.
 
-    ![Przechodzenie do mojego laboratorium](../media/tutorial-setup-classroom-lab/go-to-my-lab.png)
+        ![Określanie specyfikacji maszyny wirtualnej](../media/tutorial-setup-classroom-lab/select-vm-specifications.png)    
+5. Na stronie **Ustawianie poświadczeń** określ domyślne poświadczenia dla wszystkich maszyn wirtualnych w laboratorium. 
+    1. Określ **nazwę użytkownika** dla wszystkich maszyn wirtualnych w laboratorium.
+    2. Podaj **hasło** użytkownika. 
+
+        > [!IMPORTANT]
+        > Zanotuj nazwę użytkownika i hasło. Nie zostaną one ponownie wyświetlone.
+    3. Wybierz pozycję **Utwórz**. 
+
+        ![Ustawianie poświadczeń](../media/tutorial-setup-classroom-lab/set-credentials.png)
+6. Na stronie **Konfigurowanie szablonu** zostanie wyświetlony stan procesu tworzenia laboratorium. Tworzenie szablonu w laboratorium trwa maksymalnie 20 minut. 
+
+    ![Konfigurowanie szablonu](../media/tutorial-setup-classroom-lab/configure-template.png)
+7. Po zakończeniu konfiguracji szablonu zostanie wyświetlona następująca strona: 
+
+    ![Strona Konfigurowanie szablonu po zakończeniu konfiguracji](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
+8. Poniższe kroki są opcjonalne w tym samouczku: 
+    1. Uruchom maszynę wirtualną szablonu, wybierając pozycję **Uruchom**.
+    2. Nawiąż połączenie z maszyną wirtualną szablonu, wybierając pozycję **Połącz**. 
+    3. Zainstaluj i skonfiguruj oprogramowania na maszynie wirtualnej szablonu. 
+    4. **Zatrzymaj** maszynę wirtualną.  
+    5. Wprowadź **opis** szablonu.
+
+        ![Przycisk Dalej na stronie Konfigurowanie szablonu](../media/tutorial-setup-classroom-lab/configure-template-next.png)
+9. Wybierz przycisk **Dalej** na stronie szablonu. 
+10. Na stronie **Publikowanie szablonu** wykonaj następujące czynności. 
+    1. Aby natychmiast opublikować szablon, zaznacz pole wyboru *Rozumiem, że po opublikowaniu szablonu nie można go modyfikować. Ten proces można wykonać tylko raz i może on potrwać do godziny* i wybierz polecenie **Publikuj**.  
+
+        > [!WARNING]
+        > Nie można cofnąć publikowania szablonu. 
+    2. Aby opublikować później, wybierz pozycję **Zachowaj na później**. Maszynę wirtualną szablonu można opublikować po zakończeniu działania kreatora. Aby uzyskać więcej informacji na temat sposobu konfigurowania i publikowania po zakończeniu działania kreatora, zobacz sekcję [Publikowanie szablonu](how-to-manage-classroom-labs.md#publish-the-template) w artykule [Jak zarządzać laboratoriami na potrzeby zajęć](how-to-manage-classroom-labs.md).
+
+        ![Publikowanie szablonu](../media/tutorial-setup-classroom-lab/publish-template.png)
+11. Zostanie wyświetlony **postęp publikowania** szablonu. Ten proces może potrwać do godziny. 
+
+    ![Publikowanie szablonu — postęp](../media/tutorial-setup-classroom-lab/publish-template-progress.png)
+12. Po pomyślnym opublikowaniu szablonu zostanie wyświetlona następująca strona. Wybierz pozycję **Done** (Gotowe).
+
+    ![Publikowanie szablonu — powodzenie](../media/tutorial-setup-classroom-lab/publish-success.png)
 1. Zostanie wyświetlony **pulpit nawigacyjny** laboratorium. 
     
     ![Pulpit nawigacyjny laboratorium na potrzeby zajęć](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
-
-## <a name="configure-usage-policy"></a>Konfigurowanie zasad użycia
-
-1. Wybierz pozycję **Zasady użytkowania**. 
-2. W ustawieniach **Zasady użytkowania** wprowadź **liczbę użytkowników**, którzy mogą korzystać z laboratorium.
-3. Wybierz pozycję **Zapisz**. 
-
-    ![Zasady użytkowania](../media/tutorial-setup-classroom-lab/usage-policy-settings.png)
-
-
-## <a name="set-up-the-template"></a>Konfigurowanie szablonu 
-Szablon w laboratorium to podstawowy obraz maszyny wirtualnej, który służy do tworzenia maszyn wirtualnych wszystkich użytkowników. Możesz skonfigurować maszynę wirtualną szablonu dokładnie tak jak chcesz dla użytkowników laboratorium. Możesz podać nazwę i opis szablonu, które będą widoczne dla użytkowników laboratorium. Opublikuj szablon, aby wystąpienia maszyny wirtualnej szablonu były dostępne dla użytkowników laboratorium. 
-
-### <a name="set-title-and-description"></a>Ustawianie tytułu i opisu
-1. W sekcji **Szablon** wybierz pozycję **Edytuj** (ikona ołówka) dla szablonu. 
-2. W oknie **Widok użytkownika** wprowadź **tytuł** szablonu.
-3. Wprowadź **opis** szablonu.
-4. Wybierz pozycję **Zapisz**.
-
-    ![Opis laboratorium używanego podczas zajęć](../media/tutorial-setup-classroom-lab/lab-description.png)
-
-### <a name="set-up-the-template-vm"></a>Konfigurowanie maszyny wirtualnej szablonu
- Nawiąż połączenie z maszyną wirtualną szablonu i zainstaluj na niej wszelkie wymagane oprogramowanie przed udostępnieniem jej swoim uczniom. 
-
-1. Zaczekaj, aż maszyna wirtualna szablonu będzie gotowa. Gdy będzie gotowa, przycisk **Uruchom** powinien być włączony. Aby uruchomić maszynę wirtualną, wybierz przycisk **Uruchom**.
-
-    ![Uruchamianie maszyny wirtualnej szablonu](../media/tutorial-setup-classroom-lab/start-template-vm.png)
-1. Aby nawiązać połączenie z maszyną wirtualną, wybierz pozycję **Połącz** i postępuj zgodnie z instrukcjami. 
-
-    ![Łączenie z maszyną wirtualną szablonu](../media/tutorial-setup-classroom-lab/connect-template-vm.png)
-1. Zainstaluj wszelkie oprogramowanie wymagane, aby uczniowie mogli ukończyć laboratorium (na przykład program Visual Studio, Eksplorator usługi Azure Storage itp.). 
-2. Zakończ połączenie (zamknij sesję pulpitu zdalnego) z maszyną wirtualną szablonu. 
-3. **Zatrzymaj** maszynę wirtualną szablonu, wybierając pozycję **Zatrzymaj**. 
-
-    ![Zatrzymywanie maszyny wirtualnej szablonu](../media/tutorial-setup-classroom-lab/stop-template-vm.png)
-
-### <a name="publish-the-template"></a>Publikowanie szablonu 
-Gdy opublikujesz szablon, usługa Azure Lab Services utworzy maszyny wirtualne w laboratorium przy użyciu tego szablonu. Liczba maszyn wirtualnych utworzonych w ramach tego procesu jest taka sama jak maksymalna liczba użytkowników, którzy mogą korzystać z laboratorium. Tę liczbę można ustawić w zasadach użytkowania laboratorium. Wszystkie maszyny wirtualne mają taką samą konfigurację jak szablon. 
-
-1. Wybierz pozycję **Publikuj** w sekcji **Szablon**. 
-
-    ![Publikowanie maszyny wirtualnej szablonu](../media/tutorial-setup-classroom-lab/public-access.png)
-1. W oknie **Publikowanie** wybierz opcję **Opublikowany**. 
-2. Teraz wybierz przycisk **Publikuj**. Ten proces może zająć trochę czasu w zależności od liczby tworzonych maszyn wirtualnych. Jest ona taka sama, jak dozwolona liczba użytkowników w laboratorium.
-    
-    > [!IMPORTANT]
-    > Po opublikowaniu szablonu nie można cofnąć publikowania. 
-4. Przejdź do strony **Maszyny wirtualne** i sprawdź, czy są widoczne maszyny wirtualne o stanie **Nie przypisano**. Te maszyny wirtualne nie zostały jeszcze przypisane do uczniów. 
-
-    ![Maszyny wirtualne](../media/tutorial-setup-classroom-lab/virtual-machines.png)
-5. Poczekaj, aż maszyny wirtualne zostaną utworzone. Powinny mieć stan **Zatrzymano**. Z poziomu tej strony możesz uruchomić maszynę wirtualną ucznia, połączyć się z maszyną wirtualną, zatrzymać maszynę wirtualną i usunąć maszynę wirtualną. Maszyny wirtualne możesz uruchomić na tej stronie lub pozwolić, aby zrobili to uczniowie. 
+4. Przejdź do strony **Maszyny wirtualne** i sprawdź, czy są widoczne maszyny wirtualne o stanie **Nie przypisano**. Te maszyny wirtualne nie zostały jeszcze przypisane do uczniów. Powinny mieć stan **Zatrzymano**. Z poziomu tej strony możesz uruchomić maszynę wirtualną ucznia, połączyć się z maszyną wirtualną, zatrzymać maszynę wirtualną i usunąć maszynę wirtualną. Maszyny wirtualne możesz uruchomić na tej stronie lub pozwolić, aby zrobili to uczniowie. 
 
     ![Maszyny wirtualne w stanie Zatrzymano](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
 ## <a name="send-registration-link-to-students"></a>Wysyłanie linków rejestracyjnych do uczniów
 
-1. Przejdź do widoku **Pulpit nawigacyjny**. 
+1. Przełącz się do widoku **Pulpit nawigacyjny**, wybierając pozycję **Pulpit nawigacyjny** w menu po lewej stronie. 
 2. Wybierz kafelek **Rejestracja użytkownika**.
 
     ![Link rejestracji ucznia](../media/tutorial-setup-classroom-lab/dashboard-user-registration-link.png)
@@ -117,6 +107,7 @@ Gdy opublikujesz szablon, usługa Azure Lab Services utworzy maszyny wirtualne w
 
     ![Link rejestracji ucznia](../media/tutorial-setup-classroom-lab/registration-link.png)
 2. W oknie dialogowym **Rejestracja użytkownika** wybierz przycisk **Zamknij**. 
+3. Udostępnij link rejestracji uczniowi, aby mógł się zarejestrować w klasie. 
 
 
 ## <a name="next-steps"></a>Następne kroki

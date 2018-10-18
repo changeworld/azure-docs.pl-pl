@@ -5,20 +5,23 @@ services: service-fabric-mesh
 keywords: ''
 author: rwike77
 ms.author: ryanwi
-ms.date: 06/27/2018
+ms.date: 10/1/2018
 ms.topic: overview
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 65a9b1afcc0e1e6d4fcbb60a38ab0764e6fe2f18
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 361e742b3d9b7a5d2d12aafd15233077c967b825
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226448"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888201"
 ---
 # <a name="what-is-service-fabric-mesh"></a>Co to jest Service Fabric Mesh?
 
-Usługa Azure Service Fabric Mesh to w pełni zarządzana usługa, która pozwala deweloperom na wdrażanie aplikacji mikrousług bez zarządzania maszynami wirtualnymi, magazynem i siecią. Aplikacje hostowane w usłudze Service Fabric Mesh są uruchamiane i skalowane bez konieczności martwienia się o ich infrastrukturę.  Usługa Service Fabric Mesh składa się z klastrów tysięcy maszyn.  Wszystkie operacje klastrów są ukryte przed deweloperem. Wystarczy przekazać swój kod i określić zasoby, których potrzebujesz, wymagania w zakresie dostępności oraz limity zasobów.  Usługa Service Fabric Mesh automatycznie alokuje infrastrukturę żądaną przez wdrożenie aplikacji i obsługuje także błędy infrastruktury, zapewniając wysoką dostępność aplikacji. Musisz zadbać jedynie o kondycję i szybkość reakcji aplikacji, nie martwiąc się o infrastrukturę.  
+Ten film zawiera krótkie omówienie usługi Service Fabric Mesh.
+> [!VIDEO https://www.youtube.com/embed/7qWeVGzAid0]
+
+Usługa Azure Service Fabric Mesh to w pełni zarządzana usługa, która pozwala deweloperom na wdrażanie aplikacji mikrousług bez zarządzania maszynami wirtualnymi, magazynem i siecią. Aplikacje hostowane w usłudze Service Fabric Mesh są uruchamiane i skalowane bez konieczności martwienia się o ich infrastrukturę.  Usługa Service Fabric Mesh składa się z klastrów tysięcy maszyn.  Wszystkie operacje klastrów są ukryte przed deweloperem. Wystarczy przekazać swój kod i określić zasoby, których potrzebujesz, wymagania w zakresie dostępności oraz limity zasobów.  Usługa Service Fabric Mesh automatycznie alokuje infrastrukturę i obsługuje także błędy infrastruktury, zapewniając wysoką dostępność aplikacji. Musisz zadbać jedynie o kondycję i szybkość reakcji aplikacji, nie martwiąc się o infrastrukturę.  
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -30,7 +33,7 @@ Usługa Service Fabric Mesh obsługuje dowolny język lub strukturę programowan
 
 Usługa Service Fabric Mesh umożliwia:
 
-- Migrowanie aplikacji metodą „lift-and-shift” do kontenerów w celu modernizacji i uruchamiania istniejących aplikacji na dużą skalę. 
+- Migrowanie aplikacji metodą „lift-and-shift” do kontenerów w celu modernizacji i uruchamiania istniejących aplikacji na dużą skalę.
 - Tworzenie i wdrażanie nowych aplikacji mikrousług na dużą skalę na platformie Azure.  Integrację z innymi usługami platformy Azure lub istniejącymi aplikacjami działającymi w kontenerach. Każda mikrousługa jest częścią bezpiecznej aplikacji izolowanej od sieci, z zasadami zarządzania zasobami zdefiniowanymi dla rdzeni procesora CPU, pamięci, miejsca na dysku i innymi.
 - Integrację z istniejącymi aplikacjami i rozszerzenie ich bez wprowadzania zmian w tych aplikacjach. Połączenie istniejącej aplikacji z nową aplikacją za pomocą własnej sieci wirtualnej.  
 - Modernizowanie istniejących aplikacji usług Cloud Services przez migrowanie ich do usługi Service Fabric Mesh.  
@@ -43,13 +46,10 @@ Usługa Service Fabric Mesh umożliwia:
 
 - Wdrażanie aplikacji i zarządzanie nimi bez konieczności jawnego aprowizowania infrastruktury i zarządzania nią.  Usługa Service Fabric Mesh aprowizuje, uaktualnia, stosuje poprawki i utrzymuje podstawową infrastrukturę za Ciebie.
 - Skonfigurowanie ciągłej integracji przy użyciu zintegrowanych narzędzi w celu łatwego pakowania i wdrażania aplikacji.
-- Korzystanie ze wszystkich funkcji zasobów usługi Azure Resource Manager (na przykład dziennika inspekcji i [kontroli dostępu opartej na rolach (RBAC)](/azure/role-based-access-control/overview)), ponieważ wszystkie zasoby (na przykład aplikacje, usługi, wpisy tajne itd.) wdrażane w usłudze Service Fabric Mesh na platformie Azure są zasobami usługi Azure Resource Manager. 
+- Korzystanie ze wszystkich funkcji zasobów usługi Azure Resource Manager (na przykład dziennika inspekcji i [kontroli dostępu opartej na rolach](/azure/role-based-access-control/overview)), ponieważ wszystkie zasoby, na przykład aplikacje, usługi, wpisy tajne itd. wdrażane w usłudze Service Fabric Mesh na platformie Azure są zasobami usługi Azure Resource Manager.
 - Wdrażanie zasobów i zarządzanie nimi za pomocą [witryny Azure Portal](https://portal.azure.com), szablonów usługi Resource Manager lub bibliotek interfejsu wiersza polecenia platformy Azure/programu PowerShell.
-- Konfigurowanie operacyjnego monitorowania i zgłaszania alertów za pomocą usługi [Application Insights](/azure/application-insights/) (lub wybranego narzędzia) w celu przechwytywania śladów operacyjnych i diagnostycznych z platformy. 
+- Konfigurowanie operacyjnego monitorowania i zgłaszania alertów za pomocą usługi [Application Insights](/azure/application-insights/) (lub wybranego narzędzia) w celu przechwytywania śladów operacyjnych i diagnostycznych z platformy.
 - Uzyskiwanie dostępu do informacji diagnostycznych dotyczących aplikacji emitowanych przez model aplikacji przy użyciu [usługi Application Insights](/azure/application-insights/) lub wybranego narzędzia.
-- Optymalizowanie użycia zasobów przez określenie reguł skalowania automatycznego dla usług w definicji aplikacji.  (już wkrótce)
-- Tworzenie izolacji sieci i granic zabezpieczeń dla aplikacji — zaawansowana funkcja w połączeniu z kontenerami funkcji Hyper-V. Izolowanie ruchu sieciowego do i z usług za pomocą wielu adresów IP na usługę i izolowanych sieci wirtualnych na aplikację.  (już wkrótce) 
-
 
 ## <a name="mission-critical-platform-capabilities"></a>Możliwości platformy o kluczowym znaczeniu
 

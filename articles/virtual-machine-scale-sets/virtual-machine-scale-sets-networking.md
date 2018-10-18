@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: negat
-ms.openlocfilehash: 8b3956860a38057771770b965006606ffb3e24f8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 43aa74e7250f4825702e249032db1566346ab558
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963785"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831215"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Obsługa sieci w kontekście zestawów skalowania maszyn wirtualnych platformy Azure
 
@@ -288,8 +288,10 @@ Poniższej przedstawiono przykład profilu sieciowego zestawu skalowania z wielo
 }
 ```
 
-## <a name="nsg-per-scale-set"></a>Sieciowa grupa zabezpieczeń dla zestawu skalowania
+## <a name="nsg--asgs-per-scale-set"></a>Sieciowa grupa zabezpieczeń i grupa zabezpieczeń aplikacji dla zestawu skalowania
 Grupy zabezpieczeń sieci można stosować bezpośrednio do zestawu skalowania przez dodanie odwołania w sekcji konfiguracji interfejsu sieciowego we właściwościach maszyn wirtualnych zestawu skalowania.
+
+Grupy zabezpieczeń aplikacji mogą być również określane bezpośrednio w zestawie skalowania przez dodanie odwołania w sekcji konfiguracji interfejsu sieciowego we właściwościach maszyn wirtualnych zestawu skalowania.
 
 Na przykład: 
 ```
@@ -305,7 +307,12 @@ Na przykład:
                         "properties": {
                             "subnet": {
                                 "id": "[concat('/subscriptions/', subscription().subscriptionId,'/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Network/virtualNetworks/', variables('vnetName'), '/subnets/subnet1')]"
-                            }
+                            },
+                            "applicationSecurityGroups": [
+                                {
+                                    "id": "[concat('/subscriptions/', subscription().subscriptionId,'/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Network/applicationSecurityGroups/', variables('asgName'))]"
+                                }
+                            ],
                 "loadBalancerInboundNatPools": [
                                 {
                                     "id": "[concat('/subscriptions/', subscription().subscriptionId,'/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Network/loadBalancers/', variables('lbName'), '/inboundNatPools/natPool1')]"

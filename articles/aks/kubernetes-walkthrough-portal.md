@@ -1,20 +1,19 @@
 ---
-title: Szybki start — klaster Azure Kubernetes
-description: Szybka nauka tworzenia klastra Kubernetes dla kontenerów systemu Linux w usłudze AKS za pomocą witryny Azure Portal.
+title: Przewodnik Szybki start — Tworzenie klastra usługi Azure Kubernetes Service w portalu
+description: Dowiedz się, jak szybko utworzyć klaster usługi Azure Kubernetes Service (AKS) w witrynie Azure Portal, a następnie wdrożyć i monitorować aplikację.
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 07/27/2018
+ms.date: 09/24/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: aceddc2594065c9c36f8dbf63fce2ad03577a383
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5d70f00294b1f08d2cc4cede6575efd3149599dd
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443371"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067463"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Szybki start: wdrażanie klastra usługi Azure Kubernetes Service (AKS)
 
@@ -40,15 +39,13 @@ Aby utworzyć klaster usługi AKS, wykonaj następujące czynności:
     - *SKALA*: wybierz rozmiar maszyny wirtualnej dla węzłów usługi AKS. Rozmiar maszyny wirtualnej **nie może** zostać zmieniony po wdrożeniu klastra AKS.
         - Wybierz liczbę węzłów do wdrożenia w klastrze. Na potrzeby tego przewodnika Szybki start ustaw pozycję **Liczba węzłów** na *1*. Liczbę węzłów **można** dostosować po wdrożeniu klastra.
     
-    ![Tworzenie klastra AKS — podaj podstawowe informacje](media/kubernetes-walkthrough-portal/create-cluster-1.png)
+    ![Tworzenie klastra AKS — podaj podstawowe informacje](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
     Wybierz pozycję **Dalej: uwierzytelnianie** po zakończeniu.
 
 1. **Uwierzytelnianie**: skonfiguruj następujące opcje:
     - Utwórz nową główną nazwę usługi lub *skonfiguruj* użycie istniejącej. W przypadku korzystania z istniejącej głównej nazwy usługi należy podać identyfikator klienta i klucz tajny głównej nazwy usługi.
     - Włącz opcję dla funkcji kontroli dostępu opartej na rolach (RBAC) w rozwiązaniu Kubernetes. Te kontrolki zapewniają bardziej precyzyjną kontrolę nad dostępem do zasobów platformy Kubernetes wdrożonych w klastrze usługi AKS.
-
-    ![Tworzenie klastra AKS — skonfiguruj uwierzytelnianie](media/kubernetes-walkthrough-portal/create-cluster-2.png)
 
     Po zakończeniu wybierz pozycję **Dalej: sieć**.
 
@@ -59,7 +56,7 @@ Aby utworzyć klaster usługi AKS, wykonaj następujące czynności:
     
     Po zakończeniu wybierz pozycję **Dalej: monitorowanie**.
 
-1. W przypadku wdrażania klastra AKS można skonfigurować usługę Azure Container Insights do monitorowania kondycji klastra AKS i zasobników uruchomionych w klastrze. Aby uzyskać więcej informacji dotyczących monitorowania kondycji kontenera, zobacz [Monitorowanie kondycji usługi Azure Kubernetes Service][aks-monitor].
+1. W przypadku wdrażania klastra AKS można skonfigurować usługę Azure Monitor dla kontenerów, aby monitorować kondycję klastra AKS i zasobników uruchomionych w klastrze. Aby uzyskać więcej informacji dotyczących monitorowania kondycji kontenera, zobacz [Monitorowanie kondycji usługi Azure Kubernetes Service][aks-monitor].
 
     Wybierz pozycję **Tak**, aby włączyć monitorowanie kontenera i wybierz istniejący obszar roboczy usługi Log Analytics lub utwórz nowy.
     
@@ -93,7 +90,7 @@ Poniższe przykładowe dane wyjściowe zawierają jeden węzeł utworzony w popr
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION
-aks-agentpool-14693408-0   Ready     agent     10m       v1.10.5
+aks-agentpool-14693408-0   Ready     agent     10m       v1.11.2
 ```
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
@@ -117,6 +114,13 @@ spec:
       containers:
       - name: azure-vote-back
         image: redis
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
         ports:
         - containerPort: 6379
           name: redis
@@ -145,6 +149,13 @@ spec:
       containers:
       - name: azure-vote-front
         image: microsoft/azure-vote-front:v1
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
         ports:
         - containerPort: 80
         env:
@@ -209,13 +220,20 @@ W przeglądarce internetowej otwórz zewnętrzny adres IP usługi, aby wyświetl
 
 Podczas tworzenia klastra włączono monitorowanie szczegółowych informacji o kontenerze. Ta funkcja monitorowania udostępnia metryki dotyczące kondycji zasobników i klastra usługi AKS działających w klastrze. Aby uzyskać więcej informacji dotyczących monitorowania kondycji kontenera, zobacz [Monitorowanie kondycji usługi Azure Kubernetes Service][aks-monitor].
 
-Zebranie tych danych w witrynie Azure Portal może zająć kilka minut. Aby wyświetlić bieżący stan, czas pracy i użycie zasobów na potrzeby zasobników aplikacji Azure Vote, wróć do zasobu usługi AKS, takiego jak *myAKSCluster*, w witrynie Azure Portal. Wybierz pozycję **Monitorowanie kondycji kontenera** > wybierz **domyślną** przestrzeń nazw > wybierz pozycję **Kontenery**.  Zostaną wyświetlone kontenery *azure-vote-back* i *azure-vote-front*:
+Zebranie tych danych w witrynie Azure Portal może zająć kilka minut. Aby wyświetlić bieżący stan, czas pracy i użycie zasobów na potrzeby zasobników aplikacji Azure Vote, wróć do zasobu usługi AKS, takiego jak *myAKSCluster*, w witrynie Azure Portal. Możesz uzyskać dostęp do stanu kondycji w następujący sposób:
+
+1. W obszarze **Monitorowanie** po lewej stronie wybierz pozycję **Insights (wersja zapoznawcza)**
+1. U góry wybierz pozycję **+ Dodaj filtr**
+1. Wybierz wartość *Namespace* (Przestrzeń nazw) jako właściwość, a następnie wybierz pozycję *\<All but kube-system\>* (Wszystko oprócz kube-system)
+1. Wybierz pozycję **Kontenery**, aby ją wyświetlić.
+
+Zostaną wyświetlone kontenery *azure-vote-back* i *azure-vote-front*, jak pokazano w poniższym przykładzie:
 
 ![Wyświetlanie kondycji uruchomionych kontenerów w usłudze AKS](media/kubernetes-walkthrough-portal/monitor-containers.png)
 
-Aby wyświetlić dzienniki dla zasobnika `azure-vote-front`, wybierz link **Wyświetl dzienniki** po prawej stronie listy kontenerów. Dzienniki te obejmują strumienie *stdout* i *stderr* z kontenera.
+Aby wyświetlić dzienniki dla zasobnika `azure-vote-front`, wybierz link **Wyświetl dzienniki kontenerów** po prawej stronie listy kontenerów. Dzienniki te obejmują strumienie *stdout* i *stderr* z kontenera.
 
-![Wyświetlanie dzienników kontenerów w usłudze AKS](media/kubernetes-walkthrough-portal/monitor-containers-logs.png)
+![Wyświetlanie dzienników kontenerów w usłudze AKS](media/kubernetes-walkthrough-portal/monitor-container-logs.png)
 
 ## <a name="delete-cluster"></a>Usuwanie klastra
 
@@ -224,6 +242,9 @@ Gdy klaster nie będzie już potrzebny, usuń zasób klastra, co spowoduje usuni
 ```azurecli-interactive
 az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 ```
+
+> [!NOTE]
+> Po usunięciu klastra jednostka usługi Azure Active Directory używana przez klaster usługi AKS nie jest usuwana. Aby sprawdzić, jak usunąć jednostkę usługi, zobacz [AKS service principal considerations and deletion (Uwagi dotyczące jednostki usługi AKS i jej usuwanie)][sp-delete].
 
 ## <a name="get-the-code"></a>Uzyskiwanie kodu
 
@@ -258,3 +279,4 @@ Aby dowiedzieć się więcej o usłudze AKS i poznać dokładnie proces od kompl
 [aks-network]: ./networking-overview.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [http-routing]: ./http-application-routing.md
+[sp-delete]: kubernetes-service-principal.md#additional-considerations

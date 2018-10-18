@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sclyon
 ms.custom: mvc
-ms.openlocfilehash: e133dde4defdec51d33fda70c0ac6d6fbeff18fe
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 56d885fa4a52c907ef2b7eab10899191a1ac3acd
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189389"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248528"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-mongodb-api-account"></a>Migrowanie danych na konto interfejsu API bazy danych MongoDB w usłudze Cosmos DB
 
@@ -38,9 +38,11 @@ Ten samouczek obejmuje następujące zadania:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Zwiększenie przepływności: czas trwania migracji danych zależy od przepływności skonfigurowanej dla pojedynczej kolekcji lub dla zestawu kolekcji. Pamiętaj o zwiększeniu przepływności w przypadku większych migracji danych. Po ukończeniu migracji zmniejsz przepływność, aby ograniczyć koszty. Aby uzyskać więcej informacji na temat zwiększania przepływności w witrynie [Azure Portal](https://portal.azure.com), zobacz [Performance levels and pricing tiers in Azure Cosmos DB (Poziomy wydajności i warstwy cenowe w usłudze Azure Cosmos DB)](performance-levels.md).
+* **Zwiększenie przepływności**: czas trwania migracji danych zależy od przepływności skonfigurowanej dla pojedynczej kolekcji lub dla zestawu kolekcji. Pamiętaj o zwiększeniu przepływności w przypadku większych migracji danych. Po ukończeniu migracji zmniejsz przepływność, aby ograniczyć koszty. Aby uzyskać więcej informacji na temat zwiększania przepływności w witrynie [Azure Portal](https://portal.azure.com), zobacz [Performance levels and pricing tiers in Azure Cosmos DB (Poziomy wydajności i warstwy cenowe w usłudze Azure Cosmos DB)](performance-levels.md).
 
-* Włączenie protokołu SSL: usługa Azure Cosmos DB ma ścisłe wymagania i standardy dotyczące bezpieczeństwa. Pamiętaj, aby włączyć protokół SSL w przypadku interakcji z kontem. Procedury w pozostałej części tego artykułu obejmują włączanie protokołu SSL na potrzeby poleceń mongoimport i mongorestore.
+* **Włączenie protokołu SSL:** usługa Azure Cosmos DB ma ścisłe wymagania i standardy dotyczące bezpieczeństwa. Pamiętaj, aby włączyć protokół SSL w przypadku interakcji z kontem. Procedury w pozostałej części tego artykułu obejmują włączanie protokołu SSL na potrzeby poleceń mongoimport i mongorestore.
+
+* **Utworzenie zasobów usługi Azure Cosmos DB:** przed rozpoczęciem migracji danych utwórz wstępnie wszystkie kolekcje w witrynie Azure Portal. W przypadku migracji na konto usługi Azure Cosmos DB z przepływnością poziomu bazy danych pamiętaj o podaniu klucza partycji podczas tworzenia kolekcji usługi Azure Cosmos DB.
 
 ## <a name="get-your-connection-string"></a>Pobieranie parametrów połączenia 
 

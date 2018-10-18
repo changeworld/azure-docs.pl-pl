@@ -1,24 +1,25 @@
 ---
-title: Wyszukiwania usługi Bing obrazu aplikacji jednej strony sieci web (kodu źródłowego) | Dokumentacja firmy Microsoft
-description: Kod źródłowy Samouczek przedstawiający sposób użycia interfejsu API wyszukiwania usługi Bing obrazu w aplikacji jednej strony sieci Web.
+title: 'Samouczek: jednostronicowa aplikacja internetowa korzystająca z interfejsu API wyszukiwania jednostek Bing (kod źródłowy)'
+titlesuffix: Azure Cognitive Services
+description: Kod źródłowy do samouczka przedstawiającego sposób użycia interfejsu API wyszukiwania jednostek Bing w jednostronicowej aplikacji internetowej.
 services: cognitive-services
 author: v-jerkin
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 988d4c809fdfb528c9cef2b3cdbefa00c274d33e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 09cb10002be43d65ff10e3c238a880cf138aa064
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347017"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815056"
 ---
-# <a name="tutorial-single-page-web-app-source"></a>Samouczek: Jednej strony sieci web aplikacji źródła
+# <a name="tutorial-single-page-web-app-source"></a>Samouczek: jednostronicowa aplikacja internetowa — kod źródłowy
 
-To jest kod źródłowy pełną omówione w [samouczek aplikacji jednej strony](tutorial-bing-entities-search-single-page-app.md) dla wyszukiwania usługi Bing obrazu. Aby uruchomić aplikację, skopiuj kod źródłowy w Notatniku lub w innym edytorze tekstu i zapisz go jako `bing.html`. Następnie otwórz zapisany plik w Microsoft Edge lub innej popularne przeglądarki.
+Jest to pełen kod źródłowy omówiony w [samouczku dotyczącym aplikacji jednostronicowej](tutorial-bing-entities-search-single-page-app.md) do wyszukiwania jednostek Bing. Aby uruchomić aplikację, skopiuj kod źródłowy do Notatnika lub innego edytora tekstu, a następnie zapisz go jako plik `bing.html`. Następnie otwórz zapisany plik w programie Microsoft Edge lub w innej popularnej przeglądarce.
 
 ```html
 <!DOCTYPE html>

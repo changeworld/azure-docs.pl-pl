@@ -1,56 +1,56 @@
 ---
-title: Jednostka wyszukiwania szybkiego startu interfejsu API języka C# | Dokumentacja firmy Microsoft
-description: Instalator encji wyszukiwania zestawu SDK aplikacji konsoli.
-titleSuffix: Azure cognitive services entity search API C# quickstart
+title: 'Szybki start: zestaw Bing Entity Search SDK, język C#'
+titleSuffix: Azure Cognitive Services
+description: Konfiguracja pod kątem aplikacji konsoli zestawu Entity Search SDK i języka C#.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
-ms.openlocfilehash: 185e1b4fc1b7ef2aa5964e2e95314727f8e1b0a5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: abf7e4344bea88fd86b86135ffab30672d77922e
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349448"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814108"
 ---
-# <a name="entity-search-sdk-c-quickstart"></a>Jednostka wyszukiwania zestawu SDK C# — Szybki Start
+# <a name="quickstart-bing-entity-search-sdk-with-c"></a>Szybki start: zestaw Bing Entity Search SDK z językiem C#
 
-Interfejs API wyszukiwania usługi Bing jednostki zawiera funkcje interfejsu API REST dla encji wyszukiwania i analizowania wyników.
+Interfejs API wyszukiwania jednostek Bing zawiera funkcje interfejsu API REST przeznaczone do wyszukiwania jednostek i analizowania wyników.
 
-[Źródła kodu dla C# Bing encji wyszukiwania zestawu SDK przykłady](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingEntitySearch) jest dostępna w Centrum Git.
+[Kod źródłowy przykładów zestawu Bing Entity Search SDK w języku C#](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingEntitySearch) jest dostępny w witrynie Git Hub.
 
 ## <a name="application-dependencies"></a>Zależności aplikacji
 
-Aby skonfigurować aplikację konsoli przy użyciu zestawu SDK wyszukiwania usługi Bing jednostki, przejdź do `Manage NuGet Packages` opcji z Eksploratora rozwiązań w programie Visual Studio.  Dodaj `Microsoft.Azure.CognitiveServices.Search.EntitySearch` pakietu.
+Aby skonfigurować aplikację konsoli przy użyciu zestawu Bing Entity Search SDK, przejdź do opcji `Manage NuGet Packages` w Eksploratorze rozwiązań w programie Visual Studio.  Dodaj pakiet `Microsoft.Azure.CognitiveServices.Search.EntitySearch`.
 
-Instalowanie [pakietu NuGet encji wyszukiwania](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.EntitySearch/1.2.0) zainstaluje również zależności, łącznie z następujących zestawów:
+Zainstalowanie [pakietu NuGet wyszukiwania jednostek](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.EntitySearch/1.2.0) spowoduje także zainstalowanie zależności, w tym następujących zestawów:
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
 * Newtonsoft.Json
 
-## <a name="entity-search-client"></a>Jednostka wyszukiwania klienta
-Aby utworzyć wystąpienie `EntitySearchAPI` klienta, dodawanie dyrektywy using:
+## <a name="entity-search-client"></a>Klient wyszukiwania jednostek
+Aby utworzyć wystąpienie klienta `EntitySearchAPI`, dodaj dyrektywy using:
 ```
 using Microsoft.Azure.CognitiveServices.Search.EntitySearch;
 using Microsoft.Azure.CognitiveServices.Search.EntitySearch.Models;
 
 ```
-Następnie można utworzyć wystąpienia klienta:
+Następnie utwórz wystąpienie klienta:
 ```
 var client = new EntitySearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 
 
 ```
-Przy użyciu klienta do wyszukiwania tekstu zapytania:
+Użyj klienta, aby przeprowadzić wyszukiwanie, używając następującego tekstu zapytania:
 ```
 var entityData = client.Entities.Search(query: "Satya Nadella");
 
 ```
-Przeanalizować wyniki poprzedniego zapytania:
+Przeanalizuj wyniki poprzedniego zapytania:
 ```
 if (entityData?.Entities?.Value?.Count > 0)
 {
@@ -74,8 +74,8 @@ else
 
 ```
 
-## <a name="complete-console-application"></a>Aplikacja konsolowa ukończone
-Następującej aplikacji konsoli wyszukuje pojedynczej jednostki w zapytaniu "Satya Nadella" i krótki opis do drukowania.
+## <a name="complete-console-application"></a>Kompletna aplikacja konsolowa
+Następująca aplikacja konsoli wyszukuje pojedynczą jednostkę dla zapytania „Satya Nadella” i wyświetla krótki opis.
 ```
 using System;
 using System.Linq;
@@ -141,7 +141,7 @@ namespace EntitySrchSDK
 ```
 
 ## <a name="ambiguous-results"></a>Niejednoznaczne wyniki
-Poniższy kod obsługuje Uściślanie wyniki zapytania niejednoznaczne "Łączy bramy".
+Poniższy kod obsługuje uściślanie wyników niejednoznacznego zapytania „William Gates”.
 ```
        public static void HandlingDisambiguation(EntitySearchAPI client)
         {
@@ -197,8 +197,8 @@ Poniższy kod obsługuje Uściślanie wyniki zapytania niejednoznaczne "Łączy 
 
 ```
 
-## <a name="entitydata-places"></a>EntityData miejsca
-Poniższy kod odwołuje się do jednego magazynu "Microsoft Store" i jego numeru telefonu do drukowania.
+## <a name="entitydata-places"></a>Miejsca EntityData
+Poniższy kod wyszukuje pojedynczy sklep „Microsoft Store” i wyświetla jego numer telefonu.
 ```
         public static void StoreLookup(EntitySearchAPI client)
         {
@@ -235,7 +235,7 @@ Poniższy kod odwołuje się do jednego magazynu "Microsoft Store" i jego numeru
 
 ```
 ## <a name="entityscenario-list"></a>Lista EntityScenario
-Następujący kod wyszukuje listę "Restauracji Seattle" i wysłania ich nazwy i numery telefonów.
+Poniższy kod wyszukuje listę restauracji („Seattle restaurants”) i wyświetla ich nazwy i numery telefonów.
 ```
        public static void MultipleRestaurantLookup(EntitySearchAPI client)
         {
@@ -285,8 +285,8 @@ Następujący kod wyszukuje listę "Restauracji Seattle" i wysłania ich nazwy i
         }
 
 ```
-## <a name="error-results"></a>Błąd wyników
-Poniższy kod wyzwala nieprawidłowe żądanie i przedstawia sposób odczytywania odpowiedzi na błąd.
+## <a name="error-results"></a>Wyniki dla błędu
+Poniższy kod wyzwala niepoprawne żądanie i pokazuje, jak odczytać odpowiedź z błędem.
 ```
         public static void Error(EntitySearchAPI client)
         {
@@ -314,6 +314,6 @@ Poniższy kod wyzwala nieprawidłowe żądanie i przedstawia sposób odczytywani
         }
 
 ```
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Usługi kognitywnych przykłady zestawu .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+[Cognitive services .NET SDK samples (Przykłady zestawów SKD .NET usług Cognitive Services)](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

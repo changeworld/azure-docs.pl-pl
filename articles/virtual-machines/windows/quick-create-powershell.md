@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 09/07/2018
+ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 329cdcd7f33c1c8b415a3936ed71247c18a27e78
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 3e797b801395bf4971bfb91a8ce4b35a710ea578
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052894"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816206"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>Szybki start: tworzenie maszyny wirtualnej z systemem Windows za pomocą programu Azure PowerShell
 
@@ -29,7 +29,11 @@ Moduł Azure PowerShell umożliwia tworzenie zasobów platformy Azure i zarządz
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+## <a name="launch-azure-cloud-shell"></a>Uruchamianie usługi Azure Cloud Shell
+
+Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. 
+
+Aby otworzyć usługę Cloud Shell, wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. Możesz również uruchomić usługę Cloud Shell w oddzielnej karcie przeglądarki, przechodząc do strony [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Wybierz przycisk **Kopiuj**, aby skopiować bloki kodu, wklej je do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby je uruchomić.
 
 Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten samouczek będzie wymagał modułu programu Azure PowerShell w wersji 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 
@@ -69,11 +73,15 @@ Aby wyświetlić publiczny adres IP maszyny wirtualnej, użyj polecenia cmdlet [
 Get-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
 ```
 
-Użyj następującego polecenia, aby utworzyć sesję usług pulpitu zdalnego z komputera lokalnego. Zastąp adres IP publicznym adresem IP swojej maszyny wirtualnej. Gdy zostanie wyświetlony monit, wprowadź poświadczenia użyte podczas tworzenia maszyny wirtualnej:
+Użyj następującego polecenia, aby utworzyć sesję usług pulpitu zdalnego z komputera lokalnego. Zastąp adres IP publicznym adresem IP swojej maszyny wirtualnej. 
 
 ```powershell
 mstsc /v:publicIpAddress
 ```
+
+W oknie **Zabezpieczenia systemu Windows** wybierz pozycję **Więcej opcji**, a następnie pozycję **Użyj innego konta**. Wpisz nazwę użytkownika w formacie **localhost**\\*nazwa_użytkownika* oraz hasło utworzone dla maszyny wirtualnej, a następnie kliknij pozycję **OK**.
+
+Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Kliknij pozycję **Tak** lub **Kontynuuj**, aby utworzyć połączenie.
 
 ## <a name="install-web-server"></a>Instalowanie serwera internetowego
 

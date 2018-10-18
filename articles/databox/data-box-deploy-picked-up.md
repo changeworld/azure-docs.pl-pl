@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 10/03/2018
 ms.author: alkohli
-ms.openlocfilehash: d649095a6b1b9f692a6795e96c9f15631d36e3e2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 05bfba9fffa7db75ef4e1a1167b3170a775e1d34
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974514"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785464"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Samouczek: wysyłka zwrotna urządzenia Azure Data Box i weryfikowanie przekazania danych na platformę Azure
 
@@ -39,7 +39,10 @@ Przed rozpoczęciem upewnij się, że zostały wykonane wszystkie czynności opi
 ## <a name="ship-data-box-back"></a>Wysyłka zwrotna urządzenia Data Box
 
 1. Upewnij się, że wyłączono zasilanie urządzenia, a kable zostały odłączone. Zwiń przewód zasilający dostarczony wraz z urządzeniem i umieść go bezpiecznie z tyłu urządzenia.
-2. Upewnij się, że na wyświetlaczu E-ink jest widoczna etykieta wysyłkowa, i umów się na odbiór przesyłki z przewoźnikiem. W przypadku utraty lub zniszczenia etykiety albo braku etykiety na wyświetlaczu E-ink pobierz etykietę wysyłkową z witryny Azure Portal i przyklej ją do przesyłki. Przejdź do pozycji **Przegląd > Pobierz etykietę wysyłkową**.
+2. Jeśli urządzenie jest wysyłane w Stanach Zjednoczonych, upewnij się, że na wyświetlaczu E-ink jest widoczna etykieta wysyłkowa, i umów się na odbiór przesyłki z przewoźnikiem. W przypadku utraty lub zniszczenia etykiety albo braku etykiety na wyświetlaczu E-ink pobierz etykietę wysyłkową z witryny Azure Portal i przyklej ją do przesyłki. Przejdź do pozycji **Przegląd > Pobierz etykietę wysyłkową**. 
+
+    Jeśli urządzenie jest wysyłane w Europie, na wyświetlaczu E-ink nie jest wyświetlana etykieta wysyłkowa. Zamiast tego jest dołączona zwrotna etykieta wysyłkowa w przezroczystej kieszeni pod etykietą wysyłkową. Usuń starą etykietę wysyłkową i upewnij się, że etykieta wysyłkowa jest dobrze widoczna.
+    
 3. Jeśli zwracasz urządzenie na terenie USA, zamów odbiór paczki przez firmę UPS. Jeśli zwracasz urządzenie w Europie za pośrednictwem firmy DHL, zamów odbiór paczki przez firmę DHL w witrynie internetowej firmy, podając numer listu przewozowego. Przejdź do lokalnej witryny firmy DHL Express i wybierz pozycję **Utwórz przesyłkę zwrotną**. 
 
     Podaj numer listu przewozowego i kliknij przycisk **Zamówienie kuriera**, aby zaplanować odebranie przesyłki.

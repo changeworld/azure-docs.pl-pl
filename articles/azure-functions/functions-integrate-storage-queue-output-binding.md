@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 84783472adda9a4a74670f0579790aac69feb23d
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: e48eac4cdc1e98e21a122850b1dc7d3e8f4efe07
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094998"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854528"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Dodawanie komunikatów do kolejki usługi Azure Storage przy użyciu funkcji
 
@@ -25,7 +25,7 @@ W usłudze Azure Functions powiązania danych wejściowych i wyjściowych zapewn
 
 ![Komunikaty w kolejce wyświetlane w Eksploratorze usługi Storage](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 
-## <a name="prerequisites"></a>Wymagania wstępne 
+## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby ukończyć ten przewodnik Szybki start:
 
@@ -39,15 +39,19 @@ W tej sekcji użyjesz interfejsu użytkownika portalu w celu dodania powiązania
 
 1. W witrynie Azure Portal otwórz stronę aplikacji funkcji na potrzeby aplikacji funkcji utworzonej w kroku [Tworzenie pierwszej funkcji w witrynie Azure Portal](functions-create-first-azure-function.md). Aby to zrobić, wybierz pozycję **Wszystkie usługi > Aplikacje funkcji**, a następnie wybierz aplikację funkcji.
 
-2. Wybierz funkcję utworzoną we wcześniejszym przewodniku Szybki start.
+1. Wybierz funkcję utworzoną we wcześniejszym przewodniku Szybki start.
 
 1. Wybierz pozycję **Integracja > Nowe dane wyjściowe > Azure Queue Storage**.
 
 1. Kliknij pozycję **Wybierz**.
-    
+
     ![Dodaj powiązanie danych wyjściowych kolejki magazynu do funkcji w witrynie Azure Portal.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
-3. W obszarze **Dane wyjściowe usługi Azure Queue Storage** użyj ustawień określonych w tabeli znajdującej się poniżej tego zrzutu ekranu: 
+1. Jeśli zostanie wyświetlony komunikat **Rozszerzenia niezainstalowane**, wybierz polecenie **Instaluj**, aby zainstalować rozszerzenie powiązań usługi Storage w aplikacji funkcji. Może to potrwać minutę lub dwie.
+
+    ![Instalowanie rozszerzenia powiązania usługi Storage](./media/functions-integrate-storage-queue-output-binding/functions-integrate-install-binding-extension.png)
+
+1. W obszarze **Dane wyjściowe usługi Azure Queue Storage** użyj ustawień określonych w tabeli znajdującej się poniżej tego zrzutu ekranu: 
 
     ![Dodaj powiązanie danych wyjściowych kolejki magazynu do funkcji w witrynie Azure Portal.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding-2.png)
 
@@ -57,52 +61,58 @@ W tej sekcji użyjesz interfejsu użytkownika portalu w celu dodania powiązania
     | **Połączenie konta magazynu** | AzureWebJobsStorage | Możesz skorzystać z połączenia konta magazynu już używanego przez aplikację funkcji lub utworzyć nowe.  |
     | **Nazwa kolejki**   | outqueue    | Nazwa kolejki, z którą zostanie nawiązane połączenie na koncie magazynu. |
 
-4. Kliknij pozycję **Zapisz**, aby dodać powiązanie.
- 
+1. Kliknij pozycję **Zapisz**, aby dodać powiązanie.
+
 Po zdefiniowaniu powiązania danych wyjściowych musisz zaktualizować kod, tak aby stosować powiązanie do dodawania komunikatów do kolejki.  
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Dodawanie kodu korzystającego z powiązania danych wyjściowych
 
 W tej sekcji dodasz kod służący do zapisywania komunikatu do kolejki wyjściowej. Komunikat zawiera wartość przekazywaną do wyzwalacza HTTP w ciągu zapytania. Jeśli na przykład ciąg zapytania zawiera wartość `name=Azure`, komunikat w kolejce będzie następujący: *Nazwa przekazana do funkcji: Azure*.
 
-1. Wybierz funkcję,której kod ma zostać wyświetlony w edytorze. 
+1. Wybierz funkcję,której kod ma zostać wyświetlony w edytorze.
 
-2. Dla funkcji języka C# dodaj parametr metody na potrzeby powiązania, a następnie napisz kod w celu jego użycia:
+1. Zaktualizuj kod funkcji w zależności od języka funkcji:
 
-   Dodaj parametr **outputQueueItem** do sygnatury metody, jak pokazano w poniższym przykładzie. Nazwa parametru jest taka sama, jak nazwa wprowadzona w polu **Nazwa parametru komunikatu** podczas tworzenia powiązania.
+    # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
-   ```cs   
-   public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, 
-       ICollector<string> outputQueueItem, TraceWriter log)
-   {
-       ...
-   }
-   ```
+    Dodaj parametr **outputQueueItem** do sygnatury metody, jak pokazano w poniższym przykładzie.
 
-   W treści funkcji języka C# tuż przed instrukcją `return` dodaj kod używający parametru w celu utworzenia komunikatu w kolejce.
+    ```cs
+    public static async Task<IActionResult> Run(HttpRequest req,
+        ICollector<string> outputQueueItem, ILogger log)
+    {
+        ...
+    }
+    ```
 
-   ```cs
-   outputQueueItem.Add("Name passed to the function: " + name);     
-   ```
+    W treści funkcji tuż przed instrukcją `return` dodaj kod używający parametru w celu utworzenia komunikatu w kolejce.
 
-3. Dla funkcji języka JavaScript dodaj kod używający powiązania danych wyjściowych w ramach obiektu `context.bindings` w celu utworzenia komunikatu w kolejce. Dodaj ten kod przed instrukcją `context.done`.
+    ```cs
+    outputQueueItem.Add("Name passed to the function: " + name);
+    ```
 
-   ```javascript
-   context.bindings.outputQueueItem = "Name passed to the function: " + 
-               (req.query.name || req.body.name);
-   ```
+    # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
-4. Wybierz przycisk **Zapisz**, aby zapisać zmiany.
- 
-## <a name="test-the-function"></a>Testowanie funkcji 
+    Dodaj kod używający powiązania danych wyjściowych w ramach obiektu `context.bindings` w celu utworzenia komunikatu w kolejce. Dodaj ten kod przed instrukcją `context.done`.
+
+    ```javascript
+    context.bindings.outputQueueItem = "Name passed to the function: " + 
+                (req.query.name || req.body.name);
+    ```
+
+    ---
+
+1. Wybierz przycisk **Zapisz**, aby zapisać zmiany.
+
+## <a name="test-the-function"></a>Testowanie funkcji
 
 1. Po zapisaniu zmian w kodzie wybierz przycisk **Uruchom**. 
 
     ![Dodaj powiązanie danych wyjściowych kolejki magazynu do funkcji w witrynie Azure Portal.](./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png)
 
-   Zwróć uwagę na to, że **treść żądania** zawiera `name` wartość *Azure*. Ta wartość jest wyświetlana w komunikacie w kolejce tworzonym po wywołaniu funkcji.
-
-   Alternatywą do wyboru w tym miejscu polecenia **Uruchom** może być wywołanie funkcji, wprowadzając adres URL w przeglądarce i określając wartość `name` w ciągu zapytania. Metoda zakładająca użycie przeglądarki jest przedstawiona w [poprzednim przewodniku Szybkie start](functions-create-first-azure-function.md#test-the-function).
+    Zwróć uwagę na to, że **treść żądania** zawiera `name` wartość *Azure*. Ta wartość jest wyświetlana w komunikacie w kolejce tworzonym po wywołaniu funkcji.
+    
+    Alternatywą do wyboru w tym miejscu polecenia **Uruchom** może być wywołanie funkcji, wprowadzając adres URL w przeglądarce i określając wartość `name` w ciągu zapytania. Metoda zakładająca użycie przeglądarki jest przedstawiona w [poprzednim przewodniku Szybkie start](functions-create-first-azure-function.md#test-the-function).
 
 2. Sprawdź dzienniki, aby upewnić się, że funkcja zakończyła się pomyślnie. 
 

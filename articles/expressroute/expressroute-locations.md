@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/23/2018
+ms.date: 10/01/2018
 ms.author: pareshmu
-ms.openlocfilehash: 72cb9871b1e0f08d8c368116eae13a8402af9f60
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 22288165876972888428450f16aa2460a211c9a6
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42815224"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042925"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partnerzy i lokalizacje komunikacji równorzędnej usługi ExpressRoute
 
@@ -44,8 +44,8 @@ Poniższa tabela zawiera mapę regionów świadczenia usługi Azure dla lokaliza
 | --- | --- | --- |
 | **Ameryka Północna** |Wschodnie stany USA, Zachodnie stany USA, Wschodnie stany USA 2, Zachodnie stany USA 2, Środkowe stany USA, Południowo-środkowe stany USA, Północno-środkowe stany USA, Środkowo-zachodnie stany USA, Kanada Środkowa, Kanada Wschodnia |Atlanta, Chicago, Dallas, Denver, Dolina Krzemowa, Las Vegas, Los Angeles, Miami, Miasto Quebec, Montreal, Nowy Jork, San Antonio, Seattle, Toronto, Waszyngton |
 | **Ameryka Południowa** |Brazylia Południowa |Sao Paulo |
-| **Europa** |Europa Północna, Europa Zachodnia, Francja Południowa, Francja Środkowa, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo |Amsterdam, Dublin, Londyn, Newport (Walia), Paryż |
-| **Azja** |Azja Wschodnia, Azja Południowo-Wschodnia |Hongkong, Singapur, Singapur2 |
+| **Europa** |Europa Północna, Europa Zachodnia, Francja Południowa, Francja Środkowa, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo |Amsterdam, Amsterdam2, Dublin, Londyn, Marsylia, Newport (Walia), Paryż |
+| **Azja** |Azja Wschodnia, Azja Południowo-Wschodnia |Hongkong, Kuala Lumpur, Singapur, Singapur2 |
 | **Japonia** |Japońska Zachodnia, Japonia Wschodnia |Osaka, Tokio |
 | **Australia** |Australia Południowo-Wschodnia, Australia Wschodnia |Melbourne, Sydney |
 | **Australia — instytucje rządowe** | Australia Środkowa, Australia Środkowa 2 |Canberra, Canberra2 | 
@@ -100,7 +100,7 @@ W poniższej tabeli przedstawiono lokalizacje według dostawcy usług. Jeśli ch
 | **Internet2** |Obsługiwane |Obsługiwane |Waszyngton |
 | **[Internet Initiative Japan Inc. — IIJ](http://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |Obsługiwane |Obsługiwane |Osaka, Tokio |
 | **[Internet Solutions — Cloud Connect](https://www.is.co.za/solution/cloud-connect/)** |Obsługiwane |Obsługiwane |Kapsztad, Johannesburg, Londyn |
-| **[Interxion](http://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |Obsługiwane |Obsługiwane |Amsterdam, Dublin, Londyn, Paryż |
+| **[Interxion](http://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |Obsługiwane |Obsługiwane |Amsterdam, Amsterdam2, Dublin, Londyn, Marsylia, Paryż |
 | **[IX Reach](https://www.ixreach.com/services/cloud-connectivity/microsoft-azure/)**|Obsługiwane |Obsługiwane | Dolina Krzemowa, Toronto |
 | **Jisc** |Obsługiwane |Obsługiwane |Londyn |
 | **[KINX](https://www.kinx.net/service/network/cloudhub/ms-expressroute/?lang=en)** |Obsługiwane |Obsługiwane |Seul |
@@ -119,7 +119,7 @@ W poniższej tabeli przedstawiono lokalizacje według dostawcy usług. Jeśli ch
 | **[Optus](https://www.optus.com.au/enterprise/networking/network-connectivity/express-link)** |Obsługiwane |Obsługiwane |Melbourne+, Sydney |
 | **[Orange](http://www.orange-business.com/en/products/business-vpn-galerie)** |Obsługiwane |Obsługiwane |Amsterdam, Hongkong, Londyn, Paryż, Dolina Krzemowa, Singapur, Sydney, Waszyngton |
 | **[PacketFabric](https://www.packetfabric.com/packetcor/microsoft-azure/)** |Obsługiwane |Obsługiwane |Chicago, Dolina Krzemowa, Waszyngton |
-| **PCCW Global Limited** |Obsługiwane |Obsługiwane |Hongkong |
+| **PCCW Global Limited** |Obsługiwane |Obsługiwane |Chicago, Hongkong, Londyn |
 | **[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)** |Obsługiwane |Obsługiwane |Seul |
 | **[SIFY](http://telecom.sify.com/azure-expressroute.html)** |Obsługiwane |Obsługiwane |Chennai (Madras), Mumbaj (Bombaj) |
 | **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** |Obsługiwane |Obsługiwane |Singapur, Singapur2 |
@@ -134,7 +134,7 @@ W poniższej tabeli przedstawiono lokalizacje według dostawcy usług. Jeśli ch
 | **[Telstra Corporation](http://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |Obsługiwane |Obsługiwane |Melbourne, Sydney |
 | **[Telus](http://www.telus.com)** |Obsługiwane |Obsługiwane |Montreal, Toronto |
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |Obsługiwane |Obsługiwane |Kapsztad, Johannesburg |
-| **CZAS** | Wkrótce | Wkrótce | Kuala Lumpur |
+| **CZAS** | Obsługiwane | Obsługiwane | Kuala Lumpur |
 | **[UOLDIVEO](http://www.uoldiveo.com.br/solucoes/cloud.html#rmcl)** |Obsługiwane |Obsługiwane |Sao Paulo |
 | **[Verizon](http://www.verizonenterprise.com/products/networking/secure-cloud-interconnect/)** |Obsługiwane |Obsługiwane |Amsterdam, Chicago, Dallas, Hongkong, Londyn, Dolina Krzemowa, Singapur, Sydney, Tokio, Waszyngton |
 | **[Vodafone](http://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |Obsługiwane |Nieobsługiwane |Londyn |

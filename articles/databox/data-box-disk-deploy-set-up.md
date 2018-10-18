@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/24/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: e4a913aaeb6eeb3c58b70dbcd714f1360875594f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: b1e647c6aee251bebd257db5e4e631deba0be3fa
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161540"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068812"
 ---
 # <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Samouczek: rozpakowywanie, podłączanie i odblokowywanie urządzenia Azure Data Box Disk
 
@@ -76,12 +76,14 @@ Kroki odblokowywania dysków zależą od tego, czy masz połączenie z klientem 
 Aby podłączyć i odblokować dyski, wykonaj następujące czynności.
      
 1. W witrynie Azure Portal przejdź do pozycji **Ogólne > Szczegóły urządzenia**. 
-2. Pobierz zestaw narzędzi dla dysków Data Box Disk przeznaczony dla klienta z systemem Windows. 
+2. Pobierz zestaw narzędzi dla dysków Data Box Disk przeznaczony dla klienta z systemem Windows. Zawiera on trzy narzędzia: narzędzie do odblokowywania dysków Data Box Disk, narzędzie do weryfikacji dysków Data Box Disk oraz narzędzie do dzielenia skopiowanych dysków Data Box Disk. 
+
+    W procedurze poniżej będziesz używać wyłącznie narzędzia do odblokowywania dysków Data Box Disk. Pozostałe dwa narzędzia zostaną użyte później.
 
     > [!div class="nextstepaction"]
     > [Pobierz zestaw narzędzi dla dysków Data Box Disk dla systemu Windows](http://aka.ms/databoxdisktoolswin)         
 
-3. Wyodrębnij narzędzie na komputerze, którego użyjesz do skopiowania danych.
+3. Wyodrębnij zestaw narzędzi na komputerze, którego użyjesz do skopiowania danych. 
 4. Otwórz okno wiersza polecenia lub uruchom program Windows PowerShell jako administrator na tym samym komputerze.
 5. (Opcjonalnie) Aby sprawdzić, czy komputer, którego używasz do odblokowania dysku, spełnia wymagania dotyczące systemu operacyjnego, uruchom polecenie SystemCheck. Poniżej pokazano przykładowe dane wyjściowe. 
 

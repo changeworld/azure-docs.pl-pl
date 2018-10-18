@@ -7,15 +7,15 @@ manager: jeconnoc
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 01/16/2018
+ms.date: 09/06/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: b5431feec23e2e0681967a9fe0345edc1db567aa
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d22e5111a0413c1774d4d41290741414c82039f7
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31513830"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814835"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Szybki start: uruchamianie pierwszego zadania usługi Azure Batch za pomocą interfejsu API platformy .NET
 
@@ -27,7 +27,7 @@ Ten przewodnik Szybki start przedstawia uruchamianie zadania usługi Azure Batch
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Zintegrowane środowisko projektowe programu Visual Studio](https://www.visualstudio.com/vs) (Visual Studio 2015 lub nowsza wersja). 
+* [Program Visual Studio 2017](https://www.visualstudio.com/vs) lub [środowisko .NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) dla systemu Linux, macOS lub Windows. 
 
 * Konto usługi Batch i połączone konto usługi Azure Storage. Aby utworzyć te konta, skorzystaj z przewodników Szybki start dla usługi Batch i [witryny Azure Portal](quick-create-portal.md) lub [interfejsu wiersza polecenia platformy Azure](quick-create-cli.md). 
 
@@ -60,9 +60,11 @@ private const string StorageAccountName = "mystorageaccount";
 private const string StorageAccountKey  = "xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ==";
 ```
 
+[!INCLUDE [batch-credentials-include](../../includes/batch-credentials-include.md)]
+
 ## <a name="build-and-run-the-app"></a>Kompilowanie i uruchamianie aplikacji
 
-Aby zobaczyć przepływ pracy usługi Batch w akcji, skompiluj i uruchom aplikację. Po uruchomieniu aplikacji przejrzyj kod, aby poznać działanie poszczególnych części aplikacji. 
+Aby zobaczyć działanie przepływu pracy usługi Batch, skompiluj i uruchom aplikację w programie Visual Studio lub w wierszu polecenia, używając poleceń `dotnet build` i `dotnet run`. Po uruchomieniu aplikacji przejrzyj kod, aby poznać działanie poszczególnych części aplikacji. Na przykład w programie Visual Studio:
 
 * W Eksploratorze rozwiązań kliknij rozwiązanie prawym przyciskiem myszy, a następnie kliknij polecenie **Kompiluj rozwiązanie**. 
 
@@ -122,9 +124,9 @@ Za pomocą odwołania `blobClient` aplikacja tworzy kontener w ramach konta maga
 ```csharp
 List<string> inputFilePaths = new List<string>
 {
-    @"..\..\taskdata0.txt",
-    @"..\..\taskdata1.txt",
-    @"..\..\taskdata2.txt"
+    "taskdata0.txt",
+    "taskdata1.txt",
+    "taskdata2.txt"
 };
 
 List<ResourceFile> inputFiles = new List<ResourceFile>();
@@ -192,7 +194,7 @@ try
 
     job.Commit(); 
 }
-...       
+...
 ```
 
 ### <a name="create-tasks"></a>Tworzenie zadań podrzędnych

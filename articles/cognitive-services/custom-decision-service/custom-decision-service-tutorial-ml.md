@@ -1,132 +1,134 @@
 ---
-title: Machine Learning - kognitywnych usług platformy Azure | Dokumentacja firmy Microsoft
-description: Samouczek dotyczący uczenia maszynowego w usłudze Microsoft Azure decyzji niestandardowe, oparte na chmurze interfejsu API kontekstowe podejmowania decyzji.
+title: 'Samouczek: cechowanie i specyfikacja cech — Custom Decision Service'
+titlesuffix: Azure Cognitive Services
+description: Samouczek dotyczący cechowania i specyfikacji cech uczenia maszynowego w usłudze Custom Decision Service.
 services: cognitive-services
 author: slivkins
-manager: slivkins
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: tutorial
 ms.date: 05/08/2018
-ms.author: slivkins;marcozo;alekh
-ms.openlocfilehash: 50814d67ee39c6657954610358462d877843416e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: slivkins
+ms.openlocfilehash: 1e5d012706d1de5a201eecb8ad805b4d6faaf411
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349016"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869594"
 ---
-# <a name="machine-learning"></a>Uczenie maszynowe
+# <a name="tutorial-featurization-and-feature-specification"></a>Samouczek: cechowanie i specyfikacja cech
 
-Ten samouczek dotyczy uczenia funkcjach w usłudze decyzji niestandardowe maszynowego zaawansowane. Samouczek składa się z dwóch części: [featurization](#featurization-concepts-and-implementation) i [funkcji specyfikacji](#feature-specification-format-and-apis). Featurization odwołuje się do reprezentujący dane jako "funkcji" do uczenia maszynowego. Specyfikacja funkcji obejmuje formatu JSON i dodatkowe interfejsy API do określania funkcji.
+Ten samouczek dotyczy zaawansowanych funkcji uczenia maszynowego w usłudze Custom Decision Service. Samouczek składa się z dwóch części: [cechowanie](#featurization-concepts-and-implementation) i [specyfikacji cech](#feature-specification-format-and-apis). Cechowanie oznacza reprezentowanie danych w postaci konkretnych cech odnoszących się do uczenia maszynowego. Specyfikacja cech obejmuje format JSON i dodatkowe interfejsy API.
 
-Domyślnie machine learning w usłudze decyzji niestandardowy jest niewidoczny dla klienta. Funkcje automatycznie korzystać z zawartości, i jest używany algorytm uczenia wzmocnienie standardowa. Funkcja wyodrębniania korzysta kilka innych kognitywnych usług Azure: [łączenie jednostki](../entitylinking/home.md), [Analiza tekstu](../text-analytics/overview.md), [emocji](../emotion/home.md), i [wizji komputera](../computer-vision/home.md). W tym samouczku można pominięte, jeśli tylko funkcje domyślne jest używany.
+Domyślnie uczenie maszynowe w usłudze Custom Decision Service jest niewidoczne dla klienta. Cechy są automatycznie wyodrębniane z zawartości i używany jest standardowy algorytm uczenia przez wzmacnianie. Usługa wyodrębniania cech wykorzystuje kilka innych usług Azure Cognitive Services: [Entity Linking](../entitylinking/home.md), [Analiza tekstu](../text-analytics/overview.md), [Rozpoznawanie emocji](../emotion/home.md) i [Przetwarzanie obrazów](../computer-vision/home.md). Ten samouczek można pominąć w przypadku korzystania wyłącznie z funkcji domyślnych.
 
-## <a name="featurization-concepts-and-implementation"></a>Featurization: pojęcia i implementacji
+## <a name="featurization-concepts-and-implementation"></a>Cechowanie: koncepcje i implementacja
 
-Usługa niestandardowa decyzji podejmowania decyzji w procesie jeden po drugim. Każdej decyzji obejmuje wybierania kilka rozwiązań alternatywnych, alias, akcje. W zależności od aplikacji decyzji mogą wybierać jednej akcji (short) listy uporządkowanej według rangi akcji.
+Usługa Custom Decision Service podejmuje decyzje pojedynczo. Każda decyzja wymaga dokonania wyboru spośród kilku alternatywnych rozwiązań, czyli akcji. W zależności od aplikacji decyzja może wiązać się z wyborem jednej akcji lub (krótkiej) uporządkowanej listy akcji.
 
-Na przykład personalizowanie zaznaczenie artykułów na stronie frontonu witryny sieci Web. W tym miejscu akcji odpowiada artykułów i każdej decyzji jest artykuły, które do wyświetlenia dla danego użytkownika.
+Przykładem może być personalizacja artykułów wyświetlanych na stronie głównej witryny internetowej. W tym przypadku akcje odpowiadają artykułom, a każda decyzja sprowadza się do wyboru artykułów, które mają zostać zaprezentowane danemu użytkownikowi.
 
-Każda akcja jest reprezentowana przez wektor właściwości odtąd o nazwie *funkcji*. Można określić nowe funkcje, oprócz funkcji wyodrębnione automatycznie. Można także skonfigurować niestandardowe decyzji usługi logowania niektórych funkcji, ale je zignorować do uczenia maszynowego.
+Każda akcja jest reprezentowana przez wektor właściwości, zwanych odtąd *cechami*. Oprócz cech wyodrębnionych automatycznie można też określić nowe cechy. Możliwe jest też skonfigurowanie usługi Custom Decision Service w taki sposób, aby można było rejestrować niektóre cechy i jednocześnie ignorować je w przypadku uczenia maszynowego.
 
-### <a name="native-vs-internal-features"></a>Natywny, a funkcje wewnętrzne
+### <a name="native-vs-internal-features"></a>Porównanie cech natywnych i cech wewnętrznych
 
-Można określić funkcji w formacie najbardziej naturalny aplikacji, jest to numer, ciągu lub tablicy. Te funkcje są nazywane "funkcje native". Usługa niestandardowa decyzji tłumaczy każdej funkcji natywnego na jedną lub więcej funkcji liczbowego, nazywany "funkcji wewnętrznej."
+Cechy można określić w formacie najbardziej naturalnym dla danej aplikacji — może to być liczba, ciąg lub tablica. Cechy te są nazywane „cechami natywnymi”. Usługa Custom Decision Service tłumaczy każdą natywną cechę na jedną lub więcej cech liczbowych, zwanych „cechami wewnętrznymi”.
 
-Tłumaczenie na funkcji wewnętrznej jest następujący:
+Tłumaczenie na cechy wewnętrzne odbywa się następująco:
 
-- Funkcje numeryczne pozostają takie same.
-- tablica numeryczna umożliwia to kilka funkcji liczbowego, po jednej dla każdego elementu tablicy.
-- Funkcja ciągami `"Name":"Value"` jest domyślnie przetłumaczyć funkcji o nazwie `"NameValue"` , a wartość 1.
-- Opcjonalnie, ciąg może być reprezentowana jako [zbioru wyrazów](https://en.wikipedia.org/wiki/Bag-of-words_model). Wewnętrzna funkcja jest tworzona dla każdego wyrazu w ciągu, którego wartość jest liczbą wystąpień tego wyrazu.
-- Funkcje wewnętrzne wartości zero zostały pominięte.
+- Cechy liczbowe pozostają niezmienione.
+- Tablica liczbowa jest tłumaczona na kilka cech liczbowych — po jednej dla każdego elementu tablicy.
+- Cecha o wartości ciągu `"Name":"Value"` jest domyślnie tłumaczona na cechę o nazwie `"NameValue"` i wartości 1.
+- Opcjonalnie ciąg może być reprezentowany jako [zbiór wyrazów](https://en.wikipedia.org/wiki/Bag-of-words_model). Następnie tworzona jest cecha wewnętrzna dla każdego wyrazu w ciągu, której wartością jest liczba wystąpień tego wyrazu.
+- Cechy wewnętrzne o wartości zero są pomijane.
 
-### <a name="shared-vs-action-dependent-features"></a>Udostępniony, a funkcje zależne od akcji
+### <a name="shared-vs-action-dependent-features"></a>Porównanie cech wspólnych i cech zależnych od akcji
 
-Niektóre funkcje odnoszą się do całego decyzji i są takie same dla wszystkich akcji. Nazywamy je *Funkcje współużytkowane*. Niektóre inne funkcje są specyficzne dla określonej akcji. Nazywamy je *funkcje zależne od akcji* (AD FS).
+Niektóre cechy odnoszą się do całej decyzji i są takie same dla wszystkich akcji. Nazywamy je *cechami wspólnymi*. Niektóre inne cechy są specyficzne dla określonej akcji. Nazywamy je *cechami zależnymi od akcji*.
 
-W tym przykładzie uruchomionych udostępnione funkcje można opisano użytkownika i/lub stan świata. Funkcje, takie jak używanie funkcji geolokalizacji, wieku i płci użytkownika oraz głównych zdarzenia są wykonywane w tej chwili. Funkcje zależne od akcji można opisać właściwości danego artykułu, takich jak tematy omówione w tym artykule.
+W tym przykładzie cechy wspólne mogą opisywać użytkownika i/lub stan świata. Może to być np. geolokalizacja, wiek i płeć użytkownika oraz najważniejsze wydarzenia mające obecnie miejsce. Cechy zależne od akcji mogą opisywać właściwości danego artykułu, takie jak tematy, które są w nim poruszane.
 
-### <a name="interacting-features"></a>Wchodzącymi w interakcje funkcji
+### <a name="interacting-features"></a>Cechy interakcji
 
-Funkcje często "interakcji": efekt jednego zależy od innych użytkowników. Na przykład funkcja X jest Określa, czy użytkownik jest zainteresowana sportowych. Funkcja Y jest czy danym artykule o sportowych. Następnie wpływ funkcji Y jest wysoce zależna od funkcji X.
+Cechy często „wchodzą w interakcje”, co oznacza, że działanie jednej zależy od innych. Na przykład cecha X wskazuje, czy użytkownik jest zainteresowany sportem. Cecha Y wskazuje, czy dany artykuł dotyczy sportu. W ostateczności skutek cechy Y jest w dużym stopniu zależny od cechy X.
 
-Aby uwzględnić interakcji między funkcjami X i Y, Utwórz *kwadratową* funkcji, którego wartość jest X\*Y. (Również mówi, "cross" X i Y.) Możesz wybrać przekroczeniu którego pary funkcji.
-
-> [!TIP]
-> Funkcja udostępnionego powinien przekroczony o funkcje zależne od akcji celu wpłynąć ich pozycja. Funkcji zależnych od akcji powinna przekroczony z funkcjami udostępnionego aby przyczynić się do personalizacji.
-
-Innymi słowy funkcja udostępnionego nie przekroczyła z żadnych usług AD FS ma wpływ każdej akcji w taki sam sposób. ADF nie przekroczyła funkcją wspólną zbyt wpływ każdej decyzji. Tego typu funkcji może spowodować zmniejszenie wariancję szacuje osób trzecich.
-
-### <a name="implementation-via-namespaces"></a>Implementacja za pośrednictwem przestrzeni nazw
-
-Funkcje krzyżowej (a także innych koncepcji featurization) "VW wiersza polecenia" można zaimplementować w portalu. Składnia jest oparta na [Vowpal Wabbit](http://hunch.net/~vw/) wiersza polecenia.
-
-Centralnej do implementacji jest pojęcie *przestrzeni nazw*: nazwany podzestaw funkcji. Każdej funkcji należy dokładnie jedną przestrzeń nazw. Przestrzeń nazw może zostać określona jawnie, gdy wartość funkcji jest przekazane do usługi decyzji niestandardowe. Jest jedynym sposobem, aby odwołać się do funkcji w wierszu polecenia VW.
-
-Przestrzeń nazw jest "udostępniony" lub "działanie zależne od": składa się tylko z funkcji udostępnionych albo składa się tylko z funkcji działania zależne od tego samego działania.
+Aby uwzględnić interakcję między cechami X i Y, należy utworzyć cechę *drugiego stopnia*, której wartość to X\*Y. (Mówi się też o „krzyżowaniu” cech X i Y). Można wybrać, które pary cech zostaną skrzyżowane.
 
 > [!TIP]
-> Należy dobrze zawijanie funkcje w jawnie określonych przestrzeni nazw. Grupowanie powiązanych funkcji w tej samej przestrzeni nazw.
+> Cechę wspólną należy skrzyżować z cechami zależnymi od akcji, aby miała wpływ na ich pozycję. Aby wpływ na personalizację był zauważalny, cecha zależna od akcji powinna zostać skrzyżowana z cechami wspólnymi.
 
-Jeśli nie podano przestrzeni nazw, funkcję zostanie automatycznie przypisany do domyślnej przestrzeni nazw.
+Innymi słowy, cecha wspólna nieskrzyżowana z żadnymi cechami zależnymi od akcji wpływa na każdą akcję w taki sam sposób. Cecha zależna od akcji, która nie została skrzyżowana z żadną cechą wspólną, również wpływa na każdą decyzję. Tego typu cechy mogą zmniejszyć wariancję szacunków dotyczących nagrody.
+
+### <a name="implementation-via-namespaces"></a>Implementacja za pomocą przestrzeni nazw
+
+Cechy krzyżowe można zaimplementować (podobnie jak inne koncepcje związane z personalizacją) za pomocą wiersza polecenia VW w portalu. Składnia opiera się na wierszu polecenia [Vowpal Wabbit](http://hunch.net/~vw/).
+
+Decydującym znaczeniem dla implementacji jest koncepcja *przestrzeni nazw*, czyli nazwanego podzestawu cech. Każda cecha należy do dokładnie jednej przestrzeni nazw. Przestrzeń nazw można określić jawnie, gdy wartość cechy zostanie przekazana do usługi Custom Decision Service. To jest jedyny sposób odniesienia się do cechy w wierszu polecenia VW.
+
+Przestrzeń nazw jest „współdzielona” lub „zależna od akcji”. Oznacza to, że w ramach jednej akcji może składać się tylko z cech wspólnych lub tylko cech zależnych od akcji.
+
+> [!TIP]
+> Dobrą praktyką jest opakowanie cech w jawnie określonych przestrzeniach nazw. Należy pogrupować powiązane cechy w tej samej przestrzeni nazw.
+
+Jeśli nie określono przestrzeni nazw, cecha zostanie automatycznie przypisana do domyślnej przestrzeni nazw.
 
 > [!IMPORTANT]
-> Aby było spójne przez akcje nie są funkcje i przestrzenie nazw. W szczególności przestrzeni nazw może mieć różne funkcje dla różnych działań. Ponadto danej przestrzeni nazw można zdefiniować w przypadku niektórych działań, a nie inne.
+> Cechy i przestrzenie nazw nie muszą być spójne we wszystkich akcjach. Przestrzeń nazw może zawierać różne cechy dla różnych akcji. Co więcej, daną przestrzeń nazw można zdefiniować dla niektórych akcji, a dla innych już nie.
 
-Wiele wewnętrznych funkcji, które pochodzą z tej samej funkcji natywnego ciągami są zgrupowane w tej samej przestrzeni nazw. Dwie funkcje natywnego, które znajdują się w różnych przestrzeniach nazw są traktowane jako distinct, nawet jeśli ma taką samą nazwę funkcji.
+Wiele cech wewnętrznych pochodzących od tej samej cechy natywnej o wartości ciągu jest zgrupowanych w tej samej przestrzeni nazw. Dowolne dwie cechy natywne znajdujące się w różnych przestrzeniach nazw są traktowane jako odrębne — nawet jeśli mają taką samą nazwę.
 
 > [!IMPORTANT]
-> Identyfikatory długie, opisowe przestrzeni nazw są typowe, w wierszu polecenia VW nie rozróżnia przestrzeni nazw o identyfikatorze rozpoczyna się od tej samej litery. W jaki sposób identyfikatory przestrzeni nazw są jednej litery, takich jak `x` i `y`.
+> Chociaż występowanie długich i opisowych identyfikatorów przestrzeni nazw jest powszechne, to wiersz polecenia VW nie rozróżnia przestrzeni nazw, których identyfikator zaczyna się od tej samej litery. W dalszej części tego artykułu identyfikatory przestrzeni nazw są pojedynczymi literami: `x` i `y`.
 
-Szczegóły implementacji są następujące:
+Oto szczegóły dotyczące implementacji:
 
-- Przestrzenie nazw przetnie `x` i `y`, zapisać `-q xy` lub `--quadratic xy`. Następnie każdej funkcji w `x` przekroczeniu z każdej funkcji w `y`. Użyj `-q x:` przetnie `x` z każdej przestrzeni nazw, i `-q ::` przetnie wszystkie pary przestrzeni nazw.
+- Aby skrzyżować przestrzenie nazw `x` i `y`, wpisz polecenie `-q xy` lub `--quadratic xy`. To spowoduje, że każda cecha w przestrzeni nazw `x` zostanie skrzyżowana ze wszystkimi cechami w przestrzeni nazw `y`. Wpisz `-q x:`, aby skrzyżować przestrzeń nazw `x` z każdą przestrzenią nazw, oraz `-q ::`, aby skrzyżować wszystkie pary przestrzeni nazw.
 
-- Aby ignorować wszystkie funkcje w przestrzeni nazw `x`, zapis `--ignore x`.
+- Aby zignorować wszystkie cechy w przestrzeni nazw `x`, wpisz `--ignore x`.
 
-Te polecenia są stosowane do każdej akcji oddzielnie, zawsze, gdy są zdefiniowane w przestrzeni nazw.
+Te polecenia są stosowane do każdej akcji oddzielnie zawsze wtedy, gdy przestrzenie nazw są zdefiniowane.
 
-### <a name="estimated-average-as-a-feature"></a>Szacowany średni jako funkcja
+### <a name="estimated-average-as-a-feature"></a>Szacowana średnia jako cecha
 
-Jako eksperyment myśl jakie byłyby średni nagrody danego działania, jeśli zostały wybrane dla wszystkich decyzji dotyczących? Takie średni osób trzecich mogą służyć jako środek "ogólną jakość" tej akcji. Nie wiadomo, dokładnie zawsze, gdy inne akcje zostały wybrane zamiast w kilku decyzji. Jednak można oszacować za pośrednictwem wzmocnienie uczenia technik. Jakość ta szacowana zwykle zwiększa się wraz z upływem czasu.
+Przeprowadźmy mały eksperyment myślowy. Jaka byłaby średnia wartość nagrody danej akcji, gdyby została ona wybrana dla wszystkich decyzji? Taka średnia wartość nagrody może być wykorzystana jako miara „ogólnej jakości” tej akcji. Nie wiadomo dokładnie, kiedy inne akcje zostały wybrane zamiast niektórych decyzji. Można to jednak oszacować za pomocą technik uczenia przez wzmacnianie. Jakość tego oszacowania zazwyczaj ulega poprawie wraz z upływem czasu.
 
-Możesz dołączyć "szacowany średni opłatą" jako funkcja dla danego działania. Następnie usługa decyzji niestandardowe automatycznie zaktualizuje ta szacowana jako dociera do nowych danych. Ta funkcja jest nazywana *brzegowego funkcji* tej akcji. Funkcje brzegowego może służyć do uczenia maszynowego i inspekcji.
+Tę „szacowaną średnią wartość nagrody” można uwzględnić jako cechę danej akcji. Następnie usługa Custom Decision Service automatycznie zaktualizuje te dane szacunkowe wraz z pojawianiem się nowych danych. Taka cecha akcji nazywana jest *cechą krańcową*. Cechy krańcowe mogą być używane w ramach uczenia maszynowego oraz przeprowadzanej inspekcji.
 
-Aby dodać funkcje brzegowego, zapisać `--marginal <namespace>` w wierszu polecenia VW. Zdefiniuj `<namespace>` w formacie JSON w następujący sposób:
+Aby dodać cechy krańcowe, wpisz `--marginal <namespace>` w wierszu polecenia VW. Zdefiniuj wartość `<namespace>` w formacie JSON w następujący sposób:
 
 ```json
 {<namespace>: {"mf_name":1 "action_id":1}
 ```
 
-Wstaw ten obszar nazw oraz inne funkcje zależne od akcji dla danej akcji. Podaj tej definicji dla każdej decyzji korzystającej z tego samego `mf_name` i `action_id` dla wszystkich decyzji dotyczących.
+Dla danej akcji wstaw tę przestrzeń nazw wraz z innymi cechami zależnymi od akcji. Podaj tę definicję dla każdej decyzji, używając tych samych wartości `mf_name` i `action_id` dla wszystkich decyzji.
 
-Dodawana funkcja brzegowego dla każdej akcji z `<namespace>`. `action_id` Może być dowolną nazwą funkcji, który unikatowo identyfikuje akcji. Nazwa funkcji jest równa `mf_name`. W szczególności marginal funkcji za pomocą różnych `mf_name` są traktowane jako różne funkcje — wagi różnych jest rozpoznawane dla każdego `mf_name`.
+Cecha krańcowa jest dodawana do każdej akcji zawierającej wartość `<namespace>`. `action_id` może być dowolną nazwą cechy, która jednoznacznie identyfikuje akcję. Nazwę cechy ustawiono na `mf_name`. W szczególności cechy krańcowe o różnych nazwach `mf_name` są traktowane jako odmienne cechy — każda nazwa `mf_name` posiada inną wagę.
 
-Użycie domyślnej jest to, że `mf_name` jest taka sama dla wszystkich akcji. Następnie jednej udostępnionej dla wszystkich funkcji brzegowych.
+Domyślnie wartość `mf_name` jest taka sama dla wszystkich akcji. Następnie otrzymuje się jedną wagę dla wszystkich cech krańcowych.
 
-Można również określić wiele funkcji brzegowego na te same działania z tej samej wartości, ale nazw różnych funkcji.
+Można również określić wiele cech krańcowych dla tej samej akcji, z tymi samymi wartościami, ale z różnymi nazwami cech.
 
 ```json
 {<namespace>: {"mf_name1":1 "action_id":1 "mf_name2":1 "action_id":1}}
 ```
 
-### <a name="1-hot-encoding"></a>kodowanie 1 hot
+### <a name="1-hot-encoding"></a>Kodowanie 1-hot
 
-Można reprezentować niektórych funkcji wektory bit, w którym każdy bit odpowiada zakresowi możliwych wartości. Ten bit jest ustawiony na wartość 1, tylko wtedy, gdy funkcja znajduje się w tym zakresie. W związku z tym istnieje jeden bit "gorących", która jest ustawiona na 1, a inne są ustawione na 0. Taka reprezentacja jest często nazywana *1 hot kodowanie*.
+Niektóre cechy mogą być przedstawiane jako wektory bitowe, w których każdy bit odpowiada zakresowi możliwych wartości. Bit jest ustawiony na wartość 1, tylko wtedy, gdy cecha znajduje się w tym zakresie. W związku z tym istnieje jeden bit ustawiony na wartość 1, a pozostałe są ustawione na wartość 0. Taki sposób reprezentacji jest powszechnie nazywany *kodowaniem 1-hot*.
 
-Kodowanie 1 hot jest typowa dla kategorii funkcje takie jak "region geograficzny", które nie mają z założenia znaczący numeryczna reprezentacja. Jest również zalecane dla liczbowe funkcje, których wpływ na nagrody jest mogą być inne. Na przykład danym artykule może być istotne dla określonej grupy wieku i nie ma znaczenia dla wszystkich starszych lub młodszych.
+Kodowanie 1-hot jest typowe dla cech kategorii, takich jak „region geograficzny”, które nie mają z zasady istotnej reprezentacji liczbowej. Wskazane jest również, aby cechy liczbowe, których wpływ na nagrodę jest prawdopodobny, były nieliniowe. Na przykład dany artykuł może mieć znaczenie dla określonej grupy wiekowej i nie mieć znaczenia dla osób, które mają więcej i mniej lat.
 
-Dowolnej z ciągami funkcji jest 1 hot domyślnie zakodowane: różne funkcji wewnętrznej jest tworzona dla każdej możliwej wartości. 1 hot automatyczne kodowanie liczbowe funkcje i/lub zakresy niestandardowe nie są obecnie dostarczane.
+Dowolna cecha o wartości ciągu jest domyślnie kodowana typem 1-hot: dla każdej możliwej wartości tworzona jest odrębna cecha wewnętrzna. Automatyczne kodowanie 1-hot dla cech liczbowych z niestandardowymi zakresami nie jest obecnie dostępne.
 
 > [!TIP]
-> Algorytmów uczenia maszynowego w jednolity sposób traktować wszystkie możliwe wartości danej funkcji wewnętrznej: za pośrednictwem wspólnego "waga". Kodowanie 1 hot umożliwia oddzielne "waga" dla każdego zakresu wartości. Wprowadzania zakresy mniejszych prowadzi do lepszego korzyści po wystarczającej ilości danych zbieranych, ale może powodować zwiększenie ilości danych potrzebnych do zbieżne lepsze korzyści.
+> Algorytmy uczenia maszynowego traktują wszystkie możliwe wartości danej cechy wewnętrznej w jednolity sposób, opierając się na wspólnej „wadze”. Kodowanie 1-hot pozwala przyjmować oddzielną „wagę” dla każdego zakresu wartości. Zmniejszanie zakresów prowadzi do lepszej jakości nagród dostępnych po zebraniu wystarczającej ilości danych, ale może też zwiększyć ilość danych potrzebnych do uzyskania zbieżności z lepszymi nagrodami.
 
-## <a name="feature-specification-format-and-apis"></a>Funkcja specyfikacji: format i interfejsów API
+## <a name="feature-specification-format-and-apis"></a>Specyfikacja cech: format i interfejsy API
 
-Można określić funkcji za pośrednictwem kilka dodatkowych interfejsów API. Wszystkie interfejsy API Użyj wspólnego formatu JSON. Poniżej przedstawiono interfejsów API i format na poziomie koncepcyjnego. Specyfikacja jest uzupełnione schematu struktury Swagger.
+Cechy można określić za pomocą kilku dodatkowych interfejsów API. Wszystkie interfejsy API używają typowego formatu JSON. Poniżej przedstawiono interfejsy API oraz format na poziomie koncepcyjnym. Specyfikację uzupełnia schemat struktury Swagger.
 
-Podstawowe szablonu JSON w specyfikacji funkcja wygląda następująco:
+Podstawowy szablon JSON dotyczący specyfikacji cech jest następujący:
 
 ```json
 {
@@ -137,14 +139,14 @@ Podstawowe szablonu JSON w specyfikacji funkcja wygląda następująco:
 }
 ```
 
-W tym miejscu `<name>` i `<value>` podstawa dla funkcji nazwą i wartością funkcji, odpowiednio. `<value>` może być ciągiem, liczbą całkowitą, zmiennoprzecinkową, wartością logiczną lub tablicy. Funkcja nie zostały opakowane w przestrzeni nazw zostanie automatycznie przypisany do domyślnej przestrzeni nazw.
+W tym przypadku `<name>` i `<value>` oznaczają odpowiednio nazwę cechy i wartość cechy. `<value>` może być ciągiem, liczbą całkowitą, liczbą zmiennoprzecinkową, wartością logiczną lub tablicą. Cecha, której nie opakowano przestrzenią nazw, zostanie automatycznie przypisana do domyślnej przestrzeni nazw.
 
-Do reprezentowania ciągu jako zbioru słowa, Użyj specjalnych składni `"_text":"string"` zamiast `"<name>":<value>`. Ostatecznie osobnych funkcji wewnętrznej jest tworzony dla każdego wyrazu w ciągu. Jego wartość jest liczbą wystąpień tego wyrazu.
+Aby przedstawić ciąg w postaci zbioru wyrazów, należy użyć specjalnej składni `"_text":"string"` zamiast `"<name>":<value>`. W efekcie dla każdego wyrazu w ciągu tworzona jest osobna cecha wewnętrzna. Jego wartość jest liczbą wystąpień tego wyrazu.
 
-Jeśli `<name>` rozpoczyna się od "_" (i nie jest `"_text"`), funkcja jest ignorowane.
+Jeśli wartość `<name>` rozpoczyna się od „_” (i nie jest to `"_text"`), cecha jest ignorowana.
 
 > [!TIP]
-> Czasami scalania funkcji z wielu źródeł JSON. Dla wygody użytkownik może reprezentować je w następujący sposób:
+> Czasami scalane są cechy z wielu źródeł JSON. Dla ułatwienia mogą być reprezentowane w następujący sposób:
 >
 > ```json
 > {
@@ -154,22 +156,22 @@ Jeśli `<name>` rozpoczyna się od "_" (i nie jest `"_text"`), funkcja jest igno
 > }
 > ```
 
-W tym miejscu `<features>` odwołuje się do wcześniej zdefiniowane specyfikacji podstawowych funkcji. Lepszy "zagnieżdżenia" dozwolona liczba poziomów to, zbyt. Usługa niestandardowa decyzji automatycznie znajdzie "najgłębszym" obiektów JSON, które mogą być interpretowane jako `<features>`.
+W tym przypadku wartość `<features>` odwołuje się do podstawowej specyfikacji cech zdefiniowanej wcześniej. Dozwolone są również głębsze poziomy „zagnieżdżania”. Usługa Custom Decision Service automatycznie znajduje „najgłębiej” zagnieżdżone obiekty JSON, które mogą być interpretowane jako `<features>`.
 
-#### <a name="feature-set-api"></a>Interfejs API zestawu funkcji
+#### <a name="feature-set-api"></a>Interfejs Feature Set API
 
-Funkcja API ustawić zwraca listę funkcji w formacie JSON opisanych powyżej. Można użyć kilku funkcji ustawić punkty końcowe interfejsu API. Każdy punkt końcowy jest identyfikowany przez identyfikator zestawu funkcji i adresu URL. Mapowanie funkcji Ustaw identyfikatory, a adresy URL w portalu.
+Interfejs Feature Set API zwraca listę cech w omówionym wcześniej formacie JSON. Można użyć kilku punktów końcowych interfejsu Feature Set API. Każdy punkt końcowy jest identyfikowany przez identyfikator zestawu cech i adres URL. Ustawienia mapowania między identyfikatorami zestawów cech i adresami URL wprowadza się w portalu.
 
-Wywołania funkcji API ustawiony przez wstawienie odpowiedni identyfikator zestawu funkcji w odpowiednim miejscu w formacie JSON. Funkcje zależne od akcji Wywołanie jest automatycznie sparametryzowanych według identyfikatora akcji. Można określić wiele identyfikatorów zestaw funkcji dla tego samego działania.
+Aby wywołać interfejs Feature Set API, należy wstawić odpowiedni identyfikator zestawu cech we właściwym miejscu w pliku JSON. W przypadku cech zależnych od akcji wywołanie zostanie automatycznie sparametryzowane przez identyfikator akcji. Dla tej samej akcji można określić kilka identyfikatorów zestawu cech.
 
-#### <a name="action-set-api-json-version"></a>Akcja Ustaw API (wersja JSON)
+#### <a name="action-set-api-json-version"></a>Interfejs Action Set API (wersja w formacie JSON)
 
-Interfejs API akcji Ustaw ma wersję, w którym akcje i funkcje są określone w formacie JSON. Funkcji można określić jawnie i/lub za pośrednictwem interfejsów API funkcji ustawić. Wspólne funkcje można określić jeden raz dla wszystkich akcji.
+Interfejs Action Set API zawiera wersję, w której akcje i cechy są określane w formacie JSON. Cechy mogą być określone jawnie i/lub za pośrednictwem interfejsów Feature Set API. Cechy wspólne można określić jednorazowo dla wszystkich akcji.
 
-#### <a name="ranking-api-http-post-call"></a>Klasyfikacja interfejsu API (wywołanie HTTP POST)
+#### <a name="ranking-api-http-post-call"></a>Interfejs Ranking API (wywołanie metody HTTP POST)
 
-Klasyfikacja interfejsu API ma wersję, która używa wywołania metody POST protokołu HTTP. Treść tego wywołania Określa akcje i funkcje za pomocą elastycznych składni JSON.
+Interfejs Ranking API zawiera wersję, która używa wywołania metody HTTP POST. Treść tego wywołania określa akcje i cechy za pomocą elastycznej składni JSON.
 
-Akcje mogą być jawnie określona i/lub za pośrednictwem akcji Ustaw identyfikatorów. Po napotkaniu identyfikator zestawu działań jest wykonywane wywołanie odpowiednich akcji Ustaw punkt końcowy interfejsu API.
+Akcje mogą być określone jawnie i/lub za pośrednictwem identyfikatorów zestawu akcji. Za każdym razem, gdy napotkany zostanie identyfikator zestawu akcji, wykonywane jest wywołanie odpowiedniego punktu końcowego interfejsu Action Set API.
 
-Podobnie jak w przypadku akcji Ustaw API funkcji można określić jawnie i/lub za pośrednictwem interfejsów API funkcji ustawić. Wspólne funkcje można określić jeden raz dla wszystkich akcji.
+Podobnie jak w przypadku interfejsu Action Set API, cechy mogą być określone jawnie i/lub za pośrednictwem interfejsów Feature Set API. Cechy wspólne można określić jednorazowo dla wszystkich akcji.

@@ -1,309 +1,268 @@
 ---
-title: 'Szybki start: aktualizowanie bazy wiedzy za pomocą języka C# — QnA Maker'
+title: 'Szybki start: aktualizowanie bazy wiedzy — REST i C# — QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: W jaki sposób zaktualizować bazę wiedzy w języku C# w usłudze QnA Maker.
+description: Ten przewodnik Szybki start przeprowadzi Cię przez programowe aktualizowanie przykładowej bazy wiedzy usługi QnA Maker. Definicja JSON służąca do aktualizowania bazy wiedzy umożliwia dodawanie, zmienianie i usuwanie par pytań i odpowiedzi.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/01/2018
 ms.author: diberry
-ms.openlocfilehash: c07f2272ed370060fc7334dfe3c52514a726dc33
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 9fa57a02f11461a3ea9a08b7b1b101b143924037
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035831"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801697"
 ---
-# <a name="update-a-knowledge-base-in-c"></a>Aktualizowanie bazy wiedzy w języku C#
+# <a name="quickstart-update-a-qna-maker-knowledge-base-in-c"></a>Szybki start: aktualizowanie bazy wiedzy usługi QnA Maker w środowisku C#
 
-Poniższy kod aktualizuje istniejącą bazę wiedzy za pomocą metody [Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600).
+Ten przewodnik Szybki start przeprowadzi Cię przez proces programistycznego aktualizowania istniejącej bazy wiedzy usługi QnA Maker.  Ten kod JSON umożliwia zaktualizowanie bazy wiedzy przez dodanie nowych źródeł danych, zmianę źródeł danych lub usunięcie źródeł danych.
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-csharp-repo-note.md)]
+Użycie tego interfejsu API odpowiada edytowaniu i użyciu przycisku **Zapisz i przeszkol** w portalu usługi QnA Maker.
 
-Jeśli nie masz jeszcze bazy wiedzy, możesz utworzyć przykładową bazę na potrzeby tego podręcznika Szybki start: [Tworzenie nowej bazy wiedzy](create-new-kb-csharp.md).
+Ten przewodnik Szybki start wywołuje interfejsy API usługi QnA Maker:
+* [Aktualizacja](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) — model bazy wiedzy jest zdefiniowany w formacie JSON wysyłanym w treści żądania interfejsu API. 
+* [Pobieranie szczegółów operacji](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
 
-1. Utwórz nową aplikację konsolową .NET Framework w języku C# w preferowanym środowisku IDE.
-1. Dodaj kod przedstawiony poniżej.
-1. Zastąp wartość `key` prawidłowym kluczem subskrypcji.
-1. Zastąp wartość `kb` prawidłowym identyfikatorem bazy wiedzy. Znajdź tę wartość, przechodząc do jednej ze swoich [baz wiedzy usługi QnA Maker](https://www.qnamaker.ai/Home/MyServices). Wybierz bazę wiedzy, którą chcesz zaktualizować. Na jej stronie znajdź ciąg „kdid=” w adresie URL, jak pokazano poniżej. Użyj tej wartości w przykładzie kodu.
+## <a name="prerequisites"></a>Wymagania wstępne
+
+* Najnowsza [**wersja programu Visual Studio Community**](https://www.visualstudio.com/downloads/).
+* Musisz mieć [usługę QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Aby pobrać klucz, wybierz pozycję **Klucze** w obszarze **Zarządzanie zasobami** na pulpicie nawigacyjnym.
+* Identyfikator bazy wiedzy usługi QnA Maker dostępny w adresie URL w parametrze ciągu zapytania kbid, jak pokazano poniżej.
 
     ![Identyfikator bazy wiedzy usługi QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-1. Uruchom program.
+Jeśli nie masz jeszcze bazy wiedzy, możesz utworzyć przykładową bazę na potrzeby tego podręcznika Szybki start: [Tworzenie nowej bazy wiedzy](create-new-kb-csharp.md).
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-csharp-repo-note.md)]
+
+## <a name="create-knowledge-base-project"></a>Tworzenie projektu bazy wiedzy
+
+[!INCLUDE [Create Visual Studio Project](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-create-project.md)] 
+
+## <a name="add-required-dependencies"></a>Dodawanie wymaganych zależności
+
+[!INCLUDE [Add required dependencies to code file](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-required-dependencies.md)] 
+
+## <a name="add-required-constants"></a>Dodawanie wymaganych stałych
+
+[!INCLUDE [Add required constants to code file](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-required-constants.md)] 
+
+## <a name="add-knowledge-base-id"></a>Dodawanie identyfikatora bazy wiedzy
+
+[!INCLUDE [Add knowledge base ID as constant](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-kb-id.md)] 
+
+## <a name="add-the-kb-update-definition"></a>Dodawanie definicji aktualizacji bazy wiedzy
+
+Po dodaniu stałych dodaj poniższą definicję aktualizacji bazy wiedzy. Definicja aktualizacji zawiera trzy sekcje:
+
+* add
+* update
+* delete
+
+W jednym żądaniu wysyłanym do interfejsu API można użyć wszystkich tych sekcji. 
 
 ```csharp
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
-// NOTE: Install the Newtonsoft.Json NuGet package.
-using Newtonsoft.Json;
-
-namespace QnAMaker
+static string new_kb = @"
 {
-    class Program
-    {
-        // Represents the various elements used to create HTTP request URIs
-        // for QnA Maker operations.
-        static string host = "https://westus.api.cognitive.microsoft.com";
-        static string service = "/qnamaker/v4.0";
-        static string method = "/knowledgebases/";
-
-        // NOTE: Replace this with a valid subscription key.
-        static string key = "ADD KEY HERE";
-
-        // NOTE: Replace this with a valid knowledge base ID.
-        static string kb = "ADD ID HERE";
-
-        /// <summary>
-        /// Defines the data source used to update the knowledge base.
-        /// This JSON schema is based on your existing knowledge base.
-        /// In the 'update' object, the existing name is changed.
-        /// </summary>
-        static string new_kb = @"
-        {
-          'add': {
-            'qnaList': [
-              {
-                'id': 1,
-                'answer': 'You can change the default message if you use the QnAMakerDialog. See this for details: https://docs.botframework.com/en-us/azure-bot-service/templates/qnamaker/#navtitle',
-                'source': 'Custom Editorial',
-                'questions': [
-                  'How can I change the default message from QnA Maker?'
-                ],
-                'metadata': []
-              }
+    'add': {
+        'qnaList': [
+            {
+            'id': 1,
+            'answer': 'You can change the default message if you use the QnAMakerDialog. See this for details: https://docs.botframework.com/en-us/azure-bot-service/templates/qnamaker/#navtitle',
+            'source': 'Custom Editorial',
+            'questions': [
+                'How can I change the default message from QnA Maker?'
             ],
-            'urls': []
-          },
-          'update' : {
-            'name' : 'New KB Name'
-          },
-          'delete': {
-            'ids': [
-              0
-            ]
-          }
-        }
-        ";
-        /// <summary>
-        /// Represents the HTTP response returned by an HTTP request.
-        /// </summary>
-        public struct Response
-        {
-            public HttpResponseHeaders headers;
-            public string response;
-
-            public Response(HttpResponseHeaders headers, string response)
-            {
-                this.headers = headers;
-                this.response = response;
+            'metadata': []
             }
-        }
-
-        /// <summary>
-        /// Formats and indents JSON for display.
-        /// </summary>
-        /// <param name="s">The JSON to format and indent.</param>
-        /// <returns>A string containing formatted and indented JSON.</returns>
-        static string PrettyPrint(string s)
-        {
-            return JsonConvert.SerializeObject(JsonConvert.DeserializeObject(s), Formatting.Indented);
-        }
-
-        /// <summary>
-        /// Asynchronously sends a PATCH HTTP request.
-        /// </summary>
-        /// <param name="uri">The URI of the HTTP request.</param>
-        /// <param name="body">The body of the HTTP request.</param>
-        /// <returns>A <see cref="System.Threading.Tasks.Task{TResult}(QnAMaker.Program.Response)"/> 
-        /// object that represents the HTTP response."</returns>
-        async static Task<Response> Patch(string uri, string body)
-        {
-            using (var client = new HttpClient())
-            using (var request = new HttpRequestMessage())
-            {
-                request.Method = new HttpMethod("PATCH");
-                request.RequestUri = new Uri(uri);
-                request.Content = new StringContent(body, Encoding.UTF8, "application/json");
-                request.Headers.Add("Ocp-Apim-Subscription-Key", key);
-
-                var response = await client.SendAsync(request);
-                var responseBody = await response.Content.ReadAsStringAsync();
-                return new Response(response.Headers, responseBody);
-            }
-        }
-
-        /// <summary>
-        /// Asynchronously sends a GET HTTP request.
-        /// </summary>
-        /// <param name="uri">The URI of the HTTP request.</param>
-        /// <returns>A <see cref="System.Threading.Tasks.Task{TResult}(QnAMaker.Program.Response)"/> 
-        /// object that represents the HTTP response."</returns>
-        async static Task<Response> Get(string uri)
-        {
-            using (var client = new HttpClient())
-            using (var request = new HttpRequestMessage())
-            {
-                request.Method = HttpMethod.Get;
-                request.RequestUri = new Uri(uri);
-                request.Headers.Add("Ocp-Apim-Subscription-Key", key);
-
-                var response = await client.SendAsync(request);
-                var responseBody = await response.Content.ReadAsStringAsync();
-                return new Response(response.Headers, responseBody);
-            }
-        }
-
-        /// <summary>
-        /// Updates a knowledge base.
-        /// </summary>
-        /// <param name="kb">The ID for the existing knowledge base.</param>
-        /// <param name="new_kb">The new data source for the updated knowledge base.</param>
-        /// <returns>A <see cref="System.Threading.Tasks.Task{TResult}(QnAMaker.Program.Response)"/>
-        /// object that represents the HTTP response."</returns>
-        /// <remarks>Constructs the URI to update a knowledge base in QnA Maker,
-        /// then asynchronously invokes the <see cref="QnAMaker.Program.Patch(string, string)"/>
-        /// method to send the HTTP request.</remarks>
-        async static Task<Response> PostUpdateKB(string kb, string new_kb)
-        {
-            string uri = host + service + method + kb;
-            Console.WriteLine("Calling " + uri + ".");
-            return await Patch(uri, new_kb);
-        }
-
-        /// <summary>
-        /// Gets the status of the specified QnA Maker operation.
-        /// </summary>
-        /// <param name="operation">The QnA Maker operation to check.</param>
-        /// <returns>A <see cref="System.Threading.Tasks.Task{TResult}(QnAMaker.Program.Response)"/>
-        /// object that represents the HTTP response."</returns>
-        /// <remarks>Constructs the URI to get the status of a QnA Maker
-        /// operation, then asynchronously invokes the <see cref="QnAMaker.Program.Get(string)"/>
-        /// method to send the HTTP request.</remarks>
-        async static Task<Response> GetStatus(string operation)
-        {
-            string uri = host + service + operation;
-            Console.WriteLine("Calling " + uri + ".");
-            return await Get(uri);
-        }
-
-        /// <summary>
-        /// Updates a knowledge base, periodically checking status
-        /// until the knowledge base is updated.
-        /// </summary>
-        async static void UpdateKB(string kb, string new_kb)
-        {
-            try
-            {
-                // Starts the QnA Maker operation to update the knowledge base.
-                var response = await PostUpdateKB(kb, new_kb);
-
-                // Retrieves the operation ID, so the operation's status can be
-                // checked periodically.
-                var operation = response.headers.GetValues("Location").First();
-
-                // Displays the JSON in the HTTP response returned by the 
-                // PostUpdateKB(string, string) method.
-                Console.WriteLine(PrettyPrint(response.response));
-
-                // Iteratively gets the state of the operation updating the
-                // knowledge base. Once the operation state is something other
-                // than "Running" or "NotStarted", the loop ends.
-                var done = false;
-                while (true != done)
-                {
-                    // Gets the status of the operation.
-                    response = await GetStatus(operation);
-                    // Displays the JSON in the HTTP response returned by the
-                    // GetStatus(string) method.
-                    Console.WriteLine(PrettyPrint(response.response));
-
-                    // Deserialize the JSON into key-value pairs, to retrieve the
-                    // state of the operation.
-                    var fields = JsonConvert.DeserializeObject<Dictionary<string, string>>(response.response);
-
-                    // Gets and checks the state of the operation.
-                    String state = fields["operationState"];
-                    if (state.CompareTo("Running") == 0 || state.CompareTo("NotStarted") == 0)
-                    {
-                        // QnA Maker is still updating the knowledge base. The thread is
-                        // paused for a number of seconds equal to the Retry-After
-                        // header value, and then the loop continues.
-                        var wait = response.headers.GetValues("Retry-After").First();
-                        Console.WriteLine("Waiting " + wait + " seconds...");
-                        Thread.Sleep(Int32.Parse(wait) * 1000);
-                    }
-                    else
-                    {
-                        // QnA Maker has completed updating the knowledge base.
-                        done = true;
-                    }
-                }
-            }
-            catch
-            {
-                // An error occurred while updating the knowledge base. Ensure that
-                // you included your QnA Maker subscription key and knowledge base ID
-                // where directed in the sample.
-                Console.WriteLine("An error occurred while updating the knowledge base.");
-            }
-            finally
-            {
-                Console.WriteLine("Press any key to continue.");
-            }
-        }
-
-        static void Main(string[] args)
-        {
-            // Invoke the UpdateKB() method to update a knowledge base, periodically
-            // checking the status of the QnA Maker operation until the
-            // knowledge base is updated.
-            UpdateKB(kb, new_kb);
-
-            // The console waits for a key to be pressed before closing.
-            Console.ReadLine();
-        }
+        ],
+        'urls': []
+    },
+    'update' : {
+        'name' : 'QnA Maker FAQ from quickstart - updated'
+    },
+    'delete': {
+        'ids': [
+            0
+        ]
     }
 }
-
+";
 ```
 
-## <a name="understand-what-qna-maker-returns"></a>Informacje o danych zwracanych przez usługę QnA Maker
+## <a name="add-supporting-functions-and-structures"></a>Dodawanie pomocniczych funkcji i struktur
 
-Po pomyślnym przetworzeniu żądania jest zwracana odpowiedź w formacie JSON, jak pokazano w poniższym przykładzie. Wyniki mogą się nieznacznie różnić. Jeśli ostatnie wywołanie zwraca stan „Succeeded” (Powodzenie), baza wiedzy została zaktualizowana pomyślnie. Aby rozwiązać problemy, zapoznaj się z kodami odpowiedzi interfejsu API usługi QnA Maker w artykule dotyczącym [aktualizowania baz wiedzy](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600).
+[!INCLUDE [Add supporting functions and structures](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-support-functions.md)] 
 
-```json
+## <a name="add-patch-request-to-update-kb"></a>Dodawanie żądania PATCH w celu zaktualizowania bazy wiedzy
+
+Poniższy kod umożliwia wysłanie żądania HTTPS do interfejsu API usługi QnA Maker w celu zaktualizowania grup pytań i odpowiedzi w bazie wiedzy oraz odebranie odpowiedzi:
+
+```csharp
+async static Task<Response> PatchUpdateKB(string kb, string new_kb)
+{
+    string uri = host + service + method + kb;
+    Console.WriteLine("Calling " + uri + ".");
+
+    using (var client = new HttpClient())
+    using (var request = new HttpRequestMessage())
+    {
+        request.Method = new HttpMethod("PATCH");
+        request.RequestUri = new Uri(uri);
+
+        request.Content = new StringContent(new_kb, Encoding.UTF8, "application/json");
+        request.Headers.Add("Ocp-Apim-Subscription-Key", key);
+
+        var response = await client.SendAsync(request);
+        var responseBody = await response.Content.ReadAsStringAsync();
+        return new Response(response.Headers, responseBody);
+    }
+}
+```
+
+## <a name="add-get-request-to-determine-creation-status"></a>Dodawanie żądania GET w celu ustalenia stanu tworzenia
+
+Aktualizacja bazy wiedzy umożliwia dodawanie, aktualizowanie oraz usuwanie par pytań i odpowiedzi. 
+
+```csharp
+async static Task<Response> GetStatus(string operation)
+{
+    string uri = host + service + operation;
+    Console.WriteLine("Calling " + uri + ".");
+
+    using (var client = new HttpClient())
+    using (var request = new HttpRequestMessage())
+    {
+        request.Method = HttpMethod.Get;
+        request.RequestUri = new Uri(uri);
+        request.Headers.Add("Ocp-Apim-Subscription-Key", key);
+
+        var response = await client.SendAsync(request);
+        var responseBody = await response.Content.ReadAsStringAsync();
+        return new Response(response.Headers, responseBody);
+    }
+}
+```
+
+To wywołanie interfejsu API zwraca odpowiedź w formacie JSON, która zawiera stan operacji: 
+
+```JSON
 {
   "operationState": "NotStarted",
-  "createdTimestamp": "2018-04-13T01:49:48Z",
-  "lastActionTimestamp": "2018-04-13T01:49:48Z",
-  "userId": "2280ef5917bb4ebfa1aae41fb1cebb4a",
-  "operationId": "5156f64e-e31d-4638-ad7c-a2bdd7f41658"
+  "createdTimestamp": "2018-09-26T05:22:53Z",
+  "lastActionTimestamp": "2018-09-26T05:22:53Z",
+  "userId": "XXX9549466094e1cb4fd063b646e1ad6",
+  "operationId": "177e12ff-5d04-4b73-b594-8575f9787963"
 }
-...
-{
-  "operationState": "Succeeded",
-  "createdTimestamp": "2018-04-13T01:49:48Z",
-  "lastActionTimestamp": "2018-04-13T01:49:50Z",
-  "resourceLocation": "/knowledgebases/140a46f3-b248-4f1b-9349-614bfd6e5563",
-  "userId": "2280ef5917bb4ebfa1aae41fb1cebb4a",
-  "operationId": "5156f64e-e31d-4638-ad7c-a2bdd7f41658"
-}
-Press any key to continue.
 ```
 
-Zaktualizowaną bazę wiedzy można wyświetlić w portalu usługi QnA Maker, na stronie [My knowledge bases (Moje bazy wiedzy)](https://www.qnamaker.ai/Home/MyServices). Zwróć uwagę, że nazwa bazy wiedzy została zmieniona, na przykład baza wiedzy „QnA Maker FAQ” (lub nazwa wcześniej istniejącej bazy danych) to teraz „New KB Name”.
+Powtarzaj wywołanie do momentu uzyskania stanu powodzenia lub niepowodzenia: 
 
-Aby zmodyfikować inne elementy bazy wiedzy, zapoznaj się ze [schematem w formacie JSON](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) usługi QnA Maker i zmodyfikuj ciąg `new_kb`.
+```JSON
+{
+  "operationState": "Succeeded",
+  "createdTimestamp": "2018-09-26T05:22:53Z",
+  "lastActionTimestamp": "2018-09-26T05:23:08Z",
+  "resourceLocation": "/knowledgebases/XXX7892b-10cf-47e2-a3ae-e40683adb714",
+  "userId": "XXX9549466094e1cb4fd063b646e1ad6",
+  "operationId": "177e12ff-5d04-4b73-b594-8575f9787963"
+}
+```
+
+## <a name="add-updatekb-method"></a>Dodawanie metody UpdateKB
+Poniższa metoda aktualizuje bazę wiedzy i powtarza sprawdzanie stanu. Tworzenie bazy wiedzy może nieco potrwać, dlatego musisz powtarzać wywołania sprawdzenia stanu do czasu uzyskania stanu powodzenia lub niepowodzenia.
+
+```csharp
+async static void UpdateKB(string kb, string new_kb)
+{
+    try
+    {
+        // Starts the QnA Maker operation to update the knowledge base.
+        var response = await PatchUpdateKB(kb, new_kb);
+
+        // Retrieves the operation ID, so the operation's status can be
+        // checked periodically.
+        var operation = response.headers.GetValues("Location").First();
+
+        // Displays the JSON in the HTTP response returned by the 
+        // PostUpdateKB(string, string) method.
+        Console.WriteLine(PrettyPrint(response.response));
+
+        // Iteratively gets the state of the operation updating the
+        // knowledge base. Once the operation state is something other
+        // than "Running" or "NotStarted", the loop ends.
+        var done = false;
+        while (true != done)
+        {
+            // Gets the status of the operation.
+            response = await GetStatus(operation);
+            // Displays the JSON in the HTTP response returned by the
+            // GetStatus(string) method.
+            Console.WriteLine(PrettyPrint(response.response));
+
+            // Deserialize the JSON into key-value pairs, to retrieve the
+            // state of the operation.
+            var fields = JsonConvert.DeserializeObject<Dictionary<string, string>>(response.response);
+
+            // Gets and checks the state of the operation.
+            String state = fields["operationState"];
+            if (state.CompareTo("Running") == 0 || state.CompareTo("NotStarted") == 0)
+            {
+                // QnA Maker is still updating the knowledge base. The thread is
+                // paused for a number of seconds equal to the Retry-After
+                // header value, and then the loop continues.
+                var wait = response.headers.GetValues("Retry-After").First();
+                Console.WriteLine("Waiting " + wait + " seconds...");
+                Thread.Sleep(Int32.Parse(wait) * 1000);
+            }
+            else
+            {
+                // QnA Maker has completed updating the knowledge base.
+                done = true;
+            }
+        }
+    }
+    catch(Exception ex)
+    {
+        // An error occurred while updating the knowledge base. Ensure that
+        // you included your QnA Maker subscription key and knowledge base ID
+        // where directed in the sample.
+        Console.WriteLine("An error occurred while updating the knowledge base." + ex.InnerException);
+    }
+    finally
+    {
+        Console.WriteLine("Press any key to continue.");
+    }
+}
+```
+
+## <a name="add-the-updatekb-method-to-main"></a>Dodawanie metody UpdateKB do metody Main
+
+Zmień metodę Main, aby wywoływała metodę UpdateKB:
+
+```csharp
+static void Main(string[] args)
+{
+    // Invoke the UpdateKB() method to update a knowledge base, periodically
+    // checking the status of the QnA Maker operation until the
+    // knowledge base is updated.
+    UpdateKB(kb, new_kb);
+
+    // The console waits for a key to be pressed before closing.
+    Console.ReadLine();
+}
+```
+
+
+## <a name="build-and-run-the-program"></a>Kompilowanie i uruchamianie programu
+
+Skompiluj i uruchom program. Program automatycznie wyśle żądanie do interfejsu API usługi QnA Maker, aby zaktualizować bazę wiedzy, a następnie będzie sondować wyniki co 30 sekund. Każda odpowiedź jest wypisywana w oknie konsoli.
+
+Zaktualizowaną bazę wiedzy można wyświetlić w portalu usługi QnA Maker, na stronie [My knowledge bases (Moje bazy wiedzy)](https://www.qnamaker.ai/Home/MyServices). 
 
 ## <a name="next-steps"></a>Następne kroki
 

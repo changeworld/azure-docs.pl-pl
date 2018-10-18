@@ -1,36 +1,37 @@
 ---
-title: Szybki start Python interfejsu API rozpoznawania emocji — warstwa | Dokumentacja firmy Microsoft
-description: Pobierz informacje i przykładowy kod w celu szybkiego Rozpoczynanie pracy przy użyciu interfejsu API rozpoznawania emocji — warstwa języka Python w usługach kognitywnych.
+title: 'Szybki start: rozpoznawanie emocji na twarzach na obrazie — interfejs API rozpoznawania emocji, Python'
+description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API rozpoznawania emocji z językiem Python.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/05/2018
 ms.author: anroth
-ms.openlocfilehash: ff1f6b2ddc872d0ee63d9885b04b1f007bc86e33
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: c7611628918cf40800d173dc9404b0948b9a68a4
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347037"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48236571"
 ---
-# <a name="emotion-api-python-quickstart"></a>Szybki Start Python interfejsu API rozpoznawania emocji — warstwa
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Szybki start: tworzenie aplikacji do rozpoznawania emocji na twarzach na obrazie.
 
 > [!IMPORTANT]
-> Podgląd wideo interfejsu API upłynął 30 października 2017 r. Testowanie nowego [wideo indeksatora interfejsu API w wersji zapoznawczej](https://azure.microsoft.com/services/cognitive-services/video-indexer/) można łatwo wyodrębnić szczegółowych informacji z wideo i celu ułatwienia pracy funkcję odnajdowania zawartości, takich jak wyniki wyszukiwania został określony poprzez wykrycie słowa rozmowy, kroje znaków i emocji. [Dowiedz się więcej](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
+> Interfejs API rozpoznawania emocji zostanie wycofany w dniu 15 lutego 2019 r. Rozpoznawanie emocji jest teraz ogólnie dostępne jako część [interfejsu API rozpoznawania twarzy](https://docs.microsoft.com/azure/cognitive-services/face/). 
 
-Ten przewodnik zawiera informacje i przykłady kodu, aby szybko rozpocząć korzystanie z [metody rozpoznaje interfejsu API rozpoznawania emocji — warstwa](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) języka Python do rozpoznawania emocji wyrażonych przez osoby na obrazie. 
+Ten przewodnik zawiera informacje i przykłady kodu, które pomogą w szybkim rozpoczęciu korzystania z [metody Recognize interfejsu API rozpoznawania emocji](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) z językiem Python do rozpoznawania emocji wyrażonych przez co najmniej jedną osobę na obrazie.
 
-W tym przykładzie można uruchomić jako notesu Jupyter na [MyBinder](https://mybinder.org) , klikając polecenie Uruchom integratora znaczków: [ ![integratora](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=EmotionAPI.ipynb)
+Ten przykład można uruchomić jako notes programu Jupyter w witrynie [MyBinder](https://mybinder.org). W tym celu należy kliknąć ikonę uruchamiania usługi Binder: [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=EmotionAPI.ipynb)
 
 
 ## <a name="prerequisite"></a>Wymagania wstępne
-Uzyskaj swój klucz bezpłatnej subskrypcji [tutaj](https://azure.microsoft.com/try/cognitive-services/)
+Pobierz swój bezpłatny klucz subskrypcji [stąd](https://azure.microsoft.com/try/cognitive-services/)
 
-## <a name="running-the-walkthrough"></a>Uruchomiona przewodnika
-Aby kontynuować, z tym przewodnikiem, Zastąp `subscription_key` przy użyciu klucza interfejsu API uzyskanymi wcześniej.
+## <a name="running-the-walkthrough"></a>Uruchamianie przewodnika
+Aby kontynuować pracę z tym przewodnikiem, zastąp element `subscription_key` uzyskanym wcześniej kluczem interfejsu API.
 
 
 ```python
@@ -38,29 +39,29 @@ subscription_key = None
 assert subscription_key
 ```
 
-Następnie sprawdź, czy adres URL usługi odnosi się do regionu, używane podczas konfigurowania klucz interfejsu API. Jeśli używasz klucza wersji próbnej, nie trzeba wprowadzać żadnych zmian.
+Następnie upewnij się, że adres URL usługi jest zgodny z regionem użytym podczas konfigurowania klucza interfejsu API. Jeśli używasz klucza wersji próbnej, nie musisz wprowadzać żadnych zmian.
 
 
 ```python
 emotion_recognition_url = "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize"
 ```
 
-W tym przewodniku zastosowano obrazów, które są przechowywane na dysku. Można również użyć obrazów, które są dostępne za pośrednictwem publicznie dostępny adres URL. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API REST](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa).
+Obrazy używane w tym przewodniku są przechowywane na dysku. Można również używać obrazów dostępnych za pośrednictwem publicznego adresu URL. Więcej informacji zawiera [dokumentacja interfejsu API REST](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa).
 
-Ponieważ dane obrazu są przekazywane jako część treści żądania, zwróć uwagę, należy ustawić `Content-Type` nagłówka do `application/octet-stream`. Jeśli obraz jest przekazywany za pomocą adresu URL, pamiętaj, aby ustawić nagłówka:
+Ponieważ dane obrazu są przekazywane jako część treści żądania, nagłówek `Content-Type` musisz ustawić na wartość `application/octet-stream`. Jeśli przekazujesz obraz za pośrednictwem adresu URL, pamiętaj, aby ustawić nagłówek na wartość:
 ```python
 header = {'Ocp-Apim-Subscription-Key': subscription_key }
 ```
-Utwórz słownik zawierający adres URL:
+utworzyć słownik zawierający adres URL:
 ```python
 data = {'url': image_url}
 ```
-i że w celu przekazania `requests` przy użyciu biblioteki:
+i przekazać ten element do biblioteki `requests` przy użyciu kodu:
 ```python
 requests.post(emotion_recognition_url, headers=headers, json=image_data)
 ```
 
-Należy najpierw pobrać kilka przykładowych obrazów z [API rozpoznawania emocji — warstwa](https://azure.microsoft.com/services/cognitive-services/emotion/) lokacji.
+Najpierw pobierz kilka przykładowych obrazów z witryny [interfejsu API rozpoznawania emocji](https://azure.microsoft.com/services/cognitive-services/emotion/).
 
 
 ```bash
@@ -101,9 +102,9 @@ analysis
 
 
 
-Zwrócony obiekt JSON zawiera obwiedni powierzchnie, które zostały rozpoznane wraz z wykrytym emocji. Każdego emocji jest skojarzony z wynikiem od 0 do 1, gdzie więcej świadczy o emocji niż niższa wynik jest więcej punktów. 
+Zwrócony obiekt JSON zawiera pola ograniczenia rozpoznanych twarzy wraz z wykrytymi emocjami. Poszczególne emocje są skojarzone z wynikami z zakresu od 0 do 1, przy czym większa wartość oznacza większą pewność występowania danej emocji.
 
-Następujące wiersze kodu wykrytych emocji na stronach za pomocą obrazu `matplotlib` biblioteki. Aby zwiększyć czytelność, wyświetlane są tylko górny emocji trzy.
+Następujące wiersze kodu umożliwiają wykrywanie emocji na twarzach na obrazie za pomocą biblioteki `matplotlib`. Aby zwiększyć czytelność, przedstawiono kod dotyczący wykrywania tylko trzech emocji.
 
 
 ```python
@@ -129,7 +130,7 @@ for face in analysis:
 _ = plt.axis("off")
 ```
 
-`annotate_image` Funkcja wyświetlane dalej może służyć do nakładki emocji u góry pliku obrazu z podanej ścieżki w systemie plików. Jest on oparty na kod wywołanie interfejsu API rozpoznawania emocji — warstwa przedstawiona wcześniej.
+Funkcja `annotate_image` może zostać użyta do nałożenia emocji na obraz o podanej ścieżce w systemie plików. Jest ona oparta na wcześniejszym kodzie służącym do wywoływania interfejsu API rozpoznawania emocji.
 
 
 ```python
@@ -156,7 +157,7 @@ def annotate_image(image_path):
     _ = plt.axis("off")
 ```
 
-Na koniec `annotate_image` funkcja może zostać wywołana w pliku obrazu, jak pokazano w następującym wierszu:
+Na koniec funkcję `annotate_image` można wywołać dla pliku obrazu, co pokazano poniżej:
 
 
 ```python

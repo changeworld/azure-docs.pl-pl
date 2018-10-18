@@ -8,26 +8,25 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 6/27/2018
 ms.author: dineshm
-ms.openlocfilehash: 7d951a959da28187a5971ee218f2bd921d331727
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: fd9dfaa2042cae0923c919f4e76d7b59a170918e
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301802"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46466034"
 ---
 # <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Samouczek: uzyskiwanie dostępu do danych usługi Azure Data Lake Storage Gen2 w wersji zapoznawczej za pomocą usługi Azure Databricks i platformy Spark
 
-Z tego samouczka dowiesz się, jak uruchamiać w klastrze usługi Azure Databricks zapytania platformy Spark dotyczące danych na koncie z możliwością obsługi usługi Azure Data Lake Storage Gen2 w wersji zapoznawczej.
+Z tego samouczka dowiesz się, jak uruchamiać w klastrze usługi Azure Databricks zapytania platformy Apache Spark dotyczące danych na koncie z możliwością obsługi usługi Azure Data Lake Storage Gen2 w wersji zapoznawczej.
 
 > [!div class="checklist"]
 > * Tworzenie klastra usługi Databricks
 > * Pozyskiwanie danych bez struktury na koncie magazynu
-> * Wyzwalanie funkcji platformy Azure w celu przetwarzania danych
 > * Uruchamianie analiz dotyczących danych w magazynie obiektów blob
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym samouczku przedstawiono sposób używania danych dotyczących lotów udostępnianych przez [Departament Transportu Stanów Zjednoczonych](https://transtats.bts.gov/Tables.asp?DB_ID=120&DB_Name=Airline%20On-Time%20Performance%20Data&DB_Short_Name=On-Time) i wykonywania na nich zapytań. Pobierz dane dotyczące linii lotniczych obejmujące co najmniej dwa lata (zaznaczając wszystkie pola) i zapisz wyniki na maszynie. Pamiętaj o zanotowaniu nazwy i ścieżki pobranego pliku. Te informacje będą potrzebne później.
+W tym samouczku przedstawiono sposób używania danych dotyczących lotów udostępnianych przez [Departament Transportu Stanów Zjednoczonych](https://transtats.bts.gov/Tables.asp?DB_ID=120&DB_Name=Airline%20On-Time%20Performance%20Data&DB_Short_Name=On-Time) i wykonywania na nich zapytań. Pobierz dane dotyczące linii lotniczych obejmujące co najmniej dwa lata (zaznaczając wszystkie pola) i zapisz wyniki na swoim komputerze. Pamiętaj o zanotowaniu nazwy i ścieżki pobranego pliku. Te informacje będą potrzebne później.
 
 > [!NOTE]
 > Kliknij pole wyboru **Prezipped file** (Wstępnie spakowany plik), aby zaznaczyć wszystkie pola danych. Pobrane dane będą miały rozmiar wielu gigabajtów, ale taka ilość danych jest potrzebna do analizy.
@@ -36,11 +35,8 @@ W tym samouczku przedstawiono sposób używania danych dotyczących lotów udost
 
 Aby rozpocząć, utwórz nowe [konto usługi Azure Data Lake Storage 2. generacji](quickstart-create-account.md) i nadaj mu unikatową nazwę. Następnie przejdź do tego konta magazynu i pobierz ustawienia konfiguracji.
 
-> [!IMPORTANT]
-> W wersji zapoznawczej funkcje Azure Functions działają tylko z kontami usługi Azure Data Lake Storage 2. generacji utworzonymi przy użyciu płaskiego obszaru nazw.
-
 1. W obszarze **Ustawienia** kliknij pozycję **Klucze dostępu**.
-3. Kliknij przycisk **Kopiuj** obok pozycji **klucz1**, aby skopiować wartość klucza.
+2. Kliknij przycisk **Kopiuj** obok pozycji **klucz1**, aby skopiować wartość klucza.
 
 Nazwa konta i klucz są wymagane do wykonania kolejnych kroków w tym samouczku. Otwórz edytor tekstu i zapisz nazwę konta oraz klucz do późniejszego użycia.
 
@@ -74,7 +70,7 @@ Następnym krokiem jest utworzenie [klastra usługi Databricks](https://docs.azu
 
 ### <a name="copy-source-data-into-the-storage-account"></a>Kopiowanie danych źródłowych na konto magazynu
 
-Następnym zadaniem jest skopiowanie danych z pliku *csv* do usługi Azure Storage za pomocą narzędzia AzCopy. Otwórz okno wiersza polecenia i wpisz następujące polecenia. Pamiętaj o zastąpieniu symboli zastępczych `<DOWNLOAD_FILE_PATH>`, `<ACCOUNT_NAME>` i `<ACCOUNT_KEY>` odpowiednimi wartościami zapisanymi w poprzednim kroku.
+Następnym zadaniem jest skopiowanie danych z pliku *csv* do usługi Azure Storage za pomocą narzędzia AzCopy. Otwórz okno wiersza polecenia i wpisz następujące polecenia. Pamiętaj o zastąpieniu symboli zastępczych `<DOWNLOAD_FILE_PATH>`, , i `<ACCOUNT_KEY>` odpowiednimi wartościami zapisanymi w poprzednim kroku.
 
 ```bash
 set ACCOUNT_NAME=<ACCOUNT_NAME>
@@ -141,7 +137,7 @@ dbutils.fs.help()
 dbutils.fs.put(source + "/temp/1.txt", "Hello, World!", True)
 dbutils.fs.ls(source + "/temp/parquet/flights")
 ```
-Przy użyciu tego przykładowego kodu możesz eksplorować hierarchię systemu plików HDFS na przykładzie danych przechowywanych na koncie usługi Azure Data Lake Storage 2. generacji.
+Przy użyciu tego przykładowego kodu możesz eksplorować hierarchię systemu plików HDFS na przykładzie danych przechowywanych na koncie usługi Azure Data Lake Storage Gen2.
 
 ## <a name="query-the-data"></a>Wykonywanie zapytań na danych
 
@@ -159,7 +155,7 @@ Aby utworzyć ramki danych dla źródeł danych, uruchom następujący skrypt:
 acDF = spark.read.format('csv').options(header='true', inferschema='true').load(accountsource + "/<YOUR_CSV_FILE_NAME>.csv")
 acDF.write.parquet(accountsource + '/parquet/airlinecodes')
 
-#read the existing parquet file for the flights database that was created via the Azure Function
+#read the existing parquet file for the flights database that was created earlier
 flightDF = spark.read.format('parquet').options(header='true', inferschema='true').load(accountsource + "/parquet/flights")
 
 #print the schema of the dataframes

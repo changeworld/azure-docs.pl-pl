@@ -1,40 +1,41 @@
 ---
-title: C# szybkiego startu dla usług Azure kognitywnych, wyszukiwania wiadomości Bing interfejsu API | Dokumentacja firmy Microsoft
-description: Pobierz informacje i przykładowy kod w celu szybkiego Rozpoczynanie pracy przy użyciu interfejsu API wyszukiwania usługi Bing wiadomości w kognitywnych usług Microsoft Azure.
+title: 'Szybki start: interfejs API wyszukiwania wiadomości Bing, C#'
+titlesuffix: Azure Cognitive Services
+description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API wyszukiwania wiadomości Bing.
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 0364d5754539c0e83318d595fd00b3e7b7e79c08
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 48c6bf413ab2b5a45b5daa54ad31afe2c0fdf8f1
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349188"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804270"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-c"></a>Szybki Start dla usługi Bing wiadomości wyszukiwanie interfejsu API w języku C#
+# <a name="quickstart-bing-news-search-api-with-c"></a>Szybki start: interfejs API wyszukiwania wiadomości Bing w środowisku języka C#
 
-W tym artykule przedstawiono sposób użycia interfejsu API wyszukiwania usługi Bing, część kognitywnych usług Microsoft Azure. W tym artykule używa języka C#, interfejsu API jest zgodny z żadnego języka programowania, które mogą wysyłać żądania HTTP i przeanalizować składni JSON usługi sieci RESTful Web. 
+W tym artykule pokazano, jak używać interfejsu API wyszukiwania Bing, który jest częścią usług Microsoft Cognitive Services na platformie Azure. Chociaż ten artykuł dotyczy języka C#, ten interfejs API jest usługą sieci Web w architekturze RESTful, zgodną z dowolnym językiem programowania, który może wykonywać żądania HTTP i analizować format JSON. 
 
-Przykładowy kod został napisany w języku C# jako aplikację .NET Core z minimalnym zależności zewnętrzne, dlatego można również uruchomić w systemie Linux lub Mac OS X przy użyciu Mono.
+Przykładowy kod został napisany w języku C# w formie aplikacji platformy .NET Core z minimalnym zależnościami zewnętrznymi, aby można go było również uruchomić w systemie Linux lub Mac OS X przy użyciu rozwiązania Mono.
 
-Zapoznaj się [dokumentacja interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) uzyskać szczegółowe informacje techniczne dotyczące interfejsów API.
+Zapoznaj się z [dokumentacją interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference), aby uzyskać szczegółowe informacje techniczne dotyczące interfejsów API.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Musi mieć [kognitywnych interfejsu API usług konta](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsy API wyszukiwania usługi Bing**. [Bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca dla tego przewodnika Szybki Start. Konieczne będzie klucz dostępu podany przy wywołaniu metody aktywacji bezpłatną wersję próbną lub może używać klucza płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.
+Trzeba mieć [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do **interfejsów API wyszukiwania Bing**. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca na potrzeby tego przewodnika Szybki start. Potrzebny będzie klucz dostępu podany przy aktywacji bezpłatnej wersji próbnej lub klucz płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.
 
-## <a name="bing-news-search"></a>Wyszukiwania usługi Bing wiadomości
+## <a name="bing-news-search"></a>Wyszukiwanie wiadomości Bing
 
-[Interfejsu API wyszukiwania wiadomości Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) zwraca wyniki wyszukiwania wiadomości Bing aparatu wyszukiwania.
+[Interfejs API wyszukiwania wiadomości Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) zwraca wyniki wyszukiwania wiadomości z wyszukiwarki Bing.
 
-1. Utwórz nowe rozwiązanie konsoli w programie Visual Studio (Community Edition jest poprawnie).
-1. Zastąp plik Program.cs kodem poniżej.
-1. Zastąp `accessKey` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
+1. Utwórz nowe rozwiązanie konsolowe w programie Visual Studio (wersja Community Edition jest wystarczająca).
+1. Zastąp plik Program.cs kodem przedstawionym poniżej.
+1. Zastąp wartość `accessKey` kluczem dostępu właściwym dla Twojej subskrypcji.
 1. Uruchom program.
 
 ```csharp
@@ -190,7 +191,7 @@ namespace BingNewsSearchCSharpCore
 
 **Odpowiedź**
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie:
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie:
 
 ```json
 {
@@ -283,10 +284,10 @@ Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Wiadomości stronicowania](paging-news.md)
-> [wyróżnianie tekstu przy użyciu znaczników decoration](hit-highlighting.md)
-> [wyszukiwanie w sieci web dla wiadomości](search-the-web.md)  
-> [Wypróbuj](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)
+> [Stronicowanie wiadomości](paging-news.md)
+> [Wyróżnianie tekstu przy użyciu znaczników dekoracji](hit-highlighting.md)
+> [Wyszukiwanie wiadomości w Internecie](search-the-web.md)  
+> [Wypróbuj!](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)

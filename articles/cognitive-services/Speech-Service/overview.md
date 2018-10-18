@@ -9,18 +9,19 @@ ms.component: speech-service
 ms.topic: overview
 ms.date: 09/24/2018
 ms.author: v-jerkin
-ms.openlocfilehash: c12cd754d9979683fac4b819739d53e78ab9259c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b014144dd819aa354596175068bfb2c5905a4377
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990199"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857996"
 ---
 # <a name="what-is-the-speech-service"></a>Czym jest usługa rozpoznawania mowy?
 
-Usługa rozpoznawania mowy łączy w sobie funkcje mowy platformy Azure dostępne uprzednio za pośrednictwem [interfejsu API rozpoznawania mowy Bing](https://docs.microsoft.com/azure/cognitive-services/speech/home), [interfejsu API tłumaczenia mowy w usłudze Translator](https://docs.microsoft.com/azure/cognitive-services/translator-speech/) oraz usług [Custom Speech](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home) i [Custom Voice](http://customvoice.ai/). Teraz jedna subskrypcja zapewnia dostęp do wszystkich tych możliwości.
 
-Podobnie jak inne usługi mowy platformy Azure usługa rozpoznawania mowy jest obsługiwana przez technologie mowy używane w produktach, takich jak Cortana i Microsoft Office. Możesz liczyć na jakość wyników i niezawodność platformy w chmurze.
+Podobnie jak inne usługi mowy platformy Azure usługa rozpoznawania mowy jest obsługiwana przez technologie mowy używane w produktach, takich jak Cortana i Microsoft Office.
+
+Usługa rozpoznawania mowy łączy w sobie funkcje mowy platformy Azure dostępne uprzednio za pośrednictwem [interfejsu API rozpoznawania mowy Bing](https://docs.microsoft.com/azure/cognitive-services/speech/home), [interfejsu API tłumaczenia mowy w usłudze Translator](https://docs.microsoft.com/azure/cognitive-services/translator-speech/) oraz usług [Custom Speech](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home) i [Custom Voice](http://customvoice.ai/). Teraz jedna subskrypcja zapewnia dostęp do wszystkich tych możliwości.
 
 ## <a name="main-speech-service-functions"></a>Główne funkcje usługi rozpoznawania mowy
 
@@ -28,7 +29,7 @@ Podstawowymi funkcjami usług rozpoznawania mowy są: zamiana mowy na tekst (naz
 
 |Funkcja|Funkcje|
 |-|-|
-|[Zamiana mowy na tekst](speech-to-text.md)| <ul><li>Przekształca w czasie rzeczywistym ciągłą mowę na tekst.<li>Może być używana do wsadowego przekształcania mowy z nagrań audio. <li>Oferuje różne tryby rozpoznawania: interaktywny, konwersacja i dyktowanie.<li>Obsługuje pośrednie wyniki, rozpoznawanie końca wypowiedzi, automatyczne formatowanie tekstu i maskowanie niestosownych wyrażeń. <li>Może wywoływać [interfejs API usługi Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) w celu wyodrębnienia intencji użytkownika z przekształconej mowy.\*|
+|[Zamiana mowy na tekst](speech-to-text.md)| <ul><li>Przekształca w czasie rzeczywistym ciągłą mowę na tekst.<li>Może być używana do wsadowego przekształcania mowy z nagrań audio. <li>Obsługuje pośrednie wyniki, rozpoznawanie końca wypowiedzi, automatyczne formatowanie tekstu i maskowanie niestosownych wyrażeń. <li>Może wywoływać [interfejs API usługi Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) w celu wyodrębnienia intencji użytkownika z przekształconej mowy.\*|
 |[Zamiana tekstu na mowę](text-to-speech.md)| <ul><li>Konwertuje tekst na naturalnie brzmiącą mowę. <li>Oferuje możliwość wyboru płci i/lub dialektów w wielu obsługiwanych językach. <li>Obsługuje dane wejściowe w postaci zwykłego tekstu lub języku znaczników syntezy mowy (SSML). |
 |[Tłumaczenie mowy](speech-translation.md)| <ul><li>Tłumaczy przesyłane strumieniowo dane audio w czasie zbliżonym do rzeczywistego.<li> Może również przetwarzać zarejestrowaną mowę.<li>Wyniki zwraca w postaci tekstu lub syntezowanej mowy. |
 
@@ -49,7 +50,7 @@ Modeli niestandardowych można używać w takich samych scenariuszach funkcji za
 
 ## <a name="use-the-speech-service"></a>Korzystanie z usługi rozpoznawania mowy
 
-Aby uprościć tworzenie aplikacji z obsługą mowy, firma Microsoft udostępnia [zestaw SDK rozpoznawania mowy](speech-sdk.md) do użycia z nową usługą rozpoznawania mowy. Zestaw SDK rozpoznawania mowy udostępnia spójne natywne interfejsy API zamiany mowy na tekst i tłumaczenia mowy dla języków C#, C++ i Java. Jeśli tworzysz aplikacje przy użyciu jednego z tych języków, zestaw SDK rozpoznawania mowy ułatwi Ci projektowanie dzięki obsłudze zagadnień sieciowych.
+Aby uprościć tworzenie aplikacji z obsługą mowy, firma Microsoft udostępnia [zestaw SDK rozpoznawania mowy](speech-sdk.md) do użycia z usługą Mowa. Zestaw SDK rozpoznawania mowy udostępnia spójne natywne interfejsy API zamiany mowy na tekst i tłumaczenia mowy dla języków C#, C++ i Java. Jeśli tworzysz aplikacje przy użyciu jednego z tych języków, zestaw SDK rozpoznawania mowy ułatwi Ci projektowanie dzięki obsłudze zagadnień sieciowych.
 
 Usługa rozpoznawania mowy ma również [interfejs API REST](rest-apis.md) współpracujący z dowolnym językiem programowania, który może obsługiwać żądania HTTP. Interfejs REST nie oferuje przesyłania strumieniowego w czasie rzeczywistym, które jest obsługiwane w zestawie SDK.
 
@@ -67,6 +68,42 @@ Jeśli masz już kod korzystający z interfejsu API rozpoznawania mowy Bing lub 
 ### <a name="speech-devices-sdk"></a>Zestaw Speech Devices SDK
 
 Zestaw [Speech Devices SDK](speech-devices-sdk.md) to zintegrowana platforma sprzętu i oprogramowania dla deweloperów urządzeń z włączoną obsługą mowy. Nasz partner dostarczający sprzęt udostępnia projekty referencyjne i jednostki rozwojowe. Firma Microsoft udostępnia zoptymalizowany pod kątem urządzeń zestaw SDK, który potrafi w pełni wykorzystać możliwości sprzętu.
+
+## <a name="why-move-to-the-speech-service"></a>Po co przenosić się do usługi Mowa?
+
+Usługa Mowa udostępnia wszystkie funkcje interfejsu API rozpoznawania mowy Bing oraz trzy inne usługi rozpoznawania mowy platformy Azure: Custom Speech, Custom Voice i tłumaczenie mowy w usłudze Translator. Użytkowników tych usług zachęcamy do przejścia do usługi Mowa.
+
+Usługa Mowa zawiera wiele uaktualnień wymienionych innych usług, w tym:
+
+* Większa dokładność rozpoznawania mowy. Firma Microsoft regularnie poprawia modele używane w tej usłudze.
+
+* Jest lepiej skalowalna. Usługa lepiej obsługuje wiele równoczesnych żądań, co prowadzi do zmniejszenia opóźnień.
+
+* Usługa Mowa korzysta z modelu cenowego opartego na czasie. Zobacz [cennik usługi Mowa](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/), aby uzyskać szczegółowe informacje.
+
+* Usługa Mowa jest dostępna w [wielu regionach](regions.md), aby móc zaspokajać potrzeby klientów na całym świecie. Potrzebujesz [subskrypcji platformy Azure](https://docs.microsoft.com/azure/cognitive-services/welcome) dla każdego regionu używanego przez Twoją aplikację.
+
+* Jeden klucz subskrypcji usługi Mowa umożliwia dostęp do następujących funkcji. Każda z tych funkcji jest mierzona oddzielnie, dlatego opłaty są naliczane tylko za funkcje, których używasz.
+
+    * [Zamiana mowy na tekst](speech-to-text.md)
+    * [Niestandardowa zamiana mowy na tekst](https://cris.ai/CustomSpeech)
+    * [Zamiana tekstu na mowę](text-to-speech.md)
+    * [Niestandardowe głosy funkcji zamiany tekstu na mowę](https://cris.ai/CustomVoice)
+    * [Tłumaczenie mowy](speech-translation.md) (nie obejmuje funkcji [Tłumaczenie tekstu](https://docs.microsoft.com/azure/cognitive-services/translator/translator-info-overview))
+
+* Funkcja zamiany mowy na tekst usługi Mowa integruje się z usługą [Language Understanding Service](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) na potrzeby rozpoznawania intencji osoby mówiącej. Z usługą Mowa może być również używany klucz punktu końcowego usługi LUIS. Zobacz [samouczek dotyczący rozpoznawania intencji](how-to-recognize-intents-from-speech-csharp.md), aby uzyskać szczegółowe informacje.
+
+* Funkcja zamiany mowy na tekst nie wymaga już określania trybu rozpoznawania.
+
+* Usługa Mowa obsługuje głosy o częstotliwości 24 kHz na potrzeby funkcji zamiany tekstu na mowę, co poprawia jakość dźwięku. W momencie pisania tego artykułu istnieją dwa takie głosy (tylko w języku angielskim — Stany Zjednoczone): `Jessa24kRUS` i `Guy24kRUS`.
+
+* Funkcja [transkrypcji wsadowej](batch-transcription.md) usługi Mowa umożliwia efektywne transkrybowanie na tekst dużych ilości zarejestrowanej mowy, na przykład nagrań w centrach telefonicznej obsługi klienta, dzięki czemu można go łatwo analizować i przeszukiwać.
+
+* Podczas korzystania z zestawu SDK usługi Mowa nie ma żadnego limitu dotyczącego czasu transkrypcji przesyłanej strumieniowo mowy na tekst.
+
+* [Zestaw SDK usługi Mowa](speech-sdk.md) zapewnia spójny interfejs API dla usługi Mowa w kilku językach programowania i środowiskach wykonawczych (w tym w systemie Windows 10, na platformie uniwersalnej systemu Windows i platformie .NET Core), co ułatwia opracowywanie aplikacji, zwłaszcza na wiele platform.
+
+* Usługa Mowa jest zgodna z interfejsami API REST i protokołem WebSocket używanymi przez inne usługi rozpoznawania mowy platformy Azure, co ułatwia migrację istniejących aplikacji klienckich do usługi Mowa.
 
 ## <a name="speech-scenarios"></a>Scenariusze z zastosowaniem mowy
 

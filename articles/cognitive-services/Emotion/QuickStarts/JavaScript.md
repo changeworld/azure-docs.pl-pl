@@ -1,42 +1,44 @@
 ---
-title: Szybki start JavaScript interfejs API rozpoznawania emocji | Dokumentacja firmy Microsoft
-description: Pobierz informacje oraz przykłady kodu w celu szybkiego Rozpocznij pracę przy użyciu interfejsu API rozpoznawania emocji, za pomocą języka JavaScript w usługach Cognitive Services.
+title: 'Szybki start: rozpoznawanie emocji na twarzach na obrazie — interfejs API rozpoznawania emocji, JavaScript'
+titlesuffix: Azure Cognitive Services
+description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API rozpoznawania emocji z językiem JavaScript.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: fb9cc2335582c4ec75ec45635e519346d65d7e08
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: eeaf2ea080d8c0b604b9831532028e31b8306169
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072096"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239493"
 ---
-# <a name="emotion-api-javascript-quick-start"></a>JavaScript interfejs API rozpoznawania emocji — Szybki Start
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Szybki start: tworzenie aplikacji do rozpoznawania emocji na twarzach na obrazie.
 
 > [!IMPORTANT]
-> Wersja zapoznawcza interfejsu API wideo zakończy się 30 października 2017 r. Wypróbuj nowy [wersji zapoznawczej interfejsu API indeksatora wideo](https://azure.microsoft.com/services/cognitive-services/video-indexer/) łatwe prowadzenie analiz materiałów wideo i ulepszanie środowiska odnajdywania zawartości, takie jak wyniki wyszukiwania oparte na wykrywaniu wypowiedzianych słów, twarzy, znaki i emocje. [Dowiedz się więcej](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
+> Interfejs API rozpoznawania emocji zostanie wycofany w dniu 15 lutego 2019 r. Rozpoznawanie emocji jest teraz ogólnie dostępne jako część [interfejsu API rozpoznawania twarzy](https://docs.microsoft.com/azure/cognitive-services/face/). 
 
-Ten artykuł zawiera informacje i przykłady kodu, aby pomóc Ci szybko rozpocząć pracę, przy użyciu [metoda rozpoznaje interfejsu API rozpoznawania emocji](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) za pomocą języka JavaScript do rozpoznawania emocji, wyrażonych przez co najmniej jedną osobę w obrazie.
+Ten artykuł zawiera informacje i przykłady kodu, które pomogą w szybkim rozpoczęciu korzystania z [metody Recognize interfejsu API rozpoznawania emocji](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) z językiem JavaScript do rozpoznawania emocji wyrażonych przez co najmniej jedną osobę na obrazie.
 
 ## <a name="prerequisite"></a>Wymagania wstępne
-* Pobierz klucz subskrypcji bezpłatnych [tutaj](https://azure.microsoft.com/try/cognitive-services/), lub jeśli masz subskrypcję platformy Azure Utwórz zasób usługi interfejsu API rozpoznawania emocji i dostać się tam Twoje klucz subskrypcji i punktu końcowego.
+* Pobierz swój bezpłatny klucz subskrypcji [stąd](https://azure.microsoft.com/try/cognitive-services/), a jeśli masz subskrypcję platformy Azure, utwórz zasób interfejsu API rozpoznawania emocji i z niego uzyskaj swój klucz subskrypcji oraz punkt końcowy.
 
 ![Tworzenie zasobu interfejsu API rozpoznawania emocji](../Images/create-resource.png)
 
-## <a name="recognize-emotions-javascript-example-request"></a>Rozpoznawanie emocji JavaScript przykładowe żądanie
+## <a name="recognize-emotions-javascript-example-request"></a>Przykładowe żądanie rozpoznawania emocji w języku JavaScript
 
-Skopiuj następujące i takie jak zapisać do pliku `test.html`. Żądanie zmiany `url` Użyj lokalizacji, gdzie uzyskać klucze subskrypcji i zastąp wartość symbolu "Ocp-Apim-Subscription-Key" klucz ważnej subskrypcji. Te można znaleźć w witrynie Azure portal, w sekcjach Przegląd i klucze zasobu interfejsu API rozpoznawania emocji, odpowiednio. 
+Skopiuj poniższy tekst i zapisz go w pliku, na przykład `test.html`. Zmień żądanie `url`, aby użyć lokalizacji, z której zostały uzyskane klucze subskrypcji. Zastąp wartość „Ocp-Apim-Subscription-Key” prawidłowym kluczem subskrypcji. Te informacje można znaleźć w witrynie Azure Portal, odpowiednio w sekcjach Przegląd i Klucze zasobu interfejsu API rozpoznawania emocji.
 
 ![Punkt końcowy interfejsu API](../Images/api-url.png)
 
 ![Klucz subskrypcji interfejsu API](../Images/keys.png)
 
-Zmień treść żądania do lokalizacji pliku obrazu, którego chcesz użyć. Aby uruchomić próbki, a następnie przeciągnij i upuść plik w przeglądarce.
+Zmień treść żądania na lokalizację obrazu, którego chcesz użyć. Aby uruchomić przykład, przeciągnij plik i upuść go w przeglądarce.
 
 ```html
 <!DOCTYPE html>
@@ -62,10 +64,10 @@ Zmień treść żądania do lokalizacji pliku obrazu, którego chcesz użyć. Ab
     $(function() {
         // No query string parameters for this API call.
         var params = { };
-      
+
         $.ajax({
             // NOTE: You must use the same location in your REST call as you used to obtain your subscription keys.
-            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the 
+            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
             //   URL below with "westcentralus".
             url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?" + $.param(params),
             beforeSend: function(xhrObj){
@@ -87,7 +89,7 @@ Zmień treść żądania do lokalizacji pliku obrazu, którego chcesz użyć. Ab
             for (var prop in faceRectangle) {
                 faceRectangleList.append("<li> " + prop + ": " + faceRectangle[prop] + "</li>");
             }
-            
+
             // Get emotion confidence scores
             var scores = data[0].scores;
             var scoresList = $('#scores');
@@ -105,13 +107,13 @@ Zmień treść żądania do lokalizacji pliku obrazu, którego chcesz użyć. Ab
 </html>
 ```
 
-## <a name="recognize-emotions-sample-response"></a>Rozpoznawanie emocji przykładowa odpowiedź
-Pomyślne wywołanie zwraca tablicę wpisy twarzy oraz wyniki skojarzone rozpoznawania emocji, uporządkowanych według rozmiaru prostokąt twarzy w kolejności malejącej. Pustą odpowiedź wskazuje, czy nie wykryto żadnych twarzy. Wpis rozpoznawania emocji zawiera następujące pola:
-* faceRectangle — lokalizacja prostokąt twarzy na obrazie.
-* wyniki — wyniki rozpoznawania emocji dla każdej twarzy na obrazie. 
+## <a name="recognize-emotions-sample-response"></a>Przykładowa odpowiedź dotycząca rozpoznawania emocji
+Pomyślne wywołanie zwraca tablicę wpisów twarzy oraz skojarzonych z nimi ocen emocji uporządkowanych według rozmiaru prostokąta twarzy w kolejności malejącej. Pusta odpowiedź wskazuje, że nie wykryto żadnych twarzy. Wpis rozpoznawania emocji zawiera następujące pola:
+* faceRectangle — lokalizacja prostokąta twarzy na obrazie.
+* scores — ocena emocji dla każdej twarzy na obrazie.
 
 ```json
-application/json 
+application/json
 [
   {
     "faceRectangle": {

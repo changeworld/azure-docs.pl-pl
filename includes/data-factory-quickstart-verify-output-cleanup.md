@@ -17,6 +17,8 @@ Usunięcie grupy zasobów powoduje usunięcie wszystkich zasobów łącznie z fa
 Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
+Uwaga: usunięcie grupy zasobów może potrwać jakiś czas. Prosimy o cierpliwość
+
 Jeśli chcesz usunąć tylko fabrykę danych, a nie całą grupę zasobów, uruchom następujące polecenie: 
 
 ```powershell

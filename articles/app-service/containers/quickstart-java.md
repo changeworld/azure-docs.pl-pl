@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/07/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: b9e8d2b9eacfa5c427ffe3f27ea99bbd35651d57
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 92dde19e42c1adb6d83e1708106f844f228e8989
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165980"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239354"
 ---
 # <a name="quickstart-create-a-java-web-app-in-app-service-on-linux"></a>Szybki start: tworzenie aplikacji internetowej w języku Java w usłudze App Service w systemie Linux
 
@@ -127,7 +127,7 @@ Po zakończeniu wdrażania w przeglądarce internetowej przejdź do wdrożonej a
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki Start użyto narzędzia Maven do utworzenia aplikacji internetowej Java, skonfigurowano wtyczkę [Maven Plugin for Azure Web Apps (wersja zapoznawcza)](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin), następnie wdrożono aplikację internetową Java w pakiecie Archiwum sieci Web do usługi App Service w systemie Linux. Aby dowiedzieć się więcej o używaniu języka Java na platformie Azure, kliknij poniższy link.
+W tym przewodniku Szybki start użyto narzędzia Maven do utworzenia aplikacji internetowej Java, skonfigurowano wtyczkę [Maven Plugin for Azure Web Apps (wersja zapoznawcza)](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin), a następnie wdrożono aplikację internetową Java w pakiecie archiwum internetowego do usługi App Service w systemie Linux. Aby dowiedzieć się więcej o używaniu języka Java na platformie Azure, kliknij poniższy link.
 
 > [!div class="nextstepaction"]
 > [Azure dla deweloperów języka Java](https://docs.microsoft.com/java/azure/)

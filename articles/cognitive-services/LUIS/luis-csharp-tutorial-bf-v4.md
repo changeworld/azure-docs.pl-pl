@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/25/2018
 ms.author: diberry
-ms.openlocfilehash: f8350d46fecff726dd9f591fe3df0272f556b3e7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ce5b704a7ac251621698352608ea3eefa4629aea
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47168194"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886582"
 ---
 # <a name="tutorial-luis-bot-in-c"></a>Samouczek: bot usługi LUIS w języku C#
 Przy użyciu języka C# można utworzyć czatbot zintegrowany z usługą Language Understanding (LUIS). Ten bot używa aplikacji HomeAutomation do implementacji rozwiązania bota. Bot jest kompilacją aplikacji [bot aplikacji internetowej](https://docs.microsoft.com/azure/bot-service/) na platformie Azure z [Bot Framework w wersji](https://github.com/Microsoft/botbuilder-js) 4.
@@ -36,13 +36,13 @@ Przy użyciu języka C# można utworzyć czatbot zintegrowany z usługą Languag
 * [Program Visual Studio](https://visualstudio.microsoft.com/downloads/)
 
 
-## <a name="create-web-app-bot"></a>Tworzenie aplikacji internetowej
+## <a name="create-web-app-bot"></a>Tworzenie bota aplikacji internetowej
 
 1. W witrynie [Azure Portal](https://portal.azure.com) wybierz polecenie **Utwórz nowy zasób**.
 
 2. W polu wyszukiwania wyszukaj i wybierz pozycję **Web App Bot** (Bot aplikacji internetowej). Wybierz pozycję **Utwórz**.
 
-3. W polu **Bot Service** (Usługa bota), podaj wymagane informacje:
+3. W polu **Bot Service** (Usługa bota) podaj wymagane informacje:
 
     |Ustawienie|Przeznaczenie|Zalecane ustawienia|
     |--|--|--|
@@ -63,7 +63,7 @@ Przy użyciu języka C# można utworzyć czatbot zintegrowany z usługą Languag
     |Język zestawu SDK|Język programowania bota|**C#**|
     |Bot echo/podstawowy|Typ bota|**Bot podstawowy**|
     
-5. Wybierz pozycję **Utwórz**. To powoduje utworzenie i wdrożenie usługi bota na platformie Azure. W ramach tego procesu jest tworzona nowa aplikacja usługi LUIS o nazwie `luis-csharp-bot-XXXX`. Ta nazwa zależy on nazwy bota i aplikacji w poprzedniej sekcji.
+5. Wybierz pozycję **Utwórz**. To powoduje utworzenie i wdrożenie usługi bota na platformie Azure. W ramach tego procesu jest tworzona nowa aplikacja usługi LUIS o nazwie `luis-csharp-bot-XXXX`. Ta nazwa zależy od nazwy bota i aplikacji w poprzedniej sekcji.
 
     [ ![Tworzenie bota aplikacji internetowej](./media/bfv4-csharp/create-web-app-service.png) ](./media/bfv4-csharp/create-web-app-service.png#lightbox)
 
@@ -82,7 +82,7 @@ W ramach wdrożenia usługi bota jest tworzona nowa aplikacja usługi LUIS z int
 Dodaj wstępnie utworzoną aplikację HomeAutomation do modelu w celu obsługi wypowiedzi, takich jak: `Turn off the living room lights`
 
 1. Przejdź do portalu [LUIS](https://www.luis.ai) i zaloguj się.
-2. Na stronie **My Apps** (Moje aplikacje) wybierz kolumnę **Created date** (Data utworzenia), aby sortować według daty utworzenia aplikacji. Usługa Azure Bot utworzyła nową aplikację w poprzedniej sekcji. Jej nazwa to `luis-csharp-bot-`  +  `<your-name>` + 4 losowo wybrane znaki.
+2. Na stronie **My Apps** (Moje aplikacje) wybierz kolumnę **Created date** (Data utworzenia), aby sortować według daty utworzenia aplikacji. Usługa Azure Bot utworzyła nową aplikację w poprzedniej sekcji. Jej nazwa to `luis-csharp-bot-`  +  `<your-name>` + 4 losowe znaki.
 3. Otwórz aplikację i wybierz sekcję **Build** (Kompilacja) w górnym menu nawigacyjnym.
 4. Z menu nawigacyjnego po lewej stronie wybierz pozycję **Prebuilt Domains** (Wstępnie utworzone domeny).
 5. Aby wybrać domenę **HomeAutomation**, wybierz pozycję **Add domain** (Dodaj domenę) na jej karcie.
@@ -200,7 +200,7 @@ Przed zmianą kodu lub ustawień, sprawdź, czy bot działa.
 
 ## <a name="start-the-emulator"></a>Uruchamianie emulatora
 
-1. Uruchom emulatora bota.
+1. Uruchom emulator bota.
 
 2. W emulatorze bota wybierz plik *.bot w korzeniu projektu. Ten plik `.bot` zawiera punkt końcowy adresu URL bota dla komunikatów:
 
@@ -286,20 +286,20 @@ W pliku `BasicBot.cs` dodaj kod do obsługi nowych intencji.
 
     ```JSON
     TurnOn intent found, JSON response: {"$instance":{“HomeAutomation_Device”:[{“startIndex”:23,“endIndex”:29,“score”:0.9776345,“text”:“lights”,“type”:“HomeAutomation.Device”}],“HomeAutomation_Room”:[{“startIndex”:12,“endIndex”:22,“score”:0.9079433,“text”:“livingroom”,“type”:“HomeAutomation.Room”}]},“HomeAutomation_Device”:[“lights”],“HomeAutomation_Room”:[“livingroom”]}
-    ```    ```
+    ```    
 
-## Learn more about Bot Framework
-Azure Bot service uses the Bot Framework SDK. Learn more about the SDK and bot framework:
+## <a name="learn-more-about-bot-framework"></a>Dowiedz się więcej na temat struktury Bot Framework
+Usługa Azure Bot używa zestawu SDK Bot Framework. Dowiedz się więcej na temat zestawu SDK i struktury Bot Framework:
 
-* [Azure Bot Service](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0) v4 documentation
-* [Bot Builder Samples](https://github.com/Microsoft/botbuilder-samples)
-* [Bot Builder SDK](https://docs.microsoft.com/en-us/javascript/api/botbuilder-core/?view=botbuilder-ts-latest)
-* [Bot Builder tools](https://github.com/Microsoft/botbuilder-tools):
+* Dokumentacja [usługi Azure Bot Service](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0) w wersji 4
+* [Przykłady Bot Builder](https://github.com/Microsoft/botbuilder-samples)
+* [Zestaw SDK Bot Builder](https://docs.microsoft.com/en-us/javascript/api/botbuilder-core/?view=botbuilder-ts-latest)
+* [Narzędzia Bot Builder](https://github.com/Microsoft/botbuilder-tools):
 
-## Next steps
+## <a name="next-steps"></a>Następne kroki
 
-You created an Azure bot service, copied the bot secret and `.bot` file path, downloaded the zip file of the code. You added the prebuilt HomeAutomation domain to the LUIS app created as part of the new Azure bot service, then trained and published the app again. You extracted the code project, created an environment file (`.env`), and set the bot secret and the `.bot` file path. In the bot.js file, you added code to handle the two new intents. Then you tested the bot in the bot emulator to see the LUIS response for an utterance of one of the new intents. 
+Utworzono usługę Azure Bot, skopiowano wpis tajny i ścieżkę pliku `.bot`, pobrano plik zip z kodem. Dodano wstępnie utworzoną domenę HomeAutomation do aplikacji LUIS utworzonej w ramach nowej usługi Azure Bot, a następnie przeprowadzono szkolenie i ponownie opublikowano aplikację. Wyodrębniono projekt kodu, utworzono plik środowiska (`.env`), a także ustawiono wpis tajny bota i ścieżkę pliku `.bot`. W pliku bot.js dodano kod w celu obsługi dwóch nowych intencji. Następnie przetestowano bota w emulatorze bota, aby zobaczyć odpowiedź usługi LUIS na wypowiedzenie jednej z nowych intencji. 
 
 
 > [!div class="nextstepaction"]
-> [Build a custom domain in LUIS](luis-quickstart-intents-only.md)
+> [Tworzenie domeny niestandardowej w usłudze LUIS](luis-quickstart-intents-only.md)

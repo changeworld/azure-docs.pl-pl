@@ -1,66 +1,66 @@
 ---
-title: Samouczek przetwarzania języka C# na komputerze | Dokumentacja firmy Microsoft
-titleSuffix: Microsoft Cognitive Services
-description: Nawiąż połączenie przetwarzania obrazów w usłudze Cognitive Services z aplikacji sieci web programu ASP.NET Core.
+title: 'Samouczek: korzystanie z interfejsu API przetwarzania obrazów przy użyciu języka C#'
+titleSuffix: Azure Cognitive Services
+description: Nawiąż połączenie z interfejsem API przetwarzania obrazów z poziomu aplikacji internetowej platformy ASP.NET Core.
 services: cognitive-services
 author: ghogen
-manager: douge
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: conceptual
+ms.topic: Tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
-ms.openlocfilehash: 76ca1215144a5caa40971e1eda23f6462f7bf27b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: MT
+ms.openlocfilehash: ebfcabdea1e83a83af5eea8025ba5a411c3f9880
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38665255"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077954"
 ---
-# <a name="connecting-to-cognitive-services-computer-vision-api-by-using-connected-services-in-visual-studio"></a>Łączenie z usługą API przetwarzania obrazów w usłudze Cognitive Services przy użyciu usług połączonych programu Visual Studio
+# <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>Nawiązywanie połączenia z interfejsem API przetwarzania obrazów za pomocą usług połączonych w programie Visual Studio
 
-Za pomocą Cognitive Services interfejs API przetwarzania obrazów, możesz wyodrębniaj rozbudowane informacje w celu kategoryzowania i przetwarzania danych wizualnych oraz przeprowadzać wspomaganego maszynowo moderowania obrazów, aby ułatwić nadzorowanie swoich usług.
+Interfejs API przetwarzania obrazów w usługach Cognitive Services umożliwia wyodrębnianie szczegółowych informacji w celu kategoryzowania i przetwarzania danych wizualnych oraz wspomagane maszynowo moderowanie obrazów, ułatwiające nadzorowanie usług.
 
-W tym artykule i umieszczanych tam artykułach pomocnika należy podać szczegóły dotyczące korzystania z funkcji usługi Visual Studio połączonych dla API przetwarzania obrazów w usłudze Cognitive Services. Ta funkcja jest dostępna w obu 15.7 2017 usługi Visual Studio lub nowszej, za pomocą zainstalowane rozszerzenie usług Cognitive Services.
+W tym artykule i artykułach powiązanych podano szczegółowe informacje na temat używania funkcji usług połączonych programu Visual Studio na potrzeby interfejsu API przetwarzania obrazów usług Cognitive Services. Ta funkcja jest dostępna w programie Visual Studio 2017 15.7 lub nowszym z zainstalowanym rozszerzeniem usług Cognitive Services.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - **Subskrypcja platformy Azure**. Jeśli jej nie masz, możesz zarejestrować się w celu [utworzenia bezpłatnego konta](https://azure.microsoft.com/pricing/free-trial/).
-- **Visual Studio 2017 w wersji 15.7** z **programowania dla sieci Web** zainstalowanym obciążeniem. [Pobierz teraz](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- Program **Visual Studio 2017 w wersji 15.7** z zainstalowanym pakietem roboczym **Tworzenie aplikacji internetowych**. [Pobierz go teraz](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
-## <a name="add-support-to-your-project-for-cognitive-services-computer-vision-api"></a>Dodanie obsługi do projektu dla API przetwarzania obrazów w usłudze Cognitive Services
+## <a name="add-support-to-your-project-for-cognitive-services-computer-vision-api"></a>Dodawanie obsługi interfejsu API przetwarzania obrazów usług Cognitive Services do projektu
 
-1. Utwórz nowy projekt sieci web platformy ASP.NET Core. Użyj szablonu pusty projekt. 
+1. Utwórz nowy projekt internetowy ASP.NET Core. Użyj szablonu Pusty projekt. 
 
-1. W **Eksploratora rozwiązań**, wybierz **Dodaj** > **podłączoną usługę**.
-   Na stronie usługi połączonej pojawia się z usługami, które można dodać do projektu.
+1. W **Eksploratorze rozwiązań** wybierz pozycję **Dodaj** > **Usługa połączona**.
+   Zostanie wyświetlona strona Usługa połączona zawierająca usługi, które możesz dodać do projektu.
 
-   ![Dodawanie pozycji menu usługi połączonej](../media/vs-common/Connected-Service-Menu.PNG)
+   ![Element menu Dodaj > Usługa połączona](../media/vs-common/Connected-Service-Menu.PNG)
 
-1. W menu dostępnych usług wybierz **API przetwarzania obrazów w usłudze Cognitive Services**.
+1. Z menu dostępnych usług wybierz **Interfejs API przetwarzania obrazów usług Cognitive Services**.
 
-   ![Wybierz usługę, aby nawiązać połączenie](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
+   ![Wybieranie usługi, z którą ma zostać nawiązane połączenie](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
 
-   Jeśli po zalogowaniu się do programu Visual Studio i subskrypcji platformy Azure skojarzony z Twoim kontem, zostanie wyświetlona strona, która za pomocą listy rozwijanej z subskrypcjami.
+   Jeśli logowanie do programu Visual Studio zostało już wykonane i masz subskrypcję platformy Azure skojarzoną z kontem, zostanie wyświetlona strona z listą rozwijaną zawierającą Twoje subskrypcje.
 
    ![Wybierz swoją subskrypcję](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
 
-1. Wybierz subskrypcję, której chcesz użyć, a następnie wybierz nazwę interfejsu API przetwarzania obrazów, lub wybierz link edycji, aby zmodyfikować automatycznie wygenerowaną nazwę, wybierz grupę zasobów i warstwy cenowej.
+1. Wybierz subskrypcję, której chcesz użyć, i nazwę interfejsu API przetwarzania obrazów albo link Edytuj, aby zmodyfikować nazwę wygenerowaną automatycznie oraz wybrać grupę zasobów i warstwę cenową.
 
-   ![Edytuj szczegóły usługi połączonej](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-2.PNG)
+   ![Edytowanie szczegółów usługi połączonej](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-2.PNG)
 
-   Kliknij link, aby szczegóły na warstw cenowych.
+   Skorzystaj z linku, aby wyświetlić szczegóły warstw cenowych.
 
-1. Kliknij przycisk Dodaj, aby dodać obsługiwane usługi połączone.
-   Visual Studio modyfikuje projekt, aby dodać pakiety NuGet, wpisy w pliku konfiguracji i inne zmiany do obsługi połączenia interfejsu API przetwarzania obrazów. W oknie danych wyjściowych pokazuje dziennika, co się dzieje z projektem. Powinien zostać wyświetlony podobny do poniższego:
+1. Wybierz przycisk Dodaj, aby dodać obsługę usługi połączonej.
+   Program Visual Studio zmodyfikuje projekt, dodając pakiety NuGet i wpisy pliku konfiguracji oraz wprowadzając inne zmiany na potrzeby obsługi połączenia z interfejsem API przetwarzania obrazów. Okno Dane wyjściowe pokazuje dziennik działań związanych z projektem. Powinna zostać wyświetlona zawartość podobna do tej:
 
    ```output
    [4/26/2018 5:15:31.664 PM] Adding Computer Vision API to the project.
    [4/26/2018 5:15:32.084 PM] Creating new ComputerVision...
    [4/26/2018 5:15:32.153 PM] Creating new Resource Group...
-   [4/26/2018 5:15:40.286 PM] Installing NuGet package 'Microsoft.Azure.CognitiveServices.Vision.ComputerVision' version 1.0.2-preview.
+   [4/26/2018 5:15:40.286 PM] Installing NuGet package 'Microsoft.Azure.CognitiveServices.Vision.ComputerVision' version 2.1.0.
    [4/26/2018 5:15:44.117 PM] Retrieving keys...
    [4/26/2018 5:15:45.602 PM] Changing appsettings.json setting: ComputerVisionAPI_ServiceKey=<service key>
    [4/26/2018 5:15:45.606 PM] Changing appsettings.json setting: ComputerVisionAPI_ServiceEndPoint=https://australiaeast.api.cognitive.microsoft.com/vision/v2.0
@@ -68,7 +68,7 @@ W tym artykule i umieszczanych tam artykułach pomocnika należy podać szczegó
    [4/26/2018 5:15:46.747 PM] Successfully added Computer Vision API to the project.
    ```
  
-## <a name="use-the-computer-vision-api-to-detect-attributes-of-an-image"></a>Użyj interfejsu API przetwarzania obrazów, aby wykryć atrybuty obrazu
+## <a name="use-the-computer-vision-api-to-detect-attributes-of-an-image"></a>Wykrywanie atrybutów obrazu za pomocą interfejsu API przetwarzania obrazów
 
 1. Dodaj następujące instrukcje using w pliku Startup.cs.
  
@@ -80,7 +80,7 @@ W tym artykule i umieszczanych tam artykułach pomocnika należy podać szczegó
    using System.Net.Http.Headers;
    ```
  
-1. Dodaj pole konfiguracji i dodaj konstruktor, który inicjuje w polu configuration w `Startup` klasy, aby włączyć konfigurację w programach.
+1. Dodaj pole configuration oraz konstruktor, który inicjuje to pole, w klasie `Startup`, aby włączyć konfigurację w programie.
 
    ```csharp
       private IConfiguration configuration;
@@ -91,15 +91,15 @@ W tym artykule i umieszczanych tam artykułach pomocnika należy podać szczegó
       }
    ```
 
-1. W folderze wwwroot w projekcie Dodaj folder obrazów, a następnie dodaj plik obrazu do folderu wwwroot. Na przykład można użyć jednego z obrazów w tym [strony interfejsu API Computer Vision](https://azure.microsoft.com/services/cognitive-services/computer-vision/). Kliknij prawym przyciskiem myszy na jeden z obrazów, Zapisz na lokalnym dysku twardym, a następnie w oknie Eksplorator rozwiązań kliknij prawym przyciskiem myszy folder obrazów i choosee **Dodaj** > **istniejący element** Aby dodać go do projektu. Projekt powinien wyglądać następująco w Eksploratorze rozwiązań: 
+1. W folderze wwwroot projektu dodaj folder images i dodaj plik obrazu do folderu wwwroot. Na potrzeby przykładu możesz użyć jednego z obrazów na tej [stronie interfejsu API przetwarzana obrazów](https://azure.microsoft.com/services/cognitive-services/computer-vision/). Kliknij prawym przyciskiem myszy jeden z obrazów, zapisz go na lokalnym dysku twardym, a następnie w Eksploratorze rozwiązań kliknij prawym przyciskiem myszy folder images i wybierz polecenie **Dodaj** > **Istniejący element**, aby dodać go do projektu. Twój projekt w Eksploratorze rozwiązań powinien wyglądać podobnie do następującego: 
   
-   ![folder obrazów z pliku obrazu](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-3.PNG) 
+   ![Folder images z plikiem obrazu](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-3.PNG) 
 
-1. Kliknij prawym przyciskiem myszy plik obrazu, wybierz polecenie Właściwości, a następnie wybierz **Kopiuj Jeśli nowszy**. 
+1. Kliknij prawym przyciskiem myszy plik obrazu, wybierz polecenie Właściwości, a następnie wybierz pozycję **Kopiuj, jeśli nowszy**. 
 
-   ![Kopiuj Jeśli nowszy](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
+   ![Kopiuj, jeśli nowszy](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
  
-1. Zastąp metodę Konfiguruj następujący kod, aby dostęp do interfejsu API przetwarzania obrazów i testowanie obrazu.
+1. Zastąp metodę Configure następującym kodem, aby uzyskać dostęp do interfejsu API przetwarzania obrazów i przetestować obraz.
 
    ```csharp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -163,9 +163,9 @@ W tym artykule i umieszczanych tam artykułach pomocnika należy podać szczegó
         }
 
    ```
-    Tutaj kod tworzy żądanie HTTP przy użyciu identyfikatora URI i obrazu jako zawartość binarna wywołania interfejsu API REST dla przetwarzania obrazów.
+    Ten kod tworzy żądanie HTTP zawierające identyfikator URI oraz obraz jako zawartość binarną na potrzeby wywołania interfejsu API REST przetwarzania obrazów.
 
-1. Dodawanie funkcji pomocnika GetImageAsByteArray i JsonPrettyPrint.
+1. Dodaj funkcje pomocnicze GetImageAsByteArray i JsonPrettyPrint.
 
    ```csharp
         /// <summary>
@@ -247,18 +247,18 @@ W tym artykule i umieszczanych tam artykułach pomocnika należy podać szczegó
         }
    ```
 
-1. Uruchom aplikację sieci web i zobacz interfejs API przetwarzania obrazów znalezione w obrazie.
+1. Uruchom aplikację internetową i zobacz, co interfejs API przetwarzania obrazów znalazł na obrazie.
 
-   ![Komputer interfejs API przetwarzania obrazów i sformatowane wyniki](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-4.PNG)  
+   ![Obraz interfejsu API przetwarzania obrazów oraz sformatowane wyniki](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-4.PNG)  
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie są już potrzebne, Usuń grupę zasobów. Spowoduje to usunięcie usługi cognitive Services i powiązane zasoby. Aby usunąć grupę zasobów za pośrednictwem portalu:
+Gdy grupa zasobów nie jest już potrzebna, usuń ją. Spowoduje to usunięcie usługi poznawczej i powiązanych zasobów. Aby usunąć grupę zasobów za pośrednictwem portalu:
 
 1. Wprowadź nazwę grupy zasobów w polu wyszukiwania w górnej części portalu. Gdy w wynikach wyszukiwania zobaczysz grupę zasobów używaną w tym przewodniku Szybki start, wybierz ją.
 2. Wybierz pozycję **Usuń grupę zasobów**.
 3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wpisz nazwę grupy zasobów i wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Więcej informacji na temat interfejsu API przetwarzania obrazów, czytając [dokumentacja dotycząca interfejsu API przetwarzania obrazów](Home.md).
+Aby uzyskać więcej informacji na temat interfejsu API przetwarzania obrazów, zapoznaj się z [dokumentacją interfejsu API przetwarzania obrazów](Home.md).

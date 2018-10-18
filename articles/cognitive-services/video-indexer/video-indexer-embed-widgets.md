@@ -10,12 +10,12 @@ ms.component: video-indexer
 ms.topic: sample
 ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: 0d75a58ddf0607286d41867828119fdd05e07d22
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 3d9e00a97355c03da5360846d4cd9f27a8540ed6
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985583"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017435"
 ---
 # <a name="example-embed-video-indexer-widgets-into-your-applications"></a>Przykład: osadzanie widżetów usługi Video Indexer w aplikacjach
 
@@ -47,15 +47,16 @@ Widżet **Player** (Odtwarzacz) umożliwia przesyłanie strumieniowe wideo z ada
 ## <a name="embedding-public-content"></a>Osadzanie zawartości publicznej
 
 1. Przejdź do witryny internetowej [Video Indexer](https://www.videoindexer.ai/) i zaloguj się.
-2. Kliknij przycisk „embed” (osadź) znajdujący się poniżej pliku wideo.
+2. Kliknij film wideo, z którym chcesz pracować.
+3. Kliknij przycisk „embed” (osadź) znajdujący się poniżej pliku wideo.
 
     ![Widżet](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
 
     Po kliknięciu przycisku na ekranie pojawi się okno modalne osadzania, w którym możesz wybrać widżet do osadzenia w aplikacji.
     Wybranie widżetu (**Player** lub **Cognitive Insights**) spowoduje wygenerowanie kodu osadzania do wklejenia w aplikacji.
  
-3. Wybierz typ widżetu (**Cognitive Insights** lub **Player**).
-4. Skopiuj kod osadzania i dodaj go do swojej aplikacji. 
+4. Wybierz typ widżetu (**Cognitive Insights** lub **Player**).
+5. Skopiuj kod osadzania i dodaj go do swojej aplikacji. 
 
     ![Widżet](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
 

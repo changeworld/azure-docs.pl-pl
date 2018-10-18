@@ -1,6 +1,6 @@
 ---
 title: Konfigurowanie urządzenia Azure Data Box | Microsoft Docs
-description: Informacje na temat wymagań dotyczących oprogramowania i sieci dla urządzenia Azure Data Box
+description: Dowiedz się, jak podłączyć kable do urządzenia Azure Data Box i nawiązać z nim połączenie
 services: databox
 documentationcenter: NA
 author: alkohli
@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 10/03/2018
 ms.author: alkohli
-ms.openlocfilehash: 6623744a26d79ccbc8b68ba84baf3a37024e0ed7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f9671e3acdb71affe2187258582254561785780e
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952311"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785640"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Samouczek: Podłączanie kabli do urządzenia Azure Data Box i nawiązywanie z nim połączenia
 
@@ -36,7 +36,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 Przed rozpoczęciem upewnij się, że:
 
 1. Ukończono [samouczek dotyczący zamawiania urządzenia Azure Data Box](data-box-deploy-ordered.md).
-2. Urządzenie Data Box zostało do Ciebie dostarczone, a stan zamówienia w portalu to **Dostarczono**. 
+2. Urządzenie Data Box zostało do Ciebie dostarczone, a stan zamówienia w portalu to **Dostarczono**. Do urządzenia dołączono etykietę wysyłkową w przezroczystej kieszeni pod bieżącą etykietą. Przechowuj tę etykietę w bezpiecznym miejscu, ponieważ użyjesz jej do wysyłki zwrotnej.
 3. Zapoznano się z [wytycznymi bezpieczeństwa dotyczącymi urządzenia Data Box](data-box-safety.md).
 4. Odebrano jeden kabel zasilający z uziemieniem do korzystania z urządzenia magazynującego o pojemności 100 TB.
 5. Masz komputer-host zawierający dane, które mają zostać skopiowane na urządzenie Data Box. Na komputerze hosta wymagane jest:

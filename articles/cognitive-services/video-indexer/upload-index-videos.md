@@ -10,12 +10,12 @@ ms.component: video-indexer
 ms.topic: sample
 ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: e84411535b82b3e4861b529f490bdde0eb25fd42
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: f3889d1cddce92cbdd3049d4421bfdffc69da41e
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983888"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884309"
 ---
 # <a name="example-upload-and-index-your-videos"></a>Przykład: przekazywanie i indeksowanie plików wideo  
 
@@ -36,6 +36,11 @@ W artykule omówiono też niektóre parametry, które można ustawić w interfej
 - W przypadku przekazywania pliku wideo na podstawie adresu URL (opcja preferowana) punkt końcowy musi być zabezpieczony za pomocą protokołu TLS 1.2 (lub nowszej wersji)
 - Opcja tablicy bajtów jest ograniczona do rozmiaru 2 GB i limitu czasu wynoszącego 30 min
 - Adres URL podany w parametrze `videoURL` musi być zakodowany
+
+> [!Tip]
+> Zalecane jest korzystanie z platformy .NET w wersji 4.6.2. lub nowszej, ponieważ starsze wersje platformy .NET nie obsługują domyślnie protokołu TLS 1.2.
+>
+> Jeśli musisz użyć starszej platformy .NET, dodaj jeden wiersz do swojego kodu przed wprowadzeniem wywołania interfejsu API REST:  <br/> System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
 ## <a name="configurations-and-params"></a>Konfiguracje i parametry
 
@@ -243,8 +248,14 @@ public class AccountContractSlim
     public string AccessToken { get; set; }
 }
 ```
+## <a name="common-errors"></a>Typowe błędy
 
+Kody stanu wymienione w poniższej tabeli mogą być zwracane przez operację przekazywania.
 
+|Kod stanu|ErrorType (w treści odpowiedzi)|Opis|
+|---|---|---|
+|400|VIDEO_ALREADY_IN_PROGRESS|Ten sam plik wideo jest już w trakcie przetwarzania w ramach danego konta.|
+|400|VIDEO_ALREADY_FAILED|Tego samego pliku wideo nie udało się przetworzyć w ramach danego konta mniej niż 2 godziny temu. Klienci interfejsu API powinni poczekać co najmniej 2 godziny przed ponownym przekazaniem pliku wideo.|
 
 ## <a name="next-steps"></a>Następne kroki
 

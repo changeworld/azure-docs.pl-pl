@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/06/2018
+ms.date: 010/01/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: da9e1ce17e21f4d87286c0be5d425419f6ed0300
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 1af4cdb361c1db378991201fc42f17dcbf67fe67
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408514"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238769"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Samouczek: skalowanie klastra usługi Service Fabric na platformie Azure
 
@@ -121,7 +121,7 @@ Skalowanie w pionie odbywa się tak samo jak skalowanie w poziomie, przy czym u�
 > [!NOTE]
 > Ta część dotyczy tylko warstwy trwałości *Brązowa*. Aby uzyskać więcej informacji o trwałości, zobacz [Planowanie pojemności klastra usługi Service Fabric][durability].
 
-Skalowanie w pionie zestawu skalowania maszyn wirtualnych w większości przypadków powoduje usunięcie ostatnio utworzonego wystąpienia maszyny wirtualnej. A zatem należy znaleźć niedawno utworzony, pasujący węzeł usługi Service Fabric. Można to zrobić, wyszukując największą wartość właściwości `NodeInstanceId` w węzłach usługi Service Fabric. Poniższy przykładowy kod przedstawia sortowanie według wystąpienia węzła i zwraca szczegóły wystąpienia o największej wartości identyfikatora.
+Aby zachować równe rozłożenie węzłów klastra w domenach uaktualniania i błędów, a tym samym umożliwić ich równomierne wykorzystywanie, najpierw należy usunąć ostatnio utworzony węzeł. Innymi słowy węzły należy usuwać w kolejności odwrotnej niż były tworzone. Ostatnio utworzony węzeł to ten, który ma największą wartość właściwości `virtual machine scale set InstanceId`. Poniższe przykłady kodu zwracają ostatnio utworzony węzeł.
 
 ```powershell
 Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
@@ -232,7 +232,7 @@ sfctl node remove-state --node-name _nt1vm_5
 
 ### <a name="scale-in-the-scale-set"></a>Skalowanie zestawu w pionie
 
-Po usunięciu węzła usługi Service Fabric z klastra zestaw skalowania maszyn wirtualnych można przeskalować w pionie. W poniższym przykładzie pojemność zestawu skalowania została zmniejszona o 1.
+Po usunięciu węzła usługi Service Fabric z klastra skalę zestawu skalowania maszyn wirtualnych można zmniejszyć w poziomie. W poniższym przykładzie pojemność zestawu skalowania została zmniejszona o 1.
 
 ```powershell
 $scaleset = Get-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm

@@ -8,15 +8,15 @@ ms.assetid: ''
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 01/23/2018
+ms.date: 09/07/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a9772ae9ac346daa205c146263a4632a641ee038
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 02b715ade9a9a537f6bd0e476ada299140bff4bb
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38722817"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815515"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Samouczek: uruchamianie równoległego obciążenia w usłudze Azure Batch przy użyciu interfejsu API .NET
 
@@ -37,7 +37,7 @@ W tym samouczku przekonwertujesz równolegle pliki multimedialne w formacie MP4 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Program Visual Studio 2017](https://www.visualstudio.com/vs). 
+* [Program Visual Studio 2017](https://www.visualstudio.com/vs) lub [środowisko .NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) dla systemu Linux, macOS lub Windows.
 
 * Konto usługi Batch i połączone konto usługi Azure Storage. Aby utworzyć te konta, skorzystaj z przewodników Szybki start dla usługi Batch i [witryny Azure Portal](quick-create-portal.md) lub [interfejsu wiersza polecenia platformy Azure](quick-create-cli.md).
 
@@ -46,7 +46,6 @@ W tym samouczku przekonwertujesz równolegle pliki multimedialne w formacie MP4 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
-
 
 ## <a name="add-an-application-package"></a>Dodawanie pakietu aplikacji
 
@@ -85,13 +84,18 @@ private const string StorageAccountName = "mystorageaccount";
 private const string StorageAccountKey  = "xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ==";
 ```
 
+[!INCLUDE [batch-credentials-include](../../includes/batch-credentials-include.md)]
+
 Upewnij się też, że odwołanie do pakietu aplikacji narzędzia ffmpeg w pliku rozwiązania jest zgodne z identyfikatorem i wersją pakietu aplikacji ffmpeg przekazanego na konto usługi Batch.
 
 ```csharp
 const string appPackageId = "ffmpeg";
 const string appPackageVersion = "3.4";
 ```
+
 ### <a name="build-and-run-the-sample-project"></a>Kompilowanie i uruchamianie przykładowego projektu
+
+Skompiluj i uruchom aplikację w programie Visual Studio lub w wierszu polecenia, używając poleceń `dotnet build` i `dotnet run`. Po uruchomieniu aplikacji przejrzyj kod, aby poznać działanie poszczególnych części aplikacji. Na przykład w programie Visual Studio:
 
 * W Eksploratorze rozwiązań kliknij rozwiązanie prawym przyciskiem myszy, a następnie kliknij polecenie **Kompiluj rozwiązanie**. 
 
@@ -134,7 +138,7 @@ Typowy czas wykonywania wynosi mniej więcej **10 minut** w przypadku uruchomien
 
 ## <a name="review-the-code"></a>Przeglądanie kodu
 
-W poniższych sekcjach przykładowa aplikacja została podzielona na kroki wykonywane w celu przetworzenia obciążenia w usłudze Batch. Podczas czytania dalszej części tego artykułu korzystaj z informacji z otwartego rozwiązania w programie Visual Studio, ponieważ nie omówiono tu wszystkich wierszy kodu z próbki.
+W poniższych sekcjach przykładowa aplikacja została podzielona na kroki wykonywane w celu przetworzenia obciążenia w usłudze Batch. Podczas czytania dalszej części tego artykułu obserwuj zawartość pliku `Program.cs`, ponieważ nie omówiono tu wszystkich wierszy kodu z próbki.
 
 ### <a name="authenticate-blob-and-batch-clients"></a>Uwierzytelnianie klientów obiektów blob i usługi Batch
 
@@ -143,7 +147,7 @@ Podczas interakcji z połączonym kontem magazynu aplikacja używa biblioteki kl
 ```csharp
 // Construct the Storage account connection string
 string storageConnectionString = String.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}",
-StorageAccountName, StorageAccountKey);
+                                StorageAccountName, StorageAccountKey);
 
 // Retrieve the storage account
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
@@ -162,41 +166,43 @@ using (BatchClient batchClient = BatchClient.Open(sharedKeyCredentials))
 
 ### <a name="upload-input-files"></a>Przekazywanie plików wejściowych
 
-Aplikacja przekazuje obiekt `blobClient` do metody `CreateContainerIfNotExist` w celu utworzenia kontenera magazynu dla plików wejściowych (w formacie MP4) oraz kontenera dla danych wyjściowych zadania podrzędnego.
+Aplikacja przekazuje obiekt `blobClient` do metody `CreateContainerIfNotExistAsync` w celu utworzenia kontenera magazynu dla plików wejściowych (w formacie MP4) oraz kontenera dla danych wyjściowych zadania podrzędnego.
 
 ```csharp
-  CreateContainerIfNotExist(blobClient, inputContainerName;
-  CreateContainerIfNotExist(blobClient, outputContainerName);
+CreateContainerIfNotExistAsync(blobClient, inputContainerName;
+CreateContainerIfNotExistAsync(blobClient, outputContainerName);
 ```
 
 Następnie pliki są przekazywane do kontenera wejściowego z lokalnego folderu `InputFiles`. Pliki w magazynie są zdefiniowane jako obiekty [ResourceFile](/dotnet/api/microsoft.azure.batch.resourcefile) usługi Batch, które następnie mogą zostać pobrane przez tę usługę do węzłów obliczeniowych. 
 
 Podczas przekazywania plików używane są dwie metody w pliku `Program.cs`:
 
-* `UploadResourceFilesToContainer`: zwraca kolekcję obiektów ResourceFile i wywołuje wewnętrznie element `UploadResourceFileToContainer` w celu przekazania wszystkich plików przekazywanych w parametrze `filePaths`.
-* `UploadResourceFileToContainer`: przekazuje poszczególne pliki jako obiekty blob do kontenera wejściowego. Po przekazaniu pliku uzyskuje sygnaturę dostępu współdzielonego (SAS) dla obiektu blob i zwraca obiekt ResourceFile, który go reprezentuje. 
+* `UploadResourceFilesToContainerAsync`: zwraca kolekcję obiektów ResourceFile i wywołuje wewnętrznie element `UploadResourceFileToContainerAsync` w celu przekazania wszystkich plików przekazywanych w parametrze `inputFilePaths`.
+* `UploadResourceFileToContainerAsync`: przekazuje poszczególne pliki jako obiekty blob do kontenera wejściowego. Po przekazaniu pliku uzyskuje sygnaturę dostępu współdzielonego (SAS) dla obiektu blob i zwraca obiekt ResourceFile, który go reprezentuje. 
 
 ```csharp
-  List<string> inputFilePaths = new List<string>(Directory.GetFileSystemEntries(@"..\..\InputFiles", "*.mp4",
-      SearchOption.TopDirectoryOnly));
+string inputPath = Path.Combine(Environment.CurrentDirectory, "InputFiles");
 
-  List<ResourceFile> inputFiles = UploadResourceFilesToContainer(
-    blobClient,
-    inputContainerName,
-    inputFilePaths);
+List<string> inputFilePaths = new List<string>(Directory.GetFileSystemEntries(inputPath, "*.mp4",
+    SearchOption.TopDirectoryOnly));
+
+List<ResourceFile> inputFiles = await UploadResourceFilesToContainerAsync(
+  blobClient,
+  inputContainerName,
+  inputFilePaths);
 ```
 
-Szczegółowe informacje na temat przekazywania plików jako obiektów blob na konto magazynu przy użyciu środowiska .NET zawiera artykuł [Wprowadzenie do usługi Azure Blob Storage przy użyciu platformy .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md).
+Szczegółowe informacje na temat przekazywania plików jako obiektów blob na konto magazynu przy użyciu środowiska .NET zawiera artykuł [Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą platformy .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md).
 
 ### <a name="create-a-pool-of-compute-nodes"></a>Tworzenie puli węzłów obliczeniowych
 
-Następnie w przykładzie tworzona jest pula węzłów obliczeniowych na koncie usługi Batch z wywołaniem funkcji `CreatePoolIfNotExist`. Ta zdefiniowana metoda używa metody [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool) w celu ustawienia liczby węzłów, rozmiaru maszyny wirtualnej i konfiguracji puli. W tym przypadku obiekt [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) określa parametr [ImageReference](/dotnet/api/microsoft.azure.batch.imagereference) z odwołaniem do obrazu systemu Windows Server opublikowanego w witrynie Azure Marketplace. Usługa Batch obsługuje szeroki zakres obrazów maszyn wirtualnych z witryny Azure Marketplace oraz niestandardowe obrazy maszyn wirtualnych.
+Następnie w przykładzie tworzona jest pula węzłów obliczeniowych na koncie usługi Batch z wywołaniem funkcji `CreatePoolIfNotExistAsync`. Ta zdefiniowana metoda używa metody [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool) w celu ustawienia liczby węzłów, rozmiaru maszyny wirtualnej i konfiguracji puli. W tym przypadku obiekt [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) określa parametr [ImageReference](/dotnet/api/microsoft.azure.batch.imagereference) z odwołaniem do obrazu systemu Windows Server opublikowanego w witrynie Azure Marketplace. Usługa Batch obsługuje szeroki zakres obrazów maszyn wirtualnych z witryny Azure Marketplace oraz niestandardowe obrazy maszyn wirtualnych.
 
 Liczba węzłów i rozmiar maszyny wirtualnej są ustawiane przy użyciu zdefiniowanych stałych. Usługa Batch obsługuje węzły dedykowane oraz [węzły o niskim priorytecie](batch-low-pri-vms.md). W puli możesz użyć dowolnego z tych typów węzłów lub obu. Węzły dedykowane są zarezerwowane dla Twojej puli. Węzły o niskim priorytecie są oferowane w obniżonej cenie i korzystają z nadwyżek pojemności maszyn wirtualnych na platformie Azure. Węzły o niskim priorytecie staną się niedostępne, jeśli pojemność platformy Azure będzie niewystarczająca. Domyślnie przykładowa aplikacja tworzy pulę zawierającą tylko 5 węzłów o niskim priorytecie i rozmiarze *Standardowa_A1_v2*. 
 
 Aplikacja ffmpeg jest wdrażana w węzłach obliczeniowych przez dodanie parametru [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) do konfiguracji puli. 
 
-Metoda [Commit](/dotnet/api/microsoft.azure.batch.cloudpool.commit) przesyła pulę do usługi Batch.
+Metoda [CommitAsync](/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) przesyła pulę do usługi Batch.
 
 ```csharp
 ImageReference imageReference = new ImageReference(
@@ -223,30 +229,30 @@ pool.ApplicationPackageReferences = new List<ApplicationPackageReference>
     ApplicationId = appPackageId,
     Version = appPackageVersion}};
 
-pool.Commit();  
+await pool.CommitAsync();  
 ```
 
 ### <a name="create-a-job"></a>Tworzenie zadania
 
-Zadanie usługi Batch określa pulę, w której będą uruchamiane zadania podrzędne, wraz z ustawieniami opcjonalnymi, takimi jak priorytet i harmonogram pracy. Przykładowa aplikacja tworzy zadanie z wywołaniem `CreateJobIfNotExist`. W tej zdefiniowanej metodzie zadanie jest tworzone w puli za pomocą metody [BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob). 
+Zadanie usługi Batch określa pulę, w której będą uruchamiane zadania podrzędne, wraz z ustawieniami opcjonalnymi, takimi jak priorytet i harmonogram pracy. Przykładowa aplikacja tworzy zadanie z wywołaniem `CreateJobAsync`. W tej zdefiniowanej metodzie zadanie jest tworzone w puli za pomocą metody [BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob). 
 
-Metoda [Commit](/dotnet/api/microsoft.azure.batch.cloudjob.commit) przesyła zadanie do usługi Batch. Początkowo zadanie nie zawiera zadań podrzędnych.
+Metoda [CommitAsync](/dotnet/api/microsoft.azure.batch.cloudjob.commitasync) przesyła zadanie do usługi Batch. Początkowo zadanie nie zawiera zadań podrzędnych.
 
 ```csharp
 CloudJob job = batchClient.JobOperations.CreateJob();
-    job.Id = JobId;
-    job.PoolInformation = new PoolInformation { PoolId = PoolId };
+job.Id = JobId;
+job.PoolInformation = new PoolInformation { PoolId = PoolId };
 
-job.Commit();        
+await job.CommitAsync();
 ```
 
 ### <a name="create-tasks"></a>Tworzenie zadań podrzędnych
 
-Przykładowa aplikacja tworzy zadania podrzędne w ramach zadania, wywołując metodę `AddTasks`, co powoduje utworzenie listy obiektów [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask). Każdy obiekt `CloudTask` uruchamia narzędzie ffmpeg w celu przetworzenia wejściowego obiektu `ResourceFile` za pomocą właściwości [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline). Narzędzie ffmpeg zostało już zainstalowane na wszystkich węzłach podczas tworzenia puli. Tutaj wiersz polecenia jest używany do uruchomienia narzędzia ffmpeg w celu przekonwertowania każdego z plików wejściowych w formacie MP4 (wideo) na format MP3 (audio).
+Przykładowa aplikacja tworzy zadania podrzędne w ramach zadania, wywołując metodę `AddTasksAsync`, co powoduje utworzenie listy obiektów [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask). Każdy obiekt `CloudTask` uruchamia narzędzie ffmpeg w celu przetworzenia wejściowego obiektu `ResourceFile` za pomocą właściwości [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline). Narzędzie ffmpeg zostało już zainstalowane na wszystkich węzłach podczas tworzenia puli. Tutaj wiersz polecenia jest używany do uruchomienia narzędzia ffmpeg w celu przekonwertowania każdego z plików wejściowych w formacie MP4 (wideo) na format MP3 (audio).
 
 Przykładowa aplikacja tworzy obiekt [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile) dla pliku MP3 po uruchomieniu wiersza polecenia. Pliki wyjściowe z każdego zadania podrzędnego (w tym przypadku jeden plik) są przekazywane do kontenera na połączonym koncie magazynu przy użyciu właściwości [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) w zadaniu podrzędnym.
 
-Następnie przykładowa aplikacja dodaje zadania podrzędne do zadania za pomocą metody [AddTask](/dotnet/api/microsoft.azure.batch.joboperations.addtask), która tworzy kolejkę zadań podrzędnych do uruchomienia w węzłach obliczeniowych. 
+Następnie przykładowa aplikacja dodaje zadania podrzędne do zadania za pomocą metody [AddTaskAsync](/dotnet/api/microsoft.azure.batch.joboperations.addtaskasync), która tworzy kolejkę zadań podrzędnych do uruchomienia w węzłach obliczeniowych. 
 
 ```csharp
 for (int i = 0; i < inputFiles.Count; i++)
@@ -264,7 +270,6 @@ for (int i = 0; i < inputFiles.Count; i++)
     // Create a cloud task (with the task ID and command line) 
     CloudTask task = new CloudTask(taskId, taskCommandLine);
     task.ResourceFiles = new List<ResourceFile> { inputFiles[i] };
-   
 
     // Task output file
     List<OutputFile> outputFileList = new List<OutputFile>();
@@ -278,7 +283,8 @@ for (int i = 0; i < inputFiles.Count; i++)
 }
 
 // Add tasks as a collection
-batchClient.JobOperations.AddTask(jobId, tasks);
+await batchClient.JobOperations.AddTaskAsync(jobId, tasks);
+return tasks
 ```
 
 ### <a name="monitor-tasks"></a>Monitorowanie podzadań
@@ -291,21 +297,23 @@ Istnieje wiele sposobów, w jakie można monitorować wykonanie podzadań. Ta pr
 TaskStateMonitor taskStateMonitor = batchClient.Utilities.CreateTaskStateMonitor();
 try
 {
-    batchClient.Utilities.CreateTaskStateMonitor().WaitAll(addedTasks, TaskState.Completed, timeout);
+    await taskStateMonitor.WhenAll(addedTasks, TaskState.Completed, timeout);
 }
 catch (TimeoutException)
 {
-    batchClient.JobOperations.TerminateJob(jobId, failureMessage);
-    Console.WriteLine(failureMessage);
+    batchClient.JobOperations.TerminateJob(jobId);
+    Console.WriteLine(incompleteMessage);
+    return false;
 }
-batchClient.JobOperations.TerminateJob(jobId, successMessage);
+batchClient.JobOperations.TerminateJob(jobId);
+ Console.WriteLine(completeMessage);
 ...
 
 ```
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po wykonaniu zadań podrzędnych aplikacja automatycznie usuwa utworzony wejściowy kontener magazynu, a opcjonalnie także pulę i zadanie usługi Batch. Dla obu klas [JobOperations](/dotnet/api/microsoft.azure.batch.batchclient.joboperations) i [PoolOperations](/dotnet/api/microsoft.azure.batch.batchclient.pooloperations) klienta BatchClient istnieją odpowiednie metody usuwania, które są wywoływane, jeśli potwierdzisz usunięcie. Mimo że nie są naliczane opłaty za same zadania i zadania podrzędne, są naliczane opłaty za węzły obliczeniowe. W związku z tym zaleca się przydzielanie pul stosownie do potrzeb. W przypadku usunięcia puli usuwane są również wszystkie dane wyjściowe zadań podrzędnych w węzłach. Pliki wejściowe i wyjściowe pozostają jednak na koncie magazynu.
+Po wykonaniu zadań podrzędnych aplikacja automatycznie usuwa utworzony wejściowy kontener magazynu, a opcjonalnie także pulę i zadanie usługi Batch. Dla obu klas [JobOperations](/dotnet/api/microsoft.azure.batch.batchclient.joboperations) i [PoolOperations](/dotnet/api/microsoft.azure.batch.batchclient.pooloperations) klienta BatchClient istnieją odpowiednie metody usuwania, które są wywoływane, jeśli potwierdzisz usunięcie. Mimo że nie są naliczane opłaty za same zadania i zadania podrzędne, są naliczane opłaty za węzły obliczeniowe. W związku z tym zaleca się przydzielanie pul stosownie do potrzeb. W przypadku usunięcia puli usuwane są również wszystkie dane wyjściowe zadań podrzędnych w węzłach. Pliki wyjściowe pozostają jednak na koncie magazynu.
 
 Gdy grupa zasobów, konto usługi Batch i konto magazynu nie będą już potrzebne, usuń je. W tym celu w witrynie Azure Portal zaznacz grupę zasobów konta usługi Batch i kliknij pozycję **Usuń grupę zasobów**.
 
@@ -325,4 +333,4 @@ W tym samouczku zawarto informacje na temat wykonywania następujących czynnoś
 Aby zapoznać się z innymi przykładami planowania i przetwarzania obciążeń usługi Batch przy użyciu interfejsu API .NET, zobacz przykłady w witrynie GitHub.
 
 > [!div class="nextstepaction"]
-> [Przykłady kodu C# dla usługi Batch](https://github.com/Azure/azure-batch-samples/tree/master/CSharp)
+> [Przykłady kodu C# dla usługi Batch](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)

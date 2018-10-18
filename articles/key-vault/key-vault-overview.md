@@ -14,20 +14,20 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 07/17/2018
 ms.author: barclayn
-ms.openlocfilehash: b509bf9575c3fdeedd1673d4ffe1395d46e3d919
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: aae7836448ff27b4c80d7bb53e108034ee52db1c
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051616"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586295"
 ---
 # <a name="what-is-azure-key-vault"></a>Co to jest usługa Azure Key Vault?
 
 Usługa Azure Key Vault pomaga rozwiązać następujące problemy:
-- Usługa Azure Key Vault może służyć do bezpiecznego przechowywania i ścisłego kontrolowania dostępu do tokenów, haseł, certyfikatów, kluczy interfejsu API i innych wpisów tajnych.
-- Usługa Azure Key Vault może być także używana jako rozwiązanie do zarządzania kluczami. Usługa Azure Key Vault ułatwia tworzenie i kontrolowanie kluczy szyfrowania używanych do szyfrowania danych. 
-- Usługa Azure Key Vault pozwala również łatwo aprowizować i wdrażać prywatne i publiczne certyfikaty Secure Sockets Layer/Transport Layer Security (SSL/TLS) do użycia z platformą Azure i połączonymi zasobami wewnętrznymi oraz zarządzać tymi certyfikatami. 
-- Wpisy tajne i klucze mogą być chronione przez oprogramowanie lub moduły HSM zweryfikowane w trybie FIPS 140-2 poziom 2.
+- **Zarządzanie wpisami tajnymi** — usługa Azure Key Vault może służyć do bezpiecznego przechowywania i ścisłego kontrolowania dostępu do tokenów, haseł, certyfikatów, kluczy interfejsu API i innych wpisów tajnych.
+- **Zarządzanie kluczami** — usługa Azure Key Vault może być także używana jako rozwiązanie do zarządzania kluczami. Usługa Azure Key Vault ułatwia tworzenie i kontrolowanie kluczy szyfrowania używanych do szyfrowania danych. 
+- **Zarządzanie certyfikatami** — usługa Azure Key Vault pozwala również łatwo aprowizować i wdrażać prywatne i publiczne certyfikaty Secure Sockets Layer/Transport Layer Security (SSL/TLS) do użycia z platformą Azure i połączonymi zasobami wewnętrznymi oraz zarządzać tymi certyfikatami. 
+- **Wpisy tajne w magazynie wspierane przez moduły HSM (Hardware Security Module)** — wpisy tajne i klucze mogą być chronione przez oprogramowanie lub moduły HSM zweryfikowane pod kątem zgodności ze standardem FIPS 140-2 poziom 2.
 
 ## <a name="why-use-azure-key-vault"></a>Jakie są zalety korzystania z usługi Azure Key Vault?
 
@@ -65,7 +65,7 @@ W przypadku przechowywania cennych danych należy wykonać kilka czynności. Inf
 
 - Brak konieczności posiadania wiedzy z zakresu sprzętowych modułów zabezpieczeń w firmie.
 - Skalowanie w górę w krótkim czasie w celu spełnienia nagłego zapotrzebowania organizacji.
-- Replikowanie zawartości usługi Key Vault w regionie do regionu pomocniczego. Usługa Key Vault zapewnia wysoką dostępność i eliminuje konieczność wykonywania jakichkolwiek czynności przez administratora w celu wyzwolenia trybu failover.
+- Replikowanie zawartości usługi Key Vault w regionie do regionu pomocniczego. Zapewnia to wysoką dostępność i eliminuje konieczność wykonywania jakichkolwiek czynności przez administratora w celu wyzwolenia trybu failover.
 - Udostępnianie standardowych opcji administrowania platformą Azure za pośrednictwem portalu, interfejsu wiersza polecenia platformy Azure i programu PowerShell.
 - Zautomatyzowanie pewnych zadań związanych z certyfikatami kupowanymi od publicznych urzędów certyfikacji, na przykład ich rejestracji i odnawiania.
 
@@ -73,7 +73,7 @@ Usługa Azure Key Vault umożliwia także rozdzielenie wpisów tajnych aplikacji
 
 ### <a name="integrate-with-other-azure-services"></a>Integracja z innymi usługami platformy Azure
 
-Usługi Key Vault, zabezpieczonego magazynu na platformie Azure, użyto do uproszczenia scenariuszy obejmujących [usługę Azure Disk Encryption](../security/azure-security-disk-encryption.md), [funkcję Always Encrypted]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) programu SQL Server i usługi Azure SQL oraz [usługę Azure Web Apps]( https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site). Samą usługę Key Vault można zintegrować z kontami magazynu, centrami zdarzeń i usługą Log Analytics.
+Usługi Key Vault, zabezpieczonego magazynu na platformie Azure, użyto do uproszczenia scenariuszy obejmujących [usługę Azure Disk Encryption](../security/azure-security-disk-encryption.md), [funkcję Always Encrypted]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) programu SQL Server i usługi Azure SQL Database oraz [usługę Azure Web Apps]( https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site). Samą usługę Key Vault można zintegrować z kontami magazynu, centrami zdarzeń i usługą Log Analytics.
 
 ## <a name="next-steps"></a>Następne kroki
 

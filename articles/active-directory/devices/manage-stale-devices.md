@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/20/2018
+ms.date: 10/03/2018
 ms.author: markvi
-ms.reviewer: jairoc
-ms.openlocfilehash: f9664e22be5d7a17dd2a2a7c328593d8168c26f0
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.reviewer: spunukol
+ms.openlocfilehash: 1b8a6e6a6b5f482a4e3575c4da18a02a958c4081
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434742"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249370"
 ---
 # <a name="how-to-manage-the-stale-devices-in-azure-ad"></a>Instrukcje: Zarządzanie nieaktywnymi urządzeniami w usłudze Azure AD
 
@@ -111,7 +111,7 @@ Jeśli urządzenie jest kontrolowane przez usługę Intune lub dowolne inne rozw
 
 ### <a name="system-managed-devices"></a>Urządzenia zarządzane przez system
 
-Nie należy usuwać urządzeń zarządzanych przez system. Są to zazwyczaj urządzenia takie jak autopilot. Po usunięciu takich urządzeń nie można ich ponownie aprowizować. Nowe polecenie cmdlet Get-MmsolDevice domyślnie wyklucza urządzenia zarządzane przez system. 
+Nie należy usuwać urządzeń zarządzanych przez system. Są to zazwyczaj urządzenia takie jak autopilot. Po usunięciu takich urządzeń nie można ich ponownie aprowizować. Nowe polecenie cmdlet `get-msoldevice` domyślnie wyklucza urządzenia zarządzane przez system. 
 
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>Urządzenia dołączone hybrydowo do usługi Azure AD
@@ -137,7 +137,7 @@ Urządzenia zarejestrowane w usłudze Azure AD wyłącza się lub usuwa w usłud
 
 
 
-## <a name="cleanup-stale-devices-in-the-azure-portal"></a>Oczyszczanie nieaktywnych urządzeń w witrynie Azure Portal  
+## <a name="clean-up-stale-devices-in-the-azure-portal"></a>Oczyszczanie nieaktywnych urządzeń w witrynie Azure Portal  
 
 Nieaktywne urządzenia można oczyszczać w witrynie Azure Portal, ale bardziej wydajne jest wykonywanie tego za pomocą skryptu programu PowerShell. Użyj najnowszego modułu programu PowerShell w wersji 1, aby za pomocą filtru znacznika czasu odfiltrować urządzenia zarządzane przez system, takie jak autopilot. W tym przypadku użycie programu PowerShell w wersji 2 nie jest zalecane.
 
@@ -150,7 +150,9 @@ Typowa procedura obejmuje następujące czynności:
 
 3. Wyłączanie urządzenia przy użyciu polecenia cmdlet [Disable-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) 
 
-4. Usuwanie urządzenia przy użyciu polecenia cmdlet [Remove-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0)
+4. Przed usunięciem urządzenia poczekaj, aż upłynie wybrana przez Ciebie liczba dni okresu prolongaty.
+
+5. Usuwanie urządzenia przy użyciu polecenia cmdlet [Remove-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0)
 
 ### <a name="get-the-list-of-devices"></a>Pobieranie listy urządzeń
 

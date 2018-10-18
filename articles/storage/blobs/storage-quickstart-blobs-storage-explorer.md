@@ -6,14 +6,14 @@ author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 08/27/2018
+ms.date: 10/09/2018
 ms.author: tamram
-ms.openlocfilehash: 3f0418e9ccdc5fe3babd2f1ac4482795994fe3b4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 336fecf95dab36dcf00b5a0c92b700297622cc6d
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996132"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902981"
 ---
 # <a name="quickstart-use-azure-storage-explorer-to-create-a-blob-in-object-storage"></a>Szybki start: tworzenie obiektu blob w magazynie obiektów za pomocą Eksploratora usługi Azure Storage
 

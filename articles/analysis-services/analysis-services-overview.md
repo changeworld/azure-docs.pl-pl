@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 08/27/2018
+ms.date: 10/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ae2d312feb0fcefab85bcbbd2db7ac46c328213f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a23e9dc8fad52bac85de834c53d2c710423211c7
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104986"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269245"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co to są usługi Azure Analysis Services?
 
@@ -39,7 +39,7 @@ Usługa Azure Analysis Services jest dostępna w warstwach **Deweloper**, **Pods
 
 ### <a name="developer-tier"></a>Warstwa Deweloper
 
-Ta warstwa jest zalecana w przypadku scenariuszy związanych z oceną, programowaniem i testowaniem. Pojedynczy plan uwzględnia wszystkie funkcje warstwy Standardowa, ale ma ograniczenia dotyczące mocy obliczeniowej, jednostek QPU i rozmiaru pamięci. Skalowanie repliki zapytania w poziomie jest niedostępne w tej warstwie. Ta warstwa nie oferuje umowy SLA.
+Ta warstwa jest zalecana w przypadku scenariuszy związanych z oceną, programowaniem i testowaniem. Pojedynczy plan uwzględnia wszystkie funkcje warstwy Standardowa, ale ma ograniczenia dotyczące mocy obliczeniowej, jednostek QPU i rozmiaru pamięci. Skalowanie repliki zapytania *jest niedostępne* w tej warstwie. W tej warstwie nie jest oferowana umowa SLA.
 
 |Planowanie  |Jednostki QPU  |Pamięć (GB)  |
 |---------|---------|---------|
@@ -102,6 +102,7 @@ Usługa Azure Analysis Services jest obsługiwana w regionach na całym świecie
 |Region  | Obsługiwane plany | Repliki zapytania (tylko plany Standard) |
 |---------|---------|:---------:|
 |Australia Południowo-Wschodnia     | B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Australia Wschodnia     |    B1, B2, S0, S1, S2, S4    <br>S8, S9    |    3<br>1     |
 |Japonia Wschodnia  |   B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Azja Południowo-Wschodnia     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |   1      |
 |Indie Zachodnie     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
@@ -128,7 +129,7 @@ Podobnie jak w przypadku zmiany warstw można skalować repliki zapytania w pozi
 
 Usługi Azure Analysis Services są zgodne z wieloma wspaniałymi funkcjami, które już istnieją w usługach SQL Server Analysis Services Enterprise Edition. Usługa Azure Analysis Services obsługuje modele tabelaryczne na [poziomie zgodności](analysis-services-compat-level.md) 1200 lub wyższym. Modele tabelaryczne to relacyjne konstrukcje modelowania (model, tabele, kolumny) wyrażone w postaci definicji obiektów metadanych tabelarycznych w kodzie języka TMSL (Tabular Model Scripting Language) i modelu TOM (Tabular Model Object). Obsługiwane są partycje, perspektywy, zabezpieczenia na poziomie wierszy, relacje dwukierunkowe i przekształcenia*. Modele wielowymiarowe ani dodatek PowerPivot dla programu Sharepoint *nie są* obsługiwane w usłudze Azure Analysis Services.
 
-Modele tabelaryczne w trybie w pamięci i DirectQuery są obsługiwane. Modele tabelaryczne w trybie w pamięci (tryb domyślny) obsługują wiele źródeł danych. Ponieważ model danych jest wysoce skompresowany i buforowany w pamięci, ten tryb udostępnia najszybszą odpowiedź na zapytanie dotyczące dużych ilości danych. Zapewnia on także większą elastyczność w przypadku złożonych zestawów danych i zapytań. Partycjonowanie umożliwia ładowanie przyrostowe, zwiększa możliwości przetwarzania równoległego i zmniejsza zużycie pamięci. Inne zaawansowane funkcje modelowania danych, takie jak tabele obliczeniowe, oraz wszystkie funkcje języka DAX są obsługiwane. Modele w pamięci muszą być odświeżane (przetwarzane) w celu aktualizacji informacji buforowanych na podstawie źródeł danych. Dzięki obsłudze jednostek usług platformy Azure nienadzorowane operacje odświeżania przy użyciu programu PowerShell, modelu TOM, języka TMSL i stylu REST oferują elastyczność sprawdzania, czy dane są zawsze aktualne. 
+Modele tabelaryczne w trybie w pamięci i DirectQuery są obsługiwane. Modele tabelaryczne w trybie w pamięci (tryb domyślny) obsługują wiele źródeł danych. Ponieważ model danych jest wysoce skompresowany i buforowany w pamięci, ten tryb udostępnia najszybszą odpowiedź na zapytanie dotyczące dużych ilości danych. Zapewnia on także większą elastyczność w przypadku złożonych zestawów danych i zapytań. Partycjonowanie umożliwia ładowanie przyrostowe, zwiększa możliwości przetwarzania równoległego i zmniejsza zużycie pamięci. Inne zaawansowane funkcje modelowania danych, takie jak tabele obliczeniowe, oraz wszystkie funkcje języka DAX są obsługiwane. Modele w pamięci muszą być odświeżane (przetwarzane) w celu aktualizacji informacji buforowanych na podstawie źródeł danych. Dzięki obsłudze jednostek usług platformy Azure nienadzorowane operacje odświeżania przy użyciu programu PowerShell, modelu TOM, języka TMSL i stylu REST oferują elastyczność sprawdzania aktualności danych. 
 
 Tryb DirectQuery* używa relacyjnej bazy danych zaplecza do magazynowania i wykonywania zapytań. Bardzo duże zestawy danych w pojedynczych źródłach danych SQL Server, SQL Server Data Warehouse, Azure SQL Database, Azure SQL Data Warehouse, Oracle i Teradata są obsługiwane. Zestawy danych zaplecza mogą przekraczać rozmiar dostępnej pamięci zasobów serwera. Złożone scenariusze odświeżania modeli danych nie są potrzebne. Istnieją również pewne ograniczenia, takie jak ograniczone typy źródeł danych i ograniczenia formuł języka DAX, a niektóre zaawansowane funkcje modelowania danych nie są obsługiwane. Przed zidentyfikowaniem odpowiadającego Ci trybu zobacz [DirectQuery mode](https://docs.microsoft.com/sql/analysis-services/tabular-models/directquery-mode-ssas-tabular) (Tryb DirectQuery).
 

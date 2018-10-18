@@ -5,15 +5,15 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 07/05/2018
+ms.date: 10/09/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: b5be37ede208ba14fbfe8270bff317a782bf655a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 0d8504dc002fa43c25f689b4c5b3f78c822cf5b0
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425888"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069424"
 ---
 # <a name="route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>Kierowanie zdarzeń niestandardowych do usługi Azure Event Hubs za pomocą interfejsu wiersza polecenia platformy Azure i usługi Event Grid
 
@@ -37,7 +37,7 @@ az group create --name gridResourceGroup --location westus2
 
 ## <a name="create-a-custom-topic"></a>Tworzenie tematu niestandardowego
 
-Temat usługi Event Grid udostępnia zdefiniowany przez użytkownika punkt końcowy, w którym publikowane są zdarzenia. Poniższy przykład obejmuje tworzenie tematu niestandardowego w grupie zasobów. Zamień `<your-topic-name>` na unikatową nazwę tematu. Nazwa tematu musi być unikatowa, ponieważ jest reprezentowana przez wpis DNS.
+Temat usługi Event Grid udostępnia zdefiniowany przez użytkownika punkt końcowy, w którym publikowane są zdarzenia. Poniższy przykład obejmuje tworzenie tematu niestandardowego w grupie zasobów. Zamień nazwę `<your-topic-name>` na unikatową nazwę tematu niestandardowego. Nazwa tematu niestandardowego musi być unikatowa, ponieważ jest reprezentowana przez wpis DNS.
 
 ```azurecli-interactive
 topicname=<your-topic-name>
@@ -46,7 +46,7 @@ az eventgrid topic create --name $topicname -l westus2 -g gridResourceGroup
 
 ## <a name="create-event-hub"></a>Tworzenie centrum zdarzeń
 
-Przed zasubskrybowaniem tematu utwórzmy punkt końcowy dla komunikatów o zdarzeniach. Utworzysz centrum zdarzeń w celu zbierania zdarzeń.
+Przed subskrybowaniem tematu niestandardowego utwórzmy punkt końcowy dla komunikatu o zdarzeniach. Utworzysz centrum zdarzeń w celu zbierania zdarzeń.
 
 ```azurecli-interactive
 namespace=<unique-namespace-name>
@@ -56,9 +56,9 @@ az eventhubs namespace create --name $namespace --resource-group gridResourceGro
 az eventhubs eventhub create --name $hubname --namespace-name $namespace --resource-group gridResourceGroup
 ```
 
-## <a name="subscribe-to-a-topic"></a>Subskrybowanie tematu
+## <a name="subscribe-to-a-custom-topic"></a>Subskrybowanie tematu niestandardowego
 
-Subskrybowanie tematu ma poinformować usługę Event Grid o tym, które zdarzenia chcesz śledzić. Poniższy przykład ilustruje subskrybowanie utworzonego tematu i przekazywanie identyfikatora zasobu do centrum zdarzeń dla punktu końcowego. Punkt końcowy ma następujący format:
+Subskrybowanie tematu usługi Event Grid informuje usługę Event Grid o tym, które zdarzenia chcesz śledzić. Poniższy przykład ilustruje subskrybowanie utworzonego tematu niestandardowego i przekazywanie identyfikatora zasobu do centrum zdarzeń dla punktu końcowego. Punkt końcowy ma następujący format:
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.EventHub/namespaces/<namespace-name>/eventhubs/<hub-name>`
 
@@ -75,7 +75,9 @@ az eventgrid event-subscription create \
   --endpoint $hubid
 ```
 
-## <a name="send-an-event-to-your-topic"></a>Wysyłanie zdarzenia do tematu
+Konto używane do tworzenia subskrypcji zdarzeń musi mieć dostęp do zapisu w centrum zdarzeń.
+
+## <a name="send-an-event-to-your-custom-topic"></a>Wysyłanie zdarzenia do tematu niestandardowego
 
 Wyzwólmy zdarzenie, aby zobaczyć, jak usługa Event Grid dystrybuuje komunikat do punktu końcowego. Po pierwsze uzyskajmy adres URL i klucz tematu niestandardowego.
 
@@ -84,13 +86,13 @@ endpoint=$(az eventgrid topic show --name $topicname -g gridResourceGroup --quer
 key=$(az eventgrid topic key list --name $topicname -g gridResourceGroup --query "key1" --output tsv)
 ```
 
-Aby uprościć ten artykuł, użyj przykładowych danych zdarzenia do wysłania do tematu. Zwykle dane zdarzenia są wysyłane przez aplikację lub usługę platformy Azure. CURL to narzędzie, które wysyła żądania HTTP. W tym artykule do wysłania zdarzenia do tematu używane jest narzędzie CURL.  W poniższym przykładzie są wysyłane trzy zdarzenia do tematu usługi Event Grid:
+Dla uproszczenia czynności opisanych w tym artykule do tematu niestandardowego zostaną wysłane przykładowe dane zdarzenia. Zwykle dane zdarzenia są wysyłane przez aplikację lub usługę platformy Azure. CURL to narzędzie, które wysyła żądania HTTP. W tym artykule do wysłania zdarzenia do tematu niestandardowego jest używane narzędzie CURL.  W poniższym przykładzie są wysyłane trzy zdarzenia do tematu usługi Event Grid:
 
 ```azurecli-interactive
 for i in 1 2 3
 do
-   body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/customevent.json)'")
-   curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
+   event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/vehicles/motorcycles", "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'", "data":{ "make": "Ducati", "model": "Monster"},"dataVersion": "1.0"} ]'
+   curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 done
 ```
 

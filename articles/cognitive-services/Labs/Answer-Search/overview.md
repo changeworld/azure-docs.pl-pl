@@ -1,31 +1,31 @@
 ---
 title: Czym jest projekt wyszukiwania odpowiedzi?
 titlesuffix: Azure Cognitive Services
-description: Wprowadzenie do wyszukiwania odpowiedzi projektu.
+description: Wprowadzenie do laboratorium Project Answer Search.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: project-answer-search
-ms.topic: article
+ms.topic: overview
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 87fe7b008e3e7c6cd8d1a9a870c0fb8ce2f6a7cd
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
-ms.translationtype: MT
+ms.openlocfilehash: 5658054b3cc77db20edd64f6c560ee5d4a58eb46
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868259"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883724"
 ---
 # <a name="what-is-project-answer-search"></a>Czym jest projekt wyszukiwania odpowiedzi?
-Projekt interfejsu API wyszukiwania w odpowiedzi używa punktu końcowego usługi Bing w wersji 7, aby uzyskać odpowiedzi na zapytania interrogative. A przykład pytanie "Co to jest obwód ziemi?" zwraca odpowiedź z faktach informacji.  Zapytanie dotyczące osoby, miejsca lub rzeczy zwraca informacje o jednostka identyfikowane przez zapytanie. Te scenariusze może być przydatne w aplikacjach, takich jak Boty konwersacji, obsługi komunikatów w aplikacji, czytelnicy, itp.  
+Interfejs API laboratorium Project Answer Search korzysta z punktu końcowego Bing w wersji 7, aby uzyskać odpowiedzi na zapytania w formie pytań. Pytanie „What is the circumference of the earth?”(Jaki jest obwód ziemi?) zwraca odpowiedź, która zawiera fakty.  Zapytanie dotyczące osoby, miejsca lub przedmiotu zwraca informacje dotyczące jednostki określonej przez zapytanie. Te scenariusze mogą być przydatne w aplikacjach, takich jak na przykład boty konwersacyjne, aplikacje do obsługi wiadomości lub czytniki.  
 
-Zapytania zwracają odpowiedzi, które są zależne od scenariusza zapytania: stron sieci Web są zawsze zwracany, podczas gdy [fakty](fact-queries.md) i/lub [jednostek](entity-queries.md) są zwracane, jeśli jest to odpowiednie.
+Zapytania zwracają odpowiedzi, które są uzależnione od scenariusza zapytania: strony internetowe są zwracane zawsze, podczas gdy [fakty](fact-queries.md) i/lub [jednostki](entity-queries.md) są zwracane wówczas, gdy są istotne.
 
 ## <a name="endpoint"></a>Endpoint
-Aby uzyskać odpowiedzi na pytanie lub informacji na temat osoby, miejsca lub rzeczy, Wyślij żądanie do punktu końcowego interfejsu API wyszukiwania w odpowiedzi. Na użytek nagłówki i parametry adresu URL różne specyfikacje.  Obejmują *Ocp-Apim-Subscription-Key* nagłówka z prawidłowym tokenem.  Parametr rynku jest wymagany. Tylko `en-us` rynku jest obecnie obsługiwane.
+Aby uzyskać odpowiedzi na pytanie lub informacje na temat osoby, miejsca lub przedmiotu, należy wysłać żądanie do punktu końcowego interfejsu API Answer Search. Użyj odpowiednich nagłówków i parametrów adresu URL do celów różnych specyfikacji.  Dołącz nagłówek *Ocp-Apim-Subscription-Key* zawierający prawidłowy token.  Wymagane jest podanie parametru rynku. Aktualnie obsługiwany jest tylko rynek `en-us`.
 
-Następujące zapytanie pobiera odpowiedzi na pytanie: "Co to jest obwód ziemi?"
+Następujące zapytanie pobiera odpowiedzi na pytanie „What is the circumference of the earth?”.
 
 GET:
 ````
@@ -33,11 +33,11 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=what+is+circ
 
 ````
 
-Parametr adresu URL `q=` jest wymagany do określenia obiektu wyszukiwania.
+Aby określić obiekt wyszukiwania, konieczny jest parametr adresu URL `q=`.
 
 ## <a name="response-object"></a>Obiekt odpowiedzi
 
-Odpowiedź zawiera nagłówki HTTP, stron sieci Web, faktów lub jednostki.
+Odpowiedź zawiera nagłówki HTTP, strony internetowe, fakty i/lub jednostki.
 
 ````
 BingAPIs-TraceId: AB2E75C998614ADB8EBF5110DF648298
@@ -239,22 +239,22 @@ JSON Response:
 ````
 
 ## <a name="terms-of-use"></a>Warunki użytkowania
-Wyszukiwanie odpowiedzi projektu i trendy wideo projektu są podlegają [Użyj wyszukiwania Bing i wymagania dotyczące wyświetlania](use-display-requirements.md).
+Laboratoria Project Answer Search i Project Video Trends podlegają [wymaganiom związanym z korzystaniem i wyświetlaniem wyszukiwania Bing](use-display-requirements.md).
 
-Użytkownik lub innych firm w Twoim imieniu może nie używać, zachować, przechowywania, pamięci podręcznej, udostępnić, dystrybucji żadnych danych z interfejsu API (wersja zapoznawcza) adres URL na potrzeby testowania, tworzenia, szkolenia, rozpowszechniania lub udostępniania dowolnej usługi firmy Microsoft lub funkcji. 
+Użytkownik ani żaden inny podmiot w jego imieniu nie może używać, zachowywać, przechowywać, buforować, udostępniać ani rozpowszechniać żadnych danych z interfejsu API projektu podglądu adresu URL do celów testowania, opracowywania, rozpowszechniania lub udostępniania jakiejkolwiek usługi lub funkcji firmy innej niż Microsoft. 
 
 ## <a name="throttling-requests"></a>Ograniczanie żądań
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
 
-## <a name="data-attribution"></a>Autorstwa danych  
+## <a name="data-attribution"></a>Określanie autorstwa danych  
 
-Odpowiedzi wyszukiwania odpowiedzi projektu zawierają informacji należących do innych firm. Ponosisz odpowiedzialność, aby upewnić się, że użytkowanie jest odpowiednie, na przykład zgodnych z licencji creative commons środowiska użytkownika może polegać na.  
+Odpowiedzi laboratorium Projekt Answer Search zawierają informacje, których właścicielem są inne podmioty. Użytkownik odpowiada za korzystanie z usługi w sposób właściwy, na przykład poprzez przestrzeganie licencji Creative Commons, z których mogą korzystać elementy środowiska użytkownika.  
   
-Jeśli wynik lub odpowiedzi zawiera `contractualRules`, `attributions`, lub `provider` pól, należy atrybutów danych. Jeśli odpowiedź nie zawiera żadnego z tych pól, autorstwa nie jest wymagana. Jeśli odpowiedź obejmuje `contractualRules` pola i `attributions` i/lub `provider` pola, musisz podać umowne stosowane w UE zasady do atrybutu danych.  
+Jeśli odpowiedź lub wynik zawiera pola `contractualRules`, `attributions` lub `provider`, należy podać autorstwo danych. Jeśli odpowiedź nie zawiera żadnego z tych pól, podanie autorstwa danych nie jest wymagane. Jeśli odpowiedź zawiera pole `contractualRules` oraz pola `attributions` i/lub `provider`, należy zastosować reguły umowne w celu określenia autorstwa danych.  
   
-W poniższym przykładzie przedstawiono jednostki, która zawiera regułę umownych MediaAttribution i obraz, który zawiera `provider` pola. Reguła MediaAttribution identyfikuje obraz jako obiekt docelowy reguły, dzięki czemu będzie ignorować obrazu `provider` pola, a następnie używają reguł MediaAttribution zapewnienie autorstwa.  
+W poniższym przykładzie pokazano jednostkę, która zawiera regułę umowną MediaAttribution i obraz, który zawiera pole `provider`. Reguła MediaAttribution identyfikuje obraz jako obiekt docelowy reguły, a więc możesz zignorować pole `provider` obrazu, i zastosować regułę MediaAttribution w celu określenia autorstwa.  
   
 ```  
         "value" : [{
@@ -283,10 +283,10 @@ W poniższym przykładzie przedstawiono jednostki, która zawiera regułę umown
         }]
 ```  
   
-Jeśli zawiera regułę umownych `targetPropertyName` pole, reguła dotyczy tylko pola docelowego. W przeciwnym razie ta reguła ma zastosowanie do obiektu nadrzędnego, który zawiera `contractualRules` pola.  
+Jeśli reguła umowna zawiera pole `targetPropertyName`, reguła dotyczy tylko pola docelowego. W przeciwnym razie ta reguła dotyczy obiektu nadrzędnego, który zawiera pole `contractualRules`.  
   
   
-W poniższym przykładzie `LinkAttribution` reguła zawiera `targetPropertyName` pola, więc ta reguła ma zastosowanie do `description` pola. Dla reguł, które dotyczą określonych pól musi zawierać wiersz bezpośrednio po docelowych dane, które zawierają hiperłącza do witryny sieci Web dostawcy. Na przykład aby atrybut Opis, dołączyć linię natychmiast po tekst opisu zawierający hiperłącze do danych w witrynie sieci Web dostawcy, w tym przypadku utworzenie łącza do en.wikipedia.org.  
+W poniższym przykładzie reguła `LinkAttribution` zawiera pole `targetPropertyName`, a więc reguła dotyczy pola `description`. W przypadku reguł, które dotyczą konkretnych pól, po danych docelowych musisz umieścić wiersz zawierający hiperlink do witryny internetowej dostawcy. Na przykład aby podać autorstwo opisu, po tekście opisu należy dołączyć wiersz zawierający hiperlink do danych w witrynie internetowej dostawcy — w tym przypadku link do witryny en.wikipedia.org.  
   
 ```  
 "entities" : {  
@@ -305,36 +305,36 @@ W poniższym przykładzie `LinkAttribution` reguła zawiera `targetPropertyName`
   
 ```  
 
-### <a name="license-attribution"></a>Autorstwa licencji  
+### <a name="license-attribution"></a>Określanie licencji  
 
-Jeśli zawiera listę reguł umownych [LicenseAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#licenseattribution) regułę, należy wyświetlić powiadomienia w wierszu bezpośrednio po zawartości, która dotyczy licencji. `LicenseAttribution` Reguła używa `targetPropertyName` pola, aby zidentyfikować właściwość, która dotyczy licencji.  
+Jeśli lista reguł umownych zawiera regułę [LicenseAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#licenseattribution), należy w wierszu następującym tuż po zawartości objętej licencją dodać odpowiednią informację. Reguła `LicenseAttribution` korzysta z pola `targetPropertyName`, aby określić właściwość, której dotyczy licencja.  
   
-Poniżej pokazano przykład, który zawiera `LicenseAttribution` reguły.  
+Poniżej pokazano przykład, który zawiera regułę `LicenseAttribution`.  
   
-![Autorstwa licencji](./media/licenseattribution.png)  
+![Określanie licencji](./media/licenseattribution.png)  
   
-Ogłoszenie licencji, którą można wyświetlać musi zawierać hiperlink do witryny sieci Web, który zawiera informacje o licencji. Zazwyczaj należy nazwa licencji hiperłącze. Na przykład, jeśli jest Akceptuję **tekst w polu DW przez SA licencji** i DW przez SA nazwa licencji, czyniłyby DW przez SA hiperłącze.  
+Wyświetlana informacja dotycząca licencji musi zawierać hiperlink do witryny internetowej, która zawiera informacje dotyczące licencji. Najczęściej hiperlinkiem jest nazwa licencji. Na przykład jeśli komunikat brzmi **Text under CC-BY-SA license** (Tekst w ramach licencji CC-BY-SA), a CC-BY-SA to nazwa licencji, hiperlinkiem będzie ciąg „CC-BY-SA”.  
   
-### <a name="link-and-text-attribution"></a>Łącze i autorstwa tekstu  
+### <a name="link-and-text-attribution"></a>Określanie autorstwa linków i tekstu  
 
-[LinkAttribution](reference.md#linkattribution) i [TextAttribution](reference.md#textattribution) zasady zwykle są używane do identyfikowania dostawcy danych. `targetPropertyName` Pole określa pola, które dotyczy reguła.  
+Reguły [LinkAttribution](reference.md#linkattribution) i [TextAttribution](reference.md#textattribution) są zwykle używane do identyfikowania dostawcy danych. Pole `targetPropertyName` określa pole, którego dotyczy reguła.  
   
-Aby atrybutu dostawców, Dołącz wiersz bezpośrednio po zawartości, pierwsza stosowane do (na przykład pola docelowego). Wiersz należy wyraźnie oznaczone do wskazania, że dostawcy są źródła danych. Na przykład "dane z: en.wikipedia.org". Aby uzyskać `LinkAttribution` zasady, należy utworzyć hiperłącze do witryny sieci Web dostawcy.  
+Aby określić dostawców, należy dodać odpowiedni wiersz tuż po zawartości, której dotyczy (na przykład po polu docelowym). Ten wiersz powinien być czytelnie oznaczony, aby wskazać, że określeni dostawcy są źródłem danych. Na przykład: „Data from: en.wikipedia.org” (Dane z witryny en.wikipedia.org). W przypadku reguł `LinkAttribution`, należy utworzyć hiperlink do witryny internetowej dostawcy.  
   
-Poniżej pokazano przykład, który zawiera `LinkAttribution` i `TextAttribution` reguły.  
+Poniżej pokazano przykład, który zawiera reguły `LinkAttribution` i `TextAttribution`.  
   
-![Tekst łącza: uznanie autorstwa](./media/linktextattribution.png)  
+![Określanie autorstwa tekstu linku](./media/linktextattribution.png)  
 
-### <a name="media-attribution"></a>Nośnik: uznanie autorstwa  
+### <a name="media-attribution"></a>Określanie autorstwa multimediów  
 
-Jeśli jednostka zawiera obraz, możesz wyświetlić, musisz podać klikalny link do witryny sieci Web dostawcy. Jeśli jednostka zawiera [MediaAttribution](reference.md#mediaattribution) regułę, należy użyć adresu URL reguły do utworzenia łącza za pomocą kliknięć. W przeciwnym razie użyj adresu URL uwzględnione w obrazie `provider` pola, aby utworzyć link za pomocą kliknięć.  
+Jeśli jednostka zawiera obraz, który wyświetlasz, musisz dołączyć link do witryny dostawcy, który można kliknąć. Jeśli jednostka zawiera regułę [MediaAttribution](reference.md#mediaattribution), należy do utworzenia tego linku użyć adresu URL określonego przez regułę. W przeciwnym razie do utworzenia tego linku użyj adresu URL zawartego w polu `provider` obrazu.  
   
-Poniżej pokazano przykład, który zawiera obraz `provider` pola i reguły umownych. Przykład zawiera reguły umowne stosowane w UE, będzie ignorować obrazu `provider` pola, a następnie zastosować `MediaAttribution` reguły.  
+Poniżej przedstawiono przykład, który zawiera pole `provider` obrazu i reguły umowne. Ponieważ przykład zawiera reguły umowne, należy zignorować pole `provider` obrazu i zastosować regułę `MediaAttribution`.  
   
-![Nośnik: uznanie autorstwa](./media/mediaattribution.png)  
+![Określanie autorstwa multimediów](./media/mediaattribution.png)  
 
-## <a name="next-steps"></a>Kolejne kroki
-- [Przewodnik Szybki Start języka C#](c-sharp-quickstart.md)
-- [Przewodnik Szybki Start języka Java](java-quickstart.md)
-- [Przewodnik Szybki Start węzła](node-quickstart.md)
-- [Przewodnik Szybki Start języka Python](python-quickstart.md)
+## <a name="next-steps"></a>Następne kroki
+- [Przewodnik Szybki start dla języka C#](c-sharp-quickstart.md)
+- [Przewodnik Szybki start dla języka Java](java-quickstart.md)
+- [Przewodnik Szybki start dla środowiska Node](node-quickstart.md)
+- [Przewodnik Szybki start dla języka Python](python-quickstart.md)

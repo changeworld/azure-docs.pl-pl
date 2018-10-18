@@ -1,30 +1,30 @@
 ---
-title: Szybki Start Bing wiadomości wyszukiwania zestawu SDK Java | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować aplikację konsoli SDK wyszukiwania wiadomości Bing.
+title: 'Szybki start: zestaw SDK wyszukiwania wiadomości Bing, Java'
 titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak skonfigurować aplikację konsolową zestawu SDK wyszukiwania wiadomości Bing.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: a6d4baf307fa3edcc0886d32204f2872fe310ce2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 7919f13e8c5aaa592a416190d3cd11edbf31af2c
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349461"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802481"
 ---
-# <a name="bing-news-search-sdk-java-quickstart"></a>Szybki Start Bing wiadomości wyszukiwania zestawu SDK Java
+# <a name="quickstart-bing-news-search-sdk-with-java"></a>Szybki start: zestaw SDK wyszukiwania wiadomości Bing w środowisku Java
 
-Zestaw SDK wyszukiwania wiadomości Bing udostępnia funkcje interfejsu API REST zapytania wiadomości i wyniki analizy. 
+Zestaw SDK wyszukiwania wiadomości Bing zapewnia funkcjonalność interfejsu API REST na potrzeby wykonywania zapytań dotyczących wiadomości i analizowania wyników. 
 
-[Źródła kodu dla zestawu SDK Java usługi Bing wiadomości wyszukiwania przykłady](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch) jest dostępna w Centrum Git.
+[Kod źródłowy przykładów zestawu SDK wyszukiwania wiadomości Bing w języku Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch) jest dostępny w serwisie Git Hub.
 
 ## <a name="application-dependencies"></a>Zależności aplikacji
-Pobierz [klucz dostępu usługi kognitywnych](https://azure.microsoft.com/try/cognitive-services/) w obszarze **wyszukiwania**. Zainstaluj zależności zestawu SDK wyszukiwania wiadomości Bing przy użyciu narzędzia Maven, Gradle lub innego systemu zarządzania zależności. Plik Maven POM wymaga deklaracji:
+Pobierz [klucz dostępu usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) w obszarze **Wyszukiwanie**. Zainstaluj zależności zestawu SDK wyszukiwania wiadomości Bing przy użyciu oprogramowania Maven, Gradle lub innego systemu zarządzania zależnościami. Plik POM systemu Maven wymaga deklaracji:
 ```
   <dependencies>
     <dependency>
@@ -35,7 +35,7 @@ Pobierz [klucz dostępu usługi kognitywnych](https://azure.microsoft.com/try/co
   </dependencies>
 ```
 ## <a name="news-search-client"></a>Klient wyszukiwania wiadomości
-Dodaj importów do implementacji klasy.
+Dodaj deklaracje import do implementacji klasy.
 ```
 import com.microsoft.azure.cognitiveservices.newssearch.*;
 import com.microsoft.azure.cognitiveservices.newssearch.implementation.NewsInner;
@@ -48,7 +48,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import java.io.IOException;
 ```
-Implementowanie **NewsSearchAPIImpl** klienta, który wymaga wystąpienia **ServiceClientCredentials** klasy.
+Zaimplementuj klienta **NewsSearchAPIImpl**, który wymaga wystąpienia klasy **ServiceClientCredentials**.
 ```
 public static NewsSearchAPIImpl getClient(final String subscriptionKey) {
     return new NewsSearchAPIImpl("https://api.cognitive.microsoft.com/bing/v7.0/",
@@ -74,7 +74,7 @@ public static NewsSearchAPIImpl getClient(final String subscriptionKey) {
 
 
 ```
-Wyszukaj wiadomości z pojedynczego zapytania "Quantum obliczania." Wyszukiwanie przy użyciu filtru *rynku* i *liczba* parametrów. Sprawdź liczbę wyników. Drukowanie informacji o pierwszego wyniku wiadomości: nazwa, adres URL, Data publikacji, opis, nazwa dostawcy i łączna liczba szacowany dopasowań.
+Wyszukaj wiadomości za pomocą jednego zapytania „Obliczenia kwantowe”. Odfiltruj wyszukiwanie za pomocą parametrów *market* i *count*. Sprawdź liczbę wyników. Wypisz informacje o pierwszym wyniku dotyczącym wiadomości: nazwę, adres URL, datę publikacji, opis, nazwę dostawcy i łączną liczbę szacowanych dopasowań.
 ```
 public static void newsSearch(String subscriptionKey)
 {
@@ -121,7 +121,7 @@ public static void newsSearch(String subscriptionKey)
 }
 
 ```
-Wyszukaj najnowsze informacje na temat "Sztucznego analizy". Wyszukiwanie przy użyciu filtru *świeżości* i *sortBy* parametrów. Sprawdź liczbę wyników. Drukowanie informacji o pierwszego wyniku wiadomości: nazwa, adres URL, Data publikacji, opis, nazwa dostawcy i łączna liczba szacowany dopasowań.
+Wyszukaj ostatnie wiadomości na temat sztucznej inteligencji. Odfiltruj wyszukiwanie za pomocą parametrów *freshness* i *sortBy*. Sprawdź liczbę wyników. Wypisz informacje o pierwszym wyniku dotyczącym wiadomości: nazwę, adres URL, datę publikacji, opis, nazwę dostawcy i łączną liczbę szacowanych dopasowań.
 ```
 /**
  * Search recent news for (Artificial Intelligence) with the freshness and sortBy parameters.
@@ -172,7 +172,7 @@ public static void newsSearchWithFilters(String subscriptionKey)
 }
 
 ```
-Wyszukiwanie wiadomości **kategorii** dla *filmów oraz rozrywka TV* tematów i użyj *bezpieczne wyszukiwania* funkcji. Sprawdź liczbę wyników. Drukowanie kategorii, nazwa, adres URL, opis, Data publikacji i nazwy dostawcy dla pierwszego wyniku wiadomości.
+Wyszukaj w **kategorii** wiadomości tematy związane z *rozrywkowymi filmami i programami telewizyjnymi* oraz użyj funkcji *bezpiecznego wyszukiwania*. Sprawdź liczbę wyników. Wypisz kategorię, nazwę, adres URL, opis, datę publikacji i nazwę dostawcy z pierwszego wyniku dotyczącego wiadomości.
 ```
 /**
  * Search the news category for (movie and TV entertainment) with safe search. Verify the number of results. 
@@ -223,7 +223,7 @@ public static void newsCategory(String subscriptionKey)
 }
 
 ```
-Wyszukiwanie umożliwia analizę trendów tematy wiadomości. Sprawdź liczbę wyników. Wydrukuj nazwy, tekst zapytania, adres URL sieci web wyszukiwania i adres URL wyszukiwania wiadomości do pierwszego wyniku wiadomości.
+Wyszukaj popularne tematy wiadomości. Sprawdź liczbę wyników. Wypisz nazwę, tekst zapytania, adres URL wyszukiwania w Internecie i adres URL wyszukiwania wiadomości z pierwszego wyniku dotyczącego wiadomości.
 ```
 public static void trendingTopics(String subscriptionKey)
 {
@@ -265,7 +265,7 @@ public static void trendingTopics(String subscriptionKey)
     }
 }
 ```
-Dodaj metod opisanych w tym artykule do klasy z głównych funkcji wykonywania kodu.
+Dodaj metody opisane w tym artykule do klasy z funkcją main w celu wykonania kodu.
 ```
 package javaNewsSDK;
 import com.microsoft.azure.cognitiveservices.newssearch.*;
@@ -284,8 +284,8 @@ public class NewsSearchSDK {
     // Include the methods described in this article.
 }
 ```
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Zestaw SDK Java usługi kognitywnych — przykłady](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+[Przykłady dotyczące zestawu Java SDK dla usług Cognitive Services](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 
 

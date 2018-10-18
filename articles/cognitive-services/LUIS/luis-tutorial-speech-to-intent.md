@@ -1,102 +1,102 @@
 ---
-title: Używaj mowy zestawu SDK języka C# z użyciem usługi LUIS
+title: Korzystanie z zestawu SDK rozpoznawania mowy dla języka C# w usłudze LUIS
 titleSuffix: Azure Cognitive Services
-description: Usługa mowy umożliwia pojedynczego żądania do odbierania audio i zwracać prognoz usługi LUIS obiekty JSON. W tym artykule pobranie i używanie projektu C# w programie Visual Studio do odczytania wypowiedź do mikrofonu i otrzymywanie informacji prognoz usługi LUIS. Projekt używa pakietu NuGet usługi rozpoznawania mowy, już dołączone jako odwołanie.
+description: Usługa rozpoznawania mowy umożliwia korzystanie z jednego żądania w celu odbierania dźwięku i zwrócenia obiektów JSON zawierających przewidywania usługi LUIS. W tym artykule pobierzesz projekt w języku C# i użyjesz go w programie Visual Studio, aby wypowiedzieć się do mikrofonu i uzyskać przewidywania usługi LUIS. Projekt wykorzystuje pakiet rozpoznawania mowy NuGet dołączony jako źródło informacji.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: language-understanding
-ms.topic: article
+ms.component: language-understanding
+ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: fb17e2d8c0ef1df5a6d4965730d3ddd3764d58f5
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
-ms.translationtype: MT
+ms.openlocfilehash: f98d640f032fed5f91df8e9d4fb55d3f20550339
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868755"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883928"
 ---
-# <a name="integrate-speech-service"></a>Integracja usługi mowy
-[Usługa rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umożliwia użycie pojedynczego żądania do odbierania audio i zwracać prognoz usługi LUIS obiekty JSON. W tym artykule pobranie i używanie projektu C# w programie Visual Studio do odczytania wypowiedź do mikrofonu i otrzymywanie informacji prognoz usługi LUIS. Projekt używa mowy [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) pakietu już dołączone jako odwołanie. 
+# <a name="integrate-speech-service"></a>Integrowanie usługi rozpoznawania mowy
+[Usługa rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umożliwia korzystanie z jednego żądania w celu odbierania dźwięku i zwrócenia obiektów JSON zawierających przewidywania usługi LUIS. W tym artykule pobierzesz projekt w języku C# i użyjesz go w programie Visual Studio, aby wypowiedzieć się do mikrofonu i uzyskać przewidywania usługi LUIS. Projekt wykorzystuje pakiet rozpoznawania mowy [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) dołączony jako źródło informacji. 
 
-W tym artykule potrzebne bezpłatne [LUIS] [ LUIS] konta witryny sieci Web, aby zaimportować aplikację.
+Do celów tego artykułu potrzebne jest bezpłatne konto internetowe usługi [LUIS][LUIS] w celu zaimportowania aplikacji.
 
 ## <a name="create-luis-endpoint-key"></a>Tworzenie klucza punktu końcowego usługi LUIS
-W witrynie Azure portal [tworzenie](luis-how-to-azure-subscription.md#create-luis-endpoint-key) **Language Understanding** klucza (LUIS). 
+W witrynie Azure Portal [utwórz](luis-how-to-azure-subscription.md#create-luis-endpoint-key) klucz usługi **Language Understanding** (LUIS). 
 
-## <a name="import-human-resources-luis-app"></a>Importuj zasoby ludzkie LUIS aplikacji
-Opcje, a wypowiedzi w tym artykule pochodzą z aplikacji usługi LUIS zarządzania zasobami ludzkimi, dostępnej w sklepie [przykłady LUIS](https://github.com/Microsoft/LUIS-Samples) repozytorium Github. Pobierz [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources.json) pliku, zapisz go z `.json` rozszerzenia i [zaimportować](luis-how-to-start-new-app.md#import-new-app) go do usługi LUIS. 
+## <a name="import-human-resources-luis-app"></a>Importowanie aplikacji Human Resources usługi LUIS
+Intencje i wypowiedzi w tym artykule pochodzą z aplikacji Human Resources usługi LUIS dostępnej w repozytorium Github [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples). Pobierz plik [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources.json), zapisz go z rozszerzeniem `.json` i [zaimportuj](luis-how-to-start-new-app.md#import-new-app) do usługi LUIS. 
 
-Ta aplikacja ma intencji, jednostek i wypowiedzi związane z domeny zarządzania zasobami ludzkimi. Przykład wypowiedzi obejmują:
+Ta aplikacja zawiera intencje, jednostki i wypowiedzi powiązane z domeną Human Resources. Przykładowe wypowiedzi mogą być następujące:
 
 |Przykładowe wypowiedzi|
 |--|
-|Kto jest Menedżer Jan Kowalski?|
-|Kto będzie zarządzała Jan Kowalski?|
-|Gdzie jest 123456 formularza?|
-|Czy mają ilekroć płatne?|
+|Who is John Smith's manager? (Kto jest menedżerem Johna Smitha?)|
+|Who does John Smith manage? (Kim zarządza John Smith?)|
+|Where is Form 123456? (Gdzie jest formularz 123456?)|
+|Do I have any paid time off? (Czy mam płatny urlop?)|
 
 
-## <a name="add-keyphrase-prebuilt-entity"></a>Dodaj KeyPhrase wstępnie utworzone jednostki
-Po zaimportowaniu aplikacji, wybierz **jednostek**, następnie **Zarządzanie ze wstępnie utworzonych jednostek**. Dodaj **KeyPhrase** jednostki. Jednostka KeyPhrase wyodrębnia klucza posiadaczem z wypowiedź.
+## <a name="add-keyphrase-prebuilt-entity"></a>Wstępnie utworzona jednostka KeyPhrase
+Po zaimportowaniu aplikacji wybierz kolejno pozycje **Entitites** (Jednostki) i **Manage prebuilt entities** (Zarządzaj wstępnie utworzonymi jednostkami). Dodaj jednostkę **KeyPhrase**. Jednostka KeyPhrase wyodrębnia kluczową treść z wypowiedzi.
 
 ## <a name="train-and-publish-the-app"></a>Uczenie i publikowanie aplikacji
-1. Na pasku nawigacyjnym z góry, prawej wybierz **szkolenie** przycisk to w opracowywaniu aplikacji usługi LUIS.
+1. W górnej części strony na pasku nawigacji po prawej stronie wybierz przycisk **Train** (Ucz), aby wyszkolić aplikację LUIS.
 
-2. Wybierz **Zarządzaj** w prawym górnym rogu paska, a następnie zaznacz **kluczy i punktów końcowych** w nawigacji po lewej stronie. 
+2. Wybierz polecenie **Manage** (Zarządzaj) na pasku w górnej części po prawej stronie i wybierz pozycję **Keys and endpoints** (Klucze i punkty końcowe). 
 
-3. Na **kluczy i punktów końcowych** strony, należy przypisać klucza usługi LUIS utworzonego w [klucza punktu końcowego tworzenia usługi LUIS](#create-luis-endpoint-key) sekcji.
+3. Na stronie **Keys and endpoints** przypisz klucz usługi LUIS utworzony w sekcji [Tworzenie klucza punktu końcowego usługi LUIS](#create-luis-endpoint-key).
 
-  Na tej stronie zbierania Identyfikatora aplikacji, publikowanie regionu i subskrypcji Identyfikatora klucza usługi LUIS utworzone w [klucza punktu końcowego tworzenia usługi LUIS](#create-luis-endpoint-key) sekcji. Należy zmodyfikować kod, aby użyć tych wartości w dalszej części tego artykułu. 
+  Na tej stronie zbierz informacje na temat identyfikatora aplikacji, regionu publikowania oraz identyfikatora subskrypcji klucza usługi LUIS utworzonego w sekcji [Tworzenie klucza punktu końcowego usługi LUIS](#create-luis-endpoint-key). Musisz zmodyfikować kod, aby użyć tych wartości późnej w tym artykule. 
   
-  Czy **nie** użyć klucza bezpłatne początkowy na potrzeby tego ćwiczenia. Tylko **Language Understanding** klucza utworzonego w witrynie Azure portal będzie działać na potrzeby tego ćwiczenia. 
+  **Nie** używaj bezpłatnego klucza początkowego w tym ćwiczeniu. Wyłącznie klucz usługi **Language Understanding** utworzony w witrynie Azure Portal będzie działał w tym ćwiczeniu. 
 
-  https://**REGION**.api.cognitive.microsoft.com/luis/v2.0/apps/**APPID**? klucz subskrypcji =**LUISKEY**& q =
+  https://**REGION**.api.cognitive.microsoft.com/luis/v2.0/apps/**APPID**?subscription-key=**LUISKEY**&q=
 
 
-4. Publikowanie aplikacji usługi LUIS, wybierając **Publikuj** przycisk w prawym górnym rogu paska. 
+4. Opublikuj aplikację LUIS, wybierając przycisk **Publish** (Publikuj) na pasku w górnej części strony po prawej stronie. 
 
-## <a name="audio-device"></a>Urządzenia audio
-W tym artykule używa urządzenia audio na tym komputerze. Który może być zestaw słuchawkowy, mogą przy użyciu mikrofonu lub wbudowane urządzenia audio. Sprawdź audio poziom danych wejściowych, aby zobaczyć, jeśli należy powiesz głośniej niż zwykle zapewnienie mowy wykrywane przez urządzenie audio. 
+## <a name="audio-device"></a>Urządzenie audio
+W tym artykule wykorzystywane jest urządzenie audio na Twoim komputerze. Może być to zestaw słuchawkowy z mikrofonem lub wbudowane urządzenie audio. Sprawdź poziomy dźwięku danych wejściowych, aby dowiedzieć się, czy musisz mówić głośniej niż zazwyczaj, aby wypowiedź została wykryta przez urządzenie audio. 
 
-## <a name="download-the-luis-sample-project"></a>Pobierz przykładowy LUIS projekt
- Klonuj lub Pobierz [przykłady LUIS](https://github.com/Microsoft/LUIS-Samples) repozytorium. Otwórz [mowy do projektu intencji](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-speech-intent-recognition) z programem Visual Studio i przywracanie pakietów NuGet. Plik rozwiązania programu VS jest.\LUIS-Samples-master\documentation-samples\tutorial-speech-intent-recognition\csharp\csharp_samples.sln.
+## <a name="download-the-luis-sample-project"></a>Pobieranie przykładowego projektu usługi LUIS
+ Sklonuj lub pobierz repozytorium [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples). Otwórz projekt [Speech to intent](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-speech-intent-recognition) (Zamiana mowy na intencję) w programie Visual Studio i przywróć pakiety NuGet. Plik rozwiązania programu VS to .\LUIS-Samples-master\documentation-samples\tutorial-speech-intent-recognition\csharp\csharp_samples.sln.
 
-Zestaw SDK rozpoznawania mowy jest już zawarte jako odwołanie. 
+Zestaw SDK rozpoznawania mowy jest już dołączony jako źródło informacji. 
 
-[![](./media/luis-tutorial-speech-to-intent/nuget-package.png "Wyświetlanie pakietu Microsoft.CognitiveServices.Speech NuGet zrzut ekranu programu Visual Studio 2017")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
+[![](./media/luis-tutorial-speech-to-intent/nuget-package.png "Zrzut ekranu programu Visual Studio 2017 z wyświetlonym pakietem NuGet Microsoft.CognitiveServices.Speech")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
 
-## <a name="modify-the-c-code"></a>Modyfikowanie kodu C#
-Otwórz `Program.cs` pliku, a następnie Zmień następujące zmienne:
+## <a name="modify-the-c-code"></a>Modyfikowanie kodu języka C#
+Otwórz plik `Program.cs`, a następnie zmień następujące zmienne:
 
 |Nazwa zmiennej|Przeznaczenie|
 |--|--|
-|LUIS_assigned_endpoint_key|Odnosi się do punktu końcowego adresu URL przypisaną wartość klucz subskrypcji na stronie publikowania|
-|LUIS_endpoint_key_region|Odnosi się do pierwszego poddomeny URL punktu końcowego, na przykład `westus`|
-|LUIS_app_ID|Odnosi się do trasy adresu URL punktu końcowego firmy po **aplikacji /**|
+|LUIS_assigned_endpoint_key|Odnosi się do przypisanej wartości subscription-key punktu końcowego adresu URL ze strony Publish|
+|LUIS_endpoint_key_region|Odnosi się do pierwszej poddomeny punktu końcowego adresu URL, na przykład `westus`|
+|LUIS_app_ID|Odnosi się to trasy punktu końcowego adresu URL po ciągu **apps/**|
 
-`Program.cs` Plik ma już intencji zarządzania zasobami ludzkimi mapowane.
+Plik `Program.cs` ma już mapowane intencje aplikacji Human Resources.
 
 Skompiluj i uruchom aplikację. 
 
-## <a name="test-code-with-utterance"></a>Badanie kodu za pomocą wypowiedź
-Mów do mikrofonu "Kim są zatwierdzone dentystów w Redmond?".
+## <a name="test-code-with-utterance"></a>Testowanie kodu za pomocą wypowiedzi
+Powiedz do mikrofonu „Who are the approved dentists in Redmond?” (Jacy są zatwierdzeni dentyści w Redmond?).
 
 [!code-console[Command line response from spoken utterance](~/samples-luis/documentation-samples/tutorial-speech-intent-recognition/console-output.txt "Command line response from spoken utterance")]
 
-Celem poprawne **GetEmployeeBenefits**, znaleziono bez obaw 85%. Jednostka keyPhrase została zwrócona. 
+Poprawna intencja **GetEmployeeBenefits** została odnaleziona ze współczynnikiem ufności 85%. Została zwrócona jednostka keyPhrase. 
 
-Zestaw SDK rozpoznawania mowy zwraca całej odpowiedzi usługi LUIS. 
+Zestaw SDK rozpoznawania mowy zwraca całą odpowiedź usługi LUIS. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Gdy nie jest już potrzebny, usuń ją kadry usługi LUIS. Aby to zrobić, wybierz aplikację, a następnie w kontekstowych narzędzi powyżej listy wybierz **Usuń**. W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
+Gdy aplikacja HumanResources usługi LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybierz aplikację, a następnie na kontekstowym pasku narzędzi nad listą wybierz polecenie **Delete** (Usuń). W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
 
-Pamiętaj, aby usunąć katalog usługi LUIS-Samples, gdy wszystko będzie gotowe korzystającą z przykładowego kodu.
+Pamiętaj, aby usunąć katalog LUIS-Samples, gdy nie korzystasz już z kodu przykładowego.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Integrowanie usługi LUIS z BOTEM](luis-csharp-tutorial-build-bot-framework-sample.md)
+> [Integrate LUIS with a BOT (Integrowanie usługi LUIS z botem)](luis-csharp-tutorial-build-bot-framework-sample.md)
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

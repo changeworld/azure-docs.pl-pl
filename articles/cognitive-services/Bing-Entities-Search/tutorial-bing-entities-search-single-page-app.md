@@ -1,91 +1,92 @@
 ---
-title: Aplikacja sieci web jednej strony wyszukiwania usługi Bing jednostki | Dokumentacja firmy Microsoft
-description: Przedstawia sposób użycia interfejsu API wyszukiwania usługi Bing jednostki w jednej strony aplikacji sieci Web.
+title: 'Samouczek: jednostronicowa aplikacja internetowa korzystająca z wyszukiwania jednostek Bing'
+titlesuffix: Azure Cognitive Services
+description: Pokazuje sposób użycia interfejsu API wyszukiwania jednostek Bing w jednostronicowej aplikacji internetowej.
 services: cognitive-services
 author: v-jerkin
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 12/08/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 91c60913cd806baf100e5511cbf59299bf9a84f0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 9aabecbec144797b9fbafdff7179213b68921447
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349232"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815549"
 ---
-# <a name="tutorial-single-page-web-app"></a>Samouczek: Jednostronicowej aplikacji sieci web
+# <a name="tutorial-single-page-web-app"></a>Samouczek: jednostronicowa aplikacja internetowa
 
-Interfejs API wyszukiwania usługi Bing jednostki umożliwia wyszukiwanie w sieci Web, aby uzyskać informacje o *jednostek* i *miejsca.* Aby zażądać typu wyników lub zarówno w określonego zapytania. Poniżej znajdują się definicje miejsca i jednostek.
+Interfejs API wyszukiwania jednostek Bing umożliwia wyszukiwanie w Internecie informacji o *jednostkach* i *miejscach.* W danym zapytaniu można zażądać dowolnego z tych dwóch rodzajów wyników lub obu. Poniżej znajdują się definicje miejsc i jednostek.
 
 |||
 |-|-|
-|Jednostki|Dobrze znane osoby, miejsca i rzeczy, które możesz znaleźć według nazwy|
-|Miejsca|Restauracji, hotele i innych firm lokalnych, które Znajdź według nazwy *lub* według typu (restauracji włoska)|
+|Jednostki|Znane osoby, miejsca i rzeczy, które można znaleźć po nazwie.|
+|Miejsca|Restauracje, hotele i inne lokalne firmy, które można znaleźć po nazwie *lub* typie (włoskie restauracje).|
 
-W tym samouczku budujemy jednostronicowej aplikacji sieci Web, która używa interfejsu API wyszukiwania usługi Bing jednostki, aby wyświetlić wyniki wyszukiwania po prawej stronie. Aplikacja zawiera składniki HTML, CSS i JavaScript.
+W tym samouczku utworzymy jednostronicową aplikację internetową, która wyświetla wyniki wyszukiwania bezpośrednio na stronie przy użyciu interfejsu API wyszukiwania jednostek Bing. Aplikacja zawiera składniki HTML, CSS i JavaScript.
 
-Interfejs API umożliwia priorytety wyniki według lokalizacji. W aplikacji mobilnej możesz poprosić urządzenie pod kątem własną lokalizację. W aplikacji sieci Web, można użyć `getPosition()` funkcji. Jednak to wywołanie działa tylko w kontekstach bezpiecznego i może nie zapewniać dokładnej lokalizacji. Ponadto użytkownik może chcieć wyszukiwania dla jednostek w pobliżu lokalizacji innych niż własne.
+Interfejs API umożliwia określanie priorytetu wyników według lokalizacji. W aplikacji mobilnej możesz zapytać urządzenie o jego lokalizację. W aplikacji internetowej możesz użyć funkcji `getPosition()`. Jednak to wywołanie działa tylko w bezpiecznych kontekstach i może nie podawać dokładnej lokalizacji. Ponadto użytkownik może chcieć wyszukiwać jednostki w lokalizacji innej niż własna.
 
-Aplikacji w związku z tym wywołuje na usługi mapy Bing, aby uzyskać współrzędne geograficzne z lokalizacji wprowadzonych przez użytkownika. Użytkownik może następnie wprowadzić nazwę dzielnicę ("kręci miejsca") lub adresem pełnej lub częściowej ("nowego Jorku") i interfejsu API map Bing zawiera współrzędne.
+Dlatego nasza aplikacja wywołuje usługę Mapy Bing w celu uzyskania szerokości i długości geograficznej lokalizacji wprowadzonej przez użytkownika. Użytkownik może następnie wprowadzić nazwę charakterystycznego elementu krajobrazu („Pałac Kultury”) lub pełny bądź częściowy adres („Nowy Jork”), a interfejs API usługi Mapy Bing poda współrzędne.
 
 <!-- Remove until we can replace with a sanitized version.
 ![[Single-page Bing Entity Search app]](media/entity-search-spa-demo.png)
 -->
 
 > [!NOTE]
-> Nagłówki JSON i HTTP w dolnej części strony ujawnić odpowiedź w formacie JSON i informacje o żądaniu HTTP po kliknięciu. Informacje te są przydatne podczas szczegółowego eksplorowania usługi.
+> Po kliknięciu nagłówków JSON i HTTP w dolnej części strony zostanie wyświetlona odpowiedź JSON i informacje o żądaniu HTTP. Informacje te są przydatne podczas eksplorowania usługi.
 
-Samouczek aplikacji ilustruje sposób:
+Aplikacja samouczka ilustruje sposób wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Wykonywać wywołanie interfejsu API Bing encji wyszukiwania w języku JavaScript
-> * Wykonaj mapy Bing `locationQuery` wywołanie interfejsu API w języku JavaScript
-> * Przeniesienie opcje wyszukiwania na wywołania interfejsu API
-> * Wyświetl wyniki wyszukiwania
-> * Obsługa usługi Bing interfejsów API i identyfikator subskrypcji klucze klientów
-> * Uwzględniać wszelkie błędy, które mogą wystąpić
+> * Wywoływanie interfejsu API wyszukiwania jednostek Bing w języku JavaScript
+> * Wykonywanie wywołania `locationQuery` interfejsu API usługi Mapy Bing w języku JavaScript
+> * Przekazywanie opcji wyszukiwania do wywołań interfejsu API
+> * Wyświetlanie wyników wyszukiwania
+> * Obsługa identyfikatora klienta i klucza subskrypcji interfejsu API usługi Bing
+> * Obsługa błędów, które mogą wystąpić
 
-Samouczek strony są całkowicie niezależne; nie używa żadnych platform zewnętrznych, arkuszy stylów lub nawet pliki obrazów. Umożliwia ona używa tylko powszechnie obsługiwane funkcje języka JavaScript i działa z bieżącymi wersjami wszystkie główne przeglądarki sieci Web.
+Strona samouczka jest całkowicie niezależna. Nie używa żadnych zewnętrznych struktur, arkuszy stylów ani nawet plików obrazów. Korzysta jedynie z powszechnie obsługiwanych funkcji języka JavaScript i działa w aktualnych wersjach wszystkich popularnych przeglądarek internetowych.
 
-W tym samouczku omówiono tylko wybrane części kodu źródłowego. Pełny kod źródłowy jest dostępny [na osobnej stronie](tutorial-bing-entities-search-single-page-app-source.md). Skopiuj i wklej ten kod w edytorze tekstu i zapisz go jako `bing.html`.
+W tym samouczku omówimy tylko wybrane części kodu źródłowego. Pełny kod źródłowy jest dostępny [na oddzielnej stronie](tutorial-bing-entities-search-single-page-app-source.md). Skopiuj ten kod i wklej go do edytora tekstu, a następnie zapisz go jako plik `bing.html`.
 
 > [!NOTE]
-> W tym samouczku jest podobne do [samouczek aplikacji wyszukiwania usługi Bing w sieci Web jednej strony](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md), ale dotyczy tylko wyniki wyszukiwania jednostki.
+> Ten samouczek jest bardzo podobny do [samouczka dotyczącego jednostronicowej aplikacji wyszukiwania w Internecie Bing](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md), ale dotyczy tylko wyników wyszukiwania jednostek.
 
 ## <a name="app-components"></a>Składniki aplikacji
 
-Tak jak każda aplikacja sieci Web jednej strony samouczek aplikacja obejmuje trzy części:
+Podobnie jak każda inna aplikacja internetowa, aplikacja w tym samouczku zawiera trzy części:
 
 > [!div class="checklist"]
-> * HTML — definiuje struktury i zawartości strony
+> * HTML — definiuje strukturę i zawartość strony
 > * CSS — definiuje wygląd strony
 > * JavaScript — określa zachowanie strony
 
-W tym samouczku nie obejmuje większość HTML i CSS szczegółowo, ponieważ są one proste.
+Ten samouczek nie obejmuje szczegółowej prezentacji większości kodu HTML lub CSS, ponieważ jest on dosyć prosty.
 
-HTML zawierający formularz wyszukiwania, w którym użytkownik wprowadza zapytania i wybiera opcje wyszukiwania. Formularz jest połączony JavaScript, które faktycznie wykonuje wyszukiwanie według `<form>` znacznika `onsubmit` atrybutu:
+Część HTML zawiera formularz wyszukiwania, w którym użytkownik wprowadza zapytanie i wybiera opcje wyszukiwania. Formularz jest połączony z kodem JavaScript, który wykonuje wyszukiwanie przy użyciu atrybutu `onsubmit` tagu `<form>`:
 
 ```html
 <form name="bing" onsubmit="return newBingEntitySearch(this)">
 ```
 
-`onsubmit` Obsługi zwraca `false`, co pozwala formularza są przesyłane do serwera. Kod JavaScript jest rzeczywiście pracy zbierania niezbędne informacje z formularza i wyszukiwania.
+Procedura obsługi `onsubmit` zwraca wynik `false`, który zapobiega przesłaniu formularza na serwer. Kod JavaScript zbiera wymagane informacje z formularza i wykonuje wyszukiwanie.
 
-Wyszukiwanie jest wykonywane w dwóch fazach. Najpierw Jeśli użytkownik wprowadził ograniczenie lokalizacji, zapytania mapy Bing odbywa się przekonwertować go na współrzędne. Następnie wywołania zwrotnego dla tego zapytania dotyczącego wyszukiwania usługi Bing jednostki.
+Wyszukiwanie jest wykonywane w dwóch fazach. Najpierw, jeśli użytkownik wprowadził ograniczenie lokalizacji, wykonywane jest zapytanie usługi Mapy Bing w celu jego przekonwertowania na współrzędne. Wywołanie dla tego zapytania uruchamia następnie zapytanie wyszukiwania jednostek Bing.
 
-Kod HTML zawiera także działów (HTML `<div>` tagów) gdzie zostaną wyświetlone wyniki wyszukiwania.
+Kod HTML zawiera także podziały (tagi `<div>`) tam, gdzie są wyświetlane wyniki wyszukiwania.
 
 ## <a name="managing-subscription-keys"></a>Zarządzanie kluczami subskrypcji
 
 > [!NOTE]
-> Ta aplikacja wymaga kluczy subskrypcji dla interfejsu API wyszukiwania usługi Bing i interfejsu API map Bing. Można użyć [wersji próbnej klucza wyszukiwania usługi Bing](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) i [podstawowy klucz mapy Bing](https://www.microsoft.com/maps/create-a-bing-maps-key).
+> Ta aplikacja wymaga kluczy subskrypcji dla interfejsu API wyszukiwania Bing oraz interfejsu API usługi Mapy Bing. Możesz użyć [klucza wersji próbnej usługi wyszukiwania Bing](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) oraz [podstawowego klucza usługi Mapy Bing](https://www.microsoft.com/maps/create-a-bing-maps-key).
 
-Aby uniknąć konieczności dołączania klucze subskrypcji wyszukiwania usługi Bing i interfejsu API map Bing w kodzie, używamy magazynu trwałego przeglądarki je przechowywać. Jeśli nie była przechowywana albo klucza, możemy monit o podanie go i zapisze go na przyszłość. Jeśli klucz później został odrzucony przez interfejs API, możemy unieważnienie przechowywanych klucza, użytkownik jest pytany dla niego po ich dalej wyszukiwania.
+Aby uniknąć konieczności umieszczania kluczy subskrypcji interfejsu API wyszukiwania Bing oraz interfejsu API usługi Mapy Bing w kodzie, używamy magazynu trwałego przeglądarki do przechowywania klucza. Jeśli żaden klucz nie został zapisany, wyświetlamy monit o jego wprowadzenie i zapisujemy go do późniejszego użycia. W przypadku późniejszego odrzucenia klucza przez interfejs API unieważniamy przechowywany klucz, aby użytkownikowi został ponownie wyświetlony monit podczas następnego wyszukiwania.
 
-Definiujemy `storeValue` i `retrieveValue` funkcje programu wykorzystujące albo `localStorage` obiektu (Jeśli przeglądarka obsługuje) lub plik cookie. Nasze `getSubscriptionKey()` funkcja używa tych funkcji do przechowywania i pobierania klucza użytkownika.
+Definiujemy funkcje `storeValue` i `retrieveValue`, które używają obiektu `localStorage` (jeśli przeglądarka go obsługuje) lub pliku cookie. Nasza funkcja `getSubscriptionKey()` używa tych funkcji do przechowywania i pobierania klucza użytkownika.
 
 ```javascript
 // cookie names for data we store
@@ -119,30 +120,30 @@ function getSearchSubscriptionKey() {
 }
 ```
 
-Kod HTML `<body>` zawiera tag `onload` atrybut, który wywołuje `getSearchSubscriptionKey()` i `getMapsSubscriptionKey()` po zakończeniu ładowania strony. Te wywołania udostępniają natychmiast Monituj użytkownika o ich kluczy, jeśli ich nie zostały jeszcze wprowadzone.
+Tag HTML `<body>` zawiera atrybut `onload`, który wywołuje funkcje `getSearchSubscriptionKey()` i `getMapsSubscriptionKey()` po zakończeniu ładowania strony. Te wywołania natychmiast wyświetlają monit o wprowadzenie kluczy przez użytkownika, jeśli nie zostały jeszcze wprowadzone.
 
 ```html
 <body onload="document.forms.bing.query.focus(); getSearchSubscriptionKey(); getMapsSubscriptionKey();">
 ```
 
-## <a name="selecting-search-options"></a>Wybranie opcji wyszukiwania
+## <a name="selecting-search-options"></a>Wybieranie opcji wyszukiwania
 
-![[Formularza wyszukiwania usługi Bing jednostki]](media/entity-search-spa-form.png)
+![[Formularz wyszukiwania jednostek Bing]](media/entity-search-spa-form.png)
 
-Formularz HTML są dostępne następujące kontrolki:
+Ten formularz HTML zawiera następujące kontrolki:
 
 | | |
 |-|-|
-|`where`|Menu rozwijane wyboru rynku (lokalizacji i language) używane do wyszukiwania.|
-|`query`|Pole tekstowe, w którym ma zostać wprowadź terminy wyszukiwania.|
-|`safe`|Pole wyboru wskazującą, czy bezpieczne wyszukiwanie jest włączona (ogranicza wyniki "dla dorosłych")|
-|`what`|Menu wyboru do wyszukiwania jednostek i/lub miejsca.|
-|`mapquery`|Pole tekstowe, w którym użytkownik może wprowadzić adres pełnej lub częściowej, punkty, itp., ułatwiające zwracany dokładniejsze wyniki wyszukiwania usługi Bing jednostki.|
+|`where`|Menu rozwijane umożliwiające wybranie rynku (lokalizacji i języka) używanego na potrzeby wyszukiwania.|
+|`query`|Pole tekstowe do wprowadzania terminów wyszukiwania.|
+|`safe`|Pole wyboru wskazujące, czy funkcja Bezpieczne wyszukiwanie jest włączona (wyklucza ze zwracanych wyników treści „dla dorosłych”).|
+|`what`|Menu wyboru wyszukiwania jednostek, miejsc lub obu typów wyników.|
+|`mapquery`|Pole tekstowe, w którym użytkownik może wprowadzić pełny lub częściowy adres, nazwę charakterystycznego elementu krajobrazu itd., aby ułatwić zwracanie odpowiedniejszych wyników przez usługę wyszukiwania jednostek Bing.|
 
 > [!NOTE]
-> Wyniki miejsca są obecnie dostępne tylko w Stanach Zjednoczonych. `where` i `what` menu ma kodu w celu wymuszenia tego ograniczenia. Jeśli wybierzesz rynku-US, a wybrano miejsca w `what` menu `what` zmienia się na inną wartość. Po wybraniu miejsca, a wybrano rynku-US w `where` menu `where` zmiany w Stanach Zjednoczonych.
+> Wyniki wyszukiwania miejsc są obecnie dostępne tylko w Stanach Zjednoczonych. Menu `where` i `what` zawierają kod służący do wymuszania tego ograniczenia. W przypadku wybrania rynku innego niż USA, gdy wybrana jest opcja Places (Miejsca) w menu `what`, pozycja menu `what` zostanie zmieniona na Anything (Wszystko). W przypadku wybrania opcji Places (Miejsca), gdy wybrany jest rynek inny niż USA w menu `where`, pozycja menu `where` zostanie zmieniona na USA.
 
-Nasze funkcji JavaScript `bingSearchOptions()` konwertuje te pola ciągu zapytania z częściowa interfejsu API wyszukiwania usługi Bing.
+Nasza funkcja JavaScript `bingSearchOptions()` konwertuje te pola na ciąg zapytania częściowego interfejsu API wyszukiwania Bing.
 
 ```javascript
 // build query options from the HTML form
@@ -156,17 +157,17 @@ function bingSearchOptions(form) {
 }
 ```
 
-Na przykład może być funkcji bezpieczne wyszukiwanie `strict`, `moderate`, lub `off`, z `moderate` jest wartość domyślna. Ale naszego formularza jest pole wyboru ma tylko dwa stany. Konwertuje kod JavaScript, to ustawienie jako `strict` lub `off` (nie używamy `moderate`).
+Na przykład funkcja Bezpieczne wyszukiwanie może mieć wartości `strict`, `moderate` lub `off`, z których wartość `moderate` jest ustawiona domyślnie. Jednak w naszym formularzu jest używane pole wyboru, które ma tylko dwa stany. Kod JavaScript konwertuje to ustawienie do wartości `strict` lub `off` (wartość `moderate` nie jest używana).
 
-`mapquery` Pola nie jest obsługiwane w `bingSearchOptions()` ponieważ jest on używany dla zapytania lokalizacji usługi mapy Bing, nie dla wyszukiwania usługi Bing jednostki.
+Pole `mapquery` nie jest obsługiwane przez funkcję `bingSearchOptions()`, ponieważ jest używane w zapytaniu lokalizacji usługi Mapy Bing, a nie wyszukiwania jednostek Bing.
 
 ## <a name="obtaining-a-location"></a>Uzyskiwanie lokalizacji
 
-Oferuje interfejsu API map Bing [ `locationQuery` metody](//msdn.microsoft.com/library/ff701711.aspx), której używamy w celu znalezienia zakres i wprowadza geograficznej lokalizacji użytkownika. Tych współrzędnych są następnie przekazywane API wyszukiwania usługi Bing jednostki z żądaniem użytkownika. Wyniki wyszukiwania ustalić ich priorytety, jednostki i miejsca, które wkrótce określonej lokalizacji.
+Interfejs API usługi Mapy Bing oferuje metodę [`locationQuery`](//msdn.microsoft.com/library/ff701711.aspx), której używamy do znalezienia szerokości i długości geograficznej lokalizacji wprowadzonej przez użytkownika. Te współrzędne są następnie przekazywane do interfejsu API wyszukiwania jednostek Bing z żądaniem użytkownika. W wynikach wyszukiwania priorytet mają jednostki i miejsca znajdujące się blisko określonej lokalizacji.
 
-Firma Microsoft nie może uzyskać dostępu do interfejsu API map Bing przy użyciu zwykłego `XMLHttpRequest` kwerendy w aplikacji sieci Web, ponieważ usługa nie obsługuje zapytań cross-origin. Na szczęście obsługuje on JSONP ("P" jest "o"). Zwykłe odpowiedź JSON opakowane w wywołaniu funkcji jest odpowiedzi JSONP. Żądanie zostało utworzone przez wstawianie za pomocą `<script>` tag do dokumentu. (Ładowanie skryptów nie podlega zasady zabezpieczeń przeglądarki.)
+Nie można uzyskać dostępu do interfejsu API usługi Mapy Bing przy użyciu zwykłego zapytania `XMLHttpRequest` w aplikacji internetowej, ponieważ ta usługa nie obsługuje zapytań między źródłami. Na szczęście usługa obsługuje dane JSONP („P” oznacza uzupełnione; ang. „padded”). Odpowiedź JSONP jest standardową odpowiedzią JSON opakowaną w wywołanie funkcji. Żądanie jest wykonywane przez wstawienie w dokumencie przy użyciu tagu `<script>`. (Ładowanie skryptów nie podlega zasadom zabezpieczeń przeglądarki).
 
-`bingMapsLocate()` Funkcja tworzy i wstawia `<script>` tagu dla zapytania. `jsonp=bingMapsCallback` Segmentu ciągu zapytania określa nazwę funkcji, które ma być wywoływana z odpowiedzią.
+Funkcja `bingMapsLocate()` tworzy i wstawia tag `<script>` zapytania. Segment `jsonp=bingMapsCallback` ciągu zapytania określa nazwę funkcji, która ma być wywoływana z odpowiedzią.
 
 ```javascript
 function bingMapsLocate(where) {
@@ -197,9 +198,9 @@ function bingMapsLocate(where) {
 ```
 
 > [!NOTE]
-> Jeśli nie odpowiada interfejsu API map Bing, `bingMapsCallBack()` nigdy nie została wywołana funkcja. Zwykle oznacza to, że `bingEntitySearch()` nie jest wywoływana, i nie są wyświetlane wyniki wyszukiwania jednostki. Aby temu zapobiec, `bingMapsLocate()` także ustawia czasomierz w celu wywołania `bingEntitySearch()` po 5 sekund. Funkcja wywołania zwrotnego, aby uniknąć dwukrotnie wyszukiwania jednostki jest logiki.
+> Jeśli interfejs API usługi Mapy Bing nie odpowie, funkcja `bingMapsCallBack()` nie zostanie nigdy wywołana. Zwykle oznacza to, że funkcja `bingEntitySearch()` nie zostanie wywołana, a wyniki wyszukiwania jednostek nie zostaną wyświetlone. Aby temu zapobiec, funkcja `bingMapsLocate()` ustawia również czasomierz w celu wywołania funkcji `bingEntitySearch()` po upływie pięciu sekund. W funkcji wywołania zwrotnego istnieje logika zapobiegająca dwukrotnemu wykonaniu wyszukiwania jednostek.
 
-Po wykonaniu kwerendy `bingMapsCallback()` funkcja jest wywoływana, zgodnie z żądaniem.
+Po wykonaniu zapytania funkcja `bingMapsCallback()` jest wywoływana zgodnie z żądaniem.
 
 ```javascript
 function bingMapsCallback(response) {
@@ -246,15 +247,15 @@ function bingMapsCallback(response) {
 }
 ```
 
-Wraz z współrzędne geograficzne, wymaga wyszukiwania usługi Bing jednostki *radius* wskazujące dokładność informacji o lokalizacji. Firma Microsoft obliczenia przy użyciu usługi radius *obwiedni* podanej w odpowiedzi usługi mapy Bing. Pole jest prostokąt otaczający całej lokalizacji. Na przykład, jeśli użytkownik wprowadzi `NYC`, wynik zawiera około centralnej współrzędne nowego Jorku i obwiedni, który obejmuje miasta. 
+Oprócz szerokości i długości geograficznej zapytanie wyszukiwania jednostek Bing wymaga wartości *promienia*, która oznacza dokładność informacji o lokalizacji. Promień jest obliczany przy użyciu wartości *pola ograniczenia* podanej w odpowiedzi usługi Mapy Bing. Pole ograniczenia jest prostokątem, który otacza całą lokalizację. Jeśli na przykład użytkownik wprowadzi ciąg `NYC`, wynik zawiera przybliżone współrzędne centrum Nowego Jorku oraz pole ograniczenia obejmujące miasto. 
 
-Firma Microsoft najpierw obliczyć odległości od podstawowego współrzędne do każdego z czterech narożników obwiedni przy użyciu funkcji `haversineDistance()` (tego nie pokazano). Używamy największy z tych czterech odległości jako promień. Minimalny promień jest kilometr. Ta wartość jest używana również jako domyślny, jeśli nie obwiedni podano w odpowiedzi.
+Najpierw obliczamy odległości od głównych współrzędnych do każdego z czterech rogów pola ograniczenia przy użyciu funkcji `haversineDistance()` (nie została pokazana). Używamy największej z tych czterech odległości jako promienia. Minimalna wartość promienia to jeden kilometr. Ta wartość jest równie używana jako domyślna, jeśli odpowiedź nie zawiera wartości pola ograniczenia.
 
-Po otrzymaniu współrzędne i usługi radius, następnie nazywamy `bingEntitySearch()` do rzeczywistego przeszukiwania.
+Po uzyskaniu współrzędnych i promienia wywołujemy funkcję `bingEntitySearch()`, aby wykonać rzeczywiste wyszukiwanie.
 
-## <a name="performing-the-search"></a>W wyszukiwaniu
+## <a name="performing-the-search"></a>Wykonywanie wyszukiwania
 
-Podanej kwerendy, lokalizacji, ciąg opcji oraz klucz interfejsu API `BingEntitySearch()` funkcja sprawia, że żądania wyszukiwania usługi Bing jednostki.
+Mając zapytanie, lokalizację, ciąg opcji oraz klucz interfejsu API, funkcja `BingEntitySearch()` wykonuje żądanie wyszukiwania jednostek Bing.
 
 ```javascript
 // perform a search given query, location, options string, and API keys
@@ -307,7 +308,7 @@ function bingEntitySearch(query, latlong, options, key) {
 }
 ```
 
-Po pomyślnym ukończeniu żądania HTTP, wywołania języka JavaScript naszych `load` program obsługi zdarzeń, `handleBingResponse()` funkcja obsłużyć pomyślnego żądania HTTP GET do interfejsu API. 
+Po pomyślnym zakończeniu żądania HTTP język JavaScript wywołuje naszą procedurę obsługi zdarzeń `load`, `handleBingResponse()`, aby obsłużyć pomyślne żądanie GET kodu HTTP do interfejsu API. 
 
 ```javascript
 // handle Bing search request results
@@ -375,43 +376,43 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> Powiodło się żądanie HTTP jest *nie* musi to oznaczać, że całego wyszukiwania zakończyło się pomyślnie. Jeśli wystąpi błąd podczas operacji wyszukiwania, interfejsu API wyszukiwania usługi Bing jednostki zwraca kod stanu 200 HTTP i zawiera informacje o błędzie w odpowiedzi JSON. Ponadto jeśli żądanie zostało ograniczone szybkości, interfejsu API zwraca pustą odpowiedź.
+> Pomyślne żądanie HTTP *nie* oznacza wcale, że samo wyszukiwanie zakończyło się powodzeniem. Jeśli w operacji wyszukiwania wystąpi błąd, interfejs API wyszukiwania jednostek Bing zwraca kod stanu HTTP inny niż 200 i umieszcza informacje o błędzie w odpowiedzi JSON. Ponadto, jeśli żądanie podlegało ograniczeniu przepustowości, interfejs API zwraca pustą odpowiedź.
 
-Większość kodu w obu tych funkcji jest przeznaczona do obsługi błędów. Błędy mogą wystąpić w następujących etapów:
+Większość kodu w obu poprzednich funkcjach jest przeznaczona do obsługi błędów. Błędy mogą wystąpić na następujących etapach:
 
 |Etap|Potencjalne błędy|Obsługiwane przez|
 |-|-|-|
-|Obiekt żądania tworzenia JavaScript|Nieprawidłowy adres URL|`try`/`catch` Blok|
-|W żądaniu skierowanym|Błędy sieciowe, połączenia zostało przerwane|`error` i `abort` procedury obsługi zdarzeń|
-|W wyszukiwaniu|Nieprawidłowe żądania, nieprawidłowy JSON, limity szybkości|testów w `load` obsługi zdarzeń|
+|Tworzenie obiektu żądania języka JavaScript|Nieprawidłowy adres URL|Blok `try`/`catch`|
+|Wykonywanie żądania|Błędy sieci, przerwane połączenia|Obsługa zdarzeń `error` i `abort`|
+|Wykonywanie wyszukiwania|Nieprawidłowe żądanie, nieprawidłowy kod JSON, limity przepustowości|Testy obsługi zdarzeń `load`|
 
-Błędy są obsługiwane przez wywołanie metody `renderErrorMessage()` z żadnych szczegółów znane o tym błędzie. Odpowiedź przeszedł pełny gauntlet błąd testów, nazywamy `renderSearchResults()` Aby wyświetlić wyniki wyszukiwania na stronie.
+Błędy są obsługiwane przez wywołanie funkcji `renderErrorMessage()` z wszystkimi znanymi szczegółowymi informacjami o błędzie. Jeśli odpowiedź przejdzie pomyślnie pełen zestaw testów błędów, wywołujemy funkcję `renderSearchResults()`, aby wyświetlić wyniki wyszukiwania na stronie.
 
 ## <a name="displaying-search-results"></a>Wyświetlanie wyników wyszukiwania
 
-Interfejs API wyszukiwania usługi Bing jednostki [wymaga wyświetlić wyniki w kolejności określonej](use-display-requirements.md). Ponieważ interfejsu API może zwracać dwa różne rodzaje odpowiedzi, nie wystarcza do iteracji najwyższego poziomu `Entities` lub `Places` kolekcji w odpowiedzi JSON i wyświetlić wyniki. (Tylko jeden typ wyników, należy użyć `responseFilter` parametr zapytania.)
+Interfejs API wyszukiwania jednostek Bing [wymaga wyświetlania wyników w określonej kolejności](use-display-requirements.md). Interfejs API może zwrócić dwa różne rodzaje odpowiedzi, dlatego nie wystarczy wykonać iteracji na kolekcji najwyższego poziomu `Entities` lub `Places` w odpowiedzi JSON i wyświetlić te wyniki. (Aby uzyskać tylko jeden typ wyniku, należy użyć parametru zapytania `responseFilter`).
 
-Zamiast tego używamy `rankingResponse` kolekcji w wynikach wyszukiwania w celu uporządkowania wyników do wyświetlenia. Ten obiekt odwołuje się do elementów w `Entitiess` i/lub `Places` kolekcji.
+Zamiast tego używamy kolekcji `rankingResponse` w wynikach wyszukiwania, aby uporządkować wyniki do wyświetlenia. Ten obiekt odwołuje się do elementów w kolekcjach `Entitiess` i/lub `Places`.
 
-`rankingResponse` może zawierać maksymalnie trzech zbiorów wyników wyszukiwania, wyznaczony `pole`, `mainline`, i `sidebar`. 
+Obiekt `rankingResponse` może zawierać do trzech kolekcji wyników wyszukiwania oznaczonych `pole`, `mainline` i `sidebar`. 
 
-`pole`, jeśli istnieje, jest najbardziej odpowiednie wyniki wyszukiwania i powinna być wyróżniane. `mainline` odnosi się do zbiorczego wyników wyszukiwania. Wyniki połączeniach powinien być wyświetlany natychmiast po `pole` (lub, jeśli najpierw `pole` nie jest obecny). 
+Kolekcja `pole`, jeśli występuje, jest najbardziej istotnym wynikiem wyszukiwania i musi być odpowiednio widoczna. Kolekcja `mainline` odnosi się do zbiorczych wyników wyszukiwania. Wyniki kolekcji głównej powinny być wyświetlane bezpośrednio po kolekcji `pole` (lub w pierwszej kolejności w przypadku braku kolekcji `pole`). 
 
-Na koniec. `sidebar` odnosi się do wyników wyszukiwania pomocniczych. Może być wyświetlany w rzeczywistych paska bocznego lub po prostu po wynikach połączeniach. Wybraliśmy to drugie samouczek aplikacji.
+I na koniec. Kolekcja `sidebar` odnosi się do pomocniczych wyników wyszukiwania. Mogą one być faktycznie wyświetlane na pasku bocznym lub po prostu po wynikach głównych. W naszej aplikacji samouczka wybraliśmy drugą opcję.
 
-Każdy element `rankingResponse` kolekcji odnosi się do elementów wyników wyszukiwania rzeczywiste na dwa sposoby różne, ale równoważnej.
+Każdy element w kolekcji `rankingResponse` odnosi się do rzeczywistych elementów wyników wyszukiwania na różny, ale równoważny sposób.
 
 | | |
 |-|-|
-|`id`|`id` Wygląda jak adres URL, ale nie powinna być używana dla łącza. `id` Zgodny typ wyniku klasyfikacji `id` albo wyszukiwania wynik elementu w kolekcji odpowiedzi *lub* całej odpowiedzi kolekcji (takie jak `Entities`).
-|`answerType`<br>`resultIndex`|`answerType` Odwołuje się do kolekcji odpowiedzi najwyższego poziomu zawierający wynik (na przykład `Entities`). `resultIndex` Odwołuje się do wyniku indeks w tej kolekcji. Jeśli `resultIndex` jest pominięty, wynik Klasyfikacja odnosi się do całą kolekcję.
+|`id`|Element `id` wygląda jak adres URL, ale nie powinien być używany dla linków. Typ elementu `id` w wyniku klasyfikacji odpowiada wartości `id` elementu wyników wyszukiwania w kolekcji odpowiedzi *lub* całej kolekcji odpowiedzi (na przykład `Entities`).
+|`answerType`<br>`resultIndex`|Element `answerType` odnosi się do kolekcji odpowiedzi najwyższego poziomu, która zawiera wynik (na przykład `Entities`). Element `resultIndex` odnosi się do indeksu wyniku w tej kolekcji. Jeśli element `resultIndex` zostanie pominięty, klasyfikacja wyników odwołuje się do całej kolekcji.
 
 > [!NOTE]
-> Aby uzyskać więcej informacji w tej części odpowiedzi wyszukiwania, zobacz [wyniki rangę](rank-results.md).
+> Aby uzyskać więcej informacji na temat tej części odpowiedzi wyszukiwania, zobacz temat [Klasyfikacja wyników](rank-results.md).
 
-Możesz użyć dowolną wskazaną metodą lokalizowania elementu wynik do którego istnieje odwołanie wyszukiwania jest najbardziej odpowiednim dla aplikacji. W naszym samouczku kodu używamy `answerType` i `resultIndex` zlokalizować każdego wyniku wyszukiwania.
+Możesz użyć dowolnej metody lokalizowania elementu wyników wyszukiwania, którego dotyczy odwołanie, najodpowiedniejszej dla aplikacji. W naszym kodzie samouczka używamy metod `answerType` i `resultIndex` do lokalizowania poszczególnych wyników wyszukiwania.
 
-Na koniec nadszedł czas, aby przyjrzeć się naszego funkcja `renderSearchResults()`. Ta funkcja wykonuje iterację na trzech `rankingResponse` kolekcje, które reprezentują sekcjach wyników wyszukiwania. Dla każdej sekcji nazywamy `renderResultsItems()` do renderowania wyniki w tej sekcji.
+Na koniec przyjrzymy się funkcji `renderSearchResults()`. Ta funkcja wykonuje iterację na trzech kolekcjach `rankingResponse`, które reprezentują trzy sekcje wyników wyszukiwania. Dla każdej sekcji wywołujemy funkcję `renderResultsItems()`, aby zrenderować wyniki tej sekcji.
 
 ```javascript
 // render the search results given the parsed JSON response
@@ -429,9 +430,9 @@ function renderSearchResults(results) {
 }
 ```
 
-## <a name="rendering-result-items"></a>Renderowanie elementów wyników
+## <a name="rendering-result-items"></a>Renderowanie elementów wyniku
 
-W naszym JavaScript kodu jest obiektem `searchItemRenderers`, zawierający *renderowania:* funkcje, które generują kod HTML dla każdego rodzaju wynik wyszukiwania.
+W kodzie JavaScript obiekt `searchItemRenderers` może zawierać *funkcje renderujące:* funkcje, które generują kod HTML dla każdego rodzaju wyniku wyszukiwania.
 
 ```javascript
 searchItemRenderers = { 
@@ -440,17 +441,17 @@ searchItemRenderers = {
 }
 ```
 
-Funkcja renderowania może przyjmować następujące parametry:
+Funkcja renderująca może akceptować następujące parametry:
 
 | | |
 |-|-|
-|`item`|Obiektu JavaScript zawierający właściwości elementu, takie jak adres URL i jego opis.|
-|`index`|Indeks elementu wyników w swojej kolekcji.|
+|`item`|Obiekt JavaScript, który zawiera właściwości elementu, takie jak adres URL i opis.|
+|`index`|Indeks elementu wyniku w ramach jego kolekcji.|
 |`count`|Liczba elementów w kolekcji elementów wyników wyszukiwania.|
 
-`index` i `count` parametry mogą służyć do liczba wyników do wygenerowania specjalne HTML na początku lub na końcu kolekcji, aby wstawić podziały wiersza po określonej liczby elementów i tak dalej. Jeśli mechanizm renderujący nie muszą tej funkcji, nie musisz zaakceptować te dwa parametry. W rzeczywistości nie analizujemy je w programy renderujące samouczek aplikacji.
+Parametry `index` i `count` mogą służyć do numerowania wyników, do generowania specjalnego kodu HTML wstawianego na początku lub końcu kolekcji, do wstawiania podziałów wiersza po określonej liczbie elementów i tak dalej. Jeśli funkcja renderująca nie wymaga takiej funkcjonalności, nie musi akceptować tych dwóch parametrów. W rzeczywistości nie używamy ich w funkcjach renderujących w naszej aplikacji samouczka.
 
-Spójrzmy bliższe spojrzenie na `entities` renderowania:
+Przyjrzyjmy się bliżej funkcji renderującej `entities`:
 
 ```javascript
     entities: function(item) {
@@ -501,51 +502,51 @@ Spójrzmy bliższe spojrzenie na `entities` renderowania:
     }, // places renderer omitted
 ```
 
-Funkcja renderowania naszych jednostki:
+Nasza funkcja renderująca jednostki:
 
 > [!div class="checklist"]
-> * Tworzy HTML `<img>` tag, aby wyświetlić miniaturę obrazu, jeśli istnieje. 
-> * Tworzy HTML `<a>` tagu prowadzący do strony, który zawiera obraz.
-> * Tworzy opis, który zawiera informacje o obrazie i lokacji, który nie znajduje się na.
-> * Zawiera klasyfikacji jednostki wyświetlanie podpowiedzi, jeśli istnieją.
-> * Zawiera łącze do wyszukiwania usługi Bing, aby uzyskać więcej informacji o obiekcie.
-> * Są wyświetlane informacje o licencji lub autorstwa wymagane przez źródeł danych.
+> * tworzy tag `<img>` kodu HTML, aby wyświetlić miniaturę obrazu, jeśli istnieje; 
+> * tworzy tag `<a>` kodu HTML prowadzący do strony, która zawiera obraz;
+> * tworzy opis, który wyświetla informacje dotyczące obrazu i witryny, w której się znajduje;
+> * wprowadza klasyfikację jednostki przy użyciu wskazówek wyświetlania, jeśli istnieje;
+> * zawiera link do wyszukiwania Bing umożliwiający uzyskanie dodatkowych informacji na temat jednostki;
+> * wyświetla wszystkie informacje o licencjach lub uznaniu autorstwa wymagane przez źródła danych.
 
-## <a name="persisting-client-id"></a>Utrwalanie identyfikator klienta
+## <a name="persisting-client-id"></a>Trwały identyfikator klienta
 
-Odpowiedzi z interfejsy API wyszukiwania usługi Bing mogą obejmować `X-MSEdge-ClientID` nagłówek, który powinien zostać odesłany do interfejsu API z kolejnych żądań. Jeśli wiele interfejsy API wyszukiwania usługi Bing są używane, ten sam identyfikator klienta należy używać z wszystkich z nich, jeśli to możliwe.
+Odpowiedzi z interfejsów API wyszukiwania Bing mogą zawierać nagłówek `X-MSEdge-ClientID`, który powinien być wysyłany z powrotem do interfejsu API z kolejnymi żądaniami. Jeśli jest używanych wiele interfejsów API wyszukiwania Bing, dla każdego z nich powinien być stosowany ten sam identyfikator klienta, jeśli jest to możliwe.
 
-Zapewnianie `X-MSEdge-ClientID` nagłówka umożliwia interfejsy API usługi Bing w celu skojarzenia wszystkich wyszukiwania użytkownika, która ma dwa istotne zalety.
+Podanie nagłówka `X-MSEdge-ClientID` umożliwia interfejsom API usługi Bing skojarzenie wszystkich wyszukiwań użytkownika, co ma dwie ważne korzyści.
 
-Po pierwsze umożliwia Bing aparatu wyszukiwania w celu dotyczą wyszukiwania, aby znaleźć wyników spełniających kryteria lepiej użytkownika wcześniejszą kontekstu. Jeśli użytkownik został wcześniej wyszukiwane terminy związane z prowadzenia, na przykład nowsze Wyszukaj "doków" preferencyjnie może zwrócić informacje o miejscach do dock żaglowe.
+Po pierwsze umożliwia aparatowi wyszukiwania Bing zastosowanie do wyszukiwań wcześniejszego kontekstu, co pozwala znaleźć bardziej satysfakcjonujące użytkownika wyniki. Jeśli na przykład użytkownik wcześniej wyszukiwał terminy związane z żeglowaniem, późniejsze wyszukiwanie terminu „doki” może preferencyjnie zwrócić informacje na temat miejsc dokowania łodzi.
 
-Po drugie Bing mogą losowo wybierać użytkownikom wystąpić nowe funkcje, zanim staną się ogólnie dostępne. Podanie Identyfikatora klienta z każdym żądaniem zapewnia użytkowników, którzy wybrano, aby zobaczyć funkcji zawsze Zobacz go. Bez Identyfikatora klienta użytkownik może zobaczyć funkcji pojawiają się i znikają, pozornie losowo, w wynikach wyszukiwania.
+Po drugie usługa Bing może losowo wybierać użytkowników, którzy będą korzystali z nowych funkcji, zanim zostaną one udostępnione publicznie. Podanie tego samego identyfikatora klienta z każdym żądaniem gwarantuje, że użytkownicy, którzy widzą tę funkcję, zawsze będą ją widzieć. Bez identyfikatora klienta użytkownik może widzieć, jak funkcja pojawia się i znika w wynikach wyszukiwania, pozornie losowo.
 
-Zasady zabezpieczeń przeglądarki (CORS) może uniemożliwiać `X-MSEdge-ClientID` nagłówka jest dostępne dla języka JavaScript. To ograniczenie występuje, gdy różne źródła ze strony, którego żąda on ma odpowiedzi wyszukiwania. W środowisku produkcyjnym należy spełnić te zasady, obsługując skryptu po stronie serwera, który wykonuje wywołanie interfejsu API w tej samej domenie co stronę sieci Web. Ponieważ skrypt ma to samo źródło jako strona sieci Web `X-MSEdge-ClientID` nagłówka jest następnie udostępniana JavaScript.
+Zasady zabezpieczeń przeglądarki (CORS) mogą powodować, że nagłówek `X-MSEdge-ClientID` będzie niedostępny dla kodu JavaScript. To ograniczenie występuje, gdy odpowiedź wyszukiwania ma inne źródło niż strona, z której pochodzi żądanie. W środowisku produkcyjnym, aby rozwiązać ten problem, należy udostępnić skrypt po stronie serwera, który wykonuje wywołanie interfejsu API w tej samej domenie, co strona internetowa. Ponieważ skrypt ma to samo źródło co strona internetowa, nagłówek `X-MSEdge-ClientID` jest dostępny dla kodu JavaScript.
 
 > [!NOTE]
-> W środowisku produkcyjnym aplikacji sieci Web należy wykonać po stronie serwera żądania mimo to. W przeciwnym razie wartość klucza interfejsu API wyszukiwania usługi Bing musi być uwzględniona na stronie sieci Web, gdy są one dostępne dla każdego, kto widoków źródła. Dla wszystkich użycia są rozliczane interfejsu API klucza subskrypcji nawet żądań przez osoby nieupoważnione, dlatego ważne jest, aby nie uwidacznia klucz.
+> W aplikacji internetowej w środowisku produkcyjnym należy wykonać to żądanie po stronie serwera. W przeciwnym razie należy dołączyć klucz interfejsu API wyszukiwania Bing do strony internetowej, aby był on dostępny dla każdego, kto wyświetli źródło. Płacisz za wszystkie użycia związane z Twoim kluczem subskrypcji interfejsu API, nawet za żądania wykonane przez osoby nieupoważnione, zatem ważne jest, aby nie ujawniać swojego klucza.
 
-Do celów programistycznych możesz wprowadzić żądania interfejsu API Bing sieci Web wyszukiwania przez serwer proxy CORS. Odpowiedź z serwera proxy ma `Access-Control-Expose-Headers` Nagłówek tego whitelists nagłówki odpowiedzi i udostępnia je JavaScript.
+W celach programistycznych możesz wykonywać żądania interfejsu API wyszukiwania w sieci Web Bing za pośrednictwem serwera proxy CORS. Odpowiedź z tego serwera proxy zawiera nagłówek `Access-Control-Expose-Headers`, który zezwala na nagłówki odpowiedzi i udostępnia je dla języka JavaScript.
 
-To proste zainstalować serwer proxy CORS, aby umożliwić samouczek aplikacji dostępu klienta do nagłówka Identyfikatora. Pierwsza strona, jeśli nie masz jeszcze, [instalowania programu Node.js](https://nodejs.org/en/download/). Następnie należy wydać następujące polecenie w oknie poleceń:
+Zainstalowanie serwera proxy CORS w celu zezwolenia naszej aplikacji samouczka na dostęp do nagłówka identyfikatora klienta jest łatwe. Najpierw [zainstaluj platformę Node.js](https://nodejs.org/en/download/), jeśli jeszcze jej nie masz. Następnie wykonaj następujące polecenie w oknie polecenia:
 
     npm install -g cors-proxy-server
 
-Następnie można zmienić punktu końcowego wyszukiwania usługi Bing w sieci Web w pliku w formacie HTML do:
+Następnie zmień punkt końcowy wyszukiwania w sieci Web Bing w pliku HTML na:
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
 
-Na koniec uruchom CORS proxy za pomocą następującego polecenia:
+Na koniec uruchom serwer proxy CORS za pomocą następującego polecenia:
 
     cors-proxy-server
 
-Pozostaw otwarte okno wiersza poleceń podczas korzystania z samouczka aplikacji; Zamyka okno zatrzymuje serwer proxy. W sekcji nagłówków HTTP rozwijanych poniżej wyniki wyszukiwania, możesz teraz przeglądać `X-MSEdge-ClientID` nagłówka (między innymi) i sprawdź, czy jest taka sama dla każdego żądania.
+Podczas korzystania z aplikacji samouczka pozostaw okno polecenia otwarte, ponieważ jego zamknięcie spowoduje zatrzymanie serwera proxy. W rozwijanej sekcji nagłówków HTML poniżej wyników wyszukiwania można teraz zobaczyć nagłówek `X-MSEdge-ClientID` (pomiędzy innymi) i sprawdzić, czy jest on taki sam dla każdego żądania.
 
-## <a name="next-steps"></a>Kolejne kroki
-
-> [!div class="nextstepaction"]
-> [Dokumentacja interfejsu API Bing encji wyszukiwania](//docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dokumentacja interfejsu API map Bing](//msdn.microsoft.com/library/dd877180.aspx)
+> [Dokumentacja interfejsu API wyszukiwania jednostek Bing](//docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+
+> [!div class="nextstepaction"]
+> [Dokumentacja interfejsu API usługi Mapy Bing](//msdn.microsoft.com/library/dd877180.aspx)

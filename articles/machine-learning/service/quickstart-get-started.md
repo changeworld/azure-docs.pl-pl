@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: tworzenie obszaru roboczego usługi Machine Learning — Azure'
+title: 'Szybki start: tworzenie obszaru roboczego usługi Machine Learning w witrynie Azure Portal — Azure Machine Learning'
 description: Obszar roboczy usługi Azure Machine Learning można utworzyć w witrynie Azure Portal. Ten obszar roboczy to podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich szkolenie oraz wdrażanie za pomocą usługi Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
@@ -9,16 +9,16 @@ ms.reviewer: sgilley
 author: rastala
 ms.author: roastala
 ms.date: 09/24/2018
-ms.openlocfilehash: c1610291e06255e2c724268f63d740f7e4debea4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b6f0201a36a676e7647b9f5e60bc2df3415b9594
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959992"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831334"
 ---
-# <a name="quickstart-get-started-with-azure-machine-learning-service"></a>Szybki start: rozpoczynanie pracy z usługą Azure Machine Learning
+# <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning-service"></a>Szybki start: rozpoczynanie pracy z usługą Azure Machine Learning w witrynie Azure Portal
 
-W tym przewodniku Szybki start utworzysz obszar roboczy usługi Azure Machine Learning przy użyciu witryny Azure Portal. Ten obszar roboczy to podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich szkolenie oraz wdrażanie za pomocą usługi Azure Machine Learning. 
+W tym przewodniku Szybki start utworzysz obszar roboczy usługi Azure Machine Learning w witrynie Azure Portal. Ten obszar roboczy to podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich szkolenie oraz wdrażanie za pomocą usługi Azure Machine Learning. 
 
 W tym samouczku zostaną wykonane następujące czynności:
 
@@ -37,7 +37,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-Na stronie obszaru roboczego kliknij pozycję `Explore your Azure Machine Learning Workspace`
+Na stronie obszaru roboczego kliknij pozycję `Explore your Azure Machine Learning service workspace`
 
  ![eksplorowanie obszaru roboczego](./media/quickstart-get-started/explore_aml.png)
 
@@ -69,9 +69,9 @@ Oprócz dwóch notesów zobaczysz jeszcze plik `config.json`.  Ten plik konfigur
 
 Kliknij pozycję `01.run-experiment.ipynb`, aby otworzyć notes.
 
-Komórki można uruchamiać pojedynczo, naciskając klawisze `Shift`+`Enter`.  Można też uruchomić cały notes, wybierając z menu pozycje `Cells` > `Run All`.
+Komórki można uruchamiać pojedynczo, naciskając klawisze `Shift`+`Enter`.  Można też uruchomić cały notes, wybierając z menu pozycje `Cells` > `Run All`.  Wyświetlenie znaku [*] obok komórki oznacza uruchomienie.  Po zakończeniu działania kodu dla tej komórki pojawia się cyfra.
 
-Może zostać wyświetlony monit o zalogowanie się.  Skopiuj kod z komunikatu, a następnie kliknij link i wklej kod w nowym oknie.  Pamiętaj, aby nie kopiować spacji znajdującej się przed ani za kodem.
+Może zostać wyświetlony monit o zalogowanie się.  Skopiuj kod z komunikatu, a następnie kliknij link i wklej kod w nowym oknie.  Pamiętaj, aby nie kopiować spacji znajdującej się przed ani za kodem.  Zaloguj się przy użyciu konta użytego w witrynie Azure Portal.
 
  ![logowanie](./media/quickstart-get-started/login.png)
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 696139a3e37f7bd1e32b4e7cec836b3c66df16a6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8751e3485b97b67fd8dd4821480fecd7735c08cd
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974327"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268516"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>Samouczek: uwierzytelnianie w usłudze Azure SignalR Service
 
@@ -29,7 +29,7 @@ Z tego samouczka dowiesz się, jak zaimplementować własne uwierzytelnianie i z
 
 Uwierzytelnianie początkowo używane w aplikacji pokoju rozmów przewodnika Szybki start jest zbyt proste dla realnych scenariuszy. Aplikacja umożliwia każdemu klientowi oświadczenie, kim jest, a serwer po prostu to zaakceptuje. To podejście nie nadaje się do rzeczywistych zastosowań, gdzie złośliwy użytkownik może podszyć się pod innych, aby uzyskać dostęp do poufnych danych. 
 
-Usługa [GitHub](https://github.com/) zapewnia interfejsy API uwierzytelniania bazujące na popularnym, będącym standardem branżowym protokole o nazwie [OAuth](https://oauth.net/). Te interfejsy API umożliwiają aplikacjom innych firm uwierzytelnianie kont usługi GitHub. W tym samouczku użyjesz tych interfejsów API do zaimplementowania uwierzytelniania za pomocą konta usługi Github przed zezwoleniem na logowanie klienta w aplikacji pokoju rozmów. Po uwierzytelnieniu konta usługi GitHub informacje o koncie zostaną dodane jako plik cookie używany przez klienta internetowego do uwierzytelniania.
+Usługa [GitHub](https://github.com/) zapewnia interfejsy API uwierzytelniania bazujące na popularnym, będącym standardem branżowym protokole o nazwie [OAuth](https://oauth.net/). Te interfejsy API umożliwiają aplikacjom innych firm uwierzytelnianie kont usługi GitHub. W tym samouczku użyjesz tych interfejsów API do zaimplementowania uwierzytelniania za pomocą konta usługi GitHub przed zezwoleniem na logowanie klienta w aplikacji pokoju rozmów. Po uwierzytelnieniu konta usługi GitHub informacje o koncie zostaną dodane jako plik cookie używany przez klienta internetowego do uwierzytelniania.
 
 Aby uzyskać więcej informacji na temat interfejsów API uwierzytelniania OAuth udostępnionych przez usługę GitHub, zobacz [Basics of Authentication (Podstawy uwierzytelniania)](https://developer.github.com/v3/guides/basics-of-authentication/).
 

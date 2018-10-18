@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/24/2018
+ms.date: 10/10/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 48714d71edcf54726eb362c7f56950a1350fd52b
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 04e7506562d29e37abb65b7a760fbc9bd707e2c6
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42885329"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078940"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrowanie maszyn wirtualnych usług Amazon Web Services (AWS) na platformę Azure
 
@@ -239,10 +239,9 @@ W niektórych scenariuszach tryb failover wymaga dodatkowego przetwarzania. Do u
 Uruchom rzeczywisty tryb failover dla wystąpień usługi EC2, aby zmigrować je do maszyn wirtualnych platformy Azure:
 
 1. W obszarze **Chronione elementy** > **Zreplikowane elementy** wybierz wystąpienia usług AWS, a następnie wybierz pozycję **Tryb failover**.
-2. W obszarze **Tryb failover** wybierz **Punkt odzyskiwania**, z którego chcesz skorzystać do przełączenia w tryb failover. Wybierz najnowszy punkt odzyskiwania.
-3. Wybierz opcję **Zamknij maszynę przed rozpoczęciem pracy w trybie failover**, jeśli usługa Site Recovery ma spróbować przeprowadzić zamknięcie źródłowych maszyn wirtualnych przed wyzwoleniem trybu failover. Przełączanie do trybu failover będzie kontynuowane, nawet jeśli zamknięcie nie powiedzie się. Na stronie **Zadania** można śledzić postęp trybu failover.
-4. Upewnij się, że maszyna wirtualna jest wyświetlana w obszarze **Zreplikowane elementy**.
-5. Kliknij prawym przyciskiem myszy każdą maszynę wirtualną, a następnie wybierz polecenie **Zakończ migrację**. Spowoduje to zakończenie procesu migracji, zatrzymanie replikacji maszyny wirtualnej usług AWS oraz zatrzymanie naliczania opłat za usługę Site Recovery dla maszyny wirtualnej.
+2. W obszarze **Tryb failover** wybierz **Punkt odzyskiwania**, z którego chcesz skorzystać do przełączenia w tryb failover. Wybierz najnowszy punkt odzyskiwania, a następnie uruchom tryb failover. Na stronie **Zadania** można śledzić postęp trybu failover.
+1. Upewnij się, że maszyna wirtualna jest wyświetlana w obszarze **Zreplikowane elementy**.
+2. Kliknij prawym przyciskiem myszy każdą maszynę wirtualną, a następnie wybierz polecenie **Zakończ migrację**. Spowoduje to zakończenie procesu migracji, zatrzymanie replikacji maszyny wirtualnej usług AWS oraz zatrzymanie naliczania opłat za usługę Site Recovery dla maszyny wirtualnej.
 
     ![Kończenie migracji](./media/migrate-tutorial-aws-azure/complete-migration.png)
 
