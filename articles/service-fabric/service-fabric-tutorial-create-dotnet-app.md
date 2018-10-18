@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 06/28/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 4aac44d46b6c5d202431aa34a1dc7b962466c799
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 1af74cc44391c95fba781cbce14e9118ca36c14b
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346192"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078498"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Samouczek: tworzenie i wdrażanie aplikacji przy użyciu usługi frontonu platformy ASP.NET Core z internetowym interfejsem API oraz stanowej usługi zaplecza
 
@@ -40,13 +40,13 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 > * Tworzenie aplikacji platformy .NET w usłudze Service Fabric
 > * [Wdrażanie aplikacji w klastrze zdalnym](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * [Dodawanie punktu końcowego HTTPS do usługi frontonu platformy ASP.NET Core](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
-> * [Konfigurowanie procesu ciągłej integracji/ciągłego wdrażania za pomocą usługi Visual Studio Team Services](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+> * [Konfigurowanie ciągłej integracji/ciągłego wdrażania za pomocą usługi Azure Pipelines](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [Konfigurowanie monitorowania i diagnostyki dla aplikacji](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem tego samouczka:
-* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Zainstaluj program Visual Studio 2017](https://www.visualstudio.com/) w wersji 15.5 lub nowszej z obciążeniami **Programowanie na platformie Azure** i **Tworzenie aplikacji na platformie ASP.NET i tworzenie aplikacji internetowych**.
 * [Zainstaluj zestaw SDK usługi Service Fabric.](service-fabric-get-started.md)
 
@@ -455,6 +455,9 @@ W następnym kroku połączysz te dwie usługi i sprawisz, że aplikacja interne
 Usługa Service Fabric zapewnia pełną elastyczność w sposobie komunikowania się z niezawodnymi usługami. W obrębie pojedynczej aplikacji mogą istnieć usługi, które są dostępne za pośrednictwem protokołu TCP. Inne usługi mogą być dostępne za pośrednictwem interfejsu API REST protokołu HTTP, a jeszcze inne za pośrednictwem gniazd internetowych. Aby zapoznać się z opisem dostępnych opcji i zastosowanych technologii, zobacz [Communicating with services](service-fabric-connect-and-communicate-with-services.md) (Komunikacja z usługami).
 
 W tym samouczku użyj [internetowego interfejsu API platformy ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) oraz [zwrotnego serwera proxy platformy Service Fabric](service-fabric-reverseproxy.md), aby internetowa usługa frontonu VotingWeb mogła komunikować się z usługą zaplecza VotingData. Zwrotny serwer proxy został skonfigurowany tak, aby domyślnie używać portu 19081, i powinien działać w tym samouczku. Port jest ustawiany w szablonie ARM używanym do konfigurowania klastra. Aby znaleźć używany port, poszukaj w szablonie klastra w zasobie **Microsoft.ServiceFabric/clusters** lub w elemencie HttpApplicationGatewayEndpoint w manifeście klastra.
+
+> [!NOTE]
+> Zwrotny serwer proxy jest obsługiwany tylko w przypadku klastrów z systemem Windows 8 lub nowszym albo Windows Server 2012 lub nowszym.
 
 <u>Zasób Microsoft.ServiceFabric/clusters reverseProxyEndpointPort</u>
 
