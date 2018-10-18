@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/12/2018
+ms.date: 10/16/2018
 ms.author: raiye
-ms.openlocfilehash: b37600fe8d0616454264b67553149223746318d8
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 7540f12f888108ed7091cece575b6d25131ef47b
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49322026"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377518"
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa platformy Azure
 Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Security Response Center (MSRC) stosowane do systemu operacyjnego gościa platformy Azure. Wyszukaj w tym artykule, aby określić, jeśli dana aktualizacja ma zastosowanie do systemu operacyjnego gościa, którego używasz. Aktualizacje zawsze przenoszone w konkretnym [rodziny] [ family-explain] były one wprowadzone w.
 
-## <a name="september-guest-os"></a>System operacyjny gościa września
+## <a name="september-2018-guest-os"></a>System operacyjny gościa września 2018 r.
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 18-09 | [4457131] | Zabezpieczenia systemu Windows 10 | 5.23 | 11 września 2018 r. |
@@ -45,7 +45,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4344153] | Pakiet zbiorczy sierpnia niezwiązane z zabezpieczeniami platformy .NET 3.5 | 4.58 | 14 sierpnia 2018 r. |
 | ND | [4344147] | X rollup sierpnia niezwiązane z zabezpieczeniami .NET 4 | 4.58 | 14 sierpnia 2018 r. |
 
-## <a name="august-guest-os"></a>System operacyjny gościa sierpnia
+## <a name="august-2018-guest-os"></a>System operacyjny gościa sierpnia 2018
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 18-08 | [4343887] | Zabezpieczenia systemu Windows 10 | 5.22 | 14 sierpnia 2018 r. |
@@ -68,7 +68,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4338424] |Pakiet zbiorczy lipca niezwiązane z zabezpieczeniami platformy .NET 3.5 |3.64 | 10 lipca 2018 r. |
 | ND | [4338415] |X rollup lipca niezwiązane z zabezpieczeniami .NET 4 |3.64 | 10 lipca 2018 r. |
 
-## <a name="july-guest-os"></a>System operacyjny gościa lipca
+## <a name="july-2018-guest-os"></a>System operacyjny gościa lipca 2018 r.
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 18-07 | [4338814] |Zabezpieczenia systemu Windows 10 |5.21 |10 lipca 2018 r. |
@@ -88,7 +88,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4284855] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami czerwca |3.63 |12 czerwca 2018 r. |
 | ND | [4284815] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami czerwca |4,56 |12 czerwca 2018 r. |
 
-## <a name="june-guest-os"></a>System operacyjny gościa czerwca
+## <a name="june-2018-guest-os"></a>System operacyjny gościa czerwca 2018 r.
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 18-06 | [4284880] |Zabezpieczenia systemu Windows 10 |5.20 |12 czerwca 2018 r. |
@@ -113,7 +113,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4096417] |.NET 4.5 x niezwiązanych z zabezpieczeniami może zwolnić |4.55 |8 maja 2018 r. |
 | ND | [4132216] |Może być Samoobsługi |5.20 |8 maja 2018 r. |
 
-## <a name="may-guest-os"></a>Może być systemy operacyjne gościa
+## <a name="may-2018-guest-os"></a>System operacyjny gościa w maju 2018 r.
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 18-05 | [4103721], [4103727], [4103723] |Zabezpieczenia systemu Windows 10 |5.19 |8 maja 2018 r. |
@@ -133,7 +133,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4093753] |Strefa czasowa aktualizacji |2.74, 3.61, 4.74 |10 kwietnia 2018 r. |
 
 
-## <a name="april-guest-os"></a>System operacyjny gościa kwietnia
+## <a name="april-2018-guest-os"></a>System operacyjny gościa kwietnia 2018 r.
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 18-04 | [4093119] |Zabezpieczenia systemu Windows 10 |5.18 |10 kwietnia 2018 r. |
@@ -147,7 +147,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4088877] |Marzec zbiorczy niezwiązanych z zabezpieczeniami |3.60 |13 marca 2018 r. |
 | ND | [4088876] |Marzec zbiorczy niezwiązanych z zabezpieczeniami |4,53 |13 marca 2018 r. |
 
-## <a name="march-guest-os"></a>Marzec systemu operacyjnego gościa
+## <a name="march-2018-guest-os"></a>System operacyjny gościa marca 2018 r.
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 18-03 | [4088787], [4088776] |Zabezpieczenia systemu Windows 10 |liczbę 5,17 |13 marca 2018 r. |
@@ -160,7 +160,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4074837] |Strefa czasowa aktualizacji |2.72, 3.59, 4.52 |13 lutego 2018 r. |
 
 
-## <a name="february-guest-os"></a>System operacyjny gościa lutego
+## <a name="february-2018-guest-os"></a>System operacyjny gościa lutego 2018 r.
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 18-02 | [4074590], [4074588] |Zabezpieczenia systemu Windows 10 |5.16 |13 lutego 2018 r. |
@@ -174,7 +174,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4054175], [4054171] |Pakiet zbiorczy .NET stycznia |3.58 |4 stycznia 2018 r. |
 | ND | [4054177], [4054170] |Pakiet zbiorczy .NET stycznia |4.51 |4 stycznia 2018 r. |
 
-## <a name="january-guest-os"></a>System operacyjny gościa stycznia
+## <a name="january-2018-guest-os"></a>System operacyjny gościa stycznia 2018 r.
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 18-01 | [4056898], [4056897], [4056899] |Tylko zabezpieczeń Windows |2.70, 3.57, 4.50 |3 stycznia 2018 r. |
@@ -186,7 +186,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 
 
 
-## <a name="december-guest-os"></a>System operacyjny gościa grudnia
+## <a name="december-2017-guest-os"></a>System operacyjny gościa grudnia 2017 r.
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 17-12 | [4053579], [4054517] |Aktualizacje zabezpieczeń systemu Windows 10 |4.49, 5.14 |12 grudnia 2017 r. |
@@ -198,7 +198,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4048958] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami listopada |4.49 |14 listopada 2017 r. |
 | ND | [4049068] |Strefa czasowa grudnia aktualizacji |2.69, 3.56, 4.49 |12 grudnia 2017 r. |
 
-## <a name="november-guest-os"></a>System operacyjny gościa listopada
+## <a name="november-2017-guest-os"></a>System operacyjny gościa listopada 2017 r.
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 17-11 | [4048953] |Aktualizacje systemu Windows 10 |5.13 |14 listopada 2017 r. |
@@ -212,7 +212,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [3191565] |Aktualizacja dla programu Windows Management Framework 5.1  |3.55 |14 listopada 2017 r. |
 | ND | [3191564] |Aktualizacja dla programu Windows Management Framework 5.1  |4.48 |14 listopada 2017 r. |
 
-## <a name="october-guest-os"></a>System operacyjny gościa października
+## <a name="october-2017-guest-os"></a>System operacyjny gościa października 2017 r.
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 17 10 | [4041691] |Aktualizacje systemu Windows 10 |5.12 |10 października 2017 r. |
@@ -226,7 +226,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4040979] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami września .NET |3.54 |12 września 2017 r. |
 | ND | [4040981] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami września .NET |4.47 |12 września 2017 r. |
 
-## <a name="september-guest-os"></a>System operacyjny gościa września
+## <a name="september-2017-guest-os"></a>System operacyjny gościa września 2017 r.
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 17-09 | [4038782] |Aktualizacje systemu Windows 10 |5.11 |12 września 2017 r. |
@@ -238,7 +238,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4034665] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami sierpnia |5.11 |8 sierpnia 2017 r. |
 | ND | [4034681] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami sierpnia |4.46 |8 sierpnia 2017 r. |
 
-## <a name="august-guest-os"></a>System operacyjny gościa sierpnia
+## <a name="august-2017-guest-os"></a>System operacyjny gościa sierpnia 2017 r.
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | Rel 17-07 | [4034658] |Aktualizacje systemu Windows 10 |5.10 |8 sierpnia 2017 r. |
@@ -252,7 +252,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | Rel 17-07 | [4025331] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami lipca |3.52 |11 lipca 2017 r. |
 | Rel 17-07 | [4025336] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami lipca |4.45 |11 lipca 2017 r. |
 
-## <a name="july-guest-os"></a>System operacyjny gościa lipca
+## <a name="july-2017-guest-os"></a>System operacyjny gościa lipca 2017 r.
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | Rel 17-07 | [4025339] |Aktualizacje systemu Windows 10 |5.9 |11 lipca 2017 r. |
@@ -266,7 +266,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4022724] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami czerwca |3.51 |13 czerwca 2017 r. |
 | ND | [4022726] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami czerwca |4.44 |13 czerwca 2017 r. |
 
-## <a name="june-guest-os"></a>System operacyjny gościa czerwca
+## <a name="june-2017-guest-os"></a>System operacyjny gościa czerwca 2017 r.
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 17-06 | [4019472] |Ulepszenia jakości systemu operacyjnego 2016 WS |5.8 |9 maja 2017 r. |
@@ -294,7 +294,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4014510] |Może być zbiorczy niezwiązanych z zabezpieczeniami platformy .NET |4.43 |9 maja 2017 r. |
 | ND | [4014512] |Może być zbiorczy niezwiązanych z zabezpieczeniami platformy .NET |4.43 |9 maja 2017 r. |
 
-## <a name="may-guest-os"></a>Może być systemy operacyjne gościa
+## <a name="may-2017-guest-os"></a>System operacyjny gościa maja 2017 r.
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 17-05 | [4019472] |Ulepszenia jakości systemu operacyjnego 2016 WS |5.7 | 9 maja 2017 r. |
@@ -322,7 +322,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4015550] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami kwietnia |4.42 | 11 kwietnia 2017 r. |
 | ND | [4013418] |Aktualizacja stosu obsługi |5.7 | 14 marca 2017 r. |
 
-## <a name="april-guest-os"></a>System operacyjny gościa kwietnia
+## <a name="april-2017-guest-os"></a>System operacyjny gościa kwietnia 2017 r.
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 17-04 |  [4015217]  |Ulepszenia jakości systemu operacyjnego 2016 WS | 5.6 | 11 kwietnia 2017 r. |
@@ -342,7 +342,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ReL 17-04 |  [4012217]  |Marzec 2017 miesięczne jakości zbiorcze informacje o zabezpieczeniach systemu Windows Server 2012 |3.48 | 11 kwietnia 2017 r. |
 | ReL 17-04 |  [4012216]  |Marca 2017 r. miesięczne jakości zbiorcze informacje o zabezpieczeniach Windows 8.1 i Windows Server 2012 R2 |4.41 | 11 kwietnia 2017 r. |
 
-## <a name="march-guest-os"></a>Marzec systemu operacyjnego gościa
+## <a name="march-2017-guest-os"></a>System operacyjny gościa marca 2017 r.
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 17-03 |  [4013429] |Ulepszenia i poprawki | 5.5 | 14 marca 2017 r. |
@@ -356,12 +356,12 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND |  [3205401] |Grudzień 2016 miesięczne jakości zbiorcze informacje o zabezpieczeniach Windows 8.1 i Windows Server 2012 R2 |4.40 |14 marca 2017 r. |
 | ND |  [3211320] |Obsługa stosu aktualizacji dla systemu Windows 10 w wersji 1607 i systemu Windows Server 2016: 24 stycznia 2017 r. |5.5 |14 marca 2017 r. |
 
-## <a name="january-guest-os"></a>System operacyjny gościa stycznia
+## <a name="january-2017-guest-os"></a>System operacyjny gościa stycznia 2017 r.
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | MS17-004 | [3216771] |Aktualizacja zabezpieczeń dla lokalnego Security Authority Subsystem Service |2.59 |10 stycznia 2017 r. |
 
-## <a name="december-guest-os"></a>System operacyjny gościa grudnia
+## <a name="december-2016-guest-os"></a>System operacyjny gościa grudnia 2016 r.
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | MS16-144 |[3204059] |Zbiorcza aktualizacja zabezpieczeń programu Internet Explorer |2.58, 3.46, 4.39 |13 grudnia 2016 r. |
@@ -378,7 +378,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND |[3197877] |Listopad 2016 miesięczne jakości zbiorcze informacje o zabezpieczeniach systemu Windows Server 2012 |3.46 |13 grudnia 2016 r. |
 | ND |[3197874] |Listopada 2016 r. miesięczne jakości zbiorcze informacje o zabezpieczeniach Windows 8.1 i Windows Server 2012 R2 |4.39 |13 grudnia 2016 r. |
 
-## <a name="november-guest-os"></a>System operacyjny gościa listopada
+## <a name="november-2016-guest-os"></a>System operacyjny gościa listopada 2016 r.
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | MS16-129 |[3199057] |Zbiorcza aktualizacja zabezpieczeń dla przeglądarki Microsoft Edge |5.3 |8 listopada 2016 r. |
@@ -403,7 +403,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND |[3199986] |Obsługa stosu aktualizacji dla systemu Windows 10 w wersji 1607: 27 października 2016 r. |5.3 |8 listopada 2016 r. |
 | ND |[3197954] |Aktualizacja zbiorcza dla systemu Windows 10 w wersji 1607 i Windows Server 2016: 27 października 2016 r. |5.3 |8 listopada 2016 r. |
 
-## <a name="october-guest-os"></a>System operacyjny gościa października
+## <a name="october-2016-guest-os"></a>System operacyjny gościa października 2016 r.
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | MS16-118 |[3192887] |Zbiorcza aktualizacja zabezpieczeń programu Internet Explorer |4.37, 3.44, 2.56 |11 października 2016 r. |
@@ -418,7 +418,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND |[3185279] |Września 2016 r. pakiet zbiorczy aktualizacji Windows 8.1 i Windows Server 2012 R2 |4.37 |11 października 2016 r. |
 | ND |[3194798] |Aktualizacja zbiorcza dla systemu Windows 10 w wersji 1607 i Windows Server 2016 |5.2 |11 października 2016 r. |
 
-## <a name="september-guest-os"></a>System operacyjny gościa września
+## <a name="september-2016-guest-os"></a>System operacyjny gościa września 2016 r.
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | MS16-104 |[3183038] |Zbiorcza aktualizacja zabezpieczeń programu Internet Explorer |4.36, 3.43, 2.55 |13 września 2016 r. |
@@ -435,7 +435,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND |[3179575] |Sierpień 2016 pakiet zbiorczy aktualizacji systemu Windows Server 2012 |3.43 |13 września 2016 r. |
 | ND |[3179574] |Sierpień 2016 pakiet zbiorczy aktualizacji dla systemu Windows RT 8.1, Windows 8.1 i Windows Server 2012 R2 |4.36 |13 września 2016 r. |
 
-## <a name="august-guest-os"></a>System operacyjny gościa sierpnia
+## <a name="august-2016-guest-os"></a>System operacyjny gościa sierpnia 2016 r.
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | MS16-095 |[3177356] |Zbiorcza aktualizacja zabezpieczeń programu Internet Explorer |4.35, 3.42, 2.54 |9 sierpnia 2016 r. |
@@ -449,7 +449,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND |[3172615] |W lipcu 2016 r. pakiet zbiorczy aktualizacji systemu Windows Server 2012 |3.42 |9 sierpnia 2016 r. |
 | ND |[3172614] |W lipcu 2016 r. pakiet zbiorczy aktualizacji dla systemu Windows RT 8.1, Windows 8.1 i Windows Server 2012 R2 |4.35 |9 sierpnia 2016 r. |
 
-## <a name="july-guest-os"></a>System operacyjny gościa lipca
+## <a name="july-2016-guest-os"></a>System operacyjny gościa lipca 2016 r.
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | MS16-084 |[3169991] |Zbiorcza aktualizacja zabezpieczeń programu Internet Explorer |4.34, 3.41, 2.53 |12 lipca 2016 r. |
@@ -465,7 +465,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND |[3161606] |Czerwiec 2016 pakiet zbiorczy aktualizacji dla systemu Windows RT 8.1, Windows 8.1 i Windows Server 2012 R2 |4.34 |12 lipca 2016 r. |
 | ND |[3139923] |Napraw Instalator (MSI) Windows nie działa po zainstalowaniu pakietu MSI na HTTP udostępnionej w programie Windows |4.34 |12 lipca 2016 r. |
 
-## <a name="june-guest-os"></a>System operacyjny gościa czerwca
+## <a name="june-2016-guest-os"></a>System operacyjny gościa czerwca 2016 r.
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | MS16-035 |[3141780] |Aktualizacja zabezpieczeń programu .NET Framework, aby rozwiązać pominięcie funkcji zabezpieczeń |4.33, 3.40, 2.52 |14 czerwca 2016 r. |
@@ -492,7 +492,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND |[3156418] |Maja 2016 r. pakiet zbiorczy aktualizacji dla systemu Windows RT 8.1, Windows 8.1 i Windows Server 2012 R2 |4.33 |14 czerwca 2016 r. |
 | ND |[3153731] |Aktualizacja maja 2016 r. czasu letniego dla Azerbejdżan, Chile, Haiti i Maroko w Windows |4.33, 3.40, 2.52 |14 czerwca 2016 r. |
 
-## <a name="may-guest-os"></a>Może być systemy operacyjne gościa
+## <a name="may-2016-guest-os"></a>System operacyjny gościa maja 2016 r.
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | MS16-051 |[3155533] |Zbiorcza aktualizacja zabezpieczeń programu Internet Explorer |4.32, 3.39, 2.51 |10 maja 2016 r. |
@@ -510,7 +510,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND |[3123245] |Aktualizacja zwiększa identyfikacji wyczerpanie portów w systemie Windows Server 2012 R2  |4.32 |10 maja 2016 r. |
 | ND |[Wyłącz RC4] | Biuletyn zabezpieczeń firmy Microsoft: Aktualizacja dla wyłączaniu technologii RC4  |4.32, 3.39, 2.51 |10 maja 2016 r. |
 
-## <a name="april-guest-os"></a>System operacyjny gościa kwietnia
+## <a name="april-2016-guest-os"></a>System operacyjny gościa kwietnia 2016
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | MS16-037 |[3148531] |Zbiorcza aktualizacja zabezpieczeń programu Internet Explorer |4.31, 3.38, 2.50 |12 kwietnia 2016 r. |
@@ -521,7 +521,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | MS16-047 |[3148527] |Aktualizacja zabezpieczeń dla protokołu Security Account Manager Remote Protocol |4.31, 3.38, 2.50 |12 kwietnia 2016 r. |
 | MS16-048 |[3148528] |Aktualizacja zabezpieczeń CSRSS |4.31, 3.38 |12 kwietnia 2016 r. |
 
-## <a name="march-guest-os"></a>Marzec systemu operacyjnego gościa
+## <a name="march-2016-guest-os"></a>System operacyjny gościa marca 2016 r.
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | MS16-023 |[3142015] |Zbiorcza aktualizacja zabezpieczeń programu Internet Explorer |4.30, 3.37, 2.49 |8 marca 2016 r. |
@@ -534,7 +534,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | MS16-033 |[3143142] |Aktualizacja sterownika klasy pamięci masowej USB w celu podniesienie poziomu uprawnień zabezpieczeń |4.30, 3.37, 2.49 |8 marca 2016 r. |
 | MS16-034 |[3143145] |Aktualizacje zabezpieczeń przez sterownik trybu jądra na adres podniesienie uprawnień |4.30, 3.37, 2.49 |8 marca 2016 r. |
 
-## <a name="february-guest-os"></a>System operacyjny gościa lutego
+## <a name="february-2016-guest-os"></a>System operacyjny gościa lutego 2016 r.
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | MS16-009 |[3134220] |Zbiorcza aktualizacja zabezpieczeń programu Internet Explorer |4.29, 3.36, 2.48 |9 lutego 2016 r. |
@@ -549,7 +549,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | Nowe wydanie-MS15 118 |[3104507] |Aktualizacje zabezpieczeń dla programu .NET Framework w celu podniesienia uprawnień |4.29, 3.36, 2.48 |9 lutego 2016 r. |
 | Nowe wydanie-MS15-128 |[3104503] |Aktualizacje zabezpieczeń dla składnika Microsoft grafiki umożliwiającą zdalne wykonywanie kodu |4.29, 3.36, 2.48 |9 lutego 2016 r. |
 
-## <a name="january-guest-os"></a>System operacyjny gościa stycznia
+## <a name="january-2016-guest-os"></a>System operacyjny gościa stycznia 2016 r.
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | MS16-001 |[3124903] |Zbiorcza aktualizacja zabezpieczeń programu Internet Explorer |4.28, 3.35, 2.47 |12 stycznia 2016 roku. |
@@ -562,7 +562,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | Poradnik zabezpieczeń firmy Microsoft |[3123479] |Amortyzacja algorytmu wyznaczania wartości skrótu SHA-1 programu certyfikatów głównych firmy Microsoft. |4.28, 3.35, 2.47 |12 stycznia 2016 roku. |
 | Poradnik zabezpieczeń firmy Microsoft |[2736233] |Aktualizacje usługi Bits ActiveX Kill |4.28, 3.35, 2.47 |12 stycznia 2016 roku. |
 
-## <a name="december-guest-os"></a>System operacyjny gościa grudnia
+## <a name="december-2015-guest-os"></a>System operacyjny gościa grudnia 2015 r.
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | MS15-124 |[3116180] |Zbiorcza aktualizacja zabezpieczeń programu Internet Explorer |4.27, 3.34, 2.46 |8 grudnia 2015 r. |
@@ -574,7 +574,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | MS15-134 |[3108669] |Aktualizacja zabezpieczeń programu Windows Media Center zdalne wykonywanie kodu |4.27, 3.34, 2.46 |8 grudnia 2015 r. |
 | MS15-135 |[3119075] |Aktualizacja zabezpieczeń dla sterowników trybu jądra Windows w celu podniesienia uprawnień |4.27, 3.34, 2.46 |8 grudnia 2015 r. |
 
-## <a name="november-guest-os"></a>System operacyjny gościa listopada
+## <a name="november-2015-guest-os"></a>System operacyjny gościa listopada 2015 r.
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | MS15-112 |[3104517] |Zbiorcza aktualizacja zabezpieczeń programu Internet Explorer |4.26, 3.33, 2.45 |10 listopada 2015 r. |
@@ -588,7 +588,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | MS15-122 |[3105256] |Aktualizacja zabezpieczeń dla protokołu Kerberos rozwiązać pominięcie funkcji zabezpieczeń |4.26, 3.33, 2.45 |10 listopada 2015 r. |
 | Poradnik zabezpieczeń firmy Microsoft |[3097966] |Fałszowanie certyfikatów cyfrowych może pozwolić przypadkowo ujawnione |4.26, 3.33, 2.45 |10 listopada 2015 r. |
 
-## <a name="october-guest-os"></a>System operacyjny gościa października
+## <a name="october-2015-guest-os"></a>System operacyjny gościa października 2015 r.
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | MS15-106 |[3096441] |Zbiorcza aktualizacja zabezpieczeń programu Internet Explorer |4.25, 3.32, 2.44 |13 października 2015 r. |
@@ -597,7 +597,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | MS15-111 |[3096447] |Aktualizacja zabezpieczeń dla jądra systemu Windows w celu podniesienia uprawnień |4.25, 3.32, 2.44 |13 października 2015 r. |
 | Poradnik zabezpieczeń firmy Microsoft |[3092627] |Aktualizacja z września 2015 naprawić Windows lub aplikacji, zawiesza się po zainstalowaniu aktualizacji zabezpieczeń 3076895 |4.25, 3.32, 2.44 |13 października 2015 r. |
 
-## <a name="september-guest-os"></a>System operacyjny gościa września
+## <a name="september-2015-guest-os"></a>System operacyjny gościa września 2015 r.
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | MS15-093 |[3088903] |Aktualizacja zabezpieczeń programu Internet Explorer |4.24, 3.31, 2.43 |8 września 2015 r. |
@@ -609,7 +609,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | MS15-102 |[3089657] |Luki w zabezpieczeniach w zarządzania zadaniami Windows umożliwia podniesienie uprawnień |4.24, 3.31, 2.43 |8 września 2015 r. |
 | MS15-105 |[3091287] |Usterka Windows funkcji Hyper-V umożliwia pominięcie funkcji zabezpieczeń |4.24 |8 września 2015 r. |
 
-## <a name="august-guest-os"></a>System operacyjny gościa sierpnia
+## <a name="august-2015-guest-os"></a>System operacyjny gościa sierpnia 2015 r.
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | MS15-079 |[3082442] |Zbiorcza aktualizacja zabezpieczeń programu Internet Explorer |4.23, 3.30, 2.42 |11 sierpnia 2015 r. |
@@ -621,7 +621,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | MS15-089 |[3060716] |Luki w zabezpieczeniach w programie Microsoft Windows umożliwia podniesienie uprawnień |4.23, 3.30, 2.42 |11 sierpnia 2015 r. |
 | MS15-090 |[3076949] |Luki w zabezpieczeniach w WebDAV może spowodować ujawnienie informacji |4.23, 3.30, 2.42 |11 sierpnia 2015 r. |
 
-## <a name="july-guest-os"></a>System operacyjny gościa lipca
+## <a name="july-2015-guest-os"></a>System operacyjny gościa lipca 2015 r.
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | MS15-065 |[3076321] |Zbiorcza aktualizacja zabezpieczeń programu Internet Explorer |4.22, 3.29, 2.41 |14 lipca 2015 r. |
@@ -638,7 +638,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | MS15-077 |[3077657] |Luki w zabezpieczeniach w sterowniku czcionki ATM umożliwia podniesienie uprawnień |4.22, 3.29, 2.41 |14 lipca 2015 r. |
 | Nie dotyczy |[3057154] |Update w celu ograniczenia użycia szyfrowanie DES |4.22, 3.29, 2.41 |14 lipca 2015 r. |
 
-## <a name="june-guest-os"></a>System operacyjny gościa czerwca
+## <a name="june-2015-guest-os"></a>System operacyjny gościa w czerwcu 2015 roku
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | MS15-056 |[3058515] |Zbiorcza aktualizacja zabezpieczeń programu Internet Explorer |4.21, 3.28, 2.40 |9 czerwca 2015 r. |
@@ -648,7 +648,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | MS15-062 |[3062577] |Luki w zabezpieczeniach w usłudze Active Directory Federation Services umożliwia podniesienie uprawnień |4.21, 3.28, 2.40 |9 czerwca 2015 r. |
 | MS15-063 |[3063858] |Luka w zabezpieczeniach jądra Windows umożliwia podniesienie uprawnień |4.21, 3.28, 2.40 |9 czerwca 2015 r. |
 
-## <a name="may-guest-os"></a>Może być systemy operacyjne gościa
+## <a name="may-2015-guest-os"></a>System operacyjny gościa maja 2015 r.
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | MS15-043 |[3049563] |Zbiorcza aktualizacja zabezpieczeń programu Internet Explorer |4.20, 3.27, 2.39 |12 maja 2015 r. |
@@ -671,12 +671,12 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | MS15-042 |[3047234] |Usterka Windows funkcji Hyper-V umożliwia odmowa usługi |4.20, 3.27, 2.39 |17 kwietnia 2015 r. |
 | Nie dotyczy |[3045755] |Aktualizacja w celu uwierzytelniania PKU2U |4.20, 3.27, 2.39 |17 kwietnia 2015 r. |
 
-## <a name="april-guest-os"></a>System operacyjny gościa kwietnia
+## <a name="april-2015-guest-os"></a>System operacyjny gościa kwietnia 2015 r.
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | [MS15-034] |[3042553] |Luki w zabezpieczeniach w pliku HTTP.sys umożliwia zdalne wykonywanie kodu |4.19, 3.26, 2.38 |17 kwietnia 2015 r. |
 
-## <a name="march-guest-os"></a>Marzec systemu operacyjnego gościa
+## <a name="march-2015-guest-os"></a>System operacyjny gościa marzec 2015
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | MS15-018 |[3032359] |Zbiorcza aktualizacja zabezpieczeń programu Internet Explorer |4.18, 3.25, 2.37 |ND |
@@ -696,7 +696,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 >
 >
 
-## <a name="february-guest-os"></a>System operacyjny gościa lutego
+## <a name="february-2015-guest-os"></a>System operacyjny gościa luty 2015
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | MS15-009 |[3034682] |Aktualizacja zabezpieczeń programu Internet Explorer |4.17, 3.24, 2.36 |ND |
@@ -707,7 +707,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | MS15-016 |[3029944] |Luki w zabezpieczeniach w składniku Microsoft grafiki może spowodować ujawnienie informacji |4.17, 3.24, 2.36 |ND |
 | ND |[3004375] |Inspekcja wiersza polecenia Update w celu poprawy Windows<p/>**Uwaga**: ten program jest zainstalowany, ale klucz rejestru, aby ją włączyć jest wyłączony |4.17, 3.24, 2.36 |ND |
 
-## <a name="january-guest-os"></a>System operacyjny gościa stycznia
+## <a name="january-2015-guest-os"></a>System operacyjny gościa stycznia 2015
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | MS15-001 |[3023266] |Usterka Windows AppCompatCache umożliwia podniesienie uprawnień |4.16, 3.23, 2.35 |Stycznia 2015 19 |
@@ -723,7 +723,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | MS15-002 |[3020393] |Luki w zabezpieczeniach usługi Telnet Windows może spowodować zdalne wykonywanie kodu |4.16, 3.23, 2.35 |Stycznia 2015 19 |
 
 
-## <a name="december-guest-os"></a>System operacyjny gościa grudnia
+## <a name="december-2014-guest-os"></a>System operacyjny gościa grudnia 2014
 | Identyfikator biuletynu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ND |[3013776] |System zawiesza się podczas używania konta domeny, aby uruchomić aplikację |4.15, 3.22, 2.34 |2015 r. 13 stycznia |
