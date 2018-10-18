@@ -2,25 +2,18 @@
 title: Podręcznik administrowania usługą Azure Data Box za pomocą portalu | Microsoft Docs
 description: W tym artykule opisano sposób administrowania usługą Azure Data Box w witrynie Azure Portal.
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: overview
-ms.custom: ''
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 4a76d59349c37a3dcc120e64f692881b461f58fb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 49c2258100e99742bcb2e22fbce7f05b69c70ef6
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993469"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49090726"
 ---
 # <a name="use-the-azure-portal-to-administer-your-data-box"></a>Administrowanie usługą Data Box w witrynie Azure Portal
 
