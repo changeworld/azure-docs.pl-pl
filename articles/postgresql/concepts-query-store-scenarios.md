@@ -7,19 +7,19 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: 3cd3ebf86221db1531bd19e94bb072b4559d07d6
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: fc354a9545f3073a858c2b669d428d1fa4185073
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395597"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377484"
 ---
 # <a name="usage-scenarios-for-query-store"></a>Scenariusze użycia dotyczące Query Store
 
 **Dotyczy:** Azure Database for postgresql w warstwie 9.6 i 10
 
 > [!IMPORTANT]
-> Funkcja Query Store jest w publicznej wersji zapoznawczej w ograniczonej liczbie regionów.
+> Funkcja Query Store jest dostępna w publicznej wersji zapoznawczej.
 
 Możesz użyć Store zapytania w wielu różnych scenariuszy, w których śledzenie i zachowując wydajność przewidywalnego obciążenia ma kluczowe znaczenie. Należy wziąć pod uwagę następujące przykłady: 
 - Identyfikowanie i dostosowywanie najpopularniejsze kosztowne zapytania 

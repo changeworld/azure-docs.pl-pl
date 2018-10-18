@@ -4,19 +4,19 @@ description: Opisuje właściwości, które są dostarczane dla zdarzeń usługi
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 08/17/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: a6a6c459e170627d26aa1445f4f4dd193965fe70
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 44e195055c74babd903cf4fb830167ab92951d4a
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054194"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376792"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Usługa Azure schematów usługi Event Grid na potrzeby zdarzeń usługi Media Services
 
@@ -26,14 +26,56 @@ Aby uzyskać listę przykładowych skryptów i samouczków, zobacz [źródła zd
 
 ## <a name="available-event-types"></a>Zdarzenie dostępne typy
 
-Media Services emitowały następujące typy zdarzeń:
+### <a name="job-related-event-types"></a>Zadania pokrewne typy zdarzeń
+
+Media Services emitowały **zadania** powiązane typy zdarzeń, które opisano poniżej. Istnieją dwie kategorie dla **zadania** zdarzenia związane z: "Monitorowanie zadania stanu zmiany" i "Monitorowania zadanie danych wyjściowych zmian". 
+
+Jeśli zasubskrybujesz zdarzenia JobStateChange można zarejestrować dla wszystkich zdarzeń. Lub może być subskrybowana tylko pod kątem określonych zdarzeń (na przykład końcowego stany JobErrored, JobFinished i JobCanceled). 
+
+#### <a name="monitoring-job-state-changes"></a>Zmienia się stan zadania monitorowania
 
 | Typ zdarzenia | Opis |
 | ---------- | ----------- |
-| Microsoft.Media.JobStateChange| Stan zadania zmieni się. |
+| Microsoft.Media.JobStateChange| Pobierz zdarzenie dla wszystkich zmian stanu zadania. |
+| Microsoft.Media.JobScheduled| Pobierz zdarzenie, gdy zadanie przechodzi w stan Zaplanowane. |
+| Microsoft.Media.JobProcessing| Pobierz zdarzenie, gdy zadanie przechodzi w stan przetwarzania. |
+| Microsoft.Media.JobCanceling| Pobierz zdarzenie, gdy zadanie przechodzi w stan anulowania. |
+| Microsoft.Media.JobFinished| Pobierz zdarzenie, gdy zadanie przechodzi do stanu Gotowe. Jest to stan końcowy, który zawiera dane wyjściowe zadania.|
+| Microsoft.Media.JobCanceled| Pobierz zdarzenie, gdy zadanie przechodzi do stanu Anulowano. Jest to stan końcowy, który zawiera dane wyjściowe zadania.|
+| Microsoft.Media.JobErrored| Pobierz zdarzenie, gdy zadanie przechodzi do stanu błędu. Jest to stan końcowy, który zawiera dane wyjściowe zadania.|
+
+#### <a name="monitoring-job-output-state-changes"></a>Zmienia monitorowania stan dane wyjściowe zadania
+
+| Typ zdarzenia | Opis |
+| ---------- | ----------- |
+| Microsoft.Media.JobOutputStateChange| Pobierz zdarzenia dla wszystkich danych wyjściowych zadania, których stan zmieni się. |
+| Microsoft.Media.JobOutputScheduled| Pobierz zdarzenie, kiedy przechodzi do stanu Zaplanowane generowania danych wyjściowych zadania. |
+| Microsoft.Media.JobOutputProcessing| Pobierz zdarzenie w przypadku przejścia do stan przetwarzania generowania danych wyjściowych zadania. |
+| Microsoft.Media.JobOutputCanceling| Pobierz zdarzenie, kiedy przechodzi do stanu anulowanie generowania danych wyjściowych zadania.|
+| Microsoft.Media.JobOutputFinished| Pobierz zdarzenie po danych wyjściowych zadania, przechodzi do stanu.|
+| Microsoft.Media.JobOutputCanceled| Pobierz zdarzenie, kiedy przejść dane wyjściowe zadania zostało anulowane stanu.|
+| Microsoft.Media.JobOutputErrored| Pobierz zdarzenie, kiedy przechodzi do stanu błędu generowania danych wyjściowych zadania.|
+
+### <a name="live-event-types"></a>Typy zdarzeń na żywo
+
+Usługa Media Services również emituje **Live** typy zdarzeń, które opisano poniżej. Istnieją dwie kategorie dla **Live** zdarzeń: zdarzenia na poziomie usługi stream i poziom śledzenia zdarzeń. 
+
+#### <a name="stream-level-events"></a>Zdarzenia na poziomie Stream
+
+Stream poziom zdarzenia są wywoływane na połączenia lub strumienia. Każde zdarzenie ma `StreamId` parametr, który identyfikuje połączenia lub strumienia. Każdego strumienia lub połączenie ma jednej lub więcej ścieżek o różnych typach. Na przykład jedno połączenie z kodera może mieć cztery ścieżki wideo i jedną ścieżkę audio. Dostępne są następujące typy zdarzeń strumienia:
+
+| Typ zdarzenia | Opis |
+| ---------- | ----------- |
 | Microsoft.Media.LiveEventConnectionRejected | Kodera połączenie jest odrzucane. |
 | Microsoft.Media.LiveEventEncoderConnected | Koder ustanawia połączenie z wydarzenia na żywo. |
 | Microsoft.Media.LiveEventEncoderDisconnected | Odłącza kodera. |
+
+#### <a name="track-level-events"></a>Poziom śledzenia zdarzeń
+
+Poziom śledzenia zdarzenia są wywoływane na ścieżkę. Dostępne są następujące typy zdarzeń śledzenia:
+
+| Typ zdarzenia | Opis |
+| ---------- | ----------- |
 | Microsoft.Media.LiveEventIncomingDataChunkDropped | Serwer multimediów fragmentu danych spada, ponieważ jest za późno lub ma nakładające się sygnatura czasowa (sygnatura czasowa nowych fragmentów danych jest mniejsza niż czas zakończenia poprzedniego fragmentu danych). |
 | Microsoft.Media.LiveEventIncomingStreamReceived | Media serwer odbiera pierwszy fragment danych dla każdej ścieżki, w usłudze stream ani połączenia. |
 | Microsoft.Media.LiveEventIncomingStreamsOutOfSync | Serwer multimediów wykrywa audio i wideo strumieni nie są zsynchronizowane. Użyj jako ostrzeżenie, ponieważ środowisko użytkownika nie może mieć wpływ. |
@@ -41,24 +83,9 @@ Media Services emitowały następujące typy zdarzeń:
 | Microsoft.Media.LiveEventIngestHeartbeat | Publikowany co 20 sekund dla każdej ścieżki, w przypadku zdarzenia na żywo jest uruchomiona. Zapewnia obsługę podsumowanie kondycji. |
 | Microsoft.Media.LiveEventTrackDiscontinuityDetected | Serwer multimediów wykrywa przerwa w ścieżce przychodzącej. |
 
-Istnieją dwie kategorie dla **Live** zdarzeń: zdarzenia na poziomie usługi stream i poziom śledzenia zdarzeń. 
+## <a name="event-schemas-and-properties"></a>Schematy zdarzeń i właściwości
 
-Stream poziom zdarzenia są wywoływane na połączenia lub strumienia. Każde zdarzenie ma `StreamId` parametr, który identyfikuje połączenia lub strumienia. Każdego strumienia lub połączenie ma jednej lub więcej ścieżek o różnych typach. Na przykład jedno połączenie z kodera może mieć cztery ścieżki wideo i jedną ścieżkę audio. Dostępne są następujące typy zdarzeń strumienia:
-
-* LiveEventConnectionRejected
-* LiveEventEncoderConnected
-* LiveEventEncoderDisconnected
-
-Poziom śledzenia zdarzenia są wywoływane na ścieżkę. Dostępne są następujące typy zdarzeń śledzenia:
-
-* LiveEventIncomingDataChunkDropped
-* LiveEventIncomingStreamReceived
-* LiveEventIncomingStreamsOutOfSync
-* LiveEventIncomingVideoStreamsOutOfSync
-* LiveEventIngestHeartbeat
-* LiveEventTrackDiscontinuityDetected
-
-## <a name="jobstatechange"></a>JobStateChange
+### <a name="jobstatechange"></a>JobStateChange
 
 W poniższym przykładzie przedstawiono schematu **JobStateChange** zdarzeń: 
 
@@ -89,7 +116,142 @@ Obiekt danych ma następujące właściwości:
 
 Gdy stan zadania może być jedna z wartości: *kolejce*, *zaplanowane*, *przetwarzania*, *Zakończono*, *błąd*, *Anulowane*, *anulowanie*
 
-## <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
+### <a name="jobscheduled"></a>JobScheduled
+### <a name="jobprocessing"></a>JobProcessing
+### <a name="jobcanceling"></a>JobCanceling
+
+Dla każdego-final zadania zmiany stanu (np. JobCanceling JobScheduled, JobProcessing,) schematu przykład wygląda podobnie do następujących:
+
+```json
+[{
+  "topic": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Media/mediaservices/<account-name>",
+  "subject": "transforms/VideoAnalyzerTransform/jobs/<job-id>",
+  "eventType": "Microsoft.Media.JobProcessing",
+  "eventTime": "2018-10-12T16:12:18.0839935",
+  "id": "a0a6efc8-f647-4fc2-be73-861fa25ba2db",
+  "data": {
+    "previousState": "Scheduled",
+    "state": "Processing",
+    "correlationData": {
+      "TestKey1": "TestValue1",
+      "testKey2": "testValue2"
+    }
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1"
+}]
+```
+
+### <a name="jobfinished"></a>JobFinished
+### <a name="jobcanceled"></a>JobCanceled
+### <a name="joberrored"></a>JobErrored
+
+Dla każdego końcowego zadania zmiany stanu (np. JobErrored JobFinished, JobCanceled,) schematu przykład wygląda podobnie do następujących:
+
+```json
+[{
+  "topic": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Media/mediaservices/<account-name>",
+  "subject": "transforms/VideoAnalyzerTransform/jobs/<job-id>",
+  "eventType": "Microsoft.Media.JobFinished",
+  "eventTime": "2018-10-12T16:25:56.4115495",
+  "id": "9e07e83a-dd6e-466b-a62f-27521b216f2a",
+  "data": {
+    "outputs": [
+      {
+        "@odata.type": "#Microsoft.Media.JobOutputAsset",
+        "assetName": "output-7640689F",
+        "error": null,
+        "label": "VideoAnalyzerPreset_0",
+        "progress": 100,
+        "state": "Finished"
+      }
+    ],
+    "previousState": "Processing",
+    "state": "Finished",
+    "correlationData": {
+      "TestKey1": "TestValue1",
+      "testKey2": "testValue2"
+    }
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1"
+}]
+```
+
+Obiekt danych ma następujące właściwości:
+
+| Właściwość | Typ | Opis |
+| -------- | ---- | ----------- |
+| Dane wyjściowe | Tablica | Pobiera zadanie danych wyjściowych.|
+
+### <a name="joboutputstatechange"></a>JobOutputStateChange
+
+W poniższym przykładzie przedstawiono schematu **JobOutputStateChange** zdarzeń:
+
+```json
+[{
+  "topic": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Media/mediaservices/<account-name>",
+  "subject": "transforms/VideoAnalyzerTransform/jobs/<job-id>",
+  "eventType": "Microsoft.Media.JobOutputStateChange",
+  "eventTime": "2018-10-12T16:25:56.0242854",
+  "id": "dde85f46-b459-4775-b5c7-befe8e32cf90",
+  "data": {
+    "previousState": "Processing",
+    "output": {
+      "@odata.type": "#Microsoft.Media.JobOutputAsset",
+      "assetName": "output-7640689F",
+      "error": null,
+      "label": "VideoAnalyzerPreset_0",
+      "progress": 100,
+      "state": "Finished"
+    },
+    "jobCorrelationData": {
+      "TestKey1": "TestValue1",
+      "testKey2": "testValue2"
+    }
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1"
+}]
+```
+
+### <a name="joboutputscheduled"></a>JobOutputScheduled
+### <a name="joboutputprocessing"></a>JobOutputProcessing
+### <a name="joboutputfinished"></a>JobOutputFinished
+### <a name="joboutputcanceling"></a>JobOutputCanceling
+### <a name="joboutputcanceled"></a>JobOutputCanceled
+### <a name="joboutputerrored"></a>JobOutputErrored
+
+Dla każdej zmiany stanu JobOutput schematu przykład wygląda podobnie do następującego:
+
+```json
+[{
+  "topic": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Media/mediaservices/<account-name>",
+  "subject": "transforms/VideoAnalyzerTransform/jobs/<job-id>",
+  "eventType": "Microsoft.Media.JobOutputProcessing",
+  "eventTime": "2018-10-12T16:12:18.0061141",
+  "id": "f1fd5338-1b6c-4e31-83c9-cd7c88d2aedb",
+  "data": {
+    "previousState": "Scheduled",
+    "output": {
+      "@odata.type": "#Microsoft.Media.JobOutputAsset",
+      "assetName": "output-7640689F",
+      "error": null,
+      "label": "VideoAnalyzerPreset_0",
+      "progress": 0,
+      "state": "Processing"
+    },
+    "jobCorrelationData": {
+      "TestKey1": "TestValue1",
+      "testKey2": "testValue2"
+    }
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1"
+}]
+```
+
+### <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
 
 W poniższym przykładzie przedstawiono schematu **LiveEventConnectionRejected** zdarzeń: 
 
@@ -136,7 +298,7 @@ Kody wyników są:
 | MPE_INGEST_BITRATE_AGGREGATED_EXCEEDED | Zagregowane szybkości transmisji bitów przekracza maksymalny dozwolony limit. |
 | MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | Znacznik czasu FLVTag wideo lub audio jest nieprawidłowy z kodera RTMP. |
 
-## <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
+### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
 
 W poniższym przykładzie przedstawiono schematu **LiveEventEncoderConnected** zdarzeń: 
 
@@ -169,7 +331,7 @@ Obiekt danych ma następujące właściwości:
 | EncoderIp | ciąg | Adres IP kodera. |
 | EncoderPort | ciąg | Port kodera, z której pochodzi ten strumień. |
 
-## <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
+### <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
 
 W poniższym przykładzie przedstawiono schematu **LiveEventEncoderDisconnected** zdarzeń: 
 
@@ -225,7 +387,7 @@ Kody wyników łagodne rozłączenia są:
 | MPI_REST_API_CHANNEL_STOP | Kanał jest poddawana konserwacji. |
 | MPI_STREAM_HIT_EOF | Strumień EOF są wysyłane przez koder. |
 
-## <a name="liveeventincomingdatachunkdropped"></a>LiveEventIncomingDataChunkDropped
+### <a name="liveeventincomingdatachunkdropped"></a>LiveEventIncomingDataChunkDropped
 
 W poniższym przykładzie przedstawiono schematu **LiveEventIncomingDataChunkDropped** zdarzeń: 
 
@@ -261,7 +423,7 @@ Obiekt danych ma następujące właściwości:
 | Skala czasu | ciąg | Skala czasu znacznika czasu. |
 | ResultCode | ciąg | Powód listy fragmentów danych. **FragmentDrop_OverlapTimestamp** lub **FragmentDrop_NonIncreasingTimestamp**. |
 
-## <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
+### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
 
 W poniższym przykładzie przedstawiono schematu **LiveEventIncomingStreamReceived** zdarzeń: 
 
@@ -303,7 +465,7 @@ Obiekt danych ma następujące właściwości:
 | Znacznik czasu | ciąg | Pierwszy znacznik czasu fragmentu danych odebranych. |
 | Skala czasu | ciąg | Skala czasu, w którym jest reprezentowana sygnatury czasowej. |
 
-## <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
+### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
 
 W poniższym przykładzie przedstawiono schematu **LiveEventIncomingStreamsOutOfSync** zdarzeń: 
 
@@ -319,7 +481,9 @@ W poniższym przykładzie przedstawiono schematu **LiveEventIncomingStreamsOutOf
       "minLastTimestamp": "319996",
       "typeOfStreamWithMinLastTimestamp": "Audio",
       "maxLastTimestamp": "366000",
-      "typeOfStreamWithMaxLastTimestamp": "Video"
+      "typeOfStreamWithMaxLastTimestamp": "Video",
+      "timescaleOfMinLastTimestamp": "10000000", 
+      "timescaleOfMaxLastTimestamp": "10000000"       
     },
     "dataVersion": "1.0",
     "metadataVersion": "1"
@@ -335,8 +499,10 @@ Obiekt danych ma następujące właściwości:
 | TypeOfTrackWithMinLastTimestamp | ciąg | Typ ścieżki (audio lub wideo) przy użyciu minimalnej sygnatury czasowej ostatniego. |
 | MaxLastTimestamp | ciąg | Maksymalna liczba wszystkie sygnatury czasowe między wszystkie ścieżki (audio lub wideo). |
 | TypeOfTrackWithMaxLastTimestamp | ciąg | Typ ścieżki (audio lub wideo) z maksymalną sygnatury czasowej ostatniego. |
+| TimescaleOfMinLastTimestamp| ciąg | Pobiera skali czasu, w którym jest reprezentowana "MinLastTimestamp".|
+| TimescaleOfMaxLastTimestamp| ciąg | Pobiera skali czasu, w którym jest reprezentowana "MaxLastTimestamp".|
 
-## <a name="liveeventincomingvideostreamsoutofsync"></a>LiveEventIncomingVideoStreamsOutOfSync
+### <a name="liveeventincomingvideostreamsoutofsync"></a>LiveEventIncomingVideoStreamsOutOfSync
 
 W poniższym przykładzie przedstawiono schematu **LiveEventIncomingVideoStreamsOutOfSync** zdarzeń: 
 
@@ -352,7 +518,8 @@ W poniższym przykładzie przedstawiono schematu **LiveEventIncomingVideoStreams
       "FirstTimestamp": "2162058216",
       "FirstDuration": "2000",
       "SecondTimestamp": "2162057216",
-      "SecondDuration": "2000"
+      "SecondDuration": "2000",
+      "timescale": "10000000"      
     },
     "dataVersion": "1.0"
   }
@@ -367,8 +534,9 @@ Obiekt danych ma następujące właściwości:
 | FirstDuration | ciąg | Czas trwania fragmentu danych za pomocą pierwszy znacznik czasu. |
 | SecondTimestamp | ciąg  | Odebrano dla pewnego poziomu śledzenia/jakości wideo typu sygnatura czasowa. |
 | SecondDuration | ciąg | Czas trwania fragmentu danych z sygnaturą czasową drugie. |
+| Skala czasu | ciąg | Skala czasu sygnatury czasowe i czas trwania.|
 
-## <a name="liveeventingestheartbeat"></a>LiveEventIngestHeartbeat
+### <a name="liveeventingestheartbeat"></a>LiveEventIngestHeartbeat
 
 W poniższym przykładzie przedstawiono schematu **LiveEventIngestHeartbeat** zdarzeń: 
 
@@ -417,7 +585,7 @@ Obiekt danych ma następujące właściwości:
 | Stan | ciąg | Stan zdarzenia na żywo. |
 | W dobrej kondycji | wartość logiczna | Wskazuje, czy pozyskiwania jest w dobrej kondycji na podstawie liczby i flagi. Dobra kondycja ma wartość true Jeśli OverlapCount = 0 & & DiscontinuityCount = 0 & & NonIncreasingCount = 0 & & UnexpectedBitrate = false. |
 
-## <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
+### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
 
 W poniższym przykładzie przedstawiono schematu **LiveEventTrackDiscontinuityDetected** zdarzeń: 
 
@@ -456,7 +624,7 @@ Obiekt danych ma następujące właściwości:
 | DiscontinuityGap | ciąg | Przerwa między powyżej dwóch sygnatur czasowych. |
 | Skala czasu | ciąg | Są reprezentowane w skali czasu, w której sygnatura czasowa i ciągłości przerwy. |
 
-## <a name="common-event-properties"></a>Wspólne właściwości zdarzenia
+### <a name="common-event-properties"></a>Wspólne właściwości zdarzenia
 
 Zdarzenie zawiera następujące dane najwyższego poziomu:
 
@@ -468,7 +636,7 @@ Zdarzenie zawiera następujące dane najwyższego poziomu:
 | eventTime | ciąg | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
 | id | ciąg | Unikatowy identyfikator zdarzenia. |
 | dane | obiekt | Dane zdarzenia usługi Media Services. |
-| dataVersion | ciąg | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
+| dataVersion | ciąg | Wersja schematu obiektu danych. Wydawca Określa wersję schematu. |
 | metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
 
 ## <a name="next-steps"></a>Kolejne kroki

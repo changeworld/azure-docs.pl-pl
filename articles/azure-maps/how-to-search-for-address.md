@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 293b6af1d591c0c9763c2914713fe892392ae7ea
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: d25142cecd62fc34a08939d5f1915ba9b2cee749
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578144"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387433"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Znajdowanie adresu przy użyciu usługi Azure Maps usługi wyszukiwania
 
@@ -59,7 +59,7 @@ Domyślnie większość zapytań wyszukiwania `maxFuzzyLevel=1` wydajność i ob
 
 4. Kliknij przycisk **wysyłania** i przejrzeć treść odpowiedzi.
 
-    Ciąg zapytania niejednoznaczne "głosi" zwracana 10 [punktu wyników zainteresowania](https://docs.microsoft.com/en-us/rest/api/maps/search/getsearchpoi#searchpoiresponse) wyniki (punktów POI) z kategorii w "głosi" i "restauracji". Każdy wynik zwraca adres ulicy, szerokość geograficzna / wyświetlić wartości długości geograficznej, portów i punktów wejścia do lokalizacji.
+    Ciąg zapytania niejednoznaczne "głosi" zwracana 10 [punktu wyników zainteresowania](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse) wyniki (punktów POI) z kategorii w "głosi" i "restauracji". Każdy wynik zwraca adres ulicy, szerokość geograficzna / wyświetlić wartości długości geograficznej, portów i punktów wejścia do lokalizacji.
   
     Wyniki są zróżnicowane dla tego zapytania nie są powiązane z dowolnej lokalizacji szczególnym odniesieniem. Możesz użyć **countrySet** parametru, aby określić kraje, dla których aplikacja wymaga pokrycia, zgodnie z domyślnym zachowaniem jest na całym świecie, potencjalnie zwracanie niepotrzebnego wyników wyszukiwania.
 

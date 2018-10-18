@@ -7,13 +7,13 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 07/23/2018
-ms.openlocfilehash: d3d3ed8aaac16bc0a8cf817f4972ed3b771ed8d0
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 10/11/2018
+ms.openlocfilehash: 6cd3938844d7f6977c7b0912acffbfb1679dc42e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093558"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387391"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Wdrażanie w usłudze Azure Kubernetes Service (AKS) przy użyciu serwera Jenkins i niebieskiego/zielonego wzorca wdrażania
 
@@ -32,7 +32,7 @@ W tym samouczku wyjaśniono, jak wykonać następujące zadania:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 - [Konto usługi GitHub](https://github.com): musisz mieć konto usługi GitHub, aby móc sklonować przykładowe repozytorium.
-- [Interfejs wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest): interfejs wiersza polecenia platformy Azure w wersji 2.0 jest używany do tworzenia klastra Kubernetes.
+- [Interfejs wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest): interfejs wiersza polecenia platformy Azure w wersji 2.0 jest używany do tworzenia klastra Kubernetes.
 - [Chocolatey](https://chocolatey.org): menedżer pakietów używany do zainstalowania interfejsu kubectl.
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/): interfejs wiersza polecenia używany do uruchamiania poleceń w klastrach Kubernetes.
 - [jq](https://stedolan.github.io/jq/download/): uproszczony procesor JSON wiersza polecenia.
@@ -82,9 +82,6 @@ W tej sekcji wykonasz następujące kroki:
 - Użyjesz interfejsu wiersza polecenia platformy Azure w wersji 2.0 w celu utworzenia zarządzanego klastra Kubernetes.
 - Dowiesz się, jak skonfigurować klaster przy użyciu skryptu konfiguracji lub ręcznie.
 - Utworzysz wystąpienie usługi Azure Container Registry.
-
-> [!NOTE]   
-> Usługa AKS jest aktualnie dostępna w wersji zapoznawczej. Aby uzyskać informacje na temat włączania wersji zapoznawczej dla subskrypcji platformy Azure, zobacz [Szybki start: wdrażanie klastra usługi Azure Kubernetes Service (AKS)](/azure/aks/kubernetes-walkthrough#enabling-aks-preview-for-your-azure-subscription).
 
 ### <a name="use-the-azure-cli-20-to-create-a-managed-kubernetes-cluster"></a>Używanie interfejsu wiersza polecenia platformy Azure w wersji 2.0 w celu utworzenia zarządzanego klastra Kubernetes
 Aby można było utworzyć zarządzany klaster Kubernetes za pomocą [interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), należy używać interfejsu wiersza polecenia platformy Azure w wersji 2.0.25 lub nowszej.

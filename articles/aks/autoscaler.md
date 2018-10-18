@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/18
 ms.author: sakthivetrivel
 ms.custom: mvc
-ms.openlocfilehash: 6ec39116596c7abb7b1d26f864cdb57d839c88be
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: e16c82f7c49bf90fc074732d0a989b9de94a52c5
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365139"
+ms.locfileid: "49375855"
 ---
 # <a name="cluster-autoscaler-on-azure-kubernetes-service-aks---preview"></a>Klastrze skalowania automatycznego w systemie Azure Kubernetes Service (AKS) — wersja zapoznawcza
 
@@ -26,11 +26,22 @@ W tym artykule opisano sposób wdrażania skalowanie klastra w węzłach agenta.
 > Integracja skalowanie klastra usługi Azure Kubernetes Service (AKS) jest obecnie w **Podgląd**. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
 >
 
-## <a name="prerequisites"></a>Wymagania wstępne
+## <a name="prerequisites-and-considerations"></a>Wymagania wstępne i zagadnienia
 
 W tym dokumencie przyjęto założenie, iż klaster AKS z włączoną funkcją RBAC. Jeśli potrzebujesz klastra AKS, zobacz [szybkiego startu usługi Azure Kubernetes Service (AKS)][aks-quick-start].
 
  Aby użyć skalowanie klastra, klaster musi używać Kubernetes v1.10.X lub nowszy i musi być włączona RBAC. Aby uaktualnić klaster, zobacz artykuł [Uaktualnianie klastra usługi AKS][aks-upgrade].
+
+Zdefiniuj żądania zasobu dla zasobników. Wygląda skalowanie klastra, w jakim zasobem żądania są wykonywane przez zasobników, nie zasoby rzeczywiście w użyciu, takie jak jest skalowanie zasobników w poziomie. W ramach `spec: containers` sekcji definicji wdrożenia, należy zdefiniować wymagania dotyczące procesora CPU i pamięci. Poniższy fragment kodu przykładzie żądań 0,5 procesorów vCPU i 64Mb pamięci w węźle:
+
+  ```yaml
+  resources:
+    requests:
+      cpu: 500m
+      memory: 64Mb
+  ```
+
+Gdy jest używany klaster skalowania automatycznego, należy unikać ręczne skalowanie liczby węzłów. Skalowanie klastra może nie móc określić poprawną ilość wymaganych zasobów obliczeniowych i są w konflikcie z liczbą węzłów, które są definiowane ręcznie.
 
 ## <a name="gather-information"></a>Zbieranie informacji
 

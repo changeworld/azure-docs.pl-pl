@@ -7,40 +7,40 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: 6de302dbcfa9d6d1d2b311f41b03d8e54aeb63f6
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 46a4e69ecb08276e12ccc197de2d3ad838628b78
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395444"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378605"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql"></a>Zalecenia dotyczące wydajności w bazie danych Azure database for PostgreSQL
 
 **Dotyczy:** Azure Database for postgresql w warstwie 9.6 i 10
 
 > [!IMPORTANT]
-> Zalecenia dotyczące wydajności znajduje się w publicznej wersji zapoznawczej w ograniczonej liczbie regionów.
+> Zalecenia dotyczące wydajności znajduje się w publicznej wersji zapoznawczej.
 
 Zalecenia dotyczące wydajności funkcji identyfikuje najważniejsze indeksy, które mogą być tworzone w usługi Azure Database for postgresql w warstwie serwera w celu zwiększenia wydajności. Aby uzyskać zalecenia dotyczące indeksu, funkcja bierze pod uwagę różne cechy bazy danych, w tym jego schematu i obciążenia zgłoszonej Query Store. Po zaimplementowaniu żadnych rekomendacji wydajności, klientów należy przetestować wydajność, aby ocenić wpływ tych zmian. 
 
 ## <a name="permissions"></a>Uprawnienia
-**Właściciel** lub **Współautor** uprawnienia wymagane do uruchamiania analizy przy użyciu funkcji zalecenia dotyczące wydajności.
+Uprawnienia **Właściciel** lub **Współautor** są wymagane do uruchamiania analiz przy użyciu funkcji Zalecenia dotyczące wydajności.
 
 ## <a name="performance-recommendations"></a>Zalecenia dotyczące wydajności
-[Zalecenia dotyczące wydajności](concepts-performance-recommendations.md) funkcja analizuje obciążenia dla serwera do identyfikacji indeksów, z których można zwiększyć wydajność.
+Funkcja [Zalecenia dotyczące wydajności](concepts-performance-recommendations.md) analizuje obciążenia na serwerze, aby zidentyfikować indeksy z potencjałem poprawy wydajności.
 
-Otwórz **zalecenia dotyczące wydajności** z **pomoc techniczna i rozwiązywanie problemów z** części paska menu na stronie portalu platformy Azure dla Twojego serwera PostgreSQL.
+Otwórz **Zalecenia dotyczące wydajności** w sekcji **Pomoc techniczna i rozwiązywanie problemów** paska menu na stronie serwera PostgreSQL w witrynie Azure Portal.
 
 ![Zalecenia dotyczące wydajności, strona docelowa](./media/concepts-performance-recommendations/performance-recommendations-landing-page.png)
 
-Wybierz **analizy** i wybierz bazę danych. Rozpoczyna się analizy. W zależności od obciążenia, może to potrwać kilka minut. Po zakończeniu analizy będą powiadomienia w portalu.
+Wybierz opcję **Analiza** i wybierz bazę danych. Spowoduje to rozpoczęcie analizy. W zależności od obciążenia, może to potrwać kilka minut. Po zakończeniu analizy w portalu zostanie wyświetlone powiadomienie.
 
-**Zalecenia dotyczące wydajności** okno zostanie wyświetlone lista zaleceń, jeśli którekolwiek. Zalecenia są wyświetlane informacje o odpowiednią **bazy danych**, **tabeli**, **kolumny**, i **rozmiar indeksu**.
+W oknie **Zalecenia dotyczące wydajności** zostanie wyświetlona lista zaleceń, jeśli jakieś znaleziono. Zalecenia będą zawierały informacje o odpowiedniej **bazie danych**, **tabeli**, **kolumnie** i **rozmiarze indeksu**.
 
 ![Nowa strona zalecenia dotyczące wydajności](./media/concepts-performance-recommendations/performance-recommendations-result.png)
 
-Do wykonania zalecenia, skopiuj tekst zapytania i uruchom go z wybranego klienta.
+Aby wdrożyć zalecenie, skopiuj tekst zapytania i uruchom je z poziomu wybranego klienta.
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [monitorowania i dostrajania](concepts-monitoring.md) w usłudze Azure Database for PostgreSQL.
+- Dowiedz się więcej o [monitorowaniu i dostrajaniu](concepts-monitoring.md) w usłudze Azure Database for PostgreSQL.
 

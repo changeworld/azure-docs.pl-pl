@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: a6ad40f90e12bbf4dd85c3cbd22839d39a734ca1
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 5f76d18662105df6d278e09e047baa13773ab4ac
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391169"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319357"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Wdrażanie w usłudze Azure App Service przy użyciu wtyczki Jenkins 
 
@@ -36,8 +36,10 @@ Jeśli nie masz jeszcze głównego serwera Jenkins, zacznij od tego [szablonu ro
 * [Usługa Azure App Service](https://plugins.jenkins.io/azure-app-service) w wersji 0.1
 
 Przy użyciu wtyczki Jenkins można wdrożyć aplikację internetową w dowolnym języku, który jest obsługiwany przez funkcję Web Apps, na przykład C#, PHP, Java i Node.js. W tym samouczku użyjemy [prostej aplikacji internetowej Java dla platformy Azure](https://github.com/azure-devops/javawebappsample). Aby utworzyć rozwidlenie repozytorium na swoim koncie usługi GitHub, wybierz przycisk **Fork** (Rozwidlenie) w prawym górnym rogu interfejsu usługi GitHub.  
+
 > [!NOTE]
 > Do utworzenia projektu języka Java wymagany jest zestaw Java JDK i narzędzie Maven. Zainstaluj te składniki na głównym serwerze Jenkins lub na agencie maszyny wirtualnej, jeśli używasz agenta w celu zapewnienia ciągłej integracji. Jeśli wdrażasz aplikację Java SE, na serwerze kompilacji jest również wymagany plik ZIP.
+>
 
 Aby je zainstalować, zaloguj się na wystąpieniu serwera Jenkins za pomocą protokołu SSH i uruchom następujące polecenia:
 
@@ -48,7 +50,7 @@ sudo apt-get install -y maven
 
 Aby przeprowadzić wdrożenie dla funkcji Web App for Containers, zainstaluj platformę Docker na głównym serwerze Jenkins lub na agencie maszyny wirtualnej używanym na potrzeby tej kompilacji. Aby uzyskać instrukcje, zobacz [Instalowanie platformy Docker w systemie Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntu/).
 
-##<a name="service-principal"></a> Dodawanie jednostki usługi platformy Azure do poświadczeń serwera Jenkins
+## <a name="service-principal"></a> Dodawanie jednostki usługi platformy Azure do poświadczeń serwera Jenkins
 
 W celu wdrażania na platformie Azure potrzebna jest jednostka usługi platformy Azure. 
 

@@ -3,19 +3,19 @@ title: 'Szybki start: analizowanie obrazu zdalnego — REST, Go — przetwarzani
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start przeprowadzisz analizę obrazu za pomocą interfejsu API przetwarzania obrazów i języka Go.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: ccdd8922993fb1ea3e723a68f28f95f7b6ffe93b
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 57c8309af47e71226f41df8cce255e73f33b27c5
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632232"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341042"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-go-in-computer-vision"></a>Szybki start: analizowanie obrazu zdalnego w funkcji przetwarzania obrazów przy użyciu interfejsu API REST i języka Go
 
@@ -39,8 +39,8 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
     1. Opcjonalnie zastąp wartość `imageUrl` adresem URL innego obrazu, który chcesz analizować.
 1. Zapisz kod jako plik z rozszerzeniem `.go`. Na przykład `analyze-image.go`.
 1. Otwórz okno wiersza polecenia.
-1. W tym oknie uruchom polecenie `go build`, aby skompilować pakiet z pliku. Na przykład `go build analyze-image.go`.
-1. W oknie wiersza polecenia uruchom skompilowany pakiet. Na przykład `analyze-image`.
+1. W wierszu polecenia uruchom polecenie `go build`, aby skompilować pakiet na podstawie pliku. Na przykład `go build analyze-image.go`.
+1. W wierszu polecenia uruchom skompilowany pakiet. Na przykład `analyze-image`.
 
 ```go
 package main
@@ -186,4 +186,4 @@ Jeśli skompilowany pakiet i plik, z którego pakiet został skompilowany, nie s
 Zapoznaj się z interfejsem API przetwarzania obrazów używanym do analizy obrazu, wykrywania osobistości i charakterystycznych elementów krajobrazu, tworzenia miniatur oraz wyodrębniania tekstu drukowanego i odręcznego. Aby szybko zacząć eksperymentować z interfejsem API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
-> [Poznaj interfejs API przetwarzania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [Zobacz, jak działa interfejs API przetwarzania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

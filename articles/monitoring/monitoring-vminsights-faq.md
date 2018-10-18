@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 308a447ff99cd11ad6a28df0bdb515764b0f546b
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 282620342d2348868ceab5257de7415a9cb2147c
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063459"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388363"
 ---
 # <a name="azure-monitor-for-vms-frequently-asked-questions"></a>Usługa Azure Monitor dla maszyn wirtualnych — często zadawane pytania
 Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące usługi Azure Monitor dla maszyn wirtualnych na platformie Microsoft Azure. Jeśli masz dodatkowe pytania dotyczące rozwiązania, przejdź do strony [forum dyskusyjne](https://feedback.azure.com/forums/34192--general-feedback) i Publikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.
@@ -76,7 +76,7 @@ Usługi Azure Monitor dla funkcji mapy maszyn wirtualnych jest oparty na mapie u
 Może to wystąpić z kilku powodów.  W przypadkach, w przypadku, gdy występuje przerwa w zbieraniu danych Firma Microsoft będzie przedstawiać wiersze jako kropkami.  Jeśli zmodyfikowano częstotliwość próbkowania danych liczników wydajności, włączone (ustawienie domyślne jest do zbierania danych co 60 sekund), można wyświetlić linii kropkowanej wykresu wybierz zakres czasu wąskie wykresu i Twoje częstotliwość próbkowania jest mniejsza niż użyte w wykresie rozmiaru przedziału (na przykład częstotliwość próbkowania wynosi 10 minut i każdego przedziału na wykresie wynosi 5 minut).  Wybieranie szerszy zakres czasu, aby wyświetlić powinno spowodować linii wykresu, w tym przypadku były wyświetlane jako linia ciągła, a nie kropki.
 
 ## <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Grupy obsługujące z usługą Azure Monitor dla maszyn wirtualnych?
-Funkcja wydajności obsługuje grupy na podstawie wyróżnione zasobów w ramach określonego obszaru roboczego, a także grupowanie oparte na zestawie skalowania określonej maszyny wirtualnej platformy Azure i usługą w chmurze.
+Tak, po zainstalowaniu agenta zależności, zbierane są informacje z maszyn wirtualnych, aby wyświetlić grupy na podstawie subskrypcji, grupy zasobów, maszyna wirtualna zestawów skalowania i usług w chmurze.  Jeśli masz doświadczenie z rozwiązania Service Map i utworzono grupy na komputerze, są one widoczne również.  Grupy komputerów pojawi się także w filtrze grup Jeśli utworzono je do obszaru roboczego, który jest wyświetlany. 
 
 ## <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Jak wyświetlić szczegóły dla czego zależy używany 95. percentyl zagregowanego wydajności wykresy liniowe?
 Domyślnie lista jest sortowana Wam maszyn wirtualnych, które mają najwyższą wartość 95. percentyl dla wybranej metryki, z wyjątkiem wykres dostępnej pamięci, który pokazuje maszyn o najniższej wartości 5. percentyl.  Kliknięcie na wykresie spowoduje otwarcie **lista N najlepszych** widok z odpowiednią wybraną metryką.

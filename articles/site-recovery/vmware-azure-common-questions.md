@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 07/19/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: fe20cae4c316462e3af3f0a5e7e6052f6ba5719d
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 487e0c763ca4b247f1818b2beaf3282734fc4e27
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344427"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388446"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Często zadawane pytania — program VMware do platformy Azure replikacji
 
@@ -22,7 +22,7 @@ Ten artykuł zawiera odpowiedzi na typowe pytania, które widać podczas repliko
 
 ## <a name="general"></a>Ogólne
 ### <a name="how-is-site-recovery-priced"></a>Jak jest rozliczana Usługa Site Recovery?
-Przegląd [cennika usługi Azure Site Recovery](https://azure.microsoft.com/en-in/pricing/details/site-recovery/) szczegółowe informacje.
+Przegląd [cennika usługi Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/) szczegółowe informacje.
 
 ### <a name="how-do-i-pay-for-azure-vms"></a>Jak zapłacić za maszyny wirtualne platformy Azure?
 Podczas replikacji dane są replikowane do usługi Azure storage, a nie płacić za wszelkie zmiany maszyny Wirtualnej. Po uruchomieniu trybu failover na platformie Azure Site Recovery automatycznie tworzy maszyny wirtualne IaaS platformy Azure. Po tym są naliczane za zasoby obliczeniowe, które zostaną zużyte na platformie Azure.
@@ -45,7 +45,7 @@ Jeśli jesteś administratorem subskrypcji, masz uprawnienia do replikacji, któ
 
 
 
-## <a name="on-premises"></a>Lokalne
+## <a name="on-premises"></a>Lokalnie
 
 ### <a name="what-do-i-need-on-premises"></a>Co zrobić, należy w środowisku lokalnym?
 Lokalnie należy składniki usługi Site Recovery, instalowane na jednej maszynie Wirtualnej VMware. Należy również posiadanie infrastruktury VMware przy użyciu co najmniej jeden host ESXi, a firma Microsoft zaleca serwera vCenter. Ponadto należy co najmniej jeden maszyn wirtualnych programu VMware do replikowania. [Dowiedz się więcej](vmware-azure-architecture.md) o architektura VMware – Azure.
@@ -146,7 +146,7 @@ Zainstaluj na każdej maszynie Wirtualnej, którą chcesz replikować, za pomoc�
 
 
 
-## <a name="security"></a>Zabezpieczenia
+## <a name="security"></a>Bezpieczeństwo
 
 ### <a name="what-access-does-site-recovery-need-to-vmware-servers"></a>Jakiego dostępu czy usługa Site Recovery należy serwery VMware?
 Usługa Site Recovery musi mieć dostęp do serwerów VMware w następujących celach:

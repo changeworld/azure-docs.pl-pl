@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: negat
-ms.openlocfilehash: 1716ebf1d3490511d7102c8c756c78c0f0c55291
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: e03016b80b0a7043a72e55b6c8b68b67b55283b1
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669935"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388130"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Zagadnienia dotyczące projektowania dla zestawów skalowania
 W tym artykule omówiono zagadnienia dotyczące projektowania dla zestawów skalowania maszyn wirtualnych. Aby dowiedzieć się, jak co to są zestawy skalowania maszyn wirtualnych, zapoznaj się [omówienie zestawów skalowania maszyn wirtualnych](virtual-machine-scale-sets-overview.md).
@@ -33,8 +33,8 @@ Ogólnie rzecz biorąc zestawy skalowania są przydatne w przypadku wdrożenia o
 
 - Po określeniu konfiguracji zestawu skalowania, możesz zaktualizować *pojemności* właściwości, aby wdrożyć więcej maszyn wirtualnych w sposób równoległy. Ten proces jest lepsza niż pisania skryptu do organizowania wdrożenie wielu maszyn wirtualnych z poszczególnych równolegle.
 - Możesz [Użyj skalowania automatycznego platformy Azure, aby automatycznie skalować zestaw skalowania](./virtual-machine-scale-sets-autoscale-overview.md) , ale nie do poszczególnych maszyn wirtualnych.
-- Możesz [maszyn wirtualnych w zestawie skalowania odtworzenia z obrazu](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/reimage) , ale [nie do poszczególnych maszyn wirtualnych](https://docs.microsoft.com/rest/api/compute/virtualmachines).
-- Możesz [overprovision](https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning) zestawu skalowania maszyn wirtualnych do zwiększenia niezawodności i szybciej czas wdrażania. Nie można overprovision poszczególne maszyny wirtualne, chyba że napisany został kod niestandardowy do wykonania tej akcji.
+- Możesz [maszyn wirtualnych w zestawie skalowania odtworzenia z obrazu](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage) , ale [nie do poszczególnych maszyn wirtualnych](https://docs.microsoft.com/rest/api/compute/virtualmachines).
+- Możesz [overprovision](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning) zestawu skalowania maszyn wirtualnych do zwiększenia niezawodności i szybciej czas wdrażania. Nie można overprovision poszczególne maszyny wirtualne, chyba że napisany został kod niestandardowy do wykonania tej akcji.
 - Można określić [zasad uaktualniania](./virtual-machine-scale-sets-upgrade-scale-set.md) ułatwia wdrażanie uaktualnień na maszynach wirtualnych w zestawie skalowania. Z poszczególnymi maszynami wirtualnymi użytkownik musi organizować aktualizacje samodzielnie.
 
 ### <a name="vm-specific-features"></a>Funkcje specyficzne dla maszyny Wirtualnej

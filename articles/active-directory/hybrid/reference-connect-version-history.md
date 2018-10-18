@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f3b80af1dfaca921efbe656356e85aeb353a576b
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 93bd141b591cda5ec6ff1d9d042222070d3146e6
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315308"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390316"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje program Azure AD Connect z nowych funkcji i funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich odbiorców.
@@ -112,7 +112,7 @@ Nowe funkcje i ulepszenia
 
 ### <a name="fixed-issues"></a>Rozwiązane problemy 
 
-- W tej wersji aktualizacji instalacji programu SQL Server Express do programu SQL Server 2012 z dodatkiem SP4, oferujący, między innymi poprawki dla kilku luk w zabezpieczeniach.  Zobacz [tutaj](https://support.microsoft.com/en-ca/help/4018073/sql-server-2012-service-pack-4-release-information) Aby uzyskać więcej informacji na temat programu SQL Server 2012 z dodatkiem SP4.
+- W tej wersji aktualizacji instalacji programu SQL Server Express do programu SQL Server 2012 z dodatkiem SP4, oferujący, między innymi poprawki dla kilku luk w zabezpieczeniach.  Zobacz [tutaj](https://support.microsoft.com/help/4018073/sql-server-2012-service-pack-4-release-information) Aby uzyskać więcej informacji na temat programu SQL Server 2012 z dodatkiem SP4.
 - Przetwarzanie reguł synchronizacji: reguły synchronizacji ruchu wychodzącego sprzężenia z żadnego warunku Join powinna być cofnąć stosowane, jeśli reguła synchronizacji nadrzędna
 - Kilka poprawki dotyczące ułatwień dostępu zostały zastosowane do interfejsu użytkownika Synchronization Service Manager i edytorem reguły synchronizacji
 - Usługa Azure AD kreatora Connect: Wystąpił błąd podczas tworzenia konta łącznika AD po programu Azure AD Connect jest w grupie roboczej

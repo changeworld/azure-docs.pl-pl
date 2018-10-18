@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: abf9cd311af141a646c56f452ded77a914bc1d2f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 294353cfcfba617ab19e703f11f35402bcf7ea82
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093302"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387585"
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>Analizowanie danych serwisu Twitter przy użyciu technologii Hive w HDInsight
 Społecznościowych witryn sieci Web są jednym z głównych sił kierowania do przyjęcia danych big data. Publicznych interfejsów API dostarczonych przez witryn, takich jak Twitter, są przydatne źródło danych do analizowania i zrozumienia popularnych trendów.
@@ -72,7 +72,7 @@ Pierwszym krokiem do używają protokołu OAuth ma utworzyć nową aplikację w 
 
 **Aby utworzyć aplikację usługi Twitter**
 
-1. Zaloguj się do [ https://apps.twitter.com/ ](https://apps.twitter.com/). Kliknij przycisk **Zarejestruj się teraz** łącze, jeśli nie masz konta w serwisie Twitter.
+1. Zaloguj się do witryny [https://apps.twitter.com/](https://apps.twitter.com/). Kliknij przycisk **Zarejestruj się teraz** łącze, jeśli nie masz konta w serwisie Twitter.
 2. Kliknij przycisk **Utwórz nową aplikację**.
 3. Wprowadź **nazwa**, **opis**, **witryny sieci Web**. Można uzupełnić adres URL **witryny sieci Web** pola. W poniższej tabeli przedstawiono niektóre przykładowe wartości do użycia:
 
@@ -95,7 +95,7 @@ Wywołanie usługi sieci web, w tym samouczku Użyj programu Windows PowerShell.
 
 **Aby uzyskać tweetów**
 
-1. Otwórz program Windows PowerShell zintegrowane skryptów środowiska (ISE). (Na ekran początkowy systemu Windows 8, wpisz **PowerShell_ISE** a następnie kliknij przycisk **środowiska Windows PowerShell ISE**. Zobacz [uruchomić program Windows PowerShell w systemie Windows 8 i Windows](https://docs.microsoft.com/en-us/powershell/scripting/setup/starting-windows-powershell?view=powershell-6)
+1. Otwórz program Windows PowerShell zintegrowane skryptów środowiska (ISE). (Na ekran początkowy systemu Windows 8, wpisz **PowerShell_ISE** a następnie kliknij przycisk **środowiska Windows PowerShell ISE**. Zobacz [uruchomić program Windows PowerShell w systemie Windows 8 i Windows](https://docs.microsoft.com/powershell/scripting/setup/starting-windows-powershell?view=powershell-6)
 2. Skopiuj poniższy skrypt w okienku skryptu:
 
     ```powershell

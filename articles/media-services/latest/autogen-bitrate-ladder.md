@@ -1,43 +1,43 @@
 ---
-title: Użyj standardowego kodera w usłudze Azure Media Services do kodowania plików wideo przy użyciu drabinę automatycznie generowanej szybkości transmisji bitów | Dokumentacja firmy Microsoft
-description: W tym temacie pokazano, jak użyć standardowego kodera w usłudze Media Services do kodowania danych wejściowych wideo z drabinę automatycznie generowanej szybkości transmisji bitów, na podstawie rozdzielczość i szybkość transmisji bitów. Rozdzielczość i szybkość transmisji bitów nigdy nie zostanie przekroczony. Na przykład jeśli dane wejściowe są 720p w 3 MB/s, dane wyjściowe będą pozostawać w najlepszym 720p i rozpocznie stawkami niższa niż 3 MB/s.
+title: Użyj koder w warstwie standardowa w usłudze Azure Media Services do kodowania materiałów wideo za pomocą drabiny szybkości transmisji bitów z automatycznego generowania | Dokumentacja firmy Microsoft
+description: W tym temacie pokazano, jak używać kodera w warstwie standardowa w usłudze Media Services do kodowania danych wejściowych wystąpili drabiny szybkości transmisji bitów z wygenerowany automatycznie, na podstawie rozdzielczości i szybkości transmisji bitów. Rozdzielczości i szybkości transmisji bitów nigdy nie zostanie przekroczony. Na przykład jeśli dane wejściowe są 720p na 3 MB/s, dane wyjściowe będą pozostają w najlepszym 720p i rozpocznie się stawek niższy niż 3 MB/s.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 6e447c04f4a94f2fb534ecb0605595a90816431e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ec1b4b88e5b9639c3ee9debbd8ac7d48544344dc
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638300"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378962"
 ---
-#  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Kodowanie z drabinę automatycznie generowanej szybkości transmisji bitów
+#  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Kodowanie za pomocą drabiny szybkości transmisji bitów z wygenerowany automatycznie
 
 ## <a name="overview"></a>Przegląd
 
-W tym artykule opisano sposób używania standardowego kodera w usłudze Media Services do kodowania wejściowy plik wideo do drabinę automatycznie generowanej szybkości transmisji bitów (pary rozpoznawania szybkości transmisji bitów), na podstawie rozdzielczość i szybkość transmisji bitów. Ten koder wbudowanych ustawienie lub ustawienie wstępne, nigdy nie przekroczy rozdzielczość i szybkość transmisji bitów. Na przykład jeśli dane wejściowe są 720p 3 MB/s, dane wyjściowe w najlepszym pozostaje 720p i rozpocznie stawkami niższa niż 3 MB/s.
+W tym artykule wyjaśniono, jak używać kodera w warstwie standardowa w usłudze Media Services do zakodowania wejściowy plik wideo w drabiny szybkości transmisji bitów z automatycznego generowania (pary rozpoznawania szybkości transmisji bitów), na podstawie rozdzielczości i szybkości transmisji bitów. Koder wbudowanego ustawiania lub ustawienie wstępne, nigdy nie przekroczy rozdzielczości i szybkości transmisji bitów. Na przykład jeśli dane wejściowe są 720p 3 MB/s, dane wyjściowe w najlepszym pozostaje 720p i rozpocznie się stawek niższy niż 3 MB/s.
 
-### <a name="encoding-for-streaming"></a>Kodowanie używane do przesyłania strumieniowego
+### <a name="encoding-for-streaming"></a>Kodowanie przesyłania strumieniowego
 
-Jeśli używasz **AdaptiveStreaming** wstępnie zdefiniowane w **przekształcenie**, otrzymasz dane wyjściowe, które jest odpowiednie dla dostawy za pośrednictwem przesyłania strumieniowego protokołów, takich jak HLS i KRESKI. Korzystając z tego ustawienia wstępnego, usługa inteligentnie określa liczbę warstw wideo, aby wygenerować i w jaki szybkości transmisji bitów i rozdzielczości. Zawartość danych wyjściowych zawiera pliki MP4, gdzie kodowany w formacie AAC audio i wideo H.264 algorytmem Base64 nie jest przeplatana.
+Kiedy używasz **AdaptiveStreaming** wstępnie zdefiniowanych w **Przekształcanie**, otrzymasz dane wyjściowe, który jest odpowiedni do dostarczania za pośrednictwem protokołów, takich jak HLS i DASH przesyłania strumieniowego. Korzystając z tego ustawienia wstępnego, usługa inteligentnie określa liczbę warstw wideo, aby wygenerować i w jakich szybkości transmisji bitów i rozdzielczości. Zawartość danych wyjściowych zawiera pliki MP4, gdzie zakodowane w formacie AAC audio i wideo H.264 algorytmem Base64 nie ma przeplotu.
 
-Aby wyświetlić przykład sposobu używania tego ustawienia wstępnego, zobacz [strumienia pliku](stream-files-dotnet-quickstart.md).
+Aby zapoznać się z przykładem użycia tego ustawienia wstępnego, zobacz [Stream pliku](stream-files-dotnet-quickstart.md).
 
 ## <a name="output"></a>Dane wyjściowe
 
-W tej sekcji przedstawiono trzy przykłady warstw wideo dane wyjściowe generowane przez koder Media Services wyniku z kodowaniem **AdaptiveStreaming** wstępnie zdefiniowane. We wszystkich przypadkach dane wyjściowe zawierają tylko dźwięk plików MP4 z stereo audio zakodowane w 128 Kb/s.
+W tej sekcji przedstawiono trzy przykłady warstw wideo dane wyjściowe generowane przez usługi Media Services Encoder w warstwie wyniku kodowania z **AdaptiveStreaming** wstępnie zdefiniowane. We wszystkich przypadkach dane wyjściowe zawierają tylko dane audio plik MP4 z dźwiękiem stereo zakodowane w 128 Kb/s.
 
 ### <a name="example-1"></a>Przykład 1
-Źródło o wysokość "1080" i "29.970" szybkość klatek tworzy 6 warstwy wideo:
+Źródło o wysokości "1080" i "29.970" szybkość klatek generuje 6 warstwy wideo:
 
 |Warstwa|Wysokość|Szerokość|Szybkość transmisji bitów (KB/s)|
 |---|---|---|---|
@@ -49,7 +49,7 @@ W tej sekcji przedstawiono trzy przykłady warstw wideo dane wyjściowe generowa
 |6|180|320|380|
 
 ### <a name="example-2"></a>Przykład 2
-Źródło o wysokość "720" i "23.970" szybkość klatek tworzy 5 warstwy wideo:
+Źródło o wysokości "720" i "23.970" szybkość klatek generuje 5 warstwy wideo:
 
 |Warstwa|Wysokość|Szerokość|Szybkość transmisji bitów (KB/s)|
 |---|---|---|---|
@@ -60,7 +60,7 @@ W tej sekcji przedstawiono trzy przykłady warstw wideo dane wyjściowe generowa
 |5|180|320|320|
 
 ### <a name="example-3"></a>Przykład 3
-Źródło o wysokość "360" i "29.970" szybkość klatek tworzy 3 warstwy wideo:
+Źródło o wysokości "360" i "29.970" szybkość klatek generuje 3 warstwy wideo:
 
 |Warstwa|Wysokość|Szerokość|Szybkość transmisji bitów (KB/s)|
 |---|---|---|---|

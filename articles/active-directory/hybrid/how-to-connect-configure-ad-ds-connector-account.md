@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a14462ec5311a9b82293ba7f6e9ae76dc1972b36
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: a12549a52171afc1c95588f9a2b259829e170fcc
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49355504"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389959"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurowanie uprawnień konta usługi AD DS łącznika 
 
@@ -42,7 +42,7 @@ Poniższa tabela zawiera podsumowanie uprawnień wymaganych do obiektów usługi
 | Zapisywanie zwrotne grup |Przeczytaj, tworzenia, aktualizowania lub usuwania grupy obiektów zsynchronizowane **grup usługi Office 365**.  Aby uzyskać więcej informacji, zobacz [zapisu zwrotnego grup](how-to-connect-preview.md#group-writeback).|
 
 ## <a name="using-the-adsyncconfig-powershell-module"></a>Za pomocą modułu programu ADSyncConfig PowerShell 
-Moduł ADSyncConfig wymaga [zdalnego serwera Administracja narzędzia (RSAT) dla usług AD DS](https://docs.microsoft.com/en-us/windows-server/remote/remote-server-administration-tools) ponieważ zależy od modułu programu PowerShell usługi AD DS i narzędzia. Aby zainstalować narzędzia administracji zdalnej serwera dla usług AD DS, Otwórz okno programu Windows PowerShell z "Uruchom jako Administrator" i wykonaj: 
+Moduł ADSyncConfig wymaga [zdalnego serwera Administracja narzędzia (RSAT) dla usług AD DS](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools) ponieważ zależy od modułu programu PowerShell usługi AD DS i narzędzia. Aby zainstalować narzędzia administracji zdalnej serwera dla usług AD DS, Otwórz okno programu Windows PowerShell z "Uruchom jako Administrator" i wykonaj: 
 
 ``` powershell
 Install-WindowsFeature RSAT-AD-Tools 

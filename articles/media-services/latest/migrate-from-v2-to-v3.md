@@ -1,10 +1,10 @@
 ---
-title: Migrowanie z usługi Azure Media Services w wersji 2 do 3 | Dokumentacja firmy Microsoft
-description: W tym artykule opisano zmiany, które zostały wprowadzone w usłudze Azure Media Services w wersji 3 oraz przedstawiono różnice między dwoma wersjami.
+title: Migrowanie z usługi Azure Media Services v2 do v3 | Dokumentacja firmy Microsoft
+description: W tym artykule opisano zmiany, które zostały wprowadzone w usłudze Azure Media Services v3 i przedstawiono różnice między dwoma wersjami.
 services: media-services
 documentationcenter: na
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 tags: ''
 keywords: azure media services, stream, broadcast, live, offline
@@ -13,62 +13,59 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 06/12/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: a382af644d30f9f0ebb586273c982ef1766f50b0
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: a17bad5beb651aaa085c626296c200a00c30647e
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295687"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376366"
 ---
-# <a name="migrate-from-media-services-v2-to-v3"></a>Migrowanie z usługi Media Services w wersji 2 do 3
+# <a name="migrate-from-media-services-v2-to-v3"></a>Migrowanie z usługi Media Services v2 do v3
 
-> [!NOTE]
-> Najnowsza wersja usługi Azure Media Services jest w wersji zapoznawczej i może być nazywana wersją 3.
+W tym artykule opisano zmiany, które zostały wprowadzone w usłudze Azure Media Services (AMS) w wersji 3 i przedstawiono różnice między dwoma wersjami.
 
-W tym artykule opisano zmiany, które zostały wprowadzone w usłudze Azure Media Services (AMS) w wersji 3 oraz przedstawiono różnice między dwoma wersjami.
+## <a name="why-should-you-move-to-v3"></a>Dlaczego należy można przenieść do wersji 3?
 
-## <a name="why-should-you-move-to-v3"></a>Dlaczego należy przenieść v3?
+### <a name="api-is-more-approachable"></a>Interfejs API jest bardziej przystępne.
 
-### <a name="api-is-more-approachable"></a>Interfejs API jest bardziej przystępne
-
-*  w wersji 3 jest oparta na ujednoliconego powierzchni interfejsu API, który udostępnia funkcję zarówno zarządzanie i operacje, które są wbudowane w Menedżera zasobów Azure. Szablony usługi Azure Resource Manager może służyć do tworzenia i wdrażania transformacje, punkty końcowe przesyłania strumieniowego, LiveEvents i.
-* Otwórz interfejsu API (Swagger alias) dokument specyfikacja.
-* Zestawy SDK jest dostępna dla platformy .net, .net Core, Node.js, Python, Java, Ruby.
-* Integracja interfejsu wiersza polecenia platformy Azure.
+*  v3 opiera się na ujednoliconego powierzchni interfejsu API, który uwidacznia funkcje operacji oraz zarządzania oparta na usłudze Resource Manager. Szablony usługi Azure Resource Manager może służyć do tworzenia i wdrażania przekształceń, punkty końcowe przesyłania strumieniowego, LiveEvents i nie tylko.
+* Otwórz interfejs API (zwane również struktury Swagger) dokument specyfikacji.
+* Zestawy SDK dostępne dla platformy .net,.Net Core, Node.js, Python, Java, Ruby.
+* Integracja z interfejsu wiersza polecenia platformy Azure.
 
 ### <a name="new-features"></a>Nowe funkcje
 
-* Kodowanie obsługuje teraz HTTPS pozyskiwania (adres Url na podstawie danych wejściowych).
-* Transformacje stanowią nowość w wersji 3. Transformacja służy do udziału konfiguracje, tworzyć szablony Menedżera zasobów Azure i izolowanie ustawienia kodowania dla określonego klienta lub jednego dzierżawcy. 
-* Zasób może mieć wielu StreamingLocators z innymi ustawieniami dynamicznego tworzenia pakietów i dynamicznego szyfrowania.
-* Ochrona zawartości obsługuje wiele kluczowych funkcji. 
-* Podgląd LiveEvent obsługuje funkcję dynamicznego tworzenia pakietów i dynamicznego szyfrowania. Dzięki temu ochrony zawartości na opakowaniu podgląd oraz KRESKI i HLS.
-* LiveOuput użycie jest łatwiejsze niż starszy jednostki programu. 
-* Dodano obsługę RBAC na jednostkach.
+* Kodowanie obsługuje teraz protokół HTTPS pozyskiwania (wejście opartego na adresach Url).
+* Przekształcenia stanowią nowość w wersji 3. Przekształcenie umożliwia udostępnianie konfiguracji, tworzenia szablonów usługi Azure Resource Manager i izolować ustawienia kodowania, dla konkretnego klienta lub jednego dzierżawcy. 
+* Element zawartości może mieć wiele StreamingLocators z różnymi ustawieniami funkcji dynamicznego tworzenia pakietów i szyfrowania dynamicznego.
+* Usługa Content protection obsługuje funkcje wielu kluczy. 
+* Element LiveEvent (wersja zapoznawcza) obsługuje funkcję dynamicznego tworzenia pakietów i szyfrowania dynamicznego. Dzięki temu ochrony zawartości w wersji zapoznawczej, a także DASH i HLS pakowania.
+* LiveOuput jest prostsza w użyciu niż starsza jednostki programu. 
+* Dodano obsługę funkcji RBAC w jednostkach.
 
 ## <a name="changes-from-v2"></a>Zmiany w wersji 2
 
-* W wersji 3 usługi Media Services, szyfrowanie magazynu (szyfrowanie AES 256) jest tylko wykorzystywać dla zapewnienia zgodności z zasoby zostały utworzone za pomocą usługi Media Services w wersji 2. Co oznacza działa w wersji 3 z dotychczasowej pamięci masowej zaszyfrowany zasoby, ale nie zezwala na tworzenie nowych.
+* W Media Services v3 szyfrowania magazynu (szyfrowanie AES-256) jest tylko obsługiwane dla zapewnienia zgodności gdy Twoje zasoby zostały utworzone za pomocą usługi Media Services v2. Co oznacza v3 współpracuje z istniejącym magazynie zaszyfrowane zasoby, ale nie pozwoli na tworzenie nowych.
 
-    Dla zasobów tworzone za pomocą wersji 3, usługa Media Services obsługuje [usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) szyfrowania magazynu po stronie serwera.
+    Dla zasoby utworzone w wersji 3, Media Services obsługuje [usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) szyfrowanie magazynu po stronie serwera.
     
-* Zestawy SDK usługi Media całkowicie niezależna od zestawu SDK magazynu, który zapewnia większą kontrolę nad zestawu SDK usługi Magazyn używany i pozwala uniknąć problemów z kontroli wersji. 
-* W wersji 3 są wszystkie kodowania szybkości transmisji bitów w bitów na sekundę. To jest inny niż v2 REST, które ustawienia standardu Media Encoder Standard. Na przykład szybkości transmisji bitów w wersji 2 zostałaby określona jako 128, ale w wersji 3 byłoby 128000. 
+* Zestawy SDK usług Media całkowicie niezależna od zestawu SDK magazynu, co daje większą kontrolę nad zestawu SDK usługi Storage używane i eliminuje problemy z wersjonowaniem. 
+* W wersji 3 są wszystkie kodowania szybkości transmisji bitów w bitach na sekundę. Stanowi to odmianę v2 REST, które ustawienia wstępne usługi Media Encoder Standard. Na przykład szybkości transmisji bitów w wersji 2 będzie można określić jako 128, ale w wersji 3 byłoby 128000. 
 * IngestManifests AssetFiles, AccessPolicies, nie istnieją w wersji 3.
-* ContentKeys nie są już jednostki, właściwość StreamingLocator.
-* Zdarzenia techniczną siatka zastępuje NotificationEndpoints.
-* Zmieniono niektóre jednostki
+* Kluczy zawartości nie są już jednostki, właściwość StreamingLocator.
+* Obsługa siatki zdarzeń zastępuje NotificationEndpoints.
+* Niektóre jednostki zostały zmienione.
 
-  * JobOutput zastępuje zadanie teraz tylko część zadania.
-  * LiveEvent zastępuje kanału.
+  * JobOutput zastępuje zadanie teraz po prostu część zadania.
+  * Element LiveEvent zastępuje kanału.
   * LiveOutput zastępuje Program.
   * StreamingLocator zastępuje lokalizatora.
 
 ## <a name="code-changes"></a>Zmiany kodu
 
-### <a name="create-an-asset-and-upload-a-file"></a>Utworzenie elementu zawartości i przekazywanie pliku 
+### <a name="create-an-asset-and-upload-a-file"></a>Utworzenie elementu zawartości i przekaż plik 
 
 #### <a name="v2"></a>v2
 
@@ -94,7 +91,7 @@ var blob = container.GetBlockBlobReference(Path.GetFileName(fileToUpload));
 blob.UploadFromFile(fileToUpload);
 ```
 
-### <a name="submit-a-job"></a>Prześlij zadanie
+### <a name="submit-a-job"></a>Przesyłanie zadania
 
 #### <a name="v2"></a>v2
 
@@ -126,25 +123,25 @@ accountName, transformName, jobName,
 new Job {Input = jobInput, Outputs = jobOutputs});
 ```
 
-### <a name="publish-an-asset-with-aes-encryption"></a>Publikowanie elementu zawartości z szyfrowaniem AES 
+### <a name="publish-an-asset-with-aes-encryption"></a>Publikowanie elementu zawartości przy użyciu szyfrowania AES 
 
 #### <a name="v2"></a>v2
 
 1. Utwórz ContentKeyAuthorizationPolicyOption
 2. Utwórz ContentKeyAuthorizationPolicy
 3. Utwórz AssetDeliveryPolicy
-4. Tworzenie zasobów i przekazać zawartość lub przesyłania zadania i używanie zawartości wyjściowej
-5. Skojarz AssetDeliveryPolicy z zasobów
+4. Tworzenie elementu zawartości i przekazywać zawartość lub Prześlij zadanie i korzystają z danych wyjściowych elementu zawartości
+5. Kojarzenie AssetDeliveryPolicy z elementem zawartości
 6. Utwórz ContentKey
-7. Dołącz ContentKey do zasobów
+7. Dołącz ContentKey do zasobu
 8. Utwórz AccessPolicy
-9. Utwórz Lokalizator
+9. Tworzenie lokalizatora
 
 #### <a name="v3"></a>v3
 
-1. Tworzenie zasad klucza zawartości
-2. Tworzenie zasobu
-3. Przekaż zawartość lub Użyj zasobów jako JobOutput
+1. Tworzenie zasad kluczy zawartości
+2. Utwórz zasób
+3. Przekazywanie zawartości lub Użyj zasobów jako JobOutput
 4. Utwórz StreamingLocator
 
 ## <a name="next-steps"></a>Kolejne kroki

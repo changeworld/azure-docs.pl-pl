@@ -3,19 +3,19 @@ title: 'Samouczek: wykrywanie i oznaczanie ramką twarzy na obrazie — interfej
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku utworzysz aplikację dla systemu Windows, która korzysta z interfejsu API rozpoznawania twarzy do wykrywania i oznaczania ramką twarzy na obrazie.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.author: nolachar
-ms.openlocfilehash: 657c471761c36de5095763623210909308f55c2a
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.author: pafarley
+ms.openlocfilehash: ba850c1d4f9d8018f333662eead56f8e91b3fbd7
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162615"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340957"
 ---
 # <a name="tutorial-create-a-wpf-app-to-detect-and-frame-faces-in-an-image"></a>Samouczek: tworzenie aplikacji WPF wykrywającej i oznaczającej ramką twarze na obrazie
 
@@ -36,7 +36,7 @@ Ten samouczek przedstawia sposób wykonania następujących czynności:
 
 - Do uruchomienia przykładu potrzebny jest klucz subskrypcji. Klucze subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api).
 - Dowolna wersja programu [Visual Studio 2015 lub 2017](https://www.visualstudio.com/downloads/). Dla programu Visual Studio 2017 wymagany jest pakiet roboczy Programowanie aplikacji klasycznych. W tym samouczku używany jest program Visual Studio 2017 Community Edition.
-- Pakiet NuGet biblioteki klienta [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview). Pobieranie pakietu nie jest konieczne. Instrukcje instalacji znajdują się poniżej.
+- Pakiet NuGet zawierający bibliotekę klienta [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview). Pobieranie pakietu nie jest konieczne. Instrukcje instalacji znajdują się poniżej.
 
 ## <a name="create-the-visual-studio-solution"></a>Tworzenie rozwiązania programu Visual Studio
 

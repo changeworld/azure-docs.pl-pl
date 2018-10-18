@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: 9072a25b55bf461ad7dcc8393b98a66d87866d48
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: ae7eba9997c4f567eb7b07e23ab42c9ac7740698
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42060319"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388113"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Partycjonowanie usług reliable services usługi Service Fabric
 Ten artykuł zawiera wprowadzenie do podstawowych pojęć dotyczących partycjonowanie usług reliable services w usłudze Azure Service Fabric. Kodu źródłowego użytego w artykule jest dostępna również na [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
@@ -365,7 +365,7 @@ Ponieważ chcemy dosłownie ma jedną partycję na literę, możemy użyć 0 jak
 Kod źródłowy całego próbki jest dostępny w [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
 
 ## <a name="reliable-services-and-actor-forking-subprocesses"></a>Niezawodne usługi i aktora rozwidlenia procesy podrzędne
-Usługa Service Fabric nie obsługuje usług reliable services, a następnie elementy Reliable actors, tworzenia rozwidlenia procesy podrzędne. Dlaczego nie jest obsługiwane na przykład [CodePackageActivationContext](https://docs.microsoft.com/en-us/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) nie może służyć do rejestrowania nieobsługiwanych proces podrzędny i tokenów anulowania są wysyłane tylko do zarejestrowanych składników procesów; skutkuje szerokiej gamy problemów, takich jak błędy uaktualnień, gdy procesy podrzędne nie zamykaj po otrzymaniu token anulowania dla procesu nadrzędnego. 
+Usługa Service Fabric nie obsługuje usług reliable services, a następnie elementy Reliable actors, tworzenia rozwidlenia procesy podrzędne. Dlaczego nie jest obsługiwane na przykład [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) nie może służyć do rejestrowania nieobsługiwanych proces podrzędny i tokenów anulowania są wysyłane tylko do zarejestrowanych składników procesów; skutkuje szerokiej gamy problemów, takich jak błędy uaktualnień, gdy procesy podrzędne nie zamykaj po otrzymaniu token anulowania dla procesu nadrzędnego. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać informacji na temat pojęć usługi Service Fabric zobacz następujące tematy:

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: dba323b8cd57dd33c1477027f853cba3c95c8a07
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 40a8e2e6d994608d4aa26f6d9b3723c0ee27d3db
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092511"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387246"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Raport szacowania kosztów przez Planistę wdrażania usługi Azure Site Recovery 
 
@@ -143,7 +143,7 @@ Aby ręcznie dodać maszyny wirtualne:
 
 **Liczba operacji testowania odzyskiwania po awarii w roku**: liczba wykonań testowania odzyskiwania po awarii w ciągu roku. Wartość domyślna to cztery razy w roku. Okres możesz zmodyfikować dla konkretnych maszyn wirtualnych lub zastosować nową wartość dla wszystkich maszyn wirtualnych. Wprowadź nową wartość w górnym wierszu, a następnie wybierz pozycję **Zastosuj do wszystkich**. Łączny koszt odzyskiwania po awarii jest obliczany na podstawie liczby operacji testowania odzyskiwania po awarii w ciągu roku i czasu trwania poszczególnych okresów testowania odzyskiwania po awarii. 
 
-**Czas trwania każdej operacji testowania odzyskiwania po awarii (dni)**: czas trwania poszczególnych operacji testowania odzyskiwania po awarii. Wartość domyślna to 7 dni co 90 dni zgodnie z [korzyścią odzyskiwania po awarii w pakiecie Software Assurance](https://azure.microsoft.com/en-in/pricing/details/site-recovery). Okres możesz zmodyfikować dla konkretnych maszyn wirtualnych lub zastosować nową wartość dla wszystkich maszyn wirtualnych. Wprowadź nową wartość w górnym wierszu, a następnie wybierz pozycję **Zastosuj do wszystkich**. Łączny koszt odzyskiwania po awarii jest obliczany w oparciu o liczbę operacji testowania odzyskiwania po awarii w ciągu roku i czas trwania poszczególnych okresów testowania odzyskiwania po awarii.
+**Czas trwania każdej operacji testowania odzyskiwania po awarii (dni)**: czas trwania poszczególnych operacji testowania odzyskiwania po awarii. Wartość domyślna to 7 dni co 90 dni zgodnie z [korzyścią odzyskiwania po awarii w pakiecie Software Assurance](https://azure.microsoft.com/pricing/details/site-recovery). Okres możesz zmodyfikować dla konkretnych maszyn wirtualnych lub zastosować nową wartość dla wszystkich maszyn wirtualnych. Wprowadź nową wartość w górnym wierszu, a następnie wybierz pozycję **Zastosuj do wszystkich**. Łączny koszt odzyskiwania po awarii jest obliczany w oparciu o liczbę operacji testowania odzyskiwania po awarii w ciągu roku i czas trwania poszczególnych okresów testowania odzyskiwania po awarii.
  
 **Typ systemu operacyjnego**: typ systemu operacyjnego maszyny wirtualnej. Może to być system Windows lub Linux. Jeśli typ systemu operacyjnego to Windows, do tej maszyny wirtualnej można zastosować korzyść użycia hybrydowego platformy Azure. 
 

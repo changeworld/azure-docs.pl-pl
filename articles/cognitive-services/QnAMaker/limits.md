@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: efdcf57fb0f175be51e6b9f8e72e4a02fcbeb5f3
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 76024266a8ae3eb03e910e140184a07ae363e881
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162325"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49384960"
 ---
 # <a name="qna-maker-limits"></a>Limity usługi QnA Maker
 Pełną listę limitów przez narzędzie QnA Maker.
@@ -29,7 +29,7 @@ Pełną listę limitów przez narzędzie QnA Maker.
 |Maksymalna liczba opublikowanych baz wiedzy dozwolone (maksymalna liczba indeksów – 1 (zarezerwowane dla testu)|2|14|49|199|199|2999|
 
 ## <a name="extraction-limits"></a>Limity wyodrębniania
-* Maksymalna liczba plików, które można wyodrębnić i maksymalny rozmiar pliku: zobacz [ceny QnAMaker](https://azure.microsoft.com/en-in/pricing/details/cognitive-services/qna-maker/)
+* Maksymalna liczba plików, które można wyodrębnić i maksymalny rozmiar pliku: zobacz [ceny QnAMaker](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)
 * Maksymalna liczba łącz głębokiego, które mogą być przeszukiwane do wyodrębnienia znacznie ze stron HTML — często zadawane pytania: 20
 
 ## <a name="metadata-limits"></a>Limity metadanych
@@ -49,7 +49,7 @@ Ogólne ograniczenia dotyczące zawartości w bazie wiedzy knowledge base:
 * Długość nazwy pliku: 200
 * Obsługiwane formaty plików: "tsv", ".pdf", ".txt", ".docx", "xlsx".
 * Maksymalna liczba pytań alternatywnych: 100
-* Maksymalna liczba par odpowiedź na pytanie: zależy od [Warstwa usługi Azure Search](https://docs.microsoft.com/en-in/azure/search/search-limits-quotas-capacity#document-limits) wybrane 
+* Maksymalna liczba par odpowiedź na pytanie: zależy od [Warstwa usługi Azure Search](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits) wybrane 
 
 ## <a name="create-knowledge-base-call-limits"></a>Utwórz limity wywołania w bazie wiedzy Knowledge base:
 Reprezentują one tworzenie limity dla każdego działania w bazie wiedzy knowledge base. oznacza to kliknięcie *tworzenie bazy wiedzy* lub wywołanie interfejsu API CreateKnowledgeBase.

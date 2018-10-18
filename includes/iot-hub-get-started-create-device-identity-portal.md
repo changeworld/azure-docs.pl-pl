@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 4809881276da752ac6eb08773fb8be145dc5f4c7
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: ffd5da239f8e271a8c9b2aaf3f6d5fd9f885c79c
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49367038"
+ms.locfileid: "49400333"
 ---
 ## <a name="create-a-device-identity"></a>Tworzenie tożsamości urządzenia
 
@@ -21,19 +21,19 @@ W tej sekcji użyjesz [witryny Azure portal](https://portal.azure.com) do tworze
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 
-1. Wybierz **wszystkie zasoby** i Znajdź zasób usługi IoT hub.
+2. Wybierz **wszystkie zasoby** i Znajdź zasób usługi IoT hub.
 
-1. Po otwarciu zasobu usługi IoT hub kliknij **urządzeń IoT** narzędzia, a następnie kliknij przycisk **Dodaj** u góry. 
+3. Po otwarciu zasobu usługi IoT hub kliknij **urządzeń IoT** narzędzia, a następnie kliknij przycisk **Dodaj** u góry. 
 
     ![Tworzenie tożsamości urządzenia w portalu](./media/iot-hub-get-started-create-device-identity-portal/create-identity-portal.png)
 
-1. Podaj nazwę dla nowego urządzenia, takie jak **myDeviceId**i kliknij przycisk **Zapisz**. Ta akcja tworzy nową tożsamość urządzenia w Centrum IoT.
+4. Podaj nazwę dla nowego urządzenia, takie jak **myDeviceId**i kliknij przycisk **Zapisz**. Ta akcja tworzy nową tożsamość urządzenia w Centrum IoT.
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
    ![Dodaj nowe urządzenie](./media/iot-hub-get-started-create-device-identity-portal/create-a-device.png)
 
-1. Na liście urządzeń kliknij nowo utworzoną urządzenia i skopiować **parametry połączenia---klucza podstawowego** do późniejszego użycia.
+5. Na liście urządzeń kliknij nowo utworzoną urządzenia i skopiować **parametry połączenia---klucza podstawowego** do późniejszego użycia.
 
     ![Parametry połączenia urządzenia](./media/iot-hub-get-started-create-device-identity-portal/device-details.png)
 

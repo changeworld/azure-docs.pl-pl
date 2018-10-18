@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: magoedte
-ms.openlocfilehash: e75409e791c00dc0a5bec591aecfbaa019df8f81
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 5d9aa8e144109b41144bb8b09447b8701d04f87e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225166"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389993"
 ---
 # <a name="using-azure-monitor-for-vms-map-to-understand-application-components"></a>Za pomocą usługi Azure Monitor dla maszyn wirtualnych jest mapowany do zrozumienia składniki aplikacji
-Wyświetlanie odnalezionych aplikacji, którą można zaobserwować, składniki na Windows i Linux maszyn wirtualnych w środowisku platformy Azure na dwa sposoby, za pomocą usługi Azure Monitor w przypadku maszyn wirtualnych z maszyny wirtualnej, który jest bezpośrednio lub grupami maszyn wirtualnych za pomocą usługi Azure Monitor. 
+Wyświetlanie składniki odnalezionych aplikacji w Windows i Linux, maszyn wirtualnych działających na platformie Azure są środowiska można zaobserwować na dwa sposoby, za pomocą usługi Azure Monitor w przypadku maszyn wirtualnych z maszyny wirtualnej, który jest bezpośrednio lub grupami maszyn wirtualnych za pomocą usługi Azure Monitor. 
 
 Ten artykuł pomoże zrozumieć środowisko między dwóch perspektyw i jak za pomocą funkcji mapy. Aby uzyskać informacje o konfigurowaniu usługi Azure Monitor do maszyn wirtualnych, zobacz [włączyć usługi Azure Monitor dla maszyn wirtualnych](monitoring-vminsights-onboard.md).
 
@@ -107,7 +107,9 @@ Z usługi Azure Monitor funkcja mapy zapewnia globalny widok Twoich maszyn wirtu
 
 ![Omówienie mapy wielu maszyn wirtualnych w usłudze Azure Monitor](./media/monitoring-vminsights-maps/map-multivm-azure-monitor-01.png)
 
-Z **obszaru roboczego** selektor w górnej części strony, jeśli masz więcej niż jednego obszaru roboczego analizy dzienników, wybierz ten, który jest zintegrowany z rozwiązaniem i ma raportujących do niego maszyny wirtualne.  Następnie wybierz z **grupy** selektor, subskrypcji lub grupy zasobów do wyświetlania zestawu maszyn wirtualnych i ich zależności, pasujących do grupy, w określonym przedziale czasu.  Domyślnie mapy zawiera ostatnich 30 minut.  Za pomocą **TimeRange** selektor, możesz wyszukać zakresy czasu historycznych maksymalnie jedną godzinę, aby pokazać, jak zależności będzie wyglądał w przeszłości (na przykład podczas zdarzenia lub przed wystąpieniem zmiany).   
+Z **obszaru roboczego** selektor w górnej części strony, jeśli masz więcej niż jednym obszarze roboczym usługi Log Analytics wybierz obszar roboczy, który jest włączone za pomocą rozwiązania i ma raportujących do niego maszyny wirtualne. **Grupy** selektor zwróci subskrypcji, grupy zasobów [grup komputerów](../log-analytics/log-analytics-computer-groups.md), a usługi VM scale sets komputerów powiązanych z wybranym obszarem roboczym. Wybór tylko dotyczy funkcji mapy i nie jest przenoszone wydajności lub mapy.
+
+Domyślnie mapy zawiera ostatnich 30 minut. Za pomocą **TimeRange** selektor, możesz wyszukać zakresy czasu historycznych maksymalnie jedną godzinę, aby pokazać, jak zależności będzie wyglądał w przeszłości (na przykład podczas zdarzenia lub przed wystąpieniem zmiany).   
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się, jak korzystać z funkcji health, zobacz [Wyświetl kondycję maszyn wirtualnych platformy Azure](monitoring-vminsights-health.md), lub do identyfikowania wąskich gardeł i ogólnego użycia za pomocą wydajność maszyn wirtualnych, zobacz [widok usługi Azure Monitor wydajności maszyn wirtualnych](monitoring-vminsights-performance.md). 

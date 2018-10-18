@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 46df47bf145e5fc4a1846c33fdf0426840befdcd
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 10/17/2018
+ms.openlocfilehash: 61950a1afda1fefdfab95f6d63420387dc2e2ac7
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340723"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378639"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>SQL Database — często zadawane pytania (FAQ)
 
@@ -35,7 +35,7 @@ Nie. Zwykle wpływ poprawek nie jest operacja Jeśli możesz [stosować logikę 
 
 ## <a name="what-is-the-new-vcore-based-purchasing-model-for-azure-sql-database"></a>Co to jest nowy oparty na rdzeniach wirtualnych zakupu model usługi Azure SQL Database
 
-Nowy model zakupów stanowi dodatek do już istniejącego modelu bazującego na jednostkach DTU. Model oparty na rdzeniach wirtualnych jest przeznaczona do zapewnić klientom elastyczność, kontrola, przejrzystości i prostą metodę tłumaczenia wymagań obciążenia w chmurze lokalnie. Umożliwia także klienci mogą skalować swoje rsources zasobów obliczeniowych i magazynu, na podstawie ich potrzeby związane z obciążeniem. Pojedynczą bazę danych i opcje puli elastycznej za pomocą modelu rdzenia wirtualnego są również kwalifikuje się do 30 procent oszczędności w przypadku [korzyści z używania hybrydowej platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md). Zobacz [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) Aby uzyskać więcej informacji.
+Nowy model zakupów stanowi dodatek do już istniejącego modelu bazującego na jednostkach DTU. Model oparty na rdzeniach wirtualnych jest przeznaczona do zapewnić klientom elastyczność, kontrola, przejrzystości i prostą metodę tłumaczenia wymagań obciążenia w chmurze lokalnie. Umożliwia także klienci mogą skalować swoje rsources zasobów obliczeniowych i magazynu, na podstawie ich potrzeby związane z obciążeniem. Pojedynczą bazę danych i opcje puli elastycznej za pomocą modelu rdzenia wirtualnego są również kwalifikuje się do 30 procent oszczędności w przypadku [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md). Zobacz [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) Aby uzyskać więcej informacji.
 
 ## <a name="what-is-a-vcore"></a>Co to jest rdzeń wirtualny
 
@@ -51,11 +51,11 @@ Modele oparte na jednostkach DTU i rdzeniach wirtualnych będą nadal istnieć o
 
 ## <a name="how-should-i-choose-between-the-dtu-based-purchasing-model-vs-the-vcore-based-purchasing-model"></a>Jak wybrać między vs oparty na jednostkach DTU model zakupu modelu zakupu opartego na rdzeniach wirtualnych
 
-Jednostka transmisji danych (DTU) jest oparta na kombinacji pomiarów procesora, pamięci, odczytów i zapisów. Rozmiary mocą obliczeniową opartą na jednostkach DTU reprezentują wstępnie skonfigurowane pakiety zasobów dostosowane do różnych poziomów wydajności aplikacji. Klienci, którzy nie chcesz martwić się o podstawowe zasoby i preferujesz prostotę wstępnie skonfigurowanego pakietu podczas płacenia stałą każdego miesiąca może się okazać modelu opartego na jednostkach DTU bardziej odpowiednie do ich potrzeb. Jednak w przypadku klientów, którzy potrzebujesz szczegółowego wglądu w dostępne zasoby lub chcesz skalować je niezależnie, aby osiągnąć optymalną wydajność, model oparty na rdzeniach wirtualnych będzie najlepszym wyborem.  Ponadto jeśli klient ma aktywne Software Assurance (SA) dla programu SQL Server, ich można korzystać z ich istniejących inwestycji i Zaoszczędź do 30% z [korzyści z używania hybrydowej platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  Opcje w ramach zakupu modeli zapewniają korzyści w pełni zarządzanej usługi takie jak automatyczne kopie zapasowe, aktualizacje oprogramowania i poprawek.
+Jednostka transmisji danych (DTU) jest oparta na kombinacji pomiarów procesora, pamięci, odczytów i zapisów. Rozmiary mocą obliczeniową opartą na jednostkach DTU reprezentują wstępnie skonfigurowane pakiety zasobów dostosowane do różnych poziomów wydajności aplikacji. Klienci, którzy nie chcesz martwić się o podstawowe zasoby i preferujesz prostotę wstępnie skonfigurowanego pakietu podczas płacenia stałą każdego miesiąca może się okazać modelu opartego na jednostkach DTU bardziej odpowiednie do ich potrzeb. Jednak w przypadku klientów, którzy potrzebujesz szczegółowego wglądu w dostępne zasoby lub chcesz skalować je niezależnie, aby osiągnąć optymalną wydajność, model oparty na rdzeniach wirtualnych będzie najlepszym wyborem.  Ponadto jeśli klient ma aktywne Software Assurance (SA) dla programu SQL Server, ich można korzystać z ich istniejących inwestycji i Zaoszczędź do 30% z [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  Opcje w ramach zakupu modeli zapewniają korzyści w pełni zarządzanej usługi takie jak automatyczne kopie zapasowe, aktualizacje oprogramowania i poprawek.
 
 ## <a name="what-is-the-azure-hybrid-benefit-for-sql-server"></a>Co to jest korzyść użycia hybrydowego platformy Azure dla programu SQL Server
 
-[Korzyści z używania hybrydowej platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) pomaga zmaksymalizować wykorzystanie obecnych inwestycji licencjonowania i przyspieszyć ich migrację do chmury. Azure korzyść użycia hybrydowego dla programu SQL Server jest oparta na platformie Azure korzyści, która umożliwia użycie licencji programu SQL Server z pakietem Software Assurance zapłacić obniżonych stawek ("stawka podstawowa") w bazie danych SQL. Korzyść użycia hybrydowego platformy Azure dla programu SQL Server jest dostępna w publicznej wersji zapoznawczej modelu zakupu opartego na rdzeniach wirtualnych dla pojedynczych baz danych SQL Database i pul elastycznych. Można stosować tej korzyści, nawet jeśli jednostka SKU jest aktywna, ale należy pamiętać, że podstawowa stawka jest stosowana od momentu wybrania jej w witrynie Azure portal. Żadne środki nie będą naliczane wstecznie.
+[Korzyść użycia hybrydowego platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) pomaga zmaksymalizować wykorzystanie obecnych inwestycji licencjonowania i przyspieszyć ich migrację do chmury. Azure korzyść użycia hybrydowego dla programu SQL Server jest oparta na platformie Azure korzyści, która umożliwia użycie licencji programu SQL Server z pakietem Software Assurance zapłacić obniżonych stawek ("stawka podstawowa") w bazie danych SQL. Korzyść użycia hybrydowego platformy Azure dla programu SQL Server jest dostępna w publicznej wersji zapoznawczej modelu zakupu opartego na rdzeniach wirtualnych dla pojedynczych baz danych SQL Database i pul elastycznych. Można stosować tej korzyści, nawet jeśli jednostka SKU jest aktywna, ale należy pamiętać, że podstawowa stawka jest stosowana od momentu wybrania jej w witrynie Azure portal. Żadne środki nie będą naliczane wstecznie.
 
 ## <a name="are-there-dual-use-rights-with-azure-hybrid-benefit-for-sql-server"></a>Czy istnieją praw produktów podwójnego zastosowania dzięki korzyści użycia hybrydowego platformy Azure dla programu SQL Server
 
@@ -127,13 +127,13 @@ Tak, można z łatwością przekształcić bazę danych do dowolnego celu obsłu
 
 ## <a name="can-i-upgrade-or-downgrade-between-the-general-purpose-and-business-critical-service-tiers"></a>Czy mogę przełączać się między warstwami usług ogólnego przeznaczenia i krytyczne dla działania firmy
 
-Tak, z pewnymi ograniczeniami. Lokalizacji docelowej jednostki SKU musi spełniać maksymalna bazy danych lub rozmiaru puli elastycznej, skonfigurowanego dla istniejącego wdrożenia. Jeśli używasz [korzyści z używania hybrydowej platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md), jednostki SKU krytycznej firmy jest dostępna tylko dla klientów z licencjami Enterprise Edition. Tylko w przypadku klientów, którzy przeprowadzili migracji ze środowiska lokalnego do ogólnego przeznaczenia, za pomocą korzyści użycia hybrydowego platformy Azure dla programu SQL Server z licencjami Enterprise Edition można uaktualnić do krytyczne dla działania firmy. Aby uzyskać szczegółowe informacje, zobacz [co to są określone prawa używania hybrydowej platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md)?
+Tak, z pewnymi ograniczeniami. Lokalizacji docelowej jednostki SKU musi spełniać maksymalna bazy danych lub rozmiaru puli elastycznej, skonfigurowanego dla istniejącego wdrożenia. Jeśli używasz [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md), jednostki SKU krytycznej firmy jest dostępna tylko dla klientów z licencjami Enterprise Edition. Tylko w przypadku klientów, którzy przeprowadzili migracji ze środowiska lokalnego do ogólnego przeznaczenia, za pomocą korzyści użycia hybrydowego platformy Azure dla programu SQL Server z licencjami Enterprise Edition można uaktualnić do krytyczne dla działania firmy. Aby uzyskać szczegółowe informacje, zobacz [co to są określone prawa korzyść użycia hybrydowego platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md)?
 
 Ta konwersja nie powoduje przestojów i mogą być inicjowane przy użyciu witryny Azure portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure, T-SQL lub interfejsu API REST. Zobacz [zarządzanie pojedynczymi bazami danych](sql-database-single-database-scale.md) i [Zarządzanie elastycznymi pulami](sql-database-elastic-pool.md).
 
 ## <a name="i-am-using-a-premium-rs-database-that-will-not-be-generally-available---can-i-upgrade-it-to-a-new-tier-and-achieve-a-similar-priceperformance-benefit"></a>Korzystam z bazy danych Premium RS nie będzie ogólnie dostępna — można uaktualnić ją do nowej warstwy i osiągnięcia korzyści podobnych ceny do wydajności
 
-Ponieważ model rdzenia wirtualnego umożliwia niezależną kontrolę nad ilość zainicjowanych zasobów obliczeniowych i magazynu, można efektywniej zarządzać związane z nimi koszty, ułatwiając atrakcyjny miejsce docelowe dla baz danych Premium RS. Ponadto [korzyści z używania hybrydowej platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) zapewnia znaczny rabat w wysokości, gdy model oparty na rdzeniach wirtualnych jest używany.
+Ponieważ model rdzenia wirtualnego umożliwia niezależną kontrolę nad ilość zainicjowanych zasobów obliczeniowych i magazynu, można efektywniej zarządzać związane z nimi koszty, ułatwiając atrakcyjny miejsce docelowe dla baz danych Premium RS. Ponadto [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) zapewnia znaczny rabat w wysokości, gdy model oparty na rdzeniach wirtualnych jest używany.
 
 ## <a name="how-often-can-i-adjust-the-resources-per-pool"></a>Jak często można dostosować zasoby na pulę
 

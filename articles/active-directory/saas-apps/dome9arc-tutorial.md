@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 934520764749b5abce9aefe22b8eb9a5d8e490f2
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 0b6730d6c365484dc19273069785e6824218113e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746495"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387858"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dome9-arc"></a>Samouczek: Integracja usługi Azure Active Directory z Dome9 łuk
 
@@ -150,7 +150,7 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
     d. Kliknij przycisk **OK**.
     
     > [!NOTE]
-    > Skontaktuj się z tym [łącze](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-enterprise-app-role-management) na temat sposobu konfigurowania i konfigurowanie ról dla aplikacji.
+    > Skontaktuj się z tym [łącze](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) na temat sposobu konfigurowania i konfigurowanie ról dla aplikacji.
 
 7. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 

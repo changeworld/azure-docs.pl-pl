@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: abfe7f0b39463a842b1eb167661af7da90bc9eca
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bed0c15504323aba4ebf680273870720a8ff833a
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980852"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388316"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Tworzenie alertów metryk dla dzienników w usłudze Azure Monitor  
 
@@ -58,11 +58,11 @@ Szczegółowe informacje krok po kroku i przykłady — zobacz [creating and man
 - Sygnał, wybrany dla alertu metryki dla wybranych *obszaru roboczego usługi Log Analytics* typu **metryki**
 - Filtr dla określonych warunków lub zasobów przy użyciu filtrów wymiaru; metryki dla dzienników są wielowymiarowych
 - Podczas konfigurowania *logiki sygnału*, pojedynczy alert można utworzyć na wiele wartości wymiaru (np. komputer)
-- Jeśli **nie** przy użyciu witryny Azure portal do tworzenia alertu metryki dla wybranych *obszaru roboczego usługi Log Analytics*; a następnie użytkownik będzie musiał ręcznie najpierw utworzyć regułę jawnej konwersji danych dzienników na metrykę przy użyciu [Usługa azure Monitor — reguły zaplanowanego zapytania](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules
+- Jeśli **nie** przy użyciu witryny Azure portal do tworzenia alertu metryki dla wybranych *obszaru roboczego usługi Log Analytics*; a następnie użytkownik będzie musiał ręcznie najpierw utworzyć regułę jawnej konwersji danych dzienników na metrykę przy użyciu [Usługa azure Monitor — reguły zaplanowanego zapytania](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules
 ).
 
 > [!NOTE]
-> Podczas tworzenia alertu metryki dla obszaru roboczego usługi Log Analytics w witrynie Azure portal — odpowiadający reguły do konwertowania danych dziennika do metryk za pośrednictwem [usługi Azure Monitor — zaplanowane reguł zapytań](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules) jest tworzony automatycznie w tle,  *bez potrzeby interwencji użytkownika lub akcji*. Aby alert dotyczący metryki na potrzeby tworzenia dzienników przy użyciu środków innych niż witryna Azure portal, zobacz [szablonu zasobów dla alertów metryk, dzienników](#resource-template-for-metric-alerts-for-logs) sekcji, na przykład sposobu tworzenia dziennika ScheduledQueryRule na podstawie reguły konwersji metryki przed alertu metryki Tworzenie — jeszcze nie będzie żadnych danych dla alertu metryki na dzienniki utworzone.
+> Podczas tworzenia alertu metryki dla obszaru roboczego usługi Log Analytics w witrynie Azure portal — odpowiadający reguły do konwertowania danych dziennika do metryk za pośrednictwem [usługi Azure Monitor — zaplanowane reguł zapytań](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) jest tworzony automatycznie w tle,  *bez potrzeby interwencji użytkownika lub akcji*. Aby alert dotyczący metryki na potrzeby tworzenia dzienników przy użyciu środków innych niż witryna Azure portal, zobacz [szablonu zasobów dla alertów metryk, dzienników](#resource-template-for-metric-alerts-for-logs) sekcji, na przykład sposobu tworzenia dziennika ScheduledQueryRule na podstawie reguły konwersji metryki przed alertu metryki Tworzenie — jeszcze nie będzie żadnych danych dla alertu metryki na dzienniki utworzone.
 
 ## <a name="resource-template-for-metric-alerts-for-logs"></a>Zasób szablonu dla alertów dotyczących metryk dla dzienników
 Jak wspomniano wcześniej, proces tworzenia alertów dotyczących metryk z dzienników jest dwa filtrowania:

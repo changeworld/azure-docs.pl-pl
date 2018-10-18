@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: d0f2669610f2086c29d52d95c9796e6a2939622e
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 9d2fa8ec96f629ff85d785897398bc9af52ab3bc
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985449"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165763"
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Przykłady kodu i programu PowerShell na potrzeby współpracy B2B w usłudze Azure Active Directory
 
@@ -34,14 +34,14 @@ Można zbiorczo zaprosić do organizacji użytkowników zewnętrznych za pomocą
 
 3. Zaloguj się do dzierżawy
 
-    ```
+    ```powershell
     $cred = Get-Credential
     Connect-AzureAD -Credential $cred
     ```
 
 4. Uruchom polecenie cmdlet programu PowerShell
 
-  ```
+  ```powershell
   $invitations = import-csv C:\data\invitations.csv
   $messageInfo = New-Object Microsoft.Open.MSGraph.Model.InvitedUserMessageInfo
   $messageInfo.customizedMessageBody = "Hey there! Check this out. I created an invitation through PowerShell"
@@ -56,7 +56,7 @@ To polecenie cmdlet wysyła zaproszenie na adresy e-mail podane w pliku invitati
 ## <a name="code-sample"></a>Przykład kodu
 Poniżej pokazano, jak wywoływać interfejs API zaproszenia w trybie „tylko dotyczący aplikacji”, aby pobrać adres URL realizacji dla zasobu, do którego zapraszasz użytkownika B2B. Celem jest wysłanie niestandardowej wiadomości e-mail z zaproszeniem. Wiadomość e-mail może zostać utworzona za pomocą klienta HTTP, więc można dostosować jej wygląd oraz wysłać za pośrednictwem interfejsu API programu Graph.
 
-```
+```csharp
 namespace SampleInviteApp
 {
     using System;

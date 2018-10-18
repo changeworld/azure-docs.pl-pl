@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: acd9d9ff0b97bf0eaaca2f8ae9a6909e18e320d6
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ad21754b3f55a0d14bb43a2898d5bd4b8b8150ae
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47168182"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385910"
 ---
 # <a name="tutorial-luis-bot-in-nodejs"></a>Samouczek: bot usługi LUIS na platformie Node.js
 Przy użyciu platformy Node.js można utworzyć czatbot zintegrowany z usługą Language Understanding (LUIS). Ten bot używa aplikacji HomeAutomation do implementacji rozwiązania bota. Bot jest kompilacją aplikacji [bot aplikacji internetowej](https://docs.microsoft.com/azure/bot-service/) na platformie Azure z [Bot Framework w wersji](https://github.com/Microsoft/botbuilder-js) 4.
@@ -65,11 +65,11 @@ https://github.com/Microsoft/BotBuilder-Samples/tree/v4/javascript_nodejs/12.nlp
     |Język zestawu SDK|Język programowania bota|**Node.js**|
     |Bot echo/podstawowy|Typ bota|**Bot podstawowy**|
     
-5. Wybierz pozycję **Utwórz**. To tworzy i wdraża usługę bota na platformie Azure. W ramach tego procesu jest tworzona nowa aplikacja usługi LUIS o nazwie `luis-nodejs-bot-XXXX`. Ta nazwa zależy od nazwy bota i aplikacji w poprzedniej sekcji.
+5. Wybierz pozycję **Utwórz**. To powoduje utworzenie i wdrożenie usługi bota na platformie Azure. W ramach tego procesu jest tworzona nowa aplikacja usługi LUIS o nazwie `luis-nodejs-bot-XXXX`. Ta nazwa zależy od nazwy bota i aplikacji w poprzedniej sekcji.
 
     [ ![Tworzenie bota aplikacji internetowej](./media/bfv4-nodejs/create-web-app-service.png) ](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
 
-6. Pozostaw tę kartę przeglądarki otwartą. Aby wykonać inne kroki w portalu LUIS otwórz nową kartę przeglądarki. Po wdrożeniu nowej usługi bot przejdź do następnej sekcji.
+6. Pozostaw tę kartę przeglądarki otwartą. Aby wykonać inne kroki w portalu LUIS otwórz nową kartę przeglądarki. Po wdrożeniu nowej usługi bota przejdź do następnej sekcji.
 
 ## <a name="add-prebuilt-domain-to-model"></a>Dodawanie wstępnie utworzonej domeny do modelu
 W ramach wdrożenia usługi bota jest tworzona nowa aplikacja usługi LUIS z intencjami i przykładowymi wypowiedziami. Bot zapewnia mapowanie intencji do nowej aplikacji LUIS dla następujących intencji: 
@@ -91,7 +91,7 @@ Dodaj wstępnie utworzoną aplikację HomeAutomation do modelu w celu obsługi w
 6. Wybierz opcję **Train** (Szkol) w prawym górnym menu.
 7. Wybierz opcję **Publish** (Opublikuj) w prawym górnym menu. 
 
-    Aplikacja utworzona przez usługę Azure Bot ma teraz nowe intencje:
+    Aplikacja utworzona przez usługę Azure Bot teraz ma nowe intencje:
 
     |Nowe intencje bota podstawowego|przykładowa wypowiedź|
     |--|--|
@@ -350,9 +350,9 @@ W pliku `bot.js` dodaj kod do obsługi nowych intencji.
 ## <a name="learn-more-about-bot-framework"></a>Dowiedz się więcej na temat struktury Bot Framework
 Usługa Azure Bot używa zestawu SDK Bot Framework. Dowiedz się więcej na temat zestawu SDK i struktury Bot Framework:
 
-* Dokumentacja [usługi Azure Bot Service](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0) w wersji 4
+* Dokumentacja [usługi Azure Bot Service](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0) w wersji 4
 * [Przykłady Bot Builder](https://github.com/Microsoft/botbuilder-samples)
-* [Zestaw SDK Bot Builder](https://docs.microsoft.com/en-us/javascript/api/botbuilder-core/?view=botbuilder-ts-latest)
+* [Zestaw SDK Bot Builder](https://docs.microsoft.com/javascript/api/botbuilder-core/?view=botbuilder-ts-latest)
 * [Narzędzia Bot Builder](https://github.com/Microsoft/botbuilder-tools):
 
 ## <a name="next-steps"></a>Następne kroki

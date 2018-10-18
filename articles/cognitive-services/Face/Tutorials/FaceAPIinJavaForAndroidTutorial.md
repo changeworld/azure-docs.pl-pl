@@ -3,19 +3,19 @@ title: 'Samouczek: wykrywanie i oznaczanie ramką twarzy na obrazie — interfej
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku utworzysz prostą aplikację dla systemu Android, która korzysta z interfejsu API rozpoznawania twarzy do wykrywania i oznaczania ramką twarzy na obrazie.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: tutorial
 ms.date: 07/12/2018
-ms.author: nolachar
-ms.openlocfilehash: 50185588b77f01bced9462d5fd1ad67bb5de6e08
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: pafarley
+ms.openlocfilehash: 08344e21d4f425a021bdefe840390ede8b3fb01e
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129730"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342385"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Samouczek: tworzenie aplikacji dla systemu Android wykrywającej i oznaczającej ramką twarze na obrazie
 

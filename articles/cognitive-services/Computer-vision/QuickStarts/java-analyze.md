@@ -3,19 +3,19 @@ title: 'Szybki start: analizowanie obrazu zdalnego — REST, Java — przetwarza
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start przeprowadzisz analizę obrazu za pomocą interfejsu API przetwarzania obrazów w języku C#.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 901fb2c592d78bf26e36e0ecd0417ee995bc5771
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 6dae10262c40a127cb24dd40f0d5389c0cdd7c20
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631093"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340022"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-java-in-computer-vision"></a>Szybki start: analizowanie obrazu zdalnego przy użyciu interfejsu API REST i języka Java podczas przetwarzania obrazów
 
@@ -54,10 +54,10 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 
 1. Zastąp klasę publiczną `Main` poniższym kodem, a następnie w odpowiednich miejscach wprowadź następujące zmiany kodu:
    1. Zastąp wartość `subscriptionKey` kluczem subskrypcji.
-   1. W razie potrzeby zastąp wartość `uriBase` adresem URL punktu końcowego dla metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) z regionu platformy Azure, z którego uzyskano klucze subskrypcji.
+   1. W razie potrzeby zastąp wartość `uriBase` adresem URL punktu końcowego dla metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) w regionie świadczenia usługi Azure, z którego uzyskano klucze subskrypcji.
    1. Opcjonalnie zastąp wartość `imageToAnalyze` adresem URL innego obrazu, który chcesz analizować.
 1. Zapisz, a następnie skompiluj projekt języka Java.
-1. Jeśli używasz środowiska IDE, uruchom polecenie `Main`. W przeciwnym razie otwórz okno wiersza polecenia, a następnie użyj polecenia `java`, aby uruchomić skompilowaną klasę. Na przykład `java Main`.
+1. Jeśli używasz środowiska IDE, uruchom klasę `Main`. W przeciwnym razie otwórz okno wiersza polecenia, a następnie użyj polecenia `java`, aby uruchomić skompilowaną klasę. Na przykład `java Main`.
 
 ```java
 public class Main {

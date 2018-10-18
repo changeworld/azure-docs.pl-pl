@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 8a36053fe3189a72c33ea14445a6b064260eec01
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: c9252380581e77049e9464316ca77cc135f784b6
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318320"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377604"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Kopiowanie danych z usługi Office 365 na platformie Azure przy użyciu usługi Azure Data Factory (wersja zapoznawcza) 
 
@@ -125,7 +125,7 @@ Aby skopiować dane z usługi Office 365, obsługiwane są następujące właśc
 |:--- |:--- |:--- |
 | type | Właściwość typu elementu dataset musi być równa: **Office365Table** | Yes |
 | tableName | Nazwa zestawu danych w celu wyodrębnienia z usługi Office 365. Zapoznaj się [tutaj](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#datasets) listę zestawów danych w usłudze Office 365 dostępne do wyodrębnienia. | Yes |
-| Predykat | Wyrażenie predykatu, który może służyć do filtrowania określonych wierszy w celu wyodrębnienia z usługi Office 365.  Zapoznaj się tutaj, aby dowiedzieć się, kolumny, które mogą służyć do filtrowania przewidywania dla każdej tabeli i format wyrażenia filtru. | Nie<br>(Jeśli nie dostarczono żadnych predykat, wartość domyślna to do wyodrębniania danych w ciągu ostatnich 30 dni) |
+| Predykat | Wyrażenie predykatu, który może służyć do filtrowania określonych wierszy w celu wyodrębnienia z usługi Office 365.  Zapoznaj się [tutaj](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#filters) Aby dowiedzieć się, kolumny, które mogą służyć do filtrowania przewidywania dla każdej tabeli i format wyrażenia filtru. | Nie<br>(Jeśli nie dostarczono żadnych predykat, wartość domyślna to do wyodrębniania danych w ciągu ostatnich 30 dni) |
 
 **Przykład**
 

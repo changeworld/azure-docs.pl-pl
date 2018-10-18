@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2018
 ms.author: barclayn
-ms.openlocfilehash: 0addad1db4d9f897736a7793c5489897bca2cd38
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 32174af9edcd6da7b87b6b38c0824fa7f07aa8f9
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093430"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49384891"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Zabezpieczenia usługi i technologie dostępne na platformie Azure
 
@@ -48,7 +48,7 @@ Wraz z upływem czasu ta lista zmiany i rozwój tak, jak platforma Azure zrobi. 
 | [Sygnatury dostępu współdzielonego usługi Azure Storage](../storage/common/storage-dotnet-shared-access-signature-part-1.md)|Sygnatury dostępu współdzielonego zapewnia delegowany dostęp do zasobów na koncie magazynu.  |
 |[Klucze konta magazynu platformy Azure](../storage/common/storage-create-storage-account.md)| Metody kontroli dostępu dla usługi Azure storage, który jest używany do uwierzytelniania podczas uzyskiwania dostępu do konta magazynu. |
 |[Udziały plików platformy Azure przy użyciu protokołu SMB 3.0 szyfrowania](../storage/files/storage-files-introduction.md)|Technologia zabezpieczeń sieci, która umożliwia automatyczne szyfrowanie protokół udostępniania plików bloku komunikatów serwera (SMB) w sieci. |
-|[Analityka usługi Azure Storage](https://docs.microsoft.com/en-us/rest/api/storageservices/Storage-Analytics)| Technologia rejestrowania i metryk, generowania danych na koncie magazynu. |
+|[Analityka usługi Azure Storage](https://docs.microsoft.com/rest/api/storageservices/Storage-Analytics)| Technologia rejestrowania i metryk, generowania danych na koncie magazynu. |
 
 <!------>
 
@@ -58,8 +58,8 @@ Wraz z upływem czasu ta lista zmiany i rozwój tak, jak platforma Azure zrobi. 
 | [Azure&nbsp;SQL&nbsp;zapory](../sql-database/sql-database-firewall-configure.md)|Funkcja kontroli dostępu do sieci, która chroni przed atakami sieciowymi wykorzystującymi do bazy danych. |
 |[Azure&nbsp;SQL&nbsp;komórki&nbsp;poziomu szyfrowania](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)| Technologia zabezpieczeń bazy danych, która zapewnia szyfrowanie na poziomie szczegółowym.  |
 | [Azure&nbsp;SQL&nbsp;szyfrowanie połączenia](../sql-database/sql-database-control-access.md)|Aby zapewnić bezpieczeństwo, usługa SQL Database kontroluje dostęp za pomocą reguł zapory, ograniczając adresy IP dla połączeń, stosując mechanizmy uwierzytelniania wymagające potwierdzenia tożsamości przez użytkowników oraz mechanizmy autoryzacji ograniczające użytkowników do określonych działań i danych. |
-| [Usługi Azure SQL zawsze szyfrowania](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|Ochrona poufnych danych, takich jak numery kart kredytowych czy narodowe numery identyfikacyjne (na przykład USA numery ubezpieczenia społecznego), przechowywane w bazach danych Azure SQL Database lub SQL Server.  |
-| [Azure&nbsp;SQL&nbsp;Transparent Data Encryption](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| Funkcja zabezpieczeń bazy danych, która szyfruje magazyn całą bazę danych. |
+| [Usługi Azure SQL zawsze szyfrowania](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|Ochrona poufnych danych, takich jak numery kart kredytowych czy narodowe numery identyfikacyjne (na przykład USA numery ubezpieczenia społecznego), przechowywane w bazach danych Azure SQL Database lub SQL Server.  |
+| [Azure&nbsp;SQL&nbsp;Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| Funkcja zabezpieczeń bazy danych, która szyfruje magazyn całą bazę danych. |
 | [Usługa Azure SQL Database inspekcji](../sql-database/sql-database-auditing.md)|Baza danych inspekcji funkcji, która śledzi zdarzenia bazy danych i zapisuje je do inspekcji logowania na koncie magazynu platformy Azure.  |
 
 

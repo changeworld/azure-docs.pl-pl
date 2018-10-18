@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 0d68c88bdad63bb022babcc4a6ee4ee7c59ce58a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 696c331111fef9d6fc238b733e15230ab3ee1e56
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158458"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378020"
 ---
 # <a name="which-version-of-azure-mfa-is-right-for-my-organization"></a>Która wersja usługi Azure MFA jest odpowiednia dla mojej organizacji?
 
@@ -61,7 +61,7 @@ Poniższa tabela zawiera zestawienie funkcji dostępnych w przypadku użycia us�
 | Kod weryfikacyjny w aplikacji mobilnej jako drugi składnik | ● | ● |
 | Połączenie telefoniczne jako drugi składnik | ● | ● |
 | Jednokierunkowa wiadomość SMS jako drugi składnik | ● | ● |
-| Tokeny sprzętowe jako drugi składnik | | ● |
+| Tokeny sprzętowe jako drugi składnik | ● (publiczna wersja zapoznawcza) | ● |
 | Hasła aplikacji dla usługi w przypadku klientów usługi Office 365, którzy nie obsługują usługi MFA | ● | |
 | Kontrola administracyjna nad metodami uwierzytelniania | ● | ● |
 | Tryb numeru PIN | | ● |

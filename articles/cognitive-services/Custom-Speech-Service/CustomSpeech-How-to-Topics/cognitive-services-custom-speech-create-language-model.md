@@ -1,24 +1,24 @@
 ---
-title: 'Samouczek: tworzenie modelu języka — usługa Custom Speech Service'
-titlesuffix: Azure Cognitive Services
-description: Z tego samouczka dowiesz się, jak utworzyć model języka za pomocą usługi Custom Speech Service.
+title: Samouczek dotyczący tworzenia modelu językowego za pomocą usługi Custom Speech Service — Microsoft Cognitive Services | Microsoft Docs
+description: Z tego samouczka dowiesz się, jak utworzyć model językowy za pomocą usługi Custom Speech Service w usługach Microsoft Cognitive Services.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
 ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: b7216688efb6a2124748cd08111d57b122085143
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 6af2da9ffc7678a58fcf1c647ba89c586066d2ad
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219320"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339100"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>Samouczek: tworzenie niestandardowego modelu językowego
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
 
 W ramach tego samouczka utworzysz niestandardowy model językowy dla zapytań tekstowych lub wypowiedzi, których w formie tekstu mówionego lub pisanego spodziewasz się od użytkowników w aplikacji. Następnie możesz użyć tego niestandardowego modelu językowego w połączeniu z istniejącymi najnowocześniejszymi modelami mowy firmy Microsoft, aby dodać interakcję głosową do swojej aplikacji.
 

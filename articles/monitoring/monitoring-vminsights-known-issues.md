@@ -12,19 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/03/2018
+ms.date: 10/15/2018
 ms.author: magoedte
-ms.openlocfilehash: 43000993c6a26ef8d44e941f5235ebad7aeee66f
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 6d1f1d1ae07ec32262f655fd6ed7205a70e252f4
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248067"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385095"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms"></a>Znane problemy z usługą Azure Monitor dla maszyn wirtualnych
 
 Następujące znane problemy z funkcją usługi Azure Monitor kondycji dla maszyn wirtualnych:
 
+- Funkcja kondycji jest onbaorded do wszystkich maszyn wirtualnych połączonych z obszarem roboczym usługi Log Analytics, nawet w przypadku dołączania jest inicjowane i ukończyć z jednej maszyny Wirtualnej.
 - Jeśli Maszynę wirtualną platformy Azure nie istnieje więcej, ponieważ został usunięty albo usunięta, jej pojawi się w widoku listy maszyn wirtualnych przez 3 – 7 dni. Ponadto kliknięcie stan usunięto ani nie usunięto maszyny Wirtualnej może uruchomić **Diagnostyka kondycji** widok, który następnie przechodzi w pętli ładowania. Wybierając nazwę usuniętej maszyny Wirtualnej spowoduje uruchomienie bloku komunikat informujący, że maszyna wirtualna została usunięta.
 - W tej wersji nie można zmodyfikować okres czasu i częstotliwość kryteria kondycji. 
 - Nie można wyłączyć kryteria kondycji. 

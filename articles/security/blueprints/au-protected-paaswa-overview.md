@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: d16bb218526a6768ed9f8a6babf5feb186a2b225
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: bd6ac05da5f60fdbe86897ce03ccd6646e6bf191
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321601"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390266"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Zabezpieczenia platformy Azure i zgodności planu — aplikacja sieci Web PaaS dla Australii CHRONIONA
 
@@ -201,7 +201,7 @@ Następujące usługi Log Analytics [rozwiązań do zarządzania](https://docs.m
 
 **Usługa Azure Monitor**: [usługi Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) ułatwia użytkownikom śledzenia wydajności, zapewniania bezpieczeństwa i identyfikowania trendów, umożliwiając organizacjom inspekcję, tworzyć alerty i archiwizować dane, w tym śledzenia wywołań interfejsu API w ich systemie Azure zasoby.
 
-Usługa Azure Network Watcher: [Azure Network Watcher] 9 https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview) udostępnia narzędzia umożliwiające monitorowanie, diagnozowanie, wyświetlaj metryki oraz włączyć lub wyłączyć dzienników dla zasobów w sieci wirtualnej platformy Azure.  Wspólnota jednostek powinny implementować dzienniki przepływów usługi Network Watcher dla sieciowych grup zabezpieczeń i maszyn wirtualnych. Te dzienniki powinny być przechowywane w konto dedykowanych dla magazynu, które tylko dzienniki zabezpieczeń są przechowywane w i dostęp do konta magazynu powinny być zabezpieczone przy użyciu kontroli dostępu na podstawie ról.
+Usługa Azure Network Watcher: [Azure Network Watcher] 9 https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) udostępnia narzędzia umożliwiające monitorowanie, diagnozowanie, wyświetlaj metryki oraz włączyć lub wyłączyć dzienników dla zasobów w sieci wirtualnej platformy Azure.  Wspólnota jednostek powinny implementować dzienniki przepływów usługi Network Watcher dla sieciowych grup zabezpieczeń i maszyn wirtualnych. Te dzienniki powinny być przechowywane w konto dedykowanych dla magazynu, które tylko dzienniki zabezpieczeń są przechowywane w i dostęp do konta magazynu powinny być zabezpieczone przy użyciu kontroli dostępu na podstawie ról.
 
 ## <a name="threat-model"></a>Model zagrożeń
 

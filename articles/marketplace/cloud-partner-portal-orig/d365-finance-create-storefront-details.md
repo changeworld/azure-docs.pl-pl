@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0c7db9b6439bf7dbf7422d1278370c67c9c6aa51
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: f69a7f9ca94c0a83098300f01e9413b342bd4ae8
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810257"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389380"
 ---
 <a name="how-to-fill-out-the-storefront-details-form"></a>Jak wypełnić formularz szczegółów sklepu
 ===========================================
@@ -57,7 +57,7 @@ Musi to być link do pomocy active przeprowadza klientów do pomocy online o pro
 
 ### <a name="supported-countriesregions"></a>Obsługiwane kraje/regiony
 
-To pole określa krajów/regionów, w których Twoja oferta będzie dostępna dla wersji próbnej. Można wybrać tylko krajach Microsoft Dynamics 365 Business Central jest już dostępna, albo w wersji zapoznawczej. Aby uzyskać bieżącą listę, zobacz [krajów i obsługiwanych tłumaczeń](https://docs.microsoft.com/en-gb/dynamics-nav/compliance/apptest-countries-and-translations).
+To pole określa krajów/regionów, w których Twoja oferta będzie dostępna dla wersji próbnej. Można wybrać tylko krajach Microsoft Dynamics 365 Business Central jest już dostępna, albo w wersji zapoznawczej. Aby uzyskać bieżącą listę, zobacz [krajów i obsługiwanych tłumaczeń](https://docs.microsoft.com/dynamics-nav/compliance/apptest-countries-and-translations).
 
 ![Wybierz kraje i obsługiwanych tłumaczeń](./media/d365-financials/image008.png)
 

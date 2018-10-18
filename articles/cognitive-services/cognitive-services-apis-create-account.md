@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 02/01/2018
 ms.author: garye
-ms.openlocfilehash: 9c4aea2493ffed12b90f82113baf81c6c77a0ea2
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 37f53303a3b0c224c1286fb488a796fd5cdee0e5
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801407"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386420"
 ---
 # <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>Szybki Start: Tworzenie konta usług Cognitive Services w witrynie Azure portal
 
@@ -49,7 +49,7 @@ Użyj tego przewodnika Szybki Start, aby rozpocząć korzystanie z usług Azure 
 ## <a name="access-your-resource"></a>Dostęp do zasobu 
 
 > [!NOTE]
-> Właściciele subskrypcji można wyłączyć tworzenie konta usług Cognitive Services dla subskrypcji i grupy zasobów, stosując [usługa Azure policy](https://docs.microsoft.com/en-us/azure/governance/policy/overview#policy-definition), przypisywanie definicji zasad "nie dozwolone typy zasobów" i określając **Microsoft.CognitiveServices/accounts** jako typ zasobu docelowego.
+> Właściciele subskrypcji można wyłączyć tworzenie konta usług Cognitive Services dla subskrypcji i grupy zasobów, stosując [usługa Azure policy](https://docs.microsoft.com/azure/governance/policy/overview#policy-definition), przypisywanie definicji zasad "nie dozwolone typy zasobów" i określając **Microsoft.CognitiveServices/accounts** jako typ zasobu docelowego.
 
 Po utworzeniu zasobu możesz do niego dostęp na pulpicie nawigacyjnym platformy Azure, jeśli został przypięty. W przeciwnym razie można znaleźć w **grup zasobów**.
 

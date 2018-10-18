@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 02e7d9d26b389e82365f3447cceb5566244236f1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 618437d0007668800e0a14e8233db1676be2a364
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440912"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379267"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>Samouczek: Integracja usługi Azure Active Directory z usługą LinkedIn Learning
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD z usługą LinkedIn Learning, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - LinkedIn Learning logowania jednokrotnego włączonych subskrypcji
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Aby skonfigurować integrację usługi LinkedIn Learning w usłudze Azure AD, na
 
 **Aby dodać LinkedIn Learning w galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -110,7 +110,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_01.png)
 
-1. Kliknij przycisk **lub kliknij tutaj, aby załadować i skopiuj poszczególne pola w formularzu** i skopiuj **identyfikator jednostki** i **adresu Url asercji klienta dostępu (ACS)**
+1. Kliknij przycisk **lub kliknij tutaj, aby załadować i skopiuj poszczególne pola w formularzu** i skopiuj **identyfikator jednostki** i **adresu Url asercji konsumenta Service (ACS)**
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_03.png)
 
@@ -120,9 +120,9 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     a. W **identyfikator** polu tekstowym wprowadź **identyfikator jednostki** skopiowane z portalu usługi LinkedIn 
 
-    b. W **adres URL odpowiedzi** polu tekstowym wprowadź **adresu Url asercji klienta dostępu (ACS)** skopiowane z portalu usługi LinkedIn
+    b. W **adres URL odpowiedzi** polu tekstowym wprowadź **adresu Url asercji konsumenta Service (ACS)** skopiowane z portalu usługi LinkedIn
 
-1. Jeśli chcesz skonfigurować logowanie Jednokrotne w **zainicjowane SP**, a następnie kliknij opcję Ustawienia Pokaż zaawansowane adresu URL w sekcji konfiguracji i konfigurowanie adresu URL logowania jednokrotnego przy użyciu następującego wzorca:
+1. Jeśli chcesz skonfigurować logowanie Jednokrotne w **zainicjowane SP**, następnie kliknij opcję Ustawienia Pokaż zaawansowane adresu URL w sekcji konfiguracji, należy określić adres URL logowania jednokrotnego.  Do utworzenia kopii adres Url logowania **adresu Url asercji konsumenta Service (ACS)** i Zastąp /saml//logowania /.   Po, zostały wykonane, adres URL logowania jednokrotnego powinna mieć następującego wzorca:
 
     `https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=learning&applicationInstanceId=<InstanceId>`
 

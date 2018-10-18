@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: jdial
-ms.openlocfilehash: 1ec60300d179edf69e32dc07653b6c69c7cc8e52
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: cf540caebd5f993cdba0d85f4109a6e78e201658
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42058806"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378758"
 ---
 # <a name="plan-virtual-networks"></a>Planowanie sieci wirtualnej
 
@@ -93,7 +93,7 @@ Możesz połączyć sieci wirtualnej z innymi sieciami wirtualnymi za pomocą ko
 
 ### <a name="peering"></a>Komunikacja równorzędna
 
-Korzystając z [wirtualne sieci równorzędne](virtual-network-peering-overview.md), sieci wirtualne mogą znajdować się w tej samej lub różnych, obsługiwanych regionach platformy Azure. Sieci wirtualne można w tej samej lub innej subskrypcji platformy Azure, tak długo, jak obie subskrypcje są przypisane do tej samej dzierżawie usługi Azure Active Directory. Zanim utworzysz komunikację równorzędną, zalecane jest, zapoznaj się ze wszystkimi komunikacji równorzędnej [wymagania i ograniczenia](virtual-network-manage-peering.md#requirements-and-constraints). Przepustowość między zasobami w sieciach wirtualnych równorzędne w tym samym regionie jest taki sam, jakby zasoby były w tej samej sieci wirtualnej.
+Korzystając z [wirtualne sieci równorzędne](virtual-network-peering-overview.md), sieci wirtualne mogą znajdować się w tej samej lub różnych, obsługiwanych regionach platformy Azure. Sieci wirtualne mogą być w tej samej lub innej subskrypcji platformy Azure (nawet subskrypcje należące do różnych dzierżaw usługi Azure Active Directory). Zanim utworzysz komunikację równorzędną, zalecane jest, zapoznaj się ze wszystkimi komunikacji równorzędnej [wymagania i ograniczenia](virtual-network-manage-peering.md#requirements-and-constraints). Przepustowość między zasobami w sieciach wirtualnych równorzędne w tym samym regionie jest taki sam, jakby zasoby były w tej samej sieci wirtualnej.
 
 ### <a name="vpn-gateway"></a>Brama sieci VPN
 

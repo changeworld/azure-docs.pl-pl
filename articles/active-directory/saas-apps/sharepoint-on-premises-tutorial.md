@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2018
 ms.author: jeedes
-ms.openlocfilehash: e2037ff2f1b95a5ce5de69d76d66ec81cc9badb4
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 100ea0147bf56242ba15bee39e4bda1b65af27da
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064207"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390095"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Samouczek: Integracja usługi Azure Active Directory z lokalnego programu SharePoint
 
@@ -144,7 +144,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     Zaloguj się do serwera programu SharePoint Server 2016, a następnie otwórz powłokę zarządzania programu SharePoint 2016. Wypełnij wartości (wartości identyfikatora z lokalnej domeny i adresów URL sekcja dotycząca programu SharePoint w witrynie Azure portal), $realm $wsfedurl (pojedynczego logowania jednokrotnego usługi adresu URL) i $filepath (ścieżka pliku, do którego został pobrany plik certyfikatu) w witrynie Azure portal i wykonywania następujące polecenia, aby skonfigurować nowe zaufanego dostawcy tożsamości.
 
     > [!TIP]
-    > Jeśli dopiero zaczynasz pracę z przy użyciu programu PowerShell, czy chcesz dowiedzieć się więcej na temat sposobu działania programu PowerShell, zobacz [SharePoint PowerShell](https://docs.microsoft.com/en-us/powershell/sharepoint/overview?view=sharepoint-ps). 
+    > Jeśli dopiero zaczynasz pracę z przy użyciu programu PowerShell, czy chcesz dowiedzieć się więcej na temat sposobu działania programu PowerShell, zobacz [SharePoint PowerShell](https://docs.microsoft.com/powershell/sharepoint/overview?view=sharepoint-ps). 
 
     ```
     $realm = "<Identifier value from the SharePoint on-premises Domain and URLs section in the Azure portal>"
@@ -310,7 +310,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Używanie programu Azure AD do uwierzytelniania serwera programu SharePoint](https://docs.microsoft.com/en-us/office365/enterprise/using-azure-ad-for-sharepoint-server-authentication)
+* [Używanie programu Azure AD do uwierzytelniania serwera programu SharePoint](https://docs.microsoft.com/office365/enterprise/using-azure-ad-for-sharepoint-server-authentication)
 
 <!--Image references-->
 

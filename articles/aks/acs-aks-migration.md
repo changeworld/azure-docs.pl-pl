@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: nobun
 ms.custom: mvc
-ms.openlocfilehash: d26e849cf775e0c645ae97e4b67b5918bbbabd55
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: e42b0e7bd1bce40b7c58d75cb07f5a3f8afa5836
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361382"
+ms.locfileid: "49385045"
 ---
 # <a name="migrating-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>Migrowanie z usługi Azure Container Service (ACS) do usługi Azure Kubernetes Service (AKS)
 
@@ -53,7 +53,7 @@ Przykład:
 | agentpool0 | 3 | Standard_D8_v2 | Linux |
 | agentpool1 | 1 | Standardowa_D2_v2 | Windows |
 
-Ponieważ dodatkowe maszyny wirtualne zostaną wdrożone w ramach subskrypcji, podczas migracji, należy sprawdzić, czy limity i przydziały są wystarczające dla tych zasobów. Dowiedz się więcej, przeglądając [limity usług i subskrypcji platformy Azure](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits). Aby sprawdzić bieżące limity przydziału, przejdź do [bloku subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) w witrynie Azure portal wybierz swoją subskrypcję, a następnie wybierz `Usage + quotas`.
+Ponieważ dodatkowe maszyny wirtualne zostaną wdrożone w ramach subskrypcji, podczas migracji, należy sprawdzić, czy limity i przydziały są wystarczające dla tych zasobów. Dowiedz się więcej, przeglądając [limity usług i subskrypcji platformy Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits). Aby sprawdzić bieżące limity przydziału, przejdź do [bloku subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) w witrynie Azure portal wybierz swoją subskrypcję, a następnie wybierz `Usage + quotas`.
 
 ### <a name="networking"></a>Networking
 
@@ -86,7 +86,7 @@ Istnieje kilka czynników, które należy wziąć pod uwagę, jeśli przenosisz 
 2. Migawki dysków
 3. Tworzenie nowych dysków zarządzanych na podstawie migawki
 4. Utwórz trwałe woluminy w usłudze AKS
-5. Specyfikacje zasobników, aby zaktualizować [korzysta z istniejących woluminów](https://docs.microsoft.com/en-us/azure/aks/azure-disk-volume) zamiast PersistentVolumeClaims (udostępnianie statyczne)
+5. Specyfikacje zasobników, aby zaktualizować [korzysta z istniejących woluminów](https://docs.microsoft.com/azure/aks/azure-disk-volume) zamiast PersistentVolumeClaims (udostępnianie statyczne)
 6. Wdrażanie aplikacji w usłudze AKS
 7. Walidacja
 8. Wskaż ruchu klastra AKS
@@ -112,7 +112,7 @@ W przeciwnym razie jedno z podejść możliwej migracji obejmuje następujące c
 4. Walidacja
 5. Wskaż ruchu klastra AKS
 
-W przypadkach, w którym ma się rozpoczynać udział pusty, a następnie utwórz kopię źródła danych, można użyć [ `az storage file copy` ](https://docs.microsoft.com/en-us/cli/azure/storage/file/copy?view=azure-cli-latest) polecenia, aby przeprowadzić migrację danych.
+W przypadkach, w którym ma się rozpoczynać udział pusty, a następnie utwórz kopię źródła danych, można użyć [ `az storage file copy` ](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) polecenia, aby przeprowadzić migrację danych.
 
 ### <a name="deployment-strategy"></a>Strategia wdrażania
 
@@ -134,7 +134,7 @@ Dostępne są również kilka narzędzi typu open source, które mogą pomóc w 
 
 ### <a name="1-create-an-aks-cluster"></a>1. Tworzenie klastra AKS
 
-Możesz wykonać dokumenty pomocne przy [Tworzenie klastra AKS](https://docs.microsoft.com/en-us/azure/aks/create-cluster) przy użyciu witryny Azure portal, interfejsu wiersza polecenia platformy Azure lub szablonu usługi Resource Manager.
+Możesz wykonać dokumenty pomocne przy [Tworzenie klastra AKS](https://docs.microsoft.com/azure/aks/create-cluster) przy użyciu witryny Azure portal, interfejsu wiersza polecenia platformy Azure lub szablonu usługi Resource Manager.
 
 > Możesz znaleźć przykładowe szablony usługi Azure Resource Manager dla usługi AKS w [Azure/AKS](https://github.com/Azure/AKS/tree/master/examples/vnet) repozytorium w witrynie GitHub
 

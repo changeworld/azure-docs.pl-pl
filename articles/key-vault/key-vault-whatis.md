@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: barclayn
-ms.openlocfilehash: 7e98853b5b2ccc779dca970337fc44217977c8c9
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 56a1ebcfbb6dda9bc96aa241bd2b8d753022181a
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342570"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385862"
 ---
 # <a name="what-is-azure-key-vault"></a>Co to jest usługa Azure Key Vault?
 
@@ -35,7 +35,7 @@ Usługa Azure Key Vault jest narzędziem do bezpiecznego przechowywania wpisów 
 
 Zasadniczo są 3 sposoby uwierzytelniania w usłudze Key Vault
 
-1. **Za pomocą [zarządzanych tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)**  (**zalecane i najlepszych praktyk**): podczas wdrażania aplikacji na maszynie wirtualnej na platformie Azure, można przypisać tożsamość maszyny wirtualnej który ma dostęp do usługi Key Vault. Można także przypisać tożsamości do innych zasobów platformy azure, które są wymienione [tutaj](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview). Korzyści w przypadku tej metody jest aplikacja / Usługa nie zarządza obrót pierwszy klucz tajny. Azure automatycznie przełącza tożsamości. 
+1. **Za pomocą [zarządzanych tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)**  (**zalecane i najlepszych praktyk**): podczas wdrażania aplikacji na maszynie wirtualnej na platformie Azure, można przypisać tożsamość maszyny wirtualnej który ma dostęp do usługi Key Vault. Można także przypisać tożsamości do innych zasobów platformy azure, które są wymienione [tutaj](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Korzyści w przypadku tej metody jest aplikacja / Usługa nie zarządza obrót pierwszy klucz tajny. Azure automatycznie przełącza tożsamości. 
 2. **Za pomocą jednostki usługi i certyfikatu:** 2nd opcją jest użycie nazwy głównej usługi i jest skojarzony certyfikat, który ma dostęp do usługi Key Vault. Ciężar rotacji certyfikatu znajduje się w właściciela aplikacji lub dla deweloperów i dlatego nie jest to zalecane
 3. **Za pomocą nazwy głównej usługi i klucza tajnego:** opcja 3 (nie preferowaną opcję) jest użycie jednostki usługi oraz klucza tajnego do uwierzytelniania w usłudze Key Vault
 

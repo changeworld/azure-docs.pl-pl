@@ -1,54 +1,54 @@
 ---
 title: Zasoby w usłudze Azure Media Services | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera opis zasoby są i jak są używane przez usługi Azure Media Services.
+description: Ten artykuł zawiera opis zasoby są i jak są one używane przez usługi Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 61555eb6cca6995215ce43051abbda9aa43539ec
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: fcb4500a1e4503d90b00528544ae98fa93e16191
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284842"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379223"
 ---
 # <a name="assets"></a>Elementy zawartości
 
-**Zasobów** zawiera (w tym wideo, audio, obrazy, kolekcje miniatur, ścieżek tekstu i pliki napisów) pliki cyfrowe i metadane dotyczące tych plików. Po pliki cyfrowe są przekazywane do elementu zawartości, mogą być używane w Media Services, kodowania i przesyłania strumieniowego przepływów pracy.
+**Zasobów** zawiera pliki cyfrowe (w tym wideo, audio, obrazy, kolekcje miniatur, ścieżki tekstowe i pliki napisów) oraz metadane dotyczące tych plików. Przekazane pliki cyfrowe do elementu zawartości mogą one używane w usłudze Media Services, kodowanie i przesyłanie strumieniowe przepływów pracy.
 
-Zasób jest zamapowana do kontenera obiektów blob w [konta magazynu Azure](storage-account-concept.md) i pliki w elementach zawartości są przechowywane jako blokowych obiektów blob w tym kontenerze. Możesz użyć plików zasobów w kontenerach przy użyciu zestawu SDK usługi Magazyn klientów.
+Element zawartości jest mapowany na kontener obiektów blob w [konta usługi Azure Storage](storage-account-concept.md) i pliki w elemencie zawartości są przechowywane jako blokowe obiekty BLOB w kontenerze. Możesz porozmawiać z plików zasobów w kontenerach przy użyciu klientów zestawu SDK usługi Storage.
 
-Usługa Azure Media Services obsługuje warstw obiektów Blob, gdy konto używa ogólnego przeznaczenia v2 (GPv2) magazynu. Z GPv2 można przenieść plików do cool lub chłodni. Cold storage nadaje się do archiwizacji plików źródłowych, gdy nie są już potrzebne (na przykład po ich ma został zakodowany.)
+Usługa Azure Media Services obsługuje warstwy obiektu Blob, gdy konto korzysta z ogólnego przeznaczenia w wersji 2 (GPv2) magazynu. Konta GPv2 umożliwia przeniesienie plików do chłodnego lub zimnego magazynu. Zimnego magazynu nadaje się do archiwizacji plików źródłowych, gdy nie będą już potrzebne (na przykład po ich ma został zakodowany.)
 
-W wersji 3 usługi Media Services dane wejściowe zadania mogą być tworzone z zasobów lub adresy URL HTTP (s). Aby utworzyć zasób, który może służyć jako dane wejściowe dla zadania, zobacz [utworzyć wprowadzania zadania z pliku lokalnego](job-input-from-local-file-how-to.md).
+W wersji 3 usługa Media Services dane wejściowe zadania mogą być tworzone z zasobów lub w przypadku adresów URL HTTP (s). Aby utworzyć element zawartości, który może służyć jako dane wejściowe dla zadania, zobacz [utworzyć dane wejściowe zadania z pliku lokalnego](job-input-from-local-file-how-to.md).
 
-Ponadto należy przeczytać o [kont magazynu w usłudze Media Services](storage-account-concept.md) i [transformacji i zadania](transform-concept.md).
+Ponadto, przeczytaj temat [kont magazynu w usłudze Media Services](storage-account-concept.md) i [transformacje i zadania](transform-concept.md).
 
-## <a name="asset-definition"></a>Definicja zasobów
+## <a name="asset-definition"></a>Definicja zasobu
 
-W poniższej tabeli przedstawiono właściwości zasobów i umożliwia ich definicje.
+W poniższej tabeli przedstawiono właściwości zasobów oraz zapewnia ich definicje.
 
 |Name (Nazwa)|Typ|Opis|
 |---|---|---|
-|Identyfikator|ciąg|Identyfikator FQDN zasobu dla zasobu.|
+|id|ciąg|W pełni kwalifikowanego Identyfikatora zasobu dla zasobu.|
 |name|ciąg|Nazwa zasobu.|
-|properties.alternateId |ciąg|Alternatywny identyfikator zasobu.|
+|properties.alternateId |ciąg|Alternatywny identyfikator elementu zawartości.|
 |properties.assetId |ciąg|Identyfikator zasobu.|
 |Properties.container |ciąg|Nazwa kontenera obiektów blob zasobów.|
 |Properties.created |ciąg|Data utworzenia zasobu.|
-|Properties.Description |ciąg|Opis zasobów.|
-|properties.lastModified |ciąg|Data trwałego jego ostatniej modyfikacji.|
+|Properties.Description |ciąg|Opis elementu zawartości.|
+|properties.lastModified |ciąg|Ostatniej modyfikacji zasobu.|
 |properties.storageAccountName |ciąg|Nazwa konta magazynu.|
-|properties.storageEncryptionFormat |AssetStorageEncryptionFormat |Format szyfrowania zasobów. Jeden z Brak lub MediaStorageEncryption.|
+|properties.storageEncryptionFormat |AssetStorageEncryptionFormat |Format szyfrowania elementu zawartości. Jeden z Brak lub MediaStorageEncryption.|
 |type|ciąg|Typ zasobu.|
 
-Dla pełnej definicji [zasoby](https://docs.microsoft.com/rest/api/media/assets).
+Pełna definicja można zobaczyć [zasoby](https://docs.microsoft.com/rest/api/media/assets).
 
 ## <a name="filtering-ordering-paging"></a>Filtrowania, sortowania, stronicowania
 
@@ -59,25 +59,34 @@ Usługa Media Services obsługuje następujące opcje zapytania OData dla zasob�
 * $top 
 * $skiptoken 
 
-### <a name="filteringordering"></a>Filtrowanie kolejności
+Opis operatora:
+
+* EQ = równa
+* Ne = nie jest równa
+* GE = większa niż lub równe
+* Le = mniejsze niż lub równe
+* Gt = większa niż
+* Lt = mniej niż
+
+### <a name="filteringordering"></a>Filtrowanie porządkowanie
 
 W poniższej tabeli przedstawiono, jak te opcje można stosować do właściwości zasobów: 
 
-|Name (Nazwa)|Filtr|Kolejność|
+|Name (Nazwa)|Filtr|Zamówienie|
 |---|---|---|
-|Identyfikator|Obsługuje:<br/>Równa się<br/>Więcej niż<br/>Mniej niż|Obsługuje:<br/>Rosnąco<br/>Malejąco|
-|name|||
-|properties.alternateId |Obsługuje:<br/>Równa się||
-|properties.assetId |Obsługuje:<br/>Równa się||
+|id|||
+|name|Obsługuje: Eq, Gt, Lt|Obsługuje: rosnącej na malejącą lub odwrotnie|
+|properties.alternateId |Obsługuje: Eq||
+|properties.assetId |Obsługuje: Eq||
 |Properties.container |||
-|Properties.created|Obsługuje:<br/>Równa się<br/>Więcej niż<br/>Mniej niż|Obsługuje:<br/>Rosnąco<br/>Malejąco|
+|Properties.created|Obsługuje: Eq, Gt, Lt| Obsługuje: Rosnącej na malejącą lub odwrotnie|
 |Properties.Description |||
 |properties.lastModified |||
 |properties.storageAccountName |||
 |properties.storageEncryptionFormat | ||
 |type|||
 
-W poniższym przykładzie C# filtry Data utworzenia:
+W poniższym przykładzie C# filtr Data utworzenia:
 
 ```csharp
 var odataQuery = new ODataQuery<Asset>("properties/created lt 2018-05-11T17:39:08.387Z");
@@ -86,13 +95,16 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 
 ### <a name="pagination"></a>Paginacja
 
-Podział na strony jest obsługiwana dla każdego z czterech włączone sortowania. 
+Podział na strony jest obsługiwana dla każdego z czterech włączone sortowania. Obecnie rozmiar strony wynosi 1000.
 
-Jeśli odpowiedź na zapytanie zawiera wiele (obecnie ponad 1000) elementów, usługa zwraca "\@odata.nextLink" właściwości do pobrania następnej strony wyników. Może to służyć do strony za pomocą cały zestaw wyników. Rozmiar strony nie jest konfigurowane przez użytkownika. 
+> [!TIP]
+> Łącze do następnej zawsze należy używać wyliczania kolekcji i nie są zależne od wielkości określonej strony.
 
-Jeśli zasoby są tworzone lub usuwane podczas stronicowania za pomocą kolekcji, zmiany są uwzględniane w zwracanych wyników (Jeśli te zmiany w części w kolekcji, która nie została pobrana.) 
+Jeśli odpowiedzi na zapytanie zawiera wiele elementów, usługa zwraca "\@odata.nextLink" właściwości do pobrania następnej strony wyników. Może to służyć do strony za pomocą cały zestaw wyników. Nie można skonfigurować rozmiaru strony. 
 
-Poniższy przykład C# przedstawia wyliczyć wszystkie zasoby w ramach konta.
+Jeśli zasoby są tworzone lub usuwane podczas stronicować kolekcji, zmiany są uwzględniane w zwróconych wyników (Jeśli te zmiany w części w kolekcji, która nie została pobrana.) 
+
+W poniższym przykładzie C# przedstawiono sposób wyliczyć wszystkie zasoby w ramach konta.
 
 ```csharp
 var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName);
@@ -104,24 +116,23 @@ while (currentPage.NextPageLink != null)
 }
 ```
 
-Przykłady REST, zobacz [zasoby — listy](https://docs.microsoft.com/rest/api/media/assets/list)
+POZOSTAŁE przykłady można znaleźć [zasobów — lista](https://docs.microsoft.com/rest/api/media/assets/assets_list)
 
 
 ## <a name="storage-side-encryption"></a>Szyfrowanie po stronie magazynu
 
-Aby chronić zasobów magazynowane, zasoby powinny być szyfrowane za pomocą szyfrowania po stronie magazynu. W poniższej tabeli przedstawiono, jak działa szyfrowanie po stronie magazynu w usłudze Media Services:
+Aby chronić Twoje zasoby w spoczynku, zasoby mają zostać zaszyfrowane za pomocą szyfrowania po stronie magazynu. W poniższej tabeli przedstawiono, jak działa szyfrowanie po stronie magazynu w usłudze Media Services:
 
 |Opcja szyfrowania|Opis|Media Services v2|Media Services v3|
 |---|---|---|---|
-|Szyfrowanie magazynu usługi multimediów|AES 256 szyfrowanie klucza zarządzane przez usługę Media Services|Obsługiwane<sup>(1)</sup>|Nieobsługiwane<sup>(2)</sup>|
-|[Szyfrowanie usługi Magazyn danych w stanie spoczynku](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Szyfrowanie po stronie serwera oferowanych przez usługi Azure Storage, klucz zarządzany przez usługę Azure lub przez klienta|Obsługiwane|Obsługiwane|
-|[Szyfrowanie magazynu po stronie klienta](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Oferowane przez usługi Azure storage, klucz zarządzany przez klienta w magazynie kluczy szyfrowania po stronie klienta|Nieobsługiwane|Nieobsługiwane|
+|Szyfrowanie magazynu usługi Media Services|AES-256 szyfrowania kluczy zarządzanych przez usługę Media Services|Obsługiwane<sup>(1)</sup>|Nieobsługiwane<sup>(2)</sup>|
+|[Szyfrowanie usługi Storage dla danych magazynowanych](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Szyfrowanie po stronie serwera, oferowane przez usługę Azure Storage, klucz zarządzany przez platformę Azure lub przez klienta|Obsługiwane|Obsługiwane|
+|[Szyfrowanie po stronie klienta magazynu](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Szyfrowanie po stronie klienta, oferowane przez usługę Azure storage, klucz zarządzany przez klienta w usłudze Key Vault|Nieobsługiwane|Nieobsługiwane|
 
-<sup>1</sup> podczas Media Services obsługuje obsługi zawartości w czyszczeniu/bez jakiejkolwiek formy szyfrowania, to nie jest to zalecane.
+<sup>1</sup> a Media Services obsługuje obsługi zawartości, bez zabezpieczeń/bez jakiejkolwiek formy szyfrowania, to nie jest to zalecane.
 
-<sup>2</sup> Media Services w wersji 3 szyfrowanie magazynu (szyfrowanie AES 256) jest tylko wykorzystywać dla zapewnienia zgodności z zasoby zostały utworzone za pomocą usługi Media Services w wersji 2. Co oznacza działa w wersji 3 z dotychczasowej pamięci masowej zaszyfrowany zasoby, ale nie zezwala na tworzenie nowych.
+<sup>2</sup> Media Services v3, szyfrowanie magazynu (szyfrowanie AES-256) jest tylko obsługiwane dla zapewnienia zgodności gdy Twoje zasoby zostały utworzone za pomocą usługi Media Services v2. Co oznacza v3 współpracuje z istniejącym magazynie zaszyfrowane zasoby, ale nie pozwoli na tworzenie nowych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-> [!div class="nextstepaction"]
-> [Strumieniowe przesyłanie pliku](stream-files-dotnet-quickstart.md)
+[Strumieniowe przesyłanie pliku](stream-files-dotnet-quickstart.md)

@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: vashan, rajraj, changov
-ms.openlocfilehash: d9d9e9cdb791504c864cae20d1248ba78a180a4c
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: b951d0b8d91729340cf382e70f72511fb009053e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320275"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386556"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>Rozwiązywanie problemów z błędami ograniczania przepływności interfejsu API 
 
@@ -26,7 +26,7 @@ Azure Compute żądań może być ograniczone w subskrypcji i na podstawie regio
 
 ## <a name="throttling-by-azure-resource-manager-vs-resource-providers"></a>Ograniczanie przepustowości przez usługi Azure Resource Manager, a dostawców zasobów  
 
-Jako drzwi do platformy Azure usługi Azure Resource Manager wykonuje uwierzytelnianie i pierwszego rzędu sprawdzania poprawności i ograniczania przepustowości wszystkich przychodzących żądań interfejsu API. Limity szybkości wywołania w usłudze Azure Resource Manager i nagłówki powiązane diagnostyki odpowiedzi HTTP zostały opisane [tutaj](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-request-limits).
+Jako drzwi do platformy Azure usługi Azure Resource Manager wykonuje uwierzytelnianie i pierwszego rzędu sprawdzania poprawności i ograniczania przepustowości wszystkich przychodzących żądań interfejsu API. Limity szybkości wywołania w usłudze Azure Resource Manager i nagłówki powiązane diagnostyki odpowiedzi HTTP zostały opisane [tutaj](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-request-limits).
  
 Gdy klienta interfejsu API platformy Azure pobiera ograniczenie błędu, stan HTTP jest 429 zbyt wiele żądań. Aby dowiedzieć się, jeśli ograniczanie żądań, odbywa się przez usługi Azure Resource Manager lub podstawowego dostawcy zasobów, takich jak CRP, zbadaj `x-ms-ratelimit-remaining-subscription-reads` dla żądania GET i `x-ms-ratelimit-remaining-subscription-writes` nagłówki odpowiedzi dla żądań-GET. Jeśli pozostała liczba wywołań zbliża się do 0, został osiągnięty limit ogólne wywołania tej subskrypcji, zdefiniowane przez usługę Azure Resource Manager. Zliczane są ze sobą działań w oparciu o wszystkich subskrypcji klientów. W przeciwnym razie ograniczenie pochodzi z dostawcą zasobów docelowej (jeden odnoszącego `/providers/<RP>` segment adresu URL żądania). 
 
@@ -88,4 +88,4 @@ Jak pokazano powyżej, każdy błąd ograniczania obejmuje `Retry-After` nagłó
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji na temat wytycznych ponawiania prób dla innych usług na platformie Azure, zobacz [ponów wskazówki dla określonych usług](https://docs.microsoft.com/en-us/azure/architecture/best-practices/retry-service-specific)
+Aby uzyskać więcej informacji na temat wytycznych ponawiania prób dla innych usług na platformie Azure, zobacz [ponów wskazówki dla określonych usług](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)

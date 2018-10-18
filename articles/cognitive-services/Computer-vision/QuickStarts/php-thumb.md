@@ -3,19 +3,19 @@ title: 'Szybki start: generowanie miniatur — REST, PHP — przetwarzanie obraz
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start wygenerujesz miniaturę obrazu za pomocą interfejsu API przetwarzania obrazów przy użyciu języka PHP.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 5cc432a2f6a471ec1d5dfd4acae8733df7065e4f
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 3a652e4b937dc3600ffe7af7231322b14bd52e05
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631660"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342067"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-php-in-computer-vision"></a>Szybki start: generowanie miniatury w funkcji przetwarzania obrazów przy użyciu interfejsu API REST i języka PHP
 
@@ -119,7 +119,7 @@ Pomyślna odpowiedź jest zwracana jako dane binarne, które reprezentują dane 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy plik nie jest już potrzebny, usuń go, a następnie odinstaluj pakiet `HTTP_Request2` PHP5. Aby odinstalować pakiet, wykonaj następujące czynności:
+Jeśli plik nie jest już potrzebny, usuń go, a następnie odinstaluj pakiet `HTTP_Request2` PHP5. Aby odinstalować pakiet, wykonaj następujące czynności:
 
 1. Otwórz okno wiersza polecenia jako administrator.
 2. Uruchom następujące polecenie:
@@ -135,4 +135,4 @@ Gdy plik nie jest już potrzebny, usuń go, a następnie odinstaluj pakiet `HTTP
 Zapoznaj się z interfejsem API przetwarzania obrazów używanym do analizy obrazu, wykrywania osobistości i charakterystycznych elementów krajobrazu, tworzenia miniatur oraz wyodrębniania tekstu drukowanego i odręcznego. Aby szybko zacząć eksperymentować z interfejsem API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
-> [Poznaj interfejs API przetwarzania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [Zobacz, jak działa interfejs API przetwarzania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

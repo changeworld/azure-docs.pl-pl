@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: fe8cf752337bdb3fcd61ce6aa9f3e5cb834fb0aa
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: a870c99718ecafe8af33e13be9aa46631888c8cb
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310967"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389687"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Zdarzenie agregacji i kolekcji przy użyciu Windows Azure Diagnostics
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Teraz, gdy masz agregowania zdarzeń w usłudze Azure Storage [Konfigurowanie us
 ## <a name="deploy-the-diagnostics-extension-through-azure-resource-manager"></a>Wdrażanie rozszerzenie diagnostyki za pomocą usługi Azure Resource Manager
 
 ### <a name="create-a-cluster-with-the-diagnostics-extension"></a>Tworzenie klastra przy użyciu rozszerzenia diagnostyki
-Aby utworzyć klaster przy użyciu usługi Resource Manager, należy dodać plik JSON z konfiguracją diagnostyki pełny szablon usługi Resource Manager, przed utworzeniem klastra. Firma Microsoft udostępnia przykładowy szablon usługi Resource Manager klastra maszyny Wirtualnej na pięciu o konfiguracji diagnostyki dodawanych do niego jako część nasze przykłady szablonów usługi Resource Manager. Zostanie wyświetlony w tej lokalizacji, w galerii przykładów dla platformy Azure: [klastra o pięciu węzłach przy użyciu przykładowych szablonów Menedżera zasobów diagnostycznych](https://azure.microsoft.com/en-in/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
+Aby utworzyć klaster przy użyciu usługi Resource Manager, należy dodać plik JSON z konfiguracją diagnostyki pełny szablon usługi Resource Manager, przed utworzeniem klastra. Firma Microsoft udostępnia przykładowy szablon usługi Resource Manager klastra maszyny Wirtualnej na pięciu o konfiguracji diagnostyki dodawanych do niego jako część nasze przykłady szablonów usługi Resource Manager. Zostanie wyświetlony w tej lokalizacji, w galerii przykładów dla platformy Azure: [klastra o pięciu węzłach przy użyciu przykładowych szablonów Menedżera zasobów diagnostycznych](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
 
 Aby wyświetlić ustawienia diagnostyki w szablonie usługi Resource Manager, otwórz plik azuredeploy.json, a następnie wyszukaj **IaaSDiagnostics**. Aby utworzyć klaster za pomocą tego szablonu, wybierz **Wdróż na platformie Azure** przycisk jest dostępny w poprzedniej konsolidacji.
 

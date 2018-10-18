@@ -10,12 +10,12 @@ ms.component: monitor and tune
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1cf2fcb2ce99d4c6c670e5afdb1c4208158ea4de
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 1d366850bc886dc48afc59ffaf0958b39314ebb1
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44096266"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385536"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>Jak monitorować Gen2 pamięci podręcznej
 Architektura magazynu Gen2 automatycznie tworzy warstwy segmentów najczęściej poszukiwanych magazynu kolumn w pamięci podręcznej znajdującej się na NVMe oparte na dyskach SSD, przeznaczona dla magazynów danych Gen2. Większa wydajność jest wykonywane zapytania pobierają segmenty, które są znajdującej się w pamięci podręcznej. W tym artykule opisano sposób monitorowania i rozwiązywanie problemów z wydajnością wolnych zapytań, ustalając, czy obciążenie optymalnie korzystanie z pamięci podręcznej Gen2.  
@@ -43,7 +43,7 @@ Tabela poniżej opisano scenariusze, w oparciu o wartości metryk pamięci podr�
 
 **Scenariusz 2:** bieżącego zestawu danych roboczych nie mieści się w pamięci podręcznej, co powoduje, że niskiej wartości procentowej ze względu na fizyczne odczyty trafień w pamięci podręcznej. Rozważ skalowanie w górę poziomu wydajności i ponownie uruchom obciążenia, aby wypełnić pamięć podręczną.
 
-**Scenariusz 3:** jest prawdopodobne, że zapytanie działa wolno, z przyczyn niezwiązanych ze sobą w pamięci podręcznej. [Rozwiązywanie problemów z](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) innych obszarów, które mogą spowalniać zapytania. Możesz też rozważyć [skalowanie w dół wystąpienia](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) Aby zmniejszyć rozmiar pamięci podręcznej w celu obniżenia kosztów. 
+**Scenariusz 3:** jest prawdopodobne, że zapytanie działa wolno, z przyczyn niezwiązanych ze sobą w pamięci podręcznej. [Rozwiązywanie problemów z](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) innych obszarów, które mogą spowalniać zapytania. Możesz też rozważyć [skalowanie w dół wystąpienia](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) Aby zmniejszyć rozmiar pamięci podręcznej w celu obniżenia kosztów. 
 
 **Scenariusz 4:** miał zimnych pamięci podręcznej, która może być powód, dlaczego zapytania została powolne. Należy rozważyć ponowne uruchomienie zapytania jako zestaw danych roboczych powinny teraz być w buforowane. 
 

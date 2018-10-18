@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 07/25/2018
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: bac8ced2722254af1dab0a2b4d6b5e6df1553357
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: b645634fc6e0c1edac3951be18dc6eae9ae18877
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347407"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49400286"
 ---
 | |
 |--|
-|Jeśli to, co widzisz na ekranie, nie odpowiada temu, co jest opisane w artykule, oznacza to, że administrator jeszcze nie włączył tego środowiska. Dopóki to środowisko nie zostanie włączone, musisz postępować zgodnie z instrukcjami i informacjami zawartymi w sekcji [Konfigurowanie mojego konta na potrzeby weryfikacji dwuetapowej](https://docs.microsoft.com/en-us/azure/active-directory/user-help/multi-factor-authentication-end-user-first-time).|
+|Jeśli to, co widzisz na ekranie, nie odpowiada temu, co jest opisane w artykule, oznacza to, że administrator jeszcze nie włączył tego środowiska. Dopóki to środowisko nie zostanie włączone, musisz postępować zgodnie z instrukcjami i informacjami zawartymi w sekcji [Konfigurowanie mojego konta na potrzeby weryfikacji dwuetapowej](https://docs.microsoft.com/azure/active-directory/user-help/multi-factor-authentication-end-user-first-time).|
 | |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: bryanla
-ms.openlocfilehash: d5cc634451c5412f9a3339c8d2d26654c4d5c1b8
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 60920aaa62d8472eaca8f929c62ce1c0af08f9a4
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298917"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385638"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Rozpoczynanie pracy z certyfikatami usługi Key Vault
 Następujące scenariusze przedstawiają kilka podstawowe sposoby użycia usługi Key Vault certyfikatu zarządzania tym dodatkowe kroki wymagane do utworzenia pierwszego certyfikatu w magazynie kluczy.
@@ -83,7 +83,7 @@ Uwaga — Ten proces, za pomocą krok 3.1, jest to jednorazowa operacja.
       -   Informacje o odnowienie - > np. 90 dni przed wygaśnięciem  
 
   - Proces tworzenia certyfikatów jest zwykle proces asynchroniczny i obejmuje sondowanie stanu operacji certyfikatu tworzenia magazynu kluczy.  
-[Operacja pobrania certyfikatu](https://docs.microsoft.com/en-us/rest/api/keyvault/getcertificateoperation)  
+[Operacja pobrania certyfikatu](https://docs.microsoft.com/rest/api/keyvault/getcertificateoperation)  
       -   Stan: zakończenia, nie powiodło się. informacje o błędach lub anulowane  
       -   Ze względu na opóźnienie do tworzenia można zainicjować operacji anulowania. Anuluj mogą być lub może nie obowiązywać.  
 

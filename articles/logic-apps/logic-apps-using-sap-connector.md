@@ -10,18 +10,18 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 09/14/2018
 tags: connectors
-ms.openlocfilehash: 13268ec865ec72fce23df550619b199389096360
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: dd86fd1aa8b1dab9f329f12924ff37db1256d1eb
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056510"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377907"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Łączenie z systemami SAP z usługi Azure Logic Apps
 
 Ten artykuł pokazuje, jak można pobrać w lokalnych zasobach SAP z wewnątrz aplikacji logiki za pomocą łącznika SAP ERP i przeniesieniu jej centralnej składnika (ECC). Łącznik SAP ECC obsługuje integrację wiadomości lub danych do i z systemów opartych na oprogramowanie SAP Netweaver przez pośredniego dokumentu (IDoc) lub interfejsu programowania aplikacji biznesowych (BAPI) lub zdalnego wywołania funkcji (RFC).
 
-Łącznik SAP ECC używa <a href="https://help.sap.com/saphelp_nwpi71/helpdata/en/e9/23c80d66d08c4c8c044a3ea11ca90f/frameset.htm">SAP .net Biblioteka łącznika (NCo)</a> i udostępnia te operacje lub akcje:
+Łącznik SAP ECC używa <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP .net Biblioteka łącznika (NCo)</a> i udostępnia te operacje lub akcje:
 
 - **Wyślij do SAP**: wysyłanie IDoc lub wywołania funkcji BAPI za pośrednictwem tRFC systemów SAP.
 - **Otrzymywać od firmy SAP**: odbieranie IDoc lub BAPI wywołaniach funkcji za pośrednictwem tRFC z systemów SAP.
@@ -44,7 +44,7 @@ Aby skorzystać z tego artykułu, potrzebne są następujące elementy:
 
 * Pobierz i zainstaluj najnowszą wersję [lokalnej bramy danych](https://www.microsoft.com/download/details.aspx?id=53127) na każdym komputerze w środowisku lokalnym. Upewnij się, że możesz skonfigurować bramę w witrynie Azure portal przed kontynuowaniem. Bramy umożliwia bezpieczny dostęp do danych i zasoby są w środowisku lokalnym. Aby uzyskać więcej informacji, zobacz [instalacji lokalnej bramy danych usługi Azure Logic Apps](../logic-apps/logic-apps-gateway-install.md).
 
-* Pobierz i zainstaluj najnowsze biblioteki klienta SAP, która jest obecnie <a href="https://softwaredownloads.sap.com/file/0020000000086282018" target="_blank">łącznika systemu SAP (NCo) 3.0.20.0 dla programu Microsoft .NET Framework 4.0 i Windows 64-bitowy (x64)</a>, w tym samym komputerze co lokalna brama danych. Zainstaluj tę wersję lub nowszym z tych powodów:
+* Pobierz i zainstaluj najnowsze biblioteki klienta SAP, która jest obecnie <a href="https://softwaredownloads.sap.com/file/0020000001865512018" target="_blank">łącznika systemu SAP (NCo) 3.0.21.0 dla programu Microsoft .NET Framework 4.0 i Windows 64-bitowy (x64)</a>, w tym samym komputerze co lokalna brama danych. Zainstaluj tę wersję lub nowszym z tych powodów:
 
   * Wcześniejszych wersjach SAP NCo mogą stać się zakleszczone więcej niż jeden IDoc komunikaty wysłane w tym samym czasie. 
   Ten warunek blokuje wszystkie nowsze wiadomości, które są wysyłane do miejsca docelowego SAP, powodując wiadomości, które przekraczają limit czasu.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: 7aa7fc2620fa02af4a720a97eece3c0734252245
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: feb9d0a01cbba75fc9868f5a603d494c5c09ae2e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42056992"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386301"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Zarządzanie aplikacjami i usługami jako zasoby usługi Azure Resource Manager
 
@@ -264,7 +264,7 @@ Poniższy fragment kodu przedstawia różnych rodzajów zasobów, które mogą b
 Jeśli klaster już działa, a niektóre aplikacje, czy chcesz zarządzać jako menedżerem zasobów są już na nim wdrożone, zamiast usuwania aplikacji i ponowne ich wdrożenie, można użyć wywołania PUT przy użyciu tych samych interfejsów API do aplikacji, Pobierz potwierdzony jako zasoby usługi Resource Manager. 
 
 > [!NOTE]
-> Aby umożliwić uaktualniania klastra, aby zignorować aplikacje w złej kondycji klienta można określić "maxPercentUnhealthyApplications: 100" w sekcji "upgradeDescription/healthPolicy"; szczegółowy opis dla wszystkich ustawień znajdują się w [dokumentacji usługi sieci szkieletowe REST API klastra zasady uaktualniania](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfrp-model-clusterupgradepolicy).
+> Aby umożliwić uaktualniania klastra, aby zignorować aplikacje w złej kondycji klienta można określić "maxPercentUnhealthyApplications: 100" w sekcji "upgradeDescription/healthPolicy"; szczegółowy opis dla wszystkich ustawień znajdują się w [dokumentacji usługi sieci szkieletowe REST API klastra zasady uaktualniania](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

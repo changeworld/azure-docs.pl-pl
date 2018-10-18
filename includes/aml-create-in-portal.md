@@ -9,46 +9,46 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/24/2018
-ms.openlocfilehash: 4b4f926009f94162b43dcbb8934e44c1924e91df
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 99c31293168fd5ff3e6b95a70dc481e01e4ac8b4
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239547"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49400104"
 ---
-Zaloguj się do witryny [Azure Portal](https://portal.azure.com/) przy użyciu poświadczeń subskrypcji platformy Azure, z której będziesz korzystać. Jeśli nie masz subskrypcji platformy Azure, utwórz teraz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu poświadczeń subskrypcji platformy Azure, możesz użyć. Jeśli nie masz subskrypcji platformy Azure, utwórz teraz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Pulpit nawigacyjny z obszaru roboczego portalu jest obsługiwana na tylko w przeglądarkach Edge, Chrome i Firefox.
 
    ![Azure Portal](./media/aml-create-in-portal/portal-dashboard.png)
 
-Wybierz przycisk **Utwórz zasób** (+) w lewym górnym rogu portalu.
+W lewym górnym rogu portalu, wybierz **Utwórz zasób**.
 
    ![Tworzenie zasobu w witrynie Azure Portal](./media/aml-create-in-portal/portal-create-a-resource.png)
 
-Wpisz ciąg **Machine Learning** na pasku wyszukiwania. Wybierz wynik wyszukiwania o nazwie **obszaru roboczego usługi Machine Learning**.
+Na pasku wyszukiwania wprowadź **uczenia maszynowego**. Wybierz **obszaru roboczego usługi Machine Learning** wynik wyszukiwania.
 
    ![wyszukiwania dla obszaru roboczego](./media/aml-create-in-portal/allservices-search.PNG)
 
 W **obszaru roboczego usługi Machine Learning** okienko, przewiń do dołu i wybierz pozycję **Utwórz** do rozpoczęcia.
 
-   ![create](./media/aml-create-in-portal/portal-create-button.png)
+   ![Przycisk Utwórz](./media/aml-create-in-portal/portal-create-button.png)
 
-W **usługi ML obszaru roboczego** okienku konfigurowanie obszaru roboczego.
+W **obszar roboczy usługi uczenie Maszynowe** okienku konfigurowanie obszaru roboczego.
 
    Pole|Opis
    ---|---
-   Nazwa obszaru roboczego |Wprowadź unikatową nazwę, która identyfikuje obszaru roboczego.  W tym miejscu użyjemy docs ws. Nazwy muszą być unikatowe w obrębie grupy zasobów. Użyj nazwy, który jest łatwy do odwołania i odróżnienia jej od obszarów roboczych, utworzonych przez innych użytkowników.  
-   Subskrypcja |Wybierz subskrypcję platformy Azure, którego chcesz używać. Jeśli masz wiele subskrypcji, wybierz odpowiednią w ramach której są naliczane opłaty za ten zasób.
-   Grupa zasobów | Użyj istniejącej grupy zasobów w ramach subskrypcji, lub wprowadź nazwę, aby utworzyć nową grupę zasobów. Grupa zasobów to kontener, który zawiera powiązane zasoby dla rozwiązania platformy Azure.  W tym miejscu użyjemy docs aml. 
-   Lokalizacja | Wybierz lokalizację znajdującą się najbliżej Twoich użytkowników i zasobów danych. To jest tworzona dla obszaru roboczego.
+   Nazwa obszaru roboczego |Wprowadź unikatową nazwę, która identyfikuje obszaru roboczego. Tutaj używamy docs ws. Nazwy muszą być unikatowe w obrębie grupy zasobów. Użyj nazwy, który jest łatwy do odwołania i odróżnienia jej od obszarów roboczych utworzonych przez innych użytkowników.  
+   Subskrypcja |Wybierz subskrypcję platformy Azure, której chcesz użyć. Jeśli masz więcej niż jedną subskrypcję, wybierz subskrypcję, która jest używana na potrzeby rozliczeń.
+   Grupa zasobów | Użyj istniejącej grupy zasobów w ramach subskrypcji, lub wprowadź nazwę, aby utworzyć nową grupę zasobów. Grupa zasobów to kontener, który zawiera powiązane zasoby dla rozwiązania platformy Azure. Tutaj używamy docs aml. 
+   Lokalizacja | Wybierz lokalizację najbliżej Twoich użytkowników i zasobów danych. Ta lokalizacja jest tworzona dla obszaru roboczego.
 
    ![Tworzenie obszaru roboczego](./media/aml-create-in-portal/workspace-create.png)
 
-Wybierz pozycję **Utwórz**, aby rozpocząć proces tworzenia.  Może upłynąć kilka minut, aby utworzyć obszar roboczy.
+Aby rozpocząć proces tworzenia, wybierz opcję **Utwórz**. Może upłynąć kilka minut, aby utworzyć obszar roboczy.
 
-   Aby sprawdzić stan wdrożenia, wybierz ikonę powiadomienia (dzwonek) na pasku narzędzi.
+Aby sprawdzić stan wdrożenia, wybierz ikonę powiadomienia (dzwonek) na pasku narzędzi.
 
-   ![Tworzenie obszaru roboczego](./media/aml-create-in-portal/notifications.png)
+   ![Stan tworzenia obszaru roboczego](./media/aml-create-in-portal/notifications.png)
 
-   Po zakończeniu zostanie wyświetlony komunikat o powodzeniu wdrożenia.  Jest również obecny w sekcji powiadomienia.   Kliknij pozycję **przejdź do zasobu** przycisk, aby wyświetlić nowy obszar roboczy.
+Po zakończeniu procesu pojawi się komunikat o powodzeniu wdrożenia. Jest również obecny w sekcji powiadomienia. Aby wyświetlić nowy obszar roboczy, wybierz **przejdź do zasobu**.

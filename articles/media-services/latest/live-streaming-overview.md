@@ -4,29 +4,29 @@ description: Dzięki temu tematu z omówieniem transmisja strumieniowa na żywo 
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/06/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: e9ecf1ba3022ca057fa09bad2413aa19d902ae23
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 533aa505c38d3cbfb46d70acecd43cc66614b13d
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972183"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378140"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Przesyłanie strumieniowe przy użyciu usługi Azure Media Services v3 na żywo
 
 Gdy dostarczanie wydarzeń transmisji strumieniowej na żywo w usłudze Azure Media Services to zwykle wymagane są następujące składniki:
 
 * Kamera, która umożliwia emisję wydarzenia.
-* Koder wideo na żywo, który konwertuje sygnały z kamery (lub innego urządzenia, takie jak laptop) do strumieni, które są wysyłane do usługi Media Services na żywo usługi przesyłania strumieniowego. Sygnały mogą również obejmować anonsowanie SCTE 35 i podpowiedzi Ad. 
-* Usługi transmisji strumieniowej na żywo usługi Media Services umożliwia pozyskiwania, w wersji zapoznawczej, pakietów, rejestrowanie, szyfrowania i emisji zawartości do klientów lub do sieci CDN w celu dalszej dystrybucji.
+* Koder wideo na żywo, który konwertuje sygnały z kamery (lub innego urządzenia, takie jak laptop) do strumieni, które są wysyłane do usługi przesyłania strumieniowego iąż. Sygnały mogą również obejmować anonsowanie SCTE 35 i podpowiedzi Ad. 
+* Usługa Media Services transmisji strumieniowej na żywo umożliwia pozyskiwania, w wersji zapoznawczej, pakietów, rejestrowanie, szyfrowania i emisji zawartości do klientów lub do sieci CDN w celu dalszej dystrybucji.
 
 W tym artykule szczegółowo omówiono i zawiera diagramy główne składniki zaangażowane w transmisji strumieniowej na żywo za pomocą usługi Media Services.
 
@@ -40,6 +40,17 @@ Usługi Media Services umożliwia dostarczanie zawartości dynamicznie zaszyfrow
 
 Jeśli to konieczne, można także zastosować **filtrowanie dynamiczne**, który może służyć do kontrolowania liczby ścieżek, formatów, szybkości transmisji, które są wysłane do odtwarzaczy. Usługa Media Services obsługuje także wstawianiem reklam.
 
+### <a name="new-live-encoding-improvements"></a>Nowe ulepszenia kodowania na żywo
+
+Następujące nowe ulepszenia zostały wykonane w najnowszej wersji.
+
+- Nowy tryb małe opóźnienia na żywo (10 sekund end-to-end).
+- Ulepszona obsługa protokołu RTMP (Zwiększona stabilność i więcej obsługę kodera źródłowego).
+- Pozyskuj RTMPS bezpieczne.
+
+    Po utworzeniu element LiveEvent teraz uzyskać adresy URL pozyskiwania 4. Pozyskiwanie 4 adresy URL są niemal identyczne, mają ten sam token przesyłania strumieniowego (AppId), tylko część numer portu jest inny. Są dwa adresy URL podstawowego i zapasowego dla RTMPS.   
+- Obsługa transkodowanie 24-godzinnym. 
+- Ulepszona obsługa sygnalizowanie ad w RTMP za pośrednictwem SCTE35.
 
 ## <a name="liveevent-types"></a>Element LiveEvent typów
 

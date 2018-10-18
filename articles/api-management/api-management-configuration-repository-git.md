@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 8c4ae9c7b8be8cf390ad4ad6d99cd1ec41cd3d08
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: ce4ff33a8af9cf864ad4902599a0ab18b2b27182
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42059221"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387229"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Zapisywanie i konfigurowanie konfiguracji usługi API Management przy użyciu narzędzia Git
 
@@ -219,14 +219,14 @@ Ustawienie ostatecznego `$ref-policy`, mapy do pliku instrukcje zasad globalnych
 ### <a name="apis-folder"></a>folder interfejsów API
 `apis` Folder zawiera folder dla każdego interfejsu API w wystąpieniu usługi, która zawiera następujące elementy.
 
-* `apis\<api name>\configuration.json` — to jest Konfiguracja interfejsu API i zawiera informacje dotyczące adresu URL usługi wewnętrznej bazy danych i operacje. Jest to te same informacje, które zostaną zwrócone, jeśli nastąpi wywołanie [uzyskać konkretnego interfejsu API](https://docs.microsoft.com/en-us/rest/api/apimanagement/api/get) z `export=true` w `application/json` formatu.
-* `apis\<api name>\api.description.html` — to jest opis interfejsu API i odpowiada `description` właściwość [jednostki interfejsu API](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.table._entity_property).
-* `apis\<api name>\operations\` — Ten folder zawiera `<operation name>.description.html` pliki, które są mapowane na operacje w interfejsie API. Każdy plik zawiera opis jednej operacji w interfejsie API, który mapuje `description` właściwość [jednostki operacji](https://docs.microsoft.com/en-us/rest/api/visualstudio/operations/list#operationproperties) w interfejsie API REST.
+* `apis\<api name>\configuration.json` — to jest Konfiguracja interfejsu API i zawiera informacje dotyczące adresu URL usługi wewnętrznej bazy danych i operacje. Jest to te same informacje, które zostaną zwrócone, jeśli nastąpi wywołanie [uzyskać konkretnego interfejsu API](https://docs.microsoft.com/rest/api/apimanagement/api/get) z `export=true` w `application/json` formatu.
+* `apis\<api name>\api.description.html` — to jest opis interfejsu API i odpowiada `description` właściwość [jednostki interfejsu API](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property).
+* `apis\<api name>\operations\` — Ten folder zawiera `<operation name>.description.html` pliki, które są mapowane na operacje w interfejsie API. Każdy plik zawiera opis jednej operacji w interfejsie API, który mapuje `description` właściwość [jednostki operacji](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) w interfejsie API REST.
 
 ### <a name="groups-folder"></a>folder grupy
 `groups` Zawiera folder dla każdej grupy zdefiniowane w wystąpieniu usługi.
 
-* `groups\<group name>\configuration.json` — jest to konfiguracja dla grupy. Jest to te same informacje, które zostaną zwrócone, jeśli nastąpi wywołanie [Pobierz określoną grupę](https://docs.microsoft.com/en-us/rest/api/apimanagement/group/get) operacji.
+* `groups\<group name>\configuration.json` — jest to konfiguracja dla grupy. Jest to te same informacje, które zostaną zwrócone, jeśli nastąpi wywołanie [Pobierz określoną grupę](https://docs.microsoft.com/rest/api/apimanagement/group/get) operacji.
 * `groups\<group name>\description.html` — to jest opis grupy i odpowiada `description` właściwość [grupy jednostek](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity).
 
 ### <a name="policies-folder"></a>folder zasady
@@ -246,7 +246,7 @@ Ustawienie ostatecznego `$ref-policy`, mapy do pliku instrukcje zasad globalnych
 ### <a name="products-folder"></a>folder produktów
 `products` Zawiera folder dla każdego produktu z definicją w wystąpieniu usługi.
 
-* `products\<product name>\configuration.json` — jest to konfiguracja dla produktu. Jest to te same informacje, które zostaną zwrócone, jeśli nastąpi wywołanie [pobrać określonego produktu](https://docs.microsoft.com/en-us/rest/api/apimanagement/product/get) operacji.
+* `products\<product name>\configuration.json` — jest to konfiguracja dla produktu. Jest to te same informacje, które zostaną zwrócone, jeśli nastąpi wywołanie [pobrać określonego produktu](https://docs.microsoft.com/rest/api/apimanagement/product/get) operacji.
 * `products\<product name>\product.description.html` — to jest opis produktu i odpowiada `description` właściwość [jednostkę produktu](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) w interfejsie API REST.
 
 ### <a name="templates"></a>templates

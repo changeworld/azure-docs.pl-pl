@@ -7,23 +7,24 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: rezas
-ms.openlocfilehash: 864af9cae35912d95f2c0bf0b574a5ca2404a608
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 903f8284327d3d5b9ef386305a436ce44a8a11b2
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190645"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378106"
 ---
 # <a name="use-ip-filters"></a>Użyj filtrów IP
 
-Zabezpieczenia są istotnym elementem każde rozwiązanie IoT, w oparciu o usługi Azure IoT Hub. Czasami Musisz jawnie określić adresy IP, z których można połączyć urządzenia jako część konfiguracji zabezpieczeń. _Filtru IP_ funkcja umożliwia skonfigurowanie reguł dla odrzuca lub akceptowania ruchu z określonych adresów IPv4.
+Zabezpieczenia są istotnym elementem każde rozwiązanie IoT, w oparciu o usługi Azure IoT Hub. Czasami Musisz jawnie określić adresy IP, z których można połączyć urządzenia jako część konfiguracji zabezpieczeń. *Filtru IP* funkcja umożliwia skonfigurowanie reguł dla odrzuca lub akceptowania ruchu z określonych adresów IPv4.
 
 ## <a name="when-to-use"></a>Kiedy stosować
 
 Istnieją dwa szczególne przypadki użycia, gdy jest ona przydatne blokowanie punktów końcowych usługi IoT Hub dla określonych adresów IP:
 
-- Centrum IoT hub powinny odbierać ruch tylko z określonego zakresu adresów IP i odrzucić wszystkie inne elementy. Na przykład używasz usługi IoT hub przy użyciu [Usługa Azure Expressroute] na tworzenie prywatnych połączeń między centrum IoT hub i infrastrukturą lokalną.
-- Należy odrzucić ruch z adresów IP, które zostały zidentyfikowane jako podejrzane przez administratora usługi IoT hub.
+* Centrum IoT hub powinny odbierać ruch tylko z określonego zakresu adresów IP i odrzucić wszystkie inne elementy. Na przykład używasz usługi IoT hub przy użyciu [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) na tworzenie prywatnych połączeń między centrum IoT hub i infrastrukturą lokalną.
+
+* Należy odrzucić ruch z adresów IP, które zostały zidentyfikowane jako podejrzane przez administratora usługi IoT hub.
 
 ## <a name="how-filter-rules-are-applied"></a>Sposób stosowania reguły filtrowania
 
@@ -35,21 +36,23 @@ Każda próba połączenia z adresu IP, który jest zgodny z wydzielenia reguł�
 
 Domyślnie **filtru IP** siatki w portalu dla usługi IoT hub jest pusty. To ustawienie domyślne oznacza, że Centrum akceptuje połączenia z dowolnego adresu IP. To ustawienie domyślne jest odpowiednikiem regułę, która akceptuje zakres adresów IP 0.0.0.0/0.
 
-![Ustawienia filtru IP domyślnej usługi IoT Hub][img-ip-filter-default]
+![Ustawienia filtru IP domyślnej usługi IoT Hub](./media/iot-hub-ip-filtering/ip-filter-default.png)
 
 ## <a name="add-or-edit-an-ip-filter-rule"></a>Dodawanie lub edytowanie reguły filtrowania adresów IP
 
 Po dodaniu regułę filtrowania adresów IP, zostanie wyświetlony monit o następujących wartości:
 
-- **Nazwa reguły filtrowania adresów IP** który musi być unikatowy, bez uwzględniania wielkości liter, alfanumerycznego ciągu maksymalnie 128 znaków. Tylko znaki ASCII 7-bitowe znaki alfanumeryczne oraz `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` są akceptowane.
-- Wybierz **Odrzuć** lub **zaakceptować** jako **akcji** reguły filtrowania adresów IP.
-- Podaj pojedynczy adres IPv4 lub bloku adresów IP w notacji CIDR. Na przykład w CIDR 192.168.100.0/22 notacji reprezentuje 1024 adresów IPv4 od 192.168.100.0 do 192.168.103.255.
+* **Nazwa reguły filtrowania adresów IP** który musi być unikatowy, bez uwzględniania wielkości liter, alfanumerycznego ciągu maksymalnie 128 znaków. Tylko znaki ASCII 7-bitowe znaki alfanumeryczne oraz `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` są akceptowane.
 
-![Dodawanie reguły filtrowania adresów IP do usługi IoT hub][img-ip-filter-add-rule]
+* Wybierz **Odrzuć** lub **zaakceptować** jako **akcji** reguły filtrowania adresów IP.
+
+* Podaj pojedynczy adres IPv4 lub bloku adresów IP w notacji CIDR. Na przykład w CIDR 192.168.100.0/22 notacji reprezentuje 1024 adresów IPv4 od 192.168.100.0 do 192.168.103.255.
+
+![Dodawanie reguły filtrowania adresów IP do usługi IoT hub](./media/iot-hub-ip-filtering/ip-filter-add-rule.png)
 
 Po zapisaniu reguły zobaczysz alert informujący, że aktualizacja jest w toku.
 
-![Powiadomienie dotyczące zapisywania regułę filtrowania adresów IP][img-ip-filter-save-new-rule]
+![Powiadomienie dotyczące zapisywania regułę filtrowania adresów IP](./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png)
 
 **Dodaj** opcja jest wyłączona po przejściu do maksymalnie 10 reguł filtrowania adresów IP.
 
@@ -65,7 +68,7 @@ Możesz edytować istniejącą regułę, klikając dwukrotnie wiersz, który zaw
 
 Aby usunąć regułę filtrowania adresów IP, wybierz co najmniej jedną regułę w siatce i kliknij przycisk **Usuń**.
 
-![Usuń regułę filtrowania adresów IP Centrum IoT][img-ip-filter-delete-rule]
+![Usuń regułę filtrowania adresów IP Centrum IoT](./media/iot-hub-ip-filtering/ip-filter-delete-rule.png)
 
 ## <a name="ip-filter-rule-evaluation"></a>Ocenę reguł filtrowania adresów IP
 
@@ -77,27 +80,11 @@ Można zmienić kolejność reguł filtrowania adresów IP w siatce, klikając W
 
 Aby zapisać nowy kolejność reguł filtrowania adresów IP, kliknij przycisk **Zapisz**.
 
-![Zmień kolejność reguł filtrowania adresów IP Centrum IoT][img-ip-filter-rule-order]
+![Zmień kolejność reguł filtrowania adresów IP Centrum IoT](./media/iot-hub-ip-filtering/ip-filter-rule-order.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby bliżej zapoznać się z możliwościami usługi IoT Hub, zobacz:
 
-- [Monitorowanie operacji][lnk-monitor]
-- [Metryki usługi IoT Hub][lnk-metrics]
-
-<!-- Images -->
-[img-ip-filter-default]: ./media/iot-hub-ip-filtering/ip-filter-default.png
-[img-ip-filter-add-rule]: ./media/iot-hub-ip-filtering/ip-filter-add-rule.png
-[img-ip-filter-save-new-rule]: ./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png
-[img-ip-filter-delete-rule]: ./media/iot-hub-ip-filtering/ip-filter-delete-rule.png
-[img-ip-filter-rule-order]: ./media/iot-hub-ip-filtering/ip-filter-rule-order.png
-
-
-<!-- Links -->
-
-[IoT Hub developer guide]: iot-hub-devguide.md
-[Usługa Azure Expressroute]:  https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services
-
-[lnk-monitor]: iot-hub-operations-monitoring.md
-[lnk-metrics]: iot-hub-metrics.md
+* [Monitorowanie operacji](iot-hub-operations-monitoring.md)
+* [Metryki usługi IoT Hub](iot-hub-metrics.md)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ea9eecbc1d59b80e5454a2677e897588d258c96a
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: c0045af02b307bff686d47dd8fc4aabb290711a4
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48874152"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49400386"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dysków maszyn wirtualnych IaaS platformy Azure i dyski zarządzane i niezarządzane — wersja premium
 
@@ -171,7 +171,7 @@ W poniższym przykładzie przedstawiono *properties.storageProfile.osDisk* dotyc
 Aby uzyskać kompletny szablon przykład sposobu tworzenia dysku SSD w warstwie standardowa przy użyciu szablonu, zobacz [Utwórz Maszynę wirtualną z obrazu Windows przy użyciu standardowych dysków z danymi SSD](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/).
 
 **Czy mogę przekonwertować istniejące dysków do SSD w warstwie standardowa?**
-Tak, możesz. Zapoznaj się [przekonwertować zarządzanego usługi Azure dyski magazynu od planu standard do premium i na odwrót](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/convert-disk-storage) ogólne wytyczne do konwertowania Managed Disks. Ponadto za pomocą następującej wartości w celu zaktualizowania typu dysku na SSD w warstwie standardowa.
+Tak, możesz. Zapoznaj się [przekonwertować zarządzanego usługi Azure dyski magazynu od planu standard do premium i na odwrót](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) ogólne wytyczne do konwertowania Managed Disks. Ponadto za pomocą następującej wartości w celu zaktualizowania typu dysku na SSD w warstwie standardowa.
 -AccountType StandardSSD_LRS
 
 **Zaletą używania dysków SSD w warstwie standardowa zamiast HDD co to jest?**

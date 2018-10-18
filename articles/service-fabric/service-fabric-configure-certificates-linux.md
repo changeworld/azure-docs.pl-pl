@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/26/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 97f33a1c0c42b534dafd1e4ed378b655b339395a
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: aa84dc4cb23a0fa2fa854e1f3d6da1234ec00bd6
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42055858"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386641"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Certyfikaty i zabezpieczenia w klastrach systemu Linux
 
@@ -35,7 +35,7 @@ W przypadku instalacji certyfikatu z usługi Azure Key Vault przy użyciu [szabl
 
 ## <a name="certificates-referenced-in-the-application-manifest"></a>Certyfikaty, do którego odwołuje się manifest aplikacji
 
-Certyfikat określony w aplikacji manifestu, na przykład za pośrednictwem [ **SecretsCertificate** ](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) lub [ **EndpointCertificate** ](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-service-model-schema-elements#endpointcertificate-element)elementów, musi znajdować się w */var/lib/sfcerts* katalogu. Elementy, które są używane do określania certyfikaty w manifeście aplikacji nie mają atrybutu ścieżki, więc certyfikaty muszą być obecne w domyślnym katalogu. Te elementy, wykonaj opcjonalne **X509StoreName** atrybutu. Wartość domyślna to "Mój", która wskazuje na */var/lib/sfcerts* katalogu węzłów systemu Linux. Dowolna inna wartość jest niezdefiniowana w klastrze systemu Linux. Firma Microsoft zaleca, aby pominąć **X509StoreName** atrybutu dla aplikacji, które działały w klastrach Linux. 
+Certyfikat określony w aplikacji manifestu, na przykład za pośrednictwem [ **SecretsCertificate** ](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) lub [ **EndpointCertificate** ](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#endpointcertificate-element)elementów, musi znajdować się w */var/lib/sfcerts* katalogu. Elementy, które są używane do określania certyfikaty w manifeście aplikacji nie mają atrybutu ścieżki, więc certyfikaty muszą być obecne w domyślnym katalogu. Te elementy, wykonaj opcjonalne **X509StoreName** atrybutu. Wartość domyślna to "Mój", która wskazuje na */var/lib/sfcerts* katalogu węzłów systemu Linux. Dowolna inna wartość jest niezdefiniowana w klastrze systemu Linux. Firma Microsoft zaleca, aby pominąć **X509StoreName** atrybutu dla aplikacji, które działały w klastrach Linux. 
 
 ## <a name="certificates-referenced-in-the-configuration-package-settingsxml"></a>Certyfikaty, do którego odwołuje się pakiet konfiguracji (Settings.xml)
 

@@ -3,19 +3,19 @@ title: 'Szybki start: generowanie miniatury — REST, Ruby — przetwarzanie obr
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start wygenerujesz miniaturę obrazu za pomocą interfejsu API przetwarzania obrazów przy użyciu języka Ruby.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 117e1fcc49aea5b3cef3e8d3b299a1eec90527db
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 16cfadb1b1dec90324739427656a6587ba6314cc
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632946"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343048"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-ruby-in-computer-vision"></a>Szybki start: generowanie miniatury w funkcji przetwarzania obrazów przy użyciu interfejsu API REST i języka Ruby
 
@@ -39,7 +39,7 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
     1. Opcjonalnie zastąp wartość `https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Shorkie_Poo_Puppy.jpg/1280px-Shorkie_Poo_Puppy.jpg\` adresem URL innego obrazu, dla którego chcesz wygenerować miniaturę.
 1. Zapisz kod jako plik z rozszerzeniem `.rb`. Na przykład `get-thumbnail.rb`.
 1. Otwórz okno wiersza polecenia.
-1. W tym oknie użyj polecenia `ruby`, aby uruchomić przykładowy kod. Na przykład `ruby get-thumbnail.rb`.
+1. W wierszu polecenia użyj polecenia `ruby`, aby uruchomić próbkę. Na przykład `ruby get-thumbnail.rb`.
 
 ```ruby
 require 'net/http'
@@ -86,4 +86,4 @@ Gdy plik nie będzie już potrzebny, usuń go.
 Zapoznaj się z interfejsem API przetwarzania obrazów używanym do analizy obrazu, wykrywania osobistości i charakterystycznych elementów krajobrazu, tworzenia miniatur oraz wyodrębniania tekstu drukowanego i odręcznego. Aby szybko zacząć eksperymentować z interfejsem API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
-> [Poznaj interfejs API przetwarzania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [Zobacz, jak działa interfejs API przetwarzania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

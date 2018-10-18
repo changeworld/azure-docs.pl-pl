@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 4ffe6cf3f1da4c149d1cb39856d02fc40acd20cf
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 396fb947a95ebc634ab0dea24d20f35126bc006e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984796"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389449"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Dodaj Google jako dostawcy tożsamości dla użytkowników-gości B2B
 
@@ -68,7 +68,7 @@ Najpierw utwórz nowy projekt w konsoli deweloperów Google, aby otrzymać klien
 Teraz będzie ustawisz klienta Google identyfikator i klucz tajny klienta, wprowadzając ją w portalu usługi Azure AD lub przy użyciu programu PowerShell. Należy przetestować konfiguracji Federacji Google zapraszając samodzielnie przy użyciu adresu Gmail i podjęcie próby, aby zrealizować zaproszenia za pomocą konta Google, które otrzymało zaproszenie. 
 
 #### <a name="to-configure-google-federation-in-the-azure-ad-portal"></a>W celu skonfigurowania Federacji Google w portalu usługi Azure AD 
-1. Przejdź do witryny [Azure Portal](https://portal.azure.com). W okienku po lewej stronie wybierz **usługi Azure Active Directory**. 
+1. Przejdź do witryny [Azure Portal](https://portal.azure.com). W lewym okienku wybierz pozycję **Azure Active Directory**. 
 2. Wybierz **relacje w organizacji**.
 3. Wybierz **dostawców tożsamości**, a następnie kliknij przycisk **Google** przycisku.
 4. Wprowadź nazwę. Następnie wprowadź identyfikator klienta i klucz tajny klienta, który został uzyskany wcześniej. Wybierz pozycję **Zapisz**. 
@@ -84,13 +84,13 @@ Teraz będzie ustawisz klienta Google identyfikator i klucz tajny klienta, wprow
    `New-AzureADMSIdentityProvider -Type Google -Name Google -ClientId [Client ID] -ClientSecret [Client secret]`
  
    > [!NOTE]
-   > Użyj identyfikatora klienta i wpisu tajnego z aplikacji utworzonej w klienta "krok 1: Konfigurowanie projektu programu Google developer." Aby uzyskać więcej informacji, zobacz [New AzureADMSIdentityProvider](https://docs.microsoft.com/en-us/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) artykułu. 
+   > Użyj identyfikatora klienta i wpisu tajnego z aplikacji utworzonej w klienta "krok 1: Konfigurowanie projektu programu Google developer." Aby uzyskać więcej informacji, zobacz [New AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) artykułu. 
  
 ## <a name="how-do-i-remove-google-federation"></a>Jak usunąć Federacji Google?
 Możesz usunąć konfigurację Federacji Google. Jeśli tak zrobisz, Google użytkowników-gości, którzy już wykorzystana zaproszenia nie będą mogli logować, ale możesz udzielić ich dostępu do zasobów ponownie przez usunięcie ich z katalogu i ponownie zapraszając ich. 
  
 ### <a name="to-delete-google-federation-in-the-azure-ad-portal"></a>Do usunięcia federacyjny Google w portalu usługi Azure AD: 
-1. Przejdź do witryny [Azure Portal](https://portal.azure.com). W okienku po lewej stronie wybierz **usługi Azure Active Directory**. 
+1. Przejdź do witryny [Azure Portal](https://portal.azure.com). W lewym okienku wybierz pozycję **Azure Active Directory**. 
 2. Wybierz **relacje w organizacji**.
 3. Wybierz **dostawców tożsamości**, a następnie kliknij przycisk **Google** przycisku.
 4. Wybierz **Google**, a następnie wybierz pozycję **Usuń**. 
@@ -108,4 +108,4 @@ Możesz usunąć konfigurację Federacji Google. Jeśli tak zrobisz, Google uży
     `Remove-AzureADMSIdentityProvider -Id Google-OAUTH`
 
    > [!NOTE]
-   > Aby uzyskać więcej informacji, zobacz [AzureADMSIdentityProvider Usuń](https://docs.microsoft.com/en-us/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview). 
+   > Aby uzyskać więcej informacji, zobacz [AzureADMSIdentityProvider Usuń](https://docs.microsoft.com/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview). 

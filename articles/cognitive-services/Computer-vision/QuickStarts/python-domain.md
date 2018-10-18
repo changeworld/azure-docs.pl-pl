@@ -3,19 +3,19 @@ title: 'Szybki start: korzystanie z modelu domeny — REST, Python — przetwarz
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start użyjesz modeli domeny do rozpoznania znanych osobistości i charakterystycznych elementów krajobrazu na obrazie przy użyciu interfejsu API przetwarzania obrazów oraz języka Python.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 93027e2f9cd3a9b0e9c6ef261b8af876022632a4
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: f8ba4709f8263119dd5134040797f085ee8239ff
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632453"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339476"
 ---
 # <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>Szybki start: korzystanie z modelu domeny w funkcji przetwarzania obrazów przy użyciu interfejsu API REST i języka Python
 
@@ -43,7 +43,7 @@ Aby utworzyć i uruchomić przykładowy kod do rozpoznawania elementów krajobra
     1. Opcjonalnie zastąp wartość `image_url` adresem URL innego obrazu, na którym chcesz wykryć elementy krajobrazu.
 1. Zapisz kod jako plik z rozszerzeniem `.py`. Na przykład `get-landmarks.py`.
 1. Otwórz okno wiersza polecenia.
-1. W tym oknie użyj polecenia `python`, aby uruchomić przykładowy kod. Na przykład `python get-landmarks.py`.
+1. W wierszu polecenia użyj polecenia `python`, aby uruchomić próbkę. Na przykład `python get-landmarks.py`.
 
 ```python
 import requests
@@ -127,7 +127,7 @@ Aby utworzyć i uruchomić przykładowy kod do rozpoznawania elementów krajobra
     1. Opcjonalnie zastąp wartość `image_url` adresem URL innego obrazu, na którym chcesz wykryć osobistości.
 1. Zapisz kod jako plik z rozszerzeniem `.py`. Na przykład `get-celebrities.py`.
 1. Otwórz okno wiersza polecenia.
-1. W tym oknie użyj polecenia `python`, aby uruchomić przykładowy kod. Na przykład `python get-celebrities.py`.
+1. W wierszu polecenia użyj polecenia `python`, aby uruchomić próbkę. Na przykład `python get-celebrities.py`.
 
 ```python
 import requests

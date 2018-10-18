@@ -4,61 +4,61 @@ description: Ten artykuł zawiera odpowiedzi na często zadawane pytania dotycz�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/29/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 098a34aba8e5ce23f64d4bb07e3b9622aa2adb8e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: dccbc6e57e970ec7089f81fccb33b741b9c00e74
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110424"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376724"
 ---
-# <a name="azure-media-services-v3-preview-frequently-asked-questions"></a>Azure Media Services w wersji 3 (wersja zapoznawcza) — często zadawane pytania
+# <a name="azure-media-services-v3-frequently-asked-questions"></a>Azure Media Services v3 — często zadawane pytania
 
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Media Services (AMS) w wersji 3.
 
-## <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>Do zarządzania zasobami v3 można używać portalu Azure?
+## <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>Czy można użyć witryny Azure portal w celu zarządzania zasobami v3?
 
-Jeszcze nie. Można użyć jednego z obsługiwanych zestawów SDK. Zobacz samouczki i przykłady w tym zestawie dokumentów.
+Jeszcze nie. Można użyć jednego z obsługiwanych zestawów SDK. Zobacz, samouczki i przykłady w tym zestawie dokumentów.
 
-## <a name="is-there-an-api-for-configuring-media-reserved-units"></a>Do konfigurowania jednostki zarezerwowane multimediów to interfejs API?
+## <a name="is-there-an-api-for-configuring-media-reserved-units"></a>Do konfigurowania jednostek zarezerwowanych multimediów to interfejs API?
 
-Zespół usługi Media Services jest wyeliminowanie RUs w wersji 3. Jednak pracy wymagane usługi nie została ukończona. Do tego czasu klienci mają do portalu Azure lub interfejsów API usług AMS v2 skonfiguruj RUs (zgodnie z opisem w [skalowanie przetwarzania multimediów](../previous/media-services-scale-media-processing-overview.md). 
+Zespół usługi Media Services jest wyeliminowanie (RUS) w wersji 3. Jednak pracy wymaganej usługi nie została ukończona. Do tego czasu, klienci muszą użyć witryny Azure portal lub interfejsów API usług AMS w wersji 2 można ustawić jednostki zarezerwowane (zgodnie z opisem w [skalowanie przetwarzania multimediów](../previous/media-services-scale-media-processing-overview.md). 
 
-Korzystając z **VideoAnalyzerPreset** i/lub **AudioAnalyzerPreset**, ustawić konta usługi Media Services do 10 jednostki zarezerwowane multimediów S3.
+Korzystając z **VideoAnalyzerPreset** i/lub **AudioAnalyzerPreset**, ustawić konto usługi Media Services do 10 jednostek zarezerwowanych multimediów S3.
 
-## <a name="does-v3-asset-have-no-assetfile-concept"></a>V3 zasobów ma pojęcie AssetFile?
+## <a name="does-v3-asset-have-no-assetfile-concept"></a>Zasób V3 ma koncepcja AssetFile?
 
-AssetFiles zostały usunięte z interfejsu API usług AMS aby oddzielić Media Services z zestawu SDK usługi Magazyn zależności. Teraz magazynu, a nie usługi Media Services, przechowuje informacje, które należy w magazynie. 
+AssetFiles zostały usunięte z interfejsem API usługi AMS w celu oddzielenia usługi Media Services z zależności zestawu SDK usługi Storage. Teraz Magazyn, a nie usługi Media Services przechowuje informacje, które należy w magazynie. 
 
-## <a name="where-did-client-side-storage-encryption-go"></a>Gdzie szyfrowanie po stronie klienta magazynu?
+## <a name="where-did-client-side-storage-encryption-go"></a>Dokąd zostały przeniesione szyfrowanie po stronie klienta magazynu?
 
-Zaleca się teraz szyfrowanie po stronie serwera, magazynu, (która jest domyślnie włączona). Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Magazyn Azure dla danych magazynowanych](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
+Zaleca się teraz szyfrowanie po stronie serwera, magazynowania, (która jest domyślnie włączone). Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Azure Storage dla danych magazynowanych](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
 
-## <a name="what-is-the-recommended-upload-method"></a>Co to jest metoda przekazywania zalecane?
+## <a name="what-is-the-recommended-upload-method"></a>Co to jest metoda zalecana przekazywania?
 
-Zaleca się użycie HTTP (s) wysyła strumień. Aby uzyskać więcej informacji, zobacz [pozyskiwania HTTP (s)](job-input-from-http-how-to.md).
+Zaleca się, że pozyskuje użytkowania HTTP (s). Aby uzyskać więcej informacji, zobacz [pozyskiwania HTTP (s)](job-input-from-http-how-to.md).
 
-## <a name="how-does-pagination-work"></a>Jak działa podział na strony
+## <a name="how-does-pagination-work"></a>Jak działa dzielenia na strony
 
-Usługa Media Services obsługuje $top dla zasobów, które obsługują OData, ale wartość przekazana do $top musi być mniejsza niż 1000 (na przykład rozmiar strony dla podział na strony).
+Usługa Media Services obsługuje $top dla zasobów, które obsługują OData, ale wartość przekazana do $top musi być mniejsza niż 1000 (na przykład rozmiar strony dla podziału na strony).
 
-Umożliwia uzyskanie albo małej przykładowej elementów przy użyciu $top (na przykład 100 najnowsze elementy) lub strona mimo że wszystkie elementy przy użyciu podział na strony. 
+Dzięki temu można uzyskać małą próbkę elementów za pomocą $top (na przykład 100 najnowsze elementy) lub stronie mimo że wszystkie elementy przy użyciu dzielenia na strony. 
 
-Usługa Media Services nie obsługuje stronicowania za pomocą danych z określonego przez użytkownika rozmiar strony.
+Usługa Media Services nie obsługuje stronicować je z użytkownikiem, który został określony rozmiar strony.
 
 Aby uzyskać więcej informacji, zobacz [filtrowanie, porządkowanie, stronicowania](assets-concept.md#filtering-ordering-paging)
 
-## <a name="how-to-retrieve-an-entity-in-media-services-v3"></a>Jak pobrać jednostki w wersji 3 usługi Media Services?
+## <a name="how-to-retrieve-an-entity-in-media-services-v3"></a>Jak pobrać jednostki w usłudze Media Services v3?
 
-v3 opiera się na ujednoliconego powierzchni interfejsu API, który udostępnia funkcje zarówno zarządzanie i operacje, w oparciu **usługi Azure Resource Manager**. Zgodnie z **usługi Azure Resource Manager**, nazw zasobów są unikatowe. W związku z tym jako nazw zasobów można używać dowolnych ciągów będących unikatowymi identyfikatorami (na przykład identyfikatorów GUID). 
+v3 opiera się na ujednoliconego powierzchni interfejsu API, który udostępnia funkcje zarządzania i operacje oparte na **usługi Azure Resource Manager**. Zgodnie z **usługi Azure Resource Manager**, nazw zasobów są unikatowe. W związku z tym jako nazw zasobów można używać dowolnych ciągów będących unikatowymi identyfikatorami (na przykład identyfikatorów GUID). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Omówienie v3 Media Services](media-services-overview.md)
+> [Przegląd usługi Media Services v3](media-services-overview.md)

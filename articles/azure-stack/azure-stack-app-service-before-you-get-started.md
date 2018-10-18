@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: anwestg
-ms.openlocfilehash: e5fc6b5d396a45d15548cfdd8f445158147ad12f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 08fcaa44fc807f986324b8304010792af99fd838
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056226"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388008"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Przed rozpoczęciem pracy z usługą App Service w usłudze Azure Stack
 
@@ -310,7 +310,7 @@ Wykonaj następujące kroki:
 3. [Instalowanie programu PowerShell dla usługi Azure Stack](azure-stack-powershell-install.md).
 4. Uruchom **AADIdentityApp.ps1 Utwórz** skryptu. Po wyświetleniu monitu wprowadź identyfikator dzierżawy usługi Azure AD, który używany w przypadku wdrożenia usługi Azure Stack. Na przykład, wprowadź **myazurestack.onmicrosoft.com**.
 5. W **poświadczeń** okna, podaj konto administratora usługi Azure AD i hasło. Kliknij przycisk **OK**.
-6. Wprowadź hasło certyfikatu i ścieżka do pliku certyfikatu [certyfikatu utworzony wcześniej](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack). Certyfikat utworzony dla tego kroku, domyślnie jest **sso.appservice.local.azurestack.external.pfx**.
+6. Wprowadź hasło certyfikatu i ścieżka do pliku certyfikatu [certyfikatu utworzony wcześniej](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack). Certyfikat utworzony dla tego kroku, domyślnie jest **sso.appservice.local.azurestack.external.pfx**.
 7. Skrypt tworzy nową aplikację w dzierżawie wystąpienia usługi Azure AD. Zanotuj identyfikator aplikacji, który jest zwracany w danych wyjściowych programu PowerShell. Potrzebujesz tych informacji podczas instalacji.
 8. Otwórz nowe okno przeglądarki i zaloguj się do [witryny Azure portal](https://portal.azure.com) jako administratora usługi Azure Active Directory
 9. Otwórz dostawcy zasobów usługi Azure AD.
@@ -350,11 +350,11 @@ Administratorzy, należy skonfigurować logowanie Jednokrotne:
 Wykonaj następujące kroki:
 
 1. Otwórz wystąpienie programu PowerShell jako azurestack\AzureStackAdmin.
-2. Przejdź do lokalizacji, skryptów, które pobrane i wyodrębnione w [kroku wymagań wstępnych](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts).
+2. Przejdź do lokalizacji, skryptów, które pobrane i wyodrębnione w [kroku wymagań wstępnych](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts).
 3. [Instalowanie programu PowerShell dla usługi Azure Stack](azure-stack-powershell-install.md).
 4. Uruchom **ADFSIdentityApp.ps1 Utwórz** skryptu.
 5. W **poświadczeń** okna, podaj konto administratora chmury usług AD FS i hasło. Kliknij przycisk **OK**.
-6. Ścieżka do pliku certyfikatu i hasła certyfikatu dla [certyfikatu utworzony wcześniej](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack). Certyfikat utworzony dla tego kroku, domyślnie jest **sso.appservice.local.azurestack.external.pfx**.
+6. Ścieżka do pliku certyfikatu i hasła certyfikatu dla [certyfikatu utworzony wcześniej](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack). Certyfikat utworzony dla tego kroku, domyślnie jest **sso.appservice.local.azurestack.external.pfx**.
 
 ```PowerShell
     Create-ADFSIdentityApp.ps1

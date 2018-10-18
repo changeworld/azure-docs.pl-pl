@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: a4758e5597876112fa7a85850786491e22af8c83
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 868f465cc651043d3ef4b1735b4b528252572dbb
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037144"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378089"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Bezpieczny dostęp do konta usługi Azure Cosmos DB przy użyciu punktu końcowego usługi Azure Virtual Network
 
@@ -226,7 +226,7 @@ Tak, sieciami wirtualnymi utworzonymi w różnych regionach jest dostępna po no
 
 Tak, usługa sieci wirtualnych punktu końcowego i zapory mogą współistnieć. Ogólnie rzecz biorąc należy zagwarantować, że dostęp do portalu jest zawsze włączona przed skonfigurowaniem punktu końcowego usługi sieci wirtualnej umożliwia wyświetlanie metryk skojarzonych z danym kontenerem.
 
-### <a name="can-i-allow-access-to-other-azure-services-from-a-given-azure-region-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>Można I "Zezwalaj na dostęp do innych usług platformy Azure w danym regionie platformy Azure" po włączeniu dostępu do punktu końcowego usługi dla usługi Azure Cosmos DB?  
+### <a name="can-i-accept-connections-from-within-public-azure-datacenters-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>Można "Akceptuj połączenia z w ramach publicznych centrów danych platformy Azure" I po włączeniu dostępu do punktu końcowego usługi dla usługi Azure Cosmos DB?  
 
 Jest to wymagane tylko, aby Twoje konto usługi Azure Cosmos DB można uzyskać dostęp przez inne platformy Azure do pierwszej strony usług takich jak usługi Azure Data factory, usługa Azure Search lub dowolnej usługi, która jest wdrażana w danym regionie platformy Azure.
 

@@ -17,7 +17,7 @@
 ##  Pojęcia
 ### [Sieci wirtualne](../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Równoważenie obciążenia sieciowego](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Równoważenie obciążenia aplikacji](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [Równoważenie obciążenia aplikacji](../application-gateway/overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [DNS](../dns/dns-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Dystrybucja ruchu oparta na systemie DNS](../traffic-manager/traffic-manager-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Połączenie systemów lokalnych — VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fnetworking%2ftoc.json)
@@ -72,5 +72,5 @@
 ## [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/)
 ## [Dostępność regionalna](https://azure.microsoft.com/regions/services/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-network)
-## [Wideo](https://azure.microsoft.com/resources/videos/index/?services=virtual-network)
+## [Filmy wideo](https://azure.microsoft.com/resources/videos/index/?services=virtual-network)
 

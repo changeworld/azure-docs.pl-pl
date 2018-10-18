@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: f79be44d33a327f3ead8d950885cb5d47ce3a015
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 67778a269aa962b3184bf55c692154570e8357ba
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414057"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387396"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Diagnostyka wydajności maszyn wirtualnych platformy Azure
 
@@ -103,7 +103,7 @@ Po przekazaniu nowy raport diagnostyki znajduje się w witrynie Azure portal.
 Użyj **ustawienia** przycisku paska narzędzi, aby zmienić konto magazynu, w którym można przechowywać szczegółowych informacji diagnostycznych i danych wyjściowych. Można użyć tego samego konta magazynu dla wielu maszyn wirtualnych, które używają Diagnostyka wydajności. Jeśli zmienisz konto magazynu, stare raportów oraz szczegółowych informacji nie są usuwane. Jednak ich już nie pojawi się na liście raportów diagnostycznych. 
 
 ## <a name="review-insights-and-performance-diagnostics-report"></a>Przejrzyj informacje i raport dotyczący wydajności diagnostyki
-Każdy diagnostyki uruchamiania zawiera listę szczegółowych informacji i zaleceń, dotkniętych zasobów, plików dziennika i innych zaawansowaną diagnostykę obejmującą uwzględnianie zebranych informacji o, a także raportów do przeglądania w trybie offline. Aby uzyskać pełną listę wszystkich danych diagnostycznych zebranych, zobacz [jakiego rodzaju informacje są zbierane przez program PerfInsights?](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/how-to-use-perfinsights#what-kind-of-information-is-collected-by-perfinsights) 
+Każdy diagnostyki uruchamiania zawiera listę szczegółowych informacji i zaleceń, dotkniętych zasobów, plików dziennika i innych zaawansowaną diagnostykę obejmującą uwzględnianie zebranych informacji o, a także raportów do przeglądania w trybie offline. Aby uzyskać pełną listę wszystkich danych diagnostycznych zebranych, zobacz [jakiego rodzaju informacje są zbierane przez program PerfInsights?](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-use-perfinsights#what-kind-of-information-is-collected-by-perfinsights) 
 
 ### <a name="select-a-performance-diagnostics-report"></a>Wybierz raport wydajności diagnostyki
 Aby znaleźć wszystkie raporty diagnostyczne, które zostały uruchomione, można użyć listy raportów diagnostycznych. Lista zawiera szczegółowe informacje na temat analizy, który został użyty, szczegółowe informacje, które zostały wykryte i ich poziomy wpływu. Zaznacz wiersz, aby wyświetlić więcej szczegółów.
@@ -123,7 +123,7 @@ Możesz wybrać wglądu, aby wyświetlić więcej szczegółów na temat dotkni�
 ![Zrzut ekranu przedstawiający szczegóły insight Diagnostyka wydajności](media/performance-diagnostics/insight-detail.png)
 
 ### <a name="download-and-review-the-full-performance-diagnostics-report"></a>Pobrać i przejrzeć raport diagnostyczny pełnej wydajności
-Możesz użyć **Pobierz raport** przycisk, aby pobrać raport HTML, który zawiera dodatkowe zaawansowaną diagnostykę obejmującą uwzględnianie informacji, takich jak storage i konfiguracji sieci, liczniki wydajności, ślady, listy procesów i dzienniki. Zawartość zależy od wybranej analizy. Do zaawansowanego rozwiązywania problemów, raport może zawierać dodatkowe informacje i wykresy interaktywne, that are related to wysokie użycie procesora CPU, wysokiemu użyciu dysku i procesy, które zużywają zbyt dużej ilości pamięci. Aby uzyskać więcej informacji o raporcie dotyczącym wydajności diagnostyki, zobacz [Przejrzyj raport diagnostyczny](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/how-to-use-perfinsights#review-the-diagnostics-report).
+Możesz użyć **Pobierz raport** przycisk, aby pobrać raport HTML, który zawiera dodatkowe zaawansowaną diagnostykę obejmującą uwzględnianie informacji, takich jak storage i konfiguracji sieci, liczniki wydajności, ślady, listy procesów i dzienniki. Zawartość zależy od wybranej analizy. Do zaawansowanego rozwiązywania problemów, raport może zawierać dodatkowe informacje i wykresy interaktywne, that are related to wysokie użycie procesora CPU, wysokiemu użyciu dysku i procesy, które zużywają zbyt dużej ilości pamięci. Aby uzyskać więcej informacji o raporcie dotyczącym wydajności diagnostyki, zobacz [Przejrzyj raport diagnostyczny](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-use-perfinsights#review-the-diagnostics-report).
 
 ## <a name="manage-performance-diagnostics-reports"></a>Zarządzanie raportami Diagnostyka wydajności
 Można usunąć co najmniej jeden raport diagnostyki wydajności za pomocą **usunąć raport** przycisku.

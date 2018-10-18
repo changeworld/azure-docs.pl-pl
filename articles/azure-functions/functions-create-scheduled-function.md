@@ -12,16 +12,16 @@ ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 5a5e14c2a8501ce2672923545df8d32a32dee8fa
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 4809c09b5aa7b8212981cc13589602a365a23a37
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093992"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49113618"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Tworzenie funkcji wyzwalanej czasomierzem na platformie Azure
 
-Dowiedz się, jak za pomocą usługi Azure Functions utworzyć funkcję [bezserwerową](https://azure.microsoft.com/overview/serverless-computing/) uruchamianą zgodnie z określonym harmonogramem.
+Dowiedz się, jak za pomocą usługi Azure Functions utworzyć funkcję [bezserwerową](https://azure.microsoft.com/solutions/serverless/) uruchamianą zgodnie z określonym harmonogramem.
 
 ![Tworzenie aplikacji funkcji w witrynie Azure Portal](./media/functions-create-scheduled-function/function-app-in-portal-editor.png)
 
