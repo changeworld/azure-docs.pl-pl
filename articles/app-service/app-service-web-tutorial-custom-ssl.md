@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 700465279a43a8490c5863e7181c4c4d009ee97b
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: abd751cf867fea2e634161c4cf0b1e84acbe18c6
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857928"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354110"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Samouczek: wiązanie istniejącego niestandardowego certyfikatu protokołu SSL z usługą Azure Web Apps
 
@@ -64,45 +64,7 @@ Aby używać certyfikatu w usłudze App Service, musi on spełniać wszystkie na
 > [!NOTE]
 > **Certyfikaty kryptografii opartej na krzywej eliptycznej (ECC, Elliptic Curve Cryptography)** mogą współpracować z usługą App Service, ale nie są uwzględnione w tym artykule. Skontaktuj się ze swoim urzędem certyfikacji, aby uzyskać informacje o dokładnych krokach, które należy wykonać w celu utworzenia certyfikatów ECC.
 
-## <a name="prepare-your-web-app"></a>Przygotowywanie aplikacji internetowej
-
-Aby powiązać niestandardowy certyfikat protokołu SSL z Twoją aplikacją internetową, Twój [Plan usługi App Service](https://azure.microsoft.com/pricing/details/app-service/) musi znajdować się w warstwie **Podstawowa**, **Standardowa**, **Premium** lub **Izolowana**. W tym kroku musisz się upewnić, że Twoja aplikacja internetowa jest w obsługiwanej warstwie cenowej.
-
-### <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
-
-Otwórz [portal Azure](https://portal.azure.com).
-
-### <a name="navigate-to-your-web-app"></a>Przejdź do swojej aplikacji internetowej
-
-W menu po lewej stronie kliknij pozycję **App Services**, a następnie kliknij nazwę swojej aplikacji internetowej.
-
-![Wybieranie aplikacji internetowej](./media/app-service-web-tutorial-custom-ssl/select-app.png)
-
-Znajdujesz się na stronie zarządzania Twojej aplikacji internetowej.  
-
-### <a name="check-the-pricing-tier"></a>Sprawdzanie warstwy cenowej
-
-W lewym obszarze nawigacji na stronie Twojej aplikacji internetowej przewiń do sekcji **Ustawienia** i wybierz pozycję **Skaluj w górę (plan usługi App Service)**.
-
-![Menu skalowania w górę](./media/app-service-web-tutorial-custom-ssl/scale-up-menu.png)
-
-Upewnij się, że Twoja aplikacja internetowa nie znajduje się w warstwie **F1** ani **D1**. Bieżąca warstwa Twojej aplikacji internetowej jest wyróżniona ciemnoniebieskim polem.
-
-![Sprawdzanie warstwy cenowej](./media/app-service-web-tutorial-custom-ssl/check-pricing-tier.png)
-
-Niestandardowy protokół SSL nie jest obsługiwany w warstwie **F1** ani **D1**. Jeśli musisz skalować w górę, wykonaj kroki opisane w następnej sekcji. W przeciwnym razie zamknij stronę **Skalowanie w górę** i przejdź do [przekazywania i wiązania certyfikatu protokołu SSL](#upload).
-
-### <a name="scale-up-your-app-service-plan"></a>Skalowanie w górę planu usługi App Service
-
-Wybierz jedną z płatnych warstw (**B1**, **B2**, **B3** lub dowolną warstwę z kategorii **Produkcja**). Aby uzyskać dodatkowe opcje, kliknij pozycję **Wyświetl dodatkowe opcje**.
-
-Kliknij przycisk **Zastosuj**.
-
-![Wybieranie warstwy cenowej](./media/app-service-web-tutorial-custom-ssl/choose-pricing-tier.png)
-
-Wyświetlenie następującego powiadomienia oznacza zakończenie operacji skalowania.
-
-![Powiadomienie o skalowaniu w górę](./media/app-service-web-tutorial-custom-ssl/scale-notification.png)
+[!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
 <a name="upload"></a>
 

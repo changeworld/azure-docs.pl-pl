@@ -1,26 +1,19 @@
 ---
 title: Zarządzanie użytkownikami w usłudze Azure Data Box Gateway | Microsoft Docs
 description: W tym artykule opisano sposób zarządzania użytkownikami w usłudze Azure Data Box Gateway przy użyciu witryny Azure Portal.
-services: databox-edge-gateway
-documentationcenter: NA
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: gateway
 ms.topic: overview
-ms.custom: ''
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 10/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 3bd368cf19edf1370aaeef54d3ba0e4fd26ac239
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 8adec2986a286e55ee71f0fddca695d1800b5317
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49070679"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167192"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>Zarządzanie użytkownikami w usłudze Azure Data Box Gateway przy użyciu witryny Azure Portal 
 
@@ -33,7 +26,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Dodawanie użytkownika
-> * Modyfikowanie użytkownika
+> * Modyfikowanie harmonogramu
 > * Usuwanie użytkownika 
 
 ## <a name="about-users"></a>Informacje o użytkownikach
@@ -68,7 +61,7 @@ Wykonaj następujące czynności w witrynie Azure Portal, aby dodać użytkownik
 
 Po utworzeniu użytkownika możesz zmienić przypisane do niego hasło. Kliknij wybraną pozycję na liście użytkowników. Podaj i potwierdź nowe hasło. Zapisz zmiany.
  
-![Modyfikowanie użytkownika](media/data-box-gateway-manage-users/modify-user-1.png)
+![Modyfikowanie harmonogramu](media/data-box-gateway-manage-users/modify-user-1.png)
 
 
 ## <a name="delete-a-user"></a>Usuwanie użytkownika

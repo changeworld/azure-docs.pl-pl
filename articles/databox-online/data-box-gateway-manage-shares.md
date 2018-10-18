@@ -1,26 +1,19 @@
 ---
 title: Zarządzanie udziałami w usłudze Azure Data Box Gateway | Microsoft Docs
 description: W tym artykule opisano sposób zarządzania udziałami w usłudze Azure Data Box Gateway przy użyciu witryny Azure Portal.
-services: databox-edge-gateway
-documentationcenter: NA
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: gateway
 ms.topic: overview
-ms.custom: ''
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 10/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 71e47e271d802503ecf72e7f63f1e2e5f294b5f7
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: fd58bf9582663e64e1aefd8193d48d92f51dcd0e
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49070551"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165671"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Zarządzanie udziałami w usłudze Azure Data Box Gateway przy użyciu witryny Azure Portal 
 

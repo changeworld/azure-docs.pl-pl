@@ -3,23 +3,23 @@ title: 'Szybki start: analizowanie obrazu zdalnego — REST, Python — przetwar
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start przeprowadzisz analizę obrazu zdalnego za pomocą interfejsu API przetwarzania obrazów i języka Python.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 1fc7c58ec4e5c200ae62c70698db7ec813d82703
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.author: pafarley
+ms.openlocfilehash: 8f8503277ec03bd6036431bcacd3719dac7378de
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883945"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49338744"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-python-in-computer-vision"></a>Szybki start: analizowanie obrazu zdalnego przy użyciu interfejsu API REST i języka Python podczas przetwarzania obrazów
 
-W tym przewodniku Szybki start przeprowadzisz analizę przechowywanego zdalnie obrazu w celu wyodrębnienia elementów wizualnych przy użyciu interfejsu API REST przetwarzania obrazów. [Metoda Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) umożliwia wyodrębnienie elementów wizualnych na podstawie zawartości obrazu.
+W tym przewodniku Szybki start przeprowadzisz analizę przechowywanego zdalnie obrazu w celu wyodrębnienia elementów wizualnych przy użyciu interfejsu API REST przetwarzania obrazów. Metoda [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) umożliwia wyodrębnienie elementów wizualnych na podstawie zawartości obrazu.
 
 Możesz pracować z tym przewodnikiem Szybki start krok po kroku, korzystając z aplikacji Jupyter Notebook w usłudze [MyBinder](https://mybinder.org). Aby uruchomić usługę Binder, wybierz poniższy przycisk:
 
@@ -29,21 +29,21 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli chcesz uruchomić próbkę lokalnie, musisz mieć zainstalowany język [Python](https://www.python.org/downloads/).
+- Jeśli chcesz uruchomić przykładowy kod lokalnie, musisz mieć zainstalowany język [Python](https://www.python.org/downloads/).
 - Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Aby uzyskać klucz subskrypcji, zobacz [Obtaining Subscription Keys (Uzyskiwanie kluczy subskrypcji)](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie próbki
+## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie przykładowego kodu
 
 Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 
 1. Skopiuj następujący kod do edytora tekstów.
-1. Wprowadź następujące zmiany w kodzie w razie potrzeby:
+1. W razie potrzeby wprowadź następujące zmiany w kodzie:
     1. Zastąp wartość `subscription_key` kluczem subskrypcji.
-    1. W razie potrzeby zastąp wartość `vision_base_url` adresem URL punktu końcowego dla zasobu przetwarzania obrazów z regionu platformy Azure, z którego uzyskano klucze subskrypcji.
+    1. W razie potrzeby zastąp wartość `vision_base_url` adresem URL punktu końcowego dla zasobu funkcji przetwarzania obrazów w regionie świadczenia usługi Azure, z którego uzyskano klucze subskrypcji.
     1. Opcjonalnie zastąp wartość `image_url` adresem URL innego obrazu, który chcesz analizować.
 1. Zapisz kod jako plik z rozszerzeniem `.py`. Na przykład `analyze-image.py`.
 1. Otwórz okno wiersza polecenia.
-1. W monicie użyj polecenia `python`, aby uruchomić próbkę. Na przykład `python analyze-image.py`.
+1. W wierszu polecenia użyj polecenia `python`, aby uruchomić próbkę. Na przykład `python analyze-image.py`.
 
 ```python
 import requests

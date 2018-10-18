@@ -11,17 +11,17 @@ ms.topic: overview
 ms.date: 08/12/2016
 ms.author: pibehre
 ROBOTS: NOINDEX
-ms.openlocfilehash: f6cfaa05a6107d3e1ef689103da43960ea4df366
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 79b126fc33175b7cd6df96ab07cd7b726d6065a7
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48039995"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389942"
 ---
 # <a name="what-is-the-web-language-model-api-preview"></a>Czym jest interfejs Web Language Model API? (Wersja zapoznawcza)
 
 > [!IMPORTANT]
-> Wersja zapoznawcza usługi Web Language Model została wycofana w dniu 9 sierpnia 2018 r. W celu przetwarzania i analizy tekstu zalecamy korzystanie z [modułów analizy tekstu w usłudze Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/studio-module-reference/text-analytics).
+> Wersja zapoznawcza usługi Web Language Model została wycofana w dniu 9 sierpnia 2018 r. W celu przetwarzania i analizy tekstu zalecamy korzystanie z [modułów analizy tekstu w usłudze Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics).
 
 Interfejs Microsoft Web Language Model API jest usługą w chmurze opartą na protokole REST, która zapewnia najnowocześniejsze narzędzia do przetwarzana języka naturalnego. Dzięki temu interfejsowi API aplikacja może wykorzystać moc danych big data za pośrednictwem modeli językowych przeszkolonych na korpusach w skali Internetu zebranych przez usługę Bing na rynku en-US.
 
