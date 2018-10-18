@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.component: compliance
 ms.date: 09/04/2018
 ms.author: rolyon
-ms.openlocfilehash: 9fa966999e220ea4357d5b5c37f0038c75fe2339
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b6cc81a49875739a61aa397a65eb70c6b4f082ef
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45607927"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393987"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkcja Warunki użytkowania usługi Azure Active Directory
 Warunki użytkowania usługi Azure AD pozwalają organizacjom przedstawiać informacje użytkownikom końcowym w prosty sposób. Dzięki tej prezentacji użytkownicy mogą zapoznać się z istotnymi zastrzeżeniami do wymagań prawnych lub wymagań dotyczących zgodności. W tym artykule opisano, jak zacząć korzystać z warunków użytkowania usługi Azure AD.
@@ -128,7 +128,7 @@ Tylko użytkownicy muszą zaakceptować warunki użytkowania raz, a użytkownicy
 ### <a name="how-users-can-review-their-terms-of-use"></a>Jak użytkownicy mogą przeglądać warunki użytkowania
 Użytkownicy mogą wyświetlać i przeglądać warunki użytkowania, które zaakceptowali, korzystając z poniższej procedury.
 
-1. Zaloguj się do [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
+1. Zaloguj się do witryny [https://myapps.microsoft.com](https://myapps.microsoft.com).
 
 1. W prawym górnym rogu kliknij swoją nazwę i wybierz pozycję **Profil** z listy rozwijanej.
 
@@ -242,4 +242,4 @@ Odp.: możesz [przeglądu wcześniej zaakceptowane warunki użytkowania](#how-us
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](../../cognitive-services/qnamaker/concepts/best-practices.md)
+- [Najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](../../active-directory/conditional-access/best-practices.md)

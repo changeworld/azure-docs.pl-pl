@@ -9,12 +9,12 @@ ms.date: 10/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 88ea4b2eab57684bc5455c0d8eb23a5d62f9dd77
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: b04f909d58e1555cad9f34b682f9062bbd96cd0e
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817506"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394735"
 ---
 # <a name="update-the-iot-edge-runtime"></a>Aktualizacja środowiska uruchomieniowego usługi IoT Edge
 
@@ -24,10 +24,11 @@ Dwa składniki urządzenia usługi IoT Edge należy zaktualizować, jeśli chces
 
 Aby uzyskać najnowszą wersję usługi Azure IoT Edge, zobacz [wersje usługi Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases).
 
-
 ## <a name="update-the-security-daemon"></a>Aktualizacja demona zabezpieczeń
 
 Demon zabezpieczeń usługi IoT Edge jest natywny składnik, który musi zostać zaktualizowana przy użyciu Menedżera pakietów na urządzeniu usługi IoT Edge. 
+
+Zapoznaj się z wersją demona zabezpieczeń na urządzeniu z za pomocą polecenia `iotedge version`. 
 
 ### <a name="linux-devices"></a>Urządzeniami z systemem Linux
 
@@ -59,6 +60,10 @@ Install-SecurityDaemon -Manual -ContainerOS <Windows or Linux>
 ## <a name="update-the-runtime-containers"></a>Aktualizuj kontenerów środowiska wykonawczego
 
 Sposób aktualizacji agenta usługi Edge i przeglądarki Edge hub kontenerów, zależy od tego, czy używać stopniowe tagów (na przykład 1.0) lub konkretne znaczniki (na przykład 1.0.2) w danym wdrożeniu. 
+
+Zapoznaj się z wersją agenta usługi IoT Edge i moduły Centrum usługi Edge obecnie na twoim urządzeniu, za pomocą poleceń `iotedge logs edgeAgent` lub `iotedge logs edgeHub`. 
+
+  ![Wyświetl wersję kontenera](./media/how-to-update-iot-edge/container-version.png)
 
 ### <a name="understand-iot-edge-tags"></a>Omówienie usługi IoT Edge tagów
 
@@ -117,5 +122,4 @@ W manifeście wdrożenia JSON, należy zaktualizować obrazy modułu w **systemM
 
 Wyświetl najnowsze [wersje usługi Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases).
 
-Bądź na bieżąco przy użyciu najnowszych aktualizacji i ogłoszenia w [blog Internetu rzeczy](https://azure.microsoft.com/blog/topics/internet-of-things/
-) 
+Bądź na bieżąco przy użyciu najnowszych aktualizacji i ogłoszenia w [blog Internetu rzeczy](https://azure.microsoft.com/blog/topics/internet-of-things/) 

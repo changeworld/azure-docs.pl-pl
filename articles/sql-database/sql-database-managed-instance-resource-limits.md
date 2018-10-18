@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: carlrab, jovanpop
+ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 10/04/2018
-ms.openlocfilehash: 3f571a8d8a138656fc8bae5d6f45d183a8819bc3
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 10/17/2018
+ms.openlocfilehash: 97c141b6e0c071a8cea27f9a873f28a6c5113a18
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803209"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394871"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Limity zasobów wystąpienia zarządzanego Azure SQL Database — omówienie
 
@@ -140,6 +140,7 @@ Jeśli potrzebujesz większej liczby wystąpień zarządzanych w Twojej bieżąc
      > - Region w subskrypcję, która musi zostać zwiększone limit
      > - Wymagana liczba wystąpień na warstwę usługi w istniejących podsieci po przydział zwiększyć (Jeśli żadna z podsieci istniejących potrzebuje do wyodrębnienia
      > - Wymagana liczba nowych podsieci i łącznej liczby wystąpień na warstwę usług w ramach nowych podsieci (jeśli zajdzie potrzeba wdrożenia wystąpienia zarządzanego w nowych podsieci).
+     
 5. Kliknij przycisk **Dalej**.
 6. Na karcie informacje kontaktowe nowe żądanie pomocy technicznej wprowadź preferowaną metodę kontaktu (adres e-mail lub telefon) i szczegóły dotyczące kontaktu.
 7. Kliknij pozycję **Utwórz**.

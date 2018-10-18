@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: e4bb17bd068076a9ffa9bcab5826f0efa84a19d7
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 362ee7e84229c421f69ff0db0c8cfb040b105c97
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406009"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394516"
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Często zadawane pytania dotyczące usługi Azure Stack użycia interfejsu API
 
@@ -128,102 +128,102 @@ Użycie jest zgłaszany w przypadku następujących dostawców zasobów:
 
 **Identyfikator licznika**: 5d76e09f-4567-452a-94cc-7d1f097761f0   
 **Nazwa miernika**: S4   
-**Jednostka**: liczba dysków   
+**Jednostka**: Count of Disks\*godzin   
 **Informacje o**: standardowa zarządzana dysku – 32 GB 
 
 **Identyfikator licznika**: dc9fc6a9-0782-432a-b8dc-978130457494   
 **Nazwa miernika**: S6   
-**Jednostka**: liczba dysków   
+**Jednostka**: Count of Disks\*godzin   
 **Informacje o**: standardowa zarządzana dysku – 64 GB 
 
 **Identyfikator licznika**: e5572fce-9f58-49d7-840c-b168c0f01fff   
 **Nazwa miernika**: S10   
-**Jednostka**: liczba dysków   
+**Jednostka**: Count of Disks\*godzin   
 **Informacje o**: standardowa zarządzana dysku — 128 GB 
 
 **Identyfikator licznika**: 9a8caedd-1195-4cd5-80b4-a4c22f9302b8   
 **Nazwa miernika**: S15   
-**Jednostka**: liczba dysków   
+**Jednostka**: Count of Disks\*godzin   
 **Informacje o**: standardowa zarządzana dysku — 256 GB 
 
 **Identyfikator licznika**: 5938f8da-0ecd-4c48-8d5a-c7c6c23546be   
 **Nazwa miernika**: S20   
-**Jednostka**: liczba dysków      
+**Jednostka**: Count of Disks\*godzin      
 **Informacje o**: standardowa zarządzana dysku — 512 GB 
 
 **Identyfikator licznika**: 7705a158-bd8b-4b2b-b4c2-0782343b81e6   
 **Nazwa miernika**: S30   
-**Jednostka**: liczba dysków   
+**Jednostka**: Count of Disks\*godzin   
 **Informacje o**: standardowa zarządzana dysku – 1024 GB 
 
 **Identyfikator licznika**: d9aac1eb-a5d1-42f2-b617-9e3ea94fed88   
 **Nazwa miernika**: S40   
-**Jednostka**: liczba dysków   
+**Jednostka**: Count of Disks\*godzin   
 **Informacje o**: standardowa zarządzana dysku — 2048 GB 
 
 **Identyfikator licznika**: a54899dd-458e-4a40-9abd-f57cafd936a7   
 **Nazwa miernika**: S50   
-**Jednostka**: liczba dysków   
+**Jednostka**: Count of Disks\*godzin   
 **Informacje o**: standardowa zarządzana dysk — 4096 GB 
 
 **Identyfikator licznika**: 5c105f5f-cbdf-435c-b49b-3c7174856dcc   
 **Nazwa miernika**: P4   
-**Jednostka**: liczba dysków   
+**Jednostka**: Count of Disks\*godzin   
 **Informacje o**: zarządzane w warstwie Premium dysku – 32 GB 
 
 **Identyfikator licznika**: 518b412b-1927-4f25-985f-4aea24e55c4f   
 **Nazwa miernika**: P6   
-**Jednostka**: liczba dysków   
+**Jednostka**: Count of Disks\*godzin   
 **Informacje o**: dysk – 64 GB zarządzane w warstwie Premium 
 
 **Identyfikator licznika**: 5cfb1fed-0902-49e3-8217-9add946fd624   
 **Nazwa miernika**: P10   
-**Jednostka**: liczba dysków   
+**Jednostka**: Count of Disks\*godzin   
 **Informacje o**: zarządzane dysku — 128 GB w warstwie Premium  
 
 **Identyfikator licznika**: 8de91c94-f740-4d9a-b665-bd5974fa08d4   
 **Nazwa miernika**: P15  
-**Jednostka**: liczba dysków   
+**Jednostka**: Count of Disks\*godzin   
 **Informacje o**: dysk — 256 GB zarządzane w warstwie Premium 
 
 **Identyfikator licznika**: c7e7839c-293b-4761-ae4c-848eda91130b   
 **Nazwa miernika**: P20   
-**Jednostka**: liczba dysków   
+**Jednostka**: Count of Disks\*godzin   
 **Informacje o**: dysk — 512 GB zarządzane w warstwie Premium 
 
 **Identyfikator licznika**: 9f502103-adf4-4488-b494-456c95d23a9f   
 **Nazwa miernika**: P30   
-**Jednostka**: liczba dysków   
+**Jednostka**: Count of Disks\*godzin   
 **Informacje o**: zarządzane w warstwie Premium dysku – 1024 GB 
 
 **Identyfikator licznika**: 043757fc-049f-4e8b-8379-45bb203c36b1   
 **Nazwa miernika**: P40   
-**Jednostka**: liczba dysków    
+**Jednostka**: Count of Disks\*godzin    
 **Informacje o**: dysk — 2048 GB zarządzane w warstwie Premium 
 
 **Identyfikator licznika**: c0342c6f-810b-4942-85d3-6eaa561b6570   
 **Nazwa miernika**: P50   
-**Jednostka**: liczba dysków   
+**Jednostka**: Count of Disks\*godzin   
 **Informacje o**: dysk — 4096 GB zarządzane w warstwie Premium 
 
 **Identyfikator licznika**: 8a409390-1913-40ae-917b-08d0f16f3c38   
 **Nazwa miernika**: ActualStandardDiskSize   
-**Jednostka**: bajtów      
+**Jednostka**: bajtów\*godzin      
 **Informacje o**: rzeczywisty rozmiar na dysku dysku zarządzanego w warstwie standardowa  
 
 **Identyfikator licznika**: 1273b16f-8458-4c34-8ce2-a515de551ef6  
 **Nazwa miernika**: ActualPremiumDiskSize   
-**Jednostka**: bajtów      
+**Jednostka**: bajtów\*godzin      
 **Informacje o**: dysk zarządzany rzeczywisty rozmiar na dysku premium 
 
 **Identyfikator licznika**: 89009682-df7f-44fe-aeb1-63fba3ddbf4c  
 **Nazwa miernika**: ActualStandardSnapshotSize   
-**Jednostka**: bajtów   
+**Jednostka**: bajtów\*godzin   
 **Informacje o**: rzeczywisty rozmiar na dysku zarządzanego standardową migawkę.  
 
 **Identyfikator licznika**: 95b0c03f-8a82-4524-8961-ccfbf575f536   
 **Nazwa miernika**: ActualPremiumSnapshotSize   
-**Jednostka**: bajtów   
+**Jednostka**: bajtów\*godzin   
 **Informacje o**: rzeczywisty rozmiar na dysku zarządzanego w warstwie premium.   
 
 ### <a name="sql-rp"></a>SQL RP

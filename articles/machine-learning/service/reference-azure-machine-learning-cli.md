@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 09/24/2018
-ms.openlocfilehash: ea7782f09902fe96c858cb30fc671d6503b56ba1
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 53e737f35904a90bb56ec15c8a8282f8775e3c3a
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48236433"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393495"
 ---
 # <a name="what-is-the-azure-machine-learning-cli"></a>Co to jest interfejsu wiersza polecenia usługi Azure Machine Learning?
 
@@ -34,7 +34,7 @@ Tym interfejsu wiersza polecenia platformy uczenia maszynowego jest rozszerzenie
 
 Możesz zainstalować interfejs wiersza polecenia za pomocą tego polecenia w naszym indeksie PyPi w wersji zapoznawczej:
 ```AzureCLI
-az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-0.1.50-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
+az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-0.1.68-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
 ```
 
 Możesz usunąć za pomocą tego polecenia interfejsu wiersza polecenia:

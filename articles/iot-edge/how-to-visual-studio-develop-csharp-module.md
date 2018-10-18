@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/24/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 9cc8e1db577859ad7637902a5ccd5a044efcd033
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 768ff899ca2c71cb32fe29bdd5d58654d8f7d431
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978526"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394752"
 ---
 # <a name="use-visual-studio-2017-to-develop-and-debug-c-modules-for-azure-iot-edge-preview"></a>Używanie programu Visual Studio 2017 do tworzenia i debugowania modułów języka C# dla usługi Azure IoT Edge (wersja zapoznawcza)
 
@@ -90,6 +90,21 @@ Teraz masz **AzureIoTEdgeApp1** projektu i **IoTEdgeModule1** projektu w naszym 
 Domyślny kod C# modułu dołączoną do rozwiązania znajduje się w **IoTEdgeModule1** > **Program.cs**. W module, plik deployment.template.json są konfigurowane tak, aby skompilować rozwiązanie, Wypchnij go do rejestru kontenerów i wdrożyć ją na urządzeniu do rozpoczęcia testowania bez dotykania żadnego kodu. Moduł został opracowany pod kątem wystarczy pobrać dane wejściowe ze źródła (w tym przypadku moduł tempSensor, która symuluje sieć danych) i przekazać go do usługi IoT Hub. 
 
 Gdy wszystko będzie gotowe dostosować szablon języka C# przy użyciu własnego kodu, należy użyć [zestawami SDK Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md) do tworzenia modułów ten adres klucz dla rozwiązań IoT, takich jak zabezpieczenia, zarządzanie urządzeniami i niezawodności. 
+
+## <a name="initialize-iotegehubdev-with-iot-edge-device-connection-string"></a>Inicjowanie **iotegehubdev** przy użyciu parametrów połączenia urządzenia usługi IoT Edge
+
+1. Musisz pobrać parametry połączenia z dowolnego urządzenia IoT Edge, może kopiować wartość "Podstawowe parametry połączenia" w programie Cloud Explorer programu Visual Studio 2017, jak wykonać. Nie skopiuj parametry połączenia urządzenia bez krawędzi, ikona urządzenie usługi IoT Edge różni się od jednego urządzenia bez krawędzi.
+
+   ![Skopiuj parametry połączenia urządzenia usługi Edge](./media/how-to-visual-studio-develop-csharp-module/copy-edge-conn-string.png)
+
+2. Należy kliknąć prawym przyciskiem myszy **AzureIoTEdgeApp1** projektu, otwórz menu kontekstowe, a następnie kliknij pozycję **Ustaw parametry połączenia urządzenia usługi Edge**, zostanie wyświetlone okno konfiguracji usługi Azure IoT Edge.
+
+   ![Otwórz okno ciąg połączenia krawędzi zestawu](./media/how-to-visual-studio-develop-csharp-module/set-edge-conn-string.png)
+
+3. W oknie Ustawienia należy podać parametry połączenia, masz w pierwszym kroku i kliknij **OK** przycisku.
+
+>[!NOTE]
+>Jest to jednorazowa pracy, należy po prostu uruchomić ten krok jeden raz na jednym komputerze, wszystkie kolejne usługi Azure IoT Edge rozwiązania zostanie wyświetlony, jeśli za darmo. Oczywiście można ponownie uruchomić ten krok, jeśli parametry połączenia są nieprawidłowe lub należy zmienić na inny ciąg połączenia.
 
 ## <a name="build-and-debug-single-c-module"></a>Kompilowanie i debugowanie jednym modułu C#
 
@@ -190,7 +205,10 @@ W artykule Szybki start, który był używany do skonfigurowania urządzenia us�
 
 2. W **programu Cloud Explorer**rozwiń subskrypcji, usługi Azure IoT Hub i urządzenia usługi Azure IoT Edge, które chcesz wdrożyć.
 
-3. Kliknij prawym przyciskiem myszy, IoT Edge na urządzeniu w celu utworzenia wdrożenia dla niego, musisz wybrać plik manifestu wdrożenia w obszarze `$AzureIoTEdgeApp1\config\Debug|Release\deployment.json`.
+3. Kliknij prawym przyciskiem myszy, IoT Edge na urządzeniu w celu utworzenia wdrożenia dla niego, musisz wybrać plik manifestu wdrożenia w obszarze `$AzureIoTEdgeAppSolutionDir\config\deployment.(amd64|amd64.debug|windows-amd64).json`.
+
+>>[!NOTE]
+>>Nie musisz wybrać `$AzureIoTEdgeAppSolutionDir\config\deployment_for_local_debug.json`
 
 4. Kliknij przycisk Odśwież. Powinny zostać wyświetlone nowe moduły uruchomiony wraz z **TempSensor** modułu i **$edgeAgent** i **$edgeHub**.
 

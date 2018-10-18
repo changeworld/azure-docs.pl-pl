@@ -5,6 +5,7 @@ services: machine-learning, team-data-science-process
 documentationcenter: ''
 author: deguhath
 ms.author: deguhath
+manager: cgronlun
 editor: cgronlun
 ms.assetid: b8fbef77-3e80-4911-8e84-23dbf42c9bee
 ms.service: machine-learning
@@ -14,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2018
-ms.openlocfilehash: 427ea1f3f22855b2c54beacbfb89a8f7fd37cce0
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: ee2e797f3838b8b6b36174d14c73e97fe9790315
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42055979"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49392816"
 ---
 # <a name="skin-cancer-image-classification-with-the-azure-machine-learning-package-for-computer-vision-and-team-data-science-process"></a>Skórki raka Klasyfikacja obrazów przy użyciu pakietu usługi Azure Machine Learning do przetwarzania obrazów i danych zespołu dla celów naukowych
 
-W tym artykule dowiesz się, jak używać [pakiet usługi Azure Machine Learning dla przetwarzania obrazów](https://docs.microsoft.com/en-us/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest) do szkolenia, Testuj i wdrażaj *Klasyfikacja obrazów* modelu. W przykładzie użyto Team Data Science naukowych struktury i szablony w [Azure Machine Learning Workbench](https://docs.microsoft.com/en-us/azure/machine-learning/service/quickstart-installation). Ten przewodnik zawiera pełny przykład. Używa ona [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) jako głębokiego uczenia i szkolenia odbywa się na [maszyny wirtualnej do nauki o danych](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview) procesora GPU maszyny. Wdrożenie używa operacjonalizacji usługi Azure Machine Learning interfejs wiersza polecenia.
+W tym artykule dowiesz się, jak używać [pakiet usługi Azure Machine Learning dla przetwarzania obrazów](https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest) do szkolenia, Testuj i wdrażaj *Klasyfikacja obrazów* modelu. W przykładzie użyto Team Data Science naukowych struktury i szablony w [Azure Machine Learning Workbench](https://docs.microsoft.com/azure/machine-learning/service/quickstart-installation). Ten przewodnik zawiera pełny przykład. Używa ona [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) jako głębokiego uczenia i szkolenia odbywa się na [maszyny wirtualnej do nauki o danych](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview) procesora GPU maszyny. Wdrożenie używa operacjonalizacji usługi Azure Machine Learning interfejs wiersza polecenia.
 
 Wiele aplikacji w domenie komputera przetwarzania może mieć ramkę jako obraz klasyfikacji problemów. Należą do budowania modeli, aby uzyskać odpowiedzi na proste pytanie, takie jak "jest obiektem obecnych w obrazie?" gdy obiekt jest pies, samochód lub statku. Obejmuje również odpowiedzi na bardziej złożone pytania, takie jak "jakie klasy oka choroby ważności jest evinced przez skanowanie retinal to pacjenta?" Pakiet usługi Azure Machine Learning do przetwarzania obrazów usprawnia przetwarzanie danych klasyfikacji obrazów i potoku modelowania. 
 
@@ -32,7 +33,7 @@ Ten artykuł jest dokumentem podsumowania dotyczących przykładu. Bardziej szcz
 
 ## <a name="team-data-science-process-walkthrough"></a>Przewodnik po procesie nauki o danych zespołu
 
-W tym instruktażu wykorzystano [zespołu danych dla celów naukowych](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/overview) cyklu życia. Instruktaż obejmuje następujące kroki cyklu życia.
+W tym instruktażu wykorzystano [zespołu danych dla celów naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) cyklu życia. Instruktaż obejmuje następujące kroki cyklu życia.
 
 ### <a name="1-data-acquisitionhttpsgithubcomazuremachinelearningsamples-amlvisionpackage-isicimageclassificationblobmastercode01dataacquisitionandunderstanding"></a>[1. Pozyskiwanie danych](https://github.com/Azure/MachineLearningSamples-AMLVisionPackage-ISICImageClassification/blob/master/code/01_data_acquisition_and_understanding)
 Zestaw danych International skórki Imaging współpracy (ISIC) jest używany do zadań klasyfikacji obrazów. ISIC to zaawansowane, skalowalne rozwiązanie i branży, które ułatwiają stosowanie cyfrowego skórki imaging warsztatami i pomóc w zmniejszeniu śmiertelności innych typów. [ISIC archiwum](https://isic-archive.com/#images) zawiera ponad 13 000 obrazów uszkodzenie skórki, które są oznaczone jako nieszkodliwy lub złośliwe. Pobierz przykładowe obrazy z archiwum ISIC.
@@ -71,13 +72,13 @@ Podkroki jest omówiona szczegółowo w odpowiedniej notesu programu Jupyter. No
 W tym kroku operationalizes model, który jest generowany z kroku modelowania. Przedstawia on wymagań wstępnych i Instalacja wymagana. Korzystanie z usługi sieci web jest poświęcony aktualizacjom. W tym samouczku dowiesz się tworzyć modele uczenia głębokiego z pakietu usługi Azure Machine Learning do przetwarzania obrazów i modelu na platformie Azure.
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Przeczytaj dokumentację [pakiet usługi Azure Machine Learning dla przetwarzania obrazów](https://docs.microsoft.com/en-us/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest).
+- Przeczytaj dokumentację [pakiet usługi Azure Machine Learning dla przetwarzania obrazów](https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest).
 - Odczyt [zespołu danych dla celów naukowych](https://aka.ms/tdsp) dokumentację ułatwiającą rozpoczęcie pracy.
 
 
 ## <a name="references"></a>Dokumentacja
 
-* [Pakiet Azure Machine Learning do przetwarzania obrazów](https://docs.microsoft.com/en-us/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest)
-* [Środowisko robocze usługi Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/service/quickstart-installation)
+* [Pakiet Azure Machine Learning do przetwarzania obrazów](https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest)
+* [Środowisko robocze usługi Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/quickstart-installation)
 * [Maszyna wirtualna do nauki o danych](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)
 

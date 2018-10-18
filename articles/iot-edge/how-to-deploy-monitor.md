@@ -9,12 +9,12 @@ ms.date: 07/25/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 28aa2904f63a9802305d24fec1650f84e38601ab
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: c6700dc4bc0cc458e34e129b2468daad88ecc8be
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258437"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393461"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Wdrażanie i monitorowanie moduły usługi IoT Edge na dużą skalę przy użyciu witryny Azure portal
 
@@ -39,11 +39,11 @@ Przed utworzeniem wdrożenia, musisz mieć możliwość określenia urządzeń, 
 }
 ```
 
-Aby uzyskać więcej informacji na temat tagów i bliźniacze reprezentacje urządzeń, zobacz [poznawanie i używanie bliźniaczych reprezentacji urządzeń w usłudze IoT Hub][lnk-device-twin].
+Aby uzyskać więcej informacji na temat tagów i bliźniacze reprezentacje urządzeń, zobacz [poznawanie i używanie bliźniaczych reprezentacji urządzeń w usłudze IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).
 
 ## <a name="create-a-deployment"></a>Tworzenie wdrożenia
 
-1. W [witryny Azure portal][lnk-portal], przejdź do Centrum IoT hub. 
+1. W [witryny Azure portal](https://portal.azure.com), przejdź do Centrum IoT hub. 
 1. Wybierz **usługi IoT Edge**.
 1. Wybierz **Dodaj wdrożenie usługi IoT Edge**.
 
@@ -77,7 +77,7 @@ Aby dodać niestandardowy kod jako moduł lub ręcznie Dodaj moduł usługi Azur
 1. Wybierz **moduł usługi IoT Edge**.
 1. Nadaj modułu **nazwa**.
 1. Aby uzyskać **identyfikator URI obrazu** wprowadź obrazu kontenera dla modułu. 
-1. Określ dowolne **opcje tworzenia kontenera** powinien zostać przekazany do kontenera. Aby uzyskać więcej informacji, zobacz [docker Utwórz][lnk-docker-create].
+1. Określ dowolne **opcje tworzenia kontenera** powinien zostać przekazany do kontenera. Aby uzyskać więcej informacji, zobacz [docker Utwórz](https://docs.docker.com/engine/reference/commandline/create/).
 1. Użyj menu rozwijanego, aby wybrać **zasady ponownego uruchamiania**. Wybierz spośród następujących opcji: 
    * **Zawsze** — moduł ponowne uruchomienie zawsze, jeśli kończy pracę z dowolnego powodu.
    * **Nigdy nie** — moduł nigdy nie uruchamia ponownie, jeśli kończy pracę z dowolnego powodu.
@@ -117,11 +117,11 @@ Przejrzyj informacje o wdrożeniu, a następnie wybierz **przesyłania**.
 
 Aby wyświetlić szczegóły wdrożenia i monitorowania urządzeń, w których jest on uruchomiony, wykonaj następujące kroki:
 
-1. Zaloguj się do [witryny Azure portal] [ lnk-portal] i przejdź do Centrum IoT hub. 
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do Centrum IoT hub. 
 1. Wybierz **usługi IoT Edge**.
 1. Wybierz **wdrożenia usługi IoT Edge**. 
 
-   ![Wyświetl wdrożenia usługi IoT Edge][1]
+   ![Wyświetl wdrożenia usługi IoT Edge](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. Sprawdź, czy lista wdrożenia. Dla każdego wdrożenia można wyświetlić następujące informacje:
    * **Identyfikator** — Nazwa wdrożenia.
@@ -144,11 +144,11 @@ Jeśli zaktualizujesz warunek docelowy, zachodzą następujące aktualizacje:
 
 Aby zmodyfikować wdrożenie, użyj następujących kroków: 
 
-1. Zaloguj się do [witryny Azure portal] [ lnk-portal] i przejdź do Centrum IoT hub. 
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do Centrum IoT hub. 
 1. Wybierz **usługi IoT Edge**.
 1. Wybierz **wdrożenia usługi IoT Edge**. 
 
-   ![Wyświetl wdrożenia usługi IoT Edge][1]
+   ![Wyświetl wdrożenia usługi IoT Edge](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. Wybierz wdrożenie, które chcesz zmodyfikować. 
 1. Aktualizowanie następujące pola: 
@@ -156,17 +156,17 @@ Aby zmodyfikować wdrożenie, użyj następujących kroków:
    * Etykiety 
    * Priorytet 
 1. Wybierz pozycję **Zapisz**.
-1. Postępuj zgodnie z instrukcjami w [monitorowania wdrożeń] [ anchor-monitor] obejrzeć zmiany wprowadzane. 
+1. Postępuj zgodnie z instrukcjami w [monitorowania wdrożeń](#monitor-a-deployment) obejrzeć zmiany wprowadzane. 
 
 ## <a name="delete-a-deployment"></a>Usuwanie wdrożenia
 
 Po usunięciu wdrożenia żadnych urządzeń przyjmują ich dalej wdrożenia najwyższy priorytet. Jeśli urządzenia nie spełniają warunek docelowy wszystkich innych wdrożeń, następnie modułów nie są usuwane po usunięciu wdrożenia. 
 
-1. Zaloguj się do [witryny Azure portal] [ lnk-portal] i przejdź do Centrum IoT hub. 
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do Centrum IoT hub. 
 1. Wybierz **usługi IoT Edge**.
 1. Wybierz **wdrożenia usługi IoT Edge**. 
 
-   ![Wyświetl wdrożenia usługi IoT Edge][1]
+   ![Wyświetl wdrożenia usługi IoT Edge](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. Użyj pola wyboru, aby wybrać wdrożenie, które chcesz usunąć. 
 1. Wybierz pozycję **Usuń**.
@@ -174,16 +174,4 @@ Po usunięciu wdrożenia żadnych urządzeń przyjmują ich dalej wdrożenia naj
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o [Wdrażanie modułów na urządzenia brzegowe][lnk-deployments].
-
-<!-- Images -->
-[1]: ./media/how-to-deploy-monitor/iot-edge-deployments.png
-
-<!-- Links -->
-[lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
-[lnk-portal]: https://portal.azure.com
-[lnk-docker-create]: https://docs.docker.com/engine/reference/commandline/create/
-[lnk-deployments]: module-deployment-monitoring.md
-
-<!-- Anchor links -->
-[anchor-monitor]: #monitor-a-deployment
+Dowiedz się więcej o [Wdrażanie modułów na urządzenia brzegowe](module-deployment-monitoring.md).

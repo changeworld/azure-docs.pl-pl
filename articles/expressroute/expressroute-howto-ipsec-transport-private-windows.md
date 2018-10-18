@@ -2,17 +2,17 @@
 title: Konfigurowanie trybu transportu IPsec dla hostów Windows - prywatnej komunikacji równorzędnej Azure ExpressRoute | Dokumentacja firmy Microsoft
 description: Jak włączyć trybu transportu IPsec między maszynami wirtualnymi z Windows Azure i hostów Windows w środowisku lokalnym za pośrednictwem prywatnej komunikacji równorzędnej przy użyciu obiektów zasad grupy i jednostki organizacyjne usługi ExpressRoute.
 services: expressroute
-author: cherylmc
+author: fabferri
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/01/2018
-ms.author: cherylmc
-ms.openlocfilehash: 4ac0753c3f663aad6a1393e633ff81abb89579ef
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 10/17/2018
+ms.author: fabferri
+ms.openlocfilehash: 1b228f0238c678c0cea4a6be2a6c3e0b929ed4d6
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49346883"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394333"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>Konfigurowanie trybu transportu IPsec dla prywatnej komunikacji równorzędnej usługi ExpressRoute
 

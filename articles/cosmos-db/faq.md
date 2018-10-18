@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: 85d8eb555d96b1c50da0ed00ae1f06c3eec1a5ba
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: de67d71a209ea0889b4dc5c87fed254700cb9916
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722215"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395143"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB — często zadawane pytania
 ## <a name="azure-cosmos-db-fundamentals"></a>Podstawy usługi Azure Cosmos DB
@@ -100,7 +100,7 @@ Do subskrypcji Wypróbuj usługę Azure Cosmos DB mają zastosowanie następują
 Usługa Azure Cosmos DB jest dostępna w witrynie Azure portal. Najpierw należy utworzyć konto subskrypcji platformy Azure. Po zalogowaniu do subskrypcji platformy Azure można dodać interfejs API SQL, interfejs API Gremlin, interfejs API tabel, interfejsu API usługi MongoDB lub konto interfejsu API rozwiązania Cassandra.
 
 ### <a name="what-is-a-master-key"></a>Co to jest klucz główny?
-Klucz główny jest tokenem zabezpieczającym dostęp do wszystkich zasobów dla konta. Osoby, które mają klucz ma uprawnienia odczytu i zapisu do wszystkich zasobów w ramach konta bazy danych. Podczas dystrybucji kluczy głównych należy zachować ostrożność. Podstawowy klucz główny i pomocniczy klucz główny są dostępne na **klucze** bloku [witryny Azure portal][azure-portal]. Aby uzyskać więcej informacji na temat kluczy, zobacz [wyświetlanie, kopiowanie i ponowne generowanie kluczy dostępu](manage-account.md#keys).
+Klucz główny jest tokenem zabezpieczającym dostęp do wszystkich zasobów dla konta. Osoby, które mają klucz ma uprawnienia odczytu i zapisu do wszystkich zasobów w ramach konta bazy danych. Podczas dystrybucji kluczy głównych należy zachować ostrożność. Podstawowy klucz główny i pomocniczy klucz główny są dostępne na **klucze** bloku [witryny Azure portal][azure-portal]. Aby uzyskać więcej informacji na temat kluczy, zobacz [Wyświetlanie, kopiowanie i ponowne generowanie kluczy dostępu](manage-account.md#keys).
 
 ### <a name="what-are-the-regions-that-preferredlocations-can-be-set-to"></a>Co to są regiony, które można ustawić PreferredLocations? 
 Wartość PreferredLocations można ustawić do dowolnego z regionów świadczenia usługi Azure, w których usługi Cosmos DB jest dostępna. Aby uzyskać listę dostępnych regionów, zobacz [regionów świadczenia usługi Azure](https://azure.microsoft.com/regions/).
@@ -127,7 +127,7 @@ Tak, Azure cosmos DB obsługuje analizy serii czasowych, poniżej przedstawiono 
 ### <a name="how-do-i-start-developing-against-the-sql-api"></a>Jak rozpocząć tworzenie przy użyciu interfejsu API SQL
 Najpierw musisz zarejestrować do subskrypcji platformy Azure. Po zalogowaniu do subskrypcji platformy Azure z subskrypcją platformy Azure można dodać kontener interfejsu API SQL. Aby uzyskać instrukcje dotyczące dodawania konta usługi Azure Cosmos DB, zobacz [Tworzenie konta bazy danych usługi Azure Cosmos DB](create-sql-api-dotnet.md#create-account). 
 
-[Zestawy SDK](sql-api-sdk-dotnet.md) są dostępne dla platformy .NET, Python, Node.js, JavaScript i Java. Deweloperzy mogą również używać [interfejsów API RESTful protokołu HTTP](/rest/api/cosmos-db/) do interakcji z zasobami usługi Azure Cosmos DB z różnych platform i języków.
+[Zestawy SDK](sql-api-sdk-dotnet.md) są dostępne dla języków .NET, Python, Node.js, JavaScript i Java. Deweloperzy mogą również używać [interfejsów API RESTful protokołu HTTP](/rest/api/cosmos-db/) do interakcji z zasobami usługi Azure Cosmos DB z różnych platform i języków.
 
 ### <a name="can-i-access-some-ready-made-samples-to-get-a-head-start"></a>Można uzyskać dostęp do gotowych do użycia przykłady, aby łatwiej rozpocząć pracę?
 Przykłady dla interfejsu API SQL [.NET](sql-api-dotnet-samples.md), [Java](https://github.com/Azure/azure-documentdb-java), [Node.js](sql-api-nodejs-samples.md), i [Python](sql-api-python-samples.md) zestawy SDK są dostępne w witrynie GitHub.
@@ -466,7 +466,7 @@ Usługa Azure Cosmos DB wykorzystuje [partycjonowanie poziome](partition-data.md
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Jak chronić przed atakami polegającymi na iniekcji przy użyciu języka Gremlin sterowniki? 
 
-Najbardziej natywnych sterowniki Tinkerpop języku Gremlin umożliwiają opcję, aby zapewnić słownik parametrów w celu wykonywania zapytań. Jest to przykład jak to zrobić [Gremlin.Net]((http://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet)) i [Gremlin Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
+Najbardziej natywnych sterowniki Tinkerpop języku Gremlin umożliwiają opcję, aby zapewnić słownik parametrów w celu wykonywania zapytań. Jest to przykład jak to zrobić [Gremlin.Net](http://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) i [Gremlin Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
 
 ### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>Dlaczego otrzymuję "Błąd kompilacji zapytania języka Gremlin: nie można odnaleźć dowolną metodę" Błąd?
 

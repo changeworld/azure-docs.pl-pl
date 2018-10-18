@@ -8,12 +8,12 @@ ms.date: 08/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9c9c04a8310a46605cf5733131db1418b7cb7f7a
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 97a2180aaf236d3541cff30d2151f26ce70b14af
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47218788"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393478"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Omówienie środowiska uruchomieniowego usługi Azure IoT Edge oraz jej architektury
 
@@ -23,13 +23,13 @@ ms.locfileid: "47218788"
 
 * Instaluje i aktualizuje obciążenia na urządzeniu.
 * Zapewnia zachowanie standardów zabezpieczeń usługi Azure IoT Edge na urządzeniu.
-* Zapewnia, że [moduły usługi IoT Edge] [lnk modułów] są zawsze uruchamiane.
+* Zapewnia, że [moduły usługi IoT Edge](iot-edge-modules.md) nieprzerwane działanie.
 * Przesyła raporty o kondycji modułów do chmury na potrzeby zdalnego monitorowania.
 * Usprawnia komunikację między podrzędnymi urządzeniami liścia a urządzenia usługi IoT Edge.
 * Usprawnia komunikację między modułami na urządzeniu usługi IoT Edge.
 * Usprawnia komunikację między urządzeniem usługi IoT Edge a chmurą.
 
-![Środowisko uruchomieniowe usługi IoT Edge komunikuje się szczegółowe informacje i kondycji modułów do usługi IoT Hub][1]
+![Środowisko uruchomieniowe usługi IoT Edge komunikuje się szczegółowe informacje i kondycji modułów do usługi IoT Hub](./media/iot-edge-runtime/Pipeline.png)
 
 Obowiązki środowiska uruchomieniowego usługi IoT Edge można podzielić na dwie kategorie: Zarządzanie komunikacji i moduł. Te dwie role są wykonywane przez dwa składniki, które tworzą środowisko uruchomieniowe usługi IoT Edge. Centrum usługi IoT Edge jest odpowiedzialny za komunikację, podczas gdy zarządza agent usługi IoT Edge, wdrażania i monitorowania modułów. 
 
@@ -49,7 +49,7 @@ Centrum usługi Edge nie jest pełną wersję usługi IoT Hub działa lokalnie. 
 
 W celu zmniejszenia obciążenia przepustowości rozwiązania usługi IoT Edge korzysta, Centrum usługi Edge optymalizuje, jak wiele rzeczywistych połączenia są nawiązywane z chmurą. Centrum usługi Edge przyjmuje logiczny połączenia od klientów, takich jak moduły lub urządzeniami liścia i łączy je do jednego fizycznego połączenia z chmurą. Szczegóły tego procesu są niewidoczne w pozostałej części rozwiązania. Klienci wydaje się, że mają oni własne połączenia do chmury, nawet jeśli te są wszystkie są wysyłane za pośrednictwem tego samego połączenia. 
 
-![Centrum usługi Edge działa jako brama między wiele urządzeń fizycznych i w chmurze][2]
+![Centrum usługi Edge działa jako brama między wiele urządzeń fizycznych i w chmurze](./media/iot-edge-runtime/Gateway.png)
 
 Centrum usługi Edge można określić, czy jest ona dołączona do usługi IoT Hub. W przypadku utraty połączenia Centrum usługi Edge zapisuje komunikaty lub lokalnie w aktualizacji bliźniaczej reprezentacji. Po ustanowieniu połączenia, synchronizuje wszystkie dane. Lokalizacja używana dla tego tymczasowa pamięć podręczna jest określany przez właściwość z bliźniaczej reprezentacji modułu Centrum usługi Edge. Rozmiar pamięci podręcznej nie jest ograniczone i będzie się zwiększać tak długo, jak urządzenie ma pojemność magazynu. 
 
@@ -57,7 +57,7 @@ Centrum usługi Edge można określić, czy jest ona dołączona do usługi IoT 
 
 Centrum usługi Edge usprawnia komunikację na moduł. Przy użyciu Centrum usługi Edge jako broker komunikatów przechowuje moduły niezależni od siebie nawzajem. Moduły muszą tylko określić danych wejściowych, które akceptują wiadomości i danych wyjściowych, do których one zapisywania komunikatów. Rozwiązanie dla deweloperów następnie odwzorowywały te dane wejściowe i dane wyjściowe ze sobą tak, aby moduły przetwarzać dane w kolejności, które są specyficzne dla tego rozwiązania. 
 
-![Centrum usługi Edge usprawnia komunikację na moduł][3]
+![Centrum usługi Edge usprawnia komunikację na moduł](./media/iot-edge-runtime/ModuleEndpoints.png)
 
 Aby wysyłać dane do Centrum usługi Edge, moduł wywołuje metodę SendEventAsync. Pierwszy argument określa, w której dane wyjściowe, aby wysłać wiadomość. Poniższym pseudokodzie wysyła komunikat na output1:
 
@@ -77,7 +77,7 @@ Rozwiązanie dla deweloperów jest odpowiedzialny za określenie reguł, które 
 
 <!--- For more info on how to declare routes between modules, see []. --->   
 
-![Trasy między modułami][4]
+![Trasy między modułami](./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png)
 
 ## <a name="iot-edge-agent"></a>Agent usługi IoT Edge
 
@@ -117,13 +117,4 @@ Aby uzyskać więcej informacji na temat struktury zabezpieczeń usługi Azure I
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Świadomość, że certyfikaty usługi Azure IoT Edge][lnk-certs]
-
-<!-- Images -->
-[1]: ./media/iot-edge-runtime/Pipeline.png
-[2]: ./media/iot-edge-runtime/Gateway.png
-[3]: ./media/iot-edge-runtime/ModuleEndpoints.png
-[4]: ./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png
-
-<!-- Links -->
-[lnk-certs]: iot-edge-certs.md
+[Świadomość, że certyfikaty usługi Azure IoT Edge](iot-edge-certs.md)

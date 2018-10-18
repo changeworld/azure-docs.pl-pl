@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: kgremban
-ms.openlocfilehash: b5316479011a432f3822448f03b8ad6ecddd4fe1
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 031524f4ef00b57f598c1114d594fb70eeedd15b
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39590596"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394004"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Łączenie urządzeń Modbus TCP za pośrednictwem bramy urządzeń usługi IoT Edge
 
@@ -23,7 +23,7 @@ Jeśli chcesz połączyć urządzenia IoT korzystające z protokołów Modbus TC
 
 W tym artykule opisano sposób tworzenia własnego obrazu kontenera dla modułu Modbus (można też użyć wstępnie utworzonej próbki), a następnie wdrożenia go do urządzenia usługi IoT Edge, które będzie pełnić rolę bramy. 
 
-W tym artykule założono, że użytkownik korzysta z protokołu Modbus TCP. Aby uzyskać więcej informacji o sposobie konfigurowania modułu na potrzeby obsługi protokołu Modbus RTU, zobacz projekt [Moduł Azure IoT Edge Modbus](https://github.com/Azure/iot-edge-modbus) w witrynie Github. 
+W tym artykule założono, że użytkownik korzysta z protokołu Modbus TCP. Aby uzyskać więcej informacji o sposobie konfigurowania modułu obsługi protokołu Modbus RTU, zobacz [moduł Azure IoT Edge Modbus](https://github.com/Azure/iot-edge-modbus) projektu w usłudze Github. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Urządzenie usługi Azure IoT Edge. Aby skorzystać z przewodnika dotyczącego konfiguracji takiego urządzenia, zobacz [Wdrażanie usługi Azure IoT Edge na symulowanym urządzeniu w systemie Windows](quickstart.md) lub [Linux](quickstart-linux.md). 
@@ -38,7 +38,7 @@ Jeśli chcesz przetestować funkcje bramy Modbus, firma Microsoft przygotowała 
 mcr.microsoft.com/azureiotedge/modbus:1.0
 ```
 
-Jeśli chcesz utworzyć własny moduł i dostosować go pod kątem środowiska użytkownika, istnieje projekt [Moduł Azure IoT Edge Modbus](https://github.com/Azure/iot-edge-modbus) typu open source w witrynie Github. Wykonaj instrukcje zawarte w tym projekcie, aby utworzyć własny obraz kontenera. Jeśli tworzysz własny obraz kontenera, zobacz [Opracowanie i wdrożenie modułu IoT Edge w języku C#](tutorial-csharp-module.md), aby uzyskać instrukcje dotyczące publikowania obrazów kontenera w rejestrze oraz wdrażania niestandardowego modułu na urządzeniu. 
+Jeśli chcesz utworzyć własny moduł i dostosować go w środowisku jest typu open-source [moduł Azure IoT Edge Modbus](https://github.com/Azure/iot-edge-modbus) projektu w usłudze Github. Wykonaj instrukcje zawarte w tym projekcie, aby utworzyć własny obraz kontenera. Jeśli tworzysz własny obraz kontenera, zobacz [Opracowanie i wdrożenie modułu IoT Edge w języku C#](tutorial-csharp-module.md), aby uzyskać instrukcje dotyczące publikowania obrazów kontenera w rejestrze oraz wdrażania niestandardowego modułu na urządzeniu. 
 
 
 ## <a name="run-the-solution"></a>Uruchamianie rozwiązania
@@ -54,13 +54,12 @@ Jeśli chcesz utworzyć własny moduł i dostosować go pod kątem środowiska u
 
       ```JSON
       {  
-        "properties.desired":{  
+        "properties.desired":{
           "PublishInterval":"2000",
-          "SlaveConfigs":{  
-            "Slave01":{  
-              "SlaveConnection":"<IPV4 address>",
-              "HwId":"PowerMeter-0a:01:01:01:01:01",
-              "Operations":{  
+          "SlaveConfigs":{
+            "Slave01":{
+              "SlaveConnection":"<IPV4 address>","HwId":"PowerMeter-0a:01:01:01:01:01",
+              "Operations":{
                 "Op01":{  
                   "PollingInterval": "1000",
                   "UnitId":"1",
@@ -96,12 +95,9 @@ Wyświetlanie danych przechodzących przez moduł modbus:
 docker logs -f modbus
 ```
 
-Można również wyświetlić dane telemetryczne urządzenie wysyła za pomocą [rozszerzenie Azure IoT Toolkit dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). 
+Możesz również wyświetlić dane telemetryczne wysyłane przez urządzenie przy użyciu [rozszerzenia zestawu narzędzi usługi Azure IoT dla edytora Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby dowiedzieć się, jak urządzenia usługi IoT Edge mogą pełnić rolę bram, zobacz [tworzenie urządzenia usługi IoT Edge, która pełni rolę przezroczystej bramy][lnk-transparent-gateway-linux]
+- Aby dowiedzieć się więcej o tym, jak urządzenia usługi IoT Edge mogą pełnić rolę bram, zobacz [Tworzenie urządzenia usługi IoT Edge, które będzie pełnić rolę przezroczystej bramy](./how-to-create-transparent-gateway-linux.md)
 - Aby uzyskać więcej informacji o działaniu modułów usługi IoT Edge, zobacz [Opis modułów usługi Azure IoT Edge](iot-edge-modules.md)
-
-<!-- Links -->
-[lnk-transparent-gateway-linux]: ./how-to-create-transparent-gateway-linux.md

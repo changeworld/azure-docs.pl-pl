@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 18188b8c0572057fb9277294c381de12df196439
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 30a1f2be1917ba6ea404a2862daaf5f51f35ac3f
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343932"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394888"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>Wybierz, a następnie użyć obliczeniowego elementu docelowego do nauczenia modelu
 
@@ -177,7 +177,7 @@ Poniższe kroki konfigurowania maszyn wirtualnych do nauki o danych (DSVM) jako 
     # Use Docker in the remote VM
     run_config.environment.docker.enabled = True
 
-    # Use CPU base image from DockerHub
+    # Use CPU base image
     run_config.environment.docker.base_image = azureml.core.runconfig.DEFAULT_CPU_IMAGE
     print('Base Docker image is:', run_config.environment.docker.base_image)
 

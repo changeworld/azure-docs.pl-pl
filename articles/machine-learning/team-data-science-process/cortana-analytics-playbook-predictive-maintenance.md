@@ -4,7 +4,7 @@ description: Kompleksowy opis do nauki o danych, zapewniająca rozwiązania do k
 services: machine-learning
 author: fboylu
 manager: cgronlun
-editor: ''
+editor: cgronlun
 ms.assetid: 2e8b66db-91eb-432b-b305-6abccca25620
 ms.service: machine-learning
 ms.component: team-data-science-process
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 7802aa8ea9798b18d5424c2342ba63c01406b25a
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 2a5d8540dba491dec8b2da227b0e84c10ff09c77
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221710"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395008"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Przewodnik sztucznej Inteligencji platformy Azure dla rozwiązania do konserwacji zapobiegawczej
 
@@ -256,7 +256,7 @@ W tej sekcji omówiono technik modelowania głównego menedżerów PdM występuj
 > należy określić w porozumieniu z domeną ekspertów.
 
 ### <a name="binary-classification"></a>Klasyfikacja binarna
-Klasyfikacja binarna jest używana do _przewidzieć prawdopodobieństwo, że urządzenie nie powiedzie się w przedziale czasu przyszłych_ — wywoływany _okres przyszłych horizon X_. X jest ustalany problem biznesowy i dane, po konsultacji z ekspertem domeny. Przykładami są:
+Klasyfikacja binarna jest używana do _przewidzieć prawdopodobieństwo, że urządzenie nie powiedzie się w przedziale czasu przyszłych_ — wywoływany _okres przyszłych horizon X_. X jest ustalany problem biznesowy i dane, po konsultacji z ekspertem domeny. Oto przykłady:
 - _Minimalny czas realizacji_ wymagane, aby zastąpić składników, wdrażanie zasobów konserwacji, przeprowadzania konserwacji, aby uniknąć problemu, który może nastąpić w tym okresie.
 - _Minimalna liczba zdarzeń_ , może się zdarzyć, zanim wystąpi problem.
 

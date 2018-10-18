@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 10/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 33d5560f2bfef04678cf7a2236fd920385d68aac
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: c32c4f97a963485e87e36afc44e9cea2ebcebd90
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452160"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394417"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -110,7 +110,7 @@ Skontaktuj się z pomocą [obsługuje](https://portal.azure.com/#blade/Microsoft
 
 ## <a name="validate-move"></a>Waliduj przeniesienie
 
-[Zweryfikować operacji przeniesienia](/rest/api/resources/resources/validatemoveresources) umożliwia testowanie scenariusza przenoszenia bez faktycznego przenoszenia zasobów. Ta operacja umożliwia określenie, przeniesienie, zostanie wykonane pomyślnie. Aby wykonać tę operację, musisz mieć:
+[Zweryfikować operacji przeniesienia](/rest/api/resources/resources/resources_validatemoveresources) umożliwia testowanie scenariusza przenoszenia bez faktycznego przenoszenia zasobów. Ta operacja umożliwia określenie, przeniesienie, zostanie wykonane pomyślnie. Aby wykonać tę operację, musisz mieć:
 
 * Nazwa źródłowa grupa zasobów
 * Identyfikator zasobu docelowa grupa zasobów
@@ -219,7 +219,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Wyszukiwanie
 * Service Bus
 * Service Fabric
-* Usługa Service Fabric siatki
+* Service Fabric Mesh
 * SignalR Service
 * Nie można przenieść magazyn — konta magazynu w różnych regionach, w tej samej operacji. Zamiast tego należy użyć oddzielnych operacji dla każdego regionu.
 * Magazyn (klasyczny) — zobacz [ograniczenia wdrożenia klasycznego](#classic-deployment-limitations)

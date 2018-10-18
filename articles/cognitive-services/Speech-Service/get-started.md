@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: erhopf
-ms.openlocfilehash: 4530ecca973054ee73a02ca4e047dfe52ea90d04
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 7ca423a4953dbe05af119d6b6eb12976c722e374
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166189"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393273"
 ---
 # <a name="try-the-speech-service-for-free"></a>Wypróbuj bezpłatnie usługę rozpoznawania mowy
 
@@ -67,7 +67,7 @@ Po utworzeniu konta platformy Azure, wykonaj kroki opisane w następnej sekcji, 
 
 Aby dodać zasób usługi mowy (w warstwie bezpłatna lub płatna) do konta platformy Azure:
 
-1. Zaloguj się do [witryny Azure portal](https://ms.portal.azure.com/) przy użyciu konta Microsoft.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu konta Microsoft.
 
 1. Wybierz **Utwórz zasób** w lewym górnym rogu portalu.
 

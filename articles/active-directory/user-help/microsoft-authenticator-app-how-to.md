@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: 5b8264667e09e7dd6c048fae11e363ee8dfdca33
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: a88a0d9105942502b634f3be7c3279167ea590c6
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165379"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393256"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Rozpoczynanie pracy z aplikacją Microsoft Authenticator
 
@@ -25,7 +25,7 @@ Aplikacja Microsoft Authenticator pomagają zapobiegać nieautoryzowanemu dostę
 
 Podczas korzystania z aplikacji, podczas weryfikacji dwuetapowej, pracy w jeden z dwóch sposobów:
 
-- **Powiadomienie.** Aplikacja wysyła powiadomienie do Twojego urządzenia. Upewnij się, powiadomienia jest odpowiednie, a następnie wybierz **Sprawdź**. Jeśli nie rozpoznajesz powiadomienia wybierz **Odmów**. Użytkownicy otrzymają możliwość zostać oznaczone jako oszustwa żądania, jeśli ich nie zezwoli na. 
+- **Powiadomienie.** Aplikacja wysyła powiadomienie do Twojego urządzenia. Upewnij się, powiadomienia jest odpowiednie, a następnie wybierz **Sprawdź**. Jeśli nie rozpoznajesz powiadomienia wybierz **Odmów**. Po kliknięciu **Odmów**, można również oznaczyć, że żądanie jako fałszywe.
 
 - **Kod weryfikacyjny.** Po wpisaniu nazwy użytkownika i hasła, możesz otworzyć aplikację i skopiować kod weryfikacyjny na **kont** ekranu na ekranie logowania. Kod weryfikacyjny, który działa jako drugiej formy uwierzytelniania.
 

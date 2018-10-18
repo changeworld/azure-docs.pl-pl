@@ -4,21 +4,21 @@ description: W tym artykule, zapewniają Przegląd ochrony zawartości przy uży
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 2a3e94d37a926bd36b780b45eb3d6cb29fb73597
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f8ef92a335dd6faee076356dbffc873b08afbdc0
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521758"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394280"
 ---
 # <a name="content-protection-overview"></a>Omówienie ochrony zawartości
 
@@ -149,9 +149,7 @@ W przykładzie pokazano sposób:
 
 2. Utwórz StreamingLocator, który jest skonfigurowany do przesyłania strumieniowego element zawartości zaszyfrowanej. 
 
-  W tym przykładzie ustawimy **StreamingPolicyName** do **PredefinedStreamingPolicy.SecureStreaming** które obsługuje szyfrowanie koperty i cenc i ustawia dwa klucze zawartości StreamingLocator. 
-
-  Jeśli chcesz także szyfrowanie z użyciem technologii FairPlay, ustaw **StreamingPolicyName** do **PredefinedStreamingPolicy.SecureStreamingWithFairPlay**.
+  Na przykład można ustawić StreamingLocator.StreamingPolicyName z zasadami "Predefined_MultiDrmCencStreaming". Te zasady wskazują, że chcesz wygenerować dwa klucze zawartości (koperta i CENC) i ustawić je w lokalizatorze. Dlatego stosowane są szyfrowania typu koperta, PlayReady i Widevine (klucz jest dostarczany do klienta odtwarzania w oparciu o skonfigurowane licencje DRM). Jeśli chcesz również zaszyfrować strumienia z CBCS (FairPlay), należy użyć "Predefined_MultiDrmStreaming".
 
 3. Utwórz token testu.
 

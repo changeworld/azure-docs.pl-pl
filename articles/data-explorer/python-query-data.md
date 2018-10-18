@@ -2,18 +2,18 @@
 title: 'Szybki start: wykonywanie zapytań o dane przy użyciu biblioteki języka Python w usłudze Azure Data Explorer'
 description: Z tego przewodnika Szybki start dowiesz się, jak wykonywać zapytania o dane w usłudze Azure Data Explorer przy użyciu biblioteki języka Python.
 services: data-explorer
-author: mgblythe
-ms.author: mblythe
+author: orspod
+ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: fee982812456548ed6d1e15d86151df88532389f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 17504cec6ddf98aca8ddfc6c91d21d34055902f6
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956102"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394858"
 ---
 # <a name="quickstart-query-data-using-the-azure-data-explorer-python-library"></a>Szybki start: wykonywanie zapytań o dane przy użyciu biblioteki języka Python w usłudze Azure Data Explorer
 
@@ -32,7 +32,7 @@ Ten przewodnik Szybki start jest również dostępny w formie [notesu platformy 
 Zainstaluj program*azure-kusto-data*.
 
 ```python
-pip install azure-kusto-data
+pip install azure-kusto-data==0.0.13
 ```
 
 ## <a name="add-import-statements-and-constants"></a>Dodawanie instrukcji importu i stałych
@@ -42,6 +42,7 @@ Zaimportuj klasy z biblioteki oraz bibliotekę analizy danych *pandas*.
 ```python
 from azure.kusto.data.request import KustoClient, KustoConnectionStringBuilder
 from azure.kusto.data.exceptions import KustoServiceError
+from azure.kusto.data.helpers import dataframe_from_result_table
 import pandas as pd
 ```
 
@@ -51,10 +52,10 @@ Usługa Azure Data Explorer korzysta z identyfikatora dzierżawy usługi AAD w c
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
 ```
 
-Jeśli na przykład Twoja domena to *contoso.com*, adres URL to [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/). Kliknij ten adres URL, aby wyświetlić wyniki. Pierwszy wiersz wygląda w następujący sposób. 
+Jeśli na przykład Twoja domena to *contoso.com*, adres URL to [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/). Kliknij ten adres URL, aby wyświetlić wyniki. Pierwszy wiersz wygląda w następujący sposób.
 
 ```
-`"authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"`
+"authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
 ```
 
 Identyfikator dzierżawy w tym przypadku to `6babcaad-604b-40ac-a9d7-9fd97c0b779f`. Przed uruchomieniem kodu ustaw wartość dla elementu AAD_TENANT_ID.
@@ -80,7 +81,7 @@ Wykonaj zapytanie do klastra i zapisz dane wyjściowe w ramce danych. Uruchomion
 KUSTO_CLIENT  = KustoClient(KCSB)
 KUSTO_QUERY  = "StormEvents | sort by StartTime desc | take 10"
 
-df = KUSTO_CLIENT.execute_query(KUSTO_DATABASE, KUSTO_QUERY).primary_results[0].to_dataframe()
+RESPONSE = KUSTO_CLIENT.execute(KUSTO_DATABASE, KUSTO_QUERY)
 ```
 
 ## <a name="explore-data-in-dataframe"></a>Eksplorowanie danych w elemencie DataFrame
@@ -88,6 +89,7 @@ df = KUSTO_CLIENT.execute_query(KUSTO_DATABASE, KUSTO_QUERY).primary_results[0].
 Po zalogowaniu zapytanie zwraca wyniki, które są zapisywane w ramce danych. Możesz pracować z tymi wynikami tak samo, jak w przypadku każdej innej ramki danych.
 
 ```python
+df = dataframe_from_result_table(RESPONSE.primary_results[0])
 df
 ```
 

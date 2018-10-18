@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: dobett
-ms.openlocfilehash: 377f28f4798a1ffb6423c1f4d9f4e34b4fc60234
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: b7ef5d2853cdf4a7b09aa52c510c268cb42a245f
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018846"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395160"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Odwołanie — IoT Hub przydziałów i dławienia
 
@@ -75,9 +75,9 @@ Usługa IoT Hub wymusza inne limity operacyjne:
 | Komunikaty z urządzenia do chmury | Rozmiar maksymalny komunikatu 256 KB |
 | Komunikaty z chmury do urządzenia<sup>1</sup> | Maksymalny rozmiar 64 KB. Maksymalna liczba oczekujących komunikatów do dostarczania jest 50. |
 | Metoda bezpośrednia<sup>1</sup> | Rozmiar ładunku metody bezpośredniej maksymalna to 128 KB. |
-| Konfiguracje | 20 konfiguracje dla koncentratora. |
-| Wdrożenia usługi Edge | 20 wdrożenia dla koncentratora. 20 modułów na wdrożenie. |
-| Reprezentacje urządzeń | Maksymalny rozmiar poszczególnych sekcji bliźniaczych reprezentacji (tagi, żądanych właściwości, zgłaszanych właściwości) to 8 KB |
+| Konfiguracje urządzeń automatycznego<sup>1</sup> | 100 konfiguracje na płatnych jednostek SKU koncentratora. 20 konfiguracje za bezpłatne jednostki SKU koncentratora. |
+| Automatyczne wdrażanie krawędzi<sup>1</sup> | 20 modułów na wdrożenie. 100 wdrożeń na płatnych jednostek SKU koncentratora. 20 wdrożeń na bezpłatne jednostki SKU koncentratora. |
+| Twins<sup>1</sup> | Maksymalny rozmiar poszczególnych sekcji bliźniaczych reprezentacji (tagi, żądanych właściwości, zgłaszanych właściwości) to 8 KB |
 
 <sup>1</sup>ta funkcja nie jest dostępne w warstwie podstawowa usługi IoT Hub. Aby uzyskać więcej informacji, zobacz [jak wybrać we właściwym Centrum IoT](iot-hub-scaling.md).
 

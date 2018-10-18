@@ -9,18 +9,18 @@ ms.date: 07/25/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c94a58a19558350c3c20377ce750f6758f688c0d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a3d073e9fd7c535ea84d6e4dbbf8003a6c55725b
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998512"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394616"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Wdrażanie i monitorowanie moduły usługi IoT Edge na dużą skalę przy użyciu wiersza polecenia platformy Azure
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-edge-how-to-deploy-monitor-selector.md)]
 
-Usługa Azure IoT Edge pozwala na przenoszenie analytics na urządzeniach brzegowych i zapewnia interfejs chmurowy dzięki czemu możesz zarządzać i monitorować urządzenia brzegowe IoT bez konieczności uzyskiwania fizycznego dostępu każdej z nich. Możliwość zdalnego zarządzania urządzeniami jest coraz ważniejsze rozwiązania Internetu rzeczy są coraz większej i bardziej złożonej. Usługa Azure IoT Edge jest przeznaczony do obsługi do celów biznesowych, niezależnie od tego, ile urządzeń, możesz dodać.
+Usługa Azure IoT Edge pozwala na przenoszenie analytics na urządzeniach brzegowych i zapewnia interfejs chmurowy dzięki czemu możesz zarządzać i zdalne monitorowanie urządzeń usługi IoT Edge. Możliwość zdalnego zarządzania urządzeniami jest coraz ważniejsze rozwiązania Internetu rzeczy są coraz większej i bardziej złożonej. Usługa Azure IoT Edge jest przeznaczony do obsługi do celów biznesowych, niezależnie od tego, ile urządzeń, możesz dodać.
 
 Możesz zarządzać poszczególnych urządzeń i wdrażać moduły do nich pojedynczo. Jednak jeśli chcesz wprowadzić zmiany do urządzeń na dużą skalę, możesz utworzyć **automatycznego wdrażania usługi IoT Edge**, który jest częścią automatyczne zarządzanie urządzeniami w usłudze IoT Hub. Wdrożenia są dynamiczne procesów, które umożliwiają jednocześnie wdrażać wielu modułów na wielu urządzeniach, śledzenia stanu i kondycji modułów i wprowadzić zmiany, gdy jest to konieczne. 
 
@@ -128,7 +128,7 @@ Przed utworzeniem wdrożenia, musisz mieć możliwość określenia urządzeń, 
 }
 ```
 
-Aby uzyskać więcej informacji na temat tagów i bliźniacze reprezentacje urządzeń, zobacz [poznawanie i używanie bliźniaczych reprezentacji urządzeń w usłudze IoT Hub][lnk-device-twin].
+Aby uzyskać więcej informacji na temat tagów i bliźniacze reprezentacje urządzeń, zobacz [poznawanie i używanie bliźniaczych reprezentacji urządzeń w usłudze IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).
 
 ## <a name="create-a-deployment"></a>Tworzenie wdrożenia
 
@@ -209,16 +209,4 @@ az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub na
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o [Wdrażanie modułów na urządzenia brzegowe][lnk-deployments].
-
-<!-- Images -->
-[1]: ./media/how-to-deploy-monitor/iot-edge-deployments.png
-
-<!-- Links -->
-[lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
-[lnk-portal]: https://portal.azure.com
-[lnk-docker-create]: https://docs.docker.com/engine/reference/commandline/create/
-[lnk-deployments]: module-deployment-monitoring.md
-
-<!-- Anchor links -->
-[anchor-monitor]: #monitor-a-deployment
+Dowiedz się więcej o [Wdrażanie modułów na urządzenia brzegowe](module-deployment-monitoring.md).

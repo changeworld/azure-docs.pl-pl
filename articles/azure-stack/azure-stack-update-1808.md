@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 2e40f0520c0f5e605974f883b3327699ff26313e
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 3843898ba2d7cdd3697236a9f4cc19070c6f07c3
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321822"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395177"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizacja usługi Azure Stack 1808
 
@@ -261,6 +261,10 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
    2. Skonfigurowanie środowiska z wieloma dzierżawami wdrażania maszyn wirtualnych w ramach subskrypcji, skojarzony z katalogiem gościa może zakończyć się niepowodzeniem z komunikatem o błąd wewnętrzny. Aby naprawić błąd, wykonaj następujące kroki:
       1. Zastosuj [1808 Azure Stack poprawkę](https://support.microsoft.com/help/4467062/).
       2. Postępuj zgodnie z instrukcjami w [w tym artykule](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) Aby zmienić konfigurację wszystkich katalogów gościa.
+      
+<!-- 3179561 - IS --> 
+- Zarządzane dyski użycia jest zgłaszany w godzinach, zgodnie z opisem w [często zadawane pytania dotyczące usługi Azure Stack użycia](azure-stack-usage-related-faq.md#managed-disks). Jednak opłaty usługi Azure Stack użyje miesięczna cena, dzięki czemu może niepoprawnie jest naliczana za użycie usługi Managed Disks w lub przed 27 września. Firma Microsoft zostały tymczasowo zawieszone opłaty za dyski zarządzane po września 27 do czasu rozliczeniowego problem został rozwiązany. Jeśli ma zostać rozliczenie niepoprawnie użycie usługi Managed Disks, skontaktuj się z działem rozliczeń firmy Microsoft.
+Raporty użycia utworzone podczas korzystania z usługi Azure Stack interfejsów API pokazują poprawne ilości i mogą być używane.
 
 <!-- 2869209 – IS, ASDK --> 
 - Korzystając z [ **AzsPlatformImage Dodaj** polecenia cmdlet](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), należy użyć **- OsUri** jako konto magazynu, identyfikator URI, gdy dysk jest przekazywany parametr. Jeśli używasz lokalnej ścieżki dysku, polecenia cmdlet zakończy się niepowodzeniem z następującym błędem: *długotrwałych operacji nie powiodło się ze stanem "Niepowodzenie"*. 

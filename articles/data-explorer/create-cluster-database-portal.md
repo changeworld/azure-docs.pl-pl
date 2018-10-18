@@ -2,18 +2,18 @@
 title: 'Szybki start: tworzenie klastra i bazy danych usługi Azure Data Explorer'
 description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć klaster i bazę danych usługi Azure Data Explorer oraz pozyskiwać (ładować) dane.
 services: data-explorer
-author: mgblythe
-ms.author: mblythe
+author: orspod
+ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 3280709c59edfd5d8e810c7ab33aa615e13f4b93
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6aff31c662a845028a02cecd7a99837f92bc87e5
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974718"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394225"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Szybki start: tworzenie klastra i bazy danych usługi Azure Data Explorer
 

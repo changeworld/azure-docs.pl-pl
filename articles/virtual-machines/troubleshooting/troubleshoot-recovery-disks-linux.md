@@ -1,12 +1,25 @@
-<a name="-headarticlesvirtual-machinestroubleshootingtroubleshoot-recovery-disks-linuxmd"></a><<<<<<< HEAD:articles/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux.md
 ---
-
-Tytuł: używać systemu Linux, rozwiązywanie problemów z maszyny Wirtualnej przy użyciu wiersza polecenia platformy Azure | Microsoft Docs description: Dowiedz się, jak rozwiązywać problemy z maszyny Wirtualnej systemu Linux, łącząc dysku systemu operacyjnego do odzyskiwania maszyny Wirtualnej przy użyciu usług wiersza polecenia platformy Azure: documentationCenter wirtualnych linux maszyn: '' autorzy: genlin Menedżera: Edytor jeconnoc: ''
-
-MS.Service: ms.devlang wirtualnych linux maszyn: ms.topic codziennych: Rozwiązywanie problemów z polecenia: ms.workload systemu linux maszyny wirtualnej: infrastruktury ms.date: 2017-02-16 ms.author: genli
-
+title: Używać systemu Linux, rozwiązywanie problemów z maszyny Wirtualnej przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozwiązywać problemy z maszyny Wirtualnej systemu Linux, łącząc dysku systemu operacyjnego do odzyskiwania maszyny Wirtualnej przy użyciu wiersza polecenia platformy Azure
+services: virtual-machines-linux
+documentationCenter: ''
+authors: genlin
+manager: jeconnoc
+editor: ''
+ms.service: virtual-machines-linux
+ms.devlang: azurecli
+ms.topic: troubleshooting
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure
+ms.date: 02/16/2017
+ms.author: genli
+ms.openlocfilehash: 2f10a231c4edc3e01d3f8c5f7f4db1854f83044d
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49392406"
 ---
-
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Rozwiązywanie problemów z maszyny Wirtualnej z systemem Linux przez dołączenie dysku systemu operacyjnego do odzyskiwania maszyny Wirtualnej przy użyciu wiersza polecenia platformy Azure
 Linux maszyny wirtualnej (VM) napotkał błąd podczas rozruchu lub dysk, może być konieczne wykonanie kroków rozwiązywania problemów na samym wirtualnym dysku twardym. Typowym przykładem może być nieprawidłowy wpis w `/etc/fstab` że zapobiega maszyny Wirtualnej możliwość wykonania rozruchu pomyślnie. Ten artykuł szczegółowo opisuje jak połączyć wirtualny dysk twardy do innej maszyny Wirtualnej systemu Linux, aby naprawić wszystkie błędy, a następnie ponownie utworzyć oryginalną maszynę Wirtualną za pomocą wiersza polecenia platformy Azure. 
 

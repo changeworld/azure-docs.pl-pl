@@ -1,10 +1,10 @@
 ---
-title: Wskazówki dotyczące wykonywania procesu nauki danych zespołu na platformie Azure | Dokumentacja firmy Microsoft
-description: Jak połączyć chmurze i lokalnie narzędzia i usługi do przepływu pracy lub potoku, aby utworzyć aplikację inteligentnego.
+title: Przewodniki dotyczące wykonywania procesu do nauki o danych zespołu na platformie Azure | Dokumentacja firmy Microsoft
+description: Jak połączyć w chmurze i lokalnych narzędzi i usług w przepływie pracy lub potoku do tworzenia inteligentnych aplikacji.
 services: machine-learning
 documentationcenter: ''
 author: deguhath
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: aa63d5a5-25ee-4c4b-9a4c-7553b98d7f6e
 ms.service: machine-learning
@@ -15,37 +15,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: deguhath
-ms.openlocfilehash: ce5d99e7fbae761a01dbbac218ce96ac9fabd442
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 4ac07d9d56862f315f7ef1f68fdecad1af700dbf
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838997"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395024"
 ---
-# <a name="walkthroughs-executing-the-team-data-science-process"></a>Wskazówki dotyczące wykonywania procesu nauki danych zespołu
+# <a name="walkthroughs-executing-the-team-data-science-process"></a>Przewodniki dotyczące wykonywania procesu do nauki o danych zespołu
 
-Te **wskazówki end-to-end** pokazują czynności w procesie nauki zespołu danych w określonych scenariuszach. Oni zilustrowania sposób łączenia chmury, narzędzia lokalnych i usług w przepływie pracy lub potoku, aby utworzyć **inteligentnego aplikacji**. Wskazówki są pogrupowane według **platformy** jak używane.
+Te **przewodniki end-to-end** pokaz czynności w procesie nauki o danych zespołu w określonych scenariuszach. One ilustrują sposób łączenia chmury, lokalnego narzędzia i usługi w przepływie pracy lub potoku, aby utworzyć **inteligentną aplikację**. Przewodniki są pogrupowane według **platformy** używane.
 
 
 ## <a name="walkthrough-descriptions"></a>Opisy wskazówki
 
-Oto krótkie opisy tych przykładów wskazówki zapewnić ich odpowiednich platform:
+Poniżej przedstawiono krótkie opisy te wskazówki przykłady zapewniają w odpowiednich platform:
 
 
-- [Azure Machine Learning Workbench](walkthroughs-aml-with-tdsp.md) te samouczki wskazówki i przykłady przedstawiają sposób tworzenia zespołu nauki danych strukturalnych projektów z Azure Machine Learning Workbench przetwarzania języka naturalnego i klasyfikacji.
-- [Instruktaże Spark w usłudze HDInsight przy użyciu PySpark i Scala](walkthroughs-spark.md) te wskazówki za pomocą PySpark i Scala w klastrze Azure Spark wykonywać analizy predykcyjnej.
-- [Wskazówki dotyczące usługi Hadoop w HDInsight przy użyciu Hive](walkthroughs-hdinsight-hadoop.md) te wskazówki korzystanie z programu Hive z klastrem usługi HDInsight Hadoop do analizy predykcyjnej.
-- [Wskazówki dotyczące usługi Azure Data Lake za pomocą języka U-SQL](walkthroughs-azure-data-lake.md) te wskazówki za pomocą języka U-SQL Azure Data Lake analizy predykcyjnej.
-- [SQL Server](walkthroughs-sql-server.md) te wskazówki za pomocą programu SQL Server, SQL Server R Services i SQL Server Python Services wykonywać analizy predykcyjnej.
-- [Usługa SQL Data Warehouse](walkthroughs-sql-data-warehouse.md) te wskazówki za pomocą usługi SQL Data Warehouse wykonywać analizy predykcyjnej. 
+- [Usługa Azure Machine Learning Workbench](walkthroughs-aml-with-tdsp.md) te wskazówki, samouczki i przykłady przedstawiają sposób tworzenia projektów zespołu do analizy danych ze strukturą za pomocą usługi Azure Machine Learning Workbench w celu przetwarzania języka naturalnego i klasyfikacji.
+- [Wskazówki dotyczące platformy HDInsight Spark przy użyciu PySpark i środowiskiem Scala](walkthroughs-spark.md) te przewodniki Użyj PySpark i środowiskiem Scala w klastrze usługi Azure Spark do analizy predykcyjnej.
+- [Wskazówki dotyczące usługi Hadoop w HDInsight przy użyciu technologii Hive](walkthroughs-hdinsight-hadoop.md) te przewodniki korzystanie z programu Hive przy użyciu klastra usługi HDInsight Hadoop do analizy predykcyjnej.
+- [Wskazówki dotyczące usługi Azure Data Lake za pomocą języka U-SQL](walkthroughs-azure-data-lake.md) te przewodniki za pomocą języka U-SQL usługi Azure Data Lake analizy predykcyjnej.
+- [Program SQL Server](walkthroughs-sql-server.md) te wskazówki dotyczące użycia programu SQL Server, SQL Server R Services i programu SQL Server języka Python usługi analizy predykcyjnej.
+- [Usługa SQL Data Warehouse](walkthroughs-sql-data-warehouse.md) te przewodniki służy usługa SQL Data Warehouse do analizy predykcyjnej. 
 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Omówienie najważniejsze składniki wchodzące w skład procesu nauki danych zespołu, zobacz [Omówienie procesu nauki danych zespołu](overview.md).
+Aby uzyskać omówienie najważniejsze składniki wchodzące w skład procesu do nauki o danych zespołu, zobacz [przegląd danych zespołu dla celów naukowych](overview.md).
 
-Omówienie cykl zespołu w procesie nauki danych służy do struktury projektów analizy danych, zobacz [cyklu życia procesu nauki danych zespołu](lifecycle.md). Cykl życia omówiono kroki, od początku do końca, że projekty zwykle należy wykonać podczas są wykonywane. 
+Omówienie cyklu życia procesu do nauki o danych zespołu, używanej do organizowania projektów do nauki o danych, zobacz [cykl życia zespołowego danych naukowych](lifecycle.md). Cykl życia zawiera opis kroków, od początku do końca, że projekty zazwyczaj należy wykonać podczas są wykonywane. 
 
-Omówienie tematów, które umożliwia przeprowadzenie zadań wchodzące w skład procesu nauki danych na platformie Azure, zobacz [proces nauki danych](http://aka.ms/datascienceprocess). 
+Aby uzyskać omówienie tematów, które przeprowadzą Cię przez zadania, wchodzące w skład procesu do nauki o danych na platformie Azure, zobacz [danych dla celów naukowych](http://aka.ms/datascienceprocess). 
 

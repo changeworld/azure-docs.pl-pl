@@ -11,20 +11,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2018
 ms.author: tomfitz
-ms.openlocfilehash: f19708d232080b53446bedd9316fcf9d7772890d
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: a5a2300bd0b768b4a29b01e75f9558c4923ac11c
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585802"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395132"
 ---
-# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Włącz praktyki bezpiecznego wdrażania w usłudze Azure Deployment Manager (publiczna wersja zapoznawcza)
+# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-private-preview"></a>Włącz praktyki bezpiecznego wdrażania w usłudze Azure Deployment Manager (prywatna wersja zapoznawcza)
 
 Aby wdrożyć usługę w wielu regionach i upewnij się, że działa on zgodnie z oczekiwaniami w każdym regionie, Azure Deployment Manager służy do koordynowania etapowe wdrażanie usługi. Tak jak w przypadku wszystkich wdrożeń platformy Azure dla usługi w określają zasoby [szablonów usługi Resource Manager](resource-group-authoring-templates.md). Po utworzeniu szablonów umożliwia Deployment Manager opisano topologii dla Twojej usługi i jak ona powinny być udostępniona.
 
-Program Deployment Manager to funkcja usługi Resource Manager. Rozszerza możliwości podczas wdrażania. Użyj programu Deployment Manager w przypadku złożonych usługa, która ma zostać wdrożone w wielu regionach. Przez przejściowe w miarę wprowadzania aktualizacji usługi, można znaleźć potencjalnych problemów, zanim został wdrożony do wszystkich regionów. Jeśli nie potrzebujesz dodatkowych środków ostrożności przygotowanych wdrożenia, należy zastosować standard [opcje wdrażania](resource-group-template-deploy-portal.md) dla usługi Resource Manager. Program Deployment Manager bezproblemowo integrują się ze wszystkich istniejących narzędzi innych firm, które obsługują wdrożeń usługi Resource Manager, takie jak ciągła integracja i ciągłe dostarczanie (CI/CD) ofert. 
+Program Deployment Manager to funkcja usługi Resource Manager. Rozszerza możliwości podczas wdrażania. Użyj programu Deployment Manager w przypadku złożonych usługa, która ma zostać wdrożone w wielu regionach. Dzięki etapowemu wdrażaniu Twojej usługi możesz znaleźć potencjalne problemy zanim zostanie ona wdrożona we wszystkich regionach. Jeśli nie potrzebujesz dodatkowych środków ostrożności przygotowanych wdrożenia, należy zastosować standard [opcje wdrażania](resource-group-template-deploy-portal.md) dla usługi Resource Manager. Program Deployment Manager bezproblemowo integrują się ze wszystkich istniejących narzędzi innych firm, które obsługują wdrożeń usługi Resource Manager, takie jak ciągła integracja i ciągłe dostarczanie (CI/CD) ofert. 
 
-Azure Deployment Manager jest w publicznej wersji zapoznawczej. Aby korzystać z platformy Azure Deployment Manager, należy wykonać [formularz rejestracji](https://aka.ms/admsignup). Pomoc w górę poprawić działanie funkcji, zapewniając [opinii](https://aka.ms/admfeedback).
+Azure Deployment Manager jest dostępna w prywatnej wersji zapoznawczej. Aby korzystać z platformy Azure Deployment Manager, należy wykonać [formularz rejestracji](https://aka.ms/admsignup). Pomoc w górę poprawić działanie funkcji, zapewniając [opinii](https://aka.ms/admfeedback).
 
 Aby użyć programu Deployment Manager, należy utworzyć cztery pliki:
 
@@ -37,7 +37,7 @@ Szablon topologii wdrażania przed wdrożeniem szablon wprowadzania.
 
 ## <a name="supported-locations"></a>Obsługiwane lokalizacje
 
-W publicznej wersji zapoznawczej zasoby Deployment Manager są obsługiwane w środkowe stany USA i wschodnie stany USA 2. Definiowanie zasobów w szablonach topologii i wdrożenia, takich jak jednostki usługi, źródeł artefaktów i wdrożeniach opisanych w tym artykule, należy określić jedną z tych regionów dla lokalizacji. Jednak zasoby, które wdrażasz utworzenie usługi, takie jak maszyny wirtualne, konta magazynu i aplikacji sieci web, są obsługiwane we wszystkich ich [lokalizacjach](https://azure.microsoft.com/global-infrastructure/services/?products=all).  
+Dla wersji zapoznawczej zasoby Deployment Manager są obsługiwane w środkowe stany USA i wschodnie stany USA 2. Definiowanie zasobów w szablonach topologii i wdrożenia, takich jak jednostki usługi, źródeł artefaktów i wdrożeniach opisanych w tym artykule, należy określić jedną z tych regionów dla lokalizacji. Jednak zasoby, które wdrażasz utworzenie usługi, takie jak maszyny wirtualne, konta magazynu i aplikacji sieci web, są obsługiwane we wszystkich ich [lokalizacjach](https://azure.microsoft.com/global-infrastructure/services/?products=all).  
 
 ## <a name="identity-and-access"></a>Tożsamość i dostęp
 

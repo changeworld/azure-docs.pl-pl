@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 01/28/2018
+ms.date: 10/16/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 99c5e99fa3bd33ef42e8df6ceba5be4be2cd1249
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 30b86d7938279133c303ad4eae840f520a4900e6
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37872271"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394684"
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Co to jest Samoobsługowe tworzenie konta usługi Azure Active Directory?
 W tym artykule wyjaśniono, Samoobsługowe tworzenie konta i sposobu jego obsługi w usłudze Azure Active Directory (Azure AD). Jeśli chcesz przejąć nazwę domeny z niezarządzanych do usługi Azure AD dzierżawy, zobacz [przejmowanie katalogu niezarządzanego, jako administrator](domains-admin-takeover.md).
@@ -38,38 +38,45 @@ W tym artykule wyjaśniono, Samoobsługowe tworzenie konta i sposobu jego obsłu
 ## <a name="how-do-i-control-self-service-settings"></a>Jak kontrolować ustawienia samoobsługowego?
 Administratorzy mają dwie kontrolki samoobsługi już dziś. Kontrolować, czy:
 
-* Użytkownicy mogą dołączyć do katalogu za pośrednictwem poczty e-mail.
-* Użytkownicy mogą sami licencji dla aplikacji i usług.
+* Użytkownicy mogą dołączyć do katalogu za pośrednictwem poczty e-mail
+* Użytkownicy mogą sami licencji dla aplikacji i usług
 
 ### <a name="how-can-i-control-these-capabilities"></a>Jak kontrolować, te funkcje?
 Administrator może skonfigurować te funkcje, korzystając z następujących parametrów polecenia cmdlet Set-MsolCompanySettings usługi Azure AD:
 
-* **AllowEmailVerifiedUsers** Określa, czy użytkownik może tworzyć, lub Dołącz do niezarządzanego katalogu. Jeśli ustawisz ten parametr $false weryfikowany pocztą e-mail użytkownicy mogą dołączyć do katalogu.
-* **AllowAdHocSubscriptions** steruje możliwością użytkownikom wykonywanie samoobsługowej. Jeśli ustawisz ten parametr $false, nie użytkownicy mogą wykonywać samoobsługowej. 
+* **AllowEmailVerifiedUsers** Określa, czy użytkownik może utworzyć, lub Dołącz do katalogu. Jeśli ustawisz ten parametr $false, użytkownik nie weryfikowany pocztą e-mail można dołączyć do katalogu.
+* **AllowAdHocSubscriptions** steruje możliwością użytkownikom wykonywanie samoobsługowej. Jeśli ustawisz ten parametr $false, żaden użytkownik nie można wykonać samoobsługowej.
   
-  > [!NOTE]
-  > Flow i PowerApps rejestracji wersji próbnej nie są kontrolowane przez **AllowAdHocSubscriptions** ustawienie. Aby uzyskać więcej informacji zobacz następujące artykuły:
-  > * [Jak uniemożliwić istniejącym użytkownikom z Rozpoczynanie korzystania z usługi Power BI](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
-  > * [Usługa Flow w Twojej organizacji, pytania i odpowiedzi](https://docs.microsoft.com/flow/organization-q-and-a)
+AllowEmailVerifiedUsers i AllowAdHocSubscriptions są ustawienia obejmujące cały katalog, które mogą być stosowane do zarządzanego lub niezarządzanego katalogu. Oto przykład, gdzie:
+
+* Administrowanie katalogiem, za pomocą zweryfikowanej domeny, np. contoso.com
+* Użyj współpracy B2B z innego katalogu można zaprosić użytkownika, który już nie istnieje (userdoesnotexist@contoso.com) w katalogu macierzystego constoso.com
+* Katalog macierzysty ma AllowEmailVerifiedUsers włączona
+
+Jeśli powyższe warunki są spełnione, następnie użytkownika elementu członkowskiego jest tworzony w katalogu macierzystego, a użytkownik-Gość B2B jest tworzony w katalogu zapraszania.
+
+Flow i PowerApps rejestracji wersji próbnej nie są kontrolowane przez **AllowAdHocSubscriptions** ustawienie. Aby uzyskać więcej informacji zobacz następujące artykuły:
+
+* [Jak uniemożliwić istniejącym użytkownikom z Rozpoczynanie korzystania z usługi Power BI](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
+* [Usługa Flow w Twojej organizacji, pytania i odpowiedzi](https://docs.microsoft.com/flow/organization-q-and-a)
 
 ### <a name="how-do-the-controls-work-together"></a>Jak formanty działają razem?
 Te dwa parametry może służyć w połączeniu do definiowania bardziej precyzyjną kontrolę nad samoobsługowej. Na przykład następujące polecenie umożliwi użytkownikom wykonywanie Samoobsługowe tworzenie konta, ale tylko wtedy, jeśli ci użytkownicy mają już konta w usłudze Azure AD (innymi słowy, użytkownicy potrzebują konta weryfikowany pocztą e-mail do utworzenia najpierw nie można wykonać samoobsługowej):
 
-````
+````powershell
     Set-MsolCompanySettings -AllowEmailVerifiedUsers $false -AllowAdHocSubscriptions $true
 ````
+
 Następujące schemat blokowy opisano różne kombinacje tych parametrów i wynikowe warunki do katalogu i samoobsługowej.
 
-![][1]
+![formanty rejestracji samoobsługowego](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
 
 Aby uzyskać więcej informacji i przykłady dotyczące używania tych parametrów, zobacz [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0).
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 * [Dodawanie niestandardowej nazwy domeny do usługi Azure AD](../fundamentals/add-custom-domain.md)
 * [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview)
 * [Azure PowerShell](/powershell/azure/overview)
 * [Dokumentacja poleceń cmdlet platformy Azure](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
-
-<!--Image references-->
-[1]: ./media/directory-self-service-signup/SelfServiceSignUpControls.png

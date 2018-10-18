@@ -4,7 +4,7 @@ description: Tworzenie tabeli SQL i ładowanie danych do tabeli SQL
 services: machine-learning
 documentationcenter: ''
 author: deguhath
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 50f8b862-4d32-44b2-a1e2-4fbc8024acaa
 ms.service: machine-learning
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2018
 ms.author: deguhath
-ms.openlocfilehash: f9e456ec28695c63384f1c4fdd4b04ec37fefc14
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 99141b7542cc9adadadda6ada670b644d3aba5f3
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45728815"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393647"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Przenoszenie danych do usługi Azure SQL Database dla usługi Azure Machine Learning
 W tym temacie opisano opcje przenoszenia danych z plików prostych (w formatach plików CSV lub TSV) albo z danych przechowywanych w na lokalnym serwerze SQL Server do usługi Azure SQL database. Te zadania dotyczące przenoszenia danych do chmury są częścią zespołu danych dla celów naukowych.

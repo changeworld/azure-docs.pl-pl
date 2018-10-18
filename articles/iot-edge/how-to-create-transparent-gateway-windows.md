@@ -8,16 +8,16 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e9de037f886db7a48411959ef62e1e6687e54beb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f584e2cdcb038c6f8e9fcdbeecc22fb957bd7f8d
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984300"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394818"
 ---
 # <a name="create-a-windows-iot-edge-device-that-acts-as-a-transparent-gateway"></a>Utwórz urządzenie Windows IoT Edge, która pełni rolę przezroczystej bramy
 
-Ten artykuł zawiera szczegółowe instrukcje dotyczące korzystania z urządzenia usługi IoT Edge rolę przezroczystej bramy. W pozostałej części tego artykułu termin *brama usługi IoT Edge* odwołuje się do urządzenia usługi IoT Edge używany jako przezroczystej bramy. Aby uzyskać więcej informacji, zobacz [jak IoT Edge urządzenia mogą być używane jako brama][lnk-edge-as-gateway], który zawiera omówienie pojęć.
+Ten artykuł zawiera szczegółowe instrukcje dotyczące korzystania z urządzenia usługi IoT Edge rolę przezroczystej bramy. W pozostałej części tego artykułu termin *brama usługi IoT Edge* odwołuje się do urządzenia usługi IoT Edge używany jako przezroczystej bramy. Aby uzyskać więcej informacji, zobacz [jak IoT Edge urządzenia mogą być używane jako brama](./iot-edge-as-gateway.md), który zawiera omówienie pojęć.
 
 >[!NOTE]
 >Obecnie:
@@ -27,16 +27,16 @@ Ten artykuł zawiera szczegółowe instrukcje dotyczące korzystania z urządzen
 
 Trudnym o tworzeniu przezroczystej bramy jest możliwość bezpiecznego łączenia z bramy do podrzędnego urządzeń. Usługa Azure IoT Edge umożliwia użycie infrastruktury kluczy publicznych do skonfigurowania nawiązywać bezpieczne połączenia TLS między tymi urządzeniami. W tym przypadku możemy zezwolenie podrzędnym urządzenia połączyć się z urządzenia usługi IoT Edge, działając jako przezroczystej bramy.  Aby zachować bezpieczeństwo uzasadnione, podrzędne urządzenia należy się upewnić tożsamość urządzenia usługi Edge, ponieważ mają tylko urządzenia nawiązywania połączenia z bramami i potencjalnie złośliwych bramy.
 
-Można utworzyć żadnej infrastruktury certyfikatów, umożliwiająca zaufania wymagane dla topologii urządzenia bramy. W tym artykule przyjęto założenie, że tę samą konfigurację certyfikatu, który zostanie wykorzystany do włączenia [zabezpieczeń urzędu certyfikacji X.509] [ lnk-iothub-x509] w usłudze IoT Hub, który obejmuje certyfikat X.509 urzędu certyfikacji, powiązanych z określonej usługi IoT hub (IoT hub właściciel urzędu certyfikacji ) oraz szeregu certyfikaty, podpisane za pomocą tego urzędu certyfikacji i urzędu certyfikacji dla urządzeń brzegowych.
+Można utworzyć żadnej infrastruktury certyfikatów, umożliwiająca zaufania wymagane dla topologii urządzenia bramy. W tym artykule przyjęto założenie, że tę samą konfigurację certyfikatu, który zostanie wykorzystany do włączenia [zabezpieczeń urzędu certyfikacji X.509](../iot-hub/iot-hub-x509ca-overview.md) w usłudze IoT Hub, który obejmuje certyfikat X.509 urzędu certyfikacji, powiązanych z określonej usługi IoT hub (IoT hub właściciel urzędu certyfikacji) i serii certyfikatów, zarejestrowana za pomocą tego urzędu certyfikacji i urzędu certyfikacji do urządzenia usługi Edge.
 
-![Instalator bramy][1]
+![Instalator bramy](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
 Brama przedstawia swój certyfikat urzędu certyfikacji urządzenia Edge na urządzeniu podrzędnego podczas inicjowania połączenia. Podrzędne urządzenie sprawdza upewnij się, że certyfikat urzędu certyfikacji urządzenia Edge jest podpisany przez właściciela certyfikatu urzędu certyfikacji. Ten proces umożliwia podrzędnym urządzenia upewnić się, że brama pochodzi z zaufanego źródła.
 
 W poniższych krokach objaśniono proces tworzenia certyfikatów i instalowania ich w odpowiednich miejscach.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-1.  [Zainstalować środowisko uruchomieniowe usługi Azure IoT Edge] [ lnk-install-windows-x64] na urządzeniu z systemem Windows ma być używany jako przezroczystej bramy.
+1. [Zainstalować środowisko uruchomieniowe usługi Azure IoT Edge](./how-to-install-iot-edge-windows-with-windows.md) na urządzeniu z systemem Windows ma być używany jako przezroczystej bramy.
 
 1. Pobierz biblioteki OpenSSL dla Windows. Istnieje wiele sposobów, należy zainstalować protokół OpenSSL:
 
@@ -45,11 +45,11 @@ W poniższych krokach objaśniono proces tworzenia certyfikatów i instalowania 
 
    * Pobierz i zainstaluj dowolne [plików binarnych biblioteki OpenSSL firm](https://wiki.openssl.org/index.php/Binaries), na przykład z [tego projektu na SourceForge](https://sourceforge.net/projects/openssl/).
    
-   * Pobierz kod źródłowy biblioteki OpenSSL i kompilowania plików binarnych na komputerze, samodzielnie lub w tym za pośrednictwem [vcpkg](https://github.com/Microsoft/vcpkg). Zgodnie z instrukcjami podanymi poniżej Użyj vcpkg pobrać kodu źródłowego, kompilacji i zainstalować protokół OpenSSL na komputerze Windows wszystko to w bardzo łatwy w użyciu czynności.
+   * Pobierz kod źródłowy biblioteki OpenSSL i kompilowania plików binarnych na komputerze, samodzielnie lub za pośrednictwem [vcpkg](https://github.com/Microsoft/vcpkg). Zgodnie z instrukcjami podanymi poniżej umożliwia vcpkg pobierania kodu źródłowego, kompilacji i zainstaluj OpenSSL na komputerze Windows za pomocą prostych krokach.
 
       1. Przejdź do katalogu, w którym chcesz zainstalować vcpkg. W tym miejscu na będzie nazywamy to $VCPKGDIR. Postępuj zgodnie z instrukcjami, aby pobrać i zainstalować [vcpkg](https://github.com/Microsoft/vcpkg).
    
-      1. Po zainstalowaniu vcpkg w wierszu polecenia programu powershell uruchom następujące polecenie, aby zainstalować pakiet biblioteki OpenSSL dla Windows x64. Trwa to zazwyczaj około 5 minut.
+      1. Po zainstalowaniu vcpkg w wierszu polecenia programu powershell uruchom następujące polecenie, aby zainstalować pakiet biblioteki OpenSSL dla Windows x64. Instalacja trwa zwykle około 5 minut.
 
          ```PowerShell
          .\vcpkg install openssl:x64-windows
@@ -86,20 +86,20 @@ W poniższych krokach objaśniono proces tworzenia certyfikatów i instalowania 
    . .\ca-certs.ps1
    ```
 
-1. Upewnij się, że została poprawnie zainstalowana OpenSSL i upewnij się, że nie będzie konfliktów nazw z istniejących certyfikatów, uruchamiając następujące polecenie. Jeśli wystąpią problemy, skrypt powinna opisywać jak naprawić te w Twoim systemie.
+1. Upewnij się, że została poprawnie zainstalowana OpenSSL i upewnij się, że nie będzie konfliktów nazw z istniejących certyfikatów, uruchamiając następujące polecenie. Jeśli wystąpią problemy, skrypt powinna opisywać sposób rozwiązać problemy w systemie.
 
    ```PowerShell
    Test-CACertsPrerequisites
    ```
 
 ## <a name="certificate-creation"></a>Tworzenie certyfikatu
-1.  Utwórz certyfikat urzędu certyfikacji właściciela i jeden certyfikat pośredniego. Te są umieszczane w `$WRKDIR`.
+1. Utwórz certyfikat urzędu certyfikacji właściciela i jeden certyfikat pośredniego. Certyfikaty są umieszczane w `$WRKDIR`.
 
       ```PowerShell
       New-CACertsCertChain rsa
       ```
 
-1.  Utwórz certyfikat urzędu certyfikacji urządzenia usługi Edge i klucza prywatnego za pomocą poniższego polecenia.
+1. Utwórz certyfikat urzędu certyfikacji urządzenia usługi Edge i klucza prywatnego za pomocą poniższego polecenia.
 
    >[!NOTE]
    > **NIE** Użyj nazwy, która jest taka sama jak nazwa hosta DNS bramy. To spowoduje, że certyfikatu klienta dla tych certyfikatów, nie powiedzie się.
@@ -115,19 +115,19 @@ Tworzenie łańcucha certyfikatów od właściciela certyfikatu urzędu certyfik
    Write-CACertsCertificatesForEdgeDevice "<gateway device name>"
    ```
 
-   Dane wyjściowe wykonania skryptu są następujące certyfikaty i klucza:
+   Skrypt tworzy następujące certyfikaty i klucza:
    * `$WRKDIR\certs\new-edge-device.*`
    * `$WRKDIR\private\new-edge-device.key.pem`
    * `$WRKDIR\certs\azure-iot-test-only.root.ca.cert.pem`
 
 ## <a name="installation-on-the-gateway"></a>Instalacja bramy
-1.  Skopiuj następujące pliki z $WRKDIR dowolne miejsce na urządzeniu usługi Edge, będziemy odnosić się do tego jako $CERTDIR. Pomiń ten krok, jeśli certyfikaty są generowane na urządzeniu usługi Edge.
+1. Skopiuj następujące pliki z $WRKDIR dowolne miejsce na urządzeniu usługi Edge, będziemy odnosić się do tego jako $CERTDIR. Jeśli na urządzeniu usługi Edge jest generowane certyfikaty, Pomiń ten krok.
 
    * Certyfikat dostępu Warunkowego do urządzeń —  `$WRKDIR\certs\new-edge-device-full-chain.cert.pem`
    * Klucz prywatny urzędu certyfikacji urządzenia — `$WRKDIR\private\new-edge-device.key.pem`
    * Właściciel CA- `$WRKDIR\certs\azure-iot-test-only.root.ca.cert.pem`
 
-2.  Ustaw `certificate` właściwości w pliku yaml konfiguracji demona zabezpieczeń do ścieżki gdzie umieścić pliki certyfikatu i klucza.
+2. Ustaw `certificate` właściwości w pliku yaml konfiguracji demona zabezpieczeń do ścieżki gdzie umieścić pliki certyfikatu i klucza.
 
 ```yaml
 certificates:
@@ -136,7 +136,7 @@ certificates:
   trusted_ca_certs: "$CERTDIR\\certs\\azure-iot-test-only.root.ca.cert.pem"
 ```
 ## <a name="deploy-edgehub-to-the-gateway"></a>Wdrażanie EdgeHub do bramy
-Jedną z najważniejszych funkcji usługi Azure IoT Edge jest możliwość wdrażania modułów na urządzeniach usługi IoT Edge z poziomu chmury. Ta sekcja zawiera podczas tworzenia wdrożenia pozornie pusty; Centrum usługi Edge jest jednak automatcially dodawane do wszystkich wdrożeń, nawet jeśli nie mają żadnych modułów obecne. Centrum usługi Edge jest tylko moduł, który należy na urządzeniu usługi Edge ona pełnić rolę przezroczystej bramy, dzięki czemu Tworzenie pustego wdrożenia jest wystarczająca. 
+Jedną z najważniejszych funkcji usługi Azure IoT Edge jest możliwość wdrażania modułów na urządzeniach usługi IoT Edge z poziomu chmury. Ta sekcja zawiera podczas tworzenia wdrożenia pozornie pusty; Jednak Centrum usługi Edge jest automatycznie dodawany do wszystkich wdrożeń, nawet jeśli nie mają żadnych modułów obecne. Centrum usługi Edge jest tylko moduł, który należy na urządzeniu usługi Edge ona pełnić rolę przezroczystej bramy, dzięki czemu Tworzenie pustego wdrożenia jest wystarczająca. 
 1. W witrynie Azure Portal przejdź do centrum IoT Hub.
 2. Przejdź do **usługi IoT Edge** i wybierz urządzenia usługi IoT Edge, która ma być używany jako brama.
 3. Wybierz pozycję **Ustaw moduły**.
@@ -152,7 +152,7 @@ Jedną z najważniejszych funkcji usługi Azure IoT Edge jest możliwość wdra�
 6. W kroku szablon recenzji wybierz **przesyłania**.
 
 ## <a name="installation-on-the-downstream-device"></a>Instalacja na urządzeniu podrzędne
-Podrzędne urządzenie może pozostawać w dowolnej aplikacji przy użyciu [zestaw SDK urządzeń Azure IoT][lnk-devicesdk], takie jak proste co opisano w [Podłącz urządzenie do Centrum IoT hub przy użyciu platformy .NET] [ lnk-iothub-getstarted]. Aplikacji urządzenia podrzędnego musi ufać **właściciela urzędu certyfikacji** certyfikatu w celu weryfikowania połączeń TLS do urządzenia bramy. Zazwyczaj ten krok można wykonać na dwa sposoby: na poziomie systemu operacyjnego lub (w przypadku niektórych języków) na poziomie aplikacji.
+Podrzędne urządzenie może pozostawać w dowolnej aplikacji przy użyciu [zestaw SDK urządzeń Azure IoT](../iot-hub/iot-hub-devguide-sdks.md), takie jak proste co opisano w [Podłącz urządzenie do Centrum IoT hub przy użyciu platformy .NET](../iot-hub/quickstart-send-telemetry-dotnet.md). Aplikacji urządzenia podrzędnego musi ufać **właściciela urzędu certyfikacji** certyfikatu w celu weryfikowania połączeń TLS do urządzenia bramy. Zazwyczaj ten krok można wykonać na dwa sposoby: na poziomie systemu operacyjnego lub (w przypadku niektórych języków) na poziomie aplikacji.
 
 ### <a name="os-level"></a>Poziom systemu operacyjnego
 Instalacji tego certyfikatu w magazynie certyfikatów systemu operacyjnego pozwoli wszystkie aplikacje, aby użyć właściciela certyfikatu urzędu certyfikacji jako zaufanego certyfikatu.
@@ -167,10 +167,10 @@ Instalacji tego certyfikatu w magazynie certyfikatów systemu operacyjnego pozwo
     Powinien zostać wyświetlony komunikat z informacją "Aktualizowanie certyfikaty /etc/ssl/certs... Dodano 1, 0 usunięte; Gotowe".
 
 * Windows — poniżej przedstawiono przykładowy sposób zainstalować certyfikat urzędu certyfikacji na hoście Windows.
-  * W menu start wpisz "Zarządzanie komputerem certyfikaty". To powinno wyświetlić narzędziem o nazwie `certlm`.
-  * Przejdź do certyfikatów komputera lokalnego--> zaufanych certyfikatów głównych--> Certyfikaty--> po prawej stronie kliknij pozycję--> Wszystkie zadania--> Importuj, aby uruchomić Kreatora importu certyfikatów.
-  * Postępuj zgodnie z instrukcjami, zgodnie z instrukcją i zaimportuj $CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem pliku certyfikatu.
-  * Po zakończeniu wyświetlony komunikat "Pomyślnie zaimportowane".
+  1. W menu start wpisz "Zarządzanie komputerem certyfikaty". To powinno wyświetlić narzędziem o nazwie `certlm`.
+  2. Przejdź do **certyfikatów komputera lokalnego** > **zaufanych certyfikatów głównych** > **certyfikaty** > kliknij prawym przyciskiem myszy > **Wszystkie zadania** > **zaimportować** można uruchomić Kreatora importu certyfikatów.
+  3. Postępuj zgodnie z instrukcjami, zgodnie z instrukcją i zaimportuj $CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem pliku certyfikatu.
+  4. Po zakończeniu wyświetlony komunikat "Pomyślnie zaimportowane".
 
 ### <a name="application-level"></a>Poziom aplikacji
 W przypadku aplikacji .NET można dodać poniższy fragment kodu można traktować jako zaufany certyfikat w formacie PEM. Zainicjować zmienną `certPath` z `$CERTDIR\certs\azure-iot-test-only.root.ca.cert.pem`.
@@ -187,7 +187,7 @@ W przypadku aplikacji .NET można dodać poniższy fragment kodu można traktowa
    ```
 
 ## <a name="connect-the-downstream-device-to-the-gateway"></a>Podłącz urządzenie podrzędnego do bramy
-Zestaw sdk urządzenia usługi IoT Hub musi zostać zainicjowany przy użyciu parametrów połączenia, odnoszące się do nazwy hosta urządzenia bramy. Jest to realizowane przez dołączenie `GatewayHostName` właściwość parametrów połączenia urządzenia. Na przykład poniżej przedstawiono przykładowe parametry połączenia dla urządzenia dla urządzenia, do której firma Microsoft dołączany `GatewayHostName` właściwości:
+Inicjowanie zestawu sdk urządzenia usługi IoT Hub przy użyciu parametrów połączenia, odnoszące się do nazwy hosta urządzenia bramy. Jest to realizowane przez dołączenie `GatewayHostName` właściwość parametrów połączenia urządzenia. Na przykład poniżej przedstawiono przykładowe parametry połączenia dla urządzenia dla urządzenia, do której firma Microsoft dołączany `GatewayHostName` właściwości:
 
    ```
    HostName=yourHub.azure-devices.net;DeviceId=yourDevice;SharedAccessKey=XXXYYYZZZ=;GatewayHostName=mygateway.contoso.com
@@ -205,30 +205,9 @@ Komunikaty wysyłane z urządzeń podrzędne, podobnie jak komunikaty wysyłane 
    { "routes":{ "sensorToAIInsightsInput1":"FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO BrokeredEndpoint(\"/modules/ai_insights/inputs/input1\")", "AIInsightsToIoTHub":"FROM /messages/modules/ai_insights/outputs/output1 INTO $upstream" } }
    ```
 
-Zapoznaj się [artykułu kompozycji moduł] [ lnk-module-composition] więcej informacji na temat routingu komunikatów.
+Aby uzyskać więcej informacji na temat routingu wiadomości zobacz [budowy modułu](./module-composition.md).
 
-[!INCLUDE [](../../includes/iot-edge-extended-offline-preview.md)]
+[!INCLUDE [iot-edge-extended-ofline-preview](../../includes/iot-edge-extended-offline-preview.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Zrozumienie wymagań i narzędzia do tworzenia modułów usługi IoT Edge][lnk-module-dev].
-
-<!-- Images -->
-[1]: ./media/how-to-create-transparent-gateway/gateway-setup.png
-
-<!-- Links -->
-[lnk-install-windows-x64]: ./how-to-install-iot-edge-windows-with-windows.md
-[lnk-module-composition]: ./module-composition.md
-[lnk-devicesdk]: ../iot-hub/iot-hub-devguide-sdks.md
-[lnk-tutorial1-win]: tutorial-simulate-device-windows.md
-[lnk-tutorial1-lin]: tutorial-simulate-device-linux.md
-[lnk-edge-as-gateway]: ./iot-edge-as-gateway.md
-[lnk-module-dev]: module-development.md
-[lnk-iothub-getstarted]: ../iot-hub/quickstart-send-telemetry-dotnet.md
-[lnk-iothub-x509]: ../iot-hub/iot-hub-x509ca-overview.md
-[lnk-iothub-secure-deployment]: ../iot-hub/iot-hub-security-deployment.md
-[lnk-iothub-tokens]: ../iot-hub/iot-hub-devguide-security.md#security-tokens
-[lnk-iothub-throttles-quotas]: ../iot-hub/iot-hub-devguide-quotas-throttling.md
-[lnk-iothub-devicetwins]: ../iot-hub/iot-hub-devguide-device-twins.md
-[lnk-iothub-c2d]: ../iot-hub/iot-hub-devguide-messages-c2d.md
-[lnk-ca-scripts]: https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md
-[lnk-modbus-module]: https://github.com/Azure/iot-edge-modbus
+[Zrozumienie wymagań i narzędzia do tworzenia modułów usługi IoT Edge](module-development.md).

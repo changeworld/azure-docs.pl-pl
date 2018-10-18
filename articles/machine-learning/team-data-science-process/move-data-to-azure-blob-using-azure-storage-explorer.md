@@ -1,10 +1,10 @@
 ---
-title: Przenoszenie danych do i z magazynu obiektów Blob z Eksploratora usługi Storage platformy Azure | Dokumentacja firmy Microsoft
+title: Przenoszenie danych do i z magazynu obiektów Blob za pomocą Eksploratora usługi Azure Storage | Dokumentacja firmy Microsoft
 description: Przenoszenie danych do oraz z usługi Azure Blob Storage za pomocą programu Azure Storage Explorer
 services: machine-learning,storage
 documentationcenter: ''
 author: deguhath
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 10bd283f-0875-4c67-af63-6492270b7656
 ms.service: machine-learning
@@ -15,45 +15,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 464290901959ee052059b092b737e369928bd19b
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 295fadd69a86769f74ec45ed3e77e8a5b807e14f
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837793"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49392526"
 ---
-# <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Przenoszenie danych do i z magazynu obiektów Blob Azure za pomocą Eksploratora usługi Storage platformy Azure
-Eksplorator usługi Storage platformy Azure to bezpłatne narzędzie firmy Microsoft, który umożliwia pracę z danymi usługi Azure Storage w systemie Windows, macOS i Linux. W tym temacie opisano, jak używać go do przekazywania i pobierania danych z magazynu obiektów blob platformy Azure. Narzędzie można pobrać z [Eksploratora usługi Microsoft Azure Storage](http://storageexplorer.com/).
+# <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Przenoszenie danych do i z usługi Azure Blob Storage za pomocą Eksploratora usługi Azure Storage
+Eksplorator usługi Azure Storage to bezpłatne narzędzie firmy Microsoft, która umożliwia pracę z danymi usługi Azure Storage w Windows, macOS i Linux. W tym temacie opisano, jak z niej korzystać, aby przekazywać i pobierać dane z magazynu obiektów blob platformy Azure. Narzędzie można pobrać z [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
 
 [!INCLUDE [blob-storage-tool-selector](../../../includes/machine-learning-blob-storage-tool-selector.md)]
 
 > [!NOTE]
-> Jeśli używasz maszyny Wirtualnej, który został skonfigurowany za pomocą skryptów dostarczonych przez [maszyn wirtualnych nauki danych na platformie Azure](virtual-machines.md), następnie Eksploratora usługi Storage platformy Azure jest już zainstalowana na maszynie Wirtualnej.
+> Jeśli używasz maszyny Wirtualnej, który został skonfigurowany za pomocą skryptów, dostarczone przez [maszyny wirtualne do analizy danych na platformie Azure](virtual-machines.md), a następnie Eksploratora usługi Azure Storage jest już zainstalowana na maszynie Wirtualnej.
 > 
 > [!NOTE]
-> Pełne wprowadzenie do magazynu obiektów blob platformy Azure, można znaleźć w temacie [podstawy obiektów Blob Azure](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) i [usługi obiektów Blob Azure](https://msdn.microsoft.com/library/azure/dd179376.aspx).   
+> Pełne wprowadzenie do usługi Azure blob storage, zapoznaj się [podstawowe informacje o usłudze Azure Blob](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) i [usługi Azure Blob Service](https://msdn.microsoft.com/library/azure/dd179376.aspx).   
 > 
 > 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Tym dokumencie przyjęto założenie, że masz subskrypcję platformy Azure, konta magazynu i odpowiedniego klucza magazynu dla tego konta. Przed przekazaniem/pobieranie danych, musisz znać Azure klucz konta magazynu nazwy i konta. 
+W tym dokumencie przyjęto założenie, że masz subskrypcję platformy Azure, konta magazynu i odpowiedniego klucza magazynu dla tego konta. Przed Trwa przekazywanie/pobieranie danych, musisz wiedzieć, usługa Azure storage konta nazwy i klucza konta usługi. 
 
-* Aby skonfigurować subskrypcję platformy Azure, zobacz [bezpłatna miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
-* Aby uzyskać instrukcje dotyczące tworzenia konta magazynu oraz uzyskiwanie konta i informacje o kluczu, zobacz [kont magazynu Azure o](../../storage/common/storage-create-storage-account.md). Zanotuj klucz dostępu dla konta magazynu zgodnie z potrzebami ten klucz, aby połączyć konto za pomocą narzędzia Eksplorator magazynu Azure.
-* Narzędzie Eksploratora usługi Storage platformy Azure można pobrać z [Eksploratora usługi Microsoft Azure Storage](http://storageexplorer.com/). Zaakceptuj ustawienia domyślne podczas instalacji.
+* Aby skonfigurować subskrypcję platformy Azure, zobacz [bezpłatnej miesięcznej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
+* Aby uzyskać instrukcje dotyczące tworzenia konta magazynu oraz w celu uzyskania konta i informacje o kluczu, zobacz [kontach magazynu Azure o](../../storage/common/storage-create-storage-account.md). Zanotuj klucz dostępu konta magazynu według potrzeb tego klucza, aby połączyć się z kontem za pomocą narzędzia Eksplorator usługi Azure Storage.
+* Narzędzie Eksplorator usługi Azure Storage można pobrać z [Microsoft Azure Storage Explorer](http://storageexplorer.com/). Zaakceptuj wartości domyślne podczas instalacji.
 
 <a id="explorer"></a>
 
-## <a name="use-azure-storage-explorer"></a>Użyj Eksploratora usługi Storage platformy Azure
-Poniższe kroki dokumentu sposobu wysyłania/pobierania danych przy użyciu Eksploratora usługi Storage platformy Azure. 
+## <a name="use-azure-storage-explorer"></a>Za pomocą Eksploratora usługi Azure Storage
+Poniższe kroki udokumentować sposób przekazywania/pobierania danych przy użyciu Eksploratora usługi Azure Storage. 
 
 1. Uruchom Eksploratora usługi Storage platformy Microsoft Azure.
-2. Aby wyświetlić **Zaloguj się do swojego konta...**  kreatora wybierz **ustawienia konta Azure** ikony, następnie **Dodaj konto** i podać swoje poświadczenia. ![Dodawanie konta magazynu platformy Azure](./media/move-data-to-azure-blob-using-azure-storage-explorer/add-an-azure-store-account.png)
-3. Aby wyświetlić **nawiązywanie połączenia z usługą Azure Storage** kreatora wybierz pozycję **nawiązywanie połączenia z usługą Azure storage** ikony. ![Łączenie się z magazynem Azure](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-1.png)
-4. Wprowadź klucz dostępu z kontem magazynu platformy Azure **nawiązywanie połączenia z usługą Azure Storage** kreatora, a następnie **dalej**. ![Łączenie się z magazynem Azure](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-2.png)
-5. Wprowadź nazwę konta magazynu w **nazwa konta** polu, a następnie wybierz **dalej**. ![Dołącz magazynu zewnętrznego](./media/move-data-to-azure-blob-using-azure-storage-explorer/attach-external-storage.png)
-6. Teraz dodane konto magazynu powinien być wyświetlany. Aby utworzyć kontener obiektów blob na koncie magazynu, kliknij prawym przyciskiem myszy **kontenerów obiektów Blob** węzłów na tym koncie, wybierz opcję **Tworzenie kontenera obiektów Blob**i wprowadź nazwę.
-7. Aby przekazać dane do kontenera, wybierz kontener docelowego, a następnie kliknij przycisk **przekazać** przycisku.![ Konta magazynu](./media/move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)
-8. Polecenie **...**  z prawej strony **pliki** wybierz jednego lub wielu plików, aby przekazać z systemu plików, a następnie kliknij przycisk **przekazać** można rozpocząć przekazywania plików.![ Przekazywanie plików](./media/move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
-9. Podczas pobierania danych, wybierając obiektu blob w kontenerze odpowiednie do pobrania i kliknij przycisk **Pobierz**. ![Pobierz pliki](./media/move-data-to-azure-blob-using-azure-storage-explorer/download-files-from-blob.png)
+2. Aby wyświetlić **Zaloguj się do swojego konta...**  kreatora wybierz **ustawienia konta platformy Azure** ikony, następnie **Dodaj konto** i wprowadź poświadczenia. ![Dodaj konto usługi Azure storage](./media/move-data-to-azure-blob-using-azure-storage-explorer/add-an-azure-store-account.png)
+3. Aby wyświetlić **łączenie z usługą Azure Storage** kreatora wybierz **łączenie z usługą Azure storage** ikony. ![Łączenie z usługą Azure storage](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-1.png)
+4. Wprowadź klucz dostępu z poziomu konta usługi Azure storage na **łączenie z usługą Azure Storage** kreatora i następnie **dalej**. ![Łączenie z usługą Azure storage](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-2.png)
+5. Wprowadź nazwę konta magazynu w **nazwa konta** pole, a następnie wybierz pozycję **dalej**. ![Dołącz magazyn zewnętrzny](./media/move-data-to-azure-blob-using-azure-storage-explorer/attach-external-storage.png)
+6. Teraz powinny być wymienione na konto magazynu, dodane. Aby utworzyć kontener obiektów blob na koncie magazynu, kliknij prawym przyciskiem myszy **kontenery obiektów Blob** węzła w ramach tego konta, wybierz opcję **Utwórz kontener obiektów Blob**, a następnie wprowadź nazwę.
+7. Aby przekazać dane do kontenera, wybierz kontener docelowy, a następnie kliknij przycisk **przekazywanie** przycisku.![ Konta magazynu](./media/move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)
+8. Kliknij pozycję **...**  po prawej stronie **pliki** wybierz jednego lub wielu plików do przekazania z systemu plików, a następnie kliknij przycisk **przekazywanie** Rozpocznij przekazywanie plików.![ Przekazywanie plików](./media/move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
+9. Aby pobrać dane, wybierając obiekt blob w kontenerze odpowiednie do pobrania, a następnie kliknij przycisk **Pobierz**. ![Pobieranie plików](./media/move-data-to-azure-blob-using-azure-storage-explorer/download-files-from-blob.png)
 

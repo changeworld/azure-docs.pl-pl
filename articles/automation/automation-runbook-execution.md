@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/08/2018
+ms.date: 10/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 66f3558a4314b1639d54d4e8ea6814eea9064073
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 2b1a6e2921fdaf9ede1184cfc02c3f61f63c60ac
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113890"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393767"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Wykonanie elementu Runbook w usłudze Azure Automation
 
@@ -135,19 +135,11 @@ Get-AzureRmLog -ResourceId $JobResourceID -MaxRecord 1 | Select Caller
 
 ## <a name="fair-share"></a>Udział
 
-Aby udostępnianie zasobów między wszystkie elementy runbook w chmurze, Azure Automation tymczasowo spowoduje zwolnienie wszystkie zadania, po jej uruchomieniu przez trzy godziny. W tym czasie zadania dla [oparte na programie PowerShell elementów runbook](automation-runbook-types.md#powershell-runbooks) zostaną zatrzymane i nie zostaną ponownie uruchomione. Pokazuje stan zadania **zatrzymane**. Ten typ elementu runbook jest zawsze ponownie od samego początku, ponieważ nie obsługują punkty kontrolne.
+Aby udostępnianie zasobów między wszystkie elementy runbook w chmurze, Azure Automation będzie tymczasowo zwolnienie lub Zatrzymaj dowolnego zadania, które są uruchomione przez ponad trzy godziny. Zadania dla [oparte na programie PowerShell elementów runbook](automation-runbook-types.md#powershell-runbooks) i [elementy runbook języka Python](automation-runbook-types.md#python-runbooks) zostaną zatrzymane i ponownie nie jest uruchomiona, i stan zadania to zatrzymana.
 
-[Na podstawie przepływu pracy programu PowerShell runbook](automation-runbook-types.md#powershell-workflow-runbooks) wznowienia z ostatnią [punktu kontrolnego](https://docs.microsoft.com/system-center/sma/overview-powershell-workflows#bk_Checkpoints). Po uruchomieniu trzy godziny, zadanie elementu runbook została zawieszona przez usługę i jej stanie pokazuje **uruchomiony oraz że trwa oczekiwanie na zasoby**. Po udostępnieniu piaskownicy, element runbook jest automatycznie uruchamiany ponownie przez usługę automatyzacji i wznawia od ostatniego punktu kontrolnego. To zachowanie jest normalne zachowanie przepływu pracy programu PowerShell dla wstrzymywanie/restart. Jeśli element runbook ponownie przekracza trzy godziny środowiska uruchomieniowego, ten proces jest powtarzany, maksymalnie trzy razy. Po trzecim ponownym uruchomieniu, jeśli element runbook nadal nie została ukończona w ciągu trzech godzin, a następnie zadanie elementu runbook nie powiodło się i pokazuje stan zadania **nie powiodło się oczekiwanie na zasoby**. W takim przypadku otrzymujesz następujący wyjątek z określonym błędem.
+W przypadku długo działających zadań zaleca się użycie [hybrydowego procesu roboczego elementu runbook](automation-hrw-run-runbooks.md#job-behavior). Hybrydowych procesów roboczych Runbook nie są ograniczone przez udział, a nie mają ograniczenie na jak długo element runbook może wykonać. Inne zadania [limity](../azure-subscription-service-limits.md#automation-limits) zastosowanie zarówno do piaskownic usługi Azure, jak i hybrydowych procesów roboczych Runbook. Gdy hybrydowych procesów roboczych Runbook nie są ograniczone przez limit udział 3 godziny, elementy runbook uruchomione na nich nadal powinien zostać opracowany do obsługi zachowania ponownego uruchamiania z infrastruktury lokalnej nieoczekiwane problemy.
 
-*Zadanie nie może kontynuować uruchamianie, ponieważ wielokrotnie została wykluczona z tego samego punktu kontrolnego. Upewnij się, że dany element Runbook nie wykona długotrwałej operacji bez utrwalanie stanu.*
-
-To zachowanie jest ochrony usługi z poziomu elementów runbook uruchomiona przez czas nieokreślony, nie kończą działania, ponieważ nie są one w stanie się to do następnego punktu kontrolnego bez zwalniany ponownie.
-
-Jeśli element runbook ma punktów kontrolnych lub zadanie nie osiągnęła pierwszy punkt kontrolny przed zwalniany, następnie jest uruchamiany ponownie od samego początku.
-
-W przypadku długo działających zadań zaleca się użycie [hybrydowego procesu roboczego elementu runbook](automation-hrw-run-runbooks.md#job-behavior). Hybrydowych procesów roboczych Runbook nie są ograniczone przez udział, a nie mają ograniczenie na jak długo element runbook może wykonać. Inne zadania [limity](../azure-subscription-service-limits.md#automation-limits) zastosowanie zarówno do piaskownic usługi Azure, jak i hybrydowych procesów roboczych Runbook.
-
-Jeśli używasz elementu runbook przepływu pracy programu PowerShell w systemie Azure podczas tworzenia elementu runbook, należy upewnić się, czy czas do uruchomienia żadnych działań między dwoma punktami kontrolnymi nie przekracza 3 godziny. Może być konieczne do dodawania punktów kontrolnych do elementu runbook, aby upewnić się, nie osiągnięcia tego limitu trzech godzin lub Podziel długiej operacji. Na przykład element runbook może uruchomić reindex na dużej bazy danych SQL. Jeśli ta jednej operacji nie została zakończona w wyznaczonym udział, zadanie jest załadowane i uruchomione od początku. W takim przypadku należy podzielić operacji reindex na wiele kroków, takie jak indeksowanie jednej tabeli w czasie i następnie Wstaw punkt kontrolny po zakończeniu każdej operacji, dzięki czemu można wznowić zadania, po ostatniej operacji do wykonania.
+Innym rozwiązaniem jest optymalizacja elementu runbook przy użyciu podrzędnych elementów runbook. Element runbook działa w pętli za pomocą tej samej funkcji liczby zasobów, takich jak operacji bazy danych w wielu bazach danych, należy przenieść tę funkcję, aby [podrzędnego elementu runbook](automation-child-runbooks.md) i wywoływać ją za pomocą [ Start-AzureRMAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) polecenia cmdlet. Każdy z tych podrzędnych elementów runbook będzie wykonywany równolegle w osobnych procesach, co spowoduje skrócenie całkowitego czasu potrzebnego nadrzędnemu elementowi runbook do zakończenia zadania. Możesz użyć [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/Get-AzureRmAutomationJob) polecenia cmdlet w elemencie runbook, aby sprawdzić stan zadania dla każdego elementu podrzędnego, jeśli istnieją operacje, które należy wykonać po zakończeniu działania podrzędnego elementu runbook.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

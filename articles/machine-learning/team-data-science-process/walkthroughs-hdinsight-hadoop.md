@@ -1,10 +1,10 @@
 ---
-title: HDInsight Hadoop nauki wskazówki dotyczące danych na platformie Azure przy użyciu Hive | Dokumentacja firmy Microsoft
-description: Przykłady procesu nauki danych zespołu, które opisano przy użyciu Hive w usłudze Azure HDInsight Hadoop do analizy predykcyjnej.
+title: HDInsight Hadoop przewodniki dotyczące przetwarzania danych za pomocą programu Hive na platformie Azure | Dokumentacja firmy Microsoft
+description: Przykłady procesie nauki o danych zespołu, które pomagają przy użyciu programu Hive w usłudze Azure HDInsight Hadoop do analizy predykcyjnej.
 services: machine-learning
 documentationcenter: ''
 author: deguhath
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
@@ -15,37 +15,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 8b7eead12b6546ad86f6ff0aa48f4754c00a4734
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 2aa64d6dc144e85e1a0f03b8548fa47dba91a2eb
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838759"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393163"
 ---
-# <a name="hdinsight-hadoop-data-science-walkthroughs-using-hive-on-azure"></a>Hive HDInsight Hadoop nauki wskazówki dotyczące danych przy użyciu na platformie Azure 
+# <a name="hdinsight-hadoop-data-science-walkthroughs-using-hive-on-azure"></a>HDInsight Hadoop przewodniki dotyczące przetwarzania danych za pomocą programu Hive na platformie Azure 
 
-Te wskazówki korzystanie z programu Hive z klastrem usługi HDInsight Hadoop do analizy predykcyjnej. One wykonaj kroki opisane w procesie nauki danych zespołu. Omówienie procesu nauki danych zespołu, zobacz [proces nauki danych](overview.md). Aby obejrzeć wprowadzenie do usługi Azure HDInsight, zobacz [wprowadzenie do usługi Azure HDInsight, stos technologiczny Hadoop i klastrów platformy Hadoop](../../hdinsight/hadoop/apache-hadoop-introduction.md).
+Te przewodniki korzystanie z programu Hive przy użyciu klastra usługi HDInsight Hadoop do analizy predykcyjnej. One wykonaj kroki opisane w procesie nauki o danych zespołu. Omówienie procesu do nauki o danych zespołu, zobacz [danych dla celów naukowych](overview.md). Wprowadzenie do usługi Azure HDInsight, zobacz [wprowadzenie do usługi Azure HDInsight, stosu technologii Hadoop i klastrów Hadoop](../../hdinsight/hadoop/apache-hadoop-introduction.md).
 
-Wskazówki dotyczące nauki dodatkowych danych, których wykonanie procesu analizy danych zespołu są pogrupowane według **platformy** jak używane. Zobacz [wskazówki dotyczące wykonywania procesu nauki danych zespołu](walkthroughs.md) do podziału na pozycje tych przykładów.
+Przewodniki dotyczące przetwarzania dodatkowe dane, które są wykonywane w procesie nauki o danych zespołu są pogrupowane według **platformy** używane. Zobacz [przewodniki dotyczące wykonywania procesu do nauki o danych zespołu](walkthroughs.md) do podziału na pozycje z tych przykładów.
 
 
-## <a name="predict-taxi-tips-using-hive-with-hdinsight-hadoop"></a>Przewidywanie porady taksówki przy użyciu Hive z HDInsight Hadoop
+## <a name="predict-taxi-tips-using-hive-with-hdinsight-hadoop"></a>Przewidywanie napiwków przy użyciu technologii Hive z usługą HDInsight Hadoop
 
-[Klastrów HDInsight Hadoop użyj](hive-walkthrough.md) wskazówki korzysta z nowego Jorku taksówkach danych do prognozowania: 
+[Klastrów HDInsight Hadoop użyj](hive-walkthrough.md) instruktażu wykorzystano dane taksówek w Nowym Jorku do prognozowania: 
 
-- Określa, czy ma być stosowany porady 
-- Rozkład liczby Porada
+- Czy zostało opłacone Porada 
+- Dystrybucja kwoty Porada
 
-Scenariusz jest implementowane przy użyciu programu Hive z [klastra usługi Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/). Możesz dowiedzieć się, jak przechowywać, zapoznaj się i dane funkcji odtwarzania z dostępnych publicznie NYC taksówki podróży i taryfy zestawu danych. Uczenie maszynowe Azure można również użyć do tworzenia i wdrażania modeli.
+Scenariusz jest implementowany przy użyciu programu Hive za pomocą [klastra Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/). Dowiesz się, jak przechowywać, eksplorować i danych inżynier ds. funkcji z publicznie dostępnego NYC taksówki podróży i klasie zestawu danych. Usługa Azure Machine Learning możesz także użyć do tworzenia i wdrażania modeli.
 
-## <a name="predict-advertisement-clicks-using-hive-with-hdinsight-hadoop"></a>Przewidywanie kliknięć anonsu przy użyciu Hive z HDInsight Hadoop
+## <a name="predict-advertisement-clicks-using-hive-with-hdinsight-hadoop"></a>Przewidywanie kliknięć anonsu przy użyciu technologii Hive z usługą HDInsight Hadoop
 
-[Użyj Azure Hadoop w usłudze Hdinsight w zestawie danych 1 TB](hive-criteo-walkthrough.md) wskazówki używa publicznie dostępnych [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) kliknij zestaw danych do przewidzenia, czy ma być stosowany porady i zakres kwoty oczekiwano. Scenariusz jest implementowane przy użyciu programu Hive z [klastra usługi Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) do przechowywania, Eksploruj funkcję odtwarzania i w dół przykładowych danych. Uczenie maszynowe Azure używa do kompilacji, szkolenia i score model klasyfikacji binarnej przewidywania, czy użytkownik kliknie anonsu. Zawiera wskazówki przedstawiający sposób publikowania jednego z tych modeli jako usługę sieci Web.
+[Klastrów Hadoop użycia usługi Azure HDInsight w zestawie 1 TB pojemności](hive-criteo-walkthrough.md) instruktażu wykorzystano publicznie dostępnych [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) kliknij zestaw danych do prognozowania czy Porada zostało opłacone i zakres kwoty oczekiwano. Scenariusz jest implementowany przy użyciu programu Hive za pomocą [klastra Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) do przechowywania, zapoznaj się z, inżynier ds. funkcji i w dół przykładowych danych. Tworzenie, szkolenie i score model klasyfikacji binarnej przewidywania, czy użytkownik kliknie anonsu używa usługi Azure Machine Learning. Zawiera przewodnik pokazujący sposób publikowania jednego z tych modeli jako usług sieci Web.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Omówienie najważniejsze składniki wchodzące w skład procesu nauki danych zespołu, zobacz [Omówienie procesu nauki danych zespołu](overview.md).
+Aby uzyskać omówienie najważniejsze składniki wchodzące w skład procesu do nauki o danych zespołu, zobacz [przegląd danych zespołu dla celów naukowych](overview.md).
 
-Omówienie cykl zespołu w procesie nauki danych służy do struktury projektów analizy danych, zobacz [cyklu życia procesu nauki danych zespołu](lifecycle.md). Cykl życia omówiono kroki, od początku do końca, że projekty zwykle należy wykonać podczas są wykonywane. 
+Omówienie cyklu życia procesu do nauki o danych zespołu, używanej do organizowania projektów do nauki o danych, zobacz [cykl życia zespołowego danych naukowych](lifecycle.md). Cykl życia zawiera opis kroków, od początku do końca, że projekty zazwyczaj należy wykonać podczas są wykonywane. 
 

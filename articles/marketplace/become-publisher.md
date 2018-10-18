@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 745b26661d34357e44b6a7c2ed6e40f3195781f1
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 35feb1b2aa593d403b3b54781ddbba41964d15e5
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237997"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394837"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Zostań chmury wydawcy w witrynie Marketplace
 
@@ -97,7 +97,7 @@ Indywidualne rejestrowanie w [Centrum deweloperów](https://developer.microsoft.
 Po zakończeniu [Centrum deweloperów](https://developer.microsoft.com/store/register) rejestracji, Połącz swój profil partnera chmury za pomocą usługi [Centrum deweloperów](https://developer.microsoft.com/store/register) konta (Zobacz szczegółowy opis kroków w tym miejscu). Ten krok należy wykonać przed opublikowaniem oferty transact. 
 
 >[!Note]
->Do odstąpienia od opłatę za rejestrację w Centrum deweloperów $99, wypełnij formularz rejestracji w portalu marketplace, a otrzymasz wiadomość e-mail zawierająca kod promocyjny. 
+>Aby odstąpimy opłatę za rejestrację w Centrum deweloperów $99, należy wykonać [formularz rejestracji w portalu marketplace](https://azuremarketplace.microsoft.com/en-us/sell/signup) otrzymasz wiadomość e-mail zawierająca kod promocyjny. 
 
 >[!Important]
 >Przed utworzeniem konta Microsoft Dev Center, sprawdź, czy Twoja organizacja nie ma jeszcze konta Centrum deweloperów, aby uniknąć zduplikowanych kont. Aby uzyskać więcej informacji, odwiedź stronę [rejestrowanie w Centrum deweloperów](https://docs.microsoft.com/azure/marketplace/register-dev-center) sekcji.

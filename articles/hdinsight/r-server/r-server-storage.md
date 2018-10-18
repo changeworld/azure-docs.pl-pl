@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 5bd5919efa84f2dd22929075b806747b413ac346
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 4c3b36891030ae97f382d5e1d0623fa7c698dbf6
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051797"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395093"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Rozwiązania magazynu platformy Azure dla usługi ML w usłudze Azure HDInsight
 
@@ -159,7 +159,7 @@ Następujące polecenia służą do konfigurowania konta Data Lake Store z katal
 
 ## <a name="use-azure-file-storage-with-ml-services-on-hdinsight"></a>Usługa Azure File storage za pomocą usługi uczenie Maszynowe na HDInsight
 
-Jest również wygodne danych opcji magazynu do użycia w węźle krawędzi, o nazwie [plików platformy Azure] ((https://azure.microsoft.com/services/storage/files/). Umożliwia ona zainstalować udział plików usługi Azure Storage w systemie plików systemu Linux. Ta opcja może być przydatne do przechowywania plików danych, skryptów języka R i obiektów wynikowych, które mogą być potrzebne później, szczególnie w przypadku dobrym rozwiązaniem w systemie plików natywnych na węźle krawędzi, a nie systemu plików HDFS. 
+Jest również wygodne danych opcji magazynu do użycia w węźle krawędzi, o nazwie [usługi Azure Files](https://azure.microsoft.com/services/storage/files/). Umożliwia ona zainstalować udział plików usługi Azure Storage w systemie plików systemu Linux. Ta opcja może być przydatne do przechowywania plików danych, skryptów języka R i obiektów wynikowych, które mogą być potrzebne później, szczególnie w przypadku dobrym rozwiązaniem w systemie plików natywnych na węźle krawędzi, a nie systemu plików HDFS. 
 
 Główną zaletą usługi Azure Files jest udziałów plików mogą być instalowane i używane przez system z obsługiwanych systemów operacyjnych, takich jak Windows lub Linux. Na przykład może służyć przez inny klaster HDInsight, który użytkownik lub ktoś z zespołu ma przez Maszynę wirtualną platformy Azure lub nawet przez system w środowisku lokalnym. Aby uzyskać więcej informacji, zobacz:
 
