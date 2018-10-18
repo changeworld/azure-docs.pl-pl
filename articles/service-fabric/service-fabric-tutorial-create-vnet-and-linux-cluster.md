@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/27/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 27600cd4656f70b4cd01745667c0e0fd2a2f4997
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 33b95c1b0e3d654ce8bb6eda3e96b7b3e9c9bc13
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405823"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831487"
 ---
 # <a name="tutorial-deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Samouczek: wdrażanie klastra usługi Service Fabric systemu Linux w sieci wirtualnej platformy Azure
 
@@ -85,7 +85,7 @@ Ten szablon umożliwia wdrożenie zabezpieczonego klastra pięciu maszyn wirtual
 
 ### <a name="service-fabric-cluster"></a>Klaster usługi Service Fabric
 
-Klaster systemu Linux jest wdrażany z następującą charakterystyką:
+W zasobie **Microsoft.ServiceFabric/clusters** został wdrożony klaster systemu Linux o następujących właściwościach:
 
 * Jeden typ węzła
 * Pięć węzłów o podstawowym typie (z możliwością konfiguracji za pomocą parametrów szablonu)
@@ -99,7 +99,7 @@ Klaster systemu Linux jest wdrażany z następującą charakterystyką:
 
 ### <a name="azure-load-balancer"></a>Moduł równoważenia obciążenia platformy Azure
 
-Moduł równoważenia obciążenia po wdrożeniu sonduje i reguluje konfigurację następujących portów:
+W zasobie **Microsoft.Network/loadBalancers** skonfigurowano moduł równoważenia obciążenia, a sondy i reguły skonfigurowano dla następujących portów:
 
 * Punkt końcowy połączenia klienta: 19000
 * Punkt końcowy bramy protokołu HTTP: 19080
@@ -108,7 +108,7 @@ Moduł równoważenia obciążenia po wdrożeniu sonduje i reguluje konfiguracj�
 
 ### <a name="virtual-network-and-subnet"></a>Sieć wirtualna i podsieć
 
-Nazwy sieci wirtualnej i podsieci są deklarowane w parametrach szablonu.  Przestrzenie adresowe sieci wirtualnej i podsieci również są deklarowane w parametrach szablonu:
+Nazwy sieci wirtualnej i podsieci są deklarowane w parametrach szablonu.  Przestrzenie adresowe sieci wirtualnej i podsieci również są deklarowane w parametrach szablonu i skonfigurowane w zasobie **Microsoft.Network/virtualNetworks**:
 
 * przestrzeń adresowa sieci wirtualnej: 10.0.0.0/16
 * przestrzeń adresowa podsieci usługi Service Fabric: 10.0.2.0/24

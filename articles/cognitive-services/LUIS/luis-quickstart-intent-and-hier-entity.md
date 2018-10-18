@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 92b6327cbb97ed871cd4b10977bcd73a81494e20
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: a469bc600715b2e276d6654596da50d75659aadb
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042129"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831028"
 ---
 # <a name="tutorial-5-extract-contextually-related-data"></a>Samouczek 5: wyodrębnianie danych powiązanych kontekstowo
 W tym samouczku znajdziesz powiązane elementy danych na podstawie kontekstu. Na przykład powiązane są lokalizacje początkowa i docelowa dla fizycznego przeniesienia z jednego budynku i biura do innego budynku i biura. Aby wygenerować polecenie służbowe, potrzebne są oba elementy danych. Są one powiązane ze sobą.  
@@ -61,7 +61,7 @@ Aby zobaczyć całą wypowiedź i oznaczyć hierarchiczne elementy podrzędne, t
 
 2. Wybierz pozycję **Entities** (Jednostki) w menu po lewej stronie.
 
-3. Wybierz wielokropek ***(...)*** po prawej stronie jednostki numeru na liście. Wybierz pozycję **Usuń**. 
+3. Zaznacz pole wyboru z lewej strony liczby jednostek na liście. Wybierz pozycję **Usuń**. 
 
 ## <a name="add-utterances-to-moveemployee-intent"></a>Dodawanie wypowiedzi do intencji MoveEmployee
 
@@ -81,7 +81,7 @@ Aby zobaczyć całą wypowiedź i oznaczyć hierarchiczne elementy podrzędne, t
 
     [ ![Zrzut ekranu usługi LUIS z nowymi wypowiedziami w intencji MoveEmployee](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png#lightbox)
 
-    W samouczku dotyczącym [jednostki listy](luis-quickstart-intent-and-list-entity.md) wyznaczany jest pracownik według nazwy, adresu e-mail, numeru wewnętrznego, numeru telefonu komórkowego lub federalnego numeru ubezpieczenia społecznego (Stany Zjednoczone). Te numery pracowników są używane w wypowiedziach. Poprzednie przykładowe wypowiedzi przedstawiają różne sposoby wskazywania lokalizacji źródłowych, które wyróżniono za pomocą pogrubienia. Celowo w niektórych wypowiedziach znajdują się tylko miejsca docelowe. Pomaga to usłudze LUIS zrozumieć, jak te lokalizacje są umieszczane w wypowiedzi, jeśli nie określono źródła.     
+    W samouczku dotyczącym [jednostki listy](luis-quickstart-intent-and-list-entity.md) wyznaczany jest pracownik według nazwy, adresu e-mail, numeru wewnętrznego, numeru telefonu komórkowego lub federalnego numeru ubezpieczenia społecznego (Stany Zjednoczone). Te numery pracowników są używane w zniesławiających. Poprzednie przykładowe wypowiedzi przedstawiają różne sposoby wskazywania lokalizacji źródłowych, które wyróżniono za pomocą pogrubienia. Celowo w niektórych wypowiedziach znajdują się tylko miejsca docelowe. Pomaga to usłudze LUIS zrozumieć, jak te lokalizacje są umieszczane w wypowiedzi, jeśli nie określono źródła.     
 
     [!include[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 

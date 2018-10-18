@@ -1,22 +1,27 @@
 ---
-title: Omówienie interfejsu Web Language Model API — Azure Cognitive Services | Microsoft Docs
+title: Omówienie interfejsu Web Language Model API
+titleSuffix: Azure Cognitive Services
 description: Interfejs Web Language Model API w usługach Microsoft Cognitive Services udostępnia najnowocześniejsze narzędzia do przetwarzania języka naturalnego.
 services: cognitive-services
 author: piyushbehre
-manager: yanbo
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: web-language-model
 ms.topic: overview
 ms.date: 08/12/2016
 ms.author: pibehre
-ms.openlocfilehash: dc5dc0519e33e024014033ac5260004482b419c2
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ROBOTS: NOINDEX
+ms.openlocfilehash: f6cfaa05a6107d3e1ef689103da43960ea4df366
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096959"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48039995"
 ---
 # <a name="what-is-the-web-language-model-api-preview"></a>Czym jest interfejs Web Language Model API? (Wersja zapoznawcza)
+
+> [!IMPORTANT]
+> Wersja zapoznawcza usługi Web Language Model została wycofana w dniu 9 sierpnia 2018 r. W celu przetwarzania i analizy tekstu zalecamy korzystanie z [modułów analizy tekstu w usłudze Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/studio-module-reference/text-analytics).
 
 Interfejs Microsoft Web Language Model API jest usługą w chmurze opartą na protokole REST, która zapewnia najnowocześniejsze narzędzia do przetwarzana języka naturalnego. Dzięki temu interfejsowi API aplikacja może wykorzystać moc danych big data za pośrednictwem modeli językowych przeszkolonych na korpusach w skali Internetu zebranych przez usługę Bing na rynku en-US.
 
