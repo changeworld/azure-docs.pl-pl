@@ -1,36 +1,36 @@
 ---
-title: 'Szybki Start: Wysyłanie zapytania przy użyciu interfejsu API REST dla interfejsu API wyszukiwania obrazów Bing i języka Ruby'
-description: W tym przewodniku Szybki Start możesz wysyłać zapytania wyszukiwania interfejsu API wyszukiwania Bing w celu uzyskania listy odpowiednie obrazy za pomocą języka Ruby.
+title: 'Szybki start: wykonywanie wyszukiwania obrazów w języku Ruby — interfejs API wyszukiwania obrazów Bing'
+description: Ten przewodnik Szybki start umożliwia utworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbieranie odpowiedzi w formacie JSON. Ta prosta aplikacja w języku Ruby wysyła zapytanie wyszukiwania do interfejsu API i wyświetla nieprzetworzone wyniki.
 services: cognitive-services
 documentationcenter: ''
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: fdc22971a369effbca31e23305ee57739852a50b
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: MT
+ms.openlocfilehash: 4c2c91b42af46ba42bdda84d7b8b77987c7ea818
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578805"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297336"
 ---
-# <a name="quickstart-send-search-queries-using-the-rest-api-and-ruby"></a>Szybki Start: Wysyłanie zapytania przy użyciu interfejsu API REST i Ruby
+# <a name="quickstart-send-search-queries-using-the-rest-api-and-ruby"></a>Szybki start: wysyłanie zapytań wyszukiwania przy użyciu interfejsu API REST i języka Ruby
 
-Ten przewodnik Szybki Start umożliwia utworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbierać odpowiedź w formacie JSON. Ta prosta aplikacja języka Ruby wysyła zapytanie wyszukiwania do interfejsu API i wyświetli nieprzetworzone wyniki.
+Ten przewodnik Szybki start umożliwia utworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbieranie odpowiedzi w formacie JSON. Ta prosta aplikacja w języku Ruby wysyła zapytanie wyszukiwania do interfejsu API i wyświetla nieprzetworzone wyniki.
 
-Podczas tej aplikacji został napisany w języku Ruby, interfejs API jest zgodny z większość języków programowania usługi sieci Web typu RESTful.
+Chociaż ta aplikacja jest napisana w języku Ruby, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
-Kod źródłowy, w tym przykładzie jest dostępny na [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingImageSearchv7.rb).
+Kod źródłowy tego przykładu jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingImageSearchv7.rb).
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [Najnowsza wersja środowiska Ruby](https://www.ruby-lang.org/en/downloads/).
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-## <a name="create-and-initialize-the-application"></a>Tworzenie i Inicjowanie aplikacji
+## <a name="create-and-initialize-the-application"></a>Tworzenie i inicjowanie aplikacji
 
 1. Zaimportuj następujące pakiety do pliku kodu.
 
@@ -40,7 +40,7 @@ Kod źródłowy, w tym przykładzie jest dostępny na [GitHub](https://github.co
     require 'json'
     ```
 
-2. Utwórz zmienne dla punktu końcowego interfejsu API, ścieżki wyszukiwania interfejs API obrazów, klucz subskrypcji i szukanego terminu.
+2. Utwórz zmienne dla punktu końcowego interfejsu API, ścieżki wyszukiwania interfejsu API obrazów, klucza subskrypcji i wyszukiwanego terminu.
 
     ```ruby
     uri  = "https://api.cognitive.microsoft.com"
@@ -48,9 +48,9 @@ Kod źródłowy, w tym przykładzie jest dostępny na [GitHub](https://github.co
     term = "puppies"
     ```
 
-## <a name="format-and-make-an-api-request"></a>Formatowanie i przesyłania żądania interfejsu API
+## <a name="format-and-make-an-api-request"></a>Formatowanie i wykonywanie żądania interfejsu API
 
-Używać zmiennych w ostatnim kroku, aby sformatować adres URL żądania interfejsu API wyszukiwania. Następnie wyślij żądanie.
+Użyj zmiennych utworzonych w ostatnim kroku, aby sformatować adres URL wyszukiwania dla żądania interfejsu API. Następnie wyślij żądanie.
 
 ```ruby
 uri = URI(uri + path + "?q=" + URI.escape(term))
@@ -64,9 +64,9 @@ response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https'
 end
 ```
 
-## <a name="process-and-print-the-json"></a>Proces i drukarek za pomocą pliku JSON 
+## <a name="process-and-print-the-json"></a>Przetwarzanie i wyświetlanie odpowiedzi JSON
 
-Po otrzymaniu odpowiedzi można przeanalizować kodu JSON i uzyskiwanie wartości. Na przykład miniatury zwracany adres URL do pierwszego wyniku i łącznej liczby obrazów.
+Po otrzymaniu odpowiedzi można przeanalizować kod JSON i pobrać z niego wartości. Na przykład adres URL miniatury pierwszego wyniku i łączną liczbę zwróconych obrazów.
 
 ```ruby
 response.each_header do |key, value|
@@ -86,7 +86,7 @@ puts "Url to the thumbnail of the first returned search result: #{first_result}"
 
 ## <a name="sample-json-response"></a>Przykładowa odpowiedź JSON
 
-Odpowiedzi z interfejsu API wyszukiwania obrazów Bing są zwracane w formacie JSON. Ta przykładowa odpowiedź została obcięta do Pokaż jeden wynik.
+Odpowiedzi z interfejsu API wyszukiwania obrazów Bing są zwracane w formacie JSON. Ta przykładowa odpowiedź została obcięta w celu pokazania pojedynczego wyniku.
 
 ```json
 {
@@ -133,15 +133,15 @@ Odpowiedzi z interfejsu API wyszukiwania obrazów Bing są zwracane w formacie J
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek dotyczący aplikacji jednostronicowej wyszukiwania obrazów Bing](../tutorial-bing-image-search-single-page-app.md)
+> [Samouczek dotyczący jednostronicowej aplikacji wyszukiwania obrazów Bing](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz także 
+## <a name="see-also"></a>Zobacz też
 
-* [Co to jest wyszukiwanie obrazów Bing?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Wypróbuj prezentację online dla interaktywne](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-* [Uzyskaj bezpłatne klucza dostępu usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Dokumentacja usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Czym jest funkcja wyszukiwania obrazów Bing?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Wypróbuj interaktywny pokaz online](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Pobieranie bezpłatnego klucza dostępu usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [Dokumentacja usług Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Dokumentacja interfejsu API wyszukiwania obrazów Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

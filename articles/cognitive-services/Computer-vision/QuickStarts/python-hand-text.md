@@ -3,19 +3,19 @@ title: 'Szybki start: wyodrębnianie tekstu odręcznego — REST, Python — prz
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start wyodrębnisz z obrazu tekst odręczny przy użyciu interfejsu API przetwarzania obrazów i języka Python.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 91cff6205af70968b6397af9756a5385ddb0c989
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 58860fa1f65f90cdd314eb2c8cb7e1f54faa2344
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631365"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341756"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-python-in-computer-vision"></a>Szybki start: wyodrębnianie tekstu odręcznego przy użyciu interfejsu API REST i języka Python w przetwarzaniu obrazów
 
@@ -32,15 +32,15 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli chcesz uruchomić próbkę lokalnie, musisz mieć zainstalowany język [Python](https://www.python.org/downloads/).
+- Jeśli chcesz uruchomić przykładowy kod lokalnie, musisz mieć zainstalowany język [Python](https://www.python.org/downloads/).
 - Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Aby uzyskać klucz subskrypcji, zobacz [Obtaining Subscription Keys (Uzyskiwanie kluczy subskrypcji)](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie próbki
+## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie przykładowego kodu
 
 Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 
 1. Skopiuj następujący kod do edytora tekstów.
-1. W razie potrzeby wprowadź w kodzie następujące zmiany:
+1. W razie potrzeby wprowadź następujące zmiany w kodzie:
     1. Zastąp wartość `subscription_key` kluczem subskrypcji.
     1. W razie potrzeby zastąp wartość `vision_base_url` adresem URL punktu końcowego dla zasobu przetwarzania obrazów z regionu platformy Azure, z którego uzyskano klucze subskrypcji.
     1. Opcjonalnie zastąp wartość `image_url` adresem URL innego obrazu, z którego chcesz wyodrębnić tekst odręczny.

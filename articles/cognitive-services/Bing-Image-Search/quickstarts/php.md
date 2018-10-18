@@ -1,44 +1,44 @@
 ---
-title: 'Szybki Start: Wysyłania zapytania przy użyciu interfejsu API wyszukiwania obrazów Bing i języka PHP'
+title: 'Szybki start: wykonywanie wyszukiwania obrazów w języku PHP — interfejs API wyszukiwania obrazów Bing'
 titleSuffix: Azure Cognitive Services
-description: Ten przewodnik Szybki Start umożliwia wyszukiwanie i znajdowanie obrazów w sieci web za pomocą API wyszukiwania w Internecie Bing.
+description: Ten przewodnik Szybki start umożliwia utworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbieranie odpowiedzi w formacie JSON. W tym artykule prosta aplikacja wysyła zapytanie wyszukiwania i wyświetla nieprzetworzone wyniki.
 services: cognitive-services
 documentationcenter: ''
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/07/2018
 ms.author: aahi
-ms.openlocfilehash: ebf8c0269e070c9047d730e58b8e2d3824124e1a
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: MT
+ms.openlocfilehash: ac3de25773249119535ac6f3bd063ff6b9b7831e
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574202"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295533"
 ---
-# <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-php"></a>Szybki Start: Wysyłania zapytania przy użyciu interfejsu API REST wyszukiwania obrazów Bing i języka PHP
+# <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-php"></a>Szybki start: wysyłanie zapytań przy użyciu interfejsu API REST wyszukiwania obrazów Bing i języka PHP
 
-Ten przewodnik Szybki Start umożliwia utworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbierać odpowiedź w formacie JSON. Prostą aplikację w tym artykule wysyła zapytanie wyszukiwania i wyświetli nieprzetworzone wyniki.
+Ten przewodnik Szybki start umożliwia utworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbieranie odpowiedzi w formacie JSON. W tym artykule prosta aplikacja wysyła zapytanie wyszukiwania i wyświetla nieprzetworzone wyniki.
 
-Gdy ta aplikacja jest napisany w języku PHP, interfejs API jest zgodny z dowolnego języka programowania, który może wysyłać żądania HTTP i Przeanalizuj dane JSON usługi sieci Web typu RESTful.
+Chociaż ta aplikacja została napisana w języku PHP, interfejs API jest usługą internetową zgodną z wzorcem REST i każdym językiem programowania, który może wysyłać żądania HTTP i analizować dane JSON.
 
-Kod źródłowy dla tego przykładu jest dostępny [w serwisie GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7.java).
+Kod źródłowy tego przykładu jest dostępny [w usłudze GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7.java).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [PHP 5.6.x lub nowszym](http://php.net/downloads.php).
+* [Środowisko PHP 5.6.x lub nowsze](http://php.net/downloads.php).
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-## <a name="create-and-initialize-the-application"></a>Tworzenie i Inicjowanie aplikacji
+## <a name="create-and-initialize-the-application"></a>Tworzenie i inicjowanie aplikacji
 
 Aby uruchomić tę aplikację, wykonaj następujące kroki.
 
-1. Upewnij się, bezpiecznej obsługi protokołu HTTP jest włączone w swojej `php.ini` pliku. W Windows, ten plik znajduje się w `C:\windows`.
-2. Utwórz nowy projekt języka PHP w Twoim ulubionym środowiskiem IDE lub edytora.
-3. Definiowanie punktu końcowego interfejsu API, klucz subskrypcji i szukanego terminu.
+1. Upewnij się, że w pliku `php.ini` włączono obsługę bezpiecznego protokołu HTTP. W systemie Windows ten plik znajduje się w folderze `C:\windows`.
+2. Utwórz nowy projekt PHP w ulubionym środowisku IDE lub edytorze.
+3. Zdefiniuj punkt końcowy interfejsu API, klucz subskrypcji i wyszukiwany termin.
 
     ```php
     $endpoint = 'https://api.cognitive.microsoft.com/bing/v7.0/images/search';
@@ -46,9 +46,9 @@ Aby uruchomić tę aplikację, wykonaj następujące kroki.
     $accessKey = 'enter key here';
     $term = 'tropical ocean';
     ```
-## <a name="construct-and-perform-a-http-request"></a>Skonstruuj i wykonywać żądania HTTP
+## <a name="construct-and-perform-a-http-request"></a>Konstruowanie i wykonywanie żądania HTTP
 
-1. Zmienne w ostatnim kroku umożliwia przygotowanie żądania HTTP do interfejsu API wyszukiwania obrazów.
+1. Użyj zmiennych z ostatniego kroku do przygotowania żądania HTTP do interfejsu API wyszukiwania obrazów.
 
     ```php
     $headers = "Ocp-Apim-Subscription-Key: $key\r\n";
@@ -56,16 +56,16 @@ Aby uruchomić tę aplikację, wykonaj następujące kroki.
                             'header' => $headers,
                             'method' => 'GET' ));
     ```
-2. Wykonaj żądania sieci web i Pobierz odpowiedź JSON.
+2. Wykonaj żądanie sieci web i pobierz odpowiedź JSON.
 
     ```php
     $context = stream_context_create($options);
     $result = file_get_contents($url . "?q=" . urlencode($query), false, $context);
     ```
 
-## <a name="process-and-print-the-json"></a>Proces i drukarek za pomocą pliku JSON
+## <a name="process-and-print-the-json"></a>Przetwarzanie i wyświetlanie odpowiedzi JSON
 
-Proces i Drukuj zwrócona odpowiedź w formacie JSON.
+Przetwórz i wyświetl zwróconą odpowiedź w formacie JSON.
 
     ```php
     $headers = array();
@@ -80,7 +80,7 @@ Proces i Drukuj zwrócona odpowiedź w formacie JSON.
 
 ## <a name="sample-json-response"></a>Przykładowa odpowiedź JSON
 
-Odpowiedzi z interfejsu API wyszukiwania obrazów Bing są zwracane w formacie JSON. Ta przykładowa odpowiedź została obcięta do Pokaż jeden wynik.
+Odpowiedzi z interfejsu API wyszukiwania obrazów Bing są zwracane w formacie JSON. Ta przykładowa odpowiedź została obcięta w celu pokazania pojedynczego wyniku.
 
 ```json
 {
@@ -126,15 +126,15 @@ Odpowiedzi z interfejsu API wyszukiwania obrazów Bing są zwracane w formacie J
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek dotyczący aplikacji jednostronicowej wyszukiwania obrazów Bing](../tutorial-bing-image-search-single-page-app.md)
+> [Samouczek dotyczący jednostronicowej aplikacji wyszukiwania obrazów Bing](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz także 
+## <a name="see-also"></a>Zobacz też
 
-* [Co to jest wyszukiwanie obrazów Bing?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Wypróbuj prezentację online dla interaktywne](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-* [Uzyskaj bezpłatne klucza dostępu usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Dokumentacja usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Czym jest funkcja wyszukiwania obrazów Bing?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Wypróbuj interaktywny pokaz online](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Pobieranie bezpłatnego klucza dostępu usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [Dokumentacja usług Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Dokumentacja interfejsu API wyszukiwania obrazów Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

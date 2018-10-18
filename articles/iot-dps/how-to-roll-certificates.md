@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: a40f4489e63c30a101dd708b5a175c25788fb04b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 51e96065f726fadd528323157609034b5bb3f151
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976758"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387892"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Jak wdrożyć certyfikaty urządzeń X.509
 
@@ -52,7 +52,7 @@ Gdy urządzenie jest początkowo dostarczanymi za pośrednictwem automatycznej a
 
 Po nowego certyfikatu liścia została przeniesiona do urządzenia, możliwość nie jest już połączenia z Centrum IoT hub, ponieważ używa nowego certyfikatu do łączenia. Usługa IoT hub rozpoznaje tylko urządzenia przy użyciu starego certyfikatu. Wynik próby połączenia urządzenia będzie błąd "Brak autoryzacji" połączenia. Aby rozwiązać ten problem, należy zaktualizować wpisu rejestracji urządzenia dla nowego certyfikatu liścia urządzenia. Następnie usługa aprowizacji można zaktualizować informacji rejestru urządzeń usługi IoT Hub w chwili, gdy urządzenie jest aprowizowany ponownie. 
 
-Jeden z dopuszczalnych wyjątków do tej awarii połączenia będzie scenariusz, w którym został utworzony [grupy rejestracji](concepts-service.md#enrollment-group) dla urządzenia w usłudze aprowizowania. W tym przypadku jeśli główny lub pośredni certyfikaty nie są stopniowego w łańcuch zaufania certyfikatów na urządzeniu, następnie urządzenie zostanie rozpoznany Jeśli nowy certyfikat jest częścią łańcuch zaufania zdefiniowane w grupie rejestracji. W razie ten scenariusz w reakcji na naruszenie zabezpieczeń, należy co najmniej niedozwolonych certyfikaty określonego urządzenia w grupie, które są uważane za zostać naruszone. Aby uzyskać więcej informacji, zobacz [czarnej listy konkretnych urządzeń w grupie rejestracji](https://docs.microsoft.com/en-us/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group).
+Jeden z dopuszczalnych wyjątków do tej awarii połączenia będzie scenariusz, w którym został utworzony [grupy rejestracji](concepts-service.md#enrollment-group) dla urządzenia w usłudze aprowizowania. W tym przypadku jeśli główny lub pośredni certyfikaty nie są stopniowego w łańcuch zaufania certyfikatów na urządzeniu, następnie urządzenie zostanie rozpoznany Jeśli nowy certyfikat jest częścią łańcuch zaufania zdefiniowane w grupie rejestracji. W razie ten scenariusz w reakcji na naruszenie zabezpieczeń, należy co najmniej niedozwolonych certyfikaty określonego urządzenia w grupie, które są uważane za zostać naruszone. Aby uzyskać więcej informacji, zobacz [czarnej listy konkretnych urządzeń w grupie rejestracji](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group).
 
 Aktualizowanie wpisów rejestracji certyfikatów walcowane odbywa się na **Zarządzanie rejestracjami** strony. Aby uzyskać dostęp do tej strony, wykonaj następujące kroki:
 

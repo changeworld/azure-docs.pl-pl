@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: get-started-article
-ms.date: 09/07/2017
+ms.date: 09/11/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 8254f6c72141f7a9babfc5af3c319e7e66f30bbf
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 7966705df2a352f2011d5f7611277e92d8e2d11a
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448673"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294241"
 ---
 # <a name="set-up-azure-active-directory-for-self-service-group-management"></a>Konfigurowanie usługi Azure Active Directory do samoobsługowego zarządzania grupami
 W usłudze Azure Active Directory (Azure AD) użytkownicy mogą tworzyć swoje własne grupy zabezpieczeń lub grupy usługi Office 365 oraz zarządzać nimi. Użytkownicy mogą również żądać członkostwa w grupie zabezpieczeń lub grupie Office 365, a następnie właściciel grupy może zatwierdzić członkostwo lub odmówić jego przypisania. Codzienne zarządzanie członkostwem w grupach można przekazać osobom znającym kontekst biznesowy tego członkostwa. Funkcje samoobsługowego zarządzania grupami są dostępne wyłącznie w przypadku grup zabezpieczeń i grup Office 365, natomiast nie są dostępne w przypadku list dystrybucyjnych lub grup zabezpieczeń z włączoną obsługą poczty.
@@ -46,6 +46,6 @@ Te artykuły zawierają dodatkowe informacje o usłudze Azure Active Directory.
 
 * [Zarządzanie dostępem do zasobów za pomocą grup usługi Azure Active Directory](../fundamentals/active-directory-manage-groups.md)
 * [Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy](groups-settings-cmdlets.md)
-* [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](../active-directory-apps-index.md)
+* [Zarządzanie aplikacjami w usłudze Azure Active Directory](../manage-apps/what-is-application-management.md)
 * [Co to jest usługa Azure Active Directory?](../fundamentals/active-directory-whatis.md)
-* [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](../connect/active-directory-aadconnect.md)
+* [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](../hybrid/whatis-hybrid-identity.md)

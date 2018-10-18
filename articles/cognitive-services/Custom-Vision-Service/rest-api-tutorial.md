@@ -1,55 +1,56 @@
 ---
-title: Użyj Custom Vision Service interfejs API REST — usług Azure Cognitive Services | Dokumentacja firmy Microsoft
-description: Tworzenie, szkolenie, testowanie i eksportowanie niestandardowego modelu przetwarzania obrazów za pomocą interfejsu API REST.
+title: 'Samouczek: używanie interfejsu API REST usługi Custom Vision Service'
+titlesuffix: Azure Cognitive Services
+description: Utwórz, wyszkol, przetestuj i wyeksportuj model Custom Vision za pomocą interfejsu API REST.
 services: cognitive-services
 author: blackmist
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/07/2018
 ms.author: larryfr
-ms.openlocfilehash: 44fa4d45c33f3064c089724ee761a70d0a8421ab
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
-ms.translationtype: MT
+ms.openlocfilehash: a38f737b5281903328a53d6552b1666ca4f58d80
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40250268"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364962"
 ---
-# <a name="tutorial-use-the-custom-vision-rest-api"></a>Samouczek: Używanie usługi Custom Vision Service interfejsu API REST
+# <a name="tutorial-use-the-custom-vision-rest-api"></a>Samouczek: używanie interfejsu API REST usługi Custom Vision
 
-Dowiedz się, jak używać niestandardowego interfejsu API REST przetwarzania do tworzenia, uczenia, testowanie i eksportowanie modelu.
+Naucz się używać interfejsu API REST Custom Vision do tworzenia, szkolenia, testowania i eksportowania modelu.
 
-Informacje przedstawione w tym dokumencie pokazano, jak używać klienta REST do pracy z interfejsem API REST dla szkolenia usługi Custom Vision. W przykładach pokazano, jak używać interfejsu API przy użyciu `curl` narzędzie z poziomu środowiska bash oraz `Invoke-WebRequest` za pomocą programu Windows PowerShell.
+W tym artykule pokazujemy, jak używać klienta REST do pracy z interfejsem API REST do trenowania usługi Custom Vision. W przykładach pokazano sposób używania interfejsu API za pomocą narzędzia `curl` w środowisku bash i narzędzia `Invoke-WebRequest` w środowisku Windows PowerShell.
 
 > [!div class="checklist"]
-> * Pobierz klucze
+> * Uzyskiwanie kluczy
 > * Tworzenie projektu
-> * Utworzenie tagów
+> * Tworzenie tagów
 > * Dodawanie obrazów
-> * Uczenie i testowanie modelu
+> * Trenowanie i testowanie modelu
 > * Eksportowanie modelu
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Podstawowe znajomość z REST Representational State Transfer (). W tym dokumencie nie przejdź do szczegółów elementów, takich jak zleceń HTTP, JSON lub innymi często używane z użyciem usług REST.
+* Podstawowa znajomość koncepcji Representational State Transfer (REST). W tym dokumencie nie zajmujemy się kwestiami szczegółowymi, takimi jak czasowniki HTTP, JSON czy inne zagadnienia związane z REST.
 
-* Albo funkcji bash (Bourne ponownie Shell) z [curl](https://curl.haxx.se) narzędzia lub środowiska Windows PowerShell 3.0 (lub nowszego).
+* Powłoka bash (Bourne Again Shell) i program [curl](https://curl.haxx.se) albo środowisko Windows PowerShell 3.0 (lub nowsza wersja).
 
-* Konto niestandardowe wizji. Aby uzyskać więcej informacji, zobacz [tworzenie klasyfikatora](getting-started-build-a-classifier.md) dokumentu.
+* Konto Custom Vision. Więcej informacji można znaleźć w artykule [Build a classifier](getting-started-build-a-classifier.md) (Tworzenie klasyfikatora).
 
-## <a name="get-keys"></a>Pobierz klucze
+## <a name="get-keys"></a>Uzyskiwanie kluczy
 
-Korzystając z interfejsu API REST, należy uwierzytelnić przy użyciu klucza. Podczas zarządzania lub operacji uczenia, możesz użyć __klucz szkolenia__. Przy użyciu modelu do prognozowania, za pomocą funkcji __klucz prognozowania__.
+Podczas używania interfejsu API REST należy się uwierzytelniać za pomocą klucza. Podczas wykonywania operacji zarządzania lub szkolenia należy używać __klucza do szkolenia__. Podczas używania modelu do przewidywania, należy używać __klucza do przewidywania__.
 
-Podczas wykonywania żądaniem, klucz zostaje wysłany jako nagłówek żądania.
+Klucz jest wysyłany w nagłówku żądania.
 
-Aby pobrać klucze służące do swojego konta, odwiedź stronę [strony sieci web Custom Vision](https://customvision.ai) i wybierz __ikonę koła zębatego__ w prawym górnym rogu. W __kont__ sekcji, skopiuj wartości z __klucz szkolenia__ i __klucz prognozowania__ pola.
+Aby uzyskać klucze dla swojego konta, odwiedź [stronę Custom Vision](https://customvision.ai) i wybierz __ikonę koła zębatego__ w prawym górnym rogu. W sekcji __Accounts__ (Konta) skopiuj wartości z pól __Training Key__ (Klucz szkolenia) i __Prediction Key__ (Klucz przewidywania).
 
-![Obraz przedstawiający klucze interfejsu użytkownika](./media/rest-api-tutorial/training-prediction-keys.png)
+![Obraz interfejsu użytkownika do uzyskiwania kluczy](./media/rest-api-tutorial/training-prediction-keys.png)
 
 > [!IMPORTANT]
-> Ponieważ klucze są używane do uwierzytelniania każdego żądania, przykłady w tym dokumencie założono, że wartości klucza są zawarte w zmiennych środowiskowych. Użyj następujących poleceń, aby klucze były przechowywane w zmiennych środowiskowych przed rozpoczęciem korzystania z żadnych innych fragmentów w tym dokumencie:
+> Ponieważ klucze są używane do uwierzytelniania każdego żądania, w tym dokumencie zakładamy, że są zapisane w zmiennych środowiskowych. Przed użyciem innych podanych tu fragmentów kodu zapisz klucze w zmiennych środowiskowych za pomocą następujących poleceń:
 >
 > ```bash
 > read -p "Enter the training key: " TRAININGKEY
@@ -63,7 +64,7 @@ Aby pobrać klucze służące do swojego konta, odwiedź stronę [strony sieci w
 
 ## <a name="create-a-new-project"></a>Tworzenie nowego projektu
 
-Poniższe przykłady tworzą nowy projekt o nazwie `myproject` w wystąpieniu usługi Custom Vision service. Domyślnie ta usługa `General` domeny:
+W poniższych przykładach utworzymy nowy projekt o nazwie `myproject` w wystąpieniu usługi Custom Vision. Domyślną domeną tej usługi jest `General`:
 
 ```bash
 curl -X POST "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Training/projects?name=myproject" -H "Training-Key: $TRAININGKEY" --data-ascii ""
@@ -77,7 +78,7 @@ $resp = Invoke-WebRequest -Method 'POST' `
 $resp.Content
 ```
 
-Odpowiedź na żądanie jest podobne do następujących dokumentów JSON:
+Odpowiedź na żądanie wygląda podobnie do tego dokumentu JSON:
 
 ```json
 {
@@ -97,13 +98,13 @@ Odpowiedź na żądanie jest podobne do następujących dokumentów JSON:
 ```
 
 > [!TIP]
-> `id` Wpis w odpowiedzi jest identyfikator nowego projektu. Jest on używany w innych przykładach w dalszej części tego dokumentu.
+> Element `id` w odpowiedzi to identyfikator nowego projektu. Jest on używany również w kolejnych przykładach w tym dokumencie.
 
-Aby uzyskać więcej informacji na temat tego żądania, zobacz [CreateProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a8290).
+Aby uzyskać więcej informacji o tym żądaniu, zobacz temat [CreateProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a8290).
 
 ### <a name="specific-domains"></a>Określone domeny
 
-Aby utworzyć projekt dla określonej domeny, możesz podać __Identyfikatora domeny__ jako parametr opcjonalny. W poniższych przykładach pokazano, jak pobrać listę dostępnych domen:
+Aby utworzyć projekt dla określonej domeny, możesz podać __identyfikator domeny__ jako parametr opcjonalny. W poniższych przykładach pokazano sposoby pobierania listy dostępnych domen:
 
 ```bash
 curl -X GET "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Training/domains" -H "Training-Key: $TRAININGKEY" --data-ascii ""
@@ -117,7 +118,7 @@ $resp = Invoke-WebRequest -Method 'GET' `
 $resp.Content
 ```
 
-Odpowiedź na żądanie jest podobne do następujących dokumentów JSON:
+Odpowiedź na żądanie wygląda podobnie do tego dokumentu JSON:
 
 ```json
 [
@@ -146,9 +147,9 @@ Odpowiedź na żądanie jest podobne do następujących dokumentów JSON:
 ]
 ```
 
-Aby uzyskać więcej informacji na temat tego żądania, zobacz [GetDomains](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a827d).
+Aby uzyskać więcej informacji o tym żądaniu, zobacz temat [GetDomains](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a827d).
 
-W poniższym przykładzie pokazano tworzenie nowego projektu, który używa __charakterystycznych elementów krajobrazu__ domeny:
+W poniższym przykładzie pokazano tworzenie nowego projektu z wykorzystaniem domeny __Charakterystyczne elementy krajobrazu__:
 
 ```bash
 curl -X POST "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Training/projects?name=myproject&domainId=ca455789-012d-4b50-9fec-5bb63841c793" -H "Training-Key: $TRAININGKEY" --data-ascii ""
@@ -162,9 +163,9 @@ $resp = Invoke-WebRequest -Method 'POST' `
 $resp.Content
 ```
 
-## <a name="create-tags"></a>Utworzenie tagów
+## <a name="create-tags"></a>Tworzenie tagów
 
-Można tagować obrazy należy użyć identyfikatora tagu Poniższy przykład pokazuje, jak utworzyć nowy tag o nazwie `cat` i Pobierz identyfikator tagu Zastąp `{projectId}` z Identyfikatorem projektu. Użyj `name=` parametru do określenia nazwy tagu:
+Do oznaczania obrazów należy używać identyfikatora tagu. W poniższym przykładzie pokazano, jak utworzyć nowy tag o nazwie `cat` i uzyskać jego identyfikator. Zastąp `{projectId}` identyfikatorem swojego projektu. Użyj parametru `name=` w celu określenia nazwy tagu:
 
 ```bash
 curl -X POST "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Training/projects/{projectId}/tags?name=cat" -H "Training-Key: $TRAININGKEY" --data-ascii ""
@@ -178,19 +179,19 @@ $resp = Invoke-WebRequest -Method 'POST' `
 $resp.Content
 ```
 
-Odpowiedź na żądanie jest podobny do dokumentu JSON: 
+Odpowiedź na żądanie wygląda podobnie do tego dokumentu JSON: 
 
 ```json
 {"id":"ed6f7ab6-5132-47ad-8649-3ec42ee62d43","name":"cat","description":null,"imageCount":0}
 ```
 
-Zapisz `id` wartości, ponieważ jest używany, gdy tagowanie obrazów.
+Zapisz wartość `id`, ponieważ jest używana podczas oznaczania obrazów.
 
-Aby uzyskać więcej informacji na temat tego żądania, zobacz [CreateTag](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a829d).
+Aby uzyskać więcej informacji o tym żądaniu, zobacz temat [CreateTag](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a829d).
 
 ## <a name="add-images"></a>Dodawanie obrazów
 
-W poniższych przykładach pokazano, dodanie pliku z adresu URL. Zastąp `{projectId}` z Identyfikatorem projektu. Zastąp `{tagId}` o identyfikatorze tagu obrazu:
+W poniższym przykładzie pokazano dodawanie pliku za pomocą jego adresu URL. Zastąp `{projectId}` identyfikatorem swojego projektu. Zastąp `{tagId}` identyfikatorem tagu obrazu:
 
 ```bash
 curl -X POST "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Training/projects/{projectId}/images/urls" -H "Training-Key: $TRAININGKEY" -H "Content-Type: application/json" --data-ascii '{"images": [{"url": "http://myimages/cat.jpg","tagIds": ["{tagId}"],"regions": [{"tagId": "{tagId}","left": 119.0,"top": 94.0,"width": 240.0,"height": 140.0}]}], "tagIds": ["{tagId}"]}'
@@ -205,7 +206,7 @@ $resp = Invoke-WebRequest -Method 'POST' `
 $resp.Content
 ```
 
-Odpowiedź na żądanie jest podobne do następujących dokumentów JSON:
+Odpowiedź na żądanie wygląda podobnie do tego dokumentu JSON:
 
 ```json
 {
@@ -246,11 +247,11 @@ Odpowiedź na żądanie jest podobne do następujących dokumentów JSON:
 }
 ```
 
-Aby uzyskać więcej informacji na temat tego żądania, zobacz [CreateImagesFromUrls](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a8287).
+Aby uzyskać więcej informacji o tym żądaniu, zobacz temat [CreateImagesFromUrls](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a8287).
 
 ## <a name="train-the-model"></a>Uczenie modelu
 
-Poniższe przykłady pokazują, jak do nauczenia modelu. Zastąp `{projectId}` z Identyfikatorem projektu:
+Poniższe przykłady pokazują sposób szkolenia modelu. Zastąp `{projectId}` identyfikatorem swojego projektu:
 
 ```bash
 curl -X POST "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Training/projects/{projectId}/train" -H "Training-Key: $TRAININGKEY" -H "Content-Type: application/json" --data-ascii ""
@@ -264,7 +265,7 @@ $resp = Invoke-WebRequest -Method 'POST' `
 $resp.Content
 ```
 
-Odpowiedź na żądanie jest podobne do następujących dokumentów JSON:
+Odpowiedź na żądanie wygląda podobnie do tego dokumentu JSON:
 
 ```json
 {
@@ -280,13 +281,13 @@ Odpowiedź na żądanie jest podobne do następujących dokumentów JSON:
 }
 ```
 
-Zapisz `id` wartości, ponieważ jest używane do testowania i wyeksportuj model.
+Zapisz wartość `id`, ponieważ będzie używana do testowania i eksportowania modelu.
 
-Aby uzyskać więcej informacji, zobacz [TrainProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a8294).
+Aby uzyskać więcej informacji, zobacz temat [TrainProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a8294).
 
 ## <a name="test-the-model"></a>Testowanie modelu
 
-Poniższe przykłady pokazują, jak przeprowadzić test modelu. Zastąp `{projectId}` z Identyfikatorem projektu. Zastąp `{iterationId}` o identyfikatorze zwrócone w wyniku uczenia modelu. Zastąp `https://linktotestimage` ze ścieżką do obrazu testu.
+W poniższych przykładach pokazano sposób testowania modelu. Zastąp `{projectId}` identyfikatorem swojego projektu. Zastąp `{iterationId}` identyfikatorem zwróconym ze szkolenia modelu. Zastąp `https://linktotestimage` ścieżką do obrazu testowego.
 
 ```bash
 curl -X POST "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Training/projects/{projectId}/quicktest/url?iterationId={iterationId}" -H "Training-Key: $TRAININGKEY" -H "Content-Type: application/json" --data-ascii '{"url":"https://linktotestimage"}'
@@ -301,7 +302,7 @@ $resp = Invoke-WebRequest -Method 'POST' `
 $resp.Content
 ```
 
-Odpowiedź na żądanie jest podobne do następujących dokumentów JSON:
+Odpowiedź na żądanie wygląda podobnie do tego dokumentu JSON:
 
 ```json
 {
@@ -319,15 +320,15 @@ Odpowiedź na żądanie jest podobne do następujących dokumentów JSON:
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz [QuickTestImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a828d).
+Aby uzyskać więcej informacji, zobacz temat [QuickTestImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a828d).
 
 ## <a name="export-the-model"></a>Eksportowanie modelu
 
-Eksportowanie modelu jest procesem dwuetapowym. Najpierw należy określić format modelu i Utwórz żądanie adresu URL dla eksportowanego modelu.
+Eksportowanie modelu jest procesem dwuetapowym. Najpierw należy określić format modelu, a następnie wysłać żądanie z zapytaniem o adres URL eksportowanego modelu.
 
-### <a name="request-a-model-export"></a>Żądanie eksportu modelu
+### <a name="request-a-model-export"></a>Żądanie wyeksportowania modelu
 
-W poniższych przykładach pokazano sposób eksportowania `coreml` modelu. Zastąp `{projectId}` z Identyfikatorem projektu. Zastąp `{iterationId}` o identyfikatorze zwrócone w wyniku uczenia modelu.
+W poniższych przykładach pokazano sposób eksportowania modelu `coreml`. Zastąp `{projectId}` identyfikatorem swojego projektu. Zastąp `{iterationId}` identyfikatorem zwróconym ze szkolenia modelu.
 
 ```bash
 curl -X POST "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Training/projects/{projectId}/iterations/{iterationId}/export?platform=coreml" -H "Training-Key: $TRAININGKEY" -H "Content-Type: application/json" --data-ascii ''
@@ -341,7 +342,7 @@ $resp = Invoke-WebRequest -Method 'POST' `
 $resp.Content
 ```
 
-Odpowiedź na żądanie jest podobne do następujących dokumentów JSON:
+Odpowiedź na żądanie wygląda podobnie do tego dokumentu JSON:
 
 ```json
 {
@@ -352,11 +353,11 @@ Odpowiedź na żądanie jest podobne do następujących dokumentów JSON:
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz [ExportIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a829b).
+Aby uzyskać więcej informacji, zobacz temat [ExportIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a829b).
 
-### <a name="download-the-exported-model"></a>Pobierz wyeksportowane modelu
+### <a name="download-the-exported-model"></a>Pobieranie wyeksportowanego modelu
 
-Poniższe przykłady pokazują, jak można pobrać adresu URL wyeksportowanego modelu. Zastąp `{projectId}` z Identyfikatorem projektu. Zastąp `{iterationId}` o identyfikatorze zwrócone w wyniku uczenia modelu.
+W poniższych przykładach pokazano sposób uzyskania adresu URL wyeksportowanego modelu. Zastąp `{projectId}` identyfikatorem swojego projektu. Zastąp `{iterationId}` identyfikatorem zwróconym ze szkolenia modelu.
 
 ```bash
 curl -X GET "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Training/projects/{projectId}/iterations/{iterationId}/export" -H "Training-Key: $TRAININGKEY" -H "Content-Type: application/json" --data-ascii ''
@@ -370,7 +371,7 @@ $resp = Invoke-WebRequest -Method 'GET' `
 $resp.Content
 ```
 
-Odpowiedź na żądanie jest podobne do następujących dokumentów JSON:
+Odpowiedź na żądanie wygląda podobnie do tego dokumentu JSON:
 
 ```json
 [
@@ -383,4 +384,4 @@ Odpowiedź na żądanie jest podobne do następujących dokumentów JSON:
 ]
 ```
 
-Aby uzyskać więcej informacji, zobacz [GetExports](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a829a).
+Aby uzyskać więcej informacji, zobacz temat [GetExports](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a829a).

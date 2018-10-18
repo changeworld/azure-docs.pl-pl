@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/03/2018
+ms.date: 10/16/2018
 ms.author: magoedte
-ms.openlocfilehash: 0e23f5ac8dcce940389f62097fef7de36abe2387
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 33d16e211667edc6c082ab8c101e69ee5875efb8
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269212"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390248"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms"></a>Jak dołączyć platformy Azure, monitorując dla maszyn wirtualnych 
 W tym artykule opisano sposób konfigurowania usługi Azure Monitor dla maszyn wirtualnych w celu monitorowania kondycji systemu operacyjnego w maszynach wirtualnych platformy Azure oraz wykrywanie i mapowanie zależności aplikacji, które może być hostowana na nich.  
@@ -43,6 +43,10 @@ Obszar roboczy usługi Log Analytics w następujących regionach jest obecnie ob
   - Azja południowo-wschodnia<sup>1</sup>  
 
 <sup>1</sup> ten region nie obsługuje obecnie funkcję kondycji monitora platformy Azure dla maszyn wirtualnych   
+
+>[!NOTE]
+>Maszyny wirtualne platformy Azure może być uruchomiona z dowolnego regionu i nie są ograniczone do określonych regionów obsługiwanych dla obszaru roboczego usługi Log Analytics.
+>
 
 Jeśli nie masz obszaru roboczego, możesz utworzyć ją przy użyciu [wiersza polecenia platformy Azure](../log-analytics/log-analytics-quick-create-workspace-cli.md)za pośrednictwem [PowerShell](../log-analytics/log-analytics-quick-create-workspace-posh.md)w [witryny Azure portal](../log-analytics/log-analytics-quick-create-workspace.md), lub za pomocą [usługi Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md).  Jeśli włączasz monitorowania dla pojedynczej maszyny Wirtualnej platformy Azure w witrynie Azure portal, masz możliwość utworzenia obszaru roboczego w trakcie tego procesu.  
 

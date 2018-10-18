@@ -3,19 +3,19 @@ title: 'Szybki start: analizowanie obrazu lokalnego — REST, cURL — przetwarz
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start przeprowadzisz analizę obrazu lokalnego za pomocą interfejsu API przetwarzania obrazów i biblioteki cURL.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
-ms.author: v-deken
-ms.openlocfilehash: 1952d0045550362a242ce1c105c58bd65c815ea6
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: c7c3cf2bae66e1739c4a62e1ce823542d0dfce36
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631246"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339920"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-curl-in-computer-vision"></a>Szybki start: analizowanie obrazu lokalnego przy użyciu interfejsu API REST i biblioteki cURL podczas przetwarzania obrazów
 
@@ -30,14 +30,14 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="create-and-run-the-sample-command"></a>Tworzenie i uruchamianie przykładowego polecenia
 
-Aby utworzyć i uruchomić próbkę, wykonaj następujące kroki:
+Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 
 1. Skopiuj następujące polecenie do edytora tekstów.
 1. W razie potrzeby wprowadź w poleceniu następujące zmiany:
     1. Zastąp wartość `<subscriptionKey>` kluczem subskrypcji.
     1. W razie potrzeby zastąp adres URL żądania (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze`) adresem URL punktu końcowego dla metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) z regionu platformy Azure, z którego uzyskano klucze subskrypcji.
     1. Zastąp wartość `<localImage>` pełną ścieżką i nazwą obrazu, który ma być analizowany. Na przykład `@C:/Pictures/ImageToAnalyze.jpg`.
-    1. Opcjonalnie możesz zmienić parametr języka w adresie URL żądania (`language=en`), aby używać innego obsługiwanego języka.
+    1. Opcjonalnie, zmień parametr języka w adresie URL żądania (`language=en`), aby używać innego obsługiwanego języka.
 1. Otwórz okno wiersza polecenia.
 1. Wklej polecenie z edytora tekstów w oknie wiersza polecenia, a następnie uruchom polecenie.
 
@@ -111,7 +111,7 @@ Jeśli nie będziesz już używać okna wiersza polecenia i edytora tekstów, za
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z interfejsami API przetwarzania obrazów używanymi do analizy obrazu, wykrywania celebrytów i charakterystycznych elementów krajobrazu, tworzenia miniatur oraz wyodrębniania tekstu drukowanego i odręcznego. Aby szybko zacząć eksperymentować z interfejsem API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Zapoznaj się z interfejsem API przetwarzania obrazów używanym do analizy obrazu, wykrywania osobistości i charakterystycznych elementów krajobrazu, tworzenia miniatur oraz wyodrębniania tekstu drukowanego i odręcznego. Aby szybko zacząć eksperymentować z interfejsem API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
 > [Zobacz, jak działa interfejs API przetwarzania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

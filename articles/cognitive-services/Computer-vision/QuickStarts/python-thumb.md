@@ -3,19 +3,19 @@ title: 'Szybki start: generowanie miniatury — REST, Python — przetwarzanie o
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start wygenerujesz miniaturę obrazu za pomocą interfejsu API przetwarzania obrazów przy użyciu języka Python.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: c5809b3dd62d87e2a1f3bde762d17bef6d5732ae
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: b98c78e0845d6390fee66dd6518acd7b8eb91f37
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632929"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342266"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-python-in-computer-vision"></a>Szybki start: generowanie miniatury w funkcji przetwarzania obrazów przy użyciu interfejsu API REST i języka Python
 
@@ -47,7 +47,7 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
     1. Opcjonalnie zastąp wartość `image_url` adresem URL innego obrazu, dla którego chcesz wygenerować miniaturę.
 1. Zapisz kod jako plik z rozszerzeniem `.py`. Na przykład `get-thumbnail.py`.
 1. Otwórz okno wiersza polecenia.
-1. W tym oknie użyj polecenia `python`, aby uruchomić przykładowy kod. Na przykład `python get-thumbnail.py`.
+1. W wierszu polecenia użyj polecenia `python`, aby uruchomić próbkę. Na przykład `python get-thumbnail.py`.
 
 ```python
 import requests

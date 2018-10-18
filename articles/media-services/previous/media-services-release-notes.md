@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 860d28aa37f37ed24346e2fba635b9436684114c
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 531cdf9a69e0ecfa2d2d8ae02f8f88fd5f400479
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353786"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378945"
 ---
 # <a name="azure-media-services-release-notes"></a>Informacje o wersji usługi Azure Media Services
 Te informacje o wersji dla usługi Azure Media Services podsumowują zmiany z poprzednich wersji i znane problemy.
@@ -44,6 +44,16 @@ Te informacje o wersji dla usługi Azure Media Services podsumowują zmiany z po
 
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>Historia wersji interfejsu API REST
 Aby uzyskać informacji o historii wersji interfejsu API REST usługi Media Services, zobacz [Dokumentacja usługi Azure Media Services — interfejs API REST].
+
+## <a name="october-2018"></a>Października 2018 r.
+
+### <a name="cmaf-support"></a>Obsługa CMAF
+
+CMAF i "cbcs" Obsługa szyfrowania HLS firmy Apple (system iOS 11 +) i MPEG-DASH graczy, które obsługują CMAF.
+
+### <a name="web-vtt-thumbnail-sprites"></a>Obrazki miniatury VTT sieci Web
+
+Można teraz używać usługi Media Services do generowania miniatur obrazki VTT sieci Web, za pomocą naszych interfejsów API w wersji 2. Aby uzyskać więcej informacji, zobacz [generowanie miniatur sprite](generate-thumbnail-sprite.md).
 
 ## <a name="july-2018"></a>Lipiec 2018 r.
 

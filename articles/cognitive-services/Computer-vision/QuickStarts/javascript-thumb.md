@@ -3,19 +3,19 @@ title: 'Szybki start: generowanie miniatur — REST, JavaScript — przetwarzani
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start wygenerujesz miniaturę obrazu za pomocą interfejsu API przetwarzania obrazów przy użyciu języka JavaScript.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: ef0cdad796623b4453f71e8b593ba4304a41ee0f
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: e221e2f65182092123ba3a61cf8d8844d9b6ee96
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45629459"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343082"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-javascript-in-computer-vision"></a>Szybki start: generowanie miniatury przy użyciu interfejsu API REST i języka JavaScript podczas przetwarzania obrazów
 
@@ -27,12 +27,12 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Aby uzyskać klucz subskrypcji, zobacz [Obtaining Subscription Keys (Uzyskiwanie kluczy subskrypcji)](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie próbki
+## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie przykładowego kodu
 
-Aby utworzyć i uruchomić próbkę, wykonaj następujące kroki:
+Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 
 1. Skopiuj następujący kod do edytora tekstów.
-1. W razie potrzeby wprowadź w kodzie następujące zmiany:
+1. W razie potrzeby wprowadź następujące zmiany w kodzie:
     1. Zastąp wartość `subscriptionKey` kluczem subskrypcji.
     1. W razie potrzeby zastąp wartość `uriBase` adresem URL punktu końcowego dla metody [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) z regionu platformy Azure, z którego uzyskano klucze subskrypcji.
     1. Opcjonalnie zastąp wartość `value` atrybutu dla kontrolki `inputImage` adresem URL innego obrazu, który chcesz analizować.

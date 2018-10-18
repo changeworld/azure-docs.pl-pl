@@ -31,6 +31,11 @@ items:
   expanded: true
 - name: Rozwiązywanie problemów
   href: ./troubleshoot/general.md
+- name: Dokumentacja
+  items:
+  - name: PowerShell (społeczność)
+    href: https://www.powershellgallery.com/packages/Manage-AzureRMBlueprint
+  expanded: true
 - name: Zasoby
   items:
   - name: Harmonogram działania dla platformy Azure
@@ -39,9 +44,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: UserVoice
     href: https://feedback.azure.com/forums/915958-azure-governance
-ms.openlocfilehash: 1648cc8034b0e1c9cb4a1d7864bd9d4c78c51ab3
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: bd28123bbf7c26fc8bc510936d8c3a71afc16d80
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054209"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378838"

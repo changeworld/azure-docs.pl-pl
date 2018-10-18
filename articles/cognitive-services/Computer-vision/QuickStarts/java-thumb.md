@@ -3,19 +3,19 @@ title: 'Szybki start: generowanie miniatur — REST, Java — przetwarzanie obra
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start wygenerujesz miniaturę obrazu za pomocą interfejsu API przetwarzania obrazów przy użyciu języka Java.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 8627a3b2e5f0a1e250401bdddc1870381979dca8
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.author: pafarley
+ms.openlocfilehash: a29fd161e788a0c10e5fcb5cd5cd735e1f2cf1b4
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225918"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343581"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-java-in-computer-vision"></a>Szybki start: generowanie miniatury przy użyciu interfejsu API REST i języka Java podczas przetwarzania obrazów
 
@@ -62,7 +62,7 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
    1. W razie potrzeby zastąp wartość `uriBase` adresem URL punktu końcowego dla metody [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) z regionu platformy Azure, z którego uzyskano klucze subskrypcji.
    1. Opcjonalnie zastąp wartość `imageToAnalyze` adresem URL innego obrazu, dla którego chcesz wygenerować miniaturę.
 1. Zapisz, a następnie skompiluj projekt języka Java.
-1. Jeśli używasz środowiska IDE, uruchom polecenie `Main`. W przeciwnym razie otwórz okno wiersza polecenia, a następnie użyj polecenia `java`, aby uruchomić skompilowaną klasę. Na przykład `java Main`.
+1. Jeśli używasz środowiska IDE, uruchom klasę `Main`. W przeciwnym razie otwórz okno wiersza polecenia, a następnie użyj polecenia `java`, aby uruchomić skompilowaną klasę. Na przykład `java Main`.
 
 ```java
 // This sample uses the following libraries:

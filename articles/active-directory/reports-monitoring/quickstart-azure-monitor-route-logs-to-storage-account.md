@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 07/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 08e4525e7dcf8edafc8819416b9d77e76fd78a65
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: cf69fdf87f1ce64bd78478f07e575d7ae75c16e0
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363432"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394251"
 ---
 # <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account-preview"></a>Samouczek: archiwizowanie dzienników usługi Azure AD na koncie usługi Azure Storage (wersja zapoznawcza)
 
@@ -77,4 +77,4 @@ Aby używać tej funkcji, potrzebujesz następujących elementów:
 
 * [Interpret audit logs schema in Azure Monitor (Interpretowanie schematu dzienników inspekcji w usłudze Azure Monitor)](reference-azure-monitor-audit-log-schema.md)
 * [Interpret sign-in logs schema in Azure Monitor (Interpretowanie schematu dzienników logowania w usłudze Azure Monitor)](reference-azure-monitor-sign-ins-log-schema.md)
-* [Często zadawane pytania i znane problemy](concept-activity-logs-in-azure-monitor.md#frequently-asked-questions)
+* [Często zadawane pytania i znane problemy](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

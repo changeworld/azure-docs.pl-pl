@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/14/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b2bb187e5ad55b466da0b9b06ffbb047ac539717
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 20a57a0d528fa6a291aa66f91ff6ddd71053f478
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105003"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297064"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Samouczek: przygotowywanie aplikacji na potrzeby usługi Azure Kubernetes Service (AKS)
 
@@ -35,7 +35,7 @@ W kolejnych samouczkach obraz kontenera zostanie przekazany do usługi Azure Con
 
 Ten samouczek zakłada, że masz podstawową wiedzę na temat najważniejszych pojęć dotyczących platformy Docker, takich jak kontenery, obrazy kontenerów i polecenia `docker`. Aby uzyskać podstawowe informacje na temat kontenerów, zapoznaj się z tematem [Get started with Docker (Rozpoczynanie pracy z platformą Docker)][docker-get-started].
 
-Do ukończenia tego samouczka konieczne będzie lokalne środowisko programistyczne platformy Docker. Środowisko Docker zawiera pakiety, które umożliwiają konfigurowanie platformy Docker w systemie [Mac][docker-for-mac], [Windows][docker-for-windows] lub [Linux][docker-for-linux].
+Do ukończenia tego samouczka konieczne będzie lokalne środowisko programistyczne platformy Docker z działającymi kontenerami systemu Linux. Środowisko Docker zawiera pakiety, które umożliwiają konfigurowanie platformy Docker w systemie [Mac][docker-for-mac], [Windows][docker-for-windows] lub [Linux][docker-for-linux].
 
 Usługa Azure Cloud Shell nie zawiera składników platformy Docker wymaganych do ukończenia każdego kroku w tych samouczkach. Dlatego zalecamy używanie pełnego środowiska programistycznego usługi Docker.
 

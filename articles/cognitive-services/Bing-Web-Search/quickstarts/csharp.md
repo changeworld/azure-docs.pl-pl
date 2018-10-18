@@ -1,19 +1,21 @@
 ---
-title: 'Szybki start: wywoływanie interfejsu API wyszukiwania w sieci Web Bing za pomocą języka C#'
+title: 'Szybki start: przeprowadzanie wyszukiwania za pomocą języka C# — interfejs API wyszukiwania w sieci Web Bing'
+titleSuffix: Azure Cognitive Services
 description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć swoje pierwsze wywołanie interfejsu API wyszukiwania w sieci Web Bing za pomocą języka C# i odebrać odpowiedź w formacie JSON.
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: erhopf
-ms.openlocfilehash: 9db551f89a3b7834119fe85a22e4cdc8d0402252
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 7f0555a9bb655109ff8786d3a0873d997d715477
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888512"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124766"
 ---
 # <a name="quickstart-use-c-to-call-the-bing-web-search-api"></a>Szybki start: wywoływanie interfejsu API wyszukiwania w sieci Web Bing za pomocą języka C#  
 

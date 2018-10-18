@@ -14,12 +14,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 339029f14c4fd9a0158f2b7a4fb80bf03bd83cf3
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: b0aa61c86b08a4fe2eddb5eb1fb5b33c4cb901a0
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42056668"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386591"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Jak używać usługi Notification Hubs za pomocą języka Python
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -261,7 +261,7 @@ Teraz za pomocą tej klasy, Wyślij powiadomienie metod zapisu wewnątrz **Centr
 Te metody Wyślij żądanie HTTP POST do punktu końcowego /messages Twoje Centrum powiadomień z poprawną treści i nagłówki, aby wysłać powiadomienie.
 
 ### <a name="using-debug-property-to-enable-detailed-logging"></a>Aby włączyć szczegółowe rejestrowanie przy użyciu właściwości debugowania
-Włączenie właściwości debugowania podczas inicjowania Centrum powiadomień zapisuje się szczegółowe rejestrowanie informacji o żądaniu HTTP, a następnie zrzutu odpowiedzi, a także szczegółowe komunikat z powiadomieniem Wyślij wynik. [Właściwość Notification Hubs TestSend](https://docs.microsoft.com/en-us/previous-versions/azure/reference/dn495827(v=azure.100)) zwraca szczegółowe informacje na temat wyniku wysyłania powiadomienia. Można go używać — inicjowanie, używając następującego kodu:
+Włączenie właściwości debugowania podczas inicjowania Centrum powiadomień zapisuje się szczegółowe rejestrowanie informacji o żądaniu HTTP, a następnie zrzutu odpowiedzi, a także szczegółowe komunikat z powiadomieniem Wyślij wynik. [Właściwość Notification Hubs TestSend](https://docs.microsoft.com/previous-versions/azure/reference/dn495827(v=azure.100)) zwraca szczegółowe informacje na temat wyniku wysyłania powiadomienia. Można go używać — inicjowanie, używając następującego kodu:
 
     hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 

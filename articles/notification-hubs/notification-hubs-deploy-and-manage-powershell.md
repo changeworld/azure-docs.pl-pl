@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 5a134e14768e0576c501232b6aedb1f836bc05b1
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 8312841b5f8e4b9979de8abf32ce1009b4243f06
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42059265"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388172"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Wdrażanie usługi Notification Hubs i zarządzanie nią przy użyciu programu PowerShell
 ## <a name="overview"></a>Przegląd
@@ -146,7 +146,7 @@ else
 
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
-* [Zarządzanie usługą Service Bus przy użyciu programu PowerShell](../service-bus-messaging/service-bus-powershell-how-to-provision.md)
+* [Zarządzanie usługą Service Bus za pomocą programu PowerShell](../service-bus-messaging/service-bus-powershell-how-to-provision.md)
 * [Tworzenie kolejek, tematów i subskrypcji przy użyciu skryptu programu PowerShell usługi Service Bus](http://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
 * [Jak utworzyć Namespace magistrali usług i Centrum zdarzeń za pomocą skryptu programu PowerShell](http://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
 
@@ -158,7 +158,7 @@ Kilka gotowych skryptów są również dostępne do pobrania:
 [Oferty dla subskrybentów]: http://azure.microsoft.com/pricing/member-offers/
 [Bezpłatna wersja próbna]: http://azure.microsoft.com/pricing/free-trial/
 [Instalowanie i konfigurowanie programu Azure PowerShell]: /powershell/azureps-cmdlets-docs
-[interfejsu API .NET usługi Notification Hubs]: https://docs.microsoft.com/en-us/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
+[interfejsu API .NET usługi Notification Hubs]: https://docs.microsoft.com/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
 [Get-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbnamespace
 [New-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azuresbnamespace
 [Get-AzureSBAuthorizationRule]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbauthorizationrule

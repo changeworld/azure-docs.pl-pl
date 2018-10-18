@@ -64,6 +64,7 @@
 ##### [Dostosowywanie ustawień wstępnych usługi Media Encoder Standard](media-services-custom-mes-presets-with-dotnet.md)
 ##### [Generowanie miniatur przy użyciu usługi Media Encoder Standard za pomocą platformy .NET](media-services-dotnet-generate-thumbnail-with-mes.md)
 ##### [Przycinanie wideo za pomocą usługi Media Encoder Standard](media-services-crop-video.md)
+##### [Generowanie sprite’u miniatury](generate-thumbnail-sprite.md)
 #### Schematy usługi MES
 ##### [Schemat usługi Media Encoder Standard](media-services-mes-schema.md)
 ##### [Metadane wejściowe](media-services-input-metadata-schema.md)

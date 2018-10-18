@@ -105,6 +105,7 @@
 #### [Archiwizowanie dzienników aktywności na koncie usługi Azure Storage](reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 #### [Integrowanie dzienników aktywności z rozwiązaniem Splunk przy użyciu usługi Azure Monitor](reports-monitoring/tutorial-integrate-activity-logs-with-splunk.md)
 #### [Integrowanie dzienników aktywności z rozwiązaniem SumoLogic przy użyciu usługi Azure Monitor](reports-monitoring/howto-integrate-activity-logs-with-sumologic.md)
+#### [Integrowanie dzienników aktywności z usługą Log Analytics przy użyciu usługi Azure Monitor](reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 ### Dokumentacja
 #### [Przechowywanie](reports-monitoring/reference-reports-data-retention.md)

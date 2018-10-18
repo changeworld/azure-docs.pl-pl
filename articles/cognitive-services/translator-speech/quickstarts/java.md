@@ -10,16 +10,17 @@ ms.component: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ROBOTS: NOINDEX
-ms.openlocfilehash: dde7d3dc7c1a744da9a22c0e4c0a483a186aa327
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4147e164434109a90a2a044565a1fb0b2e1b48bf
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969465"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386506"
 ---
 # <a name="quickstart-translator-speech-api-with-java"></a>Szybki start: interfejs API tłumaczenia mowy w usłudze Translator — Java 
 <a name="HOLTop"></a>
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
 W tym artykule pokazano, jak używać interfejsu API tłumaczenia mowy w usłudze Translator do tłumaczenia wypowiedzi z pliku wav.
 
@@ -38,7 +39,7 @@ Potrzebne będą następujące pliki.
 - [javax-websocket-client-impl-9.4.11.v20180605.jar (lub nowszy)](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/javax-websocket-client-impl)
 - [jetty-client-9.4.11.v20180605.jar (lub nowszy)](https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-client)
 
-Plik wav o nazwie „speak.wav” musi znajdować się w tym samym folderze co plik wykonywalny, który skompilujesz przy użyciu poniższego kodu. Ten plik wav powinien być plikiem zapisanym w standardzie PCM, o 16-bitowej rozdzielczości, częstotliwości 16 kHz w formacie mono. Taki plik wav można uzyskać z tematu [Interfejs API zamiany tekstu na mowę](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
+Plik wav o nazwie „speak.wav” musi znajdować się w tym samym folderze co plik wykonywalny, który skompilujesz przy użyciu poniższego kodu. Ten plik wav powinien być plikiem zapisanym w standardzie PCM, o 16-bitowej rozdzielczości, częstotliwości 16 kHz w formacie mono. Taki plik wav można uzyskać z tematu [Interfejs API zamiany tekstu na mowę](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
 
 Musisz mieć również [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsem API tłumaczenia mowy w usłudze Microsoft Translator**. Będziesz potrzebować klucza płatnej subskrypcji dostępnego na [pulpicie nawigacyjnym platformy Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 

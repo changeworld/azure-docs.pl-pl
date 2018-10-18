@@ -3,19 +3,19 @@ title: 'Szybki start: analizowanie obrazu lokalnego — REST, Python — przetwa
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start przeprowadzisz analizę obrazu lokalnego za pomocą interfejsu API przetwarzania obrazów i języka Python.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 48a6602c9f3029cc008f3db7d4701499c14e7ce1
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: ff06a06fb22abba3b666828f0594e70e4db99f57
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633864"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342000"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-python-in-computer-vision"></a>Szybki start: analizowanie obrazu lokalnego przy użyciu interfejsu API REST i języka Python podczas przetwarzania obrazów
 
@@ -29,15 +29,15 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli chcesz uruchomić próbkę lokalnie, musisz mieć zainstalowany język [Python](https://www.python.org/downloads/).
+- Jeśli chcesz uruchomić przykładowy kod lokalnie, musisz mieć zainstalowany język [Python](https://www.python.org/downloads/).
 - Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Aby uzyskać klucz subskrypcji, zobacz [Obtaining Subscription Keys (Uzyskiwanie kluczy subskrypcji)](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie próbki
+## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie przykładowego kodu
 
-Aby utworzyć i uruchomić próbkę, wykonaj następujące kroki:
+Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 
 1. Skopiuj następujący kod do edytora tekstów.
-1. W razie potrzeby wprowadź w kodzie następujące zmiany:
+1. W razie potrzeby wprowadź następujące zmiany w kodzie:
     1. Zastąp wartość `subscription_key` kluczem subskrypcji.
     1. W razie potrzeby zastąp wartość `vision_base_url` adresem URL punktu końcowego dla zasobu przetwarzania obrazów z regionu platformy Azure, z którego uzyskano klucze subskrypcji.
     1. Opcjonalnie zastąp wartość `image_path` ścieżką i nazwą pliku innego obrazu, który chcesz analizować.

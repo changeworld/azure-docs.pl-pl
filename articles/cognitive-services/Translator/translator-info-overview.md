@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: overview
 ms.date: 05/10/2018
 ms.author: nolachar
-ms.openlocfilehash: 47ac3c81b85424a5cacab00863cd88fab9463fb9
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: c0004960b7a234d374ec0ae1bdc2f6576b197705
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124664"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385029"
 ---
 # <a name="what-is-translator-text-api"></a>Czym jest interfejs API tłumaczenia tekstu w usłudze Translator?
 
@@ -27,7 +27,7 @@ Interfejs API tłumaczenia tekstu w usłudze Translator to część [kolekcji in
 
 Microsoft Translator to oparta na chmurze usługa tłumaczenia maszynowego. Rdzeniem tej usługi są: interfejs API tłumaczenia tekstu w usłudze Translator oraz [interfejs API tłumaczenia mowy w usłudze Translator](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-translation), które współpracują z różnymi produktami i usługami firmy Microsoft, a także są używane przez tysiące firm na całym świecie w ich aplikacjach i przepływach pracy, co pozwala ich zawartości na dotarcie do odbiorców na całym świecie.
 
-Tłumaczenie mowy jest również dostępne za pośrednictwem [usługi Cognitive Services Speech w wersji zapoznawczej](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/), która łączy istniejący interfejs API tłumaczenia mowy w usłudze Translator, interfejs API rozpoznawania mowy Bing oraz usługę Custom Speech Service (w wersji zapoznawczej) w ujednoliconą i całkowicie dostosowywalną usługę.  
+Tłumaczenie mowy jest również dostępne za pośrednictwem [usługi Cognitive Services Speech w wersji zapoznawczej](https://docs.microsoft.com/azure/cognitive-services/speech-service/), która łączy istniejący interfejs API tłumaczenia mowy w usłudze Translator, interfejs API rozpoznawania mowy Bing oraz usługę Custom Speech Service (w wersji zapoznawczej) w ujednoliconą i całkowicie dostosowywalną usługę.  
 
 Dowiedz się więcej o [usłudze Microsoft Translator](https://www.microsoft.com/en-us/translator/home.aspx)
 

@@ -1,62 +1,62 @@
 ---
-title: 'Szybki Start: Wysyłania zapytań do wyszukiwania przy użyciu interfejsu API wyszukiwania obrazów Bing i języka Python'
-description: W tym przewodniku Szybki Start możesz wysyłać zapytania wyszukiwania interfejsu API wyszukiwania Bing w celu uzyskania listy obrazów przy użyciu języka Python.
+title: 'Szybki start: wykonywanie wyszukiwania obrazów w języku Python — interfejs API wyszukiwania obrazów Bing'
+description: Ten przewodnik Szybki start umożliwia utworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbieranie odpowiedzi w formacie JSON. Ta prosta aplikacja w języku Python wysyła zapytanie wyszukiwania do interfejsu API i wyświetla nieprzetworzone wyniki.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: 42b9af2d6c7223dc3f5d269dd2003f1c99d8c7da
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: MT
+ms.openlocfilehash: 44cc556e68234fb9957c01fa9f04861293e96e6a
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578331"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298170"
 ---
-# <a name="quickstart-send-search-queries-using-the-rest-api-and-python"></a>Szybki Start: Wysyłanie zapytania przy użyciu interfejsu API REST i Python
+# <a name="quickstart-send-search-queries-using-the-rest-api-and-python"></a>Szybki start: wysyłanie zapytań wyszukiwania przy użyciu interfejsu API REST i języka Python
 
-Ten przewodnik Szybki Start umożliwia utworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbierać odpowiedź w formacie JSON. Ta prosta aplikacja języka Python wysyła zapytanie wyszukiwania do interfejsu API i wyświetli nieprzetworzone wyniki.
+Ten przewodnik Szybki start umożliwia utworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbieranie odpowiedzi w formacie JSON. Ta prosta aplikacja w języku Python wysyła zapytanie wyszukiwania do interfejsu API i wyświetla nieprzetworzone wyniki.
 
-Podczas tej aplikacji został napisany w języku Python, interfejs API jest zgodny z większość języków programowania usługi sieci Web typu RESTful.
+Chociaż ta aplikacja jest napisana w języku Python, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
-W tym przykładzie można uruchomić jako notesu programu Jupyter na [MyBinder](https://mybinder.org) , klikając polecenie Uruchom integratora znaczków: 
+Ten przykład można uruchomić jako notes programu Jupyter w witrynie [MyBinder](https://mybinder.org). W tym celu należy kliknąć ikonę Launch Binder:
 
-[![Obiekt wiążący](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingImageSearchAPI.ipynb)
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingImageSearchAPI.ipynb)
 
 
-Ponadto kod źródłowy dla tego przykładu jest dostępna [w serwisie GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingImageSearchv7.py).
+Ponadto kod źródłowy tego przykładu jest dostępny [w usłudze GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingImageSearchv7.py).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-## <a name="running-the-quickstart"></a>Uruchamianie szybkiego startu
+## <a name="running-the-quickstart"></a>Korzystanie z przewodnika Szybki start
 
-Aby rozpocząć pracę, należy ustawić `subscription_key` kluczowi ważnej subskrypcji dla usługi interfejsu API Bing.
+Aby rozpocząć pracę, należy ustawić prawidłowy klucz subskrypcji dla usługi interfejsu API Bing w zmiennej `subscription_key`.
 
 ```python
 subscription_key = None
 assert subscription_key
 ```
 
-Następnie upewnij się, że `search_url` punktu końcowego jest poprawna. W tym tylko jeden punkt końcowy jest używany dla interfejsami API wyszukiwania Bing. Jeśli wystąpią błędy autoryzacji, należy dokładnie sprawdzić tę wartość na punkt końcowy wyszukiwania Bing w pulpicie nawigacyjnym platformy Azure.
+Następnie upewnij się, że wartość `search_url` punktu końcowego jest poprawna. Obecnie tylko jeden punkt końcowy jest używany dla interfejsów API wyszukiwania Bing. Jeśli wystąpią błędy autoryzacji, dokładnie sprawdź tę wartość, porównując ją z punktem końcowym wyszukiwania w usłudze Bing na pulpicie nawigacyjnym platformy Azure.
 
 
 ```python
 search_url = "https://api.cognitive.microsoft.com/bing/v7.0/images/search"
 ```
 
-Ustaw `search_term` do wyszukiwania obrazów Szczeniaki.
+Ustaw zmienną `search_term`, aby wyszukiwać obrazów szczeniaków.
 
 
 ```python
 search_term = "puppies"
 ```
 
-Z następującego bloku używa `requests` biblioteki w języku Python do wyróżnienia do interfejsów API wyszukiwania Bing i zwracają wyniki w postaci obiektu JSON. Sprawdź, czy przekazanie klucza interfejsu API za pośrednictwem `headers` słownik i wyszukaj termin za pośrednictwem `params` słownika. Aby wyświetlić pełną listę opcji, które mogą służyć do odfiltrowania wyników wyszukiwania, zobacz [interfejsu API REST](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) dokumentacji.
+Następujący blok wykorzystuje bibliotekę `requests` w języku Python do wywoływania interfejsów API wyszukiwania Bing i zwracania wyników w postaci obiektu JSON. Zobacz, jak przekazujemy klucz interfejsu API za pośrednictwem słownika `headers` i wyszukiwany termin za pośrednictwem słownika `params`. Aby wyświetlić pełną listę opcji, które mogą służyć do odfiltrowania wyników wyszukiwania, zobacz dokumentację [interfejsu API REST](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference).
 
 
 ```python
@@ -69,14 +69,14 @@ response.raise_for_status()
 search_results = response.json()
 ```
 
-`search_results` Obiekt zawiera rzeczywiste obrazów oraz rozbudowane metadane, takie jak powiązane elementy. Na przykład następujący wiersz kodu można wyodrębnić adresy URL miniatury dla pierwszych 16 wyników.
+Obiekt `search_results` zawiera rzeczywiste obrazy oraz rozbudowane metadane, takie jak powiązane elementy. Na przykład następujący wiersz kodu może wyodrębnić adresy URL miniatur z pierwszych 16 wyników.
 
 
 ```python
 thumbnail_urls = [img["thumbnailUrl"] for img in search_results["value"][:16]]
 ```
 
-Następnie użyj `PIL` biblioteki, aby pobrać obrazy miniatur i `matplotlib` biblioteki do renderowania je na siatce$ \times 4 4 USD.
+Następnie użyj biblioteki `PIL`, aby pobrać obrazy miniatur i biblioteki `matplotlib` do renderowania ich na siatce $4 \times 4$.
 
 
 ```python
@@ -98,7 +98,7 @@ plt.show()
 
 ## <a name="sample-json-response"></a>Przykładowa odpowiedź JSON
 
-Odpowiedzi z interfejsu API wyszukiwania obrazów Bing są zwracane w formacie JSON. Ta przykładowa odpowiedź została obcięta do Pokaż jeden wynik.
+Odpowiedzi z interfejsu API wyszukiwania obrazów Bing są zwracane w formacie JSON. Ta przykładowa odpowiedź została obcięta w celu pokazania pojedynczego wyniku.
 
 ```json
 {
@@ -144,15 +144,15 @@ Odpowiedzi z interfejsu API wyszukiwania obrazów Bing są zwracane w formacie J
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek dotyczący aplikacji jednostronicowej wyszukiwania obrazów Bing](../tutorial-bing-image-search-single-page-app.md)
+> [Samouczek dotyczący jednostronicowej aplikacji wyszukiwania obrazów Bing](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz także 
+## <a name="see-also"></a>Zobacz też
 
-* [Co to jest wyszukiwanie obrazów Bing?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Wypróbuj prezentację online dla interaktywne](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-* [Uzyskaj bezpłatne klucza dostępu usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Dokumentacja usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Czym jest funkcja wyszukiwania obrazów Bing?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Wypróbuj interaktywny pokaz online](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Pobieranie bezpłatnego klucza dostępu usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [Dokumentacja usług Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Dokumentacja interfejsu API wyszukiwania obrazów Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

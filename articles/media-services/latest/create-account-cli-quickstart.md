@@ -4,25 +4,22 @@ description: Wykonaj kroki tego przewodnika Szybki start, aby utworzyć konto us
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cflower
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/27/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: abed9fd8d466b582b534b365f4be4257f4986435
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: de54571308b737b9160a39ee4ba5d4b2d9f15775
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736006"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376537"
 ---
 # <a name="quickstart-create-an-azure-media-services-account"></a>Szybki start: tworzenie konta usługi Azure Media Services
-
-> [!NOTE]
-> Najnowsza wersja usługi Azure Media Services (2018-03-30) jest w wersji zapoznawczej. Ta wersja jest również nazywana wersją 3. 
 
 Niezależnie od tego, czy jesteś deweloperem, czy też twórcą zawartości multimedialnej, w celu przechowywania, szyfrowania, kodowania i przesyłania strumieniowego zawartości multimedialnej oraz zarządzania nią na platformie Azure musisz utworzyć konto usługi Media Services. Podczas tworzenia konta usługi Media Services musisz podać identyfikator zasobu konta usługi Azure Storage. Podane konto magazynu jest dołączane do konta usługi Media Services. Ten zasób konta magazynu musi znajdować się w tym samym regionie geograficznym co konto usługi Media Services.  
 
@@ -58,7 +55,7 @@ az group create -n <myresourcegroup> -l westus2
 
 Podczas tworzenia konta usługi Media Services musisz podać identyfikator zasobu konta usługi Azure Storage. Podane konto magazynu jest dołączane do konta usługi Media Services. 
 
-Musisz mieć jedno **główne** konto magazynu i możesz mieć dowolną liczbę **dodatkowych** kont magazynu skojarzonych z Twoim kontem usługi Media Services. Usługa Media Services obsługuje konta **ogólnego przeznaczenia, wersja 2** i **ogólnego przeznaczenia, wersja 1**. Konta usługi Blob Storage nie są dozwolone jako **główne**. Aby uzyskać więcej informacji dotyczących kont magazynu, zobacz temat [Azure Storage account overview (Omówienie konta usługi Azure Storage)](../../storage/common/storage-account-overview.md). 
+Musisz mieć jedno **główne** konto magazynu i możesz mieć dowolną liczbę **dodatkowych** kont magazynu skojarzonych z Twoim kontem usługi Media Services. Usługa Media Services obsługuje konta **ogólnego przeznaczenia, wersja 2** i **ogólnego przeznaczenia, wersja 1**. Konta usługi Blob Storage nie są dozwolone jako **główne**. Aby uzyskać więcej informacji dotyczących kont magazynu, zobacz temat [Azure Storage account overview](../../storage/common/storage-account-overview.md) (Omówienie konta usługi Azure Storage). 
 
 Poniższe polecenie tworzy konto usługi Storage, które ma być skojarzone z kontem usługi Media Services (głównym). W poniższym skrypcie zamień symbol zastępczy *storageaccountforams*. Wartość „nazwa_konta” musi mieć długość mniejszą niż 24.
 

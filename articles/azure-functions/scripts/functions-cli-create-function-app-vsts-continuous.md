@@ -9,16 +9,16 @@ ms.date: 07/03/2018
 ms.topic: sample
 ms.service: azure-functions
 ms.custom: mvc
-ms.openlocfilehash: fdc2f50be035c3fe4039c48c09436215d2f5bcc3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 680115f64b16059c415d295cf7c6a15301de5a3f
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956612"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166104"
 ---
 # <a name="create-a-function-app-and-deploy-function-code-from-azure-devops"></a>Tworzenie aplikacji funkcji i wdrażanie kodu funkcji z usługi Azure DevOps
 
-W tym temacie przedstawiono instrukcje tworzenia [bezserwerowej](https://azure.microsoft.com/overview/serverless-computing/) aplikacji funkcji korzystającej z [planu Zużycie](../functions-scale.md#consumption-plan) w usłudze Azure Functions. Aplikacja funkcji, będąca kontenerem dla funkcji, będzie wdrażana w sposób ciągły z repozytorium usługi Azure DevOps. 
+W tym temacie przedstawiono instrukcje tworzenia [bezserwerowej](https://azure.microsoft.com/solutions/serverless/) aplikacji funkcji korzystającej z [planu Zużycie](../functions-scale.md#consumption-plan) w usłudze Azure Functions. Aplikacja funkcji, będąca kontenerem dla funkcji, będzie wdrażana w sposób ciągły z repozytorium usługi Azure DevOps. 
 
 [!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
 

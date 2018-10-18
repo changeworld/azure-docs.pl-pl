@@ -1,19 +1,21 @@
 ---
-title: 'Szybki start: wywoływanie interfejsu API wyszukiwania w sieci Web Bing za pomocą języka PHP'
+title: 'Szybki start: przeprowadzanie wyszukiwania za pomocą języka PHP — interfejs API wyszukiwania w sieci Web Bing'
+titleSuffix: Azure Cognitive Services
 description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć swoje pierwsze wywołanie interfejsu API wyszukiwania w sieci Web Bing za pomocą języka PHP i odebrać odpowiedź w formacie JSON.
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: erhopf
-ms.openlocfilehash: ef5263ce65efccdab0fb461165e66156dd4fce52
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 821d6a1b7df43c3eaddff503f6666e72251deec0
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888433"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127906"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Szybki start: wywoływanie interfejsu API wyszukiwania w sieci Web Bing za pomocą języka PHP  
 

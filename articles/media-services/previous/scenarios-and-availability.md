@@ -4,21 +4,21 @@ description: Ten temat zawiera omówienie scenariuszy usługi Microsoft Azure Me
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 07/10/2017
-ms.author: juliako;anilmur
-ms.openlocfilehash: 8381cdfffd34ffa25d1b87be3a3aca3de69c2802
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.date: 10/15/2018
+ms.author: juliako
+ms.openlocfilehash: 0e9537f09049d5fe056819e6f8b9718cfc52f489
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809284"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352818"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scenariusze i dostępność funkcji usługi Media Services w centrach danych
 
@@ -158,7 +158,7 @@ Klienci usługi AMS mogą skalować punkty końcowe przesyłania strumieniowego,
     Aby uzyskać więcej informacji, zobacz temat [Skalowanie przetwarzania multimediów](media-services-portal-scale-media-processing.md).
 * Możliwe jest także skalowanie konta usługi Media Services przez dodanie do niego kont magazynu. Pojemność każdego konta magazynu jest ograniczona do 500 TB. Aby rozszerzyć pojemność magazynu poza ograniczenia domyślne, można dołączyć wiele kont magazynu do jednego konta usługi Media Services. Aby uzyskać więcej informacji, zobacz temat [Zarządzanie kontami magazynu](meda-services-managing-multiple-storage-accounts.md).
 
-##<a id="availability"></a>Dostępność funkcji usługi Media Services w centrach danych
+## <a id="availability"></a>Dostępność funkcji usługi Media Services w centrach danych
 
 Ta sekcja zawiera szczegółowe informacje o dostępności funkcji usługi Media Services w centrach danych.
 

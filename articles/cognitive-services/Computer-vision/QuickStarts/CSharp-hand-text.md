@@ -3,19 +3,19 @@ title: 'Szybki start: wyodrębnianie tekstu odręcznego — REST, C# — przetwa
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start wyodrębnisz z obrazu tekst odręczny przy użyciu interfejsu API przetwarzania obrazów i języka C#.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
-ms.author: v-deken
-ms.openlocfilehash: bf7eae1bc7d0b0db1eaa37b2ab84dc21ef9712b7
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: f63cebd7a4af5b2289470ef34a80c8680aa981fd
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45628579"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340345"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-c35-in-computer-vision"></a>Szybki start: wyodrębnianie tekstu odręcznego przy użyciu interfejsu API REST i języka C&#35 w przetwarzaniu obrazów
 
@@ -40,9 +40,9 @@ Aby utworzyć próbkę w programie Visual Studio, wykonaj następujące czynnoś
     1. W menu kliknij pozycję **Narzędzia**, a następnie **Menedżer pakietów NuGet** i **Zarządzaj pakietami NuGet rozwiązania**.
     1. Kliknij kartę **Przeglądaj**, a następnie w polu **Wyszukiwanie** wpisz ciąg „Newtonsoft.Json”.
     1. Gdy zostanie wyświetlona pozycja **Newtonsoft.Json**, wybierz ją, a następnie kliknij kolejno pole wyboru obok nazwy projektu i pozycję **Zainstaluj**.
-1. Zastąp kod w `Program.cs` poniższym kodem, a następnie w odpowiednich miejscach wprowadź następujące zmiany kodu:
+1. Zastąp kod w `Program.cs` poniższym kodem, a następnie w odpowiednich miejscach wprowadź następujące zmiany:
     1. Zastąp wartość `subscriptionKey` kluczem subskrypcji.
-    1. W razie potrzeby zastąp wartość `uriBase` adresem URL punktu końcowego dla metody [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) z regionu platformy Azure, z którego uzyskano klucze subskrypcji.
+    1. W razie potrzeby zastąp wartość `uriBase` adresem URL punktu końcowego dla metody [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) z regionu świadczenia usługi Azure, z którego uzyskano klucze subskrypcji.
 1. Uruchom program.
 1. Gdy pojawi się monit, wprowadź ścieżkę do obrazu lokalnego.
 

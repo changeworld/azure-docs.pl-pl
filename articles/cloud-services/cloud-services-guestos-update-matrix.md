@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/12/2018
+ms.date: 10/16/2018
 ms.author: raiye
-ms.openlocfilehash: 437fc63641ed6a28f34b4b7cb96dbdc0888c50f5
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 5a9f8e332aae72d6fb0ce2f697a41391a51c44b6
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321873"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376673"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Wersje systemów operacyjnych gościa platformy Azure i zgodności zestawów SDK
 Zapewnia zwalnia z aktualne informacje o najnowszych systemu operacyjnego gościa platformy Azure dla usług w chmurze. Te informacje pomagają planowanie ścieżki uaktualnienia przed wyłączeniem systemie operacyjnym gościa. Jeśli konfigurujesz role do użycia *automatyczne* aktualizacji systemu operacyjnego gościa, zgodnie z opisem w [ustawienia aktualizacji systemu operacyjnego gościa Azure][Azure Guest OS Update Settings], nie jest istotne, przeczytanie na tej stronie.
@@ -61,37 +61,15 @@ System operacyjny gościa może został wydany.
 ###### <a name="may-4-2018"></a>**4 maja 2018 r.**
 Kwietnia system operacyjny gościa został wydany.
 
-###### <a name="april-6-2018"></a>**6 kwietnia 2018 r.**
-System operacyjny gościa marca został wydany.
-
-###### <a name="march-19-2018"></a>**19 marca 2018 r.**
-System operacyjny gościa lutego został wydany.
-
-###### <a name="january-29-2018"></a>**29 stycznia 2018 r.**
-Systemu operacyjnego gościa stycznia została wydana 2 rodzin systemów operacyjnych (WA-GOŚCIA — systemu operacyjnego — 2.70_201801-01) & 3 (WA-GOŚCIA — systemu operacyjnego — 3.57_201801-01)
-
-###### <a name="january-4-2018"></a>**4 stycznia 2018 r.**
-Systemu operacyjnego gościa stycznia została wydana 4 rodzin systemów operacyjnych (WA-GOŚCIA — systemu operacyjnego — 4.50_201801-01) & 5 (WA-GOŚCIA — systemu operacyjnego — 5.15_201801-01) i zawiera poprawki zabezpieczeń ważne.  
-
-###### <a name="january-4-2018"></a>**4 stycznia 2018 r.**
-System operacyjny gościa grudnia został wydany.
-
-###### <a name="december-14-2017"></a>**14 grudnia 2017 r.**
-System operacyjny gościa listopada został wydany.
-
-###### <a name="november-8-2017"></a>**8 listopada 2017 r.**
-System operacyjny gościa października został wydany.
-
-
 
 ## <a name="releases"></a>Wydania
 ## <a name="family-5-releases"></a>Zwalnia Family 5
 **System Windows Server 2016**
 
-Zainstalowany program .NET framework: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
+Zainstalowane środowisko .NET framework: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1 i 4.6.2
 
 > [!NOTE]
-> Hasła protokołu RDP dla 5 rodziny systemów operacyjnych, musi być co najmniej 10 znaków.
+> Hasła protokołu RDP dla rodziny systemów operacyjnych 5 musi być co najmniej 10 znaków.
 >
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
@@ -102,18 +80,11 @@ Zainstalowany program .NET framework: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
 |~~WA-GOŚCIA-OS-5.20_201806-01~~ |3 lipca 2018 r. |12 września 2018 r. |
 |~~WA-GOŚCIA-OS-5.19_201805-01~~ |1 czerwca 2018 r. |3 sierpnia 2018 r. |
 |~~WA-GOŚCIA-OS-5.18_201804-01~~ |4 maja 2018 r. |3 lipca 2018 r. |
-|~~WA-GOŚCIA-OS-5.17_201803-01~~ |6 kwietnia 2018 r. |1 czerwca 2018 r.|
-|~~WA-GOŚCIA-OS-5.16_201802-01~~ |12 marca 2018 r. |4 maja 2018 r. |
-|~~WA-GUEST-OS-5.15_201801-01~~ |4 stycznia 2018 r. |6 kwietnia 2018 r. |
-|~~WA-GUEST-OS-5.14_201712-01~~ |4 stycznia 2018 r. |12 marca 2018 r. |
-|~~WA-GUEST-OS-5.13_201711-01~~ |14 grudnia 2017 r. |4 stycznia 2018 r.|
-|~~WA-GUEST-OS-5.12_201710-02~~ |8 listopada 2017 r. |4 stycznia 2018 r. |
-
 
 ## <a name="family-4-releases"></a>Zwalnia rodziny w wersji 4
 **Windows Server 2012 R2**
 
-Zainstalowany program .NET framework: 4.0 4.5, 4.5.1, 4.5.2
+Zainstalowane środowisko .NET framework: 4.0, 4.5, 4.5.1, 4.5.2
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |
@@ -123,18 +94,11 @@ Zainstalowany program .NET framework: 4.0 4.5, 4.5.1, 4.5.2
 |~~WA-GOŚCIA-OS-4.55_201806-01~~ |3 lipca 2018 r. |12 września 2018 r. |
 |~~WA-GOŚCIA-OS-4.54_201805-01~~ |1 czerwca 2018 r. |3 sierpnia 2018 r. |
 |~~WA-GOŚCIA-OS-4.53_201804-01~~ |4 maja 2018 r. |3 lipca 2018 r. |
-|~~WA-GOŚCIA-OS-4.52_201803-01~~ |6 kwietnia 2018 r. |1 czerwca 2018 r. |
-|~~WA-GOŚCIA-OS-4.51_201802-01~~ |12 marca 2018 r. |4 maja 2018 r. |
-|~~WA-GUEST-OS-4.50_201801-01~~ |4 stycznia 2018 r. |6 kwietnia 2018 r. |
-|~~WA-GUEST-OS-4.49_201712-01~~ |4 stycznia 2018 r. |12 marca 2018 r. |
-|~~WA-GUEST-OS-4.48_201711-01~~ |14 grudnia 2017 r. |4 stycznia 2018 r. |
-|~~WA-GUEST-OS-4.47_201710-02~~ |8 listopada 2017 r. |4 stycznia 2018 r. |
-
 
 ## <a name="family-3-releases"></a>Zwalnia rodziny 3
 **Windows Server 2012**
 
-Zainstalowany program .NET framework: 4.0 4.5, 4.5.1, 4.5.2
+Zainstalowane środowisko .NET framework: 4.0, 4.5, 4.5.1, 4.5.2
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |
@@ -144,18 +108,11 @@ Zainstalowany program .NET framework: 4.0 4.5, 4.5.1, 4.5.2
 |~~WA-GOŚCIA-OS-3.62_201806-01~~ |3 lipca 2018 r. |12 września 2018 r. |
 |~~WA-GOŚCIA-OS-3.61_201805-01~~ |1 czerwca 2018 r. |3 sierpnia 2018 r. |
 |~~WA-GOŚCIA-OS-3.60_201804-01~~ |4 maja 2018 r. |3 lipca 2018 r. |
-|~~WA-GOŚCIA-OS-3.59_201803-01~~ |6 kwietnia 2018 r. |1 czerwca 2018 r. |
-|~~WA-GOŚCIA-OS-3.58_201802-01~~ |19 marca 2018 r. |4 maja 2018 r. |
-|~~WA-GUEST-OS-3.57_201801-01~~ |29 stycznia 2018 r. |6 kwietnia 2018 r. |
-|~~WA-GUEST-OS-3.56_201712-01~~ |4 stycznia 2018 r. |19 marca 2018 r. |
-|~~WA-GUEST-OS-3.55_201711-01~~ |14 grudnia 2017 r. |29 stycznia 2018 r. |
-|~~WA-GUEST-OS-3.54_201710-02~~ |8 listopada 2017 r. |4 stycznia 2018 r. |
-
 
 ## <a name="family-2-releases"></a>Zwalnia rodziny 2
 **Windows Server 2008 R2 z dodatkiem SP1**
 
-Zainstalowany program .NET framework: 3.5, 4.0, 4.5, 4.5.1, 4.5.2
+Zainstalowane środowisko .NET framework: 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |
@@ -165,15 +122,6 @@ Zainstalowany program .NET framework: 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 |~~WA-GOŚCIA-OS-2.75_201806-01~~ |3 lipca 2018 r. |12 września 2018 r. |
 |~~WA-GOŚCIA-OS-2.74_201805-01~~ |1 czerwca 2018 r. |3 sierpnia 2018 r.|
 |~~WA-GOŚCIA-OS-2.73_201804-01~~ |4 maja 2018 r. |3 lipca 2018 r. |
-|~~WA-GOŚCIA-OS-2.72_201803-01~~ |6 kwietnia 2018 r. |1 czerwca 2018 r. |
-|~~WA-GOŚCIA-OS-2.71_201802-01~~ |12 marca 2018 r. |4 maja 2018 r. |
-|~~WA-GUEST-OS-2.70_201801-01~~ |29 stycznia 2018 r. |6 kwietnia 2018 r. |
-|~~WA-GUEST-OS-2.69_201712-01~~ |4 stycznia 2018 r. |12 marca 2018 r. |
-|~~WA-GUEST-OS-2.68_201711-01~~ |14 grudnia 2017 r. |29 stycznia 2018 r. |
-|~~WA-GUEST-OS-2.67_201710-02~~ |8 listopada 2017 r. |4 stycznia 2018 r. |
-|~~WA-GUEST-OS-2.66_201709-01~~ |6 października 2017 r. |14 grudnia 2017 r. |
-|~~WA-GUEST-OS-2.65_201708-01~~ |24 sierpnia 2017 r. |14 grudnia 2017 r. |
-
 
 ## <a name="msrc-patch-updates"></a>Centrum MSRC poprawek i aktualizacji
 Lista poprawek, które są dołączone do wydania systemu operacyjnego gościa w każdym miesiącu jest dostępna [tutaj][patches].
@@ -181,7 +129,7 @@ Lista poprawek, które są dołączone do wydania systemu operacyjnego gościa w
 ## <a name="sdk-support"></a>Obsługa zestawu SDK
 Mimo że [zasady wycofywania z zestawu Azure SDK] [ retire policy sdk] oznacza, że tylko wersje powyżej 2.2 są obsługiwane, określonej rodziny systemów operacyjnych gościa pozwalać pozwala korzystać z wcześniejszych wersji. Należy zawsze używać najnowszej obsługiwanym zestawem SDK.
 
-| Rodzina systemów operacyjnych gościa | Zestaw SDK zgodne wersje |
+| Rodzina systemów operacyjnych gościa | Zgodne wersje zestawu SDK |
 | --- | --- |
 | 5 |Wersja 2.9.5.1+ |
 | 4 |W wersji 2.1 + |
@@ -196,7 +144,7 @@ Okno między **wyłączone** daty i **wygaśnięcia** Data zawiera bufor do łat
 
 Gdy **wygaśnięcia** data przekazuje dowolnej usługi w chmurze nadal przy użyciu tego systemu operacyjnego gościa zostaną zatrzymane, usunięte bądź zmuszeni do uaktualnienia. Możesz dowiedzieć się więcej o zasadach wycofanie [tutaj][retirepolicy].
 
-## <a name="guest-os-family-version-explanation"></a>Wyjaśnienie wersji rodzina systemu operacyjnego gościa
+## <a name="guest-os-family-version-explanation"></a>Wyjaśnienie wersji rodzin systemów operacyjnych gościa
 Rodzin systemów operacyjnych gościa są oparte na wydane wersje systemu Microsoft Windows Server. System operacyjny gościa jest uruchamiana w usługach Azure Cloud Services na system operacyjny. Każdy system operacyjny gościa ma rodziny, wersji i wydania numer.
 
 * **Rodzina systemów operacyjnych gościa**  
@@ -227,7 +175,7 @@ Na dużym stopniem cennych informacji na temat ponownego uruchamiania i wskaźni
 
 Jeśli ręcznie zaktualizować system operacyjny gościa, zobacz [zasady wycofywania systemu operacyjnego gościa] [ retirepolicy] Aby uzyskać dodatkowe informacje.
 
-## <a name="guest-os-supportability-and-retirement-policy"></a>Wsparcie dla systemu operacyjnego gościa i zasady wycofywania
+## <a name="guest-os-supportability-and-retirement-policy"></a>Zasady wycofywania i możliwości obsługi systemu operacyjnego gościa
 Zasady wycofywania i możliwości obsługi systemu operacyjnego gościa zostało wyjaśnione [tutaj][retirepolicy].
 
 [cloud updates]: https://docs.microsoft.com/azure/cloud-services/cloud-services-update-azure-service

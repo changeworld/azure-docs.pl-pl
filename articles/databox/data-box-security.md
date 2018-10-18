@@ -2,25 +2,18 @@
 title: Microsoft Azure Data Box Disk — omówienie zabezpieczeń | Microsoft Docs
 description: W tym artykule opisano funkcje zabezpieczeń usługi Azure Data Box dotyczących urządzenia, usługi i danych, które znajdują się na urządzeniu Data Box
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: overview
-ms.custom: mvc
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 26f9cd589a754914a5c7b7ee700f9cefb1421d51
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0b4e7165f30364ba61b583cf5d2f55e8826b9cf3
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995003"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092129"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Zabezpieczenia i ochrona danych w usłudze Azure Data Box
 

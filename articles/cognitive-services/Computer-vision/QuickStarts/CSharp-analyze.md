@@ -3,19 +3,19 @@ title: 'Szybki start: analizowanie obrazu lokalnego — REST, C# — przetwarzan
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start przeprowadzisz analizę obrazu lokalnego za pomocą interfejsu API przetwarzania obrazów i języka C#.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
-ms.author: v-deken
-ms.openlocfilehash: 572d352b04debca0ab3afdea6d86a7383370050f
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 72b9663de0317620ca9760e3b1863ab60b37514a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634119"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343198"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-c35-in-computer-vision"></a>Szybki start: analizowanie obrazu lokalnego przy użyciu interfejsu API REST i języka C&#35 podczas przetwarzania obrazów
 
@@ -32,14 +32,14 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Aby utworzyć próbkę w programie Visual Studio, wykonaj następujące czynności:
 
-1. Utwórz nowe rozwiązanie programu Visual Studio w programie Visual Studio przy użyciu szablonu aplikacji konsoli na potrzeby środowiska Visual C#.
+1. Utwórz nowe rozwiązanie Visual Studio w programie Visual Studio przy użyciu szablonu aplikacji konsoli na potrzeby środowiska Visual C#.
 1. Zainstaluj pakiet NuGet Newtonsoft.Json.
     1. W menu kliknij pozycję **Narzędzia**, a następnie **Menedżer pakietów NuGet** i **Zarządzaj pakietami NuGet rozwiązania**.
     1. Kliknij kartę **Przeglądaj**, a następnie w polu **Wyszukiwanie** wpisz ciąg „Newtonsoft.Json”.
     1. Gdy zostanie wyświetlona pozycja **Newtonsoft.Json**, wybierz ją, a następnie kliknij kolejno pole wyboru obok nazwy projektu i pozycję **Zainstaluj**.
-1. Zastąp kod w `Program.cs` poniższym kodem, a następnie w odpowiednich miejscach wprowadź następujące zmiany kodu:
+1. Zastąp kod w `Program.cs` poniższym kodem, a następnie w odpowiednich miejscach wprowadź następujące zmiany:
     1. Zastąp wartość `subscriptionKey` kluczem subskrypcji.
-    1. W razie potrzeby zastąp wartość `uriBase` adresem URL punktu końcowego dla metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) z regionu platformy Azure, z którego uzyskano klucze subskrypcji.
+    1. W razie potrzeby zastąp wartość `uriBase` adresem URL punktu końcowego dla metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) w regionie świadczenia usługi Azure, z którego uzyskano klucze subskrypcji.
 1. Uruchom program.
 1. Gdy pojawi się monit, wprowadź ścieżkę do obrazu lokalnego.
 

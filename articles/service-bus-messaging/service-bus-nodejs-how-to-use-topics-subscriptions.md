@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 08/10/2018
+ms.date: 10/16/2018
 ms.author: spelluru
-ms.openlocfilehash: f13e46b310f4f9048b38ab50ce0241d1b2b3161b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 00ae254a9e9d40ec88802f2f46666aff72cb242a
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395699"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377654"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Sposób użycia usługi Service Bus tematów i subskrypcji przy użyciu środowiska Node.js
 
@@ -73,7 +73,7 @@ var azure = require('azure');
 ### <a name="set-up-a-service-bus-connection"></a>Konfigurowanie połączenia usługi Service Bus
 Moduł Azure odczytuje zmiennej środowiskowej `AZURE_SERVICEBUS_CONNECTION_STRING` parametrów połączenia, które zostały uzyskane w poprzednim kroku, "Uzyskiwanie poświadczeń". Jeśli nie ustawiono tej zmiennej środowiskowej, należy określić informacje o koncie podczas wywoływania `createServiceBusService`.
 
-Aby uzyskać przykład Ustawianie zmiennych środowiskowych dla usługi Azure Cloud Service, zobacz [Node.js usługi w chmurze z usługą Storage][Node.js Cloud Service with Storage].
+Aby uzyskać przykład Ustawianie zmiennych środowiskowych dla usługi Azure Cloud Service, zobacz [ustawić zmienne środowiskowe](../container-instances/container-instances-environment-variables.md#azure-cli-example).
 
 
 
@@ -127,7 +127,7 @@ function (returnObject, finalCallback, next)
 
 W tym wywołaniu zwrotnym, a po zakończeniu przetwarzania `returnObject` (odpowiedź z żądania do serwera), wywołanie zwrotne musisz wywołać następne (jeśli istnieje) kontynuować przetwarzanie innych filtrów lub wywołania `finalCallback` do końca wywołania usługi.
 
-Dwa filtry, które implementują logikę ponawiania prób, wchodzą w skład zestawu Azure SDK dla platformy Node.js: **ExponentialRetryPolicyFilter** i **LinearRetryPolicyFilter**. Tworzy następujące **ServiceBusService** obiektu, który używa **ExponentialRetryPolicyFilter**:
+Dwa filtry, które implementują logikę ponawiania prób, wchodzą w skład zestawu Azure SDK dla platformy Node.js: **ExponentialRetryPolicyFilter** i **LinearRetryPolicyFilter**. Poniższy kod tworzy **ServiceBusService** obiektu, który używa **ExponentialRetryPolicyFilter**:
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -242,7 +242,7 @@ Aby wysłać komunikat do tematu usługi Service Bus, aplikacja musi używać `s
 Komunikaty wysyłane do tematów usługi Service Bus są **BrokeredMessage** obiektów.
 **BrokeredMessage** obiekty mają zestaw właściwości standardowych (takich jak `Label` i `TimeToLive`), słownik, który jest używany do przechowywania niestandardowych właściwości specyficzne dla aplikacji oraz treść danych ciągu. Aplikacja możne ustawić treść komunikatu przez przekazanie wartości ciągu na `sendTopicMessage` i wszystkie wymagane właściwości standardowe są wypełniane przez wartości domyślne.
 
-Poniższy przykład pokazuje sposób wysyłania pięciu testowych komunikatów do `MyTopic`. `messagenumber` Wartości właściwości każdego komunikatu różni się w iteracji pętli (określa subskrypcje, które go otrzymają):
+Poniższy przykład pokazuje sposób wysyłania pięciu testowych komunikatów do `MyTopic`. `messagenumber` Wartości właściwości każdego komunikatu różni się w iteracji pętli (Ta właściwość określa subskrypcje, które go otrzymają):
 
 ```javascript
 var message = {
@@ -268,7 +268,7 @@ Tematy usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [w
 ## <a name="receive-messages-from-a-subscription"></a>Odbieranie komunikatów z subskrypcji
 Komunikaty są odbierane z subskrypcji przy użyciu `receiveSubscriptionMessage` metody **ServiceBusService** obiektu. Domyślnie komunikaty są usuwane z subskrypcji, ponieważ są odczytywane. Jednak można ustawić opcjonalny parametr `isPeekLock` do **true** do odczytu (peek) i blokowanie wiadomość bez usuwania go z subskrypcji.
 
-Domyślne zachowanie odczytywanie i usuwanie wiadomości jako część operacji odbierania jest najprostszym modelem i działa najlepiej w scenariuszach, w których aplikacja może tolerować nieprzetworzenie komunikatu w razie awarii. Aby zrozumieć zachowania, Rozważmy scenariusz, w którym konsument wystawia żądanie odbioru, a następnie ulega awarii przed jego przetworzeniem. Usługa Service Bus oznaczyła komunikat jako wykorzystany, następnie gdy aplikacja zostanie ponownie uruchomiona i ponownie rozpocznie korzystanie z komunikatów, jego ma utracony komunikat, który został wykorzystany przed awarią.
+Domyślne zachowanie odczytywanie i usuwanie wiadomości jako część operacji odbierania jest najprostszym modelem i działa najlepiej w scenariuszach, w których aplikacja może tolerować nieprzetworzenie komunikatu w przypadku awarii. Aby zrozumieć zachowania, Rozważmy scenariusz, w którym konsument wystawia żądanie odbioru, a następnie ulega awarii przed jego przetworzeniem. Usługa Service Bus oznaczyła komunikat jako wykorzystany, następnie gdy aplikacja zostanie ponownie uruchomiona i ponownie rozpocznie korzystanie z komunikatów, jego ma utracony komunikat, który został wykorzystany przed awarią.
 
 Jeśli `isPeekLock` parametr ma wartość **true**, odbieranie staje się operacją dwuetapową, co umożliwia obsługę aplikacji, które nie tolerują brakujących komunikatów. Gdy Usługa Service Bus odbiera żądanie, znajduje następny komunikat do korzystania, blokuje go, aby uniemożliwić innym klientom odebrania go i zwraca go do aplikacji.
 Po skopiowaniu aplikacji przetwarza komunikat (lub niezawodnie zapisze go w celu przyszłego przetwarzania), wykonuje drugi etap procesu odbierania przez wywołanie metody **deleteMessage** metody i przekazuje komunikat do usunięcia jako parametr. **DeleteMessage** metoda oznacza komunikat jako wykorzystany i usuwa go z subskrypcji.

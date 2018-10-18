@@ -4,20 +4,20 @@ description: Wykonaj kroki opisane w tym samouczku, aby przekazać plik, zakodow
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/30/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 0216a95a5209f5545b34e446904b3215950c6fbc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 404a40f8949add77153d3fbf53b5c68dfb866128
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638113"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377884"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-using-apis"></a>Przekazywanie, kodowanie i przesyłanie strumieniowe wideo za pomocą interfejsów API
 
@@ -69,8 +69,8 @@ W przykładzie są wykonywane następujące akcje:
 3. Tworzenie zasobu danych wejściowych oraz przekazanie do niego wybranego lokalnego pliku wideo. Zasób jest używany jako dane wejściowe zadania. 
 4. Przesyłanie zadania kodowania przy użyciu utworzonych danych wejściowych i wyjściowych.
 5. Sprawdzanie stanu zadania.
-6. Tworzenie obiektu StreamingLocator.
-7. Tworzenie adresów URL przesyłania strumieniowego.
+6. Utworzenie obiektu StreamingLocator.
+7. Utworzenie adresów URL przesyłania strumieniowego.
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>Rozpoczynanie korzystania z interfejsów API usługi Media Services przy użyciu zestawu .NET SDK
 

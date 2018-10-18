@@ -1,19 +1,21 @@
 ---
-title: 'Szybki start: wywoływanie interfejsu API wyszukiwania w sieci Web Bing za pomocą języka Python'
+title: 'Szybki start: przeprowadzanie wyszukiwania za pomocą języka Python — interfejs API wyszukiwania w sieci Web Bing'
+titleSuffix: Azure Cognitive Services
 description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć swoje pierwsze wywołanie interfejsu API wyszukiwania w sieci Web Bing za pomocą języka Python i odebrać odpowiedź w formacie JSON.
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: erhopf
-ms.openlocfilehash: cd53a323a07617284e82004a6b3feed57b6e15e2
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 22dc88d2b924587818f7767105872f01f2e43faf
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888611"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129152"
 ---
 # <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>Szybki start: wywoływanie interfejsu API wyszukiwania w sieci Web Bing za pomocą języka Python  
 

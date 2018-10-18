@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 07/02/2018
 ms.author: rogarana
-ms.openlocfilehash: d3f7978f9aac2ced688e483ccdbece2d4d6a9808
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dfd04aa0c8f314327afaefa67f1c63b1ff605e9b
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986289"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387212"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10-preview"></a>Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą zestawu SDK usługi Storage dla języka Java w wersji 10 (wersja zapoznawcza)
 
@@ -116,16 +116,16 @@ Najpierw należy utworzyć odwołania do obiektów używane w celu uzyskania dos
 
 1. Utwórz wystąpienie obiektu **StorageURL** wskazujące konto magazynu.
 
-    * Obiekt [StorageURL](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._storage_u_r_l?view=azure-java-preview) jest reprezentacją konta magazynu. Umożliwia wygenerowanie nowego potoku. 
+    * Obiekt [StorageURL](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._storage_u_r_l?view=azure-java-preview) jest reprezentacją konta magazynu. Umożliwia wygenerowanie nowego potoku. 
     * Potok to zbiór zasad, które są używane do manipulowania żądaniami i odpowiedziami za pomocą mechanizmów autoryzacji, rejestrowania i ponawiania. Aby uzyskać więcej informacji, zobacz [HTTP Pipeline (Potok HTTP)](https://github.com/Azure/azure-storage-java/wiki/Azure-Storage-Java-V10-Overview#url-types--http-pipeline).  
-    * Za pomocą potoku utwórz wystąpienie obiektu [ServiceURL](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._service_u_r_l?view=azure-java-preview).
-    * Za pomocą obiektu **ServiceURL** obiektów utwórz wystąpienie obiektu [ContainerURL](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l?view=azure-java-preview).
+    * Za pomocą potoku utwórz wystąpienie obiektu [ServiceURL](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._service_u_r_l?view=azure-java-preview).
+    * Za pomocą obiektu **ServiceURL** obiektów utwórz wystąpienie obiektu [ContainerURL](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._container_u_r_l?view=azure-java-preview).
     * Obiekt **ContainerURL** jest wymagany do wykonywania operacji na kontenerach obiektów blob.
 
 2. Utwórz wystąpienie obiektu **ContainerURL** reprezentujące kontener, do którego uzyskujesz dostęp. Kontenery porządkują obiekty blob w ten sam sposób, w jaki foldery na komputerze porządkują pliki.
 
     * Obiekt **ContainerURL** zapewnia punkt dostępu do usługi kontenera. 
-    * Możesz utworzyć wystąpienie obiektu [BlobURL](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._blob_u_r_l?view=azure-java-preview) za pomocą obiektu [ContainerURL](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l?view=azure-java-preview).
+    * Możesz utworzyć wystąpienie obiektu [BlobURL](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._blob_u_r_l?view=azure-java-preview) za pomocą obiektu [ContainerURL](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._container_u_r_l?view=azure-java-preview).
     * Obiekt **BlobURL** jest wymagany do tworzenia obiektów blob.
 
 3. Utwórz wystąpienie obiektu **BlobURL** wskazujące konkretny obiekt blob, który Cię interesuje. 
@@ -137,7 +137,7 @@ Najpierw należy utworzyć odwołania do obiektów używane w celu uzyskania dos
 
 W tej sekcji utworzysz wystąpienie obiektu **ContainerURL**. Razem z nim utworzysz nowy kontener. Kontener w przykładowej aplikacji ma nazwę **quickstart**. 
 
-W tym przykładzie użyto metody [ContainerURL.create](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l.create?view=azure-java-preview), aby tworzyć nowy kontener za każdym razem, gdy jest uruchamiana aplikacja przykładowa. Możesz również utworzyć kontener wcześniej, aby nie było konieczne tworzenie go w kodzie.
+W tym przykładzie użyto metody [ContainerURL.create](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._container_u_r_l.create?view=azure-java-preview), aby tworzyć nowy kontener za każdym razem, gdy jest uruchamiana aplikacja przykładowa. Możesz również utworzyć kontener wcześniej, aby nie było konieczne tworzenie go w kodzie.
 
 ```java
 // Create a ServiceURL to call the Blob service. We will also use this to construct the ContainerURL
@@ -168,9 +168,9 @@ Usługa Blob Storage obsługuje blokowe, uzupełnialne i stronicowe obiekty blob
 1. Aby przekazać plik do obiektu blob, pobierz odwołanie do obiektu blob w kontenerze docelowym. 
 2. Po pobraniu odwołania do obiektu blob możesz przekazać do niego plik, korzystając z dowolnego z następujących interfejsów API:
 
-    * Interfejsy API niskiego poziomu. To na przykład interfejs [BlockBlobURL.upload](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.upload?view=azure-java-preview), nazywany też PutBlob, czy [BlockBlobURL.stageBlock](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.stageblock?view=azure-java-preview#com_microsoft_azure_storage_blob__block_blob_u_r_l_stageBlock_String_Flowable_ByteBuffer__long_LeaseAccessConditions_), nazywany też PutBLock, w wystąpieniu obiektu **BlockBlobURL**. 
+    * Interfejsy API niskiego poziomu. To na przykład interfejs [BlockBlobURL.upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.upload?view=azure-java-preview), nazywany też PutBlob, czy [BlockBlobURL.stageBlock](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.stageblock?view=azure-java-preview#com_microsoft_azure_storage_blob__block_blob_u_r_l_stageBlock_String_Flowable_ByteBuffer__long_LeaseAccessConditions_), nazywany też PutBLock, w wystąpieniu obiektu **BlockBlobURL**. 
 
-    * Interfejsy API wysokiego poziomu w [klasie TransferManager](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._transfer_manager?view=azure-java-preview). Na przykład metoda [TransferManager.uploadFileToBlockBlob](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._transfer_manager.uploadfiletoblockblob?view=azure-java-preview). 
+    * Interfejsy API wysokiego poziomu w [klasie TransferManager](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._transfer_manager?view=azure-java-preview). Na przykład metoda [TransferManager.uploadFileToBlockBlob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._transfer_manager.uploadfiletoblockblob?view=azure-java-preview). 
 
     Ta operacja tworzy obiekt blob, jeśli jeszcze nie istnieje. Jeśli obiekt blob już istnieje, zostanie zastąpiony.
 
@@ -195,7 +195,7 @@ Blokowe obiekty blob mogą mieć formę dowolnego typu pliku tekstowego lub bina
 
 ### <a name="list-the-blobs-in-a-container"></a>Wyświetlanie listy obiektów blob w kontenerze
 
-Możesz uzyskać listę obiektów w kontenerze za pomocą polecenia [ContainerURL.listBlobsFlatSegment](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l.listblobsflatsegment?view=azure-java-preview). Ta metoda zwraca maksymalnie 5 000 obiektów, wraz ze znacznikiem kontynuacji (znacznikiem „dalej”), jeśli w kontenerze istnieje więcej obiektów do wyświetlenia. Możesz utworzyć funkcję pomocniczą, która wywołuje się wielokrotnie, dopóki w poprzedniej odpowiedzi **listBlobsFlatSegment** istnieje znacznik „dalej”.
+Możesz uzyskać listę obiektów w kontenerze za pomocą polecenia [ContainerURL.listBlobsFlatSegment](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._container_u_r_l.listblobsflatsegment?view=azure-java-preview). Ta metoda zwraca maksymalnie 5 000 obiektów, wraz ze znacznikiem kontynuacji (znacznikiem „dalej”), jeśli w kontenerze istnieje więcej obiektów do wyświetlenia. Możesz utworzyć funkcję pomocniczą, która wywołuje się wielokrotnie, dopóki w poprzedniej odpowiedzi **listBlobsFlatSegment** istnieje znacznik „dalej”.
 
 ```java
 static void listBlobs(ContainerURL containerURL) {
@@ -253,7 +253,7 @@ private static Single <ContainersListBlobFlatSegmentResponse> listAllBlobs(Conta
 
 ### <a name="download-blobs"></a>Pobieranie obiektów blob
 
-Pobierz obiekty blob na dysk lokalny, używając metody [BlobURL.download](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._blob_u_r_l.download?view=azure-java-preview).
+Pobierz obiekty blob na dysk lokalny, używając metody [BlobURL.download](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._blob_u_r_l.download?view=azure-java-preview).
 
 Poniższy kod pozwala pobrać obiekt blob przekazany w poprzedniej sekcji. Do nazwy obiektu blob jest dodawany sufiks **_DOWNLOADED**, co pozwala zobaczyć oba pliki na dysku lokalnym. 
 
@@ -278,7 +278,7 @@ static void getBlob(BlockBlobURL blobURL, File sourceFile) {
 
 ### <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie potrzebujesz już obiektów blob przekazanych podczas pracy z tym przewodnikiem Szybki start, możesz usunąć cały kontener za pomocą metody [ContainerURL.delete](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l.delete?view=azure-java-preview). Ta metoda spowoduje również usunięcie plików w kontenerze.
+Jeśli nie potrzebujesz już obiektów blob przekazanych podczas pracy z tym przewodnikiem Szybki start, możesz usunąć cały kontener za pomocą metody [ContainerURL.delete](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._container_u_r_l.delete?view=azure-java-preview). Ta metoda spowoduje również usunięcie plików w kontenerze.
 
 ```java
 containerURL.delete(null).blockingGet();
@@ -290,5 +290,5 @@ W tym przewodniku Szybki start przedstawiono metodę transferowania plików mię
 
 > [!div class="nextstepaction"]
 > [Kod źródłowy zestawu SDK usługi Storage w wersji 10 dla języka Java](https://github.com/Azure/azure-storage-java/tree/New-Storage-SDK-V10-Preview)
-> [Dokumentacja interfejsu API](https://docs.microsoft.com/en-us/java/api/overview/azure/storage/client?view=azure-java-preview)
+> [Dokumentacja interfejsu API](https://docs.microsoft.com/java/api/overview/azure/storage/client?view=azure-java-preview)
 > [Dowiedz się więcej o bibliotece RxJava](https://github.com/ReactiveX/RxJava)

@@ -3,19 +3,19 @@ title: 'Szybki start: wyodrębnianie tekstu odręcznego — REST, Java — przet
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start wyodrębnisz z obrazu tekst odręczny przy użyciu interfejsu API przetwarzania obrazów i języka Java.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: b69d36652838f5d5d6caa3ebb7a3287e234b32cf
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: d30d0e088338c4cddac97dc4b4d5d6199b549ffd
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45629447"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340413"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-java-in-computer-vision"></a>Szybki start: wyodrębnianie tekstu odręcznego przy użyciu interfejsu API REST i języka Java w przetwarzaniu obrazów
 
@@ -62,7 +62,7 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
    1. W razie potrzeby zastąp wartość `uriBase` adresem URL punktu końcowego dla metody [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) z regionu platformy Azure, z którego uzyskano klucze subskrypcji.
    1. Opcjonalnie zastąp wartość `imageToAnalyze` adresem URL innego obrazu, z którego chcesz wyodrębnić tekst odręczny.
 1. Zapisz, a następnie skompiluj projekt języka Java.
-1. Jeśli używasz środowiska IDE, uruchom polecenie `Main`. W przeciwnym razie otwórz okno wiersza polecenia, a następnie użyj polecenia `java`, aby uruchomić skompilowaną klasę. Na przykład `java Main`.
+1. Jeśli używasz środowiska IDE, uruchom klasę `Main`. W przeciwnym razie otwórz okno wiersza polecenia, a następnie użyj polecenia `java`, aby uruchomić skompilowaną klasę. Na przykład `java Main`.
 
 ```java
 public class Main {

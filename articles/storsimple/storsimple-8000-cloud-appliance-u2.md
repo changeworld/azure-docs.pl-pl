@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 77154d596eb9202c4f9d1063ba7f4e1ec4855181
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 33be58ae3ac5fcc8d0b35b240f9f378ccce134cc
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665009"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387688"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Wdrażanie urządzenia StorSimple w chmurze oraz zarządzanie nim na platformie Azure (aktualizacja Update 3 i nowsze)
 
@@ -265,7 +265,7 @@ Aby zatrzymać naliczanie wszystkich opłat, należy usunąć urządzenie w chmu
 ## <a name="troubleshoot-internet-connectivity-errors"></a>Rozwiązywanie problemów z błędami łączności internetowej
 Jeśli podczas tworzenia urządzenia w chmurze nie ma łączności z Internetem, krok związany z tworzeniem kończy się niepowodzeniem. Aby rozwiązać problemy w przypadku awarii wynikających z łączności z Internetem, wykonaj poniższe czynności w witrynie Azure Portal:
 
-1. [Utwórz maszynę wirtualną systemu Windows w witrynie Azure Portal](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal). Ta maszyna wirtualna powinna używać tego samego konta magazynu, sieci wirtualnej i podsieci, które są używane przez urządzenie w chmurze. Jeśli istnieje host systemu Windows Server na platformie Azure używający tego samego konta magazynu, sieci wirtualnej i podsieci, możesz również użyć go, aby rozwiązywać problemy z łącznością z Internetem.
+1. [Utwórz maszynę wirtualną systemu Windows w witrynie Azure Portal](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal). Ta maszyna wirtualna powinna używać tego samego konta magazynu, sieci wirtualnej i podsieci, które są używane przez urządzenie w chmurze. Jeśli istnieje host systemu Windows Server na platformie Azure używający tego samego konta magazynu, sieci wirtualnej i podsieci, możesz również użyć go, aby rozwiązywać problemy z łącznością z Internetem.
 2. Zdalnie zaloguj się do maszyny wirtualnej utworzonej w poprzednim kroku.
 3. Otwórz okno poleceń w ramach maszyny wirtualnej (naciśnij klawisze Win + R, a następnie wpisz polecenie `cmd`).
 4. W wierszu polecenia wpisz następujące polecenie.

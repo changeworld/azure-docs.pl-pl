@@ -1,53 +1,53 @@
 ---
-title: Funkcja na dużą skalę w powierzchni interfejsu API | Dokumentacja firmy Microsoft
-titleSuffix: Microsoft Cognitive Services
-description: Funkcja na dużą skalę w powierzchni interfejsu API z kognitywnych usług.
+title: 'Przykład: używanie funkcji na dużą skalę — interfejs API rozpoznawania twarzy'
+titleSuffix: Azure Cognitive Services
+description: Używanie funkcji na dużą skalę w interfejsie API rozpoznawania twarzy.
 services: cognitive-services
 author: SteveMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: article
+ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: f7b3ac57cf6b24c8a90b4ea59757d3a2cfafd781
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: e8bbf78da84ddb77ce956e37f91be46e96144991
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347192"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123083"
 ---
-# <a name="how-to-use-the-large-scale-feature"></a>Jak używać funkcji na dużą skalę
+# <a name="example-how-to-use-the-large-scale-feature"></a>Przykład: jak używać funkcji na dużą skalę
 
-Ten przewodnik jest zaawansowane artykuł na temat migracji kodu do skalowanie w górę od istniejących PersonGroup i FaceList LargePersonGroup i LargeFaceList odpowiednio.
-Ten przewodnik przedstawia proces migracji z założenia wiedzy podstawowe sposoby użycia PersonGroup i FaceList.
-Pobieranie znasz podstawowe operacje, można znaleźć innych samouczków, takich jak [sposób identyfikacji kroje w obrazach](HowtoIdentifyFacesinImage.md),
+Ten przewodnik to zaawansowany artykuł dotyczący migracji kodu w celu skalowania istniejących obiektów PersonGroup i FaceList odpowiednio do obiektów LargePersonGroup i LargeFaceList.
+Ten przewodnik przedstawia proces migracji przy założeniu, że użytkownik ma wiedzę na temat podstawowego użycia obiektów PersonGroup i FaceList.
+Aby zapoznać się z podstawowymi operacjami, zobacz inne samouczki, takie jak [Identyfikowanie twarzy na obrazach](HowtoIdentifyFacesinImage.md).
 
-Interfejs API krój Microsoft wydał ostatnio dwie funkcje na potrzeby scenariuszy na dużą skalę, LargePersonGroup i LargeFaceList zbiorczo określany jako operacji na dużą skalę.
-LargePersonGroup może zawierać maksymalnie 1 000 000 osób z maksymalnie 248 kroje, a LargeFaceList może zawierać maksymalnie do 1 000 000 powierzchni.
+Niedawno opublikowano dwie funkcje interfejsu API rozpoznawania twarzy, które umożliwiają korzystanie ze scenariuszy na dużą skalę, LargePersonGroup i LargeFaceList, zbiorczo określane jako operacje na dużą skalę.
+Obiekt LargePersonGroup może zawierać do 1 000 000 osób i maksymalnie 248 twarzy, a obiekt LargeFaceList może przechowywać maksymalnie 1 000 000 twarzy.
 
-Operacje na dużą skalę są podobne z konwencjonalnej PersonGroup i FaceList, ale ma kilka istotnych różnic z powodu nowej architektury.
-Ten przewodnik przedstawia proces migracji z założenia wiedzy podstawowe sposoby użycia PersonGroup i FaceList.
-Przykłady są zapisywane w języku C# za pomocą biblioteki klienta powierzchni interfejsu API.
+Operacje na dużą skalę są podobne do konwencjonalnych funkcji PersonGroup i FaceList, ale ze względu na nową architekturę występują pewne zauważalne różnice.
+Ten przewodnik przedstawia proces migracji przy założeniu, że użytkownik ma wiedzę na temat podstawowego użycia obiektów PersonGroup i FaceList.
+Przykłady są zapisywane w języku C# przy użyciu biblioteki klienta interfejsu API rozpoznawania twarzy.
 
-Umożliwia wykonywanie wyszukiwania krój identyfikacji i FindSimilar w dużej skali, należy wprowadzić operację Train wstępnie przetworzyć LargeFaceList i LargePersonGroup.
-Czas szkolenie może się różnić od sekund do około pół godziny w zależności od rzeczywistej pojemności.
-W okresie szkolenia jest nadal możliwe do wykonania identyfikacji i FindSimilar, jeśli pomyślnie szkolenia odbywa się przed.
-Jednak wadą jest to, że nowe dodane osób/kroje nie będą widoczne w wynik ukończenie nowych migracji post do szkolenia na dużą skalę.
+Aby umożliwić wydajne wyszukiwanie twarzy na potrzeby użycia funkcji Identification i FindSimilar w dużej skali, należy wprowadzić operację szkolenia w celu wstępnego przetwarzania obiektów LargeFaceList i LargePersonGroup.
+Czas szkolenia różni się od kilku sekund do około pół godziny w zależności od rzeczywistej pojemności.
+W okresie szkolenia można nadal przeprowadzać operacje Identification i FindSimilar, jeśli wcześniej odbyło się szkolenie zakończone powodzeniem.
+Jednak wadą jest to, że nowo dodane osoby/twarze nie będą pojawiać się w wyniku aż do zakończenia nowego szkolenia na dużą skalę po migracji.
 
-## <a name="concepts"></a> Pojęcia
+## <a name="concepts"></a>Pojęcia
 
-Jeśli nie masz doświadczenia w obsłudze następujące pojęcia w tym przewodniku, definicje znajdują się w [słownik](../Glossary.md):
+Jeśli nie znasz poniższych pojęć z tego przewodnika, możesz wyszukać ich definicje w [słowniku](../Glossary.md):
 
-- LargePersonGroup: Kolekcja osób o pojemności do 1 000 000.
-- LargeFaceList: Kolekcja kroje o pojemności do 1 000 000.
-- Pociągu: Wstępne proces zapewnienia identyfikacji/FindSimilar wydajności.
-- Identyfikacja: Zidentyfikować kroje co najmniej jeden z PersonGroup lub LargePersonGroup.
-- FindSimilar: Wyszukiwanie podobne krojów z FaceList lub LargeFaceList.
+- LargePersonGroup: kolekcja osób o pojemności do 1 000 000.
+- LargePersonGroup: kolekcja twarzy o pojemności do 1 000 000.
+- Szkolenie: przetwarzanie wstępne, które zapewnia wydajność operacji Identification/FindSimilar.
+- Identification: identyfikowanie co najmniej jednej twarzy w grupie PersonGroup lub LargePersonGroup.
+- FindSimilar: wyszukiwanie podobnych twarzy na liście FaceList lub LargeFaceList.
 
-## <a name="initialization"></a> Krok 1: Autoryzowanie wywołania interfejsu API
+## <a name="step-1-authorize-the-api-call"></a>Krok 1. Autoryzowanie wywołania interfejsu API
 
-W przypadku za pomocą biblioteki klienta interfejsu API krój, klucz subskrypcji i punktu końcowego subskrypcji są przekazywane w konstruktora klasy FaceServiceClient. Na przykład:
+Jeśli korzystasz z biblioteki klienta interfejsu API rozpoznawania twarzy, klucz subskrypcji i punkt końcowy subskrypcji są przekazywane w konstruktorze klasy FaceServiceClient. Na przykład:
 
 ```CSharp
 string SubscriptionKey = "<Subscription Key>";
@@ -56,40 +56,40 @@ string SubscriptionRegion = "https://westcentralus.api.cognitive.microsoft.com/f
 FaceServiceClient FaceServiceClient = new FaceServiceClient(SubscriptionKey, SubscriptionRegion);
 ```
 
-Klucz subskrypcji z odpowiedniego punktu końcowego można uzyskać ze strony użytkownika portalu Azure Marketplace.
-Zobacz [subskrypcje](https://azure.microsoft.com/services/cognitive-services/directory/vision/).
+Klucz subskrypcji z odpowiadającym mu punktem końcowym można uzyskać na stronie portalu Marketplace witryny Azure Portal.
+Zobacz [Subskrypcje](https://azure.microsoft.com/services/cognitive-services/directory/vision/).
 
-## <a name="migrate"></a> Krok 2: Migracja kodu w akcji
+## <a name="step-2-code-migration-in-action"></a>Krok 2. Przeprowadzanie migracji kodu
 
-W tej sekcji tylko koncentruje się na migrowanie wykonania PersonGroup/FaceList LargePersonGroup/LargeFaceList.
-Mimo że LargePersonGroup/LargeFaceList różni się od PersonGroup/FaceList w projektowania i implementacji wewnętrznego, interfejsy API są podobne dla zgodności wstecz.
+W tej sekcji skupiono się tylko na migrowaniu implementacji kolekcji PersonGroup/FaceList do kolekcji LargePersonGroup/LargeFaceList.
+Mimo że projekt i wewnętrzna implementacja kolekcji LargePersonGroup/LargeFaceList różnią się od kolekcji PersonGroup/FaceList, interfejsy API są podobne w celu zachowania zgodności ze starszymi wersjami.
 
-Migracja danych nie jest obsługiwana, należy zamiast tego utwórz ponownie LargePersonGroup/LargeFaceList.
+Migracja danych nie jest obsługiwana — musisz w zamian odtworzyć kolekcję LargePersonGroup/LargeFaceList.
 
-## <a name="largepersongroup"></a> Krok 2.1: Migrowanie PersonGroup do LargePersonGroup
+## <a name="step-21-migrate-persongroup-to-largepersongroup"></a>Krok 2.1. Migrowanie kolekcji PersonGroup do kolekcji LargePersonGroup
 
-Migracja z PersonGroup do LargePersonGroup jest smooth, ponieważ mają dokładnie te same operacje poziom grupowania.
+Migracja z grupy LargePersonGroup do grupy LargePersonGroup jest bezproblemowa, ponieważ mają one dokładnie te same operacje na poziomie grupy.
 
-PersonGroup/osoby związane z implementacją, jest tylko zmienić ścieżek interfejsu API lub moduł klasy zestawu SDK LargePersonGroup i LargePersonGroup osobie.
+W przypadku implementacji związanej z elementem PersonGroup/osoba trzeba tylko zmienić ścieżki interfejsu API lub moduł/klasę zestawu SDK na grupę LargePersonGroup i osobę w grupie LargePersonGroup.
 
-Pod względem migracji danych, zobacz [jak dodać skierowany](how-to-add-faces.md) odwołania.
+Aby dowiedzieć się więcej na temat migracji danych, zobacz [Jak dodawać twarze](how-to-add-faces.md).
 
-## <a name="largefacelist"></a> Krok 2.2: Migrowanie FaceList do LargeFaceList
+## <a name="step-22-migrate-facelist-to-largefacelist"></a>Krok 2.2. Migrowanie listy FaceList do listy LargeFaceList
 
-| Interfejsy API FaceList | Interfejsy API LargeFaceList |
+| Interfejsy API listy FaceList | Interfejsy API listy LargeFaceList |
 |:---:|:---:|
 | Przycisk Utwórz | Przycisk Utwórz |
 | Usuwanie | Usuwanie |
 | Get | Get |
 | List | List |
 | Aktualizacja | Aktualizacja |
-| - | Uczenie |
-| - | Pobierz stan szkolenia |
+| - | Szkolenie |
+| - | Pobieranie stanu szkolenia |
 
-Zgodnie z poprzednią tabelą znajduje się porównanie operacje poziom listy między FaceList i LargeFaceList.
-Jak to pokazano LargeFaceList jest dostarczany z nowych operacji pociągu i pobierania stanu szkolenia w porównaniu z FaceList.
-Pobieranie LargeFaceList uczony jest warunkiem wstępnym z [FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) operacji w chwili, gdy jest nie Train wymagane dla FaceList.
-Poniższy fragment kodu jest funkcją pomocnika oczekiwania szkolenia LargeFaceList.
+W powyższej tabeli znajduje się porównanie z operacji na poziomie listy dla kolekcji FaceList i LargeFaceList.
+Jak pokazano, do kolekcji LargeFaceList dołączono nowe operacje, szkolenie i pobieranie stanu szkolenia, których nie oferuje kolekcja FaceList.
+Przeszkolenie listy LargeFaceList jest warunkiem wstępnym operacji [FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237), a w przypadku listy FaceList szkolenie nie jest wymagane.
+Poniższy fragment kodu to funkcja pomocnika na potrzeby oczekiwania na szkolenie listy LargeFaceList.
 
 ```CSharp
 /// <summary>
@@ -139,7 +139,7 @@ private static async Task TrainLargeFaceList(
 }
 ```
 
-Wcześniej będą typowy sposób FaceList dodawania powierzchni i FindSimilar
+Wcześniej typowe użycie listy FaceList z dodawaniem twarzy i operacją FindSimilar było następujące:
 
 ```CSharp
 // Create a FaceList.
@@ -172,7 +172,7 @@ using (Stream stream = File.OpenRead(QueryImagePath))
 }
 ```
 
-Podczas migrowania go do LargeFaceList, powinien być
+Po migracji do listy LargeFaceList powinno zmienić się na następujące:
 
 ```CSharp
 // Create a LargeFaceList.
@@ -209,56 +209,57 @@ using (Stream stream = File.OpenRead(QueryImagePath))
 }
 ```
 
-Jak to pokazano powyżej, zarządzanie danymi i części FindSimilar są prawie takie same.
-Jedynym wyjątkiem jest to, że świeże przetwarzania wstępnego operacji pociągu należy wykonać w LargeFaceList przed FindSimilar działa.
+Jak pokazano powyżej, zarządzanie danymi i część FindSimilar są prawie takie same.
+Jedynym wyjątkiem jest to, że nową operację przetwarzania wstępnego Szkolenie należy ukończyć w kolekcji LargeFaceList, aby funkcja FindSimilar mogła działać.
 
-## <a name="train"></a>Krok 3: Sugestie Train
+## <a name="step-3-train-suggestions"></a>Krok 3. Sugestie dotyczące szkolenia
 
-Mimo że operacji Train przyspiesza [FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) i [identyfikacji](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239), czasu szkoleń wystąpi, zwłaszcza gdy pochodzi na dużą skalę.
-W poniższej tabeli znajduje się czas szacowany szkolenia w różnej skali:
+Mimo że operacja szkolenia przyspiesza działanie funkcji [FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) i [Identification](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239), czas szkolenia wydłuża się, szczególnie w przypadku pracy na dużą skalę.
+Szacowany czas szkolenia w różnych skalach został przedstawiony w poniższej tabeli:
 
-| Skala (kroje lub osoby) | Szacowany czas szkolenia |
+| Skala (twarze lub osoby) | Szacowany czas szkolenia |
 |:---:|:---:|
-| 1000 | s 1 i 2 |
-| 10 000 | 5 – 10 s |
-| 100,000 | 1 – 2 minuty |
-| 1 000 000 | 10 – 30 min. |
+| 1000 | 1–2 s |
+| 10 000 | 5–10 s |
+| 100 000 | 1–2 min |
+| 1 000 000 | 10–30 min |
 
-Na lepsze wykorzystanie funkcji na dużą skalę, zaleca się wziąć pod uwagę kilka strategii.
+Aby lepiej wykorzystywać funkcje na dużą skalę, warto wziąć pod uwagę niektóre strategie.
 
-## <a name="interval"></a>Krok 3.1: Interwał czasu dostosować
+## <a name="step-31-customize-time-interval"></a>Krok 3.1. Dostosowywanie interwału czasu
 
-Jak to pokazano w `TrainLargeFaceList()`, istnieje `timeIntervalInMilliseconds` opóźnienia proces sprawdzania stanu nieskończone szkolenia.
-Dla LargeFaceList z powierzchni więcej przy użyciu większy interwał zmniejsza liczba wywołań i kosztów.
-Przedział czasu, należy dostosować zgodnie z oczekiwanym pojemność LargeFaceList.
+Jak pokazano, obiekt `TrainLargeFaceList()` zawiera element `timeIntervalInMilliseconds` umożliwiający nieskończone opóźnianie procesu sprawdzania stanu szkolenia.
+W przypadku listy LargeFaceList z większą liczbą twarzy użycie dłuższego interwału zmniejsza liczby wywołań i koszt.
+Interwał czasu należy dostosować zgodnie z oczekiwaną pojemnością obiektu LargeFaceList.
 
-Tej samej strategii dotyczą również LargePersonGroup.
-Na przykład podczas uczenia LargePersonGroup 1 000 000 osób `timeIntervalInMilliseconds` może być 60 000 () 1-minutowych interwałach).
+Ta sama strategia dotyczy także grupy LargePersonGroup.
+Na przykład w przypadku szkolenia grupy LargePersonGroup składającej się z 1 000 000 osób wartość elementu `timeIntervalInMilliseconds` może wynosić 60 000 (będzie zwana również interwałem 1-minutowym).
 
-## <a name="buffer"></a>Krok 3.2 buforu na małą skalę
+## <a name="step-32-small-scale-buffer"></a>Krok 3.2. Bufor na małą skalę
 
-Osoby/kroje w LargePersonGroup/LargeFaceList są wyszukiwanie tylko po zakończenia uczenia.
-W przypadku dynamicznych osób/powierzchnie są stale dodawane i muszą być natychmiast wyszukiwanie jeszcze szkolenie może trwać dłużej niż wymagany.
-Aby uniknąć tego problemu, można użyć bardzo niewielkie LargePersonGroup/LargeFaceList jako bufor tylko dla nowo dodanych wpisów.
-Bufor przyjmuje krótszy czas do uczenia z powodu znacznie mniejszy rozmiar i natychmiastowe wyszukiwania w tym buforu tymczasowego powinny działać.
-Użyj tego buforu w połączeniu z szkoleń w głównym LargePersonGroup/LargeFaceList, wykonując wzorca szkolenia w bardziej rozrzedzonych odstępach czasu, na przykład w nocy pośredniej i codziennie.
+Osoby/twarze można wyszukiwać w kolekcjach LargePersonGroup/LargeFaceList tylko po ukończeniu ich szkolenia.
+W scenariuszu dynamicznym nowe osoby/twarze są stale dodawane i muszą być natychmiast możliwe do wyszukania, ale szkolenie może potrwać dłużej niż jest to wymagane.
+Aby rozwiązać ten problem, można użyć dodatkowej kolekcji LargePersonGroup/LargeFaceList w małej skali jako buforu tylko dla nowo dodanych wpisów.
+Czas szkolenia tego buforu jest krótszy, ponieważ jego rozmiar jest znacznie mniejszy, i natychmiastowe wyszukiwanie w tym buforze tymczasowym powinno działać.
+Tego buforu należy używać w połączeniu ze szkoleniem dotyczącym głównej kolekcji LargePersonGroup/LargeFaceList, przeprowadzając szkolenie główne w dłuższym interwale, na przykład w nocy, i codziennie.
 
 Przykładowy przepływ pracy:
-1. Tworzenie głównego LargePersonGroup/LargeFaceList (Kolekcja główna) i buforu LargePersonGroup/LargeFaceList (buforu kolekcji). Kolekcja bufor jest tylko w przypadku nowo dodanego osób/powierzchni.
-1. Dodaj nowe osób/kroje do wzorca kolekcji i kolekcji buforu.
-1. Tylko uczenia kolekcji buforu z interwałem krótki czas, aby upewnić się, działają nowo dodanych wpisów.
-1. Wywołaj identyfikacji/FindSimilar przed zarówno wzorca kolekcji i kolekcji buforu oraz scalenie wyniki.
-1. Rozmiar buforu kolekcji zwiększa próg lub w czasie bezczynności systemu, Utwórz nową kolekcję buforu, a wyzwolenia pociąg w głównym zbiorze.
-1. Usuń stare kolekcję bufor po zakończeniu szkolenia w głównym zbiorze.
+1. Utwórz główny obiekt LargePersonGroup/LargeFaceList (kolekcja główna) i bufor LargePersonGroup/LargeFaceList (kolekcja buforu). Kolekcja buforu jest przeznaczona tylko dla nowo dodanych osób/twarzy.
+1. Dodaj nowe osoby/twarze do kolekcji głównej i kolekcji buforu.
+1. Przeprowadź tylko szkolenie kolekcji buforu w krótkim przedziale czasu, aby zagwarantować działanie nowo dodanych wpisów.
+1. Wywołaj operacje Identification/FindSimilar względem kolekcji głównej i kolekcji buforu, a następnie scal wyniki.
+1. Gdy rozmiar kolekcji buforu zwiększy się do wartości progowej lub w czasie bezczynności systemu, utwórz nową kolekcję buforu i wyzwól szkolenie kolekcji głównej.
+1. Usuń starą kolekcję buforu po zakończeniu szkolenia kolekcji głównej.
 
-## <a name="standalone"></a>Krok 3.3 autonomiczny szkolenia
+## <a name="step-33-standalone-training"></a>Krok 3.3. Szkolenie autonomiczne
 
-Czy dopuszczalny jest stosunkowo długi czas oczekiwania, nie jest wymagane do wyzwalania operacji Train bezpośrednio po dodaniu nowych danych.
-Zamiast tego operację Train można podzielić na podstawie logiki główny i wyzwalane regularnie.
-Ta strategia jest odpowiedni dla scenariuszy dynamicznej z dopuszczalnym czasem oczekiwania i mogą być stosowane do statycznego scenariuszami, aby jeszcze bardziej ograniczyć częstotliwość Train.
+Jeśli stosunkowo długie opóźnienie jest dopuszczalne, nie trzeba wyzwalać operacji szkolenia od razu po dodaniu nowych danych.
+W zamian operację szkolenia można oddzielić od logiki głównej i wyzwalać ją regularnie.
+Ta strategia jest odpowiednia w przypadku scenariuszy dynamicznych z dopuszczalnym opóźnieniem. Można ją stosować do scenariuszy statycznych, aby jeszcze bardziej zmniejszyć częstotliwość szkolenia.
 
-Załóżmy, że istnieje `TrainLargePersonGroup` funkcję zbliżoną do `TrainLargeFaceList`.
-Typowa implementacja autonomicznej szkolenia w LargePersonGroup wywołując [ `Timer` ](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) klasy w `System.Timers` będzie:
+Załóżmy, że istnieje funkcja `TrainLargePersonGroup` podobna do obiektu `TrainLargeFaceList`.
+Typowa implementacja szkolenia autonomicznego dotyczącego kolekcji LargePersonGroup przez wywołanie klasy [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx)
+w obiekcie `System.Timers` byłaby następująca:
 
 ```CSharp
 private static void Main()
@@ -286,16 +287,16 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 }
 ```
 
-Więcej informacji na temat zarządzania danymi i powiązane identyfikacji implementacji, zobacz [jak dodać skierowany](how-to-add-faces.md) i [sposób identyfikowania skierowany w obrazie](HowtoIdentifyFacesinImage.md).
+Więcej informacji na temat zarządzania danymi i implementacji powiązanych z identyfikacją można znaleźć w tematach [Jak dodawać twarze](how-to-add-faces.md) i [How to Identify Faces in Image](HowtoIdentifyFacesinImage.md) (Jak identyfikować twarze na obrazie).
 
-## <a name="summary"></a> Podsumowanie
+## <a name="summary"></a>Podsumowanie
 
-W tym przewodniku zapoznaniu migrację istniejącego kodu PersonGroup/FaceList (a nie dane) do LargePersonGroup/LargeFaceList:
+W tym przewodniku pokazano, jak migrować istniejący kod kolekcji PersonGroup/FaceList (nie dane) do kolekcji LargePersonGroup/LargeFaceList:
 
-- LargePersonGroup i LargeFaceList działa podobnie do PersonGroup/FaceList, z wyjątkiem Train operacji jest wymagany przez LargeFaceList.
-- Strategii właściwej train należy wykonać w celu aktualizacji danych dynamicznych dla zestawu danych na dużą skalę.
+- Kolekcje LargePersonGroup i LargeFaceList działają podobnie do kolekcji PersonGroup/FaceList, ale dla listy LargeFaceList jest wymagana operacja szkolenia.
+- W przypadku zestawów danych na dużą skalę należy zastosować odpowiednią strategię szkolenia w celu aktualizacji danych dynamicznych.
 
-## <a name="related"></a> Tematy pokrewne
+## <a name="related-topics"></a>Tematy pokrewne
 
-- [Jak zidentyfikować skierowany w obrazie](HowtoIdentifyFacesinImage.md)
-- [Jak dodać powierzchni](how-to-add-faces.md)
+- [Identyfikowanie twarzy na obrazie](HowtoIdentifyFacesinImage.md)
+- [Jak dodawać twarze](how-to-add-faces.md)

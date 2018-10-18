@@ -1,21 +1,21 @@
 ---
-title: Przewodnik Szybki start dla języka Go dotyczący interfejsu API rozpoznawania twarzy | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: W tym przewodniku Szybki start omówiono wykrywanie twarzy na podstawie obrazu przy użyciu interfejsu API rozpoznawania twarzy i języka Go w usługach Cognitive Services.
+title: 'Szybki start: wykrywanie twarzy na obrazie — interfejs API rozpoznawania twarzy, język Go'
+titleSuffix: Azure Cognitive Services
+description: W tym przewodniku Szybki start omówiono wykrywanie twarzy na obrazie przy użyciu interfejsu API rozpoznawania twarzy z językiem Go.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
 ms.date: 06/25/2018
 ms.author: nolachar
-ms.openlocfilehash: e4d7f3f605b110f51488d9a7f483fc2832a149b9
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 0c8a70153ac9a54f3e46e5fb1a2ee3404a960dd3
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "43771240"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125429"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-go"></a>Szybki start: wykrywanie twarzy na obrazie przy użyciu języka Go
 

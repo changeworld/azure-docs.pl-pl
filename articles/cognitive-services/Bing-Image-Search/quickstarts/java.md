@@ -1,42 +1,42 @@
 ---
-title: 'Szybki Start: Wysyłanie zapytania przy użyciu interfejsu API wyszukiwania obrazów Bing i języka Java'
+title: 'Szybki start: przeprowadzanie wyszukiwania obrazów w języku Java — interfejs API wyszukiwania obrazów Bing'
 titleSuffix: Azure Cognitive Services
-description: Ten przewodnik Szybki Start umożliwia wyszukiwanie i znajdowanie obrazów w sieci web za pomocą API wyszukiwania w Internecie Bing.
+description: Ten przewodnik Szybki start umożliwia utworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbieranie odpowiedzi w formacie JSON. Ta prosta aplikacja w języku Java wysyła zapytanie wyszukiwania do interfejsu API i wyświetla nieprzetworzone wyniki.
 services: cognitive-services
 documentationcenter: ''
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: 519667af255e3c1b39d336e7a399ba215803daa5
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: MT
+ms.openlocfilehash: 5e002de273d50de9095c6e58b8e1a9fb9a05ed4f
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45577483"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295346"
 ---
-# <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-java"></a>Szybki Start: Wysyłanie zapytania przy użyciu interfejsu API REST wyszukiwania obrazów Bing i języka Java
+# <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-java"></a>Szybki start: wysyłanie zapytań wyszukiwania przy użyciu interfejsu API REST wyszukiwania obrazów Bing i języka Java
 
-Ten przewodnik Szybki Start umożliwia utworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbierać odpowiedź w formacie JSON. Ta prosta aplikacja Java wysyła zapytanie wyszukiwania do interfejsu API i wyświetli nieprzetworzone wyniki.
+Ten przewodnik Szybki start umożliwia tworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbieranie odpowiedzi w formacie JSON. Ta prosta aplikacja w języku Java wysyła zapytanie wyszukiwania do interfejsu API i wyświetla nieprzetworzone wyniki.
 
-Podczas tej aplikacji został napisany w języku Java, interfejs API jest zgodny z większość języków programowania usługi sieci Web typu RESTful.
+Chociaż ta aplikacja jest napisana w języku Java, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
-Kod źródłowy dla tego przykładu jest dostępny [w serwisie GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java) obsługi dodatkowych błędów i adnotacje kodu.
+Kod źródłowy dla tego przykładu jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java) wraz z dodatkową obsługą błędów i adnotacjami kodu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Kit(JDK) programowania Java 7 lub 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 
+* [Zestaw Java Development Kit (JDK) 7 lub 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
-* [Gson biblioteki](https://github.com/google/gson)
+* [Biblioteka Gson](https://github.com/google/gson)
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Tworzenie i inicjowanie projektu
 
-1. Utwórz nowy projekt języka Java w Twoim ulubionym środowiskiem IDE lub edytora, a następnie zaimportuj następujące biblioteki.
+1. Utwórz nowy projekt w języku Java w ulubionym środowisku IDE lub edytorze i zaimportuj poniższe biblioteki.
 
     ```java
     import java.net.*;
@@ -49,7 +49,7 @@ Kod źródłowy dla tego przykładu jest dostępny [w serwisie GitHub](https://g
     import com.google.gson.JsonParser;
     ```
 
-2. Utwórz zmienne dla punktu końcowego interfejsu API, klucz subskrypcji i szukanego terminu.
+2. Utwórz zmienne dla punktu końcowego interfejsu API, klucza subskrypcji i wyszukiwanego terminu.
 
     ```java
     static String subscriptionKey = "enter key here";
@@ -58,9 +58,9 @@ Kod źródłowy dla tego przykładu jest dostępny [w serwisie GitHub](https://g
     static String searchTerm = "tropical ocean";
     ```
 
-## <a name="construct-the-search-request-and-query"></a>Konstruowania żądania wyszukiwania i zapytań
+## <a name="construct-the-search-request-and-query"></a>Konstruowanie zapytania i żądania wyszukiwania
 
-1. Używać zmiennych w ostatnim kroku, aby sformatować adres URL żądania interfejsu API wyszukiwania. Należy pamiętać, że termin wyszukiwania musi być zakodowane w adresie URL przed są dołączane do żądania.
+1. Użyj zmiennych utworzonych w ostatnim kroku, aby sformatować adres URL wyszukiwania dla żądania interfejsu API. Należy pamiętać, że termin wyszukiwania musi zostać zakodowany w adresie URL przed dołączeniem go do żądania.
 
     ```java
     // construct the search request URL (in the form of endpoint + query string)
@@ -69,9 +69,9 @@ Kod źródłowy dla tego przykładu jest dostępny [w serwisie GitHub](https://g
     connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
     ```
 
-## <a name="receive-and-process-the-json-response"></a>Odbieranie i przetwarzanie odpowiedź w formacie JSON
+## <a name="receive-and-process-the-json-response"></a>Odbieranie i przetwarzanie odpowiedzi w formacie JSON
 
-1. Otrzymują odpowiedź JSON z interfejsu API wyszukiwania obrazów Bing i skonstruować obiekt wyniku.
+1. Odbierz odpowiedź JSON z interfejsu API wyszukiwania obrazów Bing i skonstruuj obiekt wyników.
 
     ```java
     // receive JSON body
@@ -80,7 +80,7 @@ Kod źródłowy dla tego przykładu jest dostępny [w serwisie GitHub](https://g
     // construct result object for return
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
     ```
-2. Oddziel nagłówków HTTP związane z usługi Bing z treść kodu JSON
+2. Oddziel nagłówki HTTP związane z usługą Bing od treści kodu JSON.
     ```java
     // extract Bing-related HTTP headers
     Map<String, List<String>> headers = connection.getHeaderFields();
@@ -92,24 +92,24 @@ Kod źródłowy dla tego przykładu jest dostępny [w serwisie GitHub](https://g
     }
     ```
 
-3. Zamknij strumień, a następnie przeanalizować odpowiedzi. Pobierz całkowitą liczbę zwrócone wyniki wyszukiwania i miniatury adres url do pierwszego wyniku obrazu. 
+3. Zamknij strumień i przeanalizuj odpowiedź. Pobierz łączną liczbę zwróconych wyników wyszukiwania i adres URL miniatury wyniku pierwszego obrazu.
 
     ```java
     stream.close();
     JsonParser parser = new JsonParser();
     JsonObject json = parser.parse(result.jsonResponse).getAsJsonObject();
-    //get the first image result from the JSON object, along with the total 
-    //number of images returned by the Bing Image Search API. 
+    //get the first image result from the JSON object, along with the total
+    //number of images returned by the Bing Image Search API.
     String total = json.get("totalEstimatedMatches").getAsString();
     JsonArray results = json.getAsJsonArray("value");
     JsonObject first_result = (JsonObject)results.get(0);
     String resultURL = first_result.get("thumbnailUrl").getAsString();
     ```
-4. Pamiętaj, aby usunąć swój klucz subskrypcji z kodu aplikacji.
+4. Pamiętaj, aby usunąć klucz subskrypcji z kodu aplikacji.
 
 ## <a name="json-response"></a>Odpowiedź w formacie JSON
 
-Odpowiedzi z interfejsu API wyszukiwania obrazów Bing są zwracane w formacie JSON. Ta przykładowa odpowiedź została obcięta do Pokaż jeden wynik.
+Odpowiedzi z interfejsu API wyszukiwania obrazów Bing są zwracane w formacie JSON. Ta przykładowa odpowiedź została obcięta w celu pokazania pojedynczego wyniku.
 
 ```json
 {
@@ -155,15 +155,15 @@ Odpowiedzi z interfejsu API wyszukiwania obrazów Bing są zwracane w formacie J
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek dotyczący aplikacji jednostronicowej wyszukiwania obrazów Bing](../tutorial-bing-image-search-single-page-app.md)
+> [Samouczek dotyczący jednostronicowej aplikacji wyszukiwania obrazów Bing](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz także 
+## <a name="see-also"></a>Zobacz też
 
-* [Co to jest wyszukiwanie obrazów Bing?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Wypróbuj prezentację online dla interaktywne](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-* [Uzyskaj bezpłatne klucza dostępu usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Dokumentacja usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Czym jest funkcja wyszukiwania obrazów Bing?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Wypróbuj interaktywny pokaz online](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Pobieranie bezpłatnego klucza dostępu usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [Dokumentacja usług Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Dokumentacja interfejsu API wyszukiwania obrazów Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

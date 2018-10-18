@@ -1,60 +1,61 @@
 ---
-title: Obiekt wykrywanie przy użyciu języka Java i niestandardowy interfejs API przetwarzania - usług Azure Cognitive Services | Dokumentacja firmy Microsoft
-description: Zapoznaj się z podstawowej aplikacji Windows, który używa niestandardowego interfejsu API przetwarzania w usługach Microsoft Cognitive Services. Utwórz projekt, dodać tagi, przekazywać obrazy, szkolenie projektu i przewiduje przy użyciu domyślnego punktu końcowego.
+title: 'Samouczek: tworzenie projektu wykrywania obiektów — interfejs API Custom Vision, Java'
+titlesuffix: Azure Cognitive Services
+description: Utwórz projekt, dodaj tagi, prześlij obrazy, wyszkol projekt i wykonaj przewidywanie przy użyciu domyślnego punktu końcowego.
 services: cognitive-services
 author: areddish
-manager: chbuehle
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: 333447c6390b269d0665a2d00009307105d58996
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: MT
+ms.openlocfilehash: 661242e4962a8218c48d7ea66d8a6f728b5154c8
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44305697"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365033"
 ---
-# <a name="use-custom-vision-api-to-build-an-object-detection-project-with-java"></a>Użyj interfejsu API usługi Custom Vision do utworzenia projektu wykrywania obiektów przy użyciu języka Java
+# <a name="tutorial-build-an-object-detection-project-with-java"></a>Samouczek: tworzenie projektu wykrywania obiektów w języku Java
 
-Poznaj podstawowe aplikacji Java, która używa interfejsu API przetwarzania obrazów w celu utworzenia projektu wykrywanie obiektów. Po jego utworzeniu można można dodać oznakowane regionów, przekazywać obrazy, szkolenie projektu, projektu domyślne prognozowania — adres URL punktu końcowego uzyskać i używać punktu końcowego programowo testować obrazu. Użyj w tym przykładzie typu open-source jako szablon do tworzenia własnych aplikacji przy użyciu interfejsu API usługi Custom Vision.
+Poznaj podstawową aplikację w języku Java, która używa interfejsu API przetwarzania obrazów do utworzenia projektu wykrywania obiektów. Po jego utworzeniu możesz dodać oznaczone regiony, przesłać obrazy, wyszkolić projekt, uzyskać adres URL domyślnego punktu końcowego przewidywania i użyć tego punktu końcowego do programowego przetestowania obrazu. Ta przykładowa aplikacja open source może posłużyć jako szablon do utworzenia własnej aplikacji przy użyciu interfejsu API Custom Vision.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby korzystać z tego samouczka, należy wykonać następujące czynności:
+Aby korzystać z tego samouczka, wykonaj następujące czynności:
 
-- Zainstaluj zestaw JDK 7 lub 8.
-- Zainstaluj pakiet Maven.
+- Zainstaluj pakiet JDK 7 lub 8.
+- Zainstaluj narzędzie Maven.
 
-## <a name="install-the-custom-vision-service-sdk"></a>Instalowanie zestawu SDK usługi Custom Vision
+## <a name="install-the-custom-vision-service-sdk"></a>Zainstaluj pakiet Custom Vision Service SDK
 
-SDK wizji niestandardowe można zainstalować w centralnym repozytorium maven:
-* [Szkolenie zestawu SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
-* [Prognozowanie zestawu SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
+Pakiet Custom Vision SDK można zainstalować z centralnego repozytorium Maven:
+* [Pakiet SDK do szkolenia](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
+* [Pakiet SDK do przewidywania](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
 
-## <a name="get-the-training-and-prediction-keys"></a>Pobierz klucze uczenia i przewidywania
+## <a name="get-the-training-and-prediction-keys"></a>Uzyskaj klucze interfejsów szkolenia i przewidywania
 
-Aby uzyskać klucze używane w tym przykładzie, odwiedź stronę [lokacji Custom Vision](https://customvision.ai) i wybierz __ikonę koła zębatego__ w prawym górnym rogu. W __kont__ sekcji, skopiuj wartości z __klucz szkolenia__ i __klucz prognozowania__ pola.
+Aby uzyskać klucze używane w tym przykładzie, przejdź na [stronę Custom Vision](https://customvision.ai) i wybierz __ikonę koła zębatego__ w prawym górnym rogu. W sekcji __Accounts__ (Konta) skopiuj wartości z pól __Training Key__ (Klucz szkolenia) i __Prediction Key__ (Klucz przewidywania).
 
-![Obraz przedstawiający klucze interfejsu użytkownika](./media/python-tutorial/training-prediction-keys.png)
+![Obraz interfejsu użytkownika do uzyskiwania kluczy](./media/python-tutorial/training-prediction-keys.png)
 
 ## <a name="understand-the-code"></a>Zrozumienie kodu
 
-Pełne projektu, w tym obrazów, jest dostępne z [przykłady Custom Vision Azure dla języka Java repozytorium](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master). 
+Cały projekt, razem z obrazami, jest dostępny w [repozytorium przykładów Custom Vision Azure dla języka Java ](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master). 
 
-Użyj ulubionego środowiska IDE Java, aby otworzyć `Vision/CustomVision` projektu. 
+Otwórz projekt `Vision/CustomVision` w swoim ulubionym zintegrowanym środowisku projektowym Java. 
 
-Ta aplikacja używa klucza szkolenia pobranym wcześniej do utworzenia nowego projektu o nazwie __przykładowy projekt OD Java__. Następnie przekazuje obrazy do nauczenia i przetestowania detektora obiektu. Wykrywanie obiektów identyfikuje regionów __rozwidlenia__ lub para __nożyczek__.
+Ta aplikacja używa uzyskanego wcześniej klucza do szkolenia do utworzenia nowego projektu o nazwie __Przykładowy projekt Java OD__. Następnie przesyła obrazy do szkolenia i testowania detektora obiektów. Detektor obiektów wykrywa regiony zawierające __widelec__ lub __nożyczki__.
 
-Poniższe fragmenty kodu implementuje podstawowe funkcje w tym przykładzie:
+Poniższe fragmenty kodu implementują podstawową funkcjonalność przykładowej aplikacji:
 
-## <a name="create-a-custom-vision-service-project"></a>Tworzenie projektu usługi Custom Vision Service
+## <a name="create-a-custom-vision-service-project"></a>Tworzenie projektu Custom Vision Service
 
-Należy zanotować różnicę między tworzenia wykrywanie obiektów, a projekt klasyfikacji obrazów jest domeny, który jest określony w wywołaniu createProject.
+Zwróć uwagę, że tworzenie projektu do wykrywania obiektów różni się od tworzenia projektu do klasyfikacji obrazów domeną podaną w wywołaniu createProject.
 
 > [!IMPORTANT]
-> Ustaw `trainingApiKey` wartość klucza szkolenia pobranym wcześniej.
+> Ustaw `trainingApiKey` na wartość uzyskanego wcześniej klucza do szkolenia.
 
 ```java
 final String trainingApiKey = "insert your training key here";
@@ -106,7 +107,7 @@ Tag scissorsTag = trainer.createTag()
 
 ## <a name="upload-images-to-the-project"></a>Przekazywanie obrazów do projektu
 
-Dla obiektu wykrywania projektu należy przekazać obraz, regionów i tagów. Region jest znormalizowanych współrzędnych i określa lokalizację obiektu oznakowane.
+W przypadku projektu do wykrywania obiektów musisz przesłać obraz, regiony i tagi. Region to znormalizowane współrzędne wskazujące połączenie oznaczonego obiektu.
 
 
 ```java
@@ -175,7 +176,7 @@ for (int i = 1; i <= 20; i++) {
 }
 ```
 
-Poprzednie fragment kodu sprawia, że użycie dwóch funkcji pomocnika, które odbierają obrazów jako zasób strumieni i przekazać je do usługi.
+W poprzednim fragmencie kodu używane były dwie funkcje pomocnicze pobierające obrazy jako strumienie zasobów i przesyłające je do usługi.
 
 ```java
 private static void AddImageToProject(Trainings trainer, Project project, String fileName, byte[] contents, UUID tag, double[] regionValues)
@@ -220,7 +221,7 @@ private static byte[] GetImage(String folder, String fileName)
 
 ## <a name="train-the-project"></a>Szkolenie projektu
 
-Utworzenie pierwszej iteracji w projekcie i oznacza tej iteracji jako domyślnej iteracji. 
+Spowoduje to utworzenie pierwszej iteracji w projekcie i oznaczenie jej jako domyślnej. 
 
 ```java
 System.out.println("Training...");
@@ -235,10 +236,10 @@ System.out.println("Training Status: "+ iteration.status());
 trainer.updateIteration(project.id(), iteration.id(), iteration.withIsDefault(true));
 ```
 
-## <a name="get-and-use-the-default-prediction-endpoint"></a>I korzystaj z domyślnego punktu końcowego prognoz
+## <a name="get-and-use-the-default-prediction-endpoint"></a>Uzyskanie adresu domyślnego punktu końcowego do przewidywania
 
 > [!IMPORTANT]
-> Ustaw `predictionApiKey` do przewidywania wartości klucza pobranym wcześniej.
+> Ustaw `predictionApiKey` na wartość uzyskanego wcześniej klucza do przewidywania.
 
 ```java
 final String predictionApiKey = "insert your prediction key here";
@@ -273,11 +274,11 @@ for (Prediction prediction: results.predictions())
 }
 ```
 
-## <a name="run-the-example"></a>Uruchomić przykład
+## <a name="run-the-example"></a>Uruchomienie przykładu
 
-Przewidywane wyniki są wyświetlane w konsoli oraz niektóre rejestrowanie w celu wyświetlenia postępu.
+W konsoli zostaną wyświetlone wyniki przewidywania oraz zapisy dziennika informujące o postępie.
 
-Aby skompilować i uruchomić rozwiązanie przy użyciu narzędzia maven:
+Aby skompilować i uruchomić rozwiązanie przy użyciu narzędzia Maven:
 
 ```
 mvn compile exec:java

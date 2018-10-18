@@ -1,54 +1,56 @@
 ---
-title: Co to jest usługa decyzji niestandardowe? -Usługi azure kognitywnych | Dokumentacja firmy Microsoft
-description: Ten artykuł Omówienie usługi Azure niestandardowe decyzji, oparte na chmurze interfejsu API kontekstowe podejmowania decyzji, które wyostrza doświadczenie w.
+title: Czym jest usługa Custom Decision Service?
+titlesuffix: Azure Cognitive Services
+description: Ten artykuł zawiera omówienie usługi Custom Decision Service.
 services: cognitive-services
 author: alekh
-manager: slivkins
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: overview
 ms.date: 05/08/2018
-ms.author: slivkins;marcozo;alekh;marossi
-ms.openlocfilehash: 774467446513dcd7ade7255d998b11f41824cafe
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
-ms.translationtype: MT
+ms.author: slivkins
+ms.openlocfilehash: 273f2965a0fcaaa729175c5232da1aba69589eec
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35356299"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364214"
 ---
-# <a name="what-is-custom-decision-service"></a>Co to jest usługa decyzji niestandardowe?
+# <a name="what-is-custom-decision-service"></a>Czym jest usługa Custom Decision Service?
 
-W typowej sieci web lub aplikacji mobilnej, pierwsza strona zostanie połączona z artykuły kilka innych typów zawartości. Jako pierwsza strona ładuje, można go żądanie usługi decyzji niestandardowe do artykułów rangi uwzględnione na tej stronie witryny. Tak gdy użytkownik wybierze artykuł, klikając go, drugie żądanie mógł zostać wysłany do usługi decyzji niestandardowa, która będzie rejestrować wyników tej decyzji użytkownika.
+W typowej aplikacji internetowej lub mobilnej strona główna zawiera łącza do wielu artykułów lub innego rodzaju treści. Podczas ładowania strony głównej aplikacja może wysłać do usługi Custom Decision Service żądanie z zapytaniem o ranking artykułów na tej stronie. Gdy użytkownik wybierze artykuł kliknięciem, do usługi Custom Decision Service można wysłać drugie żądanie rejestrujące wynik tej decyzji użytkownika.
 
-Usługa decyzji niestandardowa jest łatwy w użyciu, ponieważ wymaga tylko źródła danych RSS dla zawartości i zaledwie kilku wierszach kodu JavaScript ma zostać dodana do aplikacji.
+Korzystanie z usługi Custom Decision Service jest łatwe, ponieważ wymaga tylko kanału RSS treści aplikacji i dodania do aplikacji kilku wierszy kodu JavaScript.
 
-Usługa niestandardowa decyzji Konwertuje zawartość funkcje uczenia maszynowego. System używa tych funkcji do zrozumienia treści w postaci tekstu, obrazów, klipów wideo i ogólną wskaźniki nastrojów klientów. Używa kilka innych [kognitywnych usług firmy Microsoft](https://www.microsoft.com/cognitive-services), takiej jak [łączenie jednostki](../entitylinking/home.md), [Analiza tekstu](../text-analytics/overview.md), [emocji](../emotion/home.md)i [Wizji komputera](../computer-vision/home.md).
+Custom Decision Service przekształca treści w cechy służące do uczenia maszynowego. System korzysta z tych cech, aby zinterpretować tekst, obrazy, filmy i ogólny przekaz treści. Ta usługa używa kilku innych usług [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services), w tym [Entity Linking](../entitylinking/home.md), [Analiza tekstu](../text-analytics/overview.md), [Rozpoznawanie emocji](../emotion/home.md) i [Przetwarzanie obrazów](../computer-vision/home.md).
 
-Niektóre typowe-przypadki użycia usługi decyzji niestandardowe obejmują:
+Do typowych zastosowań usługi Custom Decision Service należą:
 
-* Personalizowanie artykuły w witrynie wiadomości
-* Personalizowanie zawartości wideo w portalu nośnika
-* Optymalizacja rozmieszczanie ad lub ad kieruje do stron sieci web
-* Klasyfikacja zalecanych elementów na zakupów witryna sieci Web.
+* personalizowanie artykułów w witrynie z wiadomościami;
+* personalizowanie filmów w portalu multimedialnym;
+* optymalizacja reklam lub stron internetowych, do których kierują reklamy;
+* tworzenie rankingu polecanych produktów w sklepie internetowym.
 
-Usługa decyzji niestandardowa jest obecnie w *wolnego publicznej wersji zapoznawczej*. Można go spersonalizować listę artykułów w witrynie sieci Web lub aplikacji. Wyodrębniania funkcja działa najlepiej w języku angielskim zawartości. [Ograniczoną funkcjonalność](../text-analytics/overview.md) jest dostępna w przypadku innych języków, takich jak hiszpański, francuski, niemiecki, portugalski i japoński. Ta dokumentacja zostanie zmieniony, wraz ze wzrostem dostępności nowych funkcji.
+Usługa Custom Decision Service jest obecnie dostępna w *bezpłatnej wersji zapoznawczej*. Może ona spersonalizować listę artykułów w witrynie lub aplikacji. Wydobywanie cech działa najlepiej w przypadku treści w języku angielskim. Dostępna jest [ograniczona obsługa](../text-analytics/overview.md) innych języków: hiszpańskiego, francuskiego, niemieckiego, portugalskiego i japońskiego. Niniejsza dokumentacja będzie aktualizowana po udostępnieniu nowych funkcji.
 
-Nie można używać niestandardowych usługi decyzji w aplikacjach, które nie znajdują się w domenie personalizacji zawartości. Te aplikacje mogą być dobrze podglądu niestandardowego. [Skontaktuj się z nami](https://azure.microsoft.com/overview/sales-number/) Aby dowiedzieć się więcej.
+Usługi Custom Decision Service można używać w aplikacjach spoza dziedziny personalizacji treści. W takich aplikacjach być może warto użyć niestandardowej wersji zapoznawczej. [Skontaktuj się z nami](https://azure.microsoft.com/overview/sales-number/), aby dowiedzieć się więcej.
 
-## <a name="api-usage-modes"></a>Tryby użycia interfejsu API
+## <a name="api-usage-modes"></a>Tryby używania interfejsu API
 
-Usługa niestandardowa decyzji może odnosić się do stron sieci Web i aplikacji mobilnych. Interfejsy API można wywołać z przeglądarki lub aplikacji. Użycie interfejsu API jest podobne zarówno, ale niektóre informacje są różne.
+Usługi Custom Decision Service można używać na stronach internetowych i w aplikacjach mobilnych. Interfejsy API można wywoływać z przeglądarki lub z aplikacji. Sposób używania interfejsu API jest podobny w obu przypadkach, ale pewne szczegóły są różne.
 
-## <a name="glossary-of-terms"></a>Słownik terminów
+## <a name="glossary-of-terms"></a>Słownik
 
-Kilka warunków często wykonywane w tej dokumentacji:
+W niniejszej dokumentacji często występują następujące terminy:
 
-* **Zestaw akcji**: zestaw elementy zawartości dla usługi decyzji niestandardowe rangę. Ten zestaw może być określony jako *RSS* lub *Atom* punktu końcowego.
-* **Klasyfikacja**: każdego żądania do usługi decyzji niestandardowe określa co najmniej jeden zbiór akcji. System odpowiada, wybierając opcje zawartości z tych zestawów i zwraca je w kolejności uporządkowanej według rangi.
-* **Funkcja wywołania zwrotnego**: tej funkcji można określić renderuje zawartość w Interfejsie użytkownika. Zawartość jest uporządkowanych według rangi kolejność zwrócony przez usługę decyzji niestandardowe.
-* **Opłatą**: miara jak odpowiedzi użytkownika do renderowanej zawartości. Usługa niestandardowa decyzji mierzy odpowiedź użytkownika za pomocą kliknięć. Kliknięć są zgłaszane do systemu za pomocą kodu niestandardowego wstawione w aplikacji.
+* **Zbiór przetwarzany**: zbiór elementów zawartości, których ranking ma dostarczyć usługa Custom Decision Service. Te zbiór można wskazać jako punkt końcowy *RSS* lub *Atom*.
+* **Ranking**: każde żądanie wysyłane do usługi Custom Decision Service określa co najmniej jeden zbiór przetwarzany. System pobiera wszystkie pozycje zawartości z tych zbiorów i jako odpowiedź zwraca je w kolejności zgodnej z rankingiem.
+* **Funkcja wywołania zwrotnego**: ta funkcja, tworzona przez programistę aplikacji, renderuje zawartość w interfejsie użytkownika aplikacji. Zawartość jest ułożona w kolejności odpowiadającej rankingowi ustalonemu przez usługę Custom Decision Service.
+* **Nagroda**: miara reakcji użytkownika na wyświetloną zawartość. Usługa Custom Decision Service mierzy reakcję użytkownika na podstawie kliknięć. Kliknięcia są zgłaszane do systemu za pomocą kodu umieszczonego w aplikacji przez programistę.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Rejestrowanie aplikacji](custom-decision-service-get-started-register.md) z usługą decyzji niestandardowe
-* Wprowadzenie do optymalizacji [strony sieci Web](custom-decision-service-get-started-browser.md) lub [aplikacja na smartfona](custom-decision-service-get-started-app.md).
-* Zapoznaj się [dokumentacja interfejsu API](custom-decision-service-api-reference.md) Aby dowiedzieć się więcej o funkcjach podana.
+* [Zarejestruj swoją aplikację](custom-decision-service-get-started-register.md) w usłudze Custom Decision Service
+* Zoptymalizuj [stronę internetową](custom-decision-service-get-started-browser.md) lub [aplikację na smartfona](custom-decision-service-get-started-app.md).
+* Zapoznaj się z [dokumentacją interfejsu API](custom-decision-service-api-reference.md), aby dowiedzieć się więcej o funkcjach usługi.
