@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 39fd393e78a2b66749c6aa34a758b185b38effdf
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: b4433beea7fd9288c8c7be33c977ae11f3c2bac1
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041191"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426350"
 ---
 # <a name="multi-master-conflict-resolution-in-azure-cosmos-db"></a>Rozwiązywanie konfliktów wielu wzorców w usłudze Azure Cosmos DB 
 
@@ -208,12 +208,12 @@ Poniżej przedstawiono przykładowe aplikacje demonstrujące rozwiązywania konf
 
 |Interfejs API modelu  | SDK |Sample |
 |---------|---------|---------|
-|INTERFEJS API SQL    | .NET    |[Azure-cosmos-DB-SQL-DotNet-Multi-Master](https://github.com/Azure-Samples/azure-cosmos-db-sql-dotnet-multi-master)  |
+|INTERFEJS API SQL    | .NET    |[Azure-cosmosdb-dotnet/samples/MultiMaster /](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/samples/MultiMaster)  |
 |INTERFEJS API SQL    | Węzeł    |[Azure-cosmos-js/samples/MultiRegionWrite /](https://github.com/Azure/azure-cosmos-js/tree/master/samples/MultiRegionWrite)  |
-|INTERFEJS API SQL    | Java    |[Azure-cosmos-DB-SQL-Java-Multi-Master](https://github.com/Azure-Samples/azure-cosmos-db-sql-java-multi-master)  |
+|INTERFEJS API SQL    | Java    |[Azure-cosmosdb-java przykłady/src/main](https://github.com/Azure/azure-cosmosdb-java/tree/master/examples/src/main)  |
 |MongoDB  | .NET    |[Azure-cosmos-DB-mongodb-DotNet-Multi-Master](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-multi-master)   |
 |Interfejs API tabel  | .NET    |[Azure-cosmos-DB-TABLE-DotNet-Multi-Master](https://github.com/Azure-Samples/azure-cosmos-db-table-dotnet-multi-master)       |
-|Interfejs API języka Gremlin | .NET | [Azure-cosmos-DB-gremlin-dontnet-Multi-Master](https://github.com/Azure-Samples/azure-cosmos-db-gremlin-dontnet-multi-master)|
+|Interfejs API języka Gremlin | .NET | [Azure-cosmos-DB-gremlin-DotNet-Multi-Master](https://github.com/Azure-Samples/azure-cosmos-db-gremlin-dotnet-multi-master)|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

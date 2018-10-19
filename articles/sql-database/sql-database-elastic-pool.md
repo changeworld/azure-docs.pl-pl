@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 71269b4888d1b5c9724248ac91f0818d7f8f5bf5
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/15/2018
+ms.openlocfilehash: c89fa6614afec6b67f4d6445db49efa1e2248cfb
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162359"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430055"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Pul elastycznych pozwalają na zarządzanie i skalowania wielu baz danych Azure SQL
 
@@ -108,8 +108,6 @@ Najlepszy rozmiar puli zależy od łącznej zasoby wymagane dla wszystkich baz d
 * Maksymalna liczba bajtów magazynu wykorzystana przez wszystkie bazy danych w puli.
 
 Dla warstwy usług dostępnych dla każdego modelu zasobów, zobacz [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) lub [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
-
-Usługa SQL Database automatycznie ocenia historyczne użycie zasobów przez bazy danych na istniejącym serwerze usługi SQL Database i zaleca odpowiednią konfigurację puli w witrynie Azure Portal. Oprócz zaleceń, wbudowane środowisko szacuje użycie jednostek eDTU dla niestandardowej grupy baz danych na serwerze. Umożliwia to przeprowadzenie analizy warunkowej przez interaktywne dodawanie baz danych do puli i usuwanie ich w celu uzyskania analizy użycia zasobów i porady dotyczącej rozmiaru przed zatwierdzeniem zmian. Aby uzyskać instrukcje, zobacz [Monitorowanie puli elastycznej, zmienianie jej rozmiaru i zarządzanie nią](#monitor-an-elastic-pool-and-its-databases).
 
 W przypadkach, gdy nie można użyć narzędzi, skorzystanie z następujących instrukcji krok po kroku może ułatwić oszacowanie, czy pula jest bardziej opłacalna niż pojedyncza baza danych:
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3cefecdf0f87483a1fb544d1eb4e3e514e388259
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 90b4bc17de60baa59d6c159105674468a63d10f9
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406927"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430174"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Wdrożenie programu SQL Server Azure Virtual Machines DBMS dla oprogramowania SAP NetWeaver
 
@@ -418,7 +418,7 @@ Druga metoda jest bliżej opisaną w artykule [kopię zapasową serwera SQL do a
 
 
 ### <a name="automated-backup-for-sql-server"></a>Zautomatyzowane tworzenie kopii zapasowej programu SQL Server
-Zautomatyzowane tworzenie kopii zapasowej umożliwia automatyczne usługi kopii zapasowej, w przypadku wersji SQL Server Standard i Enterprise uruchomione w maszynie Wirtualnej Windows Azure. Ta usługa jest świadczona przez [rozszerzenie agenta IaaS programu SQL Server](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension), który jest automatycznie instalowany na obrazy maszyn wirtualnych SQL, Windows Server w witrynie Azure portal. W przypadku wdrożenia obrazów systemu operacyjnego zainstalowanym programem SQL Server, musisz oddzielnie zainstalować rozszerzenia maszyny Wirtualnej. Kroki niezbędne są opisane w tym [artykułu](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension).
+Zautomatyzowane tworzenie kopii zapasowej umożliwia automatyczne usługi kopii zapasowej, w przypadku wersji SQL Server Standard i Enterprise działające w maszyny Wirtualnej z systemem Windows na platformie Azure. Ta usługa jest świadczona przez [rozszerzenie agenta IaaS programu SQL Server](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension), który jest automatycznie instalowany na obrazy maszyn wirtualnych SQL, Windows Server w witrynie Azure portal. W przypadku wdrożenia obrazów systemu operacyjnego zainstalowanym programem SQL Server, musisz oddzielnie zainstalować rozszerzenia maszyny Wirtualnej. Kroki niezbędne są opisane w tym [artykułu](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension).
 
 Więcej szczegółów na temat możliwości tej metody można znaleźć w następujących artykułach:
 

@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie kontenerów na sieć szkieletowa usług Azure z analizy dzienników | Dokumentacja firmy Microsoft
-description: Użyj analizy dzienników dla monitorowania kontenery uruchamianych w klastrach sieć szkieletowa usług Azure.
+title: Monitorowanie kontenerów w usłudze Azure Service Fabric z usługą Log Analytics | Dokumentacja firmy Microsoft
+description: Używanie programu Log Analytics do monitorowania kontenery działające w klastrach usługi Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,44 +14,46 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/1/2017
 ms.author: dekapur
-ms.openlocfilehash: 79d30a47b017379107b63b0006a35534f68c43b9
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: aabdae370c28f8fa633372be4505c00c25254408
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210780"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403254"
 ---
-# <a name="monitor-containers-with-log-analytics"></a>Kontenery monitora z analizy dzienników
+# <a name="monitor-containers-with-log-analytics"></a>Monitorowanie kontenerów za pomocą usługi Log Analytics
  
-W tym artykule opisano kroki wymagane do skonfigurowania kontenera analizy dzienników OMS rozwiązanie monitorujące, aby wyświetlić zdarzenia kontenera. Aby skonfigurować klaster służąca do gromadzenia zdarzeń kontenera, zobacz [samouczek krok po kroku](service-fabric-tutorial-monitoring-wincontainers.md).
+W tym artykule opisano kroki wymagane do skonfigurowania rozwiązania do monitorowania kontenerów w usłudze Azure Log Analytics, aby wyświetlić zdarzenia kontenera. Aby skonfigurować klaster, aby zbierać zdarzenia kontenera, zobacz ten [samouczek krok po kroku](service-fabric-tutorial-monitoring-wincontainers.md). 
 
-## <a name="set-up-the-container-monitoring-solution"></a>Skonfiguruj kontener monitorowania rozwiązania
+[!INCLUDE [log-analytics-agent-note.md](../../includes/log-analytics-agent-note.md)]
+
+## <a name="set-up-the-container-monitoring-solution"></a>Konfigurowanie rozwiązania do monitorowania kontenerów
 
 > [!NOTE]
-> Musisz skorzystać zestaw analizy dzienników dla klastra, a także zostały wdrożone na węzły Agent pakietu OMS. Jeśli nie wykonaj kroki opisane w [Konfigurowanie analizy dzienników](service-fabric-diagnostics-oms-setup.md) i [dodać do klastra Agent pakietu OMS](service-fabric-diagnostics-oms-agent.md) pierwszy.
+> Musisz mieć zestawu usługi Log Analytics dla klastra, a także wdrożyć na węzły agenta usługi Log Analytics. Jeśli nie wykonaj kroki opisane w [Konfigurowanie usługi Log Analytics](service-fabric-diagnostics-oms-setup.md) i [dodać agenta usługi Log Analytics do klastra](service-fabric-diagnostics-oms-agent.md) pierwszy.
 
-1. Po skonfigurowaniu klastra z funkcją analizy dziennika i Agent pakietu OMS wdrażanie kontenerów. Poczekaj, aż kontenerów do wdrożenia przed przejściem do następnego kroku.
+1. Po skonfigurowaniu klastra za pomocą usługi Log Analytics i agenta usługi Log Analytics wdrażanie kontenerów. Poczekaj, aż kontenerów można wdrożyć przed przejściem do następnego kroku.
 
-2. W portalu Azure Marketplace, wyszukaj *rozwiązanie monitorowanie kontenera* i wybierz polecenie **rozwiązanie monitorowanie kontenera** zasobów, które zostaną wyświetlone w obszarze monitorowanie i zarządzanie kategorii.
+2. W portalu Azure Marketplace Wyszukaj *rozwiązanie do monitorowania kontenerów* i kliknij pozycję **rozwiązanie do monitorowania kontenerów** zasób, który pojawia się w obszarze monitorowanie + Zarządzanie kategorii.
 
     ![Dodawanie rozwiązania kontenerów](./media/service-fabric-diagnostics-event-analysis-oms/containers-solution.png)
 
-3. Tworzenie rozwiązania wewnątrz tego samego obszaru roboczego, który został już utworzony dla klastra. Ta zmiana automatyczne wyzwolenie procesu agenta, aby rozpocząć gromadzenie danych docker na kontenerów. W około 15 minut lub to powinna zostać wyświetlona światła się z dziennikami przychodzące i statystyka rozwiązania. jak pokazano na poniższej ilustracji.
+3. Utwórz rozwiązanie wewnątrz tego samego obszaru roboczego, który został już utworzony dla klastra. Ta zmiana na automatyczne wyzwolenie agenta, aby zacząć gromadzić dane platformy docker na kontenery. W około 15 minut lub tak powinien zostać wyświetlony światła się za pomocą przychodzących dzienników i statystyk, rozwiązania, jak pokazano na poniższej ilustracji.
 
-    ![Pulpit nawigacyjny podstawowe OMS](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
+    ![Pulpit nawigacyjny analizy dziennika podstawowe](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
 
-Agent umożliwia zbieranie kilka dzienników specyficzne dla kontenera, które można wykonać zapytania w OMS, lub używany do wizualizowanego wskaźników. Typy dziennika, które są zbierane są:
+Agenta umożliwia zbieranie kilka dzienników specyficzne dla kontenera, które mogą być wysyłane zapytanie w usłudze Log Analytics lub umożliwia wizualizowanie wskaźników wydajności. Typy dzienników, które są zbierane są:
 
-* ContainerInventory: zawiera informacje o lokalizacji kontenera, nazwy i obrazów
-* ContainerImageInventory: informacje o wdrożonej obrazów, w tym identyfikatory lub rozmiary
-* ContainerLog: dzienniki błędu, dzienniki docker (stdout itp.) i innych pozycji
-* ContainerServiceLog: docker demon poleceń, które zostały uruchomione
-* O wydajności: liczniki wydajności w tym kontenerze procesora cpu, pamięć, ruch sieciowy na dysku We/Wy i metryki niestandardowe z maszyn hosta
+* ContainerInventory: zawiera informacje o lokalizację kontenera, nazwę i obrazów
+* ContainerImageInventory: informacje o wdrożonych obrazy, w tym identyfikatorów lub rozmiarów
+* ContainerLog: dzienniki określonych błędów, dzienniki platformy docker (stdout itp.) i inne wpisy
+* ContainerServiceLog: polecenia demona platformy docker, które zostały uruchomione
+* Danych o wydajności: w tym kontenerze liczniki wydajności Procesor cpu, pamięć, ruch sieciowy na dysku We/Wy i metryki niestandardowe z komputerów-hostów
 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [rozwiązania kontenery w OMS](../log-analytics/log-analytics-containers.md).
-* Dowiedz się więcej o aranżacji kontenera w sieci szkieletowej usług - [sieci szkieletowej usług i kontenerów](service-fabric-containers-overview.md)
-* Pobierz zapoznaniu się z [wyszukiwania i badania dziennika](../log-analytics/log-analytics-log-searches.md) funkcje dostępne w ramach analizy dzienników
-* Konfigurowanie analizy dzienników, aby skonfigurować [automatycznego alerty](../log-analytics/log-analytics-alerts.md) reguły, aby pomóc w wykrywaniu i Diagnostyka
+* Dowiedz się więcej o [rozwiązanie Log Analytics Containers](../log-analytics/log-analytics-containers.md).
+* Dowiedz się więcej o aranżacji kontenerów w usłudze Service Fabric - [usługi Service Fabric i kontenery](service-fabric-containers-overview.md)
+* Zapoznaj się z funkcjami [przeszukiwania dzienników i wykonywania zapytań](../log-analytics/log-analytics-log-searches.md) dostępnymi w ramach usługi Log Analytics
+* Skonfiguruj usługę Log Analytics, aby skonfigurować [automatyczne alerty](../log-analytics/log-analytics-alerts.md) reguły, aby ułatwić wykrywanie i przeprowadzanie diagnostyki

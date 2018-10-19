@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e42bc63b0c2b6edf4dc0de204bbac5fe90071a67
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 7410dadabf9fda2eb36531991d1d7ff3c3747e2c
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480516"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406521"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Typy aplikacji, które mogą być używane w Active Directory B2C
 
@@ -88,11 +88,6 @@ Accept: application/json
 
 Interfejs API sieci Web może następnie użyć tego tokenu do zweryfikowania tożsamości elementu wywołującego interfejs API oraz do wyodrębnienia informacji o elemencie wywołującym z oświadczeń zakodowanych w tokenie. Aby uzyskać więcej informacji o typach tokenów i oświadczeń dostępnych dla aplikacji, zobacz [informacje o tokenach usługi Azure AD B2C](active-directory-b2c-reference-tokens.md).
 
-> [!NOTE]
-> Usługa Azure AD B2C obsługuje obecnie tylko interfejsy API sieci Web, do których dostęp uzyskują ich własne dobrze znane aplikacje klienckie. Na przykład Pełna aplikacja może obejmować aplikację systemu iOS, aplikacji systemu Android i zaplecza internetowego interfejsu API. Taka architektura jest w pełni obsługiwana. Zezwalanie klientowi partnera, np. innej aplikacji dla systemu iOS na dostęp do tego samego internetowego interfejsu API nie jest obecnie obsługiwane. Wszystkie składniki usługi kompletnej aplikacji muszą współdzielić jeden identyfikator aplikacji.
->
->
-
 Interfejs API sieci web może odbierać tokeny od wielu typów klientów, w tym aplikacji sieci web, pulpitu i aplikacje mobilne, aplikacje jednej strony, demonów po stronie serwera i innych interfejsów API sieci web. Oto przykład pełnego przepływu aplikacji sieci web, która wywołuje interfejs API sieci web:
 
 1. Aplikacja sieci web wykonuje zasady, a następnie użytkownik kończy środowisko użytkownika.
@@ -114,11 +109,6 @@ Aby dowiedzieć się, jak zabezpieczyć interfejs API sieci Web przy użyciu us�
 Aplikacje, które są zainstalowane na urządzeniach, takich jak w przypadku aplikacji mobilnych i komputerowych często muszą uzyskać dostęp do usług zaplecza lub interfejsów API sieci web w imieniu użytkowników. Możesz dodać niestandardowe środowiska zarządzania tożsamością do aplikacji natywnych i bezpiecznie wywoływać usługi zaplecza przy użyciu usługi Azure AD B2C i [przepływ kodu autoryzacji OAuth 2.0](active-directory-b2c-reference-oauth-code.md).  
 
 W tym przepływie aplikacja wykonuje [zasady](active-directory-b2c-reference-policies.md) i odbiera `authorization_code` z usługi Azure AD po wypełnieniu zasad przez użytkownika. `authorization_code` Reprezentuje aplikacji uprawnień do wywoływania usług zaplecza w imieniu użytkownika, który jest aktualnie zalogowany. Aplikacja może następnie wymienić `authorization_code` w tle dla `id_token` i `refresh_token`.  Aplikacja może używać `id_token` do uwierzytelniania internetowego interfejsu API zaplecza w żądaniach HTTP. Może również użyć tokenu `refresh_token` do pobrania nowego tokenu `id_token`, gdy wygaśnie stary.
-
-> [!NOTE]
-> Usługa Azure AD B2C obsługuje obecnie tylko tokeny, które umożliwiają dostęp do usługi sieci web zaplecza w aplikacji. Na przykład Pełna aplikacja może obejmować aplikacji systemu iOS, aplikacji systemu Android i zaplecza internetowego interfejsu API. Taka architektura jest w pełni obsługiwana. Zezwalanie aplikacji systemu iOS na dostęp do interfejsu API sieci web partnera przy użyciu tokenów dostępu protokołu OAuth 2.0 nie jest obecnie obsługiwane. Wszystkie składniki usługi kompletnej aplikacji muszą współdzielić jeden identyfikator aplikacji.
->
->
 
 ## <a name="current-limitations"></a>Bieżące ograniczenia
 

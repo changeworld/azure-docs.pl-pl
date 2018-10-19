@@ -15,16 +15,16 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: d46c55f809d24529ea5deeb4d84de44dae876a4b
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: e0a47da168ae9371979290b3febc9d767e8755d7
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968990"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428015"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Tworzenie i przywracanie kopii zapasowych programu SQL Server na maszynach wirtualnych platformy Azure
 
-Ten artykuł zawiera wskazówki na temat tworzenia kopii zapasowych i przywracania opcji dostępnych dla programu SQL Server uruchomiony na maszynach wirtualnych platformy Windows. Usługa Azure Storage przechowuje trzy kopie każdego dysku maszyny Wirtualnej platformy Azure, co gwarantuje ochronę przed utratą danych lub uszkodzenie danych fizycznych. W związku z tym w przeciwieństwie do środowiska lokalnego, nie należy skoncentrować się na awarie sprzętowe. Jednak użytkownik powinien nadal tworzyć kopie zapasowe baz danych programu SQL Server do ochrony przed błędy aplikacji lub użytkownika, takie jak liczba operacji wstawienia danych przypadkowego lub usunięcia. W takiej sytuacji należy mieć możliwość przywracania do określonego punktu w czasie.
+Ten artykuł zawiera wskazówki na temat tworzenia kopii zapasowych i przywracania opcji dostępnych dla programu SQL Server działa na maszynie wirtualnej Windows na platformie Azure. Usługa Azure Storage przechowuje trzy kopie każdego dysku maszyny Wirtualnej platformy Azure, co gwarantuje ochronę przed utratą danych lub uszkodzenie danych fizycznych. W związku z tym w przeciwieństwie do środowiska lokalnego, nie należy skoncentrować się na awarie sprzętowe. Jednak użytkownik powinien nadal tworzyć kopie zapasowe baz danych programu SQL Server do ochrony przed błędy aplikacji lub użytkownika, takie jak liczba operacji wstawienia danych przypadkowego lub usunięcia. W takiej sytuacji należy mieć możliwość przywracania do określonego punktu w czasie.
 
 Pierwsza część tego artykułu zawiera omówienie dostępnych kopii zapasowych i opcje przywracania. Następuje to sekcje, które zawierają więcej informacji o poszczególnych strategii.
 
@@ -42,7 +42,7 @@ W poniższych sekcjach opisano każdą opcję bardziej szczegółowo. Ostatnia c
 
 ## <a id="autoamted"></a> Zautomatyzowane tworzenie kopii zapasowej
 
-Zautomatyzowane tworzenie kopii zapasowej umożliwia automatyczne usługi kopii zapasowej, w przypadku wersji SQL Server Standard i Enterprise uruchomione w maszynie Wirtualnej Windows Azure. Ta usługa jest świadczona przez [rozszerzenie agenta IaaS programu SQL Server](virtual-machines-windows-sql-server-agent-extension.md), który jest automatycznie instalowany na obrazy maszyn wirtualnych SQL, Windows Server w witrynie Azure portal.
+Zautomatyzowane tworzenie kopii zapasowej umożliwia automatyczne usługi kopii zapasowej, w przypadku wersji SQL Server Standard i Enterprise działające w maszyny Wirtualnej z systemem Windows na platformie Azure. Ta usługa jest świadczona przez [rozszerzenie agenta IaaS programu SQL Server](virtual-machines-windows-sql-server-agent-extension.md), który jest automatycznie instalowany na obrazy maszyn wirtualnych SQL, Windows Server w witrynie Azure portal.
 
 Wszystkie bazy danych kopię zapasową na konto usługi Azure storage, które można skonfigurować. Kopie zapasowe mogą być szyfrowane i przechowywane przez maksymalnie 30 dni.
 
@@ -144,7 +144,7 @@ Poniższa tabela zawiera podsumowanie możliwości poszczególnych opcji tworzen
 | Tworzenie kopii zapasowej na dołączonych dysków na maszynie Wirtualnej |   |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | Centralnej można dostosować raporty kopii zapasowych |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | Skonsolidowane wiadomości e-mail dla alertów błędów |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| Dostosowywanie monitorowania, w oparciu o usługi OMS |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| Dostosowywanie monitorowania, w oparciu o usługi Log Analytics |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | Monitorowanie zadań tworzenia kopii zapasowej za pomocą skryptów programu SSMS lub języka Transact-SQL | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | Przywracanie baz danych za pomocą skryptów programu SSMS lub języka Transact-SQL | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 

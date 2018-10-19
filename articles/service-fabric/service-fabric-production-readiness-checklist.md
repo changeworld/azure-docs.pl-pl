@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/10/2018
 ms.author: subramar
-ms.openlocfilehash: 6ebe83794f23ed3cf637f668d2810b9ba7521084
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 7557e2b993a5059df8aea63c7394539acc28c110
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295874"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403528"
 ---
 # <a name="production-readiness-checklist"></a>Lista kontrolna gotowości do produkcji
 
@@ -36,7 +36,7 @@ Jest gotowy do zastąpienia jest przesyłany ruch produkcyjny aplikacji i klastr
 6. Informacje, a następnie wybierz [poziom niezawodności](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) typu węzła. Zaleca się niezawodność Silver lub wyższego.
 7. Obciążenia i skalowanie Testuj obciążenia w taki sposób, aby zidentyfikować [wymagania dotyczące pojemności](service-fabric-cluster-capacity.md) dla klastra. 
 8. Usługi i aplikacje są monitorowane i dzienniki aplikacji są generowane i przechowywane w usłudze alertów. Na przykład zobacz [Dodawanie rejestrowania aplikacji usługi Service Fabric](service-fabric-how-to-diagnostics-log.md) i [monitorowania kontenerów za pomocą usługi Log Analytics](service-fabric-diagnostics-oms-containers.md).
-9. Klaster jest monitorowana przy użyciu alertów (na przykład za pomocą [OMS](service-fabric-diagnostics-event-analysis-oms.md)). 
+9. Klaster jest monitorowana przy użyciu alertów (na przykład za pomocą [usługi Log Analytics](service-fabric-diagnostics-event-analysis-oms.md)). 
 10. Podstawowa infrastruktura zestawu skalowania maszyn wirtualnych odbywa się za pomocą alertów (na przykład za pomocą [usługi Log Analytics](service-fabric-diagnostics-oms-agent.md).
 11. Klaster ma [głównego i dodatkowego certyfikatu](service-fabric-cluster-security-update-certs-azure.md) zawsze (dzięki czemu można nie uzyskać blokady).
 12. Obsługa osobne klastry do rozwoju, przejściowe i produkcyjne. 

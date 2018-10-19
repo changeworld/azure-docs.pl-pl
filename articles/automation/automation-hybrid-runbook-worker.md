@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 694327cf7f7331a35a7e18cb68c566932c6231fc
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 209d26ceb97bb32c18f6b8c4bad0fb3c5620b5b0
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363507"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408799"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatyzuj zasobów w centrum danych lub w chmurze przy użyciu hybrydowego procesu roboczego Runbook
 
@@ -97,7 +97,9 @@ Aby usunąć grupę, należy najpierw usunąć hybrydowy proces roboczy elementu
 
 Hybrydowego procesu roboczego Runbook nawiązać połączenie i zarejestrować w usłudze Log Analytics musi mieć dostęp do numeru portu oraz w adresach URL, które są opisane w tej sekcji. Jest to u góry, aby [portów i adresów URL wymaganych dla programu Microsoft Monitoring Agent](../log-analytics/log-analytics-agent-windows.md) do łączenia z usługą Log Analytics.
 
-Jeśli używasz serwera proxy do komunikacji między agentem i usługę Log Analytics, upewnij się, że odpowiednie zasoby są dostępne. Jeśli używasz zapory, aby ograniczyć dostęp do Internetu, należy skonfigurować zaporę, aby zezwolić na dostęp. Jeśli używasz bramy pakietu OMS jako serwer proxy, upewnij się, że jest ono skonfigurowane dla hybrydowych procesów roboczych. Aby uzyskać instrukcje, jak to zrobić, zobacz [skonfigurować bramę pakietu OMS dla usługi Automation hybrydowych procesów roboczych](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway#configure-for-automation-hybrid-workers).
+<<<<<<< HEAD, jeśli używasz serwera proxy do komunikacji między agentem i usługę Log Analytics, upewnij się, że odpowiednie zasoby są dostępne. Jeśli używasz zapory, aby ograniczyć dostęp do Internetu, należy skonfigurować zaporę, aby zezwolić na dostęp. Jeśli używasz bram usługi Log Analytics jako serwer proxy, upewnij się, że jest ono skonfigurowane dla hybrydowych procesów roboczych. Aby uzyskać instrukcje, jak to zrobić, zobacz [skonfigurować bramę usługi Log Analytics dla usługi Automation hybrydowych procesów roboczych](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway#configure-for-automation-hybrid-workers).
+=== Jeśli używasz serwera proxy do komunikacji między agentem i usługę Log Analytics, upewnij się, że odpowiednie zasoby są dostępne. Jeśli używasz zapory, aby ograniczyć dostęp do Internetu, należy skonfigurować zaporę, aby zezwolić na dostęp. Jeśli używasz bramy pakietu OMS jako serwer proxy, upewnij się, że jest ono skonfigurowane dla hybrydowych procesów roboczych. Aby uzyskać instrukcje, jak to zrobić, zobacz [skonfigurować bramę pakietu OMS dla usługi Automation hybrydowych procesów roboczych](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway#configure-for-automation-hybrid-workers).
+>>>>>>> f2c0e12936cdc838c25a786d71c35bb15c053c70
 
 Następujących portów i adresów URL są wymagane dla roli hybrydowego procesu roboczego Runbook do komunikowania się z usługą Automation:
 

@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: 868f465cc651043d3ef4b1735b4b528252572dbb
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: cc64bc1af6eee505ccf3d38e214c49ffb7e3304c
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378089"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404464"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Bezpieczny dostęp do konta usługi Azure Cosmos DB przy użyciu punktu końcowego usługi Azure Virtual Network
 
@@ -56,8 +56,8 @@ Teraz Twoje konto usługi Azure Cosmos DB będzie zezwalać tylko na ruch z tego
 
 1. Z **wszystkie zasoby** bloku konta usługi Azure Cosmos DB, możesz znaleźć chcesz zabezpieczyć.  
 
-> [!NOTE]
-> Jeśli masz istniejące zapory adresów IP, które są skonfigurowane dla konta usługi Azure Cosmos DB, należy pamiętać, konfigurację zapory, Usuń zapory adresów IP, a następnie włączyć punkt końcowy usługi. Po włączeniu punktu końcowego usługi bez disbling zapory, ruchu z tego zakresu adresów ip, utracisz tożsamości wirtualnego adresu IP i dlatego jest porzucany IP filtr komunikatu o błędzie. Tak, aby uniknąć tego błędu zawsze należy wyłączyć reguły zapory, skopiuj je, należy włączyć punkt końcowy usługi z podsieci, a na koniec listy ACL podsieci z usługi Cosmos DB. Po skonfigurowaniu punktu końcowego usługi i dodać listy ACL można ponownie włączyć zapory adresów IP ponownie w razie potrzeby.
+   > [!NOTE]
+   > Jeśli masz istniejące zapory adresów IP, które są skonfigurowane dla konta usługi Azure Cosmos DB, należy pamiętać, konfigurację zapory, Usuń zapory adresów IP, a następnie włączyć punkt końcowy usługi. Po włączeniu punktu końcowego usługi bez disbling zapory, ruchu z tego zakresu adresów ip, utracisz tożsamości wirtualnego adresu IP i dlatego jest porzucany IP filtr komunikatu o błędzie. Tak, aby uniknąć tego błędu zawsze należy wyłączyć reguły zapory, skopiuj je, należy włączyć punkt końcowy usługi z podsieci, a na koniec listy ACL podsieci z usługi Cosmos DB. Po skonfigurowaniu punktu końcowego usługi i dodać listy ACL można ponownie włączyć zapory adresów IP ponownie w razie potrzeby.
 
 2. Przed włączeniem punkt końcowy usługi sieci wirtualnej, należy skopiować informacje zapory adresów IP skojarzonych z Twoim kontem usługi Azure Cosmos DB do użycia w przyszłości. Po skonfigurowaniu punktu końcowego usługi, można ponownie włączyć zapory adresów IP.  
 
@@ -97,9 +97,8 @@ Aby skonfigurować punkt końcowy usługi konta usługi Azure Cosmos DB przy uż
 
 1. Zainstaluj najnowszą wersję [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) i [logowania](https://docs.microsoft.com/powershell/azure/authenticate-azureps).  Upewnij się, należy pamiętać, ustawienia zapory adresów IP i całkowicie usunąć zapory adresów IP przed włączeniem punkt końcowy usługi dla konta.
 
-
-> [!NOTE]
-> Jeśli masz istniejące zapory adresów IP, które są skonfigurowane dla konta usługi Azure Cosmos DB, należy pamiętać, konfigurację zapory, Usuń zapory adresów IP, a następnie włączyć punkt końcowy usługi. Po włączeniu punktu końcowego usługi bez disbling zapory, ruchu z tego zakresu adresów ip, utracisz tożsamości wirtualnego adresu IP i dlatego jest porzucany IP filtr komunikatu o błędzie. Tak, aby uniknąć tego błędu zawsze należy wyłączyć reguły zapory, skopiuj je, należy włączyć punkt końcowy usługi z podsieci, a na koniec listy ACL podsieci z usługi Cosmos DB. Po skonfigurowaniu punktu końcowego usługi i dodać listy ACL można ponownie włączyć zapory adresów IP ponownie w razie potrzeby.
+  > [!NOTE]
+  > Jeśli masz istniejące zapory adresów IP, które są skonfigurowane dla konta usługi Azure Cosmos DB, należy pamiętać, konfigurację zapory, Usuń zapory adresów IP, a następnie włączyć punkt końcowy usługi. Po włączeniu punktu końcowego usługi bez disbling zapory, ruchu z tego zakresu adresów ip, utracisz tożsamości wirtualnego adresu IP i dlatego jest porzucany IP filtr komunikatu o błędzie. Tak, aby uniknąć tego błędu zawsze należy wyłączyć reguły zapory, skopiuj je, należy włączyć punkt końcowy usługi z podsieci, a na koniec listy ACL podsieci z usługi Cosmos DB. Po skonfigurowaniu punktu końcowego usługi i dodać listy ACL można ponownie włączyć zapory adresów IP ponownie w razie potrzeby.
 
 2. Przed włączeniem punkt końcowy usługi sieci wirtualnej, należy skopiować informacje zapory adresów IP skojarzonych z Twoim kontem usługi Azure Cosmos DB do użycia w przyszłości. Spowoduje ponowne włączenie zapory adresów IP, po skonfigurowaniu punktu końcowego usługi.  
 
@@ -270,7 +269,7 @@ Po włączeniu punktów końcowych usługi sieci wirtualnej, źródłowe adresy 
 
 Usługa Azure Cosmos DB to usługa dla wielu dzierżawców z publicznym adresem IP. Jeśli ograniczysz dostęp do podsieci sieci wirtualnej platformy Azure przy użyciu funkcji punktu końcowego usługi Dostęp jest ograniczony do konta usługi Azure Cosmos DB przy użyciu danej sieci wirtualnej platformy Azure i jej podsieci.  Konto usługi Azure Cosmos DB nie znajduje się w tej sieci wirtualnej platformy Azure. 
 
-### <a name="what-if-anything-will-be-logged-in-log-analyticsoms-if-it-is-enabled"></a>Co zrobić, jeśli nic będą rejestrowane w Log Analytics/OMS. Jeśli jest włączone?  
+### <a name="what-if-anything-will-be-logged-in-log-analytics-if-it-is-enabled"></a>Co zrobić, jeśli nic zostaną zarejestrowane w usłudze Log Analytics, jeśli jest włączone?  
 
 Usługa Azure Cosmos DB będzie umożliwiać wypychanie powiadomień dzienników za pomocą adresu IP (bez ostatni oktet) ze stanem 403 żądanie zablokowane przez listy kontroli dostępu.  
 

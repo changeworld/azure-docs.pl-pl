@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 10/01/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 95dac6804f3226cac23bce95a1b09b2907d084b0
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: bc918d0ee3b3b435905546507287dc655f68e8c9
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395649"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429783"
 ---
 # <a name="integrate-azure-ad-logs-with-log-analytics-using-azure-monitor-preview"></a>Integrowanie dzienników usługi Azure AD z usługą Log Analytics przy użyciu usługi Azure Monitor (wersja zapoznawcza)
 
@@ -30,7 +30,11 @@ Usługa log Analytics pozwala przesyłać zapytania dotyczące danych do znalezi
  * Porównanie usługi Azure AD logowania dzienników względem dzienników zabezpieczeń opublikowane przez usługę Azure Security Center
 
  * Rozwiązywanie problemów z wąskich gardeł wydajności na stronie logowania w swojej aplikacji, przez skorelowanie danych dotyczących wydajności aplikacji z usługi Azure Application Insights.  
- 
+
+Poniższy klip wideo z sesji Konferencji Ignite przedstawia korzyści z używania usługi Log Analytics dla dzienników usługi Azure AD w scenariuszach praktyczne użytkownika.
+
+> [!VIDEO https://www.youtube.com/embed/MP5IaCTwkQg?start=1894]
+
 W tym artykule dowiesz się, jak zintegrować dzienniki usługi Azure Active Directory (Azure AD) z usługą Log Analytics przy użyciu usługi Azure Monitor.
 
 ## <a name="supported-reports"></a>Obsługiwane raporty

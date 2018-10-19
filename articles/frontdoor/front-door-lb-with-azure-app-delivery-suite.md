@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 253ec8c0d1d6725e6ae5c47c79882284c633d6e9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 05f77665352ee306f5684d5c7a09b27d4fe17650
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984470"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426814"
 ---
-# <a name="load-balancing-with-azures-application-delivery-suite"></a>Równoważenie obciążenia z pakietem dostarczania aplikacji platformy Azure
+# <a name="load-balancing-with-azures-application-delivery-suite"></a>Równoważenie obciążenia za pomocą pakietu dostarczania aplikacji platformy Azure
 
 ## <a name="introduction"></a>Wprowadzenie
 System Microsoft Azure oferuje wiele globalnym i regionalnym usług zarządzania, sposób dystrybucji ruchu sieciowego i ze zrównoważonym obciążeniem: usługi Traffic Manager, usługa drzwiami frontowymi, usługa Application Gateway i modułu równoważenia obciążenia.  Wraz z wielu regionów platformy Azure i strefowych architektury, jednocześnie korzystać z tych usług umożliwiają tworzenie niezawodnych, skalowalnych aplikacji o wysokiej wydajności.
@@ -36,7 +36,7 @@ Te usługi są podzielone na dwie kategorie:
 - Wydajność routingu, aby wysłać obiekt żądający do najbliższego wewnętrznej bazy danych pod kątem opóźnień.
 - Priorytet routingu, aby kierować cały ruch do wewnętrznej bazy danych, innych zapleczy jako kopii zapasowej.
 - Ważone działanie okrężne routingu, który rozprowadza ruchu w oparciu o wagi, która jest przypisana do poszczególnych pól zaplecza.
-- Geograficznego routingu, aby upewnić się, że obiekty żądające znajduje się w określonych regionach geograficznych są kierowane do zaplecza mapowane do tych regionów (na przykład, wszystkie żądania z Hiszpania ma być przekierowywany do regionu wschodnie stany USA Azure)
+- Geograficznego routingu, aby upewnić się, że obiekty żądające znajduje się w określonych regionach geograficznych są kierowane do zaplecza mapowane do tych regionów (na przykład, wszystkie żądania z Hiszpania ma być przekierowywany w regionie centralnym platformy Azure (Francja))
 - Podsieć routingu, która umożliwia mapowanie adresu IP zakresu do zaplecza, czemu żądania pochodzące z tych, które będą wysyłane do określonego wewnętrznej bazy danych (na przykład wszystkich użytkowników łączących się z zakresu adresów IP w Centrali firmy powinny pobierać zawartości internetowej innej niż ogólne użytkowników)
 
 Klient łączy się bezpośrednio z tym w wewnętrznej bazie danych. Usługa Azure Traffic Manager wykrywa zaplecza jest w złej kondycji, a następnie przekierowuje klientów do innego wystąpienia dobrej kondycji. Zapoznaj się [usługi Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) dokumentacji, aby dowiedzieć się więcej o usłudze.
@@ -83,8 +83,8 @@ Na poniższym diagramie przedstawiono architekturę tego scenariusza:
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się, jak [tworzenie drzwiami frontowymi](quickstart-create-front-door.md).
-- Dowiedz się, [działania drzwiami frontowymi](front-door-routing-architecture.md).
+- Dowiedz się, jak [utworzyć usługę Front Door](quickstart-create-front-door.md).
+- Dowiedz się, [jak działa usługa Front Door](front-door-routing-architecture.md).
 
 <!--Image references-->
 [1]: ./media/front-door-lb-with-azure-app-delivery-suite/application-delivery-figure1.png

@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3de3a7b15f2ebef549f925f6604956ca16f4551b
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 4e44a82969b0b91b04174d8643cf136abf14a575
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388096"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405246"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Interfejs API usługi Application Insights dla niestandardowych zdarzeń i metryk
 
@@ -154,7 +154,7 @@ telemetry.trackEvent({name: "WinGame"});
 
 Dane telemetryczne są dostępne w `customEvents` tabelę [analizy usługi Application Insights](app-insights-analytics.md). Każdy wiersz reprezentuje wywołanie `trackEvent(..)` w swojej aplikacji.
 
-Jeśli [próbkowania](app-insights-sampling.md) trwa, właściwości: itemCount wskazuje wartość większą niż 1. Na przykład: itemCount == 10 oznacza, że liczby wywołań do 10 do poleceń trackEvent(), proces pobierania próbek jedynie przesyłane, jeden z nich. Aby uzyskać poprawny liczba zdarzeń niestandardowych, należy użyć w związku z tym użycia kodu, takie jak `customEvent | summarize sum(itemCount)`.
+Jeśli [próbkowania](app-insights-sampling.md) trwa, właściwości: itemCount wskazuje wartość większą niż 1. Na przykład: itemCount == 10 oznacza, że liczby wywołań do 10 do poleceń trackEvent(), proces pobierania próbek jedynie przesyłane, jeden z nich. Aby uzyskać poprawny liczba zdarzeń niestandardowych, należy użyć w związku z tym użycia kodu, takie jak `customEvents | summarize sum(itemCount)`.
 
 ## <a name="getmetric"></a>GetMetric
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 3154a2f8b283f68ec3e10ba621ccba3ee6d77de2
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: 82cfa9e62dcc6b3a72dcb1ccf97f1f52a88a75c4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44324754"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404107"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Szczegóły zbierania danych dla rozwiązań do zarządzania na platformie Azure
 Ten artykuł zawiera listę [rozwiązań do zarządzania](monitoring-solutions.md) udostępnianych przez firmę Microsoft wraz z łączami do ich szczegółowej dokumentacji.  Zawiera także informacje o ich metody i częstotliwość zbierania danych w usłudze Log Analytics.  Identyfikowanie różnych rozwiązaniach dostępnych i zrozumienie wymagań połączenia i przepływu danych dla rozwiązań do zarządzania różnych, można użyć informacji w tym artykule. 
@@ -34,7 +34,7 @@ Wyjaśnienie kolumn są następujące:
 - **Operations Manager** — identyczne agenta jako Microsoft monitoring agent. W tej konfiguracji ma ona [połączonych z grupą zarządzania programu Operations Manager](../log-analytics/log-analytics-om-agents.md) połączoną z usługą Log Analytics. 
 -  **Usługa Azure Storage** — rozwiązanie zbiera dane z konta usługi Azure storage. 
 - **Wymagane programu Operations Manager?** -Podłączonej grupy zarządzania programu Operations Manager jest wymagany do zbierania danych przez rozwiązanie do zarządzania. 
-- **Danych agenta programu Operations Manager wysyłane za pośrednictwem grupy zarządzania** — jeśli agent jest [podłączonej do grupy zarządzania SCOM](../log-analytics/log-analytics-om-agents.md), a następnie przesyłane do usługi Log Analytics z serwera zarządzania. W takim przypadku agent nie musi połączyć się bezpośrednio do usługi Log Analytics. Jeśli to pole nie jest zaznaczone, następnie dane będą wysyłane z agenta bezpośrednio do usługi Log Analytics nawet wtedy, gdy agent jest połączony z grupą zarządzania programu SCOM. trzeba będzie ją albo mieć możliwość komunikacji z usługą Log Analytics za pośrednictwem [bramy pakietu OMS](../log-analytics/log-analytics-oms-gateway.md).
+- **Danych agenta programu Operations Manager wysyłane za pośrednictwem grupy zarządzania** — jeśli agent jest [podłączonej do grupy zarządzania SCOM](../log-analytics/log-analytics-om-agents.md), a następnie przesyłane do usługi Log Analytics z serwera zarządzania. W takim przypadku agent nie musi połączyć się bezpośrednio do usługi Log Analytics. Jeśli to pole nie jest zaznaczone, następnie dane będą wysyłane z agenta bezpośrednio do usługi Log Analytics nawet wtedy, gdy agent jest połączony z grupą zarządzania programu SCOM. Musisz mieć możliwość komunikacji z usługą Log Analytics za pośrednictwem [bramy usługi Log Analytics](../log-analytics/log-analytics-oms-gateway.md).
 - **Częstotliwość zbierania** -określa częstotliwość, dane są zbierane przez rozwiązanie do zarządzania. 
 
 

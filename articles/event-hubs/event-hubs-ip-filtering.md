@@ -1,5 +1,5 @@
 ---
-title: Azure Event Hubs IP połączenia filtrów | Dokumentacja firmy Microsoft
+title: Filtry IP centrów zdarzeń platformy Azure | Dokumentacja firmy Microsoft
 description: Użyj filtrowania z określonych adresów IP do usługi Azure Event Hubs w celu połączenia bloków adresów IP.
 services: event-hubs
 documentationcenter: ''
@@ -10,20 +10,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: spelluru
-ms.openlocfilehash: c229a6f84096ecca892b74f7ce65cb831fa50be3
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: d0114821b5239146f64dde0b01652dc320994585
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886181"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408153"
 ---
 # <a name="use-ip-filters"></a>Użyj filtrów IP
 
-W scenariuszach, w których usługa Azure Event Hubs jest dostępna tylko w pewnych dobrze znanych witryn *filtru IP* funkcja umożliwia skonfigurowanie reguł dla odrzuca lub akceptowanie ruchu pochodzącego z określonych adresów IPv4. Na przykład te adresy może być udostępnianych przez firmy bramy translatora adresów Sieciowych.
+W scenariuszach, w których usługi Azure Event Hubs powinny być tylko dostępne z określonych dobrze znanych witryn *filtru IP* funkcja umożliwia skonfigurowanie reguł dla odrzuca lub akceptowanie ruchu pochodzącego z określonych adresów IPv4. Na przykład te adresy może być udostępnianych przez firmy bramy translatora adresów Sieciowych.
 
 ## <a name="when-to-use"></a>Kiedy stosować
 
-Dwoma ważnymi Użyj przypadki, w których jest przydatne blokowanie punktów końcowych usługi Event Hubs w przypadku niektórych adresów IP są następujące:
+Dwoma ważnymi Użyj przypadki, w których jest przydatna do blokowania usługi Event Hubs w przypadku niektórych adresów IP są następujące:
 
 - Usługi event hubs powinny odbierać dane tylko z określonego zakresu adresów IP i odrzucić wszystkie inne elementy. Na przykład używasz usługi Event Hubs za pomocą [Azure Express Route] [ express-route] na tworzenie prywatnych połączeń w infrastrukturze lokalnej. 
 - Należy odrzucić ruch z adresów IP, które zostały zidentyfikowane jako podejrzane przez administratora usługi Event Hubs.
@@ -47,12 +47,12 @@ Na przykład jeśli chcesz zaakceptować adresów w 70.37.104.0/24 zakresu i odr
 > [!NOTE]
 > Odrzuca adresy IP można zapobiec interakcji z usługą Event Hubs innych usług platformy Azure (np. usługi Azure Stream Analytics, Azure Virtual Machines lub Device Explorer w portalu).
 
-### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Tworzenie reguły sieci wirtualnej przy użyciu szablonów usługi Azure Resource Manager
+### <a name="creating-an-ip-filter-rule-with-azure-resource-manager-templates"></a>Tworzenie reguły filtru adresu IP za pomocą szablonów usługi Azure Resource Manager
 
 > [!IMPORTANT]
 > Sieci wirtualne są obsługiwane w **standardowa** i **dedykowanych** warstw usługi Event Hubs. Nie jest obsługiwana w warstwie podstawowa. 
 
-Następujący szablon usługi Resource Manager umożliwia dodanie reguły sieci wirtualnej do istniejącej przestrzeni nazw usługi Event Hubs.
+Następujący szablon usługi Resource Manager umożliwia dodawanie reguły filtrowania adresów IP do istniejącej przestrzeni nazw usługi Event Hubs.
 
 Parametry szablonu:
 

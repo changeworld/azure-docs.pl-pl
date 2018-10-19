@@ -1,6 +1,6 @@
 ---
 title: Rozwiązanie Dane o komunikacji sieciowej w usłudze Log Analytics | Microsoft Docs
-description: Dane o komunikacji sieciowej to skonsolidowane dane o sieci i wydajności pochodzące z komputerów z agentami OMS, w tym z agentami programu Operations Manager oraz agentami połączonymi z systemem Windows. Dane sieciowe są połączone z danymi Twojego dziennika, aby ułatwić korelowanie danych.
+description: Dane o komunikacji sieciowej jest skonsolidowane dane sieci i wydajności z komputerów przy użyciu agentów usługi Log Analytics. Dane sieciowe są połączone z danymi Twojego dziennika, aby ułatwić korelowanie danych.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,20 +15,20 @@ ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 9ee388e8d33d293240e70ccf79ec8d3c445dffd1
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 61ceea60962acc2e1ec032df49683e8a28381dd7
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269161"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405365"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Rozwiązanie Dane o komunikacji sieciowej 2.0 (wersja zapoznawcza) w usłudze Log Analytics
 
 ![Symbol rozwiązania Dane o komunikacji sieciowej](./media/log-analytics-wire-data/wire-data2-symbol.png)
 
-Dane o komunikacji sieciowej to skonsolidowane dane o sieci i wydajności zebrane z komputerów połączonych z systemem Windows i systemem Linux za pomocą agenta pakietu OMS, w tym z komputerów monitorowanych przez program Operations Manager w Twoim środowisku. Dane sieciowe są łączone z innymi danymi Twojego dziennika, aby ułatwić korelowanie danych.
+Dane o komunikacji sieciowej jest skonsolidowane dane sieci i wydajności zbierane z komputerów połączonych Windows i połączone z systemem Linux za pomocą agenta usługi Log Analytics, łącznie z tymi monitorowane przez program Operations Manager w środowisku. Dane sieciowe są łączone z innymi danymi Twojego dziennika, aby ułatwić korelowanie danych.
 
-Oprócz agenta pakietu OMS rozwiązanie Dane o komunikacji sieciowej używa agentów Microsoft Dependency Agent zainstalowanych na komputerach w infrastrukturze IT. Agenci Dependency Agent monitorują dane sieciowe wysyłane do i z Twoich komputerów dla poziomów sieci 2 i 3 w [modelu OSI](https://en.wikipedia.org/wiki/OSI_model), włącznie z różnymi używanymi protokołami i portami. Dane są następnie wysyłane do usługi Log Analytics przy użyciu agentów.  
+Oprócz agenta usługi Log Analytics rozwiązanie dane o komunikacji sieciowej używa agenci zależności firmy Microsoft, które zainstalujesz na komputerach w infrastrukturze IT. Agenci Dependency Agent monitorują dane sieciowe wysyłane do i z Twoich komputerów dla poziomów sieci 2 i 3 w [modelu OSI](https://en.wikipedia.org/wiki/OSI_model), włącznie z różnymi używanymi protokołami i portami. Dane są następnie wysyłane do usługi Log Analytics przy użyciu agentów.  
 
 >[!NOTE]
 >Jeśli masz już wdrożone rozwiązania Service Map lub rozważa mapy usługi lub [usługi Azure Monitor dla maszyn wirtualnych](../monitoring/monitoring-vminsights-overview.md), ma nowego połączenia metryki zestawu danych mogą zbierać i przechowywać w usłudze Log Analytics, który zawiera informacje porównywalne z danymi o komunikacji sieciowej.
@@ -65,20 +65,20 @@ Rozwiązanie Dane o komunikacji sieciowej pobiera swoje dane z agenta Microsoft 
 | Grupa zarządzania programu System Center Operations Manager | Yes | Rozwiązanie Dane o komunikacji sieciowej analizuje i gromadzi dane z agentów systemu Windows i Linux w połączonej [grupie zarządzania programu System Center Operations Manager](log-analytics-om-agents.md). <br><br> Wymagane jest bezpośrednie połączenie z komputera agenta programu System Center Operations Manager do usługi Log Analytics. |
 | Konto magazynu Azure | Nie | Rozwiązanie Dane o komunikacji sieciowej gromadzi dane z komputerów agenta, więc nie ma od niego żadnych danych do gromadzenia z usługi Azure Storage. |
 
-W systemie Windows agent Microsoft Monitoring Agent (MMA) jest używany zarówno przez program System Center Operations Manager, jak i usługę Log Analytics do zbierania i wysyłania danych. W zależności od kontekstu agent nosi nazwę agenta programu System Center Operations Manager, agenta pakietu OMS, agenta usługi Log Analytics, Agent MMA lub Agent bezpośredni. Program System Center Operations Manager i usługa Log Analytics udostępniają nieco inne wersje MMA. Każda z tych wersji może raportować do programu System Center Operations Manager, do usługi Log Analytics lub do obu miejsc.
+W systemie Windows agent Microsoft Monitoring Agent (MMA) jest używany zarówno przez program System Center Operations Manager, jak i usługę Log Analytics do zbierania i wysyłania danych. W zależności od kontekstu agent nosi nazwę agenta programu System Center Operations Manager, agenta usługi Log Analytics, Agent MMA lub Agent bezpośredni. Program System Center Operations Manager i usługa Log Analytics udostępniają nieco inne wersje MMA. Każda z tych wersji może raportować do programu System Center Operations Manager, do usługi Log Analytics lub do obu miejsc.
 
 W systemie Linux agent usługi Log Analytics dla systemu Linux zbiera i przesyła dane do usługi Log Analytics. Na serwerach z agentami podłączone bezpośrednio do usługi Log Analytics lub na serwerach, które nawiązujesz połączenie z usługą Log Analytics przy użyciu grup zarządzania programu System Center Operations Manager, można użyć dane o komunikacji sieciowej.
 
-Agent Dependency Agent nie przesyła żadnych danych samodzielnie i nie wymaga żadnych zmian zapory lub portów. Dane w dane o komunikacji sieciowej zawsze są przesyłane przez agenta usługi Log Analytics z usługą Log Analytics, bezpośrednio lub za pośrednictwem bramy pakietu OMS.
+Agent Dependency Agent nie przesyła żadnych danych samodzielnie i nie wymaga żadnych zmian zapory lub portów. Dane w dane o komunikacji sieciowej zawsze są przesyłane przez agenta usługi Log Analytics z usługą Log Analytics, bezpośrednio lub za pośrednictwem bramy usługi Log Analytics.
 
 ![diagram agenta](./media/log-analytics-wire-data/agents.png)
 
 Jeśli używasz programu System Center Operations Manager z grupą zarządzania połączoną z usługą Log Analytics:
 
 - Dodatkowa konfiguracja nie jest wymagana, jeśli agenci programu System Center Operations Manager mogą uzyskać dostęp do Internetu w celu nawiązania połączenia z usługą Log Analytics.
-- Należy skonfigurować bramę OMS do pracy z programem System Center Operations Manager, gdy Twoi agenci programu System Center Operations Manager nie mogą uzyskać dostępu do usługi Log Analytics za pośrednictwem Internetu.
+- Należy skonfigurować bramę usługi Log Analytics do pracy z programu System Center Operations Manager, gdy Twoi agenci programu System Center Operations Manager nie uzyskują dostęp do usługi Log Analytics za pośrednictwem Internetu.
 
-Jeśli komputery Windows lub Linux bezpośrednio nie może połączyć się z usługą, należy skonfigurować agenta usługi Log Analytics do łączenia z usługą Log Analytics, za pomocą bramy pakietu OMS. Bramę pakietu OMS możesz pobrać z [Centrum pobierania Microsoft](https://www.microsoft.com/download/details.aspx?id=52666).
+Jeśli komputery Windows lub Linux bezpośrednio nie może połączyć się z usługą, należy skonfigurować agenta usługi Log Analytics, aby nawiązać połączenie przy użyciu bramy usługi Log Analytics w usłudze Log Analytics. Można pobrać bramę usługi Log Analytics z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -211,7 +211,7 @@ Agent Dependency Agent jest instalowany na komputerach z systemem Windows za pom
 
 Aby zainstalować agenta Dependency Agent na każdym komputerze z systemem Windows, wykonaj następujące kroki:
 
-1. Zainstaluj agenta pakietu OMS zgodnie z krokami podanymi w [Collect data from Windows computers hosted in your environment (Zbieranie danych z komputerów z systemem Windows hostowanych w Twoim środowisku)](log-analytics-windows-agent.md).
+1. Zainstaluj agenta usługi Log Analytics, wykonaj czynności w [zbieranie danych z komputerów Windows hostowanych w danym środowisku](log-analytics-windows-agent.md).
 2. Pobierz program Windows Dependency Agent przy użyciu linku w poprzedniej sekcji, a następnie uruchom go za pomocą następującego polecenia: `InstallDependencyAgent-Windows.exe`
 3. Użyj kreatora, aby zainstalować agenta.
 4. Jeśli agent Dependency Agent się nie uruchomi, sprawdź dzienniki, aby uzyskać szczegółowe informacje o błędzie. W przypadku agentów systemu Windows katalog dziennika to %Programfiles%\Microsoft Dependency Agent\logs.
@@ -237,7 +237,7 @@ Agent Dependency Agent jest instalowany na komputerach z systemem Linux za pomoc
 
 Aby zainstalować agenta Dependency Agent na każdym komputerze z systemem Linux, wykonaj następujące kroki:
 
-1. Zainstaluj agenta pakietu OMS zgodnie z krokami podanymi w [Collect data from Linux computers hosted in your environment (Zbieranie danych z komputerów z systemem Linux hostowanych w Twoim środowisku)](log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key).
+1. Zainstaluj agenta usługi Log Analytics, wykonaj czynności w [zbieranie danych z komputerów z systemem Linux hostowanych w danym środowisku](log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key).
 2. Pobierz program Linux Dependency Agent przy użyciu linku w poprzedniej sekcji, a następnie zainstaluj go jako użytkownik root za pomocą następującego polecenia: sh InstallDependencyAgent-Linux64.bin
 3. Jeśli agent Dependency Agent się nie uruchomi, sprawdź dzienniki, aby uzyskać szczegółowe informacje o błędzie. Dla agentów systemu Linux katalogiem dziennika jest: /var/opt/microsoft/dependency-agent/log.
 

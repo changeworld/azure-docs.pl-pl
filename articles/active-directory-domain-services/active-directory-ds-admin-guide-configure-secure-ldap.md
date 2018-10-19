@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: maheshu
-ms.openlocfilehash: 22c97da35416ba1ff593dfa5e41f557ea2ab1cc0
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 42c27df658ae810ac31813ffb94f397a0070933f
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182250"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429137"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurowanie bezpiecznego protokołu LDAP (LDAPS) dla domeny zarządzanej usług domenowych Azure AD
 W tym artykule pokazano, jak włączyć bezpieczny Lightweight Directory dostępu protokołu (LDAPS) dla domeny zarządzanej usług domenowych Azure AD. Protokół Secure LDAP jest także znana jako "LDAP Lightweight Directory Access Protocol () za pośrednictwem Secure Sockets Layer (SSL) / zabezpieczeń TLS (Transport Layer)".
@@ -86,7 +86,7 @@ New-SelfSignedCertificate -Subject contoso100.com `
   -Type SSLServerAuthentication -DnsName *.contoso100.com
 ```
 
-W poprzednim przykładzie, zastąp "*. contoso100.com" z nazwą domeny DNS z domeny zarządzanej. Adapterem, jeśli utworzono domeny zarządzanej, o nazwie "contoso100.onmicrosoft.com", należy zastąpić "*. contoso100.com" w poprzednim skrypcie przy użyciu ' *. contoso100.onmicrosoft.com ").
+W poprzednim przykładzie "contoso100.com" należy zastąpić nazwę domeny DNS z domeny zarządzanej. Na przykład, jeśli utworzono domeny zarządzanej, o nazwie "contoso100.onmicrosoft.com", Zamień "contoso100.com" w atrybucie podmiotu "contoso100.onmicrosoft.com" i "*. contoso100.com" w atrybucie DnsName za pomocą "*. contoso100.onmicrosoft.com ").
 
 ![Wybieranie katalogu usługi Azure AD](./media/active-directory-domain-services-admin-guide/secure-ldap-powershell-create-self-signed-cert.png)
 

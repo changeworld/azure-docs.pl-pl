@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: db1ac46521a6ca8688ed1257b8b812321fee2ea3
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 8ce8d0cda6f81aca0e5ea89dd813b371f61e8404
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345326"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407371"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Często zadawane pytania dotyczące zestawów skalowania maszyn wirtualnych platformy Azure
 
@@ -705,7 +705,7 @@ Tak, możesz przez zainstalowanie rozszerzenia Log Analytics na skali ustawić m
 ```
 az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group Team-03 --vmss-name nt01 --settings "{'workspaceId': '<your workspace ID here>'}" --protected-settings "{'workspaceKey': '<your workspace key here'}"
 ```
-Wymagany identyfikator workspaceId i klucz workspaceKey można znaleźć w portalu pakietu OMS. Na stronie Przegląd kliknij Kafelek ustawienia. Kliknij kartę połączone źródła u góry.
+Wymagany identyfikator workspaceId i klucz workspaceKey można znaleźć w obszarze roboczym usługi Log Analytics w witrynie Azure portal. Na stronie Przegląd kliknij Kafelek ustawienia. Kliknij kartę połączone źródła u góry.
 
 Uwaga: Jeśli w zestawie skalowania _upgradePolicy_ jest ustawiony na ręczny, należy zastosować rozszerzenie do wszystkich maszyn wirtualnych w zestawie przez wywołanie metody uaktualniania na nich. W interfejsie wiersza polecenia to _az vmss update-instances_.
 

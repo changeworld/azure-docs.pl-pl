@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: e3620bbf92cab926d56c4de0817f833b61cf2b03
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d1fdec8e3a959aaeb68d4b63a1c71d6ef1ddd054
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125089"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406325"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Rozwiązanie do zarządzania usługi Office 365 na platformie Azure (wersja zapoznawcza)
 
@@ -37,7 +37,7 @@ Wymagane jest spełnienie następujących przed to rozwiązanie jest zainstalowa
 
 - Organizacji subskrypcji usługi Office 365.
 - Poświadczenia dla konta użytkownika, który jest administratorem globalnym.
-- Aby odbierać dane inspekcji, musisz mieć [skonfigurować inspekcję](https://support.office.com/en-us/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&rs=en-US&ad=US#PickTab=Before_you_begin) w ramach subskrypcji usługi Office 365.  Należy pamiętać, że [inspekcję skrzynki pocztowej](https://technet.microsoft.com/library/dn879651.aspx) skonfigurowano oddzielnie.  Można nadal zainstalować rozwiązanie i zbierać inne dane, jeśli nie skonfigurowano inspekcji.
+- Aby odbierać dane inspekcji, musisz mieć [skonfigurować inspekcję](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&rs=en-US&ad=US#PickTab=Before_you_begin) w ramach subskrypcji usługi Office 365.  Należy pamiętać, że [inspekcję skrzynki pocztowej](https://technet.microsoft.com/library/dn879651.aspx) skonfigurowano oddzielnie.  Można nadal zainstalować rozwiązanie i zbierać inne dane, jeśli nie skonfigurowano inspekcji.
  
 
 ## <a name="management-packs"></a>Pakiety administracyjne
@@ -477,7 +477,7 @@ Można usunąć rozwiązania do zarządzania usługi Office 365 przy użyciu pro
 
 ## <a name="data-collection"></a>Zbieranie danych
 ### <a name="supported-agents"></a>Obsługiwani agenci
-Rozwiązania usługi Office 365 nie pobierać dane z dowolnego z [agentów pakietu OMS](../log-analytics/log-analytics-data-sources.md).  Pobiera dane bezpośrednio z usługi Office 365.
+Rozwiązania usługi Office 365 nie pobierać dane z dowolnego z [agentów usługi Log Analytics](../log-analytics/log-analytics-data-sources.md).  Pobiera dane bezpośrednio z usługi Office 365.
 
 ### <a name="collection-frequency"></a>Częstotliwość zbierania
 Może upłynąć kilka godzin początkowo zbierane dane. Po uruchomieniu zbieranie, usługi Office 365 wysyła [powiadomień elementu webhook](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) szczegółowych danych do usługi Log Analytics zawsze jest tworzony rekord. Ten rekord jest dostępna w usłudze Log Analytics w ramach po kilku minutach od jego odebrania.
@@ -497,7 +497,7 @@ Na pulpicie nawigacyjnym znajdują się kolumny wymienione w poniższej tabeli. 
 | Operacje | Zawiera informacje dotyczące aktywnych użytkowników z wszystkich monitorowanych subskrypcji usługi Office 365. Można również wyświetlić liczbę działań, które zdarzają się wraz z upływem czasu.
 | Exchange | Pokazuje podział działania serwera Exchange, takie jak uprawnienia Dodaj skrzynkę pocztową lub skrzynki pocztowej Ustaw. |
 | Sharepoint | Pokazuje najważniejszych działań, że użytkownicy wykonać na dokumentów programu SharePoint. Podczas przechodzenia do szczegółów z tego kafelka na stronie wyszukiwania znajdują się szczegółowe informacje o tych działań, takich jak dokument docelowy i lokalizację tego działania. Na przykład w przypadku zdarzenia dostępu do pliku będzie mógł wyświetlić dokument, który jest dostępny, jego nazwa skojarzonego konta i adres IP. |
-| Azure Active Directory | Obejmuje działania użytkowników najważniejsze, takich jak zresetować hasło użytkownika i prób logowania. Podczas przechodzenia do szczegółów można wyświetlić szczegóły tych działań, takich jak stan wyniku. Najczęściej jest to przydatne, jeśli chcesz monitorować podejrzanych działań w usłudze Azure Active Directory. |
+| Usługa Azure Active Directory | Obejmuje działania użytkowników najważniejsze, takich jak zresetować hasło użytkownika i prób logowania. Podczas przechodzenia do szczegółów można wyświetlić szczegóły tych działań, takich jak stan wyniku. Najczęściej jest to przydatne, jeśli chcesz monitorować podejrzanych działań w usłudze Azure Active Directory. |
 
 
 
@@ -518,7 +518,7 @@ Następujące właściwości są wspólne dla wszystkich rekordów w usłudze Of
 | Identyfikatora organizacji | Identyfikator GUID dzierżawy usługi Office 365 w Twojej organizacji. Tę wartość, zawsze będzie taka sama dla Twojej organizacji, niezależnie od usługi Office 365, w której występuje. |
 | RecordType | Typ operacji wykonywanej. |
 | ResultStatus | Wskazuje, czy akcja (określona we właściwości Operation) zakończyła się powodzeniem. Możliwe wartości to Succeeded, partiallysucceded i Failed. Wartość dla działania administracyjnego programu Exchange, ma wartość PRAWDA lub FAŁSZ. |
-| UserId | Nazwa UPN (główna nazwa użytkownika) użytkownika, który wykonał operację powodującą zarejestrowanie rekordu na przykład my_name@my_domain_name. Należy pamiętać, że rekordy działań wykonywanych przez konta systemowe (takie jak SHAREPOINT\system lub Zarządzanie NT\System) dostępne są również. | 
+| Identyfikator użytkownika | Nazwa UPN (główna nazwa użytkownika) użytkownika, który wykonał operację powodującą zarejestrowanie rekordu na przykład my_name@my_domain_name. Należy pamiętać, że rekordy działań wykonywanych przez konta systemowe (takie jak SHAREPOINT\system lub Zarządzanie NT\System) dostępne są również. | 
 | UserKey | Alternatywnego Identyfikatora użytkownika zidentyfikowanego we właściwości identyfikatora użytkownika.  Na przykład właściwość ta jest wypełniana passport Unikatowy identyfikator (PUID) zdarzenia, wykonywane przez użytkowników w programie SharePoint, usłudze OneDrive dla firm i programem Exchange. Ta właściwość może również określić tę samą wartość jako właściwość identyfikatora użytkownika dla zdarzenia zachodzące w innych usługach i zdarzeniach wykonywanych przez konta systemowe|
 | UserType | Typ użytkownika, który wykonał operację.<br><br>Administrator<br>Aplikacja<br>DcAdmin<br>Regularne<br>Zarezerwowane<br>ServicePrincipal<br>System |
 
@@ -547,7 +547,7 @@ Te rekordy są tworzone, gdy próbuje zalogować użytkownika usługi Active Dir
 | UserDomain | Tożsamość informacji o dzierżawie (TII). | 
 
 
-### <a name="azure-active-directory"></a>Azure Active Directory
+### <a name="azure-active-directory"></a>Usługa Azure Active Directory
 Te rekordy są tworzone po dokonaniu zmiany lub dodatki do obiektów w usłudze Azure Active Directory.
 
 | Właściwość | Opis |

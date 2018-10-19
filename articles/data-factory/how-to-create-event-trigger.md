@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 10/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 20ee69654a6b19365c9b7c46e1fa11e102168365
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: f744e379521fe62f4b3fbbad0cc524ccb3e1b18d
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309364"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429392"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Utwórz wyzwalacz, który uruchamia potok w odpowiedzi na zdarzenie
 
@@ -71,23 +71,26 @@ Poniższa tabela zawiera omówienie elementów schematu that are related to Wyzw
 | **JSON Element** | **Opis** | **Typ** | **Dozwolone wartości** | **Wymagane** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
 | **Zakres** | Identyfikator zasobu usługi Azure Resource Manager na koncie magazynu. | Ciąg | Identyfikator usługi Azure Resource Manager | Yes |
-| **Zdarzenia** | Typ zdarzenia, które powodują uruchomienie tego wyzwalacza. | Tablica    | Microsoft.Storage.BlobCreated, Microsoft.Storage.BlobDeleted | Tak, dowolnej kombinacji. |
-| **blobPathBeginsWith** | Ścieżka obiektu blob musi zaczynać się od wzorca przewidziane Aby wyzwalacz był uruchamiany. Na przykład "/ rekordy/obiekty BLOB/grudnia /" zostanie tylko przed uruchomieniem wyzwalacza dla obiektów blob w folderze grudnia w kontenerze rekordów. | Ciąg   | | Należy podać co najmniej jedną z tych właściwości: blobPathBeginsWith, blobPathEndsWith. |
-| **blobPathEndsWith** | Ścieżka obiektu blob musi kończyć się przy użyciu wzorca przewidziane Aby wyzwalacz był uruchamiany. Na przykład "december/boxes.csv" będzie tylko przed uruchomieniem wyzwalacza dla obiektów blob o nazwie pola w folderze grudnia. | Ciąg   | | Należy podać co najmniej jedną z tych właściwości: blobPathBeginsWith, blobPathEndsWith. |
+| **Zdarzenia** | Typ zdarzenia, które powodują uruchomienie tego wyzwalacza. | Tablica    | Microsoft.Storage.BlobCreated, Microsoft.Storage.BlobDeleted | Tak, dowolnej kombinacji tych wartości. |
+| **blobPathBeginsWith** | Ścieżka obiektu blob musi zaczynać się od wzorca parametru Aby uruchomić wyzwalacz. Na przykład `/records/blobs/december/` tylko uruchamia wyzwalacz dla obiektów blob w `december` folderze `records` kontenera. | Ciąg   | | Należy podać wartość dla co najmniej jednej z tych właściwości: `blobPathBeginsWith` lub `blobPathEndsWith`. |
+| **blobPathEndsWith** | Ścieżka obiektu blob musi kończyć się przy użyciu wzorca parametru Aby uruchomić wyzwalacz. Na przykład `december/boxes.csv` tylko uruchamia wyzwalacz dla obiektów blob o nazwie `boxes` w `december` folderu. | Ciąg   | | Należy podać wartość dla co najmniej jednej z tych właściwości: `blobPathBeginsWith` lub `blobPathEndsWith`. |
 
 ## <a name="examples-of-event-based-triggers"></a>Przykłady Wyzwalacze oparte na zdarzeniach
 
 Ta sekcja zawiera przykłady ustawień wyzwalacza opartego na zdarzeniach.
 
--   **Ścieżka obiektu blob, który rozpoczyna się od**("/ containername /") — odbiera zdarzenia dla dowolnego obiektu blob w kontenerze.
--   **Ścieżka obiektu blob, który rozpoczyna się od**("/ containername/obiekty BLOB/foldername") — odbiera zdarzenia dla żadnych obiektów blob w kontenerze containername i folderze nazwa_folderu. Możesz też przywołać podfolder; na przykład "/ containername/obiekty BLOB/nazwa folderu/nazwa podfolderu /".
--   **Ścieżka obiektu blob, który rozpoczyna się od**("/ containername/blobs/foldername/file.txt") — odbiera zdarzenia dla obiektu blob o nazwie plik.txt w folderze nazwa_folderu containername kontener.
--   **Ścieżka obiektu blob kończy się**("plik.txt") — odbiera zdarzenia dla obiektu blob o nazwie plik.txt wszystkie ścieżce.
--   **Ścieżka obiektu blob kończy się**("/ containername/blobs/file.txt") — odbiera zdarzenia dla obiektu blob o nazwie plik.txt w obszarze containername kontener.
--   **Ścieżka obiektu blob kończy się**("foldername/file.txt") — odbiera zdarzenia dla obiektu blob o nazwie plik.txt w folderze nazwa_folderu w dowolnym kontenerze.
+> [!IMPORTANT]
+> Musi zawierać `/blobs/` segment ścieżki, jak pokazano w poniższych przykładach zawsze wtedy, gdy Określ kontener oraz folder, kontener i plik lub kontener, folder i plik.
 
-> [!NOTE]
-> Musi zawierać `/blobs/` segmentu ścieżki po każdym Określ kontener oraz folder, kontener i plik lub kontener, folder i plik.
+| Właściwość | Przykład | Opis |
+|---|---|---|
+| **Ścieżka obiektu blob, który rozpoczyna się od** | `/containername/` | Odbiera zdarzenia dla wszystkich obiektów blob w kontenerze. |
+| **Ścieżka obiektu blob, który rozpoczyna się od** | `/containername/blobs/foldername/` | Odbiera zdarzenia dla wszystkie obiekty BLOB w `containername` kontenera i `foldername` folderu. |
+| **Ścieżka obiektu blob, który rozpoczyna się od** | `/containername/blobs/foldername/subfoldername/` | Możesz też przywołać podfolderu. |
+| **Ścieżka obiektu blob, który rozpoczyna się od** | `/containername/blobs/foldername/file.txt` | Odbiera zdarzenia dla obiektu blob o nazwie `file.txt` w `foldername` folderze `containername` kontenera. |
+| **Ścieżka obiektu blob, który kończy się ciągiem** | `file.txt` | Odbiera zdarzenia dla obiektu blob o nazwie `file.txt` i dowolną ścieżkę. |
+| **Ścieżka obiektu blob, który kończy się ciągiem** | `/containername/blobs/file.txt` | Odbiera zdarzenia dla obiektu blob o nazwie `file.txt` w kontenerze `containername`. |
+| **Ścieżka obiektu blob, który kończy się ciągiem** | `foldername/file.txt` | Odbiera zdarzenia dla obiektu blob o nazwie `file.txt` w `foldername` folder w dowolnym kontenerze. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać szczegółowe informacje na temat wyzwalaczy, zobacz [wyzwalacze i wykonywanie potoku](concepts-pipeline-execution-triggers.md#triggers).

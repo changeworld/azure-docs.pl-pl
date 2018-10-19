@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: aff1d59000a95f2b8f029b9db30ff1facb2f8ba6
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 32d1956741f739234a3fdea7034f2f1e33a4c082
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114672"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408229"
 ---
 # <a name="azure-sql-transparent-data-encryption-bring-your-own-key-support"></a>Usługa Azure SQL Transparent Data Encryption: Bring Your Own Key pomocy technicznej
 
@@ -67,8 +67,6 @@ Gdy TDE najpierw jest skonfigurowany do używania funkcji ochrony TDE z usługi 
   > Jeśli usługa Azure AD Identity **jest przypadkowo usunięty lub uprawnienia do serwera zostaną odwołane** za pomocą zasad dostępu magazynu kluczy, serwer utraci dostęp do magazynu kluczy i baz danych funkcja TDE szyfrowane są porzucane w ciągu 24 godzin.
 
 - Korzystając z zapór i sieci wirtualnych za pomocą usługi Azure Key Vault, należy skonfigurować następujące czynności: 
-  - Zezwalaj na dostęp z "Wybrane sieci" 
-  - Dodaj istniejące sieci wirtualne, a następnie wybierz sieć bazy danych SQL, jeśli ma to zastosowanie, (jest to opcjonalne dla pojedynczych baz danych i wymaganych dla wystąpienia zarządzanego) 
   - Zezwalaj na zaufanych usług firmy Microsoft na pomijanie zapory — wybrana opcja tak 
          
     > [!NOTE] 

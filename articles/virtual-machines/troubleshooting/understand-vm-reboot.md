@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: dd9a2c6a5b2183d4909b6bcfd24dc1fae401c785
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: fa316ee47e6fdabacf22e1e419bfd501620dd83d
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414100"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429154"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Omówienie ponownego uruchamiania systemu dla maszyny Wirtualnej platformy Azure
 
@@ -73,7 +73,7 @@ Inne scenariusze, które zazwyczaj powodują ponowne uruchomienie maszyny Wirtua
 ### <a name="azure-security-center-and-windows-update"></a>Usługa Azure Security Center i Windows Update
 Usługa Azure Security Center monitoruje codziennie Windows i maszyn wirtualnych systemu Linux dla brakujących aktualizacji systemu operacyjnego. Usługa Security Center pobiera listę dostępnych zabezpieczeń i aktualizacje krytyczne z witryny Windows Update lub Windows Server Update Services (WSUS) w zależności od którego usługa jest skonfigurowana na maszyny Wirtualnej z systemem Windows. Usługa Security Center sprawdza również uzyskać najnowsze aktualizacje dla systemów Linux. Jeśli maszyna wirtualna jest Brak aktualizacji systemu, usługa Security Center zaleca się stosowanie aktualizacji systemu. Zastosowanie tych aktualizacji systemu jest kontrolowana za pomocą usługi Security Center w witrynie Azure portal. Po zastosowaniu niektóre aktualizacje ponownych rozruchów maszyn wirtualnych może być wymagane. Aby uzyskać więcej informacji, zobacz [Zastosuj aktualizacje systemu w usłudze Azure Security Center](../../security-center/security-center-apply-system-updates.md).
 
-Na serwerach lokalnych, np. Azure nie wypychanie aktualizacji z witryny Windows Update do maszyn wirtualnych platformy Azure Windows, ponieważ te maszyny mają być zarządzane przez ich użytkowników. Jesteś, jednak zaleca się, aby Pozostaw włączone automatyczne ustawienie Windows Update. Automatyczne instalowanie aktualizacji z witryny Windows Update powodują ponowne uruchamianie po zastosowaniu aktualizacji. Aby uzyskać więcej informacji, zobacz [często zadawane pytania dotyczące programu Windows Update](https://support.microsoft.com/help/12373/windows-update-faq).
+Na serwerach lokalnych, np. Azure nie wypychanie aktualizacji z witryny Windows Update do maszyn wirtualnych Windows, ponieważ te maszyny mają być zarządzane przez ich użytkowników. Jesteś, jednak zaleca się, aby Pozostaw włączone automatyczne ustawienie Windows Update. Automatyczne instalowanie aktualizacji z witryny Windows Update powodują ponowne uruchamianie po zastosowaniu aktualizacji. Aby uzyskać więcej informacji, zobacz [często zadawane pytania dotyczące programu Windows Update](https://support.microsoft.com/help/12373/windows-update-faq).
 
 ### <a name="other-situations-affecting-the-availability-of-your-vm"></a>Innych sytuacjach wpływu na dostępność maszyny Wirtualnej
 Istnieją inne przypadki, w których Azure aktywnie może zawiesić korzystanie z maszyny Wirtualnej. Będzie otrzymywał powiadomienia e-mail przed podjęciem tej akcji, dzięki czemu będziesz mieć możliwość rozwiązania problemów w podstawowej. Przykłady problemów, które mają wpływ na dostępność maszyny Wirtualnej naruszenia zabezpieczeń i wygaśnięcie formy płatności.

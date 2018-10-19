@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: e3770fe29d6f1073a0ca6507fdf57059cbd3727e
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: f5906a93e92691cb6046fb04a9fd83f3484e17b8
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067540"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427403"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -200,7 +200,7 @@ Wynikiem warunku jest czy **pola** spełnia określone kryteria. Obsługiwane wa
 Korzystając z **takich jak** i **notLike** warunków, można podać symbol wieloznaczny `*` wartości.
 Wartość nie może zawierać więcej niż jeden symbol wieloznaczny `*`.
 
-Korzystając z **dopasowania** i **notMatch** warunki `#` do reprezentowania cyfrę, `?` litery i znak reprezentuje rzeczywisty znaku. Aby uzyskać przykłady, zobacz [zezwolić wielu wzorców nazwy](../samples/allow-multiple-name-patterns.md).
+Korzystając z **dopasowania** i **notMatch** warunki `#` do reprezentowania cyfrę, `?` literę `.` spełnić wszystkie znaki i jakikolwiek inny znak do reprezentuje rzeczywisty znaku. Aby uzyskać przykłady, zobacz [zezwolić wielu wzorców nazwy](../samples/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Pola
 

@@ -4,20 +4,20 @@ description: Dowiedz się, jak rozwiązywać problemy związane z zarządzaniem 
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/08/2018
+ms.date: 10/17/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 2e47320d5ad88edfa8ea6122f3a0abd104230974
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 41883fd677d276f8f26721fdccc3ded020c3278b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42055175"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405231"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Rozwiązywanie problemów z zarządzaniem aktualizacjami
 
-W tym artykule omówiono rozwiązania, aby rozwiązać problemy, które mogą wystąpić w przypadku korzystania z rozwiązania Update Management.
+W tym artykule omówiono rozwiązania, aby rozwiązać problemy, które może działać w przypadku korzystania z rozwiązania Update Management.
 
 ## <a name="general"></a>Ogólne
 
@@ -36,7 +36,7 @@ The components for the 'Update Management' solution have been enabled, and now t
 Ten błąd może być spowodowany przez następujących przyczyn:
 
 1. Konto usługi Automation komunikacja jest blokowana.
-2. Trwa maszyn wirtualnych, które mogą mieć dołączone pochodzi od klonowanym komputerze, który nie był Sysprep przy użyciu programu Microsoft Monitoring Agent zainstalowany.
+2. Maszyna wirtualna jest dołączona może pochodzić z klonowanym komputerze, który nie był Sysprep przy użyciu programu Microsoft Monitoring Agent zainstalowany.
 
 #### <a name="resolution"></a>Rozwiązanie
 
@@ -111,6 +111,28 @@ Hybrydowy proces roboczy elementu Runbook nie był w stanie wygenerować certyfi
 
 Sprawdź konto systemowe ma dostęp do odczytu do folderu **C:\ProgramData\Microsoft\Crypto\RSA** , a następnie spróbuj ponownie.
 
+### <a name="hresult"></a>Scenariusz: Maszyna jest wyświetlana jako nie oceniono i przedstawia wyjątek HResult
+
+#### <a name="issue"></a>Problem
+
+Masz maszyny, które pokazują, jak **nie oceniono** w obszarze **zgodności**, i zostanie wyświetlony komunikat o wyjątku poniżej.
+
+#### <a name="cause"></a>Przyczyna
+
+Aktualizacja Windows nie jest poprawnie skonfigurowany na maszynie.
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Kliknij dwukrotnie wyjątek wyświetlane na czerwono, aby wyświetlić komunikat o wyjątku całego. Przejrzyj poniższą tabelę, potencjalne rozwiązania lub akcje do wykonania:
+
+|Wyjątek  |Rozdzielczość lub Akcja  |
+|---------|---------|
+|`Exception from HRESULT: 0x……C`     | Wyszukiwanie kodu błędów w [Windows zaktualizować lista kodów błędów](https://support.microsoft.com/help/938205/windows-update-error-code-list) można znaleźć dodatkowe szczegóły na przyczyną wyjątku.        |
+|`0x8024402C` lub `0x8024401C`     | Takie błędy występują problemy z połączeniem sieciowym. Upewnij się, że Twoja maszyna ma zapewniona odpowiednia łączność sieciowa do zarządzania aktualizacjami. Zobacz sekcję dotyczącą [Planowanie sieci](../automation-update-management.md#ports) lista portów i adresów, które są wymagane.        |
+|`0x8024402C`     | Jeśli używasz serwera programu WSUS, upewnij się, wartości rejestru `WUServer` i `WUStatusServer` w kluczu rejestru `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` prawidłowy serwer WSUS.        |
+|`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Upewnij się, że usługa Windows Update (wuauserv) jest uruchomiony, a nie jest wyłączona.        |
+|Inne wyjątek ogólny     | Przeprowadź wyszukiwanie internet w poszukiwaniu możliwych rozwiązań i pracować z lokalnej pomocy technicznej IT.         |
+
 ## <a name="linux"></a>Linux
 
 ### <a name="scenario-update-run-fails-to-start"></a>Scenariusz: Przebieg aktualizacji nie powiedzie się
@@ -159,7 +181,7 @@ Jeśli nie możesz rozwiązać problem z poprawką, Utwórz kopię w następują
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli nie została uwzględniona w rozwiązaniu problemu, lub nie można rozwiązać problem, odwiedź jedną z następujących kanałów obsługi więcej:
+Jeśli nie był widoczny problemu lub są w stanie rozwiązać problemu, odwiedź jedną z następujących kanałów obsługi więcej:
 
 * Uzyskaj odpowiedzi od ekspertów w zakresie platformy Azure na [forach dotyczących platformy Azure](https://azure.microsoft.com/support/forums/)
 * Połącz się z kontem [@AzureSupport](https://twitter.com/azuresupport) — oficjalnym kontem platformy Microsoft Azure utworzonym w celu podniesienia jakości obsługi klientów przez połączenie społeczności platformy Azure z odpowiednimi zasobami: odpowiedziami, pomocą techniczną i ekspertami.

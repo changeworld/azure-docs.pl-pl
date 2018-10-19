@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 011654dcbad21c3e8cea51d6ab98eeca461e4685
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 7caa98b65b35d1eb1a000f1e9099fbf8eb3f8861
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068829"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406045"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Włączyć i przejrzeć Kubernetes węzła głównego dzienników w usłudze Azure Kubernetes Service (AKS)
 
@@ -37,9 +37,12 @@ Usługa log Analytics jest włączona i zarządzane w witrynie Azure portal. Aby
 1. Na liście dostępnych dzienników, wybierz pozycję dzienniki, które ma zostać włączone, takie jak *apiserver klastra kubernetes w usłudze*, *Menedżera klastra kubernetes w usłudze kontrolera*, i *klastra kubernetes w usłudze scheduler*. Możesz wrócić i zmienić zebranych dzienników po włączeniu usługi Log Analytics.
 1. Gdy wszystko będzie gotowe, wybierz **Zapisz** Aby włączyć zbieranie dzienników wybrane.
 
-W poniższym przykładzie przedstawiono zrzut ekranu portalu *ustawień diagnostycznych* okna, a następnie opcję utworzenia obszaru roboczego pakietu OMS:
+W poniższym przykładzie przedstawiono zrzut ekranu portalu *ustawień diagnostycznych* okna, a następnie opcję, aby utworzyć obszar roboczy usługi Log Analytics:
 
-![Włącz obszar roboczy pakietu OMS dla klastra usługi AKS w Log Analytics](media/view-master-logs/enable-oms-log-analytics.png)
+![Włącz obszar roboczy Log Analytics dla klastra usługi AKS w Log Analytics](media/view-master-logs/enable-oms-log-analytics.png)
+
+>[!NOTE]
+>Obszary robocze OMS są teraz nazywane obszarów roboczych usługi Log Analytics. 
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Harmonogram zasobnik testowych w klastrze usługi AKS
 
@@ -75,7 +78,7 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>Wyświetlanie zebranych dzienników
 
-Może upłynąć kilka minut, zanim dzienniki diagnostyczne można włączyć i wyświetlane w obszarze roboczym pakietu OMS. W witrynie Azure portal, wybierz grupę zasobów dla Twojego obszaru roboczego usługi Log Analytics, takie jak *myResourceGroup*, następnie wybierz zasób usługi Log Analytics, takie jak *myAKSLogs*.
+Może upłynąć kilka minut, zanim dzienniki diagnostyczne można włączyć i wyświetlane w obszarze roboczym usługi Log Analytics. W witrynie Azure portal, wybierz grupę zasobów dla Twojego obszaru roboczego usługi Log Analytics, takie jak *myResourceGroup*, następnie wybierz zasób usługi Log Analytics, takie jak *myAKSLogs*.
 
 ![Wybierz obszar roboczy usługi Log Analytics dla klastra usługi AKS](media/view-master-logs/select-log-analytics-workspace.png)
 

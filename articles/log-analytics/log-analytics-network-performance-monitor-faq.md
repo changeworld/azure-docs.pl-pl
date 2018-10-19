@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 008eac235cd6b75c4c1d95b64e91923dad5a5106
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 2821f3fa07d8d9ada02da212084639c93e469d0b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49355517"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408884"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor rozwiązania — często zadawane pytania
 
@@ -61,7 +61,7 @@ Więcej informacji można uzyskać na względne zalety każdego protokołu [tuta
 ### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>Jak można skonfigurować węzła do obsługi monitorowania przy użyciu protokołu TCP
 Dla węzła do obsługi monitorowania przy użyciu protokołu TCP: 
 * Upewnij się, że platforma węzeł systemu Windows Server (2008 z dodatkiem SP1 lub nowszym).
-* Uruchom [EnableRules.ps1](https://aka.ms/npmpowershellscript) skrypt programu Powershell w węźle. Zobacz [instrukcje](log-analytics-network-performance-monitor.md#configure-operations-management-suite-agents-for-monitoring) Aby uzyskać więcej informacji.
+* Uruchom [EnableRules.ps1](https://aka.ms/npmpowershellscript) skrypt programu Powershell w węźle. Zobacz [instrukcje](log-analytics-network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) Aby uzyskać więcej informacji.
 
 
 ### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>Jak zmienić port TCP używany przez narzędzie NPM monitorowania?

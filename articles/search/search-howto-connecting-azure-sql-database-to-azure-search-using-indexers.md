@@ -1,20 +1,20 @@
 ---
 title: Łączenie usługi Azure SQL Database z usługi Azure Search przy użyciu indeksatorów | Dokumentacja firmy Microsoft
 description: Informacje o sposobie pobierania danych z usługi Azure SQL Database do indeksu usługi Azure Search przy użyciu indeksatorów.
-author: chaosrealm
-manager: jlembicz
+ms.date: 10/17/2018
+author: mgottein
+manager: cgronlun
+ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 04/20/2018
-ms.author: eugenesh
-ms.openlocfilehash: f92b49ebdff71fc0561cc490cb70ffb479f7fc9e
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 1c498bb857b717682f943af96b222d9712b5d389
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310950"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409224"
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Łączenie usługi Azure SQL Database do usługi Azure Search przy użyciu indeksatorów
 

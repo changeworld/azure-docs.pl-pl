@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: b38ce59a80d3fa78449892c8a76ed70b4dc698d3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: f7fe7cee39468558ce503c050d5574e4be15ebf5
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041485"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407169"
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>Monitorowanie urządzeń Surface Hub z usługą Log Analytics, aby śledzić ich kondycję
 
@@ -51,7 +51,7 @@ Usługa Intune jest produktem firmy Microsoft, która umożliwia centralne zarz�
 1. Zaloguj się do usługi Intune.
 2. Przejdź do **ustawienia** > **połączonych źródeł**.
 3. Utwórz lub Edytuj zasady na podstawie szablonu Surface Hub.
-4. Przejdź do sekcji pakietu OMS (usługa Azure Operational Insights), zasad i Dodaj usługi Log Analytics *identyfikator obszaru roboczego* i *klucz obszaru roboczego* do zasad.
+4. Przejdź do sekcji usługi Azure Operational Insights, zasad i Dodaj usługi Log Analytics *identyfikator obszaru roboczego* i *klucz obszaru roboczego* do zasad.
 5. Zapisz zasady.
 6. Skojarzyć zasady z odpowiedniej grupy urządzeń.
 
@@ -66,9 +66,9 @@ Jeśli nie używasz usługi Intune do zarządzania środowiskiem, możesz zareje
 
 1. Na urządzeniu Surface Hub Otwórz **ustawienia**.
 2. Wprowadź poświadczenia administratora urządzenia, po wyświetleniu monitu.
-3. Kliknij przycisk **to urządzenie**i w obszarze **monitorowanie**, kliknij przycisk **Konfigurowanie ustawień usługi OMS**.
+3. Kliknij przycisk **to urządzenie**, a w obszarze **monitorowanie**, kliknij przycisk **skonfigurować ustawienia usługi Analiza dzienników**.
 4. Wybierz **Włącz monitorowanie**.
-5. W oknie dialogowym Ustawienia pakietu OMS, wpisz usługi Log Analytics **identyfikator obszaru roboczego** i wpisz **klucz obszaru roboczego**.  
+5. W oknie dialogowym Ustawienia usługi Log Analytics, wpisz usługi Log Analytics **identyfikator obszaru roboczego** i wpisz **klucz obszaru roboczego**.  
    ![Ustawienia](./media/log-analytics-surface-hubs/settings.png)
 6. Kliknij przycisk **OK** aby zakończyć konfigurację.
 

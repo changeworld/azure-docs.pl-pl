@@ -15,18 +15,21 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: roiyz
-ms.openlocfilehash: bab579b540dbeed8ecbff8925547509edb1d78c9
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: dc0d7857dbbbdc862878201ba9d47632d2b5affd
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352380"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404855"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Zaloguj się rozszerzenie maszyny wirtualnej Analytics dla systemu Linux
 
 ## <a name="overview"></a>Przegląd
 
 Usługa log Analytics oferuje możliwości korygowania monitorowania, alertów i alert w chmurze i zasobów lokalnych. Rozszerzenie maszyny wirtualnej Log Analytics Agent dla systemu Linux jest opublikowany i obsługiwane przez firmę Microsoft. Rozszerzenie instaluje agenta usługi Log Analytics na maszynach wirtualnych platformy Azure i rejestruje maszyn wirtualnych do istniejącego obszaru roboczego usługi Log Analytics. W tym dokumencie przedstawiono obsługiwanych platform, konfiguracji i opcje wdrażania dla rozszerzenia maszyny wirtualnej usługi Log Analytics dla systemu Linux.
+
+>[!NOTE]
+>W ramach ciągłego przejście z programu Microsoft Operations Management Suite (OMS) do usługi Azure Monitor OMS Agent for Windows lub Linux zostanie określone jako funkcja agentów usługi Log Analytics dla Windows i usługi Log Analytics agent dla systemu Linux.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -49,7 +52,7 @@ Rozszerzenia Log Analytics Agent mogą być uruchamiane względem tych dystrybuc
 >
 
 ### <a name="agent-and-vm-extension-version"></a>Wersja agenta i rozszerzenia maszyny Wirtualnej
-Poniższa tabela zawiera mapowanie wersję rozszerzenia maszyny Wirtualnej programu Log Analytics i Log Analytics Agent pakietu dla każdej wersji. Link do wersji agenta usługi Log Analytics w wersji pakietu jest dołączony. Informacje o wersji zawierają szczegółowe informacje na temat poprawki i nowe funkcje dostępne w wersji danego agenta.  
+Poniższa tabela zawiera mapowanie wersję rozszerzenia maszyny Wirtualnej programu Log Analytics i pakietu agenta usługi Log Analytics dla każdej wersji. Link do wersji agenta usługi Log Analytics w wersji pakietu jest dołączony. Informacje o wersji zawierają szczegółowe informacje na temat poprawki i nowe funkcje dostępne w wersji danego agenta.  
 
 | Wersja rozszerzenia maszyny Wirtualnej systemu Linux analizy dzienników | Wersja pakietu agenta analizy dziennika | 
 |--------------------------------|--------------------------|
@@ -210,13 +213,13 @@ Dane wyjściowe wykonywania rozszerzenia jest rejestrowany w następującym plik
 | 9 | Wywołuje się przedwcześnie enable | [Aktualizacja agenta systemu Linux platformy Azure](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) do najnowszej dostępnej wersji. |
 | 10 | Maszyna wirtualna jest już połączona z obszarem roboczym usługi Log Analytics | Aby połączyć maszynę Wirtualną do obszaru roboczego, określona w schemacie rozszerzenia, ustaw stopOnMultipleConnections na wartość false w ustawieniach publicznych tej właściwości lub Usuń. Ta maszyna wirtualna jest naliczana po dla każdego obszaru roboczego jest połączony. |
 | 11 | Nieprawidłowa konfiguracja dostarczane do rozszerzenia | Postępuj zgodnie z powyższych przykładach można ustawić wartości wszystkich właściwości niezbędne do wdrożenia. |
-| 17 | Niepowodzenia instalacji pakietu OMS | 
+| 17 | Zaloguj się niepowodzenia instalacji pakietu analizy | 
 | 19 | Niepowodzenia instalacji pakietu OMI | 
 | 20 | Niepowodzenia instalacji pakietu SCX |
 | 51 | To rozszerzenie nie jest obsługiwane na system operacyjny maszyny Wirtualnej | |
-| 55 | Nie można nawiązać połączenia do usługi OMS, wymagane pakiety, brak lub serwerach pakietu Menedżera jest zablokowany| Upewnij się, że system ma dostęp do Internetu lub czy podano prawidłowy serwer proxy HTTP. Ponadto sprawdź poprawność identyfikator obszaru roboczego i sprawdź, czy są zainstalowane narzędzia programu curl i tar. |
+| 55 | Nie można nawiązać połączenia z usługą Log Analytics lub wymagane pakiety serwerach lub brakuje Menedżera pakietów jest zablokowany| Upewnij się, że system ma dostęp do Internetu lub czy podano prawidłowy serwer proxy HTTP. Ponadto sprawdź poprawność identyfikator obszaru roboczego i sprawdź, czy są zainstalowane narzędzia programu curl i tar. |
 
-Dodatkowe informacje dotyczące rozwiązywania problemów można znaleźć na [przewodnik rozwiązywania problemów w pakiecie OMS Agent for Linux](../../log-analytics/log-analytics-azure-vmext-troubleshoot.md).
+Dodatkowe informacje dotyczące rozwiązywania problemów można znaleźć na [przewodnik rozwiązywania problemów programu Log Analytics Agent for Linux](../../log-analytics/log-analytics-azure-vmext-troubleshoot.md).
 
 ### <a name="support"></a>Pomoc techniczna
 

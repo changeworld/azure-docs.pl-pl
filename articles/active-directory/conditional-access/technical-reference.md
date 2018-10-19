@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/11/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: e44b68a2ed2786b449e2680ca4a8ca531058b85c
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 445611338b0b2895d83626e8cf450dc8d1cb27a6
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432815"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406403"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Informacje dotyczące ustawień dostępu warunkowego w usłudze Azure Active Directory
 
@@ -182,8 +182,8 @@ To ustawienie ma wpływ na dostęp podjętych następujące aplikacje mobilne i 
 |Poczta/kalendarz/osób aplikacji Outlook 2016, Outlook 2013 (z nowoczesnego uwierzytelniania)|Office 365 Exchange Online|Windows 10|
 |Zasady uwierzytelniania Wieloskładnikowego i lokalizacji dla aplikacji. Urządzenia, na podstawie zasad nie są obsługiwane. |Wszystkie usługi Moje aplikacje usługi app service|Android i iOS|
 |Usługi Microsoft Teams — w ten sposób kontroluje wszystkie usługi, które obsługują Microsoft Teams i wszystkie jej aplikacje klient — Windows Desktop z systemem iOS, Android, WP i klienta sieci web|Microsoft Teams|Windows 10, Windows 8.1, Windows 7, iOS, Android i macOS |
-|Aplikacje pakietu Office 2016, Office 2013 (z nowoczesnego uwierzytelniania), usługi OneDrive synchronizacji klienta (zobacz [uwagi](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))|Usługi Office 365 SharePoint Online|Windows 8.1, Windows 7|
-|Aplikacje pakietu Office 2016, aplikacje uniwersalne pakietu Office, pakietu Office 2013 (z nowoczesnego uwierzytelniania), klient synchronizacji OneDrive (zobacz [uwagi](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), w przyszłości planujemy obsługę grup usługi Office, w przyszłości planujemy obsługę aplikacji programu SharePoint|Usługi Office 365 SharePoint Online|Windows 10|
+|Aplikacje pakietu Office 2016, Office 2013 (z nowoczesnego uwierzytelniania), usługi OneDrive synchronizacji klienta (zobacz [uwagi](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))|Usługi Office 365 SharePoint Online|Windows 8.1, Windows 7|
+|Aplikacje pakietu Office 2016, aplikacje uniwersalne pakietu Office, pakietu Office 2013 (z nowoczesnego uwierzytelniania), klient synchronizacji OneDrive (zobacz [uwagi](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), w przyszłości planujemy obsługę grup usługi Office, w przyszłości planujemy obsługę aplikacji programu SharePoint|Usługi Office 365 SharePoint Online|Windows 10|
 |Pakiety Office 2016 dla systemu macOS (Word, Excel, PowerPoint, OneNote tylko). W przyszłości planujemy usługi OneDrive dla firm pomocy technicznej|Usługi Office 365 SharePoint Online|Mac OS X|
 |Aplikacje mobilne pakietu Office|Usługi Office 365 SharePoint Online|Android, iOS|
 |Aplikacja usługi Yammer pakietu Office|Usługi Office 365 w usłudze Yammer|Windows 10, iOS, Android|

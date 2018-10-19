@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: 50055befaa0a5f0bb03bda18e01edfb751e49369
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d5a4cfa3a91b82aa0f5b1725f86c732fecf632d4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379999"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405450"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Dołączanie do usługi Azure Security Center w warstwie standardowa celu uzyskania zwiększonych zabezpieczeń
 Uaktualnij do standardowej usługi Security Center z zalet zarządzania zwiększone zabezpieczenia i ochrona przed zagrożeniami dla obciążeń chmury hybrydowej.  Możesz wypróbować bezpłatnie przez 60 dni Standard. Odwiedź Centrum zabezpieczeń [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/) Aby uzyskać więcej informacji.
@@ -42,13 +42,13 @@ Całej subskrypcji platformy Azure można uaktualnić do warstwy standardowa, kt
 
 ## <a name="upgrade-an-azure-subscription-or-workspace"></a>Uaktualnienie subskrypcji platformy Azure lub obszaru roboczego
 Aby uaktualnić subskrypcję lub obszar roboczy na warstwę standardowa:
-1. W menu głównym usługi Security Center wybierz **wprowadzenie**.
+1. W menu głównym usługi Security Center wybierz pozycję **Wprowadzenie**.
   ![Rozpoczęcie pracy](./media/security-center-onboarding/get-started.png)
-2. W obszarze **uaktualnienia**, usługa Security Center wyświetla listę subskrypcji i obszarów roboczych, kwalifikują się do dołączenia. 
-   - Możesz kliknąć rozwijane **się okres próbny** umożliwia wyświetlenie listy wszystkich subskrypcji i obszarów roboczych z ich stanem uprawnień w wersji próbnej.
-   -    Możesz przeprowadzić uaktualnienie subskrypcji i obszarów roboczych, które nie są uprawnieni do skorzystania z wersji próbnej.
-   -    Możesz wybrać kwalifikujących się obszarów roboczych i subskrypcje, aby rozpocząć okres próbny.
-3.  Kliknij przycisk **Rozpocznij okres próbny** aby rozpocząć okres próbny w ramach wybranej subskrypcji.
+2. W obszarze **Uaktualnienie** usługa Security Center wyświetla listę subskrypcji i obszarów roboczych, które kwalifikują się do dołączenia. 
+   - Możesz kliknąć listę rozwijaną **Zastosuj wersję próbną**, aby wyświetlić listę wszystkich subskrypcji i obszarów roboczych ze stanem kwalifikacji do korzystania z wersji próbnej.
+   -    Możesz uaktualnić subskrypcje i obszary robocze, które nie kwalifikują się do korzystania z wersji próbnej.
+   -    Możesz wybrać kwalifikujące się obszary robocze i subskrypcje i rozpocząć korzystanie z wersji próbnej.
+3.  Kliknij przycisk **Rozpocznij okres próbny**, aby rozpocząć okres próbny w ramach wybranych subskrypcji.
   ![Wybierz subskrypcję](./media/security-center-onboarding/select-subscription.png)
 
 
@@ -63,11 +63,11 @@ Usługa Security Center może monitorować stan bezpieczeństwa komputerów nien
 ### <a name="add-new-non-azure-computers-from-getting-started"></a>Dodać nowe komputery spoza platformy Azure z **wprowadzenie**
 
 1. Wróć do **wprowadzenie**.   
-2. Wybierz **wprowadzenie** kartę.
+2. Wybierz kartę **Rozpoczęcie pracy**.
 
   ![Poza platformą Azure](./media/security-center-onboarding/non-azure.png)
 
-3. Kliknij przycisk **Konfiguruj** w obszarze **dodać nowe komputery spoza platformy Azure**. Wyświetlana jest lista obszarów roboczych usługi Log Analytics. Jeśli ma to zastosowanie, lista zawiera domyślny obszar roboczy utworzony przez usługę Security Center po włączeniu automatycznej aprowizacji. Wybierz ten obszar roboczy lub inny obszar roboczy, którego chcesz użyć.
+3. Kliknij przycisk **Konfiguruj** w obszarze **Dodaj nowe komputery spoza platformy Azure**. Zostanie wyświetlona lista obszarów roboczych usługi Log Analytics. Jeśli ma to zastosowanie, lista zawiera domyślny obszar roboczy utworzony przez usługę Security Center po włączeniu automatycznej aprowizacji. Wybierz ten obszar roboczy lub inny obszar roboczy, którego chcesz użyć.
 
   ![Dodawanie komputera spoza platformy Azure][7]
 
@@ -82,6 +82,8 @@ W przypadku istniejących obszarów roboczych są wymienione w obszarze **dodać
    ![Dodaj nowy obszar roboczy][4]
 
 2. W obszarze **zabezpieczenia i inspekcja**, wybierz opcję **obszaru roboczego pakietu OMS** Aby utworzyć nowy obszar roboczy.
+> [!NOTE]
+> Obszary robocze OMS są teraz nazywane obszarów roboczych usługi Log Analytics.
 3. W obszarze **obszaru roboczego pakietu OMS**, wprowadź informacje o obszarze roboczym.
 4. W obszarze **obszaru roboczego pakietu OMS**, wybierz opcję **OK**.  Po wybraniu przycisku OK otrzymasz link pobierania agenta Windows lub Linux i kluczami identyfikatora obszaru roboczego do użycia podczas konfigurowania agenta.
 5. W obszarze **zabezpieczenia i inspekcja**, wybierz opcję **OK**.

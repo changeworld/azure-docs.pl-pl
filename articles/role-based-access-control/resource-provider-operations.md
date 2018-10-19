@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/27/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d9cf46a1fd28985d9ca98d173bbef17380b7de21
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: f3f5b656b4c90c3b39fc317160eea7ce8fea25ff
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354397"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409734"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów w usłudze Azure Resource Manager
 
@@ -3129,7 +3129,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Media/mediaservices/streamingPolicies/write | Utwórz lub zaktualizuj wszelkie zasady przesyłania strumieniowego |
 > | Akcja | Microsoft.Media/mediaservices/syncStorageKeys/action | Synchronizuj klucze magazynu dla konta usługi Azure Storage dołączone |
 > | Akcja | Microsoft.Media/mediaservices/transforms/delete | Usuń wszystkie przekształcenia |
-> | Akcja | Microsoft.Media/mediaservices/transforms/jobs/cancelJob/action | Anulowanie zadania |
+> | Akcja | Microsoft.Media/mediaservices/transforms/jobs/cancelJob/action | Anuluj zadanie |
 > | Akcja | Microsoft.Media/mediaservices/transforms/jobs/delete | Usuń wszystkie zadania |
 > | Akcja | Microsoft.Media/mediaservices/transforms/jobs/read | Odczytaj wszelkie zadanie |
 > | Akcja | Microsoft.Media/mediaservices/transforms/jobs/write | Utwórz lub zaktualizuj wszystkie zadania |
@@ -3938,16 +3938,16 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Akcja | Microsoft.OperationsManagement/managementAssociations/delete | Usuń istniejące skojarzenie zarządzania |
-> | Akcja | Microsoft.OperationsManagement/managementAssociations/read | Pobieranie istniejącego skojarzenia zarządzania |
-> | Akcja | Microsoft.OperationsManagement/managementAssociations/write | Utwórz nowe skojarzenie zarządzania |
-> | Akcja | Microsoft.OperationsManagement/managementConfigurations/delete | Usuwanie istniejącej konfiguracji zarządzania |
-> | Akcja | Microsoft.OperationsManagement/managementConfigurations/read | Pobieranie istniejącej konfiguracji zarządzania |
-> | Akcja | Microsoft.OperationsManagement/managementConfigurations/write | Utwórz nową konfigurację zarządzania |
+> | Akcja | Microsoft.OperationsManagement/managementAssociations/delete | Usuń istniejące skojarzenie zarządzania. |
+> | Akcja | Microsoft.OperationsManagement/managementAssociations/read | Pobieranie istniejącego skojarzenia zarządzania. |
+> | Akcja | Microsoft.OperationsManagement/managementAssociations/write | Utwórz nowe skojarzenie zarządzania. |
+> | Akcja | Microsoft.OperationsManagement/managementConfigurations/delete | Usuwanie istniejącej konfiguracji zarządzania. |
+> | Akcja | Microsoft.OperationsManagement/managementConfigurations/read | Pobieranie istniejącej konfiguracji zarządzania. |
+> | Akcja | Microsoft.OperationsManagement/managementConfigurations/write | Utwórz nową konfigurację zarządzania. |
 > | Akcja | Microsoft.OperationsManagement/register/action | Zarejestruj subskrypcję u dostawcy zasobów. |
-> | Akcja | Microsoft.OperationsManagement/solutions/delete | Usuń istniejące rozwiązanie OMS |
-> | Akcja | Microsoft.OperationsManagement/solutions/read | Pobierz istniejące rozwiązanie OMS |
-> | Akcja | Microsoft.OperationsManagement/solutions/write | Utwórz nowe rozwiązanie OMS |
+> | Akcja | Microsoft.OperationsManagement/solutions/delete | Usuń istniejące rozwiązanie do monitorowania. |
+> | Akcja | Microsoft.OperationsManagement/solutions/read | Pobierz, istniejące rozwiązanie do monitorowania. |
+> | Akcja | Microsoft.OperationsManagement/solutions/write | Tworzenie nowego rozwiązania do monitorowania. |
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 

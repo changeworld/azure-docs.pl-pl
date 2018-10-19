@@ -15,33 +15,33 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: roiyz
-ms.openlocfilehash: 02fa19cad56f1a31ad60c597df1b004710cb5b50
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 12f7c52f916f385ddf95cf16aa89c4848ab7c118
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452092"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406606"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Dziennik analizy rozszerzenia maszyny wirtualnej, aby uzyskać Windows
 
-Usługa log Analytics oferuje funkcje monitorowania w chmurze i zasobów lokalnych. Rozszerzenie maszyny wirtualnej Log Analytics Agent for Windows publikowana i obsługiwane przez firmę Microsoft. Rozszerzenie instaluje agenta usługi Log Analytics na maszynach wirtualnych platformy Azure i rejestruje maszyn wirtualnych do istniejącego obszaru roboczego usługi Log Analytics. W tym dokumencie przedstawiono obsługiwanych platform, konfiguracji i opcje wdrażania dla rozszerzenia maszyny wirtualnej usługi Log Analytics Windows.
+Usługa log Analytics oferuje funkcje monitorowania w chmurze i zasobów lokalnych. Rozszerzenie maszyny wirtualnej agenta usługi Log Analytics dla Windows publikowana i obsługiwane przez firmę Microsoft. Rozszerzenie instaluje agenta usługi Log Analytics na maszynach wirtualnych platformy Azure i rejestruje maszyn wirtualnych do istniejącego obszaru roboczego usługi Log Analytics. W tym dokumencie przedstawiono obsługiwanych platform, konfiguracji i opcje wdrażania dla rozszerzenia maszyny wirtualnej usługi Log Analytics Windows.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="operating-system"></a>System operacyjny
 
-Rozszerzenia Log Analytics Agent for Windows mogą być uruchamiane względem systemu Windows Server 2008 R2, 2012, 2012 R2 i 2016 zwalnia.
+Rozszerzenie agenta usługi Log Analytics dla Windows mogą być uruchamiane względem systemu Windows Server 2008 R2, 2012, 2012 R2 i 2016 zwalnia.
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
 Usługa Azure Security Center automatycznie aprowizuje agenta usługi Log Analytics i łączy ją z obszarem roboczym analizy dzienników domyślnej subskrypcji platformy Azure. Jeśli używasz usługi Azure Security Center nie należy uruchamiać za pomocą procedury w tym dokumencie. Spowoduje to zastąpienie skonfigurowany obszar roboczy i przerwania połączenia z usługą Azure Security Center.
 
 ### <a name="internet-connectivity"></a>Łączność z Internetem
-Rozszerzenia Log Analytics Agent for Windows wymaga, że docelowej maszyny wirtualnej jest połączony z Internetem. 
+Rozszerzenie agenta usługi Log Analytics dla Windows wymaga, że docelowej maszyny wirtualnej jest połączony z Internetem. 
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
 
-Następujący kod JSON zawiera schemat dla rozszerzenia Log Analytics Agent. Rozszerzenie wymaga identyfikatora obszaru roboczego i klucz obszaru roboczego w docelowy obszar roboczy usługi Log Analytics. Te można znaleźć w ustawieniach obszaru roboczego w witrynie Azure portal. Ponieważ klucz obszaru roboczego, powinny być traktowane jako poufne dane, powinny być przechowywane w chronionym ustawienia konfiguracji. Dane platformy Azure ustawienia rozszerzenia chronione maszyny Wirtualnej jest zaszyfrowany i odszyfrowane tylko na docelowej maszynie wirtualnej. Należy pamiętać, że **workspaceId** i **klucz workspaceKey** jest rozróżniana wielkość liter.
+Następujący kod JSON zawiera schemat dla rozszerzenia agenta usługi Log Analytics. Rozszerzenie wymaga identyfikatora obszaru roboczego i klucz obszaru roboczego w docelowy obszar roboczy usługi Log Analytics. Te można znaleźć w ustawieniach obszaru roboczego w witrynie Azure portal. Ponieważ klucz obszaru roboczego, powinny być traktowane jako poufne dane, powinny być przechowywane w chronionym ustawienia konfiguracji. Dane platformy Azure ustawienia rozszerzenia chronione maszyny Wirtualnej jest zaszyfrowany i odszyfrowane tylko na docelowej maszynie wirtualnej. Należy pamiętać, że **workspaceId** i **klucz workspaceKey** jest rozróżniana wielkość liter.
 
 ```json
 {
@@ -81,7 +81,7 @@ Następujący kod JSON zawiera schemat dla rozszerzenia Log Analytics Agent. Roz
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
-Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Schemat JSON szczegółowo opisane w poprzedniej sekcji może służyć w szablonie usługi Azure Resource Manager do uruchomienia rozszerzenia Log Analytics Agent podczas wdrażania szablonu usługi Azure Resource Manager. Przykładowy szablon, który uwzględnia również rozszerzenie Log Analytics Agent VM znajduje się na [w galerii platformy Azure Szybki Start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
+Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Schemat JSON szczegółowo opisane w poprzedniej sekcji może służyć w szablonie usługi Azure Resource Manager do uruchomienia rozszerzenia agenta usługi Log Analytics podczas wdrażania szablonu usługi Azure Resource Manager. Przykładowy szablon, który zawiera rozszerzenie maszyny Wirtualnej agenta usługi Log Analytics można znaleźć na [w galerii platformy Azure Szybki Start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
 
 Kod JSON dla rozszerzenia maszyny wirtualnej mogą być zagnieżdżone wewnątrz zasobu maszyny wirtualnej lub umieszczone w katalogu głównego lub najwyższego poziomu szablon JSON usługi Resource Manager. Rozmieszczanie za pomocą pliku JSON ma wpływ na wartości nazwy i typu zasobu. Aby uzyskać więcej informacji, zobacz [Ustaw nazwę i typ zasobów podrzędnych](../../azure-resource-manager/resource-manager-templates-resources.md#child-resources). 
 
@@ -140,7 +140,7 @@ Podczas umieszczania rozszerzenia JSON w katalogu głównym szablonu, nazwa zaso
 
 ## <a name="powershell-deployment"></a>Wdrożenie programu PowerShell
 
-`Set-AzureRmVMExtension` Polecenie może służyć do wdrażania rozszerzenia Log Analytics Agent maszyny wirtualnej na istniejącej maszyny wirtualnej. Przed uruchomieniem polecenia, konfiguracje publicznymi i prywatnymi muszą być przechowywane w tabeli wyznaczania wartości skrótu programu PowerShell. 
+`Set-AzureRmVMExtension` Polecenie może służyć do wdrożenia rozszerzenia maszyny wirtualnej agenta usługi Log Analytics do istniejącej maszyny wirtualnej. Przed uruchomieniem polecenia, konfiguracje publicznymi i prywatnymi muszą być przechowywane w tabeli wyznaczania wartości skrótu programu PowerShell. 
 
 ```powershell
 $PublicSettings = @{"workspaceId" = "myWorkspaceId"}

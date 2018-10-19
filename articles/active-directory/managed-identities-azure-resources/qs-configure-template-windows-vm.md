@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: f50714538cdfd1a0bd258a3b78d0885e3c7beed1
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 06d78c9a9754638054a07c15ef67bfc703dd77ca
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018489"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428764"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure przy użyciu szablonów
 
@@ -72,7 +72,7 @@ W tej sekcji można będzie włączyć i wyłączyć przypisany systemowo tożsa
 3. (Opcjonalnie) Dodawanie tożsamości zarządzanych maszyn wirtualnych, rozszerzenia zasobów platformy Azure jako `resources` elementu. Ten krok jest opcjonalny, zgodnie z punktu końcowego tożsamości Azure wystąpienie metadanych usługi (IMDS), można użyć do pobierania tokenów, jak również.  Należy użyć następującej składni:
 
    >[!NOTE] 
-   > W poniższym przykładzie założono rozszerzenie maszyny Wirtualnej Windows (`ManagedIdentityExtensionForWindows`) jest wdrażany. Można również skonfigurować dla systemu Linux przy użyciu `ManagedIdentityExtensionForLinux` katalog wirtualny wskazywał na `"name"` i `"type"` elementów. Planujemy rozszerzenie maszyny Wirtualnej jest przestarzała w styczniu 2019 r.
+   > Poniższe przykłady zakłada rozszerzenie maszyny Wirtualnej Windows (`ManagedIdentityExtensionForWindows`) jest wdrażany. Można również skonfigurować dla systemu Linux przy użyciu `ManagedIdentityExtensionForLinux` katalog wirtualny wskazywał na `"name"` i `"type"` elementów. Planujemy rozszerzenie maszyny Wirtualnej jest przestarzała w styczniu 2019 r.
    >
 
    ```JSON
@@ -113,7 +113,7 @@ W tej sekcji można będzie włączyć i wyłączyć przypisany systemowo tożsa
             },
             {
             "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForLinux')]",
+            "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
             "apiVersion": "2018-06-01",
             "location": "[resourceGroup().location]",
             "dependsOn": [
@@ -298,7 +298,7 @@ W tej sekcji należy przypisać tożsamości zarządzanej przypisanych przez uż
         },
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForLinux')]",
+            "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
             "apiVersion": "2018-06-01-preview",
             "location": "[resourceGroup().location]",
             "dependsOn": [
@@ -335,7 +335,7 @@ W tej sekcji należy przypisać tożsamości zarządzanej przypisanych przez uż
         },
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForLinux')]",
+            "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
             "apiVersion": "2015-05-01-preview",
             "location": "[resourceGroup().location]",
             "dependsOn": [

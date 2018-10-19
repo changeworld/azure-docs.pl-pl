@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: ba6bfe8240c758806c4ff3e46ab08fdacad83db9
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e205fce8b718e68200face33447e37cd3317298f
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242838"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405488"
 ---
 # <a name="azure-blockchain-workbench-troubleshooting"></a>Rozwiązywanie problemów z platformy Azure Blockchain Workbench
 
@@ -24,7 +24,7 @@ Skrypt programu PowerShell jest dostępny dla uzyskanymi debugowania dla dewelop
 * Sieć łańcucha bloków, takich jak Ethereum
 * Mikrousługi aplikacji Blockchain Workbench
 * Application Insights
-* (OMS) do monitorowania platformy Azure
+* (Usługa Log Analytics) do monitorowania platformy Azure
 
 Aby określić następne kroki i ustalania głównej przyczyny problemów, można użyć informacji. 
 
@@ -36,7 +36,7 @@ Rozwiązywanie problemów z skrypt programu PowerShell jest dostępny w witrynie
 git clone https://github.com/Azure-Samples/blockchain.git
 ```
 
-## <a name="run-the-script"></a>Uruchom skrypt
+## <a name="run-the-script"></a>Uruchamianie skryptu
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
 Uruchom `collectBlockchainWorkbenchTroubleshooting.ps1` skrypt, aby zbieranie dzienników i Utwórz plik ZIP zawierający folder informacje dotyczące rozwiązywania problemów. Na przykład:
@@ -52,9 +52,9 @@ Skrypt przyjmuje następujące parametry:
 | ResourceGroupName | Nazwa grupy zasobów platformy Azure, w którym została wdrożona Blockchain Workbench. | Yes |
 | OutputDirectory | Ścieżka do utworzenia danych wyjściowych. Plik ZIP. Jeśli nie zostanie określony, domyślnie w bieżącym katalogu. | Nie |
 | LookbackHours | Liczba godzin do użycia podczas ściągania danych telemetrycznych. Wartość domyślna to 24 godziny. Maksymalna wartość to 90 godzin | Nie |
-| OmsSubscriptionId | Identyfikator subskrypcji, którym jest wdrażany pakietu OMS. Ten parametr należy przekazać tylko, jeśli wdrożono pakiet OMS dla sieć łańcucha bloków poza grupę zasobów aplikacji Blockchain Workbench.| Nie |
-| OmsResourceGroup |Grupa zasobów, których jest wdrażany pakietu OMS. Ten parametr należy przekazać tylko, jeśli wdrożono pakiet OMS dla sieć łańcucha bloków poza grupę zasobów aplikacji Blockchain Workbench.| Nie |
-| OmsWorkspaceName | Nazwa obszaru roboczego pakietu OMS. Ten parametr należy przekazać tylko, jeśli pakiet OMS dla sieć łańcucha bloków jest wdrożony poza grupę zasobów aplikacji Blockchain Workbench | Nie |
+| OmsSubscriptionId | Identyfikator subskrypcji, w której wdrażana jest usługa Log Analytics. Ten parametr należy przekazać tylko w przypadku wdrażania usługi Log Analytics dla sieciowych łańcucha bloków poza grupę zasobów aplikacji Blockchain Workbench.| Nie |
+| OmsResourceGroup |Grupa zasobów, w której wdrażana jest usługa Log Analytics. Ten parametr należy przekazać tylko w przypadku wdrażania usługi Log Analytics dla sieciowych łańcucha bloków poza grupę zasobów aplikacji Blockchain Workbench.| Nie |
+| OmsWorkspaceName | Nazwa obszaru roboczego usługi Log Analytics. Ten parametr należy przekazać tylko, jeśli usługa Log Analytics dla sieciowych łańcuch bloków jest wdrożony poza grupę zasobów aplikacji Blockchain Workbench | Nie |
 
 ## <a name="what-is-collected"></a>Jakie informacje są zbierane?
 

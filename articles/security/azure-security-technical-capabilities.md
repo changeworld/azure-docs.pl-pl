@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: eab55f6e2bf909ccdbdb30a8ced34dbc58d3954a
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 862143aec0ac54abb3c62677c5a1ab1c15007edb
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721334"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405569"
 ---
 # <a name="azure-security-technical-capabilities"></a>Możliwości techniczne zabezpieczeń platformy Azure
 
@@ -398,17 +398,17 @@ Ponadto lista kontrolna:
 
 Bezpieczeństwa platformy Azure działa w oparciu o strukturę, która zawiera wiedzy uzyskanej dzięki różnych funkcji, które są unikatowe w firmie Microsoft, w tym Microsoft cykl projektowania zabezpieczeń (SDL), program Microsoft Security odpowiedzi Centrum oraz głębokiej świadomości krajobraz zagrożeń cyberbezpieczeństwa.
 
-### <a name="microsoft-operations-management-suiteoms"></a>Microsoft operations management suite(OMS)
+### <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
 
-[Microsoft Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) to rozwiązanie zarządzania IT dla chmury hybrydowej. Użyte bez parametrów lub rozszerzenie istniejącego wdrożenia programu System Center, OMS zapewnia maksymalną elastyczność i kontrolę dla zarządzania infrastrukturą w chmurze.
+[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) to rozwiązanie zarządzania IT dla chmury hybrydowej. Użyte bez parametrów lub rozszerzenie istniejącego wdrożenia programu System Center, usługi Log Analytics zapewnia maksymalną elastyczność i kontrolę dla zarządzania infrastrukturą w chmurze.
 
-![Microsoft operations management suite(OMS)](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
+![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
 
-Za pomocą pakietu OMS możesz zarządzać dowolne wystąpienie w chmurze, w tym w środowisku lokalnym, Azure, AWS, systemu Windows Server, Linux, VMware i OpenStack przy niskich kosztach niż konkurencyjne rozwiązania. Stworzona z myślą world pierwszy chmury, OMS oferuje nowe podejście do zarządzania przedsiębiorstwa oznacza to najszybszy i najbardziej ekonomiczny sposób spełniają wyzwania biznesowe i nowych obciążeń, aplikacji i środowisk w chmurze.
+Za pomocą usługi Log Analytics można zarządzać dowolne wystąpienie w chmurze, w tym w środowisku lokalnym, Azure, AWS, systemu Windows Server, Linux, VMware i OpenStack przy niskich kosztach niż konkurencyjne rozwiązania. Oparta na świecie chmurę, usługa Log Analytics oferuje nowe podejście do zarządzania w przedsiębiorstwie, który jest najszybszym i najbardziej ekonomiczny sposób spełniają wyzwania biznesowe i nowych obciążeń, aplikacji i środowisk w chmurze.
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Usługa [Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) umożliwia monitorowanie pakietu OMS przez zbieranie danych z zarządzanych zasobów w centralnym repozytorium. Te dane mogą obejmować zdarzenia, dane wydajności i niestandardowe dane dostarczane przez interfejs API. Zebrane dane są dostępne na potrzeby alertów, analizy i eksportu.
+[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) umożliwia monitorowanie przez zbieranie danych z zarządzanych zasobów w centralnym repozytorium. Te dane mogą obejmować zdarzenia, dane wydajności i niestandardowe dane dostarczane przez interfejs API. Zebrane dane są dostępne na potrzeby alertów, analizy i eksportu.
 
 ![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
 

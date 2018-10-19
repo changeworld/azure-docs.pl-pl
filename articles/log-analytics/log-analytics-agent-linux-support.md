@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a889307138564bd56168d9561a56fc391704a459
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 01b3fe57cd52149c5c1191345b42bd8544202652
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318983"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404583"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Jak rozwiązywać problemy związane z agenta usługi Log Analytics dla systemu Linux 
 
@@ -161,9 +161,17 @@ Poniższe dane wyjściowe wtyczki, Usuń komentarz poniższej sekcji, usuwając 
 * Nieprawidłowy serwer proxy określony zestawu dokumentacji podczas dołączania
 * Usługa Log Analytics i Azure Automation — punkty końcowe usługi nie są na liście dozwolonych w centrum danych 
 
+<<<<<<< HEAD
+### <a name="resolutions"></a>Rozwiązania
+1. Reonboard do usługi Log Analytics przy użyciu agenta usługi Log Analytics dla systemu Linux przy użyciu następującego polecenia z opcją `-v` włączone. Dzięki temu pełne dane wyjściowe z agenta, łącząc się za pośrednictwem serwera proxy do usługi Log Analytics. 
+`/opt/microsoft/omsagent/bin/omsadmin.sh -w <Log Analytics Workspace ID> -s <Log Analytics Workspace Key> -p <Proxy Conf> -v`
+
+  [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
+=======
 ### <a name="resolution"></a>Rozwiązanie
 1. Reonboard do usługi Log Analytics przy użyciu agenta usługi Log Analytics dla systemu Linux przy użyciu następującego polecenia z opcją `-v` włączone. Umożliwia ona pełne dane wyjściowe z agenta, łącząc się za pośrednictwem serwera proxy do usługi Log Analytics. 
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
+>>>>>>> fa48342aa69f6626ec310992464ba935729675b3
 
 2. Zapoznaj się z sekcją [zaktualizować ustawień serwera proxy](log-analytics-agent-manage.md#update-proxy-settings) można sprawdzić zostało poprawnie skonfigurowane agenta do komunikowania się za pośrednictwem serwera proxy.    
 * Sprawdź, czy na liście dozwolonych następujące punkty końcowe usługi Log Analytics:
@@ -185,7 +193,11 @@ Poniższe dane wyjściowe wtyczki, Usuń komentarz poniższej sekcji, usuwając 
 
 1. Sprawdź czas na serwerze Linux z datą polecenia. Jeśli czas +/-15 minut od bieżącego czasu dołączania kończy się niepowodzeniem. Aby poprawne to zaktualizuj datę i/lub strefy czasowej serwera systemu Linux. 
 2. Sprawdź, czy zainstalowano najnowszą wersję agenta usługi Log Analytics dla systemu Linux.  Najnowszą wersję teraz powiadamia, że możesz Jeśli czasowego powoduje błąd dołączania.
+<<<<<<< HEAD
+3. Reonboard przy użyciu poprawny identyfikator obszaru roboczego i klucz obszaru roboczego, postępując zgodnie z instrukcjami instalacji we wcześniejszej części tego tematu.
+=======
 3. Reonboard przy użyciu poprawny identyfikator obszaru roboczego i klucz obszaru roboczego, postępując zgodnie z instrukcjami instalacji we wcześniejszej części tego artykułu.
+>>>>>>> fa48342aa69f6626ec310992464ba935729675b3
 
 ## <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>Problem: Zostanie wyświetlony 500 i 404 błąd w pliku dziennika bezpośrednio po dołączeniu
 Jest to znany problem występujący w pierwszym przekazywania danych z systemem Linux do obszaru roboczego usługi Log Analytics. Nie dotyczy to danych wysłanego lub usługi.
@@ -194,6 +206,17 @@ Jest to znany problem występujący w pierwszym przekazywania danych z systemem 
 
 ### <a name="probable-causes"></a>Prawdopodobne przyczyny
 
+<<<<<<< HEAD
+- Dołączanie do usługi Log Analytics nie powiodło się.
+- Połączenie z usługą Log Analytics jest zablokowane
+- Log Analytics agent dla danych z systemem Linux jest wykonywana kopia zapasowa
+
+### <a name="resolutions"></a>Rozwiązania
+1. Sprawdź, czy dołączania do usługi Log Analytics powiodła się, sprawdzając, jeśli istnieje następujący plik: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
+2. Za pomocą Reonboard `omsadmin.sh` instrukcje wiersza polecenia
+3. Jeśli używasz serwera proxy, skorzystaj z procedury opisanej rozpoznawanie serwera proxy, podany wcześniej.
+4. W niektórych przypadkach gdy agenta usługi Log Analytics dla systemu Linux nie może komunikować się z usługą, dane na agencie znajduje się w kolejce do rozmiaru buforu pełnej, czyli 50 MB. Agenta usługi Log Analytics dla systemu Linux należy ponownie uruchomić, uruchamiając następujące polecenie: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`. 
+=======
 - Dołączanie do usługi Log Analytics nie powiodło się.
 - Połączenie z usługą Log Analytics jest zablokowany.
 - Log Analytics agent dla danych z systemem Linux jest wykonywana kopia zapasowa
@@ -203,9 +226,10 @@ Jest to znany problem występujący w pierwszym przekazywania danych z systemem 
 2. Za pomocą Reonboard `omsadmin.sh` instrukcje wiersza polecenia
 3. Jeśli używasz serwera proxy, skorzystaj z procedury opisanej rozpoznawanie serwera proxy, podany wcześniej.
 4. W niektórych przypadkach gdy agenta usługi Log Analytics dla systemu Linux nie może komunikować się z usługą, dane na agencie znajduje się w kolejce do rozmiaru buforu pełnej, czyli 50 MB. Agent należy ponownie uruchomić, uruchamiając następujące polecenie: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`. 
+>>>>>>> fa48342aa69f6626ec310992464ba935729675b3
 
     >[!NOTE]
-    >Ten problem jest rozwiązany w 1.1.0-28 wersji agenta i nowszych wersjach.
+    >This issue is fixed in agent version 1.1.0-28 and later.
 
 
 ## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>Problem: Nie widać przekazywanych dalej komunikatów usługi Syslog 

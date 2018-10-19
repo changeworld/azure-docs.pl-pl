@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/11/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 61a64981d13c49a6245cc3cf494a78a777cf6d9c
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: d750ac7a5ac847a8c1eb5a9c91bb42804c2eebe0
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40044683"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49437018"
 ---
 Utworzenie maszyny wirtualnej (VM) platformy Azure wymaga utworzenia [sieci wirtualnej](../articles/virtual-network/virtual-networks-overview.md) (VNet) lub użycia istniejącej sieci wirtualnej. Należy także określić sposób dostępu do maszyn wirtualnych w sieci wirtualnej. Ważne jest [zaplanowanie tworzenia zasobów](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) i dokładne zapoznanie się z [limitami zasobów sieciowych](../articles/azure-subscription-service-limits.md#networking-limits).
 
@@ -79,7 +79,7 @@ Po utworzeniu publicznego adresu IP można skojarzyć go z maszyną wirtualną, 
 
 Podsieć jest zakresem adresów IP w sieci wirtualnej. Sieć wirtualną można podzielić na wiele podsieci w celu jej uporządkowania i zapewnienia bezpieczeństwa. Każda karta sieciowa w maszynie wirtualnej jest połączona z jedną podsiecią w jednej sieci wirtualnej. Karty sieciowe połączone z podsieciami (tymi samymi lub różnymi) w ramach sieci wirtualnej mogą komunikować się ze sobą bez dodatkowego konfigurowania.
 
-Konfigurowanie sieci wirtualnej obejmuje określenie topologii, w tym dostępnych przestrzeni adresowych i podsieci. Jeśli sieć wirtualna ma być połączona z innymi sieciami wirtualnymi lub lokalnymi, musisz wybrać zakresy adresów, które nie nakładają się na siebie. Adresy IP są prywatne i nie są dostępne przez Internet, lecz dotyczy to tylko adresów IP bez obsługi routingu, takich jak 10.0.0.0/8, 172.16.0.0/12 lub 192.168.0.0/16. Obecnie platforma Azure traktuje dowolny zakres adresów jako część przestrzeni prywatnych adresów IP w sieci wirtualnej. Przestrzeń ta jest dostępna w danej sieci wirtualnej oraz pozostałych, wzajemnie połączonych sieciach wirtualnych, a także z lokalizacji lokalnej. 
+Konfigurowanie sieci wirtualnej obejmuje określenie topologii, w tym dostępnych przestrzeni adresowych i podsieci. Jeśli sieć wirtualna ma być połączona z innymi sieciami wirtualnymi lub lokalnymi, musisz wybrać zakresy adresów, które nie nakładają się na siebie. Adresy IP są prywatne i nie jest dostępny z Internetu, która była wartość true tylko dla adresów IP bez obsługi routingu, takich jak 10.0.0.0/8, 172.16.0.0/12 lub 192.168.0.0/16. Obecnie platforma Azure traktuje dowolny zakres adresów jako część przestrzeni prywatnych adresów IP w sieci wirtualnej. Przestrzeń ta jest dostępna w danej sieci wirtualnej oraz pozostałych, wzajemnie połączonych sieciach wirtualnych, a także z lokalizacji lokalnej. 
 
 Jeśli w Twojej organizacji sieciami wewnętrznymi zajmuje się inna osoba, porozmawiaj z nią przed wybraniem przestrzeni adresowej. Upewnij się, że przestrzenie nie nakładają się na siebie i udostępnij informację o tym, jakiej przestrzeni zamierzasz używać, tak aby inne osoby nie korzystały z tego samego zakresu adresów IP. 
 

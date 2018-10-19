@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren, vinagara
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f5dba7ba1c21e33f23cf8917c93e478eadf5f88
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 06c01a7c87c43931a27c03b2014995be6c2678eb
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269534"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409071"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Dodawanie usługi Log Analytics zapisane wyszukiwania i alerty w rozwiązaniu do zarządzania (wersja zapoznawcza)
 
@@ -54,7 +54,7 @@ Poniższa tabela zawiera listę wersji interfejsu API dla zasobów używanych w 
 
 
 ## <a name="saved-searches"></a>Zapisane wyszukiwania
-Obejmują [zapisane wyszukiwania](../log-analytics/log-analytics-log-searches.md) w ramach rozwiązania, aby umożliwić użytkownikom zapytania o dane zebrane przez rozwiązania.  Zapisane wyszukiwania są wyświetlane w obszarze **ulubione** w portalu pakietu OMS i **zapisane wyszukiwania** w witrynie Azure portal.  Zapisane wyszukiwanie jest także wymagane dla każdego alertu.   
+Obejmują [zapisane wyszukiwania](../log-analytics/log-analytics-log-searches.md) w ramach rozwiązania, aby umożliwić użytkownikom zapytania o dane zebrane przez rozwiązania.  Zapisane wyszukiwania są wyświetlane w obszarze **zapisane wyszukiwania** w witrynie Azure portal.  Zapisane wyszukiwanie jest także wymagane dla każdego alertu.   
 
 [Zapisane wyszukiwanie analizy dzienników](../log-analytics/log-analytics-log-searches.md) zasoby mają typ `Microsoft.OperationalInsights/workspaces/savedSearches` i mają następującą strukturę.  W tym wspólnych zmiennych i parametrów, aby można skopiuj i wklej następujący fragment kodu do pliku rozwiązania i Zmień nazwy parametrów. 
 
@@ -90,7 +90,7 @@ Każda właściwość zapisanego kryterium wyszukiwania jest opisane w poniższe
 [Alerty dzienników platformy Azure](../monitoring-and-diagnostics/monitor-alerts-unified-log.md) są tworzone przez reguły alertów platformy Azure, które uruchamiają zapytania określonego dziennika w regularnych odstępach czasu.  Jeśli wyniki zapytania pasują do określonych kryteriów, zostaje utworzony rekord alertu i co najmniej jednej akcji są uruchamiane przy użyciu [grup akcji](../monitoring-and-diagnostics/monitoring-action-groups.md).  
 
 > [!NOTE]
-> Począwszy od 14 maja 2018 r. wszystkie alerty w wystąpieniu chmury publicznej platformy Azure w obszarze roboczym usługi Log Analytics automatycznie rozpocznie się rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z pakietu OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje są obecnie kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [grupy akcji — szablon usługi Azure Resource Manager](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+> Począwszy od 14 maja 2018 r. wszystkie alerty w wystąpieniu chmury publicznej platformy Azure w obszarze roboczym usługi Log Analytics już rozszerzone na platformę Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformę Azure](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje są obecnie kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [grupy akcji — szablon usługi Azure Resource Manager](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
 
 Reguły alertów w rozwiązaniu do zarządzania składają się z następujących trzech różnych zasobów.
 
@@ -146,7 +146,7 @@ Harmonogram może mieć wiele akcji. Akcja może zdefiniować jeden lub więcej 
 Akcje mogą być definiowane przy użyciu [grupy akcji] zasobu lub akcji.
 
 > [!NOTE]
-> Począwszy od 14 maja 2018 r. wszystkie alerty w wystąpieniu chmury publicznej platformy Azure w obszarze roboczym usługi Log Analytics automatycznie rozpocznie się rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z pakietu OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje są obecnie kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [grupy akcji — szablon usługi Azure Resource Manager](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+> Począwszy od 14 maja 2018 r. wszystkie alerty w wystąpieniu chmury publicznej platformy Azure w obszarze roboczym usługi Log Analytics już automatycznie rozszerzone na platformę Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformę Azure](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje są obecnie kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [grupy akcji — szablon usługi Azure Resource Manager](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
 
 
 Istnieją dwa typy działań zasobu określonego przez **typu** właściwości.  Harmonogram wymaga jednego **Alert** akcji, która definiuje szczegóły reguły alertów i jakie akcje są wykonywane podczas tworzenia alertu. Akcja zasoby mają typ `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`.  
@@ -242,7 +242,7 @@ Dla użytkownika, który został rozszerzony alerty na platformie Azure — harm
 Każdy harmonogram ma jeden **alertu** akcji.  Definiuje szczegóły alertu, i opcjonalnie akcji powiadomienia i korekty.  Powiadomienie wysyła wiadomość e-mail do jednego lub więcej adresów.  Korygowanie uruchamia element runbook w usłudze Azure Automation, aby podjąć próbę rozwiązania wykrytego problemu.
 
 > [!NOTE]
-> Począwszy od 14 maja 2018 r. wszystkie alerty w wystąpieniu chmury publicznej platformy Azure w obszarze roboczym usługi Log Analytics automatycznie rozpocznie się rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z pakietu OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje są obecnie kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [grupy akcji — szablon usługi Azure Resource Manager](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+> Począwszy od 14 maja 2018 r. wszystkie alerty w wystąpieniu chmury publicznej platformy Azure w obszarze roboczym usługi Log Analytics już automatycznie rozszerzone na platformę Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformę Azure](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje są obecnie kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [grupy akcji — szablon usługi Azure Resource Manager](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
 
 ##### <a name="emailnotification"></a>EmailNotification
  Ta sekcja jest opcjonalna dołączyć ją, jeśli chcesz, aby alert ma wysyłać wiadomości e-mail do co najmniej jednego adresata.

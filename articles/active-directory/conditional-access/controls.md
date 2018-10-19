@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/28/2018
+ms.date: 10/18/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 6f66deff9052b79265222f052bebb8439a95d269
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 065eee57b78ea10d5e8079de3a938dc00dd60ee2
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352748"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406776"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Jakie są mechanizmy kontroli dostępu w funkcji dostępu warunkowego usługi Azure Active Directory? 
 
@@ -105,7 +105,7 @@ Przy użyciu zatwierdzonych aplikacji klienckich, możesz wymagać od aplikacji 
 Użytkownik może wymagać w dzierżawie, aby wyrazić zgodę na warunki użytkowania, zanim zostanie im przyznany dostęp do zasobu. Jako administrator można skonfigurować i dostosować warunki użytkowania, przekazywania dokumentów PDF. Jeśli użytkownik znajduje się w zakresie Ta kontrola dostępu do aplikacji, otrzymuje tylko jeśli uzgodniono warunki użytkowania. 
 
 
-### <a name="custom-controls"></a>Formanty niestandardowe 
+### <a name="custom-controls-preview"></a>Kontrolki niestandardowe (wersja zapoznawcza) 
 
 Możesz utworzyć niestandardowe formanty dostępu warunkowego, które przekierować użytkowników do usługi zgodne w celu dalszego spełniają wymagania poza usługą Azure Active Directory. Dzięki temu można używać niektórych zewnętrznego uwierzytelniania wieloskładnikowego i dostawców weryfikacji do wymuszania zasad dostępu warunkowego lub tworzyć własne niestandardowe usługi. W celu spełnienia tego formantu, przeglądarki użytkownika jest przekierowywany do zewnętrznej usługi, wykonuje wszelkie wymagane uwierzytelnianie lub sprawdzania poprawności działania i jest następnie przekierowywane do usługi Azure Active Directory. Jeśli użytkownik został pomyślnie uwierzytelniony ani zweryfikowany, użytkownik będzie nadal w przepływ dostępu warunkowego. 
 

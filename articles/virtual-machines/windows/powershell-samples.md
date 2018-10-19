@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/30/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 564e8e2968f31b9e2aef8f7eadbf848885037ccb
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: ccd759362ee212a2d7101aae1fbf9774279e18b1
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48040766"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408051"
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Przykłady programu Azure PowerShell maszyny wirtualnej
 
@@ -49,6 +49,6 @@ Poniższa tabela zawiera linki do przykładowych skryptów programu PowerShell, 
 |**Bezpieczne maszyn wirtualnych**||
 | [Szyfrowanie dysków maszyn wirtualnych i danych](./../scripts/virtual-machines-windows-powershell-sample-encrypt-vm.md?toc=%2fpowershell%2fazure%2ftoc.json) | Tworzy usługi Azure Key Vault, klucz szyfrowania i jednostki usługi, a następnie szyfruje maszyny Wirtualnej. |
 |**Monitorowanie maszyn wirtualnych**||
-| [Monitorowanie maszyny Wirtualnej za pomocą pakietu Operations Management Suite](./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tworzy maszynę wirtualną, a następnie instaluje agenta pakietu Operations Management Suite i rejestruje maszyny Wirtualnej w obszarze roboczym pakietu OMS.  |
+| [Monitorowanie maszyny Wirtualnej z usługą Log Analytics](./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tworzy maszynę wirtualną, a następnie instaluje agenta usługi Log Analytics i rejestruje maszyny Wirtualnej w obszarze roboczym usługi Log Analytics.  |
 | | |
 

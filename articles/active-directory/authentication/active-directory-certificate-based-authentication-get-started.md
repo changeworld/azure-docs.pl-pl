@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: annaba
-ms.openlocfilehash: ea65dcca3e5de06d1bc966b3e7cb6b608260a053
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 27febb01b04bd8ac82b8cd428afce78dc57f8b8d
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803971"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403570"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Wprowadzenie do uwierzytelniania opartego na certyfikatach w usłudze Azure Active Directory
 
@@ -37,7 +37,7 @@ Aby skonfigurować uwierzytelnianie oparte na certyfikatach, muszą być spełni
 
 - Uwierzytelnianie oparte na certyfikatach (CBA) jest obsługiwana tylko dla środowisk Sfederowane dla aplikacji przeglądarki lub natywnych klientów korzystających z nowoczesnego uwierzytelniania (ADAL). Jedynym wyjątkiem jest programu Exchange Active Sync (EAS) dla programu Exchange Online (EKSO), którego można użyć w przypadku kont federacyjnych i zarządzanych.
 - Główny urząd certyfikacji i wszelkie pośrednim urzędem certyfikacji musi być skonfigurowany w usłudze Azure Active Directory.
-- Każdy urzędu certyfikacji musi mieć listę odwołania certyfikatów (CRL), która może znajdować się za pośrednictwem adresu URL nakierowanego na Internet.
+- Każdy urzędu certyfikacji musi mieć listę odwołania certyfikatów (CRL), która może znajdować się za pośrednictwem adresu URL dostępnego z Internetu.
 - Musisz mieć uprawnienia co najmniej jeden certyfikat skonfigurowany w usłudze Azure Active Directory. Możesz znaleźć powiązanych czynności opisane w [Konfigurowanie urzędów certyfikacji](#step-2-configure-the-certificate-authorities) sekcji.
 - Dla klientów programu Exchange ActiveSync certyfikat klienta musi mieć adres e-mail routingowi użytkownika w programie Exchange online w nazwie podmiotu zabezpieczeń lub wartości RFC822 nazwę w polu alternatywna nazwa podmiotu. Usługa Azure Active Directory mapuje RFC822 wartość atrybutu adres serwera Proxy w katalogu.
 - Urządzenia klienta musi mieć dostęp do urzędu certyfikacji co najmniej jedną, która wystawia certyfikaty klienta.
@@ -60,7 +60,7 @@ Istnieje odpowiednie informacje na następujących platformach urządzeń:
 Aby skonfigurować swoje urzędów certyfikacji w usłudze Azure Active Directory dla każdego urzędu certyfikacji, należy przekazać następujące czynności:
 
 * Część publiczną certyfikatu w *cer* formatu
-* Połączony z Internetem adresy URL lokalizację list odwołania certyfikatów (CRL)
+* Adresy URL dostępnego z Internetu, gdzie znajdują się list odwołania certyfikatów (CRL)
 
 Schemat dla urzędu certyfikacji będzie wyglądać w następujący sposób:
 

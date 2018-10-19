@@ -1,6 +1,6 @@
 ---
-title: Analiza zdarzeń sieci szkieletowej usług Azure z analizy dzienników | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat wizualizacji i analizowania zdarzeń za pomocą analizy dzienników dla monitorowania i diagnostyki klastrów sieci szkieletowej usług Azure.
+title: Analiza zdarzeń sieci szkieletowej usługi platformy Azure z usługą Log Analytics | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat wizualizowanie i analizowanie zdarzeń za pomocą usługi Log Analytics do monitorowania i diagnostyki klastrów usługi Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -14,77 +14,77 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/29/2018
 ms.author: srrengar
-ms.openlocfilehash: 49d9b5306a0fcf51cc0de036c725fca8345cd0ec
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 6dee895ba9fc024baac0500619b7d6cc62167b6d
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36302186"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404481"
 ---
-# <a name="event-analysis-and-visualization-with-log-analytics"></a>Analiza zdarzeń i wizualizacji z analizy dzienników
-Analiza dzienników zbiera i analizuje dane telemetryczne z aplikacji i usług hostowanych w chmurze oraz zapewnia narzędzia analizy do zwiększenia ich dostępności i wydajności. W tym artykule opisano sposób uruchamiania kwerend w analizy dzienników, aby uzyskać wgląd i rozwiązywanie problemów z tym, co dzieje się w klastrze. Poniższe często zadawane pytania dotyczą:
+# <a name="event-analysis-and-visualization-with-log-analytics"></a>Analiza zdarzeń i wizualizacji przy użyciu usługi Log Analytics
+Log Analytics zbiera i analizuje dane telemetryczne z aplikacji i usług w chmurze i udostępnia narzędzia do analizy ułatwiają maksymalne wykorzystanie ich dostępności i wydajności. W tym artykule opisano sposób uruchamiania zapytania w usłudze Log Analytics do uzyskiwania szczegółowych informacji i rozwiązywanie problemów z tym, co dzieje się w klastrze. Poniższe często zadawane pytania dotyczą:
 
-* Jak rozwiązywać zdarzenia kondycji?
-* Jak sprawdzić, gdy węzeł ulegnie awarii?
-* Jak sprawdzić, czy Moja aplikacja usług ma została zatrzymana lub uruchomiona?
+* Jak rozwiązywać zdarzenia dotyczące kondycji?
+* Jak sprawdzić, kiedy węzeł ulegnie awarii?
+* Jak sprawdzić, jeśli Moja aplikacja usługi mają została zatrzymana lub uruchomiona?
 
 ## <a name="log-analytics-workspace"></a>Obszar roboczy usługi Log Analytics
 
-Analiza dzienników zbiera dane z zarządzanych zasobów, włącznie z tabeli magazynu systemu Azure lub agenta i przechowuje ją w centralnym repozytorium. Dane można następnie używana do analizy, alerty i wizualizacji lub dodatkowe eksportowanie. Analiza dzienników obsługuje zdarzeń, danych wydajności lub innych danych niestandardowych. Zapoznaj się z [kroki, aby skonfigurować rozszerzenia diagnostyki w celu agregowania zdarzeń](service-fabric-diagnostics-event-aggregation-wad.md) i [kroki, aby utworzyć obszaru roboczego analizy dzienników można odczytać ze zdarzeń w magazynie](service-fabric-diagnostics-oms-setup.md) się upewnić, że dane jest otrzymywanych analizy dzienników .
+Log Analytics zbiera dane z zarządzanych zasobów, w tym tabeli usługi Azure storage lub agenta i przechowuje je w centralnym repozytorium. Dane można następnie używane do analizy, alertów i wizualizację lub dodatkowo eksportowania. Usługa log Analytics obsługuje zdarzenia, dane dotyczące wydajności lub innych danych niestandardowych. Zapoznaj się z [kroki, aby skonfigurować rozszerzenie diagnostyki w celu agregowania zdarzeń](service-fabric-diagnostics-event-aggregation-wad.md) i [kroki, aby utworzyć obszar roboczy usługi Log Analytics do odczytu zdarzeń w magazynie](service-fabric-diagnostics-oms-setup.md) się upewnić, że dane będą przepływać do usługi Log Analytics .
 
-Po odebraniu danych przez analizy dzienników, platforma Azure ma kilka *rozwiązań do zarządzania* , które są opakowaniach jednostkowych rozwiązań do przychodzących danych, dostosować, tak aby kilka scenariuszy monitorowania. Obejmują one *usługi sieć szkieletowa Analytics* rozwiązania i *kontenery* rozwiązania, które są najbardziej odpowiednie dwóch te Diagnostyka i monitorowanie w przypadku używania klastrów sieci szkieletowej usług. W tym artykule opisano sposób użycia rozwiązania analizy sieci szkieletowej usług, który jest tworzony z obszaru roboczego.
+Po odebraniu danych przez usługę Log Analytics, platforma Azure oferuje kilka *rozwiązań do zarządzania* , które są to wstępnie spakowane zestawy rozwiązań, które mają być monitorowane dane przychodzące, dostosowane do kilku scenariuszy. Obejmują one *analiza usługi Service Fabric* rozwiązania i *kontenery* rozwiązania, które są dwie najbardziej odpowiednie do diagnostyki i monitorowania w przypadku korzystania z klastrów usługi Service Fabric. W tym artykule opisano, jak używać rozwiązania analiza usługi Service Fabric, który jest tworzony z obszarem roboczym.
 
-## <a name="access-the-service-fabric-analytics-solution"></a>Dostęp do rozwiązania analizy sieci szkieletowej usług
+## <a name="access-the-service-fabric-analytics-solution"></a>Dostęp do rozwiązania analiza usługi Service Fabric
 
-1. W portalu Azure przejdź do grupy zasobów, w której utworzono rozwiązania analizy sieci szkieletowej usług.
+1. W witrynie Azure Portal przejdź do grupy zasobów, w którym utworzono rozwiązania analiza usługi Service Fabric.
 
 2. Wybierz zasób **ServiceFabric\<nameOfOMSWorkspace\>**.
 
-2. Podsumowując zobaczysz Kafelki w formie wykresu dla każdego z rozwiązań włączone, w tym dla sieci szkieletowej usług. Kliknij przycisk **sieci szkieletowej usług** graph (pierwszy obraz poniżej) w dalszym ciągu rozwiązania analizy sieci szkieletowej usług (drugi obraz poniżej).
+2. Podsumowując zobaczysz Kafelki w formie wykresu dla każdego rozwiązania włączone, w tym dla usługi Service Fabric. Kliknij przycisk **usługi Service Fabric** programu graph (pierwszy obraz poniżej), aby przejść do rozwiązania analiza usługi Service Fabric (drugi obraz poniżej).
 
-    ![Rozwiązanie sieci szkieletowej usług](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
+    ![Rozwiązania usługi Service Fabric](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
-    ![Rozwiązanie sieci szkieletowej usług](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
+    ![Rozwiązania usługi Service Fabric](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
-Powyższy obraz jest stroną główną rozwiązania analizy sieci szkieletowej usług. Jest to widok miniatur, co się dzieje w klastrze. Jeśli włączono diagnostyki po utworzeniu klastra można przejrzeć zdarzenia dla 
+Na powyższej ilustracji jest stroną główną rozwiązania analiza usługi Service Fabric. To jest widokiem migawki, co się dzieje w klastrze. Włączenie diagnostyki po utworzeniu klastra można wyświetlić zdarzenia dla 
 
-* [Kanał operacyjne](service-fabric-diagnostics-event-generation-operational.md): operacje wyższego poziomu, które wykonuje platformy Service Fabric (kolekcja usługi systemowe).
-* [Reliable Actors zdarzeń modelu programowania](service-fabric-reliable-actors-diagnostics.md)
-* [Niezawodne usługi zdarzeń modelu programowania](service-fabric-reliable-services-diagnostics.md)
+* [Kanał operacyjny](service-fabric-diagnostics-event-generation-operational.md): operacje wyższego poziomu, które wykonuje platformy usługi Service Fabric (kolekcja usług systemowych).
+* [Elementy Reliable Actors zdarzeń modelu programowania](service-fabric-reliable-actors-diagnostics.md)
+* [Zdarzeń modelu programowania usług Reliable Services](service-fabric-reliable-services-diagnostics.md)
 
 >[!NOTE]
->Oprócz operacyjne kanału bardziej szczegółowe zdarzenia systemowe mogą być zbierane przez [aktualizowania konfiguracji rozszerzenia diagnostyki](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations).
+>Oprócz kanał operacyjny bardziej szczegółowe zdarzenia systemowe mogą być zbierane przez [aktualizowanie konfiguracji rozszerzenia diagnostyki](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations).
 
-### <a name="view-service-fabric-events-including-actions-on-nodes"></a>Wyświetl zdarzenia sieci szkieletowej usług łącznie z czynności w węzłach
+### <a name="view-service-fabric-events-including-actions-on-nodes"></a>Wyświetl zdarzenia sieci szkieletowej usług łącznie z działaniami w węzłach
 
-1. Na stronie usługi sieć szkieletowa Analytics kliknij na wykresie dla **zdarzenia sieci szkieletowej usług**.
+1. Na stronie analiza usługi Service Fabric, kliknij wykres dla **usługi Service Fabric zdarzenia**.
 
-    ![Usługa sieci szkieletowej rozwiązania operacyjne kanału](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
+    ![Kanał operacyjny rozwiązania usługi Service Fabric](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
 
-2. Kliknij przycisk **listy** do wyświetlania na liście zdarzeń. Gdy w tym miejscu zobaczysz wszystkich zdarzeń systemowych, które zostały zebrane. Odwołania są one z WADServiceFabricSystemEventsTable na koncie magazynu Azure, a podobnie reliable services i zdarzeń podmiotów, które widać obok są z tych tabel odpowiednich.
+2. Kliknij przycisk **listy** Aby wyświetlić zdarzenia na liście. Jeden raz w tym miejscu zobaczysz wszystkie zdarzenia systemowe, które zostały zebrane. Odwołanie są to aplikacje WADServiceFabricSystemEventsTable w ramach konta usługi Azure Storage i podobnie reliable services i zdarzeń uczestników, które zostanie wyświetlony obok pochodzą od tych tabel odpowiednich.
     
-    ![Kanał operacyjny kwerendy](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
+    ![Kanał operacyjny zapytania](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
 
-Można kliknąć Lupa po lewej stronie i używać języka kwerend Kusto można znaleźć, czego szukasz. Na przykład aby znaleźć wszystkie akcje wykonywane w węzłach w klastrze, używając następujące zapytanie. Identyfikatory zdarzeń, poniżej znajdują się w [dotyczące zdarzeń operacyjnych kanału](service-fabric-diagnostics-event-generation-operational.md).
+Można kliknąć ikonę lupy po lewej stronie i używaj języka zapytania Kusto można znaleźć, czego szukasz. Na przykład aby znaleźć wszystkie akcje wykonywane w węzłach w klastrze, można użyć następującego zapytania. Identyfikatory zdarzeń, poniżej znajdują się w [informacje o zdarzeniach kanał operacyjny](service-fabric-diagnostics-event-generation-operational.md).
 
 ```kusto
 ServiceFabricOperationalEvent
 | where EventId < 25627 and EventId > 25619 
 ```
 
-Umożliwia wysyłanie zapytań o wiele więcej pól, takich jak określonych węzłów (komputer) w usłudze system (TaskName).
+Można tworzyć zapytania o wiele więcej pól, takich jak określonych węzłów (komputer) usługa systemowa (nazwa zadania).
 
-### <a name="view-service-fabric-reliable-service-and-actor-events"></a>Usługa widoku sieci szkieletowej usług niezawodnych i aktora zdarzenia
+### <a name="view-service-fabric-reliable-service-and-actor-events"></a>Zdarzenia usługi Reliable Service widok usługi Service Fabric i aktora
 
-1. Na stronie usługi sieć szkieletowa Analytics kliknij wykresu dla **niezawodne usługi**.
+1. Na stronie analiza usługi Service Fabric, kliknij wykres na **usług Reliable Services**.
 
-    ![Usługa sieci szkieletowej rozwiązania niezawodne usługi](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
+    ![Usług Reliable Services usługi Service Fabric rozwiązania](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
 
-2. Kliknij przycisk **listy** do wyświetlania na liście zdarzeń. Tutaj można zobaczyć zdarzenia z niezawodne usługi. Widoczny różnych zdarzeń dla runasync usługi zostanie rozpoczęte i zakończone, zwykle nastąpi na wdrożenia i uaktualnienia. 
+2. Kliknij przycisk **listy** Aby wyświetlić zdarzenia na liście. W tym miejscu można wyświetlić zdarzenia z usług reliable services. Możesz zobaczyć różne zdarzenia dla, gdy runasync usługi zostanie rozpoczęte i zakończone, która zwykle ma miejsce na wdrażania i uaktualniania. 
 
-    ![Niezawodne usługi zapytania](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
+    ![Zapytanie interfejsu Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
 
-W podobny sposób można wyświetlać zdarzenia niezawodnego aktora. Aby skonfigurować więcej szczegółowych informacji o zdarzeniach dla elementów reliable actors, musisz zmienić `scheduledTransferKeywordFilter` w pliku config diagnostycznych rozszerzenia (pokazana poniżej). Szczegółowe informacje o wartości te są w [dotyczące zdarzeń niezawodnej podmiotów](service-fabric-reliable-actors-diagnostics.md#keywords).
+Zdarzenia Reliable actors można wyświetlać w taki sposób, w podobny sposób. Aby skonfigurować więcej szczegółowych informacji o zdarzeniach do elementów reliable actors, musisz zmienić `scheduledTransferKeywordFilter` w konfiguracji rozszerzenia diagnostyki (pokazana poniżej). Szczegółowe informacje na podstawie wartości dla zostały one [informacje o zdarzeniach elementów reliable actors](service-fabric-reliable-actors-diagnostics.md#keywords).
 
 ```json
 "EtwEventSourceProviderConfiguration": [
@@ -98,14 +98,14 @@ W podobny sposób można wyświetlać zdarzenia niezawodnego aktora. Aby skonfig
                 },
 ```
 
-Język kwerendy Kusto jest zaawansowanym. Inne przydatne zapytanie można uruchamiać jest aby dowiedzieć się węzły, które generują najwięcej zdarzeń. Zapytanie na poniższym zrzucie ekranu wyświetla zdarzenia operacyjne sieci szkieletowej usług, łącznie z określonej usługi i węzła.
+Język zapytania Kusto jest skuteczna. Inne przydatne zapytanie, które można uruchomić polega na węzły, które generują większość zdarzeń. Zapytania w poniższy zrzut ekranu przedstawia zdarzenia operacyjne usługi Service Fabric, łącznie z określonej usługi i węzła.
 
-![Zdarzenia na węzeł](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
+![Zdarzenia powiązane z zapytaniem na węzeł](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby włączyć monitorowanie, tj. liczniki wydajności infrastruktury, przejdź do [dodanie agenta analizy dzienników](service-fabric-diagnostics-oms-agent.md). Agent zbiera dane liczników wydajności i dodaje je do swojego istniejącego obszaru roboczego.
-* W przypadku klastrów lokalnymi analizy dzienników oferuje bramy (do przodu serwer Proxy HTTP), która może służyć do wysyłania danych do analizy dzienników. Dowiedz się więcej o tym, że w [łączenie komputerów bez dostępu do Internetu z analizy dzienników przy użyciu bramy OMS](../log-analytics/log-analytics-oms-gateway.md)
-* Skonfiguruj [automatycznego alerty](../log-analytics/log-analytics-alerts.md) ułatwiających wykrywania i Diagnostyka
-* Pobierz zapoznaniu się z [wyszukiwania i badania dziennika](../log-analytics/log-analytics-log-searches.md) funkcje dostępne w ramach analizy dzienników
-* Uzyskać bardziej szczegółowy przegląd analizy dzienników, jakie oferuje, przeczytaj [co to jest analiza dziennika?](../operations-management-suite/operations-management-suite-overview.md)
+* Aby włączyć liczniki wydajności do monitorowania tj infrastruktury, przejdź do [dodanie agenta usługi Log Analytics](service-fabric-diagnostics-oms-agent.md). Agent zbiera dane liczników wydajności i dodaje je do swojego istniejącego obszaru roboczego.
+* W przypadku klastrów w środowisku lokalnym usługa Log Analytics oferuje bramy (do przodu serwer Proxy HTTP), który może służyć do wysyłania danych do usługi Log Analytics. Dowiedz się więcej o tym, że w [łączenie komputerów bez dostępu do Internetu z usługi Log Analytics przy użyciu bramy usługi Log Analytics](../log-analytics/log-analytics-oms-gateway.md).
+* Konfigurowanie [automatyczne alerty](../log-analytics/log-analytics-alerts.md) ułatwiające wykrywanie i przeprowadzanie diagnostyki.
+* Zapoznaj się z funkcjami [przeszukiwania dzienników i wykonywania zapytań względem nich](../log-analytics/log-analytics-log-searches.md) dostępnymi w ramach usługi Log Analytics.
+* Uzyskuj bardziej szczegółowym omówieniem usługi Log Analytics i co oferuje, przeczytaj [co to jest usługa Log Analytics?](../operations-management-suite/operations-management-suite-overview.md).

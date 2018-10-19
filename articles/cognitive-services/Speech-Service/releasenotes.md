@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: wolfma
-ms.openlocfilehash: 3a9da3b0f2165dadd99691c6dc9e41cbf3d48620
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7f637014c5f3e246d67ae051f9304e2f2536d725
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340005"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427386"
 ---
 # <a name="release-notes"></a>Informacje o wersji
 
@@ -22,12 +22,12 @@ ms.locfileid: "49340005"
 
 Ulepszenia niezawodności i poprawki:
 
-* Napraw potencjalny błąd krytyczny ze względu na warunki sytuacji wyścigu w operacji Dispose rozpoznawania
-* Napraw potencjalny błąd krytyczny, jeśli nie ustawiono właściwości.
-* Dodatkowe błędów i Sprawdzanie parametrów.
-* Cel C: Napraw możliwy błąd krytyczny spowodowane przez zastępowanie w NSString nazwy.
-* Objectice C: dostosować widoczność interfejsu API
-* JavaScript: poprawki dotyczące zdarzenia i ich ładunków.
+* Naprawiono potencjalne błąd krytyczny z powodu sytuacji wyścigu w operacji Dispose rozpoznawania
+* Naprawiono potencjalny błąd krytyczny w razie nie ustawiono właściwości.
+* Dodano dodatkowe błędów i Sprawdzanie parametrów.
+* Cel C: stały możliwy błąd krytyczny spowodowane przez nazwę zastępowanie w NSString.
+* Cel C: dostosować widoczność interfejsu API
+* JavaScript: Naprawiono dotyczące zdarzenia i ich ładunków.
 * Udoskonalenia dokumentacji.
 
 W naszym [przykładowego repozytorium](https://aka.ms/csspeech/samples), dodano nowe próbki dla języka JavaScript.

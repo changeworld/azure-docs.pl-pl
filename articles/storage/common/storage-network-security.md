@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: bcb772185f0a16183b8a6c9674419781ef41be3e
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 98972b0c52470e6a404090d993c21a47b11cd660
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068540"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427149"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych
 Usługa Azure Storage udostępnia model zabezpieczeń warstwowych, dzięki czemu możesz do zabezpieczania konta magazynu do określonego zestawu dozwolonych sieci.  Po skonfigurowaniu reguł sieci tylko aplikacje z dozwolonych sieci można uzyskiwać dostęp do konta magazynu.  Podczas wywoływania z dozwolonych sieci, aplikacje w dalszym ciągu wymagają właściwej zezwolenia (prawidłowy klucz dostępu lub tokenu sygnatury dostępu Współdzielonego) dostęp do konta magazynu.
@@ -188,7 +188,9 @@ Dozwolone zakresy adresów internetowych można określić za pomocą [notacji C
 > Zakresy adresów małe, za pomocą "/ 31" lub "/ 32" prefiks rozmiary nie są obsługiwane.  Tych zakresów powinny być skonfigurowane przy użyciu reguły dotyczące poszczególnych adresów IP.
 >
 
-Reguły sieciowych adresów IP są dozwolone tylko dla **publicznej sieci internet** adresów IP.  Zakresy adresów IP zarezerwowanych dla sieci prywatnych (zgodnie z definicją w dokumencie RFC 1918) są niedozwolone w regułach adresów IP.  Prywatne sieci obejmują adresów rozpoczynających się *10.\** , *172.16.\** , i *192.168.\** .
+Reguły sieciowych adresów IP są dozwolone tylko dla **publicznej sieci internet** adresów IP.  Zakresy adresów zarezerwowanych dla sieci prywatnych adresów IP (zgodnie z definicją w [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) są niedozwolone w regułach adresów IP.  Prywatne sieci obejmują adresów rozpoczynających się *10.\** , *172.16.\**   -  *172.31.\**, i *192.168.\** .
+
+Należy pamiętać, że reguł sieci IP nie wpływa na żądania pochodzące z tym samym regionie platformy Azure jako konto magazynu.  Użyj reguł sieci wirtualnej, aby zezwolić na żądania z tego samego regionu.
 
 W tej chwili obsługiwane są tylko adresy IPV4.
 

@@ -9,12 +9,12 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: e796feaf8ef25eaa91b7db810a11a67da13e9df1
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 8a736516a598eee051b416834d2b737211e66b96
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237181"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429467"
 ---
 # <a name="deploy-web-services-to-azure-container-instances"></a>Wdrażaj usługi sieci web w usłudze Azure Container Instances 
 
@@ -82,10 +82,10 @@ aciconfig = AciWebservice.deploy_configuration(cpu_cores = 1,
 
 > Pominąć to wymaganie wstępne, jeśli jesteś [wdrażania z pliku modelu](#deploy-from-model-file) (`Webservice.deploy()`).
 
-Zarejestruj model, aby użyć [ `Webservice.deploy_from_model` ](#deploy-from-registered-model) lub [ `Webservice.deploy_from_image` ](#deploy-from-image). Lub jeśli masz już zarejestrowanego modelu, pobierz ją teraz.
+Zarejestruj model, aby użyć [Webservice.deploy_from_model](#deploy-from-registered-model) lub [Webservice.deploy_from_image](#deploy-from-image). Lub jeśli masz już zarejestrowanego modelu, pobierz ją teraz.
 
 ### <a name="retrieve-a-registered-model"></a>Pobrać zarejestrowanego modelu
-Jeśli używasz usługi Azure Machine Learning do nauczenia modelu, model może być już zarejestrowany w obszarze roboczym.  Na przykład ostatni krok [wytrenuj model](tutorial-train-models-with-aml.md) samouczek] zarejestrowany modelu.  Następnie pobrać zarejestrowanego modelu wdrażania.
+Jeśli używasz usługi Azure Machine Learning do nauczenia modelu, model może być już zarejestrowany w obszarze roboczym.  Na przykład ostatni krok [uczenie modelu samouczek](tutorial-train-models-with-aml.md) zarejestrowany modelu.  Następnie pobrać zarejestrowanego modelu wdrażania.
 
 ```python
 from azureml.core.model import Model
@@ -109,7 +109,7 @@ model = Model.register(model_path = "sklearn_mnist_model.pkl",
                         workspace = ws)
 ```
 
-
+<a name='deploy-from-model-file'/>
 ## <a name="option-1-deploy-from-model-file"></a>Opcja 1: Wdrożenia z pliku modelu
 
 Możliwość wdrożenia aplikacji z plikiem modelu wymaga mniejszej ilości kodu do pisania, ale oferuje także najmniejszą ilością kontrolę nad nazw składników. Ta opcja rozpoczyna się od pliku modelu i rejestruje go do obszaru roboczego.  Nie można jednak nazwa modelu lub skojarzyć tagi i opis dla niego.  
@@ -148,6 +148,7 @@ Ta opcja używa metody zestaw SDK, Webservice.deploy().
 
 1. Możesz teraz [przetestować usługę sieci web](#test-web-service).
 
+<a name='deploy-from-registered-model'/>
 ## <a name="option-2-deploy-from-registered-model"></a>Opcja 2: Wdrażanie z zarejestrowanego modelu
 
 Możliwość wdrażania pliku zarejestrowanego modelu zajmuje kilka większą liczbę linii kodu i umożliwia kontrolę nad nazewnictwa danych wyjściowych. Ta opcja jest wygodnym sposobem wdrażania zarejestrowanego modelu, którą już posiadasz.  Nie można jednak nazwa obrazu platformy Docker.  
@@ -173,6 +174,7 @@ Ta opcja używa metody zestaw SDK, Webservice.deploy_from_model().
 
 1. Możesz teraz [przetestować usługę sieci web](#test-web-service).
 
+<a name='deploy-from-image'/>
 ## <a name="option-3-deploy-from-image"></a>Opcja 3: Wdrażanie za pomocą obrazu
 
 Wdrażanie modelu zarejestrowany (`model`) przy użyciu `Webservice.deploy_from_image()`. Ta metoda umożliwia oddzielnie utworzyć obraz platformy Docker, a następnie wdrożyć ją z tego obrazu.
@@ -215,6 +217,7 @@ Ta metoda zapewnia największą kontrolę nad tworzenia i nazw składników we w
 
 Teraz można przetestować usługę sieci web.
 
+<a name='test-web-service'/>
 ## <a name="test-the-web-service"></a>Test usługi sieci web
 
 Usługa sieci web jest taka sama niezależnie od tego, którego użyto metody.  Aby uzyskać prognoz, użyj `run` metody usługi.  

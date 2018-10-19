@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 51711e3cb0a2e26e8e10590e98414d4d72cc4d59
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: f8b7d2620b5b972c9476332f2b662a891a0b3765
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320581"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430344"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, planowania i implementacji środowiska SAP NetWeaver
 
@@ -541,7 +541,7 @@ Microsoft Azure Virtual Machines korzystanie z różnych typach pamięci masowej
 * -Trwałe i nietrwałe magazyn.
 * Z magazynu trwałego.
 
-Maszyny wirtualne platformy Azure oferują dyski trwałe, po wdrożeniu maszyny Wirtualnej. W przypadku ponownego uruchomienia maszyny Wirtualnej zostaną wyczyszczone całą zawartość na tych dyskach. To dlatego, biorąc pod uwagę, że pliki danych i pliki dziennika/ponów baz danych powinien w żadnym wypadku nie znajdować się na tych dyskach nietrwałe. Mogą wystąpić wyjątki dotyczące niektórych baz danych, gdzie te dyski nieutrwaloną może być odpowiednie dla bazy danych tempdb i obszary tabel tymczasowych. Należy jednak unikać przy użyciu tych dysków dla maszyn wirtualnych z serii A, ponieważ te dyski nieutrwaloną jest ograniczona przepływność z tej rodziny maszyn wirtualnych. Aby uzyskać więcej informacji, przeczytaj artykuł [opis dysku tymczasowego na maszynach wirtualnych Windows Azure](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
+Maszyny wirtualne platformy Azure oferują dyski trwałe, po wdrożeniu maszyny Wirtualnej. W przypadku ponownego uruchomienia maszyny Wirtualnej zostaną wyczyszczone całą zawartość na tych dyskach. To dlatego, biorąc pod uwagę, że pliki danych i pliki dziennika/ponów baz danych powinien w żadnym wypadku nie znajdować się na tych dyskach nietrwałe. Mogą wystąpić wyjątki dotyczące niektórych baz danych, gdzie te dyski nieutrwaloną może być odpowiednie dla bazy danych tempdb i obszary tabel tymczasowych. Należy jednak unikać przy użyciu tych dysków dla maszyn wirtualnych z serii A, ponieważ te dyski nieutrwaloną jest ograniczona przepływność z tej rodziny maszyn wirtualnych. Aby uzyskać więcej informacji, przeczytaj artykuł [opis dysku tymczasowego na maszynach wirtualnych z Windows na platformie Azure](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
 - - -
 > ![Windows][Logo_Windows] Windows

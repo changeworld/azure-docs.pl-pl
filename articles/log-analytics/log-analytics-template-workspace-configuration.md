@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: f1cf38dd5687e14b0183de03b8eda41fe39808e3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: a715c300cc5490eef9dbe7971dabe1733fd47f49
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041378"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402221"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Zarządzanie usługą Log Analytics przy użyciu szablonów usługi Azure Resource Manager
 Możesz użyć [szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) do tworzenia i konfigurowania obszarów roboczych usługi Log Analytics. Przykłady zadań, które można wykonać za pomocą szablonów:
@@ -178,7 +178,7 @@ W poniższym przykładzie szablon przedstawia sposób:
       "minValue": 7,
       "maxValue": 730,
       "metadata": {
-        "description": "Number of days of retention. Free plans can only have 7 days, Standalone and OMS plans include 30 days for free"
+        "description": "Number of days of retention. Free plans can only have 7 days, Standalone and Log Analytics plans include 30 days for free"
       }
     },
     "location": {
@@ -518,7 +518,7 @@ Galeria szablonów szybkiego startu platformy Azure zawiera kilka szablonów dla
 * [Wdrażanie maszyny wirtualnej z systemem Linux przy użyciu rozszerzenia maszyny Wirtualnej programu Log Analytics](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
 * [Monitorowanie usługi Azure Site Recovery przy użyciu istniejącego obszaru roboczego usługi Log Analytics](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
 * [Monitorowanie aplikacji sieci Web platformy Azure przy użyciu istniejącego obszaru roboczego usługi Log Analytics](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
-* [Dodaj istniejące konto magazynu do pakietu OMS](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
+* [Dodaj istniejące konto magazynu do usługi Log Analytics](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wdrażanie agenta Windows na maszynach wirtualnych platformy Azure przy użyciu szablonu usługi Resource Manager](../virtual-machines/windows/extensions-oms.md).

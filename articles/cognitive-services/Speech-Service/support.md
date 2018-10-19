@@ -8,12 +8,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: c08cc34631afdec4a4b08b4c599b79e1a161558c
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: b5d981f06219bd2b5d7325476725ff7a4eccf3b6
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364161"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430106"
 ---
 # <a name="support-and-help-options"></a>Opcje pomocy technicznej i pomocy
 
@@ -74,8 +74,41 @@ Jeśli nie możesz znaleźć odpowiedzi na problem za pomocą wyszukiwania, Prze
 
 Przykłady są często publikowanych jako "open source". Pytania i problemy, utworzyć *problem* w odpowiednim repozytorium GitHub. Można przesłać żądanie ściągnięcia zbyt. Poniższa lista zawiera łącza do repozytoriów próbki:
 
-* [Zestaw SDK rozpoznawania mowy](https://aka.ms/csspeech/samples)
-* [Zestaw SDK urządzeń](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)
+* [Zestaw SDK rozpoznawania mowy](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
+* [Devices SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
+
+Można utworzyć raport o usterce, żądania funkcji lub zadać pytanie ogólne i udostępniania najlepszych rozwiązań. Dla raportów usterek postępuj zgodnie z podanym szablonie:
+
+**Opis błędu**
+
+Czytelne i zwięzłe oraz opis błędu jest.
+
+**Aby odtworzyć**
+
+Kroki do odtworzenia problemu:
+1. Przyciski ...
+2. Przyciski ...
+
+**Oczekiwane zachowanie**
+
+Czytelne i zwięzłe oraz opis powinno to nastąpić.
+
+**Wersja mowy usług Cognitive Services SDK**
+
+Która wersja zestawu SDK jest używana.
+
+**Platforma systemu operacyjnego i język programowania**
+
+ - System operacyjny: [np. Windows, Linux, Android, iOS,...] — należy określonych
+ - Sprzęt - x64 x86, ARM...
+ - Przeglądarka [np. dla programu Chrome, Safari] (jeśli dotyczy) — należy określonych
+
+**Dodatkowy kontekst**
+
+ - Ślad, stosu komunikaty o błędach, informacji dziennika...
+ - Jeśli użytkownik zgłasza błąd do interakcji z określonej usługi, zgłoś SessionId i czasu (z uwzględnieniem strefa czasowa) zgłoszonych zdarzeń. Identyfikator SessionId jest zgłaszany w każdym wywołaniu — tworzy kopię/otrzymany.
+ - Dodatkowe informacje
+
 
 ## <a name="uservoice-forum"></a>UserVoice forum
 

@@ -15,12 +15,12 @@ ms.date: 09/12/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: e67428116c66c05d83efbb217d7ec81f75124051
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 06df705aabce06c37f04de3fb5046d822f9f981e
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45540848"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404957"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Praca z istniejących serwerów proxy w środowisku lokalnym
 
@@ -120,7 +120,7 @@ Wstępnej rejestracji można zezwolić na dostęp do następujących punktów ko
 Jeśli nie można zezwolić na połączenie z w pełni kwalifikowaną nazwę domeny, należy określić zakresy adresów IP zamiast tego należy użyć tych opcji:
 
 * Zezwalaj na dostęp ruchu wychodzącego łącznika do wszystkich miejsc docelowych.
-* Zezwalaj na dostęp ruchu wychodzącego łącznika do wszystkich [zakresy IP centrów danych platformy Azure](https://www.microsoft.com/en-gb/download/details.aspx?id=41653). Wyzwanie przy użyciu listy zakresów adresów IP centrum danych platformy Azure polega na tym, że jest aktualizowana co tydzień. Należy umieścić procesu w celu zapewnienia reguł dostępu są odpowiednio aktualizowane. Tylko za pomocą podzestawu adresów IP może spowodować konfigurację tak, aby przerwać.
+* Zezwalaj na dostęp ruchu wychodzącego łącznika do wszystkich [zakresy IP centrów danych platformy Azure](https://www.microsoft.com//download/details.aspx?id=41653). Wyzwanie przy użyciu listy zakresów adresów IP centrum danych platformy Azure polega na tym, że jest aktualizowana co tydzień. Należy umieścić procesu w celu zapewnienia reguł dostępu są odpowiednio aktualizowane. Tylko za pomocą podzestawu adresów IP może spowodować konfigurację tak, aby przerwać.
 
 #### <a name="proxy-authentication"></a>Uwierzytelnianie serwera proxy
 

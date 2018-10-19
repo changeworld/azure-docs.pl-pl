@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: f43715b9c419aab1f5b95e140eac72642ef74198
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: a8b2070b6f5b10cb60c6658aefc8cc90331ecfd9
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746901"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409360"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Stosowanie poprawek systemu operacyjnego Windows w klastrze usługi Service Fabric
 
@@ -29,7 +29,9 @@ ms.locfileid: "42746901"
 >
 >
 
-Aplikacja orchestration poprawki jest aplikacji usługi Service Fabric, który automatyzuje systemu operacyjnego poprawek w klastrze usługi Service Fabric, bez przestojów.
+[Automatyczne uaktualnienia obrazu systemu operacyjnego zestawu skalowania maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) jest najlepszym rozwiązaniem dla przechowywania przez systemy operacyjne poprawek na platformie Azure, a aplikacja Orchestration Patch (POA) otokę usługa usługi sieci szkieletowe RepairManager systemów który umożliwia konfiguracji na podstawie systemu operacyjnego poprawki planowania dla klastrów hostowanej spoza platformy Azure. POA nie jest wymagana w przypadku klastrów hostowanej spoza platformy Azure, ale planowanie instalacji poprawki uaktualnienia domen, jest wymagany do poprawiania hostów klastrów Service Fabric bez przestojów.
+
+POA jest aplikacja usługi Azure Service Fabric, która automatyzuje systemu operacyjnego poprawek w klastrze usługi Service Fabric, bez przestojów.
 
 Aplikacja orchestration poprawki zapewnia następujące funkcje:
 

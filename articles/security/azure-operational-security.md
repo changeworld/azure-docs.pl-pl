@@ -1,6 +1,6 @@
 ---
 title: Bezpieczeństwo działania platformy Azure | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat programu Microsoft Operations Management Suite (OMS), usługach i jak to działa.
+description: Więcej informacji na temat usługi Microsoft Azure Log Analytics, usługach i jak to działa.
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 60260d7bcff07a9ce2d680c84119d11271579e7d
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 2ae2ea14bc712563867f32b83eddbd9d4129ac1d
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342273"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409496"
 ---
 # <a name="azure-operational-security"></a>Bezpieczeństwo działania platformy Azure
 ## <a name="introduction"></a>Wprowadzenie
@@ -40,7 +40,7 @@ Infrastruktura platformy Azure została zaprojektowana kompleksowo, począwszy o
 Zabezpieczenia usługi Azure Operational odnosi się do usługi, formanty i funkcje dostępne dla użytkowników na potrzeby ochrony danych, aplikacji i innych zasobów na platformie Microsoft Azure. Bezpieczeństwa platformy Azure działa w oparciu o strukturę, która zawiera wiedzy uzyskanej dzięki różnych funkcji, które są unikatowe w firmie Microsoft, w tym Microsoft cykl projektowania zabezpieczeń (SDL), program Microsoft Security Response Center oraz głębokiej świadomości krajobraz zagrożeń cyberbezpieczeństwa.
 
 Ten dokument przedstawia podejście firmy Microsoft do kwestii bezpieczeństwa platformy Azure w ramach platformy Microsoft Azure w chmurze i obejmuje następujące usługi:
-1.  [Pakiet Azure Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)
+1.  [Azure Monitor](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)
 
 2.  [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
 
@@ -53,17 +53,17 @@ Ten dokument przedstawia podejście firmy Microsoft do kwestii bezpieczeństwa p
 6.  [Usługa Azure Active directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)
 
 
-## <a name="microsoft-operations-management-suite"></a>Microsoft Operations Management Suite
+## <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
 
-Microsoft Operations Management Suite (OMS) to rozwiązanie zarządzania IT dla chmury hybrydowej. Użyte bez parametrów lub rozszerzenie istniejącego wdrożenia programu System Center, OMS zapewnia maksymalną elastyczność i kontrolę dla zarządzania infrastrukturą w chmurze.
+Microsoft Azure Log Analytics to rozwiązanie zarządzania IT dla chmury hybrydowej. Użyte bez parametrów lub rozszerzenie istniejącego wdrożenia programu System Center, usługi Log Analytics zapewnia maksymalną elastyczność i kontrolę dla zarządzania infrastrukturą w chmurze.
 
-![Microsoft Operations Management Suite](./media/azure-operational-security/azure-operational-security-fig1.png)
+![Log Analytics](./media/azure-operational-security/azure-operational-security-fig1.png)
 
-Za pomocą pakietu OMS możesz zarządzać dowolne wystąpienie w chmurze, w tym w środowisku lokalnym, Azure, AWS, systemu Windows Server, Linux, VMware i OpenStack przy niskich kosztach niż konkurencyjne rozwiązania. Stworzona z myślą world pierwszy chmury, OMS oferuje nowe podejście do zarządzania przedsiębiorstwa oznacza to najszybszy i najbardziej ekonomiczny sposób spełniają wyzwania biznesowe i nowych obciążeń, aplikacji i środowisk w chmurze.
+Za pomocą usługi Log Analytics można zarządzać dowolne wystąpienie w chmurze, w tym w środowisku lokalnym, Azure, AWS, systemu Windows Server, Linux, VMware i OpenStack przy niskich kosztach niż konkurencyjne rozwiązania. Oparta na świecie chmurę, usługa Log Analytics oferuje nowe podejście do zarządzania w przedsiębiorstwie, który jest najszybszym i najbardziej ekonomiczny sposób spełniają wyzwania biznesowe i nowych obciążeń, aplikacji i środowisk w chmurze.
 
-### <a name="oms-services"></a>Usługi pakietu OMS
+### <a name="log-analytics-services"></a>Usługi analizy dzienników
 
-Podstawowe funkcje pakietu OMS są oferowane jako zbiór usług działających na platformie Azure. Każda usługa udostępnia określoną funkcję zarządzania. Możesz łączyć usługi, aby realizować różne scenariusze zarządzania.
+Podstawowe funkcje usługi Log Analytics jest dostarczana przez zbiór usług działających na platformie Azure. Każda usługa udostępnia określoną funkcję zarządzania. Możesz łączyć usługi, aby realizować różne scenariusze zarządzania.
 
 | Usługa  | Opis|
 | :------------- | :-------------|
@@ -74,7 +74,7 @@ Podstawowe funkcje pakietu OMS są oferowane jako zbiór usług działających n
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Usługa [Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) umożliwia monitorowanie pakietu OMS przez zbieranie danych z zarządzanych zasobów w centralnym repozytorium. Te dane mogą obejmować zdarzenia, dane wydajności i niestandardowe dane dostarczane przez interfejs API. Zebrane dane są dostępne na potrzeby alertów, analizy i eksportu.
+[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) umożliwia monitorowanie przez zbieranie danych z zarządzanych zasobów w centralnym repozytorium. Te dane mogą obejmować zdarzenia, dane wydajności i niestandardowe dane dostarczane przez interfejs API. Zebrane dane są dostępne na potrzeby alertów, analizy i eksportu.
 
 
 Ta metoda umożliwia konsolidowanie danych z różnych źródeł, dzięki czemu można połączyć dane z usług platformy Azure przy użyciu istniejących lokalnych środowiska. Ponadto wprowadza wyraźny podział między zbieraniem danych a akcjami wykonanymi na tych danych, tak aby wszystkie akcje były dostępne dla wszystkich typów danych.
@@ -92,17 +92,17 @@ Usługa Log Analytics bezpiecznie zarządza dane oparte na chmurze przy użyciu 
 
 ### <a name="azure-backup"></a>Azure Backup
 
-[Usługa Azure Backup](http://azure.microsoft.com/documentation/services/backup) udostępnia dane kopii zapasowej i przywracania usługi i jest częścią pakietu OMS, produktów i usług.
+[Usługa Azure Backup](http://azure.microsoft.com/documentation/services/backup) udostępnia dane kopii zapasowej i przywracania usługi i jest częścią zestawu usługi Log Analytics, produktów i usług.
 Chroni ona dane aplikacji i przechowuje je przez wiele lat bez konieczności ponoszenia jakichkolwiek inwestycji kapitałowych i przy minimalnych kosztach operacyjnych. Jego kopię zapasową danych z fizycznych i wirtualnych serwerów Windows, także obciążeń aplikacji, takich jak SQL Server i SharePoint. Może również służyć za [System Center Data Protection Manager (DPM)](https://en.wikipedia.org/wiki/System_Center_Data_Protection_Manager) do replikacji chronionych danych na platformę Azure dla zapewnienia nadmiarowości i długoterminowego przechowywania.
 
 
 Chronione dane w usłudze Azure Backup są przechowywane w magazynie kopii zapasowych, znajdującym się w określonym regionie geograficznym. Dane są replikowane w obrębie tego samego regionu, a następnie, w zależności od typu magazynu mogą być również replikowane do innego regionu w celu osiągnięcia większej odporności.
 
 ### <a name="management-solutions"></a>Rozwiązania do zarządzania
-[Microsoft Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) jest firmy Microsoft oparte na chmurze rozwiązanie zarządzania IT, która ułatwia zarządzanie i chronić lokalne i infrastruktury chmury.
+[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) jest firmy Microsoft oparte na chmurze rozwiązanie zarządzania IT, która ułatwia zarządzanie i chronić lokalne i infrastruktury chmury.
 
 
-[Rozwiązania do zarządzania](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions) to wstępnie spakowane zestawy warunki logiczne, które implementują określony scenariusz zarządzania przy użyciu co najmniej jednej usługi pakietu OMS. Dostępne są różne rozwiązania oferowane przez firmę Microsoft i partnerów, które można łatwo dodać do subskrypcji platformy Azure w celu zwiększenia wartości inwestycji w pakiet OMS. Jako partner można utworzyć własne rozwiązania do obsługi danych aplikacji i usług oraz udostępniać je użytkownikom za pośrednictwem witryny Azure Marketplace lub szablonów Szybki Start.
+[Rozwiązania do zarządzania](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions) to wstępnie spakowane zestawy warunki logiczne, które implementują określony scenariusz zarządzania przy użyciu co najmniej jedna usługa Log Analytics. Różne są dostępne rozwiązania firmy Microsoft i partnerów, że można łatwo dodać do subskrypcji platformy Azure w celu zwiększenia wartości inwestycji w usłudze Log Analytics. Jako partner można utworzyć własne rozwiązania do obsługi danych aplikacji i usług oraz udostępniać je użytkownikom za pośrednictwem witryny Azure Marketplace lub szablonów Szybki Start.
 
 
 ![Rozwiązania do zarządzania](./media/azure-operational-security/azure-operational-security-fig4.png)
@@ -164,7 +164,7 @@ Usługa Azure Security Center zbiera efemeryczne kopie plików zrzutu awaryjnego
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-[Rozwiązanie OMS Security](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources) i przeprowadzanie inspekcji umożliwiają rozwiązania IT, aktywne monitorowanie wszystkich zasobów, które mogą pomóc zminimalizować wpływ incydentów zabezpieczeń. Zabezpieczenia w pakiecie OMS i inspekcji mają domeny zabezpieczeń, które mogą służyć do monitorowania zasobów. Domeny zabezpieczeń zapewnia szybki dostęp do opcji, dotyczące monitorowania zabezpieczeń następujących domen zostały omówione bardziej szczegółowo:
+[Log Analytics zabezpieczeń](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources) i przeprowadzanie inspekcji umożliwiają rozwiązania IT, aktywne monitorowanie wszystkich zasobów, które mogą pomóc zminimalizować wpływ incydentów zabezpieczeń. Log Analytics zabezpieczenia i inspekcja mają domeny zabezpieczeń, które mogą służyć do monitorowania zasobów. Domeny zabezpieczeń zapewnia szybki dostęp do opcji, dotyczące monitorowania zabezpieczeń następujących domen zostały omówione bardziej szczegółowo:
 
 -   Ocena złośliwego oprogramowania
 -   Ocena aktualizacji
@@ -312,7 +312,7 @@ Ta podsumowania artykułu, ochrony prywatności i zabezpieczanie danych, dostarc
 
 W tym artykule opisano
 
--   Jak dane są zbierane, przetwarzane i zabezpieczane w Operations Management Suite (OMS).
+-   Jak dane są zbierane, przetwarzane i zabezpieczone w pakiecie usługi Log Analytics.
 
 -   Szybko analizuj zdarzenia w wielu źródłach danych. Identyfikuj zagrożenia bezpieczeństwa i uzyskuj wiedzę o zakresie i wpływie zagrożeń i ataków, aby eliminować szkody związane z naruszeniem zabezpieczeń.
 
@@ -335,7 +335,7 @@ W tym artykule opisano
 
 Firma Microsoft projektuje swoje usługi i oprogramowania z myślą o bezpieczeństwie, aby mieć pewność, że infrastruktura chmury jest odporne na błędy i obrony, w odniesieniu przed atakami.
 
-- [Pakiet Operations Management Suite | Bezpieczeństwo i zgodność](https://www.microsoft.com/cloud-platform/security-and-compliance)
+- [Log Analytics | Bezpieczeństwo i zgodność](https://www.microsoft.com/cloud-platform/security-and-compliance)
 
 Dane zabezpieczeń firmy Microsoft i analiza można używać do wykonywania bardziej inteligentne i efektywne wykrywania zagrożeń.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: b9e96473a6f66dcbc675da1553deaed4ad61b249
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 1d65238115ca57a3fcc8047a27c8161aaa144ce4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630938"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407711"
 ---
 # <a name="powershell-dsc-extension"></a>Rozszerzenie DSC programu PowerShell
 
@@ -100,10 +100,10 @@ Następujący kod JSON zawiera schemat dla ustawień część rozszerzenia DSC w
 
 | Name (Nazwa) | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | data |
+| apiVersion | 2015-06-15 | date |
 | Wydawcy | Microsoft.Powershell.DSC | ciąg |
 | type | DSC | ciąg |
-| typeHandlerVersion | 2,73 | Int |
+| typeHandlerVersion | 2,73 | int |
 
 ### <a name="settings-property-values"></a>Wartości właściwości ustawień
 
@@ -130,7 +130,7 @@ Następujący kod JSON zawiera schemat dla ustawień część rozszerzenia DSC w
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
-Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Szablony są idealnym rozwiązaniem w przypadku wdrażania maszyn wirtualnych, które wymagają konfiguracji po wdrożeniu. Przykładowy szablon usługi Resource Manager, który uwzględnia również rozszerzenie OMS Agent VM znajduje się na [w galerii platformy Azure Szybki Start](https://github.com/Azure/azure-quickstart-templates/tree/052db5feeba11f85d57f170d8202123511f72044/dsc-extension-iis-server-windows-vm). 
+Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Szablony są idealnym rozwiązaniem w przypadku wdrażania maszyn wirtualnych, które wymagają konfiguracji po wdrożeniu. Przykładowy szablon usługi Resource Manager zawierającego agenta usługi Log Analytics rozszerzenia maszyny Wirtualnej można znaleźć na [w galerii platformy Azure Szybki Start](https://github.com/Azure/azure-quickstart-templates/tree/052db5feeba11f85d57f170d8202123511f72044/dsc-extension-iis-server-windows-vm). 
 
 Konfiguracji JSON dla rozszerzenia maszyny wirtualnej mogą być zagnieżdżone wewnątrz zasobu maszyny wirtualnej lub umieszczone w katalogu głównego lub najwyższego poziomu szablon JSON usługi Resource Manager. Położenie konfiguracji JSON ma wpływ na wartości nazwy i typu zasobu. 
 
@@ -139,7 +139,7 @@ Zagnieżdżanie rozszerzenia zasobu, za pomocą pliku JSON jest umieszczany w `"
 
 ## <a name="azure-cli-deployment"></a>Wdrażania interfejs wiersza polecenia platformy Azure
 
-Interfejs wiersza polecenia platformy Azure może służyć do wdrożenia rozszerzenia maszyny Wirtualnej agenta pakietu OMS do istniejącej maszyny wirtualnej. Zamień klucz usługi OMS i identyfikator pakietu OMS z obszaru roboczego pakietu OMS. 
+Interfejs wiersza polecenia platformy Azure może służyć do wdrażania agenta usługi Log Analytics rozszerzenia maszyny Wirtualnej na istniejącej maszyny wirtualnej. Zamień na klucz usługi Log Analytics i Log Analytics identyfikator te z obszaru roboczego usługi Log Analytics. 
 
 ```azurecli
 az vm extension set \

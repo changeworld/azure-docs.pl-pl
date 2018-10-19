@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jasonh
-ms.openlocfilehash: 87d1593327ab45f064c6f6b19dfbe3882baaa446
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 1a526bfdd951e4dc2897ec52c03bfbe96ee14d4c
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109520"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403682"
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Umożliwia monitorowanie klastrów HDInsight w usłudze Azure Log Analytics
 
@@ -93,7 +93,7 @@ Poniżej przedstawiono dostępne rozwiązania HDInsight:
 
 Aby uzyskać instrukcje zainstalować rozwiązanie do zarządzania, zobacz [rozwiązań do zarządzania na platformie Azure](../monitoring/monitoring-solutions.md#install-a-management-solution). Aby poeksperymentować, należy zainstalować rozwiązanie HDInsight Hadoop Monotiring. Gdy wszystko będzie gotowe, zostanie wyświetlony **HDInsightHadoop** kafelka na liście **Podsumowanie**. Wybierz **HDInsightHadoop** kafelka. Rozwiązanie HDInsightHadoop wygląda następująco:
 
-![Widok rozwiązania monitorowania pakietu OMS HDInsight w usłudze Hadoop](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
+![Widok rozwiązania monitorowania HDInsight](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
 
 Ponieważ klaster jest całkiem nowego klastra, raport nie wyświetla żadnych działań.
 

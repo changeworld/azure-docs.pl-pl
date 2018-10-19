@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: d1ad629ff5c6909256baa94573d045a8c2c09fb5
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 49aed496d8c125da8c2269186b569693c794d290
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223835"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404566"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Często zadawane pytania dotyczące przejścia z portalu pakietu OMS do witryny Azure portal dla użytkowników usługi Log Analytics
 Usługi log Analytics swój własny portal o nazwie portalu pakietu OMS początkowo użyty do zarządzania jej konfiguracji i analizowania zebranych danych.  Wszystkie funkcje z tego portalu został przeniesiony do witryny Azure portal gdzie będą opracowywane.
@@ -113,7 +113,7 @@ W portalu pakietu OMS zainstalowaniu rozwiązania do zarządzania z galerii rozw
 Reguły alertów na podstawie zapytań usługi Log Analytics zarządza się teraz w [ujednolicone środowisko alertów](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). Zobacz [sposób rozszerzyć alerty z usługą Log Analytics do usługi Azure Alerts](../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md) Aby uzyskać szczegółowe informacje dotyczące konfigurowania i używania alertów w witrynie Azure portal.
 
 ## <a name="how-do-i-access-my-dashboards"></a>Jak uzyskać dostęp do moich pulpitów nawigacyjnych?
-[Pulpity nawigacyjne](../log-analytics/log-analytics-dashboards.md) zostały zaniechane w usłudze Log Analytics.  Możesz wizualizować dane w usłudze Log Analytics przy użyciu [Projektant widoków](../log-analytics/log-analytics-view-designer.md) który oferuje dodatkowe funkcje i przypinanie zapytania i widoki pulpitów nawigacyjnych platformy Azure.
+[Mój pulpit nawigacyjny](../log-analytics/log-analytics-dashboards.md) funkcji w usłudze Log Analytics jest przestarzała. Ta funkcja pozwala na zapewnienie prywatnej kolekcji części projektanta widoków i zostało zastąpione przez wbudowane funkcje pulpitu nawigacyjnego platformy Azure. Wizualizuj dane przy użyciu usługi Log Analytics można kontynuować [Projektant widoków](../log-analytics/log-analytics-view-designer.md) udostępnionego widoków. Możesz również przypiąć wizualizacje z tych widoków lub [pojedynczych zapytań](../log-analytics/log-analytics-tutorial-dashboards.md) do pulpitów nawigacyjnych platformy Azure.
 
 ## <a name="how-do-i-check-my-usage"></a>Jak sprawdzić użycia?
 Można teraz łatwo wyświetlać i zarządzać użycia i kosztów usługi Log Analytics, wybierając **użycie i szacunkowe koszty** w obszarze roboczym.

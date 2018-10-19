@@ -1,6 +1,6 @@
 ---
-title: Zbieraj wydajności aplikacji systemu Linux w usłudze Log Analytics pakietu OMS | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera szczegółowe informacje dotyczące konfigurowania agenta pakietu OMS dla systemu Linux można zebrać liczników wydajności for MySQL i Apache HTTP Server.
+title: Zbieraj wydajności aplikacji systemu Linux w usłudze Log Analytics | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera szczegółowe informacje dotyczące konfigurowania agenta usługi Log Analytics dla systemu Linux można zebrać liczników wydajności for MySQL i Apache HTTP Server.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,26 +15,27 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5120fa869d9c3fe28630b189b84b9c3e3f5577e2
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: df5e55c2c03fec13ada258be91f0d98b7ce70d94
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044573"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406164"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Zbierz liczniki wydajności dla aplikacji systemu Linux w usłudze Log Analytics 
-Ten artykuł zawiera szczegółowe informacje dotyczące konfigurowania [agenta pakietu OMS dla systemu Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) można zebrać liczników wydajności określonych aplikacji.  Aplikacje zawarte w tym artykule są następujące:  
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
+Ten artykuł zawiera szczegółowe informacje dotyczące konfigurowania [agenta usługi Log Analytics dla systemu Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) można zebrać liczników wydajności określonych aplikacji.  Aplikacje zawarte w tym artykule są następujące:  
 
 - [MySQL](#MySQL)
 - [Apache HTTP Server](#apache-http-server)
 
 ## <a name="mysql"></a>MySQL
-Jeśli serwer MySQL lub MariaDB serwer zostanie wykryte na komputerze jest zainstalowany agent pakietu OMS, zostanie automatycznie zainstalowana dostawcy dla serwera MySQL monitorowania wydajności. Ten dostawca łączy z lokalnym serwerem MySQL/MariaDB do udostępnienia statystyk wydajności. Poświadczenia użytkownika MySQL musi być skonfigurowany tak, aby dostawca może uzyskać dostępu do serwera MySQL.
+Jeśli serwer MySQL lub MariaDB serwer zostanie wykryte na komputerze po zainstalowaniu agenta usługi Log Analytics, zostanie automatycznie zainstalowana dostawcy dla serwera MySQL monitorowania wydajności. Ten dostawca łączy z lokalnym serwerem MySQL/MariaDB do udostępnienia statystyk wydajności. Poświadczenia użytkownika MySQL musi być skonfigurowany tak, aby dostawca może uzyskać dostępu do serwera MySQL.
 
 ### <a name="configure-mysql-credentials"></a>Skonfiguruj poświadczenia MySQL
 Dostawca MySQL OMI wymaga wstępnie skonfigurowanej użytkownika programu MySQL i zainstalować biblioteki klienckie MySQL w celu wykonywania zapytań dotyczących wydajności i informacje o kondycji z wystąpienia programu MySQL.  Te poświadczenia są przechowywane w pliku uwierzytelniania, który jest przechowywany na agenta systemu Linux.  Pliku uwierzytelniania określa, jakie powiązania adres i port wystąpienia MySQL nasłuchuje na i jakie poświadczenia na potrzeby gromadzenia metryk.  
 
-Podczas instalacji agenta pakietu OMS dla systemu Linux MySQL OMI dostawca skanowania plików konfiguracyjnych my.cnf MySQL (domyślne lokalizacje) dla wiązania adres i port i częściowo Ustaw MySQL OMI pliku uwierzytelniania.
+Podczas instalacji agenta usługi Log Analytics dla systemu Linux MySQL OMI dostawca skanowania plików konfiguracyjnych my.cnf MySQL (domyślne lokalizacje) dla wiązania adres i port i częściowo Ustaw plik uwierzytelniania MySQL OMI.
 
 MySQL pliku uwierzytelniania jest przechowywany w `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysql-auth`.
 
@@ -115,7 +116,7 @@ Tych uprawnień można udzielić, uruchamiając następujące polecenia grant.
 
 ### <a name="define-performance-counters"></a>Zdefiniuj liczników wydajności
 
-Po skonfigurowaniu agenta pakietu OMS dla systemu Linux w celu wysyłania danych do usługi Log Analytics, skonfiguruj zbierane liczniki wydajności.  Procedura [Windows i Linux źródła danych dotyczących wydajności w usłudze Log Analytics](log-analytics-data-sources-windows-events.md) liczników w poniższej tabeli.
+Po skonfigurowaniu agenta usługi Log Analytics dla systemu Linux w celu wysyłania danych do usługi Log Analytics, skonfiguruj zbierane liczniki wydajności.  Procedura [Windows i Linux źródła danych dotyczących wydajności w usłudze Log Analytics](log-analytics-data-sources-windows-events.md) liczników w poniższej tabeli.
 
 | Nazwa obiektu | Nazwa licznika |
 |:--|:--|
@@ -151,7 +152,7 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 ### <a name="define-performance-counters"></a>Zdefiniuj liczników wydajności
 
-Po skonfigurowaniu agenta pakietu OMS dla systemu Linux w celu wysyłania danych do usługi Log Analytics, skonfiguruj zbierane liczniki wydajności.  Procedura [Windows i Linux źródła danych dotyczących wydajności w usłudze Log Analytics](log-analytics-data-sources-windows-events.md) liczników w poniższej tabeli.
+Po skonfigurowaniu agenta usługi Log Analytics dla systemu Linux w celu wysyłania danych do usługi Log Analytics, skonfiguruj zbierane liczniki wydajności.  Procedura [Windows i Linux źródła danych dotyczących wydajności w usłudze Log Analytics](log-analytics-data-sources-windows-events.md) liczników w poniższej tabeli.
 
 | Nazwa obiektu | Nazwa licznika |
 |:--|:--|

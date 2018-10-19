@@ -1,5 +1,5 @@
 ---
-title: Zbieranie danych z zebrane w usłudze Log Analytics pakietu OMS | Dokumentacja firmy Microsoft
+title: Zbieranie danych z zebrane w usłudze Log Analytics | Dokumentacja firmy Microsoft
 description: Zebrane jest demonów systemu Linux typu open source, który okresowo zbiera dane z aplikacji i informacje o poziomie systemu.  Ten artykuł zawiera informacje dotyczące zbierania danych z zebrane w usłudze Log Analytics.
 services: log-analytics
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: eb053ef8fc66ff9d71a9576b71eb4edfcd688638
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: a1f28103f8faabae166f09185db3f3e1fee7a5ab
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041294"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404600"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Zbieranie danych z zebrane na agentach systemu Linux w usłudze Log Analytics
 [Zebrane](https://collectd.org/) jest demonów systemu Linux typu open source, który okresowo zbiera metryki wydajności z aplikacji i informacje o poziomie systemu. Przykładowe aplikacje obejmują maszyny wirtualnej Java (JVM), serwer MySQL i Nginx. Ten artykuł zawiera informacje dotyczące zbierania danych wydajności z zebrane w usłudze Log Analytics.
@@ -29,7 +29,9 @@ Pełną listę dostępnych wtyczek znajduje się w temacie [tabeli wtyczek](http
 
 ![Zebrane — omówienie](media/log-analytics-data-sources-collectd/overview.png)
 
-Następująca konfiguracja zebrane są objęte agenta pakietu OMS dla systemu Linux na przesyłanie danych zebrane do agenta pakietu OMS dla systemu Linux.
+Następująca konfiguracja zebrane znajduje się w agenta usługi Log Analytics dla systemu Linux na przesyłanie danych zebrane do agenta usługi Log Analytics dla systemu Linux.
+
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
 
     LoadPlugin write_http
 
@@ -52,12 +54,12 @@ Ponadto jeśli używane wersje zebrane przed 5.5 zamiast tego użyj poniższej k
        </URL>
     </Plugin>
 
-Domyślnie korzysta z konfiguracji zebrane`write_http` dodatek plug-in, aby wysyłać dane metryk wydajności za pośrednictwem portu 26000 agenta pakietu OMS dla systemu Linux. 
+Domyślnie korzysta z konfiguracji zebrane`write_http` dodatek plug-in, aby Wysyłaj dane metryk wydajności za pośrednictwem portu 26000 do agenta usługi Log Analytics dla systemu Linux. 
 
 > [!NOTE]
 > Jeśli to konieczne, można skonfigurować tego portu na port niestandardowy.
 
-OMS Agent for Linux również nasłuchuje na porcie 26000 metryki zebrane i konwertuje je do pakietu OMS schematu metryk. Poniżej przedstawiono OMS Agent for Linux konfiguracji `collectd.conf`.
+Agenta usługi Log Analytics dla systemu Linux również nasłuchuje na porcie 26000 metryki zebrane i konwertuje je do usługi Log Analytics schematu metryk. Poniżej przedstawiono agenta usługi Log Analytics dla systemu Linux konfiguracji `collectd.conf`.
 
     <source>
       type http
@@ -72,19 +74,19 @@ OMS Agent for Linux również nasłuchuje na porcie 26000 metryki zebrane i konw
 
 ## <a name="versions-supported"></a>Obsługiwane wersje
 - Usługa log Analytics obsługuje obecnie zebrane wersji 4.8 i nowsze wersje.
-- Agenta pakietu OMS dla systemu Linux v1.1.0-217 lub nowszego jest wymagany na potrzeby kolekcji metryki zebrane.
+- Log Analytics agenta dla systemu Linux v1.1.0-217 lub nowszego jest wymagany na potrzeby kolekcji metryki zebrane.
 
 
 ## <a name="configuration"></a>Konfigurowanie
 Poniżej przedstawiono podstawowe kroki, aby skonfigurować zbieranie zebrane dane w usłudze Log Analytics.
 
-1. Skonfiguruj zebrane w celu wysyłania danych do agenta pakietu OMS dla systemu Linux przy użyciu wtyczki write_http.  
-2. Konfigurowanie agenta pakietu OMS dla systemu Linux do nasłuchiwania pod kątem zebrane dane w odpowiedni port.
-3. Uruchom ponownie zebrane i agenta pakietu OMS dla systemu Linux.
+1. Skonfiguruj zebrane w celu wysyłania danych do agenta usługi Log Analytics dla systemu Linux przy użyciu wtyczki write_http.  
+2. Konfigurowanie agenta usługi Log Analytics dla systemu Linux do nasłuchiwania pod kątem zebrane dane w odpowiedni port.
+3. Uruchom ponownie agenta zebrane i Log Analytics dla systemu Linux.
 
 ### <a name="configure-collectd-to-forward-data"></a>Konfigurowanie zebrane do przekazywania danych 
 
-1. Aby dane zebrane trasy do agenta pakietu OMS dla systemu Linux `oms.conf` musi zostać dodane do katalogu konfiguracji zebrane firmy. Miejsce docelowe tego pliku zależy od dystrybucja systemu Linux maszyny.
+1. Aby dane zebrane trasy do agenta usługi Log Analytics dla systemu Linux `oms.conf` musi zostać dodane do katalogu konfiguracji zebrane firmy. Miejsce docelowe tego pliku zależy od dystrybucja systemu Linux maszyny.
 
     Jeśli katalog konfiguracji zebrane znajduje się w /etc/collectd.d/:
 
@@ -103,12 +105,12 @@ Poniżej przedstawiono podstawowe kroki, aby skonfigurować zbieranie zebrane da
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/collectd.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/
         sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/collectd.conf
 
-3. Uruchom ponownie zebrane i agenta pakietu OMS dla systemu Linux przy użyciu poniższych poleceń.
+3. Uruchom ponownie agenta zebrane i Log Analytics dla systemu Linux przy użyciu poniższych poleceń.
 
     ponowne uruchomienie "sudo" usługi zebrane ponowne uruchomienie "sudo" /opt/microsoft/omsagent/bin/service_control
 
 ## <a name="collectd-metrics-to-log-analytics-schema-conversion"></a>Metryki zebrane do konwersji schematu usługi Log Analytics
-Aby zachować znanego modelu między metryk infrastruktury już zebrane przez agenta pakietu OMS dla systemu Linux i nowe metryki zebrane przez zebrane następujące mapowanie schematu jest używany:
+Aby zachować znanego modelu między metryk infrastruktury już zebrane przez agenta usługi Log Analytics dla systemu Linux i nowe metryki zebrane przez zebrane następujące mapowanie schematu jest używany:
 
 | Metryki zebrane pola | Pole analizy dziennika |
 |:--|:--|

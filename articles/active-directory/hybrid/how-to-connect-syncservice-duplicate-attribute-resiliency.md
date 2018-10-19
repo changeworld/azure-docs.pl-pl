@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f8fe86712b59a896d1f431ef677f592ced382db8
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e20ae31ae64483d4d11b793f1c8656107413c05d
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312074"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406198"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Synchronizacja tożsamości i odporność względem zduplikowanych atrybutów
 Odporność na zduplikowane atrybuty to funkcja usługi Azure Active Directory, która zostanie całkowicie wyeliminować zajmowania się przyczyną **UserPrincipalName** i **ProxyAddress** powoduje konflikt podczas uruchamiania jednego z firmy Microsoft narzędzia do synchronizacji.
@@ -122,7 +122,7 @@ Błędy synchronizacji katalogu można wyświetlić w Centrum administracyjnym u
 
 ![Aktywni użytkownicy](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "aktywni użytkownicy")
 
-Aby uzyskać instrukcje dotyczące sposobu wyświetlania błędów synchronizacji katalogu w Centrum administracyjnym usługi Office 365, zobacz [identyfikowanie błędów synchronizacji katalogu w usłudze Office 365](https://support.office.com/en-us/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
+Aby uzyskać instrukcje dotyczące sposobu wyświetlania błędów synchronizacji katalogu w Centrum administracyjnym usługi Office 365, zobacz [identyfikowanie błędów synchronizacji katalogu w usłudze Office 365](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
 
 ### <a name="identity-synchronization-error-report"></a>Raport o błędach synchronizacji tożsamości
 Gdy odbywa się obiekt powodujący konflikt zduplikowany atrybut z tym działaniem nowe powiadomienie znajduje się w standardowych raport o błędach synchronizacji tożsamości wiadomości e-mail są wysyłane do powiadomienie techniczne skontaktuj się z pomocą dla dzierżawy. Istnieje jednak ważne zmiany w tym zachowaniu. W przeszłości informacji o konflikcie zduplikowany atrybut będzie uwzględniane w raporcie każdy kolejny błąd, aż konflikt został rozwiązany. Z tym zachowaniem nowe powiadomienia o błędzie dla danej konfliktu występować tylko raz — w momencie atrybutem sprzecznych jest objęte kwarantanną.
@@ -173,5 +173,5 @@ Powinien wskazywać [ https://aka.ms/duplicateattributeresiliency ](https://aka.
 ## <a name="see-also"></a>Zobacz także
 * [Synchronizacja programu Azure AD Connect](how-to-connect-sync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)
-* [Identyfikowanie błędów synchronizacji katalogu w usłudze Office 365](https://support.office.com/en-us/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
+* [Identyfikowanie błędów synchronizacji katalogu w usłudze Office 365](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
 

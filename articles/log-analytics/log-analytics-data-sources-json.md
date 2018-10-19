@@ -1,6 +1,6 @@
 ---
-title: Zbieranie niestandardowe dane JSON w usłudze Log Analytics pakietu OMS | Dokumentacja firmy Microsoft
-description: Może być zbierana niestandardowego źródła danych JSON w usłudze Log Analytics za pomocą agenta pakietu OMS dla systemu Linux.  Te niestandardowymi źródłami danych mogą być proste skrypty zwracanie JSON, takich jak narzędzie curl lub jeden z jego FluentD ponad 300 wtyczek. Ten artykuł zawiera opis konfiguracji wymaganej do zbierania danych.
+title: Zbieranie niestandardowe dane JSON w usłudze Log Analytics | Dokumentacja firmy Microsoft
+description: Może być zbierana niestandardowego źródła danych JSON w usłudze Log Analytics przy użyciu agenta usługi Log Analytics dla systemu Linux.  Te niestandardowymi źródłami danych mogą być proste skrypty zwracanie JSON, takich jak narzędzie curl lub jeden z jego FluentD ponad 300 wtyczek. Ten artykuł zawiera opis konfiguracji wymaganej do zbierania danych.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,18 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9725a3df04ef28fc3a076c3c6ca6663e36b186a8
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 69338e438ced8871de1e994ee8b816f9dc40b13a
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48040272"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402356"
 ---
-# <a name="collecting-custom-json-data-sources-with-the-oms-agent-for-linux-in-log-analytics"></a>Zbieranie niestandardowego źródła danych JSON za pomocą agenta pakietu OMS dla systemu Linux w usłudze Log Analytics
-Może być zbierana niestandardowego źródła danych JSON w usłudze Log Analytics za pomocą agenta pakietu OMS dla systemu Linux.  Te niestandardowymi źródłami danych mogą być proste skrypty, takie jak zwracanie JSON [curl](https://curl.haxx.se/) lub jednego z [firmy FluentD ponad 300 wtyczek](http://www.fluentd.org/plugins/all). Ten artykuł zawiera opis konfiguracji wymaganej do zbierania danych.
+# <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-log-analytics"></a>Zbieranie niestandardowego źródła danych JSON za pomocą agenta usługi Log Analytics dla systemu Linux w usłudze Log Analytics
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
+Może być zbierana niestandardowego źródła danych JSON w usłudze Log Analytics przy użyciu agenta usługi Log Analytics dla systemu Linux.  Te niestandardowymi źródłami danych mogą być proste skrypty, takie jak zwracanie JSON [curl](https://curl.haxx.se/) lub jednego z [firmy FluentD ponad 300 wtyczek](http://www.fluentd.org/plugins/all). Ten artykuł zawiera opis konfiguracji wymaganej do zbierania danych.
 
 > [!NOTE]
-> Agent usługi OMS dla systemu Linux v1.1.0-217 + jest wymagany dla niestandardowe dane JSON
+> Agent analizy dziennika dla systemu Linux v1.1.0-217 + jest wymagany dla niestandardowe dane JSON
 
 ## <a name="configuration"></a>Konfigurowanie
 
@@ -80,8 +81,8 @@ Dodaj następującą konfigurację wtyczki dane wyjściowe do głównej konfigur
 </match>
 ```
 
-### <a name="restart-oms-agent-for-linux"></a>Uruchom ponownie agenta pakietu OMS dla systemu Linux
-Uruchom ponownie agenta pakietu OMS dla systemu Linux usługi za pomocą następującego polecenia.
+### <a name="restart-log-analytics-agent-for-linux"></a>Uruchom ponownie agenta usługi Log Analytics dla systemu Linux
+Uruchom ponownie agenta usługi Log Analytics dla usługi systemu Linux za pomocą następującego polecenia.
 
     sudo /opt/microsoft/omsagent/bin/service_control restart 
 

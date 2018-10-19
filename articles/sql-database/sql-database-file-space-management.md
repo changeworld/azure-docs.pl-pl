@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 803bab4f0b91e2612abceedfa09baedaaea2a55e
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: bbcd5de0d6c2b43b220d5010093eccc1c9a76269
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377945"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406298"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Zarządzanie przestrzenią pliku w usłudze Azure SQL Database
 W tym artykule opisano różne rodzaje miejsca do magazynowania w usłudze Azure SQL Database i czynności, które mogą być wykonywane, gdy przydzielone miejsce plików baz danych i pul elastycznych musi odbywać się jawnie.
@@ -216,7 +216,7 @@ Aby uzyskać więcej informacji na temat tego polecenia, zobacz [SHRINKDATABASE]
 
 ### <a name="auto-shrink"></a>Automatycznego zmniejszania
 
-Alternatywnie można włączyć automatycznego zmniejszania dla bazy danych.  Automatycznego zmniejszania zmniejsza złożoność zarządzania pliku i jest mniej wpływie na wydajność bazy danych niż SHRINKDATABASE lub SHRINKFILE.  Automatycznego zmniejszania może być szczególnie przydatne w przypadku Zarządzanie elastycznymi pulami za pomocą wielu baz danych.  Jednak automatycznego zmniejszania jest mniej skuteczny w odzyskiwaniu miejsca niż SHRINKDATABASE i SHRINKFILE.
+Alternatywnie można włączyć automatycznego zmniejszania dla bazy danych.  Automatycznego zmniejszania zmniejsza złożoność zarządzania pliku i jest mniej wpływie na wydajność bazy danych niż SHRINKDATABASE lub SHRINKFILE.  Automatycznego zmniejszania może być szczególnie przydatne w przypadku Zarządzanie elastycznymi pulami za pomocą wielu baz danych.  Jednak automatycznego zmniejszania może być mniej skuteczny w odzyskiwaniu miejsca niż SHRINKDATABASE i SHRINKFILE.
 Aby włączyć automatyczne zmniejszanie, należy zmodyfikować nazwę bazy danych w poniższym poleceniu.
 
 

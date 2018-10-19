@@ -14,17 +14,42 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 129d02bea6fe3668a308da0ab2a46ca8b59928e7
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 1b982bddc951e710ba3bfa5fe8621d6595b95a52
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542248"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405348"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Omówienie struktury i składni szablonów usługi Azure Resource Manager
 W tym artykule opisano strukturę szablonu usługi Azure Resource Manager. Przedstawia on różne części szablonu i właściwości, które są dostępne w tych sekcjach. Szablon składa się z kodu JSON i wyrażeń, których można używać do tworzenia wartości na potrzeby wdrożenia. Aby uzyskać samouczek krok po kroku dotyczące tworzenia szablonu, zobacz [Tworzenie pierwszego szablonu usługi Azure Resource Manager](resource-manager-create-first-template.md).
 
+## <a name="quickstarts-and-tutorials"></a>Przewodniki Szybki Start i samouczki
+
+Aby dowiedzieć się, jak opracowywać szablony Menedżera zasobów, użyj następujących przewodników Szybki Start i samouczków:
+
+- Przewodniki Szybki start
+
+  	|Stanowisko|Opis|
+  	|------|-----|
+  	|[Korzystanie z witryny Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md)|Generuj szablon przy użyciu portalu, a proces edycji i wdrażania szablonu.|
+  	|[Użyj programu Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)|Użyj programu Visual Studio Code do tworzenia i edytowania szablonów i jak wdrażanie szablonów za pomocą usługi Azure Cloud shell.|
+  	|[Używanie programu Visual Studio](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)|Użyj programu Visual Studio do tworzenia, edytowania i wdrażanie szablonów.|
+
+- Samouczki
+
+  	|Stanowisko|Opis|
+  	|------|-----|
+  	|[Korzystanie z odwołania do szablonu](./resource-manager-tutorial-create-encrypted-storage-accounts.md)|Korzystanie z dokumentacji szablonu do tworzenia szablonów. W tym samouczku możesz znaleźć schemat konta magazynu i skorzystaj z informacji do utworzenia zaszyfrowanego konta magazynu.|
+  	|[Tworzenie wielu wystąpień](./resource-manager-tutorial-create-multiple-instances.md)|Tworzenie wielu wystąpień zasobów platformy Azure. W tym samouczku utworzysz wiele wystąpień konta magazynu.|
+  	|[Ustaw kolejność wdrażania zasobów](./resource-manager-tutorial-create-templates-with-dependent-resources.md)|Definiowanie zależności zasobu. W tym samouczku utworzysz sieć wirtualną, maszynę wirtualną i zależnych zasobów platformy Azure. Dowiedz się, jak zdefiniowano zależności.|
+  	|[Używanie warunków](./resource-manager-tutorial-use-conditions.md)|Wdrażanie zasobów na podstawie niektórych wartości parametru. W tym samouczku zdefiniujesz szablon, aby utworzyć nowe konto magazynu lub użyj istniejącego konta magazynu na podstawie wartości parametru.|
+  	|[Integracja magazynu kluczy](./resource-manager-tutorial-use-key-vault.md)|Pobieranie wpisów tajnych/haseł z usługi Azure Key Vault. W tym samouczku utworzysz maszynę wirtualną.  Hasło administratora maszyny wirtualnej są pobierane z usługi Key Vault.|
+  	|[Create linked templates (Tworzenie połączonych szablonów)](./resource-manager-tutorial-create-linked-templates.md)|Modularyzacji szablonów i wywoływać innych szablonów z szablonu. W tym samouczku utworzysz sieć wirtualną, maszynę wirtualną i zasoby zależne.  Zależne konto magazynu jest zdefiniowany w szablonie połączone. |
+  	|[Użyj praktyki bezpiecznego wdrażania](./deployment-manager-tutorial.md)|Użyj Menedżera wdrażania platformy Azure. |
+
 ## <a name="template-format"></a>Format szablonu
+
 W swojej najprostszej strukturze szablon zawiera następujące elementy:
 
 ```json

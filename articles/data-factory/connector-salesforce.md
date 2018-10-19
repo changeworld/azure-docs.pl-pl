@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 4da56b275c2b224d56b8296dd480e638a27a03a1
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: bc98fc2465c280c41a77823de239a5572c5d27e4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379098"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409581"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopiowanie danych z i do usługi Salesforce za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -186,7 +186,7 @@ Aby skopiować dane z usług Salesforce, należy ustawić typ źródła w dział
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość typu źródła działania kopiowania musi być równa **SalesforceSource**. | Yes |
-| query |Użyj zapytania niestandardowe można odczytać danych. Możesz użyć [Salesforce obiektu Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) SQL 92 lub kwerendy. Zobacz więcej porad w [zapytania porady](#query-tips) sekcji. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
+| query |Użyj zapytania niestandardowe można odczytać danych. Możesz użyć [Salesforce obiektu Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) SQL 92 lub kwerendy. Zobacz więcej porad w [zapytania porady](#query-tips) sekcji. Jeśli zapytanie nie zostanie określony, wszystkie dane z obiektu usług Salesforce określonego w "objectApiName" w zestawie danych będą pobierane. | Nie (Jeśli określono parametr "objectApiName" w zestawie danych) |
 | readBehavior | Wskazuje, czy wysyłać zapytania o istniejące rekordy lub wysyłać zapytania o wszystkie rekordy, włącznie z tymi usunięte. Jeśli nie zostanie określony, domyślnym zachowaniem jest pierwsza. <br>Dozwolone wartości: **zapytania** (ustawienie domyślne), **queryAll**.  | Nie |
 
 > [!IMPORTANT]

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5180aa935ed5ab1a263c8dd002c2009ec89d5d86
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cb2b4bdee445587b32516c8db869170ab067b8d3
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311220"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406861"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Rozwiązywanie problemów z błędami występującymi podczas synchronizacji
 Podczas synchronizowania danych tożsamości z usługi Windows Server Active Directory (AD DS) do usługi Azure Active Directory (Azure AD), mogą wystąpić błędy. Ten artykuł zawiera omówienie różnych typów błędów synchronizacji, niektóre z możliwych scenariuszy, które powodują tych błędów i potencjalne sposoby naprawienia błędy. W tym artykule zawiera z najczęściej popełnianymi typami błędów i może nie obejmować wszystkich możliwych błędów.
@@ -178,7 +178,7 @@ b. Atrybut UserPrincipalName nie jest zgodna z wymaganym formatem.
 a. Upewnij się, że atrybut userPrincipalName jest obsługiwane znaki i wymagany format.
 
 #### <a name="related-articles"></a>Powiązane artykuły
-* [Przygotowanie do inicjowania obsługi użytkowników za pomocą synchronizacji katalogów usługi Office 365](https://support.office.com/en-us/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
+* [Przygotowanie do inicjowania obsługi użytkowników za pomocą synchronizacji katalogów usługi Office 365](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
 
 ### <a name="federateddomainchangeerror"></a>FederatedDomainChangeError
 #### <a name="description"></a>Opis

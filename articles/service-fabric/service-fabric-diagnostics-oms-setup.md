@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: srrengar
-ms.openlocfilehash: a73a288852eea713623b65324853761e10fad282
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 68374cd1675f76555ff313b42e35bdf2aed96874
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220470"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408085"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>Konfigurowanie usługi Log Analytics dla klastra
 
@@ -51,7 +51,7 @@ Jeśli używasz Windows Kontynuuj poniższe kroki, aby nawiązać połączenie z
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>Połącz obszar roboczy usługi Log Analytics z klastrem 
 
-1. Obszaru roboczego musi być podłączony do danych diagnostycznych z klastra. Przejdź do grupy zasobów, w którym utworzono rozwiązania analiza usługi Service Fabric. Wybierz **ServiceFabric\<nameOfWorkspace\>**  i przejdź do strony Przegląd. Z tego miejsca możesz zmienić ustawienia rozwiązania, ustawienia obszaru roboczego i dostęp do obszaru roboczego usługi Log Analytics.
+1. Obszaru roboczego musi być podłączony do danych diagnostycznych z klastra. Przejdź do grupy zasobów, w którym utworzono rozwiązania analiza usługi Service Fabric. Wybierz **ServiceFabric\<nameOfWorkspace\>**  i przejdź do strony Przegląd. Z tego miejsca można zmienić ustawienia rozwiązania, ustawienia obszaru roboczego i dostęp do obszaru roboczego usługi Log Analytics.
 
 2. W menu nawigacji po lewej stronie w obszarze **źródła danych obszaru roboczego**, wybierz opcję **dzienniki kont magazynu**.
 
@@ -80,7 +80,7 @@ Możesz użyć i zmodyfikuj [ten przykładowy szablon](https://github.com/Azure-
 
 * Tworzy klaster usługi Service Fabric z 5 węzłami
 * Tworzy obszar roboczy usługi Log Analytics i rozwiązania usługi Service Fabric
-* Konfiguruje agenta pakietu OMS do zbierania i wysyłania 2 liczniki wydajności przykładowe do obszaru roboczego
+* Konfiguruje agenta usługi Log Analytics do zbierania i wysyłania 2 liczniki wydajności przykładowe do obszaru roboczego
 * Konfiguruje WAD do zbierania usługi Service Fabric, a następnie wysyła je do tabel usługi Azure storage (WADServiceFabric * EventTable)
 * Konfiguruje obszaru roboczego usługi Log Analytics do odczytywania zdarzeń z tych tabel
 
@@ -126,6 +126,6 @@ Gdy wszystko będzie gotowe, wykonaj kroki opisane w poprzedniej sekcji, konto m
 Można również dodać inne rozwiązania lub wprowadzić inne zmiany do swojego obszaru roboczego usługi Log Analytics przy użyciu programu PowerShell. Aby dowiedzieć się więcej, zobacz [Zarządzanie Log Analytics przy użyciu programu PowerShell](../log-analytics/log-analytics-powershell-workspace-configuration.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Wdrażanie agenta usługi Log Analytics](service-fabric-diagnostics-oms-agent.md) na węzły do zbierania liczników wydajności i zbieranie statystyk platformy docker i dzienniki kontenerów
+* [Wdróż agenta usługi Log Analytics](service-fabric-diagnostics-oms-agent.md) na węzły do zbierania liczników wydajności i zbieranie statystyk platformy docker i dzienniki kontenerów
 * Zapoznaj się z funkcjami [przeszukiwania dzienników i wykonywania zapytań](../log-analytics/log-analytics-log-searches.md) dostępnymi w ramach usługi Log Analytics
 * [Tworzenie niestandardowych widoków w usłudze Log Analytics za pomocą projektanta widoku](../log-analytics/log-analytics-view-designer.md)

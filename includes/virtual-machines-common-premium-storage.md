@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: a05d0c623c1abdb5713c1d49b0b577298c1d6c7d
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 97e4e670d5db646cea28cb30e9ca95633cea2a8a
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49347040"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49437118"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Magazyn w warstwie Premium o wysokiej wydajności i dysków zarządzanych dla maszyn wirtualnych
 
@@ -151,7 +151,11 @@ Jeśli używasz kont usługi premium storage dla dysków niezarządzanych aplika
 ### <a name="premium-storage-disk-limits"></a>Limity dysku usługi Premium Storage
 Podczas aprowizowania dysku magazynu premium rozmiar dysku określa maksymalny operacje We/Wy i przepływność (przepustowość). Platforma Azure oferuje osiem typów usług ogólnie dostępnych dysków magazynu premium storage: P4 (zarządzane tylko dysków), poziom P6 odpowiada P10 (Managed Disks tylko), P15 (zarządzane tylko dysków), P20, P30, P40 i P50. Także w trzech rozmiarach dysków w wersji zapoznawczej: P60 P70 i P80. Każdy typ dysku magazynu premium storage ma określone limity dla operacji We/Wy i przepływność. W poniższej tabeli opisano limity dla typów dysków:
 
-| Dyski Premium z typu | P4 | POZIOM P6 ODPOWIADA | P10 | P15 | P20 | P30 | P40 | P50 | P60 | P70 | P80 | |---|---|---|---|---|---|---|---|---|| -------|| -------|| -------| | Rozmiar dysku jest | 32 giB | 64 giB | 128 giB | 256 giB | 512 giB | 1024 giB (1 TiB) | 2048 giB (2 TiB) | 4095 giB (4 TiB) | 8192 giB (8 TiB) | 16 384 giB (16 TiB) | 32 767 giB (32 TiB) || Operacje We/Wy na dysk | 120 | 240 | 500 | 1100 | 2300 | 5000 | 7500 | 7500 | 12 500 | 15 000 | 20 000 || Przepływność na dysk | 25 MB na sekundę | 50 MB na sekundę | 100 MB na sekundę | 125 MB na sekundę | 150 MB na sekundę | 200 MB na sekundę | 250 MB na sekundę | 250 MB na sekundę | 480 MB na sekundę | 750 MB na sekundę | 750 MB na sekundę |
+| Typ magazynu dysków Premium  | P4    | P6    | P10    | P15    | P20    | P30              | P40             | P50             | P60             | P70                | P80                |
+|---------------------|-------|-------|--------|--------|--------|------------------|-----------------|-----------------|-----------------|--------------------|--------------------|
+| Rozmiar dysku           | 32 GiB| 64 GiB| 128 GiB| 256 GiB| 512 GiB| 1024 giB (1 TiB) | 2048 giB (2 TiB)| 4095 giB (4 TiB)| 8192 giB (8 TiB)| 16 384 giB (16 TiB)| 32 767 giB (32 TiB)|
+| Liczba operacji wejścia/wyjścia na sekundę na dysk       | 120   | 240   | 500    | 1100   | 2300   | 5000             | 7500            | 7500            | 12 500          | 15 000             | 20,000             |
+| Przepływność na dysk | 25 MB na sekundę | 50 MB na sekundę | 100 MB na sekundę | 125 MB na sekundę | 150 MB na sekundę | 200 MB na sekundę | 250 MB na sekundę | 250 MB na sekundę | 480 MB na sekundę | 750 MB na sekundę | 750 MB na sekundę |
 
 > [!NOTE]
 > Upewnij się, że wystarczającą przepustowość jest dostępna na maszynie Wirtualnej, aby ruch dyskowy dysku, zgodnie z opisem w [Usługa Premium Storage jest obsługiwana na maszynach wirtualnych](#premium-storage-supported-vms). W przeciwnym razie swoje przepływność dysku i operacje We/Wy jest ograniczony do niższych wartości. Maksymalna przepływność i operacje We/Wy są oparte na limity maszyn wirtualnych, nie na limity dysku, opisano w powyższej tabeli.  

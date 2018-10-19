@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 481fcb869004a6fca83fdf19c32c41010057de32
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: aa68bb0cb2e404072ef359591ce9309f8c27b631
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008199"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403989"
 ---
 # <a name="azure-operational-security-checklist"></a>Lista kontrolna zabezpieczeń działania platformy Azure
 Wdrażanie aplikacji na platformie Azure jest szybkie, łatwe i ekonomiczne. Przed wdrożeniem aplikacji w chmurze w środowisku produkcyjnym warto mieć listę kontrolną do pomocy w aplikacji z listą podstawowych i zalecane kwestii bezpieczeństwa działania umożliwiające należy wziąć pod uwagę oceny.
@@ -51,8 +51,7 @@ Ta lista kontrolna ma na celu ułatwienia przedsiębiorstwom przemyślenie róż
 W wielu organizacjach pomyślnie wdrażane i obsługiwane aplikacje w chmurze na platformie Azure. Z list kontrolnych zawartych Wyróżnij kilka list kontrolnych, które ma zasadnicze znaczenie i pomóc zwiększyć prawdopodobieństwo pomyślnego wdrożenia i bezpłatne Rozczarowanie operacji. Zdecydowanie zalecamy tych zagadnień operacyjnych oraz strategicznych dla istniejących i nowych wdrożeń aplikacji na platformie Azure.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Ten dokument przedstawia wprowadzenie do rozwiązania Zabezpieczenia i inspekcja w pakiecie OMS. Więcej informacji na temat zabezpieczeń w pakiecie OMS zawierają następujące artykuły:
+Aby dowiedzieć się więcej na temat zabezpieczeń, zobacz następujące artykuły:
 
-- [Omówienie pakietu Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview).
 - [Bezpieczeństwo projektowania i działania](https://www.microsoft.com/trustcenter/security/designopsecurity).
 - [Usługa Azure Security Center planowania i obsługi](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide).

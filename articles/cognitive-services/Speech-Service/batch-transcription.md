@@ -8,20 +8,26 @@ ms.component: Speech
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: 8f9a033ebf9cdfdb96ae8511b14202e49ec0a85e
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: c6912b45bc62ce9492e8e33bd1ffd8e7147b9d17
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884463"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427791"
 ---
 # <a name="batch-transcription"></a>Transkrypcja wsadowa
 
-Transkrypcja partii jest idealnym rozwiązaniem w przypadku dużych ilości audio. Można wskazać pliki audio, według identyfikatora URI i wrócić transkrypcje w trybie asynchronicznym.
+Transkrypcja partii jest idealnym rozwiązaniem w przypadku dużych ilości audio w magazynie. Za pomocą interfejsu API Rest, można wskazać pliki audio, według identyfikatora URI sygnatury dostępu Współdzielonego i asynchronicznie otrzymywać transkrypcji.
 
 ## <a name="batch-transcription-api"></a>Batch transkrypcji interfejsu API
 
-Transkrypcji interfejsu API usługi Batch oferuje asynchronicznego zamiana mowy na tekst transkrypcji, oraz dodatkowe funkcje.
+Transkrypcji interfejsu API usługi Batch oferuje asynchronicznego zamiana mowy na tekst transkrypcji, oraz dodatkowe funkcje. Chodzi o Uwidacznianie metody interfejsu API REST:
+
+1. Tworzenie żądań przetwarzania wsadowego
+
+2. Stan zapytania 
+
+3. Pobieranie trnascriptions
 
 > [!NOTE]
 > Interfejs API transkrypcji usługi Batch jest idealny dla wywołania roboczych, które zazwyczaj są gromadzone tysiące godzin audio. Interfejs API jest przeprowadzany przez "fire and forget" filozofią, która ułatwia także dużą liczbą nagrania audio.
@@ -95,78 +101,77 @@ Dostosuj następujący przykładowy kod z kluczem subskrypcji oraz klucza interf
         }
 ```
 
-Po uzyskaniu tokenu, należy określić identyfikator URI sygnatury dostępu Współdzielonego, wskazujący na plik dźwiękowy wymagające transkrypcji. Pozostała część kodu iteruje przez stan i wyświetla wyniki.
+Po uzyskaniu tokenu, należy określić identyfikator URI sygnatury dostępu Współdzielonego, wskazujący na plik dźwiękowy wymagające transkrypcji. Pozostała część kodu iteruje przez stan i wyświetla wyniki. Początkowo jeden należy skonfigurować klucz, region, modele, aby użyć i skojarzenia zabezpieczeń. jak pokazano fragmencie kodu poniżej. Następnie podczas tworzenia wystąpienia klienta i żądania POST. 
 
 ```cs
-   static async Task TranscribeAsync()
-        { 
             private const string SubscriptionKey = "<your Speech subscription key>";
             private const string HostName = "westus.cris.ai";
             private const int Port = 443;
     
+            // SAS URI 
+            private const string RecordingsBlobUri = "some SAS URI";
+
+            // adapted model Ids
+            private static Guid AdaptedAcousticId = new Guid("some guid");
+            private static Guid AdaptedLanguageId = new Guid("some guid");
+
             // Creating a Batch transcription API Client
             var client = CrisClient.CreateApiV2Client(SubscriptionKey, HostName, Port);
             
-            var transcriptions = await client.GetTranscriptionAsync().ConfigureAwait(false);
-
             var transcriptionLocation = await client.PostTranscriptionAsync(Name, Description, Locale, new Uri(RecordingsBlobUri), new[] { AdaptedAcousticId, AdaptedLanguageId }).ConfigureAwait(false);
+```
 
-            // get the transcription Id from the location URI
-            var createdTranscriptions = new List<Guid>();
-            createdTranscriptions.Add(new Guid(transcriptionLocation.ToString().Split('/').LastOrDefault()))
+Teraz, gdy zażądano użytkownik może wykonywać zapytania i Pobierz wyniki transkrypcji, tak jak pokazano w fragmentu kodu.
 
-            while (true)
+```cs
+  
+            // get all transcriptions for the user
+            transcriptions = await client.GetTranscriptionAsync().ConfigureAwait(false);
+
+            // for each transcription in the list we check the status
+            foreach (var transcription in transcriptions)
             {
-                // get all transcriptions for the user
-                transcriptions = await client.GetTranscriptionAsync().ConfigureAwait(false);
-                completed = 0; running = 0; notStarted = 0;
-
-                // for each transcription in the list we check the status
-                foreach (var transcription in transcriptions)
+                switch(transcription.Status)
                 {
-                    switch(transcription.Status)
-                    {
-                        case "Failed":
-                        case "Succeeded":
+                    case "Failed":
+                    case "Succeeded":
 
                             // we check to see if it was one of the transcriptions we created from this client.
-                            if (!createdTranscriptions.Contains(transcription.Id))
-                            {
-                                // not creted form here, continue
-                                continue;
-                            }
+                        if (!createdTranscriptions.Contains(transcription.Id))
+                        {
+                            // not creted form here, continue
+                            continue;
+                        }
                             
-                            completed++;
+                        completed++;
                             
-                            // if the transcription was successfull, check the results
-                            if (transcription.Status == "Succeeded")
-                            {
-                                var resultsUri = transcription.ResultsUrls["channel_0"];
-                                WebClient webClient = new WebClient();
-                                var filename = Path.GetTempFileName();
-                                webClient.DownloadFile(resultsUri, filename);
-                                var results = File.ReadAllText(filename);
-                                Console.WriteLine("Transcription succedded. Results: ");
-                                Console.WriteLine(results);
-                            }
-                            break;
-                        case "Running":
-                            running++;
-                            break;
-                        case "NotStarted":
-                            notStarted++;
-                            break;
+                        // if the transcription was successfull, check the results
+                        if (transcription.Status == "Succeeded")
+                        {
+                            var resultsUri = transcription.ResultsUrls["channel_0"];
+                            WebClient webClient = new WebClient();
+                            var filename = Path.GetTempFileName();
+                            webClient.DownloadFile(resultsUri, filename);
+                            var results = File.ReadAllText(filename);
+                            Console.WriteLine("Transcription succedded. Results: ");
+                            Console.WriteLine(results);
+                        }
+                    
+                    break;
+                    case "Running":
+                    running++;
+                     break;
+                    case "NotStarted":
+                    notStarted++;
+                    break;
+                    
                     }
                 }
-
-                Console.WriteLine(string.Format("Transcriptions status: {0} completed, {1} running, {2} not started yet", completed, running, notStarted));
-
-                await Task.Delay(TimeSpan.FromSeconds(5)).ConfigureAwait(false);
             }
-
-            Console.WriteLine("Press any key...");
         }
 ```
+
+Nasze [dokument struktury Swagger](https://westus.cris.ai/swagger/ui/index) zawiera szczegółowe informacje dotyczące wywołań powyżej. Pełny przykład przedstawione w tym miejscu znajduje się na [GitHub](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI).
 
 > [!NOTE]
 > W poprzednim kodzie klucz subskrypcji jest z zasobu mowy, utworzonego w witrynie Azure portal. Kluczy uzyskanych z zasobów Custom Speech Service nie będą działać.

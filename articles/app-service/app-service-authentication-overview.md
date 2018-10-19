@@ -14,18 +14,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: mahender,cephalin
-ms.openlocfilehash: 46f8602583329a0516edb9af59e53754ca349555
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 6aa7f8c3b9d21d9c55aee3ce49f2bc140769a855
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336808"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408068"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Uwierzytelnianie i autoryzacja w usłudze Azure App Service
 
 Usługa Azure App Service udostępnia wbudowanego uwierzytelniania i autoryzacji pomocy technicznej, aby można było logowania użytkowników i uzyskać dostęp do danych przez zapisywanie minimalny lub Brak kodu w aplikacji sieci web, interfejsów API i zapleczem aplikacji mobilnej, a także [usługi Azure Functions](../azure-functions/functions-overview.md). W tym artykule opisano, jak usługa App Service pomaga uprościć uwierzytelniania i autoryzacji dla aplikacji. 
 
-Bezpieczne uwierzytelnianie i autoryzacja wymaga dogłębnej zabezpieczeń, w tym Federacji, szyfrowanie, [tokenów sieci web JSON (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) zarządzania [typy przydziałów](https://oauth.net/2/grant-types/)i tak dalej. Usługa App Service udostępnia te narzędzia, dzięki czemu możesz poświęcić więcej czasu i energii na zapewniającego wartość biznesową do klienta.
+Bezpieczne uwierzytelnianie i autoryzacja wymagają wnikliwie poznać zabezpieczeń, w tym Federacji, szyfrowanie, [tokenów sieci web JSON (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) zarządzania [typy przydziałów](https://oauth.net/2/grant-types/)i tak dalej. Usługa App Service udostępnia te narzędzia, dzięki czemu możesz poświęcić więcej czasu i energii na zapewniającego wartość biznesową do klienta.
 
 > [!NOTE]
 > Nie masz wymagane do używania usługi App Service do uwierzytelniania i autoryzacji. Wiele środowisk dla sieci web są powiązane z funkcjami zabezpieczeń i mogą być używane, jeśli chcesz. Jeśli potrzebujesz większej elastyczności niż oferuje usługi App Service można również napisać własne narzędzia.  
@@ -63,9 +63,9 @@ Usługa App Service zapewnia wbudowaną magazynu tokenu, która jest repozytoriu
 - wpis na osi czasu w serwisie Facebook uwierzytelnionego użytkownika
 - Odczytywanie danych firmowych przez użytkownika z usługi Azure Active Directory interfejsu API programu Graph lub nawet programu Microsoft Graph
 
-Tokeny identyfikatora, tokenami dostępu i tokenów odświeżania pamięci podręcznej i sesja uwierzytelniona i są one dostępne tylko dla skojarzonego użytkownika.  
-
 Zazwyczaj należy napisać kod do zbierania, przechowywania i odświeżania tych tokenów w aplikacji. Ze sklepem token został właśnie [pobieranie tokenów](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) kiedy ich potrzebują i [nakazać usłudze App Service, aby odświeżyć je](app-service-authentication-how-to.md#refresh-access-tokens) kiedy staną się nieprawidłowe. 
+
+Tokeny identyfikatora, tokenami dostępu i tokenów odświeżania pamięci podręcznej i sesja uwierzytelniona i są one dostępne tylko dla skojarzonego użytkownika.  
 
 Jeśli nie potrzebujesz do pracy z tokenami w swojej aplikacji, można wyłączyć magazynu tokenów.
 
@@ -80,7 +80,7 @@ Usługa App Service używa [tożsamość federacyjna](https://en.wikipedia.org/w
 | Dostawca | Punkt końcowy logowania |
 | - | - |
 | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) | `/.auth/login/aad` |
-| [Konto Microsoft](../active-directory/develop/active-directory-appmodel-v2-overview.md) | `/.auth/login/microsoftaccount` |
+| [Konto Microsoft](../active-directory/develop/v2-overview.md) | `/.auth/login/microsoftaccount` |
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
 | [Google](https://developers.google.com/+/web/api/rest/oauth) | `/.auth/login/google` |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |
@@ -100,7 +100,7 @@ Przepływ uwierzytelniania jest taka sama dla wszystkich dostawców, ale różni
 
 W poniższej tabeli przedstawiono kroki przepływu uwierzytelniania.
 
-| Czynność | Bez dostawcy zestawu SDK | Za pomocą dostawcy zestawu SDK |
+| Krok | Bez dostawcy zestawu SDK | Za pomocą dostawcy zestawu SDK |
 | - | - | - |
 | 1. Logowanie użytkownika | Przekierowuje klienta do `/.auth/login/<provider>`. | Kod klienta loguje użytkownika bezpośrednio z zestawem SDK dostawcy i odbiera token uwierzytelniania. Aby uzyskać informacje Zobacz dokumentację dostawcy. |
 | 2. Uwierzytelnianie końcowe | Dostawca przekierowuje klienta do `/.auth/login/<provider>/callback`. | Kod klienta publikuje tokenu od dostawcy, aby `/.auth/login/<provider>` do sprawdzania poprawności. |
@@ -121,7 +121,7 @@ Następujące nagłówki opisano opcje.
 
 ### <a name="allow-all-requests-default"></a>Zezwalaj na wszystkie żądania (ustawienie domyślne)
 
-Uwierzytelnianie i autoryzacja nie jest zarządzane przez usługę App Service (wyłączone). 
+Uwierzytelnianie i autoryzacja nie są zarządzane przez usługę App Service (wyłączone). 
 
 Wybierz tę opcję, jeśli nie potrzebujesz, uwierzytelnianie i autoryzacja, czy ma być pisania własnego kodu uwierzytelniania i autoryzacji.
 

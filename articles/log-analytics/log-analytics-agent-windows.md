@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e4140bfa3053798be56f3af9512c11d3ff0e58c0
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 677cd65b011ed69868564617ff79b7a57947c230
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042159"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404447"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Łączenie komputerów Windows do usługi Log Analytics na platformie Azure
 
@@ -54,7 +54,7 @@ Poniższe kroki instalowania i konfigurowania agenta usługi Log Analytics w chm
 2. Na **stronie powitalnej** kliknij przycisk **Dalej**.
 3. Na stronie **Postanowienia licencyjne** zapoznaj się z postanowieniami licencyjnymi, a następnie kliknij przycisk **Zgadzam się**.
 4. Na stronie **Folder docelowy** zmień lub pozostaw domyślny folder instalacji, a następnie kliknij przycisk **Dalej**.
-5. Na stronie **Opcje instalacji agenta** wybierz połączenie agenta z usługą Azure Log Analytics (OMS), a następnie kliknij przycisk **Dalej**.   
+5. Na **opcje instalacji agenta** wybierz połączenie agenta z usługą Azure Log Analytics, a następnie kliknij przycisk **dalej**.   
 6. Na stronie **Azure Log Analytics** wykonaj następujące czynności:
    1. Wklej skopiowany wcześniej **identyfikator obszaru roboczego** i **klucz obszaru roboczego (klucz podstawowy)**.  Jeśli komputer powinien wysyłać raporty do obszaru roboczego usługi Log Analytics w chmurze Azure dla instytucji rządowych, wybierz **Wersja platformy Azure dla administracji USA** z listy rozwijanej **Azure Cloud**.  
    2. Jeśli komputer musi komunikować się z usługą Log Analytics za pośrednictwem serwera proxy, kliknij pozycję **Zaawansowane** i podaj adres URL i numer portu serwera proxy.  Jeśli Twój serwer proxy wymaga uwierzytelniania, wpisz nazwę użytkownika i hasło, aby uwierzytelnić się na serwerze proxy, a następnie kliknij przycisk **Dalej**.  
@@ -160,7 +160,7 @@ Aby bezpośrednio pobrać kod produktu za pomocą pakietu instalacji agenta, nal
 
 Po zakończeniu instalacji agenta zweryfikowaniem jej został pomyślnie połączony, i raportowania można zrobić na dwa sposoby.  
 
-Z komputera w **Panelu sterowania**, Znajdź element **Microsoft Monitoring Agent**.  Zaznacz go i **Azure Log Analytics (OMS)** karcie agent powinien być wyświetlany komunikat z informacją: **program Microsoft Monitoring Agent pomyślnie połączył się z usługą Microsoft Operations Management Suite.**<br><br> ![Stan połączenia programu MMA z usługą Log Analytics](media/log-analytics-quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
+Z komputera w **Panelu sterowania**, Znajdź element **Microsoft Monitoring Agent**.  Zaznacz go i **usługi Azure Log Analytics** karcie agent powinien być wyświetlany komunikat z informacją: **program Microsoft Monitoring Agent pomyślnie połączył się z usługą Microsoft Operations Management Suite.**<br><br> ![Stan połączenia programu MMA z usługą Log Analytics](media/log-analytics-quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
 
 Wyszukiwanie w dzienniku proste można również wykonać w witrynie Azure portal.  
 

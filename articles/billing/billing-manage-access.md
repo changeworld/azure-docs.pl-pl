@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: cwatson
-ms.openlocfilehash: 623856f05eed44eca3752d56f047f9bb282bdc8e
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 38cfd354f11ef3d888ad70e71549868d398495f5
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392091"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429647"
 ---
 # <a name="manage-access-to-billing-information-for-azure-using-role-based-access-control"></a>Zarządzanie dostępem do informacji rozliczeniowych dla platformy Azure przy użyciu kontroli dostępu opartej na rolach
 
@@ -67,7 +67,7 @@ Rola Czytelnik rozliczenia ma dostęp tylko do odczytu do informacji rozliczenio
     ![Zrzut ekranu, który pokazuje, jakie dane może wyświetlać Czytelnik rozliczenia w witrynie Azure portal](./media/billing-manage-access/billing-reader-view.png)
 
 > [!NOTE]
-> Funkcja Czytelnik rozliczenia jest w wersji zapoznawczej i nie obsługuje jeszcze subskrypcji przedsiębiorstwa (EA) lub nieglobalna chmury.
+> Funkcja Czytelnik rozliczenia jest w wersji zapoznawczej i nie obsługuje jeszcze nieglobalnych chmury. Dla subskrypcji Enterprise można wyświetlić koszty, jeśli administrator przedsiębiorstwa włączył Wyświetl opłaty.
 
 ## <a name="adding-users-to-other-roles"></a>Dodawanie użytkowników do innych ról
 

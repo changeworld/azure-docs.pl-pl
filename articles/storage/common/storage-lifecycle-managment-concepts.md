@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
 ms.component: common
-ms.openlocfilehash: 25e6fba6ac8aa34c0c30fd61f5fe297b94720439
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 05e7a7e3c2824a9b47ff723e91103611871d7ed2
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983671"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429562"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Zarządzanie cyklem życia z magazynu obiektów Blob platformy Azure (wersja zapoznawcza)
 
@@ -37,7 +37,7 @@ Zasady zarządzania cyklem życia jest dostępny z obu ogólnego przeznaczenia w
 Funkcja zarządzania cyklem życia jest bezpłatne w wersji zapoznawczej. Klienci są obciążani koszt normalnej [wyświetlanie listy obiektów blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) i [Ustawianie warstwy obiektu Blob](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) wywołań interfejsu API. Zobacz [ceny blokowych obiektów Blob](https://azure.microsoft.com/pricing/details/storage/blobs/) Aby dowiedzieć się więcej o cenach.
 
 ## <a name="register-for-preview"></a>Rejestrowanie na potrzeby wersji zapoznawczej 
-Aby zarejestrować się w publicznej wersji zapoznawczej, należy przesłać żądanie, aby zarejestrować tę funkcję, aby Twoja subskrypcja. Po zatwierdzeniu żądania (w ciągu kilku dni), wszelkie istniejące i nowe konta GPv2 lub Blob Storage konta w regionie zachodnie stany USA 2, zachodnio-środkowe stany USA i Europa Zachodnia mają włączoną funkcję. W trakcie okresu zapoznawczego jest obsługiwana tylko blokowych obiektów blob. Podobnie jak w przypadku większości wersji zapoznawczych, ta funkcja nie należy używać w przypadku obciążeń produkcyjnych aż do napotkania GA.
+Aby zarejestrować się w publicznej wersji zapoznawczej, należy przesłać żądanie, aby zarejestrować tę funkcję, aby Twoja subskrypcja. Po zatwierdzeniu żądania (w ciągu kilku dni), wszelkie istniejące i nowe konta GPv2 lub Blob Storage konto w regionie zachodnie stany USA 2, zachodnio-środkowe stany USA, wschodnie stany USA 2 i Europa Zachodnia mają włączoną funkcję. W trakcie okresu zapoznawczego jest obsługiwana tylko blokowych obiektów blob. Podobnie jak w przypadku większości wersji zapoznawczych, ta funkcja nie należy używać w przypadku obciążeń produkcyjnych aż do napotkania GA.
 
 Aby przesłać żądanie, uruchom następujące polecenia programu PowerShell lub interfejsu wiersza polecenia.
 
@@ -69,7 +69,7 @@ Jeśli funkcja jest zatwierdzona poprawnie zarejestrowane, powinny pojawić się
 
 ## <a name="add-or-remove-policies"></a>Dodawanie lub usuwanie zasad 
 
-Możesz dodawać, edytować lub usunąć zasadę przy użyciu witryny Azure portal, [PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview), [interfejsów API REST](https://docs.microsoft.com/rest/api/storagerp/storageaccounts/createorupdatemanagementpolicies), lub narzędzia klienta w następujących językach: [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview), [językaPython](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/), [Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0), [Ruby](   https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2). 
+Możesz dodawać, edytować lub usunąć zasadę przy użyciu witryny Azure portal, [PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview), [interfejsów API REST](https://docs.microsoft.com/rest/api/storagerp/managementpolicies/managementpolicies_createorupdate), lub narzędzia klienta w następujących językach: [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview), [językaPython](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/), [Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0), [Ruby](   https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2). 
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -119,7 +119,7 @@ W ramach zasad wymagane są dwa parametry:
 
 | Nazwa parametru | Typ parametru | Uwagi |
 |----------------|----------------|-------|
-| wersja        | Wyrażonej w postaci ciągu `x.x` | Numer wersji (wersja zapoznawcza) wynosi 0,5 |
+| version        | Wyrażonej w postaci ciągu `x.x` | Numer wersji (wersja zapoznawcza) wynosi 0,5 |
 | rules          | Tablica obiektów reguły | Co najmniej jedna reguła jest wymagana w każdej z zasad. W trakcie okresu zapoznawczego można określić maksymalnie 4 reguły, zgodnie z zasadami. |
 
 Parametry wymagane w ramach reguły są następujące:
@@ -316,6 +316,10 @@ W przypadku danych, który został zmodyfikowany i uzyskać dostęp regularnie w
   ]
 }
 ```
+## <a name="faq"></a>Często zadawane pytania
+### <a name="i-created-a-new-policy-why-are-the-actions-specified-not-executed-immediately"></a>Utworzono nowe zasady, dlaczego podano akcje nie wykonane natychmiast? 
+
+Zasady cyklu życia jest wykonywana raz dziennie przez platformę. Po ustawieniu nowej zasady może potrwać do 24 godzin dla akcji, takich jak obsługa warstw lub usuwania zostanie zainicjowana i wykonany.  
 
 ## <a name="next-steps"></a>Kolejne kroki
 

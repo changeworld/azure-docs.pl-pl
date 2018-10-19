@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: 6834222ec2befa305b558abf0976a1c9899a7086
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: d0b804c48f3de4d4ba29ebe0785f6dd991329a53
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093030"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409258"
 ---
 # <a name="azure-diagnostic-logs"></a>Dzienniki diagnostyczne platformy Azure
 
@@ -95,17 +95,23 @@ Na potrzeby przechowywania dzienników usługi Log Analytics, wykonaj następuj�
 
 2. Wybierz **Konfiguruj** Aby skonfigurować rejestrowanie dla usługi Log Analytics. 
 
-   **Obszarów roboczych pakietu OMS** zostanie wyświetlona strona.
+   **Obszarów roboczych usługi Log Analytics** zostanie wyświetlona strona.
+
+    >[!NOTE] 
+    >Obszary robocze OMS są teraz nazywane obszarów roboczych usługi Log Analytics.
 
     ![Portal — dzienniki diagnostyczne](./media/cdn-diagnostics-log/06_Choose-workspace.png)
 
 3. Wybierz **Utwórz nowy obszar roboczy**.
 
-    **Obszaru roboczego pakietu OMS** zostanie wyświetlona strona.
+    **Obszaru roboczego usługi Log Analytics** zostanie wyświetlona strona.
+
+    >[!NOTE] 
+    >Obszary robocze OMS są teraz nazywane obszarów roboczych usługi Log Analytics.
 
     ![Portal — dzienniki diagnostyczne](./media/cdn-diagnostics-log/07_Create-new.png)
 
-4. Aby uzyskać **obszaru roboczego pakietu OMS**, wprowadź nazwę obszaru roboczego pakietu OMS. Nazwa obszaru roboczego pakietu OMS musi być unikatowa i zawierać tylko litery, cyfry i łączniki; spacje i znaki podkreślenia są niedozwolone. 
+4. Aby uzyskać **obszaru roboczego usługi Log Analytics**, wprowadź nazwę obszaru roboczego usługi Log Analytics. Nazwa obszaru roboczego usługi Log Analytics musi być unikatowa i zawierać tylko litery, cyfry i łączniki; spacje i znaki podkreślenia są niedozwolone. 
 
 5. Aby uzyskać **subskrypcji**, wybierz istniejącą subskrypcję z listy rozwijanej. 
 

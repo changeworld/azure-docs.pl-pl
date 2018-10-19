@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: d7c006ca0be5e8db4b7ab02974ff029d3fe738e3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 0340a4d527023c050e2c776d31c02b59161a1316
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042346"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429479"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Analizowanie danych usługi Log Analytics w usłudze Azure Monitor
 
@@ -57,34 +57,42 @@ Podstawowa struktura zapytania jest tabela źródłowa następuje szereg operato
 
 Na przykład załóżmy, że chcesz odnaleźć najważniejsze dziesięć komputerów za pomocą większość zdarzeń błędów w ciągu ostatniego dnia.
 
-    Event
-    | where (EventLevelName == "Error")
-    | where (TimeGenerated > ago(1days))
-    | summarize ErrorCount = count() by Computer
-    | top 10 by ErrorCount desc
+```Kusto
+Event
+| where (EventLevelName == "Error")
+| where (TimeGenerated > ago(1days))
+| summarize ErrorCount = count() by Computer
+| top 10 by ErrorCount desc
+```
 
 Lub być może chcesz znaleźć komputery, które jeszcze nie było pulsu w ciągu ostatniego dnia.
 
-    Heartbeat
-    | where TimeGenerated > ago(7d)
-    | summarize max(TimeGenerated) by Computer
-    | where max_TimeGenerated < ago(1d)  
+```Kusto
+Heartbeat
+| where TimeGenerated > ago(7d)
+| summarize max(TimeGenerated) by Computer
+| where max_TimeGenerated < ago(1d)  
+```
 
 Co myślisz o wykres liniowy z wykorzystaniem procesora dla każdego komputera w ostatnim tygodniu?
 
-    Perf
-    | where ObjectName == "Processor" and CounterName == "% Processor Time"
-    | where TimeGenerated  between (startofweek(ago(7d)) .. endofweek(ago(7d)) )
-    | summarize avg(CounterValue) by Computer, bin(TimeGenerated, 5min)
-    | render timechart    
+```Kusto
+Perf
+| where ObjectName == "Processor" and CounterName == "% Processor Time"
+| where TimeGenerated  between (startofweek(ago(7d)) .. endofweek(ago(7d)) )
+| summarize avg(CounterValue) by Computer, bin(TimeGenerated, 5min)
+| render timechart    
+```
 
 Z tych przykładów szybkiego widać, że niezależnie od rodzaju danych, że pracujesz z strukturę kwerendy jest podobny.  Możesz ją rozbić na etapy, gdzie wynikowe dane z jednego polecenia są wysyłane za pośrednictwem potoku do następnego polecenia.
 
 Można także badać dane w obszarach roboczych usługi Log Analytics w ramach Twojej subskrypcji.
 
-    union Update, workspace("contoso-workspace").Update
-    | where TimeGenerated >= ago(1h)
-    | summarize dcount(Computer) by Classification 
+```Kusto
+union Update, workspace("contoso-workspace").Update
+| where TimeGenerated >= ago(1h)
+| summarize dcount(Computer) by Classification 
+```
 
 ## <a name="how-log-analytics-data-is-organized"></a>Sposób organizowania danych usługi Log Analytics
 Podczas tworzenia zapytania należy rozpocząć od określenia tabel, które znajdują się dane, którego szukasz. Różne rodzaje danych podzielono na dedykowane tabel w każdym [obszaru roboczego usługi Log Analytics](log-analytics-quick-create-workspace.md).  Dokumentacja dla różnych źródeł danych zawiera nazwę typu danych, które tworzy i opis każdego z jego właściwości.  Wiele zapytań będzie wymagać tylko dane z pojedynczej tabeli, ale inne mogą używać różnorodne opcje, aby dołączyć dane z wielu tabel.

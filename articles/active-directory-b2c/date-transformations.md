@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b287e7f3846de4391de02cce2cedd6a5df3cbc4a
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: ac7cc404998fed6897de1bed4b6bd31fca43e820
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167651"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405824"
 ---
 # <a name="date-claims-transformations"></a>Data oświadczeń przekształcenia
 
@@ -25,12 +25,12 @@ Ten artykuł zawiera przykłady dotyczące używania przekształcenia oświadcze
 
 ## <a name="assertdatetimeisgreaterthan"></a>AssertDateTimeIsGreaterThan 
 
-Sprawdza, czy jeden daty i godziny oświadczenia (string — typ danych) jest większy niż drugi daty i czasu oświadczeń (string — typ danych) i zgłasza wyjątek.
+Sprawdza, czy jeden daty i godziny oświadczenia (string — typ danych) jest nowsza niż druga data i godzina oświadczeń (string — typ danych) i zgłasza wyjątek.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | leftOperand | ciąg | Typ pierwszego oświadczenia, który powinien być większy niż drugi oświadczenia. |
-| Oświadczenie InputClaim | rightOperand | ciąg | Typ drugiego oświadczenia, która powinna być mniejsza od pierwszego oświadczenia. |
+| Oświadczenie InputClaim | leftOperand | ciąg | Typ pierwszego oświadczenia, który powinien przypadać później niż drugi oświadczenia. |
+| Oświadczenie InputClaim | rightOperand | ciąg | Drugi typ oświadczenia, który powinien być wcześniejszy niż pierwszego oświadczenia. |
 | InputParameter | AssertIfEqualTo | wartość logiczna | Określa, czy ta asercja należy przekazać, jeśli lewy operand jest równa prawy operand. |
 | InputParameter | AssertIfRightOperandIsNotPresent | wartość logiczna | Określa, czy ta asercja należy przekazywać, jeśli brakuje prawy operand. |
 | InputParameter | TreatAsEqualIfWithinMillseconds | int | Określa liczbę milisekund, aby umożliwić między tymi dwoma daty i godziny wziąć pod uwagę czas, w którym równe (na przykład konto dla zegara). |
@@ -39,7 +39,7 @@ Sprawdza, czy jeden daty i godziny oświadczenia (string — typ danych) jest wi
 
 ![Wykonanie AssertStringClaimsAreEqual](./media/date-transformations/assert-execution.png)
 
-W poniższym przykładzie porównano `currentDateTime` oświadczenia `approvedDateTime` oświadczenia. Błąd jest generowany, jeśli `currentDateTime` jest większa niż `approvedDateTime`. Transformacja traktuje wartości jako równe, jeśli są one w ciągu 5 minut (w milisekundach 30000) różnicę.
+W poniższym przykładzie porównano `currentDateTime` oświadczenia `approvedDateTime` oświadczenia. Błąd jest generowany, jeśli `currentDateTime` jest późniejsza niż `approvedDateTime`. Transformacja traktuje wartości jako równe, jeśli są one w ciągu 5 minut (w milisekundach 30000) różnicę.
 
 ```XML
 <ClaimsTransformation Id="AssertApprovedDateTimeLaterThanCurrentDateTime" TransformationMethod="AssertDateTimeIsGreaterThan">
@@ -138,17 +138,17 @@ Pobierz bieżąca data i Godzina UTC i Dodaj wartość do typu oświadczenia.
 
 ## <a name="datetimecomparison"></a>DateTimeComparison
 
-Ustal, czy jeden daty/godziny jest większa, mniejszy lub równy innemu. Wynik jest nowy, logiczna boolean typu oświadczenia o wartości true lub false.
+Określić, czy jeden daty/godziny jest, później, wcześniej lub równy innemu. Wynik jest nowe, logiczna boolean oświadczenia o wartości `true` lub `false`.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | firstDateTime | Data i godzina | Pierwszą datę i godzinę do porównania. Wartość null zgłasza wyjątek. |
-| Oświadczenie InputClaim | secondDateTime | Data i godzina | Drugi element dateTime do ukończenia. Wartość null traktuje jako bieżący datetTime. |
+| Oświadczenie InputClaim | firstDateTime | Data i godzina | Pierwszą datę i godzinę do porównania, czy wcześniej lub później niż drugi daty/godziny. Wartość null zgłasza wyjątek. |
+| Oświadczenie InputClaim | secondDateTime | Data i godzina | Drugi daty/godziny do porównania, czy wcześniej lub późniejsza niż data i godzina pierwszego. Wartość null, jest traktowany jako bieżący datetTime. |
 | InputParameter | Operator | ciąg | Jedną z następujących wartości: ten sam, późniejsza niż lub wcześniejsza niż. |
 | InputParameter | timeSpanInSeconds | int | Dodaj zakres czasu do pierwszego daty/godziny. |
 | oświadczenie outputClaim | wynik | wartość logiczna | Typ oświadczenia, które są generowane po wywołaniu tego ClaimsTransformation. |
 
-Użycie oświadczeń to przekształcenie, aby określić, czy dwa ClaimTypes są równe, większe lub mniejsze od siebie nawzajem. Na przykład mogą przechowywać czas ostatniego użytkownika zaakceptowano warunków użytkowania usługi (TOS). Po upływie 3 miesięcy możesz poprosić użytkownika o ponowne dostępu OT.
+Użycie oświadczeń to przekształcenie, aby określić, czy dwa ClaimTypes są równe, nowsze lub wcześniejsza od siebie nawzajem. Na przykład mogą przechowywać czas ostatniego użytkownika zaakceptowano warunków użytkowania usługi (TOS). Po upływie 3 miesięcy możesz poprosić użytkownika o ponowne dostępu OT.
 Aby uruchomić przekształcania oświadczeń, należy najpierw uzyskać od bieżącej godziny i ostatniego użytkownika czasu akceptuje także OT.
 
 ```XML

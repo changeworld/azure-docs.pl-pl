@@ -15,21 +15,21 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: 634958265193a1dedb7c860c34f712160e4120d2
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: bf10226b1d3b2153e0e17d4126c35402d096a857
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353295"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409241"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor rozwiązanie na platformie Azure
 
 ![Symbol monitora wydajności sieci](./media/log-analytics-network-performance-monitor/npm-symbol.png)
 
 
-Rozwiązanie Network Performance Monitor jest oparte na chmurze hybrydowej sieci rozwiązanie monitorujące, które pomaga monitorować wydajność sieci między różne punkty w infrastrukturze sieci. Pozwala on także monitorować łączność sieciową do usługi i punktów końcowych aplikacji i monitorowanie wydajności usługi Azure ExpressRoute. 
+Rozwiązanie Network Performance Monitor jest oparte na chmurze hybrydowej sieci rozwiązanie monitorujące, które pomaga monitorować wydajność sieci między różne punkty w infrastrukturze sieci. Ułatwia ono również monitorowanie łączności sieciowej z punktami końcowymi usług i aplikacji oraz monitorowanie wydajności usługi Azure ExpressRoute. 
 
-Rozwiązanie Network Performance Monitor wykrywa problemy sieciowe, takie jak blackholing ruchu, routingu błędy i problemy, które metody monitorowania sieci są konwencjonalne funkcje nie są w stanie wykryć. Rozwiązanie generuje alerty i powiadamia użytkownika, gdy naruszenia progu dla połączenia sieciowego. Ponadto zapewnia szybkie wykrycie problemów z wydajnością sieci i lokalizuje źródłem problemu do segmentu w określonej sieci lub urządzenia. 
+Rozwiązanie Network Performance Monitor wykrywa problemy sieciowe, takie jak blackholing ruchu, routingu błędy i problemy, które metody monitorowania sieci są konwencjonalne funkcje nie są w stanie wykryć. Rozwiązanie generuje alerty i powiadamia użytkownika, gdy nastąpi naruszenie progu związanego z połączeniem sieciowym. Ponadto gwarantuje ono szybkie wykrywanie problemów z wydajnością sieci i lokalizuje źródło problemu w określonym segmencie lub urządzeniu w sieci. 
 
 Rozwiązanie Network Performance Monitor oferuje trzy szerokie możliwości: 
 
@@ -65,17 +65,17 @@ Użyj podstawowych procesów, aby zainstalować agentów na [komputerów Windows
 
 ### <a name="where-to-install-the-agents"></a>Gdzie można zainstalować agentów 
 
-* **Monitor wydajności**: Instalowanie pakietu Operations Management Suite agentów na co najmniej jeden węzeł połączone z każdą podsiecią, z którego chcesz monitorować łączność sieciową do innych podsieci.
+* **Monitor wydajności**: Zainstaluj usługi Log Analytics agentów na co najmniej jeden węzeł połączone z każdą podsiecią, z którego chcesz monitorować łączność sieciową do innych podsieci.
 
     Aby monitorować połączenia sieciowego, należy zainstalować agentów na oba punkty końcowe ten link. Jeśli wiesz o topologii sieci, należy zainstalować agentów na serwerach z obciążeń o znaczeniu krytycznym, między którymi chcesz monitorować wydajność sieci. Na przykład jeśli chcesz monitorować połączenie sieciowe między serwerem sieci web oraz serwera z oprogramowaniem SQL, należy zainstalować agenta na obu serwerach. Agenci monitorować łączność sieciową (linki) między hostami, a nie hosty samodzielnie. 
 
-* **Monitor łączności usługi**: Zainstaluj agenta pakietu Operations Management Suite w każdym węźle, z którego chcesz monitorować łączność sieciową z punktem końcowym usługi. Przykładem jest, jeśli chcesz monitorować łączność sieciową do usługi Office 365 z etykietą O1, O2 i O3 Lokacje pakietu office. Zainstaluj agenta pakietu Operations Management Suite na co najmniej jeden węzeł w O1, O2 i O3. 
+* **Monitor łączności usługi**: Zainstaluj agenta usługi Log Analytics w każdym węźle, z którego chcesz monitorować łączność sieciową z punktem końcowym usługi. Przykładem jest, jeśli chcesz monitorować łączność sieciową do usługi Office 365 z etykietą O1, O2 i O3 Lokacje pakietu office. Zainstaluj agenta usługi Log Analytics na co najmniej jeden węzeł w O1, O2 i O3. 
 
-* **Monitor usługi ExpressRoute**: Zainstaluj co najmniej jednego agenta pakietu Operations Management Suite w usłudze Azure virtual network. Co najmniej jednego agenta należy również zainstalować w podsieci lokalnej, która jest połączona za pośrednictwem prywatnej komunikacji równorzędnej usługi ExpressRoute.  
+* **Monitor usługi ExpressRoute**: Zainstaluj co najmniej jednego agenta usługi Log Analytics w usłudze Azure virtual network. Co najmniej jednego agenta należy również zainstalować w podsieci lokalnej, która jest połączona za pośrednictwem prywatnej komunikacji równorzędnej usługi ExpressRoute.  
 
-### <a name="configure-operations-management-suite-agents-for-monitoring"></a>Konfigurowanie agentów pakietu Operations Management Suite do monitorowania 
+### <a name="configure-log-analytics-agents-for-monitoring"></a>Konfigurowanie agentów usługi Log Analytics do monitorowania 
 
-Rozwiązanie Network Performance Monitor używa transakcji syntetycznych do monitorowania wydajności sieci między agentami źródłowe i docelowe. Możesz wybrać TCP i ICMP jako protokół monitorowania w funkcji Monitora wydajności i Monitor łączności usługi. Tylko protokoły TCP jest dostępny jako protokół monitorowania dla monitora usługi ExpressRoute. Upewnij się, że zapora zezwala na komunikację między agentami pakietu Operations Management Suite, używany do monitorowania na protokół, który wybierzesz. 
+Rozwiązanie Network Performance Monitor używa transakcji syntetycznych do monitorowania wydajności sieci między agentami źródłowe i docelowe. Możesz wybrać TCP i ICMP jako protokół monitorowania w funkcji Monitora wydajności i Monitor łączności usługi. Tylko protokoły TCP jest dostępny jako protokół monitorowania dla monitora usługi ExpressRoute. Upewnij się, że zapora zezwala na komunikację między agentów usługi Log Analytics, używany do monitorowania na protokół, który wybierzesz. 
 
 * **Protokół TCP**: Jeśli wybierzesz opcję TCP jako protokół monitorowania, należy otworzyć port zapory na agentów używanych dla rozwiązania Network Performance Monitor i Monitor usługi ExpressRoute, aby upewnić się, że agenci mogą łączyć się ze sobą. Aby otworzyć port, uruchom [EnableRules.ps1](https://aka.ms/npmpowershellscript) skrypt programu PowerShell bez żadnych parametrów w oknie programu PowerShell z uprawnieniami administracyjnymi.
 
@@ -109,7 +109,7 @@ Rozwiązanie Network Performance Monitor używa transakcji syntetycznych do moni
 
    ![Kafelek monitora wydajności sieci](media/log-analytics-network-performance-monitor/npm-config.png)
 
-4. Na **instalacji** stronie zobaczysz opcję, aby zainstalować agentów pakietu Operations Management Suite i konfigurować agentów do monitorowania w **typowe ustawienia** widoku. Jak wyjaśniono wcześniej, jeśli zainstalowano i skonfigurowano agentów pakietu Operations Management Suite, wybierz **Instalatora** do skonfigurowania możliwości widoku, którego chcesz użyć. 
+4. Na **instalacji** stronie zobaczysz opcję, aby zainstalować agentów usługi Log Analytics i konfigurować agentów do monitorowania w **typowe ustawienia** widoku. Jak wyjaśniono wcześniej, jeśli zainstalowano i skonfigurowano agentów usługi Log Analytics wybierz **Instalatora** do skonfigurowania możliwości widoku, którego chcesz użyć. 
 
    **Monitor wydajności**: Wybierz protokół do użycia na potrzeby transakcji syntetycznych w **domyślne** reguły monitora wydajności, a następnie wybierz **Zapisz i Kontynuuj**. Ten wybór protokołu zawiera tylko dla reguły domyślnej generowanych przez system. Należy wybrać protokół każdorazowo, należy jawnie utworzyć regułę, Monitor wydajności. Zawsze można przenieść do **domyślne** reguła ustawienia **monitora wydajności** kartę (wyświetlany po zakończeniu konfiguracji dnia 0) i Zmień protokół później. Jeśli nie chcesz rPerfomance tę funkcję można wyłączyć reguły domyślnej z **domyślne** reguła ustawienia **monitora wydajności** kartę.
 
@@ -135,7 +135,7 @@ Rozwiązanie Network Performance Monitor używa transakcji syntetycznych do moni
     
 Monitorowanie te komunikacje równorzędne początkowo jest w stanie wyłączenia. Wybierz każdego wystąpienia komunikacji równorzędnej, którą chcesz monitorować, a następnie skonfigurować monitorowanie dla nich z widoku szczegółów po prawej stronie. Wybierz **Zapisz** Aby zapisać konfigurację. Aby dowiedzieć się więcej, zobacz artykuł "Monitorowanie Konfigurowanie usługi ExpressRoute". 
 
-Po zakończeniu pracy Instalatora trwa 30 minut do godziny danych do wypełnienia. Gdy rozwiązanie agregują dane z Twojej sieci, zostanie wyświetlony komunikat *rozwiązanie wymaga dodatkowej konfiguracji* na Network Performance Monitor **Przegląd** kafelka. Po dane są zbierane i indeksowane, **Przegląd** kafelka zmienia się i informuje Cię o kondycję swojej sieci w podsumowaniu. Następnie można edytować monitorowanie węzłów, na które pakietu Operations Management Suite agenci są zainstalowani, a także podsieci, odnalezione ze środowiska.
+Po zakończeniu pracy Instalatora trwa 30 minut do godziny danych do wypełnienia. Gdy rozwiązanie agregują dane z Twojej sieci, zostanie wyświetlony komunikat *rozwiązanie wymaga dodatkowej konfiguracji* na Network Performance Monitor **Przegląd** kafelka. Po dane są zbierane i indeksowane, **Przegląd** kafelka zmienia się i informuje Cię o kondycję swojej sieci w podsumowaniu. Następnie można edytować monitorowanie węzłów, na które Log Analytics agenci są zainstalowani, a także podsieci, odnalezione ze środowiska.
 
 #### <a name="edit-monitoring-settings-for-subnets-and-nodes"></a>Edytowanie ustawień monitorowania dla podsieci i węzłów 
 
@@ -176,7 +176,7 @@ W poniższej tabeli przedstawiono metody zbierania danych i inne szczegóły dot
  
 
  
-Rozwiązanie używa transakcji syntetycznych do oceny kondycji sieci. Agenci programu Operations Management Suite jest zainstalowany w różnych punktach pakiety TCP exchange sieci lub echa ICMP ze sobą. Czy agenci używać pakietów protokołu TCP lub ICMP Echo jest zależna od protokołu, który wybrany do monitorowania. W procesie agentów Dowiedz się, obustronne utraty czasu i pakietów, jeśli istnieje. Okresowo każdy agent wykonuje również śledzenie trasy, aby inni agenci, aby znaleźć wszystkie różne trasy w sieci, które muszą zostać przetestowane. Przy użyciu tych danych, agentów można wywnioskować, opóźnienie sieci i strat pakietów. Testy są powtarzane co pięć sekund. Dane są agregowane przez około 3 minuty przez agentów, przed przesłaniem do usługi Log Analytics.
+Rozwiązanie używa transakcji syntetycznych do oceny kondycji sieci. Agenci analizy dziennika zainstalowany w różnych punktach pakiety TCP exchange sieci lub echa ICMP ze sobą. Czy agenci używać pakietów protokołu TCP lub ICMP Echo jest zależna od protokołu, który wybrany do monitorowania. W procesie agentów Dowiedz się, obustronne utraty czasu i pakietów, jeśli istnieje. Okresowo każdy agent wykonuje również śledzenie trasy, aby inni agenci, aby znaleźć wszystkie różne trasy w sieci, które muszą zostać przetestowane. Przy użyciu tych danych, agentów można wywnioskować, opóźnienie sieci i strat pakietów. Testy są powtarzane co pięć sekund. Dane są agregowane przez około 3 minuty przez agentów, przed przesłaniem do usługi Log Analytics.
 
 
 
@@ -259,7 +259,7 @@ Rozwiązanie Network Performance Monitor korzysta z możliwości alertów [usłu
 
 Oznacza to, że wszystkie powiadomienia są zarządzane przy użyciu [grup akcji](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview).  
 
-Jeśli jesteś użytkownikiem NPM tworzenia alertu za pomocą pakietu OMS: 
+Jeśli jesteś użytkownikiem NPM tworzenia alertu za pomocą usługi Log Analytics: 
 1. Zostanie wyświetlony link, do którego nastąpi przekierowanie do witryny Azure Portal. Kliknij go, aby uzyskać dostęp do portalu.
 2. Kliknij Kafelek rozwiązania Network Performance Monitor. 
 3. Przejdź do skonfigurowania.  

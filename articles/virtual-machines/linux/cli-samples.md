@@ -1,5 +1,5 @@
 ---
-title: Azure CLI Samples | Dokumentacja firmy Microsoft
+title: Przykłady interfejsu wiersza polecenia platformy Azure | Microsoft Docs
 description: Przykłady interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ca9823a76064e504ee04bf5896f1362b5187bc34
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 8d573b5a0dafaab5eea98f05163ff99e7ccd3760
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042040"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409088"
 ---
 # <a name="azure-cli-samples-for-linux-virtual-machines"></a>Przykłady interfejsu wiersza polecenia platformy Azure dla maszyn wirtualnych systemu Linux
 
@@ -49,7 +49,7 @@ Poniższa tabela zawiera linki do skryptów bash utworzonych za pomocą interfej
 |**Bezpieczne maszyn wirtualnych**||
 | [Szyfrowanie dysków maszyn wirtualnych i danych](./../scripts/virtual-machines-linux-cli-sample-encrypt-vm.md?toc=%2fcli%2fazure%2ftoc.json) | Tworzy usługi Azure Key Vault, klucz szyfrowania i jednostki usługi, a następnie szyfruje maszyny Wirtualnej. |
 |**Monitorowanie maszyn wirtualnych**||
-| [Monitorowanie maszyny Wirtualnej za pomocą pakietu Operations Management Suite](./../scripts/virtual-machines-linux-cli-sample-create-vm-oms.md?toc=%2fcli%2fazure%2ftoc.json) | Tworzy maszynę wirtualną, a następnie instaluje agenta pakietu Operations Management Suite i rejestruje maszyny Wirtualnej w obszarze roboczym pakietu OMS.  |
+| [Monitorowanie maszyny Wirtualnej za pomocą usługi Azure Log Analytics](./../scripts/virtual-machines-linux-cli-sample-create-vm-oms.md?toc=%2fcli%2fazure%2ftoc.json) | Tworzy maszynę wirtualną, a następnie instaluje agenta usługi Log Analytics i rejestruje maszyny Wirtualnej w obszarze roboczym usługi Log Analytics.  |
 |**Rozwiązywanie problemów z maszynami wirtualnymi**||
 | [Rozwiązywanie problemów z dyskiem systemu operacyjnego maszyn wirtualnych](./../scripts/virtual-machines-linux-cli-sample-mount-os-disk.md?toc=%2fcli%2fazure%2ftoc.json) | Instaluje dysk systemu operacyjnego z jednej maszyny Wirtualnej jako dysk z danymi na drugiej maszynie Wirtualnej. |
 | | |

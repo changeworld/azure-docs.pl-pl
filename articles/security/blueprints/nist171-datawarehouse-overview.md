@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: f774aed837fac1829413493c98b6df0e4ca30600
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: ec608964190c65d8d064582920e53545b9ee62a6
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393217"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404006"
 ---
 # <a name="azure-security-and-compliance-blueprint---data-warehouse-for-nist-sp-800-171"></a>Zabezpieczenia platformy Azure i zgodności planu - SP NIST 800-171 w magazynie danych
 
@@ -161,7 +161,7 @@ Usługi platformy Azure często dziennika systemu i aktywności użytkownika, a 
 - **Dzienniki aktywności**: [dzienników aktywności](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) udostępniają szczegółowe dane operacji wykonywanych na zasobach w subskrypcji. Dzienniki aktywności można określić inicjatora operacji czasu wystąpienie i stan.
 - **Dzienniki diagnostyczne**: [dzienniki diagnostyczne](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) obejmują wszystkie dzienniki emitowane przez każdy zasób. Dzienniki te obejmują dzienniki systemu zdarzeń Windows, dzienniki magazynu, dzienników inspekcji usługi Key Vault i Dzienniki dostępu i zapory usługi Azure Application Gateway. Wszystkie dzienniki diagnostyczne zapisu do konta usługi Azure storage scentralizowany i zaszyfrowane w celu archiwizacji. Użytkownicy mogą skonfigurować okres przechowywania, nawet do 730 dni, aby spełnić konkretne wymagania.
 
-**Log Analytics**: tych dzienników i dalszych są skonsolidowane w [usługi Log Analytics](https://azure.microsoft.com/services/log-analytics/) do przetwarzania, przechowywania i raportowanie na pulpicie nawigacyjnym. Po zebraniu danych są zorganizowane w w oddzielnych tabelach dla każdego typu danych w obszarach roboczych pakietu Operations Management Suite. W ten sposób wszystkie dane mogą być analizowane razem niezależnie od ich oryginalnego źródła. Usługa Security Center integruje się z usługą Log Analytics. Klienci mogą używać zapytań usługi Log Analytics, aby uzyskać dostęp do danych zdarzeń zabezpieczeń i łączyć je z danymi z innych usług.
+**Log Analytics**: tych dzienników i dalszych są skonsolidowane w [usługi Log Analytics](https://azure.microsoft.com/services/log-analytics/) do przetwarzania, przechowywania i raportowanie na pulpicie nawigacyjnym. Po zebraniu danych są zorganizowane w w oddzielnych tabelach dla każdego typu danych w obszarach roboczych usługi Log Analytics. W ten sposób wszystkie dane mogą być analizowane razem niezależnie od ich oryginalnego źródła. Usługa Security Center integruje się z usługą Log Analytics. Klienci mogą używać zapytań usługi Log Analytics, aby uzyskać dostęp do danych zdarzeń zabezpieczeń i łączyć je z danymi z innych usług.
 
 Następujące usługi Log Analytics [rozwiązań do zarządzania](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) są uwzględniane w ramach tej architektury:
 -   [Oceny usługi Active Directory](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Active Directory Health Check rozwiązanie ocenia ryzyko i kondycję środowisk serwerów programu w regularnych odstępach czasu. Zapewnia priorytetową listą zalecenia dotyczące infrastruktury serwera wdrożone.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 7682a733c5630c16d9684ec3cb9e7757b03a8b1b
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: f6e8ed1725b7ba2a0cba8523ae03c0306337aba0
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855939"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402511"
 ---
 # <a name="azure-database-security-checklist"></a>Lista kontrolna zabezpieczeń bazy danych platformy Azure
 
@@ -46,7 +46,7 @@ Zalecamy przeczytanie [bazy danych usługi Azure Security Best Practices](https:
 |Lista kontrolna kategorii| Opis|
 | ------------ | -------- |
 |**Ochrona danych**||
-| <br> Szyfrowanie podczas transferu/ruchu| <ul><li>[Transport Layer Security](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol), do szyfrowania danych, gdy dane są przenoszone do sieci.</li><li>Baza danych wymaga bezpiecznej komunikacji z klientami, na podstawie [TDS (Stream dane tabelaryczne)](https://msdn.microsoft.com/en-in/library/dd357628.aspx) protokołu za pośrednictwem protokołu TLS (Transport Layer Security).</li></ul> |
+| <br> Szyfrowanie podczas transferu/ruchu| <ul><li>[Transport Layer Security](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol), do szyfrowania danych, gdy dane są przenoszone do sieci.</li><li>Baza danych wymaga bezpiecznej komunikacji z klientami, na podstawie [TDS (Stream dane tabelaryczne)](https://msdn.microsoft.com/library/dd357628.aspx) protokołu za pośrednictwem protokołu TLS (Transport Layer Security).</li></ul> |
 |<br>Szyfrowanie w spoczynku| <ul><li>[Transparent Data Encryption](http://go.microsoft.com/fwlink/?LinkId=526242), gdy nieaktywne dane są przechowywane w fizycznie w dowolnej formie cyfrowej.</li></ul>|
 |**Kontrola dostępu**||  
 |<br> Dostęp do bazy danych | <ul><li>[Uwierzytelnianie](https://docs.microsoft.com/azure/sql-database/sql-database-control-access) uwierzytelniania (Azure Active Directory Authentication) AD korzysta z tożsamości zarządzanej przez usługę Azure Active Directory.</li><li>[Autoryzacja](https://docs.microsoft.com/azure/sql-database/sql-database-control-access) przyznanie użytkownikom minimalnych niezbędnych uprawnień.</li></ul> |

@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 3e4b4e904fd4615458e8d873baa1bf30588fe81d
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 4fd7617bf45608cdae15919a40920ea0d214acb8
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249438"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407475"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Instrukcje: Migrowanie z usługi Azure Access Control service
 
@@ -225,7 +225,7 @@ Aby korzystać z protokołu WS-Federation lub programu WIF do integracji z usłu
 
 Alternatywnym podejściem jest wykonanie czynności opisanych [ten przykładowy kod](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation), co daje nieco inne instrukcje dotyczące konfigurowania protokołu WS-Federation. Ten przykładowy kod nie używa programu WIF, ale raczej oprogramowania pośredniczącego OWIN 4.5 programu ASP.NET. Jednak z instrukcjami dotyczącymi rejestracji aplikacji są prawidłowe dla aplikacji przy użyciu programu WIF i nie wymaga licencji usługi Azure AD Premium. 
 
-Jeśli wybierzesz tę opcję, musisz zrozumieć [Przerzucanie klucza podpisywania w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). To podejście używa usługi Azure AD, globalne, podpisywania klucza do wydawania tokenów. Domyślnie program WIF nie będzie odświeżana automatycznie klucze podpisywania. W przypadku usługi Azure AD obraca się jego globalne klucze podpisywania, implementacji programu WIF trzeba przygotować, aby zatwierdzić zmiany. Aby uzyskać więcej informacji, zobacz [ważne informacje na temat Przerzucanie klucza podpisywania w usłudze Azure AD](https://msdn.microsoft.com/en-us/library/azure/dn641920.aspx).
+Jeśli wybierzesz tę opcję, musisz zrozumieć [Przerzucanie klucza podpisywania w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). To podejście używa usługi Azure AD, globalne, podpisywania klucza do wydawania tokenów. Domyślnie program WIF nie będzie odświeżana automatycznie klucze podpisywania. W przypadku usługi Azure AD obraca się jego globalne klucze podpisywania, implementacji programu WIF trzeba przygotować, aby zatwierdzić zmiany. Aby uzyskać więcej informacji, zobacz [ważne informacje na temat Przerzucanie klucza podpisywania w usłudze Azure AD](https://msdn.microsoft.com/library/azure/dn641920.aspx).
 
 Można zintegrować z usługą Azure AD za pomocą protokołów uwierzytelniania OpenID Connect lub OAuth, zaleca się temu. Mamy obszerną dokumentację i wskazówki dotyczące sposobu integracji usługi Azure AD w aplikacji sieci web dostępnych w naszej [przewodnik dewelopera usługi Azure AD](https://aka.ms/aaddev).
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: debefb329304235818b7b441122b90ae9a2834a9
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 69d2d80e40400cc7fa40aeb5a163dce5036905ab
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578314"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402764"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analiza ruchu — często zadawane pytania
 
@@ -77,9 +77,9 @@ Tak.
 
 Tak. Wybranie istniejącego obszaru roboczego, upewnij się, że jej została zmigrowana do nowego języka zapytań. Jeśli nie chcesz uaktualnić obszar roboczy, musisz utworzyć nowy. Aby uzyskać więcej informacji na temat nowego języka zapytań, zobacz [usługi Azure Log Analytics, uaktualnienie do nową funkcją przeszukiwania dzienników](../log-analytics/log-analytics-log-search-upgrade.md).
 
-## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-operations-management-suite-workspace-be-in-a-different-subscription"></a>Moje konto usługi Azure Storage można w jednej subskrypcji i Mój obszar roboczy pakietu Operations Management Suite znajdować się w innej subskrypcji?
+## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>Moje konto usługi Azure Storage można w jednej subskrypcji i Mój obszar roboczy usługi Log Analytics jest w innej subskrypcji?
 
-Tak, konta usługi Azure Storage może być w jednej subskrypcji i obszaru roboczego pakietu Operations Management Suite mogą znajdować się w innej subskrypcji.
+Tak, konta usługi Azure Storage może być w jednej subskrypcji i obszaru roboczego usługi Log Analytics może znajdować się w innej subskrypcji.
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>Czy mogę przechowywać nieprzetworzonych dzienników w innej subskrypcji?
 
@@ -115,7 +115,7 @@ Jeśli problemy będą się powtarzać, budzić w [User voice forum](https://fee
 
 Może zostać wyświetlony ten komunikat, ponieważ:
 - Analiza ruchu niedawno został włączony i może nie jeszcze mają zagregowane wystarczającej ilości danych dla niego do uzyskania istotnych informacji.
-- Używasz bezpłatną wersję obszaru roboczego pakietu Operations Management Suite i przekroczenia limitów przydziału. Może być konieczne używanie obszaru roboczego o większej pojemności.
+- Używasz bezpłatną wersję obszaru roboczego usługi Log Analytics i przekroczenia limitów przydziału. Może być konieczne używanie obszaru roboczego o większej pojemności.
     
 Jeśli problemy będą się powtarzać, budzić w [User voice forum](https://feedback.azure.com/forums/217313-networking?category_id=195844).
     

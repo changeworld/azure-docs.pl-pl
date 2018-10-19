@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/28/2018
+ms.date: 10/17/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 23bf9d5fb26ee3a0f224f7a8acc2b0539a5c1607
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: c9c21b9beb891a685d7e264ec55817c0045455bc
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364614"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406281"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Omówienie łączników serwera Proxy aplikacji usługi Azure AD
 
@@ -79,7 +79,7 @@ Chociaż łączników zostaną automatycznie równoważyć obciążenie spowodow
 |4|16|320|1150|
 |8|32|270|1190|
 |16|64|245|1200*|
-\* Ta maszyna ma limit połączeń, 800. Dla innych maszyn użyliśmy domyślny limit 200 połączenia.
+\* Ta maszyna używana niestandardową wartość ustawienia pozyskiwania niektóre domyślne limity połączenia po przekroczeniu .net zalecanych ustawień. Firma Microsoft zaleca uruchamianie testu przy użyciu ustawień domyślnych, skontaktuj się z pomocą techniczną, aby ten limit, zmieniona dla Twojej dzierżawy.
  
 >[!NOTE]
 >Nie jest dużo różnicy w maksymalna TPS 4, 8 i 16 rdzeni maszyny. Główna różnica między tymi jest oczekiwane opóźnienie.  

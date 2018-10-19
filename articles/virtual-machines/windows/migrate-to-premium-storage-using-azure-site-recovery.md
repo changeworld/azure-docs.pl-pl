@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.component: disks
-ms.openlocfilehash: 5d3c2f09a6e4c45aa477cd85911147eab6de7a2c
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 7378331e5f7540d807c76511226fcd2ed99883fa
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714710"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404141"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrowanie do usługi Premium Storage przy użyciu usługi Azure Site Recovery
 
@@ -77,8 +77,10 @@ Usługa Site Recovery umożliwia migrowanie maszyn wirtualnych IaaS platformy Az
 ### <a name="step-1-create-a-recovery-services-vault"></a>Krok 1. Tworzenie magazynu usługi Recovery Services
 
 1. Otwórz [portal Azure](https://portal.azure.com).
-2. Wybierz **Utwórz zasób** > **zarządzania** > **Backup i Site Recovery (OMS)**. Alternatywnie, można wybrać **Przeglądaj** > **magazyn usługi Recovery Services** > **Dodaj**. 
-3. Określ region, który zostanie zreplikowana maszyn wirtualnych. Na potrzeby migracji, w tym samym regionie wybierz region, w których są Twoje źródłowe maszyny wirtualne i konta magazynu źródłowej. 
+2. Wybierz **Utwórz zasób** > **zarządzania** > **Backup i Site Recovery (OMS)**. Alternatywnie, można wybrać **Przeglądaj** > **magazyn usługi Recovery Services** > **Dodaj**.
+   >[!NOTE]
+   >Backup i Site Recovery była wcześniej częścią ![pakiet OMS](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand).
+1. Określ region, który zostanie zreplikowana maszyn wirtualnych. Na potrzeby migracji, w tym samym regionie wybierz region, w których są Twoje źródłowe maszyny wirtualne i konta magazynu źródłowej. 
 
 ### <a name="step-2-choose-your-protection-goals"></a>Krok 2: Wybranie celów ochrony 
 

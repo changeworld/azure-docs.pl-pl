@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: f08b9e60a632428a120f9cfa50d29f1454e0b1d5
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 73978609d018eb43ab8031dc6e8261861e1ee3bf
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041171"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402544"
 ---
 # <a name="expressroute-monitor"></a>Monitor usługi ExpressRoute
 
@@ -36,7 +36,7 @@ Można użyć możliwości usługi Azure Monitor usługi ExpressRoute w [rozwią
 Aby otworzyć konfigurację rozwiązania Network Performance Monitor, otwórz [rozwiązania Network Performance Monitor](log-analytics-network-performance-monitor.md) i wybierz **Konfiguruj**.
 
 ### <a name="configure-network-security-group-rules"></a>Konfigurowanie reguł sieciowych grup zabezpieczeń 
-W przypadku serwerów na platformie Azure, które są używane do monitorowania za pomocą rozwiązania Network Performance Monitor należy skonfigurować reguły Sieciowej grupy zabezpieczeń sieci zezwalającą na ruch TCP na porcie używanym przez rozwiązania Network Performance Monitor na potrzeby transakcji syntetycznych. Domyślnym portem jest port 8084. Ta konfiguracja pozwala agenta pakietu Operations Management Suite, zainstalowane na maszynach wirtualnych platformy Azure do komunikowania się z lokalną agenta monitorowania. 
+W przypadku serwerów na platformie Azure, które są używane do monitorowania za pomocą rozwiązania Network Performance Monitor należy skonfigurować reguły Sieciowej grupy zabezpieczeń sieci zezwalającą na ruch TCP na porcie używanym przez rozwiązania Network Performance Monitor na potrzeby transakcji syntetycznych. Domyślnym portem jest port 8084. Ta konfiguracja pozwala agenta usługi Log Analytics, zainstalowane na maszynach wirtualnych platformy Azure do komunikowania się z lokalną agenta monitorowania. 
 
 Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz [sieciowe grupy zabezpieczeń](../virtual-network/manage-network-security-group.md). 
 

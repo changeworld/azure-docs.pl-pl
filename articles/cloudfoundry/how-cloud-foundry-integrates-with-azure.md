@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: 689730edcc98a23c82373ae8d36c3b831b33c076
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: a9f5f22cbd6e7cb39e1abb2ef712ffcfc27f55a4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627444"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406147"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Integracja usługi Cloud Foundry z platformą Azure
 
@@ -70,9 +70,9 @@ Broker usług platformy Azure zapewnia spójny interfejs do zarządzania dostęp
 
 ## <a name="6-metrics-and-logging"></a>6. Rejestrowanie i metryki
 Dodatek usługi Azure Log Analytics Nozzle jest składnikiem usługi Cloud Foundry, która przesyła dalej metryki z [pilnym loggregator Cloud Foundry](https://docs.cloudfoundry.org/loggregator/architecture.html) do [usługi Azure Log Analytics](https://azure.microsoft.com/services/log-analytics/). Za pomocą dodatku nozzle usługi CF można zbierać, wyświetlać i analizować metryki kondycji i wydajności systemu CF na wiele wdrożeń.
-Kliknij przycisk [tutaj](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-nozzle) Aby dowiedzieć się, jak wdrożyć dodatek usługi Azure Log Analytics Nozzle typu Open Source i Pivotal Cloud Foundry środowiska, a następnie uzyskać dostęp do danych z poziomu konsoli usługi Azure Log Analytics w pakiecie OMS. 
+Kliknij przycisk [tutaj](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-nozzle) Aby dowiedzieć się, jak wdrożyć dodatek usługi Azure Log Analytics Nozzle typu Open Source i Pivotal Cloud Foundry środowiska, a następnie uzyskać dostęp do danych z poziomu konsoli usługi Azure Log Analytics. 
 > [!NOTE]
-> 2.0 PCF BOSH metryk kondycji dla maszyn wirtualnych są przekazywane do pilnym Loggregator domyślnie i są zintegrowane w konsoli usługi Azure Log Analytics w pakiecie OMS.
+> 2.0 PCF BOSH metryk kondycji dla maszyn wirtualnych są przekazywane do pilnym Loggregator domyślnie i są zintegrowane w konsoli usługi Azure Log Analytics.
 
 ## <a name="7-cost-saving"></a>7. Redukcja kosztów
 ### <a name="cost-saving-for-devtest-environments"></a>Oszczędność do środowiska deweloperskie i testowe

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 34409197a080b4d755b76f140111b7694925b5df
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: b9ef650b772a160f7ddf8932f646f8081cb9e551
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094058"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407133"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migracja Contoso: ocena obciążeń lokalnych pod kątem migracji na platformę Azure
 
@@ -411,8 +411,8 @@ Contoso uruchamia instalację na każdej maszynie Wirtualnej.
 3. Firma Contoso instaluje programu MMA:
     - Firmy Contoso przechodzi klucz i identyfikator obszaru roboczego w poleceniu.
     - Polecenia są dla 64-bitowych.
-    - Identyfikator obszaru roboczego i klucz podstawowy znajdują się w portalu Microsoft Operations Management Suite (OMS). Wybierz **ustawienia**, a następnie wybierz pozycję **połączone źródła** kartę.
-    - Uruchom następujące polecenia, aby pobrać agenta pakietu OMS, weryfikacja sumy kontrolnej i zainstalować i dołączyć agenta:
+    - Identyfikator obszaru roboczego i klucz podstawowy znajdują się w obszarze roboczym usługi Log Analytics w witrynie Azure portal. Wybierz **ustawienia**, a następnie wybierz pozycję **połączone źródła** kartę.
+    - Uruchom następujące polecenia, aby pobrać agenta usługi Log Analytics, weryfikacja sumy kontrolnej i zainstalować i dołączyć agenta:
 
     ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 6b7fcaff-7efb-4356-ae06-516cacf5e25d -s k7gAMAw5Bk8pFVUTZKmk2lG4eUciswzWfYLDTxGcD8pcyc4oT8c6ZRgsMy3MmsQSHuSOcmBUsCjoRiG2x9A8Mg==

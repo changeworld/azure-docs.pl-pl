@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: snehaa
-ms.openlocfilehash: 2b704edee55f7d15da1b59d8f8b357b9ba7ca8f3
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e39cf260cc4931fc0dddc4922479522cb521d08e
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239221"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407065"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Usługa Azure Migrate — często zadawane pytania (FAQ)
 
@@ -62,7 +62,7 @@ Dodatkowe składniki (na przykład oprogramowanie antywirusowe) można dodać do
 
 ### <a name="what-data-is-collected-by-azure-migrate"></a>Jakie dane są zbierane przez usługę Azure Migrate?
 
-Usługa Azure Migrate obsługuje dwa rodzaje odnajdywania, odnajdywanie na podstawie urządzenia i odnajdywanie na podstawie agenta.
+Usługa Azure Migrate obsługuje dwa rodzaje odnajdywania: oparte na urządzeniach i oparte na agentach.
 Odnajdywanie oparte na urządzeniu zbiera metadane dotyczące lokalnych maszyn wirtualnych, pełną listę metadane zbierane przez urządzenie znajduje się poniżej:
 
 **Dane konfiguracji maszyny wirtualnej**
@@ -86,7 +86,7 @@ Odnajdywanie oparte na urządzeniu zbiera metadane dotyczące lokalnych maszyn w
   - Sieć — wejście
   - Sieć — wyjście
 
-Odnajdywanie oparte na agentach opcja jest dostępna na podstawie odnajdywania oparte na urządzeniu i pomaga klientom [wizualizacja zależności](how-to-create-group-machine-dependencies.md) lokalnych maszyn wirtualnych. Agenci zależności zbierać szczegółowe informacje, takie jak nazwy FQDN, system operacyjny, IP adresu, adres MAC, procesów uruchomionych wewnątrz maszyny Wirtualnej i połączenia wychodzące/przychodzące TCP z maszyny Wirtualnej. Odnajdywanie oparte na agentach jest opcjonalny, a użytkownik może nie zainstalować agentów, jeśli nie chcesz wizualizacja zależności maszyn wirtualnych.
+Opcja odnajdywania opartego na agentach uzupełnia odnajdywanie oparte na urządzeniach i pomaga klientom [wizualizować zależności](how-to-create-group-machine-dependencies.md) lokalnych maszyn wirtualnych. Agenci zależności zbierają informacje, takie jak nazwa FQDN, system operacyjny, adres IP, adres MAC, procesy uruchomione na maszynie wirtualnej oraz przychodzące/wychodzące połączenia TCP na maszynie wirtualnej. Odnajdywanie oparte na agentach jest opcjonalny, a użytkownik może nie zainstalować agentów, jeśli nie chcesz wizualizacja zależności maszyn wirtualnych.
 
 ### <a name="would-there-be-any-performance-impact-on-the-analyzed-esxi-host-environment"></a>Będzie mieć żadnego wpływu wydajności na przeanalizowany środowisko hosta ESXi?
 
@@ -98,7 +98,7 @@ Firma Microsoft wprowadza ciągłe profilowania danych dotyczących wydajności 
 
 Dane zebrane przez urządzenie modułu zbierającego znajduje się w lokalizacji platformy Azure, które należy określić podczas tworzenia projektu migracji. Dane są bezpiecznie przechowywane w ramach subskrypcji firmy Microsoft i zostanie usunięta, gdy użytkownik usuwa projekt usługi Azure Migrate.
 
-Dla wizualizacji zależności po zainstalowaniu agentów na maszynach wirtualnych, dane zbierane przez agentów zależności są przechowywane w Stanach Zjednoczonych, w obszarze roboczym pakietu OMS utworzonego w subskrypcji użytkownika. Usuwanie danych odbywa się podczas usuwania obszaru roboczego pakietu OMS w ramach subskrypcji. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/concepts-dependency-visualization).
+Dla wizualizacji zależności po zainstalowaniu agentów na maszynach wirtualnych, dane zbierane przez agentów zależności są przechowywane w Stanach Zjednoczonych, w obszarze roboczym usługi Log Analytics utworzonych w subskrypcji użytkownika. Usuwanie danych odbywa się podczas usuwania obszaru roboczego usługi Log Analytics w ramach subskrypcji. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/concepts-dependency-visualization).
 
 ### <a name="is-the-data-encrypted-at-rest-and-while-in-transit"></a>Czy dane są szyfrowane podczas przechowywania i przesyłanych?
 
@@ -151,7 +151,7 @@ Tak, usługa Azure Migrate umożliwia teraz dołączenie istniejącego obszaru r
 
 ### <a name="can-i-export-the-dependency-visualization-report"></a>Czy mogę wyeksportować raport wizualizacji zależności?
 
-Nie, nie można wyeksportować wizualizacji zależności. Jednakże, ponieważ usługa Azure Migrate rozwiązania Service map dla wizualizacji zależności, możesz użyć [interfejsów API REST usługi Service Map](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections) można pobrać zależności w formacie json.
+Nie. Nie można wyeksportować wizualizacji zależności. Jednakże, ponieważ usługa Azure Migrate rozwiązania Service map dla wizualizacji zależności, możesz użyć [interfejsów API REST usługi Service Map](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections) można pobrać zależności w formacie json.
 
 ### <a name="how-can-i-automate-the-installation-of-microsoft-monitoring-agent-mma-and-dependency-agent"></a>Jak można zautomatyzować instalację programu Microsoft Monitoring Agent (MMA) i agenta zależności
 

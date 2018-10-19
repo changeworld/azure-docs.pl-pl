@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
-ms.openlocfilehash: 5aca1400ddfe1522cd9dc8d68d8cba8a222e4d21
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 6fc6afa9c0ccbddcfa408556dee92618fe63c8fb
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095202"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407116"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>Mapa usługi integracji programu System Center Operations Manager
   > [!NOTE]
@@ -45,6 +45,9 @@ Umożliwia integrację między programem Operations Manager i Service Map, impor
 
 ## <a name="configure-the-service-map-integration"></a>Konfigurowanie integracji rozwiązania Service Map
 Po zainstalowaniu pakietu administracyjnego rozwiązania Service Map, nowy węzeł **rozwiązania Service Map**, jest wyświetlany w obszarze **pakietu Operations Management Suite** w **administracji** okienka. 
+
+>[!NOTE]
+>[Pakiet Operations Management Suite została kolekcja usług](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) włączone, usługa Log Analytics, który jest obecnie częścią programu [usługi Azure Monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md).
 
 Aby skonfigurować integrację rozwiązania Service Map, wykonaj następujące czynności:
 
@@ -104,7 +107,12 @@ Folder rozwiązania Service Map ma cztery węzły:
     ![Diagramu aplikacji rozproszonej programu Operations Manager](media/monitoring-service-map/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>Edytowanie lub usuwanie obszaru roboczego
-Można edytować lub usunąć skonfigurowany obszar roboczy za pomocą **omówienie mapy usługi** okienko (**administracji** okienko > **pakietu Operations Management Suite**  >  **Usługi mapy**). Teraz można skonfigurować tylko jeden obszar roboczy usługi Log Analytics.
+Można edytować lub usunąć skonfigurowany obszar roboczy za pomocą **omówienie mapy usługi** okienko (**administracji** okienko > **pakietu Operations Management Suite**  >  **Usługi mapy**).
+
+>[!NOTE]
+>[Pakiet Operations Management Suite została kolekcja usług](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) włączone, usługa Log Analytics, który jest obecnie częścią programu [usługi Azure Monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md).
+
+Teraz można skonfigurować tylko jeden obszar roboczy usługi Log Analytics.
 
 ![W okienku Menedżera operacji Edytuj obszar roboczy](media/monitoring-service-map/scom-edit-workspace.png)
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: 68eb567235897641d5d4027160f62c5aa6e7e4f9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 26500f3e557a27046edc5c833b8c8d88ae266e68
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963393"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409003"
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Usługa Azure Cosmos DB rejestrowanie diagnostyczne
 
@@ -356,11 +356,14 @@ Dzienniki diagnostyczne są udostępniane w ramach Twojego konta do dwóch godzi
 
 W przypadku wybrania **wysyłanie do usługi Log Analytics** opcji po włączeniu rejestrowania diagnostycznego diagnostyczne dane z kontenera jest przekazywany do usługi Log Analytics w ciągu dwóch godzin. Jeśli przyjrzymy się usługi Log Analytics bezpośrednio po włączeniu rejestrowania, nie zobaczysz żadnych danych. Po prostu Zaczekaj dwie godziny i spróbuj ponownie. 
 
-Zanim będzie wyświetlić dzienniki, sprawdź i zobacz, jeśli obszar roboczy usługi Log Analytics został uaktualniony używać nowego języka zapytań usługi Log Analytics. Aby sprawdzić, otwórz [witryny Azure portal](https://portal.azure.com), wybierz opcję **usługi Log Analytics** daleko po lewej, następnie wybierz nazwę obszaru roboczego, jak pokazano na następnej ilustracji. **Obszaru roboczego pakietu OMS** zostanie wyświetlona strona:
+Zanim będzie wyświetlić dzienniki, sprawdź i zobacz, jeśli obszar roboczy usługi Log Analytics został uaktualniony używać nowego języka zapytań usługi Log Analytics. Aby sprawdzić, otwórz [witryny Azure portal](https://portal.azure.com), wybierz opcję **usługi Log Analytics** daleko po lewej, następnie wybierz nazwę obszaru roboczego, jak pokazano na następnej ilustracji. **Obszaru roboczego usługi Log Analytics** zostanie wyświetlona strona:
 
 ![Usługa log Analytics w witrynie Azure portal](./media/logging/azure-portal.png)
 
-Jeśli zobaczysz następujący komunikat na **obszaru roboczego pakietu OMS** stronie obszaru roboczego, nie został uaktualniony do korzystania z nowego języka. Aby uzyskać więcej informacji na temat sposobu uaktualniania do nowego języka zapytań, zobacz [uaktualnienia obszaru roboczego usługi Azure Log Analytics na nową funkcją przeszukiwania dzienników](../log-analytics/log-analytics-log-search-upgrade.md). 
+>[!NOTE]
+>Obszary robocze OMS są teraz nazywane obszarów roboczych usługi Log Analytics.  
+
+Jeśli zobaczysz następujący komunikat na **obszaru roboczego usługi Log Analytics** stronie obszaru roboczego, nie został uaktualniony do korzystania z nowego języka. Aby uzyskać więcej informacji na temat sposobu uaktualniania do nowego języka zapytań, zobacz [uaktualnienia obszaru roboczego usługi Azure Log Analytics na nową funkcją przeszukiwania dzienników](../log-analytics/log-analytics-log-search-upgrade.md). 
 
 ![Komunikat o uaktualnieniu usługi log Analytics](./media/logging/upgrade-notification.png)
 

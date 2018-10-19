@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 433914bc4501b13ba65015d15b0c513a38bf1273
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 9a2193d78d564ad4a8c175a5116fa7dc9ebda256
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041666"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408748"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Łączenie programu Configuration Manager do usługi Log Analytics
 Można połączyć środowiska programu System Center Configuration Manager z usługą Azure Log Analytics, synchronizować dane kolekcji urządzeń i odwołują się do tych kolekcji w usłudze Log Analytics i Azure Automation.  
@@ -40,7 +40,7 @@ Poniższe instrukcje stanowią podsumowanie czynności, aby skonfigurować integ
 6. W usłudze Log Analytics [Importuj kolekcje z programu Configuration Manager](#import-collections) jako grup komputerów.
 7. W usłudze Log Analytics przeglądać dane z programu Configuration Manager jako [grup komputerów](log-analytics-computer-groups.md).
 
-Możesz dowiedzieć się więcej o łączeniu programu Configuration Manager z pakietem OMS na [synchronizowanie danych z programu Configuration Manager z usługą Microsoft Operations Management Suite](https://technet.microsoft.com/library/mt757374.aspx).
+Możesz dowiedzieć się więcej o łączeniu programu Configuration Manager do usługi Log Analytics w [synchronizowanie danych z programu Configuration Manager z usługą Microsoft Log Analytics](https://technet.microsoft.com/library/mt757374.aspx).
 
 ## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>Udziel programu Configuration Manager z uprawnieniami do usługi Log Analytics
 W poniższej procedurze, można przyznać *Współautor* roli w obszarze roboczym usługi Log Analytics do aplikacji usługi AD i jednostki usługi utworzonej wcześniej w programie Configuration Manager.  Jeśli nie masz obszaru roboczego, zobacz [Utwórz obszar roboczy w usłudze Azure Log Analytics](log-analytics-quick-create-workspace.md) przed kontynuowaniem.  Dzięki temu programu Configuration Manager do uwierzytelnienia i nawiązania połączenia z obszarem roboczym usługi Log Analytics.  
@@ -59,20 +59,24 @@ W poniższej procedurze, można przyznać *Współautor* roli w obszarze roboczy
 ## <a name="download-and-install-the-agent"></a>Pobierz i zainstaluj agenta
 Zapoznaj się z artykułem [Windows łączenie komputerów do usługi Log Analytics na platformie Azure](log-analytics-agent-windows.md) Aby poznać dostępne metody instalacji programu Microsoft Monitoring Agent na komputerze hostującym usługi programu Configuration Manager Rola systemu lokacji punktu połączenia.  
 
-## <a name="add-an-oms-connection-to-configuration-manager"></a>Dodaj połączenie OMS programu Configuration Manager
-Aby dodać połączenie pakietu OMS, środowiska programu Configuration Manager musi mieć [punkt połączenia z usługą](https://technet.microsoft.com/library/mt627781.aspx) skonfigurowane dla trybu online.
+## <a name="add-a-log-analytics-connection-to-configuration-manager"></a>Dodawanie połączenia usługi Log Analytics do programu Configuration Manager
+Aby dodać połączenie usługi Log Analytics, środowiska programu Configuration Manager musi mieć [punkt połączenia z usługą](https://technet.microsoft.com/library/mt627781.aspx) skonfigurowane dla trybu online.
 
-1. W **administracji** programu Configuration Manager, wybierz obszar roboczy **łącznika pakietu OMS**. Spowoduje to otwarcie **Kreator dodawania połączenia pakietu OMS**. Wybierz opcję **Dalej**.
+1. W **administracji** programu Configuration Manager, wybierz obszar roboczy **łącznika pakietu OMS**. Spowoduje to otwarcie **Dodaj Kreatora połączenia analizy dziennika**. Wybierz opcję **Dalej**.
+
+   >[!NOTE]
+   >Pakiet OMS jest teraz nazywana usługi Log Analytics.
+   
 2. Na **ogólne** ekranu, upewnij się, że zostały wykonane następujące akcje i że możesz mieć szczegółów dla każdego elementu, a następnie wybierz **dalej**.
 
    1. W witrynie Azure portal zarejestrowanego w programie Configuration Manager jako aplikację sieci Web, aplikacji i/lub interfejs API sieci Web i że posiadasz [identyfikator klienta z rejestracji](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md).
    2. W witrynie Azure portal zostanie utworzona klucza tajnego aplikacji dla aplikacji zarejestrowanych w usłudze Azure Active Directory.  
-   3. W witrynie Azure portal został podany rejestrowanej aplikacji internetowej z uprawnieniami do pakietu OMS.  
-      ![Połączenie Strona ogólna Kreatora pakietu OMS](./media/log-analytics-sccm/sccm-console-general01.png)
+   3. W witrynie Azure portal został podany rejestrowanej aplikacji internetowej z uprawnieniami do usługi Log Analytics.  
+      ![Połączenie Strona ogólna Kreatora analizy dzienników](./media/log-analytics-sccm/sccm-console-general01.png)
 3. Na **usługi Azure Active Directory** ekranu, skonfigurować ustawienia połączenia z usługą Log Analytics, zapewniając Twojej **dzierżawy**, **identyfikator klienta**, i **klienta Klucz tajny**, a następnie wybierz **dalej**.  
-   ![Połączenie do strony pakietu OMS Kreatora usługi Azure Active Directory](./media/log-analytics-sccm/sccm-wizard-tenant-filled03.png)
+   ![Połączenie do strony Log Analytics Kreatora usługi Azure Active Directory](./media/log-analytics-sccm/sccm-wizard-tenant-filled03.png)
 4. Jeśli wykonano wszystkie inne procedury pomyślnie, następnie informacje w **Konfiguracja połączenia pakietu OMS** ekran zostanie automatycznie wyświetlona na tej stronie. Informacje dotyczące ustawień połączenia ma być wyświetlany dla Twojego **subskrypcji platformy Azure**, **grupy zasobów platformy Azure**, i **obszar roboczy pakietu Operations Management Suite**.  
-   ![Połączenie do strony widoku połączenie OMS Kreator pakietu OMS](./media/log-analytics-sccm/sccm-wizard-configure04.png)
+   ![Połączenie do strony połączenia usługi Log Analytics kreatora Log Analytics](./media/log-analytics-sccm/sccm-wizard-configure04.png)
 5. Kreator połączy się do usługi Log Analytics, korzystając z informacji, które po danych wejściowych. Wybierz kolekcje urządzeń, które chcesz zsynchronizować z usługą, a następnie kliknij przycisk **Dodaj**.  
    ![Wybierz kolekcje](./media/log-analytics-sccm/sccm-wizard-add-collections05.png)
 6. Sprawdź ustawienia połączenia na **Podsumowanie** ekranu, a następnie wybierz **dalej**. **Postępu** ekran pokazuje stan połączenia, a następnie należy **Complete**.
@@ -91,7 +95,7 @@ Jeśli klucz tajny klienta lub hasło nigdy nie wygaśnie lub zostanie utracony,
 2. Na tej stronie, kliknij przycisk **usługi Azure Active Directory** kartę, aby wyświetlić swoje **dzierżawy**, **identyfikator klienta**, **Data wygaśnięcia klucza tajnego klienta**. **Sprawdź** swoje **klucz tajny klienta** Jeśli wygasł.
 
 ## <a name="import-collections"></a>Importuj kolekcje
-Po dodaniu połączenie OMS programu Configuration Manager i agent zainstalowany na komputerze z programem Configuration Manager połączenia z usługą roli systemu lokacji punktu, następnym krokiem jest zaimportowanie kolekcji z programu Configuration Manager w usłudze Log Analytics jako grupy komputerów.
+Po dodaniu połączenia usługi Log Analytics do programu Configuration Manager i agent zainstalowany na komputerze z programem Configuration Manager połączenia z usługą roli systemu lokacji punktu, następnym krokiem jest zaimportowanie kolekcji z programu Configuration Manager w Dzienniku Analiza jako grup komputerów.
 
 Po wykonaniu konfiguracji początkowej, aby zaimportować kolekcje z hierarchii informacje o członkostwo w kolekcji są pobierane co 3 godziny, aby zapewnić aktualność członkostwa. Można to wyłączyć w dowolnym momencie.
 
@@ -103,7 +107,7 @@ Po wykonaniu konfiguracji początkowej, aby zaimportować kolekcje z hierarchii 
    ![Grupy komputerów - kartę programu SCCM](./media/log-analytics-sccm/sccm-computer-groups01.png)
 
 ## <a name="view-data-from-configuration-manager"></a>Wyświetlanie danych z programu Configuration Manager
-Po dodaniu połączenie OMS programu Configuration Manager i agent zainstalowany na komputerze z uruchomionym rolę systemu lokacji punktu połączenia programu Configuration Manager service, dane od agenta są wysyłane do usługi Log Analytics. W usłudze Log Analytics kolekcji programu Configuration Manager są wyświetlane jako [grup komputerów](log-analytics-computer-groups.md). Wyświetlanie grup z **programu Configuration Manager** strony w obszarze **grup Settings\Computer**.
+Po dodaniu połączenia usługi Log Analytics do programu Configuration Manager i agent zainstalowany na komputerze z uruchomionym rolę systemu lokacji punktu połączenia programu Configuration Manager service, dane od agenta są wysyłane do usługi Log Analytics. W usłudze Log Analytics kolekcji programu Configuration Manager są wyświetlane jako [grup komputerów](log-analytics-computer-groups.md). Wyświetlanie grup z **programu Configuration Manager** strony w obszarze **grup Settings\Computer**.
 
 Po zaimportowaniu kolekcje, możesz zobaczyć, na ilu komputerach za pomocą członkostwa w kolekcjach zostały wykryte. Widać również wielu kolekcji, które zostały zaimportowane.
 

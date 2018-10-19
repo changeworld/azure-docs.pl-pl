@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: raynew
-ms.openlocfilehash: 9f95ffe47275cfda77efa294ca6e8ccebe0070eb
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 2d2688799b1a0b4518b9c91bbc530936c834c5e3
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47158618"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407440"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Uściślanie zawartości grupy za pomocą mapowania zależności grupy
 
@@ -39,7 +39,7 @@ Aby korzystać z wizualizacji zależności, należy skojarzyć obszar roboczy us
 > Nie można zmienić obszar roboczy skojarzony z projektem migracji.
 
 ### <a name="download-and-install-the-vm-agents"></a>Pobieranie i instalowanie agentów maszyny wirtualnej
-Aby wyświetlić zależności grupy, musisz pobrać i zainstalować agentów na każdym komputerze w środowisku lokalnym, który jest częścią grupy. Ponadto w przypadku maszyn bez łączności internetowej musisz pobrać i zainstalować [bramy pakietu OMS](../log-analytics/log-analytics-oms-gateway.md) na nich.
+Aby wyświetlić zależności grupy, musisz pobrać i zainstalować agentów na każdym komputerze w środowisku lokalnym, który jest częścią grupy. Ponadto w przypadku maszyn bez łączności internetowej musisz pobrać i zainstalować [bramy usługi Log Analytics](../log-analytics/log-analytics-oms-gateway.md) na nich.
 
 1. W **Przegląd**, kliknij przycisk **Zarządzaj** > **grup**, przejdź do wymaganej grupy.
 2. Na liście maszyn wirtualnych w **agenta zależności** kolumny, kliknij przycisk **wymaga instalacji** Aby uzyskać instrukcje dotyczące sposobu pobierania i instalowania agentów.

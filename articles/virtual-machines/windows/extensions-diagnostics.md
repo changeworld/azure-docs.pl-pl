@@ -1,6 +1,6 @@
 ---
-title: Rozszerzenia diagnostyki Azure dla systemu Windows | Dokumentacja firmy Microsoft
-description: Monitorowanie maszyn wirtualnych systemu Windows Azure przy użyciu rozszerzenia systemu Windows Azure Diagnostics
+title: Rozszerzenie diagnostyki platformy Azure dla Windows | Dokumentacja firmy Microsoft
+description: Monitorowanie maszyn wirtualnych Windows Azure przy użyciu rozszerzenia diagnostyki Azure
 services: virtual-machines-windows
 documentationcenter: ''
 author: johnkemnetz
@@ -12,40 +12,40 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: a9621f6f93d8e14e53cfe05ca4a714e88b9d8572
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: db4208c8fef27d2e2085e63ba3a986456d0544bf
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30928710"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429120"
 ---
-# <a name="windows-azure-diagnostics-extension"></a>Rozszerzenie systemu Windows Azure Diagnostics
+# <a name="azure-diagnostics-extension-for-windows-vms"></a>Rozszerzenie diagnostyki platformy Azure dla maszyn wirtualnych Windows
 
 ## <a name="overview"></a>Przegląd
 
-Rozszerzenie maszyny Wirtualnej systemu Windows Azure Diagnostics umożliwia zbieranie danych monitorowania, takie jak liczniki wydajności i dzienniki zdarzeń z maszyny Wirtualnej systemu Windows. Częściami można określić, jakie dane mają być zbierane i miejscu danych, aby przejść, takich jak konta magazynu Azure lub usługi Azure Event Hub. Te dane umożliwia również tworzenie wykresów w portalu Azure lub tworzyć alerty metryki.
+Rozszerzenie maszyny Wirtualnej diagnostyki platformy Azure umożliwia zbieranie danych monitorowania, takich jak liczniki wydajności i dzienników zdarzeń, z maszyną Wirtualną Windows. Precyzyjne można określić, jakie dane mają być zbierane i gdzie mają dane przejść, takich jak konto usługi Azure Storage lub usługi Azure Event Hub. Te dane umożliwia również tworzenie wykresów w witrynie Azure portal lub tworzyć alerty dotyczące metryk.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="operating-system"></a>System operacyjny
 
-Rozszerzenie Diagnostyka systemu Windows Azure może działać względem klient 10 systemu Windows, Windows Server 2008 R2, 2012 i 2012 R2, 2016.
+Rozszerzenie diagnostyki platformy Azure mogą być uruchamiane względem klienta w programie Windows 10, Windows Server 2008 R2, 2012, 2012 R2 i 2016.
 
 ### <a name="internet-connectivity"></a>Łączność z Internetem
 
-Rozszerzenie Diagnostyka systemu Windows Azure wymaga, aby docelowa maszyna wirtualna jest połączony z Internetem. 
+Rozszerzenie diagnostyki platformy Azure wymaga, że docelowej maszyny wirtualnej jest połączony z Internetem. 
 
-## <a name="extension-schema"></a>Rozszerzenie schematu
+## <a name="extension-schema"></a>Schemat rozszerzenia
 
-[Windows Azure Diagnostics rozszerzenia schematu i wartości właściwości są opisane w tym dokumencie.](../../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md)
+[Rozszerzenie Diagnostyka Azure schemat i wartości właściwości są opisane w tym dokumencie.](../../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md)
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
-Rozszerzenia maszyny Wirtualnej platformy Azure można wdrożyć przy użyciu szablonów usługi Azure Resource Manager. Schematu JSON szczegółowo opisane w poprzedniej sekcji można w szablonie usługi Azure Resource Manager rozszerzenie systemu Windows Azure Diagnostics są uruchamiane podczas wdrażania szablonu usługi Azure Resource Manager. Zobacz [Użyj monitorowania i diagnostyki z szablonów maszyny Wirtualnej systemu Windows i usługi Azure Resource Manager](extensions-diagnostics-template.md).
+Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Schemat JSON szczegółowo opisane w poprzedniej sekcji może służyć w szablonie usługi Azure Resource Manager do uruchomienia przez rozszerzenie Diagnostyka Azure podczas wdrażania szablonu usługi Azure Resource Manager. Zobacz [Użyj monitorowania i diagnostyki za pomocą szablonów maszyn wirtualnych Windows i usługi Azure Resource Manager](extensions-diagnostics-template.md).
 
-## <a name="azure-cli-deployment"></a>Wdrożenia usługi Azure CLI
+## <a name="azure-cli-deployment"></a>Wdrażania interfejs wiersza polecenia platformy Azure
 
-Interfejsu wiersza polecenia Azure może służyć do wdrożenia systemu Windows Azure Diagnostics rozszerzenia istniejącej maszyny wirtualnej. Zastąp ustawienia chronionych i właściwości ustawień poprawne dane JSON z powyższego schematu rozszerzenia. 
+Interfejs wiersza polecenia platformy Azure może służyć do wdrożenia rozszerzenia diagnostyki Azure do istniejącej maszyny wirtualnej. Zamień na chronionych ustawień i właściwości ustawień prawidłowym kodem JSON z powyższego schematu rozszerzenia. 
 
 ```azurecli
 az vm extension set \
@@ -59,7 +59,7 @@ az vm extension set \
 
 ## <a name="powershell-deployment"></a>Wdrożenie programu PowerShell
 
-`Set-AzureRmVMDiagnosticsExtension` Polecenia można dodać rozszerzenie systemu Windows Azure Diagnostics istniejącej maszyny wirtualnej. Zobacz też [Użyj programu PowerShell, aby włączyć na maszynie wirtualnej z systemem Windows Azure Diagnostics](ps-extensions-diagnostics.md).
+`Set-AzureRmVMDiagnosticsExtension` Polecenia można dodać rozszerzenia diagnostyki Azure do istniejącej maszyny wirtualnej. Zobacz też [Diagnostyka Azure maszyny wirtualnej z systemem Windows w programie PowerShell](ps-extensions-diagnostics.md).
 ```powershell
 $vm_resourcegroup = "myvmresourcegroup"
 $vm_name = "myvm"
@@ -70,22 +70,22 @@ Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup `
   -DiagnosticsConfigurationPath $diagnosticsconfig_path
 ```
 
-## <a name="troubleshoot-and-support"></a>Rozwiązywanie problemów i obsługa techniczna
+## <a name="troubleshoot-and-support"></a>Rozwiązywanie problemów i pomocy technicznej
 
 ### <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-Dane dotyczące stanu wdrożenia rozszerzenia może zostać pobrany z portalu Azure i przy użyciu wiersza polecenia platformy Azure. Aby wyświetlić stan wdrożenia rozszerzeń dla danej maszyny Wirtualnej, uruchom następujące polecenie przy użyciu wiersza polecenia platformy Azure.
+Dane dotyczące stanu wdrożeń rozszerzenia można pobrać z witryny Azure portal i za pomocą wiersza polecenia platformy Azure. Aby wyświetlić stan wdrożenia rozszerzeń dla danej maszyny Wirtualnej, uruchom następujące polecenie, używając wiersza polecenia platformy Azure.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-[Znajduje się w artykule](../../monitoring-and-diagnostics/azure-diagnostics-troubleshooting.md) więcej kompletny przewodnik rozwiązywania problemów dla rozszerzenia diagnostyki Windows Azure.
+[Ten artykuł](../../monitoring-and-diagnostics/azure-diagnostics-troubleshooting.md) bardziej kompletny przewodnik rozwiązywania problemów dla rozszerzenia diagnostyki platformy Azure.
 
 ### <a name="support"></a>Pomoc techniczna
 
-Jeśli potrzebujesz więcej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ekspertów platformy Azure na [fora MSDN Azure i przepełnienie stosu](https://azure.microsoft.com/support/forums/). Alternatywnie można pliku zdarzenia pomocy technicznej platformy Azure. Przejdź do [witrynę pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z platformy Azure obsługuje, przeczytaj [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).
+Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ze ekspertów platformy Azure na [forów platformy Azure z subskrypcją MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Następne kroki
-* [Dowiedz się więcej o rozszerzeniu diagnostyki Windows Azure](../../monitoring-and-diagnostics/azure-diagnostics.md)
-* [Przejrzyj rozszerzenia schematu i wersje](../../monitoring-and-diagnostics/azure-diagnostics-schema.md)
+* [Dowiedz się więcej na temat rozszerzenia diagnostyki Azure](../../monitoring-and-diagnostics/azure-diagnostics.md)
+* [Przegląd rozszerzeń schematu i wersje](../../monitoring-and-diagnostics/azure-diagnostics-schema.md)

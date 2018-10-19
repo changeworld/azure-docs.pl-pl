@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: daseidma;bwren
-ms.openlocfilehash: a68c35ba2f740720e3d7940d6fafa2dcfe183589
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 70cf6fe1e2256ba2ed58d020111669e59d9db56b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064377"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405518"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurowanie rozwiązania Service Map na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Służy on do wyświetlenia serwerów, prawdopodobnie z nich--wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map Pokazuje połączenia między serwerami, procesami i portami w dowolnej architekturze połączenia TCP bez konieczności konfiguracji, innej niż Instalacja agenta.
@@ -138,22 +138,22 @@ Usługa Service Map, dane są pobierane z Microsoft Dependency agent. Agent zale
 | Grupa zarządzania programu System Center Operations Manager | Yes | Usługa Service Map, analizuje i zbiera dane z agentów systemu Windows i Linux w połączonej [grupy zarządzania programu System Center Operations Manager](../log-analytics/log-analytics-om-agents.md). <br><br>Wymagane jest bezpośrednie połączenie z komputera agenta programu System Center Operations Manager do usługi Log Analytics. |
 | Konto magazynu Azure | Nie | Mapa usługi zbiera dane z komputerów agentów, dzięki czemu nie ma żadnych danych od niego mają być zbierane z usługi Azure Storage. |
 
-Na Windows, Microsoft Monitoring Agent (MMA) jest używane zarówno przez System Center Operations Manager i usługi Log Analytics zbieranie i wysyłanie danych monitorowania. (Ten agent jest nazywane System Center Operations Manager agent, agenta pakietu OMS, usługi Log Analytics agenta, Agent MMA lub Agent bezpośredni, w zależności od kontekstu). System Center Operations Manager i usługi Log Analytics zawiera różne out-gotową do wersji programu MMA. Każda z tych wersji może raportować do programu System Center Operations Manager, do usługi Log Analytics lub do obu miejsc.  
+Na Windows, Microsoft Monitoring Agent (MMA) jest używane zarówno przez System Center Operations Manager i usługi Log Analytics zbieranie i wysyłanie danych monitorowania. (Ten agent jest nazywane agenta programu System Center Operations Manager, agenta usługi Log Analytics, Agent MMA lub Agent bezpośredni, w zależności od kontekstu). System Center Operations Manager i usługi Log Analytics zawiera różne out-gotową do wersji programu MMA. Każda z tych wersji może raportować do programu System Center Operations Manager, do usługi Log Analytics lub do obu miejsc.  
 
 W systemie Linux agent usługi Log Analytics dla systemu Linux zbiera informacje i wysyła dane do usługi Log Analytics monitorowania. Za pomocą rozwiązania Service Map na serwerach agentów usługi Log Analytics, bezpośrednio z usługą jest połączonych lub raporty z grupą zarządzania programu Operations Manager zintegrowany z usługą Log Analytics.  
 
 W tym artykule będziemy odnosić się do wszystkich agentów, czy Linux lub Windows połączonych z grupą zarządzania programu System Center Operations Manager lub bezpośrednio do usługi Log Analytics, jako *agenta usługi Log Analytics*. 
 
-Agent rozwiązania Service Map nie przesyła wszystkie dane, a nie wymaga wprowadzania zmian w zapory i porty. Dane mapy usługi zawsze są przesyłane przez agenta usługi Log Analytics do usługi Log Analytics, bezpośrednio lub za pośrednictwem bramy pakietu OMS.
+Agent rozwiązania Service Map nie przesyła wszystkie dane, a nie wymaga wprowadzania zmian w zapory i porty. Agenta usługi Log Analytics w usłudze Log Analytics, przesyłania danych na mapie usługi zawsze, bezpośrednio lub za pośrednictwem bramy usługi Log Analytics.
 
 ![Agenci rozwiązania Service Map](media/monitoring-service-map/agents.png)
 
 Jeśli jesteś klientem programu System Center Operations Manager z grupy zarządzania podłączone do usługi Log Analytics:
 
 - Jeśli agentów programu System Center Operations Manager ma dostęp do Internetu, aby nawiązać połączenie z usługi Log Analytics, żadna dodatkowa konfiguracja jest wymagana.  
-- Agentów programu System Center Operations Manager nie może uzyskać dostęp do usługi Log Analytics, za pośrednictwem Internetu, należy skonfigurować bramę pakietu OMS do pracy z programu System Center Operations Manager.
+- Agentów programu System Center Operations Manager nie może uzyskać dostęp do usługi Log Analytics, za pośrednictwem Internetu, należy skonfigurować bramę usługi Log Analytics do pracy z programu System Center Operations Manager.
   
-Jeśli komputery Windows lub Linux bezpośrednio nie może połączyć się z usługą, należy skonfigurować agenta usługi Log Analytics do łączenia z usługą Log Analytics, za pomocą bramy pakietu OMS. Aby uzyskać więcej informacji na temat sposobu wdrażania i konfigurowania bramy pakietu OMS, zobacz [połączyć komputery bez dostępu do Internetu za pomocą bramy pakietu OMS](../log-analytics/log-analytics-oms-gateway.md).  
+Jeśli komputery Windows lub Linux bezpośrednio nie może połączyć się z usługą, należy skonfigurować agenta usługi Log Analytics, aby nawiązać połączenie z obszaru roboczego usługi Log Analytics, za pomocą bramy. Aby uzyskać więcej informacji na temat sposobu wdrażania i konfigurowania bramy usługi Log Analytics, zobacz [połączyć komputery bez dostępu do Internetu za pomocą bramy usługi Log Analytics](../log-analytics/log-analytics-oms-gateway.md).  
 
 ### <a name="management-packs"></a>Pakiety administracyjne
 Po aktywowaniu mapy usługi w obszarze roboczym usługi Log Analytics pakietu administracyjnego 300 KB są przekazywane do wszystkich serwerów Windows, w tym obszarze roboczym. Jeśli używasz agentów programu System Center Operations Manager w [podłączonej grupy zarządzania](../log-analytics/log-analytics-om-agents.md), pakiet administracyjny rozwiązania Service Map jest wdrażany z programu System Center Operations Manager. 

@@ -1,20 +1,20 @@
 ---
 title: Mapowania pól w indeksatorach usługi Azure Search
 description: Konfigurowanie mapowania pól indeksator usługi Azure Search na różnice nazw pól i reprezentacji danych
-author: chaosrealm
-manager: jlembicz
+ms.date: 10/17/2018
+author: mgottein
+manager: cgronlun
+ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 08/30/2017
-ms.author: eugenesh
-ms.openlocfilehash: 51fa689030c4a8ce4e900ecd600cdd0524aa13d9
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 01edc7001ec463cb16d8b6c715794b0028508143
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42054363"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404728"
 ---
 # <a name="field-mappings-in-azure-search-indexers"></a>Mapowania pól w indeksatorach usługi Azure Search
 Przy użyciu indeksatorów usługi Azure Search, może co pewien czas zaczniesz w sytuacjach, w którym dane wejściowe nie dość zgodny ze schematem indeksu docelowego. W takich przypadkach można użyć **mapowania pól** przekształcić dane w żądany kształt.

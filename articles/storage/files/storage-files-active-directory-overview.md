@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/19/2018
 ms.author: tamram
-ms.openlocfilehash: d599b54fe828b88edd3d04d6cd66a4baf36c2c1a
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 1962a3237fb54409d17fefa314605bafa91c3e9c
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831555"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427641"
 ---
 # <a name="overview-of-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Omówienie uwierzytelniania usługi Azure Active Directory za pośrednictwem protokołu SMB dla usługi Azure Files (wersja zapoznawcza)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -58,7 +58,7 @@ Tożsamość skojarzoną z aplikacji uruchomionej na maszynie Wirtualnej próbuj
 ![Zrzut ekranu przedstawiający diagram uwierzytelniania usługi Azure AD przy użyciu protokołu SMB](media/storage-files-active-directory-overview/azure-active-directory-over-smb-for-files-overview.png)
 
 ### <a name="enable-azure-ad-authentication-over-smb"></a>Włączanie uwierzytelniania w usłudze Azure AD przez SMB
-Dla usługi Azure Files magazynu nowych i istniejących kont utworzonych po 29 sierpnia 2018 r., można włączyć uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB. 
+Dla usługi Azure Files storage nowych i istniejących kont utworzonych po 24 września 2018 r. można włączyć uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB. 
 
 Przed włączeniem uwierzytelniania usługi Azure AD przy użyciu protokołu SMB, sprawdź, czy usługi domenowe Azure AD został pomyślnie wdrożony dla podstawowego dzierżawy usługi Azure AD, z którą jest skojarzone konta magazynu. Jeśli usługi domenowe Azure AD nie zostały jeszcze skonfigurowany, wykonaj instrukcje krok po kroku ze wskazówkami zawartymi w [włączyć usługi Azure Active Directory Domain Services w witrynie Azure portal](../../active-directory-domain-services/active-directory-ds-getting-started.md).
 

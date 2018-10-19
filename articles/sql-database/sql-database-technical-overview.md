@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 9f65537da2b32eee0a6870d22f7c444605ee56b1
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 1ae68e8eac3baca53cda603769a89bc6a84fd468
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364884"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405932"
 ---
 # <a name="the-azure-sql-database-service"></a>Usługa Azure SQL Database
 
@@ -95,7 +95,7 @@ Ponadto usługa SQL Database może [tworzyć metryki i dzienniki diagnostyczne](
 
 - **Usługa Azure Storage**: w celu archiwizowania ogromnych ilości danych telemetrycznych za niewielką cenę
 - **Centrum zdarzeń Azure**: w celu integracji danych telemetrycznych usługi SQL Database z niestandardowym rozwiązaniem monitorowania lub potokami danych
-- **Usługa Azure Log Analytics**: w celu użycia wbudowanego rozwiązania monitorowania obejmującego funkcje raportowania, zgłaszania alertów i zmniejszania ryzyka. Usługa Azure Log Analytics jest funkcją [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md)
+- **Usługa Azure Log Analytics**: w celu użycia wbudowanego rozwiązania monitorowania obejmującego funkcje raportowania, zgłaszania alertów i zmniejszania ryzyka.
 
     ![architektura](./media/sql-database-metrics-diag-logging/architecture.png)
 

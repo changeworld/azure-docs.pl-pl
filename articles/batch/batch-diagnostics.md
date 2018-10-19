@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 98bd088d4995bd1444b059531dc5b19d0283f551
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0c045d82e47d2554c2767e6f52491c780618abc2
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965538"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409530"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metryki usługi Batch, alerty i dzienniki diagnostyczne oceny i monitorowania
 
@@ -39,7 +39,7 @@ Metryki są:
 * Generowane co minutę
 * Nie jest automatycznie zachowywane, ale ma 30-dniową historię stopniowe. Jednak można utrwalić metryki działań w ramach [rejestrowania diagnostycznego](#work-with-diagnostic-logs).
 
-### <a name="view-metrics"></a>Wyświetl metryki
+### <a name="view-metrics"></a>Wyświetlanie metryk
 
 Wyświetlanie metryk dla konta usługi Batch w witrynie Azure portal. **Przegląd** strona konta, które domyślnie wyświetla węzła klucza, core i metryk zadań. 
 
@@ -85,7 +85,7 @@ Inne opcjonalne miejsca docelowe dla dzienników diagnostycznych:
 
 * Stream zdarzeń dzienniki diagnostyczne usługi Batch do [usługi Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md). Usługa Event Hubs pozyskiwać miliony zdarzeń na sekundę, które można przetworzyć i zapisać za pomocą dowolnego dostawcy analiz w czasie rzeczywistym. 
 
-* Wysyłanie dzienników diagnostycznych do [usługi Azure Log Analytics](../log-analytics/log-analytics-overview.md), gdzie można je analizować w portalu Operations Management Suite (OMS) lub wyeksportować je do analizy w usłudze Power BI lub programie Excel.
+* Wysyłanie dzienników diagnostycznych do [usługi Azure Log Analytics](../log-analytics/log-analytics-overview.md), którym można analizować je lub wyeksportować je do analizy w usłudze Power BI lub programie Excel.
 
 > [!NOTE]
 > Może pociągnąć za sobą dodatkowe koszty przechowywania lub przetwarzania danych dzienników diagnostycznych z usługami platformy Azure. 

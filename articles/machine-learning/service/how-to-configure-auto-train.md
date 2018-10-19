@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 33126c094a55bc57edd49a54fbc4f5acd7401998
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 1aeb1315cfafbcdf3507a6e49d71e1f1e69b537c
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079008"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430191"
 ---
 # <a name="configure-your-automated-machine-learning-experiment"></a>Skonfiguruj Twoje zautomatyzowane eksperymentu uczenia maszynowego
 
@@ -147,7 +147,7 @@ Opcje obliczeniowe obsługiwane są następujące:
 2.  Komputer zdalny w chmurze — [maszyny wirtualnej do nauki o danych platformy Azure](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/) z systemem Linux — masz duży zestaw danych i chcesz skalować na dużej maszynie, która jest dostępna w chmurze platformy Azure. 
 3.  Klaster usługi Azure Batch AI — A zarządzany klaster, który można skonfigurować do skalowania w poziomie i równoległego uruchamiania zautomatyzowanej ML iteracji. 
 
-
+<a name='configure-experiment'/>
 ## <a name="configure-your-experiment-settings"></a>Skonfiguruj ustawienia eksperymentu
 
 Istnieje kilka pokrętła, które umożliwiają skonfigurowanie automatycznych eksperymentu uczenia Maszynowego. Te parametry są ustawiane przez utworzenie wystąpienia `AutoMLConfig` obiektu.

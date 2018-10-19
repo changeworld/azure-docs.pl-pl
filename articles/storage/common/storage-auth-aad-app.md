@@ -1,21 +1,21 @@
 ---
 title: Uwierzytelnianie za pomocą usługi Azure Active Directory do dostępu do danych obiektów blob i kolejek, z poziomu aplikacji (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Usługa Azure Active Directory do uwierzytelniania z poziomu aplikacji, a następnie Autoryzuj żądania skierowane do zasobów usługi Azure Storage (wersja zapoznawcza).
+description: Usługa Azure Active Directory do uwierzytelniania z poziomu aplikacji, a następnie Autoryzuj żądania do obiektów blob i kolejek (wersja zapoznawcza).
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/07/2018
+ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 6a0b7139fd8d216397090154a4324c8e4305a939
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: d249753dd954ba610a757a88060c6c0f7c58ad95
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816382"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427097"
 ---
-# <a name="authenticate-with-azure-active-directory-from-an-azure-storage-application-preview"></a>Uwierzytelnianie za pomocą usługi Azure Active Directory z aplikacji usługi Azure Storage (wersja zapoznawcza)
+# <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues-preview"></a>Uwierzytelnianie za pomocą usługi Azure Active Directory z aplikacji do dostępu do obiektów blob i kolejek (wersja zapoznawcza)
 
 Kluczową zaletą usługi Azure Storage przy użyciu usługi Azure Active Directory (Azure AD) to, czy poświadczenia nie są już potrzebne, mają być przechowywane w kodzie. Zamiast tego możesz zażądać token dostępu OAuth 2.0 z usługi Azure AD. Usługa Azure AD obsługuje uwierzytelnianie podmiotu zabezpieczeń (użytkownika, grupy lub jednostki usługi) uruchomiona jest aplikacja. Jeśli uwierzytelnianie zakończy się powodzeniem, usługa Azure AD zwraca token dostępu do aplikacji i aplikacji można następnie użyć tokenu dostępu do autoryzacji żądania do usługi Azure Storage.
 
@@ -26,6 +26,10 @@ Zanim podmiot zabezpieczeń można uwierzytelnić aplikację usługi Azure Stora
 Aby uzyskać omówienie przepływie przyznawania kodu OAuth 2.0, zobacz [Autoryzuj dostęp do aplikacji sieci web usługi Azure Active Directory przy użyciu kodu uwierzytelniania OAuth 2.0 udzielić przepływ](../../active-directory/develop/v1-protocols-oauth-code.md).
 
 [!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
+
+## <a name="assign-an-rbac-role-to-an-azure-ad-security-principal"></a>Przypisz rolę RBAC do podmiotu zabezpieczeń usługi Azure AD
+
+Na potrzeby uwierzytelniania podmiotu zabezpieczeń z poziomu aplikacji usługi Azure Storage, należy najpierw skonfigurować ustawienia kontroli (RBAC) dostępu opartej na rolach dla tego podmiotu zabezpieczeń. Usługa Azure Storage określa role RBAC, które obejmują uprawnienia do kontenerów i kolejek. Gdy rola RBAC jest przypisywana do podmiotu zabezpieczeń, tego podmiotu zabezpieczeń ma uprawnienia do tego zasobu. Aby uzyskać więcej informacji, zobacz [Zarządzaj praw dostępu do danych obiektów Blob platformy Azure i kolejek przy użyciu RBAC (wersja zapoznawcza)](storage-auth-aad-rbac.md).
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Zarejestruj swoją aplikację z dzierżawy usługi Azure AD
 

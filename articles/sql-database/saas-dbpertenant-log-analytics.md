@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 60139915e8d8dca382f4ef62b5129f1a84e7e80d
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: b207af3bed40f6287f60b25638f3091fa187aa6f
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056713"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405076"
 ---
 # <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>Konfigurowanie i używanie programu Log Analytics za pomocą wielodostępnych aplikacji SaaS usługi SQL Database
 
@@ -42,7 +42,7 @@ Usługi Azure SQL Database monitorowania i zgłaszania alertów jest dostępna d
 
 W przypadku dużej liczby scenariuszy usługi Log Analytics służy do monitorowania i alertów. Usługa log Analytics to osobna usługa Azure umożliwia analizę przez dzienniki diagnostyczne i dane telemetryczne, które są zbierane w obszarze roboczym z potencjalnie wielu usług. Usługa log Analytics oferuje wbudowaną kwerendę, języka i danych narzędzia wizualizacji, umożliwiające analizę danych operacyjnych. Rozwiązanie SQL Analytics zawiera kilka wstępnie zdefiniowanych elastycznej puli i bazy danych monitorowania i zgłaszania alertów zapytań i widoków. Log Analytics udostępnia także projektanta widoków niestandardowych.
 
-Log Analytics obszarów roboczych i rozwiązań analitycznych, Otwórz w witrynie Azure portal i w pakiecie Operations Management Suite. Witryny Azure portal jest nowszym rodzajem punktu dostępu, ale może znajdować się pod portalu Operations Management Suite, w niektórych obszarach.
+Obszary robocze OMS są teraz nazywane obszarów roboczych usługi Log Analytics. Otwórz dziennik analizy obszarów roboczych i rozwiązania analityczne w witrynie Azure portal. Witryny Azure portal jest nowszym rodzajem punktu dostępu, ale może być, co znajduje się za portalu Operations Management Suite, w niektórych obszarach.
 
 ### <a name="create-performance-diagnostic-data-by-simulating-a-workload-on-your-tenants"></a>Tworzenie wydajnością danych diagnostycznych symulując obciążenie dzierżawców 
 
@@ -70,14 +70,14 @@ Log Analytics jest oddzielną usługą, którą musi być skonfigurowany. Usług
 1. Otwórz w programie PowerShell ISE *... \\WingtipTicketsSaaS MultiTenantDb wzorca\\Learning Modules\\zarządzania i monitorowania wydajności\\Log Analytics\\Demo-LogAnalytics.ps1*.
 1. Aby uruchomić skrypt, naciśnij klawisz F5.
 
-Teraz możesz otworzyć usługi Log Analytics w witrynie Azure portal lub portalu Operations Management Suite. Trwa kilka minut, aby zbierać dane telemetryczne w obszarze roboczym usługi Log Analytics i aby była widoczna. Pozostanie im dłużej system będzie zbierał danych diagnostycznych, tym bardziej interesujące środowisko działa. 
+Teraz możesz otworzyć usługi Log Analytics w witrynie Azure portal. Trwa kilka minut, aby zbierać dane telemetryczne w obszarze roboczym usługi Log Analytics i aby była widoczna. Pozostanie im dłużej system będzie zbierał danych diagnostycznych, tym bardziej interesujące środowisko działa. 
 
 ## <a name="use-log-analytics-and-the-sql-analytics-solution-to-monitor-pools-and-databases"></a>Używanie programu Log Analytics i rozwiązania SQL Analytics do monitorowana pul i baz danych
 
 
-W tym ćwiczeniu Otwórz Log Analytics i portalu Operations Management Suite, aby wyświetlić dane telemetryczne zebrane dla baz danych i pul.
+W tym ćwiczeniu Otwórz program Log Analytics w witrynie Azure portal, aby wyświetlić dane telemetryczne zebrane dla baz danych i pul.
 
-1. Przejdź do witryny [Azure Portal](https://portal.azure.com). Wybierz **wszystkich usług** można otworzyć usługi Log Analytics. Następnie wyszukaj usługi Log Analytics.
+1. Przejdź do witryny [Azure Portal](https://portal.azure.com). Wybierz **wszystkich usług** można otworzyć usługi Log Analytics. Następnie wyszukiwania usługi Log Analytics.
 
    ![Otwórz dziennik analizy](media/saas-dbpertenant-log-analytics/log-analytics-open.png)
 
@@ -127,9 +127,9 @@ W tym ćwiczeniu Otwórz Log Analytics i portalu Operations Management Suite, ab
 
 1. W obszarze roboczym usługi Log Analytics wybierz **portalu pakietu OMS** celu otwórz obszar roboczy istnieje.
 
-    ![Operations Management Suite Portal kafelka](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
+    ![Obszar roboczy usługi Log Analytics](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
 
-W portalu Operations Management Suite możesz eksplorować dane dzienników i metryk, w obszarze roboczym dalej. 
+W obszarze roboczym usługi Log Analytics możesz eksplorować dalsze dane dzienników i metryk. 
 
 Monitorowanie i alerty w usłudze Log Analytics są oparte na zapytania względem danych w obszarze roboczym, inaczej niż w przypadku alertów zdefiniowane dla każdego zasobu w witrynie Azure portal. Użycie alerty dla zapytań, można zdefiniować pojedynczy alert, który wygląda za pośrednictwem wszystkich baz danych, a nie definiujące po jednym dla każdej bazy danych. Zapytania są ograniczone tylko przez dostępnych danych w obszarze roboczym.
 

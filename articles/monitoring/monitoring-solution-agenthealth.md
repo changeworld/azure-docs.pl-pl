@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: f0737c6a6ff228b92a030242faf7f4d634bdd9f2
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: e9ac4b7f7a0900f8b49f95c0db9ba5e9c962fa0e
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733192"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404039"
 ---
 #  <a name="agent-health-solution-in-azure"></a>Rozwiązanie Agent Health na platformie Azure
 Rozwiązanie Agent Health na platformie Azure pomaga zrozumieć, dla wszystkich agentów raportujących do obszaru roboczego usługi Log Analytics lub System Center Operations Manager grupy zarządzania podłączone bezpośrednio do usługi Log Analytics, które są nie odpowiada i wysyłaniem operacyjne dane.  Można także śledzić liczbę wdrożonych agentów i ich geograficzne rozmieszczenie oraz wykonywać inne zapytania dające informacje na temat rozmieszczenia agentów wdrożonych na platformie Azure, w innych środowiskach w chmurze i lokalnie.    
@@ -65,7 +65,7 @@ Kliknij kafelek **Agent Health**, aby otworzyć pulpit nawigacyjny rozwiązania 
 | Rozkład według kategorii agenta | Rozkład różnych kategorii agentów wysyłających zdarzenia pulsu: bezpośredni agenci, agenci programu OpsMgr i serwer zarządzania programu OpsMgr.|
 | Rozkład według grupy zarządzania | Rozkład różnych grup zarządzania SCOM w Twoim środowisku.|
 | Lokalizacja geograficzna agentów | Rozkład różnych krajów, w których masz agentów, i łączna liczba agentów zainstalowanych w każdym kraju.|
-| Liczba zainstalowanych bram | Liczba serwerów, które mają zainstalowanej bramy analizy dziennika, a lista tych serwerów.|
+| Liczba zainstalowanych bram | Liczba serwerów, które mają zainstalowanej bramy usługi Log Analytics, a lista tych serwerów.|
 
 ![Przykład pulpitu nawigacyjnego rozwiązania Agent Health](./media/monitoring-solution-agenthealth/agenthealth-solution-dashboard.png)  
 
@@ -85,7 +85,7 @@ Tworzony jest rekord o typie **Heartbeat**.  Te rekordy mają właściwości pod
 | OSMinorVersion | Wersja pomocnicza systemu operacyjnego.|
 | Wersja | Wersja agenta programu log Analytics lub agenta programu Operations Manager.|
 | SCAgentChannel | Wartością jest *Direct* i/lub *SCManagementServer*.|
-| IsGatewayInstalled | Jeśli jest zainstalowana brama usługi Log Analytics, wartość jest *true*, w przeciwnym razie wartość jest *false*.|
+| IsGatewayInstalled | Jeśli zainstalowano bramę usługi Log Analytics, wartość jest *true*, w przeciwnym razie wartość jest *false*.|
 | ComputerIP | Adres IP komputera.|
 | RemoteIPCountry | Lokalizacja geograficzna, w której wdrożony jest komputer.|
 | ManagementGroupName | Nazwa grupy zarządzania programu Operations Manager.|

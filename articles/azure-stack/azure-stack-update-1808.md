@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2018
+ms.date: 10/18/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 3843898ba2d7cdd3697236a9f4cc19070c6f07c3
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 1ca305ab88e30c911bbded1e5ff97162e12f7652
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395177"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429069"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizacja usługi Azure Stack 1808
 
@@ -158,7 +158,7 @@ Ta aktualizacja zawiera także ograniczania ryzyka związanego z wykonywaniem sp
 
 ### <a name="post-update-steps"></a>Kroki po aktualizacji
 Po zainstalowaniu tej aktualizacji Zainstaluj wszystkie odpowiednie poprawki. Uzyskać więcej informacji, zobacz następujące artykuły bazy wiedzy knowledge base, a także naszego [obsługi zasad](azure-stack-servicing-policy.md). 
-- [KB 4467062 — usługi Azure Stack poprawki w usłudze Azure Stack poprawkę 1.1808.4.108](https://support.microsoft.com/help/4467062/)
+- [KB 4468920 — usługi Azure Stack poprawki w usłudze Azure Stack poprawkę 1.1808.5.110](https://support.microsoft.com/help/4468920/)
 
 
 ## <a name="known-issues-post-installation"></a>Znane problemy (po instalacji)
@@ -259,7 +259,7 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
       1. W portalu dzierżawcy, przejdź do **subskrypcje** i Znajdź subskrypcji. Kliknij przycisk **dostawców zasobów**, następnie kliknij przycisk **Microsoft.Compute**, a następnie kliknij przycisk **ponownie zarejestrować**.
       2. W ramach tej samej subskrypcji, przejdź do **kontrola dostępu (IAM)** i upewnij się, że **usługi Azure Stack — dysk zarządzany** znajduje się na liście.
    2. Skonfigurowanie środowiska z wieloma dzierżawami wdrażania maszyn wirtualnych w ramach subskrypcji, skojarzony z katalogiem gościa może zakończyć się niepowodzeniem z komunikatem o błąd wewnętrzny. Aby naprawić błąd, wykonaj następujące kroki:
-      1. Zastosuj [1808 Azure Stack poprawkę](https://support.microsoft.com/help/4467062/).
+      1. Zastosuj [1808 Azure Stack poprawkę](https://support.microsoft.com/help/4468920/).
       2. Postępuj zgodnie z instrukcjami w [w tym artykule](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) Aby zmienić konfigurację wszystkich katalogów gościa.
       
 <!-- 3179561 - IS --> 

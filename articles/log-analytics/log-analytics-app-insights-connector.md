@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 4157b812fbb17b524a21814f41e0e4ec43e39e70
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 7c6d91da0634e7f847af01d1c057607ab095cdf6
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042091"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408212"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Rozwiązanie do zarządzania Insights Connector aplikacji (wersja zapoznawcza)
 
@@ -58,8 +58,8 @@ W przeciwieństwie do większości innych rozwiązań usługi Log Analytics dane
 ## <a name="configuration"></a>Konfigurowanie
 
 1. Włącz rozwiązanie Azure Web Apps Analytics z [portalu Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview) lub przy użyciu procesu opisanego w [rozwiązań Dodaj usługi Log Analytics z galerii rozwiązań](log-analytics-add-solutions.md).
-2. W portalu pakietu OMS kliknij **ustawienia** &gt; **danych** &gt; **usługi Application Insights**.
-3. W obszarze **Wybierz subskrypcję,**, wybierz subskrypcję, która zawiera zasoby usługi Application Insights i w obszarze **Nazwa aplikacji**, wybierz co najmniej jednej aplikacji.
+2. Przejdź do witryny [Azure Portal](https://portal.azure.com). Wybierz **wszystkich usług** , aby otworzyć usługę Application Insights. Następnie wyszukaj usługę Application Insights. 
+3. W obszarze **subskrypcje**, wybierz subskrypcję, która zawiera zasoby usługi Application Insights i w obszarze **nazwa**, wybierz co najmniej jednej aplikacji.
 4. Kliknij pozycję **Zapisz**.
 
 W ciągu 30 minut dane będą dostępne, a Kafelek Application Insights jest aktualizowane przy użyciu danych, takich jak na poniższej ilustracji:
@@ -133,7 +133,7 @@ Składniki perspektywy są aktualizowane w zależności od zapytania wyszukiwani
 
 ### <a name="pivot-to-an-app-in-the-azure-portal"></a>Przełącz się do aplikacji w witrynie Azure portal
 
-Application Insights Connector bloki są przeznaczone do umożliwiają Przełącz się do wybranej aplikacji w usłudze Application Insights *zastosowania portalu pakietu OMS*. To rozwiązanie służy jako platforma monitorowania wysokiego poziomu, która ułatwia rozwiązywanie problemów z aplikacją. Po wyświetleniu potencjalny problem w dowolnym z połączonych aplikacji można albo testowania odzyskiwania po awarii do niego w polu wyszukiwania usługi Log Analytics lub można przestawiać bezpośrednio do aplikacji usługi Application Insights.
+Application Insights Connector bloki są przeznaczone do umożliwiają Przełącz się do wybranej aplikacji w usłudze Application Insights *kiedy używać witryny Azure portal*. To rozwiązanie służy jako platforma monitorowania wysokiego poziomu, która ułatwia rozwiązywanie problemów z aplikacją. Po wyświetleniu potencjalny problem w dowolnym z połączonych aplikacji można albo testowania odzyskiwania po awarii do niego w polu wyszukiwania usługi Log Analytics lub można przestawiać bezpośrednio do aplikacji usługi Application Insights.
 
 Aby przestawić, kliknij przycisk z wielokropkiem (**...** ) pojawia się na końcu każdego wiersza i wybierz **Otwórz w usłudze Application Insights**.
 

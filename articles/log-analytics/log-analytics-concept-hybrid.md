@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9decd861ff20a45939f700eef99245b6555829f8
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 03133c6d6518444f8e6fb15cfa425969dbafdedc
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319748"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406878"
 ---
 # <a name="collect-data-in-a-hybrid-environment-with-log-analytics-agent"></a>Zbieranie danych w środowisku hybrydowym za pomocą agenta usługi Log Analytics
 
@@ -38,7 +38,7 @@ Komputery hostowanych w danym środowisku, które mogą być bezpośrednio poł�
 
 Przed analizowanie i przetwarzanie zebranych danych, należy najpierw zainstalować i łączenia agentów dla wszystkich komputerów, które chcesz wysyłać dane do usługi Log Analytics. Można zainstalować agentów na komputerach lokalnych przy użyciu Instalatora, wiersza polecenia lub przy użyciu Desired State Configuration (DSC) w usłudze Azure Automation. 
 
-Agent dla systemu Linux i Windows komunikuje się za pośrednictwem portu TCP 443 wychodzących za pomocą usługi Log Analytics, a jeśli komputer łączy się z serwerem zapory lub serwera proxy do komunikacji za pośrednictwem Internetu, zapoznaj się z wymaganiami poniżej, aby zrozumieć konfigurację sieci Wymagane.  Jeśli Twoje informatyczne zasady zabezpieczeń nie zezwalają na komputerach w sieci, aby nawiązać połączenie z Internetem, możesz skonfigurować [bramy pakietu OMS](log-analytics-oms-gateway.md) , a następnie skonfigurować agenta Aby nawiązać połączenie za pośrednictwem bramy do usługi Log Analytics. Agenta można odbierać informacje o konfiguracji i Wyślij dane zbierane w zależności od tego, jakie zasady zbierania danych i włączonymi przez Ciebie rozwiązaniami. 
+Agent dla systemu Linux i Windows komunikuje się za pośrednictwem portu TCP 443 wychodzących za pomocą usługi Log Analytics, a jeśli komputer łączy się z serwerem zapory lub serwera proxy do komunikacji za pośrednictwem Internetu, zapoznaj się z wymaganiami poniżej, aby zrozumieć konfigurację sieci Wymagane.  Jeśli Twoje informatyczne zasady zabezpieczeń nie zezwalają na komputerach w sieci, aby nawiązać połączenie z Internetem, możesz skonfigurować [bramy usługi Log Analytics](log-analytics-oms-gateway.md) , a następnie skonfigurować agenta Aby nawiązać połączenie za pośrednictwem bramy do usługi Log Analytics. Agenta można odbierać informacje o konfiguracji i Wyślij dane zbierane w zależności od tego, jakie zasady zbierania danych i włączonymi przez Ciebie rozwiązaniami. 
 
 Monitorowanie komputerów z System Center Operations Manager 2012 R2 lub nowszym, może być wieloadresowych z usługą Log Analytics, aby zbierać dane i przekazywać je do usługi i nadal być monitorowane przez [programu Operations Manager](log-analytics-om-agents.md). Komputery z systemem Linux monitorowane przez grupę zarządzania programu Operations Manager zintegrowany z usługą Log Analytics nie mają konfiguracji dla źródła danych i do przodu zebranych danych za pośrednictwem grupy zarządzania. Windows agent może raportować do czterech obszarów roboczych, gdy agent systemu Linux obsługuje tylko raporty do jednego obszaru roboczego.  
 
@@ -92,7 +92,7 @@ Poniższe informacje lista serwera proxy i zapory konfiguracji wymaganych inform
 
 Jeśli zamierzasz nawiązać połączenie i rejestrować w usłudze Automation można używać elementów runbook w środowisku za pomocą usługi Azure Automation hybrydowego procesu roboczego Runbook, musi mieć dostęp do numeru portu i adresów URL opisanych w [Konfigurowanie sieci pod kątem Hybrydowego procesu roboczego Runbook](../automation/automation-hybrid-runbook-worker.md#network-planning). 
 
-Agent systemów Windows i Linux obsługuje komunikację za pośrednictwem serwera proxy lub bramę pakietu OMS do usługi Log Analytics przy użyciu protokołu HTTPS.  Uwierzytelnianie podstawowe i anonimowe (nazwę użytkownika/hasło) są obsługiwane.  Dla agenta programu Windows bezpośrednio z usługą jest połączonych, konfiguracja serwera proxy zostanie określony podczas instalacji lub [po wdrożeniu](log-analytics-agent-manage.md#update-proxy-settings) w Panelu sterowania lub za pomocą programu PowerShell.  
+Agent systemów Windows i Linux obsługuje komunikację za pośrednictwem serwera proxy lub bramy usługi Log Analytics do usługi Log Analytics przy użyciu protokołu HTTPS.  Uwierzytelnianie podstawowe i anonimowe (nazwę użytkownika/hasło) są obsługiwane.  Dla agenta programu Windows bezpośrednio z usługą jest połączonych, konfiguracja serwera proxy zostanie określony podczas instalacji lub [po wdrożeniu](log-analytics-agent-manage.md#update-proxy-settings) w Panelu sterowania lub za pomocą programu PowerShell.  
 
 Dla agenta systemu Linux, serwer proxy został określony podczas instalacji lub [po zakończeniu instalacji](log-analytics-agent-manage.md#update-proxy-settings) , modyfikując plik konfiguracyjny proxy.conf.  Wartość konfiguracji serwera proxy agenta systemu Linux ma następującą składnię:
 
@@ -106,8 +106,8 @@ Dla agenta systemu Linux, serwer proxy został określony podczas instalacji lub
 |Protokół | https |
 |Użytkownik | Opcjonalna nazwa użytkownika dla uwierzytelniania serwera proxy |
 |hasło | Opcjonalne hasło do uwierzytelniania serwera proxy |
-|proxyhost | Adres lub nazwę FQDN serwera proxy/OMS Gateway |
-|port | Numer portu opcjonalne dla serwera proxy/OMS Gateway |
+|proxyhost | Adres lub nazwę FQDN serwera proxy serwera/Log Analytics bramy |
+|port | Numer portu opcjonalne dla bramy analizy dziennika/serwera proxy |
 
 Na przykład: `https://user01:password@proxy01.contoso.com:30443`
 
@@ -129,4 +129,4 @@ Na przykład: `https://user01:password@proxy01.contoso.com:30443`
 
 * Dowiedz się więcej o [dziennikach](log-analytics-log-searches.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
 
-* Dowiedz się więcej o [rozwiązania](log-analytics-add-solutions.md) , dodawanie funkcji do usługi Log Analytics i również zbierać dane w repozytorium OMS.
+* Dowiedz się więcej o [rozwiązania](log-analytics-add-solutions.md) , dodawanie funkcji do usługi Log Analytics i również zbierać dane do obszaru roboczego usługi Log Analytics.

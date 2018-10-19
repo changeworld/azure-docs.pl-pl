@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 6bd195b8be558cfcfda10a750fbfe91079c6b094
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 38537f3e2884160a99d333f1414d3f45755cd4f9
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043607"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404617"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Rozwiązanie monitorowanie VMware (wersja zapoznawcza) w usłudze Log Analytics
 
@@ -31,7 +31,7 @@ ms.locfileid: "48043607"
 
 Rozwiązanie monitorowanie VMware w usłudze Log Analytics to rozwiązanie, które pomaga w utworzeniu scentralizowanego rejestrowania i monitorowania podejście do dużych dzienników oprogramowania VMware. W tym artykule opisano, jak można rozwiązać, przechwytywania i zarządzać hostów ESXi w obrębie jednej lokalizacji za pomocą rozwiązania. Dzięki rozwiązaniu można poznać szczegółowe dane dla wszystkich hostów ESXi w obrębie jednej lokalizacji. Widać, liczby najważniejszych zdarzeń, stanu i trendów maszyn wirtualnych i ESXi hostów, oferowana w ramach dzienniki hostów ESXi. Można rozwiązać, wyświetlania i przeszukiwania scentralizowanych dzienników hostów ESXi. Ponadto możesz utworzyć alerty w oparciu o zapytań funkcji przeszukiwania dzienników.
 
-Rozwiązanie korzysta z funkcji natywnej syslog hosta ESXi w celu wypychania danych do docelowej maszyny Wirtualnej, która ma agenta pakietu OMS. Jednak to rozwiązanie nie zapisywać pliki do usługi syslog w ramach docelowej maszyny Wirtualnej. Agent pakietu OMS otwiera port 1514 i nasłuchuje tej. Po odebraniu danych, agenta pakietu OMS wypycha dane do usługi Log Analytics.
+Rozwiązanie korzysta z funkcji natywnej syslog hosta ESXi w celu wypychania danych do docelowej maszyny Wirtualnej, która ma agenta usługi Log Analytics. Jednak to rozwiązanie nie zapisywać pliki do usługi syslog w ramach docelowej maszyny Wirtualnej. Agent usługi Log Analytics otwiera port 1514 i nasłuchuje tej. Po odebraniu danych, agenta usługi Log Analytics wypycha dane do usługi Log Analytics.
 
 ## <a name="install-and-configure-the-solution"></a>Instalowanie i konfigurowanie rozwiązania
 Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązanie.
@@ -42,7 +42,9 @@ Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiąz
 vSphere hosta ESXi 5.5, 6.0 i 6.5
 
 #### <a name="prepare-a-linux-server"></a>Przygotowanie na serwerze z systemem Linux
-Utwórz system operacyjny Linux maszyny Wirtualnej, aby otrzymywać wszystkie dane usługi syslog hostów ESXi. [OMS Linux Agent](log-analytics-linux-agents.md) to punkt kolekcji wszystkie dane usługi syslog hosta ESXi. Do przekazywania dzienników na jednym serwerze z systemem Linux, jak w poniższym przykładzie, można użyć wielu hostach ESXi.  
+Utwórz system operacyjny Linux maszyny Wirtualnej, aby otrzymywać wszystkie dane usługi syslog hostów ESXi. [Agenta Log Analytics dla systemu Linux](log-analytics-linux-agents.md) to punkt kolekcji wszystkie dane usługi syslog hosta ESXi. Do przekazywania dzienników na jednym serwerze z systemem Linux, jak w poniższym przykładzie, można użyć wielu hostach ESXi.
+
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]  
 
    ![Przepływ usługi SYSLOG](./media/log-analytics-vmware/diagram.png)
 
@@ -56,14 +58,14 @@ Utwórz system operacyjny Linux maszyny Wirtualnej, aby otrzymywać wszystkie da
 
     ![vspherefwproperties](./media/log-analytics-vmware/vsphere3.png)  
 1. Sprawdź vSphere konsoli, aby sprawdzić, czy ten syslog nie jest prawidłowo skonfigurowany. Upewnij się na hoście ESXI, ten port **1514** jest skonfigurowany.
-1. Pobierz i zainstaluj agenta pakietu OMS dla systemu Linux na serwerze z systemem Linux. Aby uzyskać więcej informacji, zobacz [dokumentacji dla agenta pakietu OMS dla systemu Linux](https://github.com/Microsoft/OMS-Agent-for-Linux).
-1. Po zainstalowaniu agenta pakietu OMS dla systemu Linux, przejdź do katalogu /etc/opt/microsoft/omsagent/sysconf/omsagent.d i skopiuj plik vmware_esxi.conf do katalogu /etc/opt/microsoft/omsagent/conf/omsagent.d i zmiany właściciela/grupy i uprawnienia pliku. Na przykład:
+1. Pobierz i zainstaluj agenta usługi Log Analytics dla systemu Linux na serwerze z systemem Linux. Aby uzyskać więcej informacji, zobacz [dokumentację dla agenta usługi Log Analytics dla systemu Linux](https://github.com/Microsoft/OMS-Agent-for-Linux).
+1. Po agenta usługi Log Analytics dla systemu Linux jest zainstalowana, przejdź do katalogu /etc/opt/microsoft/omsagent/sysconf/omsagent.d i skopiuj vmware_esxi.conf plik do katalogu /etc/opt/microsoft/omsagent/conf/omsagent.d i zmiany właściciela/grupę i uprawnienia do pliku. Na przykład:
 
     ```
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
     ```
-1. Uruchom ponownie agenta pakietu OMS dla systemu Linux, uruchamiając `sudo /opt/microsoft/omsagent/bin/service_control restart`.
+1. Uruchom ponownie agenta usługi Log Analytics dla systemu Linux, uruchamiając `sudo /opt/microsoft/omsagent/bin/service_control restart`.
 1. Przetestuj łączność między serwerze z systemem Linux i hosta ESXi przy użyciu `nc` polecenie na hoście ESXi. Na przykład:
 
     ```
@@ -78,11 +80,11 @@ Utwórz system operacyjny Linux maszyny Wirtualnej, aby otrzymywać wszystkie da
     Jeśli wyświetlanie wyników wyszukiwania dziennika są podobne do powyższej ilustracji, gotowe do użycia pulpit nawigacyjny rozwiązania monitorowanie VMware.  
 
 ## <a name="vmware-data-collection-details"></a>Szczegóły zbierania danych VMware
-To rozwiązanie monitorowanie VMware zbiera różne dane metryk i dzienników wydajności z hostów ESXi przy użyciu agentów pakietu OMS dla systemu Linux, które mają włączone.
+To rozwiązanie monitorowanie VMware zbiera różne dane metryk i dzienników wydajności z hostów ESXi przy użyciu agentów usługi Log Analytics dla systemu Linux, które mają włączone.
 
 W poniższej tabeli przedstawiono metody zbierania danych i inne szczegóły dotyczące sposobu zbierania danych.
 
-| Platforma | Agent usługi OMS dla systemu Linux | Agenta programu SCOM | Azure Storage | SCOM wymagane? | Dane agenta programu SCOM wysyłane za pośrednictwem grupy zarządzania | Częstotliwość zbierania |
+| Platforma | Log Analytics agent dla systemu Linux | Agenta programu SCOM | Azure Storage | SCOM wymagane? | Dane agenta programu SCOM wysyłane za pośrednictwem grupy zarządzania | Częstotliwość zbierania |
 | --- | --- | --- | --- | --- | --- | --- |
 | Linux |&#8226; |  |  |  |  |co 3 minuty |
 
@@ -190,12 +192,12 @@ Może istnieć kilka przyczyn:
 
       Jeśli to się nie powiedzie, vSphere ustawień konfiguracji zaawansowanych prawdopodobnie nieprawidłowy. Zobacz [skonfigurować zbieranie dzienników systemowych](#configure-syslog-collection) informacji o tym, jak skonfigurować hosta ESXi na potrzeby przekazywania usługi syslog.
   1. Jeśli łączność portu usługi syslog zakończy się pomyślnie, ale nadal nie widzisz żadnych danych, Załaduj ponownie syslog na hoście ESXi, za pomocą protokołu ssh wpisz następujące polecenie: ` esxcli system syslog reload`
-* Maszyny Wirtualnej za pomocą agenta pakietu OMS nie jest poprawnie ustawiony. Aby to przetestować, wykonaj następujące czynności:
+* Maszyny Wirtualnej przy użyciu agenta usługi Log Analytics nie jest poprawnie ustawiony. Aby to przetestować, wykonaj następujące czynności:
 
   1. Usługa log Analytics nasłuchuje na porcie 1514. Aby zweryfikować, że jest otwarty, uruchom następujące polecenie: `netstat -a | grep 1514`
   1. Powinien zostać wyświetlony portu `1514/tcp` Otwórz. Jeśli tego nie zrobisz, sprawdź, czy omsagent jest poprawnie zainstalowany. Jeśli nie widzisz informacje o porcie syslog port nie jest otwarty na maszynie Wirtualnej.
 
-    a. Sprawdź, czy Agent pakietu OMS jest uruchomiony przy użyciu `ps -ef | grep oms`. Jeśli nie jest uruchomiona, należy uruchomić proces, za pomocą polecenia ` sudo /opt/microsoft/omsagent/bin/service_control start`
+    a. Sprawdź, czy agent usługi Log Analytics jest uruchomiony przy użyciu `ps -ef | grep oms`. Jeśli nie jest uruchomiona, należy uruchomić proces, za pomocą polecenia ` sudo /opt/microsoft/omsagent/bin/service_control start`
 
     b. Otwórz plik `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf`.
 

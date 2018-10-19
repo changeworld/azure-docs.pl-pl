@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: ae2fab560ca9579860aeba91f9322c6521a83de1
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 1465ba23f6fed85f0d4164f8e3fdc8c38be43ad3
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167966"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427739"
 ---
 # <a name="how-to-enable-password-reset-from-windows-7-8-and-81"></a>Porady: Włącz hasło zresetować z Windows 7, 8 i 8.1
 
@@ -76,6 +76,8 @@ HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Provide
 
 * Aby włączyć pełne rejestrowanie, należy utworzyć REG_DWORD: "EnableLogging" i ustaw ją na 1.
 * Aby wyłączyć pełne rejestrowanie, należy zmienić REG_DWORD "EnableLogging" na wartość 0.
+
+W przypadku maszyn z systemem Windows 7, 8 i 8.1 znajdują się za serwerem proxy lub zapory, powinien być dozwolony ruch HTTPS (443) do passwordreset.microsoftonline.com.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

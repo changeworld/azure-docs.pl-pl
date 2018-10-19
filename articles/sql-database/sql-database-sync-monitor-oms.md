@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: a5792998654ed1d334e514591da3bef9805a5e79
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 712c729a214cdab66961fb399c9d797a758fcf7b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163362"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409683"
 ---
 # <a name="monitor-sql-data-sync-with-log-analytics"></a>Monitorowanie SQL Data Sync za pomocą usługi Log Analytics 
 
@@ -97,7 +97,7 @@ Aby uzyskać więcej informacji na temat tworzenia elementu runbook, zobacz [Mó
 
     2.  Informacje o grupie synchronizacji.
 
-    3.  Informacje o pakiecie OMS. Te informacje można znaleźć w portalu pakietu OMS | Ustawienia | Połączone źródła. Aby uzyskać więcej informacji na temat wysyłania danych do usługi Log Analytics, zobacz [wysyłać dane do usługi Log Analytics przy użyciu interfejsu API modułu zbierającego dane HTTP (wersja zapoznawcza)](../log-analytics/log-analytics-data-collector-api.md).
+    3.  Rejestrowanie informacji analitycznych. Te informacje można znaleźć w witrynie Azure Portal | Ustawienia | Połączone źródła. Aby uzyskać więcej informacji na temat wysyłania danych do usługi Log Analytics, zobacz [wysyłać dane do usługi Log Analytics przy użyciu interfejsu API modułu zbierającego dane HTTP (wersja zapoznawcza)](../log-analytics/log-analytics-data-collector-api.md).
 
 11. Uruchom element runbook w okienku testu. Sprawdź, upewnij się, że było pomyślne.
 
@@ -117,7 +117,7 @@ Aby zaplanować uruchamianie elementu runbook:
 
 4.  Wybierz **Utwórz nowy harmonogram.**
 
-5.  Ustaw **cyklu** cyklicznie i ustaw interwał chcesz. Użyj tego samego interwału w tym miejscu, w skrypcie, a także w pakiecie OMS.
+5.  Ustaw **cyklu** cyklicznie i ustaw interwał chcesz. Użyj tego samego interwału w tym miejscu, w skrypcie, a w usłudze Log Analytics.
 
 6.  Wybierz pozycję **Utwórz**.
 
@@ -129,7 +129,7 @@ Do monitorowania, czy automatyzacji działa zgodnie z oczekiwaniami, w obszarze 
 
 Aby utworzyć alert, który korzysta z usługi Log Analytics, wykonaj następujące czynności. Jako warunek wstępny musi być połączona z obszaru roboczego usługi Log Analytics w usłudze Log Analytics.
 
-1.  W portalu pakietu OMS wybierz **wyszukiwanie w dzienniku**.
+1.  W witrynie Azure portal wybierz **wyszukiwanie w dzienniku**.
 
 2.  Utwórz zapytanie, aby wybrać błędy i ostrzeżenia, według grupy synchronizacji w przedziale czasu, który wybrano. Na przykład:
 
@@ -147,9 +147,9 @@ Aby utworzyć alert, który korzysta z usługi Log Analytics, wykonaj następuj�
 
 6.  Kliknij pozycję **Zapisz**. Określonych odbiorców teraz odbierać powiadomienia e-mail, jeśli wystąpią błędy.
 
-## <a name="create-an-oms-view-for-monitoring"></a>Tworzenie widoku pakietu OMS do monitorowania
+## <a name="create-a-log-analytics-view-for-monitoring"></a>Utwórz widoki usługi Log Analytics do monitorowania
 
-Spowoduje to utworzenie pakietu OMS w celu wizualnego monitorowania wszystkich grup synchronizacji określonej. Widok zawiera kilka składników:
+Spowoduje to utworzenie wizualnego monitorowania wszystkich grup synchronizacji określony widok usługi Log Analytics. Widok zawiera kilka składników:
 
 -   Kafelek przeglądu, który pokazuje, jak wiele błędów, sukcesów i ostrzeżenia mają wszystkie grupy synchronizacji.
 
@@ -157,9 +157,9 @@ Spowoduje to utworzenie pakietu OMS w celu wizualnego monitorowania wszystkich g
 
 -   Kafelek dla każdej grupy synchronizacji, która pokazuje liczbę błędów, sukcesów i ostrzeżenia i ostatnie komunikaty o błędach.
 
-Aby skonfigurować widoku pakietu OMS, wykonaj następujące czynności:
+Aby skonfigurować widok usługi Log Analytics, wykonaj następujące czynności:
 
-1.  Na stronie głównej usługi OMS wybierz znak plus po lewej stronie, aby otworzyć **Projektant widoków**.
+1.  Na stronie głównej usługi Log Analytics wybierz znak plus po lewej stronie, aby otworzyć **Projektant widoków**.
 
 2.  Wybierz **importu** na górnym pasku Projektant widoków. Następnie wybierz przykładowy plik "DataSyncLogOMSView".
 

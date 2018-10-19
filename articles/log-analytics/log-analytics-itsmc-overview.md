@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 5f5b03090f374f936e03d487596ca0462feea348
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: b99c14e6022fa34d41caaa02bfc9feecb3c840ce
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042432"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407507"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Azure nawiązać połączenie narzędzia ITSM za pomocą łącznika zarządzania usługami IT
 
@@ -63,9 +63,13 @@ Przed utworzeniem połączenia należy dodać rozwiązanie łącznik ITSM.
     ![Dodaj rozwiązanie ITSMC](./media/log-analytics-itsmc/add-itsmc-solution.png)
 
 3.  W **obszaru roboczego pakietu OMS** wybierz obszar roboczy usługi Azure Log Analytics, którym chcesz zainstalować rozwiązanie.
+   >[!NOTE]
+   >W ramach ciągłego przejście z programu Microsoft Operations Management Suite (OMS) do usługi Azure Monitor obszarów roboczych pakietu OMS są teraz nazywane obszarów roboczych usługi Log Analytics.
 4.  W **ustawienia obszaru roboczego pakietu OMS** wybierz grupy zasobów, której chcesz utworzyć zasób rozwiązania.
 
     ![Obszar roboczy ITSMC](./media/log-analytics-itsmc/itsmc-solution-workspace.png)
+    >[!NOTE]
+    >W ramach ciągłego przejście z programu Microsoft Operations Management Suite (OMS) do usługi Azure Monitor obszarów roboczych pakietu OMS są teraz nazywane obszarów roboczych usługi Log Analytics.
 
 5.  Kliknij pozycję **Utwórz**.
 
@@ -250,7 +254,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Category_s | Kategoria |
 | Title_s|  Krótki opis |
 | Description_s|  Uwagi |
-| CreatedDate_t|  Otwierano |
+| CreatedDate_t|  Otwarte |
 | ClosedDate_t| Zamknięte|
 | ResolvedDate_t|Rozwiązane|
 | Computer (Komputer)  | Element konfiguracji |
@@ -290,7 +294,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
     - Upewnij się, że aplikacja sieci Web została pomyślnie wdrożona, i zostanie utworzone połączenie hybrydowe. Aby sprawdzić, pomyślnie ustanawiane jest połączenie z maszyną lokalną programu Service Manager, odwiedź adres URL aplikacji sieci Web zgodnie z opisem w dokumentacji dotyczącej wprowadzania [połączenia hybrydowego](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).  
 
 2.  Jeśli dane z usługi ServiceNow, nie podlega wprowadzenie do usługi Log Analytics, upewnij się, że nie jest uśpiony wystąpienia usługi ServiceNow. Wystąpienia deweloperów usługi ServiceNow czasami przechodzi w tryb uśpienia podczas bezczynności przez długi czas. W przeciwnym wypadku zgłosić problem.
-3.  Jeśli wyzwolenie alertów pakietu OMS, ale działają elementy nie są tworzone w produkcie ITSM lub elementy konfiguracji nie są tworzone/połączone elementy robocze lub inne ogólne informacje, można znaleźć w następujących miejscach:
+3.  Jeśli wyzwolenie alertów usługi Log Analytics, ale działają elementy nie są tworzone w produkcie ITSM lub elementy konfiguracji nie są tworzone/połączone elementy robocze lub inne ogólne informacje, można znaleźć w następujących miejscach:
  -  ITSMC: Rozwiązanie zawiera podsumowanie połączeń/pracy elementów/komputerów itp. Wyświetlanie kafelka kliknij **stan łącznika**, która spowoduje przejście do **przeszukiwania dzienników** przy użyciu odpowiednich zapytań. Przyjrzyj się rekordów dziennika z LogType_S jako błąd Aby uzyskać więcej informacji.
  - **Wyszukiwania w dzienniku** strony: wyświetlić informacje o powiązanych z/błędy bezpośrednio przy użyciu zapytań `*`ServiceDeskLog_CL`*`.
 

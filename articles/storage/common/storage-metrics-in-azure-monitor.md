@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 8fe4fdfa88a5aea4b8df49d9c00fa7f6b1768209
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: fea6ece6e40d869aea7e52718fbf07bede34e1a5
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363439"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406708"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metryki usługi Azure Storage w usłudze Azure Monitor
 
@@ -23,7 +23,7 @@ Usługa Azure Monitor udostępnia interfejsy użytkownika ujednoliconego do moni
 
 ## <a name="access-metrics"></a>Dostęp do metryk
 
-Usługa Azure Monitor zapewnia wiele sposobów, aby dostęp do metryk. Użytkownik może uzyskiwać do nich dostęp z [witryny Azure portal](https://portal.azure.com), interfejsów API usługi Azure Monitor (REST i .net) i rozwiązań analitycznych, takich jak pakietu Operation Management Suite i usługi Event Hubs. Aby uzyskać więcej informacji, zobacz [metryk usługi Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Usługa Azure Monitor zapewnia wiele sposobów, aby dostęp do metryk. Użytkownik może uzyskiwać do nich dostęp z [witryny Azure portal](https://portal.azure.com), interfejsów API usługi Azure Monitor (REST i .net) i rozwiązań analitycznych, takich jak Event Hubs. Aby uzyskać więcej informacji, zobacz [metryk usługi Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
 Metryki są domyślnie włączone, a dostęp można uzyskać dane z ostatnich dni 93. Jeśli zachodzi potrzeba Zachowaj dane przez dłuższy okres czasu, można archiwizować dane metryk do konta usługi Azure Storage. To ustawienie jest konfigurowane w [ustawień diagnostycznych](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) w usłudze Azure Monitor.
 

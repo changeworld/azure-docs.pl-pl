@@ -1,5 +1,5 @@
 ---
-title: Program SQL Server na maszynach wirtualnych platformy Azure Windows często zadawane pytania | Dokumentacja firmy Microsoft
+title: SQL Server na maszynach wirtualnych Windows Azure — często zadawane pytania | Dokumentacja firmy Microsoft
 description: Ten artykuł zawiera odpowiedzi na często zadawane pytania na temat uruchamiania programu SQL Server na maszynach wirtualnych platformy Azure.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,20 +15,20 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 48df858095cb867954460ec858567e41ed330063
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 906cec35c30c277ac1e8bc641d12fe37c29413dd
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009266"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427182"
 ---
-# <a name="frequently-asked-questions-for-sql-server-running-on-windows-azure-virtual-machines"></a>Często zadawane pytania dotyczące programu SQL Server uruchomionego na maszynach wirtualnych Windows Azure
+# <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Często zadawane pytania dotyczące programu SQL Server uruchomionego na maszynach wirtualnych Windows Azure
 
 > [!div class="op_single_selector"]
 > * [Windows](virtual-machines-windows-sql-server-iaas-faq.md)
 > * [Linux](../../linux/sql/sql-server-linux-faq.md)
 
-Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat uruchamiania [programu SQL Server na maszynach wirtualnych Azure Windows](https://azure.microsoft.com/services/virtual-machines/sql-server/).
+Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat uruchamiania [programu SQL Server na maszynach wirtualnych Windows na platformie Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/).
 
 > [!NOTE]
 > Ten artykuł koncentruje się na kwestie związane z programu SQL Server na maszynach wirtualnych Windows. Jeśli używasz programu SQL Server na maszynach wirtualnych z systemem Linux, zobacz [Linux — często zadawane pytania](../../linux/sql/sql-server-linux-faq.md).

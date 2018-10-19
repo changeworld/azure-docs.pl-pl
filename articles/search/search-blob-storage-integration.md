@@ -1,55 +1,55 @@
 ---
-title: Dodawanie do magazynu obiektów Blob Azure Search | Dokumentacja firmy Microsoft
+title: Dodawanie usługi Azure Search do magazynu obiektów Blob | Dokumentacja firmy Microsoft
 description: Tworzenie indeksu za pomocą kodu przy użyciu interfejsu API REST protokołu HTTP usługi Azure Search
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/04/2017
-author: chaosrealm
-manager: jlembicz
-ms.author: eugenesh
-ms.openlocfilehash: 71e43920f0e6a64beb7cdb28d0707dd30502bf05
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.date: 10/17/2018
+author: mgottein
+manager: cgronlun
+ms.author: magottei
+ms.openlocfilehash: 4f8099bbd5af250e58441eb0e202d4674f0671fe
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31790784"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403229"
 ---
 # <a name="searching-blob-storage-with-azure-search"></a>Przeszukiwanie magazynu obiektów blob za pomocą usługi Azure Search
 
-Wyszukiwanie w różnych typów zawartości, przechowywane w magazynie obiektów Blob platformy Azure może być trudne problem do rozwiązania. Można jednak indeksu i wyszukiwanie zawartości obiektów blob za pomocą kilku kliknięć za pomocą usługi Azure Search. Wyszukiwanie w magazynie obiektów Blob wymaga inicjowania obsługi usługi Azure Search. Różne ograniczenia usługi i warstw cenowych usługi Azure Search znajduje się na [cennikiem](https://aka.ms/azspricing).
+Wyszukiwanie różnych typów zawartości, przechowywane w usłudze Azure Blob storage może być trudne problemu do rozwiązania. Można jednak indeksowanie i wyszukiwanie zawartości obiektów blob za pomocą kilku kliknięć za pomocą usługi Azure Search. Wyszukiwanie w magazynie obiektów Blob wymaga inicjowania obsługi usługi Azure Search. Różne limity usług i warstw cenowych usługi Azure Search znajduje się na [stronę z cennikiem](https://aka.ms/azspricing).
 
 ## <a name="what-is-azure-search"></a>Co to jest usługa Azure Search?
-[Usługa Azure Search](https://aka.ms/whatisazsearch) jest usługą wyszukiwania, która ułatwia deweloperom Dodaj niezawodne wyszukiwania pełnotekstowego napotyka sieci web i aplikacji dla urządzeń przenośnych. Usługa Azure Search eliminuje potrzebę zarządzania infrastrukturą żadnych wyszukiwania podczas oferty [dostępności 99,9% SLA](https://aka.ms/azuresearchsla).
+[Usługa Azure Search](https://aka.ms/whatisazsearch) Usługa wyszukiwania, która ułatwia deweloperom Dodawanie zaawansowanego wyszukiwania pełnotekstowego, środowisk sieci web i aplikacji mobilnych. Jako usługa, usługi Azure Search eliminuje konieczność zarządzania dowolną infrastrukturą wyszukiwania podczas oferty [przez 99,9% czasu SLA](https://aka.ms/azuresearchsla).
 
-## <a name="index-and-search-enterprise-document-formats"></a>Formaty dokumentu enterprise indeksu i wyszukiwania
-Z obsługą [dokumentu wyodrębniania](https://aka.ms/azsblobindexer) w magazynie obiektów Blob platformy Azure może indeksować następującą zawartość:
+## <a name="index-and-search-enterprise-document-formats"></a>Indeksowanie i wyszukiwanie formatowania dokumentu przedsiębiorstwa
+Dzięki obsłudze [dokumentu wyodrębniania](https://aka.ms/azsblobindexer) w usłudze Azure Blob storage umożliwia indeksowanie następującej zawartości:
 
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
-Wyodrębnianie tekstu i metadanych z tych typów plików, można przeszukać wiele formatów plików z pojedynczego zapytania. 
+Dzięki możliwości wyodrębniania tekstu i metadanych z tych typów plików, możesz dodatkowo przeszukiwać wiele formatów plików za pomocą jednego zapytania. 
 
 ## <a name="search-through-your-blob-metadata"></a>Przeszukaj metadane obiektu blob
-Typowy scenariusz, który ułatwia sortowanie za pośrednictwem obiektów blob typu zawartości jest indeksu zarówno niestandardowych metadanych i właściwości dla każdego obiektu blob. W ten sposób informacje dla wszystkich obiektów blob jest indeksowany niezależnie od tego typu dokumentu. Możesz następnie przejść do sortowania, filtrować i aspekt przez całą zawartość magazynu obiektów Blob.
+Typowy scenariusz, który ułatwia przeglądanie obiektów blob, typu zawartości jest indeks zarówno niestandardowych metadanych, jak i właściwości dla każdego obiektu blob. W ten sposób informacje dla wszystkich obiektów blob są indeksowane niezależnie od typu dokumentu. Możesz następnie przejść do sortowania, filtrowania i reguł w całej zawartości z magazynu obiektów Blob.
 
 [Dowiedz się więcej na temat indeksowania metadane obiektu blob.](https://aka.ms/azsblobmetadataindexing)
 
-## <a name="image-search"></a>Obraz wyszukiwania
-Wyszukiwanie pełnotekstowe wyszukiwanie Azure, nawigacji aspektowej i funkcje sortowania teraz mogą być stosowane do metadanych obrazy przechowywane w obiektach blob.
+## <a name="image-search"></a>Wyszukiwanie obrazów
+Wyszukiwanie pełnotekstowe, nawigacji aspektowej i sortowania możliwości usługi Azure Search można teraz stosować do metadanych obrazów przechowywanych w obiektach blob.
 
-Jeśli te obrazy są wstępnie przetwarzane przy użyciu [komputera wizji API](https://www.microsoft.com/cognitive-services/computer-vision-api) z kognitywnych usług firmy Microsoft, jest możliwość indeksu visual zawartości każdego obrazu, w tym Rozpoznawania i pisma ręcznego. Pracujemy nad dodaniem Rozpoznawania i innych możliwości przetwarzania obrazu bezpośrednio do usługi Azure Search, jeśli planuje się tych funkcji, Prześlij żądanie na naszych [UserVoice](https://aka.ms/azsuv) lub [Napisz do nas](mailto:azscustquestions@microsoft.com).
+Jeśli te obrazy są wstępnie przetwarzane przy użyciu [interfejs API przetwarzania obrazów](https://www.microsoft.com/cognitive-services/computer-vision-api) od firmy Microsoft Cognitive Services, możliwe jest indeksowanie zawartości wizualnej znajdującej każdego obrazu, w tym optyczne rozpoznawanie znaków i pisma ręcznego. Pracujemy nad dodaniem optyczne rozpoznawanie znaków i inne możliwości przetwarzania obrazu bezpośrednio do usługi Azure Search, jeśli interesują Cię te możliwości, Prześlij żądanie na naszych [UserVoice](https://aka.ms/azsuv) lub [Wyślij wiadomość e-mail adres](mailto:azscustquestions@microsoft.com).
 
-## <a name="index-and-search-through-json-blobs"></a>Indeks i wyszukiwania za pomocą obiektów blob JSON
-Usługa wyszukiwanie Azure można skonfigurować do wyodrębniania zawartości strukturalnych znaleziono w obiektach blob, które zawierają JSON. Usługa Azure Search może odczytywać obiekty BLOB JSON i przeanalizować uporządkowana zawartość w odpowiednich polach dokument usługi Azure Search. Usługa wyszukiwanie Azure można również wykonać obiektów blob, które zawiera tablicę obiektów JSON i mapowanie każdy element na oddzielnych dokumentu usługi Azure Search.
+## <a name="index-and-search-through-json-blobs"></a>Indeksowania i wyszukiwania za pomocą obiektów blob JSON
+Usługa Azure Search można skonfigurować do wyodrębnienia ze strukturą zawartości znajdującej się w obiektach blob, które zawierają JSON. Usługa Azure Search może odczytywać obiektów blob JSON i przeanalizować zawartość ze strukturą w odpowiednich polach dokumentu usługi Azure Search. Usługa Azure Search możesz skorzystać z obiektów blob, które zawiera tablicę obiektów JSON i mapowanie każdy element na osobny dokument usługi Azure Search.
 
-Analiza kodu JSON nie jest obecnie można konfigurować za pośrednictwem portalu. [Dowiedz się więcej na temat analizowania JSON w usłudze Azure Search.](https://aka.ms/azsjsonblobindexing)
+Analizowanie JSON nie jest obecnie można konfigurować za pośrednictwem portalu. [Dowiedz się więcej na temat analizowanie JSON w usłudze Azure Search.](https://aka.ms/azsjsonblobindexing)
 
 ## <a name="quick-start"></a>Szybki start
-Usługa wyszukiwanie Azure można dodać do obiektów blob bezpośrednio ze strony portalu magazynu obiektów Blob.
+Usługa Azure Search można dodać do obiektów blob bezpośrednio na stronie portalu magazynu obiektów Blob.
 
 ![](./media/search-blob-storage-integration/blob-blade.png)
 
-Kliknij przycisk **Dodaj usługi Azure Search** można uruchomić przepływu, w którym można wybrać istniejącą usługę Azure Search lub Utwórz nową usługę. Jeśli utworzysz nową usługę, są przesłane możliwości portalu konta magazynu. Można przejść z powrotem do strony portalu magazynu i wybierz ponownie **Dodaj usługi Azure Search** opcja, w którym można wybrać istniejącą usługę.
+Kliknij przycisk **Dodaj usługę Azure Search** można uruchomić przepływu, w którym możesz wybrać istniejącą usługę Azure Search lub Utwórz nową usługę. Jeśli tworzysz nową usługę, są przejście poza środowisko portalu konta usługi Storage. Możesz przejść z powrotem do strony portalu magazynu i wybierz ponownie **Dodaj usługę Azure Search** opcji, w którym można wybrać istniejącą usługę.
 
 ### <a name="next-steps"></a>Następne kroki
-Dowiedz się więcej o indeksatora obiektów Blob Azure wyszukiwania z pełnym [dokumentacji](https://aka.ms/azsblobindexer).
+Dowiedz się więcej o indeksatora obiektów Blob usługi Azure Search, w pełni [dokumentacji](https://aka.ms/azsblobindexer).

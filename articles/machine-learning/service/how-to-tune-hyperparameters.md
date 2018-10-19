@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 950d985ca87cce484edeb7930ca1bda34d812f33
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 13820dd511d31217b79385e893edbb55a3a57693
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344136"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430023"
 ---
 # <a name="tune-hyperparameters-for-your-model"></a>Dostosowywanie hiperparametrów dla modelu
 
@@ -141,8 +141,9 @@ param_sampling = BayesianParameterSampling( {
 ```
 
 > [!NOTE]
-> Próbkowanie Bayesowskie nie obsługuje wszystkie wcześniejsze zasad zakończenia (zobacz [określić zasady wcześniejsze zakończenie](#specify-an-early-termination-policy)). Korzystając z Bayesowskie parametru próbkowania, ustaw `early_termination_policy = None`, lub pozostaw wartość `early_termination_policy` parametru.
-`
+> Próbkowanie Bayesowskie nie obsługuje wszystkie wcześniejsze zasad zakończenia (zobacz [określić zasady wcześniejsze zakończenie](#specify-early-termination-policy)). Korzystając z Bayesowskie parametru próbkowania, ustaw `early_termination_policy = None`, lub pozostaw wartość `early_termination_policy` parametru.
+
+<a name='specify-primary-metric-to-optimize'/>
 
 ## <a name="specify-primary-metric"></a>Określ podstawowe metryki
 
@@ -158,9 +159,11 @@ primary_metric_goal=PrimaryMetricGoal.MAXIMIZE
 
 Optymalizuj przebiegów, aby zmaksymalizować "dokładność".  Upewnij się, że dziennika tej wartości w skrypcie szkolenia.
 
+<a name='log-metrics-for-hyperparameter-tuning'/>
+
 ### <a name="log-metrics-for-hyperparameter-tuning"></a>Rejestruj metryki do strojenia hiperparametrycznego
 
-Skrypt szkoleniowy dla modelu, należy zalogować istotne metryki podczas uczenia modelu. Po skonfigurowaniu strojenia hiperparametrycznego, należy określić podstawową metrykę do użycia do oceny wydajności wykonywania. (Zobacz [określić podstawową metrykę, aby zoptymalizować](#specify-a-primary-metric-to-optimize).)  W skrypcie szkolenia należy zalogować ta metryka, dzięki czemu są one dostępne dla hiperparametrycznego dostosowywania procesu.
+Skrypt szkoleniowy dla modelu, należy zalogować istotne metryki podczas uczenia modelu. Po skonfigurowaniu strojenia hiperparametrycznego, należy określić podstawową metrykę do użycia do oceny wydajności wykonywania. (Zobacz [określić podstawową metrykę, aby zoptymalizować](#specify-primary-metric-to-optimize).)  W skrypcie szkolenia należy zalogować ta metryka, dzięki czemu są one dostępne dla hiperparametrycznego dostosowywania procesu.
 
 Ta metryka Zaloguj się następującym fragmentem kodu przykładowy skrypt szkolenia:
 
@@ -171,6 +174,8 @@ run_logger.log("accuracy", float(val_accuracy))
 ```
 
 Oblicza skrypt szkoleniowy `val_accuracy` i rejestruje go jako "dokładność", który jest używany jako podstawowe metryki. Każdorazowo, gdy metryka jest rejestrowany otrzymał hiperparametrycznego dostrajania usługi. Jest developer modelu do określania, jak często zgłosić tej metryki.
+
+<a name='specify-early-termination-policy'/>
 
 ## <a name="specify-early-termination-policy"></a>Określ wcześniejsze zakończenie zasady
 
@@ -297,7 +302,7 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hyperdrive_run_config)
 ```
 
-`experiment_name` to nazwa, przypisz do Twojego hiperparametrycznego dostrajania eksperymentu, a `workspace` jest obszarem roboczym, w którym chcesz utworzyć eksperyment (Aby uzyskać więcej informacji na temat doświadczeń, zobacz [jak działa usługa Azure Machine Learning?](/concept-azure-machine-learning-architecture.md))
+`experiment_name` to nazwa, przypisz do Twojego hiperparametrycznego dostrajania eksperymentu, a `workspace` jest obszarem roboczym, w którym chcesz utworzyć eksperyment (Aby uzyskać więcej informacji na temat doświadczeń, zobacz [jak działa usługa Azure Machine Learning?](concept-azure-machine-learning-architecture.md))
 
 ## <a name="visualize-experiment"></a>Wizualizacja doświadczenia
 
@@ -320,7 +325,7 @@ Ponadto można zidentyfikować wizualnie korelacji między wydajnością i warto
 
 ![hiperparametrycznego dostrajania współrzędne równoległe](media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)
 
-Można wizualizować swoje hiperparametrycznego dostrajania jest uruchamiany w witrynie portal sieci web platformy Azure. Aby uzyskać więcej informacji na temat sposobu wyświetlania eksperymentu w portalu sieci web, zobacz [jak śledzić expirements](/how-to-track-experiments.md/#view-the-experiment-in-the-web-portal).
+Można wizualizować swoje hiperparametrycznego dostrajania jest uruchamiany w witrynie portal sieci web platformy Azure. Aby uzyskać więcej informacji na temat sposobu wyświetlania eksperymentu w portalu sieci web, zobacz [jak śledzić eksperymentów](how-to-track-experiments.md#view-the-experiment-in-the-web-portal).
 
 ![portal strojenia hiperparametrycznego](media/how-to-tune-hyperparameters/HyperparameterTuningPortal.png)
 

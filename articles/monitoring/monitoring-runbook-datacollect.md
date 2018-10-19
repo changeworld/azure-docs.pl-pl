@@ -1,6 +1,6 @@
 ---
 title: Zbieranie danych usługi Log Analytics przy użyciu elementu runbook w usłudze Azure Automation | Dokumentacja firmy Microsoft
-description: Samouczek krok po kroku, który przeprowadzi tworzenia elementu runbook w usłudze Azure Automation można zbierać dane do repozytorium pakietu OMS do analizy przez usługę Log Analytics.
+description: Samouczek krok po kroku, który przeprowadzi tworzenia elementu runbook w usłudze Azure Automation w celu zbierania danych do repozytorium na potrzeby analizy przez usługę Log Analytics.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: d3e8e876a6c01123d65c1e8df13328bdd5fad71f
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: f1a106a4f99c09134b8784e98ca547db51ce0eae
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347100"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409513"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Zbieranie danych w usłudze Log Analytics przy użyciu elementu runbook usługi Azure Automation
 Znacznej ilości danych w usłudze Log Analytics może zbierać z różnych źródeł, w tym [źródeł danych](../log-analytics/log-analytics-data-sources.md) na agentach, a także [dane zbierane z platformy Azure](../log-analytics/log-analytics-azure-storage.md).  Istnieją scenariusze, chociaż wymagających zbierania danych, która nie jest dostępny za pośrednictwem tych standardowych źródeł.  W takich przypadkach można użyć [interfejsu API modułu zbierającego dane HTTP](../log-analytics/log-analytics-data-collector-api.md) można zapisać danych do usługi Log Analytics za pomocą dowolnego klienta interfejsu API REST.  Typowe metodę w celu zbierania danych używa elementu runbook w usłudze Azure Automation.   
@@ -56,7 +56,7 @@ Galeria programu PowerShell zapewnia jednak możliwość szybkiego wdrażania mo
 
 
 ## <a name="2-create-automation-variables"></a>2. Tworzenie zmiennych automatyzacji
-[Zmienne automatyzacji](..\automation\automation-variables.md) przechowywać wartości, które mogą być używane przez wszystkie elementy runbook na Twoim koncie usługi Automation.  Dokonają elementów runbook bardziej elastyczne, umożliwiając zmiany tych wartości bez konieczności edytowania rzeczywistego elementu runbook. Każde żądanie z interfejsu API modułu zbierającego dane HTTP wymaga Identyfikatora i klucza obszaru roboczego pakietu OMS, a zmienna zasoby są idealnym rozwiązaniem do przechowywania tych informacji.  
+[Zmienne automatyzacji](..\automation\automation-variables.md) przechowywać wartości, które mogą być używane przez wszystkie elementy runbook na Twoim koncie usługi Automation.  Dokonają elementów runbook bardziej elastyczne, umożliwiając zmiany tych wartości bez konieczności edytowania rzeczywistego elementu runbook. Każde żądanie z interfejsu API modułu zbierającego dane HTTP wymaga Identyfikatora i klucza obszaru roboczego usługi Log Analytics i zasoby zmiennych są idealnym rozwiązaniem do przechowywania tych informacji.  
 
 ![Zmienne](media/monitoring-runbook-datacollect/variables.png)
 
@@ -200,7 +200,7 @@ Po utworzeniu harmonogramu, musisz podać wartości parametrów, które będą u
 ## <a name="9-verify-runbook-starts-on-schedule"></a>9. Sprawdź element runbook uruchamia zgodnie z harmonogramem
 Za każdym, gdy element runbook jest uruchamiany, [tworzone jest zadanie](../automation/automation-runbook-execution.md) i wszelkie dane wyjściowe rejestrowane.  W rzeczywistości są one tych samych zadań, które zbiera elementu runbook.  Aby sprawdzić, czy element runbook uruchamiany zgodnie z oczekiwaniami, sprawdzając zadania elementu runbook, po upływie czasu rozpoczęcia dla harmonogramu.
 
-![Zadania](media/monitoring-runbook-datacollect/jobs.png)
+![Stanowiska](media/monitoring-runbook-datacollect/jobs.png)
 
 1. We właściwościach elementu runbook, zaznacz **zadania** w obszarze **zasobów**.
 2. Powinieneś zobaczyć listę zadań każdorazowo, gdy element runbook został uruchomiony.

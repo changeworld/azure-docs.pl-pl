@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure sieci szkieletowej platformy poziom monitorowania | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat platformy poziomu zdarzeń i dzienników umożliwia monitorowanie i diagnozowanie klastrów sieci szkieletowej usług Azure.
+title: Usługa Azure Service Fabric platformy poziom monitorowania | Dokumentacja firmy Microsoft
+description: Informacje na temat zdarzeń na poziomie platformy i dzienniki umożliwia monitorowanie i diagnozowanie klastrów usługi Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,88 +14,88 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2018
 ms.author: dekapur
-ms.openlocfilehash: 31f23e3f8e792c6b61870c640f99ec3392a940d3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 96bbb221f5fa133ee88a09d489627e3d2f9b0713
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211178"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409190"
 ---
-# <a name="monitoring-the-cluster-and-platform"></a>Monitorowanie klastra i platform
+# <a name="monitoring-the-cluster-and-platform"></a>Monitorowanie klastra i platformy
 
-Należy monitorować na poziomie platformy, aby ustalić, czy sprzęt i klastra są działa zgodnie z oczekiwaniami. Sieć szkieletowa usług można zachować aplikacje uruchomione podczas awarii sprzętu, ale nadal konieczne zdiagnozować, czy błąd występuje w aplikacji lub podstawowej infrastruktury. Należy również monitorować klastrów lepiej planowania pojemności, pomoc w podejmowaniu decyzji dotyczących dodawania i usuwania sprzętu.
+Należy monitorować na poziomie platformy, aby ustalić, czy sprzęt i klastra zachowują się zgodnie z oczekiwaniami. Chociaż usługa Service Fabric można zachować aplikacji działających w czasie awarii sprzętu, ale nadal musisz zdiagnozować, czy błąd występuje w aplikacji lub podstawowej infrastruktury. Należy również monitorować klastrów lepiej planowania pojemności, pomagając w podejmowaniu decyzji o dodaniu lub usunięciu sprzętu.
 
-Usługa sieci szkieletowej udostępnia kilka zdarzeń strukturalnych platformy, jako "[zdarzenia sieci szkieletowej usług](service-fabric-diagnostics-events.md)," za pośrednictwem EventStore i różnymi dziennika kanały out-of--box. 
+Usługa Service Fabric udostępnia kilka zdarzeń ze strukturą platformy, jako "[zdarzenia usługi Service Fabric](service-fabric-diagnostics-events.md)," za pośrednictwem bazy danych EventStore i różnymi dziennika kanały out-of--box. 
 
-EventStore umożliwia dostęp do sieci klastra zdarzenia na podstawie na jednostkę (łącznie z klastra, węzłów, aplikacji, usług, partycji, repliki i kontenerów jednostek) i udostępnia je za pośrednictwem interfejsów API REST i biblioteki klienta usługi sieć szkieletowa usług. Umożliwia monitorowanie klastrów i testowania, EventStore i pobrania opis punktu w czasie, stanu klastrów produkcyjnych. Dowiedz się więcej o tym w [omówienie EventStore](service-fabric-diagnostics-eventstore.md).
+Bazy danych EventStore daje dostęp do zdarzenia klastra na podstawie poszczególnych jednostek (łącznie z klastra, węzłów, aplikacji, usług, partycji, repliki i kontenerów jednostek) i udostępnia je za pośrednictwem interfejsów API REST i biblioteki klienckiej usługi Service Fabric. Użyj bazy danych EventStore do monitorowania klastrów i testowania aplikacji i pobrania w momencie znajomości stan klastrów produkcyjnych. Dowiedz się więcej o [omówienie bazy danych EventStore](service-fabric-diagnostics-eventstore.md).
 
-Usługa sieci szkieletowej znajdują się również dziennika następujące kanały out-of--box do konfigurowania potoku do monitorowania klastrów produkcyjnych:
+Usługa Service Fabric znajdują się również następujący dziennik kanałów out-of--box do konfigurowania potoku do monitorowania klastrów produkcyjnych:
 
 * [**Operacyjne**](service-fabric-diagnostics-event-generation-operational.md)  
-Ogólne operacje wykonywane przez sieć szkieletowa usług i klastra, w tym zdarzenia dotyczące powtarzający się węzeł, nowej aplikacji wdrażany lub uaktualniania wycofywania itp.
+Ogólne operacji wykonywanych przez usługi Service Fabric i klastra, w tym zdarzenia dla węzła pojawi się, wdrażania nowej aplikacji lub uaktualnienia wycofywania itp.
 
-* **Operacyjne — szczegółowy**  
+* **Operacyjne — szczegółowe**  
 Raportów o kondycji i decyzje dotyczące równoważenia obciążenia.
 
-* **& Danych obsługi wiadomości**  
-Dzienniki krytyczne i zdarzenia generowane w wiadomości (obecnie tylko ReverseProxy) i ścieżki danych (modeli niezawodne usługi).
+* **Komunikaty & danych**  
+Dzienniki krytyczne i zdarzenia generowane w wiadomości (obecnie tylko elementu ReverseProxy) i ścieżki danych (modeli usług reliable services).
 
-* **& Wiadomości - szczegółowych danych**  
-Pełne kanału, który zawiera wszystkie dzienniki niekrytyczne z danych i komunikatów w klastrze (ten kanał jest bardzo duża liczba zdarzeń).
+* **Obsługa wiadomości — szczegółowe & danych**  
+Pełne kanał, który zawiera wszystkie niekrytyczne dzienniki danych i komunikatów w klastrze (ten kanał ma bardzo dużej liczby zdarzeń).
 
-Oprócz tych istnieją dwa strukturalnych kanały źródła zdarzeń, a także dzienniki, które zbieramy do celów pomocy technicznej.
+Oprócz wspomnianych istnieją dwa ze strukturą kanały źródła zdarzeń, a także dzienniki, które zbieramy celów pomocy technicznej.
 
 * [Zdarzenia interfejsu Reliable Services](service-fabric-reliable-services-diagnostics.md)  
-Określonych zdarzeń modelu programowania.
+Model programowania określonych zdarzeń.
 
 * [Zdarzenia dotyczące elementów Reliable Actors](service-fabric-reliable-actors-diagnostics.md)  
 Liczniki wydajności i określonych zdarzeń modelu programowania.
 
 * Dzienniki pomocy technicznej  
-Dzienniki systemu wygenerowany przez sieć szkieletowa usług tylko do użycia przez nas podczas dostarczania pomocy technicznej.
+Dzienniki systemu, generowane przez usługę Service Fabric tylko po to, które będą używane przez firmę Microsoft, podczas świadczenie pomocy technicznej.
 
-Te kanały różnych obejmują większość platform poziomu rejestrowania jest zalecane. Aby zwiększyć poziom rejestrowania platformy, należy wziąć pod uwagę zainwestować w lepsze zrozumienie model kondycji i dodawanie raportów niestandardowych kondycji i dodawanie niestandardowych **liczniki wydajności** do kompilacji w czasie rzeczywistym zrozumienia wpływu użytkownika usługi i aplikacje w klastrze.
+Te różne kanały pokrywał większą część platformy poziomu rejestrowania, jest zalecane. Aby poprawić rejestrowanie na poziomie platformy, należy wziąć pod uwagę inwestowanie w lepsze zrozumienie modelu kondycji i dodawanie niestandardowych raportów o kondycji i dodawanie niestandardowych **liczniki wydajności** do kompilacji w czasie rzeczywistym zrozumienia wpływu usługi usługi i aplikacji w klastrze.
 
-Aby można było korzystać z tych dzienników, zaleca się, czy podczas tworzenia klastra "diagnostyki" jest włączona. Przez włączenie diagnostyki, po wdrożeniu klastra systemu Windows Azure Diagnostics jest w stanie potwierdzić Operational, Reliable Services i Reliable actors kanałów i przechowywać dane, jak wyjaśniono dalej w [agregacji zdarzenia z platformy Azure Diagnostyka](service-fabric-diagnostics-event-aggregation-wad.md).
+Aby można było korzystać z tych dzienników, zaleca się, że podczas tworzenia klastra "Diagnostyka" jest włączona. Włączając diagnostykę po wdrożeniu klastra systemu Windows Azure Diagnostics jest w stanie potwierdzić operacyjnej usług Reliable Services i kanałów w elementach Reliable actors w celu przechowywania danych, jak wyjaśniono dalej w [agregowanie zdarzeń przy użyciu platformy Azure Diagnostyka](service-fabric-diagnostics-event-aggregation-wad.md).
 
-## <a name="azure-service-fabric-health-and-load-reporting"></a>Kondycji sieci szkieletowej usług platformy Azure i raportowania obciążenia
+## <a name="azure-service-fabric-health-and-load-reporting"></a>Usługa Azure kondycji usługi Service Fabric i raportowanie obciążenia
 
-Sieć szkieletowa usług ma własną modelu kondycji, który opisano szczegółowo w następujących artykułach:
+Usługa Service Fabric ma swój własny model kondycji, który opisano szczegółowo w następujących artykułach:
 
-- [Wprowadzenie do monitorowania kondycji sieci szkieletowej usług](service-fabric-health-introduction.md)
+- [Wprowadzenie do monitorowania kondycji usługi Service Fabric](service-fabric-health-introduction.md)
 - [Tworzenie raportów i sprawdzanie kondycji usług](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
-- [Dodawanie niestandardowych raportów kondycji sieci szkieletowej usług](service-fabric-report-health.md)
-- [Wyświetl raporty dotyczące kondycji sieci szkieletowej usług](service-fabric-view-entities-aggregated-health.md)
+- [Dodawanie niestandardowych raportów o kondycji usługi Service Fabric](service-fabric-report-health.md)
+- [Wyświetlanie raportów o kondycji usługi Service Fabric](service-fabric-view-entities-aggregated-health.md)
 
-Monitorowanie kondycji jest kluczowa wiele aspektów pracy z usługą. Monitorowanie kondycji jest szczególnie ważne w przypadku, gdy usługa sieć szkieletowa przeprowadza uaktualnienie aplikacji o nazwie. Po każdej domeny uaktualnienia usługi jest uaktualniany i jest dostępny dla klientów, domeny uaktualnień musi upłynąć kontroli kondycji wdrożenia przechodzi do następnej domeny uaktualnienia. Jeśli stanu dobrej kondycji nie może zostać osiągnięty, wdrożenia zostanie wycofana, dzięki czemu aplikacja jest w stanie znane, dobrym. Mimo że niektórzy klienci mogą mieć wpływ przed usług są wycofywane, większość klientów nie będą zgłaszać problemy. Ponadto rozwiązanie występuje stosunkowo szybko i bez potrzeby czekania na akcję osoby pełniącej rolę operatora. Więcej kontroli kondycji, które są włączone do kodu, bardziej odporne usługi ma problemy z wdrażaniem.
+Monitorowanie kondycji jest krytyczne dla działania usługi na wiele aspektów. Monitorowanie kondycji jest szczególnie ważne w przypadku, gdy Usługa Service Fabric wykonuje uaktualnienie aplikacji o nazwie. Po każdej domeny uaktualnienia usługi jest uaktualniany i jest dostępna dla klientów, domeny uaktualnień musi upłynąć kontrole kondycji wdrożenia przechodzi do następnej domeny uaktualnienia. Jeśli stanu dobrej kondycji nie może być osiągnięty, wdrożenia jest wycofywana, dlatego, że aplikacja jest w stanie znanego, dobrej. Chociaż niektórzy klienci mogą mieć wpływ, zanim usługi zostaną wycofane, większość klientów nie będą występować problem. Ponadto występuje rozpoznawania względnie szybko i bez konieczności oczekiwania dla akcji z osoby pełniącej rolę operatora. Więcej kontroli kondycji, które są zawarte w kodzie, bardziej odporne usługi ma problemy z wdrażaniem.
 
-Innym aspektem usługi kondycji jest raportowania metryki z usługi. Metryki są ważne w sieci szkieletowej usług, ponieważ są one używane do równoważyć obciążenie zasobów. Metryki można również wskaźnik kondycji systemu. Na przykład może być aplikacja, która ma wiele usług, a każde wystąpienie zgłasza żądania na drugi metryka (RPS). Jeśli jedna usługa używa więcej zasobów niż innej usługi, usługi Service Fabric przenosi wystąpień usługi wokół klastra, aby spróbować Obsługa wykorzystania zasobów nawet. Aby uzyskać bardziej szczegółowy opis działania wykorzystania zasobów, zobacz [Zarządzanie zużycia zasobów i obciążenia w sieci szkieletowej usług o metryki](service-fabric-cluster-resource-manager-metrics.md).
+Innym aspektem kondycja usługi zgłasza metryki z usługi. Metryki są ważne w usłudze Service Fabric, ponieważ są one używane do równoważyć obciążenie zasobów. Metryki można także wskaźnik określający kondycji systemu. Na przykład Niewykluczone, że aplikacja, która ma wiele usług, a każde wystąpienie zgłasza żądania na drugim metrykę (jednostek Uzależnionych). Jeśli jedna usługa używa więcej zasobów niż inna usługa, usługi Service Fabric przenosi wystąpień usługi wokół klastra próby wykorzystania zasobów nawet zachowania. Aby uzyskać bardziej szczegółowy opis sposobu działania wykorzystanie zasobów, zobacz [Zarządzanie zużycia zasobów i obciążenia w usłudze Service Fabric za pomocą metryk](service-fabric-cluster-resource-manager-metrics.md).
 
-Metryki również może pomóc zapewniają wgląd w sposób działa usługa. Wraz z upływem czasu metryki służy do sprawdzenia, czy usługa działa w ramach oczekiwanych parametrów. Na przykład jeśli trendy wskazują na 9 AM w poniedziałek rano średnią RPS jest 1000, następnie może skonfigurowaniu ostrzega użytkownika o RPS znajduje się poniżej 500 lub ponad 1500 raport dotyczący kondycji. Wszystko, co może być całkowicie poprawnie, ale może być warto wygląd należy upewnić się, że klientom najwyższą maksymalnego komfortu obsługi. Usługi można zdefiniować zestawu metryk, które mogą być zgłaszane do celów sprawdzania kondycji, ale które nie mają wpływu na równoważenia zasobów klastra. Aby to zrobić, należy ustawić na zero waga metryki. Zaleca się uruchomić wszystkie metryki o wadze zero i zwiększa wagę nie ma pewności, zrozumieć wpływ waga metryki równoważenia dla klastra zasobów.
+Metryki również mogą pomóc zapewniają wgląd w sposób działa usługa. Wraz z upływem czasu można użyć metryki, aby sprawdzić, czy usługa działa w ramach oczekiwanych parametrów. Na przykład jeśli o 9: 00 w poniedziałek rano średnia RPS wynosi 1000 trendów, następnie może skonfigurowaniu Raport kondycji, który generuje alert w przypadku RPS znajduje się poniżej 500 lub ponad 1500. Wszystko, co może być doskonale dobrym rozwiązaniem, ale może być zapoznać należy upewnić się, że klientom najwyższą wspaniałego środowiska. Usługi można zdefiniować zestaw metryk, które mogą zostać zgłoszone do celów sprawdzania kondycji, ale które nie mają wpływu na równoważenia zasobów klastra. Aby to zrobić, należy ustawić waga metryki na zero. Zalecamy rozpocząć wszystkie metryki o wadze wynoszącej zero i nie zwiększa wagi, dopóki nie masz pewności, zrozumieć wpływ waga metryki zasobu równoważenia dla klastra.
 
 > [!TIP]
-> Nie należy używać zbyt wiele ważoną metryki. Może być trudne do zrozumienia, dlaczego wystąpień usługi są przenoszone dla równoważenia. Kilka metryki można zdecydowanie!
+> Nie używaj zbyt wiele metryk ważonych. Może być trudne do zrozumienia, dlaczego wystąpień usługi są przenoszone równoważenia. Kilka metryk mogą długą drogę!
 
-Wszystkie informacje, które mogą wskazywać kondycję i wydajność aplikacji jest kandydatem do raportów metryki. Licznik wydajności procesora CPU pomagają stwierdzić, jak węzeł jest wykorzystywany, ale go nie informujące, czy określonej usługi jest w dobrej kondycji, ponieważ wiele usług może działać w jednym węźle. Ale metryk, takich jak RPS, elementów przetworzonych, i wszystkich opóźnienia żądania można wskazać kondycji określonej usługi.
+Wszystkie informacje, które można wskazać kondycję i wydajność aplikacji jest kandydatem do raportów dotyczących metryk i kondycji. Licznik wydajności Procesora może informujące, jaki jest wykorzystywana w węźle, ale go nie informujące, czy określona usługa jest w dobrej kondycji, ponieważ wiele usług może działać na jednym węźle. Jednak RPS, przetwarzanie, elementy, takie jak metryki i wszelkie opóźnienia żądania może wskazywać kondycji określonej usługi.
 
-## <a name="service-fabric-support-logs"></a>Dzienniki pomocy technicznej w sieci szkieletowej usług
+## <a name="service-fabric-support-logs"></a>Dzienniki pomocy technicznej usługi Service Fabric
 
-Należy się z pomocą techniczną firmy Microsoft, aby uzyskać pomoc dotyczącą klastra usługi sieć szkieletowa usług Azure, dzienniki pomocy technicznej są prawie zawsze wymagane. Jeśli klaster jest hostowana na platformie Azure, dzienniki pomocy technicznej są automatycznie konfigurowane i zebrane w ramach tworzenia klastra. Dzienniki są przechowywane na koncie dedykowanych dla magazynu w grupie zasobów klastra. Konto magazynu nie ma stałej nazwy, ale w ramach konta, zobacz kontenerów obiektów blob i tabel o nazwach rozpoczynających się od *sieci szkieletowej*. Uzyskać informacji o konfigurowaniu kolekcje dziennika dla klastra autonomicznych, zobacz [tworzenie i zarządzanie nimi autonomicznej klastra sieci szkieletowej usług Azure](service-fabric-cluster-creation-for-windows-server.md) i [ustawienia konfiguracji dla autonomicznego Windows klastra](service-fabric-cluster-manifest.md). Dla wystąpień usługi sieć szkieletowa autonomicznych dzienniki powinny być przesyłane do udziału pliku lokalnego. Jesteś **wymagane** mają te dzienniki dla pomocy technicznej, ale nie są przeznaczone do można korzystać przez osobami poza zespół obsługi klienta firmy Microsoft.
+Jeśli zachodzi potrzeba skontaktuj się z działem pomocy technicznej firmy Microsoft, aby uzyskać pomoc dotyczącą klastra usługi Azure Service Fabric, dzienniki pomocy technicznej prawie zawsze są wymagane. Jeśli klaster jest hostowana na platformie Azure, dzienniki pomocy technicznej są automatycznie konfigurowane i zebrane w ramach tworzenia klastra. Dzienniki są przechowywane na koncie dedykowanych dla magazynu w grupie zasobów klastra. Konto magazynu nie ma stałej nazwie, ale w ramach konta zostanie wyświetlony kontenerów obiektów blob i tabel o nazwach zaczynających *sieci szkieletowej*. Uzyskać informacji o konfigurowaniu kolekcji dzienników na potrzeby klastra autonomicznego, zobacz [tworzenie samodzielnego klastra usługi Azure Service Fabric i zarządzanie](service-fabric-cluster-creation-for-windows-server.md) i [ustawienia konfiguracji dla autonomicznego Windows cluster](service-fabric-cluster-manifest.md). Dla wystąpień usługi Service Fabric autonomicznych dzienniki powinny być przesyłane do udziału pliku lokalnego. Jesteś **wymagane** ma następujące dzienniki pomocy technicznej, ale nie są przeznaczone do można używać przez nikogo poza zespół obsługi klienta firmy Microsoft.
 
-## <a name="measuring-performance"></a>Pomiaru wydajności
+## <a name="measuring-performance"></a>Mierzenie wydajności
 
-Miara wydajności klastra ułatwią zrozumienie, jak jest w stanie obsłużyć obciążenia i dysku decyzje wokół skalowanie klastra (Zobacz więcej informacji na temat skalowania klastra [na platformie Azure](service-fabric-cluster-scale-up-down.md), lub [lokalnymi](service-fabric-cluster-windows-server-add-remove-nodes.md)). Dane dotyczące wydajności jest również przydatne w porównaniu do akcji, które można lub aplikacje i usługi mogą posiadać pobrane podczas analizowania dzienników w przyszłości. 
+Zmierzyć wydajność klastra pomoże zrozumieć, jak jest w stanie obsłużyć obciążenia i sterować ich decyzji związanych z skalowania klastra (Zobacz więcej informacji na temat skalowania klastra [na platformie Azure](service-fabric-cluster-scale-up-down.md), lub [lokalnych](service-fabric-cluster-windows-server-add-remove-nodes.md)). Dane dotyczące wydajności jest również przydatne, gdy w porównaniu do akcji, które można swoje aplikacje i usługi oraz trwało, podczas analizowania dzienników w przyszłości. 
 
-Aby uzyskać listę liczników wydajności do zebrania po przy użyciu usługi Service Fabric, zobacz [liczników wydajności w sieci szkieletowej usług](service-fabric-diagnostics-event-generation-perf.md)
+Aby uzyskać listę liczników wydajności zbierających dane, korzystając z usługi Service Fabric, zobacz [liczników wydajności w usłudze Service Fabric](service-fabric-diagnostics-event-generation-perf.md)
 
-Istnieją dwa sposoby typowych, w których można skonfigurować zbieranie danych wydajności dla klastra:
+Poniżej przedstawiono dwie typowe sposoby, w których możesz skonfigurować zbieranie danych o wydajności dla klastra:
 
 * **Przy użyciu agenta**  
-Jest to preferowany sposób zbierania wydajności z komputera, ponieważ agenci mają zwykle listę metryki wydajności możliwości, które mogą być zbierane i jest stosunkowo łatwa procesu, aby wybrać metryki, które chcesz zebrać lub je zmienić. Przeczytaj informacje o [sposobu konfigurowania sieci szkieletowej usług OMS](service-fabric-diagnostics-event-analysis-oms.md) i [konfigurowania agenta systemu Windows OMS](../log-analytics/log-analytics-windows-agent.md) artykuły, aby dowiedzieć się więcej o agenta pakietu OMS to jeden taki agent monitorowania, który może podnieść wydajność dane dla maszyn wirtualnych klastra i wdrożone kontenery.
+Jest to preferowany sposób zbierania wydajności na komputerze, ponieważ agenci mają zwykle listę metryk maksymalną wydajność, które mogą być zbierane i jest stosunkowo łatwe procesowi wybrać metryki, które chcesz zbierać lub zmienić. Przeczytaj o [sposobu konfigurowania agenta usługi Log Analytics dla usługi Service Fabric](service-fabric-diagnostics-event-analysis-oms.md) i [konfigurowania agenta usługi Log Analytics](../log-analytics/log-analytics-windows-agent.md) artykuły, aby dowiedzieć się więcej na temat agenta usługi Log Analytics, która jest jeden taki agent monitorowania, który jest można wczytać dane wydajności dla maszyn wirtualnych z klastra i wdrożonych kontenerów.
 
-* **Konfigurowanie diagnostykę, aby zapisać liczniki wydajności do tabeli**  
-W przypadku klastrów w systemie Azure oznacza to, zmienianie konfiguracji diagnostyki Azure do odebrania liczniki wydajności odpowiednie z maszyn wirtualnych w klastrze, a następnie włączenie go do odebrania Statystyka docker, jeśli będziesz wdrażać żadnych kontenerów. Przeczytaj informacje o konfigurowaniu [liczniki wydajności w WAD](service-fabric-diagnostics-event-aggregation-wad.md) w sieci szkieletowej usług, aby skonfigurować zbieranie danych licznika wydajności.
+* **Konfigurowanie diagnostyki do zapisania liczników wydajności do tabeli**  
+W przypadku klastrów na platformie Azure oznacza to, zmiana konfiguracji diagnostyki platformy Azure w celu zbierania liczników wydajności odpowiednich maszyn wirtualnych w klastrze i włączanie, aby wczytać statystyk platformy docker, jeśli będziesz wdrażać żadnych kontenerów. Przeczytaj o konfigurowaniu [liczników wydajności w WAD](service-fabric-diagnostics-event-aggregation-wad.md) w usłudze Service Fabric, aby skonfigurować zbieranie danych licznika wydajności.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dzienniki, a zdarzenia konieczne zagregowane, zanim będzie można wysłać do dowolnej platformie analizy. Przeczytaj informacje o [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) i [WAD](service-fabric-diagnostics-event-aggregation-wad.md) aby lepiej zrozumieć niektóre zalecane opcje.
+Swoje dzienniki i zdarzenia muszą być agregowane, zanim będzie można wysłać do dowolnej platformy analizy. Przeczytaj o [użyciu struktury EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) i [WAD](service-fabric-diagnostics-event-aggregation-wad.md) aby lepiej zrozumieć niektóre zalecane opcje.

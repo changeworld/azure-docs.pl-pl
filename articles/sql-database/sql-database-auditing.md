@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: bd40faf8a77a8940dc78375ec516c39742540231
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: b18f7efa09b33def2851967b5fc78bb1ddbc61e6
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352842"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404923"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 
@@ -79,7 +79,7 @@ W poniższej sekcji opisano konfigurację inspekcji przy użyciu witryny Azure p
 
     ![Okienko nawigacji][3]
 
-5. **Nowe** — masz teraz wiele opcji dotyczących konfigurowania której będą zapisywane dzienniki inspekcji. Konto usługi Azure storage, obszaru roboczego pakietu OMS do użycia przez usługę Log Analytics lub Centrum zdarzeń do użycia z Centrum zdarzeń, można napisać dzienników. Można skonfigurować dowolną kombinację tych opcji, a do każdego będą zapisywane w dziennikach inspekcji.
+5. **Nowe** — masz teraz wiele opcji dotyczących konfigurowania której będą zapisywane dzienniki inspekcji. Konto usługi Azure storage, obszar roboczy usługi Log Analytics do użycia przez usługę Log Analytics lub Centrum zdarzeń do użycia z Centrum zdarzeń, można napisać dzienników. Można skonfigurować dowolną kombinację tych opcji, a do każdego będą zapisywane w dziennikach inspekcji.
 
     ![Opcje magazynu](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 
@@ -87,9 +87,9 @@ W poniższej sekcji opisano konfigurację inspekcji przy użyciu witryny Azure p
 
     ![konto magazynu](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
-7. Aby skonfigurować zapisywanie inspekcji dzienników z obszarem roboczym pakietu OMS, wybierz opcję **usługi Log Analytics (wersja zapoznawcza)** , a następnie otwórz **szczegóły usługi Log Analytics**. Wybierz lub Utwórz obszar roboczy OMS, którym będą zapisywane dzienniki, a następnie kliknij przycisk **OK**.
+7. Aby skonfigurować zapisywanie inspekcji dzienników z obszarem roboczym usługi Log Analytics, wybierz opcję **usługi Log Analytics (wersja zapoznawcza)** , a następnie otwórz **szczegóły usługi Log Analytics**. Wybierz lub Utwórz obszar roboczy usługi Log Analytics, której będą zapisywane dzienniki, a następnie kliknij przycisk **OK**.
 
-    ![OMS](./media/sql-database-auditing-get-started/auditing_select_oms.png)
+    ![Log Analytics](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 
 8. Aby skonfigurować zapisywanie inspekcji dzienników do Centrum zdarzeń, wybierz opcję **Centrum zdarzeń (wersja zapoznawcza)** , a następnie otwórz **szczegóły Centrum zdarzeń**. Wybierz Centrum zdarzeń, w którym będą zapisywane dzienniki, a następnie kliknij przycisk **OK**. Pamiętaj, że Centrum zdarzeń znajduje się w tym samym regionie, co bazy danych i serwera.
 
@@ -109,10 +109,10 @@ W przypadku wybrania tylko zapisywanie dzienników inspekcji usługi Log Analyti
 
 - Następnie, klikając **Otwórz w usłudze OMS** w górnej części **rekordy inspekcji** zostanie otwarta strona Widok dzienników w usłudze Log Analytics, w którym można dostosować zakres czasu i zapytania wyszukiwania.
 
-    ![Otwórz w pakiecie OMS](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
+    ![Otwórz w usłudze Log Analytics](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
 
 - Alternatywnie można także przejść dzienniki inspekcji w bloku usługi Log Analytics. Otwórz obszar roboczy usługi Log Analytics i w obszarze **ogólne** kliknij **dzienniki**. Można zacząć od prostego zapytania, takie jak: *wyszukiwanie "SQLSecurityAuditEvents"* Aby wyświetlić inspekcji logowania.
-    W tym miejscu możesz również użyć [Operations Management Suite (OMS) Log Analytics](../log-analytics/log-analytics-log-search.md) przeprowadzić zaawansowane wyszukiwanie na dane dziennika inspekcji. Usługa log Analytics udostępnia w czasie rzeczywistym operational insights za pomocą zintegrowanej funkcji wyszukiwania i niestandardowym pulpitom nawigacyjnym umożliwiającym szybkie analizowanie milionów rekordów z wszystkich obciążeń i serwerów. Aby uzyskać dodatkowe przydatne informacje dotyczące języka wyszukiwania usługi Log Analytics pakietu OMS i poleceń, zobacz [usługi Log Analytics Wyszukaj odwołanie](../log-analytics/log-analytics-log-search.md).
+    W tym miejscu możesz również użyć [usługi Log Analytics](../log-analytics/log-analytics-log-search.md) przeprowadzić zaawansowane wyszukiwanie na dane dziennika inspekcji. Usługa log Analytics udostępnia w czasie rzeczywistym operational insights za pomocą zintegrowanej funkcji wyszukiwania i niestandardowym pulpitom nawigacyjnym umożliwiającym szybkie analizowanie milionów rekordów z wszystkich obciążeń i serwerów. Aby uzyskać dodatkowe przydatne informacje dotyczące języka wyszukiwania usługi Log Analytics i poleceń, zobacz [usługi Log Analytics Wyszukaj odwołanie](../log-analytics/log-analytics-log-search.md).
 
 W przypadku wybrania tylko zapisywanie dzienników inspekcji w Centrum zdarzeń:
 

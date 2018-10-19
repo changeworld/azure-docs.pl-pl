@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 6096833381db7ef0d2f011d517aaad4ae63ce4d6
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 6ec07d02e61d50aa588d75ba7337eb9237e11207
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576871"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402901"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Tworzenie alertu dziennika za pomocą szablonu usługi Resource Manager
 W tym artykule pokazano, jak zarządzać [alerty dzienników](monitor-alerts-unified-log.md) programowo w dużej skali, na platformie Azure przy użyciu [szablonu usługi Azure Resource Manager](..//azure-resource-manager/resource-group-authoring-templates.md) za pośrednictwem [programu Azure Powershell](../azure-resource-manager/resource-group-template-deploy.md) i [Wiersza polecenia platformy azure](../azure-resource-manager/resource-group-template-deploy-cli.md). Obecnie usługi Azure Alerts obsługuje alerty dzienników dla zapytań z [usługi Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) i [usługi Azure Application Insights](../application-insights/app-insights-analytics-tour.md).
 
 ## <a name="managing-log-alert-on-log-analytics"></a>Zarządzanie alertu dziennika w usłudze Log Analytics
-Alert dziennika dla [usługi Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) jest zintegrowana z [nowych alertów platformy Azure środowiska](monitoring-overview-unified-alerts.md); nadal wychodzi poza interfejsami API analizy dzienników i pozostaje zgodność ze schematem wcześniej używane do zarządzania [alerty w portalu pakietu OMS](..//log-analytics/log-analytics-alerts-creating.md).
+Alert dziennika dla [usługi Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) jest zintegrowana z [nowych alertów platformy Azure środowiska](monitoring-overview-unified-alerts.md); nadal wychodzi poza interfejsami API analizy dzienników i pozostaje compatibile ze schematem wcześniej używane.
 
 > [!NOTE]
-> Począwszy od 14 maja 2018 r. wszystkie alerty w obszarze roboczym automatycznie rozpocznie się rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z pakietu OMS](monitoring-alerts-extend.md). 
+> Począwszy od 14 maja 2018 r. wszystkie alerty w obszarze roboczym już automatycznie rozszerzone na platformę Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformę Azure](monitoring-alerts-extend.md). 
 
 ### <a name="using-azure-resource-manager-template"></a>Przy użyciu szablonu usługi Resource Manager platformy Azure
 Alerty dzienników usługi Log Analytics są tworzone przez reguły alertów, uruchamianych zapisanej operacji wyszukiwania w regularnych odstępach czasu. Jeśli wyniki zapytania dopasowania określone kryteria, zostaje utworzony rekord alertu i są uruchamiane co najmniej jednej akcji. 

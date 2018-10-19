@@ -5,21 +5,21 @@ services: virtual-machines-windows, virtual-machines-linux
 author: dlepow
 ms.service: multiple
 ms.topic: include
-ms.date: 09/28/2018
+ms.date: 10/09/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: f9974aae1e5996ffeaa6cde690a5e10ccba4cc32
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 4d2235eaea457c89d01a632afa5dd5a862bec344
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48019016"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49437135"
 ---
 ## <a name="deploy-an-image-with-marketplace-terms"></a>Wdrażanie obrazu z warunkami witryny Marketplace
 
-Określonych obrazów maszyn wirtualnych w witrynie Azure Marketplace mają dodatkową licencję i zakupu warunki, które muszą zaakceptować przed ich wdrożeniem programowo.  
+Niektóre obrazy maszyn wirtualnych w witrynie Azure Marketplace mają dodatkową licencję i zakupu warunki, które muszą zaakceptować przed ich wdrożeniem programowo.  
 
-Aby wdrożyć Maszynę wirtualną z takiego obrazu, należy zaakceptować postanowienia obrazu i włączyć wdrożenia programowe. Wystarczy zrobić to raz w ramach subskrypcji. Następnie każdorazowo wdrożysz maszynę Wirtualną programowo z obrazu, należy również określić *zakupić plan* parametrów.
+Aby wdrożyć Maszynę wirtualną z takiego obrazu, należy zaakceptować postanowienia obrazu i włączyć wdrożenia programowe. Tylko należy zrobić to raz na subskrypcję. Następnie przy każdym wdrożysz maszynę Wirtualną programowo z obrazu należy także określić *zakupić plan* parametrów.
 
 Następujące sekcje show jak:
 

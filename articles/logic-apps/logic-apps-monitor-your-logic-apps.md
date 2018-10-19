@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: a08cd6289fc85b79ccec731126a33a9549d60546
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: c2e487f421d2dfc875efde82c078f557f7bd03d2
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123537"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405739"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Monitorowanie stanu, skonfigurować rejestrowanie diagnostyczne i Włącz alerty w usłudze Azure Logic Apps
 
@@ -90,7 +90,9 @@ Przed rozpoczęciem wykonywania tej procedury, musisz mieć obszar roboczy usłu
 
    1. Wybierz **wysyłanie do usługi Log Analytics**. 
    2. W obszarze **usługi Log Analytics**, wybierz **Konfiguruj**. 
-   3. W obszarze **obszarów roboczych pakietu OMS**, wybierz obszar roboczy usługi Log Analytics na potrzeby rejestrowania.
+   3. W obszarze **obszarów roboczych pakietu OMS**, wybierz obszar roboczy na potrzeby rejestrowania.
+   > [!NOTE]
+   > Obszary robocze OMS są teraz nazywane obszarów roboczych usługi Log Analytics.
    4. W obszarze **dziennika**, wybierz opcję **środowiska wykonawczego przepływów pracy** kategorii.
    5. Interwał metryki.
    6. Gdy wszystko będzie gotowe, wybierz pozycję **Zapisz**.

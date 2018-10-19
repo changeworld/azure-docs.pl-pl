@@ -1,6 +1,6 @@
 ---
-title: Za pomocą interfejsu API usługi OMS Log Analytics REST alertów
-description: Log Analytics alertu interfejsu API REST umożliwia tworzenie i Zarządzanie alertami w usłudze Log Analytics, który jest częścią Operations Management Suite (OMS).  Ten artykuł zawiera szczegółowe informacje o interfejsie API i przykłady do wykonywania różnych operacji.
+title: Za pomocą interfejsu API REST alertów usługi Log Analytics
+description: Log Analytics alertu interfejsu API REST umożliwia tworzenie i Zarządzanie alertami w usłudze Log Analytics, która jest częścią usługi Log Analytics.  Ten artykuł zawiera szczegółowe informacje o interfejsie API i przykłady do wykonywania różnych operacji.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: b178744911d03547509de58e35be5cd99e046391
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 85cf55b4117208266e247316b1050e3988a2ce23
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079059"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409156"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Tworzenie i zarządzanie nimi reguły alertów w usłudze Log Analytics przy użyciu interfejsu API REST
-Log Analytics alertu interfejsu API REST umożliwia tworzenie i Zarządzanie alertami w Operations Management Suite (OMS).  Ten artykuł zawiera szczegółowe informacje o interfejsie API i przykłady do wykonywania różnych operacji.
+Log Analytics alertu interfejsu API REST umożliwia tworzenie i Zarządzanie alertami w usłudze Log Analytics.  Ten artykuł zawiera szczegółowe informacje o interfejsie API i przykłady do wykonywania różnych operacji.
 
-Interfejsu API do REST wyszukiwania usługi Log Analytics jest zgodne ze specyfikacją REST i możliwy za pośrednictwem interfejsu REST API usługi Azure Resource Manager. W tym dokumencie można znaleźć przykłady gdzie interfejsu API jest dostępny z wiersza polecenia programu PowerShell przy użyciu [ARMClient](https://github.com/projectkudu/ARMClient), narzędzie wiersza polecenia typu open source, które upraszcza wywoływanie interfejsu API usługi Azure Resource Manager. Korzystanie z programu PowerShell i ARMClient jest jedną z wielu opcji, aby dostęp do interfejsu API wyszukiwania usługi Log Analytics. Za pomocą tych narzędzi może korzystać z usługi Azure Resource Manager interfejsu API RESTful do wykonywania wywołań do obszarów roboczych pakietu OMS i wykonywania poleceń wyszukiwania w nich. Interfejs API zwróci wyniki wyszukiwania dla użytkownika w formacie JSON, co pozwala na wykorzystanie wyniki wyszukiwania na wiele różnych sposobów programowo.
+Interfejsu API do REST wyszukiwania usługi Log Analytics jest zgodne ze specyfikacją REST i możliwy za pośrednictwem interfejsu REST API usługi Azure Resource Manager. W tym dokumencie można znaleźć przykłady gdzie interfejsu API jest dostępny z wiersza polecenia programu PowerShell przy użyciu [ARMClient](https://github.com/projectkudu/ARMClient), narzędzie wiersza polecenia typu open source, które upraszcza wywoływanie interfejsu API usługi Azure Resource Manager. Korzystanie z programu PowerShell i ARMClient jest jedną z wielu opcji, aby dostęp do interfejsu API wyszukiwania usługi Log Analytics. Za pomocą tych narzędzi może korzystać z usługi Azure Resource Manager interfejsu API RESTful do wykonywania wywołań do obszarów roboczych usługi Log Analytics i wykonywania poleceń wyszukiwania w nich. Interfejs API zwróci wyniki wyszukiwania dla użytkownika w formacie JSON, co pozwala na wykorzystanie wyniki wyszukiwania na wiele różnych sposobów programowo.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Obecnie alertów można tworzyć tylko za pomocą zapisanego kryterium wyszukiwania w usłudze Log Analytics.  Możesz zapoznać się z [interfejsu API REST wyszukiwania dziennika](log-analytics-log-search-api.md) Aby uzyskać więcej informacji.
@@ -36,7 +36,7 @@ Harmonogramy mają właściwości podane w poniższej tabeli.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Interwał |Jak często jest uruchamiany podczas wyszukiwania. Mierzony w ciągu kilku minut. |
+| Interval |Jak często jest uruchamiany podczas wyszukiwania. Mierzony w ciągu kilku minut. |
 | QueryTimeSpan |Przedział czasu, w którym jest oceniana kryteria. Musi być równy lub większy niż interwał. Mierzony w ciągu kilku minut. |
 | Wersja |Używana wersja interfejsu API.  Obecnie to powinno być zawsze ustawiony na 1. |
 
@@ -67,7 +67,7 @@ Oto przykładowa odpowiedź dla harmonogramu.
 ```
 
 ### <a name="creating-a-schedule"></a>Tworzenie harmonogramu
-Za pomocą metody Put identyfikator unikatowy harmonogram do utworzenia nowego harmonogramu.  Należy zauważyć, że dwa harmonogramy nie ten sam identyfikator nawet, jeśli są one skojarzone z różnymi zapisane wyszukiwania.  Podczas tworzenia harmonogramu w konsoli pakietu OMS, identyfikator GUID jest tworzona dla identyfikator harmonogramu.
+Za pomocą metody Put identyfikator unikatowy harmonogram do utworzenia nowego harmonogramu.  Należy zauważyć, że dwa harmonogramy nie ten sam identyfikator nawet, jeśli są one skojarzone z różnymi zapisane wyszukiwania.  Podczas tworzenia harmonogramu w konsoli usługi Log Analytics, identyfikator GUID jest tworzona dla identyfikator harmonogramu.
 
 > [!NOTE]
 > Nazwy wszystkich zapisanych wyszukiwań, harmonogramy i działań utworzonych za pomocą interfejsu API programu Log Analytics musi być pisane małymi literami.
@@ -102,7 +102,7 @@ Wszystkie działania mają właściwości podane w poniższej tabeli.  Różne t
 ### <a name="retrieving-actions"></a>Pobieranie akcji
 
 > [!NOTE]
-> Począwszy od 14 maja 2018 r. wszystkie alerty w przypadku chmury publicznej platformy Azure, obszaru roboczego usługi Log Analytics zostaną automatycznie rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z pakietu OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje są obecnie kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [API grupy akcji](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> Począwszy od 14 maja 2018 r. wszystkie alerty w przypadku chmury publicznej platformy Azure, obszaru roboczego usługi Log Analytics zostaną automatycznie rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z usługą Log Analytics](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje są obecnie kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [API grupy akcji](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 Aby pobrać wszystkie akcje w przypadku harmonogramu, należy użyć metody Get.
 
@@ -113,7 +113,7 @@ Za pomocą metody Get ID akcji można pobrać określoną akcję dla harmonogram
     armclient get /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/actions/{Action ID}?api-version=2015-03-20
 
 ### <a name="creating-or-editing-actions"></a>Tworzenie lub edytowanie akcji
-Za pomocą Identyfikatora akcji, która jest unikatowa w harmonogramie, aby utworzyć nową akcję, należy użyć metody Put.  Podczas tworzenia akcji w konsoli pakietu OMS, jest identyfikator GUID dla identyfikatora akcji.
+Za pomocą Identyfikatora akcji, która jest unikatowa w harmonogramie, aby utworzyć nową akcję, należy użyć metody Put.  Podczas tworzenia akcji w konsoli usługi Log Analytics, jest identyfikator GUID dla identyfikatora akcji.
 
 > [!NOTE]
 > Nazwy wszystkich zapisanych wyszukiwań, harmonogramy i działań utworzonych za pomocą interfejsu API programu Log Analytics musi być pisane małymi literami.
@@ -125,7 +125,7 @@ Format żądania do tworzenia nowej akcji zależy od typu akcji, dzięki czemu t
 ### <a name="deleting-actions"></a>Usuwanie akcji
 
 > [!NOTE]
-> Począwszy od 14 maja 2018 r. wszystkie alerty w przypadku chmury publicznej platformy Azure, obszaru roboczego usługi Log Analytics zostaną automatycznie rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z pakietu OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje są obecnie kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [API grupy akcji](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> Począwszy od 14 maja 2018 r. wszystkie alerty w przypadku chmury publicznej platformy Azure, obszaru roboczego usługi Log Analytics zostaną automatycznie rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z usługą Log Analytics](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje są obecnie kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [API grupy akcji](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 Za pomocą metody Delete ID akcji można usunąć danej akcji.
 
@@ -146,7 +146,7 @@ Harmonogram powinien mieć jeden i tylko jeden Akcja alertu.  Akcje alertu mają
 | Akcje elementu Webhook | Wypychanie danych z alertami, do żądanej usługi w formacie JSON |Nie jest to wymagane, jeśli alerty zostały rozszerzone na platformę Azure|
 
 > [!NOTE]
-> Począwszy od 14 maja 2018 r. wszystkie alerty w przypadku chmury publicznej platformy Azure, obszaru roboczego usługi Log Analytics zostaną automatycznie rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z pakietu OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md).
+> Począwszy od 14 maja 2018 r. wszystkie alerty w przypadku chmury publicznej platformy Azure, obszaru roboczego usługi Log Analytics zostaną automatycznie rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z usługą Log Analytics](../monitoring-and-diagnostics/monitoring-alerts-extend.md).
 
 #### <a name="thresholds"></a>Progi
 Akcji alertu powinna mieć tylko jedną wartość progową.  Gdy wyniki zapisanego kryterium wyszukiwania są zgodne próg w akcji skojarzonej z tym wyszukiwaniem, są uruchamiane inne procesy, w tym działaniu.  Akcji może również zawierać tylko wartości progowej, dzięki czemu można z działaniami innych typów, które nie zawierają wartości progowe.
@@ -355,7 +355,7 @@ Za pomocą metody Put istniejący identyfikator akcji do modyfikowania grupy akc
 Powiadomienia e-mail Wyślij wiadomości e-mail do co najmniej jednego adresata.  Obejmują one właściwości w poniższej tabeli.
 
 > [!NOTE]
-> Począwszy od 14 maja 2018 r. wszystkie alerty w przypadku chmury publicznej platformy Azure, obszaru roboczego usługi Log Analytics zostaną automatycznie rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z pakietu OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcji, takich jak powiadomienia E-Mail są teraz kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [API grupy akcji](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> Począwszy od 14 maja 2018 r. wszystkie alerty w przypadku chmury publicznej platformy Azure, obszaru roboczego usługi Log Analytics zostaną automatycznie rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z usługą Log Analytics](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcji, takich jak powiadomienia E-Mail są teraz kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [API grupy akcji](https://docs.microsoft.com/rest/api/monitor/actiongroups).
    
 
 | Właściwość | Opis |
@@ -396,16 +396,16 @@ Za pomocą metody Put istniejący identyfikator akcji do modyfikowania akcji poc
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myemailaction?api-version=2015-03-20 $emailJson
 
 #### <a name="remediation-actions"></a>Akcje naprawcze
-Korygowania funkcję uruchamiania elementu runbook w usłudze Azure Automation, która podejmuje próbę rozwiązania problemu wskazanego przez alert.  Należy utworzyć element webhook dla elementu runbook użytego w akcje naprawcze, a następnie określ identyfikator URI, we właściwości WebhookUri.  Podczas tworzenia tej akcji, używając konsoli OMS nowego elementu webhook jest tworzony automatycznie dla elementu runbook.
+Korygowania funkcję uruchamiania elementu runbook w usłudze Azure Automation, która podejmuje próbę rozwiązania problemu wskazanego przez alert.  Należy utworzyć element webhook dla elementu runbook użytego w akcje naprawcze, a następnie określ identyfikator URI, we właściwości WebhookUri.  Po utworzeniu tej akcji, używając witryny Azure portal, nowy element webhook jest tworzony automatycznie dla elementu runbook.
 
 > [!NOTE]
-> Począwszy od 14 maja 2018 r. wszystkie alerty w przypadku chmury publicznej platformy Azure, obszaru roboczego usługi Log Analytics zostaną automatycznie rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z pakietu OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje, takie jak korygowania, korzystając z elementu runbook są teraz kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [API grupy akcji](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> Począwszy od 14 maja 2018 r. wszystkie alerty w przypadku chmury publicznej platformy Azure, obszaru roboczego usługi Log Analytics zostaną automatycznie rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z usługą Log Analytics](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje, takie jak korygowania, korzystając z elementu runbook są teraz kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [API grupy akcji](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 Korygowania funkcję obejmują właściwości w poniższej tabeli.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| RunbookName |Nazwa elementu runbook. Musi on być zgodny opublikowanego elementu runbook na koncie usługi automation skonfigurowano w rozwiązaniu automatyzacji w obszarze roboczym usługi OMS. |
+| RunbookName |Nazwa elementu runbook. Musi on być zgodny opublikowanego elementu runbook na koncie usługi automation skonfigurowano w rozwiązaniu usługi Automation, w obszarze roboczym usługi Log Analytics. |
 | WebhookUri |Identyfikator URI elementu webhook. |
 | Data wygaśnięcia |Datę i godzinę wygaśnięcia elementu webhook.  Jeśli element webhook nie ma wygasania, może to być dowolną prawidłową datę przyszłości. |
 
@@ -458,7 +458,7 @@ Poniżej znajduje się pełny przykład można utworzyć nowego alertu wiadomoś
 Akcje elementu Webhook Uruchom proces, przez wywołanie adresu URL i opcjonalnie podania ładunku do wysłania.  Są one podobne do akcji korygowania, z wyjątkiem są przeznaczone dla elementów webhook, które może wywoływać procesy inne niż elementów runbook usługi Azure Automation.  Zapewniają także dodatkowe opcji związanych z udostępnianiem ładunek został dostarczony do zdalnego procesu.
 
 > [!NOTE]
-> Począwszy od 14 maja 2018 r. wszystkie alerty w przypadku chmury publicznej platformy Azure, obszaru roboczego usługi Log Analytics zostaną automatycznie rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z pakietu OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje, takie jak element Webhook teraz są kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [API grupy akcji](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> Począwszy od 14 maja 2018 r. wszystkie alerty w przypadku chmury publicznej platformy Azure, obszaru roboczego usługi Log Analytics zostaną automatycznie rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z usługą Log Analytics](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje, takie jak element Webhook teraz są kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [API grupy akcji](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 
 Akcje elementu Webhook nie mają wartości progowej, ale zamiast tego powinny zostać dodane do harmonogram, który ma akcji alertu o progu.  

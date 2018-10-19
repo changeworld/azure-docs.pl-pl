@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 7e4889148a752b552f8bd65702ea5dda450ded31
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 81eacf464c90d56c4ebeae1d1cefbd6f2f0fdab8
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044301"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408544"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Przeszukiwanie dzienników grup komputerów w usłudze Log Analytics
 
@@ -62,7 +62,7 @@ Poniższa procedura umożliwia utworzenie grupy komputerów z przeszukiwania dzi
 
 
 ### <a name="active-directory"></a>Usługa Active Directory
-Podczas konfigurowania usługi Log Analytics, aby zaimportować członkostwa w grupach usługi Active Directory analizuje członkostwa w grupie komputerów przyłączonych do domeny za pomocą agenta pakietu OMS.  Grupa komputerów jest tworzony w usłudze Log Analytics dla każdej grupy zabezpieczeń w usłudze Active Directory, a każdy komputer został dodany do grupy komputerów, odpowiadający grup zabezpieczeń, do których należą.  To członkostwo jest stale aktualizowany co 4 godziny.  
+Podczas konfigurowania usługi Log Analytics, aby zaimportować członkostwa w grupach usługi Active Directory analizuje członkostwa w grupie komputerów przyłączonych do domeny za pomocą agenta usługi Log Analytics.  Grupa komputerów jest tworzony w usłudze Log Analytics dla każdej grupy zabezpieczeń w usłudze Active Directory, a każdy komputer został dodany do grupy komputerów, odpowiadający grup zabezpieczeń, do których należą.  To członkostwo jest stale aktualizowany co 4 godziny.  
 
 Konfigurowanie usługi Log Analytics można zaimportować grupy zabezpieczeń usługi Active Directory z usługą Log Analytics **Zaawansowane ustawienia** w witrynie Azure portal.  Wybierz **grup komputerów**, **usługi Active Directory**, a następnie **członkostwa w grupach usługi Active Directory importu z komputerów**.  Nie są wymagane żadne dalsze czynności konfiguracyjne.
 
@@ -71,7 +71,7 @@ Konfigurowanie usługi Log Analytics można zaimportować grupy zabezpieczeń us
 Grupy zostały zaimportowane, menu znajdują się liczby komputerów za pomocą członkostwa w grupie wykryte i liczba grup zaimportowane.  Możesz kliknąć jedno z poniższych linków, aby zwrócić **Grupa_komputerów** rekordy z tymi informacjami.
 
 ### <a name="windows-server-update-service"></a>Windows Server Update Service
-Podczas konfigurowania usługi Log Analytics, aby zaimportować członkostwa w grupach usług WSUS, analizuje określania wartości docelowej członkostwa w grupie komputerów za pomocą agenta pakietu OMS.  Jeśli używasz klienta przeznaczone dla dowolnego komputera, który jest podłączony do usługi Log Analytics i jest częścią dowolnego programu WSUS przeznaczone dla grup ma jego członkostwo w grupie zaimportowany do usługi Log Analytics. Jeśli używasz po stronie serwera dla pakietu OMS agent powinien być zainstalowany na serwerze programu WSUS w taki sposób, w kolejności, aby uzyskać informacje o członkostwie grupy do zaimportowania do usługi Log Analytics.  To członkostwo jest stale aktualizowany co 4 godziny. 
+Podczas konfigurowania usługi Log Analytics, aby zaimportować członkostwa w grupach usług WSUS, analizuje określania wartości docelowej członkostwa w grupie komputerów za pomocą agenta usługi Log Analytics.  Jeśli używasz klienta przeznaczone dla dowolnego komputera, który jest podłączony do usługi Log Analytics i jest częścią dowolnego programu WSUS przeznaczone dla grup ma jego członkostwo w grupie zaimportowany do usługi Log Analytics. Jeśli używasz po stronie serwera dla usługi Log Analytics agent powinien być zainstalowany na serwerze programu WSUS w taki sposób, w kolejności, aby uzyskać informacje o członkostwie grupy do zaimportowania do usługi Log Analytics.  To członkostwo jest stale aktualizowany co 4 godziny. 
 
 Konfigurowanie usługi Log Analytics do zaimportowania grup usług WSUS z usługą Log Analytics **Zaawansowane ustawienia** w witrynie Azure portal.  Wybierz **grup komputerów**, **WSUS**, a następnie **członkostwa w grupach importu programu WSUS**.  Nie są wymagane żadne dalsze czynności konfiguracyjne.
 

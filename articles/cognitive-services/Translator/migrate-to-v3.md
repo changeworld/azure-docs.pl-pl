@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: eaf65bef28110d73378c213ae4781a409b86e1bd
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 74fcfa0e1474d7d2a25d0bf9d0476fb1bb870334
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46128183"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429511"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>W usłudze Translator tekstu interfejsu API w wersji 2 do migracji V3
 
@@ -32,23 +32,23 @@ Koniec ten dokument zawiera przydatne linki dla Ciebie dowiedzieć się więcej.
 * Transliteracja — metoda transliterate została dodana do interfejsu API. Ta metoda zostanie przekonwertowana słowa i zdania w jednym skrypcie (np. Arabski) do innego skryptu (np. Łaciński).
 * Języki — nowej metody "języki" dostarcza informacje o języku, w formacie JSON, do użytku z programem "translacji", "Słownik" i "transliteracja" metod.
 * Jesteś nowym użytkownikiem Translate — nowe funkcje zostały dodane do metody "translacji" w celu obsługi niektórych funkcji, które były w interfejsie API w wersji 2 jako odrębne metody. Przykładem jest TranslateArray.
-* Czytaj metody — funkcji zamiany tekstu na mowę nie jest już obsługiwana w interfejsie API w usłudze Translator firmy Microsoft. Funkcja zamiany tekstu na mowę jest dostępna w usługach Azure Cognitive modułu Speech API Bing.
+* Czytaj metody — funkcji zamiany tekstu na mowę nie jest już obsługiwana w interfejsie API w usłudze Translator firmy Microsoft. Dostępne są funkcje zamiany tekstu na mowę [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech).
 
 Poniższa lista metod V2 i V3 zawiera metody V3 i interfejsów API, które zapewnia funkcje, dołączonej do wersji 2.
 
 | W wersji 2 Metoda interfejsu API   | W wersji 3 Zgodnością z interfejsem API |
 |:----------- |:-------------|
-| Tłumaczenie     | Tłumaczenie          |
-| TranslateArray      | Tłumaczenie          |
-| GetLanguageNames      | Języki          |
-| GetLanguagesForTranslate     | Języki        |
-| GetLanguagesForSpeak      | Interfejs API rozpoznawania mowy usług cognitive Services         |
-| Czytaj     | Interfejs API rozpoznawania mowy usług cognitive Services          |
-| Wykrywanie     | Wykrywanie         |
-| DetectArray     | Wykrywanie         |
-| AddTranslation     | Interfejs API Centrum usługi Microsoft Translator         |
-| AddTranslationArray    | Interfejs API Centrum usługi Microsoft Translator          |
-| BreakSentences      | BreakSentence         |
+| Tłumaczenie     | [Przetłumacz](reference/v3-0-translate.md)          |
+| TranslateArray      | [Przetłumacz](reference/v3-0-translate.md)        |
+| GetLanguageNames      | [Języki](reference/v3-0-languages.md)         |
+| GetLanguagesForTranslate     | [Języki](reference/v3-0-languages.md)       |
+| GetLanguagesForSpeak      | [Usługa Microsoft Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
+| Czytaj     | [Usługa Microsoft Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
+| Wykrywanie     | [Wykrywanie](reference/v3-0-detect.md)         |
+| DetectArray     | [Wykrywanie](reference/v3-0-detect.md)         |
+| AddTranslation     | [Centrum usługi Microsoft Translator interfejsu API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
+| AddTranslationArray    | [Centrum usługi Microsoft Translator interfejsu API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
+| BreakSentences      | [BreakSentence](reference/v3-0-break-sentence.md)       |
 | GetTranslations      | Funkcja nie jest już obsługiwana         |
 | GetTranslationsArray      | Funkcja nie jest już obsługiwana         |
 
@@ -81,7 +81,7 @@ Microsoft Translator w wersji 3 jest rozliczana w taki sam sposób, który zosta
 
 ## <a name="v3-end-points"></a>V3 punkty końcowe
 
-Global
+Globalny
 
 * API.cognitive.microsofttranslator.com
 

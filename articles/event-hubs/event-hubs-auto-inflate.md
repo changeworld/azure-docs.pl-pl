@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/02/2018
+ms.date: 10/18/2018
 ms.author: shvija
-ms.openlocfilehash: 32f99b43a37277e70d209f1f315dcb398c2b5931
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 12d8f3764dc52d8e76c3fb4599f6913fc8791f73
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004796"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426145"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatyczne skalowanie w górę jednostek przepływności usługi Azure Event Hubs
 
@@ -27,6 +27,8 @@ Azure Event Hubs to wysoce skalowana platforma do strumieniowego przesyłania da
 
 * Stawki transferu danych przychodzących danych przekracza zestaw jednostek przepływności.
 * Liczby żądań danych wychodzących przekracza zestaw jednostek przepływności.
+
+Usługa Event Hubs zwiększa przepływność, gdy rośnie obciążenie operacjami po osiągnięciu progu minimalne, bez żadnych żądań kończy się niepowodzeniem z błędami ServerBusy.
 
 ## <a name="how-auto-inflate-works"></a>Jak działa automatyczne rozszerzanie
 
@@ -54,6 +56,10 @@ Po włączeniu tej opcji możesz zacząć od małej przy użyciu jednostek przep
 Można również włączyć automatyczne rozszerzanie przy użyciu **skalowania** opcji w okienku ustawień w portalu:
  
 ![](./media/event-hubs-auto-inflate/event-hubs-auto-inflate2.png)
+
+
+> [!NOTE]
+> Po zastosowaniu automatyczne rozszerzanie konfiguracji zwiększenie jednostek przepływności, usługa Event Hubs emituje dzienniki diagnostyczne, które pozwalają dowiedzieć się, kiedy i dlaczego zwiększyć przepływność. 
 
 ### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>Włącz automatyczne rozszerzanie przy użyciu szablonu usługi Azure Resource Manager
 
@@ -101,6 +107,7 @@ Podczas wdrażania szablonu usługi Azure Resource Manager, można włączyć au
 ```
 
 Aby uzyskać kompletny szablon, zobacz [przestrzeni nazw usługi Event Hubs Utwórz i Włącz rozszerzanie](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate) szablon w witrynie GitHub.
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

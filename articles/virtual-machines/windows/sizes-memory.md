@@ -1,5 +1,5 @@
 ---
-title: Rozmiary maszyn wirtualnych Azure Windows - pamięci | Dokumentacja firmy Microsoft
+title: Usługa Azure rozmiary maszyn wirtualnych dla Windows - pamięci | Dokumentacja firmy Microsoft
 description: Wyświetla listę rozmiarów zoptymalizowanych pod kątem pamięci różnych dostępnymi dla maszyn wirtualnych Windows na platformie Azure. Wyświetla informacje o liczbie procesorów wirtualnych, dysków z danymi i kart sieciowych, a także magazynu przepustowości przepływność i sieci dla rozmiarów w tej serii.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/06/2018
 ms.author: jonbeck
-ms.openlocfilehash: 0ac25520e6de0208664e6c61ff21a988ebbd8f75
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: a81ce010e2d31a9852ca24a0ac45f6b4f60ab480
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903790"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428202"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Rozmiary maszyn wirtualnych zoptymalizowanych pod kątem pamięci
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 8983e98bdfb99d71559e1d79d5f6e72c8366b954
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 683efc6f772337754fc21a1e486d35b7f92e8f81
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268533"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428253"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Jak zaimplementować funkcje odzyskiwania po awarii przy użyciu usługi kopii zapasowej i przywracania w usłudze Azure API Management
 
@@ -122,7 +122,7 @@ Zastąp `{tentand id}`, `{application id}`, i `{redirect uri}` przy użyciu nast
 
 ## <a name="calling-the-backup-and-restore-operations"></a>Podczas wywoływania operacji tworzenia kopii zapasowych i przywracania
 
-Interfejsy API REST są [usługi Api Management — kopia zapasowa](https://docs.microsoft.com/rest/api/apimanagement/apimanagementservice/backup) i [usługi Api Management — Przywracanie](https://docs.microsoft.com/rest/api/apimanagement/apimanagementservice/restore).
+Interfejsy API REST są [usługi Api Management — kopia zapasowa](https://docs.microsoft.com/rest/api/apimanagement/apimanagementservice/apimanagementservice_backup) i [usługi Api Management — Przywracanie](https://docs.microsoft.com/rest/api/apimanagement/apimanagementservice/apimanagementservice_restore).
 
 Przed wywołaniem "Kopia zapasowa i przywracanie" czynności opisane w poniższych sekcjach, ustawić nagłówek autoryzacji żądania dla wywołania REST.
 

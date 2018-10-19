@@ -5,21 +5,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/07/2018
+ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: c26eee05a59a10036138f81086b3f6a9e0de6d5d
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 5da34e8e79c0df88cfad0b398aa8e1c22f158489
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737298"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428882"
 ---
-# <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>Zarządzanie prawami dostępu do danych usługi Azure Storage za pomocą funkcji RBAC (wersja zapoznawcza)
+# <a name="manage-access-rights-to-azure-blob-and-queue-data-with-rbac-preview"></a>Zarządzanie prawami dostępu do obiektów Blob platformy Azure i dane w kolejce przy użyciu RBAC (wersja zapoznawcza)
 
 Azure Active Directory (Azure AD) autoryzuje praw dostępu do zabezpieczonych zasobów przy użyciu [kontroli dostępu opartej na rolach (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview). Usługa Azure Storage definiuje zestaw wbudowane role kontroli RBAC, które obejmują typowe zestawy uprawnień, które umożliwiają dostęp do kontenerów i kolejki. Gdy rola RBAC jest przypisany do tożsamości usługi Azure AD, tożsamość ma uprawnienia do tych zasobów, zgodnie z określonego zakresu. Może należeć do poziomu subskrypcji, grupy zasobów, konto magazynu lub pojedynczy kontener lub kolejki zakresu dostępu. Można przypisać prawa dostępu do zasobów usługi Azure Storage przy użyciu witryny Azure portal, narzędzi wiersza polecenia platformy Azure i interfejsów API zarządzania platformy Azure. 
 
 Tożsamości usługi Azure AD może być użytkownika, grupy lub nazwy głównej usługi aplikacji, lub może być tożsamość zarządzaną dla zasobów platformy Azure. Podmiot zabezpieczeń może być użytkownika, grupy lub aplikacji jednostki usługi. A [tożsamości zarządzanej dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md) jest automatycznie zarządzanych tożsamości używany do uwierzytelniania z aplikacjami uruchomionymi na maszynach wirtualnych platformy Azure, aplikacji funkcji, zestawy skalowania maszyn wirtualnych i innych. Aby uzyskać omówienie tożsamości w usłudze Azure AD, zobacz [Understand Azure tożsamością](https://docs.microsoft.com/azure/active-directory/understand-azure-identity-solutions).
+
+[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
 ## <a name="rbac-roles-for-blobs-and-queues"></a>Role RBAC dla kolejek i obiektów blob
 
