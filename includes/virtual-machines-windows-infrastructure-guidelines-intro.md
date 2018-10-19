@@ -1,2 +1,0 @@
-Ten artykuł jest częścią serii szersze do przedstawienia zagadnienia i wytyczne podczas tworzenia infrastruktury aplikacji na platformie Azure. Możesz [wyświetlić dodatkowe tematy w tej serii](#next-steps). Chociaż możesz szybko tworzyć środowiska deweloperskiego/testowego na platformie Azure, istnieją dodatkowe zagadnienia podczas implementowania gotowe do produkcji, wysoko dostępne i bezpieczne środowisko.
-

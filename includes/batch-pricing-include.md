@@ -1,5 +1,0 @@
-## <a name="pricing"></a>Cennik
-
-Usługa Azure Batch jest bezpłatna; za samo konto usługi Batch nie są naliczane opłaty. Opłaty są naliczane za podstawowe zasoby obliczeniowe platformy Azure używane przez rozwiązania usługi Batch oraz za zasoby używane przez inne usługi podczas działania Twoich obciążeń. Są na przykład naliczane opłaty za węzły obliczeniowe (maszyny wirtualne) w pulach oraz za dane przechowywane w usłudze Azure Storage jako dane wejściowe lub wyjściowe zadań. Podobnie jeśli używasz funkcji [pakietów aplikacji](../articles/batch/batch-application-packages.md) usługi Batch, opłaty są naliczane za zasoby usługi Azure Storage wykorzystywane do przechowywania pakietów aplikacji. Więcej informacji można znaleźć w temacie [Ceny usługi Batch](https://azure.microsoft.com/pricing/details/batch/).
-
-[Maszyny wirtualne o niskim priorytecie](../articles/batch/batch-low-pri-vms.md) mogą znacznie zmniejszyć koszt obciążeń usługi Batch. Aby uzyskać informacje o cenach maszyn wirtualnych o niskim priorytecie, zobacz [Batch — cennik](https://azure.microsoft.com/pricing/details/batch/). 

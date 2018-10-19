@@ -1,2 +1,0 @@
-
-Aby udostępnić aplikację funkcji przy użyciu wersji 2.0 w wersji zapoznawczej środowisko uruchomieniowe usługi Functions, ustawić `FUNCTIONS_EXTENSION_VERSION` ustawienia aplikacji w aplikacji funkcji na wartość `beta`.
