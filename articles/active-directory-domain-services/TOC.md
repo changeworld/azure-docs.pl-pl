@@ -34,6 +34,7 @@
 ## Administrowanie domeną zarządzaną
 ### [Administrowanie domeną zarządzaną](active-directory-ds-admin-guide-administer-domain.md)
 ### [Administrowanie systemem DNS w domenie zarządzanej](active-directory-ds-admin-guide-administer-dns.md)
+### [Aktualizowanie powiadomień e-mail](active-directory-ds-notifications.md)
 ### Konfigurowanie protokołu LDAP dla domeny zarządzanej
 #### [Task 1: obtain a certificate for secure LDAP (Zadanie 1. Uzyskiwanie certyfikatu na potrzeby protokołu Secure LDAP)](active-directory-ds-admin-guide-configure-secure-ldap.md)
 #### [Task 2: export the secure LDAP certificate (Zadanie 2. Eksportowanie certyfikatu protokołu Secure LDAP)](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)

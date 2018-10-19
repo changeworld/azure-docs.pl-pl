@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 07/21/2017
-ms.openlocfilehash: fd48dfaf7b863ab026da1758751509d9911ae01e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 63aa455851633d1e49fd1b26861aaac8a670ef15
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948013"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404788"
 ---
 # <a name="monitor-b2b-messages-and-set-up-logging-for-integration-accounts-in-azure-logic-apps"></a>Monitorowanie komunikatów B2B i skonfigurować rejestrowanie dla konta integracji w usłudze Azure Logic Apps
 
@@ -58,7 +58,9 @@ Można włączyć rejestrowanie albo bezpośrednio z Twojego konta integracji lu
 
    1. Wybierz **wysyłanie do usługi Log Analytics**. 
    2. W obszarze **usługi Log Analytics**, wybierz **Konfiguruj**. 
-   3. W obszarze **obszarów roboczych pakietu OMS**, wybierz obszar roboczy usługi Log Analytics na potrzeby rejestrowania.
+   3. W obszarze **obszarów roboczych pakietu OMS**, wybierz obszar roboczy usługi Log Analytics na potrzeby rejestrowania. 
+   > [!NOTE]
+   > Obszary robocze OMS są teraz nazywane obszarów roboczych usługi Log Analytics. 
    4. W obszarze **dziennika**, wybierz opcję **IntegrationAccountTrackingEvents** kategorii.
    5. Wybierz pozycję **Zapisz**.
 
@@ -93,6 +95,8 @@ Można włączyć rejestrowanie albo bezpośrednio z Twojego konta integracji lu
    1. Wybierz **wysyłanie do usługi Log Analytics**. 
    2. W obszarze **usługi Log Analytics**, wybierz **Konfiguruj**. 
    3. W obszarze **obszarów roboczych pakietu OMS**, wybierz obszar roboczy usługi Log Analytics na potrzeby rejestrowania.
+   > [!NOTE]
+   > Obszary robocze OMS są teraz nazywane obszarów roboczych usługi Log Analytics.
    4. W obszarze **dziennika**, wybierz opcję **IntegrationAccountTrackingEvents** kategorii.
    5. Gdy wszystko będzie gotowe, wybierz pozycję **Zapisz**.
 
@@ -129,6 +133,6 @@ Platforma Azure obsługuje te śledzenie typów schematu, które ustalone schema
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Śledzenie komunikatów B2B w usłudze Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "komunikatów śledzenia B2B w pakiecie OMS")
+* [Śledzenie komunikatów B2B w usłudze Azure Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "komunikatów śledzenie B2B w usłudze Azure Log Analytics")
 * [Dowiedz się więcej na temat pakietu integracyjnego dla przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-overview.md "więcej informacji na temat pakietu integracyjnego dla przedsiębiorstw")
 

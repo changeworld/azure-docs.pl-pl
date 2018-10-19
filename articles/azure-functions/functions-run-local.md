@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: glenga
-ms.openlocfilehash: 1827e54f5e1e68ec324b4f521de843be48935391
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 15fb99270048d104dc392928c6932c6c2f7199a3
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079416"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430157"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
@@ -186,7 +186,7 @@ Local.settings.json pliku przechowuje ustawienia aplikacji, parametry połączen
 {
   "IsEncrypted": false,
   "Values": {
-    "FUNCTIONS\_WORKER\_RUNTIME": "<language worker>",
+    "FUNCTIONS_WORKER_RUNTIME": "<language worker>",
     "AzureWebJobsStorage": "<connection-string>",
     "AzureWebJobsDashboard": "<connection-string>",
     "MyBindingConnection": "<binding-connection-string>"
