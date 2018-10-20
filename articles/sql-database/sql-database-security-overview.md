@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, ronitr
 manager: craigg
 ms.date: 10/11/2018
-ms.openlocfilehash: b8bb9cbf53b297d8dca1ac67bae8765edcc2c9f4
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 7cabf1f0020e2f72dae138c7b7b79e69ce2fc677
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311205"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456987"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Omówienie funkcji zabezpieczeń usługi Azure SQL Database
 
@@ -32,7 +32,11 @@ Pełne omówienie funkcji zabezpieczeń dostępnych we wszystkich wersjach bazy 
 Usługa SQL Database zabezpiecza dane, szyfrując przesyłane dane za pomocą protokołu [Transport Layer Security](https://support.microsoft.com/kb/3135244), dane magazynowane za pomocą funkcji [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql), a używane dane za pomocą funkcji [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx).
 
 > [!IMPORTANT]
-> Wszystkie połączenia z usługą Azure SQL Database wymagają szyfrowania (SSL/TLS) podczas całego okresu, w którym dane są przesyłane do i z bazy danych. W parametrach połączenia aplikacji należy tak określić parametry, aby szyfrować połączenia i *nie* można ufać certyfikatowi serwera (jest to wykonywane automatycznie po skopiowaniu parametrów połączenia z witryny Azure portal), w przeciwnym razie połączenie nie weryfikuje tożsamość serwera i jest podatny na ataki "man-in--middle". Na przykład w przypadku sterownika ADO.NET te parametry połączenia mają wartość **Encrypt = True** i **TrustServerCertificate = False**. Aby uzyskać informacji na temat protokołów TLS i łączność, zobacz [zagadnienia dotyczące protokołu TLS](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)
+> Usługa Azure SQL Database wymusza szyfrowania (SSL/TLS) na cały czas dla wszystkie połączenia, dzięki któremu wszystkie dane są szyfrowane "przesyłanych" między bazy danych i klientem. Dzieje się tak niezależnie od ustawienia **Szyfruj** lub **TrustServerCertificate** w parametrach połączenia.
+>
+> Jeśli w parametrach połączenia aplikacji należy **nie** Określ szyfrowanego połączenia i *nie* ufać certyfikatowi serwera (sterownika dla ADO.NET, jest to **Encrypt = True**i **TrustServerCertificate = False**), aplikacja może być wrażliwych do man w środkowej ataków z powodu aplikacji nie Trwa weryfikacja serwera lub wymuszanie szyfrowania. Uzyskiwanie parametrów połączenia w witrynie Azure portal będzie mieć prawidłowe ustawienia
+>
+> Aby uzyskać informacji na temat protokołów TLS i łączność, zobacz [zagadnienia dotyczące protokołu TLS](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)
 
 Można również rozważyć inne sposoby szyfrowania danych:
 

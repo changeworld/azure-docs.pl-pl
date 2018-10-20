@@ -1,16 +1,16 @@
-W [portalu Azure](https://portal.azure.com), kliknij przycisk **grup zasobów** > **chmurze-powłoki-magazynu -\<your_region >**  >   **\<storage_account_name >**.
+W [witryny Azure portal](https://portal.azure.com), kliknij przycisk **grup zasobów** > **chmury-shell-storage -\<your_region >**  >   **\<nazwa_konta_magazynu >**.
 
-![Znajdź konto magazynu w chmurze powłoki](../articles/app-service/media/app-service-deploy-zip/upload-choose-storage-account.png)
+![Znajdź konto magazynu w usłudze Cloud Shell](../articles/app-service/media/app-service-deploy-zip/upload-choose-storage-account.png)
 
-W **omówienie** strony konta magazynu, wybierz opcję **pliki**.
+W **Przegląd** stronie konta magazynu, wybierz **pliki**.
 
-Wybierz udział plików automatycznie generowanych i wybierz **przekazać**. Ten udział plików jest zainstalowany w chmurze powłoki jako `clouddrive`.
+Wybierz udział automatycznie generowanych plików, a następnie wybierz **przekazywanie**. Ten udział plików jest zainstalowany w usłudze Cloud Shell jako `clouddrive`.
 
-![Znajdź przycisk Prześlij](../articles/app-service/media/app-service-deploy-zip/upload-select-button.png)
+![Znajdź przycisku przekazywania](../articles/app-service/media/app-service-deploy-zip/upload-select-button.png)
 
-Kliknij selektor plików i wybierz plik ZIP, a następnie kliknij przycisk **przekazać**. 
+Kliknij selektor pliku i wybierz swój plik ZIP, a następnie kliknij przycisk **przekazywanie**. 
 
-W powłoce chmury za pomocą `ls` Aby sprawdzić, czy widzą przekazanego pliku ZIP w domyślnym `clouddrive` udziału.
+W usłudze Cloud Shell za pomocą `ls` Aby sprawdzić, widoczny przekazany plik ZIP w domyślnym `clouddrive` udostępniania.
 
 ```azurecli-interactive
 ls clouddrive

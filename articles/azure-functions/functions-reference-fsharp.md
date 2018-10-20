@@ -1,6 +1,6 @@
 ---
 title: 'Dokumentacja usługi Azure Functions F # dla deweloperów | Dokumentacja firmy Microsoft'
-description: 'Dowiedz się, jak tworzenie usługi Azure Functions przy użyciu języka F #.'
+description: 'Dowiedz się, jak tworzenie funkcji platformy Azure przy użyciu skryptu F #.'
 services: functions
 documentationcenter: fsharp
 author: sylvanc
@@ -10,18 +10,21 @@ ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
 ms.service: azure-functions
 ms.devlang: fsharp
 ms.topic: reference
-ms.date: 09/09/2016
+ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: 5593f76511f43106d6743a158b051e118ef2a4a6
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 772b2dae016e093f2c3833374378c0e884dbe835
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125259"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456953"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Odwołanie do usługi Azure Functions dla deweloperów F #
 
-F # dla usługi Azure Functions to rozwiązanie umożliwiające łatwe uruchamianie małych fragmentów kodu lub "funkcji" w chmurze. Dane płyną do funkcji F # za pomocą argumentów funkcji. Argument nazwy zostały określone w `function.json`, wiąże się z wstępnie zdefiniowanych nazw do uzyskiwania dostępu do elementów, takich jak funkcja rejestratora i anulowania tokeny.
+F # dla usługi Azure Functions to rozwiązanie umożliwiające łatwe uruchamianie małych fragmentów kodu lub "funkcji" w chmurze. Dane płyną do funkcji F # za pomocą argumentów funkcji. Argument nazwy zostały określone w `function.json`, wiąże się z wstępnie zdefiniowanych nazw do uzyskiwania dostępu do elementów, takich jak funkcja rejestratora i anulowania tokeny. 
+
+>[!IMPORTANT]
+>F # skrypt (.fsx) jest obsługiwana tylko przez [wersji 1.x](functions-versions.md#creating-1x-apps) środowiska uruchomieniowego usługi Azure Functions. Jeśli chcesz użyć F # ze środowiskiem uruchomieniowym w wersji 2.x, należy użyć wstępnie skompilowanym F # projekt biblioteki klas (.fs). Tworzenie, zarządzanie i publikowanie F # projekt biblioteki klas przy użyciu programu Visual Studio, jak w przypadku [projekt biblioteki klas C#](functions-dotnet-class-library.md). Aby uzyskać więcej informacji na temat funkcji wersji zobacz [Przegląd wersje środowiska uruchomieniowego usługi Azure Functions](functions-versions.md).
 
 W tym artykule założono, że zostały już przeczytane [dokumentacja dla deweloperów usługi Azure Functions](functions-reference.md).
 

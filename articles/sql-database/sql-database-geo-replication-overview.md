@@ -1,6 +1,6 @@
 ---
 title: Praca awaryjna grupy i aktywnej replikacji geograficznej — usługi Azure SQL Database | Dokumentacja firmy Microsoft
-description: Używanie grup automatyczny tryb failover przy użyciu aktywnej replikacji geograficznej i włączenia trybu failover autoomatic przestoju.
+description: Używanie grup automatyczny tryb failover przy użyciu aktywnej replikacji geograficznej i włączyć automatyczny tryb failover w przypadku awarii.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 6e77d24c31401051d82501ca8064d02201bf218e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/19/2018
+ms.openlocfilehash: 9332bcb5849deacde13d67e4a18ea19af8af2977
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354278"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471479"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Przegląd: Aktywnej grupy replikacji geograficznej i automatyczny tryb failover
 
@@ -279,8 +279,8 @@ Zgodnie z opisem wcześniej grupy automatyczny tryb failover i aktywna replikacj
 
 | Interfejs API | Opis |
 | --- | --- |
-| [Tworzenie lub aktualizacja bazy danych (createMode = przywracanie)](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate) |Tworzy, aktualizuje lub przywrócenie podstawowej lub pomocniczej bazy danych. |
-| [Pobierz Utwórz lub zaktualizuj stan bazy danych](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate) |Zwraca stan podczas operacji tworzenia. |
+| [Tworzenie lub aktualizacja bazy danych (createMode = przywracanie)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Tworzy, aktualizuje lub przywrócenie podstawowej lub pomocniczej bazy danych. |
+| [Pobierz Utwórz lub zaktualizuj stan bazy danych](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Zwraca stan podczas operacji tworzenia. |
 | [Ustaw pomocniczej bazy danych jako podstawowy (planowanego trybu Failover)](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_failover) |Zestawy, które z repliką baz danych jest kluczem podstawowym, przechodzenie w tryb failover z bieżącej bazy danych repliki podstawowej. |
 | [Ustaw pomocniczej bazy danych jako podstawowy (nieplanowany tryb Failover)](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_failoverallowdataloss) |Zestawy, które z repliką baz danych jest kluczem podstawowym, przechodzenie w tryb failover z bieżącej bazy danych repliki podstawowej. Ta operacja może spowodować utratę danych. |
 | [Uzyskaj Link replikacji](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_get) |Pobiera łącze replikacji dla danej bazy danych SQL w partnerstwie replikacji geograficznej. Pobiera informacje widoczne w widoku wykazu sys.geo_replication_links. |

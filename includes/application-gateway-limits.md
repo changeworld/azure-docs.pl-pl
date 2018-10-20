@@ -15,8 +15,9 @@
 | Maksymalny limit czasu żądania |24 godzin | |
 | Liczba witryn |20 |1 na odbiorniki HTTP |
 | Mapy adresów URL na odbiornik |1 | |
+| Połączeń współbieżnych protokołu WebSocket. |5000| |
 |Maksymalna długość adresu URL|8000|
 | Maksymalny rozmiar przekazywanych plików Standard |2 GB | |
-| Maksymalny przekazywania rozmiar zapory aplikacji sieci Web |100 MB| |
+| Maksymalny przekazywania rozmiar zapory aplikacji sieci Web |Średnie zapory aplikacji sieci Web bramy — 100 MB<br>Bramy duży zapory aplikacji sieci Web — 500 MB| |
 |Limit rozmiaru treści zapory aplikacji sieci Web (bez plików)|128 KB|
 

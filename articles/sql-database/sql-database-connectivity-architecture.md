@@ -1,34 +1,33 @@
 ---
 title: Architektura łączności usługi Azure SQL Database | Dokumentacja firmy Microsoft
-description: W tym dokumencie wyjaśniono Azure SQLDB architektura łączności z w obrębie platformy Azure lub z spoza platformy Azure.
+description: W tym dokumencie opisano usługi Azure SQL Database architektura łączności z w obrębie platformy Azure lub z spoza platformy Azure.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: DhruvMsft
-ms.author: dhruv
+author: oslake
+ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/24/2018
-ms.openlocfilehash: 66f558db713ab951864fe694f27f2e60d52e875a
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 82bc76b47f8073e07163e7f827b900a59cf3ad7f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064150"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470579"
 ---
-# <a name="azure-sql-database-connectivity-architecture"></a>Architektura łączności bazy danych Azure SQL 
+# <a name="azure-sql-database-connectivity-architecture"></a>Architektura łączności bazy danych Azure SQL
 
-W tym artykule opisano architekturę łączności usługi Azure SQL Database i wyjaśniono, jak różne składniki funkcji kierować ruch do wystąpienia usługi Azure SQL Database. Te usługi Azure SQL Database łączności składniki funkcji do kierowania ruchu sieciowego do bazy danych platformy Azure z klientów łączących się z w obrębie platformy Azure i klientów łączących się z spoza platformy Azure. Ten artykuł zawiera także przykłady skryptów, aby zmienić sposób występuje łączności i zagadnienia związane z Zmienianie domyślnych ustawień połączenia. 
+W tym artykule opisano architekturę łączności usługi Azure SQL Database i wyjaśniono, jak różne składniki funkcji kierować ruch do wystąpienia usługi Azure SQL Database. Te usługi Azure SQL Database łączności składniki funkcji do kierowania ruchu sieciowego do bazy danych platformy Azure z klientów łączących się z w obrębie platformy Azure i klientów łączących się z spoza platformy Azure. Ten artykuł zawiera także przykłady skryptów, aby zmienić sposób występuje łączności i zagadnienia związane z Zmienianie domyślnych ustawień połączenia.
 
 ## <a name="connectivity-architecture"></a>Architektura łączności
 
 Na poniższym diagramie przedstawiono ogólny przegląd architektury połączenia usługi Azure SQL Database.
 
 ![Omówienie architektury](./media/sql-database-connectivity-architecture/architecture-overview.png)
-
 
 W poniższych krokach opisano, jak jest nawiązywane połączenie z bazą danych Azure SQL za pomocą usługi Azure SQL Database oprogramowania równoważenia obciążenia (SLB) i bramy usługi Azure SQL Database.
 
@@ -39,7 +38,6 @@ W poniższych krokach opisano, jak jest nawiązywane połączenie z bazą danych
 
 > [!IMPORTANT]
 > Każdego z tych składników ma distributed denial protection service (DDoS) wbudowanych w sieci i warstwy aplikacji.
->
 
 ## <a name="connectivity-from-within-azure"></a>Łączność z w obrębie platformy Azure
 
@@ -54,7 +52,9 @@ Jeśli nawiązujesz połączenie spoza platformy Azure, Twoje połączenia mają
 ![Omówienie architektury](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
 > [!IMPORTANT]
-> Podczas korzystania z punktów końcowych usługi za pomocą usługi Azure SQL Database zasad jest **Proxy** domyślnie. Aby włączyć łączność z wewnątrz sieci wirtualnej, musisz zezwolić na połączenia wychodzące adresy IP bramy bazy danych SQL Azure określone na liście poniżej. Korzystając z punktów końcowych usługi zdecydowanie zaleca się zmianę zasad połączenia do **przekierowania** umożliwiające lepszą wydajność. W przypadku zmiany zasad połączenia do **przekierowania** nie będą wystarczające, aby umożliwić ruchu wychodzącego w sieciowej grupie zabezpieczeń do bramy usługi Azure SQLDB adresów IP wymienionych poniżej, musisz zezwolić na ruch wychodzący do wszystkich adresów IP SQLDB usługi Azure. Można to zrobić za pomocą tagów usługi sieciowej grupy zabezpieczeń (sieciowych grup zabezpieczeń). Aby uzyskać więcej informacji, zobacz [tagi usługi](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
+> Podczas korzystania z punktów końcowych usługi za pomocą usługi Azure SQL Database zasad jest **Proxy** domyślnie. Aby włączyć łączność z wewnątrz sieci wirtualnej, musisz zezwolić na połączenia wychodzące adresy IP bramy bazy danych SQL Azure określone na liście poniżej.
+
+Korzystając z punktów końcowych usługi zdecydowanie zaleca się zmianę zasad połączenia do **przekierowania** umożliwiające lepszą wydajność. W przypadku zmiany zasad połączenia do **przekierowania** nie będą wystarczające, aby umożliwić ruchu wychodzącego w sieciowej grupie zabezpieczeń do bramy usługi Azure SQL Database, adresów IP wymienionych poniżej, musisz zezwolić na ruch wychodzący do wszystkich adresów IP bazy danych SQL Azure. Można to zrobić za pomocą tagów usługi sieciowej grupy zabezpieczeń (sieciowych grup zabezpieczeń). Aby uzyskać więcej informacji, zobacz [tagi usługi](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Adresy IP bramy usługi Azure SQL Database
 
@@ -76,8 +76,8 @@ Poniższa tabela zawiera listę podstawowych i pomocniczych adresów IP bramy us
 | Azja Wschodnia | 191.234.2.139 | 52.175.33.150 |
 | Wschodnie stany USA 1 | 191.238.6.43 | 40.121.158.30 |
 | Wschodnie stany USA 2 | 191.239.224.107 | 40.79.84.180 * |
-| Indie Środkowe | 104.211.96.159  | |
-| Indie Południowe | 104.211.224.146  | |
+| Indie Środkowe | 104.211.96.159 | |
+| Indie Południowe | 104.211.224.146 | |
 | Indie Zachodnie | 104.211.160.80 | |
 | Japonia Wschodnia | 191.237.240.43 | 13.78.61.196 |
 | Japonia Zachodnia | 191.238.68.11 | 104.214.148.156 |
@@ -90,11 +90,11 @@ Poniższa tabela zawiera listę podstawowych i pomocniczych adresów IP bramy us
 | Północne Zjednoczone Królestwo | 13.87.97.210 | |
 | Południowe Zjednoczone Królestwo 1 | 51.140.184.11 | |
 | Południowe Zjednoczone Królestwo 2 | 13.87.34.7 | |
-| Zachodnie Zjednoczone Królestwo | 51.141.8.11  | |
+| Zachodnie Zjednoczone Królestwo | 51.141.8.11 | |
 | Środkowo-zachodnie stany USA | 13.78.145.25 | |
 | Europa Zachodnia | 191.237.232.75 | 40.68.37.158 |
 | Zachodnie stany USA 1 | 23.99.34.75 | 104.42.238.205 |
-| Zachodnie stany USA 2 | 13.66.226.202  | |
+| Zachodnie stany USA 2 | 13.66.226.202 | |
 ||||
 
 \* **Uwaga:** *wschodnie stany USA 2* ma również trzeciorzędny adres IP `52.167.104.0`.
@@ -170,10 +170,10 @@ Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscription
 
 > [!IMPORTANT]
 > Ten skrypt wymaga [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
->
 
 Poniższy skrypt interfejsu wiersza polecenia pokazuje, jak zmienić zasady połączenia.
 
+```azurecli-interactive
 <pre>
 # Get SQL Server ID
 sqlserverid=$(az sql server show -n <b>sql-server-name</b> -g <b>sql-server-group</b> --query 'id' -o tsv)
@@ -181,13 +181,14 @@ sqlserverid=$(az sql server show -n <b>sql-server-name</b> -g <b>sql-server-grou
 # Set URI
 id="$sqlserverid/connectionPolicies/Default"
 
-# Get current connection policy 
+# Get current connection policy
 az resource show --ids $id
 
-# Update connection policy 
+# Update connection policy
 az resource update --ids $id --set properties.connectionType=Proxy
 
 </pre>
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

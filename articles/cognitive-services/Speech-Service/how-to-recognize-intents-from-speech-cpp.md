@@ -1,21 +1,21 @@
 ---
 title: Rozpoznawanie intencji z wypowiedzi za pomocą mowy zestawu SDK dla języka C++
-titleSuffix: Microsoft Cognitive Services
-description: >
-  Dowiedz się, jak rozpoznać intencje z mowy z pliku lub mikrofonu za pomocą mowy zestawu SDK dla języka C++.
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak rozpoznać intencje z mowy z pliku lub mikrofonu za pomocą mowy zestawu SDK dla języka C++.
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: Speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: bbcea97918d377a6d40b95fe61592f7a79e8f5f4
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 48fc330c62ec8f6ce8c25c79c85db622bcaa4282
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883792"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466498"
 ---
 # <a name="recognize-intents-from-speech-by-using-the-speech-sdk-for-c"></a>Rozpoznawanie intencji z wypowiedzi za pomocą mowy zestawu SDK dla języka C++
 
@@ -44,5 +44,5 @@ Poszukaj kodu, który jest używany w tym artykule w folderze samples/cpp/window
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Rozpoznawanie mowy](how-to-recognize-speech-cpp.md)
+- [Jak rozpoznawać mowę](how-to-recognize-speech-cpp.md)
 - [Tłumaczenie mowy](how-to-translate-speech-cpp.md)

@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 4f6c98533a2ab1289ca5f1da25c44fe1a77a983c
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/19/2018
+ms.openlocfilehash: 18cd0ea4b6804edc11fc4f57c4327ef9d9a6f51e
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353669"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466737"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-firewall-rules"></a>Reguły zapory usługi Azure SQL Database i SQL Data Warehouse
 
@@ -80,7 +80,7 @@ Aby umożliwić aplikacjom z platformy Azure łączenie się z serwerem Azure SQ
 
 ## <a name="creating-and-managing-firewall-rules"></a>Tworzenie i zarządzanie regułami zapory
 
-Pierwsze ustawienie zapory na poziomie serwera mogą być tworzone za pomocą [witryny Azure portal](https://portal.azure.com/) lub programowo przy użyciu [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql), [wiersza polecenia platformy Azure](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create), lub [ Interfejs API REST](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_createorupdate). Kolejne reguły zapory na poziomie serwera mogą być tworzone i zarządzane przy użyciu tych metod oraz za pomocą języka Transact-SQL.
+Pierwsze ustawienie zapory na poziomie serwera mogą być tworzone za pomocą [witryny Azure portal](https://portal.azure.com/) lub programowo przy użyciu [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql), [wiersza polecenia platformy Azure](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create), lub [ Interfejs API REST](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate). Kolejne reguły zapory na poziomie serwera mogą być tworzone i zarządzane przy użyciu tych metod oraz za pomocą języka Transact-SQL.
 
 > [!IMPORTANT]
 > Reguły zapory na poziomie bazy danych tylko mogą być tworzone i zarządzane przy użyciu języka Transact-SQL.
@@ -189,10 +189,10 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 | Interfejs API | Poziom | Opis |
 | --- | --- | --- |
-| [List Firewall Rules](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_listbyserver) (Lista reguł zapory) |Serwer |Wyświetla bieżące reguły zapory na poziomie serwera |
-| [Create or Update Firewall Rule](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_createorupdate) (Tworzenie i aktualizowanie reguły zapory) |Serwer |Tworzy lub aktualizuje reguły zapory na poziomie serwera |
-| [Delete Firewall Rule](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_delete) (Usuwanie reguły zapory) |Serwer |Usuwa reguły zapory na poziomie serwera |
-| [Pobierz reguły zapory](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_get) | Serwer | Pobiera reguły zapory na poziomie serwera |
+| [List Firewall Rules](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) (Lista reguł zapory) |Serwer |Wyświetla bieżące reguły zapory na poziomie serwera |
+| [Create or Update Firewall Rule](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) (Tworzenie i aktualizowanie reguły zapory) |Serwer |Tworzy lub aktualizuje reguły zapory na poziomie serwera |
+| [Delete Firewall Rule](https://docs.microsoft.com/rest/api/sql/firewallrules/delete) (Usuwanie reguły zapory) |Serwer |Usuwa reguły zapory na poziomie serwera |
+| [Pobierz reguły zapory](https://docs.microsoft.com/rest/api/sql/firewallrules/get) | Serwer | Pobiera reguły zapory na poziomie serwera |
 
 ## <a name="server-level-firewall-rule-versus-a-database-level-firewall-rule"></a>Reguły zapory na poziomie serwera i regułę zapory na poziomie bazy danych
 

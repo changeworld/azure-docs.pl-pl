@@ -1,21 +1,22 @@
 ---
-title: Usługa rozpoznawania mowy interfejsów API REST
+title: Interfejsy API REST usługi mowy
 description: Dokumentacja interfejsów API REST usługi mowy.
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: erhopf
-ms.openlocfilehash: f8b27277cbf3ea6d53a8f02e550beae67fc50741
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 0cc278cdb59bfbb53578eae0f51c9b54204d7d12
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167634"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466277"
 ---
-# <a name="speech-service-rest-apis"></a>Usługa rozpoznawania mowy interfejsów API REST
+# <a name="speech-service-rest-apis"></a>Interfejsy API REST usługi mowy
 
 Interfejsy API REST usługi mowy w usłudze Azure Cognitive Services są podobne do interfejsów API dostarczonych przez [modułu Speech API Bing](https://docs.microsoft.com/azure/cognitive-services/Speech). Punktów końcowych, które różnią się od punktów końcowych używanych przez usługę rozpoznawania mowy Bing. Regionalne punkty końcowe są dostępne i trzeba użyć klucza subskrypcji, która odnosi się do punktu końcowego, którego używasz.
 

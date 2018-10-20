@@ -12,18 +12,18 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 1177703dc67e81e537d7682dcf9bbeb475748315
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: eaeb0d7f77b6d8ab6a3e12febba33c995a10ec3f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353938"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466556"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>Powiadomienia e-mail dotyczące automatycznego dostrajania
 
 Zalecenia dotyczące dostrajania są generowane przez usługę Azure SQL Database bazy danych SQL [dostrajania automatycznego](sql-database-automatic-tuning.md). To rozwiązanie stale monitoruje i analizuje obciążeń związanych z udostępnianiem baz danych SQL, dostosowane zaleceń dotyczących każdej pojedynczej bazy danych związanych z tworzenia indeksu, usunięcie indeksu i optymalizacji plany wykonywania zapytań dostosowywania.
 
-SQL Database zalecenia dostrajania automatycznego usługi mogą być wyświetlane w [witryny Azure portal](sql-database-advisor-portal.md), pobrany z [interfejsu API REST](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/databaserecommendedactions_listbydatabaseadvisor) wywołuje lub przy użyciu [języka T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) i [ Program PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction) poleceń. Ten artykuł jest oparty na przy użyciu skryptu programu PowerShell, aby pobrać zalecenia dostrajania automatycznego.
+SQL Database zalecenia dostrajania automatycznego usługi mogą być wyświetlane w [witryny Azure portal](sql-database-advisor-portal.md), pobrany z [interfejsu API REST](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) wywołuje lub przy użyciu [języka T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) i [ Program PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction) poleceń. Ten artykuł jest oparty na przy użyciu skryptu programu PowerShell, aby pobrać zalecenia dostrajania automatycznego.
 
 ## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>Automatyzowanie powiadomienia e-mail dotyczące automatycznego zalecenia dotyczące dostrajania
 

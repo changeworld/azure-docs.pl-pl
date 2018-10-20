@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: ec309bc5484c0ac96d1323c56670c147737e7c64
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 2eb736891b12c07441bc8828ca07dd0b9fa13d98
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377867"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458126"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Dokumentacja ustawień aplikacji dla usługi Azure Functions
 
@@ -82,11 +82,11 @@ Rozdzielana przecinkami lista funkcje w wersji beta w celu włączenia. Funkcje 
 
 ## <a name="azurewebjobssecretstoragetype"></a>AzureWebJobsSecretStorageType
 
-Określa repozytorium lub dostawca magazynu kluczy. Obecnie obsługiwane repozytoria są obiektów blob ("Blob") i system plików ("wyłączone"). Wartość domyślna to system plików ("wyłączone").
+Określa repozytorium lub dostawca magazynu kluczy. Obecnie obsługiwane repozytoria są magazynu obiektów blob ("Blob") i w lokalnym systemie plików ("Files"). Wartość domyślna to obiektów blob w wersji 1 i systemie plików w wersji 2. Należy pamiętać, że w wersji 1 system plików będzie działać tylko przez funkcje działające w planie usługi app service.
 
 |Klucz|Wartość przykładowa|
 |---|------------|
-|AzureWebJobsSecretStorageType|wyłączone|
+|AzureWebJobsSecretStorageType|Pliki|
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: f74577a5f8042a7b373d1ff1944088036a0c94f5
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/19/2018
+ms.openlocfilehash: ac3ce8a417a63ce0a91339c38c2a5ae8b3013228
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354210"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466787"
 ---
 # <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Tworzenie i zarządzanie serwerami logicznymi i pojedynczych baz danych w usłudze Azure SQL Database
 
@@ -142,22 +142,22 @@ Tworzenie i zarządzanie nimi w usłudze Azure SQL server, baz danych i zapór, 
 
 | Polecenie | Opis |
 | --- | --- |
-|[Serwery — Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/servers/servers_createorupdate/rest/api)|Tworzy lub aktualizuje nowego serwera.|
-|[Serwery — usuwanie](https://docs.microsoft.com/rest/api/sql/servers/servers_delete)|Usuwa serwer SQL.|
-|[Serwery - Get](https://docs.microsoft.com/rest/api/sql/servers/servers_get)|Pobiera serwera.|
-|[Serwery — lista](https://docs.microsoft.com/rest/api/sql/servers/servers_list)|Zwraca listę serwerów.|
-|[Serwery — listy według grupy zasobów](https://docs.microsoft.com/rest/api/sql/servers/servers_listbyresourcegroup)|Zwraca listę serwerów w grupie zasobów.|
-|[Serwery — aktualizacja](https://docs.microsoft.com/rest/api/sql/servers/servers_update)|Aktualizuje istniejący serwer.|
-|[Bazy danych — Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)|Tworzy nową bazę danych lub aktualizuje istniejącą bazę danych.|
-|[Bazy danych — usunięcia](https://docs.microsoft.com/rest/api/sql/databases/databases_delete)|Usuwa bazę danych.|
-|[Bazy danych — Get](https://docs.microsoft.com/rest/api/sql/databases/databases_get)|Pobiera bazy danych.|
-|[Bazy danych — listę według puli elastycznej](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyelasticpool)|Zwraca listę baz danych w puli elastycznej.|
-|[Bazy danych — lista przez serwer](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyserver)|Zwraca listę baz danych na serwerze.|
-|[Bazy danych — aktualizacja](https://docs.microsoft.com/rest/api/sql/databases/databases_update)|Aktualizuje istniejącą bazę danych.|
-|[Reguły - zapory Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_createorupdate)|Tworzy lub aktualizuje reguły zapory.|
-|[Reguły zapory - Delete](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_delete)|Usuwa reguły zapory.|
-|[Reguły zapory - Get](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_get)|Pobiera regułę zapory.|
-|[Reguły zapory — lista przez serwer](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_listbyserver)|Zwraca listę reguł zapory.|
+|[Serwery — Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Tworzy lub aktualizuje nowego serwera.|
+|[Serwery — usuwanie](https://docs.microsoft.com/rest/api/sql/servers/delete)|Usuwa serwer SQL.|
+|[Serwery - Get](https://docs.microsoft.com/rest/api/sql/servers/get)|Pobiera serwera.|
+|[Serwery — lista](https://docs.microsoft.com/rest/api/sql/servers/list)|Zwraca listę serwerów.|
+|[Serwery — listy według grupy zasobów](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|Zwraca listę serwerów w grupie zasobów.|
+|[Serwery — aktualizacja](https://docs.microsoft.com/rest/api/sql/servers/update)|Aktualizuje istniejący serwer.|
+|[Bazy danych — Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|Tworzy nową bazę danych lub aktualizuje istniejącą bazę danych.|
+|[Bazy danych — usunięcia](https://docs.microsoft.com/rest/api/sql/databases/delete)|Usuwa bazę danych.|
+|[Bazy danych — Get](https://docs.microsoft.com/rest/api/sql/databases/get)|Pobiera bazy danych.|
+|[Bazy danych — listę według puli elastycznej](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|Zwraca listę baz danych w puli elastycznej.|
+|[Bazy danych — lista przez serwer](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|Zwraca listę baz danych na serwerze.|
+|[Bazy danych — aktualizacja](https://docs.microsoft.com/rest/api/sql/databases/update)|Aktualizuje istniejącą bazę danych.|
+|[Reguły - zapory Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)|Tworzy lub aktualizuje reguły zapory.|
+|[Reguły zapory - Delete](https://docs.microsoft.com/rest/api/sql/firewallrules/delete)|Usuwa reguły zapory.|
+|[Reguły zapory - Get](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|Pobiera regułę zapory.|
+|[Reguły zapory — lista przez serwer](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|Zwraca listę reguł zapory.|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

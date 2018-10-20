@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/19/2018
 ms.author: shlo
-ms.openlocfilehash: c24bec7366ea62b3dd8f7a301c9d2d62c6dd6c7d
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: f61399a3a6cb5c67343e28e4364d8d796ffbc066
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859282"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457076"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Pobieranie metadanych działania w usłudze Azure Data Factory
 Działanie GetMetadata może być używane do pobierania **metadanych** dowolnych danych w usłudze Azure Data Factory. To działanie może być używane w następujących scenariuszach:
@@ -43,7 +43,7 @@ Działanie GetMetadata przyjmuje zestawu danych jako wymagane dane wejściowe i 
 
 **Magazyn plików:**
 
-| Łącznik/metadanych | Nazwa elementu<br>(plik/folder) | itemType<br>(plik/folder) | rozmiar<br>(plik) | utworzone<br>(plik/folder) | Ostatnia modyfikacja<br>(plik/folder) |childItems<br>(folder) |contentMD5<br>(plik) | Struktura<br/>(plik) | columnCount<br>(plik) | istnieje<br>(plik/folder) |
+| Łącznik/metadanych | Nazwa elementu<br>(plik/folder) | ItemType<br>(plik/folder) | rozmiar<br>(plik) | utworzone<br>(plik/folder) | Ostatnia modyfikacja<br>(plik/folder) |childItems<br>(folder) |contentMD5<br>(plik) | Struktura<br/>(plik) | columnCount<br>(plik) | Istnieje<br>(plik/folder) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | Amazon S3 | √/√ | √/√ | √ | x/x | √ / √ * | √ | x | √ | √ | √ / √ * |
 | Obiekt bob Azure | √/√ | √/√ | √ | x/x | √ / √ * | √ | √ | √ | √ | √/√ |
@@ -58,9 +58,10 @@ Działanie GetMetadata przyjmuje zestawu danych jako wymagane dane wejściowe i 
 
 **Relacyjna baza danych:**
 
-| Łącznik/metadanych | Struktura | columnCount | istnieje |
+| Łącznik/metadanych | Struktura | columnCount | Istnieje |
 |:--- |:--- |:--- |:--- |
 | Azure SQL Database | √ | √ | √ |
+| Wystąpienie zarządzane usługi Azure SQL Database | √ | √ | √ |
 | Azure SQL Data Warehouse | √ | √ | √ |
 | Oprogramowanie SQL Server | √ | √ | √ |
 
@@ -71,7 +72,7 @@ Na liście pól działanie GetMetadata do pobrania można określić następują
 | Typ metadanych | Opis |
 |:--- |:--- |
 | Nazwa elementu | Nazwa pliku lub folderu. |
-| itemType | Typ pliku lub folderu. Wartość wyjściowa to `File` lub `Folder`. |
+| ItemType | Typ pliku lub folderu. Wartość wyjściowa to `File` lub `Folder`. |
 | rozmiar | Rozmiar pliku w bajtach. Dotyczy tylko plików. |
 | utworzone | Data i godzina utworzonego pliku lub folderu. |
 | Ostatnia modyfikacja | Data ostatniej modyfikacji daty i godziny pliku lub folderu. |
@@ -79,7 +80,7 @@ Na liście pól działanie GetMetadata do pobrania można określić następują
 | contentMD5 | Algorytm MD5 pliku. Dotyczy tylko plików. |
 | Struktura | Struktura danych wewnątrz pliku lub tabeli w relacyjnej bazie danych. Wartość wyjściowa jest lista nazwa kolumny i typ kolumny. |
 | columnCount | Liczba kolumn w pliku lub tabeli. |
-| istnieje| Czy plik/folder/tabeli istnieje, czy nie. Należy pamiętać, jeśli "istnieje" jest określony na liście pól GetaMetadata, działanie nie będą się nie powieść, nawet wtedy, gdy nie istnieje element (plik/folder/table); Zamiast tego zwraca `exists: false` w danych wyjściowych. |
+| Istnieje| Czy plik/folder/tabeli istnieje, czy nie. Należy pamiętać, jeśli "istnieje" jest określony na liście pól GetaMetadata, działanie nie będą się nie powieść, nawet wtedy, gdy nie istnieje element (plik/folder/table); Zamiast tego zwraca `exists: false` w danych wyjściowych. |
 
 >[!TIP]
 >Aby sprawdzić, czy plik/folder/tabela istnieje lub nie, należy określić `exists` na liście pól działanie GetMetadata, można sprawdzić `exists: true/false` wynika z danych wyjściowych działania. Jeśli `exists` nie jest skonfigurowany na liście pól, GetMetadata, działanie zakończy się niepowodzeniem, gdy obiekt nie zostanie znaleziony.
@@ -131,7 +132,7 @@ Obecnie w działaniu GetMetadata można pobrać następujące rodzaje informacji
 Właściwość | Opis | Wymagane
 -------- | ----------- | --------
 fieldList | Zawiera listę typów wymaganych informacji o metadanych. Szczegółowe informacje w [opcje metadanych](#metadata-options) sekcję dotyczącą obsługiwanych metadanych. | Yes 
-zestaw danych | Zestaw danych odwołania, którego działania metadanych ma być pobierane przez działanie GetMetadata. Zobacz [obsługiwane możliwości](#supported-capabilities) sekcji na obsługiwanych łączników i odnoszą się do temat dotyczący łączników na potrzeby szczegółów składni zestawu danych. | Yes
+Zestaw danych | Zestaw danych odwołania, którego działania metadanych ma być pobierane przez działanie GetMetadata. Zobacz [obsługiwane możliwości](#supported-capabilities) sekcji na obsługiwanych łączników i odnoszą się do temat dotyczący łączników na potrzeby szczegółów składni zestawu danych. | Yes
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
 

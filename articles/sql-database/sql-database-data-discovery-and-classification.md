@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 36269392db785e7d2d203f032a84cccc8a6c62e0
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 32b60a53581a0f372a7d994cfa260ebd7bcb27b2
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352972"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467045"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Usługi Azure SQL Database Data odnajdywanie i klasyfikacja
 
@@ -140,10 +140,10 @@ T-SQL umożliwia dodawanie/usuwanie klasyfikacje kolumn, a także pobrać wszyst
 
 Interfejsów API REST można również użyć do programowego zarządzania klasyfikacje. Opublikowanych interfejsów API REST obsługują następujące operacje:
 
-- [Tworzenie lub aktualizowanie](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/sensitivitylabels_createorupdate) — tworzy lub aktualizuje etykieta poufności danej kolumny
-- [Usuń](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/sensitivitylabels_delete) -usuwa etykietę czułości w danej kolumnie
-- [Pobierz](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/sensitivitylabels_get) — pobiera etykieta poufności danej kolumny
-- [Lista przez bazę danych](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/sensitivitylabels_listbydatabase) — pobiera etykiety ważności określonej bazy danych
+- [Tworzenie lub aktualizowanie](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) — tworzy lub aktualizuje etykieta poufności danej kolumny
+- [Usuń](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) -usuwa etykietę czułości w danej kolumnie
+- [Pobierz](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) — pobiera etykieta poufności danej kolumny
+- [Lista przez bazę danych](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listbydatabase) — pobiera etykiety ważności określonej bazy danych
 
 ## <a id="subheading-5"></a>Następne kroki
 

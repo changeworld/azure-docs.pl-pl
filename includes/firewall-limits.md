@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 7/30/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 0a4a66543b323b1dbe56158851dafcb1dfe695f0
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: f1fd32fc02bee47d229093680166e6a13a5ba721
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47185333"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "49458850"
 ---
 | Zasób | Limit domyślny |
 | --- | --- |
 | Ilość przetworzonych danych |1000 TB/Zapora/miesiąc <sup>1</sup> |
-|Reguły|10 k aplikacji, reguły 10 k sieci|
+|Reguły|10 KB — wszystkie reguły w połączeniu typów|
 |Komunikacja równorzędna sieci wirtualnych|W implementacji gwiazdy maksymalnie z 50 sieci wirtualne będące szprychami.|
 |Globalnej komunikacji równorzędnej|Nieobsługiwane. Musisz mieć co najmniej jedno wdrożenie zapory na region.|
 |Maksymalna liczba portów w regule pojedynczej sieci|15<br>Zakres portów (na przykład: 2 – 10) jest liczone jako dwa.

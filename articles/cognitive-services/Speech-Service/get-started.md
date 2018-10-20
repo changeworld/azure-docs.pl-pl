@@ -1,20 +1,21 @@
 ---
 title: Wypróbuj bezpłatnie usługę rozpoznawania mowy
-description: Dowiedz się, jak można Wypróbuj tę usługę rozpoznawania mowy, bez ponoszenia kosztów.
 titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak można Wypróbuj tę usługę rozpoznawania mowy, bez ponoszenia kosztów.
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: erhopf
-ms.openlocfilehash: 7ca423a4953dbe05af119d6b6eb12976c722e374
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 4e29f2e77ad2b4e993fbe6a39b90325a0738f538
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393273"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471394"
 ---
 # <a name="try-the-speech-service-for-free"></a>Wypróbuj bezpłatnie usługę rozpoznawania mowy
 

@@ -14,167 +14,147 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: 15c2ec0aa8b795a826eae29026b7039491dbb64f
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 9e94357216690438446a738400c979d12f387df6
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42061690"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471088"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-the-net-framework"></a>Odbieranie zdarzeń z usługi Azure Event Hubs za pomocą programu .NET Framework
 
 ## <a name="introduction"></a>Wprowadzenie
 
-Azure Event Hubs to usługa, która przetwarza duże ilości danych zdarzeń (danych telemetrycznych) z połączonych urządzeń i aplikacji. Po zebraniu danych w usłudze Event Hubs można przechowywać dane przy użyciu klastra magazynu lub przekształcać je za pomocą dostawcy analiz w czasie rzeczywistym. Ta możliwość zbierania i przetwarzania zdarzeń na wielką skalę jest kluczowym składnikiem architektur nowoczesnych aplikacji, w tym Internetu rzeczy (IoT).
+Event Hubs to usługa, która przetwarza duże ilości danych zdarzeń (danych telemetrycznych) z podłączonych urządzeń i aplikacji. Po zebraniu danych w usłudze Event Hubs można przechowywać dane przy użyciu klastra magazynu lub przekształcać je za pomocą dostawcy analiz w czasie rzeczywistym. Ta możliwość zbierania i przetwarzania zdarzeń na wielką skalę jest kluczowym składnikiem architektur nowoczesnych aplikacji, w tym Internetu rzeczy (IoT). Aby uzyskać szczegółowe omówienie usługi Event hubs, zobacz [Przegląd usługi Event Hubs](event-hubs-about.md) i [funkcji usługi Event Hubs](event-hubs-features.md).
 
-W tym samouczku pokazano, jak napisać aplikację konsoli .NET Framework, która odbiera komunikaty z centrum zdarzeń za pomocą **[hosta procesora zdarzeń][Event Processor Host]**. Aby wysyłać zdarzenia przy użyciu programu .NET Framework, zobacz artykuł [Wysyłanie zdarzeń do usługi Azure Event Hubs za pomocą programu .NET Framework](event-hubs-dotnet-framework-getstarted-send.md) lub kliknij odpowiedni język wysyłający w spisie treści po lewej stronie.
-
-[Host procesora zdarzeń][EventProcessorHost] jest klasą .NET, która upraszcza odbieranie zdarzeń z centrów zdarzeń przez zarządzanie trwałymi punktami kontrolnymi i równoległymi odbiorami z tej usługi. Za pomocą hosta procesora zdarzeń, można podzielić zdarzenia między wieloma odbiornikami, nawet w przypadku hostowania w różnych węzłach. W tym przykładzie pokazano, jak używać hosta procesora zdarzeń dla jednego odbiornika. [Skalowanie przetwarzania zdarzeń] [ Scale out Event Processing with Event Hubs] przykład pokazuje, jak używać hosta procesora zdarzeń z wieloma odbiornikami.
+W tym samouczku pokazano, jak napisać aplikację konsoli .NET Framework, która odbiera komunikaty z Centrum zdarzeń za pomocą [hosta procesora zdarzeń](event-hubs-event-processor-host.md). [Hosta procesora zdarzeń](event-hubs-event-processor-host.md) jest klasą .NET, która upraszcza odbieranie zdarzeń z usługi event hubs przez zarządzanie trwałymi punktami kontrolnymi i równoległymi odbiorami z tych centrów zdarzeń. Za pomocą hosta procesora zdarzeń, można podzielić zdarzenia między wieloma odbiornikami, nawet w przypadku hostowania w różnych węzłach. W tym przykładzie pokazano, jak używać hosta procesora zdarzeń dla jednego odbiornika. [Skalowanie przetwarzania zdarzeń] [ Scale out Event Processing with Event Hubs] przykład pokazuje, jak używać hosta procesora zdarzeń z wieloma odbiornikami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących wymagań wstępnych:
 
 * [Microsoft Visual Studio 2017 lub nowszego](http://visualstudio.com).
-* Aktywne konto platformy Azure. Jeśli go nie masz, możesz utworzyć bezpłatne konto w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/free/).
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Tworzenie przestrzeni nazw usługi Event Hubs i centrum zdarzeń
+Pierwszym krokiem jest skorzystanie z witryny [Azure Portal](https://portal.azure.com) w celu utworzenia przestrzeni nazw typu Event Hubs i uzyskania poświadczeń zarządzania wymaganych przez aplikację do komunikacji z centrum zdarzeń. Aby utworzyć obszar nazw i Centrum zdarzeń, wykonaj procedurę opisaną w [w tym artykule](event-hubs-create.md), a następnie wykonaj następujące czynności w ramach tego samouczka.
 
-Pierwszym krokiem jest skorzystanie z witryny [Azure Portal](https://portal.azure.com) w celu utworzenia przestrzeni nazw typu Event Hubs i uzyskania poświadczeń zarządzania wymaganych przez aplikację do komunikacji z centrum zdarzeń. Aby utworzyć obszar nazw i centrum zdarzeń, wykonaj procedurę opisaną w [tym artykule](event-hubs-create.md), a następnie wykonaj następujące czynności z tego samouczka.
+[!INCLUDE [event-hubs-create-storage](../../includes/event-hubs-create-storage.md)]
 
-## <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure Storage
+## <a name="create-a-console-application"></a>Tworzenie aplikacji konsolowej
 
-Aby móc korzystać z [hosta procesora zdarzeń][EventProcessorHost], trzeba mieć [konto usługi Azure Storage][Azure Storage account]:
-
-1. Zaloguj się do [witryny Azure portal][Azure portal]i kliknij przycisk **Utwórz zasób** w lewym górnym rogu ekranu.
-
-2. Kliknij pozycję **Magazyn**, a następnie pozycję **Konto magazynu**.
+W programie Visual Studio utwórz nowy projekt aplikacji klasycznej Visual C# za pomocą szablonu projektu **Aplikacja konsoli**. Nazwij projekt **Odbiornik**.
    
-    ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage1.png)
+![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp1.png)
 
-3. W **Tworzenie konta magazynu** okienko, wpisz nazwę konta magazynu. Wybierz subskrypcję platformy Azure, grupę zasobów i lokalizację, w której chcesz utworzyć zasób. Następnie kliknij pozycję **Utwórz**.
-   
-    ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
+## <a name="add-the-event-hubs-nuget-package"></a>Dodawanie pakietu NuGet usługi Event Hubs
 
-4. Na liście kont magazynu kliknij nowo utworzone konto.
-
-5. W okienku konta magazynu, kliknij przycisk **klucze dostępu**. Skopiuj wartość **klucz1**, aby użyć jej w dalszej części tego samouczka.
-   
-    ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
-
-## <a name="create-a-receiver-console-application"></a>Tworzenie aplikacji konsolowej odbiorcy
-
-1. W programie Visual Studio utwórz nowy projekt aplikacji klasycznej Visual C# za pomocą szablonu projektu **Aplikacja konsoli**. Nazwij projekt **Odbiornik**.
-   
-    ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp1.png)
-2. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt **Odbiornik**, a następnie kliknij pozycję **Zarządzaj pakietami NuGet rozwiązania**.
-3. Kliknij kartę **Przeglądanie**, a następnie wyszukaj ciąg `Microsoft Azure Service Bus Event Hub - EventProcessorHost`. Kliknij pozycję **Zainstaluj** i zaakceptuj warunki użytkowania.
+1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt **Odbiornik**, a następnie kliknij pozycję **Zarządzaj pakietami NuGet rozwiązania**.
+2. Kliknij kartę **Przeglądanie**, a następnie wyszukaj ciąg `Microsoft Azure Service Bus Event Hub - EventProcessorHost`. Kliknij pozycję **Zainstaluj** i zaakceptuj warunki użytkowania.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-eph-csharp1.png)
    
     Program Visual Studio pobierze, zainstaluje i doda odniesienie do [centrum zdarzeń usługi Azure Service Bus — pakiet NuGet EventProcessorHost](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost) wraz ze wszystkimi jego zależnościami.
-4. Kliknij prawym przyciskiem myszy projekt **Odbiornik**, kliknij przycisk **Dodaj**, a następnie kliknij opcję **Klasa**. Nadaj nowej klasie nazwę **SimpleEventProcessor**, a następnie kliknij przycisk **Dodaj**, aby utworzyć klasę.
+
+## <a name="implement-the-ieventprocessor-interface"></a>Implementowanie interfejsu IEventProcessor
+
+1. Kliknij prawym przyciskiem myszy projekt **Odbiornik**, kliknij przycisk **Dodaj**, a następnie kliknij opcję **Klasa**. Nadaj nowej klasie nazwę **SimpleEventProcessor**, a następnie kliknij przycisk **Dodaj**, aby utworzyć klasę.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp2.png)
-5. W górnej części pliku SimpleEventProcessor.cs dodaj następujące instrukcje:
+2. W górnej części pliku SimpleEventProcessor.cs dodaj następujące instrukcje:
     
-  ```csharp
-  using Microsoft.ServiceBus.Messaging;
-  using System.Diagnostics;
-  ```
+      ```csharp
+      using Microsoft.ServiceBus.Messaging;
+      using System.Diagnostics;
+      ```
     
-  Następnie zastąp następujący kod treścią klasy:
+3. Zastąp następujący kod treścią klasy:
     
-  ```csharp
-  class SimpleEventProcessor : IEventProcessor
-  {
-    Stopwatch checkpointStopWatch;
-    
-    async Task IEventProcessor.CloseAsync(PartitionContext context, CloseReason reason)
-    {
-        Console.WriteLine("Processor Shutting Down. Partition '{0}', Reason: '{1}'.", context.Lease.PartitionId, reason);
-        if (reason == CloseReason.Shutdown)
+      ```csharp
+      class SimpleEventProcessor : IEventProcessor
+      {
+        Stopwatch checkpointStopWatch;
+        
+        async Task IEventProcessor.CloseAsync(PartitionContext context, CloseReason reason)
         {
-            await context.CheckpointAsync();
+            Console.WriteLine("Processor Shutting Down. Partition '{0}', Reason: '{1}'.", context.Lease.PartitionId, reason);
+            if (reason == CloseReason.Shutdown)
+            {
+                await context.CheckpointAsync();
+            }
         }
-    }
-    
-    Task IEventProcessor.OpenAsync(PartitionContext context)
-    {
-        Console.WriteLine("SimpleEventProcessor initialized.  Partition: '{0}', Offset: '{1}'", context.Lease.PartitionId, context.Lease.Offset);
-        this.checkpointStopWatch = new Stopwatch();
-        this.checkpointStopWatch.Start();
-        return Task.FromResult<object>(null);
-    }
-    
-    async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages)
-    {
-        foreach (EventData eventData in messages)
+        
+        Task IEventProcessor.OpenAsync(PartitionContext context)
         {
-            string data = Encoding.UTF8.GetString(eventData.GetBytes());
-    
-            Console.WriteLine(string.Format("Message received.  Partition: '{0}', Data: '{1}'",
-                context.Lease.PartitionId, data));
+            Console.WriteLine("SimpleEventProcessor initialized.  Partition: '{0}', Offset: '{1}'", context.Lease.PartitionId, context.Lease.Offset);
+            this.checkpointStopWatch = new Stopwatch();
+            this.checkpointStopWatch.Start();
+            return Task.FromResult<object>(null);
         }
-    
-        //Call checkpoint every 5 minutes, so that worker can resume processing from 5 minutes back if it restarts.
-        if (this.checkpointStopWatch.Elapsed > TimeSpan.FromMinutes(5))
+        
+        async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages)
         {
-            await context.CheckpointAsync();
-            this.checkpointStopWatch.Restart();
+            foreach (EventData eventData in messages)
+            {
+                string data = Encoding.UTF8.GetString(eventData.GetBytes());
+        
+                Console.WriteLine(string.Format("Message received.  Partition: '{0}', Data: '{1}'",
+                    context.Lease.PartitionId, data));
+            }
+        
+            //Call checkpoint every 5 minutes, so that worker can resume processing from 5 minutes back if it restarts.
+            if (this.checkpointStopWatch.Elapsed > TimeSpan.FromMinutes(5))
+            {
+                await context.CheckpointAsync();
+                this.checkpointStopWatch.Restart();
+            }
         }
-    }
-  }
-  ```
+      }
+      ```
     
-  Klasa ta zostanie wywołana przez klasę **EventProcessorHost** do przetwarzania zdarzeń odebranych z centrum zdarzeń. Klasa `SimpleEventProcessor` używa stopera, aby okresowo wywoływać metodę punktu kontrolnego w kontekście klasy **EventProcessorHost**. Takie przetwarzanie daje gwarancję, że jeśli odbiorca zostanie ponownie uruchomiony, nie straci więcej niż pięć minut operacji przetwarzania.
-6. W klasie **Program** dodaj następującą instrukcję `using` w górnej części pliku:
-    
-  ```csharp
-  using Microsoft.ServiceBus.Messaging;
-  ```
-    
-  Następnie zastąp metodę `Main` w klasie `Program` następującym kodem, zastępując nazwę centrum zdarzeń i parametry połączenia na poziomie przestrzeni nazw, które zostały zapisane wcześniej, oraz konto magazynu i klucz skopiowane we wcześniejszych sekcjach. 
-    
-  ```csharp
-  static void Main(string[] args)
-  {
-    string eventHubConnectionString = "{Event Hubs namespace connection string}";
-    string eventHubName = "{Event Hub name}";
-    string storageAccountName = "{storage account name}";
-    string storageAccountKey = "{storage account key}";
-    string storageConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}", storageAccountName, storageAccountKey);
-    
-    string eventProcessorHostName = Guid.NewGuid().ToString();
-    EventProcessorHost eventProcessorHost = new EventProcessorHost(eventProcessorHostName, eventHubName, EventHubConsumerGroup.DefaultGroupName, eventHubConnectionString, storageConnectionString);
-    Console.WriteLine("Registering EventProcessor...");
-    var options = new EventProcessorOptions();
-    options.ExceptionReceived += (sender, e) => { Console.WriteLine(e.Exception); };
-    eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>(options).Wait();
-    
-    Console.WriteLine("Receiving. Press enter key to stop worker.");
-    Console.ReadLine();
-    eventProcessorHost.UnregisterEventProcessorAsync().Wait();
-  }
-  ```
+      Klasa ta zostanie wywołana przez klasę **EventProcessorHost** do przetwarzania zdarzeń odebranych z centrum zdarzeń. Klasa `SimpleEventProcessor` używa stopera, aby okresowo wywoływać metodę punktu kontrolnego w kontekście klasy **EventProcessorHost**. Takie przetwarzanie daje gwarancję, że jeśli odbiorca zostanie ponownie uruchomiony, nie straci więcej niż pięć minut operacji przetwarzania.
 
-7. Uruchom program i upewnij się, że nie ma w nim żadnych błędów.
+## <a name="update-the-main-method-to-use-simpleeventprocessor"></a>Zaktualizuj metodę Main, aby użyć SimpleEventProcessor
+
+1. W klasie **Program** dodaj następującą instrukcję `using` w górnej części pliku:
+    
+      ```csharp
+      using Microsoft.ServiceBus.Messaging;
+      ```
+    
+2. Zastąp `Main` method in Class metoda `Program` klasy następujący kod, zastępując nazwę Centrum zdarzeń i parametry połączenia na poziomie przestrzeni nazw, które zostały zapisane wcześniej oraz konto magazynu i klucz skopiowane we wcześniejszych sekcjach. 
+    
+      ```csharp
+      static void Main(string[] args)
+      {
+        string eventHubConnectionString = "{Event Hubs namespace connection string}";
+        string eventHubName = "{Event Hub name}";
+        string storageAccountName = "{storage account name}";
+        string storageAccountKey = "{storage account key}";
+        string storageConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}", storageAccountName, storageAccountKey);
+        
+        string eventProcessorHostName = Guid.NewGuid().ToString();
+        EventProcessorHost eventProcessorHost = new EventProcessorHost(eventProcessorHostName, eventHubName, EventHubConsumerGroup.DefaultGroupName, eventHubConnectionString, storageConnectionString);
+        Console.WriteLine("Registering EventProcessor...");
+        var options = new EventProcessorOptions();
+        options.ExceptionReceived += (sender, e) => { Console.WriteLine(e.Exception); };
+        eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>(options).Wait();
+        
+        Console.WriteLine("Receiving. Press enter key to stop worker.");
+        Console.ReadLine();
+        eventProcessorHost.UnregisterEventProcessorAsync().Wait();
+      }
+      ```
+    
+3. Uruchom program i upewnij się, że nie ma w nim żadnych błędów.
   
 Gratulacje! Odebrano komunikaty z centrum zdarzeń za pomocą hosta procesora zdarzeń.
 
 
 > [!NOTE]
-> Instrukcje w tym samouczku obejmują użycie pojedynczego wystąpienia klasy [EventProcessorHost][EventProcessorHost]. Aby zwiększyć przepływność, zaleca się uruchomienie wielu wystąpień [EventProcessorHost][EventProcessorHost], jak pokazano na [skalowanie przetwarzania zdarzeń](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3) próbki. W tych przypadkach różne wystąpienia automatycznie koordynują się ze sobą w celu równoważenia obciążenia odebranych zdarzeń. Jeśli chcesz, aby wiele odbiorników przetwarzało *wszystkie* zdarzenia, musisz użyć koncepcji **ConsumerGroup**. W przypadku odbierania zdarzeń z różnych maszyn dobrym rozwiązaniem może być określenie nazw wystąpień klasy [EventProcessorHost][EventProcessorHost] w oparciu o maszyny (lub role), w których są one wdrażane. Więcej informacji można znaleźć w artykułach [Omówienie usługi Azure Event Hubs][Event Hubs overview] i [Event Hubs programming guide][Event Hubs Programming Guide] (Przewodnik programowania w usłudze Event Hubs).
-> 
-> 
+> Instrukcje w tym samouczku obejmują użycie pojedynczego wystąpienia klasy [EventProcessorHost](event-hubs-event-processor-host.md). W celu zwiększenia przepływności, firma Microsoft zaleca się uruchomienie wielu wystąpień [EventProcessorHost](event-hubs-event-processor-host.md), jak pokazano na [skalowanie przetwarzania zdarzeń](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3) próbki. W takich przypadkach wiele wystąpień automatycznie koordynują się ze sobą w celu równoważenia obciążenia odebranych zdarzeń. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-
-Teraz, gdy masz utworzoną działającą aplikację, która tworzy centrum zdarzeń oraz wysyła i odbiera dane, możesz dowiedzieć się więcej, odwiedzając jeden z następujących linków:
-
-* [Przegląd hosta procesora zdarzeń][Event Processor Host]
-* [Przegląd usługi Event Hubs][Event Hubs overview]
-* [Event Hubs — często zadawane pytania](event-hubs-faq.md)
+W tym przewodniku Szybki Start utworzono aplikację .NET Framework, które odebrano komunikaty z Centrum zdarzeń. Aby dowiedzieć się, jak do wysyłania zdarzeń do Centrum zdarzeń za pomocą .NET Framework, zobacz [wysyłać zdarzenia z Centrum zdarzeń — .NET Framework](event-hubs-dotnet-framework-getstarted-send.md).
 
 <!-- Images. -->
 [19]: ./media/event-hubs-csharp-ephcs-getstarted/create-eh-proj1.png

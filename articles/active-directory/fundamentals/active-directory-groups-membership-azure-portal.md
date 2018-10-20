@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 10/19/2018
 ms.author: lizross
 ms.custom: it-pro
 ms.reviewer: krbain
-ms.openlocfilehash: c28fe5ef226fac993fde221b16bfa875ba4845ca
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 09e023d1d562ea53d9927adf609335beac38a2d7
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579772"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468034"
 ---
 # <a name="how-to-add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Porady: Dodawanie lub usuwanie grupy z innej grupy za pomocą usługi Azure Active Directory
 Ten artykuł ułatwia dodawanie i usuwanie grupy z innej grupy za pomocą usługi Azure Active Directory.
@@ -25,12 +25,15 @@ Ten artykuł ułatwia dodawanie i usuwanie grupy z innej grupy za pomocą usług
 >[!Note]
 >Jeśli próbujesz usunąć grupę nadrzędną, zobacz [jak zaktualizować lub usunąć grupę i jej elementów członkowskich](active-directory-groups-delete-group.md).
 
-## <a name="add-a-group-as-a-member-to-another-group"></a>Dodaj grupę jako członek do innej grupy
-Możesz dodać istniejącą grupę, do innej grupy istniejących, tworzenie członka grupy (podgrupy) i grupy nadrzędnej. Element członkowski grupy dziedziczy atrybuty i właściwości grupy nadrzędnej, zaoszczędzić czas.
+## <a name="add-a-group-to-another-group"></a>Dodawanie grupy do innej grupy
+Można dodać istniejącej grupy zabezpieczeń do innej istniejącej grupy zabezpieczeń (nazywane również zagnieżdżone grupy), tworzenia elementu członkowskiego grupy (podgrupy) i grupy nadrzędnej. Element członkowski grupy dziedziczy atrybuty i właściwości grupy nadrzędnej, zaoszczędzić czas.
 
-### <a name="to-add-a-group-as-a-member-to-another-group"></a>Aby dodać grupę jako członek do innej grupy
+>[!Important]
+>Obecnie nie obsługujemy:<ul><li>Dodawanie grup zabezpieczeń do grup usługi Office 365</li><li>Dodawanie grup usługi Office 365 do grupy zabezpieczeń lub inne grupy usługi Office 365</li><li>Przypisywanie aplikacji do grup zagnieżdżonych</li><li>Stosowanie licencji do grupy zagnieżdżone</li></ul>
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta administratora globalnego dla katalogu.
+### <a name="to-add-a-group-as-a-member-of-another-group"></a>Aby dodać grupę, jest członkiem innej grupy
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) przy użyciu konta administratora globalnego dla katalogu.
 
 2. Wybierz **usługi Azure Active Directory**, a następnie wybierz pozycję **grup**.
 
@@ -55,8 +58,8 @@ Możesz dodać istniejącą grupę, do innej grupy istniejących, tworzenie czł
 
     ![Strona członkostwo grupy, zawierający element członkowski i szczegóły grupy](media/active-directory-groups-membership-azure-portal/group-membership-review.png)
 
-## <a name="remove-a-member-group-from-another-group"></a>Usuń grupę elementu członkowskiego z innej grupy
-Możesz usunąć istniejącą grupę elementu członkowskiego z innej grupy. Jednak usunięcie członkostwa powoduje również usunięcie wszelkich atrybuty dziedziczone i właściwości dla użytkowników.
+## <a name="remove-a-group-from-another-group"></a>Usuwanie grupy z innej grupy
+Możesz usunąć istniejącą grupę zabezpieczeń z innej grupy zabezpieczeń. Jednak usunięcie grupy powoduje również usunięcie właściwości i atrybuty dziedziczone członków grupy.
 
 ### <a name="to-remove-a-member-group-from-another-group"></a>Aby usunąć grupę elementu członkowskiego z innej grupy
 1. Na **grupy — wszystkie grupy** strony, wyszukaj i wybierz grupę, która ma zostać usunięta, jest członkiem innej grupy. W tym ćwiczeniu ponownie używamy **zasad zarządzania urządzeniami Przenośnymi - Zachodnia** grupy.
@@ -79,6 +82,8 @@ Te artykuły zawierają dodatkowe informacje o usłudze Azure Active Directory.
 
 - [Dodawanie lub usuwanie członków z grupy](active-directory-groups-members-azure-portal.md)
 
-- [Edytuj ustawienia grupy](active-directory-groups-settings-azure-portal.md)
+- [Edytowanie ustawień grupy](active-directory-groups-settings-azure-portal.md)
 
-- [Przypisywanie licencji do użytkowników według grupy](../users-groups-roles/licensing-groups-assign.md)
+- [Using a group to manage access to SaaS applications (Używanie grupy do zarządzania dostępem do aplikacji SaaS)](../users-groups-roles/groups-saasapps.md)
+
+- [Scenariusze, ograniczenia i znane problemy, używanie grup do zarządzania, Licencjonowanie w usłudze Azure Active Directory](../users-groups-roles/licensing-group-advanced.md#limitations-and-known-issues)

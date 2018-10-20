@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/25/2018
+ms.date: 10/18/2018
 ms.author: srrengar
-ms.openlocfilehash: a607f560b5e74071f5ee15d03e615138f25a3aef
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 5fc2674a145be99fb8867c5cf1b1f65ba860db80
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406810"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457837"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorowanie i Diagnostyka Azure Service Fabric
 
@@ -71,7 +71,7 @@ Oprócz możliwości wyświetlania najnowszych raportów kondycji w SFX, każdy 
 
 ## <a name="other-logging-solutions"></a>Inne rozwiązania rejestrowania
 
-Mimo że te dwa rozwiązania zalecane jest, [usługi Azure Log Analytics](service-fabric-diagnostics-event-analysis-oms.md) i [usługi Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) utworzone w integracji z usługą Service Fabric, wiele zdarzeń są zapisywane przy użyciu dostawcy etw i są Rozszerzalne z innymi rozwiązaniami rejestrowania. Należy również zwrócić uwagę na [Elastic Stack](https://www.elastic.co/products) (zwłaszcza, jeśli rozważasz uruchomiony klaster w środowisku, w trybie offline), [Splunk](https://www.splunk.com/), [Dynatrace](https://www.dynatrace.com/), lub innych Platforma z preferencjami. 
+Mimo że te dwa rozwiązania zalecane jest, [usługi Azure Log Analytics](service-fabric-diagnostics-event-analysis-oms.md) i [usługi Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) utworzone w integracji z usługą Service Fabric, wiele zdarzeń są zapisywane przy użyciu dostawcy ETW i są Rozszerzalne z innymi rozwiązaniami rejestrowania. Należy również zwrócić uwagę na [Elastic Stack](https://www.elastic.co/products) (zwłaszcza, jeśli rozważasz uruchomiony klaster w środowisku, w trybie offline), [Dynatrace](https://www.dynatrace.com/), lub jakiejkolwiek innej platformie swoje preferencje. Mamy listę zintegrowanych partnerów dostępne [tutaj](service-fabric-diagnostics-partners.md).
 
 Kluczowe punkty, dla dowolnej platformy, które możesz wybrać powinien zawierać, jak dobrze są przy użyciu interfejsu użytkownika i wykonywanie zapytań opcje możliwości wizualizacji danych i tworzenie czytelny pulpitów nawigacyjnych i dodatkowe narzędzia, które zapewniają ulepszenia monitorowania, takie jak automatyczne alerty.
 
@@ -80,5 +80,7 @@ Kluczowe punkty, dla dowolnej platformy, które możesz wybrać powinien zawiera
 * Aby uzyskać wprowadzenie do instrumentacji aplikacji, zobacz [poziomu generowania zdarzeń i dzienników aplikacji](service-fabric-diagnostics-event-generation-app.md).
 * Dowiedz się więcej o funkcji monitorowania i zdarzeń, Usługa Service Fabric udostępnia w miejscu platformy [poziomu generowania zdarzeń i dzienników platformy](service-fabric-diagnostics-event-generation-infra.md).
 * Zapoznaj się z artykułem kroki, aby skonfigurować sztucznej Inteligencji do aplikacji za pomocą [monitorowanie i diagnozowanie aplikacji platformy ASP.NET Core w usłudze Service Fabric](service-fabric-tutorial-monitoring-aspnet.md).
-* Dowiedz się, jak skonfigurować usługi Azure Log Analytics w celu monitorowania kontenerów — [monitorowania i diagnostyki dla Windows kontenery w usłudze Azure Service Fabric](service-fabric-tutorial-monitoring-wincontainers.md).
+* Dowiedz się, jak skonfigurować usługi OMS Log Analytics w celu monitorowania kontenerów — [monitorowania i diagnostyki dla Windows kontenery w usłudze Azure Service Fabric](service-fabric-tutorial-monitoring-wincontainers.md).
+* Zobacz przykład diagnostyki problemy i rozwiązania z usługą Service Fabric w [diagnozowanie typowe scenariusze](service-fabric-diagnostics-common-scenarios.md)
+* Zapoznaj się z innych produktów diagnostyki, które integrują się z usługą Service Fabric w [diagnostycznych partnerów usługi Service Fabric](service-fabric-diagnostics-partners.md)
 * Dowiedz się więcej o ogólnych zaleceń dotyczących monitorowania zasobów platformy Azure — [najlepsze rozwiązania — monitorowanie i Diagnostyka](https://docs.microsoft.com/azure/architecture/best-practices/monitoring). 

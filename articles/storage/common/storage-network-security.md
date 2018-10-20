@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: 98972b0c52470e6a404090d993c21a47b11cd660
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 7c01940c41067029bc3d47d19c2ded1d710cc2c6
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427149"
+ms.locfileid: "49470068"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych
 Usługa Azure Storage udostępnia model zabezpieczeń warstwowych, dzięki czemu możesz do zabezpieczania konta magazynu do określonego zestawu dozwolonych sieci.  Po skonfigurowaniu reguł sieci tylko aplikacje z dozwolonych sieci można uzyskiwać dostęp do konta magazynu.  Podczas wywoływania z dozwolonych sieci, aplikacje w dalszym ciągu wymagają właściwej zezwolenia (prawidłowy klucz dostępu lub tokenu sygnatury dostępu Współdzielonego) dostęp do konta magazynu.
@@ -190,11 +190,13 @@ Dozwolone zakresy adresów internetowych można określić za pomocą [notacji C
 
 Reguły sieciowych adresów IP są dozwolone tylko dla **publicznej sieci internet** adresów IP.  Zakresy adresów zarezerwowanych dla sieci prywatnych adresów IP (zgodnie z definicją w [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) są niedozwolone w regułach adresów IP.  Prywatne sieci obejmują adresów rozpoczynających się *10.\** , *172.16.\**   -  *172.31.\**, i *192.168.\** .
 
-Należy pamiętać, że reguł sieci IP nie wpływa na żądania pochodzące z tym samym regionie platformy Azure jako konto magazynu.  Użyj reguł sieci wirtualnej, aby zezwolić na żądania z tego samego regionu.
+> [!NOTE]
+> Reguły sieciowych adresów IP będzie nie mają wpływu na żądania pochodzące z tym samym regionie platformy Azure jako konto magazynu.  Użyj [reguł sieci wirtualnej](#grant-access-from-a-virtual-network) Aby zezwolić na żądania z tego samego regionu.
+>
 
 W tej chwili obsługiwane są tylko adresy IPV4.
 
-Każde konto magazynu może obsługiwać maksymalnie 100 adresów IP reguł sieciowych, które mogą być łączone z [reguł sieci wirtualnej](#grant-access-from-a-virtual-network)
+Każde konto magazynu może obsługiwać maksymalnie 100 adresów IP reguł sieciowych, które mogą być łączone z [reguł sieci wirtualnej](#grant-access-from-a-virtual-network).
 
 ### <a name="configuring-access-from-on-premises-networks"></a>Konfigurowanie dostępu do sieci lokalnej
 Aby udzielić dostępu z sieci lokalnej do swojego konta magazynu przy użyciu reguły sieci IP, należy określić adresy IP używane przez sieć z Internetem.  Aby uzyskać pomoc, skontaktuj się z administratorem sieci.

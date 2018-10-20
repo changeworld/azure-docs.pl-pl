@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: alkohli
-ms.openlocfilehash: caef76059219826da94d4cdafc98f1887ea5a185
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 8d4a99ab9d8107f1b3fbe70f59299f427bc88bd5
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/19/2018
-ms.locfileid: "49431636"
+ms.locfileid: "49465894"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge-preview"></a>Tworzenie modułu C# usługi IoT Edge, aby przenieść pliki na krawędzi pola danych (wersja zapoznawcza)
 
@@ -144,6 +144,9 @@ Utwórz szablon rozwiązania w języku C#, który można dostosować przy użyci
             private const string InputFolderPath = "/home/LocalShare";
             private const string OutputFolderPath = "/home/CloudShare";
     ````
+
+    > [!IMPORTANT]
+    > Zwróć uwagę na `InputFolderPath` i `OutputFolderPath`. Należy podać te ścieżki, podczas wdrażania tego modułu.
 
 4. Dodaj **Element MessageBody** klasy do klasy Program. Te klasy definiują oczekiwany schemat treści komunikatów przychodzących.
 

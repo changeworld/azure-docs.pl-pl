@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: AzurePortal
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/26/2018
+ms.date: 10/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 82a48c902b72b5aca546c45032a13e831533f9ee
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: b6386f4a23a0ca6d0134f8c4e298a3f7100cc1d6
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393472"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466957"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Organizowanie zasobów platformy Azure przy użyciu tagów
 
@@ -264,13 +264,11 @@ Witryna Azure portal i programu PowerShell, użyj obu [interfejsu REST API usłu
 
 ## <a name="tags-and-billing"></a>Znaczniki i rozliczenia
 
-Tagi służą do grupowania danych dotyczących rozliczeń. Na przykład jeśli używasz wielu maszyn wirtualnych w różnych organizacjach za pomocą tagów do użycia grup Centrum kosztów. Tagów umożliwia również kategoryzowanie kosztów przez środowisko uruchomieniowe, takie jak rozliczanego użycia dla maszyn wirtualnych uruchomionych w środowisku produkcyjnym.
+Tagi służą do grupowania danych dotyczących rozliczeń. Na przykład jeśli korzystasz z wielu maszyn wirtualnych dla różnych organizacji, należy użyć tagów, aby używanie grupy przez Centrum kosztów. Tagów umożliwia również kategoryzowanie kosztów przez środowisko uruchomieniowe, takie jak rozliczanego użycia dla maszyn wirtualnych uruchomionych w środowisku produkcyjnym.
 
-Można pobrać informacji na temat tagów za pośrednictwem [użycia zasobów platformy Azure i interfejsów API usługi RateCard](../billing/billing-usage-rate-card-overview.md) lub użycie pliku wartości rozdzielanych przecinkami (CSV). Pobieranie pliku użycia z [portal konta Azure](https://account.windowsazure.com/) lub [portalu EA portal](https://ea.azure.com). Aby uzyskać więcej informacji na temat programowy dostęp do informacji dotyczących rozliczeń, zobacz [wgląd w użycie zasobów usługi Microsoft Azure](../billing/billing-usage-rate-card-overview.md). Dla operacji interfejsu API REST, zobacz [dokumentacja interfejsu API REST rozliczeń platformy Azure](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c).
+Można pobrać informacji na temat tagów za pośrednictwem [użycia zasobów platformy Azure i interfejsów API usługi RateCard](../billing/billing-usage-rate-card-overview.md) lub użycie pliku wartości rozdzielanych przecinkami (CSV). Pobieranie pliku użycia z [Centrum konta platformy Azure](https://account.azure.com/Subscriptions) lub witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [pobrania lub wyświetlenia faktury i dane dziennego użycia rozliczeniową za platformę Azure](../billing/billing-download-azure-invoice-daily-usage-date.md). Podczas pobierania pliku użycia z Centrum konta platformy Azure, wybierz **w wersji 2**. W przypadku usług, które obsługują tagi z rozliczeniem znaczniki są wyświetlane w **tagi** kolumny.
 
-Po pobraniu użycia woluminów CSV dla usług, które obsługują tagi z rozliczeniami, znaczniki są wyświetlane w **tagi** kolumny. Aby uzyskać więcej informacji, zobacz [opis zawartości rachunku dla systemu Microsoft Azure](../billing/billing-understand-your-bill.md).
-
-![Zobacz tagi rozliczeń](./media/resource-group-using-tags/billing_csv.png)
+Dla operacji interfejsu API REST, zobacz [dokumentacja interfejsu API REST rozliczeń platformy Azure](/rest/api/billing/).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

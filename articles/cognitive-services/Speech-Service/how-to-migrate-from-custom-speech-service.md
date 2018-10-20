@@ -1,21 +1,21 @@
 ---
-title: Migrowanie z usługi Custom Speech Service do usługi rozpoznawania mowy
+title: Migracja z Custom Speech Service do usługi rozpoznawania mowy
 titlesuffix: Azure Cognitive Services
 description: Dowiedz się, jak migracja do usługi Custom Speech do usługi rozpoznawania mowy.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: panosper
-ms.openlocfilehash: db09a85daff553dc911d039d37c826343e93d240
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 656a5df21d1f7dd2e7662dc3a0415581eae02b00
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338526"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471241"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>Migrowanie z usługi Custom Speech usługi mowy
 

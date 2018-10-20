@@ -3,7 +3,7 @@ title: Za pomocą rozszerzenia maszyny Wirtualnej Azure Docker | Dokumentacja fi
 description: Dowiedz się, jak szybko i bezpiecznie wdrożyć w środowisku platformy Docker na platformie Azure przy użyciu szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure za pomocą rozszerzenia maszyny Wirtualnej Docker
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: ''
 ms.assetid: 936d67d7-6921-4275-bf11-1e0115e66b7f
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
-ms.author: cynthn
-ms.openlocfilehash: 59dbbb8374455088d759a5e837b8d3bc22145d3e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: zarhoads
+ms.openlocfilehash: 75959225d6fcc5487466ed26a21ba2d26c55cde9
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981301"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465937"
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>Utwórz środowisko platformy Docker na platformie Azure przy użyciu rozszerzenia maszyny Wirtualnej Docker
 

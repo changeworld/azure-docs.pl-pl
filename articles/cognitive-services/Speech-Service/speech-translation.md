@@ -1,26 +1,27 @@
 ---
 title: Tłumaczenie mowy — informacje
+titlesuffix: Azure Cognitive Services
 description: Omówienie funkcji tłumaczenia mowy
-titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/28/2018
 ms.author: erhopf
-ms.openlocfilehash: f3c22589270ccee2c60ca5ea5b15047d9c81fabe
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: af363a45ab113d89c7aad7a38c6e10d335bc6035
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165441"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469147"
 ---
 # <a name="about-the-speech-translation-api"></a>Interfejs API tłumaczenia mowy — informacje
 
-Interfejs API mowy usługi Microsoft umożliwia dodanie end-to-end, w czasie rzeczywistym, wielu języków tłumaczenia mowy do aplikacji, narzędzi i urządzeń. Tego samego interfejsu API może służyć do tłumaczenia mowy do rozpoznawania mowy i rozpoznawania mowy na tekst.
+Interfejs API usługi mowy umożliwia dodanie end-to-end, w czasie rzeczywistym, wielu języków tłumaczenia mowy do aplikacji, narzędzi i urządzeń. Tego samego interfejsu API może służyć do tłumaczenia mowy do rozpoznawania mowy i rozpoznawania mowy na tekst.
 
-Za pomocą interfejsu API mowy usługi Translator firmy Microsoft aplikacje klienckie przesyłanie strumieniowe audio mowy do usługi i ponownie otrzymywać strumień wyników. Te wyniki obejmują rozpoznany tekst w języku źródła i ich tłumaczeniem w języku docelowym. Tymczasowe tłumaczenia mogą być dostarczone do czasu ukończenia wypowiedź, co ostateczne tłumaczenie jest dostarczane.
+Za pomocą interfejsu API tłumaczenia mowy aplikacje klienckie przesyłanie strumieniowe audio mowy do usługi i ponownie otrzymywać strumień wyników. Te wyniki obejmują rozpoznany tekst w języku źródła i ich tłumaczeniem w języku docelowym. Tymczasowe tłumaczenia mogą być dostarczone do czasu ukończenia wypowiedź, co ostateczne tłumaczenie jest dostarczane.
 
 Opcjonalnie syntetyzowany dźwiękową wersję ostateczne tłumaczenie można przygotować, umożliwiając true tłumaczenia mowy do rozpoznawania mowy.
 

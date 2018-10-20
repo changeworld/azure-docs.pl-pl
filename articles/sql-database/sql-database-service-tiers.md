@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: 3b2359564020eeeb209a7eb78d81782a675f125d
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.date: 10/19/2018
+ms.openlocfilehash: 9dc993b6ba9b90dfa61660df004ef7dae8b93fa7
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379291"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470958"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Usługa Azure SQL Database zakupu modeli
 
@@ -33,21 +33,21 @@ Następujących tabel i wykresów porównania i porównać te dwa modele zakupu.
 
 |**Model zakupu**|**Opis**|**Najlepsze dla**|
 |---|---|---|
-|Model oparty na jednostkach DTU|Ten model opiera się na powiązane miary obliczeniowe, magazynu i zasobów we/wy. Obliczenia rozmiarów są wyrażone w jednostkach transakcji bazy danych (Dtu) dla pojedynczych baz danych i jednostek transakcji elastic Database (Edtu) dla pul elastycznych. Aby uzyskać więcej informacji na temat jednostek Dtu i Edtu, zobacz [co to są jednostki Dtu i Edtu](sql-database-service-tiers.md#dtu-based-purchasing-model)?|Najlepsze dla klientów chcących zasobów proste, wstępnie skonfigurowanych opcji.| 
+|Model oparty na jednostkach DTU|Ten model opiera się na powiązane miary obliczeniowe, magazynu i zasobów we/wy. Obliczenia rozmiarów są wyrażone w jednostkach transakcji bazy danych (Dtu) dla pojedynczych baz danych i jednostek transakcji elastic Database (Edtu) dla pul elastycznych. Aby uzyskać więcej informacji na temat jednostek Dtu i Edtu, zobacz [co to są jednostki Dtu i Edtu](sql-database-service-tiers.md#dtu-based-purchasing-model)?|Najlepsze dla klientów chcących zasobów proste, wstępnie skonfigurowanych opcji.|
 |Model oparty na rdzeniach wirtualnych|Ten model umożliwia niezależne Wybierz zasoby obliczeniowe i magazynowe. Umożliwia on również używać korzyści użycia hybrydowego platformy Azure dla programu SQL Server w celu uzyskania oszczędności kosztów.|Najlepsze dla klientów, którzy wartości elastyczności, kontroli i przejrzystości.|
 ||||  
 
 ![model cen](./media/sql-database-service-tiers/pricing-model.png)
 
-## <a name="vcore-based-purchasing-model"></a>Model zakupu bazujący na rdzeniach wirtualnych 
+## <a name="vcore-based-purchasing-model"></a>Model zakupu bazujący na rdzeniach wirtualnych
 
 Rdzeń wirtualny reprezentuje logiczny Procesor CPU z opcją wyboru generacji sprzętu i cechy fizyczne sprzętu (na przykład liczba rdzeni, pamięć, rozmiar magazynu). Model zakupu opartego na rdzeniach wirtualnych zapewnia Twojej elastyczności, kontroli, przejrzystości użycia poszczególnych zasobów i prostą metodę tłumaczenia wymagań obciążenia w chmurze lokalnie. Ten model umożliwia wybierz obliczeniowych, pamięci i magazynu, w zależności od ich potrzeb obciążenia. W opartych na rdzeniach wirtualnych model zakupu, można wybrać między [ogólnego przeznaczenia](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) i [krytyczne dla działania](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) warstwy usług dla obu [pojedyncze bazy danych](sql-database-single-database-scale.md), [ wystąpienia zarządzane](sql-database-managed-instance.md), i [pul elastycznych](sql-database-elastic-pool.md). Dla pojedynczych baz danych, można także [(wersja zapoznawcza) na dużą skalę](sql-database-service-tier-hyperscale.md) warstwy usług.
 
 Model zakupu opartego na rdzeniach wirtualnych umożliwia niezależnie wybrać zasoby obliczeniowe i magazynowe, Dopasuj wydajność środowiska lokalnego i optymalizacja ceny. Oparty na rdzeniach wirtualnych model zakupu klienci płacą za zasoby:
 
 - Obliczenia (warstwy usług + liczba rdzeni wirtualnych i ilość pamięci i generowanie sprzętu)
-- Typ i ilość miejsca w magazynie danych i dziennika 
-- Magazyn kopii zapasowych (RA-GRS) 
+- Typ i ilość miejsca w magazynie danych i dziennika
+- Magazyn kopii zapasowych (RA-GRS)
 
 > [!IMPORTANT]
 > Moc obliczeniowa, IOs, dane i Magazyn dzienników są naliczane zgodnie z bazy danych lub elastycznej puli. Magazyn kopii zapasowych jest rozliczane na każdej bazy danych. Aby uzyskać szczegółowe informacje o opłaty za wystąpienia zarządzanego, zapoznaj się [wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance.md).
@@ -75,9 +75,7 @@ Aby uzyskać lepszy wgląd w użycie zasobów (DTU), obciążenia, należy uży�
 
 ### <a name="elastic-database-transaction-units-edtus"></a>Jednostki transakcji elastic Database (Edtu)
 
-Raczej niż zapewniają dedykowany zestaw zasobów (Dtu), które może nie zawsze być wymagane dla usługi SQL Database, która jest zawsze dostępna, można umieścić bazy danych [puli elastycznej](sql-database-elastic-pool.md) na serwerze bazy danych SQL, który udostępnia pulę zasobów między te bazy danych. Współdzielone zasoby w puli elastycznej są mierzone w elastycznych jednostkach transakcji bazy danych lub Edtu. Pule elastyczne zapewniają proste i ekonomiczne rozwiązanie umożliwiające zarządzanie celami wydajności dla wielu baz danych o znacznie zróżnicowanych i nieprzewidywalnych wzorcach użycia. Pula elastyczna gwarantuje, że zasoby nie mogą być używane przez jedną bazę danych w puli, gdy zawsze zapewnienie każdej bazy danych w puli ma minimalną ilość wymaganych zasobów dostępnych. 
-
-![Wprowadzenie do usługi SQL Database: jednostki eDTU według warstwy i poziomu](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
+Raczej niż zapewniają dedykowany zestaw zasobów (Dtu), które może nie zawsze być wymagane dla usługi SQL Database, która jest zawsze dostępna, można umieścić bazy danych [puli elastycznej](sql-database-elastic-pool.md) na serwerze bazy danych SQL, który udostępnia pulę zasobów między te bazy danych. Współdzielone zasoby w puli elastycznej są mierzone w elastycznych jednostkach transakcji bazy danych lub Edtu. Pule elastyczne zapewniają proste i ekonomiczne rozwiązanie umożliwiające zarządzanie celami wydajności dla wielu baz danych o znacznie zróżnicowanych i nieprzewidywalnych wzorcach użycia. Pula elastyczna gwarantuje, że zasoby nie mogą być używane przez jedną bazę danych w puli, gdy zawsze zapewnienie każdej bazy danych w puli ma minimalną ilość wymaganych zasobów dostępnych.
 
 Puli jest przydzielana określona liczba jednostek Edtu za określoną cenę. Poszczególne bazy danych w ramach puli elastycznej mają możliwość elastycznego skalowania automatycznego w skonfigurowanych granicach. Bazy danych przy większych obciążeniach zajmie więcej jednostek Edtu w celu spełnienia określonych wymagań. Bazy danych pod obciążeniem jaśniejszy zajmie mniej jednostek Edtu. Bazy danych bez obciążenia będą nie zużywają jednostek Edtu. Aprowizowanie zasobów dla całej puli, zamiast na bazę danych, upraszcza zadania zarządzania, zapewniając przewidywalny budżet dla puli.
 

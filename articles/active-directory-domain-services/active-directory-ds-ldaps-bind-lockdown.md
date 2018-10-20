@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: maheshu
-ms.openlocfilehash: 9728d42710ce44226363ea4954d83fcc3efbfb75
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: d3fbefd002f0b2774578d24cf2e3145a21a5e1f3
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502956"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456409"
 ---
 # <a name="bind-to-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Powiąż z domeny zarządzanej usług domenowych Azure AD przy użyciu bezpiecznego protokołu LDAP (LDAPS)
 
@@ -38,8 +38,8 @@ Następnie Powiąż do domeny zarządzanej. Kliknij przycisk **połączenia** i 
 Wybierz **widoku**, a następnie wybierz pozycję **drzewa** w menu. Bazowa nazwa Wyróżniająca pole jest puste, a następnie kliknij przycisk OK. Przejdź do kontenera, który ma być wyszukiwania, kliknij prawym przyciskiem myszy kontener, a następnie wybierz wyszukiwania.
 
 > [!TIP]
-> - Użytkownicy i grupy synchronizowane z usługi Azure AD są przechowywane w **użytkownicy usługi AAD DC** kontenera. Ścieżka wyszukiwania dla tego kontenera wygląda ```CN=AADDC\ Users,DC=CONTOSO100,DC=COM```.
-> - Konta komputerów dla komputery przyłączone do domeny zarządzanej, są przechowywane w **komputery usługi AAD DC** kontenera. Ścieżka wyszukiwania dla tego kontenera wygląda ```CN=AADDC\ Computers,DC=CONTOSO100,DC=COM```.
+> - Użytkownicy i grupy synchronizowane z usługi Azure AD są przechowywane w **użytkownicy usługi AAD DC** jednostki organizacyjnej. Ścieżka wyszukiwania dla tej jednostki organizacyjnej wygląda ```OU=AADDC Users,DC=CONTOSO100,DC=COM```.
+> - Konta komputerów dla komputery przyłączone do domeny zarządzanej, są przechowywane w **komputery usługi AAD DC** jednostki organizacyjnej. Ścieżka wyszukiwania dla tej jednostki organizacyjnej wygląda ```OU=AADDC Computers,DC=CONTOSO100,DC=COM```.
 >
 >
 

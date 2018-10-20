@@ -5,16 +5,16 @@ services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-detection
+ms.component: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: kefre
-ms.openlocfilehash: 84997b5d50f879fd4be286a3ca362e70f90c9202
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: ef876e19353e8765b679a9aae6282ce3ade600c2
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249189"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456545"
 ---
 # <a name="use-the-anomaly-finder-api-with-java"></a>Narzędzie do wyszukiwania anomalii interfejsu API za pomocą języka Java
 
@@ -43,7 +43,7 @@ Aby uruchomić przykład, wykonaj następujące czynności:
 2. Zastąp klasę Main poniższym kodem (zachowaj wszystkie instrukcje `package`).
 3. Zastąp wartość `[YOUR_SUBSCRIPTION_KEY]` prawidłowym kluczem subskrypcji.
 4. Zastąp `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` przy użyciu przykładu lub punktów danych.
-5. Pobierz biblioteki te globalne z repozytorium Maven, aby `lib` katalog w projekcie:
+5. Pobierz te biblioteki globalne z repozytorium Maven do katalogu `lib` w swoim projekcie:
    * `org.apache.httpcomponents:httpclient:4.5.2`
 6. Uruchom polecenie „Main”.
 

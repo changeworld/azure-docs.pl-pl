@@ -1,20 +1,21 @@
 ---
-title: Użyj zamiany tekstu na mowę przy użyciu usług przetwarzania mowy
+title: Użyj zamiany tekstu na mowę usługi mowy
+titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak używać zamiany tekstu na mowę w usłudze rozpoznawania mowy.
-titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: erhopf
-ms.openlocfilehash: 774425d19101e4d326f0d6435d56aff1b37a31f7
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 162b690d4b371cfe76738cd83ce484a3062d139f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165049"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469921"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Użyj "Tekst na mowę" usługi mowy
 

@@ -4,17 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Poznaj różnice między rozpoznawania mowy Bing i usługi mowy z punktu widzenia projektanta i migracji aplikacji do korzystania z usługi rozpoznawania mowy.
 services: cognitive-services
 author: wsturman
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: Speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: gracez
-ms.openlocfilehash: e72cf547ac911b22a03cae6032351c8c0f22de8e
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: baf9b9cd9b3f57c1d708dd404d59c036df6c169f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884853"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466651"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migracja z rozpoznawania mowy Bing do usługi rozpoznawania mowy
 
@@ -22,13 +23,13 @@ W tym artykule należy użyć do migracji aplikacji z modułu Speech API Bing do
 
 W tym artykule opisano różnice między interfejsy API rozpoznawania mowy Bing i usługi rozpoznawania mowy i sugeruje Strategie migracji aplikacji. Klucz interfejsu API rozpoznawania mowy Bing subskrypcji nie zostanie zaakceptowane przez usługę rozpoznawania mowy; należy nową subskrypcję usługi mowy.
 
-Jeden klucz subskrypcji usługa rozpoznawania mowy udziela dostępu do następujących funkcji. Każdy odbywa się oddzielnie, dlatego opłaty są naliczane tylko w przypadku funkcji, których używasz.
+Jeden klucz subskrypcji usługi Mowa umożliwia dostęp do następujących funkcji. Każda z tych funkcji jest mierzona oddzielnie, dlatego opłaty są naliczane tylko za funkcje, których używasz.
 
-* [Zamiany mowy na tekst](speech-to-text.md)
-* [Niestandardowe mowy na tekst](https://cris.ai)
+* [Zamiana mowy na tekst](speech-to-text.md)
+* [Niestandardowa zamiana mowy na tekst](https://cris.ai)
 * [Zamiana tekstu na mowę](text-to-speech.md)
-* [Niestandardowe głosów zamiany tekstu na mowę](how-to-customize-voice-font.md)
-* [Tłumaczenie mowy](speech-translation.md) (nie obejmuje [tłumaczenie tekstu](../translator/translator-info-overview.md))
+* [Niestandardowe głosy funkcji zamiany tekstu na mowę](how-to-customize-voice-font.md)
+* [Tłumaczenie mowy](speech-translation.md) (nie obejmuje funkcji [Tłumaczenie tekstu](../translator/translator-info-overview.md))
 
 [Zestaw SDK rozpoznawania mowy](speech-sdk.md) funkcjonalności zastępuje biblioteki klienta mowy Bing, ale używa innego interfejsu API.
 
@@ -56,7 +57,7 @@ Protokoły WebSockets | : heavy_check_mark: | : heavy_check_mark: | Interfejs AP
 Wywołania interfejsu API do usługi | : heavy_check_mark: | : heavy_minus_sign: | Podana w rozpoznawania mowy Bing za pośrednictwem biblioteki usługi C#. 
 Zestaw SDK open source | : heavy_check_mark: | : heavy_minus_sign: |
 
-Usługa rozpoznawania mowy korzysta z modelu cenowego opartego na czasie (zamiast transakcji modelu). Zobacz [cennik usług mowy](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) Aby uzyskać szczegółowe informacje.
+Usługa rozpoznawania mowy korzysta z modelu cenowego opartego na czasie (zamiast transakcji modelu). Zobacz [cennik usługi Mowa](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/), aby uzyskać szczegółowe informacje.
 
 ## <a name="migration-strategies"></a>Strategie migracji
 

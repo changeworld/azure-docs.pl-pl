@@ -3,7 +3,7 @@ title: Samouczek — tworzenie potoku CI/CD na platformie Azure dzięki usługom
 description: W tym samouczku dowiesz się, jak utworzyć potoku usługom DevOps platformy Azure na potrzeby ciągłej integracji i dostarczania, który służy do wdrażania aplikacji sieci web usług IIS na maszynie Wirtualnej Windows na platformie Azure.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/12/2017
-ms.author: cynthn
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: d4edf0d22ce04eb2cb865d80c2b70f1bcc2169df
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4b4d514ec8bfd78b303a7f51c2a4072507da5be9
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301902"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471462"
 ---
 # <a name="tutorial-create-a-continuous-integration-pipeline-with-azure-devops-services-and-iis"></a>Samouczek: Tworzenie potoku ciągłej integracji za pomocą usługi DevOps platformy Azure i usług IIS
 Aby zautomatyzować tworzenie, testowanie i fazy wdrożenia, projektowania aplikacji, można użyć ciągłej integracji i potoku wdrażania (CI/CD). W tym samouczku utworzysz potok ciągłej integracji/ciągłego wdrażania za pomocą usługi DevOps platformy Azure i Windows maszyny wirtualnej (VM) na platformie Azure, w którym działa program IIS. Omawiane kwestie:

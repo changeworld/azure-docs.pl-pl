@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: glenga
-ms.openlocfilehash: 66d04ca93a79f4d9cdd9f162c6cd3210ae35f4d2
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: e317a9c3cea800e05fbf3d2df73c124d2e7ffd23
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902709"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457667"
 ---
 # <a name="monitor-azure-functions"></a>Monitorowanie usługi Azure Functions
 
@@ -211,6 +211,7 @@ Poziom dziennika `None` zostało wyjaśnione w kolejnej sekcji.
 
 *Host.json* plik konfiguruje poziom rejestrowania aplikacji funkcji, wysyła do usługi Application Insights. Dla każdej kategorii wskazujesz, minimalny poziom rejestrowania do wysłania. Oto przykład:
 
+#### <a name="functions-version-1"></a>Funkcje w wersji 1 
 ```json
 {
   "logger": {
@@ -226,6 +227,22 @@ Poziom dziennika `None` zostało wyjaśnione w kolejnej sekcji.
 }
 ```
 
+#### <a name="functions-version-2"></a>Funkcje w wersji 2 
+Funkcje w wersji 2 korzysta teraz [hierarchia filtrów rejestrowania platformy .NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering). 
+```json
+{
+  "logging": {
+    "fileLoggingMode": "always",
+    "logLevel": {
+      "default": "Information",
+      "Host.Results": "Error",
+      "Function": "Error",
+      "Host.Aggregator": "Trace"
+    }
+  }
+}
+```
+
 Ten przykład konfiguruje następujące reguły:
 
 1. W przypadku dzienników z kategorią "Host.Results" lub "Funkcja" Wyślij tylko `Error` poziom lub nowszym do usługi Application Insights. W dziennikach `Warning` na poziomie i poniżej są ignorowane.
@@ -236,6 +253,7 @@ Wartości kategorii w *host.json* kontroluje rejestrowanie dla wszystkich katego
 
 Jeśli *host.json* obejmuje wiele kategorii rozpoczynających się od tych samych parametrach dłużej te są dopasowywane. Załóżmy, że chcesz, aby wszystko — od środowiska uruchomieniowego, z wyjątkiem "Host.Aggregator" rejestrowania `Error` poziomu, ale ma "Host.Aggregator" rejestrowania `Information` poziom:
 
+#### <a name="functions-version-1"></a>Funkcje w wersji 1 
 ```json
 {
   "logger": {
@@ -246,6 +264,21 @@ Jeśli *host.json* obejmuje wiele kategorii rozpoczynających się od tych samyc
         "Function": "Error",
         "Host.Aggregator": "Information"
       }
+    }
+  }
+}
+```
+
+#### <a name="functions-version-2"></a>Funkcje w wersji 2 
+```json
+{
+  "logging": {
+    "fileLoggingMode": "always",
+    "logLevel": {
+      "default": "Information",
+      "Host": "Error",
+      "Function": "Error",
+      "Host.Aggregator": "Information"
     }
   }
 }

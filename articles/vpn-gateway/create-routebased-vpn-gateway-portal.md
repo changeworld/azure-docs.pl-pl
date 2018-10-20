@@ -1,26 +1,18 @@
 ---
 title: 'Tworzenie bramy sieci VPN opartej na trasach: witryna Azure portal | Dokumentacja firmy Microsoft'
-description: Szybkie tworzenie bramy sieci VPN opartej na trasach przy użyciu witryny Azure portal
+description: Tworzenie bramy sieci VPN opartej na trasach przy użyciu witryny Azure portal
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/04/2018
+ms.date: 10/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: fe05ab36f971105cf72342b8df5e2a82de7fc2b8
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 7139b2de79b4e092ca761a4e51061c233e6031b5
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391797"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470306"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Tworzenie bramy sieci VPN opartej na trasach przy użyciu witryny Azure portal
 
@@ -74,33 +66,19 @@ Podsieć bramy zawiera zastrzeżone adresy IP, z których korzystają usługi br
   - **Jednostka SKU**: VpnGw1
   - **Lokalizacja**: wschodnie stany USA
   - **Sieć wirtualna**: kliknij **sieci wirtualnej/wybierz sieć wirtualną** otworzyć **wybierz sieć wirtualną** strony. Wybierz **VNet1**.
+  - **Publiczny adres IP**: to ustawienie określa obiekt publicznego adresu IP, który zostaje skojarzony z bramą sieci VPN. Publiczny adres IP jest dynamicznie przypisywany do tego obiektu podczas tworzenia bramy sieci VPN. Brama sieci VPN aktualnie obsługuje tylko *dynamiczne* przypisywanie publicznych adresów IP. Nie oznacza to jednak, że adres IP zmienia się po przypisaniu go do bramy sieci VPN. Jedyną sytuacją, w której ma miejsce zmiana publicznego adresu IP, jest usunięcie bramy i jej ponowne utworzenie. Nie zmienia się on w przypadku zmiany rozmiaru, zresetowania ani przeprowadzania innych wewnętrznych czynności konserwacyjnych bądź uaktualnień bramy sieci VPN.
 
-  ![Konfigurowanie ustawień bramy](./media/create-routebased-vpn-gateway-portal/configure-gateway.png "Konfigurowanie ustawień bramy")
+    - Pozostaw wybraną opcję **Utwórz nowy**.
+    - W polu tekstowym wprowadź **nazwę** publicznego adresu IP. Na potrzeby tego ćwiczenia, użyj **VNet1GWIP**.<br>
 
-## <a name="pip"></a>Tworzenie publicznego adresu IP
-
-Brama sieci VPN musi mieć dynamicznie przydzielanego publicznego adresu IP. Podczas tworzenia połączenia bramy sieci VPN jest to adres IP, który łączy się z urządzenia w środowisku lokalnym.
-
-1. Wybierz **pierwszy adres IP konfiguracji Utwórz konfigurację protokołu IP bramy** żądanie publicznego adresu IP.
-
-  ![Konfiguracja pierwszego adresu IP](./media/create-routebased-vpn-gateway-portal/add-public-ip-address.png "Konfiguracja pierwszego adresu IP")
-2. Na **wybierz publicznego adresu IP strony**, kliknij przycisk **+ Utwórz nowe** otworzyć **tworzenie publicznego adresu IP** strony.
-3. Skonfiguruj ustawienia, z następującymi wartościami:
-
-  - **Nazwa**: **VNet1GWIP**
-  - **Jednostka SKU**: **podstawowe**
-
-  ![Tworzenie publicznego adresu IP](./media/create-routebased-vpn-gateway-portal/public-ip-address-name.png "Tworzenie adresu PIP")
-4. Kliknij przycisk **OK** u dołu tej strony, aby zapisać zmiany.
+    ![Konfigurowanie ustawień bramy](./media/create-routebased-vpn-gateway-portal/gw.png "Konfigurowanie ustawień bramy")
 
 ## <a name="creategw"></a>Tworzenie bramy sieci VPN
 
 1. Sprawdź ustawienia na **Tworzenie bramy sieci wirtualnej** strony. Dostosuj wartości, jeśli to konieczne.
-
-  ![Tworzenie bramy sieci VPN](./media/create-routebased-vpn-gateway-portal/create-vpn-gateway.png "tworzenie VPN gateway")
 2. Kliknij przycisk **Utwórz** w dolnej części strony.
 
-Po kliknięciu **Utwórz**, ustawienia zostaną zweryfikowane i **wdrażanie bramy sieci wirtualnej** pojawi się Kafelek na pulpicie nawigacyjnym. Tworzenie bramy sieci VPN może zająć do 45 minut. Być może będzie trzeba odświeżyć stronę portalu, aby zobaczyć, czy tworzenie zostało ukończone.
+  Po kliknięciu **Utwórz**, ustawienia zostaną zweryfikowane i **wdrażanie bramy sieci wirtualnej** pojawi się Kafelek na pulpicie nawigacyjnym. Tworzenie bramy sieci VPN może zająć do 45 minut. Być może będzie trzeba odświeżyć stronę portalu, aby zobaczyć, czy tworzenie zostało ukończone.
 
 ## <a name="viewgw"></a>Wyświetl bramy sieci VPN
 

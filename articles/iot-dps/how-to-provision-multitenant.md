@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 54804867cfaf38965b3dbf5ceb51e08a731d4dd8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 73ff58148ac68b7aeb782b77385f9f971e02edb5
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966549"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457395"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Jak wykonać aprowizację dla wielodostępności 
 
@@ -220,7 +220,7 @@ W tej sekcji zostanie sklonować zestawu SDK C usługi IoT platformy Azure na ka
 1. Dla obu maszyn wirtualnych, uruchom następujące polecenie tworzy wersję zestawu SDK specyficzną dla platformy klienta deweloperskiego. 
 
     ```bash
-    cmake -Duse_prov_client:BOOL=ON ..
+    cmake -Dhsm_type_symm_key:BOOL=ON ..
     ```
 
     Gdy kompilacja zakończy się powodzeniem, kilka ostatnich wierszy danych wyjściowych będzie wyglądać podobnie do następujących danych wyjściowych:
@@ -334,7 +334,7 @@ Przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje wysł
      vi ~/azure-iot-sdk-c/provisioning_client/adapters/hsm_client_key.c
     ```
 
-1. Znajdź deklaracji `REGISTRATION_NAME` i `SYMMETRIC_KEY_VALUE` stałe. Wprowadź następujące zmiany do plików na maszynach wirtualnych z obu regionalnych i zapisać pliki.
+1. Znajdź deklaracje stałych `REGISTRATION_NAME` i `SYMMETRIC_KEY_VALUE`. Wprowadź następujące zmiany do plików na maszynach wirtualnych z obu regionalnych i zapisać pliki.
 
     Zaktualizuj wartość `REGISTRATION_NAME` stałej z **identyfikator unikatowy rejestracji dla urządzenia**.
     

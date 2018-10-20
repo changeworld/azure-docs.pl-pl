@@ -1,21 +1,21 @@
 ---
 title: Rozpoznawanie intencji z wypowiedzi za pomocą mowy zestawu SDK dla języka Java
-titleSuffix: Microsoft Cognitive Services
-description: >
-  Dowiedz się, jak rozpoznać intencje z mowy z pliku lub mikrofonu za pomocą mowy zestawu SDK dla języka Java.
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak rozpoznać intencje z mowy z pliku lub mikrofonu za pomocą mowy zestawu SDK dla języka Java.
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: Speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: cc83c05f4e4183fd7c945cec831d905781b92e6f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cb7e7095278eed51c7616dc1c19dcf5c9d84b856
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991831"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469898"
 ---
 # <a name="recognize-intents-from-speech-by-using-the-speech-sdk-for-java"></a>Rozpoznawanie intencji z wypowiedzi za pomocą mowy zestawu SDK dla języka Java
 
@@ -44,5 +44,5 @@ Poszukaj kodu, który jest używany w tym artykule w folderze samples/java/jre/c
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Rozpoznawanie mowy](how-to-recognize-speech-java.md)
+- [Jak rozpoznawać mowę](how-to-recognize-speech-java.md)
 - [Tłumaczenie mowy](how-to-translate-speech-java.md)

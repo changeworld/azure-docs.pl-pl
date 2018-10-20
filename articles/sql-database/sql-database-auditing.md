@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: b18f7efa09b33def2851967b5fc78bb1ddbc61e6
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 2a0bacaf0405a5223afedcd3897e2a1514f7128b
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404923"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466685"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 
@@ -222,17 +222,17 @@ Aby uzyskać przykładowy skrypt, zobacz [skonfigurować inspekcję i wykrywanie
 
 **Interfejs API REST — Inspekcja obiektów Blob**:
 
-- [Utwórz lub zaktualizuj bazę danych obiektów Blob, zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/databaseblobauditingpolicies_createorupdate)
-- [Utwórz lub zaktualizuj obiektów Blob serwera zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/serverblobauditingpolicies_createorupdate)
-- [Pobieranie obiektu Blob bazy danych, zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/databaseblobauditingpolicies_get)
-- [Pobieranie obiektów Blob serwera zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/serverblobauditingpolicies_get)
+- [Utwórz lub zaktualizuj bazę danych obiektów Blob, zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
+- [Utwórz lub zaktualizuj obiektów Blob serwera zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [Pobieranie obiektu Blob bazy danych, zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
+- [Pobieranie obiektów Blob serwera zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 Rozszerzone zasady, z którym klauzuli pomocy technicznej w celu filtrowania dodatkowych:
 
-- [Utwórz lub zaktualizuj bazę danych *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/extendeddatabaseblobauditingpolicies_createorupdate)
-- [Utwórz lub zaktualizuj serwer *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/serverblobauditingpolicies_createorupdate)
-- [Pobierz bazę danych *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/extendeddatabaseblobauditingpolicies_get)
-- [Pobierz serwer *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/serverblobauditingpolicies_get)
+- [Utwórz lub zaktualizuj bazę danych *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+- [Utwórz lub zaktualizuj serwer *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [Pobierz bazę danych *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
+- [Pobierz serwer *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1

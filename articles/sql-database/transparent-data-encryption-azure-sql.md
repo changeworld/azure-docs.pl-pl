@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 94a3a502d5756d57cfebdf6698a4435dc1e19948
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 0d5b7e484024294eb5c95b632dbef85c377b717e
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353034"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469031"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Przezroczyste szyfrowanie danych dla bazy danych SQL i magazynu danych
 
@@ -113,17 +113,17 @@ Aby skonfigurować przezroczyste szyfrowanie danych za pomocą interfejsu API RE
 
 | Polecenie | Opis |
 | --- | --- |
-|[Utwórz lub zaktualizuj serwer](https://docs.microsoft.com/rest/api/sql/servers/servers_createorupdate)|Dodaje tożsamości usługi Azure Active Directory do wystąpienia programu SQL Server (używane do udzielania dostępu do usługi Key Vault)|
-|[Utwórz lub zaktualizuj klucz serwera](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_createorupdate)|Dodaje klucz usługi Key Vault do wystąpienia programu SQL Server|
-|[Usuń klucz serwera](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_delete)|Usuwa klucz usługi Key Vault z wystąpienia programu SQL Server|
-|[Pobierz klucze serwera](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_get)|Pobiera określony klucz usługi Key Vault z wystąpienia programu SQL Server|
-|[Lista kluczy serwera przez serwer](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_listbyserver)|Pobiera klucze usługi Key Vault dla wystąpienia programu SQL Server |
-|[Utwórz lub zaktualizuj funkcja ochrony szyfrowania](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/encryptionprotectors_createorupdate)|Ustawia funkcja ochrony szyfrowania danych dla wystąpienia programu SQL Server|
-|[Pobierz funkcja ochrony szyfrowania](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/encryptionprotectors_get)|Pobiera funkcja ochrony szyfrowania danych dla wystąpienia programu SQL Server|
-|[Funkcje ochrony kluczy szyfrowania w liście przez serwer](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/encryptionprotectors_listbyserver)|Pobiera funkcje technologii transparent data encryption ochrony dla wystąpienia programu SQL Server |
-|[Utwórz lub zaktualizuj Transparent Data Encryption konfiguracji](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/transparentdataencryptions_createorupdate)|Włącza lub wyłącza przezroczyste szyfrowanie danych dla bazy danych|
-|[Pobieranie Transparent Data Encryption konfiguracji](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/transparentdataencryptions_get)|Pobiera konfigurację szyfrowania danych dla bazy danych|
-|[Listy Transparent Data Encryption konfiguracji wyników](https://docs.microsoft.com/rest/api/sql/transparentdataencryptionactivities/transparentdataencryptionactivities_listbyconfiguration)|Pobiera wynik szyfrowania bazy danych|
+|[Utwórz lub zaktualizuj serwer](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Dodaje tożsamości usługi Azure Active Directory do wystąpienia programu SQL Server (używane do udzielania dostępu do usługi Key Vault)|
+|[Utwórz lub zaktualizuj klucz serwera](https://docs.microsoft.com/rest/api/sql/serverkeys/createorupdate)|Dodaje klucz usługi Key Vault do wystąpienia programu SQL Server|
+|[Usuń klucz serwera](https://docs.microsoft.com/rest/api/sql/serverkeys/delete)|Usuwa klucz usługi Key Vault z wystąpienia programu SQL Server|
+|[Pobierz klucze serwera](https://docs.microsoft.com/rest/api/sql/serverkeys/get)|Pobiera określony klucz usługi Key Vault z wystąpienia programu SQL Server|
+|[Lista kluczy serwera przez serwer](https://docs.microsoft.com/rest/api/sql/serverkeys/listbyserver)|Pobiera klucze usługi Key Vault dla wystąpienia programu SQL Server |
+|[Utwórz lub zaktualizuj funkcja ochrony szyfrowania](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/createorupdate)|Ustawia funkcja ochrony szyfrowania danych dla wystąpienia programu SQL Server|
+|[Pobierz funkcja ochrony szyfrowania](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/get)|Pobiera funkcja ochrony szyfrowania danych dla wystąpienia programu SQL Server|
+|[Funkcje ochrony kluczy szyfrowania w liście przez serwer](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/listbyserver)|Pobiera funkcje technologii transparent data encryption ochrony dla wystąpienia programu SQL Server |
+|[Utwórz lub zaktualizuj Transparent Data Encryption konfiguracji](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/createorupdate)|Włącza lub wyłącza przezroczyste szyfrowanie danych dla bazy danych|
+|[Pobieranie Transparent Data Encryption konfiguracji](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/get)|Pobiera konfigurację szyfrowania danych dla bazy danych|
+|[Listy Transparent Data Encryption konfiguracji wyników](https://docs.microsoft.com/rest/api/sql/transparentdataencryptionactivities/listbyconfiguration)|Pobiera wynik szyfrowania bazy danych|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

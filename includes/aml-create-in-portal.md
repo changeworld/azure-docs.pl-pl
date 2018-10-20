@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/24/2018
-ms.openlocfilehash: 99c31293168fd5ff3e6b95a70dc481e01e4ac8b4
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 0b95441fd2805308c601509f1afc477f72bde321
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49400104"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49476250"
 ---
 Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu poświadczeń subskrypcji platformy Azure, możesz użyć. Jeśli nie masz subskrypcji platformy Azure, utwórz teraz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -39,7 +39,7 @@ W **obszar roboczy usługi uczenie Maszynowe** okienku konfigurowanie obszaru ro
    Pole|Opis
    ---|---
    Nazwa obszaru roboczego |Wprowadź unikatową nazwę, która identyfikuje obszaru roboczego. Tutaj używamy docs ws. Nazwy muszą być unikatowe w obrębie grupy zasobów. Użyj nazwy, który jest łatwy do odwołania i odróżnienia jej od obszarów roboczych utworzonych przez innych użytkowników.  
-   Subskrypcja |Wybierz subskrypcję platformy Azure, której chcesz użyć. Jeśli masz więcej niż jedną subskrypcję, wybierz subskrypcję, która jest używana na potrzeby rozliczeń.
+   Subskrypcja |Wybierz subskrypcję platformy Azure, której chcesz użyć.
    Grupa zasobów | Użyj istniejącej grupy zasobów w ramach subskrypcji, lub wprowadź nazwę, aby utworzyć nową grupę zasobów. Grupa zasobów to kontener, który zawiera powiązane zasoby dla rozwiązania platformy Azure. Tutaj używamy docs aml. 
    Lokalizacja | Wybierz lokalizację najbliżej Twoich użytkowników i zasobów danych. Ta lokalizacja jest tworzona dla obszaru roboczego.
 

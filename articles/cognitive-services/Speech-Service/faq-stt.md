@@ -1,20 +1,21 @@
 ---
 title: Często zadawane pytania dotyczące zamiana mowy na tekst usługa na platformie Azure
-description: Uzyskaj odpowiedzi na najpopularniejsze pytania dotyczące zamiana mowy na tekst usługi.
 titleSuffix: Azure Cognitive Services
+description: Uzyskaj odpowiedzi na najpopularniejsze pytania dotyczące zamiana mowy na tekst usługi.
 services: cognitive-services
 author: PanosPeriorellis
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: d176c33a37b26b1e13d5b9beb7ac68d335cc7862
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: e29ff29bcdeaa6980ba0820f08becdc61e4cb9fc
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249199"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469541"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Zamiana mowy na tekst — często zadawane pytania
 

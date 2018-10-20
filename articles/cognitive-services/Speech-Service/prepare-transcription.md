@@ -1,20 +1,21 @@
 ---
 title: Tekst wskazówki dotyczące szkolenia usługi mowy
+titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak przygotować tekstu do dostosowania akustyczne i modeli językowych i czcionki głosowe usługi mowy.
-titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: PanosPeriorellis
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: panosper
-ms.openlocfilehash: f9cb205b5111e981ee70adca715139402c9e31a4
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 07b90942c8d231418888491fd47a9be3caff77ea
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721824"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467739"
 ---
 # <a name="transcription-guidelines-for-using-the-speech-service"></a>Tekst wskazówki dotyczące używania usługi mowy
 
@@ -70,7 +71,7 @@ Oto kilka przykładów:
 | Oryginalny tekst | Po normalizacji |
 |----- | ----- |
 | 14 NE 3 odzyskiwania po awarii. | czternastu dysku trzeci północno-wschodnie |
-| Dr Bruce transparentu | Transparent Bruce lekarzem |
+| Dr. Bruce transparentu | Transparent Bruce lekarzem |
 | James Bond, 007 | Niestety dwukrotnie James Bond siedem |
 | KE$ zaświadczanie o kondycji | Kesha |
 | Jak długo trwa 2 x 4 | Jak długo trwa dwa, cztery |
@@ -169,5 +170,5 @@ Oto kilka przykładów:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Pobierz wersję próbną subskrypcji usługa rozpoznawania mowy](https://azure.microsoft.com/try/cognitive-services/)
+- [Pobierz subskrypcję wersji próbnej usługi Speech Services](https://azure.microsoft.com/try/cognitive-services/)
 - [Rozpoznawanie mowy w języku C#](quickstart-csharp-dotnet-windows.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 51fea4fa1973fbe92242f1995d892cd5b038a29b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9553d1dd5dd8d8ff11ea480618b471b9898985e3
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991644"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456562"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Jak wykonać aprowizację starsze urządzenia przy użyciu kluczy symetrycznych
 
@@ -26,7 +26,7 @@ W tym artykule założono, ani modułu HSM lub certyfikatu to rentowną opcją. 
 
 W tym artykule założono również, że aktualizacja urządzenia ma miejsce w bezpiecznym środowisku w celu uniemożliwienia nieupoważnionego dostępu do klucza głównego grupy lub klucza pochodnego urządzenia.
 
-Ten artykuł stanowi opracowane głównie pod kątem stację roboczą z systemem Windows. Jednak można wykonać procedury opisane w systemie Linux. Na przykład Linux, zobacz [instrukcjami aprowizacji dla wielodostępności](how-to-provision-multitenant.md).
+Ten artykuł został opracowany z myślą o stacjach roboczych z systemem Windows. Jednak opisane procedury można wykonać także w systemie Linux. Aby uzyskać przykład dla systemu Linux, zobacz [Aprowizowanie pod kątem wielu dzierżaw](how-to-provision-multitenant.md).
 
 
 ## <a name="overview"></a>Przegląd
@@ -47,13 +47,13 @@ Kod urządzenia, które przedstawiono w tym artykule będzie zgodna z tego sameg
 * Zainstalowana najnowsza wersja usługi[Git](https://git-scm.com/download/).
 
 
-## <a name="prepare-an-azure-iot-c-sdk-development-environment"></a>Przygotuj środowisko projektowe zestawu SDK C usługi Azure IoT
+## <a name="prepare-an-azure-iot-c-sdk-development-environment"></a>Przygotowywanie środowiska deweloperskiego dla zestawu SDK języka C usługi Azure IoT
 
-W tej sekcji należy przygotować środowisko programistyczne, używany do tworzenia [zestawu SDK C usługi IoT Azure](https://github.com/Azure/azure-iot-sdk-c). 
+W tej sekcji przygotujesz środowisko deweloperskie używane do opracowania [zestawu SDK języka C usługi Azure IoT](https://github.com/Azure/azure-iot-sdk-c). 
 
-Zestaw SDK zawiera przykładowy kod dla symulowanego urządzenia. Tego symulowanego urządzenia, zostanie podjęta próba inicjowania obsługi podczas sekwencji rozruchu urządzenia.
+Zestaw SDK zawiera przykładowy kod dla symulowanego urządzenia. To urządzenie symulowane podejmie próbę aprowizacji podczas sekwencji rozruchu urządzenia.
 
-1. Pobierz wersję 3.11.4 [system kompilacji CMake](https://cmake.org/download/). Sprawdź pobrane dane binarne przy użyciu odpowiedniej wartości skrótu kryptograficznego. W poniższym przykładzie użyto programu Windows PowerShell do sprawdzenia wartości skrótu kryptograficznego dla wersji dystrybucji MSI 3.11.4 x64:
+1. Pobierz wersję 3.11.4 [systemu kompilacji CMake](https://cmake.org/download/). Sprawdź pobrane dane binarne przy użyciu odpowiedniej wartości skrótu kryptograficznego. W poniższym przykładzie użyto programu Windows PowerShell do sprawdzenia wartości skrótu kryptograficznego dla wersji dystrybucji MSI 3.11.4 x64:
 
     ```PowerShell
     PS C:\Downloads> $hash = get-filehash .\cmake-3.11.4-win64-x64.msi
@@ -61,7 +61,7 @@ Zestaw SDK zawiera przykładowy kod dla symulowanego urządzenia. Tego symulowan
     True
     ```
     
-    Następujące wartości skrótu dla wersji 3.11.4 zostały wymienione w witrynie narzędzia CMake w momencie pisania tego dokumentu:
+    Następujące wartości skrótu dla wersji 3.11.4 były wymienione w witrynie narzędzia CMake w momencie pisania tego dokumentu:
 
     ```
     6dab016a6b82082b8bcd0f4d1e53418d6372015dd983d29367b9153f1a376435  cmake-3.11.4-Linux-x86_64.tar.gz
@@ -71,7 +71,7 @@ Zestaw SDK zawiera przykładowy kod dla symulowanego urządzenia. Tego symulowan
 
     Ważne jest, aby wstępnie wymagane składniki (program Visual Studio oraz pakiet roboczy „Programowanie aplikacji klasycznych w języku C++”) były zainstalowane na tym komputerze **przed** uruchomieniem `CMake` instalacji. Gdy wymagania wstępne zostaną spełnione, a pobrane pliki zweryfikowane, zainstaluj system kompilacji CMake.
 
-2. Otwórz wiersz polecenia lub powłokę Git Bash. Wykonaj następujące polecenie, aby sklonować repozytorium zestawu SDK C pakietu Azure IoT w witrynie GitHub:
+2. Otwórz wiersz polecenia lub powłokę Git Bash. Wykonaj następujące polecenie, aby sklonować repozytorium GitHub zestawu SDK języka C usługi IoT Azure:
     
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
@@ -87,10 +87,10 @@ Zestaw SDK zawiera przykładowy kod dla symulowanego urządzenia. Tego symulowan
     cd cmake
     ```
 
-4. Uruchom następujące polecenie, które tworzy wersję zestawu SDK specyficzną dla platformy klienta deweloperskiego. Rozwiązanie programu Visual Studio dla symulowanego urządzenia zostanie wygenerowane w katalogu `cmake`. 
+4. Uruchom następujące polecenie, które utworzy wersję zestawu SDK specyficzną dla platformy klienta deweloperskiego. Rozwiązanie programu Visual Studio dla symulowanego urządzenia zostanie wygenerowane w katalogu `cmake`. 
 
     ```cmd
-    cmake -Duse_prov_client:BOOL=ON ..
+    cmake -Dhsm_type_symm_key:BOOL=ON ..
     ```
     
     Jeśli program `cmake` nie znajdzie kompilatora języka C++, mogą występować błędy kompilacji podczas uruchamiania powyższego polecenia. Jeśli tak się stanie, spróbuj uruchomić to polecenie w [wierszu polecenia programu Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
@@ -98,7 +98,7 @@ Zestaw SDK zawiera przykładowy kod dla symulowanego urządzenia. Tego symulowan
     Gdy kompilacja zakończy się powodzeniem, kilka ostatnich wierszy danych wyjściowych będzie wyglądać podobnie do następujących danych wyjściowych:
 
     ```cmd/sh
-    $ cmake -Duse_prov_client:BOOL=ON ..
+    $ cmake -Dhsm_type_symm_key:BOOL=ON ..
     -- Building for: Visual Studio 15 2017
     -- Selecting Windows SDK version 10.0.16299.0 to target Windows 10.0.17134.
     -- The C compiler identification is MSVC 19.12.25835.0
@@ -124,7 +124,7 @@ Zestaw SDK zawiera przykładowy kod dla symulowanego urządzenia. Tego symulowan
 
     - **Typ zaświadczeń**: Wybierz **klucz symetryczny**.
 
-    - **Automatyczne generowanie kluczy**: Zaznacz to pole wyboru.
+    - **Automatycznie generuj klucze**: zaznacz to pole wyboru.
 
     - **Wybierz sposób przypisywania urządzeń do centrów**: Wybierz **statycznie** można przypisać do określonego koncentratora.
 
@@ -132,9 +132,9 @@ Zestaw SDK zawiera przykładowy kod dla symulowanego urządzenia. Tego symulowan
 
     ![Dodaj grupę rejestracji dla zaświadczenia klucza symetrycznego](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
 
-4. Po zapisaniu Twojej rejestracji **klucza podstawowego** i **klucz pomocniczy** zostanie wygenerowany i dodany do wpisu rejestracji. Grupa symetrycznego klucza rejestracji jest wyświetlana jako **mylegacydevices** w obszarze *Nazwa grupy* kolumny w *grup rejestracji* kartę. 
+4. Po zapisaniu rejestracji zostanie wygenerowany **klucz podstawowy** i **klucz pomocniczy**. Zostaną one dodane do wpisu rejestracji. Grupa symetrycznego klucza rejestracji jest wyświetlana jako **mylegacydevices** w obszarze *Nazwa grupy* kolumny w *grup rejestracji* kartę. 
 
-    Otwórz rejestracji i skopiuj wartości z wygenerowanym **klucz podstawowy**. Ten klucz jest kluczem głównym grupy.
+    Otwórz rejestrację i skopiuj wartość wygenerowanego **klucza podstawowego**. Ten klucz jest kluczem głównym grupy.
 
 
 ## <a name="choose-a-unique-registration-id-for-the-device"></a>Wybierz identyfikator rejestracji dla urządzenia
@@ -230,7 +230,7 @@ Ten przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje w
     static const char* id_scope = "0ne00002193";
     ```
 
-5. Znajdź definicję funkcji `main()` w tym samym pliku. Upewnij się, że `hsm_type` zmienna jest ustawiona na `SECURE_DEVICE_TYPE_SYMMETRIC_KEY` jak pokazano poniżej:
+5. Znajdź definicję funkcji `main()` w tym samym pliku. Upewnij się, że zmienna `hsm_type` jest ustawiona na `SECURE_DEVICE_TYPE_SYMMETRIC_KEY`, jak pokazano poniżej:
 
     ```c
     SECURE_DEVICE_TYPE hsm_type;
@@ -241,9 +241,9 @@ Ten przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje w
 
 6. Kliknij prawym przyciskiem myszy projekt **prov\_dev\_client\_sample**, a następnie wybierz pozycję **Ustaw jako projekt startowy**. 
 
-7. W programie Visual Studio *Eksploratora rozwiązań* okna, przejdź do **hsm\_zabezpieczeń\_klienta** projektu i rozwiń go. Rozwiń **pliki źródłowe**, a następnie otwórz **hsm\_klienta\_key.c**. 
+7. W oknie *Eksplorator rozwiązań* programu Visual Studio przejdź do folderu projektu **hsm\_security\_client** i rozwiń go. Rozwiń węzeł **Pliki źródłowe**, a następnie otwórz plik **hsm\_client\_key.c**. 
 
-    Znajdź deklaracji `REGISTRATION_NAME` i `SYMMETRIC_KEY_VALUE` stałe. Wprowadź następujące zmiany do pliku, a następnie zapisz plik.
+    Znajdź deklaracje stałych `REGISTRATION_NAME` i `SYMMETRIC_KEY_VALUE`. Wprowadź następujące zmiany w pliku, a następnie zapisz plik.
 
     Zaktualizuj wartość `REGISTRATION_NAME` stałej z **identyfikator unikatowy rejestracji dla urządzenia**.
     
@@ -256,7 +256,7 @@ Ten przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje w
 
 7. Z menu programu Visual Studio wybierz pozycję **Debuguj** > **Uruchom bez debugowania**, aby uruchomić rozwiązanie. W monicie o ponowne skompilowanie projektu kliknij przycisk **Tak**, aby ponownie skompilować projekt przed uruchomieniem.
 
-    Następujące dane wyjściowe jest przykładem symulowane urządzenie pomyślnie uruchamiania systemu oraz podłączania do aprowizacji wystąpienia usługi ma być przypisane do usługi IoT hub:
+    Następujące dane wyjściowe to przykład pomyślnego uruchomienia urządzenia symulowanego i połączenia z wystąpieniem usługi aprowizowania w celu przypisania do centrum IoT:
 
     ```cmd
     Provisioning API Version: 1.2.8
@@ -273,7 +273,7 @@ Ten przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje w
     Press enter key to exit:
     ```
 
-8. W portalu, przejdź do Centrum IoT hub symulowanego urządzenia został przypisany do, a następnie kliknij przycisk **urządzeń IoT** kartę. Po pomyślnej aprowizacji symulowanego Centrum, jego identyfikator urządzenia będzie widoczny na **urządzeń IoT** bloku przy użyciu *stan* jako **włączone**. Czasami trzeba kliknąć **Odśwież** znajdujący się u góry. 
+8. W portalu przejdź do centrum IoT, do którego przypisano Twoje urządzenie symulowane, a następnie kliknij kartę **Urządzenia IoT**. Po pomyślnej aprowizacji urządzenia symulowanego w centrum identyfikator urządzenia jest wyświetlany w bloku **Urządzenia IoT** z pozycją *STATUS* (stan) ustawioną na wartość **enabled** (włączone). Być może trzeba będzie kliknąć przycisk **Odśwież** u góry strony. 
 
     ![Urządzenie jest rejestrowane w centrum IoT](./media/how-to-legacy-device-symm-key/hub-registration.png) 
 

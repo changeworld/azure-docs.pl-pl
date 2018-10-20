@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/19/2018
 ms.author: rajanaki
-ms.openlocfilehash: 9f0a299fb8221554a3b0c9a19a616d5ba7613a67
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 06a7e23eb16cf6296a8997273ea8d554851600c3
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574407"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456494"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatyczna aktualizacja usługi mobilności w replikacji Azure – Azure
 
@@ -61,6 +61,19 @@ Po włączeniu replikacji dla maszyny wirtualnej, albo uruchamianie [z widoku ma
 
 > [!Note] 
 > Obie opcje powiadomi konta usługi automation, który służy do zarządzania aktualizacjami. Jeśli po raz pierwszy w magazynie są włączenie tej funkcji, zostaną utworzone nowe konto usługi automation. Wszystkie replikacje kolejnych Włącz w tym samym magazynie, użyje ono utworzone wcześniej.
+
+### <a name="manage-manually"></a>Ręczne zarządzanie
+
+1. Jeśli nowe aktualizacje są dostępne dla usługi mobilności, zainstalowane na maszynach wirtualnych platformy Azure, zobaczysz powiadomienie o treści "dostępna jest nowa aktualizacja agenta replikacji lokacji odzyskiwania. Kliknij, aby zainstalować. "
+
+     ![Okno replikowane elementy](.\media\vmware-azure-install-mobility-service\replicated-item-notif.png)
+3. Wybierz powiadomienie, aby otworzyć stronę wyboru maszyny wirtualnej.
+4. Wybierz maszyny wirtualne, które chcesz uaktualnić usługę mobilności na, a następnie wybierz pozycję **OK**.
+
+     ![Zreplikowane elementy listy maszyn wirtualnych](.\media\vmware-azure-install-mobility-service\update-okpng.png)
+
+Uruchamia zadanie Aktualizacja usługi mobilności dla każdego z wybranych maszyn wirtualnych.
+
 
 ## <a name="common-issues--troubleshooting"></a>Typowe problemy i rozwiązywanie problemów
 

@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 10/20/2018
 ms.author: celested
-ms.reviewer: jeedes
+ms.reviewer: luleon, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 5633dfbf59396e79226b196c2b699981409092ab
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 4e80f5cb85a53281da9ec50a02d089f46e97dfde
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902029"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466720"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Porady: dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw
 
@@ -49,21 +49,38 @@ Można również usunąć oświadczeń (inne niż NameIdentifier) za pomocą men
 ![Edytowanie atrybutu użytkownika][3]
 
 ## <a name="editing-the-nameidentifier-claim"></a>Edytowanie oświadczenia NameIdentifier
-Aby rozwiązać problem, gdzie aplikacja została wdrożona przy użyciu innej nazwy użytkownika, kliknij pozycję **identyfikator użytkownika** listy rozwijanej **atrybutów użytkownika** sekcji. Ta akcja wyświetlanie okna dialogowego przy użyciu kilku różnych opcji:
+
+Aby rozwiązać problem, gdzie aplikacja została wdrożona przy użyciu innej nazwy użytkownika, wybierz **identyfikator użytkownika** listy rozwijanej **atrybutów użytkownika** sekcji. Ta akcja wyświetlanie okna dialogowego przy użyciu kilku różnych opcji:
 
 ![Edytowanie atrybutu użytkownika][4]
 
-Z listy rozwijanej wybierz **user.mail** można ustawić NameIdentifier roszczenia jako adresu e-mail użytkownika w katalogu. Lub wybierz **user.onpremisessamaccountname** aby ustawiana na użytkownika jego nazwa konta SAM, który jest synchronizowany ze środowiska lokalnego usługi Azure AD.
+### <a name="attributes"></a>Atrybuty
 
-Możesz również użyć specjalnej **ExtractMailPrefix()** funkcję, aby usunąć sufiks domeny adresu e-mail, nazwa konta SAM lub główna nazwa użytkownika. Spowoduje to wyodrębnienie tylko pierwszą część nazwy użytkownika, są przekazywane (na przykład "joe_smith" zamiast joe_smith@contoso.com).
+Wybierz żądane źródło `NameIdentifier` (lub NameID) oświadczenia. Możesz wybrać spośród następujących opcji.
 
-![Edytowanie atrybutu użytkownika][5]
+| Name (Nazwa) | Opis |
+|------|-------------|
+| Email | Adres e-mail użytkownika |
+| userprincipalName | Główna nazwa użytkownika (UPN) użytkownika |
+| onpremisessamaccount | Nazwa konta SAM, który jest synchronizowany ze środowiska lokalnego usługi Azure AD |
+| Identyfikator obiektu | Identyfikator obiektu użytkownika w usłudze Azure AD |
+| employeeID | EmployeeID użytkownika |
+| Rozszerzenia katalogów | Rozszerzenia katalogów [synchronizowanych z lokalnej przy użyciu usługi Azure AD Connect Sync Active Directory.](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
+| Atrybuty rozszerzenia 1 – 15 | W środowisku lokalnym atrybutów rozszerzenia, używanej do rozszerzania schematu usługi Azure AD |
 
-Teraz dodaliśmy również **join()** funkcji do przyłączania do domeny zweryfikowanej za pomocą wartości identyfikatora użytkownika. Po wybraniu funkcji join() w **identyfikator użytkownika** najpierw wybierz identyfikator użytkownika jako podobne wiadomości e-mail adres lub główna nazwa użytkownika, a następnie drugiej listy rozwijanej wybierz zweryfikowaną domenę. Jeśli wybierzesz adres e-mail zweryfikowanej domeny, a następnie usługi Azure AD wyodrębnia nazwę użytkownika z pierwszym joe_smith wartość z joe_smith@contoso.com i dołącza go za pomocą contoso.onmicrosoft.com. Zobacz poniższy przykład:
+### <a name="transformations"></a>Przekształcenia
 
-![Edytowanie atrybutu użytkownika][6]
+Można również użyć funkcji przekształcenia oświadczeń specjalne.
+
+| Funkcja | Opis |
+|----------|-------------|
+| **ExtractMailPrefix()** | Usuwa sufiks domeny od adresu e-mail, nazwa konta SAM lub główną nazwę użytkownika. Spowoduje to wyodrębnienie tylko pierwszą część nazwy użytkownika, są przekazywane (na przykład "joe_smith" zamiast joe_smith@contoso.com). |
+| **JOIN()** | Dołącza atrybut o zweryfikowanej domeny. Wartość identyfikatora wybranego użytkownika ma domenę, wyodrębnia nazwę użytkownika, aby dołączyć wybranego zweryfikowanej domeny. Na przykład, jeśli wybierzesz adres e-mail (joe_smith@contoso.com) jako wartość identyfikatora użytkownika i wybierz contoso.onmicrosoft.com jako zweryfikowanej domeny, spowoduje to joe_smith@contoso.onmicrosoft.com. |
+| **ToLower()** | Konwertuje znaki wybranego atrybutu na małe litery. |
+| **ToUpper()** | Konwertuje znaki wybranego atrybutu na wielkie litery. |
 
 ## <a name="adding-claims"></a>Dodawanie oświadczeń
+
 Podczas dodawania roszczenia, można określić nazwę atrybutu, (które ściśle nie należy wykonywać wzorzec identyfikatora URI, zgodnie z specyfikacja języka SAML). Ustaw wartość na dowolny atrybut użytkownika, który jest przechowywany w katalogu.
 
 ![Dodaj atrybut użytkownika][7]
@@ -132,7 +149,7 @@ Obejmuje niektóre oświadczenia ograniczeniami SAML. Jeśli dodasz te oświadcz
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Zarządzanie aplikacjami w usłudze Azure AD](../manage-apps/what-is-application-management.md)
-* [Konfigurowanie logowania jednokrotnego do aplikacji, które nie znajdują się w galerii aplikacji usługi Azure AD](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
+* [Konfigurowanie logowania jednokrotnego w aplikacjach, które nie znajdują się w galerii aplikacji usługi Azure AD](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
 * [Rozwiązywanie problemów z opartej na SAML logowania jednokrotnego](howto-v1-debug-saml-sso-issues.md)
 
 <!--Image references-->

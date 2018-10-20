@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/02/2018
+ms.date: 10/19/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 4ba890f4763fc77981917d9311cf2bf6c97ec80f
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 6548693b91283665704be8fc83a483a9d20dc41b
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902447"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470550"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integracja usługi Azure datacenter stosu — tożsamość
 Za pomocą usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) w usłudze Azure Stack można wdrożyć jako dostawcy tożsamości. Należy wybrać przed wdrożeniem usługi Azure Stack. Wdrażanie przy użyciu usług AD FS jest również określany jako wdrażanie usługi Azure Stack w trybie rozłączonym.
@@ -70,6 +70,17 @@ Wymagane jako dane wejściowe dla parametrów automatyzacji są następujące in
 |---------|---------|---------|
 |CustomADGlobalCatalog|Nazwa FQDN docelowego lasu usługi Active Directory<br>chcesz zintegrować z|Contoso.com|
 |CustomADAdminCredentials|Użytkownik z uprawnieniami odczytu LDAP|YOURDOMAIN\graphservice|
+
+### <a name="configure-active-directory-sites"></a>Konfigurowanie lokacji usługi Active Directory
+
+Posiadanie wielu lokacjach wdrożenia usługi Active Directory można skonfigurować w najbliższej lokacji usługi Active Directory do wdrożenia usługi Azure Stack. Konfiguracja pozwala na uniknięcie zdefiniowanie rozwiązywania kwerend, przy użyciu serwera wykazu globalnego z lokacją zdalną przez usługę Azure Stack Graph.
+
+Dodawanie usługi Azure Stack [sieci publicznych adresów VIP](azure-stack-network.md#public-vip-network) podsieci do lokacji usługi AD Azure najbardziej zbliżony do usługi Azure Stack. Na przykład jeśli usługi Active Directory ma dwie lokacje Seattle i Redmond z usługą Azure Stack wdrożone w lokacji Seattle, należy dodać podsieci sieci publicznych adresów VIP usługi Azure Stack w witrynie usługi Azure AD dla Seattle.
+
+Aby uzyskać więcej informacji na temat Lokacje usługi Active Directory zobacz [Projektowanie topologii lokacji](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology).
+
+> [!Note]  
+> Jeśli usługi Active Directory składa się z jednej lokacji, można pominąć ten krok. W przypadku, gdy masz wychwytywania podsieci skonfigurowano Sprawdź, czy podsieci sieci publicznych adresów VIP usługi Azure Stack nie jest nim.
 
 ### <a name="create-user-account-in-the-existing-active-directory-optional"></a>Tworzenie konta użytkownika w istniejącej usłudze Active Directory (opcjonalnie)
 
@@ -283,7 +294,7 @@ Istnieje wiele scenariuszy, które korzystają z główną nazwę usługi (SPN) 
 - Pakiet administracyjny programu System Center dla usługi Azure Stack po wdrożeniu za pomocą usług AD FS
 - Dostawcy zasobów w usłudze Azure Stack po wdrożeniu za pomocą usług AD FS
 - Różne aplikacje
-- Wymaga logowania nieinterakcyjnego
+- Wymagaj nieinterakcyjne logowanie
 
 > [!Important]  
 > Usługi AD FS obsługuje tylko logowanie interakcyjne sesje. Jeśli potrzebujesz nieinterakcyjne logowanie automatyczne scenariusz, należy użyć nazwy SPN.

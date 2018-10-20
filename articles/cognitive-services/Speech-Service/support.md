@@ -1,19 +1,21 @@
 ---
 title: Opcje pomocy technicznej i pomocy
-description: Wiesz, jak uzyskać pomoc i Obsługa pytań i problemów podczas tworzenia aplikacji, które integrują się z mowy w usłudze Azure Cognitive Services
+titlesuffix: Azure Cognitive Services
+description: Jak uzyskać pomoc i Obsługa pytań i problemów podczas tworzenia aplikacji, które integrują się z usługą mowy
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: b5d981f06219bd2b5d7325476725ff7a4eccf3b6
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 58fb5d4be2137eed7d62e702f08bdd66c80be347
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430106"
+ms.locfileid: "49468062"
 ---
 # <a name="support-and-help-options"></a>Opcje pomocy technicznej i pomocy
 

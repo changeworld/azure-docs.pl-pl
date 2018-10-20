@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/05/2018
 ms.author: celested
-ms.reviewer: hirsin
+ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c42e8978a94730669f3c3f879d1d26c4426bd9da
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 784213531c061912dded8e7776e79bea5adb217b
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079142"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466056"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Porady: dostarczanie opcjonalnych oświadczeń do aplikacji usługi Azure AD (publiczna wersja zapoznawcza)
 
@@ -215,7 +215,7 @@ Brak dostępnych wiele opcji do aktualizacji właściwości na konfigurację to�
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Po użytkownik został uwierzytelniony, należy wybrać dzierżawy usługi Azure AD, wybierając je z prawym górnym rogu strony.
-1. Wybierz **rozszerzenia usługi Azure AD** z panelu nawigacyjnym po lewej stronie i kliknij przycisk **rejestracje aplikacji**.
+1. Wybierz **rejestracje aplikacji** z lewej strony.
 1. Znajdź aplikację, którą chcesz skonfigurować opcjonalne oświadczeń na liście i kliknij go.
 1. Na stronie aplikacji kliknij **manifestu** aby otworzyć Edytor manifestu w tekście. 
 1. Można bezpośrednio edytować manifest za pomocą tego edytora. Manifest jest zgodna schematu dla [Jednostka aplikacji](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)i formaty automatyczne raz zapisać manifestu. Nowe elementy zostaną dodane do `OptionalClaims` właściwości.

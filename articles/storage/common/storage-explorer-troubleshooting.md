@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.component: common
-ms.openlocfilehash: eb72d92496addacd82e4d30df625b4f9c0c823e5
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: ffb355b4471bd8455f67e657d9557c3f372c3f4e
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521034"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470324"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów z Eksploratora usługi Storage platformy Azure
 
@@ -74,7 +74,7 @@ Systemu macOS pęku kluczy czasami może przejść do stanu, który powoduje, ż
 7. Spróbuj zalogować się.
 
 ### <a name="general-sign-in-troubleshooting-steps"></a>Ogólne logowania kroki rozwiązywania problemów
-* Jeśli jesteś w systemie macOS i za pośrednictwem okna dialogowego "Oczekiwanie... uwierzytelniania" nigdy nie zostanie wyświetlone okno logowania, spróbuj [następujące kroki](#Mac-Keychain-Errors)
+* Jeśli jesteś w systemie macOS i za pośrednictwem okna dialogowego "Oczekiwanie... uwierzytelniania" nigdy nie zostanie wyświetlone okno logowania, spróbuj [następujące kroki](#mac-keychain-errors)
 * Uruchom program Storage Explorer
 * Jeśli okno uwierzytelniania jest pusty, zaczekaj co najmniej jedną minutę przed zamknięciem okna dialogowego uwierzytelniania.
 * Upewnij się, że usługi serwera proxy i certyfikatu, że ustawienia są poprawnie skonfigurowane dla komputera i Eksploratora usługi Storage.

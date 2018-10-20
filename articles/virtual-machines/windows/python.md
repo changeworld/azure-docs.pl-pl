@@ -1,9 +1,9 @@
 ---
-title: Tworzenie i zarządzanie nimi maszyny Wirtualnej systemu Windows na platformie Azure przy użyciu języka Python | Dokumentacja firmy Microsoft
-description: Informacje dotyczące sposobu korzystania z języka Python do tworzenia i zarządzania maszyny Wirtualnej systemu Windows na platformie Azure.
+title: Tworzenie i zarządzanie nimi maszyny Wirtualnej z systemem Windows na platformie Azure przy użyciu języka Python | Dokumentacja firmy Microsoft
+description: Dowiedz się tworzyć i zarządzać nimi maszyny Wirtualnej z systemem Windows na platformie Azure przy użyciu języka Python.
 services: virtual-machines-windows
 documentationcenter: ''
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
-ms.author: cynthn
-ms.openlocfilehash: dbe8f1603433f381c3c28cb47d2dbda543b462e0
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: zarhoads
+ms.openlocfilehash: c1fc12bfe57edf34701d8f1f93ca18298be29160
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31528345"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470272"
 ---
-# <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Tworzenie i zarządzanie maszynami wirtualnymi systemu Windows na platformie Azure przy użyciu języka Python
+# <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Tworzenie i zarządzanie nimi Windows maszyn wirtualnych na platformie Azure przy użyciu języka Python
 
-[Maszyny wirtualnej Azure](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM), wymaga kilku obsługi zasobów platformy Azure. W tym artykule omówiono tworzenia, zarządzania i usuwania zasobów maszyny Wirtualnej przy użyciu języka Python. Omawiane kwestie:
+[Maszyny wirtualnej platformy Azure](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) wymaga kilku pomocnicze zasoby platformy Azure. W tym artykule opisano tworzenie i usuwanie zasobów maszyny Wirtualnej przy użyciu języka Python, zarządzanie nimi. Omawiane kwestie:
 
 > [!div class="checklist"]
 > * Tworzenie projektu programu Visual Studio
@@ -35,33 +35,33 @@ ms.locfileid: "31528345"
 > * Usuwanie zasobów
 > * Uruchamianie aplikacji
 
-Wykonaj te kroki trwa około 20 minut.
+Wykonaj te czynności trwa około 20 minut.
 
 ## <a name="create-a-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
-1. Jeśli nie jest jeszcze zainstalować [programu Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Wybierz **programowania Python** na stronie obciążeń, a następnie kliknij **zainstalować**. Podsumowując, można stwierdzić, że **Python 3 64-bitowych (3.6.0)** jest automatycznie wybrana. Jeśli zainstalowano program Visual Studio można dodać obciążenia Python za pomocą składnika Uruchamianie programu Visual Studio.
-2. Po zainstalowaniu i uruchomieniem programu Visual Studio, kliknij przycisk **pliku** > **nowy** > **projektu**.
-3. Kliknij przycisk **szablony** > **Python** > **aplikacji Python**, wprowadź *myPythonProject* dla nazwy Projekt, wybierz lokalizację projektu, a następnie kliknij przycisk **OK**.
+1. Jeśli jeszcze nie, zainstaluj [programu Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Wybierz **programowania w języku Python** na stronie obciążeń, a następnie kliknij **zainstalować**. Podsumowując, możesz zobaczyć, że **Python 3 64-bitowy (3.6.0)** jest automatycznie wybrana. Jeśli zainstalowano już program Visual Studio, możesz dodać obciążenie języka Python za pomocą składnika Uruchamianie programu Visual Studio.
+2. Po zainstalowaniu i uruchamianie programu Visual Studio, kliknij przycisk **pliku** > **New** > **projektu**.
+3. Kliknij przycisk **szablony** > **Python** > **aplikację w języku Python**, wprowadź *myPythonProject* dla nazwy Projekt, wybierz lokalizację projektu, a następnie kliknij przycisk **OK**.
 
 ## <a name="install-packages"></a>Instalowanie pakietów
 
-1. W Eksploratorze rozwiązań w obszarze *myPythonProject*, kliknij prawym przyciskiem myszy **środowiska Python**, a następnie wybierz **Dodaj środowisko wirtualne**.
-2. Na ekranie Dodawanie środowiska wirtualnego, zaakceptuj domyślną nazwę *env*, upewnij się, że *3,6 języka Python (64-bitowy)* został wybrany do interpreter podstawowy, a następnie kliknij przycisk **Utwórz** .
+1. W Eksploratorze rozwiązań w obszarze *myPythonProject*, kliknij prawym przyciskiem myszy **środowiska Python**, a następnie wybierz pozycję **Dodaj środowisko wirtualne**.
+2. Na ekranie Dodaj środowisko wirtualne Zaakceptuj domyślną nazwę *env*, upewnij się, że *środowiska Python 3.6 (64-bitowy)* wybrano podstawowy interpreter, a następnie kliknij przycisk **Utwórz** .
 3. Kliknij prawym przyciskiem myszy *env* środowisko, które zostały utworzone, kliknij przycisk **zainstaluj pakiet języka Python**, wprowadź *azure* w polu wyszukiwania, a następnie naciśnij klawisz Enter.
 
-Powinien zostać wyświetlony w oknie danych wyjściowych pakietów azure zostały pomyślnie zainstalowane. 
+Powinny zostać wyświetlone w oknie danych wyjściowych pakietów systemu azure zostały pomyślnie zainstalowane. 
 
 ## <a name="create-credentials"></a>Utwórz poświadczenia
 
-Przed rozpoczęciem tego kroku upewnij się, że masz [nazwy głównej usługi Active Directory](../../azure-resource-manager/resource-group-create-service-principal-portal.md). Należy również zarejestrować identyfikator aplikacji, klucz uwierzytelniania i Identyfikatora dzierżawy, które są potrzebne w kolejnym kroku.
+Przed rozpoczęciem tego kroku upewnij się, że masz [jednostki usługi Active Directory](../../azure-resource-manager/resource-group-create-service-principal-portal.md). W kolejnym kroku, należy zarejestrować identyfikator aplikacji, klucz uwierzytelniania i identyfikator dzierżawy, który należy.
 
-1. Otwórz *myPythonProject.py* pliku, który został utworzony, a następnie dodaj ten kod, aby umożliwić aplikację do uruchamiania:
+1. Otwórz *myPythonProject.py* pliku, który został utworzony, a następnie dodaj ten kod, aby umożliwić aplikacji do uruchomienia:
 
     ```python
     if __name__ == "__main__":
     ```
 
-2. Aby zaimportować kodu, który jest wymagany, Dodaj te instrukcje na początku pliku .py:
+2. Aby zaimportować kod, który jest potrzebny, należy dodać te instrukcje na górze plik py:
 
     ```python
     from azure.common.credentials import ServicePrincipalCredentials
@@ -71,7 +71,7 @@ Przed rozpoczęciem tego kroku upewnij się, że masz [nazwy głównej usługi A
     from azure.mgmt.compute.models import DiskCreateOption
     ```
 
-3. Następnie w pliku PY i Dodaj zmienne po instrukcje importu, tak aby określić wartości typowych używane w kodzie:
+3. Następnie w plik PY należy dodać zmienne po instrukcje importowania, aby określić wartości typowych używana w kodzie:
    
     ```
     SUBSCRIPTION_ID = 'subscription-id'
@@ -80,9 +80,9 @@ Przed rozpoczęciem tego kroku upewnij się, że masz [nazwy głównej usługi A
     VM_NAME = 'myVM'
     ```
 
-    Zastąp **identyfikator subskrypcji** z identyfikatorem subskrypcji.
+    Zastąp **identyfikator subskrypcji** z identyfikatorem Twojej subskrypcji.
 
-4. Aby utworzyć poświadczenia usługi Active Directory, które są potrzebne do tworzenia żądań, Dodaj tej funkcji po zmiennych w pliku .py:
+4. Aby utworzyć poświadczenia usługi Active Directory, które należy wprowadzić żądań, należy dodać tę funkcję po zmiennych w plik py:
 
     ```python
     def get_credentials():
@@ -95,9 +95,9 @@ Przed rozpoczęciem tego kroku upewnij się, że masz [nazwy głównej usługi A
         return credentials
     ```
 
-    Zastąp **identyfikator aplikacji**, **klucz uwierzytelniania**, i **identyfikator dzierżawcy** z wartościami, które wcześniej zebrane podczas tworzenia usługi Azure Active Directory podmiot zabezpieczeń.
+    Zastąp **identyfikator aplikacji**, **klucz uwierzytelniania**, i **identyfikator dzierżawy** wartościami, które wcześniej zebrane podczas tworzenia usługi Azure Active Directory podmiot zabezpieczeń.
 
-5. Wywoływanie funkcji, które zostały wcześniej dodane, Dodaj ten kod w obszarze **Jeśli** instrukcji na końcu pliku .py:
+5. Aby wywołać funkcję, które zostały wcześniej dodane, Dodaj następujący kod, w obszarze **Jeśli** instrukcji na końcu plik py:
 
     ```python
     credentials = get_credentials()
@@ -107,7 +107,7 @@ Przed rozpoczęciem tego kroku upewnij się, że masz [nazwy głównej usługi A
  
 ### <a name="initialize-management-clients"></a>Inicjowanie zarządzania klientami
 
-Klienci zarządzania są potrzebne do tworzenia i zarządzania zasobami na platformie Azure przy użyciu zestawu SDK Python. Aby utworzyć zarządzania klientami, Dodaj ten kod w obszarze **Jeśli** instrukcji następnie końcem pliku .py:
+Zarządzanie klientami są potrzebne do tworzenia zasobów i zarządzanie nimi przy użyciu zestawu SDK języka Python na platformie Azure. Aby utworzyć klienci zarządzania, Dodaj następujący kod, w obszarze **Jeśli** instrukcji końcem następnie plik py:
 
 ```python
 resource_group_client = ResourceManagementClient(
@@ -124,11 +124,11 @@ compute_client = ComputeManagementClient(
 )
 ```
 
-### <a name="create-the-vm-and-supporting-resources"></a>Utwórz maszynę Wirtualną i obsługi zasobów
+### <a name="create-the-vm-and-supporting-resources"></a>Tworzenie maszyny Wirtualnej i zasoby pomocnicze
 
 Wszystkie zasoby muszą być zawarte w [grupy zasobów](../../azure-resource-manager/resource-group-overview.md).
 
-1. Aby utworzyć grupę zasobów, należy dodać tej funkcji po zmiennych w pliku .py:
+1. Aby utworzyć grupę zasobów, należy dodać tę funkcję po zmiennych w plik py:
 
     ```python
     def create_resource_group(resource_group_client):
@@ -139,7 +139,7 @@ Wszystkie zasoby muszą być zawarte w [grupy zasobów](../../azure-resource-man
         )
     ```
 
-2. Wywoływanie funkcji, które zostały wcześniej dodane, Dodaj ten kod w obszarze **Jeśli** instrukcji na końcu pliku .py:
+2. Aby wywołać funkcję, które zostały wcześniej dodane, Dodaj następujący kod, w obszarze **Jeśli** instrukcji na końcu plik py:
 
     ```python
     create_resource_group(resource_group_client)
@@ -148,7 +148,7 @@ Wszystkie zasoby muszą być zawarte w [grupy zasobów](../../azure-resource-man
 
 [Zestawy dostępności](tutorial-availability-sets.md) ułatwienia obsługi maszyn wirtualnych używanych przez aplikację.
 
-1. Aby utworzyć zbiór dostępności, Dodaj tę funkcję po zmiennych w pliku .py:
+1. Aby utworzyć zestaw dostępności, Dodaj tę funkcję po zmiennych w plik py:
    
     ```python
     def create_availability_set(compute_client):
@@ -164,7 +164,7 @@ Wszystkie zasoby muszą być zawarte w [grupy zasobów](../../azure-resource-man
         )
     ```
 
-2. Wywoływanie funkcji, które zostały wcześniej dodane, Dodaj ten kod w obszarze **Jeśli** instrukcji na końcu pliku .py:
+2. Aby wywołać funkcję, które zostały wcześniej dodane, Dodaj następujący kod, w obszarze **Jeśli** instrukcji na końcu plik py:
 
     ```python
     create_availability_set(compute_client)
@@ -172,9 +172,9 @@ Wszystkie zasoby muszą być zawarte w [grupy zasobów](../../azure-resource-man
     input('Availability set created. Press enter to continue...')
     ```
 
-A [publicznego adresu IP](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) jest potrzebne do komunikowania się z maszyną wirtualną.
+A [publiczny adres IP](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) umożliwia komunikację z maszyną wirtualną.
 
-1. Aby utworzyć publiczny adres IP dla maszyny wirtualnej, należy dodać tej funkcji po zmiennych w pliku .py:
+1. Aby utworzyć publiczny adres IP dla maszyny wirtualnej, należy dodać tę funkcję po zmiennych w plik py:
 
     ```python
     def create_public_ip_address(network_client):
@@ -191,7 +191,7 @@ A [publicznego adresu IP](../../virtual-network/virtual-network-ip-addresses-ove
         return creation_result.result()
     ```
 
-2. Wywoływanie funkcji, które zostały wcześniej dodane, Dodaj ten kod w obszarze **Jeśli** instrukcji na końcu pliku .py:
+2. Aby wywołać funkcję, które zostały wcześniej dodane, Dodaj następujący kod, w obszarze **Jeśli** instrukcji na końcu plik py:
 
     ```python
     creation_result = create_public_ip_address(network_client)
@@ -200,9 +200,9 @@ A [publicznego adresu IP](../../virtual-network/virtual-network-ip-addresses-ove
     input('Press enter to continue...')
     ```
 
-Maszyna wirtualna musi należeć do podsieci [sieci wirtualnej](../../virtual-network/virtual-networks-overview.md).
+Maszyna wirtualna musi być w podsieci [sieć wirtualna](../../virtual-network/virtual-networks-overview.md).
 
-1. Aby utworzyć sieć wirtualną, Dodaj tę funkcję po zmiennych w pliku .py:
+1. Aby utworzyć sieć wirtualną, należy dodać tę funkcję po zmiennych w plik py:
 
     ```python
     def create_vnet(network_client):
@@ -220,7 +220,7 @@ Maszyna wirtualna musi należeć do podsieci [sieci wirtualnej](../../virtual-ne
         return creation_result.result()
     ```
 
-2. Wywoływanie funkcji, które zostały wcześniej dodane, Dodaj ten kod w obszarze **Jeśli** instrukcji na końcu pliku .py:
+2. Aby wywołać funkcję, które zostały wcześniej dodane, Dodaj następujący kod, w obszarze **Jeśli** instrukcji na końcu plik py:
    
     ```python
     creation_result = create_vnet(network_client)
@@ -229,7 +229,7 @@ Maszyna wirtualna musi należeć do podsieci [sieci wirtualnej](../../virtual-ne
     input('Press enter to continue...')
     ```
 
-3. Aby dodać podsieci do sieci wirtualnej, należy dodać tę funkcję po zmiennych w pliku .py:
+3. Aby dodać podsieć do sieci wirtualnej, należy dodać tę funkcję po zmiennych w plik py:
     
     ```python
     def create_subnet(network_client):
@@ -246,7 +246,7 @@ Maszyna wirtualna musi należeć do podsieci [sieci wirtualnej](../../virtual-ne
         return creation_result.result()
     ```
         
-4. Wywoływanie funkcji, które zostały wcześniej dodane, Dodaj ten kod w obszarze **Jeśli** instrukcji na końcu pliku .py:
+4. Aby wywołać funkcję, które zostały wcześniej dodane, Dodaj następujący kod, w obszarze **Jeśli** instrukcji na końcu plik py:
    
     ```python
     creation_result = create_subnet(network_client)
@@ -255,9 +255,9 @@ Maszyna wirtualna musi należeć do podsieci [sieci wirtualnej](../../virtual-ne
     input('Press enter to continue...')
     ```
 
-Maszyna wirtualna musi komunikować się w sieci wirtualnej do interfejsu sieciowego.
+Maszyna wirtualna musi przejść do interfejsu sieciowego komunikacji w sieci wirtualnej.
 
-1. Aby utworzyć interfejsu sieciowego, należy dodać tej funkcji po zmiennych w pliku .py:
+1. Aby utworzyć interfejsu sieciowego, należy dodać tę funkcję, po zmiennych w plik py:
 
     ```python
     def create_nic(network_client):
@@ -289,7 +289,7 @@ Maszyna wirtualna musi komunikować się w sieci wirtualnej do interfejsu siecio
         return creation_result.result()
     ```
 
-2. Wywoływanie funkcji, które zostały wcześniej dodane, Dodaj ten kod w obszarze **Jeśli** instrukcji na końcu pliku .py:
+2. Aby wywołać funkcję, które zostały wcześniej dodane, Dodaj następujący kod, w obszarze **Jeśli** instrukcji na końcu plik py:
 
     ```python
     creation_result = create_nic(network_client)
@@ -298,9 +298,9 @@ Maszyna wirtualna musi komunikować się w sieci wirtualnej do interfejsu siecio
     input('Press enter to continue...')
     ```
 
-Teraz, gdy utworzono pomocnicze zasoby, można utworzyć maszyny wirtualnej.
+Teraz, gdy utworzono pomocnicze zasoby, możesz utworzyć maszynę wirtualną.
 
-1. Aby utworzyć maszynę wirtualną, Dodaj tę funkcję po zmiennych w pliku .py:
+1. Aby utworzyć maszynę wirtualną, należy dodać tę funkcję, po zmiennych w plik py:
    
     ```python
     def create_vm(network_client, compute_client):  
@@ -349,11 +349,11 @@ Teraz, gdy utworzono pomocnicze zasoby, można utworzyć maszyny wirtualnej.
     ```
 
     > [!NOTE]
-    > W tym samouczku tworzy maszynę wirtualną z wersją systemu operacyjnego Windows Server. Aby dowiedzieć się więcej o wybieraniu innych obrazów, zobacz [Nawigacja i wybierz obrazów maszyny wirtualnej platformy Azure za pomocą programu Windows PowerShell i interfejsu wiersza polecenia Azure](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+    > Ten samouczek umożliwia utworzenie maszyny wirtualnej z wersją systemu operacyjnego Windows Server. Aby dowiedzieć się więcej na temat wybierania obrazów innych, zobacz [wybierz obrazów maszyn wirtualnych platformy Azure za pomocą programu Windows PowerShell i wiersza polecenia platformy Azure i Navigate](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
     > 
     > 
 
-2. Wywoływanie funkcji, które zostały wcześniej dodane, Dodaj ten kod w obszarze **Jeśli** instrukcji na końcu pliku .py:
+2. Aby wywołać funkcję, które zostały wcześniej dodane, Dodaj następujący kod, w obszarze **Jeśli** instrukcji na końcu plik py:
 
     ```python
     creation_result = create_vm(network_client, compute_client)
@@ -364,11 +364,11 @@ Teraz, gdy utworzono pomocnicze zasoby, można utworzyć maszyny wirtualnej.
 
 ## <a name="perform-management-tasks"></a>Wykonywanie zadań zarządzania
 
-W trakcie cyklu życia maszyny wirtualnej można uruchamiać zadania zarządzania, takie jak uruchamianie, zatrzymywanie lub usuwanie maszyny wirtualnej. Ponadto można utworzyć kod do automatyzowania zadań powtarzających się lub złożonych.
+W trakcie cyklu życia maszyny wirtualnej można uruchamiać zadania zarządzania, takie jak uruchamianie, zatrzymywanie lub usuwanie maszyny wirtualnej. Ponadto można tworzyć kod, aby zautomatyzować powtarzalne lub złożone zadania.
 
-### <a name="get-information-about-the-vm"></a>Uzyskiwanie informacji o Maszynie wirtualnej
+### <a name="get-information-about-the-vm"></a>Uzyskaj informacje o maszynie Wirtualnej
 
-1. Aby uzyskać informacje dotyczące maszyny wirtualnej, należy dodać tej funkcji po zmiennych w pliku .py:
+1. Aby uzyskać informacje o maszynie wirtualnej, należy dodać tę funkcję po zmiennych w plik py:
 
     ```python
     def get_vm(compute_client):
@@ -421,7 +421,7 @@ W trakcie cyklu życia maszyny wirtualnej można uruchamiać zadania zarządzani
             print("  code: ", stat.code)
             print("  displayStatus: ", stat.display_status)
     ```
-2. Wywoływanie funkcji, które zostały wcześniej dodane, Dodaj ten kod w obszarze **Jeśli** instrukcji na końcu pliku .py:
+2. Aby wywołać funkcję, które zostały wcześniej dodane, Dodaj następujący kod, w obszarze **Jeśli** instrukcji na końcu plik py:
 
     ```python
     get_vm(compute_client)
@@ -431,38 +431,38 @@ W trakcie cyklu życia maszyny wirtualnej można uruchamiać zadania zarządzani
 
 ### <a name="stop-the-vm"></a>Zatrzymywanie maszyny wirtualnej
 
-Należy zatrzymać maszynę wirtualną i zachować wszystkie jego ustawienia, ale nadal naliczane za jej lub można zatrzymać maszyny wirtualnej i jej cofnąć. Po cofnięciu przydziału maszyny wirtualnej, wszystkie zasoby skojarzone z nim są również zakończenia deallocated i rozliczeń dla niego.
+Można zatrzymać maszynę wirtualną i zapewnić jej ustawienia, ale nadal będą naliczane opłaty dla niego lub można zatrzymać maszynę wirtualną i cofnąć jej przydział. Po cofnięciu przydziału maszyny wirtualnej, wszystkie zasoby skojarzone z nim są również zakończenia przydział zostanie cofnięty i rozliczeń dla niego.
 
-1. Aby zatrzymać maszynę wirtualną bez dealokowanie go, należy dodać tej funkcji po zmiennych w pliku .py:
+1. Aby zatrzymać maszynę wirtualną bez dealokowanie go, należy dodać tę funkcję po zmiennych w plik py:
 
     ```python
     def stop_vm(compute_client):
         compute_client.virtual_machines.power_off(GROUP_NAME, VM_NAME)
     ```
 
-    Jeśli chcesz Cofnij Przydział maszyny wirtualnej, Zmień wywołanie power_off ten kod:
+    Jeśli chcesz cofnąć alokację maszyny wirtualnej, należy zmienić wywołanie power_off ten kod:
 
     ```python
     compute_client.virtual_machines.deallocate(GROUP_NAME, VM_NAME)
     ```
 
-2. Wywoływanie funkcji, które zostały wcześniej dodane, Dodaj ten kod w obszarze **Jeśli** instrukcji na końcu pliku .py:
+2. Aby wywołać funkcję, które zostały wcześniej dodane, Dodaj następujący kod, w obszarze **Jeśli** instrukcji na końcu plik py:
 
     ```python
     stop_vm(compute_client)
     input('Press enter to continue...')
     ```
 
-### <a name="start-the-vm"></a>Uruchom maszynę Wirtualną
+### <a name="start-the-vm"></a>Uruchamianie maszyny wirtualnej
 
-1. Można uruchomić maszyny wirtualnej, należy dodać tę funkcję po zmiennych w pliku .py:
+1. Można uruchomić maszyny wirtualnej, należy dodać tę funkcję po zmiennych w plik py:
 
     ```python
     def start_vm(compute_client):
         compute_client.virtual_machines.start(GROUP_NAME, VM_NAME)
     ```
 
-2. Wywoływanie funkcji, które zostały wcześniej dodane, Dodaj ten kod w obszarze **Jeśli** instrukcji na końcu pliku .py:
+2. Aby wywołać funkcję, które zostały wcześniej dodane, Dodaj następujący kod, w obszarze **Jeśli** instrukcji na końcu plik py:
 
     ```python
     start_vm(compute_client)
@@ -471,9 +471,9 @@ Należy zatrzymać maszynę wirtualną i zachować wszystkie jego ustawienia, al
 
 ### <a name="resize-the-vm"></a>Zmień rozmiar maszyny Wirtualnej
 
-Wiele aspektów wdrożenia należy uwzględnić przy podejmowaniu decyzji o rozmiarze dla maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [rozmiarów maszyn wirtualnych](sizes.md).
+Wiele aspektów wdrożenia należy rozważyć podczas ustawiania rozmiaru maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [rozmiarów maszyn wirtualnych](sizes.md).
 
-1. Aby zmienić rozmiar maszyny wirtualnej, należy dodać tę funkcję po zmiennych w pliku .py:
+1. Aby zmienić rozmiar maszyny wirtualnej, należy dodać tę funkcję po zmiennych w plik py:
 
     ```python
     def update_vm(compute_client):
@@ -488,7 +488,7 @@ Wiele aspektów wdrożenia należy uwzględnić przy podejmowaniu decyzji o rozm
     return update_result.result()
     ```
 
-2. Wywoływanie funkcji, które zostały wcześniej dodane, Dodaj ten kod w obszarze **Jeśli** instrukcji na końcu pliku .py:
+2. Aby wywołać funkcję, które zostały wcześniej dodane, Dodaj następujący kod, w obszarze **Jeśli** instrukcji na końcu plik py:
 
     ```python
     update_result = update_vm(compute_client)
@@ -499,9 +499,9 @@ Wiele aspektów wdrożenia należy uwzględnić przy podejmowaniu decyzji o rozm
 
 ### <a name="add-a-data-disk-to-the-vm"></a>Dodaj dysk danych do maszyny Wirtualnej
 
-Maszyny wirtualne mogą mieć jeden lub więcej [dysków z danymi](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) przechowywane jako wirtualne dyski twarde.
+Maszyny wirtualne mogą mieć co najmniej jeden [dysków z danymi](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , są przechowywane jako pliki VHD.
 
-1. Aby dodać dysk z danymi do maszyny wirtualnej, należy dodać tej funkcji po zmiennych w pliku .py: 
+1. Aby dodać dysk danych do maszyny wirtualnej, należy dodać tę funkcję po zmiennych w plik py: 
 
     ```python
     def add_datadisk(compute_client):
@@ -534,7 +534,7 @@ Maszyny wirtualne mogą mieć jeden lub więcej [dysków z danymi](about-disks-a
         return add_result.result()
     ```
 
-2. Wywoływanie funkcji, które zostały wcześniej dodane, Dodaj ten kod w obszarze **Jeśli** instrukcji na końcu pliku .py:
+2. Aby wywołać funkcję, które zostały wcześniej dodane, Dodaj następujący kod, w obszarze **Jeśli** instrukcji na końcu plik py:
 
     ```python
     add_result = add_datadisk(compute_client)
@@ -545,16 +545,16 @@ Maszyny wirtualne mogą mieć jeden lub więcej [dysków z danymi](about-disks-a
 
 ## <a name="delete-resources"></a>Usuwanie zasobów
 
-Ponieważ naliczane są opłaty za zasoby używane na platformie Azure, zawsze jest dobrym rozwiązaniem, aby usunąć zasoby, które nie są już potrzebne. Jeśli chcesz usunąć maszyn wirtualnych i pomocnicze zasoby, musisz wykonać będzie usunąć grupę zasobów.
+Ponieważ opłaty są naliczane za zasoby używane w systemie Azure, zawsze jest dobrym rozwiązaniem, aby usunąć zasoby, które nie są już potrzebne. Jeśli chcesz usunąć maszyny wirtualne i wszystkie pomocnicze zasoby, trzeba będzie usunąć grupę zasobów.
 
-1. Aby usunąć grupę zasobów i wszystkie zasoby, Dodaj tę funkcję po zmiennych w pliku .py:
+1. Aby usunąć grupę zasobów i wszystkie zasoby, należy dodać tę funkcję po zmiennych w plik py:
    
     ```python
     def delete_resources(resource_group_client):
         resource_group_client.resource_groups.delete(GROUP_NAME)
     ```
 
-2. Wywoływanie funkcji, które zostały wcześniej dodane, Dodaj ten kod w obszarze **Jeśli** instrukcji na końcu pliku .py:
+2. Aby wywołać funkcję, które zostały wcześniej dodane, Dodaj następujący kod, w obszarze **Jeśli** instrukcji na końcu plik py:
    
     ```python
     delete_resources(resource_group_client)
@@ -566,13 +566,13 @@ Ponieważ naliczane są opłaty za zasoby używane na platformie Azure, zawsze j
 
 1. Aby uruchomić aplikację konsoli, kliknij przycisk **Start** w programie Visual Studio.
 
-2. Naciśnij klawisz **Enter** po zwróceniu stanu każdego zasobu. W informacjach dotyczących stanu powinna zostać wyświetlona **zakończyło się pomyślnie** stan inicjowania obsługi. Po utworzeniu maszyny wirtualnej, możesz mieć możliwość usunąć wszystkie zasoby, które należy utworzyć. Przed naciśnięciem przycisku **Enter** zacząć usuwanie zasobów może potrwać kilka minut, aby sprawdzić ich tworzenie w portalu Azure. Jeśli masz portalu Azure, Otwórz, może być konieczne odświeżyć bloku, aby zobaczyć nowe zasoby.  
+2. Naciśnij klawisz **Enter** po zwróceniu stanu każdego zasobu. Informacje o stanie powinien być **Powodzenie** stan inicjowania obsługi. Po utworzeniu maszyny wirtualnej, masz szansę sprzedaży, aby usunąć wszystkie zasoby, które tworzysz. Przed naciśnięciem **Enter** zacząć usuwanie zasobów może potrwać kilka minut na sprawdzenie ich utworzenia w witrynie Azure portal. W przypadku witryny Azure portal Otwórz trzeba będzie odświeżyć bloku, aby zobaczyć nowe zasoby.  
 
-    Zakończ powinno zająć około pięciu minut dla tej aplikacji konsoli uruchomić zupełnie od początku. Może upłynąć kilka minut po aplikacji zostało zakończone przed wszystkie zasoby i grupy zasobów są usuwane.
+    Aby zakończyć powinno zająć około pięciu minut, zanim ta aplikacja konsoli uruchomić zupełnie od początku. Może upłynąć kilka minut po aplikacji została ukończona przed wszystkie zasoby i grupy zasobów zostaną usunięte.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Jeśli wystąpiły problemy dotyczące wdrożenia, następnym krokiem powinno być zapoznanie się z artykułem [Troubleshooting resource group deployments with Azure Portal](../../resource-manager-troubleshoot-deployments-portal.md) (Rozwiązywanie problemów z wdrożeniami grup zasobów za pomocą witryny Azure Portal).
-- Dowiedz się więcej o [biblioteka języka Python platformy Azure](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)
+- Dowiedz się więcej o [biblioteki Python platformy Azure](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)
 

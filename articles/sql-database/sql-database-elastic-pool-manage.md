@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 6c43e5bf311d94ff2e5b5c31217c5071ea26746c
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/19/2018
+ms.openlocfilehash: 0c939956a8f3336b5071748a8c2bdf8840b749ad
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351866"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466073"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Tworzenie i zarządzanie elastycznymi pulami w usłudze Azure SQL Database
 
@@ -106,11 +106,11 @@ Aby utworzyć i zarządzać nimi, SQL Database elastycznych pul i baz danych w p
 |[Elastyczne pule — aktualizacja](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_listbyserver)|Aktualizuje istniejący puli elastycznej.|
 |[Pula elastyczna działań](https://docs.microsoft.com/rest/api/sql/elasticpoolactivities)|Zwraca działania puli elastycznej.|
 |[Pula elastyczna działań w bazie danych](https://docs.microsoft.com/rest/api/sql/elasticpooldatabaseactivities)|Zwraca działania baz danych w puli elastycznej.|
-|[Bazy danych — Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)|Tworzy nową bazę danych lub aktualizuje istniejącą bazę danych.|
-|[Bazy danych — Get](https://docs.microsoft.com/rest/api/sql/databases/databases_get)|Pobiera bazy danych.|
-|[Bazy danych — listę według puli elastycznej](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyelasticpool)|Zwraca listę baz danych w puli elastycznej.|
-|[Bazy danych — lista przez serwer](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyserver)|Zwraca listę baz danych na serwerze.|
-|[Bazy danych — aktualizacja](https://docs.microsoft.com/rest/api/sql/databases/databases_update)|Aktualizuje istniejącą bazę danych.|
+|[Bazy danych — Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|Tworzy nową bazę danych lub aktualizuje istniejącą bazę danych.|
+|[Bazy danych — Get](https://docs.microsoft.com/rest/api/sql/databases/get)|Pobiera bazy danych.|
+|[Bazy danych — listę według puli elastycznej](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|Zwraca listę baz danych w puli elastycznej.|
+|[Bazy danych — lista przez serwer](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|Zwraca listę baz danych na serwerze.|
+|[Bazy danych — aktualizacja](https://docs.microsoft.com/rest/api/sql/databases/update)|Aktualizuje istniejącą bazę danych.|
 
 ## <a name="next-steps"></a>Kolejne kroki
 
