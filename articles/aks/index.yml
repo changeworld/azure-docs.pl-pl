@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ca2cba56bd84b1e1b5056e3308410ced3b620193
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: a22269560d485dcd98aaaabb88dbbba545d26a2d
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063629"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467911"
 documentType: LandingData
 title: Azure Kubernetes Service (AKS)
 metadata:
@@ -38,6 +38,27 @@ sections:
         src: https://docs.microsoft.com/media/common/i_portal.svg
       text: Azure Portal
       href: /azure/aks/kubernetes-walkthrough-portal
+  - type: paragraph
+    text: 'Dowiedz się, jak programować i debugować aplikacje za pomocą usługi AKS:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/media/logos/logo_java.svg
+      text: Java
+      href: ../dev-spaces/quickstart-java.md
+    - image:
+        src: https://docs.microsoft.com/media/logos/logo_NETcore.svg
+      text: .NET i VS Code
+      href: ../dev-spaces/quickstart-netcore.md
+    - image:
+        src: https://docs.microsoft.com/media/logos/logo_visual-studio.svg
+      text: .NET i Visual Studio
+      href: ../dev-spaces/quickstart-netcore-visualstudio.md
+    - image:
+        src: https://docs.microsoft.com/media/logos/logo_nodejs.svg
+      text: Node.js
+      href: ../dev-spaces/quickstart-nodejs.md
 - title: Samouczki krok po kroku
   items:
   - type: paragraph
@@ -52,7 +73,7 @@ sections:
     - html: <a href="/azure/aks/tutorial-kubernetes-scale">Skalowanie aplikacji i infrastruktury rozwiązania Kubernetes</a>
     - html: <a href="/azure/aks/tutorial-kubernetes-app-update">Aktualizowanie aplikacji uruchomionej w rozwiązaniu Kubernetes</a>
     - html: <a href="/azure/aks/tutorial-kubernetes-upgrade-cluster">Aktualizowanie klastra AKS</a>
-- title: Rozwijanie umiejętności dzięki Microsoft Learn
+- title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
   items:
   - type: list
     style: cards
@@ -74,7 +95,7 @@ sections:
         src: /learn/achievements/build-and-store-container-images.svg
         href: /learn/modules/build-and-store-container-images/
   - type: paragraph
-    text: <a href="/learn/browse/?products=azure-container-registry%2Cazure-container-instances">Więcej interaktywnych zasobów szkoleniowych...</a>
+    text: <a href="/learn/browse/?products=azure-container-registry%2Cazure-container-instances">Więcej interakcyjnych zasobów szkoleniowych...</a>
 - title: Dokumentacja
   items:
   - type: list

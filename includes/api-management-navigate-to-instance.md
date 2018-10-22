@@ -1,14 +1,14 @@
 ## <a name="go-to-your-api-management-instance"></a>Przechodzenie do wystąpienia usługi API Management
 
+![Przechodzenie do wystąpienia usługi API Management](./media/api-management-navigate-to-instance/00-FindResource-01.png)
+
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
 
 2. Wybierz pozycję **Wszystkie usługi**.  
 
-3. W polu wyszukiwania wpisz **api**.
+3. W polu wyszukiwania wpisz `api management`.
 
 4. W wynikach wyszukiwania wybierz pozycję **Usługi API Management**.
-
-    ![Wybieranie pozycji Usługi API Management w wynikach wyszukiwania](./media/api-management-navigate-to-instance/navigate-to-api-management-services.png)
 
 5. Wybierz swoje wystąpienie usługi API Management.
 
@@ -16,4 +16,4 @@
 > Aby dodać usługę API Management do ulubionych w witrynie Azure Portal, wybierz gwiazdkę.
 >
 > Ikona usługi API Management (![Ikona usługi API Management](./media/api-management-navigate-to-instance/apim-icon.png)) będzie od tej chwili wyświetlana w portalu w menu z lewej strony.
- 
+

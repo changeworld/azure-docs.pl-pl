@@ -11,6 +11,21 @@ items:
     href: kubernetes-walkthrough.md
   - name: Tworzenie klastra AKS — portal
     href: kubernetes-walkthrough-portal.md
+  - name: Tworzenie aplikacji
+    items:
+    - name: Korzystanie z języka Java (VS Code i interfejs wiersza polecenia)
+      href: ../dev-spaces/quickstart-java.md
+      maintainContext: true
+    - name: Korzystanie z programu .NET Core (VS Code oraz interfejs wiersza polecenia)
+      href: ../dev-spaces/quickstart-netcore.md
+      maintainContext: true
+    - name: Korzystanie z programu .NET Core (Visual Studio 2017)
+      href: ../dev-spaces/quickstart-netcore-visualstudio.md
+      maintainContext: true
+    - name: Korzystanie ze środowiska Node.js (VS Code oraz interfejs wiersza polecenia)
+      href: ../dev-spaces/quickstart-nodejs.md
+      maintainContext: true
+    expanded: true
   expanded: true
 - name: Samouczki
   items:
@@ -121,20 +136,53 @@ items:
       href: kubelet-logs.md
   - name: Opracowywanie i uruchamianie aplikacji
     items:
-    - name: Uruchamianie aplikacji za pomocą narzędzia Helm
-      href: kubernetes-helm.md
     - name: Programowanie za pomocą usługi Dev Spaces
       href: ../dev-spaces/azure-dev-spaces.md
+      items:
+      - name: Java (VS Code i interfejs wiersza polecenia)
+        items:
+        - name: 1 — Wprowadzenie
+          href: ../dev-spaces/get-started-java.md
+          maintainContext: true
+        - name: 2 — Programowanie zespołowe
+          href: ../dev-spaces/team-development-java.md
+          maintainContext: true
+      - name: .NET Core (VS Code oraz interfejs wiersza polecenia)
+        items:
+        - name: 1 — Wprowadzenie
+          href: ../dev-spaces/get-started-netcore.md
+          maintainContext: true
+        - name: 2 — Programowanie zespołowe
+          href: ../dev-spaces/team-development-netcore.md
+          maintainContext: true
+      - name: .NET Core (Visual Studio 2017)
+        items:
+        - name: 1 — Wprowadzenie
+          href: ../dev-spaces/get-started-netcore-visualstudio.md
+          maintainContext: true
+        - name: 2 — Programowanie zespołowe
+          href: ../dev-spaces/team-development-netcore-visualstudio.md
+          maintainContext: true
+      - name: Node.js (VS Code oraz interfejs wiersza polecenia)
+        items:
+        - name: 1 — Wprowadzenie
+          href: ../dev-spaces/get-started-nodejs.md
+          maintainContext: true
+        - name: 2 — Programowanie zespołowe
+          href: ../dev-spaces/team-development-nodejs.md
+          maintainContext: true
       maintainContext: true
+    - name: Uruchamianie aplikacji za pomocą narzędzia Helm
+      href: kubernetes-helm.md
     - name: Tworzenie aplikacji za pomocą narzędzia Draft
       href: kubernetes-draft.md
-    - name: Open Service Broker for Azure
+    - name: Korzystanie z serwera Open Service Broker for Azure
       href: integrate-azure.md
-    - name: Używanie usługi OpenFaaS
+    - name: Korzystanie z usługi OpenFaaS
       href: openfaas.md
     - name: Uruchamianie zadań Spark
       href: spark-job.md
-    - name: Używanie procesorów GPU
+    - name: Korzystanie z procesorów GPU
       href: gpu-cluster.md
   - name: DevOps
     items:
@@ -194,9 +242,9 @@ items:
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: Często zadawane pytania
     href: faq.md
-ms.openlocfilehash: 5bce64990b8fbf9ad6bd5af01631544189f35a93
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: e2535df133722082f609b2229820fce673bddecc
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376298"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457032"
