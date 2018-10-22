@@ -1,22 +1,25 @@
 ---
-title: Co to jest Custom Voice? — Platforma azure Cognitive Services
-description: W tym artykule przedstawiono omówienie procedury dostosowywania głosu zamiany tekstu na mowę firmy Microsoft, co pozwala na tworzenie głosem marki mówiącą, jedną dla typu.
+title: Jak utworzyć niestandardową czcionkę głosową
+titlesuffix: Azure Cognitive Services
+description: W tym artykule przedstawiono omówienie procedury dostosowywania głosu zamiany tekstu na mowę, co pozwala na tworzenie głosem marki mówiącą, jedną dla typu.
 services: cognitive-services
-author: noellelacharite
+author: PanosPeriorellis
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 05/07/2018
-ms.author: nolach
-ms.openlocfilehash: 21b37d2b61af81e6481de4c5e7537a3382d895b6
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.author: panosper
+ms.openlocfilehash: bf06042d3b820e61d1f5b316a8b7b26d1a366388
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113924"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467722"
 ---
 # <a name="creating-custom-voice-fonts"></a>Tworzenie niestandardowych voice czcionek
 
-Dostosowywania głosu zamiany tekstu na mowę firmy Microsoft (TTS) pozwala na tworzenie mówiącą, jeden z rodzajem głosu dla Twojej marki: *czcionka głosowa.* 
+Dostosowywania głosu zamiany tekstu na mowę (TTS) pozwala na tworzenie mówiącą, jeden z rodzajem głosu dla Twojej marki: *czcionka głosowa.* 
 
 Aby utworzyć czcionki głosowe, tworzenie nagrania studio i przekaż skojarzone skrypty jako dane szkoleniowe. Usługa tworzy następnie model unikatowy głosu dostosowana do Twojego nagrania. Ta czcionka głosowa służy do syntetyzowania mowy. 
 
@@ -62,7 +65,7 @@ Pliki audio powinna być przygotowana w następujący sposób. Inne formaty są 
 | Częstotliwość próbkowania| co najmniej 16 000 Hz |
 | Przykładowy format| PCM, 16-bitowych |
 | Nazwa pliku    | Numeryczne, za pomocą `.wav` rozszerzenia |
-| Format archiwum| .zip      |
+| Format archiwum| zip      |
 | Rozmiar maksymalny archiwum|200 MB|
 
 > [!NOTE]
