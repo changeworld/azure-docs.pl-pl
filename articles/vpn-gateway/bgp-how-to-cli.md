@@ -3,24 +3,17 @@ title: 'Konfigurowanie protokołu BGP w bramie sieci VPN platformy Azure: usług
 description: W tym artykule przedstawiono konfigurowanie protokołu BGP z bramą sieci VPN platformy Azure przy użyciu usługi Azure Resource Manager i interfejsu wiersza polecenia.
 services: vpn-gateway
 documentationcenter: na
-author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: yushwang
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/25/2017
-ms.author: cherylmc
-ms.openlocfilehash: 657cad69fff66aaaeba9819569442981d229f644
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 09/25/2018
+ms.author: yushwang
+ms.openlocfilehash: f0367a360de97d3935c7fa8de9f3dafa6555811e
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971131"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471360"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>Jak skonfigurować protokół BGP w bramie sieci VPN platformy Azure przy użyciu interfejsu wiersza polecenia
 
@@ -55,7 +48,7 @@ Ta sekcja jest wymagana, przed wykonaniem kroków w innych częściach dwóch ko
 
 ### <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Zainstaluj najnowszą wersję poleceń interfejsu wiersza polecenia (2.0 lub nowszą). Aby uzyskać informacje o instalowaniu poleceń interfejsu wiersza polecenia, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i [Rozpoczynanie pracy z interfejsem wiersza polecenia platformy Azure](/cli/azure/get-started-with-azure-cli).
+Zainstaluj najnowszą wersję poleceń interfejsu wiersza polecenia (2.0 lub nowszą). Aby uzyskać informacje o instalowaniu poleceń interfejsu wiersza polecenia, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i [Rozpoczynanie pracy z interfejsem wiersza polecenia platformy Azure](/cli/azure/get-started-with-azure-cli).
 
 ### <a name="step-1-create-and-configure-testvnet1"></a>Krok 1: Tworzenie i konfigurowanie sieci TestVNet1
 
