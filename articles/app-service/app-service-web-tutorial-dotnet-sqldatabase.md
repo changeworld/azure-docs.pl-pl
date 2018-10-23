@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: b438ac221483fec7ea90847ec27a105a3f21ab78
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 783bf93c8507e76717a4293b2b29a9c11e9a1eed
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42117367"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353820"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Samouczek: tworzenie aplikacji ASP.NET na platformie Azure przy użyciu usługi SQL Database
 
@@ -423,4 +423,4 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 Przejdź do następnego samouczka, aby dowiedzieć się, jak łatwo poprawić zabezpieczenia połączenia usługi Azure SQL Database.
 
 > [!div class="nextstepaction"]
-> [Zabezpieczony dostęp do usługi SQL Database przy użyciu tożsamości usługi zarządzanej](app-service-web-tutorial-connect-msi.md)
+> [Zabezpieczony dostęp do usługi SQL Database przy użyciu tożsamości zarządzanych dla zasobów platformy Azure](app-service-web-tutorial-connect-msi.md)

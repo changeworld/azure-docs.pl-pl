@@ -10,18 +10,16 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: 328f5996a9b830ea6c2ff4b4a535d5311f39e08e
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 35903b0da707e5167781c3a7595c3be938a4fc07
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365260"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321351"
 ---
 # <a name="quickstart-find-alternate-translations-and-usage-with-c35"></a>Szybki start: znajdowanie alternatywnych tłumaczeń i przykładów użycia za pomocą języka C&#35;
 
 W tym przewodniku Szybki start znajdziesz szczegóły możliwych alternatywnych tłumaczeń terminów i przykłady użycia alternatywnych tłumaczeń przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
-
-Kod źródłowy tego przykładu jest dostępny w usłudze [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -30,6 +28,9 @@ Do uruchamiania tego kodu w systemie Windows jest potrzebny [program Visual Stud
 Aby korzystać z interfejsu API tłumaczenia tekstu w usłudze Translator, potrzebny jest również klucz subskrypcji. Zobacz [How to sign up for the Translator Text API (Jak zarejestrować się w interfejsie API tłumaczenia tekstu w usłudze Translator)](translator-text-how-to-signup.md).
 
 ## <a name="dictionary-lookup-request"></a>Żądanie Dictionary Lookup
+
+> [!TIP]
+> Pobierz najnowszy kod z witryny [Github](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp).
 
 Następujący kod pobiera alternatywne tłumaczenia słowa za pomocą metody [Dictionary Lookup](./reference/v3-0-dictionary-lookup.md).
 

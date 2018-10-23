@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b3a3baaf22fa9c382bb45a5b2a2065ef7678faf5
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: c3c0d9bb6da00272cc7da0ad9f4fae978552c39b
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855958"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352614"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Samouczek: konfigurowanie dołączania hybrydowego do usługi Azure Active Directory dla domen zarządzanych
 
@@ -172,7 +172,7 @@ W przypadku użycia polecenia cmdlet **Get-MSolDevice** w celu sprawdzenia szcze
 
 - Musi istnieć obiekt z **identyfikatorem urządzenia**, który pasuje do identyfikatora w kliencie systemu Windows.
 - Wartością atrybutu **DeviceTrustType** musi być **Dołączone do domeny**. Jest to równoważne ze stanem **Dołączone hybrydowo do usługi Azure AD** na stronie Urządzenia w portalu usługi Azure AD.
-- Wartością opcji **Włączone** musi być **True** dla urządzeń używanych w dostępie warunkowym. 
+- Ustawienie **Włączone** musi mieć wartość **True**, a ustawienie **DeviceTrustLevel** musi mieć wartość **Zarządzane** dla urządzeń używanych w dostępie warunkowym. 
 
 
 **Aby sprawdzić szczegóły usługi:**

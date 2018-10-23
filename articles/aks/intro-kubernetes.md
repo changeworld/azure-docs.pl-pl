@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 67b80f539faab40884066f23aaf8a72ad7a6981b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: ac18b8099b14f29579b35eb8dd2124d2d63f80d7
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394409"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390078"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -29,7 +29,7 @@ Aby zapewnić lepsze zabezpieczenia i zarządzanie, usługa AKS umożliwia integ
 
 ### <a name="identity-and-security-management"></a>Zarządzanie tożsamościami i zabezpieczeniami
 
-Aby ograniczyć dostęp do zasobów klastra, usługa AKS obsługuje [kontrolę dostępu opartą na rolach (RBAC) platformy Kubernetes][kubernetes-rbac]. Kontrola dostępu oparta na rolach umożliwia kontrolowanie sposobu uzyskiwania dostępu do zasobów i przestrzeni nazw platformy Kubernetes, a także uprawnień do tych zasobów. Możesz też skonfigurować integrację klastra usługi AKS z usługą Azure Active Directory. Dzięki integracji z usługą Azure AD dostęp do platformy Kubernetes można skonfigurować w oparciu o istniejącą tożsamość i członkostwo w grupie. Istniejącym użytkownikom i grupom usługi Azure AD można zapewnić dostęp do zasobów usługi AKS i zintegrowane środowisko logowania.
+Aby ograniczyć dostęp do zasobów klastra, usługa AKS obsługuje [kontrolę dostępu opartą na rolach (RBAC) platformy Kubernetes][kubernetes-rbac]. Kontrola dostępu oparta na rolach umożliwia kontrolowanie dostępu do zasobów i przestrzeni nazw platformy Kubernetes, a także uprawnień do tych zasobów. Możesz też skonfigurować integrację klastra usługi AKS z usługą Azure Active Directory. Dzięki integracji z usługą Azure AD dostęp do platformy Kubernetes można skonfigurować w oparciu o istniejącą tożsamość i członkostwo w grupie. Istniejącym użytkownikom i grupom usługi Azure AD można zapewnić dostęp do zasobów usługi AKS i zintegrowane środowisko logowania.
 
 Aby zabezpieczyć klastry usługi AKS, zobacz [Integrowanie usługi Azure Active Directory z usługą AKS][aks-aad].
 
@@ -123,12 +123,12 @@ Dowiedz się więcej na temat wdrażania usługi AKS i zarządzania nią z przew
 [aks-cli]: ./kubernetes-walkthrough.md
 [aks-gpu]: ./gpu-cluster.md
 [aks-http-routing]: ./http-application-routing.md
-[aks-networking]: ./networking-overview.md
+[aks-networking]: ./concepts-network.md
 [aks-portal]: ./kubernetes-walkthrough-portal.md
 [aks-scale]: ./tutorial-kubernetes-scale.md
 [aks-upgrade]: ./upgrade-cluster.md
-[azure-dev-spaces]: https://docs.microsoft.com/en-us/azure/dev-spaces/azure-dev-spaces
-[azure-devops]: https://docs.microsoft.com/en-us/azure/devops-project/overview
+[azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/azure-dev-spaces
+[azure-devops]: https://docs.microsoft.com/azure/devops-project/overview
 [azure-disk]: ./azure-disks-dynamic-pv.md
 [azure-files]: ./azure-files-dynamic-pv.md
 [container-health]: ../monitoring/monitoring-container-health.md

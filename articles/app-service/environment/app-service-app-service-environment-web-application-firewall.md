@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: naziml
 ms.custom: mvc
-ms.openlocfilehash: bc59d8671d904cf5096d616213cc4674ef5743b8
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 3fc9677d72dacd06bde2fcfa4812cf4613efef01
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30832102"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394289"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurowanie zapory aplikacji internetowych za pomocą środowiska App Service Environment
 ## <a name="overview"></a>Omówienie
@@ -31,7 +31,7 @@ Oprócz usługi Azure Application Gateway istnieje wiele innych opcji, takich ja
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)] 
 
-## <a name="setup"></a>Konfiguracja
+## <a name="setup"></a>Konfigurowanie
 W przypadku tego dokumentu konfigurujemy środowisko App Service Environment za wieloma wystąpieniami zapory aplikacji internetowych Barracuda ze zrównoważonym obciążeniem tak, aby tylko ruch z zapory aplikacji internetowych mógł docierać do środowiska App Service Environment i był niedostępny od sieci obwodowej. Mamy również usługę Azure Traffic Manager przed wystąpieniami zapory aplikacji internetowych Barracuda w celu zrównoważenia obciążenia w centrach danych i regionach platformy Azure. Diagram konfiguracji wysokiego poziomu będzie wyglądać podobnie jak na poniższej ilustracji:
 
 ![Architektura][Architecture] 

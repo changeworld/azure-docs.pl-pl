@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 10/08/2018
 ms.author: spelluru
-ms.openlocfilehash: 46a9045cdf422ed4f14e5588b3342e8bfde2e4c8
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 3cc87c0acbed317cccaccec687f27c23a1d32cf0
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888128"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319340"
 ---
 # <a name="what-is-azure-relay"></a>Co to jest usługa Azure Relay?
 Usługa Azure Relay umożliwia bezpieczne uwidacznianie usług uruchomionych w sieci firmowej do chmury publicznej. Możesz to zrobić bez otwierania połączenia przez zaporę lub wprowadzania niepożądanych zmian w firmowej infrastrukturze sieci. 
@@ -58,7 +58,7 @@ Aby uzyskać szczegółowe informacje o protokole połączenia hybrydowego, zoba
 ## <a name="wcf-relay"></a>Przekaźnik WCF
 Przekaźnik WCF działa z pełnym programem .NET Framework i technologią WCF. Należy utworzyć połączenie między usługą lokalną i usługą przekaźnika przy użyciu zestawu powiązań „przekaźników” WCF. W tle powiązania przekaźników są mapowane na nowe elementy powiązania transportu przeznaczone do tworzenia składników kanału WCF, które integrują się w chmurze z usługą Service Bus. Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi WCF Relay](relay-wcf-dotnet-get-started.md).
 
-## <a name="hybrid-connections-vs-wcf-relay"></a>Połączenia hybrydowe i przekaźnik WCF
+## <a name="hybrid-connections-vs-wcf-relay"></a>Połączenia hybrydowe i Przekaźnik WCF
 Zarówno połączenia hybrydowe, jak i przekaźniki WCF umożliwiają bezpieczne połączenie z zasobami istniejącymi w sieci firmowej. Użycie jednej lub drugiej zależy od Twoich konkretnych potrzeb zgodnie z opisem w poniższej tabeli:
 
 |  | Przekaźnik WCF | Połączenia hybrydowe |
@@ -81,10 +81,9 @@ Na poniższym diagramie przedstawiono sposób obsługiwania przychodzących żą
 4. Brama odbierająca żądanie wyszukuje przekaźnik w magazynie bramy. 
 5. Brama przekierowuje żądanie połączenia do odpowiedniej bramy wspomnianej w magazynie bramy. 
 6. Brama wysyła żądanie do klienta nasłuchującego tej bramy, aby utworzyć tymczasowy kanał do węzła bramy, który znajduje się najbliżej klienta wysyłającego. 
-7. Teraz klient nasłuchujący tworzy tymczasowy kanał i wysyła komunikat odpowiedzi do bramy znajdującej się najbliżej klienta wysyłającego.
-8. Brama przekierowuje komunikat odpowiedzi do klienta wysyłającego. 
-
-Po nawiązaniu połączenia przekaźnika klienci mogą wymieniać komunikaty za pośrednictwem węzła bramy, który jest używany na potrzeby spotkania.
+7. Klient nasłuchujący tworzy tymczasowy kanał w bramie znajdującej się najbliżej klienta wysyłającego. Po nawiązaniu połączenia między klientami za pośrednictwem bramy klienci mogą wymieniać między sobą komunikaty. 
+8. Brama przesyła dalej komunikaty z klienta nasłuchującego do klienta wysyłającego. 
+9. Brama przesyła dalej komunikaty z klienta wysyłającego do klienta nasłuchującego.  
 
 ## <a name="next-steps"></a>Następne kroki
 * [Wprowadzenie do obiektów WebSocket platformy .NET](relay-hybrid-connections-dotnet-get-started.md)

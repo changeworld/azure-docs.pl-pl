@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: d1776fc2347eb1a1f03a834b6a5f847ef5c551e4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 521b6423550bf3e2d0bc90212b7e3fe0cbeddfc4
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948887"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167074"
 ---
 # <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>Samouczek: konfigurowanie aplikacji internetowej platformy Azure w celu odczytu wpisu tajnego z usługi Key Vault
 
@@ -126,10 +126,11 @@ Istnieją dwa pakiety NuGet, które Twoja aplikacja internetowa musi mieć zains
 1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy nazwę witryny internetowej.
 2. Wybierz polecenie **Zarządzaj pakietami NuGet rozwiązania...**
 3. Zaznacz pole wyboru obok pola wyszukiwania. **Uwzględnij wersję wstępną**
-4. Wyszukaj dwa pakiety NuGet wymienione poniżej i zaakceptuj dodanie ich do Twojego rozwiązania:
+4. Wyszukaj trzy pakiety NuGet wymienione poniżej i zaakceptuj dodanie ich do Twojego rozwiązania:
 
     * [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) — ułatwia pobieranie tokenów dostępu w przypadku scenariuszy uwierzytelniania „usługa do usługi platformy Azure”. 
     * [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) — zawiera metody interakcji z usługą Key Vault.
+    * [Microsoft.Extensions.Configuration.AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/) — zawiera rozszerzenia `IConfiguration` dla usługi Azure Key Vault
 
 5. Za pomocą Eksploratora rozwiązań otwórz plik `Program.cs` i zastąp jego zawartość następującym kodem. Zastąp zmienną ```<YourKeyVaultName>``` nazwą swojej usługi Key Vault:
 
@@ -218,9 +219,9 @@ Istnieją dwa pakiety NuGet, które Twoja aplikacja internetowa musi mieć zains
 >[!IMPORTANT]
 > Zostanie otwarte okno przeglądarki i wyświetlony komunikat 502.5 — błąd procesu. Jest to oczekiwane. Należy przyznać tożsamości aplikacji prawo odczytu wpisów tajnych z usługi Key Vault.
 
-## <a name="enable-a-managed-identity-for-the-web-app"></a>Włączanie tożsamości zarządzanej w aplikacji internetowej
+## <a name="enable-a-managed-identity-for-the-web-app"></a>Włączanie tożsamości zarządzanej dla aplikacji internetowej
 
-Usługa Azure Key Vault oferuje bezpieczny sposób przechowywania poświadczeń oraz innych kluczy i wpisów tajnych, ale w celu ich pobrania należy uwierzytelnić kod w usłudze Key Vault. [Omówienie tożsamości zarządzanych dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md) ułatwia rozwiązywanie tego problemu, udostępniając usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure Active Directory (Azure AD). Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD, w tym w usłudze Key Vault, bez konieczności przechowywania poświadczeń w kodzie.
+Usługa Azure Key Vault oferuje bezpieczny sposób przechowywania poświadczeń oraz innych kluczy i wpisów tajnych, ale w celu ich pobrania należy uwierzytelnić kod w usłudze Key Vault. [Tożsamości zarządzane dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md) ułatwiają rozwiązanie tego problemu, udostępniając usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure Active Directory (Azure AD). Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD, w tym w usłudze Key Vault, bez konieczności przechowywania poświadczeń w kodzie.
 
 1. Powrót do interfejsu wiersza polecenia platformy Azure
 2. Uruchom polecenie assign-identity w celu utworzenia tożsamości dla tej aplikacji:

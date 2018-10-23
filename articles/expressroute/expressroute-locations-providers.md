@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/01/2018
-ms.author: jaredro
-ms.openlocfilehash: 78cc4875bd0dabba1c9cfebcb5e35160695fdc4e
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.date: 10/16/2018
+ms.author: pareshmu
+ms.openlocfilehash: 8372cd82e9b62c4440a9e7d525b7135153e59dde
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042414"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378072"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partnerzy i lokalizacje komunikacji równorzędnej usługi ExpressRoute
 
@@ -76,7 +76,7 @@ W poniższej tabeli przedstawiono lokalizacje połączeń i dostawców usług dl
 ### <a name="production-azure"></a>Środowisko produkcyjne Azure
 | **Lokalizacja** | **Właściciel lokalizacji komunikacji równorzędnej** | **Dostawcy usług** |
 | --- | --- | --- |
-| **Amsterdam** | Equinix | Aryaka Networks, AT&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, InterCloud, Interxion, KPN, Level 3 Communications, Megaport, NTT Communications, Orange, Tata Communications, TeleCity Group, Telefonica, Telenor, Verizon, Zayo |
+| **Amsterdam** | Equinix | Aryaka Networks, AT&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, InterCloud, Interxion, KPN, IX Reach, Level 3 Communications, Megaport, NTT Communications, Orange, Tata Communications, TeleCity Group, Telefonica, Telenor, Verizon, Zayo |
 | **Amsterdam2** | Interxion | Interxion |
 | **Atlanta** | Equinix | Equinix, Megaport |
 | **Pusan** |LG CNS | LG CNS |
@@ -99,7 +99,7 @@ W poniższej tabeli przedstawiono lokalizacje połączeń i dostawców usług dl
 | **Melbourne** | NextDC | AARNet, Equinix, Megaport, NEXTDC, Optus+, Telstra Corporation |
 | **Miami** | Equinix | C3ntro+, Equinix, Megaport, Neutrona Networks |
 | **Montreal** | Cologix | Bell Canada, Cologix, Telus, Zayo |
-| **Mumbaj** | Tata Communications | Global CloudXchange (GCX), Sify, Tata Communications |
+| **Mumbaj** | Tata Communications | Global CloudXchange (GCX), Sify, Tata Communications, Vodafone Idea |
 | **Mumbaj2** | Airtel | Airtel, Sify |
 | **Nowy Jork** | Equinix | CenturyLink Cloud Connect, Coresite, Equinix, Megaport, Zayo |
 | **Newport (Walia)** | Dane nowej generacji | Level 3 Communications, Next Generation Data |
@@ -110,7 +110,7 @@ W poniższej tabeli przedstawiono lokalizacje połączeń i dostawców usług dl
 | **Sao Paulo** | Equinix | Ascenty Data Centers, Equinix, Level 3 Communications, Neutrona Networks, Telefonica, UOLDIVEO |
 | **Seattle** | Equinix | Equinix, Level 3 Communications, Megaport |
 | **Seul** | KINX | KINX, LG CNS, Sejong Telecom |
-| **Dolina Krzemowa** | Equinix | Aryaka Networks, AT&T NetBond, British Telecom, CenturyLink Cloud Connect, Comcast, Coresite, Equinix, IXReach, PacketFabric, Level 3 Communications, Megaport, Orange, Sprint, Tata Communications, Verizon, Zayo Group |
+| **Dolina Krzemowa** | Equinix | Aryaka Networks, AT&T NetBond, British Telecom, CenturyLink Cloud Connect, Comcast, Coresite, Equinix, InterCloud, IXReach, PacketFabric, Level 3 Communications, Megaport, Orange, Sprint, Tata Communications, Verizon, Zayo Group |
 | **Singapur** | Equinix | Aryaka Networks, AT&T NetBond, British Telecom, Epsilon Global Communications, Equinix, InterCloud, Level 3 Communications, Megaport, NTT Communications, Orange, SingTel, Tata Communications, Verizon |
 | **Singapur2** | Przełącznik globalny | Megaport, SingTel |
 | **Sydney** | Equinix | AARNet, AT&T NetBond, British Telecom, Equinix, Megaport, NEXTDC, NTT Communications, Optus, Orange, Telstra Corporation, Verizon |
@@ -160,7 +160,7 @@ Jeśli dostawca połączenia nie został wymieniony w poprzednich sekcjach, moż
   * [NextDC](http://www.nextdc.com/)
   * [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
   * [PacketFabric](https://www.packetfabric.com/packetcor/microsoft-azure/)
-  * [TeleCity CloudIX](http://www.telecitygroup.com/colocation-services/cloud-ix.htm)
+  
 * Poproś dostawcę połączenia o rozszerzenie sieci o wybraną lokalizację komunikacji równorzędnej.
   * Dopilnuj, by dostawca połączenia rozszerzył łączność w sposób wysoko dostępny, aby nie wystąpiły żadne punkty awarii.
 * Zamów obwód usługi ExpressRoute z wymianą jako dostawcą połączenia, aby połączyć się z firmą Microsoft.
@@ -197,7 +197,7 @@ Włączanie prywatnej łączności do własnych potrzeb może być wyzwaniem w z
 | **Australia** | Ensyst, IT Consultancy, MOQdigital, Vigilant.IT |
 | **Europa** |Avanade Inc., Altogee, Bright Skies GmbH, Inframon, MSG Services, New Signature, Nelite, Orange Networks, sol-tec |
 | **Ameryka Północna** |Avanade Inc., Equinix Professional Services, FlexManage, Lightstream, Perficient, Presidio |
-| **Ameryka Południowa** |Avanade Inc. |
+| **Ameryka Południowa** |Avanade Inc., Venha Pra Nuvem |
 ## <a name="next-steps"></a>Następne kroki
 * Więcej informacji na temat usługi ExpressRoute znajduje się w artykule [ExpressRoute FAQ](expressroute-faqs.md) (Usługa ExpressRoute — często zadawane pytania).
 * Upewnij się, że zostały spełnione wszystkie wymagania wstępne. Zobacz artykuł [ExpressRoute prerequisites](expressroute-prerequisites.md) (Wymagania wstępne usługi ExpressRoute).

@@ -11,15 +11,15 @@ ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/20/2018
+ms.date: 10/12/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 2d19488d9b4d6ae6c71610788345b45c38e51cfa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 715a8e5bab9e5d16b8c0e54298101df856d51a9a
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968819"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309863"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>Samouczek: informacje o zarządzaniu maszynami wirtualnymi za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -27,7 +27,7 @@ ms.locfileid: "46968819"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia platformy Azure i korzystać z niego lokalnie, ten samouczek będzie wymagać interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 ## <a name="understand-scope"></a>Objaśnienie zakresu
 
@@ -55,19 +55,17 @@ W przypadku zarządzania rozwiązaniami maszyn wirtualnych dostępne są 3 role 
 * [Współautor sieci](../../role-based-access-control/built-in-roles.md#network-contributor)
 * [Współautor konta magazynu](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Zamiast przypisywać role poszczególnym użytkownikom, często łatwiej jest [utworzyć grupę usługi Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) dla użytkowników, którzy muszą wykonywać podobne działania. Następnie należy przypisać tę grupę do odpowiedniej roli. Aby uprościć ten artykuł, utwórz grupę usługi Azure Active Directory bez członków. Nadal możesz przypisać tę grupę do roli w zakresie. 
+Zamiast przypisywać role poszczególnym użytkownikom, często łatwiej jest użyć grupy usługi Azure Active Directory zawierającej użytkowników, którzy muszą wykonywać podobne działania. Następnie należy przypisać tę grupę do odpowiedniej roli. Na potrzeby tego artykułu użyj istniejącej grupy do zarządzania maszyną wirtualną lub użyj portalu do [utworzenia grupy usługi Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-W poniższym przykładzie zostanie utworzona grupa usługi Azure Active Directory o nazwie *VMDemoContributors* i pseudonimie pocztowym *vmDemoGroup*. Pseudonim pocztowy służy jako alias dla grupy.
-
-```azurecli-interactive
-adgroupId=$(az ad group create --display-name VMDemoContributors --mail-nickname vmDemoGroup --query objectId --output tsv)
-```
-
-Propagacja grupy w usłudze Azure Active Directory może potrwać kilka chwil od momentu zwrócenia wyników przez wiersz polecenia. Po upływie 20 lub 30 sekund przypisz nową grupę usługi Azure Active Directory do roli współautora maszyny wirtualnej dla grupy zasobów za pomocą polecenia [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create).  Jeśli uruchomisz następujące polecenie przed zakończeniem propagacji, zostanie wyświetlony komunikat o błędzie **Podmiot zabezpieczeń <guid> nie istnieje w katalogu**. Spróbuj ponownie uruchomić polecenie.
+Po utworzeniu nowej grupy lub znalezieniu istniejącej grupy przypisz nową grupę usługi Azure Active Directory do roli współautora maszyny wirtualnej dla grupy zasobów za pomocą polecenia [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create).
 
 ```azurecli-interactive
+adgroupId=$(az ad group show --group <your-group-name> --query objectId --output tsv)
+
 az role assignment create --assignee-object-id $adgroupId --role "Virtual Machine Contributor" --resource-group myResourceGroup
 ```
+
+Jeśli zostanie zgłoszony błąd wskazujący, że **jednostka<guid> nie istnieje w katalogu**, oznacza to, że nowa grupa nie została rozpropagowana w usłudze Azure Active Directory. Spróbuj ponownie uruchomić polecenie.
 
 Zazwyczaj należy powtórzyć ten proces dla roli *Współautor sieci* i *Współautor konta magazynu*, aby upewnić się, że użytkownicy mogą zarządzać wdrożonymi zasobami. W tym artykule można pominąć te kroki.
 
@@ -133,7 +131,7 @@ az policy definition show --name $locationDefinition --query parameters
 
 ## <a name="deploy-the-virtual-machine"></a>Wdrażanie maszyny wirtualnej
 
-Role i zasady są przypisane, a zatem pora na wdrożenie rozwiązania. Rozmiar domyślny to Standard_DS1_v2, który jest jedną z dozwolonych jednostek SKU. To polecenie tworzy klucze SSH, jeśli nie istnieją one w domyślnej lokalizacji.
+Role i zasady są przypisane, a zatem pora na wdrożenie rozwiązania. Rozmiar domyślny to Standard_DS1_v2, który jest jedną z dozwolonych jednostek SKU. To polecenie tworzy klucze SSH, jeśli nie ma ich w domyślnej lokalizacji.
 
 ```azurecli-interactive
 az vm create --resource-group myResourceGroup --name myVM --image UbuntuLTS --generate-ssh-keys
@@ -171,7 +169,7 @@ Aby przetestować blokadę, spróbuj uruchomić następujące polecenie:
 az group delete --name myResourceGroup
 ```
 
-Zostanie wyświetlony komunikat o błędzie informujący, że nie można wykonać operacji usuwania z powodu blokady. Grupę zasobów można usunąć tylko po zdjęciu blokad. Ten krok przedstawiono w sekcji [Oczyszczanie zasobów](#clean-up-resources).
+Zostanie wyświetlony komunikat o błędzie informujący, że nie można zakończyć operacji usuwania z powodu blokady. Grupę zasobów można usunąć tylko po zdjęciu blokad. Ten krok przedstawiono w sekcji [Oczyszczanie zasobów](#clean-up-resources).
 
 ## <a name="tag-resources"></a>Tagowanie zasobów
 
@@ -179,7 +177,7 @@ Stosowanie [tagów](../../azure-resource-manager/resource-group-using-tags.md) d
 
 [!INCLUDE [Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
 
-Aby zastosować tagi do maszyny wirtualnej, użyj polecenia [az resource tag](/cli/azure/resource#az_resource_tag). Nie są zachowywane żadne istniejące tagi w zasobie.
+Aby zastosować tagi do maszyny wirtualnej, użyj polecenia [az resource tag](/cli/azure/resource#az_resource_tag). Nie są zachowywane żadne istniejące tagi zasobu.
 
 ```azurecli-interactive
 az resource tag -n myVM \

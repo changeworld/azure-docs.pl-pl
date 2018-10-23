@@ -10,12 +10,12 @@ ms.component: bing-custom-search
 ms.topic: overview
 ms.date: 09/29/2017
 ms.author: v-brapel
-ms.openlocfilehash: 2483bf36bb18af21bc454e08f3321b33094c43c8
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: f2946918f0c1a7a516788989042825e8f49d7b0b
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814308"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318728"
 ---
 # <a name="what-is-bing-custom-search"></a>Czym jest wyszukiwanie niestandardowe Bing?
 
@@ -29,7 +29,7 @@ Po zdefiniowaniu wystąpienia możesz zintegrować wyszukiwanie niestandardowe z
 
 Na poniższej ilustracji pokazano, jak łatwo można integrować funkcję wyszukiwania niestandardowego.
 
-![picture alt](./media/bcs-overview.png "Jak działa wyszukiwanie niestandardowe Bing.")
+![picture alt](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/cognitive-services/Bing-Custom-Search/media/BCS-Overview.png "Jak działa wyszukiwanie niestandardowe Bing.")
 
 ## <a name="adding-custom-search-box-suggestions"></a>Dodawanie niestandardowych sugestii w polu wyszukiwania
 
@@ -57,7 +57,7 @@ Zapoznaj się z dokumentacją poszczególnych punktów końcowych wyszukiwania n
 
 - [Interfejs API wyszukiwania niestandardowego](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference)
 - [Interfejs API wyszukiwania niestandardowego obrazów](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference)
-- [Interfejs API wyszukiwania niestandardowego wideo](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference)
+- [Niestandardowy interfejs API wideo](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference)
 - [Interfejs API niestandardowego automatycznego sugerowania](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference)
 
 

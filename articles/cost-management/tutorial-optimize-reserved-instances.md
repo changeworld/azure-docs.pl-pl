@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 10/17/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: c50259f0df955c3a22edc979dfebc8bfb2059e16
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e705a0f57b598eb60932ca1056131cedc1416ffc
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987776"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394461"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
@@ -41,7 +41,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Musisz mieć konto platformy Azure.
-- Musisz mieć rejestrację próbną lub płatną subskrypcję rozwiązania Cloudyn.
+- Musisz mieć rejestrację próbną lub płatną subskrypcję usługi Cloudyn.
 - Musisz mieć wystąpienia zarezerwowane kupione na platformie Azure lub AWS.
 
 ## <a name="understand-azure-ri-costs"></a>Poznanie kosztów wystąpień zarezerwowanych na platformie Azure
@@ -125,7 +125,7 @@ Po zakupie rezerwacji dokonujesz jednorazowej płatności. Płatność można wy
 
 Raporty Analiza rzeczywistego kosztu i Analiza względem czasu pokazują pełne kwoty zapłacone za rezerwację, począwszy od miesiąca zakupu. Ułatwiają one sprawdzanie rzeczywistych wydatków w danym okresie.
 
-Wybierz pozycję **Koszt** > **Analiza kosztów** w portalu Cloudyn, a następnie wybierz pozycję **Analiza rzeczywistego kosztu** lub **Rzeczywisty koszt względem czasu**. Teraz ustaw filtry. Na przykład odfiltruj tylko usługę Azure/VM i pogrupuj wyniki według wartości Typ zasobu i Model cen. Zobacz poniższy obraz:
+Wybierz pozycję **Koszty** > **Analiza kosztów** w portalu Cloudyn, a następnie wybierz pozycję **Analiza rzeczywistego kosztu** lub **Rzeczywisty koszt względem czasu**. Teraz ustaw filtry. Na przykład odfiltruj tylko usługę Azure/VM i pogrupuj wyniki według wartości Typ zasobu i Model cen. Zobacz poniższy obraz:
 
 ![Rzeczywisty koszt wystąpienia zarezerwowanego](./media/tutorial-optimize-reserved-instances/azure05.png)
 
@@ -143,7 +143,7 @@ Amortyzowany koszt wystąpienia zarezerwowanego jest obliczany przez amortyzowan
 
 W raporcie rzeczywistego kosztu 16 listopada był widoczny nagły wzrost o kwotę 747 USD w związku z zakupem wystąpienia zarezerwowanego. W raporcie amortyzowanego kosztu (zobacz poniższy obraz) 16 listopada pojawia się częściowy koszt dzienny. Począwszy od 17 listopada, widoczny jest zamortyzowany koszt wystąpienia zarezerwowanego w wysokości 747 USD / 365 = 2,05 USD. Przy okazji można zauważyć, że zakupiona rezerwacja jest nieużywana, więc można dokonać optymalizacji, zmieniając rozmiar maszyny wirtualnej na inny.
 
-Aby wyświetlić ten raport, wybierz opcję **Koszt** > **Analiza kosztów**, a następnie wybierz pozycję **Analiza amortyzowanego kosztu** lub **Amortyzowany koszt względem czasu**.
+Aby wyświetlić ten raport, wybierz pozycję **Koszty** > **Analiza kosztów**, a następnie wybierz pozycję **Analiza amortyzowanego kosztu** lub **Amortyzowany koszt względem czasu**.
 
 ![Amortyzowany koszt wystąpienia zarezerwowanego](./media/tutorial-optimize-reserved-instances/azure07.png)
 

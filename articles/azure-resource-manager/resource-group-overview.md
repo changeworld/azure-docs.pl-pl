@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: dc73bbd775da31faecf236716a2b028171438b7c
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 841f82595257c97c15398347a3e1605219d1a534
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220891"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394429"
 ---
 # <a name="azure-resource-manager-overview"></a>Omówienie usługi Azure Resource Manager
 Infrastruktura aplikacji zwykle obejmuje wiele składników — może to być maszyna wirtualna, konto magazynu i sieć wirtualna albo aplikacja internetowa, baza danych, serwer bazy danych i usługi zewnętrzne. Te składniki nie są widoczne jako osobne jednostki, tylko jako powiązane i zależne od siebie nawzajem części jednej całości. Dlatego najlepiej wdrażać i monitorować je oraz zarządzać nimi grupowo. Usługa Azure Resource Manager umożliwia pracę z zasobami tworzącymi rozwiązanie w formie grupy. Wszystkie zasoby danego rozwiązania można wdrożyć, zaktualizować lub usunąć w ramach jednej skoordynowanej operacji. Wdrażanie wykonuje się przy użyciu szablonu, którego można następnie używać w różnych środowiskach (testowanie, etap przejściowy i produkcja). Usługa Resource Manager zapewnia funkcje zabezpieczeń, inspekcji i znakowania ułatwiające zarządzanie zasobami po wdrożeniu. 
@@ -159,7 +159,7 @@ Po zdefiniowaniu szablonu można przystąpić do wdrażania zasobów na platform
 
 Podczas wdrażania złożonej usługi na platformie Azure może być konieczne wdrożenie swojej usługi w wielu regionach i sprawdzenie jej kondycji przed przejściem do następnego kroku. Użyj usługi [Azure Deployment Manager](deployment-manager-overview.md) do koordynowania etapowego wdrażania usługi. Dzięki etapowemu wdrażaniu Twojej usługi możesz znaleźć potencjalne problemy zanim zostanie ona wdrożona we wszystkich regionach. Jeśli nie potrzebujesz tych środków ostrożności, operacje wdrażania w poprzedniej sekcji są lepszym rozwiązaniem.
 
-Usługa Deployment Manager jest obecnie w publicznej wersji zapoznawczej.
+Usługa Deployment Manager jest obecnie dostępna w prywatnej wersji zapoznawczej.
 
 ## <a name="tags"></a>Tagi
 Usługa Resource Manager udostępnia funkcję tagowania umożliwiającą dzielenie zasobów na kategorie zgodnie z wymaganiami zarządzania lub rozliczeń. Tagi są przydatne w przypadku złożonych kolekcji grup zasobów i zasobów, które trzeba uporządkować wizualnie w możliwie logicznej formie. Można na przykład oznaczyć tagami zasoby, które pełnią podobną rolę w organizacji lub należą do tego samego działu. Bez użycia tagów użytkownicy w organizacji mogą tworzyć wiele zasobów, które będą później bardzo trudne do znalezienia i zarządzania. Na przykład możesz chcieć usunąć wszystkie zasoby dla określonego projektu. Jeśli te zasoby nie są opatrzone tagiem dla projektu, trzeba je znaleźć ręcznie. Tagowanie może być istotnym sposobem na zredukowanie niepotrzebnych kosztów w ramach subskrypcji. 

@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2018
 ms.author: bahariri
-ms.openlocfilehash: 2fbca7179d8bc64a92f79f6eaced8d4f1666c530
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4b78cef29c64c5c4c522ad5c751c10bbf6a7057c
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069220"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363422"
 ---
 # <a name="stream-into-event-hubs-for-the-apache-kafka"></a>Przesyłanie strumieniowe do usługi Event Hubs dla platformy Apache Kafka
 W tym przewodniku Szybki start przedstawiono sposób przesyłania strumieniowego usługi Event Hubs z obsługą platformy Kafka bez konieczności zmiany klientów protokołu lub uruchamiania własnych klastrów. Dowiesz się, jak producenci i użytkownicy mogą komunikować się z usługą Event Hubs z obsługą platformy Kafka tylko dzięki zmianie konfiguracji aplikacji. Usługa Azure Event Hubs obsługuje [platformę Apache Kafka w wersji 1.0.](https://kafka.apache.org/10/documentation.html)
 
 > [!NOTE]
-> Ten przykład jest dostępny w witrynie [GitHub](https://github.com/Azure/azure-event-hubs)
+> Ten przykład jest dostępny w witrynie [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -63,9 +63,9 @@ Teraz możesz przesyłać strumieniowo zdarzenia z aplikacji, które używają p
 
 ## <a name="send-and-receive-messages-with-kafka-in-event-hubs"></a>Wysyłanie i odbieranie komunikatów przy użyciu platformy Kafka w usłudze Event Hubs
 
-1. Sklonuj [repozytorium usługi Azure Event Hubs](https://github.com/Azure/azure-event-hubs).
+1. Sklonuj [repozytorium usługi Azure Event Hubs dla platformy Kafka](https://github.com/Azure/azure-event-hubs-for-kafka).
 
-2. Przejdź do adresu `azure-event-hubs/samples/kafka/quickstart/producer`.
+2. Przejdź do adresu `azure-event-hubs-for-kafka/quickstart/java/producer`.
 
 3. Aktualizuj szczegóły konfiguracji dla producenta w `src/main/resources/producer.config` w następujący sposób:
 
@@ -83,7 +83,7 @@ Teraz możesz przesyłać strumieniowo zdarzenia z aplikacji, które używają p
     mvn exec:java -Dexec.mainClass="TestProducer"                                    
     ```
     
-5. Przejdź do adresu `azure-event-hubs/samples/kafka/quickstart/consumer`.
+5. Przejdź do adresu `azure-event-hubs-for-kafka/quickstart/java/consumer`.
 
 6. Aktualizuj szczegóły konfiguracji dla konsumenta w `src/main/resources/consumer.config` w następujący sposób:
    
@@ -106,5 +106,8 @@ Jeśli klaster platformy Kafka w usłudze Event Hub ma zdarzenia, teraz powinno 
 ## <a name="next-steps"></a>Następne kroki
 W tym artykule przedstawiono sposób przesyłania strumieniowego usługi Event Hubs z obsługą platformy Kafka bez konieczności zmiany klientów protokołu lub uruchamiania własnych klastrów. Aby dowiedzieć się więcej, przejdź do następującego samouczka:
 
-> [!div class="nextstepaction"]
-> [Używanie narzędzia Apache Kafka MirrorMaker z usługą Event Hubs](event-hubs-kafka-mirror-maker-tutorial.md)
+* [Dowiedz się więcej na temat usługi Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Dowiedz się więcej na temat usługi Event Hubs dla platformy Kafka](event-hubs-for-kafka-ecosystem-overview.md)
+* [Poznaj więcej przykładów w usłudze Event Hubs dla platformy Kafka](https://github.com/Azure/azure-event-hubs-for-kafka)
+* Użyj narzędzia [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330), aby [przesyłać strumieniowo zdarzenia z lokalnego środowiska platformy Kafka do usługi Event Hubs z obsługą platformy Kafka w chmurze.](event-hubs-kafka-mirror-maker-tutorial.md)
+* Dowiedz się, jak przesyłać strumieniowo do usługi Event Hubs z obsługą platformy Kafka przy użyciu narzędzi [Apache Flink](event-hubs-kafka-flink-tutorial.md) lub [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md)

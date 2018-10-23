@@ -10,18 +10,16 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: 967e978518debb5aef071807b1482d6f225c062f
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 82e051895bd5ba8542fa32aa147b050a25c43c84
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367716"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318403"
 ---
 # <a name="quickstart-get-supported-languages-with-c35"></a>Szybki start: uzyskiwanie obsługiwanych języków w języku C&#35;
 
 W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji, wyszukiwania w słowniku oraz wyszukiwania przykładów przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
-
-Kod źródłowy tego przykładu jest dostępny w usłudze [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -30,6 +28,9 @@ Do uruchamiania tego kodu w systemie Windows jest potrzebny [program Visual Stud
 Aby korzystać z interfejsu API tłumaczenia tekstu w usłudze Translator, potrzebny jest również klucz subskrypcji. Zobacz [How to sign up for the Translator Text API (Jak zarejestrować się w interfejsie API tłumaczenia tekstu w usłudze Translator)](translator-text-how-to-signup.md).
 
 ## <a name="languages-request"></a>Żądanie Languages
+
+> [!TIP]
+> Pobierz najnowszy kod z witryny [Github](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp).
 
 Następujący kod umożliwia uzyskanie listy języków obsługiwanych na potrzeby tłumaczenia, transliteracji, wyszukiwania w słowniku oraz wyszukiwania przykładów przy użyciu metody [Languages](./reference/v3-0-languages.md).
 

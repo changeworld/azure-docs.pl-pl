@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e68050e4902183b899bf3fee31bef088b1a0faf2
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 4db494de87993a6434eaf5dbf441094578d72ea4
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576072"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165968"
 ---
 # <a name="what-is-azure-maps"></a>Co to jest usługa Azure Maps?
 
@@ -23,6 +23,14 @@ Azure Maps to zbiór usług geoprzestrzennych opartych na aktualnych danych mapo
 W poniższym filmie wideo wyjaśniono dokładnie działanie usługi Azure Maps:
 
 <iframe src="https://channel9.msdn.com/Shows/Azure-Friday/Azure-Location-Based-Services/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+
+## <a name="map-controls"></a>Kontrolki mapy
+
+### <a name="web-control"></a>Kontrolka internetowa
+
+Kontrolka internetowa usługi Azure Maps umożliwia dostosowywanie interaktywnych map przy użyciu własnych treści i obrazów na potrzeby wyświetlania w aplikacjach internetowych i mobilnych. Kontrolka korzysta z technologii WebGL, co umożliwia renderowanie dużych zestawów danych z wysoką wydajnością. Do programowania z użyciem tej kontrolki można użyć języka JavaScript lub TypeScript.
+
+![Kontrolka internetowa usługi Azure Maps](media/about-azure-maps/Introduction_WebMapControl.png)
 
 ## <a name="services-in-azure-maps"></a>Usługi Azure Maps
 

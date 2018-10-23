@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 4d504e0488d35c5c606468faa35bece1318503b4
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: bc1b52b97897cb1c635fb16e6ef9692de1ca8a44
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498525"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167260"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Zarządzanie aktualizacjami systemu Windows przy użyciu usługi Azure Automation
 
@@ -116,7 +116,8 @@ W obszarze **Logika alertu** w polu **Próg** wprowadź **1**. Po zakończeniu w
 
 #### <a name="runbook-alert"></a>Alert elementu runbook
 
-W przypadku wdrożeń zakończonych niepowodzeniem musisz wyzwolić alert niepowodzenia przebiegu głównego w witrynie Azure Portal, przejść do obszaru **Monitorowanie**, a następnie wybrać pozycję **Utwórz alert**.
+W przypadku wdrożeń zakończonych niepowodzeniem powinien być zgłaszany alert o niepowodzeniu głównego element runbook.
+W witrynie Azure Portal przejdź do obszaru **Monitorowanie** i wybierz pozycję **Utwórz alert**.
 
 W obszarze **1. Zdefiniuj warunek alertu**, kliknij przycisk **Wybierz docelowy**. W obszarze **Filtruj według typu zasobu** wybierz pozycję **Konta usługi Automation**. Wybierz swoje konto usługi Automation, a następnie wybierz pozycję **Gotowe**.
 

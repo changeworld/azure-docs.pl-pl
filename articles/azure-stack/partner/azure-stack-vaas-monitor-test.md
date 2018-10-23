@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie testów za pomocą usługi Azure Stack weryfikacji jako usługa | Dokumentacja firmy Microsoft
-description: Monitorowanie testów za pomocą usługi Azure Stack weryfikacji jako usługa.
+title: Monitorowanie i zarządzanie testami w portalu usługi Azure Stack VaaS | Dokumentacja firmy Microsoft
+description: Monitorowanie i zarządzanie testami w portalu usługi Azure Stack VaaS.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,124 +10,140 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/24/2018
+ms.date: 10/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 2dc4d3f2855864ff80648b5b9635ff28c0dacbb7
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: b9500176cd3779c46886e6ed8bc8c989bea20a8c
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163333"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647515"
 ---
-# <a name="monitor-a-test-with-azure-stack-validation-as-a-service"></a>Monitor testów za pomocą usługi Azure Stack weryfikacji jako usługa
+# <a name="monitor-and-manage-tests-in-the-vaas-portal"></a>Monitorowanie i zarządzanie testami w portalu VaaS
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Wykonywanie testu można monitorować, wyświetlając **operacji** strony dla zestawów testów, które są w toku lub ukończone. Ta strona szczegółów stanu testu i jego operacji.
+Po zaplanowaniu testy z rozwiązania do usługi Azure Stack, weryfikacji jako usługa (VaaS) rozpocznie raportowanie stanu wykonywania testu. Te informacje są dostępne w portalu VaaS wraz z akcji, takich jak korzystanie z odpraw i anulowaniu testów.
 
-## <a name="monitor-a-test"></a>Monitor testu
+## <a name="navigate-to-the-workflow-tests-summary-page"></a>Przejdź do strony Podsumowanie testów przepływu pracy
 
-1. Wybierz rozwiązanie.
+1. Na pulpicie nawigacyjnym rozwiązania wybierz istniejącego rozwiązania, który ma co najmniej jeden przepływ pracy.
 
-2. Wybierz **Zarządzaj** w dowolnym kafelku przepływu pracy.
+    ![Kafelki przepływu pracy](media/tile_all-workflows.png)
 
-3. Kliknij przycisk przepływu pracy, aby otworzyć jego strona podsumowania testu.
+1. Wybierz **Zarządzaj** na kafelku przepływu pracy. Dalej znajduje się lista przepływy pracy utworzone dla wybranego rozwiązania.
 
-4. Rozwiń menu kontekstowe **[...]**  dla każdego testu wystąpienie zestawu.
+1. Wybierz nazwę przepływu pracy, aby otworzyć Podsumowanie testu.
 
-5. Wybierz **wyświetlić operacje**
+## <a name="change-workflow-parameters"></a>Zmień parametry przepływu pracy
 
-![Tekst alternatywny](media\image4.png)
+Każdy typ przepływu pracy pozwala edytować [parametry testu](azure-stack-vaas-parameters.md#test-parameters) określone podczas tworzenia przepływu pracy.
 
-Dla testów, które przeszły uruchomiona, można pobrać dzienników z strona podsumowania testu, klikając **pobieranie dzienników** w menu kontekstowym testu **[...]** . Partnerzy usługi Azure Stack tych dzienników można używać do debugowania problemów dla testów zakończonych niepowodzeniem.
+1. Na stronie podsumowania testów, wybierz **Edytuj** przycisku.
 
-## <a name="open-the-test-pass-summary"></a>Otwórz podsumowanie przebiegu testu
+1. Podaj nowe wartości zgodnie z opisem w [wspólnych parametrów przepływów pracy dla usługi Azure Stack weryfikacji jako usługa](azure-stack-vaas-parameters.md).
 
-1. Otwórz portal. 
-2. Wybierz nazwę istniejącego rozwiązania, które zawiera wcześniej zaplanowane lub wykonywania testów.
+1. Wybierz **przesyłania** można zapisać wartości.
 
-    ![Zarządzanie przebiegów testowych](media/managetestpasses.png)
+> [!NOTE]
+> W **przebiegu testu** przepływu pracy, należy zakończyć wybór testów i przejdź do strony przeglądu, zanim będzie można zapisać nowe wartości parametru.
 
-3. Wybierz **Zarządzaj** w **przebiegów testowych** panelu.
-4. Wybierz przebieg testu, aby otworzyć podsumowanie przebiegu testu. Możesz przejrzeć nazwę testu, Data utworzenia, jest uruchamiany, czas trwania testu oraz wyników (zakończonych powodzeniem lub niepowodzeniem).
-5. Wybierz pozycję [ **...  .** ].
+### <a name="add-tests-test-pass-only"></a>Dodaj testy (tylko dla przebiegu testu)
 
-### <a name="test-pass-summary"></a>Podsumowanie przebiegu testu
+W **przebiegu testu** przepływów pracy, zarówno **Dodaj testy** i **Edytuj** przyciski umożliwiają planowanie nowe testy w przepływie pracy.
+
+> [!TIP]
+> Wybierz **Dodaj testy** jeśli tylko chcesz zaplanować nowe testy i nie trzeba edytować parametry **przebiegu testu** przepływu pracy.
+
+## <a name="managing-test-instances"></a>Zarządzanie wystąpieniami testu
+
+Dla uruchomień nieoficjalny (czyli **przebiegu testu** przepływu pracy), na stronie podsumowania testów zawiera testy, w zaplanowane przed rozwiązania usługi Azure Stack.
+
+Oficjalna uruchomień (czyli **weryfikacji** przepływów pracy), na stronie podsumowania testów Wyświetla listę testów, wymagane do zakończenia weryfikacji rozwiązania usługi Azure Stack. Testy weryfikacyjne są planowane na tej stronie.
+
+Każde wystąpienie zaplanowane testy zostaną wyświetlone następujące informacje:
 
 | Kolumna | Opis |
 | --- | --- |
-| Nazwa testu | Nazwa testu. Odwołuje się do liczby sprawdzania poprawności. |
-| Utworzone | Godzina utworzenia przebiegu testu. |
-| Uruchomiono | Razem, gdy ostatnie test był uruchomiony. |
-| Czas trwania | Długość czasu, jaki zajęło przebiegu testu do uruchomienia. |
-| Stan | Wynik (powodzenie lub niepowodzenie) do przekazywania rest. |
-| Nazwa agenta | W pełni kwalifikowana nazwa domeny agenta. |
-| Łączna liczba operacji | Całkowita liczba operacji, które podjęto w przebiegu testu. |
-| Operacje przekazany | Liczba operacji, które pomyślnie w przebiegu testu. |
-|  Operacje zakończone niepowodzeniem | Liczba operacji, które nie powiodło się. |
+| Nazwa testu | Nazwa i wersja testu. |
+| Kategoria | Cel testu. |
+| Utworzone | Czas, w którym test został zaplanowany. |
+| Uruchomiono | Czas, w którym test rozpoczął wykonywanie sekwencji. |
+| Czas trwania | Długość czasu, przez który test był uruchomiony. |
+| Stan | Stan lub wynik testu. Przed wykonaniem lub w trakcie stany to: `Pending`, `Running`. Terminalu stany to: `Cancelled`, `Failed`, `Aborted`, `Succeeded`. |
+| Nazwa agenta | Nazwa agenta, który prowadził test. |
+| Łączna liczba operacji | Całkowita liczba operacji podjęto próbę podczas testu. |
+| Operacje przekazany | Liczba operacji, które zakończyły się pomyślnie podczas testu. |
+|  Operacje zakończone niepowodzeniem | Liczba operacji, które nie powiodło się podczas testu. |
 
-### <a name="group-columns-in-the-test-pass-summary"></a>Grupy kolumn w teście Przekaż podsumowanie
+### <a name="actions"></a>Akcje
 
-Można wybrać i przeciągnij kolumnę w nagłówku, aby utworzyć grupę w wartości kolumny.
+Każde wystąpienie testu Wyświetla listę dostępnych akcji może zająć się po kliknięciu w jego menu kontekstowe **[...]**  w tabeli wystąpień testu.
 
-## <a name="reschedule-a-test"></a>Zaplanuj ponownie test
+#### <a name="view-information-about-the-test-definition"></a>Wyświetl informacje o definicji testu
 
-1. [Otwórz podsumowanie przebiegu testu](#open-the-test-pass-summary).
-2. Wybierz **zmienić termin egzaminu** ponownie zaplanować przebiegu testu.
-3. Wprowadź hasło administratora chmury dla swojego wystąpienia usługi Azure Stack.
-4. Wprowadź parametry połączenia magazynu diagnostyki, zdefiniowane przez użytkownika podczas konfigurowania konta.
-5. Harmonogram testu.
+Wybierz **służy do wyświetlania informacji** z menu kontekstowego, aby wyświetlić ogólne informacje o definicji testu. To jest współużytkowana przez każde wystąpienie test o tej samej nazwie i wersji.
 
-## <a name="cancel-a-test"></a>Anuluj testu
-
-1. [Otwórz podsumowanie przebiegu testu](#open-the-test-pass-summary).
-2. Wybierz **anulować**.
-
-## <a name="get-test-information"></a>Uzyskaj informacje o testach
-
-1. [Otwórz podsumowanie przebiegu testu](#open-the-test-pass-summary).
-2. Wybierz **służy do wyświetlania informacji** ponownie zaplanować przebiegu testu.
-
-**Informacje o testach**
-
-| Name (Nazwa) | Opis |
+| Właściwość testu | Opis |
 | -- | -- |
-| Nazwa testu | Nazwa testu, na przykład OEM aktualizację dla usługi Azure Stack 1806 RC weryfikacji. |
-| Wersja testowa | Wersja testu, na przykład 5.1.4.0. |
-| Wydawca | Wydawca testu, takich jak Microsoft. |
-| Kategoria | Kategoria testu, takie jak **funkcjonalnej** lub **niezawodność**. |
-| Usługi docelowej | Usługi testowana, np. maszyn wirtualnych |
+| Nazwa testu | Nazwa testu. |
+| Wersja testowa | Wersja testu. |
+| Wydawca | Wydawca testu. |
+| Kategoria |  Cel testu. |
+| Usługi docelowej | Usługi Azure Stack usług, testowany. |
 | Opis | Opis testu. |
-| Szacowany czas trwania (w minutach) | Czas w minutach testu trwania. |
-| Linki | Łącze do śledzenia problemu usługi GitHub. |
+| Szacowany czas trwania (w minutach) | Oczekiwany czas działania testu. |
+| Linki | Wszelkie istotne informacje dotyczące testu lub punkty kontaktu. |
 
-## <a name="get-test-parameters"></a>Pobieranie parametrów testu
+#### <a name="view-test-instance-parameters"></a>Wyświetl parametry wystąpienia testu
 
-1. [Otwórz podsumowanie przebiegu testu](#open-the-test-pass-summary).
-2. Wybierz **wyświetlania parametrów** ponownie zaplanować przebiegu testu.
+Wybierz **wyświetlania parametrów** z menu kontekstowego, aby wyświetlić parametry dostarczane do wystąpienia testu w czasie harmonogramu. Ciągi poufne, takie jak hasła nie są wyświetlane. Ta akcja jest dostępna tylko dla testów, które zostały zaplanowane.
 
-**Parametry**
+To okno zawiera następujące metadane dla wszystkich wystąpień testu:
 
-| Name (Nazwa) | Opis |
+| Testowanie właściwości wystąpienia | Opis |
 | -- | -- |
-| Nazwa testu | Nazwa testu, na przykład oemupdate1806test. |
-| Wersja testowa | Wersja rest, na przykład 5.1.4.0. |
-| Identyfikator wystąpienia testu | Określone wystąpienie testu, na przykład identyfikator GUID 20b20645-b400-4f0d-bf6f-1264d866ada9. |
-| cloudAdminUser | Nazwa konta używana jako administrator chmury, na przykład **cloudadmin**. |
-| DiagnosticsContainerName | Identyfikator kontenera diagnostyczne, na przykład 04dd3815-5f35-4158-92ea-698027693080. |
+| Nazwa testu | Nazwa testu. |
+| Wersja testowa | Wersja testu. |
+| Identyfikator wystąpienia testu | Identyfikator GUID wystąpienia określonego testu. |
 
-## <a name="get-test-operations"></a>Pobierz operacje testu
+#### <a name="view-test-instance-operations"></a>Wyświetlanie testów wystąpienia operacji
 
-1. [Otwórz podsumowanie przebiegu testu](#open-the-test-pass-summary).
-2. Wybierz **wyświetlić operacje** ponownie zaplanować przebiegu testu. Zostanie otwarte okienko Podsumowanie operacji.
+Wybierz **wyświetlić operacje** z kontekstu menu, aby wyświetlić szczegółowy stan operacje wykonywane podczas testu. Ta akcja jest dostępna tylko dla testów, które zostały zaplanowane.
 
-## <a name="get-test-logs"></a>Pobierz dzienniki testów
+![Wyświetlanie operacji](media/manage-test_context-menu-operations.png)
 
-1. [Otwórz podsumowanie przebiegu testu](#open-the-test-pass-summary).
-2. Wybierz **pobieranie dzienników** ponownie zaplanować przebiegu testu.  
-    Plik zip o nazwie ReleaseYYYY-MM-DD.zip zawierający pliki do pobrania dzienników.
+#### <a name="download-logs-for-a-completed-test-instance"></a>Pobieranie dzienników na potrzeby wystąpienia ukończonego testu
+
+Wybierz **pobieranie dzienników** z menu kontekstowego, aby pobrać `.zip` pliku danych wyjściowych dzienników podczas wykonywania testów. Ta akcja jest dostępna tylko dla testów, które zostały wykonane, czyli testów ze stanem albo `Cancelled`, `Failed`, `Aborted`, lub `Succeeded`.
+
+#### <a name="reschedule-a-test-instance-or-schedule-a-test"></a>Ponowne planowanie wystąpieniem testu lub zaplanować testu
+
+Planowanie testów ze strony zarządzania zależy od typu przepływu pracy testu jest uruchamiana.
+
+##### <a name="test-pass-workflow"></a>Przepływ pracy w przebiegu testu
+
+W przepływie pracy przebiegu testu **korzystanie z odpraw** wystąpieniem testu ponownie używa tego samego zestawu parametrów jako oryginalnego wystąpienia testu i *zastępuje* oryginalnego wynik, łącznie z jej dzienników. Należy ponownie wprowadzić ciągi poufne, takie jak hasła w razie zmiany harmonogramu.
+
+1. Wybierz **zmienić termin egzaminu** z menu kontekstowego, aby otworzyć monit o ponowne wystąpienie testu.
+
+1. Wprowadź wszelkie parametry wyszukiwania.
+
+1. Wybierz **przesyłania** zmienić termin egzaminu wystąpieniem testu i Zastąp istniejące wystąpienie.
+
+##### <a name="validation-workflows"></a>Sprawdzanie poprawności przepływów pracy
+
+[!INCLUDE [azure-stack-vaas-workflow-validation-section_schedule](includes/azure-stack-vaas-workflow-validation-section_schedule.md)]
+
+#### <a name="cancel-a-test-instance"></a>Anuluj wystąpieniem testu
+
+Zaplanowane testy może zostać anulowana, jeśli jego stan to `Pending` lub `Running`.  
+
+1. Wybierz **anulować** z menu kontekstowego, aby otworzyć wiersz anulowania wystąpieniem testu.
+
+1. Wybierz **przesyłania** anulować wystąpieniem testu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby dowiedzieć się więcej na temat [walidacji usługi Azure Stack jako usługa](https://docs.microsoft.com/azure/azure-stack/partner).
+- [Rozwiązywanie problemów z weryfikacji jako usługa](azure-stack-vaas-troubleshoot.md)

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 08/01/2018
 ms.author: shvija
-ms.openlocfilehash: 8437b1c10facc28c5fd71b70dd7acf01b7d39e8e
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 336756e72c6c07f52101ddd0cd99a6ef9744d3c3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42024048"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49351765"
 ---
 # <a name="what-is-azure-event-hubs"></a>Co to jest usługa Azure Event Hubs?
 
@@ -70,7 +70,7 @@ Usługa Event Hubs umożliwia obsługę strumienia komunikatów, ale jej właśc
 - **Partycje**: każdy użytkownik odczytuje tylko określony podzestaw, czyli partycję, strumienia komunikatów.
 - **Grupy odbiorców**: widok (stan, pozycja lub przesunięcie) całego centrum zdarzeń. Dzięki grupom odbiorców wiele aplikacji odbiorczych może mieć osobny widok strumienia zdarzeń i niezależnie odczytywać strumień we własnym tempie i przy użyciu własnego przesunięcia.
 - **Jednostki przepływności**: zakupione wcześniej jednostki pojemności, które określają przepływność usługi Event Hubs.
-- **Odbiorcy zdarzeń**: wszelkie jednostki, które odczytują dane zdarzenia z centrum zdarzeń. Wszyscy odbiorcy usługi Event Hubs nawiązują połączenie za pomocą sesji protokołu AMQP 1.0, w ramach której zdarzenia są dostarczane, gdy tylko staną się dostępne.
+- **Odbiorcy zdarzeń**: wszelkie jednostki, które odczytują dane zdarzenia z centrum zdarzeń. Wszyscy odbiorcy usługi Event Hubs nawiązują połączenie za pomocą sesji protokołu AMQP 1.0, w ramach której zdarzenia są dostarczane, gdy tylko staną się dostępne. Wszyscy użytkownicy platformy Kafka nawiązują połączenia za pośrednictwem protokołu Kafka w wersji 1.0 lub nowszej.
 
 Na poniższym rysunku przedstawiono architekturę przetwarzania strumienia usługi Event Hubs:
 

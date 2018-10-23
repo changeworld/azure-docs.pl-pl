@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 2f020bdf79811c959e07d753231fc133fe597861
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: c7396d7322958442fab51417eb350f26f7ada78e
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855186"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352664"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Samouczek: konfigurowanie dołączania hybrydowego do usługi Azure Active Directory dla domen federacyjnych
 
@@ -124,7 +124,7 @@ Aby skonfigurować dołączanie hybrydowe do usługi Azure AD przy użyciu progr
 
     a. Wybierz las.
 
-    b. Wybierz usługę uwierzytelniania. Musisz wybrać serwer usług AD FS, chyba że w Twojej organizacji są używane wyłącznie komputery klienckie z systemem Windows 10.
+    b. Wybierz usługę uwierzytelniania. Nie musisz wybierać serwera usług AD FS w sytuacji, gdy organizacja ma klientów systemu Windows 10 na wyłączność i skonfigurowano synchronizację komputera/urządzenia lub organizacja używa bezproblemowego logowania jednokrotnego.
 
     d. Kliknij pozycję **Dodaj**, aby wprowadzić poświadczenia administratora przedsiębiorstwa.
 
@@ -194,7 +194,7 @@ W przypadku użycia polecenia cmdlet **Get-MSolDevice** w celu sprawdzenia szcze
 
 - Musi istnieć obiekt z **identyfikatorem urządzenia**, który pasuje do identyfikatora w kliencie systemu Windows.
 - Wartością atrybutu **DeviceTrustType** musi być **Dołączone do domeny**. Jest to równoważne ze stanem **Dołączone hybrydowo do usługi Azure AD** na stronie Urządzenia w portalu usługi Azure AD.
-- Wartością opcji **Włączone** musi być **True** dla urządzeń używanych w dostępie warunkowym. 
+- Ustawienie **Włączone** musi mieć wartość **True**, a ustawienie **DeviceTrustLevel** musi mieć wartość **Zarządzane** dla urządzeń używanych w dostępie warunkowym. 
 
 
 **Aby sprawdzić szczegóły usługi:**

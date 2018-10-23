@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/31/2018
-ms.openlocfilehash: ad042525ead23959be57a5dd2d5735bcedfedb1b
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: be0140606302335884d62ba60c875a049949b495
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43668329"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353054"
 ---
 # <a name="install-and-use-the-azure-terraform-visual-studio-code-extension"></a>Instalowanie i używanie rozszerzenia Azure Terraform dla programu Visual Studio Code
 
@@ -103,7 +103,9 @@ W tym ćwiczeniu utworzysz i wykonasz podstawowy plik konfiguracji narzędzia Te
 
 1. Na pasku menu w programie Visual Studio Code wybierz pozycję **Plik > Nowy plik**.
 
-1. Przejdź do pozycji [azurerm_resource_group](https://www.terraform.io/docs/providers/azurerm/r/resource_group.html#) i skopiuj kod w bloku kodu **Przykładowe użycie**:
+1. W przeglądarce przejdź do [strony azurerm_resource_group narzędzia Terraform](https://www.terraform.io/docs/providers/azurerm/r/resource_group.html#) i skopiuj kod w bloku kodu **Przykładowe użycie**:
+
+    ![Przykład użycia](media/terraform-vscode-extension/tf-azurerm-resource-group-example-usage.png)
 
 1. Wklej skopiowany kod do nowego pliku utworzonego w programie Visual Studio Code.
 

@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ce1586e472e1d1ea5ddd9ca5a426b1bea2b5b931
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 5533dacc4a782cbdb6026c4a4d5c5bed9e39147a
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42022414"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320156"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Konfigurowanie usługi IoT Hub Device Provisioning (wersja zapoznawcza) w witrynie Azure Portal
 
@@ -40,12 +40,12 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
     * **Subskrypcja**: wybierz subskrypcję, która ma zostać użyta do utworzenia tego wystąpienia usługi Device Provisioning Service.
     * **Grupa zasobów:** w tym polu możesz utworzyć nową grupę zasobów lub wybrać istniejącą grupę, w której ma znajdować się nowe wystąpienie. Wybierz tę grupę zasobów, w której znajduje się utworzone wcześniej centrum IoT Hub, na przykład **TestResources**. Dzięki umieszczeniu wszystkich powiązanych zasobów w jednej grupie można nimi zarządzać jednocześnie. Na przykład usunięcie grupy zasobów powoduje usunięcie wszystkich zasobów w tej grupie. Więcej informacji można znaleźć w temacie [Używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/resource-group-portal.md).
     * **Lokalizacja**: wybierz lokalizację znajdującą się najbliżej Twoich urządzeń.
-    * **Przypnij do pulpitu nawigacyjnego:** wybierz tę opcję, aby przypiąć to wystąpienie do pulpitu nawigacyjnego, co ułatwi jego znalezienie.
 
     ![Wprowadzanie podstawowych informacji o wystąpieniu usługi Device Provisioning Service w bloku portalu](./media/quick-setup-auto-provision/create-iot-dps-portal.png)  
 
-4. Po pomyślnym wdrożeniu usługi automatycznie zostanie otwarty blok podsumowania tej usługi.
+4. Kliknij przycisk powiadomienia, aby monitorować proces tworzenia wystąpienia zasobu. Po pomyślnym wdrożeniu usługi kliknij pozycję **Przypnij do pulpitu nawigacyjnego**, a następnie kliknij pozycję **Przejdź do zasobu**.
 
+    ![Monitorowanie powiadomień dotyczących wdrażania](./media/quick-setup-auto-provision/pin-to-dashboard.png)
 
 ## <a name="link-the-iot-hub-and-your-device-provisioning-service"></a>Połącz centrum IoT ze swoją usługą Device Provisioning Service
 

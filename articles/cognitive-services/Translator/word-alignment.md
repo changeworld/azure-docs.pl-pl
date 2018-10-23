@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 16334dbcb4631bd927069620e73c1c4474ff99fa
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 15b2d96cdf1794ae0f72c087ef95055da7c0964e
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126262"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646375"
 ---
 # <a name="how-to-receive-word-alignment-information"></a>Jak otrzymywać informacje wyrównanie programu word
 
@@ -25,7 +25,7 @@ Aby otrzymywać informacje wyrównanie, używana jest metoda Translate i zawiera
 ## <a name="alignment-information-format"></a>Format informacji o wyrównania
 Wyrównanie jest zwracana jako wartość ciągu następujący format dla każdego wyrazu w źródle. Informacje dotyczące każdego wyrazu jest oddzielona od miejsca, w tym oddzielone miejsca języków (skrypt), takich jak chiński:
 
-[[SourceTextStartIndex]: [SourceTextEndIndex] — [TgtTextStartIndex]: [TgtTextEndIndex]] *
+[[SourceTextStartIndex]:[SourceTextEndIndex]—[TgtTextStartIndex]:[TgtTextEndIndex]] *
 
 Parametrów wyrównanie przykład: "0:0-7:10 1:2-11:20 0 3:4:3, 3:4-4:5:5-21 6:21".
 

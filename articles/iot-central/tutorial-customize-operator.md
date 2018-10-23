@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: d99b76faf618439e51735d5f1096fd4f1cfd2364
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 9b8293196114f55f633e67cf19cd0c9e60f6398e
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038293"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309464"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Samouczek: Dostosowywanie widoku operatora usługi Azure IoT Central
 
@@ -56,7 +56,7 @@ Jako konstruktor możesz zdefiniować informacje wyświetlane na pulpicie nawiga
 
     ![Strona pulpitu nawigacyjnego szablonu urządzenia](media/tutorial-customize-operator/dashboard.png)
 
-4. Aby dodać kafelek wskaźnika KPI do pulpitu nawigacyjnego, wybierz pozycję **Wskaźnik KPI**:
+4. Aby dodać kafelek kluczowego wskaźnika wydajności (KPI) do pulpitu nawigacyjnego, wybierz pozycję **Kluczowy wskaźnik wydajności**:
 
     ![Dodawanie wskaźnika KPI](media/tutorial-customize-operator/addkpi.png)
 
@@ -81,7 +81,7 @@ Jako konstruktor możesz zdefiniować informacje wyświetlane na pulpicie nawiga
 
 ## <a name="configure-your-settings-layout"></a>Konfigurowanie układu ustawień
 
-Jako konstruktor możesz także skonfigurować widok operatora dla ustawień urządzenia. Operator używa strony ustawień urządzenia do konfigurowania urządzenia. Na przykład operator może użyć strony ustawień do ustawienia temperatury docelowej dla lodówki.
+Jako konstruktor możesz także skonfigurować widok operatora dla ustawień urządzenia. Operator używa strony ustawień urządzenia do konfigurowania urządzenia. Na przykład operator może użyć strony ustawień w celu ustawienia temperatury docelowej dla podłączonego klimatyzatora.
 
 1. Aby edytować układ ustawień dla połączonego klimatyzatora, wybierz pozycję **Ustawienia**, a następnie wybierz przycisk **Edytuj szablon**:
 
@@ -117,7 +117,7 @@ Poza pulpitem nawigacyjnym i ustawieniami możesz także skonfigurować widok op
 
 W trybie **Edytowanie szablonu** możesz dostosować pulpit nawigacyjny oraz strony ustawień i właściwości dla operatora. Jeśli nie pracujesz w trybie **Edytowanie szablonu**, możesz wyświetlić aplikację jako operator.
 
-1. Aby wyświetlić połączone urządzenie klimatyzatora jako operator, musisz kliknąć przycisk **Gotowe** w celu zatrzymania edycji szablonu. Spowoduje to powrót do widoku operatora urządzenia.
+1. Aby wyświetlić podłączone urządzenie klimatyzatora jako operator, kliknij przycisk **Gotowe** w celu zatrzymania edycji szablonu i powrotu do widoku operatora urządzenia.
 
 2. Aby zaktualizować lokalizację tego urządzenia, zmodyfikuj wartość na kafelku Lokalizacja, a następnie wybierz przycisk **Zapisz**:
 

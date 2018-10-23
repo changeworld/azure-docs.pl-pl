@@ -2,24 +2,18 @@
 title: Konfigurowanie urządzenia Azure Data Box | Microsoft Docs
 description: Dowiedz się, jak podłączyć kable do urządzenia Azure Data Box i nawiązać z nim połączenie
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 10/03/2018
+ms.date: 10/17/2018
 ms.author: alkohli
-ms.openlocfilehash: f9671e3acdb71affe2187258582254561785780e
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: c3766713c87dd721f7e4c9a90624192cdb402be9
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785640"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393834"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Samouczek: Podłączanie kabli do urządzenia Azure Data Box i nawiązywanie z nim połączenia
 
@@ -91,6 +85,8 @@ Wykonaj poniższe kroki, aby skonfigurować urządzenie przy użyciu lokalnego i
     - Jeśli protokół DHCP nie jest włączony, przejdź do obszaru **Ustawianie interfejsów sieciowych** i przypisz w razie potrzeby statyczne adresy IP.
 
     ![Pulpit nawigacyjny urządzenia](media/data-box-deploy-set-up/data-box-dashboard-1.png)
+
+Po skonfigurowaniu sieciowych interfejsów danych można też uzyskać dostęp do lokalnego internetowego interfejsu użytkownika pod adresem `https://<IP address of a data network interface>` przy użyciu adresu IP dowolnego interfejsu DATA 1–DATA 3. 
 
 Po zakończeniu konfiguracji urządzenia możesz połączyć się z udziałami na urządzeniu i skopiować dane z komputera na urządzenie. 
 

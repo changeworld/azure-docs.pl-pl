@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: spelluru
-ms.openlocfilehash: 08295ceeb2ebe94a96eaade0a6443f0f59212d60
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 870cfcf8712cc5bee2674b82d5292e4241433386
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394033"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342211"
 ---
 # <a name="what-is-azure-service-bus"></a>Co to jest Azure Service Bus?
 
@@ -95,9 +95,9 @@ Subskrybenci mogą zdefiniować, które komunikaty chcą odbierać z tematu. Kom
 
 Jeśli wystąpi błąd, który powoduje, że klient ma wątpliwości dotyczące wyniku operacji wysyłania, funkcja [wykrywania duplikatów](duplicate-detection.md) eliminuje te wątpliwości, umożliwiając wysyłającemu ponowne wysłanie tego samego komunikatu, a kolejka lub temat odrzuca wszystkie duplikaty.
 
-### <a name="sas-rbac-and-msi"></a>Funkcje SAS, RBAC i MSI
+### <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>Sygnatura SAS, kontrola RBAC i tożsamości zarządzane dla zasobów platformy Azure
 
-Usługa Service Bus obsługuje protokoły zabezpieczeń, np. [sygnaturę dostępu współdzielonego](service-bus-sas.md) (SAS), [kontrolę dostępu na podstawie ról](service-bus-role-based-access-control.md) (RBAC) i [tożsamość usługi zarządzanej](service-bus-managed-service-identity.md) (MSI).
+Usługa Service Bus obsługuje protokoły zabezpieczeń, np. [sygnatury dostępu współdzielonego](service-bus-sas.md) (SAS), [kontrolę dostępu na podstawie ról](service-bus-role-based-access-control.md) (RBAC) i [tożsamości zarządzane dla zasobów platformy Azure](service-bus-managed-service-identity.md).
 
 ### <a name="geo-disaster-recovery"></a>Geograficzne odzyskiwanie po awarii
 

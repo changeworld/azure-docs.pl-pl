@@ -3,7 +3,7 @@ title: Punkty końcowe usługi sieci wirtualnej platformy Azure | Microsoft Docs
 description: Dowiedz się, jak włączyć bezpośredni dostęp do zasobów platformy Azure z sieci wirtualnej przy użyciu punktów końcowych usługi.
 services: virtual-network
 documentationcenter: na
-author: anithaa
+author: sumeetmittal
 manager: narayan
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/15/2018
-ms.author: anithaa
+ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 3bae20a7d6eea298dd09d24c0c5b53365784b3d0
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 77fad7b0035a9ba21d71e6c493a4f1a5bd9a2111
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239187"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395211"
 ---
 # <a name="virtual-network-service-endpoints"></a>Punkty końcowe usługi sieci wirtualnej
 
@@ -42,6 +42,7 @@ Ta funkcja jest dostępna dla następujących regionów i usług platformy Azure
 - **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: dostępna w wersji zapoznawczej we wszystkich regionach chmury publicznej Azure.
 - **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: dostępna w wersji zapoznawczej.
 - **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: dostępna w wersji zapoznawczej.
+- **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: dostępna w wersji zapoznawczej.
 
 Najbardziej aktualne powiadomienia można znaleźć na stronie [aktualizacji usługi Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
 
@@ -65,6 +66,10 @@ Punkty końcowe usługi oferują następujące korzyści:
 
 - Punkt końcowy usługi sieci wirtualnej zapewnia tożsamość sieci wirtualnej w usłudze platformy Azure. Po włączeniu punktów końcowych usługi w sieci wirtualnej można zabezpieczyć zasoby usług usługi platformy Azure w sieci wirtualnej przez dodanie reguły sieci wirtualnej do zasobów.
 - Obecnie ruch usługi platformy Azure z sieci wirtualnej używa publicznych adresów IP jako źródłowych adresów IP. Dzięki punktom końcowym usługi ruch usługi jest przełączany na używanie prywatnych adresów sieci wirtualnej jako źródłowych adresów IP w przypadku uzyskiwania dostępu do usługi platformy Azure z sieci wirtualnej. To przełączenie umożliwia dostęp do usług bez konieczności stosowania zastrzeżonych publicznych adresów IP w zaporach adresów IP.
+
+>[!NOTE]
+> Dzięki punktom końcowym usługi źródłowe adresy IP maszyn wirtualnych w podsieci dla ruchu w usłudze mogą przełączyć się z używania publicznych adresów IPv4 na używanie prywatnych adresów IPv4. Istniejące reguły zapory usługi platformy Azure używające publicznych adresów IP platformy Azure przestaną działać po tym przełączeniu. Przed rozpoczęciem konfigurowania punktów końcowych usługi sprawdź, czy reguły zapory usługi platformy Azure zezwalają na ten przełącznik. Może również wystąpić tymczasowe przerwanie ruchu usługi z tej podsieci podczas konfigurowania punktów końcowych usługi. 
+ 
 - __Zabezpieczanie dostępu do usług platformy Azure ze środowiska lokalnego__:
 
   Domyślnie nie można uzyskać dostępu do zasobów usługi platformy Azure zabezpieczonych w sieciach wirtualnych z sieci lokalnych. Jeśli chcesz zezwolić na ruch ze środowiska lokalnego, musisz również zezwolić na użycie publicznych adresów IP (zazwyczaj translatora adresów sieciowych) z sieci lokalnej lub obwodów usługi ExpressRoute. Te adresy IP można dodawać za pośrednictwem konfiguracji zapory adresów IP dla zasobów usługi platformy Azure.
@@ -87,6 +92,7 @@ Punkty końcowe usługi oferują następujące korzyści:
 
   Przełączenie adresu IP ma wpływ tylko na ruch usługi z sieci wirtualnej. Nie ma ono wpływu na pozostałe rodzaje ruchu problemu z/do publicznych adresów IPv4 przypisanych do maszyn wirtualnych. Jeśli masz istniejące reguły zapory używające publicznych adresów IP platformy Azure dla usług platformy Azure, te reguły przestają działać po przełączeniu na użycie prywatnych adresów sieci wirtualnej.
 - Dzięki punktom końcowym usług wpisy systemu DNS dla usług platformy Azure są obecnie zachowywane w aktualnej postaci i będą nadal rozpoznawać adresy IP przypisane do usługi platformy Azure.
+
 - Sieciowe grupy zabezpieczeń z punktami końcowymi usługi:
   - Domyślnie sieciowe grupy zabezpieczeń zezwalają na ruch wychodzący z Internetu, a także na ruch z sieci wirtualnej do usług platformy Azure. Ta opcja będzie nadal współdziałać z punktami końcowymi usługi w ten sposób. 
   - Jeśli chcesz odrzucić cały wychodzący ruch internetowy i zezwolić tylko na ruch do określonych usług platformy Azure, możesz to zrobić za pomocą [tagów usług](security-overview.md#service-tags) w sieciowej grupie zabezpieczeń. Obsługiwane usługi platformy Azure można określić jako miejsce docelowe w regułach sieciowych grup zabezpieczeń, a konserwacją adresów IP w obrębie każdego tagu zajmuje się platforma Azure. Aby uzyskać więcej informacji, zobacz [Azure Service tags for NSGs (Tagi usług platformy Azure dla sieciowych grup zabezpieczeń)](security-overview.md#service-tags). 

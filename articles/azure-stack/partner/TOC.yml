@@ -8,45 +8,39 @@ items:
     href: azure-stack-vaas-overview.md
   - name: Informacje o wersji
     href: azure-stack-vaas-release-notes.md
-    items:
-    - name: Aktualizacja 2018-04-02
-      href: azure-stack-partner-update-1803.md
-    - name: Aktualizacja 2018-01-30
-      href: azure-stack-partner-update-1802.md
-  - name: Znane problemy
-    href: azure-stack-vaas-known-issues.md
   expanded: true
-- name: Szybki start
-  items:
-  - name: Zaplanuj Twojego pierwszego przebiegu testu
-    href: azure-stack-vaas-schedule-your-first-test.md
 - name: Samouczek
   items:
-  - name: Skonfiguruj swoje konto w usłudze Azure Stack weryfikacji
-    href: azure-stack-vaas-set-up-account.md
+  - name: Konfigurowanie zasobów
+    href: azure-stack-vaas-set-up-resources.md
   - name: Automatyzacja sprawdzania poprawności usługi Azure Stack, przy użyciu programu PowerShell
     href: azure-stack-vaas-automate-with-powershell.md
+- name: Jak przewodnik
+  items:
+  - name: Zaplanuj pierwszego testu
+    href: azure-stack-vaas-schedule-test-pass.md
+  - name: Wdrażanie lokalnego agenta
+    href: azure-stack-vaas-local-agent.md
   - name: Weryfikowanie nowych rozwiązań usługi Azure Stack
     href: azure-stack-vaas-validate-solution-new.md
+  - name: Tworzenie pakietu producenta OEM
+    href: azure-stack-vaas-create-oem-package.md
   - name: Sprawdzanie poprawności pakietów producenta OEM
     href: azure-stack-vaas-validate-oem-package.md
   - name: Weryfikowanie aktualizacje oprogramowania firmy Microsoft
     href: azure-stack-vaas-validate-microsoft-updates.md
-  - name: Testowe maszyny wirtualne
-    href: azure-stack-vaas-test-vm.md
 - name: Pojęcia
   items:
-  - name: Monitor testu
+  - name: Kluczowe pojęcia
+    href: azure-stack-vaas-key-concepts.md
+  - name: Najlepsze praktyki
+    href: azure-stack-vaas-best-practice.md
+  - name: Monitorowanie i zarządzanie testami w portalu VaaS
     href: azure-stack-vaas-monitor-test.md
-  - name: Sprawdzanie poprawności pliku konfiguracji
+  - name: Wspólne parametry przepływów pracy
     href: azure-stack-vaas-parameters.md
-  - name: Parametry przebiegu testu
-    href: azure-stack-vaas-parameters-test.md
   - name: Rozwiązywanie problemów z weryfikacji jako usługa
     href: azure-stack-vaas-troubleshoot.md
-- name: Informacje ogólne
-  items:
-  - name: (Element pochodzące z JH)
 - name: Powiązane
   items:
   - name: Dokumentacja usługi Azure Stack
@@ -68,9 +62,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: Szkolenia i certyfikacja
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 15f87b24299726c2390c736a9801306e9dcf945b
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 3b15fbab72d094a18a1c794ca556a719efd376dd
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40235433"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649690"

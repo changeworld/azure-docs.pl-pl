@@ -11,19 +11,23 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/17/2018
+ms.date: 10/24/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 3125db03dc13f70524fd094736f50b563ef712a4
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 6a3bb5511828d9f8ea7168ffa4748b141484299f
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379931"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376434"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Samouczek: zabezpieczanie połączenia usługi Azure SQL Database z usługi App Service za pomocą tożsamości zarządzanej
 
 Usługa [App Service](app-service-web-overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie na platformie Azure. Zapewnia także [tożsamość zarządzaną](app-service-managed-service-identity.md) dla aplikacji, czyli gotowe rozwiązanie do zabezpieczania dostępu do usługi [Azure SQL Database](/azure/sql-database/) i innych usług platformy Azure. Tożsamości zarządzane w usłudze App Service zwiększają bezpieczeństwo aplikacji przez wyeliminowanie wpisów tajnych z aplikacji, takich jak poświadczenia w parametrach połączenia. W tym samouczku dodasz tożsamość zarządzaną do przykładowej aplikacji internetowej ASP.NET skompilowanej w artykule [Samouczek: tworzenie aplikacji ASP.NET na platformie Azure przy użyciu usługi SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md). Po zakończeniu Twoja przykładowa aplikacja będzie bezpiecznie łączyć się z usługą SQL Database bez konieczności podawania nazwy użytkownika i hasła.
+
+> [!NOTE]
+> Ten scenariusz jest obecnie obsługiwany przez program .NET Framework w wersji 4.6 i nowszej, ale nie przez program [.NET Core 2.1](https://www.microsoft.com/net/learn/get-started/windows). Program [.NET Core 2.2](https://www.microsoft.com/net/download/dotnet-core/2.2) obsługuje scenariusz, ale nie jest jeszcze dołączony do domyślnych obrazów w usłudze App Service. 
+>
 
 Omawiane kwestie:
 
@@ -95,6 +99,7 @@ W projekcie **DotNetAppSqlDb** w programie Visual Studio otwórz plik _packages.
 
 ```xml
 <package id="Microsoft.Azure.Services.AppAuthentication" version="1.1.0-preview" targetFramework="net461" />
+<package id="Microsoft.IdentityModel.Clients.ActiveDirectory" version="3.14.2" targetFramework="net461" />
 ```
 
 Otwórz plik _Models\MyDatabaseContext.cs_ i na początku pliku dodaj następujące instrukcje `using`:
@@ -122,7 +127,7 @@ public MyDatabaseContext(SqlConnection conn) : base(conn, true)
 Ten konstruktor konfiguruje niestandardowy obiekt SqlConnection w celu używania tokenu dostępu do usługi Azure SQL Database z usługi App Service. Token dostępu jest używany przez aplikację usługi App Service do uwierzytelniania w usłudze Azure SQL Database za pomocą jej tożsamości zarządzanej. Aby uzyskać więcej informacji, zobacz artykuł [Obtaining tokens for Azure resources](app-service-managed-service-identity.md#obtaining-tokens-for-azure-resources) (Uzyskiwanie tokenów dla zasobów platformy Azure). Instrukcja `if` pozwala kontynuować testowanie aplikacji lokalnie za pomocą bazy LocalDB.
 
 > [!NOTE]
-> Właściwość `SqlConnection.AccessToken` jest obecnie obsługiwana tylko w programie .NET Framework 4.6 lub nowszym, nie na platformie [.NET Core](https://www.microsoft.com/net/learn/get-started/windows).
+> Właściwość `SqlConnection.AccessToken` jest obecnie obsługiwana tylko w programie .NET Framework w wersji 4.6 lub nowszym, jak również przez program [.NET Core 2.2](https://www.microsoft.com/net/download/dotnet-core/2.2), ale nie program [.NET Core 2.1](https://www.microsoft.com/net/learn/get-started/windows).
 >
 
 Aby użyć tego nowego konstruktora, otwórz plik `Controllers\TodosController.cs` i znajdź wiersz `private MyDatabaseContext db = new MyDatabaseContext();`. Istniejący kod używa domyślnego kontrolera `MyDatabaseContext` do tworzenia bazy danych przy użyciu standardowych parametrów połączenia, które zawierały nazwę użytkownika i hasła w postaci zwykłego tekstu, zanim [zostało to zmienione](#modify-connection-string).
@@ -130,7 +135,7 @@ Aby użyć tego nowego konstruktora, otwórz plik `Controllers\TodosController.c
 Zastąp cały wiersz poniższym kodem:
 
 ```csharp
-private MyDatabaseContext db = new MyDatabaseContext(new SqlConnection());
+private MyDatabaseContext db = new MyDatabaseContext(new System.Data.SqlClient.SqlConnection());
 ```
 
 ### <a name="publish-your-changes"></a>Publikowanie zmian
@@ -172,32 +177,23 @@ Wcześniej przypisano tożsamość zarządzaną jako administrator usługi Azure
 
 ### <a name="grant-permissions-to-azure-active-directory-group"></a>Nadawanie uprawnień grupie usługi Azure Active Directory
 
-W usłudze Cloud Shell zaloguj się do usługi SQL Database przy użyciu polecenia SQLCMD. Zastąp ciąg _\<servername >_ nazwą serwera usługi SQL Database i zastąp ciągi _\<AADusername >_ i _\<AADpassword>_ poświadczeniami użytkownika usługi Azure AD.
-
-```azurecli-interactive
-sqlcmd -S <server_name>.database.windows.net -U <AADuser_name> -P "<AADpassword>" -G -l 30
-```
-
-W wierszu polecenia usługi SQL uruchom następujące polecenia, aby dodać grupę usługi Azure Active Directory utworzoną wcześniej jako użytkownik.
-
-```sql
-CREATE USER [myAzureSQLDBAccessGroup] FROM EXTERNAL PROVIDER;
-GO
-```
-
-Wpisz polecenie `EXIT`, aby powrócić do wiersza polecenia usługi Cloud Shell. Następnie ponownie uruchom polecenie SQLCMD, ale określ nazwę bazy danych w elemencie _\<dbname>_.
+W usłudze Cloud Shell zaloguj się do usługi SQL Database przy użyciu polecenia SQLCMD. Zastąp _\<server\_name>_ nazwą serwera usługi SQL Database, _\<db\_name>_ nazwą bazy danych używanej przez Twoją aplikację zaś _\<AADuser\_name>_ i _\<AADpassword>_ poświadczeniami użytkownika usługi Azure AD.
 
 ```azurecli-interactive
 sqlcmd -S <server_name>.database.windows.net -d <db_name> -U <AADuser_name> -P "<AADpassword>" -G -l 30
 ```
 
-W wierszu polecenia usługi SQL dla bazy danych, uruchom następujące polecenia, aby udzielić uprawnień do odczytu i zapisu grupie Azure Active Directory.
+W wierszu polecenia usługi SQL dla żądanej bazy danych uruchom następujące polecenia, aby dodać wcześniej utworzoną grupę usługi Azure Active Directory i udzielić uprawnień wymaganych przez Twoją aplikację. Na przykład: 
 
 ```sql
+CREATE USER [myAzureSQLDBAccessGroup] FROM EXTERNAL PROVIDER;
 ALTER ROLE db_datareader ADD MEMBER [myAzureSQLDBAccessGroup];
 ALTER ROLE db_datawriter ADD MEMBER [myAzureSQLDBAccessGroup];
+ALTER ROLE db_ddladmin ADD MEMBER [myAzureSQLDBAccessGroup];
 GO
 ```
+
+Wpisz polecenie `EXIT`, aby powrócić do wiersza polecenia usługi Cloud Shell. 
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 03acd63ff00f0a3017297d1998289c8e68f0f290
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 5abb2447fa90ea5900afb86746cc17eff62c2d2e
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41918280"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166290"
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>Wprowadzenie do odbierania komunikatów za pomocą hosta procesora zdarzeń z biblioteki .NET Standard
 
@@ -43,13 +43,18 @@ Pierwszym krokiem jest skorzystanie z witryny [Azure Portal](https://portal.azur
 ## <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure Storage  
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).  
-2. W lewym okienku nawigacji portalu kliknij kolejno pozycje **Utwórz zasób**, **Magazyn**, a następnie **Konto magazynu**.  
-3. Wypełnij pola w oknie konta magazynu, a następnie kliknij przycisk **Utwórz**.
+2. W okienku nawigacji po lewej stronie portalu wybierz pozycję **Utwórz zasób**, wybierz kategorię **Storage**, a następnie wybierz pozycję **Konto magazynu — obiekt blob, plik, tabela, kolejka**.  
+3. Wypełnij pola w oknie **Tworzenie konta magazynu**, a następnie wybierz pozycję **Przeglądanie + tworzenie**. 
 
     ![Tworzenie konta magazynu][1]
 
-4. Po wyświetleniu komunikatu **Wdrożenia zakończone pomyślnie** kliknij nazwę nowego konta magazynu. W oknie **Podstawowe elementy** kliknij pozycję **Obiekty blob**. W otwartym oknie dialogowym **Blob Service** kliknij pozycję **+ Kontener** u góry. Nadaj kontenerowi nazwę, a następnie zamknij okno **Blob service**.  
-5. W oknie po lewej stronie kliknij pozycję **Klucze dostępu** i skopiuj nazwę kontenera magazynu, konta magazynu i wartość pola **Klucz1**. Zapisz te wartości w Notatniku lub innej tymczasowej lokalizacji.  
+4. Na stronie **Przeglądanie + tworzenie** przejrzyj wartości pól, a następnie wybierz pozycję **Utwórz**. 
+5. Po wyświetleniu komunikatu **Wdrożenia zakończone pomyślnie** wybierz nazwę nowego konta magazynu. 
+6. W oknie **Podstawowe elementy** wybierz pozycję **Obiekty blob**. 
+7. W górnej części strony wybierz pozycję **+ Kontener**. Podaj nazwę kontenera.  
+8. W oknie po lewej stronie wybierz pozycję **Klucze dostępu** i skopiuj nazwę kontenera magazynu, konta magazynu i wartość pola **Klucz1**. 
+
+    Zapisz te wartości w Notatniku lub innej tymczasowej lokalizacji.
 
 ## <a name="create-a-console-application"></a>Tworzenie aplikacji konsolowej
 

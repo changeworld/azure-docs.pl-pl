@@ -13,14 +13,14 @@ ms.devlang: na
 ms.date: 10/04/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ae0d37dd8df9b076e72959e9036ba35d322e4e63
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 5d18a1f86e1d870db64199c575450dd475590b55
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803719"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394478"
 ---
-# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Samouczek: używanie usługi Azure Deployment Manager z szablonami usługi Resource Manager (publiczna wersja zapoznawcza)
+# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Samouczek: używanie usługi Azure Deployment Manager z szablonami usługi Resource Manager (prywatna wersja zapoznawcza)
 
 Dowiedz się, jak używać usługi [Azure Deployment Manager](./deployment-manager-overview.md), aby wdrażać aplikacje w wielu regionach. Aby użyć usługi Deployment Manager, musisz utworzyć dwa szablony:
 
@@ -48,7 +48,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
 * Pewne doświadczenie w opracowywaniu [szablonów usługi Azure Resource Manager](./resource-group-overview.md).
-* Usługa Azure Deployment Manager jest w publicznej wersji zapoznawczej. Aby utworzyć konto przy użyciu usługi Azure Deployment Manager, wypełnij [arkusz tworzenia konta](https://aka.ms/admsignup). 
+* Usługa Azure Deployment Manager jest w prywatnej wersji zapoznawczej. Aby utworzyć konto przy użyciu usługi Azure Deployment Manager, wypełnij [arkusz tworzenia konta](https://aka.ms/admsignup). 
 * Azure PowerShell. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z programem Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 * Polecenia cmdlet usługi Deployment Manager. Aby zainstalować te polecenia cmdlet wersji wstępnej, potrzebujesz najnowszej wersji modułu PowerShellGet. Aby uzyskać najnowszą wersję, zobacz [Installing PowerShellGet (Instalowanie modułu PowerShellGet)](/powershell/gallery/installing-psget). Po zainstalowaniu modułu PowerShellGet zamknij okno programu PowerShell. Otwórz nowe okno programu PowerShell i użyj następującego polecenia:
 

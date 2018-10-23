@@ -2,18 +2,18 @@
 title: 'Samouczek: wizualizowanie danych z usługi Azure Data Explorer w usłudze Power BI'
 description: Z tego samouczka dowiesz się, jak połączyć się z usługą Azure Data Explorer za pomocą usługi Power BI i zwizualizować swoje dane.
 services: data-explorer
-author: mgblythe
-ms.author: mblythe
+author: orspod
+ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 938d8d6e291ca432ef3f642a0aaec74d5dcf5bf5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fc2d96c4dc8184ba26001fd77732ce7c45253d5a
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977149"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393716"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>Samouczek: wizualizowanie danych z usługi Azure Data Explorer w usłudze Power BI
 
@@ -108,7 +108,7 @@ Teraz, gdy masz połączenie z usługą Azure Data Explorer, będziesz edytować
 
     ![Filtrowanie kolumny](media/visualize-power-bi/filter-column.png)
 
-1. Wybierz strzałkę dla kolumny **BeginLat**, wyczyść pole wyboru **null**, a następnie wybierz przycisk **OK**.
+1. Kliknij prawym przyciskiem myszy nagłówek kolumny **StormSummary**, a następnie wybierz pozycję **Usuń**.
 
     ![Usunięcie kolumny](media/visualize-power-bi/remove-column.png)
 

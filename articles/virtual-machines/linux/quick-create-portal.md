@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/14/2018
+ms.date: 10/12/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: fcc9f338ad69322091199ce9d5d2d1d6f9f2165e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 78b20b977685989c10ba61a48afee7808c46f227
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227286"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320632"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Szybki start: tworzenie maszyny wirtualnej z systemem Linux w witrynie Azure Portal
 
-Maszyny wirtualne platformy Azure można utworzyć za pomocą witryny Azure Portal. Ta metoda bazuje na opartym na przeglądarce interfejsie użytkownika umożliwiającym tworzenie maszyn wirtualnych i powiązanych z nimi zasobów. Z tego przewodnika Szybki start dowiesz się, jak za pomocą witryny Azure Portal wdrożyć maszynę wirtualną platformy Azure z systemem Ubuntu. Aby następnie zobaczyć działanie maszyny wirtualnej, połączysz się z nią za pomocą protokołu SSH i zainstalujesz serwer internetowy NGINX.
+Maszyny wirtualne platformy Azure można utworzyć za pomocą witryny Azure Portal. Witryna Azure Portal to oparty na przeglądarce interfejs użytkownika umożliwiający tworzenie maszyn wirtualnych i powiązanych z nimi zasobów. Z tego przewodnika Szybki start dowiesz się, jak za pomocą witryny Azure Portal wdrożyć maszynę wirtualną z system Linux (Ubuntu 16.04 LTS). Aby zobaczyć działanie maszyny wirtualnej, połączysz się z nią za pomocą protokołu SSH i zainstalujesz serwer internetowy NGINX.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -33,21 +33,31 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Do wykonania kroków tego przewodnika Szybki start konieczne jest posiadanie pary kluczy SSH. Jeśli masz już parę kluczy SSH, możesz pominąć ten krok.
 
-Aby utworzyć parę kluczy SSH i zalogować się do maszyn wirtualnych systemu Linux, uruchom następujące polecenie z powłoki Bash i postępuj zgodnie z wyświetlanymi instrukcjami. Możesz na przykład użyć aplikacji [Azure Cloud Shell](../../cloud-shell/overview.md) lub [Windows Substem for Linux](/windows/wsl/install-win10). Dane wyjściowe polecenia zawierają nazwę pliku klucza publicznego. Skopiuj zawartość pliku klucza publicznego (`cat ~/.ssh/id_rsa.pub`) do schowka:
+Otwórz powłokę Bash i użyj polecenia [ssh-keygen](https://www.ssh.com/ssh/keygen/), aby utworzyć parę kluczy SSH. Jeśli nie masz powłoki Bash na swoim komputerze lokalnym, możesz użyć usługi [Azure Cloud Shell](https://shell.azure.com/bash).  
 
 ```bash
 ssh-keygen -t rsa -b 2048
 ```
 
+Powyższe polecenie spowoduje wygenerowanie kluczy publicznych i prywatnych przy użyciu domyślnej nazwy `id_rsa` w katalogu `~/.ssh directory`. Polecenie zwraca pełną ścieżkę do klucza publicznego. Użyj ścieżki do klucza publicznego, aby wyświetlić jego zawartość za pomocą polecenia `cat`.
+
+```bash 
+cat ~/.ssh/id_rsa.pub
+```
+
+Zapisz dane wyjściowe tego polecenia. Będą one potrzebne podczas konfigurowania konta administratora w celu zalogowania się do maszyny wirtualnej.
+
 Aby uzyskać bardziej szczegółowe informacje na temat tworzenia par kluczy SSH, łącznie z użyciem programu PuTTy, zobacz [Jak używać kluczy SSH w systemie Windows](ssh-from-windows.md).
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+Jeśli tworzysz parę kluczy SSH przy użyciu usługi Cloud Shell, będzie ona przechowywana w udziale plików platformy Azure, który jest [automatycznie instalowany za pomocą usługi Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage). Nie usuwaj tego udziału plików ani konta magazynu przed pobraniem kluczy, ponieważ utracisz dostęp do maszyny wirtualnej. 
 
-Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
-1. W lewym górnym rogu okna witryny Azure Portal wybierz pozycję **Utwórz zasób**.
+1. Wybierz pozycję **Utwórz zasób** w lewym górnym rogu okna witryny Azure Portal.
 
 1. W polu wyszukiwania nad listą zasobów Microsoft Azure Marketplace wpisz **Ubuntu Server 16.04 LTS by Canonical**, wybierz odpowiednią pozycję i kliknij **Utwórz**.
 
@@ -69,6 +79,10 @@ Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com
 
 1. Pozostaw pozostałe wartości domyślne, a następnie wybierz przycisk **Przejrzyj + utwórz** znajdujący się u dołu strony.
 
+1. Na stronie **Tworzenie maszyny wirtualnej** wyświetlone są szczegółowe informacje o maszynie wirtualnej, którą masz zamiar utworzyć. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
+
+Wdrożenie maszyny wirtualnej potrwa kilka minut. Po zakończeniu wdrażania przejdź do następnej sekcji.
+
     
 ## <a name="connect-to-virtual-machine"></a>Nawiązywanie połączenia z maszyną wirtualną
 
@@ -78,32 +92,29 @@ Utwórz połączenie SSH z maszyną wirtualną.
 
     ![Portal 9](./media/quick-create-portal/portal-quick-start-9.png)
 
-2. Na stronie **Nawiązywanie połączenia z maszyną wirtualną** zostaw opcje domyślne, aby połączyć się za pomocą nazwy DNS przez port 22. W obszarze **Logowanie za pomocą konta lokalnego maszyny wirtualnej** jest wyświetlane polecenie połączenia. Kliknij przycisk, aby skopiować polecenie. W poniższym przykładzie pokazano, jak wygląda polecenie połączenia SSH:
+2. Na stronie **Nawiązywanie połączenia z maszyną wirtualną** pozostaw opcje domyślne, aby nawiązać połączenie za pomocą adresu IP na porcie 22. W obszarze **Logowanie za pomocą konta lokalnego maszyny wirtualnej** jest wyświetlane polecenie połączenia. Kliknij przycisk, aby skopiować polecenie. W poniższym przykładzie pokazano, jak wygląda polecenie połączenia SSH:
 
     ```bash
-    ssh azureuser@myvm-123abc.eastus.cloudapp.azure.com
+    ssh azureuser@10.111.12.123
     ```
 
-3. Aby utworzyć połączenie, wklej polecenie połączenia SSH do powłoki, takiej jak Azure Cloud Shell lub Bash systemie Ubuntu rezydującym w systemie Windows. 
+3. Korzystając z tej samej powłoki Bash, która została użyta do utworzenia pary kluczy SSH, takiej jak usługa [Azure Cloud Shell](https://shell.azure.com/bash) lub lokalna powłoka Bash, wklej polecenie połączenia SSH w powłoce, aby utworzyć sesję SSH. 
 
-## <a name="install-web-server"></a>Instalowanie serwera sieci Web
+## <a name="install-web-server"></a>Instalowanie serwera internetowego
 
-Aby zobaczyć działanie maszyny wirtualnej, zainstaluj serwer internetowy NGINX. W sesji SSH użyj poniższych poleceń w celu zaktualizowania źródeł pakietów i zainstalowania najnowszego pakietu NGINX:
+Aby zobaczyć działanie maszyny wirtualnej, zainstaluj serwer internetowy NGINX. Z poziomu sesji SSH zaktualizuj źródła pakietu, a następnie zainstaluj najnowszą wersję pakietu NGINX.
 
 ```bash
-# update packages
 sudo apt-get -y update
-
-# install NGINX
 sudo apt-get -y install nginx
 ```
 
-Po zakończeniu użyj polecenia `exit` w sesji SSH i wróć do właściwości maszyny wirtualnej w witrynie Azure Portal.
+Gdy skończysz, wpisz polecenie `exit`, aby opuścić sesję SSH.
 
 
 ## <a name="view-the-web-server-in-action"></a>Oglądanie działającego serwera internetowego
 
-Po zainstalowaniu serwera NGINX i otwarciu portu 80 dla maszyny wirtualnej można uzyskać dostęp do serwera sieci Web z Internetu. Otwórz przeglądarkę internetową i wpisz publiczny adres IP maszyny wirtualnej. Publiczny adres IP można znaleźć na stronie przeglądu maszyny wirtualnej lub w górnej części strony *Sieć*, na której są dodawane reguły portu wejściowego.
+Użyj wybranej przeglądarki internetowej, aby wyświetlić domyślną strona powitalną serwera NGINX. Wprowadź publiczny adres IP maszyny wirtualnej jako adres internetowy. Publiczny adres IP można znaleźć na stronie przeglądu maszyny wirtualnej lub jako część wcześniej użytych parametrów połączenia SSH.
 
 ![Domyślna witryna serwera NGINX](./media/quick-create-cli/nginx.png)
 

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 06/12/2018
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: 6e3571fb54f12ef3bb5519f572b8af5bf9247e7d
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 107852bd2c4ec0b932008b498dde4ea77f8071a3
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37032918"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116340"
 ---
 # <a name="what-is-azure-iot-edge"></a>Co to jest usługa Azure IoT Edge
 
@@ -55,7 +55,7 @@ Usługa Azure IoT Edge obsługuje również wdrażanie własnego kodu na urządz
 * Usprawnia komunikację między modułami na urządzeniu usługi IoT Edge.
 * Usprawnia komunikację między urządzeniem usługi IoT Edge a chmurą.
 
-![Środowisko uruchomieniowe usługi IoT Edge wysyła szczegółowe informacje i raporty do usługi IoT Hub][1]
+![Środowisko uruchomieniowe usługi IoT Edge wysyła szczegółowe informacje i raporty do usługi IoT Hub](./media/about-iot-edge/runtime.png)
 
 Sposób używania urządzenia Azure IoT Edge zależy wyłącznie od Ciebie. Środowisko uruchomieniowe jest często używane do wdrażania funkcji SI w bramach, które agregują i przetwarzają dane z wielu innych urządzeń lokalnych. Jest to jednak tylko jedna z możliwości. Urządzenia liścia również mogą być urządzeniami usługi Azure IoT Edge, niezależnie od tego, czy są połączone z bramą, czy bezpośrednio z chmurą.
 
@@ -71,15 +71,10 @@ Usługa Azure IoT Edge bezproblemowo integruje się z akceleratorami rozwiązań
 * Wysyłanie obciążeń do zestawu urządzeń.
 * Monitorowanie obciążeń działających na urządzeniach w terenie.
 
-![Telemetria, szczegółowe informacje i akcje urządzeń są koordynowane za pomocą chmury][2]
+![Telemetria, szczegółowe informacje i akcje urządzeń są koordynowane za pomocą chmury](./media/about-iot-edge/cloud-interface.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Wypróbuj te pojęcia przez [wdrożenie usługi IoT Edge na symulowanym urządzeniu][lnk-quickstart].
+Wypróbuj te koncepcje w praktyce, [wdrażając usługę IoT Edge na symulowanym urządzeniu](quickstart.md).
 
-<!-- Images -->
-[1]: ./media/about-iot-edge/runtime.png
-[2]: ./media/about-iot-edge/cloud-interface.png
-
-<!-- Links -->
-[lnk-quickstart]: quickstart.md
+ 

@@ -7,12 +7,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 2e4d625cd123583baa30fde8e9826f5b57da49fe
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: ef8809afa2da36f44384d784e32532b7b121e3a9
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393592"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379148"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql"></a>Samouczek: monitorowanie i dostrajanie w usłudze Azure Database for PostgreSQL
 
@@ -28,7 +28,7 @@ Usługa Azure Database for PostgreSQL zawiera funkcje, które pomagają zrozumie
 Potrzebujesz serwera usługi Azure Database for PostgreSQL z programem PostgreSQL w wersji 9.6 lub 10. Możesz wykonać kroki opisane w [samouczku dotyczącym tworzenia](tutorial-design-database-using-azure-portal.md), aby utworzyć serwer.
 
 > [!IMPORTANT]
-> Funkcje **Magazyn zapytań**, **Szczegółowe informacje o wydajności zapytań** i **Zalecenia dotyczące wydajności** są dostępne w publicznej wersji zapoznawczej w ograniczonej liczbie regionów.
+> Funkcje **Magazyn zapytań**, **Szczegółowe informacje o wydajności zapytań** i **Zalecenia dotyczące wydajności** są dostępne w publicznej wersji zapoznawczej.
 
 ## <a name="enabling-data-collection"></a>Włączanie zbierania danych
 [Magazyn zapytań](concepts-query-store.md) przechwytuje historię zapytań i statystyki oczekiwania na serwerze i przechowuje je w bazie danych **azure_sys** na serwerze. Jest to funkcja opcjonalna. Aby ją włączyć:

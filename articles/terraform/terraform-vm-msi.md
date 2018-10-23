@@ -1,6 +1,6 @@
 ---
-title: Użyj obrazu z witryny Azure Marketplace do utworzenia maszyny wirtualnej programu Terraform z systemem Linux przy użyciu tożsamości usługi zarządzanej
-description: Użyj obrazu z witryny Marketplace do utworzenia maszyny wirtualnej programu Terraform z systemem Linux przy użyciu tożsamości usługi zarządzanej i zarządzania stanem zdalnym, aby łatwo wdrażać zasoby na platformie Azure.
+title: Użyj obrazu z witryny Azure Marketplace do utworzenia maszyny wirtualnej programu Terraform z systemem Linux przy użyciu tożsamości zarządzanej
+description: Użyj obrazu z witryny Marketplace do utworzenia maszyny wirtualnej programu Terraform z systemem Linux przy użyciu tożsamości zarządzanej i zarządzania stanem zdalnym, aby łatwo wdrażać zasoby na platformie Azure.
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, tożsamość usługi zarządzanej, maszyna wirtualna, stan zdalny, azure
@@ -9,16 +9,16 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: 0136966576e3fbb22855d74cc1866e48b4ac24c9
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 1ec6228993c516ce2974c64bfa5b6dcdf63e7f91
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669391"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343830"
 ---
-# <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-service-identity"></a>Użyj obrazu z witryny Azure Marketplace do utworzenia maszyny wirtualnej programu Terraform z systemem Linux przy użyciu tożsamości usługi zarządzanej
+# <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Użyj obrazu z witryny Azure Marketplace do utworzenia maszyny wirtualnej programu Terraform z systemem Linux przy użyciu tożsamości zarządzanych dla zasobów platformy Azure
 
-W tym artykule przedstawiono jak użyć [obrazu programu Terraform z witryny Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.terraform?tab=Overview) do utworzenia maszyny wirtualnej z systemem Ubuntu Linux (16.04 LTS) przy użyciu najnowszej wersji programu [Terraform](https://www.terraform.io/intro/index.html) zainstalowanej i skonfigurowanej za pomocą [tożsamości usługi zarządzanej](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview). Ten obraz konfiguruje również zdalne zaplecze umożliwiające zarządzanie [stanem zdalnym](https://www.terraform.io/docs/state/remote.html) przy użyciu programu Terraform. 
+W tym artykule pokazano, jak użyć [obrazu programu Terraform z witryny Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.terraform?tab=Overview) do utworzenia maszyny wirtualnej z systemem Ubuntu Linux (16.04 LTS) przy użyciu najnowszej wersji programu [Terraform](https://www.terraform.io/intro/index.html) zainstalowanej i skonfigurowanej za pomocą [tożsamości zarządzanych dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview). Ten obraz konfiguruje również zdalne zaplecze umożliwiające zarządzanie [stanem zdalnym](https://www.terraform.io/docs/state/remote.html) przy użyciu programu Terraform. 
 
 Obraz programu Terraform z witryny Marketplace ułatwia rozpoczęcie pracy z programem Terraform na platformie Azure bez konieczności ręcznego instalowania i konfigurowania programu Terraform. 
 
@@ -79,13 +79,13 @@ Obraz maszyny wirtualnej programu Terraform wykonuje następujące kroki:
 
 Po utworzeniu maszyny wirtualnej możesz zalogować się do niej przy użyciu protokołu SSH. Użyj poświadczeń konta utworzonych w sekcji podstaw kroku 3 dla interfejsu powłoki tekstowej. W systemie Windows możesz pobrać narzędzia klienta SSH, takie jak program [Putty](http://www.putty.org/).
 
-Po połączeniu z maszyną wirtualną przy użyciu protokołu SSH należy nadać uprawnienia współautora do tożsamości usługi zarządzanej maszyny wirtualnej dla całej subskrypcji. 
+Po połączeniu z maszyną wirtualną przy użyciu protokołu SSH należy nadać uprawnienia współautora do tożsamości zarządzanych dla zasobów platformy Azure na maszynie wirtualnej dla całej subskrypcji. 
 
 Uprawnienia współautora ułatwiają tożsamości usługi zarządzanej na maszynie wirtualnej użycie programu Terraform do tworzenia zasobów poza grupą zasobów maszyny wirtualnej. Tę akcję można łatwo wykonać przez jednokrotne uruchomienie skryptu. Użyj następującego polecenia:
 
 `. ~/tfEnv.sh`
 
-Poprzedni skrypt używa mechanizmu [interaktywnego logowania programu AZ CLI 2.0](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#interactive-log-in) do uwierzytelnienia na platformie Azure i przypisania uprawnień współautora tożsamości usługi zarządzanej maszyny wirtualnej dla całej subskrypcji. 
+Poprzedni skrypt używa mechanizmu [interaktywnego logowania programu AZ CLI 2.0](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#interactive-log-in) do uwierzytelnienia na platformie Azure i przypisania uprawnień współautora tożsamości zarządzanej maszyny wirtualnej dla całej subskrypcji. 
 
  Maszyna wirtualna ma zaplecze stanu zdalnego programu Terraform. Aby włączyć je we wdrożeniu programu Terraform, skopiuj plik remoteState.tf z katalogu tfTemplate do katalogu głównego skryptów programu Terraform.  
 

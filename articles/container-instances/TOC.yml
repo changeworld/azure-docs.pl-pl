@@ -68,6 +68,8 @@ items:
       href: container-instances-restart-policy.md
     - name: Agenci kompilacji usługi Jenkins w usłudze ACI
       href: container-instances-jenkins.md
+    - name: Korzystanie z tożsamości zarządzanej (wersja zapoznawcza)
+      href: container-instances-managed-identity.md
   - name: Konfigurowanie woluminów danych
     items:
     - name: Azure Files
@@ -104,7 +106,7 @@ items:
     href: /azure/templates/microsoft.containerinstance/containergroups
 - name: Zasoby
   items:
-  - name: Rozwijanie umiejętności dzięki Microsoft Learn
+  - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
     href: /learn/browse/?products=azure-container-instances
   - name: Dostępność w danym regionie
     href: https://azure.microsoft.com/regions/services/
@@ -118,9 +120,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-container-instances
   - name: Filmy wideo
     href: https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest
-ms.openlocfilehash: 928f6abcfd8059581c668ed8a8584e85e0ba58da
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3512afb8c716e16b55a5115a91e4f7011ad865bb
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036426"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650200"

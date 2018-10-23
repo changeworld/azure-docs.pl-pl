@@ -12,12 +12,12 @@ ms.date: 09/07/2017
 ms.author: lizross
 ms.reviewer: piotrci
 ms.custom: it-pro
-ms.openlocfilehash: bce7a060908e8043390fdce729161cad48a644be
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a0a992e62e7b1e375ff2591aa82bdc7733e9d26f
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731074"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394701"
 ---
 # <a name="how-to-sign-up-for-azure-active-directory-premium"></a>Instrukcje: Rejestrowanie w usłudze Azure Active Directory — wersja Premium
 Istnieje możliwość zakupienia usługi Azure Active Directory (Azure AD) — wersja Premium i skojarzenia jej z Twoją subskrypcją platformy Azure. Jeśli chcesz utworzyć nową subskrypcję platformy Azure, musisz również uaktywnić plan licencjonowania i dostęp do usługi Azure AD.
@@ -27,11 +27,11 @@ Istnieje możliwość zakupienia usługi Azure Active Directory (Azure AD) — w
 
 Zanim zarejestrujesz się w usłudze Active Directory — wersja Premium 1 lub Premium 2, musisz określić, która z istniejących subskrypcji lub który z istniejących planów mają być używane:
 
-    - Istniejąca subskrypcja platformy Azure lub usługi Office 365
+- Istniejąca subskrypcja platformy Azure lub usługi Office 365
 
-    - Plan licencjonowania pakietu Enterprise Mobility + Security
+- Plan licencjonowania pakietu Enterprise Mobility + Security
 
-    - Plan licencjonowania zbiorowego firmy Microsoft
+- Plan licencjonowania zbiorowego firmy Microsoft
 
 Zarejestrowanie się przy użyciu subskrypcji platformy Azure zawierającej wcześniej zakupione i aktywowane licencje usługi Azure AD powoduje automatyczne aktywowanie licencji w tym samym katalogu. W przeciwnym razie musisz aktywować plan licencjonowania i dostęp do usługi Azure AD. Aby uzyskać więcej informacji na temat aktywowania planu licencjonowania, zobacz [Aktywowanie nowego planu licencjonowania](#activate-your-new-license-plan). Aby uzyskać więcej informacji na temat aktywowania dostępu do usługi Azure AD, zobacz [Aktywowanie dostępu do usługi Azure AD](#activate-your-azure-ad-access). 
 
@@ -43,20 +43,20 @@ Enterprise Mobility + Security to pakiet składający się z usług Azure AD Pre
 
 Aby uzyskać więcej informacji na temat pakietu EMS, zobacz [witrynę internetową pakietu Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security).
 
-    - Wypróbuj usługę EMS w ramach bezpłatnej [subskrypcji wersji próbnej usługi Enterprise Mobility + Security E5](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1)
+- Wypróbuj usługę EMS w ramach bezpłatnej [subskrypcji wersji próbnej usługi Enterprise Mobility + Security E5](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1)
 
-    - Kup [licencje usługi Enterprise Mobility + Security E5](https://signup.microsoft.com/Signup?OfferId=e6de2192-536a-4dc3-afdc-9e2602b6c790&ali=1)
+- Kup [licencje usługi Enterprise Mobility + Security E5](https://signup.microsoft.com/Signup?OfferId=e6de2192-536a-4dc3-afdc-9e2602b6c790&ali=1)
 
-    - Kup [licencje usługi Enterprise Mobility + Security E3](https://signup.microsoft.com/Signup?OfferId=4BBA281F-95E8-4136-8B0F-037D6062F54C&ali=1)
+- Kup [licencje usługi Enterprise Mobility + Security E3](https://signup.microsoft.com/Signup?OfferId=4BBA281F-95E8-4136-8B0F-037D6062F54C&ali=1)
 
 ## <a name="sign-up-using-your-microsoft-volume-licensing-plan"></a>Rejestrowanie się przy użyciu planu licencjonowania zbiorowego firmy Microsoft
 Korzystając z planu licencjonowania zbiorowego firmy Microsoft, możesz zarejestrować się w usłudze Azure AD — wersja Premium przy użyciu jednego z tych dwóch programów (w zależności od liczby licencji, które chcesz uzyskać):
 
-    - **250 lub więcej licencji.** [Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx)
+- **250 lub więcej licencji.** [Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx)
 
-    - **Od 5 do 250 licencji.** [Licencja zbiorowa Open**](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)
+- **Od 5 do 250 licencji.** [Licencja zbiorowa Open](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)
 
-    Aby uzyskać więcej informacji o opcjach zakupu licencjonowania zbiorowego, zobacz [Jak kupować w ramach licencjonowania zbiorowego](https://www.microsoft.com/en-us/licensing/how-to-buy/how-to-buy.aspx).
+Aby uzyskać więcej informacji o opcjach zakupu licencjonowania zbiorowego, zobacz [Jak kupować w ramach licencjonowania zbiorowego](https://www.microsoft.com/en-us/licensing/how-to-buy/how-to-buy.aspx).
 
 ## <a name="activate-your-new-license-plan"></a>Aktywowanie nowego planu licencjonowania
 Jeśli rejestrujesz się, używając nowego planu licencjonowania usługi Azure AD, musisz aktywować go dla Twojej organizacji za pomocą wiadomości e-mail z potwierdzeniem wysyłanej po zakupie.

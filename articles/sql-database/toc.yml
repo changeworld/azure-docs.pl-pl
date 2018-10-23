@@ -323,8 +323,10 @@ items:
         href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
   - name: Porównanie funkcji SQL
     href: sql-database-features.md
-  - name: Wydajność i monitorowanie
+  - name: Monitorowanie i dostrajanie wydajności
     items:
+    - name: Omówienie monitorowania i dostrajania
+      href: sql-database-monitor-tune-overview.md
     - name: Inteligentna wydajność
       items:
       - name: Wykonywanie zapytania
@@ -335,8 +337,6 @@ items:
           href: https://docs.microsoft.com/sql/relational-databases/performance/adaptive-query-processing?toc=/azure/sql-database/toc.json
       - name: Monitorowanie i dostrajanie
         items:
-        - name: Omówienie monitorowania i dostrajania
-          href: sql-database-monitor-tune-overview.md
         - name: Zalecenia dotyczące wydajności funkcji Database Advisor
           href: sql-database-advisor.md
         - name: Akcje dostrajania i zalecenia
@@ -351,11 +351,11 @@ items:
           href: sql-database-metrics-diag-logging.md
         - name: Korzystanie z dzienników diagnostycznych
           href: sql-database-intelligent-insights-use-diagnostics-log.md
+        - name: Szczegółowe informacje o wydajności zapytań
+          href: sql-database-query-performance.md
         - name: Rozwiązywanie problemów z wydajnością
           href: sql-database-intelligent-insights-troubleshoot-performance.md
-      - name: Szczegółowe informacje o wydajności zapytań
-        href: sql-database-query-performance.md
-      - name: Automatyczne dostosowywanie wydajności
+      - name: Automatyczne dostrajanie
         items:
         - name: Omówienie dostrajania automatycznego
           href: sql-database-automatic-tuning.md
@@ -634,9 +634,9 @@ items:
     href: /azure/architecture/
   - name: Historie klientów
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 38a8ec13b8a5e50d60ed46d1bd4d71af933d61f0
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 416f74c395f331de6af749f3de1d3a3e966b8b35
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470375"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650064"

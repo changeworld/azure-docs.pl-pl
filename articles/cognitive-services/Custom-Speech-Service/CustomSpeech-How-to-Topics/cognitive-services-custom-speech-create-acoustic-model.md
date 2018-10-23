@@ -1,24 +1,24 @@
 ---
-title: 'Samouczek: tworzenie modelu akustycznego — usługa Custom Speech Service'
-titlesuffix: Azure Cognitive Services
-description: Z tego samouczka dowiesz się, jak utworzyć model akustyczny za pomocą usługi Custom Speech Service.
+title: Samouczek dotyczący tworzenia modelu akustycznego za pomocą usługi Custom Speech Service — Microsoft Cognitive Services | Microsoft Docs
+description: Z tego samouczka dowiesz się, jak utworzyć model akustyczny za pomocą usługi Custom Speech Service w usługach Microsoft Cognitive Services.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
 ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: 72c5a0dfb8f33f273ba850378c1fefeef82b4d7a
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 53e93a08782ba66e69b903c32c4c3c7417e5a801
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220235"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344578"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>Samouczek: tworzenie niestandardowego modelu akustycznego
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
 
 W ramach tego samouczka utworzysz niestandardowy model akustyczny dla danych mowy, które ma rozpoznawać Twoja aplikacja. Tworzenie niestandardowego modelu akustycznego jest pomocne, jeśli aplikacja została zaprojektowana do użycia w konkretnym środowisku, np. w hałaśliwej fabryce bądź pod kątem konkretnej populacji użytkowników.
 
@@ -140,4 +140,4 @@ Zobaczysz teraz nowy wpis w tabeli modeli akustycznych odpowiadający nowemu mod
 W tym samouczku został utworzony niestandardowy model akustyczny do użycia z plikami dźwiękowymi i transkrypcjami. Aby utworzyć niestandardowy plik językowy do użycia z plikami tekstowymi, przejdź do samouczka na temat tworzenia niestandardowego modelu językowego.
 
 > [!div class="nextstepaction"]
-> [Tworzenie niestandardowego modelu akustycznego](cognitive-services-custom-speech-create-language-model.md)
+> [Tworzenie niestandardowego modelu językowego](cognitive-services-custom-speech-create-language-model.md)

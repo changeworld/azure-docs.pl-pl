@@ -9,28 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: af06766d89804b2f3d0aaf061494fb836f6ec262
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 0199efbc1456206c67efb846b4381cae333e3749
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465609"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309046"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Tworzenie aplikacji usługi Azure IoT Central
 
-Jako _konstruktor_ użyjesz interfejsu użytkownika usługi Azure IoT Central w celu zdefiniowania aplikacji usługi Microsoft Azure IoT Central. W tym przewodniku szybkiego startu przedstawiono sposób wykonywania następujących czynności:
-
-- Tworzenie aplikacji usługi Azure IoT Central zawierającej przykładowy _szablon urządzenia_ i symulowane _urządzenia_.
-- Wyświetlenie funkcji szablonu urządzenia **Chłodniczy automat do sprzedaży** w aplikacji.
-- Wyświetlenie danych telemetrycznych i analitycznych z symulowanych urządzeń **Chłodziarka**.
-
-W tym przewodniku Szybki start wyświetlisz symulowane urządzenie **Chłodziarka** z szablonu urządzenia. Urządzenie symulowane:
-
-* Wysyła do aplikacji dane telemetryczne, takie jak temperatura i ciśnienie.
-* Raportuje do aplikacji wartości właściwości urządzenia, takie jak alert o ruchu.
-* Obsługuje ustawienia urządzeń, takie jak szybkość wentylatora, które można ustawić w aplikacji.
-
-Aby umożliwić przetestowanie aplikacji przed podłączeniem rzeczywistego urządzenia, usługa Azure IoT Central generuje symulowane urządzenie na podstawie szablonu urządzenia podczas jego tworzenia.
+Jako _konstruktor_ użyjesz interfejsu użytkownika usługi Azure IoT Central w celu zdefiniowania aplikacji usługi Microsoft Azure IoT Central. W tym przewodniku Szybki start przedstawiono sposób tworzenia aplikacji usługi Azure IoT Central zawierającej przykładowy _szablon urządzenia_ i symulowane _urządzenia_.
 
 ## <a name="create-the-application"></a>Tworzenie aplikacji
 

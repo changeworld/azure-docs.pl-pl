@@ -10,18 +10,16 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: b10072e01391da3845567c16fa7cc312ed23ceb2
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: b9a5dbdc1e7950400597c76359b8eee4268af6d0
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368056"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320377"
 ---
 # <a name="quickstart-identify-language-from-text-with-c35"></a>Szybki start: identyfikowanie języka tekstu za pomocą języka C&#35;
 
 W tym przewodniku Szybki start rozpoznasz język tekstu źródłowego przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
-
-Kod źródłowy tego przykładu jest dostępny w usłudze [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -30,6 +28,9 @@ Do uruchamiania tego kodu w systemie Windows jest potrzebny [program Visual Stud
 Aby korzystać z interfejsu API tłumaczenia tekstu w usłudze Translator, potrzebny jest również klucz subskrypcji. Zobacz [How to sign up for the Translator Text API (Jak zarejestrować się w interfejsie API tłumaczenia tekstu w usłudze Translator)](translator-text-how-to-signup.md).
 
 ## <a name="detect-request"></a>Żądanie Detect
+
+> [!TIP]
+> Pobierz najnowszy kod z witryny [Github](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp).
 
 Poniższy kod rozpoznaje język tekstu źródłowego przy użyciu metody [Detect](./reference/v3-0-detect.md).
 

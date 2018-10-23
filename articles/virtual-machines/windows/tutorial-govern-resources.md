@@ -11,15 +11,15 @@ ms.workload: infrastructure
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/20/2018
+ms.date: 10/12/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: a785a18ac4aec3006397b6d681c476f8acf982a7
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 6377a54cc862bb5f62726c3ce91a41cc6eb0763d
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205677"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311392"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-governance-with-azure-powershell"></a>Samouczek: informacje o zarządzaniu maszynami wirtualnymi z systemem Windows za pomocą programu Azure PowerShell
 
@@ -55,24 +55,19 @@ W przypadku zarządzania rozwiązaniami maszyn wirtualnych dostępne są 3 role 
 * [Współautor sieci](../../role-based-access-control/built-in-roles.md#network-contributor)
 * [Współautor konta magazynu](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Zamiast przypisywać role poszczególnym użytkownikom, często łatwiej jest [utworzyć grupę usługi Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) dla użytkowników, którzy muszą wykonywać podobne działania. Następnie należy przypisać tę grupę do odpowiedniej roli. Aby uprościć ten artykuł, utwórz grupę usługi Azure Active Directory bez członków. Nadal możesz przypisać tę grupę do roli w zakresie. 
+Zamiast przypisywać role poszczególnym użytkownikom, często łatwiej jest użyć grupy usługi Azure Active Directory zawierającej użytkowników, którzy muszą wykonywać podobne działania. Następnie należy przypisać tę grupę do odpowiedniej roli. Na potrzeby tego artykułu użyj istniejącej grupy do zarządzania maszyną wirtualną lub użyj portalu do [utworzenia grupy usługi Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-W poniższym przykładzie zostanie utworzona grupa usługi Azure Active Directory o nazwie *VMDemoContributors* i pseudonimie pocztowym *vmDemoGroup*. Pseudonim pocztowy służy jako alias dla grupy.
-
-```azurepowershell-interactive
-$adgroup = New-AzureADGroup -DisplayName VMDemoContributors `
-  -MailNickName vmDemoGroup `
-  -MailEnabled $false `
-  -SecurityEnabled $true
-```
-
-Propagacja grupy w usłudze Azure Active Directory może potrwać kilka chwil od momentu zwrócenia wyników przez wiersz polecenia. Po upływie 20 lub 30 sekund przypisz nową grupę usługi Azure Active Directory do roli współautora maszyny wirtualnej dla grupy zasobów za pomocą polecenia [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment).  Jeśli uruchomisz następujące polecenie przed zakończeniem propagacji, zostanie wyświetlony komunikat o błędzie **Podmiot zabezpieczeń <guid> nie istnieje w katalogu**. Spróbuj ponownie uruchomić polecenie.
+Po utworzeniu nowej grupy lub znalezieniu istniejącej grupy przypisz grupę usługi Azure Active Directory do roli współautora maszyny wirtualnej dla grupy zasobów za pomocą polecenia [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment).  
 
 ```azurepowershell-interactive
-New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
+$adgroup = Get-AzureRmADGroup -DisplayName <your-group-name>
+
+New-AzureRmRoleAssignment -ObjectId $adgroup.id `
   -ResourceGroupName myResourceGroup `
   -RoleDefinitionName "Virtual Machine Contributor"
 ```
+
+Jeśli zostanie zgłoszony błąd wskazujący, że **jednostka<guid> nie istnieje w katalogu**, oznacza to, że nowa grupa nie została rozpropagowana w usłudze Azure Active Directory. Spróbuj ponownie uruchomić polecenie.
 
 Zazwyczaj należy powtórzyć ten proces dla roli *Współautor sieci* i *Współautor konta magazynu*, aby upewnić się, że użytkownicy mogą zarządzać wdrożonymi zasobami. W tym artykule można pominąć te kroki.
 
@@ -168,7 +163,7 @@ Aby przetestować blokadę, spróbuj uruchomić następujące polecenie:
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-Zostanie wyświetlony komunikat o błędzie informujący, że nie można wykonać operacji usuwania z powodu blokady. Grupę zasobów można usunąć tylko po zdjęciu blokad. Ten krok przedstawiono w sekcji [Oczyszczanie zasobów](#clean-up-resources).
+Zostanie wyświetlony komunikat o błędzie informujący, że nie można zakończyć operacji usuwania z powodu blokady. Grupę zasobów można usunąć tylko po zdjęciu blokad. Ten krok przedstawiono w sekcji [Oczyszczanie zasobów](#clean-up-resources).
 
 ## <a name="tag-resources"></a>Tagowanie zasobów
 

@@ -10,18 +10,16 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 08/16/2018
 ms.author: erhopf
-ms.openlocfilehash: cebeab562a54ec68b69eb6422685cc4b596ac223
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 04a70c2afbd499d3965e23487cd49540b38e08af
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127888"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318660"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Szybki start: używanie zestawu SDK wyszukiwania w Internecie Bing dla języka C#
 
 Zestaw SDK wyszukiwania w Internecie Bing ułatwia integrowanie wyszukiwania w Internecie Bing z aplikacją C#. Z tego przewodnika Szybki start dowiesz się, jak utworzyć wystąpienie klienta, wysłać żądanie i wyświetlić odpowiedź.
-
-Chcesz zobaczyć kod teraz? [Przykłady zastosowania zestawu SDK wyszukiwania w Internecie Bing dla języka C#](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/) są dostępne w usłudze GitHub.
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
@@ -36,6 +34,9 @@ Oto kilka rzeczy, które są potrzebne przed rozpoczęciem tego przewodnika Szyb
 * [Zestaw .Net Core SDK](https://www.microsoft.com/net/download)
 
 ## <a name="create-a-project-and-install-dependencies"></a>Tworzenie projektu i instalowanie zależności
+
+> [!TIP]
+> Pobierz najnowszy kod jako rozwiązanie programu Visual Studio z witryny [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/).
 
 Pierwszym krokiem jest utworzenie nowego projektu konsoli. Jeśli potrzebujesz pomocy przy konfigurowaniu projektu konsoli, zobacz [Hello World -- Your First Program (C# Programming Guide)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program) (Witaj świecie — Twój pierwszy program [Przewodnik programowania w języku C#]). Aby korzystać z zestawu SDK wyszukiwania w Internecie Bing w aplikacji, musisz zainstalować element `Microsoft.Azure.CognitiveServices.Search.WebSearch` przy użyciu Menedżera pakietów NuGet.
 
