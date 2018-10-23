@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f52c6be81f63e0481cd087ba6f5ff9502d450a7b
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 3e73ed1e774b2054cc403598c227b48fc6c99c21
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376238"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645494"
 documentType: LandingData
 title: Dokumentacja usługi Azure Monitor
 metadata:
@@ -91,8 +91,8 @@ sections:
     items:
     - html: <a href="/azure/log-analytics/log-analytics-tutorial-viewdata">Wyświetlanie lub analizowanie zebranych danych</a>
     - html: <a href="/azure/log-analytics/log-analytics-tutorial-dashboards">Tworzenie i udostępnianie pulpitów nawigacyjnych</a>
-    - html: <a href="monitor-tutorial-autoscale-performance-schedule">Automatyczne skalowanie na podstawie wydajności aplikacji lub harmonogramu</a>
-    - html: <a href="monitor-tutorial-archive-monitoring-data">Archiwizowanie danych monitorowania</a>
+    - html: <a href="/azure/monitoring-and-diagnostics/monitor-tutorial-autoscale-performance-schedule">Automatyczne skalowanie na podstawie wydajności aplikacji lub harmonogramu</a>
+    - html: <a href="/azure/monitoring-and-diagnostics/monitor-tutorial-archive-monitoring-data">Archiwizowanie danych monitorowania</a>
   - type: paragraph
     text: Dowiedz się, jak stale poprawiać wydajność i użycie aplikacji internetowych.
   - type: list

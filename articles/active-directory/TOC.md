@@ -244,7 +244,6 @@
 
 #### Dostęp warunkowy
 ##### [Klient nie spełnił wymagań wstępnych dotyczących rejestracji urządzeń](active-directory-conditional-access.md)
-##### [Dzierżawa jest blokowana z powodu niepoprawnego ustawienia zasad dostępu warunkowego](active-directory-conditional-access-device-remediation.md)
 ##### [Jak i kiedy działają reguły poza siecią firmową?](https://aka.ms/calocation)
 ##### [Jak zwiększyć liczbę urządzeń, które użytkownik może zarejestrować w usłudze Azure AD?](active-directory-azureadjoin-setup.md)
 ##### [Jak skonfigurować dostęp warunkowy dla usługi Exchange Online?](https://aka.ms/csforexchange)
