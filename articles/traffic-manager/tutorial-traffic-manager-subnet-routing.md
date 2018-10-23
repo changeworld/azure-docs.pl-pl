@@ -88,7 +88,7 @@ W tej sekcji utworzysz dwie maszyny wirtualne *InternalWebsite* i *ProdWebsite* 
     |Grupa zasobów | Wybierz pozycję **Nowa**, a następnie wpisz *myResourceGroupTM2*|
     |Lokalizacja|Europa Zachodnia|
     |Nazwa maszyny wirtualnej | ProdWebsite|
-    |Sieć wirtualna | Wybierz opcję **Sieć wirtualna** w obszarze **	Tworzenie sieci wirtualnej**, następnie w polu **nazwa** wprowadź *myVNet2*, a jako nazwę podsieci wprowadź *mySubnet*.|
+    |Sieć wirtualna | Wybierz opcję **Sieć wirtualna** w obszarze **Tworzenie sieci wirtualnej**, następnie w polu **nazwa** wprowadź *myVNet2*, a jako nazwę podsieci wprowadź *mySubnet*.|
     |||
 8. Proces tworzenia maszyny wirtualnej może potrwać kilka minut. Nie kontynuuj wykonywania pozostałych kroków, dopóki obie maszyny wirtualne nie zostaną utworzone.
 

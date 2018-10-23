@@ -58,7 +58,7 @@ Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie nastę
 ### <a name="plan-the-names"></a>Planowanie nazwy
 
 W krokach w tej sekcji podaj *użytkownika* wartość, która służy do zapewnienia zasobów nazwy są globalnie unikatowe oraz nazwę *grupy zasobów* zawierającą wszystkie zasoby utworzone przez wdrożenie aplikacji. Dla osoby o nazwie *Finley pods*, sugerujemy:
-- *Użytkownik:* **af1***(jej inicjały i cyfry. Użyj innej wartości (np. af2), gdy wdrożysz aplikację po raz drugi).*
+- *Użytkownik:* **af1**  *(jej inicjały i cyfry. Użyj innej wartości (np. af2), gdy wdrożysz aplikację po raz drugi).*
 - *Grupa zasobów:* **wingtip-mt-af1** *(o nazwie wingtip-mt wskazuje to aplikacji wielodostępnych podzielonej na fragmenty. Dołączanie af1 nazwa użytkownika jest skorelowane z nazwami zasobów, które zawiera nazwy grupy zasobów.)*
 
 Teraz wybierz nazwy i zanotuj je. 

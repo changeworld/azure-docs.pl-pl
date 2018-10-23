@@ -35,7 +35,7 @@ Lokalne usługi przesyłania dalej jest [projekt typu open source w serwisie Git
 Jest najprostszym sposobem uruchamiania lokalnego usługi przesyłania dalej w obszarze Windows przez zainstalowanie go jako usługę Windows. Wersja zawiera plik wykonywalny usługi Windows (*WindowsServiceHost/Microsoft.LocalForwarder.WindowsServiceHost.exe*) który można łatwo zarejestrować w systemie operacyjnym.
 
 > [!NOTE]
-> Usługa lokalnej usługi przesyłania dalej wymaga co najmniej programu .NET Framework 4.7. Jeśli nie masz programu .NET Framework 4.7 usługi instalacji, ale nie rozpocznie się. Najnowsza wersja programu .NET Framework dostęp do ** [odwiedź stronę pobierania programu .NET Framework](
+> Usługa lokalnej usługi przesyłania dalej wymaga co najmniej programu .NET Framework 4.7. Jeśli nie masz programu .NET Framework 4.7 usługi instalacji, ale nie rozpocznie się. Najnowsza wersja programu .NET Framework dostęp do **[odwiedź stronę pobierania programu .NET Framework](
 https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)**.
 
 1. Pobierz LF. Plik WindowsServiceHost.zip [stronie wersji lokalnej usługi przesyłania dalej](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) w witrynie GitHub.

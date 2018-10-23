@@ -121,7 +121,7 @@ Otwórz blok Przeglądarka, aby wyświetlić agregowane dane wydajności z przeg
 
 ![W witrynie portal.azure.com otwórz zasób swojej aplikacji, a następnie kliknij kolejno opcje Ustawienia, Przeglądarki](./media/app-insights-javascript/03.png)
 
-Jeszcze nie ma danych? Kliknij przycisk **Odśwież w górnej części strony. Nadal nic? Zobacz [Rozwiązywanie problemów](app-insights-troubleshoot-faq.md).
+Jeszcze nie ma danych? Kliknij przycisk **Odśwież** w górnej części strony. Nadal nic? Zobacz [Rozwiązywanie problemów](app-insights-troubleshoot-faq.md).
 
 Blok Przeglądarka jest [blokiem Eksploratora metryk](app-insights-metrics-explorer.md) z wstępnie ustawionymi filtrami i wybranymi wykresami. Jeśli chcesz, możesz edytować przedział czasu, filtry i konfiguracje wykresów, a następnie zapisać wynik jako ulubiony. Kliknij przycisk **Przywróć domyślne**, aby wrócić do oryginalnej konfiguracji bloku.
 

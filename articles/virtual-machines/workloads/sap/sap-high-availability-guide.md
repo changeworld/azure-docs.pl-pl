@@ -1269,7 +1269,7 @@ Aby dodać port sondy:
   }
   ```
 
-  Po przekazaniu **SAP <*SID* >**  klastra roli w tryb online, upewnij się, że **ProbePort** ustawiono nową wartość.
+  Po przekazaniu **SAP <*SID*>** klastra roli w tryb online, upewnij się, że **ProbePort** ustawiono nową wartość.
 
   ```PowerShell
   $SAPSID = "PR1"     # SAP <SID>

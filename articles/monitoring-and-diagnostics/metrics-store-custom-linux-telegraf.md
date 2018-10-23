@@ -47,7 +47,7 @@ Aby utworzyć nową maszynę Wirtualną systemu Linux:
 
      ![Rozmiar maszyny wirtualnej telegraficznego omówienie agenta](./media/metrics-store-custom-linux-telegraf/vm-size.png)
 
-1. Na **strony ustawień**w **sieci** > **sieciowej grupy zabezpieczeń**   >  ** Dodaj publiczne porty wejściowe**, wybierz opcję *HTTP* i *SSH (22)*. Pozostaw resztę ustawień domyślnych, a następnie wybierz pozycję **OK**. 
+1. Na **strony ustawień**w **sieci** > **sieciowej grupy zabezpieczeń**   > **Dodaj publiczne porty wejściowe**, wybierz opcję *HTTP* i *SSH (22)*. Pozostaw resztę ustawień domyślnych, a następnie wybierz pozycję **OK**. 
 
 1. Na stronie podsumowania wybierz pozycję Utwórz, aby rozpocząć wdrażanie maszyny Wirtualnej. 
 
