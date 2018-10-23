@@ -5,23 +5,23 @@ description: Dowiedz się, jak rozpoznawać mowę w języku Java w systemie Andr
 services: cognitive-services
 author: fmegen
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.author: fmegen
-ms.openlocfilehash: 0a52889ef879aeb8a5a1ed59b74619dc3337e1e9
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.date: 10/12/2018
+ms.author: wolfma
+ms.openlocfilehash: f2d5ca467777b8b351b2cf51abe71a003374bcf7
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432800"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344222"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Przewodnik Szybki start: Rozpoznawanie mowy w języku Java w systemie Android przy użyciu zestawu Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Z tego artykułu dowiesz się, jak utworzyć aplikację języka Java dla systemu Android przy użyciu zestawu Speech SDK usługi Cognitive Services, aby wykonać transkrypcję mowy na tekst.
-Aplikacja jest oparta na pakiecie Maven zestawu Speech SDK usługi Microsoft Cognitive Services w wersji 1.0.0 oraz systemie Android Studio 3.1.
+Aplikacja jest oparta na pakiecie Maven zestawu Speech SDK usługi Microsoft Cognitive Services w wersji 1.0.1 oraz systemie Android Studio 3.1.
 Zestaw Speech SDK jest obecnie zgodny z urządzeniami z systemem Android oraz 32-bitowymi i 64-bitowymi procesorami ARM.
 
 > [!NOTE]
@@ -57,7 +57,7 @@ Przygotowanie nowego projektu Android w programie Android Studio zajmie trochę 
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Bieżąca wersja zestawu Speech SDK usługi Cognitive Services to `1.0.0`.
+Bieżąca wersja zestawu Speech SDK usługi Cognitive Services to `1.0.1`.
 
 Zestaw Speech SDK dla systemu Android znajduje się w pakiecie pod nazwą [AAR (biblioteka Android)](https://developer.android.com/studio/projects/android-library) i zawiera niezbędne biblioteki oraz uprawnienia systemu Android wymagane do ich używania.
 Jest hostowany w repozytorium Maven znajdującym się pod adresem https://csspeechstorage.blob.core.windows.net/maven/.
@@ -72,7 +72,7 @@ Skonfiguruj projekt do korzystania z zestawu Speech SDK. Otwórz okno Project St
 
    ![Zrzut ekranu okna Project Structure (Struktura projektu)](media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. W wyświetlonym oknie wprowadź nazwę i wersję zestawu Speech SDK dla systemu Android, `com.microsoft.cognitiveservices.speech:client-sdk:1.0.0`. Następnie wybierz przycisk **OK**.
+1. W wyświetlonym oknie wprowadź nazwę i wersję zestawu Speech SDK dla systemu Android, `com.microsoft.cognitiveservices.speech:client-sdk:1.0.1`. Następnie wybierz przycisk **OK**.
    Teraz należy dodać zestaw Speech SDK do listy zależności, jak przedstawiono poniżej:
 
    ![Zrzut ekranu okna Project Structure (Struktura projektu)](media/sdk/qs-java-android-08-dependency-added-1.0.0.png)
@@ -112,7 +112,7 @@ Tekst i graficzne przedstawienie interfejsu użytkownika powinno teraz wygląda�
 
 ## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
 
-1. Otwórz plik źródłowy `MainActivity.java`. Zastąp cały kod występujący po instrukcji `package` następującym.
+1. Otwórz plik źródłowy `MainActivity.java`. Zastąp cały zawarty w tym pliku kod poniższym kodem.
 
    [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java-android/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/quickstart/MainActivity.java#code)]
 
@@ -150,6 +150,6 @@ Poszukaj tego przykładu w folderze `quickstart/java-android`.
 
 ## <a name="see-also"></a>Zobacz też
 
-- [Tłumaczenie mowy](how-to-translate-speech-csharp.md)
-- [Customize acoustic models](how-to-customize-acoustic-models.md) (Dostosowywanie modeli akustycznych)
-- [Customize language models](how-to-customize-language-model.md) (Dostosowywanie modeli językowych)
+- [Translate speech with the Cognitive Services Speech SDK for C#](how-to-translate-speech-csharp.md) (Tłumaczenie mowy za pomocą zestawu Speech SDK usługi Cognitive Services dla języka C#)
+- [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
+- [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)
