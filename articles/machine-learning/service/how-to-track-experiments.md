@@ -9,12 +9,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 4d8b913c9e77254eb4d232e6bf5add136204b842
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 054cd54827dc11e57f249a270542ff81ff670912
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427760"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649996"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Śledzenie eksperymentów i szkolenia metryk w usłudze Azure Machine Learning
 
@@ -25,7 +25,7 @@ W usłudze Azure Machine Learning można śledzić eksperymenty i monitorować m
 
 ## <a name="list-of-training-metrics"></a>Listy metryk szkolenia 
 
-Następujące metryki można dodać do uruchomienia podczas szkolenia eksperymentu. Aby wyświetlić bardziej szczegółowe listy mogą być śledzone przy uruchomieniu, zobacz [Dokumentacja referencyjna zestawu SDK](https://docs.microsoft.com/python/api/overview/azure/azure-ml-sdk-overview?view=azure-ml-py).
+Następujące metryki można dodać do uruchomienia podczas szkolenia eksperymentu. Aby wyświetlić bardziej szczegółowe listy mogą być śledzone przy uruchomieniu, zobacz [Dokumentacja referencyjna zestawu SDK](https://aka.ms/aml-sdk).
 
 |Typ| Funkcja języka Python | Przykład | Uwagi|
 |----|:----|:----|:----|

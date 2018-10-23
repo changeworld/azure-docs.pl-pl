@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: język Python dla interfejsu API usługi QnA Maker (wersja 4)'
+title: Interfejs API REST (V4) - Python - usługi QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Uzyskaj informacje oraz przykłady kodu, które umożliwią Ci szybkie rozpoczęcie korzystania z interfejsu API tłumaczenia tekstu przy użyciu usługi Microsoft Translator w usłudze Microsoft Cognitive Services na platformie Azure.
 services: cognitive-services
@@ -7,17 +7,17 @@ author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
-ms.topic: quickstart
-ms.date: 09/12/2018
+ms.topic: article
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: ac871aebd1b78750a5a3712d40486d4f7d3c3de7
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.openlocfilehash: 595eee6a10192d877aa77f4849bac494dff05808
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388079"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650013"
 ---
-# <a name="quickstart-for-microsoft-qna-maker-api-with-python"></a>Przewodnik Szybki start dotyczący interfejsu API usługi Microsoft QnA Maker w języku Python 
+# <a name="qna-maker-rest-api-with-python"></a>Interfejs API REST usługi QnA Maker za pomocą języka Python
 <a name="HOLTop"></a>
 
 W tym artykule dowiesz się, jak używać [interfejsu API usługi Microsoft QnA Maker](../Overview/overview.md) w języku Python, aby wykonać następujące czynności.
@@ -39,7 +39,7 @@ W tym artykule dowiesz się, jak używać [interfejsu API usługi Microsoft QnA 
 
 [!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 
-## <a name="prerequisites"></a>Wymagania wstępne
+## <a name="prerequisites"></a>Wstępnie wymagane składniki
 
 Aby uruchomić ten kod, potrzebne jest środowisko języka [Python 3.x](https://www.python.org/downloads/).
 
@@ -1148,11 +1148,11 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 [Powrót do początku](#HOLTop)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API Reference (Dokumentacja interfejsu API REST usługi QnA Maker w wersji 4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
 
-## <a name="see-also"></a>Zobacz też 
+## <a name="see-also"></a>Zobacz także 
 
 [Omówienie usługi QnA Maker](../Overview/overview.md)

@@ -1,6 +1,6 @@
 ---
 title: Usługa Azure wskazówki dotyczące dostrajania wydajności usługi SQL Database | Dokumentacja firmy Microsoft
-description: Informacje o używaniu zalecenia, aby poprawić wydajność zapytań usługi Azure SQL Database.
+description: Informacje o używaniu zalecenia należy ręcznie dostosować wydajność zapytań usługi Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -11,46 +11,26 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 9af699dca5aab26f0bf24b4609bef14558236523
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 10/22/2018
+ms.openlocfilehash: 95e09532616b4aff05dad7440dcda6872fd27484
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854817"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645528"
 ---
-# <a name="tuning-performance-in-azure-sql-database"></a>Dostrajanie wydajności w usłudze Azure SQL Database
+# <a name="manual-tune-query-performance-in-azure-sql-database"></a>Ręczne dostosowywanie wydajności zapytań w usłudze Azure SQL Database
 
-Usługa Azure SQL Database zapewnia [zalecenia](sql-database-advisor.md) , można użyć w celu poprawy wydajności bazy danych, lub pozwolić programowi Azure SQL Database [automatycznie dostosowywać się do aplikacji](sql-database-automatic-tuning.md) i zastosować zmiany, poprawi wydajność przetwarzania obciążenia.
+Po zidentyfikowaniu problemu z wydajnością, występujący w usłudze SQL Database, w tym artykule jest przeznaczona ułatwią Ci:
 
-W przypadku nie ma żadnych zaleceń dotyczy i nadal masz problemy z wydajnością, usprawniających mogą skorzystać z następujących metod:
-
-- Zwiększ warstwy usług w Twojej [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) lub [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) zapewnienie większej ilości zasobów do bazy danych.
 - Dostrajanie aplikacji i zastosować niektóre najlepsze rozwiązania, które mogą zwiększyć wydajność.
 - Dostosowywanie bazy danych, zmieniając indeksów i zapytań, aby bardziej efektywnie pracować z danymi.
 
-Są one metod ręcznych, ponieważ musisz określić ilość zasobów spełnia Twoje potrzeby. W przeciwnym razie należy ponownie zapisuje aplikacji lub kodu bazy danych i wdrażanie zmiany.
-
-## <a name="increasing-service-tier-of-your-database"></a>Zwiększenie warstwy usługi bazy danych
-
-Usługa Azure SQL Database oferuje [dwa modele zakupu](sql-database-service-tiers.md), [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) , możesz wybrać spośród. Każda warstwa usługi izoluje wyłącznie zasoby, można użyć usługi SQL database i gwarantuje przewidywalną wydajność w danej warstwie usługi. W tym artykule firma Microsoft oferuje wskazówki, które mogą pomóc Ci wybrać warstwę usług dla aplikacji. Omówimy również sposób, że można Dostrajanie aplikacji w taki sposób, aby maksymalnie wykorzystać usługę Azure SQL Database. Każda warstwa usługi ma swój własny [limity zasobów](sql-database-resource-limits.md). Aby uzyskać więcej informacji, zobacz [limity zasobów opartych na rdzeniach wirtualnych](sql-database-vcore-resource-limits-single-databases.md) i [limity zasobów na podstawie jednostek DTU](sql-database-dtu-resource-limits-single-databases.md).
-
-> [!NOTE]
-> Ten artykuł koncentruje się na wskazówki dotyczące wydajności dla pojedynczych baz danych w usłudze Azure SQL Database. Aby uzyskać wskazówki dotyczące wydajności związane z pul elastycznych, zobacz [zagadnienia dotyczące cen i wydajności dla pul elastycznych](sql-database-elastic-pool-guidance.md). Należy pamiętać, jednak wiele zalecenia dotyczące dostrajania w tym artykule dotyczą baz danych w elastycznej puli, a podobne korzyści wydajności.
-
-Warstwy usług niezbędnych do usługi SQL database zależy od wymagań obciążenia szczytowe dla każdego wymiaru zasobów. Niektóre aplikacje używać trivial ilości pojedynczego zasobu, ale istnieją znaczne wymagania dotyczące innych zasobów.
-
-### <a name="service-tier-capabilities-and-limits"></a>Usługa możliwości i ograniczeń warstw
-
-W każdej warstwie usługi możesz ustawić rozmiar obliczeń dzięki elastyczności, aby płacić tylko za potrzebne. Możesz [dostosować pojemność](sql-database-single-database-scale.md), w górę lub w dół w miarę zmian obciążenia. Na przykład jeśli obciążenie bazy danych jest wysoka w sezonie zakupów wstecz do szkoły, może zwiększyć rozmiaru obliczeń dla bazy danych na określony czas, lipca, za pośrednictwem września. Można zmniejszyć jej po zakończeniu Twojej sezon szczytowego. Można zminimalizować, płacisz, optymalizując środowiska chmury do sezonowości w firmie. Ten model jest również odpowiedni dla cykle wydawania produktu oprogramowania. Zespół testowy może przydzielić pojemność, podczas przebiegów testów i zwolnij danej pojemności, po zakończeniu testowania. W modelu żądania pojemności płacisz za pojemność potrzebny i uniknąć wydatków na dedykowanych zasobów, może być rzadko używanych.
-
-### <a name="the-purpose-of-service-tiers"></a>Celem warstwy usług
-
-Mimo, że każde obciążenie bazy danych może się różnić, przeznaczenie warstwy usług jest zapewnienie przewidywalność wydajności w różnych rozmiarów wystąpień obliczeniowych. Klienci z wymagań dotyczących zasobów bazy danych na dużą skalę można pracować w bardziej dedykowane środowisko przetwarzania danych.
+W tym artykule założono, że już pracujesz za pomocą usługi Azure SQL Database [bazy danych zalecenia usługi advisor](sql-database-advisor.md) i Azure SQL Database [zaleceń dotyczących dostrajania automatycznego](sql-database-automatic-tuning.md). Przyjęto również założenie, że użytkownik przejrzał [omówienie monitorowania i dostrajania](sql-database-monitor-tune-overview.md) i jej powiązane artykuły dotyczące rozwiązywania problemów z wydajnością. Ponadto w tym artykule założono, że nie masz zasobów procesora CPU, problem z wydajnością związanych z uruchamiania, który może zostać rozpoznana przez zwiększenie rozmiaru obliczeń lub warstwę, aby zapewnić więcej zasobów do bazy danych usługi.
 
 ## <a name="tune-your-application"></a>Dostosowywanie aplikacji
 
-W tradycyjnych lokalnych programu SQL Server proces planowania pojemności początkowej są często oddzielone od procesu uruchamiania aplikacji w środowisku produkcyjnym. Najpierw zakupić licencje sprzętu i produktu i dostrajanie wydajności odbywa się później. Gdy używasz usługi Azure SQL Database, jest dobrym rozwiązaniem interweave procesu uruchamiania aplikacji i dostosowywania. Z modelem, płacąc za pojemność na żądanie możesz określić aplikacji na korzystanie z zasobów minimalne wymagane teraz, zamiast konieczności nadmiernej aprowizacji na sprzęcie, w oparciu o liczbę prób planów przyszłego rozwoju aplikacji, które często są nieprawidłowe. Niektórzy klienci mogą nie dostrojenia aplikacji, a zamiast tego chcesz alokować zasoby sprzętowe. Takie podejście może być dobrym rozwiązaniem, jeśli nie chcesz zmienić klucza aplikacji w trakcie okresu zajęty. Ale można Dostrajanie aplikacji można zminimalizować wymagania dotyczące zasobów i niższych miesięczne rachunki przy użyciu warstwy usług w usłudze Azure SQL Database.
+W tradycyjnych lokalnych programu SQL Server proces planowania pojemności początkowej są często oddzielone od procesu uruchamiania aplikacji w środowisku produkcyjnym. Najpierw zakupić licencje sprzętu i produktu i dostrajanie wydajności odbywa się później. Gdy używasz usługi Azure SQL Database, jest dobrym rozwiązaniem interweave procesu uruchamiania aplikacji i dostosowywania. Z modelem, płacąc za pojemność na żądanie możesz określić aplikacji na korzystanie z zasobów minimalne wymagane teraz, zamiast konieczności nadmiernej aprowizacji na sprzęcie, w oparciu o liczbę prób planów przyszłego rozwoju aplikacji, które często są nieprawidłowe. Niektórzy klienci mogą nie dostrojenia aplikacji, a zamiast tego wybrać opcję nadmiernej aprowizacji zasobów sprzętowych. Takie podejście może być dobrym rozwiązaniem, jeśli nie chcesz zmienić klucza aplikacji w trakcie okresu zajęty. Ale można Dostrajanie aplikacji można zminimalizować wymagania dotyczące zasobów i niższych miesięczne rachunki przy użyciu warstwy usług w usłudze Azure SQL Database.
 
 ### <a name="application-characteristics"></a>Właściwości aplikacji
 
@@ -75,17 +55,6 @@ Mimo że warstwy usługi Azure SQL Database zaprojektowano w celu zwiększenia s
 ## <a name="tune-your-database"></a>Dostosowywanie bazy danych
 
 W tej sekcji przyjrzymy się kilka technik, które można dostrajanie usługi Azure SQL Database, aby uzyskać najlepszą wydajność aplikacji i uruchom go na najmniejszy rozmiar możliwości obliczeniowych. Niektóre z tych metod dopasowania tradycyjnych dostrajania serwera SQL Server najlepsze rozwiązania, ale inne są specyficzne dla usługi Azure SQL Database. W niektórych przypadkach można sprawdzić wykorzystanych zasobów dla bazy danych można znaleźć obszarów, aby dodatkowo dostosować i rozszerzyć tradycyjnych technik programu SQL Server do pracy w usłudze Azure SQL Database.
-
-### <a name="identify-performance-issues-using-azure-portal"></a>Identyfikowanie problemów z wydajnością za pomocą witryny Azure portal
-
-Następujące narzędzia w witrynie Azure portal może ułatwić analizowanie i rozwiązywanie problemów dotyczących wydajności z usługi SQL database:
-
-- [Szczegółowe informacje o wydajności zapytań](sql-database-query-performance.md)
-- [SQL Database Advisor](sql-database-advisor.md)
-
-Witryna Azure portal zawiera więcej informacji na temat obu tych narzędzi i sposobu ich używania. Aby skutecznie zdiagnozować i rozwiązać problemy, zalecamy wypróbowanie narzędzi dostępnych w witrynie Azure portal. Zaleca się, że używasz ręczne dostrajanie metod, które następnie omówimy brakujących indeksów i zapytań, dostrajanie w szczególnych przypadkach.
-
-Znajdź więcej informacji na temat identyfikowanie problemów w usłudze Azure SQL Database na [monitorowania wydajności w witrynie Azure portal](sql-database-monitor-tune-overview.md) i [monitorowanie baz danych przy użyciu widoków DMV](sql-database-monitoring-with-dmvs.md) artykułów.
 
 ### <a name="identifying-and-adding-missing-indexes"></a>Identyfikowanie i dodawanie brakujące indeksy
 

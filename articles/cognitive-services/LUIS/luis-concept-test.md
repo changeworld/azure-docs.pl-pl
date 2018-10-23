@@ -7,15 +7,15 @@ author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 7999f25d9c8bd9a8e44bd858d2860d94be16a62f
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 58bcf45d1a45d448f2f5845ffe43ad07f886a6fc
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033230"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637015"
 ---
 # <a name="testing-example-utterances-in-luis"></a>Testowanie przykład wypowiedzi w usługi LUIS
 
@@ -54,7 +54,7 @@ Wypowiedzi usługa LUIS jest pewności, jakie są wymienione w **[Przejrzyj wypo
 ## <a name="remember-to-train"></a>Pamiętaj, aby uczyć
 Pamiętaj, aby [szkolenie](luis-how-to-train.md) LUIS po wprowadzeniu zmian do modelu. Zmiany w aplikacji usługi LUIS nie są widoczne podczas badania, dopóki skonfigurowanych pod kątem aplikacji. 
 
-## <a name="best-practices"></a>Najlepsze praktyki
+## <a name="best-practices"></a>Najlepsze rozwiązania
 Dowiedz się, [najlepsze praktyki](luis-concept-best-practices.md).
 
 ## <a name="next-steps"></a>Kolejne kroki

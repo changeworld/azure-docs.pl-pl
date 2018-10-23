@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: bf10226b1d3b2153e0e17d4126c35402d096a857
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: fc5ab802b39597d72f01f756c9bdb16597862e3c
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409241"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638210"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor rozwiązanie na platformie Azure
 
@@ -46,7 +46,7 @@ Więcej informacji na temat różnych funkcji obsługiwanych przez [rozwiązania
 ## <a name="supported-regions"></a>Obsługiwane regiony
 NPM monitorować łączność między sieciami i aplikacji w dowolnej części świata, z obszaru roboczego, który znajduje się w następujących regionach:
 * Europa Zachodnia
-* Środkowo-zachodnie stany USA
+* Zachodnio-środkowe stany USA
 * Wschodnie stany USA
 * Japonia Wschodnia
 * Azja Południowo-Wschodnia
@@ -144,7 +144,7 @@ Wszystkie podsieci z co najmniej jeden agent zainstalowany są wyświetlane na�
 
 Aby włączyć lub wyłączyć monitorowanie określonej podsieci:
 
-1. Zaznacz lub wyczyść pole wyboru obok pozycji **identyfikator podsieci**. Następnie upewnij się, że **na użytek monitorowania** jest zaznaczona lub wyczyszczone, odpowiednio. Możesz zaznaczyć lub wyczyścić wiele podsieci. Po wyłączeniu podsieci nie są monitorowane i agenci są aktualizowane, aby zatrzymać wysyłanie polecenia ping innych agentów. 
+1. Zaznacz lub wyczyść pole wyboru obok pozycji **identyfikator podsieci**. Następnie upewnij się, że **na użytek monitorowania** jest zaznaczona lub wyczyszczone, odpowiednio. Możesz zaznaczyć lub wyczyścić wiele podsieci. Po wyłączeniu podsieci nie są monitorowane i agenci są aktualizowane, aby zatrzymać wysyłanie polecenia ping innych agentów. 
 2. Wybierz węzły, które mają być monitorowane w określonej podsieci. Wybierz podsieć z listy i wymaganych węzłów przenoszeniu ich do listy, które zawierają węzły niemonitorowane i monitorowane. Opis niestandardowej można dodać do podsieci.
 3. Wybierz **Zapisz** Aby zapisać konfigurację. 
 
@@ -279,7 +279,7 @@ Powiadomienia są rozliczane osobno zgodnie [powiadomienia o cenach usługi Azur
 
 Informacje na temat cen są dostępne [online](log-analytics-network-performance-monitor-pricing-faq.md).
 
-## <a name="provide-feedback"></a>Przekazywanie opinii 
+## <a name="provide-feedback"></a>Prześlij opinię 
 
 * **UserVoice:** może umieszczać swoje pomysły funkcji rozwiązania Network Performance Monitor, które chcesz pracować. Odwiedź stronę [stronie UserVoice](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring). 
 

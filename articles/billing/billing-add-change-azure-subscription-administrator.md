@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 10/19/2018
 ms.author: cwatson
-ms.openlocfilehash: 821d263856f21897915ba7954487b4d029cc4ed0
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: d6e99c2d57baa5fc62f3894abc9d04635f81f5aa
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395249"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638056"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Dodawanie lub zmienianie Administratorzy subskrypcji platformy Azure
 
@@ -41,9 +41,9 @@ Aby dodać kogoś jako administratora subskrypcji platformy Azure, przypisz do n
 
 1. Odwiedź stronę [ **subskrypcje** w witrynie Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 2. Wybierz subskrypcję, dla której ma zostać nadany dostęp.
-3. Wybierz pozycję **Dodaj**.
+3. Wybierz pozycję **Kontrola dostępu (IAM)** na liście.
+4. Wybierz pozycję **Dodaj**.
    (Jeśli brakuje przycisku Dodaj, to nie masz uprawnienia do nadawania uprawnień).
-4. Wybierz pozycję **Kontrola dostępu (IAM)** na liście.
 5. W polu **Rola** wybierz opcję **Właściciel**. 
 6. W polu **Przypisz dostęp do** wybierz pozycję **Użytkownik, grupa lub aplikacja usługi Azure AD**. 
 7. W polu **Wybierz** wpisz adres e-mail użytkownika, którego chcesz dodać jako właściciela. Wybierz użytkownika, a następnie wybierz polecenie **Zapisz**.
@@ -67,6 +67,19 @@ Jako współadministratora można dodać tylko użytkownika z rolą [Właścicie
     Aby usunąć uprawnienie administratora współpracującego **kliknij prawym przyciskiem myszy** użytkownika administratora współpracującego, a następnie wybierz pozycję **Usuń współadministratora**.
 
     ![Zrzut ekranu, który usuwa współadministratora](./media/billing-add-change-azure-subscription-administrator/remove-coadmin.png)
+
+### <a name="adding-a-guest-user-as-a-co-administrator"></a>Dodawanie użytkownika-gościa jako współadministratora
+
+Użytkownicy-goście, które zostały przypisane do roli współadministratora napotkać pewne różnice w porównaniu do użytkowników z roli współadministratora. Rozważmy następujący scenariusz:
+
+- Użytkownik A, przy użyciu usługi Azure AD pracy lub nauki jest administrator usługi dla subskrypcji platformy Azure.
+- Użytkownik B ma konto Microsoft.
+- Użytkownik A przypisuje rolę administratora współpracującego użytkownikowi B.
+- Użytkownik B prawie wszystko, co zrobić, ale nie może rejestrować aplikacje lub wyszukać użytkowników w katalogu usługi Azure AD.
+
+Można oczekiwać, że użytkownik B może zarządzać wszystkim. Przyczyna różnica ta jest, że konto Microsoft jest dodawane do subskrypcji, co użytkownik-Gość zamiast użytkownika elementu członkowskiego. Użytkownicy-goście mają różne domyślne uprawnienia w usłudze Azure AD w porównaniu do użytkowników. Na przykład użytkowników może odczytywać innych użytkowników w usłudze Azure AD i nie użytkowników-gości. Użytkowników można zarejestrować nowych jednostek usługi w usłudze Azure AD i nie użytkowników-gości. Jeśli użytkownik-Gość musi mieć możliwość wykonywania tych zadań, możliwe rozwiązanie jest przypisanie konkretne role administratora usługi Azure AD użytkownik Gość musi. Na przykład w poprzednim scenariuszu, należy przypisać [odczytywanie katalogów](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) roli do odczytywania innych użytkowników i przypisać [Deweloper aplikacji](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) roli, aby można było utworzyć jednostki usługi. Aby uzyskać więcej informacji dotyczących elementu członkowskiego i użytkowników-gości i ich uprawnienia, zobacz [jakie są domyślne uprawnienia użytkowników usługi Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md).
+
+Należy pamiętać, że [wbudowane role zasobów platformy Azure](../role-based-access-control/built-in-roles.md) różnią się od [role administratora usługi Azure AD](../active-directory/users-groups-roles/directory-assign-admin-roles.md). Wbudowane role nie udzielić dostępu do usługi Azure AD. Aby uzyskać więcej informacji, zobacz [zrozumieć różne role](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
 <a name="change-service-administrator-for-a-subscription"></a>
 
@@ -93,8 +106,8 @@ Tylko administrator konta może zmienić administratora usługi dla subskrypcji.
 
   | Metoda logowania | Dodaj użytkownika Account Microsoft jako administratora usługi? | W tej samej organizacji, administrator usługi, należy dodać konta firmowego lub szkolnego? | Dodaj konto służbowe w innej organizacji jako administrator usługi? |
   | --- | --- | --- | --- |
-  |  Konto Microsoft |Yes |Nie |Nie |
-  |  Konto służbowe |Yes |Yes |Nie |
+  |  Konto Microsoft |Tak |Nie |Nie |
+  |  Konto służbowe |Tak |Yes |Nie |
 
 ## <a name="change-the-account-administrator-for-an-azure-subscription"></a>Zmienić administratora konta dla subskrypcji platformy Azure
 

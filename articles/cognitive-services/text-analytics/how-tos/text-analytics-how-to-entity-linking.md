@@ -10,12 +10,12 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: b2916e5c414562c55c35c9c5e7ab378963e004be
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 42e1704df315c754b2b506a0470d128b7666c280
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248078"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645801"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Jak używać o nazwie rozpoznawania jednostek w analizy tekstu (wersja zapoznawcza)
 
@@ -26,14 +26,14 @@ ms.locfileid: "48248078"
 Text Analytics `entities` punktu końcowego supprts zarówno o nazwie rozpoznawania jednostek (NER) i łączenie podmiotów.
 
 ### <a name="entity-linking"></a>Łączenie jednostek
-Łączenie jednostek jest możliwość identyfikowania i odróżnić tożsamość jednostki w tekście (np. określająca, czy "Mars" jest używana jako planety lub Roman Boże z war). Ten proces wymaga obecności wiedzy, do którego został rozpoznany jednostki są połączone — Wikipedia jest używany jako knowledge base, aby `entities` punktu końcowego analizy tekstu.
+Łączenie jednostek jest możliwość identyfikowania i odróżnić tożsamość jednostki w tekście (na przykład określenie, czy "Mars" jest używana jako planety lub Roman Boże z war). Ten proces wymaga obecności wiedzy, do którego został rozpoznany jednostki są połączone — Wikipedia jest używany jako knowledge base, aby `entities` punktu końcowego analizy tekstu.
 
-W analizy tekstu [wersji 2.1-Preview](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)tylko łączenie podmiotów jest dostępna.
+W analizy tekstu [w wersji 2.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)tylko łączenie podmiotów jest dostępna.
 
 ### <a name="named-entity-recognition-ner"></a>Rozpoznawanie jednostek znaku (NER)
 O nazwie rozpoznawanie jednostek (NER) to zdolność do identyfikacji różnych obiektów w tekście i kategoryzowanie je do wstępnie zdefiniowanych klas. Poniżej wymieniono obsługiwane klas jednostek.
 
-W wersji zapoznawczej Text Analytics w wersji 2.1 (`https://[region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`), łączenie podmiotów i rozpoznawanie jednostek znaku (NER) są dostępne.
+W analizy tekstu [wersji 2.1-Preview](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634), łączenie podmiotów i rozpoznawanie jednostek znaku (NER) są dostępne.
 
 ### <a name="language-support"></a>Obsługa języków
 
@@ -54,27 +54,27 @@ Korzystanie z usługi entity linking w różnych językach wymaga, przy użyciu 
 | Ilość      | Waluta      | "$10,99"     | 
 | Ilość      | Wymiar     | "10 mil", "40 cm"     | 
 | Ilość      | Temperatura   | "stopni 32"    |
-| DateTime      | N/D\*         | "6:30 PM 4 lutego 2012"      | 
-| DateTime      | Date          | "2nd maja 2017", "2017-05-02"   | 
-| Data i godzina     | Time          | "8: 00", "8:00"  | 
-| DateTime      | DateRange     | "Maja 2 do 5 maja."    | 
-| DateTime      | timeRange     | "18: 00 – 19: 00"     | 
-| DateTime      | Czas trwania      | "1 minutę i 45 sekund"   | 
-| DateTime      | Set           | "każdy wtorek"     | 
-| DateTime      | Strefa czasowa      |    | 
-| Adres URL           | N/D\*         | „http://www.bing.com”    |
-| Email         | N/D\*         | „support@contoso.com” |
+| Data/godzina      | N/D\*         | "6:30 PM 4 lutego 2012"      | 
+| Data/godzina      | Data          | "2nd maja 2017", "2017-05-02"   | 
+| Data i godzina     | Czas          | "8: 00", "8:00"  | 
+| Data/godzina      | DateRange     | "Maja 2 do 5 maja."    | 
+| Data/godzina      | timeRange     | "18: 00 – 19: 00"     | 
+| Data/godzina      | Czas trwania      | "1 minutę i 45 sekund"   | 
+| Data/godzina      | Ustaw           | "każdy wtorek"     | 
+| Data/godzina      | Strefa czasowa      |    | 
+| ADRES URL           | N/D\*         | "http://www.bing.com"    |
+| Wiadomość e-mail         | N/D\*         | "support@contoso.com" |
 \* W zależności od jednostki danych wejściowych i wyodrębnione może pominąć niektóre jednostki `SubType`.
 
 
 
 ## <a name="preparation"></a>Przygotowanie
 
-Dokumenty JSON muszą mieć następujący format: id, tekstu, język
+Dokumenty JSON muszą mieć następujący format: identyfikator, tekst, język
 
-Obecnie obsługiwane języki, zobacz [tej listy](../text-analytics-supported-languages.md).
+Dla aktualnie obsługiwanych języków, zobacz [tej listy](../text-analytics-supported-languages.md).
 
-Rozmiar dokumentu musi być w obszarze 5000 znaków na dokument, i może mieć maksymalnie 1000 elementów (ID) na kolekcję. Kolekcja jest przesyłany w treści żądania. Poniższy przykład jest ilustrację zawartość, którą może przesłać w celu łączenia jednostek.
+Dokument musi mieć mniej niż 5000 znaków, a kolekcja może zawierać maksymalnie 1000 elementów (identyfikatorów). Kolekcja jest przesyłana w treści żądania. Poniższy przykład jest ilustrację zawartość, którą może przesłać w celu łączenia jednostek.
 
 ```
 {"documents": [{"id": "1",
@@ -89,32 +89,32 @@ Rozmiar dokumentu musi być w obszarze 5000 znaków na dokument, i może mieć m
 }
 ```    
     
-## <a name="step-1-structure-the-request"></a>Krok 1: Struktury żądania
+## <a name="step-1-structure-the-request"></a>Krok 1: Określenie struktury żądania
 
-Szczegółowe informacje na temat definicji żądania można znaleźć w [sposób wywołania interfejsu API analizy tekstu](text-analytics-how-to-call-api.md). Dla wygody są przekształcane, następujące kwestie:
+Szczegółowe informacje na temat definicji żądania można znaleźć w artykule [Jak wywołać interfejs API analizy tekstu](text-analytics-how-to-call-api.md). Dla wygody poniżej ponownie podano odpowiednie kroki:
 
-+ Tworzenie **WPIS** żądania. Zapoznaj się z dokumentacją interfejsu API dla tego żądania: [interfejs API usługi Entity Linking](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
++ Utwórz żądanie **POST**. Zapoznaj się z dokumentacją interfejsu API dla tego żądania: [interfejs API usługi Entity Linking](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
 
-+ Ustaw punkt końcowy HTTP dla wyodrębnianie kluczowych fraz. Musi on zawierać `/entities` zasobów: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
++ Ustaw punkt końcowy HTTP pod kątem wyodrębniania kluczowych fraz. Musi on obejmować zasób `/entities`: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
 
-+ Ustaw nagłówek żądania, aby uwzględnić klucz dostępu do operacji analizy tekstu. Aby uzyskać więcej informacji, zobacz [znajdowanie punktów końcowych i klucze dostępu](text-analytics-how-to-access-key.md).
++ Ustaw nagłówek żądania, tak aby zawierał klucz dostępu dla operacji analizy tekstu. Aby uzyskać więcej informacji, zobacz [How to find endpoints and access keys (Jak znajdować punkty końcowe i klucze dostępu)](text-analytics-how-to-access-key.md).
 
-+ Treść żądania zawiera kolekcję dokumentów JSON, którą przygotowane na potrzeby tej analizy
++ W treści żądania podaj kolekcję dokumentów JSON przygotowaną na potrzeby tej analizy.
 
 > [!Tip]
-> Użyj [Postman](text-analytics-how-to-call-api.md) lub Otwórz **konsoli testowania interfejsu API** w [dokumentacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) struktury żądania i OPUBLIKUJ go w usłudze.
+> Użyj programu [Postman](text-analytics-how-to-call-api.md) lub otwórz **konsolę testowania interfejsu API** w [dokumentacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634), aby określić strukturę żądania i przesłać je do usługi za pomocą operacji POST.
 
-## <a name="step-2-post-the-request"></a>Krok 2: Wpis żądania
+## <a name="step-2-post-the-request"></a>Krok 2: Wysłanie żądania
 
-Analiza jest wykonywana po otrzymaniu żądania. Usługa akceptuje maksymalnie 100 żądań na minutę. Każde żądanie może zawierać maksymalnie 1 MB.
+Analiza jest wykonywana po odebraniu żądania. Usługa akceptuje maksymalnie 100 żądań na minutę. Maksymalny rozmiar każdego żądania to 1 MB.
 
-Pamiętaj, że usługa jest bezstanowy. Nie dane są przechowywane na koncie. Wyniki są natychmiast zwracane w odpowiedzi.
+Pamiętaj, że usługa jest bezstanowa. Żadne dane nie są przechowywane na koncie. Wyniki są zwracane natychmiast w odpowiedzi.
 
-## <a name="step-3-view-results"></a>Krok 3: Wyświetlanie wyników
+## <a name="step-3-view-results"></a>Krok 3: Wyświetlenie wyników
 
-Wszystkie żądania POST Zwróć JSON sformatowany odpowiedzi z identyfikatorami i wykryto właściwości.
+Wszystkie żądania POST zwracają odpowiedź w formacie JSON z identyfikatorami i wykrytymi właściwościami.
 
-Dane wyjściowe są natychmiast zwracane. Można strumienia wyniki do aplikacji, która akceptuje JSON lub Zapisz dane wyjściowe do pliku w systemie lokalnym, a następnie zaimportować go do aplikacji, która pozwala na sortowanie, wyszukiwanie i manipulowania danymi.
+Dane wyjściowe są zwracane natychmiast. Wyniki można przesłać strumieniowo do aplikacji, która akceptuje kod JSON, lub zapisać do pliku w systemie lokalnym, a następnie zaimportować do aplikacji, która umożliwia sortowanie i wyszukiwanie danych oraz manipulowanie nimi.
 
 Przykład danych wyjściowych do usługi entity linking pokazano dalej:
 
@@ -280,8 +280,8 @@ Przykład danych wyjściowych do usługi entity linking pokazano dalej:
 W tym artykule przedstawiono pojęcia i przepływ pracy dotyczący łączenie podmiotów, za pomocą analizy tekstu w usługach Cognitive Services. Podsumowanie:
 
 + [Jednostki interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) jest dostępny dla wybranych języków.
-+ Dokumenty JSON w treści żądania obejmują identyfikator, tekstu i języka kodu.
-+ Żądanie POST jest `/entities` punktu końcowego, za pomocą spersonalizowanego [dostępu key i punktu końcowego](text-analytics-how-to-access-key.md) , który jest poprawny dla Twojej subskrypcji.
++ Dokumenty JSON zawierają w treści żądania identyfikator, tekst i kod języka.
++ Żądanie POST jest wysyłane do punktu końcowego `/entities` za pomocą spersonalizowanego [klucza dostępu i punktu końcowego](text-analytics-how-to-access-key.md) prawidłowego dla używanej subskrypcji.
 + Dane wyjściowe odpowiedzi, który składa się z połączonej jednostki (w tym pewność, że wyniki, przesunięcia i linków sieci web, dla każdego dokumentu Identyfikator) mogą być używane w dowolnej aplikacji
 
 ## <a name="see-also"></a>Zobacz także 

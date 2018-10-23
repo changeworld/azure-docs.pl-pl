@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: 19a611ca88310f06503bea2b8606699fe3e1c709
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 8d3e0874637bc3f13905c6038349b34c18b5fe56
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406044"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637801"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Dane monitorowania zbierane przez usługi Azure Monitor
 [Usługa Azure Monitor](../azure-monitor/overview.md) jest to usługa, która pomaga monitorować Twoje aplikacje i zasoby korzystają z. Decydujące znaczenie dla tej funkcji jest przechowywanie danych telemetrycznych i innych danych z monitorowanych zasobów. Ten artykuł zawiera pełny opis jak te dane są przechowywane i używane przez usługi Azure Monitor.
@@ -51,7 +51,7 @@ W poniższym przykładzie przedstawiono dwa zestawy danych dla hipotetycznego me
 
 ### <a name="network-throughput"></a>Przepływność sieci
 
- |Znacznik czasu        | Wartość metryki | 
+ |Sygnatura czasowa        | Wartość metryki | 
    | ------------- |:-------------| 
    | 8/9/2017 8:14 | 1,331.8 Kb/s | 
    | 8/9/2017 8:15 | 1,141.4 Kb/s |
@@ -61,7 +61,7 @@ Ta metryka-wymiarowej można tylko odpowiedzi na podstawowe pytania, takie jak "
 
 ### <a name="network-throughput--two-dimensions-ip-and-direction"></a>Przepływność sieci i dwa wymiary ("Adres IP" i "Direction")
 
-| Znacznik czasu          | Wymiar "Adres IP" | Wymiar "Direction" | Wartość metryki| 
+| Sygnatura czasowa          | Wymiar "Adres IP" | Wymiar "Direction" | Wartość metryki| 
    | ------------- |:-----------------|:------------------- |:-----------|  
    | 8/9/2017 8:14 | IP = "192.168.5.2" | Kierunek = "Wyślij"    | 646.5 kb/s |
    | 8/9/2017 8:14 | IP = "192.168.5.2" | Kierunek = "Otrzymywać" | 420.1 KB/s |
@@ -108,7 +108,7 @@ Następujące zadania, które można wykonywać za pomocą metryk:
 
 
 ### <a name="viewing-metrics"></a>Wyświetlanie metryk
-Metryki na platformie Azure są zbierane w magazynie metryk usługi Azure Monitor. Jest to szeregów czasowych bazy danych zoptymalizowane pod kątem szybkiego pobierania i magazyny wartości metryk 93 dni. Skopiuj metryk do usługi Log Analytics na potrzeby długoterminowego analizy i określania trendów.
+Metryki na platformie Azure są zbierane w bazie danych metryk usługi Azure Monitor. Jest to szeregów czasowych bazy danych zoptymalizowane pod kątem szybkiego pobierania i magazyny wartości metryk 93 dni. Skopiuj metryk do usługi Log Analytics na potrzeby długoterminowego analizy i określania trendów.
 
 Dane metryk są używane w na różne sposoby, zgodnie z powyższym opisem. Użyj [Eksploratora metryk](../monitoring-and-diagnostics/monitoring-metric-charts.md) bezpośrednio analizować dane w magazynie metryki i wykres wartości wielu metryk wraz z upływem czasu. Można wyświetlać wykresy interakcyjnie lub przypiąć je do pulpitu nawigacyjnego, aby wyświetlić je z innymi wizualizacjami. Możesz również pobrać za pomocą metryk [platformy Azure, interfejsu API REST monitorowania](../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
 
@@ -173,7 +173,7 @@ Metryki można kopiować do usługi Log Analytics, aby wykonać złożone analiz
 Możesz uzyskać wskazówki dotyczące zbieranie metryk z zasobów platformy Azure w [zbieranie dzienników platformy Azure usługi i metryk do użycia w usłudze Log Analytics](../log-analytics/log-analytics-azure-storage.md). Uzyskaj wskazówki dotyczące zbieranie metryk zasobów z zasobów PaaS platformy Azure w [skonfigurować zbieranie metryk zasobów PaaS platformy Azure z usługą Log Analytics](../log-analytics/log-analytics-collect-azurepass-posh.md).
 
 ### <a name="logs-to-metrics"></a>Dzienniki, metryki
-Zgodnie z powyższym opisem metryki są bardziej elastyczny niż dzienniki, aby można było utworzyć alerty z mniejszymi opóźnieniami i przy niskich kosztach. Usługa log Analytics zbiera znacznej ilości danych liczbowych, który będzie odpowiedni dla metryk, ale nie są przechowywane w magazynie metryki platformy Azure.  Typowym przykładem są dane dotyczące wydajności zbierane z agentów i rozwiązań do zarządzania. Niektóre z tych wartości mogły zostać skopiowane do magazynu metryk, jeśli są one dostępne dla alertów i analizy przy użyciu Eksploratora metryk.
+Zgodnie z powyższym opisem metryki są bardziej elastyczny niż dzienniki, aby można było utworzyć alerty z mniejszymi opóźnieniami i przy niskich kosztach. Usługa log Analytics zbiera znacznej ilości danych liczbowych, który będzie odpowiedni dla metryk, ale nie są przechowywane w bazie danych metryki platformy Azure.  Typowym przykładem są dane dotyczące wydajności zbierane z agentów i rozwiązań do zarządzania. Niektóre z tych wartości mogły zostać skopiowane do bazy danych metryk, jeśli są one dostępne dla alertów i analizy przy użyciu Eksploratora metryk.
 
 WYJAŚNIENIE Ta funkcja jest dostępna na [Tworzenie alertów metryk dla dzienników w usłudze Azure Monitor](../monitoring-and-diagnostics/monitoring-metric-alerts-logs.md). Lista wartości pomocy technicznej znajduje się w temacie [metryki obsługiwane z usługą Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces).
 

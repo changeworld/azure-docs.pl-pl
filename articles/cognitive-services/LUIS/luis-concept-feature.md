@@ -7,15 +7,15 @@ author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 015679b6020e9d2a4d702f9d6e723ecd9499d8dc
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 43b2b1485e6a33162f7fc08631094f3e975f8cdb
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034471"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638266"
 ---
 # <a name="phrase-list-features-in-luis"></a>Wyrażenie funkcji listy usługi LUIS
 
@@ -63,7 +63,7 @@ Wyświetla frazy są podobne słownictwa specyficznego dla domeny, które ułatw
 ### <a name="dont-use-a-phrase-list"></a>Nie należy używać listy fraz 
 Jednostka listy jawnie definiuje każda wartość jednostki może potrwać i identyfikuje tylko wartości, które dokładnie pasować. Jednostka listy może być odpowiednie dla aplikacji, w której wszystkie wystąpienia jednostki są znane i nie zmieniają się często. Przykładami są elementy żywności, w menu restauracji, które zmieniają się rzadko. Jeśli potrzebujesz dopasowania tekstu do dokładnego dopasowania jednostki, nie należy używać listy fraz. 
 
-## <a name="best-practices"></a>Najlepsze praktyki
+## <a name="best-practices"></a>Najlepsze rozwiązania
 Dowiedz się, [najlepsze praktyki](luis-concept-best-practices.md).
 
 ## <a name="next-steps"></a>Kolejne kroki

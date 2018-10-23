@@ -1,6 +1,6 @@
 ---
-title: Dystrybucje systemu Linux zatwierdzone | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat systemu Linux na dystrybucje zatwierdzone na platformie Azure, łącznie z wytycznymi Ubuntu, CentOS, Oracle i SUSE.
+title: Zatwierdzone dystrybucje systemu Linux | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o systemie Linux w dystrybucjach zatwierdzone na platformie Azure, takich jak wskazówki dla Ubuntu, CentOS, Oracle i SUSE.
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
@@ -15,36 +15,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: szark
-ms.openlocfilehash: c2233ab32314655c510c8c884641293ae3325ef5
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 80a165c4533f555dce2d86f044f3caa328761123
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809764"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645751"
 ---
-# <a name="linux-on-distributions-endorsed-by-azure"></a>Linux na dystrybucje zatwierdzone przez platformę Azure
-Partnerzy Podaj Linux obrazów w portalu Azure Marketplace. Pracujemy nad różne społeczności Linux można dodać więcej odmian do listy dystrybucyjnej zatwierdzone. Tymczasem dystrybucji, które nie są dostępne z poziomu portalu Marketplace, zawsze przełączeniem własne Linux przez zgodnie z wytycznymi na [tworzenie i przekazywanie wirtualnego dysku twardego, który zawiera system operacyjny Linux](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
+# <a name="linux-on-distributions-endorsed-by-azure"></a>System Linux na dystrybucje zalecane dla platformy Azure
+Etap to udostępnienie obrazów systemu Linux w witrynie Azure Marketplace. Współpracujemy z wieloma społecznościami systemu Linux, aby dodać jeszcze więcej pozycji do listy dystrybucyjnej zatwierdzone. W międzyczasie dystrybucji, które nie są dostępne w portalu Marketplace, zawsze Przenoszenie własnych Linux postępując zgodnie ze wskazówkami w temacie [tworzenie i przekazywanie wirtualnego dysku twardego zawierającego system operacyjny Linux](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
 
 ## <a name="supported-distributions-and-versions"></a>Obsługiwane dystrybucje i wersje
-W poniższej tabeli wymieniono dystrybucje systemu Linux i wersje, które są obsługiwane na platformie Azure. Zapoznaj się [obsługę obrazów systemu Linux na platformie Microsoft Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) bardziej szczegółowe informacje o pomocy technicznej dla systemów Linux i technologii typu open source na platformie Azure.
+W poniższej tabeli wymieniono dystrybucje systemu Linux i wersji, które są obsługiwane na platformie Azure. Zapoznaj się [pomocy technicznej dla obrazów systemu Linux na platformie Microsoft Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) Aby uzyskać szczegółowe informacje dotyczące pomocy technicznej dla systemu Linux i technologii typu open source na platformie Azure.
 
-Sterowniki usługi integracji systemu Linux (LIS) dla funkcji Hyper-V i platformy Azure są moduły jądra, które Microsoft przyczynia się bezpośrednio do nadrzędnego jądra systemu Linux.  Niektóre sterowniki LIS są wbudowane w jądra dystrybucji domyślnie. Starsze dystrybucji, które są oparte na Red Hat Enterprise (RHEL) / CentOS są dostępne jako osobny plik do pobrania na [Linux integracji usług wersji 4.2 dla funkcji Hyper-V i Azure](https://www.microsoft.com/en-us/download/details.aspx?id=55106). Zobacz [wymagania jądra systemu Linux](create-upload-generic.md#linux-kernel-requirements) Aby uzyskać więcej informacji o sterownikach LIS.
+Sterowniki usługi LIS (Linux Integration) dla funkcji Hyper-V i platformą Azure są modułów jądra, których Microsoft przyczynia się bezpośrednio do nadrzędnego jądra systemu Linux.  Niektórych sterowników LIS są wbudowane w jądra dystrybucji domyślnie. Starsze dystrybucje, które są oparte na systemie Red Hat Enterprise (RHEL) / CentOS są dostępne do pobrania osobno na [Linux integracji usług w wersji 4.2 dla funkcji Hyper-V i Azure](https://www.microsoft.com/en-us/download/details.aspx?id=55106). Zobacz [wymagania jądra systemu Linux](create-upload-generic.md#linux-kernel-requirements) Aby uzyskać więcej informacji na temat sterowników LIS.
 
-Agent systemu Linux Azure została już wcześniej zainstalowana na obrazów Azure Marketplace i są zwykle dostępne z repozytorium pakietów dystrybucji. Kod źródłowy znajduje się na [GitHub](https://github.com/azure/walinuxagent).
+Agent systemu Linux platformy Azure wstępnie zainstalowanym systemem obrazów portalu Azure Marketplace i są zazwyczaj dostępne z repozytorium pakietów dystrybucji. Kod źródłowy znajduje się na [GitHub](https://github.com/azure/walinuxagent).
 
   
-| Dystrybucja | Wersja | Sterowniki | Agent |
+| Rozkład | Wersja | Sterowniki | Agent |
 | --- | --- | --- | --- |
-| CentOS |CentOS 6.3+, 7.0+ |CentOS 6.3: [Pobierz LIS](https://www.microsoft.com/en-us/download/details.aspx?id=55106)<p>CentOS 6.4 +: W przypadku jądra |Pakiecie: [repozytorium](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) w obszarze "WALinuxAgent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| CentOS |CentOS 6.3+, 7.0+ |CentOS 6.3: [pobrania LIS](https://www.microsoft.com/en-us/download/details.aspx?id=55106)<p>CentOS 6.4 +: W jądrze |Pakiet: W [repozytorium](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) w obszarze "WALinuxAgent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |Jądra |Kod źródłowy: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
-| Debian |Debian 7,9 +, 8.2 + |Jądra |Pakiet: W repozytorium w obszarze "agenta waagent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| Oracle Linux |6.4+, 7.0+ |Jądra |Pakiet: W repozytorium w obszarze "WALinuxAgent" <br/>Kod źródłowy: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| Red Hat Enterprise Linux |RHEL 6.7+, 7.1+ |Jądra |Pakiet: W repozytorium w obszarze "WALinuxAgent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| SUSE Linux Enterprise |SLES/SLES dla SAP<br>11 SP4<br>12 SP1+|Jądra |Pakiet:<p> 11 WE [chmury: narzędzia](https://build.opensuse.org/project/show/Cloud:Tools) repozytorium<br>dla 12 zawarte w Module "Chmura publiczna" w obszarze "python-azure-agent"<br/>Kod źródłowy: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| openSUSE |openSUSE Leap 42.2+ |Jądra |Pakiecie: [chmury: narzędzia](https://build.opensuse.org/project/show/Cloud:Tools) repozytorium, w obszarze "python-azure-agent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| Ubuntu |Ubuntu 12.04+ **<sup>1</sup>** |Jądra |Pakiet: W repozytorium w obszarze "walinuxagent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| Debian |Debian 7,9 +, 8.2 + |Jądra |Pakiet: W repozytorium, w obszarze "waagent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| Oracle Linux |6.4+, 7.0+ |Jądra |Pakiet: W repozytorium, w obszarze "WALinuxAgent" <br/>Kod źródłowy: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| Red Hat Enterprise Linux |RHEL 6.7+, 7.1+ |Jądra |Pakiet: W repozytorium, w obszarze "WALinuxAgent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| SUSE Linux Enterprise |SLES/SLES for SAP<br>11 SP4<br>12 SP1+<br>15|Jądra |Pakiet:<p> 11 WE [chmury: narzędzia](https://build.opensuse.org/project/show/Cloud:Tools) repozytorium<br>Aby uzyskać 12 zawartych w Module "Chmura publiczna" w obszarze "python-azure-agent"<br/>Kod źródłowy: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| openSUSE |openSUSE Leap 42.2+ |Jądra |Pakiet: W [chmury: narzędzia](https://build.opensuse.org/project/show/Cloud:Tools) repozytorium w obszarze "python-azure-agent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| Ubuntu |Ubuntu 12.04+ **<sup>1</sup>** |Jądra |Pakiet: W repozytorium, w obszarze "walinuxagent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
 
-  - **<sup>1</sup>**  pomocy technicznej dla 12.04 Ubuntu na platformie Azure, zapoznaj się [powiadomienia EOL](https://azure.microsoft.com/blog/ubuntu-12-04-precise-pangolin-nearing-end-of-life/).
+  - **<sup>1</sup>**  Ubuntu 12.04 obsługi na platformie Azure można znaleźć [powiadomienie EOL](https://azure.microsoft.com/blog/ubuntu-12-04-precise-pangolin-nearing-end-of-life/).
 
 
 ## <a name="partners"></a>Partnerzy
@@ -52,33 +52,33 @@ Agent systemu Linux Azure została już wcześniej zainstalowana na obrazów Azu
 ### <a name="coreos"></a>CoreOS
 [https://coreos.com/docs/running-coreos/cloud-providers/azure/](https://coreos.com/docs/running-coreos/cloud-providers/azure/)
 
-Z witryny sieci Web CoreOS:
+Z systemu CoreOS witryny sieci Web:
 
-*CoreOS zaprojektowano pod kątem bezpieczeństwa, zgodności i niezawodności. Zamiast instalowania pakietów za pomocą yum lub stanie, CoreOS używa kontenerów Linux do zarządzania usługami na wyższym poziomie abstrakcji. Kod pojedynczą usługę i wszystkie zależności są umieszczane w kontenerze, który można uruchomić na jednym lub wielu komputerach CoreOS.*
+*CoreOS jest przeznaczona dla zabezpieczeń, zgodności i niezawodności. Zamiast instalowania pakietów za pomocą narzędzia yum lub apt, CoreOS używa kontenerów systemu Linux w celu zarządzania usługami na wyższym poziomie abstrakcji. Kod pojedynczą usługę i wszystkie zależności są spakowane w kontenerze, który może działać na jednej lub wielu maszynach CoreOS.*
 
-### <a name="credativ"></a>Credativ
+### <a name="credativ"></a>credativ
 [http://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure](http://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure)
 
-Credativ jest niezależne konsultacji i usług firmy, która specjalizuje się w projektowania i wdrażania rozwiązań professional przy użyciu bezpłatnego oprogramowania. Jako początkowych specjalistów open source Credativ ma międzynarodowego uznania z wielu działów IT korzystających z pomocy technicznej. W połączeniu z firmą Microsoft Credativ obecnie przygotowuje odpowiednie obrazy Debian Debian 8 (Joasia) oraz Debian przed 7 (Wheezy). Oba obrazy są specjalnie zaprojektowane do uruchamiania na platformie Azure, można łatwo zarządzać za pomocą platformy. Credativ będzie obsługiwać także długotrwałe utrzymanie i aktualizowanie Debian obrazów na platformie Azure za pośrednictwem jego centrach obsługi technicznej źródłowym Otwórz.
+Credativ to niezależne konsultacji i usług firmy, która specjalizuje się w projektowania i implementacji profesjonalnych rozwiązań przy użyciu bezpłatnego oprogramowania. Jako wiodących specjalistów typu open source Credativ ma międzynarodowy uznanie z wielu działów IT, korzystających z pomocy technicznej. Wspólnie z firmą Microsoft Credativ obecnie przygotowuje odpowiednie obrazy systemu Debian dla Debian 8 (Jessie) oraz Debian przed 7 (Wheezy). Oba obrazy są specjalnie zaprojektowane do uruchamiania na platformie Azure i można łatwo zarządzać za pomocą platformy. Credativ będzie również obsługiwać długotrwałe utrzymanie i aktualizowanie obrazów systemu Debian dla platformy Azure za pośrednictwem jej centrów Otwórz źródło pomocy technicznej.
 
 ### <a name="oracle"></a>Oracle
 [http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)
 
-Strategia programu Oracle polega na oferuje szeroką gamę rozwiązań dla chmur prywatnych i publicznych. Strategia zapewnia klientom wybór i elastyczność w sposób wdrażania oprogramowania Oracle w chmurach programu Oracle i innych chmur. Partnerstwo firmy Oracle z firmą Microsoft umożliwia klientom wdrażanie oprogramowania Oracle w chmurach publicznych i prywatnych firmy Microsoft przy zapewnieniu certyfikacji i wsparcia firmy Oracle.  Zobowiązań programu Oracle i inwestycji w rozwiązaniach chmury publicznej i prywatnej Oracle nie ulega zmianie.
+Firmy Oracle strategia polega na oferują szeroką gamę rozwiązań dla chmur prywatnych i publicznych. Ta strategia zapewnia wybór i elastyczność, w jaki sposób wdrożenia oprogramowania Oracle w chmurach programu Oracle i innych chmur. Partnerstwo firmy Oracle z firmą Microsoft umożliwia klientom wdrażanie oprogramowania Oracle w chmurach publicznych i prywatnych firmy Microsoft przy zapewnieniu certyfikacji i wsparcia firmy Oracle.  Zobowiązanie firmy Oracle oraz zwrot z inwestycji w rozwiązania chmur publicznych i prywatnych firmy Oracle ulega zmianie.
 
 ### <a name="red-hat"></a>Red Hat
 [http://www.redhat.com/en/partners/strategic-alliance/microsoft](http://www.redhat.com/en/partners/strategic-alliance/microsoft)
 
-Na świecie głównym dostawcą rozwiązań typu open source, Red Hat pomaga ponad 90% firm listy Fortune 500 rozwiązać problemy biznesowe, Dopasuj informatyczne i strategii biznesowej oraz przygotowanie w przyszłości technologii. Red Hat robi to przez zapewnienie bezpiecznych rozwiązań za pomocą modelu biznesowego otwarte i ekonomiczny, przewidywalnych subskrypcji.
+Na świecie wiodący dostawca rozwiązań typu open source, Red Hat ułatwia ponad 90% firm z rankingu Fortune 500 rozwiązywania problemów biznesowych i IT i strategii biznesowej i przygotowania przyszłość technologii. Red Hat robi to, zapewniając bezpiecznych rozwiązań za pośrednictwem modelu biznesowego otwarte i niedrogie stała, przewidywalna subskrypcji.
 
 ### <a name="suse"></a>SUSE
 [http://www.suse.com/suse-linux-enterprise-server-on-azure](http://www.suse.com/suse-linux-enterprise-server-on-azure)
 
-SUSE Linux Enterprise Server na platformie Azure to platforma sprawdzone, która zapewnia lepszą niezawodność i zabezpieczeń dla chmury obliczeniowej. Elastyczne platformy Linux w systemie SUSE bezproblemowo integruje się z usług w chmurze Azure do środowiska chmury można łatwo zarządzać dostarczania. Z więcej niż 9,200 certyfikowanych aplikacji z ponad 1800 niezależnym dostawcom oprogramowania dla systemu SUSE Linux Enterprise Server SUSE gwarantuje, że obciążeń działających w obsługiwanych w centrum danych można bez obaw wdrożyć na platformie Azure.
+SUSE Linux Enterprise Server na platformie Azure jest sprawdzonej platformie, która zapewnia doskonałą niezawodność i bezpieczeństwo chmury obliczeniowej. Wszechstronna platforma systemu Linux firmy SUSE bezproblemowo integruje się z usług Azure cloud services w celu dostarczenia środowiska chmury łatwe w zarządzaniu. Z więcej niż 9,200 certyfikowanych aplikacji od ponad 1800 niezależnych dostawców oprogramowania dla systemu SUSE Linux Enterprise Server SUSE gwarantuje, że obciążeń obsługiwanych w centrum danych można bez obaw wdrożyć na platformie Azure.
 
 ### <a name="canonical"></a>Canonical
 [http://www.ubuntu.com/cloud/azure](http://www.ubuntu.com/cloud/azure)
 
-Canonical inżynieryjne i otwórz społeczności ładu dysków Powodzenie Ubuntu przez klienta, serwera i przetwarzania w chmurze, która obejmuje usługi w chmurze osobistej dla konsumentów. Canonical firmy wizję ujednolicone, bezpłatna platforma w Ubuntu, z telefonu do chmury, zawiera rodziny spójnego interfejsów dla telefonu, tablecie, TV i pulpitu. Wizja sprawia, że Ubuntu pierwszy wybór dla różnych instytucji od dostawców chmury publicznej do osoby podejmujące decyzje Electronics konsumenta i Ulubione między poszczególnych technologists.
+Canonical inżynierii i nadzór społeczności open dysku sukcesu firmy Ubuntu w klienta, serwera i chmury obliczeniowej, w tym lokacjach chmury osobistej usług dla konsumentów. Wizja firmy Canonical ujednolicone, bezpłatne platformy w systemie Ubuntu z telefonu w chmurze, zapewnia rodziny spójnych interfejsów telefon, tablet, takich jak Telewizor i pulpitu. Tę wizję sprawia, że Ubuntu pierwszy wybór różnych mogą odnieść instytucje od dostawców chmury publicznej twórcy elektronicznych i ulubionych między poszczególne technologists.
 
-Canonical deweloperzy i engineering centrach na całym świecie, unikatowo znajduje się do współpracy z sprzętu osoby podejmujące decyzje, dostawców zawartości i deweloperów oprogramowania Przesuń Ubuntu rozwiązań na rynku dla komputerów, serwerów i urządzeń przenośnych.
+Z deweloperami i inżynierów centrach na całym świecie firmy Canonical jednoznacznie znajduje się do współpracy z twórcami sprzętu, dostawców zawartości i deweloperów oprogramowania wprowadzanie Ubuntu rozwiązań na rynek, na którym komputerami, serwerami i urządzeń przenośnych.

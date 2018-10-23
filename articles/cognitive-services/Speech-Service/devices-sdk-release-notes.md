@@ -1,20 +1,21 @@
 ---
-title: Dokumentacja usług cognitive Services Speech Devices SDK
+title: Dokumentacja zestawu SDK urządzenia usługi rozpoznawania mowy
+titleSuffix: Azure Cognitive Services
 description: Informacje o wersji — co zmieniło się w najnowszych wersjach
-titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: wsturman
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: gracez
-ms.openlocfilehash: 2c5e1351552829072fce2839d1ce6d27a0f24af2
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 3ba726098d10266601f94d0c174872d736255f8f
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42351395"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647651"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>Informacje o wersji programu Cognitive Services zestawu Speech Devices SDK
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 891059a440189112c834f3402725781a6b4a3960
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 234e9233e69877c9afe79a5a053a4310d013a9ab
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952828"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646114"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Platformy sztucznej inteligencji i uczenia głębokiego
 [Maszyny wirtualnej do nauki o danych](http://aka.ms/dsvm) (DSVM) i [VM uczenia głębokiego](http://aka.ms/dsvm/deeplearning) obsługuje wiele platform uczenia głębokiego, aby ułatwić tworzenie aplikacji sztucznej inteligencji (AI) przy użyciu analizy predykcyjnej i możliwości poznawcze, takich jak obraz i language understanding. 
@@ -81,7 +81,7 @@ Poniżej przedstawiono szczegółowe informacje na wszystkie niedostępne w masz
 | Co to jest?   | Platforma do uczenia głębokiego      |
 | Wersje maszyny DSVM obsługiwane      | Ubuntu     |
 | Jak jest ona skonfigurowana / zainstalowanym maszyny DSVM?  | Caffe jest zainstalowany w `/opt/caffe`.    |
-| Przełączanie do środowiska Python 2.7 | Uruchom polecenie `source activate root` |
+| Przełączanie do środowiska Python 2.7 | Uruchom `source activate root` |
 | Zawiera linki do przykładów      | Przykłady są objęte `/opt/caffe/examples`.      |
 | Pokrewne narzędzia na maszyny DSVM      | Caffe2      |
 ### <a name="how-to-use--run-it"></a>Jak używać / ją uruchomić?  
@@ -174,7 +174,7 @@ Zaloguj się do tej maszyny Wirtualnej z X2Go. W terminalu Uruchom usługę:
 
     sudo systemctl start digits
 
-Usługa zajmuje około jednej minuty do uruchomienia. Uruchom przeglądarkę internetową i przejdź do `http://localhost:5000`.
+Usługa zajmuje około jednej minuty do uruchomienia. Uruchom przeglądarkę internetową i przejdź do `http://localhost:5000`. Należy pamiętać, że CYFR nie bezpiecznego logowania i nie powinny być udostępniane poza maszyny Wirtualnej.
 
 
 

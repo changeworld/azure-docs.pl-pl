@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: iainfou
-ms.openlocfilehash: f04b4015e201d272fa624b1de265792564ac14cd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 140d663524696f19844fea8906b181f468b7d157
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47048148"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647013"
 ---
 # <a name="use-azure-container-registry-as-a-helm-repository-for-your-application-charts"></a>Używać usługi Azure Container Registry jako repozytorium narzędzia Helm dla wykresów aplikacji
 
@@ -30,7 +30,7 @@ W tym artykule pokazano, jak używać repozytorium pakietów narzędzia Helm, pr
 Aby wykonać kroki opisane w tym artykule, muszą być spełnione następujące wymagania wstępne:
 
 - **Usługa Azure Container Registry** — Tworzenie rejestru kontenerów w ramach subskrypcji platformy Azure. Na przykład użyć [witryny Azure portal](container-registry-get-started-portal.md) lub [wiersza polecenia platformy Azure](container-registry-get-started-azure-cli.md).
-- **Klient narzędzia Helm** wyszukiwanie i instalowanie wykresów. Należy również serwera narzędzia Helm (Tiller) inicjowane w obrębie klastra Kubernetes. Jeśli to konieczne, możesz [Utwórz klaster Azure Kubernetes Service][aks-quickstart]. Aby uzyskać więcej informacji na temat sposobu instalowania i używania narzędzia Helm, zobacz [instalowanie narzędzia Helm][helm-install].
+- **Wersja klienta Helm 2.11.0 (nie wersja RC) lub nowszym** — Uruchom `helm version` można znaleźć bieżącej wersji. Należy również serwera narzędzia Helm (Tiller) inicjowane w obrębie klastra Kubernetes. Jeśli to konieczne, możesz [Utwórz klaster Azure Kubernetes Service][aks-quickstart]. Aby uzyskać więcej informacji na temat instalacji i uaktualniania narzędzia Helm, zobacz [instalowanie narzędzia Helm][helm-install].
 - **Wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej** — Uruchom `az --version` Aby znaleźć wersję. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
 ## <a name="add-a-repository-to-helm-client"></a>Dodawanie repozytorium narzędzia Helm klienta

@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 10/10/2018
 ms.author: diberry
-ms.openlocfilehash: adb44dcc8c41b1a7846ff346d141dc0c4b028e96
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 6a3edfd426fcdce83bd60332ba2b1ff6224dae1a
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888292"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645563"
 ---
 # <a name="add-example-utterances-and-label-with-entities"></a>Dodawanie wypowiedzi przykład i etykiety z jednostkami
 
@@ -159,6 +159,36 @@ W polu wypowiedź `Book 2 tickets from Seattle to Cairo`, Seattle, jest to lokal
     >Nazwy jednostek podrzędny musi być unikatowa we wszystkich jednostek w jednej aplikacji. Dwoma obiektami hierarchiczne nie może zawierać jednostki podrzędne o takiej samej nazwie. 
 
     Zobacz [wyodrębnianie danych](luis-concept-data-extraction.md#hierarchical-entity-data) dowiedzieć się więcej o wyodrębniania hierarchiczne jednostki z punktu końcowego odpowiedź JSON na zapytanie. Spróbuj hierarchiczne jednostki [Szybki Start](luis-quickstart-intent-and-hier-entity.md) Aby dowiedzieć się więcej o sposobie używania hierarchiczne jednostki.
+
+## <a name="entity-status-predictions"></a>Prognozy stanu jednostki
+
+Po wprowadzeniu nowych wypowiedź w portalu usługi LUIS wypowiedź mogą występować błędy prognozowania jednostki. Błąd prognozowania różnią się od sposobu jednostki jest oznaczona etykietą w porównaniu z jak przewidziało jednostki usługi LUIS. 
+
+Różnica ta jest przedstawiane w portalu usługi LUIS czerwoną linią wypowiedź. Czerwonym podkreśleniem, może pojawić się w nawiasach jednostki lub na zewnątrz nawiasy kwadratowe. 
+
+![Zrzut ekranu jednostki Stan prognozowania rozbieżność](./media/luis-how-to-add-example-utterances/entity-prediction-error.png)
+
+Wybierz wyrazy, które zostaną podkreślone na czerwono na wypowiedź. 
+
+Wyświetla pole jednostki **stan jednostki** z czerwony wykrzyknik różnic prognozy. Aby wyświetlić stan jednostki przy użyciu informacji na temat różnic między jednostkami etykietami oraz dostęp do przewidywanych, wybierz **stan jednostki** wybierz element z prawej strony.
+
+![Zrzut ekranu jednostki Stan prognozowania rozbieżność](./media/luis-how-to-add-example-utterances/entity-status.png)
+
+Czerwona linia może znajdować się w miejscach występowania dowolnego z następujących godzinach:
+
+    * Po wprowadzeniu wypowiedź, ale przed jednostki jest oznaczona etykietą
+    * Po zastosowaniu etykiety jednostki
+    * Po usunięciu etykieta jednostki
+    * Gdy przewiduje więcej niż jednej etykiety jednostek dla tego tekstu 
+
+Następujące rozwiązania pomóc rozwiązać za pomocą jednostki prognozowania:
+
+|Jednostka|Wizualny wskaźnik informujący|Prognozy|Rozwiązanie|
+|--|--|--|--|
+|Wypowiedź wprowadzona, jednostki nie jest oznaczony jako jeszcze.|czerwonym podkreśleniem|Prognozowanie jest poprawna.|Etykieta jednostki z wartością prognozowaną.|
+|Bez etykiety tekstowe|czerwonym podkreśleniem|Niepoprawne prognoz|Bieżący wypowiedzi korzystające z tej jednostki niepoprawne konieczne przeglądane we wszystkich intencji. Bieżącego wypowiedzi mają mistaught LUIS, czy ten tekst jest przewidywana jednostki.
+|Niepoprawnie oznaczone tekstu|Zaznacz jednostki niebieski, czerwoną linią|Niepoprawne prognoz|Podaj więcej wypowiedzi z jednostką poprawnie oznaczony w różnych miejscach i użycia. Bieżący wypowiedzi są nie są wystarczające do nauki LUIS, że to jest jednostka lub podobne jednostki są wyświetlane w tym samym kontekście. Podobne jednostki należy połączyć w pojedynczej jednostki, dzięki czemu usługa LUIS jest mylące. Innym rozwiązaniem jest dodanie listy frazę do poprawienia znaczenie słowa. |
+|Niepoprawnie oznaczone tekstu|Zaznacz jednostki niebieski, czerwoną linią|Poprawne prognoz| Podaj więcej wypowiedzi z jednostką poprawnie oznaczony w różnych miejscach i użycia. 
 
 
 ## <a name="remove-entity-labels-from-utterances"></a>Usuń jednostki etykiety wypowiedzi

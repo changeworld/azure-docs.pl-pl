@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: fc11e29b03df617c4b5bb6f4fbb43cd478001d42
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 3f2ebb82f5affa3c41f237edcc039eb6214c7a4c
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521425"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649299"
 ---
 # <a name="azure-storage-metrics-migration"></a>Migracji metryki magazynu platformy Azure
 
@@ -25,7 +25,7 @@ W tym artykule pokazano, jak przeprowadzić migrację z metryk starej do nowej m
 
 Usługa Azure Storage umożliwia zbieranie informacji o stare wartości metryk, agreguje i przechowuje je w tabelach $Metric w obrębie tego samego konta magazynu. Witryna Azure portal umożliwia konfigurowanie monitorowania wykresu. Można również użyć zestawów SDK usługi Azure Storage do odczytywania danych z tabel $Metric, które są oparte na schemacie. Aby uzyskać więcej informacji, zobacz [Storage Analytics](./storage-analytics.md).
 
-Stary metryki zawierają metryki pojemności tylko na usłudze Azure Blob storage. Stary metryki zawierają metryk transakcji usługi Blob storage, Table storage, Azure Files i Queue storage. 
+Stary metryki zawierają metryki pojemności tylko na usłudze Azure Blob storage. Stary metryki zawierają metryk transakcji usługi Blob storage, Table storage, Azure Files i Queue storage.
 
 Stary metryki zostały zaprojektowane w schemacie prostego. Projekt skutkuje zero wartość metryki, gdy nie masz wzorców ruchu wyzwalania metryki. Na przykład **ServerTimeoutError** wartość jest równa 0 w tabelach $Metric nawet wtedy, gdy wszystkie błędy przekroczenia limitu czasu serwera nie otrzymywać aktywny ruch do konta magazynu.
 
@@ -65,14 +65,14 @@ Nowe oferty, które nie obsługują stare metryki są następujące metryki:
 
 | Stary metryki | Nową metrykę |
 | ------------------- | ----------------- |
-| **AnonymousAuthorizationError** | Transakcje z wymiarem **ResponseType** równa **AuthorizationError** |
-| **AnonymousClientOtherError** | Transakcje z wymiarem **ResponseType** równa **ClientOtherError** |
-| **AnonymousClientTimeoutError** | Transakcje z wymiarem **ResponseType** równa **ClientTimeoutError** |
-| **AnonymousNetworkError** | Transakcje z wymiarem **ResponseType** równa **NetworkError** |
-| **AnonymousServerOtherError** | Transakcje z wymiarem **ResponseType** równa **ServerOtherError** |
-| **AnonymousServerTimeoutError** | Transakcje z wymiarem **ResponseType** równa **ServerTimeoutError** |
-| **AnonymousSuccess** | Transakcje z wymiarem **ResponseType** równa **sukces** |
-| **AnonymousThrottlingError** | Transakcje z wymiarem **ResponseType** równa **ClientThrottlingError** lub **ServerBusyError** |
+| **AnonymousAuthorizationError** | Transakcje z wymiarem **ResponseType** równa **AuthorizationError** i wymiar **uwierzytelniania** równa **anonimowe** |
+| **AnonymousClientOtherError** | Transakcje z wymiarem **ResponseType** równa **ClientOtherError** i wymiar **uwierzytelniania** równa **anonimowe** |
+| **AnonymousClientTimeoutError** | Transakcje z wymiarem **ResponseType** równa **ClientTimeoutError** i wymiar **uwierzytelniania** równa **anonimowe** |
+| **AnonymousNetworkError** | Transakcje z wymiarem **ResponseType** równa **NetworkError** i wymiar **uwierzytelniania** równa **anonimowe** |
+| **AnonymousServerOtherError** | Transakcje z wymiarem **ResponseType** równa **ServerOtherError** i wymiar **uwierzytelniania** równa **anonimowe** |
+| **AnonymousServerTimeoutError** | Transakcje z wymiarem **ResponseType** równa **ServerTimeoutError** i wymiar **uwierzytelniania** równa **anonimowe** |
+| **AnonymousSuccess** | Transakcje z wymiarem **ResponseType** równa **Powodzenie** i wymiar **uwierzytelniania** równa **anonimowe** |
+| **AnonymousThrottlingError** | Transakcje z wymiarem **ResponseType** równa **ClientThrottlingError** lub **ServerBusyError** i wymiar **uwierzytelniania** równa **anonimowe** |
 | **AuthorizationError** | Transakcje z wymiarem **ResponseType** równa **AuthorizationError** |
 | **Dostępność** | **Dostępność** |
 | **Wartość AverageE2ELatency** | **SuccessE2ELatency** |
@@ -87,14 +87,14 @@ Nowe oferty, które nie obsługują stare metryki są następujące metryki:
 | **PercentSuccess** | Transakcje z wymiarem **ResponseType** równa **sukces** |
 | **Wartości PercentThrottlingError** | Transakcje z wymiarem **ResponseType** równa **ClientThrottlingError** lub **ServerBusyError** |
 | **Wartości PercentTimeoutError** | Transakcje z wymiarem **ResponseType** równa **ServerTimeoutError** lub **ResponseType** równa **ClientTimeoutError** |
-| **SASAuthorizationError** | Transakcje z wymiarem **ResponseType** równa **AuthorizationError** |
-| **SASClientOtherError** | Transakcje z wymiarem **ResponseType** równa **ClientOtherError** |
-| **SASClientTimeoutError** | Transakcje z wymiarem **ResponseType** równa **ClientTimeoutError** |
-| **SASNetworkError** | Transakcje z wymiarem **ResponseType** równa **NetworkError** |
-| **SASServerOtherError** | Transakcje z wymiarem **ResponseType** równa **ServerOtherError** |
-| **SASServerTimeoutError** | Transakcje z wymiarem **ResponseType** równa **ServerTimeoutError** |
-| **SASSuccess** | Transakcje z wymiarem **ResponseType** równa **sukces** |
-| **SASThrottlingError** | Transakcje z wymiarem **ResponseType** równa **ClientThrottlingError** lub **ServerBusyError** |
+| **SASAuthorizationError** | Transakcje z wymiarem **ResponseType** równa **AuthorizationError** i wymiar **uwierzytelniania** równa **sygnatury dostępu Współdzielonego** |
+| **SASClientOtherError** | Transakcje z wymiarem **ResponseType** równa **ClientOtherError** i wymiar **uwierzytelniania** równa **sygnatury dostępu Współdzielonego** |
+| **SASClientTimeoutError** | Transakcje z wymiarem **ResponseType** równa **ClientTimeoutError** i wymiar **uwierzytelniania** równa **sygnatury dostępu Współdzielonego** |
+| **SASNetworkError** | Transakcje z wymiarem **ResponseType** równa **NetworkError** i wymiar **uwierzytelniania** równa **sygnatury dostępu Współdzielonego** |
+| **SASServerOtherError** | Transakcje z wymiarem **ResponseType** równa **ServerOtherError** i wymiar **uwierzytelniania** równa **sygnatury dostępu Współdzielonego** |
+| **SASServerTimeoutError** | Transakcje z wymiarem **ResponseType** równa **ServerTimeoutError** i wymiar **uwierzytelniania** równa **sygnatury dostępu Współdzielonego** |
+| **SASSuccess** | Transakcje z wymiarem **ResponseType** równa **Powodzenie** i wymiar **uwierzytelniania** równa **sygnatury dostępu Współdzielonego** |
+| **SASThrottlingError** | Transakcje z wymiarem **ResponseType** równa **ClientThrottlingError** lub **ServerBusyError** i wymiar **uwierzytelniania** równa **sygnatury dostępu Współdzielonego** |
 | **ServerOtherError** | Transakcje z wymiarem **ResponseType** równa **ServerOtherError** |
 | **ServerTimeoutError** | Transakcje z wymiarem **ResponseType** równa **ServerTimeoutError** |
 | **Powodzenie** | Transakcje z wymiarem **ResponseType** równa **sukces** |

@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: b5433ea0a92635b5bf9c2a4887451f1e64ec62e6
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: db8fc0b6926930521f11285dc56c886c10c42fc2
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067772"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649316"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding często zadawane pytania
 
@@ -157,11 +157,9 @@ Jeśli używasz dziennik analizy prognozowania, nie należy przechwytywać wypow
 * Wypowiedzi można usunąć z listy wypowiedzi użytkowników usługi LUIS sugeruje w **Przejrzyj wypowiedzi punktu końcowego** strony. Usuwanie wypowiedzi z tej listy zapobiega sugerowane, ale nie powoduje usunięcia ich z dzienników.
 * Jeśli usuniesz konto, wszystkie aplikacje zostaną usunięte wraz z ich wypowiedzi przykład i dzienniki. Dane są przechowywane na serwerach przez 60 dni, zanim zostanie trwale usunięty.
 
-### <a name="does-microsoft-access-my-luis-app-data-for-its-own-purposes-for-example-to-enhance-luis-or-microsoft-in-general"></a>Microsoft dostęp do danych aplikacji usługi LUIS na własne potrzeby na przykład, aby ulepszyć usługi LUIS lub Microsoft ogólnie rzecz biorąc?
+### <a name="how-does-microsoft-manage-data-i-send-to-luis"></a>Jak Microsoft zarządzać danych wysyłanych do usługi LUIS?
 
-Nie. Model danych aplikacji usługi LUIS nie jest używany przez usługi LUIS, aby ulepszyć usługi LUIS jako platforma lub używane przez firmę Microsoft w jakikolwiek sposób. Każda aplikacja dane są oddzielne i należy tylko do użytkowników i współpracowników.
-
-Dowiedz się więcej o [rozwiązania prywatność użytkownika](luis-user-privacy.md), [dodatkowe zabezpieczenia, zgodność](luis-concept-security.md#security-compliance), i [magazyn danych](luis-concept-data-storage.md).
+[Centrum zaufania](https://www.microsoft.com/trustcenter) opisano nasze zobowiązania i opcje zarządzania danymi i dostępu w usługach Azure.
 
 ## <a name="language-and-translation-support"></a>Obsługa języka i tłumaczenia
 
@@ -196,7 +194,7 @@ Nie.
 
 Następujące funkcje zostały wydane na konferencji Build 2018 r.:
 
-|Name (Nazwa)|Zawartość|
+|Nazwa|Zawartość|
 |--|--|
 |Ulepszenia|[Wyrażenie regularne](luis-concept-data-extraction.md##regular-expression-entity-data) jednostki i [frazy klucz](luis-concept-data-extraction.md#key-phrase-extraction-entity-data) jednostki
 |Wzorce|Wzorce [koncepcji](luis-concept-patterns.md), [samouczek](luis-tutorial-pattern.md), [porad](luis-how-to-model-intent-pattern.md)<br>[Patterns.Any](luis-concept-entity-types.md) jednostki w tym koncepcji [jawną listę](luis-concept-patterns.md#explicit-lists) dla wyjątków<br>[Role](luis-concept-roles.md) pojęcia|

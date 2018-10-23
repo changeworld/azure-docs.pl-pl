@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: dd99218765c873120c4117a3ec1712fe0a605e66
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 1d7723f356274bbd18b1ea08e34046da82a1057c
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45637590"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646357"
 ---
 **Pytanie**: należy użyć hierarchicznej jednostki lub wzorca za pomocą prostego jednostki przy użyciu ról? 
 
@@ -27,4 +27,4 @@ Jeśli wypowiedzi nie ma wyraźnego, korzystanie z jednostek hierarchicznej.
 |--|--|
 |musi mieć wypowiedzi przykład za pomocą jednostki podrzędne oznaczony etykietą w intencji|musi mieć wypowiedzi przykład **role nie może być oznaczony jako w intencji**|
 |można używać we wzorcach|**należy** korzystać we wzorcach|
-|może być konieczne **więcej** przykład wypowiedzi w intencji|może być konieczne ** mniej wypowiedzi przykładu w intencji|
+|może być konieczne **więcej** przykład wypowiedzi w intencji|może być konieczne **mniej** przykład wypowiedzi w intencji|

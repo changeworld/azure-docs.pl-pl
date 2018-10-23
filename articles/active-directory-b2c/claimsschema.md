@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6c41890922e2235190d8844a573522846b42c779
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 92328ffd8b6dbbb2be82bc70352e19f3097eb2a7
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434504"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637735"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -42,9 +42,9 @@ ms.locfileid: "47434504"
 
 **Oświadczenia** element zawiera następujący atrybut:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagana | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Yes | Identyfikator, który jest używany dla typu oświadczenia. Inne elementy, można użyć tego identyfikatora w zasadach. |
+| Id | Tak | Identyfikator, który jest używany dla typu oświadczenia. Inne elementy, można użyć tego identyfikatora w zasadach. |
 
 **Oświadczenia** element zawiera następujące elementy:
 
@@ -69,10 +69,10 @@ PredicateValidationReference| 0:1 | Odwołanie do **PredicateValidationsInput** 
 
 **Protokołu** element zawiera następujące atrybuty:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagana | Opis |
 | --------- | -------- | ----------- |
-| Name (Nazwa) | Yes | Nazwa Nieprawidłowa protokołu obsługiwanego przez usługę Azure AD B2C. Możliwe wartości to: OAuth1, OAuth2, SAML2, OpenIdConnect, WsFed lub WsTrust. |
-| PartnerClaimType | Yes | Nazwa typu oświadczenia, która ma być używany. |
+| Nazwa | Tak | Nazwa Nieprawidłowa protokołu obsługiwanego przez usługę Azure AD B2C. Możliwe wartości to: OAuth1, OAuth2, SAML2, OpenIdConnect, WsFed lub WsTrust. |
+| PartnerClaimType | Tak | Nazwa typu oświadczenia, która ma być używany. |
 
 W poniższym przykładzie, gdy struktura środowiska tożsamości korzysta z dostawcy tożsamości SAML2 lub aplikacji jednostki uzależnionej **nazwisko** oświadczeń jest mapowany na `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`, za pomocą OpenIdConnect i protokołu OAuth2 jest oświadczenie mapowany do `family_name`.
 
@@ -88,7 +88,7 @@ W poniższym przykładzie, gdy struktura środowiska tożsamości korzysta z dos
 </ClaimType>
 ```
 
-W wyniku token JWT wystawione przez usługę Azure AD B2C, pomija `family_name` zamiast nazwy typu oświadczenia **nazwisko**.
+W wyniku token JWT wystawione przez usługę Azure AD B2C, emituje `family_name` zamiast nazwy typu oświadczenia **nazwisko**.
  
 ```JSON
 {
@@ -104,9 +104,9 @@ W wyniku token JWT wystawione przez usługę Azure AD B2C, pomija `family_name` 
 
 **Maski** element zawiera następujące atrybuty:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagana | Opis |
 | --------- | -------- | ----------- |
-| Typ | Yes | Typ oświadczenia maski. Możliwe wartości: `Simple` lub `Regex`. `Simple` Wartość wskazuje, że maska prosty tekst jest stosowane wiodących części oświadczenia ciągu. `Regex` Wartość wskazuje, że wyrażenie regularne jest stosowany do oświadczenia ciągu jako całości.  Jeśli `Regex` jest określona, opcjonalny atrybut musi także być zdefiniowany za pomocą wyrażeń regularnych do użycia. |
+| Typ | Tak | Typ oświadczenia maski. Możliwe wartości: `Simple` lub `Regex`. `Simple` Wartość wskazuje, że maska prosty tekst jest stosowane wiodących części oświadczenia ciągu. `Regex` Wartość wskazuje, że wyrażenie regularne jest stosowany do oświadczenia ciągu jako całości.  Jeśli `Regex` jest określona, opcjonalny atrybut musi także być zdefiniowany za pomocą wyrażeń regularnych do użycia. |
 | wyrażenie regularne | Nie | Jeśli **typu** ustawiono `Regex`, określ wyrażenie regularne do użycia.
 
 W przykładzie follwing konfiguruje **PhoneNumber** oświadczenia `Simple` maski:
@@ -144,7 +144,7 @@ Struktura środowiska tożsamości powoduje wyświetlenie tylko pierwszą liter�
 
 **Ograniczeń** element może zawierać następującego atrybutu:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagana | Opis |
 | --------- | -------- | ----------- |
 | MergeBehavior | Nie | Metoda użyta do scalenia wartości wyliczenia z oświadczenia w zasadach nadrzędnego zawierających ten sam identyfikator. Podczas zastępowania oświadczenia określone w zasadach podstawowych, należy użyć tego atrybutu. Możliwe wartości: `Append`, `Prepend`, lub `ReplaceAll`. `Append` Wartość jest kolekcją danych, który ma zostać dodany na końcu kolekcji określonej w zasadach nadrzędnej. `Prepend` Wartość jest kolekcją danych, który ma zostać dodany przed kolekcji określonej w zasadach nadrzędnej. `ReplaceAll` Wartość jest kolekcją danych, określonym w zasadach nadrzędnego, które mają być ignorowane. |
 
@@ -159,10 +159,10 @@ Struktura środowiska tożsamości powoduje wyświetlenie tylko pierwszą liter�
 
 **Wyliczenie** element zawiera następujące atrybuty:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagana | Opis |
 | --------- | -------- | ----------- |
-| Tekst | Yes | Ciąg wyświetlany, który jest wyświetlany w interfejsie użytkownika dla tej opcji. |
-|Wartość | Yes | Wartość oświadczenia, który jest skojarzony z wybraniu tej opcji. |
+| Tekst | Tak | Ciąg wyświetlany, który jest wyświetlany w interfejsie użytkownika dla tej opcji. |
+|Wartość | Tak | Wartość oświadczenia, który jest skojarzony z wybraniu tej opcji. |
 | SelectByDefault | Nie | Wskazuje, czy należy wybrać tę opcję, domyślnie w interfejsie użytkownika. Możliwe wartości: True lub False. |
 
 Poniższy przykład umożliwia skonfigurowanie **Miasto** lista rozwijana lista oświadczeń z wartością domyślną wartość `New York`:
@@ -188,9 +188,9 @@ Lista rozwijana lista miasta z wartością domyślną, ustaw Nowy Jork:
 
 **Wzorzec** element może zawierać następujące atrybuty:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagana | Opis |
 | --------- | -------- | ----------- |
-| Wyrażenia regularnego | Yes | Wyrażenie regularne oświadczeń tego typu muszą być zgodne, aby był prawidłowy. |
+| Wyrażenia regularnego | Tak | Wyrażenie regularne oświadczeń tego typu muszą być zgodne, aby był prawidłowy. |
 | Tekst pomocy | Nie | Wzorzec lub wyrażenie regularne dla tego oświadczenia. |
 
 Poniższy przykład umożliwia skonfigurowanie **e-mail** oświadczenia za pomocą wyrażeń regularnych wejściowy weryfikacji i tekst pomocy:

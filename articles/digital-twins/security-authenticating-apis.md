@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2018
 ms.author: lyrana
-ms.openlocfilehash: ef7838c41bb479da273123c2eb3def8e12802390
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: dc5570b188bfdc0e1be78aa2bd5c5d92e884f377
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351306"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638022"
 ---
 # <a name="connect-and-authenticate-to-apis"></a>Się i została uwierzytelniona do interfejsów API
 
@@ -46,6 +46,7 @@ Aby rozpocząć pracę z interfejsami API usługi cyfrowego bliźniaczych reprez
 1. Przejdź do https://www.getpostman.com/ do pobrania
 1. Postępuj zgodnie z instrukcjami [tutaj](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) do tworzenia aplikacji usługi Azure Active Directory (lub istnieje możliwość ponownego użycia istniejącej rejestracji). 
 1. W obszarze wymaganych uprawnień Dodaj "Twins cyfrowych platformy Azure", a następnie wybierz delegowane uprawnienia. Nie zapomnij kliknąć przycisk Udziel uprawnień, aby zakończyć.
+1. Otwórz w manifeście aplikacji i ustaw oauth2AllowImplicitFlow na wartość true
 1. Adres url odpowiedzi, aby skonfigurować [ https://www.getpostman.com/oauth2/callback ](https://www.getpostman.com/oauth2/callback).
 1. Wybierz **kartę autoryzacji**, kliknij pozycję **OAuth 2.0**i wybierz **uzyskać nowy Token dostępu**.
 

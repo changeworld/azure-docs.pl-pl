@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/22/2018
 ms.author: pullabhk
-ms.openlocfilehash: 1f3b81c31dc566e5e3011167eee00145f6791cb1
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: d38da87bae07dadb10894593dd41ded22f5f162d
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616913"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638311"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Odzyskiwanie plików z kopii zapasowej maszyny wirtualnej platformy Azure
 
@@ -45,7 +45,7 @@ Aby przywrócić pliki lub foldery z punktu odzyskiwania, przejdź do maszyny wi
 
 4. Z **wybierz punkt odzyskiwania** menu rozwijanego wybierz punkt odzyskiwania, który zawiera pliki mają. Domyślnie najnowszy punkt odzyskiwania jest zaznaczona.
 
-5. Aby pobrać oprogramowanie używany do kopiowania plików z punktu odzyskiwania, kliknij przycisk **Pobierz plik wykonywalny** (w przypadku maszyn wirtualnych platformy Azure Windows) lub **Pobierz skrypt** (dla systemu Linux maszyny Wirtualnej platformy Azure).
+5. Aby pobrać oprogramowanie używany do kopiowania plików z punktu odzyskiwania, kliknij przycisk **Pobierz plik wykonywalny** (w przypadku maszyn wirtualnych platformy Azure Windows) lub **Pobierz skrypt** (dla systemu Linux maszyny Wirtualnej platformy Azure, jest generowany skrypt w języku python).
 
     ![Wygenerowane hasło](./media/backup-azure-restore-files-from-vm/download-executable.png)
 
@@ -87,7 +87,7 @@ Podczas uruchamiania pliku wykonywalnego systemu operacyjnego na komputerze inst
 
    ![Menu odzyskiwania plików](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
-#### <a name="for-linux"></a>W przypadku systemu Linux
+#### <a name="for-linux"></a>For Linux
 
 W systemie Linux woluminy punktu odzyskiwania są instalowane w folderze, w którym skrypt jest uruchamiany. W związku z tym są wyświetlane dołączonych dysków, woluminów i odpowiadające im ścieżki instalacji. Zainstaluj te ścieżki są widoczne dla użytkowników mających dostęp na poziomie głównym. Przeglądaj woluminy wymienionych w danych wyjściowych skryptu.
 
@@ -206,7 +206,7 @@ Skrypt wymaga również składników języka Python i bash wykonanie i bezpieczn
 | --------------- | ---- |
 | Bash | 4 i nowsze wersje |
 | python | 2.6.6 i nowsze wersje  |
-| Protokół TLS | 1.2 powinna być obsługiwana.  |
+| TLS | 1.2 powinna być obsługiwana.  |
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 

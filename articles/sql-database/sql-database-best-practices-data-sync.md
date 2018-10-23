@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: ''
 manager: craigg
-ms.date: 08/20/2018
-ms.openlocfilehash: 1d292007b06e12b6be28e053bc6def3b12c7befe
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 10/22/2018
+ms.openlocfilehash: 4bc655f1e9da00a42c60e1ab763c5503b393d4a1
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063659"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646307"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Najlepsze rozwiązania dotyczące funkcji SQL Data Sync 
 
@@ -48,7 +48,7 @@ Usługa Azure SQL Database obsługuje tylko jeden zestaw poświadczeń. Aby wyko
 -   Zmienić poświadczenia dla różnych etapów (na przykład *credentials1* instalacji i *credentials2* dla trwających).  
 -   Zmiana uprawnień poświadczeń (oznacza to, Zmień uprawnienia po skonfigurowaniu synchronizacji).
 
-## <a name="setup"></a>Konfigurowanie
+## <a name="setup"></a>Instalacja
 
 ### <a name="database-considerations-and-constraints"></a> Kwestie i ograniczenia
 
@@ -71,6 +71,10 @@ Każda tabela w grupie synchronizacji musi mieć klucz podstawowy. Usługa SQL D
 
 Przed użyciem SQL Data Sync w środowisku produkcyjnym należy przetestować wydajność synchronizacji początkowej oraz bieżące.
 
+#### <a name="empty-tables-provide-the-best-performance"></a>Pusty tabele zapewniają najlepszą wydajność
+
+Pusty tabele zapewniają najlepszą wydajność podczas inicjowania. Jeśli tabela docelowa jest pusta, synchronizowanie danych używa wstawiania zbiorczego do ładowania danych. W przeciwnym razie synchronizacja danych wykonuje porównanie wiersz po wierszu i wstawiania, aby sprawdzić konflikty. Jeśli wydajność nie ma znaczenia, jednak można skonfigurować synchronizacji między tabelami, które już zawierają dane.
+
 ### <a name="provisioning-destination-databases"></a> Inicjowanie obsługi administracyjnej docelowej bazy danych
 
 SQL Data Sync zawiera autoprovisioning podstawowej bazy danych.
@@ -90,7 +94,7 @@ SQL Data Sync ma następujące ograniczenia dotyczące autoprovisioning:
 -   UPDATE CASCADE i ON DELETE CASCADE akcje na ograniczenia klucza obcego nie są odtwarzane w tabelach docelowych.
 -   W przypadku kolumn dziesiętnego lub liczbowego o dokładności większej niż 28 SQL Data Sync może wystąpić problem przepełnienia konwersji podczas synchronizacji. Zaleca się ograniczenie dokładność dziesiętnego lub liczbowego kolumn do 28 lub mniej.
 
-#### <a name="recommendations"></a>Zalecenia
+#### <a name="recommendations"></a>Rekomendacje
 
 -   Tylko wtedy, gdy są wypróbowanie usługi, należy użyć funkcji autoprovisioning SQL Data Sync.  
 -   W środowisku produkcyjnym obsługi administracyjnej schematu bazy danych.
@@ -110,7 +114,7 @@ Aby zminimalizować czas oczekiwania, zachować baza danych koncentratora blisko
 
 Zastosowanie poprzedniego wytyczne do złożonych synchronizacji konfiguracji grupy, takie jak te, które są różne scenariusze przedsiębiorstwa do chmury i z chmury do chmury.
 
-## <a name="sync"></a>Sync
+## <a name="sync"></a>Synchronizacja
 
 ### <a name="avoid-a-slow-and-costly-initial-synchronization"></a> Należy unikać powolne i kosztownych początkowej synchronizacji
 

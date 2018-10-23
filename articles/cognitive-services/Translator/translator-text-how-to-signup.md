@@ -1,21 +1,21 @@
 ---
-title: Interfejsu API tłumaczenia tekstu rejestracji
+title: Jak utworzyć konto w usłudze Translator tekstu — interfejs API tekstu usługi Translator
 titleSuffix: Azure Cognitive Services
-description: Jak zarejestrować się do interfejsu API tłumaczenia tekstu.
+description: Dowiedz się, jak utworzyć konto interfejsu API tłumaczenia tekstu i uzyskiwanie klucza subskrypcji.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: 18d2926be9d358b90e5b34754e689604aef85522
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: a08a3a5f2c4e17406863ab203c5af1781b4223d3
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46128321"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648339"
 ---
 # <a name="how-to-sign-up-for-the-translator-text-api"></a>Jak zarejestrować się do interfejsu API tłumaczenia tekstu
 
@@ -53,11 +53,11 @@ Po zarejestrowaniu się do tekstu usługi Translator można korzystać klucz dos
 
 - [Interfejs API tekstu usługi Translator](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 
-## <a name="customization"></a>Dostosowywanie
+## <a name="customization"></a>Dostosowanie
 
 Użyj niestandardowego w usłudze Translator Dostosuj tłumaczenia i Utwórz system tłumaczeń dostosowana do własnych terminologii i stylu, zaczynając od ogólnego systemów neuronowego tłumaczenia maszynowego Microsoft Translator. [Dowiedz się więcej](customization.md)
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Rozpoczynanie pracy z platformą Azure (3-minutowy klip wideo)](https://azure.microsoft.com/get-started/?b=16.24)
 - [Jak zapłacić za pomocą faktury](https://azure.microsoft.com/pricing/invoicing/)

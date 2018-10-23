@@ -7,15 +7,15 @@ author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: cfad122b44944cfb637d8ef98931410d60c81ab8
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 5ccfe781b3632bd7ccfc532398a00faf7a87b63f
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47041175"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637215"
 ---
 # <a name="intents-in-luis"></a>Intencje w usługi LUIS
 
@@ -26,7 +26,7 @@ Definiują zestaw intencji, które odnosi się do akcji, które użytkownicy chc
 Przeznaczeniu podróży   |   Przykładowe wypowiedzi   | 
 ------|------|
  BookFlight     |   "Zarezerwuj mnie lot Rio w następnym tygodniu" <br/> "Podnoszenia mnie do Rio na 24th" <br/> "Potrzebuję bilet płaszczyzny niedzielę dalej do Rio de Janeiro"    |
- Pozdrowienia     |   "Hi" <br/>"Hello" <br/>"Good morning"  |
+ Powitanie     |   "Hi" <br/>"Hello" <br/>"Good morning"  |
  CheckWeather | "Co to jest dane takie jak pogody w Bostonie?" <br/> "Pokaż prognozy dla tego weekend" |
  Brak         | "Dostać się ze mną przepisu plik cookie"<br>"Czy Lakers wygrać?" |
 

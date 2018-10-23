@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: 74fcfa0e1474d7d2a25d0bf9d0476fb1bb870334
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: e0654d6a4696e6f02939cad51a715412fdcfb61a
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429511"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645238"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>W usłudze Translator tekstu interfejsu API w wersji 2 do migracji V3
 
@@ -54,7 +54,7 @@ Poniższa lista metod V2 i V3 zawiera metody V3 i interfejsów API, które zapew
 
 ## <a name="move-to-json-format"></a>Przenieś do formatu JSON
 
-V2 tłumaczenia tekstu w usłudze Translator firmy Microsoft zaakceptowane i zwrócił dane w formacie XML. W wersji 3 wszystkich danych wysłanych i odebranych przy użyciu interfejsu API jest w formacie JSON. XML, nie zostanie zaakceptowany lub zwracany w wersji 3. 
+V2 tłumaczenia tekstu w usłudze Translator firmy Microsoft zaakceptowane i zwrócił dane w formacie XML. W wersji 3 wszystkich danych wysłanych i odebranych przy użyciu interfejsu API jest w formacie JSON. XML, nie zostanie zaakceptowany lub zwracany w wersji 3.
 
 Ta zmiana wpłynie na różne aspekty aplikacji napisanych dla interfejsu API tłumaczenia tekstu w wersji 2. Na przykład: interfejs API języków zwraca informacje języka na tłumaczenie tekstu, transliterację i metod dwóch słownika. Można zażądać wszystkie informacje o języku dla wszystkich metod w jednym wywołaniu lub zażądać ich osobno.
 
@@ -81,7 +81,7 @@ Microsoft Translator w wersji 3 jest rozliczana w taki sam sposób, który zosta
 
 ## <a name="v3-end-points"></a>V3 punkty końcowe
 
-Globalny
+Globalnie
 
 * API.cognitive.microsofttranslator.com
 
@@ -102,7 +102,7 @@ Globalny
 
 [Słownik/przykład](reference/v3-0-dictionary-examples.md)
 
-## <a name="customization"></a>Dostosowywanie
+## <a name="customization"></a>Dostosowanie
 
 Domyślnie V3 w usłudze Translator firmy Microsoft używa neuronowego tłumaczenia maszynowego. W efekcie nie można używać z Centrum w usłudze Translator firmy Microsoft. Centrum usługi Translator obsługuje tylko starszego statystycznego tłumaczenia maszynowego. Dostosowywanie na potrzeby tłumaczenie neuronowe jest teraz dostępna, przy użyciu niestandardowych w usłudze Translator. [Dowiedz się więcej o dostosowywaniu neuronowego tłumaczenia maszynowego](customization.md)
 

@@ -7,15 +7,15 @@ author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 39c99cc35f4c2549efc9c20af0680b77483325c5
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 2b21102a5416c1fd7e2abb35be677c48ffc63263
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038939"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638079"
 ---
 # <a name="utterances-in-luis"></a>Wypowiedzi w usługi LUIS
 
@@ -69,7 +69,7 @@ Deweloperzy powinni uruchomić testowanie ich aplikacji LUIS, przy użyciu rzecz
 ## <a name="review-utterances"></a>Przejrzyj wypowiedzi
 Po model jest uczony opublikowane i odbieranie [punktu końcowego](luis-glossary.md#endpoint) zapytań, [Przejrzyj wypowiedzi](luis-how-to-review-endoint-utt.md) zaproponowana przez usługi LUIS. Usługa LUIS wybiera wypowiedzi punkt końcowy ma niskie oceny przeznaczenie lub jednostki. 
 
-## <a name="best-practices"></a>Najlepsze praktyki
+## <a name="best-practices"></a>Najlepsze rozwiązania
 Przegląd [najlepsze praktyki](luis-concept-best-practices.md) Aby dowiedzieć się więcej.
 
 ## <a name="next-steps"></a>Kolejne kroki

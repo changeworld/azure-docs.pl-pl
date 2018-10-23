@@ -7,15 +7,15 @@ author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: article
-ms.date: 09/10/2018
+ms.topic: conceptual
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: e6bb0735de94d0baaac3a8504ec1811cfbfff27f
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 92b4864f8991380740e6edb498328ce2eea98250
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353921"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650115"
 ---
 # <a name="entities-in-luis"></a>Jednostki w usługi LUIS
 
@@ -61,10 +61,14 @@ W polu wypowiedź "Zarezerwuj mnie biletu do Paryż", "Paryż" jest jednostki ty
 ## <a name="assign-entities-in-none-intent"></a>Przypisać jednostek w Brak elementu intent
 Wszystkie opcje, w tym **Brak** celem powinny mieć jednostek etykietą. Dzięki temu usługi LUIS, Dowiedz się więcej o których jednostek wypowiedzi i jakie słowa wokół jednostki. 
 
+## <a name="entity-status-for-predictions"></a>Stan jednostki dla prognoz
+
+Zobacz [prognozy stan jednostki](luis-how-to-add-example-utterances.md#entity-status-predictions) Aby uzyskać więcej informacji. 
+
 ## <a name="types-of-entities"></a>Typy jednostek
 Usługa LUIS oferuje wiele typów jednostek; wstępnie utworzonych jednostek niestandardowych maszyn przedstawiono jednostek i listy jednostek.
 
-| Name (Nazwa) | Można oznaczyć | Opis |
+| Nazwa | Można oznaczyć | Opis |
 | -- |--|--|
 | **Wstępnie utworzone** <br/>[Custom](#prebuilt)| |  **Definicja**<br>Wbudowane typy, które reprezentują typowe pojęcia. <br><br>**Lista**<br/>numer kluczowych, numer, temperatury, wymiar, pieniądze, wiek, procent, poczty e-mail, adres URL, numer telefonu i kluczowych. <br><br>Wstępnie utworzone jednostki nazwy są zarezerwowane. <br><br>Wszystkie wstępnie utworzonych jednostek, które są dodawane do aplikacji są zwracane w [punktu końcowego](luis-glossary.md#endpoint) zapytania. Aby uzyskać więcej informacji, zobacz [ze wstępnie utworzonych jednostek](./luis-prebuilt-entities.md). <br/><br/>[Przykładowa odpowiedź dla jednostki](luis-concept-data-extraction.md#prebuilt-entity-data)|
 |<!-- added week of 3/21/08 --> **Wyrażenie regularne**<br/>[Wyrażenie regularne](#regex)||**Definicja**<br>Niestandardowe wyrażenie regularne dla tekstu sformatowanego wypowiedź raw. On ignoruje wielkość liter i ignoruje wariant kultury.  <br><br>Ta jednostka jest dobrym słów i fraz, spójnie sformatowanych przy użyciu dowolnych wariantów, który również jest zgodny.<br><br>Dopasowywanie wyrażeń regularnych są stosowane po zmianach sprawdzania pisowni. <br><br>Jeśli wyrażenie regularne jest zbyt złożone, np. przy użyciu wielu nawiasie, nie jest możliwe dodać wyrażenie do modelu. <br><br>**Przykład**<br>`kb[0-9]{6,}` Dopasowuje kb123456.<br/><br/>[Szybki start](luis-quickstart-intents-regex-entity.md)<br>[Przykładowa odpowiedź dla jednostki](luis-concept-data-extraction.md)|
@@ -200,7 +204,7 @@ Usługa LUIS także listy Typ jednostki obsługiwanej przez nie jest rozpoznana 
 
 Jeśli zostały uznane za hierarchiczna, złożony i wyświetlanie list jednostek i nadal potrzebujesz więcej niż limit się z pomocą techniczną. Aby to zrobić, należy zebrać szczegółowe informacje o systemie, przejdź do [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web, a następnie wybierz **pomocy technicznej**. Jeśli Twoja subskrypcja platformy Azure obejmują usługi pomocy technicznej, skontaktuj się z [technicznej platformy Azure](https://azure.microsoft.com/support/options/). 
 
-## <a name="best-practices"></a>Najlepsze praktyki
+## <a name="best-practices"></a>Najlepsze rozwiązania
 
 Tworzenie [jednostki](luis-concept-entity-types.md) podczas wywoływania aplikacji lub dowolnemu botowi potrzebuje niektórych parametrów lub dane z wypowiedź wymagane do wykonania akcji. Jednostka jest słowo lub frazę w polu wypowiedź, które należy wyodrębnić — prawdopodobnie jako parametr dla funkcji. 
 

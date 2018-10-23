@@ -1,108 +1,103 @@
 ---
-title: Zagnieżdżone profilów usługi Traffic Manager | Dokumentacja firmy Microsoft
-description: W tym artykule opisano funkcję "Zagnieżdżonych profilów" z usługi Azure Traffic Manager
+title: Zagnieżdżone profile usługi Traffic Manager | Dokumentacja firmy Microsoft
+description: W tym artykule opisano funkcję "Zagnieżdżone profile" z usługi Azure Traffic Manager
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: ''
-ms.assetid: f1b112c4-a3b1-496e-90eb-41e235a49609
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/22/2017
+ms.date: 10/22/2018
 ms.author: kumud
-ms.openlocfilehash: 1ac4ec2775ca9f690f5adf4f939908f8cee3f715
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 876305c7195a186671c30c4bdd9bb0c6b5331e9a
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23876978"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648602"
 ---
-# <a name="nested-traffic-manager-profiles"></a>Zagnieżdżonych profilów usługi Traffic Manager
+# <a name="nested-traffic-manager-profiles"></a>Zagnieżdżone profile usługi Traffic Manager
 
-Menedżer ruchu zawiera szereg metody routingu ruchu, które umożliwiają kontrolowanie sposobu Traffic Manager wybierze, którym punktem końcowym powinny odbierać dane z każdego użytkownika końcowego. Aby uzyskać więcej informacji, zobacz [metody routingu ruchu Menedżera ruchu](traffic-manager-routing-methods.md).
+Usługa Traffic Manager udostępnia szereg metod routingu ruchu, które pozwalają kontrolować, jak usługa Traffic Manager wybierze, którym punktem końcowym powinny odbierać dane z każdego użytkownika końcowego. Aby uzyskać więcej informacji, zobacz [metody routingu ruchu w usłudze Traffic Manager](traffic-manager-routing-methods.md).
 
-Każdy profil usługi Traffic Manager określa pojedynczej metody routingu ruchu. Istnieją jednak scenariusze, które wymagają bardziej złożone routingu ruchu niż routingu udostępniane przez jeden profil Menedżera ruchu. Można zagnieżdżać profilów usługi Traffic Manager do łączenia z zalet więcej niż jedna metoda routingu ruchu. Zagnieżdżone Profile umożliwiają zastąpienie zachowania domyślnego menedżera ruchu do obsługi większych i bardziej złożone wdrożenia aplikacji.
+Każdy profil usługi Traffic Manager określa pojedynczą metodę routingu ruchu. Jednak istnieją scenariusze, które wymagają bardziej zaawansowanych routing ruchu niż routingu przez jeden profil usługi Traffic Manager. Można zagnieżdżać profile usługi Traffic Manager, aby połączyć korzyści wynikające z więcej niż jednej metody routingu ruchu. Zagnieżdżone Profile umożliwiają zastąpić domyślne zachowanie usługi Traffic Manager, obsługi większych i bardziej złożonych wdrożeń aplikacji.
 
-Poniższe przykłady przedstawiają sposób używania zagnieżdżonych profilów usługi Traffic Manager w różnych scenariuszach.
+Poniższe przykłady ilustrują sposób korzystania zagnieżdżone profile usługi Traffic Manager w różnych scenariuszach.
 
-## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>Przykład 1: Połączenie "Performance" i "Ważone" routingu ruchu
+## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>Przykład 1: Łączenie "Wydajność" i "Ważona" routing ruchu
 
-Załóżmy, że wdrożono aplikację w następujących regionach platformy Azure: zachodnie stany USA, Europa Zachodnia i Azja Wschodnia. Metoda routingu ruchu "Performance" Traffic Manager umożliwia dystrybucję ruchu do regionu najbliżej użytkownika.
+Załóżmy, że wdrażania aplikacji w następujących regionach: zachodnie stany USA, Europa Zachodnia i Azja Wschodnia. Metody routingu ruchu "Wydajność" usługi Traffic Manager umożliwia kierowanie ruchu do region najbliżej użytkownika.
 
-![Profil Menedżera ruchu pojedynczej][4]
+![Profil usługi Traffic Manager w jednym][4]
 
-Teraz załóżmy, że chcesz przeprowadzić test przed udostępnieniem jej więcej powszechnie aktualizacji do usługi. Chcesz użyć "ważoną" metody routingu ruchu do kierowania niewielką część ruchu sieciowego dla danego wdrożenia testu. Testowe wdrożenie równolegle z istniejącego wdrożenia produkcyjnego skonfigurowane w Europa.
+Teraz załóżmy, że chcesz przetestować aktualizacji usługi przed udostępnieniem jej więcej powszechnie. Chcesz użyć "ważona" metody routingu ruchu do kierowania niewielką część ruchu do wdrożenia testowego. Testowe wdrożenie wraz z istniejącego wdrożenia produkcyjnego należy skonfigurować w regionie Europa Zachodnia.
 
-Nie można łączyć zarówno ważone i "wydajności-routingu ruchu w jednym profilu. Aby obsługiwać ten scenariusz, należy utworzyć profil Menedżera ruchu przy użyciu dwa punkty końcowe Europa i metody routingu ruchu "Ważone". Następnie można dodać tego profilu 'child' jako punktu końcowego do profilu 'parent'. Profil nadrzędnego nadal używa metody routingu ruchu wydajności i zawiera globalny wdrożenia jako punktów końcowych.
+Nie można łączyć zarówno ważona i "wydajności routingu ruchu w jeden profil. Aby obsługiwać ten scenariusz, należy utworzyć profil usługi Traffic Manager przy użyciu dwa punkty końcowe w regionie Europa Zachodnia i metody routingu ruchu "Ważona". Następnie można dodać tego profilu "podrzędne" jako punkt końcowy do profilu "parent". Profil nadrzędnego nadal korzysta z metody routingu ruchu wydajności i zawiera inne wdrożeniami globalnymi jako punkty końcowe.
 
 Na poniższym diagramie przedstawiono w tym przykładzie:
 
-![Zagnieżdżonych profilów usługi Traffic Manager][2]
+![Zagnieżdżone profile usługi Traffic Manager][2]
 
-W tej konfiguracji ruch skierowany za pośrednictwem profilu nadrzędnego dystrybuuje ruch w regionach normalnie. W ramach Europa Zachodnia profilu zagnieżdżone dystrybuuje ruch do produkcyjnych i testowych punkty końcowe według wagi przypisane.
+W tej konfiguracji ruch skierowany za pośrednictwem profilu nadrzędnego dystrybuuje ruch między regionami normalnie. W regionie Europa Zachodnia profilu zagnieżdżone dystrybuuje ruch do celów produkcyjnych i testowych punktów końcowych zgodnie z przypisane wagi.
 
-Gdy profil nadrzędnego używa metody routingu ruchu "Performance", każdego punktu końcowego musi być przypisany lokalizacji. Lokalizacja jest przypisany podczas konfigurowania punktu końcowego. Wybierz region platformy Azure najbardziej zbliżony do wdrożenia. Regiony platformy Azure są obsługiwane przez tabelę opóźnienia Internet wartości lokalizacji. Aby uzyskać więcej informacji, zobacz [Menedżera ruchu "Performance" metody routingu ruchu](traffic-manager-routing-methods.md#performance).
+Gdy profil nadrzędnego, który używa metody routingu ruchu "Wydajność", każdy punkt końcowy musi być przypisany lokalizacji. Lokalizacja jest przypisany podczas konfigurowania punktu końcowego. Wybierz region platformy Azure, która jest najbliżej danego wdrożenia. Regiony platformy Azure są obsługiwane przez tabelę opóźnienie Internet wartości lokalizacji. Aby uzyskać więcej informacji, zobacz [usługi Traffic Manager "Wydajność" metody routingu ruchu](traffic-manager-routing-methods.md#performance).
 
-## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>Przykład 2: Monitorowania punktów końcowych w profilach zagnieżdżone
+## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>Przykład 2: Monitorowanie punktu końcowego w profile zagnieżdżone
 
-Menedżer ruchu aktywnie monitoruje kondycję każdego punktu końcowego usługi. Jeśli punkt końcowy jest zła, Traffic Manager kieruje użytkowników do alternatywnego punktów końcowych, aby zachować dostępności usługi. To zachowanie monitorowania i trybu failover punktu końcowego ma zastosowanie do wszystkich metod routingu ruchu. Aby uzyskać więcej informacji, zobacz [monitorowanie punktu końcowego Menedżera ruchu](traffic-manager-monitoring.md). Punkt końcowy monitorowania działa inaczej w przypadku zagnieżdżonych profilów. Przy użyciu profilów zagnieżdżonych profilu nadrzędnego nie sprawdzania kondycji w elemencie podrzędnym bezpośrednio. Zamiast tego kondycji profilu podrzędnych punktów końcowych służy do obliczenia ogólnej kondycji profilu podrzędnych. Te informacje o kondycji są propagowane w górę hierarchii profilu zagnieżdżone. Profil nadrzędnego używa tego zagregowane kondycji do ustalenia, czy umożliwiających kierowanie ruchem do profilu podrzędnych. Zobacz [— często zadawane pytania](traffic-manager-FAQs.md#traffic-manager-nested-profiles) szczegółowe informacje o monitorowanie kondycji zagnieżdżonych profilów.
+Traffic Manager aktywnie monitoruje kondycję każdego punktu końcowego usługi. Jeśli punkt końcowy jest w złej kondycji usługi Traffic Manager kieruje użytkowników do alternatywne punkty końcowe, aby zachować dostępność usługi. To zachowanie monitorowanie i trybu failover punktu końcowego ma zastosowanie do wszystkich metod routingu ruchu. Aby uzyskać więcej informacji, zobacz [monitorowanie punktu końcowego usługi Traffic Manager](traffic-manager-monitoring.md). Monitorowanie punktu końcowego działa inaczej w przypadku profilów zagnieżdżonych. Przy użyciu profilów zagnieżdżonych profilu nadrzędnego nie sprawdzać kondycję w elemencie podrzędnym bezpośrednio. Zamiast tego kondycji punktów końcowych profilu podrzędnych jest używana do obliczenia ogólnej kondycji profilu podrzędnych. Te informacje o kondycji jest propagowane w górę hierarchii profilów zagnieżdżonych. Profil nadrzędnego używa tego zagregowanej kondycji do ustalenia, czy należy kierować ruch do profilu podrzędnych. Zobacz [— często zadawane pytania](traffic-manager-FAQs.md#traffic-manager-nested-profiles) Aby uzyskać szczegółowe informacje na temat monitorowania kondycji, profilów zagnieżdżonych.
 
-Wracając do poprzedni przykład, załóżmy, że wdrożenia produkcyjnego w Europie zachodnie nie powiedzie się. Domyślnie profilu 'child' Określa, że cały ruch do środowiska testowego. Jeśli testowe wdrożenie nie powiedzie się także, profil nadrzędnego Określa, czy profilu podrzędnych nie powinni odbierać ruchu, ponieważ wszystkie podrzędne punkty końcowe są w złej kondycji. Następnie profilu nadrzędnego dystrybuuje ruch do innych regionów.
+Wracając do poprzedniego przykładu, załóżmy, że wdrożenie produkcyjne w regionie Europa Zachodnia zakończy się niepowodzeniem. Domyślnie profilu "podrzędne" Określa, że cały ruch do wdrożenia testowego. Jeśli testowe wdrożenie nie powiedzie się także, profilu nadrzędnego Określa, czy profilu podrzędnych nie powinni odbierać ruch, ponieważ wszystkie podrzędne punkty końcowe są w złej kondycji. Następnie profilu nadrzędnego dystrybuuje ruch do innych regionów.
 
-![Zagnieżdżone profilu trybu failover (domyślnie)][3]
+![Zagnieżdżone Profile pracy awaryjnej (zachowanie domyślne)][3]
 
-Może być to rozmieszczenie modyfikowania. Lub może nie zawierać dane, że cały ruch Europa Zachodnia to teraz będzie wdrożenia testowego zamiast ruchu ograniczonym podzbiorem. Niezależnie od kondycji środowiska testowego ma do trybu failover do innych regionów, w przypadku niepowodzenia wdrożenia produkcyjnego w Europa Zachodnia. Aby włączyć ten tryb failover, można określić parametru "MinChildEndpoints" podczas konfigurowania profilu podrzędnych jako punktu końcowego w profilu nadrzędnej. Parametr określa minimalną liczbę dostępnych punktów końcowych w profilu podrzędnych. Wartość domyślna to "1". W tym scenariuszu należy ustawić wartość MinChildEndpoints na 2. Poniżej tego progu profil nadrzędnego uwzględnia profilu całego podrzędnych jako niedostępny i kieruje ruch do innych punktów końcowych.
+Może się wszystkiego o taki układ. Lub mogą być zainteresowane, że cały ruch dla Europa Zachodnia posłuży do testowego wdrożenia na zamiast ruchu podzbioru ograniczone. Niezależnie od kondycji testowego wdrożenia chcesz do trybu failover do innych regionów, w przypadku niepowodzenia wdrożenia produkcyjnego w regionie Europa Zachodnia. Aby włączyć ten tryb failover, mogą określić parametr "MinChildEndpoints", podczas konfigurowania profilu podrzędnych jako punkt końcowy w profilu nadrzędnej. Parametr określa minimalną liczbę dostępnych punktów końcowych w profilu podrzędnych. Wartość domyślna to "1". W tym scenariuszu wartość elementu MinChildEndpoints równa 2. Poniżej tego progu profilu nadrzędnego uwzględnia profilu podrzędnych całego ona niedostępna i kieruje ruch do innych punktów końcowych.
 
 Na poniższym rysunku przedstawiono tę konfigurację:
 
-![Zagnieżdżone trybu failover profil z "MinChildEndpoints" = 2][4]
+![Zagnieżdżone Profile trybu failover "MinChildEndpoints" = 2][4]
 
 > [!NOTE]
-> Metody routingu ruchu 'Priority' rozsyła cały ruch do jednego punktu końcowego. W związku z tym jest niewiele cel ustawienie MinChildEndpoints innych niż "1" dla profilu podrzędnych.
+> Metody routingu ruchu "Priority" rozsyła cały ruch do pojedynczego punktu końcowego. Związku z tym nieco cel w jest ustawienie MinChildEndpoints inne niż "1" dla profilu podrzędnych.
 
-## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>Przykład 3: Priorytetów trybu failover regiony routingu ruchu "Performance"
+## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>Przykład 3: Uszeregowane według priorytetów trybu failover regionów w routingu ruchu "Wydajność"
 
-Domyślne zachowanie dla metody routingu ruchu "Performance" pozwala uniknąć nadmiernego ładowania dalej najbliższego punktu końcowego i powoduje kaskadowych dużej liczby błędów. Gdy punkt końcowy nie powiedzie się, cały ruch, który będzie przekierowywany do określonego punktu końcowego jest równomiernie rozłożona na innych punktów końcowych wszystkich regionach.
+Domyślne zachowanie dla metody routingu ruchu "Wydajność" jest w przypadku punktów końcowych w różnych lokalizacjach geograficznych, które użytkownicy końcowi są kierowane do punktu końcowego "najbliższy" pod kątem najniższych opóźnieniem sieci.
 
-![Routing domyślny tryb failover ruchu "Performance"][5]
+Jednak Załóżmy, że wolisz trybu failover ruchu Europa Zachodnia, zachodnie stany USA, a tylko kierować ruch do innych regionów, gdy oba punkty końcowe są niedostępne. Możesz utworzyć to rozwiązanie korzysta z profilu podrzędnych za pomocą metody routingu ruchu "Priority".
 
-Jednak Załóżmy wolą trybu failover ruchu Europa zachodnie stany USA, a tylko kierować ruch do innych regionów, gdy oba punkty końcowe są niedostępne. Można utworzyć tego rozwiązania przy użyciu profilu podrzędnych za pomocą metody routingu ruchu 'Priority'.
+![Routingu preferencyjne przejścia w tryb failover ruchu "Wydajność"][6]
 
-![Routingu z preferencyjne trybu failover ruchu "wydajność.][6]
+Ponieważ punkt końcowy Europa Zachodnia ma wyższy priorytet niż punkt końcowy zachodnie stany USA, cały ruch jest wysyłany do endpoint Europa Zachodnia, gdy oba punkty końcowe są w trybie online. W przypadku niepowodzenia Europa Zachodnia, jego ruch będzie kierowany do regionu zachodnie stany USA. Za pomocą profilu zagnieżdżone ruch będzie kierowany do Azja Wschodnia, tylko wtedy, gdy zarówno Europa Zachodnia i zachodnie stany USA się nie powieść.
 
-Ponieważ punkt końcowy Europa ma wyższy priorytet niż punkt końcowy zachodnie stany USA, cały ruch wysyłany do punktu końcowego Europa Zachodnia, gdy oba punkty końcowe są w trybie online. W przypadku niepowodzenia Europa ruch jest kierowany do zachodnie stany USA. Z profilu zagnieżdżone ruch jest kierowany do Azja Wschodnia, tylko w przypadku, gdy nie powiedzie się zarówno Europa Zachodnia, jak i zachodnie stany USA.
+Ten wzorzec można powtórzyć we wszystkich regionach. Zamień na wszystkich trzech punktów końcowych w profilu nadrzędnego trzy profile podrzędnych, każde z nich prezentuje kolejność priorytetów trybu failover.
 
-Ten wzorzec można powtórzyć dla wszystkich regionów. Zamień wszystkich trzech punktów końcowych w profilu nadrzędnego trzy profile podrzędnych, każdy dostarczanie kolejność priorytetów trybu failover.
+## <a name="example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region"></a>Przykład 4: Kontrolowanie routing "Wydajność" ruchu między wieloma punktami końcowymi, w tym samym regionie
 
-## <a name="example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region"></a>Przykład 4: Kontrolowanie "Performance" routingu ruchu między wieloma punktami końcowymi w tym samym regionie
+Załóżmy, że metoda routingu ruchu jest używana w profilu, który ma więcej niż jeden punkt końcowy w danym regionie "wydajność". Domyślnie ruch skierowany do tego regionu są rozkładane równomiernie pomiędzy wszystkie dostępne punkty końcowe w danym regionie.
 
-Załóżmy, że metoda routingu ruchu jest używana w profilu, który ma więcej niż jeden punkt końcowy w określonym regionie "wydajności'. Domyślnie ruch skierowany do tego regionu jest równomiernie rozłożona dostępnych punktów końcowych w tym regionie.
+!["Wydajność" ruchu routingu Dystrybucja ruchu w regionie (zachowanie domyślne)][7]
 
-![Ruch "Performance" routingu ruchu w regionie dystrybucji (domyślnie)][7]
+Zamiast opcji dodawania wielu punktów końcowych w regionie Europa Zachodnia, te punkty końcowe są ujęte w profilu oddzielne podrzędnych. Profil podrzędny zostanie dodany do elementu nadrzędnego jako punkt końcowy tylko w regionie Europa Zachodnia. Ustawienia w profilu podrzędnych umożliwia kontrolowanie dystrybucji ruchu z Europa Zachodnia, przez włączenie routingu ruchu na podstawie priorytetu równego lub ważonego w danym regionie.
 
-Zamiast opcji dodawania wiele punktów końcowych w Europa Zachodnia, te punkty końcowe są ujęte w profilu oddzielne podrzędnych. Profil dziecka zostanie dodany do elementu nadrzędnego jako punktu końcowego tylko w Europa Zachodnia. Ustawienia w profilu podrzędne można kontrolować dystrybucję ruchu z Europa Zachodnia przez włączenie routingu ruchu na podstawie priorytetu lub ważoną w tym regionie.
+![Ruch "Wydajność" routing za pomocą dystrybucji niestandardowe ruchu w regionie][8]
 
-![Ruch "Performance" routingu z Dystrybucja ruchu w regionie niestandardowych][8]
+## <a name="example-5-per-endpoint-monitoring-settings"></a>Przykład 5: Ustawienia monitorowania na punkt końcowy
 
-## <a name="example-5-per-endpoint-monitoring-settings"></a>Przykład 5: Ustawienia monitorowania dla punktu końcowego
+Załóżmy, że używasz usługi Traffic Manager można migrować bezproblemowym ruch ze starszej wersji lokalnej witryny sieci web do nowej wersji opartej na chmurze hostowanych na platformie Azure. Dla starszej wersji witryny chcesz użyć na stronie głównej identyfikatora URI do monitorowania kondycji lokacji. Ale z nową wersją oparte na chmurze, wdrażają niestandardową stronę monitorowania (ścieżka "/ monitor.aspx") zawierającej dodatkowe kontrole.
 
-Załóżmy, że używasz usługi Traffic Manager sprawnie migracji ruch z starszych lokalnej witryny sieci web do nowej wersji opartej na chmurze hostowana na platformie Azure. Dla starszych lokacji chcesz użyć strony głównej identyfikator URI do monitorowania kondycji lokacji. Ale dla nowej wersji opartej na chmurze, w przypadku wdrażania monitorowania niestandardowej strony (ścieżka "/ monitor.aspx") zawiera dodatkowe kontrole.
+![Punkt końcowy usługi Traffic Manager monitoring (zachowanie domyślne)][9]
 
-![Punkt końcowy Menedżera ruchu monitorowania (domyślnie)][9]
+Ustawienia monitorowania w profilu usługi Traffic Manager dotyczą wszystkich punktów końcowych w jeden profil. Przy użyciu profilów zagnieżdżonych umożliwia podrzędny inny profil dla każdej witryny definiują różne ustawienia monitorowania.
 
-Ustawienia monitorowania w profilu usługi Traffic Manager dotyczą wszystkich punktów końcowych w jednym profilu. Zagnieżdżonych profilów możesz za pomocą profilu inny podrzędny dla każdej witryny do definiowania różnych ustawień monitorowania.
+![Punkt końcowy usługi Traffic Manager monitorowanie za pomocą ustawienia poszczególnych punktu końcowego][10]
 
-![Monitorowanie za pomocą ustawień-endpoint punktu końcowego Menedżera ruchu][10]
+## <a name="next-steps"></a>Kolejne kroki
 
-## <a name="next-steps"></a>Następne kroki
+Dowiedz się więcej o [profile usługi Traffic Manager](traffic-manager-overview.md)
 
-Dowiedz się więcej o [profilów usługi Traffic Manager](traffic-manager-overview.md)
-
-Dowiedz się, jak [Tworzenie profilu Menedżera ruchu](traffic-manager-create-profile.md)
+Dowiedz się, jak [Tworzenie profilu usługi Traffic Manager](traffic-manager-create-profile.md)
 
 <!--Image references-->
 [1]: ./media/traffic-manager-nested-profiles/figure-1.png

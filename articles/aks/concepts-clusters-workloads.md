@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: e42601646474ba986e75632af41d500e18b64021
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: fb428e63be54688744bcdb022ba276a957f8aee1
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393902"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648774"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes podstawowe pojęcia dotyczące usługi Azure Kubernetes Service (AKS)
 
-Jak projektowanie aplikacji została przeniesiona na podejście oparte na zawarte, trzeba organizować oraz zarządzać nimi wzajemnie połączonych zasobów staje się ważne. Kubernetes to wiodąca platforma, zapewniająca zapewnia niezawodne planowania obciążeń odpornej na uszkodzenia aplikacji. Usługa Azure Kubernetes Service (AKS) jest zarządzane rozwiązanie Kubernetes ofertą, co dodatkowo upraszcza wdrażanie aplikacji opartych na kontenerach i zarządzanie nimi.
+Jak projektowanie aplikacji została przeniesiona na podejście oparte na kontenerach, trzeba organizować oraz zarządzać nimi wzajemnie połączonych zasobów staje się ważne. Kubernetes to wiodąca platforma, zapewniająca zapewnia niezawodne planowania obciążeń odpornej na uszkodzenia aplikacji. Usługa Azure Kubernetes Service (AKS) jest zarządzane rozwiązanie Kubernetes ofertą, co dodatkowo upraszcza wdrażanie aplikacji opartych na kontenerach i zarządzanie nimi.
 
 W tym artykule przedstawiono podstawowe składniki infrastruktury usługi Kubernetes *klastra głównego*, *węzłów*, i *pule węzłów*. Obciążenie zasobów, takich jak *zasobników*, *wdrożeń*, i *ustawia* również zostaną wprowadzone wraz z jak grupy zasobów do *przestrzenie nazw*.
 

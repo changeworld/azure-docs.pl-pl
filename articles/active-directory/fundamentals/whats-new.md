@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d39cfddc42ea0e03f6b0f6c8d1c0160839742518
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 98edf224ebbd15f6acafdfeb28769eecb4edff40
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393914"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638124"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>What's new in Azure Active Directory?
 
@@ -36,7 +36,7 @@ Usługa Azure AD odbiera ulepszenia w sposób ciągły. Aby uzyskać najnowsze i
 Ta strona jest aktualizowany co miesiąc, więc ponownie regularnie.
 
 ---
-## <a name="september-2018"></a>Września 2018 r.
+## <a name="september-2018"></a>Wrzesień 2018 r.
  
 ### <a name="updated-administrator-role-permissions-for-dynamic-groups"></a>Uprawnienia roli administrator zaktualizowane grup dynamicznych
 
@@ -131,7 +131,7 @@ Aby uzyskać więcej informacji o używaniu właściwości rozszerzenia niestand
 **Kategoria usług:** dostępu warunkowego  
 **Możliwości produktu:** tożsamość, zabezpieczenia i ochrona
 
-Następujące aplikacje są na liście [zatwierdzonych aplikacji klienckich](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference.md#approved-client-app-requirement):
+Następujące aplikacje są na liście [zatwierdzonych aplikacji klienckich](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference#approved-client-app-requirement):
 
 - Microsoft To-Do
 
@@ -361,7 +361,7 @@ Usługa Azure Active Directory (Azure AD) wiadomości e-mail teraz funkcji zaktu
  
 - Przeglądy dostępu w usłudze Azure AD
 - Azure AD Connect Health 
-- Usługa Azure AD Identity Protection 
+- Azure AD Identity Protection 
 - Usługa Azure AD Privileged Identity Management
 - Powiadomienia certyfikat wygasa aplikacji przedsiębiorstwa
 - Powiadomienia usługi inicjowania obsługi administracyjnej aplikacji przedsiębiorstwa
@@ -731,7 +731,7 @@ Jeśli musisz nadal używać dedykowanego obwodów, konieczne będzie komunikowa
  
 ---
 
-### <a name="microsoft-graph-apis-for-administrative-scenarios-for-tou"></a>Interfejsy API programu Microsoft Graph dla administracyjnych scenariuszy dotyczących warunków użytkowania
+### <a name="microsoft-graph-apis-for-administrative-scenarios-for-tou"></a>Interfejsy API programu Graph firmy Microsoft dla scenariuszy administracyjnych dla warunków użytkowania
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** warunki użytkowania  
@@ -823,7 +823,7 @@ Dzienniki aktywności usługi AD platformy Azure, co obejmuje dzienniki inspekcj
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---may-2018"></a>Nowe aplikacje federacyjne dostępne w galerii aplikacji usługi Azure AD — maj 2018
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---may-2018"></a>Nowe aplikacje federacyjne dostępne w galerii aplikacji usługi Azure AD — maj 2018 r.
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** aplikacje dla przedsiębiorstw  
@@ -861,13 +861,13 @@ Problem ze znalezieniem informacji aplikacji / jednostki usług? Dodaliśmy moż
 
 ---
  
-### <a name="the-may-release-of-aadconnect-contains-a-public-preview-of-the-integration-with-pingfederate-important-security-updates-many-bug-fixes-and-new-great-new-troubleshooting-tools"></a>Majowe wydanie programu AADConnect zawiera publiczną wersję zapoznawczą integracji z aplikacją PingFederate, ważne aktualizacje zabezpieczeń, wiele poprawek błędów i nowe, bardzo użyteczne narzędzia do rozwiązywania problemów. 
+### <a name="the-may-release-of-aadconnect-contains-a-public-preview-of-the-integration-with-pingfederate-important-security-updates-many-bug-fixes-and-new-great-new-troubleshooting-tools"></a>May wersji AADConnect zawiera publiczną wersję zapoznawczą integracji z serwerem PingFederate, ważne aktualizacje zabezpieczeń, wiele poprawek usterek i nowe great nowych narzędzi do rozwiązywania problemów. 
 
 **Typ:** zmieniono funkcji  
 **Kategoria usług:** AD Connect  
 **Możliwości produktu:** Zarządzanie cyklem życia tożsamości
  
-Majowe wydanie programu AADConnect zawiera publiczną wersję zapoznawczą integracji z aplikacją PingFederate, ważne aktualizacje zabezpieczeń, wiele poprawek błędów i nowe, bardzo użyteczne narzędzia do rozwiązywania problemów. Można znaleźć informacje o wersji [tutaj](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#118190).
+May wersji AADConnect zawiera publiczną wersję zapoznawczą integracji z serwerem PingFederate, ważne aktualizacje zabezpieczeń, wiele poprawek usterek i nowe great nowych narzędzi do rozwiązywania problemów. Można znaleźć informacje o wersji [tutaj](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#118190).
 
 ---
 

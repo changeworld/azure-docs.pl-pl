@@ -1,5 +1,5 @@
 ---
-title: Wspólne parametry przepływów pracy w usłudze Azure Stack weryfikacji jako usługa | Dokumentacja firmy Microsoft
+title: Wspólne parametry przepływów pracy w usługi Azure Stack weryfikacji jako usługa | Dokumentacja firmy Microsoft
 description: Wspólne parametry przepływów pracy dla usługi Azure Stack weryfikacji jako usługa
 services: azure-stack
 documentationcenter: ''
@@ -10,53 +10,82 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2018
+ms.date: 10/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: c50e4b5c9eb81c9386e2cb0db96a88de70dcb9e9
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 25c93560b24b2915ef9a9077b5bca0d15286b0e3
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157807"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646783"
 ---
 # <a name="workflow-common-parameters-for-azure-stack-validation-as-a-service"></a>Wspólne parametry przepływów pracy dla usługi Azure Stack weryfikacji jako usługa
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Wspólne parametry zawierają wartości, takie jak zmienne środowiskowe i użytkownika poświadczeń wymaganych przez wszystkie testy sprawdzania poprawności jako usługa (VaaS). Należy zdefiniować te wartości na poziomie przepływu pracy. Zapisz te wartości, podczas tworzenia lub modyfikowania przepływu pracy. W czasie harmonogram przepływ pracy ładuje wartości do testu. 
+Wspólne parametry zawierają wartości, takie jak zmienne środowiskowe i użytkownika poświadczeń wymaganych przez wszystkie testy sprawdzania poprawności jako usługa (VaaS). Te wartości są definiowane na poziomie przepływu pracy, podczas tworzenia lub zmienić przepływ pracy. Podczas planowania testów, te wartości są przekazywane jako parametry do każdego testu, w ramach przepływu pracy.
+
+> [!NOTE]
+> Każdy test definiuje swój własny zestaw parametrów. W czasie harmonogramu test może wymagać wprowadzenia wartości niezależnie od typowych parametrów lub mogą zezwolić na zastąpienie typowe wartości parametru.
 
 ## <a name="environment-parameters"></a>Parametry środowiska
 
-Parametry środowiska opisują środowiska usługi Azure Stack w ramach testu. Te wartości muszą być dostarczone przez generowanie i przekazywanie pliku konfiguracji sygnatury `&lt;link&gt;. [How to get the stamp info link].`
+Parametry środowiska opisują środowiska usługi Azure Stack w ramach testu. Te wartości musi być podana przez generowanie i przekazywanie pliku usługi Azure Stack sygnatury informacji w ramach określonego wystąpienia, które testujesz.
 
-| Nazwa parametru | Wymagane | Typ | Opis |
-|----------------------------------|----------|------|---------------------------------------------------------------------------------------------------------------------------------|
-| Usługa Azure Stack kompilacji | Wymagane |  | Wdrożenie usługi Azure Stack (na przykład 1.0.170330.9) numer kompilacji |
-| Wersja producenta OEM | Yes |  | Numer wersji pakietu OEM, używane podczas wdrażania usługi Azure Stack. |
-| Podpis producenta OEM | Yes |  | Podpis pakietu OEM, używane podczas wdrażania usługi Azure Stack. |
-| Identyfikator dzierżawy usługi AAD | Wymagane |  | Dzierżawa usługi Azure Active Directory GUID określony podczas wdrażania usługi Azure Stack.|
-| Region | Wymagane |  | Region wdrożenia platformy Azure Stack. |
-| Punkt końcowy dzierżawy Resource Manager | Wymagane |  | Punkt końcowy dla dzierżawy usługi Azure Resource Manager operacje (na przykład https://management.<ExternalFqdn>) |
-| Punkt końcowy administratora Resource Manager | Yes |  | Punkt końcowy dla operacji dzierżawy usługi Azure Resource Manager (na przykład https://adminmanagement.<ExternalFqdn>) |
-| Nazwa FQDN zewnętrznej | Yes |  | Zewnętrzne w pełni kwalifikowana nazwa domeny używana jako sufiks dla punktów końcowych. (na przykład local.azurestack.external lub redmond.contoso.com). |
-| Liczba węzłów | Yes |  | Liczba węzłów we wdrożeniu. |
+> [!NOTE]
+> W przepływach pracy oficjalne sprawdzania poprawności parametrów środowiska nie można zmodyfikować po utworzeniu przepływu pracy.
+
+### <a name="generate-the-stamp-information-file"></a>Generowanie pliku informacji sygnatury
+
+1. Zaloguj się do Menedżer DVM lub dowolnym komputerze, który ma dostęp do środowiska usługi Azure Stack.
+2. Wykonaj następujące polecenia w oknie programu PowerShell z podwyższonym poziomem uprawnień:
+    ```PowerShell
+    $CloudAdminUser = "<cloud admin username>"
+    $stampInfoPass = ConvertTo-SecureString "<cloud admin password>" -AsPlainText -Force
+    $stampInfoCreds = New-Object System.Management.Automation.PSCredential($CloudAdminUser, $stampInfoPass)
+    $params = Invoke-RestMethod -Method Get -Uri 'https://ASAppGateway:4443/ServiceTypeId/4dde37cc-6ee0-4d75-9444-7061e156507f/CloudDefinition/GetStampInformation'
+    ConvertTo-Json $params > stampinfoproperties.json
+    ```
+
+### <a name="locate-values-in-the-ece-configuration-file"></a>Znajdź wartości w pliku konfiguracyjnym NZ
+
+Wartości parametrów środowiska można również ręcznie się znajdować w **plik konfiguracyjny ONZ** znajdującym się w `C:\EceStore\403314e1-d945-9558-fad2-42ba21985248\80e0921f-56b5-17d3-29f5-cd41bf862787` na Menedżer DVM.
 
 ## <a name="test-parameters"></a>Parametry testu
 
-Wspólne parametry testu zawierają poufne informacje, które nie przechowywane w plikach konfiguracji i musi zostać dostarczone ręcznie.
+Wspólne parametry testu zawierają poufne informacje, które nie mogą być przechowywane w plikach konfiguracji. Te muszą zostać dostarczone ręcznie.
 
-| Nazwa parametru | Wymagane | Typ | Opis |
-|--------------------------------|------------------------------------------------------------------------------|------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Nazwa użytkownika dzierżawy | Wymagane |  | Usługa Azure dzierżawy administrator usługi Active Directory, albo została już przygotowana, lub musi być obsługiwana przez administratora usługi w katalogu usługi AAD. Aby uzyskać szczegółowe informacje dotyczące inicjowania obsługi administracyjnej konta dzierżawy, zobacz [Rozpoczynanie pracy z usługą Azure AD](https://docs.microsoft.com/azure/active-directory/get-started-azure-ad). Ta wartość jest używana przez test do wykonywania operacji na poziomie dzierżawy takich jak wdrażanie szablonów do aprowizacji zasobów (maszyn wirtualnych, kont magazynu itp.), a następnie wykonaj obciążeń. Ta wartość jest używana przez test do wykonywania operacji na poziomie dzierżawy takich jak wdrażanie szablonów do aprowizacji zasobów (maszyn wirtualnych, kont magazynu itp.), a następnie wykonaj obciążeń. |
-| Hasło dzierżawy | Wymagane |  | Hasło dla użytkownika dzierżawy. |
-| Nazwa użytkownika administratora usługi | Wymagane: Rozwiązanie sprawdzania poprawności, sprawdzanie poprawności pakietu<br>Niewymagane: przebieg testu |  | Usługa Azure administrator usługi Active Directory dzierżawy katalogu usługi AAD, określony podczas wdrażania usługi Azure Stack. |
-| Hasło administratora usługi | Wymagane: Rozwiązanie sprawdzania poprawności, sprawdzanie poprawności pakietu<br>Niewymagane: przebieg testu |  | Hasło dla użytkownika administratora usługi. |
-| Nazwa użytkownika administratora chmury | Wymagane |  | Usługa Azure Stack konta administratora domeny (na przykład contoso\cloudadmin). Wyszukaj rolę użytkownika = "CloudAdmin" w pliku konfiguracji i wybierz wartość w tag nazwy użytkownika w pliku konfiguracji. |
-| Hasło administratora chmury | Wymagane |  | Hasło dla użytkownika Administrator w chmurze. |
-| Parametry połączenia diagnostyki | Wymagane |  | Identyfikator URI sygnatury dostępu Współdzielonego do konta usługi Azure Storage do diagnostyki, które dzienniki będą kopiowane podczas wykonywania testów. Znajdują się instrukcje dotyczące generowania identyfikatora URI połączenia SAS [Konfigurowanie konta usługi blob storage](azure-stack-vaas-set-up-account.md). |
+Parametr    | Opis
+-------------|-----------------
+Użytkownik Administrator dzierżawy                            | Usługa Azure Active Directory administratora dzierżawy, który została aprowizowana przez administratora usługi w katalogu usługi AAD. Ten użytkownik wykonuje działania na poziomie dzierżawy takich jak wdrażanie szablonów, aby skonfigurować zasoby (maszyny wirtualne, konta magazynu, itp.) i wykonywanie obciążeń. Aby uzyskać szczegółowe informacje dotyczące inicjowania obsługi administracyjnej konta dzierżawy, zobacz [Dodaj nową dzierżawę usługi Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-new-user-aad).
+Użytkownik Administrator usługi             | Active Directory Administrator usługi Azure określony podczas wdrażania usługi Azure Stack dzierżawy katalogu usługi AAD. Wyszukaj `AADTenant` w konfiguracji ONZ plik i wybierz wartość `UniqueName` elementu.
+Użytkownik Administrator chmury               | Konto administratora domeny w usłudze Azure Stack (np. `contoso\cloudadmin`). Wyszukaj `User Role="CloudAdmin"` w konfiguracji ONZ plik i wybierz wartość `UserName` elementu.
+Parametry połączenia diagnostyki          | Adres URL sygnatury dostępu Współdzielonego do konta usługi Azure Storage do diagnostyki, które dzienniki będą kopiowane podczas wykonywania testów. Aby uzyskać instrukcje dotyczące generowania adresu URL sygnatury dostępu Współdzielonego, zobacz [wygenerować parametry połączenia diagnostyki](#generate-the-diagnostics-connection-string). |
 
+> [!IMPORTANT]
+> **Parametry połączenia diagnostyki** musi być prawidłowy przed kontynuowaniem.
+
+### <a name="generate-the-diagnostics-connection-string"></a>Generowanie parametrów połączenia diagnostyki
+
+Parametry połączenia diagnostyki są wymagane do przechowywania dzienników diagnostycznych podczas wykonywania testów. Użyj konta magazynu platformy Azure utworzone podczas konfiguracji (zobacz [Konfigurowanie walidacji jako zasoby usługi](azure-stack-vaas-set-up-resources.md)) do tworzenia podpisu (SAS) adresu URL dostępu współdzielonego do udostępnienia VaaS przekazywania dzienników do swojego konta magazynu.
+
+1. [!INCLUDE [azure-stack-vaas-sas-step_navigate](includes/azure-stack-vaas-sas-step_navigate.md)]
+
+1. Wybierz **Blob** z **opcji dozwolone usług**. Usuń zaznaczenie pozostałych opcji.
+
+1. Wybierz **usługi**, **kontenera**, i **obiektu** z **dozwolone typy zasobów**.
+
+1. Wybierz **odczytu**, **zapisu**, **listy**, **Dodaj**, **tworzenie** z **dozwolone uprawnienia**. Usuń zaznaczenie pozostałych opcji.
+
+1. Ustaw **czas rozpoczęcia** do bieżącego czasu i **czas zakończenia** na trzy miesiące od bieżącego czasu.
+
+1. [!INCLUDE [azure-stack-vaas-sas-step_generate](includes/azure-stack-vaas-sas-step_generate.md)]
+
+> [!NOTE]  
+> Adres URL sygnatury dostępu Współdzielonego wygasa w momencie zakończenia określony podczas generowania adresu URL.  
+Podczas planowania testów, upewnij się, że adres URL jest prawidłowy dla co najmniej 30 dni oraz czas wymagany do wykonania testu (sugerowany trzy miesiące).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby dowiedzieć się więcej na temat [walidacji usługi Azure Stack jako usługa](https://docs.microsoft.com/azure/azure-stack/partner).
+- Dowiedz się więcej o [weryfikacji jako kluczowe pojęcia dotyczące usługi](azure-stack-vaas-key-concepts.md)

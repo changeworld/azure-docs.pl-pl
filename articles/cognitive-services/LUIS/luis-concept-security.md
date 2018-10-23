@@ -7,15 +7,15 @@ author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 8fbfd37be0bc6f05f30b71fdae2e7cc88601d628
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: d0f9d0834cffd642961b2c49d5d252a665b49e73
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785549"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637414"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Dostęp użytkownika do tworzenia i punktu końcowego
 Tworzenie dostępu jest dostępna dla właścicieli i współpracowników. Dla aplikacji sieci prywatnej dostępu do punktu końcowego jest dostępna dla właścicieli i współpracowników. W przypadku publicznych aplikacji dostęp do punktu końcowego jest dostępny dla wszystkich, ma swoje własne konto usługi LUIS, która zawiera identyfikator aplikacji publicznych. 
@@ -33,7 +33,7 @@ Właściciela i współpracowników wszystkie mają dostęp do tworzenia aplikac
 |Importowanie wersji||
 |Upublicznić aplikacji|Gdy aplikacja jest publiczny, każda osoba z kluczem tworzenia lub punkt końcowy kwerendy aplikacji.|
 |Modyfikowanie modelu|
-|Publikowanie|
+|Publikuj|
 |Przejrzyj wypowiedzi punktu końcowego dla [aktywne uczenie](luis-how-to-review-endoint-utt.md)|
 |Szkolenie|
 

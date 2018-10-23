@@ -13,21 +13,21 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2018
+ms.date: 09/27/2018
 ms.author: szark
-ms.openlocfilehash: f5bce08bfc61d5b9b17e9500c002c3b870384c7b
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 43253423e3a27a61000c3f93868dd8b42809b7ae
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618662"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650166"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu Red Hat dla platformy Azure
 W tym artykule dowiesz się, jak przygotować maszynę wirtualną Red Hat Enterprise Linux (RHEL) do użycia na platformie Azure. Wersje systemu RHEL, które zostały omówione w tym artykule są 6.7 + i 7.1 +. Funkcji hypervisor do przygotowywania, które zostały omówione w tym artykule są maszyny wirtualne funkcji Hyper-V, na podstawie jądra (KVM) i VMware. Aby uzyskać więcej informacji na temat wymagania kwalifikacyjne dotyczące udziału w systemie Red Hat Cloud Access program zobacz [witryny sieci Web firmy Red Hat Cloud Access](http://www.redhat.com/en/technologies/cloud-computing/cloud-access) i [systemem RHEL na platformie Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure).
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>Przygotowywanie maszyny wirtualnej z systemem Red Hat z Menedżera funkcji Hyper-V
 
-### <a name="prerequisites"></a>Wymagania wstępne
+### <a name="prerequisites"></a>Wstępnie wymagane składniki
 W tej sekcji założono, że zostały już uzyskane plik ISO z witryny sieci Web firmy Red Hat i zainstalowane obrazu systemu RHEL do wirtualnego dysku twardego (VHD). Aby uzyskać więcej szczegółów na temat sposobu używania Menedżera funkcji Hyper-V do zainstalowania obrazu systemu operacyjnego, zobacz [należy zainstalować rolę funkcji Hyper-V i konfigurowanie maszyny wirtualnej](http://technet.microsoft.com/library/hh846766.aspx).
 
 **Uwagi dotyczące instalacji systemu RHEL**
@@ -35,7 +35,7 @@ W tej sekcji założono, że zostały już uzyskane plik ISO z witryny sieci Web
 * Platforma Azure nie obsługuje formatu VHDX. Platforma Azure obsługuje tylko stała wirtualnego dysku twardego. Można użyć Menedżera funkcji Hyper-V umożliwia przekonwertowanie dysku na format wirtualnego dysku twardego, lub można użyć polecenia cmdlet convert-vhd. Jeśli używasz VirtualBox, wybierz **ustalony rozmiar** zamiast domyślnego dynamicznie przydzielane opcji podczas tworzenia dysku.
 * Platforma Azure obsługuje tylko maszyny wirtualne generacji 1. Możesz przekonwertować maszyny wirtualnej generacji 1, z dysku VHDX format pliku wirtualnego dysku twardego i dynamicznie powiększające się na dysku stałym rozmiarze. Nie można zmienić generacji maszynę wirtualną. Aby uzyskać więcej informacji, zobacz [należy utworzyć maszyny wirtualnej generacji 1 lub 2 w funkcji Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 * Maksymalny rozmiar, jaki jest dozwolony dla wirtualnego dysku twardego jest 1,023 GB.
-* Po zainstalowaniu systemu operacyjnego Linux, firma Microsoft zaleca użycie standardowe partycje, a nie logiczne woluminu Menedżera (LVM), co często jest ustawieniem domyślnym dla wielu urządzeń. To rozwiązanie pozwoli uniknąć LVM wystąpił konflikt między nazwą sklonowane maszyny wirtualne, szczególnie w przypadku, gdy będziesz potrzebować Dołącz dysk systemu operacyjnego do innej maszyny wirtualnej identyczne do rozwiązywania problemów. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lub [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) może być używana dla dysków z danymi.
+* Menedżer woluminów logicznych (LVM) jest obsługiwana i może być używana dla dysku systemu operacyjnego lub dysków z danymi w usłudze Azure virtual machines. Jednak ogólnie zaleca się używać standardowych partycji na dysku systemu operacyjnego, a nie LVM. To rozwiązanie pozwoli uniknąć LVM wystąpił konflikt między nazwą sklonowane maszyny wirtualne, szczególnie w przypadku, gdy będziesz potrzebować Dołącz dysk systemu operacyjnego do innej maszyny wirtualnej identyczne do rozwiązywania problemów. Zobacz też [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) i [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) dokumentacji.
 * Wymagana jest obsługa jądra instalowanie systemów plików Format dysku uniwersalnym (UDF). Podczas pierwszego rozruchu na platformie Azure sformatowanych przy użyciu funkcji zdefiniowanej przez użytkownika nośnika, który jest dołączony do gościa przekazuje konfiguracji aprowizacji maszyny wirtualnej systemu Linux. Agent systemu Linux platformy Azure musi mieć możliwość zainstalowania systemu plików UDF odczytywać konfigurację i aprowizacja maszyny wirtualnej.
 * Konfiguruj partycji wymiany dysku systemu operacyjnego. Aby utworzyć plik wymiany na dysk tymczasowy zasobów można skonfigurować agenta systemu Linux.  Więcej informacji na ten temat można znaleźć w poniższych krokach.
 * Wszystkie dyski VHD na platformie Azure musi mieć rozmiar wirtualny wyrównane do 1MB. Podczas konwersji z pierwotnych dysku wirtualnego dysku twardego należy się upewnić, że rozmiar dysku surowego jest wielokrotnością 1MB przed dokonaniem konwersji. Więcej szczegółów można znaleźć w poniższych krokach. Zobacz też [uwagi dotyczące instalacji systemu Linux](create-upload-generic.md#general-linux-installation-notes) Aby uzyskać więcej informacji.
@@ -516,7 +516,7 @@ W tej sekcji założono, że zostały już uzyskane plik ISO z witryny sieci Web
 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>Przygotowywanie maszyny wirtualnej z systemem Red Hat z programu VMware
-### <a name="prerequisites"></a>Wymagania wstępne
+### <a name="prerequisites"></a>Wstępnie wymagane składniki
 W tej sekcji założono, zainstalowano maszynę wirtualną systemu RHEL w środowisku VMware. Aby uzyskać szczegółowe informacje o sposobie instalowania systemu operacyjnego w programie VMware, zobacz [Przewodnik instalacji systemu operacyjnego gościa VMware](http://partnerweb.vmware.com/GOSIG/home.html).
 
 * Po zainstalowaniu systemu operacyjnego Linux, firma Microsoft zaleca użycie standardowe partycje, a nie LVM, co często jest ustawieniem domyślnym dla wielu urządzeń. Pozwoli to uniknąć LVM wystąpił konflikt między nazwą klonowana maszyna wirtualna, szczególnie w przypadku, gdy dysk systemu operacyjnego nigdy nie musi być dołączony do innej maszyny wirtualnej w celu rozwiązywania problemów. LVM lub woluminu macierzy RAID używać na dyskach danych, jeśli preferowane.

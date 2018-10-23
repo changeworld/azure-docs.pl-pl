@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: b936b42671c15a77a901f321ed3c51f1ba3639cd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 57742d72c8be0dcd999bc8b73f6d598263429c12
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036596"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646579"
 ---
 # <a name="api-v2-migration-guide"></a>Przewodnik migracji usługi interfejsu API w wersji 2
 Wersja 1 [punktu końcowego](https://aka.ms/v1-endpoint-api-docs) i [tworzenia](https://aka.ms/v1-authoring-api-docs) staną się przestarzałe interfejsy API. Użyj tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do wersji 2 [punktu końcowego](https://aka.ms/luis-endpoint-apis) i [tworzenia](https://aka.ms/luis-authoring-apis) interfejsów API. 
@@ -155,7 +155,7 @@ Usługa LUIS sugeruje wypowiedzi z istniejących [wypowiedzi punktu końcowego](
 1.x wyeksportowany plik JSON aplikacji ma kilka obszarów, które należy zmienić przed zaimportowaniem do [LUIS] [ LUIS] w wersji 2.0. 
 
 ### <a name="prebuilt-entities"></a>Wstępnie utworzonych jednostek 
-[Ze wstępnie utworzonych jednostek](luis-prebuilt-entities.md) uległy zmianie. Upewnij się, że używasz wersji 2 ze wstępnie utworzonych jednostek. W tym za pomocą [datetimeV2](luis-prebuilt-entities.md#use-a-prebuilt-datetimev2-entity), zamiast daty/godziny. 
+[Ze wstępnie utworzonych jednostek](luis-prebuilt-entities.md) uległy zmianie. Upewnij się, że używasz wersji 2 ze wstępnie utworzonych jednostek. W tym za pomocą [datetimeV2](luis-reference-prebuilt-datetimev2.md), zamiast daty/godziny. 
 
 ### <a name="actions"></a>Akcje
 Właściwość akcji nie jest już prawidłowy. Powinna być pusta 

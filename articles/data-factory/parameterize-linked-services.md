@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 10/22/2018
 ms.author: douglasl
-ms.openlocfilehash: 287dcdedede5cab575aa0b9a73ec3e122556dc93
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 99efd29165f381b9038758c3384774a65da91501
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900727"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649418"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametryzacja połączone usługi w usłudze Azure Data Factory
 
@@ -28,17 +28,21 @@ Interfejs użytkownika usługi Data Factory w witrynie Azure Portal lub interfej
 > [!TIP]
 > Nie zaleca się parametryzacja hasła lub kluczy tajnych. Zamiast tego Store wszystkie parametry połączenia w usłudze Azure Key Vault i sparametryzuj *nazw klucz tajny*.
 
+7 minutowym wprowadzenie i pokaz działania tej funkcji Obejrzyj poniższy film wideo:
+
+> [!VIDEO https://channel9.msdn.com/shows/azure-friday/Parameterize-connections-to-your-data-stores-in-Azure-Data-Factory/player]
+
 ## <a name="supported-data-stores"></a>Magazyny danych obsługiwanych
 
 W tej chwili parametryzacji połączonej usługi jest obsługiwana w interfejs użytkownika usługi Data Factory w witrynie Azure portal, w którym są następujące magazyny danych. Dla wszystkich innych magazynów danych można parametryzacja połączonej usługi, wybierając **kodu** ikony na kartach potoku i za pomocą edytora JSON.
 - Azure SQL Database
 - Azure SQL Data Warehouse
-- Oprogramowanie SQL Server
+- SQL Server
 - Oracle
 - Cosmos DB
 - Amazon Redshift
 - MySQL
-- Azure Database for MySQL
+- Usługa Azure Database for MySQL
 
 ## <a name="data-factory-ui"></a>Interfejs użytkownika usługi Data Factory
 

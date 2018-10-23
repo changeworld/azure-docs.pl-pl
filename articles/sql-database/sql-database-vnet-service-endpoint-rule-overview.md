@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
 ms.date: 09/18/2018
-ms.openlocfilehash: 2500d0c67eda5bb91eed8214c161fcce29907abb
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 0fc5ca73dec79942e05c7dfd410bc0a13e5ffb44
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466243"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648721"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database-and-sql-data-warehouse"></a>Na użytek punktów końcowych usługi sieci wirtualnej i zasady usługi Azure SQL Database i SQL Data Warehouse
 
@@ -105,6 +105,7 @@ Masz możliwość korzystania z [kontroli dostępu opartej na rolach (RBAC)] [ r
 > W niektórych przypadkach usługi Azure SQL Database i podsieciami sieci wirtualnej znajdują się w różnych subskrypcjach. W takich sytuacjach należy zapewnić następujące konfiguracje:
 > - Obie subskrypcje muszą być w tej samej dzierżawie usługi Azure Active Directory.
 > - Użytkownik ma uprawnienia wymagane do zainicjowania operacje, takie jak włączenie punktów końcowych usługi i dodawanie podsieci sieci wirtualnej do danego serwera.
+> - Obie subskrypcje musi mieć dostawcę Microsoft.Sql zarejestrowany.
 
 ## <a name="limitations"></a>Ograniczenia
 
@@ -227,7 +228,7 @@ Wewnętrznie poleceń cmdlet programu PowerShell dla sieci wirtualnej SQL akcji 
 
 - [Reguły sieci wirtualnej: działania][rest-api-virtual-network-rules-operations-862r]
 
-## <a name="prerequisites"></a>Wymagania wstępne
+## <a name="prerequisites"></a>Wstępnie wymagane składniki
 
 Musi już mieć podsieci, który jest oznaczony za pomocą określonego punktu końcowego usługi sieci wirtualnej *nazwy typu* dotyczą usługi Azure SQL Database.
 

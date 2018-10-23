@@ -7,15 +7,15 @@ author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 5fda0ac590e5faeaa8b6ec44a7d649d2c0122eeb
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 9bbbb797cd7e7d1cea52f1d5b1b491998b595db7
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352989"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638089"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>Role jednostki we wzorcach są podtypy kontekstowych
 Role są podtypy nazwanych, kontekstowych podmiotu używana tylko w [wzorców](luis-concept-patterns.md).
@@ -28,7 +28,7 @@ Role nadaj nazwę różnic:
 |--|--|--|
 |Lokalizacja|źródło|Jeżeli płaszczyzny pozostawia z|
 |Lokalizacja|miejsce docelowe|gdzie wyładowuje płaszczyzna|
-|Wstępnie utworzone datetimeV2|na|Data zakończenia|
+|Wstępnie utworzone datetimeV2|do|Data zakończenia|
 |Wstępnie utworzone datetimeV2|z|Data rozpoczęcia|
 
 ## <a name="how-are-roles-used-in-patterns"></a>Jak role są używane we wzorcach?

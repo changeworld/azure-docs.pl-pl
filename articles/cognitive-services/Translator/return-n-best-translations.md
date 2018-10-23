@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: e1d310cecb41de00c1d3e3986fe715d1519ceeff
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: a0f4e4dd5cea9c3ea7b682e6372d2ffa8726e6ef
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123457"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646477"
 ---
 # <a name="how-to-return-n-best-translations"></a>Sposób zwracania N najlepszych tłumaczenia
 
@@ -40,7 +40,7 @@ Podpis jest:
 | appId | **Wymagane** Jeśli nagłówek autoryzacji jest używany, pozostaw to pole puste appid przeciwnym razie Określ ciąg zawierający "Bearer" + "" + tokenu dostępu.|
 | tekst | **Wymagane** ciąg reprezentujący tekstu do przetłumaczenia. Rozmiar tekstu nie może przekraczać 10 000 znaków.|
 | z | **Wymagane** ciąg reprezentujący kod języka tekstu do przetłumaczenia. |
-| na | **Wymagane** ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w. |
+| do | **Wymagane** ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w. |
 | maxTranslations | **Wymagane** wartość int reprezentująca maksymalną liczbę tłumaczeń do zwrócenia. |
 | opcje | **Opcjonalnie** obiekt TranslateOptions, który zawiera wartości wymienione poniżej. Są wszystkie opcjonalny i domyślnie najczęściej używane ustawienia.
 

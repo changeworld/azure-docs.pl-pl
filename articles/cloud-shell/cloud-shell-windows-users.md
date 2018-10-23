@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2018
 ms.author: damaerte
-ms.openlocfilehash: aad474195060c01a3f9d85e6f9037b568b0c16ad
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 4fc4f6523eb19294cabdf6b5b910dd346a877502
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630390"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645050"
 ---
 # <a name="powershell-in-azure-cloud-shell-for-windows-users"></a>Program PowerShell w użytkownicy usługi Azure Cloud Shell dla Windows
 
@@ -54,7 +54,7 @@ Poniżej przedstawiono typowe aliasy, które zostały usunięte, a także ich r�
 ## <a name="persisting-home"></a>Utrwalanie $HOME
 
 Wcześniej użytkownicy tylko można utrwalić, skrypty i inne pliki w dysku w chmurze.
-Teraz katalogu $HOME użytkownika teraz również są utrwalane między sesjami.
+Teraz katalogu $HOME użytkownika również są utrwalane między sesjami.
 
 ## <a name="powershell-profile"></a>Profil programu PowerShell
 

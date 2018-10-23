@@ -7,16 +7,16 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 10/15/2018
-ms.openlocfilehash: cbb19ab831e242a48532bedef37157455c9fb583
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 8cfa6493a565a8ed3b059e1da752da5115d0731d
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49431313"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649860"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache-preview"></a>Zwiększa wydajność obciążeń platformy Apache Spark przy użyciu usługi Azure HDInsight we/wy Cache (wersja zapoznawcza)
 
-We/Wy pamięci podręcznej jest usługa buforowania danych dla usługi Azure HDInsight, które poprawia wydajność zadań platformy Apache Spark. Składnik pamięci podręcznej typu open source o nazwie RubiX korzysta z operacji We/Wy pamięci podręcznej. RubiX jest lokalny dysk pamięci podręcznej do użytku z programem aparaty analizy danych big data, uzyskujących dostęp do danych z systemów magazynów w chmurze. RubiX jest unikatowa wśród systemów, buforowanie, ponieważ używa ona Solid-State dyski (SSD) zamiast rezerwa pamięci operacyjnej na potrzeby buforowania. Usługa pamięć podręczna we/wy uruchamia i zarządza serwerami metadanych RubiX w każdym węźle procesu roboczego klastra. Konfiguruje również wszystkie usługi klastra do użytku przejrzystych RubiX pamięci podręcznej.
+We/Wy pamięci podręcznej jest usługa buforowania danych dla usługi Azure HDInsight, które poprawia wydajność zadań platformy Apache Spark. We/Wy pamięci podręcznej współpracuje również z obciążeniami Tez i Hive, które mogą być uruchamiane w klastrach platformy Spark. Składnik pamięci podręcznej typu open source o nazwie RubiX korzysta z operacji We/Wy pamięci podręcznej. RubiX jest lokalny dysk pamięci podręcznej do użytku z programem aparaty analizy danych big data, uzyskujących dostęp do danych z systemów magazynów w chmurze. RubiX jest unikatowa wśród systemów, buforowanie, ponieważ używa ona Solid-State dyski (SSD) zamiast rezerwa pamięci operacyjnej na potrzeby buforowania. Usługa pamięć podręczna we/wy uruchamia i zarządza serwerami metadanych RubiX w każdym węźle procesu roboczego klastra. Konfiguruje również wszystkie usługi klastra do użytku przejrzystych RubiX pamięci podręcznej.
 
 Większość dyski SSD zapewniają więcej niż 1 GB na sekundę przepustowości. Przepustowość, uzupełnione pamięć podręczna plików w pamięci systemu operacyjnego, zawiera wystarczającą przepustowość do ładowania danych big data aparatami przetwarzania obliczeniowych, takich jak Apache Spark. Operacyjne pamięć pozostanie dostępna dla platformy Apache Spark do przetwarzania zadań silnie zależne od pamięci, takich jak przesuwa. Wyłącznego użytku systemu operacyjnego pamięci posiadające umożliwia platformy Apache Spark w celu osiągnięcia optymalnego rozmieszczenia zasobów użycia.  
 
@@ -25,7 +25,7 @@ Większość dyski SSD zapewniają więcej niż 1 GB na sekundę przepustowości
 
 ## <a name="benefits-of-azure-hdinsight-io-cache"></a>Zalety usługi Azure HDInsight we/wy w pamięci podręcznej
 
-Pamięć podręczna oferuje wzrost wydajności dla zadań, które odczytują dane z magazynu w chmurze zdalnego.
+Za pomocą operacji We/Wy pamięci podręcznej zapewnia zwiększenie wydajności dla zadań, które odczytują dane z usługi Azure Blob Storage.
 
 Nie trzeba wprowadzać zmian w swojej zadań platformy Spark, aby zobaczyć zwiększa wydajność, korzystając z operacji We/Wy pamięci podręcznej. Podczas operacji We/Wy pamięć podręczna jest wyłączona, ten kod Spark wczytane zdalnie dane z usługi Azure Blob Storage: `spark.read.load('wasbs:///myfolder/data.parquet').count()`. Po aktywowaniu We/Wy pamięci podręcznej, ten sam wiersz kodu powoduje, że w pamięci podręcznej odczytu za pośrednictwem operacji We/Wy pamięci podręcznej. W przypadku następujących operacji odczytu dane są odczytywane lokalnie z dysków SSD. Węzły procesu roboczego w klastrze HDInsight są wyposażone w dyski SSD podłączonych lokalnie, dedykowanej. HDInsight we/wy w pamięci podręcznej wykorzystuje do buforowania, te lokalne dyski SSD, który zapewnia najniższy poziom opóźnienia i zmaksymalizować przepustowość.
 
@@ -46,7 +46,7 @@ Usługa Azure HDInsight we/wy w pamięci podręcznej jest dezaktywowany domyśln
 1. Potwierdź ponowne uruchomienie wszystkich odpowiednich usług w klastrze.
 
 >[!NOTE] 
-> Mimo, że pasek postępu pokazuje aktywowane, we/wy pamięci podręcznej faktycznie nie jest włączona dopiero po ponownym uruchomieniu usługi.
+> Mimo, że pasek postępu pokazuje aktywowane, we/wy pamięci podręcznej faktycznie nie jest włączone, dopiero po ponownym uruchomieniu usługi.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
   
@@ -75,3 +75,7 @@ Mogą wystąpić błędy miejsca na dysku, uruchamia wszystkie zadania Spark po 
 1. Wybierz **Potwierdź ponowne uruchomienie wszystkich**.
 
 Jeśli to nie zadziała, wyłącz We/Wy pamięci podręcznej.
+
+## <a name="next-steps"></a>Następne kroki
+
+- Przeczytaj więcej na temat operacji We/Wy pamięci podręcznej, w tym testy wydajności, w tym wpisie w blogu: [zadań platformy Apache Spark uzyskanie do 9 x przyspieszenie z pamięcią podręczną we/wy HDInsight](https://azure.microsoft.com/en-us/blog/apache-spark-speedup-with-hdinsight-io-cache/)

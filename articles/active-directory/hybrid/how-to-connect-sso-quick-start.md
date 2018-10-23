@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 10/21/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d7906323da8e9ee1571efe908084ae1433884e61
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 8cfe8c309c11eb24bc6e7af9fc3ba3eef0422c35
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405992"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638220"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Usługa Azure Active Directory bezproblemowe logowanie jednokrotne: Szybki start
 
@@ -57,6 +57,9 @@ Upewnij się, że zostały spełnione następujące wymagania wstępne:
 ## <a name="step-2-enable-the-feature"></a>Krok 2: Włączanie funkcji
 
 Włącz bezproblemowe logowanie Jednokrotne za pomocą [programu Azure AD Connect](whatis-hybrid-identity.md).
+
+>[!NOTE]
+> Możesz również [Włącz bezproblemowe logowanie Jednokrotne przy użyciu programu PowerShell](tshoot-connect-sso.md#manual-reset-of-the-feature) Jeśli program Azure AD Connect nie spełnia Twoich wymagań. Użyj tej opcji, jeśli masz więcej niż jedną domenę dla lasu usługi Active Directory i chcesz więcej przeznaczone są informacje o domenie, aby umożliwić bezproblemowe logowanie Jednokrotne dla.
 
 Jeśli wykonujesz nowej instalacji programu Azure AD Connect, wybierz opcję [niestandardową ścieżkę](how-to-connect-install-custom.md). W **logowania użytkownika** wybierz opcję **Włącz logowanie jednokrotne** opcji.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 0b2bf8cdb1af85e5ddbd3b18dd6dfa47bcb835b4
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: d7dbb808205c78b53277c6d916f5166a41c7e93d
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432889"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638430"
 ---
 # <a name="azure-storage-account-overview"></a>Przegląd konta usługi Azure storage
 
@@ -25,23 +25,23 @@ Aby dowiedzieć się, jak utworzyć konto usługi Azure storage, zobacz [Tworzen
 
 Usługa Azure Storage udostępnia trzy typy kont magazynu. Każdy typ obsługuje różne funkcje i ma swój własny model cen. Przed utworzeniem konta magazynu, aby określić typ konta, które sprawdza się najlepiej w aplikacjach, należy wziąć pod uwagę te różnice. Dostępne są następujące typy kont magazynu:
 
-* **Ogólnego przeznaczenia v2** kont (zalecane w przypadku większości scenariuszy)
-* **Ogólnego przeznaczenia w wersji 1** kont
-* Konta **usługi Blob Storage**
+* **[Konta ogólnego przeznaczenia v2](#general-purpose-v2-accounts)**  (zalecane w przypadku większości scenariuszy)
+* **[Konta ogólnego przeznaczenia w wersji 1](#general-purpose-v1-accounts)**
+* **[Konta usługi blob storage](#blob-storage-accounts)** 
 
 W poniższej tabeli opisano typy kont magazynu i ich funkcji:
 
 | Typ konta magazynu | Obsługiwane usługi                       | Warstwy wydajności obsługiwane | Warstwy dostępu obsługiwane               | Opcje replikacji                                                | Model wdrażania<sup>1</sup>  | Szyfrowanie<sup>2</sup> |
 |----------------------|------------------------------------------|-----------------------------|--------------------------------------|--------------------------------------------------------------------|-------------------|------------|
-| Ogólnego przeznaczenia w wersji 2   | Obiekt blob, plików, kolejki, tabeli i dysku       | Standard i Premium           | Gorąca, chłodna, archiwum<sup>3</sup> | MAGAZYN LRS, ZRS<sup>4</sup>, GRS, RA-GRS | Resource Manager | Zaszyfrowane  |
-| Ogólnego przeznaczenia w wersji 1   | Obiekt blob, plików, kolejki, tabeli i dysku       | Standard i Premium           | ND                                  | LRS, GRS, RA-GRS                                                   | Klasyczna usługa Resource Manager  | Zaszyfrowane  |
-| Blob Storage         | Obiekt blob (blokowe obiekty BLOB i uzupełnialnych obiektów blob tylko) | Standardowa (Standard)                    | Gorąca, chłodna, archiwum<sup>3</sup>                            | LRS, GRS, RA-GRS                                                   | Resource Manager  | Zaszyfrowane  |
+| Ogólnego przeznaczenia w wersji 2   | Obiekt blob, plików, kolejki, tabeli i dysku       | Standard i Premium           | Gorąca, chłodna, archiwum<sup>3</sup> | MAGAZYN LRS, ZRS<sup>4</sup>, GRS, RA-GRS | Resource Manager | Zaszyfrowana  |
+| Ogólnego przeznaczenia w wersji 1   | Obiekt blob, plików, kolejki, tabeli i dysku       | Standard i Premium           | Nie dotyczy                                  | LRS, GRS, RA-GRS                                                   | Klasyczna usługa Resource Manager  | Zaszyfrowana  |
+| Magazyn obiektów blob         | Obiekt blob (blokowe obiekty BLOB i uzupełnialnych obiektów blob tylko) | Standard                    | Gorąca, chłodna, archiwum<sup>3</sup>                            | LRS, GRS, RA-GRS                                                   | Resource Manager  | Zaszyfrowana  |
 
 <sup>1</sup>zaleca się użycie modelu wdrażania usługi Azure Resource Manager. W niektórych lokalizacjach, nadal można utworzyć konta magazynu przy użyciu klasycznego modelu wdrażania, a istniejące konta klasycznego w dalszym ciągu obsługiwana. Aby uzyskać więcej informacji, zobacz [usługi Azure Resource Manager a klasycznym wdrożeniu: omówienie modeli wdrażania i stanu zasobów](../../azure-resource-manager/resource-manager-deployment-model.md).
 
 <sup>2</sup>wszystkie konta magazynu są szyfrowane przy użyciu szyfrowania usługi Storage (SSE) dla danych magazynowanych. Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Azure Storage dla danych magazynowanych](storage-service-encryption.md).
 
-<sup>3</sup>warstwy archiwum jest dostępna na poziomie obiektu blob poszczególnych tylko, nie na poziomie konta magazynu. Tylko blokowe obiekty BLOB i uzupełnialnych obiektów blob można znaleźć w temacie. Aby uzyskać więcej informacji, zobacz [usługi Azure Blob storage: gorąca, chłodna i archiwalna magazynu](../blobs/storage-blob-storage-tiers.md).
+<sup>3</sup>warstwy archiwum jest dostępna na poziomie obiektu blob poszczególnych tylko, nie na poziomie konta magazynu. Tylko blokowe obiekty BLOB i uzupełnialnych obiektów blob można znaleźć w temacie. Aby uzyskać więcej informacji, zobacz [usługi Azure Blob storage: gorąca, chłodna i archiwalnego](../blobs/storage-blob-storage-tiers.md).
 
 <sup>4</sup>magazyn strefowo nadmiarowy (ZRS) jest dostępna tylko dla kont magazynu ogólnego przeznaczenia standard w wersji 2. Aby uzyskać więcej informacji na temat magazynu ZRS, zobacz [magazyn strefowo nadmiarowy (ZRS): wysoko dostępnych aplikacji usługi Azure Storage](storage-redundancy-zrs.md). Aby uzyskać więcej informacji na temat innych opcji replikacji, zobacz [replikacja usługi Azure Storage](storage-redundancy.md).
 
@@ -49,13 +49,16 @@ W poniższej tabeli opisano typy kont magazynu i ich funkcji:
 
 Konta magazynu ogólnego przeznaczenia v2 obsługi najnowszych funkcji usługi Azure Storage i uwzględnić je wszystkie funkcje ogólnego przeznaczenia w wersji 1 i kont usługi Blob storage. Konta ogólnego przeznaczenia w wersji 2 dostarczanie najniższy gigabajt ceny pojemności dla usługi Azure Storage oraz konkurencyjne w branży ceny transakcji. Konta magazynu ogólnego przeznaczenia v2 obsługują te usługi Azure Storage:
 
-- Obiekty BLOB (wszystkie typy)
+- Obiekty BLOB (wszystkie typy: strona bloku, dołączanie,)
 - Pliki
 - Dyski
 - Kolejki
 - Tabele
 
-Firma Microsoft zaleca używania konta magazynu ogólnego przeznaczenia w wersji 2 w przypadku większości scenariuszy. Ogólnego przeznaczenia w wersji 1 lub konta usługi Blob storage można łatwo uaktualnić do konta ogólnego przeznaczenia v2 modyfikacji oprogramowania nie przestojów ani aplikacji oraz bez potrzeby kopiowania danych. Aby uzyskać więcej informacji na temat uaktualniania do konta ogólnego przeznaczenia w wersji 2, zobacz [uaktualnić do konta magazynu ogólnego przeznaczenia v2](storage-account-upgrade.md). 
+> [!NOTE]
+> Firma Microsoft zaleca używania konta magazynu ogólnego przeznaczenia w wersji 2 w przypadku większości scenariuszy. Ogólnego przeznaczenia w wersji 1 lub konta usługi Blob storage można łatwo uaktualnić do konta ogólnego przeznaczenia w wersji 2, bez przestojów i bez potrzeby kopiowania danych.
+>
+> Aby uzyskać więcej informacji na temat uaktualniania do konta ogólnego przeznaczenia w wersji 2, zobacz [uaktualnić do konta magazynu ogólnego przeznaczenia v2](storage-account-upgrade.md). 
 
 Kont magazynu ogólnego przeznaczenia w wersji 2 oferuje wiele warstw dostępu do przechowywania danych na podstawie Twojej wzorców użycia. Aby uzyskać więcej informacji, zobacz [warstwy dostępu dla blokowych obiektów blob danych](#access-tiers-for-block-blob-data).
 
@@ -103,19 +106,20 @@ Usługa Azure Storage udostępnia różne opcje do uzyskiwania dostępu do danyc
 
 Są warstwy dostępu:
 
-* **Gorąca** warstwy dostępu, które jest zoptymalizowane pod kątem częstego dostępu do obiektów na koncie magazynu. Uzyskiwanie dostępu do danych w warstwie gorąca jest najbardziej ekonomiczne, a nieco wyższe koszty magazynowania. Nowe konta usługi storage są domyślnie tworzone w warstwie gorąca.
-* **Chłodna** warstwy dostępu, które jest zoptymalizowane pod kątem przechowywania dużych ilości danych, które rzadko uzyskuje dostęp i przechowywane przez co najmniej 30 dni. Przechowywanie danych w warstwie chłodna jest bardziej opłacalna, ale dostęp do tych danych może być nieco bardziej kosztowne niż dostęp do danych w warstwie gorąca.
-* **Archiwum** warstwę, która jest dostępna tylko dla poszczególnych blokowych obiektów blob. Warstwę archiwum jest zoptymalizowany pod kątem danych, które mogą tolerować kilka godzin opóźnienia w pobieraniu i pozostaną w warstwie archiwum przez co najmniej 180 dni. Warstwę archiwum jest najbardziej ekonomiczna opcja do przechowywania danych, ale dostęp do tych danych jest droższe niż dostęp do danych w gorących i chłodnych warstwach. 
-
 > [!NOTE]
 > [Dostępu w warstwie Premium](../blobs/storage-blob-storage-tiers.md#premium-access-tier) jest dostępna w ograniczonej wersji zapoznawczej jako konto magazyn lokalnie nadmiarowy (LRS) w regionach: Europa Północna, wschodnie stany USA 2, środkowe stany USA i zachodnie stany USA. Aby dowiedzieć się, jak zarejestrować się w wersji zapoznawczej, zobacz [wprowadzenie do magazynu obiektów Blob platformy Azure — wersja Premium](http://aka.ms/premiumblob).
 
-W przypadku zmiany wzorca użycia danych można przełączać się między tymi warstwami dostępu w dowolnym momencie. 
+* **Gorąca** warstwy dostępu, które jest zoptymalizowane pod kątem częstego dostępu do obiektów na koncie magazynu. Uzyskiwanie dostępu do danych w warstwie gorąca jest najbardziej ekonomiczne, a nieco wyższe koszty magazynowania. Tworzy nowego konta magazynu w warstwie gorąca warstwa domyślnie.
+* **Chłodna** warstwy dostępu, które jest zoptymalizowane pod kątem przechowywania dużych ilości danych, które rzadko uzyskuje dostęp i przechowywane przez co najmniej 30 dni. Przechowywanie danych w warstwie chłodna jest bardziej opłacalna, ale dostęp do tych danych może być nieco bardziej kosztowne niż dostęp do danych w warstwie gorąca.
+* **Archiwum** warstwę, która jest dostępna tylko dla poszczególnych blokowych obiektów blob. Warstwę archiwum jest zoptymalizowany pod kątem danych, które mogą tolerować kilka godzin opóźnienia w pobieraniu i pozostaną w warstwie archiwum przez co najmniej 180 dni. Warstwę archiwum jest najbardziej ekonomiczna opcja do przechowywania danych, ale dostęp do tych danych jest droższe niż dostęp do danych w gorąca lub chłodna. 
+
+
+W przypadku zmiany wzorca użycia danych można przełączać się między tymi warstwami dostępu w dowolnym momencie. Aby uzyskać więcej informacji na temat warstw dostępu, zobacz [usługi Azure Blob storage: Premium (wersja zapoznawcza), gorąca, chłodna i archiwalna magazynu](../blobs/storage-blob-storage-tiers.md).
 
 > [!IMPORTANT]
-> Zmiana warstwy dostępu dla istniejącego konta magazynu lub obiektu blob może spowodować naliczenie dodatkowych opłat.
+> Zmiana warstwy dostępu dla istniejącego konta magazynu lub obiektu blob może spowodować naliczenie dodatkowych opłat. Aby uzyskać więcej informacji, zobacz [konta magazynu, w sekcji rozliczeń](#storage-account-billing).
 
-Aby uzyskać więcej informacji na temat warstw dostępu, zobacz [usługi Azure Blob storage: Premium (wersja zapoznawcza), gorąca, chłodna i archiwalna magazynu](../blobs/storage-blob-storage-tiers.md).
+
 
 ## <a name="replication"></a>Replikacja
 

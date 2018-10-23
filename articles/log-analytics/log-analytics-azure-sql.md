@@ -15,18 +15,18 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: ''
-ms.openlocfilehash: d16f9add2cd31eb5a8db650798c241c3dcf2610f
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: ea289abff7a40b0528f4cb88402594879ba6c437
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379308"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649656"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorowanie usługi Azure SQL Database przy użyciu usługi Azure SQL Analytics (wersja zapoznawcza)
 
 ![Symbol usługi Azure SQL Analytics](./media/log-analytics-azure-sql/azure-sql-symbol.png)
 
-Usługa Azure SQL Analytics to w chmurze rozwiązanie do monitorowania wydajności bazy danych Azure SQL, pul elastycznych i wystąpienia zarządzane przez usługę na dużą skalę i w ramach wielu subskrypcji do monitorowania. Jego zbiera i wizualizuje ważne metryki wydajności bazy danych Azure SQL Database dzięki wbudowanym funkcjom analizy dla Rozwiązywanie problemów z wydajnością.
+Usługa Azure SQL Analytics to w chmurze rozwiązanie do monitorowania wydajności baz danych, pul elastycznych i wystąpienia zarządzane przez usługę Azure SQL na dużą skalę i w ramach wielu subskrypcji za pomocą jedną taflę szkła do monitorowania. Jego zbiera i wizualizuje ważne metryki wydajności bazy danych Azure SQL Database dzięki wbudowanym funkcjom analizy dla Rozwiązywanie problemów z wydajnością.
 
 Za pomocą metryk, które są zbierane za pomocą rozwiązania, można utworzyć niestandardowe reguły monitorowania i alertów. To rozwiązanie pomaga zidentyfikować problemy w każdej warstwie stosu aplikacji. Aby przedstawić dane dotyczące wszystkich usługi Azure SQL bazy danych, pul elastycznych i baz danych w wystąpieniach zarządzanych w jeden obszar roboczy usługi Log Analytics używa metryki diagnostycznych platformy Azure wraz z widokami usługi Log Analytics. Usługa log Analytics pomaga gromadzić, korelować i wizualizować dane ze strukturą i bez struktury.
 
@@ -50,7 +50,7 @@ Jako rozwiązanie nie używa agentów do połączenia z usługą Log Analytics, 
 | [Agenci dla systemu Linux](log-analytics-linux-agents.md) | Nie | Bezpośredni agenci dla systemu Linux nie są używane przez to rozwiązanie. |
 | [Grupy zarządzania SCOM](log-analytics-om-agents.md) | Nie | Bezpośrednie połączenie agenta programu SCOM do usługi Log Analytics nie jest używana przez to rozwiązanie. |
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 
 Wykonaj poniższe kroki, aby dodać rozwiązanie do usługi Azure SQL Analytics do pulpitu nawigacyjnego platformy Azure.
 
@@ -66,23 +66,11 @@ Wykonaj poniższe kroki, aby dodać rozwiązanie do usługi Azure SQL Analytics 
 
 ### <a name="configure-azure-sql-databases-elastic-pools-and-managed-instances-to-stream-diagnostics-telemetry"></a>Konfigurowanie baz danych SQL Azure, pul elastycznych i wystąpienia zarządzane przez usługę do dane diagnostyczne i telemetryczne strumienia
 
-Po utworzeniu rozwiązania Azure SQL Analytics w obszarze roboczym w celu monitorowania wydajności baz danych Azure SQL Database, wystąpienie zarządzane usługi baz danych i pul elastycznych, konieczne będzie **Skonfiguruj każdy** tych zasobów, które chcesz Monitor do przesyłania strumieniowego jego dane diagnostyczne i telemetryczne do rozwiązania.
+Po utworzeniu rozwiązania Azure SQL Analytics w obszarze roboczym, aby monitorować wydajność bazy danych Azure SQL, bazy danych w wystąpieniu zarządzanym bazy danych i pul elastycznych, konieczne będzie **Skonfiguruj każdy** z nich zasoby, które chcesz monitorować, aby przesyłać strumieniowo jego dane diagnostyczne i telemetryczne do rozwiązania. Wykonaj szczegółowe instrukcje na tej stronie:
 
 - Włącz diagnostykę platformy Azure dla usługi Azure SQL Database, wystąpienie zarządzane usługi baz danych i pul elastycznych, aby [strumieniowo dane diagnostyczne i telemetryczne do usługi Azure SQL Analytics](../sql-database/sql-database-metrics-diag-logging.md).
 
-### <a name="to-configure-multiple-azure-subscriptions"></a>Aby skonfigurować wiele subskrypcji platformy Azure
- 
-Aby obsługiwać wiele subskrypcji, należy użyć skryptu programu PowerShell z [włączyć usługi Azure rejestrowanie metryki dla zasobów przy użyciu programu PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell/). Podaj identyfikator zasobu obszaru roboczego jako parametr, podczas wykonywania skryptu do wysyłania danych diagnostycznych z zasobów w jednej subskrypcji platformy Azure do obszaru roboczego w innej subskrypcji platformy Azure.
-
-**Przykład**
-
-```
-PS C:\> $WSID = "/subscriptions/<subID>/resourcegroups/oms/providers/microsoft.operationalinsights/workspaces/omsws"
-```
-
-```
-PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
-```
+Strony zawiera również instrukcje na temat włączania obsługi monitorowania wiele subskrypcji platformy Azure z jednego obszaru roboczego usługi Azure SQL Analytics jako jedną taflę szkła.
 
 ## <a name="using-the-solution"></a>Użycie rozwiązania
 
@@ -130,14 +118,14 @@ Poniżej tabeli przedstawiono perspektywy obsługiwane w przypadku dwóch wersji
 
 | Perspektywa | Opis | Obsługa bazy danych SQL i elastyczne pule | Obsługa wystąpienia zarządzanego |
 | --- | ------- | ----- | ----- |
-| Zasób według typu | Perspektywa, który zlicza wszystkie zasoby, które są monitorowane. | Yes | Yes | 
-| Insights | Udostępnia hierarchiczny Przechodzenie do szczegółów do inteligentnego wgląd w wydajność. | Yes | Yes |
-| Błędy | Udostępnia hierarchiczny Przechodzenie do szczegółów do błędów SQL, które wystąpiły w bazach danych. | Yes | Yes |
-| Limity czasu | Udostępnia hierarchiczny Przechodzenie do szczegółów do przekroczenia limitu czasu SQL, które wystąpiły w bazach danych. | Yes | Nie |
-| Bloki | Udostępnia hierarchiczny Przechodzenie do szczegółów na blokowanie SQL, które wystąpiły w bazach danych. | Yes | Nie |
-| Oczekiwania bazy danych | Udostępnia hierarchiczny Przechodzenie do szczegółów do statystyki oczekiwania SQL na poziomie bazy danych. Zawiera podsumowania całkowity czas oczekiwania oraz czas oczekiwania na typ oczekiwania. |Yes | Yes |
-| Czas trwania zapytania | Udostępnia hierarchiczny Przechodzenie do szczegółów do statystyk wykonywania zapytań, np. czas trwania zapytania, użycie procesora CPU, we/wy danych użycia, obciążenie We/Wy dziennika. | Yes | Yes |
-| Oczekiwania zapytań | Udostępnia hierarchiczny Przechodzenie do szczegółów do statystyki oczekiwania zapytań według kategorii oczekiwania. | Yes | Yes |
+| Zasób według typu | Perspektywa, który zlicza wszystkie zasoby, które są monitorowane. | Tak | Tak | 
+| Wgląd w szczegółowe dane | Udostępnia hierarchiczny Przechodzenie do szczegółów do inteligentnego wgląd w wydajność. | Tak | Tak |
+| Błędy | Udostępnia hierarchiczny Przechodzenie do szczegółów do błędów SQL, które wystąpiły w bazach danych. | Tak | Tak |
+| Limity czasu | Udostępnia hierarchiczny Przechodzenie do szczegółów do przekroczenia limitu czasu SQL, które wystąpiły w bazach danych. | Tak | Nie |
+| Bloki | Udostępnia hierarchiczny Przechodzenie do szczegółów na blokowanie SQL, które wystąpiły w bazach danych. | Tak | Nie |
+| Oczekiwania bazy danych | Udostępnia hierarchiczny Przechodzenie do szczegółów do statystyki oczekiwania SQL na poziomie bazy danych. Zawiera podsumowania całkowity czas oczekiwania oraz czas oczekiwania na typ oczekiwania. |Tak | Tak |
+| Czas trwania zapytania | Udostępnia hierarchiczny Przechodzenie do szczegółów do statystyk wykonywania zapytań, np. czas trwania zapytania, użycie procesora CPU, we/wy danych użycia, obciążenie We/Wy dziennika. | Tak | Tak |
+| Oczekiwania zapytań | Udostępnia hierarchiczny Przechodzenie do szczegółów do statystyki oczekiwania zapytań według kategorii oczekiwania. | Tak | Tak |
 
 ### <a name="intelligent-insights-report"></a>Intelligent Insights raportu
 

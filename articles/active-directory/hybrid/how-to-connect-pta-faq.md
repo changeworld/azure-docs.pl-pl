@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 10/21/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4f2ceae349c921ce0d83fb7401e3b18404722763
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 025202d25d3057f3db7d015faba349a1fe642d4c
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362912"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637869"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory uwierzytelnianie przekazywane: Często zadawane pytania
 
@@ -83,6 +83,10 @@ Tak. Funkcja autowykrywania serwera Proxy sieci Web (WPAD) jest włączone w śr
 ## <a name="can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server"></a>Czy można zainstalować dwóch lub większej liczby agentów uwierzytelniania przekazywanego, na tym samym serwerze?
 
 Nie, należy można zainstalować tylko jednego agenta uwierzytelniania przekazywanego na jednym serwerze. Jeśli chcesz skonfigurować wysoką dostępność, uwierzytelniania przekazywanego [postępuj zgodnie z instrukcjami w tym miejscu](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability).
+
+## <a name="do-i-have-to-manually-renew-certificates-used-by-pass-through-authentication-agents"></a>Trzeba ręcznie odnawiać certyfikatów używane przez agentów uwierzytelniania przekazywanego?
+
+Komunikacja między każdego agenta uwierzytelniania przekazywanego i usługi Azure AD jest zabezpieczony przy użyciu uwierzytelniania opartego na certyfikatach. Te [certyfikaty są automatycznie odnawiane co kilka miesięcy, przez usługę Azure AD](how-to-connect-pta-security-deep-dive.md#operational-security-of -the-authentication-agents). Nie ma potrzeby ręcznie odnawiać tych certyfikatów. Możesz wyczyścić starsze wygasłe certyfikaty, zgodnie z potrzebami.
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>Jak usunąć agenta uwierzytelniania przekazywanego?
 

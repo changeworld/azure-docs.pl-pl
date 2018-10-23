@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 10/22/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8e06cf1a443d4fd158e29ef4b53206a83800dfe9
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 36025bf8460d690aab3b3617ad3341dfe7005e9e
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803056"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649279"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Zestaw przekierowania adresów URL z usługi b2clogin.com dla usługi Azure Active Directory B2C
 
@@ -26,7 +26,12 @@ Korzystanie z usługi b2clogin.com zapewnia dodatkowe korzyści, takich jak:
 - Pliki cookie nie są już są współużytkowane z innymi usługami firmy Microsoft.
 - Adresami URL nie będzie zawierać odniesienie do firmy Microsoft. Na przykład `https://your-tenant-name.b2clogin.com/tfp/your-tenant-ID/policyname/v2.0/.well-known/openid-configuration`.
 
-Aby korzystać z usługi b2clogin.com, ustaw przekierowania adresów URL w aplikacji dostawcy tożsamości z usługi b2clogin.com. Można również ustawić aplikacji usługi Azure AD B2C na korzystanie z usługi b2clogin.com dla odwołania do zasad i tokenu punktów końcowych. Jeśli używasz biblioteki MSAL, musisz ustawić **ValidateAuthority** właściwość `false`.
+Należy wziąć pod uwagę te ustawienia, które może być konieczna zmiana podczas korzystania z usługi b2clogin.com:
+
+- Ustaw przekierowania adresów URL w aplikacji dostawcy tożsamości z usługi b2clogin.com. 
+- Ustaw aplikację usługi Azure AD B2C, aby korzystać z usługi b2clogin.com dla odwołania do zasad i tokenu punktów końcowych. 
+- Jeśli używasz biblioteki MSAL, musisz ustawić **ValidateAuthority** właściwość `false`.
+- Upewnij się, że wprowadzisz zmiany w dowolnej **dozwolone źródła** zdefiniowanego w ustawieniach mechanizmu CORS [dostosowywania interfejsu użytkownika](active-directory-b2c-ui-customization-custom-dynamic.md).  
 
 ## <a name="change-redirect-urls"></a>Zmiana przekierowania adresów URL
 

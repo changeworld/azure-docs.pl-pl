@@ -11,12 +11,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/11/2018
-ms.openlocfilehash: ad9ef7aa56cde9dd2ae644b97570b3bcfb727516
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 49ef31996cb9c55ed244202a85e123faf52fbd2a
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49355505"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649786"
 ---
 # <a name="accelerated-database-recovery-preview"></a>Przyspieszone odzyskiwanie bazy danych (wersja zapoznawcza)
 
@@ -108,7 +108,7 @@ Czterech kluczowych składników ADR są:
   sLog jest strumień dodatkowej dziennika w pamięci, że magazyny rejestrowania rekordów niewersjonowanych operacje (takie jak unieważniania pamięci podręcznej metadanych, pozyskanie blokady i tak dalej). SLog jest:
 
   - Niskim poziomie i w pamięci
-  - Utrzymywana na dysku, została serializowany w procesie punktu kontrolnego
+  - Utrzymywana na dysku przez serializowanego w procesie punktu kontrolnego
   - Okresowo są obcinane jako zatwierdzenie transakcji
   - Przyspiesza wykonaj ponownie i cofnąć tylko niewersjonowanych operacji przetwarzania  
   - Włącza obcinanie dziennika transakcji agresywne przy zachowaniu tylko rekordy dziennika wymagane
@@ -127,4 +127,4 @@ Następujące typy klientów, należy rozważyć włączenie ADR:
 
 ## <a name="to-enable-adr-during-this-preview-period"></a>Aby włączyć reguły ADR w tym okresie (wersja zapoznawcza)
 
-W okresie wersji zapoznawczej dla tej funkcji, Wyślij wiadomość e-mail do [ mailto:adr@microsoft.com ](mailto:adr@microsoft.com) Aby dowiedzieć się więcej, a następnie spróbuj się odzyskiwanie bazy danych Accelerated (ADR). W wiadomości e-mail na przykład nazwa serwera logicznego (dla pojedynczych baz danych, pul elastycznych i usługi Azure Data Warehouse). Ponieważ jest to funkcja w wersji zapoznawczej, to serwer testowy powinien być serwerem nieprodukcyjnych.
+W okresie wersji zapoznawczej dla tej funkcji, Wyślij wiadomość e-mail do [ adr@microsoft.com ](mailto:adr@microsoft.com) Aby dowiedzieć się więcej, a następnie spróbuj się odzyskiwanie bazy danych Accelerated (ADR). W wiadomości e-mail na przykład nazwa serwera logicznego (dla pojedynczych baz danych, pul elastycznych i usługi Azure Data Warehouse). Ponieważ jest to funkcja w wersji zapoznawczej, to serwer testowy powinien być serwerem nieprodukcyjnych.

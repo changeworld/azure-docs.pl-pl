@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 4001d0e21e7a0c8977d785463fb54aa4de45786c
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 10bd2101839e1b6d1dbdc1e53c31693ab0be98fd
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378741"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647769"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Usługa Azure Media Services v3 — informacje o wersji 
 
@@ -38,7 +38,7 @@ W tej sekcji opisano aktualizacje usługi Azure Media Services (AMS) październi
 
 #### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure 2.0
  
-Moduł Azure CLI 2.0 dla wszystkich funkcji, w tym na żywo, zasad dotyczących zawartości klucza, filtry konta/zasobów, zasady przesyłania strumieniowego.
+Moduł interfejsu wiersza polecenia platformy Azure w wersji 2.0 zawiera obecnie operacje na zasadach przesyłania strumieniowego na żywo, zasady klucza zawartości. Aby uzyskać więcej informacji, zobacz [plany zmian](#plans-for-changes).
 
 #### <a name="azure-resource-management"></a>Zarządzanie zasobami platformy Azure 
 
@@ -95,7 +95,7 @@ Wideo wersja Ogólnodostępna indeksatora zostało zapowiedziane w sierpniu. Aby
 
 ### <a name="plans-for-changes"></a>Plany dotyczące zmian
 
-Wersji wiersza polecenia platformy Azure będzie dostępna od 10/23/2018 r.
+Wersji wiersza polecenia platformy Azure będzie dostępna w 11 06 2018.
 
 ### <a name="known-issues"></a>Znane problemy
 

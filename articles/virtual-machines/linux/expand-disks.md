@@ -12,39 +12,39 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/13/2017
+ms.date: 10/15/2018
 ms.author: rogarana
-ms.openlocfilehash: 0c2d4d1413b6cfd0b5e457e720b59c6c7b575092
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 62057d3041aa83e0097b688b48386b80f5c4f87e
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974548"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637293"
 ---
-# <a name="how-to-expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Sposobu rozszerzania wirtualnych dysków twardych na Maszynę wirtualną systemu Linux przy użyciu wiersza polecenia platformy Azure
+# <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Rozwiń wirtualnych dysków twardych na Maszynę wirtualną systemu Linux przy użyciu wiersza polecenia platformy Azure
 
-Domyślny rozmiar wirtualnego dysku twardego systemu operacyjnego (OS) jest zazwyczaj 30 GB miejsca na maszynie wirtualnej systemu Linux (VM) na platformie Azure. Możesz [dodawanie dysków danych](add-disk.md) zapewnienie dodatkowego miejsca do magazynowania, ale może też chcesz rozszerzyć istniejący dysk danych. Ten artykuł szczegółowo opisuje sposobu rozszerzania dysków zarządzanych dla maszyny Wirtualnej systemu Linux przy użyciu wiersza polecenia platformy Azure. 
+W tym artykule opisano, jak rozwinąć dysków zarządzanych dla maszyny wirtualnej systemu Linux (VM) z wiersza polecenia platformy Azure. Możesz [dodawanie dysków danych](add-disk.md) zapewnienie dodatkowego miejsca do magazynowania miejsca, a także rozszerzyć istniejący dysk danych. Domyślny rozmiar wirtualnego dysku twardego systemu operacyjnego (OS) jest zazwyczaj 30 GB na Maszynę wirtualną systemu Linux na platformie Azure. 
 
 > [!WARNING]
 > Zawsze upewnij się, że utworzono kopię zapasową danych przed wykonaniem dysku zmiany rozmiaru operacji. Aby uzyskać więcej informacji, zobacz [tworzenie kopii zapasowych maszyn wirtualnych systemu Linux na platformie Azure](tutorial-backup-vms.md).
 
-## <a name="expand-azure-managed-disk"></a>Rozwiń dyskach zarządzanych platformy Azure
-Upewnij się, że masz najnowszy [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
+## <a name="expand-an-azure-managed-disk"></a>Rozwiń dysku zarządzanego platformy Azure
+Upewnij się, że masz najnowszy [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i jest zalogowany na koncie platformy Azure przy użyciu [az login](/cli/azure/reference-index#az-login).
 
 Ten artykuł wymaga istniejącej maszyny Wirtualnej na platformie Azure przy użyciu co najmniej jeden dysk danych dołączony i przygotowane. Jeśli nie masz jeszcze maszyny Wirtualnej, którego można używać, zobacz [Utwórz i przygotuj Maszynę wirtualną z dyskami danych](tutorial-manage-disks.md#create-and-attach-disks).
 
-W następujących przykładach nazwy parametru przykład należy zastąpić własnymi wartościami. Przykładowe nazwy parametru zawierają *myResourceGroup* i *myVM*.
+W następujących przykładach Zastąp przykładowe nazwy parametru takich jak *myResourceGroup* i *myVM* własnymi wartościami.
 
-1. Nie można wykonać operacji na wirtualnych dyskach twardych z maszyny Wirtualnej z systemem. Cofnij Przydział maszyny Wirtualnej za pomocą [az vm deallocate](/cli/azure/vm#az_vm_deallocate). Poniższy przykład powoduje cofnięcie przydziału maszyny Wirtualnej o nazwie *myVM* w grupie zasobów o nazwie *myResourceGroup*:
+1. Nie można wykonać operacji na wirtualnych dyskach twardych z maszyny Wirtualnej z systemem. Cofnij Przydział maszyny Wirtualnej za pomocą [az vm deallocate](/cli/azure/vm#az-vm-deallocate). Poniższy przykład powoduje cofnięcie przydziału maszyny Wirtualnej o nazwie *myVM* w grupie zasobów o nazwie *myResourceGroup*:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
     > [!NOTE]
-    > Należy cofnąć przydział maszyny Wirtualnej, aby rozwinąć wirtualnego dysku twardego. `az vm stop` zwalnia zasoby obliczeniowe. Aby zwolnić zasoby obliczeniowe, użyj `az vm deallocate`.
+    > Należy cofnąć przydział maszyny Wirtualnej, aby rozwinąć wirtualnego dysku twardego. Zatrzymywanie maszyny Wirtualnej przy użyciu `az vm stop` nie spowoduje zwolnienia zasobów obliczeniowych. Aby zwolnić zasoby obliczeniowe, użyj `az vm deallocate`.
 
-1. Wyświetlanie listy dysków zarządzanych w grupie zasobów za pomocą [listy dysków az](/cli/azure/disk#az_disk_list). Poniższy przykład wyświetla listę dysków zarządzanych w grupie zasobów o nazwie *myResourceGroup*:
+1. Wyświetlanie listy dysków zarządzanych w grupie zasobów za pomocą [listy dysków az](/cli/azure/disk#az-disk-list). Poniższy przykład wyświetla listę dysków zarządzanych w grupie zasobów o nazwie *myResourceGroup*:
 
     ```azurecli
     az disk list \
@@ -53,7 +53,7 @@ W następujących przykładach nazwy parametru przykład należy zastąpić wła
         --output table
     ```
 
-    Rozwiń węzeł wymagana dysk z [aktualizacji dysku az](/cli/azure/disk#az_disk_update). Poniższy przykład rozszerza dysk zarządzany o nazwie *myDataDisk* jako *200*Gb, rozmiar:
+    Rozwiń węzeł wymagana dysk z [aktualizacji dysku az](/cli/azure/disk#az-disk-update). Poniższy przykład rozszerza dysk zarządzany o nazwie *myDataDisk* do *200* GB:
 
     ```azurecli
     az disk update \
@@ -63,27 +63,27 @@ W następujących przykładach nazwy parametru przykład należy zastąpić wła
     ```
 
     > [!NOTE]
-    > Po rozwinięciu dysku zarządzanego, zaktualizowano rozmiaru jest mapowany na najbardziej zbliżony rozmiar dysku zarządzanego. Dla tabeli warstwy i rozmiary dostępnych dysków zarządzanych, zobacz [Azure Omówienie usługi Managed Disks — cennik i rozliczenia](../windows/managed-disks-overview.md#pricing-and-billing).
+    > Po rozwinięciu dysku zarządzanego, zaktualizowano rozmiar jest zaokrąglana w górę do najbliższej rozmiaru dysku zarządzanego. Dla tabeli warstwy i rozmiary dostępnych dysków zarządzanych, zobacz [Azure Omówienie usługi Managed Disks — cennik i rozliczenia](../windows/managed-disks-overview.md#pricing-and-billing).
 
-1. Uruchom maszynę Wirtualną za pomocą [az vm start](/cli/azure/vm#az_vm_start). Poniższy przykład uruchamia maszynę Wirtualną o nazwie *myVM* w grupie zasobów o nazwie *myResourceGroup*:
+1. Uruchom maszynę Wirtualną za pomocą [az vm start](/cli/azure/vm#az-vm-start). Poniższy przykład uruchamia maszynę Wirtualną o nazwie *myVM* w grupie zasobów o nazwie *myResourceGroup*:
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
     ```
 
 
-## <a name="expand-disk-partition-and-filesystem"></a>Rozwiń węzeł partycji dysku i system plików
-Aby użyć zwiększony rozmiar dysku, trzeba zwiększyć odpowiedni partycję i system plików.
+## <a name="expand-a-disk-partition-and-filesystem"></a>Rozwiń węzeł partycji dysku i system plików
+Aby użyć zwiększony rozmiar dysku, rozwiń węzeł partycji podstawowej oraz system plików.
 
-1. SSH z maszyną Wirtualną przy użyciu odpowiednich poświadczeń. Można uzyskać publicznego adresu IP maszyny Wirtualnej za pomocą [az vm show](/cli/azure/vm#az_vm_show):
+1. SSH z maszyną Wirtualną przy użyciu odpowiednich poświadczeń. Widać, publiczny adres IP swojej maszyny wirtualnej za pomocą [az vm show](/cli/azure/vm#az-vm-show):
 
     ```azurecli
     az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
     ```
 
-1. Aby użyć zwiększony rozmiar dysku, trzeba zwiększyć odpowiedni partycję i system plików.
+1. Rozwiń węzeł partycji podstawowej i system plików.
 
-    a. Jeśli już zainstalowany, należy odinstalować dysku:
+    a. Jeśli dysk jest już zainstalowany, należy go odinstalować:
 
     ```bash
     sudo umount /dev/sdc1
@@ -95,7 +95,7 @@ Aby użyć zwiększony rozmiar dysku, trzeba zwiększyć odpowiedni partycję i 
     sudo parted /dev/sdc
     ```
 
-    Wyświetl informacje o istniejących układ partycji z `print`. Dane wyjściowe będą podobne do poniższego przykładu, który pokazuje, że odpowiedni dysk ma rozmiar 215 Gb:
+    Wyświetl informacje o istniejących układ partycji z `print`. Dane wyjściowe będą podobne do poniższego przykładu, który pokazuje, że dysk podstawowy jest 215 GB:
 
     ```bash
     GNU Parted 3.2
@@ -120,7 +120,7 @@ Aby użyć zwiększony rozmiar dysku, trzeba zwiększyć odpowiedni partycję i 
     End?  [107GB]? 215GB
     ```
 
-    d. Aby zakończyć pracę, wprowadź `quit`
+    d. Aby zakończyć pracę, wprowadź `quit`.
 
 1. Z partycją ze zmienionym rozmiarem, Sprawdź spójność partycji z `e2fsck`:
 
@@ -128,7 +128,7 @@ Aby użyć zwiększony rozmiar dysku, trzeba zwiększyć odpowiedni partycję i 
     sudo e2fsck -f /dev/sdc1
     ```
 
-1. Teraz dowolnie zmieniać rozmiar systemu plików przy użyciu `resize2fs`:
+1. Zmiana rozmiaru systemu plików przy użyciu `resize2fs`:
 
     ```bash
     sudo resize2fs /dev/sdc1
@@ -140,7 +140,7 @@ Aby użyć zwiększony rozmiar dysku, trzeba zwiększyć odpowiedni partycję i 
     sudo mount /dev/sdc1 /datadrive
     ```
 
-1. Aby sprawdzić, czy zmieniono rozmiar dysku systemu operacyjnego, należy użyć `df -h`. Następujące przykładowe dane wyjściowe zawiera dysk danych */dev/sdc1*, teraz wynosi 200 GB:
+1. Aby sprawdzić, czy zmieniono rozmiar dysku systemu operacyjnego, należy użyć `df -h`. Następujące przykładowe dane wyjściowe zawiera dysk danych */dev/sdc1* teraz wynosi 200 GB:
 
     ```bash
     Filesystem      Size   Used  Avail Use% Mounted on
@@ -148,4 +148,5 @@ Aby użyć zwiększony rozmiar dysku, trzeba zwiększyć odpowiedni partycję i 
     ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Jeśli potrzebujesz dodatkowego magazynu, możesz również [dodawanie dysków danych do maszyny Wirtualnej z systemem Linux](add-disk.md). Aby uzyskać więcej informacji o szyfrowaniu dysku, zobacz [szyfrowania dysków na Maszynę wirtualną systemu Linux przy użyciu wiersza polecenia platformy Azure](encrypt-disks.md).
+* Jeśli potrzebujesz dodatkowego miejsca do magazynowania, możesz również [dodawanie dysków danych do maszyny Wirtualnej z systemem Linux](add-disk.md). 
+* Aby uzyskać więcej informacji o szyfrowaniu dysku, zobacz [szyfrowania dysków na Maszynę wirtualną systemu Linux przy użyciu wiersza polecenia platformy Azure](encrypt-disks.md).

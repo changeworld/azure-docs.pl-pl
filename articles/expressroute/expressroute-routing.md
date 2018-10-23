@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: ganesr
-ms.openlocfilehash: 525d75264ecb54d42d920cacb0712397f4d8c3a8
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 35644912da2b75009ba2b16f4a188011ba1f813e
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43304361"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650132"
 ---
 # <a name="expressroute-routing-requirements"></a>Wymagania dotyczące routingu w usłudze ExpressRoute
 Aby połączyć się z usługami w chmurze firmy Microsoft przy użyciu usługi ExpressRoute, konieczne będzie skonfigurowanie routingu oraz zarządzanie nim. Niektórzy dostawcy połączenia oferują konfigurowanie routingu oraz zarządzanie nim jako usługą zarządzaną. Skontaktuj się z dostawcą połączenia, aby sprawdzić, czy taka usługa jest oferowana. Jeśli nie, musisz spełnić wymagania opisane poniżej:
@@ -160,7 +160,7 @@ Możesz kupić więcej niż jeden obwód usługi ExpressRoute na region geopolit
 | Wschodnie stany USA 2 | 12076:51005 |
 | Zachodnie stany USA | 12076:51006 |
 | Zachodnie stany USA 2 | 12076:51026 |
-| Środkowo-zachodnie stany USA | 12076:51027 |
+| Zachodnio-środkowe stany USA | 12076:51027 |
 | Środkowo-północne stany USA | 12076:51007 |
 | Środkowo-południowe stany USA | 12076:51008 |
 | Środkowe stany USA | 12076:51009 |
@@ -171,8 +171,8 @@ Możesz kupić więcej niż jeden obwód usługi ExpressRoute na region geopolit
 | **Europa** | |
 | Europa Północna | 12076:51003 |
 | Europa Zachodnia | 12076:51002 |
-| Południowe Zjednoczone Królestwo | 12076:51024 |
-| Zachodnie Zjednoczone Królestwo | 12076:51025 |
+| Zjednoczone Królestwo (południe) | 12076:51024 |
+| Zjednoczone Królestwo (zachód) | 12076:51025 |
 | Francja Środkowa | 12076:51030 |
 | Francja Południowa | 12076:51031 |
 | **Azja i Pacyfik** | |
@@ -211,7 +211,11 @@ Oprócz tego firma Microsoft oznaczy również prefiksy w oparciu o usługę, do
 | SharePoint Online | 12076:5020 |
 | Skype dla firm Online | 12076:5030 |
 | Dynamics 365 | 12076:5040 |
+| Usługa Azure globalnego usług * | 12076:5050 |
 | Inne usługi online Office 365 | 12076:5100 |
+
+***Usługi globalne platformy Azure obejmuje DevOps platformy Azure**
+
 
 > [!NOTE]
 > Firma Microsoft nie uznaje żadnych wartości społeczności BGP ustawionych na trasach anonsowanych do firmy Microsoft.

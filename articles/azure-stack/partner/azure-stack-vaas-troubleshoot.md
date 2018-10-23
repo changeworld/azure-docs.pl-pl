@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2018
+ms.date: 10/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: ed070ac4fdf9ccca1b1b4b99b8031bc3fd035779
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 60cfc4a2b20d3c443562a1f66e9c205244d0beef
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160153"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645596"
 ---
 # <a name="troubleshoot-validation-as-a-service"></a>Rozwiązywanie problemów z weryfikacji jako usługa
 
@@ -26,27 +26,31 @@ ms.locfileid: "44160153"
 
 Poniżej przedstawiono typowe problemy, niezwiązanych ze sobą na wersji oprogramowania i sposoby ich rozwiązywania.
 
-## <a name="the-portal-shows-local-agent-in-debug-mode"></a>W portalu jest wyświetlany w trybie debugowania lokalnego agenta
+## <a name="local-agent"></a>Agent lokalny
+
+### <a name="the-portal-shows-local-agent-in-debug-mode"></a>W portalu jest wyświetlany w trybie debugowania lokalnego agenta
 
 Jest to prawdopodobnie, ponieważ agent nie może przesyłać pulsów do usługi z powodu niestabilne połączenie. Puls jest wysyłane co pięć minut. Jeśli usługa nie otrzyma pulsu przez 15 minut, usługa uwzględnia agenta jako nieaktywne i testy zostaną zaplanowane już na nim. Sprawdź komunikat o błędzie w *Agenthost.log* plików znajdujących się w katalogu, którym agent został uruchomiony.
 
-> [!Note] 
+> [!Note]
 > Wszystkie testy, które już uruchomione na agencie, będą nadal działać, ale jeśli pulsu nie jest przywracane przed zakończeniem testu, a następnie agenta zakończy się niepowodzeniem zaktualizować stan testu lub przekazywania dzienników. Test zawsze będzie widoczny jako **systemem** i trzeba będzie można anulować.
 
-## <a name="agent-process-on-machine-was-shut-down-while-executing-test-what-to-expect"></a>Proces agenta na komputerze został zamknięty podczas wykonywania testu. Czego można oczekiwać?
+### <a name="agent-process-on-machine-was-shut-down-while-executing-test-what-to-expect"></a>Proces agenta na komputerze został zamknięty podczas wykonywania testu. Czego można oczekiwać?
 
-Jeśli proces agenta jest zamknięta ungracefully na przykład, ponownym maszynę, proces zabite (CTRL + C w oknie agenta jest traktowane jako łagodne zamykanie), a następnie testu, w którym był uruchomiony na niej będą nadal wyświetlane jako **systemem**. Jeśli agent jest ponownie uruchamiany, a następnie agenta spowoduje zaktualizowanie stanu testu **anulowane**. Jeśli agent nie zostanie ponownie uruchomiony, a następnie test pojawi się jako **systemem** i musi ręcznie anulować testu
+Jeśli proces agenta jest zamknięta ungracefully na przykład, ponownym maszynę, proces zabite (CTRL + C w oknie agenta jest traktowane jako łagodne zamykanie), a następnie testu, w którym był uruchomiony na niej będą nadal wyświetlane jako **systemem**. Jeśli agent jest ponownie uruchamiany, a następnie agenta spowoduje zaktualizowanie stanu testu **anulowane**. Jeśli agent nie zostanie ponownie uruchomiony, a następnie test pojawi się jako **systemem** i musi ręcznie anulować testu.
 
-> [!Note] 
+> [!Note]
 > Testy w przepływie pracy są planowane do uruchomienia po kolei. **Oczekujące** testy nie będą są wykonywane aż do testów w **systemem** stanów w tej samej po ukończeniu przepływu pracy.
 
-## <a name="handle-slow-network-connectivity"></a>Obsługa łączności wolnej sieci
+## <a name="vm-images"></a>Obrazy maszyn wirtualnych
 
-Możesz pobrać obraz PIR w udziale w lokalnym centrum danych. I dopiero wtedy sprawdzić obrazu.
+### <a name="handle-slow-network-connectivity"></a>Obsługa łączności wolnej sieci
+
+Możesz pobrać obraz PIR w udziale w lokalnym centrum danych. A następnie można sprawdzić obrazu.
 
 <!-- This is from the appendix to the Deploy local agent topic. -->
 
-### <a name="download-pir-image-to-local-share-in-case-of-slow-network-traffic"></a>Pobierz obraz PIR do lokalnego udziału w przypadku powolnego ruchu sieciowego
+#### <a name="download-pir-image-to-local-share-in-case-of-slow-network-traffic"></a>Pobierz obraz PIR do lokalnego udziału w przypadku powolnego ruchu sieciowego
 
 1. Pobierz narzędzia AzCopy z: [vaasexternaldependencies(AzCopy)](https://vaasexternaldependencies.blob.core.windows.net/prereqcomponents/AzCopy.zip)
 
@@ -65,7 +69,7 @@ Możesz pobrać obraz PIR w udziale w lokalnym centrum danych. I dopiero wtedy s
 > [!Note]  
 > LocalFileShare jest ścieżką udziału lub ścieżkę lokalną.
 
-### <a name="verifying-pir-image-file-hash-value"></a>Weryfikowanie wartość skrótu pliku obrazu PIR
+#### <a name="verifying-pir-image-file-hash-value"></a>Weryfikowanie wartość skrótu pliku obrazu PIR
 
 Możesz użyć **Get-HashFile** polecenia cmdlet, aby uzyskać wartość skrótu repozytorium obrazów publiczne pobrane pliki obrazów, aby sprawdzić integralność obrazów.
 
@@ -77,6 +81,44 @@ Możesz użyć **Get-HashFile** polecenia cmdlet, aby uzyskać wartość skrótu
 | Ubuntu1404LTS.VHD | B24CDD12352AAEBC612A4558AB9E80F031A2190E46DCB459AF736072742E20E0 |
 | Ubuntu1604 20170619.1.vhd | C481B88B60A01CBD5119A3F56632A2203EE5795678D3F3B9B764FFCA885E26CB |
 
+### <a name="failure-occurs-when-uploading-vm-image-in-the-vaasprereq-script"></a>Błąd występuje, gdy przekazywanie obrazu maszyny Wirtualnej w `VaaSPreReq` skryptu
+
+Najpierw sprawdź, czy środowisko jest w dobrej kondycji:
+
+1. Z Menedżer DVM / przejdź do pola, sprawdź, czy można pomyślnie zalogować się do portalu administracyjnego przy użyciu poświadczeń administratora.
+1. Upewnij się, że nie ma żadnych alertów lub ostrzeżenia.
+
+Jeśli środowisko jest w dobrej kondycji, ręcznie przekazać 5 obrazów maszyn wirtualnych wymagana do uruchamiania testów VaaS:
+
+1. Zaloguj się jako administrator usługi do portalu administracyjnego. Można znaleźć w portalu administracyjnym adres URL z ONZ magazynu lub sygnatury informacji o pliku. Aby uzyskać instrukcje, zobacz [parametrów środowiska](azure-stack-vaas-parameters.md#environment-parameters).
+1. Wybierz **więcej usług** > **dostawców zasobów** > **obliczenia** > **obrazów maszyn wirtualnych**.
+1. Wybierz **+ Dodaj** znajdujący się u góry **obrazów maszyn wirtualnych** bloku.
+1. Modyfikowanie lub Sprawdź wartości pola dla pierwsze obraz maszyny Wirtualnej:
+    > [!IMPORTANT]
+    > Nie wszystkie ustawienia domyślne są odpowiednie dla istniejącego elementu portalu Marketplace.
+
+    | Pole  | Wartość  |
+    |---------|---------|
+    | Wydawca | MicrosoftWindowsServer |
+    | Oferta | WindowsServer |
+    | Typ systemu operacyjnego | Windows |
+    | Jednostka SKU | 2012-R2-Datacenter |
+    | Wersja | 1.0.0 |
+    | Identyfikator URI obiektu Blob dysku systemu operacyjnego | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/WindowsServer2012R2DatacenterBYOL.vhd |
+
+1. Wybierz przycisk **Utwórz**.
+1. Powtórz dla pozostałych obrazów maszyn wirtualnych.
+
+Właściwości wszystkich 5 obrazów maszyn wirtualnych są następujące:
+
+| Wydawca  | Oferta  | Typ systemu operacyjnego | Jednostka SKU | Wersja | Identyfikator URI obiektu Blob dysku systemu operacyjnego |
+|---------|---------|---------|---------|---------|---------|
+| MicrosoftWindowsServer| WindowsServer | Windows | 2012-R2-Datacenter | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/WindowsServer2012R2DatacenterBYOL.vhd |
+| MicrosoftWindowsServer | WindowsServer | Windows | 2016-Datacenter | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Server2016DatacenterFullBYOL.vhd |
+| MicrosoftWindowsServer | WindowsServer | Windows | 2016-Datacenter-Server-Core | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Server2016DatacenterCoreBYOL.vhd |
+| Canonical | UbuntuServer | Linux | 14.04.3-LTS | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Ubuntu1404LTS.vhd |
+| Canonical | UbuntuServer | Linux | 16.04-LTS | 16.04.20170811 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Ubuntu1604-20170619.1.vhd |
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby dowiedzieć się więcej na temat [walidacji usługi Azure Stack jako usługa](https://docs.microsoft.com/azure/azure-stack/partner).
+- Przegląd [informacje o wersji do weryfikacji jako usługa](azure-stack-vaas-release-notes.md) dotyczące wprowadzania zmian w najnowszych wersjach.

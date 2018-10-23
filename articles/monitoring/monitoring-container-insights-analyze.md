@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2018
+ms.date: 10/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 6df7d42bc291713a815cac9f719f53136ed35b19
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 430145119721ac947162d3b661377290a0ae2c11
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956678"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638002"
 ---
-## <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Zrozumienie wydajności klastra AKS przy użyciu usługi Azure Monitor dla kontenerów
+# <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Zrozumienie wydajności klastra AKS przy użyciu usługi Azure Monitor dla kontenerów
 Wyświetlanie wydajności z usługi Azure Kubernetes Service (AKS) klastrów można zaobserwować, z dwóch perspektyw z usługą Azure Monitor dla kontenerów bezpośrednio w klastrze AKS, lub wyświetlić wszystkie klastry usługi AKS w ramach subskrypcji z usługi Azure Monitor. 
 
 Ten artykuł pomoże zrozumieć środowisko między dwóch perspektyw i jak szybko ocenić, zbadać i rozwiązać wykryte problemy.
@@ -59,18 +59,18 @@ Poniższa tabela zawiera podział obliczeń kontrolowanie stanów kondycji monit
 |**Zasobnik użytkownika**| | |  
 | |W dobrej kondycji |100% |  
 | |Ostrzeżenie |90 - 99% |  
-| |Krytyczny |< 90% |  
-| |Nieznane |Jeśli nie zostały zgłoszone w ciągu ostatnich 30 minut |  
+| |Krytyczna |< 90% |  
+| |Nieznany |Jeśli nie zostały zgłoszone w ciągu ostatnich 30 minut |  
 |**System Pod**| | |  
 | |W dobrej kondycji |100% |
-| |Ostrzeżenie |ND |
-| |Krytyczny |< 100% |
-| |Nieznane |Jeśli nie zostały zgłoszone w ciągu ostatnich 30 minut |
+| |Ostrzeżenie |Nie dotyczy |
+| |Krytyczna |< 100% |
+| |Nieznany |Jeśli nie zostały zgłoszone w ciągu ostatnich 30 minut |
 |**Node** | | |
 | |W dobrej kondycji |> 85% |
 | |Ostrzeżenie |60 - 84% |
-| |Krytyczny |< 60% |
-| |Nieznane |Jeśli nie zostały zgłoszone w ciągu ostatnich 30 minut |
+| |Krytyczna |< 60% |
+| |Nieznany |Jeśli nie zostały zgłoszone w ciągu ostatnich 30 minut |
 
 Z listy klastrów, użytkownik może przejść do **klastra** strony, klikając nazwę klastra, do **węzłów** stronie wydajności, klikając zbiór węzłów w **węzłów** kolumny dla tego określonego klastra lub przejść do **kontrolerów** stronie wydajności, klikając zestawianie **zasobników użytkownika** lub **zasobników System**kolumny.   
 
@@ -80,7 +80,7 @@ Dostęp do usługi Azure Monitor na kontenerów jest dostępne bezpośrednio z k
 - Klaster
 - Węzły 
 - Kontrolery  
-- Containers
+- Kontenery
 
 Domyślna strona otwarty po kliknięciu **Insights (wersja zapoznawcza)** jest **klastra**, i zawiera cztery wykresy wydajności wiersza, wyświetlanie kluczowe metryki wydajności klastra. 
 
@@ -109,6 +109,10 @@ Przełącz się do **węzłów** kartę i hierarchii wiersz poniżej model obiek
 
 ![Przykładowa hierarchia Kubernetes węzeł w widoku wydajności](./media/monitoring-container-insights-analyze/containers-nodes-view.png)
 
+Z rozwinięty węzeł należy można przejść pod lub kontenerów uruchomione w węźle z kontrolerem, aby wyświetlić dane dotyczące wydajności przefiltrowana pod kątem tego kontrolera. Kliknij wartość, w obszarze **kontrolera** kolumny dla określonego węzła.   
+
+![Przykład przechodzenie do szczegółów z węzła do kontrolera w widoku wydajności](./media/monitoring-container-insights-analyze/drill-down-node-controller.png)
+
 Można wybrać kontrolery lub kontenerów w górnej części strony i sprawdź stan i użycia zasobów dla tych obiektów.  Jeśli zamiast tego chcesz przejrzeć wykorzystanie pamięci w **metryki** listy rozwijanej wybierz **RSS pamięci** lub **zestaw roboczy pamięci**. **Pamięć RSS** jest obsługiwany tylko w przypadku rozwiązania Kubernetes w wersji 1.8 i nowszych. W przeciwnym razie do wyświetlania wartości **Min&nbsp; %**  jako *NaN&nbsp;%*, który jest wartość typu danych liczbowych, który reprezentuje niezdefiniowany lub wartość wyniku. 
 
 ![Widok wydajności węzłów kontenerów](./media/monitoring-container-insights-analyze/containers-node-metric-dropdown.png)
@@ -127,11 +131,11 @@ W poniższej tabeli opisano informacje, które są prezentowane podczas wyświet
 
 | Kolumna | Opis | 
 |--------|-------------|
-| Name (Nazwa) | Nazwa hosta. |
+| Nazwa | Nazwa hosta. |
 | Stan | Kubernetes widok stanu węzła. |
 | Średnia liczba&nbsp;%, minimalnej&nbsp;%, Max&nbsp;%, 50.&nbsp;%, 90.&nbsp;% | Średni procent węzła, w oparciu o procentowy podczas wybranego okresu. |
 | Avg, Min, Max, 50., 90 | Węzły średnia wartość rzeczywista oparciu o procentowy podczas tego okresu czasu wybrany. Średnia wartość jest mierzony od limitu Procesora/pamięci dla węzła; dla zasobników i kontenerów to wartość średnia zgłaszaną przez hosta. |
-| Containers | Liczba kontenerów. |
+| Kontenery | Liczba kontenerów. |
 | Czas pracy | Reprezentuje czas, ponieważ węzeł uruchomiony lub został ponownie uruchomiony. |
 | Kontrolery | Tylko w przypadku kontenerów i zasobników. Przedstawia on kontrolera, który jest we wszystkich. Nie wszystkie zasobników są w kontrolerze, więc niektóre może być wyświetlany **n/d**. | 
 | Trend Avg&nbsp;%, minimalnej&nbsp;%, Max&nbsp;%, 50.&nbsp;%, 90.&nbsp;% | Trend wykres słupkowy prezentowanie percentyla metryk wartość procentowa kontrolera. |
@@ -144,17 +148,19 @@ W tym miejscu można wyświetlić kondycję wydajności kontrolerów.
 
 ![Widok wydajności kontrolerów < nazwa >](./media/monitoring-container-insights-analyze/containers-controllers-view.png)
 
-Hierarchia wiersz rozpoczyna się od kontrolera i rozwija kontrolera. Możesz wyświetlić co najmniej jeden kontener. Rozwiń zasobnik, a ostatni wiersz wyświetla kontenera grupowania zasobnik.  
+Hierarchia wiersz rozpoczyna się z kontrolerem i po rozwinięciu kontrolera, możesz wyświetlić co najmniej jeden zasobników.  Rozwiń zasobnik, a ostatni wiersz wyświetla kontenera grupowania zasobnik. Z rozwiniętej kontrolera należy można przejść do węzła, w którym jest uruchomiona na, aby wyświetlić dane dotyczące wydajności filtrowane dla tego węzła. Kliknij wartość, w obszarze **węzła** kolumny dla określonego kontrolera.   
+
+![Przykład przechodzenie do szczegółów z węzła do kontrolera w widoku wydajności](./media/monitoring-container-insights-analyze/drill-down-controller-node.png)
 
 W poniższej tabeli opisano informacje, które jest wyświetlane, gdy wyświetlanie kontrolerów:
 
 | Kolumna | Opis | 
 |--------|-------------|
-| Name (Nazwa) | Nazwa kontrolera.|
+| Nazwa | Nazwa kontrolera.|
 | Stan | Stan rozwinięcia kontenery po ukończeniu uruchomione o stanie, takie jak *OK*, *zwolniony*, *niepowodzenie* *zatrzymane*, lub *Wstrzymana*. Jeśli kontener jest uruchomiony, ale stan był albo nie zostało prawidłowo wyświetlane lub nie została pobrana przez agenta i nie odpowiedział ponad 30 minut, stan jest *nieznany*. W poniższej tabeli znajdują się dodatkowe szczegóły ikonę stanu.|
 | Średnia liczba&nbsp;%, minimalnej&nbsp;%, Max&nbsp;%, 50.&nbsp;%, 90.&nbsp;% | Średnia zbiorczy średnią wartość procentową poszczególnych jednostek dla wybranej metryki i percentyl. |
 | Avg, Min, Max, 50., 90  | Zbiorcze średni wydajność użycia CPU millicore lub pamięci przez kontener dla wybranych percentyl. Średnia wartość jest mierzony od limitu Procesora/pamięci dla zasobnik. |
-| Containers | Łączna liczba kontenerów dla kontrolera lub zasobników. |
+| Kontenery | Łączna liczba kontenerów dla kontrolera lub zasobników. |
 | Ponowne uruchomienie | Zbiorcza liczba ponowne uruchomienie z kontenerów. |
 | Czas pracy | Reprezentuje czas od momentu uruchomienia kontenera. |
 | Węzeł | Tylko w przypadku kontenerów i zasobników. Przedstawia on kontrolera, który jest znajdującej się. | 
@@ -179,11 +185,15 @@ W tym miejscu można wyświetlić kondycję wydajności kontenerów usługi Kube
 
 ![Widok wydajności kontrolerów < nazwa >](./media/monitoring-container-insights-analyze/containers-containers-view.png)
 
+Z kontenera należy można przejść do zasobnika lub węzeł, aby wyświetlić dane dotyczące wydajności przefiltrowana pod kątem tego obiektu. Kliknij wartość, w obszarze **Pod** lub **węzła** kolumny dla określonego kontenera.   
+
+![Przykład przechodzenie do szczegółów z węzła do kontrolera w widoku wydajności](./media/monitoring-container-insights-analyze/drill-down-controller-node.png)
+
 W poniższej tabeli opisano informacje, który jest wyświetlany podczas przeglądania kontenerów:
 
 | Kolumna | Opis | 
 |--------|-------------|
-| Name (Nazwa) | Nazwa kontrolera.|
+| Nazwa | Nazwa kontrolera.|
 | Stan | Stan kontenerów, jeśli istnieje. Dodatkowe szczegóły ikona stanu znajdują się w następnej tabeli.|
 | Średnia liczba&nbsp;%, minimalnej&nbsp;%, Max&nbsp;%, 50.&nbsp;%, 90.&nbsp;% | Roll-up średnią wartość procentową poszczególnych jednostek dla wybranej metryki i percentyl. |
 | Avg, Min, Max, 50., 90  | Zbiorczy średni Procesora pamięci lub millicore wydajności kontenera dla wybranych percentyl. Średnia wartość jest mierzony od limitu Procesora/pamięci dla zasobnik. |
@@ -231,7 +241,7 @@ Usługa log Analytics może pomóc wyszukiwania trendach, diagnozowanie wąskich
 
 W obszarze roboczym można wykonywać interakcyjne analizy danych, zaznaczając **dzienniki zdarzeń Kubernetes widoku** lub **wyświetlanie dzienników kontenera** opcji w okienku podglądu. **Wyszukiwanie w dzienniku** po prawej stronie portalu platformy Azure były na zostanie wyświetlona strona.
 
-![Analizowanie danych w usłudze Log Analytics](./media/monitoring-container-insights-analyze/container-health-log-search-example.png)   
+![Analiza danych w usłudze Log Analytics](./media/monitoring-container-insights-analyze/container-health-log-search-example.png)   
 
 Dane wyjściowe dzienników kontenera, który jest przekazywany do usługi Log Analytics to STDOUT i STDERR. Ponieważ usługa Azure Monitor jest monitorowanie usługi Azure managed Kubernetes (AKS), system klastra kubernetes w usłudze nie są zbierane już dziś ze względu na duże obciążenie wygenerowane dane. 
 

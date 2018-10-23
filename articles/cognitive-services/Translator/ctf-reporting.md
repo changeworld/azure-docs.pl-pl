@@ -1,5 +1,5 @@
 ---
-title: Framework współpracy tłumaczenia (CTF) raportowanie — tekstu usługi Translator
+title: Framework współpracy tłumaczenia (CTF) raportowanie — interfejs API tekstu usługi Translator
 titlesuffix: Azure Cognitive Services
 description: Jak używać raportowania współpracy Translation Framework (CTF).
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 9b3ac6e6d10fb0e70549cadfd7bf65220deb8f33
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: aa59ce89bf8c2c4b31d85c572dcdfb3645f06884
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126925"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646016"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>Jak korzystać z raportowania na platformie CTF (Collaborative Translation Framework)
 
 > [!NOTE]
 > Ta metoda jest przestarzała. Nie jest dostępna w wersji 3.0 z interfejsu API tłumaczenia tekstu.
 
-> Współpracy tłumaczenia Framework (CTF), wcześniej dostępne dla V2.0 interfejsu API tłumaczenia tekstu, została zakończona, począwszy od 1 lutego 2018 r. Funkcje AddTranslation i AddTranslationArray umożliwiają użytkownikom włączanie poprawek za pomocą współpracy Framework tłumaczenia. Po 31 stycznia 2018 r. te dwie funkcje nie zaakceptował nowe zgłoszenia zdania, a użytkownicy otrzymają komunikat o błędzie. Te funkcje zostały zostanie wycofana i nie podlegają wymianie. 
+> Współpracy tłumaczenia Framework (CTF), wcześniej dostępne dla V2.0 interfejsu API tłumaczenia tekstu, została zakończona, począwszy od 1 lutego 2018 r. Funkcje AddTranslation i AddTranslationArray umożliwiają użytkownikom włączanie poprawek za pomocą współpracy Framework tłumaczenia. Po 31 stycznia 2018 r. te dwie funkcje nie zaakceptował nowe zgłoszenia zdania, a użytkownicy otrzymają komunikat o błędzie. Te funkcje zostały zostanie wycofana i nie podlegają wymianie.
 
 >Podobne funkcje są dostępne w interfejsie API Centrum usługi Translator, co umożliwia stworzenie systemu tłumaczenia niestandardowych terminologii i stylu i wywołać go przy użyciu Identyfikatora kategorii w interfejsie API tekstu usługi Translator. Centrum usługi Translator: [ https://hub.microsofttranslator.com ](https://hub.microsofttranslator.com). W usłudze Translator Centrum interfejsu API: [ https://hub.microsofttranslator.com/swagger ](https://hub.microsofttranslator.com/swagger).
 
@@ -31,12 +31,12 @@ Interfejs API raportowania współpracy Translation Framework (CTF) zwraca staty
 * Zwraca tłumaczonej zawartości i jego łączna liczba bez dopasowania zdania źródła.
 * Nie zwraca automatycznego tłumaczenia (tłumaczeniem maszynowym).
 
-## <a name="endpoint"></a>Endpoint
+## <a name="endpoint"></a>Punkt końcowy
 Punkt końcowy interfejsu API raportowania CTF jest http://api.microsofttranslator.com/v2/beta/ctfreporting.svc
-                        
+
 
 ## <a name="methods"></a>Metody
-| Name (Nazwa) |    Opis|
+| Nazwa |    Opis|
 |:---|:---|
 | Metoda GetUserTranslationCounts | Pobierz liczniki tłumaczenia, które są tworzone przez użytkownika. |
 | Metoda GetUserTranslations | Pobiera tłumaczenia, które są tworzone przez użytkownika. |
@@ -64,7 +64,7 @@ UserTranslationCount[]GetUserTranslationCounts(
            string to,
            int? minRating,
            int? maxRating,
-           string user, 
+           string user,
            string category
            DateTime? minDateUtc,
            DateTime? maxDateUtc,
@@ -79,10 +79,10 @@ UserTranslationCount[]GetUserTranslationCounts(
 | appId | **Wymagane** Jeśli nagłówek autoryzacji jest używany, pozostaw to pole puste appid przeciwnym razie Określ ciąg zawierający "Bearer" + "" + tokenu dostępu.|
 | uriPrefix | **Opcjonalnie** ciąg zawierający prefiks identyfikatora URI tłumaczenia.|
 | z | **Opcjonalnie** ciąg reprezentujący kod języka tekstu tłumaczenia. |
-| na | **Opcjonalnie** ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w.|
+| do | **Opcjonalnie** ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w.|
 | minRating| **Opcjonalnie** wartość całkowitą reprezentującą klasyfikację minimalnej jakości przetłumaczonego tekstu. Prawidłowa wartość to zakresu od -10 do 10. Wartość domyślna to 1.|
 | maxRating| **Opcjonalnie** wartość całkowitą reprezentującą klasyfikację maksymalna jakości przetłumaczonego tekstu. Prawidłowa wartość to zakresu od -10 do 10. Wartość domyślna to 1.|
-| Użytkownik | **Opcjonalnie** ciąg, który jest używany do filtrowania wyników oparte na inicjatorem przesyłania. |
+| użytkownik | **Opcjonalnie** ciąg, który jest używany do filtrowania wyników oparte na inicjatorem przesyłania. |
 | category| **Opcjonalnie** ciąg zawierający kategorii lub domeny tłumaczenia. Ten parametr obsługuje tylko domyślną opcję ogólne.|
 | minDateUtc| **Opcjonalnie** Data, od kiedy chcesz pobrać tłumaczenia. Data musi przypadać w formacie UTC. |
 | maxDateUtc| **Opcjonalnie** daty do kiedy chcesz pobrać tłumaczenia. Data musi przypadać w formacie UTC. |
@@ -98,10 +98,10 @@ Zestaw wyników zawiera tablicę **UserTranslationCount**. Każdy UserTranslatio
 
 | Pole | Opis |
 |:---|:---|
-| Licznik| Liczba wyników, które są pobierane|
+| Liczba| Liczba wyników, które są pobierane|
 | Z | Język źródłowy|
 | Ocena| Ocena, która jest stosowana przez osoby przesyłającej w wywołaniu metody AddTranslation()|
-| Zadanie| Język docelowy|
+| Do| Język docelowy|
 | Identyfikator URI| Identyfikator URI stosowany w wywołaniu metody AddTranslation()|
 | Użytkownik| Nazwa użytkownika|
 
@@ -135,12 +135,12 @@ UserTranslation[] GetUserTranslations (
             string to,
             int? minRating,
             int? maxRating,
-            string user, 
+            string user,
             string category
             DateTime? minDateUtc,
             DateTime? maxDateUtc,
             int? skip,
-            int? take); 
+            int? take);
 ```
 
 **Parametry**
@@ -150,12 +150,12 @@ UserTranslation[] GetUserTranslations (
 | appId | **Wymagane** Jeśli nagłówek autoryzacji jest używany, pozostaw to pole puste appid przeciwnym razie Określ ciąg zawierający "Bearer" + "" + tokenu dostępu.|
 | uriPrefix| **Opcjonalnie** ciąg zawierający prefiks identyfikatora URI tłumaczenia.|
 | z| **Opcjonalnie** ciąg reprezentujący kod języka tekstu tłumaczenia.|
-| na| **Opcjonalnie** ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w.|
+| do| **Opcjonalnie** ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w.|
 | minRating| **Opcjonalnie** wartość całkowitą reprezentującą klasyfikację minimalnej jakości przetłumaczonego tekstu. Prawidłowa wartość to zakresu od -10 do 10. Wartość domyślna to 1.|
 | maxRating| **Opcjonalnie** wartość całkowitą reprezentującą klasyfikację maksymalna jakości przetłumaczonego tekstu. Prawidłowa wartość to zakresu od -10 do 10. Wartość domyślna to 1.|
-| Użytkownik| **Opcjonalnie. Ciąg, który jest używany do filtrowania wyników, w oparciu o inicjatorem przesyłania**|
-| category| **Opcjonalnie** ciąg zawierający kategorii lub domeny tłumaczenia. Ten parametr obsługuje tylko domyślną opcję ogólne.| 
-| minDateUtc| **Opcjonalnie** Data, od kiedy chcesz pobrać tłumaczenia. Data musi przypadać w formacie UTC.| 
+| użytkownik| **Opcjonalnie. Ciąg, który jest używany do filtrowania wyników, w oparciu o inicjatorem przesyłania**|
+| category| **Opcjonalnie** ciąg zawierający kategorii lub domeny tłumaczenia. Ten parametr obsługuje tylko domyślną opcję ogólne.|
+| minDateUtc| **Opcjonalnie** Data, od kiedy chcesz pobrać tłumaczenia. Data musi przypadać w formacie UTC.|
 | maxDateUtc| **Opcjonalnie** daty do kiedy chcesz pobrać tłumaczenia. Data musi przypadać w formacie UTC.|
 | pomiń| **Opcjonalnie** liczbę wyników, które chcesz przejść na stronę. Na przykład chcąc pomijania wierszy pierwszych 20 wyników i widokiem z 21 rekordu wyników, należy określić wartość 20 dla tego parametru. Wartość domyślna tego parametru to 0.|
 | Wypełnij| **Opcjonalnie** liczbę wyników, które mają zostać pobrane. Maksymalna liczba każdego żądania wynosi 100. Wartością domyślną jest 50.|
@@ -173,7 +173,7 @@ Zestaw wyników zawiera tablicę **UserTranslation**. Każdy UserTranslation zaw
 | Z| Język źródłowy|
 | OriginalText| Tekst języka źródłowego, który jest używany podczas wysyłania żądania|
 |Ocena |Ocena, która jest stosowana przez osoby przesyłającej w wywołaniu metody AddTranslation()|
-|Zadanie|    Język docelowy|
+|Do|    Język docelowy|
 |TranslatedText|    Tłumaczenie przesłane w wywołaniu metody AddTranslation()|
 |Identyfikator URI|   Identyfikator URI stosowany w wywołaniu metody AddTranslation()|
 |Użytkownik   |Nazwa użytkownika|
@@ -192,21 +192,3 @@ Zestaw wyników zawiera tablicę **UserTranslation**. Każdy UserTranslation zaw
 **Wyświetl przykłady kodu na GitHib**
 * [C#](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-csharp.md)
 * [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-php.md)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
