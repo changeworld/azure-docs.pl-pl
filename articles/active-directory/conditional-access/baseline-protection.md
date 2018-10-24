@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 6ee89aa901c9553d22470a0481909e9cd62d60cf
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: e7e92c2f3564591133816baaaf758d72b083330b
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345134"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958554"
 ---
 # <a name="what-is-baseline-protection-preview"></a>Co to jest ochrona linii bazowej (wersja zapoznawcza)?  
 
@@ -86,7 +86,7 @@ Podczas zarządzania niestandardowe zasady dostępu warunkowego wymaga licencji 
 
 Role katalogu, które znajdują się w zasadach linii bazowej są najbardziej uprzywilejowanych ról usługi Azure AD. 
 
-Jeśli ma uprzywilejowane konta, które są używane w skryptach, należy zastąpić je za pomocą [zarządzanych tożsamości dla zasobów platformy Azure](../managed-identities-azure-resources/overview.md) lub [jednostki przy użyciu certyfikatów usług](../../azure-resource-manager/resource-group-authenticate-service-principal.md). Jako rozwiązanie tymczasowe można wykluczyć określone konta użytkowników z zasad linii bazowej. 
+Jeśli ma uprzywilejowane konta, które są używane w skryptach, należy zastąpić je za pomocą [zarządzanych tożsamości dla zasobów platformy Azure](../managed-identities-azure-resources/overview.md) lub [jednostki przy użyciu certyfikatów usług](../develop/howto-authenticate-service-principal-powershell.md). Jako rozwiązanie tymczasowe można wykluczyć określone konta użytkowników z zasad linii bazowej. 
 
 Plan bazowy zasady mają zastosowanie do przepływów uwierzytelniania starszej wersji, takich jak POP, IMAP, starsze kliencie komputerowym pakietu Office. 
 

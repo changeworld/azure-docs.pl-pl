@@ -1,23 +1,23 @@
 ---
-title: Dostosowywanie interfejsu użytkownika za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o dostosowywaniu interfejsu użytkownika (UI), podczas gdy użycie zasad niestandardowych w usłudze Azure AD B2C.
+title: Dostosowywanie interfejsu użytkownika aplikacji za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o dostosowywaniu interfejsu użytkownika za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/04/2017
+ms.date: 10/23/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9908a7cf96c56e414e0a8d7faea0352b60214ea4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f36d08a397836f17ec25a61e77cb1db5ce10b9d4
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446167"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945064"
 ---
-# <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Usługa Azure Active Directory B2C: Konfigurowanie dostosowywania interfejsu użytkownika w przypadku zasad niestandardowych
+# <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Dostosowywanie interfejsu użytkownika aplikacji za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -25,13 +25,13 @@ Po zakończeniu pracy w tym artykule, konieczne będzie rejestracji i logowania 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem, wykonania [wprowadzenie do zasad niestandardowych](active-directory-b2c-get-started-custom.md). Należy mieć zasady niestandardowe pracy, zarejestruj się i zaloguj się przy użyciu konta lokalnego.
+Wykonaj kroki [wprowadzenie do zasad niestandardowych](active-directory-b2c-get-started-custom.md). Należy mieć zasady niestandardowe pracy, zarejestruj się i zaloguj się przy użyciu konta lokalnego.
 
 ## <a name="page-ui-customization"></a>Dostosowywanie interfejsu użytkownika strony
 
-Za pomocą funkcji dostosowywania interfejsu użytkownika strony, można dostosować wygląd i działanie żadnych zasad niestandardowych. Można także utrzymać markę i wizualne spójności między aplikacją i usługi Azure AD B2C.
+Za pomocą funkcji dostosowywania interfejsu użytkownika strony, można dostosować wygląd i działanie żadnych zasad niestandardowych. Można także zapewnić spójność wizerunku marki i wrażeń wizualnych między aplikacją i usługą Azure AD B2C.
 
-Oto jak to działa: usługi Azure AD B2C kodu w przeglądarce klienta, korzysta z nowoczesnego podejścia o nazwie [udostępniania zasobów między źródłami (CORS)](http://www.w3.org/TR/cors/). Najpierw należy określić adres URL w zasadach niestandardowych z dostosowaną zawartość HTML. Usługa Azure AD B2C scala elementy interfejsu użytkownika przy użyciu zawartość HTML, który jest ładowany z adresu URL, a następnie wyświetla strony do klienta.
+Oto jak to działa: usługi Azure AD B2C kodu w przeglądarce klienta, korzysta z nowoczesnego podejścia o nazwie [udostępniania zasobów między źródłami (CORS)](http://www.w3.org/TR/cors/). Najpierw należy określić adres URL w zasadach niestandardowych z dostosowaną zawartość HTML. Usługa Azure AD B2C scala elementy interfejsu użytkownika z zawartością HTML ładowaną z adresu URL, a następnie wyświetla stronę klientowi.
 
 ## <a name="create-your-html5-content"></a>Utwórz swoje HTML5 zawartości
 
@@ -119,27 +119,44 @@ Sprawdź, czy wszystko jest gotowe, wykonując następujące czynności:
 2. Kliknij przycisk **Wyślij żądanie**.  
     Jeśli otrzymasz komunikat o błędzie, upewnij się, że Twoje [ustawienia specyfikacji CORS](#configure-cors) są poprawne. Może być również konieczne wyczyszczenie pamięci podręcznej przeglądarki lub otwórz sesję przeglądania w trybie prywatnym, naciskając klawisze Ctrl + Shift + P.
 
-## <a name="modify-your-sign-up-or-sign-in-custom-policy"></a>Modyfikowanie zasad niestandardowych rejestracji lub logowania
+## <a name="modify-the-extensions-file"></a>Zmodyfikuj plik rozszerzenia
 
-Najwyższego poziomu *\<elementu TrustFrameworkPolicy\>* tagów, należy odnaleźć *\<BuildingBlocks\>* tagu. W ramach *\<BuildingBlocks\>* tagi, Dodaj *\<ContentDefinitions\>* tag, kopiując w poniższym przykładzie. Zastąp *your_storage_account* nazwą konta magazynu.
+Aby skonfigurować dostosowywania interfejsu użytkownika, należy skopiować **ContentDefinition** i jego elementy podrzędne z pliku podstawowego pliku rozszerzenia.
 
-  ```xml
-  <BuildingBlocks>
-    <ContentDefinitions>
-      <ContentDefinition Id="api.idpselections">
-        <LoadUri>https://{your_storage_account}.blob.core.windows.net/customize-ui.html</LoadUri>
-        <DataUri>urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0</DataUri>
-      </ContentDefinition>
-    </ContentDefinitions>
-  </BuildingBlocks>
-  ```
+1. Otwórz plik podstawowy zasad. Na przykład *TrustFrameworkBase.xml*.
+2. Wyszukaj, a następnie skopiować całą zawartość **ContentDefinitions** elementu.
+3. Otwórz plik rozszerzenia. Na przykład *TrustFrameworkExtensions.xml*. Wyszukaj **BuildingBlocks** elementu. Jeśli element nie istnieje, należy go dodać.
+4. Wklej całą zawartość **ContentDefinitions** element, który został skopiowany jako element podrzędny elementu **BuildingBlocks** elementu. 
+5. Wyszukaj **ContentDefinition** element, który zawiera `Id="api.signuporsignin"` w formacie XML, który został skopiowany.
+6. Zmień wartość właściwości **parametr LoadUri** do adresu URL pliku HTML, który został przekazany do magazynu. Na przykład "https://mystore1.azurewebsites.net/b2c/customize-ui.html.
+    
+    Niestandardowe zasady powinny wyglądać następująco:
+
+    ```xml
+    <BuildingBlocks>
+      <ContentDefinitions>
+        <ContentDefinition Id="api.signuporsignin">
+          <LoadUri>https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html</LoadUri>
+          <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+          <DataUri>urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0</DataUri>
+          <Metadata>
+            <Item Key="DisplayName">Signin and Signup</Item>
+          </Metadata>
+        </ContentDefinition>
+      </ContentDefinitions>
+    </BuildingBlocks>
+    ```
+
+7. Zapisz plik rozszerzenia.
 
 ## <a name="upload-your-updated-custom-policy"></a>Przekaż zaktualizowany zasad niestandardowych
 
-1. W [witryny Azure portal](https://portal.azure.com), [przełączyć się do kontekstu dzierżawy usługi Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md), a następnie otwórz **usługi Azure AD B2C** bloku.
+1. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
+3. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **usługi Azure AD B2C**.
+4. Wybierz **struktura środowiska tożsamości**.
 2. Kliknij przycisk **wszystkie zasady**.
 3. Kliknij przycisk **przekazywać zasady**.
-4. Przekaż `SignUpOrSignin.xml` z *\<ContentDefinitions\>* tag, który dodano wcześniej.
+4. Przekaż plik rozszerzenia, który wcześniej został zmodyfikowany.
 
 ## <a name="test-the-custom-policy-by-using-run-now"></a>Testowanie zasad niestandardowych przy użyciu **Uruchom teraz**
 

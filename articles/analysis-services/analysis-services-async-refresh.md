@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e30f02fb7f250b32cb3c7bb5205f58ca658a8f2a
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: e797f1faf249a1ad1eebbd46984829de5f087936
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426754"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958673"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Odświeżanie asynchroniczne za pomocą interfejsu API REST
 Za pomocą dowolnego języka programowania obsługującego wywołania REST, można wykonać operacji asynchronicznych odświeżania danych na modeli tabelarycznych usług Azure Analysis Services. W tym synchronizacji repliki tylko do odczytu dla zapytania skalowalnego w poziomie. 
@@ -236,7 +236,7 @@ Ta forma uwierzytelniania wymaga aplikacji platformy Azure można utworzyć przy
 
 #### <a name="service-principal"></a>Jednostka usługi
 
-Zobacz [Tworzenie jednostki usługi — witryna Azure portal](../azure-resource-manager/resource-group-create-service-principal-portal.md) i [Dodawanie jednostki usługi do roli administratora serwera](analysis-services-addservprinc-admins.md) Aby uzyskać więcej informacji na temat konfigurowania jednostki usługi i przypisanie niezbędnych uprawnień w jako platformy Azure . Po wykonaniu czynności należy wykonać następujące dodatkowe czynności:
+Zobacz [Tworzenie jednostki usługi — witryna Azure portal](../active-directory/develop/howto-create-service-principal-portal.md) i [Dodawanie jednostki usługi do roli administratora serwera](analysis-services-addservprinc-admins.md) Aby uzyskać więcej informacji na temat konfigurowania jednostki usługi i przypisanie niezbędnych uprawnień w jako platformy Azure . Po wykonaniu czynności należy wykonać następujące dodatkowe czynności:
 
 1.  Przykładowy kod zawiera **ciągu urząd =...** , Zastąp **wspólnej** z Twoją organizacją dzierżawy identyfikatora.
 2.  Komentarz lub usuń znaczniki komentarza, klasa ClientCredential służy do tworzenia wystąpienia obiektu poświadczenie. Upewnij się, \<Identyfikatora aplikacji > i \<klucz aplikacji > wartości są używane w sposób bezpieczny lub uwierzytelniania opartego na certyfikatach dla jednostki usługi.

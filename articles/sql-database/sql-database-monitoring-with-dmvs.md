@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 1b96cb0531778b03ddf6adf15988755359e19562
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: c19e5dbcba334a100198708237cc814258a20053
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649780"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957698"
 ---
 # <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>Monitorowanie usługi Azure SQL Database przy użyciu dynamicznych widoków zarządzania
 
@@ -50,7 +50,7 @@ Jeśli użycie procesora CPU przekracza 80% przez dłuższy czas, należy wzią�
 
 Jeśli problem występuje teraz, istnieją dwa możliwe scenariusze:
 
-#### <a name="there-are-many-queries-that-individually-run-quickly-but-cumulatively-consume-high-cpu"></a>Istnieje wiele zapytań, które indywidualnie szybkiego uruchamiania, ale łącznie używanie wysokie użycie procesora CPU
+#### <a name="many-individual-queries-that-cumulatively-consume-high-cpu"></a>Wiele pojedynczych zapytań, które łącznie zużywają wysokie użycie procesora CPU
 
 Użyj następującego zapytania, aby zidentyfikować zapytania dotyczącego początkowych wartości skrótów:
 
@@ -65,7 +65,7 @@ FROM(SELECT query_stats.query_hash, SUM(query_stats.cpu_time) 'Total_Request_Cpu
 ORDER BY Total_Request_Cpu_Time_Ms DESC;
 ```
 
-#### <a name="some-long-running-queries-that-consume-cpu-are-still-running"></a>Nadal działają niektóre długotrwałych zapytań, których wartość użycia procesora CPU
+#### <a name="long-running-queries-that-consume-cpu-are-still-running"></a>Długotrwałe zapytania, których wartość użycia procesora CPU nadal są uruchomione.
 
 Aby zidentyfikować te zapytania, należy użyć następującej kwerendy:
 
@@ -117,7 +117,9 @@ Po określeniu problemów z wydajnością we/wy, są następujące typy najważn
 
 ### <a name="if-the-io-issue-is-occurring-right-now"></a>Jeśli występuje teraz problem we/wy
 
-Użyj [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) lub [sys.dm_os_waiting_tasks](https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) się `wait_type` i `wait_time`.
+Użyj [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) lub [sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) się `wait_type` i `wait_time`.
+
+#### <a name="identify-data-and-log-io-usage"></a>Identyfikowanie danych i rejestrować użycie operacji We/Wy
 
 Użyj następującego zapytania, aby zidentyfikować dane i rejestrować użycie operacji We/Wy. Jeśli we/wy danych lub dziennika przekracza 80%, oznacza to, że użytkownicy korzystający dostępne we/wy dla warstwy usług bazy danych SQL.
 
@@ -132,9 +134,11 @@ Jeśli został osiągnięty limit operacji We/Wy, masz dwie opcje:
 - Opcja 1: Uaktualnij rozmiar obliczeń lub warstwę usługi
 - Opcja 2: Identyfikowanie i dostosowywanie zapytania zużywające większość we/wy.
 
-Opcja 2 możesz używać następujące zapytanie względem Query Store dla związanych bufor We/Wy (prezentuje śledzonych aktywności z ostatnich dwóch godzin):
+#### <a name="view-buffer-related-io-using-the-query-store"></a>Wyświetl związanych bufor We/Wy przy użyciu Store zapytania
 
-```SQL
+Dla opcji 2 możesz używać następujące zapytanie względem Store zapytań dla operacji We/Wy związanych bufor, aby wyświetlić śledzonych aktywności z ostatnich dwóch godzin:
+
+```sql
 -- top queries that waited on buffer
 -- note these are finished queries
 WITH Aggregated AS (SELECT q.query_hash, SUM(total_query_wait_time_ms) total_wait_time_ms, SUM(total_query_wait_time_ms / avg_query_wait_time_ms) AS total_executions, MIN(qt.query_sql_text) AS sampled_query_text, MIN(wait_category_desc) AS wait_category_desc
@@ -153,6 +157,85 @@ ORDER BY total_wait_time_ms DESC;
 GO
 ```
 
+#### <a name="view-total-log-io-for-writelog-waits"></a>Wyświetl dziennik łączna liczba operacji We/Wy dla WRITELOG oczekuje
+
+Jeśli typ oczekiwania `WRITELOG`, użyj następującego zapytania, aby wyświetlić dziennik łączna liczba operacji We/Wy przez instrukcję:
+
+```sql
+-- Top transaction log consumers
+-- Adjust the time window by changing
+-- rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
+WITH AggregatedLogUsed
+AS (SELECT q.query_hash,
+           SUM(count_executions * avg_cpu_time / 1000.0) AS total_cpu_millisec,
+           SUM(count_executions * avg_cpu_time / 1000.0) / SUM(count_executions) AS avg_cpu_millisec,
+           SUM(count_executions * avg_log_bytes_used) AS total_log_bytes_used,
+           MAX(rs.max_cpu_time / 1000.00) AS max_cpu_millisec,
+           MAX(max_logical_io_reads) max_logical_reads,
+           COUNT(DISTINCT p.plan_id) AS number_of_distinct_plans,
+           COUNT(DISTINCT p.query_id) AS number_of_distinct_query_ids,
+           SUM(   CASE
+                      WHEN rs.execution_type_desc = 'Aborted' THEN
+                          count_executions
+                      ELSE
+                          0
+                  END
+              ) AS Aborted_Execution_Count,
+           SUM(   CASE
+                      WHEN rs.execution_type_desc = 'Regular' THEN
+                          count_executions
+                      ELSE
+                          0
+                  END
+              ) AS Regular_Execution_Count,
+           SUM(   CASE
+                      WHEN rs.execution_type_desc = 'Exception' THEN
+                          count_executions
+                      ELSE
+                          0
+                  END
+              ) AS Exception_Execution_Count,
+           SUM(count_executions) AS total_executions,
+           MIN(qt.query_sql_text) AS sampled_query_text
+    FROM sys.query_store_query_text AS qt
+        JOIN sys.query_store_query AS q
+            ON qt.query_text_id = q.query_text_id
+        JOIN sys.query_store_plan AS p
+            ON q.query_id = p.query_id
+        JOIN sys.query_store_runtime_stats AS rs
+            ON rs.plan_id = p.plan_id
+        JOIN sys.query_store_runtime_stats_interval AS rsi
+            ON rsi.runtime_stats_interval_id = rs.runtime_stats_interval_id
+    WHERE rs.execution_type_desc IN ( 'Regular', 'Aborted', 'Exception' )
+          AND rsi.start_time >= DATEADD(HOUR, -2, GETUTCDATE())
+    GROUP BY q.query_hash),
+     OrderedLogUsed
+AS (SELECT query_hash,
+           total_log_bytes_used,
+           number_of_distinct_plans,
+           number_of_distinct_query_ids,
+           total_executions,
+           Aborted_Execution_Count,
+           Regular_Execution_Count,
+           Exception_Execution_Count,
+           sampled_query_text,
+           ROW_NUMBER() OVER (ORDER BY total_log_bytes_used DESC, query_hash ASC) AS RN
+    FROM AggregatedLogUsed)
+SELECT OD.total_log_bytes_used,
+       OD.number_of_distinct_plans,
+       OD.number_of_distinct_query_ids,
+       OD.total_executions,
+       OD.Aborted_Execution_Count,
+       OD.Regular_Execution_Count,
+       OD.Exception_Execution_Count,
+       OD.sampled_query_text,
+       OD.RN
+FROM OrderedLogUsed AS OD
+WHERE OD.RN <= 15
+ORDER BY total_log_bytes_used DESC;
+GO
+```
+
 ## <a name="identify-tempdb-performance-issues"></a>Identyfikowanie `tempdb` problemy z wydajnością
 
 Po określeniu problemów z wydajnością we/wy, u góry oczekiwania typy związane z `tempdb` problemów jest `PAGELATCH_*` (nie `PAGEIOLATCH_*`). Jednak `PAGELATCH_*` czeka nie zawsze oznacza, że masz `tempdb` rywalizacji o zasoby.  Tego oczekiwania może również oznaczać, że istnieje obiekt użytkownika danych strony rywalizacji o zasoby z powodu równoczesnych żądań dla tej samej strony danych. Aby upewnić się, dalsze `tempdb` rywalizacji o zasoby, użyj [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) aby upewnić się, że wartość wait_resource rozpoczyna się od `2:x:y` gdzie 2 jest `tempdb` to identyfikator bazy danych `x` identyfikator pliku i `y` jest identyfikator strony.  
@@ -164,6 +247,8 @@ Dla bazy danych tempdb rywalizacji o zasoby, powszechnie używaną metodą jest 
 - Parametry z wartościami przechowywanymi w tabeli
 - Użycie magazynu wersji (w szczególności skojarzone z długotrwałych transakcji)
 - Zapytania, które mają plany zapytań, które używają sortowania, sprzężenia wyznaczania wartości skrótu i buforowanie
+
+### <a name="top-queries-that-use-table-variables-and-temporary-tables"></a>Najpopularniejsze zapytania, używających zmiennych tabel i tabele tymczasowe
 
 Aby zidentyfikować najpopularniejsze zapytania, używających zmiennych tabel i tabelach tymczasowych, należy użyć następującej kwerendy:
 
@@ -187,6 +272,8 @@ FROM(SELECT DISTINCT plan_handle, [Database], [Schema], [table]
      WHERE [table] LIKE '%@%' OR [table] LIKE '%#%') AS t
     JOIN #tmpPlan AS t2 ON t.plan_handle=t2.plan_handle;
 ```
+
+### <a name="identify-long-running-transactions"></a>Identyfikowanie długotrwałej transakcji
 
 Użyj następujące zapytanie, aby zidentyfikować długie uruchomione transakcje. Długotrwałe transakcje uniemożliwiają Oczyszczanie magazynu wersji.
 
@@ -454,7 +541,7 @@ FROM sys.dm_exec_requests AS r
 ORDER BY mg.granted_memory_kb DESC;
 ```
 
-## <a name="calculating-database-size"></a>Obliczanie rozmiaru bazy danych
+## <a name="calculating-database-and-objects-sizes"></a>Obliczanie rozmiaru bazy danych i obiektów
 
 Następujące zapytanie zwraca rozmiar bazy danych (w megabajtach):
 

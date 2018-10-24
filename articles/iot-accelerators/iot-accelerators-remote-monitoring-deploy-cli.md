@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 09/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 56f233afed8c403d19c9b668e98ecfec45470b64
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: ddb0b5b1a0847200caa7d8d04ecdc9dab4c41d14
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721623"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956701"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Wdrażanie akceleratora rozwiązania monitorowania zdalnego przy użyciu interfejsu wiersza polecenia
 
@@ -81,14 +81,14 @@ Tworzenie podstawowego rozwiązania spowoduje następujących usług platformy A
 
 
 ### <a name="standard"></a>Standardowa (Standard)
-Standardowe wdrożenie to wdrożenie gotowe do produkcji Deweloper można dostosować i rozszerzyć do własnych potrzeb. Niezawodności i skali mikrousługi aplikacji są kompilowane jako kontenery platformy Docker i wdrażane za pomocą programu orchestrator ([Kubernetes](https://kubernetes.io/) domyślnie). Program orchestrator jest odpowiedzialny za wdrażania, skalowania i zarządzania aplikacji.
+Standardowe wdrożenie to wdrożenie gotowe do produkcji Deweloper można dostosować i rozszerzyć do własnych potrzeb. Opcja standardowego wdrożenia powinna być używana, gdy wszystko będzie gotowe do dostosowywania architektury gotowe do produkcji, stworzona z myślą o skalowania i rozszerzalności. Mikrousługi aplikacji są kompilowane jako kontenery platformy Docker i wdrażane za pomocą usługi Azure Kubernetes Service (AKS). Program orchestrator jest odpowiedzialny za wdrażania, skalowania i zarządzania aplikacji.
+
 
 Tworzenie standardowego rozwiązania spowoduje następujących usług platformy Azure aprowizowane w Twojej subskrypcji platformy Azure, opłat:
 
 | Licznik | Zasób                                     | Jednostka SKU / rozmiar      | Używane dla |
 |-------|----------------------------------------------|-----------------|----------|
-| 4     | [Maszyny wirtualne z systemem Linux](https://azure.microsoft.com/services/virtual-machines/)   | Standardowa D2, wersja 2  | wzorzec 1 i 3 agentów do hostowania mikrousług z nadmiarowością |
-| 1     | [Usługa Azure Container Service](https://azure.microsoft.com/services/container-service/) |                 | [Kubernetes](https://kubernetes.io) programu orchestrator |
+| 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| Użyj w pełni zarządzanej usługi organizowania kontenerów Kubernetes, wartość domyślna to 3 agentów|
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 — warstwa standardowa | Zarządzanie urządzeniami, poleceń i kontroli |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standardowa (Standard)        | Przechowywanie danych konfiguracji i telemetrii urządzenia, takie jak reguły, alarmy i wiadomości |
 | 5     | [Konta usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standardowa (Standard)        | 4 dla magazynu maszyn wirtualnych i 1 dla przesyłania strumieniowego punkty kontrolne |

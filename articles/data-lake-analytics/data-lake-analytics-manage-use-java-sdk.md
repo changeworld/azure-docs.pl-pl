@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: 938b3776f320b7556394fff9aa070eee0c44ee88
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6a5d01ed1b3d60ce138fe5c4c5a60812961d9dfd
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047090"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953733"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Zarządzanie przy użyciu aplikacji Java usługi Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -24,7 +24,7 @@ W tym artykule opisano sposób zarządzania kont usługi Azure Data Lake Analyti
 ## <a name="prerequisites"></a>Wymagania wstępne
 * **Java Development Kit (JDK) 8** (przy użyciu języka Java w wersji 1.8).
 * **IntelliJ** lub innego odpowiednie środowisko programistyczne Java. Instrukcje w tym dokumencie używane środowisko IntelliJ.
-* Tworzenie aplikacji usługi Azure Active Directory (AAD) i pobieranie jej **identyfikatora klienta**, **identyfikatora dzierżawy** i **klucza**. Aby uzyskać więcej informacji o aplikacjach usługi AAD i instrukcje na temat uzyskiwania identyfikatora klienta, zobacz [Create Active Directory application and service principal using portal](../azure-resource-manager/resource-group-create-service-principal-portal.md) (Tworzenie aplikacji i głównej nazwy usługi Active Directory przy użyciu portalu). Identyfikator URI odpowiedzi i klucz jest dostępna z portalu po utworzeniu aplikacji i generowania kluczy.
+* Tworzenie aplikacji usługi Azure Active Directory (AAD) i pobieranie jej **identyfikatora klienta**, **identyfikatora dzierżawy** i **klucza**. Aby uzyskać więcej informacji o aplikacjach usługi AAD i instrukcje na temat uzyskiwania identyfikatora klienta, zobacz [Create Active Directory application and service principal using portal](../active-directory/develop/howto-create-service-principal-portal.md) (Tworzenie aplikacji i głównej nazwy usługi Active Directory przy użyciu portalu). Identyfikator URI odpowiedzi i klucz jest dostępna z portalu po utworzeniu aplikacji i generowania kluczy.
 
 ## <a name="authenticating-using-azure-active-directory"></a>Uwierzytelnianie za pomocą usługi Azure Active Directory
 

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: 61950a1afda1fefdfab95f6d63420387dc2e2ac7
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.date: 10/22/2018
+ms.openlocfilehash: 88bea87c752563e1c19332121eb568b0bd329d03
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378639"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954147"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>SQL Database — często zadawane pytania (FAQ)
 
@@ -35,7 +35,7 @@ Nie. Zwykle wpływ poprawek nie jest operacja Jeśli możesz [stosować logikę 
 
 ## <a name="what-is-the-new-vcore-based-purchasing-model-for-azure-sql-database"></a>Co to jest nowy oparty na rdzeniach wirtualnych zakupu model usługi Azure SQL Database
 
-Nowy model zakupów stanowi dodatek do już istniejącego modelu bazującego na jednostkach DTU. Model oparty na rdzeniach wirtualnych jest przeznaczona do zapewnić klientom elastyczność, kontrola, przejrzystości i prostą metodę tłumaczenia wymagań obciążenia w chmurze lokalnie. Umożliwia także klienci mogą skalować swoje rsources zasobów obliczeniowych i magazynu, na podstawie ich potrzeby związane z obciążeniem. Pojedynczą bazę danych i opcje puli elastycznej za pomocą modelu rdzenia wirtualnego są również kwalifikuje się do 30 procent oszczędności w przypadku [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md). Zobacz [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) Aby uzyskać więcej informacji.
+Nowy model zakupów stanowi dodatek do już istniejącego modelu bazującego na jednostkach DTU. Model oparty na rdzeniach wirtualnych jest przeznaczona do zapewnić klientom elastyczność, kontrola, przejrzystości i prostą metodę tłumaczenia wymagań obciążenia w chmurze lokalnie. Umożliwia także klienci mogą skalować swoje rsources zasobów obliczeniowych i magazynu, na podstawie ich potrzeby związane z obciążeniem. Pojedynczą bazę danych i opcje puli elastycznej za pomocą modelu rdzenia wirtualnego są również kwalifikuje się do 30 procent oszczędności w przypadku [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/#services). Zobacz [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) Aby uzyskać więcej informacji.
 
 ## <a name="what-is-a-vcore"></a>Co to jest rdzeń wirtualny
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/23/2018
 ms.author: amsriva
-ms.openlocfilehash: 626db07a81c6482a689329b8cddc9f40b464bb7e
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: e7020ef5c1f7411c7226e7a2db489112ee6bf0a4
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649078"
+ms.locfileid: "49945505"
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Omówienie kompleksowej usługi SSL z usługą Application Gateway
 
@@ -47,7 +47,7 @@ Certyfikaty uwierzytelniania zostały przestarzały i zastąpiony przez zaufanyc
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Po zapoznaniu się z kompleksową usługą SSL przejdź do tematu [Configure an application gateway with SSL termination using the Azure portal (Konfigurowanie bramy aplikacji z kończeniem żądań SSL za pomocą witryny Azure Portal)](create-ssl-portal.md), aby utworzyć bramę aplikacji korzystającą z kompleksowej usługi SSL.
+Po zapoznaniu się kompleksowej usługi SSL, przejdź do [Konfigurowanie kompleksowej usługi SSL przy użyciu bramy aplikacji przy użyciu programu PowerShell](application-gateway-end-to-end-ssl-powershell.md) utworzyć bramę aplikacji korzystającą z kompleksowej usługi SSL.
 
 <!--Image references-->
 

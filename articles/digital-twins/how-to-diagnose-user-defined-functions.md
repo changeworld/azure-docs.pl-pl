@@ -6,14 +6,14 @@ manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/15/2018
+ms.date: 10/22/2018
 ms.author: stefanmsft
-ms.openlocfilehash: faf4df8085c4a4f014caf1c6e276800dcf480ebf
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 852b2d35ae605f5529d162d52655fd258ca07c5a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651510"
+ms.locfileid: "49946100"
 ---
 # <a name="how-to-debug-issues-with-user-defined-functions-in-azure-digital-twins"></a>Jak debugować problemy związane z funkcjami zdefiniowanymi przez użytkownika w reprezentacji urządzeń cyfrowych platformy Azure
 
@@ -198,3 +198,7 @@ Po włączeniu ustawienia diagnostyczne, mogą wystąpić następujące typowe w
 1. **Nie można odnaleźć danych**: Jeśli funkcji zdefiniowanych przez użytkownika prób dostępu do metadanych, który nie istnieje, operacja zakończy się niepowodzeniem.
 
 1. **Nieautoryzowane**: Jeśli nie ma zdefiniowanej przez użytkownika funkcji przypisania roli ustawiona lub nie ma wystarczające uprawnienia dostępu do niektórych metadanych w topologii, operacja zakończy się niepowodzeniem.
+
+## <a name="next-steps"></a>Kolejne kroki
+
+Dowiedz się, jak włączyć [monitorowania i dzienniki](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) w reprezentacji urządzeń cyfrowych platformy Azure.

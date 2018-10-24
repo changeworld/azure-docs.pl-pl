@@ -6,14 +6,14 @@ author: adigan
 manager: Nkolli1
 ms.service: backup
 ms.topic: conceptual
-ms.date: 09/29/2016
+ms.date: 10/18/2018
 ms.author: adigan
-ms.openlocfilehash: 7331b1c99425500b58d186cedab1e83dd20e3684
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: b3b4d42d9a48d02639019f815cbf4fca15060771
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389823"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49946049"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>Tworzenie kopii zapasowych farmy programu SharePoint na platformie Azure
 Wykonywania kopii zapasowych farmy programu SharePoint w systemie Microsoft Azure za pomocą System Center Data Protection Manager (DPM) w podobny sposób, należy utworzyć kopię zapasową innych źródeł danych. Usługa Azure Backup zapewnia elastyczność harmonogram tworzenia kopii zapasowych, aby utworzyć codziennie, co tydzień, miesięczny lub roczny kopii zapasowej wskazuje i udostępnia opcje zasad przechowywania dla różnych punktów kopii zapasowej. Program DPM udostępnia możliwości, aby przechowywać kopie dysk lokalny na szybkie cele czasu odzyskiwania (RTO) i do przechowywania kopii na platformie Azure, ekonomiczne, długoterminowego przechowywania.
@@ -29,7 +29,7 @@ Usługa Azure Backup, program DPM obsługuje następujące scenariusze:
 Istnieje kilka kwestii, czego potrzebujesz, aby upewnić się, zanim wykona kopii zapasowej farmy programu SharePoint na platformie Azure.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-Przed kontynuowaniem upewnij się, że zostały spełnione wszystkie [wymagania wstępne dotyczące korzystania z programu Kopia zapasowa Microsoft Azure](backup-azure-dpm-introduction.md#prerequisites) do ochrony obciążeń. Niektóre zadania, wymagania wstępne obejmują: Tworzenie magazynu kopii zapasowych, Pobierz poświadczenia magazynu, zainstaluj agenta usługi Azure Backup i Zarejestruj serwer kopii zapasowych platformy Azure i programu DPM w magazynie.
+Przed kontynuowaniem upewnij się, że zostały spełnione wszystkie [wymagania wstępne dotyczące korzystania z programu Kopia zapasowa Microsoft Azure](backup-azure-dpm-introduction.md#prerequisites-and-limitations) do ochrony obciążeń. Niektóre zadania, wymagania wstępne obejmują: Tworzenie magazynu kopii zapasowych, Pobierz poświadczenia magazynu, zainstaluj agenta usługi Azure Backup i Zarejestruj serwer kopii zapasowych platformy Azure i programu DPM w magazynie.
 
 ### <a name="dpm-agent"></a>Agent programu DPM
 Musi być zainstalowany agent programu DPM na serwerze, który jest uruchomiony SharePoint, serwery z programem SQL Server i wszystkich serwerów, które są częścią farmy programu SharePoint. Aby uzyskać więcej informacji o sposobie konfigurowania agenta ochrony, zobacz [instalacji agenta ochrony](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx).  Jedynym wyjątkiem jest, zainstaluj agenta tylko na jednym serwerze sieci web serwer sieci Web (WFE). Program DPM wymaga agenta na jednym serwerze WFE tylko po to, która będzie służyć jako punkt wejścia ochrony.

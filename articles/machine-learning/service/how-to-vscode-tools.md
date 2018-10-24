@@ -9,12 +9,12 @@ ms.author: jmartens
 author: j-martens
 ms.reviewer: jmartens
 ms.date: 10/1/2018
-ms.openlocfilehash: f573dba2e7580d58c295d204fc75e2403c0d033c
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: a2f37cffb37ce7008c3e372763784240e0d4250b
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242992"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945556"
 ---
 # <a name="vs-code-tools-for-ai-get-started-with-azure-machine-learning-from-visual-studio-code"></a>Program VS Code Tools for AI: rozpoczynanie pracy z usługą Azure Machine Learning z programu Visual Studio Code
 
@@ -34,7 +34,7 @@ Użyj rozszerzenia Tools for AI w programie Visual Studio code przeznaczonego do
 
 Po zainstalowaniu **Tools for AI** rozszerzenia dwóch więcej rozszerzeń są automatycznie instalowane (Jeśli masz dostęp do Internetu). Są one [konta platformy Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) rozszerzenia i [Microsoft Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) rozszerzenia
 
-Aby pracować z usługą Azure Machine Learning, musimy włączyć program VS Code w środowisko IDE języka Python. Praca z [języka Python w programie Visual Studio Code](https://code.visualstudio.com/docs/languages/python), wymaga rozszerzenia Microsoft Python, który pobiera instalowana z narzędziami Tools for AI automatycznie. Rozszerzenie sprawia, że program VS Code doskonałym środowisku IDE i działa w dowolnym systemie operacyjnym z różnymi rodzajami interpreterów języka Python. Wykorzystuje wszystkie mocy programu VS Code w celu zapewnienia Autouzupełnianie i technologii IntelliSense, Zaznaczanie błędów, debugowania i testowania jednostkowego, wraz z możliwością łatwego przełączania się między środowiskami Python, w tym wirtualnych i środowisk conda. Zapoznaj się z tego przewodnika, edytowania, uruchomiona i debugowanie kodu w języku Python, zobacz [samouczek języka Python Hello World](https://code.visualstudio.com/docs/languages/python/docs/python/python-tutorial)
+Aby pracować z usługą Azure Machine Learning, musimy włączyć program VS Code w środowisko IDE języka Python. Praca z [języka Python w programie Visual Studio Code](https://code.visualstudio.com/docs/languages/python), wymaga rozszerzenia Microsoft Python, który pobiera instalowana z narzędziami Tools for AI automatycznie. Rozszerzenie sprawia, że program VS Code doskonałym środowisku IDE i działa w dowolnym systemie operacyjnym z różnymi rodzajami interpreterów języka Python. Wykorzystuje wszystkie mocy programu VS Code w celu zapewnienia Autouzupełnianie i technologii IntelliSense, Zaznaczanie błędów, debugowania i testowania jednostkowego, wraz z możliwością łatwego przełączania się między środowiskami Python, w tym wirtualnych i środowisk conda. Zapoznaj się z tego przewodnika, edytowania, uruchomiona i debugowanie kodu w języku Python, zobacz [samouczek języka Python Hello World](https://code.visualstudio.com/docs/python/python-tutorial)
 
 **Aby zainstalować rozszerzenia Tools for AI:**
 

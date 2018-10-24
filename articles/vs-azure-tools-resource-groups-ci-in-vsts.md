@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: f44bb7bd95ef405c65bb259a6d104475c2e283bd
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: a3dfca48b52af39e7a536b3012a3f4cdac4e9a94
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297846"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955171"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Ciągła integracja w usługom DevOps platformy Azure przy użyciu projekty wdrażania grupy zasobów platformy Azure
 Do wdrożenia szablonu platformy Azure, wykonywania zadań w poszczególnych etapach: kopiowania kompilacji, testów, na platformie Azure (zwane również "Staging") i wdrożyć szablon. Istnieją dwa różne sposoby wdrażania szablonów usługom DevOps platformy Azure. Obie metody zapewniają takie same wyniki, więc wybierz ten, który najlepiej pasuje do przepływu pracy.
@@ -92,7 +92,7 @@ Poniższe procedury opisują kroki niezbędne do skonfigurowania ciągłego wdra
       W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
       
       `azure account show`
-   8. Aby uzyskać identyfikator jednostki usługi, klucz jednostki usługi i identyfikator dzierżawy, postępuj zgodnie z procedurą w [aplikacji Utwórz usługi Active Directory i jednostki usługi przy użyciu portalu](resource-group-create-service-principal-portal.md) lub [uwierzytelniania jednostki usługi przy użyciu platformy Azure Menedżer zasobów](resource-group-authenticate-service-principal.md).
+   8. Aby uzyskać identyfikator jednostki usługi, klucz jednostki usługi i identyfikator dzierżawy, postępuj zgodnie z procedurą w [aplikacji Utwórz usługi Active Directory i jednostki usługi przy użyciu portalu](active-directory/develop/howto-create-service-principal-portal.md) lub [uwierzytelniania jednostki usługi przy użyciu platformy Azure Menedżer zasobów](active-directory/develop/howto-authenticate-service-principal-powershell.md).
    9. Dodaj wartości identyfikator jednostki usługi, klucz jednostki usługi i identyfikator dzierżawy w **dodawania subskrypcji platformy Azure** okna dialogowego pole, a następnie wybierz **OK** przycisku.
       
       Masz teraz prawidłowe nazwy głównej usługi można użyć, aby uruchomić skrypt programu Azure PowerShell.

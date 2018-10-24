@@ -4,7 +4,6 @@ description: Ten artykuł ułatwia zrozumienie metod routingu ruchu innego, uży
 services: traffic-manager
 documentationcenter: ''
 author: KumudD
-manager: jpconnock
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kumud
-ms.openlocfilehash: be429e7d3ae847eec6dc4fd5ad6b9c3e5d76d5b5
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: eb43b59a26bc9c1b514921a7b6dfa4b920a8fe5f
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785413"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955222"
 ---
 # <a name="traffic-manager-routing-methods"></a>Metody routingu w usłudze Traffic Manager
 
@@ -129,8 +128,11 @@ Jak wyjaśniono w [jak działa usługa Traffic Manager](traffic-manager-how-it-w
 **Atrybut wielowartościowy elementu** metody routingu ruchu pozwala na pobieranie wielu punktów końcowych w dobrej kondycji w jednej odpowiedzi na kwerendę DNS. Dzięki temu obiekt wywołujący celu ponownych prób po stronie klienta przy użyciu innych punktów końcowych w przypadku punktu końcowego zwracane są nie odpowiada. Ten wzorzec może zwiększyć dostępność usług i zmniejszyć opóźnienia związanego z nowe zapytanie DNS, aby uzyskać punkt końcowy w dobrej kondycji. Metody routingu opartego na wielu wartości działa tylko w przypadku wszystkich punktów końcowych typu "Zewnętrzny" i są określone jako IPv4 lub IPv6 adresów. Po otrzymaniu kwerendy dla tego profilu, wszystkie punkty końcowe w dobrej kondycji są zwracane i podlegają one można skonfigurować maksymalną liczbę zwrotu.
 
 ## <a name = "subnet"></a>Metody routingu ruchu w podsieci
-**Podsieci** metody routingu ruchu pozwala na mapowanie zestawu zakresów adresów IP dla użytkownika końcowego do określonych punktów końcowych w profilu. Po tym, jeśli usługa Traffic Manager odbierze zapytanie DNS dla danego profilu go Sprawdź źródłowy adres IP tego żądania (w większości przypadków będzie wychodzący adres IP programu rozpoznawania nazw DNS używane przez obiekt wywołujący) określić, który punkt końcowy jest mapowana do i zwróci t punkt końcowy Hat w odpowiedzi na zapytanie. Adres IP, które mają być mapowane do punktu końcowego można określić jako zakresy CIDR (np. 1.2.3.0/24) lub zakres adresów (np. 1.2.3.4-5.6.7.8). Zakresy adresów IP skojarzonych z punktem końcowym musi być unikatowa w ramach tego profilu, a nie pokrywają się z zbiór adresów IP z innym punktem końcowym w ten sam profil.
-Jeśli nie ma żadnych punktów końcowych, do których można mapować ten adres IP, usługa Traffic Manager będzie wysyłać odpowiedzi NODATA. W związku z tym zdecydowanie zalecane jest zapewnić wszystkich możliwych zakresów adresów IP są określone w punktach końcowych.
+**Podsieci** metody routingu ruchu pozwala na mapowanie zestawu zakresów adresów IP dla użytkownika końcowego do określonych punktów końcowych w profilu. Po tym, jeśli usługa Traffic Manager odbierze zapytanie DNS dla danego profilu go Sprawdź źródłowy adres IP tego żądania (w większości przypadków będzie wychodzący adres IP programu rozpoznawania nazw DNS używane przez obiekt wywołujący) określić, który punkt końcowy jest mapowana do i zwróci t punkt końcowy Hat w odpowiedzi na zapytanie. 
+
+Adres IP, które mają być mapowane do punktu końcowego można określić jako zakresy CIDR (np. 1.2.3.0/24) lub zakres adresów (np. 1.2.3.4-5.6.7.8). Zakresy adresów IP skojarzonych z punktem końcowym musi być unikatowa w ramach tego profilu, a nie pokrywają się z zbiór adresów IP z innym punktem końcowym w ten sam profil.
+Jeśli zdefiniujesz punkt końcowy z żaden zakres adresów, który działa jako rezerwowe i podejmij ruchu z wszelkie pozostałe podsieci. Jeśli nie ma rezerwowego punktu końcowego jest włączone, usługa Traffic Manager wysyła odpowiedź NODATA żadnych zakresów niezdefiniowane. W związku z tym zdecydowanie zalecane jest, należy albo zdefiniować rezerwowy punkt końcowy; w przeciwnym razie upewnij się, że wszystkie możliwe zakresy adresów IP są określone między punktami końcowymi usługi.
+
 Routing w podsieci, może służyć do różnych środowisko dla użytkowników łączących się z określonych przestrzeni adresów IP. Na przykład przy użyciu routingu podsieci, klient ułatwia wszystkich żądań z ich siedziby firmy, można kierować do innego punktu końcowego gdzie one może testować wewnętrzny tylko wersję aplikacji. Inny scenariusz polega na tym, jeśli chcesz zapewnić różne doświadczenia użytkowników łączących się z określonego usługodawcę internetowego (na przykład bloku użytkownicy z danego usługodawcy internetowego).
 
 ## <a name="next-steps"></a>Kolejne kroki

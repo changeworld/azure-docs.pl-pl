@@ -17,12 +17,12 @@ ms.date: 10/17/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 73edb518a7e0c89b3ef510c6e528b6fa76f8dca5
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 7323f532787fa767d875e13262cce9f1ceaa79d8
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393425"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955527"
 ---
 # <a name="azure-active-directory-code-samples-v2-endpoint"></a>Przykłady kodu usługi Azure Active Directory (punktu końcowego V2)
 
@@ -108,7 +108,7 @@ Aby dowiedzieć się więcej na temat [przykłady](https://github.com/microsoftg
 
 ## <a name="see-also"></a>Zobacz także
 
-[Przewodnik dewelopera usługi Azure Active Directory](azure-ad-developers-guide.md)
+[Przewodnik dewelopera usługi Azure Active Directory](v1-overview.md)
 
 [Funkcji Azure AD Graph pojęć związanych z interfejsu API i dokumentacja](https://msdn.microsoft.com/library/azure/hh974476.aspx)
 

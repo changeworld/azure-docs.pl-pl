@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/30/2018
+ms.date: 10/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1b982bddc951e710ba3bfa5fe8621d6595b95a52
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 28ef94113c76cd70e12a9682e1c523afc3f0a233
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405348"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945879"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Omówienie struktury i składni szablonów usługi Azure Resource Manager
 W tym artykule opisano strukturę szablonu usługi Azure Resource Manager. Przedstawia on różne części szablonu i właściwości, które są dostępne w tych sekcjach. Szablon składa się z kodu JSON i wyrażeń, których można używać do tworzenia wartości na potrzeby wdrożenia. Aby uzyskać samouczek krok po kroku dotyczące tworzenia szablonu, zobacz [Tworzenie pierwszego szablonu usługi Azure Resource Manager](resource-manager-create-first-template.md).
 
 ## <a name="quickstarts-and-tutorials"></a>Przewodniki Szybki Start i samouczki
 
-Aby dowiedzieć się, jak opracowywać szablony Menedżera zasobów, użyj następujących przewodników Szybki Start i samouczków:
+Aby dowiedzieć się, jak opracowywać szablony usługi Resource Manager, należy użyć następujących przewodników Szybki Start i samouczków:
 
 - Przewodniki Szybki start
 
@@ -304,7 +304,7 @@ W sekcji zasobów można zdefiniować zasoby, które są wdrożone lub aktualizo
 ],
 ```
 
-Aby uzyskać więcej informacji, zobacz [sekcji zasobów usługi Azure Resource Manager](resource-manager-templates-resources.md).
+Aby warunkowo dołączyć lub wykluczyć zasób podczas wdrażania, należy użyć [element warunek](resource-manager-templates-resources.md#condition). Aby uzyskać więcej informacji na temat sekcji zasobów zobacz [sekcji zasobów usługi Azure Resource Manager](resource-manager-templates-resources.md).
 
 ## <a name="outputs"></a>Dane wyjściowe
 W sekcji danych wyjściowych należy określić wartości, które są zwracane z wdrożenia. Na przykład można zwrócić identyfikator URI do dostępu do wdrożonych zasobów.

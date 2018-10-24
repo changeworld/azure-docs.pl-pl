@@ -10,24 +10,25 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 388957fc5dac5cdab5bee34a4431eaa524e76a48
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 06e7d227511a9b651a905df3172f59a191acce01
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999906"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945675"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Przekształcanie danych za pomocą usługi Azure Machine Learning Prep zestawu SDK usługi Data
 
 [Zestawu SDK usługi Azure Machine Learning danych Prep](https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py) oferuje różne przekształcenia metody, aby wyczyścić dane. Metody te ułatwiają dodawanie kolumn odfiltrować zbędne wiersze lub kolumny i przypisują brakujące wartości.
 
 Obecnie dostępne są metody w celu uwzględnienia poniższych zadań:
-- [Dodawanie kolumny za pomocą wyrażenia](#add-column-using-expression)
+- [Dodawanie kolumny za pomocą wyrażenia](#column)
 - [Naliczenie brakujące wartości](#impute-missing-values)
 - [Utwórz kolumnę pochodną według przykładu](#derive-column-by-example)
 - [Filtrowanie](#filtering)
 - [Niestandardowe przekształcenia języka Python](#custom-python-transforms)
 
+<a name=column>
 ## <a name="add-column-using-an-expression"></a>Dodawanie kolumny za pomocą wyrażenia
 
 Zestaw SDK Azure Machine Learning danych Prep zawiera `substring` wyrażeń, można użyć do obliczenia wartości z istniejących kolumn, a następnie umieść tej wartości w nowej kolumnie. W tym przykładzie firma Microsoft ładowanie danych i spróbuj dodać kolumny do tych danych wejściowych.

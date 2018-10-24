@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie .NET v1.x zestawu SDK dla usługi Azure Stream Analytics
-description: Rozpoczynanie pracy z Stream Analytics Management .NET SDK. Dowiedz się, jak skonfigurować i uruchomić zadania usługi analiza. Utwórz projekt, wejść, wyjść i przekształcenia.
+title: .NET — Zarządzanie v1.x zestawu SDK usługi Azure Stream Analytics
+description: Rozpoczynanie pracy z usługą Stream Analytics Management .NET SDK. Dowiedz się, jak skonfigurować i uruchomić zadania usługi analytics. Utwórz projekt, danych wejściowych, danych wyjściowych i przekształcenia.
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
@@ -9,29 +9,29 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/06/2017
-ms.openlocfilehash: a8f272403a0c6903521acc7cc45935c4e5bc419c
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: c4fa101d6864030b2b247a302d0048ba2123a05b
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31528107"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958605"
 ---
-# <a name="management-net-sdk-v1x-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Zarządzanie zestawu .NET SDK v1.x: Ustaw Konfigurowanie i uruchamianie zadania usługi analiza przy użyciu interfejsu API usługi analiza strumienia Azure dla platformy .NET
-Dowiedz się, jak skonfigurować i uruchomić zadania usługi analiza dla platformy .NET przy użyciu zestawu .NET SDK zarządzania przy użyciu interfejsu API usługi analiza strumienia. Konfigurowanie projektu, Utwórz wejściowymi i wyjściowymi źródeł, transformacji i rozpocząć i zatrzymać zadania. Dla Twojego zadania usługi analiza może przesyłać strumieniowo dane z magazynu obiektów Blob lub Centrum zdarzeń.
+# <a name="management-net-sdk-v1x-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Zarządzanie zestawu .NET SDK v1.x: Ustaw Konfigurowanie i uruchamianie zadań analizy przy użyciu interfejsu API usługi Azure Stream Analytics dla platformy .NET
+Dowiedz się, jak skonfigurować i uruchomić zadania analizy przy użyciu interfejsu API analizy Stream dla platformy .NET przy użyciu zestawu SDK platformy .NET zarządzania. Konfigurowanie projektu i tworzenia źródeł wejściowych i wyjściowych, transformacji i rozpoczęcia zatrzymanie zadań. Dla zadań analizy przesyłanie strumieniowe danych z magazynu obiektów Blob lub Centrum zdarzeń.
 
-Zobacz [zarządzania dokumentacji interfejsu API usługi analiza strumienia dla platformy .NET](https://msdn.microsoft.com/library/azure/dn889315.aspx).
+Zobacz [zarządzania dokumentacja Stream Analytics interfejsu API dla platformy .NET](https://msdn.microsoft.com/library/azure/dn889315.aspx).
 
-Usługa Azure Stream Analytics to w pełni zarządzana usługa dostarczanie przetwarzania małych opóźnieniach, wysokiej dostępności, skalowalności, złożonych zdarzeń za pośrednictwem przesyłania strumieniowego danych w chmurze. Analiza strumienia umożliwia klientom ustawianie zadań przesyłania strumieniowego do analizowania strumieni danych oraz pozwala na dysku w pobliżu analiz w czasie rzeczywistym.  
+Usługa Azure Stream Analytics jest w pełni zarządzaną usługę, zapewniając przetwarzanie zdarzeń o małych opóźnieniach wysoko dostępnych, skalowalnych, złożonych za pośrednictwem przesyłania strumieniowego danych w chmurze. Stream Analytics umożliwia klientom Konfigurowanie zadań przesyłania strumieniowego do analizowania strumieni danych i pozwala na dysku w pobliżu analizy w czasie rzeczywistym.  
 
 > [!NOTE]
-> Przykładowy kod w tym artykule nadal używa starszego (1.x) wersja zestawu .NET SDK usługi Azure Stream Analytics zarządzania. Przykładowy kod za pomocą zaktualizowanej wersji zestawu SDK, zobacz [używanie zestawu SDK .NET zarządzania dla usługi Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk).
+> Przykładowy kod w tym artykule nadal używa starszej wersji (1.x) wersję zestawu .NET SDK usługi Azure Stream Analytics Management. Przykładowy kod przy użyciu zaktualizowanej wersji zestawu SDK, zobacz [używać zestawu SDK platformy .NET zarządzania dla usługi Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed rozpoczęciem korzystania z informacji zawartych w tym artykule należy dysponować następującymi elementami:
 
 * Zainstaluj program Visual Studio 2017 lub 2015.
-* Pobierz i zainstaluj [zestawu Azure .NET SDK](https://azure.microsoft.com/downloads/).
-* Utwórz grupy zasobów platformy Azure w ramach subskrypcji. Poniżej przedstawiono przykładowy skrypt programu PowerShell systemu Azure. Informacje programu Azure PowerShell, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview);  
+* Pobierz i zainstaluj [Azure .NET SDK](https://azure.microsoft.com/downloads/).
+* Utwórz grupę zasobów platformy Azure w ramach subskrypcji. Poniżej przedstawiono przykładowy skrypt programu Azure PowerShell. Uzyskać programu Azure PowerShell, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview);  
 
         # Log in to your Azure account
         Add-AzureAccount
@@ -46,17 +46,17 @@ Przed rozpoczęciem korzystania z informacji zawartych w tym artykule należy dy
         New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 
 
-* Skonfiguruj źródło danych wejściowych i wyjściowego miejsca docelowego dla zadania nawiązać połączenie.
+* Konfigurowanie źródła danych wejściowych i celem danych wyjściowych dla zadania nawiązać połączenie.
 
 ## <a name="set-up-a-project"></a>Konfigurowanie projektu
-Aby utworzyć zadania usługi analiza, należy użyć interfejsu API usługi analiza strumienia dla platformy .NET, należy najpierw skonfigurować projektu.
+Aby utworzyć zadanie usługi analytics, należy użyć interfejsu API analizy Stream dla platformy .NET, najpierw skonfigurować projekt.
 
 1. Utwórz aplikację konsolową programu Visual Studio C# .NET.
-2. W konsoli Menedżera pakietów uruchom następujące polecenia można zainstalować pakietów NuGet. Pierwsza z nich jest Azure Stream Analytics Management .NET SDK. Drugim jest klienta usługi Azure Active Directory, który będzie używany do uwierzytelniania.
+2. W konsoli Menedżera pakietów uruchom następujące polecenia, aby zainstalować pakiety NuGet. Pierwsza z nich jest usługi Azure Stream Analytics Management .NET SDK. Drugim jest klienta usługi Azure Active Directory, który będzie używany do uwierzytelniania.
    
         Install-Package Microsoft.Azure.Management.StreamAnalytics -Version 1.8.3
         Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.28.4
-3. Dodaj następujące **appSettings** sekcji w pliku App.config:
+3. Dodaj następujący kod **appSettings** sekcji w pliku App.config:
    
         <appSettings>
           <!--CSM Prod related values-->
@@ -69,15 +69,15 @@ Aby utworzyć zadania usługi analiza, należy użyć interfejsu API usługi ana
           <add key="ActiveDirectoryTenantId" value="YOU TENANT ID" />
         </appSettings>
 
-    Zastąp wartości **SubscriptionId** i **ActiveDirectoryTenantId** identyfikatorami z usługi Azure subskrypcji i dzierżawcy. Te wartości można uzyskać, uruchamiając następujące polecenie cmdlet programu Azure PowerShell:
+    Zastąp wartości **SubscriptionId** i **ActiveDirectoryTenantId** za pomocą usługi Azure identyfikatory subskrypcji i dzierżawy. Te wartości można uzyskać, uruchamiając następujące polecenie cmdlet programu Azure PowerShell:
 
         Get-AzureAccount
 
-4. Dodaj następujące informacje w pliku .csproj:
+4. Dodaj następujące odwołanie w pliku csproj:
 
         <Reference Include="System.Configuration" />
 
-1. Dodaj następujące **przy użyciu** instrukcje do pliku źródłowego (Program.cs) w projekcie:
+1. Dodaj następujący kod **przy użyciu** instrukcje pliku źródłowego (Program.cs) w projekcie:
    
         using System;
         using System.Configuration;
@@ -109,8 +109,8 @@ Aby utworzyć zadania usługi analiza, należy użyć interfejsu API usługi ana
    }
    ```  
 
-## <a name="create-a-stream-analytics-management-client"></a>Tworzenie klienta zarządzania usługi analiza strumienia
-A **StreamAnalyticsManagementClient** obiektu umożliwia zarządzanie zadania i składniki zadania, takie jak dane wejściowe, dane wyjściowe i przekształcania.
+## <a name="create-a-stream-analytics-management-client"></a>Tworzenie klienta zarządzania usługi Stream Analytics
+A **StreamAnalyticsManagementClient** obiekt umożliwia zarządzanie zadania i składniki zadania, takie jak dane wejściowe, dane wyjściowe i przekształcania.
 
 Dodaj następujący kod na początku **Main** metody:
 
@@ -128,14 +128,14 @@ Dodaj następujący kod na początku **Main** metody:
     // Create Stream Analytics management client
     StreamAnalyticsManagementClient client = new StreamAnalyticsManagementClient(aadTokenCredentials);
 
-**ResourceGroupName** wartość zmiennej powinna być taka sama jak nazwa grupy zasobów został utworzony lub pobrać wstępnie wymagane kroki.
+**ResourceGroupName** wartość zmiennej powinna być taka sama jak nazwa grupy zasobów, utworzyć lub pobrać wstępnie wymagane kroki.
 
-Aby zautomatyzować aspekt prezentacji poświadczenie tworzenia zadania, należy zapoznać się [uwierzytelniania nazwy głównej usługi z usługą Azure Resource Manager](../azure-resource-manager/resource-group-authenticate-service-principal.md).
+Aby zautomatyzować prezentacji poświadczeń aspektów tworzenia zadania, zobacz [uwierzytelniania jednostki usługi przy użyciu usługi Azure Resource Manager](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
-Pozostałe sekcje w tym artykule założono, że ten kod jest na początku **Main** metody.
+Pozostałe sekcje w tym artykule przyjęto założenie, że ten kod jest na początku **Main** metody.
 
 ## <a name="create-a-stream-analytics-job"></a>Tworzenie zadania usługi Stream Analytics
-Poniższy kod tworzy zadanie usługi analiza strumienia w grupie zasobów, który został zdefiniowany. Zadania zostaną później dodane z danych wejściowych, wyjściowych i przekształcenie.
+Poniższy kod tworzy zadanie usługi Stream Analytics w ramach grupy zasobów, które zostały zdefiniowane. Do zadania będzie później dodać z danych wejściowych, wyjściowych i przekształcania.
 
     // Create a Stream Analytics job
     JobCreateOrUpdateParameters jobCreateParameters = new JobCreateOrUpdateParameters()
@@ -158,8 +158,8 @@ Poniższy kod tworzy zadanie usługi analiza strumienia w grupie zasobów, któr
     JobCreateOrUpdateResponse jobCreateResponse = client.StreamingJobs.CreateOrUpdate(resourceGroupName, jobCreateParameters);
 
 
-## <a name="create-a-stream-analytics-input-source"></a>Utwórz źródło danych wejściowych analiza strumienia
-Poniższy kod tworzy Stream Analytics źródło danych wejściowych typu źródła danych wejściowych obiektu blob i serializacji woluminów CSV. Aby utworzyć źródło wejścia Centrum zdarzeń, użyj **EventHubStreamInputDataSource** zamiast **BlobStreamInputDataSource**. Podobnie można dostosować serializację typu źródła danych wejściowych.
+## <a name="create-a-stream-analytics-input-source"></a>Utwórz źródło danych wejściowych usługi Stream Analytics
+Poniższy kod tworzy źródła danych wejściowych usługi Stream Analytics przy użyciu typu źródła danych wejściowych obiektów blob i serializacji woluminów CSV. Aby utworzyć źródło danych wejściowych z Centrum zdarzeń, użyj **EventHubStreamInputDataSource** zamiast **BlobStreamInputDataSource**. Podobnie można dostosować typ serializacji źródła danych wejściowych.
 
     // Create a Stream Analytics input source
     InputCreateOrUpdateParameters jobInputCreateParameters = new InputCreateOrUpdateParameters()
@@ -200,19 +200,19 @@ Poniższy kod tworzy Stream Analytics źródło danych wejściowych typu źród�
     InputCreateOrUpdateResponse inputCreateResponse =
         client.Inputs.CreateOrUpdate(resourceGroupName, streamAnalyticsJobName, jobInputCreateParameters);
 
-Źródeł danych wejściowych z magazynu obiektów Blob lub Centrum zdarzeń są powiązane z konkretnym zadaniu. Aby użyć tego samego źródła danych wejściowych dla różnych zadań, należy ponownie wywołać metodę i określenia innej nazwy zadania.
+Źródeł danych wejściowych z usługi Blob storage lub Centrum zdarzeń, są powiązane z konkretnym zadaniu. Aby użyć tego samego źródła danych wejściowych dla różnych zadań, należy ponownie wywołaj metodę i określić innej nazwy zadania.
 
-## <a name="test-a-stream-analytics-input-source"></a>Testowanie usługi Stream Analytics źródło danych wejściowych
-**TestConnection** metoda sprawdza, czy zadanie usługi Stream Analytics jest w stanie połączyć się źródło danych wejściowych, jak również inne aspekty specyficzne dla typu źródła danych wejściowych. Na przykład w źródło wejścia obiektów blob, utworzony w poprzednim kroku, metoda sprawdza, czy para klucza i nazwy konta magazynu może służyć do nawiązania połączenia z kontem magazynu, a także Sprawdź, czy istnieje określony kontener.
+## <a name="test-a-stream-analytics-input-source"></a>Testowanie źródła danych wejściowych usługi Stream Analytics
+**TestConnection** metoda sprawdza, czy zadanie usługi Stream Analytics jest w stanie połączyć się z źródła danych wejściowych oraz innych aspektów, które są specyficzne dla typu źródła danych wejściowych. Na przykład w źródle danych wejściowych obiektów blob, utworzonej w poprzednim kroku, metoda sprawdzi, czy parę klucza i nazwy konta magazynu można połączyć się z kontem magazynu, a także Sprawdź, czy istnieje określony kontener.
 
     // Test input source connection
     DataSourceTestConnectionResponse inputTestResponse =
         client.Inputs.TestConnection(resourceGroupName, streamAnalyticsJobName, streamAnalyticsInputName);
 
-## <a name="create-a-stream-analytics-output-target"></a>Utworzyć cel usługi analiza strumienia wyjściowego
-Tworzenie obiektu docelowego dane wyjściowe jest bardzo podobny do tworzenia usługi Stream Analytics źródło danych wejściowych. Jak źródeł danych wejściowych powiązane są elementy docelowe danych wyjściowych do określonego zadania. Aby użyć tej samej wartości docelowej danych wyjściowych dla różnych zadań, należy ponownie wywołać metodę i określenia innej nazwy zadania.
+## <a name="create-a-stream-analytics-output-target"></a>Utwórz obiekt docelowy danych wyjściowych usługi Stream Analytics
+Tworzenie obiektu docelowego dane wyjściowe jest bardzo podobne do tworzenia źródła danych wejściowych usługi Stream Analytics. Takie jak źródła danych wejściowych do określonego zadania powiązane są elementy docelowe danych wyjściowych. Aby użyć tej samej wartości docelowej danych wyjściowych dla różnych zadań, należy ponownie wywołaj metodę i określić innej nazwy zadania.
 
-Poniższy kod tworzy obiekt docelowy danych wyjściowych (baza danych Azure SQL). Można dostosować w danych wyjściowych elementu docelowego typu danych i/lub typu serializacji.
+Poniższy kod tworzy obiekt docelowy danych wyjściowych (usługa Azure SQL database). Można dostosować typ danych celem danych wyjściowych i/lub typu serializacji.
 
     // Create a Stream Analytics output target
     OutputCreateOrUpdateParameters jobOutputCreateParameters = new OutputCreateOrUpdateParameters()
@@ -240,15 +240,15 @@ Poniższy kod tworzy obiekt docelowy danych wyjściowych (baza danych Azure SQL)
     OutputCreateOrUpdateResponse outputCreateResponse =
         client.Outputs.CreateOrUpdate(resourceGroupName, streamAnalyticsJobName, jobOutputCreateParameters);
 
-## <a name="test-a-stream-analytics-output-target"></a>Testowanie elementu docelowego danych wyjściowych usługi analiza strumienia
-Ma również elementu docelowego danych wyjściowych Stream Analytics **TestConnection** metody do testowania połączenia.
+## <a name="test-a-stream-analytics-output-target"></a>Testowanie celem danych wyjściowych usługi Stream Analytics
+Celem danych wyjściowych usługi Stream Analytics ma również **TestConnection** metodę do testowania połączeń.
 
     // Test output target connection
     DataSourceTestConnectionResponse outputTestResponse =
         client.Outputs.TestConnection(resourceGroupName, streamAnalyticsJobName, streamAnalyticsOutputName);
 
-## <a name="create-a-stream-analytics-transformation"></a>Utworzyć transformację analiza strumienia
-Poniższy kod tworzy transformację Stream Analytics z zapytaniem "Wybierz * z danych wejściowych" i określa przydzielić jedną jednostkę przesyłania strumieniowego zadania usługi analiza strumienia. Aby uzyskać więcej informacji dotyczących dostosowywania jednostki przesyłania strumieniowego, zobacz [zadania usługi analiza strumienia Azure skali](stream-analytics-scale-jobs.md).
+## <a name="create-a-stream-analytics-transformation"></a>Utworzyć przekształcenie usługi Stream Analytics
+Poniższy kod tworzy przekształcania usługi Stream Analytics z zapytaniem "Wybierz * z danych wejściowych" i określa, aby przydzielić jedną jednostkę przesyłania strumieniowego dla zadania usługi Stream Analytics. Aby uzyskać więcej informacji na temat Dostosowywanie jednostek przesyłania strumieniowego, zobacz [zadań skalowania usługi Azure Stream Analytics](stream-analytics-scale-jobs.md).
 
     // Create a Stream Analytics transformation
     TransformationCreateOrUpdateParameters transformationCreateParameters = new TransformationCreateOrUpdateParameters()
@@ -267,12 +267,12 @@ Poniższy kod tworzy transformację Stream Analytics z zapytaniem "Wybierz * z d
     var transformationCreateResp =
         client.Transformations.CreateOrUpdate(resourceGroupName, streamAnalyticsJobName, transformationCreateParameters);
 
-Podobnie jak dane wejściowe i wyjściowe transformację jest też powiązany z danego zadania Stream Analytics, został on utworzony w obszarze.
+Podobnie jak dane wejściowe i wyjściowe transformacji jest też powiązany z określonego zadania usługi Stream Analytics, który został utworzony w obszarze.
 
-## <a name="start-a-stream-analytics-job"></a>Uruchom zadanie usługi analiza strumienia
-Po utworzeniu zadania usługi analiza strumienia i jego input(s) wyjściami i przekształcenie, można uruchomić zadanie, wywołując **Start** metody.
+## <a name="start-a-stream-analytics-job"></a>Uruchamianie zadania usługi Stream Analytics
+Po utworzeniu zadania usługi Stream Analytics i jej input(s), danych wyjściowych i transformacji, można uruchomić zadania, wywołując **Start** metody.
 
-Poniższy przykładowy kod uruchamia zadania usługi analiza strumienia danych wyjściowych niestandardowego czas rozpoczęcia ustawioną 12 grudnia 2012 12:12:12 UTC:
+Poniższy przykładowy kod uruchamia zadanie usługi Stream Analytics z godziną rozpoczęcia niestandardowe dane wyjściowe równa 12 grudnia 2012 r., 12:12:12 UTC:
 
     // Start a Stream Analytics job
     JobStartParameters jobStartParameters = new JobStartParameters
@@ -283,28 +283,28 @@ Poniższy przykładowy kod uruchamia zadania usługi analiza strumienia danych w
 
     LongRunningOperationResponse jobStartResponse = client.StreamingJobs.Start(resourceGroupName, streamAnalyticsJobName, jobStartParameters);
 
-## <a name="stop-a-stream-analytics-job"></a>Zatrzymaj zadanie usługi analiza strumienia
-Można zatrzymać uruchomione zadanie usługi Stream Analytics wywołując **zatrzymać** metody.
+## <a name="stop-a-stream-analytics-job"></a>Zatrzymaj zadanie usługi Stream Analytics
+Uruchamianie zadania usługi Stream Analytics można zatrzymać, wywołując **zatrzymać** metody.
 
     // Stop a Stream Analytics job
     LongRunningOperationResponse jobStopResponse = client.StreamingJobs.Stop(resourceGroupName, streamAnalyticsJobName);
 
-## <a name="delete-a-stream-analytics-job"></a>Usuń zadanie usługi analiza strumienia
-**Usunąć** metoda usuwa zadanie, a także podrzędne zasobów, w tym input(s), wyjściami i przekształcenie zadania.
+## <a name="delete-a-stream-analytics-job"></a>Usuń zadanie usługi Stream Analytics
+**Usuń** metoda spowoduje usunięcie zadania, a także podstawowych zasobów podrzędnych, w tym input(s), danych wyjściowych i przekształcenia zadania.
 
     // Delete a Stream Analytics job
     LongRunningOperationResponse jobDeleteResponse = client.StreamingJobs.Delete(resourceGroupName, streamAnalyticsJobName);
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
-Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Aby uzyskać dalszą pomoc, Wypróbuj nasz [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Kolejne kroki
-Znasz już podstawy przy użyciu zestawu .NET SDK do tworzenia i uruchamiania zadania usługi analiza. Aby dowiedzieć się więcej, zobacz następujące tematy:
+Znasz już podstawowe informacje dotyczące tworzenia i uruchamiać zadania analizy przy użyciu zestawu .NET SDK. Aby dowiedzieć się więcej, zobacz następujące tematy:
 
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
 * [Scale Azure Stream Analytics jobs (Skalowanie zadań usługi Azure Stream Analytics)](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics Management zestawu .NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx).
+* [Usługa Azure Stream Analytics Management zestawu .NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx).
 * [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics Management REST API Reference (Dokumentacja interfejsu API REST zarządzania usługą Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

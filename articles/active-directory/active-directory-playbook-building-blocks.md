@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 10/23/2018
 ms.author: dstefan
-ms.openlocfilehash: c8517114f51b5aed8f8e31a19b672721b109775e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: db6778bdea2e3e133535bf28b3c2297cdb65599d
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298306"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958911"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Usługa Azure Active Directory weryfikacji koncepcji Podręcznik: bloki konstrukcyjne
 
@@ -150,7 +150,7 @@ Przybliżony czas wykonania: 60 minut
 | Udostępniać w samouczku wszystkich uczestników z Microsoft Documentation  | [Samouczek: Integracja usługi Azure Active Directory przy użyciu usługi ServiceNow](saas-apps/servicenow-tutorial.md) |
 | Ustaw na spotkanie pracy i wykonaj kroki samouczka z każdego aktora. | [Samouczek: Integracja usługi Azure Active Directory przy użyciu usługi ServiceNow](saas-apps/servicenow-tutorial.md) |
 | Przypisywanie aplikacji do grupy określonej w wymaganiach wstępnych. Jeśli środowisko weryfikacji Koncepcji dostępu warunkowego w zakresie, możesz ponownie, który później i dodać uwierzytelnianie wieloskładnikowe i podobnych zastosowaniach. <br/>Należy pamiętać, że spowoduje to rozpoczęcie procesu inicjowania obsługi administracyjnej (jeśli jest skonfigurowane) |  [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) <br/>[Tworzenie grupy i dodawać członków w usłudze Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
-| Za pomocą usługi Azure AD management Portal można dodać aplikację usługi ServiceNow z galerii| [Zarządzanie usługami AD systemu Azure Portal: aplikacje dla przedsiębiorstw](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/Overview) <br/>[What's new in zarządzania aplikacjami przedsiębiorstwa w usłudze Azure Active Directory](active-directory-enterprise-apps-whats-new-azure-portal.md) |
+| Za pomocą usługi Azure AD management Portal można dodać aplikację usługi ServiceNow z galerii| [Zarządzanie usługami AD systemu Azure Portal: aplikacje dla przedsiębiorstw](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/Overview) <br/>[Samouczek: Integracja usługi Azure Active Directory przy użyciu usługi ServiceNow](saas-apps/servicenow-tutorial.md) |
 | W bloku aplikacji ServiceNow "Logowanie jednokrotne" Włącz "opartej na SAML logowania jednokrotnego" |  |
 | Wypełnij pola "Na adres URL logowania" i "Identyfikator" z adresem URL usługi ServiceNow<br/>Pole wyboru, aby "Ustaw nowy certyfikat jako aktywny"<br/>i Zapisz ustawienia |  |
 | Otwórz blok "Konfigurowanie usługi ServiceNow" w dolnej części panelu, aby wyświetlić dostosowany instrukcje dotyczące konfigurowania usługi ServiceNow |  |
@@ -163,8 +163,7 @@ Przybliżony czas wykonania: 60 minut
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 
-1. Powyżej [samouczek](saas-apps/servicenow-tutorial.md) odwołuje się do starej usługi Azure AD możliwości zarządzania. Ale PoC opiera się na [Szybki Start](active-directory-enterprise-apps-whats-new-azure-portal.md#quickstart-get-going-with-your-new-application-right-away) środowiska.
-2. Jeśli aplikacja docelowa nie jest dostępna w galerii, następnie należy użyć "Przynieś własną aplikację". Dowiedz się więcej: [What's new in zarządzania aplikacjami przedsiębiorstwa w usłudze Azure Active Directory: Dodawanie niestandardowych aplikacji z jednego miejsca](active-directory-enterprise-apps-whats-new-azure-portal.md#add-custom-applications-from-one-place)
+1. Jeśli aplikacja docelowa nie jest dostępna w galerii, następnie należy użyć "Przynieś własną aplikację". Dowiedz się więcej: [skonfigurować aplikacje, które nie znajdują się w galerii aplikacji usługi Azure AD](manage-apps/configure-single-sign-on-non-gallery-applications.md).
 
 ## <a name="saas-password-sso-configuration"></a>Konfiguracja logowania jednokrotnego SaaS hasła
 
@@ -184,7 +183,7 @@ Przybliżony czas wykonania: 15 minut
 | Krok | Zasoby |
 | --- | --- |
 | Zainstaluj rozszerzenie przeglądarki | [Rozszerzenie panelu dostępu dla programu Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozszerzenie panelu dostępu dla programu Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozszerzenie panelu dostępu dla programu Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
-| Konfigurowanie aplikacji z galerii | [What's new in zarządzania aplikacjami przedsiębiorstwa w usłudze Azure Active Directory: galerii nowych i ulepszonych aplikacji](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
+| Konfigurowanie aplikacji z galerii | [Samouczek: Konfigurowanie opartej na SAML logowania jednokrotnego](manage-apps/configure-single-sign-on-portal.md) |
 | Skonfigurować hasło logowania jednokrotnego | [Zarządzanie logowania jednokrotnego dla aplikacji korporacyjnych w nowej witrynie Azure portal: opartego na hasłach logowanie jednokrotne](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).|
 | Przypisywanie aplikacji do grupy określonej w wymaganiach wstępnych | [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Zaloguj się do https://myapps.microsoft.com/ konto użytkownika testowego, który ma dostęp |  |
@@ -195,10 +194,10 @@ Przybliżony czas wykonania: 15 minut
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 
-Jeśli aplikacja docelowa nie jest dostępna w galerii, następnie należy użyć "Przynieś własną aplikację". Dowiedz się więcej: [What's new in zarządzania aplikacjami przedsiębiorstwa w usłudze Azure Active Directory: Dodawanie niestandardowych aplikacji z jednego miejsca](active-directory-enterprise-apps-whats-new-azure-portal.md#add-custom-applications-from-one-place)
+Jeśli aplikacja docelowa nie jest dostępna w galerii, następnie należy użyć "Przynieś własną aplikację". Dowiedz się więcej: [skonfigurować aplikacje, które nie znajdują się w galerii aplikacji usługi Azure AD](manage-apps/configure-single-sign-on-non-gallery-applications.md)
 
  Należy pamiętać, następujące wymagania:
-   * Aplikacja powinna mieć adres URL logowania znane
+   * Aplikacja powinna mieć adres URL logowania znane.
    * Strona logowania może zawierać formularza HTML za pomocą jednego więcej pól tekstowych, które rozszerzenia przeglądarki może automatycznie wypełniać. Jako minimum powinien zawierać nazwę użytkownika i hasło.
 
 ## <a name="saas-shared-accounts-configuration"></a>Konfiguracja udostępnionych kont SaaS
@@ -219,7 +218,7 @@ Przybliżony czas wykonania: 30 minut
 | Krok | Zasoby |
 | --- | --- |
 | Zainstaluj rozszerzenie przeglądarki | [Rozszerzenie panelu dostępu dla programu Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozszerzenie panelu dostępu dla programu Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozszerzenie panelu dostępu dla programu Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
-| Konfigurowanie aplikacji z galerii | [What's new in zarządzania aplikacjami przedsiębiorstwa w usłudze Azure Active Directory: galerii nowych i ulepszonych aplikacji](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
+| Konfigurowanie aplikacji z galerii | [Samouczek: Konfigurowanie opartej na SAML logowania jednokrotnego dla aplikacji](manage-apps/configure-single-sign-on-portal.md) |
 | Skonfigurować hasło logowania jednokrotnego | [Zarządzanie logowania jednokrotnego dla aplikacji korporacyjnych w nowej witrynie Azure portal: opartego na hasłach logowanie jednokrotne](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).|
 | Przypisywanie aplikacji do grupy określone w wymaganiach wstępnych podczas przypisywania ich poświadczeń | [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Zaloguj się jako inny użytkownik niż dostęp do aplikacji jako **takie same udostępnionego konta.**  |  |
@@ -228,7 +227,7 @@ Przybliżony czas wykonania: 30 minut
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 
-Jeśli aplikacja docelowa nie jest dostępna w galerii, następnie należy użyć "Przynieś własną aplikację". Dowiedz się więcej: [What's new in zarządzania aplikacjami przedsiębiorstwa w usłudze Azure Active Directory: Dodawanie niestandardowych aplikacji z jednego miejsca](active-directory-enterprise-apps-whats-new-azure-portal.md#add-custom-applications-from-one-place)
+Jeśli aplikacja docelowa nie jest dostępna w galerii, następnie należy użyć "Przynieś własną aplikację". Dowiedz się więcej: [skonfigurować logowanie jednokrotne do aplikacji, które nie znajdują się w galerii aplikacji usługi Azure AD](manage-apps/configure-single-sign-on-non-gallery-applications.md)
 
  Należy pamiętać, następujące wymagania:
    * Aplikacja powinna mieć adres URL logowania znane
@@ -364,7 +363,7 @@ Przybliżony czas wykonania: 10 minut
 | Krok | Zasoby |
 | --- | --- |
 | Przejdź do bloku aplikacji dla przedsiębiorstw w portalu zarządzania usługi Azure AD | [Portalu zarządzania usługi Azure AD: Aplikacje dla przedsiębiorstw](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) |
-| Konfigurowanie aplikacji z warunków wstępnych przy użyciu samoobsługowego | [What's new in zarządzania aplikacjami przedsiębiorstwa w usłudze Azure Active Directory: Konfigurowanie samoobsługowego dostępu do aplikacji](active-directory-enterprise-apps-whats-new-azure-portal.md#configure-self-service-application-access) |
+| Konfigurowanie aplikacji z warunków wstępnych przy użyciu samoobsługowego | [Konfigurowanie samoobsługowego dostępu do aplikacji](manage-apps/manage-self-service-access.md) |
 | Zaloguj się jako pracownika przetwarzającego informacje portalu Moje aplikacje | http://myapps.microsoft.com |
 | Zwróć uwagę, "+ Dodaj aplikację" przycisk na op strony. Użyj, aby uzyskać dostęp do aplikacji |  |
 

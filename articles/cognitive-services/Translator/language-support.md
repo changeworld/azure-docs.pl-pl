@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jansko
-ms.openlocfilehash: 775e098eb2a067e3e0446bccc223c1c54e082347
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 222e37e38772b82e9d9849e3a955b865d43d3c63
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435516"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957401"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Obsługa języka i regionu dla interfejsu API tłumaczenia tekstu
 
@@ -108,7 +108,7 @@ Metoda Transliterate obsługuje następujące języki. W "do/z" "<> -" oznacza, 
 | Hindi | hi | Dewanagari | <--> | Łaciński |
 | Japoński | ja | Japoński | <--> | Łaciński |
 | Kannada | kn | Kannada | --> | Łaciński |
-| Malasian | ml | Malajalam | --> | Łaciński |
+| Malajalam | ml | Malajalam | --> | Łaciński |
 | Marathi | mr | Dewanagari | --> | Łaciński |
 | Orija | lub | Orija | <--> | Łaciński |
 | Pendżabski | pa | Gurmukhi | <--> | Łaciński  |

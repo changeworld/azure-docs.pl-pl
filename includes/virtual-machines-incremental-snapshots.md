@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 88a9348ea7d6282b7410d5a323fd482dc82416c6
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 06e6e491fa1e9a047527efb78149855b125771ef
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45979503"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49960270"
 ---
 # <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>Tworzenie kopii zapasowej Azure niezarządzanych dysków maszyn wirtualnych przy użyciu migawek przyrostowych
 ## <a name="overview"></a>Przegląd
@@ -66,7 +66,7 @@ W przypadku strategii tworzenia kopii zapasowej niestandardowych przy użyciu mi
 Kopiowanie migawek przyrostowych można wdrożyć, wykonując następujące polecenie,
 
 * Utwórz migawkę do podstawowego obiektu blob przy użyciu [wykonanie migawki obiektu Blob](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob).
-* Kopiowanie migawki do docelowego magazynu kopii zapasowych konta przy użyciu [obiektu Blob kopiowania](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob). Jest to kopii zapasowej stronicowych obiektów blob. Utworzenie migawki kopii zapasowej stronicowych obiektów blob i zapisz go w kopii zapasowej konta.
+* Kopiowanie migawki do docelowego konta magazynu kopii zapasowych w tej samej lub dowolnym innym regionie świadczenia usługi Azure przy użyciu [obiektu Blob kopiowania](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob). Jest to kopii zapasowej stronicowych obiektów blob. Utworzenie migawki kopii zapasowej stronicowych obiektów blob i zapisz go w kopii zapasowej konta.
 * Utwórz kolejną migawkę obiektu blob podstawowej za pomocą migawki obiektu Blob.
 * Pobierz różnica między pierwszym i drugim migawki do podstawowego obiektu blob przy użyciu [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges). Użyj nowego parametru **prevsnapshot**, aby określić wartości daty/godziny migawki w celu uzyskania różnica między. Jeśli ten parametr jest obecny, odpowiedź REST zawiera tylko strony, które zostały zmienione między migawki docelowej i poprzedniej migawki, w tym wyczyść stron.
 * Użyj [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) Aby zastosować te zmiany do tworzenia kopii zapasowej stronicowych obiektów blob.

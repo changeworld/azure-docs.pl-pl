@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bryanla
-ms.openlocfilehash: 1d6f84612dd2bac34c238ad7eaf323dc7fa00ba3
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: d93ad4185be3d4875c5747fd10359baab69af95d
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311358"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958656"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informacje o kluczach, wpisów tajnych i certyfikatów
 
@@ -101,7 +101,7 @@ Usługa Key Vault obsługuje jedynie klucze RSA i krzywej eliptycznej.
 -   **RSA**: klucz RSA "Elastyczne".
 -   **RSA HSM**: klucz RSA "Twarde".
 
-Usługa Key Vault obsługuje klucze RSA rozmiarów, 2048, 3072 do 4096. Key Vault obsługuje krzywej eliptycznej klucz typy p-256, p-384, p-521 i P - 256 KB.
+Usługa Key Vault obsługuje klucze RSA rozmiarów, 2048, 3072 do 4096. Key Vault obsługuje krzywej eliptycznej klucz typy p-256, p-384, p-521 i P-256_K (SECP256K1).
 
 ### <a name="cryptographic-protection"></a>Kryptograficzna ochrona
 
@@ -110,12 +110,19 @@ Modułów kryptograficznych, które korzysta z usługi Key Vault, czy oprogramow
 ###  <a name="ec-algorithms"></a>Algorytmy WE
  Następujące identyfikatory algorytm są obsługiwane przy użyciu kluczy WE i WE modułu HSM w usłudze Key Vault. 
 
+#### <a name="curve-types"></a>Typy krzywej
+
+-   **P-256** -NIST krzywej p-256, zdefiniowanych na [DSS FIPS PUB 186 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
+-   **P-256_K** -s krzywej SECP256K1, zdefiniowanych na [s 2: parametry domeny krzywej eliptycznej zalecane](http://www.secg.org/sec2-v2.pdf).
+-   **P-384** -NIST krzywej p-384 zdefiniowany z numerem [DSS FIPS PUB 186 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
+-   **P-521** -NIST krzywej p-521 zdefiniowany z numerem [DSS FIPS PUB 186 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
+
 #### <a name="signverify"></a>SPRAWDŹ/LOGOWANIA
 
--   **ES256** — skróty służące ECDSA SHA-256 i klucze są tworzone z krzywej p-256. Ten algorytm jest opisany w [RFC7518].
+-   **ES256** — skróty służące ECDSA SHA-256 i klucze są tworzone z krzywej p-256. Ten algorytm jest opisany w [RFC7518](https://tools.ietf.org/html/rfc7518).
 -   **ES256K** — skróty służące ECDSA SHA-256 i klucze są tworzone z krzywej P-256_K. Ten algorytm oczekuje normalizacji.
--   **ES384** — skróty służące ECDSA dla algorytmu SHA-384 i klucze są tworzone z krzywej p-384. Ten algorytm jest opisany w [RFC7518].
--   **ES512** — skróty służące ECDSA dla SHA-512 i klucze są tworzone z krzywej p-521. Ten algorytm jest opisany w [RFC7518].
+-   **ES384** — skróty służące ECDSA dla algorytmu SHA-384 i klucze są tworzone z krzywej p-384. Ten algorytm jest opisany w [RFC7518](https://tools.ietf.org/html/rfc7518).
+-   **ES512** — skróty służące ECDSA dla SHA-512 i klucze są tworzone z krzywej p-521. Ten algorytm jest opisany w [RFC7518](https://tools.ietf.org/html/rfc7518).
 
 ###  <a name="rsa-algorithms"></a>Algorytmy RSA  
  Następujące identyfikatory algorytm są obsługiwane przy użyciu kluczy RSA i RSA modułu HSM w usłudze Key Vault.  

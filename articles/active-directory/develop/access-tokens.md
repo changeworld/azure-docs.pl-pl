@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/02/2018
+ms.date: 10/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f184c18e97144f7efb30d61ebd024344510f3f5c
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 3a3768e796284895b25eb62d00a58b20ca811540
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078770"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958945"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Tokeny dostępu w usłudze Azure Active Directory
 
@@ -136,7 +136,7 @@ Tożsamości firmy Microsoft mogą uwierzytelniać się na różne sposoby, któ
 | Wartość | Opis |
 |-----|-------------|
 | `pwd` | Uwierzytelnianie hasłem, użytkownika Microsoft hasła lub klucza tajnego klienta aplikacji. |
-| `rsa` | Uwierzytelnianie zależała od dowód klucz RSA, na przykład za pomocą [pp Microsoft Authenticator](https://aka.ms/AA2kvvu). W tym przypadku uwierzytelnianie zostało wykonane przez JWT podpisanych przy użyciu usługi należące do X509 certyfikatu. |
+| `rsa` | Uwierzytelnianie zależała od dowód klucz RSA, na przykład za pomocą [aplikacji Microsoft Authenticator](https://aka.ms/AA2kvvu). W tym przypadku uwierzytelnianie zostało wykonane przez JWT podpisanych przy użyciu usługi należące do X509 certyfikatu. |
 | `otp` | Jednorazowy kod dostępu za pomocą wiadomości e-mail lub wiadomości SMS. |
 | `fed` | Użyto asercję uwierzytelnianie federacyjne (na przykład JWT lub SAML). |
 | `wia` | Zintegrowane uwierzytelnianie systemu Windows |
@@ -179,7 +179,7 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 ```
 
 > [!TIP]
-> Wypróbuj ten adres URL w przeglądarce!
+> Skorzystaj z tej [adresu URL](https://login.microsoftonline.com/common/.well-known/openid-configuration) w przeglądarce!
 
 Ten dokument metadanych:
 
@@ -187,7 +187,7 @@ Ten dokument metadanych:
 * Obejmuje `jwks_uri`, co daje lokalizacji zestawu kluczy publicznych, używany do podpisywania tokenów. Dokument JSON znajdujący się w `jwks_uri` zawiera wszystkie informacje o kluczu publicznym używany w tej chwili określonego czasu. Twoja aplikacja może używać `kid` oświadczenia w nagłówku JWT, aby wybrać, które klucza publicznego, w tym dokumencie został użyty do podpisania dany token. Następnie można wykonywać Weryfikacja podpisu przy użyciu prawidłowy klucz publiczny i wskazany algorytmu.
 
 > [!NOTE]
-> Zwraca punkt końcowy w wersji 1.0, zarówno `x5t` i `kid` oświadczeń. `x5t` Oświadczeń brakuje tokenów w wersji 2.0. Punkt końcowy v2.0 odpowiada za pomocą `kid` oświadczenia. Idąc dalej, firma Microsoft zaleca używanie `kid` oświadczeń można zweryfikować tokenu.
+> Zwraca punkt końcowy w wersji 1.0, zarówno `x5t` i `kid` oświadczeń, natomiast punktu końcowego v2.0 odpowiada za pomocą tylko `kid` oświadczenia. Idąc dalej, firma Microsoft zaleca używanie `kid` oświadczeń można zweryfikować tokenu.
 
 Wykonywanie weryfikacji podpisu wykracza poza zakres tego dokumentu — wiele bibliotek typu open source są dostępne, aby pomóc Ci w tym celu w razie potrzeby.
 
@@ -202,7 +202,7 @@ Logika biznesowa aplikacji określają ten krok, niektóre typowe metody autoryz
 * Sprawdź, czy `tid` dopasowuje dzierżawy, który można wywoływać interfejs API.
 * Użyj `acr` oświadczenia sprawdzić, użytkownik wykonał usługi MFA. Należy pamiętać, że powinno to być wymuszane za pomocą [dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/overview).
 * Jeśli żądanej `roles` lub `groups` oświadczenia w tokenie dostępu, sprawdź, czy użytkownik jest w tej grupie mogą wykonać tę akcję.
-  * Tokeny pobrany przy użyciu niejawnego przepływu, prawdopodobnie należy zbadać [wykres](https://developer.microsoft.com/graph/) dla tych danych, ponieważ jest często zbyt duży, aby zmieścić ją w tokenie. 
+  * Tokeny pobrany przy użyciu niejawnego przepływu, prawdopodobnie należy zbadać [programu Microsoft Graph](https://developer.microsoft.com/graph/) dla tych danych, ponieważ jest często zbyt duży, aby zmieścić ją w tokenie. 
 
 ## <a name="user-and-application-tokens"></a>Tokeny użytkownika i aplikacji
 

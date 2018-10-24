@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 588692ad4c7c95a06d33b67b76bb8feff6b4ed53
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 5f133af5ec077821607bf3e942c8a931808d34fc
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457174"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953591"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Łączenie sieci wirtualnych z różnych modeli wdrażania za pomocą programu PowerShell
 
@@ -34,7 +34,7 @@ W poniższych krokach objaśniono za pomocą ustawień koniecznych do skonfiguro
 
 ### <a name="pre"></a>Wymagania wstępne
 
-* Obie sieci wirtualne zostały już utworzone. Jeśli potrzebujesz utworzyć sieć wirtualną Menedżera zasobów, zobacz [tworzenie sieci wirtualnej](../virtual-network/quick-create-powershell.md#create-a-virtual-network). Aby utworzyć klasyczną sieć wirtualną, zobacz [utworzyć klasyczną sieć wirtualną](https://docs.microsoft.com/en-us/azure/virtual-network/create-virtual-network-classic).
+* Obie sieci wirtualne zostały już utworzone. Jeśli potrzebujesz utworzyć sieć wirtualną Menedżera zasobów, zobacz [tworzenie sieci wirtualnej](../virtual-network/quick-create-powershell.md#create-a-virtual-network). Aby utworzyć klasyczną sieć wirtualną, zobacz [utworzyć klasyczną sieć wirtualną](https://docs.microsoft.com/azure/virtual-network/create-virtual-network-classic).
 * Zakresy adresów dla sieci wirtualnych nie pokrywają się ze sobą, ani nie pokrywa się z żadnym z zakresów dla innych połączeń, które bramy mogą być połączone z.
 * Zainstalowano najnowsze polecenia cmdlet programu PowerShell. Zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview) Aby uzyskać więcej informacji. Upewnij się, że należy zainstalować zarówno Service Management (SM), jak i poleceń cmdlet Menedżera zasobów (RM). 
 

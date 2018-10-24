@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 10/19/18
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 7dff6f7438c3bb9fc09803bbaa58895f89f88d71
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: ddc85cb7c9bd4488295b22e687d199a73d23922c
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649826"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955630"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostowania statycznej witryny internetowej w usłudze Azure Storage
-Konta usługi Azure Storage umożliwiają obsługę zawartości statycznej (HTML, CSS, JavaScript i plików obrazów) bezpośrednio z kontenera magazynu o nazwie *$web*. Korzystając z zalet hosting w usłudze Azure Storage pozwala na używanie architektur bez użycia serwera, w tym [usługi Azure Functions](/azure/azure-functions/functions-overview) i inne usługi PaaS.
+Konta magazynu GPv2 platformy Azure umożliwiają obsługę zawartości statycznej (HTML, CSS, JavaScript i plików obrazów) bezpośrednio z kontenera magazynu o nazwie *$web*. Korzystając z zalet hosting w usłudze Azure Storage pozwala na używanie architektur bez użycia serwera, w tym [usługi Azure Functions](/azure/azure-functions/functions-overview) i inne usługi PaaS.
 
 W przeciwieństwie do hostowania statycznej witryny internetowej, dynamicznych witryn, które są zależne od kodu po stronie serwera są najlepiej hostowane przy użyciu [Azure Web Apps](/azure/app-service/app-service-web-overview).
 
@@ -52,7 +52,7 @@ Wybrane domyślnej nazwy pliku jest używana w katalogu głównym i wszystkich p
 Zapewnienie swoje statycznej witryny sieci Web pliki dostępne za pośrednictwem protokołu HTTPS, zobacz [dostęp do obiektów blob z zastosowaniem domen niestandardowych przy użyciu protokołu HTTPS przy użyciu usługi Azure CDN](storage-https-custom-domain-cdn.md). W ramach tego procesu, musisz *punktu sieci CDN w punkcie końcowym sieci web* w przeciwieństwie do punktu końcowego obiektu blob. Może być konieczne Poczekaj kilka minut, zanim zawartość jest widoczna, zgodnie z konfiguracją sieci CDN nie jest wykonywane natychmiast.
 
 
-## <a name="custom-domain-names"></a>Nazwy domen niestandardowych
+## <a name="custom-domain-names"></a>Niestandardowe nazwy domen
 
 Możesz [Konfigurowanie niestandardowej nazwy domeny dla konta usługi Azure Storage](storage-custom-domain-name.md) udostępnić statycznej witryny internetowej przy użyciu domeny niestandardowej. Dla przyjrzeć się hosting domeny na [platformy Azure, zobacz Hostuj swoją domenę, w usłudze Azure DNS](../../dns/dns-delegate-domain-azure-dns.md).
 
@@ -62,7 +62,7 @@ Podano hostowania statycznej witryny internetowej bez ponoszenia dodatkowych kos
 ## <a name="quickstart"></a>Szybki start
 
 ### <a name="azure-portal"></a>Azure Portal
-Zacznij od otwarcia witryny Azure portal pod https://portal.azure.com i wykonaj następujące czynności:
+Zacznij od otwarcia witryny Azure portal pod https://portal.azure.com i wykonaj następujące czynności na swoim koncie magazynu GPv2:
 
 1. Kliknij pozycję **ustawienia**
 2. Kliknij pozycję **statycznej witryny internetowej**
@@ -71,7 +71,7 @@ Zacznij od otwarcia witryny Azure portal pod https://portal.azure.com i wykonaj 
 
 ![](media/storage-blob-static-website/storage-blob-static-website-portal-config.PNG)
 
-Następnie przekaż zasoby do *$web* kontenera za pomocą witryny Azure Portal lub za pomocą [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) do przekazania całej katalogów. Pamiętaj dołączyć plik, który odpowiada *nazwa dokumentu indeksu* wybranego podczas włączania funkcji.
+Następnie przekaż zasoby do *$web* kontenera w witrynie Azure portal lub za pomocą [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) do przekazania całej katalogów. Pamiętaj dołączyć plik, który odpowiada *nazwa dokumentu indeksu* wybranego podczas włączania funkcji.
 
 Na koniec przejdź do punktu końcowego usługi sieci web do testowania witryny sieci Web.
 
@@ -80,6 +80,11 @@ Zainstaluj rozszerzenie w wersji zapoznawczej magazynu:
 
 ```azurecli-interactive
 az extension add --name storage-preview
+```
+W przypadku wielu subskrypcji należy ustawić do subskrypcji konto magazynu GPv2, którego chcesz włączyć interfejs wiersza polecenia:
+
+```azurecli-interactive
+az account set --subscription <SUBSCRIPTION_ID>
 ```
 Należy włączyć funkcję. Upewnij się zamienić wszystkie wartości symboli zastępczych, razem z nawiasami własnymi wartościami:
 
@@ -92,10 +97,10 @@ Zapytanie adresu URL punktu końcowego sieci web:
 az storage account show -n <ACCOUNT_NAME> -g <RESOURCE_GROUP> --query "primaryEndpoints.web" --output tsv
 ```
 
-Przekazywanie obiektów *$web* kontenera:
+Przekazywanie obiektów *$web* kontenera z katalogu źródłowego:
 
 ```azurecli-interactive
-az storage blob upload-batch -s <SOURCE> -d $web --account-name <ACCOUNT_NAME>
+az storage blob upload-batch -s <SOURCE_PATH> -d $web --account-name <ACCOUNT_NAME>
 ```
 
 ## <a name="deployment"></a>Wdrożenie
@@ -115,7 +120,7 @@ Aby włączyć metryki na stronach statycznej witryny internetowej, kliknij **us
 
 Dane metryk są generowane przez podłączenie do różnych metryk interfejsów API. Portal zawiera tylko składowe interfejsu API, używany w danym przedziale czasu, aby tylko skoncentrowane na elementach członkowskich, które zwracają dane. Aby upewnić się, że jesteś w stanie wybrać niezbędne składowej interfejsu API, pierwszym krokiem jest rozwiń przedział czasu.
 
-Kliknij przycisk przedział czasu, a następnie wybierz **ostatnie 24 godziny** a następnie kliknij przycisk **Zastosuj** w celu zapewnienia, że interfejs użytkownika jest zapewnia dostęp do żądanego interfejsu API.
+Kliknij przycisk przedział czasu, a następnie wybierz **ostatnie 24 godziny** a następnie kliknij przycisk **Zastosuj** 
 
 ![Zakres czasu metryki statycznych witryn internetowych usługi Azure Storage](./media/storage-blob-static-website/storage-blob-static-website-metrics-time-range.png)
 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: ''
-ms.openlocfilehash: 16c908dabd313cd9d64ce5be9b7d0299423a7675
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 38120b2be2ab7789946a4ad2fe688954e6212189
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344689"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49959030"
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Kluczowe funkcje i pojęcia w usłudze Azure Stack
 Jeśli jesteś nowym użytkownikiem usługi Microsoft Azure Stack, te warunki i opisy funkcji może być przydatny.
@@ -154,14 +154,6 @@ RBAC platformy Azure ma trzy podstawowe role, które są stosowane do wszystkich
 
 ## <a name="usage-data"></a>Dane użycia
 Microsoft Azure Stack umożliwia zbieranie informacji o agreguje dane dotyczące użycia we wszystkich dostawców zasobów i przekazuje go do platformy Azure do przetwarzania przez handlu platformy Azure. Można wyświetlić danych użycia zbieranych w usłudze Azure Stack za pośrednictwem interfejsu API REST. Istnieje interfejs API dzierżawcy spójnych z platformą Azure, a także dostawcy i delegować interfejsy API dostawcy można pobrać danych użycia dla wszystkich subskrypcji dzierżawcy. Te dane można zintegrować z zewnętrznego narzędzia lub usługi do rozliczeń i obciążeń zwrotnych. Po przetworzeniu użycia platformy Azure handlu mogą można wyświetlić w portalu rozliczeń systemu Azure.
-
-## <a name="in-development-build-of-azure-stack-development-kit"></a>Kompilacja w rozwoju usługi Azure Stack Development Kit
-Kompilacje w rozwoju umożliwiają wcześni ocenić najnowszą wersję usługi Azure Stack Development Kit. Są one oparte na najnowszej wersji głównej kompilacje przyrostowe. Gdy wersje główne będą w dalszym ciągu można zwolnić co kilka miesięcy, kompilacje w rozwoju zwolni sporadycznie między głównymi wersjami.
-
-Kompilacje w rozwoju zapewnia następujące korzyści:
-- Poprawki błędów
-- Nowe funkcje
-- Inne ulepszenia
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Podstawy administracji](azure-stack-manage-basics.md)

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c23646bca6109d27e57b2f928363e65c83c634eb
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 7985c8e9e26126040d842ded998a953281daa2ae
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031156"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953556"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Samouczek: Dowiedz się, jak uaktualnić aplikację usługi Service Fabric przy użyciu programu Visual Studio
 
@@ -32,11 +32,11 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Ta seria samouczków zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
-> * [Tworzenie siatki sieci szkieletowej usługi aplikacji w programie Visual Studio](service-fabric-mesh-tutorial-create-dotnetcore.md)
-> * [Debugowanie aplikacji usługi Service Fabric siatki w lokalnego klastra projektowego](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
-> * [Wdrażanie usługi Service Fabric siatki aplikacji](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * [Tworzenie aplikacji usługi Service Fabric Mesh w programie Visual Studio](service-fabric-mesh-tutorial-create-dotnetcore.md)
+> * [Debugowanie aplikacji usługi Service Fabric Mesh działającej w lokalnym klastrze projektowym](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * [Wdrażanie aplikacji usługi Service Fabric Mesh](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
 > * Uaktualnienie usługi Service Fabric siatki aplikacji
-> * [Oczyszczanie zasobów usługi Service Fabric siatki](service-fabric-mesh-tutorial-cleanup-resources.md)
+> * [Czyszczenie zasobów usługi Service Fabric Mesh](service-fabric-mesh-tutorial-cleanup-resources.md)
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -44,7 +44,7 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 
 Przed rozpoczęciem tego samouczka:
 
-* Jeśli nie została wdrożona aplikacja to-do, postępuj zgodnie z instrukcjami [publikowania aplikacji sieci web usługi Service Fabric siatki](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md).
+* Jeśli nie została wdrożona aplikacja z listą zadań do wykonania, postępuj zgodnie z instrukcjami zamieszczonymi w artykule [Publikowanie aplikacji internetowej usługi Service Fabric Mesh](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md).
 
 ## <a name="upgrade-a-service-fabric-mesh-service-by-using-visual-studio"></a>Uaktualnienie usługi Service Fabric siatki za pomocą programu Visual Studio
 
@@ -156,8 +156,8 @@ Otwórz przeglądarkę internetową i przejdź do adresu URL, aby wyświetlić w
 
 W tej części samouczka przedstawiono informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
-> * Jak uaktualnić aplikację usługi Service Fabric MES za pomocą programu Visual Studio
+> * Jak uaktualnić aplikację usługi Service Fabric siatki za pomocą programu Visual Studio
 
 Przejdź do następnego samouczka:
 > [!div class="nextstepaction"]
-> [Oczyszczanie zasobów usługi Service Fabric siatki](service-fabric-mesh-tutorial-cleanup-resources.md)
+> [Czyszczenie zasobów usługi Service Fabric Mesh](service-fabric-mesh-tutorial-cleanup-resources.md)

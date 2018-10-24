@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 2f0638b2449bfd582cb68e26d2043b7bc85342b6
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 6f7b812f32eda0c671b1ad1101b13a1290df0482
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125956"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954786"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Uwierzytelnianie użytkowników końcowych za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ W tym artykule zawiera informacje o sposobie tworzenia **natywną aplikację Azu
   
     ![Pobierz domena usługi AAD](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
-* Twoim identyfikatorem dzierżawy platformy Azure. Aby uzyskać instrukcje dotyczące pobierania Identyfikatora dzierżawy, zobacz [uzyskanie Identyfikatora dzierżawy](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
+* Twoim identyfikatorem dzierżawy platformy Azure. Aby uzyskać instrukcje dotyczące pobierania Identyfikatora dzierżawy, zobacz [uzyskanie Identyfikatora dzierżawy](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
 
 ## <a name="end-user-authentication"></a>Uwierzytelnianie użytkowników końcowych
 Ten mechanizm uwierzytelniania jest zalecaną metodą, jeśli chcesz, aby użytkownik końcowy, aby zalogować się do aplikacji za pomocą usługi Azure AD. Będzie uzyskiwać dostęp do zasobów platformy Azure na tym samym poziomie dostępu jako użytkownik końcowy rejestrowania w aplikacji. Użytkownikowi końcowemu musi podawać swoich poświadczeń kolei okresowo dla swojej aplikacji zachować dostęp.
@@ -74,7 +74,7 @@ Aplikacja może bezpośrednio podania poświadczeń użytkownika do usługi Azur
 
 ## <a name="step-1-create-an-active-directory-native-application"></a>Krok 1: Tworzenie natywną aplikację usługi Active Directory
 
-Tworzenie i konfigurowanie natywną aplikację usługi Azure AD do uwierzytelniania użytkowników końcowych przy użyciu Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory. Aby uzyskać instrukcje, zobacz [Utwórz aplikację usługi Azure AD](../azure-resource-manager/resource-group-create-service-principal-portal.md).
+Tworzenie i konfigurowanie natywną aplikację usługi Azure AD do uwierzytelniania użytkowników końcowych przy użyciu Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory. Aby uzyskać instrukcje, zobacz [Utwórz aplikację usługi Azure AD](../active-directory/develop/howto-create-service-principal-portal.md).
 
 Podczas postępując zgodnie z instrukcjami w linku, upewnij się, możesz wybrać **natywnych** dla typu aplikacji, jak pokazano na poniższym zrzucie ekranu:
 
@@ -82,7 +82,7 @@ Podczas postępując zgodnie z instrukcjami w linku, upewnij się, możesz wybra
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>Krok 2: Uzyskiwanie Identyfikatora aplikacji i identyfikator URI przekierowania
 
-Zobacz [uzyskiwanie Identyfikatora aplikacji](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key) można pobrać identyfikator aplikacji.
+Zobacz [uzyskiwanie Identyfikatora aplikacji](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key) można pobrać identyfikator aplikacji.
 
 Aby pobrać identyfikator URI przekierowania, wykonaj następujące czynności.
 

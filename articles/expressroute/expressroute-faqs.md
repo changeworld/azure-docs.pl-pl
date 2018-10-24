@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: 101dec93713983e5f2082a59103288fcda346740
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: 6b4cce641556a290111db530c0089e4da0a351c8
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419308"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958432"
 ---
 # <a name="expressroute-faq"></a>Usługa ExpressRoute — często zadawane pytania
 
@@ -246,7 +246,7 @@ Możesz zaktualizować przepustowość obwodu usługi ExpressRoute za pomocą in
 ExpressRoute premium jest kolekcją następujące funkcje:
 
 * Zwiększono routingu limit tabeli z tras 4000 do 10 000 tras do prywatnej komunikacji równorzędnej.
-* Zwiększenie liczby sieci wirtualnych, które mogą być połączone z obwodem usługi ExpressRoute (wartość domyślna to 10). Aby uzyskać więcej informacji, zobacz [limity usługi ExpressRoute](#limits) tabeli.
+* Zwiększenie liczby połączeń sieci wirtualne i usługi ExpressRoute zasięgu globalnym, które można włączyć dla obwodu usługi ExpressRoute (wartość domyślna to 10). Aby uzyskać więcej informacji, zobacz [limity usługi ExpressRoute](#limits) tabeli.
 * Łączność z usługi Office 365 i Dynamics 365.
 * Globalna łączność między za pośrednictwem sieci podstawowej firmy Microsoft. Teraz można połączyć sieć wirtualną w jednym regionie geopolitycznym obwodu usługi ExpressRoute w innym regionie.<br>
     **Przykłady:**
@@ -255,9 +255,9 @@ ExpressRoute premium jest kolekcją następujące funkcje:
     *  W komunikacji równorzędnej firmy Microsoft prefiksów z innych regionów geopolitycznych są anonsowane w taki sposób, że można nawiązać połączenie, na przykład SQL Azure w regionie Europa Zachodnia z obwodem w Dolinie Krzemowej.
 
 
-### <a name="limits"></a>Jak wiele sieci wirtualnych można połączyć z obwodem usługi ExpressRoute włączenie ExpressRoute w wersji premium?
+### <a name="limits"></a>Liczba połączeń sieci wirtualne i usługi ExpressRoute zasięgu globalnym można włączyć na obwód usługi ExpressRoute włączenie ExpressRoute w wersji premium?
 
-W poniższej tabeli przedstawiono limity usługi ExpressRoute i liczba sieci wirtualnych na obwód usługi ExpressRoute:
+W poniższej tabeli przedstawiono limity usługi ExpressRoute i połączeń sieci wirtualne i usługi ExpressRoute zasięgu globalnym na obwód usługi ExpressRoute:
 
 [!INCLUDE [ExpressRoute limits](../../includes/expressroute-limits.md)]
 

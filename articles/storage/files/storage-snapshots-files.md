@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 03280f87b4b49b3e42091c6b1572a7f050afb336
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 7f03af0fc338299da9b989d46e7bbfb83f3babeb
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983168"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945709"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Omówienie migawek udziału plików platformy Azure 
 Usługa Azure Files oferuje możliwość robienia migawek udziału udziałów plików. Udostępnianie migawki przechwytywania stanu udziału w danym momencie. W tym artykule opisano możliwości, jakie zapewniają migawek udziałów i jak można było korzystać z nich w Twoim przypadku użycia niestandardowego.
@@ -85,8 +85,7 @@ Migawki udziałów zapewniają tylko ochrony na poziomie pliku. Migawki udziału
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Praca z migawek udziału:
-    - [Portal](storage-how-to-use-files-portal.md#create-and-modify-share-snapshots)
-    - [Program PowerShell](storage-how-to-use-files-powershell.md#create-and-modify-share-snapshots)
-    - [Interfejs wiersza polecenia](storage-how-to-use-files-cli.md#create-and-modify-share-snapshots)
+    - [Program PowerShell](storage-how-to-use-files-powershell.md)
+    - [Interfejs wiersza polecenia](storage-how-to-use-files-cli.md)
     - [Windows](storage-how-to-use-files-windows.md#accessing-share-snapshots-from-windows)
 - [Udostępnianie migawki — często zadawane pytania](storage-files-faq.md#share-snapshots)

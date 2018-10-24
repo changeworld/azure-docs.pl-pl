@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: ''
-ms.openlocfilehash: cb803450f7765ae62292ff3afb7f32209b437f78
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 235eda231dfb0f936bf55c7c8d93a8f709fdf9bc
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978933"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954858"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>Wysyłanie metryk systemu operacyjnego gościa do magazynu danych usługi Azure Monitor na maszynie wirtualnej Windows (wersja klasyczna)
 
@@ -41,7 +41,7 @@ Z procedurą opisaną w tym artykule działa tylko w klasycznych maszyn wirtualn
 
 ## <a name="create-a-service-principal"></a>Tworzenie jednostki usługi
 
-Tworzenie jednostki usługi w dzierżawie usługi Azure Active Directory, korzystając z instrukcji w [utworzyć nazwę główną usługi](../azure-resource-manager/resource-group-create-service-principal-portal.md). Należy pamiętać, że podczas przechodzenia przez ten proces: 
+Tworzenie jednostki usługi w dzierżawie usługi Azure Active Directory, korzystając z instrukcji w [utworzyć nazwę główną usługi](../active-directory/develop/howto-create-service-principal-portal.md). Należy pamiętać, że podczas przechodzenia przez ten proces: 
 - Utwórz nowy wpis tajny klienta dla tej aplikacji  
 - Zapisz klucz i identyfikator klienta do użycia w kolejnych krokach.
 

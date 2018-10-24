@@ -5,27 +5,26 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
-ms.assetid: 449ae53e-b951-401a-b2c9-17fee2f491f1
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2018
+ms.date: 10/22/2019
 ms.author: mabrigg
-ms.openlocfilehash: 8f384a79811c9a9b104acb98c8f6b6e162946ab8
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.reviewer: fiseraci
+ms.openlocfilehash: 76f3db3631e1d66413bdce8d3f2379c2735a2eaf
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42060336"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945607"
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>Monitorowanie aktualizacji w usłudze Azure Stack przy użyciu uprzywilejowanych punktu końcowego
 
 *Dotyczy: zintegrowane systemy usługi Azure Stack*
 
-Uprzywilejowanych punktu końcowego można użyć, aby monitorować postęp przebiegu aktualizacji usługi Azure Stack, a do wznowienia aktualizacji nie powiodło się, uruchom w ostatnim kroku pomyślnie powinien usługi Azure Stack portal staną się niedostępne.  Za pomocą portalu usługi Azure Stack jest zalecaną metodą do zarządzania aktualizacjami w usłudze Azure Stack.
+Możesz użyć [uprzywilejowanych punktu końcowego](azure-stack-privileged-endpoint.md) do monitorowania postępu w usłudze Azure Stack przebieg aktualizacji, a do wznowienia aktualizacji nie powiodło się, uruchom w ostatnim kroku pomyślnie powinien portalu usługi Azure Stack staną się niedostępne.  Za pomocą portalu usługi Azure Stack jest zalecaną metodą do zarządzania aktualizacjami w usłudze Azure Stack.
 
 Następujące nowe polecenia cmdlet programu PowerShell do zarządzania aktualizacjami są zawarte w aktualizacji 1710 systemów zintegrowanych w usłudze Azure Stack.
 
@@ -168,7 +167,7 @@ Invoke-Command -Session $pepSession -ScriptBlock { Resume-AzureStackUpdate }
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-Uprzywilejowane końcowy jest dostępny na wszystkich maszynach wirtualnych ERCS w środowisku usługi Azure Stack. Ponieważ nie nawiązujesz połączenie z punktu końcowego o wysokiej dostępności, mogą występować sporadycznie przerw w działaniu, ostrzeżenia lub komunikaty o błędach. Te komunikaty może wskazywać, że sesja została rozłączona lub wystąpił błąd podczas komunikacji z usługą ONZ. To zachowanie jest oczekiwane. Można ponowić próbę wykonania operacji za kilka minut lub utworzyć nową sesję uprzywilejowanych punktu końcowego na jednym z innych maszyn wirtualnych ERCS. 
+Uprzywilejowane końcowy jest dostępny na wszystkich maszynach wirtualnych ERCS w środowisku usługi Azure Stack. Ponieważ nie nawiązujesz połączenie z punktu końcowego o wysokiej dostępności, mogą występować sporadycznie przerw w działaniu, ostrzeżenia lub komunikaty o błędach. Te komunikaty może wskazywać, że sesja została rozłączona lub wystąpił błąd podczas komunikacji z usługą ONZ. Takie zachowanie jest oczekiwane. Można ponowić próbę wykonania operacji za kilka minut lub utworzyć nową sesję uprzywilejowanych punktu końcowego na jednym z innych maszyn wirtualnych ERCS. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

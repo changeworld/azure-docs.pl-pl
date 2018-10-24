@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 65672d5dc42ae1e584a36bcc72c16911f6c1f6e2
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 206dddd70ae9063782b7dc8dfaf1214f53d5fac8
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122829"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955712"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Uwierzytelnianie użytkowników końcowych za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu zestawu .NET SDK
 > [!div class="op_single_selector"]
@@ -82,7 +82,7 @@ W tym artykule dowiesz się o tym, jak wykonać uwierzytelnianie użytkowników 
 ## <a name="end-user-authentication"></a>Uwierzytelnianie użytkowników końcowych
 Dodaj następujący fragment kodu w aplikacji klienckiej .NET. Zastąp wartości zastępcze wartościami pobranymi z natywną aplikację Azure AD (wymienione jako warunek wstępny). Ten fragment kodu umożliwia uwierzytelnianie aplikacji **interaktywnie** z Data Lake Storage Gen1, co oznacza, że zostanie wyświetlony monit o wprowadzenie poświadczeń platformy Azure.
 
-W celu ułatwienia poniższy fragment kodu używa wartości domyślnych Identyfikatora klienta oraz identyfikatora URI, które są prawidłowe dla każdej subskrypcji platformy Azure przekierowania. W poniższym fragmencie kodu wystarczy podać wartość identyfikatora dzierżawy. Możesz pobrać identyfikator dzierżawy wykonując instrukcje podane w [uzyskanie Identyfikatora dzierżawy](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
+W celu ułatwienia poniższy fragment kodu używa wartości domyślnych Identyfikatora klienta oraz identyfikatora URI, które są prawidłowe dla każdej subskrypcji platformy Azure przekierowania. W poniższym fragmencie kodu wystarczy podać wartość identyfikatora dzierżawy. Możesz pobrać identyfikator dzierżawy wykonując instrukcje podane w [uzyskanie Identyfikatora dzierżawy](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
     
 - Zastąp funkcji Main() następującym kodem:
 

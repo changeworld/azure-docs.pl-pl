@@ -16,12 +16,12 @@ ms.workload: Identity
 ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f85726f7058c783b6e369126532e40ceecc3c846
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: bf5384333504df023e98650934c77192f23f9f71
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313558"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945998"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Usługi Azure AD Connect: Zagadnienia dotyczące projektowania
 Ten dokument ma na celu opisania obszary, które należy uważać za pośrednictwem podczas projektu implementacji programu Azure AD Connect. Ten dokument jest uzyskać szczegółowe informacje dotyczące określonych obszarów i te pojęcia krótko opisano w innych dokumentów.
@@ -102,7 +102,7 @@ Instalując program Azure AD Connect z trybem Express, Kreator Azure AD Connect 
 * Po pierwsze Kreator Azure AD Connect wysyła zapytanie do dzierżawy usługi Azure AD do pobrania atrybutu usługi AD, używane jako atrybut sourceAnchor w poprzedniej instalacji program Azure AD Connect (jeśli istnieje). Jeśli ta informacja jest dostępna, program Azure AD Connect używa tego samego atrybutu usługi AD.
 
   >[!NOTE]
-  > Tylko nowsze wersje programu Azure AD Connect (1.1.524.0 oraz po) służy do przechowywania informacji w dzierżawie usługi Azure AD o atrybut sourceAnchor jest używany podczas instalacji. Nie są starsze wersje programu Azure AD Connect.
+  > Tylko nowsze wersje programu Azure AD Connect (1.1.524.0 oraz po) używany do przechowywania informacji w dzierżawie usługi Azure AD o atrybut sourceAnchor, podczas instalacji. Nie są starsze wersje programu Azure AD Connect.
 
 * Jeśli informacje o atrybut sourceAnchor jest niedostępna, Kreator sprawdza stan atrybutu ms-DS-ConsistencyGuid w usłudze Active Directory w środowisku lokalnym. Jeśli ten atrybut nie jest skonfigurowany dla dowolnego obiektu w katalogu, kreator używa ms-DS-ConsistencyGuid jako atrybutu sourceAnchor. Jeśli ten atrybut jest skonfigurowana na jeden lub więcej obiektów w katalogu, Kreator stwierdza, ten atrybut jest używany przez inne aplikacje, a nie nadaje się jako atrybut sourceAnchor...
 

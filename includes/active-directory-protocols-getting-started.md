@@ -13,22 +13,22 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/18/2018
 ms.author: priyamo
-ms.openlocfilehash: 5a4f08718175dd7ef369d801807e6c8e1ff28fd9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 44db736d5312b6850bb4fd8f47af5cd6b22535a7
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39485844"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49960287"
 ---
 ## <a name="register-your-application-with-your-ad-tenant"></a>Rejestrowanie aplikacji w dzierżawie usługi AD
 Najpierw musisz zarejestrować aplikację w dzierżawie usługi Azure Active Directory (Azure AD). Spowoduje to nadanie aplikacji identyfikatora oraz umożliwi jej otrzymywanie tokenów.
 
 * Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 * Wybierz dzierżawę usługi Azure AD, klikając swoje konto w prawym górnym rogu strony, a następnie klikając **Przełącz katalog** nawigacji, a następnie wybierz odpowiednią dzierżawy. 
-  * Pomiń ten krok, jeśli masz tylko jedną dzierżawą usługi Azure AD w ramach konta usługi lub został już wybrany odpowiedni dzierżawy usługi Azure AD.
+  * Pomiń ten krok, jeśli masz tylko jedną dzierżawę usługi Azure AD w ramach konta usługi lub jeśli wybrano już odpowiednią dzierżawę usługi Azure AD.
 * W okienku nawigacji po lewej stronie kliknij pozycję **Azure Active Directory**.
 * Kliknij pozycję **rejestracje aplikacji** i kliknij pozycję **rejestrowanie nowej aplikacji**.
-* Postępuj zgodnie z monitami i utwórz nową aplikację. Na potrzeby tego samouczka nie ma znaczenia, czy jest to aplikacja internetowa, czy aplikacja natywna, ale jeśli chcesz zapoznać się z konkretnymi przykładami dla aplikacji internetowych lub aplikacji natywnych, zobacz nasze [przewodniki szybkiego startu](../articles/active-directory/develop/azure-ad-developers-guide.md).
+* Postępuj zgodnie z monitami i utwórz nową aplikację. Na potrzeby tego samouczka nie ma znaczenia, czy jest to aplikacja internetowa, czy aplikacja natywna, ale jeśli chcesz zapoznać się z konkretnymi przykładami dla aplikacji internetowych lub aplikacji natywnych, zobacz nasze [przewodniki szybkiego startu](../articles/active-directory/develop/v1-overview.md).
   * W przypadku aplikacji sieci Web podaj **adres URL logowania**, czyli podstawowy adres URL aplikacji, w którym użytkownicy mogą się logować, np `http://localhost:12345`.
 <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->
   * Dla aplikacji natywnych podaj **identyfikator URI przekierowania**, którego usługa Azure AD będzie używać do zwracania odpowiedzi tokenu. Wprowadź wartość specyficzną dla Twojej aplikacji, np. `http://MyFirstAADApp`

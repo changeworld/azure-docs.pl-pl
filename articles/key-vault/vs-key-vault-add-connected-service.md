@@ -11,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: 9cf49ae97da3bf67300bdc222c86bb712aeaed37
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: c90ef26c0170db67b1d422701b6969ca3f9c9e38
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465796"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958520"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Dodawanie usługi Key Vault do aplikacji sieci web za pomocą programu Visual Studio podłączone usługi
 
@@ -27,19 +27,19 @@ Aby uzyskać więcej informacji na temat zmian dzięki usługom połączone w pr
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - **Subskrypcja platformy Azure**. Jeśli jej nie masz, możesz zarejestrować się w celu [utworzenia bezpłatnego konta](https://azure.microsoft.com/pricing/free-trial/).
-- **Visual Studio 2017 w wersji 15.7** z **programowania dla sieci Web** zainstalowanym obciążeniem. [Pobierz teraz](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- Program **Visual Studio 2017 w wersji 15.7** z zainstalowanym pakietem roboczym **Tworzenie aplikacji internetowych**. [Pobierz go teraz](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 - ASP.NET (nie-rdzeniowe) wymaga platformy .NET Framework 4.7.1 narzędzi deweloperskich, które nie są instalowane domyślnie. Na ich instalację, uruchom Instalatora programu Visual Studio, wybierz polecenie **Modyfikuj**, a następnie wybierz **poszczególne składniki**, następnie po prawej stronie, rozwiń węzeł **ASP.NET i tworzenie aplikacji internetowych**i wybierz polecenie **narzędzi programistycznych platformy .NET Framework 4.7.1**.
 - ASP.NET 4.7.1 lub Otwórz projekt sieci web platformy ASP.NET Core 2.0.
 
 ## <a name="add-key-vault-support-to-your-project"></a>Dodanie obsługi usługi Key Vault do projektu
 
-1. W **Eksploratora rozwiązań**, wybierz **Dodaj** > **podłączoną usługę**.
-   Na stronie usługi połączonej pojawia się z usługami, które można dodać do projektu.
+1. W **Eksploratorze rozwiązań** wybierz pozycję **Dodaj** > **Usługa połączona**.
+   Zostanie wyświetlona strona Usługa połączona zawierająca usługi, które możesz dodać do projektu.
 1. W menu dostępnych usług wybierz **zabezpieczyć wpisy tajne przy użyciu usługi Azure Key Vault**.
 
    ![Wybierz pozycję "Bezpieczne wpisów tajnych za pomocą usługi Azure Key Vault"](media/vs-key-vault-add-connected-service/KeyVaultConnectedService1.PNG)
 
-   Jeśli po zalogowaniu się do programu Visual Studio i subskrypcji platformy Azure skojarzony z Twoim kontem, zostanie wyświetlona strona, która za pomocą listy rozwijanej z subskrypcjami. Upewnij się, że po zarejestrowaniu się w programie Visual Studio i że to konto po zarejestrowaniu się przy użyciu tego samego konta, której użyjesz dla Twojej subskrypcji platformy Azure.
+   Jeśli logowanie do programu Visual Studio zostało już wykonane i masz subskrypcję platformy Azure skojarzoną z kontem, zostanie wyświetlona strona z listą rozwijaną zawierającą Twoje subskrypcje. Upewnij się, że po zarejestrowaniu się w programie Visual Studio i że to konto po zarejestrowaniu się przy użyciu tego samego konta, której użyjesz dla Twojej subskrypcji platformy Azure.
 
 1. Wybierz subskrypcję, której chcesz użyć, a następnie wybierz nowy lub istniejący magazyn kluczy, lub wybierz link edycji, aby zmodyfikować nazwy wygenerowanej automatycznie.
 
@@ -138,11 +138,33 @@ Dostęp do wpisów tajnych:
       <h3>@ViewBag.Secret2</h3>
    ```
 
-Gratulacje, teraz potwierdzeniu, że Twoja aplikacja sieci web umożliwia usługi Key Vault dostęp do danych poufnych w zabezpieczonym.
+1. Uruchom aplikację lokalnie, aby sprawdzić, czy możesz odczytać wartość wpisu tajnego, który został wprowadzony w portalu Azure, a nie wartości z pliku konfiguracji.
+
+Następnie Opublikuj aplikację na platformie Azure.
+
+## <a name="publish-to-azure-app-service"></a>Publikowanie w usłudze Azure App Service
+
+1. Kliknij prawym przyciskiem myszy węzeł projektu i wybierz polecenie **Publikuj**. Zostanie wyświetlony ekran informujący, że **wybierz miejsce docelowe publikowania**. Po lewej stronie, wybierz **usługi App Service**, a następnie **Utwórz nowy**.
+
+   ![Publikowanie w usłudze App Service](media/vs-key-vault-add-connected-service/AppServicePublish1.PNG)
+
+1. Na **Tworzenie usługi App Service** ekranu, upewnij się, że są takie same te, które utworzono magazyn kluczy w subskrypcji i grupy zasobów i wybierz **Utwórz**.
+
+   ![Tworzenie usługi App Service](media/vs-key-vault-add-connected-service/AppServicePublish2.PNG)
+
+1. Po utworzeniu aplikacji sieci web **Publikuj** pojawi się ekran. Należy pamiętać, adres URL Twojej opublikowanej aplikacji sieci web, hostowanych na platformie Azure. Jeśli widzisz **Brak** obok **usługi Key Vault**, nadal jest konieczne nakazać usłudze App Service, jakie usługi Key Vault, aby nawiązać połączenie. Wybierz **Dodaj usługi Key Vault** łącze, a następnie wybierz utworzoną w usłudze Key Vault.
+
+   ![Dodaj usługę Key Vault](media/vs-key-vault-add-connected-service/AppServicePublish3.PNG)
+
+   Jeśli widzisz **zarządzania usługi Key Vault**, można kliknąć, aby wyświetlić bieżące ustawienia z uprawnieniami do edycji lub wprowadzanie zmian do wpisów tajnych w witrynie Azure Portal.
+
+1. Teraz wybierz łącze adres URL witryny, aby znaleźć aplikację sieci web w przeglądarce. Sprawdź, czy widzisz poprawną wartość z usługi Key Vault.
+
+Gratulacje, potwierdzenia, że Twoja aplikacja sieci web umożliwia usługi Key Vault dostęp do danych poufnych bezpiecznie przechowywane po uruchomieniu na platformie Azure.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie są już potrzebne, Usuń grupę zasobów. Spowoduje to usunięcie usługi Key Vault i pokrewne zasoby. Aby usunąć grupę zasobów za pośrednictwem portalu:
+Gdy grupa zasobów nie jest już potrzebna, usuń ją. Spowoduje to usunięcie usługi Key Vault i pokrewne zasoby. Aby usunąć grupę zasobów za pośrednictwem portalu:
 
 1. Wprowadź nazwę grupy zasobów w polu wyszukiwania w górnej części portalu. Gdy w wynikach wyszukiwania zobaczysz grupę zasobów używaną w tym przewodniku Szybki start, wybierz ją.
 2. Wybierz pozycję **Usuń grupę zasobów**.

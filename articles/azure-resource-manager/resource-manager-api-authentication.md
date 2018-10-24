@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: b841a1104a0cc1e74d9ab1f16ef39d3892ba7d55
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 69127702a7d8e7027e78a8e04a4e8e1bc3e36b65
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996693"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956344"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Interfejs API uwierzytelniania Użyj usługi Resource Manager do dostępu do subskrypcji
 ## <a name="introduction"></a>Wprowadzenie
@@ -94,7 +94,7 @@ Wyniki obejmują identyfikator aplikacji, które są wymagane podczas uwierzytel
 ### <a name="optional-configuration---certificate-credential"></a>Konfiguracja opcjonalna - poświadczenie certyfikatu
 Usługa Azure AD obsługuje również poświadczeń certyfikatu dla aplikacji: Utworzenie certyfikatu z podpisem własnym, zachowaj klucz prywatny i Dodaj klucz publiczny do rejestracji aplikacji usługi Azure AD. Do uwierzytelniania Twoja aplikacja przesyła małych ładunku do usługi Azure AD podpisany przy użyciu klucza prywatnego, a usługa Azure AD sprawdza podpis przy użyciu klucza publicznego, który został zarejestrowany.
 
-Aby uzyskać informacje dotyczące tworzenia aplikacji usługi AD za pomocą certyfikatu, zobacz [użyciu programu Azure PowerShell utworzyć nazwę główną usługi dostępu do zasobów](resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority) lub [interfejsu wiersza polecenia użyj Azure, aby utworzyć jednostkę usługi, aby uzyskiwać dostęp do zasobów](resource-group-authenticate-service-principal-cli.md) .
+Aby uzyskać informacje dotyczące tworzenia aplikacji usługi AD za pomocą certyfikatu, zobacz [użyciu programu Azure PowerShell utworzyć nazwę główną usługi dostępu do zasobów](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority) lub [interfejsu wiersza polecenia użyj Azure, aby utworzyć jednostkę usługi, aby uzyskiwać dostęp do zasobów](resource-group-authenticate-service-principal-cli.md) .
 
 ## <a name="get-tenant-id-from-subscription-id"></a>Pobieranie Identyfikatora dzierżawy z subskrypcji o identyfikatorze
 Do żądania tokenu, który może służyć do wywołania usługi Resource Manager, aplikacja musi wiedzieć, identyfikator dzierżawy w dzierżawie usługi Azure AD, który jest hostem subskrypcji platformy Azure. Najbardziej prawdopodobne, że użytkownicy wiedzą, swój identyfikator subskrypcji, ale może nie znają ich dzierżawy identyfikatorów usługi Azure Active Directory. Aby uzyskać identyfikator dzierżawy użytkownika, należy poprosić użytkownika dla identyfikatora subskrypcji. Podaj tę subskrypcję IDENTYFIKATORA podczas wysyłania żądania o subskrypcji:
@@ -106,7 +106,7 @@ Do żądania tokenu, który może służyć do wywołania usługi Resource Manag
 ## <a name="get-user--app-access-token"></a>Pobierz użytkownika i token dostępu aplikacji
 Aplikacja przekierowuje użytkownika do usługi Azure AD przy użyciu protokołu OAuth 2.0 autoryzować żądania — uwierzytelnienia poświadczeń użytkownika i uzyskanie kodu autoryzacji. Aplikacja używa kodu autoryzacji do uzyskania tokenu dostępu dla usługi Resource Manager. [ConnectSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/Controllers/HomeController.cs#L42) metoda tworzy żądanie autoryzacji.
 
-W tym artykule przedstawiono żądań interfejsu API REST w celu uwierzytelnienia użytkownika. Umożliwia także biblioteki pomocnika do uwierzytelniania w kodzie. Aby uzyskać więcej informacji na temat tych bibliotek, zobacz [bibliotek uwierzytelniania usługi Azure Active Directory](../active-directory/active-directory-authentication-libraries.md). Aby uzyskać wskazówki dotyczące integrowania zarządzania tożsamością w aplikacji, zobacz [przewodnik dewelopera usługi Azure Active Directory](../active-directory/develop/azure-ad-developers-guide.md).
+W tym artykule przedstawiono żądań interfejsu API REST w celu uwierzytelnienia użytkownika. Umożliwia także biblioteki pomocnika do uwierzytelniania w kodzie. Aby uzyskać więcej informacji na temat tych bibliotek, zobacz [bibliotek uwierzytelniania usługi Azure Active Directory](../active-directory/active-directory-authentication-libraries.md). Aby uzyskać wskazówki dotyczące integrowania zarządzania tożsamością w aplikacji, zobacz [przewodnik dewelopera usługi Azure Active Directory](../active-directory/develop/v1-overview.md).
 
 ### <a name="auth-request-oauth-20"></a>Żądania uwierzytelniania (OAuth 2.0)
 Wykonaj Open ID Connect/OAuth 2.0 autoryzować żądania do punktu końcowego autoryzacji usługi Azure AD:

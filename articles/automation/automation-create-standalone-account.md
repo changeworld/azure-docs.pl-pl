@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 581e9d052738b8e1976a766ea6e3525ecf76d741
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: dc369f5bc3d80a476e45d46cfe25541216484b1c
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426434"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958809"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Tworzenie autonomicznego konta usługi Azure Automation
 
@@ -37,7 +37,7 @@ Z tych kont jest utworzony można szybko rozpocząć tworzenie i wdrażanie elem
 Aby utworzyć lub zaktualizować konto usługi Automation i wykonać zadania opisane w tym artykule, musi mieć następujące uprawnienia i uprawnienia:
 
 * Aby utworzyć konto usługi Automation, Twoje konto użytkownika usługi Azure AD należy dodać do roli z uprawnieniami odpowiadającymi roli właściciela dla **firmy Microsoft. Automatyzacja** zasobów. Aby uzyskać więcej informacji, zobacz [opartej na rolach kontrola dostępu w usłudze Azure Automation](automation-role-based-access-control.md).
-* W witrynie Azure portal w obszarze **usługi Azure Active Directory** > **ZARZĄDZAJ** > **rejestracje aplikacji**, jeśli **rejestracje aplikacji**  ustawiono **tak**, użytkownicy niebędący administratorami w Twojej dzierżawie usługi Azure AD mogą [rejestrować aplikacje usługi Active Directory](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions). Jeśli **rejestracje aplikacji** ustawiono **nie**, użytkownik, który wykonuje tę akcję musi być administratorem globalnym w usłudze Azure AD.
+* W witrynie Azure portal w obszarze **usługi Azure Active Directory** > **ZARZĄDZAJ** > **rejestracje aplikacji**, jeśli **rejestracje aplikacji**  ustawiono **tak**, użytkownicy niebędący administratorami w Twojej dzierżawie usługi Azure AD mogą [rejestrować aplikacje usługi Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). Jeśli **rejestracje aplikacji** ustawiono **nie**, użytkownik, który wykonuje tę akcję musi być administratorem globalnym w usłudze Azure AD.
 
 Jeśli nie jesteś członkiem wystąpienia usługi Active Directory subskrypcji przed dodaniem do roli administratora globalnego/współadministrator subskrypcji, są dodawane do usługi Active Directory jako gościa. W tym scenariuszu ten komunikat jest wyświetlany na **Dodawanie konta usługi Automation** strony: "Nie masz uprawnień do utworzenia."
 

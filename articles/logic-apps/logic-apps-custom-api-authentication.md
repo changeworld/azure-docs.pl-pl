@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: b329fb1416d28b0732e7b9ea4612f5bac8580b3a
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 62f71f29f813cd30c7d8e3c7f37f41677cf07364
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43132908"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956378"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Bezpieczne wywołania niestandardowych interfejsów API usługi Azure Logic Apps
 
@@ -104,7 +104,7 @@ Można wykonać tego zadania za pomocą usługi Azure Resource Manager przy uży
 
 4. Upewnij się skopiować **identyfikator dzierżawy** (identyfikator GUID dla dzierżawy usługi Azure AD), **identyfikator aplikacji**oraz hasło, których używasz.
 
-Aby uzyskać więcej informacji, Dowiedz się, jak [utworzyć nazwę główną usługi za pomocą programu PowerShell, dostęp do zasobów](../azure-resource-manager/resource-group-authenticate-service-principal.md).
+Aby uzyskać więcej informacji, Dowiedz się, jak [utworzyć nazwę główną usługi za pomocą programu PowerShell, dostęp do zasobów](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
 #### <a name="part-2-create-an-azure-ad-application-identity-for-your-web-app-or-api-app"></a>Część 2: Utwórz tożsamość aplikacji usługi Azure AD dla aplikacji sieci web lub aplikacji interfejsu API
 

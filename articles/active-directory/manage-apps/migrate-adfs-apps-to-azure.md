@@ -1,6 +1,6 @@
 ---
-title: Migracja lokalnych aplikacji usług AD FS na platformę Azure | Microsoft Docs
-description: Ten artykuł ma ułatwić organizacjom zrozumienie sposobu przeprowadzania migracji aplikacji lokalnych do usługi Azure AD, ze szczególnym uwzględnieniem federacyjnych aplikacji SaaS.
+title: Przenieś aplikacje z usług AD FS do usługi Azure AD. | Microsoft Docs
+description: Ten artykuł ma ułatwić organizacjom zrozumienie sposobu przenoszenia aplikacji do usługi Azure AD, ze szczególnym uwzględnieniem federacyjnych aplikacji SaaS.
 services: active-directory
 author: barbkess
 manager: mtillman
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: fa19c932a18102107068303e1474abd992df3161
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: b799a3947770b44752b599dbb2c47cbf1cfbcda2
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48903032"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49959064"
 ---
-# <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>Migracja lokalnych aplikacji usług AD FS na platformę Azure 
+# <a name="move-applications-from-ad-fs-to-azure-ad"></a>Przenieś aplikacje z usług AD FS do usługi Azure AD 
 
-Ten artykuł ułatwia zapoznanie się ze sposobem przeprowadzania migracji aplikacji lokalnych do usługi Azure Active Directory (Azure AD). W szczególności koncentruje się na federacyjnych aplikacjach SaaS. 
+Ten artykuł pomoże Ci zrozumieć, jak przenieść aplikacje z usług AD FS do usługi Azure Active Directory (Azure AD). W szczególności koncentruje się na federacyjnych aplikacjach SaaS. 
 
 Ten artykuł nie zawiera wskazówek krok po kroku. Podano w nim ogólne wskazówki, które pomogą pomyślnie przeprowadzić migrację dzięki zrozumieniu sposobu przekładania konfiguracji lokalnych na usługę Azure AD. Obejmuje on również typowe scenariusze.
 
@@ -31,7 +31,7 @@ Jeśli masz katalog lokalny, który zawiera konta użytkownika, prawdopodobnie m
 
 I jeśli Twoja firma działa tak jak większość organizacji, prawdopodobnie jesteś właśnie w trakcie implementowania tożsamości i aplikacji w chmurze. Być może pracujesz z usługą Office 365 i programem Azure AD Connect. Możliwe, że dla niektórych kluczowych obciążeń skonfigurowano oparte na chmurze aplikacje SaaS, ale nie dla wszystkich.  
 
-Wiele organizacji często ma — oprócz aplikacji opartych na usługach Office 365 i Azure AD — aplikacje SaaS lub niestandardowe aplikacje biznesowe sfederowane bezpośrednio z lokalną usługą logowania, taką jak Active Directory Federation Service (AD FS). W tym przewodniku migracji opisano przyczyny i sposób przeprowadzania migracji aplikacji lokalnych do usługi Azure AD.
+Wiele organizacji często ma — oprócz aplikacji opartych na usługach Office 365 i Azure AD — aplikacje SaaS lub niestandardowe aplikacje biznesowe sfederowane bezpośrednio z lokalną usługą logowania, taką jak Active Directory Federation Service (AD FS). Ten przewodnik opisuje dlaczego i jak przenieść swoje aplikacje do usługi Azure AD.
 
 >[!NOTE]
 >Ten przewodnik zawiera szczegółowe informacje dotyczące konfiguracji i migracji aplikacji SaaS oraz ogólne informacje o niestandardowych aplikacjach biznesowych. W przyszłości planujemy opublikowanie bardziej szczegółowych wskazówek dotyczących niestandardowych aplikacji biznesowych.
@@ -40,9 +40,9 @@ Wiele organizacji często ma — oprócz aplikacji opartych na usługach Office 
 
 ![Aplikacje sfederowane przy użyciu usługi Azure AD](media/migrate-adfs-apps-to-azure/migrate2.png)
 
-## <a name="reasons-for-migrating-apps-to-azure-ad"></a>Przyczyny migracji aplikacji do usługi Azure AD
+## <a name="reasons-for-moving-apps-to-azure-ad"></a>Przyczyny przenoszenia aplikacji do usługi Azure AD
 
-W przypadku organizacji, która już korzysta z usług AD FS, Ping lub innego dostawcy uwierzytelniania lokalnego, migrowanie aplikacji do usługi Azure AD oferuje następujące korzyści:
+Dla organizacji, która już korzysta z usług AD FS, Ping lub innego dostawcy uwierzytelniania lokalnego przenoszenie aplikacji do usługi Azure AD zapewnia następujące korzyści:
 
 **Bezpieczniejszy dostęp**
 - Skonfiguruj szczegółowe procesy kontroli dostępu do poszczególnych aplikacji, w tym usługę Azure Multi-Factor Authentication, za pomocą funkcji [dostępu warunkowego usługi Azure AD](../active-directory-conditional-access-azure-portal.md). Zasady można stosować do aplikacji SaaS i niestandardowych w taki sam sposób, w jaki mogą być one stosowane obecnie w usłudze Office 365.
@@ -61,7 +61,7 @@ W przypadku organizacji, która już korzysta z usług AD FS, Ping lub innego do
 - Zyskujesz korzyści ze stosowania usługi Azure AD, a jednocześnie możesz nadal używać lokalnego rozwiązania do uwierzytelniania. Dzięki temu korzyści takie jak lokalne rozwiązania do uwierzytelniania wieloskładnikowego, rejestrowanie i inspekcja są nadal dostępne. 
 
 **Pomoc przy wycofywaniu lokalnego dostawcy tożsamości**
-- W organizacjach, które chcą wycofać lokalny produkt do uwierzytelniania, migracja aplikacji do usługi Azure AD umożliwia łatwiejsze przejście dzięki wyeliminowaniu niektórych czynności. 
+- W przypadku organizacji, które chcą wycofać lokalnie instalowanym produktem uwierzytelniania przenoszenie aplikacji do usługi Azure AD umożliwia łatwiejsze przejście dzięki eliminowaniu niektórych prac do końca. 
 
 ## <a name="mapping-types-of-apps-on-premises-to-types-of-apps-in-azure-ad"></a>Mapowanie typów aplikacji w środowisku lokalnym na typy aplikacji w usłudze Azure AD
 Większość aplikacji można dopasować do jednej z kilku kategorii na podstawie używanego typu logowania. Te kategorie określają, jak aplikacja jest reprezentowana w usłudze Azure AD.
@@ -126,8 +126,8 @@ Poniższa tabela opisuje kluczowe elementy konfiguracji dostawcy tożsamości s�
 |Identyfikator/</br>„wystawca”|Identyfikator dostawcy tożsamości z perspektywy aplikacji (czasami nazywany „identyfikatorem wystawcy”).</br></br>W tokenie języka SAML wartość jest wyświetlana jako element **Issuer**.|Identyfikator w usługach AD FS to zazwyczaj identyfikator usługi federacyjnej w funkcji zarządzania usługami AD FS w obszarze **Usługa** > **Edytuj właściwości usługi federacyjnej**. Na przykład: http&#58;//fs.contoso.com/adfs/services/trust|Odpowiadająca wartość w usłudze Azure AD jest zgodna z wzorcem, w którym wartość {identyfikator-dzierżawy} jest zastępowana identyfikatorem dzierżawy. Znaleźć go można w witrynie Azure Portal w obszarze **Azure Active Directory** > **Właściwości** w polu **Identyfikator katalogu**: https&#58;//sts.windows.net/{identyfikator-dzierżawy}/|
 |Dostawca tożsamości </br>federacja </br>metadane|Lokalizacja publicznie dostępnych metadanych federacji dostawcy tożsamości. (Niektóre aplikacje używają metadanych federacji jako alternatywy sytuacji, w której administrator indywidualnie konfiguruje adresy URL, identyfikator i certyfikat podpisywania tokenu).|Adres URL metadanych federacji usług AD FS można znaleźć w funkcji zarządzania usługami AD FS w obszarze **Usługa** > **Punkty końcowe** > **Metadane** > **Typ: Metadane federacji**. Na przykład: https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Odpowiadająca wartość w usłudze Azure AD jest zgodna z wzorcem https&#58;//login.microsoftonline.com/{NazwaDomenyDzierżawy}/FederationMetadata/2007-06/FederationMetadata.xml. Wartość {NazwaDomenyDzierżawy} jest zastępowana nazwą dzierżawy w formacie „contoso.onmicrosoft.com”. </br></br>Aby uzyskać więcej informacji, zobacz [Metadane federacji](../develop/azure-ad-federation-metadata.md).
 
-## <a name="migrating-saas-apps"></a>Migrowanie aplikacji SaaS
-Migrowanie aplikacji SaaS z usług AD FS lub innego dostawcy tożsamości do usługi Azure AD jest obecnie procesem wykonywanym ręcznie. Aby uzyskać wskazówki specyficzne dla aplikacji, zobacz [listę samouczków dotyczących integrowania aplikacji SaaS znajdujących się w witrynie Marketplace](../saas-apps/tutorial-list.md).
+## <a name="moving-saas-apps"></a>Przenoszenie aplikacji SaaS
+Przenoszenie aplikacji SaaS z usług AD FS lub innego dostawcy tożsamości do usługi Azure AD jest obecnie procesem wykonywanym ręcznie. Aby uzyskać wskazówki specyficzne dla aplikacji, zobacz [listę samouczków dotyczących integrowania aplikacji SaaS znajdujących się w witrynie Marketplace](../saas-apps/tutorial-list.md).
 
 W samouczkach integracji założono, że integracja jest przeprowadzana w trybie Green Field. Jeśli planujesz, oceniasz i konfigurujesz aplikacje lub przeprowadzasz ich migrację jednorazową, należy poznać kilka kluczowych pojęć specyficznych dla migracji:  
 - Migracja niektórych aplikacji jest prosta. Aplikacje o bardziej złożonych wymaganiach, takich jak oświadczenia niestandardowe, mogą wymagać dodatkowej konfiguracji w usłudze Azure AD i/lub programie Azure AD Connect.
@@ -135,7 +135,7 @@ W samouczkach integracji założono, że integracja jest przeprowadzana w trybie
 - Po ustaleniu, że dodatkowe oświadczenia są wymagane, upewnij się, że są one dostępne w usłudze Azure AD. Sprawdź konfigurację synchronizacji programu Azure AD Connect, aby upewnić się, że wymagany atrybut, na przykład **samAccountName**, jest synchronizowany z usługą Azure AD.
 - Gdy atrybuty są dostępne w usłudze Azure AD, możesz dodać reguły wystawiania oświadczeń w usłudze Azure AD, aby uwzględnić te atrybuty jako oświadczenia w wystawionych tokenach. Te reguły należy dodać we właściwościach **Logowanie jednokrotne** aplikacji w usłudze Azure AD.
 
-### <a name="assess-what-can-be-migrated"></a>Ocenianie, co można migrować
+### <a name="assess-what-can-be-moved"></a>Ocenianie, co można przenieść
 Aplikacje SAML 2.0 można zintegrować z usługą Azure AD za pomocą galerii aplikacji usługi Azure AD w witrynie Marketplace lub jako aplikacje spoza witryny Marketplace.  
 
 Pewne konfiguracje wymagają wykonania dodatkowych czynności w celu skonfigurowania w usłudze Azure AD, a niektóre konfiguracje nie są obecnie obsługiwane. Aby ustalić, co można przenieść, zapoznaj się z bieżącą konfiguracją każdej aplikacji. W szczególności szukaj następujących informacji:
@@ -144,8 +144,8 @@ Pewne konfiguracje wymagają wykonania dodatkowych czynności w celu skonfigurow
 - Wystawione wersje tokenu języka SAML.
 - Inne konfiguracje, takie jak reguły autoryzacji wystawiania lub zasady kontroli dostępu i reguły uwierzytelniania wieloskładnikowego (uwierzytelniania dodatkowego).
 
-#### <a name="what-can-be-migrated-today"></a>Co można obecnie migrować
-Aplikacje, które można obecnie łatwo migrować, to aplikacje SAML 2.0 używające standardowego zestawu elementów konfiguracji i oświadczeń. Te aplikacje mogą się składać z następujących elementów:
+#### <a name="what-can-be-moved-today"></a>Co można przenieść już dziś
+Aplikacje, które można obecnie łatwo przenieść to aplikacje SAML 2.0 używające standardowego zestawu elementów konfiguracji i oświadczeń. Te aplikacje mogą się składać z następujących elementów:
 - Nazwa główna użytkownika.
 - Adres e-mail.
 - Imię.

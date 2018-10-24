@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 10/23/2018
 ms.author: shlo
-ms.openlocfilehash: 71ed5988b4a529d38a47f6cf04afcaa937121135
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 3db32dfe2d7b65535f7d30f76241b33ecca96c15
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645994"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957959"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Wizualne Tworzenie usługi Azure Data Factory
 Usługi Azure Data Factory użytkownika interfejsu środowiska pozwala wizualnie tworzyć i wdrażać zasoby fabryki danych bez konieczności pisania kodu. Można przeciągnąć działania na kanwę potoku, wykonywać przebiegi testowe, interakcyjnie debugować i wdrożyć i monitorować uruchomienia potoków. Dostępne są dwie opcje używania środowiska użytkownika do wykonania wizualnego tworzenia:
@@ -85,17 +85,15 @@ Repozytorium Git repozytoriów platformy Azure można utworzyć w innej dzierża
 
 Do użytku osobistego konta Microsoft na integrację z usługą Git, możesz połączyć osobistych repozytorium Azure Active Directory w Twojej organizacji.
 
-1. Dodaj osobiste konto Microsoft do usługi Active Directory w Twojej organizacji jako Gość. Aby uzyskać więcej informacji, zobacz następujące artykuły:
-
-    - [Połącz organizacji DevOps platformy Azure do usługi Azure Active Directory](/azure/devops/organizations/accounts/connect-organization-to-azure-ad)
-
-    - [Dodają użytkowników we współpracy B2B usługi Azure Active Directory w witrynie Azure portal](../active-directory/b2b/add-users-administrator.md)
+1. Dodaj osobiste konto Microsoft do usługi Active Directory w Twojej organizacji jako Gość. Aby uzyskać więcej informacji, zobacz [użytkowników we współpracy Dodawanie usługi Azure Active Directory B2B, w witrynie Azure portal](../active-directory/b2b/add-users-administrator.md).
 
 2. Zaloguj się do witryny Azure Portal przy użyciu osobistego konta Microsoft. Następnie przełącz się do usługi Active Directory w Twojej organizacji.
 
 3. Przejdź do sekcji DevOps platformy Azure, w którym pojawi się osobistych repozytorium. Wybierz repozytorium i łączenie z usługą Active Directory.
 
 Po wykonaniu tych kroków konfiguracji osobistych repozytorium jest dostępna podczas konfigurowania integracji usługi Git w interfejs użytkownika usługi Data Factory.
+
+Aby uzyskać więcej informacji na temat łączenia repozytoriów platformy Azure do usługi Active Directory w Twojej organizacji, zobacz [połączyć organizacji DevOps platformy Azure do usługi Azure Active Directory](/azure/devops/organizations/accounts/connect-organization-to-azure-ad).
 
 ## <a name="switch-to-a-different-git-repo"></a>Przełącz się do innego repozytorium Git
 
@@ -241,7 +239,7 @@ Aby uzyskać informacji na temat obsługiwanych wyrażeń, zobacz [wyrażeń i f
 
 ![Dodaj zawartość dynamiczną](media/author-visually/dynamic-content-2.png)
 
-## <a name="provide-feedback"></a>Prześlij opinię
+## <a name="provide-feedback"></a>Przekazywanie opinii
 Wybierz **opinii** komentarz na temat funkcji lub powiadomić firmę Microsoft o problemach, za pomocą narzędzia:
 
 ![Opinia](media/author-visually/provide-feedback.png)

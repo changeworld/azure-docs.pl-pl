@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 724603fdb80e6fce7d5b8756655d23a6c32d5558
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 4305afff1e35e9e05f1b2314f8fb9d5a96383e9f
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405467"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955647"
 ---
 # <a name="azure-operational-security-overview"></a>Omówienie kwestii bezpieczeństwa działania platformy Azure
 [Azure operational security](https://docs.microsoft.com/azure/security/azure-operational-security) odwołuje się do usługi, formanty i funkcje dostępne dla użytkowników dotyczące ochrony danych, aplikacji i innych zasobów na platformie Microsoft Azure. To struktura, która zawiera wiedzy uzyskanej dzięki różnym możliwości, które są unikatowe dla firmy Microsoft. Te funkcje obejmują cykl projektowania zabezpieczeń (SDL) firmy Microsoft, program Microsoft Security Response Center oraz głębokiej świadomości krajobraz zagrożeń cyberbezpieczeństwa.
@@ -30,7 +30,7 @@ Dział operacji IT jest odpowiedzialny za zarządzanie infrastrukturę centrów 
 [Analiza dzienników Microsoft](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) jest oparta na chmurze rozwiązanie zarządzania IT, która ułatwia zarządzanie i chronić lokalne i infrastruktury chmury. Jego podstawowych funkcji jest zapewniana przez następujących usług, które działają na platformie Azure. System Azure zawiera wiele usług, które ułatwiają zarządzanie, chronić lokalne i infrastruktury chmury. Każda usługa udostępnia określoną funkcję zarządzania. Możesz łączyć usługi, aby realizować różne scenariusze zarządzania. 
 
 ### <a name="azure-monitor"></a>Azure Monitor
-[Usługa Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/overview) zbiera dane z zarządzanych sourcesa do magazynów danych w centralnym. Te dane mogą obejmować zdarzenia, dane dotyczące wydajności i niestandardowe dane dostarczane za pośrednictwem interfejsu API. Po zebraniu danych, jest dostępna dla alertów, analizy i eksportu. 
+[Usługa Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) zbiera dane z zarządzanych sourcesa do magazynów danych w centralnym. Te dane mogą obejmować zdarzenia, dane dotyczące wydajności i niestandardowe dane dostarczane za pośrednictwem interfejsu API. Po zebraniu danych, jest dostępna dla alertów, analizy i eksportu. 
 
 Można skonsolidować dane z różnych źródeł i połączyć dane z usług platformy Azure z istniejącym środowiskiem w środowisku lokalnym. Tak, aby wszystkie akcje są dostępne dla wszystkich typów danych usługi log Analytics również wyraźnie oddziela do zbierania danych z akcji wykonywanych na tych danych.
 
@@ -158,5 +158,5 @@ Dojrzała badaczy DevOps przyjąć kilka z następujących wskazówek. Praktyki 
 Aby dowiedzieć się więcej na temat rozwiązania zabezpieczenia i inspekcja, zobacz następujące artykuły:
 
 - [Zabezpieczenia i zgodność](https://www.microsoft.com/cloud-platform/security-and-compliance)
-- [Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/security-center-intro)
-- [Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/overview)
+- [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview)

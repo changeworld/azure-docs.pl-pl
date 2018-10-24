@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/2/2018
 ms.author: markgal
-ms.openlocfilehash: 2151733a5d91fb17c69fa1f4f6aac64a70928824
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: dd0059f8d4714603568577d0a3c977ce7b27d44c
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364306"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945845"
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Pytania dotyczące usługi Azure Backup
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące składników usługi Azure Backup. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Aby zadać pytanie dotyczące usługi Azure Backup, kliknij pozycję **Komentarze** (po prawej stronie). Komentarze są wyświetlane na dole tego artykułu. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -82,6 +82,9 @@ Tak. Jednak aby używać usługi Azure Backup usługi System Center Data Protect
 
 ### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>Czy można użyć programu DPM, aby utworzyć kopię zapasową aplikacji w usłudze Azure Stack?
 Nie. Jeśli kopia zapasowa Azure można użyć do ochrony usługi Azure Stack, usługi Azure Backup nie obsługuje obecnie za pomocą programu DPM, aby utworzyć kopię zapasową aplikacji w usłudze Azure Stack.
+
+### <a name="can-i-do-an-ilr-item-level-restore-for-vms-backed-up-to-the-online-vault-azure"></a>Możliwości odzyskiwania na poziomie elementów (Przywróć poziom elementu) dla maszyn wirtualnych z kopii zapasowej w magazynie Online (Azure)?
+Nie, Przywróć poziomie elementu (ILR) nie jest dostępna dla maszyn wirtualnych z kopii zapasowej do magazynu usługi Site Recovery Services.
 
 ## <a name="how-azure-backup-works"></a>Jak działa usługa Azure Backup
 ### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted-br"></a>Czy w przypadku anulowania uruchomionego zadania tworzenia kopii zapasowej przesyłane dane zostaną usunięte? <br/>

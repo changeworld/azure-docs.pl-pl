@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: barbkess
-ms.openlocfilehash: f24be44b00f9c4e789e8d4797f6a0516dcfe940f
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: f9cd761080bc5098d0500841e7327ac8ce9f9a2d
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494061"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957942"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurowanie logowania usługi Azure Active Directory w zachowaniu aplikacji za pomocą zasad odnajdowania obszaru macierzystego
 
 Ten dokument zawiera wprowadzenie do konfigurowania zachowania uwierzytelniania usługi Azure Active Directory dla użytkowników federacyjnych.   Poruszono w nim konfiguracji uwierzytelniania i automatycznego przyspieszenia ograniczeń dla użytkowników w domenach federacyjnych.
 
-## <a name="home-realm-discovery"></a>Odnajdowanie obszaru macierzystego
+## <a name="home-realm-discovery"></a>Odnajdowanie obszaru głównego
 Home obszaru odnajdywania (HRD) to proces, który umożliwia usłudze Azure Active Directory (Azure AD), aby określić, w którym użytkownik musi uwierzytelnić podczas logowania.  Gdy użytkownik loguje się do dzierżawy usługi Azure AD, aby uzyskać dostęp do zasobu lub usługi Azure AD wspólnej strony logowania, ich wpisz nazwę użytkownika (UPN). Usługi Azure AD używa, aby dowiedzieć się, gdy użytkownik musi się zalogować. 
 
 Użytkownik może być konieczne jest uważana za do jednej z następujących lokalizacji można uwierzytelnić:
@@ -263,4 +263,4 @@ Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
 ## <a name="next-steps"></a>Kolejne kroki
 - Aby uzyskać więcej informacji na temat działania uwierzytelniania w usłudze Azure AD, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](../develop/authentication-scenarios.md).
 - Aby uzyskać więcej informacji dotyczących użytkownika logowania jednokrotnego, zobacz [dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](configure-single-sign-on-portal.md).
-- Odwiedź stronę [przewodnik dewelopera usługi Active Directory](../develop/azure-ad-developers-guide.md) omówienie całą zawartość związane z programowaniem.
+- Odwiedź stronę [przewodnik dewelopera usługi Active Directory](../develop/v1-overview.md) omówienie całą zawartość związane z programowaniem.

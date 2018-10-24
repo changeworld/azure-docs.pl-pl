@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: jasonh
-ms.openlocfilehash: 8583d993ecc23ac428047bf886bcb9158e3be978
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6ad61957af65268fa9e3d58a3e0f3a5e9b4d4531
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049438"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957755"
 ---
 # <a name="develop-java-mapreduce-programs-for-hadoop-on-hdinsight"></a>Opracowywanie programów MapReduce w języku Java dla usługi Hadoop w HDInsight
 
@@ -253,7 +253,7 @@ Użyj następującego polecenia, aby przekazać plik jar do węzła głównego H
    scp target/wordcountjava-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:
    ```
 
-    Replace __USERNAME__ with your SSH user name for the cluster. Replace __CLUSTERNAME__ with the HDInsight cluster name.
+Zastąp __USERNAME__ z Twoją nazwą użytkownika protokołu SSH dla klastra. Zastąp __CLUSTERNAME__ o nazwie klastra HDInsight.
 
 To polecenie kopiuje pliki z systemu lokalnego do węzła głównego. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: cherylmc
 Customer intent: As a Virtual WAN software-defined connectivity provider, I want to set up a provisioning environment.
-ms.openlocfilehash: 0ea1b69b788255b1d8d24e17fcc1409d35a4fd36
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: a4664e628af5824b7b197cbdb5c5af602a3a4476
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814325"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958690"
 ---
 # <a name="virtual-wan-partners"></a>Wirtualne sieci WAN partnerów
 
@@ -46,7 +46,7 @@ Urządzenie gałęzi (klienta na lokalnym urządzeniu sieci VPN lub SDWAN CPE) z
 
 ###  <a name="access"></a>Kontrola dostępu
 
-Klienci musi mieć możliwość skonfigurować kontroli dostępu właściwe dla wirtualnej sieci WAN w interfejsu użytkownika urządzenia. Jest to zalecane, korzystania z jednostki usługi platformy Azure. Dostęp do usługi oparte na jednostce zapewnia uwierzytelniania odpowiedniego kontrolera urządzenia do przekazania informacji o gałęzi. Aby uzyskać więcej informacji, zobacz [Tworzenie jednostki usługi](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application). Gdy ta funkcja jest poza oferty Azure wirtualnego WAN, listę poniżej typowe etapy, zarządzanie dostępem na platformie Azure, po upływie którego odpowiednie szczegóły są klatkach, w których do pulpitu nawigacyjnego zarządzania urządzeniami
+Klienci musi mieć możliwość skonfigurować kontroli dostępu właściwe dla wirtualnej sieci WAN w interfejsu użytkownika urządzenia. Jest to zalecane, korzystania z jednostki usługi platformy Azure. Dostęp do usługi oparte na jednostce zapewnia uwierzytelniania odpowiedniego kontrolera urządzenia do przekazania informacji o gałęzi. Aby uzyskać więcej informacji, zobacz [Tworzenie jednostki usługi](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Gdy ta funkcja jest poza oferty Azure wirtualnego WAN, listę poniżej typowe etapy, zarządzanie dostępem na platformie Azure, po upływie którego odpowiednie szczegóły są klatkach, w których do pulpitu nawigacyjnego zarządzania urządzeniami
 
 * Tworzenie aplikacji usługi Azure Active Directory dla środowiska lokalnego kontrolera urządzenia.
 * Pobierz aplikację Identyfikatora i klucza uwierzytelniania

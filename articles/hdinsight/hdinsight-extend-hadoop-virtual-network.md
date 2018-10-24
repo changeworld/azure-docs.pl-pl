@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/08/2018
-ms.openlocfilehash: 6455322a1a1cf392c16aba708ce8445f8c80c3df
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 5ee249aee5d95f22f2e1f52d6356f09ea41ccd68
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363847"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945760"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozszerzenie usługi Azure HDInsight przy użyciu usługi Azure Virtual Network
 
@@ -173,7 +173,7 @@ Aby uzyskać więcej informacji, zobacz [rozpoznawania nazw dla maszyn wirtualny
 
 ## <a name="directly-connect-to-hadoop-services"></a>Bezpośrednie łączenie z usługi Hadoop
 
-Możesz nawiązać połączenie klastrem pod adresem https://CLUSTERNAME.azurehdinsight.net. Ten adres używa publicznego adresu IP, może nie być dostępne, jeśli używano sieciowych grup zabezpieczeń lub tras zdefiniowanych przez użytkownika do ograniczania ruchu przychodzącego z Internetu. Ponadto w przypadku wdrażania klastra w sieci wirtualnej można do niego dostęp przy użyciu prywatnych punktów końcowych https://CLUSTERNAME-internal.azurehdinsight.net. Ten punkt końcowy jest rozpoznawany jako prywatny adres IP w sieci wirtualnej, aby uzyskać dostęp do klastra.
+Możesz nawiązać połączenie klastrem pod adresem https://CLUSTERNAME.azurehdinsight.net. Ten adres używa publicznego adresu IP, może nie być dostępne, jeśli używano sieciowych grup zabezpieczeń lub tras zdefiniowanych przez użytkownika do ograniczania ruchu przychodzącego z Internetu. Ponadto w przypadku wdrażania klastra w sieci wirtualnej można do niego dostęp przy użyciu prywatnych punktów końcowych https://CLUSTERNAME-int.azurehdinsight.net. Ten punkt końcowy jest rozpoznawany jako prywatny adres IP w sieci wirtualnej, aby uzyskać dostęp do klastra.
 
 Nawiązywanie Ambari i stron sieci web za pośrednictwem sieci wirtualnej, użyj następujących kroków:
 

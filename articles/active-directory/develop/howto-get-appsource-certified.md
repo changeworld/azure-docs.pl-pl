@@ -17,12 +17,12 @@ ms.date: 08/21/2018
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: a2876ccdfe073a3c642304a1381faf77ae4a7d90
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 603da0add9efba4e68088bf0eb6ab919ec9988e2
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42057120"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955495"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Jak uzyskać certyfikatu AppSource dla usługi Azure Active Directory
 
@@ -32,7 +32,7 @@ Aby wyświetlić listę samodzielnej aplikacji SaaS w usłudze AppSource, aplika
 
 ## <a name="guides-and-code-samples"></a>Przewodniki i przykłady kodu
 
-Jeśli chcesz dowiedzieć się więcej o integrowaniu aplikacji z usługą Azure AD przy użyciu Identyfikatora Otwórz łączenie, postępuj zgodnie z naszymi przewodnikami i przykłady w kodu [przewodnik dewelopera usługi Azure Active Directory](azure-ad-developers-guide.md#get-started "Rozpoczynanie pracy z usługą Azure AD Deweloperzy").
+Jeśli chcesz dowiedzieć się więcej o integrowaniu aplikacji z usługą Azure AD przy użyciu Identyfikatora Otwórz łączenie, postępuj zgodnie z naszymi przewodnikami i przykłady w kodu [przewodnik dewelopera usługi Azure Active Directory](v1-overview.md#get-started "Rozpoczynanie pracy z usługą Azure AD Deweloperzy").
 
 ## <a name="multi-tenant-applications"></a>Aplikacje wielodostępne
 
@@ -127,9 +127,9 @@ W poniższej sekcji komentarzy umożliwia opinią i Pomóż nam analizy i połą
 <!--Reference style links -->
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Auth-Scenarios-Browser-To-WebApp]:authentication-scenarios.md#web-browser-to-web-application
-[AAD-Dev-Guide]: azure-ad-developers-guide.md
+[AAD-Dev-Guide]: v1-overview.md
 [AAD-Howto-Multitenant-Overview]: howto-convert-app-to-be-multi-tenant.md
-[AAD-QuickStart-Web-Apps]: azure-ad-developers-guide.md#get-started
+[AAD-QuickStart-Web-Apps]: v1-overview.md#get-started
 
 
 <!--Image references-->

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: victorh
-ms.openlocfilehash: 7acc0fa4c3654c96ac0f8f1baed7ea5b7b306376
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: a814c543b9f4bfe6717e639342d82ed13dac35b0
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829773"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954610"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>Tworzenie strefy DNS i zestawów rekordów przy użyciu zestawu .NET SDK
 
@@ -28,7 +28,7 @@ Można automatyzować operacje, aby utworzyć, usunąć lub aktualizacji strefy,
 
 Zazwyczaj udzielany jest dostęp programowy do zasobów platformy Azure za pomocą dedykowanego konta, a nie poświadczeń użytkownika. Te dedykowanego konta noszą nazwę kont "jednostki usługi". Aby korzystać z projektem przykładowym i zestawu SDK usługi Azure DNS, należy najpierw utworzyć konto dla nazwy głównej usługi i przypisać jej odpowiednie uprawnienia.
 
-1. Postępuj zgodnie z [w instrukcjach](../azure-resource-manager/resource-group-authenticate-service-principal.md) można utworzyć konta nazwy głównej usługi (przykładowy projekt zestawu SDK usługi Azure DNS przy założeniu uwierzytelniania opartego na hasłach).
+1. Postępuj zgodnie z [w instrukcjach](../active-directory/develop/howto-authenticate-service-principal-powershell.md) można utworzyć konta nazwy głównej usługi (przykładowy projekt zestawu SDK usługi Azure DNS przy założeniu uwierzytelniania opartego na hasłach).
 2. Utwórz grupę zasobów ([Oto jak](../azure-resource-manager/resource-group-template-deploy-portal.md)).
 3. Uprawnienia konta głównego usługi "Współautor strefy DNS" w grupie zasobów przy użyciu kontroli RBAC platformy Azure ([Oto jak](../role-based-access-control/role-assignments-portal.md).)
 4. Jeśli używasz zestawu SDK usługi Azure DNS przykładowy projekt, przeprowadź edycję pliku "program.cs" w następujący sposób:

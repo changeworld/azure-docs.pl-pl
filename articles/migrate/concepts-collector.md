@@ -4,15 +4,15 @@ description: Zawiera informacje dotyczące urządzenia modułu zbierającego w u
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/28/2018
+ms.date: 10/23/2018
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: b79045e54b9c2ee4846f2216704a419e0ff85501
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 3c40fd97540d8529c95c7d18d2c3155dd37717e9
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434436"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945420"
 ---
 # <a name="about-the-collector-appliance"></a>O urządzenia modułu zbierającego
 
@@ -170,7 +170,7 @@ Moduł zbierający można uaktualnić do najnowszej wersji, bez pobierania OVA p
 Istnieją dwie metody, których urządzenie modułu zbierającego służy do odnajdywania, jednorazowe lub ciągłe odnajdywania.
 
 
-### <a name="one-time-discovery"></a>Jednorazowe
+### <a name="one-time-discovery"></a>Jednorazowe odnajdywanie
 
 Moduł zbierający komunikuje się jednorazowo przy użyciu programu vCenter Server, aby zebrać metadanych dotyczących maszyn wirtualnych. Za pomocą tej metody:
 
@@ -179,17 +179,23 @@ Moduł zbierający komunikuje się jednorazowo przy użyciu programu vCenter Ser
 - Ta metoda odnajdywania należy skonfigurować ustawienie statystyk w programie vCenter Server na poziomie 3.
 - Po ustawieniu poziomu do trzech, zajmuje do dnia do generowania liczników wydajności. Dlatego zaleca się uruchamianie odnajdywania po dniu.
 - Podczas zbierania danych wydajności dla maszyny Wirtualnej, urządzenie opiera się na dane historyczne wydajności, przechowywane w programie vCenter Server. Historia wydajności zbiera dla ostatniego miesiąca.
-- Usługa Azure Migrate zbiera dane licznika średni (zamiast licznika szczytowa) dla każdego metryki.
+- Usługa Azure Migrate umożliwia zbieranie informacji o średnia liczników (zamiast licznika szczytowa) dla każdego metryki, co może spowodować niepełną zmiany rozmiaru.
 
-### <a name="continuous-discovery"></a>Ciągłe odnajdywania
+### <a name="continuous-discovery"></a>Ciągłe odnajdywanie
 
-Urządzenie modułu zbierającego stale jest podłączony do projektu Azure Migrate.
+Urządzenie modułu zbierającego stale jest podłączony do projektu Azure Migrate i stale zbiera dane dotyczące wydajności maszyn wirtualnych.
 
 - Moduł zbierający stale profilów w środowisku lokalnym na potrzeby zbierania danych użycia w czasie rzeczywistym, co 20 sekund.
 - Ten model nie są zależne od ustawienia statystyk serwera vCenter, tak aby zbierać dane dotyczące wydajności.
 - Urządzenie zbiera przykłady 20 sekund i tworzy jeden punkt danych co 15 minut.
 - Do tworzenia danych punkt urządzenie szczytowa wartość wybierana jest opcja przykłady 20 sekund i wysyła je do platformy Azure.
 - Aby zatrzymać, ciągłe profilowania w dowolnym momencie z modułu zbierającego.
+
+Należy pamiętać, że urządzenie tylko zbiera dane dotyczące wydajności stale nie wykrywa zmiany konfiguracji w środowisku lokalnym, (tj. Dodawanie maszyny Wirtualnej, usuwania, dodawania dysku itp.). W przypadku zmiany konfiguracji w środowisku lokalnym, możesz wykonać następujące polecenie, aby odzwierciedlały zmiany w portalu:
+
+1. Dodawanie elementów (maszyn wirtualnych, dysków, liczba rdzeni itp.): aby uwzględnić te zmiany w witrynie Azure portal, można zatrzymać odnajdywania przez urządzenie i uruchom go ponownie. Pozwoli to zagwarantować, że zmiany są uwzględniane w projekcie usługi Azure Migrate.
+
+2. Usuwanie maszyn wirtualnych: ze względu na sposób zaprojektowano urządzenia, usunięcie maszyny wirtualne nie zostaną uwzględnione nawet, gdy zatrzymujesz i uruchamiasz odnajdywania. Jest to spowodowane dane z kolejne operacje odnajdywania są dołączane do odnajdywania starszych i nie zostanie zastąpiona. W takim przypadku możesz po prostu zignorować maszyny Wirtualnej w portalu, usuwając go z grupy i ponownego obliczania oceny.
 
 > [!NOTE]
 > Funkcja ciągłego Odnajdywanie jest w wersji zapoznawczej. Jeśli ustawienia statystyk programu vCenter Server nie jest ustawiony na poziom 3, zaleca się użycie tej metody.
@@ -241,8 +247,8 @@ virtualDisk.read.average | 2 | 2 | Oblicza rozmiar dysku, koszt przechowywania, 
 virtualDisk.write.average | 2 | 2  | Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
 virtualDisk.numberReadAveraged.average | 1 | 3 |  Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
 virtualDisk.numberWriteAveraged.average | 1 | 3 |   Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
-NET.RECEIVED.AVERAGE | 2 | 3 |  Oblicza koszt rozmiar i sieć maszyny Wirtualnej                        |
-net.transmitted.average | 2 | 3 | Oblicza koszt rozmiar i sieć maszyny Wirtualnej    
+NET.RECEIVED.AVERAGE | 2 | 3 |  Oblicza rozmiar maszyny Wirtualnej                          |
+net.transmitted.average | 2 | 3 | Oblicza rozmiar maszyny Wirtualnej     
 
 ## <a name="next-steps"></a>Kolejne kroki
 

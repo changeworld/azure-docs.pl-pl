@@ -4,14 +4,14 @@ description: Zawiera omówienie znanych problemów dotyczących usługi Azure Mi
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/28/2018
+ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 906c6e56b670dfc26b5905a453fd43a3c72086c3
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a41a27f2a87a67ea51bcbe110ac77f7908c44e7a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433501"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945522"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Rozwiązywanie problemów z usługą Azure Migrate
 
@@ -40,6 +40,14 @@ Aby włączyć zbieranie danych wydajności dysku i sieci, należy zmienić usta
 Możesz przejść do **Essentials** sekcji **Przegląd** strony projektu, aby zidentyfikować dokładną lokalizację, w którym przechowywane są metadane. Lokalizacja jest wybranych losowo w lokalizacji geograficznej przez usługę Azure Migrate, i nie można go modyfikować. Jeśli chcesz utworzyć projekt w określonym regionie tylko, można użyć interfejsów API REST, aby utworzyć projekt migracji i przekazać odpowiedni region.
 
    ![Lokalizacja projektu](./media/troubleshooting-general/geography-location.png)
+
+### <a name="i-am-using-the-continuous-discovery-ova-but-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>Używam ciągłe odnajdywania, którą OVA, ale maszyny wirtualne, które są usuwane z mojego lokalnego środowiska nadal są wyświetlane w portalu.
+
+Urządzenia dla urządzenia odnajdywania ciągłe tylko zbiera dane dotyczące wydajności stale, nie wykrywa zmiany konfiguracji w środowisku lokalnym, (tj. Dodawanie maszyny Wirtualnej, usuwania, dodawania dysku itp.). W przypadku zmiany konfiguracji w środowisku lokalnym, możesz wykonać następujące polecenie, aby odzwierciedlały zmiany w portalu:
+
+1. Dodawanie elementów (maszyn wirtualnych, dysków, liczba rdzeni itp.): aby uwzględnić te zmiany w witrynie Azure portal, można zatrzymać odnajdywania przez urządzenie i uruchom go ponownie. Pozwoli to zagwarantować, że zmiany są uwzględniane w projekcie usługi Azure Migrate.
+
+2. Usuwanie maszyn wirtualnych: ze względu na sposób zaprojektowano urządzenia, usunięcie maszyny wirtualne nie zostaną uwzględnione nawet, gdy zatrzymujesz i uruchamiasz odnajdywania. Jest to spowodowane dane z kolejne operacje odnajdywania są dołączane do odnajdywania starszych i nie zostanie zastąpiona. W takim przypadku możesz po prostu zignorować maszyny Wirtualnej w portalu, usuwając go z grupy i ponownego obliczania oceny.
 
 ## <a name="collector-errors"></a>Błędy modułu zbierającego dzienniki
 
@@ -100,7 +108,7 @@ Ten problem może wystąpić z powodu problemu z instalacją programu VMware Pow
 
 ### <a name="error-unabletoconnecttoserver"></a>Błąd UnableToConnectToServer
 
-Nie można nawiązać połączenia z programem vCenter Server "Servername.com:9443" z powodu błędu: Brak punktów końcowych nasłuchujących w https://Servername.com:9443/sdk który mógłby odebrać komunikat.
+Nie można nawiązać połączenia z programem vCenter Server „Servername.com:9443” z powodu następującego błędu: brak punktów końcowych nasłuchujących w lokalizacji https://Servername.com:9443/sdk, które mogłyby zaakceptować komunikat.
 
 Sprawdź, jeśli możesz korzystają z najnowszej wersji urządzenia modułu zbierającego, jeśli nie, uaktualnić urządzenie [najnowszej wersji](https://docs.microsoft.com/azure/migrate/concepts-collector#how-to-upgrade-collector).
 
@@ -214,8 +222,8 @@ Aby zbierać zdarzenia śledzenia dla Windows, wykonaj następujące czynności:
 | 754       | NoPerfDataAvaialable           | Dane wydajności są niedostępne.                                               | Sprawdź poziom statystyk w programie vCenter Server. Należy można ustawić na 3, aby dane wydajności mają być dostępne. | Zmień poziom statystyk na poziom 3 (na 5 minut, 30 minut lub 2 godziny) i spróbuj po odczekaniu co najmniej jednego dnia.                   |
 | 756       | NullInstanceUUID               | Napotkano maszynę z identyfikatorem InstanceUUID o wartości null                                  | Serwer vCenter może mieć nieodpowiedni obiekt.                                                      | Rozwiąż problem i spróbuj ponownie.                                                                                                           |
 | 757       | VMNotFound                     | Nie odnaleziono maszyny wirtualnej                                                  | Maszyna wirtualna może zostać usunięta: %VMID;                                                                | Upewnij się, że maszyny wirtualne wybrane podczas określania zakresu magazynu programu vCenter istnieją podczas odnajdywania                                      |
-| 758       | GetPerfDataTimeout             | Upłynął limit czasu żądania programu VCenter. Komunikat % Message;                                  | Poświadczenia serwera vCenter są nieprawidłowe                                                              | Sprawdź poświadczenia serwera vCenter i upewnij się, że ten serwer vCenter jest dostępny. Spróbuj ponownie wykonać operację. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną. |
-| 759       | VmwareDllNotFound              | Nie można odnaleźć biblioteki DLL VMWare.Vim.                                                     | Interfejs PowerCLI nie został prawidłowo zainstalowany.                                                                   | Sprawdź, czy prawidłowo zainstalowano PowerCLI. Spróbuj ponownie wykonać operację. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną.                               |
+| 758       | GetPerfDataTimeout             | Upłynął limit czasu żądania programu VCenter. Komunikat % Message;                                  | Poświadczenia serwera vCenter są nieprawidłowe                                                              | Sprawdź poświadczenia serwera vCenter i upewnij się, że ten serwer vCenter jest dostępny. Spróbuj ponownie wykonać operację. Jeśli problem będzie nadal występować, skontaktuj się z działem pomocy technicznej. |
+| 759       | VmwareDllNotFound              | Nie można odnaleźć biblioteki DLL VMWare.Vim.                                                     | Interfejs PowerCLI nie został prawidłowo zainstalowany.                                                                   | Sprawdź, czy prawidłowo zainstalowano PowerCLI. Spróbuj ponownie wykonać operację. Jeśli problem będzie nadal występować, skontaktuj się z działem pomocy technicznej.                               |
 | 800       | ServiceError                   | Usługa Azure Migrate Collector nie jest uruchomiona.                               | Usługa Azure Migrate Collector nie jest uruchomiona.                                                       | Uruchom usługę za pomocą apletu services.msc i spróbuj ponownie wykonać operację.                                                                             |
 | 801       | PowerCLIError                  | Instalowanie interfejsu PowerCLI programu VMware nie powiodło się.                                          | Instalowanie interfejsu PowerCLI programu VMware nie powiodło się.                                                                  | Spróbuj ponownie wykonać operację. Jeśli problem będzie się powtarzać, przeprowadzenie instalacji ręcznie i spróbuj ponownie wykonać operację.                                                   |
 | 802       | TimeSyncError                  | Czas nie jest zsynchronizowany z internetowym serwerem czasu.                            | Czas nie jest zsynchronizowany z internetowym serwerem czasu.                                                    | Upewnij się, że godzina na maszynie jest ustawiona zgodnie ze strefą czasową maszyny i ponów operację.                                 |

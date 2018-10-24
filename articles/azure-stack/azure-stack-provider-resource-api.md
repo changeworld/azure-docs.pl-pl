@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2018
+ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: aedaa729ec51d7b60b2c242239935f7b3e41794f
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: c6f17fd4cc225b7d4ce60d38bf2abcabf12a40c5
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918191"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945590"
 ---
 # <a name="provider-resource-usage-api"></a>Interfejs API użycia zasobów dostawcy
 Termin *dostawcy* stosuje się do administratora usługi i żadnych delegowanych dostawców. Operatorzy usługi Azure Stack i delegowanych dostawców służy interfejs API użycia dostawcy do wyświetlania użycia bezpośrednich dzierżawcom. Na przykład jak pokazano na diagramie, P0 można wywołać interfejsu API, aby uzyskać informacje dotyczące firmy P1 zastosowania dostawcy i jego P2 bezpośredniego użycia i P1 może wywołać dotyczące użycia jednostek P3 i P4.
@@ -32,7 +32,7 @@ Termin *dostawcy* stosuje się do administratora usługi i żadnych delegowanych
 
 Ten interfejs API użycia jest dostawcy interfejsu API, aby obiekt wywołujący musi mieć przypisaną rolę właściciela, współautora lub czytelnika, w ramach subskrypcji dostawcy.
 
-| **— Metoda** | **Identyfikator URI żądania** |
+| **Metoda** | **Identyfikator URI żądania** |
 | --- | --- |
 | GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity} & subscriberId = {sub1.1} & parametru api-version = 2015-06-01-preview & continuationToken = {wartości tokenu} |
 
@@ -109,13 +109,13 @@ Można zbierać informacje użycia dla subskrypcji usunięto, wywołując usług
 
 **Aby zwrócić wszystkie użycia dzierżawy dla usunięte dla aktywnych użytkowników:**
 
-| **— Metoda** | **Identyfikator URI żądania** |
+| **Metoda** | **Identyfikator URI żądania** |
 | --- | --- |
 | GET | https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&api-version= 2015-06-01-preview |
 
 **Aby zwrócić użycia usuniętych lub aktywnej dzierżawy:**
 
-| **— Metoda** | **Identyfikator URI żądania** |
+| **Metoda** | **Identyfikator URI żądania** |
 | --- | --- |
 | GET |https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&subscriberId={ Identyfikator subskrybenta} & parametru api-version = 2015-06-01-preview |
 

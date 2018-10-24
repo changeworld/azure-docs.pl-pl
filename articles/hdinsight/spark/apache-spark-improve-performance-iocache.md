@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 10/15/2018
-ms.openlocfilehash: 8cfa6493a565a8ed3b059e1da752da5115d0731d
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 3616183b5ea34b8a14712d2c449de87950443111
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649860"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954509"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache-preview"></a>Zwiększa wydajność obciążeń platformy Apache Spark przy użyciu usługi Azure HDInsight we/wy Cache (wersja zapoznawcza)
 
@@ -46,7 +46,7 @@ Usługa Azure HDInsight we/wy w pamięci podręcznej jest dezaktywowany domyśln
 1. Potwierdź ponowne uruchomienie wszystkich odpowiednich usług w klastrze.
 
 >[!NOTE] 
-> Mimo, że pasek postępu pokazuje aktywowane, we/wy pamięci podręcznej faktycznie nie jest włączone, dopiero po ponownym uruchomieniu usługi.
+> Mimo, że pasek postępu pokazuje aktywowane, we/wy pamięci podręcznej faktycznie nie jest włączone, dopiero po ponownym uruchomieniu dotyczy innych usług.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
   

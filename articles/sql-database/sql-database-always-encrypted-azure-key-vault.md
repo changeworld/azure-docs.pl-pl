@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 44fc04d4788c4381a4922f1335c393e03045900e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: e0971b6b9b8460447d383d238843d4bdddc912f7
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352397"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958981"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Zawsze szyfrowane: Ochrona poufnych danych i przechowywania kluczy szyfrowania w usłudze Azure Key Vault
 
@@ -48,7 +48,7 @@ W tym samouczku będą potrzebne:
 ## <a name="enable-your-client-application-to-access-the-sql-database-service"></a>Umożliwić aplikacji klienckiej dostęp do usługi SQL Database
 Należy włączyć aplikacji klienckiej dostęp do usługi SQL Database, konfigurowanie aplikacji usługi Azure Active Directory (AAD) i kopiowanie *identyfikator aplikacji* i *klucz* , konieczne będzie uwierzytelniania aplikacji.
 
-Aby uzyskać *identyfikator aplikacji* i *klucz*, postępuj zgodnie z instrukcjami w [tworzenia aplikacji i usługi jednostki, które mogą uzyskiwać dostęp do zasobów usługi Azure Active Directory](../azure-resource-manager/resource-group-create-service-principal-portal.md).
+Aby uzyskać *identyfikator aplikacji* i *klucz*, postępuj zgodnie z instrukcjami w [tworzenia aplikacji i usługi jednostki, które mogą uzyskiwać dostęp do zasobów usługi Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md).
 
 ## <a name="create-a-key-vault-to-store-your-keys"></a>Tworzenie magazynu kluczy do przechowywania kluczy przy użyciu
 Teraz, gdy skonfigurowano aplikację kliencką i masz swój identyfikator aplikacji, nadszedł czas na tworzenie magazynu kluczy oraz skonfigurować jego zasady dostępu, aby Tobie i Twojej aplikacji mogą uzyskiwać dostęp do magazynu kluczy tajnych (klucze są zawsze szyfrowane). *Tworzenie*, *uzyskać*, *listy*, *logowania*, *Sprawdź*, *wrapKey*, i *unwrapKey* uprawnienia są wymagane do utworzenia nowego kluczem głównym kolumny i konfigurowanie szyfrowania przy użyciu programu SQL Server Management Studio.

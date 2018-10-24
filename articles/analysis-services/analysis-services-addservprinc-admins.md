@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d6d276895534b3fcfb7f58f8fa51620c65c600a3
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: d89e79548d62634e4b2b47fb310c4f8d7279f17f
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427658"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957262"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Dodawanie jednostki usługi do roli administratora serwera 
 
@@ -22,8 +22,8 @@ ms.locfileid: "49427658"
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 Przed wykonaniem tego zadania, musi mieć nazwę główną usługi zarejestrowane w usłudze Azure Active Directory.
 
-[Tworzenie jednostki usługi — witryna Azure portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)   
-[Tworzenie jednostki usługi — PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+[Tworzenie jednostki usługi — witryna Azure portal](../active-directory/develop/howto-create-service-principal-portal.md)   
+[Tworzenie jednostki usługi — PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="required-permissions"></a>Wymagane uprawnienia
 Aby wykonać to zadanie, konieczne jest posiadanie [administrator serwera](analysis-services-server-admins.md) uprawnień serwera usług Azure AS. 

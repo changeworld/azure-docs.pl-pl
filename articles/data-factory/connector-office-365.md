@@ -11,24 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/15/2018
+ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: c9252380581e77049e9464316ca77cc135f784b6
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 82fb2241b5988bae9587807c03e7bec50e7c1677
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377604"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955386"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Kopiowanie danych z usługi Office 365 na platformie Azure przy użyciu usługi Azure Data Factory (wersja zapoznawcza) 
 
 Usługa Azure Data Factory pozwala przenieść bogate dane organizacji w usługi Office 365 dzierżawy na platformę Azure w sposób skalowalny i kompilowanie aplikacji do analizowania i wyodrębnić szczegółowe informacje, w oparciu o te zasoby cennych danych. Integracja z usługą Privileged Access Management zapewnia kontrolę bezpiecznego dostępu do cennych danych nadzorowanych w usłudze Office 365.  Aby uzyskać więcej informacji dotyczących danych programu Microsoft Graph connect, zapoznaj się [ten link](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki).
 
 W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z usługi Office 365. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
-
-Wprowadzenie dziewięć minutę i demonstracyjnych dotyczące łączenia usługi Data Factory z danych usługi Office 365 Obejrzyj poniższy film wideo:
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-cloud-scale-analytics-of-Office-365-data-with-Azure-Data-Factory/player]
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
@@ -45,10 +41,10 @@ Teraz wewnątrz działania elementu pojedynczej kopii można jedynie **kopiowani
 Aby skopiować dane z usługi Office 365 na platformie Azure, musisz wykonać następujące kroki wymagań wstępnych:
 
 - Administrator dzierżawy usługi Office 365 należy wykonać akcje na pokład, zgodnie z opisem [tutaj](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/On-boarding).
-- Utwórz i skonfiguruj aplikację sieci web usługi Azure AD w usłudze Azure Active Directory.  Aby uzyskać instrukcje, zobacz [Utwórz aplikację usługi Azure AD](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application).
+- Utwórz i skonfiguruj aplikację sieci web usługi Azure AD w usłudze Azure Active Directory.  Aby uzyskać instrukcje, zobacz [Utwórz aplikację usługi Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application).
 - Zanotuj następujące wartości, które będą używane do definiowania połączonej usługi dla usługi Office 365:
-    - Identyfikator dzierżawy.  Aby uzyskać instrukcje, zobacz [uzyskanie Identyfikatora dzierżawy](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
-    - Klucz Identyfikatora aplikacji i aplikacji.  Aby uzyskać instrukcje, zobacz [Get aplikacji Identyfikatora i klucza uwierzytelniania](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key).
+    - Identyfikator dzierżawy.  Aby uzyskać instrukcje, zobacz [uzyskanie Identyfikatora dzierżawy](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
+    - Klucz Identyfikatora aplikacji i aplikacji.  Aby uzyskać instrukcje, zobacz [Get aplikacji Identyfikatora i klucza uwierzytelniania](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key).
 - Dodaj tożsamość użytkownika, który powoduje ustawienie żądania dostępu do danych jako właściciel aplikacji sieci web usługi Azure AD (aplikacji internetowej z usługi Azure AD > Ustawienia > właścicieli > Dodaj właściciela).
 
 ## <a name="approving-new-data-access-requests"></a>Zatwierdzanie żądań dostępu do nowych danych

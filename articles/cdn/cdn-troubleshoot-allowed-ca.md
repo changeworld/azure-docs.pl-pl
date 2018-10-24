@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 10/18/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: e9d9f5b053537b3d6881763bcb39d7894ba78869
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 79b8cfa061bafb43cbcf2ec8a43638fd14c2fcd0
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969512"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954041"
 ---
 # <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-cdn"></a>Dozwolone urzędów certyfikacji umożliwiające niestandardowy protokół HTTPS dla usługi Azure CDN
 
@@ -70,27 +70,6 @@ Następujące urzędów certyfikacji są dozwolone podczas tworzenia własnego c
 - GlobalSign głównego urzędu certyfikacji
 - Go Daddy główny urząd certyfikacji — G2
 - Go Daddy bezpiecznego certyfikatu urzędu - G2
-- Microsoft Authenticode(tm) głównego urzędu certyfikacji
-- Usługi Microsoft Exchange 2015 urzędu certyfikacji
-- Wewnętrznym głównym firmy Microsoft
-- Dział IT firmy Microsoft Pawłowski SSL urzędu certyfikacji 1
-- Algorytm SHA1 SSL dział IT firmy Microsoft
-- Algorytmu SHA2 SSL dział IT firmy Microsoft
-- Dział IT firmy Microsoft TLS certyfikacji 1
-- Dział IT firmy Microsoft TLS certyfikacji 2
-- Dział IT firmy Microsoft TLS certyfikacji 4
-- Dział IT firmy Microsoft TLS certyfikacji 5
-- Microsoft głównego urzędu certyfikacji
-- Microsoft główny urząd certyfikacji
-- Microsoft główny urząd certyfikacji 2010
-- Microsoft główny urząd certyfikacji 2011
-- Microsoft bezpiecznego Server 2011 urzędu certyfikacji
-- Główny Partner usług firmy Microsoft
-- Główny usługi Oznaczanie sygnaturą czasową firmy Microsoft
-- Zgodność sprzętu Microsoft Windows
-- MSIT URZĘDU CERTYFIKACJI Z2
-- Urząd certyfikacji przedsiębiorstwa MSIT 1
-- Urząd certyfikacji przedsiębiorstwa MSIT 3
 - RSA RapidSSL 2018 urzędu certyfikacji
 - Agencja głównego
 - Klasa Symantec 3 Weryfikacją certyfikatu SSL urzędu - G3
@@ -102,12 +81,11 @@ Następujące urzędów certyfikacji są dozwolone podczas tworzenia własnego c
 - RSA Thawte 2018 urzędu certyfikacji
 - Sygnatura czasowa Thawte urzędu certyfikacji
 - RSA TLS TrustAsia urzędu certyfikacji
-- UTN USERFirst obiektu
 - Klasa VeriSign 3 rozszerzona Walidacja certyfikatu SSL urzędu
 - Klasa VeriSign 3 rozszerzona Walidacja SSL SGC urzędu certyfikacji
 - Klasa VeriSign 3 publiczny podstawowy urząd certyfikacji — 5. generacji
 - VeriSign międzynarodowych serwera urzędu certyfikacji — klasa 3
 - Czas VeriSign sygnatur element główny usługi
 - Uniwersalny VeriSign głównego urzędu certyfikacji
-- WMSvc-algorytmu SHA2-DALEDGE1008
+
 

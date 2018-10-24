@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9a2193d78d564ad4a8c175a5116fa7dc9ebda256
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 28ddfea0f4127f402b82388a10ee150b30a65736
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408748"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954236"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Łączenie programu Configuration Manager do usługi Log Analytics
 Można połączyć środowiska programu System Center Configuration Manager z usługą Azure Log Analytics, synchronizować dane kolekcji urządzeń i odwołują się do tych kolekcji w usłudze Log Analytics i Azure Automation.  
@@ -32,7 +32,7 @@ Usługa log Analytics obsługuje System Center Configuration Manager bieżącej 
 ## <a name="configuration-overview"></a>Omówienie konfiguracji
 Poniższe instrukcje stanowią podsumowanie czynności, aby skonfigurować integrację programu Configuration Manager z usługą Log Analytics.  
 
-1. W witrynie Azure portal Zarejestruj programu Configuration Manager jako aplikację sieci Web, aplikacji i/lub interfejs API sieci Web i upewnij się, że identyfikator klienta i klucz tajny klienta z rejestracji z usługi Azure Active Directory. Zobacz [w obsłudze portalu do tworzenia aplikacji i usługi jednostki, które mogą uzyskiwać dostęp do zasobów usługi Active Directory](../azure-resource-manager/resource-group-create-service-principal-portal.md) Aby uzyskać szczegółowe informacje na temat wykonywania tego kroku.
+1. W witrynie Azure portal Zarejestruj programu Configuration Manager jako aplikację sieci Web, aplikacji i/lub interfejs API sieci Web i upewnij się, że identyfikator klienta i klucz tajny klienta z rejestracji z usługi Azure Active Directory. Zobacz [w obsłudze portalu do tworzenia aplikacji i usługi jednostki, które mogą uzyskiwać dostęp do zasobów usługi Active Directory](../active-directory/develop/howto-create-service-principal-portal.md) Aby uzyskać szczegółowe informacje na temat wykonywania tego kroku.
 2. W witrynie Azure portal [udzielić programu Configuration Manager (rejestrowanej aplikacji internetowej) z uprawnieniami do usługi Log Analytics](#grant-configuration-manager-with-permissions-to-log-analytics).
 3. W programie Configuration Manager [Dodaj połączenie za pomocą Kreatora dodawania połączenia pakietu OMS](#add-an-oms-connection-to-configuration-manager).
 4. W programie Configuration Manager [zaktualizować właściwości połączenia](#update-oms-connection-properties) Jeśli klucz tajny klienta lub hasło nigdy nie wygaśnie lub zostanie utracony.

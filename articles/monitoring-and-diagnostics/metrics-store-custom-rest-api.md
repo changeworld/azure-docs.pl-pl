@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: c01440437eae3cb076627ab9f2221e33b833f472
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d36697e6b5765ecf35ed9b3add45cff6c33823a5
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977240"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958224"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-using-a-rest-api"></a>Wyślij niestandardowe metryki dla zasobów platformy Azure, aby metryki usługi Azure Monitor przechowywania, przy użyciu interfejsu API REST
 
@@ -25,7 +25,7 @@ W tym artykule pokazano, jak wysyłać metryki niestandardowe dla zasobów platf
 
 ## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>Tworzenie i autoryzować nazwę główną usługi, aby emitować metryki 
 
-Tworzenie jednostki usługi w dzierżawie usługi Azure Active Directory, korzystając z instrukcji w [utworzyć nazwę główną usługi](../azure-resource-manager/resource-group-create-service-principal-portal.md). 
+Tworzenie jednostki usługi w dzierżawie usługi Azure Active Directory, korzystając z instrukcji w [utworzyć nazwę główną usługi](../active-directory/develop/howto-create-service-principal-portal.md). 
 
 Należy pamiętać, że podczas przechodzenia przez ten proces: 
 

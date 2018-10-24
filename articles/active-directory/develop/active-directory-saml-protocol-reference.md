@@ -17,14 +17,14 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: b9ae7cf9d6fd383c7cdfa3957b5d9b94c7207d50
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 5c560218bebd5399c85b9cebe11c7342e8d15a59
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900659"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945692"
 ---
-# <a name="how-azure-ad-uses-the-saml-protocol"></a>W jaki sposób usługa Azure AD używa protokołu SAML
+# <a name="how-azure-ad-uses-the-saml-protocol"></a>Jak usługa Azure AD używa protokołu SAML
 
 Azure Active Directory (Azure AD) protokół używa języka SAML 2.0 umożliwiające aplikacji w celu zapewnienia logowania jednokrotnego do użytkowników. [Logowania jednokrotnego](single-sign-on-saml-protocol.md) i [wylogowania jednokrotnego](single-sign-out-saml-protocol.md) SAML profilów usługi Azure AD wyjaśniają, jak twierdzenia SAML protokołów i powiązań są używane w usłudze dostawcy tożsamości.
 
@@ -32,7 +32,7 @@ Protokół SAML wymaga dostawcy tożsamości (Azure AD) i dostawcy usług (aplik
 
 Gdy aplikacja będzie zarejestrowana w usłudze Azure AD, Deweloper aplikacji rejestruje informacje związane z federacji z usługą Azure AD. Informacje te obejmują **identyfikator URI przekierowania** i **URI metadanych** aplikacji.
 
-Usługa Azure AD używa usługi w chmurze **URI metadanych** można pobrać klucza podpisywania i wylogowania identyfikatora URI. Aplikacja nie obsługuje metadanych identyfikatora URI, deweloper powinni skontaktować się ze pomocy technicznej firmy Microsoft w zapewnienie wylogowania identyfikatora URI i klucz podpisywania.
+Usługa Azure AD używa usługi w chmurze **URI metadanych** można pobrać klucza podpisywania i wylogowania identyfikatora URI. Klient może otworzyć aplikację w **usługi Azure AD -> Rejestracja aplikacji** a następnie w polu **Ustawienia -> właściwości**, mogą aktualizować adres URL wylogowania. W ten sposób usługa Azure AD można wysłać odpowiedź do prawidłowego adresu URL. 
 
 Usługa Azure Active Directory uwidacznia specyficznym dla dzierżawy i wspólne (niezależny od dzierżawcy) pojedynczego logowania jednokrotnego i jednym wylogowania punkty końcowe. Te adresy URL przedstawiają lokalizacji mogą być adresowane — nie są one tylko identyfikatory — dzięki czemu można przejść do punktu końcowego do odczytu metadanych.
 

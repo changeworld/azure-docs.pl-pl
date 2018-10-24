@@ -1,41 +1,41 @@
 
-Diagnozowanie problemów z usługą w chmurze Microsoft Azure wymaga zbieranie plików dziennika usługi na maszynach wirtualnych, ponieważ występują problemy. Umożliwia AzureLogCollector rozszerzenia na żądanie wykonywać jednorazowe zbierania dzienników z co najmniej jeden chmury maszyn wirtualnych usługi (od ról sieć web i roli proces roboczy) i przenieść zebranych plików do konta magazynu platformy Azure — wszystko to bez zdalne logowanie do dowolnego maszyn wirtualnych.
+Diagnozowanie problemów z usługą w chmurze Microsoft Azure wymaga zbierania plików dziennika usługi na maszynach wirtualnych, w momencie wystąpienia problemów. Można użyć AzureLogCollector rozszerzenia na żądanie wykonaj jednorazowy zbieranie dzienników z przynajmniej jednej chmury usługi maszyny wirtualnej (z ról sieć web i ról procesów roboczych) i przenieść zebranych plików na konto magazynu platformy Azure — wszystko to bez konieczności zdalne logowanie do dowolnej maszyn wirtualnych.
 
 > [!NOTE]
-> Opisy dla większości zarejestrowane informacje można znaleźć w folderze http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp.
+> Opisy większości zarejestrowanych informacji znajduje się w temacie http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp.
 > 
 > 
 
-Istnieją dwa tryby kolekcji zależne od typów plików, które mają być zbierane.
+Istnieją dwa tryby gromadzenia, zależne od typów plików, które mają być zbierane.
 
-* **Azure gościa Agent dzienniki tylko (GA)**. Ten tryb kolekcji obejmuje wszystkie dzienniki związanych z agentów gości Azure i inne składniki platformy Azure.
-* **Wszystkie dzienniki (pełną)**. Ten tryb kolekcji zbiera wszystkie pliki w trybie GA plus:
+* **Gościa platformy Azure agenta dzienniki tylko (GA)**. Ten tryb kolekcji obejmuje wszystkie dzienniki związane z agentów gościa platformy Azure i innymi składnikami platformy Azure.
+* **Wszystkie dzienniki (pełne)**. Ten tryb kolekcji zbiera wszystkie pliki w trybie GA plus:
   
   * dzienniki zdarzeń systemu i aplikacji
   * Dzienniki błędów HTTP
-  * Dzienniki programu IIS
-  * Dzienniki instalacji
+  * Dzienniki usług IIS
+  * Dzienniki Instalatora
   * inne dzienniki systemu
 
-W obu trybach kolekcji można określić dodatkowe dane folderów kolekcji przy użyciu kolekcję o następującej strukturze:
+W obu trybach kolekcji można określić dodatkowe dane folderów kolekcji, używając kolekcji o następującej strukturze:
 
 * **Nazwa**: nazwę kolekcji, używana jako nazwa podfolderu wewnątrz pliku zip z zebranych plików.
 * **Lokalizacja**: ścieżka do folderu na maszynie wirtualnej, w którym znajdują się pliki, które mają być zbierane.
-* **SearchPattern**: wzorzec nazw plików, które mają być zbierane. Domyślna to "\*"
-* **Cykliczne**: Jeśli pliki mają być zbierane są rekursywnie znajduje się w określonej lokalizacji.
+* **SearchPattern**: wzorzec nazw plików, które mają być zbierane. Wartość domyślna to "\*"
+* **Cykliczne**: Jeśli pliki mają być zbierane są rekursywnie znajduje się w lokalizacji określonej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Masz konto magazynu dla rozszerzenia do zapisywania plików zip wygenerowany.
-* Użyj polecenia cmdlet programu PowerShell systemu Azure v0.8.0 lub nowszej. Aby uzyskać więcej informacji, zobacz [Azure pobiera](https://azure.microsoft.com/downloads/).
+* Nie masz konta magazynu dla rozszerzenia do zapisywania plików zip wygenerowany.
+* Użyj polecenia cmdlet programu Azure PowerShell v0.8.0 lub nowszej. Aby uzyskać więcej informacji, zobacz [pliki do pobrania Azure](https://azure.microsoft.com/downloads/).
 
 ## <a name="add-the-extension"></a>Dodawanie rozszerzenia
-Można użyć [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) poleceń cmdlet lub [API REST zarządzania usługami](https://msdn.microsoft.com/library/ee460799.aspx) można dodać rozszerzenia AzureLogCollector.
+Możesz użyć [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) poleceń cmdlet lub [interfejsów API REST zarządzania usługami](https://msdn.microsoft.com/library/ee460799.aspx) można dodać rozszerzenia AzureLogCollector.
 
-Dla usług w chmurze, istniejącego polecenia cmdlet programu Azure Powershell **AzureServiceExtension zestaw**, można włączyć rozszerzenia dla wystąpień roli usługi w chmurze. Za każdym razem, gdy to rozszerzenie jest włączona za pomocą tego polecenia cmdlet, zbierania dzienników jest wyzwalane w wystąpieniach wybranej roli wybranych ról.
+Dla usług w chmurze, istniejące polecenia cmdlet programu Azure Powershell **AzureServiceExtension zestaw**, może służyć do włączyć rozszerzenie na wystąpieniach roli usługi w chmurze. Za każdym razem, gdy to rozszerzenie jest włączone za pomocą tego polecenia cmdlet, zbieranie danych dziennika jest wyzwalana dla wybranej roli rodzajami wybranych ról.
 
-W przypadku maszyn wirtualnych istniejącego polecenia cmdlet programu Azure Powershell **AzureVMExtension zestaw**, można włączyć rozszerzenia na maszynach wirtualnych. Za każdym razem, gdy to rozszerzenie jest włączona za pomocą polecenia cmdlet, zbierania dzienników jest wyzwalane w każdym wystąpieniu.
+W przypadku maszyn wirtualnych istniejące polecenia cmdlet programu Azure Powershell **AzureVMExtension zestaw**, może służyć do włączyć rozszerzenie na maszynach wirtualnych. Za każdym razem, gdy to rozszerzenie jest włączone za pomocą polecenia cmdlet, zbieranie danych dziennika jest wyzwalany w każdym wystąpieniu.
 
-Wewnętrznie to rozszerzenie używa PublicConfiguration opartych na formacie JSON i PrivateConfiguration. Poniżej znajduje się układ próbkę JSON konfiguracji publiczne i prywatne.
+To rozszerzenie używa wewnętrznie, PublicConfiguration opartych na formacie JSON i PrivateConfiguration. Poniżej znajduje się układ próbkę JSON dla konfiguracji publicznych i prywatnych.
 
 ### <a name="publicconfiguration"></a>PublicConfiguration
 
@@ -71,15 +71,15 @@ Wewnętrznie to rozszerzenie używa PublicConfiguration opartych na formacie JSO
 ```
 
 > [!NOTE]
-> To rozszerzenie nie wymaga **privateConfiguration**. Można podać tylko pustą strukturą dla **— PrivateConfiguration** argumentu.
+> To rozszerzenie nie wymaga **privateConfiguration**. Można po prostu podać pustą strukturą dla **— PrivateConfiguration** argumentu.
 > 
 > 
 
-Możesz wykonać jedną dwa poniższe kroki, aby dodać AzureLogCollector do co najmniej jedno wystąpienie usługi w chmurze lub wybranych ról maszyny wirtualnej, która wyzwala kolekcje na każdej maszynie Wirtualnej Uruchom i wysyłanie zebranych plików do określone konto platformy Azure.
+Możesz wykonać jedną z dwóch poniższe kroki, aby dodać AzureLogCollector do co najmniej jedno wystąpienie usługi w chmurze lub maszyny wirtualnej wybranych ról, co powoduje wyzwolenie kolekcji na każdej maszynie Wirtualnej do uruchamiania i wysyłać zebrane pliki określone konto platformy Azure.
 
 ## <a name="adding-as-a-service-extension"></a>Dodawanie jako rozszerzenie usługi
-1. Postępuj zgodnie z instrukcjami, aby połączyć program Azure PowerShell do subskrypcji.
-2. Określić do których chcesz dodać i włączyć rozszerzenie AzureLogCollector wystąpień nazwę, miejsca, ról i rolę usługi.
+1. Postępuj zgodnie z instrukcjami, aby połączyć z programu Azure PowerShell do Twojej subskrypcji.
+2. Określ nazwę, miejsca, ról i ról wystąpień usługi do których chcesz dodać, a następnie włączyć rozszerzenie AzureLogCollector.
 
   ```powershell
   #Specify your cloud service name
@@ -98,7 +98,7 @@ Możesz wykonać jedną dwa poniższe kroki, aby dodać AzureLogCollector do co 
   $mode = "GA"
   ```
 
-3. Określ folder dodatkowych danych, dla której będą zbierane pliki (ten krok jest opcjonalny).
+3. Określ folder dodatkowych danych, dla których będą zbierane pliki (ten krok jest opcjonalny).
 
   ```powershell
   #add one location
@@ -114,23 +114,23 @@ Możesz wykonać jedną dwa poniższe kroki, aby dodać AzureLogCollector do co 
   ```
 
    > [!NOTE]
-   > Można użyć tokenu `%roleroot%` do określenia dysku głównym roli, ponieważ nie używa dysk stały.
+   > Można użyć tokenu `%roleroot%` do określenia dysku głównym roli, ponieważ nie korzysta się z dyskiem stałym.
    > 
    > 
-4. Podaj nazwę konta magazynu platformy Azure i klucz, do którego zostanie przekazany zebranych plików.
+4. Podaj nazwę konta usługi Azure storage i klucz, do którego zostanie przekazane zebranych plików.
 
   ```powershell
   $StorageAccountName = 'YourStorageAccountName'
   $StorageAccountKey  = 'YourStorageAccountKey'
   ```
 
-5. Wywołanie SetAzureServiceLogCollector.ps1 (dołączony na końcu artykułu) w następujący sposób włączyć rozszerzenie AzureLogCollector dla usługi w chmurze. Po zakończeniu wykonywania można znaleźć przekazanego pliku w obszarze `https://YourStorageAccountName.blob.core.windows.net/vmlogs`
+5. Wywołanie SetAzureServiceLogCollector.ps1 (dołączona na końcu tego artykułu) w następujący sposób włączyć rozszerzenie AzureLogCollector dla usługi w chmurze. Po zakończeniu wykonywania, można znaleźć przekazanego pliku w obszarze `https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
   ```powershell
   .\SetAzureServiceLogCollector.ps1 -ServiceName YourCloudServiceName  -Roles $roles  -Instances $instances –Mode $mode -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -AdditionDataLocationList $AdditionalDataList
   ```
 
-Poniżej znajduje się definicja parametry przekazywane do skryptu. (To jest kopiowana poniżej również.)
+Poniżej znajduje się definicja parametry przekazywane do skryptu. (To jest kopiowana poniżej także.)
 
 ```powershell
 [CmdletBinding(SupportsShouldProcess = $true)]
@@ -164,12 +164,12 @@ param (
 
 * **ServiceName**: Nazwa usługi w chmurze.
 * **Role**: lista ról, takich jak "WebRole1" lub "WorkerRole1".
-* **Wystąpienia**: Lista nazw wystąpień roli oddzielonych przecinkami — Użyj ciągu symbol wieloznaczny ("*") dla wszystkich wystąpień roli.
-* **Gniazdo**: nazwa miejsca. "Production" lub "Tymczasowości".
+* **Wystąpienia**: listę nazw wystąpień roli, oddzielone przecinkiem — Użyj ciągu symbol wieloznaczny ("*") dla wszystkich wystąpień roli.
+* **Gniazda**: nazwa miejsca. "Produkcyjne" lub "Staging".
 * **Tryb**: tryb kolekcji. "Pełnej" lub "GA".
-* **StorageAccountName**: Nazwa Azure konta magazynu do przechowywania zbieranych danych.
-* **StorageAccountKey**: klucz konta magazynu Name Azure.
-* **AdditionalDataLocationList**: Lista następującej strukturze:
+* **StorageAccountName**: Nazwa platformy Azure z konta magazynu do przechowywania zebranych danych.
+* **StorageAccountKey**: klucz konta magazynu nazwę platformy Azure.
+* **AdditionalDataLocationList**: Lista następującą strukturę:
 
   ```powershell
   {
@@ -181,7 +181,7 @@ param (
   ```
 
 ## <a name="adding-as-a-vm-extension"></a>Dodawanie jako rozszerzenie maszyny Wirtualnej
-Postępuj zgodnie z instrukcjami, aby połączyć program Azure PowerShell do subskrypcji.
+Postępuj zgodnie z instrukcjami, aby połączyć z programu Azure PowerShell do Twojej subskrypcji.
 
 1. Określ nazwę usługi, maszyny Wirtualnej i tryb kolekcji.
 
@@ -209,16 +209,16 @@ Postępuj zgodnie z instrukcjami, aby połączyć program Azure PowerShell do su
         #more locations can be added....
   ```
   
-2. Podaj nazwę konta magazynu platformy Azure i klucz, do którego zostanie przekazany zebranych plików.
+2. Podaj nazwę konta usługi Azure storage i klucz, do którego zostanie przekazane zebranych plików.
 
   ```powershell
   $StorageAccountName = 'YourStorageAccountName'
   $StorageAccountKey  = 'YourStorageAccountKey'
   ```
 
-3. Wywołanie SetAzureVMLogCollector.ps1 (dołączony na końcu artykułu) w następujący sposób włączyć rozszerzenie AzureLogCollector dla usługi w chmurze. Po zakończeniu wykonywania można znaleźć przekazanego pliku w obszarze `https://YourStorageAccountName.blob.core.windows.net/vmlogs`
+3. Wywołanie SetAzureVMLogCollector.ps1 (dołączona na końcu tego artykułu) w następujący sposób włączyć rozszerzenie AzureLogCollector dla usługi w chmurze. Po zakończeniu wykonywania, można znaleźć przekazanego pliku w obszarze `https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
-Poniżej znajduje się definicja parametry przekazywane do skryptu. (To jest kopiowana poniżej również.)
+Poniżej znajduje się definicja parametry przekazywane do skryptu. (To jest kopiowana poniżej także.)
 
 ```powershell
 [CmdletBinding(SupportsShouldProcess = $true)]
@@ -247,9 +247,9 @@ param (
 * **ServiceName**: Nazwa usługi w chmurze.
 * **VMName**: Nazwa maszyny Wirtualnej.
 * **Tryb**: tryb kolekcji. "Pełnej" lub "GA".
-* **StorageAccountName**: Nazwa Azure konta magazynu do przechowywania zbieranych danych.
-* **StorageAccountKey**: klucz konta magazynu Name Azure.
-* **AdditionalDataLocationList**: Lista następującej strukturze:
+* **StorageAccountName**: Nazwa platformy Azure z konta magazynu do przechowywania zebranych danych.
+* **StorageAccountKey**: klucz konta magazynu nazwę platformy Azure.
+* **AdditionalDataLocationList**: Lista następującą strukturę:
 
   ```
   {
@@ -260,7 +260,7 @@ param (
   }
   ```
 
-## <a name="extention-powershell-script-files"></a>Rozszerzenie plików skryptów środowiska PowerShell
+## <a name="extention-powershell-script-files"></a>Pliki skryptów programu PowerShell rozszerzenie
 ### <a name="setazureservicelogcollectorps1"></a>SetAzureServiceLogCollector.ps1
 
 ```powershell
@@ -437,7 +437,7 @@ if ($AdditionDataLocationList -ne $null )
 #
 $publicConfigJSON = $publicConfig | ConvertTo-Json
 
-Write-Output "PublicConfigurtion is: \r\n$publicConfigJSON"
+Write-Output "PublicConfiguration is: \r\n$publicConfigJSON"
 
 #
 #we just provide a empty privateConfig object
@@ -512,5 +512,5 @@ else
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Teraz możesz zbadać lub skopiować dzienników z jednego miejsca proste.
+Teraz można przejrzeć, lub skopiować dzienników z jednego miejsca proste.
 

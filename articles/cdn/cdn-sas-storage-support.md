@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
-ms.openlocfilehash: 7180e51a6ac1392e4a3f072097b1aeef3648c605
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 57891bcce289c30d7dce1cd00c301064aa9b97cc
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093293"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955239"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Usługa Azure CDN przy użyciu sygnatury dostępu Współdzielonego
 
@@ -71,28 +71,28 @@ Ta opcja jest najprostszy i korzysta z jednego tokenu sygnatury dostępu Współ
  
 Ta opcja jest dostępna tylko w przypadku **Azure CDN Premium from Verizon** profilów. Po wybraniu tej opcji można zabezpieczyć magazynu obiektów blob na serwerze źródłowym. Można użyć tej opcji, jeśli nie ma potrzeby ograniczenia dostępu do określonego pliku, ale chcesz uniemożliwić użytkownikom uzyskiwanie dostępu do źródła magazynu bezpośrednio do skrócenia czasu odciążania sieć CDN systemu Azure. Token sygnatury dostępu Współdzielonego, który jest nieznany do użytkownika, jest wymagana dla każdego, kto uzyskiwania dostępu do plików w określonym kontenerze serwera pochodzenia. Jednak ze względu na reguły ponownego zapisywania adresów URL tokenu sygnatury dostępu Współdzielonego nie jest wymagany w punkcie końcowym usługi CDN.
  
-1. Użyj [aparat reguł](cdn-rules-engine.md) można utworzyć regułę ponownego zapisywania adresów URL. Nowe reguły zająć około 10 minut na propagację.
+1. Użyj [aparat reguł](cdn-rules-engine.md) można utworzyć regułę ponownego zapisywania adresów URL. Nowe reguły podjąć propagowane do 4 godzin.
 
    ![Przycisk zarządzania sieci CDN](./media/cdn-sas-storage-support/cdn-manage-btn.png)
 
    ![Przycisk aparatu reguł sieci CDN](./media/cdn-sas-storage-support/cdn-rules-engine-btn.png)
 
-   Poniższe reguły ponownego zapisywania adresów URL przykładowe za pomocą wzorca wyrażenia regularnego grupa przechwytywania i punktu końcowego o nazwie *storagedemo*:
+   Poniższe reguły ponownego zapisywania adresów URL przykładowe za pomocą wzorca wyrażenia regularnego grupa przechwytywania i punktu końcowego o nazwie *sasstoragedemo*:
    
    Źródło:   
-   `(\/container1\/.*)`
+   `(container1\/.*)`
    
    Miejsce docelowe:   
    ```
    $1?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
    ![Ponowne zapisywanie adresów URL usługi CDN reguły - lewej](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
-   ![reguły ponownego zapisywania adresów URL usługi CDN - prawej](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-2.png)
+   ![reguły ponownego zapisywania adresów URL usługi CDN - prawej](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
 2. Po nową regułę stanie się aktywny, każdy użytkownik ma dostęp do plików w określonym kontenerze punktu końcowego usługi CDN, niezależnie od tego, czy przy użyciu tokenu sygnatury dostępu Współdzielonego w adresie URL. Oto format: `https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
    Na przykład:   
-   `https://demoendpoint.azureedge.net/container1/demo.jpg`
+   `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
        
 
 3. Dostosuj czas trwania pamięci podręcznej przy użyciu reguł buforowania lub dodając `Cache-Control` nagłówków na serwerze źródłowym. Ponieważ usługa Azure CDN traktuje token sygnatury dostępu Współdzielonego jako ciąg zapytania zwykły, najlepszym rozwiązaniem należy skonfigurować czas trwania buforowania, która wygaśnie po w lub przed upływem terminu ważności sygnatury dostępu Współdzielonego. W przeciwnym razie jeśli plik jest buforowana przez dłuższy czas niż sygnatury dostępu Współdzielonego jest aktywna, to plik może być dostępny z serwera pochodzenia sieć CDN systemu Azure, po upłynięciu czasu wygaśnięcia sygnatury dostępu Współdzielonego. Jeśli taka sytuacja ma miejsce, a chcesz wprowadzić plików w pamięci podręcznej jest niedostępny, należy wykonać operację przeczyszczania, plik, aby wyczyścić go z pamięci podręcznej. Aby dowiedzieć się, jak ustawienie czas trwania pamięci podręcznej w usłudze Azure CDN, zobacz [kontroli Azure działanie buforowania usługi CDN przy użyciu reguł buforowania](cdn-caching-rules.md).
@@ -108,24 +108,24 @@ Aby użyć uwierzytelniania tokenu zabezpieczeń usługi Azure CDN, musisz mieć
  
    Na przykład:   
    ```
-   https://demoendpoint.azureedge.net/container1/demo.jpg?a4fbc3710fd3449a7c99986bkquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
+   https://sasstoragedemo.azureedge.net/container1/demo.jpg?a4fbc3710fd3449a7c99986bkquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
        
    Opcje parametrów dla uwierzytelniania przy użyciu tokenu zabezpieczeń różnią się od opcji parametrów dla tokenu sygnatury dostępu Współdzielonego. Jeśli zdecydujesz się użyć podczas tworzenia tokenu zabezpieczającego czas wygaśnięcia, jest on ustawiany na taką samą wartość jak czas wygaśnięcia tokenu sygnatury dostępu Współdzielonego. Daje to gwarancję, że czas wygaśnięcia jest przewidywalne. 
  
-2. Użyj [aparat reguł](cdn-rules-engine.md) można utworzyć regułę ponownego zapisywania adresów URL, aby umożliwić dostęp do tokenu sygnatury dostępu Współdzielonego do wszystkich obiektów blob w kontenerze. Nowe reguły zająć około 10 minut na propagację.
+2. Użyj [aparat reguł](cdn-rules-engine.md) można utworzyć regułę ponownego zapisywania adresów URL, aby umożliwić dostęp do tokenu sygnatury dostępu Współdzielonego do wszystkich obiektów blob w kontenerze. Nowe reguły podjąć propagowane do 4 godzin.
 
-   Poniższe reguły ponownego zapisywania adresów URL przykładowe za pomocą wzorca wyrażenia regularnego grupa przechwytywania i punktu końcowego o nazwie *storagedemo*:
+   Poniższe reguły ponownego zapisywania adresów URL przykładowe za pomocą wzorca wyrażenia regularnego grupa przechwytywania i punktu końcowego o nazwie *sasstoragedemo*:
    
    Źródło:   
-   `(\/container1\/.*)`
+   `(container1\/.*)`
    
    Miejsce docelowe:   
    ```
    $1&sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
    ![Ponowne zapisywanie adresów URL usługi CDN reguły - lewej](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
-   ![reguły ponownego zapisywania adresów URL usługi CDN - prawej](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-3.png)
+   ![reguły ponownego zapisywania adresów URL usługi CDN - prawej](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
 3. Jeśli odnowisz sygnatury dostępu Współdzielonego upewnij się, zaktualizować reguły ponownego zapisywania adresów Url przy użyciu nowego tokenu sygnatury dostępu Współdzielonego. 
 

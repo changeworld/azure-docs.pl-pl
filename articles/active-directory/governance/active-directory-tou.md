@@ -12,19 +12,29 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 09/04/2018
+ms.date: 10/19/2018
 ms.author: rolyon
-ms.openlocfilehash: b6cc81a49875739a61aa397a65eb70c6b4f082ef
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: be00f6fb41572c0a9599f7005f2cdd1d6587f15a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393987"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944147"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkcja Warunki użytkowania usługi Azure Active Directory
-Warunki użytkowania usługi Azure AD pozwalają organizacjom przedstawiać informacje użytkownikom końcowym w prosty sposób. Dzięki tej prezentacji użytkownicy mogą zapoznać się z istotnymi zastrzeżeniami do wymagań prawnych lub wymagań dotyczących zgodności. W tym artykule opisano, jak zacząć korzystać z warunków użytkowania usługi Azure AD.
+Warunki użytkowania usługi Azure AD pozwalają organizacjom przedstawiać informacje użytkownikom końcowym w prosty sposób. Dzięki tej prezentacji użytkownicy mogą zapoznać się z istotnymi zastrzeżeniami do wymagań prawnych lub wymagań dotyczących zgodności. W tym artykule opisano sposób rozpoczęcia pracy z warunkami użytkowania.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
+
+## <a name="overview-videos"></a>Filmy wideo z omówieniem
+
+Poniższy klip wideo zawiera krótkie podsumowanie warunków użytkowania.
+
+>[!VIDEO https://www.youtube.com/embed/tj-LK0abNao]
+
+Aby obejrzeć dodatkowe filmy wideo zobacz:
+- [Jak wdrożyć warunki użytkowania usługi Azure Active Directory](https://www.youtube.com/embed/N4vgqHO2tgY)
+- [Jak wdrażać warunki użytkowania usługi Azure Active Directory](https://www.youtube.com/embed/t_hA4y9luCY)
 
 ## <a name="what-can-i-do-with-terms-of-use"></a>Do czego można wykorzystać warunki użytkowania?
 Warunki użytkowania usługi Azure AD umożliwiają wykonanie następujących czynności:
@@ -33,8 +43,9 @@ Warunki użytkowania usługi Azure AD umożliwiają wykonanie następujących cz
 - Prezentowanie specyficznych warunków użytkowania zależnych od atrybutów użytkownika (np. warunki dla lekarzy różnią się od warunków dla pielęgniarek, a pracownicy krajowi mają inne warunki niż pracownicy międzynarodowi) za pomocą [grup dynamicznych](../users-groups-roles/groups-dynamic-membership.md).
 - Prezentowanie specyficznych warunków użytkowania podczas korzystania z aplikacji mających duży wpływ na działalność biznesową, takich jak Salesforce.
 - Prezentowanie warunków użytkowania w innych językach.
+- Pomaga w osiągnięciu przepisów dotyczących zachowania poufności.
 - Wyświetlanie listy użytkowników, którzy wyrazili lub nie wyrazili zgody na warunki użytkowania.
-- Wyświetlanie dziennika inspekcji działania warunków użytkowania.
+- Wyświetl dziennik postanowień aktywności użycia dotyczących zgodności i inspekcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do skonfigurowania warunków użytkowania usługi Azure AD niezbędne są następujące elementy:
