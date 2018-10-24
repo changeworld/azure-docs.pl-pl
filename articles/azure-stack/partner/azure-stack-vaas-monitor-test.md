@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 10/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: b9500176cd3779c46886e6ed8bc8c989bea20a8c
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 03efe32e7a9a29318e4f97ce5636616fad443284
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647515"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956667"
 ---
 # <a name="monitor-and-manage-tests-in-the-vaas-portal"></a>Monitorowanie i zarządzanie testami w portalu VaaS
 

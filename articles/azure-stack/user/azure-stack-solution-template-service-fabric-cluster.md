@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/12/2018
-ms.author: mattbriggs
+ms.date: 10/22/2018
+ms.author: mabrigg
 ms.reviewer: shnatara
-ms.openlocfilehash: d402b2bcd5187cbb6ece78d7e981068c279c1f75
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 0b5f7442604dd31f730b0105d19231407e2b6f1a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804433"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49946117"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Wdrażanie klastra usługi Service Fabric w usłudze Azure Stack
 
@@ -48,7 +48,7 @@ Następujące czynności są wymagane do wdrożenia klastra usługi Service Fabr
 
 
 ## <a name="add-a-secret-to-key-vault"></a>Dodawanie wpisu tajnego do usługi Key Vault
-Aby wdrożyć klaster usługi Service Fabric, należy określić poprawny magazyn kluczy *identyfikator wpisu tajnego* lub adres URL dla klastra usługi Service Fabric. Szablon usługi Azure Resource Manager przyjmuje KeyVault jako dane wejściowe, a następnie pobiera certyfikat klastra podczas instalacji klastra usługi Service Fabric. 
+Aby wdrożyć klaster usługi Service Fabric, należy określić poprawny magazyn kluczy *identyfikator wpisu tajnego* lub adres URL dla klastra usługi Service Fabric. Szablon usługi Azure Resource Manager ma KeyVault jako dane wejściowe. Następnie szablon pobiera certyfikat klastra podczas instalowania klastra usługi Service Fabric.
 
 > [!IMPORTANT]  
 > Należy dodać wpis tajny do magazynu kluczy do użycia z usługą Service Fabric za pomocą programu PowerShell. Nie należy używać portalu.  
@@ -139,7 +139,7 @@ Aby uzyskać więcej informacji, zobacz [Zarządzanie magazynu kluczy w usłudze
    - Źródło usługi Key Vault: Określ cały *identyfikator magazynu kluczy* ciąg z wyniki skryptu. 
    - Adres URL certyfikatu klastra: Określ cały adres URL z *identyfikator wpisu tajnego* z wyników skryptu. 
    - Odcisk palca certyfikatu klastra: Określ *odcisk palca certyfikatu klastra* z wyników skryptu.
-   - Klient administracyjny odcisków palca certyfikatu: Określ *odcisk palca certyfikatu klienta administrator* zostały utworzone w wymaganiach wstępnych. 
+   - Klient administracyjny odcisków palca certyfikatu: Określ *odcisk palca certyfikatu klienta administrator* utworzone w wymaganiach wstępnych. 
 
    ![Dane wyjściowe skryptu](media/azure-stack-solution-template-service-fabric-cluster/image5.png)
 
@@ -184,7 +184,7 @@ Za dostęp do klastra usługi Service Fabric przy użyciu narzędzia Service Fab
 1. W przeglądarce przejdź do https://*FQDN*: 19080. Zastąp *FQDN* nazwą FQDN klastra usługi Service Fabric w kroku 2.   
    Jeśli używano certyfikatu z podpisem własnym, otrzymasz ostrzeżenie, że połączenie nie jest bezpieczne. Aby przejść do witryny sieci web, wybierz **więcej informacji o**, a następnie **przejdź do strony sieci Web**. 
 
-1. Aby uwierzytelniać się w witrynie należy wybrać certyfikat do użycia. Wybierz **więcej opcji**, wybierz odpowiedni certyfikat, a następnie kliknij **OK** połączyć się z narzędzia Service Fabric Explorer. 
+1. Aby uwierzytelniać się do witryny, należy wybrać certyfikat do użycia. Wybierz **więcej opcji**, wybierz odpowiedni certyfikat, a następnie kliknij **OK** połączyć się z narzędzia Service Fabric Explorer. 
 
    ![Uwierzytelnianie](media/azure-stack-solution-template-service-fabric-cluster/image14.png)
 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/16/2018
+ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 17f06a08388720c4483ef1c187edf20ec8359121
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 50f5662fa574b512ab607e17dbdfcf1861e2f5c6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386387"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954916"
 ---
 # <a name="tutorial-offer-highly-available-sql-databases"></a>Samouczek: Oferują wysoką dostępność bazy danych SQL
 
@@ -63,30 +63,28 @@ Wykonaj kroki w tej sekcji, aby wdrożyć grupy dostępności AlwaysOn programu 
 - Jedna maszyna wirtualna (system Windows Server 2016), skonfigurowany jako monitor udziału plików dla klastra
 - Dostępność jeden zestaw zawierający Monitor udziału plików języków SQL i maszyn wirtualnych  
 
-1. Zaloguj się do portalu administratora:
-    - Zintegrowany system wdrożenia adres portalu będzie zależeć na region i domenę zewnętrzną nazwę swojego rozwiązania. Będzie on w formacie https://adminportal.&lt; *region*&gt;.&lt; *FQDN*&gt;.
-    - Jeśli używasz usługi Azure Stack Development Kit (ASDK), adres portalu użytkownika jest [ https://adminportal.local.azurestack.external ](https://portal.local.azurestack.external).
+1. 
+[!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. Wybierz **\+** **Utwórz zasób** > **niestandardowe**, a następnie **wdrożenie szablonu**.
 
-   ![Wdrożenie szablonu niestandardowego](media/azure-stack-tutorial-sqlrp/custom-deployment.png)
+   ![Wdrożenie szablonu niestandardowego](media/azure-stack-tutorial-sqlrp/1.png)
 
 
 3. Na **wdrożenie niestandardowe** bloku wybierz **Edytuj szablon** > **szablon szybkiego startu** , a następnie użyj listy rozwijanej dostępnych szablonów niestandardowych, aby Wybierz **funkcji sql alwayson na 2016** szablonu, kliknij przycisk **OK**, a następnie **Zapisz**.
 
-   ![Wybierz szablon szybkiego startu](./media/azure-stack-tutorial-sqlrp/quickstart-template.png)
-
+   [![](media/azure-stack-tutorial-sqlrp/2-sm.PNG "Wybierz szablon szybkiego startu")](media/azure-stack-tutorial-sqlrp/2-lg.PNG#lightbox)
 
 4. Na **wdrożenie niestandardowe** bloku wybierz **Edytuj parametry** i przejrzyj wartości domyślne. Zmodyfikuj wartości, co jest niezbędne do zapewnienia wszystkie wymagane parametry, a następnie kliknij przycisk **OK**.<br><br> Co najmniej:
 
     - Podaj parametry ADMINPASSWORD, SQLSERVERSERVICEACCOUNTPASSWORD i SQLAUTHPASSWORD złożone hasła.
     - Wprowadź sufiks DNS dla wyszukiwania wstecznego w małych liter parametru elementu DNSSUFFIX (**azurestack.external** dla instalacji ASDK).
     
-    ![Parametry niestandardowe wdrożenie](./media/azure-stack-tutorial-sqlrp/edit-parameters.png)
+   [![](media/azure-stack-tutorial-sqlrp/3-sm.PNG "Edytuj parametry wdrożenia niestandardowego")](media/azure-stack-tutorial-sqlrp/3-lg.PNG#lightbox)
 
 5. Na **wdrożenie niestandardowe** bloku, wybierz subskrypcję i Utwórz nową grupę zasobów lub wybierz istniejącą grupę zasobów dla wdrożenia niestandardowego.<br><br> Następnie wybierz lokalizację grupy zasobów (**lokalnego** dla instalacji ASDK) a następnie kliknij przycisk **Utwórz**. Niestandardowe ustawienia wdrażania zostaną sprawdzone, a następnie rozpoczęcia wdrożenia.
 
-    ![Parametry niestandardowe wdrożenie](./media/azure-stack-tutorial-sqlrp/create-deployment.png)
+    [![](media/azure-stack-tutorial-sqlrp/4-sm.PNG "Tworzenie wdrożenia niestandardowego")](media/azure-stack-tutorial-sqlrp/4-lg.PNG#lightbox)
 
 
 6. W portalu administracyjnym wybierz **grup zasobów** i następnie nazwę grupy zasobów utworzoną w ramach wdrożenia niestandardowego (**grupy zasobów** w tym przykładzie). Wyświetl stan wdrożenia, aby upewnić się, że wszystkie wdrożenia zostały ukończone pomyślnie.<br><br>Następnie przejrzyj elementy grupy zasobów, a następnie wybierz **SQLPIPsql\<nazwy grupy zasobów\>**  element adres publiczny adres IP. Zapisz publiczny adres IP i pełną nazwę FQDN IP publicznego modułu równoważenia obciążenia. Konieczne będzie podanie tego operatora usługi Azure Stack, dzięki czemu mogą utworzyć serwera hostingu SQL, korzystając z tej grupy dostępności funkcji SQL AlwaysOn.
@@ -94,16 +92,16 @@ Wykonaj kroki w tej sekcji, aby wdrożyć grupy dostępności AlwaysOn programu 
    > [!NOTE]
    > Wdrożenie szablonu potrwa kilka godzin.
 
-   ![Parametry niestandardowe wdrożenie](./media/azure-stack-tutorial-sqlrp/deployment-complete.png)
+   ![Zakończono wdrożenie niestandardowe](./media/azure-stack-tutorial-sqlrp/5.png)
 
 ### <a name="enable-automatic-seeding"></a>Włącz automatyczne wstępne wypełnianie
 Po szablonie pomyślnie wdrożone i skonfigurowane grupy dostępności funkcji SQL AlwaysON, należy włączyć [automatyczne wstępne wypełnianie](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) w każdym wystąpieniu programu SQL Server w grupie dostępności. 
 
 Po utworzeniu grupy dostępności przy użyciu automatycznego rozmieszczania programu SQL Server automatycznie tworzy repliki pomocnicze dla każdej bazy danych w grupie bez ręcznej interwencji niezbędne w celu zapewnienia wysokiej dostępności (AlwaysOn) baz danych.
 
-Aby skonfigurować automatyczne wstępne wypełnianie dla grupy dostępności AlwaysOn, należy użyć tych poleceń SQL.
+Aby skonfigurować automatyczne wstępne wypełnianie dla grupy dostępności AlwaysOn, należy użyć tych poleceń SQL. Zastąp \<InstanceName\> przy użyciu podstawowego wystąpienia programu SQL Server, nazwę i < availability_group_name > nazwą grupy dostępności (AlwaysOn) zgodnie z potrzebami. 
 
-Na podstawowe wystąpienie serwera SQL (Zastąp <InstanceName> nazwą podstawowe wystąpienie programu SQL Server):
+Na podstawowe wystąpienie serwera SQL:
 
   ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>]
@@ -114,7 +112,7 @@ Na podstawowe wystąpienie serwera SQL (Zastąp <InstanceName> nazwą podstawowe
 
 >  ![Podstawowy skrypt wystąpienia SQL](./media/azure-stack-tutorial-sqlrp/sql1.png)
 
-Na pomocniczej wystąpienia SQL (Zastąp < availability_group_name > Nazwa grupy dostępności AlwaysOn):
+W dodatkowej wystąpieniach programu SQL:
 
   ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
@@ -156,9 +154,8 @@ Po SQL zawsze włączone grupy dostępności zostały utworzone, skonfigurowane 
 > [!NOTE]
 > Uruchom następujące kroki, za pomocą portalu użytkownika usługi Azure Stack jako użytkownik dzierżawy z subskrypcją, zapewniając możliwości programu SQL Server (usługa Microsoft.SQLAdapter).
 
-1. Zaloguj się do portalu użytkownika:
-    - Zintegrowany system wdrożenia adres portalu będzie zależeć na region i domenę zewnętrzną nazwę swojego rozwiązania. Będzie on w formacie https://portal.&lt; *region*&gt;.&lt; *FQDN*&gt;.
-    - Jeśli używasz usługi Azure Stack Development Kit (ASDK), adres portalu użytkownika jest [ https://portal.local.azurestack.external ](https://portal.local.azurestack.external).
+1. 
+[!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
 
 2. Wybierz **\+** **Utwórz zasób** > **danych \+ magazynu**, a następnie **bazy danych SQL**.<br><br>Podaj informacje właściwości wymaganej bazy danych, w tym nazwy, sortowanie, maksymalny rozmiar i subskrypcji, grupy zasobów i lokalizacji na potrzeby wdrożenia. 
 

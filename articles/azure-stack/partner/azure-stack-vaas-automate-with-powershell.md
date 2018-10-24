@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 10/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 82a1d86f31bfb49ff97ec9928dd7ee946144a359
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: aa33db56910871891003866ef62431cfd7095d2a
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650047"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954130"
 ---
 # <a name="automate-azure-stack-validation-with-powershell"></a>Automatyzacja sprawdzania poprawności usługi Azure Stack, przy użyciu programu PowerShell
 
@@ -28,9 +28,7 @@ Za pomocą programu PowerShell dla następującego przepływu pracy:
 
 - Przebieg testu
 
-W tym samouczku dowiesz się, jak do utworzyć skrypt, który:
-
-Ten skrypt wykonuje następujące czynności:
+W tym samouczku dowiesz się, jak utworzyć skrypt, który:
 
 > [!div class="checklist"]
 > * Wymagania wstępne instalacji
