@@ -9,11 +9,11 @@
 ## [Konfigurowanie środowiska deweloperskiego](media-services-set-up-computer.md)
 ### [.NET](media-services-dotnet-how-to-use.md)
 ### [REST](media-services-rest-how-to-use.md)  
-## [Używanie uwierzytelniania usługi AAD do uzyskiwania dostępu do interfejsu API](media-services-use-aad-auth-to-access-ams-api.md)
-### [Zarządzanie uwierzytelnianiem usługi AAD za pomocą portalu](media-services-portal-get-started-with-aad.md)
+## [Uzyskiwanie dostępu do interfejsu API przy użyciu uwierzytelniania w usłudze Azure AD](media-services-use-aad-auth-to-access-ams-api.md)
+### [Zarządzanie uwierzytelnianiem w usłudze Azure AD przy użyciu portalu](media-services-portal-get-started-with-aad.md)
 ### [Dostęp do interfejsu API za pomocą platformy .NET](media-services-dotnet-get-started-with-aad.md)
 ### [Dostęp do interfejsu API za pomocą architektury REST](media-services-rest-connect-with-aad.md)
-### [Tworzenie i konfigurowanie aplikacji usługi AAD za pomocą interfejsu wiersza polecenia platformy Azure](media-services-cli-create-and-configure-aad-app.md)
+### [Tworzenie i konfigurowanie aplikacji usługi Azure AD za pomocą interfejsu wiersza polecenia platformy Azure](media-services-cli-create-and-configure-aad-app.md)
 ### [Tworzenie i konfigurowanie aplikacji usługi AAD za pomocą programu PowerShell](media-services-powershell-create-and-configure-aad-app.md)
 
 ## Dostarczanie wideo na żądanie

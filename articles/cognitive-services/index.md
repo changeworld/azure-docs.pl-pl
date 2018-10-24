@@ -7,14 +7,14 @@ author: nitinme
 manager: cgronlun
 ms.service: cognitive-services
 ms.author: nitinme
-ms.date: 09/24/2018
+ms.date: 10/23/2018
 ms.topic: hub-page
-ms.openlocfilehash: 87c10bbcec2467808220c3d2351976fb4676e92b
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 0564cd1b2c7acf09ee59b858eafb49a4217afe35
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319001"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954843"
 ---
 <h1>Dokumentacja usług Azure Cognitive Services</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">Dowiedz się, jak wbudować w swoje aplikacje, witryny i boty inteligentne algorytmy umożliwiające dostrzeganie, słyszenie, wypowiadanie i interpretowanie potrzeb użytkowników naturalnymi metodami komunikacji. Samouczki, przewodniki Szybki start, dokumentacja interfejsu API i przykłady przedstawiają, jak to zrobić.</p>
@@ -260,9 +260,9 @@ ms.locfileid: "49319001"
                         <p><a href="/azure/cognitive-services/computer-vision/">Przetwarzanie obrazów</a></p>
                         <p><a href="/azure/cognitive-services/content-moderator/overview">Content Moderator</a></p>
                         <p><a href="/azure/cognitive-services/Custom-Vision-Service/home"><span>Custom Vision Service&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
-                        <p><a href="/azure/cognitive-services/emotion/home"><span>Interfejs API rozpoznawania emocji&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
                         <p><a href="/azure/cognitive-services/face/">Interfejs API rozpoznawania twarzy</a></p>
                         <p><a href="/azure/cognitive-services/video-indexer/video-indexer-overview">Video Indexer</a></p>
+                        <p><a href="/azure/cognitive-services/emotion/home"><span>Interfejs API rozpoznawania emocji&nbsp;<sup style="font-size:70%">W TRAKCIE WYCOFYWANIA</sup></span></a></p>
                     </div>
                 </div>
             </div>
@@ -275,10 +275,10 @@ ms.locfileid: "49319001"
                     <div class="cardText">
                         <h3>Interfejs API rozpoznawania mowy</h3>
                         <p><a href="/azure/cognitive-services/speech-service">Interfejs API usługi rozpoznawania mowy</a></p>
-                        <p><a href="/azure/cognitive-services/speech/home">Interfejs API rozpoznawania mowy Bing</a></p>
-                        <p><a href="/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home"><span>Custom Speech Service&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
                         <p><a href="/azure/cognitive-services/speaker-recognition/home"><span>Rozpoznawanie osoby mówiącej&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
-                        <p><a href="/azure/cognitive-services/translator-speech/">Tłumaczenie mowy w usłudze Translator</a></p>
+                        <p><a href="/azure/cognitive-services/speech/home"><span>Interfejs API rozpoznawania mowy Bing&nbsp;<sup style="font-size:70%">W TRAKCIE WYCOFYWANIA</sup></span></a></p>
+                        <p><a href="/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home"><span>Custom Speech Service&nbsp;<sup style="font-size:70%">W TRAKCIE WYCOFYWANIA</sup></span></a></p>
+                        <p><a href="/azure/cognitive-services/translator-speech/"><span>Tłumaczenie mowy w usłudze Translator&nbsp;<sup style="font-size:70%">W TRAKCIE WYCOFYWANIA</sup></span></a></p>
                      </div>
                 </div>
             </div>
@@ -292,10 +292,8 @@ ms.locfileid: "49319001"
                         <h3>Interfejs API rozpoznawania języka</h3>
                         <p><a href="/azure/cognitive-services/bing-spell-check/">Sprawdzanie pisowni Bing</a></p>
                         <p><a href="/azure/cognitive-services/luis/">Language Understanding (LUIS)</a></p>
-                        <p><a href="/azure/cognitive-services/linguisticanalysisapi/home"><span>Analiza językowa&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
                         <p><a href="/azure/cognitive-services/text-analytics/">Analiza tekstu</a></p>
                         <p><a href="/azure/cognitive-services/translator/">Tłumaczenie tekstu w usłudze Translator</a></p>
-                        <p><a href="/azure/cognitive-services/web-language-model/home"><span>Web Language Model&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
                     </div>
                 </div>
             </div>
@@ -307,7 +305,6 @@ ms.locfileid: "49319001"
                 <div class="card">
                     <div class="cardText">
                         <h3>Interfejs Knowledge API</h3>
-                            <p><a href="/azure/cognitive-services/custom-decision-service/"><span>Custom Decision Service&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
                             <p><a href="/azure/cognitive-services/qnamaker/index">QnA Maker</a></p>
                     </div>
                 </div>
@@ -351,6 +348,7 @@ ms.locfileid: "49319001"
                         <p><a href="/azure/cognitive-services/labs/anomaly-finder/overview">Projekt Wyszukiwanie anomalii</a></p>
                         <p><a href="/azure/cognitive-services/labs/conversation-learner/overview">Projekt Uczeń konwersacji</a></p>
                         <p><a href="/azure/cognitive-services/acoustics/what-is-acoustics">Akustyka projektu</a></p>
+                        <p><a href="/azure/cognitive-services/custom-decision-service/"><span>Custom Decision Service&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
                     </div>
                 </div>
             </div>

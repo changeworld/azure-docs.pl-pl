@@ -38,7 +38,7 @@ items:
     href: cli-samples.md
 - name: Pojęcia
   items:
-  - name: Kończenie żądań protokołu SSL
+  - name: Kompleksowa łączność SSL
     href: ssl-overview.md
   - name: Omówienie zasad protokołu SSL
     href: application-gateway-ssl-policy-overview.md
@@ -74,11 +74,11 @@ items:
       href: application-gateway-ilb-arm.md
   - name: Konfigurowanie kończenia żądań protokołu SSL
     items:
-    - name: Kończenie żądań SSL przy użyciu witryny Azure Portal
+    - name: Kończenie żądań protokołu SSL — portal
       href: create-ssl-portal.md
-    - name: Kończenie żądań protokołu SSL przy użyciu programu Azure PowerShell
+    - name: Kończenie żądań protokołu SSL — PowerShell
       href: tutorial-ssl-powershell.md
-    - name: Kończenie żądań SSL typu end-to-end przy użyciu programu Azure PowerShell
+    - name: Kompleksowa łączność SSL — PowerShell
       href: application-gateway-end-to-end-ssl-powershell.md
     - name: Odnawianie certyfikatów
       href: renew-certificates.md
@@ -182,9 +182,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-application-gateway
   - name: Często zadawane pytania
     href: application-gateway-faq.md
-ms.openlocfilehash: 17ac6d23e6f8703d4cbb9d33e66b594d7d058d28
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 7105df03e8dbef1f225c26c4b52243100118782f
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069238"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944261"

@@ -13,6 +13,11 @@
 ### [Sieci wirtualne](../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Połączenia obejmujące wiele lokalizacji — sieć VPN](../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Połączenia obejmujące wiele lokalizacji — dedykowane połączenie prywatne](../expressroute/expressroute-workflows.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### Współdziałanie łączności z zapleczem
+#### [Wstęp i konfiguracja testu](connectivty-interoperability-preface.md?toc=%2fazure%2fnetworking%2ftoc.json)
+#### [Ustawienia konfiguracji testu](connectivty-interoperability-configuration.md?toc=%2fazure%2fnetworking%2ftoc.json)
+#### [Analiza płaszczyzny kontroli](connectivty-interoperability-control-plane.md?toc=%2fazure%2fnetworking%2ftoc.json)
+#### [Analiza płaszczyzny danych](connectivty-interoperability-data-plane.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 ##  Pojęcia
 ### [Sieci wirtualne](../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
