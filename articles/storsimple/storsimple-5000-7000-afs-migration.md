@@ -87,7 +87,7 @@ Wykonaj poniższe kroki, aby migrować udziału plików Windows, które są skon
     Pomiń ten krok i przejdź do następnego kroku, jeśli używasz innego hosta Windows Server. Jeśli używasz tego samego serwera plików Windows dla AFS, teraz doświadczy za kilka minut przestoju. 
     - **Przestój rozpocznie się** -Usuń punkt końcowy serwera, który został utworzony w *krok 1F*. 
     - Utwórz nowy punkt końcowy serwera przy użyciu ścieżki, gdzie mają dane znajdują się przerywaj do przodu.
-    - Gdy punkt końcowy serwera znajduje się w dobrej kondycji (może to potrwać kilka minut), zobaczysz dane w tej nowej lokalizacji. Teraz można skonfigurować hosta Windows Server do obsługi plików z tej nowej lokalizacji. - **Kończy się przestojów**.
+    - Gdy punkt końcowy serwera znajduje się w dobrej kondycji (może to potrwać kilka minut), zobaczysz dane w tej nowej lokalizacji. Teraz można skonfigurować hosta Windows Server do obsługi plików z tej nowej lokalizacji. -  **Kończy się przestojów**.
 5.  Jeśli korzystania z innego serwera plików Windows dla usługi Azure File Sync mogą nie mieć żadnych przestojów. 
     - Dodaj inny punkt końcowy serwera o ścieżce lokalnej pamięci masowej, które są przygotowywane do użycia jako pamięci podręcznej audytów urządzenia StorSimple. 
     - Można wyświetlić pliki w nowym serwerze w ciągu kilku minut. Mogą na zamianę z urządzenia StorSimple do nowej lokalizacji na hoście w dowolnym momencie.
