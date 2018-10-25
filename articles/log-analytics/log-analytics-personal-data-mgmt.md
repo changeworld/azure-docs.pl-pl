@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 1b9d8d252055bb1368b7024ca9b0acf6c21ba7b3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 932dcf485f6fe1a365f3bc0910c2223a118e9add
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041615"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024534"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Wskazówki dotyczące danych osobowych przechowywanych w usłudze Log Analytics i usługi Application Insights
 
@@ -102,7 +102,7 @@ Po przypisaniu roli usługi Azure Resource Manager dostępne są dwa nowe ście�
 
 #### <a name="log-data"></a>Dane dziennika
 
-* [WPIS przeczyszczania] (https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge) — przyjmuje obiekt określający parametry danych do usunięcia i zwraca odwołanie identyfikatora GUID 
+* [POST przeczyścić](https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge) — przyjmuje obiekt określający parametry danych do usunięcia i zwraca odwołanie identyfikatora GUID 
 * GET, Wyczyść stan — wywołanie metody przeczyszczania POST będzie zwracać nagłówek "x-ms stan location", która będzie zawierać adres URL, który można wywołać w celu określenia stanu przeczyszczania interfejsu API. Na przykład:
 
     ```
