@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 77400453e455ff2ebf20f59f888a3e3d641bcf07
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: e42c678f3c6d030be13e40197a06e73b62581902
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843206"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988421"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Biblioteka Microsoft Authentication Library (MSAL) umożliwia logowanie użytkownika
 
@@ -127,24 +127,26 @@ else {
 <!--start-collapse-->
 ### <a name="more-information"></a>Więcej informacji
 
-Po kliknięciu *"Sign In"* przycisku po raz pierwszy `signIn` wywołania metody `loginPopup` do logowania użytkownika. Ta metoda powoduje otwarcie okna podręcznego z *punktu końcowego v2 Microsoft Azure Active Directory* Monituj i sprawdzanie poprawności poświadczeń użytkownika. W wyniku pomyślne logowanie, użytkownik jest przekierowany z powrotem do oryginalnego *index.html* strony i token odebraniu przetworzonych przez `msal.js` i informacje zawarte w tokenie są buforowane. Token ten jest znany jako *tokenu Identyfikacyjnego* i zawiera podstawowe informacje o użytkowniku, takie jak nazwa wyświetlana użytkownika. Jeśli planujesz użyć wszystkie dane udostępniane przez ten token do żadnych celów, musisz upewnij się, że token ten jest weryfikowane przez serwer wewnętrznej bazy danych w celu zagwarantowania, że token został wystawiony do prawidłowego użytkownika dla aplikacji.
+Po kliknięciu **Sign In** przycisku po raz pierwszy `signIn` wywołania metody `loginPopup` do logowania użytkownika. Ta metoda powoduje otwarcie okna podręcznego z *punktu końcowego v2.0 usługi Microsoft Azure Active Directory* Monituj i sprawdzanie poprawności poświadczeń użytkownika. W wyniku pomyślne logowanie, użytkownik jest przekierowany z powrotem do oryginalnego *index.html* strony i token odebraniu przetworzonych przez `msal.js` i informacje zawarte w tokenie są buforowane. Token ten jest znany jako *tokenu Identyfikacyjnego* i zawiera podstawowe informacje o użytkowniku, takie jak nazwa wyświetlana użytkownika. Jeśli planujesz użyć wszystkie dane udostępniane przez ten token do żadnych celów, musisz upewnij się, że token ten jest weryfikowane przez serwer wewnętrznej bazy danych w celu zagwarantowania, że token został wystawiony do prawidłowego użytkownika dla aplikacji.
 
 SPA wygenerowane przez ten przewodnik dotyczący wywołania `acquireTokenSilent` i/lub `acquireTokenPopup` uzyskania *token dostępu* umożliwia tworzenie zapytań dotyczących interfejsu API programu Microsoft Graph, aby uzyskać informacje o profilu użytkownika. Przykład sprawdza poprawność tokenu Identyfikatora, należy spojrzeć na [to](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "przykładowe active-directory-javascript-singlepageapp-dotnet-webapi-v2 Github") ASP korzysta z przykładowej aplikacji w usłudze GitHub — przykład Interfejs API sieci web platformy .NET dla walidacji tokenów.
 
 #### <a name="getting-a-user-token-interactively"></a>Interaktywne pobieranie tokenu użytkownika
 
-Po początkowej logowania, nie chcesz o konieczności ponownego uwierzytelnienia za każdym razem, gdy potrzebują do wysłania żądania tokenu dostępu do zasobu — więc *acquireTokenSilent* powinny być używane w większości przypadków do uzyskania tokenów. Istnieją jednak sytuacje, trzeba wymusić użytkownikom na interakcję z punktu końcowego v2 usługi Azure Active Directory — niektóre przykłady to:
+Po początkowej logowania, nie chcesz o konieczności ponownego uwierzytelnienia za każdym razem, gdy potrzebują do wysłania żądania tokenu dostępu do zasobu — więc *acquireTokenSilent* powinny być używane w większości przypadków do uzyskania tokenów. Istnieją jednak sytuacje, trzeba wymusić użytkownikom na interakcję z punktu końcowego v2.0 usługi Azure Active Directory — niektóre przykłady to:
+
 - Użytkownicy muszą ponownie wprowadzić poświadczenia, ponieważ hasło wygasło.
 - Aplikacja żąda dostępu do zasobów wymagającego zgody użytkownika.
 - Wymagane jest uwierzytelnianie dwuetapowe.
 
-Wywoływanie *acquireTokenPopup(scope)* wyniki w oknie podręcznym (lub *acquireTokenRedirect(scope)* skutkuje przekierowywanie użytkowników do punktu końcowego usługi Azure Active Directory w wersji 2) gdy użytkownicy musieli współpracują ze sobą, potwierdzenie poświadczeń, zapewniając zgody do wymaganych zasobów albo ukończenie uwierzytelniania dwuskładnikowego.
+Wywoływanie *acquireTokenPopup(scope)* wyniki w oknie podręcznym (lub *acquireTokenRedirect(scope)* skutkuje przekierowywanie użytkowników do punktu końcowego v2.0 usługi Azure Active Directory) gdzie użytkownicy musieli współpracują ze sobą, potwierdzenie poświadczeń, zapewniając zgody do wymaganych zasobów albo ukończenie uwierzytelniania dwuskładnikowego.
 
 #### <a name="getting-a-user-token-silently"></a>Dyskretne pobieranie tokenu użytkownika
+
 ` acquireTokenSilent` Obsługiwała pozyskanie tokenu i wznowienie bez żadnej interakcji użytkownika. Po `loginPopup` (lub `loginRedirect`) jest wykonywana po raz pierwszy `acquireTokenSilent` jest metodą, często używane do uzyskiwania tokenów, które umożliwiają dostęp do chronionych zasobów dla kolejnych wywołań — jak do żądania lub odnowienia tokenów wywołań dyskretnie.
 `acquireTokenSilent` może się nie powieść w niektórych przypadkach — na przykład użytkownika hasło wygasło. Aplikacja może obsłużyć ten wyjątek na dwa sposoby:
 
-1.  Wywołanie `acquireTokenPopup` natychmiast, które powoduje monitowanie użytkownika do logowania. Ten wzorzec jest często używana w aplikacji w trybie online w przypadku, gdy brak nieuwierzytelnione zawartości w aplikacji dostępne dla użytkownika. W przykładzie, wygenerowane za pomocą tego Instalatora z przewodnikiem użyto tego wzorca.
+1. Wywołanie `acquireTokenPopup` natychmiast, które powoduje monitowanie użytkownika do logowania. Ten wzorzec jest często używana w aplikacji w trybie online w przypadku, gdy brak nieuwierzytelnione zawartości w aplikacji dostępne dla użytkownika. W przykładzie, wygenerowane za pomocą tego Instalatora z przewodnikiem użyto tego wzorca.
 
 2. Aplikacje może być wizualne oznaczenie do użytkownika, który interakcyjnego logowania jest wymagana, dzięki czemu użytkownik może wybrać w odpowiednim czasie, aby zalogować się lub aplikacji można ponowić próbę `acquireTokenSilent` w późniejszym czasie. Jest to często używane, po użytkownik może użyć innych funkcji aplikacji bez zakłócana — na przykład jest nieuwierzytelnione zawartość dostępna w aplikacji. W tym przypadku użytkownik może wybrać, gdy mają logować się do uzyskania dostępu do chronionego zasobu lub odświeżyć nieaktualne informacje.
 

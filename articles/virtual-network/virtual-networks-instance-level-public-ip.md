@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: genli
-ms.openlocfilehash: 7d8325ce04a9fa7853fb622062022a6938375f96
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 2f6db23e02c836dea6d640757d12275b654ad468
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47430985"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024631"
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Wystąpienie poziomu omówienie publicznego adresu IP (klasyczny)
 Wystąpienie poziomu publicznego adresu IP (ILPIP) to publiczny adres IP, który można przypisać bezpośrednio do wystąpienia roli maszyny Wirtualnej lub usługi w chmurze, a nie do usługi w chmurze, w tej sieci maszyny Wirtualnej lub w wystąpieniu roli. ILPIP nie przyjmuje miejscem, w którym programu virtual IP (VIP) przypisany do usługi w chmurze. Jest raczej, dodatkowe adresu IP, który służy do nawiązania bezpośredniego połączenia z maszyny Wirtualnej lub w wystąpieniu roli.
@@ -47,7 +47,7 @@ Podczas tworzenia usługi w chmurze na platformie Azure, odpowiednie rekordy A s
 ## <a name="why-would-i-request-an-ilpip"></a>Dlaczego może zażądać ILPIP?
 Jeśli chcesz mieć możliwość nawiązania połączenia z wystąpieniem maszyny Wirtualnej lub roli przez adres IP przypisany do niego bezpośrednio, zamiast korzystać z chmury usługi adresów VIP:&lt;numer portu&gt;, żądanie ILPIP dla maszyny Wirtualnej lub wystąpienia roli.
 
-* **Aktywne FTP** -przypisując ILPIP do maszyny Wirtualnej, może ona odbierać ruch na dowolnym porcie. Punkty końcowe nie są wymagane dla maszyny Wirtualnej do odbierania ruchu.  Zobacz [Omówienie protokołu FTP] (https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview) szczegółowe informacje na temat protokołu FTP.
+* **Aktywne FTP** -przypisując ILPIP do maszyny Wirtualnej, może ona odbierać ruch na dowolnym porcie. Punkty końcowe nie są wymagane dla maszyny Wirtualnej do odbierania ruchu.  Zobacz [Omówienie protokołu FTP](https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview) szczegółowe informacje na temat protokołu FTP.
 * **IP ruchu wychodzącego** — ruch wychodzący pochodzące z maszyny Wirtualnej jest mapowany na ILPIP jako źródła i ILPIP unikatowo identyfikuje maszyny Wirtualnej do jednostek zewnętrznych.
 
 > [!NOTE]

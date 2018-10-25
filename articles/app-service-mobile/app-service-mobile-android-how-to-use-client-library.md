@@ -13,19 +13,19 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: crdun
-ms.openlocfilehash: 1ab7aa9ecdd51809f6e1d82958f21b78b16e7e63
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: a39ae42ba2344cb39318809e2f120e01a75344d7
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859561"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025790"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Jak używać zestawu SDK aplikacji usługi Azure Mobile dla systemu Android
 
 Ten przewodnik pokazuje, jak kliencką dla systemu Android SDK dla aplikacji mobilnych umożliwiają implementowanie typowych scenariuszy, takich jak:
 
 * Wykonywanie zapytania dla danych (Wstawianie, aktualizowanie i usuwanie).
-* Uwierzytelnianie.
+* uwierzytelnianie.
 * Obsługa błędów.
 * Dostosowywanie klienta.
 
@@ -1220,7 +1220,7 @@ private class ProgressFilter implements ServiceFilter {
             public void onSuccess(ServiceFilterResponse response) {
                 runOnUiThread(new Runnable() {
                     @Override
-                    pubic void run() {
+                    public void run() {
                         if (mProgressBar != null)
                             mProgressBar.setVisibility(ProgressBar.GONE);
                     }

@@ -1,5 +1,5 @@
 ---
-title: Prepeare serwera DPM w celu tworzenia kopii zapasowych obciążeń na platformie Azure
+title: Przygotuj serwer programu DPM do tworzenia kopii zapasowych obciążeń na platformie Azure
 description: Wprowadzenie do tworzenia kopii zapasowej danych programu DPM w magazynie usługi Azure Recovery Services.
 services: backup
 author: adigan
@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: adigan
-ms.openlocfilehash: 3efe2f02666c69ff648eaab39fbc1dfe9dc5e3e7
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: ac89f0f2e2f86fa34fc754ee23e9b67329560fa4
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945437"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024481"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Przygotowanie do tworzenia kopii zapasowych obciążeń na platformę Azure za pomocą programu System Center DPM
 
@@ -39,7 +39,7 @@ Ten artykuł zawiera:
 Korzyści biznesowe wynikające z tworzenia kopii zapasowej serwerów programu DPM na platformie Azure obejmują:
 
 * Programu DPM w środowisku lokalnym kopia zapasowa Azure stanowi alternatywę dla wdrożenia długoterminowych na taśmie.
-* Program DPM na Maszynie wirtualnej platformy Azure usługi Azure Backup umożliwia można odciążyć magazyn z dysku platformy Azure. Przechowywania starszych danych w magazynie kopii zapasowych magazynu umożliwia skalowanie w górę swoją firmę dzięki przechowywaniu nowych danych na dysku.
+* Program DPM na Maszynie wirtualnej platformy Azure usługi Azure Backup umożliwia można odciążyć magazyn z dysku platformy Azure. Przechowywania starszych danych w magazynie kopii zapasowych umożliwia skalowanie w górę swoją firmę dzięki przechowywaniu nowych danych na dysku.
 
 ## <a name="prerequisites-and-limitations"></a>Wymagania wstępne i ograniczenia
 
@@ -54,7 +54,7 @@ Obsługiwane aplikacje | [Dowiedz się,](https://docs.microsoft.com/system-cente
 Obsługiwane typy plików | Następujące typy plików utworzeniem kopii zapasowej w usłudze Azure Backup: zaszyfrowane (tylko pełne kopie zapasowe); Skompresowane (obsługą przyrostowych kopii zapasowych); Rozrzedzone (obsługą przyrostowych kopii zapasowych); Skompresowane i rozrzedzone (traktowane jako rozrzedzone).
 Nieobsługiwane typy plików | Serwery w systemach plików rozróżniana wielkość liter; twarde linki (pomijane); (pomijane); punkty ponownej analizy zaszyfrowane i skompresowane (pomijane); zaszyfrowane i rozrzedzone (pomijane); Skompresowany strumień; Przeanalizuj strumień.
 Magazyn lokalny | Każda maszyna, który chcesz utworzyć kopię zapasową musi mieć lokalne ilość wolnego miejsca, który jest co najmniej 5% rozmiaru danych, która jest tworzona kopia zapasowa.  Na przykład tworzenie kopii zapasowej 100 GB danych wymaga co najmniej 5 GB wolnego miejsca w lokalizacji pliki tymczasowe.
-Vault storage | Nie ma żadnego limitu ilości danych, które użytkownik może wykonywać kopie zapasowe w usłudze Azure Backup magazynu, ale rozmiar źródła danych (na przykład maszyny wirtualnej lub bazy danych) nie może przekraczać 54400 GB.
+Vault storage | Nie ma żadnego limitu ilości danych, które można wykonać kopię zapasową do magazynu usługi Azure Backup, ale rozmiar źródła danych (na przykład maszyny wirtualnej lub bazy danych) nie może przekraczać 54400 GB.
 Agent usługi Azure Backup | Jeśli program DPM jest uruchomiony w programie System Center 2012 SP1, należy zainstalować Rollup 2 lub nowszego, programu DPM z dodatkiem SP1. Jest to wymagane do instalacji agenta.<br/><br/> W tym artykule opisano, jak wdrożyć najnowszą wersję agenta usługi Azure Backup, znany także jako agenta usługi Microsoft Azure Recovery Service (MARS). Jeśli masz wcześniejszą wersję wdrożone, zaktualizuj do najnowszej wersji, aby upewnić się, że tej kopii zapasowej działa zgodnie z oczekiwaniami. 
 
 
@@ -160,7 +160,7 @@ Każdy maszyn, których kopia zapasowa jest tworzona kopia zapasowa Azure musi b
 
     - Usługa Azure Backup korzysta z tej lokalizacji, a jako obszar przechowywania tymczasowych dla swoich danych danymi odzyskanymi.
     - Po odzyskaniu danych kończenie usługi Azure Backup wyczyścić dane, w tym obszarze.
-    - Lokalizacja musi mieć wystarczającej ilości miejsca do przechowywania elementów, które przewiduje się odzyskiwanie w paralle.
+    - Lokalizacja musi mieć wystarczającej ilości miejsca do przechowywania elementów, które możesz równolegle odzyskiwane.
 
     ![Ustawienia folderu odzyskiwania](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_RecoveryFolder.png)
 

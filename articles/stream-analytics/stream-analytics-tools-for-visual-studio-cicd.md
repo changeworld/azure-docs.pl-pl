@@ -1,6 +1,6 @@
 ---
-title: Ciągłej integracji i opracowywania narzędzia analiza strumienia
-description: W tym artykule opisano, jak za pomocą narzędzi Visual Studio dla usługi Azure Stream Analytics Konfigurowanie ciągłej integracji i procesu wdrażania.
+title: Wykonuj ciągłe integrowanie i tworzyć aplikacje za pomocą narzędzia Stream Analytics
+description: W tym artykule opisano jak skonfigurować ciągłą integrację i procesu wdrażania za pomocą Visual Studio tools dla usługi Azure Stream Analytics.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -8,77 +8,77 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 9/27/2017
-ms.openlocfilehash: e4e831c602255df66f4c86ffa17336f51d2b52f7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 09/27/2017
+ms.openlocfilehash: 567e2f850e2c51a6103dc24b91d139042d58acb3
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30906277"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986836"
 ---
-# <a name="continuously-integrate-and-develop-with-stream-analytics-tools"></a>Ciągłej integracji i opracowywania narzędzia analiza strumienia
-W tym artykule opisano sposób użycia na potrzeby ciągłej integracji i wdrażania proces narzędzia analiza strumienia Azure dla programu Visual Studio.
+# <a name="continuously-integrate-and-develop-with-stream-analytics-tools"></a>Wykonuj ciągłe integrowanie i tworzyć aplikacje za pomocą narzędzia Stream Analytics
+W tym artykule opisano sposób użycia Konfigurowanie procesu ciągłej integracji i ciągłego wdrażania przy użyciu narzędzia Azure Stream Analytics dla programu Visual Studio.
 
-Użyj wersji 2.3.0000.0 lub nowszego z [Stream Analytics tools dla Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio) uzyskać pomoc techniczną dotyczącą programu MSBuild.
+Użyj wersji 2.3.0000.0 lub nowszy z [usługi Stream Analytics tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio) uzyskać pomoc techniczną dotyczącą programu MSBuild.
 
-Pakiet NuGet jest dostępny: [Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). Oferuje MSBuild, przebiegu lokalnego i narzędzia wdrażania, które obsługują ciągłej integracji i wdrażania proces projektów programu Visual Studio analizy strumienia. 
+Dostępny jest pakiet NuGet: [Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). Zapewnia on program MSBuild, uruchamianie lokalne oraz narzędzia wdrażania, które obsługują proces ciągłej integracji i ciągłego wdrażania projektów programu Visual Studio dla usługi Stream Analytics. 
 > [!NOTE] 
-Pakiet NuGet można tylko mający 2.3.0000.0 lub nowszą wersją narzędzia do analizy strumienia dla programu Visual Studio. Jeśli masz projektów utworzonych w poprzednich wersjach programu Visual Studio tools, wystarczy otworzyć, mający 2.3.0000.0 lub nowszą wersję i Zapisz. Włączać nowe funkcje. 
+Pakiet NuGet może służyć tylko w przypadku 2.3.0000.0 lub nowszej wersji narzędzia Stream Analytics Tools for Visual Studio. W przypadku projektów utworzonych w poprzednich wersjach programu Visual Studio tools po prostu otwórz je za pomocą 2.3.0000.0 lub nowszej wersji, a następnie zapisz. Następnie nowe możliwości są włączone. 
 
-Aby uzyskać więcej informacji, zobacz [Stream Analytics tools dla Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
+Aby uzyskać więcej informacji, zobacz [usługi Stream Analytics tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
 
-## <a name="msbuild"></a>MSBuild
-Podobnie jak standardowe środowisko programu Visual Studio MSBuild aby zbudować projekt masz dwie opcje. Kliknij prawym przyciskiem myszy projekt, a następnie wybierz **kompilacji**. Można też użyć **MSBuild** pakietu NuGet z wiersza polecenia.
+## <a name="msbuild"></a>Program MSBuild
+Jak standardowe środowisko Visual Studio program MSBuild aby zbudować projekt masz dwie opcje. Kliknij prawym przyciskiem myszy projekt, a następnie wybierz **kompilacji**. Możesz również użyć **MSBuild** pakietu NuGet w wierszu polecenia.
 ```
 ./build/msbuild /t:build [Your Project Full Path] /p:CompilerTaskAssemblyFile=Microsoft.WindowsAzure.StreamAnalytics.Common.CompileService.dll  /p:ASATargetsFilePath="[NuGet Package Local Path]\build\StreamAnalytics.targets"
 
 ```
 
-Projektu programu Visual Studio analizy strumienia kompilacje pomyślnie, generuje następujące pliki szablonów dwóch usługi Azure Resource Manager w obszarze **bin / debugowania na detalicznego / Deploy** folderu: 
+Gdy projekt programu Visual Studio Stream Analytics pomyślnie skompilowana, generuje ona następujące pliki szablonów dwie usługi Azure Resource Manager w obszarze **bin / Debug na detalicznego / Deploy** folderu: 
 
 *  Plik szablonu usługi Resource Manager
 
        [ProjectName].JobTemplate.json 
 
-*  Menedżer zasobów pliku parametrów
+*  Plik parametrów usługi Resource Manager
 
        [ProjectName].JobTemplate.parameters.json   
 
-Domyślne parametry w pliku parameters.JSON następującym kodem są z ustawień projektu Visual Studio. Jeśli chcesz wdrożyć w innym środowisku, w związku z tym Zastąp parametry.
+Domyślne parametry w pliku parameters.json pochodzą z ustawień w projekcie programu Visual Studio. Jeśli chcesz wdrożyć do innego środowiska, w związku z tym Zastąp parametry.
 
 > [!NOTE] 
-Za pomocą poświadczeń wartości domyślne są ustawione na wartość null. Jesteś *wymagane* można ustawić wartości przed wdrożeniem w chmurze.
+Za pomocą poświadczeń domyślnych wartości są ustawione na wartość null. Jesteś *wymagane* można ustawić wartości przed wdrożeniem w chmurze.
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {
       "value": null
     },
 ```
-Dowiedz się więcej o sposobie [wdrożyć przy użyciu pliku szablonu usługi Resource Manager i programu Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy). Dowiedz się więcej o sposobie [obiekt używany jako parametr w szablonie usługi Resource Manager](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
+Dowiedz się więcej na temat [wdrażanie przy użyciu pliku szablonu usługi Resource Manager i programu Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy). Dowiedz się więcej na temat [używanie obiektu jako parametr w szablonie usługi Resource Manager](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
 
 
 ## <a name="command-line-tool"></a>Narzędzie wiersza polecenia
 
 ### <a name="build-the-project"></a>Kompilowanie projektu
-Pakiet NuGet zawiera narzędzie wiersza polecenia o nazwie **SA.exe**. Obsługuje ona kompilacji projektu i testowania lokalnego na komputerze dowolnego, którego można użyć w ciągłej integracji i procesu ciągłego dostarczania. 
+Pakiet NuGet jest narzędziem wiersza polecenia o nazwie **SA.exe**. Obsługuje ona kompilacja projektu i lokalnego testowania na dowolne maszyny, które można użyć w ciągłej integracji i ciągłego dostarczania procesu. 
 
-Domyślnie pliki wdrożenia znajdują się w bieżącym katalogu. Można określić ścieżki wyjściowej przy użyciu następującego parametru - OutputPath:
+Domyślnie pliki wdrożenia znajdują się w bieżącym katalogu. Można określić ścieżkę wyjściową przy użyciu następującego parametru - OutputPath:
 
 ```
 ./tools/SA.exe build -Project [Your Project Full Path] [-OutputPath <outputPath>] 
 ```
 
-### <a name="test-the-script-locally"></a>Przetestować skrypt lokalnie
+### <a name="test-the-script-locally"></a>Testowanie skrypt lokalnie
 
-Jeśli projektu określono plików wejściowych lokalnych w programie Visual Studio, możesz uruchomić test zautomatyzowanego skryptu za pomocą *localrun* polecenia. Wynik wyjścia znajduje się w bieżącym katalogu.
+Jeśli projekt jest określona lokalne pliki wejściowe w programie Visual Studio, możesz uruchomić test zautomatyzowanego skryptu, używając *localrun* polecenia. Wynik wyjściowy jest umieszczany w bieżącym katalogu.
  
 ```
 localrun -Project [ProjectFullPath]
 ```
 
-### <a name="generate-a-job-definition-file-to-use-with-the-stream-analytics-powershell-api"></a>Generuj plik definicji zadania do użycia przy użyciu interfejsu API środowiska PowerShell usługi analiza strumienia
+### <a name="generate-a-job-definition-file-to-use-with-the-stream-analytics-powershell-api"></a>Generuj plik definicji zadania, za pomocą interfejsu API z programu PowerShell Stream Analytics
 
-*Arm* polecenie przyjmuje szablonu zadania i pliki parametrów szablonu zadania wygenerowanych przez kompilację jako dane wejściowe. Następnie łączy je w pliku JSON definicji zadania, który może być używany z interfejs API środowiska PowerShell usługi analiza strumienia.
+*Ramię* polecenie przyjmuje szablonu zadania i pliki parametrów szablonu zadania wygenerowanych przez kompilację jako dane wejściowe. Następnie łączy je w plik JSON definicji zadania, który może służyć za pomocą interfejsu API z programu PowerShell Stream Analytics.
 
 ```
 arm -JobTemplate <templateFilePath> -JobParameterFile <jobParameterFilePath> [-OutputFile <asaArmFilePath>]

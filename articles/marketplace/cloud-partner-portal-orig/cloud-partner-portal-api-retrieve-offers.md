@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3429917fcee520ae932253f1fdfead4ffb6535e6
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: cf6e2fa296d3d9f152edf22685b930586b4de524
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810238"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024818"
 ---
 <a name="retrieve-offers"></a>Oferuje pobierania
 ===============
@@ -80,7 +80,7 @@ Pobiera jest skrócona lista ofert w ramach danego obszaru nazw wydawcy.
 |  status         | Stan oferty. Aby uzyskać listę możliwych wartości, zobacz [status oferty](#offer-status) poniżej.                         |
 |  id             | Identyfikator GUID, który unikatowo identyfikuje oferty w przestrzeni nazw wydawcy.                                                    |
 |  version        | Bieżąca wersja oferty. Nie można zmodyfikować właściwości wersji przez klienta. Ten numer jest zwiększany po każdym opublikowaniu. |
-|  definicja     | Zawiera widok podsumowania definicji rzeczywistego obciążenia. Aby uzyskać szczegółowe definicji, użyj [oferty określonych pobieranie] (. / cloud-partner-portal-api-retrieve-specific-offer.md) interfejsu API. |
+|  definicja     | Zawiera widok podsumowania definicji rzeczywistego obciążenia. Aby uzyskać szczegółowe definicji, użyj [pobieranie daną ofertą](./cloud-partner-portal-api-retrieve-specific-offer.md) interfejsu API. |
 |  changedTime    | Czas UTC ostatniej modyfikacji tej oferty                                                                              |
 |  |  |
 

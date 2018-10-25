@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 10/24/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 3c1c681e2c7ccd6b5fd3eaa3639853d99cb1e0b7
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 397aa000da7ea70c12883622b60c0e3e6dded811
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005215"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025312"
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Środowisko logowania za pomocą usługi Azure AD Identity Protection
 Za pomocą usługi Azure Active Directory Identity Protection możesz wykonywać następujące czynności:
@@ -57,13 +57,18 @@ Administratorzy mogą ustawić zasady, która wymaga od użytkowników skonfigur
 
 1. W pierwszym kroku użytkownik otrzymuje powiadomienie o konieczności Ustaw konto dla usługi Multi-Factor authentication. 
    
-    ![Korygowanie](./media/flows/140.png "korygowania")
+    ![Korygowanie](./media/flows/301.png "korygowania")
+
 2. Aby skonfigurować uwierzytelnianie wieloskładnikowe, należy pozostawić wiedzieć, jak chcesz otrzymywać.
    
-    ![Korygowanie](./media/flows/141.png "korygowania")
-3. System przesyła żądanie do możesz i chcesz odpowiedzieć.
-   
-    ![Korygowanie](./media/flows/142.png "korygowania")
+    ![Korygowanie](./media/flows/302.png "korygowania")
+
+3. System Udostępnij numer numeru telefonu i jak chcesz otrzymywać.
+
+    ![Korygowanie](./media/flows/303.png "korygowania")
+
+Aby ukończyć rejestrację, albo musisz odpowiedzieć na połączenia telefoniczne lub wprowadź kod. 
+
 
 ## <a name="risky-sign-in-recovery"></a>Ryzykowne logowania odzyskiwania
 Gdy administrator skonfigurował zasady ryzyka logowania, których to dotyczy użytkownicy są powiadamiani, gdy użytkownik próbuje zalogować. 

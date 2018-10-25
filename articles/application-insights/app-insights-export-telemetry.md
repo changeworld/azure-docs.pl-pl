@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 31d7f0fd70edf7bbf05a3a180baa6cc078e02ba1
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: bc505aa9dc2258a8752d1986489957c401e4e4c4
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585479"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023512"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Eksportowanie telemetrii z usługi Application Insights
 Czy chcesz zachować dane telemetryczne przez czas dłuższy niż okres przechowywania standardowa? Lub przetwarzać dane w jakiś sposób wyspecjalizowane? Eksport ciągły jest idealny dla tego. Zdarzenia, które są widoczne w portalu usługi Application Insights można wyeksportować do magazynu na platformie Microsoft Azure w formacie JSON. W tym miejscu możesz pobrać dane i napisać kod, które możesz: musisz go przetworzyć.  
@@ -39,7 +39,7 @@ Eksportu ciągłego dane są kopiowane do magazynu (gdzie pozostawał dla tak d�
 
 2. Wybierz dane telemetryczne typy danych, które chcesz wyeksportować.
 
-3. Utwórz lub wybierz [Konto magazynu platformy Azure] (.. / storage/common/storage-introduction.md) gdzie mają być przechowywane dane. Aby uzyskać więcej informacji na temat cen opcje magazynu, odwiedź stronę [official będzie przydatna stronę z cennikiem](https://azure.microsoft.com/pricing/details/storage/).
+3. Utwórz lub wybierz [konta usługi Azure storage](../storage/common/storage-introduction.md) miejscu, w którym chcesz przechowywać dane. Aby uzyskać więcej informacji na temat cen opcje magazynu, odwiedź stronę [official będzie przydatna stronę z cennikiem](https://azure.microsoft.com/pricing/details/storage/).
 
     > [!Warning]
     > Domyślna lokalizacja magazynu zostanie ustawiona do tego samego regionu geograficznego, co zasób usługi Application Insights. Jeśli będą przechowywane w innym regionie, może spowodować naliczenie opłaty za transfer.

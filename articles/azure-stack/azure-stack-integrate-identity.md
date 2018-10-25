@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 10/22/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 6548693b91283665704be8fc83a483a9d20dc41b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 8a33d4edb4107b936c36a744bb082c02b7830868
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470550"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024447"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integracja usługi Azure datacenter stosu — tożsamość
 Za pomocą usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) w usłudze Azure Stack można wdrożyć jako dostawcy tożsamości. Należy wybrać przed wdrożeniem usługi Azure Stack. Wdrażanie przy użyciu usług AD FS jest również określany jako wdrażanie usługi Azure Stack w trybie rozłączonym.
@@ -53,7 +53,6 @@ Ostatnim krokiem skonfigurowano nowego właściciela dla subskrypcji dostawcy do
 
 Wymagania:
 
-
 |Składnik|Wymaganie|
 |---------|---------|
 |Graph|Microsoft Active Directory 2012/2012 R2/2016|
@@ -64,7 +63,6 @@ Wymagania:
 Wykres obsługuje tylko integrację z pojedynczym lasem usługi Active Directory. Jeśli istnieje wiele lasów, lasu, określona w konfiguracji będzie służyć do pobierania użytkowników i grup.
 
 Wymagane jako dane wejściowe dla parametrów automatyzacji są następujące informacje:
-
 
 |Parametr|Opis|Przykład|
 |---------|---------|---------|
@@ -96,14 +94,14 @@ Opcjonalnie można utworzyć konto usługi programu Graph w istniejącej usłudz
 
 Do wykonania tej procedury należy użyć komputera w sieci centrum danych, który może komunikować się z punktem końcowym uprzywilejowanych w usłudze Azure Stack.
 
-2. Otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień (Uruchom jako administrator) i nawiązać połączenie z adresu IP uprzywilejowanych punktu końcowego. Użyj poświadczeń dla **CloudAdmin** do uwierzytelniania.
+1. Otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień (Uruchom jako administrator) i nawiązać połączenie z adresu IP uprzywilejowanych punktu końcowego. Użyj poświadczeń dla **CloudAdmin** do uwierzytelniania.
 
    ```PowerShell  
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
-3. Skoro masz połączenie do uprzywilejowanych punktu końcowego, uruchom następujące polecenie: 
+2. Skoro masz połączenie do uprzywilejowanych punktu końcowego, uruchom następujące polecenie: 
 
    ```PowerShell  
    Register-DirectoryService -CustomADGlobalCatalog contoso.com
@@ -210,6 +208,9 @@ Do wykonania tej procedury należy użyć komputera, który może komunikować s
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
    ```
 
+   > [!Note]  
+   > Podczas obracania certyfikatu na istniejące usługi AD FS (konto usługi STS) można skonfigurować ponownie integrację usług AD FS. Należy ustawić integracji z programem, nawet jeśli punkt końcowy metadanych jest dostępny lub został skonfigurowany, podając jego pliku metadanych.
+
 ## <a name="configure-relying-party-on-existing-ad-fs-deployment-account-sts"></a>Konfigurowanie jednostki uzależnionej na istniejącym wdrożeniu usług AD FS (konto usługi STS)
 
 Firma Microsoft udostępnia skryptu konfigurującego zaufania jednostki uzależnionej, w tym reguły przekształcania oświadczeń. Za pomocą skryptu jest opcjonalne, jak ręcznie uruchomić polecenia.
@@ -274,7 +275,7 @@ Jeśli postanowisz ręcznie uruchomić polecenia, wykonaj następujące czynnoś
    Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -TokenLifeTime 1440
    ```
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > Za pomocą przystawki programu MMC programu AD FS należy skonfigurować reguły autoryzacji wystawiania, podczas korzystania z systemu Windows Server 2012 lub 2012 R2 AD FS.
 
 4. Użycie programu Internet Explorer lub przeglądarki Microsoft Edge można uzyskać dostępu do stosu Azure, należy zignorować tokenu powiązania. W przeciwnym razie logowanie zakończy się niepowodzeniem. Na wystąpienie usług AD FS lub członek farmy uruchom następujące polecenie:

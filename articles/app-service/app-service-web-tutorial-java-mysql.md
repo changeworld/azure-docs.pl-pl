@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 0baab86c0cb76bfeecb30cdb62c968a476e402b9
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: db1005bbce25b0fa3fec76e6f9428a4cdd6fa4aa
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296775"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024379"
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>Samouczek: tworzenie aplikacji internetowej języka Java i MySQL na platformie Azure
 
@@ -28,7 +28,7 @@ ms.locfileid: "44296775"
 > W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Windows. Aby wdrożyć aplikację App Service w systemie _Linux_, zobacz [Deploy a containerized Spring Boot app to Azure (Wdrażanie konteneryzowanej aplikacji Spring Boot na platformie Azure)](/java/azure/spring-framework/deploy-containerized-spring-boot-java-app-with-maven-plugin).
 >
 
-W tym samouczku pokazano, jak utworzyć aplikację internetową języka Java na platformie Azure i połączyć ją z bazą danych MySQL. Po zakończeniu będziesz mieć aplikację [Spring Boot](https://projects.spring.io/spring-boot/) przechowującą dane w usłudze [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/overview) i działającą w usłudze [Azure App Service Web Apps](app-service-web-overview.md).
+W tym samouczku pokazano, jak utworzyć aplikację internetową języka Java na platformie Azure i połączyć ją z bazą danych MySQL. Po zakończeniu będziesz mieć aplikację [Spring Boot](https://projects.spring.io/spring-boot/) przechowującą dane w usłudze [Azure Database for MySQL](../mysql/overview.md) i działającą w usłudze [Azure App Service Web Apps](app-service-web-overview.md).
 
 ![Aplikacja Java uruchomiona w usłudze Azure App Service](./media/app-service-web-tutorial-java-mysql/appservice-web-app.png)
 
@@ -122,7 +122,7 @@ Zatrzymaj aplikację za pomocą kombinacji klawiszy `Ctrl`+`C` w terminalu.
 
 ## <a name="create-an-azure-mysql-database"></a>Tworzenie bazy danych Azure MySQL
 
-W tym kroku utworzysz wystąpienie usługi [Azure Database for MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md) przy użyciu [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). W dalszej części samouczka skonfigurujesz przykładową aplikację do korzystania z tej bazy danych.
+W tym kroku utworzysz wystąpienie usługi [Azure Database for MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md) przy użyciu [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). W dalszej części samouczka skonfigurujesz przykładową aplikację do korzystania z tej bazy danych.
 
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -282,7 +282,7 @@ az webapp config set --name <app_name> --resource-group myResourceGroup --java-v
 
 Przed uruchomieniem przykładowej aplikacji skonfiguruj ustawienia aplikacji internetowej tak, aby korzystała z bazy danych Azure MySQL utworzonej na platformie Azure. Te właściwości są uwidaczniane w aplikacji internetowej jako zmienne środowiskowe i zastępują wartości ustawione w pliku application.properties wewnątrz pakietu aplikacji internetowej. 
 
-W usłudze Cloud Shell skonfiguruj ustawienia aplikacji przy użyciu polecenia [`az webapp config appsettings`](https://docs.microsoft.com/cli/azure/webapp/config/appsettings) w interfejsie wiersza polecenia:
+W usłudze Cloud Shell skonfiguruj ustawienia aplikacji przy użyciu polecenia [`az webapp config appsettings`](/cli/azure/webapp/config/appsettings) w interfejsie wiersza polecenia:
 
 ```azurecli-interactive
 az webapp config appsettings set --settings SPRING_DATASOURCE_URL="jdbc:mysql://<mysql_server_name>.mysql.database.azure.com:3306/tododb?verifyServerCertificate=true&useSSL=true&requireSSL=false" --resource-group myResourceGroup --name <app_name>
@@ -299,7 +299,7 @@ az webapp config appsettings set --settings SPRING_DATASOURCE_PASSWORD=Javaapp_p
 ### <a name="get-ftp-deployment-credentials"></a>Pobieranie poświadczeń wdrożenia FTP 
 Wdrożenie aplikacji na platformie Azure można przeprowadzić na wiele różnych sposobów, w tym z użyciem protokołu FTP, lokalnego narzędzia Git oraz usług GitHub, Azure DevOps i BitBucket. Na przykład protokołu FTP można użyć do wdrożenia utworzonego wcześniej pliku WAR na maszynie lokalnej w usłudze Azure App Service.
 
-Aby określić, które poświadczenia należy przekazać w poleceniu ftp do aplikacji internetowej, użyj polecenia [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/webapp/deployment#az-appservice-web-deployment-list-publishing-profiles) w usłudze Cloud Shell: 
+Aby określić, które poświadczenia należy przekazać w poleceniu ftp do aplikacji internetowej, użyj polecenia [`az webapp deployment list-publishing-profiles`](/cli/azure/webapp/deployment#az-webapp-deployment-list-publishing-profiles) w usłudze Cloud Shell: 
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles --name <app_name> --resource-group myResourceGroup --query "[?publishMethod=='FTP'].{URL:publishUrl, Username:userName,Password:userPWD}" --output json
@@ -440,25 +440,25 @@ Te karty na stronie pokazują wiele doskonałych funkcji, które możesz dodać 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie potrzebujesz tych zasobów w innym samouczku (zobacz [Następne kroki](#next)), możesz je usunąć, uruchamiając następujące polecenie w usłudze Cloud Shell: 
-  
+Jeśli nie potrzebujesz tych zasobów w innym samouczku (zobacz [Następne kroki](#next)), możesz je usunąć, uruchamiając następujące polecenie w usłudze Cloud Shell: 
+  
 ```azurecli-interactive
-az group delete --name myResourceGroup 
-``` 
+az group delete --name myResourceGroup 
+``` 
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>Następne kroki
+## Next steps
 
 > [!div class="checklist"]
-> * Tworzenie bazy danych MySQL na platformie Azure
-> * Łączenie przykładowej aplikacji Java z programem MySQL
-> * Wdrażanie aplikacji na platformie Azure
-> * Aktualizowanie i ponowne wdrażanie aplikacji
-> * Strumieniowe przesyłanie dzienników diagnostycznych z platformy Azure
-> * Zarządzanie aplikacją w witrynie Azure Portal
+> * Create a MySQL database in Azure
+> * Connect a sample Java app to the MySQL
+> * Deploy the app to Azure
+> * Update and redeploy the app
+> * Stream diagnostic logs from Azure
+> * Manage the app in the Azure portal
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak zmapować niestandardową nazwę DNS na aplikację.
+Advance to the next tutorial to learn how to map a custom DNS name to the app.
 
 > [!div class="nextstepaction"] 
-> [Map an existing custom DNS name to Azure Web Apps (Mapowanie istniejącej niestandardowej nazwy DNS na aplikacje internetowe platformy Azure)](app-service-web-tutorial-custom-domain.md)
+> [Map an existing custom DNS name to Azure Web Apps](app-service-web-tutorial-custom-domain.md)

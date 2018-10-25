@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/25/2018
 ms.reviewer: daviste
 ms.author: mbullwin
-ms.openlocfilehash: 9188776fdd213f01523069b08bd898f48bee57a4
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 85547bd8528c4d5d4a627750bb5334f05ed231b1
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091485"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024319"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Analiza wpływu za pomocą usługi Application Insights
 
@@ -68,7 +68,7 @@ W tym przypadku wyniki nie pasuje do modelu ciągłą osią x tak samo, jak w pi
 
 ## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>Jak narzędzie wpływ obliczyć te współczynniki konwersji?
 
-Kulisy, narzędzie wpływ opiera się na [współczynnik korelacji] (https://en.wikipedia.org/wiki/Pearson_correlation_coefficient). Wyniki są obliczane od -1 do 1 na -1, reprezentujący zero korelacji i 1 reprezentujących dodatnią korelacji.
+Kulisy, zależy od narzędzia efektów [współczynnika korelacji Pearsona](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient). Wyniki są obliczane od -1 do 1 na -1, reprezentujący zero korelacji i 1 reprezentujących dodatnią korelacji.
 
 Podział podstawowe działania analizy wpływu jest następująca:
 

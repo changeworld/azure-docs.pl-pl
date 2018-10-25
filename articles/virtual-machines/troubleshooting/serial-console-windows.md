@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/07/2018
+ms.date: 10/22/2018
 ms.author: harijay
-ms.openlocfilehash: 29b045266836ace35aab12c51746b7e339cbb88f
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: facd9be037894932e516e8294e36b6b0e55374c8
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354346"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024424"
 ---
 # <a name="virtual-machine-serial-console"></a>Konsola szeregowa maszyny wirtualnej
 
@@ -41,7 +41,7 @@ Konsola szeregowa dokumentację dotyczącą maszyn wirtualnych systemu Linux [tu
     ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
 
 * Konto, za pomocą konsoli szeregowej musi mieć [rola "Współautor"](../../role-based-access-control/built-in-roles.md) dla maszyny Wirtualnej i [diagnostykę rozruchu](boot-diagnostics.md) konta magazynu. 
-* Maszyny wirtualnej, dla której jesteś konsoli szeregowej uzyskiwanie dostępu musi również mieć konto opartego na hasłach. Możesz je utworzyć za pomocą [Resetuj hasło](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkcjonalność maszyny Wirtualnej rozszerzenia dostępu — Zobacz poniższy zrzut ekranu.
+* Maszyny wirtualnej, dla którego uzyskujesz dostęp do konsoli szeregowej muszą również mieć konto opartego na hasłach. Możesz je utworzyć za pomocą [Resetuj hasło](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkcjonalność maszyny Wirtualnej rozszerzenia dostępu — Zobacz poniższy zrzut ekranu.
 
     ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
 
@@ -52,7 +52,6 @@ Konsola szeregowa dla maszyn wirtualnych jest dostępny za pośrednictwem tylko 
   2. W menu po lewej stronie wybierz maszyny wirtualne.
   3. Kliknij maszynę Wirtualną na liście. Zostanie otwarta strona Przegląd dla maszyny Wirtualnej.
   4. Przewiń w dół, pomoc techniczna i rozwiązywanie problemów z sekcji, a następnie kliknij opcję "Konsoli szeregowej". Nowe okienko z konsolą szeregową otworzy się i rozpocząć połączenie.
-
 
 ## <a name="enable-serial-console-in-custom-or-older-images"></a>Włącz konsoli szeregowej na obrazach niestandardowych lub starszy
 Nowsze obrazy systemu Windows Server na platformie Azure będzie mieć [specjalnej konsoli administracyjnej](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) domyślnie włączone (SAC). Konsola SAC jest obsługiwana w wersji Windows server, ale nie jest dostępna w wersji klienta (na przykład systemu Windows 10, Windows 8 lub Windows 7). Aby włączyć konsoli szeregowej dla maszyn wirtualnych Windows utworzone przed lutym 2018 roku, użyj następujących kroków: 
@@ -74,7 +73,7 @@ Jeśli to konieczne, konsola SAC można włączyć w trybie offline oraz:
 
 ### <a name="how-do-i-know-if-sac-is-enabled"></a>Jak sprawdzić, czy włączono SAC?
 
-Jeśli [SAC] (https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) nie włączono konsoli szeregowej nie wyświetli monit SAC. W niektórych przypadkach pojawią się informacje o kondycji maszyny Wirtualnej, a w innych przypadkach będzie pusta. Jeśli używasz obrazu systemu Windows Server, utworzone przed lutym 2018 roku SAC prawdopodobnie nie zostaną włączone.
+Jeśli [SAC](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) nie włączono konsoli szeregowej nie wyświetli monit SAC. W niektórych przypadkach pojawią się informacje o kondycji maszyny Wirtualnej, a w innych przypadkach będzie pusta. Jeśli używasz obrazu systemu Windows Server, utworzone przed lutym 2018 roku SAC prawdopodobnie nie zostaną włączone.
 
 ## <a name="enable-the-windows-boot-menu-in-serial-console"></a>Włącz Menu Windows rozruchowego w konsoli szeregowej 
 
@@ -99,6 +98,21 @@ Konsoli szeregowej może służyć do wysyłania NMI na maszynie wirtualnej plat
 
 Aby uzyskać informacje na temat konfigurowania Windows do utworzenia zrzutu awaryjnego, gdy odbierze NMI, zobacz: [sposób generowania pliku zrzutu awaryjnego pełną lub pliku zrzutu awaryjnego jądra za pomocą NMI na komputerze z systemem Windows](https://support.microsoft.com/en-us/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)
 
+## <a name="open-cmd-or-powershell-in-serial-console"></a>Otwórz CMD lub programu Powershell w konsoli szeregowej
+
+1. Łączenie z konsolą szeregową. Jeśli nawiązano połączenie z konsolą szeregową, zostanie wyświetlony **SAC >** pokazuje, jak poniższy zrzut ekranu:
+
+    ![Nawiązać połączenie z SAC](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
+
+3.  Typ `cmd` do utworzenia kanału, który znajduje się wystąpienie CMD. 
+4.  Typ `ch -si 1` Aby przełączyć się do kanału, który jest uruchomione wystąpienie polecenia. 
+5.  Naciśnij klawisz Enter, a następnie wprowadź swoje poświadczenia logowania, które ma uprawnienia administracyjne.
+6.  Po wprowadzeniu prawidłowe poświadczenia, zostanie otwarte wystąpienia CMD.
+7.  Aby uruchomić wystąpienie programu PowerShell, wpisz `PowerShell` w powłoce CMD z wystąpienia, a następnie naciśnij klawisz Enter. 
+
+    ![Otwórz wystąpienie programu PowerShell](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
+
+
 ## <a name="disable-serial-console"></a>Wyłącz konsoli szeregowej
 Domyślnie wszystkie subskrypcje mają dostęp do konsoli szeregowej włączone dla wszystkich maszyn wirtualnych. Można wyłączyć konsoli szeregowej na poziomie subskrypcji lub na poziomie maszyny Wirtualnej.
 
@@ -110,7 +124,7 @@ Można wyłączyć dla całej subskrypcji, za pośrednictwem konsoli szeregowej 
 
 ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-rest-api-try-it.png)
 
-Można również mogą użyć zestawu poniższe polecenia w usłudze Cloud Shell (przedstawionych poleceń powłoki bash) można wyłączyć, włączyć i wyświetlić stan wyłączonymi konsoli szeregowej dla subskrypcji. 
+Można również mogą użyć zestawu poniższe polecenia w usłudze Cloud Shell (przedstawionych poleceń powłoki bash) można wyłączyć, włączyć i wyświetlić stan wyłączenia konsoli szeregowej dla subskrypcji. 
 
 * Aby wyświetlić stan wyłączenia konsoli szeregowej dla subskrypcji:
     ```azurecli-interactive

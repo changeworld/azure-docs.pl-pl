@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 05/21/2018
+ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: 553917a29b3564fff71d6ab994ec199891cbaae7
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f09430aeb38e6762729167494a23096c7bc5ca85
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409105"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023955"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Pobierz procesora źródło zmian .NET SDK: I informacje o wersji
 > [!div class="op_single_selector"]
@@ -43,11 +43,13 @@ ms.locfileid: "49409105"
 
 ### <a name="v2-builds"></a>kompilacje w wersji 2
 
+### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
+* Naprawiono narzędzie do szacowania obliczenia wzorzec wielu kont i nowy format tokenu sesji.
+
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
 * Dodano obsługę kolekcje partycjonowane dzierżawy. Klucz partycji musi być zdefiniowany jako/identyfikator.
 * Pomocnicza, zmiana powodująca niezgodność: metody interfejsu IChangeFeedDocumentClient i klasa ChangeFeedDocumentClient zostały zmienione na obejmują parametry RequestOptions i token anulowania. IChangeFeedDocumentClient jest punktem zaawansowanych rozszerzeń, który pozwala na dostarczenie niestandardową implementację klientem dokumentu do korzystania z procesora zestawienia zmian, np. dekoracji DocumentClient i przechwytywać wszystkie wywołania do niego wykonaj dodatkowe śledzenia obsługi błędów , itp. Dzięki tej aktualizacji kodu, który implementuje IChangeFeedDocumentClient należy zostać zmienione w celu uwzględnienia nowych parametrów w implementacji.
 * Diagnostyka drobne ulepszenia.
-
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * Dodano nowy interfejs API, zadanie&lt;IReadOnlyList&lt;RemainingPartitionWork&gt; &gt; IRemainingWorkEstimator.GetEstimatedRemainingWorkPerPartitionAsync(). Może to służyć do pracy szacowany dla każdej partycji.
@@ -140,6 +142,7 @@ Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostan
 
 | Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
+| [2.2.1](#2.2.1) |24 października 2018 r. |--- |
 | [1.3.3](#1.3.3) |08 maja 2018 r. |--- |
 | [1.3.2](#1.3.2) |18 kwietnia 2018 r. |--- |
 | [1.3.1](#1.3.1) |13 marca 2018 r. |--- |

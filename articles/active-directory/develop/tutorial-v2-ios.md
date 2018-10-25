@@ -1,12 +1,11 @@
 ---
-title: Usługa Azure AD w wersji 2 dla systemu iOS wprowadzenie | Dokumentacja firmy Microsoft
-description: Jak wywołać interfejs API, które wymagają tokenów dostępu przez punkt końcowy w wersji 2 usługi Azure Active Directory w aplikacji systemu iOS (Swift)
+title: Usługa Azure AD w wersji 2.0 dla systemu iOS wprowadzenie | Dokumentacja firmy Microsoft
+description: Jak wywołać interfejs API, które wymagają tokenów dostępu przez punktu końcowego v2.0 usługi Azure Active Directory w aplikacji systemu iOS (Swift)
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
@@ -16,12 +15,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 59ed3675f13427ca8fc11ae79d757412d0b7c535
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: ad85791ddb97571408d66e843df35f2c65df2e39
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465373"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49983843"
 ---
 [!INCLUDE [1. Introduction](../../../includes/active-directory-develop-guidedsetup-ios-introduction.md)]
 [!INCLUDE [2. Setup](../../../includes/active-directory-develop-guidedsetup-ios-setup.md)]

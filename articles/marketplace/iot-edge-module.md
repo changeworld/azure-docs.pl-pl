@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: qianw211
-ms.openlocfilehash: ecc892a38d5e86a089085cd67a78ce7d00c86fd8
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 46740e925a5d4e94c314105aba4920caf01532e7
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181120"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985612"
 ---
 # <a name="iot-edge-modules"></a>Moduły usługi IoT Edge
 
@@ -84,7 +84,7 @@ Podstawowy wymagań technicznych dotyczących moduł usługi IoT Edge, aby go uz
 
 Dostępne są następujące artykuły, po zalogowaniu się do [Portal wydawców w chmurze](https://cloudpartner.azure.com/):
 
-- [Utwórz ofertę moduł usługi IoT Edge](https://cloudpartner.azure.com/#documentation/create-iot-edge-module-offer) — — proces publikowania nowego modułu usługi IoT Edge oferty z portalu wydawców w chmurze.
+- [Utwórz ofertę moduł usługi IoT Edge](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer) — — proces publikowania nowego modułu usługi IoT Edge oferty z portalu wydawców w chmurze.
 - [Proces certyfikacji moduł usługi IoT Edge](https://cloudpartner.azure.com/#documentation/iot-edge-module-certification-process) — podsumowanie kroki i wymagania, aby przeprowadzić certyfikację moduł usługi IoT Edge.
 - [Moduł usługi IoT Edge — często zadawane pytania](https://cloudpartner.azure.com/#documentation/iot-edge-module-faq) —-listę często zadawanych pytań dotyczy moduły usługi IoT Edge.
 

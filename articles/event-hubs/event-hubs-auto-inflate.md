@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: shvija
-ms.openlocfilehash: bc4116bdb251ef6f3228b7394e5c8e0cdff67447
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 19525086b1bd41afcc730fb3860d7a01875e4832
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470170"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987005"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatyczne skalowanie w górę jednostek przepływności usługi Azure Event Hubs
 
@@ -59,7 +59,7 @@ Można również włączyć automatyczne rozszerzanie przy użyciu **skalowania*
 
 
 > [!NOTE]
-> Po zastosowaniu automatyczne rozszerzanie konfiguracji zwiększenie jednostek przepływności, usługa Event Hubs emituje dzienniki diagnostyczne, które pozwalają dowiedzieć się, kiedy i dlaczego zwiększyć przepływność. Aby włączyć rejestrowanie diagnostyczne dla Centrum zdarzeń, wybierz **ustawień diagnostycznych** w menu po lewej stronie, na stronie Centrum zdarzeń w witrynie Azure portal. 
+> Po zastosowaniu automatyczne rozszerzanie konfiguracji zwiększenie jednostek przepływności, usługa Event Hubs emituje dzienniki diagnostyczne, które pozwalają dowiedzieć się, kiedy i dlaczego zwiększyć przepływność. Aby włączyć rejestrowanie diagnostyczne dla Centrum zdarzeń, wybierz **ustawień diagnostycznych** w menu po lewej stronie, na stronie Centrum zdarzeń w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [skonfigurować dzienniki diagnostyczne na potrzeby usługi Azure event hub](event-hubs-diagnostic-logs.md). 
 
 ### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>Włącz automatyczne rozszerzanie przy użyciu szablonu usługi Azure Resource Manager
 

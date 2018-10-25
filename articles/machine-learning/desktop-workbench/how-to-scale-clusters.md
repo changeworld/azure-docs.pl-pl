@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 10/04/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 718f351ad4ce325f3585ebcbe7adfc4b5905e734
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9688b9ba305a2eb59b80b02c0b41a7f4855dd051
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998614"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024566"
 ---
 # <a name="scaling-the-cluster-to-manage-web-service-throughput"></a>Skalowanie klastra zarządzania przepływnością usługi sieci web
 
@@ -65,7 +65,7 @@ Ukończenie tej operacji potrwa kilka minut. Aby uzyskać więcej informacji na 
 
 ### <a name="scaling-the-number-of-kubernetes-pod-replicas-in-a-cluster"></a>Skalowanie liczby replik zasobników Kubernetes w klastrze
  
-Możesz skalować liczbę replik zasobników przypisane do klastra przy użyciu interfejsu wiersza polecenia usługi Azure Machine Learning lub [pulpit nawigacyjny platformy Kubernetes] (https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/).
+Możesz skalować liczbę replik zasobników przypisane do klastra przy użyciu interfejsu wiersza polecenia usługi Azure Machine Learning lub [pulpit nawigacyjny platformy Kubernetes](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/).
 
 Aby uzyskać więcej informacji dotyczących replik zasobników, zobacz [zasobników](https://kubernetes.io/docs/concepts/workloads/pods/pod/) dokumentacji.
 

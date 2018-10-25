@@ -11,12 +11,12 @@ ms.custom: mvc, devcenter
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 926b35f49169c5a87e82996ba714aad40ba5244c
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 557d4217819449cd0513d4a21e331e660e37037b
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29687323"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987685"
 ---
 # <a name="azure-database-for-postgresql-use-python-to-connect-and-query-data"></a>Usługa Azure Database for PostgreSQL: nawiązywanie połączeń z danymi i wykonywanie na nich zapytań za pomocą języka Python
 Ten przewodnik Szybki start przedstawia sposób nawiązywania połączeń z usługą Azure Database for PostgreSQL za pomocą języka [Python](https://python.org). Demonstruje on także, jak używać instrukcji języka SQL na potrzeby wysyłania zapytań o dane oraz wstawiania, aktualizowania i usuwania danych w bazie danych na platformach macOS, Ubuntu Linux i Windows. W krokach w tym artykule założono, że wiesz już, jak programować za pomocą języka Python, i dopiero zaczynasz pracę z usługą Azure Database for PostgreSQL.
@@ -31,7 +31,7 @@ Wymagane są również:
 - Zainstalowany pakiet [pip](https://pip.pypa.io/en/stable/installing/) (pakiet pip jest już zainstalowany, jeśli używasz plików binarnych języka Python 2 w wersji 2.7.9 lub nowszej albo Python 3 w wersji 3.4 lub nowszej pobranych z witryny [python.org](https://python.org)).
 
 ## <a name="install-the-python-connection-libraries-for-postgresql"></a>Instalowanie bibliotek połączeń języka Python dla PostgreSQL
-Zainstaluj pakiet [psycopg2](http://initd.org/psycopg/docs/install.html), który umożliwia nawiązywanie połączeń z bazą danych i wykonywanie zapytań względem niej. Pakiet psycopg2 jest [dostępny w witrynie PyPI](https://pypi.python.org/pypi/psycopg2/) w postaci pakietów [wheel](http://pythonwheels.com/) dla najbardziej popularnych platform (Linux, OSX, Windows). Użyj polecenia pip install, aby pobrać wersję binarną modułu razem ze wszystkimi zależnościami.
+Zainstaluj pakiet [psycopg2](http://initd.org/psycopg/docs/install.html), który umożliwia nawiązywanie połączeń z bazą danych i wykonywanie zapytań względem niej. Pakiet psycopg2 jest [dostępny w witrynie PyPI](https://pypi.python.org/pypi/psycopg2/) w postaci pakietów [wheel](https://pythonwheels.com/) dla najbardziej popularnych platform (Linux, OSX, Windows). Użyj polecenia pip install, aby pobrać wersję binarną modułu razem ze wszystkimi zależnościami.
 
 1. Na komputerze uruchom interfejs wiersza polecenia:
     - W systemie Linux uruchom powłokę Bash.

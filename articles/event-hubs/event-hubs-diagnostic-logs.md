@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: d4ed53cf1f0d21e488631434b60309602169b59a
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: bee6219bca21c3bc2bf4f97aa061fce0b30d55ff
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004654"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985170"
 ---
-# <a name="event-hubs-diagnostic-logs"></a>Centra zdarzeń, dzienniki diagnostyczne
+# <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Skonfiguruj dzienniki diagnostyczne na potrzeby Centrum zdarzeń platformy Azure
 
 Możesz wyświetlić dwa typy dzienników dla usługi Azure Event Hubs:
 
@@ -80,7 +80,7 @@ eventHub | Centrum zdarzeń Pełna nazwa (z uwzględnieniem nazwy obszaru nazw).
 Identyfikator partycji | Trwa zapisywanie do partycji Centrum zdarzeń.
 archiveStep | ArchiveFlushWriter
 startTime | Godzina rozpoczęcia awarii.
-niepowodzenia | Liczba przypadków, gdy wystąpił błąd.
+błędy | Liczba przypadków, gdy wystąpił błąd.
 durationInSeconds | Czas trwania awarii.
 message | Komunikat o błędzie.
 category | ArchiveLogs

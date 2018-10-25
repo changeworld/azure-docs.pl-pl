@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
 ms.date: 09/24/2018
-ms.openlocfilehash: b450d2ca2af0c0f7598d74e2f07c0acc81b811f3
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 45aa954d2f85267b2c7c9aa2a7ba04e436765433
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116457"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023932"
 ---
 # <a name="pipelines-and-azure-machine-learning"></a>Potoki i usługi Azure Machine Learning
 
@@ -63,7 +63,7 @@ Dane deklaratywne zależności można zoptymalizować swoje zadania. Zestaw SDK 
 
 Potoki mogą być zapisywane jako szablony i którą można wdrożyć do punktu końcowego REST, dzięki czemu można zaplanować zadania wsadowe ocenianie przez lub ponownego trenowania.
 
-Zapoznaj się z [dokumentacja zestawu SDK języka Python dla potoków](http://aka.ms/aml-sdk) i Notes w następnej sekcji, aby dowiedzieć się, jak tworzyć własne.
+Zapoznaj się z [dokumentacja zestawu SDK języka Python dla potoków](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) i Notes w następnej sekcji, aby dowiedzieć się, jak tworzyć własne.
 
 ## <a name="example-notebooks"></a>Przykład notesów
  

@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 3f49065d4f66f55ed728626764d9cac2aa5c3c69
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 14515aefe9635160cf99a630b0742d23352532cf
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42058092"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985968"
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Biblioteki połączeń dla usługi Azure Database for MySQL
 W tym artykule wymieniono każdej biblioteki lub sterownik programów klienckich można używać podczas nawiązywania połączenia z usługą Azure Database for MySQL.
@@ -24,7 +24,7 @@ MySQL zapewnia łączność sterownik database w warstwie standardowa przy użyc
 
 | **Język** | **Platforma** | **Dodatkowym zasobem** | **Pobieranie** |
 | :----------- | :------------| :-----------------------| :------------|
-| PHP | Windows, Linux | [Natywne sterownika MySQL dla języka PHP — mysqlnd](https://dev.mysql.com/downloads/connector/php-mysqlnd/) | [Pobieranie](http://php.net/downloads.php) |
+| PHP | Windows, Linux | [Natywne sterownika MySQL dla języka PHP — mysqlnd](https://dev.mysql.com/downloads/connector/php-mysqlnd/) | [Pobieranie](https://secure.php.net/downloads.php) |
 | ODBC | Platformy Windows, Linux, Mac OS X i Unix | [Przewodnik dla deweloperów MySQL Connector/ODBC](https://dev.mysql.com/doc/connector-odbc/en/) | [Pobieranie](https://dev.mysql.com/downloads/connector/odbc/) |
 | ADO.NET | Windows | [Przewodnik dla deweloperów MySQL Connector/Net](https://dev.mysql.com/doc/connector-net/en/) | [Pobieranie](https://dev.mysql.com/downloads/connector/net/) |
 | JDBC | Niezależnie od platformy | [Przewodnik dla deweloperów MySQL Connector/J 5.1](https://dev.mysql.com/doc/connector-j/5.1/en/) | [Pobieranie](https://dev.mysql.com/downloads/connector/j/) |

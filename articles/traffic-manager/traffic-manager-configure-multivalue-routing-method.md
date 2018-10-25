@@ -3,8 +3,7 @@ title: Konfigurowanie metody routingu ruchu sieciowego wielu wartości w usłudz
 description: W tym artykule opisano sposób konfigurowania usługi Traffic Manager na potrzeby kierowania ruchu do punktów końcowych A/AAAA.
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
-manager: jeconnoc
+author: KumudD
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: kumud
-ms.openlocfilehash: 1fae1147c941ed28d23a478a0e809b2dffba7a35
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d9a0342332c2483b859e916b50fd05c9cb1e3395
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46131364"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986769"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Konfigurowanie metody routingu dla wielu wartości w usłudze Traffic Manager
 
@@ -42,7 +41,7 @@ Tworzenie profilu usługi Traffic Manager, który kieruje ruch użytkowników ta
 2. W **profilu usługi Traffic Manager utworzyć**wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz **Utwórz**:
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
-    | Name (Nazwa)                   | Ta nazwa musi być unikatowa w obrębie strefy trafficmanager.net i wyniki nazwę DNS, trafficmanager.net, która umożliwia dostęp do profilu usługi Traffic Manager.                                   |
+    | Name (Nazwa)                   | Ta nazwa musi być unikatowa w obrębie strefy trafficmanager.net. Na jej podstawie zostanie utworzona nazwa DNS trafficmanager.net służąca do uzyskiwania dostępu do profilu usługi Traffic Manager.                                   |
     | Metoda routingu          | Wybierz **atrybut wielowartościowy elementu** metody routingu.                                       |
     | Subskrypcja            | Wybierz subskrypcję.                          |
     | Grupa zasobów          | Wybierz *myResourceGroupTM1*. |
@@ -73,9 +72,9 @@ Dodaj dwa adresy IP jako zewnętrzne punkty końcowe, do profilu usługi Traffic
  
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [ważona metody routingu ruchu](traffic-manager-configure-weighted-routing-method.md).
-- Dowiedz się więcej o [metody routingu opartego na priorytecie](traffic-manager-configure-priority-routing-method.md).
+- Dowiedz się więcej o [ważonej metodzie routingu ruchu](traffic-manager-configure-weighted-routing-method.md).
+- Dowiedz się więcej o [priorytetowej metodzie routingu](traffic-manager-configure-priority-routing-method.md).
 - Dowiedz się więcej o [metody routingu opartego na wydajności](traffic-manager-configure-performance-routing-method.md)
-- Dowiedz się więcej o [metody routingu geograficznego](traffic-manager-configure-geographic-routing-method.md).
+- Dowiedz się więcej o [geograficznej metodzie routingu](traffic-manager-configure-geographic-routing-method.md).
 
 

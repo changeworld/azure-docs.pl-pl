@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: yizhon
-ms.openlocfilehash: 410ef936da7cf464dbef1698cf7019643cc1fb42
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 0a7e30be374ae5095e206ce0e519e51bb58f1f00
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249319"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024870"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>Usługa Azure zestaw SDK urządzeń IoT dla języka C — więcej informacji na temat serializatora
 
@@ -27,7 +27,7 @@ Na koniec tego artykułu powraca niektóre tematy omówione w poprzednich artyku
 
 Wszystko, co opisano w tym artykule opiera się na **serializator** przykładowych zestawach SDK. Jeśli chcesz wykonać te instrukcje, zobacz **simplesample\_amqp** i **simplesample\_http** aplikacje uwzględnione w zestaw SDK urządzeń Azure IoT dla języka C.
 
-Możesz znaleźć [ **zestaw SDK urządzeń Azure IoT dla języka C** ](https://github.com/Azure/azure-iot-sdk-c) GitHub repozytorium i wyświetlenia jej szczegółów interfejsu API w [dokumentacja interfejsu API języka C](https://azure.github.io/azure-iot-sdk-c/index.html).
+Możesz znaleźć [ **zestaw SDK urządzeń Azure IoT dla języka C** ](https://github.com/Azure/azure-iot-sdk-c) GitHub repozytorium i wyświetlenia jej szczegółów interfejsu API w [dokumentacja interfejsu API języka C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/).
 
 ## <a name="the-modeling-language"></a>Język modelowania
 
@@ -67,8 +67,8 @@ Następujące typy danych są obsługiwane w modelach utworzonych za pomocą **s
 | Typ | Opis |
 | --- | --- |
 | double |Podwójna precyzja liczb zmiennoprzecinkowych |
-| Int |32-bitowa liczba całkowita |
-| liczba zmiennoprzecinkowa |Liczba zmiennoprzecinkowa pojedynczej precyzji |
+| int |32-bitowa liczba całkowita |
+| float |Liczba zmiennoprzecinkowa pojedynczej precyzji |
 | dł. |Liczba całkowita typu Long |
 | int8\_t |8-bitowa liczba całkowita |
 | Int16\_t |16-bitową liczbę całkowitą |

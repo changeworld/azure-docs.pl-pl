@@ -2,26 +2,25 @@
 title: 'Usługa Azure Backup: Przygotowanie do tworzenia kopii zapasowych maszyn wirtualnych'
 description: Upewnij się, że środowisko jest przygotowane do kopii zapasowych maszyn wirtualnych na platformie Azure.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keywords: kopie zapasowe Tworzenie kopii zapasowej;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 9/10/2018
-ms.author: markgal
-ms.openlocfilehash: 7ab88ce3565ccf79f20847a3a5e744c495d5fcb1
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.date: 10/23/2018
+ms.author: raynew
+ms.openlocfilehash: 30b35d38c30d3ee9410a85824c53001ca95cf30b
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884937"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025943"
 ---
-# <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Przygotowywanie środowiska do tworzenia kopii zapasowych maszyn wirtualnych wdrożonych przez program Resource Manager
+# <a name="prepare-to-back-up-azure-vms"></a>Przygotowanie do tworzenia kopii zapasowych maszyn wirtualnych platformy Azure
 
-Ten artykuł zawiera instrukcje dotyczące przygotowania środowiska do tworzenia kopii zapasowej maszyny wirtualnej (VM) wdrożone usługi Azure Resource Manager. Kroki opisane w procedurach użyj witryny Azure portal. Podczas wykonywania kopii zapasowej maszyny wirtualnej, punktów odzyskiwania lub dane kopii zapasowej są przechowywane w magazynie usługi Recovery Services. Magazyny usługi Recovery Services przechowywać dane kopii zapasowej dla maszyn wirtualnych klasycznych i wdrożeniu usługi Resource Manager.
+Ten artykuł zawiera instrukcje dotyczące przygotowania środowiska do tworzenia kopii zapasowej maszyny wirtualnej (VM) wdrożone usługi Azure Resource Manager. Kroki opisane w procedurach użyj witryny Azure portal. Podczas wykonywania kopii zapasowej maszyny wirtualnej, punktów odzyskiwania lub dane kopii zapasowej są przechowywane w magazynie usług odzyskiwania kopii zapasowych. 
 
-> [!NOTE]
-> Platforma Azure oferuje dwa modele wdrażania związane z tworzeniem i pracą z zasobami: [usługi Resource Manager i Model Klasyczny](../azure-resource-manager/resource-manager-deployment-model.md).
+
 
 Przed rozpoczęciem ochrony (lub utworzyć kopię zapasową) wdrożonych przez Menedżera zasobów maszyny wirtualnej, upewnij się, że spełnione następujące wymagania wstępne:
 
@@ -47,7 +46,6 @@ Jeśli te warunki są już istnieją w Twoim środowisku, przejdź do [tworzenie
 Przed przygotowaniem środowiska, należy zrozumieć następujące ograniczenia:
 
 * Tworzenie kopii zapasowych maszyn wirtualnych przy użyciu więcej niż 32 dyski danych nie jest obsługiwane.
-* Tworzenie kopii zapasowych maszyn wirtualnych za pomocą zastrzeżonego adresu IP i nie ma zdefiniowanego punktu końcowego nie jest obsługiwane.
 * Tworzenie kopii zapasowych maszyn wirtualnych systemu Linux, szyfrowane za pomocą funkcji szyfrowania Linux Unified klucz instalacji (LUKS) nie jest obsługiwane.
 * Nie zaleca się tworzenie kopii zapasowych maszyn wirtualnych, które zawierają udostępnionych woluminów klastra (CSV) lub serwera plików skalowalnego w poziomie konfiguracji. Jeśli będą wykonywane, awarii składników zapisywania CSV jest oczekiwany. Wymagają one, obejmujące wszystkie maszyny wirtualne, które uwzględnione w konfiguracji klastra podczas wykonywania zadania migawki. Usługa Azure Backup nie obsługuje spójność wielu maszyn wirtualnych.
 * Dane kopii zapasowej nie zawiera sieciowych zainstalowane dyski dołączone do maszyny Wirtualnej.

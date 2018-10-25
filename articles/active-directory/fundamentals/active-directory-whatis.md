@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 09/13/2018
 ms.custom: it-pro
-ms.openlocfilehash: 08d32a99e2f1a77bcc7a5900b47e6771c33ec356
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 406baeac60c7c0cdf5f74876e5fc29ea23d3d6f6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393325"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957551"
 ---
 # <a name="what-is-azure-active-directory"></a>Co to jest usługa Azure Active Directory?
 Azure Active Directory (Azure AD) to wielodostępna, oparta na chmurze usługa firmy Microsoft do zarządzania katalogiem i tożsamościami. Usługa Azure AD łączy podstawowe usługi katalogowe, zarządzanie dostępem do aplikacji i ochronę tożsamości w jednym rozwiązaniu, oferując opartą na standardach platformę, która pomaga deweloperom zapewniać kontrolę dostępu do swoich aplikacji na podstawie scentralizowanych zasad i reguł.
@@ -74,7 +74,7 @@ Aby zwiększyć możliwości implementacji usługi Azure AD, możesz także doda
 Zarejestruj się w celu skorzystania z 30-dniowej wersji próbnej i wdróż swoje pierwsze rozwiązanie w chmurze, zobacz [Azure Active Directory — wersja Premium (wersja próbna)](https://azure.microsoft.com/trial/get-started-active-directory/).
 
 ## <a name="as-a-developer-how-do-i-get-started"></a>Jak rozpocząć pracę jako deweloper?
-Zarejestruj się w celu skorzystania z 30-dniowej wersji próbnej i rozpocznij integrowanie aplikacji z usługą Azure AD, zobacz [Azure Active Directory — wersja Premium (wersja próbna)](https://azure.microsoft.com/trial/get-started-active-directory/). Aby uzyskać więcej informacji, możesz również przeczytać [Przewodnik dla deweloperów](../develop/azure-ad-developers-guide.md) usługi Azure Active Directory.
+Zarejestruj się w celu skorzystania z 30-dniowej wersji próbnej i rozpocznij integrowanie aplikacji z usługą Azure AD, zobacz [Azure Active Directory — wersja Premium (wersja próbna)](https://azure.microsoft.com/trial/get-started-active-directory/). Aby uzyskać więcej informacji, możesz również przeczytać [Przewodnik dla deweloperów](../develop/v1-overview.md) usługi Azure Active Directory.
 
 ## <a name="next-steps"></a>Następne kroki
 - [Dowiedz się więcej na temat podstawowych kwestii związanych z zarządzaniem tożsamościami i dostępem na platformie Azure](identity-fundamentals.md).

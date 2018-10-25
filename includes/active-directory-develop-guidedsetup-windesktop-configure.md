@@ -14,17 +14,19 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: fb521fc9d4927a953cdd66948101969dfc102de4
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: b26b88d0e089217fa9915bdbdcb8f913731bcc67
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843352"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988212"
 ---
 ## <a name="register-your-application"></a>Rejestrowanie aplikacji
+
 Aplikację można zarejestrować na dwa sposoby.
 
 ### <a name="option-1-express-mode"></a>Opcja 1: Tryb ekspresowy
+
 Aplikację można szybko zarejestrować, wykonując następujące czynności:
 1. Przejdź do [portalu rejestracji aplikacji firmy Microsoft](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=windowsDesktop&step=configure).
 
@@ -37,12 +39,13 @@ Aplikację można szybko zarejestrować, wykonując następujące czynności:
 5. Postępuj zgodnie z instrukcjami dotyczącymi uzyskiwania Identyfikatora aplikacji, a następnie wklej go w kodzie.
 
 ### <a name="option-2-advanced-mode"></a>Opcja 2: Tryb zaawansowany
+
 Aby zarejestrować aplikację i dodać informacje na temat rejestracji aplikacji do rozwiązania, wykonaj następujące czynności:
 1. Jeśli nie została jeszcze zarejestrowana aplikacja, przejdź do strony [portalu rejestracji aplikacji Microsoft](https://apps.dev.microsoft.com/portal/register-app).
 
 2. Wybierz **Dodaj aplikację**.
 
-3. W polu **Application Name** (Nazwa aplikacji) wprowadź nazwę aplikacji. 
+3. W polu **Application Name** (Nazwa aplikacji) wprowadź nazwę aplikacji.
 
 4. Upewnij się, że pole **Guided Setup** (Konfiguracja z przewodnikiem) jest wyczyszczone, a następnie wybierz pozycję **Create** (Utwórz).
 

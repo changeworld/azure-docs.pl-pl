@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: f5132215b1fda93c62c1fbea46c3266fcc44ec46
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: edef88694cc335a63ce279e96a204ed4b8fe7376
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307283"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469507"
 ---
 # <a name="import-an-openapi-specification"></a>Importowanie specyfikacji interfejsu OpenAPI
 
@@ -65,11 +65,11 @@ Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Twor
 
 Operacje mogą być wywoływane bezpośrednio z witryny Azure Portal, która zapewnia wygodny sposób wyświetlania i testowania operacji interfejsu API.
 
+![Testowanie interfejsu API](./media/api-management-get-started/01-import-first-api-01.png)
+
 1. Wybierz interfejs API utworzony w poprzednim kroku.
 2. Naciśnij kartę **Test**.
-
-    ![Testowanie interfejsu API](./media/api-management-get-started/test-api.png)
-1. Kliknij pozycję **GetSpeakers**.
+3. Kliknij pozycję **GetSpeakers**.
 
     Strona wyświetla pola parametrów zapytania, ale w tym przypadku nie ma żadnych parametrów. Ponadto strona wyświetla pola nagłówków. Jeden z nagłówków to „Ocp-Apim-Subscription-Key” dla klucza subskrypcji produktu, który został skojarzony z tym interfejsem API. Jeśli utworzono wystąpienie usługi APIM, oznacza to, że użytkownik jest już administratorem, więc klucz zostanie uzupełniony automatycznie.
 4. Kliknij pozycję **Wyślij**.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: cwatson
-ms.openlocfilehash: 460cd3a5b05680563661e2f6519eaa3506eee03b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: e43188459bf495748a054b0f24936c9141bd218c
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392088"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025719"
 ---
 # <a name="understand-how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Zrozumienie, jak rabat związany z rezerwacją platformy Azure są stosowane do maszyn wirtualnych
 
@@ -51,15 +51,15 @@ Aby zrozumieć i wyświetlić aplikację Azure rezerwacji w rozliczeniach raport
 
 ## <a name="application-of-reservation-discount-to-windows-vms"></a>Zastosowanie rabat związany z rezerwacją do maszyn wirtualnych Windows
 
-Po uruchomieniu wystąpień maszyn wirtualnych Windows Rezerwacja ma zostać zastosowana do pokrycia kosztów infrastruktury. Aplikacja rezerwacji kosztów infrastruktury maszyny Wirtualnej dla maszyn wirtualnych Windows jest taka sama jak w przypadku innych niż - Windows maszyn wirtualnych. Opłaty są naliczane osobno dla oprogramowania Windows na podstawie poszczególnych procesorów wirtualnych. Zobacz [koszty oprogramowania Windows za pomocą rezerwacji](https://go.microsoft.com/fwlink/?linkid=862756). Mogą obejmować usługi Windows licencjonowania koszty dzięki [Azure hybrydowego korzyści dla systemu Windows Server] (https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing).
+Po uruchomieniu wystąpień maszyn wirtualnych Windows Rezerwacja ma zostać zastosowana do pokrycia kosztów infrastruktury. Aplikacja rezerwacji kosztów infrastruktury maszyny Wirtualnej dla maszyn wirtualnych Windows jest taka sama jak w przypadku innych niż - Windows maszyn wirtualnych. Opłaty są naliczane osobno dla oprogramowania Windows na podstawie poszczególnych procesorów wirtualnych. Zobacz [koszty oprogramowania Windows za pomocą rezerwacji](https://go.microsoft.com/fwlink/?linkid=862756). Mogą obejmować usługi Windows koszty za pomocą licencjonowania [Azure korzyści użycia hybrydowego dla systemu Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące artykuły:
 
 - [Co to jest Azure rezerwacje?](billing-save-compute-costs-reservations.md)
-- [Przedpłaty dotyczące maszyn wirtualnych przy użyciu wystąpienia zarezerwowane maszyn wirtualnych platformy Azure](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Zapłać z góry za zasoby obliczeniowe bazy danych SQL Database o pojemności usługi Azure SQL Database, zarezerwowane](../sql-database/sql-database-reserved-capacity.md)
+- [Prepay for Virtual Machines with Azure Reserved VM Instances (Opłacanie maszyn wirtualnych z góry przy użyciu usługi Azure Reserved VM Instances)](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Prepay for SQL Database compute resources with Azure SQL Database reserved capacity (Opłacanie zasobów obliczeniowych usługi SQL Database z góry przy użyciu zarezerwowanej pojemności usługi Azure SQL Database)](../sql-database/sql-database-reserved-capacity.md)
 - [Zarządzanie usługą Azure Reservations](billing-manage-reserved-vm-instance.md)
 - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)

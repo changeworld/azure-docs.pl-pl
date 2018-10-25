@@ -7,19 +7,19 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 9f082c5f198ebd7123058bd250d3fef55494d553
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 1fd8f7c8499b7f9223939b8d426f274e79fd190e
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287543"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025351"
 ---
 # <a name="aks-troubleshooting"></a>Rozwiązywanie problemów z usługi AKS
 Podczas tworzenia lub Menedżer usłudze AKS klastrów, czasami mogą wystąpić problemy. Ten artykuł szczegółowo opisuje niektóre typowe problemy i kroki rozwiązywania problemów.
 
 ### <a name="in-general-where-do-i-find-information-about-debugging-kubernetes-issues"></a>Ogólnie rzecz biorąc, gdzie można znaleźć informacje o debugowaniu problemów Kubernetes?
 
-[Tutaj] (https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/) to oficjalne link do rozwiązywania problemów z klastrów kubernetes.
+[W tym miejscu](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/) to oficjalne link do rozwiązywania problemów z klastrów kubernetes.
 [W tym miejscu](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md) łącze do przewodnik rozwiązywania problemów, opublikowane przez inżynier z firmy Microsoft dotyczące rozwiązywania problemów z zasobników, węzły, klastrów, itp.
 
 ### <a name="i-am-getting-a-quota-exceeded-error-during-create-or-upgrade-what-should-i-do"></a>Otrzymuję błąd przekroczenia limitu przydziału podczas tworzenia lub uaktualniania. Co mam zrobić? 

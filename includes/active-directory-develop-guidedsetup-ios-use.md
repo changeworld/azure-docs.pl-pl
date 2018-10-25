@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 248f2575e284ae456578b071013e1a5501329116
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 06da33b91ef9846204b33ba2cb3dea40c75d425d
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843429"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988279"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Użyj Microsoft Authentication Library (MSAL), aby uzyskać token dla interfejsu API programu Microsoft Graph
 
@@ -29,17 +29,17 @@ Otwórz `ViewController.swift` i Zastąp kod za pomocą:
 import UIKit
 import MSAL
 
-/// 😃 A View Controller that will respond to the events of the Storyboard.
+// A View Controller that will respond to the events of the Storyboard.
 class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate {
-    
-    // Update the below to your client ID you received in the portal. The below is for running the demo only
+
+    // Replace Your_Application_Id_Here with the client ID you received in the portal. The below is for running the demo only.
     let kClientID = "Your_Application_Id_Here"
-    
+
     // These settings you don't need to edit unless you wish to attempt deeper scenarios with the app.
     let kGraphURI = "https://graph.microsoft.com/v1.0/me/"
     let kScopes: [String] = ["https://graph.microsoft.com/user.read"]
     let kAuthority = "https://login.microsoftonline.com/common"
-    
+
     var accessToken = String()
     var applicationContext : MSALPublicClientApplication?
 
@@ -87,7 +87,7 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
         super.viewWillAppear(animated)
         signoutButton.isEnabled = !self.accessToken.isEmpty
     }
-    
+
     /**
      This button will invoke the authorization flow.
     */
@@ -204,17 +204,20 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
 
 <!--start-collapse-->
 ### <a name="more-information"></a>Więcej informacji
+
 #### <a name="getting-a-user-token-interactively"></a>Interaktywne pobieranie tokenu użytkownika
+
 Wywoływanie `acquireToken` metoda nie powoduje monitowanie użytkownika o Zaloguj się w oknie przeglądarki. Aplikacje zwykle wymagają użytkownika do logowania interakcyjnego potrzebują dostępu do chronionego zasobu po raz pierwszy lub silent operacji można uzyskać tokenu kończy się niepowodzeniem (np. hasło tego użytkownika wygasła).
 
 #### <a name="getting-a-user-token-silently"></a>Dyskretne pobieranie tokenu użytkownika
+
 `acquireTokenSilent` Obsługiwała pozyskanie tokenu i wznowienie bez żadnej interakcji użytkownika. Po `acquireToken` jest wykonywany po raz pierwszy `acquireTokenSilent` jest metodą, często używane do uzyskiwania tokenów, które umożliwiają dostęp do chronionych zasobów dla kolejnych wywołań — jak do żądania lub odnowienia tokenów wywołań dyskretnie.
 
 Po pewnym czasie `acquireTokenSilent` zakończy się niepowodzeniem — np. użytkownik zalogował lub została zmieniona swojego hasła na innym urządzeniu. Gdy biblioteki MSAL wykryje, że ten problem można rozwiązać, wymagając akcję interaktywne, jest on uruchamiany `MSALErrorCode.interactionRequired` wyjątku. Aplikacja może obsłużyć ten wyjątek na dwa sposoby:
 
-1.  Wywołania względem `acquireToken` natychmiast, które powoduje monitowanie użytkownika do logowania. Ten wzorzec jest zwykle używany w aplikacjach w trybie online w przypadku, gdy brak offline zawartości w aplikacji dostępne dla użytkownika. Przykładowa aplikacja generowana za pomocą tego Instalatora z przewodnikiem korzysta z tego wzorca: widoczne w czasie działania pierwszego wykonania aplikacji. Ponieważ żaden użytkownik nie jest nigdy nie użył aplikacji `applicationContext.allAccounts().first` będzie zawierać wartości null i ` MSALErrorCode.interactionRequired ` zostanie zgłoszony wyjątek. Następnie kod w przykładzie obsługuje wyjątek, wywołując `acquireToken` skutkuje monitowania użytkownika do logowania.
+1. Wywołania względem `acquireToken` natychmiast, które powoduje monitowanie użytkownika do logowania. Ten wzorzec jest zwykle używany w aplikacjach w trybie online w przypadku, gdy brak offline zawartości w aplikacji dostępne dla użytkownika. Przykładowa aplikacja generowana za pomocą tego Instalatora z przewodnikiem korzysta z tego wzorca: widoczne w czasie działania pierwszego wykonania aplikacji. Ponieważ żaden użytkownik nie jest nigdy nie użył aplikacji `applicationContext.allAccounts().first` będzie zawierać wartości null i ` MSALErrorCode.interactionRequired ` zostanie zgłoszony wyjątek. Następnie kod w przykładzie obsługuje wyjątek, wywołując `acquireToken` skutkuje monitowania użytkownika do logowania.
 
-2.  Aplikacje może być wizualne oznaczenie do użytkownika, który interakcyjnego logowania jest wymagana, dzięki czemu użytkownik może wybrać w odpowiednim czasie, aby zalogować się lub aplikacji można ponowić próbę `acquireTokenSilent` w późniejszym czasie. Służy to zwykle po użytkownik może użyć innych funkcji aplikacji bez zakłócana — na przykład Brak dostępnej zawartości w trybie offline w aplikacji. W tym przypadku użytkownik może wybrać, gdy mają logować się do uzyskania dostępu do chronionego zasobu lub w celu odświeżenia nieaktualnych informacji lub aplikacji można zdecydować ponowić próbę `acquireTokenSilent` po przywróceniu sieci po jest tymczasowo niedostępny.
+2. Aplikacje może być wizualne oznaczenie do użytkownika, który interakcyjnego logowania jest wymagana, dzięki czemu użytkownik może wybrać w odpowiednim czasie, aby zalogować się lub aplikacji można ponowić próbę `acquireTokenSilent` w późniejszym czasie. Służy to zwykle po użytkownik może użyć innych funkcji aplikacji bez zakłócana — na przykład Brak dostępnej zawartości w trybie offline w aplikacji. W tym przypadku użytkownik może wybrać, gdy mają logować się do uzyskania dostępu do chronionego zasobu lub w celu odświeżenia nieaktualnych informacji lub aplikacji można zdecydować ponowić próbę `acquireTokenSilent` po przywróceniu sieci po jest tymczasowo niedostępny.
 
 <!--end-collapse-->
 
@@ -287,6 +290,7 @@ Dodaj następującą metodę do `ViewController.swift` do wylogowania użytkowni
 
 }
 ```
+
 <!--start-collapse-->
 ### <a name="more-info-on-sign-out"></a>Więcej informacji o funkcji wylogowania
 
@@ -299,11 +303,12 @@ Mimo że aplikacja, w tym przykładzie obsługuje pojedynczego użytkownika, bib
 
 Gdy użytkownik jest uwierzytelniany, przeglądarka przekierowuje użytkownika do aplikacji. Wykonaj poniższe kroki, aby zarejestrować to wywołanie zwrotne:
 
-1.  Otwórz `AppDelegate.swift` i zaimportuj MSAL:
+1. Otwórz `AppDelegate.swift` i zaimportuj MSAL:
 
 ```swift
 import MSAL
 ```
+
 <!-- Workaround for Docs conversion bug -->
 <ol start="2">
 <li>

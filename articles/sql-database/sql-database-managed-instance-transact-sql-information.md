@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 08/13/2018
-ms.openlocfilehash: 2f512c666555ca8bee58305b76573459f6e631e2
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/24/2018
+ms.openlocfilehash: fd63d0ce9ef335efdebf9759d52cf93312986d16
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166507"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025382"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Różnice w usługi Azure SQL Database zarządzane wystąpienia języka T-SQL z programu SQL Server 
 
@@ -103,7 +103,7 @@ Zobacz [Utwórz certyfikat](https://docs.microsoft.com/sql/t-sql/statements/crea
 > ``` 
 CREATE CERTIFICATE  
  FROM BINARY = asn_encoded_certificate    
-WITH PRIVATE KEY ( <private_key_options> ) 
+WITH PRIVATE KEY (<private_key_options>) 
 >```   
  
 ### <a name="clr"></a>CLR 
@@ -333,21 +333,22 @@ Aby uzyskać informacje na temat instrukcji Restore, zobacz [PRZYWRÓCIĆ instru
  - `remote proc trans` 
 - `sp_execute_external_scripts` nie jest obsługiwane. Zobacz [sp_execute_external_scripts](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).
 - `xp_cmdshell` nie jest obsługiwane. Zobacz [procedury xp_cmdshell](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql).
-- `Extended stored procedures` nie są obsługiwane, w tym `sp_addextendedproc` i `sp_dropextendedproc`. Zobacz [rozszerzonych procedur składowanych](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)
+- `Extended stored procedures` nie są obsługiwane, w tym `sp_addextendedproc`  i `sp_dropextendedproc`. Zobacz [rozszerzonych procedur składowanych](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)
 - `sp_attach_db`, `sp_attach_single_file_db`, i `sp_detach_db` nie są obsługiwane. Zobacz [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql), i [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 - `sp_renamedb` nie jest obsługiwane. Zobacz [sp_renamedb](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-renamedb-transact-sql).
 
 ### <a name="sql-server-agent"></a>Program SQL Server Agent
 
 - Ustawienia agenta SQL są tylko do odczytu. Procedura `sp_set_agent_properties` nie jest obsługiwana w wystąpieniu zarządzanym.  
-- Zadania — kroki w zadaniu języka T-SQL są obecnie obsługiwane.
-- Inne typy zadań kroki nie są obecnie obsługiwane (krok typów zostanie dodana w okresie publicznej wersji zapoznawczej).
-  - Zadania replikacji nie jest obsługiwane w tym:
+- Stanowiska
+ - Kroki w zadaniu języka T-SQL są obsługiwane.
+ - Obsługiwane są następujące zadania replikacji:
     - Czytnik dziennika transakcji.  
     - Migawki.
-    - Dystrybutor.  
-    - Scalanie.  
-  - SSIS nie jest jeszcze obsługiwana. 
+    - Dystrybutor.
+ - SSIS jest obsługiwane. 
+- Inne rodzaje kroków zadania nie są obecnie obsługiwane, w tym:
+  - Krok zadania replikacji scalającej nie jest obsługiwane.  
   - Czytnik kolejki nie jest obsługiwane.  
   - Powłoka poleceń nie jest jeszcze obsługiwana. 
   - Wystąpienia zarządzanego nie można uzyskać dostępu zewnętrznych zasobów (np. udziały sieciowe za pośrednictwem robocopy).  
@@ -411,7 +412,7 @@ W tym przykładzie istniejących baz danych będą nadal działać i można rozw
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>Przywróć niepoprawnej konfiguracji klucza sygnatury dostępu Współdzielonego podczas bazy danych
 
 `RESTORE DATABASE` który odczytuje plik bak może być stale ponawianie próby można odczytać pliku bak i zwróciła błąd po długim okresie czasu, jeśli sygnatura dostępu współdzielonego w `CREDENTIAL` jest niepoprawny. Wykonaj Przywracanie HEADERONLY przed przywróceniem bazy danych należy upewnić się, że klucz sygnatury dostępu Współdzielonego jest poprawna.
-Upewnij się, usunięcie wiodących `?` z klucza sygnatury dostępu Współdzielonego, wygenerowane za pomocą witryny Azure portal.
+Upewnij się, że usuwa wiodące `?` z klucza sygnatury dostępu Współdzielonego, który jest generowany przy użyciu witryny Azure portal.
 
 ### <a name="tooling"></a>Narzędzia
 

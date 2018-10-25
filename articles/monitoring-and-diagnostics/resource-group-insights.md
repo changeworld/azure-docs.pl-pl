@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 7e0a68efc93d0f907edfb38dbc548ac95a35b3e1
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 4b24ab406cc9cdbc3ce03ee203ec034843d5630a
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465813"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986427"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Monitor grupy zasobów z usługą Azure Monitor (wersja zapoznawcza)
 
@@ -113,7 +113,12 @@ W tym przypadku jeśli wybierzesz edycji pojawi się, że ten zestaw wizualizacj
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
 ### <a name="enabling-access-to-alerts"></a>Umożliwianie dostępu do alertów
-Usługa Azure Monitor dla grup zasobów wymaga pewnych uprawnień do dostępu do stanu alertu zasobów w grupie zasobów. Jeśli widzisz komunikat o błędzie podczas ładowania alertów, nie masz wystarczających uprawnień. Poproś administratora o udzielenie **właściciela** lub **Współautor** roli dla subskrypcji, zawierające grupa zasobów.
+
+Aby wyświetlić alerty w usłudze Azure Monitor dla grup zasobów, inna osoba z roli współautora lub właściciela dla tej subskrypcji musi otworzyć usługi Azure Monitor dla grup zasobów dla każdej grupy zasobów w subskrypcji. Spowoduje to włączenie każda osoba mająca dostęp do odczytu, aby wyświetlić alerty w usłudze Azure Monitor dla grup zasobów dla wszystkich grup zasobów w subskrypcji. Jeśli masz roli współautora lub właściciela, Odśwież tę stronę za kilka minut.
+
+Usługa Azure Monitor dla grup zasobów zależy od systemu zarządzania alertami monitorowania platformy Azure można pobrać stanu alertu. Zarządzanie alertami nie jest domyślnie skonfigurowana do każdej grupy zasobów i subskrypcji, i można ją włączyć tylko przez użytkownika z roli współautora lub właściciela. Można ją włączyć za:
+* Otwieranie usługi Azure Monitor dla grup zasobów do dowolnej grupie zasobów w subskrypcji.
+* Lub przechodząc do subskrypcji, klikając **dostawców zasobów**, klikając **zarejestrować Alerts.Management**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

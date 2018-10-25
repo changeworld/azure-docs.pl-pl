@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: d3fb6557571042be7db1380010738bacd72e50f5
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: cc7bcefe43eed524f50fcad09d7fb31a80d22b83
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869504"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025807"
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Wykonaj wyszukiwanie w dzienniku między zasobami w usłudze Log Analytics  
 
@@ -29,7 +29,7 @@ Wcześniej przy użyciu usługi Azure Log Analytics można było tylko analizowa
 Teraz można tworzyć zapytania nie tylko między wiele obszarów roboczych usługi Log Analytics, ale także dane z określonej aplikacji usługi Application Insights w tej samej grupie zasobów, innej grupy zasobów lub innej subskrypcji. Zapewnia widok całego systemu danych.  Można wykonać tylko te typy zapytań w [usługi Log Analytics](log-analytics-log-search-portals.md#log-analytics-page). Liczba zasobów (obszary robocze usługi Log Analytics i aplikacji usługi Application Insights), które można uwzględnić w ramach pojedynczego zapytania jest ograniczona do 100. 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Wykonywanie zapytań w obszarach roboczych usługi Log Analytics i z usługi Application Insights
-Aby odwoływać się do innego obszaru roboczego w zapytaniu, należy użyć [ *obszaru roboczego* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/workspace()) identyfikatora w przypadku aplikacji z usługi Application Insights, użyj [ *aplikacji* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/app())identyfikatora.  
+Aby odwoływać się do innego obszaru roboczego w zapytaniu, należy użyć [ *obszaru roboczego* ](https://docs.microsoft.com/azure/log-analytics/query-language/workspace-expression) identyfikatora w przypadku aplikacji z usługi Application Insights, użyj [ *aplikacji* ](https://docs.microsoft.com/azure/log-analytics/query-language/app-expression)identyfikatora.  
 
 ### <a name="identifying-workspace-resources"></a>Identyfikowanie zasobów obszaru roboczego
 W poniższych przykładach pokazano zapytania w obszarach roboczych usługi Log Analytics, aby zwrócić podsumowania liczby dzienników z tabeli aktualizacji w obszarze roboczym o nazwie *contosoretail it*. 
@@ -104,4 +104,4 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Przegląd [Zaloguj się odwołanie do wyszukiwania usługi Log Analytics](https://docs.loganalytics.io/docs/Language-Reference) Aby wyświetlić wszystkie opcje składni zapytań dostępnych w usłudze Log Analytics.    
+Przegląd [Zaloguj się odwołanie do wyszukiwania usługi Log Analytics](https://docs.microsoft.com/azure/log-analytics/query-language/kusto) Aby wyświetlić wszystkie opcje składni zapytań dostępnych w usłudze Log Analytics.    

@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: adcb1b15ed52e6954846ea09be0a87a118222c10
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 265d34c91a8c803256e718899f5b6ce2738a88e5
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989588"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956435"
 ---
 # <a name="about-v20"></a>Informacje o wersji 2.0
 
@@ -62,6 +62,6 @@ Uzyskaj szczegółowe informacje na temat wersji 2.0:
 * [Interfejs API programu Microsoft Graph](https://graph.microsoft.io)
 
 > [!NOTE]
-> Jeśli musisz logować się tylko do kont służbowych i szkolnych z poziomu usługi Azure Active Directory, zacznij od [przewodnika dewelopera usługi Azure AD](azure-ad-developers-guide.md). Punkt końcowy w wersji 2.0 jest przeznaczony do użycia przez deweloperów, którzy potrzebują logowania się do osobistych kont Microsoft.
+> Jeśli musisz logować się tylko do kont służbowych i szkolnych z poziomu usługi Azure Active Directory, zacznij od [przewodnika dewelopera usługi Azure AD](v1-overview.md). Punkt końcowy w wersji 2.0 jest przeznaczony do użycia przez deweloperów, którzy potrzebują logowania się do osobistych kont Microsoft.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

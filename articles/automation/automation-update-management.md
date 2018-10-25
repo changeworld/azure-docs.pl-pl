@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2bd1d52db88ca280b811898c173f66b2deee1649
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 6d2076a91bc7e7c0e2ca9d2fe6899cddec2f8d0b
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638156"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024498"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -39,7 +39,7 @@ Rozwiązanie Update Management może służyć do natywnie dołączanie maszyn w
 
 CVE po wersji może potrwać 2 – 3 godziny poprawki pojawienie się maszyn z systemem Linux dla oceny.  W przypadku maszyn Windows zajmuje 12 – 15 godzin poprawki do wyświetlenia dla oceny po udostępnieniu.
 
-Po ukończeniu skanowania pod kątem zgodności aktualizacji komputera agenta przekazuje zbiorczo informacje do usługi Azure Log Analytics. Na komputerze Windows skanowanie pod kątem zgodności uruchomiono domyślnie co 12 godzin.
+Po ukończeniu skanowania pod kątem zgodności aktualizacji komputera agenta przekazuje zbiorczo informacje do usługi Azure Log Analytics. Na komputerze Windows skanowanie pod kątem zgodności jest domyślnie uruchamiane co 12 godzin.
 
 Oprócz harmonogramem skanowania pod kątem zgodności aktualizacji jest inicjowane w ciągu 15 minut po uruchomieniu programu MMA, przed instalacją aktualizacji i po zainstalowaniu aktualizacji.
 
@@ -56,7 +56,7 @@ Zaplanowane wdrożenie definiuje, które komputery docelowe otrzymywać odpowied
 
 Aktualizacje są instalowane przez elementy runbook w usłudze Azure Automation. Nie można wyświetlić tych elementów runbook i elementy runbook nie wymaga żadnej konfiguracji. Po utworzeniu wdrożenia aktualizacji wdrożenia aktualizacji powoduje utworzenie harmonogramu, który uruchamia główny element runbook aktualizacji w określonym czasie na uwzględnionych komputerach. Główny element runbook uruchamia podrzędny element runbook na każdym agencie w celu zainstalowania wymaganych aktualizacji.
 
-Od daty i czasu określony we wdrożeniu aktualizacji komputery docelowe równolegle uruchomić wdrożenie. Przed rozpoczęciem instalacji uruchomiono skanowanie, aby sprawdzić, czy aktualizacje są nadal wymagane. Dla komputerów klienckich programu WSUS Jeśli aktualizacje nie są zatwierdzone w programie WSUS, wdrożenie aktualizacji kończy się niepowodzeniem.
+Od daty i czasu określony we wdrożeniu aktualizacji komputery docelowe równolegle uruchomić wdrożenie. Przed rozpoczęciem instalacji Aby sprawdzić, czy aktualizacje są nadal wymagane przeprowadzania skanowania. Dla komputerów klienckich programu WSUS Jeśli aktualizacje nie są zatwierdzone w programie WSUS, wdrożenie aktualizacji kończy się niepowodzeniem.
 
 Masz maszynę zarejestrowane do zarządzania aktualizacjami w więcej niż jeden Analytics obszary robocze usługi Log (Obsługa wielu regionów) nie jest obsługiwane.
 
@@ -168,9 +168,9 @@ W poniższej tabeli opisano połączone źródła, które są obsługiwane przez
 
 | Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |
-| Agenci dla systemu Windows |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów dla Windows i inicjuje instalowanie wymaganych aktualizacji. |
-| Agenci dla systemu Linux |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów dla systemu Linux i inicjuje instalowanie wymaganych aktualizacji w obsługiwanych dystrybucjach. |
-| Grupa zarządzania programu Operations Manager |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania.<br/>Bezpośrednie połączenie agenta programu Operations Manager do usługi Log Analytics nie jest wymagana. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
+| Agenci dla systemu Windows |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów dla Windows i inicjuje instalowanie wymaganych aktualizacji. |
+| Agenci dla systemu Linux |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów dla systemu Linux i inicjuje instalowanie wymaganych aktualizacji w obsługiwanych dystrybucjach. |
+| Grupa zarządzania programu Operations Manager |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania.<br/>Bezpośrednie połączenie agenta programu Operations Manager do usługi Log Analytics nie jest wymagana. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
 
 ### <a name="collection-frequency"></a>Częstotliwość zbierania
 
@@ -190,7 +190,7 @@ Aby uruchomić przeszukiwanie dziennika, które zwraca informacje dotyczące mas
 
 ![Widok domyślny zarządzania aktualizacjami](media/automation-update-management/update-management-view.png)
 
-## <a name="install-updates"></a>Zainstaluj aktualizacje
+## <a name="install-updates"></a>Instalowanie aktualizacji
 
 Po aktualizacji są oceniane dla wszystkich komputerów z systemami Linux i Windows w obszarze roboczym, można zainstalować wymagane aktualizacje, tworząc *wdrożenie aktualizacji*. Wdrożenie aktualizacji to zaplanowana instalacja wymaganych aktualizacji na co najmniej jeden komputer. Należy określić datę i godzinę wdrożenia i komputera lub grupy komputerów, które do uwzględnienia w zakresie wdrożenia. Aby dowiedzieć się więcej na temat grup komputerów, zobacz [Computer groups in Log Analytics](../log-analytics/log-analytics-computer-groups.md) (Grupy komputerów w usłudze Log Analytics).
 
@@ -207,11 +207,11 @@ Aby utworzyć nowe wdrożenie aktualizacji, wybierz **Zaplanuj wdrażanie aktual
 
 | Właściwość | Opis |
 | --- | --- |
-| Nazwa |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
+| Name (Nazwa) |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
 |System operacyjny| System Linux lub Windows|
 | Grupy można zaktualizować (wersja zapoznawcza)|Definiowanie zapytań, w zależności od kombinacji subskrypcji, grupy zasobów, lokalizacje i tagi, do tworzenia grupy dynamicznej maszyn wirtualnych platformy Azure, aby uwzględnić w danym wdrożeniu. Aby dowiedzieć się więcej, zobacz [grupy dynamiczne](automation-update-management.md#using-dynamic-groups)|
 | Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub wybrać maszynę z listy rozwijanej i wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Grupy komputerów w usłudze Log Analytics](../log-analytics/log-analytics-computer-groups.md) |
-|Aktualizuj klasyfikacje|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne|
+|Klasyfikacje aktualizacji|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne|
 |Uwzględnianie/wykluczanie aktualizacji|Spowoduje to otwarcie **uwzględniania/wykluczania** strony. Aktualizacje, które mają zostać uwzględnione lub wykluczone, znajdują się na osobnych kartach. Aby uzyskać więcej informacji na temat sposobu obsługi dołączania, zobacz [zachowanie dołączania](automation-update-management.md#inclusion-behavior) |
 |Ustawienia harmonogramu|Wybierz godzinę do uruchomienia i wybrać jednorazowo lub cykliczne cyklu|
 | Skrypty przed i skryptu używanego po utworzeniu|Wybierz skrypty do uruchomienia przed i po wdrożeniu|
@@ -232,7 +232,7 @@ Wybierz **wdrożenia aktualizacji** kartę, aby wyświetlić listę istniejącyc
 
 Aby wyświetlić wdrożenie aktualizacji z interfejsu API REST, zobacz [przebiegów konfiguracji aktualizacji oprogramowania](/rest/api/automation/softwareupdateconfigurationruns).
 
-## <a name="update-classifications"></a>Aktualizuj klasyfikacje
+## <a name="update-classifications"></a>Klasyfikacje aktualizacji
 
 W poniższej tabeli wymieniono klasyfikacji aktualizacji w zarządzania aktualizacjami definicji dla każdej klasyfikacji.
 
@@ -264,7 +264,34 @@ sudo yum -q --security check-update
 
 Nie jest obecnie żadna metoda metody obsługiwanej umożliwiające dostępność danych natywnych klasyfikacji na CentOS. W tej chwili jedynie optymalnych obsługa jest udostępniana klientom, którzy mogą mieć włączone to własnych.
 
-##<a name="ports"></a>Planowanie sieci
+## <a name="firstparty-predownload"></a>Firmy poprawek i Pobierz wstępnie
+
+Rozwiązanie Update Management opiera się na Windows Update, aby pobrać i zainstalować aktualizacje Windows. W rezultacie Szanujemy wiele ustawień używanych przez usługę Windows Update. Jeśli używasz ustawienia włączającą aktualizacje inne niż Windows rozwiązania Update Management będzie zarządzać te aktualizacje również. Jeśli chcesz umożliwić pobieranie aktualizacji, zanim nastąpi wdrożenie aktualizacji, wdrożeń aktualizacji można przyspieszyć i jest mniej prawdopodobne przekracza okna obsługi.
+
+### <a name="pre-download-updates"></a>Wstępnie pobierać aktualizacje
+
+Aby skonfigurować automatyczne pobieranie aktualizacji zasad grupy, można ustawić [Konfigurowanie aktualizacji automatycznych](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#BKMK_comp5) do **3**. Pobiera aktualizacje wymagane w tle, ale nie można zainstalować je. Dzięki temu zarządzanie aktualizacjami w formancie harmonogramów, ale zezwala na aktualizacje do pobrania poza oknem obsługi rozwiązania Update Management. Może to spowodować **Przekroczono czas okna obsługi** błędy w zarządzania aktualizacjami.
+
+Możesz również ustawić za pomocą programu PowerShell, uruchom następujące polecenie programu PowerShell w systemie, który chcesz automatycznego pobierania aktualizacji.
+
+```powershell
+$WUSettings = (New-Object -com "Microsoft.Update.AutoUpdate").Settings
+$WUSettings.NotificationLevel = 3
+$WUSettings.Save()
+```
+
+### <a name="enable-updates-for-other-microsoft-products"></a>Włącz aktualizacje dla innych produktów firmy Microsoft
+
+Domyślnie Windows Update udostępnia aktualizacje tylko dla Windows. Po włączeniu **nadać mi aktualizacje dla innych produktów firmy Microsoft, gdy aktualizuję Windows**, pod warunkiem za pomocą aktualizacji dla innych produktów, w tym takich rzeczy poprawek zabezpieczeń dla programu SQL Server lub inne pierwszy oprogramowanie innych firm. Tej opcji nie można skonfigurować przy użyciu zasad grupy. Uruchom następujące polecenie programu PowerShell w systemach, które chcesz włączyć innych pierwszy poprawek innych firm na i zarządzania aktualizacjami będą stosować tego ustawienia.
+
+```powershell
+$ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")
+$ServiceManager.Services
+$ServiceID = "7971f918-a847-4430-9279-4a52d1efe18d"
+$ServiceManager.AddService2($ServiceId,7,"")
+```
+
+## <a name="ports"></a>Planowanie sieci
 
 Następujące adresy są wymagane dla rozwiązania Update Management. Na te adresy są przesyłane za pośrednictwem portu 443.
 
@@ -544,7 +571,7 @@ Jednak zarządzania aktualizacjami, nadal może raportować tej maszyny, co jest
 
 Wdrażanie aktualizacji według klasyfikacji aktualizacji nie działa w przypadku CentOS gotowe. Dla SUSE wybierając *tylko* inne aktualizacje klasyfikacji może spowodować pewne zabezpieczenia aktualizuje również zainstalowania aktualizacji zabezpieczeń związane z zypper (Menedżera pakietów) oraz jego zależności wymagane najpierw. To ograniczenie zypper. W niektórych przypadkach może być wymagane ponowne uruchomienie wdrożenia aktualizacji, aby sprawdzić, sprawdź w dzienniku aktualizacji.
 
-## <a name="troubleshoot"></a>Rozwiąż problemy
+## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
 Aby dowiedzieć się, jak rozwiązywać problemy z Twojego rozwiązania Update Management, zobacz [Rozwiązywanie problemów z rozwiązania Update Management](troubleshoot/update-management.md)
 

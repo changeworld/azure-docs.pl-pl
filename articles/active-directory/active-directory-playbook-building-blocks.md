@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/23/2018
 ms.author: dstefan
-ms.openlocfilehash: db6778bdea2e3e133535bf28b3c2297cdb65599d
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7aa0f80b8a0b53d4c53cf633938765e820c641cf
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958911"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025340"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Usługa Azure Active Directory weryfikacji koncepcji Podręcznik: bloki konstrukcyjne
 
@@ -209,7 +209,7 @@ Przybliżony czas wykonania: 30 minut
 | Wymagania wstępne | Zasoby |
 | --- | --- |
 | Lista aplikacji docelowej i dokładnie logowania adresy URL wcześniej. Na przykład możesz użyć usługi Twitter. | [W usłudze Twitter na platformie Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[Zarejestruj się w serwisie Twitter](https://twitter.com/signup?lang=en) |
-| Udostępnione poświadczenia dla tej aplikacji SaaS. | [Udostępnianie kont za pomocą usługi Azure AD](active-directory-sharing-accounts.md)<br/>[Azure AD zautomatyzowane hasło przerzucania dla usługi Facebook, Twitter i LinkedIn teraz w wersji zapoznawczej! — Enterprise Mobility and Security Blog] (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/ ) |
+| Udostępnione poświadczenia dla tej aplikacji SaaS. | [Udostępnianie kont za pomocą usługi Azure AD](active-directory-sharing-accounts.md)<br/>[Usługa Azure AD zautomatyzowane hasło przerzucania dla usługi Facebook, Twitter i LinkedIn teraz w wersji zapoznawczej! — Enterprise Mobility and Security Blog](https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/ ) |
 | Poświadczenia dla co najmniej dwóch członków zespołu, którzy będą korzystać z tego samego konta. Muszą one być częścią grupy zabezpieczeń. | [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Prawa dostępu lokalnego administratora na komputerze, aby wdrożyć rozszerzenie panelu dostępu dla programu Internet Explorer, Chrome lub Firefox | [Rozszerzenie panelu dostępu dla programu Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozszerzenie panelu dostępu dla programu Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozszerzenie panelu dostępu dla programu Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 

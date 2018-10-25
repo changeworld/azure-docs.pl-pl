@@ -2,20 +2,20 @@
 title: Fan-wyjściowego/fan-w scenariuszach w funkcje trwałe - Azure
 description: Dowiedz się, jak implementować scenariusza fan-wyjściowego fan w w rozszerzenia funkcji trwałych dla usługi Azure Functions.
 services: functions
-author: cgillum
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: eec75ad9cf0f568e674b2a4f12d962982f84294f
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 44e71c8e9256bdfd3a55cdd21a6658bccfd5daad
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092669"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987543"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Fan-wyjściowego/fan-w scenariuszu w funkcje trwałe — przykład tworzenia kopii zapasowych w chmurze
 
@@ -109,7 +109,7 @@ Implementacja języka C# jest również całkiem proste. Zdarza się, aby korzys
 
 ### <a name="javascript-functions-v2-only"></a>JavaScript (tylko funkcje v2)
 
-Implementacja języka JavaScript nie ma dostępu do `Binder` funkcji usługi Azure Functions, więc [zestawu SDK usługi Azure Storage dla węzła](https://github.com/Azure/azure-storage-node) odbywa się jej. Należy zauważyć, że zestaw SDK wymaga `AZURE_STORAGE_CONNECTION_STRING` ustawienia aplikacji.
+Implementacja języka JavaScript nie ma dostępu do `Binder` funkcji usługi Azure Functions, więc [zestawu SDK usługi Azure Storage dla węzła](https://github.com/Azure/azure-storage-node) odbywa się jej.
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/index.js)]
 

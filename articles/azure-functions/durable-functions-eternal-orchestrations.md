@@ -2,20 +2,20 @@
 title: Orkiestracje nieustanne w funkcje trwałe - Azure
 description: Dowiedz się, jak zaimplementować orkiestracje przy użyciu rozszerzenia funkcji trwałych dla usługi Azure Functions.
 services: functions
-author: cgillum
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/29/2017
+ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 98504534332b6faa7a7019aea9ab7b534d4c3faa
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 0e3a3476c3fca6329634c87f933f895ec582f364
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094454"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987533"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Orkiestracje nieustanne w funkcje trwałe (usługi Azure Functions)
 
@@ -34,12 +34,11 @@ Gdy `ContinueAsNew` nosi umieszczeniu wystąpienia komunikatów w samej przed ko
 > [!NOTE]
 > Trwałe Framework zadań utrzymuje ten sam identyfikator wystąpienia, ale wewnętrznie tworzy nową *Identyfikatora wykonania* dla funkcji programu orchestrator, która zostanie zresetowany przez `ContinueAsNew`. Ten identyfikator wykonania ogólnie nie jest uwidaczniana zewnętrznie, ale warto wiedzieć o podczas wykonywania aranżacji debugowania.
 
-> [!NOTE]
-> `ContinueAsNew` Metoda nie jest jeszcze dostępna w języku JavaScript.
-
 ## <a name="periodic-work-example"></a>Przykład okresowe pracy
 
 Orkiestracje nieustanne jeden przypadek użycia jest kod, który potrzebuje do wykonywania pracy okresowe przez czas nieokreślony.
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("Periodic_Cleanup_Loop")]
@@ -54,6 +53,23 @@ public static async Task Run(
 
     context.ContinueAsNew(null);
 }
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript (tylko funkcje v2)
+
+```javascript
+const df = require("durable-functions");
+const moment = require("moment");
+
+module.exports = df.orchestrator(function*(context) {
+    yield context.df.callActivity("DoCleanup");
+
+    // sleep for one hour between cleanups
+    const nextCleanup = moment.utc(context.df.currentUtcDateTime).add(1, "h");
+    yield context.df.createTimer(nextCleanup);
+
+    context.df.continueAsNew(undefined);
+});
 ```
 
 Różnią się w tym przykładzie i funkcji wyzwalanej przez czasomierz jest oczyszczania razy wyzwalacz w tym miejscu nie są oparte na podstawie harmonogramu. Na przykład harmonogramu wyrażenia CRON, która wykonuje funkcję, co godzinę będzie wykonywać go o 1:00, 2:00, 3:00 itd. oraz potencjalnie może uruchomić nakładania się problemy. W tym przykładzie, jeśli oczyszczanie trwa 30 minut, następnie go zostanie zaplanowana 1:00, 2:30, 4:00 itp. i nie ma możliwości nakładają się na siebie.

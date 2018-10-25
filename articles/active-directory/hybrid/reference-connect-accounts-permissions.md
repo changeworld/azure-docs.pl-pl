@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 03f096bf160c44f7a35f54a73cff6ea701b87d22
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 66585c495dfb46e51120ae3eef2685d634fd9606
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352923"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024974"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konta i uprawnienia
 
@@ -82,11 +82,11 @@ Te poświadczenia są używane tylko podczas instalacji i nie są używane po za
 
 ![Instalacja ekspresowa](./media/reference-connect-accounts-permissions/express.png)
 
-Oto podsumowanie wyraźne informacje na temat stron kreatora, poświadczenia gromadzone, i ich zastosowania.
+Oto Podsumowanie stron kreatora instalacji ekspresowej, poświadczenia gromadzone, i ich zastosowania.
 
 | Strona kreatora | Poświadczenia zebrane | Wymagane uprawnienia | Używane dla |
 | --- | --- | --- | --- |
-| ND |Uruchomienie Kreatora instalacji użytkownika |Administrator serwera lokalnego |<li>Tworzy [konta usługą ADSync](#azure-ad-connect-sync-service-account) konta używanego do uruchamiania usługi synchronizacji. |
+| ND |Uruchomienie Kreatora instalacji użytkownika |Administrator serwera lokalnego |<li>Tworzy [konta usługi ADSync](#azure-ad-connect-sync-service-account) konta używanego do uruchamiania usługi synchronizacji. |
 | Łączenie z usługą Azure AD |Poświadczenia katalogu usługi Azure AD |Rola administratora globalnego w usłudze Azure AD |<li>Włączanie synchronizacji w katalogu usługi Azure AD.</li>  <li>Tworzenie [konta łącznika usługi Azure AD](#azure-ad-service-account) używanego przez operacje synchronizacji w toku w usłudze Azure AD.</li> |
 | Łączenie z usługami AD DS |Poświadczenia usługi Active Directory w środowisku lokalnym |Członek grupy Administratorzy przedsiębiorstwa (EA) w usłudze Active Directory |<li>Tworzy [konta usługi AD DS łącznika](#active-directory-account) w usłudze Active Directory i przyznaje uprawnienia do niego. Utworzone konto służy do odczytywania i zapisywania informacji o katalogu podczas synchronizacji.</li> |
 
@@ -97,7 +97,7 @@ Za pomocą ustawień niestandardowych instalacji Kreator oferuje więcej możliw
 
 ### <a name="custom-installation-wizard-summary"></a>Podsumowanie Kreatora instalacji niestandardowej
 
-Oto Podsumowanie informacje na temat niestandardowych stron kreatora, poświadczenia gromadzone, i ich zastosowania.
+Oto Podsumowanie strony Kreatora instalacji niestandardowej poświadczenia gromadzone, i ich zastosowania.
 
 ![Instalacja ekspresowa](./media/reference-connect-accounts-permissions/customize.png)
 

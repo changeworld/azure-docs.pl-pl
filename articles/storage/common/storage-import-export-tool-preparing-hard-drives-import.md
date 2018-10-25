@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 7fc3e68e9d714ca95a28a28b470b1e1fdbff2c47
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 0be0d6c9613b4160a6c4c5cc3b63336fcf67d5c2
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870897"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025628"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Przygotowywanie dysków twardych do zadania importu
 
@@ -309,7 +309,7 @@ Jeśli rozmiar danych jest większy niż rozmiar dysku, narzędzie WAImportExpor
 
 #### <a name="where-can-i-find-previous-version-of-waimportexport-tool"></a>Gdzie można znaleźć wcześniejszej wersji narzędzia WAImportExport?
 
-Narzędzie WAImportExport obejmuje wszystkie funkcje, których narzędzie WAImportExport V1. Narzędzie WAImportExport pozwala użytkownikom na określanie wielu źródeł i zapisu związane z wieloma dyskami. Ponadto jeden łatwe zarządzanie wiele lokalizacji źródłowej, z których dane trzeba skopiować w jednym pliku CSV. Jednak w przypadku potrzeba obsługi sygnatury dostępu Współdzielonego lub chcesz skopiować pojedyncze źródło do jednego dysku, ale możesz [narzędzie można pobrać WAImportExport V1] (http://go.microsoft.com/fwlink/?LinkID=301900&amp; clcid = 0x409) i odnoszą się do [odwołania V1 WAImportExport](storage-import-export-tool-how-to-v1.md) Aby uzyskać pomoc dotyczącą WAImportExport V1 Użycie.
+Narzędzie WAImportExport obejmuje wszystkie funkcje, których narzędzie WAImportExport V1. Narzędzie WAImportExport pozwala użytkownikom na określanie wielu źródeł i zapisu związane z wieloma dyskami. Ponadto jeden łatwe zarządzanie wiele lokalizacji źródłowej, z których dane trzeba skopiować w jednym pliku CSV. W przypadku, gdy potrzebujesz pomocy technicznej sygnatury dostępu Współdzielonego lub chcesz skopiować pojedyncze źródło do jednego dysku, można jednak [Pobierz narzędzie V1 WAImportExport](http://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409) i odnoszą się do [odwołania V1 WAImportExport](storage-import-export-tool-how-to-v1.md) Aby uzyskać pomoc dotyczącą użycia WAImportExport V1 .
 
 #### <a name="what-is-a-session-id"></a>Co to jest identyfikator sesji?
 
@@ -407,7 +407,7 @@ Narzędzie WAImportExport odczytuje i zapisuje pliki partiami, w jednej partii z
 * [Konfigurowanie narzędzia Azure Import/Export](storage-import-export-tool-setup.md)
 * [Ustawianie właściwości i metadanych podczas procesu importowania](storage-import-export-tool-setting-properties-metadata-import.md)
 * [Przykładowy przepływ pracy przygotowywania dysków twardych do zadania importu](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md)
-* [Krótki przewodnik dotyczący często używanych poleceń](storage-import-export-tool-quick-reference.md) 
+* [Krótki przewodnik dotyczący często używanych poleceń](storage-import-export-tool-quick-reference.md) 
 * [Sprawdzanie stanu zadania za pomocą plików dziennika kopiowania](storage-import-export-tool-reviewing-job-status-v1.md)
 * [Naprawianie zadania importu](storage-import-export-tool-repairing-an-import-job-v1.md)
 * [Naprawianie zadania eksportu](storage-import-export-tool-repairing-an-export-job-v1.md)

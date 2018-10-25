@@ -9,18 +9,18 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 05/30/2018
-ms.openlocfilehash: f9216800f0e91d71f1da3f2bac16ecfcbf8b4850
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 67f5e6d4674f876b2cfd4d879ab40c5a5b12c0cc
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376554"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985051"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql"></a>Rozszerzenia PostgreSQL w usłudze Azure Database for PostgreSQL
-PostgreSQL zapewnia możliwość rozszerzania funkcji bazy danych za pomocą rozszerzeń. Rozszerzenia umożliwiają grupowanie wielu powiązanych obiektów SQL razem w jednym pakiecie, który można załadować lub usunięte z bazy danych za pomocą jednego polecenia. Po ładowany w bazie danych rozszerzenia może działać tak jak wbudowane funkcje. Aby uzyskać więcej informacji na temat rozszerzenia PostgreSQL, zobacz [pakowania powiązanych obiektów w rozszerzeniu](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
+PostgreSQL zapewnia możliwość rozszerzania funkcji bazy danych za pomocą rozszerzeń. Rozszerzenia umożliwiają grupowanie wielu powiązanych obiektów SQL razem w jednym pakiecie, który można załadować lub usunięte z bazy danych za pomocą jednego polecenia. Po ładowany w bazie danych rozszerzenia może działać tak jak wbudowane funkcje. Aby uzyskać więcej informacji na temat rozszerzenia PostgreSQL, zobacz [pakowania powiązanych obiektów w rozszerzeniu](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
 
 ## <a name="how-to-use-postgresql-extensions"></a>Jak używać rozszerzenia PostgreSQL
-Rozszerzenia PostgreSQL musi być zainstalowany w bazie danych, zanim będzie można ich użyć. Aby zainstalować określonego rozszerzenia, uruchom [Tworzenie rozszerzenia](https://www.postgresql.org/docs/9.6/static/sql-createextension.html) polecenia za pomocą narzędzia psql załadować spakowanych obiektów do bazy danych.
+Rozszerzenia PostgreSQL musi być zainstalowany w bazie danych, zanim będzie można ich użyć. Aby zainstalować określonego rozszerzenia, uruchom [Tworzenie rozszerzenia](https://www.postgresql.org/docs/9.6/static/sql-createextension.html) polecenia za pomocą narzędzia psql załadować spakowanych obiektów do bazy danych.
 
 Usługa Azure Database for postgresql w warstwie obsługuje obecnie podzbiór rozszerzeń klucza wymienione poniżej. Rozszerzenia poza wymienione są nieobsługiwane. własne rozszerzenie nie można utworzyć z usługą Azure Database for postgresql w warstwie usługi.
 
@@ -97,7 +97,7 @@ W poniższej tabeli wymieniono standardowego rozszerzenia PostgreSQL, które są
 |---|---|
 | [PostGIS](http://www.postgis.net/), postgis\_topologii, postgis\_tiger\_geocoder, postgis\_sfcgal | Obiekty przestrzennych i geograficzne database for PostgreSQL. |
 | adres\_standardizer, adres\_standardizer\_danych\_USA | Używany, można przeanalizować adresu na elementy składowe. Używane do obsługi geokodowania adres normalizacji kroku. |
-| [pgrouting](http://pgrouting.org/) | Rozszerza PostGIS / bazy danych geoprzestrzennych PostgreSQL zapewnienie geoprzestrzenne routingu funkcji. |
+| [pgrouting](https://pgrouting.org/) | Rozszerza PostGIS / bazy danych geoprzestrzennych PostgreSQL zapewnienie geoprzestrzenne routingu funkcji. |
 
 
 ### <a name="using-pgstatstatements"></a>Za pomocą pg_stat_statements

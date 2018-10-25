@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 58ec400faee04f8624822bbcb5325fca7006c578
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 10b4fec92752e44048454e8b63e90fd9b7fecba0
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38698638"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023189"
 ---
 # <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Konfigurowanie odbiornika zewnętrznego dla zawsze włączonych grup dostępności na platformie Azure
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ W tym temacie opisano konfigurowanie odbiornika zawsze włączonej grupy dostęp
 Grupy dostępności mogą zawierać replik znajdujących się w środowisku lokalnym, Azure, lub obejmować zarówno lokalnych, jak i platformy Azure dla konfiguracji hybrydowych. Repliki systemu Azure mogą znajdować się w tym samym regionie lub w wielu regionach za pomocą wielu sieci wirtualnych (Vnet). W poniższych krokach przyjęto, że już [skonfigurowane grupy dostępności](../classic/portal-sql-alwayson-availability-groups.md) , ale nie został skonfigurowany odbiornik.
 
 ## <a name="guidelines-and-limitations-for-external-listeners"></a>Wytyczne i ograniczenia dotyczące odbiorników zewnętrznych
-Należy zwrócić uwagę następujących wytycznych dotyczących odbiornika grupy dostępności na platformie Azure, w przypadku wdrażania przy użyciu usługi na siła adres VIP chmury:
+Należy zwrócić uwagę następujących wytycznych dotyczących odbiornika grupy dostępności na platformie Azure, w przypadku wdrażania przy użyciu usługi na publiczny adres VIP chmury:
 
 * Odbiornik grupy dostępności jest obsługiwana w systemie Windows Server 2008 R2, Windows Server 2012 i Windows Server 2012 R2.
 * Aplikacja kliencka musi znajdować się w usłudze w chmurze innej niż ta, która zawiera grupy dostępności maszyn wirtualnych. W tej samej usłudze w chmurze platformy Azure nie obsługuje bezpośredniego zwrotu z serwera z klientem i serwerem.

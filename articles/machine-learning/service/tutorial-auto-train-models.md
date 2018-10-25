@@ -9,12 +9,12 @@ author: nacharya1
 ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: df1c19c0e16b9862b09dcc652ef2831e0c5bf3a5
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 29d673f48671ec917e45b7ff76feeebf0b868c4b
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802359"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426893"
 ---
 # <a name="tutorial-train-a-classification-model-with-automated-machine-learning-in-azure-machine-learning-service"></a>Samouczek: trenowanie modelu klasyfikacji za pomocą zautomatyzowanego uczenia maszynowego w usłudze Azure Machine Learning
 
@@ -543,5 +543,5 @@ W tym samouczku usługi Azure Machine Learning za pomocą języka Python wykonan
 > * Przeglądanie wyników szkolenia
 > * Rejestrowanie najlepszego modelu
 
-Dowiedz się więcej o tym, [jak skonfigurować ustawienia automatycznego szkolenia]() lub [jak używać automatycznego szkolenia w przypadku zasobu zdalnego](how-to-auto-train-remote.md).  
+Dowiedz się więcej o tym, [jak skonfigurować ustawienia automatycznego szkolenia](how-to-configure-auto-train.md) lub [jak używać automatycznego szkolenia w przypadku zasobu zdalnego](how-to-auto-train-remote.md).  
 

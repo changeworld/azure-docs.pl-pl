@@ -14,17 +14,19 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 3cbcae9c02abaf11ded31304f97abdd74f905c6e
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 0c4908315bd7c0e4d83c7aba735cc4d102216a28
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48842883"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988437"
 ---
 ## <a name="test-your-code"></a>Testowanie kodu
 
 ### <a name="test-with-node"></a>Testowanie za pomocą węzła
+
 Jeśli nie używasz programu Visual Studio, upewnij się, że serwer sieci web jest uruchomiona.
+
 1. Konfigurowanie serwera do nasłuchiwania na portach TCP, który zależy od lokalizacji użytkownika **index.html** pliku. Dla węzła uruchom serwer sieci web do nasłuchiwania na porcie, uruchamiając następujące polecenia w wierszu polecenia z folderu aplikacji:
 
     ```bash
@@ -36,15 +38,14 @@ Jeśli nie używasz programu Visual Studio, upewnij się, że serwer sieci web j
 <p/><!-- -->
 
 ### <a name="test-with-visual-studio"></a>Testowanie za pomocą programu Visual Studio
-Jeśli używasz programu Visual Studio upewnij się wybrać projekt rozwiązanie i naciśnij klawisz **F5** Aby uruchomić projekt. Zostanie otwarta przeglądarka http://<span></span>localhost: {port} lokalizacji i **Sign In** przycisku.
 
+Jeśli używasz programu Visual Studio upewnij się wybrać projekt rozwiązanie i naciśnij klawisz **F5** Aby uruchomić projekt. Zostanie otwarta przeglądarka http://<span></span>localhost: {port} lokalizacji i **Sign In** przycisku.
 
 ## <a name="test-your-application"></a>Testowanie aplikacji
 
 Po załadowaniu pliku index.html przeglądarki kliknij **Sign In**. Użytkownik jest monitowany o zalogowanie się punktu końcowego v2.0 Microsoft Azure Active Directory (Azure AD):
 
 ![Zaloguj się do swojego konta JavaScript SPA](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
-
 
 ### <a name="provide-consent-for-application-access"></a>Podanie zgody na dostęp do aplikacji
 
@@ -53,6 +54,7 @@ Przy pierwszym logowaniu do aplikacji, zostanie wyświetlony monit o wyrażenie 
 ![Wyrażenie zgody na dostęp do aplikacji](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspaconsent.png)
 
 ### <a name="view-application-results"></a>Wyświetl wyniki aplikacji
+
 Po zakończeniu logowania, użytkownik powinien zostać wyświetlony zwracany w odpowiedzi interfejsu API Microsoft Graph, wyświetlany na stronie informacji o profilu użytkownika.
 
 ![Oczekiwane wyniki z wywołania interfejsu API Microsoft Graph](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptsparesults.png)

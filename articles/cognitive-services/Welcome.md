@@ -9,12 +9,12 @@ ms.component: ''
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: nitinme
-ms.openlocfilehash: 5fcd625edf913e6629bfedb7ce7a6b5fe204af28
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: f7a68aab4959c3793c7688504d73d2b539a26f83
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901435"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025399"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co to są usługi Azure Cognitive Services?
 
@@ -74,11 +74,11 @@ Usługi Azure Cognitive Services są interfejsy API, zestawów SDK i usług dost
 
 ## <a name="use-free-trials"></a>Użyj bezpłatnych wersji próbnych
 
-[Założeniem bezpłatne wersje próbne] (https://azure.microsoft.com/try/cognitive-services/ "Zapisywania się Help") wymaga tylko wiadomości e-mail oraz kilku prostych krokach. Potrzebujesz Account firmy Microsoft, jeśli nie masz jeszcze jeden. Dla każdego interfejsu API żądanie, otrzymasz unikatową parę kluczy. Drugim jest po prostu zapasowy. Nie udostępniaj kluczy tajnych z dowolnymi osobami. Wersje próbne mają zarówno wskaźnik limit transakcji na sekundę lub minutę i miesięczny limit użycia. Transakcja jest po prostu wywołanie interfejsu API. Można uaktualnić do naszych płatnych warstw, aby odblokować ograniczenia.
+[Założeniem bezpłatne wersje próbne](https://azure.microsoft.com/try/cognitive-services/ "zapisywania się ułatwić") wymaga tylko wiadomości e-mail oraz kilku prostych krokach. Potrzebujesz Account firmy Microsoft, jeśli nie masz jeszcze jeden. Dla każdego interfejsu API żądanie, otrzymasz unikatową parę kluczy. Drugim jest po prostu zapasowy. Nie udostępniaj kluczy tajnych z dowolnymi osobami. Wersje próbne mają zarówno wskaźnik limit transakcji na sekundę lub minutę i miesięczny limit użycia. Transakcja jest po prostu wywołanie interfejsu API. Można uaktualnić do naszych płatnych warstw, aby odblokować ograniczenia.
 
 ## <a name="subscription-management"></a>Zarządzanie subskrypcjami
 
-Po zalogowaniu się za pomocą Account firmy Microsoft, możesz uzyskać dostęp [Moje subskrypcje] (https://www.microsoft.com/cognitive-services/en-us/subscriptions "Moje subskrypcje") do wyświetlenia produktów, którego używasz, pozostały limit przydziału i możliwość dodawania dodatkowych produktów do swojej subskrypcji.
+Po zalogowaniu się za pomocą Account firmy Microsoft, możesz uzyskać dostęp [Moje subskrypcje](https://www.microsoft.com/cognitive-services/en-us/subscriptions "Moje subskrypcje") do wyświetlenia produktów, którego używasz, pozostały limit przydziału i możliwość dodawania dodatkowych produktów do Twojej subskrypcji.
 
 ## <a name="upgrade-to-unlock-limits"></a>Uaktualnienie do odblokowania limity
 

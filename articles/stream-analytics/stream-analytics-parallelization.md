@@ -1,6 +1,6 @@
 ---
-title: Użyj zapytania paralelizacja i skali w Azure Stream Analytics
-description: W tym artykule opisano sposób skalowania zadania usługi analiza strumienia Konfigurowanie partycji wejściowych, dostosowywanie definicji zapytania i ustawiając zadania jednostki przesyłania strumieniowego.
+title: Użyj przetwarzania równoległego zapytań i skali w usłudze Azure Stream Analytics
+description: W tym artykule opisano sposób skalować zadania usługi Stream Analytics, konfigurowaniu partycji danych wejściowych, dostosowując definicję zapytania i ustawiając zadania jednostek przesyłania strumieniowego.
 services: stream-analytics
 author: JSeb225
 ms.author: jeanb
@@ -9,74 +9,74 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 44a7c0721d8a0683162d2219bff0e4a4ecb117e6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 83fbebc07be3a61d7fd54953f842a320a537a7ac
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777631"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985016"
 ---
-# <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Korzystać z zapytania paralelizacja w Azure Stream Analytics
-W tym artykule przedstawiono sposób wykorzystać paralelizacja Azure Stream Analytics. Sposób skalowania zadania usługi analiza strumienia, konfigurując wejściowych partycji i dostrajania analytics definicji zapytania.
-Jako warunek wstępny, warto należy zapoznać się z pojęcie jednostki przesyłania strumieniowego opisanego w [omówienie i dostosować jednostek przesyłania strumieniowego](stream-analytics-streaming-unit-consumption.md).
+# <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Wykorzystywanie przetwarzania równoległego zapytań w usłudze Azure Stream Analytics
+W tym artykule pokazano, jak korzystać z zalet przetwarzania równoległego w usłudze Azure Stream Analytics. Dowiesz się, jak skalować zadania usługi Stream Analytics, konfigurując partycji danych wejściowych, a następnie dostosowując definicję zapytania usługi analytics.
+Jako warunek wstępny, warto znać pojęcia opisane w zastrzeżona jednostka przesyłania strumieniowego [opis i dostosowywanie jednostek przesyłania strumieniowego](stream-analytics-streaming-unit-consumption.md).
 
-## <a name="what-are-the-parts-of-a-stream-analytics-job"></a>Co to są elementy zadania Stream Analytics?
-Definicji zadania Stream Analytics zawiera dane wejściowe, zapytań i danych wyjściowych. Dane wejściowe są, gdy zadanie odczytuje strumienia danych z. Zapytanie jest używany do transformacji strumienia danych wejściowych, a dane wyjściowe są, gdy zadanie wysyła wyników zadania do.  
+## <a name="what-are-the-parts-of-a-stream-analytics-job"></a>Co to są elementy zadania usługi Stream Analytics?
+Definicja zadania usługi Stream Analytics zawiera dane wejściowe, zapytania i danych wyjściowych. Dane wejściowe są, w którym zadanie odczytuje strumień danych z. Zapytanie jest używana do przekształcania danych strumienia wejściowego, a dane wyjściowe to, gdzie zadanie wysyła wyniki zadania, aby.  
 
-Zadanie wymaga co najmniej jedno źródło danych wejściowych do strumieniowego przesyłania danych. Źródło dla wejścia strumienia danych mogą być przechowywane w Centrum zdarzeń platformy Azure lub w magazynie obiektów blob Azure. Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md) i [rozpocząć korzystanie z usługi Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md).
+Zadanie wymaga co najmniej jedno źródło danych wejściowych służącą do strumieniowego przesyłania danych. Źródło danych wejściowych strumienia danych mogą być przechowywane w Centrum zdarzeń platformy Azure lub w usłudze Azure blob storage. Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md) i [rozpoczęcie korzystania z usługi Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md).
 
-## <a name="partitions-in-sources-and-sinks"></a>Partycje w źródłach i wychwytywanie
-Skalowanie zadania Stream Analytics korzysta z partycjami w danych wejściowych lub wyjściowych. Partycjonowanie umożliwia dzielenia danych na podzestawy oparte na kluczu partycji. Proces, który używa danych (na przykład zadanie analizy przesyłania strumieniowego) może wykorzystywać i zapisać różnych partycji równolegle, co zwiększa przepustowość. 
+## <a name="partitions-in-sources-and-sinks"></a>Partycje w źródła i ujścia
+Skalowanie zadań usługi Stream Analytics korzysta z partycjami w danych wejściowych lub wyjściowych. Partycjonowanie pozwala podzielić dane na podzestawy na podstawie klucza partycji. Proces, który wykorzystuje dane (na przykład zadanie usługi Stream Analytics) można korzystać i pisać różne partycje równolegle, co zwiększa przepustowość. 
 
 ### <a name="inputs"></a>Dane wejściowe
-Wszystkie dane wejściowe Azure Stream Analytics można wykorzystać partycjonowania:
--   EventHub (należy ustawić klucz partycji jawnie z PARTITION BY słowem kluczowym)
--   Centrum IoT (należy ustawić klucz partycji jawnie z PARTITION BY słowem kluczowym)
+Wszystkie dane wejściowe z usługi Azure Stream Analytics można korzystać ze partycjonowania:
+-   Centrum zdarzeń (trzeba ustawić klucz partycji, który jawnie zawiera słowo kluczowe PARTITION BY)
+-   Usługa IoT Hub (trzeba ustawić klucz partycji, który jawnie zawiera słowo kluczowe PARTITION BY)
 -   Blob Storage
 
 ### <a name="outputs"></a>Dane wyjściowe
 
-Podczas pracy z usługi Stream Analytics, możesz korzystać z partycji w danych wyjściowych:
+Podczas pracy z usługą Stream Analytics, możesz korzystać z zalet partycjonowania w danych wyjściowych:
 -   Azure Data Lake Storage
 -   Azure Functions
 -   Tabela platformy Azure
 -   Magazyn obiektów blob (można ustawić klucza partycji jawnie)
--   CosmosDB (należy jawnie ustawić klucz partycji)
--   EventHub (należy jawnie ustawić klucz partycji)
--   Centrum IoT (należy jawnie ustawić klucz partycji)
+-   CosmosDB (trzeba jawnie ustawić klucz partycji)
+-   Centrum zdarzeń (trzeba jawnie ustawić klucz partycji)
+-   Usługa IoT Hub (trzeba jawnie ustawić klucz partycji)
 -   Service Bus
 
-Wyjść usługi Power BI, SQL i magazyn danych SQL nie obsługują partycjonowania. Jednak można nadal podzielić danych wejściowych zgodnie z opisem w [w tej sekcji](#multi-step-query-with-different-partition-by-values) 
+Dane wyjściowe usługi Power BI, SQL i magazynu danych SQL nie obsługują partycjonowania. Jednak można nadal podzielić dane wejściowe zgodnie z opisem w [w tej sekcji](#multi-step-query-with-different-partition-by-values) 
 
 Aby uzyskać więcej informacji o partycjach zobacz następujące artykuły:
 
-* [Omówienie funkcji usługi Event Hubs](../event-hubs/event-hubs-features.md#partitions)
+* [Event Hubs features overview (Omówienie funkcji usługi Event Hubs)](../event-hubs/event-hubs-features.md#partitions)
 * [Partycjonowanie danych](https://docs.microsoft.com/azure/architecture/best-practices/data-partitioning#partitioning-azure-blob-storage)
 
 
-## <a name="embarrassingly-parallel-jobs"></a>Embarrassingly równoległych zadań
-*Embarrassingly równoległych* zadanie jest najbardziej skalowalny scenariusza mamy w Azure Stream Analytics. Jedna partycja danych wejściowych do jednego wystąpienia zapytania łączy się jedną partycję w danych wyjściowych. Równoległość ten ma następujące wymagania:
+## <a name="embarrassingly-parallel-jobs"></a>Zaskakująco równoległymi zadaniami
+*Zaskakująco równoległymi* zadanie jest najbardziej skalowalny scenariusza, które mamy w usłudze Azure Stream Analytics. Jedna partycja danych wejściowych z jednym wystąpieniem zapytanie łączy się jednej partycji danych wyjściowych. Równoległość ta ma następujące wymagania:
 
-1. Logika zapytania zależy od tego samego klucza przetwarzanych przez to samo wystąpienie zapytania, należy się upewnić, że zdarzenia przejdź do tej samej partycji dane wejściowe. Centra zdarzeń lub Centrum IoT oznacza to, że dane zdarzeń muszą mieć **PartitionKey** zestawu wartości. Alternatywnie można użyć nadawców podzielonym na partycje. W przypadku magazynu obiektów blob oznacza to, że zdarzenia są wysyłane do tego samego folderu partycji. Jeśli logika zapytania nie wymaga tego samego klucza do przetworzenia przez to samo wystąpienie zapytania, możesz zignorować to wymaganie. Przykładem tego logiki może być prostego zapytania wybierz projekt filtru.  
+1. Jeśli logika zapytania zależy od tego samego klucza, które są przetwarzane przez to samo wystąpienie zapytania, upewnij się, że zdarzenia, przejdź do tej samej partycji dane wejściowe. Usługa Event Hubs lub usługi IoT Hub, oznacza to, że dane zdarzenia muszą mieć **PartitionKey** wartość zestawu. Alternatywnie można użyć nadawców podzielonym na partycje. Dla magazynu obiektów blob oznacza to, że zdarzenia są wysyłane do tego samego folderu partycji. Jeśli logika zapytania nie wymaga tego samego klucza do przetworzenia przez tego samego wystąpienia zapytań, możesz zignorować to wymaganie. Przykładem tej logiki może być proste zapytanie select projektu filtru.  
 
-2. Po danych jest rozmieszczona na stronie wprowadzania, to należy się upewnić, że zapytanie jest podzielona na partycje. Wymaga to użycia **PARTITION BY** wszystkich kroków. Wiele kroków są dozwolone, ale wszystkie muszą podzielone na partycje przy użyciu tego samego klucza. Obecnie, podziału klucza musi być ustawiona na **PartitionId** aby pełni równoległe zadania.  
+2. Po danych jest poukładany stronie danych wejściowych, upewnij się, że zapytanie jest podzielona na partycje. Wymaga to użycia **PARTITION BY** wszystkich kroków. Wiele kroków są dozwolone, ale wszystkie one muszą być dzielone według tego samego klucza. Obecnie partycjonowania klucza musi być równa **PartitionId** w kolejności, można w pełni równoległe zadania.  
 
-3. Większość wyjście mogą wykorzystać partycjonowania, jednak jeśli jest używany typ danych wyjściowych która nie obsługuje partycjonowanie zadania nie będzie w pełni równoległych. Zapoznaj się [output sekcji](#outputs) więcej szczegółów.
+3. Większość naszych danych wyjściowych korzystać z zalet partycjonowania, jednak jeśli używasz typu danych wyjściowych, nie obsługuje partycjonowanie zadanie nie będzie w pełni równoległych. Zapoznaj się [danych wyjściowych sekcji](#outputs) Aby uzyskać więcej informacji.
 
-4. Liczby partycji wejściowych musi być równa liczbie partycji danych wyjściowych. Dane wyjściowe z magazynu obiektów blob może obsługiwać partycje i dziedziczy schemat partycjonowania nadrzędnego zapytania. Po klucz partycji dla obiektu Blob magazynu jest określony, dane są podzielone na partycje dla każdej partycji wejściowego w związku z tym wynikiem jest nadal pełni równoległych. Poniżej przedstawiono przykładowe wartości partycji, umożliwiających pełni równoległe zadania:
+4. Liczba partycji danych wejściowych musi być równa liczbie partycji danych wyjściowych. Dane wyjściowe z magazynu obiektów blob może obsługiwać partycje i dziedziczy schematu partycjonowania nadrzędnego zapytania. Gdy klucza partycji dla obiektu Blob magazynu jest określony, dane są podzielone na partycje na partycję danych wejściowych związku z tym wynikiem jest nadal pełni równoległych. Poniżej przedstawiono przykładowe wartości partycji, zezwalających na w pełni równoległe zadania:
 
-   * 8 partycje wejściowych Centrum zdarzeń i Centrum zdarzeń 8 output partycji
-   * 8 partycje wejściowych Centrum zdarzeń i danych wyjściowych z magazynu obiektów blob
-   * 8 wejściowych partycji Centrum zdarzeń i danych wyjściowych magazynu obiektów blob na partycje za pomocą dowolnego Kardynalność przez pole niestandardowe
-   * 8 partycje wejściowych magazynu obiektów blob i dane wyjściowe z magazynu obiektów blob
-   * 8 obiektu blob magazynu wejściowego partycji i 8 partycje danych wyjściowych Centrum zdarzeń
+   * 8 partycji danych wejściowych Centrum zdarzeń i Centrum zdarzeń 8 danych wyjściowych partycji
+   * 8 partycji danych wejściowych Centrum zdarzeń i danych wyjściowych z magazynu obiektów blob
+   * 8 wejściowych partycji Centrum zdarzeń i dane wyjściowe z magazynu obiektów blob, partycje według pola niestandardowego za pomocą dowolnego kardynalności
+   * 8 partycji danych wejściowych magazynu obiektów blob i danych wyjściowych z magazynu obiektów blob
+   * 8 obiektów blob magazynu partycji danych wejściowych i 8 partycji danych wyjściowych Centrum zdarzeń
 
-W poniższych sekcjach omówiono niektóre przykładowe scenariusze, które są embarrassingly równoległe.
+W poniższych sekcjach omówiono niektóre przykładowe scenariusze, które są zaskakująco równoległymi.
 
 ### <a name="simple-query"></a>Proste zapytanie
 
-* Wejście: Centrum zdarzeń z partycjami 8
-* Dane wyjściowe: Centrum zdarzeń z partycjami 8
+* Dane wejściowe: Centrum zdarzeń z 8 partycji
+* Dane wyjściowe: Centrum zdarzeń z 8 partycji
 
 Zapytanie:
 
@@ -84,12 +84,12 @@ Zapytanie:
     FROM Input1 Partition By PartitionId
     WHERE TollBoothId > 100
 
-To zapytanie jest proste filtru. W związku z tym firma Microsoft nie trzeba martwić partycjonowanie danych wejściowych, który jest wysyłany do Centrum zdarzeń. Należy zauważyć, że kwerenda zawiera **PARTYCJI przez PartitionId**, więc jego spełnia wymagania #2 z wcześniej. Dla danych wyjściowych, należy skonfigurować w ramach zadania, aby zestaw kluczy partycji do danych wyjściowych Centrum zdarzeń **PartitionId**. Jeden ostatni test jest upewnij się, że liczba partycji wejściowy jest równa liczbie partycji danych wyjściowych.
+To zapytanie jest proste filtru. W związku z tym nie musimy martwić się o partycjonowanie danych wejściowych, które są wysyłane do Centrum zdarzeń. Należy zauważyć, że kwerenda zawiera **PARTITION BY PartitionId**, więc jego spełnia wymagania #2 z wcześniej. Dla danych wyjściowych, należy skonfigurować dane wyjściowe z Centrum zdarzeń w ramach zadania, aby zestaw kluczy partycji do **PartitionId**. Jeden ostatniego sprawdzenia jest upewnij się, że liczba partycji danych wejściowych jest równa liczbie partycji danych wyjściowych.
 
-### <a name="query-with-a-grouping-key"></a>Zapytanie z kluczem grupowania
+### <a name="query-with-a-grouping-key"></a>Zapytania przy użyciu klucza grupowania
 
-* Wejście: Centrum zdarzeń z partycjami 8
-* Danych wyjściowych: Magazyn obiektów Blob
+* Dane wejściowe: Centrum zdarzeń z 8 partycji
+* Dane wyjściowe: Blob storage
 
 Zapytanie:
 
@@ -97,27 +97,27 @@ Zapytanie:
     FROM Input1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 
-Ta kwerenda zawiera klucz grupowania. W związku z tym należy wysłać zdarzenia zgrupowane w tej samej partycji Centrum zdarzeń. Ponieważ w tym przykładzie mamy Grupuj według TollBoothID, możemy Pamiętaj, że TollBoothID jest używany jako klucza partycji zdarzenia są wysyłane do Centrum zdarzeń. Następnie w ASA, możemy użyć **PARTYCJI przez PartitionId** dziedziczy ten schemat partycji i włączyć pełną paralelizacja. Ponieważ dane wyjściowe magazynu obiektów blob, firma Microsoft nie trzeba martwić się o konfigurowaniu wartość klucza partycji, zgodnie z harmonogramem wymaganie #4.
+To zapytanie ma klucz grupowania. W związku z tym należy wysyłać zdarzenia zgrupowane razem na tej samej partycji Centrum zdarzeń. Ponieważ w tym przykładzie pogrupujemy przez TollBoothID, firma Microsoft Pamiętaj, że TollBoothID jest używany jako klucz partycji zdarzenia są wysyłane do Centrum zdarzeń. Następnie w ASA, możemy użyć **PARTITION BY PartitionId** dziedziczyć ten schemat partycji i włączyć pełne przetwarzanie równoległe. Ponieważ dane wyjściowe magazynu obiektów blob, nie potrzebujemy już martwić się o Konfigurowanie wartość klucza partycji dla każdego wymogu #4.
 
-## <a name="example-of-scenarios-that-are-not-embarrassingly-parallel"></a>Przykładowe scenariusze, które są *nie* embarrassingly równoległych
+## <a name="example-of-scenarios-that-are-not-embarrassingly-parallel"></a>Przykładowe scenariusze, które są *nie* zaskakująco równoległymi
 
-W poprzedniej sekcji możemy pokazano kilka scenariuszy embarrassingly równoległych. W tej sekcji omówiono scenariusze, które nie spełniają wszystkie wymagania dotyczące być embarrassingly równoległe. 
+Niektóre scenariusze zaskakująco równoległymi pokazaliśmy w poprzedniej sekcji. W tej sekcji omówiono scenariusze, które nie są spełnione wszystkie wymagania za zaskakująco równoległymi. 
 
-### <a name="mismatched-partition-count"></a>Liczba partycji niezgodne
-* Wejście: Centrum zdarzeń z partycjami 8
-* Dane wyjściowe: Centrum zdarzeń z partycjami 32
+### <a name="mismatched-partition-count"></a>Liczba niedopasowanych partycji
+* Dane wejściowe: Centrum zdarzeń z 8 partycji
+* Dane wyjściowe: Centrum zdarzeń z 32 partycjami.
 
-W takim przypadku nie ma znaczenia, zapytanie jest. Jeśli liczba partycji wejściowych nie odpowiada liczba partycji danych wyjściowych, topologia nie jest embarrassingly równolegle. + jednak firma Microsoft może nadal otrzymywać niektórych poziom lub paralelizacja.
+W takim przypadku nie ma znaczenia, co to jest zapytanie. Jeśli liczba partycji danych wejściowych jest niezgodna z liczbą partycji danych wyjściowych, topologia nie jest zaskakująco równolegle. + jednak firma Microsoft może nadal otrzymywać niektóre poziomu lub przetwarzania równoległego.
 
-### <a name="query-using-non-partitioned-output"></a>Zapytań przy użyciu niepartycjonowany danych wyjściowych
-* Wejście: Centrum zdarzeń z partycjami 8
+### <a name="query-using-non-partitioned-output"></a>Wykonywanie zapytań przy użyciu niepartycjonowana danych wyjściowych
+* Dane wejściowe: Centrum zdarzeń z 8 partycji
 * Dane wyjściowe: usługi Power BI
 
-Wyjście usługi Power BI aktualnie nie obsługuje partycjonowanie. Dlatego w tym scenariuszu nie jest embarrassingly równoległych.
+Dane wyjściowe usługi Power BI nie obsługuje obecnie partycjonowania. W związku z tym w tym scenariuszu nie jest zaskakująco równoległymi.
 
-### <a name="multi-step-query-with-different-partition-by-values"></a>Zapytanie wieloetapowych o różnych wartościach PARTITION BY
-* Wejście: Centrum zdarzeń z partycjami 8
-* Dane wyjściowe: Centrum zdarzeń z partycjami 8
+### <a name="multi-step-query-with-different-partition-by-values"></a>Wieloetapowy zapytania z różnymi wartościami PARTITION BY
+* Dane wejściowe: Centrum zdarzeń z 8 partycji
+* Dane wyjściowe: Centrum zdarzeń z 8 partycji
 
 Zapytanie:
 
@@ -131,15 +131,15 @@ Zapytanie:
     FROM Step1 Partition By TollBoothId
     GROUP BY TumblingWindow(minute, 3), TollBoothId
 
-Jak widać, drugi etap używa **TollBoothId** jako klucza partycji. Ten krok nie jest taka sama, co w pierwszym kroku i dlatego wymaga do zrobienia losowa. 
+Jak widać, drugi etap używa **TollBoothId** jako klucza partycji. Ten krok nie jest taki sam jak pierwszy krok, a w związku z tym wymaga do zrobienia losowa. 
 
-W poprzednich przykładach pokazano, niektóre zadania Stream Analytics, które odpowiadają (lub nie) embarrassingly równoległych topologii. Jeśli są one zgodne, mają one potencjalnie maksymalną skalę. Aktualizacje dla zadania, które nie pasują do jednego z tych profilów skalowania wskazówki będą dostępne w przyszłości. Na razie użyj ogólne wskazówki w poniższych sekcjach.
+Niektórych zadań usługi Stream Analytics, które są zgodne z (lub nie) zaskakująco równoległymi topologii można znaleźć w poprzednich przykładach. Jeśli są one zgodne, mają możliwość maksymalną skalę. Aktualizacje dla zadań, które nie mieszczą się jeden z tych profilów skalowania wskazówki będą dostępne w przyszłości. Na razie użyj ogólne wskazówki w poniższych sekcjach.
 
-## <a name="calculate-the-maximum-streaming-units-of-a-job"></a>Oblicz maksymalną jednostki zadania przesyłania strumieniowego
-Całkowita liczba jednostek przesyłania strumieniowego, które mogą być używane przez zadanie usługi Stream Analytics zależy od liczby kroków w zapytaniu zdefiniowane dla zadania i liczby partycji dla każdego kroku.
+## <a name="calculate-the-maximum-streaming-units-of-a-job"></a>Oblicz maksimum jednostki zadania przesyłania strumieniowego
+Całkowita liczba jednostek przesyłania strumieniowego, które mogą być używane przez zadanie usługi Stream Analytics zależy od liczby kroków w zapytaniu, określony dla zadania i liczby partycji dla każdego kroku.
 
-### <a name="steps-in-a-query"></a>Kroki w kwerendzie
-Kwerenda może mieć jeden lub wiele kroków. Każdy krok jest zdefiniowane przez podzapytania **WITH** — słowo kluczowe. Zapytanie, które znajduje się poza **WITH** — słowo kluczowe (tylko w jednej kwerendzie) również będzie traktowany jako krok, na przykład **wybierz** instrukcji w następującym zapytaniu:
+### <a name="steps-in-a-query"></a>Kroki zapytania
+Zapytanie może mieć jeden lub kilka kroków. Każdy krok znajduje się podzapytanie definicją **WITH** — słowo kluczowe. Zapytanie, które znajduje się poza **WITH** — słowo kluczowe (tylko jedno zapytanie) również są traktowane jako krok, na przykład **wybierz** poufności informacji w następującej kwerendy:
 
 Zapytanie:
 
@@ -159,42 +159,42 @@ Ta kwerenda zawiera dwa kroki.
 >  
 
 ### <a name="partition-a-step"></a>Krok partycji
-Partycjonowanie krok wymaga spełnienia następujących warunków:
+Partycjonowanie krok wymaga następujących warunków:
 
-* Źródło danych wejściowych musi być partycjonowane. 
-* **Wybierz** instrukcji zapytania musi odczytywać partycjonowanej źródło danych wejściowych.
-* Zapytanie w ramach kroku musi mieć **PARTITION BY** — słowo kluczowe.
+* Źródło danych wejściowych musi być dzielony na partycje. 
+* **Wybierz** instrukcja kwerendy musi odczytywać partycjonowane źródła danych wejściowych.
+* Zapytanie w ramach kroku musi zawierać **PARTITION BY** — słowo kluczowe.
 
-Jeśli zapytanie jest podzielona na partycje, zdarzenia wejściowe są przetwarzane i zagregowane w oddzielnej partycji grupy, a dane wyjściowe zdarzenia są generowane dla poszczególnych grup. Jeśli chcesz połączonych agregacja, należy utworzyć drugi etap niepartycjonowany do zagregowania.
+Gdy zapytanie jest podzielone na partycje, zdarzenia wejściowe są grupami przetworzone i zagregowane w oddzielnej partycji, a dane wyjściowe zdarzenia są generowane dla każdej grupy. Chcąc połączone agregacji, należy utworzyć drugi etap niepartycjonowana do zagregowania.
 
-### <a name="calculate-the-max-streaming-units-for-a-job"></a>Obliczenia maksymalnej liczby jednostek w zadaniu przesyłania strumieniowego
-Wszystkie kroki niepartycjonowany razem można skalować do sześciu jednostki przesyłania strumieniowego (SUs) dla zadania usługi analiza strumienia. Oprócz tego można dodać SUs 6 dla każdej partycji w kroku podzielonym na partycje.
-Niektóre widoczne **przykłady** w poniższej tabeli.
+### <a name="calculate-the-max-streaming-units-for-a-job"></a>Oblicz maksymalna liczba jednostek w zadaniu przesyłania strumieniowego
+Wszystkie kroki niepartycjonowana ze sobą można skalować do sześciu jednostek przesyłania strumieniowego (SUs) dla zadania usługi Stream Analytics. Oprócz tego możesz dodać SUs 6 dla każdej partycji w kroku podzielonym na partycje.
+Możesz zobaczyć niektóre **przykłady** w poniższej tabeli.
 
-| Zapytanie                                               | Maksymalna liczba SUs zadania |
+| Zapytanie                                               | Maksymalna liczba SUs dla zadania |
 | --------------------------------------------------- | ------------------- |
-| <ul><li>Zapytanie zawiera w jednym kroku.</li><li>Krok nie jest podzielona na partycje.</li></ul> | 6 |
-| <ul><li>Strumień danych wejściowych jest podzielona na partycje przy 16.</li><li>Zapytanie zawiera w jednym kroku.</li><li>Krok jest podzielona na partycje.</li></ul> | 96 (6 * 16 partycje) |
-| <ul><li>Zapytanie zawiera dwa kroki.</li><li>Żadne kroki są podzielone na partycje.</li></ul> | 6 |
-| <ul><li>Strumień danych wejściowych jest podzielona na partycje przez 3.</li><li>Zapytanie zawiera dwa kroki. Wejściowych kroku jest podzielona na partycje, a drugi etap nie.</li><li><strong>Wybierz</strong> instrukcji odczytuje z podzielonym na partycje danych wejściowych.</li></ul> | 24 (18 partycjonowanej kroki + 6 niepartycjonowany czynności |
+| <ul><li>Zapytanie zawiera jeden krok.</li><li>Ten krok nie jest podzielona na partycje.</li></ul> | 6 |
+| <ul><li>Strumień danych wejściowych jest podzielona na partycje przy 16.</li><li>Zapytanie zawiera jeden krok.</li><li>Ten krok jest podzielona na partycje.</li></ul> | 96 (partycje 6 * 16) |
+| <ul><li>Zapytanie zawiera dwa kroki.</li><li>Żaden z kroków jest podzielona na partycje.</li></ul> | 6 |
+| <ul><li>Strumień danych wejściowych jest podzielona na partycje przez 3.</li><li>Zapytanie zawiera dwa kroki. Danych wejściowych kroku jest podzielona na partycje, a drugi krok nie jest.</li><li><strong>Wybierz</strong> instrukcji odczytuje z podzielonym na partycje dane wejściowe.</li></ul> | 24 (18 partycjonowane kroki + 6 niepartycjonowana kroków |
 
 ### <a name="examples-of-scaling"></a>Przykłady skalowania
 
-Następujące zapytanie oblicza liczbę samochodów w ramach pośrednictwa stacji przez, który ma trzy tollbooths okna trzy minuty. To zapytanie może być skalowana maksymalnie sześć SUs.
+Następujące zapytanie oblicza liczbę samochodów w oknie trzyminutowe pośrednictwa stacji płatny, która ma trzy tollbooths. To zapytanie może być skalowana w maksymalnie sześć SUs.
 
     SELECT COUNT(*) AS Count, TollBoothId
     FROM Input1
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 
-Aby użyć więcej SUs dla zapytania, musi być podzielony zarówno strumienia danych wejściowych, jak i zapytania. Ponieważ partycji strumień danych jest ustawiona na 3, następujące zmodyfikowanej zapytania mogą być skalowane maksymalnie 18 SUs:
+Aby użyć więcej SUs dla zapytania, musi być podzielony strumienia danych wejściowych i zapytania. Ponieważ partycja strumień danych jest ustawiony na 3, następujące zmodyfikowane zapytanie może być skalowana w taki sposób, maksymalnie 18 SUs:
 
     SELECT COUNT(*) AS Count, TollBoothId
     FROM Input1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 
-Zapytanie jest podzielona na partycje, zdarzenia wejściowe są przetwarzane i zagregowane w oddzielnej partycji grup. Dane wyjściowe zdarzenia są także generowane dla poszczególnych grup. Partycjonowanie może powodować pewne nieoczekiwane wyniki podczas **GROUP BY** pole nie jest częścią klucza partycji w strumieniu danych wejściowych. Na przykład **TollBoothId** pole w poprzednich zapytań nie jest klucz partycji **Input1**. Wynik jest, że dane z budki #1 może rozprzestrzeniać się w wielu partycji.
+Gdy zapytanie jest podzielone na partycje, zdarzenia wejściowe są przetwarzane i zagregowane w oddzielnej partycji grupy. Zdarzenia wyjściowe również są generowane dla każdej grupy. Partycjonowanie może spowodować, że niektóre nieoczekiwane wyniki podczas **GROUP BY** pole nie jest częścią klucza partycji w strumieniu danych wejściowych. Na przykład **TollBoothId** pola w poprzednim zapytaniu nie jest klucz partycji **wejście1**. Powoduje to, że dane z budki nr 1 mogły być rozkładane w wielu partycjach.
 
-Każdy z **Input1** partycje będą przetwarzane oddzielnie przez Stream Analytics. W związku z tym wiele rekordów liczba samochodów dla tego samego budki w tym samym oknie wirowania zostanie utworzony. Jeśli nie można zmienić klucza partycji wejściowych, można naprawić ten problem, dodając krok-partition do wartości zagregowanych w partycji, jak w poniższym przykładzie:
+Każdy z **wejście1** partycje będą przetwarzane osobno przez usługę Stream Analytics. W rezultacie wielu rekordów samochodu liczbę elementów w tej samej budki w tym samym oknie wirowania zostanie utworzony. Jeśli nie można zmienić klucza partycji danych wejściowych, można naprawić ten problem, dodając krok-partition do wartości zagregowanych w partycjach, jak w poniższym przykładzie:
 
     WITH Step1 AS (
         SELECT COUNT(*) AS Count, TollBoothId
@@ -206,10 +206,10 @@ Każdy z **Input1** partycje będą przetwarzane oddzielnie przez Stream Analyti
     FROM Step1
     GROUP BY TumblingWindow(minute, 3), TollBoothId
 
-To zapytanie może być skalowana do 24 SUs.
+To zapytanie może być skalowane do 24 SUs.
 
 > [!NOTE]
-> Jeśli są Sprzęganie dwóch strumieni, upewnij się, że strumienie są dzielone przez klucz partycji kolumny, która służy do tworzenia sprzężenia. Upewnij się również mieć taką samą liczbę partycji w obu strumieni.
+> Jeśli są Sprzęganie dwóch strumieni, upewnij się, że strumienie są partycjonowane na podstawie klucza partycji kolumny, która służy do tworzenia sprzężenia. Upewnij się również mają taką samą liczbę partycji w obu strumieni.
 > 
 > 
 
@@ -218,7 +218,7 @@ To zapytanie może być skalowana do 24 SUs.
 
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
-Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Aby uzyskać dalszą pomoc, Wypróbuj nasz [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
@@ -236,11 +236,11 @@ Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Anal
 
 <!--Link references-->
 
-[microsoft.support]: http://support.microsoft.com
-[azure.event.hubs.developer.guide]: http://msdn.microsoft.com/library/azure/dn789972.aspx
+[microsoft.support]: https://support.microsoft.com
+[azure.event.hubs.developer.guide]: https://msdn.microsoft.com/library/azure/dn789972.aspx
 
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
+[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
 

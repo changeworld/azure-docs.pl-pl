@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie i dostępu do dzienników serwera bazy danych Azure dla programu MySQL w portalu Azure
-description: W tym artykule opisano sposób konfigurowania i dostęp do dzienników serwera w bazie danych Azure dla programu MySQL z portalu Azure.
+title: Konfigurowanie i dostęp do dzienników serwera usługi Azure Database for MySQL w witrynie Azure Portal
+description: W tym artykule opisano sposób konfigurowania i dostęp do dzienników serwera w usłudze Azure Database for MySQL z witryny Azure Portal.
 services: mysql
 author: rachel-msft
 ms.author: raagyema
@@ -9,64 +9,64 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: eb35563bc21fc48d304f216e7b34cc9a77f35e83
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 030c9bf32da7b635066a744270739251b9bf3d03
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265366"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984710"
 ---
-# <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurowanie i dzienników serwera dostępu w portalu Azure
+# <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurowanie i dzienników serwera dostępu w witrynie Azure portal
 
-Można skonfigurować, listy i pobrać [bazy danych Azure do dzienników serwera MySQL](concepts-server-logs.md) z portalu Azure.
+Można skonfigurować, listy i pobrać [— Azure Database for MySQL, dzienniki serwera](concepts-server-logs.md) w witrynie Azure portal.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Do wykonania kroków opisanych ten przewodnik, potrzebne są:
-- [Azure bazy danych MySQL serwera](quickstart-create-mysql-server-database-using-azure-portal.md)
+Do wykonania kroków w tym przewodniku, potrzebne są:
+- [Azure Database dla serwera MySQL](quickstart-create-mysql-server-database-using-azure-portal.md)
 
 ## <a name="configure-logging"></a>Konfigurowanie rejestrowania
-Konfigurowanie dostępu do dziennika powolne zapytania MySQL. 
+Konfigurowanie dostępu do dzienników wolnych zapytań MySQL. 
 
-1. Zaloguj się w [Portalu Azure](http://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-2. Wybierz bazy danych Azure, aby serwer MySQL.
+2. Wybierz usługi Azure Database for MySQL server.
 
-3. W obszarze **monitorowanie** sekcji na pasku bocznym wybierz **dzienniki serwera**. 
+3. W obszarze **monitorowanie** sekcji na pasku bocznym wybierz opcję **dzienniki serwera**. 
    ![Wybierz dzienniki serwera, kliknij, aby skonfigurować](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
 
-4. Wybierz nagłówek **kliknij tutaj, aby włączyć dzienniki i skonfigurować parametry dziennika** można znaleźć w temacie parametry serwera.
+4. Wybierz nagłówek **kliknij tutaj, aby włączyć dzienniki i skonfigurować parametry dziennika** Aby wyświetlić parametry serwera.
 
-5. Zmień parametry, które należy skorygować. Wszystkie zmiany wprowadzone w tej sesji są wyróżnione na fioletowo. 
+5. Zmień parametry, które trzeba dopasować. Wszystkie zmiany wprowadzone w tej sesji są wyróżnione na fioletowo. 
 
-   Po zmianie parametrów, możesz kliknąć **zapisać**. Można także **odrzucić** zmiany.
+   Po zmianie parametrów, możesz kliknąć **Zapisz**. Możesz też **odrzucić** zmiany.
 
-   ![Kliknij przycisk Zapisz lub Odrzuć](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
+   ![Kliknij pozycję Zapisz lub Odrzuć](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
 
-6. Wróć do listy dzienników, klikając **przycisk Zamknij** (X ikona) na **parametry serwera** strony.
+6. Wróć do listy dzienniki, klikając **przycisk Zamknij** (ikonę X) na **parametrów serwera** strony.
 
-## <a name="view-list-and-download-logs"></a>Wyświetl listę i Pobierz dzienniki
-Po rozpoczęciu rejestrowania, można wyświetlić listę dostępnych dzienników i pobrać osobnych plikach dziennika w okienku dzienniki serwera. 
+## <a name="view-list-and-download-logs"></a>Wyświetl listę i pobieranie dzienników
+Po rozpoczęciu rejestrowania, można wyświetlić listę dostępnych dzienników i Pobierz pojedyncze pliki dziennika w okienku dzienniki serwera. 
 
 1. Otwórz witrynę Azure Portal.
 
-2. Wybierz bazy danych Azure, aby serwer MySQL.
+2. Wybierz usługi Azure Database for MySQL server.
 
-3. W obszarze **monitorowanie** sekcji na pasku bocznym wybierz **dzienniki serwera**. Strona zawiera listę plików dziennika, jak pokazano:
+3. W obszarze **monitorowanie** sekcji na pasku bocznym wybierz opcję **dzienniki serwera**. Strony Wyświetla listę plików dziennika, jak pokazano:
 
    ![Lista dzienników](./media/howto-configure-server-logs-in-portal/4-server-logs-list.png)
 
    > [!TIP]
-   > Konwencja nazewnictwa dziennika jest **mysql — wolno — < nazwa serwera >-yyyymmddhh.log**. Data i godzina w polu Nazwa pliku jest czas, gdy dziennik został wystawiony. Pliki dzienników są obracane co 24 godziny lub 7.5 GB zależności miało miejsce wcześniej.
+   > Konwencja nazewnictwa dziennika jest **mysql - wolno — < nazwa serwera >-yyyymmddhh.log**. Daty i godziny w polu Nazwa pliku jest czas, gdy dziennik został wystawiony. Pliki dziennika są obracane co 24 godziny lub 7.5 GB, zależnie co nastąpi wcześniej.
 
-4. Jeśli to konieczne, użyj **pole wyszukiwania** do szybkiego zawężania określonego dziennika według daty/godziny. Wyszukiwanie znajduje się na nazwę dziennika.
+4. Jeśli to konieczne, należy użyć **pole wyszukiwania** można szybko zawęzić określonego dziennika, w oparciu o daty/godziny. Wyszukiwanie znajduje się na nazwę dziennika.
 
-5. Pobierz pojedyncze pliki dziennika przy użyciu **Pobierz** przycisk (ikona strzałki w dół) obok każdego pliku dziennika, w wierszu tabeli, jak pokazano:
+5. Pobierz pojedyncze pliki dziennika przy użyciu **Pobierz** przycisku (ikona strzałki w dół) obok każdego pliku dziennika, w wierszu tabeli jak pokazano:
 
    ![Kliknij ikonę pobierania](./media/howto-configure-server-logs-in-portal/5-download.png)
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Zobacz [Access Server Logs WE CLI](howto-configure-server-logs-in-cli.md) Aby dowiedzieć się, jak pobrać dzienniki programowo.
-- Dowiedz się więcej o [dzienniki serwera](concepts-server-logs.md) w bazie danych Azure dla programu MySQL. 
-- Aby uzyskać więcej informacji o definicji parametrów i MySQL rejestrowania, zobacz dokumentację MySQL na [dzienniki](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html).
+- Zobacz [uzyskiwanie dostępu do dzienników serwera w interfejsie wiersza polecenia](howto-configure-server-logs-in-cli.md) dowiesz się, jak programowo pobrać dzienniki.
+- Dowiedz się więcej o [dzienniki serwera](concepts-server-logs.md) w usłudze Azure Database for MySQL. 
+- Aby uzyskać więcej informacji na temat rejestrowanie MySQL i definicjami parametrów, zobacz dokumentację MySQL na [dzienniki](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html).
 

@@ -12,12 +12,12 @@ ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 30b4a038c2ad9bd86f2ba78d52ed3754acec07f0
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 59743df45cf2c7810404d9e6c636790c2855cf74
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785261"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023121"
 ---
 # <a name="how-to-add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Porady: Dodawanie niestandardowej nazwy domeny za pomocą portalu Azure Active Directory
 Każdej nowej usługi Azure AD dzierżawy, który jest dostarczany z początkową nazwę domeny, *nazwa_domeny*. onmicrosoft.com. Nie można zmienić ani usunąć początkowej nazwy domeny, ale nazwy organizacji może dodać do listy. Dodawanie niestandardowych nazw domen, ułatwia utworzenie nazwy użytkownika, które są znane użytkownikom, takie jak *alain@contoso.com*.
@@ -28,9 +28,9 @@ Przed dodaniem niestandardowej nazwy domeny, należy utworzyć nazwy domeny za p
 ## <a name="create-your-directory-in-azure-ad"></a>Tworzenie katalogu w usłudze Azure AD
 Po otrzymaniu nazwy domeny, można utworzyć pierwszy katalog usługi Azure AD.
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu właściciela subskrypcji konta dla katalogu, a następnie wybierz **usługi Azure Active Directory**.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) dla katalogu, przy użyciu konta z **właściciela** roli dla subskrypcji, a następnie wybierz **usługi Azure Active Directory**. Aby uzyskać więcej informacji na temat ról subskrypcji, zobacz [ról administratora subskrypcji klasyczne, ról RBAC platformy Azure i role administratora usługi Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles).
 
-    ![Ekranu portalu Azure](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+    ![Ekran witryny Azure Portal](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
 
     >[!TIP]
     > Jeśli zamierzasz sfederować lokalną usługę AD systemu Windows Server z usługą Azure AD, zaznacz pole wyboru **Planuję skonfigurować tę domenę do logowania jednokrotnego przy użyciu lokalnej usługi Active Directory** podczas uruchamiania narzędzia Azure AD Connect, aby zsynchronizować katalogi. Należy również zarejestrować tę samą nazwę domeny, która została wybrana do sfederowania z katalogiem lokalnym w kroku **Domena usługi Azure AD** w kreatorze. Wygląd tego kroku w Kreatorze można zobaczyć w [tych instrukcjach](../hybrid/how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation). Jeśli nie masz narzędzia Azure AD Connect, możesz [pobrać jej tutaj](http://go.microsoft.com/fwlink/?LinkId=615771).
@@ -72,7 +72,7 @@ Po dodaniu niestandardowej nazwy domeny do usługi Azure AD, musisz powrócić d
 Po zarejestrowaniu niestandardową nazwę domeny, należy upewnić się, że jest on prawidłowy w usłudze Azure AD. Propagacja z Rejestratora domen do usługi Azure AD może być natychmiastowe lub może potrwać nawet kilka dni, w zależności od rejestratora domen.
 
 ### <a name="to-verify-your-custom-domain-name"></a>Aby zweryfikować niestandardowej nazwy domeny
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu konta administratora globalnego dla katalogu.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) przy użyciu konta administratora globalnego dla katalogu.
 
 2. Wybierz **usługi Azure Active Directory**, a następnie wybierz pozycję **niestandardowe nazwy domen**.
 

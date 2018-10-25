@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 05f77665352ee306f5684d5c7a09b27d4fe17650
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 4c9f92481af1e69a111869cb6fc1305923bb0484
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426814"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026011"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Równoważenie obciążenia za pomocą pakietu dostarczania aplikacji platformy Azure
 
@@ -60,7 +60,7 @@ Podczas wybierania globalne modułem równoważenia obciążenia między Traffic
 | --------------- | ------------------------ |
 |**Każdy protokół:** ponieważ usługi Traffic Manager działa na poziomie warstwy DNS, może kierować dowolnego typu ruchu sieciowego; HTTP TCP, UDP, itp. | **Przyspieszenie protokołu HTTP:** ruch z drzwiami frontowymi jest serwerem proxy w sieci krawędź Microsoft.  W związku z tym żądania HTTP (S), zobacz opóźnienia i przepływności ulepszenia zmniejszenie opóźnienia i negocjacji w protokole SSL i używania gorącej połączeń z AFD do aplikacji.|
 |**W środowisku lokalnym routingu:** routingu na poziomie warstwy DNS, ruch jest przesyłany zawsze punkt punkt.  Routing w biurze oddziału firmy do środowiska lokalnego centrum danych może zająć bezpośrednią ścieżkę; nawet w przypadku Twojej własnej sieci przy użyciu usługi Traffic Manager. | **Niezależną skalowalność:** ponieważ drzwiami frontowymi współpracuje z żądania HTTP, żądania do różnych ścieżek URL można kierować do różnych wewnętrznych baz danych / usługi regionalne pul (mikrousług) na podstawie kondycji poszczególnych aplikacji mikrousług i reguł.|
-|**Format rozliczeń:** skaluje się z użytkownikami oraz usług z większą liczbą użytkowników, płaskowyżach, aby zmniejszyć koszt większego użycia rozliczanie oparte na systemie DNS. |**Wbudowane zabezpieczenia:** drzwiami frontowymi włącza reguły, takie jak ograniczanie szybkości i umieszczanie listy ACL adresów IP pozwala chronić zaplecza, zanim ruch trafia aplikacji. 
+|**Format rozliczeń:** skaluje się z użytkownikami oraz usług z większą liczbą użytkowników, płaskowyżach, aby zmniejszyć koszt w większym użyciem rozliczanie oparte na systemie DNS. |**Wbudowane zabezpieczenia:** drzwiami frontowymi włącza reguły, takie jak ograniczanie szybkości i umieszczanie listy ACL adresów IP pozwala chronić zaplecza, zanim ruch trafia aplikacji. 
 
 </br>Ze względu na wydajność, sprawność działania i korzyści w zakresie zabezpieczeń do obciążeń HTTP przy wejściu zalecamy klientom drzwiami frontowymi potrzeby ich obciążeń HTTP.    Usługa Traffic Manager i drzwiami frontowymi można równolegle do obsługi całego ruchu dla aplikacji. 
 

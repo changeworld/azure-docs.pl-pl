@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.workload: infrastructure-services
-ms.date: 10/11/2018
+ms.date: 10/25/2018
 ms.author: victorh
-ms.openlocfilehash: 9306280d00ec901633585aba2f23ed06b25b4e1e
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 12115770959c3869184f0af78c4feba2fd6f2be4
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115458"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984897"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists-public-preview"></a>Limity rozmiaru żądanie zapory aplikacji sieci Web i wykluczenia listy (publiczna wersja zapoznawcza)
 
@@ -22,6 +22,9 @@ Zapora aplikacji sieci web usługi Azure Application Gateway (WAF) zapewnia ochr
 > Konfiguracja limitów rozmiarów żądania zapory aplikacji sieci Web i listy wykluczeń jest obecnie w publicznej wersji zapoznawczej. Tej wersji zapoznawczej jest oferowana bez umowy dotyczącej poziomu usług i nie jest zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="waf-request-size-limits"></a>Limity rozmiaru żądanie zapory aplikacji sieci Web
+
+![Limity rozmiaru żądania](media/application-gateway-waf-configuration/waf-requestsizelimit.png)
+
 Zapora aplikacji sieci Web pozwala użytkownikom na Konfigurowanie ograniczeń rozmiar żądania w ramach dolną i górną granicę. Dostępne są następujące konfiguracje limitów rozmiaru dwa:
 
 - Pole o rozmiarze treść żądania maksymalna jest określona w artykułów bazy wiedzy i kontrolek, które przekazuje ogólną limit rozmiaru żądania, z wyłączeniem żadnych plików. To pole można dostosować w zakresie od co najmniej 1 KB do wartości maksymalnej 128 KB. Wartością domyślną dla rozmiaru treść żądania jest 128 KB.
@@ -30,6 +33,8 @@ Zapora aplikacji sieci Web pozwala użytkownikom na Konfigurowanie ograniczeń r
 Zapora aplikacji sieci Web oferuje także można skonfigurować pokrętła, aby włączyć inspekcję treści żądania lub wyłączyć. Domyślnie włączona jest inspekcja treści żądania. Jeśli inspekcja treść żądania jest wyłączona, zapory aplikacji sieci Web nie może oszacować zawartość treści komunikatu HTTP. W takich przypadkach zapory aplikacji sieci Web w dalszym ciągu wymuszania reguł zapory aplikacji sieci Web na nagłówki plików cookie i identyfikatora URI. Jeśli inspekcja treść żądania jest wyłączona, pole o rozmiarze treść żądania maksymalna nie ma zastosowania i nie można ustawić. Wyłączenie inspekcji treść żądania umożliwia wiadomości większych niż 128 KB do wysłania do zapory aplikacji sieci Web. Treść komunikatu nie jest jednak kontrolowane w zakresie luki w zabezpieczeniach.
 
 ## <a name="waf-exclusion-lists"></a>Listy wykluczeń zapory aplikacji sieci Web
+
+![exclusion.png zapory aplikacji sieci Web](media/application-gateway-waf-configuration/waf-exclusion.png)
 
 Zapora aplikacji sieci Web listy wykluczeń Zezwalaj użytkownikom na pominięcie niektórych atrybutów żądania oceny zapory aplikacji sieci Web. Typowym przykładem jest, że usługi Active Directory włożony tokenów, które są używane do uwierzytelniania lub pola hasła. Takie atrybuty są podatne na zawierać znaków specjalnych, co może powodować wyzwalanie wynik fałszywie dodatni z reguł zapory aplikacji sieci Web. Gdy atrybut zostanie dodany do listy wykluczeń zapory aplikacji sieci Web, nie jest brana pod uwagę przez żadną regułę zapory aplikacji sieci Web skonfigurowanych i aktywne. Listy wykluczeń są globalne w zakresie.
 Nagłówki żądania, treści żądania, pliki cookie żądania lub argumenty ciągu zapytania żądania można dodać do listy wykluczeń zapory aplikacji sieci Web. Jeśli jednostka ma dane formularza lub XML/JSON (pary klucz-wartość) żądania atrybutu wykluczeń typ może być używany.

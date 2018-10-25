@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 5931958d17ea119e58c066a78a44169be2b9f451
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 7d7de02c96b9a17144b446b9ed86ebcbacd51162
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627529"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025009"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Opcje raportowania w zarządzaniu hasłami w usłudze Azure AD
 
@@ -23,7 +23,7 @@ Po wdrożeniu w wielu organizacjach chcą wiedzieć, jak elementy są używane l
 
 ![Raportowanie][Reporting]
 
-Można odpowiedzieć na następujące pytania, przez raporty, które istnieją w ([witryny Azure portal]https://portal.azure.com/):
+Można odpowiedzieć na następujące pytania, przez raporty, które istnieją w [witryny Azure portal](https://portal.azure.com/):
 
 > [!NOTE]
 > Musi być [administratora globalnego](../users-groups-roles/directory-assign-admin-roles.md), i wymaga zgody na tych danych do zebrania w imieniu swojej organizacji. Aby włączyć, należy odwiedzić **raportowania** karty lub inspekcji, dzienniki co najmniej raz. W międzyczasie dane nie są zbierane dla Twojej organizacji.
@@ -46,7 +46,7 @@ Jeśli jesteś użytkownikiem usługi Power BI, ma pakietu zawartości dla usłu
 
 W środowisku witryny Azure portal firma Microsoft ulepszyła sposobu można wyświetlić resetowania hasła i rejestracji aktywność resetowania haseł. Użyj następujących kroków, aby znaleźć hasło resetowania i zdarzenia rejestracji resetowania hasła:
 
-1. Przejdź do [witryny Azure portal](https://portal.azure.com).
+1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 2. Wybierz **wszystkich usług** w okienku po lewej stronie.
 3. Wyszukaj **usługi Azure Active Directory** na liście usług i wybierz ją.
 4. Wybierz pozycję **Użytkownicy i grupy**.

@@ -4,15 +4,15 @@ description: Zawiera informacje dotyczące urządzenia modułu zbierającego w u
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 10/24/2018
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 3c40fd97540d8529c95c7d18d2c3155dd37717e9
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 006a246323e9f82ea9c9a6a2940ed624d7e44e13
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945420"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986784"
 ---
 # <a name="about-the-collector-appliance"></a>O urządzenia modułu zbierającego
 
@@ -198,7 +198,7 @@ Należy pamiętać, że urządzenie tylko zbiera dane dotyczące wydajności sta
 2. Usuwanie maszyn wirtualnych: ze względu na sposób zaprojektowano urządzenia, usunięcie maszyny wirtualne nie zostaną uwzględnione nawet, gdy zatrzymujesz i uruchamiasz odnajdywania. Jest to spowodowane dane z kolejne operacje odnajdywania są dołączane do odnajdywania starszych i nie zostanie zastąpiona. W takim przypadku możesz po prostu zignorować maszyny Wirtualnej w portalu, usuwając go z grupy i ponownego obliczania oceny.
 
 > [!NOTE]
-> Funkcja ciągłego Odnajdywanie jest w wersji zapoznawczej. Jeśli ustawienia statystyk programu vCenter Server nie jest ustawiony na poziom 3, zaleca się użycie tej metody.
+> Funkcja ciągłego Odnajdywanie jest w wersji zapoznawczej. Firma Microsoft zaleca używania tej metody, ponieważ ta metoda służy do zbierania szczegółowych danych i powoduje dokładne doboru.
 
 
 ## <a name="discovery-process"></a>Proces odnajdywania

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: ca596b2d33a6248dac94ddd7eef9a9c44daac3c8
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: af7a0d01fcf9df42da79a6529c8d4b0e31d73aa1
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343745"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985492"
 ---
 # <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>Wprowadzenie do usługi uczenie Maszynowe i możliwości języka R typu open source w HDInsight
 
@@ -102,7 +102,7 @@ Jeśli wybierzesz tę opcję, należy przekonwertować wszystkie obiekty modelu 
 
 ### <a name="score-on-premises"></a>Wynik w środowisku lokalnym
 
-Zdobycie lokalnego po utworzeniu modelu, można serializuje model w języku R, ją pobrać, deserializować go i użyć go do oceniania nowe dane. Można oceniać nowe dane przy użyciu podejścia opisanego wcześniej w [oceniania w HDInsight](#scoring-in-hdinsight) lub za pomocą [usług sieci web](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services).
+Zdobycie lokalnego po utworzeniu modelu, można serializuje model w języku R, ją pobrać, deserializować go i użyć go do oceniania nowe dane. Można oceniać nowe dane przy użyciu podejścia opisanego wcześniej w [wynik w HDInsight](#score-in-hdinsight) lub za pomocą [usług sieci web](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services).
 
 ## <a name="maintain-the-cluster"></a>Obsługa klastra
 

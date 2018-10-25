@@ -11,25 +11,26 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 07/16/2018
-ms.openlocfilehash: 6110773ecaba0ad333e4cfc9f9cc6014bd29a7a6
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.date: 10/24/2018
+ms.openlocfilehash: 7fe34423e706054daf84eaa8baf45fe201a661c9
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249523"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026181"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Store kopie zapasowe bazy danych SQL platformy Azure przez maksymalnie 10 lat
 
 Wiele aplikacji ma prawnych, zgodności lub innych firm do celów, które można przechowywać kopie zapasowe bazy danych dłużej niż 7 – 35 dni, dostarczone przez usługę Azure SQL Database wymagają [automatyczne tworzenie kopii zapasowych](sql-database-automated-backups.md). Funkcja długoterminowego przechowywania (od lewej do prawej), można przechowywać określonego SQL pełne kopie zapasowe bazy danych w [RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) magazynu obiektów blob do 10 lat. Jakiejkolwiek kopii zapasowej można przywrócić jako nową bazę danych.
 
 > [!NOTE]
-> Od lewej do prawej, można włączyć w bazach danych hostowanej w serwerach logicznych Azure SQL Database. Nadal nie jest dostępny w wystąpieniach zarządzanych.
+> Od lewej do prawej, można włączyć w bazach danych hostowanej w serwerach logicznych Azure SQL Database. Nie jest jeszcze dostępna dla baz danych hostowanej w wystąpieniach zarządzanych.
 > 
 
 ## <a name="how-sql-database-long-term-retention-works"></a>Jak działa długoterminowe przechowywanie bazy danych SQL
 
-Długoterminowe przechowywanie kopii zapasowych wykorzystuje [automatyczne kopie zapasowe bazy danych SQL](sql-database-automated-backups.md) utworzone przyjmuje punkt przywracania do określonego (Odzyskiwanie). Można skonfigurować zasady przechowywania długoterminowego dla każdej bazy danych SQL i określ, jak często należy skopiować kopii zapasowych do magazynu długoterminowego. Aby umożliwić tej elastyczności można zdefiniować zasady przy użyciu kombinacji cztery parametry: tygodniowe przechowywanie kopii zapasowej (W) miesięczne przechowywanie kopii zapasowej (M), roczne przechowywanie kopii zapasowej (Y) i tydzień roku (WeekOfYear). W przypadku określenia W, jedna kopia zapasowa każdego tygodnia zostanie skopiowany do magazynu długoterminowego. Jeśli określisz M, jedna kopia zapasowa w pierwszym tygodniu każdego miesiąca zostaną skopiowane do magazynu długoterminowego. Jeśli określisz Y, jedna kopia zapasowa w ciągu tygodnia określony przez WeekOfYear zostaną skopiowane do magazynu długoterminowego. Każdej kopii zapasowej będą przechowywane w pamięci nieulotnej przez czas określony przez te parametry. 
+Długoterminowe przechowywanie kopii zapasowych (LTR) wykorzystuje pełne kopie zapasowe, które są [automatycznie utworzone](sql-database-automated-backups.md) włączyć punkt przywracania (Odzyskiwanie). Te kopie zapasowe są kopiowane do innego magazynu obiektów blob, jeśli skonfigurowano zasady od lewej do prawej.
+Można skonfigurować zasady LTR dla każdej bazy danych SQL i określ, jak często należy skopiować kopie zapasowe w obiektach blob magazynu długoterminowego. Aby umożliwić tej elastyczności można zdefiniować zasady przy użyciu kombinacji cztery parametry: tygodniowe przechowywanie kopii zapasowej (W) miesięczne przechowywanie kopii zapasowej (M), roczne przechowywanie kopii zapasowej (Y) i tydzień roku (WeekOfYear). W przypadku określenia W, jedna kopia zapasowa każdego tygodnia zostanie skopiowany do magazynu długoterminowego. Jeśli określisz M, jedna kopia zapasowa w pierwszym tygodniu każdego miesiąca zostaną skopiowane do magazynu długoterminowego. Jeśli określisz Y, jedna kopia zapasowa w ciągu tygodnia określony przez WeekOfYear zostaną skopiowane do magazynu długoterminowego. Każdej kopii zapasowej będą przechowywane w pamięci nieulotnej przez czas określony przez te parametry. 
 
 Przykłady:
 

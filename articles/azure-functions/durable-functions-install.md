@@ -2,20 +2,20 @@
 title: Instalowanie rozszerzenia funkcji trwałych i przykłady dla platformy Azure —
 description: Dowiedz się, jak zainstalować rozszerzenia funkcji trwałych dla usługi Azure Functions dla dla portalu lub programowanie aplikacji programu Visual Studio.
 services: functions
-author: cgillum
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 2eb838bcb9d3f64d0bbf4657c516adb50d103223
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 6bbf232fc17b9acfd4e8cd84a0cb1346ab8ea9b5
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585309"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986825"
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Instalowanie rozszerzenia funkcji trwałych i przykłady (usługi Azure Functions)
 
@@ -45,7 +45,7 @@ Visual Studio zawiera obecnie najlepsze środowisko do tworzenia aplikacji, któ
 Postępuj zgodnie z instrukcjami ten sam, jak w przypadku począwszy od przykładu, ale należy wykonać poniższe kroki, zamiast pobierać *zip* pliku:
 
 1. Utwórz projekt aplikacji funkcji.
-2. Wyszukaj następujący NuGet pakietu odwołania przy użyciu *Zarządzaj pakietami NuGet* i dodaj go do projektu: Microsoft.Azure.WebJobs.Extensions.DurableTask v1.6.0
+2. Wyszukaj następujący NuGet pakietu odwołania przy użyciu *Zarządzaj pakietami NuGet* i dodaj go do projektu: Microsoft.Azure.WebJobs.Extensions.DurableTask v1.6.2
    
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
@@ -75,12 +75,12 @@ Visual Studio Code zapewnia środowisko programowania lokalnego obejmujące wszy
 3. Zainstaluj rozszerzenie niezawodne funkcje platformy Azure, uruchamiając następujące polecenia oknie monitu / terminalu:
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.6.0
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.6.2
     ```
 4. Instalowanie rozszerzenia usługi Twilio funkcji platformy Azure, uruchamiając następujące polecenia oknie monitu / terminalu:
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.Twilio -v 3.0.0-beta8
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.Twilio -v 3.0.0
     ```
 5. Uruchamianie emulatora usługi Azure Storage lub aktualizacji *local.settings.json* plików za pomocą rzeczywistych parametrów połączenia usługi Azure Storage.
 6. Otwórz projekt w programie Visual Studio Code. 
@@ -96,14 +96,14 @@ Visual Studio Code zapewnia środowisko programowania lokalnego obejmujące wszy
 2. Przejdź na Twojej maszynie do [folderze samples JavaScript](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/javascript). 
 3. Zainstaluj rozszerzenie niezawodne funkcje platformy Azure, uruchamiając następujące polecenia oknie monitu / terminalu
 
-    ```
+    ```bash
     func extensions install
     ```
     > [!NOTE] 
     > Wymaga to [zestawu .NET Core SDK](https://www.microsoft.com/net/download) do zainstalowania na komputerze
 4. Przywróć pakiety npm, uruchamiając następujące polecenia oknie monitu / terminalu:
     
-    ```
+    ```bash
     npm install
     ``` 
 5. Aktualizacja *local.settings.json* plik z parametrami połączenia z konta usługi Azure storage dla `AzureWebJobsStorage`.  To konto magazynu będzie służyć do stanu trwałego funkcji.
@@ -119,13 +119,13 @@ Visual Studio Code zapewnia środowisko programowania lokalnego obejmujące wszy
 1. W poleceniu monitu / terminalu przejdź do folderu, który będzie hostować swoją aplikację funkcji.
 3. Utwórz projekt aplikacji funkcji, uruchamiając następujące polecenie:
 
-    ```
+    ```bash
     func init
     ``` 
 4. Uruchamianie emulatora usługi Azure Storage (tylko Windows) lub zaktualizować *local.settings.json* plików za pomocą rzeczywistych parametrów połączenia usługi Azure Storage dla `AzureWebJobsStorage`.
 5. Następnie utwórz nową funkcję, uruchamiając następujące polecenie i wykonaj kroki kreatora:
 
-    ```
+    ```bash
     func new
     ```
     >[!IMPORTANT]

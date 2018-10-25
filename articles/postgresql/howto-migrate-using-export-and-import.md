@@ -1,6 +1,6 @@
 ---
-title: Migrowanie bazy danych za pomocą importowania i eksportowania w bazie danych Azure dla PostgreSQL
-description: Opisuje sposób wyodrębnić bazy danych programu PostgreSQL do pliku skryptu i zaimportuj dane do docelowej bazy danych z tego pliku.
+title: Migrowanie bazy danych za pomocą importowania i eksportowania w usłudze Azure Database for PostgreSQL
+description: W tym artykule opisano sposób wyodrębniania bazę danych PostgreSQL do pliku skryptu i importowania danych do docelowej bazy danych z tego pliku.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -9,44 +9,44 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/01/2018
-ms.openlocfilehash: 5250b10c2d9645e25c5b6f6f0f34daa50608e51b
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 5f6a83e33ea443839059b267dfb8043ae48af039
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736648"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987073"
 ---
-# <a name="migrate-your-postgresql-database-using-export-and-import"></a>Migracji PostgreSQL bazy danych przy użyciu eksportowania i importowania
-Można użyć [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) można wyodrębnić bazy danych programu PostgreSQL do pliku skryptu i [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) do importowania danych do docelowej bazy danych z tego pliku.
+# <a name="migrate-your-postgresql-database-using-export-and-import"></a>Migracja bazy danych postgresql w warstwie użycie opcji eksportowania i importowania
+Możesz użyć [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) można wyodrębnić bazy danych PostgreSQL w pliku skryptu i [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) do importowania danych do docelowej bazy danych z tego pliku.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Do wykonania kroków opisanych ten przewodnik, potrzebne są:
-- [Azure bazy danych serwera PostgreSQL](quickstart-create-server-database-portal.md) przy użyciu reguł zapory umożliwiających dostęp i bazy danych na jego podstawie.
+Do wykonania kroków w tym przewodniku, potrzebne są:
+- [— Azure Database for postgresql w warstwie serwera](quickstart-create-server-database-portal.md) za pomocą reguł zapory, aby zezwolić na dostęp i bazy danych w nim.
 - [pg_dump](https://www.postgresql.org/docs/9.6/static/app-pgdump.html) zainstalowane narzędzie wiersza polecenia
-- [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) zainstalowane narzędzie wiersza polecenia
+- [wersja narzędzia psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) zainstalowane narzędzie wiersza polecenia
 
-Wykonaj następujące kroki, aby wyeksportować i zaimportować bazy danych programu PostgreSQL.
+Wykonaj następujące kroki, aby wyeksportować i zaimportować bazę danych PostgreSQL.
 
-## <a name="create-a-script-file-using-pgdump-that-contains-the-data-to-be-loaded"></a>Tworzenie pliku skryptu za pomocą pg_dump, zawierający dane do załadowania
-Aby wyeksportować istniejący PostgreSQL bazy danych lokalnej lub w maszynie Wirtualnej do pliku skryptu sql, uruchom następujące polecenie w istniejącym środowisku:
+## <a name="create-a-script-file-using-pgdump-that-contains-the-data-to-be-loaded"></a>Tworzenie pliku skryptu za pomocą pg_dump, która zawiera dane do załadowania
+Aby wyeksportować istniejący postgresql w warstwie bazy danych lokalnego lub na maszynie wirtualnej do pliku skryptu sql uruchom następujące polecenie w istniejącym środowiskiem:
 ```bash
 pg_dump –-host=<host> --username=<name> --dbname=<database name> --file=<database>.sql
 ```
-Na przykład, jeśli masz lokalny serwer i bazę danych o nazwie **programu testdb** w niej:
+Na przykład w przypadku lokalnego serwera i bazy danych o nazwie **testdb** w nim:
 ```bash
 pg_dump --host=localhost --username=masterlogin --dbname=testdb --file=testdb.sql
 ```
 
-## <a name="import-the-data-on-target-azure-database-for-postgresql"></a>Importowanie danych w docelowej bazie danych Azure dla PostgreSQL
-Można użyć psql wiersza polecenia i parametru--dbname (-d) do importowania danych do bazy danych PostgreSQL serwera i ładowanie danych z pliku sql Azure.
+## <a name="import-the-data-on-target-azure-database-for-postgresql"></a>Importowanie danych w elemencie docelowym — Azure Database for PostgreSQL
+Można użyć wiersza polecenia psql, a parametr--dbname (-d) aby importować dane do usługi Azure Database for postgresql w warstwie serwera i ładowanie danych z pliku sql.
 ```bash
 psql --file=<database>.sql --host=<server name> --port=5432 --username=<user@servername> --dbname=<target database name>
 ```
-W tym przykładzie użyto psql narzędzie i plik skryptu o nazwie **testdb.sql** z poprzedniego kroku do importowania danych do bazy danych **mypgsqldb** na serwerze docelowym  **mydemoserver.postgres.Database.Azure.com**.
+W tym przykładzie użyto narzędzie psql oraz pliku skryptu o nazwie **testdb.sql** z poprzedniego kroku, aby zaimportować dane do bazy danych **mypgsqldb** na serwerze docelowym  **mydemoserver.postgres.Database.Azure.com**.
 ```bash
 psql --file=testdb.sql --host=mydemoserver.database.windows.net --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Aby przeprowadzić migrację bazy danych programu PostgreSQL przy użyciu zrzutu i przywracania, zobacz [migracji za pomocą zrzutu i przywracania bazy danych PostgreSQL](howto-migrate-using-dump-and-restore.md).
-- Aby uzyskać więcej informacji na temat migracji baz danych do bazy danych Azure PostgreSQL, zobacz [Przewodnik po migracji bazy danych](http://aka.ms/datamigration). 
+- Aby przeprowadzić migrację bazy danych PostgreSQL za pomocą zrzutu i przywracania, zobacz [Migrowanie przy użyciu zrzutu i przywracania bazy danych postgresql w warstwie](howto-migrate-using-dump-and-restore.md).
+- Aby uzyskać więcej informacji na temat migrowania baz danych do usługi Azure Database for PostgreSQL, zobacz [Przewodnik po migracji bazy danych](https://aka.ms/datamigration). 

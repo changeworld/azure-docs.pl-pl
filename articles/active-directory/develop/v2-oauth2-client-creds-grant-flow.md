@@ -17,14 +17,17 @@ ms.date: 01/07/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 02d5bf9ef293731ce707596a90cd7e9aa0b96450
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 2dc1be6b861515cf34f8dd799fa732da530e82a1
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581571"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985404"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory w wersji 2.0 i przepływ poświadczeń klienta OAuth 2.0
+
+[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
+
 Możesz użyć [przyznawanie poświadczeń klienta OAuth 2.0](http://tools.ietf.org/html/rfc6749#section-4.4) określony w RFC 6749, czasami nazywane *bokami dwóch OAuth*, aby uzyskać dostęp do zasobów hostowanych w sieci web, przy użyciu tożsamości aplikacji. Tego rodzaju grant często służy do interakcji do serwera, które muszą być uruchamiane w tle, bez natychmiastowego interakcji z użytkownikiem. Tego rodzaju aplikacje często są nazywane *demonów* lub *kont usługi*.
 
 > [!NOTE]
@@ -54,8 +57,8 @@ Zamiast przy użyciu list kontroli dostępu, można użyć interfejsów API do u
 
 * Odczytuj pocztę we wszystkich skrzynkach pocztowych
 * Odczyt i zapis poczty we wszystkich skrzynkach pocztowych
-* Wysyłaj wiadomości e-mail jako dowolny użytkownik
-* Odczytuj dane katalogu
+* Wysyłaj pocztę jako dowolny użytkownik
+* Czytaj dane katalogu
 
 Aby uzyskać więcej informacji dotyczących uprawnień aplikacji, przejdź do [programu Microsoft Graph](https://graph.microsoft.io).
 

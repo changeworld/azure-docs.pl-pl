@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: erhopf
-ms.openlocfilehash: 0cc278cdb59bfbb53578eae0f51c9b54204d7d12
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 7f3daf71f4d94371af5f7d98c4e03761d7217a2a
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466277"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025841"
 ---
 # <a name="speech-service-rest-apis"></a>Interfejsy API REST usługi mowy
 
@@ -22,7 +22,7 @@ Interfejsy API REST usługi mowy w usłudze Azure Cognitive Services są podobne
 
 ## <a name="speech-to-text"></a>Zamiana mowy na tekst
 
-Punktów końcowych rozpoznawania mowy, interfejsu API REST usługi tekstowe są wyświetlane w poniższej tabeli. Użyj jednego, który odpowiada Twoim regionie subskrypcji. 
+Punktów końcowych rozpoznawania mowy, interfejsu API REST usługi tekstowe są wyświetlane w poniższej tabeli. Użyj jednego, który odpowiada Twoim regionie subskrypcji.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
@@ -57,13 +57,13 @@ Następujące pola są wysyłane w nagłówku żądania HTTP.
 
 ### <a name="audio-format"></a>Audio format
 
-Dźwięku w treści HTTP `PUT` żądania. Należy go w formacie WAV PCM pojedynczy kanał (mono) na 16 KHz następujące formaty/kodowania 16-bitowych.
+Dźwięku w treści HTTP `POST` żądania. Należy go w formacie WAV PCM pojedynczy kanał (mono) na 16 KHz następujące formaty/kodowania 16-bitowych.
 
 * Format WAV PCM koder-dekoder
 * Format OGG z kodera-dekodera DZIELE
 
 >[!NOTE]
->Powyższe formaty są obsługiwane za pośrednictwem interfejsu API REST i WebSocket usługi mowy. [Zestaw SDK rozpoznawania mowy](/index.yml) aktualnie obsługuje tylko WAV Formatuj przy użyciu kodera-dekodera PCM. 
+>Powyższe formaty są obsługiwane za pośrednictwem interfejsu API REST i WebSocket usługi mowy. [Zestaw SDK rozpoznawania mowy](/index.yml) aktualnie obsługuje tylko WAV Formatuj przy użyciu kodera-dekodera PCM.
 
 ### <a name="chunked-transfer"></a>Fragmentaryczne transferu
 
@@ -145,7 +145,7 @@ Wyniki są zwracane w formacie JSON. `simple` Format obejmuje tylko następując
 | `Error` | Usługa rozpoznawania napotkał błąd wewnętrzny i nie może kontynuować działania. Spróbuj ponownie, jeśli to możliwe. |
 
 > [!NOTE]
-> Jeśli audio składa się tylko z wulgaryzmów i `profanity` parametr zapytania ma wartość `remove`, usługa nie zwróciła wynik mowy. 
+> Jeśli audio składa się tylko z wulgaryzmów i `profanity` parametr zapytania ma wartość `remove`, usługa nie zwróciła wynik mowy.
 
 
 `detailed` Format obejmuje te same pola jako `simple` formacie wraz z `NBest` pola. `NBest` Pola znajduje się lista alternatywnych interpretacji tych samych mowy, randze spośród wszystkich dokumentów z największym prawdopodobieństwem najmniej prawdopodobne. Pierwszy wpis jest taki sam jak wynik rozpoznawania głównego. Każdy wpis zawiera następujące pola:
@@ -207,7 +207,7 @@ Usługa rozpoznawania mowy obsługuje wyjściowego audio 24 KHz, oprócz danych 
 
 Ustawienia regionalne | Język   | Płeć | Mapowanie nazwy usługi
 -------|------------|--------|------------
-pl-PL  | US English | Kobieta | "Microsoft Server mowy Text na głos mowy (en US, Jessa24kRUS)" 
+pl-PL  | US English | Kobieta | "Microsoft Server mowy Text na głos mowy (en US, Jessa24kRUS)"
 pl-PL  | US English | Mężczyzna   | "Microsoft Server mowy Text na głos mowy (en US, Guy24kRUS)"
 
 Pełną listę dostępnych głosów jest dostępna w [obsługiwane języki](language-support.md#text-to-speech).
@@ -235,7 +235,7 @@ Formaty danych wyjściowych audio dostępne (`X-Microsoft-OutputFormat`) na szyb
 `audio-24khz-96kbitrate-mono-mp3`  | `audio-24khz-48kbitrate-mono-mp3`
 
 > [!NOTE]
-> Jeśli wybrany głosu i format danych wyjściowych inne szybkości transmisji bitów, audio jest próbkowany zgodnie z potrzebami. Jednak nie obsługują głosów 24khz `audio-16khz-16kbps-mono-siren` i `riff-16khz-16kbps-mono-siren` formaty danych wyjściowych. 
+> Jeśli wybrany głosu i format danych wyjściowych inne szybkości transmisji bitów, audio jest próbkowany zgodnie z potrzebami. Jednak nie obsługują głosów 24khz `audio-16khz-16kbps-mono-siren` i `riff-16khz-16kbps-mono-siren` formaty danych wyjściowych.
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -254,7 +254,7 @@ Host: westus.tts.speech.microsoft.com
 Content-Length: 225
 Authorization: Bearer [Base64 access_token]
 
-<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female' 
+<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
     name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>
         Microsoft Speech Service Text-to-Speech API
 </voice></speak>
@@ -328,10 +328,10 @@ cURL to narzędzie wiersza polecenia dostępne w systemie Linux (i podsystem Win
 > Polecenie jest wyświetlane w wielu wierszach, aby zwiększyć czytelność, ale wprowadź go w jednym wierszu w wierszu polecenia powłoki.
 
 ```
-curl -v -X POST 
- "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken" 
- -H "Content-type: application/x-www-form-urlencoded" 
- -H "Content-Length: 0" 
+curl -v -X POST
+ "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken"
+ -H "Content-type: application/x-www-form-urlencoded"
+ -H "Content-Length: 0"
  -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
 
@@ -411,7 +411,7 @@ Tak jak poprzednio, upewnij się, że `FetchTokenUri` wartość odpowiada region
     */
 public class Authentication
 {
-    public static readonly string FetchTokenUri = 
+    public static readonly string FetchTokenUri =
         "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
     private string subscriptionKey;
     private string token;
@@ -486,4 +486,3 @@ public class Authentication
 - [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
 - [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
 - [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)
-

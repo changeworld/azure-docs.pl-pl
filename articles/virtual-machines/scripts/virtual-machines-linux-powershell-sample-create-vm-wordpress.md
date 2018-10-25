@@ -3,7 +3,7 @@ title: Przykładowy skrypt programu Azure PowerShell — platforma WordPress | M
 description: Przykładowy skrypt programu Azure PowerShell — platforma WordPress
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2017
-ms.author: cynthn
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 07dcc2f8355c73859500e91d3b6dbe74e27b83c2
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: f338bb4c846ba6cdbf8aaecfe126cf512fc89109
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43246984"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469524"
 ---
 # <a name="create-a-wordpress-vm-with-powershell"></a>Tworzenie maszyny wirtualnej platformy WordPress za pomocą programu PowerShell
 

@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/17/2018
+ms.date: 10/18/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 69a24dba752e4aa374e03e57ce197ae882647373
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: e8ca232f3c5664f69db800648b46abaf0822d6f1
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378692"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458143"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Szybki start: tworzenie szablonów usługi Azure Resource Manager przy użyciu programu Visual Studio Code
 
@@ -57,12 +57,7 @@ Szablon używany w tym przewodniku Szybki start ma nazwę [Create a standard sto
 
 Aby dowiedzieć się, jak edytować szablon za pomocą programu Visual Studio Code, dodaj jeszcze jeden element do sekcji `outputs`.
 
-1. Z programu Visual Studio Code należy sprawdzić wartość **kind**. Jeśli wartością jest **Storage**, zaktualizuj tę wartość do **StorageV2**.
-
-    ```json
-    "kind": "StorageV2",
-    ```
-2. Dodaj jeszcze jedno wyjście do wyeksportowanego szablonu:
+1. Dodaj jeszcze jedno wyjście do wyeksportowanego szablonu:
 
     ```json
     "storageUri": {
@@ -90,7 +85,7 @@ Aby dowiedzieć się, jak edytować szablon za pomocą programu Visual Studio Co
 
     ![Funkcja intellisense programu Visual Studio Code szablonu usługi Resource Manager](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
 
-3. Wybierz pozycję **File (Plik)**>**Save (Zapisz)**, aby zapisać plik.
+2. Wybierz pozycję **File (Plik)**>**Save (Zapisz)**, aby zapisać plik.
 
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
@@ -128,7 +123,7 @@ Istnieje wiele metod wdrażania szablonów.  W tym przewodniku Szybki start uży
 7. W usłudze Cloud Shell uruchom poniższe polecenia. Wybierz kartę, aby wyświetlić kod programu PowerShell lub kod interfejsu wiersza polecenia.
 
     # <a name="clitabcli"></a>[Interfejs wiersza polecenia](#tab/CLI)
-    ```cli
+    ```azurecli
     echo "Enter the Resource Group name:" &&
     read resourceGroupName &&
     echo "Enter the name for this deployment:" &&
@@ -141,7 +136,7 @@ Istnieje wiele metod wdrażania szablonów.  W tym przewodniku Szybki start uży
    
     # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/PowerShell)
     
-    ```powershell
+    ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
     $deploymentName = Read-Host -Prompt "Enter the name for this deployment"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
@@ -171,7 +166,7 @@ Istnieje wiele metod wdrażania szablonów.  W tym przewodniku Szybki start uży
 7. Uruchom następujące polecenie interfejsu wiersza polecenia lub programu PowerShell, aby wyświetlić nowo utworzone konto magazynu:
 
     # <a name="clitabcli"></a>[Interfejs wiersza polecenia](#tab/CLI)
-    ```cli
+    ```azurecli
     echo "Enter the Resource Group name:" &&
     read resourceGroupName &&
     echo "Enter the Storage Account name:" &&
@@ -181,7 +176,7 @@ Istnieje wiele metod wdrażania szablonów.  W tym przewodniku Szybki start uży
    
     # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/PowerShell)
     
-    ```powershell
+    ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
     $storageAccountName = Read-Host -Prompt "Enter the Storage Account name"
     Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName

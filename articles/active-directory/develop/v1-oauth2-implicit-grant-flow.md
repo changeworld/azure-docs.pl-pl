@@ -17,14 +17,16 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: acdc3417643484fa98b16c4be1b83a44a8b73fc6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ccc5aa116d2f01b601e6b6b9aad456110b764856
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963003"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985730"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Opis przepływu przyznawanie niejawne protokołu OAuth2 w usłudze Azure Active Directory (AD)
+
+[!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
 Przyznawanie niejawne protokołu OAuth2 jest odpowiedzialne za są grant najdłuższy listę obawy związane z bezpieczeństwem w specyfikacji OAuth2. I jeszcze, to podejście implementowany przez ADAL JS i jeden, zaleca się podczas pisania aplikacji SPA. Co zapewnia? Jest przedmiotem wady i zalety: i jak okazuje się przyznawania niejawnego jest najlepszym rozwiązaniem, które można wykonywać w przypadku aplikacji korzystających z interfejsu API sieci Web, przy użyciu języka JavaScript w przeglądarce.
 

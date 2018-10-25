@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: zhiweiw
-ms.openlocfilehash: 430ea5f0a6f737d7632a4352c24d893368b80558
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e470a44732b881311eacecfdf2bd2211598d880a
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315098"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984864"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>Dane usługi kondycji nie są na bieżąco alert
 
@@ -33,6 +33,21 @@ ms.locfileid: "46315098"
 ## <a name="troubleshooting-steps"></a>Kroki rozwiązywania problemów 
 * Upewnij się, że omijają i spełniać [sekcji wymagania dotyczące](how-to-connect-health-agent-install.md#requirements).
 * Użyj [narzędzia łączności test](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) do wykrywania problemów z łącznością.
+* Jeśli masz serwer HTTP Proxy, wykonaj [kroków konfiguracji, w tym miejscu](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). 
+
+### <a name="connect-health-for-adfs"></a>Program Connect Health dla usług AD FS
+Dodatkowe kroki, aby zweryfikować dla usług AD FS i postępuj zgodnie z przepływem pracy w [pomocy usługi AD FS](https://adfshelp.microsoft.com/TroubleshootingGuides/Workflow/3ef51c1f-499e-4e07-b3c4-60271640e282).
+
+### <a name="data-collection-map-required-steps"></a>Zbieranie danych mapy czynności
+| Nazwa usługi | Elementy danych | Kroki rozwiązywania problemów |
+| --- | --- | --- | 
+| Program Connect Health dla usługi AD FS | Funkcja kończąca, TestResult | - [Łączność wychodząca z punktem końcowym usługi platformy Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br />- [Inspekcja połączenia SSL dla ruchu wychodzącego jest filtrowana lub wyłączona](https://technet.microsoft.com/library/ee796230.aspx) <br />-  [Porty zapory na serwerze, na którym jest uruchomiony agent](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [Zezwalaj na wyznaczonym witryn sieci Web, jeśli są włączone zwiększone zabezpieczenia programu Internet Explorer](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing) |
+|  | UsageMetrics usług AD FS | Łączność wychodząca na podstawie adresów IP można znaleźć [zakresów adresów IP platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653) | 
+| Connect Health do celów synchronizacji | Funkcja kończąca | - [Łączność wychodząca z punktem końcowym usługi platformy Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br />- [Inspekcja połączenia SSL dla ruchu wychodzącego jest filtrowana lub wyłączona](https://technet.microsoft.com/library/ee796230.aspx) <br /> - [Porty zapory na serwerze, na którym jest uruchomiony agent](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [Zezwalaj na wyznaczonym witryn sieci Web, jeśli są włączone zwiększone zabezpieczenia programu Internet Explorer](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing) |
+|  | AadSyncService SynchronizationRules, <br /> AadSyncService łączników <br /> AadSyncService GlobalConfigurations, <br /> AadSyncService RunProfileResults, <br /> AadSyncService ServiceConfigurations, <br /> Bajty AadSyncService | -Wychodzącym na podstawie adresów IP można znaleźć [zakresów adresów IP platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653) <br /> - [Łączność wychodząca z punktem końcowym usługi platformy Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br /> -  [Porty zapory na serwerze, na którym jest uruchomiony agent](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) | 
+| Program Connect Health dla usług AD DS  | Funkcja kończąca, dodaje TopologyInfo-Json, typowe TestData Json | - [Łączność wychodząca z punktem końcowym usługi platformy Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br /> - [Inspekcja połączenia SSL dla ruchu wychodzącego jest filtrowana lub wyłączona](https://technet.microsoft.com/library/ee796230.aspx) <br />-  [Porty zapory na serwerze, na którym jest uruchomiony agent](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [Zezwalaj na wyznaczonym witryn sieci Web, jeśli są włączone zwiększone zabezpieczenia programu Internet Explorer](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing) <br />  -Wychodzącym na podstawie adresów IP można znaleźć [zakresów adresów IP platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653)  |
+
+
 
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: e0d430ced1dbddbfca79806591c83c33e732eefd
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 43202e88482933aed7952f6cc97dcaf1e0dcb5e7
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901718"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986036"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Rozpoczęcie korzystania z usługi Azure Stream Analytics: wykrywanie oszustw w czasie rzeczywistym
 
@@ -39,7 +39,7 @@ W tym samouczku będziesz symulować danych połączeń telefonicznych za pomoc�
 Przed rozpoczęciem upewnij się, że dysponujesz następującymi elementami:
 
 * Konto platformy Azure.
-* Aplikację generatora zdarzeń wywołania, [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip), który można pobrać z Microsoft Download Center. Rozpakuj pakiet do folderu na komputerze. Jeśli chcesz zobaczyć źródło kodu i uruchomić aplikację w debugerze, możesz pobrać kod źródłowy aplikacji z [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator). 
+* Aplikację generatora zdarzeń wywołania, [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip), który można pobrać z Microsoft Download Center. Rozpakuj pakiet do folderu na komputerze. Jeśli chcesz zobaczyć źródło kodu i uruchomić aplikację w debugerze, możesz pobrać kod źródłowy aplikacji z [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator). 
 
     >[!NOTE]
     >Windows może spowodować zablokowanie pliku zip pobranego. Jeśli nie można rozpakować go, kliknij prawym przyciskiem myszy plik, a następnie wybierz **właściwości**. Jeśli zostanie wyświetlony komunikat "ten plik pochodzi z innego komputera i może zostać zablokowany, aby pomóc chronić ten komputer", wybierz opcję **odblokowanie** opcji, a następnie kliknij przycisk **Zastosuj**.
@@ -75,7 +75,7 @@ W tej procedurze należy najpierw utworzyć przestrzeń nazw Centrum zdarzeń, a
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="drawing" width="400px"/>
     
  
-7. Kliknij przycisk **Utwórz**.
+7. Kliknij pozycję **Utwórz**.
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Udzielanie dostępu do centrum zdarzeń i pobieranie parametrów połączenia
 
@@ -92,7 +92,7 @@ Zanim proces może wysyłać dane do Centrum zdarzeń, Centrum zdarzeń musi mie
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="drawing" width="300px"/>
  
-4.  Kliknij przycisk **Utwórz**.
+4.  Kliknij pozycję **Utwórz**.
 
 5.  Po wdrożeniu zasad kliknij je na liście zasad dostępu współdzielonego.
 
@@ -138,7 +138,7 @@ Przed uruchomieniem aplikacji TelcoGenerator należy skonfigurować tak, aby rek
     Dostępne są następujące parametry: 
 
     * Liczba CDR na godzinę. 
-    * Prawdopodobieństwo oszustwa karty SIM: Jak często w procentach wszystkich wywołań, że aplikacja powinna symulować fałszywe połączenia. Wartość 0.2 oznacza, że że około 20% rekordów połączeń będzie wyglądać na fałszywe.
+    * Prawdopodobieństwo oszustwa karty SIM: Jak często w procentach wszystkich wywołań, że aplikacja powinna symulować fałszywe połączenia. Wartość 0,2 oznacza, że około 20% rekordów połączeń będzie wyglądać na fałszywe.
     * Czas trwania w godzinach. Liczba godzin, które aplikacja powinna działać. Można je również zatrzymać aplikację dowolnym momencie, naciskając klawisze Ctrl + C w wierszu polecenia.
 
     Po kilku sekundach aplikacja rozpocznie wyświetlanie rekordów połączeń telefonicznych na ekranie w miarę wysyłania ich do centrum zdarzeń.
@@ -159,7 +159,7 @@ Niektóre pola klucza, które będą używane w tej aplikacji wykrywanie oszustw
 
 Teraz, gdy masz strumień zdarzeń połączeń, możesz skonfigurować zadanie usługi Stream Analytics. Zadanie będzie odczytywać dane z Centrum zdarzeń, który został ustawiony. 
 
-### <a name="create-the-job"></a>Utwórz zadanie 
+### <a name="create-the-job"></a>Tworzenie zadania 
 
 1. W witrynie Azure portal kliknij pozycję **Utwórz zasób** > **Internet of Things** > **zadania usługi Stream Analytics**.
 
@@ -169,7 +169,7 @@ Teraz, gdy masz strumień zdarzeń połączeń, możesz skonfigurować zadanie u
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="drawing" width="300px"/>
 
-3. Kliknij przycisk **Utwórz**.
+3. Kliknij pozycję **Utwórz**.
 
     Zadanie jest tworzone i portalu są wyświetlane szczegóły zadania. Nic nie jest jeszcze uruchomiona, chociaż — należy skonfigurować zadania, zanim można go uruchomić.
 
@@ -193,7 +193,7 @@ Teraz, gdy masz strumień zdarzeń połączeń, możesz skonfigurować zadanie u
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="drawing" width="300px"/>
 
 
-4. Kliknij przycisk **Utwórz**.
+4. Kliknij pozycję **Utwórz**.
 
 ## <a name="create-queries-to-transform-real-time-data"></a>Tworzenie zapytań do przekształcania danych w czasie rzeczywistym
 

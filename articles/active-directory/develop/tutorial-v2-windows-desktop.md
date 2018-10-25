@@ -1,12 +1,11 @@
 ---
-title: Rozpoczynanie pracy z usługą Azure Active Directory w wersji 2 Windows desktop | Dokumentacja firmy Microsoft
-description: Jak aplikacji .NET Desktop Windows (XAML) można uzyskać token dostępu i wywołać interfejs API chroniony przez punkt końcowy usługi Azure Active Directory w wersji 2.
+title: Rozpoczynanie pracy z usługą Azure Active Directory w wersji 2.0 Windows desktop | Dokumentacja firmy Microsoft
+description: Jak aplikacji .NET Desktop Windows (XAML) można uzyskać token dostępu i wywołać interfejs API chroniony przez punkt końcowy usługi Azure Active Directory w wersji 2.0.
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
@@ -16,12 +15,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: fbc24a33661bebabfaafefbd565c0b051de2a8dd
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: e1405aa23a2e0919b5fc7bee95def30b28e65cc7
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367971"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987405"
 ---
 [!INCLUDE [1. Introduction](../../../includes/active-directory-develop-guidedsetup-windesktop-introduction.md)]
 [!INCLUDE [2. Setup](../../../includes/active-directory-develop-guidedsetup-windesktop-setup.md)]

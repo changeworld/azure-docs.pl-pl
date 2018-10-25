@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 87c3ab9624116e9c1c61041531fdf5d3b26117e1
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 4c60474c07a3853e409436359713578178b639fb
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49381099"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024863"
 ---
 # <a name="configure-advanced-networking-in-azure-kubernetes-service-aks"></a>Skonfiguruj zaawansowane funkcje sieciowe w usłudze Azure Kubernetes Service (AKS)
 
@@ -31,25 +31,25 @@ W tym artykule dowiesz się, jak używać zaawansowane funkcje sieciowe do tworz
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>Planowanie adresowania IP dla klastra
 
-Klastrach skonfigurowanych przy użyciu zaawansowane funkcje sieciowe wymagają dodatkowego planowania. Rozmiar Twojej sieci wirtualnej i jej podsieci musi obsłużyć zarówno liczbę zasobników, które mają być uruchamiane, jak i liczby węzłów klastra.
+Klastrach skonfigurowanych przy użyciu zaawansowane funkcje sieciowe wymagają dodatkowego planowania. Rozmiar Twojej sieci wirtualnej i jej podsieci należy uwzględnić liczbę zasobników, który ma zostać uruchomiona i liczby węzłów klastra.
 
-Adresy IP dla zasobników i węzły klastra są przypisywane z określonej podsieci w sieci wirtualnej. Każdy węzeł jest skonfigurowany za pomocą podstawowego adresu IP, czyli adres IP węzła i 30 dodatkowych adresów IP wstępnie skonfigurowane przez wtyczki Azure CNI, które są przypisane do zasobników zaplanowane do węzła. Gdy możesz skalować w klastrze, każdy węzeł podobnie jest skonfigurowany z adresów IP z podsieci.
+Adresy IP dla zasobników i węzły klastra są przypisywane z określonej podsieci w sieci wirtualnej. Każdy węzeł jest skonfigurowany przy użyciu podstawowego adresu IP. Domyślnie 30 dodatkowe adresy IP są wstępnie skonfigurowane przez wtyczki Azure CNI, które są przypisane do zasobników zaplanowane w węźle. Gdy możesz skalować w klastrze, każdy węzeł podobnie jest skonfigurowany z adresów IP z podsieci. Można również wyświetlić [maksymalna zasobników w każdym węźle](#maximum-pods-per-node).
 
 Plan adresów IP dla klastra usługi AKS, który składa się z wirtualnej sieci, co najmniej jedną podsieć dla węzłów i zasobników i zakres adresów usługi Kubernetes.
 
 | Zakres adresów / Azure zasobów | Limity i zmianę rozmiaru |
 | --------- | ------------- |
 | Sieć wirtualna | Sieć wirtualna platformy Azure może być tak duże jak /8, ale jest ograniczona do 65 536 skonfigurowanych adresów IP. |
-| Podsieć | Musi być wystarczająco duży, aby pomieścić węzłów, zasobników i wszystkich Kubernetes i Azure zasoby, które mogą być udostępniane w klastrze. Na przykład w przypadku wdrożenia wewnętrznego modułu równoważenia obciążenia platformy Azure, jego frontonu adresy IP są przydzielane z podsieci klastra nie publicznych adresów IP. <p/>Aby obliczyć *minimalne* rozmiar podsieci: `(number of nodes) + (number of nodes * pods per node)` <p/>Przykład klaster z węzłami 50: `(50) + (50 * 30) = 1,550` (/ 21 lub większej) |
+| Podsieć | Musi być wystarczająco duży, aby pomieścić węzłów, zasobników i wszystkich Kubernetes i Azure zasoby, które mogą być udostępniane w klastrze. Na przykład w przypadku wdrożenia wewnętrznego modułu równoważenia obciążenia platformy Azure, jego frontonu adresy IP są przydzielane z podsieci klastra nie publicznych adresów IP. <p/>Aby obliczyć *minimalne* rozmiar podsieci: `(number of nodes) + (number of nodes * maximum pods per node that you configure)` <p/>Przykład klaster z węzłami 50: `(50) + (50 * 30 (default)) = 1,550` (/ 21 lub większej)<p>Jeśli nie określisz maksymalna liczba zasobników w każdym węźle podczas tworzenia klastra, maksymalna liczba zasobników w każdym węźle jest równa *30*. Minimalna liczba adresów IP, wymagane jest na podstawie tej wartości. Jeśli obliczane minimalne wymagania dotyczące adresów IP, na inną wartość maksymalna, zobacz [jak skonfigurować maksymalną liczbę zasobników w każdym węźle](#configure-maximum---new-clusters) ustawić tę wartość podczas wdrażania klastra. |
 | Zakres adresów usługi Kubernetes | Ten zakres nie należy używanych przez dowolny element sieci lub połączone z tą siecią wirtualną. Usługa adres CIDR musi być mniejszy niż /12. |
 | Adres IP usługi DNS platformy Kubernetes | Adres IP w ramach rozwiązania Kubernetes usługi zakres adresów, który będzie używany przez odnajdywanie usługi klastrowania (klastra kubernetes w usłudze dns). |
 | Adres mostka platformy docker | Adres IP (w notacji CIDR), używane jako mostka platformy Docker adresu IP w węzłach. Domyślnie 172.17.0.1/16. |
 
 ## <a name="maximum-pods-per-node"></a>Maksymalna zasobników na węzeł
 
-Domyślne maksymalną liczbę zasobników w każdym węźle w klastrze AKS waha się między podstawowe i zaawansowane sieci i metody wdrażania klastra.
+Maksymalna liczba zasobników w każdym węźle w klastrze AKS wynosi 110. *Domyślne* maksymalna liczba zasobników w każdym węźle, który waha się między podstawowe i zaawansowane sieci i metody wdrażania klastra.
 
-| Metoda wdrażania | Podstawowa | Advanced | Możliwość konfiguracji podczas wdrażania |
+| Metoda wdrażania | Podstawowe domyślne | Zaawansowane domyślne | Możliwość konfiguracji podczas wdrażania |
 | -- | :--: | :--: | -- |
 | Interfejs wiersza polecenia platformy Azure | 110 | 30 | Tak (maksymalnie 110) |
 | Szablon usługi Resource Manager | 110 | 30 | Tak (maksymalnie 110) |

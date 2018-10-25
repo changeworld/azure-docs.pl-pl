@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: c0d88f0eaacaadbb508519f2e6804b9b311408c2
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: c5a18a2e8d58553e49797da418f76fc3f251e003
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259334"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026045"
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis Cache — często zadawane pytania
 Dowiedz się odpowiedzi na często zadawane pytania dotyczące, wzorce i najlepsze rozwiązania dla usługi Azure Redis Cache.
@@ -136,7 +136,7 @@ Z tej tabeli firma Microsoft narysować następujących wniosków:
 | Warstwa cenowa | Rozmiar | Rdzenie procesora CPU | Dostępna przepustowość | Rozmiar wartości 1 KB | Rozmiar wartości 1 KB |
 | --- | --- | --- | --- | --- | --- |
 | **Rozmiary Standard pamięci podręcznej** | | |**Megabity na sekundę (Mb/s) / MB / s (MB/s)** |**Żądania na drugi bez protokołu SSL (jednostek Uzależnionych)** |**Żądania na drugim SSL (jednostek Uzależnionych)** |
-| C0 |250 MB |Udostępniona |100 / 12.5 |15,000 |7500 |
+| C0 |250 MB |Udostępniona |100 / 12.5 |15 000 |7500 |
 | C1 |1 GB |1 |500 / 62.5 |38,000 |20,720 |
 | C2 |2,5 GB |2 |500 / 62.5 |41,000 |37,000 |
 | C3 |6 GB |4 |1000 / 125 |100 000 |90,000 |
@@ -392,7 +392,7 @@ Jak można skonfigurować tego ustawienia:
   > Wartość określona w tym elemencie konfiguracji jest *za rdzeń* ustawienie. Na przykład, jeśli korzystasz z 4-rdzeniową maszyną i chcesz z ustawieniem minIOThreads to 200 w czasie wykonywania, można użyć `<processModel minIoThreads="50"/>`.
   >
 
-* Poza programem ASP.NET a plik global.asax witryn sieci Web platformy Azure, użyj [ThreadPool.SetMinThreads (...)] (https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) Interfejsu API.
+* Poza programem ASP.NET a plik global.asax witryn sieci Web platformy Azure, użyj [ThreadPool.SetMinThreads (...)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) INTERFEJS API.
 
   > [!NOTE]
   > Wartość określoną przez ten interfejs API jest ustawienie globalne wpływu na cały element AppDomain. Jeśli masz 4-rdzeniową maszyną i chcesz ustawić minWorkerThreads i minIOThreads 50 dla każdego procesora CPU w czasie wykonywania, należy użyć ThreadPool.SetMinThreads (200, 200).

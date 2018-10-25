@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: e3e3a981daf1273b8b2387cb1c665317f860b1d2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c370d25ed5d70887c8beecae8fea3528a259a0ea
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974871"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954576"
 ---
 # <a name="set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>Konfigurowanie jednostki usługi Azure AD dla klastra Kubernetes w usłudze Azure Container Service
 
@@ -37,14 +37,14 @@ Możesz użyć istniejącej jednostki usługi Azure AD, która spełnia następu
 * **Klucz tajny klienta**: musi to być hasło. Obecnie nie można używać nazwy głównej usługi do uwierzytelniania certyfikatu.
 
 > [!IMPORTANT]
-> Aby utworzyć jednostkę usługi, musisz mieć uprawnienia do zarejestrowania aplikacji w swojej dzierżawie usługi Azure AD i przypisania aplikacji do roli w swojej subskrypcji. Aby sprawdzić, czy masz wymagane uprawnienia, [zajrzyj do portalu](../../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions).
+> Aby utworzyć jednostkę usługi, musisz mieć uprawnienia do zarejestrowania aplikacji w swojej dzierżawie usługi Azure AD i przypisania aplikacji do roli w swojej subskrypcji. Aby sprawdzić, czy masz wymagane uprawnienia, [zajrzyj do portalu](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 >
 
 ## <a name="option-1-create-a-service-principal-in-azure-ad"></a>Opcja 1. Tworzenie jednostki usługi w usłudze Azure AD
 
 Jeśli chcesz utworzyć jednostkę usługi Azure AD przed wdrożeniem klastra Kubernetes, platforma Azure udostępnia kilka metod.
 
-Następujące przykładowe polecenia pokazują, jak można wykonać to za pomocą interfejsu [wiersza polecenia platformy Azure](../../azure-resource-manager/resource-group-authenticate-service-principal-cli.md). Można też utworzyć jednostkę usługi za pomocą programu [Azure PowerShell](../../azure-resource-manager/resource-group-authenticate-service-principal.md), [portalu](../../azure-resource-manager/resource-group-create-service-principal-portal.md) lub innej metody.
+Następujące przykładowe polecenia pokazują, jak można wykonać to za pomocą interfejsu [wiersza polecenia platformy Azure](../../azure-resource-manager/resource-group-authenticate-service-principal-cli.md). Można też utworzyć jednostkę usługi za pomocą programu [Azure PowerShell](../../active-directory/develop/howto-authenticate-service-principal-powershell.md), [portalu](../../active-directory/develop/howto-create-service-principal-portal.md) lub innej metody.
 
 ```azurecli
 az login

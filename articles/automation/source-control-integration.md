@@ -9,26 +9,26 @@ ms.author: gwallace
 ms.date: 09/26/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9bbf3582da2664b6e6429677d47aad4d69a7c1bb
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 5778c38d5a0c44e42b83fd139078be1f0bb45f7f
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785328"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023751"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integracja kontroli źródła w usłudze Automatyzacja Azure
 
-Kontrola źródła pozwala na zachowanie elementów runbook w automatyzacji konta są aktualne za pomocą skryptów w repozytorium kontroli źródła GitHub lub operacji deweloperskich platformy Azure. Kontrola źródła pozwala łatwo współpracować z zespołem, śledzenie zmian i wrócić do wcześniejszych wersji elementów runbook. Na przykład kontroli źródła umożliwia synchronizowanie różnych gałęzi w kontroli źródła do kont usługi Automation rozwoju, testów lub produkcji. Ułatwia promowanie kod, który został przetestowany w środowisku projektowym konta usługi Automation w środowisku produkcyjnym.
+Kontrola źródła pozwala na zachowanie elementów runbook w automatyzacji konta są aktualne za pomocą skryptów w repozytorium kontroli źródła GitHub lub DevOps platformy Azure. Kontrola źródła pozwala łatwo współpracować z zespołem, śledzenie zmian i wrócić do wcześniejszych wersji elementów runbook. Na przykład kontroli źródła umożliwia synchronizowanie różnych gałęzi w kontroli źródła do kont usługi Automation rozwoju, testów lub produkcji. Ułatwia promowanie kod, który został przetestowany w środowisku projektowym konta usługi Automation w środowisku produkcyjnym.
 
 Usługa Azure Automation obsługuje 3 typy kontroli źródła:
 
 * GitHub
-* Visual Studio Team Services (Git)
-* Visual Studio Team Services (TFVC)
+* Usługa Azure DevOps (Git)
+* Usługa Azure DevOps (TFVC)
 
 ## <a name="pre-requisites"></a>Wymagania wstępne
 
-* Repozytorium kontroli źródła (GitHub lub Visual Studio Team Services)
+* Repozytorium kontroli źródła (GitHub lub DevOps platformy Azure)
 * Poprawny [uprawnienia](#personal-access-token-permissions) do repozytorium kontroli źródła
 * A [Run-As konta i połączenie](manage-runas-account.md)
 
@@ -50,7 +50,7 @@ Na **źródło sterowania — Podsumowanie** strony, wprowadź informacje i klik
 |Właściwość  |Opis  |
 |---------|---------|
 |Nazwa kontroli źródła     | Przyjazna nazwa, do kontroli źródła        |
-|Typ kontroli źródła     | Typ źródło kontroli źródła. Dostępne opcje:</br> Github</br>Visual Studio Team Services (Git)</br> Visual Studio Team Services (TFVC)        |
+|Typ kontroli źródła     | Typ źródło kontroli źródła. Dostępne opcje:</br> Github</br>Usługa Azure DevOps (Git)</br> Usługa Azure DevOps (TFVC)        |
 |Repozytorium     | Nazwa repozytorium lub projektu. Ta wartość jest pobierany z repozytorium kontroli źródła. Przykład: $/ ContosoFinanceTFVCExample         |
 |Rozgałęzienie     | Odgałęzienie do pobierania plików źródłowych z. Gałąź określania wartości docelowej nie jest dostępna dla kontrolek typu źródłowego TFVC.          |
 |Ścieżka folderu     | Folder, który zawiera elementy runbook w celu synchronizacji. Przykład: /Runbooks         |

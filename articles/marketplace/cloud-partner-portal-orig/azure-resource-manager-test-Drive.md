@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 19e3141bf7d28c7f781be21aedf14222e35bfd6c
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 90c434a37d3209e0c11a04425c337ec6930cfd00
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810631"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025263"
 ---
 <a name="azure-resource-manager-test-drive"></a>Usługa Azure Resource Manager testowej
 =================================
@@ -190,7 +190,7 @@ Upewnij się, ciągów z parametrem/zmiennej (\'contosovm\') z danymi wyjściowy
 
 Na przykład większość nazwy zasobów nie może zaczynać się od cyfry, ale funkcję unikatowego ciągu może zwrócić ciąg, który rozpoczyna się od cyfry. Tak Jeśli używasz pierwotne unikatowy ciąg w danych wyjściowych, wdrożenia zakończy się niepowodzeniem. 
 
-Możesz znaleźć dodatkowe informacje na temat reguł nazewnictwa zasobów i ograniczenia dotyczące artykułu [] (https://docs.microsoft.com/azure/guidance/guidance-naming-conventions).
+Można znaleźć dodatkowe informacje na temat reguł nazewnictwa zasobów i ograniczenia w [w tym artykule](https://docs.microsoft.com/azure/guidance/guidance-naming-conventions).
 
 ### <a name="deployment-location"></a>Lokalizacja wdrożenia
 
@@ -306,7 +306,7 @@ Następnej sekcji, aby wypełnić to oferują szczegółowe informacje o wersji 
 
 ![Wersja testowa szczegółowe informacje](./media/azure-resource-manager-test-drive/howtopub2.png)
 
-**Opis —** *wymagane* jest to, gdzie wpisać opis główny o nowościach w wersji testowej. Klient będzie przejdź tutaj, aby odczytać scenariusze, jakie wersji testowej będzie obejmował dotyczących produktu. 
+**Opis —** *wymagane* jest to, gdzie wpisać opis główny o nowościach w wersji testowej. Klient będzie przejdź tutaj, aby odczytać scenariusze, jakie wersji testowej będzie obejmował dotyczących produktu. 
 
 **Podręcznik użytkownika -** *wymagane* to szczegółowe wskazówki dotyczące środowiska wersji testowej. Spowoduje to otwarcie siedziba klienta i zapoznać się z dokładnie co chcesz zrobić w całym ich wersji testowej. Jest ważne, że ta zawartość jest łatwy do zrozumienia i postępuj zgodnie z! (Musi być plikiem PDF)
 
