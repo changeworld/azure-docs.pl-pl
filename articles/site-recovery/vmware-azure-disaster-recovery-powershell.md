@@ -336,7 +336,7 @@ Potrzebne są następujące szczegóły, aby chronić odnalezione maszyny wirtua
 
 * Element z możliwością ochrony powinny być replikowane.
 * Konto magazynu do replikowania maszyny wirtualnej. Ponadto magazyn dzienników jest konieczna ochrona maszyn wirtualnych na konto magazynu premium storage.
-* Serwer przetwarzania, który ma być używany do replikacji. Na liście serwerów dostępnych proces został pobierane i zapisywane w ***$ProcessServers [0]****(skalowania ProcessServer)* i ***$ProcessServers [1]*** *(ConfigurationServer)* zmiennych.  
+* Serwer przetwarzania, który ma być używany do replikacji. Na liście serwerów dostępnych proces został pobierane i zapisywane w ***$ProcessServers [0]***  *(skalowania ProcessServer)* i ***$ProcessServers [1]*** *(ConfigurationServer)* zmiennych.
 * Konto na potrzeby instalacji wypychanej oprogramowania usługi mobilności na maszynach. Lista dostępnych kont została pobrane i przechowywane w ***$AccountHandles*** zmiennej.
 * Mapowanie kontenera ochrony grupy replikacji ma być używany do replikacji.
 * Grupa zasobów, w którym należy utworzyć maszyny wirtualne w trybie failover.

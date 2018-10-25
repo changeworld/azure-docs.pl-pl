@@ -27,7 +27,7 @@ AKS obsługuje cztery wersje pomocnicze platformy kubernetes:
 - Bieżąca wersja pomocnicza, która jest ogólnie nadrzędnego (n)
 - Trzy poprzednie wersje pomocnicze. Wszystkie obsługiwane wersje pomocnicze obsługuje również dwa stabilne poprawki.
 
-Na przykład, jeśli wprowadzono AKS *1.11.x* obecnie Pomoc techniczna jest świadczona również dla *1.10.a* + *1.10.b*, *1.9.c*  +  *1.9d*, *1.8.e* + *1.8F* (gdzie wersji własną literą poprawki są dwie kompilacje najnowszy stabilny).
+Na przykład, jeśli wprowadzono AKS *1.11.x* obecnie Pomoc techniczna jest świadczona również dla *1.10.a* + *1.10.b*, *1.9.c* + *1.9d*, *1.8.e* + *1.8F* (gdzie wersji własną literą poprawki są dwie kompilacje najnowszy stabilny).
 
 Jeśli wprowadzono nową wersję pomocniczą najstarsze pomocniczej wersji i poprawki wersji obsługiwane zostały wycofane. 15 dni przed wprowadzeniem nowych wersji pomocniczej i wycofanie mającej się ukazać wersji jest podana za pośrednictwem kanałów aktualizacji usługi Azure. W przykładzie powyżej gdzie *1.11.x* jest zwolniony, wycofane wersje są *1.7.g* + *1.7.h*.
 
