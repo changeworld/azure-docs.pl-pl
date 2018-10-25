@@ -9,16 +9,18 @@ ms.reviewer: sgilley
 author: hning86
 ms.author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: cc348ca50b942b6b8b1474ed4dac4067d107a4af
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: e4624b115143f9f2e6dd77aa8ee79597c86ba31c
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378003"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456207"
 ---
 # <a name="quickstart-use-python-to-get-started-with-azure-machine-learning"></a>Szybki start: rozpoczęcie pracy z usługą Azure Machine Learning w języku Python
 
 W tym przewodniku Szybki start użyjesz zestawu Azure Machine Learning SDK dla języka Python, aby utworzyć [obszar roboczy](concept-azure-machine-learning-architecture.md) usługi Machine Learning i go używać. Ten obszar roboczy to podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich uczenie oraz wdrażanie za pomocą usługi Machine Learning.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2G9N6]
 
 W tym samouczku zainstalujesz zestaw SDK języka Python oraz wykonasz następujące czynności:
 

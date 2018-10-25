@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.date: 11/30/2017
-ms.openlocfilehash: 29b28b0d81314d062c1b334092979cc9bccbeb31
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: a6adf97a11821ff58c01d2450f06d07e7327fdfb
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127663"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957931"
 ---
 # <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Monitorowanie zmian maszyn wirtualnych za pomocą usług Azure Event Grid i Logic Apps
 
@@ -90,7 +90,7 @@ Najpierw należy utworzyć aplikację logiki i dodać wyzwalacz usługi Event Gr
    ![Logowanie przy użyciu poświadczeń platformy Azure](./media/monitor-virtual-machine-changes-event-grid-logic-app/sign-in-event-grid.png)
 
    > [!NOTE]
-   > Jeśli logujesz się za pomocą osobistego konta Microsoft, takiego jak @outlook.com lub @hotmail.com, wyzwalacz usługi Event Grid może nie być wyświetlany poprawnie. Aby obejść ten problem, wybierz pozycję [Nawiąż połączenie z jednostką usługi](../azure-resource-manager/resource-group-create-service-principal-portal.md) lub uwierzytelnij się jako członek usługi Azure Active Directory skojarzonej z Twoją subskrypcją platformy Azure, na przykład *nazwa użytkownika*@emailoutlook.onmicrosoft.com.
+   > Jeśli logujesz się za pomocą osobistego konta Microsoft, takiego jak @outlook.com lub @hotmail.com, wyzwalacz usługi Event Grid może nie być wyświetlany poprawnie. Aby obejść ten problem, wybierz pozycję [Nawiąż połączenie z jednostką usługi](../active-directory/develop/howto-create-service-principal-portal.md) lub uwierzytelnij się jako członek usługi Azure Active Directory skojarzonej z Twoją subskrypcją platformy Azure, na przykład *nazwa użytkownika*@emailoutlook.onmicrosoft.com.
 
 8. Teraz subskrybuj zdarzenia wydawcy przy użyciu aplikacji logiki. Podaj szczegóły subskrypcji zdarzeń określone w poniższej tabeli:
 

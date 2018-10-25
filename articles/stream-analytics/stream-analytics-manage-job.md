@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/04/2018
-ms.openlocfilehash: 1955fc033e0351be9da89bbee11dc41d6281a63a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: c29131720de8d6016d134fe7c0118fc3db9e22be
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433994"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985645"
 ---
 # <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>Tworzenie zadania usługi Stream Analytics na potrzeby analizowania danych połączeń telefonicznych i wizualizacji wyników na pulpicie nawigacyjnym usługi Power BI
  
@@ -37,7 +37,7 @@ Przed rozpoczęciem upewnij się, że dysponujesz następującymi elementami:
 
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/).  
 * Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).  
-* Pobierz aplikację generatora zdarzeń połączeń telefonicznych [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) z Centrum pobierania Microsoft. Ewentualnie uzyskaj kod źródłowy z witryny [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator).  
+* Pobierz aplikację generatora zdarzeń połączeń telefonicznych [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) z Centrum pobierania Microsoft. Ewentualnie uzyskaj kod źródłowy z witryny [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator).  
 
 ## <a name="create-an-azure-event-hub"></a>Tworzenie centrum zdarzeń usługi Azure Event Hub 
 
@@ -89,7 +89,7 @@ Aby aplikacja mogła wysyłać dane do usługi Azure Event Hubs, centrum zdarze�
 
 Przed uruchomieniem aplikacji TelcoGenerator należy ją skonfigurować do przesyłania danych do usługi Azure Event Hubs utworzonej wcześniej.
 
-1. Wyodrębnij zawartość pliku [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip).  
+1. Wyodrębnij zawartość pliku [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip).  
 2. Otwórz plik `TelcoGenerator\TelcoGenerator\telcodatagen.exe.config` w wybranym edytorze tekstów (istnieje więcej niż jeden plik config, dlatego upewnij się, że otwierasz właściwy).  
 
 3. Zaktualizuj element <appSettings> w pliku config przy użyciu następujących szczegółów:
@@ -260,7 +260,7 @@ Zapytanie można przetestować z poziomu edytora zapytań. Aby przetestować zap
 
 ## <a name="embedding-your-powerbi-dashboard-in-a-web-application"></a>Osadzanie pulpitu nawigacyjnego usługi Power BI w aplikacji internetowej
 
-W tej części samouczka użyjesz przykładowej aplikacji internetowej [ASP.NET](http://asp.net/) utworzonej przez zespół usługi Power BI, aby osadzić pulpit nawigacyjny. Aby uzyskać więcej informacji na temat osadzania pulpitów nawigacyjnych, zobacz artykuł [Osadzanie za pomocą usługi Power BI](https://docs.microsoft.com/power-bi/developer/embedding).
+W tej części samouczka użyjesz przykładowej aplikacji internetowej [ASP.NET](https://asp.net/) utworzonej przez zespół usługi Power BI, aby osadzić pulpit nawigacyjny. Aby uzyskać więcej informacji na temat osadzania pulpitów nawigacyjnych, zobacz artykuł [Osadzanie za pomocą usługi Power BI](https://docs.microsoft.com/power-bi/developer/embedding).
 
 W tym samouczku wykonamy kroki dla aplikacji, której dane należą do użytkownika. Aby skonfigurować aplikację, przejdź do repozytorium GitHub [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) i postępuj zgodnie z instrukcjami w sekcji **User Owns Data (Dane należą do użytkownika)** — użyj adresów URL przekierowania i strony głównej z podsekcji **integrate-dashboard-web-app**. Ponieważ korzystamy z przykładu pulpitu nawigacyjnego, użyj przykładowego kodu integrate-dashboard-web-app znajdującego się w [repozytorium GitHub](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User%20Owns%20Data/integrate-dashboard-web-app).
 Po uruchomieniu aplikacji w przeglądarce wykonaj następujące kroki, aby osadzić utworzony wcześniej pulpit nawigacyjny na stronie internetowej:

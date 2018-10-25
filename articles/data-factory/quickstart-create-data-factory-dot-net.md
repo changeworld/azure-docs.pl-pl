@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: a7916a434552cbcb999f1e69c7a5bc2419f517fb
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a4f9e1111516d439f018e965883eb8268c83289c
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43094346"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954794"
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>Tworzenie fabryki danych i potoku przy użyciu zestawu SDK .NET
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -41,7 +41,7 @@ W przewodniku w tym artykule jest używany program Visual Studio 2017. Możesz t
 Pobierz i zainstaluj zestaw [Azure .NET SDK](http://azure.microsoft.com/downloads/) na maszynie.
 
 ## <a name="create-an-application-in-azure-active-directory"></a>Tworzenie aplikacji w usłudze Azure Active Directory
-Postępując zgodnie z instrukcjami w sekcjach w [tym artykule](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) wykonaj następujące zadania: 
+Postępując zgodnie z instrukcjami w sekcjach w [tym artykule](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) wykonaj następujące zadania: 
 
 1. **Utworzenie aplikacji usługi Azure Active Directory**. Utwórz aplikację w usłudze Azure Active Directory reprezentującą aplikację platformy .NET tworzoną w tym samouczku. W przypadku adresu URL logowania możesz podać fikcyjny adres URL, jak pokazano w artykule (`https://contoso.org/exampleapp`).
 2. Uzyskaj **identyfikator aplikacji** i **klucz uwierzytelniania** oraz zanotuj te wartości do późniejszego użycia w tym samouczku. 

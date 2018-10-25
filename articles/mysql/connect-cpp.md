@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.devlang: C++
 ms.topic: quickstart
 ms.date: 04/12/2018
-ms.openlocfilehash: 0c017907378376c01e4a4a98190f73a9452b9a3d
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 6d9deba8c7e6317ab349f86d5a1730f05288ea35
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264956"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987668"
 ---
 # <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Usługa Azure Database for MySQL: nawiązywanie połączeń z danymi i wykonywanie na nich zapytań przy użyciu łącznika/języka C++
 Ten przewodnik Szybki start przedstawia sposób nawiązywania połączeń z usługą Azure Database for MySQL przy użyciu aplikacji języka C++. Pokazano w nim, jak używać instrukcji języka SQL w celu wysyłania zapytań o dane oraz wstawiania, aktualizowania i usuwania danych w bazie danych. W tym temacie założono, że wiesz już, jak programować w języku C++, i dopiero zaczynasz pracę z usługą Azure Database for MySQL.
@@ -30,7 +30,7 @@ Należy również:
 - Zainstalować program [.NET Framework](https://www.microsoft.com/net/download)
 - Zainstalować program [Visual Studio](https://www.visualstudio.com/downloads/)
 - Zainstalować [łącznik bazy danych MySQL/środowisko C++](https://dev.mysql.com/downloads/connector/cpp/) 
-- Zainstalować rozwiązanie [Boost](http://www.boost.org/)
+- Zainstalować rozwiązanie [Boost](https://www.boost.org/)
 
 ## <a name="install-visual-studio-and-net"></a>Instalowanie programu Visual Studio i technologii .NET
 W krokach w tej sekcji założono, że wiesz już, jak programować za pomocą technologii .NET.

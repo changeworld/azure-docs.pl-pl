@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 91a85505eda34e11f0db9c5f3c46e33aad992ffe
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: caea4296bc0573141865aca27b04f9d9ee049e94
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736703"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955590"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Samouczek: Tworzenie pierwszej fabryki danych Azure przy użyciu interfejsu API REST usługi Fabryka danych
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ Potok w tym samouczku zawiera jedno działanie: **działanie Hive usługi HDInsi
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Przeczytaj artykuł [Omówienie samouczka](data-factory-build-your-first-pipeline.md) oraz wykonaj kroki **wymagań wstępnych**.
 * Zainstaluj na komputerze narzędzie [Curl](https://curl.haxx.se/dlwiz/). W połączeniu z poleceniami REST umożliwia ono utworzenie fabryki danych.
-* Postępuj zgodnie z instrukcjami zawartymi w [tym artykule](../../azure-resource-manager/resource-group-create-service-principal-portal.md), aby wykonać następujące czynności:
+* Postępuj zgodnie z instrukcjami zawartymi w [tym artykule](../../active-directory/develop/howto-create-service-principal-portal.md), aby wykonać następujące czynności:
   1. Utworzenie aplikacji internetowej o nazwie **ADFGetStartedApp** w usłudze Azure Active Directory.
   2. Pobranie **identyfikatora klienta** i **klucza tajnego**.
   3. Uzyskanie **identyfikatora dzierżawy**.

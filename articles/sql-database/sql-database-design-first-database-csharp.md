@@ -12,23 +12,23 @@ ms.author: genemi
 ms.reviewer: carlrab
 manager: craigg-msft
 ms.date: 06/07/2018
-ms.openlocfilehash: 65a9bde6fa086dc56809df9619ceee1c5b417e31
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 504fae03e06632f5960bfe0761cc0167b9e1d3fb
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063305"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465222"
 ---
 # <a name="design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>Projektowanie bazy danych SQL na platformie Azure i nawiązywanie połączenia za pomocą języka C&#x23; i narzędzia ADO.NET
 
-Usługa Azure SQL Database to relacyjna baza danych oferowana jako usługa (DBaaS, database-as-a service) na platformie Microsoft Cloud (Azure). Z tego samouczka dowiesz się, jak przy użyciu witryny Azure Portal i narzędzia ADO.NET w programie Visual Studio wykonać następujące czynności: 
+Usługa Azure SQL Database to relacyjna baza danych oferowana jako usługa (DBaaS, database-as-a service) na platformie Microsoft Cloud (Azure). Z tego samouczka dowiesz się, jak przy użyciu witryny Azure Portal i narzędzia ADO.NET w programie Visual Studio wykonać następujące czynności:
 
 > [!div class="checklist"]
 > * Tworzenie bazy danych w witrynie Azure Portal
 > * Skonfigurowanie reguły zapory na poziomie serwera w witrynie Azure Portal
 > * Nawiązywanie połączenia z bazą danych przy użyciu narzędzia ADO.NET i programu Visual Studio
 > * Tworzenie tabel za pomocą narzędzia ADO.NET
-> * Wstawianie, aktualizowanie i usuwanie danych za pomocą narzędzia ADO.NET 
+> * Wstawianie, aktualizowanie i usuwanie danych za pomocą narzędzia ADO.NET
 > * Wykonywanie zapytań względem danych za pomocą narzędzia ADO.NET
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
@@ -43,13 +43,11 @@ And it starts with a ## H2.
 
 [!INCLUDE [sql-database-tutorial-portal-create-firewall-connection-1](../../includes/sql-database-tutorial-portal-create-firewall-connection-1.md)]
 
-
 <!-- The following included .md, sql-database-csharp-adonet-create-query-2.md, is long.
 And it starts with a ## H2.
 -->
 
 [!INCLUDE [sql-database-csharp-adonet-create-query-2](../../includes/sql-database-csharp-adonet-create-query-2.md)]
-
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -66,4 +64,3 @@ Przejdź do następnego samouczka, aby dowiedzieć się więcej na temat migracj
 
 > [!div class="nextstepaction"]
 > [Migracja bazy danych SQL Server do usługi Azure SQL Database](sql-database-migrate-your-sql-server-database.md)
-

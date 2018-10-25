@@ -3,7 +3,7 @@ title: 'Samouczek: tworzenie potoku programowania na platformie Azure przy użyc
 description: Z tego samouczka dowiesz się, jak utworzyć na platformie Azure maszynę wirtualną usługi Jenkins, która przeprowadza ściąganie z usługi GitHub przy każdym zatwierdzeniu kodu i tworzy nowy kontener platformy Docker w celu uruchomienia aplikacji.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/27/2017
-ms.author: cynthn
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: d1d760c2642e0c986e50570630d31dda11d17478
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1a29d58ca96793c44878a6755cc74edeab6a7c4b
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964742"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470850"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Samouczek: tworzenie infrastruktury programowania na maszynie wirtualnej z systemem Linux na platformie Azure przy użyciu usług Jenkins, GitHub i Docker
 

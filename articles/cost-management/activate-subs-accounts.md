@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 304a52f5571790ea49587a5aeda433f003f0e0bd
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: a53ff5fdb256a46f42e7461bb46b6847d17ed230
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423072"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958751"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Aktywowanie subskrypcji i kont platformy Azure za pomocą platformy Cloudyn
 
@@ -64,7 +64,7 @@ Dodając konto lub aktualizując subskrypcję przyznajesz platformie Cloudyn dos
     2. W witrynie Azure Portal wybierz pozycję **Azure Active Directory**.
     3. Aby uzyskać identyfikator dzierżawy, wybierz pozycję **Właściwości** dla swojej dzierżawy usługi Azure AD.
     4. Skopiuj identyfikator GUID katalogu. Ta wartość jest Twoim identyfikatorem dzierżawy.
-    Aby uzyskać więcej informacji, zobacz [Get tenant ID (Pobieranie identyfikatora dzierżawy)](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
+    Aby uzyskać więcej informacji, zobacz [Get tenant ID (Pobieranie identyfikatora dzierżawy)](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
 3. W razie potrzeby wybierz identyfikator stawki. Jeśli nie znasz identyfikatora stawki, wykonaj następujące czynności, aby go znaleźć:
     1. W prawym górnym rogu witryny Azure Portal kliknij informacje o użytkowniku, a następnie kliknij pozycję **Wyświetl mój rachunek**.
     2. W obszarze **Konto rozliczeniowe** kliknij pozycję **Subskrypcje**.

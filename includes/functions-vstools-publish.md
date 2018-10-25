@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 08/26/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: f0bcb2e7f99689d31be610f1523d2c57e332deb7
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: f3fa6c75fdaf30d13231bc3072bd671614c9a668
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049745"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650694"
 ---
 1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Opublikuj**.
 
 2. Wybierz kolejno pozycje **Aplikacja funkcji platformy Azure**, **Utwórz nową** i **Publikuj**.
 
-    ![Wybieranie miejsca docelowego publikacji](./media/functions-vstools-publish/functions-vstools-create-new-function-app.png)
+    ![Wybieranie miejsca docelowego publikacji](./media/functions-vstools-publish/functions-visual-studio-publish-profile.png)
 
     W przypadku włączenia opcji **Uruchom z archiwum ZIP** Twoja aplikacja funkcji na platformie Azure będzie uruchamiana bezpośrednio z pakietu wdrożeniowego. Aby uzyskać więcej informacji, zobacz [Uruchamianie funkcji Azure Functions z pliku pakietu](../articles/azure-functions/run-functions-from-deployment-package.md).
 
@@ -27,7 +27,7 @@ ms.locfileid: "43049745"
 
 4. W oknie dialogowym **Tworzenie usługi App Service** zastosuj w obszarze **Hosting** ustawienia określone w tabeli pod obrazem:
 
-    ![Okno dialogowe Tworzenie usługi App Service](./media/functions-vstools-publish/functions-vstools-publish.png)
+    ![Okno dialogowe Tworzenie usługi App Service](./media/functions-vstools-publish/functions-visual-studio-publish.png)
 
     | Ustawienie      | Sugerowana wartość  | Opis                                |
     | ------------ |  ------- | -------------------------------------------------- |
@@ -41,4 +41,4 @@ ms.locfileid: "43049745"
 
 6. Po ukończeniu wdrażania zanotuj wartość **Adres URL witryny**, która jest adresem aplikacji funkcji na platformie Azure.
 
-    ![Komunikat o powodzeniu publikowania](./media/functions-vstools-publish/functions-vstools-publish-profile.png)
+    ![Komunikat o powodzeniu publikowania](./media/functions-vstools-publish/functions-visual-studio-publish-complete.png)

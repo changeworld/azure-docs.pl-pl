@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: c01da1b667f5a57e9597b77e21dcd9cc95340cb1
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 21c2c9ab0300ed5eac9ceebbd88627ea091b3389
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43088230"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954474"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Przekształcanie danych w chmurze za pomocą działania platformy Spark w usłudze Azure Data Factory
 W tym samouczku użyjesz programu Azure PowerShell do utworzenia potoku fabryki danych, który przekształca dane przy użyciu działania platformy Spark i połączonej usługi HDInsight na żądanie. Ten samouczek obejmuje następujące procedury:
@@ -135,7 +135,7 @@ Zaktualizuj wartości następujących właściwości w definicji połączonej us
 
 - **hostSubscriptionId**. Zastąp właściwość &lt;SubscriptionId&gt; identyfikatorem subskrypcji platformy Azure. Klaster usługi HDInsight na żądanie jest tworzony w tej subskrypcji. 
 - **tenant**. Zastąp właściwość &lt;tenantID&gt; identyfikatorem dzierżawy platformy Azure. 
-- **servicePrincipalId**, **servicePrincipalKey**. Zastąp właściwości &lt;servicePrincipalID&gt; i &lt;servicePrincipalKey&gt; identyfikatorem i kluczem jednostki usługi w usłudze Azure Active Directory. Jednostka usługi musi być członkiem roli współautora subskrypcji lub grupy zasobów, gdzie został utworzony klaster. Aby uzyskać szczegółowe informacje, zobacz [Create Azure Active Directory application and service principal (Tworzenie jednostki usługi i aplikacji usługi Azure Active Directory)](../azure-resource-manager/resource-group-create-service-principal-portal.md). 
+- **servicePrincipalId**, **servicePrincipalKey**. Zastąp właściwości &lt;servicePrincipalID&gt; i &lt;servicePrincipalKey&gt; identyfikatorem i kluczem jednostki usługi w usłudze Azure Active Directory. Jednostka usługi musi być członkiem roli współautora subskrypcji lub grupy zasobów, gdzie został utworzony klaster. Aby uzyskać szczegółowe informacje, zobacz [Create Azure Active Directory application and service principal (Tworzenie jednostki usługi i aplikacji usługi Azure Active Directory)](../active-directory/develop/howto-create-service-principal-portal.md). 
 - **clusterResourceGroup**. Zastąp właściwość &lt;resourceGroupOfHDICluster&gt; nazwą grupy zasobów, w której ma zostać utworzony klaster usługi HDInsight. 
 
 > [!NOTE]

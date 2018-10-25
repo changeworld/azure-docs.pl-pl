@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: d59cb64e1499f703bf6913ab422d0f979caca324
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f21710354572c9b54dbf0e08d02809bb68a8e120
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47008736"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49805090"
 ---
 Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 w witrynie Azure Portal, wykonaj następujące kroki:
 
@@ -33,5 +33,6 @@ Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 w witrynie Azure
     - **Warstwa dostępu** jest domyślnie ustawiana na **Gorąca**.
 
 1. Kliknij pozycję **Przejrzyj i utwórz** , aby przejrzeć ustawienia konta magazynu i utworzyć konto.
+1. Kliknij pozycję **Utwórz**.
 
 Aby uzyskać więcej informacji na temat typów kont magazynu i innych ustawień konta magazynu, zobacz [Azure storage account overview (Omówienie kont usługi Azure Storage)](https://docs.microsoft.com/azure/storage/common/storage-account-overview). Więcej informacji na temat grup zasobów znajduje się w temacie [Omówienie usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). 

@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 5e18a27579c577f914709e25cab1549387a965f3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7b96ee362f6169d386a58ee48878e40a42fc9ede
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966405"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987600"
 ---
 # <a name="about-microsoft-identity-platform"></a>Informacje o platformie tożsamości firmy Microsoft
 
@@ -37,7 +37,7 @@ W przypadku aplikacji korzystających z najnowszych wersji bibliotek ADAL i MSAL
 
 Na poniższym diagramie przedstawiono ogólnie środowisko obsługi tożsamości firmy Microsoft, obejmujące środowisko rejestracji aplikacji, zestawy SDK, punkty końcowe i obsługiwane tożsamości.
 
-![Platforma tożsamości firmy Microsoft obecnie](./media/about-microsoft-identity-platform/microsoft-identity-platform-today.png)
+![Platforma tożsamości firmy Microsoft obecnie](./media/about-microsoft-identity-platform/microsoft-identity-platform-preview.png)
 
 Platforma tożsamości firmy Microsoft obejmuje dwa punkty końcowe (w wersji 1.0 i 2.0) oraz dwa zestawy bibliotek klienta do obsługi tych punktów końcowych. Podczas tworzenia nowej aplikacji należy wziąć pod uwagę zalety i aktualny stan tych punktów końcowych oraz bibliotek uwierzytelniania. Rozważ również następujące elementy:
 
@@ -61,5 +61,5 @@ Platforma tożsamości firmy Microsoft obejmuje dwa punkty końcowe (w wersji 1.
 
 Dowiedz się więcej na temat wersji 1.0 i 2.0.
 
-* [Informacje o wersji 1.0](azure-ad-developers-guide.md)
-* [Informacje o wersji 2.0](azure-ad-developers-guide.md)
+* [Informacje o wersji 1.0](v1-overview.md)
+* [Informacje o wersji 2.0](v2-overview.md)

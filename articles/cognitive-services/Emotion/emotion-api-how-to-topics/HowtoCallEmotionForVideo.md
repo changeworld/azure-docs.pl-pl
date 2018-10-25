@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 02/06/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2687145a89c11efb4a3bcb1494a39806e9aae551
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 6c96ab18161230ffabd0703bdb6d0230bdc8d3ba
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238611"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026266"
 ---
 # <a name="example-call-emotion-api-for-video"></a>Przykład: wywoływanie interfejsu API rozpoznawania emocji dla wideo
 
@@ -46,7 +46,7 @@ Jeśli korzystasz z biblioteki klienckiej, klucz subskrypcji jest przekazywany z
 ```
 var emotionServiceClient = new emotionServiceClient("Your subscription key");
 ```
-Aby uzyskać klucz subskrypcji, zobacz [Subskrypcje] (https://azure.microsoft.com/try/cognitive-services/).
+Aby uzyskać klucz subskrypcji, zobacz [Subskrypcje](https://azure.microsoft.com/try/cognitive-services/).
 
 ### <a name="Step2">Krok 2. Przekazywanie wideo do usługi i sprawdzanie stanu</a>
 Najbardziej podstawowym sposobem wykonywania dowolnych wywołań interfejsu API rozpoznawania emocji dla wideo jest bezpośrednie przekazanie wideo. Robi się to przez wysłanie żądania „POST” z typem zawartości application/octet-stream wraz z danymi odczytanymi z pliku wideo. Maksymalny rozmiar wideo to 100 MB.
@@ -117,13 +117,13 @@ Dane JSON wykrywania i śledzenia twarzy zawierają następujące atrybuty:
 
 Atrybut | Opis
 -------------|-------------
-Version | Odnosi się do wersji danych JSON interfejsu API rozpoznawania emocji dla wideo.
+Wersja | Odnosi się do wersji danych JSON interfejsu API rozpoznawania emocji dla wideo.
 Skala czasu | Liczba „taktów” na sekundę wideo.
-Offset  |Przesunięcie czasu dla sygnatur czasowych. W wersji 1.0 interfejsu API rozpoznawania emocji dla wideo ta wartość będzie zawsze równa 0. W przyszłych scenariuszach ta wartość może ulec zmianie.
+Przesunięcie  |Przesunięcie czasu dla sygnatur czasowych. W wersji 1.0 interfejsu API rozpoznawania emocji dla wideo ta wartość będzie zawsze równa 0. W przyszłych scenariuszach ta wartość może ulec zmianie.
 Framerate | Liczba klatek na sekundę w wideo.
 Fragments   | Metadane są cięte na różne mniejsze kawałki nazywane fragmentami. Każdy fragment zawiera rozpoczęcie, czas trwania, wartość interwału i zdarzenia.
-Start   | Czas rozpoczęcia pierwszego zdarzenia, w taktach.
-Duration |  Długość fragmentu, w taktach.
+Uruchamianie   | Czas rozpoczęcia pierwszego zdarzenia, w taktach.
+Czas trwania |  Długość fragmentu, w taktach.
 Interval |  Długość każdego zdarzenia w obrębie fragmentu, w taktach.
 Zdarzenia  | Tablica zdarzeń. Zewnętrzna tablica reprezentuje jeden interwał czasu. Wewnętrzna tablica składa się z 0 lub większej liczby zdarzeń, które wystąpiły w danym momencie.
 windowFaceDistribution |    Procent twarzy z określoną emocją podczas zdarzenia.

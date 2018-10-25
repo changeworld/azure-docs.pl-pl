@@ -364,7 +364,7 @@ W tej sekcji skonfigurujesz przepływ danych użytkownika z produktu Workday do 
 | **WorkerID**  |  employeeID | **Tak** | Zapisane podczas tworzenia tylko |
 | **Identyfikator użytkownika**    |  cn    |   |   Zapisane podczas tworzenia tylko |
 | **Dołącz do ("@", [UserID] "contoso.com")**   | userPrincipalName     |     | Zapisane podczas tworzenia tylko 
-| **Zastąp (Mid (Zastąp (\[UserID\],, "(\[ \\ \\ / \\ \\ \\ \\ \\ \\ \[ \\\\\]\\\\:\\\\;\\ \\|\\\\=\\\\,\\\\+\\\\\*\\ \\? \\ \\ &lt; \\ \\ &gt; \]) "," ",), 1, 20)," ([\\\\.) \* \$] (file:///\\.) *$)", , "", , )**      |    sAMAccountName            |     |         Zapisane podczas tworzenia tylko |
+| **Zastąp(Mid(Zastąp(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Zapisane podczas tworzenia tylko |
 | **Przełącznik (\[Active\],, "0", "True", "1")** |  accountDisabled      |     | Tworzenie i aktualizowanie |
 | **Imię**   | givenName       |     |    Tworzenie i aktualizowanie |
 | **Nazwisko**   |   numery seryjne   |     |  Tworzenie i aktualizowanie |

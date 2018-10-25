@@ -11,15 +11,15 @@ ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: dfdfb9b7d275843312dcf955f79b978d411c197e
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 8f45191d7844700906aac0a206aaaf8dc8cf6202
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29689577"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985561"
 ---
 # <a name="azure-database-for-postgresql-use-php-to-connect-and-query-data"></a>Usługa Azure Database for PostgreSQL: nawiązywanie połączeń z danymi i wykonywanie na nich zapytań za pomocą języka PHP
-Ten przewodnik Szybki start przedstawia sposób nawiązywania połączeń z usługą Azure Database for PostgreSQL przy użyciu aplikacji języka [PHP](http://php.net/manual/intro-whatis.php). Pokazano w nim, jak używać instrukcji języka SQL w celu wysyłania zapytań o dane oraz wstawiania, aktualizowania i usuwania danych w bazie danych. W krokach w tym artykule założono, że wiesz już, jak programować za pomocą języka PHP, i dopiero zaczynasz pracę z usługą Azure Database for PostgreSQL.
+Ten przewodnik Szybki start przedstawia sposób nawiązywania połączeń z usługą Azure Database for PostgreSQL przy użyciu aplikacji języka [PHP](https://secure.php.net/manual/intro-whatis.php). Pokazano w nim, jak używać instrukcji języka SQL w celu wysyłania zapytań o dane oraz wstawiania, aktualizowania i usuwania danych w bazie danych. W krokach w tym artykule założono, że wiesz już, jak programować za pomocą języka PHP, i dopiero zaczynasz pracę z usługą Azure Database for PostgreSQL.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Ten przewodnik Szybki start jako punktu wyjścia używa zasobów utworzonych w jednym z tych przewodników:
@@ -30,20 +30,20 @@ Ten przewodnik Szybki start jako punktu wyjścia używa zasobów utworzonych w j
 Zainstaluj język PHP na własnym serwerze lub utwórz [aplikację internetową](../app-service/app-service-web-overview.md), która zawiera język PHP.
 
 ### <a name="windows"></a>Windows
-- Pobierz [bezpieczny, niestanowiący zagrożenia język PHP w wersji 7.1.4 (x64)](http://windows.php.net/download#php-7.1).
-- Zainstaluj język PHP i zapoznaj się z [podręcznikiem języka PHP](http://php.net/manual/install.windows.php) w celu przeprowadzenia dalszej konfiguracji.
+- Pobierz [bezpieczny, niestanowiący zagrożenia język PHP w wersji 7.1.4 (x64)](https://windows.php.net/download#php-7.1).
+- Zainstaluj język PHP i zapoznaj się z [podręcznikiem języka PHP](https://secure.php.net/manual/install.windows.php) w celu przeprowadzenia dalszej konfiguracji.
 - Kod używa klasy **pgsql** (ext/php_pgsql.dll) uwzględnionej w instalacji języka PHP. 
 - Włącz rozszerzenie **pgsql**, edytując plik konfiguracji php.ini, który zazwyczaj znajduje się w folderze `C:\Program Files\PHP\v7.1\php.ini`. Plik konfiguracji powinien zawierać wiersz z tekstem `extension=php_pgsql.so`. Jeśli nie jest wyświetlany, dodaj tekst i zapisz plik. Jeśli tekst jest wyświetlany, ale zawiera komentarz z prefiksem ze średnikiem, usuń komentarz z tekstu, usuwając średnik.
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-- Pobierz [bezpieczny, niestanowiący zagrożenia język PHP w wersji 7.1.4 (x64)](http://php.net/downloads.php). 
-- Zainstaluj język PHP i zapoznaj się z [podręcznikiem języka PHP](http://php.net/manual/install.unix.php) w celu przeprowadzenia dalszej konfiguracji.
+- Pobierz [bezpieczny, niestanowiący zagrożenia język PHP w wersji 7.1.4 (x64)](https://secure.php.net/downloads.php). 
+- Zainstaluj język PHP i zapoznaj się z [podręcznikiem języka PHP](https://secure.php.net/manual/install.unix.php) w celu przeprowadzenia dalszej konfiguracji.
 - Kod używa klasy **pgsql** (php_pgsql.so). Zainstaluj ją, uruchamiając element `sudo apt-get install php-pgsql`.
 - Włącz rozszerzenie **pgsql**, edytując plik konfiguracji `/etc/php/7.0/mods-available/pgsql.ini`. Plik konfiguracji powinien zawierać wiersz z tekstem `extension=php_pgsql.so`. Jeśli nie jest wyświetlany, dodaj tekst i zapisz plik. Jeśli tekst jest wyświetlany, ale zawiera komentarz z prefiksem ze średnikiem, usuń komentarz z tekstu, usuwając średnik.
 
 ### <a name="macos"></a>MacOS
-- Pobierz [język PHP w wersji 7.1.4](http://php.net/downloads.php).
-- Zainstaluj język PHP i zapoznaj się z [podręcznikiem języka PHP](http://php.net/manual/install.macosx.php) w celu przeprowadzenia dalszej konfiguracji.
+- Pobierz [język PHP w wersji 7.1.4](https://secure.php.net/downloads.php).
+- Zainstaluj język PHP i zapoznaj się z [podręcznikiem języka PHP](https://secure.php.net/manual/install.macosx.php) w celu przeprowadzenia dalszej konfiguracji.
 
 ## <a name="get-connection-information"></a>Pobieranie informacji o połączeniu
 Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z usługą Azure Database for PostgreSQL. Potrzebna jest w pełni kwalifikowana nazwa serwera i poświadczenia logowania.
@@ -57,7 +57,7 @@ Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z usługą 
 ## <a name="connect-and-create-a-table"></a>Łączenie i tworzenie tabeli
 Użyj poniższego kodu w celu nawiązania połączenia i utworzenia tabeli za pomocą instrukcji **CREATE TABLE** języka SQL, a następnie instrukcji **INSERT INTO** języka SQL, aby dodać wiersze do tabeli.
 
-Kod wywołuje metodę [pg_connect()](http://php.net/manual/en/function.pg-connect.php), aby nawiązać połączenie z usługą Azure for PostgreSQL. Następnie kod wywołuje metodę [pg_query()](http://php.net/manual/en/function.pg-query.php) kilka razy w celu uruchomienia wielu poleceń i metodę [pg_last_error()](http://php.net/manual/en/function.pg-last-error.php) w celu sprawdzenia szczegółów, jeśli za każdym razem występuje błąd. W kolejnym kroku kod wywołuje metodę [pg_close()](http://php.net/manual/en/function.pg-close.php) w celu zamknięcia połączenia.
+Kod wywołuje metodę [pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php), aby nawiązać połączenie z usługą Azure for PostgreSQL. Następnie kod wywołuje metodę [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) kilka razy w celu uruchomienia wielu poleceń i metodę [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) w celu sprawdzenia szczegółów, jeśli za każdym razem występuje błąd. W kolejnym kroku kod wywołuje metodę [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) w celu zamknięcia połączenia.
 
 Zastąp parametry `$host`, `$database`, `$user` i `$password` własnymi wartościami. 
 
@@ -115,7 +115,7 @@ Zastąp parametry `$host`, `$database`, `$user` i `$password` własnymi wartośc
 ## <a name="read-data"></a>Odczyt danych
 Użyj poniższego kodu, aby nawiązać połączenie i odczytać dane za pomocą instrukcji **SELECT** języka SQL. 
 
- Kod wywołuje metodę [pg_connect()](http://php.net/manual/en/function.pg-connect.php), aby nawiązać połączenie z usługą Azure for PostgreSQL. Następnie kod wywołuje metodę [pg_query()](http://php.net/manual/en/function.pg-query.php) w celu uruchomienia polecenia SELECT, zachowując wyniki w zestawie wyników, i metodę [pg_last_error()](http://php.net/manual/en/function.pg-last-error.php) w celu sprawdzenia błędów, jeśli wystąpił błąd.  Aby odczytać zestaw wyników, metoda [pg_fetch_row()](http://php.net/manual/en/function.pg-fetch-row.php) jest wywoływana w postaci pętli, jeden raz dla każdego wiersza, a dane są pobierane w tablicy `$row`, z jedną wartością danych na kolumnę w każdej pozycji tablicy.  Aby zwolnić zestaw wyników, należy wywołać metodę [pg_free_result()](http://php.net/manual/en/function.pg-free-result.php). W kolejnym kroku kod wywołuje metodę [pg_close()](http://php.net/manual/en/function.pg-close.php) w celu zamknięcia połączenia.
+ Kod wywołuje metodę [pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php), aby nawiązać połączenie z usługą Azure for PostgreSQL. Następnie kod wywołuje metodę [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) w celu uruchomienia polecenia SELECT, zachowując wyniki w zestawie wyników, i metodę [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) w celu sprawdzenia błędów, jeśli wystąpił błąd.  Aby odczytać zestaw wyników, metoda [pg_fetch_row()](https://secure.php.net/manual/en/function.pg-fetch-row.php) jest wywoływana w postaci pętli, jeden raz dla każdego wiersza, a dane są pobierane w tablicy `$row`, z jedną wartością danych na kolumnę w każdej pozycji tablicy.  Aby zwolnić zestaw wyników, należy wywołać metodę [pg_free_result()](https://secure.php.net/manual/en/function.pg-free-result.php). W kolejnym kroku kod wywołuje metodę [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) w celu zamknięcia połączenia.
 
 Zastąp parametry `$host`, `$database`, `$user` i `$password` własnymi wartościami. 
 
@@ -153,7 +153,7 @@ Zastąp parametry `$host`, `$database`, `$user` i `$password` własnymi wartośc
 ## <a name="update-data"></a>Aktualizowanie danych
 Użyj poniższego kodu, aby nawiązać połączenie i zaktualizować dane za pomocą instrukcji **UPDATE** języka SQL.
 
-Kod wywołuje metodę [pg_connect()](http://php.net/manual/en/function.pg-connect.php), aby nawiązać połączenie z usługą Azure for PostgreSQL. Następnie kod wywołuje metodę [pg_query()](http://php.net/manual/en/function.pg-query.php) w celu uruchomienia polecenia i metodę [pg_last_error()](http://php.net/manual/en/function.pg-last-error.php) w celu sprawdzenia szczegółów, jeśli wystąpił błąd. W kolejnym kroku kod wywołuje metodę [pg_close()](http://php.net/manual/en/function.pg-close.php) w celu zamknięcia połączenia.
+Kod wywołuje metodę [pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php), aby nawiązać połączenie z usługą Azure for PostgreSQL. Następnie kod wywołuje metodę [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) w celu uruchomienia polecenia i metodę [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) w celu sprawdzenia szczegółów, jeśli wystąpił błąd. W kolejnym kroku kod wywołuje metodę [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) w celu zamknięcia połączenia.
 
 Zastąp parametry `$host`, `$database`, `$user` i `$password` własnymi wartościami. 
 
@@ -188,7 +188,7 @@ Zastąp parametry `$host`, `$database`, `$user` i `$password` własnymi wartośc
 ## <a name="delete-data"></a>Usuwanie danych
 Użyj poniższego kodu, aby nawiązać połączenie i odczytać dane za pomocą instrukcji **DELETE** języka SQL. 
 
- Kod wywołuje metodę [pg_connect()](http://php.net/manual/en/function.pg-connect.php), aby nawiązać połączenie z usługą Azure for PostgreSQL. Następnie kod wywołuje metodę [pg_query()](http://php.net/manual/en/function.pg-query.php) w celu uruchomienia polecenia i metodę [pg_last_error()](http://php.net/manual/en/function.pg-last-error.php) w celu sprawdzenia szczegółów, jeśli wystąpił błąd. W kolejnym kroku kod wywołuje metodę [pg_close()](http://php.net/manual/en/function.pg-close.php) w celu zamknięcia połączenia.
+ Kod wywołuje metodę [pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php), aby nawiązać połączenie z usługą Azure for PostgreSQL. Następnie kod wywołuje metodę [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) w celu uruchomienia polecenia i metodę [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) w celu sprawdzenia szczegółów, jeśli wystąpił błąd. W kolejnym kroku kod wywołuje metodę [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) w celu zamknięcia połączenia.
 
 Zastąp parametry `$host`, `$database`, `$user` i `$password` własnymi wartościami. 
 
