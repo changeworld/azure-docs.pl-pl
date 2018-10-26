@@ -8,12 +8,12 @@ ms.date: 10/17/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 33c2bd48084c3d0e73fe2f4a1ce922e7a66b944f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 532d3d73c939a44678091734f2bbff22267ab6b7
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955437"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094868"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Rozwiązywanie problemów z elementami runbook
 
@@ -93,8 +93,9 @@ Ten błąd występuje, jeśli nazwa subskrypcji jest nieprawidłowy lub użytkow
 
 Aby ustalić, czy poprawnie uwierzytelniono na platformie Azure i mieć dostęp do subskrypcji, w którym próbujesz wybierz, wykonaj następujące czynności:  
 
-1. Upewnij się, że uruchomieniu **Add-AzureAccount** zanim uruchomisz polecenie cmdlet **Select-AzureSubscription** polecenia cmdlet.  
-2. Jeśli nadal widzisz ten komunikat o błędzie, należy zmodyfikować kod, dodając **- AzureRmContext** następujący parametr **Add-AzureAccount** polecenia cmdlet, a następnie wykonaj kod.
+1. Testowanie skryptu poza usługi Azure Automation się upewnić, że działa ona autonomicznych.
+2. Upewnij się, że uruchomieniu **Add-AzureAccount** zanim uruchomisz polecenie cmdlet **Select-AzureSubscription** polecenia cmdlet.  
+3. Jeśli nadal widzisz ten komunikat o błędzie, należy zmodyfikować kod, dodając **- AzureRmContext** następujący parametr **Add-AzureAccount** polecenia cmdlet, a następnie wykonaj kod.
 
    ```powershell
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
@@ -104,7 +105,7 @@ Aby ustalić, czy poprawnie uwierzytelniono na platformie Azure i mieć dostęp 
    $context = Get-AzureRmContext
 
    Get-AzureRmVM -ResourceGroupName myResourceGroup -AzureRmContext $context
-   ```
+    ```
 
 ### <a name="auth-failed-mfa"></a>Scenariusz: Uwierzytelnianie nie powiodło się, ponieważ włączono uwierzytelnianie wieloskładnikowe Azure
 
@@ -305,7 +306,7 @@ Dowolne z poniższych rozwiązań rozwiązać ten problem:
 * Sprawdź, czy nazwa polecenia cmdlet został wprowadzony poprawnie.  
 * Upewnij się, że polecenia cmdlet istnieje na koncie usługi Automation i że nie istnieją żadne konflikty. Aby sprawdzić, czy polecenie cmdlet jest obecny, otwórz element runbook w trybie edycji i wyszukaj ma zostać znaleziona w bibliotece lub uruchom polecenie cmdlet `Get-Command <CommandName>`. Po zweryfikowaniu, polecenie cmdlet jest dostępny dla konta, które i że nie są nazwa powoduje konflikt z innych poleceń cmdlet lub elementy runbook, należy dodać go do obszaru roboczego i upewnij się, że używasz prawidłowego parametru w elemencie runbook.  
 * Jeśli występuje konflikt nazw i polecenia cmdlet jest dostępna w dwóch różnych modułach, możesz rozwiązać ten problem za pomocą w pełni kwalifikowana nazwa polecenia cmdlet. Na przykład, można użyć **ModuleName\CmdletName**.  
-* Jeśli użytkownik jest wykonywanie grupy hybrydowych procesów roboczych elementu runbook w środowisku lokalnym, a następnie upewnij się, że polecenia cmdlet modułu/zostanie zainstalowana na komputerze, który jest hostem hybrydowy proces roboczy.
+* Jeśli użytkownik jest wykonywanie grupy hybrydowych procesów roboczych elementu runbook w środowisku lokalnym, a następnie upewnij się, że moduł i polecenia cmdlet zostanie zainstalowana na komputerze, który jest hostem hybrydowy proces roboczy.
 
 ### <a name="long-running-runbook"></a>Scenariusz: Długotrwałe elementu runbook nie powiedzie się
 

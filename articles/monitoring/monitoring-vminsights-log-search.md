@@ -1,5 +1,5 @@
 ---
-title: Tworzenie zapytań względem dzienników z usługi Azure Monitor dla maszyn wirtualnych | Dokumentacja firmy Microsoft
+title: Tworzenie zapytań względem dzienników z usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Usługa Azure Monitor dla maszyn wirtualnych rozwiązania przekazuje metryki i rejestrowanie danych do usługi Log Analytics i w tym artykule opisano rekordy i zawiera przykładowe zapytania.
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/20/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 4a5f3178ad4d4152bb29e6c313b3fd332124c154
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 90816061766a423f7dbc7d277433a95c5bcf6115
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269398"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50095426"
 ---
-# <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Tworzenie zapytań względem dzienników z usługi Azure Monitor dla maszyn wirtualnych
+# <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Tworzenie zapytań względem dzienników z usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 Usługa Azure Monitor dla maszyn wirtualnych zbiera metryki wydajności i połączenia, komputera i przetwarzanie magazynu danych i informacji o stanie kondycji i przekazuje go do magazynu danych usługi Log Analytics w usłudze Azure Monitor.  Dane te są dostępne dla [wyszukiwania](../log-analytics/log-analytics-log-searches.md) w usłudze Log Analytics. Dane te można zastosować do scenariuszy obejmujących planowania migracji, analizy wydajności, wykrywanie i rozwiązywanie problemów z wydajnością na żądanie.
 
 ## <a name="map-records"></a>Rekordy mapy

@@ -1,6 +1,6 @@
 ---
 title: Wysyłanie metryk systemu operacyjnego gościa, aby metryki usługi Azure Monitor przechowywać klasycznej usługi w chmurze
-description: Wysyłanie metryk systemu operacyjnego gościa, aby metryki usługi Azure Monitor przechowywać klasycznej usługi w chmurze
+description: Wysyłanie metryk systemu operacyjnego gościa, aby metryki usługi Azure Monitor przechowywać usług w chmurze
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,56 +8,58 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: be27ff3f8dda3209a011c3ad79d1a7a1f1d259fe
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 30b08062aa360c4a43dc1bfe9f574447b58521f5
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986918"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50095215"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-service"></a>Wysyłanie metryk systemu operacyjnego gościa, aby metryki usługi Azure Monitor przechowywać klasycznej usługi w chmurze
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Wysyłanie metryk systemu operacyjnego gościa, aby metryki usługi Azure Monitor przechowywać klasycznej usługi w chmurze 
+Dzięki usłudze Azure Monitor [rozszerzenie diagnostyki](azure-diagnostics.md), można zbierać metryki i dzienniki z systemu operacyjnego gościa (systemu operacyjnego gościa) uruchomiona w ramach maszyny wirtualnej, usługa w chmurze lub klaster usługi Service Fabric. Rozszerzenie może wysyłać telemetrię do [wielu różnych lokalizacjach.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
-Usługi Azure Monitor [rozszerzenia diagnostyki Azure Windows](azure-diagnostics.md) (WAD) umożliwia zbieranie metryk i dzienników z systemu operacyjnego gościa (guestOS) uruchomiona w ramach klastra maszyny wirtualnej, usługa w chmurze lub usługi Service Fabric.  Rozszerzenie może wysyłać telemetrię do wielu różnych lokalizacjach, wymienione w artykule wcześniej połączona.  
+W tym artykule opisano proces wysyłania metryki wydajności systemu operacyjnego gościa dla usługi Azure Cloud Services klasycznego do usługi Azure Monitor metryki magazynu. Począwszy od wersji 1.11 diagnostyki, można napisać metryki bezpośrednio do usługi Azure Monitor przechowywać metryki, którym już zbieranymi metrykami standardowa platforma. 
 
-W tym artykule opisano proces metryki wydajności systemu operacyjnego gościa wysyłania Azure classic usług w chmurze w magazynie metryk usługi Azure Monitor. Począwszy od wersji 1.11 WAD, można napisać metryki bezpośrednio do sklepu metryk usługi Azure Monitor, gdy już zbieranymi metrykami standardowa platforma. Przechowywania ich w tej lokalizacji umożliwia dostęp do tego samego Akcje dostępne dla platform metryk.  Akcje obejmują niemal w czasie rzeczywistym alertów, wykresy, routingu, dostęp z interfejsu API REST i nie tylko.  W przeszłości rozszerzenia WAD powstała z jednego do usługi Azure Storage, ale nie do magazynu danych usługi Azure Monitor.  
+Przechowywanie ich w tej lokalizacji umożliwia dostęp do tych samych czynności, które mogą uzyskać większej liczby metryk platformy. Akcje obejmują niemal w czasie rzeczywistym alertów, wykresów i routing, dostęp z interfejsu API REST i nie tylko.  W przeszłości rozszerzenie diagnostyki zapisano do usługi Azure Storage, ale nie do magazynu danych usługi Azure Monitor.  
 
-Z procedurą opisaną w tym artykule działa tylko dla liczników wydajności w usługach Azure Cloud Services. Nie działa dla innych metryki niestandardowe. 
+Proces, który jest opisany w tym artykule dotyczy tylko liczniki wydajności w usługach Azure Cloud Services. To nie zadziała, aby uzyskać inne metryki niestandardowe. 
    
 
-## <a name="pre-requisites"></a>Wymagania wstępne
+## <a name="prerequisites"></a>Wymagania wstępne
 
-- Musi być [administratorów usługi lub administratorów współpracujących](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator.md) w subskrypcji platformy Azure 
+- Musi być [administratorów usługi lub administratorów współpracujących](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator.md) w subskrypcji platformy Azure. 
 
-- Twoja subskrypcja musi być zarejestrowana w [Microsoft.Insights](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) 
+- Twoja subskrypcja musi być zarejestrowana w [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#portal). 
 
-- Musisz mieć [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) zainstalowany, możesz też [usługi Azure CloudShell](https://docs.microsoft.com/azure/cloud-shell/overview.md) 
+- Musisz mieć [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) lub [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) zainstalowane.
 
 
-## <a name="provision-cloud-service-and-storage-account"></a>Zainicjuj obsługę usługi w chmurze i konto magazynu 
+## <a name="provision-a-cloud-service-and-storage-account"></a>Aprowizacja konta magazynu i usługi chmury 
 
-1. Tworzenie i wdrażanie klasyczne usługi w chmurze (Przykładowa aplikacja usługi chmura klasyczna i wdrożenia można znaleźć [tutaj](../cloud-services/cloud-services-dotnet-get-started.md). 
+1. Tworzenie i wdrażanie klasyczną usługę w chmurze. Przykładowej aplikacji klasycznej w usługi w chmurze i wdrażania znajduje się w temacie [rozpoczęcie korzystania z usług Azure Cloud Services i platformy ASP.NET](../cloud-services/cloud-services-dotnet-get-started.md). 
 
-2. Można użyć istniejącego konta magazynu można też wdrażać nowe konto magazynu. Najlepiej jest konto magazynu, w tym samym regionie co klasycznej usługi w chmurze, właśnie utworzony. W witrynie Azure portal przejdź do bloku zasobów konta magazynu, a następnie wybierz **klucze**. Zanotuj konta nazwy i przechowywania klucza konta magazynu, należy je w kolejnych krokach.
+2. Można użyć istniejącego konta magazynu można też wdrażać nowe konto magazynu. Najlepiej jest konto magazynu, w tym samym regionie co usługa w chmurze klasyczne, który został utworzony. W witrynie Azure portal przejdź do **kont magazynu** bloku zasobów, a następnie wybierz **klucze**. Zanotuj nazwę konta magazynu i klucza konta magazynu. Należy te informacje w kolejnych krokach.
 
    ![Klucze kont magazynu](./media/metrics-store-custom-guestos-classic-cloud-service/storage-keys.png)
 
 
 
-## <a name="create-a-service-principal"></a>Tworzenie jednostki usługi 
+## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi 
 
-Tworzenie jednostki usługi w dzierżawie usługi Azure Active Directory, korzystając z instrukcji w... / azure/azure-resource-manager/resource-group-create-service-principal-portal. Należy pamiętać, że podczas przechodzenia przez ten proces: 
-  - Możesz umieścić dowolny adres URL dla adresu URL logowania jednokrotnego.  
-  - Utwórz nowy wpis tajny klienta dla tej aplikacji  
+Tworzenie jednostki usługi w dzierżawie usługi Azure Active Directory zgodnie z instrukcjami podanymi w [w obsłudze portalu do tworzenia aplikacji i usługi jednostki, które mogą uzyskiwać dostęp do zasobów usługi Azure Active Directory](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Należy pamiętać o następujących, gdy zamierzasz przez ten proces: 
+
+  - Możesz umieścić dowolny adres URL dla adresu URL logowania.  
+  - Utwórz nowy wpis tajny klienta dla tej aplikacji.  
   - Zapisz klucz i identyfikator klienta do użycia w kolejnych krokach.  
 
-Nadaj aplikacji utworzonej w poprzednim kroku *wydawcy metryki monitorowania* uprawnienia do zasobów, aby emitować metryki względem. Jeśli planujesz korzystanie z aplikacji do emitowania metryki niestandardowe w odniesieniu do wielu zasobów, można przyznać te uprawnienia na poziomie grupy lub subskrypcji zasobów.  
+Nadaj aplikacji utworzonej w poprzednim kroku *wydawcy metryki monitorowania* uprawnienia do zasobów, aby emitować metryk. Jeśli planujesz korzystanie z aplikacji do emitowania metryki niestandardowe w odniesieniu do wielu zasobów, można przyznać te uprawnienia na poziomie grupy lub subskrypcji zasobów.  
 
 > [!NOTE]
-> Rozszerzenie diagnostyki używa nazwy głównej usługi do uwierzytelniania względem usługi Azure Monitor i emitują metryki dla usługi w chmurze 
+> Rozszerzenie diagnostyki używa nazwy głównej usługi do uwierzytelniania względem usługi Azure Monitor i emitują metryki dla usługi w chmurze.
 
-## <a name="author-diagnostics-extension-configuration"></a>Konfiguracji rozszerzenia diagnostyki autora 
+## <a name="author-diagnostics-extension-configuration"></a>Tworzenie konfiguracji rozszerzenia diagnostyki 
 
-Przygotuj plik konfiguracji rozszerzenia diagnostyki WAD. Ten plik decyduje o tym, które dzienniki i liczniki wydajności rozszerzenie diagnostyki należy zbierać dla usługi w chmurze. Poniżej przedstawiono przykładowy plik konfiguracji diagnostyki.  
+Przygotuj plik konfiguracji rozszerzenia diagnostyki. Ten plik decyduje o tym, które dzienniki i liczniki wydajności rozszerzenie diagnostyki należy zbierać dla usługi w chmurze. Poniżej przedstawiono przykładowy plik konfiguracji diagnostyki:  
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?> 
@@ -112,15 +114,16 @@ W sekcji "SinksConfig" w pliku diagnostyki Definiowanie nowych ujścia usługi A
   </SinksConfig> 
 ```
 
-W sekcji w pliku konfiguracji, w którym liczników listę wydajności mają być zbierane Dodaj ujścia usługi Azure Monitor. Ten wpis zapewnia liczników wydajności określonych są kierowane do usługi Azure Monitor jako metryki. Możesz dodawać i usuwać liczniki wydajności, zgodnie z potrzebami. 
+W sekcji pliku konfiguracji, w którym listę liczników wydajności do zbierania należy dodać ujścia usługi Azure Monitor. Ten wpis gwarantuje, że wszystkie liczniki wydajności, które można określić są kierowane do usługi Azure Monitor jako metryki. Można dodać lub usunąć liczniki wydajności, zgodnie z potrzebami. 
 
-```XML
-<PerformanceCounters scheduledTransferPeriod="PT1M" sinks="AzMonSink"> 
- <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT15S" /> 
-  … 
-</PerformanceCounters> 
+```xml
+    <PerformanceCounters scheduledTransferPeriod="PT1M" sinks="AzMonSink">
+        <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT15S" />
+    ...
+    </PerformanceCounters>
 ```
-Na koniec w konfiguracji prywatnej, należy dodać *konta usługi Azure Monitor* sekcji. Wprowadź identyfikator klienta jednostki usługi i klucz tajny, które zostały utworzone w poprzednim kroku. 
+
+Na koniec w konfiguracji prywatnej, należy dodać *konta usługi Azure Monitor* sekcji. Wprowadź identyfikator klienta jednostki usługi i klucz tajny, który został utworzony wcześniej. 
 
 ```XML
 <PrivateConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration"> 
@@ -138,51 +141,51 @@ Zapisz ten plik diagnostyki lokalnie.
 
 ## <a name="deploy-the-diagnostics-extension-to-your-cloud-service"></a>Wdrażanie rozszerzenia diagnostyki usługi w chmurze 
 
-Uruchom program PowerShell i zaloguj się do platformy Azure 
+Uruchom program PowerShell i zaloguj się do platformy Azure. 
 
 ```PowerShell
 Login-AzureRmAccount 
 ```
 
-Store szczegóły na temat szczegółów konta magazynu utworzone w poprzednim kroku w zmiennych przy użyciu następujących poleceń. 
+Poniższe polecenia umożliwiają przechowywanie szczegółów konta magazynu, który został utworzony wcześniej. 
 
 ```PowerShell
 $storage_account = <name of your storage account from step 3> 
 $storage_keys = <storage account key from step 3> 
 ```
  
-Podobnie, Ustaw ścieżkę do pliku diagnostyki do zmiennej za pomocą poniższego polecenia. 
+Podobnie Ustaw ścieżkę pliku diagnostyki do zmiennej za pomocą następującego polecenia:
 
 ```PowerShell
-$diagconfig = “<path of the diagnostics configuration file with the Azure Monitor sink configured>” 
+$diagconfig = “<path of the Diagnostics configuration file with the Azure Monitor sink configured>” 
 ```
  
-Wdrażanie rozszerzenia diagnostyki do usługi w chmurze przy użyciu pliku diagnostyki za pomocą ujścia usługi Azure Monitor skonfigurowany przy użyciu poniższego polecenia. 
+Wdróż rozszerzenie diagnostyki usługi w chmurze przy użyciu pliku diagnostyki za pomocą ujścia usługi Azure Monitor skonfigurowany przy użyciu następującego polecenia:  
 
 ```PowerShell
 Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -StorageAccountName $storage_account -StorageAccountKey $storage_keys -DiagnosticsConfigurationPath $diagconfig 
 ```
  
 > [!NOTE] 
-> Jest nadal wymagane, aby podać konto magazynu w ramach instalacji rozszerzenia diagnostyki. Dzienniki i/lub liczniki wydajności w pliku konfiguracyjnym diagnostyki zostanie zapisany do podanego konta magazynu.  
+> Jest nadal wymagane, aby podać konto magazynu w ramach instalacji rozszerzenia diagnostyki. Wszystkie dzienniki lub liczniki wydajności, które są określone w pliku konfiguracji diagnostyki są zapisywane do podanego konta magazynu.  
 
 ## <a name="plot-metrics-in-the-azure-portal"></a>Wykres metryk w witrynie Azure portal 
 
-Przejdź do witryny Azure portal 
+1. Przejdź do witryny Azure Portal. 
 
- ![Metryki witryny Azure portal](./media/metrics-store-custom-guestos-classic-cloud-service/navigate-metrics.png)
+   ![Metryki witryny Azure portal](./media/metrics-store-custom-guestos-classic-cloud-service/navigate-metrics.png)
 
-1. W menu po lewej stronie kliknij Monitor 
+2. W menu po lewej stronie wybierz **monitora.**
 
-1. W bloku Monitor kliknij kartę metryki (wersja zapoznawcza) 
+3. Na **Monitor** bloku wybierz **metryki (wersja zapoznawcza)** kartę.
 
-1. Na rozwijanej zasobów wybierz klasycznej usługi w chmurze 
+4. W menu rozwijanym zasobów wybierz usługi w chmurze w klasycznym.
 
-1. W przestrzeniach nazw listy rozwijanej wybierz **azure.vm.windows.guest** 
+5. Wybierz z menu rozwijanego przestrzenie nazw **azure.vm.windows.guest**. 
 
-1. W metryki listę rozwijaną, wybierz *wartości pamięć\zadeklarowane bajty w użyciu* 
+6. Wybierz z menu rozwijanego metryki **wartości pamięć\zadeklarowane bajty w użyciu**. 
 
-Można wyświetlić całkowita pamięć używana przez określoną rolę, a każde wystąpienie roli przy użyciu filtrowania wymiarów i dzielenia możliwości. 
+Wymiar, filtrowania i dzielenia możliwości umożliwia wyświetlanie całkowitej ilości pamięci używanej przez określoną rolę lub wystąpieniem roli. 
 
  ![Metryki witryny Azure portal](./media/metrics-store-custom-guestos-classic-cloud-service/metrics-graph.png)
 
