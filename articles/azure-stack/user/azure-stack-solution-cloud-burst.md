@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 1f3dcc7da3e91d3805cae805422778978d0187c5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 68021d25e3deab1c6551d29b0febd9f07e144b57
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971335"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50095342"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>Samouczek: Tworzenie rozwiązania skalowania wielu chmur przy użyciu platformy Azure
 
@@ -101,7 +101,7 @@ Konfigurowanie hybrydowego ciągłej integracji i ciągłego wdrażania (CI/CD) 
 
 ### <a name="add-code-to-visual-studio-team-services-project"></a>Dodaj kod do Visual Studio Team Services — projekt
 
-1. Zaloguj do programu Visual Studio Team Services (VSTS) przy użyciu konta które ma uprawnień do tworzenia projektu w usłudze VSTS~~.~~
+1. Zaloguj się do programu Visual Studio Team Services (VSTS) przy użyciu konta które ma uprawnień do tworzenia projektu w usłudze VSTS.
 
     Hybrydowe, ciągłą Integrację/ciągłe dostarczanie może dotyczyć zarówno kod aplikacji, jak i kodem infrastruktury. Użyj [szablonów usługi Azure Resource Manager](https://azure.microsoft.com/resources/templates/) dla obu chmur prywatnych i hostowanych rozwoju.
 

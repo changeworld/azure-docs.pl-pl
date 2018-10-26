@@ -1,5 +1,5 @@
 ---
-title: Jak wyświetlić zależności aplikacji z usługą Azure Monitor dla maszyn wirtualnych | Dokumentacja firmy Microsoft
+title: Jak wyświetlić zależności aplikacji z usługą Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Mapa jest funkcją monitora platformy Azure dla maszyn wirtualnych, które automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Ten artykuł zawiera szczegółowe informacje dotyczące sposobu używania go w różnych scenariuszach.
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/17/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 8641b6cfb14bceb248cc587095a9d3469ce2c9e0
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: af3d2b997a4d58f2d32705c55151c4cf13bdcc7c
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402153"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50095482"
 ---
-# <a name="using-azure-monitor-for-vms-map-to-understand-application-components"></a>Za pomocą usługi Azure Monitor dla maszyn wirtualnych jest mapowany do zrozumienia składniki aplikacji
+# <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Aby poznać składniki aplikacji przy użyciu usługi Azure Monitor mapy maszyny wirtualne (wersja zapoznawcza)
 Wyświetlanie składniki odnalezionych aplikacji na maszynach wirtualnych Windows i Linux, działające na platformie Azure w środowisku można zaobserwować na dwa sposoby, za pomocą usługi Azure Monitor w przypadku maszyn wirtualnych z maszyny wirtualnej, który jest bezpośrednio lub grupami maszyn wirtualnych za pomocą usługi Azure Monitor. 
 
 Ten artykuł pomoże zrozumieć środowisko między dwóch perspektyw i jak za pomocą funkcji mapy. Aby uzyskać informacje o konfigurowaniu usługi Azure Monitor do maszyn wirtualnych, zobacz [włączyć usługi Azure Monitor dla maszyn wirtualnych](monitoring-vminsights-onboard.md).

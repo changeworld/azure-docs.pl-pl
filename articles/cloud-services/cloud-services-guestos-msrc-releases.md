@@ -11,17 +11,59 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/16/2018
+ms.date: 10/24/2018
 ms.author: raiye
-ms.openlocfilehash: 7540f12f888108ed7091cece575b6d25131ef47b
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 989627388e9ad1c99daa31bd9c8af884ab16b421
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377518"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087784"
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa platformy Azure
 Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Security Response Center (MSRC) stosowane do systemu operacyjnego gościa platformy Azure. Wyszukaj w tym artykule, aby określić, jeśli dana aktualizacja ma zastosowanie do systemu operacyjnego gościa, którego używasz. Aktualizacje zawsze przenoszone w konkretnym [rodziny] [ family-explain] były one wprowadzone w.
+
+## <a name="october-2018-guest-os"></a>System operacyjny gościa października 2018 r.
+>[!NOTE]
+>System operacyjny gościa października jest obecnie wdrażana do maszyn wirtualnych usługi chmury, które są skonfigurowane dla aktualizacji automatycznych. Po zakończeniu wprowadzania tej wersji będą dostępne dla ręczne aktualizacje za pośrednictwem usługi Azure portal i plików konfiguracji. Następujące poprawki znajdują się w systemie operacyjnym gościa października. Ta lista może ulec zmianie.
+
+| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| --- | --- | --- | --- | --- |
+| ReL 18 – 10 | [4462917] | Zabezpieczenia systemu Windows 10 | 5,24 | 9 października 2018 r. |
+| ReL 18 – 10 | [4464330] | Zabezpieczenia systemu Windows 10 | 6.01 | 9 października 2018 r. |
+| ReL 18 – 10 | [4462915] | Zabezpieczeń Windows | 2.79 | 9 października 2018 r. |
+| ReL 18 – 10 | [4462931] | Zabezpieczeń Windows | 3,66 | 9 października 2018 r. |
+| ReL 18 – 10 | [4462941] | Zabezpieczeń Windows | 4,59 | 9 października 2018 r. |
+| ReL 18 – 10 | [4462930] | Flash | 3,66, 4,59, 5,24, 6.01 | 9 października 2018 r. |
+| ReL 18 – 10 | [4462949] | Internet Explorer | 2.79, 3,66 4,59 | 9 października 2018 r. |
+| ND | [4339284] | Aktualizacja stref czasowych | 2.79, 3,66 4,59 | 24 lipca 2018 r. |
+| ND | [4457144] | Pakiet zbiorczy września niezwiązane z zabezpieczeniami | 2.79 | 11 września 2018 r. |
+| ND | [4457044] | Pakiet zbiorczy września niezwiązane z zabezpieczeniami platformy .NET 3.5 | 2.79 | 11 września 2018 r. |
+| ND | [4457038] | Pakiet zbiorczy września niezwiązane z zabezpieczeniami .NET 4.5.2 | 2.79 | 11 września 2018 r. |
+| ND | [4457135] | Pakiet zbiorczy września niezwiązane z zabezpieczeniami | 3,66 | 11 września 2018 r. |
+| ND | [4457042] | Pakiet zbiorczy września niezwiązane z zabezpieczeniami platformy .NET 3.5 | 3,66 | 11 września 2018 r. |
+| ND | [4457037] | Pakiet zbiorczy września niezwiązane z zabezpieczeniami .NET 4.5.2 | 3,66 | 11 września 2018 r. |
+| ND | [4457129] | Pakiet zbiorczy września niezwiązane z zabezpieczeniami | 4,59 | 11 września 2018 r. |
+| ND | [4457045] | Pakiet zbiorczy września niezwiązane z zabezpieczeniami platformy .NET 3.5 | 4,59 | 11 września 2018 r. |
+| ND | [4457036] | Pakiet zbiorczy września niezwiązane z zabezpieczeniami .NET 4.5.2 | 4,59 | 11 września 2018 r. |
+
+[4462917]: http://support.microsoft.com/kb/4462917
+[4464330]: http://support.microsoft.com/kb/4464330
+[4462915]: http://support.microsoft.com/kb/4462915
+[4462931]: http://support.microsoft.com/kb/4462931
+[4462941]: http://support.microsoft.com/kb/4462941
+[4462930]: http://support.microsoft.com/kb/4462930
+[4462949]: http://support.microsoft.com/kb/4462949
+[4339284]: http://support.microsoft.com/kb/4339284
+[4457144]: http://support.microsoft.com/kb/4457144
+[4457044]: http://support.microsoft.com/kb/4457044
+[4457038]: http://support.microsoft.com/kb/4457038
+[4457135]: http://support.microsoft.com/kb/4457135
+[4457042]: http://support.microsoft.com/kb/4457042
+[4457037]: http://support.microsoft.com/kb/4457037
+[4457129]: http://support.microsoft.com/kb/4457129
+[4457045]: http://support.microsoft.com/kb/4457045
+[4457036]: http://support.microsoft.com/kb/4457036
 
 ## <a name="september-2018-guest-os"></a>System operacyjny gościa września 2018 r.
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
