@@ -266,7 +266,6 @@
 
 #### Uprawnienia
 ##### [Wybieranie uprawnień dla interfejsu API](develop/perms-for-given-api.md)
-##### [Udzielanie uprawnień dla mojej aplikacji](develop/registration-config-grant-permissions-how-to.md)
 ##### [Uprawnienia delegowane a uprawnienia aplikacji](develop/delegated-and-app-perms.md)
 ##### [Zgoda dla aplikacji](develop/consent-framework.md)
 
@@ -313,14 +312,6 @@
 ### Niestandardowe nazwy domen
 #### [Szybki start](fundamentals/add-custom-domain.md)
 ### [Administrowanie własnym katalogiem](fundamentals/active-directory-administer.md)
-### [Roaming stanu dla przedsiębiorstw](active-directory-windows-enterprise-state-roaming-overview.md)
-#### [Włączanie](active-directory-windows-enterprise-state-roaming-enable.md)
-#### [Ustawienia zasad grupy](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
-#### [Ustawienia systemu Windows 10](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
-#### [Często zadawane pytania](active-directory-windows-enterprise-state-roaming-faqs.md)
-#### [Rozwiązywanie problemów](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
-
-
 ### [Integrowanie tożsamości lokalnych za pomocą usługi Azure AD Connect](hybrid/whatis-hybrid-identity.md)
 
 ### [Konfigurowanie okresów istnienia tokenu](develop/active-directory-configurable-token-lifetimes.md)
