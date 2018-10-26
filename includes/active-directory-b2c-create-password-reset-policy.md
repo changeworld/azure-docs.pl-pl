@@ -1,3 +1,16 @@
+---
+author: PatAltimore
+ms.service: active-directory-b2c
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: patricka
+ms.openlocfilehash: bff2543ec48c66c10db697650def0077e3de28be
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133540"
+---
 Aby włączyć precyzyjne resetowanie haseł w aplikacji, należy użyć **resetowania hasła** zasad. Pamiętaj, że opcja resetowania haseł na poziomie całej dzierżawy została określona [tutaj](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md). Te zasady opisują procesy, które klienci uzyskują podczas resetowania hasła oraz zawartość tokenów, które aplikacja otrzyma po pomyślnym ukończeniu.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]

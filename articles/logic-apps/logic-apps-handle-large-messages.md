@@ -14,18 +14,18 @@ ms.tgt_pltfrm: ''
 ms.topic: article
 ms.date: 4/27/2018
 ms.author: shhurst
-ms.openlocfilehash: e6ac6a4aa46feb768df437ff9d5969b2b41092c3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 5aa5ea2a39a0fb9f969e965fed14063522197cda
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041649"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085806"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Obsługa dużych komunikatów z segmentu w usłudze Azure Logic Apps
 
 Podczas obsługi komunikatów, Logic Apps ogranicza zawartość komunikatu do maksymalnego rozmiaru. Ten limit, pomaga zmniejszyć obciążenie utworzone przez przechowywanie i przetwarzanie dużych komunikatów. Do obsługi komunikatów przekracza ten limit, Logic Apps może *fragmentów* dużych komunikatów w mniejszych wiadomości. W ten sposób można nadal transfer dużych plików, przy użyciu aplikacji logiki w określonych warunkach. Podczas komunikowania się z innymi usługami za pomocą łączników lub HTTP, Logic Apps mogą wykorzystywać duże komunikaty, ale *tylko* we fragmentach. Ten stan oznacza, że łączniki, musi obsługiwać segmentu lub podstawowej wymianie wiadomości HTTP między aplikacjami logiki i tych usług należy użyć segmentu.
 
-Ten artykuł pokazuje, jak możesz skonfigurować obsługę komunikatów, które są większe niż limit segmentu.
+Ten artykuł pokazuje, jak możesz skonfigurować segmentu dla obsługi wiadomości, które są większe niż limit działań. Wyzwalacze aplikacji logiki nie obsługują segmentu ze względu na zwiększone obciążenie wymiany wiele wiadomości. 
 
 ## <a name="what-makes-messages-large"></a>Co sprawia, że komunikaty "large"?
 

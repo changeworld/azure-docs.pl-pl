@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Monitor dla maszyn wirtualnych — często zadawane pytania | Dokumentacja firmy Microsoft
-description: Usługa Azure Monitor dla maszyn wirtualnych to rozwiązanie na platformie Azure, która łączy kondycji i wydajności monitorowania systemu operacyjnego maszyny Wirtualnej platformy Azure, a także automatycznie odnajdywania składników aplikacji i zależności z innymi zasobami oraz mapuje komunikację między je. Ten artykuł zawiera odpowiedzi na często zadawane pytania.
+title: Usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — często zadawane pytania | Dokumentacja firmy Microsoft
+description: Usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) to rozwiązanie na platformie Azure, który łączy kondycji i wydajności monitorowania systemu operacyjnego maszyny Wirtualnej platformy Azure, a także automatycznie odnajdywania składników aplikacji i zależności z innymi zasobami oraz mapuje komunikację między nimi. Ten artykuł zawiera odpowiedzi na często zadawane pytania.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/19/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 282620342d2348868ceab5257de7415a9cb2147c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: ff870f948acaae14ba772e14d48b27683f0bf07e
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388363"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091695"
 ---
-# <a name="azure-monitor-for-vms-frequently-asked-questions"></a>Usługa Azure Monitor dla maszyn wirtualnych — często zadawane pytania
-Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące usługi Azure Monitor dla maszyn wirtualnych na platformie Microsoft Azure. Jeśli masz dodatkowe pytania dotyczące rozwiązania, przejdź do strony [forum dyskusyjne](https://feedback.azure.com/forums/34192--general-feedback) i Publikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.
+# <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — często zadawane pytania
+Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące usługi Azure Monitor dla maszyn wirtualnych. Jeśli masz dodatkowe pytania dotyczące rozwiązania, przejdź do strony [forum dyskusyjne](https://feedback.azure.com/forums/34192--general-feedback) i Publikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.
 
 ## <a name="can-i-onboard-to-an-existing-workspace"></a>Mogę dołączyć do istniejącego obszaru roboczego?
 W przypadku maszyn wirtualnych są już połączone z obszarem roboczym usługi Log Analytics, mogą nadal używać tego obszaru roboczego podczas dołączania do usługi Azure Monitor w przypadku maszyn wirtualnych pod warunkiem, że jest w jednym z obsługiwanych regionów na liście [tutaj](monitoring-vminsights-onboard.md#prerequisites).

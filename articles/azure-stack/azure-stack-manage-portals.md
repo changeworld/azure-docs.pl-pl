@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 10/23/2018
 ms.author: mabrigg
-ms.openlocfilehash: 058e1f9abbf094fb49a21191f60195df53615451
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 4453516626c39f73deea8fce0d744fcecbd5c3fc
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985298"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085834"
 ---
 # <a name="using-the-administrator-portal-in-azure-stack"></a>Korzystanie z portalu administratora w usłudze Azure Stack
 
@@ -40,6 +40,8 @@ Dostęp do portalu administratora, przejdź do adresu URL portalu i zaloguj się
 | | |
 
  ![Portal administratora](media/azure-stack-manage-portals/admin-portal.png)
+
+Należy zauważyć, że domyślna strefa czasowa dla wszystkich wdrożeń usługi Azure Stack jest uniwersalny czas koordynowany (UTC). Strefa czasowa można wybrać podczas instalowania usługi Azure Stack, jednak automatycznie powraca on do UTC domyślnie podczas instalacji.
 
 W portalu administratora można wykonać czynności takich jak:
 

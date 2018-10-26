@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 118660e8947663328554ac0116b5519267197336
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: c5f441fef95989e5c82586d96fc6c10e00a9627c
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984302"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085499"
 ---
 # <a name="streaming-policies"></a>Zasady przesyłania strumieniowego
 
@@ -29,17 +29,17 @@ W usłudze Azure Media Services v3 przesyłanie strumieniowe zasady umożliwiaj�
 
 W poniższej tabeli przedstawiono właściwości StreamingPolicy oraz zapewnia ich definicje.
 
-|Name (Nazwa)|Typ|Opis|
-|---|---|---|
-|id|ciąg|W pełni kwalifikowanego Identyfikatora zasobu dla zasobu.|
-|name|ciąg|Nazwa zasobu.|
-|properties.commonEncryptionCbcs|CommonEncryptionCbcs|Konfiguracja CommonEncryptionCbcs|
-|properties.commonEncryptionCenc|CommonEncryptionCenc|Konfiguracja CommonEncryptionCenc|
-|Properties.created |ciąg|Godzina utworzenia zasad przesyłania strumieniowego|
-|properties.defaultContentKeyPolicyName |ciąg|ContentKey domyślne używane przez bieżące zasady przesyłania strumieniowego|
-|properties.envelopeEncryption  |EnvelopeEncryption|Konfiguracja EnvelopeEncryption|
-|properties.noEncryption|Bez szyfrowania|Konfiguracje bez szyfrowania|
-|type|ciąg|Typ zasobu.|
+|Name (Nazwa)|Opis|
+|---|---|
+|id|W pełni kwalifikowanego Identyfikatora zasobu dla zasobu.|
+|name|Nazwa zasobu.|
+|properties.commonEncryptionCbcs|Konfiguracja CommonEncryptionCbcs|
+|properties.commonEncryptionCenc|Konfiguracja CommonEncryptionCenc|
+|Properties.created |Godzina utworzenia zasad przesyłania strumieniowego|
+|properties.defaultContentKeyPolicyName |ContentKey domyślne używane przez bieżące zasady przesyłania strumieniowego|
+|properties.envelopeEncryption  |Konfiguracja EnvelopeEncryption|
+|properties.noEncryption|Konfiguracje bez szyfrowania|
+|type|Typ zasobu.|
 
 Pełna definicja można zobaczyć [przesyłania strumieniowego zasady](https://docs.microsoft.com/rest/api/media/streamingpolicies).
 

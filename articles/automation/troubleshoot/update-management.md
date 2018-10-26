@@ -4,20 +4,22 @@ description: Dowiedz się, jak rozwiązywać problemy związane z zarządzaniem 
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/17/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 41883fd677d276f8f26721fdccc3ded020c3278b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f52767058ef69d29465f1274109b6d3ffe58296c
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405231"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092631"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Rozwiązywanie problemów z zarządzaniem aktualizacjami
 
 W tym artykule omówiono rozwiązania, aby rozwiązać problemy, które może działać w przypadku korzystania z rozwiązania Update Management.
+
+Brak agenta narzędzia do rozwiązywania problemów dla agenta hybrydowego procesu roboczego, aby określić pierwotny problem. Aby dowiedzieć się więcej na temat rozwiązywania problemów, zobacz [problemy dotyczące rozwiązywania problemów aktualizacji agenta](update-agent-issues.md). W przypadku pozostałych problemów Zobacz szczegółowe informacje poniżej o możliwych problemach.
 
 ## <a name="general"></a>Ogólne
 
@@ -110,6 +112,20 @@ Hybrydowy proces roboczy elementu Runbook nie był w stanie wygenerować certyfi
 #### <a name="resolution"></a>Rozwiązanie
 
 Sprawdź konto systemowe ma dostęp do odczytu do folderu **C:\ProgramData\Microsoft\Crypto\RSA** , a następnie spróbuj ponownie.
+
+### <a name="nologs"></a>Scenariusz: Zarządzanie aktualizacjami dane nie są wyświetlane w usłudze Log Analytics dla maszyny
+
+#### <a name="issue"></a>Problem
+
+Masz maszyny, które pokazują, jak **nie oceniono** w obszarze **zgodności**, widzą danych pulsu w usłudze Log Analytics dla hybrydowego procesu roboczego Runbook, ale nie do zarządzania aktualizacjami.
+
+#### <a name="cause"></a>Przyczyna
+
+Hybrydowy proces roboczy elementu Runbook może być konieczne może być ponownie zarejestrowane i ponowna instalacja.
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Wykonaj kroki opisane w temacie [wdrożenia Windows hybrydowego procesu roboczego Runbook](../automation-windows-hrw-install.md) ponowna instalacja hybrydowego procesu roboczego.
 
 ### <a name="hresult"></a>Scenariusz: Maszyna jest wyświetlana jako nie oceniono i przedstawia wyjątek HResult
 

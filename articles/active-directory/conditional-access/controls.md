@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/18/2018
+ms.date: 10/25/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 065eee57b78ea10d5e8079de3a938dc00dd60ee2
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: a40774faadc4393a1ebbb6e26673ba7dff22560c
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406776"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092308"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Jakie są mechanizmy kontroli dostępu w funkcji dostępu warunkowego usługi Azure Active Directory? 
 
@@ -166,8 +166,14 @@ Kontrolki sesji umożliwiają korzystanie z ograniczonego środowiska w ramach a
 
 ### <a name="use-app-enforced-restrictions"></a>Użyj ograniczeń wymuszonych przez aplikację
 
-Wymaganie usługi Azure AD do przekazania informacji o urządzeniu do aplikacji w chmurze, można użyć tej kontrolki. Dzięki temu wiadomo, gdy użytkownik pochodzi z zgodne urządzenie lub urządzenia przyłączone do domeny aplikacji w chmurze. Ten formant jest obecnie obsługiwane tylko w przypadku programu SharePoint jako aplikacji w chmurze. Program SharePoint używa informacji o urządzeniu do udzielania ograniczony lub pełnego środowiska w zależności od stanu urządzenia.
-Aby dowiedzieć się więcej o tym, jak będą musieli ograniczony dostęp z programem SharePoint, zobacz [kontrolowanie dostępu z urządzeń niezarządzanych](https://aka.ms/spolimitedaccessdocs).
+Możesz użyć tego formantu, aby wymagają usługi Azure AD do przekazania informacji o urządzeniu do aplikacji w wybranej chmurze. Informacje o urządzeniu umożliwia aplikacji w chmurze należy wiedzieć, czy połączenie jest inicjowane z urządzenia zgodne lub dołączone do domeny. Ten formant obsługuje tylko usługi SharePoint Online i Exchange Online jako aplikacji w wybranej chmurze. Po wybraniu aplikacji w chmurze używa informacji o urządzeniu użytkownikom, w zależności od stanu urządzenia, za pomocą ograniczony lub pełnego środowiska.
+
+Aby dowiedzieć się więcej, zobacz:
+
+- [Włączanie ograniczony dostęp z usługą SharePoint Online](https://aka.ms/spolimitedaccessdocs) 
+
+- [Włączanie ograniczony dostęp z usługą Exchange Online](https://aka.ms/owalimitedaccess)
+
 
 
 

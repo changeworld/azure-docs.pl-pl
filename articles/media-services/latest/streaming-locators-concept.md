@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 56e9a0b4eec347d2367c38ab00c6c9d9dca60752
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: cb34855fc9451679c885eebb0ef5a2fab0be8c57
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986901"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086849"
 ---
 # <a name="streaming-locators"></a>Lokalizatory przesyłania strumieniowego
 
@@ -26,20 +26,20 @@ Aby zapewnić klientom za pomocą adresu URL, który może służyć do odtwarza
 
 W poniższej tabeli przedstawiono właściwości StreamingLocator oraz zapewnia ich definicje.
 
-|Name (Nazwa)|Typ|Opis|
-|---|---|---|
-|id |ciąg|W pełni kwalifikowanego Identyfikatora zasobu dla zasobu.|
-|name   |ciąg|Nazwa zasobu.|
-|properties.alternativeMediaId  |ciąg|Identyfikator innych formatów ten Lokalizator przesyłania strumieniowego.|
-|properties.assetName   |ciąg|Nazwa elementu zawartości|
-|properties.contentKeys |[] StreamingLocatorContentKey|Kluczy zawartości używana przez ten Lokalizator przesyłania strumieniowego.|
-|Properties.created |ciąg|Czas utworzenia lokalizatora przesyłania strumieniowego.|
-|properties.defaultContentKeyPolicyName |ciąg|Nazwa domyślna ContentKeyPolicy używane przez ten Lokalizator przesyłania strumieniowego.|
-|properties.endTime |ciąg|Godzina zakończenia lokalizatora przesyłania strumieniowego.|
-|properties.startTime   |ciąg|Godzina rozpoczęcia lokalizatora przesyłania strumieniowego.|
-|properties.streamingLocatorId  |ciąg|StreamingLocatorId lokalizatora przesyłania strumieniowego.|
-|properties.streamingPolicyName |ciąg|Nazwa zasady przesyłania strumieniowego, używany przez ten Lokalizator przesyłania strumieniowego. Podaj nazwę zasad przesyłania strumieniowego, został utworzony lub użyj jednego z wstępnie zdefiniowane zasady przesyłania strumieniowego. Wstępnie zdefiniowane zasady przesyłania strumieniowego dostępne są: "Predefined_DownloadOnly", "Predefined_ClearStreamingOnly", "Predefined_DownloadAndClearStreaming", "Predefined_ClearKey", "Predefined_MultiDrmCencStreaming" i "Predefined_ MultiDrmStreaming "|
-|type   |ciąg|Typ zasobu.|
+|Name (Nazwa)|Opis|
+|---|---|
+|id |W pełni kwalifikowanego Identyfikatora zasobu dla zasobu.|
+|name   |Nazwa zasobu.|
+|properties.alternativeMediaId|Identyfikator innych formatów ten Lokalizator przesyłania strumieniowego.|
+|properties.assetName   |Nazwa elementu zawartości|
+|properties.contentKeys |Kluczy zawartości używana przez ten Lokalizator przesyłania strumieniowego.|
+|Properties.created |Czas utworzenia lokalizatora przesyłania strumieniowego.|
+|properties.defaultContentKeyPolicyName|Nazwa domyślna ContentKeyPolicy używane przez ten Lokalizator przesyłania strumieniowego.|
+|properties.endTime |Godzina zakończenia lokalizatora przesyłania strumieniowego.|
+|properties.startTime|Godzina rozpoczęcia lokalizatora przesyłania strumieniowego.|
+|properties.streamingLocatorId|StreamingLocatorId lokalizatora przesyłania strumieniowego.|
+|properties.streamingPolicyName |Nazwa zasady przesyłania strumieniowego, używany przez ten Lokalizator przesyłania strumieniowego. Podaj nazwę zasad przesyłania strumieniowego, został utworzony lub użyj jednego z wstępnie zdefiniowane zasady przesyłania strumieniowego. Wstępnie zdefiniowane zasady przesyłania strumieniowego dostępne są: "Predefined_DownloadOnly", "Predefined_ClearStreamingOnly", "Predefined_DownloadAndClearStreaming", "Predefined_ClearKey", "Predefined_MultiDrmCencStreaming" i "Predefined_ MultiDrmStreaming "|
+|type|Typ zasobu.|
 
 Pełna definicja można zobaczyć [Lokalizatory przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators).
 

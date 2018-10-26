@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a12549a52171afc1c95588f9a2b259829e170fcc
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: b6fef23b3624703305a13b205b588c83dd135764
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389959"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094742"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurowanie uprawnień konta usługi AD DS łącznika 
 
@@ -269,10 +269,10 @@ Ten skrypt programu PowerShell spowoduje podwyższenie poziomu uprawnień dla ko
 - Wyłącz dziedziczenie dla określonego obiektu 
 - Usunąć wszystkie wpisy kontroli dostępu dla określonego obiektu, z wyjątkiem ACE specyficzne dla siebie, ponieważ chcemy zachować uprawnienia domyślne, jeśli chodzi o SAMODZIELNIE. 
  
- Parametr - Nazwa_wyróżniająca_obiektu jest konto usługi AD, w której uprawnienia muszą być ściągane. Jest to zazwyczaj MSOL_nnnnnnnnnnnn konta domeny, który jest skonfigurowany w łączniku usługi AD DS (zobacz Określanie konta łącznika AD DS). Credential parametr niezbędne jest określenie konta administratora, które ma niezbędne uprawnienia, aby ograniczyć uprawnienia usługi Active Directory w obiekcie docelowym usługi AD. Jest to zazwyczaj, Enterprise lub administratora domeny.  
+ Parametr - ADConnectorAccountDN jest konto usługi AD, w której uprawnienia muszą być ściągane. Jest to zazwyczaj MSOL_nnnnnnnnnnnn konta domeny, który jest skonfigurowany w łączniku usługi AD DS (zobacz Określanie konta łącznika AD DS). Credential parametr niezbędne jest określenie konta administratora, które ma niezbędne uprawnienia, aby ograniczyć uprawnienia usługi Active Directory w obiekcie docelowym usługi AD. Jest to zazwyczaj, Enterprise lub administratora domeny.  
 
 ``` powershell
-Set-ADSyncRestrictedPermissions [-ObjectDN] <String> [-Credential] <PSCredential> [-DisableCredentialValidation] [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <PSCredential> [-DisableCredentialValidation] [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```
  
 Na przykład: 

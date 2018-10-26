@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/11/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 95c49ccc11a12c2e9174ba2d186a302f500e8bf2
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: bb7e422e0eb4a71e0f88a911083f8f5d6fb0ef2f
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650149"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092172"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatyzuj zasobów w centrum danych lub w chmurze przy użyciu hybrydowego procesu roboczego Runbook
 
@@ -26,7 +26,7 @@ Na poniższym obrazie przedstawiono tę funkcję:
 
 Każdy hybrydowy proces roboczy elementu Runbook jest członkiem grupy hybrydowego procesu roboczego Runbook, który jest określany podczas instalacji agenta. Grupa może obejmować jednego agenta, ale można zainstalować wielu agentów w grupie w celu zapewnienia wysokiej dostępności.
 
-Podczas uruchamiania elementu runbook w hybrydowym procesie roboczym elementu Runbook należy określić grupę, która działa na. Każdemu procesowi roboczemu w tej grupie sonduje usługę Azure Automation, aby sprawdzić, czy wszystkie zadania są dostępne. Jeśli zadanie jest dostępna, to pierwszy proces roboczy, aby zakończyć dane zadanie przełączy go. Nie można określić określonego procesu roboczego. Hybrydowych procesów roboczych Runbook nie udostępniaj wiele ograniczeń, które mają piaskownic platformy Azure. Nie mają takie same ograniczenia miejsca na dysku, pamięci lub gniazd sieciowych. Jedynym ograniczeniem jest hybrydowych procesów roboczych Runbook przez zasoby hybrydowego procesu roboczego Runbook sam. Ponadto hybrydowych procesów roboczych Runbook nie należy udostępniać 180 minut [udział](automation-runbook-execution.md#fair-share) limitu czasu, który do piaskownic usługi Azure. Aby dowiedzieć się więcej o limitach usługi do piaskownic usługi Azure i hybrydowych procesów roboczych Runbook, zobacz zadania [limity](../azure-subscription-service-limits.md#automation-limits) strony.
+Podczas uruchamiania elementu runbook w hybrydowym procesie roboczym elementu Runbook należy określić grupę, która działa na. Każdemu procesowi roboczemu w tej grupie sonduje usługę Azure Automation, aby sprawdzić, czy wszystkie zadania są dostępne. Jeśli zadanie jest dostępna, to pierwszy proces roboczy, aby zakończyć dane zadanie przełączy go. Czas przetwarzania kolejki zadań zależy od tego, profil sprzętu procesu roboczego hybrydowego i obciążenia. Nie można określić określonego procesu roboczego. Hybrydowych procesów roboczych Runbook nie udostępniaj wiele ograniczeń, które mają piaskownic platformy Azure. Nie mają takie same ograniczenia miejsca na dysku, pamięci lub gniazd sieciowych. Jedynym ograniczeniem jest hybrydowych procesów roboczych Runbook przez zasoby hybrydowego procesu roboczego Runbook sam. Ponadto hybrydowych procesów roboczych Runbook nie należy udostępniać 180 minut [udział](automation-runbook-execution.md#fair-share) limitu czasu, który do piaskownic usługi Azure. Aby dowiedzieć się więcej o limitach usługi do piaskownic usługi Azure i hybrydowych procesów roboczych Runbook, zobacz zadania [limity](../azure-subscription-service-limits.md#automation-limits) strony.
 
 ## <a name="install-a-hybrid-runbook-worker"></a>Instalowanie hybrydowego procesu roboczego elementu Runbook
 
@@ -112,7 +112,7 @@ Jeśli masz konto usługi Automation, która jest zdefiniowana dla konkretnego r
 
 | **Region** | **Rekord DNS** |
 | --- | --- |
-| Zachodnio-środkowe stany USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
+| Środkowo-zachodnie stany USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
 | Środkowo-południowe stany USA |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
 | Wschodnie stany USA 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
 | Kanada Środkowa |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
@@ -122,7 +122,7 @@ Jeśli masz konto usługi Automation, która jest zdefiniowana dla konkretnego r
 | Indie Środkowe |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
 | Japonia Wschodnia |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | Australia Południowo-Wschodnia |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
-| Zjednoczone Królestwo (południe) | uks-jobruntimedata-prod-su1.azure-automation.net</br>UKS-agentservice-prod-1.azure-automation.net |
+| Południowe Zjednoczone Królestwo | uks-jobruntimedata-prod-su1.azure-automation.net</br>UKS-agentservice-prod-1.azure-automation.net |
 | Administracja USA — Wirginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
 Aby uzyskać listę adresów IP regionu zamiast nazwy regionów, Pobierz [adres IP centrum danych Azure](https://www.microsoft.com/download/details.aspx?id=41653) plik XML z Microsoft Download Center.
@@ -144,7 +144,7 @@ Standardowe adresy i porty wymagane przez hybrydowy proces roboczy elementu Runb
 |*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
 
-## <a name="troubleshoot"></a>Rozwiąż problemy
+## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
 Aby dowiedzieć się, jak rozwiązywać problemy z hybrydowych procesów roboczych Runbook, zobacz [Rozwiązywanie problemów z hybrydowych procesów roboczych Runbook](troubleshoot/hybrid-runbook-worker.md#general)
 

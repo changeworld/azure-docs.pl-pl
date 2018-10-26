@@ -11,21 +11,26 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 2a0bacaf0405a5223afedcd3897e2a1514f7128b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 10/25/2018
+ms.openlocfilehash: fc82fa592a513d735d4adc602bedaf8e492af13b
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466685"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092955"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 
-Inspekcji usługi Azure SQL database śledzi zdarzenia bazy danych i zapisuje je do inspekcji logowania na koncie magazynu platformy Azure. Inspekcja również:
+Przeprowadzanie inspekcji na platformie Azure [bazy danych SQL](sql-database-technical-overview.md) i [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) śledzi zdarzenia bazy danych i zapisuje je do inspekcji dzienniku na swoje konto usługi Azure storage, obszar roboczy pakietu OMS lub centrów zdarzeń. Inspekcja również:
 
 - Pomaga zachować zgodność z przepisami, analizować aktywność bazy danych i uzyskać wgląd w odchylenia i anomalie, które mogą oznaczać problemy biznesowe lub podejrzane naruszenia zabezpieczeń.
 
 - Włącza i ułatwia zgodności ze standardami zgodności, ale nie gwarantuje zgodności. Aby uzyskać więcej informacji na temat usługi Azure programy zgodność ze standardami tej pomocy technicznej, zobacz [Centrum zaufania systemu Azure](https://azure.microsoft.com/support/trust-center/compliance/).
+
+
+> [!NOTE] 
+> Ten temat dotyczy serwera Azure SQL oraz baz danych zarówno usługi SQL Database, jak i SQL Data Warehouse utworzonych na serwerze Azure SQL. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database.
+
 
 ## <a id="subheading-1"></a>Omówienie inspekcji usługi Azure SQL database
 
@@ -51,7 +56,7 @@ Można zdefiniować zasady inspekcji dla konkretnej bazy danych lub jako domyśl
 
 - Jeśli *Inspekcja obiektów blob serwera jest włączona*, jego *zawsze ma zastosowanie do bazy danych*. Baza danych będzie monitorowane, niezależnie od ustawienia inspekcji bazy danych.
 
-- Włączenie inspekcji obiektów blob w bazie danych, oprócz Włączanie go na serwerze jest *nie* zastąpić lub zmienić ustawienia inspekcji obiektów blob serwera. Zarówno inspekcji będą istnieć obok siebie. Innymi słowy bazy danych jest różna dwa razy w sposób równoległy; raz przez zasady serwera banku i raz przez zasady bazy danych.
+- Włączanie inspekcji dla bazy danych lub dane magazynu obiektów blob, oprócz Włączanie go na serwerze jest *nie* zastąpić lub zmienić ustawienia inspekcji obiektów blob serwera. Zarówno inspekcji będą istnieć obok siebie. Innymi słowy bazy danych jest różna dwa razy w sposób równoległy; raz przez zasady serwera banku i raz przez zasady bazy danych.
 
    > [!NOTE]
    > Należy unikać włączenie inspekcji obiektów blob serwera i inspekcji obiektów blob dla bazy danych ze sobą, chyba że:
@@ -87,7 +92,7 @@ W poniższej sekcji opisano konfigurację inspekcji przy użyciu witryny Azure p
 
     ![konto magazynu](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
-7. Aby skonfigurować zapisywanie inspekcji dzienników z obszarem roboczym usługi Log Analytics, wybierz opcję **usługi Log Analytics (wersja zapoznawcza)** , a następnie otwórz **szczegóły usługi Log Analytics**. Wybierz lub Utwórz obszar roboczy usługi Log Analytics, której będą zapisywane dzienniki, a następnie kliknij przycisk **OK**.
+7. Aby skonfigurować zapisywanie inspekcji dzienniki do obszaru roboczego usługi Log Analytics, wybierz opcję **usługi Log Analytics (wersja zapoznawcza)** , a następnie otwórz **szczegóły usługi Log Analytics**. Wybierz lub Utwórz obszar roboczy usługi Log Analytics, której będą zapisywane dzienniki, a następnie kliknij przycisk **OK**.
 
     ![Log Analytics](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 
@@ -98,6 +103,11 @@ W poniższej sekcji opisano konfigurację inspekcji przy użyciu witryny Azure p
 9. Kliknij pozycję **Zapisz**.
 10. Jeśli chcesz dostosować zdarzenia poddawane inspekcji, to zrobić za pomocą [poleceń cmdlet programu PowerShell](#subheading-7) lub [interfejsu API REST](#subheading-9).
 11. Po skonfigurowaniu ustawień inspekcji można włączyć funkcji wykrywania zagrożeń i skonfigurować wiadomości e-mail, aby otrzymywać alerty zabezpieczeń. Korzystając z wykrywania zagrożeń, otrzymujesz alerty proaktywne na nietypowe działania bazy danych, które mogą wskazywać potencjalne zagrożenia bezpieczeństwa. Aby uzyskać więcej informacji, zobacz [wprowadzenie do wykrywania zagrożeń](sql-database-threat-detection-get-started.md).
+
+
+> [!IMPORTANT]
+>Włączanie inspekcji usługi Azure SQL Data Warehouse, lub na serwerze usługi Azure SQL Data Warehouse, **spowoduje w magazynie danych wznawiane**, nawet w przypadku, gdy wcześniej został wstrzymany. **Upewnij się, na wstrzymanie magazynu danych ponownie, po włączeniu inspekcji**. "
+
 
 ## <a id="subheading-3"></a>Analizowanie dzienników inspekcji i raporty
 
@@ -206,6 +216,9 @@ W środowisku produkcyjnym prawdopodobnie okresowo odświeżyć klucze magazynu.
     FAILED_DATABASE_AUTHENTICATION_GROUP
 
     Można skonfigurować inspekcję różnego rodzaju akcje i grup akcji przy użyciu programu PowerShell, zgodnie z opisem w [Zarządzanie inspekcji usługi SQL database przy użyciu programu Azure PowerShell](#subheading-7) sekcji.
+
+- Podczas uwierzytelniania usługi AAD nie powiodło się będą rekordy logowania *nie* pojawiają się w dzienniku inspekcji SQL. Aby wyświetlić rekordy inspekcji logowania nie powiodło się, należy odwiedzić [portalu Azure Active Directory]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md), który rejestruje szczegółowe informacje o tych zdarzeń.
+
 
 ## <a id="subheading-7"></a>Zarządzanie inspekcji usługi SQL database przy użyciu programu Azure PowerShell
 

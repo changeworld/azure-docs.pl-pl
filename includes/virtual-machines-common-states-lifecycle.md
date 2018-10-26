@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
-ms.openlocfilehash: 603e7c3a0c30eb42cb75d6a6ff87a96d847b7c9f
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: e1dc637d2f629b5002c2e8796fbd29a95478c392
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "40100811"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50035199"
 ---
 Azure Virtual Machines (VMs) przechodzą przez różne stany, które można podzielić na *aprowizacji* i *power* stanów. Celem tego artykułu jest do opisywania tych stanów i specjalnie Podświetl, gdy klienci są rozliczane na przykład użycia. 
 
@@ -287,7 +287,7 @@ Po zakończeniu operacji maszyny Wirtualnej spowoduje przejście do jednej z nas
 
 Widok wystąpienia interfejsu API zawiera informacje o stan uruchomienia maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [Virtual Machines — widok wystąpienia](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview) dokumentacji interfejsu API.
 
-Eksplorator zasobów Azure udostępnia prosty interfejs użytkownika do wyświetlania stanu działania maszyny Wirtualnej: [Eksploratora zasobów] (https://resources.azure.com/).
+Eksplorator zasobów Azure udostępnia prosty interfejs użytkownika do wyświetlania stanu działania maszyny Wirtualnej: [Eksploratora zasobów](https://resources.azure.com/).
 
 Stany aprowizowania są widoczne właściwości maszyny Wirtualnej i widok wystąpienia. Stany zasilania są dostępne w widoku wystąpienia maszyny wirtualnej. 
 

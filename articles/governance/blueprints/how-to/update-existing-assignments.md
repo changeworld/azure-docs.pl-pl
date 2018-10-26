@@ -4,16 +4,16 @@ description: Więcej informacji na temat aktualizowania istniejącego przypisani
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: ecac0fb21a6691874d5e8db49eadd7114d41845f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2c9f660e54da50e32ce1d0dc43b0efeacd643c57
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956204"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093789"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Jak zaktualizować istniejące przypisanie planu
 
@@ -25,11 +25,11 @@ Po przypisaniu planu można zaktualizować przypisania. Istnieje kilka powodów,
 
 ## <a name="updating-assignments"></a>Aktualizowanie przypisań
 
-1. Uruchom usługę Azure schematy w witrynie Azure portal, klikając **wszystkich usług** wyszukiwanie i wybieranie **zasad** w okienku po lewej stronie. Na **zasad** kliknij na **plany**.
+1. Kliknij pozycję **wszystkich usług** wyszukiwanie i wybieranie **zasad** w okienku po lewej stronie. Na stronie **Zasady** kliknij pozycję **Strategie**.
 
-1. Wybierz **przypisane plany** ze strony po lewej stronie.
+1. Wybierz pozycję **Przypisane strategie** w lewej części strony.
 
-1. Na liście Schematy, kliknij lewym przyciskiem myszy przypisanie planu, a następnie kliknij przycisk **przypisanie aktualizacji** lub kliknij prawym przyciskiem myszy przypisanie planu i wybrać **przypisanie aktualizacji**.
+1. Na liście Schematy kliknij lewym przyciskiem myszy przypisanie planu. Następnie kliknij przycisk **przypisanie aktualizacji** lub kliknij prawym przyciskiem myszy przypisanie planu i wybrać **przypisanie aktualizacji**.
 
    ![Przypisanie aktualizacji](../media/update-existing-assignments/update-assignment.png)
 
@@ -45,27 +45,31 @@ Po przypisaniu planu można zaktualizować przypisania. Istnieje kilka powodów,
 
 ## <a name="rules-for-updating-assignments"></a>Aktualizowanie przypisania zasad
 
-Wdrożenie zaktualizowanego przypisania regułom kilka ważnych. Reguły te określają, co się dzieje z istniejącego zasobu w zależności od tego, czy żądana zmiana i rodzaj artefaktu zasobów jest wdrożony lub aktualizowane.
+Wdrożenie zaktualizowanego przypisania regułom kilka ważnych. Reguły te określają, co się dzieje z już wdrożonych zasobów. Żądana zmiana i typu zasobu artefaktu jest wdrożony lub zaktualizowano Określ akcje, które są pobierane.
 
 - Przypisania ról
-  - Jeśli zmiany roli lub osoby przypisanej roli, (użytkownika, grupy lub aplikacji), jest tworzone nowe przypisanie roli. Przypisanie roli wdrożonej wcześniej pozostanie w miejscu.
+  - Jeśli zmiany roli lub osoby przypisanej roli, (użytkownika, grupy lub aplikacji), jest tworzone nowe przypisanie roli. Przypisania ról, które wcześniej wdrożone są pozostawiane w miejscu.
 - Przypisania zasad
   - Zmiana parametrów przypisania zasad jest aktualizowany istniejącego przypisania.
-  - Zmiana definicji przypisania zasad jest tworzony nowe przypisanie zasad. Przypisanie zasad wdrożonej wcześniej pozostanie w miejscu.
-  - Jeśli artefaktu przypisania zasad jest usuwany z planu, przypisanie zasad wdrożonej wcześniej pozostanie w miejscu.
+  - Zmiana definicji przypisania zasad jest tworzony nowe przypisanie zasad. Przypisania zasad, które wcześniej wdrożone są pozostawiane w miejscu.
+  - Jeśli artefaktu przypisania zasad jest usuwany z planu, należy wdrożyć zasady, które przydziały są pozostawiane w miejscu.
 - Szablony usługi Azure Resource Manager
-  - Szablon jest przetwarzany za pomocą usługi Resource Manager jako **umieścić**. Zgodnie z każdego typu zasobu obsługuje to inaczej, można znaleźć w dokumentacji dla każdego zasobu dołączone do określenia wpływu tej akcji uruchamiania przez schematy.
+  - Szablon jest przetwarzany za pomocą usługi Resource Manager jako **umieścić**. Zgodnie z każdego typu zasobu obsługuje tę akcję w inny sposób, można znaleźć w dokumentacji dla każdego zasobu dołączone do określenia wpływu tej akcji uruchamiania przez schematy.
 
 ## <a name="possible-errors-on-updating-assignments"></a>Ewentualne błędy na aktualizowanie przypisań
 
-Podczas aktualizowania przypisań, istnieje możliwość zmiany naruszające podczas wykonywania. Na przykład zmienia lokalizację grupy zasobów po została już wdrożona. Wszelkie zmiany, które są obsługiwane przez [usługi Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md) może zostać wykonane, ale dowolny to zmienić, będą zwracały błędy za pomocą usługi Azure Resource Manager spowoduje niepowodzenie przypisania.
+Podczas aktualizowania przypisań, istnieje możliwość zmiany naruszające podczas wykonywania. Przykład zmienia lokalizację grupy zasobów po została już wdrożona. Wszelkie zmiany, które są obsługiwane przez [usługi Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md) może zostać wykonane, ale dowolny to zmienić, będą zwracały błędy za pomocą usługi Azure Resource Manager spowoduje niepowodzenie przypisania.
 
-Nie ma żadnego limitu, na ile razy moduł przypisania, które mogą być aktualizowane. W związku z tym jeśli wystąpi błąd, albo z powodu zły parametr, istniejącego obiektu lub zmiana zabroniona przez usługę Azure Resource Manager określania błędu i wprowadzić inną aktualizację przypisania.
+Nie ma żadnego limitu, na ile razy moduł przypisania, które mogą być aktualizowane. Jeśli wystąpi błąd, należy określić ten błąd i wprowadzać inną aktualizację przypisania.  Przykładowe scenariusze błąd:
+
+- Nieprawidłowy parametr
+- Już istniejący obiekt
+- Zmiany nie obsługiwane przez usługę Azure Resource Manager
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [planu cyklu życia](../concepts/lifecycle.md)
-- Opis sposobu użycia [statycznych i dynamicznych parametrów](../concepts/parameters.md)
-- Dowiedz się, jak dostosować [planu sekwencjonowania](../concepts/sequencing-order.md)
-- Dowiedz się, jak używać [planu blokowanie zasobów](../concepts/resource-locking.md)
-- Rozwiązywanie problemów podczas przypisywania planu z [Ogólne rozwiązywanie problemów](../troubleshoot/general.md)
+- Dowiedz się więcej na temat [cyklu życia strategii](../concepts/lifecycle.md)
+- Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../concepts/parameters.md)
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../concepts/sequencing-order.md)
+- Dowiedz się, jak używać [blokowania zasobów strategii](../concepts/resource-locking.md)
+- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](../troubleshoot/general.md)

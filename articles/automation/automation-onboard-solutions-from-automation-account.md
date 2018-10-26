@@ -9,20 +9,20 @@ ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 1ed76b0505747831363ea829f1cb91b3e056282a
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: d031965a812cd218fbb4e78dfbf90ee01c26f5bb
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352450"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085981"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Dołączanie rozwiązania Update Management, śledzenia zmian i spisu
 
-Usługa Azure Automation oferuje rozwiązania do zarządzania aktualizacjami zabezpieczeń systemu operacyjnego, śledzenie zmian i spisu zainstalowanych na komputerach. Istnieje wiele sposobów dołączania maszyn, możesz dołączyć rozwiązanie [z maszyny wirtualnej](automation-onboard-solutions-from-vm.md), [z przeglądania wielu maszyn](automation-onboard-solutions-from-browse.md), z poziomu konta usługi Automation lub przez [elementurunbook](automation-onboard-solutions.md). W tym artykule opisano dołączania do tych rozwiązań z poziomu konta usługi Automation.
+Usługa Azure Automation oferuje rozwiązania do zarządzania aktualizacjami zabezpieczeń systemu operacyjnego, śledzenie zmian i spisu zainstalowanych na komputerach. Istnieje wiele sposobów dołączania maszyn, możesz dołączyć rozwiązanie [z maszyny wirtualnej](automation-onboard-solutions-from-vm.md), [z wieloma maszynami przeglądania](automation-onboard-solutions-from-browse.md), z poziomu konta usługi Automation lub przez [runbook](automation-onboard-solutions.md). W tym artykule opisano dołączania do tych rozwiązań z poziomu konta usługi Automation.
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do platformy Azure na stronie https://portal.azure.com
+Zaloguj się do platformy Azure w witrynie https://portal.azure.com
 
 ## <a name="enable-solutions"></a>Włączanie rozwiązań
 
@@ -46,17 +46,17 @@ Wybierz **rozwiązanie Update management** w obszarze **rozwiązania UPDATE MANA
 
 Każde rozwiązanie używa konfiguracji zakresu wewnątrz obszaru roboczego pod kątem komputerów, które rozwiązanie. Konfiguracja zakresu jest grupy co najmniej jeden zapisane wyszukiwania, która jest używana do ograniczania zakresu rozwiązania do określonych komputerów. Konfiguracje zakresu, w ramach konta usługi Automation w ramach dostępu do **powiązane zasoby**, wybierz opcję **obszaru roboczego**. Następnie w obszarze roboczym **źródła danych obszaru roboczego**, wybierz opcję **konfiguracji zakresu**.
 
-Jeśli wybrany obszar roboczy nie ma rozwiązania Zarządzanie aktualizacjami lub śledzenia zmian, ale są tworzone następujące konfiguracje zakresu:
+Jeśli wybrany obszar roboczy nie ma jeszcze rozwiązań zarządzania aktualizacjami lub śledzenia zmian, są tworzone następujące konfiguracje zakresu:
 
 * **MicrosoftDefaultScopeConfig ChangeTracking**
 
 * **Aktualizacje MicrosoftDefaultScopeConfig**
 
-Jeśli wybrany obszar roboczy ma już rozwiązania. Rozwiązanie nie jest ponownie wdrożone, a konfigurację zakresu nie została dodana do niego.
+Jeśli wybrany obszar roboczy ma już rozwiązania, rozwiązanie nie jest ponownie wdrożone, a konfiguracja zakresu nie została dodana do niego.
 
 ## <a name="saved-searches"></a>Zapisane wyszukiwania
 
-Gdy komputer zostanie dodany do zarządzania aktualizacjami lub śledzenia zmian i spisu rozwiązania, są one dodawane do jednej z dwóch zapisanych wyszukiwań, w obszarze roboczym. Zapisane wyszukiwanie są zapytania, które zawierają komputery, które są przeznaczone dla tych rozwiązań.
+Po dodaniu komputera do zarządzania aktualizacjami lub śledzenia zmian i spisu rozwiązania są dodawane do jednej z dwóch zapisanych wyszukiwań, w obszarze roboczym. Zapisane wyszukiwanie są zapytania, które zawierają komputery, które są przeznaczone dla tych rozwiązań.
 
 Przejdź do swojego konta usługi Automation, a następnie wybierz pozycję **zapisane wyszukiwania** w obszarze **ogólne**. Dwa zapisanych wyszukiwań, używane przez te rozwiązania są widoczne w poniższej tabeli:
 
@@ -81,23 +81,23 @@ Kliknij przycisk **+ Dodaj maszyny wirtualne platformy Azure**, wybierz co najmn
 
 Maszyny nie na platformie Azure należy dodać ręcznie. Z automatyzacji konta wybierz **spisu** lub **śledzenie zmian** w obszarze **zarządzania konfiguracją**, lub **zarządzanie aktualizacjami** w obszarze **rozwiązania UPDATE MANAGEMENT**.
 
-Kliknij przycisk **maszyny spoza platformy Azure Dodaj**. Spowoduje to otwarcie nowego okna przeglądarki z [instrukcje dotyczące sposobu instalowania i konfigurowania programu Microsoft Monitoring Agent na komputerze](../log-analytics/log-analytics-concept-hybrid.md) tak maszyny można rozpocząć raportowania do rozwiązania. Jeśli jesteś dołączania komputerze, na którym obecnie zarządzane przez program System Center Operations Manager, nowy agent nie jest wymagane, informacje o obszarze roboczym jest wprowadzany do istniejącego agenta.
+Kliknij przycisk **maszyny spoza platformy Azure Dodaj**. Ta akcja powoduje otwarcie się nowe okno przeglądarki z [instrukcje dotyczące sposobu instalowania i konfigurowania programu Microsoft Monitoring Agent na komputerze](../log-analytics/log-analytics-concept-hybrid.md) tak maszyny można rozpocząć raportowania do rozwiązania. W przypadku dołączania komputerze, na którym obecnie zarządzane przez program System Center Operations Manager, nowy agent nie jest wymagane, informacje o obszarze roboczym jest wprowadzany do istniejącego agenta.
 
 ## <a name="onboard-machines-in-the-workspace"></a>Dołączanie maszyn w obszarze roboczym
 
-Ręcznie zainstalować maszyny lub już raportowania do Twoich potrzeb obszar roboczy do dodania do usługi Azure Automation dla rozwiązania do włączenia maszyny. Z automatyzacji konta wybierz **spisu** lub **śledzenie zmian** w obszarze **zarządzania konfiguracją**, lub **zarządzanie aktualizacjami** w obszarze **rozwiązania UPDATE MANAGEMENT**.
+Ręcznie zainstalować maszyny lub maszyny, na których już raporty do obszaru roboczego musi zostać dodane do usługi Azure Automation dla rozwiązania, aby włączyć. Z automatyzacji konta wybierz **spisu** lub **śledzenie zmian** w obszarze **zarządzania konfiguracją**, lub **zarządzanie aktualizacjami** w obszarze **rozwiązania UPDATE MANAGEMENT**.
 
-Wybierz **zarządzać maszynami**. Spowoduje to otwarcie **Zarządzaj maszynami** strony. Ta strona umożliwia włączenie rozwiązania w wybrany zestaw maszyn wirtualnych z wszystkich dostępnych maszynach, lub włączyć to rozwiązanie dla wszystkich maszyn w bieżącym i włączenie go dla wszystkich przyszłych maszynach.
+Wybierz **zarządzać maszynami**. Ta akcja powoduje otwarcie **Zarządzaj maszynami** strony. Ta strona umożliwia włączenie rozwiązania w wybrany zestaw maszyn wirtualnych z wszystkich dostępnych maszynach, lub włączyć to rozwiązanie dla wszystkich maszyn w bieżącym i włączenie go dla wszystkich przyszłych maszynach. **Zarządzać maszynami** przycisk mogą być wyszarzone, jeśli wcześniej została wybrana opcja **Włącz na wszystkich dostępnych i przyszłych maszynach**.
 
 ![Zapisane wyszukiwania](media/automation-onboard-solutions-from-automation-account/managemachines.png)
 
 ### <a name="all-available-machines"></a>Wszystkich dostępnych maszynach
 
-Aby włączyć rozwiązanie dla wszystkich dostępnych maszynach, zaznacz **Włącz na wszystkich dostępnych maszynach**. Powoduje to wyłączenie kontroli w celu dodania maszyn indywidualnie. To zadanie dodaje wszystkie nazwy maszyn raportujących do obszaru roboczego do grupy komputerów, zapisane zapytania wyszukiwania. Gdy zaznaczone, powoduje to wyłączenie **Zarządzaj maszynami** przycisku.
+Aby włączyć rozwiązanie dla wszystkich dostępnych maszynach, zaznacz **Włącz na wszystkich dostępnych maszynach**. Ta akcja wyłącza kontroli w celu dodania maszyn indywidualnie. To zadanie dodaje wszystkie nazwy maszyn raportujących do obszaru roboczego do grupy komputerów, zapisane zapytania wyszukiwania. Po wybraniu ta akcja wyłącza **Zarządzaj maszynami** przycisku.
 
 ### <a name="all-available-and-future-machines"></a>Wszystkich dostępnych i przyszłych maszynach
 
-Aby włączyć rozwiązanie dla wszystkich dostępnych maszynach i wszystkich przyszłych maszynach, zaznacz **Włącz na wszystkich dostępnych i przyszłych maszynach**. Ta opcja usuwa zapisane wyszukiwania i konfiguracje zakresów z obszaru roboczego. Spowoduje to otwarcie rozwiązania do wszystkich platformy Azure i maszyn nienależących do platformy Azure, które raportują do obszaru roboczego. Gdy zaznaczone, powoduje to wyłączenie **Zarządzaj maszynami** przycisku.
+Aby włączyć rozwiązanie dla wszystkich dostępnych i przyszłych maszynach, zaznacz **Włącz na wszystkich dostępnych i przyszłych maszynach**. Ta opcja usuwa zapisane wyszukiwania i konfiguracje zakresów z obszaru roboczego. Ta akcja powoduje otwarcie rozwiązania do wszystkich platformy Azure i maszyn nienależących do platformy Azure, które raportują do obszaru roboczego. Po wybraniu ta akcja wyłącza **Zarządzaj maszynami** przycisk trwale, ponieważ nie ma żadnych konfiguracji zakresu po lewej.
 
 ### <a name="selected-machines"></a>Wybrane maszyny
 
@@ -111,14 +111,14 @@ Następujące rozwiązania zależą od obszaru roboczego usługi Log Analytics:
 * [Śledzenie zmian](automation-change-tracking.md)
 * [Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu](automation-solution-vm-management.md)
 
-Jeśli zdecydujesz, że już nie chcesz zintegrować konta usługi Automation z usługą Log Analytics, możesz odłączyć konta bezpośrednio w witrynie Azure portal.  Przed kontynuowaniem należy najpierw usunąć rozwiązania, o których wspomniano wcześniej, w przeciwnym razie ten proces nie będzie mógł kontynuować. Zapoznaj się z artykułem dla danego rozwiązania, które zostały zaimportowane, aby zrozumieć kroki wymagane do usunięcia go.
+Jeśli zdecydujesz, że już nie chcesz zintegrować konta usługi Automation z usługą Log Analytics, możesz odłączyć konta bezpośrednio w witrynie Azure portal.  Zanim będziesz kontynuować, musisz najpierw usunąć rozwiązania, o których wspomniano wcześniej, w przeciwnym razie ten proces nie będzie mógł kontynuować. Zapoznaj się z artykułem dla danego rozwiązania, które zostały zaimportowane, aby zrozumieć kroki wymagane do usunięcia go.
 
 Po usunięciu tych rozwiązań, można wykonać poniższe kroki, aby odłączyć konto usługi Automation.
 
 > [!NOTE]
 > Niektóre rozwiązania, w tym wcześniejsze wersje rozwiązania do monitorowania usługi Azure SQL zostały utworzone zasoby usługi automation i może również muszą zostać usunięte przed odłączanie obszaru roboczego.
 
-1. W witrynie Azure Portal otwórz konto usługi Automation, a na automatyzację konta wybierz stronę **połączony obszar roboczy** sekcji **powiązane zasoby** po lewej stronie.
+1. W witrynie Azure Portal otwórz konto usługi Automation, a na automatyzację konta wybierz stronę **połączony obszar roboczy** sekcji etykietą **powiązane zasoby** po lewej stronie.
 
 2. Na stronie odłączania obszaru roboczego kliknij **odłączanie obszaru roboczego**.
 
@@ -126,7 +126,7 @@ Po usunięciu tych rozwiązań, można wykonać poniższe kroki, aby odłączyć
 
    Zostanie wyświetlony monit sprawdzający, czy chcesz kontynuować.
 
-3. Gdy usługa Azure Automation usiłuje odłączyć konto obszaru roboczego usługi Log Analytics, możesz śledzić postęp w obszarze **powiadomienia** z menu.
+3. Gdy usługa Azure Automation próbuje odłączyć konto obszaru roboczego usługi Log Analytics, możesz śledzić postęp w obszarze **powiadomienia** z menu.
 
 Jeśli używane jest rozwiązanie do zarządzania aktualizacjami, opcjonalnie można usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
 
@@ -134,7 +134,7 @@ Jeśli używane jest rozwiązanie do zarządzania aktualizacjami, opcjonalnie mo
 
 * Grupy hybrydowych procesów roboczych utworzone dla rozwiązania — każda będzie miała podobnie do maszyna1.contoso.com_9ceb8108 - 26 c 9-4051-b6b3-227600d715c8).
 
-Jeśli uruchamianie/zatrzymywanie maszyn wirtualnych jest używana podczas szczytu rozwiązania, opcjonalnie można usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
+Jeśli została użyta podczas szczytu rozwiązania początkowego i zatrzymywanie maszyn wirtualnych, opcjonalnie może chcesz usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
 
 * Uruchamianie i zatrzymywanie maszyn wirtualnych elementu runbook harmonogramy
 * Uruchamianie i zatrzymywanie elementów runbook maszyny Wirtualnej

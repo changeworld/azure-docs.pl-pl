@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 5ddf510d50f38ed9aaf742bd06c330e53ffe1391
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6f007ca3aacb338c14bf481ee58407596c8290ad
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992800"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091627"
 ---
 # <a name="alerts-on-activity-log"></a>Alerty dotyczące dzienników aktywności 
 
@@ -50,7 +50,7 @@ Alerty dziennika aktywności skorzystać z kilku typowych opcji:
 - **Zdarzenie zainicjowane przez**: znany także jako "obiekt wywołujący." Adres e-mail lub usługi Azure Active Directory identyfikator użytkownika, który wykonał operację.
 
 > [!NOTE]
-> W ramach subskrypcji w maksymalnie 100 reguł alertów dla działania zakresu na poziomie: pojedynczego zasobu, wszystkie zasoby w grupy (lub) poziom całej subskrypcji.
+> W ramach subskrypcji można utworzyć maksymalnie 100 reguł alertów dla działania zakresu na poziomie: pojedynczego zasobu, wszystkie zasoby w grupy (lub) poziom całej subskrypcji.
 
 Po aktywowaniu alertu dziennika aktywności używa grupy akcji do wygenerowania powiadomienia lub akcji. Grupy akcji to zbiór wielokrotnego użytku odbiorców powiadomień, takie jak adresy e-mail, numerów telefonów adresy URL elementu webhook lub wysyłać wiadomości SMS. Odbiorniki mogą być przywoływane z wielu alertów, które scentralizowane i grupach kanałów powiadomień. Podczas definiowania alertu dziennika aktywności, masz dwie opcje. Możesz:
 

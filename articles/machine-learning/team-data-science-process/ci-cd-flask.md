@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: jainr
-ms.openlocfilehash: b0368e742c990feed626a1c4982bfedc35785b49
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: fb162c45b8bd53fd4d994e0eb83a38438873d627
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304292"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094398"
 ---
 # <a name="devops-for-artificial-intelligence-ai-applications-creating-continuous-integration-pipeline-on-azure-using-docker-and-kubernetes"></a>Metodyka DevOps na potrzeby aplikacji sztucznej inteligencji (AI): tworzenie potoku ciągłej integracji na platformie Azure przy użyciu platformy Docker i Kubernetes
 Dla aplikacji sztucznej Inteligencji są często dwóch strumieni pracy analityków danych, tworzenie modeli uczenia maszynowego i deweloperów aplikacji, tworzenie aplikacji i ujawnienie go użytkownikom końcowym z. W tym artykule pokażemy, jak do zaimplementowania ciągłej integracji (CI) / ciągłe dostarczanie (CD) potoku dla aplikacji sztucznej Inteligencji. Aplikacji sztucznej Inteligencji składa się z kodu aplikacji, wbudowane z modelu uczenia (ML) wstępnie przetrenowane maszyny. W tym artykule firma Microsoft pobiera pretrained modelu z konta magazynu prywatnego obiektu blob platformy Azure, może to być także konta usług AWS S3. Będziemy używać aplikacji internetowej platformy flask prostego języka python do tego artykułu.
@@ -38,12 +38,12 @@ Poniżej przedstawiono wymagania wstępne do korzystania z potoku CI/CD opisane 
 * [Organizacja DevOps platformy Azure](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
 * [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * [Klaster usługi Azure Container Service (AKS) uruchamianie rozwiązania Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
-* [Konto usługi Azure Container rejestru (ACR)](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal)
+* [Konto usługi Azure Container Registry (ACR)](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal)
 * [Zainstaluj narzędzie Kubectl w celu uruchomienia poleceń w klastrze Kubernetes.](https://kubernetes.io/docs/tasks/tools/install-kubectl/) Firma Microsoft będzie on potrzebny można pobrać konfiguracji z klastra usługi ACS. 
 * Utwórz rozwidlenie repozytorium do konta usługi GitHub.
 
 ## <a name="description-of-the-cicd-pipeline"></a>Opis potoku ciągłej integracji/ciągłego wdrażania
-Kopnięć potoku wyłączone dla każdego nowego zatwierdzenia i uruchom zestaw testów, jeśli przebiegów testowych pobiera najnowszą kompilację pakiety go w kontenerze platformy Docker. Kontener jest następnie wdrażana przy użyciu usługi Azure container service (ACS) i obrazy są bezpiecznie przechowywane w usłudze Azure container registry (ACR). Usługi ACS jest uruchomiona Kubernetes dla zarządzania klastrem kontenera, ale można wybrać, Docker Swarm lub Mesos.
+Kopnięć potoku wyłączone dla każdego nowego zatwierdzenia i uruchom zestaw testów, jeśli przebiegów testowych pobiera najnowszą kompilację pakiety go w kontenerze platformy Docker. Kontener jest następnie wdrażana przy użyciu usługi Azure Container Service (ACS) i obrazy są bezpiecznie przechowywane w usłudze Azure Container Registry (ACR). Usługi ACS jest uruchomiona Kubernetes dla zarządzania klastrem kontenera, ale można wybrać, Docker Swarm lub Mesos.
 
 Aplikacja bezpiecznie pobiera najnowszy model z konta usługi Azure Storage i pakiety, jako część aplikacji. Wdrożonej aplikacji ma kod aplikacji i modelu usługi uczenie Maszynowe spakowany jako jeden kontener. Oddziela to aplikacja deweloperów i analityków danych, aby upewnić się, że ich aplikacji w środowisku produkcyjnym zawsze działa najnowszy kod z najnowszy model uczenia Maszynowego.
 
@@ -70,5 +70,5 @@ Architektura potoku są podane poniżej.
 ## <a name="references"></a>Dokumentacja
 * [Zespołowe przetwarzanie danych naukowych (TDSP)](https://aka.ms/tdsp)
 * [Usługi Azure Machine Learning (AML)](https://docs.microsoft.com/azure/machine-learning/service/)
-* [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/vso/)
+* [Usługa Azure DevOps](https://www.visualstudio.com/vso/)
 * [Usługi Azure Kubernetes (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes)

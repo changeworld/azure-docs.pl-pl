@@ -1,5 +1,16 @@
-
-
+---
+author: ecfan
+ms.service: logic-apps
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: estfan
+ms.openlocfilehash: 0cabc58d856c09accd9b1924fe63d6518b1cb9ef
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093502"
+---
 Aby można było nawiązać **usługi SharePoint Online**, należy podać swoją tożsamość (nazwa użytkownika i hasło, inteligentne poświadczeń karty itp.) do usługi SharePoint Online. Gdy uwierzytelnienie powiodło się, możesz przejść do korzystania z łącznika usługi SharePoint Online w aplikacji logiki. 
 
 Znajduje się w Projektancie aplikacji logiki, wykonaj następujące kroki, aby zalogować się do programu SharePoint do tworzenia **połączenia** do użycia w aplikacji logiki:

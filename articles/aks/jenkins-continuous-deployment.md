@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: iainfou
-ms.openlocfilehash: cdf8c64f20e15074a1f055d2ab7abf4304d62505
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 5417e59f15ffcf48cc2af27044355d2bb5c9edaf
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017911"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087699"
 ---
 # <a name="create-a-continuous-deployment-pipeline-with-jenkins-and-azure-kubernetes-service-aks"></a>Utwórz potok ciągłego wdrażania za pomocą systemu Jenkins i usługi Azure Kubernetes Service (AKS)
 
@@ -34,9 +34,11 @@ Następujące elementy jest niezbędna, aby wykonać kroki opisane w tym artykul
 - [Klastra AKS] [ aks-quickstart] i `kubectl` skonfigurowano [poświadczeń klastra usługi AKS][aks-credentials].
 - [Rejestru Azure Container Registry (ACR)][acr-quickstart], nazwę serwera logowania usługi ACR i klastrem AKS skonfigurowany tak, aby [uwierzytelnianie za pomocą rejestru ACR] [ acr-authentication].
 
-- Wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej zainstalowany i skonfigurowany. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
+- Wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej zainstalowany i skonfigurowany. Uruchom `az --version` Aby znaleźć wersję. Jeśli potrzebujesz instalacja lub uaktualnienie, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj][install-azure-cli].
 - [Zainstalowana platforma docker] [ docker-install] w systemie deweloperskim.
 - Konto usługi GitHub [osobisty token dostępu GitHub][git-access-token]i zainstalowanego w systemie deweloperskim klienta Git.
+
+- Jeśli podasz własne narzędzia Jenkins wystąpienia, a nie w tym przykładzie inicjowanych przez skrypty sposób wdrażania narzędzia Jenkins, usługi Jenkins wystąpienia potrzeb [platformy Docker zainstalowany i skonfigurowany] [ docker-install] i [kubectl][kubectl-install].
 
 ## <a name="prepare-the-application"></a>Przygotowywanie aplikacji
 
@@ -317,6 +319,7 @@ W tym artykule przedstawiono sposób użycia narzędzia Jenkins w ramach rozwią
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [docker-install]: https://docs.docker.com/install/
+[kubectl-install]: https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
 <!-- LINKS - internal -->
 [az-acr-list]: /cli/azure/acr#az-acr-list

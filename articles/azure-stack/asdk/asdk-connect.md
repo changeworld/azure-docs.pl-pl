@@ -12,28 +12,32 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 10/25/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 55be312046f5cdea2c1481ed435b5859ab2c2540
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.reviewer: knithinc
+ms.openlocfilehash: 1b5d5a2934205877f0e0c2ac891e62c90e960b3d
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026907"
+ms.locfileid: "50085153"
 ---
-# <a name="connect-to-the-azure-stack-development-kit"></a>Łączenie usługi Azure Stack Development Kit
+# <a name="connect-to-the-asdk"></a>Nawiązać połączenie z ASDK
 
-Aby zarządzać zasobami, musisz najpierw połączyć do usługi Azure Stack Development Kit (ASDK). W tym artykule opisano kroki, które należy wykonać, aby nawiązać połączenie z ASDK. Można użyć jednej z następujących opcji połączenia:
+Aby zarządzać zasobami, musisz najpierw połączyć do usługi Azure Stack Development Kit (ASDK). W tym artykule opisano kroki, które należy wykonać w celu nawiązywanie ASDK przy użyciu następujących opcji połączenia:
 
-* [Podłączanie pulpitu zdalnego](#connect-with-remote-desktop). Po nawiązaniu połączenia za pomocą połączenia pulpitu zdalnego, pojedynczego użytkownika może szybko nawiązać połączenie deweloperski.
-* [Wirtualnej sieci prywatnej (VPN)](#connect-with-vpn). Po nawiązaniu połączenia za pośrednictwem sieci VPN, wielu użytkowników jednocześnie połączyć z klientom spoza infrastruktury Azure Stack. Połączenie sieci VPN wymaga konfiguracji.
+* [Podłączanie pulpitu zdalnego (RDP)](#connect-with-rdp). Po nawiązaniu połączenia za pomocą połączenia pulpitu zdalnego, pojedynczego użytkownika może szybko nawiązać połączenie deweloperski.
+* [Wirtualna sieć prywatna (VPN)](#connect-with-vpn). Po nawiązaniu połączenia za pośrednictwem sieci VPN, wielu użytkowników jednocześnie połączyć z klientom spoza infrastruktury Azure Stack. Połączenie sieci VPN wymaga konfiguracji.
 
-<a name="connect-to-azure-stack-with-remote-desktop"></a>
-##  <a name="connect-to-azure-stack-by-using-remote-desktop-connection"></a>Łączenie z usługi Azure Stack za pomocą połączenia pulpitu zdalnego
+<a name="connect-with-rdp"></a>
+## <a name="connect-to-azure-stack-using-rdp"></a>Nawiązywanie połączenia usługi Azure Stack przy użyciu protokołu RDP
 
-Jeden użytkownik współbieżnych można zarządzać zasobami w portalu operatora lub portalu użytkowników za pomocą połączenia pulpitu zdalnego.
+Jeden użytkownik współbieżnych zarządzać zasobami w portalu administratora usługi Azure Stack lub portalu użytkowników za pomocą połączenia pulpitu zdalnego bezpośrednio z komputera hosta ASDK. 
 
-1. Otworzyć usługę Podłączanie pulpitu zdalnego (mstc.exe) i Połącz do komputera hosta development kit jako **AzureStack\AzureStackAdmin** przy użyciu hasło określone podczas konfigurowania ASDK.  
+> [!TIP]
+> Ta opcja umożliwia także przy użyciu protokołu RDP ponownie gdy użytkownik jest zalogowany na komputerze-hoście ASDK Zaloguj się do maszyn wirtualnych utworzonych na komputerze-hoście ASDK. 
+
+1. Otworzyć usługę Podłączanie pulpitu zdalnego (mstc.exe) i nawiązać połączenie z development kit hosta adres IP komputera za pomocą konta mającego autoryzację do logowania się zdalnie do komputera hosta ASDK. Domyślnie **AzureStack\AzureStackAdmin** ma uprawnienia do zdalnej w komputerze hosta ASDK.  
 
 2. Na komputerze deweloperskim zestaw hosta otwórz Menedżera serwera (ServerManager.exe). Wybierz **lokalnego serwera**, wyłącz **Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer**i Zamknij Menedżera serwera.
 
@@ -44,15 +48,15 @@ Jeden użytkownik współbieżnych można zarządzać zasobami w portalu operato
 > [!NOTE]
 > Aby uzyskać więcej informacji o tym, kiedy należy używać konta, którego można zobaczyć [podstawy administracji ASDK](asdk-admin-basics.md#what-account-should-i-use).
 
-<a name="connect-to-azure-stack-with-vpn"></a>
-## <a name="connect-to-azure-stack-by-using-vpn"></a>Nawiązywanie połączenia usługi Azure Stack za pośrednictwem sieci VPN
+<a name="connect-with-vpn"></a>
+## <a name="connect-to-azure-stack-using-vpn"></a>Nawiązywanie połączenia przy użyciu sieci VPN w usłudze Azure Stack
 
-Aby ustanowić podzielony tunel połączenia sieci VPN z ASDK dostęp do usługi Azure Stack portali i zainstalowanych lokalnie narzędzi, takich jak Visual Studio i PowerShell. Korzystając z połączenia sieci VPN, połączyć wielu użytkowników jednocześnie do zasobów usługi Azure Stack pracujących ASDK.
+Aby ustanowić podzielony tunel połączenia sieci VPN na komputerze hosta ASDK dostęp do usługi Azure Stack portali i zainstalowanych lokalnie narzędzi, takich jak Visual Studio i PowerShell. Korzystając z połączenia sieci VPN, połączyć wielu użytkowników jednocześnie do zasobów usługi Azure Stack pracujących ASDK.
 
 Połączenie z siecią VPN jest obsługiwane dla usługi Azure AD i Active Directory Federation Services (AD FS) wdrożenia.
 
 > [!NOTE]
-> Połączenie sieci VPN nie zapewnia łączności na maszynach wirtualnych infrastruktury Azure Stack.
+> Połączenie sieci VPN *nie* zapewnić łączność z maszynami wirtualnymi platformy Azure Stack. Nie można nawiązać połączenie RDP maszyny wirtualne dla platformy Azure Stack po nawiązaniu połączenia za pośrednictwem sieci VPN.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 Przed skonfigurowaniem połączenia sieci VPN w taki sposób, aby ASDK, upewnij się, że zostały spełnione następujące wymagania wstępne.
@@ -98,29 +102,33 @@ Add-AzsVpnConnection `
 
 Jeśli Instalator zakończy się powodzeniem, **azurestack** pojawia się na liście połączeń sieci VPN.
 
-![Połączenia sieciowe](media/asdk-connect/image3.png)  
+![Połączenia sieciowe](media/asdk-connect/vpn.png)  
 
 ### <a name="connect-to-azure-stack"></a>Nawiązywanie połączenia z usługą Azure Stack
 
-Połącz się z wystąpieniem usługi Azure Stack przy użyciu jednej z następujących metod:  
+  Połącz się z wystąpieniem usługi Azure Stack przy użyciu jednej z następujących metod:  
 
-* Użyj `Connect-AzsVpn ` polecenia:
-    
-  ```PowerShell
-  Connect-AzsVpn `
-    -Password $Password
-  ```
+  * Użyj `Connect-AzsVpn ` polecenia:
+      
+    ```PowerShell
+    Connect-AzsVpn `
+      -Password $Password
+    ```
 
-  Po wyświetleniu monitu zaufania hosta usługi Azure Stack i zainstalować certyfikat z **AzureStackCertificateAuthority** w magazynie certyfikatów komputera lokalnego. 
+  * Na komputerze lokalnym, wybierz **ustawienia sieciowe** > **VPN** > **azurestack** > **połączyć**. W wierszu logowania wprowadź nazwę użytkownika (**AzureStack\AzureStackAdmin**) i hasło.
+
+Po raz pierwszy łączysz, użytkownik jest monitowany do zainstalowania certyfikatu głównego usługi Azure Stack z **AzureStackCertificateAuthority** w magazynie certyfikatów komputera lokalnego. Ten krok powoduje dodanie ASDK urzędu certyfikacji (CA) do listy zaufanych hostów. Kliknij przycisk **tak** instalacji certyfikatu.
+
+![Certyfikat główny](media/asdk-connect/cert.png)  
   
   > [!IMPORTANT]
-  > Monit może być ono ukryte przez okno programu PowerShell.
-
-* Na komputerze lokalnym, wybierz **ustawienia sieciowe** > **VPN** > **azurestack** > **połączyć**. W wierszu logowania wprowadź nazwę użytkownika (**AzureStack\AzureStackAdmin**) i hasło.
+  > Monit mogą być ukryte przez okno programu PowerShell lub innych aplikacji.
 
 ### <a name="test-vpn-connectivity"></a>Testowanie łączności sieci VPN
 
-Aby przetestować połączenie z portalu, otwórz przeglądarkę sieci web, a następnie przejdź do portalu użytkowników (https://portal.local.azurestack.external/) lub portalu administracyjnego (https://adminportal.local.azurestack.external/). Zaloguj się i tworzenia zasobów.  
+Aby przetestować połączenie z portalu, otwórz przeglądarkę sieci web, a następnie przejdź do portalu użytkowników (https://portal.local.azurestack.external/) lub portalu administracyjnego (https://adminportal.local.azurestack.external/). 
+
+Zaloguj się przy użyciu poświadczeń odpowiednią subskrypcję, aby utworzyć zasoby i zarządzać nimi.  
 
 ## <a name="next-steps"></a>Kolejne kroki
 

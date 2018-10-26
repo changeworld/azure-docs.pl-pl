@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 57446f068945d74351a77f21e16874d9e24ddcab
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: e8a09a9fc87bff692b5d5b4c54f87839f2591b63
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801934"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086951"
 ---
 # <a name="how-to-configure-password-writeback"></a>Instrukcje: Konfigurowanie funkcji zapisywania zwrotnego haseł
 
@@ -72,13 +72,14 @@ Aby skonfigurować odpowiednie uprawnienia do zapisywania zwrotnego haseł wyst�
 3. W lewym panelu, kliknij prawym przyciskiem myszy obiekt, który reprezentuje katalog główny domeny, a następnie wybierz pozycję **właściwości** > **zabezpieczeń** > **zaawansowane**.
 4. Z **uprawnienia** zaznacz **Dodaj**.
 5. Wybierz konto, które uprawnienia są stosowane do (z konfiguracji usługi Azure AD Connect).
-6. W **dotyczy** listy rozwijanej wybierz **potomne użytkownika** obiektów.
+6. W **dotyczy** listy rozwijanej wybierz **obiektów użytkowników podrzędny**.
 7. W obszarze **uprawnienia**, zaznacz pola dla następujących opcji:
-    * **Resetowanie hasła**
     * **Zmień hasło**
+    * **Resetowanie hasła**
+8. W obszarze **właściwości**, zaznacz pola dla następujących opcji:
     * **Zapis lockoutTime**
     * **Zapis pwdLastSet**
-8. Wybierz **Zastosuj/OK** Aby zastosować zmiany i zamknąć okna dialogowe.
+9. Wybierz **Zastosuj/OK** Aby zastosować zmiany i zamknąć okna dialogowe.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: glenga
-ms.openlocfilehash: 212f8b0dacf5fa56e48df99fb10b11da54df57ac
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 79fb24e85dea5a8d8d9ca637612ea4a65339a4e3
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44091224"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087416"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Usługa Azure powiązania usługi SendGrid funkcji
 
@@ -101,8 +101,9 @@ Poniżej przedstawiono kod skryptu języka C#:
 #r "SendGrid"
 using System;
 using SendGrid.Helpers.Mail;
+using Microsoft.Extensions.Logging;
 
-public static void Run(TraceWriter log, string input, out Mail message)
+public static void Run(ILogger log, string input, out Mail message)
 {
      message = new Mail
     {        
@@ -151,7 +152,7 @@ Poniżej przedstawiono kod JavaScript:
 ```javascript
 module.exports = function (context, input) {    
     var message = {
-         "personalizations": [ { "to": [ { "email": "sample@sample.com" } ] } ],
+         "personalizations": [ { "to": [ { "email": "sample@sample.com" } ] } ],
         from: { email: "sender@contoso.com" },        
         subject: "Azure news",
         content: [{

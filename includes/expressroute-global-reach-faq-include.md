@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 09/24/2018
+ms.date: 10/23/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b9c4cf6c90ef5507b318b4f13afb982aab151c79
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 4a3581b3d61c5ad17352c2865fc059704c1eece1
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48874100"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50035297"
 ---
 ### <a name="what-is-expressroute-global-reach"></a>Co to jest usługa ExpressRoute zasięgu globalnym?
 
@@ -21,7 +21,7 @@ Zasięgu globalnym usługi ExpressRoute jest usługą platformy Azure, który na
 
 ### <a name="how-do-i-enable-or-disable-expressroute-global-reach"></a>Jak włączyć lub wyłączyć zasięgu globalnym usługi ExpressRoute?
 
-Włącz zasięgu globalnym usługi ExpressRoute, łącząc ze sobą obwodów usługi ExpressRoute. Tę funkcję można wyłączyć przez odłączenie obwody. Zobacz konfiguracji.
+Włącz zasięgu globalnym usługi ExpressRoute, łącząc ze sobą obwodów usługi ExpressRoute. Tę funkcję można wyłączyć przez odłączenie obwody. Zobacz [konfiguracji](../articles/expressroute/expressroute-howto-set-global-reach.md).
 
 ### <a name="do-i-need-expressroute-premium-for-expressroute-global-reach"></a>Czy muszę mieć ExpressRoute Premium dla usługi ExpressRoute zasięgu globalnym?
 
@@ -36,6 +36,7 @@ Usługa ExpressRoute zapewnia łączność z sieci lokalnych usług chmurowych f
 Zasięgu globalnym usługi ExpressRoute jest obsługiwana w następujących krajach. Obwody usługi ExpressRoute musi zostać utworzony w lokalizacji komunikacji równorzędnej w tych krajach.
 
 * Australia
+* Francja
 * Hongkong
 * Irlandia
 * Japonia
@@ -58,3 +59,11 @@ Nie. Aby włączyć łączność między dowolnymi dwiema sieci lokalnej, należ
 ### <a name="what-is-the-network-throughput-i-can-expect-between-my-on-premises-networks-after-i-enable-expressroute-global-reach"></a>Co to jest przepływność sieci, oczekiwanych między Moje sieci w środowisku lokalnym, po włączeniu zasięgu globalnym usługi ExpressRoute?
 
 Przepustowość sieci między sieci w środowisku lokalnym, korzystając z usługi ExpressRoute zasięgu globalnym, jest ograniczone przez mniejszą z dwóch obwodów usługi ExpressRoute.
+
+### <a name="with-expressroute-global-reach-what-are-the-limits-on-the-number-of-routes-i-can-advertise-and-the-number-of-routes-i-will-receive"></a>Za pomocą usługi ExpressRoute zasięgu globalnym jakie są ograniczenia liczby tras, które można było ogłaszać dłuższe i liczby tras, które będę otrzymywać?
+
+Liczba tras, które można anonsować do firmy Microsoft na prywatną komunikację równorzędną Azure pozostaje na poziomie 4000 na obwód standardowy lub 10000 w obwodzie Premium. Liczba tras, które otrzymuje od firmy Microsoft na prywatną komunikację równorzędną Azure będzie sumą tras sieci wirtualnych platformy Azure i tras z sieci lokalnej połączonych za pośrednictwem usługi ExpressRoute zasięgu globalnym. Upewnij się, że Ustaw limit maksymalny prefiksu na routerze w środowisku lokalnym. 
+
+### <a name="what-is-the-sla-for-expressroute-global-reach"></a>Co to jest umowa SLA dla usługi ExpressRoute zasięgu globalnym?
+
+Zasięgu globalnym usługi ExpressRoute zapewnia takie same [umowa SLA gwarantująca dostępność](https://azure.microsoft.com/support/legal/sla/expressroute/v1_3/) jako regularne usługi ExpressRoute.

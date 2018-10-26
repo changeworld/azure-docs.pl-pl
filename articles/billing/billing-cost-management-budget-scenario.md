@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 7/25/2018
 ms.author: erikre
-ms.openlocfilehash: 19d8fbf82410136fd6a50a2088dd9b774dd6cb27
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 08cdce23fe298bdac932d1ca8abb8166f4d7bbbd
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259215"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094817"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Zarządzanie kosztami przy użyciu budżetów platformy Azure
 
@@ -125,7 +125,7 @@ Aby utworzyć aplikację logiki, która będzie wykonaj powyższe kroki potrzebn
 
 Gdy platforma Azure wdroży aplikację logiki **Projektant aplikacji logiki** otwiera i przedstawiono bloku z wprowadzającym wideo i najczęściej używanych wyzwalaczy. 
 
-### <a name="add-a-trigger"></a>Dodaj wyzwalacz
+### <a name="add-a-trigger"></a>Dodawanie wyzwalacza
 
 Każda aplikacja logiki musi rozpoczynać się od wyzwalacza, który jest aktywowany w momencie wystąpienia konkretnego zdarzenia lub spełnienia określonego warunku. Po każdym aktywowaniu wyzwalacza aparat usługi Logic Apps tworzy wystąpienie aplikacji logiki uruchamiającej i wykonującej przepływ pracy. Akcje to wszystkie kroki wykonywane po aktywowaniu wyzwalacza. 
 
@@ -139,7 +139,7 @@ Każda aplikacja logiki musi rozpoczynać się od wyzwalacza, który jest aktywo
 4.  Wyszukaj "Przeanalizuj dane JSON" w **Projektant aplikacji logiki** pola wyszukiwania, aby znaleźć i wybrać **operacje na danych — Przeanalizuj dane JSON** [akcji](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts). 
     
     ![Azure — aplikacji logiki — Dodaj przeanalizować JSON akcji](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png) 
-5.  Wprowadź "Ładunek" jako **zawartości** nazwę ładunku Przeanalizuj dane JSON.
+5.  Wprowadź "Ładunek" jako **zawartości** nazw dla ładunku Przeanalizuj dane JSON lub użyj tagu "Treść" z zawartości dynamicznej.
 6.  Wybierz **Użyj przykładowego ładunku do wygenerowania schematu** opcji **Przeanalizuj dane JSON** pole.
     
     ![Użyj platformy Azure — aplikacji logiki — przykładowych danych JSON do wygenerowania schematu](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-07.png) 

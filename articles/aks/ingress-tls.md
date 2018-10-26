@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: iainfou
-ms.openlocfilehash: 4679b800126f75596dcb78b46c65c6ac2b616729
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 7a7acb7da2e5999fc844fe6c6c2e191783df9190
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364629"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093965"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Tworzenie kontrolera danych przychodzących HTTPS w usłudze Azure Kubernetes Service (AKS)
 
@@ -25,7 +25,8 @@ Możesz również wykonać następujące czynności:
 - [Tworzenie kontrolera podstawowego transferu danych przychodzących za pomocą połączenia z siecią zewnętrzną][aks-ingress-basic]
 - [Włączyć dodatek routing aplikacji protokołu HTTP][aks-http-app-routing]
 - [Tworzenie kontrolera danych przychodzących, korzystającą z sieci prywatne, wewnętrzne i adres IP][aks-ingress-internal]
-- [Tworzenie kontrolera danych przychodzących za pomocą statyczny publiczny adres IP i skonfiguruj teraz szyfrowania można automatycznie wygenerować certyfikaty protokołu TLS][aks-ingress-static-tls]
+- [Tworzenie kontrolera transferu danych przychodzących, która korzysta z certyfikatów protokołu TLS][aks-ingress-own-tls]
+- [Tworzenie kontrolera danych przychodzących, używającej umożliwia szyfrowanie można automatycznie wygenerować certyfikaty protokołu TLS z statyczny publiczny adres IP][aks-ingress-static-tls]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -314,7 +315,8 @@ Możesz również wykonać następujące czynności:
 - [Tworzenie kontrolera podstawowego transferu danych przychodzących za pomocą połączenia z siecią zewnętrzną][aks-ingress-basic]
 - [Włączyć dodatek routing aplikacji protokołu HTTP][aks-http-app-routing]
 - [Tworzenie kontrolera danych przychodzących, korzystającą z sieci prywatne, wewnętrzne i adres IP][aks-ingress-internal]
-- [Tworzenie kontrolera danych przychodzących za pomocą statyczny publiczny adres IP i skonfiguruj teraz szyfrowania można automatycznie wygenerować certyfikaty protokołu TLS][aks-ingress-static-tls]
+- [Tworzenie kontrolera transferu danych przychodzących, która korzysta z certyfikatów protokołu TLS][aks-ingress-own-tls]
+- [Tworzenie kontrolera danych przychodzących, używającej umożliwia szyfrowanie można automatycznie wygenerować certyfikaty protokołu TLS z statyczny publiczny adres IP][aks-ingress-static-tls]
 
 <!-- LINKS - external -->
 [helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm#install-helm-cli
@@ -335,3 +337,4 @@ Możesz również wykonać następujące czynności:
 [aks-ingress-static-tls]: ingress-static-ip.md
 [aks-ingress-basic]: ingress-basic.md
 [aks-http-app-routing]: http-application-routing.md
+[aks-ingress-own-tls]: ingress-own-tls.md

@@ -1,16 +1,29 @@
+---
+author: ecfan
+ms.service: logic-apps
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: estfan
+ms.openlocfilehash: 8fe22f95c1dfc5171c41d6b3f0e00760fd9c9d69
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133400"
+---
 ### <a name="prerequisites"></a>Wymagania wstępne
 * A [Facebook](https://www.facebook.com/) konta 
 
-Aby korzystać z konta usługi Facebook, w aplikacji logiki, musisz zezwolić aplikacji logiki do łączenia się z kontem usługi Facebook. Na szczęście można w tym z aplikacji logiki w portalu Azure. 
+Zanim użyjesz konta w serwisie Facebook w aplikacji logiki, należy autoryzować aplikację logiki, aby połączyć się z kontem usługi Facebook. Na szczęście możesz można to zrobić z poziomu aplikacji logiki w witrynie Azure Portal. 
 
-Poniżej przedstawiono kroki, aby zezwolić aplikacji logiki do łączenia się z kontem usługi Facebook:
+Poniżej przedstawiono kroki, aby autoryzować aplikację logiki, aby połączyć się z kontem usługi Facebook:
 
-1. Aby utworzyć połączenie z usługą Facebook, w Projektancie aplikacji logiki, wybierz **Pokaż Microsoft zarządzanych interfejsów API** na liście rozwijanej wprowadź *Facebook* w polu wyszukiwania. Wybierz wyzwalacz lub akcja będzie chcesz użyć:  
-   ![Facebook krok 1](./media/connectors-create-api-facebook/facebook-1.png)
-2. Jeśli nie utworzono wszystkie połączenia z serwisem Facebook przed będzie zostanie wyświetlony monit o podanie poświadczeń usługi Facebook. Te poświadczenia będą używane do autoryzacji aplikację logiki, aby nawiązać połączenie i dostęp do danych konta usługi Facebook:  
-   ![Facebook krok 2](./media/connectors-create-api-facebook/facebook-2.png)
-3. Podaj Facebook, nazwę użytkownika i hasło, aby zezwolić aplikacji logiki:  
-   ![Facebook, krok 3](./media/connectors-create-api-facebook/facebook-3.png)   
-4. Zwróć uwagę, utworzono połączenie i wszystko jest teraz mógł kontynuować wykonywanie innych czynności w aplikacji logiki:  
-   ![Facebook, krok 4](./media/connectors-create-api-facebook/facebook-4.png)   
+1. Aby utworzyć połączenie z usługi Facebook, w Projektancie aplikacji logiki, wybierz **Pokaż Microsoft zarządzane interfejsy API** na liście rozwijanej wprowadź *Facebook* w polu wyszukiwania. Wybierz wyzwalacz lub akcję, którą Ci się spodoba do użycia:  
+   ![Facebook w kroku 1](./media/connectors-create-api-facebook/facebook-1.png)
+2. Nie utworzono żadnych połączeń w usłudze Facebook przed będzie pobrać monit podaj swoje poświadczenia usługi Facebook. Te poświadczenia będą używane do autoryzowania aplikację logiki, aby nawiązać połączenie i dostęp do Twojego konta serwisu Facebook danych:  
+   ![Facebook w kroku 2](./media/connectors-create-api-facebook/facebook-2.png)
+3. Podaj nazwę użytkownika usługi Facebook i hasło, aby autoryzować aplikację logiki:  
+   ![Facebook w kroku 3](./media/connectors-create-api-facebook/facebook-3.png)   
+4. Zwróć uwagę, połączenie zostanie utworzone i są teraz bezpłatne wykonaj pozostałe kroki w aplikacji logiki:  
+   ![Facebook w kroku 4](./media/connectors-create-api-facebook/facebook-4.png)   
 

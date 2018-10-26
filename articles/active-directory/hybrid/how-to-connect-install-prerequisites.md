@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f0791173450d5db3b33762ec9d5ed5c1adf96788
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 4dd3253b1d7ee159914f2d1fd6a8644bbc69c1f0
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321635"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092795"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Wymagania wstępne dotyczące usługi Azure AD Connect
 W tym temacie opisano wymagania wstępne i wymagania sprzętowe programu Azure AD Connect.
@@ -63,7 +63,7 @@ Zanim zainstalujesz program Azure AD Connect, istnieje kilka kwestii, które są
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Program SQL Server używane przez program Azure AD Connect
 * Program Azure AD Connect wymaga bazy danych programu SQL Server do przechowywania danych tożsamości. Domyślnie jest instalowany program SQL Server 2012 Express LocalDB (uproszczonej wersji programu SQL Server Express). SQL Server Express ma ograniczenie rozmiaru 10GB, który pozwala na zarządzanie około 100 000 obiektów. Jeśli trzeba zarządzać większą liczbą obiektów katalogu, należy wskazać kreatorowi instalacji na inną instalację programu SQL Server.
 * Użycie oddzielnych programu SQL Server, mają zastosowanie następujące wymagania:
-  * Azure AD Connect obsługuje wszystkich wersji programu Microsoft SQL Server z programu SQL Server 2008 (za pomocą najnowszego dodatku Service Pack) do programu SQL Server 2016 z dodatkiem SP1. Microsoft Azure SQL Database to **nieobsługiwane** jako bazy danych.
+  * Program Azure AD Connect obsługuje wszystkie wersje programu Microsoft SQL Server z programu SQL Server 2008 (za pomocą najnowszego dodatku Service Pack) do programu SQL Server 2017. Microsoft Azure SQL Database to **nieobsługiwane** jako bazy danych.
   * Należy użyć bez uwzględniania wielkości liter sortowania bazy danych SQL. Te sortowania są oznaczone symbolem \_CI_ w ich imieniu. Jest **nieobsługiwane** do liter identyfikowane przez \_cs_ — element w ich imieniu.
   * Może mieć tylko jeden aparat synchronizacji dla każdego wystąpienia programu SQL. Jest **nieobsługiwane** udostępniania wystąpienia programu SQL za pomocą synchronizacji programu FIM/programu MIM, narzędzie DirSync lub Azure AD Sync.
 

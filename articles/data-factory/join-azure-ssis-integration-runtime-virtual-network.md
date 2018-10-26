@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 633717a9f5f74648f7418970dd8047079efe18b9
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 38839379f584b40cdbefad3e4cbb3bc47881c9a7
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649095"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094599"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Dołącz do środowiska Azure-SSIS integration runtime do sieci wirtualnej
 Dołącz do środowiska Azure-SSIS integration runtime (IR) z siecią wirtualną platformy Azure w następujących scenariuszach: 
@@ -28,6 +28,9 @@ Dołącz do środowiska Azure-SSIS integration runtime (IR) z siecią wirtualną
 - Hostują bazy danych wykazu usług SQL Server Integration Services (SSIS) w usłudze Azure SQL Database za pomocą punktów końcowych usługi sieci wirtualnej/zarządzanego wystąpienia. 
 
  Usługa Azure Data Factory umożliwia dołączenie środowiska Azure-SSIS integration runtime do sieci wirtualnej utworzonej za pomocą klasycznego modelu wdrażania lub modelu wdrażania usługi Azure Resource Manager. 
+
+> [!IMPORTANT]
+> Obecnie jest on przestarzały klasycznej sieci wirtualnej, dlatego należy użyć sieci wirtualnej usługi Azure Resource Manager, zamiast tego.  Jeśli już używasz klasycznej sieci wirtualnej, Przełącz możliwie jak używać sieci wirtualnej usługi Azure Resource Manager.
 
 ## <a name="access-to-on-premises-data-stores"></a>Dostęp do lokalnych magazynów danych
 Jeśli pakiety usług SSIS dostępu do magazynów danych jedyna chmura publiczna, nie trzeba dołączyć środowisko Azure-SSIS IR do sieci wirtualnej. Jeśli pakiety usług SSIS dostępu do lokalnych magazynów danych, musisz dołączyć Azure-SSIS IR do sieci wirtualnej, która jest połączona z siecią lokalną. 
@@ -46,11 +49,13 @@ Poniżej przedstawiono kilka ważne punkty, które należy zwrócić uwagę:
 Jeśli katalog usług SSIS jest hostowana w usłudze Azure SQL Database za pomocą punktów końcowych usługi sieci wirtualnej lub wystąpienia zarządzanego, można przyłączyć środowiska IR Azure-SSIS do: 
 
 - Tej samej sieci wirtualnej 
-- Inną sieć wirtualną, który jest podłączony do sieci, z tą, która jest używana dla usługi Azure SQL Database za pomocą punktów końcowych usługi sieci wirtualnej/zarządzanego wystąpienia 
+- Inną sieć wirtualną, który jest podłączony do sieci, z tą, która jest używana do wystąpienia zarządzanego 
+
+Jeśli na serwerze wykazu usług SSIS w usłudze Azure SQL Database za pomocą punktów końcowych usługi sieci wirtualnej, upewnij się, Dołącz do środowiska Azure-SSIS IR do tej samej sieci wirtualnej i podsieci.
 
 Jeśli dołączysz do środowiska Azure-SSIS IR do tej samej sieci wirtualnej jako wystąpienia zarządzanego, upewnij się, że Azure-SSIS IR znajduje się w innej podsieci niż wystąpienia zarządzanego. Jeśli dołączysz do środowiska Azure-SSIS IR do sieci wirtualnej inną niż wystąpienie zarządzane, firma Microsoft zaleca komunikacji równorzędnej sieci wirtualnej (który jest ograniczona do tego samego regionu) lub sieci wirtualnej do połączenia sieci wirtualnej. Zobacz [połączyć aplikację z wystąpienia zarządzanego Azure SQL Database](../sql-database/sql-database-managed-instance-connect-app.md).
 
-Sieć wirtualną można wdrożyć za pomocą klasycznego modelu wdrażania lub modelu wdrażania usługi Azure Resource Manager.
+We wszystkich przypadkach można wdrożyć za pomocą modelu wdrażania usługi Azure Resource Manager tylko sieć wirtualną.
 
 Więcej szczegółów można znaleźć w poniższych sekcjach. 
 
@@ -73,13 +78,13 @@ Więcej szczegółów można znaleźć w poniższych sekcjach.
 
 Użytkownik, który tworzy środowisko Azure-SSIS Integration Runtime musi mieć następujące uprawnienia:
 
-- Jeśli dołączasz SSIS IR do sieci wirtualnej platformy Azure w bieżącej wersji, masz dwie opcje:
+- Jeśli dołączasz środowiska SSIS IR do sieci wirtualnej usługi Azure Resource Manager, masz dwie opcje:
 
-  - Za pomocą wbudowanej roli *Współautor sieci*. Ta rola wymaga *Microsoft.Network/\**  uprawnienie, jednak, które ma znacznie większego zakresu.
+  - Użyj wbudowanych *Współautor sieci* roli. Ta rola jest dostarczany z *Microsoft.Network/\**  uprawnienie, które ma znacznie większym zakresie niż to konieczne.
 
-  - Utwórz rolę niestandardową, która obejmuje uprawnienie *Microsoft.Network/virtualNetworks/\*/join/Akcja*. 
+  - Utwórz rolę niestandardową, która zawiera tylko niezbędne *Microsoft.Network/virtualNetworks/\*/join/Akcja* uprawnień. 
 
-- Jeśli dołączasz SSIS IR do klasycznej sieci wirtualnej platformy Azure, firma Microsoft zaleca użycie wbudowana rola *współautora klasycznej maszyny wirtualnej*. W przeciwnym razie należy zdefiniować rolę niestandardową, która obejmuje uprawnienie do dołączenia do sieci wirtualnej.
+- Jeśli dołączasz środowiska SSIS IR do klasycznej sieci wirtualnej, zalecane jest użycie wbudowanych *współautora klasycznej maszyny wirtualnej* roli. W przeciwnym razie należy zdefiniować rolę niestandardową, która obejmuje uprawnienie do dołączenia do sieci wirtualnej.
 
 ### <a name="subnet"></a> Wybierz podsieć
 -   Nie należy wybierać GatewaySubnet wdrażania środowiska Azure-SSIS Integration Runtime, ponieważ jest to wersja dedykowana dla bramy sieci wirtualnej. 
@@ -102,12 +107,12 @@ Aby uzyskać więcej informacji, zobacz [nazwę rozwiązania, który używa wła
 ### <a name="nsg"></a> Sieciowa grupa zabezpieczeń
 Jeśli musisz wdrożyć sieciową grupę zabezpieczeń (NSG) dla podsieci używane przez środowisko Azure-SSIS integration runtime, Zezwalaj ruchu przychodzącego/wychodzącego, za pomocą następujących portów: 
 
-| Kierunek | Protokół transportowy | Źródło | Zakres portów źródłowych | Miejsce docelowe | Zakres portów docelowych | Komentarze |
+| Kierunek | Protokół transportowy | Element źródłowy | Zakres portów źródłowych | Element docelowy | Zakres portów docelowych | Komentarze |
 |---|---|---|---|---|---|---|
-| Przychodzące | TCP | AzureCloud<br/>(lub większym zakresie, takich jak Internet) | * | VirtualNetwork | 29876, 29877 (Jeśli dołączysz środowiska IR do sieci wirtualnej usługi Azure Resource Manager) <br/><br/>10100, 20100, 30100 (jeśli Podczerwieni przyłączyć się do klasycznej sieci wirtualnej)| Usługa Data Factory używa tych portów do komunikacji z węzłami Twojego środowiska Azure-SSIS integration runtime w sieci wirtualnej. <br/><br/> Czy tworzysz sieciowa grupa zabezpieczeń poziomu podsieci, czy nie, Data Factory zawsze konfiguruje sieciowej grupy zabezpieczeń na poziomie kart interfejsu sieciowego (NIC) dołączonych do maszyn wirtualnych, które hostują Azure-SSIS IR. Tylko dla ruchu przychodzącego ruchu z adresów IP fabryki danych w określonych portów jest dozwolone przy tym poziomie karty Sieciowej, sieciowej grupy zabezpieczeń. Nawet jeśli otworzysz te porty dla ruchu internetowego na poziomie podsieci, ruch z adresów IP, które nie są adresami IP fabryki danych jest zablokowany na poziomie karty Sieciowej. |
-| Wychodzące | TCP | VirtualNetwork | * | AzureCloud<br/>(lub większym zakresie, takich jak Internet) | 443 | Ten port jest używany przez węzły Twojego środowiska Azure-SSIS integration Runtime w sieci wirtualnej na dostęp do usług platformy Azure, takich jak Azure Storage i Azure Event Hubs. |
-| Wychodzące | TCP | VirtualNetwork | * | Internet | 80 | Węzły Twojego środowiska Azure-SSIS integration Runtime w sieci wirtualnej, ten port jest używany do pobierania listy odwołania certyfikatów z Internetu. |
-| Wychodzące | TCP | VirtualNetwork | * | Sql<br/>(lub większym zakresie, takich jak Internet) | 1433, 11000 11999, 14000 14999 | Węzły Twojego środowiska Azure-SSIS integration Runtime w sieci wirtualnej użycie tych portów do dostępu do bazy danych SSISDB hostowanych przez serwer usługi Azure SQL Database — w tym celu nie ma zastosowania do danych SSISDB hostowaną przez wystąpienia zarządzanego. |
+| Przychodzący | TCP | AzureCloud<br/>(lub większym zakresie, takich jak Internet) | * | VirtualNetwork | 29876, 29877 (Jeśli dołączysz środowiska IR do sieci wirtualnej usługi Azure Resource Manager) <br/><br/>10100, 20100, 30100 (jeśli Podczerwieni przyłączyć się do klasycznej sieci wirtualnej)| Usługa Data Factory używa tych portów do komunikacji z węzłami Twojego środowiska Azure-SSIS integration runtime w sieci wirtualnej. <br/><br/> Czy tworzysz sieciowa grupa zabezpieczeń poziomu podsieci, czy nie, Data Factory zawsze konfiguruje sieciowej grupy zabezpieczeń na poziomie kart interfejsu sieciowego (NIC) dołączonych do maszyn wirtualnych, które hostują Azure-SSIS IR. Tylko dla ruchu przychodzącego ruchu z adresów IP fabryki danych w określonych portów jest dozwolone przy tym poziomie karty Sieciowej, sieciowej grupy zabezpieczeń. Nawet jeśli otworzysz te porty dla ruchu internetowego na poziomie podsieci, ruch z adresów IP, które nie są adresami IP fabryki danych jest zablokowany na poziomie karty Sieciowej. |
+| Wychodzący | TCP | VirtualNetwork | * | AzureCloud<br/>(lub większym zakresie, takich jak Internet) | 443 | Ten port jest używany przez węzły Twojego środowiska Azure-SSIS integration Runtime w sieci wirtualnej na dostęp do usług platformy Azure, takich jak Azure Storage i Azure Event Hubs. |
+| Wychodzący | TCP | VirtualNetwork | * | Internet | 80 | Węzły Twojego środowiska Azure-SSIS integration Runtime w sieci wirtualnej, ten port jest używany do pobierania listy odwołania certyfikatów z Internetu. |
+| Wychodzący | TCP | VirtualNetwork | * | Sql<br/>(lub większym zakresie, takich jak Internet) | 1433, 11000 11999, 14000 14999 | Węzły Twojego środowiska Azure-SSIS integration Runtime w sieci wirtualnej użycie tych portów do dostępu do bazy danych SSISDB hostowanych przez serwer usługi Azure SQL Database — w tym celu nie ma zastosowania do danych SSISDB hostowaną przez wystąpienia zarządzanego. |
 ||||||||
 
 ### <a name="route"></a> Za pomocą usługi Azure ExpressRoute lub trasa zdefiniowana przez użytkownika

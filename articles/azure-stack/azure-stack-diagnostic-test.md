@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 4f95fb5f2199e8c276b78a83391f3814303a9470
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 671818ca8f8fa07b506252d5d4d0c7a768577b19
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024623"
+ms.locfileid: "50087478"
 ---
 # <a name="run-a-validation-test-for-azure-stack"></a>Uruchamianie testów sprawdzania poprawności dla usługi Azure Stack
 
@@ -39,7 +39,7 @@ Jeśli masz problem, skontaktuj się z pomocą techniczną usługi firmy Microso
     3. Otwórz program PowerShell jako administrator.
     4. Uruchom polecenie: `Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint`
     5. Uruchom polecenie: `Test-AzureStack`
-4. Jeśli wszystkie testy zgłasza błąd, uruchom: `Get-AzureStackLog -FilterByRole SeedRing -OutputPath <Log output path>` polecenia cmdlet gromadzi dzienniki z AzureStack testu. Aby uzyskać więcej informacji na temat dzienników diagnostycznych, zobacz [narzędzia diagnostyczne usługi Azure Stack](azure-stack-diagnostics.md). Nie należy zbierać dzienniki lub skontaktuj się z pomocą techniczną usługi firmy Microsoft (CSS), testy raportu OSTRZEGAJ.
+4. Jeśli dowolne testy raportu **się nie POWIEŚĆ**Uruchom: `Get-AzureStackLog -FilterByRole SeedRing -OutputPath <Log output path>` polecenia cmdlet gromadzi dzienniki z AzureStack testu. Aby uzyskać więcej informacji na temat dzienników diagnostycznych, zobacz [narzędzia diagnostyczne usługi Azure Stack](azure-stack-diagnostics.md). Nie należy zbierać dzienniki lub skontaktuj się z pomocą techniczną usługi firmy Microsoft (CSS) Jeśli testy raportu **OSTRZEGAJ**.
 5. Wyślij **SeedRing** dzienniki w celu obsługi usług klienta firmy Microsoft. Usługi techniczną firmy Microsoft we współpracy z Tobą, aby rozwiązać ten problem.
 
 ## <a name="reference-for-test-azurestack"></a>Dokumentacja dotycząca AzureStack testu

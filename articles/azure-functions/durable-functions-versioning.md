@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 9d628f48f4958e4e763ed0064462a5fb2ed398bf
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 9cd8e21ede794fcb46683ea7cedd2bf9ed833204
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094336"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086985"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Przechowywanie wersji w funkcje trwałe (usługa Azure Functions)
 
@@ -123,11 +123,23 @@ Centrum zadania można skonfigurować w *host.json* pliku w następujący sposó
 
 ```json
 {
-    "durableTask": {
-        "HubName": "MyTaskHubV2"
+    "extensions": {
+        "durableTask": {
+            "HubName": "MyTaskHubV2"
+        }
     }
 }
 ```
+
+> [!NOTE]
+> W przypadku funkcji w wersji 1 *host.json* należy skonfigurować następująco zamiast tego
+>```json
+>{
+>    "durableTask": {
+>        "HubName": "MyTaskHubV2"
+>    }
+>}
+>```
 
 Wartość domyślna to `DurableFunctionsHub`.
 

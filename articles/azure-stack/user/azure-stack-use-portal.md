@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 10/23/2018
 ms.author: mabrigg
 ms.reviewer: efemmano
-ms.openlocfilehash: 7ccf746cfd9645b63c2810bff83cfb0c4fa55d65
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4ec9affa78d1f244208a24bcf8a6603e867d4c08
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713745"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086509"
 ---
 # <a name="use-the-azure-stack-portal"></a>Używaj portalu Azure Stack
 
@@ -32,12 +32,13 @@ Operator usługi Azure Stack (dostawcy usług lub administratorem w organizacji)
 
 - Zintegrowany system, aby uzyskać adres URL zależności na region i nazwy domeny zewnętrznej przez operatora i będzie w formacie https://portal.&lt; *region*&gt;.&lt; *FQDN*&gt;.
 - Jeśli używasz usługi Azure Stack Development Kit portalu adres jest https://portal.local.azurestack.external.
-
-![Przechwytywanie ekranu portalu użytkowników usługi Azure Stack](media/azure-stack-use-portal/UserPortal.png)
+- Domyślna strefa czasowa dla wszystkich wdrożeń usługi Azure Stack jest ustawiona do uniwersalnego czasu koordynowanego (UTC). Strefa czasowa można wybrać podczas instalowania usługi Azure Stack, jednak automatycznie powraca on do UTC domyślnie podczas instalacji.
 
 ## <a name="customize-the-dashboard"></a>Dostosowywanie pulpitu nawigacyjnego
 
 Pulpit nawigacyjny zawiera domyślny zestaw kafelków. Możesz wybrać **Edytuj pulpit nawigacyjny** zmodyfikować domyślny pulpit nawigacyjny, lub wybierz **nowy pulpit nawigacyjny** do tworzenia niestandardowego pulpitu nawigacyjnego. Pulpit nawigacyjny można łatwo dostosować, dodając lub usuwając kafelków. Na przykład aby dodać tabliczkę obliczeń, wybierz pozycję **+ Utwórz zasób**. Kliknij prawym przyciskiem myszy **obliczenia**, a następnie wybierz pozycję **Przypnij do pulpitu nawigacyjnego**.
+
+![Przechwytywanie ekranu portalu użytkowników usługi Azure Stack](media/azure-stack-use-portal/userportal.png)
 
 ## <a name="create-subscription-and-browse-available-resources"></a>Tworzenie subskrypcji i przeglądanie dostępnych zasobów
 

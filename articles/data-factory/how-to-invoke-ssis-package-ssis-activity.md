@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: b2e0b65f210774f760ce2d0898c601115ab3a94d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cda439973c584a57cadc30de7fb931732682de00
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960162"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092461"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Uruchamianie pakietów SSIS za pomocą działania pakietu SSIS wykonania w usłudze Azure Data Factory
 W tym artykule opisano sposób uruchamiania pakietu SSIS w potoku usługi Azure Data Factory za pomocą działania wykonywanie pakietu SSIS. 
@@ -91,9 +91,11 @@ Aby utworzyć potok, w tym kroku Użyj interfejs użytkownika usługi Data Facto
 
 ### <a name="optionally-parameterize-the-activity"></a>Opcjonalnie można zdefiniować parametry działania
 
-Opcjonalnie można przypisać wartości, wyrażenia lub funkcji, które mogą odwoływać się do zmiennych systemowych fabryki danych, parametry projektu lub pakietu w formacie JSON za pomocą **kodu źródłowego widoku** przycisk u dołu wykonaj SSIS Okno działania pakietu, lub **kodu** przycisk w prawym górnym rogu obszaru potoku. Na przykład można przypisać parametrów potoku usługi fabryka danych do projektu usług SSIS i pakiet parametrów, jak pokazano na poniższych zrzutach ekranu:
+Opcjonalnie można przypisać wartości, wyrażenia lub funkcji, które mogą odwoływać się do zmiennych systemowych fabryki danych, parametry projektu lub pakietu w formacie JSON, korzystając z przycisku "Wyświetl źródło kod" w dolnej części pola działanie Twojej wykonywanie pakietu SSIS lub "Code" przycisk w prawym górnym rogu obszaru potoku. Na przykład można przypisać parametrów potoku usługi fabryka danych do projektu usług SSIS i pakiet parametrów, jak pokazano na poniższych zrzutach ekranu:
 
 ![Edytuj skrypt JSON umożliwiający wykonanie pakietu SSIS działania](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters.png)
+
+![Dodaj parametry do działania wykonywanie pakietu SSIS](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters2.png)
 
 ![Dodaj parametry do działania wykonywanie pakietu SSIS](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters2.png)
 
@@ -204,9 +206,9 @@ W tym kroku utworzysz potok z działaniem wykonywanie pakietu SSIS. Działanie z
                     "runtime": "x64",
                     "loggingLevel": "Basic",
                     "packageLocation": {
-                        "packagePath": "FolderName/ProjectName/PackageName.dtsx"            
+                        "packagePath": "FolderName/ProjectName/PackageName.dtsx"            
                     },
-                    "environmentPath":   "FolderName/EnvironmentName",
+                    "environmentPath":   "FolderName/EnvironmentName",
                     "projectParameters": {
                         "project_param_1": {
                             "value": "123"
@@ -244,7 +246,7 @@ W tym kroku utworzysz potok z działaniem wykonywanie pakietu SSIS. Działanie z
                         }
                     },
                     "propertyOverrides": {
-                        "\\PackageName.dtsx\\MaxConcurrentExecutables ": {
+                        "\\PackageName.dtsx\\MaxConcurrentExecutables ": {
                             "value": 8,
                             "isSensitive": false
                         }

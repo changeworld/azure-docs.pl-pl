@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 63fd864ebda1cb766792b99a2725fb069d5b5f2a
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: bbd20df7f002d6072110e3b94887bac24ce13cd2
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024073"
+ms.locfileid: "50087444"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>Nawiązywanie połączenia usługi Azure Stack przy użyciu programu PowerShell jako operator
 
@@ -29,7 +29,7 @@ Można skonfigurować usługi Azure Stack przy użyciu programu PowerShell do za
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Uruchom następujące wymagania wstępne, albo z [deweloperski](.\asdk\asdk-connect.md#connect-to-azure-stack-with-remote-desktop) lub z systemem Windows klient zewnętrznych przypadku [połączone ASDK za pośrednictwem sieci VPN](.\asdk\asdk-connect.md#connect-to-azure-stack-with-vpn). 
+Uruchom następujące wymagania wstępne, albo z [deweloperski](.\asdk\asdk-connect.md#connect-with-rdp) lub z systemem Windows klient zewnętrznych przypadku [połączone ASDK za pośrednictwem sieci VPN](.\asdk\asdk-connect.md#connect-with-vpn). 
 
  - Zainstaluj [modułów programu Azure PowerShell dla usługi Azure Stack zgodnego](azure-stack-powershell-install.md).  
  - Pobierz [narzędzia wymagane do pracy z usługą Azure Stack](azure-stack-powershell-download.md).  

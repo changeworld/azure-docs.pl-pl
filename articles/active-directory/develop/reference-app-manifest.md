@@ -13,20 +13,34 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 10/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: bc7999d56da8398b4f54b0144a595ee7c2e2ea35
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 372bff911c0925e05297872da66279e727149010
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115114"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086781"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Manifest aplikacji w usłudze Azure Active Directory
 
-Aplikacje, które integrują się z usługą Azure Active Directory (Azure AD) musi być zarejestrowany z dzierżawą usługi Azure AD. Można skonfigurować aplikację w [witryny Azure portal](https://portal.azure.com) , wybierając **rejestracje aplikacji** w obszarze **usługi Azure Active Directory**, wybierając aplikację, którą chcesz skonfigurować, a następnie Wybieranie **manifestu**.
+Manifest aplikacji zawiera definicję wszystkie atrybuty obiektu aplikacji na platformie tożsamości firmy Microsoft. Służy również jako mechanizm służący do aktualizowania obiektu aplikacji. Aby uzyskać więcej informacji na temat jednostki Application i jej schematu, zobacz [dokumentację jednostki Application interfejsu API programu Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity).
+
+Pozwala ona skonfigurować atrybuty aplikacji za pośrednictwem witryny Azure portal lub programowo przy użyciu programu Microsoft Graph. Istnieją jednak sytuacje, w którym konieczne będzie Edytuj manifest aplikacji, aby skonfigurować aplikację atrybut. Scenariusze obejmują:
+
+* Jeśli aplikacja jest zarejestrowana jako usługi Azure AD wielu dzierżawców i osobistymi kontami Microsoft, nie można zmienić obsługiwanych kont firmy Microsoft w interfejsie użytkownika. Zamiast tego należy podać edytorze manifestu aplikacji do zmianę typu konta obsługiwane.
+* Jeśli musisz zdefiniować uprawnienia i role, które obsługuje aplikację, należy zmodyfikować manifest aplikacji.
+
+## <a name="configure-the-app-manifest"></a>Konfigurowanie manifestu aplikacji
+
+Aby skonfigurować manifest aplikacji:
+
+1. Zaloguj się [witryny Azure portal](https://portal.azure.com).
+1. Wybierz **usługi Azure Active Directory** usługi, a następnie wybierz **rejestracje aplikacji** lub **rejestracje aplikacji (wersja zapoznawcza)**.
+1. Wybierz aplikację, którą chcesz skonfigurować.
+1. Z poziomu aplikacji **Przegląd** wybierz opcję **manifestu** sekcji. Zostanie otwarty Edytor manifestu z opartej na sieci web, umożliwiając Edytuj manifest w portalu. Opcjonalnie można wybrać **Pobierz** Edytuj manifest lokalnie, a następnie użyć **przekazywanie** Aby ponownie zastosować go do aplikacji.
 
 ## <a name="manifest-reference"></a>Odwołanie do manifestu
 
@@ -63,7 +77,7 @@ Aplikacje, które integrują się z usługą Azure Active Directory (Azure AD) m
 | `requiredResourceAccess` | Typ tablicy | Za zgodą dynamiczne `requiredResourceAccess` dyski środowisko zgody administratora i środowisko zgody użytkownika dla użytkowników, którzy używają statycznych zgody. Jednak to nie podejmuj środowisko zgody użytkownika w przypadku ogólnych.<br>`resourceAppId` jest unikatowy identyfikator, dla których aplikacja wymaga dostępu do zasobu. Ta wartość powinna być równa appId zadeklarowanych w aplikacji do zasobu docelowego.<br>`resourceAccess` jest tablicą, który zawiera listę zakresów uprawnień OAuth 2.0 i ról aplikacji, których wymaga aplikacja z określonego zasobu. Zawiera `id` i `type` wartości określonych zasobów. | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"resourceAppId":"00000002-0000-0000-c000-000000000000",<br>&nbsp;&nbsp;&nbsp;&nbsp;"resourceAccess":[<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id":"311a71cc-e848-46a1-bdf8-97ff7156d8e6",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type":"Scope"<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;]<br>&nbsp;&nbsp;}<br>] </code> |
 | `samlMetadataUrl` | ciąg | Adres URL metadanych SAML dla aplikacji. | `https://MyRegisteredAppSAMLMetadata` |
 | `signInUrl` | ciąg | Określa adres URL do strony głównej aplikacji. | `https://MyRegisteredApp` |
-| `signInAudience` | ciąg | Określa konta microsoft, które są obsługiwane dla bieżącej aplikacji. Obsługiwane są następujące wartości:<ul><li>**AzureADMyOrg** -użytkowników za pomocą programu Microsoft konto służbowe w dzierżawie usługi Azure AD w organizacji (np. pojedyncza dzierżawa)</li><li>**AzureADMultipleOrgs** -użytkowników za pomocą programu Microsoft konto służbowe w dzierżawie usługi Azure AD w organizacji (czyli z wieloma dzierżawami)</li> <li>**AzureADandPersonalMicrosoftAccount** -użytkowników za pomocą osobistego konta Microsoft lub konto służbowe lub szkolne w dzierżawie usługi Azure AD w organizacji</li></ul> | `AzureADandPersonalMicrosoftAccount` |
+| `signInAudience` | ciąg | Określa konta Microsoft, które są obsługiwane dla bieżącej aplikacji. Obsługiwane są następujące wartości:<ul><li>**AzureADMyOrg** -użytkowników za pomocą programu Microsoft konto służbowe w dzierżawie usługi Azure AD w organizacji (np. pojedyncza dzierżawa)</li><li>**AzureADMultipleOrgs** -użytkowników za pomocą programu Microsoft konto służbowe w dzierżawie usługi Azure AD w organizacji (czyli z wieloma dzierżawami)</li> <li>**AzureADandPersonalMicrosoftAccount** -użytkowników za pomocą osobistego konta Microsoft lub konto służbowe lub szkolne w dzierżawie usługi Azure AD w organizacji</li></ul> | `AzureADandPersonalMicrosoftAccount` |
 | `tags` | Tablica ciągów | Niestandardowe ciągi, które mogą służyć do kategoryzowania i identyfikacji aplikacji. | <code>[<br>&nbsp;&nbsp;"ProductionApp"<br>]</code> |
 
 ## <a name="next-steps"></a>Kolejne kroki

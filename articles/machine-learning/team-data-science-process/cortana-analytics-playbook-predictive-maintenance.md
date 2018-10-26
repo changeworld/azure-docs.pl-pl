@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 2a5d8540dba491dec8b2da227b0e84c10ff09c77
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 8f42ee996dae476de3744239d4cc5f053722d52b
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395008"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093215"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Przewodnik sztucznej Inteligencji platformy Azure dla rozwiązania do konserwacji zapobiegawczej
 
@@ -414,7 +414,6 @@ Końcowej części tego przewodnika zawiera listę szablonów rozwiązań mened�
 
 | # | Stanowisko | Opis |
 |--:|:------|-------------|
-| 1 | [Konserwacji zapobiegawczej Azure Machine Learning próbki](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance) |Przykładowy program PdM przewidywanie awarii za pośrednictwem dalej jednostek czasu N. Ten przykład jest zapisywany jako projektu w aplikacji Azure ML Workbench i jest idealnym rozwiązaniem dla początkujących do menedżerów PdM. [Dodatkową dokumentację](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/scenario-predictive-maintenance) związane z tego przykładu.|
 | 2 | [Szablon rozwiązania konserwacji predykcyjnej platformy Azure](https://github.com/Azure/AI-PredictiveMaintenance) | Szablon rozwiązania typu open source, który demonstruje całej infrastruktury platformy Azure, zdolność do obsługi scenariuszy konserwacji predykcyjnej w kontekście zdalnego monitorowania IoT i uczenia Maszynowego modelowania. |
 | 3 | [Uczenie głębokie dla konserwacji predykcyjnej](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Notesu platformy Azure za pomocą rozwiązania wersji demonstracyjnej, z użyciem sieci LSTM (Long krótkoterminowe pamięci) (klasa sieci neuronowych) pod kątem konserwacji predykcyjnej [wpis w blogu w tym przykładzie](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
 | 4 | [Podręcznik modelowania konserwacji predykcyjnej w języku R](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | Podręcznik modelowania menedżerów PdM za pomocą skryptów w języku R.|

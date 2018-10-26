@@ -10,12 +10,12 @@ ms.devlang: spark-scala
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ankhanol
-ms.openlocfilehash: 38a972d39b845dca39bcc4dcf921c603301af582
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 165919fa3d456786e926f754dba378be38c12588
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869656"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094248"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Łączenie do usługi Azure Cosmos DB Cassandra API z platformy Spark
 
@@ -29,7 +29,7 @@ Ten artykuł stanowi jednej serii artykułów dotyczących integracji interfejsu
 ## <a name="dependencies-for-connectivity"></a>Zależności dotyczące łączności
 * **Łącznik Spark dla bazy danych Cassandra:** służy łącznik Spark nawiązać połączenia z interfejsem API usługi Azure Cosmos DB Cassandra.  Identyfikowanie i używana wersja łącznika na terenie [Maven central]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) zgodny z platformami Spark i Scala wersje środowiska platformy Spark.
 
-* **Biblioteka Pomocy usługi Azure Cosmos DB dla interfejsu API rozwiązania Cassandra:** oprócz łącznik platformy Spark, potrzebujesz innej biblioteki o nazwie [azure-cosmos-cassandra-spark Pomocnika]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) z usługi Azure Cosmos DB. Ta biblioteka zawiera fabryka połączenia i klasy zasad niestandardowych ponowień.
+* **Biblioteka Pomocy usługi Azure Cosmos DB dla interfejsu API rozwiązania Cassandra:** oprócz łącznik platformy Spark, potrzebujesz innej biblioteki o nazwie [azure-cosmos-cassandra-spark Pomocnika]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) z usługi Azure Cosmos DB. Ta biblioteka zawiera klasy zasad niestandardowych połączenia fabryki, a następnie spróbuj ponownie.
 
   Zasady ponawiania prób w usłudze Azure Cosmos DB jest skonfigurowany do obsługi HTTP status kodu 429 "("żądania dużej szybkości) wyjątki. Interfejs API usługi Azure Cosmos DB Cassandra tłumaczy tych wyjątków w błędy przeciążona natywnego protokołu bazy danych Cassandra i będzie można ponowić próbę z powrotem kompromisu. Ponieważ usługi Azure Cosmos DB używa modelu aprowizowanej przepływności, wyjątki ograniczanie szybkości żądania wystąpić, gdy ruchem przychodzącym/wychodzącym ocenia wzrost. Zasady ponawiania chroni względem wartości graniczne danych, które chwilowo przekroczenie przepływności przydzielonych do kolekcji zadań platformy spark.
 

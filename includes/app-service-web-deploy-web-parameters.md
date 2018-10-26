@@ -1,26 +1,39 @@
-Przy użyciu usługi Azure Resource Manager można zdefiniować parametry dla wartości, które mają zostać uwzględnione podczas wdrażania szablonu. Szablon zawiera sekcji parametrów zawierająca wszystkie wartości parametrów.
-Należy zdefiniować parametr dla tych wartości, które będą się różnić na podstawie projektu, który jest wdrażany lub opartych na środowisku, które wdrażasz. Definiuje parametry dla wartości, które będą zawsze taki sam. Każda wartość parametru używana w szablonie definiuje wdrażane zasoby. 
+---
+author: cephalin
+ms.service: app-service-web
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: cephalin
+ms.openlocfilehash: 5bde217601d27129e044b64d90184727ea717950
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133310"
+---
+Przy użyciu usługi Azure Resource Manager można zdefiniować parametry dla wartości, które mają zostać uwzględnione podczas wdrażania szablonu. Szablon zawiera sekcję o nazwie parametrów, który zawiera wszystkie wartości parametrów.
+Należy zdefiniować parametr dla tych wartości, które będą się różnić, na podstawie projektu, który jest wdrażany lub opartych na środowisku, w których jest wdrażany z. Nie należy definiować parametrów dla wartości, które zawsze pozostają takie same. Każda wartość parametru używana w szablonie definiuje wdrażane zasoby. 
 
-Określając parametry, użyj **allowedValues** pola, aby określić, które wartości użytkownika można podać podczas wdrażania. Użyj **defaultValue** pola, aby przypisać wartości do parametru, jeśli wartość nie zostanie podana podczas wdrażania.
+Podczas definiowania parametrów należy użyć **allowedValues** pola, aby określić, jakie wartości przez użytkownika można podać podczas wdrażania. Użyj **defaultValue** pola do przypisania wartości do parametru, jeśli wartość nie zostanie podana podczas wdrażania.
 
-Firma Microsoft będzie opisywać każdego parametru w szablonie.
+Opiszemy każdego parametru w szablonie.
 
 ### <a name="sitename"></a>Nazwa witryny
-Nazwa aplikacji sieci web, którą chcesz utworzyć.
+Nazwa aplikacji sieci web, który chcesz utworzyć.
 
     "siteName":{
       "type":"string"
     }
 
 ### <a name="hostingplanname"></a>hostingPlanName
-Nazwa planu usługi aplikacji można używać do obsługi aplikacji sieci web.
+Nazwa planu usługi App Service na potrzeby hostowania aplikacji sieci web.
 
     "hostingPlanName":{
       "type":"string"
     }
 
-### <a name="sku"></a>Jednostka SKU
-Warstwę cenową planu obsługi.
+### <a name="sku"></a>sku
+Warstwę cenową dla planu hostingu.
 
     "sku": {
       "type": "string",
@@ -44,7 +57,7 @@ Warstwę cenową planu obsługi.
       }
     }
 
-Szablon definiuje wartości, które są dozwolone dla tego parametru, a następnie przypisuje wartość domyślną (S1), jeśli nie określono wartości.
+Szablon definiuje wartości, które są dozwolone dla tego parametru i przypisuje wartość domyślną (S1), jeśli nie określono wartości.
 
 ### <a name="workersize"></a>workerSize
 Rozmiar wystąpienia planu hostingu (małych, średnich i dużych).

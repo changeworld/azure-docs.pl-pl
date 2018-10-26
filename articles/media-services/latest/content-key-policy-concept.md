@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 9a5ef8df9b1ca87430fb5e8d1da94f1899c4a856
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 24597c36ab6569abb53c7be331631556e2abfe66
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985866"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085961"
 ---
 # <a name="content-key-policies"></a>Zasady kluczy zawartości
 
@@ -28,16 +28,16 @@ W usłudze Azure Media Services v3 zasady kluczy zawartości umożliwiają okre�
 
 W poniższej tabeli przedstawiono właściwości ContentKeyPolicy oraz zapewnia ich definicje.
 
-|Name (Nazwa)|Typ|Opis|
-|---|---|---|
-|id|ciąg|W pełni kwalifikowanego Identyfikatora zasobu dla zasobu.|
-|name|ciąg|Nazwa zasobu.|
-|Properties.created |ciąg|Data utworzenia zasad|
-|Properties.Description |ciąg|Opis zasad.|
-|properties.lastModified    |ciąg|Data ostatniej modyfikacji zasad|
-|Properties.Options |[] ContentKeyPolicyOption|Opcje zasad klucza.|
-|properties.policyId    |ciąg|Starsze identyfikatora zasad.|
-|type   |ciąg|Typ zasobu.|
+|Name (Nazwa)|Opis|
+|---|---|
+|id|W pełni kwalifikowanego Identyfikatora zasobu dla zasobu.|
+|name|Nazwa zasobu.|
+|Properties.created |Data utworzenia zasad|
+|Properties.Description |Opis zasad.|
+|properties.lastModified|Data ostatniej modyfikacji zasad|
+|Properties.Options |Opcje zasad klucza.|
+|properties.policyId    |Starsze identyfikatora zasad.|
+|type   |Typ zasobu.|
 
 Pełna definicja można zobaczyć [zasad dotyczących zawartości klucza](https://docs.microsoft.com/rest/api/media/contentkeypolicies).
 

@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/17/2018
+ms.date: 10/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: c32c4f97a963485e87e36afc44e9cea2ebcebd90
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: e99d5d36fa46e9972e706d580e4dfb1d5f9e8bbc
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394417"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093833"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -28,8 +28,10 @@ Podczas przenoszenia zasobów, zarówno grupy źródłowej i docelowej grupy są
 Nie można zmienić lokalizacji zasobu. Przenoszenie zasobu tylko przenosi je do nowej grupy zasobów. Nowa grupa zasobów może mieć inną lokalizację, ale to nie ulega zmianie lokalizacji zasobu.
 
 > [!NOTE]
-> W tym artykule opisano sposób przenoszenia zasobów na platformie Azure istniejących kont oferty. Jeśli rzeczywiście chcesz zmienić konta platformy Azure, oferty (na przykład uaktualnianie z rzeczywistym użyciem, aby Zapłać z góry) przy jednoczesnym dalszym pracować z istniejących zasobów, zobacz [Przełącz subskrypcji platformy Azure na inną ofertę](../billing/billing-how-to-switch-azure-offer.md).
->
+> W tym artykule opisano sposób przenoszenia zasobów na platformie Azure istniejących kont oferty. Jeśli rzeczywiście chcesz zmienić oferty (na przykład uaktualnianie z bezpłatnej, do płatności) konto platformy Azure, musisz przekonwertować subskrypcję. 
+> * Aby uaktualnić z bezpłatnej wersji próbnej, zobacz [Zmień poziom subskrypcji bezpłatnej wersji próbnej lub programu Microsoft Imagine platformy Azure rozliczana według bieżącego użycia](..//billing/billing-upgrade-azure-subscription.md).
+> * Aby zmienić konto zgodnie z rzeczywistym użyciem, zobacz [zmienić subskrypcję platformy Azure rozliczana według bieżącego użycia do innej oferty](../billing/billing-how-to-switch-azure-offer.md).
+> * Jeśli nie można przekonwertować subskrypcję, [utworzyć żądanie pomocy technicznej platformy Azure](../azure-supportability/how-to-create-azure-support-request.md). Wybierz **zarządzania subskrypcjami** jako typ problemu.
 >
 
 ## <a name="checklist-before-moving-resources"></a>Listę kontrolną przed przenoszeniem zasobów
@@ -269,7 +271,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, których ni
 
 Dyski zarządzane są obsługiwane w przypadku przeniesienia od 24 września 2018 r. 
 
-1. Musisz zarejestrować, aby włączyć tę funkcję.
+1. W subskrypcji źródłowej Zarejestruj tę funkcję.
 
   ```azurepowershell-interactive
   Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute

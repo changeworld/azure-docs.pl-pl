@@ -4,16 +4,16 @@ description: Dowiedz się więcej, zapoznaj się z zasobami i Odkryj, jak są on
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: f488dfad8a38bbfab3b5b74e5b504463af09c089
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: bcd25b95d1369ef98662384945123126ebbbd70f
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645936"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086900"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Badanie zasobów platformy Azure przy użyciu usługi Resources Graph
 
@@ -216,7 +216,7 @@ Search-AzureRmGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' an
 
 ### <a name="virtual-machines-connected-to-premium-managed-disks"></a>Maszyny wirtualne podłączone do dysków zarządzanych w warstwie premium
 
-Jeśli chcemy uzyskać szczegółowe informacje z dysków zarządzanych w warstwie premium, które są dołączone do tych **Standard_B2s** maszyn wirtualnych, możemy rozszerzyć zapytania, aby przesłać nam identyfikator zasobu tych dysków zarządzanych.
+Jeśli chcemy uzyskać szczegółowe informacje na dyski zarządzane w warstwie premium, które są dołączone do tych **Standard_B2s** maszyn wirtualnych, możemy rozszerzyć zapytania, aby przesłać nam identyfikator zasobu tych dysków zarządzanych.
 
 ```Query
 where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s'
@@ -236,11 +236,11 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualmachines' and propert
 Search-AzureRmGraph -Query "where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
 ```
 
-Wynik jest lista dysków identyfikatory
+Wynik jest listę identyfikatorów dysku.
 
 ### <a name="managed-disk-discovery"></a>Odnajdowanie dysku zarządzanego
 
-Biorąc pierwszy rekord z poprzedniej kwerendy, przedstawimy właściwości, które istnieją na dysku zarządzanego, który został dołączony do pierwszej maszyny wirtualnej. Zaktualizowano zapytanie używa identyfikator dysku i zmienianie typu.
+Za pomocą pierwszy rekord z poprzedniej kwerendy pokażemy, właściwości, które istnieją na dysku zarządzanego, który został dołączony do pierwszej maszyny wirtualnej. Zaktualizowano zapytanie używa identyfikator dysku i zmienia typ.
 
 Przykład danych wyjściowych z poprzedniej kwerendy, na przykład:
 
@@ -314,7 +314,7 @@ Wyniki JSON są strukturę podobną do poniższego przykładu:
 
 ## <a name="explore-virtual-machines-to-find-public-ip-addresses"></a>Poznaj usługę virtual machines, aby znaleźć publiczne adresy IP
 
-Ten zestaw wieloetapowego wiersza polecenia platformy Azure zapytań najpierw znajduje i przechowująca wszystkie sieci interfejsy zasobów (NIC) podłączonych do maszyn wirtualnych, używa listy kart sieciowych, aby znaleźć każdego zasobu adresu IP, który jest publiczny adres IP i przechowywania tych wartości i w końcu udostępnia Lista rzeczywistych publicznych adresów IP.
+Ten zestaw wiersza polecenia platformy Azure zapytań najpierw znajduje i przechowująca wszystkie interfejsy sieciowe (NIC) zasobów podłączonych do maszyn wirtualnych. Następnie używa listy kart sieciowych można znaleźć każdego zasobu adresu IP, który jest publiczny adres IP i przechowywania tych wartości. Na koniec zawiera listę publicznych adresów IP.
 
 ```azurecli-interactive
 # Use Resource Graph to get all NICs and store in the 'nic' variable
@@ -324,7 +324,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | project n
 cat nics.txt
 ```
 
-Gdy będziemy już mieć `nics.txt` pliku, będziemy z niego korzystać w następnym zapytaniu do szczegółowe informacje związane z siecią interfejsu zasobów w przypadku, gdy ma publiczny adres IP dołączony do karty sieciowej.
+Użyj `nics.txt` pliku w następnym zapytaniu, aby dowiedzieć się interfejs sieciowy powiązane zasoby w przypadku, gdy ma publiczny adres IP dołączony do karty sieciowej.
 
 ```azurecli-interactive
 # Use Resource Graph with the 'nics.txt' file to get all related public IP addresses and store in 'publicIp.txt' file

@@ -1,14 +1,27 @@
+---
+author: ecfan
+ms.service: logic-apps
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: estfan
+ms.openlocfilehash: 46a6fcb57a21f3f1e30b39fc6967256550e31616
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133377"
+---
 ### <a name="prerequisites"></a>Wymagania wstępne
 * A [MicrosoftTranslator](https://www.microsoft.com/translator) konta  
 
-Zanim użyjesz swojego konta MicrosoftTranslator w aplikacji logiki, należy zezwolić aplikacji logiki do łączenia się z kontem MicrosoftTranslator. Na szczęście można w tym z aplikacji logiki w portalu Azure.  
+Zanim użyjesz swojego konta MicrosoftTranslator w aplikacji logiki, należy autoryzować aplikację logiki, aby połączyć się z kontem MicrosoftTranslator. Na szczęście możesz można to zrobić z poziomu aplikacji logiki w witrynie Azure Portal.  
 
-Poniżej przedstawiono kroki, aby zezwolić aplikacji logiki do łączenia się z kontem MicrosoftTranslator:  
+Poniżej przedstawiono kroki, aby autoryzować aplikację logiki, aby połączyć się z kontem MicrosoftTranslator:  
 
-1. Aby utworzyć połączenie MicrosoftTranslator, w Projektancie aplikacji logiki, wybierz **Pokaż Microsoft zarządzanych interfejsów API** na liście rozwijanej wprowadź *MicrosoftTranslator* w polu wyszukiwania. Wybierz wyzwalacz lub akcja będzie chcesz użyć:  
-   ![Krok tworzenia połączenia MicrosoftTranslator](./media/connectors-create-api-microsofttranslator/microsofttranslator-1.png)  
-2. Jeśli nie utworzono żadnych połączeń MicrosoftTranslator przed będzie zostanie wyświetlony monit o podanie poświadczeń MicrosoftTranslator. Te poświadczenia będą używane do autoryzacji aplikację logiki, aby nawiązać połączenie i dostęp do danych konta MicrosoftTranslator:  
-   ![Krok tworzenia połączenia MicrosoftTranslator](./media/connectors-create-api-microsofttranslator/microsofttranslator-2.png)  
-3. Zwróć uwagę, utworzono połączenie i wszystko jest teraz mógł kontynuować wykonywanie innych czynności w aplikacji logiki:  
-   ![Krok tworzenia połączenia MicrosoftTranslator](./media/connectors-create-api-microsofttranslator/microsofttranslator-3.png)  
+1. Aby utworzyć połączenie MicrosoftTranslator, w Projektancie aplikacji logiki, wybierz **Pokaż Microsoft zarządzane interfejsy API** na liście rozwijanej wprowadź *MicrosoftTranslator* w polu wyszukiwania. Wybierz wyzwalacz lub akcję, którą Ci się spodoba do użycia:  
+   ![Kroku tworzenia połączenia MicrosoftTranslator](./media/connectors-create-api-microsofttranslator/microsofttranslator-1.png)  
+2. Nie utworzono żadnych połączeń MicrosoftTranslator przed będzie pobrać monit podaj swoje poświadczenia MicrosoftTranslator. Te poświadczenia będą używane do autoryzowania aplikację logiki, aby nawiązać połączenie i dostęp do danych konta MicrosoftTranslator:  
+   ![Kroku tworzenia połączenia MicrosoftTranslator](./media/connectors-create-api-microsofttranslator/microsofttranslator-2.png)  
+3. Zwróć uwagę, połączenie zostanie utworzone i są teraz bezpłatne wykonaj pozostałe kroki w aplikacji logiki:  
+   ![Kroku tworzenia połączenia MicrosoftTranslator](./media/connectors-create-api-microsofttranslator/microsofttranslator-3.png)  
 

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 9bbbb797cd7e7d1cea52f1d5b1b491998b595db7
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 94a02a06335b35a36c35d4b69776b1eb630b402d
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638089"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086028"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>Role jednostki we wzorcach są podtypy kontekstowych
 Role są podtypy nazwanych, kontekstowych podmiotu używana tylko w [wzorców](luis-concept-patterns.md).
@@ -28,7 +28,7 @@ Role nadaj nazwę różnic:
 |--|--|--|
 |Lokalizacja|źródło|Jeżeli płaszczyzny pozostawia z|
 |Lokalizacja|miejsce docelowe|gdzie wyładowuje płaszczyzna|
-|Wstępnie utworzone datetimeV2|do|Data zakończenia|
+|Wstępnie utworzone datetimeV2|na|Data zakończenia|
 |Wstępnie utworzone datetimeV2|z|Data rozpoczęcia|
 
 ## <a name="how-are-roles-used-in-patterns"></a>Jak role są używane we wzorcach?
@@ -42,13 +42,8 @@ W polu wypowiedź szablonu wzorca role są używane w ramach wypowiedź:
 ## <a name="role-syntax-in-patterns"></a>Składnia roli we wzorcach
 Jednostki i rola są ujęte w nawiasach, `{}`. Jednostka i rola są rozdzielone średnikiem. 
 
-## <a name="roles-versus-hierarchical-entities"></a>Role i hierarchiczne jednostek
-Jednostki hierarchiczną zapewnia te same informacje kontekstowe jako role, ale tylko wypowiedzi w **intencji**. Podobnie, role zawierają te same informacje kontekstowe jako hierarchiczna jednostki, ale tylko w **wzorców**.
 
-|Learning kontekstowych|Używane w|
-|--|--|
-|Hierarchiczna jednostek|Intencji|
-|role|Wzorce|
+[!include[H2 Roles versus hierarchical entities](../../../includes/cognitive-services-luis-hier-roles.md)] 
 
 ## <a name="roles-with-prebuilt-entities"></a>Role z wstępnie utworzonych jednostek
 

@@ -4,14 +4,14 @@ description: Zawiera omówienie znanych problemów dotyczących usługi Azure Mi
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 10/24/2018
 ms.author: raynew
-ms.openlocfilehash: a41a27f2a87a67ea51bcbe110ac77f7908c44e7a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: a32b1b73a12242a6c6b1c29fbf116aff73515b46
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945522"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086747"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Rozwiązywanie problemów z usługą Azure Migrate
 
@@ -51,9 +51,16 @@ Urządzenia dla urządzenia odnajdywania ciągłe tylko zbiera dane dotyczące w
 
 ## <a name="collector-errors"></a>Błędy modułu zbierającego dzienniki
 
-### <a name="deployment-of-collector-ova-failed"></a>Wdrażanie modułu zbierającego OVA nie powiodło się
+### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Wdrażanie usługi Azure Migrate Collector nie powiodło się z powodu błędu: podany plik manifestu jest nieprawidłowy: nieprawidłowa OVF wejścia manifestu.
 
-Może się to zdarzyć czy OVA częściowo zostanie pobrana z powodu przeglądarki korzystania z klienta internetowego vSphere do wdrożenia OVA. Upewnij się, że pobranie zostanie ukończone, a następnie spróbuj wdrożyć OVA przy użyciu innej przeglądarki.
+1. Upewnij się, jeśli plik OVA modułu zbierającego migracji platformy Azure jest ona pobierana poprawnie przez sprawdzenie wartości mieszania. Zapoznaj się [artykułu](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance) można zweryfikować wartości skrótu. Jeśli wartość skrótu nie jest zgodny, należy ponownie pobrać plik OVA i ponowieniem próby wdrożenia.
+2. Jeśli nadal nie można go i są przy użyciu klienta VMware vSphere do wdrożenia pakietu OVF, spróbuj wdrażania go za pośrednictwem kliencie internetowym vSphere. Jeśli nadal nie, spróbuj użyć innej przeglądarki sieci web.
+3. Jeśli są przy użyciu klienta sieci web vSphere, a następnie w trakcie wdrażania go w programie vcenter Server 6.5, próby wdrożenia OVA bezpośrednio na hoście ESXi, wykonując następujące czynności:
+  - Połączenia z hostem ESXi bezpośrednio (zamiast serwera vCenter) za pomocą klienta usługi sieci web (https:// <*adres IP hosta*> /ui)
+  - Przejdź do strony głównej > Spis
+  - Kliknij pozycję Plik > szablon OVF wdrażanie > Przejdź do OVA i ukończyć wdrażanie
+4. Jeśli wdrożenie nadal kończy się niepowodzeniem, należy się z pomocą techniczną usługi Azure Migrate.
+
 
 ### <a name="collector-is-not-able-to-connect-to-the-internet"></a>Moduł zbierający nie jest w stanie połączyć się z Internetem
 

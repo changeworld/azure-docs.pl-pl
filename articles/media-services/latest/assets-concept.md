@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 10/24/2018
 ms.author: juliako
-ms.openlocfilehash: 62cc4634a0f76b0562d5b3c1355a7442fc5cf989
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: e7abdb568b11870fb467ee6d3759881ca337d3cc
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985237"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085815"
 ---
 # <a name="assets"></a>Elementy zawartości
 
@@ -34,19 +34,19 @@ Ponadto, przeczytaj temat [kont magazynu w usłudze Media Services](storage-acco
 
 W poniższej tabeli przedstawiono właściwości zasobów oraz zapewnia ich definicje.
 
-|Name (Nazwa)|Typ|Opis|
-|---|---|---|
-|id|ciąg|W pełni kwalifikowanego Identyfikatora zasobu dla zasobu.|
-|name|ciąg|Nazwa zasobu.|
-|properties.alternateId |ciąg|Alternatywny identyfikator elementu zawartości.|
-|properties.assetId |ciąg|Identyfikator zasobu.|
-|Properties.container |ciąg|Nazwa kontenera obiektów blob zasobów.|
-|Properties.created |ciąg|Data utworzenia zasobu.|
-|Properties.Description |ciąg|Opis elementu zawartości.|
-|properties.lastModified |ciąg|Ostatniej modyfikacji zasobu.|
-|properties.storageAccountName |ciąg|Nazwa konta magazynu.|
-|properties.storageEncryptionFormat |AssetStorageEncryptionFormat |Format szyfrowania elementu zawartości. Jeden z Brak lub MediaStorageEncryption.|
-|type|ciąg|Typ zasobu.|
+|Name (Nazwa)|Opis|
+|---|---|
+|id|W pełni kwalifikowanego Identyfikatora zasobu dla zasobu.|
+|name|Nazwa zasobu.|
+|properties.alternateId |Alternatywny identyfikator elementu zawartości.|
+|properties.assetId |Identyfikator zasobu.|
+|Properties.container |Nazwa kontenera obiektów blob zasobów.|
+|Properties.created |Data utworzenia zasobu.|
+|Properties.Description|Opis elementu zawartości.|
+|properties.lastModified |Ostatniej modyfikacji zasobu.|
+|properties.storageAccountName |Nazwa konta magazynu.|
+|properties.storageEncryptionFormat |Format szyfrowania elementu zawartości. Jeden z Brak lub MediaStorageEncryption.|
+|type|Typ zasobu.|
 
 Pełna definicja można zobaczyć [zasoby](https://docs.microsoft.com/rest/api/media/assets).
 

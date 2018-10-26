@@ -4,24 +4,28 @@ description: Informacje o cyklu życia, które przechodzi planu i szczegółowe 
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: c09fb26d8375e08281241aaed3f6f6e30acc755b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4adf427727e7244bbde64a673e7353c1f8270c8a
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955456"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094582"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Zrozumienie sekwencję wdrażania w plany usługi Azure
 
-Usługa Azure korzysta plany **sekwencjonowania** Aby określić kolejność tworzenia zasobów, podczas przetwarzania przypisanie planu. W tym artykule opisano domyślną kolejność sekwencjonowania, który jest używany, jak dostosować kolejność i przetwarzaniu dostosowane kolejności.
+Usługa Azure korzysta plany **sekwencjonowania** Aby określić kolejność tworzenia zasobów, podczas przetwarzania przypisanie planu. W tym artykule opisano następujące pojęcia:
+
+- Domyślna kolejność sekwencjonowania, który jest używany
+- Dostosowywanie kolejności
+- Jak przebiega przetwarzanie zamówienia dostosowanych
 
 W przykładach JSON, musisz zastąpić własnymi wartościami, które są zmiennymi:
 
-- `{YourMG}` -Zamień na nazwę grupy zarządzania
+- `{YourMG}` — zastąp nazwą swojej grupy zarządzania
 
 ## <a name="default-sequencing-order"></a>Domyślna kolejność sekwencji
 
@@ -32,7 +36,7 @@ Jeśli planu nie zawiera żadnych dyrektywy za zlecenie Wdrażaj artefakty, lub 
 - Poziom subskrypcji **szablonu usługi Azure Resource Manager** artefaktów sortowane według nazwy artefaktu
 - **Grupa zasobów** artefakty (w tym artefaktów podrzędne), posortowane według nazwy symbolu zastępczego
 
-W ramach każdej **grupy zasobów** artefakt, który jest przetwarzany, następującej kolejności sekwencji jest używany dla artefaktów ma zostać utworzony w tej grupie zasobów:
+W ramach każdej **grupy zasobów** artefaktu, w następującej kolejności sekwencji jest używany dla artefaktów ma zostać utworzony w tej grupie zasobów:
 
 - Podrzędne grupy zasobów **przypisania roli** artefaktów sortowane według nazwy artefaktu
 - Podrzędne grupy zasobów **przypisania zasad** artefaktów sortowane według nazwy artefaktu
@@ -40,14 +44,13 @@ W ramach każdej **grupy zasobów** artefakt, który jest przetwarzany, następu
 
 ## <a name="customizing-the-sequencing-order"></a>Dostosowywanie kolejności sekwencji
 
-Podczas redagowania dużych schematy, może być konieczne dla zasobu do utworzenia w określonej kolejności w stosunku do innego zasobu. Najczęstszym wzorcem użycia tego jest, gdy plan zawiera wiele szablonów usługi Azure Resource Manager. Schematy wykonuje tę wartość, umożliwiając kolejności sekwencjonowania należy zdefiniować.
+Podczas redagowania dużych schematy, może być konieczne dla zasobów w określonej kolejności. Najczęstszym wzorcem użycia tego scenariusza jest, gdy plan zawiera kilka szablonów usługi Azure Resource Manager. Plany obsługi tego wzorca, umożliwiając kolejności sekwencjonowania należy zdefiniować.
 
-Jest to realizowane przez zdefiniowanie `dependsOn` właściwości w formacie JSON. Tylko plan (dla grup zasobów) i obiekty artefaktu obsługują tej właściwości. `dependsOn` jest tablicą ciągów nazw artefaktów, które określonego artefaktu musi zostać utworzona przed jego tworzenia.
+Kolejność odbywa się przez definiowanie `dependsOn` właściwości w formacie JSON. Tylko plan (dla grup zasobów) i obiekty artefaktu obsługują tej właściwości. `dependsOn` jest tablicą ciągów nazw artefaktów, które określonego artefaktu musi zostać utworzona przed jego tworzenia.
 
 ### <a name="example---blueprint-with-ordered-resource-group"></a>Przykład — planu z grupą zasobów uporządkowany
 
-To jest plan przykład z grupą zasobów, która została zdefiniowana kolejność niestandardowych sekwencjonowania przez zadeklarowanie wartość `dependsOn`, wraz z grupą zasobów standardowych. W tym przypadku o nazwie artefaktu **assignPolicyTags** zostanie przetworzone przed **uporządkowane rg** grupy zasobów.
-**Standardowa rg** będą przetwarzane na domyślną kolejność sekwencji.
+Ten przykładowy plan zawiera grupę zasobów, która została zdefiniowana kolejność niestandardowych sekwencjonowania przez zadeklarowanie wartość `dependsOn`, wraz z grupą zasobów standardowych. W tym przypadku o nazwie artefaktu **assignPolicyTags** zostanie przetworzone przed **uporządkowane rg** grupy zasobów. **Standardowa rg** będą przetwarzane na domyślną kolejność sekwencji.
 
 ```json
 {
@@ -78,7 +81,7 @@ To jest plan przykład z grupą zasobów, która została zdefiniowana kolejnoś
 
 ### <a name="example---artifact-with-custom-order"></a>Przykład — artefakt o kolejności niestandardowej
 
-Jest to przykład artefakt zasad, który jest zależny od szablonu usługi Azure Resource Manager. Przy domyślnej kolejności, artefaktu zasad zostałyby utworzone przed szablonu usługi Azure Resource Manager. Dzięki temu artefaktu zasad oczekiwania dla szablonu usługi Azure Resource Manager, który ma zostać utworzony.
+W tym przykładzie jest artefaktu zasad, który zależy od szablonu usługi Azure Resource Manager. Przy domyślnej kolejności, artefaktu zasad zostałyby utworzone przed szablonu usługi Azure Resource Manager. Ta kolejność umożliwia artefaktu zasad oczekiwania dla szablonu usługi Azure Resource Manager, który ma zostać utworzony.
 
 ```json
 {
@@ -99,14 +102,14 @@ Jest to przykład artefakt zasad, który jest zależny od szablonu usługi Azure
 
 ## <a name="processing-the-customized-sequence"></a>Przetwarzanie niestandardowych sekwencji
 
-W trakcie procesu tworzenia topologii sortowania służy do tworzenia wykresu zależności z planu i jego artefaktów. Dzięki temu wiele poziomów zależności między grupami zasobów i artefakty mogą być obsługiwane.
+W trakcie procesu tworzenia topologii sortowania służy do tworzenia wykresu zależności artefaktów schematy. Sprawdzanie zapewnia, że każdy poziom zależności między grupami zasobów i artefaktów jest obsługiwana.
 
-Jeśli zależność jest zadeklarowany na planu lub artefakt, który nie ma zmienić domyślną kolejność, w kolejności sekwencji są wprowadzane żadne zmiany. Przykładem tego są grupę zasobów, która jest zależna od przypisania zasad podrzędnych poziomu zasad lub zasób grupy "standard-rg" subskrypcji, która jest zależna od przypisania roli podrzędnej grupie zasobów "standard-rg". W obu przypadkach `dependsOn` w takich sytuacjach przydałaby zmienić domyślną kolejność sekwencjonowania i żadne zmiany nie będą wprowadzone.
+Jeśli zależność artefaktu zadeklarowano, że w takich sytuacjach przydałaby, zmienić domyślną kolejność, są wprowadzane żadne zmiany. Przykładem jest grupa zasobów, która jest zależna od zasadami poziomu subskrypcji. Innym przykładem jest zasób grupy "standard-rg" podrzędnych przypisanie zasad zależną od przypisania roli podrzędnej grupie zasobów "standard-rg". W obu przypadkach `dependsOn` w takich sytuacjach przydałaby zmienić domyślną kolejność sekwencjonowania i żadne zmiany nie będą wprowadzone.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [planu cyklu życia](lifecycle.md)
-- Opis sposobu użycia [statycznych i dynamicznych parametrów](parameters.md)
-- Dowiedz się, jak używać [planu blokowanie zasobów](resource-locking.md)
+- Dowiedz się więcej na temat [cyklu życia strategii](lifecycle.md)
+- Dowiedz się, jak używać [parametrów statycznych i dynamicznych](parameters.md)
+- Dowiedz się, jak używać [blokowania zasobów strategii](resource-locking.md)
 - Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md)
-- Rozwiązywanie problemów podczas przypisywania planu z [Ogólne rozwiązywanie problemów](../troubleshoot/general.md)
+- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](../troubleshoot/general.md)

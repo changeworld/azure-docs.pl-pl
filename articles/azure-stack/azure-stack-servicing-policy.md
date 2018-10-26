@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 10/23/2018
 ms.author: sethm
 ms.reviewer: harik
-ms.openlocfilehash: 523be365e8b66c157546470a70ddec73d3e1e5d1
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: f00b175fed36fbe2b28f1d11843bb17c54ac3873
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630685"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086968"
 ---
 # <a name="azure-stack-servicing-policy"></a>Obsługa zasad z usługi Azure Stack
 W tym artykule opisano zasady obsługi dla usługi Azure Stack zintegrowane systemy i co należy zrobić, aby zapewnić systemu w stanie wspieranym. 
@@ -37,11 +37,12 @@ Istnieją dwa typy pakietów aktualizacji w ramach zintegrowanych systemów:
 ## <a name="update-package-release-cadence"></a>Cykl wersji pakietu aktualizacji
 Firma Microsoft planuje wersji pakietów aktualizacji oprogramowania w erze miesięcznych. Jednak istnieje możliwość mają wiele lub nie aktualizacji przeprowadzanych w danym miesiącu. Dostawcy sprzętu OEM ich aktualizacje na zgodnie z potrzebami. 
 
-Znajdź dokumentację na temat planowania i zarządzania aktualizacjami i jak określić bieżącej wersji w [Zarządzaj aktualizuje Przegląd](azure-stack-updates.md). Informacje o konkretnej aktualizacji w tym jak ją pobrać, zobacz informacje o wersji dla tej aktualizacji: 
+Znajdź dokumentację na temat planowania i zarządzania aktualizacjami i jak określić bieżącej wersji w [Zarządzaj aktualizuje Przegląd](azure-stack-updates.md). 
+
+Informacje o konkretnej aktualizacji w tym jak ją pobrać, zobacz informacje o wersji dla tej aktualizacji: 
+- [Aktualizacja usługi Azure Stack 1809](azure-stack-update-1809.md)
 - [Aktualizacja usługi Azure Stack 1808](azure-stack-update-1808.md)
 - [Aktualizacja usługi Azure Stack 1807](azure-stack-update-1807.md)
-- [Aktualizacja usługi Azure Stack 1805](azure-stack-update-1805.md)
-
 
 ## <a name="hotfixes"></a>Poprawki
 Od czasu do czasu firma Microsoft oferuje poprawki dla usługi Azure Stack ten adres konkretny problem, który jest często zapobiegawczych lub zależne od czasu.  Każda poprawka jest zwolniony z odpowiednie artykuły bazy wiedzy Microsoft Knowledge Base, ze szczegółami problemu, przyczynę i rozwiązanie. 

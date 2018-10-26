@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 10/23/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: dc9e1b3fb59aca8fba0c84fbfa674931c24c12c9
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 1af7a1d595b39878f3ed30591e8ad78e767e8cf7
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945896"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087495"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Rozmiary maszyn wirtualnych obsługiwanych w usłudze Azure Stack
 
@@ -31,6 +31,10 @@ W tym artykule wymieniono rozmiarów maszyn wirtualnych (VM), które są dostęp
 Rozmiary maszyn wirtualnych ogólnego przeznaczenia udostępniają o zrównoważonym obciążeniu współczynnik procesora CPU w stosunku do pamięci. Są one używane do testowania i programowania, małych i średnich baz danych, oraz o niewielkim i średnim ruchu, serwery sieci web.
 
 ### <a name="basic-a"></a>Podstawowa A
+
+> [!NOTE]
+> *Podstawowa A* rozmiarów maszyn wirtualnych są wycofywane w przypadku [tworzenie zestawów skalowania maszyn wirtualnych](../azure-stack-compute-add-scalesets.md) (VMSS) za pośrednictwem portalu. Do utworzenia zestawu skalowania maszyn wirtualnych o tym rozmiarze, użyj programu PowerShell lub w szablonie.
+
 |Rozmiar — rozmiar\nazwa |Procesor wirtualny     |Memory (Pamięć) | Maksymalny rozmiar dysku tymczasowego | System operacyjny maksymalna przepływność dysków: (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna przepływność dysków danych (operacje We/Wy) | Maksymalna liczba kart sieciowych |    
 |-----------------|-----|---------|---------|-----|------|-----------|----|
 |**A0\Basic_A0**  |1    |768 MB   | 20 GB   |300  | 300  |1 / 1x300  |1   |

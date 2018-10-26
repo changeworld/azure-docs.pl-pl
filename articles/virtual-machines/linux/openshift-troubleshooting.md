@@ -1,10 +1,10 @@
 ---
-title: Rozwiązywanie problemów z wdrażaniem OpenShift na platformie Azure | Dokumentacja firmy Microsoft
-description: Rozwiązywanie problemów z OpenShift wdrożenia na platformie Azure.
+title: Rozwiązywanie problemów z wdrożenia OpenShift na platformie Azure | Dokumentacja firmy Microsoft
+description: Rozwiązywanie problemów z wdrożenia OpenShift na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: haroldw
-manager: najoshi
+author: haroldwongms
+manager: joraio
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,34 +15,109 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: 35e554d3a9c7e7d56546ae9723c33eb59e906472
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 6a4af0efb14d8ad45add906262ffd2121e8b78d0
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/11/2017
-ms.locfileid: "24139454"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085839"
 ---
-# <a name="troubleshoot-openshift-deployment-in-azure"></a>Rozwiązywanie problemów z wdrażaniem OpenShift na platformie Azure
+# <a name="troubleshoot-openshift-deployment-in-azure"></a>Rozwiązywanie problemów z wdrożenia OpenShift na platformie Azure
 
-Jeśli klaster OpenShift nie pomyślnie wdrożone, spróbuj rozwiązać problem zadania, aby zawęzić problem. Wyświetl stan wdrożenia i porównać poniżej kod zakończenia:
+Jeśli klaster OpenShift nie wdrożony pomyślnie, witryny Azure portal zapewnia dane wyjściowe błędu. Dane wyjściowe może być trudne do odczytania, co czyni go trudno zidentyfikować problem. Szybko przeskanować te dane wyjściowe dla kodu zakończenia 3, 4 lub 5. Poniżej znajdują się informacje na te kody zakończenia trzy:
 
-- 3 kod zakończenia: Red Hat subskrypcji nazwa użytkownika / hasło lub identyfikator organizacji / klucz aktywacji jest niepoprawny
-- 4 kod zakończenia: Your Red Hat puli identyfikator jest nieprawidłowy lub nie dostępnych żadnych uprawnień
-- 5 kod zakończenia: nie można aprowizować woluminu puli elastycznej Docker
-- 6 kod zakończenia: Instalacja OpenShift klastra nie powiodła się
-- 7 kod zakończenia: instalacji klastra OpenShift zakończyło się pomyślnie, ale dostawca rozwiązań w chmurze Azure konfiguracji nie powiodło się - config głównego na węzeł główny problem
-- 8 kod zakończenia: instalacji klastra OpenShift zakończyło się pomyślnie, ale dostawca rozwiązań w chmurze Azure konfiguracji nie powiodło się - config węzła na problem z węzła głównego
-- 9 Kod zakończenia: instalacji klastra OpenShift zakończyło się pomyślnie, ale dostawca rozwiązań w chmurze Azure konfiguracji nie powiodło się - config węzła na problem Infra lub węzła aplikacji
-- 10 kod zakończenia: instalacji klastra OpenShift zakończyło się pomyślnie, ale konfiguracja Azure Cloud Solution Provider nie powiodło się — Korygowanie wzorca węzłów lub nie można ustawić jako unschedulable wzorca
-- 11 kod zakończenia: nie można uruchomić metryk do wdrożenia
-- 12 kod zakończenia: rejestrowanie wdrażanie nie powiodło się
+- 3 kod zakończenia: Red Hat subskrypcji nazwa użytkownika / hasło lub identyfikator organizacji / klucz aktywacji jest nieprawidłowy
+- 4 kod zakończenia: usługi Red Hat puli identyfikator jest nieprawidłowy lub uprawnienia nie są dostępne
+- 5 kod zakończenia: nie można aprowizować rozmiar woluminu puli elastycznej platformy Docker
 
-Kody zakończenia 7-10 OpenShift klastra został zainstalowany, ale nie Konfiguracja Azure Cloud Solution Provider. Możesz SSH do węzła głównego (OpenShift pochodzenia) lub węzeł bastionu (OpenShift kontenera platformy) i z występują SSH do każdego węzła klastra, aby rozwiązać problemy z.
+Wszystkie pozostałe kody zakończenia można znaleźć hostami za pośrednictwem protokołu ssh do wyświetlania plików dziennika.
 
-Typowe przyczyny błędów z kodów zakończenia 7-9 jest nazwy głównej usługi nie miał odpowiednie uprawnienia do subskrypcji lub grupy zasobów. Jeśli jest to problem, przypisz odpowiednie uprawnienia i ręcznie uruchom ponownie skrypt, który uległ awarii i wszystkie kolejne skrypty.
+**OpenShift Container Platform**
 
-Pamiętaj ponownie uruchomić usługę, która nie powiodło się (na przykład systemctl ponowne uruchomienie atomic-openshift-node.service) przed wykonaniem skryptów ponownie.
+Protokół SSH z hostem element playbook rozwiązania ansible. Szablon lub oferty w portalu Marketplace należy użyć hostem bastionu. Z bastionu możesz SSH do wszystkich innych węzłów w klastrze (wzorca, infra, CNS, składnik obliczeniowy). Musisz być użytkownikiem głównym, aby wyświetlić pliki dziennika. Główny jest dostępu SSH domyślnie wyłączona, dlatego nie należy używać głównego SSH do innych węzłów.
 
-Dla dalszego rozwiązywania problemów, SSH na węzeł główny na porcie 2200 (źródło) lub węzeł bastionu na port 22 (kontenera Platform). Muszą znajdować się w katalogu głównego (sudo su-), a następnie przejdź do następującego katalogu: /var/lib/waagent/custom-script/download.
+**OKD**
 
-W tym miejscu wyświetlić foldery o nazwie "0" i "1". W każdym z tych folderów Zobacz dwa pliki, "stderr" i "stdout." Przejrzyj te pliki, aby określić, w którym wystąpił błąd.
+Protokół SSH z hostem element playbook rozwiązania ansible. W przypadku OKD szablonu (w wersji 3.9 i starszych) Użyj hosta master-0. W przypadku OKD szablonu (w wersji 3.10 i nowsze) Użyj hostem bastionu. Z hosta element playbook rozwiązania ansible możesz SSH do wszystkich innych węzłów w klastrze (wzorca, infra, CNS, składnik obliczeniowy). Musisz być użytkownikiem głównym ("sudo" su-), aby wyświetlić pliki dziennika. Główny jest dostępu SSH domyślnie wyłączona, dlatego nie należy używać głównego SSH do innych węzłów.
+
+## <a name="log-files"></a>Pliki dziennika
+
+Pliki dziennika (stderr i stdout) dla hosta skryptów przygotowania znajdują się w /var/lib/waagent/custom-script/download/0 na wszystkich hostach. Jeśli wystąpił błąd podczas przygotowywania hosta, wyświetlać te pliki dziennika, aby określić błędu.
+
+Jeśli skrypty przygotowania został uruchomiony pomyślnie, następnie pliki dziennika w katalogu /var/lib/waagent/custom-script/download/1 hosta element playbook rozwiązania ansible należy do badania. Jeśli błąd wystąpił podczas instalacji rzeczywistego OpenShift, plik stdout wyświetli błąd. Dzięki tym informacjom można się z pomocą techniczną, aby uzyskać dalszą pomoc.
+
+Przykładowe dane wyjściowe
+
+```json
+TASK [openshift_storage_glusterfs : Load heketi topology] **********************
+fatal: [mycluster-master-0]: FAILED! => {"changed": true, "cmd": ["oc", "--config=/tmp/openshift-glusterfs-ansible-IbhnUM/admin.kubeconfig", "rsh", "--namespace=glusterfs", "deploy-heketi-storage-1-d9xl5", "heketi-cli", "-s", "http://localhost:8080", "--user", "admin", "--secret", "VuoJURT0/96E42Vv8+XHfsFpSS8R20rH1OiMs3OqARQ=", "topology", "load", "--json=/tmp/openshift-glusterfs-ansible-IbhnUM/topology.json", "2>&1"], "delta": "0:00:21.477831", "end": "2018-05-20 02:49:11.912899", "failed": true, "failed_when_result": true, "rc": 0, "start": "2018-05-20 02:48:50.435068", "stderr": "", "stderr_lines": [], "stdout": "Creating cluster ... ID: 794b285745b1c5d7089e1c5729ec7cd2\n\tAllowing file volumes on cluster.\n\tAllowing block volumes on cluster.\n\tCreating node mycluster-cns-0 ... ID: 45f1a3bfc20a4196e59ebb567e0e02b4\n\t\tAdding device /dev/sdd ... OK\n\t\tAdding device /dev/sde ... OK\n\t\tAdding device /dev/sdf ... OK\n\tCreating node mycluster-cns-1 ... ID: 596f80d7bbd78a1ea548930f23135131\n\t\tAdding device /dev/sdc ... Unable to add device: Unable to execute command on glusterfs-storage-4zc42:   Device /dev/sdc excluded by a filter.\n\t\tAdding device /dev/sde ... OK\n\t\tAdding device /dev/sdd ... OK\n\tCreating node mycluster-cns-2 ... ID: 42c0170aa2799559747622acceba2e3f\n\t\tAdding device /dev/sde ... OK\n\t\tAdding device /dev/sdf ... OK\n\t\tAdding device /dev/sdd ... OK", "stdout_lines": ["Creating cluster ... ID: 794b285745b1c5d7089e1c5729ec7cd2", "\tAllowing file volumes on cluster.", "\tAllowing block volumes on cluster.", "\tCreating node mycluster-cns-0 ... ID: 45f1a3bfc20a4196e59ebb567e0e02b4", "\t\tAdding device /dev/sdd ... OK", "\t\tAdding device /dev/sde ... OK", "\t\tAdding device /dev/sdf ... OK", "\tCreating node mycluster-cns-1 ... ID: 596f80d7bbd78a1ea548930f23135131", "\t\tAdding device /dev/sdc ... Unable to add device: Unable to execute command on glusterfs-storage-4zc42:   Device /dev/sdc excluded by a filter.", "\t\tAdding device /dev/sde ... OK", "\t\tAdding device /dev/sdd ... OK", "\tCreating node mycluster-cns-2 ... ID: 42c0170aa2799559747622acceba2e3f", "\t\tAdding device /dev/sde ... OK", "\t\tAdding device /dev/sdf ... OK", "\t\tAdding device /dev/sdd ... OK"]}
+
+PLAY RECAP *********************************************************************
+mycluster-cns-0       : ok=146  changed=57   unreachable=0    failed=0   
+mycluster-cns-1       : ok=146  changed=57   unreachable=0    failed=0   
+mycluster-cns-2       : ok=146  changed=57   unreachable=0    failed=0   
+mycluster-infra-0     : ok=143  changed=55   unreachable=0    failed=0   
+mycluster-infra-1     : ok=143  changed=55   unreachable=0    failed=0   
+mycluster-infra-2     : ok=143  changed=55   unreachable=0    failed=0   
+mycluster-master-0    : ok=502  changed=198  unreachable=0    failed=1   
+mycluster-master-1    : ok=348  changed=140  unreachable=0    failed=0   
+mycluster-master-2    : ok=348  changed=140  unreachable=0    failed=0   
+mycluster-node-0      : ok=143  changed=55   unreachable=0    failed=0   
+mycluster-node-1      : ok=143  changed=55   unreachable=0    failed=0   
+localhost                  : ok=13   changed=0    unreachable=0    failed=0   
+
+INSTALLER STATUS ***************************************************************
+Initialization             : Complete (0:00:39)
+Health Check               : Complete (0:00:24)
+etcd Install               : Complete (0:01:24)
+Master Install             : Complete (0:14:59)
+Master Additional Install  : Complete (0:01:10)
+Node Install               : Complete (0:10:58)
+GlusterFS Install          : In Progress (0:03:33)
+    This phase can be restarted by running: playbooks/openshift-glusterfs/config.yml
+
+Failure summary:
+
+  1. Hosts:    mycluster-master-0
+     Play:     Configure GlusterFS
+     Task:     Load heketi topology
+     Message:  Failed without returning a message.
+```
+
+Najbardziej typowe błędy podczas instalacji są:
+
+1. Klucz prywatny ma hasło
+2. Klucz tajny usługi Key vault, przy użyciu klucza prywatnego nie został utworzony prawidłowo
+3. Wprowadzono nieprawidłowe poświadczenia nazwy głównej usługi
+4. Nazwa główna usługi nie ma prawa dostępu współautora do grupy zasobów
+
+### <a name="private-key-has-a-passphrase"></a>Klucz prywatny jest hasło
+
+Zostanie wyświetlony błąd, który nie przyznano uprawnienia dla protokołu SSH. Protokół SSH z hosta element playbook rozwiązania ansible pod kątem hasło klucza prywatnego.
+
+### <a name="key-vault-secret-with-private-key-wasnt-created-correctly"></a>Klucz tajny usługi Key vault, przy użyciu klucza prywatnego nie został utworzony prawidłowo
+
+Klucz prywatny są wstrzykiwane do hosta element playbook rozwiązania ansible - ~/.ssh/id_rsa. Upewnij się, że ten plik jest poprawny. Testowanie, otwierając sesję SSH z jednym z węzłów klastra z hosta element playbook rozwiązania ansible.
+
+### <a name="service-principal-credentials-were-entered-incorrectly"></a>Wprowadzono nieprawidłowe poświadczenia nazwy głównej usługi
+
+Podczas dostarczania wprowadzanie do szablonu lub oferty w portalu Marketplace, podano nieprawidłowe informacje. Upewnij się, że używasz poprawny identyfikator aplikacji (clientId) oraz hasło (clientSecret) dla jednostki usługi. Sprawdź, wydając polecenie wiersza polecenia platformy azure.
+
+```bash
+az login --service-principal -u <client id> -p <client secret> -t <tenant id>
+```
+
+### <a name="service-principal-doesnt-have-contributor-access-to-the-resource-group"></a>Nazwa główna usługi nie ma prawa dostępu współautora do grupy zasobów
+
+Jeśli jest włączony dostawca chmury platformy Azure, jednostki usługi używany musi mieć prawa dostępu współautora do grupy zasobów. Sprawdź, wydając polecenie wiersza polecenia platformy azure.
+
+```bash
+az group update -g <openshift resource group> --set tags.sptest=test
+```
+
+## <a name="additional-tools"></a>Dodatkowe narzędzia
+
+Niektóre błędy umożliwia także następujące polecenia, aby uzyskać więcej informacji:
+
+1. Stan systemctl <service>
+2. journalctl -xe

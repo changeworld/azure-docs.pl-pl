@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 3ba8919a499da0db8e2deb626d8cf4d5067c1c25
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 2c82007092f9ff93086d5caaf188f6922f4a8aea
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069181"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086186"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Tworzenie funkcji platformy Azure przy użyciu programu Visual Studio  
 
@@ -116,15 +116,16 @@ W przypadku funkcji wstępnie skompilowanym powiązania używane przez funkcję 
     using System;
     using Microsoft.Azure.WebJobs;
     using Microsoft.Azure.WebJobs.Host;
+    using Microsoft.Extensions.Logging;
 
     namespace FunctionApp1
     {
         public static class Function1
         {
             [FunctionName("QueueTriggerCSharp")]
-            public static void Run([QueueTrigger("myqueue-items", Connection = "QueueStorage")]string myQueueItem, TraceWriter log)
+            public static void Run([QueueTrigger("myqueue-items", Connection = "QueueStorage")]string myQueueItem, ILogger log)
             {
-                log.Info($"C# Queue trigger function processed: {myQueueItem}");
+                log.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
             }
         }
     }
@@ -152,9 +153,9 @@ Podobnie jak w przypadku wyzwalaczy, powiązania danych wejściowych i wyjściow
         public static void Run(
             [QueueTrigger("myqueue-items-source", Connection = "AzureWebJobsStorage")] string myQueueItem, 
             [Queue("myqueue-items-destination", Connection = "AzureWebJobsStorage")] out string myQueueItemCopy,
-            TraceWriter log)
+            ILogger log)
         {
-            log.Info($"CopyQueueMessage function processed: {myQueueItem}");
+            log.LogInformation($"CopyQueueMessage function processed: {myQueueItem}");
             myQueueItemCopy = myQueueItem;
         }
     }

@@ -10,12 +10,12 @@ ms.author: netahw
 author: nhaiby
 ms.date: 05/20/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 371903e1ee080d2b98fd46ac4d6d9838416e1335
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b1b4e3e19adb38a69e16aaa98300972df3bb71a8
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973426"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093653"
 ---
 # <a name="build-and-deploy-image-similarity-models-with-azure-machine-learning"></a>Tworzenie i wdrażanie modeli podobieństwa obrazów za pomocą usługi Azure Machine Learning
 
@@ -38,7 +38,7 @@ Podczas kompilowania i wdrażania tego modelu przy użyciu AMLPCV, możesz przej
 7. Wdrażanie usługi sieci Web
 8. Testowanie obciążeniowe usługi sieci Web
 
-[CNTK](https://www.microsoft.com/cognitive-toolkit/) służy jako platforma do uczenia głębokiego szkolenia jest wykonywana lokalnie na maszynie GPU oparte takie jak ([głębokiego uczenia maszyna wirtualna do nauki o danych](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)), i wdrożenie używa interfejsu wiersza polecenia platformy Azure ML Operacjonalizacji.
+[CNTK](https://www.microsoft.com/en-us/cognitive-toolkit/) służy jako platforma do uczenia głębokiego szkolenia jest wykonywana lokalnie na maszynie GPU oparte takie jak ([głębokiego uczenia maszyna wirtualna do nauki o danych](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)), i wdrożenie używa interfejsu wiersza polecenia platformy Azure ML Operacjonalizacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

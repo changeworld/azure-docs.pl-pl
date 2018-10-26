@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: qianw211
-ms.openlocfilehash: 46740e925a5d4e94c314105aba4920caf01532e7
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 0468c41f0813277b6ba6d3be8ad89c3178dd1420
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985612"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094680"
 ---
 # <a name="iot-edge-modules"></a>Moduły usługi IoT Edge
 
@@ -78,15 +78,11 @@ Aby opublikować moduł usługi IoT Edge w portalu Azure Marketplace, musisz spe
 
 **Wymagania techniczne**
 
-Podstawowy wymagań technicznych dotyczących moduł usługi IoT Edge, aby go uzyskać certyfikat i opublikowane w portalu Azure Marketplace są szczegółowo opisane w [proces certyfikacji pakietu IoT Edge modułu](https://cloudpartner.azure.com/#documentation/iot-edge-module-certification-process) na [publikowania w chmurze Portal](https://cloudpartner.azure.com/).  
+Podstawowy wymagań technicznych dotyczących moduł usługi IoT Edge, aby go uzyskać certyfikat i opublikowane w portalu Azure Marketplace są szczegółowo opisane w [przygotowanie modułu usługi IoT Edge, zasoby techniczne](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets).  
 
 ## <a name="documentation-and-resources"></a>Dokumentacja i zasoby
 
-Dostępne są następujące artykuły, po zalogowaniu się do [Portal wydawców w chmurze](https://cloudpartner.azure.com/):
-
-- [Utwórz ofertę moduł usługi IoT Edge](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer) — — proces publikowania nowego modułu usługi IoT Edge oferty z portalu wydawców w chmurze.
-- [Proces certyfikacji moduł usługi IoT Edge](https://cloudpartner.azure.com/#documentation/iot-edge-module-certification-process) — podsumowanie kroki i wymagania, aby przeprowadzić certyfikację moduł usługi IoT Edge.
-- [Moduł usługi IoT Edge — często zadawane pytania](https://cloudpartner.azure.com/#documentation/iot-edge-module-faq) —-listę często zadawanych pytań dotyczy moduły usługi IoT Edge.
+[Utwórz ofertę moduł usługi IoT Edge](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer) — — proces publikowania nowego modułu usługi IoT Edge oferty z portalu wydawców w chmurze.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

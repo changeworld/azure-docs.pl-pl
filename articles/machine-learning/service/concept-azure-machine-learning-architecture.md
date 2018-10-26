@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.author: haining
 author: hning86
 ms.reviewer: larryfr
-ms.date: 09/24/2018
-ms.openlocfilehash: 64104fc70c7be1589c9332905f243a2e1e692eee
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.date: 10/24/2018
+ms.openlocfilehash: b00f72c987b6ce8c44796bd036af670ec39fa7a6
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237980"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093636"
 ---
-# <a name="architecture-and-concepts-how-does-azure-machine-learning-service-work"></a>Architektury i koncepcji: jak działa usługa Azure Machine Learning? 
+# <a name="how-the-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: pojęcia i architektura
 
 W tym dokumencie opisano architekturę i pojęcia dotyczące usługi Azure Machine Learning. Poniższy diagram przedstawia główne składniki usługi i przedstawiono ogólny przepływ pracy, podczas korzystania z usługi: 
 
@@ -156,6 +156,13 @@ Eksperyment to zbiór wielu uruchomień z danego skryptu. Zawsze należy do obsz
 
 Na przykład z użyciem eksperymentu zobacz [Szybki Start: wprowadzenie do usługi Azure Machine Learning](quickstart-get-started.md) dokumentu.
 
+
+## <a name="pipelines"></a>Potoki
+
+Potoki są używane do tworzenia i zarządzania nimi przepływy pracy tej fazy uczenia maszynowego razem Połącz (ML), takich jak przygotowywanie danych, szkolenie modelu, wdrożenie modelu i wnioskowania. Każda faza może obejmować wiele kroków, z których każdy może uruchamiane w różnych celów obliczeń.
+
+Aby uzyskać więcej informacji na temat potoków uczenia maszynowego za pomocą tej usługi, zobacz artykuł [potoków i Azure Machine Learning](concept-ml-pipelines.md).
+
 ## <a name="compute-target"></a>Obliczeniowego elementu docelowego
 
 Cel obliczenia jest używane do uruchamiania skryptu szkolenia lub wdrożeniu usługi sieci web hosta zasobów obliczeniowych. Są obsługiwane obliczeniowych elementów docelowych: 
@@ -211,5 +218,5 @@ Działania może zapewnić powiadomienia za pośrednictwem zestawu SDK lub inter
 Aby rozpocząć korzystanie z usługi Azure Machine Learning, należy użyć następujących łączy:
 
 * [Co to jest usługa Azure Machine Learning](overview-what-is-azure-ml.md)
-* [Szybki Start: Tworzenie obszaru roboczego za pomocą języka Python](quickstart-get-started.md)
-* [Samouczek: Uczenie modelu](tutorial-train-models-with-aml.md)
+* [Quickstart: Create a workspace with Python](quickstart-get-started.md) (Szybki start: tworzenie obszaru roboczego przy użyciu języka Python)
+* [Tutorial: Train a model](tutorial-train-models-with-aml.md) (Samouczek: uczenie modelu)

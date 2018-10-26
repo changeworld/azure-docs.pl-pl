@@ -3,24 +3,22 @@ title: Zarejestruj swoją aplikację, aby używać usługi Azure Active Director
 description: Przeznaczony dla specjalistów IT i w tym artykule zawarto wskazówki dotyczące integracji aplikacji platformy Azure z usługą Active Directory.
 services: active-directory
 documentationcenter: ''
-author: kgremban
+author: barbkess
 manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2018
-ms.author: kgremban
+ms.author: barbkess
 ms.custom: seohack1
-ms.openlocfilehash: 57f4fa0179668bccc39098a1eb9816403d00db57
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4d1ef99426ab5b44b69ba4abc5dc7398d43cfc24
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716574"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087343"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Twórz line-of-business apps usługi Azure Active Directory
 Ten przewodnik zawiera omówienie tworzenia aplikacji usługi line-of-business (LoB) dla usługi Azure Active Directory (AD). Określonej grupy odbiorców jest administratorów globalnych usługi Active Directory/Office 365.

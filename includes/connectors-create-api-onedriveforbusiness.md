@@ -1,16 +1,29 @@
+---
+author: ecfan
+ms.service: logic-apps
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: estfan
+ms.openlocfilehash: 48cd41d432c5969fc4128b055ca61fc86a57bdd2
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133658"
+---
 ### <a name="prerequisites"></a>Wymagania wstępne
 * A [OneDrive](http://OneDrive.com) konta 
 
-Zanim użyjesz aplikacji OneDrive dla firm w aplikacji logiki, musisz autoryzować aplikację logiki, aby nawiązać połączenia z kontem usługi OneDrive dla firm. Na szczęście można w tym z aplikacji logiki w portalu Azure. 
+Zanim użyjesz usługi OneDrive dla firm konta w aplikacji logiki, należy zezwolić aplikacji logiki, aby nawiązać połączenie z kontem usługi OneDrive dla firm. Na szczęście możesz można to zrobić z poziomu aplikacji logiki w witrynie Azure Portal. 
 
-Poniżej przedstawiono kroki, aby zezwolić aplikacji logiki nawiązywania połączenia z kontem usługi OneDrive dla firm:
+Poniżej przedstawiono kroki, aby autoryzować aplikację logiki, aby nawiązać połączenie z kontem usługi OneDrive dla firm:
 
-1. Aby utworzyć połączenie do usługi OneDrive dla firm, w Projektancie aplikacji logiki, wybierz **Pokaż Microsoft zarządzanych interfejsów API** na liście rozwijanej wprowadź *OneDrive dla firm* w polu wyszukiwania. Wybierz wyzwalacz lub akcja będzie chcesz użyć:  
+1. Aby utworzyć połączenie do usługi OneDrive dla firm, w Projektancie aplikacji logiki, wybierz pozycję **Pokaż Microsoft zarządzane interfejsy API** na liście rozwijanej wprowadź *usługi OneDrive dla firm* w polu wyszukiwania. Wybierz wyzwalacz lub akcję, którą Ci się spodoba do użycia:  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-1.png)
-2. Jeśli nie utworzono wszystkie połączenia z usługi OneDrive dla firm przed będzie zostanie wyświetlony monit zapewnienie kontem usługi OneDrive dla firm poświadczeń. Te poświadczenia będą używane do autoryzacji aplikację logiki, aby nawiązać połączenie i dostęp do aplikacji OneDrive dla danych konta firmowego:  
+2. Nie utworzono żadnych połączeń w usłudze OneDrive dla firm, zanim będzie pobrać monit zapewnia usługi OneDrive dla firm poświadczeń. Te poświadczenia będą używane do autoryzowania aplikację logiki, aby nawiązać połączenie i dostęp do usługi OneDrive dla danych konto firmowe:  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-2.png)
-3. Podaj aplikacji OneDrive dla firm nazwy użytkownika i hasła do aplikacji logiki autoryzacji:  
+3. Podaj w usłudze OneDrive dla firm, nazwę użytkownika i hasło do autoryzowania aplikacji logiki:  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-3.png)   
-4. Zwróć uwagę, utworzono połączenie i wszystko jest teraz mógł kontynuować wykonywanie innych czynności w aplikacji logiki:  
+4. Zwróć uwagę, połączenie zostanie utworzone i są teraz bezpłatne wykonaj pozostałe kroki w aplikacji logiki:  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-4.png)   
 

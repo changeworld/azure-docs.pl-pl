@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure Monitor znanych problemów, maszyny wirtualne | Dokumentacja firmy Microsoft
+title: Usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza), znane problemy z | Dokumentacja firmy Microsoft
 description: Usługa Azure Monitor dla maszyn wirtualnych to rozwiązanie na platformie Azure, która łączy kondycji i wydajności monitorowania systemu operacyjnego maszyny Wirtualnej platformy Azure, a także automatycznie odnajdywania składników aplikacji i zależności z innymi zasobami oraz mapuje komunikację między je. W tym artykule opisano znane problemy.
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/15/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 6d1f1d1ae07ec32262f655fd6ed7205a70e252f4
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: eba9e26f12fd9e1862727adec4f8c8f594e8f659
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385095"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091678"
 ---
-# <a name="known-issues-with-azure-monitor-for-vms"></a>Znane problemy z usługą Azure Monitor dla maszyn wirtualnych
+# <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Znane problemy z usługą Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 
 Następujące znane problemy z funkcją usługi Azure Monitor kondycji dla maszyn wirtualnych:
 

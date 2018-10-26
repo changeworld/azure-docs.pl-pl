@@ -1,26 +1,39 @@
+---
+author: ggailey777
+ms.service: azure-functions
+ms.topic: include
+ms.date: 09/04/2018
+ms.author: glenga
+ms.openlocfilehash: 49ac1a7585ddf2a6500c7e9382880109c3f7f431
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50132897"
+---
 ## <a name="export-an-api-definition"></a>Eksportowanie definicji interfejsu API
-Masz OpenAPI definicji dla funkcji, z [utworzyć definicję OpenAPI dla funkcji](../articles/azure-functions/functions-openapi-definition.md). Następnym krokiem w procesie jest można wyeksportować definicji interfejsu API, dzięki czemu PowerApps i Flow firmy Microsoft może być używany w niestandardowego interfejsu API.
+Masz definicji interfejsu OpenAPI dla funkcji, z [Tworzenie definicji interfejsu OpenAPI dla funkcji](../articles/azure-functions/functions-openapi-definition.md). Następnym krokiem w ramach tego procesu jest wyeksportować definicję interfejsu API usługi PowerApps i Microsoft Flow można używać go w niestandardowego interfejsu API.
 
 > [!IMPORTANT]
-> Należy pamiętać, że użytkownik muszą być podpisane Azure z tymi samymi poświadczeniami, których można użyć dla Twojego rozwiązania PowerApps i Microsoft Flow dzierżawy. Dzięki temu Azure utworzyć niestandardowego interfejsu API i był dostępny dla obu PowerApps i Flow firmy Microsoft.
+> Należy pamiętać, że użytkownik musi być podpisany na platformie Azure przy użyciu tych samych poświadczeń, których używasz dla usługi PowerApps i Microsoft Flow dzierżawy. Dzięki temu platformy Azure, aby utworzyć niestandardowy interfejs API i udostępnić go zarówno dla usługi PowerApps i Microsoft Flow.
 
-1. W [portalu Azure](https://portal.azure.com), kliknij swoją nazwę aplikacji funkcji (takich jak **funkcja Pokaz energii**) > **funkcji platformy** > **definicji interfejsu API** .
+1. W [witryny Azure portal](https://portal.azure.com), kliknij nazwę swojej aplikacji funkcji (takich jak **function-demo-energy**) > **funkcje platformy** > **definicji interfejsu API** .
 
     ![Definicja interfejsu API](media/functions-export-api-definition/api-definition.png)
 
-1. Kliknij przycisk **wyeksportować do rozwiązania PowerApps + przepływu**.
+1. Kliknij przycisk **eksportowanie do usługi PowerApps i Flow**.
 
     ![Źródło definicji interfejsu API](media/functions-export-api-definition/export-api-1.png)
 
-1. W okienku po prawej stronie należy użyć ustawień określonych w tabeli.
+1. W okienku po prawej stronie Użyj ustawień określonych w tabeli.
 
     |Ustawienie|Opis|
     |--------|------------|
-    |**Tryb eksportu**|Wybierz **Express** do automatycznego generowania niestandardowego interfejsu API. Wybieranie **ręcznego** definicji interfejsu API eksportu, ale następnie musi zaimportować certyfikat do PowerApps i Microsoft Flow ręcznie. Aby uzyskać więcej informacji, zobacz [wyeksportować do rozwiązania PowerApps i Microsoft Flow](../articles/azure-functions/app-service-export-api-to-powerapps-and-flow.md).|
-    |**Środowisko**|Wybierz środowisko, które mają być zapisywane niestandardowego interfejsu API. Aby uzyskać więcej informacji, zobacz [Przegląd środowisk (rozwiązanie PowerApps)](https://powerapps.microsoft.com/tutorials/environments-overview/) lub [Przegląd środowisk (Microsoft Flow)](https://us.flow.microsoft.com/documentation/environments-overview-admin/).|
-    |**Nazwa niestandardowego interfejsu API**|Wprowadź nazwę, jak `Turbine Repair`.|
-    |**Nazwa klucza interfejsu API**|Wprowadź nazwę wyświetlaną aplikacji i przepływ konstruktorów w Interfejsie użytkownika niestandardowego interfejsu API. Należy pamiętać, że przykładzie zawiera przydatne informacje.|
+    |**Tryb eksportu**|Wybierz **Express** do automatycznego generowania niestandardowego interfejsu API. Wybieranie **ręczne** definicji eksportowanie interfejsu API, ale następnie należy zaimportować go do usług PowerApps i Microsoft Flow ręcznie. Aby uzyskać więcej informacji, zobacz [eksportowanie do usług PowerApps i Microsoft Flow](../articles/azure-functions/app-service-export-api-to-powerapps-and-flow.md).|
+    |**Środowisko**|Wybierz środowisko, w którym mają być zapisywane niestandardowego interfejsu API. Aby uzyskać więcej informacji, zobacz [środowiska — omówienie (PowerApps)](https://powerapps.microsoft.com/tutorials/environments-overview/) lub [środowiska — omówienie (Microsoft Flow)](https://us.flow.microsoft.com/documentation/environments-overview-admin/).|
+    |**Nazwa niestandardowego interfejsu API**|Wprowadź nazwę, na przykład `Turbine Repair`.|
+    |**Nazwa klucza interfejsu API**|Wprowadź nazwę, która powinna zostać wyświetlona twórcy aplikacji i przepływów w Interfejsie użytkownika niestandardowego interfejsu API. Należy zauważyć, że przykład zawiera przydatne informacje.|
  
     ![Eksportowanie do usług PowerApps i Microsoft Flow](media/functions-export-api-definition/export-api-2.png)
 
-1. Kliknij przycisk **OK**. Niestandardowy interfejs API jest teraz utworzony i dodać do określonego środowiska.
+1. Kliknij przycisk **OK**. Niestandardowy interfejs API jest teraz utworzone i dodane do środowiska, wskazana.

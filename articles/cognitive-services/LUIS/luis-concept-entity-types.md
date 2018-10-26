@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 92b4864f8991380740e6edb498328ce2eea98250
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: fdf81943a7bdbae80f4474915a72bb61f1123a30
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650115"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085868"
 ---
 # <a name="entities-in-luis"></a>Jednostki w usługi LUIS
 
@@ -68,7 +68,7 @@ Zobacz [prognozy stan jednostki](luis-how-to-add-example-utterances.md#entity-st
 ## <a name="types-of-entities"></a>Typy jednostek
 Usługa LUIS oferuje wiele typów jednostek; wstępnie utworzonych jednostek niestandardowych maszyn przedstawiono jednostek i listy jednostek.
 
-| Nazwa | Można oznaczyć | Opis |
+| Name (Nazwa) | Można oznaczyć | Opis |
 | -- |--|--|
 | **Wstępnie utworzone** <br/>[Custom](#prebuilt)| |  **Definicja**<br>Wbudowane typy, które reprezentują typowe pojęcia. <br><br>**Lista**<br/>numer kluczowych, numer, temperatury, wymiar, pieniądze, wiek, procent, poczty e-mail, adres URL, numer telefonu i kluczowych. <br><br>Wstępnie utworzone jednostki nazwy są zarezerwowane. <br><br>Wszystkie wstępnie utworzonych jednostek, które są dodawane do aplikacji są zwracane w [punktu końcowego](luis-glossary.md#endpoint) zapytania. Aby uzyskać więcej informacji, zobacz [ze wstępnie utworzonych jednostek](./luis-prebuilt-entities.md). <br/><br/>[Przykładowa odpowiedź dla jednostki](luis-concept-data-extraction.md#prebuilt-entity-data)|
 |<!-- added week of 3/21/08 --> **Wyrażenie regularne**<br/>[Wyrażenie regularne](#regex)||**Definicja**<br>Niestandardowe wyrażenie regularne dla tekstu sformatowanego wypowiedź raw. On ignoruje wielkość liter i ignoruje wariant kultury.  <br><br>Ta jednostka jest dobrym słów i fraz, spójnie sformatowanych przy użyciu dowolnych wariantów, który również jest zgodny.<br><br>Dopasowywanie wyrażeń regularnych są stosowane po zmianach sprawdzania pisowni. <br><br>Jeśli wyrażenie regularne jest zbyt złożone, np. przy użyciu wielu nawiasie, nie jest możliwe dodać wyrażenie do modelu. <br><br>**Przykład**<br>`kb[0-9]{6,}` Dopasowuje kb123456.<br/><br/>[Szybki start](luis-quickstart-intents-regex-entity.md)<br>[Przykładowa odpowiedź dla jednostki](luis-concept-data-extraction.md)|
@@ -96,8 +96,9 @@ Usługa LUIS oferuje wiele typów jednostek; wstępnie utworzonych jednostek nie
 ## <a name="entity-limits"></a>Limity jednostek
 Przegląd [limity](luis-boundaries.md#model-boundaries) Aby dowiedzieć się, ile poszczególnych typów obiektu można dodać do modelu.
 
-## <a name="entity-roles"></a>Role jednostki
-Jednostka [role](luis-concept-roles.md) dotyczą jednostek niestandardowych i wbudowanych i są używane we wzorcach tylko. 
+## <a name="roles-versus-hierarchical-entities"></a>Role i hierarchiczne jednostek
+
+Aby uzyskać więcej informacji, zobacz [ról i hierarchiczne jednostek](luis-concept-roles.md#roles-versus-hierarchical-entities).
 
 ## <a name="composite-vs-hierarchical-entities"></a>Jednostki hierarchiczne złożonego programu vs
 Composite jednostek i hierarchiczne jednostek zarówno mają relacji nadrzędny podrzędny i przedstawiono maszyny. Usługi machine learning umożliwia usługi LUIS do informacje o jednostkach, w oparciu o różne konteksty (rozmieszczenie wyrazów). Złożone jednostki są bardziej elastyczne, ponieważ umożliwiają one typów jednostek innej jako elementy podrzędne. Hierarchiczna jednostki podrzędne są tylko proste jednostki. 
@@ -204,7 +205,7 @@ Usługa LUIS także listy Typ jednostki obsługiwanej przez nie jest rozpoznana 
 
 Jeśli zostały uznane za hierarchiczna, złożony i wyświetlanie list jednostek i nadal potrzebujesz więcej niż limit się z pomocą techniczną. Aby to zrobić, należy zebrać szczegółowe informacje o systemie, przejdź do [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web, a następnie wybierz **pomocy technicznej**. Jeśli Twoja subskrypcja platformy Azure obejmują usługi pomocy technicznej, skontaktuj się z [technicznej platformy Azure](https://azure.microsoft.com/support/options/). 
 
-## <a name="best-practices"></a>Najlepsze rozwiązania
+## <a name="best-practices"></a>Najlepsze praktyki
 
 Tworzenie [jednostki](luis-concept-entity-types.md) podczas wywoływania aplikacji lub dowolnemu botowi potrzebuje niektórych parametrów lub dane z wypowiedź wymagane do wykonania akcji. Jednostka jest słowo lub frazę w polu wypowiedź, które należy wyodrębnić — prawdopodobnie jako parametr dla funkcji. 
 
