@@ -1,7 +1,20 @@
-1. Zaloguj się na [Azure Portal].
+---
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 08/23/2018
+ms.author: crdun
+ms.openlocfilehash: 30b5ae499d29b8b78b5852074362841ac1ceb49f
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133717"
+---
+1. Zaloguj się do [Azure Portal].
 2. Wybierz **+ nowy** > **sieci Web i mobilność** > **aplikacji mobilnej**, a następnie podaj nazwę dla zaplecza usługi Mobile Apps.
 3. Aby uzyskać **grupy zasobów**, wybierz istniejącą grupę zasobów lub Utwórz nową (przy użyciu tej samej nazwie co aplikacja). 
-4. Aby uzyskać **planu usługi App Service**, domyślny plan (w [w warstwie standardowa](https://azure.microsoft.com/pricing/details/app-service/)) jest zaznaczona. Możesz również wybrać inny plan lub [Utwórz nową](../articles/app-service/app-service-plan-manage.md#create-an-app-service-plan). 
+4. Aby uzyskać **planu usługi App Service**, domyślny plan (w [w warstwie standardowa](https://azure.microsoft.com/pricing/details/app-service/)) jest zaznaczona. Możesz również wybrać inny plan lub [utworzyć nowy](../articles/app-service/app-service-plan-manage.md#create-an-app-service-plan). 
 
    Ustawienia planu usługi App Service określają [lokalizację, funkcje, koszt i zasoby obliczeniowe](https://azure.microsoft.com/pricing/details/app-service/) skojarzone z aplikacją. Aby uzyskać więcej informacji na temat usługi App Service, plany i sposób tworzenia nowego planu w różnych cenach warstwy i w preferowanej lokalizacji, zobacz [szczegółowe omówienie planów usługi Azure App Service](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
    

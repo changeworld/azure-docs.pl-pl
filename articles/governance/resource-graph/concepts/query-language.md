@@ -4,28 +4,28 @@ description: Zawiera opis sposobu działania języka zapytań dla wykresu zasob�
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 6fcf3087feb7f208ea46d0e08824e965160a61d4
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 09bcedc5250755f06ba23b84a0ae90b4d43a23db
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48236454"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086169"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Zrozumienie języka zapytań wykres zasobów platformy Azure
 
 Język zapytań dla wykresu zasobów platformy Azure obsługuje szereg operatorów i funkcji. Każda pracy i działania na podstawie [Eksploratora danych usługi Azure](../../../data-explorer/data-explorer-overview.md).
 
-Najlepszym sposobem poznania językiem zapytań używanym przez usługę Graph zasobu ma rozpoczynać się w dokumentacji dotyczącej Eksplorator danych usługi Azure [język zapytań](/azure/kusto/query/index). Zapewnia to zrozumienie o struktury języka i jak różne obsługiwane operatory i funkcje współpracują ze sobą.
+Najlepszym sposobem poznania językiem zapytań używanym przez usługę Graph zasobu ma rozpoczynać się w dokumentacji dotyczącej Eksplorator danych usługi Azure [język zapytań](/azure/kusto/query/index). Zawiera opis o struktury języka i jak różne obsługiwane operatory i funkcje współpracują ze sobą.
 
 ## <a name="supported-tabular-operators"></a>Obsługiwane operatory tabelarycznych
 
 Poniżej przedstawiono listę obsługiwanych operatorów tabelarycznych w wykresie zasobów:
 
-- [Liczba](/azure/kusto/query/countoperator)
+- [count](/azure/kusto/query/countoperator)
 - [Odrębne](/azure/kusto/query/distinctoperator)
 - [Rozszerzanie](/azure/kusto/query/extendoperator)
 - [Limit](/azure/kusto/query/limitoperator)
@@ -56,4 +56,4 @@ Poniżej przedstawiono listę obsługiwanych funkcji w programie Graph zasobów:
 
 - Zobacz język używany w [początkowego zapytania](../samples/starter.md)
 - Zobacz zaawansowane używa w [zaawansowanych zapytań](../samples/advanced.md)
-- Dowiedz się, jak [zapoznaj się z zasobami](explore-resources.md)
+- Dowiedz się, jak [eksplorować zasoby](explore-resources.md)

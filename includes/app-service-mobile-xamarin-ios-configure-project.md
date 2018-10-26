@@ -1,27 +1,40 @@
-#### <a name="configure-the-ios-project-in-xamarin-studio"></a>Konfigurowanie projektu systemu iOS w programie Xamarin Studio
-1. Otwórz w Xamarin.Studio, **Info.plist**i zaktualizuj **identyfikator pakietu** o identyfikatorze pakietu utworzonego wcześniej z nowego identyfikatora aplikacji.
+---
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 08/23/2018
+ms.author: crdun
+ms.openlocfilehash: a69df0cc9ea14a2c9fa172c77663afb1d6861f9b
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133897"
+---
+#### <a name="configure-the-ios-project-in-xamarin-studio"></a>Konfigurowanie projektu dla systemu iOS w programie Xamarin Studio
+1. Xamarin.Studio, otwórz **Info.plist**i zaktualizuj **identyfikatora pakietu** o identyfikatorze pakietu utworzonego wcześniej przy użyciu swojego nowego identyfikatora aplikacji.
 
     ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-21.png)
-2. Przewiń w dół do **tryby tła**. Wybierz **Włącz tryby tła** pole i **zdalnego powiadomienia** pole.
+2. Przewiń w dół do **Background Modes**. Wybierz **Włącz tryby w tle** pole i **zdalne powiadomienia** pole.
 
     ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-22.png)
-3. Kliknij dwukrotnie plik projektu w panelu rozwiązania, aby otworzyć **opcje projektu**.
-4. W obszarze **kompilacji**, wybierz **iOS podpisywania pakietu**i wybierz odpowiedniego tożsamości i inicjowania obsługi profilu można właśnie skonfigurowane zapasowej dla tego projektu.
+3. Kliknij dwukrotnie projekt w panelu rozwiązania, aby otworzyć **opcje projektu**.
+4. W obszarze **kompilacji**, wybierz **podpisywanie pakietu systemu iOS**, wybierz odpowiedni tożsamość i profil aprowizacji możesz po prostu zestaw zapasową dla tego projektu.
 
    ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-20.png)
 
-   Dzięki temu, że projekt korzysta z nowego profilu do podpisywania kodu. Dla inicjowania obsługi dokumentacji oficjalnego urządzeń Xamarin [Inicjowanie obsługi administracyjnej urządzeń Xamarin].
+   Daje to gwarancję, że projekt korzysta z nowego profilu do podpisywania kodu. Aprowizacji dokumentacji oficjalnego urządzeń platformy Xamarin dla [Inicjowanie obsługi administracyjnej urządzeniem programu Xamarin].
 
-#### <a name="configure-the-ios-project-in-visual-studio"></a>Konfigurowanie projektu systemu iOS w programie Visual Studio
+#### <a name="configure-the-ios-project-in-visual-studio"></a>Konfigurowanie projektu dla systemu iOS w programie Visual Studio
 1. W programie Visual Studio, kliknij prawym przyciskiem myszy projekt, a następnie kliknij przycisk **właściwości**.
-2. Na stronach właściwości, kliknij przycisk **aplikacji systemu iOS** , a następnie zaktualizować **identyfikator** o identyfikatorze utworzony wcześniej.
+2. Na stronach właściwości, kliknij przycisk **aplikacja dla systemu iOS** , a następnie zaktualizować **identyfikator** identyfikatorem, który został utworzony wcześniej.
 
     ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-23.png)
-3. W **iOS podpisywania pakietu** , wybierz odpowiedni tożsamości i skonfigurowany tylko dla tego projektu profil inicjowania obsługi administracyjnej.
+3. W **podpisywanie pakietu systemu iOS** kartę, zaznacz odpowiedniej tożsamości i inicjowania obsługi profilu, możesz po prostu skonfigurować dla tego projektu.
 
     ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-24.png)
 
-    Dzięki temu, że projekt korzysta z nowego profilu do podpisywania kodu. Dla inicjowania obsługi dokumentacji oficjalnego urządzeń Xamarin [Inicjowanie obsługi administracyjnej urządzeń Xamarin].
-4. Kliknij dwukrotnie plik Info.plist, aby go otworzyć, a następnie Włącz **RemoteNotifications** w obszarze **tryby tła**.
+    Daje to gwarancję, że projekt korzysta z nowego profilu do podpisywania kodu. Aprowizacji dokumentacji oficjalnego urządzeń platformy Xamarin dla [Inicjowanie obsługi administracyjnej urządzeniem programu Xamarin].
+4. Kliknij dwukrotnie plik Info.plist, aby go otworzyć, a następnie włączyć **RemoteNotifications** w obszarze **Background Modes**.
 
-[Inicjowanie obsługi administracyjnej urządzeń Xamarin]: http://developer.xamarin.com/guides/ios/getting_started/installation/device_provisioning/
+[Inicjowanie obsługi administracyjnej urządzeniem programu Xamarin]: http://developer.xamarin.com/guides/ios/getting_started/installation/device_provisioning/

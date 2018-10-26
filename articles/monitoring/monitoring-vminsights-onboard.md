@@ -1,5 +1,5 @@
 ---
-title: Dołączanie monitora platformy Azure dla maszyn wirtualnych | Dokumentacja firmy Microsoft
+title: Dołączanie monitora platformy Azure dla maszyn wirtualnych (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób możesz dodać i skonfigurować usługi Azure Monitor dla maszyn wirtualnych, aby można było zacząć, zrozumienie, jak działa aplikacja rozproszona i jakie problemy z kondycją zostały zidentyfikowane.
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/16/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 33d16e211667edc6c082ab8c101e69ee5875efb8
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: f55f81d1e28a7626dfe00f6bea349bf74e3a1d24
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390248"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092778"
 ---
-# <a name="how-to-onboard-the-azure-monitor-for-vms"></a>Jak dołączyć platformy Azure, monitorując dla maszyn wirtualnych 
+# <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Jak dołączyć Azure Monitor wykrywający sytuacje, maszyny wirtualne (wersja zapoznawcza)
 W tym artykule opisano sposób konfigurowania usługi Azure Monitor dla maszyn wirtualnych w celu monitorowania kondycji systemu operacyjnego w maszynach wirtualnych platformy Azure oraz wykrywanie i mapowanie zależności aplikacji, które może być hostowana na nich.  
 
 Włączanie usługi Azure Monitor dla maszyn wirtualnych odbywa się przy użyciu jednej z następujących metod i szczegółowe informacje na temat korzystania z poszczególnych metod znajdują się w dalszej części tego artykułu.  
@@ -31,7 +31,7 @@ Włączanie usługi Azure Monitor dla maszyn wirtualnych odbywa się przy użyci
 * Wiele maszyn wirtualnych platformy Azure lub na maszynie wirtualnej zestawy skalowania w określonej subskrypcji lub grupy zasobów przy użyciu programu PowerShell.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed rozpoczęciem upewnij się, że masz następujące zgodnie z opisem w poniższych podsekcjach.
+Przed rozpoczęciem upewnij się, że rozumiesz następujące zgodnie z opisem w poniższych podsekcjach.
 
 ### <a name="log-analytics"></a>Log Analytics 
 
