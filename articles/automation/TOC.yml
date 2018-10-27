@@ -12,19 +12,24 @@ items:
   - name: Tworzenie elementu runbook
     href: automation-quickstart-create-runbook.md
   - name: Tworzenie konfiguracji DSC
+    displayName: DSC, state configuration, config, node configuration, node
     href: automation-quickstart-dsc-configuration.md
   expanded: true
 - name: Samouczki
   items:
   - name: Śledzenie zaktualizowanych plików przy użyciu zadań obserwatora
+    displayName: hybrid runbook worker, hybrid worker, trigger
     href: automation-watchers-tutorial.md
   - name: Zarządzanie aktualizacjami maszyny wirtualnej
+    displayName: alert, patch
     href: automation-tutorial-update-management.md
   - name: Dołączanie aktualizacji i śledzenia zmian za pomocą elementu runbook
     href: automation-onboard-solutions.md
   - name: Identyfikowanie oprogramowania w środowisku
+    displayName: inventory
     href: automation-tutorial-installed-software.md
   - name: Rozwiązywanie problemów dotyczących zmian na maszynie wirtualnej
+    displayName: inventory
     href: automation-tutorial-troubleshoot-changes.md
 - name: Przewodniki z instrukcjami
   items:
@@ -39,6 +44,7 @@ items:
   - name: Zarządzanie aktualizacjami
     items:
     - name: Omówienie rozwiązania Update Management
+      displayName: dynamic groups, pre scripts, post scripts, reboot control, first party, pre download, inclusion
       href: automation-update-management.md
     - name: Zarządzanie aktualizacjami dla wielu maszyn wirtualnych
       href: manage-update-multi.md
@@ -47,12 +53,15 @@ items:
     - name: Migracja wdrożeń aktualizacji pakietu OMS na platformę Azure
       href: migrate-oms-update-deployments.md
     - name: Integracja programu SCCM z rozwiązaniem Update Management
+      displayName: Configuration Manager
       href: oms-solution-updatemgmt-sccmintegration.md
   - name: Śledzenie zmian
     items:
     - name: Omówienie rozwiązania Change Tracking
+      displayName: wildcard, recursion, environment variables, registry
       href: automation-change-tracking.md
     - name: Wyświetlanie zawartości śledzonych plików
+      displayName: change tracking, hash
       href: change-tracking-file-contents.md
   - name: Spis
     items:
@@ -63,14 +72,17 @@ items:
     - name: Tworzenie autonomicznego konta usługi Automation
       href: automation-create-standalone-account.md
     - name: Zarządzanie kontem Uruchom jako usługi Automation
+      displayName: certificate renewal
       href: manage-runas-account.md
     - name: Konfigurowanie uwierzytelniania za pomocą usług AWS
       href: automation-config-aws-account.md
     - name: Zarządzanie kontrolą dostępu opartą na rolach
+      displayName: RBAC
       href: automation-role-based-access-control.md
   - name: Tworzenie elementów Runbook
     items:
     - name: Typy elementów Runbook
+      displayName: graphical, python, powershell, powershell workflow
       href: automation-runbook-types.md
     - name: Tworzenie i importowanie elementów Runbook
       href: automation-creating-importing-runbook.md
@@ -83,6 +95,7 @@ items:
     - name: Tworzenie elementu runbook języka Python
       href: automation-first-runbook-textual-python2.md
     - name: Edytowanie tekstowych elementów Runbook
+      displayName: powershell
       href: automation-edit-textual-runbook.md
     - name: Edytowanie graficznych elementów Runbook
       href: automation-graphical-authoring-intro.md
@@ -93,11 +106,14 @@ items:
     - name: Podrzędne elementy Runbook
       href: automation-child-runbooks.md
     - name: Wynik uruchomienia elementu Runbook
+      displayName: message streams, progress records, preference
       href: automation-runbook-output-and-messages.md
     - name: Integracja kontroli źródła
+      displayName: github, vsts, azure devops, personal access token
       href: source-control-integration.md
     - name: Integracja kontroli źródła — starsza wersja
       href: automation-source-control-integration-legacy.md
+      displayname: github
     - name: Tworzenie elementów runbook za pomocą graficznego zestawu SDK elementów runbook
       href: graphical-runbook-sdk.md
   - name: Automatyzacja
@@ -111,8 +127,10 @@ items:
     - name: Obsługa błędów w graficznych elementach runbook
       href: automation-runbook-graphical-error-handling.md
     - name: Śledzenie zadania elementu Runbook
+      displayName: fair share, activity log
       href: automation-runbook-execution.md
     - name: Zarządzanie danymi usługi Azure Automation
+      displayName: backup
       href: automation-managing-data.md
     - name: Przekazywanie obiektu JSON do elementu runbook usługi Azure Automation
       href: automation-pass-json-string.md
@@ -127,26 +145,36 @@ items:
     - name: Wdrażanie hybrydowego procesu roboczego elementu Runbook systemu Windows
       href: automation-windows-hrw-install.md
     - name: Wdrażanie hybrydowego procesu roboczego elementu Runbook systemu Linux
+      displayName: signature validation
       href: automation-linux-hrw-install.md
     - name: Uruchamianie elementów Runbook w hybrydowym procesie roboczym elementu Runbook
+      displayName: signed runbooks
       href: automation-hrw-run-runbooks.md
   - name: Konfiguracja stanu
+    displayName: DSC
     items:
     - name: Konfiguracja stanu — omówienie
+      displayName: DSC
       href: automation-dsc-overview.md
     - name: Wprowadzenie
+      displayName: DSC
       href: automation-dsc-getting-started.md
     - name: Konfigurowanie żądanego stanu serwerów i zarządzanie odejściem od tego stanu za pomocą konfiguracji stanu
+      displayName: DSC, compliance
       href: tutorial-configure-servers-desired-state.md
     - name: Dołączanie maszyn w celu zarządzania
+      displayName: DSC, state configuration
       href: automation-dsc-onboarding.md
     - name: Kompilowanie konfiguracji DSC
+      displayName: state configuration, composite resources, configurationData
       href: automation-dsc-compile.md
     - name: Tworzenie konfiguracji DSC przy użyciu zasobów złożonych
       href: compose-configurationwithcompositeresources.md
     - name: Ciągłe wdrażanie za pomocą narzędzia Chocolatey
+      displayName: dsc, state configuration
       href: automation-dsc-cd-chocolatey.md
     - name: Przekazywanie danych raportowania konfiguracji stanu do usługi Log Analytics
+      displayName: DSC
       href: automation-dsc-diagnostics.md
   - name: Zarządzanie zasobami udostępnionymi
     items:
@@ -171,12 +199,15 @@ items:
     - name: Monitorowanie elementów runbook za pomocą alertów metryki
       href: automation-alert-metric.md
     - name: Uruchamianie elementu Runbook z alertów platformy Azure
+      displayName: Monitor, Azure Monitor
       href: automation-create-alert-triggered-runbook.md
     - name: Tworzenie maszyny wirtualnej usługi Amazon Web Service
       href: automation-scenario-aws-deployment.md
     - name: Integracja kontroli źródła z usługą GitHub Enterprise
+      displayName: CI, runbooks
       href: automation-scenario-source-control-integration-with-github-ent.md
     - name: Integracja kontroli źródła z usługą Azure DevOps
+      displayName: VSTS, CI, runbooks
       href: automation-scenario-source-control-integration-with-VSTS.md
     - name: Wdrażanie szablonu usługi Azure Resource Manager w elemencie runbook programu PowerShell usługi Azure Automation
       href: automation-deploy-template-runbook.md
@@ -189,22 +220,30 @@ items:
   - name: Migrate (Migracja)
     items:
     - name: Migracja z programu Orchestrator
+      displayName: SCORCH, runbooks
       href: automation-orchestrator-migration.md
 - name: Rozwiązywanie problemów
   items:
   - name: Dołączanie
+    displayName: troubleshoot
     href: troubleshoot/onboarding.md
   - name: Elementy Runbook
+    displayName: troubleshoot
     href: troubleshoot/runbooks.md
   - name: Konfiguracja stanu (DSC)
+    displayName: Desired State Configuration, troubleshoot
     href: troubleshoot/desired-state-configuration.md
   - name: Hybrydowy proces roboczy elementu Runbook
+    displayName: troubleshoot, HRW, hybrid worker
     href: troubleshoot/hybrid-runbook-worker.md
   - name: Śledzenie zmian i spis
+    displayName: troubleshoot
     href: troubleshoot/change-tracking.md
   - name: Zarządzanie aktualizacjami
+    displayName: troubleshoot
     href: troubleshoot/update-management.md
   - name: Rozwiązywanie problemów z agentem aktualizacji
+    displayName: hybrid runbook worker, hybrid worker, troubleshoot
     href: troubleshoot/update-agent-issues.md
 - name: Dokumentacja
   items:
@@ -238,9 +277,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-automation
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: c0dd1231814d41761c35831b6bfabae1c5480c5c
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 9ecdfd37ac2de97342447d25c4e09c53730651bf
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095290"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155613"

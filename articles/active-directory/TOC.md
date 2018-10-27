@@ -326,12 +326,6 @@
 
 ## [Rozwiązywanie problemów](fundamentals/active-directory-troubleshooting-support-howto.md)
 
-## Wdrażanie prototypu usługi Azure AD
-### [Podręcznik prototypu: wprowadzenie](active-directory-playbook-intro.md)
-### [Podręcznik prototypu: składniki](active-directory-playbook-ingredients.md)
-### [Podręcznik prototypu: implementacja](active-directory-playbook-implementation.md)
-### [Podręcznik prototypu: bloki konstrukcyjne](active-directory-playbook-building-blocks.md)
-
 # Dokumentacja
 ## [Przykłady kodu](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [Polecenia cmdlet programu Azure PowerShell](/powershell/azure/overview)
