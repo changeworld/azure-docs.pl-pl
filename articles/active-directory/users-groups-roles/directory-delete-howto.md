@@ -13,12 +13,12 @@ ms.date: 06/13/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: b1d3439412e324c71687c43aa9e47c520cb72262
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: ab752799c9e64e47abe0200a26215f9e01c489f6
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42061030"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139690"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Usunąć dzierżawę usługi Azure Active Directory
 Po usunięciu dzierżawy również zostaną usunięte wszystkie zasoby, które są zawarte w dzierżawie. Należy przygotować, minimalizując skojarzone z nią zasoby przed usunięciem dzierżawy. Tylko administrator globalny usługi Azure Active Directory (Azure AD) można usunąć dzierżawę usługi Azure AD z poziomu portalu.
@@ -73,7 +73,7 @@ Możesz umieścić subskrypcji do **Deprovisoned** stanu do usunięcia w ciągu 
   
   ![warunki i postanowienia](./media/directory-delete-howto/delete-terms.png)
 
-4. Teraz zmieniła stan subskrypcji, subskrypcja jest oznaczona do usunięcia. Eneters subskrypcji **cofnięcia aprowizacji** stan później 72 godzin.
+4. Teraz zmieniła stan subskrypcji, subskrypcja jest oznaczona do usunięcia. Wprowadza subskrypcji **cofnięcia aprowizacji** stan później 72 godzin.
 
 5. Po usunięciu subskrypcji w dzierżawie usługi i upłynęły 72 godziny, możesz zarejestrować się wstecz do Centrum administracyjnego usługi Azure AD ponownie i powinny być ulepszonymi wymagane i nie ma subskrypcji blokuje usunięcie Twojej dzierżawy. Można pomyślnie usunąć dzierżawę usługi Azure AD.
   

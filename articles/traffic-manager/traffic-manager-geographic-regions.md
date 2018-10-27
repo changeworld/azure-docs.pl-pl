@@ -1,12 +1,9 @@
 ---
-title: Używana przez typ routingu Azure Traffic Manager geograficznego hierarchii Kraj/Region | Dokumentacja firmy Microsoft
-description: W tym artykule wymieniono używana przez typ routingu Azure Traffic Manager geograficznego hierarchii Kraj/Region
+title: Hierarchia krajów/regionów używana przez usługi Azure Traffic Manager geograficznego routingu typ | Dokumentacja firmy Microsoft
+description: W tym artykule wymieniono hierarchia krajów/regionów używana przez usługi Azure Traffic Manager geograficznego routingu typ
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-ms.openlocfilehash: 45fa209b4417ce8b65d1fa4f2f59ff6c2d50f3a4
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 1609daa4edbc3db9384941d575c141faaa799fb6
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28201500"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138246"
 ---
-# <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Używane przez usługę Azure Traffic Manager dla metody routingu ruchu geograficznego hierarchii Kraj/Region
+# <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Hierarchia krajów/regionów używana przez usługę Azure Traffic Manager dla metody geograficznego routingu ruchu
 
-W tym artykule wymieniono innych krajów i regionów używane przez **Geographic** ruchu metody routingu w usłudze Azure Traffic Manager. Możesz również uzyskać te informacje programowo przez wywołanie metody [interfejsu API REST usługi Azure Traffic Manager](https://docs.microsoft.com/rest/api/trafficmanager/). 
+Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** metodę routingu ruchu w usłudze Azure Traffic Manager. Możesz również uzyskać te informacje programowo przez wywołanie metody [interfejsu API REST usługi Azure Traffic Manager](https://docs.microsoft.com/rest/api/trafficmanager/). 
 
 - WORLD(World)
 
@@ -35,7 +32,7 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - AT(Austria)
 
-        - AX (Wyspy Åland)
+        - AX (Wyspy Alandzkie)
 
         - BA (Bośnia i Hercegowina)
 
@@ -49,7 +46,7 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - CY(Cyprus)
 
-        - CZ (Czechy)
+        - Czechy (Czechy)
 
         - DE(Germany)
 
@@ -65,7 +62,7 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - FR(France)
 
-        - GB (Zjednoczone Królestwo)
+        - GB (Wielka Brytania)
 
         - GG(Guernsey)
 
@@ -79,7 +76,7 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - IE(Ireland)
 
-        - Wiadomości Błyskawicznych (Wyspa Man)
+        - Wiadomości Błyskawicznych (wyspie Man)
 
         - IS(Iceland)
 
@@ -107,7 +104,7 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - NL(Netherlands)
 
-        - NO(Norway)
+        - No(Norway)
 
         - PL(poland)
 
@@ -131,13 +128,13 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - UA(Ukraine)
 
-        - VA (Watykan)
+        - Oceny luk w zabezpieczeniach (Watykan)
 
         - XJ (Jan Mayen)
 
         - XK(Kosovo)
 
-    - GEO ME(Middle East)
+    - ME(Middle East) geograficznie
 
         - AE (Zjednoczone Emiraty Arabskie)
 
@@ -163,13 +160,13 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - SY(Syria)
 
-        - SA (Arabia Saudyjska)
+        - Ameryka Południowa (Arabia Saudyjska)
 
         - TR(Turkey)
 
         - YE(YEMEN)
 
-    - GEO NA(North America / Central America / Caribbean)
+    - NA(North America / Central America / Caribbean) geograficznie
 
         - Grupy dostępności (Antigua i Barbuda)
 
@@ -179,7 +176,7 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - BB(Barbados)
 
-        - Czarnej listy (Saint-Barthélemy)
+        - Reklamy BL (Saint-Barthélemy)
 
         - BM(Bermuda)
 
@@ -219,13 +216,13 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - CR (Kostaryka)
 
-        - CU(Cuba)
+        - Cu(CUBA)
 
         - CW(CuraÃ§ao)
 
         - DM(Dominica)
 
-        - CZY (Republika Dominikańska)
+        - CZY (Dominikana)
 
         - GD(Grenada)
 
@@ -247,7 +244,7 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - LC(Saint Lucia)
 
-        - MF (Saint pole)
+        - MF (Saint-Martin)
 
         - MQ(Martinique)
 
@@ -257,21 +254,21 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - Ni(Nicaragua)
 
-        - PA(Panama)
+        - Pa(Panama)
 
         - PM (Saint Pierre i Miquelon)
 
-        - Oczyść (Portoryko)
+        - Żądania Ściągnięcia (Portoryko)
 
         - SV (Salwador)
 
         - SX (Sint Maarten)
 
-        - TC (Turks i Caicos)
+        - TC (Wyspy Turks i Caicos)
 
         - TT (Trynidad i Tobago)
 
-        - UM(U.S. Wyspy Stanów Zjednoczonych)
+        - UM(U.S. Odległe Mniejsze Wyspy)
 
         - US(United States)
 
@@ -285,11 +282,11 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
             - US-CA(California)
 
-            - US-CO(Colorado)
+            - US-co(Colorado)
 
             - US-CT(Connecticut)
 
-            - DC(District of Columbia) stany USA
+            - DC(District of Columbia) Stanów Zjednoczonych
 
             - US-de(Delaware)
 
@@ -323,27 +320,27 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
             - US-MN(Minnesota)
 
-            - US-MO(Missouri)
+            - US-mo(Missouri)
 
             - US-MS(Mississippi)
 
             - US-MT(Montana)
 
-            - NC(North Carolina) stany USA
+            - NC(North Carolina) Stanów Zjednoczonych
 
-            - ND(North Dakota) stany USA
+            - ND(North Dakota) Stanów Zjednoczonych
 
             - US-NE(Nebraska)
 
-            - NH(New Hampshire) stany USA
+            - NH(New Hampshire) Stanów Zjednoczonych
 
-            - NJ(New Jersey) stany USA
+            - NJ(New Jersey) Stanów Zjednoczonych
 
-            - NM(New Mexico) stany USA
+            - NM(New Mexico) Stanów Zjednoczonych
 
             - US-NV(Nevada)
 
-            - NY(New York) stany USA
+            - NY(New York) Stanów Zjednoczonych
 
             - US-OH(Ohio)
 
@@ -353,11 +350,11 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
             - US-PA(Pennsylvania)
 
-            - RI(Rhode Island) stany USA
+            - RI(Rhode Island) Stanów Zjednoczonych
 
-            - SC(South Carolina) stany USA
+            - SC(South Carolina) Stanów Zjednoczonych
 
-            - SD(South Dakota) stany USA
+            - SD(South Dakota) Stanów Zjednoczonych
 
             - US-TN(Tennessee)
 
@@ -373,17 +370,17 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
             - US-Wi(Wisconsin)
 
-            - WV(West Virginia) stany USA
+            - WV(West Virginia) Stanów Zjednoczonych
 
-            - US-WY(Wyoming)
+            - US-Wy(Wyoming)
 
         - VC (Saint Vincent i Grenadyny)
 
-        - VG (Brytyjskie Wyspy Dziewicze)
+        - VG (Brytyjskie Wyspy Dziewicze Stanów)
 
         - VI(U.S. Wyspy Virgin)
 
-        - Program XE (Sint Eustatius)
+        - XE (Sint Eustatius)
 
         - XS(Saba)
 
@@ -401,11 +398,11 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - BT(Bhutan)
 
-        - DW (Wyspy Kokosowe)
+        - DW (Wyspy Kokosowe (Keelinga))
 
         - CN(China)
 
-        - CX (Wyspa świąt)
+        - CX (Wyspa Bożego Narodzenia)
 
         - GE(Georgia)
 
@@ -423,7 +420,7 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - KH(Cambodia)
 
-        - KP (koreańska)
+        - KP (Korea Północna)
 
         - KR(Korea)
 
@@ -465,21 +462,21 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - VN(Vietnam)
 
-    - GEO-AF(Africa)
+    - Geo-AF(Africa)
 
         - AO(Angola)
 
-        - BF(Burkina Faso)
+        - BF (Burkina Faso)
 
         - BI(Burundi)
 
         - BJ(Benin)
 
-        - BV (Bouveta)
+        - BV (Wyspa Bouveta)
 
         - BW(Botswana)
 
-        - CD (Konga)
+        - Ciągłe dostarczanie (Kongo (DRK))
 
         - CF (Republika Środkowoafrykańska)
 
@@ -509,7 +506,7 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - GN(Guinea)
 
-        - GQ(Equatorial Guinea)
+        - GQ (Gwinea Równikowa)
 
         - GW(Guinea_Bissau)
 
@@ -553,13 +550,13 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - SH (Wyspa Świętej Heleny, Wyspa Wniebowstąpienia i Tristan da Cunha)
 
-        - SL (Somalia)
+        - SL (Sierra Leone)
 
         - SN(Senegal)
 
         - SO(Somalia)
 
-        - SS (Sudan południowo)
+        - SS (Sudan południowy)
 
         - ST (Wyspy Świętego Tomasza i Książęca)
 
@@ -567,7 +564,7 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - TD(CHAD)
 
-        - TF (Francuskie Terytoria Południowe)
+        - TF (Francuskie Terytoria Południowe i Antarktyczne)
 
         - TG(Togo)
 
@@ -585,11 +582,11 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - ZW(Zimbabwe)
 
-    - GEO-AN(Antarctica)
+    - Geo-an(Antarctica)
 
         - AQ(Antarctica)
 
-    - GEO SA(South America)
+    - SA(South America) geograficznie
 
         - AR(Argentina)
 
@@ -603,11 +600,11 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - EC(Ecuador)
 
-        - Klucz OBCY (Falklandy)
+        - Klucza Obcego (Falklandy)
 
         - GF (Gujana Francuska)
 
-        - GS (Wyspy Georgia Południowa i Sandwich Południowy)
+        - GS (Georgia Południowa i Sandwich Południowy)
 
         - Gy(GUYANA)
 
@@ -621,29 +618,29 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - VE(VENEZUELA)
 
-    - GEO AP(Australia / Pacific)
+    - AP(Australia / Pacific) geograficznie
 
         - AS(Samoa Amerykańskie)
 
         - AU(Australia)
 
-            - Australia ACT(Australian Capital Territory)
+            - ACT(Australian Capital Territory) (Australia)
 
-            - Australia NSW(New South Wales)
+            - NSW(New South Wales) (Australia)
 
-            - Australia NT(Northern Territory)
+            - NT(Northern Territory) (Australia)
 
             - AU-QLD(Queensland)
 
-            - Australia SA(South Australia)
+            - SA(South Australia) (Australia)
 
             - AU-TAS(Tasmania)
 
             - AU-VIC(Victoria)
 
-            - Australia WA(Western Australia)
+            - WA(Western Australia) (Australia)
 
-        - T (Wyspy Cooka)
+        - CK (Wyspy Cooka)
 
         - FJ(Fiji)
 
@@ -655,11 +652,11 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - KI(Kiribati)
 
-        - MH (Wyspy skierować)
+        - MH (Wyspy Marshalla)
 
         - Pakiet administracyjny (Mariany Północne)
 
-        - NC (Nowa Kaledonia)
+        - Kontroler sieci (Nowa Kaledonia)
 
         - NF (Wyspa Norfolk)
 
@@ -671,13 +668,13 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - PF (Polinezja Francuska)
 
-        - PG (Papua Nowa Gwinea)
+        - PG (Papua-Nowa Gwinea)
 
-        - NC (Wyspy Pitcairn)
+        - PN (Wyspy Pitcairn)
 
         - PW(Palau)
 
-        - Małych firm (Wyspy Salomona)
+        - SB (Wyspy Salomona)
 
         - TK(Tokelau)
 
@@ -693,4 +690,4 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [Geographic ruchu metody routingu w usłudze Azure Traffic Manager](traffic-manager-routing-methods.md#geographic).
+- Dowiedz się więcej o [Geographic metodę routingu ruchu w usłudze Azure Traffic Manager](traffic-manager-routing-methods.md#geographic).

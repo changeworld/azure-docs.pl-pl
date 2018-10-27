@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 516552111cc21cacf87fd8179ef49b939e2820d9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9f6e5dab5059086efc1e00c78b85296ff2b7a48c
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985082"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139156"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Tworzenie bazy danych Oracle na Maszynie wirtualnej platformy Azure
 
@@ -77,7 +77,7 @@ Po utworzeniu maszyny Wirtualnej, wiersza polecenia platformy Azure wyświetli i
 Aby utworzyć sesję SSH z maszyną Wirtualną, należy użyć następującego polecenia. Zastąp adres IP za pomocą `publicIpAddress` wartości dla swojej maszyny Wirtualnej.
 
 ```bash 
-ssh <publicIpAddress>
+ssh azureuser@<publicIpAddress>
 ```
 
 ## <a name="create-the-database"></a>Tworzenie bazy danych

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: f9bf42e5e20a7d9e861d0c3354040e981bf3ef21
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: dcfd0d51698c742db85dd939ce31b56d81052454
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987753"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139428"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Powiązania dla funkcje trwałe (usługa Azure Functions)
 
@@ -257,7 +257,7 @@ Jeśli używasz języków skryptów (np. *csx* lub *js* plików) na potrzeby pro
     "taskHub": "<Optional - name of the task hub>",
     "connectionName": "<Optional - name of the connection string app setting>",
     "type": "orchestrationClient",
-    "direction": "out"
+    "direction": "in"
 }
 ```
 
@@ -311,7 +311,7 @@ Jeśli nie używasz programu Visual Studio do tworzenia aplikacji, możesz utwor
     {
       "name": "starter",
       "type": "orchestrationClient",
-      "direction": "out"
+      "direction": "in"
     }
   ],
   "disabled": false

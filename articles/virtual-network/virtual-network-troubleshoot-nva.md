@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/02/2018
+ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: d16f106fa1776b0d11a97f71ffe16cf89fb9584a
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 2a0f6b75c540f319848805e8a9bda7b166d5d709
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42057091"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138663"
 ---
 #  <a name="network-virtual-appliance-issues-in-azure"></a>Problemy z urządzenia wirtualnego sieci na platformie Azure
 
@@ -77,14 +77,14 @@ Korzystanie z programu PowerShell
 **Sprawdź, czy można kierować ruch do urządzenia NVA**
 
 1. Na [witryny Azure portal](https://portal.azure.com), otwórz **usługi Network Watcher**, wybierz opcję **następnego skoku**.
-2. Określ maszynę Wirtualną, która ma być urządzenie WUS następnego skoku i docelowy adres IP, na którym chcesz wyświetlić następny przeskok. 
+2. Określ maszynę Wirtualną, która jest skonfigurowana, aby przekierować ruch do urządzenia WUS i docelowy adres IP, na którym chcesz wyświetlić następny przeskok. 
 3. Jeśli urządzenie WUS nie jest wymieniony jako **miejsca docelowego następnego skoku**, sprawdź, jak i aktualizacja tabel tras platformy Azure.
 
 **Sprawdź, czy ruch może uzyskać dostęp do urządzenia NVA**
 
 1.  W [witryny Azure portal](https://portal.azure.com), otwórz **usługi Network Watcher**, a następnie wybierz pozycję **zweryfikować przepływ IP**. 
-2.  Określ Maszynę wirtualną i adres IP urządzenia NVA, a następnie sprawdź, czy ruch jest blokowany przez wszystkie grupy zabezpieczeń sieci (NSG).
-3.  W przypadku regułę sieciowej grupy zabezpieczeń, która blokuje ruch zlokalizować sieciowej grupy zabezpieczeń w **efektywnym elementem systemu zabezpieczeń** reguły, a następnie zaktualizuj go, aby zezwolić na ruch do przekazania. Następnie uruchom **zweryfikować przepływ IP** ponownie i użyj **kontroli połączenia** do testowania łączności TCP z maszyny Wirtualnej na wewnętrzny lub zewnętrzny adres IP.
+2.  Określ maszynę Wirtualną i adres IP urządzenia NVA, a następnie sprawdź, czy ruch jest blokowany przez wszystkie grupy zabezpieczeń sieci (NSG).
+3.  W przypadku regułę sieciowej grupy zabezpieczeń, która blokuje ruch zlokalizować sieciowej grupy zabezpieczeń w **efektywnym elementem systemu zabezpieczeń** reguły, a następnie zaktualizuj go, aby zezwolić na ruch do przekazania. Następnie uruchom **zweryfikować przepływ IP** ponownie i użyj **Rozwiązywanie problemów z połączeniami** do testowania łączności TCP z maszyny Wirtualnej na wewnętrzny lub zewnętrzny adres IP.
 
 **Sprawdź, czy urządzenie WUS i maszyny wirtualne nasłuchują oczekiwanego natężenia ruchu**
 

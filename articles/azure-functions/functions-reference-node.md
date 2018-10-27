@@ -10,14 +10,14 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.service: azure-functions
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 03/04/2018
+ms.date: 10/26/2018
 ms.author: glenga
-ms.openlocfilehash: eb9387cec98621e27aff7dcb40b8897e326c6706
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: d61570cd5d56cda7737bdb2d1a8d681fc2364610
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353496"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139394"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions JavaScript
 Ten przewodnik zawiera informacje dotyczące niewymagającego pisania usługi Azure Functions za pomocą języka JavaScript.
@@ -400,13 +400,14 @@ Istnieją dwa sposoby, aby zainstalować pakiety na aplikację funkcji:
     Ta akcja pobiera pakiety wskazane w pliku package.json i ponowne uruchamianie aplikacji funkcji.
 
 ## <a name="environment-variables"></a>Zmienne środowiskowe
-Aby uzyskać zmiennej środowiskowej lub wartość ustawienia aplikacji, użyj `process.env`, jak pokazano w `GetEnvironmentVariable` funkcji:
+
+W przypadku funkcji [ustawienia aplikacji](functions-app-settings.md), takie jak połączenia z usługą ciągów, są widoczne jako zmiennych środowiskowych podczas wykonywania. Możesz uzyskać dostęp te ustawienia przy użyciu `process.env`, jak pokazano w `GetEnvironmentVariable` funkcji:
 
 ```javascript
 module.exports = function (context, myTimer) {
     var timeStamp = new Date().toISOString();
 
-    context.log('Node.js timer trigger function ran!', timeStamp);   
+    context.log('Node.js timer trigger function ran!', timeStamp);
     context.log(GetEnvironmentVariable("AzureWebJobsStorage"));
     context.log(GetEnvironmentVariable("WEBSITE_SITE_NAME"));
 
@@ -418,6 +419,10 @@ function GetEnvironmentVariable(name)
     return name + ": " + process.env[name];
 }
 ```
+
+[!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
+
+Podczas uruchamiania lokalnego, ustawienia aplikacji są odczytywane z [local.settings.json](functions-run-local.md#local-settings-file) pliku projektu.
 
 ## <a name="configure-function-entry-point"></a>Konfigurowanie punktu wejścia funkcji
 

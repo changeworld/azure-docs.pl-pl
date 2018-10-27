@@ -1,13 +1,10 @@
 ---
-title: Ruch widoku w usługi Azure Traffic Manager | Dokumentacja firmy Microsoft
-description: Wprowadzenie do widoku ruchu Menedżera ruchu
+title: Widok w usłudze Azure Traffic Manager ruchu | Dokumentacja firmy Microsoft
+description: Wprowadzenie do usługi Traffic Manager funkcję Widok ruchu
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
 manager: jeconnoc
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -16,64 +13,64 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 7ce51017fdee92e5589c06b398c9650930d5436d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d1800fea2212628e7647b5250efa33ebb97957f9
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30179841"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138076"
 ---
-# <a name="traffic-manager-traffic-view"></a>Widok ruchu Menedżera ruchu
+# <a name="traffic-manager-traffic-view"></a>Widok ruchu usługi Traffic Manager
 
-Zawiera Menedżera ruchu z poziomu routingu DNS tak, aby użytkownicy końcowi są kierowane do dobrej kondycji punktów końcowych na podstawie metody routingu określone podczas tworzenia profilu. Widok ruchu udostępnia Menedżera ruchu z widokiem Twojej bazy użytkowników (na poziomie szczegółowości programu rozpoznawania nazw DNS) oraz ich wzorzec ruchu. Po włączeniu widoku ruchu, te informacje są przetwarzane dostarczają przydatnych wyników analiz. 
+Usługa Traffic Manager udostępnia z poziomu routingu DNS tak, aby użytkownicy końcowi są kierowane do dobrej kondycji punktów końcowych, na podstawie metody routingu określone podczas tworzenia profilu. Widok ruchu udostępnia usługi Traffic Manager pod kątem swojej bazy użytkowników (na poziomie szczegółowości rozpoznawania nazw DNS) i ich wzorzec ruchu. Jeśli włączysz funkcję Widok ruchu, te informacje są przetwarzane do przedstawienia uzyskiwanie przydatnych wyników analiz. 
 
-Przy użyciu widoku ruchu sieciowego, można:
-- Dowiedz się, których Twojej bazy użytkowników znajdują się (do lokalnego DNS rozpoznawania poziomu szczegółowości).
-- Wyświetl wielkość ruchu sieciowego (przestrzegane jako zapytania DNS obsługiwane przez usługę Azure Traffic Manager) pochodzące z tych obszarów.
-- Uzyskaj wgląd w nowości reprezentatywny czas oczekiwania wystąpił przez tych użytkowników.
-- Nowości w wzorce ruchu z każdej z tych zasad użytkownika do regiony platformy Azure, gdzie masz punktów końcowych. 
+Korzystając z funkcji Widok ruchu, możesz wykonywać następujące czynności:
+- Dowiedz się, gdzie znajdują się (aż do lokalnego rozpoznawania nazw poziomu szczegółowości DNS) swojej bazy użytkowników.
+- Wyświetl wielkość ruchu sieciowego (przestrzegane jako zapytania DNS, obsługiwane przez usługę Azure Traffic Manager) pochodzące z tych regionów.
+- Uzyskaj szczegółowe informacje dotyczące nowości występujące opóźnienie reprezentatywne przez tych użytkowników.
+- szczegółowe informacje na temat konkretne wzorce ruchu z każdej z tych baz użytkowników do regionów platformy Azure, w którym masz punktów końcowych. 
 
-Na przykład służy widok ruchu do zrozumienia regiony dużą liczbą ruchu, ale boryka się z większych opóźnień. Następnie służą tych informacji do planowania użytkownika została zrozumiana. dzięki rozszerzania nowe regiony platformy Azure, aby te użytkownicy mogą mieć niższe środowisko opóźnienia.
+Na przykład można użyć widok ruchu, aby zrozumieć, które regiony z dużą liczbą ruchu, ale borykają się z większych opóźnień. Następnie można użyć tych informacji do zaplanowania Twojego rozszerzenia zużycie nowych regionów systemu Azure, dzięki czemu użytkownicy mają środowisku niższe opóźnienia.
 
 ## <a name="how-traffic-view-works"></a>Jak działa widok ruchu
 
-Widok ruchu działa przez Menedżera ruchu przyjrzeć się zapytania przychodzące otrzymanych w ciągu ostatnich siedmiu dni przed profil, który ma ta funkcja jest włączona. Przychodzące informacji zapytania widok ruchu wyodrębnia źródłowy adres IP program rozpoznawania nazw DNS, która jest używana jako reprezentacja lokalizacji użytkowników. Te są następnie grupowane podsumowanie poziomu programu rozpoznawania nazw DNS do utworzenia użytkownika podstawowego regionów, korzystając z informacji geograficzne obsługiwane przez usługę Traffic Manager adresów IP. Menedżer ruchu następnie przegląda regiony platformy Azure, do których został skierowany zapytania i tworzy mapę przepływu ruchu sieciowego dla użytkowników z tych regionów.  
-W następnym kroku Traffic Manager są powiązane z regionu podstawowego użytkownika do mapowania region platformy Azure z tabelami opóźnienia analizy sieci, które przechowuje dla różnych użytkowników końcowych sieci zrozumienie Średni czas oczekiwania u użytkowników z tych regionów po Łączenie z usługą regiony platformy Azure. Te obliczenia są następnie łączone w dla lokalnych DNS rozpoznawania adresu IP poziomu przed jego są prezentowane. Będzie można korzystać z informacji w różny sposób.
+Widok ruchu działa przez usługi Traffic Manager, spójrz na przychodzące zapytania odebrane w ciągu ostatnich siedmiu dni względem profilu, który ma włączenia tej funkcji. Z przychodzącego informacji zapytań widok ruchu wyodrębnia źródłowy adres IP programu rozpoznawania nazw DNS, używanego jako reprezentacja lokalizację użytkowników. Te są następnie grupowane na do rozpoznawania nazw poziomu szczegółowości DNS utworzyć podstawowy regionów użytkownika przy użyciu informacji geograficznych adresów IP, przechowywane przez usługę Traffic Manager. Usługa Traffic Manager sprawdza następnie regiony platformy Azure, do których zapytania został rozesłany i tworzy mapę przepływu ruchu sieciowego dla użytkowników z tych regionów.  
+W następnym kroku usługi Traffic Manager koreluje region podstawowy użytkownika do mapowania region platformy Azure z tabelami opóźnienia sieci analizy, które utrzymuje dla różnych użytkowników końcowych sieci w celu zrozumienia średnie opóźnienie napotykanych przez użytkowników z tych regionów po Łączenie z regionów platformy Azure. Te obliczenia są następnie łączone w poszczególnych lokalnego rozpoznawania nazw IP poziomie usługi DNS przed są prezentowane użytkownikowi. Mogą wykorzystywać dane na różne sposoby.
 
 >[!NOTE]
->Opóźnienia opisanego w widoku ruchu jest reprezentatywny opóźnienia między użytkowników końcowych i regiony platformy Azure, do których uprzednio łączyli się i nie jest opóźnień wyszukiwania DNS. Ruch widoku sprawia, że zwrócony oszacowanie nakładu najlepsze opóźnienia między lokalnego rozpoznawania nazw DNS i regionu Azure, które zapytania został skierowany do, jeśli dostępnych jest za mało danych, a następnie opóźnienie będzie równy null. 
+>Czas oczekiwania opisane w widoku ruchu jest występujące opóźnienie między użytkownika końcowego i regiony platformy Azure, do których uprzednio łączyli się i nie jest opóźnienie wyszukiwania DNS. Sprawia, że widok ruchu najlepsze możliwe oszacowanie nakład pracy opóźnienia między lokalnego rozpoznawania nazw DNS i regionu platformy Azure, które zapytania został rozesłany, jeśli dostępnych jest za mało danych, a następnie opóźnienie zwracana będzie mieć wartości null. 
 
-## <a name="visual-overview"></a>Omówienie Visual
+## <a name="visual-overview"></a>Graficzne
 
-Po przejściu do **widoku ruchu** sekcji na stronie usługi Traffic Manager prezentowany mapie geograficznej z nakładką ruchu wyświetlanie szczegółowych informacji. Mapy zawiera informacje dotyczące użytkowników i punktów końcowych dla profilu Menedżera ruchu.
+Po przejściu do **widok ruchu** sekcji na stronie usługi Traffic Manager, są prezentowane za pomocą mapy geograficzne z nakładką ruchu Wyświetl szczegółowe dane. Mapa zawiera informacje dotyczące użytkowników i punktów końcowych dla profilu usługi Traffic Manager.
 
-### <a name="user-base-information"></a>Podstawowe informacje o użytkowniku
+### <a name="user-base-information"></a>Podstawowe informacje użytkownika
 
-Dla tych lokalnego rozpoznawania nazw DNS dla lokalizacji, które informacje są dostępne są wyświetlane na mapie. Kolor program rozpoznawania nazw DNS oznacza średni czas oczekiwania doświadczonym przez użytkowników końcowych, którzy korzystali z tym program rozpoznawania nazw DNS dla ich zapytań usługi Traffic Manager.
+Dla tych lokalnego rozpoznawania nazw DNS dla lokalizacji, do której informacje są dostępne są wyświetlane na mapie. Kolor program rozpoznawania nazw DNS wskazuje, że średni czas oczekiwania doświadczonym przez użytkowników końcowych, którzy korzystali z tego programu rozpoznawania nazw DNS dla ich zapytań usługi Traffic Manager.
 
-Jeśli aktywuj lokalizację programu rozpoznawania nazw DNS na mapie, zawiera:
-- adres IP program rozpoznawania nazw DNS
-- wielkość ruchu sieciowego zapytania DNS zobaczyć przez Menedżera ruchu
-- punkty końcowe, do których ruch z DNS rozpoznawania został skierowany, jako linii między punktem końcowym i program rozpoznawania nazw DNS 
-- Średni czas oczekiwania z tej lokalizacji do punktu końcowego reprezentowane jako koloru linii, łącząc je
+Po umieszczeniu wskaźnika myszy nad lokalizacji programu rozpoznawania nazw DNS na mapie, które pokazuje:
+- adres IP programu rozpoznawania nazw DNS
+- wielkość ruchu sieciowego zapytania DNS zaobserwować przez usługę Traffic Manager
+- punkty końcowe, do której ruchu przy użyciu serwera DNS rozpoznawania nazw został rozesłany, jako linię między punktem końcowym i program rozpoznawania nazw DNS 
+- średnie opóźnienie z tej lokalizacji do punktu końcowego, reprezentowane jako koloru linii, łącząc je
 
 ### <a name="endpoint-information"></a>Informacje o punkcie końcowym
 
-Regiony platformy Azure, w których znajdują się punkty końcowe są wyświetlane jako niebieskie kropki na mapie. Jeśli punkt końcowy jest zewnętrzna i nie ma region platformy Azure do niej przyporządkowany, jest wyświetlany w górnej części mapy. Polecenie dowolnego punktu końcowego, aby wyświetlić różne lokalizacje (oparte na używany program rozpoznawania nazw DNS) z który ruch został skierowany do określonego punktu końcowego. Połączenia są wyświetlane w formie linii między punktem końcowym i lokalizację programu rozpoznawania nazw DNS i mają kolor zgodnie z reprezentatywny opóźnienia między tym pary. Ponadto można zobaczyć nazwę tego punktu końcowego, region platformy Azure, w której jest uruchamiana i całkowitej liczby żądań, które były kierowane do niej przez ten profil Menedżera ruchu.
+Regiony platformy Azure, w których znajdują się punkty końcowe są wyświetlane jako niebieskie kropki na mapie. Jeśli punkt końcowy usługi jest zewnętrzna i nie ma do niej przyporządkowany region platformy Azure, jest wyświetlany w górnej części mapy. Kliknij w dowolnym punkcie końcowym, aby wyświetlić różne lokalizacje (oparte na program rozpoznawania nazw DNS używane) z którym był przekierowywany ruch do tego punktu końcowego. Połączenia są wyświetlane jako linię między punktem końcowym i lokalizację programu rozpoznawania nazw DNS i mają kolor zgodnie z językiem opóźnienia między tym pary. Ponadto możesz zobaczyć nazwę punktu końcowego, region platformy Azure, w której jest uruchamiany i całkowita ilość żądań, które były kierowane do niego przez ten profil usługi Traffic Manager.
 
 
-## <a name="tabular-listing-and-raw-data-download"></a>Lista tabelarycznych i pobierania danych pierwotnych
+## <a name="tabular-listing-and-raw-data-download"></a>Tabelarycznej liście i pobierania danych pierwotnych
 
-Dane widoku ruchu można wyświetlić w formacie tabelarycznym w portalu Azure. Istnieje wpis dla każdego adresu IP programu rozpoznawania nazw DNS / pary punktu końcowego, który zawiera adres IP program rozpoznawania nazw DNS, nazwy i lokalizacji geograficznej regionu Azure, w którym znajduje się punkt końcowy, (jeśli jest dostępny), odebranej liczby żądań skojarzone z tym programem rozpoznawania nazw DNS do tego punktu końcowego, a reprezentatywny opóźnienia związanego z użytkownikami końcowymi za pomocą tej usługi DNS (jeśli jest dostępna). Możesz również pobrać dane widoku ruchu jako pliku CSV, który może służyć jako część przepływu pracy analytics wybranych przez użytkownika.
+Można wyświetlić widok ruchu danych w formacie tabelarycznym w witrynie Azure portal. Istnieje wpis dla każdego adresu IP programu rozpoznawania nazw DNS / Sparuj punktu końcowego, który zawiera adres IP programu rozpoznawania nazw DNS, nazwy i lokalizacji geograficznej, regionu platformy Azure w umiejscowiony punktu końcowego (jeśli jest dostępny), liczba żądań skojarzone z tym rozpoznawania DNS punkt końcowy oraz występujące opóźnienie, które są skojarzone z użytkownikami końcowymi, za pomocą tej usługi DNS (jeśli dostępne). Widok ruchu danych można również pobrać jako plik CSV, który może służyć jako część przepływu pracy analizy wybranych przez użytkownika.
 
 ## <a name="billing"></a>Rozliczenia
 
-Korzystając z widoku ruch, są rozliczane na podstawie liczby punktów danych używany do tworzenia analiz przedstawiony. Obecnie typ punktu tylko danych używany jest zapytań odebranych z profilu Menedżera ruchu. Aby uzyskać więcej informacji o cenach, odwiedź stronę [cennikiem usługi Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager/).
+Korzystając z widoku ruchu, są rozliczane na podstawie liczby punktów danych używanych do tworzenia przedstawione szczegółowe informacje. Obecnie jedynym typem punktu danych używane są zapytania odebrane względem profilu usługi Traffic Manager. Aby uzyskać więcej informacji na temat cen, odwiedź stronę [usługi Traffic Manager stronę z cennikiem](https://azure.microsoft.com/pricing/details/traffic-manager/).
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się [działania Menedżera ruchu](traffic-manager-overview.md)
-- Dowiedz się więcej o [metody routingu ruchu](traffic-manager-routing-methods.md) obsługiwane przez Menedżera ruchu
-- Dowiedz się, jak [Tworzenie profilu Menedżera ruchu](traffic-manager-create-profile.md)
+- Dowiedz się, [jak działa usługa Traffic Manager](traffic-manager-overview.md)
+- Dowiedz się więcej o [metody routingu ruchu](traffic-manager-routing-methods.md) obsługiwane przez usługę Traffic Manager
+- Dowiedz się, jak [Tworzenie profilu usługi Traffic Manager](traffic-manager-create-profile.md)
 

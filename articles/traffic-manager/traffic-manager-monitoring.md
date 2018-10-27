@@ -4,9 +4,6 @@ description: W tym artykule mogą ułatwić zrozumienie, jak usługa Traffic Man
 services: traffic-manager
 documentationcenter: ''
 author: KumudD
-manager: jeconnoc
-editor: ''
-ms.assetid: fff25ac3-d13a-4af9-8916-7c72e3d64bc7
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2017
 ms.author: kumud
-ms.openlocfilehash: 64f3595206c580d0d177622d23aa49753100d3c0
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 15b609bbf4ab048722f2512371eeffece92b3245
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221098"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138144"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Monitorowanie punktu końcowego usługi Traffic Manager
 
@@ -140,7 +137,7 @@ Gdy punkt końcowy stan obniżony, już nie jest zwracana w odpowiedzi na zapyta
 * **Wydajność**. Punkt końcowy najbliżej użytkownika końcowego jest zwracana. Punkt końcowy jest niedostępny, usługa Traffic Manager przenosi ruchu do punktów końcowych w dalej najbliższego regionu platformy Azure. Plany awaryjne alternatywnych kierowania ruchu wydajności można skonfigurować za pomocą [zagnieżdżone profile usługi Traffic Manager](traffic-manager-nested-profiles.md#example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region).
 * **Geograficzne**. Punkt końcowy zamapowany do obsługi lokalizacja geograficzna na podstawie żądania zapytania adresy IP, jest zwracana. Jeśli punkt końcowy jest niedostępny, innego punktu końcowego nie zostanie wybrana przejścia w tryb failover, ponieważ lokalizacji geograficznej można zamapować tylko jeden punkt końcowy w profilu (szczegółowe informacje znajdują się w [— często zadawane pytania](traffic-manager-FAQs.md#traffic-manager-geographic-traffic-routing-method)). Najlepszym rozwiązaniem, korzystając z geograficznego routingu zaleca się klienci mogą korzystać z więcej niż jednym punktem końcowym zagnieżdżone profile usługi Traffic Manager, jako punkty końcowe profilu.
 * **Atrybut wielowartościowy elementu** wiele punktów końcowych, mapowane na adresy IPv4 i IPv6 są zwracane. Po otrzymaniu kwerendy dla tego profilu dobrej kondycji punktów końcowych są zwracane na podstawie **maksymalną liczbę rekordów w odpowiedzi** wartości, które zostały określone. Domyślna liczba odpowiedzi jest dwa punkty końcowe.
-* **Podsieci** zwracany jest mapowane na zestaw zakresów adresów IP punktu końcowego. Po odebraniu żądania z tego adresu IP punktu końcowego zwracany jest ten mapowany dla tego adresu IP. 
+* **Podsieci** zwracany jest mapowane na zestaw zakresów adresów IP punktu końcowego. Po odebraniu żądania z tego adresu IP punktu końcowego zwracany jest ten mapowany dla tego adresu IP. 
 
 Aby uzyskać więcej informacji, zobacz [metody routingu ruchu w usłudze Traffic Manager](traffic-manager-routing-methods.md).
 

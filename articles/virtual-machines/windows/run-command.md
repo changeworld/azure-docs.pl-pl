@@ -5,15 +5,15 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/02/2018
+ms.date: 10/25/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 322b21ae2273b949e9a46e0c47a9f9e4d661603e
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 3ba1f9afda1b4f7f227c996615cc17a8c604d5fb
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267957"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138229"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>Uruchamiaj skrypty programu PowerShell na maszynie wirtualnej Windows za pomocą polecenia Uruchom
 
@@ -37,6 +37,9 @@ Korzystając z polecenia Uruchom obowiązują następujące ograniczenia:
 * Nie można anulować uruchamianie skryptu
 * Maksymalny czas, który można uruchomić skryptu wynosi 90 minut, po których przekroczy limit czasu
 * Łączność wychodząca z maszyny Wirtualnej jest wymagana do zwracania wyników skryptu.
+
+> [!NOTE]
+> Aby funkcjonowało poprawnie, uruchom polecenie wymaga łączności (port 443) do platformy Azure publicznych adresów IP. Jeśli rozszerzenie nie ma dostępu do tych punktów końcowych, skrypty może wykonane pomyślnie, ale nie zwracają wartości. Jeśli blokujesz ruchu na maszynie wirtualnej, możesz użyć [tagów usług](../../virtual-network/security-overview.md#service-tags) zezwalająca na ruch do platformy Azure publicznych adresów IP przy użyciu `AzureCloud` tagu.
 
 ## <a name="run-a-command"></a>Uruchom polecenie
 

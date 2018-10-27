@@ -1,34 +1,31 @@
 ---
-title: 'Usłudze Azure Databricks: Typowe pytania i pomagać | Dokumentacja firmy Microsoft'
+title: 'Usłudze Azure Databricks: Typowe pytania i pomagać'
 description: Uzyskaj odpowiedzi na często zadawane pytania oraz informacje dotyczące rozwiązywania problemów dotyczących usługi Azure Databricks.
 services: azure-databricks
-documentationcenter: ''
-author: nitinme
-manager: cgronlun
-editor: cgronlun
+author: mamccrea
+ms.author: mamccrea
+ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: c3ba235c60480c38a21ee3264c54b4a4dcdea340
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.topic: conceptual
+ms.date: 10/25/2018
+ms.openlocfilehash: 3bcc511ec6ad8a246c2b1b3a33eb59043a45830e
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434605"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138365"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Często zadawane pytania dotyczące usługi Azure Databricks
 
-W tym artykule wymieniono najpopularniejsze zapytania, które mogą być związane z usługą Azure Databricks. Zawiera również listę niektórych typowych problemów, które może być podczas korzystania z usługi Databricks. Aby uzyskać więcej informacji, zobacz [co to jest Azure Databricks](what-is-azure-databricks.md). 
+W tym artykule wymieniono najczęściej zadawane pytania, które mogą być związane z usługą Azure Databricks. Zawiera również listę niektórych typowych problemów, które może być podczas korzystania z usługi Databricks. Aby uzyskać więcej informacji, zobacz [co to jest Azure Databricks](what-is-azure-databricks.md). 
 
-## <a name="can-i-use-my-own-keys-for-local-encryption"></a>Czy można używać własnych kluczy w lokalnych szyfrowania? 
-W bieżącej wersji za pomocą własnych kluczy z usługi Azure Key Vault nie jest obsługiwana. 
+## <a name="can-i-use-azure-key-vault-to-store-keyssecrets-to-be-used-in-azure-databricks"></a>Czy można użyć usługi Azure Key Vault w celu przechowywania kluczy lub kluczy tajnych do użycia w usłudze Azure Databricks?
+Tak. Za pomocą usługi Azure Key Vault do przechowywania kluczy lub kluczy tajnych do użycia z usługą Azure Databricks. Aby uzyskać więcej informacji, zobacz [opartych na usłudze Azure Key Vault zakresy](https://docs.azuredatabricks.net/user-guide/secrets/secret-scopes.html#akv-ss).
 
-## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>Czy można używać sieci wirtualnych platformy Azure, za pomocą usługi Databricks?
-Nowej sieci wirtualnej jest tworzony w ramach inicjowania obsługi usługi Databricks. W tej wersji nie można użyć własnych sieci wirtualnej platformy Azure.
+
+## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>Czy można używać usługi Azure Virtual Networks, za pomocą usługi Databricks?
+Tak. Za pomocą usługi Azure Virtual Network (VNET) z usługą Azure Databricks. Aby uzyskać więcej informacji, zobacz [wdrażania usługi Azure Databricks w usłudze Azure Virtual Network](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html).
 
 ## <a name="how-do-i-access-azure-data-lake-store-from-a-notebook"></a>Jak dostęp do usługi Azure Data Lake Store z notesu? 
 
@@ -116,7 +113,7 @@ Aby uzyskać szczegółowe instrukcje, zobacz [dostawcy zasobów i ich typy](../
 
 #### <a name="background"></a>Tło
 
-Usługa Azure Databricks jest zintegrowana z usługą Azure AD. Dzięki temu można ustawić uprawnień w ramach usługi Azure Databricks (na przykład w notesach lub klastry), określając użytkowników z usługi Azure AD. Usługi Azure Databricks można było wyświetlić listę nazw użytkowników z usługi Azure AD wymaga uprawnień do odczytu do tych informacji. Wymaga to zgodę. Jeśli zgody nie jest już dostępna, zostanie wyświetlony błąd.
+Usługa Azure Databricks jest zintegrowana z usługą Azure Active Directory. Możesz ustawić uprawnienia w usłudze Azure Databricks (na przykład w notesach lub klastry), określając użytkowników z usługi Azure AD. Dla usługi Azure Databricks można było wyświetlić listę nazw użytkowników z usługi Azure AD wymaga uprawnienia do tych informacji do odczytu i zgody w ustawie. Jeśli zgody nie jest już dostępna, zostanie wyświetlony błąd.
 
 #### <a name="solution"></a>Rozwiązanie
 

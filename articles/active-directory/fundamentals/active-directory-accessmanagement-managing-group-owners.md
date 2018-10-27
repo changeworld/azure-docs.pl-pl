@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.custom: it-pro
-ms.openlocfilehash: f546ea5b5f9288849334d27cd1721f0c22fb8806
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: fae68bccbeaa54ca1bab9d77510fe6baecd11fcc
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297779"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139724"
 ---
 # <a name="how-to-add-or-remove-group-owners-in-azure-active-directory"></a>Porady: Dodawanie lub usuwanie właściciele grupy w usłudze Azure Active Directory
 Grupy usługi Azure Active Directory (Azure AD), są własnością i zarządzane przez właścicieli grupy. Właściciele grupy są przypisywane do zarządzania grupą i jej elementów członkowskich według właściciela zasobu (administrator). Właściciele grupy nie muszą być członkami grupy. Po przypisaniu właściciela grupy właściciela zasobu, można dodać lub usunąć właścicieli.
@@ -27,9 +27,9 @@ W niektórych przypadkach jako administrator może nie chcesz przypisać właśc
 Dodaj grupę dodatkowych właścicieli do grupy przy użyciu usługi Azure AD.
 
 ### <a name="to-add-a-group-owner"></a>Aby dodać właściciela grupy
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta administratora globalnego dla katalogu.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) przy użyciu konta administratora globalnego dla katalogu.
 
-2. Wybierz **usługi Azure Active Directory**, wybierz opcję **grup**, a następnie wybierz grupę, dla którego chcesz dodać jako właściciela (w tym przykładzie _zasad zarządzania urządzeniami Przenośnymi - Zachodnia_).
+2. Wybierz **usługi Azure Active Directory**, wybierz opcję **grup**, a następnie wybierz grupę, dla którego chcesz dodać jako właściciela (w tym przykładzie *zasad zarządzania urządzeniami Przenośnymi - Zachodnia*).
 
 3. Na **zasady zarządzania urządzeniami Przenośnymi — omówienie zachodnie** wybierz opcję **właścicieli**.
 
@@ -45,9 +45,9 @@ Dodaj grupę dodatkowych właścicieli do grupy przy użyciu usługi Azure AD.
 Usuwanie właściciela z grupy przy użyciu usługi Azure AD.
 
 ### <a name="to-remove-an-owner"></a>Można usunąć właściciela
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta administratora globalnego dla katalogu.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) przy użyciu konta administratora globalnego dla katalogu.
 
-2. Wybierz **usługi Azure Active Directory**, wybierz opcję **grup**, a następnie wybierz grupę, dla którego chcesz dodać jako właściciela (w tym przykładzie _zasad zarządzania urządzeniami Przenośnymi - Zachodnia_).
+2. Wybierz **usługi Azure Active Directory**, wybierz opcję **grup**, a następnie wybierz grupę, dla którego chcesz usunąć właściciela (w tym przykładzie *zasad zarządzania urządzeniami Przenośnymi - Zachodnia*).
 
 3. Na **zasady zarządzania urządzeniami Przenośnymi — omówienie zachodnie** wybierz opcję **właścicieli**.
 

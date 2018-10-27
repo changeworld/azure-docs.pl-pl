@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: glenga
-ms.openlocfilehash: 0a6939ae32945c4efc22cbcaece402180a183c10
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: a16b71bf6c3f40d0595e1db136dd5631b029ed48
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087325"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139178"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Powiązania magazynu dla usługi Azure Functions dla tabeli platformy Azure
 
@@ -437,7 +437,7 @@ public int run(
  
 W [bibliotek klas języka C#](functions-dotnet-class-library.md), użyć następujących atrybutów, aby skonfigurować powiązania danych wejściowych w tabeli:
 
-* [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs)
+* [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs)
 
   Konstruktor atrybutu ma nazwę tabeli klucza partycji i klucza wiersza. Może służyć w parametrze wyjściowym lub wartość zwracaną funkcji, jak pokazano w poniższym przykładzie:
 
@@ -723,7 +723,7 @@ module.exports = function (context) {
 
 ## <a name="output---attributes"></a>Dane wyjściowe — atrybuty
 
-W [bibliotek klas języka C#](functions-dotnet-class-library.md), użyj [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs).
+W [bibliotek klas języka C#](functions-dotnet-class-library.md), użyj [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs).
 
 Konstruktor atrybutu ma nazwę tabeli. Może służyć w `out` parametru lub zwracanej wartości funkcji, jak pokazano w poniższym przykładzie:
 

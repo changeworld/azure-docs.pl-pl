@@ -15,11 +15,11 @@ ms.date: 09/17/2018
 ms.author: andret
 ms.custom: include file
 ms.openlocfilehash: f3048daa7d597d92041733cdf5c6f299cebc2f73
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50097929"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50142431"
 ---
 ## <a name="configure-your-aspnet-web-app-with-the-applications-registration-information"></a>Konfigurowanie aplikacji internetowej ASP.NET przy użyciu aplikacji informacje rejestracyjne
 

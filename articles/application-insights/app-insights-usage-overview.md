@@ -3,7 +3,7 @@ title: Analiza użycia za pomocą usługi Azure Application Insights | Dokumenta
 description: Dowiedz się, użytkownicy i co robią z aplikacją.
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: NumberByColors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,13 +11,15 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/10/2017
-ms.author: mbullwin
-ms.openlocfilehash: d5b580df531e2f0c61ac1d43cfd5ae353f314fce
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.pm_owner: daviste;NumberByColors
+ms.reviewer: mbullwin
+ms.author: daviste
+ms.openlocfilehash: eeaf46a9ce523ecd11689d0aa430fcc522732f70
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091905"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139860"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analiza użycia za pomocą usługi Application Insights
 
@@ -82,7 +84,7 @@ Co zrobić, jeśli chcesz zbadać ruch do swojej witryny bardziej szczegółowo,
 
 ## <a name="retention---how-many-users-come-back"></a>Przechowywanie — ilu użytkowników możesz wrócić?
 
-Przechowywanie pomaga zrozumieć, jak często użytkownicy wraca do używania aplikacji w oparciu o kohorty użytkowników, którzy będą wykonywane niektóre akcje biznesowych w przedziale czasowym. 
+Przechowywanie pomaga zrozumieć, jak często użytkownicy wraca do używania aplikacji w oparciu o kohorty użytkowników, którzy będą wykonywane niektóre akcje biznesowych w przedziale czasowym. 
 
 - Zrozumienie, jakie określonych funkcji spowodować, że użytkownicy są ponownie więcej niż inne 
 - Hipotezy formularza na podstawie rzeczywistego użytkownika danych 

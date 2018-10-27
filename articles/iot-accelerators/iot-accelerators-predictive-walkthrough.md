@@ -6,30 +6,30 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 07/12/2018
+ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 822e02d42be8ce516901190af4be579d13ac841d
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 61a4e3700e88efba1ea9cea876b19e2f7ed4168b
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888326"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50137074"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>Omówienie akceleratora rozwiązania do konserwacji predykcyjnej
 
-Akcelerator rozwiązania do konserwacji predykcyjnej to kompleksowe rozwiązanie dotyczące scenariusza biznesowego, w którym przewidywany jest moment prawdopodobnego wystąpienia awarii. Ten akcelerator rozwiązania można aktywnie wykorzystać w celu zoptymalizowania konserwacji. To rozwiązanie łączy kluczowe usługi akceleratorów rozwiązań Azure IoT, takie jak usługa IoT Hub, analiza strumienia oraz obszar roboczy usługi [Azure Machine Learning][lnk-machine-learning]. Ten obszar roboczy zawiera model oparty na publicznym zestawie przykładowych danych, które umożliwiają prognozowanie pozostałego czasu eksploatacji (RUL, Remaining Useful Life) silnika samolotu. Ponadto w rozwiązaniu w pełni zaimplementowano scenariusz biznesowy IoT jako punkt wyjściowy planowania i wdrażania rozwiązania zgodnego z potrzebami firmy.
+Akcelerator rozwiązania do konserwacji predykcyjnej to kompleksowe rozwiązanie dotyczące scenariusza biznesowego, w którym przewidywany jest moment prawdopodobnego wystąpienia awarii. Ten akcelerator rozwiązania można aktywnie wykorzystać w celu zoptymalizowania konserwacji. Rozwiązanie łączy kluczowe usługi akceleratorów rozwiązań Azure IoT, takich jak usługa IoT Hub i [usługi Azure Machine Learning] [ lnk-machine-learning] obszaru roboczego. Ten obszar roboczy zawiera model oparty na publicznym zestawie przykładowych danych, które umożliwiają prognozowanie pozostałego czasu eksploatacji (RUL, Remaining Useful Life) silnika samolotu. Ponadto w rozwiązaniu w pełni zaimplementowano scenariusz biznesowy IoT jako punkt wyjściowy planowania i wdrażania rozwiązania zgodnego z potrzebami firmy.
 
 ## <a name="logical-architecture"></a>Architektura logiczna
 
 Na poniższym diagramie przedstawiono składniki logiczne tego akceleratora rozwiązania:
 
-![][img-architecture]
+![Architektura logiczna][img-architecture]
 
 Niebieskie elementy oznaczają usługi platformy Azure zaprowizowane w regionie, w którym wdrożono akcelerator rozwiązania. Lista regionów, w których można wdrożyć akcelerator rozwiązania, znajduje się na [stronie aprowizacji][lnk-azureiotsuite].
 
-Zielony element oznacza symulowane urządzenie, które odpowiada silnikowi samolotu. Więcej informacji na temat tych symulowanych urządzeń można znaleźć w sekcji [Symulowane urządzenia](#simulated-devices).
+Zielony element oznacza symulowane silników. Więcej informacji na temat tych symulowanych urządzeń można znaleźć w sekcji [Symulowane urządzenia](#simulated-devices).
 
-Szare elementy oznaczają składniki z zaimplementowanymi funkcjami *zarządzania urządzeniami*. Bieżąca wersja akceleratora rozwiązania do konserwacji predykcyjnej nie umożliwia aprowizowania tych zasobów. Aby dowiedzieć się więcej o zarządzaniu urządzeniami, zapoznaj się [zdalne monitorowanie akcelerator rozwiązań][lnk-remote-monitoring].
+Szare elementy są składniki z zaimplementowanymi *zarządzania urządzeniami* możliwości. Bieżąca wersja akceleratora rozwiązania do konserwacji predykcyjnej nie umożliwia aprowizowania tych zasobów. Aby dowiedzieć się więcej o zarządzaniu urządzeniami, zapoznaj się [zdalne monitorowanie akcelerator rozwiązań][lnk-remote-monitoring].
 
 ## <a name="azure-resources"></a>Zasoby platformy Azure
 
@@ -37,17 +37,17 @@ W portalu Azure przejdź do grupy zasobów z nazwą wybranego rozwiązania, aby 
 
 ![Zasoby akceleratora][img-resource-group]
 
-Po przeprowadzeniu aprowizacji akceleratora rozwiązania otrzymasz wiadomość e-mail z linkiem do obszaru roboczego usługi Machine Learning. Możesz także przejść do obszaru roboczego usługi Machine Learning z [akceleratorów rozwiązań IoT Azure Microsoft] [ lnk-azureiotsuite] stronę swojego aprowizowanego rozwiązania. Kafelek jest dostępny na tej stronie, gdy rozwiązanie jest w stanie **Gotowe**.
+Po przeprowadzeniu aprowizacji akceleratora rozwiązania otrzymasz wiadomość e-mail z linkiem do obszaru roboczego usługi Machine Learning. Możesz także przejść do obszaru roboczego usługi Machine Learning z [akceleratorów rozwiązań IoT Azure Microsoft] [ lnk-azureiotsuite] strony. Kafelek jest dostępny na tej stronie, gdy rozwiązanie jest w stanie **Gotowe**.
 
 ![Model uczenia maszynowego][img-machine-learning]
 
 ## <a name="simulated-devices"></a>Symulowane urządzenia
 
-W tym akceleratorze rozwiązania symulowane urządzenie odpowiada silnikowi samolotu. W ramach rozwiązania są aprowizowane dwa silniki (dla jednego samolotu). Każdy silnik emituje cztery rodzaje danych telemetrycznych: z czujnika 9, czujnika 11, czujnika 14 i czujnika 15. Czujniki dostarczają dane wymagane przez model usługi Machine Learning do obliczenia pozostałego czasu eksploatacji silnika. Poszczególne symulowane urządzenia wysyłają następujące komunikaty telemetryczne do usługi IoT Hub:
+W akcelerator rozwiązań symulowane urządzenie to silnikowi samolotu. W ramach rozwiązania są aprowizowane dwa silniki (dla jednego samolotu). Każdy silnik emituje cztery rodzaje danych telemetrycznych: z czujnika 9, czujnika 11, czujnika 14 i czujnika 15. Czujniki dostarczają dane wymagane przez model usługi Machine Learning do obliczenia pozostałego czasu eksploatacji silnika. Poszczególne symulowane urządzenia wysyłają następujące komunikaty telemetryczne do usługi IoT Hub:
 
-*Liczba cykli*. Cykl reprezentuje ukończony lot o długości od 2 do 10 godzin. Podczas lotu dane telemetryczne są przechwytywane co pół godziny.
+*Liczba cykli*. Cykl jest ukończony lot o długości od 2 do 10 godzin. Podczas lotu dane telemetryczne są przechwytywane co pół godziny.
 
-*Dane telemetryczne*. Są cztery czujniki, które reprezentują parametry silnika. Czujniki te mają ogólne etykiety: czujnik 9, czujnik 11, czujnik 14 i czujnik 15. Te 4 czujniki reprezentują dane telemetryczne, które są wystarczające do uzyskania przydatnych wyników z modelu pozostałego czasu eksploatacji silnika. Model wykorzystywany w tym akceleratorze rozwiązania został utworzony na podstawie publicznego zestawu danych zawierającego dane z czujników w rzeczywistych silnikach. Aby uzyskać więcej informacji dotyczących tworzenia modelu na podstawie oryginalnego zestawu danych, zobacz [szablon konserwacji predykcyjnej w witrynie Cortana Intelligence Gallery][lnk-cortana-analytics].
+*Dane telemetryczne*. Istnieją cztery czujniki, służące do rejestrowania silnika. Czujniki te mają ogólne etykiety: czujnik 9, czujnik 11, czujnik 14 i czujnik 15. Te 4 czujniki wysyłają dane telemetryczne, wystarczające do uzyskania przydatnych wyników z modelu pozostałego czasu eksploatacji. Model wykorzystywany w tym akceleratorze rozwiązania został utworzony na podstawie publicznego zestawu danych zawierającego dane z czujników w rzeczywistych silnikach. Aby uzyskać więcej informacji dotyczących tworzenia modelu na podstawie oryginalnego zestawu danych, zobacz [szablon konserwacji predykcyjnej w witrynie Cortana Intelligence Gallery][lnk-cortana-analytics].
 
 Symulowane urządzenia obsługują w rozwiązaniu następujące polecenia wysyłane z centrum IoT:
 
@@ -62,25 +62,25 @@ Usługa IoT Hub udostępnia potwierdzenia poleceń wysyłanych do urządzeń.
 
 **Zadanie Telemetria** przetwarza strumień danych telemetrycznych przychodzących z urządzeń przy użyciu dwóch instrukcji:
 
-* Pierwsza z nich pobiera wszystkie dane telemetryczne z urządzeń i wysyła je do magazynu obiektów blob. Stamtąd trafiają one do aplikacji internetowej w celu wizualizacji.
+* Pierwsza z nich pobiera wszystkie dane telemetryczne z urządzeń i wysyła je do magazynu obiektów blob. W tym miejscu są wizualizowane w aplikacji sieci web.
 * Druga instrukcja oblicza średnie wartości z czujników w ramach przesuwającego się okna czasowego trwającego dwie minuty i wysyła te wartości do **procesora zdarzeń** za pośrednictwem centrum zdarzeń.
 
 ## <a name="event-processor"></a>Procesor zdarzeń
-**Host procesora zdarzeń** jest uruchamiany w zadaniu sieci Web Azure. **Procesor zdarzeń** przyjmuje średnie wartości z czujników dla ukończonego cyklu. Następnie przekazuje te wartości do interfejsu API, który dostarcza je nauczonemu modelowi w celu obliczenia pozostałego czasu eksploatacji silnika. Interfejs API jest udostępniany przez obszar roboczy usługi Machine Learning, który jest aprowizowany w ramach rozwiązania.
+**Host procesora zdarzeń** jest uruchamiany w zadaniu sieci Web Azure. **Procesor zdarzeń** przyjmuje średnie wartości z czujników dla ukończonego cyklu. Następnie przekazuje te wartości do trenowanego modelu, który oblicza wartość pozostałego czasu eksploatacji silnika. Interfejs API zapewnia dostęp do modelu w obszarze roboczym usługi Machine Learning, która jest częścią rozwiązania.
 
 ## <a name="machine-learning"></a>Usługa Machine Learning
 Składnik Machine Learning wykorzystuje model opracowany na podstawie danych zebranych z rzeczywistych silników samolotów. Do obszaru roboczego usługi Machine Learning możesz przejść z poziomu kafelka rozwiązania na stronie [azureiotsuite.com][lnk-azureiotsuite]. Kafelek jest dostępny, gdy rozwiązanie jest w stanie **Gotowe**.
 
-Model usługi Azure Machine Learning jest dostępny jako szablon na demonstrację działania funkcji z urządzeń danych telemetrycznych zebranych za pośrednictwem usług akceleratorów rozwiązań IoT. Firma Microsoft opracowała [modelu regresji] [ lnk_regression_model] silnika samolotu na podstawie publicznie dostępnych danych<sup>\[1\]</sup>oraz szczegółowe wskazówki na temat używania tego modelu.
+Model usługi Machine Learning jest dostępny jako szablon, który pokazuje, jak pracować z danych telemetrycznych zebranych za pośrednictwem usług akcelerator rozwiązań IoT. Firma Microsoft opracowała [modelu regresji] [ lnk_regression_model] silnika samolotu na podstawie publicznie dostępnych danych<sup>\[1\]</sup>oraz szczegółowe wskazówki na temat używania tego modelu.
 
-Akcelerator rozwiązania Azure IoT do konserwacji predykcyjnej używa modelu regresji utworzonego na podstawie tego szablonu. Model jest wdrożony w ramach subskrypcji platformy Azure i dostępny za pośrednictwem automatycznie generowanego interfejsu API. Rozwiązanie to zawiera podzbiór danych testowych odpowiadających 4 ze 100 silników oraz strumieniom danych z 4 z 21 czujników. Te dane wystarczają do uzyskania dokładnego wyniku za pomocą nauczonego modelu.
+Akcelerator rozwiązania Azure IoT do konserwacji predykcyjnej używa modelu regresji utworzonego na podstawie tego szablonu. Model jest wdrażany w Twojej subskrypcji platformy Azure i udostępniane za pośrednictwem automatycznie generowanego interfejsu API. Rozwiązanie to zawiera podzbiór danych testowych 4 (ze 100) aparatów i 4 (z 21) strumieni danych czujników. Te dane wystarczają do uzyskania dokładnego wyniku za pomocą nauczonego modelu.
 
 *\[1\] A. Saxena and K. Goebel (2008). „Turbofan Engine Degradation Simulation Data Set” (Zestaw danych dotyczących symulacji degradacji silnika turbowentylatorowego), repozytorium danych prognostycznych NASA w Ames (https://c3.nasa.gov/dashlink/resources/139/), ośrodek badawczy NASA w Ames, Moffett Field, Kalifornia*
 
 ## <a name="next-steps"></a>Kolejne kroki
 Po zapoznaniu się z kluczowymi składnikami akceleratora rozwiązania do konserwacji predykcyjnej możesz je dostosować.
 
-Możesz także wypróbować niektóre inne funkcje i możliwości akceleratorów rozwiązań IoT:
+Możesz także wypróbować niektóre inne funkcje akceleratorów rozwiązań IoT:
 
 * [Często zadawane pytania dotyczące akceleratorów rozwiązań IoT][lnk-faq]
 * [Zabezpieczenia IoT od podstaw][lnk-security-groundup]

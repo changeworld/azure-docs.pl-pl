@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bryanla
-ms.openlocfilehash: d93ad4185be3d4875c5747fd10359baab69af95d
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 00a2c0d50a2476995dfb0d16d0cdbc5bd0ec313b
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958656"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139001"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informacje o kluczach, wpisów tajnych i certyfikatów
 
@@ -245,7 +245,7 @@ Oprócz tajnych danych można określić następujące atrybuty:
 
 - *EXP*: IntDate, opcjonalnie, wartością domyślną jest **nieskończona**. *Exp* atrybut (czas wygaśnięcia) określa czas wygaśnięcia na lub po którym wpisu tajnego powinna nie można pobrać danych, z wyjątkiem [sytuacji, w szczególności](#date-time-controlled-operations). To pole jest **informacyjny** tylko wtedy, gdy informuje użytkowników magazynu kluczy usługi określonego klucza tajnego nie mogą być używane w celach. Jego wartość musi być liczbą zawierającą wartość IntDate.   
 - *NBF*: IntDate, opcjonalnie, wartością domyślną jest **teraz**. *Nbf* (nie wcześniej niż) atrybut określa czas, przed którą dane tajne powinna nie można pobrać, z wyjątkiem [sytuacji, w szczególności](#date-time-controlled-operations). To pole jest **informacyjny** wyłącznie do celów. Jego wartość musi być liczbą zawierającą wartość IntDate. 
-- *włączone*: wartość logiczna, opcjonalna, wartością domyślną jest **true**. Ten atrybut określa, czy można pobrać tajnego danych. Atrybut włączony jest używany w połączeniu z i *exp* podczas operacji odbywa się między i exp, jej zostanie dopuszczona, jeśli włączone jest ustawiona na **true**. Operacje poza *nbf* i *exp* automatycznie są niedozwolone, z wyjątkiem w [sytuacji, w szczególności](#date-time-controlled-operations).  
+- *włączone*: wartość logiczna, opcjonalna, wartością domyślną jest **true**. Ten atrybut określa, czy można pobrać tajnego danych. Atrybut włączony jest używany w połączeniu z *nbf* i *exp* podczas operacji odbywa się między *nbf* i *exp*, będzie dozwolone, gdy włączone jest ustawiona na **true**. Operacje poza *nbf* i *exp* automatycznie są niedozwolone, z wyjątkiem w [sytuacji, w szczególności](#date-time-controlled-operations).  
 
 Istnieją dodatkowe atrybuty tylko do odczytu, które są objęte żadnej odpowiedzi, która zawiera atrybuty wpisu tajnego:  
 

@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 10/25/2018
 ms.author: iainfou
-ms.openlocfilehash: 7caa98b65b35d1eb1a000f1e9099fbf8eb3f8861
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c3256b2b1e8be0e883d0f7b47e66ab1fee95b042
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406045"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138173"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Włączyć i przejrzeć Kubernetes węzła głównego dzienników w usłudze Azure Kubernetes Service (AKS)
 
@@ -42,7 +42,7 @@ W poniższym przykładzie przedstawiono zrzut ekranu portalu *ustawień diagnost
 ![Włącz obszar roboczy Log Analytics dla klastra usługi AKS w Log Analytics](media/view-master-logs/enable-oms-log-analytics.png)
 
 >[!NOTE]
->Obszary robocze OMS są teraz nazywane obszarów roboczych usługi Log Analytics. 
+>Obszary robocze OMS są teraz nazywane obszarów roboczych usługi Log Analytics.
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Harmonogram zasobnik testowych w klastrze usługi AKS
 
@@ -82,7 +82,7 @@ Może upłynąć kilka minut, zanim dzienniki diagnostyczne można włączyć i 
 
 ![Wybierz obszar roboczy usługi Log Analytics dla klastra usługi AKS](media/view-master-logs/select-log-analytics-workspace.png)
 
-Po lewej stronie wybierz **wyszukiwanie w dzienniku**. Aby wyświetlić *apiserver klastra kubernetes w usłudze*, wprowadź następujące zapytanie w polu tekstowym:
+Po lewej stronie wybierz **dzienniki**. Aby wyświetlić *apiserver klastra kubernetes w usłudze*, wprowadź następujące zapytanie w polu tekstowym:
 
 ```
 AzureDiagnostics

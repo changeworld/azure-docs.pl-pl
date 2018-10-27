@@ -3,7 +3,7 @@ title: Wyślij kontekstu użytkownika identyfikatorów, aby umożliwić użycie 
 description: Śledzić, jak użytkownik przejdzie przez usługę, przypisując każdego z nich unikatowy, trwały ciąg Identyfikatora w usłudze Application Insights.
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: NumberByColors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,14 +11,15 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/02/2017
-ms.reviewer: abgreg
-ms.author: mbullwin
-ms.openlocfilehash: 14322162d3f78f0cb90ecaf077d1d85f7cbba581
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.reviewer: abgreg;mbullwin
+ms.pm_owner: daviste;NumberByColors
+ms.author: daviste
+ms.openlocfilehash: bfb04f596a61ff79c75cd38473c9480a29b0e6c4
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091536"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139894"
 ---
 #  <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Wyślij kontekstu użytkownika identyfikatorów, aby zapewnić użycie w usłudze Azure Application Insights
 

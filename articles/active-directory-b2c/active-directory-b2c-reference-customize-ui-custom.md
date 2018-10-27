@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c6882dd56ee96e1fcab5926b77f11ce928bf950b
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: c363056fc013cc8b8fd67fb9d656d3550d3bf5a2
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442359"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139513"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Dostosowywanie interfejsu użytkownika dla podróży użytkownika za pomocą zasad niestandardowych
 
@@ -41,7 +41,7 @@ W porównaniu do tradycyjnych stary sposób, gdzie strony szablonów są własno
 Możesz podać dowolną liczbę stron zawartości, jak chcesz przy tworzeniu plików HTML5/CSS, zgodnie z potrzebami.
 
 > [!NOTE]
-> Ze względów bezpieczeństwa korzystanie z języka JavaScript jest obecnie zablokowana do dostosowania. Aby odblokować JavaScript, korzystania z niestandardowej nazwy domeny dla dzierżawy usługi Azure AD B2C jest potrzebna.
+> Ze względów bezpieczeństwa korzystanie z języka JavaScript jest obecnie zablokowana do dostosowania. 
 
 W każdym z szablonów HTML5/CSS, podaj *zakotwiczenia* element, który odnosi się do wymaganych `<div id=”api”>` elementu w kodzie HTML lub strony zawartości, tak jak pokazują poniżej. Usługa Azure AD B2C wymaga wszystkich stron zawartości tego określonego div.
 
@@ -84,12 +84,12 @@ Jako warunek wstępny musisz utworzyć konto magazynu. Musisz mieć subskrypcję
 2. Zaloguj się przy użyciu poświadczeń administracyjnych.
 3. Kliknij przycisk **Utwórz zasób** > **magazynu** > **konta magazynu**.  A **Tworzenie konta magazynu** otwarcie okienka.
 4. W **nazwa**, podaj nazwę konta magazynu, na przykład *contoso369b2c*. Ta wartość jest później określany jako *storageAccountName*.
-5. Wybierz odpowiednie opcje dla grupy zasobów, subskrypcji i warstwy cenowej. Upewnij się, że masz **Przypnij do tablicy startowej** zaznaczoną opcją. Kliknij przycisk **Utwórz**.
+5. Wybierz odpowiednie opcje dla grupy zasobów, subskrypcji i warstwy cenowej. Upewnij się, że masz **Przypnij do tablicy startowej** zaznaczoną opcją. Kliknij pozycję **Utwórz**.
 6. Wróć do tablicy startowej, a następnie kliknij konto magazynu, który został utworzony.
 7. W **usług** kliknij **obiektów blob**. A **okienko usługi obiektów Blob** zostanie otwarty.
 8. Kliknij przycisk **+ kontener**.
 9. W **nazwa**, podaj nazwę kontenera, na przykład *b2c*. Ta wartość jest później nazywany *containerName*.
-9. Wybierz **Blob** jako **dostęp typu**. Kliknij przycisk **Utwórz**.
+9. Wybierz **Blob** jako **dostęp typu**. Kliknij pozycję **Utwórz**.
 10. Kontener, który został utworzony, pojawia się na liście na **okienko usługi obiektów Blob**.
 11. Zamknij **obiektów blob** okienka.
 12. Na **okienko konta magazynu**, kliknij przycisk **klucz** ikony. **Okienko klucze dostępu** zostanie otwarty.  

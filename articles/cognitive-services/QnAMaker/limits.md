@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 76024266a8ae3eb03e910e140184a07ae363e881
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 53fadc0e3ea21b94ca656774baf077192c0394b4
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384960"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50137297"
 ---
 # <a name="qna-maker-limits"></a>Limity usługi QnA Maker
 Pełną listę limitów przez narzędzie QnA Maker.
@@ -26,7 +26,7 @@ Pełną listę limitów przez narzędzie QnA Maker.
 
 |**Warstwy usługi Azure Search** | **Bezpłatna** | **Podstawowa** |**S1** | **S2**| **S3** |**WYSOKA GĘSTOŚĆ S3**|
 |---|---|---|---|---|---|----|
-|Maksymalna liczba opublikowanych baz wiedzy dozwolone (maksymalna liczba indeksów – 1 (zarezerwowane dla testu)|2|14|49|199|199|2999|
+|Maksymalna liczba opublikowanych baz wiedzy dozwolone (maksymalna liczba indeksów – 1 (zarezerwowane dla testu)|2|14|49|199|199|2,999|
 
 ## <a name="extraction-limits"></a>Limity wyodrębniania
 * Maksymalna liczba plików, które można wyodrębnić i maksymalny rozmiar pliku: zobacz [ceny QnAMaker](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)
@@ -41,7 +41,7 @@ Pełną listę limitów przez narzędzie QnA Maker.
 
 ## <a name="knowledge-base-content-limits"></a>Limity zawartości bazy wiedzy
 Ogólne ograniczenia dotyczące zawartości w bazie wiedzy knowledge base:
-* Długość tekstu odpowiedzi: 250000
+* Długość tekstu odpowiedzi: 25 000
 * Długość tekstu zapytania: 1000
 * Długość tekstu klucz/wartość metadanych: 100
 * Obsługiwane znaki dla nazwy metadanych: litery, cyfry oraz _  

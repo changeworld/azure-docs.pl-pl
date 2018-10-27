@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2017
+ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: nigu
 ms.custom: seohack1
-ms.openlocfilehash: 3bdf44e0a1cf0ccda6d015fa3683964f3530d4af
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: eefbfcf741db3d0949910bc5da8494e087c39ec7
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003487"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139155"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Rozpoczynanie pracy z usługą Azure Active Directory Identity Protection i Microsoft Graph
 Usługa Microsoft Graph programu Microsoft unified punkt końcowy interfejsu API i stroną główną [usługi Azure Active Directory Identity Protection](../active-directory-identityprotection.md) interfejsów API. Pierwszym interfejsem API **identityRiskEvents**, służy do wykonywania zapytań programu Microsoft Graph, aby uzyskać listę [zdarzeń o podwyższonym ryzyku](../reports-monitoring/concept-risk-events.md) i skojarzonych informacji. Ten artykuł ułatwia pracę zapytania ten interfejs API. Aby uzyskać szczegółowe wprowadzenie, pełną dokumentację i dostępu do programu Graph Explorer, zobacz [witryny programu Microsoft Graph](https://graph.microsoft.io/).
@@ -37,8 +37,11 @@ Istnieją cztery kroki uzyskiwania dostępu do danych ochronę tożsamości za p
 
 Przed rozpoczęciem należy:
 
-* Uprawnienia administratora, aby utworzyć aplikację w usłudze Azure AD
-* Nazwa domeny dzierżawy usługi (np. contoso.onmicrosoft.com)
+- Dzierżawy usługi Azure AD P2
+
+- Uprawnienia administratora, aby utworzyć aplikację w usłudze Azure AD
+
+- Nazwa domeny dzierżawy usługi (np. contoso.onmicrosoft.com)
 
 
 ## <a name="retrieve-your-domain-name"></a>Pobieranie nazwy domeny 
@@ -49,12 +52,14 @@ Przed rozpoczęciem należy:
    
     ![Tworzenie aplikacji](./media/graph-get-started/41.png)
 
+3. Kliknij przycisk **niestandardowe nazwy domen**.
 
-3. W **Zarządzaj** kliknij **właściwości**.
+    ![Niestandardowe nazwy domen](./media/graph-get-started/71.png)
 
-    ![Tworzenie aplikacji](./media/graph-get-started/42.png)
+4. Z listy nazw domen skopiuj nazwę domeny, który jest oznaczony jako podstawowy.
 
-4. Skopiuj nazwę domeny.
+    ![Niestandardowe nazwy domen](./media/graph-get-started/72.png)
+
 
 
 ## <a name="create-a-new-app-registration"></a>Tworzenie nowej rejestracji aplikacji
@@ -74,7 +79,7 @@ Przed rozpoczęciem należy:
 
     a. W **nazwa** polu tekstowym wpisz nazwę aplikacji (np.: Aplikacja interfejsu API zdarzenia o podwyższonym ryzyku AADIP).
    
-    b. Jako **typu**, wybierz opcję **aplikacji sieci Web i / lub interfejs API sieci Web**.
+    b. Jako **typ aplikacji**, wybierz opcję **aplikacji sieci Web i / lub interfejs API sieci Web**.
    
     c. W **adres URL logowania** polu tekstowym wpisz `http://localhost`.
 

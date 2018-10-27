@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 94f96d949f2a05f71e9565fdcbc7b48ed2c2a5c5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f1df22c505bffdfaf60bf9c6eec3ad4e698fff02
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972663"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139530"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Pozyskiwanie danych w usłudze Azure Eksplorator danych
 
@@ -60,9 +60,15 @@ Kusto oferuje zestaw SDK, który może służyć do odbierania i wysyłania zapy
 
 * [Zestaw SDK Java](https://docs.microsoft.com/azure/kusto/api/java/kusto-java-client-library)
 
+* [Node SDK]
+
 * [Interfejs API REST](https://docs.microsoft.com/azure/kusto/api/netfx/kusto-ingest-client-rest)
 
 **Wprowadzanie programowe technik**:
+
+* Wprowadzania danych przez usługę zarządzania danych Eksploratora danych usługi Azure (o wysokiej przepływności i niezawodne pozyskiwanie)
+
+  * [**Batch pozyskiwania** ](https://docs.microsoft.com/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (udostępnione przez zestaw SDK): klient przesyła dane do usługi Azure Blob storage (wyznaczony przez usługę zarządzania danych Eksplorator danych platformy Azure) i wysyła powiadomienie do kolejki usługi Azure. Jest to zalecana technika w celu pozyskiwania danych mocno obciążające, niezawodne i tanie.
 
 * Dane wprowadzane bezpośrednio do aparatu Eksplorator danych platformy Azure (najbardziej odpowiednie do potrzeb eksploracji i tworzenia prototypów):
 
@@ -71,10 +77,6 @@ Kusto oferuje zestaw SDK, który może służyć do odbierania i wysyłania zapy
   * **Pozyskiwanie z kwerendy**: polecenia sterowania (.set, .set lub dołączania, .set lub zastępowanie), który wskazuje na wyniki zapytania jest używana do generowania raportów lub małych tabel tymczasowych.
 
   * **Pozyskiwanie z magazynu**: polecenia sterowania (.ingest do) za pomocą — dane przechowywane zewnętrznie (np. usługi Azure Blob Storage) umożliwia wydajne zbiorcze pozyskiwania danych.
-
-* Wprowadzania danych przez usługę zarządzania danych Eksploratora danych usługi Azure (o wysokiej przepływności i niezawodne pozyskiwanie)
-
-  * [**Batch pozyskiwania** ](https://docs.microsoft.com/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (udostępnione przez zestaw SDK): klient przesyła dane do usługi Azure Blob storage (wyznaczony przez usługę zarządzania danych Eksplorator danych platformy Azure) i wysyła powiadomienie do kolejki usługi Azure. Jest to zalecana technika mocno obciążające, niezawodne i tanie pozyskiwania.
 
 **Opóźnienie różnych metod**:
 
@@ -125,7 +127,7 @@ Mapowanie schematu pomaga w sposób deterministyczny powiązać pola danych źr�
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Szybki Start: Przesyłanie danych z Centrum zdarzeń do Eksploratora danych usługi Azure](ingest-data-event-hub.md)
+[Szybki start: pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer](ingest-data-event-hub.md)
 
-[Szybki Start: Pozyskiwanie danych przy użyciu biblioteki Python Eksploratora danych platformy Azure](python-ingest-data.md)
+[Szybki start: pozyskiwanie danych przy użyciu biblioteki języka Python w usłudze Azure Data Explorer](python-ingest-data.md)
 

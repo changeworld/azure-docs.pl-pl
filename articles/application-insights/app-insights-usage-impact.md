@@ -3,7 +3,7 @@ title: Usługi Azure Application Insights użycia wpływ | Dokumentacja firmy Mi
 description: Analizowanie jak różne właściwości potencjalnie wpływu na prędkość konwersji dla części aplikacji.
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: NumberByColors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,14 +11,15 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/25/2018
-ms.reviewer: daviste
-ms.author: mbullwin
-ms.openlocfilehash: 85547bd8528c4d5d4a627750bb5334f05ed231b1
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.reviewer: mbullwin
+ms.pm_owner: daviste;NumberByColors
+ms.author: daviste
+ms.openlocfilehash: 14f61d2cdb85b20d15d088844d12206fe57c2dc9
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024319"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139411"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Analiza wpływu za pomocą usługi Application Insights
 
