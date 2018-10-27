@@ -16,12 +16,12 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e74d2cbada1d433bdaf4ebc905e88d66444b2e2f
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 35e6cd988a0532221d88b22cdd51fc29d7f17ba9
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078209"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158758"
 ---
 # <a name="id-tokens"></a>Tokeny identyfikatorów
 
@@ -74,6 +74,7 @@ Wyświetl ten token przykładowe v2.0 w [jwt.ms](https://jwt.ms/#id_token=eyJ0eX
 |`at_hash`| Ciąg |Skrót tokenu znajduje się w identyfikatorze dostęp tokenów, tylko, gdy tokenu Identyfikacyjnego wystawione przy użyciu tokenu dostępu OAuth 2.0. Może służyć do weryfikowania autentyczności tokenu dostępu. Aby uzyskać szczegółowe informacje dotyczące przeprowadzania tej weryfikacji, zobacz [specyfikacją z OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html). |
 |`aio` | Nieprzezroczysty ciąg | Oświadczenie wewnętrzny używany przez usługę Azure AD do rejestrowania danych do ponownego wykorzystania tokenu. Mają być ignorowane.|
 |`preferred_username` | Ciąg | Nazwa głównej reprezentuje użytkownika. Może on być adres e-mail, numer telefonu lub ogólny nazwy użytkownika bez określonego formatu. Jego wartość jest modyfikowalna i mogą ulec zmianie wraz z upływem czasu. Ponieważ jest ona modyfikowalna, ta wartość nie należy do podejmowania decyzji dotyczących autoryzacji. `profile` Zakres jest wymagany w celu odbierania tego oświadczenia.|
+|`email` | Ciąg | `email` Oświadczenia ma domyślnie dla konta gościa, które mają adres e-mail.  Aplikacja może żądać oświadczenie adresu e-mail dla zarządzanych użytkowników (te, z tą samą dzierżawą jako zasób) przy użyciu `email` [opcjonalnego roszczenia](active-directory-optional-claims.md).  Dla punktu końcowego v2.0 aplikacji mogą również żądać `email` zakresu OpenID Connect — nie trzeba używać zarówno opcjonalnego roszczenia oraz zakres, aby uzyskać oświadczenia.  Oświadczenie adresu e-mail obsługuje tylko adresy poczty z informacji o profilu użytkownika. |
 |`name` | Ciąg | `name` Oświadczeń zawiera zrozumiałą wartość, która identyfikuje podmiotu tokenu. Wartość nie musi być unikatowy, jest ona modyfikowalna i został zaprojektowany tak, ma być używany tylko w celach wyświetlania. `profile` Zakres jest wymagany w celu odbierania tego oświadczenia. |
 |`nonce`| Ciąg | Identyfikator jednorazowy odpowiada parametrowi uwzględnione w oryginalnym / autoryzować żądania przez dostawcę tożsamości. Jeśli nie jest zgodny, aplikacja powinna odrzucenie tokena. |
 |`oid` | Ciąg identyfikatora GUID | Niemodyfikowalny identyfikator obiektu w Microsoft systemu tożsamości, w tym przypadku konta użytkownika. Ten identyfikator unikatowo identyfikuje użytkownika w aplikacjach — dwóch różnych aplikacji, rejestrowanie w ten sam użytkownik otrzyma taką samą wartość w `oid` oświadczenia. Program Microsoft Graph zwróci ten identyfikator jako `id` właściwość dla danego konta użytkownika. Ponieważ `oid` wielu aplikacjom do skorelowania użytkowników, `profile` zakres jest wymagany w celu odbierania tego oświadczenia. Należy pamiętać, że jeden użytkownik istnieje w wielu dzierżawach, użytkownik będzie zawierać identyfikator inny obiekt, w każdej dzierżawy — są traktowane jako różne konta, nawet jeśli użytkownik loguje się do każdego konta przy użyciu tych samych poświadczeń. |

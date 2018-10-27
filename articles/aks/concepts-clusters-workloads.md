@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: fb428e63be54688744bcdb022ba276a957f8aee1
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 1b0b3d0db2067a492905d8f828934f0b63fb8f54
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648774"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155987"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes podstawowe pojęcia dotyczące usługi Azure Kubernetes Service (AKS)
 
@@ -71,6 +71,27 @@ Rozmiar maszyny Wirtualnej platformy Azure dla węzłów definiuje liczbę proce
 W usłudze AKS obraz maszyny Wirtualnej dla węzłów w klastrze opiera się obecnie w systemie Ubuntu Linux. Podczas tworzenia klastra usługi AKS, lub skalować liczbę węzłów, platforma Azure tworzy żądana liczba maszyn wirtualnych i konfiguruje je. Brak ręcznej konfiguracji służących do wykonywania.
 
 Jeśli musisz użyć innego hosta, system operacyjny, środowisko uruchomieniowe kontenera, lub Uwzględnij niestandardowe pakiety, możesz wdrożyć własnego klastra Kubernetes za pomocą [acs-engine][acs-engine]. Poprzednie `acs-engine` zwalnia funkcji przed i podać opcje konfiguracji są oficjalnie obsługiwane w klastrach usługi AKS. Na przykład, jeśli chcesz używać kontenerów Windows lub innej niż platformy Docker kontener środowiska uruchomieniowego, można użyć `acs-engine` pozwalają skonfigurować i wdrożyć klaster usługi Kubernetes, który spełnia Twoje wymagania bieżącej.
+
+### <a name="resource-reservations"></a>Rezerwacji zasobu
+
+Nie trzeba zarządzać podstawowych składników platformy Kubernetes w każdym węźle, takich jak *agenta kubelet*, *serwera proxy klastra kubernetes w usłudze*, i *klastra kubernetes w usłudze dns*, ale niektóre z dostępnych używają oni zasoby obliczeniowe. Aby zachować węzeł wydajności i funkcjonalności, następujące zasoby obliczeniowe są zarezerwowane w każdym węźle:
+
+- **Procesor CPU** — 60ms
+- **Pamięć** -20% maksymalnie 4 GiB
+
+Te zastrzeżenia oznacza, że ilość dostępnych procesora CPU i pamięci dla aplikacji może pojawić się mniej niż sam węzeł zawiera. W przypadku ograniczeń zasobów z powodu liczby aplikacje, których te zastrzeżenia upewnij się, procesora CPU, a pamięć pozostają dostępne dla podstawowych składników platformy Kubernetes. Nie można zmienić rezerwacji zasobów.
+
+Na przykład:
+
+- **Standardowa DS2, wersja 2** rozmiar węzła zawiera 2 procesorów vCPU i 7 GiB pamięci
+    - 20% 7 pamięci GiB = 1,4 GiB
+    - Daje w sumie *(7-1.4) = 5.6 GiB* pamięci dostępnej dla węzła
+    
+- **Standardowa E4s v3** rozmiar węzła zawiera 4 procesory vCPU i 32 GiB pamięci
+    - 20% pamięci 32 GiB = 6.4 GiB, ale AKS tylko rezerwuje maksymalnie 4 GiB
+    - Daje w sumie *(32-4) = 28 GiB* jest dostępna dla węzła
+    
+Węzeł podstawowy system operacyjny wymaga również pewien stopień zasobów Procesora i pamięci, aby przeprowadzić jego własnej funkcji podstawowych.
 
 ### <a name="node-pools"></a>Pule węzłów
 

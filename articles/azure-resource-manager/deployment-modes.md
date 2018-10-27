@@ -9,18 +9,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/07/2018
+ms.date: 10/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: c8c6c5499e1cea04bc5bdffbb5c07b53b96182e2
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 4d1b27c9b1694f987ea7461c16899f3e5ecb84d2
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42060220"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140997"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Tryby wdrażania usługi Azure Resource Manager
-Podczas wdrażania zasobów, należy określić, że wdrożenie jest aktualizację przyrostową lub ukończenia aktualizacji.  Główną różnicą między tymi dwoma trybami jest sposób obsługiwania przez istniejące zasoby w grupie zasobów, które nie są w szablonie usługi Resource Manager.
-Domyślny tryb jest przyrostowy.
+Podczas wdrażania zasobów, należy określić, że wdrożenie jest aktualizację przyrostową lub ukończenia aktualizacji.  Główną różnicą między tymi dwoma trybami jest sposób obsługiwania przez istniejące zasoby w grupie zasobów, które nie są w szablonie usługi Resource Manager. Domyślny tryb jest przyrostowy.
 
 ## <a name="incremental-and-complete-deployments"></a>Przyrostowe i kompletne wdrożeń
 Podczas wdrażania zasobów:
@@ -28,19 +27,21 @@ Podczas wdrażania zasobów:
 * W trybie, Menedżer zasobów **usuwa** zasoby, które istnieją w grupie zasobów, ale nie są określone w szablonie. 
 * W trybie przyrostowym, Menedżer zasobów **pozostawia niezmienione** zasoby, które istnieją w grupie zasobów, ale nie są określone w szablonie.
 
-Dla obu trybów próbuje aprowizację wszystkich zasobów określone w szablonie usługi Resource Manager. Jeśli zasób już istnieje w grupie zasobów, a jego ustawienia są bez zmian, wykonanie tej operacji skutkuje bez zmian. Jeśli zmienisz ustawienia dla zasobu, zasób był zaopatrzony te nowe ustawienia. Jeśli próbujesz zaktualizować lokalizację i typ istniejącego zasobu, wdrożenie zakończy się niepowodzeniem z powodu błędu. Zamiast tego należy wdrożyć nowy zasób z lokalizacją lub typu, należy.
+Dla obu trybów usługi Resource Manager spróbuje utworzyć wszystkie zasoby, które określono w szablonie. Jeśli zasób już istnieje w grupie zasobów, a jego ustawienia są bez zmian, wykonanie tej operacji skutkuje bez zmian. Po zmianie wartości właściwości zasobu, zasób jest aktualizowana o te nowe wartości. Jeśli próbujesz zaktualizować lokalizację i typ istniejącego zasobu, wdrożenie zakończy się niepowodzeniem z powodu błędu. Zamiast tego należy wdrożyć nowy zasób z lokalizacją lub typu, należy.
+
+Podczas ponownego wdrażania zasobów w trybie przyrostowym, należy określić wszystkie wartości właściwości dla zasobu, a nie tylko te, które aktualizujesz. Jeśli nie określisz niektórych właściwości usługi Resource Manager interpretuje update jako zastąpienie tych wartości.
 
 ## <a name="example-result"></a>Przykład wyniku
 
 Aby zilustrować różnica między trybami przyrostowe i kompletne, rozważmy następujący scenariusz.
 
-**Istniejącą grupę zasobów** zawiera:
+**Grupa zasobów** zawiera:
 
 * Zasobu A
 * Zasób B
 * Zasób języka C
 
-**Szablon** definiuje:
+**Szablon** zawiera:
 
 * Zasobu A
 * Zasób B

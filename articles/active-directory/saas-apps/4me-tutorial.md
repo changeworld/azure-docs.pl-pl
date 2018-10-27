@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2018
 ms.author: jeedes
-ms.openlocfilehash: c9134ceebca696ed2b3376a69e26c2ea06f4f0f6
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: c33edf13a8bcafd4a6c3d4885553fc856ec941d8
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506206"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158129"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-4me"></a>Samouczek: Integracja usługi Azure Active Directory z 4me
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą 4me, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - 4me logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Aby skonfigurować integrację 4me w usłudze Azure AD, należy dodać 4me z gal
 
 **Aby dodać 4me z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -177,7 +177,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     c. W obszarze **SAML** sekcji w **adres URL logowania jednokrotnego SAML** pola tekstowego, Wklej wartość **SAML pojedynczego logowania jednokrotnego adres URL usługi**, który skopiowano z witryny Azure portal.
 
-    d. W **odcisk palca certyfikatu** pola tekstowego, Wklej **odcisk PALCA** wartość oddzielone dwukropkiem w kolejności duplets (AA:BB:CC:DD:EE:FF:GG:HH:II), które zostały skopiowane z witryny Azure portal.
+    d. W **odcisk palca certyfikatu** pola tekstowego, Wklej **odcisk PALCA** wartość oddzieloną dwukropkiem w kolejności duplets (AA:BB:CC:DD:EE:FF:GG:HH:II), które zostały skopiowane z witryny Azure portal.
 
     e. Kliknij pozycję **Zapisz**.
 
@@ -218,7 +218,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w 4me. 4me obsługę just-in-time, który jest domyślnie włączona. Brak elementu akcji dla Ciebie w tej sekcji. Nowy użytkownik jest tworzony podczas próby dostępu 4me, jeśli go jeszcze nie istnieje.
 
 >[!Note]
->Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej 4me](mailto:support@4me.com).
+>Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej 4me](mailto:support@4me.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

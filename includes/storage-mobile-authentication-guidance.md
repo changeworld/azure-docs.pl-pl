@@ -1,40 +1,53 @@
-## <a name="configure-your-application-to-access-azure-storage"></a>Konfigurowanie aplikacji dostęp do magazynu Azure
-Istnieją dwa sposoby uwierzytelniania aplikacji dostępu do usług magazynu:
+---
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: tamram
+ms.openlocfilehash: 6911e06dc023027ab32b99387b9f7d3f5e708f86
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50166449"
+---
+## <a name="configure-your-application-to-access-azure-storage"></a>Konfigurowanie aplikacji dostępu do magazynu Azure
+Istnieją dwa sposoby uwierzytelniania aplikacji na dostęp do usług magazynu:
 
-* Klucz udostępniony: Użyj udostępnionych klucza tylko do celów testowych
-* Udostępnionych podpis dostępu (SAS): Użyj sygnatury dostępu Współdzielonego dla aplikacji produkcyjnych
+* Klucz współużytkowany: Użyj udostępnionego klucza tylko do celów testowych
+* Udostępnionego podpis dostępu (SAS): Użyj sygnatury dostępu Współdzielonego dla aplikacji produkcyjnych
 
 ### <a name="shared-key"></a>Klucz wspólny
-Uwierzytelniania klucza współużytkowanego oznacza, że aplikacja będzie używać nazwę konta i klucz konta dostępu do usług magazynu. Na potrzeby szybkiego przedstawiająca sposób używania tej biblioteki firma Microsoft będzie używać uwierzytelniania klucz udostępniony w tym wprowadzenie.
+Uwierzytelnianie za pomocą udostępnionego klucza oznacza, że aplikacja będzie używać swojego konta i klucz konta dostępu do usług magazynu. Na potrzeby szybkiego przedstawiający sposób użycia tej biblioteki firma Microsoft będzie używać uwierzytelniania klucza wspólnego, w tym wprowadzenie.
 
 > [!WARNING] 
-> **Klucz wstępny uwierzytelniania należy używać tylko do celów testowych!** Nazwa konta i klucz konta, które zapewniają dostęp Pełna odczytu/zapisu do skojarzonego konta magazynu, będą dystrybuowane do wszystkich osób, które pliki do pobrania aplikacji. Jest to **nie** jest dobrą rozwiązaniem, ponieważ istnieje ryzyko, że po klucz szkodzi niezaufani klienci.
+> **Tylko do celów testowych należy użyć uwierzytelniania klucza wspólnego!** Nazwa konta i klucz konta, które udzielić Pełny odczyt/zapis dostępu do skojarzonego konta magazynu, zostanie przekazany do każdej osoby, która pobiera aplikację. Jest to **nie** jest dobrą rozwiązaniem, ponieważ istnieje ryzyko, że masz klucz zagrozić niezaufani klienci.
 > 
 > 
 
-Podczas korzystania z uwierzytelniania klucza wspólnego, utworzysz [ciąg połączenia](../articles/storage/common/storage-configure-connection-string.md). Parametry połączenia obejmuje:  
+Korzystając z uwierzytelniania klucza wspólnego, utworzysz [parametry połączenia](../articles/storage/common/storage-configure-connection-string.md). Parametry połączenia składa się z:  
 
-* **DefaultEndpointsProtocol** — możesz wybrać HTTP lub HTTPS. Jednak przy użyciu protokołu HTTPS zaleca się.
-* **Nazwa konta** — nazwa konta magazynu
-* **Klucz konta** — na [Azure Portal](https://portal.azure.com), przejdź do swojego konta magazynu i kliknij **klucze** ikonę, aby znaleźć te informacje.
-* (Opcjonalnie) **EndpointSuffix** — służy do usług magazynu w regionach z innym punktem końcowym sufiksów, na przykład chińskiej wersji platformy Azure lub zarządzania Azure.
+* **DefaultEndpointsProtocol** — możesz wybrać HTTP lub HTTPS. Jednak przy użyciu protokołu HTTPS zdecydowanie zaleca się.
+* **Nazwa konta** -nazwa konta magazynu
+* **Klucz konta** — na [witryny Azure Portal](https://portal.azure.com), przejdź do swojego konta magazynu i kliknij **klucze** ikonę, aby znaleźć te informacje.
+* (Opcjonalnie) **EndpointSuffix** — używany do usług magazynu w regionach z innym punktem końcowym sufiksy, takich jak Azure — Chiny lub Azure rządów.
 
-Oto przykład parametrów połączenia przy użyciu klucza wspólnego uwierzytelniania:
+Oto przykład parametrów połączenia przy użyciu uwierzytelniania klucza wspólnego:
 
 `"DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here"`
 
 ### <a name="shared-access-signatures-sas"></a>Sygnatury dostępu współdzielonego (SAS)
-Dla aplikacji mobilnej zalecaną metodą uwierzytelniania żądania przez klienta z usługą Azure Storage jest użycie udostępnionych podpis dostępu (SAS). Sygnatury dostępu Współdzielonego umożliwia udzielenie dostępu klienta do zasobu podany okres czasu, z określonym zestawem uprawnień.
-Jako właściciel konta magazynu należy wygenerować sygnaturę dostępu Współdzielonego dla klientów mobilnych korzystać. Aby wygenerować sygnatury dostępu Współdzielonego, prawdopodobnie należy do zapisania oddzielne usługa, która generuje SAS zostać rozesłany do klientów. Do celów testowych, można użyć [Eksploratora usługi Microsoft Azure Storage](http://storageexplorer.com) lub [Azure Portal](https://portal.azure.com) wygenerować sygnaturę dostępu Współdzielonego. Podczas tworzenia sygnatury dostępu Współdzielonego, można określić przedział czasu, w którym sygnatury dostępu Współdzielonego jest prawidłowy i uprawnienia, które sygnatury dostępu Współdzielonego nadaje się do klienta.
+W przypadku aplikacji mobilnych zalecaną metodą uwierzytelnić żądania przez klienta usługi Azure Storage jest przy użyciu sygnatury dostępu współdzielonego (SAS). Sygnatury dostępu Współdzielonego umożliwia udzielenie dostępu klienta do zasobu w określonym przedziale czasu, z określonym zestawem uprawnień.
+Jako właściciel konta magazynu należy wygenerować sygnaturę dostępu Współdzielonego dla klientów mobilnych korzystać. Aby wygenerować sygnaturę dostępu Współdzielonego, prawdopodobnie należy zapisać osobną usługą, która generuje sygnaturę dostępu Współdzielonego do dystrybucji do klientów. Do celów testowych możesz użyć [Microsoft Azure Storage Explorer](http://storageexplorer.com) lub [witryny Azure Portal](https://portal.azure.com) aby wygenerować sygnaturę dostępu Współdzielonego. Podczas tworzenia sygnatury dostępu Współdzielonego, można określić interwał czasu, przez który sygnatura dostępu Współdzielonego jest prawidłowy oraz uprawnienia, które sygnatury dostępu Współdzielonego nadaje się do klienta.
 
-Poniższy przykład przedstawia sposób używania Eksploratora magazynu Microsoft Azure można wygenerować sygnaturę dostępu Współdzielonego.
+Poniższy przykład pokazuje, jak wygenerować sygnaturę dostępu Współdzielonego za pomocą Eksploratora usługi Microsoft Azure Storage.
 
-1. Jeśli nie jest jeszcze, [Zainstaluj Eksplorator magazynu Microsoft Azure](http://storageexplorer.com)
+1. Jeśli jeszcze nie, [Zainstaluj oprogramowanie Microsoft Azure Storage Explorer](http://storageexplorer.com)
 2. Nawiąż połączenie ze swoją subskrypcją.
-3. Kliknij na koncie magazynu, a następnie kliknij kartę "Akcje" w lewym dolnym rogu. Kliknij przycisk "Uzyskaj sygnaturę dostępu współdzielonego" w celu wygenerowania "Parametry połączenia" dla sieci SAS.
-4. Oto przykład parametrów połączenia SAS że przyznaje uprawnienia odczytu i zapisu na poziomie usługi, kontenera i obiektu blob usługi konta magazynu.
+3. Kliknij na swoim koncie magazynu, a następnie kliknij kartę "Akcje" w lewym dolnym rogu. Kliknij przycisk "Uzyskaj sygnaturę dostępu współdzielonego" w celu wygenerowania ciąg"połączenia" dla Twojego sygnatury dostępu Współdzielonego.
+4. Oto przykład parametrów połączenia sygnatury dostępu Współdzielonego, przyznaje uprawnienia odczytu i zapisu na poziomie usługi, kontenerów i obiektów usługi obiektów blob konta magazynu.
    
    `"SharedAccessSignature=sv=2015-04-05&ss=b&srt=sco&sp=rw&se=2016-07-21T18%3A00%3A00Z&sig=3ABdLOJZosCp0o491T%2BqZGKIhafF1nlM3MzESDDD3Gg%3D;BlobEndpoint=https://youraccount.blob.core.windows.net"`
 
-Jak widać, korzystając z sygnatury dostępu Współdzielonego, że nie udostępnianie klucz konta w aplikacji. Dowiedz się więcej o sygnatury dostępu Współdzielonego i najlepsze rozwiązania dotyczące przy użyciu sygnatury dostępu Współdzielonego przez wyewidencjonowanie [sygnatury dostępu współdzielonego: opis modelu sygnatur dostępu Współdzielonego](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Jak widać, korzystając z sygnatury dostępu Współdzielonego, klucz konta jest ujawniany nie w aplikacji. Dowiedz się więcej na temat sygnatury dostępu Współdzielonego i najlepsze rozwiązania dotyczące przy użyciu sygnatury dostępu Współdzielonego, sprawdzając [sygnatur dostępu współdzielonego: opis modelu sygnatur dostępu Współdzielonego](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md).
 

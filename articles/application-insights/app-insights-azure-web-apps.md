@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/05/2017
+ms.date: 10/25/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5743408b000dd7497a10f27db2a4ea9d87082b8d
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 91b050c4e1ca37c0af208d6df1ce4f8272235294
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091799"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139775"
 ---
 # <a name="monitor-azure-web-app-performance"></a>Monitorowanie wydajności aplikacji internetowej platformy Azure
 W witrynie [Azure Portal](https://portal.azure.com) możesz skonfigurować monitorowanie wydajności [aplikacji internetowych platformy Azure](../app-service/app-service-web-overview.md). [Usługa Azure Application Insights](app-insights-overview.md) umożliwia instrumentację aplikacji w celu wysyłania danych telemetrii do usługi Application Insights, gdzie są one przechowywane i analizowane. W usłudze tej można używać wykresów metryki i narzędzi wyszukiwania do ułatwiania diagnozowania problemów, zwiększania wydajności i oceny użycia.
@@ -33,24 +33,32 @@ Możesz skonfigurować monitorowanie, instrumentując aplikację na jeden z dwó
 Jeśli już masz uruchomioną aplikację internetową na platformie Azure, otrzymujesz pewne informacje monitorowania: żądania i współczynniki błędów. Dodaj usługę Application Insights, aby uzyskać więcej informacji, na przykład czasy odpowiedzi, monitorowanie wywołań dla zależności, inteligentne wykrywanie i zaawansowany język zapytań usługi Log Analytics. 
 
 1. **Wybierz usługę Application Insights** w Panelu sterowania platformy Azure dla aplikacji internetowej.
-   
-    ![W obszarze Monitorowanie wybierz pozycję Application Insights](./media/app-insights-azure-web-apps/05-extend.png)
-   
-   * Wybierz opcję tworzenia nowego zasobu, chyba że zasób usługi Application Insights dla tej aplikacji został już skonfigurowany inną drogą.
-2. **Zastosuj instrumentację aplikacji internetowej** po zainstalowaniu usługi Application Insights. 
-   
-    ![Instrumentacja aplikacji internetowej](./media/app-insights-azure-web-apps/restart-web-app-for-insights.png)
+
+    ![W obszarze Ustawienia wybierz pozycję Application Insights](./media/app-insights-azure-web-apps/settings-app-insights.png)
+
+   * O ile nie jest już skonfigurowany zasób usługi Application Insights dla tej aplikacji, należy wybrać opcję utworzenia nowego zasobu. 
+
+    > [!NOTE]
+    > Po kliknięciu **OK** do utworzenia nowego zasobu, zostanie wyświetlony monit do **Zastosuj ustawienia monitorowania**. Wybieranie **Kontynuuj** połączy nowy zasób usługi Application Insights do aplikacji sieci web, wykonując będzie również **wyzwolić ponowne uruchomienie aplikacji sieci web**. 
+
+    ![Instrumentacja aplikacji internetowej](./media/app-insights-azure-web-apps/create-resource.png)
+
+2. Wybierz utworzone zasobu **aktualizacja rozszerzenia usługi Application Insights dla aplikacji sieci web i wyboru** aby upewnić się, że rozszerzenie jest aktualne.
+
+     ![Sprawdź i zaktualizuj rozszerzenie witryny](./media/app-insights-azure-web-apps/check-and-update.png)
+
+3. **Zastosuj instrumentację aplikacji internetowej** po zainstalowaniu usługi Application Insights.
 
    **Włącz monitorowanie po stronie klienta** dla telemetrii widoku strony i użytkownika.
 
    * Wybierz kolejno pozycje Ustawienia > Ustawienia aplikacji
-   * W obszarze Ustawienia aplikacji dodaj nową parę klucz-wartość: 
-   
-    Klucz: `APPINSIGHTS_JAVASCRIPT_ENABLED` 
-    
+   * W obszarze Ustawienia aplikacji dodaj nową parę klucz-wartość:
+
+    Klucz: `APPINSIGHTS_JAVASCRIPT_ENABLED`
+
     Wartość:`true`
    * **Zapisz** ustawienia i **ponownie uruchom** aplikację.
-3. **Monitoruj aplikację**.  [Eksplorowanie danych](#explore-the-data).
+4. Eksplorowanie danych monitorowania aplikacji, wybierając **ustawienia** > **usługi Application Insights** > **wyświetlić więcej szczegółowych informacji w aplikacji**.
 
 W razie potrzeby możesz później utworzyć aplikację za pomocą usługi Application Insights.
 
@@ -63,14 +71,14 @@ Usługa Application Insights może zapewnić bardziej szczegółową telemetrię
 
 1. **W programie Visual Studio** (2013 Update 2 lub nowszym) skonfiguruj usługę Application Insights dla projektu.
 
-    Kliknij prawym przyciskiem myszy projekt sieci Web i wybierz pozycje **Dodaj > Application Insights** lub **Konfiguruj usługę Application Insights**.
-   
+    Kliknij prawym przyciskiem myszy projekt sieci web, a następnie wybierz pozycję **Dodaj > Application Insights** lub **projektu** > **usługi Application Insights**  >  **Skonfiguruj usługę Application Insights**.
+
     ![Kliknij prawym przyciskiem myszy projekt sieci Web i pozycję Dodaj lub Konfiguruj usługę Application Insights](./media/app-insights-azure-web-apps/03-add.png)
-   
+
     Jeśli pojawi się prośba o zalogowanie, użyj poświadczeń konta platformy Azure.
-   
+
     Operacja ma dwa skutki:
-   
+
    1. Tworzy zasób usługi Application Insights na platformie Azure, gdzie telemetria jest przechowywana, analizowana i wyświetlana.
    2. Dodaje pakiet aplikacji NuGet usługi Application Insights do kodu (jeśli jeszcze go tam nie ma) i konfiguruje go do wysyłania telemetrii do zasobu platformy Azure.
 2. **Przetestuj telemetrię**, uruchamiając aplikację na komputerze deweloperskim (F5).
@@ -79,29 +87,6 @@ Usługa Application Insights może zapewnić bardziej szczegółową telemetrię
 *Jak przełączyć się na wysyłanie do innego zasobu usługi Application Insights?*
 
 * W programie Visual Studio kliknij prawym przyciskiem myszy projekt, wybierz pozycję **Konfiguruj usługę Application Insights**, a następnie wybierz żądany zasób. Uzyskasz opcję tworzenia nowego zasobu. Ponownie skompiluj i wdróż.
-
-## <a name="explore-the-data"></a>Eksplorowanie danych
-1. W bloku usługi Application Insights panelu sterowania aplikacji internetowej pojawi się obszar Metryki na żywo, który pokazuje żądania i błędy po upływie sekundy lub dwóch od chwili ich wystąpienia. Jest to bardzo przydatny widok w przypadku ponownego publikowania aplikacji — natychmiast zobaczysz wszelkie problemy.
-2. Kliknij elementy, aby przejść do pełnego zasobu usługi Application Insights.
-
-    ![Kliknij elementy](./media/app-insights-azure-web-apps/view-in-application-insights.png)
-
-    Możesz tam przejść również bezpośrednio z nawigacji zasobów platformy Azure.
-
-1. Kliknij elementy któregokolwiek z wykresów, aby uzyskać więcej szczegółów:
-   
-    ![W bloku przeglądu usługi Application Insights kliknij wykres](./media/app-insights-azure-web-apps/07-dependency.png)
-   
-    Możesz [dostosować bloki metryk](app-insights-metrics-explorer.md).
-2. Klikaj dalej elementy, aby zobaczyć poszczególne zdarzenia i ich właściwości:
-   
-    ![Kliknij typ zdarzenia, aby otworzyć wyszukiwanie filtrowane według danego typu](./media/app-insights-azure-web-apps/08-requests.png)
-   
-    Zwróć uwagę na link „...”, aby otworzyć wszystkie właściwości.
-   
-    Możesz [dostosować wyszukiwania](app-insights-diagnostic-search.md).
-
-Aby skorzystać z bardziej zaawansowanego wyszukiwania w ramach telemetrii, użyj [języka zapytań usługi Log Analytics](app-insights-analytics-tour.md).
 
 ## <a name="more-telemetry"></a>Dalsze funkcje telemetrii
 

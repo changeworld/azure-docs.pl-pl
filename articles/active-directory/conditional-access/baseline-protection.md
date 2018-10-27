@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: e7e92c2f3564591133816baaaf758d72b083330b
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 585a4968672c8bcab0efb988d556e447983dfc5a
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958554"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158707"
 ---
 # <a name="what-is-baseline-protection-preview"></a>Co to jest ochrona linii bazowej (wersja zapoznawcza)?  
 
@@ -51,7 +51,7 @@ Użytkownicy z dostępem do kont uprzywilejowanych mają nieograniczony dostęp 
 
 ![Usługa Azure Active Directory](./media/baseline-protection/01.png)
 
-Te zasady linii bazowej zapewnia możliwość wykluczenia użytkowników i grup. Możesz chcieć wykluczyć jeden *[konta administracyjnego dostępu awaryjnego](../users-groups-roles/directory-emergency-access.md)* zapewnienie dzierżawy nie są zablokowane.
+Ta zasada linii bazowej zapewnia opcji, aby wykluczyć użytkowników. Możesz chcieć wykluczyć jeden *[konta administracyjnego dostępu awaryjnego](../users-groups-roles/directory-emergency-access.md)* zapewnienie dzierżawy nie są zablokowane.
 
 
 ## <a name="enable-a-baseline-policy"></a>Włącz zasady linii bazowej 

@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: alkohli
-ms.openlocfilehash: f70cd5de29cc3050142dfff905acae2008dab115
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 6978360769ba350d85a06116bfee6db9f80b0607
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379126"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157364"
 ---
 # <a name="azure-data-box-gateway-system-requirements-preview"></a>Wymagania systemowe bramy pola danych platformy Azure (wersja zapoznawcza)
 
@@ -56,7 +56,7 @@ Poniżej przedstawiono listę obsługiwanych systemów operacyjnych dla klientó
 
 ## <a name="supported-storage-accounts"></a>Konta magazynu obsługiwane
 
-Poniżej przedstawiono listę typów magazynu obsługiwane dla bramy pola danych.
+Poniżej przedstawiono listę kont magazynu obsługiwanych dla bramy pola danych.
 
 | **Konto magazynu** | **Uwagi** |
 | --- | --- |

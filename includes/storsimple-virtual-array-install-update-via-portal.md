@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: b9f5e5d0b774d3875999fa5337f41040c4217c8b
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165610"
+---
 <!--author=alkohli last changed: 11/07/16 -->
 
 #### <a name="to-install-updates-via-the-azure-portal"></a>Aby zainstalować aktualizacje za pośrednictwem witryny Azure Portal
@@ -50,6 +63,6 @@
 
     ![aktualizowanie urządzenia](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate16m.png)
 
-9. Po pomyślnym zainstalowaniu aktualizacji, zostanie wyświetlony komunikat w tym celu w bloku aktualizacji urządzenia. Wersja oprogramowania również jest zmieniana na **10.0.10288.0**. 
+9. Po pomyślnym zainstalowaniu aktualizacji, zobaczysz komunikat ostrzegawczy w bloku aktualizacji urządzenia. Wersja oprogramowania zmienia się również do **10.0.10288.0**. 
 
     ![aktualizowanie urządzenia](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate17m.png)

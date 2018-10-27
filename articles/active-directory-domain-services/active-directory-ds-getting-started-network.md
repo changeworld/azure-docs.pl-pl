@@ -3,7 +3,7 @@ title: 'Usługi Azure Active Directory Domain Services: Wprowadzenie | Dokumenta
 description: Włączanie usługi Azure Active Directory Domain Services w witrynie Azure portal
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.author: maheshu
-ms.openlocfilehash: c167f40e09ac877d00d348285383106fc5ba41bc
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: 70dee552ec575f4969593eac4e91fdbb18b426f1
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503914"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156191"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Włączanie usługi Azure Active Directory Domain Services w witrynie Azure portal
 

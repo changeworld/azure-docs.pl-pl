@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: abef93d30ff9cdf1ecdbbfd450d9f96e6352a513
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50166243"
+---
 <!--author=alkohli last changed: 06/22/17-->
 
 #### <a name="to-create-a-volume-container"></a>Aby utworzyć kontener woluminów
@@ -20,7 +33,7 @@
       Jeśli masz informacje o użyciu przepustowości, możesz przydzielić przepustowość zgodnie z harmonogramem, określając wartość **Wybierz szablon przepustowości**. Aby zapoznać się z procedurą krok po kroku, przejdź do tematu dotyczącego [dodawania szablonu przepustowości](../articles/storsimple/storsimple-8000-manage-bandwidth-templates.md#add-a-bandwidth-template).
 
       ![Blok kontenera woluminów](./media/storsimple-8000-create-volume-container/createvolumecontainer6b.png)
-   7. Kliknij przycisk **Utwórz**.
+   7. Kliknij pozycję **Utwórz**.
 
         ![Blok kontenera woluminów](./media/storsimple-8000-create-volume-container/createvolumecontainer6.png)
    

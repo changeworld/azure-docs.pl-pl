@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: a08fbb90d1148396dbcf3960536568d61e5f04b0
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: b5f5fa74dca664d31c19055fadd9b66f84627b67
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50098014"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157109"
 ---
 # <a name="group-policy-and-mdm-settings"></a>Ustawienia zasad grupy i zarządzania urządzeniami Przenośnymi
 Użyj tych zasad grupy i ustawienia zarządzania (urządzeniami przenośnymi MDM) dla urządzeń przenośnych tylko na urządzeniach należących do firmy, ponieważ te zasady są stosowane do całego urządzenia użytkownika. Stosowanie zasad zarządzania urządzeniami Przenośnymi, aby wyłączyć synchronizację ustawień do użytku osobistego, urządzenia należące do użytkownika zostanie negatywny wpływ na korzystanie z tego urządzenia. Ponadto innych kont użytkowników na urządzeniu będą również mieć wpływ na przez zasady.
@@ -38,7 +38,9 @@ Ustawienia zasad zarządzania urządzeniami Przenośnymi dotyczą zarówno syste
 | Zezwalaj na synchronizację ustawień |Umożliwia użytkownikom przechodzą Windows ustawienia i dane aplikacji; Wyłączenie tych zasad spowoduje wyłączenie synchronizacji, a także kopie zapasowe na urządzeniach przenośnych |
 
 ## <a name="group-policy-settings"></a>Ustawienia zasad grupy
-Ustawienia zasad grupy zastosować do urządzeń z systemem Windows 10, które są przyłączone do domeny usługi Active Directory. Uwzględniono również w starszych ustawień wyświetlanych do zarządzania ustawieniami synchronizacji, ale nie działają dla przedsiębiorstw stanu mobilnych dla systemu Windows 10, które są oznaczane przy użyciu 'nie używaj"w opisie.
+Ustawienia zasad grupy są stosowane do urządzeń z systemem Windows 10, które są przyłączone do domeny usługi Active Directory. Uwzględniono również w starszych ustawień wyświetlanych do zarządzania ustawieniami synchronizacji, ale nie działają dla przedsiębiorstw stanu mobilnych dla systemu Windows 10, które są oznaczane przy użyciu 'nie używaj"w opisie.
+
+Te ustawienia znajdują się na: `Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
 
 | Name (Nazwa) | Opis |
 | --- | --- |

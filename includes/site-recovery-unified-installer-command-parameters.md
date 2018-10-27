@@ -1,3 +1,16 @@
+---
+author: rayne-wiselman
+ms.service: site-recovery
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: raynew
+ms.openlocfilehash: 4b0c8ad227b9aa8a0692ff453c3751aaa38a4849
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50166477"
+---
 |Nazwa parametru| Typ | Opis| Możliwe wartości|
 |-|-|-|-|
 | /ServerMode|Obowiązkowy|Określa, czy mają zostać zainstalowane oba serwery, konfiguracji i przetwarzania, czy tylko serwer przetwarzania|CS<br>PS|

@@ -3,7 +3,7 @@ title: Włączanie protokołu Secure LDAP (LDAPS) w usługach domenowych Azure A
 description: Włączanie protokołu Secure LDAP (LDAPS) dla domeny zarządzanej usług domenowych Azure AD
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
-ms.author: maheshu
-ms.openlocfilehash: befab32a9daf5a22a326396c84223e07d401f72b
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: 74d6748a4d595e330103497dcc97ac57e01db250
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502798"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158622"
 ---
 # <a name="enable-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Włączanie bezpiecznego protokołu LDAP (LDAPS) dla domeny zarządzanej usług domenowych Azure AD
 

@@ -4,9 +4,6 @@ description: W tym artykule wyjaśniono, jak Równoważenie obciążenia ruchem 
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: ''
-ms.assetid: 6dca6de1-18f7-4962-bd98-6055771fab22
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: kumud
-ms.openlocfilehash: 6637132481ee33d43ec2b747ba89a56983205ff2
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 132cbecdad8303414f15ff3f18caaccd6d430ded
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432447"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50154929"
 ---
 # <a name="configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Konfigurowanie metody routingu ważonego ruchu w usłudze Traffic Manager
 
-Typowym wzorcem metody routingu ruchu jest udostępniają zestaw identyczne punkty końcowe, które obejmują usług w chmurze i witryn sieci Web, i przesyłać dane do każdego w działaniu okrężnym. Następujące kroki przedstawiają sposób konfigurowania tego rodzaju metody routingu ruchu.
+Typowym wzorcem metody routingu ruchu jest udostępniają zestaw identyczne punkty końcowe, które obejmują usług w chmurze i witryn sieci Web, i przesyłać dane do każdego równie. Następujące kroki przedstawiają sposób konfigurowania tego rodzaju metody routingu ruchu.
 
 > [!NOTE]
-> Usługa Azure Web Apps zapewnia już funkcji dla witryn sieci Web w obrębie regionu platformy Azure (zawiera wiele centrów danych) równoważenia obciążenia działania okrężnego. Usługa Traffic Manager umożliwia określanie metody routingu ruchu działania okrężnego dla witryn sieci Web w różnych centrach danych.
+> Usługa Azure Web Apps zapewnia już funkcji dla witryn sieci Web w obrębie regionu Azure, (które mogą zawierać wiele centrów danych) równoważenia obciążenia działania okrężnego. Usługa Traffic Manager umożliwia rozdziela ruch między witryn sieci Web w różnych centrach danych.
 
 ## <a name="to-configure-the-weighted-traffic-routing-method"></a>Aby skonfigurować metody routingu ważonego ruchu
 
@@ -51,7 +48,7 @@ Typowym wzorcem metody routingu ruchu jest udostępniają zestaw identyczne punk
 
 - Dowiedz się więcej o [priorytetu metody routingu ruchu](traffic-manager-configure-priority-routing-method.md).
 - Dowiedz się więcej o [wydajności metodę routingu ruchu](traffic-manager-configure-performance-routing-method.md).
-- Dowiedz się więcej o [metody routingu geograficznego](traffic-manager-configure-geographic-routing-method.md).
+- Dowiedz się więcej o [geograficznej metodzie routingu](traffic-manager-configure-geographic-routing-method.md).
 - Dowiedz się, jak [testowanie ustawień usługi Traffic Manager](traffic-manager-testing-settings.md).
 
 <!--Image references-->

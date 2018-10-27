@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: bf86e769aff4a9b03d5df1b1aef702814c605fa4
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: c170f573a473d3fdfca5c916b4be594dc93d6b27
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368090"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156327"
 ---
 # <a name="how-to-use-analytics-to-analyze-your-device-data"></a>Jak używać usługi analytics do analizowania danych urządzenia
 
@@ -21,7 +21,7 @@ ms.locfileid: "46368090"
 *Ten artykuł dotyczy operatorów, konstruktorów i administratorów.*
 
 
-Microsoft Azure IoT Central zapewnia bogate możliwości analizy możliwości mają sens dużych ilości danych z urządzeń. Aby rozpocząć pracę, odwiedź stronę **Analytics** w menu nawigacji po lewej stronie. 
+Usługa Azure IoT Central zapewnia bogate możliwości analizy możliwości sensu dużych ilości danych z urządzeń. Aby rozpocząć pracę, odwiedź stronę **Analytics** w menu nawigacji po lewej stronie. 
 
   ![IoT Central nawigację do analizy](media\howto-create-analytics\analytics-navigation.png)
 
@@ -60,12 +60,12 @@ to-do: confirm if 10 is the max number of measurements
 
 Masz różne sposoby, w których można zmienić dalsze wyniki zapytania do własnych potrzeb wizualizacji. Można zamiennie z widoku wykresu i widoku siatki, powiększać/pomniejszać, odświeżanie zestawu danych i zmienić sposób wyświetlania wierszy.
 
-* **Pokaż siatkę:** wyniki będą dostępne w formacie tabeli do umożliwiające przeglądanie określonej wartości dla każdego punktu danych. Ten widok jest również zgodna z standardów ułatwień dostępu. 
+* **Pokaż siatkę:** wyniki będą dostępne w postaci tabeli, które umożliwia wyświetlenie określonej wartości dla każdego punktu danych. Ten widok jest również zgodna z standardów ułatwień dostępu. 
 * **Pokaż wykres:** Twoje wyniki będą wyświetlane w formacie wiersza, aby łatwo chętnych górę/dół trendów i anomalii. 
 
  ![Wyświetlanie widoku siatki do celów analizy](media\howto-create-analytics\analytics-showgrid.png)
 
-Powiększenie umożliwia możesz skoncentrować się na podstawie posiadanych danych. Jeśli okaże się okres chcesz skupić się na w ramach zestawu wyników przy użyciu swoje położenie kursora obszar, który chcesz powiększyć i użyj dostępne kontrolki, aby wykonać jedną z następujących czynności:
+Powiększenie umożliwia możesz skoncentrować się na podstawie posiadanych danych. Jeśli okaże się okres czasu, którą chcesz się skupić w ramach zestawu wyników, należy użyć kursor do pobrania obszar, który chcesz powiększyć, a następnie wykonaj jedną z następujących czynności za pomocą dostępne kontrolki:
 * **Powiększ:** po wybraniu okres powiększenia w zostanie włączone i umożliwiają powiększyć do swoich danych.
 * **Pomniejsz:** tej kontrolki pozwala zmniejszyć jeden poziom usługi ostatni powiększenia. Na przykład przy powiększeniu już danych trzy razy, pomniejszania zajmie kopii jeden krok w danym momencie.
 * **Resetuj Powiększenie:** po zostało wykonane różne poziomy powiększania, można użyć resetowania powiększenia, aby powrócić do oryginalnego zestawu wyników. 

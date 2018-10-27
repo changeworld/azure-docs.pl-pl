@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: a0b3c220a1cd857bc8bea0eb5ab41625845fcc5d
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 604eb528ef33a95993aa5b6d3ff6eebb77936aa2
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365629"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157942"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Uznanie autorstwa użycia klienta partnerów platformy Azure
 
@@ -44,7 +44,7 @@ Wiele rozwiązań partnerskich są wdrażane w ramach subskrypcji klienta przy u
 
 Aby dodać unikatowy identyfikator globalny (GUID), upewnij się jednym modyfikacji pliku głównego szablonu:
 
-1. [Utwórz identyfikator GUID](#create-guids) (np. eb7927c8-dd66-43e1-b0cf-c346a422063) i [zarejestrować identyfikatora GUID](#register-guids-and-offers).
+1. [Utwórz identyfikator GUID](#create-guids) przy użyciu metody sugerowane i [zarejestrować identyfikatora GUID](#register-guids-and-offers).
 
 1. Otwórz szablon usługi Resource Manager.
 
@@ -58,9 +58,26 @@ Aby dodać unikatowy identyfikator globalny (GUID), upewnij się jednym modyfika
 
 1. [Sprawdzić, czy identyfikator GUID we wdrożeniu szablonu](#verify-the-guid-deployment).
 
-### <a name="sample-template-code"></a>Przykładowy kod szablonu
+### <a name="sample-resource-manager-template-code"></a>Kod szablonu Menedżera zasobów próbki
+Upewnij się zmodyfikować poniżej przykładowego kodu z własnych danych wejściowych, po dodaniu do pliku głównego szablonu.
+Zasób musi zostać dodane w **mainTemplate.json** lub **azuredeploy.json** pliku tylko, a nie w żadnym zagnieżdżone lub połączone szablony.
+```
+// Make sure to modify this sample code with your own inputs where applicable
 
-![Przykładowy kod szablonu](media/marketplace-publishers-guide/tracking-sample-code-for-lu-1.PNG)
+{ // add this resource to the mainTemplate.json (do not add the entire file)
+    "apiVersion": "2018-02-01",
+    "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" // use your generated GUID here
+    "type": "Microsoft.Resources/deployments",
+    "properties": {
+        "mode": "Incremental",
+        "template": {
+            "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+            "contentVersion": "1.0.0.0",
+            "resources": []
+        }
+    }
+} // remove all comments from the file when complete
+```
 
 ## <a name="use-the-resource-manager-apis"></a>Korzystanie z interfejsów API usługi Resource Manager
 
@@ -77,7 +94,7 @@ Podczas projektowania wywołania interfejsu API dla tej metody śledzenia obejmu
 > [!Note]
 > Format ciągu jest ważne. Jeśli **pid -** prefiks nie jest uwzględniona, ponieważ nie ma możliwość wykonywania zapytań o dane. Różne zestawy SDK śledzić inaczej. Aby zaimplementować tę metodę, należy przejrzeć pomocy technicznej i śledzenie podejście do preferowanego zestawu SDK usługi Azure. 
 
-### <a name="example-the-python-sdk"></a>Przykład: Zestaw Python SDK
+#### <a name="example-the-python-sdk"></a>Przykład: Zestaw Python SDK
 
 W przypadku języka Python, użyj **config** atrybutu. Ten atrybut można dodać tylko do agenta użytkownika. Oto przykład:
 
@@ -104,7 +121,7 @@ export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 
 ## <a name="create-guids"></a>Utwórz GUID
 
-Identyfikator GUID jest unikatowy numer, zawierającej 32 cyfry szesnastkowe. Aby utworzyć identyfikatorów GUID dla śledzenia, należy użyć GUID generator. Zaleca się, że możesz korzystać z [formie generator GUID usługi Azure Storage](https://aka.ms/StoragePartners). Jednak jeśli wolisz nie korzystała z usługi Azure Storage, generator GUID, dostępnych jest wiele [online generatorów GUID](https://www.bing.com/search?q=guid%20generator) , można użyć.
+Identyfikator GUID jest unikatowy numer, zawierającej 32 cyfry szesnastkowe. Aby utworzyć identyfikatorów GUID dla śledzenia, należy użyć GUID generator. Zespół usługi Azure Storage został utworzony [formie generator GUID](https://aka.ms/StoragePartners) , otrzymasz wiadomość e-mail identyfikatora GUID w poprawnym formacie i może być ponownie używane w systemach różnych śledzenia. 
 
 > [!Note]
 > Jest zdecydowanie zaleca się używanie [formie generator GUID usługi Azure Storage](https://aka.ms/StoragePartners) do utworzenia z identyfikatorem GUID. Aby uzyskać więcej informacji, zobacz nasze [— często zadawane pytania](#faq).

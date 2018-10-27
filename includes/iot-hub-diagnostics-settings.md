@@ -8,41 +8,48 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 1c7f006c066a4f1505a642af04a1ef027fde0a44
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 0039c4eff3571a96cba1ab36136e0a588d78eb75
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34666946"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50159132"
 ---
-### <a name="enable-logging-with-diagnostics-settings"></a>Włącz rejestrowanie przy użyciu ustawień diagnostycznych
+### <a name="enable-logging-with-diagnostics-settings"></a>Włącz logowanie za pomocą ustawień diagnostycznych
 
-1. Zaloguj się do [portalu Azure] [ lnk-portal] i przejdź do Centrum IoT.
-1. Wybierz **ustawień diagnostycznych**.
-1. Wybierz **Włącz diagnostykę**.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do Centrum IoT Hub.
 
-   ![Włączanie diagnostyki][1]
+2. Wybierz **ustawień diagnostycznych**.
 
-1. Nadaj nazwę ustawienia diagnostyki.
-1. Wybierz gdzie chcesz wysłać dzienniki. Można wybrać dowolną kombinację trzech opcji:
+3. Wybierz **Włącz diagnostykę**.
+
+   ![Włączanie diagnostyki](./media/iot-hub-diagnostics-settings/turnondiagnostics.png)
+
+4. Nazwij ustawień diagnostycznych.
+
+5. Wybierz gdzie chcesz wysłać dzienniki. Możesz wybrać dowolną kombinację trzech opcji:
+
    * Zarchiwizuj na koncie magazynu
    * Przesyłaj strumieniowo do centrum zdarzeń
    * Wysyłanie do usługi Log Analytics
-1. Wybierz operacje, które chcesz monitorować, a następnie włączyć dzienniki te operacje. Operacje, które będzie mógł zgłosić ustawień diagnostycznych są:
+
+6. Wybierz operacje, które chcesz monitorować, a następnie włączyć dzienniki dla tych operacji. Dostępne są następujące operacje, które można raportować ustawień diagnostycznych:
+
    * Połączenia
-   * Telemetrii urządzenia
-   * Komunikaty chmury do urządzenia
-   * Operacje tożsamości urządzenia
-   * Przekazywania plików
+   * Danych telemetrycznych z urządzenia
+   * Komunikaty z chmury do urządzenia
+   * Operacje dotyczące tożsamości urządzenia
+   * Operacje przekazywania plików
    * Kierowanie komunikatów
-   * Operacje dwie chmury do urządzenia
-   * Operacje dwie urządzenia do chmury
-   * Dwie operacje
+   * Operacje bliźniaczej reprezentacji chmury do urządzenia
+   * Operacje bliźniaczej reprezentacji urządzenia do chmury
+   * Operacje bliźniaczych reprezentacji
    * Operacje zadania
    * Metody bezpośrednie  
-1. Zapisz nowe ustawienia. 
 
-Jeśli chcesz włączyć ustawienia diagnostyki przy użyciu programu PowerShell, należy użyć poniższego kodu:
+6. Zapisz nowe ustawienia. 
+
+Aby włączyć ustawień diagnostycznych przy użyciu programu PowerShell, należy użyć następującego kodu:
 
 ```azurepowershell
 Connect-AzureRmAccount
@@ -50,11 +57,4 @@ Select-AzureRmSubscription -SubscriptionName <subscription that includes your Io
 Set-AzureRmDiagnosticSetting -ResourceId <your resource Id> -ServiceBusRuleId <your service bus rule Id> -Enabled $true
 ```
 
-Nowe ustawienia zaczęły obowiązywać w ciągu około 10 minut. Po wykonaniu tej dzienników pojawia się w celu archiwizacji skonfigurowanych na **ustawień diagnostycznych** bloku. Aby uzyskać więcej informacji na temat konfigurowania diagnostyki, zobacz [zbierania i wykorzystywania danych dziennika z zasobów platformy azure][lnk-diagnostics-settings].
-
-<!-- Images -->
-[1]: ./media/iot-hub-diagnostics-settings/turnondiagnostics.png
-
-<!-- Links -->
-[lnk-portal]: https://portal.azure.com
-[lnk-diagnostics-settings]: ../articles/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md
+Nowe ustawienia zaczną obowiązywać w ciągu około 10 minut. Po tym dzienniki są wyświetlane w celu archiwizacji skonfigurowanego na **ustawień diagnostycznych** bloku. Aby uzyskać więcej informacji na temat konfigurowania diagnostyki zobacz [zbieranie i używanie dane dzienników z zasobów platformy azure](../articles/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).

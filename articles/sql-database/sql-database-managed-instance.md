@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/17/2018
-ms.openlocfilehash: e0a4e069995c1e905834ff541b3562140b6ab01c
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 716277e7ef4fa239c82562176c75bb20568a12af
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379013"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140929"
 ---
 # <a name="use-sql-database-managed-instance-with-virtual-networks-and-near-100-compatibility"></a>Użyj wystąpienia zarządzanego usługi SQL Database przy użyciu sieci wirtualnych i w prawie 100% zgodności
 
@@ -218,7 +218,7 @@ Korzyści z wystąpienia zarządzanego nie zawsze w górę — od początku w ch
 
 ### <a name="managed-instance-administration-features"></a>Zarządzane funkcji administrowania wystąpienia
 
-Zarządzane wystąpienia Włącz administratorowi systemu skupić się na co najistotniejsze dla firm. Wiele działań administratora/administrator systemu nie są wymagane lub są one proste. Na przykład system operacyjny / RDBMS instalacji i wdrażania poprawek, dynamiczne wystąpienie zmiana rozmiaru i konfiguracja, tworzenie kopii zapasowych, [replikacji bazy danych](replication-with-sql-database-managed-instance.md) (w tym systemowych baz danych), konfiguracja wysokiej dostępności i konfiguracji kondycji i strumienie danych monitorowania wydajności.
+Zarządzane wystąpienia Włącz administratorowi systemu skupić się na co najistotniejsze dla firm. Wiele działań administratora/administrator systemu nie są wymagane lub są one proste. Na przykład system operacyjny / RDBMS instalacji i wdrażania poprawek, dynamiczne wystąpienie zmiana rozmiaru i konfiguracja, tworzenie kopii zapasowych, [replikacji bazy danych](replication-with-sql-database-managed-instance.md) (w tym systemowych baz danych), konfiguracja wysokiej dostępności i konfiguracji kondycji i [monitorowania wydajności](../log-analytics/log-analytics-azure-sql.md) strumieni danych.
 
 > [!IMPORTANT]
 > Aby uzyskać listę obsługiwanych, częściowo obsługiwane i nieobsługiwane funkcje, zobacz [funkcji usługi SQL Database](sql-database-features.md). Aby uzyskać listę różnic języka T-SQL w wystąpieniach zarządzanych w stosunku do programu SQL Server, zobacz [różnice języka T-SQL wystąpienia zarządzanego z programu SQL Server](sql-database-managed-instance-transact-sql-information.md)
@@ -241,4 +241,5 @@ W poniższej tabeli przedstawiono kilka właściwości, za pośrednictwem język
 - Aby uzyskać więcej informacji o konfiguracji sieci wirtualnej, zobacz [Konfiguracja sieci wirtualnej wystąpienia zarządzanego](sql-database-managed-instance-vnet-configuration.md).
 - Aby uzyskać szybki Start, która tworzy wystąpienie zarządzane i przywraca bazę danych z pliku kopii zapasowej, zobacz [utworzysz wystąpienie zarządzane](sql-database-managed-instance-get-started.md).
 - Aby skorzystać z samouczka w zakresie używania usługi Azure Database Migration Service (DMS) do celów migracji, zobacz [Migracja wystąpień zarządzanych przy użyciu usługi DMS](../dms/tutorial-sql-server-to-managed-instance.md).
+- Zaawansowane monitorowanie wydajności bazy danych w wystąpieniu zarządzanym dzięki wbudowanym funkcjom analizy dotyczące rozwiązywania problemów, zobacz [monitora usługi Azure SQL Database przy użyciu usługi Azure SQL Analytics ](../log-analytics/log-analytics-azure-sql.md) 
 - Aby uzyskać informacje o cenach, zobacz [wystąpienie zarządzane usługi SQL Database, cennik](https://azure.microsoft.com/pricing/details/sql-database/managed/).

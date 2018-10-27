@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ef72829d507d6a471ec9a8972ead262da7f7b582
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4362a6b936c52319f6f6fc625370733f3c84e361
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068703"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158860"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologie obsługiwane w programie Azure AD Connect
 W tym artykule opisano różne lokalne i topologii usługi Azure Active Directory (Azure AD), korzystających z synchronizacji programu Azure AD Connect jako rozwiązania do integracji kluczy. Ten artykuł zawiera zarówno obsługiwanych i nieobsługiwanych konfiguracji.
@@ -87,7 +87,7 @@ Mających więcej niż jeden serwer synchronizacji usługi Azure AD Connect jest
 ### <a name="multiple-forests-separate-topologies"></a>Wiele lasów, oddzielne topologie
 ![Opcja do reprezentowania tylko raz użytkowników we wszystkich katalogach](./media/plan-connect-topologies/MultiForestUsersOnce.png)
 
-![Sceny wiele lasów i oddzielne topologie](./media/plan-connect-topologies/MultiForestSeperateTopologies.png)
+![Sceny wiele lasów i oddzielne topologie](./media/plan-connect-topologies/MultiForestSeparateTopologies.png)
 
 W tym środowisku wszystkich lasów lokalnych są traktowane jako osobne jednostki. Żaden użytkownik nie jest obecny w innym lesie. Każdy las ma swój własny organizacji programu Exchange i ma nie GALSync między lasami. Ta topologia może być sytuacji po połączeniu/nabycia lub w organizacji, gdzie każda jednostka biznesowa działa niezależnie. Te lasy znajdują się w tej samej organizacji w usłudze Azure AD i są wyświetlane z ujednoliconego GAL. Na powyższym rysunku każdy obiekt w każdym lesie jest reprezentowany w jeden raz w magazynie metaverse programu i zagregowane w dzierżawie docelowej usługi Azure AD.
 

@@ -3,7 +3,7 @@ title: 'Azure AD Domain Services: włączanie synchronizacji haseł | Microsoft 
 description: Wprowadzenie do usługi Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 8731f2b2-661c-4f3d-adba-2c9e06344537
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.author: maheshu
-ms.openlocfilehash: 33cbc65ec5971f8bfe0133e5dca181194cd0bbdd
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.author: ergreenl
+ms.openlocfilehash: 751c9df8dc3826b54baab6166cd63a0dd8cff4f5
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294003"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155953"
 ---
 # <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>Włączanie synchronizacji haseł w usługach Azure Active Directory Domain Services
 W poprzednich zadaniach włączono usługi Azure Active Directory Domain Services dla dzierżawy usługi Azure Active Directory (Azure AD). Kolejnym krokiem jest włączenie synchronizacji skrótów poświadczeń wymaganych do uwierzytelniania NT LAN Manager (NTLM) i Kerberos w usługach Azure AD Domain Services. Po skonfigurowaniu synchronizacji poświadczeń użytkownik może zalogować się do domeny zarządzanej przy użyciu poświadczeń firmowych.

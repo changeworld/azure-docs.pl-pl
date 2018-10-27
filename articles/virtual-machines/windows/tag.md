@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
-ms.openlocfilehash: 6c461fe06e1a869d0495551ab014452c03dc60b2
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 75a6466578808cb5c0dd8d2e32d9445a6e5a5bf8
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42058162"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140540"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Jak oznaczyć maszynę wirtualną Windows na platformie Azure
 W tym artykule opisano różne sposoby, aby oznaczyć maszynę wirtualną Windows na platformie Azure za pomocą modelu wdrażania usługi Resource Manager. Tagi to pary klucz/wartość zdefiniowanych przez użytkownika, które mogą być umieszczone bezpośrednio na zasób lub grupa zasobów. Platforma Azure obsługuje obecnie maksymalnie 15 tagów na zasób i grupy zasobów. Znaczniki może być umieszczone na zasób w czasie tworzenia lub dodawane do istniejącego zasobu. Należy pamiętać, że tagi są obsługiwane w przypadku zasobów utworzonych za pomocą modelu wdrażania usługi Resource Manager tylko. Jeśli chcesz oznaczyć maszynę wirtualną systemu Linux, zobacz [jak oznaczyć maszynę wirtualną z systemem Linux na platformie Azure](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -51,22 +51,20 @@ To pierwsze polecenie cmdlet Ustawia wszystkie tagi umieszczone na *MyTestVM* do
 
 Drugie polecenie wyświetla znaczniki dla danego zmiennej.
 
-        PS C:\> $tags
-
-        Name        Value
-        ----                           -----
-        Value        MyDepartment
-        Name        Department
-        Value        MyApp1
-        Name        Application
-        Value        MyName
-        Name        Created By
-        Value        Production
-        Name        Environment
+```
+    PS C:\> $tags
+    
+    Key           Value
+    ----          -----
+    Department    MyDepartment
+    Application   MyApp1
+    Created By    MyName
+    Environment   Production
+```
 
 Trzecie polecenie dodaje tag dodatkowe *$tags* zmiennej. Zwróć uwagę na użycie **+=** można dołączyć nową parę kluczy/wartości do *$tags* listy.
 
-        PS C:\> $tags += @{Name="Location";Value="MyLocation"}
+        PS C:\> $tags += @{Location="MyLocation"}
 
 Czwarty polecenie ustawia parametry logowania wszystkich znaczników zdefiniowane w *$tags* zmiennej do danego zasobu. W tym przypadku jest to MyTestVM.
 
@@ -74,20 +72,17 @@ Czwarty polecenie ustawia parametry logowania wszystkich znaczników zdefiniowan
 
 Piąty polecenie wyświetla listę wszystkich tagów w zasobie. Jak widać, *lokalizacji* teraz jest zdefiniowany jako tag *MyLocation* jako wartość.
 
-        PS C:\> (Get-AzureRmResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
+```
+    PS C:\> (Get-AzureRmResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
 
-        Name        Value
-        ----                           -----
-        Value        MyDepartment
-        Name        Department
-        Value        MyApp1
-        Name        Application
-        Value        MyName
-        Name        Created By
-        Value        Production
-        Name        Environment
-        Value        MyLocation
-        Name        Location
+    Key           Value
+    ----          -----
+    Department    MyDepartment
+    Application   MyApp1
+    Created By    MyName
+    Environment   Production
+    Location      MyLocation
+```
 
 Aby dowiedzieć się więcej o znakowaniu za pomocą programu PowerShell, zapoznaj się z [polecenia cmdlet usługi Azure Resource][Azure Resource Cmdlets].
 

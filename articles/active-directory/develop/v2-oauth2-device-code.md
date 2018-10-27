@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 83c1deb7c767c29046e6c1af4452270e90b391df
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: ceafee3ac3453590d1687f662c7f3c9a8d8b4e0c
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987736"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156633"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-device-code-flow"></a>Azure Active Directory w wersji 2.0 i przepływ kodu urządzenia OAuth 2.0
 
@@ -131,7 +131,7 @@ Odpowiedź oznaczająca Powodzenie tokenu będzie wyglądać następująco:
 | Parametr | Format | Opis |
 | --------- | ------ | ----------- |
 |`token_type` | Ciąg| Zawsze "Bearer. |
-|`scope` | Ciągi oddzielonych miejsca | Jeśli token dostępu został zwrócony, ta lista zawiera token dostępu jest prawidłowy dla zakresy. |
+|`scope` | Ciągi oddzielone spacjami | Jeśli token dostępu został zwrócony, ta lista zawiera token dostępu jest prawidłowy dla zakresy. |
 |`expires_in`| int | Liczba sekund przed token dostępu dołączony jest prawidłowy dla. |
 |`access_token`| Nieprzezroczysty ciąg | Wystawiony dla [zakresy](v2-permissions-and-consent.md) którego zażądano.  |
 |`id_token`   | JWT | Jeśli wystawionych oryginalny `scope` parametru `openid` zakresu.  |

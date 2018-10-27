@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: cce78fb6a5472a625e973bb8ca4afdfd6290a26c
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165505"
+---
 <!--author=alkohli last changed: 07/19/2017-->
 
 #### <a name="to-create-a-volume"></a>Aby utworzyć wolumin
@@ -34,7 +47,7 @@
        1. Wypełnij pole **Nazwa** dla rekordu ACR.
        2. W obszarze **Nazwa inicjatora iSCSI** podaj kwalifikowaną nazwę iSCSI (IQN) hosta z systemem Windows. Jeśli nie masz nazwy IQN, przejdź do tematu [Pobieranie nazwy IQN hosta z systemem Windows Server](#get-the-iqn-of-a-windows-server-host).
 
-    9. Kliknij przycisk **Utwórz**. Wolumin zostanie utworzony przy użyciu wybranych ustawień.
+    9. Kliknij pozycję **Utwórz**. Wolumin zostanie utworzony przy użyciu wybranych ustawień.
 
         ![Kliknięcie pozycji Utwórz](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
 

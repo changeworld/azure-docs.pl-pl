@@ -11,25 +11,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kumud
-ms.openlocfilehash: eb43b59a26bc9c1b514921a7b6dfa4b920a8fe5f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 57ae9f3a747ef3fde1a21de8a56ec4059becf392
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955222"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139347"
 ---
 # <a name="traffic-manager-routing-methods"></a>Metody routingu w usłudze Traffic Manager
 
 Usługa Azure Traffic Manager obsługuje sześć metody routingu ruchu, aby określić, jak kierować ruchem sieciowym do różnych punktów końcowych usługi. Dla dowolnego profilu usługi Traffic Manager stosuje się metodę routingu ruchu, powiązany do każdego zapytania DNS, który odbierze. Metody routingu ruchu określa, w którym punktem końcowym jest zwracany w odpowiedzi DNS.
 
-Dostępne są cztery metody kierowania ruchu w usłudze Traffic Manager:
+Dostępne w usłudze Traffic Manager są następujące metody routingu ruchu:
 
 * **[Priorytet](#priority):** wybierz **priorytet** Jeśli chcesz używać punktu końcowego usługi podstawowej dla całego ruchu i wykonywanie kopii zapasowych w przypadku podstawowej lub kopii zapasowej punkty końcowe są niedostępne.
 * **[Ważona](#weighted):** wybierz **ważona** Jeśli chcesz rozproszyć ruch między zestawem punktów końcowych, albo równomiernie lub według wagi, które można zdefiniować.
 * **[Wydajność](#performance):** wybierz **wydajności** gdy mają punkty końcowe w różnych lokalizacjach geograficznych i chcesz, aby używać punktu końcowego "najbliższy" pod kątem najniższych opóźnieniem sieci użytkowników końcowych.
 * **[Geograficzne](#geographic):** wybierz **geograficzne** tak, aby użytkownicy są kierowane do określonych punktów końcowych (Azure zewnętrzne i zagnieżdżone) oparte na lokalizacji geograficznej, do której pochodzi swoje zapytanie DNS. Umożliwia to klientom usługi Traffic Manager umożliwia realizację scenariuszy, w których jest ważna, wiedząc, regionu geograficznego użytkownika i routing, ich oparta na. Przykłady obejmują zgodnych z zleceń niezależność danych, lokalizacja środowiska użytkownika & zawartości i pomiaru ruchu z różnych regionów.
 * **[Atrybut wielowartościowy elementu](#multivalue):** wybierz **atrybut wielowartościowy elementu** dla profilów usługi Traffic Manager, które może mieć tylko adresy IPv4/IPv6 jako punkty końcowe. Po otrzymaniu kwerendy dla tego profilu, zwracane są wszystkie punkty końcowe w dobrej kondycji.
-* **[Podsieci](#subnet):** wybierz **podsieci** metody routingu ruchu do mapowania zestawów zakresów adresów IP dla użytkowników końcowych do określonego punktu końcowego w profilu usługi Traffic Manager. Po odebraniu żądania punktu końcowego zwracane będą jeden mapowane dla tego żądania źródłowego adresu IP. 
+* **[Podsieci](#subnet):** wybierz **podsieci** metody routingu ruchu do mapowania zestawów zakresów adresów IP dla użytkowników końcowych do określonego punktu końcowego w profilu usługi Traffic Manager. Po odebraniu żądania punktu końcowego zwracane będą jeden mapowane dla tego żądania źródłowego adresu IP. 
 
 
 Wszystkie profile usługi Traffic Manager obejmują monitorowanie kondycji punktu końcowego i punktu końcowego automatycznego trybu failover. Aby uzyskać więcej informacji, zobacz [monitorowanie punktu końcowego usługi Traffic Manager](traffic-manager-monitoring.md). Jeden profil usługi Traffic Manager można użyć tylko jedna metoda routingu ruchu. Metody routingu ruchu innego można wybrać dla swojego profilu w dowolnym momencie. Zmiany są stosowane w ciągu jednej minuty, a jest naliczany bez przestojów. Metody routingu ruchu mogą być połączone za pomocą zagnieżdżone profile usługi Traffic Manager. Zagnieżdżanie umożliwia zaawansowane i elastyczne konfiguracje routing ruchu procesów, które spełnienia wymagań większych i złożonych aplikacji. Aby uzyskać więcej informacji, zobacz [zagnieżdżone profile usługi Traffic Manager](traffic-manager-nested-profiles.md).

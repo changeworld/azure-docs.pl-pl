@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 12/12/2017
+ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: ae5218bae12b9489d67b0264f0e5fdb6d833cb9e
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 23b36fb647c2949dca1c5efe7f8194ec5a397965
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187771"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140404"
 ---
 # <a name="connected-factory-solution-accelerator-walkthrough"></a>Przewodnik po akceleratorze rozwiązania połączonej fabryki
 
@@ -53,23 +53,27 @@ Rozwiązanie zawiera również klienta OPC UA zintegrowanego w aplikacji interne
 
 Symulowane stacje i symulowane systemy zarządzania produkcją (MES) składają się na linię produkcyjną fabryki. Symulowane urządzenia i moduł wydawcy OPC są oparte na [standardzie OPC UA .NET][lnk-OPC-UA-NET-Standard] opublikowanym przez organizację OPC Foundation.
 
-Składniki serwer proxy OPC i wydawca OPC są implementowane jako moduły oparte na usłudze [Azure IoT Edge][lnk-Azure-IoT-Gateway]. Każda symulowana linia produkcyjna ma dołączoną wyznaczoną bramę.
+Składniki serwer proxy OPC i wydawca OPC są implementowane jako moduły oparte na usłudze [Azure IoT Edge][lnk-Azure-IoT-Gateway]. Każda symulowana linia produkcyjna ma bramę dołączone.
 
 Wszystkie składniki symulacji działają w kontenerach platformy Docker hostowanych na maszynie wirtualnej platformy Azure z systemem Linux. Symulacja jest domyślnie skonfigurowana do uruchamiania ośmiu symulowanych linii produkcyjnych.
 
 ## <a name="simulated-production-line"></a>Symulowana linia produkcyjna
 
-Na linii produkcyjnej są produkowane części. Składa się ona z różnych stacji: stacji montażowej, stacji testowania i stacji pakowania.
+Na linii produkcyjnej są produkowane części. Składa się z różnych stacji: stacji montażowej, stacji testowania i stacji pakowania.
 
 Symulacja przetwarza i aktualizuje dane, które są udostępniane za pośrednictwem węzłów OPC UA. Wszystkie stacje symulowanej linii produkcyjnej są zarządzane przez system MES za pośrednictwem serwera OPC UA.
 
 ## <a name="simulated-manufacturing-execution-system"></a>Symulowany system zarządzania produkcją
 
-System MES monitoruje poszczególne stacje na linii produkcyjnej za pośrednictwem serwera OPC UA w celu wykrycia zmian stanu stacji. System MES wywołuje metody OPC UA sterujące stacjami i przekazuje produkt z jednej stację do następnej do czasu ukończenia jego produkcji.
+System MES monitoruje poszczególne stacje na linii produkcyjnej za pośrednictwem serwera OPC UA w celu wykrycia zmian stanu stacji. Ona wywołuje metody służące do sterowania z stacje OPC UA i przekazuje produkt z jednej stację do następnej do czasu jego zakończenia.
 
 ## <a name="gateway-opc-publisher-module"></a>Moduł wydawcy OPC bramy
 
-Moduł wydawcy OPC łączy się z serwerami OPC UA stacji i subskrybuje węzły OPC do opublikowania. Moduł ten konwertuje dane węzła do formatu JSON, szyfruje je i wysyła do usługi IoT Hub w postaci komunikatów publikowania/subskrybowania serwera OPC UA.
+Moduł wydawcy OPC łączy się z serwerami OPC UA stacji i subskrybuje węzły OPC do opublikowania. Moduł:
+
+1. Konwertuje dane węzła do formatu JSON.
+1. Szyfruje za pomocą pliku JSON.
+1. Wysyła dane JSON do usługi IoT Hub jako komunikaty OPC UA Pub/Sub.
 
 Moduł wydawcy OPC wymaga tylko wychodzącego portu https (443) i może współdziałać z istniejącą infrastrukturą przedsiębiorstwa.
 
@@ -77,7 +81,7 @@ Moduł wydawcy OPC wymaga tylko wychodzącego portu https (443) i może współd
 
 Moduł serwera proxy OPC UA bramy tworzy tunel do przesyłania poleceń binarnych oraz komunikatów sterujących serwera OPC UA i wymaga tylko wychodzącego portu https (443). Może on współdziałać z istniejącą infrastrukturą przedsiębiorstwa, w tym z internetowymi serwerami proxy.
 
-Moduł proxy używa metod urządzeń usługi IoT Hub do transferowania pakietowych danych TCP/IP w warstwie aplikacji, dzięki czemu gwarantuje zaufanie punktu końcowego oraz zapewnia szyfrowanie danych i integralność przy użyciu protokołu SSL/TLS.
+Używa metod urządzeń usługi IoT Hub do transferowania pakietowych danych TCP/IP w warstwie aplikacji, aby upewnić się, zaufanie punktu końcowego, szyfrowanie danych i integralność przy użyciu protokołu SSL/TLS.
 
 Protokół przekazywania danych binarnych serwera OPC UA za pośrednictwem serwera proxy korzysta z uwierzytelniania i szyfrowania UA.
 
@@ -93,13 +97,13 @@ Usługa IoT Hub stanowi źródło zdarzeń dla usługi Azure TSI. Dane są przec
 * Sygnaturę czasową źródła
 * Nazwę DisplayName serwera OPC UA
 
-Obecnie w usłudze TSI klienci nie mogą dostosować czasu przechowywania danych.
+Obecnie usługa TSI Przesyła nie zezwala klientom dostosować, jak długo chcesz przechowywać dane dla.
 
-Usługa TSI przesyła zapytania o dane węzła przy użyciu funkcji **SearchSpan** (**Time.From**, **Time.To**) i agreguje je według identyfikatora **ApplicationUri**, **NodeId** lub **DisplayName** serwera OPC UA.
+Usługa TSI Przesyła zapytania dane węzła przy użyciu opartych na czasie **SearchSpan** i agreguje przez **identyfikator applicationuri serwera OPC UA** lub **OPC UA NodeId** lub **OPC UA DisplayName**.
 
-Aby móc pobrać dane z mierników ogólnej wydajności sprzętu i wskaźników KPI oraz wykresów serii czasu, dane są agregowane według liczby zdarzeń oraz funkcji Sum, Avg, Min i Max.
+Aby pobrać dane dla mierników ogólnej wydajności sprzętu i kluczowych wskaźników wydajności oraz wykresów serii czasu, rozwiązanie agreguje dane według liczby zdarzeń, **suma**, **Avg**, **Min**, i  **Maksymalna liczba**.
 
-Serie czasu są tworzone w inny sposób. Ogólna wydajność sprzętu i kluczowe wskaźniki wydajności są obliczane na podstawie danych podstawowych stacji i przetwarzane na potrzeby topologii (linii produkcyjnych, fabryk, przedsiębiorstw) w aplikacji.
+Serie czasu są tworzone w inny sposób. Rozwiązanie oblicza wartości ogólnej wydajności sprzętu i kluczowych wskaźników wydajności na podstawie danych podstawowych stacji i propaguje wartości dla linii produkcyjnych, fabryk i enterprise.
 
 Ponadto serie czasu dla topologii ogólnej wydajności sprzętu i kluczowych wskaźników wydajności są obliczane w aplikacji za każdym razem, kiedy wyświetlany przedział czasu jest gotowy. Na przykład widok dnia jest aktualizowany zawsze o pełnej godzinie.
 
@@ -116,7 +120,7 @@ Usługa IoT Hub w rozwiązaniu wykonuje ponadto następujące czynności:
 To rozwiązanie używa usługi Azure Blob Storage jako magazynu dysków dla maszyny wirtualnej i do przechowywania danych wdrożenia.
 
 ## <a name="web-app"></a>Aplikacja internetowa
-Aplikacja internetowa wdrożona w ramach akceleratora rozwiązania obejmuje zintegrowanego klienta OPC UA, przetwarzanie alertów i wizualizację danych telemetrycznych.
+Aplikacja internetowa wdrożona w ramach akcelerator rozwiązań obejmuje zintegrowanego klienta OPC UA, przetwarzanie alertów i wizualizację danych telemetrycznych.
 
 ## <a name="telemetry-data-flow"></a>Przepływ danych telemetrycznych
 
@@ -161,7 +165,7 @@ Aplikacja internetowa wdrożona w ramach akceleratora rozwiązania obejmuje zint
     - Ten krok jest wewnętrzny dla centrum danych.
 
 11. Przeglądarka internetowa łączy się z aplikacją internetową połączonej fabryki.
-    - Renderuje pulpit nawigacyjny połączonej fabryki.
+    - Przedstawia pulpit nawigacyjny połączonej fabryki.
     - Nawiązuje połączenie za pośrednictwem protokołu HTTPS.
     - Dostęp do aplikacji połączonej fabryki wymaga uwierzytelnienia użytkownika za pośrednictwem usługi Azure Active Directory.
     - Wszelkie wywołania internetowego interfejsu API do aplikacji połączonej fabryki są chronione przez tokeny zabezpieczające przed fałszerstwem.
@@ -182,9 +186,9 @@ Aplikacja internetowa wdrożona w ramach akceleratora rozwiązania obejmuje zint
 
 2. Serwer proxy OPC (składnik serwera) rejestruje się za pomocą usługi IoT Hub.
     - Odczytuje wszystkie sobie znane urządzenia z usługi IoT Hub.
-    - Używa protokołu MQTT za pośrednictwem protokołu TLS przez gniazdo lub bezpieczny protokół Websocket.
+    - Używa protokołu MQTT za pośrednictwem protokołu TLS przez gniazdo lub bezpieczny protokół WebSocket.
 
-3. Przeglądarka internetowa łączy się z aplikacją internetową połączonej fabryki i renderuje pulpit nawigacyjny połączonej fabryki.
+3. Przeglądarka internetowa nawiązanie połączenia z połączonych aplikacji sieci Web fabryki i przedstawia pulpit nawigacyjny połączonej fabryki.
     - Używa protokołu HTTPS.
     - Użytkownik wybierze serwer OPC UA do nawiązania połączenia.
 
@@ -212,7 +216,7 @@ Aplikacja internetowa wdrożona w ramach akceleratora rozwiązania obejmuje zint
     - Te dane są dostarczane do stosu OPC UA w aplikacji połączonej fabryki.
 
 11. Internetowa aplikacja połączonej fabryki zwraca UX przeglądarki OPC wzbogacone o informacje specyficzne dla OPC UA otrzymane z serwera OPC UA, do przeglądarki internetowej w celu renderowania.
-    - Podczas przeglądania przestrzeni adresowej OPC i stosowania funkcji do węzłów w przestrzeni adresowej OPC część klienta UX przeglądarki OPC używa wywołań AJAX za pośrednictwem protokołu HTTPS chronionych przez tokeny zabezpieczające przed fałszerstwem w celu pobrania danych z internetowej aplikacji połączonej fabryki.
+    - Gdy użytkownik przegląda przestrzeni adresowej OPC i dotyczą funkcji do węzłów w przestrzeni adresowej OPC, klienta UX przeglądarki OPC używa wywołań AJAX za pośrednictwem protokołu HTTPS zabezpieczony za pomocą tokenów zabezpieczających przed sfałszowaniem można pobrać danych z połączonych aplikacji sieci Web fabryki.
     - W razie potrzeby klient używa komunikacji objaśnionej w krokach od 4 do 10 w celu wymiany informacji z serwerem OPC UA.
 
 > [!NOTE]

@@ -2,24 +2,22 @@
 title: Wizualizacja danych w czasie rzeczywistym danych z czujników z usługi Azure IoT hub — aplikacje sieci Web | Dokumentacja firmy Microsoft
 description: Funkcja Web Apps, Microsoft Azure App Service umożliwia wizualizowanie temperatury i wilgotności danych zebranych z czujników i wysyłane do usługi Iot hub.
 author: rangv
-manager: ''
-keywords: Wizualizacja danych czasu rzeczywistego, Wizualizacja danych na żywo, Wizualizacja danych czujników
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: d40bcc8e6fd47a00618b98972f92c1e6fa019612
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: c43431cd6ddbbbf8f6cb709b8c1783179d6cf760
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318524"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158724"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>Wizualizowanie danych z czujników w czasie rzeczywistym z usługi Azure IoT hub przy użyciu funkcji Web Apps w usłudze Azure App Service
 
-![Diagram end-to-end](media/iot-hub-get-started-e2e-diagram/5.png)
+![Diagram end-to-end](./media/iot-hub-live-data-visualization-in-web-apps/1_iot-hub-end-to-end-diagram.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
@@ -29,34 +27,38 @@ W tym samouczku dowiesz się, jak wizualizować dane czujników w czasie rzeczyw
 
 ## <a name="what-you-do"></a>Co należy zrobić
 
-- Tworzenie aplikacji internetowej w witrynie Azure portal.
-- Przygotuj usługi IoT hub na dostęp do danych, dodając grupy odbiorców.
-- Konfigurowanie aplikacji sieci web, które można odczytać danych z czujników z Centrum IoT hub.
-- Przekaż aplikację sieci web hostowane przez aplikację internetową.
-- Otwórz aplikację sieci web, aby wyświetlić dane w czasie rzeczywistym temperatury i wilgotności z usługi IoT hub.
+* Tworzenie aplikacji internetowej w witrynie Azure portal.
+* Przygotuj usługi IoT hub na dostęp do danych, dodając grupy odbiorców.
+* Konfigurowanie aplikacji sieci web, które można odczytać danych z czujników z Centrum IoT hub.
+* Przekaż aplikację sieci web hostowane przez aplikację internetową.
+* Otwórz aplikację sieci web, aby wyświetlić dane w czasie rzeczywistym temperatury i wilgotności z usługi IoT hub.
 
 ## <a name="what-you-need"></a>Co jest potrzebne
 
-- [Konfigurowanie urządzenia](iot-hub-raspberry-pi-kit-node-get-started.md), która obejmuje następujące wymagania:
-  - Aktywna subskrypcja platformy Azure
-  - Centrum Iot hub w ramach Twojej subskrypcji
-  - Aplikacja kliencka, która wysyła komunikaty do Centrum Iot hub
-- [Pobierz narzędzia Git](https://www.git-scm.com/downloads)
+* [Konfigurowanie urządzenia](iot-hub-raspberry-pi-kit-node-get-started.md), która obejmuje następujące wymagania:
+
+  * Aktywna subskrypcja platformy Azure
+  * Centrum Iot hub w ramach Twojej subskrypcji
+  * Aplikacja kliencka, która wysyła komunikaty do Centrum Iot hub
+
+* [Pobierz narzędzia Git](https://www.git-scm.com/downloads)
 
 ## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 
 1. W [witryny Azure portal](https://portal.azure.com/), kliknij przycisk **Utwórz zasób** > **sieci Web i mobilność** > **aplikacji sieci Web**.
+
 2. Wprowadź unikatową nazwę zadania, sprawdź subskrypcję, określ grupę zasobów i lokalizację, wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie kliknij przycisk **Utwórz**.
 
-   Firma Microsoft zaleca, wybierz lokalizację, jak w przypadku grupy zasobów. Wykonanie tej czynności pomaga o szybkości przetwarzania co zmniejsza koszty transferu danych.
-
-   ![Tworzenie aplikacji internetowej](media/iot-hub-live-data-visualization-in-web-apps/2_create-web-app-azure.png)
+   Zaleca się wybrać tej samej lokalizacji co grupa zasobów. 
+   
+   ![Tworzenie aplikacji internetowej](./media/iot-hub-live-data-visualization-in-web-apps/2_create-web-app-azure.png)
 
 [!INCLUDE [iot-hub-get-started-create-consumer-group](../../includes/iot-hub-get-started-create-consumer-group.md)]
 
 ## <a name="configure-the-web-app-to-read-data-from-your-iot-hub"></a>Konfigurowanie aplikacji sieci web, które można odczytać danych z usługi IoT hub
 
 1. Otwórz aplikację sieci web, po prostu aprowizowanej.
+
 2. Kliknij przycisk **ustawienia aplikacji**, a następnie w obszarze **ustawienia aplikacji**, Dodaj następujące pary klucz/wartość:
 
    | Klucz                                   | Wartość                                                        |
@@ -65,11 +67,11 @@ W tym samouczku dowiesz się, jak wizualizować dane czujników w czasie rzeczyw
    | Azure.IoT.IoTHub.ConsumerGroup        | Nazwa grupy konsumentów, dodanego do usługi IoT hub  |
    | WEBSITE_NODE_DEFAULT_VERSION          | 8.9.4                                                        |
 
-   ![Dodawanie ustawień aplikacji sieci web za pomocą pary klucz/wartość](media/iot-hub-live-data-visualization-in-web-apps/4_web-app-settings-key-value-azure.png)
+   ![Dodawanie ustawień aplikacji sieci web za pomocą pary klucz/wartość](./media/iot-hub-live-data-visualization-in-web-apps/3_web-app-settings-key-value-azure.png)
 
 3. Kliknij przycisk **ustawienia aplikacji**w obszarze **ustawienia ogólne**, Przełącz **Web sockets** opcji, a następnie kliknij przycisk **Zapisz**.
 
-   ![Przełącz opcję gniazda sieci Web](media/iot-hub-live-data-visualization-in-web-apps/10_toggle_web_sockets.png)
+   ![Przełącz opcję gniazda sieci Web](./media/iot-hub-live-data-visualization-in-web-apps/4_toggle_web_sockets.png)
 
 ## <a name="upload-a-web-application-to-be-hosted-by-the-web-app"></a>Przekaż aplikację sieci web hostowane przez aplikację sieci web
 
@@ -77,13 +79,13 @@ W witrynie GitHub wprowadziliśmy dostępności aplikacji sieci web, która wyś
 
 1. W aplikacji sieci web kliknij **opcje wdrażania** > **wybierz źródło** > **lokalnego repozytorium Git**, a następnie kliknij przycisk **OK**.
 
-   ![Konfigurowanie wdrożenia aplikacji sieci web do użycia lokalnego repozytorium Git](media/iot-hub-live-data-visualization-in-web-apps/5_configure-web-app-deployment-local-git-repository-azure.png)
+   ![Konfigurowanie wdrożenia aplikacji sieci web do użycia lokalnego repozytorium Git](./media/iot-hub-live-data-visualization-in-web-apps/5_configure-web-app-deployment-local-git-repository-azure.png)
 
 2. Kliknij przycisk **poświadczenia wdrożenia**, Utwórz nazwę użytkownika i hasło do użycia, aby nawiązać połączenie z repozytorium Git na platformie Azure, a następnie kliknij przycisk **Zapisz**.
 
 3. Kliknij przycisk **Przegląd**i zanotuj wartość ustawienia **adres url klonowania Git**.
 
-   ![Pobierz adres URL klonowania Git aplikacji sieci web](media/iot-hub-live-data-visualization-in-web-apps/7_web-app-git-clone-url-azure.png)
+   ![Pobierz adres URL klonowania Git aplikacji sieci web](./media/iot-hub-live-data-visualization-in-web-apps/6_web-app-git-clone-url-azure.png)
 
 4. Otwórz polecenie lub okno terminalu na komputerze lokalnym.
 
@@ -103,16 +105,17 @@ W witrynie GitHub wprowadziliśmy dostępności aplikacji sieci web, która wyś
 
 Na **Przegląd** strony aplikacji sieci web, kliknij adres URL, aby otworzyć aplikację sieci web.
 
-![Pobierz adres URL aplikacji sieci web](media/iot-hub-live-data-visualization-in-web-apps/8_web-app-url-azure.png)
+![Pobierz adres URL aplikacji sieci web](./media/iot-hub-live-data-visualization-in-web-apps/7_web-app-url-azure.png)
 
 Powinien zostać wyświetlony w czasie rzeczywistym dane temperatury i wilgotności z usługi IoT hub.
 
-![Wyświetlanie w czasie rzeczywistym temperatury i wilgotności strona aplikacji internetowej](media/iot-hub-live-data-visualization-in-web-apps/9_web-app-page-show-real-time-temperature-humidity-azure.png)
+![Wyświetlanie w czasie rzeczywistym temperatury i wilgotności strona aplikacji internetowej](./media/iot-hub-live-data-visualization-in-web-apps/8_web-app-page-show-real-time-temperature-humidity-azure.png)
 
 > [!NOTE]
 > Upewnij się, że przykładowa aplikacja jest uruchomiona na urządzeniu. Jeśli nie, zostanie wyświetlony pusty wykres, możesz zapoznać się z samouczkami, w obszarze [skonfigurować na twoim urządzeniu](iot-hub-raspberry-pi-kit-node-get-started.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Aplikacji sieci web została pomyślnie użyta, wizualizowanie danych z czujników w czasie rzeczywistym z usługi IoT hub.
 
 Aby uzyskać alternatywny sposób wizualizować dane z usługi Azure IoT Hub, zobacz [usługa Power BI umożliwia wizualizowanie danych z czujników w czasie rzeczywistym z usługi IoT hub](iot-hub-live-data-visualization-in-power-bi.md).

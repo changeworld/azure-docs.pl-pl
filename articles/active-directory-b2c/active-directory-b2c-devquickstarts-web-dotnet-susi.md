@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/17/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 838717aa8f426ea54f4736453aac8c6fcf9a0099
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 1db805efe7eaec77fcafeb169b3d99098b57f582
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344501"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155767"
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Tworzenie aplikacji sieci web platformy ASP.NET za pomocą usługi Azure Active Directory B2C profilu rejestracji, logowania, edycji i resetowania haseł
 
@@ -153,7 +153,7 @@ public partial class Startup
 
 #### <a name="configure-the-authentication-middleware"></a>Konfigurowanie oprogramowania pośredniczącego uwierzytelniania
 
-Otwórz plik `App_Start\Startup.Auth.cs` i zaimplementować `ConfigureAuth(...)` metody. Parametry podane `OpenIdConnectAuthenticationOptions` służyć jako współrzędnych dla aplikacji do komunikowania się z usługą Azure AD B2C. Jeśli niektóre parametry nie jest określony, użyje wartości domyślnej. Na przykład firma Microsoft nie określaj `ResponseType` w przykładzie, więc wartość domyślna `code id_token` zostaną użyte na każde wychodzące żądanie do usługi Azure AD B2C.
+Otwórz plik `App_Start\Startup.Auth.cs` i zaimplementuj metodę `ConfigureAuth(...)`. Parametry podane `OpenIdConnectAuthenticationOptions` służyć jako współrzędnych dla aplikacji do komunikowania się z usługą Azure AD B2C. Jeśli niektóre parametry nie jest określony, użyje wartości domyślnej. Na przykład firma Microsoft nie określaj `ResponseType` w przykładzie, więc wartość domyślna `code id_token` zostaną użyte na każde wychodzące żądanie do usługi Azure AD B2C.
 
 Należy również skonfigurować uwierzytelniania plików cookie. Oprogramowania pośredniczącego OpenID Connect używa plików cookie w celu zachowania sesji użytkownika, między innymi.
 
@@ -195,7 +195,7 @@ public partial class Startup
                     NameClaimType = "name"
                 },
 
-                // Specify the scope by appending all of the scopes requested into one string (seperated by a blank space)
+                // Specify the scope by appending all of the scopes requested into one string (separated by a blank space)
                 Scope = $"openid profile offline_access {ReadTasksScope} {WriteTasksScope}"
             }
         );
@@ -369,7 +369,7 @@ public ActionResult Claims()
   ...
 ```
 
-### <a name="display-user-information"></a>Wyświetlaj informacje o użytkowniku
+### <a name="display-user-information"></a>Wyświetlanie informacji o użytkowniku
 
 Podczas uwierzytelniania użytkowników za pomocą protokołu OpenID Connect, usługi Azure AD B2C zwraca tokenu Identyfikacyjnego aplikacja, która zawiera **oświadczeń**. Są to asercje o użytkowniku. Korzystanie z oświadczeń, aby spersonalizować Twojej aplikacji.
 

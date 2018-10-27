@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: d2ed07be829e48cc4fc0538c08fd498dea99e71e
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: ad77f1f0a99fbdb355163e1bc83461c8c4eb75fa
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985179"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157704"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Łączność urządzeń w usłudze Azure IoT Central
 
@@ -102,7 +102,7 @@ Aby zbiorczo eksportu urządzenia z poziomu aplikacji:
 1.  Wybierz urządzenia, które chcesz wyeksportować, a następnie kliknij przycisk **wyeksportować** akcji.
 1.  Po zakończeniu eksportu, komunikat o powodzeniu jest wyświetlany wraz z linkiem do pobrania wygenerowany plik.
 1.  Kliknij komunikat o powodzeniu, aby pobrać plik do lokalnego folderu na dysku.
-1.  Wyeksportowany plik CSV będzie zawierał następujące informacje kolumn: **identyfikator urządzenia, nazwę urządzenia, klucze Priamary/droga urządzeń i podstawowy/pomocniczy thumbrpints certyfikatu**
+1.  Wyeksportowany plik CSV będzie zawierał następujące informacje kolumn: **identyfikator urządzenia, nazwę urządzenia, klucze podstawowe i pomocnicze urządzeń i podstawowy/pomocniczy odciski palców certyfikatu**
     *   IOTC_DEVICEID
     *   IOTC_DEVICENAME
     *   IOTC_SASKEY_PRIMARY
@@ -200,7 +200,7 @@ Postępuj zgodnie z instrukcjami na podstawie wybranego schematu uwierzytelniani
         npm i -g dps-keygen
         ```
     
-        **Sposób użycia**
+        **Użycie**
                         
         ```
         dps-keygen <Primary_Key(GroupSAS)> <device_id>
@@ -240,7 +240,7 @@ Możesz uzyskać parametry połączenia Centrum Iot hub urządzenia do usługi A
     ```cmd/sh
     npm i -g dps-keygen
     ```
-    **Sposób użycia**
+    **Użycie**
 
     Aby utworzyć parametry połączenia, należy znaleźć pliku binarnego w bin / folder
     ```cmd/sh

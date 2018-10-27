@@ -7,140 +7,113 @@ author: diberry
 manager: cgronlun
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 10/24/2018
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 9b7207a16a89e48ad64b2dbc48a5293d0cf8aa25
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 495b7e99319126b3ee9e655b2d9aa4af940e1d56
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036086"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139925"
 ---
-# <a name="manage-intents"></a>Zarządzanie opcjami 
-Dodaj [intencji](luis-concept-intent.md) z aplikacją usługi LUIS do identyfikowania grup pytania lub polecenia, które mają ten sam intencji. 
+# <a name="add-intents"></a>Dodawanie intencji 
 
-Intencji odbywa się z **kompilacji** sekcji na górnym pasku narzędzi. Dodaj i Zarządzaj Twoje intencje z **intencji** strony, dostępne w panelu po lewej stronie. 
+Dodaj [intencji](luis-concept-intent.md) z aplikacją usługi LUIS do identyfikowania grup pytania lub polecenia, które mają ten sam zamiar. 
 
-W poniższej procedurze przedstawiono sposób dodawania celem "Bookflight" w aplikacji TravelAgent.
+Intencji odbywa się na pasku górnym menu nawigacyjnym **kompilacji** sekcji, a następnie w panelu po lewej stronie **intencji**. 
+
+## <a name="create-an-app"></a>Tworzenie aplikacji
+
+1. Zaloguj się do [LUIS](https://www.luis.ai) portalu.
+
+1. Wybierz opcję **Create new app** (Utwórz nową aplikację). 
+
+1. Nadaj nazwę nowej aplikacji `MyHumanResourcesApp`. Wybierz **angielski** kultury. Długość opisu jest opcjonalne. 
+
+1. Wybierz pozycję **Done** (Gotowe). 
 
 ## <a name="add-intent"></a>Dodawanie intencji
 
-1. Otwórz aplikację (na przykład TravelAgent), klikając jego nazwę **Moje aplikacje** strony, a następnie kliknij przycisk **intencji** w panelu po lewej stronie. 
-2. Na **intencji** kliknij **Utwórz nowy opcję**.
+1. Zostanie otwarta aplikacja **intencji** listy.
 
-3. W **Utwórz nowy opcję** okno dialogowe, typ zamiar nazwę "BookFlight" i kliknij przycisk **gotowe**.
+1. Na stronie **Intents** (Intencje) wybierz pozycję **Create new intent** (Utwórz nową intencję).
+
+1. W **Utwórz nowy opcję** okna dialogowego wprowadź nazwę elementu intent `GetEmployeeInformation`i kliknij przycisk **gotowe**.
 
     ![Dodawanie intencji](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
 
-    Na stronie szczegółów elementu intent nowo dodanych zamiar [Dodawanie wypowiedzi](#add-an-utterance-on-intent-page).
+## <a name="add-an-example-utterance"></a>Dodaj wypowiedź przykład
 
-## <a name="rename-intent"></a>Zmień nazwę intencji
+Przykład wypowiedzi są przykładami tekst pytania użytkownika lub poleceń. Aby nauczyć Language Understanding (LUIS), należy dodać wypowiedzi przykład do intencji.
 
-1. Na **intencji** kliknij ikona zmiany nazwy ![celem zmiany nazwy](./media/luis-how-to-add-intents/Rename-Intent-btn.png) obok nazwy metody konwersji. 
-
-2. Na **intencji** bieżąca nazwa intencji stronie jest wyświetlany w oknie dialogowym. Edytuj nazwę metody konwersji, a następnie naciśnij klawisz enter. Nowa nazwa zapisać i wyświetlić na stronie opcji.
-
-    ![Edytuj opcje](./media/luis-how-to-add-intents/EditIntent-dialogbox.png)
-
-## <a name="delete-intent"></a>Usuń intencji
-Podczas usuwania intencji innego niż None intencji, można dodać wszystkie wypowiedzi intencji None. Jest to przydatne, jeśli musisz przenieść wypowiedzi zamiast ich usuwania.   
-
-1. Na **intencji** kliknij **zamiar usunięcia** przycisk znajdujący się obok z prawej strony nazwy metody konwersji. 
-
-    ![Usuwanie przycisku opcji](./media/luis-how-to-add-intents/DeleteIntent.png)
-
-2. Kliknij przycisk "Ok" w oknie dialogowym potwierdzenia.
-
-<!--
-    TBD: waiting for confirmation about which delete dialog is going to be in //BUILD
-
-    ![Delete Intent Dialog](./media/luis-how-to-add-intents/DeleteIntent-Confirmation.png)
--->
-
-
-## <a name="add-an-utterance-on-intent-page"></a>Dodaj wypowiedź na stronie intencji
-
-Na stronie intencji, wprowadź odpowiednie wypowiedź, można oczekiwać od użytkowników, takie jak `book 2 adult business tickets to Paris tomorrow on Air France` w polu tekstowym pod nazwę metody konwersji, a następnie naciśnij klawisz Enter. 
+1. Na **GetEmployeeInformation** intencji szczegółów wpisz odpowiednie wypowiedź, można oczekiwać od użytkowników, takie jak `Does John Smith work in Seattle?` w polu tekstowym pod nazwę metody konwersji, a następnie naciśnij klawisz Enter.
  
->[!NOTE]
->Usługa LUIS konwertuje wszystkie wypowiedzi na małe litery.
+    ![Strona Szczegóły zrzut ekranu z opcjami, z wyróżnioną pozycją wypowiedź](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
 
-![Strona Szczegóły zrzut ekranu z opcjami, z wyróżnioną pozycją wypowiedź](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
+    Usługa LUIS konwertuje wszystkie wypowiedzi na małe litery i dodaje odstępy dookoła tokenów, takich jak łączniki.
 
-Wypowiedzi są dodawane do listy wypowiedzi dla bieżącego intencji. Po dodaniu wypowiedź [etykietę dowolnej jednostki](luis-how-to-add-example-utterances.md) w ramach wypowiedzi i [szkolenie](luis-how-to-train.md) aplikacji. 
+## <a name="intent-prediction-discrepancy-errors"></a>Błędy niezgodności prognozowania intencji 
 
-## <a name="create-a-pattern-from-an-utterance"></a>Tworzenie wzorca z wypowiedź
-Zobacz [Dodaj wzorca od istniejących wypowiedź przeznaczenie lub jednostki strony](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page).
+Wypowiedź w intencji może być rozbieżności intencji prognozowania metodę konwersji i ocenianie prognozy. Usługa LUIS wskazuje tę rozbieżność z czerwoną otoczkę wokół pozycji **etykietą intencji** w wierszu wypowiedź przykładu. 
 
-## <a name="edit-an-utterance-on-intent-page"></a>Edytuj wypowiedź na stronie intencji
+![Strona Szczegóły zrzut ekranu z opcjami, z wyróżnioną pozycją wypowiedź](./media/luis-how-to-add-intents/prediction-discrepancy-intent.png) 
 
-Aby edytować wypowiedź, wybierz przycisk wielokropka (***...*** ) przycisk po prawej stronie wiersza dla tego wypowiedź, a następnie wybierz **Edytuj**. Modyfikowanie tekstu, a następnie naciśnij klawisz Enter na klawiaturze.
+W górnym menu nawigacyjnym wybierz **Train**. Niezgodność Prognozowanie jest teraz usunięte.
 
-![Strona Szczegóły zrzut ekranu z opcjami, z wyróżnionym przyciskiem wielokropka](./media/luis-how-to-add-intents/edit-utterance.png) 
+## <a name="add-a-custom-entity"></a>Dodaj jednostki niestandardowej
 
-## <a name="reassign-utterances-on-intent-page"></a>Ponowne przypisywanie wypowiedzi na stronie intencji
-Celem co najmniej jeden wypowiedzi można zmienić, przypisując im inną intencji. 
+Po dodaniu wypowiedź intencji możesz zaznaczyć tekst z w ramach wypowiedź, aby utworzyć jednostkę niestandardową. Jednostki niestandardowej jest sposobem tekst tag do wyodrębnienia, wraz z poprawną intencji. 
 
-Aby ponownie przypisać jednego wypowiedź do innego zamiaru na prawym końcu wiersza wypowiedź wybierz poprawną nazwę metody konwersji, w obszarze **etykietą intencji** kolumny. Wypowiedź jest usuwany z bieżącym celem wypowiedź listy. 
+1. Wybierz wyraz, `Seattle`, w polu wypowiedź. Nawiasy kwadratowe są rysowane wokół tekstu, a następnie zostanie wyświetlone menu rozwijanego. 
 
-![Zrzut ekranu BookFlight intencji strony z zamiarem wypowiedź w kolumnie Labeled intencji wybrane](./media/luis-how-to-add-intents/reassign-1-utterance.png)
+    ![Strona szczegółów zrzut ekranu z opcjami, tworzenie jednostki niestandardowej](./media/luis-how-to-add-intents/create-custom-entity.png) 
 
-Aby zmienić celem kilka wypowiedzi, zaznacz pola wyboru po lewej stronie wypowiedzi, a następnie wybierz **ponownie przypisać intencji**. Wybierz prawidłowe opcje z listy.
+    W tym przykładzie wybiera pojedynczego wyrazu w celu oznaczenia jako jednostki. Jednostki można określić pojedynczy działa i fraz.
 
-![Zrzut ekranu BookFlight intencji strony wypowiedź zaznaczone i wyróżnionym przyciskiem intencji ponownego przypisania](./media/luis-how-to-add-intents/delete-several-utterances.png) 
+1. W polu u góry tekstu — menu, wprowadź `Location`, a następnie wybierz **Utwórz nową jednostkę**. 
 
-## <a name="delete-utterances-on-intent-page"></a>Usuń wypowiedzi na stronie intencji
+    ![Strona szczegółów zrzut ekranu z opcjami, tworzenie jednostki niestandardowej o nazwie](./media/luis-how-to-add-intents/create-custom-entity-name.png) 
 
-Aby usunąć wypowiedź, wybierz przycisk wielokropka (***...*** ) przycisk po prawej stronie wiersza dla tego wypowiedź, a następnie wybierz **Usuń**. Wypowiedź jest usuwany z listy i aplikacji usługi LUIS.
+1. W **jakiego typu jednostki, czy chcesz utworzyć?** okno podręczne tworzenia jednostki, sprawdzić, czy **nazwa jednostki** jest _lokalizacji_i **typ jednostki**  jest _proste_. Wybierz pozycję **Done** (Gotowe).
 
-![Strona Szczegóły zrzut ekranu z opcjami, z podświetloną opcją Delete](./media/luis-how-to-add-intents/delete-utterance-ddl.png)
+## <a name="entity-prediction-discrepancy-errors"></a>Błędy niezgodności prognozowania jednostki 
 
-Aby usunąć kilka wypowiedzi:
+Jednostka jest podkreślone na czerwono, aby wskazać [rozbieżność prognozowania jednostki](luis-how-to-add-example-utterances.md#entity-status-predictions). Ponieważ jest to pierwsze wystąpienie jednostki, nie są wystarczająco dużo przykłady dla usługi LUIS mieć o wysokim poziomie pewności oznakowaną ten tekst z poprawną jednostką. Ta niezgodność zostanie usunięta, gdy aplikacja jest uczony. 
 
-1. Zaznacz pola wyboru po lewej stronie wypowiedzi, a następnie wybierz **usuwania wypowiedzi (s)**. 
+![Strona szczegółów zrzut ekranu z opcjami, nazwa jednostki niestandardowej wyróżnione na niebiesko](./media/luis-how-to-add-intents/create-custom-entity-name-blue-highlight.png) 
 
-    ![Strona szczegółów zrzut ekranu z opcjami, z wypowiedzi zaznaczone, a także usunąć utterance(s) wyróżnionym](./media/luis-how-to-add-intents/delete-several-utterances.png)
+Tekst zostanie wyróżniony kolorem niebieskim, wskazując jednostki.  
 
-2. Wybierz **gotowe** w **usuwania wypowiedzi?** wyskakującego okna dialogowego.
+## <a name="add-a-prebuilt-entity"></a>Dodawanie wstępnie utworzone jednostki
 
-## <a name="search-in-utterances-on-intent-page"></a>Wyszukiwanie w wypowiedzi na stronie intencji
-Możesz wyszukać wypowiedzi, które zawierają tekst (słów i fraz) na liście wypowiedź intencji. Na przykład można zauważyć błąd, który obejmuje określony wyraz i chcesz znaleźć wszystkie przykłady, które zawierają konkretnego wyrazu. 
+Aby uzyskać informacje, zobacz [wstępnie utworzone jednostki](luis-how-to-add-entities.md#add-prebuilt-entity).
 
-1. Na pasku narzędzi, wybierz ikonę lupy.
+## <a name="using-the-contextual-toolbar"></a>Korzystanie z kontekstowych paska narzędzi
 
-    ![Zrzut ekranu z opcjami strony wyszukiwania ikonę lupy wyróżniony](./media/luis-how-to-add-intents/magnifying-glass.png)
+Po wybraniu na liście co najmniej jeden wypowiedzi przykład przez zaznaczenie pola wyboru po lewej stronie wypowiedź narzędzi powyżej listy wypowiedź można wykonywać następujące czynności:
 
-2. Pojawi się pole tekstowe wyszukiwania. Wpisz wyraz lub frazę w polu wyszukiwania w prawym górnym rogu listy wypowiedzi. Wypowiedzi listę aktualizacji, aby wyświetlić tylko wypowiedzi zawierające szukany tekst. 
+* Ponowne przypisywanie intencji: przenoszenie utterance(s) do innego zamiaru
+* Usuń utterance(s)
+* Filtry jednostki: Pokaż tylko wypowiedzi zawierający filtrowane jednostkę
+* Pokaż wszystkie / tylko błędy: Pokaż wypowiedzi z błędami prognozy lub Pokaż wszystkie wypowiedzi
+* Wyświetl jednostki/tokenów: Pokaż widok jednostek przy użyciu nazwy podmiotu lub pokazać nieprzetworzony tekst wypowiedź
+* Lupa: Wyszukaj wypowiedzi zawierających określony tekst
 
-    ![Zrzut ekranu z opcjami zawierającej wyróżnione pole tekstowe wyszukiwania](./media/luis-how-to-add-intents/search-textbox.png)
+## <a name="working-with-an-individual-utterance"></a>Praca z poszczególnych wypowiedź
 
-    Aby anulować wyszukiwania i przywrócić pełną listę wypowiedzi, Usuń został wpisany tekst wyszukiwania. Aby zamknąć pole tekstowe wyszukiwania, ponownie wybierz ikonę lupy w pasku narzędzi.
+Następujące akcje można wykonać na poszczególnych wypowiedź z menu wielokropka z prawej strony wypowiedź:
 
-## <a name="prediction-discrepancy-errors-on-intent-page"></a>Błędy niezgodności prognoz na stronie intencji
-Wypowiedź w intencji może być rozbieżności między metodę konwersji i ocena prognozy. Usługa LUIS wskazuje tę rozbieżność z czerwoną otoczkę wokół pozycji wynik. 
+* Edytuj: Zmień tekst wypowiedź
+* Usuń: Usuń wypowiedź z zamiarem. Jeśli chcesz nadal wypowiedź, lepszą metodą jest przenieść ją do **Brak** intencji. 
+* Dodawanie wzorca: wzorzec pozwala wykonać typowe wypowiedź i oznaczyć wymienne tekst i tekstu można zignorować, zmniejszając potrzebę więcej wypowiedzi w celu. 
 
-![Zrzut ekranu BookFlight intencji zawierającej wynik rozbieżność prognozowania wyróżniony](./media/luis-how-to-add-intents/score-discrepancy.png) 
-
-## <a name="filter-by-intent-prediction-discrepancy-errors-on-intent-page"></a>Filtruj według intencji prognozowania rozbieżność błędy na stronie intencji
-Aby filtrować listę wypowiedź do tylko wypowiedzi z rozbieżność intencji prognozowania, Przełącz z **Pokaż wszystko** do **tylko błędy** na pasku narzędzi. 
-
-## <a name="filter-by-entity-type-on-intent-page"></a>Filtruj według typu jednostki, na stronie intencji
-Użyj **filtry jednostki** listy rozwijanej na pasku narzędzi, aby filtrować wypowiedzi przez jednostkę. 
-
-![Zrzut ekranu z opcjami zawierającej wyróżnione filtr typu jednostki](./media/luis-how-to-add-intents/filter-by-entities.png) 
-
-Aby usunąć filtr, zaznacz pole filtru niebieski za pomocą tego wyrazu lub frazy w pasku narzędzi.  
-<!-- TBD: waiting for ux fix - bug in ux of prebuit entity number -- when filtering by it, it doesn't show the list -->
-
-## <a name="switch-to-token-view-on-intent-page"></a>Przełącz na widok tokenów na stronie intencji
-Przełącz **widoku tokenów** do wyświetlania tokeny zamiast nazw typu jednostki. Na klawiaturze, można również użyć **formantu + E** do przełączenia widoku. 
-
-![Zrzut ekranu BookFlight celem przy użyciu tokenu widoku wyróżniony](./media/luis-how-to-add-intents/toggle-tokens-view.png)
+**Etykietą intencji** kolumny pozwala zmienić opcje wypowiedź.
 
 ## <a name="train-your-app-after-changing-model-with-intents"></a>Uczenie aplikacji po zmianie modelu z opcjami
-Po Dodawanie, edytowanie lub usuwanie intencji, [szkolenie](luis-how-to-train.md) i [publikowania](luis-how-to-publish-app.md) aplikacji zmiany wpływają na zapytania punktu końcowego. 
+
+Po Dodawanie, edytowanie lub usuwanie intencji, [szkolenie](luis-how-to-train.md) i [publikowania](luis-how-to-publish-app.md) aplikację tak, aby zmiany zostaną zastosowane do endpoint zapytań. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Po dodaniu intencji do swojej aplikacji, z kolejnym krokiem jest rozpocząć dodawanie [wypowiedzi przykład](luis-how-to-add-example-utterances.md) dla intencji zostały dodane. 
+Dowiedz się więcej na temat dodawania [wypowiedzi przykład](luis-how-to-add-example-utterances.md) z jednostkami. 

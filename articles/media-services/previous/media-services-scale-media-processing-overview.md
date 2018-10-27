@@ -4,22 +4,21 @@ description: W tym temacie przedstawiono omówienie skalowanie przetwarzania mul
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
-ms.assetid: 780ef5c2-3bd6-4261-8540-6dee77041387
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 10/25/2018
 ms.author: juliako
-ms.openlocfilehash: 698a85244d5341224dd9f513c5617b9086e36844
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1d626a22802a1de19bcc5647179d76d44e826cfd
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033077"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50159047"
 ---
 # <a name="scaling-media-processing-overview"></a>Skalowanie przetwarzania multimediów — omówienie
 Ta strona zawiera omówienie, jak i dlaczego skalowanie przetwarzania multimediów. 
@@ -32,11 +31,11 @@ Oprócz określenia typu jednostki zarezerwowanej, można określić aprowizacj�
 ## <a name="choosing-between-different-reserved-unit-types"></a>Wybieranie między różnych zastrzeżonych typów jednostek
 Poniższa tabela pomaga Ci w podjęciu decyzji, wybierając między różne szybkości kodowania. Zawiera także kilka przypadków testów porównawczych na [film wideo, który można pobrać](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z) przeprowadzić własne testy:
 
-| Scenariusze | **S1** | **S2** | **S3** |
-| --- | --- | --- | --- |
-| Zamierzone zastosowanie |Pojedyncza szybkość transmisji bitów kodowania. <br/>Pliki SD większa niż rozwiązania, nie raz poufnych, niskich kosztów. |Pojedyncza szybkość transmisji bitów i wielu kodowanie szybkości transmisji bitów.<br/>Normalnego użycia na potrzeby SD i HD kodowania. |Pojedyncza szybkość transmisji bitów i wielu kodowanie szybkości transmisji bitów.<br/>Pełne HD i 4K rozdzielczości wideo. Czas przetwarzania poufnych, szybsze kodowanie. |
-| Test porównawczy dla 7-minutowy klip wideo |Kodowanie do pojedynczego pliku MP4, w tym samym rozdzielczości transmisji bitów trwa około 5 minut. |Za pomocą "Pojedynczy szybkość transmisji bitów H264 720p" ustawienie wstępne kodowania zajmuje około 8 minut.<br/><br/>Kodowanie za pomocą "H264 szybkość transmisji bitów h264 720p" ustawienie wstępne zajmuje około 16,8 minut. |Za pomocą "Pojedynczy szybkość transmisji bitów H264 1080p" ustawienie wstępne kodowania zajmuje około 4 minuty.<br/><br/>Kodowanie za pomocą "H264 szybkość transmisji bitów h264 1080p" ustawienie wstępne zajmuje około 8 minut. |
-
+|Typ jednostek|Scenariusz|Przykładowe wyniki dla [7 min 1080 p wideo](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z)|
+|---|---|---|
+| **S1**|Pojedyncza szybkość transmisji bitów kodowania. <br/>Pliki SD większa niż rozwiązania, nie raz poufnych, niskich kosztów.|Kodowanie do pojedynczego pliku MP4, w tym samym rozdzielczości transmisji bitów trwa około 5 minut.|
+| **S2**|Pojedyncza szybkość transmisji bitów i wielu kodowanie szybkości transmisji bitów.<br/>Normalnego użycia na potrzeby SD i HD kodowania.|Za pomocą "Pojedynczy szybkość transmisji bitów H264 720p" ustawienie wstępne kodowania zajmuje około 8 minut.<br/><br/>Kodowanie za pomocą "H264 szybkość transmisji bitów h264 720p" ustawienie wstępne zajmuje około 16,8 minut.|
+| **S3**|Pojedyncza szybkość transmisji bitów i wielu kodowanie szybkości transmisji bitów.<br/>Pełne HD i 4K rozdzielczości wideo. Czas przetwarzania poufnych, szybsze kodowanie.|Za pomocą "Pojedynczy szybkość transmisji bitów H264 1080p" ustawienie wstępne kodowania zajmuje około 4 minuty.<br/><br/>Kodowanie za pomocą "H264 szybkość transmisji bitów h264 1080p" ustawienie wstępne zajmuje około 8 minut.|
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 > [!IMPORTANT]

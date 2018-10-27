@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: e2f9bee2adcebfd47ca088a1bbe76b870e285044
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: b0f4ef5079ac689827cb49884fa1c6a51529ea83
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580443"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140353"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Rozpoczynanie pracy z usługą Azure WebJobs SDK, przetwarzanie w tle oparte na zdarzeniach
 
@@ -182,7 +182,7 @@ W tej sekcji służy do konfigurowania rejestrowania konsoli, która korzysta z 
 
 Emulator usługi Azure Storage, który jest uruchamiany lokalnie, nie ma wszystkie funkcje, których potrzebuje, zestaw SDK zadań Webjob. Dlatego w tej sekcji Tworzenie konta magazynu na platformie Azure i skonfiguruj projekt, aby go użyć.
 
-1. Otwórz **Eksploratora serwera** i zaloguj się do platformy Azure. Kliknij prawym przyciskiem myszy **Azure** węzeł, a następnie wybierz **nawiązywanie połączenia z subskrypcją platformy Microsoft Azure**.
+1. Otwórz **Eksploratora serwera** w programie Visual studio i zaloguj się do platformy Azure. Kliknij prawym przyciskiem myszy **Azure** węzeł, a następnie wybierz **nawiązywanie połączenia z subskrypcją platformy Microsoft Azure**.
 
    ![Logowanie do platformy Azure](./media/webjobs-sdk-get-started/sign-in.png)
 
@@ -245,7 +245,7 @@ W tej sekcji Tworzenie i uruchamianie projektu lokalnie i wyzwolenia funkcji prz
 
 1. Zamknij okno konsoli.
 
-1. W **Eksploratora serwera**, rozwiń węzeł dla nowego konta magazynu, a następnie kliknij prawym przyciskiem myszy **kolejek**. 
+1. W **Eksploratora serwera** w programie Visual Studio, rozwiń węzeł dla nowego konta magazynu, a następnie kliknij prawym przyciskiem myszy **kolejek**. 
 
 1. Wybierz **Utwórz kolejkę**. 
 
@@ -310,7 +310,7 @@ W tej sekcji należy wykonać następujące zadania, aby skonfigurować rejestro
 
 ### <a name="configure-app-settings"></a>Konfigurowanie ustawień aplikacji 
 
-1. W **Eksploratora serwera**, rozwiń węzeł **usługi App Service** węźle **Azure**.
+1. W **Eksploratora serwera** w programie Visual Studio rozwiń **usługi App Service** węźle **Azure**.
 
 1. Rozwiń grupę zasobów, który znajduje się w aplikacji usługi app Service, a następnie kliknij prawym przyciskiem myszy aplikację usługi App Service.
 
@@ -396,7 +396,7 @@ W tej sekcji należy wykonać następujące zadania, aby skonfigurować rejestro
 
 W tej sekcji uruchamiasz lokalnie ponownie, aby sprawdzić, czy dane rejestrowania posłuży do Application Insights do konsoli.
 
-1. Użyj **Eksploratora serwera** do utworzenia komunikatu w kolejce, tak samo jak [wcześniej](#trigger-the-function), z wyjątkiem wprowadź *Hello usługi App Insights!* jako tekst komunikatu.
+1. Użyj **Eksploratora serwera** w programie Visual Studio do utworzenia komunikatu w kolejce, tak samo jak [wcześniej](#trigger-the-function), z wyjątkiem wprowadź *Hello usługi App Insights!* jako tekst komunikatu.
 
 1. Uruchom projekt.
 
@@ -442,7 +442,6 @@ W tej sekcji możesz wdrożyć projekt jako zadanie WebJob. Wdrażania aplikacji
 
 1. Upewnij się, że nie jest uruchomiony lokalnie (Zamknij w oknie konsoli, jeśli jest nadal otwarty). W przeciwnym razie lokalne wystąpienie może być pierwszym przetwarzać komunikatów kolejki utworzonej.
 
-1. Użyj **Eksploratora serwera** do utworzenia komunikatu w kolejce, tak samo jak [wcześniej](#trigger-the-function), z wyjątkiem wprowadź *Hello Azure!*.
 
 1. Odśwież **kolejki** strony w programie Visual Studio i nowy komunikat zniknął, ponieważ funkcja działa w usłudze Azure App Service przetworzyć go.
 
@@ -485,7 +484,7 @@ Powiązania danych wejściowych uprościć kod, który odczytuje dane. W tym prz
 
 1. Utwórz kontener obiektów blob na koncie magazynu.
 
-   a. W **Eksploratora serwera**, rozwiń węzeł dla konta magazynu, kliknij prawym przyciskiem myszy **obiektów blob**, a następnie wybierz pozycję **Utwórz kontener obiektów Blob**.
+   a. W **Eksploratora serwera** w programie Visual Studio, rozwiń węzeł dla konta magazynu, kliknij prawym przyciskiem myszy **obiektów blob**, a następnie wybierz pozycję **Utwórz kontener obiektów Blob**.
 
    b. W **Utwórz kontener obiektów Blob** okno dialogowe, wprowadź *kontenera* nazwę kontenera, a następnie kliknij przycisk **OK**.
 

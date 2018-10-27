@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: eb5d1ee88fc95f7d02842ea089f65c6d17a6d69d
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 127f6a5cd8f46b72a4cddcef09cb31b60edd0582
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091745"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157194"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Dostęp do pulpitu nawigacyjnego sieci web rozwiązania Kubernetes w usłudze Azure Kubernetes Service (AKS)
 
@@ -34,8 +34,8 @@ Aby uruchomić Pulpit nawigacyjny platformy Kubernetes, należy użyć [Przeglą
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
-> [!NOTE]
-> Jeśli używasz tego polecenia z usługi Azure Cloud Shell, należy dodać `--enable-cloud-console-aks-browse` parametru, aby mogli otworzyć pulpitu nawigacyjnego.
+> [!TIP]
+> Po uruchomieniu tego polecenia z usługi Azure Cloud Shell Dodaj `--enable-cloud-console-aks-browse` parametru, aby poprawnie Otwórz pulpit nawigacyjny.
 
 To polecenie tworzy serwer proxy między systemu dla deweloperów i interfejsu API rozwiązania Kubernetes i otworzy w przeglądarce sieci web pulpitu nawigacyjnego platformy Kubernetes. Przeglądarki sieci web nie zostanie otwarta do pulpitu nawigacyjnego rozwiązania Kubernetes, skopiuj i wklej adres URL zanotowanym w wiersza polecenia platformy Azure, zwykle *http://127.0.0.1:8001*.
 

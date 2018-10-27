@@ -3,7 +3,7 @@ title: 'Usługa Azure AD Domain Services: Porównanie usługi Azure AD Domain Se
 description: Porównanie usługi Azure Active Directory Domain Services do kontrolerów domeny możesz
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 165249d5-e0e7-4ed1-aa26-91a05a87bdc9
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/07/2017
-ms.author: maheshu
-ms.openlocfilehash: acb125ef807193e79e45bca7e217efe3ffb31698
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: f7455076d59e447ade9c15203593d260cf676894
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505954"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155801"
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>Jak zdecydować, jeśli usługi Azure AD Domain Services jest odpowiednia dla danego przypadku użycia
 Za pomocą usług domenowych Azure AD można wdrożyć obciążenia w usługach infrastruktury platformy Azure, bez konieczności martwienia się o konserwacja infrastruktury tożsamości na platformie Azure. To zarządzana usługa różni się od typowego wdrożenia usługi Active Directory systemu Windows Server, które wdrażania i administrowania na własną rękę. Usługa jest łatwa do wdrożenia i zapewnia monitorowanie kondycji zautomatyzowane i korygowania. Firma Microsoft stale ewoluuje usługę, aby dodać obsługę typowych scenariuszy wdrażania.

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: geg
-ms.openlocfilehash: 450314dddd49825bae689701b694f9a26758835e
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 5812bafbcfa104150325dcdde374f88200b071c0
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377643"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155205"
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Przywracanie maszyn wirtualnych za pomocą witryny Azure portal
 Chroń swoje dane, tworząc migawki danych w określonych odstępach czasu. Te migawki są nazywane punktami odzyskiwania i są one przechowywane w magazynach usługi Recovery Services. Jeśli jest to konieczne naprawić lub ponownie utworzyć maszynę wirtualną (VM), można przywrócić maszynę Wirtualną z dowolnego z punktów odzyskiwania zapisanych. Przywracanie punktu odzyskiwania, możesz wykonywać następujące czynności:
@@ -151,7 +151,7 @@ Na **przywracania konfiguracji** bloku wybierz **OK** aby zakończyć konfigurow
 W **miejscu Przywróć** jest wykonywana za pomocą karty **Zastąp istniejący**.
 
 ## <a name="replace-existing-disks-from-a-restore-point"></a>Zastąp istniejące dyski z punktu przywracania
-**Zamień istniejące** opcji pozwala zastąpić istniejące dyski na maszynie wirtualnej i bieżący punkt przywracania. Tę operację można wykonać tylko, jeśli istnieje w bieżącej maszyny Wirtualnej. Jeśli została ona usunięta z powodów wszelkie, nie można wykonać tej operacji; Alternatywnie, zaleca się, należy wykonać **Utwórz nową** operacje przywracania maszyny Wirtualnej lub dysków, aby kontynuować. Podczas zastępuje istniejące operacje dyski, jako środek zapobiegawczy możemy tworzyć kopie zapasowe danych przed inicjowanie zamiany dysków operacji. Jeśli punkt przywracania dysków więcej/mniejszości bieżącej maszyny Wirtualnej, a następnie liczbę dysków w punkcie przywracania będzie odzwierciedlają tylko na maszynie wirtualnej. Zastąp istniejącą opcję jest obecnie obsługiwane w przypadku tylko dyski Managed Disks i niezaszyfrowanego maszyn wirtualnych.  
+**Zamień istniejące** opcji pozwala zastąpić istniejące dyski na maszynie wirtualnej i bieżący punkt przywracania. Tę operację można wykonać tylko, jeśli istnieje w bieżącej maszyny Wirtualnej. Jeśli została ona usunięta z powodów wszelkie, nie można wykonać tej operacji; Alternatywnie, zaleca się, należy wykonać **Utwórz nową** operacje przywracania maszyny Wirtualnej lub dysków, aby kontynuować. Podczas zastępuje istniejące operacje dyski, jako środek zapobiegawczy możemy tworzyć kopie zapasowe danych przed inicjowanie zamiany dysków operacji. Jeśli punkt przywracania dysków więcej/mniejszości bieżącej maszyny Wirtualnej, a następnie liczbę dysków w punkcie przywracania będzie odzwierciedlają tylko na maszynie wirtualnej. **Zamień istniejące** opcja jest obecnie obsługiwane dla dysków niezarządzanych i zaszyfrowanych maszyn wirtualnych. Nie jest również obsługiwana dla [uogólniony maszyn wirtualnych](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) i maszyn wirtualnych utworzonych za pomocą [obrazów niestandardowych](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/).  
 
  Na **przywracania konfiguracji** jest tylko dane wejściowe, które są potrzebne do wybrania bloku **Lokalizacja tymczasowa**.
 

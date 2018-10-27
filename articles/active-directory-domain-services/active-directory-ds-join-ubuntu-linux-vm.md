@@ -3,7 +3,7 @@ title: 'Usługa Azure Active Directory Domain Services: Dołącz Maszynę wirtua
 description: Przyłączanie maszyny wirtualnej z systemem Ubuntu Linux do usługi Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 804438c4-51a1-497d-8ccc-5be775980203
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
-ms.author: maheshu
-ms.openlocfilehash: 645e1eaedf3832b384a174d9f9ede5ea835047cd
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: 709c227c955aba6b31ce415767470fa18ff3684f
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502971"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155273"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Dołączanie maszyny wirtualnej systemu Ubuntu na platformie Azure do domeny zarządzanej
 W tym artykule pokazano, jak dołączyć maszynę wirtualną Ubuntu Linux do domeny zarządzanej usług domenowych Azure AD.

@@ -1,3 +1,16 @@
+---
+author: rayne-wiselman
+ms.service: site-recovery
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: raynew
+ms.openlocfilehash: 290bca5f3839356817651096e6a274c868a5a268
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165718"
+---
 1. Na serwerze konfiguracji uruchom program CSPSConfigtool.exe. Jest on dostępny jako skrót na pulpicie i znajduje się w folderze *lokalizacja instalacji*\home\svsystems\bin.
 2. Kliknij pozycje **Zarządzaj kontami** > **Dodaj konto**.
 

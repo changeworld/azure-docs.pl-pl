@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 13820dd511d31217b79385e893edbb55a3a57693
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: e66dcac1d83c71174ad5d7c3fdcd2310143f8e01
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430023"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140810"
 ---
 # <a name="tune-hyperparameters-for-your-model"></a>Dostosowywanie hiperparametrów dla modelu
 
@@ -238,16 +238,18 @@ W tym przykładzie wczesne zasady zakończenia są stosowane w każdej odstępac
 
 ### <a name="no-termination-policy"></a>Brak zasad zakończenia
 
-Jeśli chcesz, aby wszystkie przebiegów szkoleniowych zostało ukończone, należy użyć NoTerminationPolicy. Będzie to miało wpływu nie można zastosować zasad wcześniejsze zakończenie.
+Jeśli chcesz, aby wszystkie przebiegów szkoleniowych do uruchomienia aż do ukończenia, ustawić zasady na wartość None. Będzie to miało wpływu nie można zastosować zasad wcześniejsze zakończenie.
 
 ```Python
-from azureml.train.hyperdrive import NoTerminationPolicy
-early_termination_policy = NoTerminationPolicy()
+policy=None
 ```
 
 ### <a name="default-policy"></a>Zasady domyślne
 
-Jeśli zostanie określona żadna zasada, hiperparametrycznego dostrajania usługi użyje zasady zatrzymywanie mediana z `evaluation_interval` 1 i `delay_evaluation` 5 domyślnie. Te są konserwatywnego ustawienia, które może zapewnić około 25 – 35% oszczędności bez utraty podstawową metrykę (oparte na naszych danych oceny).
+Jeśli zostanie określona żadna zasada, hiperparametrycznego dostrajania usługi umożliwi wszystkich przebiegów szkoleniowych, które zostało ukończone.
+
+>[!NOTE] 
+>Jeśli szukasz zachowawcze zasady, które zapewnia oszczędności bez przerywania zadań obietnic można użyć zasad zatrzymywanie mediana z `evaluation_interval` 1 i `delay_evaluation` 5. Te są konserwatywnego ustawienia, które może zapewnić około 25 – 35% oszczędności bez utraty podstawową metrykę (oparte na naszych danych oceny).
 
 ## <a name="allocate-resources"></a>Przydzielanie zasobów
 

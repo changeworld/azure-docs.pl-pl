@@ -3,7 +3,7 @@ title: Często zadawane pytania — usługa Azure Active Directory Domain Servic
 description: Często zadawane pytania dotyczące usługi Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 48731820-9e8c-4ec2-95e8-83dba1e58775
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.author: maheshu
-ms.openlocfilehash: 8747e597883d96756e676061bde04b920b13cadd
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.author: ergreenl
+ms.openlocfilehash: c2f10b1bf3b61577a2b0616be6fa50f7639559ba
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023209"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158922"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Usługa Azure Active Directory Domain Services: Często zadawane pytania (FAQ)
 Ta strona odpowiedzi na często zadawane pytania dotyczące usługi Azure Active Directory Domain Services. Wracaj aktualizacje.
@@ -51,7 +51,7 @@ Sama usługa nie obsługuje bezpośrednio w tym scenariuszu. Twoja domena zarzą
 Tak. Zobacz [jak włączyć usługę Azure AD Domain Services przy użyciu programu PowerShell](active-directory-ds-enable-using-powershell.md).
 
 ### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>Można włączyć usługi domenowe Azure AD przy użyciu szablonu usługi Resource Manager?
-Tak. Zobacz [jak włączyć usługę Azure AD Domain Services przy użyciu programu PowerShell](active-directory-ds-enable-using-powershell.md).
+Nie, nie jest obecnie można włączyć usługi domenowe Azure AD przy użyciu szablonu. Zamiast tego użyj programu PowerShell, zobacz [jak włączyć usługę Azure AD Domain Services przy użyciu programu PowerShell](active-directory-ds-enable-using-powershell.md).
 
 ### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Czy mogę dodać kontrolerów domeny do domeny zarządzanej usług domenowych Azure AD?
 Nie. Domeny oferowanymi przez usługi Azure AD Domain Services jest domeną zarządzaną. Nie trzeba aprowizować, konfigurując lub inny sposób zarządzania kontrolerami domeny dla tej domeny — tych działań związanych z zarządzaniem są dostarczane jako usługa przez firmę Microsoft. W związku z tym nie można dodać dodatkowe kontrolery domeny (odczytu i zapisu lub tylko do odczytu) dla domeny zarządzanej.

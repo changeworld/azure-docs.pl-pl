@@ -8,12 +8,12 @@ ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: c071c8f422e0cb3a4e0d5e528989dd2987a6796f
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 4e71797837927fe5f5233bcf88d35fef98f504e9
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094851"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139446"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Zrozumienie blokowania w plany usługi Azure resource
 
@@ -42,7 +42,7 @@ Jeśli okaże się to konieczne usunąć zasoby utworzone przez przypisanie, spo
 Rola RBAC `denyAssignments` jest stosowane do artefaktu zasobów podczas przypisywania planu, jeśli wybrane przypisania **blokady** opcji. Ta rola jest dodawany przez zarządzaną tożsamością przypisanie planu i może zostać usunięty tylko ze źródeł artefaktów w tej samej tożsamości zarządzanej. To zabezpieczenie wymusza mechanizm blokowania i uniemożliwia usunięcie blokady plan poza schematy. Usunięcie roli, a blokada jest możliwe tylko przez usunięcie przypisania planu, który może zostać wykonana tylko przez osoby, które mają odpowiednie uprawnienia.
 
 > [!IMPORTANT]
-> Usługa Azure Active Directory buforuje Szczegóły przypisania roli dla maksymalnie 30 minut. W rezultacie `denyAssignments` na plan zasobów natychmiast prawdopodobnie pełnego wpływu. W tym okresie czasu może istnieć możliwość usuwania zasobu mają być chronione przez planu blokad.
+> Usługa Azure Resource Manager buforuje Szczegóły przypisania roli dla maksymalnie 30 minut. W rezultacie `denyAssignments` na plan zasobów natychmiast prawdopodobnie pełnego wpływu. W tym okresie czasu może istnieć możliwość usuwania zasobu mają być chronione przez planu blokad.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

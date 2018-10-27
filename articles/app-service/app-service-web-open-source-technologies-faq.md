@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: d65a33dc13d0b91a9ace04dab0be6c37bcd2188f
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 4185cbad6358f6b2e48513c0d79c0a357eb6235a
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42623302"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156480"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Technologie open source często zadawane pytania dotyczące aplikacji sieci Web na platformie Azure
 
@@ -43,9 +43,9 @@ Aby włączyć rejestrowanie PHP:
 9. Wybierz pozycję **Zapisz**.
 10. Wybierz ikonę ołówka obok **wp config.php**.
 11. Zmień tekst z następującym kodem:
-   ```
+   ```php
    //Enable WP_DEBUG modedefine('WP_DEBUG', true);//Enable debug logging to /wp-content/debug.logdefine('WP_DEBUG_LOG', true);
-   //Supress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Supress PHP errors to screenini_set('display_errors', 0);
+   //Suppress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Supress PHP errors to screenini_set('display_errors', 0);
    ```
 12. W witrynie Azure portal w menu aplikacji sieci web Uruchom ponownie swoją aplikację sieci web.
 
@@ -70,7 +70,7 @@ Aby zmienić wersję aplikacji Node.js, można użyć jednej z następujących o
 *   Zmodyfikuj plik iisnode.yml udostępniany. Zmiana wersji środowiska Node.js w plik iisnode.yml udostępniany tylko zestawy środowiska wykonawczego tego programu iisnode używa. Usługi Kudu cmd, a inne nadal używać wersji środowiska Node.js, który jest ustawiony w **ustawienia aplikacji** w witrynie Azure portal.
 
     Aby ręcznie ustawić plik iisnode.yml, należy utworzyć plik iisnode.yml w folderze głównym aplikacji. W pliku należy umieścić następujący wiersz:
-   ```
+   ```yml
    nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
    ```
    
@@ -80,7 +80,7 @@ Aby zmienić wersję aplikacji Node.js, można użyć jednej z następujących o
     2. Tworzy domyślny skrypt wdrożenia, jeśli nie istnieje (pliku deploy.cmd, pliki .deployment) w folderze głównym aplikacji sieci web.
     3. Uruchamia skrypt wdrażania, w którym tworzy plik iisnode.yml Jeśli wspomnisz o wersji środowiska Node.js w pliku package.json > aparat `"engines": {"node": "5.9.1","npm": "3.7.3"}`
     4. Plik iisnode.yml udostępniany ma następujący wiersz kodu:
-        ```
+        ```yml
         nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
         ```
 
@@ -146,7 +146,7 @@ Aby naprawić błąd:
 2. Jeśli używasz niestandardowego serwera sieci web Tomcat lub Azure Marketplace Tomcat, skopiuj ten plik JAR do folderu biblioteki Tomcat.
 3. Jeśli włączasz Java w witrynie Azure portal (wybierz **Java 1.8** > **serwera Tomcat**), skopiuj plik jar sqljdbc.* w folderze, który jest zbliżony do swojej aplikacji. Następnie należy dodać następujące ustawienie ścieżkę do pliku web.config:
 
-    ```
+    ```xml
     <httpPlatform>
     <environmentVariables>
     <environmentVariablename ="JAVA_OPTS" value=" -Djava.net.preferIPv4Stack=true

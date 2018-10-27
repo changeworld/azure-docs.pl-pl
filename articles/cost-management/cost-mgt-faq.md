@@ -5,41 +5,41 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 10/26/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 4984332e1a149ae838bc76a24abec90364f5699e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: ba6d8250d70320b33822d73c9213e9005128633f
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221982"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157211"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Często zadawane pytania dotyczące platformy Cloudyn
 
-W tym artykule opisano często zadawane pytania dotyczące platformy Cloudyn. Jeśli masz pytania dotyczące platformy Cloudyn, można zadawać w [często zadawane pytania dotyczące platformy Cloudyn](https://social.msdn.microsoft.com/Forums/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-azure-cost-management-by-cloudyn?forum=Cloudyn).
+W tym artykule opisano często zadawane pytania dotyczące platformy Cloudyn. Jeśli masz pytania dotyczące platformy Cloudyn, można zadawać w [często zadawane pytania dotyczące platformy Cloudyn](https://social.msdn.microsoft.com/Forums/home?forum=faqs-for-azure-cost-management-by-cloudyn).
 
 ## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>Jak można rozwiązać typowe problemy z instalacją pośrednich enterprise?
 
-Przy pierwszym użyciu portalu Cloudyn, może pojawić się następujące komunikaty, jeśli jesteś użytkownikiem Enterprise Agreement, Cloud Solution Provider (CSP):
+Przy pierwszym użyciu portalu Cloudyn możesz zobaczyć poniższe komunikaty, jeśli jesteś użytkownikiem z umową Enterprise Agreement lub dostawcą rozwiązań w chmurze (CSP, Cloud Solution Provider):
 
 - "Określony klucz interfejsu API nie jest kluczem najwyższego poziomu rejestrowania" wyświetlana w **Ustaw Cloudyn** kreatora.
 - "Rejestracja bezpośrednia — nie" wyświetlana w portalu Enterprise Agreement.
 - "Brak danych użycia został znaleziony w ciągu ostatnich 30 dni. Skontaktuj się z dystrybutora, aby upewnić się, że znaczników został włączony dla Twojego konta platformy Azure"wyświetlana w portalu Cloudyn.
 
-Poprzednie komunikaty oznaczają, że umowa Azure Enterprise Agreement została zakupiona od odsprzedawcy lub dostawcy rozwiązań w chmurze. Ze sprzedawcą lub dostawcy usług Kryptograficznych musi włączyć _znaczników_ dla konta platformy Azure, dzięki czemu mogą wyświetlać dane w rozwiązaniu Cloudyn.
+Poprzednie komunikaty oznaczają, że umowa Azure Enterprise Agreement została zakupiona od odsprzedawcy lub dostawcy rozwiązań w chmurze. Odsprzedawca lub dostawca rozwiązań w chmurze musi włączyć _znaczniki_ dla konta platformy Azure, aby można było wyświetlać dane na platformie Cloudyn.
 
 Oto sposoby rozwiązywania tych problemów:
 
 1. Odsprzedawca musi włączyć _znaczniki_ dla Twojego konta. Aby uzyskać instrukcje, zapoznaj się z dokumentem [Indirect Customer Onboarding Guide (Przewodnik dołączania klienta pośredniego)](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
 
-2. Możesz wygenerować klucz Enterprise Agreement platformy Azure do użycia z usługą Cloudyn. Aby uzyskać instrukcje, zobacz [Dodawanie Your Azure EA](https://support.cloudyn.com/hc/articles/210429585-Adding-Your-AZURE-EA) lub [jak znaleźć swój identyfikator rejestracji EA i klucz interfejsu API](https://youtu.be/u_phLs_udig).
+2. Wygenerujesz klucz umowy Azure Enterprise Agreement do użycia na platformie Cloudyn. Aby uzyskać instrukcje, zobacz [Dodawanie Your Azure EA](quick-register-ea.md#register-with-cloudyn) lub [jak znaleźć swój identyfikator rejestracji EA i klucz interfejsu API](https://youtu.be/u_phLs_udig).
 
-Tylko administrator usługi platformy Azure można włączyć rozwiązania Cloudyn. Uprawnienia współadministratora są niewystarczające.
+Tylko administrator usług platformy Azure może włączyć platformę Cloudyn. Uprawnienia współadministratora są niewystarczające.
 
-Przed wygenerowaniem klucza interfejsu API usługi Azure Enterprise Agreement do skonfigurowania Cloudyn, należy włączyć interfejs API rozliczeń platformy Azure, postępując zgodnie z instrukcjami w temacie:
+Przed wygenerowaniem klucza interfejsu API umowy Azure Enterprise Agreement w celu skonfigurowania platformy Cloudyn należy włączyć interfejs API rozliczeń platformy Azure, wykonując następujące instrukcje:
 
 - [Overview of Reporting APIs for Enterprise customers (Omówienie interfejsów API raportowania dla klientów korporacyjnych)](../billing/billing-enterprise-api.md)
 - [Interfejs API raportowania w witrynie Microsoft Azure dla przedsiębiorstw](https://ea.azure.com/helpdocs/reportingAPI) w obszarze **Włączanie dostępu danych do interfejsu API**
@@ -100,7 +100,7 @@ Należy unikać bezpośredniego adresu URL Cloudyn https://app.cloudyn.com.
 
 ## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Jak uaktywnić nieaktywowani kont przy użyciu poświadczeń platformy Azure?
 
-Jak najszybciej kont systemu Azure są wykrywane przez firmę Cloudyn, danych rozwiązania cost natychmiast znajduje się w raportów na podstawie kosztów. Jednak na platformie Cloudyn dostarczający dane użycia i wydajności, należy zarejestrować swoje poświadczenia platformy Azure dla kont. Aby uzyskać instrukcje, zobacz [Dodawanie usługi Azure Resource Manager](https://support.cloudyn.com/hc/articles/212784085-Adding-Azure-Resource-Manager).
+Jak najszybciej kont systemu Azure są wykrywane przez firmę Cloudyn, danych rozwiązania cost natychmiast znajduje się w raportów na podstawie kosztów. Jednak na platformie Cloudyn dostarczający dane użycia i wydajności, należy zarejestrować swoje poświadczenia platformy Azure dla kont. Aby uzyskać instrukcje, zobacz [Dodaj konto lub zaktualizować subskrypcji](activate-subs-accounts.md#add-an-account-or-update-a-subscription).
 
 Aby dodać poświadczenia platformy Azure dla konta w portalu Cloudyn, wybierz symbol edycji z prawej strony nazwy konta, a nie w ramach subskrypcji.
 
@@ -108,10 +108,7 @@ Dopóki poświadczenia platformy Azure zostaną dodane do rozwiązania Cloudyn, 
 
 ## <a name="how-do-i-add-multiple-accounts-and-entities-to-an-existing-subscription"></a>Jak dodać wiele kont i jednostek do istniejącej subskrypcji?
 
-Dodatkowe jednostki są używane do dodawania dodatkowych umowy Enterprise z subskrypcją platformy Cloudyn. Poniższe linki zawierają opis sposobu dodawania dodatkowych jednostek:
-
-- [Dodawanie jednostki](https://support.cloudyn.com/hc/articles/212016145-Adding-an-Entity) artykułu
-- [Definiowanie hierarchii przy użyciu jednostek kosztów](https://support.cloudyn.com/hc/articles/115005142529-Video-Defining-your-hierarchy-with-Cost-Entities) wideo
+Dodatkowe jednostki są używane do dodawania dodatkowych umowy Enterprise z subskrypcją platformy Cloudyn. Aby uzyskać więcej informacji, zobacz [tworzenie i zarządzanie jednostkami](tutorial-user-access.md#create-and-manage-entities).
 
 Dla dostawców usług kryptograficznych:
 

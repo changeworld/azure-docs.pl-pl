@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 7a52ee11e52367755d2a241a0bea2cfc053cff3d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: cc54a3a375fa2780e289a20b699df5d65aaf08cc
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039942"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155579"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Tworzenie przepływów pracy z łącznikiem usługi IoT Central w Microsoft Flow
 
@@ -96,6 +96,8 @@ W tej sekcji dowiesz się, jak zaktualizować ustawień i właściwości w IoT C
     ![Identyfikator urządzenia w Eksploratorze urządzenia IoT Central](./media/howto-add-microsoft-flow/iotcdeviceid.PNG)
 
 1. Można zaktualizować nazwy urządzenia. Do aktualizacji właściwości urządzenia i ustawienia, należy wybrać szablon urządzenia urządzenia, które chcesz zaktualizować w **szablon urządzenia** listy rozwijanej. Kafelek akcji rozwijany, aby wyświetlić wszystkie właściwości i ustawienia mogą być aktualizowane.
+
+    ![Przepływ pracy usługi Flow aktualizacji urządzenia](./media/howto-add-microsoft-flow/flowupdatedevice.PNG)
 
 1. Zaznacz wszystkie właściwości i ustawienia, które chcesz zaktualizować. W okienku zawartości dynamicznej wybierz odpowiednie dane wejściowe z wyzwalacza. W tym przykładzie wartość lokalizacji są propagowane w dół do aktualizacji właściwości lokalizacji urządzenia.
 

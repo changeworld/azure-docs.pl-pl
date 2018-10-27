@@ -3,7 +3,7 @@ title: Analiza użytkowników, sesji i zdarzeń w usłudze Azure Application Ins
 description: Analiza demograficznych użytkowników aplikacji sieci web.
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: NumberByColors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,14 +11,15 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/24/2018
-ms.reviewer: daviste
-ms.author: mbullwin
-ms.openlocfilehash: 2bc10a292855832b7ddb9b8e3a59fbe0f17d8dc6
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.reviewer: mbullwin
+ms.pm_owner: daviste;NumberByColors
+ms.author: daviste
+ms.openlocfilehash: 6fd8adab93f5741afe6d3eab0c50ca50a327fbff
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093812"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140336"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Użytkownicy, sesje i zdarzenia analizy w usłudze Application Insights
 
@@ -48,10 +49,10 @@ Zapoznaj się z różnych grup użytkowników przez dostosowanie opcji zapytania
 * Kto korzystał: Wybierz zdarzenia niestandardowe i wyświetlenia stron.
 * W trakcie: Wybierz zakres czasu.
 * Według: Wybierz sposób zasobnika danych przez pewien czas lub innej właściwości, takie jak przeglądarki lub Miasto.
-* Podziel według: Wybierz właściwości, za pomocą którego do podziału lub segmentu danych. 
-* Dodaj filtry: Ogranicz zapytanie, aby niektórych użytkowników, sesje lub zdarzenia na podstawie ich właściwości, takie jak przeglądarki lub Miasto. 
- 
-## <a name="saving-and-sharing-reports"></a>Zapisywanie i udostępnianie raportów 
+* Podziel według: Wybierz właściwości, za pomocą którego do podziału lub segmentu danych. 
+* Dodaj filtry: Ogranicz zapytanie, aby niektórych użytkowników, sesje lub zdarzenia na podstawie ich właściwości, takie jak przeglądarki lub Miasto. 
+ 
+## <a name="saving-and-sharing-reports"></a>Zapisywanie i udostępnianie raportów 
 Możesz zapisać użytkowników raportów, prywatne tylko w sekcji Moje raporty lub udostępnione z inne osoby z uprawnieniami do tego zasobu usługi Application Insights, w sekcji raportów udostępnionych.
 
 Aby udostępnić link do raportu użytkownicy, sesje lub zdarzenia; Kliknij przycisk **udziału** na pasku narzędzi, a następnie skopiuj link.

@@ -3,7 +3,7 @@ title: Włączanie usługi Azure Active Directory Domain Services przy użyciu p
 description: Włączanie usługi Azure Active Directory Domain Services przy użyciu programu PowerShell
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: d4bc5583-6537-4cd9-bc4b-7712fdd9272a
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.author: maheshu
-ms.openlocfilehash: ee3f65b7afde19a1f9c730334043cc7dae9ea791
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: a97103aa1b98d1dc93cecc8350892adafd9618ef
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503812"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156516"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Włączanie usługi Azure Active Directory Domain Services przy użyciu programu PowerShell
 W tym artykule przedstawiono sposób włączania usług domenowych Azure Active Directory (AD) przy użyciu programu PowerShell.

@@ -4,22 +4,20 @@ description: Użyj usługi Azure Resource Manager i interfejsu REST API usługi 
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: 1d8fbd4c-78b0-425b-ba76-f2b7fd260b45
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/01/2018
+ms.date: 10/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: ae2393d16d2c9c1000b00f5514e63c988303a83c
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 058d6d398f6bb54e8569e727f118a325c338049d
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628515"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50154746"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Deploy resources with Resource Manager templates and Resource Manager REST API (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu API REST usługi Resource Manager)
 
@@ -33,15 +31,19 @@ W tym artykule wyjaśniono, jak używać interfejsu REST API usługi Resource Ma
 > 
 > 
 
-Szablon może być w lokalnym pliku lub pliku zewnętrznego, który jest dostępny za pośrednictwem identyfikatora URI. Gdy szablon znajduje się na koncie magazynu, można ograniczyć dostęp do szablonu, a także dostarczają token sygnatury (SAS) dostępu współdzielonego podczas wdrażania.
+Można dołączyć do szablonu w treści żądania lub link do pliku. Podczas korzystania z pliku, można go w lokalnym pliku lub pliku zewnętrznego, który jest dostępny za pośrednictwem identyfikatora URI. Gdy szablon będzie na koncie magazynu, można ograniczyć dostęp do szablonu, a także dostarczają token sygnatury (SAS) dostępu współdzielonego podczas wdrażania.
 
 ## <a name="deploy-with-the-rest-api"></a>Wdrażanie przy użyciu interfejsu API REST
 1. Ustaw [wspólnych parametrów i nagłówki](/rest/api/azure/), łącznie z tokenami uwierzytelniania.
 
-2. Jeśli nie masz istniejącej grupy zasobów, Utwórz grupę zasobów. Prześlij identyfikator swojej subskrypcji, nazwę nowej grupy zasobów i lokalizacji, która należy do rozwiązania. Aby uzyskać więcej informacji, zobacz [Utwórz grupę zasobów](/rest/api/resources/resourcegroups/createorupdate).
+1. Jeśli nie masz istniejącej grupy zasobów, Utwórz grupę zasobów. Prześlij identyfikator swojej subskrypcji, nazwę nowej grupy zasobów i lokalizacji, która należy do rozwiązania. Aby uzyskać więcej informacji, zobacz [Utwórz grupę zasobów](/rest/api/resources/resourcegroups/createorupdate).
 
   ```HTTP
-  PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2015-01-01
+  PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2018-05-01
+  ```
+
+  Z treści żądania, takie jak:
+  ```json
   {
     "location": "West US",
     "tags": {
@@ -50,12 +52,17 @@ Szablon może być w lokalnym pliku lub pliku zewnętrznego, który jest dostęp
   }
   ```
 
-3. Sprawdź poprawność wdrożenia przed wykonaniem ją, uruchamiając [zweryfikować wdrożenie szablonu](/rest/api/resources/deployments/validate) operacji. Podczas testowania wdrożenia, należy podać parametry dokładnie tak jak podczas wykonywania wdrożenia (pokazano w następnym kroku).
+1. Sprawdź poprawność wdrożenia przed wykonaniem ją, uruchamiając [zweryfikować wdrożenie szablonu](/rest/api/resources/deployments/validate) operacji. Podczas testowania wdrożenia, należy podać parametry dokładnie tak jak podczas wykonywania wdrożenia (pokazano w następnym kroku).
 
-4. Tworzenie wdrożenia. Podaj identyfikator subskrypcji, nazwę grupy zasobów, nazwę wdrożenia i łącza do szablonu. Aby uzyskać informacje o pliku szablonu, zobacz [plik parametrów](#parameter-file). Aby uzyskać więcej informacji na temat interfejsu API REST, aby utworzyć grupę zasobów, zobacz [Utwórz wdrożenie szablonu](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_CreateOrUpdate). Zwróć uwagę **tryb** ustawiono **przyrostowe**. Aby uruchomić całego procesu wdrażania, należy ustawić **tryb** do **Complete**. Należy zachować ostrożność podczas korzystania z trybu pełne, jak można przypadkowo usunąć zasoby, które nie są w szablonie.
+1. Tworzenie wdrożenia. Podaj identyfikator subskrypcji, nazwę grupy zasobów, nazwę wdrożenia i łącza do szablonu. Aby uzyskać informacje o pliku szablonu, zobacz [plik parametrów](#parameter-file). Aby uzyskać więcej informacji na temat interfejsu API REST, aby utworzyć grupę zasobów, zobacz [Utwórz wdrożenie szablonu](/rest/api/resources/deployments/createorupdate). Zwróć uwagę **tryb** ustawiono **przyrostowe**. Aby uruchomić całego procesu wdrażania, należy ustawić **tryb** do **Complete**. Należy zachować ostrożność podczas korzystania z trybu pełne, jak można przypadkowo usunąć zasoby, które są w szablonie.
 
   ```HTTP
-  PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
+  PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2018-05-01
+  ```
+
+  Z treści żądania, takie jak:
+
+   ```json
   {
     "properties": {
       "templateLink": {
@@ -73,7 +80,7 @@ Szablon może być w lokalnym pliku lub pliku zewnętrznego, który jest dostęp
 
     Do logowania się zawartość odpowiedzi i/lub zawartości żądania, należy dołączyć **debugSetting** w żądaniu.
 
-  ```HTTP
+  ```json
   "debugSetting": {
     "detailLevel": "requestContent, responseContent"
   }
@@ -81,10 +88,73 @@ Szablon może być w lokalnym pliku lub pliku zewnętrznego, który jest dostęp
 
     Możesz skonfigurować swoje konto magazynu do użycia token dostępu współdzielonego (SAS) podpisu. Aby uzyskać więcej informacji, zobacz [Delegowanie dostępu za pomocą podpisu dostępu współdzielonego](https://docs.microsoft.com/rest/api/storageservices/delegating-access-with-a-shared-access-signature).
 
+1. Zamiast łączenia z plików szablonu oraz parametrów, należy je dołączyć w treści żądania.
+
+  ```json
+  {
+      "properties": {
+      "mode": "Incremental",
+      "template": {
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+          "storageAccountType": {
+            "type": "string",
+            "defaultValue": "Standard_LRS",
+            "allowedValues": [
+              "Standard_LRS",
+              "Standard_GRS",
+              "Standard_ZRS",
+              "Premium_LRS"
+            ],
+            "metadata": {
+              "description": "Storage Account type"
+            }
+          },
+          "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+              "description": "Location for all resources."
+            }
+          }
+        },
+        "variables": {
+          "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'standardsa')]"
+        },
+        "resources": [
+          {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[variables('storageAccountName')]",
+            "apiVersion": "2018-02-01",
+            "location": "[parameters('location')]",
+            "sku": {
+              "name": "[parameters('storageAccountType')]"
+            },
+            "kind": "StorageV2",
+            "properties": {}
+          }
+        ],
+        "outputs": {
+          "storageAccountName": {
+            "type": "string",
+            "value": "[variables('storageAccountName')]"
+          }
+        }
+      },
+      "parameters": {
+        "location": {
+          "value": "eastus2"
+        }
+      }
+    }
+  }
+  ```
+
 5. Pobierz stan wdrożenia szablonu. Aby uzyskać więcej informacji, zobacz [uzyskać informacje na temat wdrożenia szablonu](/rest/api/resources/deployments/get).
 
   ```HTTP
-  GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
+  GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2018-05-01
   ```
 
 ## <a name="redeploy-when-deployment-fails"></a>Wdróż ponownie, gdy wdrożenie zakończy się niepowodzeniem
@@ -93,7 +163,7 @@ W przypadku wdrożeń, które się nie powieść można określić, że wcześni
 
 Aby przeprowadzić ponowne wdrożenie ostatniego pomyślnego wdrożenia, jeśli bieżące wdrożenie zakończy się niepowodzeniem, należy użyć:
 
-```HTTP
+```json
 "onErrorDeployment": {
   "type": "LastSuccessful",
 },
@@ -101,7 +171,7 @@ Aby przeprowadzić ponowne wdrożenie ostatniego pomyślnego wdrożenia, jeśli 
 
 Aby przeprowadzić ponowne wdrożenie określonego wdrożenia, jeśli bieżące wdrożenie zakończy się niepowodzeniem, należy użyć:
 
-```HTTP
+```json
 "onErrorDeployment": {
   "type": "SpecificDeployment",
   "deploymentName": "<deploymentname>"
@@ -145,7 +215,7 @@ Rozmiar pliku parametrów nie może być więcej niż 64 KB.
 Jeśli trzeba podać poufne wartość parametru (na przykład hasło), należy dodać tę wartość do magazynu kluczy. Pobierz magazyn kluczy podczas wdrażania, jak pokazano w poprzednim przykładzie. Aby uzyskać więcej informacji, zobacz [przekazywanie bezpiecznych wartości podczas wdrażania](resource-manager-keyvault-parameter.md). 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby określić sposób obsługi zasób, który istnieje w grupie zasobów, ale nie są zdefiniowane w szablonie, zobacz [tryby wdrażania usługi Azure Resource Manager](deployment-modes.md).
+* Aby określić sposób obsługi zasobów, które istnieją w grupie zasobów, ale nie są zdefiniowane w szablonie, zobacz [tryby wdrażania usługi Azure Resource Manager](deployment-modes.md).
 * Aby dowiedzieć się więcej informacji na temat obsługi operacji REST asynchronicznych, zobacz [śledzenie operacji asynchronicznych Azure](resource-manager-async-operations.md).
 * Aby uzyskać przykład wdrażanie zasobów za pomocą biblioteki klienckiej platformy .NET, zobacz [wdrażanie zasobów przy użyciu szablonu i bibliotek .NET](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Aby zdefiniować parametry w szablonie, zobacz [Tworzenie szablonów](resource-group-authoring-templates.md#parameters).

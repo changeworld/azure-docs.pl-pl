@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/25/2018
 ms.author: alinast
-ms.openlocfilehash: 7fbaff5ed1b60a4434ba2eb0c78c6aa1f3fd6645
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 49566d21fa6897f5c1371bbea2bb602a393de66d
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324231"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140793"
 ---
 # <a name="how-to-use-user-defined-functions-in-azure-digital-twins"></a>Jak używać funkcji zdefiniowanych przez użytkownika w reprezentacji urządzeń cyfrowych platformy Azure
 
@@ -27,8 +27,8 @@ https://yourInstanceName.yourLocation.azuresmartspaces.net/management
 
 | Nazwa atrybutu niestandardowego | Zamień |
 | --- | --- |
-| `yourInstanceName` | Nazwa wystąpienia usługi Azure cyfrowego bliźniaczych reprezentacji |
-| `yourLocation` | Który region serwer wystąpienie usługi jest hostowana na |
+| *yourInstanceName* | Nazwa wystąpienia usługi Azure cyfrowego bliźniaczych reprezentacji |
+| *yourLocation* | Który region serwer wystąpienie usługi jest hostowana na |
 
 ## <a name="client-library-reference"></a>Dokumentacja biblioteki klienckiej
 
@@ -70,8 +70,8 @@ POST https://yourManagementApiUrl/api/v1.0/matchers
 
 | Nazwa atrybutu niestandardowego | Zamień |
 | --- | --- |
-| `yourManagementApiUrl` | Pełna ścieżka adresu URL dla interfejsu API zarządzania  |
-| `yourSpaceIdentifier` | Który region serwer wystąpienie usługi jest hostowana na |
+| *yourManagementApiUrl* | Pełna ścieżka adresu URL dla interfejsu API zarządzania  |
+| *yourSpaceIdentifier* | Który region serwer wystąpienie usługi jest hostowana na |
 
 ## <a name="create-a-user-defined-function-udf"></a>Tworzenie funkcji zdefiniowanej przez użytkownika (UDF)
 
@@ -90,7 +90,7 @@ POST https://yourManagementApiUrl/api/v1.0/userdefinedfunctions with Content-Typ
 
 | Nazwa atrybutu niestandardowego | Zamień |
 | --- | --- |
-| `yourManagementApiUrl` | Pełna ścieżka adresu URL dla interfejsu API zarządzania  |
+| *yourManagementApiUrl* | Pełna ścieżka adresu URL dla interfejsu API zarządzania  |
 
 Treść:
 
@@ -118,12 +118,12 @@ function process(telemetry, executionContext) {
 
 | Nazwa atrybutu niestandardowego | Zamień |
 | --- | --- |
-| `yourSpaceIdentifier` | Identyfikator miejsca  |
-| `yourMatcherIdentifier` | Identyfikator dopasowywania, którego chcesz użyć |
+| *yourSpaceIdentifier* | Identyfikator miejsca  |
+| *yourMatcherIdentifier* | Identyfikator dopasowywania, którego chcesz użyć |
 
 ### <a name="example-functions"></a>Przykład funkcji
 
-Ustaw telemetrii czujnik odczytu bezpośrednio dla czujnika z typem danych `Temperature`, czyli czujnika. Typ danych:
+Ustaw telemetrii czujnik odczytu bezpośrednio dla czujnika z typem danych `Temperature`, czyli `sensor.DataType`:
 
 ```javascript
 function process(telemetry, executionContext) {
@@ -139,7 +139,19 @@ function process(telemetry, executionContext) {
 }
 ```
 
-Rejestruj komunikat, jeśli odczytywanie danych telemetrycznych czujnik przekracza wstępnie zdefiniowany próg. Jeśli ustawienia diagnostyki są włączone w wystąpieniu Twins cyfrowych, zostaną przekazane dzienniki z funkcjami zdefiniowanymi przez użytkownika:
+`telemetry` Udostępnia parametru `SensorId` i `Message`. `executionContext` Parametr uwidacznia następujące atrybuty:
+
+```csharp
+var executionContext = new UdfExecutionContext
+{
+    EnqueuedTime = request.HubEnqueuedTime,
+    ProcessorReceivedTime = request.ProcessorReceivedTime,
+    UserDefinedFunctionId = request.UserDefinedFunctionId,
+    CorrelationId = correlationId.ToString(),
+};
+```
+
+W następnym przykładzie firma Microsoft zarejestruje komunikat Jeśli odczytywanie danych telemetrycznych czujnik przekracza wstępnie zdefiniowany próg. Jeśli ustawienia diagnostyki są włączone w wystąpieniu Twins cyfrowych, przekazywane są również dzienników z funkcjami zdefiniowanymi przez użytkownika:
 
 ```javascript
 function process(telemetry, executionContext) {
@@ -192,7 +204,7 @@ GET https://yourManagementApiUrl/api/v1.0/system/roles
 
 | Nazwa atrybutu niestandardowego | Zamień |
 | --- | --- |
-| `yourManagementApiUrl` | Pełna ścieżka adresu URL dla interfejsu API zarządzania  |
+| *yourManagementApiUrl* | Pełna ścieżka adresu URL dla interfejsu API zarządzania  |
 
 - Identyfikator obiektu będzie identyfikator funkcji zdefiniowanej przez użytkownika, który został utworzony wcześniej
 - Znajdź `Path` , badając miejsca do magazynowania wraz z ich pełną ścieżkę i kopiowania `spacePaths` wartość. Wklej go w ścieżce poniżej, tworząc przypisania roli funkcji zdefiniowanej przez użytkownika
@@ -203,8 +215,8 @@ GET https://yourManagementApiUrl/api/v1.0/spaces?name=yourSpaceName&includes=ful
 
 | Nazwa atrybutu niestandardowego | Zamień |
 | --- | --- |
-| `yourManagementApiUrl` | Pełna ścieżka adresu URL dla interfejsu API zarządzania  |
-| `yourSpaceName` | Nazwa miejsca, do których chcesz używać |
+| *yourManagementApiUrl* | Pełna ścieżka adresu URL dla interfejsu API zarządzania  |
+| *yourSpaceName* | Nazwa miejsca, do których chcesz używać |
 
 ```plaintext
 POST https://yourManagementApiUrl/api/v1.0/roleassignments
@@ -218,10 +230,10 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Nazwa atrybutu niestandardowego | Zamień |
 | --- | --- |
-| `yourManagementApiUrl` | Pełna ścieżka adresu URL dla interfejsu API zarządzania  |
-| `yourDesiredRoleIdentifier` | Identyfikator odpowiednią rolę |
-| `yourUserDefinedFunctionId` | Identyfikator funkcji zdefiniowanej przez użytkownika, którego chcesz użyć |
-| `yourAccessControlPath` | Ścieżka kontroli dostępu |
+| *yourManagementApiUrl* | Pełna ścieżka adresu URL dla interfejsu API zarządzania  |
+| *yourDesiredRoleIdentifier* | Identyfikator odpowiednią rolę |
+| *yourUserDefinedFunctionId* | Identyfikator funkcji zdefiniowanej przez użytkownika, którego chcesz użyć |
+| *yourAccessControlPath* | Ścieżka kontroli dostępu |
 
 ## <a name="send-telemetry-to-be-processed"></a>Wysyłanie danych telemetrycznych do przetworzenia
 
@@ -241,7 +253,7 @@ Podany identyfikator miejsca pobranie miejsce z wykresu.
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| id  | `guid` | Identyfikator miejsca |
+| `id`  | `guid` | Identyfikator miejsca |
 
 ### <a name="getsensormetadataid--sensor"></a>getSensorMetadata(id) ⇒ `sensor`
 
@@ -251,7 +263,7 @@ Podany identyfikator czujnik pobiera czujnika z wykresu.
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| id  | `guid` | Identyfikator czujnika |
+| `id`  | `guid` | Identyfikator czujnika |
 
 ### <a name="getdevicemetadataid--device"></a>getDeviceMetadata(id) ⇒ `device`
 
@@ -261,7 +273,7 @@ Podany identyfikator urządzenia pobiera urządzenia z wykresu.
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| id  | `guid` | Identyfikator urządzenia |
+| `id`  | `guid` | Identyfikator urządzenia |
 
 ### <a name="getsensorvaluesensorid-datatype--value"></a>⇒ getSensorValue (sensorId, typ danych) `value`
 
@@ -271,8 +283,8 @@ Podany identyfikator czujników i jego typu danych, pobrać bieżącą wartość
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| sensorId  | `guid` | Identyfikator czujnika |
-| Typ danych  | `string` | Typ danych czujników |
+| `sensorId`  | `guid` | Identyfikator czujnika |
+| `dataType`  | `string` | Typ danych czujników |
 
 ### <a name="getspacevaluespaceid-valuename--value"></a>⇒ getSpaceValue (spaceId, valueName) `value`
 
@@ -282,8 +294,8 @@ Podany identyfikator miejsca i wartość name, pobrać bieżącą wartość tej 
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| spaceId  | `guid` | Identyfikator miejsca |
-| valueName  | `string` | Nazwa właściwości miejsca |
+| `spaceId`  | `guid` | Identyfikator miejsca |
+| `valueName` | `string` | Nazwa właściwości miejsca |
 
 ### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>⇒ getSensorHistoryValues (sensorId, typ danych) `value[]`
 
@@ -293,8 +305,8 @@ Podany identyfikator czujników i jego typu danych, pobrać historyczne wartośc
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| sensorId  | `guid` | Identyfikator czujnika |
-| Typ danych  | `string` | Typ danych czujników |
+| `sensorId` | `guid` | Identyfikator czujnika |
+| `dataType` | `string` | Typ danych czujników |
 
 ### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>⇒ getSpaceHistoryValues (spaceId, typ danych) `value[]`
 
@@ -304,8 +316,8 @@ Podany identyfikator miejsca i wartość name, pobrać historyczne wartości dla
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| spaceId  | `guid` | Identyfikator miejsca |
-| valueName  | `string` | Nazwa właściwości miejsca |
+| `spaceId` | `guid` | Identyfikator miejsca |
+| `valueName` | `string` | Nazwa właściwości miejsca |
 
 ### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces(spaceId) ⇒ `space[]`
 
@@ -315,7 +327,7 @@ Podany identyfikator miejsca, pobrać spacje podrzędne dla nadrzędnej miejsca.
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| spaceId  | `guid` | Identyfikator miejsca |
+| `spaceId` | `guid` | Identyfikator miejsca |
 
 ### <a name="getspacechildsensorsspaceid--sensor"></a>getSpaceChildSensors(spaceId) ⇒ `sensor[]`
 
@@ -325,7 +337,7 @@ Podany identyfikator miejsca, pobrać czujników podrzędne dla nadrzędnej miej
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| spaceId  | `guid` | Identyfikator miejsca |
+| `spaceId` | `guid` | Identyfikator miejsca |
 
 ### <a name="getspacechilddevicesspaceid--device"></a>getSpaceChildDevices(spaceId) ⇒ `device[]`
 
@@ -335,7 +347,7 @@ Podany identyfikator miejsca, pobrać urządzenia podrzędnych do tego miejsca n
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| spaceId  | `guid` | Identyfikator miejsca |
+| `spaceId` | `guid` | Identyfikator miejsca |
 
 ### <a name="getdevicechildsensorsdeviceid--sensor"></a>getDeviceChildSensors(deviceId) ⇒ `sensor[]`
 
@@ -345,7 +357,7 @@ Podany identyfikator urządzenia, pobrać czujników podrzędnych dla tego urzą
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| deviceId  | `guid` | Identyfikator urządzenia |
+| `deviceId` | `guid` | Identyfikator urządzenia |
 
 ### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace(childSpaceId) ⇒ `space`
 
@@ -355,7 +367,7 @@ Podany identyfikator miejsca, pobrać jego przestrzeni nadrzędnej.
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| childSpaceId  | `guid` | Identyfikator miejsca |
+| `childSpaceId` | `guid` | Identyfikator miejsca |
 
 ### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace(childSensorId) ⇒ `space`
 
@@ -365,7 +377,7 @@ Podany identyfikator czujnik, pobrać jego przestrzeni nadrzędnej.
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| childSensorId  | `guid` | Identyfikator czujnika |
+| `childSensorId` | `guid` | Identyfikator czujnika |
 
 ### <a name="getdeviceparentspacechilddeviceid--space"></a>getDeviceParentSpace(childDeviceId) ⇒ `space`
 
@@ -375,7 +387,7 @@ Podany identyfikator urządzenia, pobrać jego przestrzeni nadrzędnej.
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| childDeviceId  | `guid` | Identyfikator urządzenia |
+| `childDeviceId` | `guid` | Identyfikator urządzenia |
 
 ### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice(childSensorId) ⇒ `space`
 
@@ -385,7 +397,7 @@ Podany identyfikator czujnik, pobrać jego urządzenia nadrzędnego.
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| childSensorId  | `guid` | Identyfikator czujnika |
+| `childSensorId` | `guid` | Identyfikator czujnika |
 
 ### <a name="getspaceextendedpropertyspaceid-propertyname--extendedproperty"></a>⇒ getSpaceExtendedProperty (spaceId, propertyName) `extendedProperty`
 
@@ -395,8 +407,8 @@ Podany identyfikator miejsca, pobrać właściwości i jego wartość z obszaru.
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| spaceId  | `guid` | Identyfikator miejsca |
-| PropertyName  | `string` | Nazwa właściwości miejsca |
+| `spaceId` | `guid` | Identyfikator miejsca |
+| `propertyName` | `string` | Nazwa właściwości miejsca |
 
 ### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>⇒ getSensorExtendedProperty (sensorId, propertyName) `extendedProperty`
 
@@ -406,8 +418,8 @@ Podany identyfikator czujnik, pobieranie właściwości i jego wartość z czujn
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| sensorId  | `guid` | Identyfikator czujnika |
-| PropertyName  | `string` | Nazwa właściwości czujnika |
+| `sensorId` | `guid` | Identyfikator czujnika |
+| `propertyName` | `string` | Nazwa właściwości czujnika |
 
 ### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>⇒ getDeviceExtendedProperty (deviceId, propertyName) `extendedProperty`
 
@@ -417,8 +429,8 @@ Podany identyfikator urządzenia, pobieranie właściwości i jego wartość z u
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| deviceId  | `guid` | Identyfikator urządzenia |
-| PropertyName  | `string` | Nazwa właściwości urządzenia |
+| `deviceId` | `guid` | Identyfikator urządzenia |
+| `propertyName` | `string` | Nazwa właściwości urządzenia |
 
 ### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue (sensorId, typ danych, wartość)
 
@@ -428,9 +440,9 @@ Ustawia wartość w obiekcie czujników przy użyciu danego typu danych.
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| sensorId  | `guid` | Identyfikator czujnika |
-| Typ danych  | `string` | Typ danych czujników |
-| wartość  | `string` | wartość |
+| `sensorId` | `guid` | Identyfikator czujnika |
+| `dataType`  | `string` | Typ danych czujników |
+| `value`  | `string` | wartość |
 
 ### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue (spaceId, typ danych, wartość)
 
@@ -440,9 +452,9 @@ Ustawia wartość w obiekcie miejsca przy użyciu danego typu danych.
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| spaceId  | `guid` | Identyfikator miejsca |
-| Typ danych  | `string` | typ danych |
-| wartość  | `string` | wartość |
+| `spaceId` | `guid` | Identyfikator miejsca |
+| `dataType` | `string` | typ danych |
+| `value` | `string` | wartość |
 
 ### <a name="logmessage"></a>log(Message)
 
@@ -452,7 +464,7 @@ Rejestruje komunikat w funkcji zdefiniowanej przez użytkownika.
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| message  | `string` | komunikat do zarejestrowania |
+| `message` | `string` | komunikat do zarejestrowania |
 
 ### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification (topologyObjectId, topologyObjectType ładunku)
 
@@ -462,9 +474,9 @@ Wysyła niestandardowe powiadomienie do wysyłki.
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| topologyObjectId  | `Guid` | Wykres identyfikatora obiektu (np.) miejsce / identyfikator /device czujnik)|
-| topologyObjectType  | `string` | (np.) miejsce / czujnika / urządzenia)|
-| ładunek  | `string` | ładunek json do wysłania z powiadomieniem |
+| `topologyObjectId`  | `guid` | Wykres identyfikatora obiektu (np.) miejsce / identyfikator /device czujnik)|
+| `topologyObjectType`  | `string` | (np.) miejsce / czujnika / urządzenia)|
+| `payload`  | `string` | ładunek JSON do wysłania z powiadomieniem |
 
 ## <a name="return-types"></a>Typy zwracane
 
@@ -503,7 +515,7 @@ Zwraca wartość właściwości rozszerzonej i ich wartości w bieżącej przest
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| PropertyName | `string` | Nazwa właściwości rozszerzonej |
+| `propertyName` | `string` | Nazwa właściwości rozszerzonej |
 
 #### <a name="valuevaluename--value"></a>Value(VALUENAME) ⇒ `value`
 
@@ -511,7 +523,7 @@ Zwraca wartość bieżącego miejsca.
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| valueName | `string` | Nazwa wartości |
+| `valueName` | `string` | Nazwa wartości |
 
 #### <a name="historyvaluename--value"></a>History(VALUENAME) ⇒ `value[]`
 
@@ -519,7 +531,7 @@ Zwraca wartości historycznych bieżącego miejsca.
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| valueName | `string` | Nazwa wartości |
+| `valueName` | `string` | Nazwa wartości |
 
 #### <a name="notifypayload"></a>Notify(Payload)
 
@@ -527,7 +539,7 @@ Wysyła powiadomienie przy użyciu określonego ładunku.
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| ładunek | `string` | ładunek JSON, które mają zostać objęte powiadomienia |
+| `payload` | `string` | Ładunek JSON, które mają zostać objęte powiadomienia |
 
 ### <a name="device"></a>Urządzenie
 
@@ -563,7 +575,7 @@ Zwraca wartość właściwości rozszerzonej i jego wartość, aby uzyskać bie�
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| PropertyName | `string` | Nazwa właściwości rozszerzonej |
+| `propertyName` | `string` | Nazwa właściwości rozszerzonej |
 
 #### <a name="notifypayload"></a>Notify(Payload)
 
@@ -571,7 +583,7 @@ Wysyła powiadomienie przy użyciu określonego ładunku.
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| ładunek | `string` | ładunek JSON, które mają zostać objęte powiadomienia |
+| `payload` | `string` | Ładunek JSON, które mają zostać objęte powiadomienia |
 
 ### <a name="sensor"></a>Czujnik
 
@@ -611,7 +623,7 @@ Zwraca wartość właściwości rozszerzonej i jego wartość dla bieżącego cz
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| PropertyName | `string` | Nazwa właściwości rozszerzonej |
+| `propertyName` | `string` | Nazwa właściwości rozszerzonej |
 
 #### <a name="value--value"></a>Value() ⇒ `value`
 
@@ -627,7 +639,7 @@ Wysyła powiadomienie przy użyciu określonego ładunku.
 
 | Param  | Typ                | Opis  |
 | ------ | ------------------- | ------------ |
-| ładunek | `string` | ładunek JSON, które mają zostać objęte powiadomienia |
+| `payload` | `string` | Ładunek JSON, które mają zostać objęte powiadomienia |
 
 ### <a name="value"></a>Wartość
 

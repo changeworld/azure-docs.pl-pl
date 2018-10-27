@@ -5,15 +5,15 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/02/2018
+ms.date: 10/25/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 9ba60f770c094f65ee5a4ed6dc21a5e07bac3d27
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: e865d4e9cbad2c2064d961bc6e407440ce8556fc
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267753"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158809"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>Uruchamianie skryptów powłoki w maszynie Wirtualnej systemu Linux przy użyciu polecenia Uruchom
 
@@ -38,6 +38,9 @@ Poniżej przedstawiono listę ograniczeń, które występują, gdy za pomocą po
 * Maksymalny czas, który można uruchomić skryptu wynosi 90 minut, po których przekroczy limit czasu
 * Łączność wychodząca z maszyny Wirtualnej jest wymagana do zwracania wyników skryptu.
 
+> [!NOTE]
+> Aby funkcjonowało poprawnie, uruchom polecenie wymaga łączności (port 443) do platformy Azure publicznych adresów IP. Jeśli rozszerzenie nie ma dostępu do tych punktów końcowych, skrypty może wykonane pomyślnie, ale nie zwracają wartości. Jeśli blokujesz ruchu na maszynie wirtualnej, możesz użyć [tagów usług](../../virtual-network/security-overview.md#service-tags) zezwalająca na ruch do platformy Azure publicznych adresów IP przy użyciu `AzureCloud` tagu.
+
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
 Poniżej przedstawiono przykład za pomocą [polecenia Uruchom az vm](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) polecenie, aby uruchomić skrypt powłoki, na maszynie Wirtualnej systemu Linux platformy Azure.
@@ -55,7 +58,7 @@ Przejdź do maszyny Wirtualnej na platformie [Azure](https://portal.azure.com) i
 
 ![Uruchom listy poleceń](./media/run-command/run-command-list.png)
 
-Wybierz polecenie do uruchomienia. Niektóre polecenia może być opcjonalne lub wymagane parametry wejściowe. Dla tych poleceń, parametry są uporządkowane jako pola tekstowe umożliwiające podawanie wartości wejściowych. Dla każdego polecenia, można wyświetlić skryptu, który jest uruchamiany, rozwijając **wyświetlić skryptu**. **RunShellScript** różni się od innych poleceń, ponieważ umożliwia podanie własnego niestandardowego skryptu. 
+Wybierz polecenie do uruchomienia. Niektóre polecenia może być opcjonalne lub wymagane parametry wejściowe. Dla tych poleceń, parametry są uporządkowane jako pola tekstowe umożliwiające podawanie wartości wejściowych. Dla każdego polecenia, można wyświetlić skryptu, który jest uruchamiany, rozwijając **wyświetlić skryptu**. **RunShellScript** różni się od innych poleceń, ponieważ umożliwia podanie własnego niestandardowego skryptu.
 
 > [!NOTE]
 > Wbudowane polecenia nie są edytowalne.

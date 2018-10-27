@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 6b37f4bac4bfcc6001171ed27899b71cdac7a312
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165179"
+---
 <!--author=alkohli last changed: 01/23/18-->
 
 #### <a name="to-download-hotfixes"></a>Aby pobrać poprawki
@@ -15,13 +28,13 @@ Wykonaj następujące kroki, aby pobrać aktualizację oprogramowania z Wykazu u
    
     ![Przeszukiwanie wykazu](./media/storsimple-install-update2-hotfix/HCS_SearchCatalog1-include.png)
 
-4. Kliknij pozycję **Pobierz**. Określ lokalizację lokalną, do której mają trafiać pobrane pliki, albo **przejdź** do takiej lokalizacji. Kliknij przycisk pliki do pobrania do określonej lokalizacji i folderu. Folder można też skopiować do udziału sieciowego osiągalnego z urządzenia.
-5. Wyszukaj wszystkie dodatkowe poprawki wymienione w powyższej tabeli (**4011841**) i pobierz odpowiednie pliki do określonych folderów wymienione w powyższej tabeli.
+4. Kliknij pozycję **Pobierz**. Określ lokalizację lokalną, do której mają trafiać pobrane pliki, albo **przejdź** do takiej lokalizacji. Kliknij opcję pliki do pobrania do określonej lokalizacji i folderu. Folder można też skopiować do udziału sieciowego osiągalnego z urządzenia.
+5. Wyszukaj wszystkie dodatkowe poprawki wymienione w powyższej tabeli (**4011841**) i pobrać odpowiadające im pliki do określonych folderów, zgodnie z opisem w powyższej tabeli.
 
 > [!NOTE]
-> Poprawki musi być dostępny z obu kontrolerów, aby wykryć potencjalne komunikaty o błędach z kontrolera elementu równorzędnego.
+> Poprawki muszą być dostępne z obu kontrolerów, aby wykrywanie wszelkich potencjalnych komunikatów o błędach z kontrolera elementu równorzędnego.
 >
-> Poprawki muszą zostać skopiowane do 3 oddzielnych folderów. Na przykład aktualizacja oprogramowania/Cis/MDS agenta urządzenia mogą być kopiowane w _FirstOrderUpdate_ folderu, mógł zostać skopiowany wszystkich innych Brak aktualizacji w _SecondOrderUpdate_ folderu, i aktualizacje trybu konserwacji skopiowany w _ThirdOrderUpdate_ folderu.
+> Poprawki muszą zostać skopiowane do 3 oddzielnych folderów. Na przykład aktualizacja oprogramowania/Cis/MDS agent urządzenia mogą być kopiowane w _FirstOrderUpdate_ folderu, wszystkie inne niezakłócającego aktualizacje mógł zostać skopiowany w _SecondOrderUpdate_ folder, a aktualizacje trybu konserwacji w skopiowane _ThirdOrderUpdate_ folderu.
 
 #### <a name="to-install-and-verify-regular-mode-hotfixes"></a>Aby zainstalować i zweryfikować poprawki przeznaczone do trybu normalnego
 
@@ -93,10 +106,10 @@ Wykonaj następujące kroki, aby zainstalować i zweryfikować poprawki przeznac
     Jeśli numer wersji nie zmieni się po zastosowaniu aktualizacji, wskazuje to, że stosowanie poprawki nie powiodło się. Jeśli widzisz coś takiego, skontaktuj się z [pomocą techniczną firmy Microsoft](../articles/storsimple/storsimple-contact-microsoft-support.md) w celu uzyskania dalszej pomocy.
      
     > [!IMPORTANT]
-    > Należy ponownie uruchomić aktywnym kontrolerze za pośrednictwem `Restart-HcsController` polecenia cmdlet przed zastosowaniem na następną aktualizację.
+    > Należy uruchomić ponownie kontroler aktywny za pomocą `Restart-HcsController` polecenia cmdlet przed zastosowaniem następnej aktualizacji.
      
-7. Powtórz kroki 3 – 5, aby zainstalować agenta konfiguracji (ci) / MDS pobrane do Twojej _FirstOrderUpdate_ folderu. 
-8. Powtórz kroki od 3 do 5, aby zainstalować aktualizacje stosowane w drugiej kolejności. **Drugi kolejność aktualizacji, można zainstalować wiele aktualizacji, uruchamiając tylko `Start-HcsHotfix cmdlet` i wskazujący folder zawierający drugi kolejność aktualizacji. Polecenie cmdlet będzie wykonywać wszystkie dostępne aktualizacje w folderze.** Jeśli aktualizacja jest już zainstalowana, logika aktualizacji wykryje to i nie zastosuje tej aktualizacji. 
+7. Powtórz kroki od 3 do 5, aby zainstalować agenta konfiguracji (ci) / MDS pobrane do Twojego _FirstOrderUpdate_ folderu. 
+8. Powtórz kroki od 3 do 5, aby zainstalować aktualizacje stosowane w drugiej kolejności. **Drugi kolejność aktualizacji, można zainstalować wiele aktualizacji przez uruchomienie `Start-HcsHotfix cmdlet` i wskazanie folderu, gdzie znajdują się druga aktualizacji zamówień. Polecenie cmdlet uruchomi wszystkie aktualizacje dostępne w folderze.** Jeśli aktualizacja jest już zainstalowana, logika aktualizacji wykryje to i nie zastosuje tej aktualizacji. 
 
 Po zainstalowaniu wszystkich poprawek użyj polecenia cmdlet `Get-HcsSystem`. Wersje powinny być następujące:
 
@@ -153,7 +166,7 @@ Aby zainstalować aktualizacje oprogramowania układowego dysku, postępuj zgodn
         [Y] Yes [N] No (Default is "Y"): Y
         WARNING: Installation is currently in progress. This operation can take several minutes to complete.
 3. Monitoruj postęp instalacji za pomocą polecenia `Get-HcsUpdateStatus`. Aktualizacja będzie zakończona, gdy parametr `RunInProgress` zmieni wartość na `False`.
-4. Po zakończeniu instalacji kontroler, na którym została zainstalowana poprawka przeznaczona do trybu konserwacji, zostanie uruchomiony ponownie. Zaloguj się w — opcja 1, **Zaloguj się przy użyciu pełnego dostępu**i sprawdź, wersja oprogramowania układowego dysku. Wpisz:
+4. Po zakończeniu instalacji kontroler, na którym została zainstalowana poprawka przeznaczona do trybu konserwacji, zostanie uruchomiony ponownie. Zaloguj się w opcji 1, **Zaloguj się przy użyciu pełnego dostępu**i sprawdź wersję oprogramowania układowego dysku. Wpisz:
    
    `Get-HcsFirmwareVersion`
    

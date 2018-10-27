@@ -1,12 +1,9 @@
 ---
 title: Konfigurowanie metody routingu ruchu wydajności przy użyciu usługi Azure Traffic Manager | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania usługi Traffic Manager można kierować ruchem do punktu końcowego o najniższym opóźnieniu
+description: W tym artykule opisano sposób konfigurowania usługi Traffic Manager na potrzeby kierowania ruchu do punktu końcowego z najniższym opóźnieniem
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: ''
-ms.assetid: 6dca6de1-18f7-4962-bd98-6055771fab22
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,42 +11,42 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: kumud
-ms.openlocfilehash: 014aa646459cd64fca7c697419324caa3edaeeea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c378043a9e10a0aed5344ac3182af6163d217c7b
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23876313"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140472"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>Konfigurowanie metody routingu ruchu wydajności
 
-Metody routingu ruchu wydajności umożliwia kierować ruch do punktu końcowego o najniższym opóźnieniu sieci klienta. Zazwyczaj centrum danych z najniższym opóźnieniu jest najbardziej w odległości geograficznych. Tej metody routingu ruchu nie można uwzględnić w czasie rzeczywistym zmiany w konfiguracji sieci lub obciążenia.
+Metody routingu ruchu wydajności pozwala kierować ruch do punktu końcowego zapewnia najniższe opóźnienie sieci klienta. Zazwyczaj centrum danych, która zapewnia najniższe opóźnienie jest najbardziej geograficznej odległości. Ta metoda routingu ruchu sieciowego nie można uwzględniać w czasie rzeczywistym zmian w konfiguracji sieci lub obciążenia.
 
-##  <a name="to-configure-performance-routing-method"></a>Aby skonfigurować metody routingu wydajności
+##  <a name="to-configure-performance-routing-method"></a>Aby skonfigurować metody routingu opartego na wydajności
 
 1. Z poziomu przeglądarki zaloguj się do witryny [Azure Portal](http://portal.azure.com). Jeśli jeszcze nie masz konta, możesz skorzystać z [bezpłatnej miesięcznej wersji próbnej](https://azure.microsoft.com/free/). 
-2. Na pasku wyszukiwania portalu, wyszukaj **profilów usługi Traffic Manager** , a następnie kliknij nazwę profilu, który chcesz skonfigurować metody routingu.
-3. W **profilu usługi Traffic Manager** bloku, sprawdź, czy są obecne usługi w chmurze i witryn sieci Web, które mają zostać uwzględnione w konfiguracji.
-4. W **ustawienia** kliknij **konfiguracji**i w **konfiguracji** bloku ukończenia w następujący sposób:
-    1. Dla **ustawienia metody routingu ruchu**, dla **metody routingu** wybierz **wydajności**.
-    2. Ustaw **ustawienia monitora punktu końcowego** identyczne dla wszystkich każdego punktu końcowego, w tym profilu w następujący sposób:
-        1. Wybierz odpowiednie **protokołu**, a następnie określ **portu** numer. 
-        2. Aby uzyskać **ścieżki** wpisz ukośnik  */* . Aby monitorować punktów końcowych, należy określić ścieżkę i nazwę pliku. A ukośnika "/" jest prawidłowym wpisem dla ścieżki względnej i oznacza, że plik znajduje się w katalogu głównym (ustawienie domyślne).
-        3. W górnej części strony kliknij **zapisać**.
-5.  Testowanie zmian w konfiguracji w następujący sposób:
-    1.  Na pasku wyszukiwania portalu, wyszukaj nazwę profilu Menedżera ruchu, a następnie kliknij przycisk profilu usługi Traffic Manager w wynikach który wyświetlone.
-    2.  W **Traffic Manager** bloku, kliknij opcję **omówienie**.
-    3.  **Profilu usługi Traffic Manager** bloku Wyświetla nazwę DNS nowo utworzony profil Menedżera ruchu. Może to służyć przez wszystkich klientów (na przykład, przechodząc do niej przy użyciu przeglądarki sieci web) do pobrania kierowane do prawej punktu końcowego jako określana przez typ routingu. W takim przypadku wszystkie żądania są kierowane do punktu końcowego o najniższym opóźnieniu sieci klienta.
-6. Po działa profilu Menedżera ruchu, należy edytować rekord DNS na z autorytatywnego serwera DNS, aby wskazywała nazwę domeny firmowej na nazwę domeny usługi Traffic Manager.
+2. Na pasku wyszukiwania portalu, wyszukaj **profile usługi Traffic Manager** a następnie kliknij nazwę profilu, który chcesz skonfigurować metody routingu dla.
+3. W **profilu usługi Traffic Manager** bloku, sprawdź, czy obecne są usługami w chmurze i witryn sieci Web, które mają zostać uwzględnione w konfiguracji.
+4. W **ustawienia** kliknij **konfiguracji**, a następnie w **konfiguracji** bloku, podaj następujące:
+    1. Aby uzyskać **ustawienia metody routingu ruchu**, dla **Metoda routingu** wybierz **wydajności**.
+    2. Ustaw **ustawienia monitora punktu końcowego** identyczne dla wszystkich każdego punktu końcowego w ramach tego profilu, w następujący sposób:
+        1. Wybierz odpowiedni **protokołu**, a następnie określ **portu** numer. 
+        2. Aby uzyskać **ścieżki** wpisz ukośnik */*. Monitorowanie punktów końcowych, należy określić ścieżkę i nazwę pliku. A ukośnika "/" jest prawidłowym wpisem ścieżki względnej i oznacza, że plik znajduje się w katalogu głównym (ustawienie domyślne).
+        3. W górnej części strony kliknij **Zapisz**.
+5.  Przetestuj zmiany w konfiguracji w następujący sposób:
+    1.  Paska wyszukiwania portalu, wyszukaj nazwę profilu usługi Traffic Manager, a następnie kliknij pozycję profil usługi Traffic Manager w taki sposób, w wynikach, wyświetlana.
+    2.  W **usługi Traffic Manager** bloku profilu, kliknij przycisk **Przegląd**.
+    3.  **Profilu usługi Traffic Manager** bloku Wyświetla nazwę DNS nowo utworzonego profilu usługi Traffic Manager. Może to służyć przez dowolnego klienta (na przykład, przechodząc do niego w przeglądarce sieci web) Pobierz kierowane do prawego punktu końcowego jako ustalany na podstawie typu routingu. W takim przypadku wszystkie żądania są kierowane do punktu końcowego zapewnia najniższe opóźnienie sieci klienta.
+6. Po profilu usługi Traffic Manager działa, należy edytować rekord DNS na autorytatywny serwer DNS, aby wskazywała nazwę domeny firmowej na nazwę domeny usługi Traffic Manager.
 
-![Konfigurowanie metody routingu ruchu wydajności przy użyciu Menedżera ruchu][1]
+![Konfigurowanie metody routingu ruchu wydajności przy użyciu usługi Traffic Manager][1]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [ważone metody routingu ruchu](traffic-manager-configure-weighted-routing-method.md).
-- Dowiedz się więcej o [metody routingu priorytet](traffic-manager-configure-priority-routing-method.md).
-- Dowiedz się więcej o [geograficzne metody routingu](traffic-manager-configure-geographic-routing-method.md).
-- Dowiedz się, jak [Menedżera ruchu ustawienia testu](traffic-manager-testing-settings.md).
+- Dowiedz się więcej o [ważonej metodzie routingu ruchu](traffic-manager-configure-weighted-routing-method.md).
+- Dowiedz się więcej o [priorytetowej metodzie routingu](traffic-manager-configure-priority-routing-method.md).
+- Dowiedz się więcej o [geograficznej metodzie routingu](traffic-manager-configure-geographic-routing-method.md).
+- Dowiedz się, jak [testowanie ustawień usługi Traffic Manager](traffic-manager-testing-settings.md).
 
 <!--Image references-->
 [1]: ./media/traffic-manager-performance-routing-method/traffic-manager-performance-routing-method.png

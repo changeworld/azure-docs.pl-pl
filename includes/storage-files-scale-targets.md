@@ -1,3 +1,16 @@
+---
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: tamram
+ms.openlocfilehash: 038c273806188d04223f1e455c158249a3e17718
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50164775"
+---
 | Zasób | Udziały plików standardowe | Udziały plików w warstwie Premium (wersja zapoznawcza) |
 |----------|---------------|------------------------------------------|
 | Minimalny rozmiar udziału plików | (Brak minimum; płatność zgodnie z rzeczywistym użyciem) | 100 GiB |

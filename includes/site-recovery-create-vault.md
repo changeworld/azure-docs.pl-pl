@@ -1,4 +1,16 @@
-
+---
+author: rayne-wiselman
+ms.service: site-recovery
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: raynew
+ms.openlocfilehash: 62bb01b39f33f801f1eb43d128083cff7e16830a
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165619"
+---
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) > **Recovery Services**.
 2. Kliknij przycisk **Utwórz zasób** > **monitorowanie + zarządzanie** > **Backup i Site Recovery**.
 3. W polu **Nazwa** wprowadź przyjazną nazwę identyfikującą magazyn. Jeśli masz więcej niż jedną subskrypcję, wybierz jedną z nich.

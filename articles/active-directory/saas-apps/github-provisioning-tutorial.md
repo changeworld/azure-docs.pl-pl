@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: c645b0a99493c71a9fa1416c16876da30bcff891
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: bc82f0b71c6963c4f5a356180a1eabbca1b166c4
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367662"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156956"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi GitHub dla automatycznej aprowizacji użytkowników
 
@@ -32,7 +32,7 @@ Celem tego samouczka jest Wam czynności, które należy wykonać w witrynie Git
 Scenariusz opisany w tym samouczku przyjęto założenie, że masz następujące elementy:
 
 *   Dzierżawy usługi Azure Active directory
-*   Dzierżawca usługi Github za pomocą [plan firma](https://help.github.com/articles/organization-billing-plans/#business-plan) lub lepiej nie są włączone 
+*   Dzierżawca usługi GitHub za pomocą [planu Business Cloud](https://help.github.com/articles/organization-billing-plans/#github-business-cloud) lub lepiej nie są włączone 
 *   Konto użytkownika w usłudze GitHub z uprawnieniami administratora 
 
 > [!NOTE]

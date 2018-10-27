@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: fd43c62f1a291a59d5d373437a49b263d6af4cb3
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 6f9b85ec4821ff2454970136b3c8af2cb0f92154
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345892"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140827"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Zarządzanie kontami laboratorium w usłudze Azure Lab Services 
 W usługach Azure Lab Services konta laboratorium jest kontenerem dla zarządzanych laboratoriów, takich jak laboratorium na potrzeby zajęć. Administrator konfiguruje konta laboratorium przy użyciu usługi Azure Lab Services i zapewnia dostęp do laboratorium właścicieli, którzy mogą tworzyć laboratoriów w ramach konta. W tym artykule opisano sposób tworzenia konta laboratorium, są wyświetlane wszystkie konta laboratorium lub usuwanie konta laboratorium.
@@ -55,17 +55,17 @@ Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium,
     ![Dodawanie użytkownika do roli twórcy laboratorium](../media/tutorial-setup-lab-account/add-user-to-lab-creator-role.png)
 
 ## <a name="specify-marketplace-images-available-to-lab-owners"></a>Określanie obrazów w portalu Marketplace dostępnych dla właścicieli laboratorium
-Jako właściciel konta laboratorium można określić obrazów witryny Marketplace, które twórców laboratorium umożliwia tworzenie laboratoriów w ramach konta laboratorium. 
+Jako właściciel konta laboratorium możesz określić obrazy witryny Marketplace, których twórcy laboratorium mogą używać do tworzenia laboratoriów na koncie laboratorium. 
 
 1. W menu po lewej stronie wybierz pozycję **Obrazy w portalu Marketplace**. Domyślnie zobaczysz pełną listę obrazów (włączonych i wyłączonych). Tę listę można filtrować, aby wyświetlić tylko obrazy włączone/wyłączone, wybierając z listy rozwijanej u góry opcję **Tylko włączone**/**Tylko wyłączone**. 
     
     ![Strona Obrazy w portalu Marketplace](../media/tutorial-setup-lab-account/marketplace-images-page.png)
 
-    Obrazów witryny Marketplace, które są wyświetlane na liście są tylko te, które spełniają następujące warunki:
+    Obrazy witryny Marketplace wyświetlane na liście to tylko obrazy spełniające następujące warunki:
         
-    - Tworzy jedną maszynę Wirtualną.
-    - Używa usługi Azure Resource Manager do aprowizacji maszyn wirtualnych
-    - Nie wymaga zakupu dodatkowych licencji planu
+    - Tworzą jedną maszynę wirtualną
+    - Używają usługi Azure Resource Manager do aprowizowania maszyn wirtualnych
+    - Nie wymagają zakupu dodatkowego planu licencjonowania
 2. Aby w portalu Marketplace **wyłączyć** obraz, który zostały włączony, wykonaj jedną z następujących czynności: 
     1. Wybierz pozycję **... (wielokropek)** w ostatniej kolumnie, a następnie polecenie **Wyłącz obraz**. 
 
@@ -90,6 +90,28 @@ Wykonaj instrukcje z poprzedniej sekcji, która wyświetla kontami laboratorium 
 2. Wybierz **Usuń** na pasku narzędzi. 
 3. Typ **tak** o potwierdzenie.
 4. Wybierz pozycję **Usuń**. 
+
+## <a name="view-and-manage-labs-in-the-lab-account"></a>Wyświetlanie i zarządzanie laboratoriami na koncie laboratorium
+
+1. Na **konta laboratorium** wybierz opcję **Labs** w menu po lewej stronie.
+
+    ![Laboratoria w ramach konta](../media/how-to-manage-lab-accounts/labs-in-account.png)
+1. Zostanie wyświetlony **liście laboratoriów** w ramach konta, z następującymi informacjami: 
+    1. Nazwa laboratorium.
+    2. Data, w której utworzono laboratorium. 
+    3. Adres e-mail użytkownika, który utworzył laboratorium. 
+    4. Maksymalna liczba użytkowników uprawnionych do laboratorium. 
+    5. Stan laboratorium. 
+
+## <a name="delete-a-lab-in-the-lab-account"></a>Usuń laboratorium w ramach konta laboratorium
+Postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby wyświetlić listę laboratoriów w ramach konta laboratorium.
+
+1. Wybierz **... (wielokropek)** i wybierz **Usuń**. 
+
+    ![Usuń laboratorium — przycisk](../media/how-to-manage-lab-accounts/delete-lab-button.png)
+2. Wybierz **tak** w komunikacie ostrzegawczym. 
+
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 Wprowadzenie do konfigurowania laboratorium przy użyciu usługi Azure Lab Services:

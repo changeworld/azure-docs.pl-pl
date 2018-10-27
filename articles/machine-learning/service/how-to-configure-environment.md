@@ -9,13 +9,13 @@ ms.component: core
 ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
-ms.date: 8/6/2018
-ms.openlocfilehash: 657a762874f7c2fb40553552ef6c17d9b5b6da0f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.date: 10/24/2018
+ms.openlocfilehash: 6c2d5a776f603161ef730028168b91844c120aec
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958622"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158996"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
@@ -120,12 +120,16 @@ Aby uzyskać więcej informacji na maszynach wirtualnych do nauki o danych, zoba
     pip install --upgrade azureml-sdk[notebooks,automl] azureml-dataprep
     ```
 
-    > [!NOTE]
-    > Jeśli pojawi się komunikat `PyYAML` nie może być odinstalowany, użyj następującego polecenia:
-    >
-    > `pip install --upgrade azureml-sdk[notebooks,automl] azureml-dataprep --ignore-installed PyYAML`
+   Możesz wyświetlić dokumenty referencyjne języka Python dla klas i metod w następujących SDK:
+   + [Usługi Azure Machine Learning zestawu SDK dla języka Python](https://aka.ms/aml-sdk)
+   + [Zestaw SDK przygotowywania danych usługi Azure Machine Learning](https://aka.ms/data-prep-sdk)
 
-    Może upłynąć kilka minut, aby zainstalować zestaw SDK.
+   > [!NOTE]
+   > Jeśli pojawi się komunikat `PyYAML` nie może być odinstalowany, użyj następującego polecenia:
+   >
+   > `pip install --upgrade azureml-sdk[notebooks,automl] azureml-dataprep --ignore-installed PyYAML`
+
+   Może upłynąć kilka minut, aby zainstalować zestaw SDK.
 
 1. Zainstaluj pakiety do eksperymentów uczenia maszynowego. Następujące polecenie i Zastąp `<new package>` przy użyciu pakietu, którą chcesz zainstalować:
 

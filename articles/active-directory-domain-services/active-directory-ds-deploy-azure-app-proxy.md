@@ -3,7 +3,7 @@ title: 'Usługa Azure Active Directory Domain Services: Wdrażanie serwera Proxy
 description: Użyj serwera Proxy aplikacji usługi Azure AD w domenach zarządzanych usługi Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
-ms.author: maheshu
-ms.openlocfilehash: 11967e850e9d626edf757526b8ae7d320bad1a4e
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: 96ef005f095e5ab774a88ec766080f647414a7ce
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504349"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155545"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Wdrażanie aplikacji serwera Proxy Azure AD w domenie zarządzanej usług domenowych Azure AD
 Serwer Proxy aplikacji usługi Azure Active Directory (AD) pomaga wspierać pracowników zdalnych przez publikowanie lokalnych aplikacji można uzyskać dostęp za pośrednictwem Internetu. Korzystając z usług domenowych Azure AD możesz teraz lift-and-shift starszych aplikacji lokalnych do usług infrastruktury platformy Azure. Następnie można opublikować te aplikacje przy użyciu usługi Azure AD serwera Proxy aplikacji, co zapewnia bezpieczny dostęp zdalny do użytkowników w Twojej organizacji.
