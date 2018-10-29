@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2018
 ms.author: spelluru
-ms.openlocfilehash: b05e23019e7b0a03965e51052bf334d0cbff041d
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 6ba3d8e4273d0f2ce2626d8876c386a3714d5355
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269347"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50159098"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Protokołu AMQP 1.0 w usłudze Microsoft Azure Service Bus: operacje na podstawie odpowiedzi żądań
 
@@ -153,7 +153,7 @@ Komunikat odpowiedzi muszą zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|Int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — Powodzenie, w przeciwnym razie nie powiodło się.|  
+|statusCode|int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — Powodzenie, w przeciwnym razie nie powiodło się.|  
 |Opisstanu|ciąg|Nie|Opis stanu.|  
   
 Treści komunikatu odpowiedzi muszą składać się z sekcji wartość amqp mapy z następujących pozycji:  
@@ -179,8 +179,8 @@ Treść żądania musi składać się z **wartość amqp** sekcji zawierającej 
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|`from-sequence-number`|dł.|Yes|Numer sekwencji, który ma wyznaczać początek podglądu.|  
-|`message-count`|Int|Yes|Maksymalna liczba wiadomości do wglądu.|  
+|`from-sequence-number`|długi|Yes|Numer sekwencji, który ma wyznaczać początek podglądu.|  
+|`message-count`|int|Yes|Maksymalna liczba wiadomości do wglądu.|  
   
 #### <a name="response"></a>Odpowiedź  
 
@@ -188,7 +188,7 @@ Komunikat odpowiedzi muszą zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|Int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — ma więcej wiadomości<br /><br /> 0xcc: Brak zawartości — dalszych komunikatów|  
+|statusCode|int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — ma więcej wiadomości<br /><br /> 204: Brak zawartości — dalszych komunikatów|  
 |Opisstanu|ciąg|Nie|Opis stanu.|  
   
 Treści komunikatu odpowiedzi muszą składać się z **wartość amqp** sekcji zawierającej **mapy** z następujących pozycji:  
@@ -238,7 +238,7 @@ Komunikat odpowiedzi muszą zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|Int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — Powodzenie, w przeciwnym razie nie powiodło się.|  
+|statusCode|int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — Powodzenie, w przeciwnym razie nie powiodło się.|  
 |Opisstanu|ciąg|Nie|Opis stanu.|  
   
 Treści komunikatu odpowiedzi muszą składać się z **amqp wartość** sekcji mapy z następujących pozycji:  
@@ -272,7 +272,7 @@ Komunikat odpowiedzi muszą zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|Int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — Powodzenie, w przeciwnym razie nie powiodło się.|  
+|statusCode|int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — Powodzenie, w przeciwnym razie nie powiodło się.|  
 |Opisstanu|ciąg|Nie|Opis stanu.|  
   
 Treści komunikatu odpowiedzi muszą składać się z **amqp wartość** sekcji mapy z następujących pozycji:  
@@ -308,7 +308,7 @@ Komunikat odpowiedzi muszą zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|Int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — ma więcej wiadomości<br /><br /> 0xcc: Brak zawartości — dalszych komunikatów|  
+|statusCode|int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — ma więcej wiadomości<br /><br /> 204: Brak zawartości — dalszych komunikatów|  
 |Opisstanu|ciąg|Nie|Opis stanu.|  
   
 Treści komunikatu odpowiedzi muszą składać się z **amqp wartość** sekcji mapy z następujących pozycji:  
@@ -334,8 +334,8 @@ Treść żądania musi składać się z **wartość amqp** sekcji zawierającej 
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|from-sequence-number|dł.|Yes|Numer sekwencji, który ma wyznaczać początek podglądu.|  
-|message-count|Int|Yes|Maksymalna liczba wiadomości do wglądu.|  
+|from-sequence-number|długi|Yes|Numer sekwencji, który ma wyznaczać początek podglądu.|  
+|message-count|int|Yes|Maksymalna liczba wiadomości do wglądu.|  
 |Identyfikator sesji|ciąg|Yes|Identyfikator sesji.|  
   
 #### <a name="response"></a>Odpowiedź  
@@ -344,7 +344,7 @@ Komunikat odpowiedzi muszą zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|Int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — ma więcej wiadomości<br /><br /> 0xcc: Brak zawartości — dalszych komunikatów|  
+|statusCode|int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — ma więcej wiadomości<br /><br /> 204: Brak zawartości — dalszych komunikatów|  
 |Opisstanu|ciąg|Nie|Opis stanu.|  
   
 Treści komunikatu odpowiedzi muszą składać się z **amqp wartość** sekcji mapy z następujących pozycji:  
@@ -385,7 +385,7 @@ Komunikat odpowiedzi muszą zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|Int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — Powodzenie, w przeciwnym razie nie powiodło się|  
+|statusCode|int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — Powodzenie, w przeciwnym razie nie powiodło się|  
 |Opisstanu|ciąg|Nie|Opis stanu.|  
   
 ### <a name="get-session-state"></a>Pobierz stan sesji  
@@ -413,7 +413,7 @@ Komunikat odpowiedzi muszą zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|Int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — Powodzenie, w przeciwnym razie nie powiodło się|  
+|statusCode|int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — Powodzenie, w przeciwnym razie nie powiodło się|  
 |Opisstanu|ciąg|Nie|Opis stanu.|  
   
 Treści komunikatu odpowiedzi muszą składać się z **wartość amqp** sekcji zawierającej **mapy** z następujących pozycji:  
@@ -440,8 +440,8 @@ Treść żądania musi składać się z **wartość amqp** sekcji zawierającej 
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
 |ostatnio zaktualizowane w czasie|sygnatura czasowa|Yes|Filtr obejmujący tylko sesje zaktualizowane po określonym czasie.|  
-|pomiń|Int|Yes|Pomiń liczbę sesji.|  
-|top|Int|Yes|Maksymalna liczba sesji.|  
+|pomiń|int|Yes|Pomiń liczbę sesji.|  
+|top|int|Yes|Maksymalna liczba sesji.|  
   
 #### <a name="response"></a>Odpowiedź  
 
@@ -449,14 +449,14 @@ Komunikat odpowiedzi muszą zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|Int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — ma więcej wiadomości<br /><br /> 0xcc: Brak zawartości — dalszych komunikatów|  
+|statusCode|int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — ma więcej wiadomości<br /><br /> 204: Brak zawartości — dalszych komunikatów|  
 |Opisstanu|ciąg|Nie|Opis stanu.|  
   
 Treści komunikatu odpowiedzi muszą składać się z **wartość amqp** sekcji zawierającej **mapy** z następujących pozycji:  
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|pomiń|Int|Yes|Liczba pominiętych sesji, jeśli kod stanu 200.|  
+|pomiń|int|Yes|Liczba pominiętych sesji, jeśli kod stanu 200.|  
 |identyfikatory sesji|Tablica ciągów|Yes|Tablica identyfikatorów, jeśli kod stanu 200.|  
   
 ## <a name="rule-operations"></a>Reguły operacji  
@@ -519,7 +519,7 @@ Komunikat odpowiedzi muszą zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|Int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — Powodzenie, w przeciwnym razie nie powiodło się|  
+|statusCode|int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — Powodzenie, w przeciwnym razie nie powiodło się|  
 |Opisstanu|ciąg|Nie|Opis stanu.|  
   
 ### <a name="remove-rule"></a>Usuń regułę  
@@ -545,7 +545,7 @@ Komunikat odpowiedzi muszą zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|Int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — Powodzenie, w przeciwnym razie nie powiodło się|  
+|statusCode|int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — Powodzenie, w przeciwnym razie nie powiodło się|  
 |Opisstanu|ciąg|Nie|Opis stanu.|  
   
 ### <a name="get-rules"></a>Pobierz reguły
@@ -563,8 +563,8 @@ Treść żądania musi składać się z **wartość amqp** sekcji zawierającej 
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|top|Int|Yes|Liczba reguł, które można pobrać na stronie.|  
-|pomiń|Int|Yes|Liczba reguł, aby pominąć. Definiuje indeks początkowy (+ 1) na liście reguł. | 
+|top|int|Yes|Liczba reguł, które można pobrać na stronie.|  
+|pomiń|int|Yes|Liczba reguł, aby pominąć. Definiuje indeks początkowy (+ 1) na liście reguł. | 
 
 #### <a name="response"></a>Odpowiedź
 
@@ -572,7 +572,7 @@ Komunikat odpowiedzi zawiera następujące właściwości:
 
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|Int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — Powodzenie, w przeciwnym razie nie powiodło się|  
+|statusCode|int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — Powodzenie, w przeciwnym razie nie powiodło się|  
 |rules| Tablica mapy|Yes|Tablica reguły. Każda reguła jest reprezentowany przez mapę.|
 
 Każdy wpis mapy w tablicy zawiera następujące właściwości:
@@ -614,7 +614,7 @@ Każdy wpis mapy w tablicy zawiera następujące właściwości:
 | 3 | ciąg | Odpowiedz |
 | 4 | ciąg | Etykieta |
 | 5 | ciąg | Identyfikator sesji |
-| 6 | ciąg | Odpowiedz na identyfikator sesji|
+| 6 | ciąg | Identyfikator sesji dla odpowiedzi|
 | 7 | ciąg | Typ zawartości |
 | 8 | Mapa | Mapy właściwości określone w aplikacji |
 
@@ -655,7 +655,7 @@ Komunikat odpowiedzi muszą zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|Int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — Powodzenie, w przeciwnym razie nie powiodło się|  
+|statusCode|int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — Powodzenie, w przeciwnym razie nie powiodło się|  
 |Opisstanu|ciąg|Nie|Opis stanu.|  
   
 Treści komunikatu odpowiedzi muszą składać się z **wartość amqp** sekcji zawierającej **mapy** z następujących pozycji:  
@@ -668,7 +668,7 @@ Mapa reprezentujący wiadomość musi zawierać następujące wpisy:
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|token blokady|Identyfikator UUID|Yes|Jeśli token blokady `receiver-settle-mode` 1.|  
+|token blokady|uuid|Yes|Jeśli token blokady `receiver-settle-mode` 1.|  
 |message|Tablica bajtów|Yes|Komunikat o komunikacji sieciowej zakodowane w formacie protokołu AMQP 1.0.|  
   
 ### <a name="update-disposition-status"></a>Zaktualizuj stan dyspozycji  
@@ -700,7 +700,7 @@ Komunikat odpowiedzi muszą zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|Int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — Powodzenie, w przeciwnym razie nie powiodło się|  
+|statusCode|int|Yes|Kod odpowiedzi HTTP [specyfikacją RFC2616]<br /><br /> 200: OK — Powodzenie, w przeciwnym razie nie powiodło się|  
 |Opisstanu|ciąg|Nie|Opis stanu.|
 
 ## <a name="next-steps"></a>Kolejne kroki
