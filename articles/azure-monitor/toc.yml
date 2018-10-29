@@ -270,9 +270,23 @@ items:
         - name: Dodawanie ciągłego monitorowania
           href: ../application-insights/app-insights-vsts-continuous-monitoring.md?toc=/azure/azure-monitor/toc.json
         - name: Profiler
-          href: ../application-insights/app-insights-profiler.md?toc=/azure/azure-monitor/toc.json
-        - name: Włączanie profilera
-          href: ../application-insights/enable-profiler-compute.md?toc=/azure/azure-monitor/toc.json
+          items:
+          - name: Omówienie
+            href: ../application-insights/app-insights-profiler-overview.md?toc=/azure/azure-monitor/toc.json
+          - name: Włączanie profilera dla usługi App Service
+            href: ../application-insights/app-insights-profiler.md?toc=/azure/azure-monitor/toc.json
+          - name: Włączanie profilera dla usługi w chmurze
+            href: ../application-insights/app-insights-profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json
+          - name: Włączanie profilera dla aplikacji usługi Service Fabric
+            href: ../application-insights/app-insights-profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json
+          - name: Włączanie profilera dla maszyny wirtualnej platformy Azure
+            href: ../application-insights/app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json
+          - name: Ustawienia profilera
+            href: ../application-insights/app-insights-profiler-settings.md?toc=/azure/azure-monitor/toc.json
+          - name: Śledzenie żądań na potrzeby profilowania
+            href: ../application-insights/app-insights-profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json
+          - name: Rozwiązywanie problemów z profilerem
+            href: ../application-insights/app-insights-profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json
         - name: Diagnostyka
           href: ../application-insights/app-insights-azure-diagnostics.md?toc=/azure/azure-monitor/toc.json
         - name: Podglądy
@@ -822,7 +836,7 @@ items:
       - name: Przykłady programu Azure PowerShell
         href: ../monitoring-and-diagnostics/insights-powershell-samples.md?toc=/azure/azure-monitor/toc.json
       - name: Polecenia cmdlet programu PowerShell
-        href: ../log-analytics/log-analytics-powershell-workspace-configuration.md?toc=/azure%monitoring-and-diagnostics/toc.json
+        href: ../log-analytics/log-analytics-powershell-workspace-configuration.md?toc=/azure/monitoring-and-diagnostics/toc.json
       - name: Aplikacje
         items:
         - name: Tworzenie zasobów usługi Application Insights
@@ -836,13 +850,13 @@ items:
     - name: Przykłady interfejsu wiersza polecenia platformy Azure
       href: ../monitoring-and-diagnostics/insights-cli-samples.md?toc=/azure/azure-monitor/toc.json
     - name: Szablony usługi Resource Manager
-      href: ../log-analytics/log-analytics-template-workspace-configuration.md?toc=/azure%monitoring-and-diagnostics/toc.json
+      href: ../log-analytics/log-analytics-template-workspace-configuration.md?toc=/azure/monitoring-and-diagnostics/toc.json
     - name: Interfejs API
       items:
       - name: Przewodnik po korzystaniu z interfejsu API REST
         href: ../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md?toc=/azure/azure-monitor/toc.json
       - name: Interfejs API alertów
-        href: ../log-analytics/log-analytics-api-alerts.md?toc=/azure%monitoring-and-diagnostics/toc.json
+        href: ../log-analytics/log-analytics-api-alerts.md?toc=/azure/monitoring-and-diagnostics/toc.json
     - name: Aplikacje
       items:
       - name: Automatyzacja za pomocą usługi Microsoft Flow
@@ -982,9 +996,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Przykłady kodu
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 93a8fe3db1136f94b562165fa986506677bccf57
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 3d738f4fcca9189a14f9c0e84d0a7f60d5942c1c
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378979"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140574"

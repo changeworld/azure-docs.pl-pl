@@ -23,6 +23,10 @@ items:
     href: how-to-manage-lab-accounts.md
   - name: Zarządzanie laboratoriami na potrzeby zajęć
     href: how-to-manage-classroom-labs.md
+  - name: Konfigurowanie i publikowanie szablonów
+    href: how-to-create-manage-template.md
+  - name: Konfigurowanie i kontrolowanie użycia
+    href: how-to-configure-student-usage.md
   - name: Dostęp do laboratoriów na potrzeby zajęć
     href: how-to-use-classroom-lab.md
 - name: Dokumentacja
@@ -51,9 +55,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab
   - name: Cennik
     href: https://azure.microsoft.com/pricing/details/devtest-lab/
-ms.openlocfilehash: 0e890b8d7a5db914229a7d05a1590c91e83bcb6f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b31befdffbd9e997a3c0ccb53bf76296d85a48f6
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946327"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50137211"

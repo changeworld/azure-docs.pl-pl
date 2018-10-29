@@ -5,19 +5,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 04/09/2018
+ms.date: 10/17/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: a934a1b75e85e03b6803be5c8afcd8fe74b0fad5
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 7889fbc9373cbdfdfab891bf8b1cd610523c7032
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45739202"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50088095"
 ---
 Azure Blob Storage to rozwiązanie do magazynowania obiektów w chmurze firmy Microsoft. Usługa Blob Storage jest zoptymalizowana pod kątem przechowywania olbrzymich ilości danych bez struktury, takich jak dane tekstowe lub binarne.
-
-Wysoce skalowalny magazyn obiektów dla danych bez określonej struktury
 
 Usługa Blob Storage to idealne rozwiązanie w następujących przypadkach:
 
@@ -28,7 +26,7 @@ Usługa Blob Storage to idealne rozwiązanie w następujących przypadkach:
 * Zapisywanie danych w celu tworzenia kopii zapasowych, przywracania, odzyskiwania po awarii i archiwizowania.
 * Przechowywanie danych w celu analizy w usłudze lokalnej lub hostowanej na platformie Azure.
 
-Dostęp do obiektów w usłudze Blob Storage można uzyskać z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS. Użytkownicy lub aplikacje klienckie mogą uzyskiwać dostęp do obiektów blob za pomocą adresów URL, [interfejsu API REST usługi Azure Storage](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api), [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage), [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/storage) lub biblioteki klienta usługi Azure Storage. Biblioteki klienta magazynu są dostępne dla wielu języków, w tym [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage/client), [Java](https://docs.microsoft.com/java/api/overview/azure/storage/client), [Node.js](http://azure.github.io/azure-storage-node), [Python](https://docs.microsoft.com/python/azure/), [PHP](http://azure.github.io/azure-storage-php/) i [Ruby](http://azure.github.io/azure-storage-ruby).
+Użytkownicy lub aplikacje klienckie mogą uzyskiwać dostęp do obiektów usługi Blob Storage za pomocą protokołu HTTP lub HTTPS&mdash;z dowolnego miejsca na świecie,&mdash;używając adresów URL, [interfejsu API REST usługi Azure Storage](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api), programu [Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage), [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/storage) lub biblioteki klienta usługi Azure Storage. Biblioteki klienta magazynu są dostępne dla różnych języków, w tym [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage/client), [Java](https://docs.microsoft.com/java/api/overview/azure/storage/client), [Node.js](http://azure.github.io/azure-storage-node), [Python](https://docs.microsoft.com/python/azure/), [PHP](http://azure.github.io/azure-storage-php/) i [Ruby](http://azure.github.io/azure-storage-ruby).
 
 ## <a name="blob-service-concepts"></a>Pojęcia dotyczące usługi Blob
 
@@ -42,18 +40,23 @@ Dostęp do obiektów danych w usłudze Azure Storage odbywa się za pośrednictw
 
 ### <a name="container"></a>Kontener
 
-Kontener porządkuje zestaw obiektów blob, pełniąc funkcję podobną do folderu w systemie plików. Wszystkie obiekty blob znajdują się w określonym kontenerze. Konto magazynu może zawierać nieograniczoną liczbę kontenerów, a każdy kontener może zawierać nieograniczoną liczbę obiektów blob. Pamiętaj, że wszystkie litery w nazwie kontenera muszą być małymi literami.
+Kontener porządkuje zestaw obiektów blob, pełniąc funkcję podobną do folderu w systemie plików. Wszystkie obiekty blob znajdują się w określonym kontenerze. Konto magazynu może zawierać nieograniczoną liczbę kontenerów, a każdy kontener może zawierać nieograniczoną liczbę obiektów blob. 
+
+  > [!NOTE]
+  > Wszystkie litery w nazwie kontenera muszą być małymi literami.
 
 ### <a name="blob"></a>Obiekt blob
  
-W usłudze Azure Storage dostępne są trzy typy obiektów blob: blokowe obiekty blob, uzupełnialne obiekty blob i [stronicowe obiekty blob](../articles/storage/blobs/storage-blob-pageblob-overview.md) (używane w przypadku plików VHD).
+W usłudze Azure Storage dostępne są trzy typy obiektów blob&mdash;blokowe obiekty blob, uzupełnialne obiekty blob i [stronicowe obiekty blob](../articles/storage/blobs/storage-blob-pageblob-overview.md) (używane w przypadku plików VHD).
 
 * Blokowe obiekty blob mogą zawierać dane tekstowe i binarne o rozmiarze do około 4,7 TB. Blokowe obiekty blob składają się z bloków danych, którymi można zarządzać indywidualnie.
 * Uzupełnialne obiekty blob również składają się z bloków, podobnie jak blokowe obiekty blob, lecz są zoptymalizowane pod kątem operacji dołączania. Uzupełnialne obiekty blob doskonale sprawdzają się w sytuacjach takich jak zapisywanie danych dzienników z maszyn wirtualnych.
 * Stronicowe obiekty blob umożliwiają przechowywanie plików o dostępie swobodnym o rozmiarze do 8 TB. Stronicowe obiekty blob są używane do przechowywania plików VHD wspierających maszyny wirtualne.
 
-Wszystkie obiekty blob znajdują się w określonym kontenerze. Kontener przypomina folder w systemie plików. Można dodatkowo porządkować obiekty blob w katalogach wirtualnych i przechodzić pomiędzy nimi tak jak w systemie plików. 
+Wszystkie obiekty blob znajdują się w określonym kontenerze. Kontener przypomina folder w systemie plików. Można dodatkowo porządkować obiekty blob w katalogach wirtualnych i przechodzić między nimi tak jak w systemie plików. 
 
-W przypadku bardzo dużych zestawów danych, gdy ograniczenia sieci mogą w praktyce uniemożliwić przekazanie lub pobranie danych do usługi Blob Storage, możesz przesłać zestaw dysków twardych do firmy Microsoft, aby zaimportować dane bezpośrednio do centrum danych lub wyeksportować je stamtąd. Aby uzyskać więcej informacji, zobacz [Use the Microsoft Azure Import/Export Service to Transfer Data to Blob Storage (Przesyłanie danych do usługi Blob Storage za pomocą usługi Microsoft Azure Import/Export)](../articles/storage/common/storage-import-export-service.md).
+Jednak czasami duże zestawy danych i ograniczenia sieci uniemożliwiają przewodowe przekazywanie danych do usług Blob Storage. Możesz użyć usługi [Azure Data Box Disk](../articles/databox/data-box-disk-overview.md), aby poprosić o dyski SSD od firmy Microsoft. Możesz następnie skopiować dane na te dyski i odesłać je do firmy Microsoft do przekazania do usługi Blob Storage.
+
+Aby dowiedzieć się, jak wyeksportować duże ilości danych z konta magazynu, zobacz [Przesyłanie danych do usługi Blob Storage za pomocą usługi Microsoft Azure Import/Export](../articles/storage/common/storage-import-export-service.md).
   
-Aby uzyskać szczegółowe informacje o nazewnictwie kontenerów i obiektów blob, zobacz temat [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) (Nazewnictwo i odwoływanie się do kontenerów, obiektów blob i metadanych).
+Aby uzyskać szczegółowe informacje o nazewnictwie kontenerów i obiektów blob, zobacz temat [Nazewnictwo i odwołania do kontenerów, obiektów blob i metadanych](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata).
