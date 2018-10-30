@@ -9,18 +9,20 @@ ms.reviewer: sgilley
 author: rastala
 ms.author: roastala
 ms.date: 09/24/2018
-ms.openlocfilehash: 14bd85a23e2630a1cf2a8b5621d669c4c6748168
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: b81e40298eae0f0b44f37e7f8f16beaddad999a5
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376622"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456817"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Szybki start: rozpoczynanie pracy z usługą Azure Machine Learning w witrynie Azure Portal
 
 W tym przewodniku Szybki start utworzysz obszar roboczy usługi Azure Machine Learning przy użyciu witryny Azure Portal. Ten obszar roboczy to podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich uczenie oraz wdrażanie za pomocą usługi Machine Learning. 
 
-W tym samouczku zostaną wykonane następujące czynności:
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
+
+W ramach tego przewodnika Szybki start wykonasz następujące czynności:
 
 * Tworzenie obszaru roboczego w subskrypcji platformy Azure.
 * Wypróbowanie jego działania za pomocą języka Python w notesie platformy Azure i rejestrowanie wartości z wielu iteracji.

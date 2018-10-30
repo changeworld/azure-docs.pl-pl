@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 9/24/2018
+ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: 1940fb210481dc75fe48d110776185e90cb3e42f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 875efddfff9b50ab05665cb8c158467dc46c8d0d
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991049"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987436"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Samouczek: monitorowanie dzienników i metryk usługi Azure Firewall
 
@@ -51,11 +51,11 @@ Od wykonania tej procedury w celu włączenia rejestrowania diagnostycznego moż
 5. W tym przykładzie dzienniki są przechowywane w usłudze Log Analytics, więc wpisz nazwę **Firewall log analytics**.
 6. Kliknij pozycję **Wyślij do usługi Log Analytics** w celu skonfigurowania obszaru roboczego. Na potrzeby zapisywania dzienników diagnostycznych można także skorzystać z usługi Event Hubs i konta magazynu.
 7. W obszarze **Log Analytics** kliknij pozycję **Konfiguruj**.
-8. Na stronie Obszary robocze pakietu OMS kliknij pozycję **Utwórz nowy obszar roboczy**.
+8. Na stronie Obszary robocze usługi Log Analytics kliknij pozycję **Utwórz nowy obszar roboczy**.
 9. Na stronie **Obszar roboczy usługi Log Analytics** wpisz nazwę **firewall-oms** dla nowego obszaru w polu **Obszar roboczy OMS**.
 10. Wybierz swoją subskrypcję, użyj istniejącej grupy zasobów zapory (**Test-FW-RG**), a następnie wybierz lokalizację **Wschodnie stany USA** i warstwę cenową **Bezpłatna**.
 11. Kliknij przycisk **OK**.
-   ![Rozpoczynanie procesu konfiguracji][1]
+   ![Uruchamianie procesu konfiguracji][1] Obszary robocze OMS są teraz nazywane obszarami roboczymi usługi Log Analytics.  
 12. W obszarze **Dziennik** kliknij pozycję **AzureFirewallApplicationRule** i **AzureFirewallNetworkRule**, aby zbierać dzienniki dla reguł aplikacji i sieci.
    ![Zapisywanie ustawień diagnostycznych][2]
 13. Kliknij pozycję **Zapisz**.
@@ -95,6 +95,8 @@ Dane dziennika aktywności można wyświetlać i analizować przy użyciu dowoln
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>Wyświetlanie i analizowanie dzienników reguł sieci i aplikacji
 
 Usługa Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) zbiera pliki dzienników liczników i zdarzeń. Obejmuje ona wizualizacje oraz zaawansowane możliwości wyszukiwania na potrzeby analizowania dzienników.
+
+Przykładowe zapytania usługi Log Analytics w usłudze Azure Firewall można znaleźć w temacie [Azure Firewall Log Analytics samples (Przykłady usługi Log Analytics w usłudze Azure Firewall)](log-analytics-samples.md).
 
 Ponadto możesz połączyć się z kontem magazynu i pobrać wpisy dziennika JSON dotyczące dostępu i wydajności. Po pobraniu plików JSON możesz je przekonwertować do formatu CSV i wyświetlać w programie Excel, usłudze Power BI lub innym narzędziu do wizualizacji danych.
 

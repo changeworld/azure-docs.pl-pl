@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 96ed5c17501aeb195ee584ce6d41a84fc2118bac
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 5bb840be119f5eac380c44e2cf45b3f73a9d981e
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376656"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985713"
 ---
 # <a name="tutorial-analyze-videos-with-azure-media-services"></a>Samouczek: analizowanie wideo za pomocą usługi Azure Media Services 
 
@@ -33,9 +33,6 @@ Ten samouczek przedstawia sposób wykonania następujących czynności:
 > * Uruchamianie aplikacji
 > * Sprawdzanie danych wyjściowych
 > * Oczyszczanie zasobów
-
-> [!Note]
-> Użyj witryny Azure Portal, zgodnie z opisem w sekcji [Skalowanie przetwarzania multimediów](../previous/media-services-scale-media-processing-overview.md), aby ustawić konto usług Media Services na 10 jednostek zarezerwowanych multimediów warstwy S3.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -71,6 +68,9 @@ W przykładzie są wykonywane następujące akcje:
 4. Przesyła zadanie.
 5. Sprawdza stan zadania.
 6. Pobiera pliki, które powstały w wyniku uruchomienia zadania. 
+
+> [!NOTE]
+> Jeśli używasz wstępnych ustawień analizatora wideo lub dźwięku, skorzystaj z witryny Azure Portal i ustaw na koncie 10 jednostek zarezerwowanych multimediów S3. Aby uzyskać więcej informacji, zobacz temat [Scale media processing (Skalowanie przetwarzania multimediów)](../previous/media-services-scale-media-processing-overview.md).
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>Rozpoczynanie korzystania z interfejsów API usługi Media Services przy użyciu zestawu .NET SDK
 

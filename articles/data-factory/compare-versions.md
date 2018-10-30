@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: ca00a414402c1cfdef55cfbde9291688f091bf77
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: aecb193d1d9a10dbb5c936401f9900c4b2be071f
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095923"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638246"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Porównanie bieżącej wersji usługi Azure Data Factory z wersją 1 usługi Data Factory
 Ten artykuł zawiera porównanie bieżącej wersji usługi Data Factory z wersją 1 usługi Data Factory. Aby zapoznać się z wprowadzeniem do bieżącej wersji usługi Data Factory, zobacz [Wprowadzenie do usługi Data Factory](introduction.md). Aby zapoznać się z wprowadzeniem do wersji 1 usługi Data Factory, zobacz [Wprowadzenie do usługi Azure Data Factory](v1/data-factory-introduction.md). 
@@ -62,7 +62,7 @@ Dane wyjściowe działania, w tym jego stan, mogą być wykorzystywane przez kol
 Działanie [Until](control-flow-until-activity.md) udostępnia te same funkcje, co struktura pętli do-until w językach programowania. Służy do uruchamiania zestawu działań w pętli do momentu, gdy warunek skojarzony z działaniem zostanie obliczony na wartość `true`. W usłudze Data Factory można określić wartość limitu czasu działania Until.  
 
 ### <a name="trigger-based-flows"></a>Przepływy na podstawie wyzwalaczy
-Potoki mogą być wywoływane na żądanie lub zgodnie z zegarem. Artykuł dotyczący [potoków i wyzwalaczy](concepts-pipeline-execution-triggers.md) zawiera szczegółowe informacje o wyzwalaczach. 
+Potoki mogą być wywoływane na żądanie (na podstawie zdarzenia, np. opublikowania obiektu blob) lub zgodnie z zegarem. Artykuł dotyczący [potoków i wyzwalaczy](concepts-pipeline-execution-triggers.md) zawiera szczegółowe informacje o wyzwalaczach. 
 
 ### <a name="invoking-a-pipeline-from-another-pipeline"></a>Wywoływanie potoku z poziomu innego potoku
 [Działanie Execute Pipeline](control-flow-execute-pipeline-activity.md) umożliwia potokowi usługi Data Factory wywoływanie innego potoku.

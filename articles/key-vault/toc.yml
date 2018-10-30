@@ -31,6 +31,8 @@ items:
   items:
   - name: Co to jest usługa Key Vault?
     href: key-vault-whatis.md
+  - name: Zabezpieczanie własnego magazynu kluczy
+    href: key-vault-secure-your-key-vault.md
   - name: Środowiska zabezpieczeń
     href: key-vault-ovw-security-worlds.md
   - name: Usuwanie nietrwałe
@@ -72,8 +74,6 @@ items:
     href: key-vault-soft-delete-powershell.md
   - name: Używanie grup do udzielania dostępu
     href: key-vault-group-permissions-for-apps.md
-  - name: Zabezpieczanie własnego magazynu kluczy
-    href: key-vault-secure-your-key-vault.md
   - name: Konfigurowanie zapór i sieci wirtualnych
     href: key-vault-network-security.md
 - name: Dokumentacja
@@ -92,6 +92,10 @@ items:
     href: /python/api/overview/azure/key-vault?view=azure-python
   - name: REST
     href: /rest/api/keyvault
+  - name: Uwierzytelnianie, żądania i odpowiedzi
+    href: authentication-requests-and-responses.md
+  - name: Typowe parametry i nagłówki
+    href: common-parameters-and-headers.md
   - name: Programowanie
     items:
     - name: Przewodnik dewelopera
@@ -104,47 +108,39 @@ items:
       href: vs-secure-secret-appsettings.md
     - name: Uwierzytelnianie usługi przy użyciu platformy .NET
       href: service-to-service-authentication.md
-    - name: Praca z programem Visual Studio
-      items:
-      - name: Korzystanie z połączonej usługi magazynu Key Vault
-        href: vs-key-vault-add-connected-service.md
-      - name: Wprowadzenie do projektów ASP.NET
-        href: vs-key-vault-aspnet-get-started.md
-      - name: Co się stało z moim projektem ASP.NET?
-        href: vs-key-vault-aspnet-what-happened.md
-      - name: Wprowadzenie do projektów ASP.NET Core
-        href: vs-key-vault-aspnet-core-get-started.md
-      - name: Co się stało z moim projektem ASP.NET Core?
-        href: vs-key-vault-aspnet-core-what-happened.md
+    - name: Korzystanie z połączonej usługi magazynu Key Vault
+      href: vs-key-vault-add-connected-service.md
 - name: Zasoby
   items:
   - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
     href: /learn/browse/?products=azure-key-vault
+  - name: Uwierzytelnianie, żądania i odpowiedzi
+    href: authentication-requests-and-responses.md
+  - name: Typowe parametry i nagłówki
+    href: common-parameters-and-headers.md
   - name: Dane klienta
     href: key-vault-customer-data.md
   - name: Informacje o wersji
     href: key-vault-versions.md
-  - name: Usługa
-    items:
-    - name: Cennik
-      href: https://azure.microsoft.com/pricing/details/key-vault/
-    - name: Dostępność w danym regionie
-      href: https://azure.microsoft.com/global-infrastructure/services/?products=key-vault
-    - name: Umowa dotycząca poziomu usług (SLA)
-      href: https://azure.microsoft.com/support/legal/sla/key-vault/
-    - name: Limity usługi
-      href: key-vault-service-limits.md
-    - name: Stan usługi
-      href: https://azure.microsoft.com/status/
-    - name: Aktualizacje usług
-      href: https://azure.microsoft.com/updates/?product=key-vault
-  - name: Blog zespołu
+  - name: Cennik
+    href: https://azure.microsoft.com/pricing/details/key-vault/
+  - name: Dostępność w danym regionie
+    href: https://azure.microsoft.com/global-infrastructure/services/?products=key-vault
+  - name: Umowa dotycząca poziomu usług (SLA)
+    href: https://azure.microsoft.com/support/legal/sla/key-vault/
+  - name: Limity usługi
+    href: key-vault-service-limits.md
+  - name: Stan usługi
+    href: https://azure.microsoft.com/status/
+  - name: Aktualizacje usług
+    href: https://azure.microsoft.com/updates/?product=key-vault
+  - name: Blog
     href: http://blogs.technet.com/b/kv/
 - name: Opinia dotycząca produktu
   href: https://feedback.azure.com/forums/906355-azure-key-vault
-ms.openlocfilehash: 64b4f6cbb26da244898d46b8fd5250a2eeeef91e
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: e58f20767e6a3ae49eff17e5388b7abeb1dcaa65
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140946"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50221329"

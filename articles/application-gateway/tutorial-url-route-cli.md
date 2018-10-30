@@ -7,15 +7,15 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 10/25/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 2402dd2adb27abb784c34a2a3569e8f6e4a60f77
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f683d63683e903d947d0789a16a8efa48196d36a
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954793"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026198"
 ---
 # <a name="tutorial-route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Samouczek: kierowanie ruchu internetowego na podstawie adresu URL za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -30,10 +30,9 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Tworzenie odbiorników, mapy ścieżek URL i reguł
 > * Tworzenie skalowalnych pul zaplecza
 
-
 ![Przykład routingu adresów URL](./media/tutorial-url-route-cli/scenario.png)
 
-Jeśli chcesz, możesz wykonać kroki tego samouczka przy użyciu [programu Azure PowerShell](tutorial-url-route-powershell.md).
+Jeśli chcesz, możesz wykonać ten samouczek przy użyciu [programu Azure PowerShell](tutorial-url-route-powershell.md) lub [witryny Azure Portal](create-url-route-portal.md).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: 5a95675d5e37adec5fb1f1542daad329484a2a4c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 1d38b563e2a272acdbaa4ea0c2a169a04e798d12
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092614"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649401"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: często zadawane pytania
 
@@ -217,7 +217,7 @@ A.  Po zakończeniu kopiowania danych na platformę Azure dane z dysków urządz
 ## <a name="audit-report"></a>Raport z inspekcji
 
 ### <a name="how-does-azure-data-box-service-help-support-customers-chain-of-custody-procedure"></a>W jaki sposób usługa Azure Data Box pomaga klientom wspierać procedurę łańcucha nadzoru?
-A.  Usługa Azure Data Box natywnie dostarcza raporty, których można użyć do dokumentacji łańcucha nadzoru. Dzienniki inspekcji i kopiowania są dostępne na koncie magazynu na platformie Azure, a historię zamówień można pobrać w Twoim zamówieniu w witrynie Azure Portal po zakończeniu realizacji zamówienia.
+A.  Usługa Azure Data Box natywnie dostarcza raporty, których można użyć do dokumentacji łańcucha nadzoru. Dzienniki inspekcji i kopiowania są dostępne na koncie magazynu na platformie Azure, a [historię zamówień można pobrać](data-box-portal-admin.md#download-order-history) w witrynie Azure Portal po zakończeniu realizacji zamówienia.
 
 
 ### <a name="what-type-of-reporting-is-available-to-support-chain-of-custody"></a>Jaki typ raportowania jest dostępny do obsługi łańcucha nadzoru?
@@ -230,7 +230,7 @@ A.  Do obsługi łańcucha nadzoru dostępne są następujące typy raportowania
 - Oczyszczanie urządzenia Data Box (zgodnie z normami NIST 800 88R1) po skopiowaniu danych na konto usługi Azure Storage.
 
 ### <a name="are-the-carrier-tracking-logs--from-upsdhl-available"></a>Czy są dostępne dzienniki śledzenia przewoźnika (od firmy UPS/DHL)? 
-A.  Dzienniki śledzenia przewoźnika są przechwytywane w raporcie dzienników inspekcji urządzenia Data Box. Ten raport jest dostępny dla Ciebie po powrocie urządzenia do centrum danych platformy Azure i po wyczyszczeniu danych z dysków urządzenia. W razie natychmiastowej potrzeby możesz zawsze przejść bezpośrednio do witryny internetowej przewoźnika i podać numer śledzenia zamówienia, aby uzyskać informacje o śledzeniu.
+A.  Dzienniki śledzenia przewoźnika są przechwytywane w historii zamówień urządzenia Data Box. Ten raport jest dostępny dla Ciebie po powrocie urządzenia do centrum danych platformy Azure i po wyczyszczeniu danych z dysków urządzenia. W razie natychmiastowej potrzeby możesz zawsze przejść bezpośrednio do witryny internetowej przewoźnika i podać numer śledzenia zamówienia, aby uzyskać informacje o śledzeniu.
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>Czy mogę przetransportować urządzenie Data Box do centrum danych platformy Azure? 
 A.  Nie. Obecnie centrum danych platformy Azure nie akceptuje dostarczania urządzeń Data Box od klientów lub od przewoźników innych niż UPS/DHL.

@@ -1,20 +1,20 @@
 ---
 title: Wyszukiwanie przy użyciu usługi Azure Maps | Microsoft Docs
 description: Wyszukiwanie pobliskiego punktu orientacyjnego za pomocą usługi Azure Maps
-author: dsk-2015
-ms.author: dkshir
-ms.date: 10/02/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 10/22/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 761674c5839f0513532355116db07604f9e9d9dc
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 10fb30b77cc3cd18cbb6b3def9682349474fba71
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816824"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645818"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Wyszukiwanie pobliskich punktów orientacyjnych za pomocą usługi Azure Maps
 
@@ -116,11 +116,10 @@ Interfejs API kontrolki mapy to wygodna biblioteka klienta, która ułatwia inte
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var MapsAccountKey = "<your account key>";
-    var map = new atlas.Map("map", {
-        "subscription-key": MapsAccountKey
-    });
+    atlas.setSubscriptionKey("<your account key>");
+    var map = new atlas.Map("map");
     ```
+
     Ten segment inicjuje interfejs API kontrolki mapy dla klucza konta usługi Azure Maps. **Atlas** to przestrzeń nazw, która zawiera interfejs API i powiązane składniki wizualne. **Atlas.Map** udostępnia kontrolkę wizualnej i interaktywnej mapy internetowej.
 
 4. Zapisz zmiany w pliku i otwórz stronę HTML w przeglądarce. Jest to najbardziej podstawowa mapa utworzona przez wywołanie **atlas.map** i użycie klucza konta.
@@ -148,14 +147,14 @@ W tej sekcji przedstawiono sposób wyszukiwania punktu orientacyjnego na mapie p
     var client = new atlas.service.Client(MapsAccountKey);
     ```
 
-3. Wszystkie funkcje na mapie powinny zostać załadowane po załadowaniu się mapy. Możesz to sprawdzić, umieszczając wszystkie funkcje mapy w bloku mapy eventListener. Dodaj następujące wiersze kodu, aby dodać blok [eventListener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addeventlistener) do mapy w celu sprawdzenia, czy mapa została w całości załadowana przed dodaniem funkcji.
+3. Wszystkie funkcje na mapie powinny zostać załadowane po załadowaniu się mapy. Możesz to sprawdzić, umieszczając wszystkie funkcje mapy w bloku mapy eventListener. Dodaj następujące wiersze kodu, aby dodać blok [eventListener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) do mapy w celu sprawdzenia, czy mapa została w całości załadowana przed dodaniem funkcji.
     
     ```JavaScript
-         map.addEventListener("load", function() {
+         map.events.add("load", function() {
          });
     ```
 
-4. Dodaj następujący blok skryptu **w bloku eventListener podczas ładowania mapy**, aby utworzyć zapytanie. Ten fragment kodu używa usługi Fuzzy Search Service — podstawowego interfejsu API wyszukiwania usługi Search Service. Usługa Fuzzy Search Service obsługuje większość rozmytych danych wejściowych, takich jak dowolna kombinacja adresu i tokenów punktu orientacyjnego (POI). Wyszukuje najbliższe stacje benzynowe w obrębie wybranego promienia wyszukiwania. Odpowiedź jest następnie przekształcana do formatu GeoJSON i konwertowana na cechy punktu, które są dodawane do mapy w formie pinezek. Ostatnia część skryptu dodaje ograniczenia zasięgu wyświetlania aparatu do mapy za pomocą właściwości [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) w usłudze Maps.
+4. Dodaj następujący blok skryptu **w bloku events podczas ładowania mapy**, aby utworzyć zapytanie. Ten fragment kodu używa usługi Fuzzy Search Service — podstawowego interfejsu API wyszukiwania usługi Search Service. Usługa Fuzzy Search Service obsługuje większość rozmytych danych wejściowych, takich jak dowolna kombinacja adresu i tokenów punktu orientacyjnego (POI). Wyszukuje najbliższe stacje benzynowe w obrębie wybranego promienia wyszukiwania. Odpowiedź jest następnie przekształcana do formatu GeoJSON i konwertowana na cechy punktu, które są dodawane do mapy w formie pinezek. Ostatnia część skryptu dodaje ograniczenia zasięgu wyświetlania aparatu do mapy za pomocą właściwości [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) w usłudze Maps.
 
     ```JavaScript
 
@@ -190,8 +189,8 @@ W tej sekcji przedstawiono sposób wyszukiwania punktu orientacyjnego na mapie p
             map.setCameraBounds({
                bounds: geojsonResponse.getGeoJsonResults().bbox,
                padding: 50
-            );
-        });
+            });
+    });
     ```
 5. Zapisz plik **MapSearch.html** i odśwież przeglądarkę. Mapa powinna przedstawiać Seattle ze stacjami paliw oznaczonymi za pomocą niebieskich znaczników.
 

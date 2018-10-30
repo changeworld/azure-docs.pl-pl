@@ -1,0 +1,2 @@
+> [!TIP]
+> Gdy migrujesz bazy danych na platformę Azure przy użyciu usługi Azure Database Migration Service, możesz użyć trybu *offline* lub *online*. W przypadku migracji offline przestój aplikacji rozpoczyna po rozpoczęciu migracji. W przypadku migracji online przestój jest ograniczony do czasu migracji jednorazowej na końcu procesu migracji. Zalecamy przetestowanie migracji offline w celu ustalenia, czy przestój jest dopuszczalny. Jeśli nie jest on dopuszczalny, przeprowadź migrację online.

@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: znajdowanie alternatywnych tłumaczeń — tłumaczenie tekstu w usłudze Translator, język Python'
+title: 'Szybki start: znajdowanie alternatywnych tłumaczeń, Python — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start znajdziesz alternatywne tłumaczenia i przykłady terminów użytych w kontekście, korzystając z interfejsu API tłumaczenia tekstu w usłudze Translator i języka Python.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
-ms.author: nolachar
-ms.openlocfilehash: 9035f718dda4cd1a8b34aa72272cfa376be99cac
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: cb8f6addd9fa68cd5a4683f52621b05dcd25e7b4
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122726"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646420"
 ---
-# <a name="quickstart-find-alternate-translations-and-usage-with-python"></a>Szybki start: znajdowanie alternatywnych tłumaczeń i przykładów użycia za pomocą języka Python
+# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-python"></a>Szybki start: znajdowanie alternatywnych tłumaczeń przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (Python)
 
 W tym przewodniku Szybki start znajdziesz szczegóły możliwych alternatywnych tłumaczeń terminów i przykłady użycia alternatywnych tłumaczeń przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 

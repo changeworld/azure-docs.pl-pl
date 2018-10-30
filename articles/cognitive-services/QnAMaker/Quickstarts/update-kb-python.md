@@ -1,24 +1,30 @@
 ---
-title: 'Szybki start: aktualizowanie bazy wiedzy za pomocą języka Python — QnA Maker'
-description: W jaki sposób zaktualizować bazę wiedzy za pomocą języka Python w usłudze QnA Maker.
+title: 'Szybki start: aktualizowanie bazy wiedzy — REST, Python — QnA Maker'
+description: Ten przewodnik Szybki start oparty na protokole REST przeprowadzi Cię przez programowe aktualizowanie przykładowej bazy wiedzy usługi QnA Maker. Definicja JSON służąca do aktualizowania bazy wiedzy umożliwia dodawanie, zmienianie i usuwanie par pytań i odpowiedzi.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: d58e12df30ab1b45e460cf8a4ea098d350164ec3
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 35ef0222de6093e7bae3b41377db2ea3fd3c3d75
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031938"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645918"
 ---
-# <a name="update-a-knowledge-base-in-python"></a>Aktualizowanie bazy wiedzy za pomocą języka Python
+# <a name="quickstart-update-a-knowledge-base-in-qna-maker-using-python"></a>Szybki start: aktualizowanie bazy wiedzy w usłudze QnA Maker przy użyciu języka Python
 
-Poniższy kod aktualizuje istniejącą bazę wiedzy za pomocą metody [Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600).
+Ten przewodnik Szybki start przeprowadzi Cię przez proces programistycznego aktualizowania istniejącej bazy wiedzy usługi QnA Maker.  Ten kod JSON umożliwia zaktualizowanie bazy wiedzy przez dodanie nowych źródeł danych, zmianę źródeł danych lub usunięcie źródeł danych.
+
+Użycie tego interfejsu API odpowiada edytowaniu i użyciu przycisku **Zapisz i przeszkol** w portalu usługi QnA Maker.
+
+Ten przewodnik Szybki start wywołuje interfejsy API usługi QnA Maker:
+* [Aktualizacja](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) — model bazy wiedzy jest zdefiniowany w formacie JSON wysyłanym w treści żądania interfejsu API. 
+* [Pobieranie szczegółów operacji](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
 
 [!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 

@@ -4,15 +4,15 @@ description: W tym artykule opisano sposób odnajdowania lokalnych maszyn wirtua
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 09/21/2018
+ms.date: 10/24/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b2bb6636aef9e26a81988d344f04f23c23ea1622
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: f468bac6f4d8c209fae51f0b84980dc8c611a29b
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161883"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025892"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Odnajdowanie i ocenianie lokalnych maszyn wirtualnych VMware pod kątem migracji na platformę Azure
 
@@ -69,12 +69,18 @@ Usługa Azure Migrate tworzy lokalną maszynę wirtualną, nazywaną modułem zb
 1. W projekcie usługi Azure Migrate kliknij pozycję **Wprowadzenie** > **Odnajdź i oceń** > **Odnajdź maszyny**.
 2. W obszarze **Odnajdź maszyny** dostępne są dwie opcje dla urządzenia. Kliknij przycisk **Pobierz**, aby pobrać odpowiednie urządzenie na podstawie swoich preferencji.
 
-    a. **Odnajdywanie jednorazowe:** urządzenie dla tego modelu komunikuje się z serwerem vCenter, aby zebrać metadane dotyczące maszyn wirtualnych. Podczas zbierania danych wydajności maszyn wirtualnych opiera się ono na historycznych danych wydajności przechowywanych na serwerze vCenter i zbiera historię wydajności za ostatni miesiąc. W tym modelu usługa Azure Migrate zbiera średnie dane licznika (w porównaniu z licznikiem szczytowym) dla każdej metryki, [dowiedz się więcej] (https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected). Ponieważ jest to odnajdywanie jednorazowe, zmiany w środowisku lokalnym nie są odzwierciedlane po ukończeniu odnajdywania. Jeśli chcesz odzwierciedlić zmiany, musisz przeprowadzić ponowne odnajdywanie w tym samym środowisku dla tego samego projektu.
+    a. **Odnajdywanie jednorazowe:** urządzenie dla tego modelu komunikuje się z serwerem vCenter, aby zebrać metadane dotyczące maszyn wirtualnych. Podczas zbierania danych wydajności maszyn wirtualnych opiera się ono na historycznych danych wydajności przechowywanych na serwerze vCenter i zbiera historię wydajności za ostatni miesiąc. W tym modelu usługa Azure Migrate zbiera średnie dane licznika (w porównaniu z licznikiem szczytowym) dla każdej metryki, [dowiedz się więcej](https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected). Ponieważ jest to odnajdywanie jednorazowe, zmiany w środowisku lokalnym nie są odzwierciedlane po ukończeniu odnajdywania. Jeśli chcesz odzwierciedlić zmiany, musisz przeprowadzić ponowne odnajdywanie w tym samym środowisku dla tego samego projektu.
 
     b. **Ciągłe odnajdywanie:** urządzenie dla tego modelu stale profiluje środowisko lokalne w celu zebrania danych użycia w czasie rzeczywistym dla każdej maszyny wirtualnej. W tym modelu liczniki szczytowe są zbierane dla każdej metryki (użycie procesora CPU, użycie pamięci itp.). Ten model nie zależy od ustawień statystyk serwera vCenter na potrzeby zbierania danych o wydajności. Z urządzenia możesz w dowolnym momencie zatrzymać ciągłe profilowanie.
 
+    Należy pamiętać, że urządzenie zbiera w sposób ciągły tylko dane dotyczące wydajności i nie wykrywa żadnych zmian konfiguracji w środowisku lokalnym (tzn. dodania lub usunięcia maszyny wirtualnej, dodania dysku itp.). W przypadku zmiany konfiguracji w środowisku lokalnym możesz wykonać następujące działania, aby odzwierciedlić zmiany w portalu:
+
+    1. Dodanie elementów (maszyn wirtualnych, dysków, rdzeni itp.): aby uwzględnić te zmiany w witrynie Azure Portal, możesz zatrzymać odnajdywanie z urządzenia i następnie uruchomić je ponownie. Zapewni to, że zmiany zostaną zaktualizowane w projekcie usługi Azure Migrate.
+
+    2. Usunięcie maszyn wirtualnych: ze względu na konstrukcję urządzenia, usunięcie maszyny wirtualnej nie zostanie uwzględnione, nawet jeśli zatrzymasz odnajdywanie i uruchomisz je ponownie. Przyczyną jest to, że dane z kolejnych operacji odnajdywania są dołączane do starszych danych, a nie nadpisywane. W takim przypadku możesz po prostu zignorować maszynę wirtualną w portalu, usuwając ją z grupy i obliczając ponownie ocenę.
+
     > [!NOTE]
-    > Funkcjonalność ciągłego odnajdywania jest dostępna w wersji zapoznawczej.
+    > Funkcjonalność ciągłego odnajdywania jest dostępna w wersji zapoznawczej. Zalecamy używanie tej metody, ponieważ zbiera ona szczegółowe dane wydajności i daje w wyniku dokładne szacunki rozmiaru.
 
 3. W obszarze **Skopiuj poświadczenia projektu** skopiuj identyfikator projektu i klucz. Będą potrzebne do skonfigurowania modułu zbierającego.
 
@@ -91,6 +97,14 @@ Przed wdrożeniem pliku OVA sprawdź, czy jest on bezpieczny.
 3. Wygenerowany skrót powinien odpowiadać następującym ustawieniom.
 
 #### <a name="one-time-discovery"></a>Jednorazowe odnajdywanie
+
+  OVA w wersji 1.0.9.15
+
+  **Algorytm** | **Wartość skrótu**
+  --- | ---
+  MD5 | e9ef16b0c837638c506b5fc0ef75ebfa
+  SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864
+  SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
 
   OVA w wersji 1.0.9.14
 
@@ -174,7 +188,7 @@ Zaimportuj pobrany plik na serwer vCenter.
     - W obszarze **Collection scope** (Zakres zbierania) wybierz zakres odnajdowania maszyn wirtualnych. Moduł zbierający odnajdzie tylko maszyny wirtualne we wskazanym zakresie. Zakresem może być określony folder, centrum danych albo klaster. Zakres nie powinien zawierać więcej niż 1500 maszyn wirtualnych. [Dowiedz się więcej](how-to-scale-assessment.md) o sposobach odnajdywania większego środowiska.
 
 7. W obszarze **Specify migration project** (Określ projekt migracji) podaj identyfikator i klucz projektu usługi Azure Migrate, skopiowane z portalu. Jeśli nie zostały skopiowane, otwórz witrynę Azure Portal na maszynie wirtualnej modułu zbierającego. Na stronie **Omówienie** projektu kliknij polecenie **Odnajdź maszyny**, a następnie skopiuj wartości.  
-8. W obszarze **View collection progress** (Wyświetl postęp zbierania) monitoruj stan odnajdywania. Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected) o tym, jakie dane są zbierane przez moduł zbierający usługi Azure Migrate.
+8. W obszarze **View collection progress** (Wyświetl postęp zbierania) monitoruj stan odnajdywania. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected) o tym, jakie dane są zbierane przez usługę Azure Migrate Collector.
 
 > [!NOTE]
 > Moduł zbierający obsługuje wyłącznie „Angielski (Stany Zjednoczone)” jako język systemu operacyjnego i język interfejsu modułu zbierającego.

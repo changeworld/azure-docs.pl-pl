@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 86b1cc50128cd74f4a11ff599c1ca26ce5ae5117
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 6b8b6994b810db939a5e690d16d3c5d2f1a0825f
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067844"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945403"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Przeprowadzanie migracji z programu SQL Server do usługi Azure SQL Database w trybie offline przy użyciu usługi DMS
 Usługa Azure Database Migration Service służy do migrowania baz danych z lokalnego wystąpienia programu SQL Server do usługi [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). W tym samouczku przeprowadzisz migrację bazy danych **Adventureworks2012** przywróconej do lokalnego wystąpienia programu SQL Server 2016 (lub nowszej wersji) do usługi Azure SQL Database, używając usługi Azure Database Migration Service.
@@ -30,6 +30,10 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Uruchamianie migracji.
 > * Monitorowanie migracji.
 > * Pobieranie raportu migracji.
+
+[!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
+
+W tym artykule opisano migrację offline z programu SQL Server do usługi Azure SQL Database. Aby uzyskać informacje o migracji online, zobacz [Przeprowadzanie migracji z programu SQL Server do usługi Azure SQL Database w trybie online przy użyciu usługi DMS](tutorial-sql-server-azure-sql-online.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do ukończenia tego samouczka niezbędne są następujące elementy:

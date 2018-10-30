@@ -1,9 +1,9 @@
 ---
-title: Przykładowy skrypt programu Azure PowerShell — pakiet OMS | Microsoft Docs
-description: Przykładowy skrypt programu Azure PowerShell — pakiet OMS
+title: Przykładowy skrypt programu Azure PowerShell — Log Analytics | Microsoft Docs
+description: Przykładowy skrypt programu Azure PowerShell — Log Analytics
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,18 +14,18 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2017
-ms.author: cynthn
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: bde05b4e50d270a685b986ddf52e7707d545b2d9
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 2ce61feec3670674253ac697f2e373cbf40808e4
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055339"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471259"
 ---
-# <a name="create-an-operations-management-suite-monitored-vm-with-powershell"></a>Tworzenie maszyny wirtualnej monitorowanej przez pakiet Operations Management Suite za pomocą programu PowerShell
+# <a name="create-a-log-analytics-monitored-vm-with-powershell"></a>Tworzenie maszyny wirtualnej monitorowanej za pomocą usługi Log Analytics przy użyciu programu PowerShell
 
-Ten skrypt tworzy maszynę wirtualną platformy Azure, instaluje agenta pakietu Operations Management Suite (OMS) i rejestruje system przy użyciu obszaru roboczego pakietu OMS. Po uruchomieniu skryptu maszyna wirtualna będzie widoczna w konsoli OMS.
+Ten skrypt tworzy maszynę wirtualną platformy Azure, instaluje agenta usługi Log Analytics i rejestruje system w obszarze roboczym usługi Log Analytics. Po uruchomieniu skryptu maszyna wirtualna będzie widoczna w konsoli.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
@@ -33,7 +33,7 @@ Ten skrypt tworzy maszynę wirtualną platformy Azure, instaluje agenta pakietu 
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
-[!code-powershell[main](../../../powershell_scripts/virtual-machine/create-vm-monitor-oms/create-vm-monitor-oms.ps1 "Create VM OMS")]
+[!code-powershell[main](../../../powershell_scripts/virtual-machine/create-vm-monitor-oms/create-vm-monitor-oms.ps1 "Create VM")]
 
 ## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia
 
@@ -59,7 +59,7 @@ Ten skrypt używa następujących poleceń w celu utworzenia wdrożenia. Każda 
 | [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) | Tworzy interfejs sieciowy. |
 | [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) | Tworzy konfigurację maszyny wirtualnej. Ta konfiguracja zawiera informacje, takie jak nazwa maszyny wirtualnej, system operacyjny i poświadczenia administracyjne. Jest ona używana podczas tworzenia maszyny wirtualnej. |
 | [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) | Tworzy maszynę wirtualną. |
-| [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) | Dodaje rozszerzenie do maszyny wirtualnej. W takim przypadku rozszerzenie agenta pakietu Operations Management Suite jest używane do instalowania agenta pakietu OMS i rejestrowania maszyny wirtualnej w obszarze roboczym pakietu OMS. |
+| [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) | Dodaje rozszerzenie do maszyny wirtualnej. W takim przypadku rozszerzenie agenta usługi Log Analytics jest używane do instalowania agenta usługi Log Analytics i rejestrowania maszyny wirtualnej w obszarze roboczym usługi Log Analytics. |
 |[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Usuwa grupę zasobów i wszystkie zasoby w niej zawarte. |
 
 ## <a name="next-steps"></a>Następne kroki

@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 04/18/2018
 ms.author: markgal
 ms.custom: mvc
-ms.openlocfilehash: 0aac49be397f5e1c86fa834d341399775fd71cfa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 941357d0a8b7fb46a5c2dcebb70681452118f23f
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607076"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406385"
 ---
 # <a name="azure-resource-manager-templates-for-azure-backup"></a>Szablony usługi Azure Resource Manager dla usługi Azure Backup
 
@@ -31,6 +31,6 @@ Poniższa tabela zawiera linki do szablonów usługi Azure Resource Manager uży
 | [Tworzenie zasad codziennego tworzenia kopii zapasowej dla maszyn wirtualnych infrastruktury IaaS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-daily-backup-policy-create) | Szablon umożliwia utworzenie magazynu usługi Recovery Services i zasad codziennego tworzenia kopii zapasowej używanych do tworzenia kopii zapasowej klasycznych maszyn wirtualnych i maszyn wirtualnych usługi Resource Manager.|
 | [Wdrażanie maszyny wirtualnej z systemem Windows Server i włączoną kopią zapasową](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-create-vm-and-configure-backup) | Szablon umożliwia utworzenie maszyny wirtualnej z systemem Windows Server i magazynu usługi Recovery Services z włączonymi domyślnymi zasadami kopii zapasowej.|
 |**Monitorowanie zadań kopii zapasowej** |  |
-| [Używanie usługi Log Analytics pakietu OMS do monitorowania usługi Azure Backup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-backup-oms-monitoring) | Szablon umożliwia wdrożenie funkcji monitorowania pakietu OMS dla usługi Azure Backup, która pozwala na monitorowanie zadań tworzenia i przywracania kopii zapasowej, alertów kopii zapasowych i magazynu w chmurze używanego przez magazyny usługi Recovery Services.|  
+| [Use Log Analytics to monitor Azure Backup (Monitorowanie usługi Azure Backup za pomocą usługi Log Analytics)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-backup-oms-monitoring) | Szablon wdraża funkcję monitorowania usługi Log Analytics dla usługi Azure Backup, która pozwala na monitorowanie zadań tworzenia i przywracania kopii zapasowej, alertów kopii zapasowych i magazynu w chmurze używanego przez magazyny usługi Recovery Services.|  
 |   |   |
 

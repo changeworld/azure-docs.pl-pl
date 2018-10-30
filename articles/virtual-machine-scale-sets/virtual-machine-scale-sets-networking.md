@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: negat
-ms.openlocfilehash: 43aa74e7250f4825702e249032db1566346ab558
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 6ed3488218a5b813478fa18f7bb05dcfb07a319c
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831215"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955155"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Obsługa sieci w kontekście zestawów skalowania maszyn wirtualnych platformy Azure
 
@@ -50,10 +50,26 @@ Usługa Azure Accelerated Networking zwiększa wydajność sieci, umożliwiając
 ## <a name="create-a-scale-set-that-references-an-existing-azure-load-balancer"></a>Tworzenie zestawu skalowania odwołującego się do istniejącej usługi Azure Load Balancer
 Podczas tworzenia zestawu skalowania przy użyciu witryny Azure Portal w przypadku większości opcji konfiguracji jest tworzony nowy moduł równoważenia obciążenia. W przypadku utworzenia zestawu skalowania, który musi odwoływać się do istniejącego modułu równoważenia obciążenia, można to zrobić przy użyciu interfejsu wiersza polecenia. Następujący skrypt przykładowy tworzy moduł równoważenia obciążenia, a następnie tworzy zestaw skalowania, który się do niego odwołuje:
 ```bash
-az network lb create -g lbtest -n mylb --vnet-name myvnet --subnet mysubnet --public-ip-address-allocation Static --backend-pool-name mybackendpool
+az network lb create \
+    -g lbtest \
+    -n mylb \
+    --vnet-name myvnet \
+    --subnet mysubnet \
+    --public-ip-address-allocation Static \
+    --backend-pool-name mybackendpool
 
-az vmss create -g lbtest -n myvmss --image Canonical:UbuntuServer:16.04-LTS:latest --admin-username negat --ssh-key-value /home/myuser/.ssh/id_rsa.pub --upgrade-policy-mode Automatic --instance-count 3 --vnet-name myvnet --subnet mysubnet --lb mylb --backend-pool-name mybackendpool
-
+az vmss create \
+    -g lbtest \
+    -n myvmss \
+    --image Canonical:UbuntuServer:16.04-LTS:latest \
+    --admin-username negat \
+    --ssh-key-value /home/myuser/.ssh/id_rsa.pub \
+    --upgrade-policy-mode Automatic \
+    --instance-count 3 \
+    --vnet-name myvnet \
+    --subnet mysubnet \
+    --lb mylb \
+    --backend-pool-name mybackendpool
 ```
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Tworzenie zestawu skalowania, który odwołuje się do usługi Application Gateway
@@ -91,7 +107,7 @@ Aby skonfigurować niestandardowe serwery DNS w szablonie platformy Azure, do se
 ```
 
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>Tworzenie zestawu skalowania z konfigurowalnymi nazwami domen maszyn wirtualnych
-Aby utworzyć zestaw skalowania z niestandardową nazwą DNS maszyn wirtualnych przy użyciu interfejsu wiersza polecenia, dodaj do polecenia **vmss create** argument **--vm-domain-name**, a po nim podaj ciąg reprezentujący nazwę domeny.
+Aby utworzyć zestaw skalowania z niestandardową nazwą DNS maszyn wirtualnych przy użyciu interfejsu wiersza polecenia, dodaj do polecenia **virtual machine scale set create** argument **--vm-domain-name**, a po nim podaj ciąg reprezentujący nazwę domeny.
 
 Aby ustawić nazwę domeny w szablonie platformy Azure, do sekcji **networkInterfaceConfigurations** zestawu skalowania dodaj właściwość **dnsSettings**. Na przykład:
 
@@ -155,23 +171,35 @@ Aby uzyskać listę publicznych adresów IP przypisanych do maszyn wirtualnych w
 
 Aby uzyskać listę publicznych adresów IP zestawu skalowania przy użyciu programu PowerShell, użyj polecenia _Get-AzureRmPublicIpAddress_. Na przykład:
 ```PowerShell
-PS C:\> Get-AzureRmPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
+Get-AzureRmPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
 ```
 
 Publiczne adresy IP można także badać, odwołując się bezpośrednio do identyfikatora zasobu konfiguracji publicznych adresów IP. Na przykład:
 ```PowerShell
-PS C:\> Get-AzureRmPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
+Get-AzureRmPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 ```
 
-Aby zbadać publiczne adresy IP przypisane do maszyn wirtualnych w zestawie skalowania, użyj witryny [Azure Resource Explorer](https://resources.azure.com) lub interfejsu Azure REST API w wersji co najmniej **2017-03-30**.
+Możesz też wyświetlić publiczne adresy IP przypisane do maszyn wirtualnych w zestawie skalowania przez wysłanie zapytania do witryny [Azure Resource Explorer](https://resources.azure.com) lub interfejsu API REST platformy Azure w wersji co najmniej **2017-03-30**.
 
-Aby sprawdzić publiczne adresy IP zestawu skalowania za pomocą witryny Resource Explorer, zajrzyj do sekcji **publicipaddresses** danego zestawu skalowania. Na przykład: https://resources.azure.com/subscriptions/_your_sub_id_/resourceGroups/_your_rg_/providers/Microsoft.Compute/virtualMachineScaleSets/_your_vmss_/publicipaddresses
+Aby wysłać zapytanie do witryny [Azure Resource Explorer](https://resources.azure.com):
 
-```
+1. Otwórz witrynę [Azure Resource Explorer](https://resources.azure.com) w przeglądarce internetowej.
+1. Rozwiń pozycję *subskrypcje* po lewej stronie, klikając znak *+* obok niej. Jeśli w obszarze *subskrypcje* znajduje się tylko jeden element, może to oznaczać, że subskrypcje są już rozwinięte.
+1. Rozwiń subskrypcję.
+1. Rozwiń grupę zasobów.
+1. Rozwiń pozycję *dostawcy*.
+1. Rozwiń pozycję *Microsoft.Compute*.
+1. Rozwiń pozycję *virtualMachineScaleSets*.
+1. Rozwiń zestaw skalowania.
+1. Kliknij pozycję *publicipaddresses*.
+
+Aby wysłać zapytanie do interfejsu API REST platformy Azure:
+
+```bash
 GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG name}/providers/Microsoft.Compute/virtualMachineScaleSets/{scale set name}/publicipaddresses?api-version=2017-03-30
 ```
 
-Przykładowe dane wyjściowe:
+Przykładowe dane wyjściowe z witryny [Azure Resource Explorer](https://resources.azure.com) i interfejsu API REST platformy Azure:
 ```json
 {
   "value": [
@@ -289,12 +317,14 @@ Poniższej przedstawiono przykład profilu sieciowego zestawu skalowania z wielo
 ```
 
 ## <a name="nsg--asgs-per-scale-set"></a>Sieciowa grupa zabezpieczeń i grupa zabezpieczeń aplikacji dla zestawu skalowania
+[Sieciowa grupa zabezpieczeń](../virtual-network/security-overview.md) umożliwia filtrowanie ruchu przychodzącego do zasobów platformy Azure i wychodzącego z nich w sieci wirtualnej platformy Azure za pomocą reguł zabezpieczeń. [Grupy zabezpieczeń aplikacji](../virtual-network/security-overview.md#application-security-groups) umożliwiają obsługę zabezpieczeń sieci zasobów platformy Azure i pogrupowanie ich jako rozszerzenia struktury aplikacji.
+
 Grupy zabezpieczeń sieci można stosować bezpośrednio do zestawu skalowania przez dodanie odwołania w sekcji konfiguracji interfejsu sieciowego we właściwościach maszyn wirtualnych zestawu skalowania.
 
 Grupy zabezpieczeń aplikacji mogą być również określane bezpośrednio w zestawie skalowania przez dodanie odwołania w sekcji konfiguracji interfejsu sieciowego we właściwościach maszyn wirtualnych zestawu skalowania.
 
 Na przykład: 
-```
+```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
         {
@@ -334,6 +364,42 @@ Na przykład:
     ]
 }
 ```
+
+Aby sprawdzić, czy sieciowa grupa zabezpieczeń jest skojarzona z zestawem skalowania, użyj polecenia `az vmss show`. W poniższym przykładzie użyto opcji `--query`, aby odfiltrować wyniki i pokazać tylko odpowiednią sekcję danych wyjściowych.
+
+```bash
+az vmss show \
+    -g myResourceGroup \
+    -n myScaleSet \
+    --query virtualMachineProfile.networkProfile.networkInterfaceConfigurations[].networkSecurityGroup
+
+[
+  {
+    "id": "/subscriptions/.../resourceGroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/nsgName",
+    "resourceGroup": "myResourceGroup"
+  }
+]
+```
+
+Aby sprawdzić, czy grupa zabezpieczeń aplikacji jest skojarzona z zestawem skalowania, użyj polecenia `az vmss show`. W poniższym przykładzie użyto opcji `--query`, aby odfiltrować wyniki i pokazać tylko odpowiednią sekcję danych wyjściowych.
+
+```bash
+az vmss show \
+    -g myResourceGroup \
+    -n myScaleSet \
+    --query virtualMachineProfile.networkProfile.networkInterfaceConfigurations[].ipConfigurations[].applicationSecurityGroups
+
+[
+  [
+    {
+      "id": "/subscriptions/.../resourceGroups/myResourceGroup/providers/Microsoft.Network/applicationSecurityGroups/asgName",
+      "resourceGroup": "myResourceGroup"
+    }
+  ]
+]
+```
+
+
 
 ## <a name="next-steps"></a>Następne kroki
 Więcej informacji na temat sieci wirtualnych platformy Azure znajduje się w artykule [Azure virtual networks overview](../virtual-network/virtual-networks-overview.md) (Omówienie sieci wirtualnych platformy Azure).

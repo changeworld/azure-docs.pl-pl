@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: znajdowanie alternatywnych tłumaczeń — tłumaczenie tekstu w usłudze Translator, język Ruby'
+title: 'Szybki start: znajdowanie alternatywnych tłumaczeń, Ruby — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start znajdziesz alternatywne tłumaczenia i przykłady terminów użytych w kontekście, korzystając z interfejsu API tłumaczenia tekstu w usłudze Translator i języka Ruby.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
-ms.author: nolachar
-ms.openlocfilehash: 7cd34e3482df666de8b974380302ee6b4c592496
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: c9e33fd4be80c8bb95248e8be34f9540d9cd69ea
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122811"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649622"
 ---
-# <a name="quickstart-find-alternate-translations-and-usage-with-ruby"></a>Szybki start: znajdowanie alternatywnych tłumaczeń i przykładów użycia za pomocą języka Ruby
+# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-ruby"></a>Szybki start: znajdowanie alternatywnych tłumaczeń przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (Ruby)
 
 W tym przewodniku Szybki start znajdziesz szczegóły możliwych alternatywnych tłumaczeń terminów i przykłady użycia alternatywnych tłumaczeń przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 

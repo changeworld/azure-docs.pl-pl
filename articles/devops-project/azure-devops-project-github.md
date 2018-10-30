@@ -17,14 +17,14 @@ ms.date: 07/09/2018
 author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 4e0e28ff9ea14e42e1df7ce35bb90e8720a0d0b6
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 02b6823a46c94edb0ba28c7a2a8b9ae0efc44ae8
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407301"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406096"
 ---
-# <a name="create-a-cicd-pipeline-for-your-existing-code-with-the-azure-devops-project"></a>Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla istniejącego kodu za pomocą projektu DevOps platformy Azure
+# <a name="tutorial--create-a-cicd-pipeline-for-your-existing-code-with-the-azure-devops-project"></a>Samouczek: tworzenie potoku ciągłej integracji/ciągłego wdrażania dla istniejącego kodu za pomocą projektu DevOps platformy Azure
 
 Projekt DevOps platformy Azure stanowi uproszczone środowisko, do którego możesz przenieść istniejący kod i repozytorium Git lub dokonać wyboru jednej z przykładowych aplikacji, aby utworzyć potok ciągłej integracji i ciągłego dostarczania na platformie Azure.
 
@@ -49,7 +49,7 @@ Projekt usługi Azure DevOps tworzy potok ciągłej integracji/ciągłego wdraż
 
 1. Zaloguj się do witryny [Microsoft Azure Portal](https://portal.azure.com).
 
-1. Wybierz ikonę **+ Nowy** na pasku nawigacyjnym po lewej stronie, a następnie wyszukaj hasło **Projekt DevOps**.  Wybierz pozycję **Utwórz**.
+1. Wybierz ikonę **+ Nowy** na pasku nawigacyjnym po lewej stronie, a następnie wyszukaj pozycję **Projekt DevOps**.  Wybierz pozycję **Utwórz**.
 
     ![Rozpoczynanie ciągłego dostarczania](_img/azure-devops-project-github/fullbrowser.png)
 
@@ -95,7 +95,7 @@ Projekt usługi Azure DevOps automatycznie skonfigurował potok ciągłej integr
 
 1. Z poziomu tego widoku **zapoznaj się z różnymi zadaniami** w potoku kompilacji.  W ramach kompilacji są wykonywane różne zadania, takie jak pobieranie źródeł z repozytorium Git, przywracanie zależności i publikowanie danych wyjściowych używanych do wdrożenia.
 
-1. W górnej części potoku kompilacji wybierz pozycję **Nazwa potoku kompilacji**.
+1. W górnej części potoku kompilacji wybierz **nazwę potoku kompilacji**.
 
 1. Zmień **nazwę** potoku kompilacji na bardziej opisową.  Wybierz pozycję **Zapisz i dodaj do kolejki**, a następnie wybierz pozycję **Zapisz**.
 

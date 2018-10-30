@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 56bd3ab61045ff99601ed50cd27332b370204795
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4d46a438708e2e72d625f5104293b4605f7b096d
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068030"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49946083"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-managed-instance-online-using-dms"></a>Migracja online programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database przy użyciu usługi DMS
 Usługa Azure Database Migration Service służy do migrowania baz danych z lokalnego wystąpienia programu SQL Server do [wystąpienia zarządzanego usługi Azure SQL Database](../sql-database/sql-database-managed-instance.md) z minimalnym czasem przestoju. Dodatkowe metody, które mogą wymagać ręcznej pracy, są dostępne w artykule [SQL Server instance migration to Azure SQL Database Managed Instance (Migracja wystąpienia programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database)](../sql-database/sql-database-managed-instance-migrate.md).
@@ -32,6 +32,10 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Tworzenie projektu migracji i rozpoczynanie migracji online za pomocą usługi Azure Database Migration Service.
 > * Monitorowanie migracji.
 > * Przeprowadzanie migracji jednorazowej, gdy wszystko będzie gotowe.
+
+[!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
+
+W tym artykule opisano migrację online z programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database. Aby uzyskać informacje o migracji offline, zobacz [Migracja programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database w trybie offline przy użyciu usługi DMS](tutorial-sql-server-to-managed-instance.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do ukończenia tego samouczka niezbędne są następujące elementy:

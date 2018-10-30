@@ -1,22 +1,22 @@
 ---
 title: 'Szybki start: tworzenie bazy wiedzy — REST, Node.js — usługa QnA Maker'
-description: Ten przewodnik Szybki start zawiera omówienie programistycznego tworzenia przykładowej bazy wiedzy usługi QnA Maker, która zostanie wyświetlona na pulpicie nawigacyjnym platformy Azure na koncie interfejsu API usług Azure Services.
+description: Ten przewodnik Szybki start oparty na protokole REST zawiera omówienie programistycznego tworzenia przykładowej bazy wiedzy usługi QnA Maker, która zostanie wyświetlona na pulpicie nawigacyjnym platformy Azure na koncie interfejsu API usługi Cognitive Services.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/02/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: f0375affa547f657ae36de71901298047359cae2
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: fdba785e33c16c397e2ffaeb4462ea2066a99126
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884920"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647548"
 ---
-# <a name="quickstart-create-a-qna-maker-knowledge-base-in-nodejs"></a>Szybki start: tworzenie bazy wiedzy usługi QnA Maker w środowisku Node.js
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-nodejs"></a>Szybki start: tworzenie bazy wiedzy w usłudze QnA Maker przy użyciu platformy Node.js
 
 Ten przewodnik Szybki start przeprowadzi Cię przez programowe tworzenie przykładowej bazy wiedzy usługi QnA Maker. Usługa QnA Maker automatycznie wyodrębnia pytania i odpowiedzi z częściowo ustrukturyzowanej zawartości, na przykład często zadawanych pytań, ze [źródeł danych](../Concepts/data-sources-supported.md). Model bazy wiedzy jest zdefiniowany w formacie JSON wysyłanym w treści żądania interfejsu API. 
 

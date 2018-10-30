@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 5a93feec7996fc0ebf742b8d62b159dca5f1c1ed
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c3eecfdf4bc2e6bf6798a6b3845cdc2e2e243341
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636991"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467433"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Samouczek: konfigurowanie laboratorium przy użyciu usługi Azure DevTest Labs
 W tym samouczku utworzysz laboratorium za pomocą witryny Azure Portal. Administrator laboratorium konfiguruje laboratorium w organizacji, tworzy maszyny wirtualne w laboratorium i konfiguruje zasady. Użytkownicy laboratorium (na przykład deweloper i testerzy) przejmują maszyny wirtualne w laboratorium, nawiązują połączenie z nimi i korzystają z nich. 
@@ -55,7 +55,7 @@ Następujące kroki ilustrują tworzenie laboratorium w usłudze Azure DevTest L
 1. Na stronie **Laboratorium DevTest Lab** wybierz pozycję **+ Dodaj** na pasku narzędzi. 
 
     ![Przycisk dodawania](./media/tutorial-create-custom-lab/add-vm-to-lab-button.png)
-1. Na stronie **Wybieranie bazy** wyszukaj słowo kluczowe **Ubuntu** i wybierz jeden z podstawowych obrazów z listy. 
+1. Na stronie **Wybieranie bazy** wyszukaj słowo kluczowe (na przykład: Windows, Ubuntu) i wybierz jeden z obrazów podstawowych z listy. 
 1. Na stronie **Maszyna wirtualna** wykonaj następujące czynności: 
     1. W polu **Nazwa maszyny wirtualnej** wprowadź nazwę maszyny wirtualnej. 
     2. W polu **Nazwa użytkownika** wprowadź nazwę użytkownika, który ma dostęp do maszyny wirtualnej. 
@@ -71,6 +71,9 @@ Następujące kroki ilustrują tworzenie laboratorium w usłudze Azure DevTest L
 
         ![Stan tworzenia maszyny wirtualnej](./media/tutorial-create-custom-lab/vm-creation-status.png)
 1. Utworzona maszyna wirtualna jest wyświetlana na liście **Maszyny wirtualne możliwe do przejęcia**. 
+
+    > [!NOTE] 
+    > Podczas dodawania maszyny wirtualnej z systemem Linux do laboratorium można włączyć dostęp SSH i RDP do maszyny wirtualnej. Jeśli nie włączysz dostępu podczas tworzenia maszyny wirtualnej, możesz ręcznie dodać reguły w sieciowej grupie zabezpieczeń skojarzonej z maszyną wirtualną, aby otworzyć porty dla dostępu SSH i RDP.
 
 ## <a name="add-a-user-to-the-lab-user-role"></a>Dodawanie użytkownika do roli użytkownika laboratorium
 

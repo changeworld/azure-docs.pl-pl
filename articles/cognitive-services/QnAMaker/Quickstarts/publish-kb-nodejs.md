@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: publikowanie bazy wiedzy — środowisko REST, Node.js — usługa QnA Maker'
+title: 'Szybki start: publikowanie bazy wiedzy — środowisko REST, Node.js — QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Ten przewodnik Szybki start przeprowadzi Cię przez programowe publikowanie Twojej bazy wiedzy. Publikowanie wypycha najnowszą wersję bazy wiedzy do dedykowanego indeksu usługi Azure Search i tworzy punkt końcowy, który może być wywoływany w Twojej aplikacji lub czatbocie.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/02/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: c70b90a6e465c72193f63afd7ab9106579e2c634
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: e1e349f4ddbebdd9df38d7f0babf50d726241d4f
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886614"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648738"
 ---
-# <a name="quickstart-publish-a-qna-maker-knowledge-base-in-nodejs"></a>Szybki start: publikowanie bazy wiedzy usługi QnA Maker w środowisku Node.js
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-nodejs"></a>Szybki start: publikowanie bazy wiedzy w usłudze QnA Maker przy użyciu platformy Node.js
 
 Ten przewodnik Szybki start przeprowadzi Cię przez programowe publikowanie Twojej bazy wiedzy. Publikowanie wypycha najnowszą wersję bazy wiedzy do dedykowanego indeksu usługi Azure Search i tworzy punkt końcowy, który może być wywoływany w Twojej aplikacji lub czatbocie.
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: fc4b2f153c89d4253bc3fdd9c5a49973baa38752
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 79a6636043499cffb7eded409cdc27c56de98e33
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310219"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430225"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Samouczek: resetowanie hasła usługi Azure AD z ekranu logowania
 
@@ -118,6 +118,8 @@ Jeśli zasady wymagają naciśnięcia klawiszy Ctrl+Alt+Del lub powiadomienia na
 Dziennik inspekcji usługi Azure AD zawiera informacje dotyczące adresu IP i typu klienta, które są powiązane z żądaniem resetowania hasła.
 
 ![Przykład resetowania hasła na ekranie logowania w dzienniku inspekcji usługi Azure AD](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
+
+Jeśli Twoje maszyny z systemem Windows 10 znajdują się za serwerem proxy lub zaporą, ruch HTTPS (443) na adresy passwordreset.microsoftonline.com i ajax.aspnetcdn.com powinien być dozwolony.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

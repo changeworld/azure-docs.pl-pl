@@ -1,6 +1,6 @@
 ---
 title: Zbieranie danych dotyczących infrastruktury Azure Virtual Machines | Microsoft Docs
-description: Dowiedz się, jak włączyć rozszerzenie OMS Agent VM Extension i zbieranie danych z maszyn wirtualnych platformy Azure za pomocą usługi Log Analytics.
+description: Dowiedz się, jak włączyć rozszerzenie agenta usługi Log Analytics dla maszyn wirtualnych i umożliwić zbieranie danych z maszyn wirtualnych platformy Azure za pomocą usługi Log Analytics.
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
@@ -16,12 +16,12 @@ ms.date: 06/26/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: c7015eb346136130b9ffd3c23460cb8b9609dc9b
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 141df44f62ddb4a62f6f5f6a8b67107aa2c58a29
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041010"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404498"
 ---
 # <a name="collect-data-about-azure-virtual-machines"></a>Zbieranie danych dotyczących infrastruktury Azure Virtual Machines
 Usługa [Azure Log Analytics](log-analytics-overview.md) umożliwia zbieranie danych bezpośrednio z maszyn wirtualnych platformy Azure i innych zasobów w środowisku do pojedynczego repozytorium na potrzeby szczegółowej analizy i korelacji.  W tym przewodniku Szybki start opisano, jak w kilku krokach skonfigurować i rozpocząć zbieranie danych z maszyn wirtualnych platformy Azure z systemem Linux lub Windows.  
@@ -38,7 +38,7 @@ Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https
 
 2. Kliknij pozycję **Utwórz**, a następnie wybierz opcje dla następujących elementów:
 
-  * Podaj nazwę dla nowego **obszaru roboczego OMS**, na przykład *DefaultLAWorkspace*. 
+  * Podaj nazwę dla nowego **obszaru roboczego usługi Log Analytics**, na przykład *DefaultLAWorkspace*. Obszary robocze OMS są teraz nazywane obszarami roboczymi usługi Log Analytics.  
   * Wybierz **Subskrypcję** do połączenia poprzez wybór subskrypcji z listy rozwijanej, jeśli domyślnie wybrana subskrypcja jest niewłaściwa.
   * W obszarze **Grupa zasobów** wybierz istniejącą grupę zasobów, która zawiera co najmniej jedną maszynę wirtualną platformy Azure.  
   * W polu **Lokalizacja** wybierz lokalizację, w której wdrożono maszyny wirtualne.  Aby uzyskać dodatkowe informacje, sprawdź, w których [regionach jest dostępna usługa Log Analytics](https://azure.microsoft.com/regions/services/).
@@ -46,22 +46,25 @@ Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https
   
         ![Create Log Analytics resource blade](media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-02.png) 
 
-3. Po podaniu wymaganych informacji w okienku **Obszar roboczy OMS** kliknij przycisk **OK**.  
+3. Po podaniu wymaganych informacji w okienku **Obszar roboczy usługi Log Analytics** kliknij przycisk **OK**.  
 
 Podczas weryfikowania informacji i tworzenia obszaru roboczego możesz śledzić postęp w sekcji **Powiadomienia** z poziomu menu. 
 
 ## <a name="enable-the-log-analytics-vm-extension"></a>Włączanie rozszerzenia Log Analytics VM Extension
+
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
+
 W przypadku wdrożonych już na platformie Azure maszyn wirtualnych z systemem Windows i Linux agent usługi Log Analytics jest instalowany za pomocą rozszerzenia Log Analytics VM Extension.  Użycie tego rozszerzenia upraszcza proces instalacji i automatycznie konfiguruje agenta do przesyłania danych do określonego obszaru roboczego usługi Log Analytics. Agent jest również automatycznie uaktualniany, co zapewnia, że posiadane funkcje i poprawki są zawsze najnowsze.
 
 >[!NOTE]
->Agenta pakietu OMS dla systemu Linux nie można skonfigurować w taki sposób, aby przesyłał raporty do więcej niż jednego obszaru roboczego usługi Log Analytics. 
+>Agenta usługi Log Analytics dla systemu Linux nie można skonfigurować w taki sposób, aby przesyłał raporty do więcej niż jednego obszaru roboczego usługi Log Analytics. 
 
 1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi** w lewym górnym rogu. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
 2. Na liście obszarów roboczych usługi Log Analytics wybierz utworzony wcześniej obszar *DefaultLAWorkspace*.
 3. W menu po lewej stronie w obszarze Źródła danych obszaru roboczego kliknij pozycję **Maszyny wirtualne**.  
-4. Z listy **Maszyny wirtualne** wybierz maszynę wirtualną, na której chcesz zainstalować agenta. Zwróć uwagę, że **Stan połączenia pakietu OMS** dla maszyny wirtualnej wskazuje, że jest ona **Niepołączona**.
+4. Z listy **Maszyny wirtualne** wybierz maszynę wirtualną, na której chcesz zainstalować agenta. Zwróć uwagę, że **Stan połączenia usługi Log Analytics** dla maszyny wirtualnej wskazuje, że jest ona **Niepołączona**.
 5. W szczegółach dotyczących maszyny wirtualnej wybierz pozycję **Połącz**. Agent jest automatycznie instalowany i konfigurowany na potrzeby obszaru roboczego usługi Log Analytics. Ten proces trwa kilka minut. W tym czasie w obszarze **Stan** jest wyświetlana wartość **Łączenie**.
-6. Po zainstalowaniu i połączeniu agenta **Stan połączenia pakietu OMS** zostanie zaktualizowany do wartości **Ten obszar roboczy**.
+6. Po zainstalowaniu i połączeniu agenta **Stan połączenia usługi Log Analytics** zostanie zaktualizowany do wartości **Ten obszar roboczy**.
 
 ## <a name="collect-event-and-performance-data"></a>Zbieranie danych zdarzeń i wydajności
 Usługa Log Analytics może zbierać zdarzenia z dzienników zdarzeń systemu Windows lub dzienników Syslog systemu Linux oraz z liczników wydajności określonych na potrzeby analizy i raportowania w dłuższym okresie po wykryciu określonego warunku.  Wykonaj następujące kroki, aby skonfigurować zbieranie zdarzeń z dziennika zdarzeń systemu Windows i dziennika Syslog systemu Linux oraz na początek z kilku typowych liczników wydajności.  

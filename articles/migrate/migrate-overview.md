@@ -4,15 +4,15 @@ description: Ten artykuł zawiera omówienie usługi Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 09/25/2018
+ms.date: 10/23/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d2a8885ffb9148d408eff0e8a7d2ef09121e5359
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 30cca10a83be09b8c9736df546958c3a1fe66f37
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162042"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025642"
 ---
 # <a name="about-azure-migrate"></a>Informacje o usłudze Azure Migrate
 
@@ -29,16 +29,16 @@ Usługa Azure Migrate ułatwia wykonywanie następujących działań:
 
 ## <a name="current-limitations"></a>Bieżące ograniczenia
 
-- Aktualnie można oceniać gotowość do migracji na maszyny wirtualne platformy Azure tylko dla lokalnych maszyn wirtualnych VMware. Maszyny wirtualne VMware muszą być zarządzane przez program vCenter Server (w wersji 5.5, 6.0 lub 6.5).
+- Gotowość do migracji na maszyny wirtualne platformy Azure można ocenić tylko dla lokalnych maszyn wirtualnych VMware. Maszyny wirtualne VMware muszą być zarządzane przez program vCenter Server (w wersji 5.5, 6.0 lub 6.5).
 - Jeśli chcesz ocenić maszyny wirtualne funkcji Hyper-V i serwery fizyczne, użyj narzędzia [Planista wdrażania usługi Azure Site Recovery](http://aka.ms/asr-dp-hyperv-doc) w przypadku maszyn funkcji Hyper-V, a w przypadku maszyn fizycznych skorzystaj z [narzędzi partnerów](https://azure.microsoft.com/migration/partners/).
 - Można odnajdywać maksymalnie 1500 maszyn wirtualnych w jednym odnajdywaniu i maksymalnie 1500 maszyn wirtualnych w jednym projekcie. Można oceniać maksymalnie 1500 maszyn wirtualnych w ramach pojedynczej oceny.
 - Jeśli chcesz odnaleźć większe środowisko możesz podzielić operację odnajdywania i utworzyć wielu projektów. [Dowiedz się więcej](how-to-scale-assessment.md). Usługa Azure Migrate obsługuje maksymalnie 20 projektów na subskrypcję.
 - Usługa Azure Migrate obsługuje tylko dyski zarządzane na potrzeby oceny migracji.
-- Projekt usługi Azure Migrate można utworzyć tylko w lokalizacji geograficznej Stanów Zjednoczonych. Nie ma to wpływu na możliwość planowania migracji do dowolnej docelowej lokalizacji platformy Azure. Lokalizacja geograficzna projektu migracji służy tylko do przechowywania metadanych wykrytych w środowisku lokalnym. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/resources-faq#discovery-and-assessment) o metadanych zebranych przez usługę Azure Migrate. Zebrane metadane są przechowywane w jednym z regionów w wybranej [lokalizacji geograficznej platformy Azure](https://azure.microsoft.com/global-infrastructure/geographies/):
+-  Projekt usługi Azure Migrate można utworzyć tylko w lokalizacji geograficznej Stanów Zjednoczonych. Możesz jednak zaplanować migrację do dowolnej docelowej lokalizacji platformy Azure.
+    - Tylko metadane odnalezione w środowisku lokalnym są zapisywane w regionie projektu migracji.
+    - Metadane są przechowywane w jednym z dwóch regionów geograficznych: Zachodnio-środkowe stany USA lub Wschodnie stany USA.
+    - Jeśli używasz wizualizacji zależności w połączeniu z obszarem roboczym usługi Log Analytics, zostanie ona utworzona w tym samym regionie co projekt. 
 
-**Lokalizacja geograficzna** | **Regiony**
---- | ---
-Stany Zjednoczone | Zachodnio-środkowe stany USA, Wschodnie stany USA
 
 ## <a name="what-do-i-need-to-pay-for"></a>Za co są pobierane opłaty?
 

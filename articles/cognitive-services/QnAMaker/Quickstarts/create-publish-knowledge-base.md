@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: tworzenie bazy wiedzy — QnA Maker'
+title: Tworzenie, uczenie i publikowanie bazy wiedzy — QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Na podstawie własnej zawartości, takiej jak często zadawane pytania lub podręczniki produktów, możesz utworzyć bazę wiedzy usługi QnA Maker. Baza wiedzy usługi QnA Maker w tym przykładzie jest tworzona na podstawie prostej strony internetowej często zadawanych pytań w celu udzielania odpowiedzi na pytania dotyczące klucza odzyskiwania funkcji BitLocker.
 author: diberry
@@ -7,16 +7,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 99f9259c9fa73a9ba4842b2684cde8a44f73145a
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: c57edd897797d4352706283072aa19444948436b
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389670"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49644789"
 ---
-# <a name="quickstart-create-train-and-publish-your-knowledge-base"></a>Szybki start: tworzenie, szkolenie i publikowanie bazy wiedzy
+# <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>Tworzenie, szkolenie i publikowanie bazy wiedzy usługi QnA Maker
 
 Na podstawie własnej zawartości, takiej jak często zadawane pytania lub podręczniki produktów, możesz utworzyć bazę wiedzy usługi QnA Maker. Baza wiedzy usługi QnA Maker w tym przykładzie jest tworzona na podstawie prostej strony internetowej często zadawanych pytań w celu udzielania odpowiedzi na pytania dotyczące klucza odzyskiwania funkcji BitLocker.
 

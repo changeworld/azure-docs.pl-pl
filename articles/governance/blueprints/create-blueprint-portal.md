@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 7af0d4819d4044f4cccc43cde1cffe7dff7982a7
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 6b7ca276f3273faa485d08633061f882493f72f7
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056441"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647276"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>Definiowanie i przypisywanie strategii platformy Azure w portalu
 
@@ -42,7 +42,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
    ![Tworzenie strategii](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. W polu **Nazwa strategii** podaj nazwę strategii, na przykład „MyBlueprint” (litery i cyfry, maksymalnie 48 znaków, ale bez spacji i znaków specjalnych). Pole **Opis strategii** pozostaw na razie puste.  W polu **Definiowanie lokalizacji** kliknij wielokropek po prawej stronie, wybierz [grupę zarządzania](../management-groups/overview.md), w której chcesz zapisać strategię, a następnie kliknij pozycję **Wybierz**.
+1. W polu **Nazwa strategii** podaj nazwę strategii, na przykład „MyBlueprint” (litery i cyfry, maksymalnie 48 znaków, ale bez spacji i znaków specjalnych). Pole **Opis strategii** pozostaw na razie puste.  W polu **Lokalizacja definicji** kliknij wielokropek po prawej stronie, wybierz [grupę zarządzania](../management-groups/overview.md), w której chcesz zapisać strategię, a następnie kliknij pozycję **Wybierz**.
 
    > [!NOTE]
    > Definicje strategii można zapisywać tylko w grupach zarządzania. Aby utworzyć pierwszą grupę zarządzania, wykonaj [te kroki](../management-groups/create.md).
@@ -111,7 +111,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
    ![Artefakt — szablon usługi Resource Manager](./media/create-blueprint-portal/add-resource-manager-template.png)
 
-1. Ukończona strategia powinna wyglądać podobnie do poniższej. Zauważ, że każdy artefakt ma informację „wypełniono _x_ z _y_ parametrów” w kolumnie _Parametry_. **Parametry dynamiczne**  będą ustawiane podczas każdego przypisania strategii, a jeden **parametr statyczny** w przypisaniu roli został już skonfigurowany.
+1. Ukończona strategia powinna wyglądać podobnie do poniższej. Zauważ, że każdy artefakt ma informację „wypełniono _x_ z _y_ parametrów” w kolumnie _Parametry_. **Parametry dynamiczne** będą ustawiane każdorazowo podczas przypisywania strategii.
 
    ![Ukończona strategia](./media/create-blueprint-portal/completed-blueprint.png)
 

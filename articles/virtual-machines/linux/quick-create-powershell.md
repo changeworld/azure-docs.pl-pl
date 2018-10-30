@@ -13,27 +13,43 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/24/2018
+ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 45b1597d3b61a9386fc015b5a7272d948fa5772b
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: df6f99bfe9f1ae7b79f0f382fdee4fe4f1578bad
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394786"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407541"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>Szybki start: tworzenie maszyny wirtualnej z systemem Linux za pomocą programu Azure PowerShell
 
-Moduł Azure PowerShell umożliwia tworzenie zasobów platformy Azure i zarządzanie nimi za pomocą wiersza polecenia programu PowerShell lub skryptów. Z tego przewodnika Szybki start dowiesz się, jak za pomocą modułu programu Azure PowerShell wdrożyć maszynę wirtualną z systemem Ubuntu na platformie Azure. Aby następnie zobaczyć działanie maszyny wirtualnej, połączysz się z nią za pomocą protokołu SSH i zainstalujesz serwer internetowy NGINX.
+Moduł Azure PowerShell umożliwia tworzenie zasobów platformy Azure i zarządzanie nimi za pomocą wiersza polecenia programu PowerShell lub skryptów. Z tego przewodnika Szybki start dowiesz się, jak za pomocą modułu programu Azure PowerShell wdrożyć maszynę wirtualną z systemem Linux na platformie Azure. W ramach tego przewodnika Szybki start jest używany obraz systemu Ubuntu 16.04 LTS od firmy Canonical pochodzący z witryny Marketplace. Aby zobaczyć działanie maszyny wirtualnej, połączysz się z nią za pomocą protokołu SSH i zainstalujesz serwer internetowy NGINX.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+## <a name="launch-azure-cloud-shell"></a>Uruchamianie usługi Azure Cloud Shell
 
-Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten samouczek będzie wymagał modułu programu Azure PowerShell w wersji 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. 
 
-Na koniec zapisz publiczny klucz SSH o nazwie *id_rsa.pub* w katalogu *.ssh* profilu użytkownika systemu Windows. Aby uzyskać szczegółowe informacje na temat tworzenia i używania kluczy SSH, zobacz [Tworzenie kluczy SSH dla platformy Azure](ssh-from-windows.md).
+Aby otworzyć usługę Cloud Shell, wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. Wybierz przycisk **Kopiuj**, aby skopiować bloki kodu, wklej je do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby je uruchomić.
+
+Jeśli chcesz zainstalować program PowerShell i używać go lokalnie, ten przewodnik Szybki start wymaga modułu Azure PowerShell w wersji 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+
+## <a name="create-ssh-key-pair"></a>Tworzenie pary kluczy SSH
+
+Do wykonania kroków tego przewodnika Szybki start konieczne jest posiadanie pary kluczy SSH. Jeśli masz już parę kluczy SSH, możesz pominąć ten krok.
+
+Otwórz powłokę Bash i użyj polecenia [ssh-keygen](https://www.ssh.com/ssh/keygen/), aby utworzyć parę kluczy SSH. Jeśli nie masz powłoki Bash na swoim komputerze lokalnym, możesz użyć usługi [Azure Cloud Shell](https://shell.azure.com/bash).  
+
+```azurepowershell-interactive
+ssh-keygen -t rsa -b 2048
+```
+
+Aby uzyskać bardziej szczegółowe informacje na temat tworzenia par kluczy SSH, łącznie z użyciem programu PuTTy, zobacz [Jak używać kluczy SSH w systemie Windows](ssh-from-windows.md).
+
+Jeśli utworzysz parę kluczy SSH przy użyciu usługi Cloud Shell, będzie ona przechowywana w obrazie kontenera w ramach [konta magazynu automatycznie tworzonego przez usługę Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage). Nie usuwaj tego konta magazynu ani znajdującego się w nim udziału plików, dopóki nie pobierzesz kluczy. W przeciwnym razie utracisz dostęp do maszyny wirtualnej. 
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -49,46 +65,80 @@ Utwórz sieć wirtualną, podsieć i publiczny adres IP. Te zasoby są używane 
 
 ```azurepowershell-interactive
 # Create a subnet configuration
-$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name "mySubnet" -AddressPrefix 192.168.1.0/24
+$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+  -Name "mySubnet" `
+  -AddressPrefix 192.168.1.0/24
 
 # Create a virtual network
-$vnet = New-AzureRmVirtualNetwork -ResourceGroupName "myResourceGroup" -Location "EastUS" `
--Name "myVNET" -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
+$vnet = New-AzureRmVirtualNetwork `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "EastUS" `
+  -Name "myVNET" `
+  -AddressPrefix 192.168.0.0/16 `
+  -Subnet $subnetConfig
 
 # Create a public IP address and specify a DNS name
-$pip = New-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroup" -Location "EastUS" `
--AllocationMethod Static -IdleTimeoutInMinutes 4 -Name "mypublicdns$(Get-Random)"
+$pip = New-AzureRmPublicIpAddress `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "EastUS" `
+  -AllocationMethod Static `
+  -IdleTimeoutInMinutes 4 `
+  -Name "mypublicdns$(Get-Random)"
 ```
 
 Utwórz sieciową grupę zabezpieczeń i regułę ruchu. Sieciowa grupa zabezpieczeń chroni maszynę wirtualną za pomocą reguł ruchu przychodzącego i wychodzącego. W poniższym przykładzie utworzono regułę ruchu przychodzącego dla portu TCP 22, która zezwala na połączenia SSH. Aby zezwolić na przychodzący ruch internetowy, utworzono także regułę ruchu przychodzącego dla portu TCP 80.
 
 ```azurepowershell-interactive
 # Create an inbound network security group rule for port 22
-$nsgRuleSSH = New-AzureRmNetworkSecurityRuleConfig -Name "myNetworkSecurityGroupRuleSSH"  -Protocol "Tcp" `
--Direction "Inbound" -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
--DestinationPortRange 22 -Access "Allow"
+$nsgRuleSSH = New-AzureRmNetworkSecurityRuleConfig `
+  -Name "myNetworkSecurityGroupRuleSSH"  `
+  -Protocol "Tcp" `
+  -Direction "Inbound" `
+  -Priority 1000 `
+  -SourceAddressPrefix * `
+  -SourcePortRange * `
+  -DestinationAddressPrefix * `
+  -DestinationPortRange 22 `
+  -Access "Allow"
 
 # Create an inbound network security group rule for port 80
-$nsgRuleWeb = New-AzureRmNetworkSecurityRuleConfig -Name "myNetworkSecurityGroupRuleWWW"  -Protocol "Tcp" `
--Direction "Inbound" -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
--DestinationPortRange 80 -Access "Allow"
+$nsgRuleWeb = New-AzureRmNetworkSecurityRuleConfig `
+  -Name "myNetworkSecurityGroupRuleWWW"  `
+  -Protocol "Tcp" `
+  -Direction "Inbound" `
+  -Priority 1001 `
+  -SourceAddressPrefix * `
+  -SourcePortRange * `
+  -DestinationAddressPrefix * `
+  -DestinationPortRange 80 `
+  -Access "Allow"
 
 # Create a network security group
-$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName "myResourceGroup" -Location "EastUS" `
--Name "myNetworkSecurityGroup" -SecurityRules $nsgRuleSSH,$nsgRuleWeb
+$nsg = New-AzureRmNetworkSecurityGroup `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "EastUS" `
+  -Name "myNetworkSecurityGroup" `
+  -SecurityRules $nsgRuleSSH,$nsgRuleWeb
 ```
 
 Utwórz wirtualną kartę sieciową za pomocą polecenia [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface). Wirtualna karta sieciowa łączy maszynę wirtualną z podsiecią, sieciową grupą zabezpieczeń i publicznym adresem IP.
 
 ```azurepowershell-interactive
 # Create a virtual network card and associate with public IP address and NSG
-$nic = New-AzureRmNetworkInterface -Name "myNic" -ResourceGroupName "myResourceGroup" -Location "EastUS" `
--SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
+$nic = New-AzureRmNetworkInterface `
+  -Name "myNic" `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "EastUS" `
+  -SubnetId $vnet.Subnets[0].Id `
+  -PublicIpAddressId $pip.Id `
+  -NetworkSecurityGroupId $nsg.Id
 ```
 
 ## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
-Konfiguracja maszyny wirtualnej zawiera ustawienia, które są używane podczas wdrażania maszyny wirtualnej, takie jak obraz maszyny wirtualnej, rozmiar i opcje uwierzytelniania. Zdefiniuj poświadczenia protokołu SSH, informacje o systemie operacyjnym i rozmiar maszyny wirtualnej w następujący sposób:
+Aby utworzyć maszynę wirtualną w programie PowerShell, należy utworzyć konfigurację obejmującą ustawienia, takie jak obraz do użycia, rozmiar i opcje uwierzytelniania. Następnie konfiguracja jest używana do utworzenia maszyny wirtualnej.
+
+Zdefiniuj poświadczenia protokołu SSH, informacje o systemie operacyjnym i rozmiar maszyny wirtualnej. W tym przykładzie klucz SSH znajduje się w lokalizacji `~/.ssh/id_rsa.pub`. 
 
 ```azurepowershell-interactive
 # Define a credential object
@@ -96,57 +146,72 @@ $securePassword = ConvertTo-SecureString ' ' -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential ("azureuser", $securePassword)
 
 # Create a virtual machine configuration
-$vmConfig = New-AzureRmVMConfig -VMName "myVM" -VMSize "Standard_D1" | `
-Set-AzureRmVMOperatingSystem -Linux -ComputerName "myVM" -Credential $cred -DisablePasswordAuthentication | `
-Set-AzureRmVMSourceImage -PublisherName "Canonical" -Offer "UbuntuServer" -Skus "16.04-LTS" -Version "latest" | `
-Add-AzureRmVMNetworkInterface -Id $nic.Id
+$vmConfig = New-AzureRmVMConfig `
+  -VMName "myVM" `
+  -VMSize "Standard_D1" | `
+Set-AzureRmVMOperatingSystem `
+  -Linux `
+  -ComputerName "myVM" `
+  -Credential $cred `
+  -DisablePasswordAuthentication | `
+Set-AzureRmVMSourceImage `
+  -PublisherName "Canonical" `
+  -Offer "UbuntuServer" `
+  -Skus "16.04-LTS" `
+  -Version "latest" | `
+Add-AzureRmVMNetworkInterface `
+  -Id $nic.Id
 
-# Configure SSH Keys
-$sshPublicKey = Get-Content "$env:USERPROFILE\.ssh\id_rsa.pub"
-Add-AzureRmVMSshPublicKey -VM $vmconfig -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
+# Configure the SSH key
+$sshPublicKey = cat ~/.ssh/id_rsa.pub
+Add-AzureRmVMSshPublicKey `
+  -VM $vmconfig `
+  -KeyData $sshPublicKey `
+  -Path "/home/azureuser/.ssh/authorized_keys"
 ```
 
 Teraz połącz wcześniejsze definicje konfiguracji do utworzenia za pomocą polecenia [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm):
 
 ```azurepowershell-interactive
-New-AzureRmVM -ResourceGroupName "myResourceGroup" -Location eastus -VM $vmConfig
+New-AzureRmVM `
+  -ResourceGroupName "myResourceGroup" `
+  -Location eastus -VM $vmConfig
 ```
 
-## <a name="connect-to-virtual-machine"></a>Nawiązywanie połączenia z maszyną wirtualną
+Wdrożenie maszyny wirtualnej potrwa kilka minut. Po zakończeniu wdrażania przejdź do następnej sekcji.
 
-Po zakończeniu wdrażania połącz się przez protokół SSH z maszyną wirtualną. Aby następnie zobaczyć działanie maszyny wirtualnej, zainstaluj serwer internetowy NGINX.
+## <a name="connect-to-the-vm"></a>Łączenie z maszyną wirtualną
 
-Aby wyświetlić publiczny adres IP maszyny wirtualnej, użyj polecenia cmdlet [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress):
+Nawiąż połączenie SSH z maszyną wirtualną przy użyciu publicznego adresu IP. Aby wyświetlić publiczny adres IP maszyny wirtualnej, użyj polecenia cmdlet [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress):
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
 ```
 
-Nawiąż połączenie z maszyną wirtualną za pomocą klienta SSH. Możesz użyć usługi Azure Cloud Shell z poziomu przeglądarki internetowej, a jeśli używasz systemu Windows, możesz użyć programu [Putty](ssh-from-windows.md) lub [podsystemu Windows dla systemu Linux](/windows/wsl/install-win10). Podaj publiczny adres IP maszyny wirtualnej:
+Korzystając z tej samej powłoki Bash, która została użyta do utworzenia pary kluczy SSH, takiej jak usługa [Azure Cloud Shell](https://shell.azure.com/bash) lub lokalna powłoka Bash, wklej polecenie połączenia SSH w powłoce, aby utworzyć sesję SSH.
 
 ```bash
-ssh azureuser@IpAddress
+ssh azureuser@10.111.12.123
 ```
 
 Po wyświetleniu monitu podaj nazwę logowania użytkownika *azureuser*. Jeśli razem z kluczami SSH używane jest hasło, należy je wprowadzić, gdy zostanie wyświetlony monit.
 
-## <a name="install-web-server"></a>Instalowanie serwera internetowego
 
-Aby zobaczyć działanie maszyny wirtualnej, zainstaluj serwer internetowy NGINX. Aby zaktualizować źródła pakietów i zainstalować najnowszy pakiet NGINX, uruchom następujące polecenia w sesji SSH:
+## <a name="install-nginx"></a>Instalowanie serwera NGINX
+
+Aby zobaczyć działanie maszyny wirtualnej, zainstaluj serwer internetowy NGINX. Z poziomu sesji SSH zaktualizuj źródła pakietu, a następnie zainstaluj najnowszą wersję pakietu NGINX.
 
 ```bash
-# update packages
 sudo apt-get -y update
-
-# install NGINX
 sudo apt-get -y install nginx
 ```
 
-Po zakończeniu zamknij sesję SSH za pomocą polecenia `exit`
+Gdy skończysz, wpisz polecenie `exit`, aby opuścić sesję SSH.
+
 
 ## <a name="view-the-web-server-in-action"></a>Oglądanie działającego serwera internetowego
 
-Po zainstalowaniu serwera NGINX i otwarciu portu 80 na maszynie wirtualnej dla ruchu z Internetu wyświetl domyślną stronę powitalną serwera NGINX przy użyciu wybranej przeglądarki internetowej. Użyj publicznego adresu IP maszyny wirtualnej uzyskanego w poprzednim kroku. W poniższym przykładzie przedstawiono domyślną witrynę internetową serwera NGINX:
+Użyj wybranej przeglądarki internetowej, aby wyświetlić domyślną strona powitalną serwera NGINX. Wprowadź publiczny adres IP maszyny wirtualnej jako adres internetowy. Publiczny adres IP można znaleźć na stronie przeglądu maszyny wirtualnej lub jako część wcześniej użytych parametrów połączenia SSH.
 
 ![Domyślna witryna serwera NGINX](./media/quick-create-cli/nginx.png)
 

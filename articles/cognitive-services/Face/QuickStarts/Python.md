@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: wykrywanie twarzy na obrazie — interfejs API rozpoznawania twarzy, język Python'
+title: 'Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka Python'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start omówiono wykrywanie twarzy na obrazie przy użyciu interfejsu API rozpoznawania twarzy z językiem Python.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: pafarley
-ms.openlocfilehash: 581c2a7d4508833647d4dbb9861000fddd75cde8
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 76a9260d534057e3a03f8c8f1d7420329713ea80
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339585"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957279"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-python"></a>Szybki start: wykrywanie twarzy na obrazie przy użyciu języka Python
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-python"></a>Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka Python
 
 W tym przewodniku Szybki start wykryjesz ludzką twarz na obrazie zdalnym za pomocą usługi rozpoznawania twarzy. Wykryte twarze są oznaczane prostokątami z nałożoną płcią i wiekiem poszczególnych osób. Aby użyć obrazu lokalnego, należy zapoznać się ze składnią w temacie [Przetwarzanie obrazów: analizowanie obrazu lokalnego przy użyciu języka Python](../../Computer-vision/QuickStarts/python-disk.md).
 

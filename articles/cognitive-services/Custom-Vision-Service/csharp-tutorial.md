@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: kompilowanie aplikacji Windows for Custom Vision Service w języku C#'
+title: 'Samouczek: tworzenie projektu klasyfikacji obrazów przy użyciu zestawu Custom Vision SDK dla języka C#'
 titlesuffix: Azure Cognitive Services
 description: Utwórz projekt, dodaj tagi, prześlij obrazy, wyszkol projekt i wykonaj przewidywanie przy użyciu domyślnego punktu końcowego.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: 9e5ed71d4620f7ffeac8acb15f90d67964a86870
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: e046fe452a13384ae7929be805c6252d6ad2fbf9
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366645"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953047"
 ---
-# <a name="tutorial-use-the-custom-vision-service-from-a-c-application"></a>Samouczek: używanie funkcji Custom Vision Service z poziomu aplikacji C#
+# <a name="tutorial-create-an-image-classification-project-with-the-custom-vision-sdk-for-c"></a>Samouczek: tworzenie projektu klasyfikacji obrazów przy użyciu zestawu Custom Vision SDK dla języka C#
 
-Dowiedz się, jak używać funkcji Custom Vision Service z poziomu aplikacji C#. Po jej utworzeniu możesz dodać tagi, przesłać obrazy, wyszkolić projekt, uzyskać adres URL punktu końcowego domyślnego przewidywania projektu i użyć punktu końcowego do programowego przetestowania obrazu. Wykorzystaj ten przykład open-source jako szablon do kompilowania własnych aplikacji dla systemu Windows przy użyciu interfejsu API usługi Custom Vision Service.
+Dowiedz się, jak używać zestawu Custom Vision Service SDK w aplikacji C#. Po jej utworzeniu możesz dodać tagi, przesłać obrazy, wyszkolić projekt, uzyskać adres URL punktu końcowego domyślnego przewidywania projektu i użyć punktu końcowego do programowego przetestowania obrazu. Wykorzystaj ten przykład open-source jako szablon do kompilowania własnych aplikacji dla systemu Windows przy użyciu interfejsu API usługi Custom Vision Service.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

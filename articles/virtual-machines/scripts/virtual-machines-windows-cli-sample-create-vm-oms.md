@@ -1,6 +1,6 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie maszyny wirtualnej z systemem Windows Server 2016 z funkcją monitorowania pakietu OMS | Microsoft Docs
-description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie maszyny wirtualnej z systemem Windows Server 2016 z funkcją monitorowania pakietu OMS
+title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie maszyny wirtualnej z systemem Windows Server 2016 z funkcją monitorowania usługi Log Analytics | Microsoft Docs
+description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie maszyny wirtualnej z systemem Windows Server 2016 z funkcją monitorowania usługi Log Analytics
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rickstercdn
@@ -16,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc
-ms.openlocfilehash: 05ecaa856cf2c513b48f0ba0f170dfb3bbf31e75
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d4b73981e3cb21f7b4caefaf443014853929b708
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658295"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403393"
 ---
-# <a name="monitor-a-vm-with-operations-management-suite"></a>Monitorowanie maszyny wirtualnej przy użyciu pakietu Operations Management Suite
+# <a name="monitor-a-vm-with-log-analytics"></a>Monitorowanie maszyny wirtualnej za pomocą usługi Log Analytics
 
-Ten skrypt tworzy maszynę wirtualną platformy Azure, instaluje agenta pakietu Operations Management Suite (OMS) i rejestruje system przy użyciu obszaru roboczego pakietu OMS. Po uruchomieniu skryptu maszyna wirtualna będzie widoczna w konsoli OMS.
+Ten skrypt tworzy maszynę wirtualną platformy Azure, instaluje agenta usługi Log Analytics i rejestruje system w obszarze roboczym usługi Log Analytics. Po uruchomieniu skryptu maszyna wirtualna będzie widoczna w obszarze monitorowania platformy Azure.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -51,7 +51,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | Tworzy maszynę wirtualną i łączy ją z kartą sieciową, siecią wirtualną, podsiecią i sieciową grupą zabezpieczeń. To polecenie określa również obraz maszyny wirtualnej do użycia oraz poświadczenia administracyjne.  |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Uruchamia rozszerzenie maszyny wirtualnej względem maszyny wirtualnej. W takim przypadku rozszerzenie agenta pakietu Operations Management Suite jest używane do instalowania agenta pakietu OMS i rejestrowania maszyny wirtualnej w obszarze roboczym pakietu OMS. |
+| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Uruchamia rozszerzenie maszyny wirtualnej względem maszyny wirtualnej. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
 ## <a name="next-steps"></a>Następne kroki

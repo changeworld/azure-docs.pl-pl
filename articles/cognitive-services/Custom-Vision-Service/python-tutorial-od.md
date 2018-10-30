@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: tworzenie projektu wykrywania obiektów — interfejs API Custom Vision, Python'
+title: 'Samouczek: tworzenie projektu wykrywania obiektów przy użyciu zestawu Custom Vision SDK dla języka Python — Custom Vision Service'
 titlesuffix: Azure Cognitive Services
 description: Utwórz projekt, dodaj tagi, prześlij obrazy, wyszkol projekt i wykonaj przewidywanie przy użyciu domyślnego punktu końcowego.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 05/03/2018
 ms.author: areddish
-ms.openlocfilehash: f49f5ab32d834b32de54be2d96c3671ad46f79f3
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 36b283965766130e86e079c807139998cd01c8a6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363704"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958537"
 ---
-# <a name="tutorial-build-an-object-detection-project-with-python"></a>Samouczek: tworzenie projektu wykrywania obiektów w języku Python
+# <a name="tutorial-create-an-object-detection-project-with-the-custom-vision-sdk-for-python"></a>Samouczek: tworzenie projektu wykrywania obiektów przy użyciu zestawu Custom Vision SDK dla języka Python
 
 Poznaj podstawowy skrypt w języku Python, w którym interfejs API przetwarzania obrazów jest używany do tworzenia projektu wykrywania obiektów. Po jego utworzeniu możesz dodać oznaczone regiony, przesłać obrazy, wyszkoiić projekt, uzyskać adres URL domyślnego punktu końcowego przewidywania i użyć tego punktu końcowego do programowego przetestowania obrazu. Ta przykładowa aplikacja open source może posłużyć jako szablon do utworzenia własnej aplikacji przy użyciu interfejsu API Custom Vision.
 
@@ -179,7 +179,7 @@ trainer.update_iteration(project.id, iteration.id, is_default=True)
 print ("Done!")
 ```
 
-## <a name="step-6-get-and-use-the-default-prediction-endpoint"></a>Krok 6: Uzyskanie adresu domyślnego punktu końcowego do przewidywania
+## <a name="step-6-get-and-use-the-default-prediction-endpoint"></a>Krok 6: uzyskanie adresu domyślnego punktu końcowego do przewidywania
 
 Teraz możesz użyć modelu do przewidywania: 
 
@@ -203,7 +203,7 @@ for prediction in results.predictions:
     print ("\t" + prediction.tag_name + ": {0:.2f}%".format(prediction.probability * 100), prediction.bounding_box.left, prediction.bounding_box.top, prediction.bounding_box.width, prediction.bounding_box.height)
 ```
 
-## <a name="step-7-run-the-example"></a>Krok 7: Uruchomienie przykładu
+## <a name="step-7-run-the-example"></a>Krok 7: uruchomienie przykładu
 
 Uruchom rozwiązanie. W konsoli zostaną wyświetlone wyniki przewidywania.
 

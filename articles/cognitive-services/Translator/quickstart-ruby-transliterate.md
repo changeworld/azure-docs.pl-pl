@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: konwertowanie skryptu tekstowego — tłumaczenie tekstu w usłudze Translator, język Ruby'
+title: 'Szybki start: konwertowanie skryptu tekstowego, Ruby — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start przekonwertujesz tekst w jednym języku z danego systemu zapisu na inny przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka Ruby.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
-ms.author: nolachar
-ms.openlocfilehash: 6595e486a93811fdded21050c39e99d4f7e5a760
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: d78586243b47563440f629689800ad618cb411d8
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46121757"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647089"
 ---
-# <a name="quickstart-transliterate-text-with-ruby"></a>Szybki start: transliteracja tekstu przy użyciu języka Ruby
+# <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-ruby"></a>Szybki start: transliteracja tekstu przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (Ruby)
 
 W tym przewodniku Szybki start przekonwertujesz tekst w jednym języku z danego systemu zapisu na inny przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 

@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/07/2018
+ms.date: 10/18/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d48374d7919be3d141ea199e8238a220dbfe0332
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: a3fc3e0cc30b379c84ac0ba12f733d2db4e41587
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419529"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945794"
 ---
 # <a name="tutorial-create-an-azure-resource-manager-template-for-deploying-an-encrypted-storage-account"></a>Samouczek: tworzenie szablonu usługi Azure Resource Manager na potrzeby wdrażania szyfrowanego konta magazynu
 
@@ -40,8 +40,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
-* [Program Visual Studio Code](https://code.visualstudio.com/)
-* Rozszerzenie Narzędzia usługi Resource Manager. Aby zainstalować to rozszerzenie, zobacz [Instalacja rozszerzenia Narzędzia usługi Resource Manager](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+* Program [Visual Studio Code](https://code.visualstudio.com/) z rozszerzeniem [Resource Manager Tools](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
 
 ## <a name="open-a-quickstart-template"></a>Otwieranie szablonu szybkiego startu
 
@@ -56,7 +55,7 @@ Szablon używany w tym przewodniku Szybki start ma nazwę [Create a standard sto
 3. Wybierz pozycję **Open (Otwórz)**, aby otworzyć plik.
 4. Wybierz pozycję **File (Plik)**>**Save As (Zapisz jako)**, aby zapisać plik jako **azuredeploy.json** na komputerze lokalnym.
 
-## <a name="understand-the-format"></a>Omówienie formatu
+## <a name="understand-the-schema"></a>Informacje o schemacie
 
 W programie VS Code zwiń szablon do poziomu głównego. Masz najprostszą strukturę z następującymi elementami:
 
@@ -69,7 +68,7 @@ W programie VS Code zwiń szablon do poziomu głównego. Masz najprostszą struk
 * **resources**: określ typy zasobów, które są wdrażane lub aktualizowane w grupie zasobów.
 * **outputs**: określ wartości, które są zwracane po wdrożeniu.
 
-## <a name="use-parameters-in-template"></a>Używanie parametrów w szablonie
+## <a name="use-parameters"></a>Używanie parametrów
 
 Parametry umożliwiają dostosowanie wdrożenia poprzez podanie wartości dopasowanych do danego środowiska. Parametry zdefiniowane w szablonie są używane podczas ustawiania wartości dla konta magazynu.
 
@@ -90,7 +89,7 @@ Aby użyć parametrów zdefiniowanych w szablonie:
 "name": "[parameters('storageAccountType')]"
 ```
 
-## <a name="use-variables-in-template"></a>Korzystanie ze zmiennych w szablonie
+## <a name="use-variables"></a>Używanie zmiennych
 
 Zmienne umożliwiają tworzenie wartości, których można używać w całym szablonie. Zmienne pomagają w redukowaniu złożoności szablonu.
 
@@ -117,9 +116,7 @@ Celem tego samouczka jest zdefiniowanie szablonu w celu utworzenia zaszyfrowaneg
 
     ![Konto magazynu odwołania do szablonu usługi Resource Manager](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
 
-    resource-manager-template-resources-reference-storage-accounts
-1. Przejrzyj informacje związane z szyfrowaniem.  
-1. Wewnątrz elementu properties w definicji zasobu konta magazynu dodaj następujący kod json:
+4. Znajdź informacje o definicjach związanych z szyfrowaniem.  
 
     ```json
     "encryption": {
@@ -131,11 +128,9 @@ Celem tego samouczka jest zdefiniowanie szablonu w celu utworzenia zaszyfrowaneg
         }
     }
     ```
-    Ta część włącza funkcję szyfrowania usługi magazynu obiektów blob.
-
-Z poziomu programu Visual Studio Code zmodyfikuj szablon, aby ostateczny element resources wyglądał następująco:
-
-![Zasoby szyfrowanego konta magazynu w szablonie usługi Resource Manager](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
+5. Z poziomu programu Visual Studio Code zmodyfikuj szablon, aby ostateczny element resources wyglądał następująco:
+    
+    ![Zasoby szyfrowanego konta magazynu w szablonie usługi Resource Manager](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
 
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
 

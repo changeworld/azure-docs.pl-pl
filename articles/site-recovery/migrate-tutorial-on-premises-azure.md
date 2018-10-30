@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/12/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: bd41244192efa1333bc90bec8c00f38aaaa7f612
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 446d9ead47e9d9380a608933ced3793e99241622
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714993"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026334"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrowanie maszyn lokalnych do platformy Azure
 
@@ -33,7 +33,7 @@ Ten samouczek pokazuje, jak przeprowadzić migrację lokalnych maszyn wirtualnyc
 Jest to trzeci samouczek z tej serii. Założono w nim, że zostały już wykonane zadania z poprzednich samouczków:
 
 1. [Przygotowywanie platformy Azure](tutorial-prepare-azure.md)
-2. Przygotowywanie lokalnych serwerów [VMware](vmware-azure-tutorial-prepare-on-premises.md) lub serwerów funkcji [Hyper-V] (hyper-v-prepare-on-premises-tutorial.md).
+2. Przygotuj lokalne serwery [programu VMware](vmware-azure-tutorial-prepare-on-premises.md) lub [funkcji Hyper-V](hyper-v-prepare-on-premises-tutorial.md).
 
 Przed rozpoczęciem warto zapoznać się z architekturami [VMware](vmware-azure-architecture.md) lub [Hyper-V](hyper-v-azure-architecture.md) na potrzeby odzyskiwania po awarii.
 

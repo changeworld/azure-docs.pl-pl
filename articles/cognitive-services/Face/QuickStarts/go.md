@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: wykrywanie twarzy na obrazie — interfejs API rozpoznawania twarzy, język Go'
+title: 'Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka Go'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start omówiono wykrywanie twarzy na obrazie przy użyciu interfejsu API rozpoznawania twarzy z językiem Go.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 06/25/2018
 ms.author: pafarley
-ms.openlocfilehash: 1717d32f679d0f5196d8ff03a27415c9e41e0c23
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: a66d50ac6984ea50eef1e34cc53db4d7e5bbdcad
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344954"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956208"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-go"></a>Szybki start: wykrywanie twarzy na obrazie przy użyciu języka Go
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka Go
 
 W tym przewodniku Szybki start wykryjesz ludzką twarz na obrazie za pomocą interfejsu API rozpoznawania twarzy.
 

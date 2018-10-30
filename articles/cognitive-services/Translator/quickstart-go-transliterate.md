@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: konwertowanie skryptu tekstowego — tłumaczenie tekstu w usłudze Translator, Go'
+title: 'Szybki start: konwertowanie skryptu tekstowego, Go — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start przekonwertujesz tekst w jednym języku z danego systemu zapisu na inny przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka Go.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
-ms.author: nolachar
-ms.openlocfilehash: c4930e03f5d366eb3f21b44c5be90c20230065c3
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: fd41eff65c312c125594bb3251f9c4fe74108eaf
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126755"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648364"
 ---
-# <a name="quickstart-transliterate-text-with-go"></a>Szybki start: transliteracja tekstu przy użyciu języka Go
+# <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-go"></a>Szybki start: transliteracja tekstu przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (Go)
 
 W tym przewodniku Szybki start przekonwertujesz tekst w jednym języku z danego systemu zapisu na inny przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 

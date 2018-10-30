@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: uzyskiwanie obsługiwanych języków — tłumaczenie tekstu w usłudze Translator, PHP'
+title: 'Szybki start: uzyskiwanie obsługiwanych języków, PHP — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji, wyszukiwania w słowniku oraz przykładów przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka PHP.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
-ms.author: nolachar
-ms.openlocfilehash: 2924a61a31037fcf52986d250007b906ffb40b98
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: e208e66c906531bb084438539c76e0a07c3caa9a
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46128711"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647256"
 ---
-# <a name="quickstart-get-supported-languages-with-php"></a>Szybki start: uzyskiwanie obsługiwanych języków w języku PHP
+# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-php"></a>Szybki start: uzyskiwanie obsługiwanych języków przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (PHP)
 
 W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji, wyszukiwania w słowniku oraz wyszukiwania przykładów przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 

@@ -12,12 +12,12 @@ ms.author: daredis
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 09/07/2018
-ms.openlocfilehash: ceed69503900b38d7f6a29bbe116ab9a4d54e396
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: b81e76201f7f751ee01e903d83f316811abaf483
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857962"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955479"
 ---
 # <a name="secure-your-azure-sql-database"></a>Zabezpieczanie usługi Azure SQL Database
 
@@ -59,7 +59,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 Bazy danych SQL są chronione przez zaporę na platformie Azure. Domyślnie wszystkie połączenia z serwerem i znajdującymi się na nim bazami danych są odrzucane, poza połączeniami z innych usług platformy Azure. Aby uzyskać więcej informacji, zobacz [Azure SQL Database server-level and database-level firewall rules (Reguły zapory na poziomie serwera i na poziomie bazy danych usługi Azure SQL Database)](sql-database-firewall-configure.md).
 
-Najbezpieczniejsza konfiguracja to ustawienie opcji „Zezwalaj na dostęp do usług platformy Azure” na wartość WYŁ. Jeśli potrzebujesz nawiązać połączenie z bazą danych z maszyny wirtualnej platformy Azure lub z usługi w chmurze, musisz utworzyć [zastrzeżony adres IP](../virtual-network/virtual-networks-reserved-public-ip.md) i zezwolić na dostęp przez zaporę tylko zastrzeżonego adresu IP. 
+Najbezpieczniejsza konfiguracja to ustawienie opcji „Zezwalaj na dostęp do usług platformy Azure” na wartość WYŁ. Aby nawiązać połączenie z bazą danych z maszyny wirtualnej platformy Azure lub z usługi w chmurze, musisz utworzyć [zastrzeżony adres IP (wdrożenie klasyczne)](../virtual-network/virtual-networks-reserved-public-ip.md) i zezwolić na dostęp przez zaporę tylko zastrzeżonego adresu IP. Jeśli używasz modelu wdrażania usługi [Resource Manager](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm), do zasobu jest przypisywany dedykowany publiczny adres IP. Zezwól na ten adres IP przez zaporę.
 
 Wykonaj następujące kroki, aby utworzyć [Regułę zapory na poziomie serwera usługi SQL Database](sql-database-firewall-configure.md) dla serwera i umożliwić połączenia z konkretnego adresu IP. 
 

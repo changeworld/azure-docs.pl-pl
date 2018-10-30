@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: ff80bc2452c9826a5c51c146a957fddc72d2dbc2
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 5cb3fee975e99af3d86affcbc18d89277dde2dc1
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41921050"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409122"
 ---
 # <a name="enable-event-hubs-capture-using-the-azure-portal"></a>Włączanie funkcji przechwytywania usługi Event Hubs przy użyciu witryny Azure Portal
 
@@ -75,6 +75,7 @@ Przechwytywanie można skonfigurować w istniejących centrach zdarzeń, które 
 
 - Aby dowiedzieć się więcej na temat funkcji przechwytywania usługi Event Hubs, przeczytaj [omówienie funkcji przechwytywania usługi Event Hubs][capture-overview].
 - Funkcję przechwytywania usługi Event Hubs możesz również skonfigurować za pomocą szablonów usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [Enable Capture using an Azure Resource Manager template (Włączanie funkcji przechwytywania przy użyciu szablonu usługi Azure Resource Manager)](event-hubs-resource-manager-namespace-event-hub-enable-capture.md).
+- [Dowiedz się, jak utworzyć subskrypcję usługi Azure Event Grid przy użyciu przestrzeni nazw usługi Event Hubs jako źródła](store-captured-data-data-warehouse.md)
 - [Rozpoczynanie pracy z usługą Azure Data Lake Store za pośrednictwem witryny Azure Portal](../data-lake-store/data-lake-store-get-started-portal.md)
 
 [capture-overview]: event-hubs-capture-overview.md

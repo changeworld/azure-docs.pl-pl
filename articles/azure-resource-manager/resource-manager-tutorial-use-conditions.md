@@ -10,21 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/02/2018
+ms.date: 10/18/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 216e474f519e57352b017dc3e6bcdd74d48b03de
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 552b39c520396942fa81f963c0cfa1c8c7b47db4
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238650"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456970"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Samouczek: używanie warunków w szablonach usługi Azure Resource Manager
 
 Dowiedz się, jak wdrażać zasoby platformy Azure na podstawie warunków. 
 
-Scenariusz w tym samouczku jest podobny do użytego w części [Samouczek: tworzenie szablonów usługi Azure Resource Manager z zasobami zależnymi](./resource-manager-tutorial-create-templates-with-dependent-resources.md). W tym samouczku utworzysz konto magazynu, maszynę wirtualną, sieć wirtualną i trochę innych zasobów zależnych. Zamiast tworzyć nowe konto magazynu, zezwalasz użytkownikom na utworzenie nowego konta magazynu lub użycie istniejącego. Aby osiągnąć ten cel, definiujesz dodatkowy parametr. Jeśli wartość parametru to „new”, jest tworzone nowe konto magazynu.
+Scenariusz w tym samouczku jest podobny do użytego w części [Samouczek: tworzenie szablonów usługi Azure Resource Manager z zasobami zależnymi](./resource-manager-tutorial-create-templates-with-dependent-resources.md). W tym samouczku utworzysz maszynę wirtualną, sieć wirtualną i kilka innych zasobów zależnych, w tym konto magazynu. Zamiast za każdym razem tworzyć nowe konto magazynu, zezwalasz użytkownikom na utworzenie nowego konta magazynu lub użycie istniejącego. Aby osiągnąć ten cel, definiujesz dodatkowy parametr. Jeśli wartość parametru to „new”, jest tworzone nowe konto magazynu.
 
 Ten samouczek obejmuje następujące zadania:
 
@@ -59,7 +59,7 @@ Szablony szybkiego startu platformy Azure to repozytorium na potrzeby szablonów
 
 Wprowadź dwie zmiany do istniejącego szablonu:
 
-* Dodaj parametr służący do podawania nazwy konta magazynu. Ten parametr daje użytkownikowi możliwość podania nazwy istniejącego konta magazynu. Może również służyć jako nazwa nowego konta magazynu.
+* Dodaj parametr nazwy konta magazynu. Użytkownicy mogą określić nazwę nowego lub istniejącego konta magazynu.
 * Dodaj nowy parametr o nazwie **newOrExisting**. Ten parametr jest używany przy wdrożeniu do określenia, czy utworzyć nowe konto magazynu, czy użyć istniejącego.
 
 1. Otwórz plik **azuredeploy.json** w programie Visual Studio Code.
@@ -72,11 +72,15 @@ Wprowadź dwie zmiany do istniejącego szablonu:
 4. Dodaj następujące dwa parametry do szablonu:
 
     ```json
-    "newOrExisting": {
-      "type": "string"
-    },
     "storageAccountName": {
       "type": "string"
+    },    
+    "newOrExisting": {
+      "type": "string", 
+      "allowedValues": [
+        "new", 
+        "existing"
+      ]
     },
     ```
     Zaktualizowana definicja parametrów wygląda następująco:
@@ -86,7 +90,7 @@ Wprowadź dwie zmiany do istniejącego szablonu:
 5. Dodaj następujący wiersz na początku definicji konta magazynu.
 
     ```json
-    "condition": "[equals(parameters('newOrExisting'),'yes')]",
+    "condition": "[equals(parameters('newOrExisting'),'new')]",
     ```
 
     Warunek sprawdza wartość parametru o nazwie **newOrExisting**. Jeśli wartość parametru to **new**, przy wdrażaniu tworzone jest konto magazynu.
@@ -94,8 +98,15 @@ Wprowadź dwie zmiany do istniejącego szablonu:
     Zaktualizowana definicja konta magazynu wygląda następująco:
 
     ![Warunek użycia w usłudze Resource Manager](./media/resource-manager-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
+6. Zaktualizuj element **storageUri** przy użyciu następującej wartości:
 
-6. Zapisz zmiany.
+    ```json
+    "storageUri": "[concat('https://', parameters('storageAccountName'), '.blob.core.windows.net')]"
+    ```
+
+    Ta zmiana jest niezbędna, jeśli używasz istniejącego konta magazynu w innej grupie zasobów.
+
+7. Zapisz zmiany.
 
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
@@ -103,19 +114,21 @@ Postępuj zgodnie z instrukcjami przedstawionymi w sekcji [Wdrożenie szablonu](
 
 Wdrażając szablon przy użyciu programu Azure PowerShell, należy określić jeden dodatkowy parametr:
 
-```powershell
-$resourceGroupName = "<Enter the resource group name>"
-$storageAccountName = "Enter the storage account name>"
-$location = "<Enter the Azure location>"
-$vmAdmin = "<Enter the admin username>"
-$vmPassword = "<Enter the password>"
-$dnsLabelPrefix = "<Enter the prefix>"
+```azurepowershell
+$resourceGroupName = Read-Host -Prompt "Enter the resource group name"
+$storageAccountName = Read-Host -Prompt "Enter the storage account name"
+$newOrExisting = Read-Host -Prompt "Create new or use existing (Enter new or existing)"
+$location = Read-Host -Prompt "Enter the Azure location (i.e. centralus)"
+$vmAdmin = Read-Host -Prompt "Enter the admin username"
+$vmPassword = Read-Host -Prompt "Enter the admin password"
+$dnsLabelPrefix = Read-Host -Prompt "Enter the DNS Label prefix"
 
 New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 $vmPW = ConvertTo-SecureString -String $vmPassword -AsPlainText -Force
-New-AzureRmResourceGroupDeployment -Name mydeployment0710 -ResourceGroupName $resourceGroupName `
-    -TemplateFile azuredeploy.json -adminUsername $vmAdmin -adminPassword $vmPW `
-    -dnsLabelPrefix $dnsLabelPrefix -storageAccountName $storageAccountName -newOrExisting "new"
+New-AzureRmResourceGroupDeployment -Name mydeployment1018 -ResourceGroupName $resourceGroupName `
+    -adminUsername $vmAdmin -adminPassword $vmPW `
+    -dnsLabelPrefix $dnsLabelPrefix -storageAccountName $storageAccountName -newOrExisting $newOrExisting `
+    -TemplateFile azuredeploy.json
 ```
 
 > [!NOTE]

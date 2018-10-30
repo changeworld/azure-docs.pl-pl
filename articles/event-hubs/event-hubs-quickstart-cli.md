@@ -10,30 +10,31 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 5d6e9e4a8770e71dad48f3c3495001813a2e7c50
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6861452f176e530dcdcba8ebddf4d2edadb3a6a2
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971947"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456341"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-cli"></a>Szybki start: tworzenie centrum zdarzeń za pomocą interfejsu wiersza polecenia platformy Azure
 
-Azure Event Hubs to wysoce skalowalna platforma do strumieniowego przesyłania danych i usługa pozyskiwania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Ten przewodnik Szybki start przedstawia tworzenie zasobów usługi Event Hubs za pomocą interfejsu wiersza polecenia platformy Azure, a następnie wysyłanie zdarzeń do centrum zdarzeń i odbieranie stamtąd zdarzeń przy użyciu kodu Java.
+Azure Event Hubs to platforma do pozyskiwania i strumieniowego przesyłania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Usługa Event Hubs pozwala przetwarzać i przechowywać zdarzenia, dane lub dane telemetryczne generowane przez rozproszone oprogramowanie i urządzenia. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. Aby zapoznać się ze szczegółowym omówieniem usługi Event Hubs, zobacz [Omówienie usługi Event Hubs](event-hubs-about.md) i [Funkcje usługi Event Hubs](event-hubs-features.md).
 
-Do wykonania kroków tego przewodnika Szybki start jest potrzebna subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem [utwórz bezpłatne konto][].
+W tym przewodniku Szybki start utworzysz centrum zdarzeń za pomocą interfejsu wiersza polecenia platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+Do wykonania kroków tego przewodnika Szybki start jest potrzebna subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem [utwórz bezpłatne konto][].
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia platformy Azure i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby sprawdzić wersję. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
-## <a name="log-on-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Poniższe kroki nie są wymagane, jeśli uruchamiasz polecenia w usłudze Cloud Shell. Jeśli korzystasz z interfejsu wiersza polecenia lokalnie, wykonaj następujące kroki, aby zalogować się do platformy Azure i ustawić bieżącą subskrypcję:
 
-Uruchom następujące polecenie, aby zalogować się do platformy Azure:
+Uruchom następujące polecenia, aby zalogować się na platformie Azure:
 
 ```azurecli-interactive
 az login
@@ -45,252 +46,38 @@ Ustawianie kontekstu bieżącej subskrypcji. Zastąp wartość `MyAzureSub` nazw
 az account set --subscription MyAzureSub
 ``` 
 
-## <a name="provision-resources"></a>Aprowizowanie zasobów
-
-Uruchom następujące polecenia w celu aprowizowania zasobów usługi Event Hubs. Pamiętaj, aby zastąpić symbole zastępcze `myResourceGroup`, `namespaceName`, `eventHubName` i `storageAccountName` odpowiednimi wartościami:
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+Grupa zasobów to logiczna kolekcja zasobów platformy Azure. Wszystkie zasoby są wdrażane i zarządzane w ramach grupy zasobów. Uruchom poniższe polecenie, aby utworzyć grupę zasobów:
 
 ```azurecli-interactive
-# Create a resource group
-az group create --name myResourceGroup --location eastus
-
-# Create an Event Hubs namespace
-az eventhubs namespace create --name namespaceName --resource-group myResourceGroup -l eastus2
-
-# Create an event hub
-az eventhubs eventhub create --name eventHubName --resource-group myResourceGroup --namespace-name namespaceName
-
-# Create a general purpose standard storage account
-az storage account create --name storageAccountName --resource-group myResourceGroup --location eastus2 --sku Standard_RAGRS --encryption blob
-
-# List the storage account access keys
-az storage account keys list --resource-group myResourceGroup --account-name storageAccountName
-
-# Get namespace connection string
-az eventhubs namespace authorization-rule keys list --resource-group myResourceGroup --namespace-name namespaceName --name RootManageSharedAccessKey
+# Create a resource group. Specify a name for the resource group.
+az group create --name <resource group name> --location eastus
 ```
 
-Skopiuj i wklej parametry połączenia do lokalizacji tymczasowej, takiej jak Notatnik, do użycia później.
+## <a name="create-an-event-hubs-namespace"></a>Tworzenie przestrzeni nazw usługi Event Hubs
+Przestrzeń nazw usługi Event Hubs udostępnia unikatowy kontener zakresu przywoływany przy użyciu jego w pełni kwalifikowanej nazwy domeny, w którym można utworzyć jedno lub wiele centrów zdarzeń. Aby utworzyć przestrzeń nazw w grupie zasobów, uruchom następujące polecenie:
 
-## <a name="stream-into-event-hubs"></a>Przesyłanie strumieniowe do usługi Event Hubs
-
-Następnym krokiem jest pobranie przykładowego kodu, który przesyła strumieniowo zdarzenia do centrum zdarzeń i odbiera te zdarzenia za pomocą hosta procesora zdarzeń. Najpierw wyślij komunikaty:
-
-Sklonuj [repozytorium GitHub usługi Event Hubs](https://github.com/Azure/azure-event-hubs), uruchamiając następujące polecenie:
-
-```bash
-git clone https://github.com/Azure/azure-event-hubs.git
+```azurecli-interactive
+# Create an Event Hubs namespace. Specify a name for the Event Hubs namespace.
+az eventhubs namespace create --name <Event Hubs namespace> --resource-group <resource group name> -l <region, for example: East US>
 ```
 
-Przejdź do folderu aplikacji **SimpleSend**: `\azure-event-hubs\samples\Java\Basic\SimpleSend\src\main\java\com\microsoft\azure\eventhubs\samples\SimpleSend`. Otwórz plik SimpleSend.java i zastąp ciąg `"Your Event Hubs namaspace name"` nazwą przestrzeni nazw usługi Event Hubs uzyskaną w sekcji „Tworzenie przestrzeni nazw usługi Event Hubs” tego artykułu.
+## <a name="create-an-event-hub"></a>Tworzenie centrum zdarzeń
+Uruchom następujące polecenie, aby utworzyć centrum zdarzeń:
 
-Zastąp ciąg `"Your event hub"` nazwą centrum zdarzeń utworzonego w tej przestrzeni nazw, a ciąg `"Your policy name"` nazwą zasad dostępu współdzielonego dla przestrzeni nazw. Jeśli nie utworzono nowych zasad, wartość domyślna to **RootManageSharedAccessKey**. 
-
-Na końcu zastąp ciąg `"Your primary SAS key"` wartością klucza sygnatury dostępu współdzielonego dla zasad z poprzedniego kroku.
-
-### <a name="build-the-application"></a>Kompilowanie aplikacji 
-
-Przejdź z powrotem do folderu `\azure-event-hubs\samples\Java\Basic\SimpleSend` i uruchom następujące polecenie kompilacji:
-
-```shell
-mvn clean package -DskipTests
+```azurecli-interactive
+# Create an event hub. Specify a name for the event hub. 
+az eventhubs eventhub create --name <event hub name> --resource-group <resource group name> --namespace-name <Event Hubs namespace>
 ```
 
-### <a name="receive"></a>Odbieranie
-
-Teraz pobierz przykład dla hosta procesora zdarzeń, który umożliwia odebranie właśnie wysłanych komunikatów. Przejdź do folderu aplikacji **EventProcessorSample**: `\azure-event-hubs\samples\Java\Basic\EventProcessorSample\src\main\java\com\microsoft\azure\eventhubs\samples\eventprocessorsample`.
-
-W pliku EventProcessorSample.java zastąp wartość `----EventHubsNamespaceName-----` nazwą przestrzeni nazw usługi Event Hubs uzyskaną w sekcji „Tworzenie przestrzeni nazw usługi Event Hubs” tego artykułu. 
-
-Zastąp pozostałe wartości ciągu w tym pliku: zastąp ciąg `----EventHubName-----` nazwą centrum zdarzeń utworzonego w tej przestrzeni nazw, a ciąg `-----SharedAccessSignatureKeyName-----` nazwą zasad dostępu współdzielonego dla przestrzeni nazw. Jeśli nie utworzono nowych zasad, wartość domyślna to **RootManageSharedAccessKey**.
-
-Zastąp ciąg `---SharedAccessSignatureKey----` wartością klucza sygnatury dostępu współdzielonego dla zasad z poprzedniego kroku, zastąp ciąg `----AzureStorageConnectionString----` parametrami połączenia dla utworzonego konta magazynu oraz zastąp ciąg `----StorageContainerName----` nazwą kontenera w ramach utworzonego konta magazynu. 
-
-Na końcu zastąp ciąg `----HostNamePrefix----` nazwą konta magazynu.
-
-### <a name="build-the-receiver"></a>Kompilowanie odbiornika 
-
-Aby skompilować aplikację odbierającą, przejdź do folderu `\azure-event-hubs\samples\Java\Basic\EventProcessorSample` i uruchom następujące polecenie:
-
-```shell
-mvn clean package -DskipTests
-```
-
-### <a name="run-the-apps"></a>Uruchamianie aplikacji
-
-Jeśli kompilacja została ukończona pomyślnie, wszystko jest gotowe do wysyłania i odbierania zdarzeń. Najpierw uruchom aplikację **SimpleSend** i zaobserwuj wysyłanie zdarzeń. Aby uruchomić program, przejdź do folderu `\azure-event-hubs\samples\Java\Basic\SimpleSend` i uruchom następujące polecenie:
-
-```shell
-java -jar ./target/simplesend-1.0.0-jar-with-dependencies.jar
-```
-
-Następnie uruchom aplikację **EventProcessorSample** i obserwuj odbieranie zdarzeń. Aby uruchomić program, przejdź do folderu `\azure-event-hubs\samples\Java\Basic\EventProcessorSample` i uruchom następujące polecenie:
-   
-```shell
-java -jar ./target/eventprocessorsample-1.0.0-jar-with-dependencies.jar
-```
-
-Po uruchomieniu obu programów możesz przejść na stronę przeglądu witryny Azure Portal dla centrum zdarzeń, aby zobaczyć liczbę przychodzących i wychodzących komunikatów:
-
-![wysyłanie i odbieranie](./media/event-hubs-quickstart-cli/ephjava.png)
-
-## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-
-Uruchom następujące polecenie, aby usunąć grupę zasobów, przestrzeń nazw, konto magazynu oraz wszystkie powiązane zasoby. Zastąp ciąg `myResourceGroup` nazwą utworzonej grupy zasobów.
-
-```azurecli
-az group delete --resource-group myResourceGroup
-```
-
-## <a name="understand-the-sample-code"></a>Omówienie przykładowego kodu
-
-Ta sekcja zawiera więcej szczegółów na temat operacji wykonywanych przez przykładowy kod.
-
-### <a name="send"></a>Wysyłanie
-
-W pliku SimpleSend.java większość pracy odbywa się w metodzie main(). Najpierw kod używa wystąpienia klasy `ConnectionStringBuilder` do skonstruowania parametrów połączenia przy użyciu wartości zdefiniowanych przez użytkownika dla nazwy przestrzeni nazw, nazwy centrum zdarzeń, nazwy klucza sygnatury dostępu współdzielonego i samego klucza sygnatury dostępu współdzielonego:
-
-```java
-final ConnectionStringBuilder connStr = new ConnectionStringBuilder()
-        .setNamespaceName("Your Event Hubs namespace name")
-        .setEventHubName("Your event hub")
-        .setSasKeyName("Your policy name")
-        .setSasKey("Your primary SAS key");
-```
-
-Obiekt Java zawierający ładunek zdarzenia jest następnie konwertowany na format Json:
-
-```java
-final Gson gson = new GsonBuilder().create();
-
-final PayloadEvent payload = new PayloadEvent(1);
-byte[] payloadBytes = gson.toJson(payload).getBytes(Charset.defaultCharset());
-EventData sendEvent = EventData.create(payloadBytes);  
-```
-
-Klient usługi Event Hubs jest tworzony w tym wierszu kodu:
-
-```java
-final EventHubClient ehClient = EventHubClient.createSync(connStr.toString(), executorService);
-```
-
-Blok try/finally wysyła jedno zdarzenie jako działanie okrężne do nieokreślonej partycji:
-
-```java
-try {
-    for (int i = 0; i < 100; i++) {
-
-        String payload = "Message " + Integer.toString(i);
-        //PayloadEvent payload = new PayloadEvent(i);
-        byte[] payloadBytes = gson.toJson(payload).getBytes(Charset.defaultCharset());
-        EventData sendEvent = EventData.create(payloadBytes);
-
-        // Send - not tied to any partition
-        // Event Hubs service will round-robin the events across all EventHubs partitions.
-        // This is the recommended & most reliable way to send to EventHubs.
-        ehClient.sendSync(sendEvent);
-    }
-
-    System.out.println(Instant.now() + ": Send Complete...");
-    System.in.read();
-} finally {
-    ehClient.closeSync();
-    executorService.shutdown();
-}
-```
-
-### <a name="receive"></a>Odbieranie 
-
-Operacja odbierania odbywa się w pliku EventProcessorSample.java. Najpierw są deklarowane stałe na potrzeby przechowywania nazwy przestrzeni nazw usługi Event Hubs i innych poświadczeń:
-
-```java
-String consumerGroupName = "$Default";
-String namespaceName = "----NamespaceName----";
-String eventHubName = "----EventHubName----";
-String sasKeyName = "----SharedAccessSignatureKeyName----";
-String sasKey = "----SharedAccessSignatureKey----";
-String storageConnectionString = "----AzureStorageConnectionString----";
-String storageContainerName = "----StorageContainerName----";
-String hostNamePrefix = "----HostNamePrefix----";
-```
-
-Podobnie jak w programie SimpleSend, kod następnie tworzy wystąpienie klasy ConnectionStringBuilder w celu skonstruowania parametrów połączenia:
-
-```java
-ConnectionStringBuilder eventHubConnectionString = new ConnectionStringBuilder()
-    .setNamespaceName(namespaceName)
-    .setEventHubName(eventHubName)
-    .setSasKeyName(sasKeyName)
-    .setSasKey(sasKey);
-```
-
-*Host procesora zdarzeń* jest klasą, która upraszcza odbieranie zdarzeń z centrów zdarzeń przez zarządzanie trwałymi punktami kontrolnymi i równoległymi odbiorami dotyczącymi tych centrów zdarzeń. Kod teraz tworzy wystąpienie klasy `EventProcessorHost`:
-
-```java
-EventProcessorHost host = new EventProcessorHost(
-    EventProcessorHost.createHostName(hostNamePrefix),
-    eventHubName,
-    consumerGroupName,
-    eventHubConnectionString.toString(),
-    storageConnectionString,
-    storageContainerName);
-```
-
-Po zadeklarowaniu kodu obsługi błędów aplikacja definiuje klasę `EventProcessor` będącą implementacją interfejsu `IEventProcessor`. Ta klasa przetwarza odebrane zdarzenia:
-
-```java
-public static class EventProcessor implements IEventProcessor
-{
-    private int checkpointBatchingCount = 0;
-    ...
-```
-
-Metoda `onEvents()` jest wywoływana, gdy zdarzenia zostaną odebrane dla tej partycji centrum zdarzeń:
-
-```java
-@Override
-public void onEvents(PartitionContext context, Iterable<EventData> events) throws Exception
-{
-    System.out.println("SAMPLE: Partition " + context.getPartitionId() + " got event batch");
-    int eventCount = 0;
-    for (EventData data : events)
-    {
-        try
-        {
-         System.out.println("SAMPLE (" + context.getPartitionId() + "," + data.getSystemProperties().getOffset() + "," +
-                data.getSystemProperties().getSequenceNumber() + "): " + new String(data.getBytes(), "UTF8"));
-             eventCount++;
-                
-         // Checkpointing persists the current position in the event stream for this partition and means that the next
-         // time any host opens an event processor on this event hub+consumer group+partition combination, it will start
-         // receiving at the event after this one. Checkpointing is usually not a fast operation, so there is a tradeoff
-         // between checkpointing frequently (to minimize the number of events that will be reprocessed after a crash, or
-         // if the partition lease is stolen) and checkpointing infrequently (to reduce the impact on event processing
-         // performance). Checkpointing every five events is an arbitrary choice for this sample.
-         this.checkpointBatchingCount++;
-         if ((checkpointBatchingCount % 5) == 0)
-         {
-            System.out.println("SAMPLE: Partition " + context.getPartitionId() + " checkpointing at " +
-                    data.getSystemProperties().getOffset() + "," + data.getSystemProperties().getSequenceNumber());
-            // Checkpoints are created asynchronously. It is important to wait for the result of checkpointing
-            // before exiting onEvents or before creating the next checkpoint, to detect errors and to ensure proper ordering.
-            context.checkpoint(data).get();
-         }
-    }
-        catch (Exception e)
-        {
-            System.out.println("Processing failed for an event: " + e.toString());
-        }
-    }
-    System.out.println("SAMPLE: Partition " + context.getPartitionId() + " batch size was " + eventCount + " for host " + context.getOwner());
-}
-```
+Gratulacje! Za pomocą interfejsu wiersza polecenia platformy Azure utworzono przestrzeń nazw usługi Event Hubs i centrum zdarzeń w ramach tej przestrzeni nazw. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule utworzono przestrzeń nazw usługi Event Hubs oraz inne zasoby wymagane do wysyłania zdarzeń do centrum zdarzeń i odbierania stamtąd zdarzeń. Aby dowiedzieć się więcej, przejdź do następującego samouczka:
+W tym artykule utworzono grupę zasobów, przestrzeń nazw usługi Event Hubs i centrum zdarzeń. Szczegółowe instrukcje dotyczące wysyłania zdarzeń do centrum zdarzeń lub odbierania ich z niego znajdują się w następujących samouczkach:  
 
-> [!div class="nextstepaction"]
-> [Wizualizowanie danych dotyczących anomalii w strumieniach danych usługi Event Hubs](event-hubs-tutorial-visualize-anomalies.md)
+- **Wysyłanie zdarzeń do centrum zdarzeń**: [.NET Standard](event-hubs-dotnet-standard-getstarted-send.md), [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md), [Java](event-hubs-java-get-started-send.md), [Python](event-hubs-python-get-started-send.md), [Node.js](event-hubs-node-get-started-send.md), [Go](event-hubs-go-get-started-send.md), [C](event-hubs-c-getstarted-send.md)
+- **Odbieranie zdarzeń z centrum zdarzeń**: [.NET Standard](event-hubs-dotnet-standard-getstarted-receive-eph.md), [.NET Framework](event-hubs-dotnet-framework-getstarted-receive-eph.md), [Java](event-hubs-java-get-started-receive-eph.md), [Python](event-hubs-python-get-started-receive.md), [Node.js](event-hubs-node-get-started-receive.md), [Go](event-hubs-go-get-started-receive-eph.md), [Apache Storm](event-hubs-storm-getstarted-receive.md)
 
 [utwórz bezpłatne konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Install the Azure CLI]: /cli/azure/install-azure-cli

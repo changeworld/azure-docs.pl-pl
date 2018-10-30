@@ -1,20 +1,20 @@
 ---
 title: Znajdowanie trasy przy użyciu usługi Azure Maps | Microsoft Docs
 description: Znajdowanie trasy do punktu orientacyjnego przy użyciu usługi Azure Maps
-author: dsk-2015
-ms.author: dkshir
-ms.date: 10/02/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 10/22/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3bf1aa6d1b9bd65c28ef99ddbac71fb75daf99e7
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: fda234b882cbf4a155881895bbf8401fe3ff3aca
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816722"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645090"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Znajdowanie trasy do punktu orientacyjnego przy użyciu usługi Azure Maps
 
@@ -80,11 +80,10 @@ Poniższe kroki pokazują, jak utworzyć statyczną stronę HTML osadzoną przy 
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var MapsAccountKey = "<your account key>";
-    var map = new atlas.Map("map", {
-        "subscription-key": MapsAccountKey
-    });
+    atlas.setSubscriptionKey("<your account key>");
+    var map = new atlas.Map("map");
     ```
+
     Element **atlas.Map** zapewnia kontrolkę dla wizualnej interakcyjnej mapy internetowej i jest składnikiem interfejsu API kontrolki mapy platformy Azure.
 
 4. Zapisz plik i otwórz go w przeglądarce. Masz teraz podstawową mapę, którą możesz rozbudowywać.
@@ -126,7 +125,7 @@ W tym samouczku ustawimy punkt początkowy w siedzibie firmy Microsoft, a punkt 
         padding: 50
     });
 
-    map.addEventListener("load", function () { 
+    map.events.add("load", function () { 
         // Add pins to the map for the start and end point of the route
         map.addPins([startPin, destinationPin], {
             name: "route-pins",
@@ -135,7 +134,7 @@ W tym samouczku ustawimy punkt początkowy w siedzibie firmy Microsoft, a punkt 
         });
     });
     ```
-    Wywołanie **map.setCameraBounds** dostosowuje okno mapy według współrzędnych punktu początkowego i punktu końcowego. Wywołanie **map.addEventListener** zapewnia, że wszystkie funkcje map dodane do mapy zostaną załadowane po pełnym załadowaniu mapy. Wywołanie interfejsu API **map.addPins** w odbiorniku zdarzeń dodaje punkty do kontrolki mapy jako składniki wizualne.
+    Wywołanie **map.setCameraBounds** dostosowuje okno mapy według współrzędnych punktu początkowego i punktu końcowego. Wywołanie **map.events.add** zapewnia, że wszystkie funkcje map dodane do mapy zostaną załadowane po pełnym załadowaniu mapy. Wywołanie interfejsu API **map.addPins** w odbiorniku zdarzeń dodaje punkty do kontrolki mapy jako składniki wizualne.
 
 3. Zapisz plik **MapRoute.html** i odśwież przeglądarkę. Mapa jest teraz wyśrodkowana na Seattle. Punkt początkowy jest oznaczony niebieskim kółkiem, a punkt końcowy — niebieskim znacznikiem.
 

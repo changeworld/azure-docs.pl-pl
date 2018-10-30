@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: używanie interfejsu API usługi Video Indexer'
+title: Korzystanie z interfejsu API usługi Video Indexer
 titlesuffix: Azure Cognitive Services
 description: W tym artykule pokazano, jak zacząć korzystać z interfejsu API usługi Video Indexer.
 services: cognitive services
@@ -8,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: video-indexer
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 10/20/2018
 ms.author: juliako
-ms.openlocfilehash: 7bd7ed1b2d2f437ef57598c42ca12ce8bfb174a1
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 401811ec8803f3ede5a829dc96edc1e7f15e5ee0
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985568"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637751"
 ---
-# <a name="tutorial-use-the-video-indexer-api"></a>Samouczek: używanie interfejsu API usługi Video Indexer
+# <a name="use-the-video-indexer-api"></a>Korzystanie z interfejsu API usługi Video Indexer
 
 > [!Note]
 > Interfejs API usługi Video Indexer w wersji 1 został wycofany 1 sierpnia 2018 r. Teraz należy używać interfejsu API usługi Video Indexer w wersji 2. <br/>Aby tworzyć rozwiązania za pomocą interfejsów API usługi Video Indexer w wersji 2, zapoznaj się z instrukcjami podanymi [tutaj](https://api-portal.videoindexer.ai/). 
@@ -51,6 +51,9 @@ W tym artykule pokazano, jak deweloperzy mogą korzystać z [interfejsu API usł
     Po subskrybowaniu będzie można wyświetlić subskrypcję, a także klucze podstawowy i pomocniczy. Te klucze należy chronić. Powinno się ich używać tylko w kodzie serwera. Nie powinny być dostępne po stronie klienta (w plikach .js, .html itp.).
 
     ![Rejestrowanie](./media/video-indexer-use-apis/video-indexer-api03.png)
+
+> [!TIP]
+> Usługa Video Indexer może używać klucza pojedynczej subskrypcji do łączenia się z wieloma kontami usługi Video Indexer. Te konta usługi Video Indexer można następnie połączyć z różnymi kontami usługi Media Services.
 
 ## <a name="obtain-access-token-using-the-authorization-api"></a>Uzyskiwanie tokenu dostępu przy użyciu interfejsu API autoryzacji
 

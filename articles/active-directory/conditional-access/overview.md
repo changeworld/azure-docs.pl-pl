@@ -17,16 +17,16 @@ ms.workload: identity
 ms.date: 08/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 3e96e251e655c7c7ad862fbf875111e08c0dfbdf
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 77bccaeec1ad3f0d2df4ab567d294c77fc2358cb
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42022347"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954729"
 ---
 # <a name="what-is-conditional-access-in-azure-active-directory"></a>Co to jest dostęp warunkowy w usłudze Azure Active Directory?
 
-Zabezpieczenia są niezwykle ważne dla organizacji korzystających z chmury. Kluczowym aspektem zabezpieczeń w chmurze jest zarządzanie tożsamościami i dostępem do zasobów w chmurze. W świecie zdominowanym przez urządzenia mobilne i rozwiązania chmurowe użytkownicy mogą uzyskiwać dostęp do zasobów organizacji z dowolnego miejsca, za pomocą wielu różnych urządzeń i aplikacji. Dlatego nie wystarczy już tylko kontrolować tego, kto może uzyskać dostęp do zasobu. Aby zapewnić właściwą równowagę między bezpieczeństwem a produktywnością, należy w decyzjach dotyczących kontroli dostępu uwzględnić też to, w jaki sposób uzyskuje się dostęp do zasobu. Funkcja dostępu warunkowego w usłudze Azure AD pozwala sprostać temu wymaganiu. Dostęp warunkowy jest funkcją usługi Azure Active Directory. Dzięki tej funkcji można zautomatyzować decyzje dotyczące kontroli dostępu do aplikacji w chmurze, zgodnie z określonymi warunkami. 
+Zabezpieczenia są niezwykle ważne dla organizacji korzystających z chmury. Kluczowym aspektem zabezpieczeń w chmurze jest zarządzanie tożsamościami i dostępem do zasobów w chmurze. W świecie zdominowanym przez urządzenia mobilne i rozwiązania chmurowe użytkownicy mogą uzyskiwać dostęp do zasobów organizacji z dowolnego miejsca, za pomocą wielu różnych urządzeń i aplikacji. Dlatego nie wystarczy już tylko kontrolować tego, kto może uzyskać dostęp do zasobu. Aby zapewnić właściwą równowagę między bezpieczeństwem a produktywnością, należy w decyzjach dotyczących kontroli dostępu uwzględnić też to, w jaki sposób uzyskuje się dostęp do zasobu. Funkcja dostępu warunkowego w usłudze Azure Active Directory (Azure AD) pozwala sprostać temu wymaganiu. Dostęp warunkowy jest funkcją usługi Azure Active Directory. Dzięki tej funkcji można zautomatyzować decyzje dotyczące kontroli dostępu do aplikacji w chmurze, zgodnie z określonymi warunkami. 
 
 ![Kontrola](./media/overview/81.png)
 
@@ -49,7 +49,7 @@ Poniżej przedstawiono kilka powszechnych problemów związanych z dostępem, w 
 
 - **[Ryzyko logowania](conditions.md#sign-in-risk)**: usługa Azure AD Identity Protection wykrywa zagrożenia związane z logowaniem. Jak można ograniczyć dostęp w przypadku wykrycia ryzykownego logowania, wskazującego na złośliwego użytkownika? Co zrobić, aby uzyskać potwierdzenie, że logowanie pochodziło od uprawnionego użytkownika? Co, jeśli wątpliwości są na tyle poważne, że uzasadniają zablokowanie określonym użytkownikom dostępu do aplikacji?  
 
-- **[Lokalizacja sieciowa](location-condition.md)**: usługa Azure AD jest dostępna z każdego miejsca. Co zrobić w przypadku próby uzyskania dostępu z lokalizacji sieciowej poza kontrolą Twojego działu IT? Kombinacja nazwy użytkownika i hasła może wystarczyć do potwierdzenia tożsamości w przypadku prób dostępu do zasobów z poziomu sieci firmowej. Co zrobić, jeśli potrzebujesz pewniejszego potwierdzenia tożsamości w przypadku prób dostępu z nieoczekiwanych lokalizacji, takich jak inne kraje czy regiony świata? Co, jeśli chcesz zablokować próby dostępu z określonych lokalizacji?  
+- **[Lokalizacja sieciowa](location-condition.md)**: usługa Azure AD jest dostępna z każdego miejsca. Co zrobić w przypadku próby uzyskania dostępu z lokalizacji sieciowej poza kontrolą Twojego działu IT? Kombinacja nazwy użytkownika i hasła może wystarczyć do potwierdzenia tożsamości w przypadku prób dostępu z poziomu sieci firmowej. Co zrobić, jeśli potrzebujesz pewniejszego potwierdzenia tożsamości w przypadku prób dostępu z nieoczekiwanych lokalizacji, takich jak inne kraje czy regiony świata? Co, jeśli chcesz zablokować próby dostępu z określonych lokalizacji?  
 
 - **[Zarządzanie urządzeniami](conditions.md#device-platforms)**: w usłudze Azure AD użytkownicy mogą uzyskać dostęp do aplikacji w chmurze za pomocą wielu różnych urządzeń, w tym urządzeń mobilnych i prywatnych. Co zrobić, jeśli chcesz zezwolić tylko na próby dostępu z urządzeń zarządzanych przez Twój dział IT? Co, jeśli chcesz zablokować próby dostępu do aplikacji chmurowych w Twoim środowisku z określonych typów urządzeń? 
 
@@ -64,7 +64,7 @@ Zasady dostępu warunkowego definiują scenariusz dostępu zgodnie z następują
 
 ![Kontrola](./media/overview/10.png)
 
-Element **Zrób to:** w zasadach definiuje reakcję. Należy pamiętać, że celem zasad dostępu warunkowego nie jest udzielanie dostępu do aplikacji w chmurze. W usłudze Azure AD do udzielania dostępu do aplikacji w chmurze służą przypisania użytkowników. Zasady dostępu warunkowego umożliwiają określanie, w jaki sposób autoryzowani użytkownicy (czyli ci, którym udzielono dostępu do aplikacji w chmurze) mogą korzystać z aplikacji w chmurze w określonych warunkach. Reakcja określona w zasadach może wprowadzać dodatkowe wymagania, na przykład dotyczące uwierzytelniania wieloskładnikowego, zarządzanego urządzenia i nie tylko. W kontekście dostępu warunkowego w usłudze Azure AD wymagania wprowadzane przez zasady nazywane są mechanizmami kontroli dostępu. W najbardziej restrykcyjnym wariancie zasady mogą blokować dostęp. Aby uzyskać więcej informacji, zobacz [Access controls in Azure Active Directory conditional access (Mechanizmy kontroli dostępu w funkcji dostępu warunkowego usługi Azure Active Directory)](controls.md).
+Element **Zrób to:** w zasadach określa reakcję. Należy pamiętać, że celem zasad dostępu warunkowego nie jest udzielanie dostępu do aplikacji w chmurze. W usłudze Azure AD do udzielania dostępu do aplikacji w chmurze służą przypisania użytkowników. Zasady dostępu warunkowego umożliwiają określanie, w jaki sposób autoryzowani użytkownicy (czyli ci, którym udzielono dostępu do aplikacji w chmurze) mogą korzystać z aplikacji w chmurze w określonych warunkach. Reakcja określona w zasadach może wprowadzać dodatkowe wymagania, na przykład dotyczące uwierzytelniania wieloskładnikowego, zarządzanego urządzenia i nie tylko. W kontekście dostępu warunkowego w usłudze Azure AD wymagania wprowadzane przez zasady nazywane są mechanizmami kontroli dostępu. W najbardziej restrykcyjnym wariancie zasady mogą blokować dostęp. Aby uzyskać więcej informacji, zobacz [Access controls in Azure Active Directory conditional access (Mechanizmy kontroli dostępu w funkcji dostępu warunkowego usługi Azure Active Directory)](controls.md).
      
 
 Element **W takiej sytuacji:** w zasadach określa przyczynę uaktywnienia zasad. Taka przyczyna występuje w przypadku spełnienia określonej grupy warunków. W funkcji dostępu warunkowego w usłudze Azure AD szczególną rolę pełnią dwa warunki związane z przypisaniem:
@@ -81,8 +81,18 @@ Kombinacja warunków i mechanizmów kontroli dostępu tworzy zasadę dostępu wa
 
 Funkcja dostępu warunkowego w usłudze Azure AD umożliwia określanie, w jaki sposób autoryzowani użytkownicy mogą uzyskiwać dostęp do aplikacji w chmurze. Celem zasad dostępu warunkowego jest zastosowanie dodatkowych mechanizmów kontroli dostępu, odpowiednio do sposobu, w jaki użytkownik próbuje uzyskać dostęp do aplikacji w chmurze.
 
-Jedną z zalet ochrony dostępu do aplikacji w chmurze na podstawie zasad jest możliwość rozpoczęcia projektowania wymagań dotyczących zasad w środowisku, zgodnie ze strukturą omówioną w tym artykule, bez zastanawiania się nad technicznym wdrożeniem tych wymagań. 
+Ochrona dostępu do aplikacji w chmurze na podstawie zasad umożliwia rozpoczęcie projektowania wymagań dotyczących zasad w środowisku, zgodnie ze strukturą omówioną w tym artykule, bez zastanawiania się nad technicznym wdrożeniem tych wymagań. 
 
+
+## <a name="azure-ad-conditional-access-and-federated-authentication"></a>Uwierzytelnianie federacyjne i dostęp warunkowy usługi Azure AD
+
+Zasady dostępu warunkowego bezproblemowo współdziałają z [uwierzytelnianiem federacyjnym](../../security/azure-ad-choose-authn.md#federated-authentication). Ta obsługa obejmuje wszystkie obsługiwane warunki i mechanizmy kontroli oraz wgląd w sposób stosowania zasad do logowań aktywnego użytkownika przy użyciu [raportów usługi Azure AD](../reports-monitoring/concept-sign-ins.md).
+
+*Uwierzytelnianie federacyjne w usłudze Azure AD* umożliwia obsługę uwierzytelniania użytkowników w usłudze Azure AD przez zaufaną usługę uwierzytelniania. Zaufana usługa uwierzytelniania to na przykład usługi Active Directory Federation Services (AD FS) lub dowolna inna usługa federacyjna. W tej konfiguracji podstawowe uwierzytelnianie użytkownika jest wykonywane w usłudze, a logowanie się do poszczególnych aplikacji jest wykonywane w usłudze Azure AD. Dostęp warunkowy usługi Azure AD jest stosowany przed udzieleniem dostępu do aplikacji, do której użytkownik uzyskuje dostęp. 
+
+Jeśli skonfigurowane zasady dostępu warunkowego wymagają uwierzytelniania wieloskładnikowego, usługa Azure AD domyślnie użyje usługi Azure MFA. Jeśli używasz usługi federacyjnej na potrzeby uwierzytelniania MFA, możesz skonfigurować usługę Azure AD w celu przekierowywania do usługi federacyjnej, gdy uwierzytelnianie wieloskładnikowe jest wymagane, przez ustawienie wartości `$true` dla elementu `-SupportsMFA` w programie [PowerShell](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings). To ustawienie działa w przypadku usług uwierzytelniania federacyjnego, które obsługują żądanie uwierzytelniania MFA wystawione przez usługę Azure AD przy użyciu elementu `wauth= http://schemas.microsoft.com/claims/multipleauthn`.
+
+Gdy użytkownik zaloguje się w usłudze uwierzytelniania federacyjnego, pozostałe wymagania dotyczące zasad, takie jak zgodność urządzeń lub zatwierdzona aplikacja, zostaną obsłużone przez usługę Azure AD.
 
 ## <a name="license-requirements-for-using-conditional-access"></a>Wymagania licencyjne podczas stosowania dostępu warunkowego
 

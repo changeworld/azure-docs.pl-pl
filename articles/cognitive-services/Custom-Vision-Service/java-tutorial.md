@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: kompilowanie projektu klasyfikacji obrazów – Custom Vision Service, Java'
+title: 'Samouczek: tworzenie projektu klasyfikacji obrazów przy użyciu zestawu Custom Vision SDK dla języka Java'
 titlesuffix: Azure Cognitive Services
 description: Utwórz projekt, dodaj tagi, prześlij obrazy, wyszkol projekt i wykonaj przewidywanie przy użyciu domyślnego punktu końcowego.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: 9a7f50e0eb33016d6a2d8f28be047b327135c51f
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: e302fc580d9c83d269f0deedd051a3ea23bd274e
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367359"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957218"
 ---
-# <a name="tutorial-build-an-image-classification-project-with-java"></a>Samouczek: kompilowanie projektu klasyfikacji obrazów w języku Java
+# <a name="tutorial-create-an-image-classification-project-with-the-custom-vision-sdk-for-java"></a>Samouczek: tworzenie projektu klasyfikacji obrazów przy użyciu zestawu Custom Vision SDK dla języka Java
 
 Dowiedz się, jak utworzyć projekt klasyfikacji obrazów za pomocą usługi Custom Vision Service przy użyciu języka Java. Po jego utworzeniu możesz dodać tagi, przesłać obrazy, wyszkolić projekt, uzyskać adres URL domyślnego punktu końcowego przewidywania projektu i użyć go do programowego przetestowania obrazu. Ta przykładowa aplikacja open source może posłużyć jako szablon do utworzenia własnej aplikacji przy użyciu interfejsu API Custom Vision.
 

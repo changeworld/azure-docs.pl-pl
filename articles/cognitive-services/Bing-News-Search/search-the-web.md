@@ -10,12 +10,12 @@ ms.component: bing-news-search
 ms.topic: overview
 ms.date: 06/21/2016
 ms.author: scottwhi
-ms.openlocfilehash: 787fdea047f9e7d77ca0a156f1c41fa50fd2fa48
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 4ed816b117d11dd38e6a8ea5191171b812db0f1c
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801475"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023206"
 ---
 # <a name="what-is-bing-news-search"></a>Czym jest funkcja wyszukiwania wiadomości Bing?
 
@@ -265,7 +265,7 @@ Jeśli istnieją inne artykuły, które są powiązane z artykułem z wiadomośc
 
 Aby szybko rozpocząć pracę z pierwszym żądaniem, zobacz [Making Your First Request (Tworzenie pierwszego zapytania)](./quickstart.md).
 
-Zapoznaj się z dokumentacją [interfejsu API wyszukiwania wiadomości Bing w wersji 7] (https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference). Dokumentacja zawiera listę punktów końcowych, nagłówków i parametrów zapytań, które są stosowane w żądaniach wyników wyszukiwania. Zawiera także definicje obiektów odpowiedzi.
+Zapoznaj się z dokumentacją [interfejsu API wyszukiwania wiadomości Bing w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference). Dokumentacja zawiera listę punktów końcowych, nagłówków i parametrów zapytań, które są stosowane w żądaniach wyników wyszukiwania. Zawiera także definicje obiektów odpowiedzi.
 
 Aby zwiększyć wygodę korzystania z pola wyszukiwania, zobacz [interfejs API automatycznego sugerowania Bing](../bing-autosuggest/get-suggested-search-terms.md). Gdy użytkownik wprowadza swój termin zapytania, możesz wywołać ten interfejs API w celu uzyskania powiązanych terminów zapytania, które były używane przez inne osoby.
 

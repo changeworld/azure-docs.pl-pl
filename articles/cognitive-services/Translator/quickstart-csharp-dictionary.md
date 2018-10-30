@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: znajdowanie alternatywnych tłumaczeń — interfejs API tłumaczenia tekstu w usłudze Translator, C#'
+title: 'Szybki start: znajdowanie alternatywnych tłumaczeń, C# — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start znajdziesz alternatywne tłumaczenia i przykłady terminów użytych w kontekście, korzystając z interfejsu API tłumaczenia tekstu w usłudze Translator i języka C#.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: 35903b0da707e5167781c3a7595c3be938a4fc07
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.author: erhopf
+ms.openlocfilehash: e7a450838ab32d191ca8659a8e84e0104c76e3a5
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321351"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645460"
 ---
-# <a name="quickstart-find-alternate-translations-and-usage-with-c35"></a>Szybki start: znajdowanie alternatywnych tłumaczeń i przykładów użycia za pomocą języka C&#35;
+# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-c"></a>Szybki start: znajdowanie alternatywnych tłumaczeń przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (C#)
 
 W tym przewodniku Szybki start znajdziesz szczegóły możliwych alternatywnych tłumaczeń terminów i przykłady użycia alternatywnych tłumaczeń przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 

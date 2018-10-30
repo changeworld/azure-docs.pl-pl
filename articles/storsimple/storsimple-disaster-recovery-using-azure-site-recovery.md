@@ -168,16 +168,16 @@ W usłudze ASR w celu zautomatyzowania procesu pracy awaryjnej udziałów plikó
 1. Na koncie usługi automation kliknij **zmienne** &gt; **Dodaj zmienną** i dodaj następujące zmienne. Można zaszyfrować te zasoby. Te zmienne są określonego planu odzyskiwania. Plan odzyskiwania, który zostanie utworzony w następnym kroku, nazwa będzie plan testu, a następnie zmiennych powinny być StorSimRegKey plan testu, AzureSubscriptionName plan testu i tak dalej.
 
    - **BaseUrl**: adres url Menedżera zasobów w chmurze platformy Azure. Pobieranie przy użyciu **Get-AzureRmEnvironment | Nazwa Select-Object, ResourceManagerUrl** polecenia cmdlet.
-   - * RecoveryPlanName ***- ResourceGroupName**: grupy Resource Manager, która ma zasobu usługi StorSimple.
-   - * RecoveryPlanName ***- ManagerName**: StorSimple zasobu urządzenia StorSimple.
-   - * RecoveryPlanName ***- DeviceName**: urządzenia StorSimple, który ma być przełączone w tryb failover.
-   - * RecoveryPlanName ***- DeviceIpAddress**: adres IP urządzenia (ten znajduje się w **urządzeń** kartę sekcji Menedżer urządzeń StorSimple &gt; **ustawienia** &gt; **Sieci** &gt; **ustawienia DNS** grupy).
-   - * RecoveryPlanName ***- VolumeContainers**: ciąg rozdzielony przecinkami, kontenerów woluminów na urządzeniu, które muszą być przełączane ponad; na przykład: volcon1 volcon2, volcon3.
-   - * RecoveryPlanName ***- TargetDeviceName**: urządzenie StorSimple w chmurze na którym kontenery znajdują się w tryb failover.
-   - * RecoveryPlanName ***- TargetDeviceIpAddress**: adres IP urządzenia docelowego (ten znajduje się w **maszyny wirtualnej** sekcji &gt; **ustawienia** Grupa &gt; **sieć** karty).
-   - * RecoveryPlanName ***- StorageAccountName**: Nazwa konta magazynu, w którym przechowywane będą skryptu (który ma do uruchamiania na nieudane przez maszynę Wirtualną). Może to być konto magazynu, które ma miejsce do przechowywania skryptu tymczasowo.
-   - * RecoveryPlanName ***- StorageAccountKey**: klucz dostępu dla powyższego konta magazynu.
-   - * RecoveryPlanName ***- VMGUIDS**: podczas ochrony maszyn wirtualnych, usługi Azure Site Recovery przypisuje każda maszyna wirtualna Unikatowy identyfikator, który zawiera szczegółowe informacje o trybie tryb failover maszyny Wirtualnej. Aby uzyskać VMGUID, wybierz **usługi Recovery Services** kartę, a następnie kliknij przycisk **chronionego elementu** &gt; **grup ochrony** &gt;  **Maszyny** &gt; **właściwości**. Jeśli masz wiele maszyn wirtualnych, Dodaj identyfikator GUID w faktycznej jako ciąg rozdzielonych przecinkami.
+   - *RecoveryPlanName* **- ResourceGroupName**: grupy Resource Manager, która ma zasobu usługi StorSimple.
+   - *RecoveryPlanName* **- ManagerName**: StorSimple zasobu urządzenia StorSimple.
+   - *RecoveryPlanName* **- DeviceName**: urządzenia StorSimple, który ma być przełączone w tryb failover.
+   - *RecoveryPlanName* **- DeviceIpAddress**: adres IP urządzenia (ten znajduje się w **urządzeń** kartę sekcji Menedżer urządzeń StorSimple &gt; **ustawienia** &gt; **Sieci** &gt; **ustawienia DNS** grupy).
+   - *RecoveryPlanName* **- VolumeContainers**: ciąg rozdzielony przecinkami, kontenerów woluminów na urządzeniu, które muszą być przełączane ponad; na przykład: volcon1 volcon2, volcon3.
+   - *RecoveryPlanName* **- TargetDeviceName**: urządzenie StorSimple w chmurze na którym kontenery znajdują się w tryb failover.
+   - *RecoveryPlanName* **- TargetDeviceIpAddress**: adres IP urządzenia docelowego (ten znajduje się w **maszyny wirtualnej** sekcji &gt; **ustawienia** Grupa &gt; **sieć** karty).
+   - *RecoveryPlanName* **- StorageAccountName**: Nazwa konta magazynu, w którym przechowywane będą skryptu (który ma do uruchamiania na nieudane przez maszynę Wirtualną). Może to być konto magazynu, które ma miejsce do przechowywania skryptu tymczasowo.
+   - *RecoveryPlanName* **- StorageAccountKey**: klucz dostępu dla powyższego konta magazynu.
+   - *RecoveryPlanName* **- VMGUIDS**: podczas ochrony maszyn wirtualnych, usługi Azure Site Recovery przypisuje każda maszyna wirtualna Unikatowy identyfikator, który zawiera szczegółowe informacje o trybie tryb failover maszyny Wirtualnej. Aby uzyskać VMGUID, wybierz **usługi Recovery Services** kartę, a następnie kliknij przycisk **chronionego elementu** &gt; **grup ochrony** &gt;  **Maszyny** &gt; **właściwości**. Jeśli masz wiele maszyn wirtualnych, Dodaj identyfikator GUID w faktycznej jako ciąg rozdzielonych przecinkami.
 
     Na przykład, jeśli nazwa planu odzyskiwania jest fileServerpredayRP wówczas **zmienne**, **połączeń** i **certyfikaty** karta powinna wyglądać następująco, po dodaniu wszystkie zasoby.
 

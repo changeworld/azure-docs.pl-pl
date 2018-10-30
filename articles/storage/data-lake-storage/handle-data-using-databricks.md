@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/27/2018
-ms.openlocfilehash: ed8230b76300d6b7fee06761133ebbea779fe3cb
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 96114270c246e23db0423dec7871e4c24fe1be10
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41919537"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024363"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu usługi Azure Databricks
 
@@ -94,7 +94,7 @@ W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witr
 
     * Wprowadź nazwę klastra.
     * Na potrzeby tego artykułu należy utworzyć klaster ze środowiskiem uruchomieniowym w wersji **4.2**.
-    * Upewnij się, że jest zaznaczone pole wyboru **Zakończ po ___ min aktywności**. Podaj czas (w minutach), po jakim działanie klastra ma zostać zakończone, jeśli nie jest używany.
+    * Upewnij się, że jest zaznaczone pole wyboru **Zakończ po \_\_ min nieaktywności**. Podaj czas (w minutach), po jakim działanie klastra ma zostać zakończone, jeśli nie jest używany.
 
     Wybierz pozycję **Utwórz klaster**. Po uruchomieniu klastra możesz dołączyć do niego notesy i uruchamiać zadania Spark.
 
@@ -333,7 +333,7 @@ Po ukończeniu tego samouczka możesz zakończyć działanie klastra. Aby to zro
 
 ![Zatrzymywanie klastra usługi Databricks](./media/handle-data-using-databricks/terminate-databricks-cluster.png "Zatrzymywanie klastra usługi Databricks")
 
-Jeśli nie zakończysz działania klastra ręcznie, zostanie on automatycznie zatrzymany, o ile podczas tworzenia klastra zaznaczono pole wyboru **Zakończ po __ min aktywności**. W takim przypadku nieaktywny klaster automatycznie zatrzymuje się po określonym czasie.
+Jeśli nie zakończysz działania klastra ręcznie, zostanie on automatycznie zatrzymany, o ile podczas tworzenia klastra zaznaczono pole wyboru **Zakończ po __ min nieaktywności**. W takim przypadku nieaktywny klaster automatycznie zatrzymuje się po określonym czasie.
 
 ## <a name="next-steps"></a>Następne kroki
 

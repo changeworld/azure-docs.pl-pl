@@ -1,25 +1,25 @@
 ---
-title: 'Szybki start: język Java w interfejsie API — tworzenie bazy wiedzy — QnA Maker'
+title: 'Szybki start: tworzenie bazy wiedzy — środowisko REST, Java — QnA Maker'
 titlesuffix: Azure Cognitive Services
-description: Ten przewodnik Szybki start zawiera omówienie programistycznego tworzenia przykładowej bazy wiedzy usługi QnA Maker, która zostanie wyświetlona na pulpicie nawigacyjnym platformy Azure na koncie interfejsu API usługi Cognitive Services.
+description: Ten przewodnik Szybki start oparty na protokole REST zawiera omówienie programistycznego tworzenia przykładowej bazy wiedzy usługi QnA Maker, która zostanie wyświetlona na pulpicie nawigacyjnym platformy Azure na koncie interfejsu API usługi Cognitive Services.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 572895e51d579efb3b141322a87e374283af1648
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 72a687d6a67ba8e4ccc49cf622cb368e7c8d0db2
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384705"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649673"
 ---
-# <a name="create-a-new-knowledge-base-in-java"></a>Tworzenie nowej bazy wiedzy w języku Java
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Szybki start: tworzenie bazy wiedzy w usłudze QnA Maker przy użyciu języka Java
 
-Ten przewodnik Szybki start zawiera omówienie programistycznego tworzenia przykładowej bazy wiedzy usługi QnA Maker, która zostanie wyświetlona na pulpicie nawigacyjnym platformy Azure na koncie interfejsu API usług Azure Services.
+Ten przewodnik Szybki start przeprowadzi Cię przez programowe tworzenie przykładowej bazy wiedzy usługi QnA Maker. Usługa QnA Maker automatycznie wyodrębnia pytania i odpowiedzi z częściowo ustrukturyzowanej zawartości, na przykład często zadawanych pytań, ze [źródeł danych](../Concepts/data-sources-supported.md). Model bazy wiedzy jest zdefiniowany w formacie JSON wysyłanym w treści żądania interfejsu API. 
 
 [!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
 

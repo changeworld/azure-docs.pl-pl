@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4a92bfc9d682346c874ce91fc9835558402bae84
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 1d9f84a176d4c2483c83e8961bf426e70933aaa2
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078991"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457157"
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>Przygotowywanie zasobów platformy Azure do replikacji maszyn lokalnych
 
@@ -21,7 +21,8 @@ ms.locfileid: "49078991"
 
 Ten artykuł jest pierwszym samouczkiem z serii pokazującej, jak skonfigurować odzyskiwanie po awarii dla lokalnych maszyn wirtualnych. Istotne jest, czy pojawiła się konieczność ochrony lokalnych maszyn wirtualnych VMware, Hyper-V czy serwerów fizycznych.
 
-Samouczki mają za zadanie przedstawić najprostszą ścieżkę wdrożenia dla scenariusza. Jeśli to możliwe używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. 
+> [!NOTE]
+> Samouczki mają za zadanie przedstawić najprostszą ścieżkę wdrożenia dla scenariusza. Jeśli to możliwe, używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. Aby uzyskać szczegółowe instrukcje, zapoznaj się z sekcją **Instrukcje** odpowiedniego scenariusza.
 
 W tym artykule przedstawiono sposób przygotowania składników platformy Azure w przypadku replikowania lokalnych maszyn wirtualnych (korzystających z funkcji Hyper-V lub oprogramowania VMware) bądź serwerów fizycznych z systemami Windows i Linux do platformy Azure. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 

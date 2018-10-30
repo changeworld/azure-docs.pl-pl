@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 90d82abb6570028308b8d516a868fa981c75eb94
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: b1893d9713f70ee7553392a320fec52fe5c88f3c
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49066993"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458058"
 ---
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>Uruchamianie próbnego odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure
 
@@ -26,12 +26,13 @@ W tym samouczku przedstawiono sposób uruchamiania próbnego odzyskiwania po awa
 > * Sprawdzanie wymagań wstępnych
 > * Uruchamianie testu trybu failover dla pojedynczej maszyny wirtualnej
 
-
+> [!NOTE]
+> Ten samouczek przeprowadza użytkownika przez kroki procedury testowania odzyskiwania po awarii przy użyciu minimalnej liczby kroków. Jeśli chcesz dowiedzieć się więcej o różnych aspektach związanych z wykonywaniem testowania odzyskiwania po awarii, w tym o zagadnieniach dotyczących sieci, automatyzacji lub rozwiązywania problemów, zapoznaj się z dokumentami w obszarze „Instrukcje” dla maszyn wirtualnych platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Przed uruchomieniem testu trybu failover zalecamy, aby zweryfikować właściwości maszyny wirtualnej w celu upewnienia się, że wszystko jest zgodne z oczekiwaniami.  Uzyskaj dostęp do właściwości maszyny wirtualnej w obszarze **Elementy replikowane**. Blok **Podstawy** zawiera informacje o ustawieniach i stanie maszyny.
-- Zalecamy, aby do testowania trybu failover użyć oddzielnej sieci maszyn wirtualnych platformy Azure, a nie domyślnej sieci skonfigurowanej podczas włączania replikacji.
+- **Zalecamy, aby do testowania trybu failover użyć oddzielnej sieci maszyn wirtualnych platformy Azure**, a nie domyślnej sieci skonfigurowanej podczas włączania replikacji.
 
 
 ## <a name="run-a-test-failover"></a>Wykonywanie próby przejścia w tryb failover

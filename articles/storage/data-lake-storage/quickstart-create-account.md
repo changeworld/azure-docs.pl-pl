@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 4c3354786d7320caee0dfe2f0eca44909d77f2fe
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 2dae7938c63ee141ea6705ab4c324882f575e298
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386855"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426876"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>Szybki start: tworzenie konta magazynu usługi Azure Data Lake Storage 2. generacji w wersji zapoznawczej
 
@@ -87,7 +87,7 @@ Aby utworzyć grupę zasobów w witrynie Azure Portal, wykonaj następujące kro
 Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 w witrynie Azure Portal, wykonaj następujące kroki:
 
 > [!NOTE]
-> Hierarchiczna przestrzeń nazw jest włączona tylko we Wschodnich stanach USA, Wschodnich stanach USA 2, Zachodnich stanach USA, Zachodnich stanach USA 2, Zachodnio-środkowych stanach USA, Europie Północnej, Europie Zachodniej, Azji Południowo-Wschodniej i Australii Wschodniej. Pamiętaj, aby podczas tworzenia konta magazynu wybrać jedną z tych lokalizacji.
+> Hierarchiczna przestrzeń nazw jest obecnie dostępna we wszystkich regionach publicznych, ale nie jest dostępna w żadnym z regionów prywatnych. Jest ona obecnie niedostępna w suwerennych chmurach.
 
 1. W witrynie Azure Portal rozwiń menu po lewej stronie, aby otworzyć menu usług, a następnie wybierz pozycję **Wszystkie usługi**. Następnie przewiń w dół do pozycji **Storage** i wybierz pozycję **Konta magazynu**. W oknie **Konta magazynu**, które zostanie wyświetlone, wybierz pozycję **Dodaj**.
 2. Wprowadź nazwę konta magazynu.
@@ -135,7 +135,7 @@ Następnie ponownie uruchom powłokę.
 Aby utworzyć nową grupę zasobów za pomocą programu PowerShell, użyj polecenia [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup): 
 
 > [!NOTE]
-> Hierarchiczna przestrzeń nazw jest włączona tylko we Wschodnich stanach USA, Wschodnich stanach USA 2, Zachodnich stanach USA, Zachodnich stanach USA 2, Zachodnio-środkowych stanach USA, Europie Północnej, Europie Zachodniej, Azji Południowo-Wschodniej i Australii Wschodniej. Pamiętaj, aby podczas tworzenia konta magazynu wybrać jedną z tych lokalizacji.
+> > Hierarchiczna przestrzeń nazw jest obecnie dostępna we wszystkich regionach publicznych, ale nie jest dostępna w żadnym z regionów prywatnych. Jest ona obecnie niedostępna w suwerennych chmurach.
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -196,7 +196,7 @@ az group create \
 ```
 
 > [!NOTE]
-> Hierarchiczna przestrzeń nazw jest włączona tylko we Wschodnich stanach USA, Wschodnich stanach USA 2, Zachodnich stanach USA, Zachodnich stanach USA 2, Zachodnio-środkowych stanach USA, Europie Północnej, Europie Zachodniej, Azji Południowo-Wschodniej i Australii Wschodniej. Pamiętaj, aby podczas tworzenia konta magazynu wybrać jedną z tych lokalizacji.
+> > Hierarchiczna przestrzeń nazw jest obecnie dostępna we wszystkich regionach publicznych, ale nie jest dostępna w żadnym z regionów prywatnych. Jest ona obecnie niedostępna w suwerennych chmurach.
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>Tworzenie konta magazynu ogólnego przeznaczenia w wersji 2
 

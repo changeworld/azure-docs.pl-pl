@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d09fcde90cf182bc8197c579718ecef7c5ce1eed
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 3cdc4a8a670b5af43e72b38d7a3b6d9aafdac348
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394531"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429443"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co to są usługi Azure Analysis Services?
 
@@ -81,29 +81,34 @@ Usługa Azure Analysis Services jest obsługiwana w regionach na całym świecie
 |Brazylia Południowa     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Kanada Środkowa    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |Wschodnie stany USA     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
-|Wschodnie stany USA 2     |     B1, B2, S0, S1, S2, S4, D1  <br>S8, S9   |    7<br>1    |
+|Wschodnie stany USA 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
+|Wschodnie stany USA 2     |     S8, S9   |    1    |
 |Środkowo-północne stany USA     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Środkowe stany USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Środkowo-południowe stany USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Środkowo-zachodnie stany USA   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
-|Zachodnie stany USA     |    B1, B2, S0, S1, S2, S4, D1  <br>S8, S9   |    7<br>2  |
-|Zachodnie stany USA 2    |    B1, B2, S0, S1, S2, S4, D1   <br>S8, S9  |    3<br>1     |
+|Zachodnie stany USA     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
+|Zachodnie stany USA     |    S8, S9   |    2  |
+|Zachodnie stany USA 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
+|Zachodnie stany USA 2    |    S8, S9  |    1     |
 
 ### <a name="europe"></a>Europa
 
 |Region  | Obsługiwane plany | Repliki zapytania (tylko plany Standard) |
 |---------|---------|:---------:|
 |Europa Północna     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
-|Południowe Zjednoczone Królestwo   |    B1, B2, S0, S1, S2, S4, D1      |     1    |
-|Europa Zachodnia     |    B1, B2, S0, S1, S2, S4, D1   <br>S8, S9    |    7<br>1     |
+|Południowe Zjednoczone Królestwo     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
+|Europa Zachodnia     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
+|Europa Zachodnia    |   S8, S9  |  1  |
 
 ### <a name="asia-pacific"></a>Azja i Pacyfik 
 
 |Region  | Obsługiwane plany | Repliki zapytania (tylko plany Standard) |
 |---------|---------|:---------:|
+|Australia Wschodnia     |    B1, B2, S0, S1, S2, S4     |    3     |
+|Australia Wschodnia     |    S8, S9    |    1     |
 |Australia Południowo-Wschodnia     | B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Australia Wschodnia     |    B1, B2, S0, S1, S2, S4    <br>S8, S9    |    3<br>1     |
-|Japonia Wschodnia  |   B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Japonia Wschodnia     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Azja Południowo-Wschodnia     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |   1      |
 |Indie Zachodnie     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
@@ -184,9 +189,11 @@ Aby dowiedzieć się więcej na temat zabezpieczeń platformy Azure, zobacz [Mic
 
 ![Narzędzia programistyczne BI](./media/analysis-services-overview/aas-overview-dev-tools.png)
 
-### <a name="sql-server-data-tools-ssdt-for-visual-studio"></a>Narzędzia SQL Server Data Tools (SSDT) dla Visual Studio
+### <a name="visual-studio"></a>Visual Studio
 
-Twórz i wdrażaj modele za pomocą bezpłatnych narzędzi [SQL Server Data Tools (SSDT) dla Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx). Narzędzia SSDT obejmują szablony projektów usług Analysis Services, które pozwalają szybko rozpocząć pracę. Narzędzia SSDT teraz obejmują nowoczesną funkcję Get Data do obsługi zapytań do źródeł danych oraz mashupów dla tabelarycznych modeli 1400. Jeśli znasz już funkcję Get Data w programach Power BI Desktop i Excel 2016, wiesz już, jak łatwo tworzy się wysoce dostosowywalne zapytania do źródeł danych. Projekty usługi Microsoft Analysis Services są też dostępne dla programu Visual Studio jako możliwy do zainstalowania pakiet VSIX. [Pobierz z witryny Marketplace](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects).
+Twórz i wdrażaj modele za pomocą bezpłatnych narzędzi [SQL Server Data Tools (SSDT) dla Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx). Narzędzia SSDT obejmują szablony projektów usług Analysis Services, które pozwalają szybko rozpocząć pracę. Narzędzia SSDT teraz obejmują nowoczesną funkcję Get Data do obsługi zapytań do źródeł danych oraz mashupów dla tabelarycznych modeli 1400. Jeśli znasz już funkcję Get Data w programach Power BI Desktop i Excel 2016, wiesz już, jak łatwo tworzy się wysoce dostosowywalne zapytania do źródeł danych. 
+
+Jeśli używasz programu Visual Studio 2017, projekty usługi Microsoft Analysis Services są dostępne jako bezpłatny pakiet VSIX do zainstalowania. [Pobierz z witryny Marketplace](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects).
 
 ### <a name="sql-server-management-studio"></a>Sql Server Management Studio
 

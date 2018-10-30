@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: znajdowanie alternatywnych tłumaczeń — tłumaczenie tekstu w usłudze Translator, Node.js'
+title: 'Szybki start: znajdowanie alternatywnych tłumaczeń, Node.js — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start znajdziesz alternatywne tłumaczenia i przykłady terminów użytych w kontekście, korzystając z interfejsu API tłumaczenia tekstu w usłudze Translator i oprogramowania Node.js.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
-ms.author: nolachar
-ms.openlocfilehash: 5361dce567743e239e0499352affa179b7d40382
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 4b5857fdb7871107396ca1fd50865f317038abb5
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127231"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646232"
 ---
-# <a name="quickstart-find-alternate-translations-and-usage-with-nodejs"></a>Szybki start: znajdowanie alternatywnych tłumaczeń i przykładów użycia za pomocą oprogramowania Node.js
+# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-nodejs"></a>Szybki start: znajdowanie alternatywnych tłumaczeń przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (Node.js)
 
 W tym przewodniku Szybki start znajdziesz szczegóły możliwych alternatywnych tłumaczeń terminów i przykłady użycia alternatywnych tłumaczeń przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 

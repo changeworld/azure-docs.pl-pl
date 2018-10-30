@@ -31,7 +31,7 @@ AnomalyDetection operator wykrywa trzy rodzaje anomalii:
 
 * **Wolne ujemna Trend**: powolne spadek trend wraz z upływem czasu.  
 
-Za pomocą operatora AnomalyDetection, należy określić **Limit Duration** klauzuli. Ta klauzula Określa przedział czasu (jak daleko w historii z bieżącego zdarzenia) należy uwzględnić podczas wykrywania anomalii. Opcjonalnie Ten operator może być ograniczone wyłącznie te zdarzenia, które odpowiadają określoną właściwość lub warunek, za pomocą  **podczas**  klauzuli. Ten operator może również opcjonalnie przetwarzać grup zdarzeń oddzielnie w zależności od klucza określonego w **partycji przez** klauzuli. Uczenia i przewidywania występować niezależnie dla każdej partycji. 
+Za pomocą operatora AnomalyDetection, należy określić **Limit Duration** klauzuli. Ta klauzula Określa przedział czasu (jak daleko w historii z bieżącego zdarzenia) należy uwzględnić podczas wykrywania anomalii. Opcjonalnie Ten operator może być ograniczone wyłącznie te zdarzenia, które odpowiadają określoną właściwość lub warunek, za pomocą  **podczas** klauzuli. Ten operator może również opcjonalnie przetwarzać grup zdarzeń oddzielnie w zależności od klucza określonego w **partycji przez** klauzuli. Uczenia i przewidywania występować niezależnie dla każdej partycji. 
 
 ## <a name="syntax-for-anomalydetection-operator"></a>Składnia AnomalyDetection — operator
 

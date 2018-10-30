@@ -1,20 +1,20 @@
 ---
 title: Wiele tras w usłudze Azure Maps | Microsoft Docs
 description: Znajdowanie tras dla różnych sposobów podróży za pomocą usługi Azure Maps
-author: dsk-2015
-ms.author: dkshir
-ms.date: 10/02/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 10/22/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 340bf83f07b9e730cc43baccc60a39f5ba1f9942
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 864f662cd6be3c5929166db92f2dad92b9c6586e
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815311"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648211"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Znajdowanie tras dla różnych sposobów podróży za pomocą usługi Azure Maps
 
@@ -74,15 +74,16 @@ Poniższe kroki pokazują, jak utworzyć statyczną stronę HTML osadzoną przy 
     </html>
     ```
     W nagłówku HTML są osadzone lokalizacje zasobów dla plików CSS i JavaScript używanych przez bibliotekę usługi Azure Maps. Segment *script* w treści pliku HTML będzie zawierać śródwierszowy kod JavaScript mapy.
+
 3. Dodaj następujący kod JavaScript do bloku *script* w pliku HTML. Zastąp ciąg **\<your account key\>** kluczem podstawowym, skopiowanym z konta usługi Maps. Jeśli nie wybierzesz obszaru, pojawi się widok obejmujący cały świat. Ten kod umożliwia ustawienie punktu centralnego mapy i zadeklarowanie poziomu powiększenia, co pozwala domyślnie skupić się na danym obszarze.
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var MapsAccountKey = "<your account key>";
+    var mapCenterPosition = [-73.985708, 40.75773];
+    atlas.setSubscriptionKey("<your account key>");
     var map = new atlas.Map("map", {
-        "subscription-key": MapsAccountKey
-         center: [-118.2437, 34.0522],
-         zoom: 12
+      center: mapCenterPosition,
+      zoom: 11
     });
     ```
     Element **atlas.Map** zapewnia kontrolkę dla wizualnej interakcyjnej mapy internetowej i jest składnikiem interfejsu API kontrolki mapy platformy Azure.
@@ -93,10 +94,10 @@ Poniższe kroki pokazują, jak utworzyć statyczną stronę HTML osadzoną przy 
 
 ## <a name="visualize-traffic-flow"></a>Wizualizowanie przepływu ruchu
 
-1. Dodaj widok przepływu ruchu do mapy.  Wywołanie **map.addEventListener** zapewnia, że wszystkie funkcje map dodane do mapy zostaną załadowane po pełnym załadowaniu mapy.
+1. Dodaj widok przepływu ruchu do mapy.  Wywołanie **map.events.add** zapewnia, że wszystkie funkcje map dodane do mapy zostaną załadowane po pełnym załadowaniu mapy.
 
     ```JavaScript
-    map.addEventListener("load", function() {
+    map.events.add("load", function() {
         // Add Traffic Flow to the Map
         map.setTraffic({
             flow: "relative"
@@ -146,7 +147,7 @@ W tym samouczku ustawimy punkt początkowy w lokalizacji fikcyjnej firmy Fabrika
         padding: 100
     });
     
-    map.addEventListener("load", function() { 
+    map.events.add("load", function() { 
         // Add pins to the map for the start and end point of the route
         map.addPins([startPin, destinationPin], {
             name: "route-pins",
@@ -155,7 +156,7 @@ W tym samouczku ustawimy punkt początkowy w lokalizacji fikcyjnej firmy Fabrika
         });
     });
     ```
-    Wywołanie **map.setCameraBounds** dostosowuje okno mapy według współrzędnych punktu początkowego i punktu końcowego. Wywołanie **map.addEventListener** zapewnia, że wszystkie funkcje map dodane do mapy zostaną załadowane po pełnym załadowaniu mapy. Wywołanie interfejsu API **map.addPins** dodaje punkty do kontrolki mapy jako składniki wizualne.
+    Wywołanie **map.setCameraBounds** dostosowuje okno mapy według współrzędnych punktu początkowego i punktu końcowego. Wywołanie **map.events.add** zapewnia, że wszystkie funkcje map dodane do mapy zostaną załadowane po pełnym załadowaniu mapy. Wywołanie interfejsu API **map.addPins** dodaje punkty do kontrolki mapy jako składniki wizualne.
 
 3. Zapisz plik i odśwież przeglądarkę, aby wyświetlić znaczniki na mapie. Mimo że mapę zadeklarowano z punktem centralnym w Los Angeles, wywołanie **map.setCameraBounds** spowodowało przeniesienie widoku w celu wyświetlenia punktu początkowego i punktu końcowego.
 
@@ -165,7 +166,7 @@ W tym samouczku ustawimy punkt początkowy w lokalizacji fikcyjnej firmy Fabrika
 
 ## <a name="render-routes-prioritized-by-mode-of-travel"></a>Renderowanie tras z uwzględnieniem priorytetów na podstawie sposobu podróży
 
-W tej sekcji pokazano, jak używać interfejsu API usługi Route Service w usłudze Maps do znajdowania wielu tras z danego punktu początkowego do punktu docelowego na podstawie sposobu podróży. Usługa Route Service udostępnia interfejsy API do planowania *najszybszej*, *najkrótszej*, *najciekawszej* lub *najbardziej ekologicznej* trasy między dwiema lokalizacjami z uwzględnieniem bieżących warunków drogowych. Umożliwia ona też użytkownikom planowanie tras w przyszłości, korzystając z obszernej historycznej bazy danych ruchu drogowego na platformie Azure i przewidując długość podróży trasami w dowolnym dniu i czasie. Aby uzyskać więcej informacji, zobacz [Get route directions (Uzyskiwanie wskazówek dojazdu)](https://docs.microsoft.com/rest/api/maps/route/getroutedirections).  Wszystkie poniższe bloki kodu powinny zostać dodane **w elemencie eventListener ładowania mapy** w celu zagwarantowania ich załadowania po pełnym załadowaniu mapy.
+W tej sekcji pokazano, jak używać interfejsu API usługi Route Service w usłudze Maps do znajdowania wielu tras z danego punktu początkowego do punktu docelowego na podstawie sposobu podróży. Usługa Route Service udostępnia interfejsy API do planowania *najszybszej*, *najkrótszej*, *najciekawszej* lub *najbardziej ekologicznej* trasy między dwiema lokalizacjami z uwzględnieniem bieżących warunków drogowych. Umożliwia ona też użytkownikom planowanie tras w przyszłości, korzystając z obszernej historycznej bazy danych ruchu drogowego na platformie Azure i przewidując długość podróży trasami w dowolnym dniu i czasie. Aby uzyskać więcej informacji, zobacz [Get route directions (Uzyskiwanie wskazówek dojazdu)](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Wszystkie poniższe bloki kodu powinny zostać dodane **w elemencie eventListener ładowania mapy** w celu zagwarantowania ich załadowania po pełnym załadowaniu mapy.
 
 1. Najpierw dodaj nową warstwę na mapie, umożliwiającą wyświetlenie trasy — element *linestring*. W tym samouczku występują dwie różne trasy — **car-route** i **truck-route** — z własnymi stylami. Dodaj następujący kod JavaScript do bloku *script*:
 
@@ -233,7 +234,7 @@ W tej sekcji pokazano, jak używać interfejsu API usługi Route Service w usłu
     // Execute the car route query then add the route to the map once a response is received  
     client.route.getRouteDirections(routeQuery).then(response => {
         // Parse the response into GeoJSON
-        var geoJsonResponse = new tlas.service.geojson
+        var geoJsonResponse = new atlas.service.geojson
             .GeoJsonRouteDiraectionsResponse(response);
 
         // Get the first in the array of routes and add it to the map 

@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: ca6159554b58ce04252901f990b1ef0bea6c0cac
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4281a79b88675df192574ab2dd3dfa39c9eefe1b
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953161"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954168"
 ---
 # <a name="what-is-azure-data-explorer"></a>Co to jest usługa Azure Data Explorer?
 
@@ -63,8 +63,10 @@ Możliwości usługi Azure Data Explorer zostały rozszerzone o inne usługi stw
 
 Bardzo chcemy poznać Twoją opinię na temat usługi Azure Data Explorer oraz jej języku zapytań:
 
-- [Zadaj pytania na forum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto)
-
+- Zadawaj pytania
+  - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-data-explorer)
+  - [Społeczność techniczna firmy Microsoft](https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto)
+  - [MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto)
 - [Przedstaw sugestie dotyczące produktów w witrynie User Voice](http://aka.ms/AzureDataExplorer.UserVoice)
 
 ## <a name="next-steps"></a>Następne kroki

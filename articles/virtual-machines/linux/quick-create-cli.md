@@ -16,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: beb70b03198589808c20ab17498902367a1c6a3d
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 3c2212ba0216949d3ca7dbcedb5e086bc3e43b97
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067499"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406640"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>Szybki start: tworzenie maszyny wirtualnej z systemem Linux za pomocą interfejsu wiersza polecenia platformy Azure
 
-Interfejs wiersza polecenia platformy Azure umożliwia tworzenie zasobów Azure i zarządzanie nimi z poziomu wiersza polecenia lub skryptów. Z tego przewodnika Szybki start dowiesz się, jak za pomocą interfejsu wiersza polecenia platformy Azure wdrożyć maszynę wirtualną platformy Azure. W tym samouczku zostanie zainstalowany system Ubuntu 160.04 LTS. Aby zobaczyć działanie maszyny wirtualnej, należy nawiązać z nią połączenie przy użyciu protokołu SSH i zainstalować serwer internetowy NGINX.
+Interfejs wiersza polecenia platformy Azure umożliwia tworzenie zasobów Azure i zarządzanie nimi z poziomu wiersza polecenia lub skryptów. Z tego przewodnika Szybki start dowiesz się, jak za pomocą interfejsu wiersza polecenia platformy Azure wdrożyć maszynę wirtualną platformy Azure. W ramach tego samouczka zostanie zainstalowany system Ubuntu 16.04 LTS. Aby zobaczyć działanie maszyny wirtualnej, należy nawiązać z nią połączenie przy użyciu protokołu SSH i zainstalować serwer internetowy NGINX.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -106,7 +106,7 @@ Gdy skończysz, wpisz polecenie `exit`, aby opuścić sesję SSH.
 
 ## <a name="view-the-web-server-in-action"></a>Oglądanie działającego serwera internetowego
 
-Użyj wybranej przeglądarki internetowej, aby wyświetlić domyślną strona główną serwera NGINX. Użyj publicznego adresu IP maszyny wirtualnej jako adresu internetowego. W poniższym przykładzie przedstawiono domyślną witrynę internetową serwera NGINX:
+Użyj wybranej przeglądarki internetowej, aby wyświetlić domyślną strona powitalną serwera NGINX. Użyj publicznego adresu IP maszyny wirtualnej jako adresu internetowego. W poniższym przykładzie przedstawiono domyślną witrynę internetową serwera NGINX:
 
 ![Domyślna witryna serwera NGINX](./media/quick-create-cli/nginx.png)
 

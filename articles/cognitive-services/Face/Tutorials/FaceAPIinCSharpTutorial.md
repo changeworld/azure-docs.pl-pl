@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: wykrywanie i oznaczanie ramką twarzy na obrazie — interfejs API rozpoznawania twarzy, C#'
+title: 'Samouczek: wykrywanie i oznaczanie ramką twarzy na obrazie za pomocą zestawu .NET SDK i języka C#'
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku utworzysz aplikację dla systemu Windows, która korzysta z interfejsu API rozpoznawania twarzy do wykrywania i oznaczania ramką twarzy na obrazie.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: face-api
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: pafarley
-ms.openlocfilehash: ba850c1d4f9d8018f333662eead56f8e91b3fbd7
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: df5e46270275ca08a8499607fbad4c1161382fab
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340957"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956498"
 ---
-# <a name="tutorial-create-a-wpf-app-to-detect-and-frame-faces-in-an-image"></a>Samouczek: tworzenie aplikacji WPF wykrywającej i oznaczającej ramką twarze na obrazie
+# <a name="tutorial-create-a-wpf-app-to-detect-and-frame-faces-in-an-image-using-the-net-sdk"></a>Samouczek: tworzenie aplikacji WPF wykrywającej i oznaczającej ramką twarze na zdjęciach przy użyciu zestawu .NET SDK
 
 W tym samouczku utworzysz aplikację Windows Presentation Framework (WPF), która korzysta z usługi rozpoznawania twarzy za pośrednictwem jej biblioteki klienta platformy .NET. Aplikacja wykrywa twarze na obrazie, rysuje ramkę wokół każdej twarzy i wyświetla jej opis na pasku stanu. Kompletny przykładowy kod jest dostępny w witrynie GitHub na stronie z opisem [wykrywania i oznaczania ramką twarzy na obrazie w systemie Windows](https://github.com/Azure-Samples/Cognitive-Face-CSharp-sample).
 

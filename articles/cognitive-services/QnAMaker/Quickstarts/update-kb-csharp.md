@@ -1,23 +1,23 @@
 ---
 title: 'Szybki start: aktualizowanie bazy wiedzy — REST i C# — QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Ten przewodnik Szybki start przeprowadzi Cię przez programowe aktualizowanie przykładowej bazy wiedzy usługi QnA Maker. Definicja JSON służąca do aktualizowania bazy wiedzy umożliwia dodawanie, zmienianie i usuwanie par pytań i odpowiedzi.
+description: Ten przewodnik Szybki start oparty na protokole REST przeprowadzi Cię przez programowe aktualizowanie przykładowej bazy wiedzy usługi QnA Maker. Definicja JSON służąca do aktualizowania bazy wiedzy umożliwia dodawanie, zmienianie i usuwanie par pytań i odpowiedzi.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 9fa57a02f11461a3ea9a08b7b1b101b143924037
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 463fb4bc1cfd6ba7a7fc4df2fcde53bda7767488
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801697"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648236"
 ---
-# <a name="quickstart-update-a-qna-maker-knowledge-base-in-c"></a>Szybki start: aktualizowanie bazy wiedzy usługi QnA Maker w środowisku C#
+# <a name="quickstart-update-a-knowledge-base-in-qna-maker-using-c"></a>Szybki start: aktualizowanie bazy wiedzy w usłudze QnA Maker przy użyciu języka C#
 
 Ten przewodnik Szybki start przeprowadzi Cię przez proces programistycznego aktualizowania istniejącej bazy wiedzy usługi QnA Maker.  Ten kod JSON umożliwia zaktualizowanie bazy wiedzy przez dodanie nowych źródeł danych, zmianę źródeł danych lub usunięcie źródeł danych.
 

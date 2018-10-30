@@ -1,23 +1,30 @@
 ---
-title: 'Szybki start: język Go w interfejsie API — tworzenie bazy wiedzy — QnA Maker'
+title: 'Szybki start: tworzenie bazy wiedzy — środowisko REST, Go — QnA Maker'
 titlesuffix: Azure Cognitive Services
-description: Ten przewodnik Szybki start zawiera omówienie programistycznego tworzenia przykładowej bazy wiedzy usługi QnA Maker, która zostanie wyświetlona na pulpicie nawigacyjnym platformy Azure na koncie interfejsu API usług Azure Services.
+description: Ten przewodnik Szybki start oparty na protokole REST zawiera omówienie programistycznego tworzenia przykładowej bazy wiedzy usługi QnA Maker, która zostanie wyświetlona na pulpicie nawigacyjnym platformy Azure na koncie interfejsu API usługi Cognitive Services.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: d7181b95780f726e15b1162188909b579b056fd9
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: e3a498e983985a2610ee4e52a497ad6c7f7b87a8
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384806"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647378"
 ---
-# <a name="create-a-new-knowledge-base-in-go"></a>Tworzenie nowej bazy wiedzy w języku Go
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-go"></a>Szybki start: tworzenie bazy wiedzy w usłudze QnA Maker przy użyciu języka Go
+
+Ten przewodnik Szybki start przeprowadzi Cię przez programowe tworzenie przykładowej bazy wiedzy usługi QnA Maker. Usługa QnA Maker automatycznie wyodrębnia pytania i odpowiedzi z częściowo ustrukturyzowanej zawartości, na przykład często zadawanych pytań, ze [źródeł danych](../Concepts/data-sources-supported.md). Model bazy wiedzy jest zdefiniowany w formacie JSON wysyłanym w treści żądania interfejsu API. 
+
+Ten przewodnik Szybki start wywołuje interfejsy API usługi QnA Maker:
+* [Tworzenie bazy wiedzy](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+* [Pobieranie szczegółów operacji](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
+
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

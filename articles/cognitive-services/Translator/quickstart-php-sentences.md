@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: uzyskiwanie długości zdań — tłumaczenie tekstu w usłudze Translator, PHP'
+title: 'Szybki start: uzyskiwanie długości zdań, PHP — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start odnajdziesz długość zdań w tekście przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka PHP.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
-ms.author: nolachar
-ms.openlocfilehash: 63c2822e7b61eb437a43fb394cfa3cc8172d9af3
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 7c709c10d7944a53a557f6a1ce2a6d9b930cccce
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124749"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645394"
 ---
-# <a name="quickstart-get-sentence-lengths-with-php"></a>Szybki start: uzyskiwanie długości zdania w tekście przy użyciu języka PHP
+# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-php"></a>Szybki start: uzyskiwanie długości zdań przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (PHP)
 
 W tym przewodniku Szybki start odnajdziesz długość zdań w tekście przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 

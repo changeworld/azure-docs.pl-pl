@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: uzyskiwanie obsługiwanych języków — tłumaczenie tekstu w usłudze Translator, Java'
+title: 'Szybki start: uzyskiwanie obsługiwanych języków, Java — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji, wyszukiwania w słowniku oraz wyszukiwania przykładów przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka Java.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
-ms.author: nolachar
-ms.openlocfilehash: 64954c06d90ff8110b77874846fe57072faf2f76
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 2af7ceeeef347d1959b571aebf3f26bd5035e4c4
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126976"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646172"
 ---
-# <a name="quickstart-get-supported-languages-with-java"></a>Szybki start: uzyskiwanie obsługiwanych języków w języku Java
+# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-java"></a>Szybki start: uzyskiwanie obsługiwanych języków przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (Java)
 
 W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji, wyszukiwania w słowniku oraz wyszukiwania przykładów przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 

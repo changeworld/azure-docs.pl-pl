@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: uzyskiwanie obsługiwanych języków — tłumaczenie tekstu w usłudze Translator, język Ruby'
+title: 'Szybki start: uzyskiwanie obsługiwanych języków, Ruby — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji, wyszukiwania w słowniku oraz wyszukiwania przykładów przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka Ruby.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
-ms.author: nolachar
-ms.openlocfilehash: f000d2c4c1519f26b4d82a36803b86f016716c5e
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 02ebeae83464aa9770854fd06468b3731d6b8549
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46121842"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645273"
 ---
-# <a name="quickstart-get-supported-languages-with-ruby"></a>Szybki start: uzyskiwanie obsługiwanych języków w języku Ruby
+# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-ruby"></a>Szybki start: uzyskiwanie obsługiwanych języków przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (Ruby)
 
 W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji, wyszukiwania w słowniku oraz wyszukiwania przykładów przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 

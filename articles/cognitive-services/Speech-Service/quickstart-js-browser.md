@@ -1,50 +1,51 @@
 ---
-title: 'Szybki Start: Rozpoznawanie mowy w języku JavaScript w przeglądarce, za pomocą Cognitive Services SDK rozpoznawania mowy'
-titleSuffix: Microsoft Cognitive Services
-description: Dowiedz się, jak rozpoznawanie mowy w języku JavaScript w przeglądarce, za pomocą Cognitive Services SDK rozpoznawania mowy
+title: 'Szybki start: rozpoznawanie mowy w języku JavaScript w przeglądarce przy użyciu zestawu SDK usługi Mowa'
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak rozpoznawać mowę w języku JavaScript w przeglądarce przy użyciu zestawu SDK usługi Mowa
 services: cognitive-services
 author: fmegen
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: Speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: quickstart
 ms.date: 10/12/2018
 ms.author: fmegen
-ms.openlocfilehash: 2667d398141b53c87328eec7b608c4f613c15ea4
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: MT
+ms.openlocfilehash: b01746c20dbef7726f129badac045c1fb440f602
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340277"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467467"
 ---
-# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-cognitive-services-speech-sdk"></a>Szybki Start: Rozpoznawanie mowy w języku JavaScript w przeglądarce, za pomocą Cognitive Services SDK rozpoznawania mowy
+# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-service-sdk"></a>Szybki start: rozpoznawanie mowy w języku JavaScript w przeglądarce przy użyciu zestawu SDK usługi Mowa
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-W tym artykule dowiesz się, jak utworzyć witrynę sieci Web, za pomocą powiązanie JavaScript Cognitive Services SDK mowy transkrypcja mowy na tekst.
-Ta aplikacja jest oparta na Microsoft Cognitive Services SDK mowy ([pobierania wersji 1.0.1](https://aka.ms/csspeech/jsbrowserpackage)).
+Z tego artykułu dowiesz się, jak utworzyć witrynę internetową przy użyciu powiązania języka JavaScript zestawu SDK usługi Mowa z usługi Cognitive Services, aby wykonać transkrypcję mowy na tekst.
+Aplikacja jest oparta na zestawie SDK usługi Mowa z usługi Microsoft Cognitive Services ([pobierz wersję 1.0.1](https://aka.ms/csspeech/jsbrowserpackage)).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Klucz subskrypcji dla usługi mowy. Zobacz [bezpłatnie wypróbować usługę rozpoznawania mowy](get-started.md).
-* PC lub Mac przy użyciu mikrofonu pracy.
-* Edytor tekstu.
+* Klucz subskrypcji dla usługi Mowa. Zobacz [Wypróbuj bezpłatnie usługę Mowa](get-started.md).
+* Komputer PC lub Mac z działającym mikrofonem.
+* Edytor tekstów.
 * Bieżąca wersja przeglądarki Chrome lub Microsoft Edge.
-* Opcjonalnie serwer sieci web obsługujący hostingu skrypty PHP.
+* Opcjonalnie serwer internetowy, który obsługuje skrypty hostingu w języku PHP.
 
-## <a name="create-a-new-website-folder"></a>Utwórz nowy folder witryny sieci Web
+## <a name="create-a-new-website-folder"></a>Tworzenie nowego folderu witryny internetowej
 
-Utwórz nowy, pusty folder. W przypadku, gdy chcesz hostować próbki na serwerze sieci web, upewnij się, że serwer sieci web można uzyskać dostęp do folderu.
+Utwórz nowy, pusty folder. W przypadku, gdy chcesz hostować przykład na serwerze internetowym, upewnij się, że serwer internetowy ma dostęp do tego folderu.
 
-## <a name="unpack-the-speech-sdk-for-javascript-into-that-folder"></a>Rozpakowywanie mowy zestawu SDK dla języka JavaScript do tego folderu
+## <a name="unpack-the-speech-sdk-for-javascript-into-that-folder"></a>Rozpakowywanie zestawu SDK usługi Mowa dla języka JavaScript do tego folderu
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Pobierz zestaw SDK rozpoznawania mowy jako [pakiet wincache.zip](https://aka.ms/csspeech/jsbrowserpackage) i Rozpakuj go do nowo utworzonego folderu. Powinno to spowodować dwa pliki, które są dopiero, czyli `microsoft.cognitiveservices.speech.sdk.bundle.js` i `microsoft.cognitiveservices.speech.sdk.bundle.js.map`.
-Ostatnie pliku jest opcjonalne i używane, aby ułatwić debugowanie kodu zestawu SDK, w razie potrzeby.
+Pobierz zestaw SDK usługi Mowa jako [pakiet zip](https://aka.ms/csspeech/jsbrowserpackage) i rozpakuj go do nowo utworzonego folderu. Powinno to spowodować rozpakowanie dwóch plików, `microsoft.cognitiveservices.speech.sdk.bundle.js` i `microsoft.cognitiveservices.speech.sdk.bundle.js.map`.
+Drugi z tych plików jest opcjonalny i służy do ułatwienia debugowania kodu zestawu SDK w razie potrzeby.
 
 ## <a name="create-an-indexhtml-page"></a>Tworzenie strony index.html
 
-Utwórz nowy plik w folderze o nazwie `index.html` , a następnie otwórz ten plik za pomocą edytora tekstów.
+Utwórz w folderze nowy plik o nazwie `index.html`, a następnie otwórz ten plik za pomocą edytora tekstów.
 
 1. Utwórz następujący szkielet kodu HTML:
 
@@ -69,43 +70,43 @@ Utwórz nowy plik w folderze o nazwie `index.html` , a następnie otwórz ten pl
 
   [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#uidiv)]
 
-1. Dodaj odwołanie do zestawu SDK usługi mowy
+1. Dodaj odwołanie do zestawu SDK usługi Mowa
 
   [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#speechsdkref)]
 
-1. Podłączanie programów obsługi dla przycisku rozpoznawania, wynik rozpoznawania i subskrypcji powiązanych pól definiowany przez kod interfejsu użytkownika:
+1. Podłącz procedury obsługi dla przycisku rozpoznawania, wyniku rozpoznawania i pól powiązanych z subskrypcją zdefiniowanych przez kod interfejsu użytkownika:
 
   [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#quickstartcode)]
 
-## <a name="create-the-token-source-optional"></a>Tworzenie źródłowego tokenu (opcjonalnie)
+## <a name="create-the-token-source-optional"></a>Tworzenie źródła tokenu (opcjonalnie)
 
-W przypadku, gdy użytkownik chce udostępnić stronę sieci web na serwerze sieci web, opcjonalnie możesz podać źródło tokenu dla swojej aplikacji pokazowej.
-W ten sposób swój klucz subskrypcji nigdy nie pozostawi serwera podczas zezwolenie użytkownikom na korzystanie z funkcji rozpoznawania mowy bez wprowadzania żadnych kod autoryzacji samodzielnie.
+W przypadku, gdy chcesz udostępnić stronę internetową na serwerze internetowym, możesz opcjonalnie podać źródło tokenu dla swojej aplikacji pokazowej.
+W ten sposób Twój klucz subskrypcji nigdy nie opuści serwera, ale jednocześnie umożliwi użytkownikom korzystanie z możliwości funkcji rozpoznawania mowy bez wprowadzania przez nich kodu autoryzacji.
 
-1. Utwórz nowy plik o nazwie `token.php`. W tym przykładzie przyjęto założenie, że serwer sieci web obsługuje język skryptowy PHP. Wprowadź następujący kod:
+1. Utwórz nowy plik o nazwie `token.php`. W tym przykładzie przyjęto założenie, że serwer internetowy obsługuje język skryptów PHP. Wprowadź następujący kod:
 
   [!code-php[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/token.php)]
 
-1. Edytuj `index.html` pliku i Dodaj następujący kod do pliku:
+1. Edytuj plik `index.html` i dodaj następujący kod do pliku:
 
   [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#authorizationfunction)]
 
 > [!NOTE]
-> Tokeny autoryzacji mieć tylko ograniczony okres istnienia.
-> To uproszczony przykład pokazuje, jak do automatycznego odświeżania tokenach autoryzacji. Jako użytkownik możesz ręcznie ponownie załaduj stronę lub nacisnąć klawisz F5, aby odświeżyć.
+> Tokeny autoryzacji mają tylko ograniczony okres istnienia.
+> Ten uproszczony przykład nie pokazuje, jak automatycznie odświeżać tokeny autoryzacji. Jako użytkownik możesz ręcznie ponownie załadować stronę lub nacisnąć klawisz F5, aby odświeżyć.
 
-## <a name="build-and-run-the-sample-locally"></a>Tworzenie i uruchamianie przykładu lokalnie
+## <a name="build-and-run-the-sample-locally"></a>Lokalne kompilowanie i uruchamianie przykładu
 
-Aby uruchomić aplikację, kliknij dwukrotnie plik index.html lub Otwórz przeglądarkę internetową index.html. Przedstawi prostego graficznego interfejsu użytkownika umożliwia wprowadzenie swój klucz subskrypcji i [region](regions.md) i wyzwalać rozpoznawanie mikrofonu.
+Aby uruchomić aplikację, kliknij dwukrotnie plik index.html lub otwórz plik index.html za pomocą swojej ulubionej przeglądarki internetowej. Będzie on prezentował prosty graficzny interfejs użytkownika umożliwiający wprowadzenie klucza subskrypcji i [regionu](regions.md) oraz wyzwolenie rozpoznawanie przy użyciu mikrofonu.
 
-## <a name="build-and-run-the-sample-via-a-web-server"></a>Tworzenie i uruchamianie aplikacji przykładowej za pośrednictwem serwera sieci web
+## <a name="build-and-run-the-sample-via-a-web-server"></a>Kompilowanie i uruchamianie przykładu za pomocą serwera internetowego
 
-Aby uruchomić aplikację, otwórz przeglądarkę internetową i wskaż publiczny adres URL, który hostował folder na, wprowadź swoje [region](regions.md)i wyzwalać rozpoznawanie mikrofonu. Jeśli skonfigurowano, pobierane będą token ze źródła tokenu.
+Aby uruchomić aplikację, otwórz przeglądarkę internetową i wskaż w niej publiczny adres URL, pod którym hostowany jest folder, wprowadź swój [region](regions.md) i wyzwól rozpoznawanie za pomocą mikrofonu. Jeśli skonfigurowano tę funkcję, pobierze ona token ze źródła tokenu.
 
 [!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 Poszukaj tego przykładu w folderze `quickstart/js-browser`.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Pobierz nasze przykłady](speech-sdk.md#get-the-samples)

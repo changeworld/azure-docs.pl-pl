@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: uzyskiwanie obsługiwanych języków — tłumaczenie tekstu w usłudze Translator, Go'
+title: 'Szybki start: uzyskiwanie obsługiwanych języków, Go — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji, wyszukiwania w słowniku oraz przykładów przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka Go.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
-ms.author: nolachar
-ms.openlocfilehash: 6f8725c834e4417321722f7d49e09765e19a3b6d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 2a93ee7b4d2c8426ad7a7f30a986d07e14192cc4
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127775"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648296"
 ---
-# <a name="quickstart-get-supported-languages-with-go"></a>Szybki start: uzyskiwanie obsługiwanych języków w języku Go
+# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-go"></a>Szybki start: uzyskiwanie obsługiwanych języków przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (Go)
 
 W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji, wyszukiwania w słowniku oraz wyszukiwania przykładów przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 

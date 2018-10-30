@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 07/17/2018
 ms.author: danlep
-ms.openlocfilehash: 62457fe5b0336cb6ae6ac4fc63f4884ed14cf9d3
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: dc6aab03ec3e0ec47026c7d435ea538612c7bffb
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856041"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405603"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>Rejestrowanie wystąpienia kontenera za pomocą usługi Azure Log Analytics
 
@@ -100,7 +100,7 @@ Zaraz po wykonaniu polecenia powinna pojawić się odpowiedź z usługi Azure za
 
 Po wdrożeniu grupy kontenerów, może upłynąć kilka minut (do 10), zanim pierwsze wpisy dziennika będą widoczne w witrynie Azure Portal. Aby wyświetlić dzienniki grupy kontenerów, otwórz obszar roboczy usługi Log Analytics, następnie:
 
-1. W omówieniu **Obszar roboczy OMS** wybierz pozycję **Wyszukiwanie dziennika**
+1. W przeglądzie **Obszar roboczy OMS** wybierz pozycję **Wyszukiwanie w dziennikach**. Obszary robocze OMS są teraz nazywane obszarami roboczymi usługi Log Analytics.  
 1. W obszarze **Kilka innych zapytań, które możesz wypróbować** wybierz link **Wszystkie zebrane dane**
 
 Powinno pojawić się kilka wyników dla każdego zapytania `search *`. Jeśli na początku nie widać żadnych wyników, zaczekaj kilka minut, a następnie wybierz przycisk **RUN** (URUCHOM), aby wykonać zapytanie ponownie. Domyślnie wpisy dziennika są wyświetlane w widoku „Lista” — wybierz pozycję **Tabela**, aby zobaczyć wpisy dziennika w bardziej skróconym formacie. Następnie możesz rozwijać wiersze, aby wyświetlić zawartość poszczególnych wpisów dziennika.

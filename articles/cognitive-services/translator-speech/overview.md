@@ -10,12 +10,12 @@ ms.component: translator-speech
 ms.topic: overview
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: 77e60fe39f7cbb985ee0e7ed2785805e80c389ae
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 641081e4a01aa5810d569795c10e967e4b46568e
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341144"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023581"
 ---
 # <a name="what-is-translator-speech-api"></a>Co to jest interfejs API tłumaczenia mowy w usłudze Translator?
 
@@ -34,7 +34,7 @@ W przypadku tłumaczenia mowy na mowę usługa oferuje możliwość syntetyzowan
 Interfejs API tłumaczenia mowy w usłudze Translator używa protokołu WebSocket w celu zapewnienia kanału komunikacji pełnodupleksowej między klientem a serwerem. 
 
 ## <a name="about-microsoft-translator"></a>Microsoft Translator — informacje
-Microsoft Translator to oparta na chmurze usługa tłumaczenia maszynowego. Rdzeniem tej usługi są: [interfejs API tłumaczenia tekstu w usłudze Translator] (https://www.microsoft.com/en-us/translator/translatorapi.aspx) oraz interfejs API tłumaczenia mowy w usłudze Translator, które współpracują z różnymi produktami i usługami firmy Microsoft, a także są używane przez tysiące firm na całym świecie w ich aplikacjach i przepływach pracy, co pozwala ich zawartości na dotarcie do odbiorców na całym świecie.
+Microsoft Translator to oparta na chmurze usługa tłumaczenia maszynowego. Rdzeniem tej usługi są: [interfejs API tłumaczenia tekstu w usłudze Translator](https://www.microsoft.com/en-us/translator/translatorapi.aspx) oraz interfejs API tłumaczenia mowy w usłudze Translator, które współpracują z różnymi produktami i usługami firmy Microsoft, a także są używane przez tysiące firm na całym świecie w ich aplikacjach i przepływach pracy, co pozwala ich zawartości na dotarcie do odbiorców na całym świecie.
 
 Dowiedz się więcej o [usłudze Microsoft Translator](https://www.microsoft.com/en-us/translator/home.aspx)
 

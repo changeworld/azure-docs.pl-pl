@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 2e8e9706a9572b85030a636dd75d4809447eabbc
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 445d4a50cdb0780e7aff5331f0ba9e70aae44e25
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067895"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945165"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-managed-instance-offline-using-dms"></a>Migracja programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database w trybie offline przy użyciu usługi DMS
 Usługa Azure Database Migration Service służy do migrowania baz danych z lokalnego wystąpienia programu SQL Server do [wystąpienia zarządzanego usługi Azure SQL Database](../sql-database/sql-database-managed-instance.md). Dodatkowe metody, które mogą wymagać ręcznej pracy, są dostępne w artykule [SQL Server instance migration to Azure SQL Database Managed Instance (Migracja wystąpienia programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database)](../sql-database/sql-database-managed-instance-migrate.md).
@@ -30,6 +30,10 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Uruchamianie migracji.
 > * Monitorowanie migracji.
 > * Pobieranie raportu migracji.
+
+[!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
+
+W tym artykule opisano migrację offline z programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database. Aby uzyskać informacje o migracji online, zobacz [Migracja programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database w trybie online przy użyciu usługi DMS](tutorial-sql-server-managed-instance-online.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do ukończenia tego samouczka niezbędne są następujące elementy:

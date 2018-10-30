@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: rozpoznawanie języka tekstu — tłumaczenie tekstu w usłudze Translator, język Ruby'
+title: 'Szybki start: rozpoznawanie języka tekstu, Ruby — tłumaczenie tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start rozpoznasz język tekstu źródłowego przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka Ruby.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
-ms.author: nolachar
-ms.openlocfilehash: e2b138b5c28047487da2ca7a72169a10a125eaf5
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: ee6792358e6d5852c259b8045f77df24d14a6397
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46121707"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49644871"
 ---
-# <a name="quickstart-identify-language-from-text-with-ruby"></a>Szybki start: rozpoznawanie języka tekstu w języku Ruby
+# <a name="quickstart-identify-language-from-text-with-the-translator-text-rest-api-ruby"></a>Szybki start: rozpoznawanie języka tekstu przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (Ruby)
 
 W tym przewodniku Szybki start rozpoznasz język tekstu źródłowego przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 

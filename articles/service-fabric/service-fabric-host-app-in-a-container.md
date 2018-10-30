@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 7573746b91f057d83a299d54801785118cc1c878
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 36b9a2e710a2a7f34ee9374e89f3fb19cc591ac3
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380135"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429596"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Samouczek: wdrażanie aplikacji .NET w kontenerze systemu Windows w usłudze Azure Service Fabric
 
@@ -61,7 +61,9 @@ Kontener jest teraz gotowy do skompilowania i spakowania w aplikację usługi Se
 ## <a name="create-an-azure-sql-db"></a>Tworzenie bazy danych usługi Azure SQL DB
 Gdy aplikacja Fabrikam Fiber CallCenter działa w środowisku produkcyjnym, dane muszą być utrwalane w bazie danych. Obecnie nie ma możliwości zagwarantowania trwałości danych w kontenerze, dlatego nie można zapisywać danych produkcyjnych w programie SQL Server w kontenerze.
 
-Zalecamy usługę [Azure SQL Database](/azure/sql-database/sql-database-get-started-powershell). Aby skonfigurować i uruchomić zarządzaną bazę danych SQL Server na platformie Azure, uruchom następujący skrypt.  Zmodyfikuj zmienne skryptu odpowiednio do potrzeb. Element *clientIP* określa adres IP Twojego komputera programistycznego.  Jeśli jesteś za firmową zaporą, adres IP komputera programistycznego może nie być adresem IP ujawnianym w Internecie.  Inna możliwość to ustawienie reguły zapory dla serwera usługi SQL Database za pomocą witryny [Azure Portal](https://portal.azure.com), w której jest dostępny adres IP Twojego komputera.
+Zalecamy usługę [Azure SQL Database](/azure/sql-database/sql-database-get-started-powershell). Aby skonfigurować i uruchomić zarządzaną bazę danych SQL Server na platformie Azure, uruchom następujący skrypt.  Zmodyfikuj zmienne skryptu odpowiednio do potrzeb. Element *clientIP* określa adres IP Twojego komputera programistycznego.
+
+Jeśli jesteś za firmową zaporą, adres IP komputera programistycznego może nie być adresem IP ujawnianym w Internecie. Aby sprawdzić, czy baza danych ma poprawny adres IP dla reguły zapory, przejdź do witryny [Azure Portal](https://portal.azure.com) i znajdź swoją bazę danych w sekcji Bazy danych SQL. Kliknij jej nazwę, a następnie w sekcji Przegląd kliknij pozycję „Ustaw zaporę serwera”. Parametr „Adres IP klienta” określa adres IP Twojej maszyny programistycznej. Upewnij się, że jest on zgodny z adresem IP w regule „AllowClient”.
 
 ```powershell
 $subscriptionID="<subscription ID>"

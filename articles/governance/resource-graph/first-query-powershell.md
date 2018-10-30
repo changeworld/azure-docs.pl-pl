@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 1a2bc5626e94f5fcb0ec8c2be8d91c8fc6484e0b
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 001805aaf87ed6c3481a8ad8378cdc22ef74d274
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224566"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646392"
 ---
 # <a name="run-your-first-resource-graph-query-using-azure-powershell"></a>Uruchamianie pierwszego zapytania usługi Resource Graph przy użyciu programu Azure PowerShell
 
@@ -26,7 +26,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="add-the-resource-graph-module"></a>Dodaj moduł usługi Resource Graph
 
-Aby włączyć program Azure PowerShell do wykonywania zapytań do usługi Azure Resource Graph, musisz dodać moduł. Ten moduł może być używany z lokalnie zainstalowanym środowiskiem Windows PowerShell i programem PowerShell Core, jak również [obrazem platformy Docker programu Azure PowerShell](https://hub.docker.com/r/azuresdk/azure-powershell/).
+Aby włączyć program Azure PowerShell do wykonywania zapytań do usługi Azure Resource Graph, musisz dodać moduł. Ten moduł może być używany z lokalnie zainstalowanym środowiskiem Windows PowerShell i programem PowerShell Core lub z [obrazem platformy Docker programu Azure PowerShell](https://hub.docker.com/r/azuresdk/azure-powershell/).
 
 ### <a name="base-requirements"></a>Wymagania podstawowe
 
@@ -41,7 +41,11 @@ Moduł usługi Azure Resource Graph wymaga następującego oprogramowania:
   > [!NOTE]
   > Obecnie nie zaleca się instalowania modułu w usłudze Cloud Shell.
 
-- Moduł PowerShellGet. Jeśli jeszcze nie został on zainstalowany lub zaktualizowany, postępuj zgodnie z [tymi instrukcjami](/powershell/gallery/installing-psget).
+- Modułu PowerShellGet w wersji 2.0.1 lub nowszej. Jeśli jeszcze nie został on zainstalowany lub zaktualizowany, postępuj zgodnie z [tymi instrukcjami](/powershell/gallery/installing-psget).
+
+### <a name="cloud-shell"></a>Cloud Shell
+
+Aby dodać moduł usługi Azure Resource Graph w programie CloudShell, postępuj zgodnie z poniższymi instrukcjami dotyczącymi programu PowerShell Core.
 
 ### <a name="powershell-core"></a>Program PowerShell Core
 
@@ -49,21 +53,21 @@ Moduł usługi Resource Graph dla programu PowerShell Core to **Az.ResourceGraph
 
 1. Za pomocą **administracyjnego** monitu programu PowerShell Core uruchom następujące polecenie:
 
-   ```powershell
+   ```azurepowershell-interactive
    # Install the Resource Graph module from PowerShell Gallery
    Install-Module -Name Az.ResourceGraph
    ```
 
-1. Zweryfikuj, czy moduł został zaimportowany i ma poprawną wersję (0.2.0):
+1. Zweryfikuj, czy moduł został zaimportowany i ma poprawną wersję (0.3.0):
 
-   ```powershell
+   ```azurepowershell-interactive
    # Get a list of commands for the imported Az.ResourceGraph module
    Get-Command -Module 'Az.ResourceGraph' -CommandType 'Cmdlet'
    ```
 
 1. Włącz wsteczne aliasy dla wersji **Az** do wersji **AzureRm** za pomocą następującego polecenia:
 
-   ```powershell
+   ```azurepowershell-interactive
    # Enable backwards alias compatibility
    Enable-AzureRmAlias
    ```
@@ -79,7 +83,7 @@ Moduł usługi Resource Graph dla programu Windows PowerShell to **AzureRm.Resou
    Install-Module -Name AzureRm.ResourceGraph -AllowPrerelease
    ```
 
-1. Zweryfikuj, czy moduł został zaimportowany i ma poprawną wersję (0.1.0-preview):
+1. Zweryfikuj, czy moduł został zaimportowany i ma poprawną wersję (0.1.1-preview):
 
    ```powershell
    # Get a list of commands for the imported AzureRm.ResourceGraph module
@@ -92,8 +96,8 @@ Teraz, gdy moduł programu Azure PowerShell został dodany do Twojego wybranego 
 
 1. Uruchom swoje pierwsze zapytanie usługi Azure Resource Graph za pomocą polecenia cmdlet `Search-AzureRmGraph`:
 
-   ```powershell
-   # Login first with Connect-AzureRmAccount
+   ```azurepowershell-interactive
+   # Login first with Connect-AzureRmAccount if not using Cloud Shell
 
    # Run Azure Resource Graph query
    Search-AzureRmGraph -Query 'project name, type | limit 5'
@@ -104,7 +108,7 @@ Teraz, gdy moduł programu Azure PowerShell został dodany do Twojego wybranego 
 
 1. Zaktualizuj zapytanie, dodając modyfikator `order by` do właściwości **Name**:
 
-   ```powershell
+   ```azurepowershell-interactive
    # Run Azure Resource Graph query with 'order by'
    Search-AzureRmGraph -Query 'project name, type | limit 5 | order by name asc'
    ```
@@ -112,14 +116,14 @@ Teraz, gdy moduł programu Azure PowerShell został dodany do Twojego wybranego 
   > [!NOTE]
   > Tak samo jak w przypadku pierwszego zapytania, wielokrotne uruchomienie tego zapytania prawdopodobnie zwróci inny zestaw zasobów dla każdego żądania. Kolejność poleceń zapytania jest ważna. W tym przykładzie polecenie `order by` następuje po poleceniu `limit`. Spowoduje to najpierw ograniczenie wyników zapytania, a następnie ich uporządkowanie.
 
-1. Zaktualizuj zapytanie, aby najpierw wykonywało polecenie `order by` w celu sortowania według właściwości **Name**, a następnie polecenie `limit` w celu ograniczenia do 5 pierwszych wyników:
+1. Zaktualizuj zapytanie, aby najpierw wykonywało polecenie `order by` w celu sortowania według właściwości **Name**, a następnie polecenie `limit` w celu ograniczenia do pięciu pierwszych wyników:
 
-   ```powershell
+   ```azurepowershell-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
    Search-AzureRmGraph -Query 'project name, type | order by name asc | limit 5'
    ```
 
-Gdy końcowe zapytanie zostanie uruchomione wielokrotnie, zakładając, że nic się nie zmieniło w Twoim środowisku, zwrócone wyniki będą spójne i zgodne z oczekiwaniami — uporządkowane według właściwości **Name**, ale nadal ograniczone do pierwszych 5 wyników.
+Gdy końcowe zapytanie zostanie uruchomione wielokrotnie, zakładając, że nic się nie zmieniło w Twoim środowisku, zwrócone wyniki będą spójne i zgodne z oczekiwaniami — uporządkowane według właściwości **Name**, ale nadal ograniczone do pięciu pierwszych wyników.
 
 ## <a name="cleanup"></a>Czyszczenie
 

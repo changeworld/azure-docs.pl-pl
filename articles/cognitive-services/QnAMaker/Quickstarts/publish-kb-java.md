@@ -1,25 +1,28 @@
 ---
-title: 'Szybki start: publikowanie bazy wiedzy za pomocą języka Java — QnA Maker'
+title: 'Szybki start: publikowanie bazy wiedzy — środowisko REST, Java — QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: W jaki sposób opublikować bazę wiedzy za pomocą języka Java w usłudze QnA Maker.
+description: Ten przewodnik Szybki start oparty na protokole REST przeprowadzi Cię przez proces publikowania bazy wiedzy, który polega na wypchnięciu najnowszej wersji przetestowanej bazy wiedzy do dedykowanego indeksu usługi Azure Search reprezentującego opublikowaną bazę wiedzy. Zostanie również utworzony punkt końcowy, który można wywoływać w aplikacji lub czatbocie.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: defd0cb7fc22423db9b2c7d25960b5dc27042506
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 83390ace8d9747d218fdd5c6b50ba9bdc6d11957
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885088"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648823"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-java"></a>Szybki start: publikowanie bazy wiedzy w języku Java
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>Szybki start: publikowanie bazy wiedzy w usłudze QnA Maker przy użyciu języka Java
 
-Poniższy kod publikuje istniejącą bazę wiedzy za pomocą metody [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe).
+Ten przewodnik Szybki start przeprowadzi Cię przez programowe publikowanie Twojej bazy wiedzy. Publikowanie wypycha najnowszą wersję bazy wiedzy do dedykowanego indeksu usługi Azure Search i tworzy punkt końcowy, który może być wywoływany w Twojej aplikacji lub czatbocie.
+
+Ten przewodnik Szybki start wywołuje interfejsy API usługi QnA Maker:
+* [Publikowanie](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) — ten interfejs API nie wymaga żadnych informacji zawartych w treści żądania.
 
 [!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
 

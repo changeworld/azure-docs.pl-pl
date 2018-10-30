@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e10b5271caef5530c94cca73b3e2e1d435080676
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 623c45cbc82139090d893b8501c7d363c4443d67
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49066925"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456188"
 ---
 # <a name="replicate-an-azure-vm-to-another-azure-region"></a>Replikowanie maszyny wirtualnej platformy Azure w innym regionie platformy Azure
 
@@ -24,7 +24,8 @@ W tym samouczku Szybki start opisano sposób replikowania maszyny wirtualnej pla
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-
+> [!NOTE]
+> Ten artykuł prowadzi nowego użytkownika przez środowisko usługi Azure Site Recovery, przy czym używane są opcje domyślne, a dostosowywanie jest minimalne. Aby dowiedzieć się więcej o różnych ustawieniach, które można dostosować, zapoznaj się z [samouczkiem dotyczącym włączania replikacji maszyn wirtualnych platformy Azure](azure-to-azure-tutorial-enable-replication.md)
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
@@ -33,15 +34,12 @@ Zaloguj się do witryny Azure Portal na stronie http://portal.azure.com.
 ## <a name="enable-replication-for-the-azure-vm"></a>Włączanie replikacji maszyny wirtualnej platformy Azure
 
 1. W witrynie Azure Portal kliknij pozycję **Maszyny wirtualne** i wybierz tę, którą chcesz zreplikować.
-
 2. W obszarze **Operacje** kliknij pozycję **Odzyskiwanie po awarii**.
 3. W obszarze **Konfigurowanie odzyskiwania po awarii** > **Region docelowy** wybierz region docelowy, w którym maszyna będzie replikowana.
 4. W przypadku tego przewodnika Szybki Start należy zaakceptować ustawienia domyślne.
 5. Kliknij pozycję **Włącz replikację**. Spowoduje to uruchomienie zadania włączającego replikację dla maszyny wirtualnej.
 
     ![włączanie replikacji](media/azure-to-azure-quickstart/enable-replication1.png)
-
-
 
 ## <a name="verify-settings"></a>Weryfikowanie ustawień
 
@@ -68,7 +66,7 @@ Aby zatrzymać replikację:
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku Szybki start zreplikowano pojedynczą maszynę wirtualną w regionie pomocniczym.
+W tym samouczku Szybki start zreplikowano pojedynczą maszynę wirtualną w regionie pomocniczym. Teraz możesz poznać więcej opcji i spróbować przeprowadzić replikowanie zestawu maszyn wirtualnych platformy Azure przy użyciu planu odzyskiwania.
 
 > [!div class="nextstepaction"]
 > [Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure](azure-to-azure-tutorial-enable-replication.md)

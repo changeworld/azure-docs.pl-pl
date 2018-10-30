@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 10/10/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 442e8d425e60566df5ce919e3463235ef1d6e4f0
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 334b7aa3a3a174055c3741f20a4817063efd21f6
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078100"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456647"
 ---
 # <a name="about-site-recovery"></a>Informacje o usłudze Site Recovery
 
@@ -29,7 +29,7 @@ W celu realizacji strategii BCDR można wykorzystać usługi Azure Recovery Serv
 Usługa Site Recovery może zarządzać replikacją dla:
 
 - Maszyn wirtualnych platformy Azure replikowanych między regionami świadczenia usługi Azure.
-- Lokalnych maszyn wirtualnych i serwerów fizycznych replikowanych do platformy Azure lub lokacji dodatkowej.
+- Lokalne maszyny wirtualne, maszyny wirtualne usługi Azure Stack i serwery fizyczne.
 
 
 ## <a name="what-does-site-recovery-provide"></a>Co umożliwia usługa Site Recovery?
@@ -56,10 +56,9 @@ Usługa Site Recovery może zarządzać replikacją dla:
 
 **Obsługiwane** | **Szczegóły**
 --- | ---
-**Scenariusze replikacji** | Replikowanie maszyn wirtualnych platformy Azure między regionami platformy Azure.<br/><br/>  Replikowanie lokalnych maszyn wirtualnych programu VMware, maszyn wirtualnych funkcji Hyper-V oraz serwerów fizycznych (z systemami Windows i Linux) do platformy Azure.<br/><br/> Replikowanie lokalnych maszyn wirtualnych programu VMware, maszyn wirtualnych funkcji Hyper-V zarządzanych przez program System Center VMM oraz serwerów fizycznych do lokacji dodatkowej.
+**Scenariusze replikacji** | Replikowanie maszyn wirtualnych platformy Azure między regionami platformy Azure.<br/><br/>  Replikowanie lokalnych maszyn wirtualnych programu VMware, maszyn wirtualnych funkcji Hyper-V, serwerów fizycznych (z systemami Windows i Linux) oraz maszyn wirtualnych usługi Azure Stack do platformy Azure.<br/><br/> Replikowanie lokalnych maszyn wirtualnych programu VMware, maszyn wirtualnych funkcji Hyper-V zarządzanych przez program System Center VMM oraz serwerów fizycznych do lokacji dodatkowej.
 **Regiony** | Przejrzyj [regiony obsługiwane](https://azure.microsoft.com/regions/services/) na potrzeby usługi Site Recovery. |
 **Zreplikowane maszyny** | Przejrzyj wymagania dotyczące replikacji [maszyn wirtualnych platformy Azure](azure-to-azure-support-matrix.md#support-for-replicated-machine-os-versions), [lokalnych maszyn wirtualnych programu VMware i serwerów fizycznych](vmware-physical-azure-support-matrix.md#replicated-machines) oraz [lokalnych maszyn wirtualnych funkcji Hyper-V](hyper-v-azure-support-matrix.md#replicated-vms).
-**Serwery/hosty VMware** | Maszyny wirtualne VMware, które są przeznaczone do replikacji, mogą znajdować się na [obsługiwanych serwerach hostów i wirtualizacji](vmware-physical-azure-support-matrix.md).
 **Obciążenia** | Możesz replikować dowolne obciążenia uruchomione na maszynie, która jest obsługiwana na potrzeby replikacji. Dodatkowo zespół usługi Site Recovery wykonał specyficzne dla aplikacji testowanie na potrzeby [wielu aplikacji](site-recovery-workload.md#workload-summary).
 
 

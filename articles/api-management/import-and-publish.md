@@ -3,7 +3,7 @@ title: Importowanie i publikowanie pierwszego interfejsu API w usłudze Azure AP
 description: Dowiedz się, jak zaimportować i opublikować pierwszy interfejs API przy użyciu usługi API Management.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 538977b9057a5699d61d6c2cc44209367e3550e2
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: cf913c0aaf7dd9957f21452caf8e43a9e3c8b2db
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093406"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467399"
 ---
 # <a name="import-and-publish-your-first-api"></a>Importowanie i publikowanie pierwszego interfejsu API 
 
@@ -73,9 +73,11 @@ Ta sekcja przedstawia sposób importowania i publikowania interfejsu API zaplecz
 
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Testowanie nowego interfejsu API usługi APIM w witrynie Azure Portal
 
+![Mapa testowania interfejsu API](./media/api-management-get-started/01-import-first-api-01.png)
+
 Operacje mogą być wywoływane bezpośrednio z witryny Azure Portal, która zapewnia wygodny sposób wyświetlania i testowania operacji interfejsu API.  
 1. Wybierz interfejs API utworzony w poprzednim kroku (z karty **Interfejsy API**).
-2. Naciśnij kartę **Test**.  ![Testowanie interfejsu API](./media/api-management-get-started/test-api.png)
+2. Naciśnij kartę **Test**.
 3. Kliknij pozycję **GetSpeakers**.
     Na stronie są wyświetlane pola parametrów zapytania (w tym przypadku nie ma żadnych parametrów) i nagłówków. Jeden z nagłówków to „Ocp-Apim-Subscription-Key” dla klucza subskrypcji produktu, który został skojarzony z tym interfejsem API. Klucz jest uzupełniany automatycznie.
 4. Kliknij pozycję **Wyślij**.
@@ -87,7 +89,8 @@ Operacje mogą być wywoływane bezpośrednio z witryny Azure Portal, która zap
 Operacje mogą być również wywoływane z **portalu dla deweloperów** w celu przetestowania interfejsów API.
 
 1. Przejdź do **portalu dla deweloperów**.
-![Portal dla deweloperów](./media/api-management-get-started/developer-portal.png)
+
+ ![Portal dla deweloperów](./media/api-management-get-started/developer-portal.png)
 
 2. Wybierz pozycję **Interfejsy API**, kliknij interfejs **Wersja demonstracyjna interfejsu API Conference**, a następnie pozycję **GetSpeakers**.
     

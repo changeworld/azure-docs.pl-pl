@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/9/2017
 ms.author: rajraj
-ms.openlocfilehash: f45b78f1c30119f5e892287719c9c2edfae57ce6
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 5280936cdec25f7b5fc4b77c989b31c7a01f7bd6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364218"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958639"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Praca z dużymi zestawami skalowania maszyn wirtualnych
 Możliwe jest teraz tworzenie [zestawów skalowania maszyn wirtualnych platformy Azure](/azure/virtual-machine-scale-sets/) o pojemności do 1000 maszyn wirtualnych. W tym dokumencie _duży zestaw skalowania maszyn wirtualnych_ jest zdefiniowany jako zestaw skalowania umożliwiający skalowanie do ponad 100 maszyn wirtualnych. Ta funkcja jest ustawiana za pomocą właściwości zestawu skalowania (_singlePlacementGroup=False_). 
@@ -36,14 +36,14 @@ To, co sprawia, że _duże_ zestawy skalowania są wyjątkowe, to nie liczba mas
 Aby zdecydować, czy aplikacja może w sposób efektywny używać dużych zestawów skalowania, należy wziąć pod uwagę następujące wymagania:
 
 - Jeśli planujesz wdrożyć wiele maszyn wirtualnych, konieczne może być zwiększenie limitów przydziału obliczeniowych procesorów wirtualnych. 
-- Duże zestawy skalowania wymagają użycia usługi Azure Managed Disks. Zestawy skalowania, które nie zostaną utworzone za pomocą usługi Managed Disks, wymagają wielu kont magazynu (jednego dla każdych 20 maszyn wirtualnych). Duże zestawy skalowania są przeznaczone do użytku tylko z usługą Managed Disks w celu ograniczenia narzutu związanego z zarządzaniem magazynem oraz uniknięcia ryzyka przekroczenia limitów subskrypcji dla kont magazynu. Jeśli usługa Managed Disks nie jest używana, zestaw skalowania jest ograniczony do 100 maszyn wirtualnych.
 - Zestawy skalowania utworzone na podstawie obrazów portalu Azure Marketplace można skalować w górę do 1000 maszyn wirtualnych.
 - Zestawy skalowania utworzone na podstawie obrazów niestandardowych (samodzielnie utworzone i przekazane obrazy maszyn wirtualnych) można aktualnie skalować w górę do 600 maszyn wirtualnych.
+- Duże zestawy skalowania wymagają użycia usługi Azure Managed Disks. Zestawy skalowania, które nie zostaną utworzone za pomocą usługi Managed Disks, wymagają wielu kont magazynu (jednego dla każdych 20 maszyn wirtualnych). Duże zestawy skalowania są przeznaczone do użytku tylko z usługą Managed Disks w celu ograniczenia narzutu związanego z zarządzaniem magazynem oraz uniknięcia ryzyka przekroczenia limitów subskrypcji dla kont magazynu. 
 - Równoważenie obciążenia w warstwie 4 za pomocą zestawów skalowania składających się z wielu grup umieszczania wymaga [jednostki SKU usługi Azure Load Balancer w warstwie Standardowa](../load-balancer/load-balancer-standard-overview.md). Jednostka SKU usługi Load Balancer w warstwie Standardowa zapewnia dodatkowe korzyści, takie jak możliwość równoważenia obciążenia między wieloma zestawami skalowania. Jednostka SKU w warstwie Standardowa wymaga również, aby zestaw skalowania miał skojarzoną sieciową grupę zabezpieczeń. W przeciwnym razie pule translatora adresów sieciowych nie będą działać poprawnie. Jeśli konieczne jest użycie jednostki SKU usługi Azure Load Balancer w warstwie Podstawowa, upewnij się, że zestaw skalowania jest skonfigurowany pod kątem używania pojedynczej grupy umieszczania (jest to ustawienie domyślne).
 - Równoważenie obciążenia w warstwie 7 za pomocą usługi Azure Application Gateway jest obsługiwane dla wszystkich zestawów skalowania.
 - Zestaw skalowania jest zdefiniowany z jedną podsiecią — upewnij się, że podsieć ma wystarczająco dużą przestrzeń adresową dla wszystkich wymaganych maszyn wirtualnych. Domyślnie zestaw skalowania w celu poprawy niezawodności i wydajności wdrożenia przeprowadza nadmiarową aprowizację, czyli tworzy dodatkowe maszyny wirtualne w czasie wdrażania lub skalowania w poziomie, za które nie są naliczane opłaty. Przestrzeń adresowa powinna być o 20% większa niż liczba maszyn wirtualnych, do której planowane jest skalowanie.
-- Domeny błędów i domeny uaktualnień są spójne tylko w ramach grupy umieszczania. Taka architektura nie zmienia ogólnej dostępności zestawu skalowania, ponieważ maszyny wirtualne są równomiernie rozpraszane na różnym sprzęcie fizycznym, ale w celu zagwarantowania, że dwie maszyny wirtualne znajdują się na różnym sprzęcie, upewnij się, że znajdują się one w różnych domenach błędów w tej samej grupie umieszczania. Identyfikatory domeny błędów i grupy umieszczania są wyświetlane w _widoku wystąpienia_ maszyny wirtualnej zestawu skalowania. Widok wystąpienia maszyny wirtualnej zestawu skalowania można otworzyć w [Eksploratorze zasobów Azure](https://resources.azure.com/).
-
+- Domeny błędów i domeny uaktualnień są spójne tylko w ramach grupy umieszczania. Taka architektura nie zmienia ogólnej dostępności zestawu skalowania, ponieważ maszyny wirtualne są równomiernie rozpraszane na różnym sprzęcie fizycznym, ale w celu zagwarantowania, że dwie maszyny wirtualne znajdują się na różnym sprzęcie, upewnij się, że znajdują się one w różnych domenach błędów w tej samej grupie umieszczania. Wybierz ten link: [dostępność i regiony świadczenia usługi Azure](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability/). 
+- Identyfikatory domeny błędów i grupy umieszczania są wyświetlane w _widoku wystąpienia_ maszyny wirtualnej zestawu skalowania. Widok wystąpienia maszyny wirtualnej zestawu skalowania można otworzyć w [Eksploratorze zasobów Azure](https://resources.azure.com/).
 
 ## <a name="creating-a-large-scale-set"></a>Tworzenie dużego zestawu skalowania
 Podczas tworzenia zestawu skalowania w witrynie Azure Portal wystarczy określić wartość *Liczba wystąpień* nie większą niż 1000. Jeśli jest więcej niż 100 wystąpień, pozycja *Włącz skalowanie powyżej 100 wystąpień* zostanie ustawiona na *Tak*, co pozwoli na jej skalowanie do wielu grup umieszczania. 

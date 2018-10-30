@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 06/21/2018
 ms.author: alehall
-ms.openlocfilehash: a06ee5b03521fa2e0a711f5194cf01b32e7cea37
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 4a70801fa11316fbd023f348981743639fe111dc
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308700"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024425"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Samouczek: Przesyłanie strumieniowe danych do usługi Azure Databricks przy użyciu usługi Event Hubs
 
@@ -102,7 +102,7 @@ W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witr
 
     * Wprowadź nazwę klastra.
     * W tym artykule należy utworzyć klaster ze środowiskiem uruchomieniowym **4.0**.
-    * Upewnij się, że jest zaznaczone pole wyboru **Zakończ po ___ min aktywności**. Podaj czas (w minutach), po jakim działanie klastra ma zostać zakończone, jeśli nie jest używany.
+    * Upewnij się, że jest zaznaczone pole wyboru **Zakończ po \_\_ min nieaktywności**. Podaj czas (w minutach), po jakim działanie klastra ma zostać zakończone, jeśli nie jest używany.
 
     Wybierz pozycję **Utwórz klaster**. Po uruchomieniu klastra możesz dołączyć do niego notesy i uruchamiać zadania Spark.
 
@@ -371,7 +371,7 @@ Po ukończeniu tego samouczka możesz zakończyć działanie klastra. Aby to zro
 
 ![Zatrzymywanie klastra usługi Databricks](./media/databricks-stream-from-eventhubs/terminate-databricks-cluster.png "Zatrzymywanie klastra usługi Databricks")
 
-Jeśli nie zakończysz działania klastra ręcznie, zostanie on automatycznie zatrzymany, o ile podczas tworzenia klastra zaznaczono pole wyboru **Zakończ po __ min aktywności**. W takim przypadku nieaktywny klaster zostanie automatycznie zatrzymany po określonym czasie.
+Jeśli nie zakończysz działania klastra ręcznie, zostanie on automatycznie zatrzymany, o ile podczas tworzenia klastra zaznaczono pole wyboru **Zakończ po __ min nieaktywności**. W takim przypadku nieaktywny klaster zostanie automatycznie zatrzymany po określonym czasie.
 
 ## <a name="next-steps"></a>Następne kroki
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:

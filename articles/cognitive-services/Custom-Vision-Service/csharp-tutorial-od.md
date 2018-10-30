@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: kompilowanie projektu wykrywania obiektów w języku C# – Custom Vision Service'
+title: 'Samouczek: tworzenie projektu wykrywania obiektów przy użyciu zestawu Custom Vision SDK dla języka C# — Custom Vision Service'
 titlesuffix: Azure Cognitive Services
 description: Utwórz projekt, dodaj tagi, prześlij obrazy, wyszkol projekt i wykonaj przewidywanie przy użyciu domyślnego punktu końcowego.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: areddish
-ms.openlocfilehash: d04fb86abbc0f174e895c166d97fc5467831206f
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 222a17f1d39bc52d1e5ff34e421d0203d80dd1bd
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366917"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958506"
 ---
-# <a name="tutorial-use-custom-vision-api-to-build-an-object-detection-project-in-c"></a>Samouczek: używanie interfejsu API Custom Vision do kompilowania projektu wykrywania obiektów w języku C#
+# <a name="tutorial-create-an-object-detection-project-with-the-custom-vision-sdk-for-c"></a>Samouczek: tworzenie projektu wykrywania obiektów przy użyciu zestawu Custom Vision SDK dla języka C#
 
 Dowiedz się, jak użyć podstawowej aplikacji systemu Windows, wykorzystującej interfejs API przetwarzania obrazów, do utworzenia projektu wykrywania obiektów. Po jego utworzeniu możesz dodać oznaczone regiony, przesłać obrazy, wyszkolić projekt, uzyskać adres URL domyślnego punktu końcowego przewidywania i użyć tego punktu końcowego do programowego przetestowania obrazu. Wykorzystaj ten przykład open-source jako szablon do kompilowania własnych aplikacji dla systemu Windows przy użyciu interfejsu API Custom Vision.
 

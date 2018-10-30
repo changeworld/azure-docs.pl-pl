@@ -1,19 +1,21 @@
 ---
-title: Jak utworzyć model językowy za pomocą usługi Speech Services — Microsoft Cognitive Services
-description: Dowiedz się, jak utworzyć model językowy za pomocą usługi Speech Services (Microsoft Cognitive Services).
+title: 'Samouczek: jak utworzyć model językowy za pomocą usługi Mowa'
+titlesuffix: Azure Cognitive Services
+description: Dowiedz się, jak utworzyć model językowy przy użyciu usługi Mowa.
 services: cognitive-services
 author: PanosPeriorellis
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: d74a5ded7d86969b3ca2cc20a59ddc20af7dc932
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: b8d58450ccc5081e3be3131761d1321a32567df3
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364119"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468997"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>Samouczek: tworzenie niestandardowego modelu językowego
 
@@ -31,9 +33,9 @@ Jeśli nie masz konta usług Cognitive Services, przed rozpoczęciem utwórz [be
 
 Aby się upewnić, że Twoje konto usług Cognitive Services jest połączone z subskrypcją, otwórz stronę [Subskrypcje usługi Cognitive Services](https://customspeech.ai/Subscriptions).
 
-Aby połączyć się z subskrypcją usługi Speech Services utworzoną w witrynie Azure Portal, naciśnij przycisk **Połącz z istniejącą subskrypcją**.
+Aby połączyć się z subskrypcją usługi Mowa utworzoną w witrynie Azure Portal, naciśnij przycisk **Połącz z istniejącą subskrypcją**.
 
-Aby uzyskać informacje o tworzeniu subskrypcji usługi Speech Services w witrynie Azure Portal, zobacz stronę [Wprowadzenie](get-started.md).
+Aby uzyskać informacje o tworzeniu subskrypcji usługi Mowa w witrynie Azure Portal, zobacz stronę [Wprowadzenie](get-started.md).
 
 ## <a name="prepare-the-data"></a>Przygotowywanie danych
 
@@ -71,7 +73,7 @@ Zobacz pełną listę [obsługiwanych języków](language-support.md#text-to-spe
 
 Naciśnij przycisk **Import** (Importuj) w wierszu **Language Datasets** (Zestawy danych języków). W witrynie zostanie wyświetlona strona pobierania nowego zestawu danych.
 
-Gdy wszystko będzie gotowe do zaimportowania zestawu danych języka, zaloguj się do [portalu usługi Speech Services](https://customspeech.ai). Następnie kliknij menu rozwijane **Custom Speech** na wstążce u góry. Następnie wybierz pozycję **Adaptation Data** (Dane adaptacji). Jeśli po raz pierwszy próbujesz przekazać dane do usługi Speech Services, zostanie wyświetlona pusta tabela o nazwie **Datasets** (Zestawy danych).
+Gdy wszystko będzie gotowe do zaimportowania zestawu danych języka, zaloguj się do [portalu usługi Mowa](https://customspeech.ai). Następnie kliknij menu rozwijane **Custom Speech** na wstążce u góry. Następnie wybierz pozycję **Adaptation Data** (Dane adaptacji). Jeśli po raz pierwszy próbujesz przekazać dane do usługi Mowa, zostanie wyświetlona pusta tabela o nazwie **Datasets** (Zestawy danych).
 
 Aby zaimportować nowy zestaw danych, naciśnij przycisk **Import** (Importuj) w wierszu **Language Datasets** (Zestawy danych języka). W witrynie zostanie wyświetlona strona do przekazania nowego zestawu danych. W polach **Name** (Nazwa) i **Description** (Opis) wprowadź nazwę i opis, które ułatwią identyfikację zestawu danych w przyszłości, i wybierz ustawienia regionalne. 
 
@@ -119,6 +121,6 @@ Jeśli w pewnym momencie zechcesz zmienić nazwę lub opis modelu w polach **Nam
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Pobierz subskrypcję wersji próbnej usługi Speech Services](https://azure.microsoft.com/try/cognitive-services/)
+- [Pobierz subskrypcję wersji próbnej usługi Mowa](https://azure.microsoft.com/try/cognitive-services/)
 - [Jak rozpoznawać mowę w języku C#](quickstart-csharp-dotnet-windows.md)
 - [Dane przykładowe Git](https://github.com/Microsoft/Cognitive-Custom-Speech-Service)

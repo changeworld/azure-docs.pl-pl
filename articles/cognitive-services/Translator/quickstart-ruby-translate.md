@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: tłumaczenie tekstu — tłumaczenie tekstu w usłudze Translator, Ruby'
+title: 'Szybki start: tłumaczenie tekstu, Ruby — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start przetłumaczysz tekst z jednego języka na inny przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka Ruby.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
-ms.author: nolachar
-ms.openlocfilehash: 38b4ee3a2122e0151490ef1a29ee02d498a06b7d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: a36f873c08fee57ddb73f94b4a77dc4514422cb1
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126551"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645613"
 ---
-# <a name="quickstart-translate-text-with-ruby"></a>Szybki start: tłumaczenie tekstu za pomocą języka Ruby
+# <a name="quickstart-translate-text-with-the-translator-text-rest-api-ruby"></a>Szybki start: tłumaczenie tekstu przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (Ruby)
 
 W tym przewodniku Szybki start przetłumaczysz tekst z jednego języka na inny przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 

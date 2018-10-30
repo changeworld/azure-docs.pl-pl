@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: konwertowanie skryptu tekstowego — tłumaczenie tekstu w usłudze Translator, język Python'
+title: 'Szybki start: konwertowanie skryptu tekstowego, Python — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start przekonwertujesz tekst w jednym języku z danego systemu zapisu na inny przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka Python.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
-ms.author: nolachar
-ms.openlocfilehash: 24fe0dc23703bdca4ce74ba1a527990a70ac2ffc
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 2621e3ae165efe9f592400e3ad2782b396cf2a60
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122115"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647452"
 ---
-# <a name="quickstart-transliterate-text-with-python"></a>Szybki start: transliteracja tekstu przy użyciu języka Python
+# <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-python"></a>Szybki start: transliteracja tekstu przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (Python)
 
 W tym przewodniku Szybki start przekonwertujesz tekst w jednym języku z danego systemu zapisu na inny przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 

@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: publikowanie bazy wiedzy — środowisko REST, C# — QnA Maker'
+title: 'Szybki start: publikowanie bazy wiedzy — REST, C# — QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Ten przewodnik Szybki start przeprowadzi Cię przez proces publikowania bazy wiedzy, który polega na wypchnięciu najnowszej wersji przetestowanej bazy wiedzy do dedykowanego indeksu usługi Azure Search reprezentującego opublikowaną bazę wiedzy. Zostanie również utworzony punkt końcowy, który można wywoływać w aplikacji lub czatbocie.
+description: Ten przewodnik Szybki start oparty na protokole REST przeprowadzi Cię przez proces publikowania bazy wiedzy, który polega na wypchnięciu najnowszej wersji przetestowanej bazy wiedzy do dedykowanego indeksu usługi Azure Search reprezentującego opublikowaną bazę wiedzy. Zostanie również utworzony punkt końcowy, który można wywoływać w aplikacji lub czatbocie.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: f2aa73dacdffaebcddbf91b2f5c7c3db4a331431
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ce027abb75423d0174a7175c3bbafe5c0fb3e157
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883588"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646266"
 ---
-# <a name="quickstart-publish-a-qna-maker-knowledge-base-in-c"></a>Szybki start: publikowanie bazy wiedzy usługi QnA Maker w języku C#
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Szybki start: publikowanie bazy wiedzy w usłudze QnA Maker przy użyciu języka C#
 
 Ten przewodnik Szybki start przeprowadzi Cię przez programowe publikowanie Twojej bazy wiedzy. Publikowanie wypycha najnowszą wersję bazy wiedzy do dedykowanego indeksu usługi Azure Search i tworzy punkt końcowy, który może być wywoływany w Twojej aplikacji lub czatbocie.
 

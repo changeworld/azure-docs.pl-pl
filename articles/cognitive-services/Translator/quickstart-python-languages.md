@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: uzyskiwanie obsługiwanych języków — tłumaczenia tekstu w usłudze Translator, język Python'
+title: 'Szybki start: uzyskiwanie obsługiwanych języków, Python — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji, wyszukiwania w słowniku oraz wyszukiwania przykładów przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka Java.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
-ms.author: nolachar
-ms.openlocfilehash: a68a1b31cb844a4873bf34c6a292beeb2a4b61c0
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: b920b08d3bc5d4e340aa8ade6b26e5fe61208098
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46121740"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49644729"
 ---
-# <a name="quickstart-get-supported-languages-with-python"></a>Szybki start: uzyskiwanie obsługiwanych języków w języku Python
+# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-python"></a>Szybki start: uzyskiwanie obsługiwanych języków przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (Python)
 
 W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji, wyszukiwania w słowniku oraz wyszukiwania przykładów przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 

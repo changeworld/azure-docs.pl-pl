@@ -6,22 +6,25 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 10/19/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: facf8895770f890bfbbef946a32cc681f685e998
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 361a1934a1e0cdcc0647c4c4f62af98f52b8c899
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915206"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456883"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Przygotowywanie lokalnych serwerów VMware do odzyskiwania po awarii na platformie Azure
 
 Usługa [Azure Site Recovery](site-recovery-overview.md) przyczynia się do strategii związanej z ciągłością biznesową i odzyskiwaniem po awarii (BCDR, business continuity and disaster recovery) przez zapewnienie niezawodnego działania aplikacji biznesowych podczas planowanych lub nieplanowanych przestojów. Usługa Site Recovery zarządza odzyskiwaniem po awarii maszyn lokalnych i maszyn wirtualnych platformy Azure, a także organizuje to odzyskiwanie. Obejmuje to replikację, przechodzenie w tryb failover i odzyskiwanie.
 
 - Z drugiego samouczka z serii dowiesz się, jak skonfigurować odzyskiwanie po awarii na platformie Azure dla lokalnych maszyn wirtualnych VMware. W pierwszym samouczku [konfigurowaliśmy składniki Azure](tutorial-prepare-azure.md) potrzebne do odzyskiwania po awarii programu VMware.
-- Samouczki pokazują najprostsze ścieżki wdrożenia scenariusza. Jeśli jest to możliwe, są używane opcje domyślne, i nie są przedstawione wszystkie ustawienia i ścieżki. 
+
+
+> [!NOTE]
+> Samouczki pokazują najprostsze ścieżki wdrożenia scenariusza. Jeśli to możliwe, używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. Aby uzyskać szczegółowe instrukcje, zapoznaj się z sekcją **Instrukcje** odpowiedniego scenariusza.
 
 W tym artykule opisano, jak lokalnie przygotować środowisko VMware, w którym można replikować maszyny wirtualne VMware do platformy Azure przy użyciu usługi Azure Site Recovery. Omawiane kwestie:
 
@@ -101,11 +104,13 @@ Aby nawiązać połączenie z maszynami wirtualnymi z systemem Linux przy użyci
 - [Dodaj publiczny adres IP](site-recovery-monitoring-and-troubleshooting.md) dla maszyny wirtualnej.
 - Możesz sprawdzić **diagnostykę rozruchu**, aby wyświetlić zrzut ekranu maszyny wirtualnej.
 
+
+## <a name="failback-requirements"></a>Wymagania dotyczące powrotu po awarii
+Jeśli planujesz powrót po awarii do środowiska lokalnego, musisz zapewnić [spełnienie niektórych wymagań wstępnych](vmware-azure-reprotect.md##before-you-begin). Ich spełnienie **nie jest jednak wymagane w celu rozpoczęcia pracy z włączaniem odzyskiwania po awarii** dla Twoich maszyn wirtualnych. Możesz o to zadbać także po przełączeniu w tryb failover na platformę Azure.
+
 ## <a name="useful-links"></a>Przydatne łącza
 
 Jeśli przeprowadzasz replikację wielu maszyn wirtualnych, przed rozpoczęciem należy zaplanować pojemność i wdrożenie. [Dowiedz się więcej](site-recovery-deployment-planner.md).
-
-
 
 ## <a name="next-steps"></a>Następne kroki
 

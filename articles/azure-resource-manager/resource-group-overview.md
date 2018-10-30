@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 841f82595257c97c15398347a3e1605219d1a534
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 2c5d0dc322a4a56f0de9bd3c1af7efc158131a89
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394429"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954219"
 ---
 # <a name="azure-resource-manager-overview"></a>Omówienie usługi Azure Resource Manager
 Infrastruktura aplikacji zwykle obejmuje wiele składników — może to być maszyna wirtualna, konto magazynu i sieć wirtualna albo aplikacja internetowa, baza danych, serwer bazy danych i usługi zewnętrzne. Te składniki nie są widoczne jako osobne jednostki, tylko jako powiązane i zależne od siebie nawzajem części jednej całości. Dlatego najlepiej wdrażać i monitorować je oraz zarządzać nimi grupowo. Usługa Azure Resource Manager umożliwia pracę z zasobami tworzącymi rozwiązanie w formie grupy. Wszystkie zasoby danego rozwiązania można wdrożyć, zaktualizować lub usunąć w ramach jednej skoordynowanej operacji. Wdrażanie wykonuje się przy użyciu szablonu, którego można następnie używać w różnych środowiskach (testowanie, etap przejściowy i produkcja). Usługa Resource Manager zapewnia funkcje zabezpieczeń, inspekcji i znakowania ułatwiające zarządzanie zasobami po wdrożeniu. 
@@ -64,6 +64,30 @@ Poniższe sugestie pomogą Ci w pełni wykorzystać możliwości usługi Resourc
 Aby uzyskać instrukcje dla przedsiębiorstw dotyczące użycia usługi Resource Manager w celu efektywnego zarządzania subskrypcjami, zobacz [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance?toc=%2fazure%2fazure-resource-manager%2ftoc.json) (Szkielet platformy Azure dla przedsiębiorstwa — narzucony nadzór subskrypcji).
 
 Aby uzyskać zalecenia dotyczące tworzenia szablonów usługi Resource Manager do użycia globalnie na platformie Azure, w chmurach suwerennych platformy Azure i w usłudze Azure Stack, zobacz [Develop Azure Resource Manager templates for cloud consistency (Tworzenie szablonów usługi Azure Resource Manager w celu zachowania spójności w chmurze)](templates-cloud-consistency.md).
+
+## <a name="quickstarts-and-tutorials"></a>Przewodniki Szybki start i samouczki
+
+Aby dowiedzieć się, jak opracowywać szablony usługi Resource Manager, użyj następujących przewodników Szybki start i samouczków:
+
+- Przewodniki Szybki start
+
+    |Tytuł|Opis|
+    |------|-----|
+    |[Korzystanie z witryny Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md)|Generowanie szablonu przy użyciu portalu oraz proces edycji i wdrażania szablonu.|
+    |[Korzystanie z programu Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)|Tworzenie i edytowanie szablonów przy użyciu programu Visual Studio Code oraz wdrażanie szablonów za pomocą usługi Azure Cloud Shell.|
+    |[Korzystanie z programu Visual Studio](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)|Tworzenie, edytowanie i wdrażanie szablonów przy użyciu programu Visual Studio.|
+
+- Samouczki
+
+    |Tytuł|Opis|
+    |------|-----|
+    |[Korzystanie z dokumentacji szablonów](./resource-manager-tutorial-create-encrypted-storage-accounts.md)|Opracowywanie szablonów przy użyciu dokumentacji szablonów. Ten samouczek obejmuje schemat konta magazynu i informacje dotyczące tworzenia zaszyfrowanego konta magazynu.|
+    |[Tworzenie wielu wystąpień](./resource-manager-tutorial-create-multiple-instances.md)|Tworzenie wielu wystąpień zasobów platformy Azure. W tym samouczku utworzysz wiele wystąpień konta magazynu.|
+    |[Ustawianie kolejności wdrażania zasobów](./resource-manager-tutorial-create-templates-with-dependent-resources.md)|Definiowanie zależności zasobów. W tym samouczku utworzysz sieć wirtualną, maszynę wirtualną i zależne zasoby platformy Azure. Dowiedz się, jak definiować zależności.|
+    |[Używanie warunków](./resource-manager-tutorial-use-conditions.md)|Wdrażanie zasobów na podstawie wartości parametrów. W tym samouczku zdefiniujesz szablon umożliwiający utworzenie nowego konta magazynu lub użyjesz istniejącego konta magazynu na podstawie wartości parametru.|
+    |[Integrowanie usługi Key Vault](./resource-manager-tutorial-use-key-vault.md)|Pobieranie wpisów tajnych/haseł z usługi Azure Key Vault. W tym samouczku utworzysz maszynę wirtualną.  Hasło administratora maszyny wirtualnej jest pobierane z usługi Key Vault.|
+    |[Create linked templates (Tworzenie połączonych szablonów)](./resource-manager-tutorial-create-linked-templates.md)|Modularyzacja szablonów i wywoływanie innych szablonów za pomocą szablonu. W tym samouczku utworzysz sieć wirtualną, maszynę wirtualną i zasoby zależne.  Zależne konto magazynu jest zdefiniowane w połączonym szablonie. |
+    |[Korzystanie z praktyk bezpiecznego wdrażania](./deployment-manager-tutorial.md)|Używanie usługi Azure Deployment Manager. |
 
 ## <a name="resource-groups"></a>Grupy zasobów
 Definiując grupę zasobów, należy wziąć pod uwagę pewne ważne czynniki:
@@ -214,9 +238,9 @@ Aby uzyskać pełną listę ról i dozwolonych akcji, zobacz [Kontrola dostępu 
 
 W niektórych przypadkach istnieje potrzeba uruchomienia kodu lub skryptu, który uzyskuje dostęp do zasobów, ale nie ma zostać uruchomiony w ramach poświadczeń użytkownika. Zamiast tego ma zostać utworzona jednostka usługi dla aplikacji. Do tej jednostki usługi ma następnie zostać przypisana odpowiednia rola. Usługa Resource Manager umożliwia tworzenie poświadczeń dla aplikacji i programowe uwierzytelnianie aplikacji. Aby dowiedzieć się więcej o tworzeniu jednostek usług, zobacz jeden z następujących tematów:
 
-* [Use Azure PowerShell to create a service principal to access resources (Tworzenie jednostki usługi używanej do uzyskiwania dostępu do zasobów przy użyciu programu Azure PowerShell)](resource-group-authenticate-service-principal.md)
+* [Use Azure PowerShell to create a service principal to access resources (Tworzenie jednostki usługi używanej do uzyskiwania dostępu do zasobów przy użyciu programu Azure PowerShell)](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 * [Use Azure CLI to create a service principal to access resources (Tworzenie jednostki usługi używanej do uzyskiwania dostępu do zasobów przy użyciu interfejsu wiersza polecenia platformy Azure)](resource-group-authenticate-service-principal-cli.md)
-* [Use portal to create Azure Active Directory application and service principal that can access resources (Używanie portalu do tworzenia aplikacji usługi Azure Active Directory i jednostki usługi używanej do uzyskiwania dostępu do zasobów)](resource-group-create-service-principal-portal.md)
+* [Use portal to create Azure Active Directory application and service principal that can access resources (Używanie portalu do tworzenia aplikacji usługi Azure Active Directory i jednostki usługi używanej do uzyskiwania dostępu do zasobów)](../active-directory/develop/howto-create-service-principal-portal.md)
 
 Można również jawnie zablokować dostęp do kluczowych zasobów, aby uniemożliwić użytkownikom ich usuwanie i modyfikowanie. Aby uzyskać więcej informacji, zobacz [Lock resources with Azure Resource Manager](resource-group-lock-resources.md) (Blokowanie zasobów w usłudze Azure Resource Manager).
 

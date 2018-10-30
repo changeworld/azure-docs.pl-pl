@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 12b7a605350b07565660e9e4d1334b286aa5ac00
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 6b935322c9d892793f3695e0922d15f5886c7e25
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079110"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471292"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Szybki start: eksplorowanie kosztów za pomocą funkcji analizy kosztów
 
@@ -34,21 +34,25 @@ W tym przewodniku Szybki start zawarto informacje na temat wykonywania następuj
 
 Analiza kosztów jest dostępna dla wszystkich klientów z umową [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/). Aby wyświetlać dane kosztów, musisz mieć co najmniej prawa dostępu do odczytu co najmniej jednego z poniższych zakresów.
 
-- Zakres *billing account* (konto billingowe) jest definiowany w witrynie https://ea.azure.com i wymaga dostępu na poziomie administratora przedsiębiorstwa. Nie jest wymagane żadne wstępne ustawienie administratora przedsiębiorstwa. Informacje billingowe w analizie kosztów są konsolidowane dla wszystkich subskrypcji w ramach umowy Enterprise Agreement. Konto billingowe jest często określane jako konto *umowy Enterprise Agreement* lub *rejestracji*.
 
-- Zakres *department* (dział) jest definiowany w witrynie https://ea.azure.com i wymaga dostępu na poziomie administratora działu. Wymagane jest włączenie ustawienia **wyświetlania opłat przez administratora działu** w portalu EA. Informacje billingowe w analizie kosztów są skonsolidowane dla wszystkich subskrypcji, które należą do konta rejestracji połączonego z działem.
+|**Zakres**|**Lokalizacja definicji**|**Dostęp wymagany do analizowania kosztów w zakresie**|**Wstępnie wymagane ustawienie umowy EA**|**Dane rozliczeń są konsolidowane z**|
+|---                |---                  |---                   |---            |---           |
+|Konto rozliczeniowe<sup>1</sup>|[https://ea.azure.com ](https://ea.azure.com )|Administrator przedsiębiorstwa|Brak|Wszystkie subskrypcje z umowy Enterprise Agreement|
+|Dział|[https://ea.azure.com ](https://ea.azure.com )|Administrator działu|Włączone opłaty za widok administratora działu|Wszystkie subskrypcje należące do konta rejestracji połączonego z działem|
+|Konto rejestracji<sup>2</sup2>|[https://ea.azure.com ](https://ea.azure.com )|Właściciel konta|Włączone opłaty za widok właściciela konta|Wszystkie subskrypcje z konta rejestracji|
+|Grupa zarządzania|[https://portal.azure.com ](https://portal.azure.com )|Czytelnik usługi Cost Management (lub Czytelnik)|Włączone opłaty za widok właściciela konta|Wszystkie subskrypcje poniżej grupy zarządzania|
+|Subskrypcja|[https://portal.azure.com ](https://portal.azure.com )|Czytelnik usługi Cost Management (lub Czytelnik)|Włączone opłaty za widok właściciela konta|Wszystkie zasoby lub grupy zasobów w subskrypcji|
+|Grupa zasobów|[https://portal.azure.com ](https://portal.azure.com )|Czytelnik usługi Cost Management (lub Czytelnik)|Włączone opłaty za widok właściciela konta|Wszystkie zasoby w grupie zasobów|
 
-- Zakres *enrollment account* (konto rejestracji) jest definiowany w witrynie https://ea.azure.com i wymaga dostępu na poziomie właściciela konta. Wymagane jest włączenie ustawienia **wyświetlania opłat przez właściciela konta** w portalu EA. Informacje billingowe w analizie kosztów są skonsolidowane dla wszystkich subskrypcji, które należą do konta rejestracji. Konto rejestracji jest często nazywane *właścicielem konta*.
+<sup>1</sup>Konto rozliczeniowe jest często określane jako konto umowy Enterprise Agreement lub konto rejestracji.
 
-- Zakres *management group* (grupa zarządzania) jest definiowany w witrynie https://portal.azure.com i wymaga dostępu na poziomie czytelnika zarządzania kosztami (czytelnika). Wymagane jest włączenie ustawienia **wyświetlania opłat przez właściciela konta** w portalu EA. Informacje billingowe w analizie kosztów są konsolidowane dla wszystkich subskrypcji w ramach grupy zarządzania.
-
-- Zakres *subscription* (subskrypcja) jest definiowany w witrynie https://portal.azure.com i wymaga dostępu na poziomie czytelnika zarządzania kosztami (czytelnika). Wymagane jest włączenie ustawienia **wyświetlania opłat przez właściciela konta** w portalu EA. Informacje billingowe w analizie kosztów są konsolidowane dla wszystkich zasobów i grup zasobów w subskrypcji.
-
-- Zakres *resource group* (grupa zasobów) jest definiowany w witrynie https://portal.azure.com i wymaga dostępu na poziomie czytelnika zarządzania kosztami (czytelnika). Wymagane jest włączenie ustawienia **wyświetlania opłat przez właściciela konta** w portalu EA. Informacje billingowe w analizie kosztów są konsolidowane dla wszystkich zasobów w grupie zasobów.
-
-
+<sup>2</sup>Konto rejestracji jest często określane jako właściciel konta.
 
 Aby uzyskać więcej informacji na temat konfigurowania ustawień **wyświetlania opłat przez administratora działu**  i **właściciela konta** , zobacz [Enabling access to costs (Umożliwianie dostępu do kosztów)](../billing/billing-enterprise-mgmt-grp-troubleshoot-cost-view.md#enabling-access-to-costs).
+
+
+
+
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 

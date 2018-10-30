@@ -1,25 +1,28 @@
 ---
-title: 'Szybki start: publikowanie bazy wiedzy za pomocą języka Python — QnA Maker'
+title: 'Szybki start: publikowanie bazy wiedzy — REST, Python — QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: W jaki sposób opublikować bazę wiedzy za pomocą języka Python w usłudze QnA Maker.
+description: Ten przewodnik Szybki start oparty na protokole REST przeprowadzi Cię przez proces publikowania bazy wiedzy, który polega na wypchnięciu najnowszej wersji przetestowanej bazy wiedzy do dedykowanego indeksu usługi Azure Search reprezentującego opublikowaną bazę wiedzy. Zostanie również utworzony punkt końcowy, który można wywoływać w aplikacji lub czatbocie.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 92a0f54c8fca6a53cf869ce21c8007ad2a1eba5b
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: e58b344102eb900ffe41bb90e541258eb3b59286
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887721"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646818"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-python"></a>Publikowanie bazy wiedzy za pomocą języka Python
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>Szybki start: publikowanie bazy wiedzy w usłudze QnA Maker przy użyciu języka Python
 
-Poniższy kod publikuje istniejącą bazę wiedzy za pomocą metody [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe).
+Ten przewodnik Szybki start przeprowadzi Cię przez programowe publikowanie Twojej bazy wiedzy. Publikowanie wypycha najnowszą wersję bazy wiedzy do dedykowanego indeksu usługi Azure Search i tworzy punkt końcowy, który może być wywoływany w Twojej aplikacji lub czatbocie.
+
+Ten przewodnik Szybki start wywołuje interfejsy API usługi QnA Maker:
+* [Publikowanie](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) — ten interfejs API nie wymaga żadnych informacji zawartych w treści żądania.
 
 [!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 

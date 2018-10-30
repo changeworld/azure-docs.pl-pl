@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 1e466b2945793f866aad4e6f0ace3d7379226830
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 15f465bf2aaf7c8b3a4a49819548c8db0b2ea014
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42024004"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958860"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Szybki start: tworzenie zadania usługi Stream Analytics przy użyciu witryny Azure Portal
 
@@ -179,7 +179,9 @@ Gdy grupa zasobów, zadanie przesyłania strumieniowego i wszystkie pokrewne zas
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start zostało wdrożone proste zadanie usługi Stream Analytics. Aby dowiedzieć się więcej o konfigurowaniu innych źródeł danych wejściowych i wykonywaniu wykrywania w czasie rzeczywistym, zapoznaj się z następującym artykułem:
+W tym przewodniku Szybki start proste zadanie usługi Stream Analytics zostało wdrożone przy użyciu witryny Azure Portal. Możesz też wdrażać zadania usługi Stream Analytics przy użyciu programów [PowerShell](stream-analytics-quick-create-powershell.md) i [Visual Studio](stream-analytics-quick-create-vs.md).
+
+Aby dowiedzieć się więcej o konfigurowaniu innych źródeł danych wejściowych i wykonywaniu wykrywania w czasie rzeczywistym, zapoznaj się z następującym artykułem:
 
 > [!div class="nextstepaction"]
 > [Wykrywanie oszustw w czasie rzeczywistym za pomocą usługi Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)

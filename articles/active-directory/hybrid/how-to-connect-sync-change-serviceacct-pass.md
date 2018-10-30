@@ -44,7 +44,7 @@ Najpierw należy zmienić hasło w obszarze Menedżer sterowania usługami Windo
 Po drugie w określonych warunkach, jeśli hasło zostanie zaktualizowane, usługa synchronizacji można już pobierać klucz szyfrowania za pośrednictwem interfejsu DPAPI. Bez klucza szyfrowania usługi synchronizacji nie może odszyfrować hasła wymagane do synchronizacji z lokalnej usługi AD i Azure AD.
 Pojawią się błędy takie jak:
 
-- W obszarze Menedżer sterowania usługami Windows Jeśli użytkownik próbuje uruchomić usługi synchronizacji i nie może pobrać klucza szyfrowania go zakończy się niepowodzeniem z powodu błędu "** Windows Microsoft Azure AD Sync nie można uruchomić na komputerze lokalnym. Aby uzyskać więcej informacji przejrzyj dziennik zdarzeń systemu. Jeśli jest to usługa firmy Microsoft, skontaktuj się z dostawcą usługi i odwołać się do kodu błędu usługi **-21451857952 ***. "
+- W obszarze Menedżer sterowania usługami Windows Jeśli użytkownik próbuje uruchomić usługi synchronizacji i nie może pobrać klucza szyfrowania go zakończy się niepowodzeniem z powodu błędu "**Windows Microsoft Azure AD Sync nie można uruchomić na komputerze lokalnym. Aby uzyskać więcej informacji przejrzyj dziennik zdarzeń systemu. Jeśli jest to usługa firmy Microsoft, skontaktuj się z dostawcą usługi i odwołać się do kodu błędu usługi \*\*-21451857952**\*\*."
 - W obszarze Windows podglądu zdarzeń, w dzienniku zdarzeń aplikacji zawiera błąd przy użyciu **6028 identyfikator zdarzenia** i komunikat o błędzie *"**nie można uzyskać dostępu do klucza szyfrowania serwera.**"*
 
 Aby upewnić się, że nie będą odbierać te błędy, wykonaj procedury opisane w [porzucenie klucza szyfrowania usługi Azure AD Connect Sync](#abandoning-the-azure-ad-connect-sync-encryption-key) podczas zmiany hasła.

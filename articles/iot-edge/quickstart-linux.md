@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 9683a33efba427e83b2ff27ec57d2d437c61d5ce
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: a774873872d4b41c4ef5c005946db6b2a1b4e39e
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166280"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955279"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Szybki start: wdrażanie pierwszego modułu usługi IoT Edge na urządzeniu z systemem Linux x64
 
@@ -27,12 +27,11 @@ W tym przewodniku Szybki start zawarto informacje na temat wykonywania następuj
 3. Instalowanie i uruchamianie środowiska uruchomieniowego usługi IoT Edge na urządzeniu.
 4. Zdalne wdrażanie modułu na urządzeniu usługi IoT Edge.
 
-![Architektura przewodnika Szybki start][2]
+![Architektura przewodnika Szybki start](./media/quickstart-linux/install-edge-full.png)
 
-W tym przewodniku Szybki start komputer lub maszyna wirtualna z systemem Linux zmieni się w urządzenie usługi IoT Edge. Następnie wdrożysz modułu z witryny Azure Portal na swoim urządzeniu. Moduł wdrażany podczas pracy z tym przewodnikiem Szybki start to symulowany czujnik generujący dane dotyczące temperatury, wilgotności i ciśnienia. Z wykonanej tutaj pracy będziesz korzystać w pozostałych samouczkach usługi Azure IoT Edge, wdrażając moduły do analizy symulowanych danych na potrzeby biznesowe. 
+W tym przewodniku Szybki start komputer lub maszyna wirtualna z systemem Linux zmieni się w urządzenie usługi IoT Edge. Następnie wdrożysz modułu z witryny Azure Portal na swoim urządzeniu. Moduł wdrażany podczas pracy z tym przewodnikiem Szybki start to symulowany czujnik generujący dane dotyczące temperatury, wilgotności i ciśnienia. Z wykonanej tutaj pracy będziesz korzystać w pozostałych samouczkach usługi Azure IoT Edge, wdrażając moduły do analizy symulowanych danych na potrzeby biznesowe.
 
-Jeśli nie masz aktywnej subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto][lnk-account].
-
+Jeśli nie masz aktywnej subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -43,7 +42,7 @@ Dodaj rozszerzenie usługi Azure IoT do wystąpienia usługi Cloud Shell.
    ```azurecli-interactive
    az extension add --name azure-cli-iot-ext
    ```
-   
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Zasoby w chmurze: 
@@ -51,7 +50,7 @@ Zasoby w chmurze:
 * Grupa zasobów do zarządzania wszystkimi zasobami używanymi w tym przewodniku Szybki start. 
 
    ```azurecli-interactive
-   az group create --name IoTEdgeResources --location westus
+   az group create --name IoTEdgeResources --location westus2
    ```
 
 Urządzenie usługi IoT Edge:
@@ -64,9 +63,9 @@ Urządzenie usługi IoT Edge:
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
-Rozpocznij pracę z przewodnikiem Szybki start, tworząc centrum IoT Hub za pomocą interfejsu wiersza polecenia platformy Azure. 
+Rozpocznij pracę z przewodnikiem Szybki start, tworząc centrum IoT Hub za pomocą interfejsu wiersza polecenia platformy Azure.
 
-![Tworzenie centrum IoT Hub][3]
+![Tworzenie centrum IoT Hub](./media/quickstart-linux/create-iot-hub.png)
 
 W tym przewodniku Szybki start wystarcza warstwa bezpłatna usługi IoT Hub. Jeśli w przeszłości używano usługi IoT Hub i masz już utworzone bezpłatne centrum, możesz używać tego centrum IoT Hub. Każda subskrypcja może zawierać tylko jedno bezpłatne centrum IoT Hub. 
 
@@ -76,12 +75,12 @@ Poniższy kod tworzy bezpłatne centrum **F1** w grupie zasobów **IoTEdgeResour
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 
    ```
 
-   Jeśli wystąpi błąd, ponieważ w subskrypcji jest już jedno bezpłatne centrum, zmień jednostkę SKU na **S1**. 
+   Jeśli wystąpi błąd, ponieważ w subskrypcji jest już jedno bezpłatne centrum, zmień jednostkę SKU na **S1**.
 
 ## <a name="register-an-iot-edge-device"></a>Rejestrowanie urządzenia usługi IoT Edge
 
-Zarejestruj urządzenie usługi IoT Edge, korzystając z nowo utworzonego centrum IoT. 
-![Rejestrowanie urządzenia][4]
+Zarejestruj urządzenie usługi IoT Edge, korzystając z nowo utworzonego centrum IoT.
+![Rejestrowanie urządzenia](./media/quickstart-linux/register-device.png)
 
 Utwórz tożsamość urządzenia symulowanego, aby umożliwić mu komunikowanie się z centrum IoT Hub. Tożsamość urządzenia jest przechowywana w chmurze. Aby skojarzyć urządzenie fizyczne z tożsamością urządzenia, używane są unikatowe parametry połączenia. 
 
@@ -101,11 +100,10 @@ Ponieważ urządzenia usługi IoT Edge zachowują się inaczej niż typowe urzą
 
 1. Skopiuj parametry połączenia i zapisz je. Za pomocą tej wartości skonfigurujesz środowisko uruchomieniowe usługi IoT Edge w następnej sekcji. 
 
-
 ## <a name="install-and-start-the-iot-edge-runtime"></a>Instalowanie i uruchamianie środowiska uruchomieniowego usługi IoT Edge
 
 Zainstaluj i uruchom środowisko uruchomieniowe usługi Azure IoT Edge na urządzeniu usługi IoT Edge. 
-![Rejestrowanie urządzenia][5]
+![Rejestrowanie urządzenia](./media/quickstart-linux/start-runtime.png)
 
 Środowisko uruchomieniowe usługi IoT Edge jest wdrażane na wszystkich urządzeniach usługi IoT Edge. Składa się ono z trzech składników. **Demon zabezpieczeń usługi IoT Edge** jest uruchamiany przy każdym uruchomieniu urządzenia Edge przez rozpoczęciu działania agenta usługi IoT Edge. Agent usługi **IoT Edge** ułatwia wdrażanie i monitorowanie modułów na urządzeniu usługi IoT Edge, w tym centrum usługi IoT Edge. **Centrum usługi IoT Edge** zarządza komunikacją między modułami na urządzeniu usługi IoT Edge oraz między urządzeniem a usługą IoT Hub. 
 
@@ -218,13 +216,13 @@ Urządzenie usługi IoT Edge jest teraz skonfigurowane. Jest ono gotowe do uruch
 ## <a name="deploy-a-module"></a>Wdrażanie modułu
 
 Zarządzając urządzeniem usługi Azure IoT Edge z chmury, wdróż moduł przesyłający dane telemetryczne do centrum IoT Hub.
-![Rejestrowanie urządzenia][6]
+![Rejestrowanie urządzenia](./media/quickstart-linux/deploy-module.png)
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 
 ## <a name="view-generated-data"></a>Wyświetlanie wygenerowanych danych
 
-W tym przewodniku Szybki start utworzono nowe urządzenie usługi IoT Edge i zainstalowano na nim środowisko uruchomieniowe usługi IoT Edge. Następnie użyto witryny Azure Portal do wypchnięcia modułu usługi IoT Edge do uruchomienia na urządzeniu bez konieczności wprowadzenia zmian na samym urządzeniu. W tym przypadku wypchnięty moduł tworzy dane środowiskowe, których można użyć na potrzeby samouczków. 
+W tym przewodniku Szybki start utworzono nowe urządzenie usługi IoT Edge i zainstalowano na nim środowisko uruchomieniowe usługi IoT Edge. Następnie użyto witryny Azure Portal do wypchnięcia modułu usługi IoT Edge do uruchomienia na urządzeniu bez konieczności wprowadzenia zmian na samym urządzeniu. W tym przypadku wypchnięty moduł tworzy dane środowiskowe, których można użyć na potrzeby samouczków.
 
 Ponownie otwórz wiersz polecenia na urządzeniu usługi IoT Edge. Upewnij się, że moduł wdrożony z chmury jest uruchomiony na urządzeniu usługi IoT Edge:
 
@@ -237,9 +235,8 @@ Ponownie otwórz wiersz polecenia na urządzeniu usługi IoT Edge. Upewnij się,
 Wyświetl komunikaty wysyłane z modułu tempSensor:
 
    ```bash
-   sudo iotedge logs tempSensor -f 
+   sudo iotedge logs tempSensor -f
    ```
-Po wylogowaniu i zalogowaniu elementu *sudo* nie trzeba używać w powyższym poleceniu.
 
 ![Wyświetlanie danych z modułu](./media/quickstart-linux/iotedge-logs.png)
 
@@ -247,16 +244,15 @@ Moduł czujnika temperatury może oczekiwać na połączenie z centrum funkcji E
 
 Możesz również wyświetlić dane telemetryczne odbierane przez centrum IoT przy użyciu [rozszerzenia zestawu narzędzi usługi Azure IoT dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). 
 
-
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli chcesz przejść do samouczków dotyczących usługi IoT Edge, możesz użyć urządzenia, które zostało zarejestrowane i skonfigurowane w ramach tego przewodnika Szybki start. Jeśli nie, możesz usunąć utworzone zasoby platformy Azure oraz usunąć z urządzenia środowisko uruchomieniowe usługi IoT Edge. 
+Jeśli chcesz przejść do samouczków dotyczących usługi IoT Edge, możesz użyć urządzenia, które zostało zarejestrowane i skonfigurowane w ramach tego przewodnika Szybki start. Jeśli nie, możesz usunąć utworzone zasoby platformy Azure oraz usunąć z urządzenia środowisko uruchomieniowe usługi IoT Edge.
 
 ### <a name="delete-azure-resources"></a>Usuwanie zasobów platformy Azure
 
 Jeśli maszyna wirtualna i centrum IoT Hub zostały utworzone w nowej grupie zasobów, możesz usunąć tę grupę i wszystkie powiązane zasoby. Jeśli grupa zasobów zawiera jakiekolwiek zasoby, które chcesz zachować, po prostu usuń poszczególne niepotrzebne zasoby. 
 
-Usuń grupę **IoTEdgeResources**. 
+Usuń grupę **IoTEdgeResources**.
 
    ```azurecli-interactive
    az group delete --name IoTEdgeResources 
@@ -299,27 +295,3 @@ Wykonanie czynności przedstawionych w tym przewodniku Szybki start jest wymagan
 
 > [!div class="nextstepaction"]
 > [Filtrowanie danych czujnika przy użyciu funkcji platformy Azure](tutorial-deploy-function.md)
-
-
-
-<!-- Images -->
-[0]: ./media/quickstart-linux/cloud-shell.png
-[1]: ./media/quickstart-linux/view-module.png
-[2]: ./media/quickstart-linux/install-edge-full.png
-[3]: ./media/quickstart-linux/create-iot-hub.png
-[4]: ./media/quickstart-linux/register-device.png
-[5]: ./media/quickstart-linux/start-runtime.png
-[6]: ./media/quickstart-linux/deploy-module.png
-[7]: ./media/quickstart-linux/iotedged-running.png
-[8]: ./media/tutorial-simulate-device-linux/running-modules.png
-[9]: ./media/tutorial-simulate-device-linux/sensor-data.png
-
-
-<!-- Links -->
-[lnk-docker-ubuntu]: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/ 
-[lnk-account]: https://azure.microsoft.com/free
-[lnk-portal]: https://portal.azure.com
-[lnk-delete]: https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-delete
-
-<!-- Anchor links -->
-[anchor-register]: #register-an-iot-edge-device

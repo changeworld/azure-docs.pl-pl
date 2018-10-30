@@ -6,21 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/08/2018
+ms.date: 10/19/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 4729e08399132243543c6f4e1cadd537d185e9e3
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: ba77fc4596d9bb245b3cea2538804b1816e9ad14
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166257"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466975"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge-preview"></a>Samouczek: przekształcanie danych za pomocą usługi Azure Data Box Edge (wersja zapoznawcza)
 
 W tym samouczku opisano sposób konfigurowania roli obliczeniowej na urządzeniu Data Box Edge. Po skonfigurowaniu roli obliczeniowej urządzenie Data Box Edge może przekształcać dane przed wysłaniem ich na platformę Azure.
 
-Wykonanie tej procedury może zająć około 30-45 minut. 
+Wykonanie tej procedury może zająć około 30-45 minut.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -31,7 +31,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Weryfikowanie przekształcania danych i transferu
 
 > [!IMPORTANT]
-> Usługa Data Box Edge jest dostępna w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> Usługa Data Box Edge jest dostępna w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
  
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -48,7 +48,8 @@ Aby uzyskać szczegółowe instrukcje, przejdź do tematu [Tworzenie centrum IoT
 
 ![Tworzenie zasobu usługi IoT Hub](./media/data-box-edge-deploy-configure-compute/create-iothub-resource-1.png)
 
-Jeśli rola obliczeniowa usługi Edge nie została skonfigurowana, pamiętaj, że: 
+Jeśli rola obliczeniowa usługi Edge nie została skonfigurowana, pamiętaj, że:
+
 - zasób usługi IoT Hub nie ma żadnych urządzeń IoT ani urządzeń IoT Edge,
 - nie możesz tworzyć udziałów lokalnych usługi Edge, podczas dodawania udziału opcja utworzenia udziału lokalnego na potrzeby funkcji obliczeniowej Edge nie jest włączona.
 
@@ -91,12 +92,12 @@ Aby skonfigurować rolę obliczeniową na urządzeniu, wykonaj następujące czy
 
     ![Konfigurowanie roli obliczeniowej](./media/data-box-edge-deploy-configure-compute/setup-compute-8.png) 
 
-Jednak na tym urządzeniu Edge nie ma żadnych modułów niestandardowych. Możesz teraz dodać moduł niestandardowy do tego urządzenia.
+Jednak na tym urządzeniu Edge nie ma żadnych modułów niestandardowych. Możesz teraz dodać moduł niestandardowy do tego urządzenia. Aby dowiedzieć się, jak utworzyć moduł niestandardowy, przejdź do artykułu [Develop a C# module for your Data Box Edge (Tworzenie modułu C# dla urządzenia Data Box Edge)](data-box-edge-create-iot-edge-module.md).
 
 
 ## <a name="add-a-custom-module"></a>Dodawanie modułu niestandardowego
 
-W tej sekcji dodasz moduł niestandardowy na urządzeniu usługi IoT Edge. 
+W tej sekcji dodasz do urządzenia usługi IoT Edge niestandardowy moduł utworzony w sekcji [Develop a C# module for your Data Box Edge (Tworzenie modułu C# dla urządzenia Data Box Edge)](data-box-edge-create-iot-edge-module.md). 
 
 W tej procedurze jest używany przykład, w którym moduł niestandardowy pobiera pliki z udziału lokalnego na urządzeniu Edge i przenosi je do udziału chmurowego na tym urządzeniu. Następnie udział chmurowy wypycha pliki na konto magazynu platformy Azure skojarzone z tym udziałem chmurowym. 
 
@@ -133,11 +134,26 @@ W tej procedurze jest używany przykład, w którym moduł niestandardowy pobier
 
         ![Dodawanie modułu niestandardowego](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-6.png) 
  
-    2. Określ ustawienia dla niestandardowego modułu usługi IoT Edge. Podaj **nazwę** modułu i **identyfikator URI obrazu**. 
+    2. Określ ustawienia dla niestandardowego modułu usługi IoT Edge. Podaj **nazwę** modułu i **identyfikator URI obrazu** odpowiedniego obrazu kontenera. 
     
         ![Dodawanie modułu niestandardowego](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-7.png) 
 
-    3. W obszarze **Container create options** (Opcje tworzenia kontenera) podaj lokalne punkty instalacji dla modułów usługi Edge skopiowane w poprzednich krokach dla udziału lokalnego i chmurowego (koniecznie użyj tych ścieżek, zamiast tworzyć nowe). Te udziały są mapowane na odpowiednie punkty instalacji kontenera. Podaj tu także wszelkie zmienne środowiskowe dla Twojego modułu.
+    3. W obszarze **Container create options** (Opcje tworzenia kontenera) podaj lokalne punkty instalacji dla modułów usługi Edge skopiowane w poprzednich krokach dla udziału lokalnego i chmurowego (koniecznie użyj tych ścieżek, zamiast tworzyć nowe). Lokalne punkty instalacji są mapowane na odpowiednie foldery **InputFolderPath** i **OutputFolderPath**, które zostały określone w module podczas [aktualizacji modułu przy użyciu kodu niestandardowego](data-box-edge-create-iot-edge-module.md#update-the-module-with-custom-code). 
+    
+        Możesz skopiować i wkleić przykład przedstawiony poniżej w obszarze **Opcje tworzenia kontenera**: 
+        
+        ```
+        {
+         "HostConfig": {
+          "Binds": [
+           "/home/hcsshares/mysmblocalshare:/home/LocalShare",
+           "/home/hcsshares/mysmbshare1:/home/CloudShare"
+           ]
+         }
+        }
+        ```
+
+        Podaj tu także wszelkie zmienne środowiskowe dla Twojego modułu.
 
         ![Dodawanie modułu niestandardowego](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-8.png) 
  
@@ -146,6 +162,8 @@ W tej procedurze jest używany przykład, w którym moduł niestandardowy pobier
         ![Dodawanie modułu niestandardowego](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-9.png) 
  
 6.  W obszarze **Specify routes** (Określanie tras) ustaw trasy między modułami. W tym przypadku podaj nazwę udziału lokalnego, który wypchnie dane do udziału chmurowego. Kliknij przycisk **Dalej**.
+
+    Możesz zastąpić trasę za pomocą następującego ciągu trasy:       "route": "FROM /* WHERE topic = 'mysmblocalshare' INTO BrokeredEndpoint(\"/modules/filemovemodule/inputs/input1\")"
 
     ![Dodawanie modułu niestandardowego](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-10.png) 
  

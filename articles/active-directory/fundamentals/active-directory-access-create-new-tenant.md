@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: lizross
 custom: it-pro
-ms.openlocfilehash: 8ef68c8afcf61a1a11c341a679443071aece9812
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: eacb2e7c52adae9de0b74c3dade59446cc8459ed
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363008"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023556"
 ---
 # <a name="quickstart-access-azure-active-directory-to-create-a-new-tenant"></a>Szybki start: uzyskiwanie dostępu do usługi Azure Active Directory w celu utworzenia nowej dzierżawy
 Wszystkie zadania administracyjne, w tym tworzenie nowej dzierżawy dla swojej organizacji, możesz wykonywać przy użyciu portalu usługi Azure Active Directory (Azure AD). 
@@ -24,13 +24,6 @@ Wszystkie zadania administracyjne, w tym tworzenie nowej dzierżawy dla swojej o
 W tym przewodniku Szybki start dowiesz się, jak uzyskać dostęp do witryny Azure Portal i usługi Azure Active Directory oraz jak utworzyć podstawową dzierżawę dla organizacji.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
-
-## <a name="prerequisites"></a>Wymagania wstępne
-Przed rozpoczęciem musisz wykonać następujące czynności:
-
-- Upewnij się, że Twoja organizacja ma prawidłową licencję usługi Azure AD.
-
-- Upewnij się, że jesteś administratorem globalnym.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 Zaloguj się do witryny [Azure Portal](https://portal.azure.com/) Twojej organizacji przy użyciu konta administratora globalnego.
@@ -76,3 +69,5 @@ Jeśli nie zamierzasz nadal korzystać z tej aplikacji, możesz usunąć dzierż
 - Dodawanie grup i członków — zobacz [Tworzenie podstawowej grupy i dodawanie członków](active-directory-groups-create-azure-portal.md)
 
 - Dowiedz się więcej na temat [dostępu na podstawie ról przy użyciu usługi Privileged Identity Management](../../role-based-access-control/pim-azure-resource.md) oraz [dostępu warunkowego](../../role-based-access-control/conditional-access-azure-management.md), aby ułatwić zarządzanie dostępem do aplikacji i zasobów w organizacji.
+
+- Uzyskaj informacje o usłudze Azure AD, w tym [podstawowe informacje o licencjonowaniu oraz informacje o terminologii i skojarzonych funkcjach](active-directory-whatis.md).

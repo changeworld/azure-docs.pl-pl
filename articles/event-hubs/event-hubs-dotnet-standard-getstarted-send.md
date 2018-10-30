@@ -12,34 +12,29 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2018
+ms.date: 10/18/2018
 ms.author: shvija
-ms.openlocfilehash: 6f95d8dc291911ac7506e33b80c2d71c8f50dfdc
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: e826dcdbc6d32e6f0ad6ddf72a95869c96af6d69
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405635"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456528"
 ---
 # <a name="get-started-sending-messages-to-azure-event-hubs-in-net-standard"></a>Wprowadzenie do wysyłania komunikatów do usługi Azure Event Hubs przy użyciu biblioteki .NET Standard
+Event Hubs to usługa, która przetwarza duże ilości danych zdarzeń (danych telemetrycznych) z podłączonych urządzeń i aplikacji. Po zebraniu danych w usłudze Event Hubs można przechowywać dane przy użyciu klastra magazynu lub przekształcać je za pomocą dostawcy analiz w czasie rzeczywistym. Ta możliwość zbierania i przetwarzania zdarzeń na wielką skalę jest kluczowym składnikiem architektur nowoczesnych aplikacji, w tym Internetu rzeczy (IoT). Aby zapoznać się ze szczegółowym omówieniem usługi Event Hubs, zobacz [Omówienie usługi Event Hubs](event-hubs-about.md) i [Funkcje usługi Event Hubs](event-hubs-features.md).
+
+W tym samouczku pokazano, jak wysyłać zdarzenia do centrum zdarzeń za pomocą aplikacji konsolowej napisanej w języku C# w programie .NET Core. 
 
 > [!NOTE]
-> Ten przykład jest dostępny w witrynie [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender).
-
-W tym samouczku przedstawiono sposób tworzenia aplikacji konsoli .NET Core wysyłającej zestaw komunikatów do centrum zdarzeń. Rozwiązanie z repozytorium [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) można uruchomić w niezmienionej postaci, zastępując ciągi `EventHubConnectionString` i `EventHubName` wartościami własnego centrum zdarzeń. Można też utworzyć własne rozwiązanie, wykonując kroki opisane w tym samouczku.
+> Ten przewodnik Szybki start możesz pobrać jako przykład z witryny [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender), zastąpić ciągi `EventHubConnectionString` i `EventHubName` wartościami swojego centrum zdarzeń, a następnie uruchomić go. Alternatywnie możesz utworzyć własne rozwiązanie, wykonując kroki opisane w tym samouczku.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-
 * [Program Microsoft Visual Studio 2015 lub 2017](http://www.visualstudio.com). Przykłady przedstawione w tym samouczku korzystają z programu Visual Studio 2017, ale program Visual Studio 2015 jest również obsługiwany.
-* [Narzędzia platformy .NET Core dla programu Visual Studio 2015 lub 2017](http://www.microsoft.com/net/core).
-* Subskrypcja platformy Azure.
-* [Przestrzeń nazw centrum zdarzeń i centrum zdarzeń](event-hubs-quickstart-portal.md).
-
-Do wysyłania komunikatów do centrum zdarzeń w tym samouczku użyto aplikacji konsoli napisanej w języku C# w programie Visual Studio.
+* [Narzędzia platformy .NET Core dla programu Visual Studio 2015 lub 2017](http://www.microsoft.com/net/core). 
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Tworzenie przestrzeni nazw usługi Event Hubs i centrum zdarzeń
-
-Aby utworzyć przestrzeń nazw i centrum zdarzeń, wykonaj procedurę opisaną w [tym artykule](event-hubs-quickstart-portal.md), a następnie kontynuuj czynności z tego samouczka.
+Pierwszym krokiem jest skorzystanie z witryny [Azure Portal](https://portal.azure.com) w celu utworzenia przestrzeni nazw typu Event Hubs i uzyskania poświadczeń zarządzania wymaganych przez aplikację do komunikacji z centrum zdarzeń. Aby utworzyć przestrzeń nazw i centrum zdarzeń, wykonaj procedurę opisaną w [tym artykule](event-hubs-create.md), a następnie wykonaj następujące czynności z tego samouczka.
 
 ## <a name="create-a-console-application"></a>Tworzenie aplikacji konsolowej
 
@@ -54,7 +49,7 @@ Dodaj pakiet NuGet [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/
 1. Kliknij prawym przyciskiem myszy nowo utworzony projekt i wybierz pozycję **Zarządzaj pakietami NuGet**.
 2. Kliknij kartę **Przeglądaj**, a następnie wyszukaj ciąg „Microsoft.Azure.EventHubs” i wybierz pakiet **Microsoft.Azure.EventHubs**. Kliknij przycisk **Zainstaluj**, aby ukończyć instalację, a następnie zamknij to okno dialogowe.
 
-## <a name="write-some-code-to-send-messages-to-the-event-hub"></a>Pisanie kodu w celu wysyłania komunikatów do centrum zdarzeń
+## <a name="write-code-to-send-messages-to-the-event-hub"></a>Pisanie kodu w celu wysyłania komunikatów do centrum zdarzeń
 
 1. Dodaj następujące instrukcje `using` na początku pliku Program.cs:
 
@@ -199,11 +194,6 @@ Dodaj pakiet NuGet [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/
 Gratulacje! Wysłano komunikaty do centrum zdarzeń.
 
 ## <a name="next-steps"></a>Następne kroki
-Następujące linki pozwalają dowiedzieć się więcej na temat usługi Event Hubs:
-
-* [Odbieranie zdarzeń z usługi Event Hubs](event-hubs-dotnet-standard-getstarted-receive-eph.md)
-* [Omówienie usługi Event Hubs](event-hubs-what-is-event-hubs.md)
-* [Tworzenie centrum zdarzeń](event-hubs-create.md)
-* [Event Hubs — często zadawane pytania](event-hubs-faq.md)
+W tym przewodniku Szybki start zostały wysłane komunikaty do centrum zdarzeń za pomocą platformy .NET Standard. Aby dowiedzieć się, jak odbierać zdarzenia z centrum zdarzeń przy użyciu platformy .NET Standard, zobacz [Odbieranie zdarzeń z centrum zdarzeń — .NET Standard](event-hubs-dotnet-standard-getstarted-receive-eph.md).
 
 [1]: ./media/event-hubs-dotnet-standard-getstarted-send/netcoresnd.png

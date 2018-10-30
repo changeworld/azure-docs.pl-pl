@@ -10,16 +10,16 @@ ms.component: bing-spell-check
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 3fe8729a9e2524cc2ccda168a857d58664a98b10
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: e75b8e8b23bbb8e49cb8d8ec55e42f6ffb204197
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801084"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023501"
 ---
 # <a name="quickstart-for-bing-spell-check-api-with-ruby"></a>Szybki start: interfejs API sprawdzania pisowni Bing w środowisku Ruby 
 
-W tym artykule pokazano, jak używać [interfejsu API sprawdzania pisowni Bing](https://azure.microsoft.com/services/cognitive-services/spell-check/) ze środowiskiem Ruby. Interfejs API sprawdzania pisowni zwraca listę wyrazów, których nie rozpoznaje, oraz sugestie ich zastąpienia. Typowym sposobem korzystania z tego interfejsu API jest przesłanie tekstu, a następnie wprowadzenie sugerowanych zmian w tekście lub pokazanie ich użytkownikowi aplikacji, aby zdecydował, czy wprowadzić zmiany. W tym artykule pokazano, jak wysłać żądanie zawierające tekst „Hollo, wrld!”. Sugerowane zamiany to „Hello” i „world”.
+W tym artykule pokazano, jak używać [interfejsu API sprawdzania pisowni Bing](https://azure.microsoft.com/services/cognitive-services/spell-check/)  ze środowiskiem Ruby. Interfejs API sprawdzania pisowni zwraca listę wyrazów, których nie rozpoznaje, oraz sugestie ich zastąpienia. Typowym sposobem korzystania z tego interfejsu API jest przesłanie tekstu, a następnie wprowadzenie sugerowanych zmian w tekście lub pokazanie ich użytkownikowi aplikacji, aby zdecydował, czy wprowadzić zmiany. W tym artykule pokazano, jak wysłać żądanie zawierające tekst „Hollo, wrld!”. Sugerowane zamiany to „Hello” i „world”.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -31,7 +31,7 @@ Trzeba mieć [konto interfejsu API usług Cognitive Services](https://docs.micro
 
 1. Utwórz nowy projekt Ruby w ulubionym środowisku IDE.
 2. Dodaj kod przedstawiony poniżej.
-3. Zastąp wartość `subscriptionKey` kluczem dostępu właściwym dla Twojej subskrypcji.
+3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```ruby

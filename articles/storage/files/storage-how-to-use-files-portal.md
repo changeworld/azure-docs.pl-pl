@@ -1,38 +1,30 @@
 ---
-title: Zarządzanie udziałami plików platformy Azure za pomocą witryny Azure Portal
-description: Dowiedz się, jak zarządzać usługą Azure Files za pomocą witryny Azure Portal.
+title: Przewodnik Szybki start dotyczący zarządzania udziałami plików platformy Azure za pomocą witryny Azure Portal
+description: W tym przewodniku Szybki start dowiesz się, jak zarządzać usługą Azure Files za pomocą witryny Azure Portal.
 services: storage
 author: wmgries
 ms.service: storage
-ms.topic: get-started-article
-ms.date: 03/26/2018
+ms.topic: quickstart
+ms.date: 10/18/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: b4cace3922983ed93987069ac7cf59f2cb69403b
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 12e6b3a3fe790183a35c71fbb87243890ad22236
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578552"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944842"
 ---
-# <a name="managing-azure-file-shares-with-the-azure-portal"></a>Zarządzanie udziałami plików platformy Azure za pomocą witryny Azure Portal 
-[Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziały plików platformy Azure można instalować w systemach Windows, Linux i macOS. W tym przewodniku przedstawiono podstawowe informacje dotyczące pracy z udziałami plików platformy Azure przy użyciu witryny [Azure Portal](https://portal.azure.com/). Instrukcje:
+# <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Szybki start: tworzenie udziałów plików platformy Azure i zarządzanie nimi za pomocą witryny Azure Portal 
+[Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziały plików platformy Azure można instalować w systemach Windows, Linux i macOS. W tym przewodniku przedstawiono podstawowe informacje dotyczące pracy z udziałami plików platformy Azure przy użyciu witryny [Azure Portal](https://portal.azure.com/).
 
-> [!div class="checklist"]
-> * Tworzenie grupy zasobów i konta magazynu
-> * Tworzenie udziału plików platformy Azure 
-> * Tworzenie katalogu
-> * Przekazywanie pliku 
-> * Pobieranie pliku
-> * Tworzenie i używanie migawki udziału
-
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 [!INCLUDE [storage-files-create-storage-account-portal](../../../includes/storage-files-create-storage-account-portal.md)]
 
-## <a name="create-a-file-share"></a>Tworzenie udziału plików
-Aby utworzyć udział plików:
+## <a name="create-an-azure-file-share"></a>Tworzenie udziału plików platformy Azure
+Aby utworzyć udział plików platformy Azure, wykonaj następujące czynności:
 
 1. Wybierz konto magazynu na pulpicie nawigacyjnym.
 2. Na stronie konta magazynu w sekcji **Usługi** wybierz pozycję **Pliki**.
@@ -42,17 +34,37 @@ Aby utworzyć udział plików:
 4. W polu **Nazwa** wpisz ciąg *myshare*.
 5. Kliknij przycisk **OK**, aby utworzyć udział plików platformy Azure.
 
-## <a name="work-with-the-contents-of-the-azure-file-share"></a>Praca z zawartością udziału plików platformy Azure
-Po utworzeniu udziału plików platformy Azure możesz zainstalować ten udział plików w systemie [Windows](storage-how-to-use-files-windows.md), [Linux](storage-how-to-use-files-linux.md) lub [macOS](storage-how-to-use-files-mac.md) za pomocą protokołu SMB. Pracę z udziałem plików platformy Azure umożliwia też witryna Azure Portal. Wszystkie żądania przekazywane za pośrednictwem witryny Azure Portal są przekazywane przy użyciu interfejsu API REST plików, co umożliwia tworzenie, modyfikowanie oraz usuwanie plików i katalogów na klientach bez dostępu do protokołu SMB.
+Nazwy udziałów muszą składać się z małych liter, cyfr i pojedynczych łączników, ale nie mogą zaczynać się od łącznika. Szczegółowe informacje o nazwach plików i udziałów plików można znaleźć w temacie [Naming and Referencing Shares, Directories, Files, and Metadata](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata) (Nazywanie i odwoływanie się do udziałów, katalogów, plików i metadanych).
 
-### <a name="create-a-directory"></a>Tworzenie katalogu
+## <a name="use-your-azure-file-share"></a>Korzystanie z udziału plików platformy Azure
+Usługa Azure Files oferuje dwie metody pracy z plikami i folderami w obrębie udziału plików platformy Azure: zgodny ze standardem branżowym [protokół Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) i [protokół REST usługi Files](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api). 
+
+Aby zainstalować udział plików za pomocą protokołu SMB, zobacz następujący dokument zgodny z używanym systemem operacyjnym:
+- [Windows](storage-how-to-use-files-windows.md)
+- [Linux](storage-how-to-use-files-linux.md)
+- [macOS](storage-how-to-use-files-mac.md)
+
+### <a name="using-an-azure-file-share-from-the-azure-portal"></a>Korzystanie z udziału plików platformy Azure w witrynie Azure Portal
+Wszystkie żądania przekazywane za pośrednictwem witryny Azure Portal są przekazywane przy użyciu interfejsu API REST plików, co umożliwia tworzenie, modyfikowanie oraz usuwanie plików i katalogów na klientach bez dostępu do protokołu SMB. Istnieje możliwość bezpośredniej pracy z protokołem REST usługi Files (polegającej na ręcznym tworzeniu wywołań HTTP REST), ale najczęstszym sposobem korzystania z protokołu REST usługi Files (oprócz korzystania z witryny Azure Portal) jest użycie [modułu AzureRM PowerShell](storage-how-to-use-files-powershell.md), [interfejsu wiersza polecenia platformy Azure](storage-how-to-use-files-cli.md) lub zestawu Azure Storage SDK. Wszystkie te narzędzia udostępniają sprawną otokę protokołu REST usługi Files w wybranym języku skryptowym/programowania. 
+
+Zdajemy sobie sprawę, że większość użytkowników usługi Azure Files będzie chciało pracować z udziałami plików platformy Azure za pośrednictwem protokołu SMB, ponieważ umożliwi im to skorzystanie z istniejących aplikacji i narzędzi, ale istnieje kilka powodów, dla których użycie interfejsu API REST usługi Files wydaje się korzystniejsze niż użycie protokołu SMB:
+
+- W trakcie podróży musisz szybko wprowadzić zmianę w udziale plików platformy Azure, korzystając z laptopa bez dostępu do protokołu SMB, tabletu lub urządzenia przenośnego.
+- Musisz wykonać skrypt lub uruchomić aplikację z poziomu klienta, który nie może instalować udziału SMB. Mogą to być na przykład klienci lokalni bez odblokowanego portu 445.
+- Korzystasz z zasobów bezserwerowych, takich jak [usługa Azure Functions](../../azure-functions/functions-overview.md). 
+
+W poniższych przykładach przedstawiono, jak używać witryny Azure Portal do obsługi udziałów plików platformy Azure przy użyciu protokołu REST usługi Files. 
+
+Po utworzeniu udziału plików platformy Azure możesz zainstalować ten udział plików w systemie [Windows](storage-how-to-use-files-windows.md), [Linux](storage-how-to-use-files-linux.md) lub [macOS](storage-how-to-use-files-mac.md) za pomocą protokołu SMB. Pracę z udziałem plików platformy Azure umożliwia też witryna Azure Portal. 
+
+#### <a name="create-a-directory"></a>Tworzenie katalogu
 Aby utworzyć nowy katalog o nazwie *myDirectory* w katalogu głównym udziału plików platformy Azure:
 
 1. Na stronie **Usługa plików** wybierz udział plików **myshare**. Zostanie otwarta strona udziału plików.
 2. W menu w górnej części strony wybierz pozycję **+ Dodaj katalog**. Zostanie rozwinięta strona **Nowy katalog**.
 3. Wpisz nazwę *myDirectory*, a następnie kliknij przycisk **OK**.
 
-### <a name="upload-a-file"></a>Przekazywanie pliku 
+#### <a name="upload-a-file"></a>Przekazywanie pliku 
 Aby można było zademonstrować przekazywanie pliku, najpierw musisz utworzyć lub wybrać plik do przekazania. Możesz to zrobić w dowolny sposób. Po wybraniu pliku do przekazania:
 
 1. Kliknij katalog **myDirectory**. Zostanie otwarty panel **myDirectory**.
@@ -64,46 +76,13 @@ Aby można było zademonstrować przekazywanie pliku, najpierw musisz utworzyć 
 5. Na stronie **Przekazywanie plików** sprawdź nazwę pliku, a następnie kliknij pozycję **Przekaż**.
 6. Po zakończeniu plik powinien być widoczny na liście na stronie **myDirectory**.
 
-### <a name="download-a-file"></a>Pobieranie pliku
+#### <a name="download-a-file"></a>Pobieranie pliku
 Aby pobrać kopię przekazanego pliku, kliknij prawym przyciskiem myszy ten plik. Szczegóły środowiska wyświetlanego po kliknięciu przycisku pobierania będą zależeć od używanego systemu operacyjnego i używanej przeglądarki.
-
-## <a name="create-and-modify-share-snapshots"></a>Tworzenie i modyfikowanie migawek udziałów
-Jedną z dodatkowych przydatnych czynności, które można wykonywać na udziałach plików platformy Azure, jest tworzenie migawek udziałów. Migawka zachowuje określony moment w czasie dla udziału plików platformy Azure. Migawki udziałów są podobne do technologii systemów operacyjnych, które być może już znasz, takich jak:
-- [Usługa kopiowania woluminów w tle (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) dla systemów plików systemu Windows, takich jak NTFS i ReFS
-- Migawki [Menedżera woluminów logicznych (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) dla systemu Linux
-- Migawki [Systemu plików firmy Apple (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) dla systemu macOS 
-
-Aby utworzyć migawkę udziału:
-
-1. Otwórz stronę udziału plików, otwierając konto magazynu z poziomu pulpitu nawigacyjnego i wybierając pozycję **Pliki** > **myshare**. 
-2. Na stronie udziału plików kliknij przycisk **Migawka** w menu w górnej części strony, a następnie wybierz polecenie **Utwórz migawkę**.  
-    ![Zrzut ekranu pokazujący, jak znaleźć przycisk tworzenia migawki](media/storage-how-to-use-files-portal/create-snapshot-1.png)
-
-### <a name="list-and-browse-share-snapshots"></a>Wyświetlanie listy i przeglądanie migawek udziałów
-Po utworzeniu migawki możesz ponownie kliknąć pozycję **Migawka** i wybrać pozycję **Wyświetl migawki**, aby utworzyć listę migawek dla danego udziału. Wyświetlone okienko będzie zawierać migawki dla określonego udziału. Kliknij migawkę udziału, aby ją przejrzeć.
-
-### <a name="restore-from-a-share-snapshot"></a>Przywracanie na podstawie migawki udziału
-Aby zademonstrować przywracanie pliku na podstawie migawki udziału, najpierw trzeba usunąć plik z dynamicznego udziału plików platformy Azure. Przejdź do folderu *myDirectory*, kliknij prawym przyciskiem myszy przekazany plik, a następnie kliknij pozycję **Usuń**. Następnie, aby przywrócić ten plik na podstawie migawki udziału:
-
-1. Kliknij pozycję **Migawki** w menu u góry i wybierz polecenie **Wyświetl migawki**. 
-2. Kliknij utworzoną wcześniej migawkę. Jej zawartość zostanie otworzona na nowej stronie. 
-3. Kliknij pozycję **myDirectory** w migawce — powinien zostać wyświetlony usunięty plik. 
-4. Kliknij prawym przyciskiem myszy usunięty plik i wybierz polecenie **Przywróć**.
-5. Zostanie wyświetlone wyskakujące okienko, umożliwiające wybór między opcją przywrócenia pliku jako kopii a opcją zastąpienia oryginalnego pliku. Ponieważ oryginalny plik został usunięty, możesz wybrać opcję **Zastąp oryginalny plik**, aby przywrócić plik do stanu, w jakim był, zanim został usunięty. Kliknij przycisk **OK**, aby przywrócić plik w udziale plików platformy Azure.  
-    ![Zrzut ekranu przedstawiający okno dialogowe przywracania pliku](media/storage-how-to-use-files-portal/restore-snapshot-1.png)
-
-6. Po zakończeniu przywracania pliku zamknij stronę migawki i wróć do strony **myshare** > **myDirectory**. Plik powinien znajdować się na swoim oryginalnym miejscu.
-
-### <a name="delete-a-share-snapshot"></a>Usuwanie migawki udziału
-Aby usunąć migawkę udziału, [przejdź do listy migawek udziałów](#list-and-browse-a-share-snapshot). Kliknij pole wyboru obok nazwy odpowiedniej migawki udziału, a następnie wybierz przycisk **Usuń**.
-
-![Zrzut ekranu przedstawiający usuwanie migawki udziału](media/storage-how-to-use-files-portal/delete-snapshot-1.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 
 ## <a name="next-steps"></a>Następne kroki
-- [Zarządzanie udziałami plików przy użyciu programu Azure PowerShell](storage-how-to-use-files-powershell.md)
-- [Zarządzanie udziałami plików za pomocą interfejsu wiersza polecenia platformy Azure](storage-how-to-use-files-cli.md)
-- [Zarządzanie udziałami plików za pomocą Eksploratora usługi Azure Storage](storage-how-to-use-files-storage-explorer.md)
-- [Planowanie wdrożenia usługi Azure Files](storage-files-planning.md)
+
+> [!div class="nextstepaction"]
+> [Co to jest usługa Azure Files?](storage-files-introduction.md)

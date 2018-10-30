@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: tłumaczenie tekstu — tłumaczenie tekstu w usłudze Translator, C#'
+title: 'Szybki start: tłumaczenie tekstu, C# — tłumaczenie tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start przetłumaczysz tekst z jednego języka na inny przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka C#.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: 2b524591f3af32e566b0ca364626daf7aaf4ace2
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.author: erhopf
+ms.openlocfilehash: ffd46969bd7333d2422654c8683f66ff313706c2
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318456"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648466"
 ---
-# <a name="quickstart-translate-text-with-c35"></a>Szybki start: tłumaczenie tekstu za pomocą języka C&#35;
+# <a name="quickstart-translate-text-with-the-translator-text-rest-api-c"></a>Szybki start: tłumaczenie tekstu przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (C#)
 
 W tym przewodniku Szybki start przetłumaczysz tekst z jednego języka na inny przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 

@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: astay;cephalin;kraigb
 ms.custom: mvc
-ms.openlocfilehash: 71cbf0bb31a72e3b257f25c159d9d9eea31dbfbb
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: a29f0f4be6286f8acf367a3ea0b4b0e6b31e7d98
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901622"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406470"
 ---
 # <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>Konfigurowanie aplikacji języka Python dla usługi Azure App Service w systemie Linux
 
@@ -74,10 +74,16 @@ Jeśli główny moduł aplikacji znajduje się w innym pliku, użyj innej nazwy 
 
 ### <a name="custom-startup-command"></a>Niestandardowe polecenie uruchamiania
 
-Aby kontrolować zachowanie kontenera podczas uruchamiania, możesz podać niestandardowe polecenie uruchamiania serwera Gunicorn. Jeśli na przykład masz aplikację Flask z głównym modułem *hello.py*, a obiekt aplikacji Flask nosi nazwę `myapp`, to polecenie wygląda następująco:
+Aby kontrolować zachowanie kontenera podczas uruchamiania, możesz podać niestandardowe polecenie uruchamiania serwera Gunicorn. Jeśli na przykład masz aplikację Flask z modułem głównym *hello.py*, a obiekt aplikacji Flask w tym pliku nosi nazwę `myapp`, to polecenie wygląda następująco:
 
 ```bash
 gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
+```
+
+Jeśli moduł główny znajduje się w podfolderze, takim jak `website`, określ ten folder za pomocą argumentu `--chdir`:
+
+```bash
+gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
 Możesz też dodać do polecenia inne argumenty dla serwera Gunicorn, takie jak `--workers=4`. Aby uzyskać więcej informacji, zobacz [Running Gunicorn](http://docs.gunicorn.org/en/stable/run.html) (Uruchamianie serwera Gunicorn) (docs.gunicorn.org).
@@ -105,9 +111,10 @@ Jeśli usługa App Service nie znajdzie polecenia niestandardowego, aplikacji Dj
 
 - **Po wdrożeniu własnego kodu aplikacji wyświetlana jest aplikacja domyślna.**  Aplikacja domyślna jest wyświetlana dlatego, że kod Twojej aplikacji nie został faktycznie wdrożony w usłudze App Service albo usługa App Service nie znalazła kodu aplikacji i zamiast niej uruchomiła aplikację domyślną.
   - Uruchom ponownie usługę App Service, poczekaj 15–20 sekund i sprawdź ponownie aplikację.
-  - Połącz się bezpośrednio z usługą App Service przy użyciu konsoli SSH lub Kudu, a następnie sprawdź, czy Twoje pliki znajdują się w katalogu *site/wwwroot*. Jeśli pliki nie istnieją, sprawdź proces wdrażania i ponownie wdróż aplikację.
+  - Upewnij się, że używasz usługi App Service dla systemu Linux, a nie wystąpienia opartego na systemie Windows. W interfejsie wiersza polecenia platformy Azure uruchom polecenie `az webapp show --resource-group <resource_group_name> --name <app_service_name> --query kind`, zastępując zmienne `<resource_group_name>` i `<app_service_name>` odpowiednimi wartościami. Powinny zostać wyświetlone dane wyjściowe `app,linux`. W przeciwnym razie ponownie utwórz usługę App Service i wybierz system Linux.
+    - Połącz się bezpośrednio z usługą App Service przy użyciu konsoli SSH lub Kudu, a następnie sprawdź, czy Twoje pliki znajdują się w katalogu *site/wwwroot*. Jeśli pliki nie istnieją, sprawdź proces wdrażania i ponownie wdróż aplikację.
   - Jeśli pliki istnieją, oznacza to, że usługa App Service nie mogła zidentyfikować określonego pliku startowego. Sprawdź, czy aplikacja ma strukturę zgodną z oczekiwaniami usługi App Service dla platformy [Django](#django-app) lub [Flask](#flask-app), albo użyj [niestandardowego polecenia uruchamiania](#custom-startup-command).
-
+  
 - **W przeglądarce jest wyświetlany komunikat „Usługa niedostępna”.** W przeglądarce upłynął limit czasu oczekiwania na odpowiedź usługi App Service, co wskazuje, że usługa App Service uruchomiła serwer Gunicorn, ale argumenty określające kod aplikacji są niepoprawne.
   - Odśwież okno przeglądarki, zwłaszcza jeśli korzystasz z niższych warstw cenowych w planie usługi App Service. Na przykład podczas korzystania z warstw bezpłatnych aplikacja może być uruchamiana dłużej i zacznie odpowiadać po odświeżeniu okna przeglądarki.
   - Sprawdź, czy aplikacja ma strukturę zgodną z oczekiwaniami usługi App Service dla platformy [Django](#django-app) lub [Flask](#flask-app), albo użyj [niestandardowego polecenia uruchamiania](#custom-startup-command).

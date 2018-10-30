@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/05/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 6d178fe3caa121c51ef081708ca440113871938e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 249e286b16b78643c33b567f705a4c92991f5553
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996914"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404872"
 ---
 # <a name="monitor-a-kubernetes-cluster-with-log-analytics"></a>Monitorowanie klastra usługi Kubernetes przy użyciu usługi Log Analytics
 
@@ -149,7 +149,7 @@ Aby zainstalować rozwiązanie Containers przy użyciu [portalu usługi Log Anal
 
 W portalu usługi Log Analytics wyszukaj kafelek podsumowania **Containers** na pulpicie nawigacyjnym. Kliknij kafelek, aby wyświetlić szczegółowe informacje, w tym zdarzenia kontenera, błędy, stan, spis obrazów oraz użycie procesora i pamięci. Aby uzyskać bardziej szczegółowe informacje, kliknij wiersz w dowolnym kafelku lub [przeszukaj dzienniki](../../log-analytics/log-analytics-log-searches.md).
 
-![Pulpit nawigacyjny rozwiązania Containers w portalu pakietu OMS](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
+![Pulpit nawigacyjny rozwiązania Containers w witrynie Azure Portal](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
 
 Podobnie w witrynie Azure Portal wybierz pozycję **Log Analytics** i wybierz nazwę obszaru roboczego. Aby wyświetlić kafelek podsumowania **Containers**, kliknij pozycję **Rozwiązania** > **Containers**. Aby wyświetlić szczegóły, kliknij kafelek.
 

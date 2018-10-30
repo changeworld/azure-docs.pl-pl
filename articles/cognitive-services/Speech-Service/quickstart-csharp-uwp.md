@@ -1,33 +1,34 @@
 ---
-title: 'Szybki start: rozpoznawanie mowy w języku C# w aplikacji platformy UWP przy użyciu zestawu Speech SDK w usłudze Cognitive Services'
-titleSuffix: Microsoft Cognitive Services
-description: Dowiedz się, jak rozpoznawać mowę w aplikacji platformy UWP przy użyciu zestawu Speech SDK w usłudze Cognitive Services
+title: 'Szybki start: rozpoznawanie mowy w języku C# w aplikacji platformy UWP przy użyciu zestawu SDK usługi Mowa'
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak rozpoznawać mowę w aplikacji platformy UWP przy użyciu zestawu SDK usługi Mowa
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: d9a90869e060d2f8f1a1c522a4528e74841caada
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 1c6e0521f37e85bcb3395de0ad1e9d463125e17f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339618"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469802"
 ---
-# <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Szybki start: rozpoznawanie mowy w aplikacji platformy UWP przy użyciu zestawu Speech SDK
+# <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Szybki start: rozpoznawanie mowy w aplikacji platformy UWP przy użyciu zestawu SDK usługi Mowa
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-W tym artykule utworzysz aplikację w języku C# dla platformy uniwersalnej systemu Windows (UWP) przy użyciu zestawu [Speech SDK](speech-sdk.md) usługi Cognitive Services. Transkrypcja mowy na tekst będzie się odbywać w czasie rzeczywistym podczas korzystania z mikrofonu urządzenia. Aplikacja będzie kompilowana przy użyciu [pakietu NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017 (w dowolnej wersji).
+W tym artykule utworzysz aplikację w języku C# dla platformy uniwersalnej systemu Windows (UWP) przy użyciu [zestawu SDK usługi Mowa](speech-sdk.md) z usługi Cognitive Services. Transkrypcja mowy na tekst będzie się odbywać w czasie rzeczywistym podczas korzystania z mikrofonu urządzenia. Aplikacja będzie kompilowana przy użyciu [pakietu NuGet zestawu SDK usługi Mowa](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017 (w dowolnej wersji).
 
 > [!NOTE]
 > Platforma uniwersalna systemu Windows pozwala tworzyć aplikacje, które działają na dowolnym urządzeniu z systemem Windows 10, m.in. na komputerach PC, konsolach Xbox, urządzeniach Surface Hub itp.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do ukończenia kroków tego przewodnika Szybki start potrzebujesz klucza subskrypcji usługi rozpoznawania mowy. Możesz go uzyskać bezpłatnie. Aby uzyskać szczegółowe informacje, zobacz temat [Try the Speech service for free](get-started.md) (Wypróbuj bezpłatnie usługę rozpoznawania mowy).
+Do ukończenia kroków tego przewodnika Szybki start potrzebujesz klucza subskrypcji usługi Mowa. Możesz go uzyskać bezpłatnie. Aby uzyskać szczegółowe informacje, zobacz temat [Try the Speech service for free](get-started.md) (Wypróbuj bezpłatnie usługę Mowa).
 
 ## <a name="create-a-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
@@ -52,9 +53,9 @@ Do ukończenia kroków tego przewodnika Szybki start potrzebujesz klucza subskry
    ![Zrzut ekranu paska narzędzi programu Visual Studio z wyróżnioną opcją x64](media/sdk/qs-csharp-uwp-03-switch-to-x64.png)
 
    > [!NOTE]
-   > Zestaw Speech SDK obsługuje wyłącznie procesory zgodne z technologią Intel. Architektura ARM nie jest obecnie obsługiwana.
+   > Zestaw SDK usługi Mowa obsługuje wyłącznie procesory zgodne z technologią Intel. Architektura ARM nie jest obecnie obsługiwana.
 
-1. Instalowanie i odwoływanie się do [zestawu Speech SDK pakietu NuGet](https://aka.ms/csspeech/nuget). W Eksploratorze rozwiązań kliknij rozwiązanie prawym przyciskiem myszy, a następnie wybierz pozycję **Zarządzaj pakietami NuGet dla rozwiązania**.
+1. Instalowanie i odwoływanie się do [zestawu SDK usługi Mowa pakietu NuGet](https://aka.ms/csspeech/nuget). W Eksploratorze rozwiązań kliknij rozwiązanie prawym przyciskiem myszy, a następnie wybierz pozycję **Zarządzaj pakietami NuGet dla rozwiązania**.
 
     ![Zrzut ekranu Eksploratora rozwiązań z wyróżnioną opcją Zarządzaj pakietami NuGet rozwiązania](media/sdk/qs-csharp-uwp-04-manage-nuget-packages.png)
 
@@ -107,7 +108,7 @@ Do ukończenia kroków tego przewodnika Szybki start potrzebujesz klucza subskry
 
     ![Zrzut ekranu żądania uprawnień](media/sdk/qs-csharp-uwp-10-access-prompt.png "Uruchom aplikację do debugowania")
 
-1. Wybierz opcję **Speech recognition with microphone input** (Rozpoznawanie mowy z użyciem danych wejściowych z mikrofonu) i wypowiedz zwrot lub zdanie w języku angielskim do mikrofonu urządzenia. Mowa zostanie przesłana do usługi rozpoznawania mowy i transkrybowana na tekst, który zostanie wyświetlony w tym oknie.
+1. Wybierz opcję **Speech recognition with microphone input** (Rozpoznawanie mowy z użyciem danych wejściowych z mikrofonu) i wypowiedz zwrot lub zdanie w języku angielskim do mikrofonu urządzenia. Mowa zostanie przesłana do usługi Mowa i transkrybowana na tekst, który zostanie wyświetlony w tym oknie.
 
     ![Zrzut ekranu interfejsu użytkownika rozpoznawania mowy](media/sdk/qs-csharp-uwp-11-ui-result.png)
 
@@ -117,7 +118,7 @@ Poszukaj tego przykładu w folderze `quickstart/csharp-uwp`.
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Recognize intents from speech by using the Speech SDK for C#](how-to-recognize-intents-from-speech-csharp.md) (Rozpoznawanie intencji z mowy przy użyciu zestawu Speech SDK dla języka C#)
+> [Recognize intents from speech by using the Speech SDK for C#](how-to-recognize-intents-from-speech-csharp.md) (Rozpoznawanie intencji z mowy przy użyciu zestawu SDK usługi Mowa dla języka C#)
 
 ## <a name="see-also"></a>Zobacz też
 

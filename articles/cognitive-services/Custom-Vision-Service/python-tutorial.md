@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: tworzenie projektu klasyfikacji obrazów – Custom Vision Service, Python'
+title: 'Samouczek: tworzenie projektu klasyfikacji obrazów przy użyciu zestawu Custom Vision SDK dla języka Python'
 titlesuffix: Azure Cognitive Services
 description: Utwórz projekt, dodaj tagi, prześlij obrazy, wyszkol projekt i wykonaj przewidywanie przy użyciu domyślnego punktu końcowego.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: 14b805a60637a889698132e169d5a41670a8bce0
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 96125ba1c54f742bb9ddf32a1588173217be0766
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363381"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953116"
 ---
-# <a name="tutorial-create-an-image-classification-project-using-the-custom-vision-service-with-python"></a>Samouczek: tworzenie projektu klasyfikacji obrazów – Custom Vision Service, Python
+# <a name="tutorial-create-an-image-classification-project-with-the-custom-vision-sdk-for-python"></a>Samouczek: tworzenie projektu klasyfikacji obrazów przy użyciu zestawu Custom Vision SDK dla języka Python
 
 Dowiedz się, jak utworzyć projekt klasyfikacji obrazów za pomocą usługi Custom Vision Service i prostego skryptu języka Python. Po jego utworzeniu możesz dodać tagi, przesłać obrazy, wyszkolić projekt, uzyskać adres URL domyślnego punktu końcowego przewidywania projektu i użyć go do programowego przetestowania obrazu. Ta przykładowa aplikacja open source może posłużyć jako szablon do utworzenia własnej aplikacji przy użyciu interfejsu API Custom Vision.
 

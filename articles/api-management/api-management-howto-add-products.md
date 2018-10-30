@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 4f5097f8555d0345add7de8a0f648190bd4e1e00
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 0346cf456c53b14fd3c5b14b2e40eddd8b89fe4d
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41920881"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465954"
 ---
 # <a name="create-and-publish-a-product"></a>Tworzenie i publikowanie produktu  
 
@@ -31,7 +31,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Tworzenie i publikowanie produktu
 > * Dodawanie interfejsu API do produktu
 
-![dodawanie produktu](media/api-management-howto-add-products/added-product.png)
+![Samouczek dotyczący dodawania produktu](media/api-management-howto-add-products/added-product.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -40,10 +40,10 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="create-and-publish-a-product"></a>Tworzenie i publikowanie produktu
 
+![Dodawanie produktu](media/api-management-howto-add-products/02-create-publish-product-01.png)
+
 1. Kliknij pozycję **Produkty** w menu po lewej stronie, aby wyświetlić stronę **Produkty**.
 2. Kliknij pozycję **+ Dodaj**.
-
-    ![dodany produkt](media/api-management-howto-add-products/add-product.png)
 
     Podczas dodawania produktu należy podać następujące informacje: 
 
@@ -77,7 +77,7 @@ Przed uzyskaniem dostępu do interfejsu API deweloperzy muszą najpierw zasubskr
 
 ### <a name="add-an-api-to-an-existing-product"></a>Dodawanie interfejsu API do istniejącego produktu
 
-![dodawanie interfejsu API produktu](media/api-management-howto-add-products/add-product-api.png)
+![dodawanie interfejsu API produktu](media/api-management-howto-add-products/02-create-publish-product-02.png)
 
 1. Z poziomu karty **Produkty** wybierz produkt.
 2. Przejdź do karty **Interfejsy API**.

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: tworzenie projektu wykrywania obiektów — interfejs API Custom Vision, Java'
+title: 'Samouczek: tworzenie projektu wykrywania obiektów przy użyciu zestawu Custom Vision SDK dla języka Java — Custom Vision Service'
 titlesuffix: Azure Cognitive Services
 description: Utwórz projekt, dodaj tagi, prześlij obrazy, wyszkol projekt i wykonaj przewidywanie przy użyciu domyślnego punktu końcowego.
 services: cognitive-services
@@ -10,27 +10,27 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: 661242e4962a8218c48d7ea66d8a6f728b5154c8
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: d4af3315cfca18da594730cc402236684f81bfc8
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365033"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957339"
 ---
-# <a name="tutorial-build-an-object-detection-project-with-java"></a>Samouczek: tworzenie projektu wykrywania obiektów w języku Java
+# <a name="tutorial-create-an-object-detection-project-with-the-custom-vision-sdk-for-java"></a>Samouczek: tworzenie projektu wykrywania obiektów przy użyciu zestawu Custom Vision SDK dla języka Java
 
 Poznaj podstawową aplikację w języku Java, która używa interfejsu API przetwarzania obrazów do utworzenia projektu wykrywania obiektów. Po jego utworzeniu możesz dodać oznaczone regiony, przesłać obrazy, wyszkolić projekt, uzyskać adres URL domyślnego punktu końcowego przewidywania i użyć tego punktu końcowego do programowego przetestowania obrazu. Ta przykładowa aplikacja open source może posłużyć jako szablon do utworzenia własnej aplikacji przy użyciu interfejsu API Custom Vision.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby korzystać z tego samouczka, wykonaj następujące czynności:
+Aby korzystać z tego samouczka, należy wykonać następujące czynności:
 
 - Zainstaluj pakiet JDK 7 lub 8.
 - Zainstaluj narzędzie Maven.
 
 ## <a name="install-the-custom-vision-service-sdk"></a>Zainstaluj pakiet Custom Vision Service SDK
 
-Pakiet Custom Vision SDK można zainstalować z centralnego repozytorium Maven:
+Pakiet SDK Custom Vision można zainstalować z centralnego repozytorium Maven:
 * [Pakiet SDK do szkolenia](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
 * [Pakiet SDK do przewidywania](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
 
@@ -89,7 +89,7 @@ Project project = trainer.createProject()
     .execute();
 ```
 
-## <a name="add-tags-to-your-project"></a>Dodawanie tagów do projektu
+## <a name="add-tags-to-your-project"></a>Dodanie tagów do projektu
 
 ```java
 // create fork tag
@@ -221,7 +221,7 @@ private static byte[] GetImage(String folder, String fileName)
 
 ## <a name="train-the-project"></a>Szkolenie projektu
 
-Spowoduje to utworzenie pierwszej iteracji w projekcie i oznaczenie jej jako domyślnej. 
+Utworzenie pierwszej iteracji w projekcie i oznaczenie jej jako domyślnej. 
 
 ```java
 System.out.println("Training...");
@@ -236,7 +236,7 @@ System.out.println("Training Status: "+ iteration.status());
 trainer.updateIteration(project.id(), iteration.id(), iteration.withIsDefault(true));
 ```
 
-## <a name="get-and-use-the-default-prediction-endpoint"></a>Uzyskanie adresu domyślnego punktu końcowego do przewidywania
+## <a name="get-and-use-the-default-prediction-endpoint"></a>Uzyskanie domyślnego punktu końcowego do przewidywania i użycie go
 
 > [!IMPORTANT]
 > Ustaw `predictionApiKey` na wartość uzyskanego wcześniej klucza do przewidywania.
