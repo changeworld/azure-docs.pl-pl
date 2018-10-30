@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: e9ed0ba8d24f30f67dbb315848dc4c260cae4f50
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 7e586e7e3ec8c16dcd215dbc11251d1b9fe928e1
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391372"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457075"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Przechodzenie do trybu failover i powrót po awarii maszyn wirtualnych VMware i fizycznych serwerów replikowanych na platformie Azure
 
@@ -93,13 +93,12 @@ Wykonaj czynności opisane [tutaj](site-recovery-failover-to-azure-troubleshoot.
 
 ## <a name="preparing-for-reprotection-of-azure-vm"></a>Przygotowywanie do ponownego włączenia ochrony maszyny wirtualnej platformy Azure
 
-### <a name="create-a-process-server-in-azure"></a>Tworzenie serwera przetwarzania na platformie Azure
+- W tym celu możesz użyć lokalnego serwera przetwarzania (wbudowanego serwera przetwarzania), który jest automatycznie instalowany na serwerze konfiguracji, **jeśli masz połączenie Azure ExpressRoute**.
 
-Serwer przetwarzania otrzymuje dane z maszyny wirtualnej Azure i wysyła je do lokacji lokalnej. Pomiędzy serwerem przetwarzania a chronioną maszyną wirtualną wymagana jest sieć z małym opóźnieniem.
+> [!IMPORTANT]
+> Jeśli masz połączenie sieci VPN między środowiskiem lokalnym i platformą Azure, musisz skonfigurować maszynę wirtualną platformy Azure jako serwer przetwarzania na potrzeby ponownego włączania ochrony i powrotu po awarii. Aby skonfigurować serwer przetwarzania na platformie Azure, postępuj według instrukcji opisanych w [tym artykule](vmware-azure-set-up-process-server-azure.md).
 
-- Jeśli masz połączenie Azure ExpressRoute, możesz użyć do celów testowych lokalnego serwera przetwarzania (z wbudowanym serwerem przetwarzania), który jest automatycznie instalowany na serwerze konfiguracji.
-- Jeśli masz połączenie VPN lub jeśli przeprowadzasz powrót po awarii w środowisku produkcyjnym, musisz na potrzeby powrotu po awarii skonfigurować maszynę wirtualną Azure jako serwer przetwarzania na platformie Azure.
-- Aby skonfigurować serwer przetwarzania na platformie Azure, postępuj według instrukcji opisanych w [tym artykule](vmware-azure-set-up-process-server-azure.md).
+Więcej informacji na temat wymagań wstępnych dotyczących ponownego włączania ochrony i powrotu po awarii zawiera ta [sekcja](vmware-azure-reprotect.md##before-you-begin). 
 
 ### <a name="configure-the-master-target-server"></a>Konfigurowanie głównego serwera docelowego
 

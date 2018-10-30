@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: d695627efddc0ca02c3d9299f4b8a13bdc85e8fb
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 3094075607f096200ce1fb7ad499776bdcd3e093
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42057712"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233603"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Przenoszenie danych między źródłami lokalnymi i w chmurze przy użyciu bramy zarządzania danymi
 > [!NOTE]
@@ -65,7 +65,7 @@ W tym kroku użyjesz witryny Azure portal, aby utworzyć wystąpienie usługi Az
    > [!IMPORTANT]
    > Nazwa fabryki danych Azure musi być globalnie unikatowa. Jeśli zostanie wyświetlony błąd: **nazwa fabryki danych "ADFTutorialOnPremDF" nie jest dostępna**, Zmień nazwę fabryki danych (na przykład yournameADFTutorialOnPremDF) i spróbuj utworzyć ją ponownie. Użyj tej nazwy zamiast ADFTutorialOnPremDF podczas wykonywania pozostałych kroków w ramach tego samouczka.
    >
-   > W przyszłości nazwa fabryki danych może zostać zarejestrowana jako nazwa **DNS**, a wówczas stanie się widoczna publicznie.
+   > Nazwa fabryki danych może zostać zarejestrowana jako **DNS** publicaly nazwy w przyszłości, a wówczas stanie się widoczny.
    >
    >
 4. Wybierz **subskrypcję Azure**, w ramach której chcesz utworzyć fabrykę danych.
@@ -304,7 +304,7 @@ W tym kroku utworzysz zestawy danych wejściowych i wyjściowych, które repreze
 ## <a name="create-pipeline"></a>Tworzenie potoku
 W tym kroku opisano tworzenie **potoku** przy użyciu jednego **działania kopiowania** , który używa **EmpOnPremSQLTable** jako dane wejściowe i **OutputBlobTable** jako dane wyjściowe.
 
-1. W edytorze fabryki danych kliknij **... Więcej** i **Nowy potok**.
+1. W edytorze fabryki danych kliknij **... Więcej** i **Nowy potok.
 2. Zastąp kod JSON w prawym okienku następującym tekstem:    
 
     ```JSON   
