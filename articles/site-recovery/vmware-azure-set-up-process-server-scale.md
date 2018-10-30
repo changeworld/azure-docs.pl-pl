@@ -1,21 +1,20 @@
 ---
-title: Konfigurowanie serwera przetwarzania na platformie Azure dla maszyny Wirtualnej VMware i serwera fizycznego powrotu po awarii przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania serwera przetwarzania na platformie Azure, powrót po awarii maszyn wirtualnych platformy Azure do programu VMware.
-services: site-recovery
+title: Skonfigurować serwer przetwarzania na platformie Azure, aby zakończyć się niepowodzeniem w trakcie odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych z usługą Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak skonfigurować serwer przetwarzania na platformie Azure, aby zakończyć się niepowodzeniem powrót po awarii z platformy Azure do lokalnych podczas odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 641f671f23dde0bcc32ad1ef8343a5a84227c67f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 330f0197b8a7735043e93f00dc4baa5578f50228
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955387"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212237"
 ---
-# <a name="set-up-additional-process-servers-for-scalability"></a>Konfigurowanie dodatkowych serwerów przetwarzania w przypadku skalowalności
+# <a name="scale-for-failback-with-additional-process-servers"></a>Skalowanie na potrzeby powrotu po awarii przy użyciu dodatkowych serwerów przetwarzania
 
 Domyślnie, Jeśli replikujesz maszyny wirtualne VMware lub serwery fizyczne do platformy Azure za pomocą [Site Recovery](site-recovery-overview.md), serwer przetwarzania jest zainstalowany na komputerze z serwerem konfiguracji i służy do koordynowania innych transfer danych między Site Recovery i infrastruktury lokalnej. Aby zwiększyć wydajność i skalowanie w poziomie wdrożenie replikacji, możesz dodać autonomicznego dodatkowych serwerów przetwarzania. W tym artykule opisano, jak to zrobić.
 

@@ -1,23 +1,22 @@
 ---
-title: Macierz obsługi replikacji maszyn wirtualnych VMware lub serwerów fizycznych do lokacji dodatkowej programu VMware przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Zawiera podsumowanie obsługi replikacji serwera fizycznego/VMware do lokacji dodatkowej za pomocą usługi Azure Site Recovery
-services: site-recovery
+title: Macierz obsługi na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware lub serwerów fizycznych do lokacji dodatkowej programu VMware przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Zawiera podsumowanie obsługi odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych do lokacji dodatkowej za pomocą usługi Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 4df929e8a185a04aef5cb13f30c19b0db707e765
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 8406cf2b31b87cdb4f6c9b6ba3d06559cf1d4d41
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44021997"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209806"
 ---
-# <a name="support-matrix-for-replication-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Macierz obsługi replikacji maszyn wirtualnych programu VMware i serwerów fizycznych do lokacji dodatkowej
+# <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych do lokacji dodatkowej
 
-Ten artykuł zawiera podsumowanie, co jest obsługiwane w przypadku używania [usługi Azure Site Recovery](site-recovery-overview.md) usługę, aby replikować maszyny wirtualne VMware lub systemu Windows/Linux serwerów fizycznych do lokacji dodatkowej programu VMware.
+Ten artykuł zawiera podsumowanie, co jest obsługiwane w przypadku używania [usługi Azure Site Recovery](site-recovery-overview.md) usługi odzyskiwania po awarii maszyn wirtualnych VMware lub systemu Windows/Linux serwerów fizycznych do lokacji dodatkowej programu VMware.
 
 - Jeśli chcesz replikować maszyny wirtualne VMware lub serwery fizyczne do platformy Azure, zapoznaj się z [tej macierzy obsługi](vmware-physical-azure-support-matrix.md).
 - Jeśli chcesz replikować maszyny wirtualne funkcji Hyper-V do lokacji dodatkowej, zapoznaj się z [tej macierzy obsługi](hyper-v-azure-support-matrix.md).

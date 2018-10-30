@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/19/2018
+ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 309dddcea1022d9f14c1d4492f5564f2a4ad3b6f
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 69818fdb8124b9afa176ccd4dfd74cf0f2f4b346
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498508"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233807"
 ---
 # <a name="azure-network-security-overview"></a>Omówienie zabezpieczeń sieci platformy Azure
 
@@ -29,12 +29,15 @@ W tym artykule omówiono niektóre z opcji oferowanych przez platformę Azure w 
 
 * Sieci platformy Azure
 * Kontrola dostępu do sieci
+* Azure Firewall
 * Zabezpieczanie połączenia zdalnego dostępu i między środowiskami lokalnymi
 * Dostępność
 * Rozpoznawanie nazw
 * Architektura sieci (DMZ) obwodowej
-* Monitorowanie i wykrywanie zagrożeń
 * Azure DDoS Protection
+* Drzwi wejściowe platformy Azure
+* Usługa Traffic Manager
+* Monitorowanie i wykrywanie zagrożeń
 
 ## <a name="azure-networking"></a>Sieci platformy Azure
 
@@ -126,6 +129,19 @@ Na przykład wymagań dotyczących zabezpieczeń mogą obejmować:
 
 Te funkcje zabezpieczeń sieci rozszerzone dostęp za pomocą rozwiązania partnerów platformy Azure. Można znaleźć najbardziej aktualne sieci partnerów platformy Azure rozwiązania w zakresie bezpieczeństwa, odwiedzając [portalu Azure Marketplace](https://azure.microsoft.com/marketplace/)i wyszukując "zabezpieczenia" i "" zabezpieczenia sieciowe.
 
+## <a name="azure-firewall"></a>Azure Firewall
+
+Azure Firewall to zarządzana, sieciowa usługa zabezpieczeń oparta na chmurze, która zabezpiecza zasoby usługi Azure Virtual Network. Jest to w pełni stanowa zapora oferowana jako usługa, z wbudowaną wysoką dostępnością i możliwością nieograniczonego skalowania w chmurze. Niektóre funkcje:
+
+* Wysoka dostępność
+* Skalowalność w chmurze
+* Reguły filtrowania w pełni kwalifikowanych nazw domen aplikacji
+* Reguły filtrowania ruchu sieciowego
+
+Więcej informacji:
+
+* [Omówienie zapory platformy Azure](../firewall/overview.md)
+
 ## <a name="secure-remote-access-and-cross-premises-connectivity"></a>Zabezpieczanie połączenia zdalnego dostępu i między środowiskami lokalnymi
 
 Instalacji, konfiguracji i zarządzania Twoje potrzeby zasobów platformy Azure, można to robić zdalnie. Ponadto, możesz chcieć wdrażać [hybrydowego IT](http://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) rozwiązania mające składników lokalnych i w chmurze publicznej Azure. Scenariusze te wymagają bezpiecznego dostępu zdalnego.
@@ -139,9 +155,15 @@ Sieci platformy Azure obsługuje następujące scenariusze bezpieczny dostęp zd
 
 ### <a name="connect-individual-workstations-to-a-virtual-network"></a>Połącz poszczególnych stacji roboczych z siecią wirtualną
 
-Możesz chcieć umożliwić indywidualnych deweloperów i pracowników operacyjnych. Ci do zarządzania maszynami wirtualnymi i usługami na platformie Azure. Załóżmy na przykład, że musisz mieć dostęp do maszyny wirtualnej w sieci wirtualnej. Jednak zasady zabezpieczeń nie zezwala na połączenie RDP lub SSH dostępu zdalnego z poszczególnymi maszynami wirtualnymi. W takim przypadku można użyć połączenia sieci VPN typu punkt lokacja.
+Możesz chcieć umożliwić indywidualnych deweloperów i pracowników operacyjnych. Ci do zarządzania maszynami wirtualnymi i usługami na platformie Azure. Załóżmy na przykład, że musisz mieć dostęp do maszyny wirtualnej w sieci wirtualnej. Jednak zasady zabezpieczeń nie zezwala na połączenie RDP lub SSH dostępu zdalnego z poszczególnymi maszynami wirtualnymi. W takim przypadku można użyć [sieci VPN typu punkt lokacja](../vpn-gateway/point-to-site-about.md) połączenia.
 
-Połączenie VPN punkt lokacja używa [sieć VPN SSTP](https://technet.microsoft.com/library/cc731352.aspx) protokołu umożliwiające konfigurowanie prywatność i bezpieczeństwo połączenia między użytkownikiem i sieci wirtualnej. Po nawiązaniu połączenia sieci VPN, użytkownik może nawiązać połączenie RDP lub SSH za pośrednictwem łącza sieci VPN do maszyn wirtualnych w sieci wirtualnej. (Przy założeniu, że użytkownik uwierzytelni i jest autoryzowany).
+Połączenia sieci VPN typu punkt lokacja można skonfigurować prywatność i bezpieczeństwo połączenie między użytkownikiem i sieci wirtualnej. Po nawiązaniu połączenia sieci VPN, użytkownik może nawiązać połączenie RDP lub SSH za pośrednictwem łącza sieci VPN do maszyn wirtualnych w sieci wirtualnej. (Przy założeniu, że użytkownik uwierzytelni i jest autoryzowany). Obsługuje sieci VPN typu punkt lokacja:
+
+* Zabezpiecz SSTP Socket Tunneling Protocol (), protokołem opartym na protokole SSL sieci VPN. Rozwiązanie SSL sieci VPN może przechodzić przez zapory, ponieważ większość zapór otwiera port 443 protokołu TCP, który używa protokołu SSL. Protokół SSTP jest obsługiwana tylko na urządzeniach Windows. Platforma Azure obsługuje wszystkich wersji systemu Windows, który ma protokołu SSTP (Windows 7 i nowsze).
+
+* Sieć VPN z protokołem IKEv2 to oparte na standardach rozwiązanie sieci VPN korzystające z protokołu IPsec. Sieci VPN z protokołem IKEv2 można używać do łączenia z urządzeniami Mac (z systemem OSX 10.11 lub nowszym).
+
+* [OpenVPN](https://azure.microsoft.com/updates/openvpn-support-for-azure-vpn-gateways/)
 
 Więcej informacji:
 
@@ -165,11 +187,13 @@ Połączenia sieci VPN typu punkt lokacja i lokacja lokacja są skuteczne umożl
 * Połączenia sieci VPN przenoszenie danych za pośrednictwem Internetu. To udostępnia te połączenia na potencjalne problemy związane z przenoszeniem danych przez sieć publiczną. Ponadto nie można zagwarantować niezawodności i dostępności dla połączeń internetowych.
 * Połączenia sieci VPN do sieci wirtualnych mogą nie mieć przepustowości dla niektórych aplikacji i celów, w miarę ich maksymalna się na około 200 MB/s.
 
-Organizacje, które zazwyczaj należy najwyższy poziom bezpieczeństwa i dostępności do ustanawiania połączeń obejmujących wiele lokalizacji za pomocą dedykowanego łącza sieci WAN połączyć z lokacjami zdalnymi. Azure oferuje możliwość korzystania z dedykowanych łącza sieci WAN, która umożliwia łączenie sieci lokalnej z siecią wirtualną. Usługa Azure ExpressRoute umożliwia to.
+Organizacje, które zazwyczaj należy najwyższy poziom bezpieczeństwa i dostępności do ustanawiania połączeń obejmujących wiele lokalizacji za pomocą dedykowanego łącza sieci WAN połączyć z lokacjami zdalnymi. Azure oferuje możliwość korzystania z dedykowanych łącza sieci WAN, która umożliwia łączenie sieci lokalnej z siecią wirtualną. Usługa Azure ExpressRoute Express route bezpośrednie i Express route globalny zasięg włączyć tę opcję.
 
 Więcej informacji:
 
 * [ExpressRoute — opis techniczny](../expressroute/expressroute-introduction.md)
+* [Bezpośrednie z usługi ExpressRoute](../expressroute/expressroute-erdirect-about.md)
+* [Express route globalny zasięg](..//expressroute/expressroute-global-reach.md)
 
 ### <a name="connect-virtual-networks-to-each-other"></a>Łączenie sieci wirtualnych między sobą
 
@@ -287,6 +311,46 @@ Więcej informacji:
 
 * [Zabezpieczenia usług firmy Microsoft w chmurze i sieci](../best-practices-network-security.md)
 
+## <a name="azure-ddos-protection"></a>Azure DDoS Protection
+
+Ataki typu „rozproszona odmowa usługi” (Distributed Denial of Service, DDoS) należą do największych obaw związanych z dostępnością i zabezpieczeniami wśród klientów, którzy planują przeniesienie swoich aplikacji do chmury. Atak DDoS polega na próbie wyczerpania zasobów aplikacji, przez co aplikacja staje się niedostępna dla zwykłych użytkowników. Celem ataku DDoS może być dowolny punkt końcowy publicznie dostępny za pośrednictwem Internetu.
+Firma Microsoft zapewnia ochronę przed atakami DDoS, znane jako **podstawowe** w ramach platformy Azure. To jest dostępna bez dodatkowych opłat i zawsze obejmuje środki zaradcze monitorowania i w czasie rzeczywistym w typowych ataków w poziomie sieci. Oprócz zabezpieczenia dołączone do ochrony przed atakami DDoS **podstawowe** można włączyć **standardowa** opcji. Usługa DDoS Protection standardowe funkcje obejmują:
+
+* **Integracja platformy natywnej:** natywnie zintegrowane na platformie Azure. Obejmuje konfigurację za pomocą witryny Azure portal. Standard ochrony przed atakami DDoS uwzględnia zasoby i konfiguracji zasobów.
+* **Kompleksowa ochrona:** uproszczony Konfiguracja chroni wszystkie zasoby w sieci wirtualnej tak szybko, jak standardowy ochrony przed atakami DDoS jest włączona. Brak definicji interwencji lub użytkownika jest wymagana. Standard ochrony przed atakami DDoS natychmiast i automatycznie minimalizuje skuteczność ataku, po jego wykryciu.
+* **Zawsze włączone monitorowanie ruchu:** Twoich wzorców ruchu aplikacji mają być monitorowane 24 godzin dziennie, 7 dni w tygodniu, wyszukiwanie wskaźników ataki DDoS. Środki zaradcze odbywa się po przekroczeniu zasady ochrony.
+* **Raporty ograniczania ryzyka ataków** raporty ograniczania ryzyka ataków umożliwia uzyskanie szczegółowych informacji dotyczących ataków ukierunkowanych na Twoje zasoby sieci zagregowane dane przepływu.
+* **Dzienniki przepływu ograniczania ryzyka ataków** dzienników przepływu ograniczania ryzyka ataków umożliwiają przeglądanie porzuconych ruchu, przekazane ruchu i inne dane ataku w niemal w czasie rzeczywistym podczas aktywnego ataków DDoS.
+* **Dostrajanie adaptacyjne:** ruchu inteligentne profilowanie uzyskuje informacje o ruchu danej aplikacji wraz z upływem czasu i wybiera i aktualizuje profil, który jest najbardziej odpowiedni dla Twojej usługi. Profil, który dostosowuje się zgodnie z ruchem zmienia się wraz z upływem czasu. Ochrona warstwy 7 warstwy 3: zapewnia ochronę przed atakami DDoS pełnego stosu, gdy jest używane z zapory aplikacji sieci web.
+* **Skaluj rozbudowane środki zaradcze:** 60 za pośrednictwem ataku różnych typów można zminimalizować globalnego pojemność, aby zapewnić ochronę przed największych znane ataki DDoS.
+* **Ataki metryki:** Summarized metryki z każdego ataku są dostępne za pośrednictwem usługi Azure Monitor.
+* **Alerty ataku:** alerty można skonfigurować na początku i Zatrzymaj atak i czasie trwania ataku przy użyciu ataku wbudowanych metryk. Alerty zintegrować operacyjne oprogramowania, takie jak Microsoft Azure Log Analytics, Splunk, usługi Azure Storage, poczty E-mail i witryny Azure portal.
+* **Gwarancja kosztów:** transferu danych i udokumentowane ataków DDoS, środki na usługi skalowania w poziomie aplikacji.
+* **Dynamiczne Rapid przed atakami DDoS** klientom wersji Standard ochrony przed atakami DDoS mają teraz dostęp do zespołu Rapid Response podczas aktywnego ataku. DRR może ułatwić badanie ataku, niestandardowe środki zaradcze podczas ataku i analizy po ataku.
+
+
+Więcej informacji:
+
+* [Omówienie ochrony przed atakami DDOS](../virtual-network/ddos-protection-overview.md)
+
+## <a name="azure-front-door"></a>Drzwi wejściowe platformy Azure
+
+Usługa drzwiami frontowymi umożliwia definiowanie, zarządzanie i monitorowanie globalnego routingu ruchu w sieci web. Optymalizuje Twój ruch routingu dla uzyskania najlepszej wydajności i wysokiej dostępności. Usługa Azure Front Door umożliwia tworzenie reguł zapory aplikacji internetowej w celu kontrolowania dostępu, aby chronić obciążenia protokołów HTTP/HTTPS przed wykorzystywaniem w oparciu o adresy IP, kod kraju i parametry protokołu HTTP klientów. Ponadto drzwiami frontowymi umożliwia również tworzenie reguł gruntownie złośliwym ruchem botów ograniczania szybkości, zawiera on odciążanie protokołu SSL i żądania dla protokołu HTTP/HTTPS przetwarzania w warstwie aplikacji.
+
+Samą platformę drzwiami frontowymi jest chroniony przez usługę Azure DDoS Protection podstawowa. W celu zastosowania dalszej ochrony przez atakami w warstwie sieci (protokół TCP/UDP) za pośrednictwem funkcji automatycznego dostrajania i ograniczania ryzyka można włączyć usługę Azure DDoS Protection w warstwie Standardowa w sieciach wirtualnych i zasobach zabezpieczeń. Drzwiami frontowymi jest zwrotny serwer proxy warstwy 7, umożliwia tylko ruch internetowy do przejścia do tworzenia kopii zakończenie serwerów i domyślnego blokowania z innych typów ruchu.
+
+Więcej informacji:
+
+* Aby uzyskać więcej informacji na cały zestaw Azure frontonu drzwiczki możliwości można przejrzeć [drzwi wejściowe platformy Azure — omówienie](../frontdoor/front-door-overview.md)
+
+## <a name="azure-traffic-manager"></a>Usługa Azure Traffic manager
+
+Usługa Azure Traffic Manager to oparty na systemie DNS moduł równoważenia obciążenia ruchu, który umożliwia optymalną dystrybucję ruchu do usług w wielu regionach platformy Azure na świecie, przy jednoczesnym zapewnieniu wysokiej dostępności i krótkiego czasu odpowiedzi. Usługa Traffic Manager używa systemu DNS do kierowania żądań klientów do najodpowiedniejszego punktu końcowego usługi w oparciu o metodę routingu ruchu i kondycję punktów końcowych. Punkt końcowy to dowolna internetowa usługa hostowana wewnątrz platformy Azure lub poza nią. Usługa Traffic manager monitoruje punktów końcowych i nie kierować ruch do żadnych punktów końcowych, które są niedostępne.
+
+Więcej informacji:
+
+* [Azure Traffic manager — omówienie](../traffic-manager/traffic-manager-overview.md)
+
 ## <a name="monitoring-and-threat-detection"></a>Monitorowanie i wykrywanie zagrożeń
 
 Platforma Azure udostępnia funkcje pomagające w tym obszarze klucza z wczesne wykrywanie, monitorowania i zbierania i przeglądania ruch sieciowy.
@@ -318,6 +382,14 @@ Więcej informacji:
 
 * [Wprowadzenie do usługi Azure Security Center](../security-center/security-center-intro.md)
 
+### <a name="virtual-network-tap"></a>Virtual Network TAP
+
+Usługa Azure virtual network TAP (Terminal punktem dostępu) umożliwia ciągłego strumienia do narzędzia sieci pakiet modułu zbierającego lub analizy ruchu sieciowego maszyny wirtualnej. Moduł zbierający lub narzędzia do analizy jest dostarczany przez partnera wirtualnego urządzenia sieciowego. Można użyć tej samej sieci wirtualnej zasobów wzorca TAP agregacji ruchu z wieloma interfejsami sieciowymi w tej samej lub różnych subskrypcji.
+
+Więcej informacji:
+
+* [PODSŁUCHU sieci wirtualnej](../virtual-network/virtual-network-tap-overview.md)
+
 ### <a name="logging"></a>Rejestrowanie
 
 Rejestrowanie na poziomie sieci jest funkcją klucza dla dowolnych scenariuszy zabezpieczeń sieci. Na platformie Azure możesz rejestrować informacje uzyskane dla sieciowych grup zabezpieczeń, można pobrać na poziomie sieci, rejestrowanie informacji. Za pomocą funkcji rejestrowania sieciowej grupy zabezpieczeń, można uzyskać informacji o:
@@ -330,21 +402,3 @@ Można również użyć [Microsoft Power BI](https://powerbi.microsoft.com/what-
 Więcej informacji:
 
 * [Usługa log Analytics dla sieciowych grup zabezpieczeń (NSG)](../virtual-network/virtual-network-nsg-manage-log.md)
-
-## <a name="azure-ddos-protection"></a>Azure DDoS Protection
-
-Rozproszone atakom typu odmowa usługi (DDoS) przedstawiono niektóre z największych problemów dostępność i bezpieczeństwo połączonego z klientów, którzy są przenoszone do ich aplikacji w chmurze. Próby ataków DDoS na wyczerpanie zasobów aplikacji, że aplikacja staje się niedostępny dla uprawnionych użytkowników. Ataki DDoS mogą być przeznaczone dla dowolnego punktu końcowego, który jest publicznie dostępny za pośrednictwem Internetu.
-Firma Microsoft zapewnia ochronę przed atakami DDoS, znane jako **podstawowe** w ramach platformy Azure. To jest dostępna bez dodatkowych opłat i zawsze obejmuje środki zaradcze monitorowania i w czasie rzeczywistym w typowych ataków w poziomie sieci. Oprócz zabezpieczenia dołączone do ochrony przed atakami DDoS **podstawowe** można włączyć **standardowa** opcji. Usługa DDoS Protection standardowe funkcje obejmują:
-
-* **Integracja platformy natywnej:** natywnie zintegrowane na platformie Azure. Obejmuje konfigurację za pomocą witryny Azure portal. Standard ochrony przed atakami DDoS uwzględnia zasoby i konfiguracji zasobów.
-* **Kompleksowa ochrona:** uproszczony Konfiguracja chroni wszystkie zasoby w sieci wirtualnej tak szybko, jak standardowy ochrony przed atakami DDoS jest włączona. Brak definicji interwencji lub użytkownika jest wymagana. Standard ochrony przed atakami DDoS natychmiast i automatycznie minimalizuje skuteczność ataku, po jego wykryciu.
-* **Zawsze włączone monitorowanie ruchu:** Twoich wzorców ruchu aplikacji mają być monitorowane 24 godzin dziennie, 7 dni w tygodniu, wyszukiwanie wskaźników ataki DDoS. Środki zaradcze odbywa się po przekroczeniu zasady ochrony.
-* **Dostrajanie adaptacyjne:** ruchu inteligentne profilowanie uzyskuje informacje o ruchu danej aplikacji wraz z upływem czasu i wybiera i aktualizuje profil, który jest najbardziej odpowiedni dla Twojej usługi. Profil, który dostosowuje się zgodnie z ruchem zmienia się wraz z upływem czasu. Ochrona warstwy 7 warstwy 3: zapewnia ochronę przed atakami DDoS pełnego stosu, gdy jest używane z zapory aplikacji sieci web.
-* **Skaluj rozbudowane środki zaradcze:** 60 za pośrednictwem ataku różnych typów można zminimalizować globalnego pojemność, aby zapewnić ochronę przed największych znane ataki DDoS.
-* **Ataki metryki:** Summarized metryki z każdego ataku są dostępne za pośrednictwem usługi Azure Monitor.
-* **Alerty ataku:** alerty można skonfigurować na początku i Zatrzymaj atak i czasie trwania ataku przy użyciu ataku wbudowanych metryk. Alerty zintegrować operacyjne oprogramowania, takie jak Microsoft Azure Log Analytics, Splunk, usługi Azure Storage, poczty E-mail i witryny Azure portal.
-* **Gwarancja kosztów:** transferu danych i udokumentowane ataków DDoS, środki na usługi skalowania w poziomie aplikacji.
-
-Więcej informacji:
-
-* [Omówienie ochrony przed atakami DDOS](../virtual-network/ddos-protection-overview.md)

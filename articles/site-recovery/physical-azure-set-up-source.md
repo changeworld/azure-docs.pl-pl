@@ -1,20 +1,20 @@
 ---
-title: Konfigurowanie środowiska źródłowego (serwerów fizycznych na platformę Azure) | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania środowiska lokalnego do uruchamiania replikacji serwerów fizycznych z systemem Windows lub Linux na platformie Azure.
+title: Konfigurowanie serwera konfiguracji na potrzeby odzyskiwania po awarii serwerów fizycznych na platformie Azure przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób konfigurowania w środowisku lokalnym serwerem konfiguracji na potrzeby odzyskiwania po awarii lokalnych serwerów fizycznych na platformę Azure.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/21/2018
+ms.topic: conceptual
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 0cbba45ce49667293d8f16bf370424acd70ff78b
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 739129045fab72a9b535be25b853c902c7dbd251
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213490"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209551"
 ---
-# <a name="set-up-the-source-environment-physical-server-to-azure"></a>Konfigurowanie środowiska źródłowego (serwera fizycznego na platformę Azure)
+# <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Konfigurowanie serwera konfiguracji na potrzeby odzyskiwania po awarii serwerów fizycznych na platformę Azure
 
 W tym artykule opisano sposób konfigurowania środowiska lokalnego do uruchamiania replikacji serwerów fizycznych z systemem Windows lub Linux na platformie Azure.
 

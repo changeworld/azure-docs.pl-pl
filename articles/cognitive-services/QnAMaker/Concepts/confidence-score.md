@@ -10,12 +10,12 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: tulasim
-ms.openlocfilehash: 9bcd2ccfc5fb8ddc71d2df178dd214be2a67160d
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 46b6b789b2bab7e647e10a61939bd16b5ea8726d
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856857"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209706"
 ---
 # <a name="confidence-score"></a>Współczynnik ufności
 Jeśli kwerenda użytkownika są dopasowywane do wiedzy, narzędzie QnA Maker zwraca odpowiednich odpowiedzi, wraz z współczynnik ufności. Ten wynik wskazuje ufności padnie odpowiednie dopasowania dla zapytania danego użytkownika. 
@@ -69,6 +69,8 @@ Zobacz tutaj sposób, w jaki [publikowania](../How-To/publish-knowledge-base.md)
 
 ## <a name="no-match-found"></a>Nie znaleziono dopasowań
 Po znalezieniu niezgodności dobre, oceniania współczynnik ufności 0.0, lub "None" jest zwracany, a odpowiedź domyślną jest "Dobrą niezgodności w w bazie wiedzy". Możesz przesłonić to odpowiedź domyślną w kodzie bot lub aplikacji, wywołanie punktu końcowego. Alternatywnie można również ustawić odpowiedzi zastąpienie na platformie Azure i spowoduje to zmianę domyślnego dla wszystkich baz wiedzy wdrożone w określonej usługi QnA Maker.
+
+### <a name="change-default-answer"></a>Zmień domyślny odpowiedzi
 
 1. Przejdź do [witryny Azure portal](https://portal.azure.com) i przejdź do grupy zasobów, która reprezentuje utworzonej usługi QnA Maker.
 

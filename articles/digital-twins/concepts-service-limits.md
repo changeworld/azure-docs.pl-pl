@@ -6,27 +6,27 @@ manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/26/2018
 ms.author: dwalthermsft
-ms.openlocfilehash: aa5f6053bf1c98d2b84c02617da30f5d856ed3fc
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: f9a3d934de47630ac3fd2356001014d006c2a4eb
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324187"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212271"
 ---
-# <a name="public-preview-service-limits"></a>Limity usługi publicznej wersji zapoznawczej
+# <a name="public-preview-service-limits"></a>Limity usługi w publicznej wersji zapoznawczej
 
-Publicznej wersji zapoznawczej Twins cyfrowych platformy Azure ma tymczasowy subskrypcji, wystąpienia i limity szybkości, które są opisane poniżej.
+Podczas **publicznej wersji zapoznawczej**, Twins cyfrowych platformy Azure będzie mieć tymczasowe subskrypcji, wystąpienia i limity szybkości, które są opisane poniżej.
 
 Te ograniczenia ma ułatwić uzyskiwanie informacji o nowej usługi i jego wiele funkcji.
 
 > [!NOTE]
-> Limity te będzie można zwiększyć i/lub usunięte przez ogólna dostępność (GA).
+> Limity te będzie można zwiększyć i/lub usunięte przez **ogólnie** (**GA**).
 
 ## <a name="per-subscription-limits"></a>Limity subskrypcji
 
-W publicznej wersji zapoznawczej Każda subskrypcja platformy Azure można utworzyć lub uruchomione dokładnie jedno wystąpienie Twins cyfrowych platformy Azure w danym momencie.
+Podczas **publicznej wersji zapoznawczej**, każda subskrypcja platformy Azure można tworzyć lub uruchomione dokładnie jedno wystąpienie Twins cyfrowych platformy Azure w danym momencie.
 
 > [!TIP]
 > Usuwanie wystąpienia pozwala utworzyć nowy.
@@ -35,9 +35,9 @@ W publicznej wersji zapoznawczej Każda subskrypcja platformy Azure można utwor
 
 Z kolei może mieć każde wystąpienie Twins cyfrowych platformy Azure:
 
-- Jeden `IoTHub` zasobów
-- Jeden `EventHub` punktu końcowego dla typu zdarzenia DeviceMessage
-- Maksymalnie trzy `EventHub`, `ServiceBus`, lub `EventGrid` punktów końcowych typu zdarzenia `SensorChange`, `SpaceChange`, `TopologyOperation`, lub `UdfCustom`
+- Jeden **IoTHub** zasobów
+- Jeden **EventHub** punktu końcowego dla typu zdarzenia **DeviceMessage**
+- Maksymalnie trzy **EventHub**, **ServiceBus**, lub **EventGrid** punktów końcowych typu zdarzenia **SensorChange**, **SpaceChange** , **TopologyOperation**, lub **UdfCustom**
 
 ## <a name="management-api-limits"></a>Limity interfejsu API zarządzania
 
@@ -54,7 +54,7 @@ Limity szybkości żądania interfejsu API zarządzania są:
 Następujące limity Ustaw sumę wszystkich wywołań funkcji zdefiniowanej przez użytkownika do wystąpienia Twins cyfrowych platformy Azure:
 
 - 400 wywołania biblioteki klienta na sekundę
-- 100 wywołań SendNotification na sekundę
+- 100 **SendNotification** wywołania na sekundę
 
 > [!NOTE]
 > Następujące akcje mogą spowodować limitów szybkości dodatkowe, które mają być stosowane tymczasowo:

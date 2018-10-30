@@ -1,21 +1,21 @@
 ---
 title: Wyniki testu dla replikacji maszyn wirtualnych funkcji Hyper-V w chmurach programu VMM do lokacji dodatkowej za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: Ten artykuł zawiera informacje dotyczące testowania wydajnościowego na potrzeby replikacji maszyn wirtualnych z funkcją Hyper-V w chmurach programu VMM do lokacji dodatkowej przy użyciu usługi Azure Site Recovery.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: c97247a14915ea3b8396f7179b4f8ca13bf92c8f
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: c5f0a972c3ab8b7016265d98fcb1b0890e03370f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079399"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210962"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Wyniki testu dla replikacji funkcji Hyper-V do lokacji dodatkowej
+
 
 Ten artykuł zawiera wyniki testu podczas replikowania maszyn wirtualnych z funkcją Hyper-V w chmurach programu System Center Virtual Machine Manager (VMM) do dodatkowego centrum danych wydajności.
 

@@ -11,12 +11,12 @@ ms.assetid: 54fe5af8-7d2a-4da8-94e7-15d029e029bf
 ms.topic: article
 tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 03c250f153402c68889c2e3ac187ccab3e2d858b
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 292d517f2c99974f4674a4c94472a0a320320ce4
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887489"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233841"
 ---
 # <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>Monitorowanie, tworzenie i zarządzanie zasobami usługi Salesforce za pomocą usługi Azure Logic Apps
 
@@ -65,7 +65,7 @@ Szczegółowe informacje techniczne dotyczące wyzwalaczy, akcje i ograniczeń, 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](http://aka.ms/logicapps-wish).
+* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

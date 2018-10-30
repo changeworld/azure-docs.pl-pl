@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/01/2018
 ms.author: jonbeck
-ms.openlocfilehash: cefcad9c427770c083e6451c088ce5cfc10a68f2
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 7a1e38ddc150dadb9d4f088eed92564c40d9078b
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394471"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230475"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Rozmiary maszyn wirtualnych Windows na platformie Azure
 
@@ -49,9 +49,9 @@ W tym artykule opisano dostępne rozmiary i opcje dla maszyn wirtualnych platfor
 
 Instrukcje dotyczące rozmiarów maszyn wirtualnych przy użyciu interfejsu API REST do wykonywania zapytań zobacz następujące tematy:
 
-- [Lista dostępne rozmiary maszyny wirtualnej do zmiany rozmiaru](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines_listavailablesizes)
-- [Lista dostępne rozmiary maszyny wirtualnej dla subskrypcji](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines_listall)
-- [Lista dostępne rozmiary maszyny wirtualnej w zestawie dostępności](https://docs.microsoft.com/rest/api/compute/availabilitysets/availabilitysets_listavailablesizes)
+- [Lista dostępne rozmiary maszyny wirtualnej do zmiany rozmiaru](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes)
+- [Lista dostępne rozmiary maszyny wirtualnej dla subskrypcji](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall)
+- [Lista dostępne rozmiary maszyny wirtualnej w zestawie dostępności](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
 
 ## <a name="acu"></a>ACU
 

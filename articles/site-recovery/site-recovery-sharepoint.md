@@ -1,27 +1,20 @@
 ---
-title: Replikowanie wielowarstwową aplikację programu SharePoint przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób replikowania wielowarstwową aplikację programu SharePoint przy użyciu możliwości usługi Azure Site Recovery.
-services: site-recovery
-documentationcenter: ''
+title: Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji programu SharePoint przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób konfigurowania odzyskiwania po awarii dla wielowarstwowej aplikacji programu SharePoint przy użyciu możliwości usługi Azure Site Recovery.
 author: sujayt
 manager: rochakm
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: sutalasi
-ms.openlocfilehash: eb5801988b6fa966a0326c39be4a267ea08500a8
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 5e3ebd7d3aa5555fbe5ea77dece6eb3177809de7
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916789"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215078"
 ---
-# <a name="replicate-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Replikowanie wielowarstwową aplikację programu SharePoint do odzyskiwania po awarii przy użyciu usługi Azure Site Recovery
+# <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji programu SharePoint do odzyskiwania po awarii przy użyciu usługi Azure Site Recovery
 
 W tym artykule opisano szczegółowo sposobu ochrony aplikacji programu SharePoint przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md).
 

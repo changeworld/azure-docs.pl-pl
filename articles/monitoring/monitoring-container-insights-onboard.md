@@ -1,5 +1,5 @@
 ---
-title: Jak dodać usługi Azure Monitor dla kontenerów | Dokumentacja firmy Microsoft
+title: Jak dodać usługi Azure Monitor dla kontenerów (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób możesz dołączyć i konfigurowanie usługi Azure Monitor dla kontenerów, dzięki czemu można zrozumieć, jaka jest wydajność kontenera oraz zostały zidentyfikowane problemów związanych z wydajnością.
 services: azure-monitor
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 9fa0df0bbf363a7c751de460fd98740b4314f996
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 505abe8f3dc19458b3f0e18f349974199ae4ba58
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831198"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212118"
 ---
-# <a name="how-to-onboard-azure-monitor-for-containers"></a>Jak dodać usługi Azure Monitor dla kontenerów
+# <a name="how-to-onboard-azure-monitor-for-containers-preview"></a>Jak dodać usługi Azure Monitor dla kontenerów (wersja zapoznawcza) 
 W tym artykule opisano sposób konfigurowania usługi Azure Monitor dla kontenerów w celu monitorowania wydajności obciążeń, które są wdrażane do środowisk Kubernetes i w serwisie [usługi Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
@@ -110,7 +110,7 @@ Po włączeniu monitorowania może potrwać około 15 minut, zanim będzie możn
 ### <a name="enable-monitoring-from-aks-cluster-in-the-portal"></a>Aby włączyć monitorowanie z klastra usługi AKS w portalu
 Aby włączyć monitorowanie kontenera usługi AKS w witrynie Azure portal, wykonaj następujące czynności:
 
-1. W witrynie Azure portal wybierz **wszystkich usług**. 
+1. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi**. 
 2. Na liście zasobów wpisz **kontenery**.  
     Listy jest filtrowana w oparciu o wpisywane dane. 
 3. Wybierz **usługi Kubernetes**.  

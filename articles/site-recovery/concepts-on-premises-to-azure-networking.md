@@ -1,22 +1,21 @@
 ---
-title: Konfigurowanie adresów IP, aby połączyć po włączeniu trybu failover na platformie Azure przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania adresu IP adresowania połączyć się z maszynami wirtualnymi platformy Azure po włączeniu trybu failover ze środowiska lokalnego z usługą Azure Site Recovery
+title: Konfigurowanie adresów IP, odnoszący się do łączenia z po odzyskiwanie po awarii i trybu failover na platformie Azure przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób konfigurowania adresu IP, odnoszący się do połączenia z maszynami wirtualnymi platformy Azure po odzyskiwania po awarii i tryb failover ze środowiska lokalnego z usługą Azure Site Recovery
 services: site-recovery
-documentationcenter: ''
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 9b7797ba58a44e64460f4dbc58d562b4c470c043
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: ce7e5fde60503a969b88892be890173861fb15be
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353091"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215229"
 ---
-# <a name="set-up-ip-addressing-to-connect-after-failover-to-azure"></a>Konfigurowanie adresów IP adresowania połączyć po włączeniu trybu failover na platformie Azure
+# <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>Konfigurowanie adresów IP, odnoszący się nawiązać połączenia z maszynami wirtualnymi platformy Azure po włączeniu trybu failover
 
 W tym artykule opisano wymagania sieciowe dotyczące nawiązywania połączenia w przypadku maszyn wirtualnych platformy Azure po zakończeniu korzystania z [usługi Azure Site Recovery](site-recovery-overview.md) usługi podczas replikacji i trybu failover na platformie Azure.
 

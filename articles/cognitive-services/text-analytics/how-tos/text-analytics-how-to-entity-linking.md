@@ -10,12 +10,12 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: 42e1704df315c754b2b506a0470d128b7666c280
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: e81428d5bdffb65b5e61a7aba7496da275f249a5
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645801"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230560"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Jak używać o nazwie rozpoznawania jednostek w analizy tekstu (wersja zapoznawcza)
 
@@ -54,16 +54,16 @@ Korzystanie z usługi entity linking w różnych językach wymaga, przy użyciu 
 | Ilość      | Waluta      | "$10,99"     | 
 | Ilość      | Wymiar     | "10 mil", "40 cm"     | 
 | Ilość      | Temperatura   | "stopni 32"    |
-| Data/godzina      | N/D\*         | "6:30 PM 4 lutego 2012"      | 
-| Data/godzina      | Data          | "2nd maja 2017", "2017-05-02"   | 
-| Data i godzina     | Czas          | "8: 00", "8:00"  | 
-| Data/godzina      | DateRange     | "Maja 2 do 5 maja."    | 
-| Data/godzina      | timeRange     | "18: 00 – 19: 00"     | 
-| Data/godzina      | Czas trwania      | "1 minutę i 45 sekund"   | 
-| Data/godzina      | Ustaw           | "każdy wtorek"     | 
-| Data/godzina      | Strefa czasowa      |    | 
-| ADRES URL           | N/D\*         | "http://www.bing.com"    |
-| Wiadomość e-mail         | N/D\*         | "support@contoso.com" |
+| DateTime      | N/D\*         | "6:30 PM 4 lutego 2012"      | 
+| DateTime      | Date          | "2nd maja 2017", "2017-05-02"   | 
+| Data i godzina     | Time          | "8: 00", "8:00"  | 
+| DateTime      | DateRange     | "Maja 2 do 5 maja."    | 
+| DateTime      | timeRange     | "18: 00 – 19: 00"     | 
+| DateTime      | Czas trwania      | "1 minutę i 45 sekund"   | 
+| DateTime      | Set           | "każdy wtorek"     | 
+| DateTime      | Strefa czasowa      |    | 
+| Adres URL           | N/D\*         | „http://www.bing.com”    |
+| Email         | N/D\*         | „support@contoso.com” |
 \* W zależności od jednostki danych wejściowych i wyodrębnione może pominąć niektóre jednostki `SubType`.
 
 
@@ -95,7 +95,7 @@ Szczegółowe informacje na temat definicji żądania można znaleźć w artykul
 
 + Utwórz żądanie **POST**. Zapoznaj się z dokumentacją interfejsu API dla tego żądania: [interfejs API usługi Entity Linking](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
 
-+ Ustaw punkt końcowy HTTP pod kątem wyodrębniania kluczowych fraz. Musi on obejmować zasób `/entities`: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
++ Ustaw punkt końcowy HTTP dla działania funkcji wydobywania podmiotów. Musi on obejmować zasób `/entities`: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
 
 + Ustaw nagłówek żądania, tak aby zawierał klucz dostępu dla operacji analizy tekstu. Aby uzyskać więcej informacji, zobacz [How to find endpoints and access keys (Jak znajdować punkty końcowe i klucze dostępu)](text-analytics-how-to-access-key.md).
 

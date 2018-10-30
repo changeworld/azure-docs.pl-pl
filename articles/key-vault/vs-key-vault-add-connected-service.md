@@ -11,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: c90ef26c0170db67b1d422701b6969ca3f9c9e38
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 9f2adfcbf2d6ca5de79cc787029f5139138b0e52
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958520"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230441"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Dodawanie usługi Key Vault do aplikacji sieci web za pomocą programu Visual Studio podłączone usługi
 
@@ -57,7 +57,7 @@ Aby uzyskać więcej informacji na temat zmian dzięki usługom połączone w pr
 
    ![Dodawanie usługi połączonej do projektu](media/vs-key-vault-add-connected-service/KeyVaultConnectedService4.PNG)
 
-1. Teraz Dodaj klucz tajny w usłudze Key Vault na platformie Azure. Aby uzyskać we właściwym miejscu w portalu, kliknij link dla Zarządzaj kluczy tajnych przechowywanych w tym magazynie kluczy. Jeśli został zamknięty, strony lub projektu, możesz przejść do niego w [witryny Azure portal](https://portal.azure.com) , wybierając **wszystkich usług**w obszarze **zabezpieczeń**, wybierz **usługi Key Vault**, następnie wybierz nowo utworzoną w usłudze Key Vault.
+1. Teraz Dodaj klucz tajny w usłudze Key Vault na platformie Azure. Aby uzyskać we właściwym miejscu w portalu, kliknij link dla Zarządzaj kluczy tajnych przechowywanych w tym magazynie kluczy. Jeśli został zamknięty, strony lub projektu, możesz przejść do niego w [witryny Azure portal](https://portal.azure.com) , wybierając **wszystkich usług**w obszarze **zabezpieczeń**, wybierz **usługi Key Vault**, następnie wybierz utworzoną w usłudze Key Vault.
 
    ![Przejdź do portalu](media/vs-key-vault-add-connected-service/manage-secrets-link.jpg)
 
@@ -73,94 +73,62 @@ Aby uzyskać więcej informacji na temat zmian dzięki usługom połączone w pr
  
 Teraz może uzyskać dostęp do wpisów tajnych w kodzie. Następne kroki są różne w zależności od tego, czy przy użyciu 4.7.1 platformy ASP.NET lub ASP.NET Core.
 
-## <a name="access-your-secrets-in-code-aspnet-core-projects"></a>Dostęp do wpisów tajnych w kodzie (projektów ASP.NET Core)
+## <a name="access-your-secrets-in-code"></a>Dostęp do wpisów tajnych w kodzie
 
-Połączenie do usługi Key Vault jest ustawiana przy uruchamianiu przez klasę, która implementuje [Microsoft.AspNetCore.Hosting.IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup?view=aspnetcore-2.1) korzystanie z rozszerzania zachowanie podczas uruchamiania, który jest opisany w sposób [zwiększanie możliwości aplikacji z zewnętrznej zestaw w programie ASP.NET Core za pomocą interfejsu IHostingStartup](/aspnet/core/fundamentals/host/platform-specific-configuration). Klasa początkowa korzysta z dwóch zmiennych środowiskowych, które zawierają informacje o połączeniu usługi Key Vault: ASPNETCORE_HOSTINGSTARTUP__KEYVAULT__CONFIGURATIONENABLED, ustaw na true, a ASPNETCORE_HOSTINGSTARTUP__KEYVAULT__CONFIGURATIONVAULT, Ustaw klucz Adres URL magazynu. Te są dodawane do pliku launchsettings.json podczas uruchamiania za pośrednictwem **Dodaj podłączoną usługę** procesu.
+1. Zainstaluj te dwa pakiety nuget [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) i [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet biblioteki.
 
-Dostęp do wpisów tajnych:
+2. Otwórz plik Program.cs i zaktualizować kod następującym kodem: 
+```
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            BuildWebHost(args).Run();
+        }
 
-1. W programie Visual Studio w projekcie platformy ASP.NET Core teraz możesz odwoływać się tych kluczy tajnych przy użyciu następujących wyrażeń w kodzie:
- 
-   ```csharp
-      config["MySecret"] // Access a secret without a section
-      config["Secrets:MySecret"] // Access a secret in a section
-      config.GetSection("Secrets")["MySecret"] // Get the configuration section and access a secret in it.
-   ```
+        public static IWebHost BuildWebHost(string[] args) =>
+           WebHost.CreateDefaultBuilder(args)
+               .ConfigureAppConfiguration((ctx, builder) =>
+               {
+                   var keyVaultEndpoint = GetKeyVaultEndpoint();
+                   if (!string.IsNullOrEmpty(keyVaultEndpoint))
+                   {
+                       var azureServiceTokenProvider = new AzureServiceTokenProvider();
+                       var keyVaultClient = new KeyVaultClient(
+                           new KeyVaultClient.AuthenticationCallback(
+                               azureServiceTokenProvider.KeyVaultTokenCallback));
+                       builder.AddAzureKeyVault(
+                           keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
+                   }
+               }
+            ).UseStartup<Startup>()
+             .Build();
 
-1. Na stronie cshtml, powiedz About.cshtml, Dodaj @inject dyrektywę w górnej części pliku, aby zdefiniować zmienną możesz uzyskiwać dostęp do konfiguracji usługi Key Vault.
+        private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
+    }
+```
+3. Następnie otwórz plik About.cshtml.cs i Zapisz poniższy kod
+    1. Zawiera odwołanie do Microsoft.Extensions.Configuration to, za pomocą instrukcji    
+        ```
+        using Microsoft.Extensions.Configuration
+        ```
+    2. Dodaj ten konstruktor
+        ```
+        public AboutModel(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+        ```
+    3. Metoda OnGet aktualizacji. Zaktualizuj wartość symbolu zastępczego tutaj pokazane z nazwa wpisu tajnego, utworzony w powyższych poleceń
+        ```
+        public void OnGet()
+        {
+            //Message = "Your application description page.";
+            Message = "My key val = " + _configuration["<YourSecretNameThatWasCreatedAbove>"];
+        }
+        ```
 
-   ```cshtml
-      @inject Microsoft.Extensions.Configuration.IConfiguration config
-   ```
-
-1. Jako test można potwierdzić, czy wartość wpisu tajnego jest dostępna, wyświetlając na jedną ze stron. Użyj @config można odwoływać się do zmiennej konfiguracji.
- 
-   ```cshtml
-      <p> @config["MySecret"] </p>
-      <p> @config.GetSection("Secrets")["MySecret"] </p>
-      <p> @config["Secrets:MySecret"] </p>
-   ```
-
-1. Tworzenie i uruchamianie aplikacji sieci web, przejdź do strony informacje i zobaczyć wartość "wpis tajny".
-
-## <a name="access-your-secrets-in-code-aspnet-471-projects"></a>Dostęp do wpisów tajnych w kodzie (ASP.NET 4.7.1 projektów)
-
-Połączenie do usługi Key Vault jest ustawiana przez klasy ConfigurationBuilder, korzystając z informacji, który został dodany do pliku web.config, po uruchomieniu za pośrednictwem **Dodaj podłączoną usługę** procesu.
-
-Dostęp do wpisów tajnych:
-
-1. Zmodyfikuj plik web.config w następujący sposób. Klucze są symbolami zastępczymi, które zostaną zastąpione przez AzureKeyVault ConfigurationBuilder z wartościami wpisów tajnych w usłudze Key Vault.
-
-   ```xml
-     <appSettings configBuilders="AzureKeyVault">
-       <add key="webpages:Version" value="3.0.0.0" />
-       <add key="webpages:Enabled" value="false" />
-       <add key="ClientValidationEnabled" value="true" />
-       <add key="UnobtrusiveJavaScriptEnabled" value="true" />
-       <add key="MySecret" value="dummy1"/>
-       <add key="Secrets--MySecret" value="dummy2"/>
-     </appSettings>
-   ```
-
-1. W HomeController, w metodzie kontrolera informacje Dodaj następujące wiersze do pobierania klucza tajnego i zapisz go w obiekt ViewBag.
- 
-   ```csharp
-            var secret = ConfigurationManager.AppSettings["MySecret"];
-            var secret2 = ConfigurationManager.AppSettings["Secrets--MySecret"];
-            ViewBag.Secret = $"Secret: {secret}";
-            ViewBag.Secret2 = $"Secret2: {secret2}";
-   ```
-
-1. W widoku About.cshtml Dodaj następujące polecenie, aby wyświetlić wartość wpisu tajnego (tylko do celów testowych).
-
-   ```csharp
-      <h3>@ViewBag.Secret</h3>
-      <h3>@ViewBag.Secret2</h3>
-   ```
-
-1. Uruchom aplikację lokalnie, aby sprawdzić, czy możesz odczytać wartość wpisu tajnego, który został wprowadzony w portalu Azure, a nie wartości z pliku konfiguracji.
-
-Następnie Opublikuj aplikację na platformie Azure.
-
-## <a name="publish-to-azure-app-service"></a>Publikowanie w usłudze Azure App Service
-
-1. Kliknij prawym przyciskiem myszy węzeł projektu i wybierz polecenie **Publikuj**. Zostanie wyświetlony ekran informujący, że **wybierz miejsce docelowe publikowania**. Po lewej stronie, wybierz **usługi App Service**, a następnie **Utwórz nowy**.
-
-   ![Publikowanie w usłudze App Service](media/vs-key-vault-add-connected-service/AppServicePublish1.PNG)
-
-1. Na **Tworzenie usługi App Service** ekranu, upewnij się, że są takie same te, które utworzono magazyn kluczy w subskrypcji i grupy zasobów i wybierz **Utwórz**.
-
-   ![Tworzenie usługi App Service](media/vs-key-vault-add-connected-service/AppServicePublish2.PNG)
-
-1. Po utworzeniu aplikacji sieci web **Publikuj** pojawi się ekran. Należy pamiętać, adres URL Twojej opublikowanej aplikacji sieci web, hostowanych na platformie Azure. Jeśli widzisz **Brak** obok **usługi Key Vault**, nadal jest konieczne nakazać usłudze App Service, jakie usługi Key Vault, aby nawiązać połączenie. Wybierz **Dodaj usługi Key Vault** łącze, a następnie wybierz utworzoną w usłudze Key Vault.
-
-   ![Dodaj usługę Key Vault](media/vs-key-vault-add-connected-service/AppServicePublish3.PNG)
-
-   Jeśli widzisz **zarządzania usługi Key Vault**, można kliknąć, aby wyświetlić bieżące ustawienia z uprawnieniami do edycji lub wprowadzanie zmian do wpisów tajnych w witrynie Azure Portal.
-
-1. Teraz wybierz łącze adres URL witryny, aby znaleźć aplikację sieci web w przeglądarce. Sprawdź, czy widzisz poprawną wartość z usługi Key Vault.
-
-Gratulacje, potwierdzenia, że Twoja aplikacja sieci web umożliwia usługi Key Vault dostęp do danych poufnych bezpiecznie przechowywane po uruchomieniu na platformie Azure.
+Uruchom aplikację lokalnie, przechodząc do strony. Należy pobrać wartość wpisu tajnego
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

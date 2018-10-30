@@ -1,25 +1,18 @@
 ---
-title: Dodawanie elementów runbook usługi Azure Automation do planów odzyskiwania w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak usługa Azure Site Recovery może pomóc rozszerzyć planów odzyskiwania przy użyciu usługi Azure Automation. Dowiedz się, jak wykonać złożone zadania podczas odzyskiwania na platformie Azure.
-services: site-recovery
-documentationcenter: ''
+title: Dodawanie elementów runbook usługi Azure Automation do planów odzyskiwania Site Recovery | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozszerzyć plany odzyskiwania z usługą Azure Automation na potrzeby odzyskiwania po awarii przy użyciu usługi Azure Site Recovery.
 author: ruturaj
 manager: gauravd
-editor: ''
-ms.assetid: ecece14d-5f92-4596-bbaf-5204addb95c2
 ms.service: site-recovery
-ms.devlang: powershell
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: ruturajd@microsoft.com
-ms.openlocfilehash: 55160f3c43d8cbfc5f8b3e6aaf26bcb911387c52
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 5da623d07c34114d82c2b818a7c06420ffb9c886
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578769"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211115"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Dodawanie elementów runbook usługi Azure Automation do planów odzyskiwania
 W tym artykule opisano jak Azure Site Recovery integruje się z usługą Azure Automation do zwiększenia planów odzyskiwania. Plany odzyskiwania można organizować odzyskiwania maszyn wirtualnych, które są chronione przy użyciu usługi Site Recovery. Plany odzyskiwania działa zarówno na replikację do dodatkowej chmury i replikacji do platformy Azure. Plany odzyskiwania również sprawić, odzyskiwanie **spójnie dokładne**, **powtarzalne**, i **automatycznych**. W przypadku przejścia w tryb failover maszyn wirtualnych na platformie Azure, integracji z usługą Azure Automation rozszerza planów odzyskiwania. Służy do wykonywania elementów runbook, które oferują zaawansowanej automatyzacji zadań.

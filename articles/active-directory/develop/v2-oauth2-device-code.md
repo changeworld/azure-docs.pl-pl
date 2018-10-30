@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ceafee3ac3453590d1687f662c7f3c9a8d8b4e0c
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 29cbb96cc6dec4bac601e8795599f77c955c418a
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156633"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230833"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-device-code-flow"></a>Azure Active Directory w wersji 2.0 i przepływ kodu urządzenia OAuth 2.0
 
@@ -68,7 +68,7 @@ scope=user.read%20openid%20profile
 
 ### <a name="device-authorization-response"></a>Odpowiedzi autoryzacji urządzenia
 
-Odpowiedzi skierowanie będzie obiektem JSON zawierającym wymagane informacje, aby umożliwić użytkownikowi zalogowanie.  
+Odpowiedź oznaczająca Powodzenie będzie obiektem JSON zawierającym wymagane informacje, aby umożliwić użytkownikowi zalogowanie.  
 
 | Parametr | Format | Opis |
 | ---              | --- | --- |
@@ -113,7 +113,7 @@ Przepływ kodu urządzenia jest protokołem sondowania, Twój klient musi oczeki
 | `expired_token`|  Co najmniej `expires_in` sekund i uwierzytelniania nie jest możliwe dzięki temu `device_code`. | Zatrzymywanie sondowania i przywrócić stan nieuwierzytelnionych. |
 
 
-### <a name="succesful-authentication-response"></a>Odpowiedź uwierzytelnienia zakończone pomyślnie
+### <a name="successful-authentication-response"></a>Pomyślne uwierzytelnienie odpowiedzi
 
 Odpowiedź oznaczająca Powodzenie tokenu będzie wyglądać następująco:
 

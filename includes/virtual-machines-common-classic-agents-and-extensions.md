@@ -1,5 +1,16 @@
-
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: b83e1ef752fede446b41153e3d486a872c2707f3
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226596"
+---
 Rozszerzenia maszyn wirtualnych umożliwiają:
 
 * Modyfikowanie funkcji zabezpieczeń i tożsamości, takich jak resetowanie wartości konta i korzystanie z oprogramowania chroniącego przed złośliwym kodem
@@ -31,7 +42,7 @@ Agent maszyny wirtualnej jest włączony w następujących sytuacjach:
       $vm.VM.ProvisionGuestAgent = $TRUE
       Update-AzureVM –Name $name –VM $vm.VM –ServiceName $svc
 
-* Po utworzeniu obrazu maszyny wirtualnej zawierającego zainstalowanego agenta maszyny wirtualnej. Gdy obraz z agentem maszyny wirtualnej już istnieje, możesz przekazać go na platformę Azure. W przypadku maszyny wirtualnej z systemem Windows pobierz [plik MSI agenta maszyny wirtualnej z systemem](http://go.microsoft.com/fwlink/?LinkID=394789), a następnie zainstaluj agenta maszyny wirtualnej. Dla maszyny Wirtualnej systemu Linux, zainstaluj agenta maszyny Wirtualnej z repozytorium GitHub znajdujący się w <https://github.com/Azure/WALinuxAgent>. Aby uzyskać informacje na temat instalowania agenta maszyny wirtualnej w systemie Linux, zobacz [Azure Linux VM Agent User Guide](../articles/virtual-machines/extensions/agent-linux.md) (Podręcznik użytkownika agenta maszyny wirtualnej z systemem Linux na platformie Azure).
+* Po utworzeniu obrazu maszyny wirtualnej zawierającego zainstalowanego agenta maszyny wirtualnej. Gdy obraz z agentem maszyny wirtualnej już istnieje, możesz przekazać go na platformę Azure. W przypadku maszyny wirtualnej z systemem Windows pobierz [plik MSI agenta maszyny wirtualnej z systemem](http://go.microsoft.com/fwlink/?LinkID=394789), a następnie zainstaluj agenta maszyny wirtualnej. Dla maszyny Wirtualnej systemu Linux, zainstaluj agenta maszyny Wirtualnej z repozytorium GitHub, znajdujący się w <https://github.com/Azure/WALinuxAgent>. Aby uzyskać informacje na temat instalowania agenta maszyny wirtualnej w systemie Linux, zobacz [Azure Linux VM Agent User Guide](../articles/virtual-machines/extensions/agent-linux.md) (Podręcznik użytkownika agenta maszyny wirtualnej z systemem Linux na platformie Azure).
 
 > [!NOTE]
 > W usługach PaaS agent maszyny wirtualnej jest nazywany **WindowsAzureGuestAgent** i jest zawsze dostępny w sieci Web i w ramach maszyn wirtualnych roli procesu roboczego. Aby uzyskać więcej informacji, zobacz [Azure Role Architecture](http://blogs.msdn.com/b/kwill/archive/2011/05/05/windows-azure-role-architecture.aspx) (Architektura ról platformy Azure). Agent maszyny wirtualnej dla maszyn wirtualnych roli może teraz dodawać rozszerzenia do maszyn wirtualnych usługi w chmurze w taki sam sposób, jak w przypadku trwałych maszyn wirtualnych. Największa różnica między rozszerzeniami maszyn wirtualnych w przypadku maszyn wirtualnych roli i trwałych maszyn wirtualnych ma miejsce podczas dodawania rozszerzeń maszyn wirtualnych. W przypadku maszyn wirtualnych roli rozszerzenia są najpierw dodawane do usługi w chmurze, a następnie do wdrożeń w ramach tej usługi w chmurze.

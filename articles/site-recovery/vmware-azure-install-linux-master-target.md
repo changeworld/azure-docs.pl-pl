@@ -1,19 +1,19 @@
 ---
-title: Zainstaluj serwerze główny serwer docelowy z systemem Linux dla trybu failover z platformy Azure do środowiska lokalnego | Dokumentacja firmy Microsoft
-description: Przed ponowne włączanie ochrony maszyny wirtualnej systemu Linux, należy serwerze główny serwer docelowy z systemem Linux. Dowiedz się, jak i zainstaluj ją.
+title: Instalowanie serwera głównego elementu docelowego systemu Linux do powrotu po awarii do lokacji lokalnej | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować serwerze główny serwer docelowy z systemem Linux do powrotu po awarii do lokacji lokalnej podczas odzyskiwania po awarii maszyn wirtualnych programu VMware do platformy Azure przy użyciu usługi Azure Site Recovery.
 author: nsoneji
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 470d4547a63105e319f072461a4d8f24ebe3dbe8
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 415b50b94052e7d428ddfa55d5288c8954a3ff1a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094126"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212373"
 ---
-# <a name="install-a-linux-master-target-server"></a>Zainstaluj na serwerze główny serwer docelowy z systemem Linux
+# <a name="install-a-linux-master-target-server-for-failback"></a>Instalowanie serwera głównego elementu docelowego systemu Linux do powrotu po awarii
 Po przełączeniu w tryb failover maszyn wirtualnych na platformie Azure możesz można wykonać powrotu po awarii maszyn wirtualnych do lokacji lokalnej. Do powrotu po awarii, należy ponownie włączyć ochronę maszyny wirtualnej z platformy Azure do lokacji lokalnej. Ten proces wymaga lokalny główny serwer docelowy serwer do odbierania ruchu. 
 
 Jeśli chronione maszyny wirtualnej jest to maszyna wirtualna Windows, musisz Windows główny element docelowy. Dla maszyny wirtualnej systemu Linux konieczne jest główny element docelowy systemu Linux. Przeczytaj poniższe kroki, aby dowiedzieć się, jak utworzyć i zainstalować główny element docelowy systemu Linux.

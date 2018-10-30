@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: bc273b8979b29057163e02dc9605e631aef173f1
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227008"
+---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Korzystanie z narzędzi automatyzacji infrastruktury z maszynami wirtualnymi na platformie Azure
 Aby utworzyć i zarządzać maszyn wirtualnych (VM) w sposób ciągły na dużą skalę, zwykle jest pożądane jakąś formę automatyzacji. Istnieje wiele narzędzi i rozwiązań, które umożliwiają automatyzację wdrażania całej infrastruktury platformy Azure i zarządzanie cyklem życia. W tym artykule przedstawiono niektóre z narzędzi automatyzacji infrastruktury, które można użyć na platformie Azure. Te narzędzia często mieści się w jednej z następujących metod:
 
@@ -113,7 +126,7 @@ Instrukcje:
 - [Używanie usługi Azure Automation DSC](../articles/automation/automation-dsc-getting-started.md).
 
 
-## <a name="azure-devops-services"></a>Azure DevOps Services
+## <a name="azure-devops-services"></a>Usługa Azure DevOps Services
 [Usługi Azure DevOps](https://www.visualstudio.com/team-services/) to zestaw narzędzi ułatwiających udziału i ścieżki kodu, użyj zautomatyzowane kompilacje i Utwórz pełną ciągłej integracji i potoku tworzenia aplikacji (CI/CD). Usługi Azure DevOps integruje się z programu Visual Studio i innych edytorów, aby uprościć użycia. Usługom DevOps platformy Azure można również utworzyć i skonfigurować maszyny wirtualne platformy Azure i następnie wdrażania kodu do nich.
 
 Instrukcje:

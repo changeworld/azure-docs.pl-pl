@@ -1,19 +1,19 @@
 ---
-title: Niepowodzenie powrót po awarii z platformy Azure do programu VMware przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Po przejściu w tryb failover maszyn wirtualnych na platformie Azure można uruchomić podczas powrotu po awarii, aby przywrócić maszyny wirtualne do środowiska lokalnego. Dowiedz się, procedurę powrotu po awarii.
+title: Niepowodzenie powrót po awarii z platformy Azure podczas odzyskiwania po awarii maszyn wirtualnych programu VMware na platformę Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak i powrócić po awarii lokacji lokalnej po włączeniu trybu failover na platformę Azure podczas odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure.
 author: nsoneji
 ms.service: site-recovery
 ms.date: 10/11/2018
 ms.topic: conceptual
 ms.author: nisoneji
-ms.openlocfilehash: 841e036555723051dfeaf946f31eaf9eedaee798
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: becf0b8c9f14d81b0a25fb1727b69452c3ff690c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093514"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215178"
 ---
-# <a name="fail-back-from-azure-to-an-on-premises-site"></a>Niepowodzenie powrót po awarii z platformy Azure do lokacji lokalnej
+# <a name="fail-back-vmware-vms-and-physical-servers-from-azure-to-an-on-premises-site"></a>Powrót po awarii serwerów fizycznych i maszyn wirtualnych VMware z platformy Azure do lokacji lokalnej
 
 W tym artykule opisano, jak niepowodzenie wstecz maszyn wirtualnych w usłudze Azure Virtual Machines w lokalnym środowisku VMware. Postępuj zgodnie z instrukcjami w tym artykule nie powiedzie się kopii maszyn wirtualnych VMware ani systemu Windows/Linux lokacji serwerów fizycznych, po ich przełączeniu w tryb failover ze środowiska lokalnego na platformę Azure za pomocą [trybu Failover w usłudze Azure Site Recovery](site-recovery-failover.md) samouczka.
 

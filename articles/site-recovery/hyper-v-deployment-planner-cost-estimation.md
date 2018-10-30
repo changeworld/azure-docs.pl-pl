@@ -1,6 +1,6 @@
 ---
-title: Szczegóły szacowania kosztów przez Planistę wdrażania usługi Azure Site Recovery dla funkcji Hyper-V na platformie Azure | Microsoft Docs
-description: W tym artykule opisano szczegóły szacowania kosztów w scenariuszu obejmującym raport wygenerowany przy użyciu Planisty wdrażania usługi Azure Site Recovery dla funkcji Hyper-V na platformie Azure.
+title: Przejrzyj raport szacowania do odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V na platformę Azure koszty planista wdrażania usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób przeglądania koszt szacowania wygenerowany raport Planisty wdrożenia usługi Azure Site Recovery dla funkcji Hyper-V odzyskiwania po awarii na platformie Azure.
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 40a8e2e6d994608d4aa26f6d9b3723c0ee27d3db
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 0233446f817436632efc4110872e84b6b3105453
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387246"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213189"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Raport szacowania kosztów przez Planistę wdrażania usługi Azure Site Recovery 
 

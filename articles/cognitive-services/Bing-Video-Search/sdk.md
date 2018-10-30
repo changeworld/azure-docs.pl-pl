@@ -10,12 +10,12 @@ ms.component: bing-video-search
 ms.topic: conceptual
 ms.date: 1/25/2018
 ms.author: rosh
-ms.openlocfilehash: 3d8656748a9632ac20b6a658e4bcbdd647c0573e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 951ab55d737a4344c5523aad2991c42fa143316e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224685"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214498"
 ---
 # <a name="bing-search-sdk"></a>Wyszukiwanie Bing zestawu SDK
 Przykłady interfejsu API wyszukiwania wideo Bing obejmują scenariusze który:
@@ -25,14 +25,14 @@ Przykłady interfejsu API wyszukiwania wideo Bing obejmują scenariusze który:
 4.  Zapytanie, za pomocą bogatych informacji filmu wideo, takie jak źródło wideo, tytuł, itp.
 
 Zestawy SDK wyszukiwania Bing należy funkcji wyszukiwania w sieci web łatwo dostępne w następujących językach programowania:
-* Rozpoczynanie pracy z usługą [przykłady dla platformy .NET](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+* Rozpocznij pracę, korzystając z [przykładów dla platformy .NET](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
     * [Pakiet NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VideoSearch/1.2.0)
-    * Zobacz też [bibliotek .NET](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Search/BingVideoSearch) dla definicji i zależności.
-* Rozpoczynanie pracy z usługą [przykłady dla platformy Node.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples) 
-    * Zobacz też [biblioteki technologii Node.js](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/videoSearch) dla definicji i zależności.
-* Rozpoczynanie pracy z usługą [przykładów w języku Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples) 
-    * Zobacz też [biblioteki Java](h https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch) dla definicji i zależności.
-* Rozpoczynanie pracy z usługą [przykłady w języku Python](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples) 
-    * Zobacz też [biblioteki języka Python](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-cognitiveservices-search-videosearch) dla definicji i zależności.
+    * Zobacz też [biblioteki platformy .NET](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Search/BingVideoSearch) zawierające definicje i zależności.
+* Rozpocznij pracę, korzystając z [przykładów dla środowiska Node.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples) 
+    * Zobacz też [biblioteki środowiska Node.js](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/videoSearch) zawierające definicje i zależności.
+* Rozpocznij pracę, korzystając z [przykładów dla języka Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples) 
+    * Zobacz też [biblioteki języka Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch) zawierające definicje i zależności.
+* Rozpocznij pracę, korzystając z [przykładów dla języka Python](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples) 
+    * Zobacz też [biblioteki języka Python](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-cognitiveservices-search-videosearch) zawierające definicje i zależności.
 
-Przykłady zestawu SDK dla każdego z języków zawierają pliku ReadMe ze szczegółowymi informacjami o wymaganiach wstępnych oraz instalowanie/uruchamiania przykładów.
+Przykłady dotyczące zestawów SDK dla poszczególnych języków zawierają plik ReadMe ze szczegółowymi informacjami na temat wymagań wstępnych oraz instalowania i uruchamiania przykładów.

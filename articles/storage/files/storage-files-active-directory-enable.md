@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
-ms.openlocfilehash: ae6f7646192b7bee8cbd836f1eff3814c26a6b46
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: ed35380e66e6d5d59058552d8e0504220c100b73
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427335"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231393"
 ---
 # <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Włącz uwierzytelnianie usługi Azure Active Directory za pośrednictwem protokołu SMB dla usługi Azure Files (wersja zapoznawcza)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -88,7 +88,11 @@ Na poniższej ilustracji przedstawiono sposób włączania uwierzytelniania usł
   
 ### <a name="powershell"></a>PowerShell  
 
-Aby włączyć uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB za pomocą programu Azure PowerShell, należy najpierw zainstalować `AzureRM.Storage 6.0.0-preview` modułu. Aby uzyskać informacje o instalowaniu programu PowerShell, zobacz [Instalowanie programu Azure PowerShell na Windows przy użyciu funkcji PowerShellGet](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+Aby włączyć uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB za pomocą programu Azure PowerShell, należy najpierw zainstalować `AzureRM.Storage` modułu, wersja `6.0.0-preview`, wykonując następujące czynności. Aby uzyskać więcej informacji na temat instalowania programu PowerShell, zobacz [Instalowanie programu Azure PowerShell na Windows przy użyciu funkcji PowerShellGet](https://docs.microsoft.com/powershell/azure/install-azurerm-ps):
+
+```powershell
+Install-Module -Name AzureRM.Storage -RequiredVersion 6.0.0-preview -AllowPrerelease
+```
 
 Następnie utwórz nowy magazyn konta, a następnie wywołaj [Set-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/set-azurermstorageaccount) i ustaw **EnableAzureFilesAadIntegrationForSMB** parametr **true**. W poniższym przykładzie Pamiętaj, aby zastąpić symbole zastępcze własnymi wartościami.
 

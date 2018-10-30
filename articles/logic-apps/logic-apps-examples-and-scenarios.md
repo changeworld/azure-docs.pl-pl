@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
 ms.date: 01/31/18
-ms.openlocfilehash: 0d5a7cb97636b9ca3aabf6c4199ce9e41bc1665d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 6249c45a1cd3a8acbb9770fc39da881d8da9057f
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304428"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230143"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Typowe scenariusze, przykłady, samouczki i przewodniki dla usługi Azure Logic Apps
 
@@ -59,7 +59,7 @@ Dla systemów i usług, które może nie zostały opublikowane łączniki można
 * [Konfigurowanie długo trwające akcje dla przebiegów przepływu pracy](../logic-apps/logic-apps-create-api-app.md)
 * [Odpowiadanie na zdarzenia zewnętrzne i akcji przy użyciu elementów webhook](../logic-apps/logic-apps-create-api-app.md)
 * [Wywoływanie, wyzwalacza lub zagnieżdżanie przepływami pracy przy użyciu synchronicznej odpowiedzi na żądania HTTP](../logic-apps/logic-apps-http-endpoint.md)
-* [Samouczek: Tworzenie bazujących na sztucznej Inteligencji społecznościowego pulpitu nawigacyjnego w ciągu kilku minut za pomocą aplikacji logiki i usługą Power BI](http://aka.ms/logicappsdemo)
+* [Samouczek: Tworzenie bazujących na sztucznej Inteligencji społecznościowego pulpitu nawigacyjnego w ciągu kilku minut za pomocą aplikacji logiki i usługą Power BI](https://aka.ms/logicappsdemo)
 * [Wideo: Odpowiadanie na wiadomości SMS usługi Twilio, elementy webhook i czy wysłać odpowiedź tekstu](https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Logic-Apps-Walkthrough-Webhook-Functions-and-an-SMS-Bot)
 
 ## <a name="control-flow-error-handling-and-logging-capabilities"></a>Sterowanie przepływem, obsługa błędów i możliwości rejestrowania zdarzeń
@@ -84,11 +84,11 @@ Można w pełni tworzenia i wdrażania aplikacji logiki za pomocą programu Visu
 
 ## <a name="content-types-conversions-and-transformations-within-a-run"></a>Typy zawartości, konwersji i przekształceń w przebiegu
 
-Masz dostęp, konwersji i przekształcić wiele typów zawartości za pomocą wielu funkcji w usłudze Azure Logic Apps [język definicji przepływów pracy](http://aka.ms/logicappsdocs). Na przykład, można przekonwertować ciągu, JSON i XML przy użyciu `@json()` i `@xml()` wyrażeń przepływu pracy. Aparat usługi Logic Apps zachowuje typy zawartości do obsługi transferu zawartości w sposób bezstratne między usługami.
+Masz dostęp, konwersji i przekształcić wiele typów zawartości za pomocą wielu funkcji w usłudze Azure Logic Apps [język definicji przepływów pracy](https://aka.ms/logicappsdocs). Na przykład, można przekonwertować ciągu, JSON i XML przy użyciu `@json()` i `@xml()` wyrażeń przepływu pracy. Aparat usługi Logic Apps zachowuje typy zawartości do obsługi transferu zawartości w sposób bezstratne między usługami.
 
 * [Jak działają wyrażenia przepływu pracy w usłudze logic apps](../logic-apps/logic-apps-author-definitions.md)
 * [Obsługa typów zawartości-JSON](../logic-apps/logic-apps-content-type.md), takiej jak `application/xml`, `application/octet-stream`, i `multipart/formdata`
-* [Schemat języka definicji przepływów pracy dla usługi Azure Logic Apps](http://aka.ms/logicappsdocs)
+* [Schemat języka definicji przepływów pracy dla usługi Azure Logic Apps](https://aka.ms/logicappsdocs)
 
 ## <a name="other-integrations-and-capabilities"></a>Inne integracje i możliwości
 

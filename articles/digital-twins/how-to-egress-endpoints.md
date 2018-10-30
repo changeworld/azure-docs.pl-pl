@@ -6,20 +6,20 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: c917fab84448684cf29af162ec0781d764605f71
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: c09ee84cda5f0a9747d3ee1f8f1b37d1323f2cc2
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324227"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212254"
 ---
 # <a name="egress-and-endpoints"></a>Ruch wychodzący i punktów końcowych
 
 Twins cyfrowych platformy Azure obsługuje pojęcie _punktów końcowych_ gdzie każdy punkt końcowy reprezentuje brokera komunikatów/zdarzeń, w ramach subskrypcji platformy Azure użytkownika. Zdarzenia i komunikaty, które mogą być wysyłane do **Centrum zdarzeń**, **usługi Event Grid**, i **tematów usługi Service Bus**.
 
-Zdarzenia, które zostaną wysłane do punktów końcowych, zgodnie z preferencjami routingu wstępnie zdefiniowane: użytkownik może określić, który punkt końcowy powinien zostać wyświetlony dowolne z następujących zdarzeń:`TopologyOperation`, `UdfCustom`, `SensorChange`, `SpaceChange`, lub `DeviceMessage`.
+Zdarzenia, które zostaną wysłane do punktów końcowych, zgodnie z preferencjami routingu wstępnie zdefiniowane: użytkownik może określić, który punkt końcowy powinien zostać wyświetlony dowolne z następujących zdarzeń: **TopologyOperation**, **UdfCustom**, **SensorChange**, **SpaceChange**, lub **DeviceMessage**.
 
 Aby uzyskać podstawową wiedzę na temat zdarzenia, routing i typy zdarzeń, zobacz [Routing zdarzeń i komunikatów](concepts-events-routing.md).
 
@@ -27,9 +27,9 @@ Aby uzyskać podstawową wiedzę na temat zdarzenia, routing i typy zdarzeń, zo
 
 Poniżej przedstawiono formaty zdarzeń dla każdego typu zdarzenia:
 
-- `TopologyOperation`
+- **TopologyOperation**
 
-  Stosuje się do zmian grafu. `subject` Właściwość określa typ obiektu, których to dotyczy. Typy obiektów, które mogą wyzwalać to zdarzenie: `Device, DeviceBlobMetadata`, `DeviceExtendedProperty`, `ExtendedPropertyKey`, `ExtendedType`, `KeyStore`, `Report`, `RoleDefinition`, `Sensor`, `SensorBlobMetadata`, `SensorExtendedProperty`, `Space` ,  `SpaceBlobMetadata`, `SpaceExtendedProperty`, `SpaceResource`, `SpaceRoleAssignment`, `System`, `User`, `UserBlobMetadata`, `UserExtendedProperty`.
+  Stosuje się do zmian grafu. *Podmiotu* właściwość określa typ obiektu, których to dotyczy. Typy obiektów, które mogą wyzwalać to zdarzenie: **urządzenia**, **DeviceBlobMetadata**, **DeviceExtendedProperty**, **ExtendedPropertyKey**, **Typ ExtendedType**, **magazynu kluczy**, **raportu**, **definicji RoleDefinition**, **czujnik**, **SensorBlobMetadata**, **SensorExtendedProperty**, **miejsca**, **SpaceBlobMetadata**,  **SpaceExtendedProperty**, **SpaceResource**, **SpaceRoleAssignment**, **systemu**, **użytkownika**, **UserBlobMetadata**, **UserExtendedProperty**.
 
   Przykład:
 
@@ -55,11 +55,14 @@ Poniżej przedstawiono formaty zdarzeń dla każdego typu zdarzenia:
 
     | Nazwa atrybutu niestandardowego | Zamień |
     | --- | --- |
-    | `yourTopicName` | Nazwa dostosowanego tematu |
+    | *yourTopicName* | Nazwa dostosowanego tematu |
 
-- `UdfCustom`
+- **UdfCustom**
 
-  Zdarzenia wysłanego przez funkcję zdefiniowaną przez użytkownika (UDF). Uwaga: to zdarzenie ma być jawnie wysyłane z systemu plików UDF, sam.
+  Zdarzenia wysłanego przez funkcję zdefiniowaną przez użytkownika (UDF). 
+  
+  > [!IMPORTANT]
+  > To zdarzenie ma być jawnie wysyłane z systemu plików UDF, sam.
 
   Przykład:
 
@@ -83,9 +86,9 @@ Poniżej przedstawiono formaty zdarzeń dla każdego typu zdarzenia:
 
     | Nazwa atrybutu niestandardowego | Zamień |
     | --- | --- |
-    | `yourTopicName` | Nazwa dostosowanego tematu |
+    | *yourTopicName* | Nazwa dostosowanego tematu |
 
-- `SensorChange`
+- **SensorChange**
 
   Aktualizacja stanu czujnika na podstawie danych telemetrycznych zmian.
 
@@ -118,9 +121,9 @@ Poniżej przedstawiono formaty zdarzeń dla każdego typu zdarzenia:
 
     | Nazwa atrybutu niestandardowego | Zamień |
     | --- | --- |
-    | `yourTopicName` | Nazwa dostosowanego tematu |
+    | *yourTopicName* | Nazwa dostosowanego tematu |
 
-- `SpaceChange`
+- **SpaceChange**
 
   Aktualizacja stanu miejsca na podstawie danych telemetrycznych zmian.
 
@@ -153,15 +156,15 @@ Poniżej przedstawiono formaty zdarzeń dla każdego typu zdarzenia:
 
     | Nazwa atrybutu niestandardowego | Zamień |
     | --- | --- |
-    | `yourTopicName` | Nazwa dostosowanego tematu |
+    | *yourTopicName* | Nazwa dostosowanego tematu |
 
-- `DeviceMessage`
+- **DeviceMessage**
 
-  Umożliwia określenie `EventHub` połączenia, do którego nieprzetworzone dane telemetryczne zdarzeń można kierować również z bliźniaczych reprezentacji cyfrowych platformy Azure.
+  Umożliwia określenie **EventHub** połączenia, do którego nieprzetworzone dane telemetryczne zdarzeń można kierować również z bliźniaczych reprezentacji cyfrowych platformy Azure.
 
 > [!NOTE]
-> - `DeviceMessage` jest możliwych do łączenia tylko w przypadku `EventHub`; nie można połączyć `DeviceMessage` za pomocą dowolnego typu zdarzenia.
-> - Można określić tylko jeden punkt końcowy połączenia typu `EventHub` / `DeviceMessage`.
+> - **DeviceMessage** jest możliwych do łączenia tylko w przypadku **EventHub**; nie można połączyć **DeviceMessage** za pomocą dowolnego typu zdarzenia.
+> - Można określić tylko jeden punkt końcowy połączenia typu **EventHub** lub **DeviceMessage**.
 
 ## <a name="configuring-endpoints"></a>Konfigurowanie punktów końcowych
 
@@ -171,7 +174,7 @@ Punkt końcowy zarządzania jest wykonywane za pośrednictwem punktów końcowyc
 POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 ```
 
-- Kierowanie do **usługi Service Bus** typy zdarzeń: `SensorChange`, `SpaceChange`, `TopologyOperation`
+- Kierowanie do **usługi Service Bus** typy zdarzeń: **SensorChange**, **SpaceChange**, **TopologyOperation**
 
   ```JSON
   {
@@ -189,12 +192,12 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 
     | Nazwa atrybutu niestandardowego | Zamień |
     | --- | --- |
-    | `yourNamespace` | Przestrzeń nazw punktu końcowego usługi |
-    | `yourPrimaryKey` | Podstawowe parametry połączenia używane do uwierzytelniania |
-    | `yourSecondaryKey` | Pomocnicze parametry połączenia używane do uwierzytelniania |
-    | `yourTopicName` | Nazwa dostosowanego tematu |
+    | *yourNamespace* | Przestrzeń nazw punktu końcowego usługi |
+    | *yourPrimaryKey* | Podstawowe parametry połączenia używane do uwierzytelniania |
+    | *yourSecondaryKey* | Pomocnicze parametry połączenia używane do uwierzytelniania |
+    | *yourTopicName* | Nazwa dostosowanego tematu |
 
-- Kierowanie do **usługi Event Grid** typy zdarzeń: `SensorChange`, `SpaceChange`, `TopologyOperation`
+- Kierowanie do **usługi Event Grid** typy zdarzeń: **SensorChange**, **SpaceChange**, **TopologyOperation**
 
   ```JSON
   {
@@ -212,11 +215,11 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 
     | Nazwa atrybutu niestandardowego | Zamień |
     | --- | --- |
-    | `yourPrimaryKey` | Podstawowe parametry połączenia używane do uwierzytelniania|
-    | `yourSecondaryKey` | Pomocnicze parametry połączenia używane do uwierzytelniania |
-    | `yourTopicName` | Nazwa dostosowanego tematu |
+    | *yourPrimaryKey* | Podstawowe parametry połączenia używane do uwierzytelniania|
+    | *yourSecondaryKey* | Pomocnicze parametry połączenia używane do uwierzytelniania |
+    | *yourTopicName* | Nazwa dostosowanego tematu |
 
-- Kierowanie do **Centrum zdarzeń** typy zdarzeń: `SensorChange`, `SpaceChange`, `TopologyOperation`
+- Kierowanie do **Centrum zdarzeń** typy zdarzeń: **SensorChange**, **SpaceChange**, **TopologyOperation**
 
   ```JSON
   {
@@ -234,12 +237,12 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 
     | Nazwa atrybutu niestandardowego | Zamień |
     | --- | --- |
-    | `yourNamespace` | Przestrzeń nazw punktu końcowego usługi |
-    | `yourPrimaryKey` | Podstawowe parametry połączenia używane do uwierzytelniania |
-    | `yourSecondaryKey` | Pomocnicze parametry połączenia używane do uwierzytelniania |
-    | `yourEventHubName` | Nazwa Centrum zdarzeń |
+    | *yourNamespace* | Przestrzeń nazw punktu końcowego usługi |
+    | *yourPrimaryKey* | Podstawowe parametry połączenia używane do uwierzytelniania |
+    | *yourSecondaryKey* | Pomocnicze parametry połączenia używane do uwierzytelniania |
+    | *yourEventHubName* | Nazwa Twojej **Centrum zdarzeń** |
 
-- Kierowanie do **Centrum zdarzeń** typy zdarzeń `DeviceMessage`. Należy pamiętać, włączenie _EntityPath_ w `connectionString`, który jest obowiązkowe.
+- Kierowanie do **Centrum zdarzeń** typ zdarzenia: **DeviceMessage**. Włączenie `EntityPath` w **connectionString** jest obowiązkowe.
 
   ```JSON
   {
@@ -255,10 +258,10 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 
     | Nazwa atrybutu niestandardowego | Zamień |
     | --- | --- |
-    | `yourNamespace` | Przestrzeń nazw punktu końcowego usługi |
-    | `yourPrimaryKey` | Podstawowe parametry połączenia używane do uwierzytelniania |
-    | `yourSecondaryKey` | Pomocnicze parametry połączenia używane do uwierzytelniania |
-    | `yourEventHubName` | Nazwa Centrum zdarzeń |
+    | *yourNamespace* | Przestrzeń nazw punktu końcowego usługi |
+    | *yourPrimaryKey* | Podstawowe parametry połączenia używane do uwierzytelniania |
+    | *yourSecondaryKey* | Pomocnicze parametry połączenia używane do uwierzytelniania |
+    | *yourEventHubName* | Nazwa Twojej **Centrum zdarzeń** |
 
 > [!NOTE]
 > Po utworzeniu nowego punktu końcowego może upłynąć do 5 do 10 minut, aby uruchomić odbieranie zdarzeń w punkcie końcowym.

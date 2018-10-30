@@ -4,16 +4,16 @@ description: W tym artykule opisano proces programowego tworzenia i zarządzanie
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/29/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: dd7ec4f1d0c018a3c7eed19bea523f7c09bfea3e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4a68b60df76dcc554158d6c8db4d0dfe8dd32be7
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985320"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209228"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programowe tworzenie zasad i wyświetlić dane na temat zgodności
 
@@ -85,6 +85,12 @@ Pierwszym krokiem procesu lepszą widoczność zasobów jest tworzenie i przypis
    ```
 
    Zastąp _ContosoRG_ nazwą grupy zasobów przeznaczone.
+
+   **Zakres** parametru `New-AzureRmPolicyAssignment` działa także w przypadku subskrypcji i grup zarządzania. Parametr używa ścieżki wszystkich zasobów, które **ResourceId** właściwość `Get-AzureRmResourceGroup` zwraca. Wzorzec **zakres** dla każdego kontenera jest w następujący sposób.  Zastąp `{rgName}`, `{subId}`, i `{mgName}` z zasobem usługi grupy odpowiednio na nazwę, identyfikator subskrypcji i nazwa grupy zarządzania.
+
+   - Grupa zasobów- `/subscriptions/{subId}/resourceGroups/{rgName}`
+   - Subskrypcja — `/subscriptions/{subId}/`
+   - Grupa zarządzania- `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 Aby uzyskać więcej informacji o zarządzaniu zasadami zasobów za pomocą modułu Azure PowerShell Resource Manager, zobacz [azurerm.resources wprowadzono](/powershell/module/azurerm.resources/#policies).
 

@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.date: 10/15/2017
-ms.openlocfilehash: 70af92c2afd450d357bf9f30187ef200334698ba
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 274fa3153f6a354b121b7fd8338d8e0d2d94f4f4
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124721"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230816"
 ---
 # <a name="create-and-deploy-logic-apps-with-azure-resource-manager-templates"></a>Tworzenie i wdrażanie aplikacji logiki przy użyciu szablonów usługi Azure Resource Manager
 
@@ -121,7 +121,7 @@ azure group deployment create --template-uri https://raw.githubusercontent.com/A
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](http://aka.ms/logicapps-wish).
+* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

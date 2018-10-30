@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: sajagtap
-ms.openlocfilehash: 5d485911e9cd509292266d98debad6684d6cf219
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 3b0cd73be1857d0849c4cb53dcc52c5c27206e80
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435561"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230917"
 ---
 # <a name="language-and-region-support-for-content-moderator-api"></a>Obsługa języka i regionu dla dnia Content Moderator interfejsu API
 
@@ -63,42 +63,42 @@ ms.locfileid: "47435561"
 | Mycenaean (grecki) | Niemiecki
 | Nko | Grecki
 | Norweski (Bokmal) | Gudżarati
-| Norweski (Nynorsk) |  Hausa
+| Norweski (nynorsk) |  Hausański
 | Stary (perski) | Hebrajski
 | Paszto | Hindi
 | Polski | Węgierski
-| Portugalskie | Islandzki
+| Portugalski | Islandzki
 | Pendżabski | Igbo
 | Rejang | Indonezyjski
 | Rosyjski | Inuktitut
 | Santali | Irlandzki
 | Sasak | Isixhosa
-| Saurashtra | isiZulu
+| Saurashtra | Isizulu
 | Serbski (cyrylica) | Włoski
 | Serbski (łaciński) | Japoński
-| Sinhala | Kannada
+| Sinaloa | Kannada
 | Słoweński | Kazachski
 | Hiszpański | Khmerski
 | Szwedzki | Kicze
 | Sylheti | Kinjarwanda
-| Syryjski | Swahili
+| Syryjski | Suahili
 | Tagbanwa | Konkani
 | Akończenie (Nua) | Koreański
-| Tamashek | Kirgiski
+| Tamashek | Kirgijski
 | Turecki | Laotański
 | Ugaritic | Łotewski
 | Uzbecki (cyrylica) | Litewski
 | Uzbecki (łaciński) | Luksemburski
-| Vai | Macedoński
+| Vai | macedoński
 | Yi | Malajski
 | Czuang | Malajalam
 | | Maltański
-| | Maoryski
+| | Maoryjski
 | | Marathi
 | | Mongolski
 | | Nepalski
 | | Norweski (Bokmal)
-| | Norweski (Nynorsk)
+| | Norweski (nynorsk)
 | | Orija
 | | Paszto
 | | Perski
@@ -119,7 +119,7 @@ ms.locfileid: "47435561"
 | | Sesotho północny
 | | Setswana
 | | Sindhi
-| | Sinhala
+| | Sinaloa
 | | Słowacki
 | | Słoweński
 | | Hiszpański

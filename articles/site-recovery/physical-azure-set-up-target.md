@@ -1,19 +1,18 @@
 ---
-title: Przygotowywanie celu (replikacji maszyna fizyczna – Azure) | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób przygotowania środowiska platformy Azure do uruchamiania replikacji serwerów fizycznych z systemem Windows lub Linux na platformie Azure.
-services: site-recovery
+title: Konfigurowanie środowiska docelowego dla odzyskiwania po awarii lokalnych serwerów fizycznych do platformy Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób konfigurowania docelowego środowiska platformy Azure na potrzeby odzyskiwania po awarii serwerów fizycznych przy użyciu usługi Azure Site Recovery.
 author: bsiva
 manager: abhemraj
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: bsiva
-ms.openlocfilehash: 370d245e39b848acade18d0e73f60a3246737629
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: b89d04a6e2fd11a61de8b56690664f6204c208ad
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915524"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209296"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>Przygotowywanie celu (program VMware do platformy Azure)
 

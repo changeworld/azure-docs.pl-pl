@@ -1,19 +1,18 @@
 ---
-title: Rozwiązywanie problemów z replikacją dla maszyny Wirtualnej VMware oraz replikacji serwera fizycznego na platformę Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera rozwiązywania problemów dla typowych problemów z replikacją, podczas replikowania maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure za pomocą usługi Azure Site Recovery.
-services: site-recovery
+title: Rozwiązywanie problemów z replikacją na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera informacje dotyczące rozwiązywania problemów dla typowych problemów z replikacją podczas odzyskiwania po awarii maszyn wirtualnych programu VMware i serwerów fizycznych na platformę Azure za pomocą usługi Azure Site Recovery.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: c2100ee2388ae09bd309167b1be77f7bdbe32f69
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 915f7d7d2d6be02dfef0cd6bb9a2fa156ed565bc
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126021"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214736"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Rozwiązywanie problemów z replikacją dla maszyn wirtualnych VMware i serwerów fizycznych
 

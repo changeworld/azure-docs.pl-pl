@@ -6,16 +6,16 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: b7561848ffd0158e22e97530774112dcee2a9864
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: a45f82b142ee4f4c9c88ea755607b88323feaae5
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324182"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210129"
 ---
-# <a name="data-processing-and-user-defined-functions"></a>Przetwarzanie danych i funkcji zdefiniowanych przez użytkownika
+# <a name="data-processing-and-user-defined-functions"></a>Przetwarzanie danych i funkcje zdefiniowane przez użytkownika
 
 Twins cyfrowych platformy Azure oferuje możliwości zaawansowanych obliczeń. Deweloperzy mogą zdefiniować i uruchamiać funkcje niestandardowe wiadomości przychodzących danych telemetrycznych do wysyłania zdarzeń do wstępnie zdefiniowanych punktów końcowych.
 
@@ -25,7 +25,7 @@ Gdy urządzenia wysyłają dane telemetryczne do reprezentacji urządzeń cyfrow
 
 ![Przepływ przetwarzania danych cyfrowych bliźniaczych reprezentacji][1]
 
-1. _Zweryfikować_ fazy przekształca przychodzące komunikaty telemetryczne w celu prezentacji typowe [ `data transfer object` ](https://en.wikipedia.org/wiki/Data_transfer_object) formatu. Ta faza wykonuje również weryfikacji urządzeń i czujników.
+1. _Zweryfikować_ fazy przekształca przychodzące komunikaty telemetryczne w celu prezentacji typowe [ **obiekt transferu danych** ](https://en.wikipedia.org/wiki/Data_transfer_object) formatu. Ta faza wykonuje również weryfikacji urządzeń i czujników.
 1. _Dopasowania_ fazy umożliwia znalezienie odpowiednich funkcji zdefiniowane przez użytkownika do uruchomienia. Wstępnie zdefiniowane dopasowujące jednostki znajdzie funkcji zdefiniowane przez użytkownika zależy od urządzeń, czujników i informacji o miejscu na przychodzące komunikaty telemetryczne.
 1. _Obliczenia_ fazy uruchamia funkcji User-defined dopasowywany w poprzedniej fazy. Tych funkcji mogą odczytu i aktualizacji obliczone wartości w węzłach przestrzenne programu graph i może emitować niestandardowe powiadomienia.
 1. _Wysyłania_ fazy trasy niestandardowe powiadomienia z fazy obliczeń do punktów końcowych zdefiniowanych na wykresie.
@@ -40,11 +40,11 @@ Przetwarzanie danych w reprezentacji urządzeń cyfrowych platformy Azure skład
 
 _Dopasowujące jednostki_ zdefiniować zestaw warunków określających, jakie akcje zostaną zrealizowane na podstawie przychodzących danych telemetrycznych z czujnika. Te warunki, aby określić dopasowania mogą obejmować właściwości z czujnika, czujnik nadrzędnego urządzenia i czujnik nadrzędnego miejsca. Warunki są wyrażane jako porównania z typem [ścieżkę JSON](http://jsonpath.com/) tak jak pokazano w poniższym przykładzie:
 
-- Wszystkie czujniki datatype `Temperature`.
+- Wszystkie czujniki datatype **temperatury**.
 - Posiadanie `01` ich portu.
-- Które należą do urządzenia przy użyciu klucza właściwości rozszerzonej `Manufacturer` ustawiona na wartość `GoodCorp`.
-- Które należą do miejsca do magazynowania o typie `Venue`.
-- Które są elementy podrzędne elementu nadrzędnego `SpaceId` `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`.
+- Które należą do urządzenia przy użyciu klucza właściwości rozszerzonej **producenta** ustawiona na wartość `"GoodCorp"`.
+- Które należą do miejsca do magazynowania o typie `"Venue"`.
+- Które są elementy podrzędne elementu nadrzędnego **SpaceId** `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`.
 
 ```JSON
 {

@@ -1,22 +1,20 @@
 ---
-title: Zarządzanie interfejsami sieciowymi w usłudze Azure Site Recovery dla środowiska lokalnego do platformy Azure replikacji | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób zarządzania interfejsów sieciowych dla środowiska lokalnego do platformy Azure replikację za pomocą usługi Azure Site Recovery
-services: site-recovery
+title: Zarządzanie interfejsami sieciowymi w usłudze Azure Site Recovery dla lokalnego odzyskiwania po awarii na platformie Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób zarządzania interfejsów sieciowych dla środowiska lokalnego odzyskiwania po awarii na platformie Azure przy użyciu usługi Azure Site Recovery
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 0ca2d32910e57042d2cbc9d3b772d226d835b545
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: afa8dfc39177e3f15db0092691d910b6b2cd3764
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352414"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212458"
 ---
-# <a name="manage-virtual-machine-network-interfaces-for-on-premises-to-azure-replication"></a>Zarządzanie interfejsami sieciowymi maszyn wirtualnych dla środowiska lokalnego do platformy Azure replikacji
-
+# <a name="manage-virtual-machine-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Zarządzanie interfejsami sieciowymi maszyn wirtualnych do środowiska lokalnego odzyskiwania po awarii na platformie Azure
 Maszynę wirtualną (VM) na platformie Azure musi mieć co najmniej jeden interfejs sieciowy dołączony do niego. Może mieć wiele sieci interfejsów dołączone do niego jako obsługuje rozmiar maszyny Wirtualnej.
 
 Domyślnie pierwszy interfejs sieciowy dołączony do maszyny wirtualnej platformy Azure jest zdefiniowany jako podstawowy interfejs sieciowy. Wszystkie inne interfejsy sieciowe w maszynie wirtualnej są dodatkowych interfejsów sieciowych. Również domyślnie cały ruch wychodzący z maszyny wirtualnej jest wysyłane adres IP, który jest przypisany do podstawowa konfiguracja adresów IP głównego interfejsu sieciowego.

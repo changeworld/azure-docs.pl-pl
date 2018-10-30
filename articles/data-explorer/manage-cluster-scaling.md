@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 59a6a94e2906413423a4ae03a7c1c115b2ec0cc0
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bd3be916587ab884ea5579234a6189af54b53797
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047926"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209211"
 ---
 # <a name="manage-cluster-scaling-to-accommodate-changing-demand"></a>Zarządzanie, skalowanie klastra w celu uwzględnienia zmiennym obciążeniem
 
@@ -63,4 +63,4 @@ Na poniższym rysunku przedstawiono przepływ następnych krokach. Firma Microso
 
 Operacja skalowania w poziomie, dla klastra Eksploratora danych usługi Azure został skonfigurowany. Dodaj inną regułę dla operacji skalowania na zewnątrz. Pozwoli to klastrowi skalowania dynamicznie oparciu metryki użycia, które określisz.
 
-Jeśli potrzebujesz pomocy z klastrem skalowanie problemy, otwórz żądanie pomocy technicznej w [witryny Azure portal](https://portal.azure.com).
+Jeśli potrzebujesz pomocy z klastrem skalowanie problemy, otwórz żądanie pomocy technicznej w [witryny Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).

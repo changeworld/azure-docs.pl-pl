@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 10/26/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: e418316a74ccf27ec730261957a8b6c64de5d063
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d521406e37920dcd76c0078d2fdf54c16b7a0461
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040605"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209993"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Utworzyć grupę dynamiczną i sprawdzić stan
 
@@ -39,8 +39,9 @@ Ten artykuł szczegółowo opisuje sposób konfigurowania reguły w witrynie Azu
 
    ![Dodaj dynamiczną regułę członkostwa](./media/groups-create-rule/add-dynamic-group-rule.png)
 
-5. Po utworzeniu reguły, wybierz **Dodaj zapytanie** w dolnej części bloku.
-6. Wybierz **Utwórz** na **grupy** bloku, aby utworzyć grupę.
+5. Aby wyświetlić pełną listę właściwości rozszerzenia klienta, które można dodać do zapytania o członkostwo, wybierz **Pobierz właściwości rozszerzenia klienta**wprowadź unikatowy identyfikator aplikacji, a następnie wybierz pozycję **Odśwież właściwości**. Pełne ISTA właściwości będzie teraz dostępne do wybrania.
+6. Po utworzeniu reguły, wybierz **Dodaj zapytanie** w dolnej części bloku.
+7. Wybierz **Utwórz** na **grupy** bloku, aby utworzyć grupę.
 
 > [!TIP]
 > Tworzenie grupy kończy się niepowodzeniem, jeśli reguła wprowadzony został niepoprawnie sformułowany lub nieprawidłowy. W prawym górnym rogu portalu, zawierające wyjaśnienie, dlaczego nie można przetworzyć reguły zostanie wyświetlone powiadomienie. Przeczytaj uważnie, aby zrozumieć, jak musisz dostosować reguły, aby stał się nieprawidłowy.

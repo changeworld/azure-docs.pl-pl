@@ -1,18 +1,18 @@
 ---
-title: Tryb failover i powrotu po awarii fizycznych serwerów replikowanych na platformie Azure z usługą Site Recovery niepowodzenie | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak i serwerów fizycznych na platformę Azure w tryb failover i powrót po awarii do lokacji lokalnej, usługa Azure Site Recovery
+title: Tryb failover i powrotu po awarii fizycznych serwerów dla odzyskiwania po awarii na platformie Azure z usługą Site Recovery niepowodzenie | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak i serwerów fizycznych na platformę Azure w tryb failover i powrót po awarii do lokacji lokalnej do odzyskiwania po awarii przy użyciu usługi Azure Site Recovery
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 1a818d37efd370ce0b3e27bff73a153544763ebb
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 309da6f7753d95bc6830d61ecca7d86e002ddedf
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456630"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214840"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Tryb failover i zakończyć się niepowodzeniem powrotu po awarii fizycznych serwerów replikowanych na platformie Azure
 

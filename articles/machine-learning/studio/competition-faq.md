@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 15d46f16c78b8fa757d7810542b3d6bfa9a95f3c
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fcbba3578627f53ff1de29fe6e309db9608b31c9
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465631"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231512"
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Konkursy dotyczące usługi Microsoft Cortana Intelligence — często zadawane pytania
 **Co to jest pakiet Cortana Intelligence konkursy?**
 
-Konkursy analizy Cortany Microsoft łączy w sobie globalnej społeczności Entuzjaści danych przez zbiorczo rozwiązywaniu niektórych z najbardziej złożonych problemów do nauki o danych na świecie. Pakiet Cortana Intelligence konkursy umożliwiają Entuzjaści danych z na całym świecie konkurować i tworzenie modeli do analizy danych o wysokiej dokładne i inteligentne. Te konkursy hostowanej są oparte na unikatowych zestawów danych, które zostały udostępnione w publicznie po raz pierwszy. Uczestnicy można wygrać nagrody lub rozpoznawania za pośrednictwem najważniejsze 10 Liderzy publicznych. Dostępne konkursy strony głównej w [aka.ms/CIComp](http://aka.ms/CIComp).
+Konkursy analizy Cortany Microsoft łączy w sobie globalnej społeczności Entuzjaści danych przez zbiorczo rozwiązywaniu niektórych z najbardziej złożonych problemów do nauki o danych na świecie. Pakiet Cortana Intelligence konkursy umożliwiają Entuzjaści danych z na całym świecie konkurować i tworzenie modeli do analizy danych o wysokiej dokładne i inteligentne. Te konkursy hostowanej są oparte na unikatowych zestawów danych, które zostały wprowadzone publicaly dostępne po raz pierwszy. Uczestnicy można wygrać nagrody lub rozpoznawania za pośrednictwem najważniejsze 10 Liderzy publicznych. Dostępne konkursy strony głównej w [aka.ms/CIComp](http://aka.ms/CIComp).
 
 **Jak często firma Microsoft będzie publikować nowy konkursy**
 

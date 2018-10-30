@@ -1,21 +1,20 @@
 ---
-title: Replikacja i tryb failover maszyny wirtualne VMware na platformę Azure przy użyciu programu PowerShell w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować replikację i tryb failover na platformie Azure dla maszyn wirtualnych VMware przy użyciu programu PowerShell w usłudze Azure Site Recovery.
-services: site-recovery
+title: Konfigurowanie odzyskiwania po awarii maszyn wirtualnych programu VMware do platformy Azure przy użyciu programu PowerShell w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować replikację i tryb failover na platformę Azure do odzyskiwania po awarii maszyn wirtualnych programu VMware przy użyciu programu PowerShell w usłudze Azure Site Recovery.
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.date: 07/06/2018
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: 070e51b132828e4fdf597d28fc2ad602adf76692
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 631225e6e0a7bb3bc42741e2761e3746c001c217
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042806"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211642"
 ---
-# <a name="replicate-and-fail-over-vmware-vms-to-azure-with-powershell"></a>Replikacja i tryb failover maszyny wirtualne VMware na platformę Azure przy użyciu programu PowerShell
+# <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Konfigurowanie odzyskiwania po awarii maszyn wirtualnych programu VMware do platformy Azure przy użyciu programu PowerShell
 
 W tym artykule zobaczysz, jak replikować i trybu failover maszyny wirtualne VMware na platformę Azure przy użyciu programu Azure PowerShell. 
 
@@ -102,7 +101,7 @@ Select-AzureRmSubscription -SubscriptionName "ASR Test Subscription"
 Ustaw kontekst magazynu za pomocą polecenia cmdlet Set-ASRVaultContext. Po ustawieniu kolejne operacje usługi Azure Site Recovery w sesji programu PowerShell są wykonywane w kontekście wybranego magazynu.
 
 > [!TIP]
-> Moduł Azure PowerShell odzyskiwania lokacji (moduł AzureRm.RecoveryServices.SiteRecovery) jest dostarczany za pomocą łatwych w użyciu aliasów dla większości poleceń cmdlet. Polecenia cmdlet w module mieć postać  *\<operacji >-**ciągu AzureRmRecoveryServicesAsr**\<obiektu >* i mieć równoważne aliasy, które będzie mieć postać  *\<Operacji >-**ASR**\<obiektu >*. W tym artykule używa aliasy polecenia cmdlet w celu ułatwienia odczytu.
+> Moduł Azure PowerShell odzyskiwania lokacji (moduł AzureRm.RecoveryServices.SiteRecovery) jest dostarczany za pomocą łatwych w użyciu aliasów dla większości poleceń cmdlet. Polecenia cmdlet w module mieć postać *\<operacji >-**ciągu AzureRmRecoveryServicesAsr**\<obiektu >* i mieć równoważne aliasy, które będzie mieć postać *\<Operacji >-**ASR**\<obiektu >*. W tym artykule używa aliasy polecenia cmdlet w celu ułatwienia odczytu.
 
 W poniższym przykładzie, szczegóły magazynu z $vault zmienna służy do określania kontekst magazynu dla sesji programu PowerShell.
 

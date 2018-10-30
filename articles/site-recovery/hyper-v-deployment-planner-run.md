@@ -1,20 +1,20 @@
 ---
-title: Planista wdrażania usługi Azure Site Recovery dla funkcji Hyper-V na platformie Azure | Microsoft Docs
-description: Ten artykuł nauczy Cię sposobu uruchamiania foro planisty wdrażania odzyskiwania lokacji funkcji Hyper-V do platformy Azure replikacji.
+title: Uruchamianie Planisty wdrożenia usługi Azure Site Recovery dla funkcji Hyper-V odzyskiwania po awarii na platformie Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób uruchamiania Planisty wdrożenia usługi Azure Site Recovery dla funkcji Hyper-V odzyskiwania po awarii na platformie Azure.
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 9da79884973c620bbf8b6a191f3dd6db5bd19064
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 1df8f7025787eb864b7e9ad6f41105df8fb2cc8a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094194"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213342"
 ---
-# <a name="run-azure-site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Uruchamianie planisty wdrożenia usługi Azure Site Recovery dla funkcji Hyper-V na platformie Azure
+# <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Uruchamianie planisty wdrożenia usługi Azure Site Recovery dla funkcji Hyper-V odzyskiwania po awarii na platformie Azure
 
 Usługa Site Recovery można uruchomić narzędzie planista wdrażania wiersza polecenia (ASRDeploymentPlanner.exe) w dowolnym z czterech trybów: 
 -   [Pobieranie listy maszyn wirtualnych](#get-vm-list-for-profiling-hyper-v-vms)

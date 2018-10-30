@@ -1,21 +1,21 @@
 ---
-title: Temat mapowania sieci na potrzeby replikacji funkcji Hyper-V VM (z programem VMM) do platformy Azure z usługą Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania mapowania sieci na potrzeby replikacji maszyn wirtualnych funkcji Hyper-V zarządzane w chmurach programu VMM przy użyciu usługi Azure Site Recovery.
+title: Temat mapowania sieci na potrzeby odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V, (z programem VMM) do platformy Azure z usługą Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób konfigurowania mapowania sieci na potrzeby odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V (zarządzane w chmurach programu VMM) na platformie Azure przy użyciu usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: d683554a97a1616b0d4d7b1ae95d62b476de04eb
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: cecc1df23ebed88db315e7de14ea850ba5297697
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078515"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212985"
 ---
-# <a name="prepare-network-mapping-for-hyper-v-vm-replication-to-azure"></a>Przygotowywanie mapowania sieci na potrzeby replikacji maszyny wirtualnej funkcji Hyper-V do platformy Azure
+# <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Przygotowywanie mapowania sieci na potrzeby odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V na platformie Azure
 
 
 Ten artykuł ułatwia zrozumienie i przygotowanie do mapowania sieci podczas replikowania maszyn wirtualnych z funkcją Hyper-V w chmurach programu System Center Virtual Machine Manager (VMM) do platformy Azure lub lokacji dodatkowej przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md) usługi.

@@ -4,19 +4,19 @@ description: Azure oceny zasad i efekty określenia zgodności. Dowiedz się, ja
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/29/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 3fa185e741f1b14bf3f2e7413945b70b1ea1baaa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f88e68150aa2708557775df2719409228166520b
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970859"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233416"
 ---
-# <a name="getting-compliance-data"></a>Pobieranie danych zgodności
+# <a name="getting-compliance-data"></a>Pobieranie danych dotyczących zgodności
 
 Jedną z największych zalet usługi Azure Policy jest wglądu i kontroli jest lepsza od zasobów w ramach subskrypcji lub [grupy zarządzania](../../management-groups/overview.md) subskrypcji. Ten formant może być wykonywana na wiele różnych sposobów, na przykład zapobieganie zasobów tworzonych w niewłaściwej lokalizacji, wymuszając użycie wspólny i spójny tag lub inspekcji istniejących zasobów, aby uzyskać odpowiednie konfiguracje i ustawienia. We wszystkich przypadkach dane są generowane przez zasady, aby umożliwić Ci zrozumienie stanu zgodności środowiska.
 
@@ -40,6 +40,44 @@ Wersje ewaluacyjne przypisane zasady oraz inicjatyw się zdarzyć w wyniku róż
 - Aktualizacji zasad lub inicjatywy już przypisane do zakresu. Cykl oceny i czas, w tym scenariuszu jest taka sama, jak w przypadku nowe przypisanie do zakresu.
 - Zasób jest wdrażany w zakresie z przydziałem przy użyciu usługi Resource Manager, REST, wiersza polecenia platformy Azure lub programu Azure PowerShell. W tym scenariuszu zdarzeń efekt (Dołącz, inspekcji, Odmów, wdrażania) i informacje o stanie zgodności dla poszczególnych zasobów stają się dostępne w portalu i zestawy SDK około 15 minut. To zdarzenie nie powoduje oceny innych zasobów.
 - Cykl oceny zgodności standardowych. Co 24 godziny, przypisania są automatycznie ponownie oceniane. Duże zasad lub inicjatywy, oceniane pod kątem dużych zakres zasobów może potrwać, więc ma nie wstępnie zdefiniowanych oczekiwania podczas cyklu oceny zakończy. Po zakończeniu wyniki sprawdzania zgodności zaktualizowane są dostępne w portalu i zestawów SDK.
+- Na żądanie skanowania
+
+### <a name="on-demand-evaluation-scan"></a>Na żądanie oceny skanowania
+
+Skanowanie oceny dla subskrypcji lub grupy zasobów może być uruchamiany przy użyciu wywołania interfejsu API REST. Jest to proces asynchroniczny. W efekcie punktu końcowego REST, aby uruchomić skanowanie nie poczekaj, aż skanowanie zostanie zakończone na odpowiedź. Zamiast tego zapewnia identyfikatora URI, aby wykonać zapytanie o stan żądanej wersji ewaluacyjnej.
+
+Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które musisz zastąpić własnymi wartościami:
+
+- `{YourRG}` -Zamień na nazwę grupy zasobów
+- `{subscriptionId}` — zastąp swoim identyfikatorem subskrypcji
+
+Skanowanie obsługuje ocena zasobów w ramach subskrypcji lub w grupie zasobów. Uruchom skanowanie w poszukiwaniu żądanego zakresu przy użyciu interfejsu API REST **WPIS** polecenie, używając następujących struktur identyfikatora URI:
+
+- Subskrypcja
+
+  ```http
+  POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
+  ```
+
+- Grupa zasobów
+
+  ```http
+  POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{YourRG}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
+  ```
+
+To wywołanie zwraca **202 zaakceptowano** stanu. Uwzględnione w odpowiedzi nagłówek jest **lokalizacji** właściwość o następującym formacie:
+
+```http
+https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2018-07-01-preview
+```
+
+`{ResourceContainerGUID}` statycznie jest generowany dla zakres żądany. Jeśli zakres jest już wykonywana na skanowania żądanie, nowe skanowanie nie jest uruchomiona. Zamiast tego nowe żądanie znajduje się taka sama `{ResourceContainerGUID}` **lokalizacji** identyfikator URI dla stanu. Interfejs API REST **UZYSKAĆ** polecenie **lokalizacji** zwraca identyfikator URI **202 zaakceptowano** podczas, gdy trwa obliczanie. Po zakończeniu skanowania oceny zwraca **200 OK** stanu. Treść skanowanie ukończone jest odpowiedź w formacie JSON ze stanem:
+
+```json
+{
+    "status": "Succeeded"
+}
+```
 
 ## <a name="how-compliance-works"></a>Jak działa zgodności
 

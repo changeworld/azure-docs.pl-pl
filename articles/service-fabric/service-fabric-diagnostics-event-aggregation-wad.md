@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: a870c99718ecafe8af33e13be9aa46631888c8cb
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: d670b90404d441876727336fc50a848965082de5
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389687"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232499"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Zdarzenie agregacji i kolekcji przy użyciu Windows Azure Diagnostics
 > [!div class="op_single_selector"]
@@ -292,7 +292,7 @@ Jeśli używasz ujścia usługi Application Insights, zgodnie z opisem w dalszej
 
 ## <a name="send-logs-to-application-insights"></a>Wysyłanie dzienników do usługi Application Insights
 
-Wysyłanie danych monitorowania i diagnostyki Insights aplikacji (AI) może odbywać się w ramach konfiguracji funkcji WAD. Jeśli zdecydujesz się używać rozwiązań sztucznej Inteligencji dla zdarzeń analiz i wizualizacji, zapoznaj się z [sposób konfigurowania obiektu sink sztucznej Inteligencji](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template) jako część Twojego "WadCfg".
+Wysyłanie danych monitorowania i diagnostyki Insights aplikacji (AI) może odbywać się w ramach konfiguracji funkcji WAD. Jeśli zdecydujesz się używać rozwiązań sztucznej Inteligencji dla zdarzeń analiz i wizualizacji, zapoznaj się z [sposób konfigurowania obiektu sink sztucznej Inteligencji](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template) jako część Twojego "WadCfg".
 
 ## <a name="next-steps"></a>Kolejne kroki
 

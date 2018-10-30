@@ -1,29 +1,22 @@
 ---
-title: Replikowanie wielowarstwowych Citrix XenDesktop XenApp wdrożenia i za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak zabezpieczyć i odzyskać Citrix XenDesktop i XenApp korzystające z usługi Azure Site Recovery.
-services: site-recovery
-documentationcenter: ''
+title: Konfigurowanie odzyskiwania po awarii dla wdrożenia Citrix XenDesktop i XenApp obejmujące wiele warstw przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób konfigurowania odzyskiwania po awarii fo Citrix XenDesktop i XenApp korzystające z usługi Azure Site Recovery.
 author: ponatara
 manager: abhemraj
-editor: ''
-ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: 45d366842416ddfa7b0153a1d075ee6de58e45a1
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 0b8d9765766191533745da4c653f1a91ce635c24
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213637"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210316"
 ---
-# <a name="replicate-a-multi-tier-citrix-xenapp-and-xendesktop-deployment-using-azure-site-recovery"></a>Replikowanie wdrożenia programów Citrix XenApp i XenDesktop obejmujące wiele warstw przy użyciu usługi Azure Site Recovery
+# <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>Konfigurowanie odzyskiwania po awarii dla wdrożenia programów Citrix XenApp i XenDesktop wielowarstwowej
 
-## <a name="overview"></a>Przegląd
+
 
 Citrix XenDesktop to rozwiązanie wirtualizacji pulpitu, które dostarcza pulpitów i aplikacji jako usługa na żądanie z żadnym użytkownikiem, dowolnym miejscu. Dzięki FlexCast dostarczanie technologii XenDesktop można szybko i bezpiecznie dostarczania aplikacji i pulpitów do użytkowników.
 Już dziś Citrix XenApp nie zapewnia awariami możliwości odzyskiwania.
@@ -46,7 +39,7 @@ Przed rozpoczęciem upewnij się, że należy zrozumieć następujące kwestie:
 
 ## <a name="deployment-patterns"></a>Wzorce wdrożenia
 
-Farmy programu Citrix XenApp i XenDesktop zwykle ma z następującym wzorcem wdrożenia:
+Citrix XenApp i XenDesktop farmy zwykle mają następujący wzorzec wdrożenia:
 
 **Wzorzec wdrożenia**
 
@@ -75,7 +68,7 @@ Ponieważ usługa XenApp 7,7 lub nowszej jest obsługiwana na platformie Azure, 
 
 1. Ochrony i odzyskiwania lokalnych wdrożeń przy użyciu systemu operacyjnego serwera maszyn w celu dostarczenia XenApp opublikowane aplikacje i rozwiązania XenApp opublikowanych pulpitów jest obsługiwana.
 
-2. Ochrony i odzyskiwania lokalnych wdrożeń korzystanie z pulpitu systemu operacyjnego maszyny w celu dostarczania pulpitu VDI dla klienta pulpitów wirtualnych, łącznie z systemem Windows 10 nie jest obsługiwana. Jest to spowodowane ASR nie obsługuje odzyskiwanie maszyn za pomocą programu desktop OS'es.  Ponadto niektóre wirtualnego pulpitu systemy operacyjne klienta (np.) Windows 7) nie są jeszcze obsługiwane w przypadku licencjonowania na platformie Azure. [Dowiedz się więcej](https://azure.microsoft.com/pricing/licensing-faq/) na temat licencjonowania dla komputerów stacjonarnych klienta/serwera na platformie Azure.
+2. Ochrony i odzyskiwania lokalnych wdrożeń korzystanie z pulpitu systemu operacyjnego maszyny w celu dostarczania pulpitu VDI dla klienta pulpitów wirtualnych, łącznie z systemem Windows 10 nie jest obsługiwana. Jest to spowodowane Site Recovery nie obsługuje odzyskiwanie maszyn za pomocą programu desktop OS'es.  Ponadto niektóre wirtualnego pulpitu systemy operacyjne klienta (np.) Windows 7) nie są jeszcze obsługiwane w przypadku licencjonowania na platformie Azure. [Dowiedz się więcej](https://azure.microsoft.com/pricing/licensing-faq/) na temat licencjonowania dla komputerów stacjonarnych klienta/serwera na platformie Azure.
 
 3.  Usługa Azure Site Recovery nie może chronić i replikować istniejących klony oddział MCS lub Odwiedziny w środowisku lokalnym.
 Należy ponownie utworzyć te klony przy użyciu usługi Azure RM aprowizowania już od kontroler dostarczania.
@@ -152,7 +145,7 @@ Plany odzyskiwania można dostosować w taki sposób, aby dodać grupy trybu fai
 
 ### <a name="adding-scripts-to-the-recovery-plan"></a>Dodawanie skryptów do planu odzyskiwania
 
-Można uruchamiać skrypty przed lub po określonej grupy w planie odzyskiwania. Ręczne akcje mogą być również być uwzględnione i wykonywane podczas pracy awaryjnej.
+Można uruchamiać skrypty przed lub po określonej grupy w planie odzyskiwania. Można również uwzględnione działania ręczne i wykonywane podczas pracy awaryjnej.
 
 Plan odzyskiwania dostosowany wygląda jak poniżej:
 
@@ -163,20 +156,20 @@ Plan odzyskiwania dostosowany wygląda jak poniżej:
    >[!NOTE]     
    >Kroki od 4, 6 i 7 zawierający akcje ręczne lub skrypt mają zastosowanie do lokalnych XenApp > środowisko z katalogami MCS/Odwiedziny.
 
-4. Akcja ręczna lub skryptu grupa 3: zamknięcie głównego VDA maszyny Wirtualnej wzorzec VDA będzie maszyna wirtualna po przełączone w tryb failover Azure w stanie uruchomienia. Aby utworzyć nowe katalogi MCS korzystania z platformy Azure ARM hostingu, wzorca VDA maszyna wirtualna jest wymagane będzie zatrzymane (przydzielone de) stanu. Zamknij maszynę Wirtualną z witryny Azure Portal.
+4. Akcja ręczna lub skryptu grupa 3: zamykania wzorca VDA maszynę Wirtualną Master VDA maszyna wirtualna przełączone w tryb failover Azure będzie w stanie uruchomienia. Aby utworzyć nowe katalogi MCS przy użyciu hostingu platformy Azure, wzorca VDA maszyna wirtualna jest wymagane będzie zatrzymane (przydzielone de) stanu. Zamknij maszynę Wirtualną z witryny Azure portal.
 
 5. Grupa trybu failover 4: Kontroler dostarczania StoreFront maszyny wirtualne i server
 6. Grupa 3 ręczny lub skryptu akcji 1:
 
     ***Dodawanie połączenia hosta usługi Azure RM***
 
-    Utwórz połączenie hostów Azure ARM na maszynie kontrolera dostarczania, aby aprowizować nowe katalogi MCS na platformie Azure. Wykonaj kroki opisane w tym [artykułu](https://www.citrix.com/blogs/2016/07/21/connecting-to-azure-resource-manager-in-xenapp-xendesktop/).
+    Utwórz połączenie z hostem platformy Azure na maszynie kontrolera dostarczania, aby aprowizować nowe katalogi MCS na platformie Azure. Wykonaj kroki opisane w tym [artykułu](https://www.citrix.com/blogs/2016/07/21/connecting-to-azure-resource-manager-in-xenapp-xendesktop/).
 
 7. Grupa 3 ręczny lub skryptu akcji 2:
 
     ***Utwórz ponownie MCS katalogi na platformie Azure***
 
-    Klony oddział MCS lub Odwiedziny istniejącego w lokacji głównej nie będą replikowane do platformy Azure. Należy ponownie utworzyć te klony przy użyciu replikowanych VDA głównego i Azure ARM aprowizowania już od kontroler dostarczania. Wykonaj kroki opisane w tym [artykułu](https://www.citrix.com/blogs/2016/09/12/using-xenapp-xendesktop-in-azure-resource-manager/) tworzenia katalogów serwera MCS na platformie Azure.
+    Klony oddział MCS lub Odwiedziny istniejącego w lokacji głównej nie będą replikowane do platformy Azure. Należy ponownie utworzyć te klony przy użyciu replikowanych VDA głównego i Azure aprowizowania już od kontroler dostarczania. Wykonaj kroki opisane w tym [artykułu](https://www.citrix.com/blogs/2016/09/12/using-xenapp-xendesktop-in-azure-resource-manager/) tworzenia katalogów serwera MCS na platformie Azure.
 
 ![Plan odzyskiwania dla składników XenApp](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-recoveryplan.png)
 

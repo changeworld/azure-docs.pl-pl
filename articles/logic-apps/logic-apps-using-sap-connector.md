@@ -10,12 +10,12 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 09/14/2018
 tags: connectors
-ms.openlocfilehash: dd86fd1aa8b1dab9f329f12924ff37db1256d1eb
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 1738f02d28a4eb9ff5cbb51c73bc50ddf3c9a68b
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377907"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231342"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Łączenie z systemami SAP z usługi Azure Logic Apps
 
@@ -396,7 +396,7 @@ W tym miejscu są obecnie znane problemy i ograniczenia dotyczące łącznika SA
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](http://aka.ms/logicapps-wish).
+* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

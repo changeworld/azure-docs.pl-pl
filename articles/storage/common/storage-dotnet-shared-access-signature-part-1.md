@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/18/2017
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 94783e6c6ee662c77d6bf60e96bbe7d171cefeef
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: d170fc0a0e4113b0f58c3b78f3a61aa2b08e69ff
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140438"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231538"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Używanie sygnatur dostępu współdzielonego (SAS)
 
@@ -222,7 +222,7 @@ Poniższe zalecenia dotyczące używania sygnatur dostępu współdzielonego mog
 6. **Być określony z zasobem, który ma być uzyskiwany dostęp.** Najbezpieczniejszym rozwiązaniem jest zapewnienie użytkownika minimalnych wymaganych uprawnień. Jeśli użytkownik potrzebuje tylko do odczytu w pojedynczą jednostkę, następnie przyznać im dostęp do odczytu do tego pojedynczej jednostki, a nie odczytu/zapisu/usuwania dostęp do wszystkich jednostek. Pomaga to również zmniejszyć szkody, jeśli sygnatury dostępu Współdzielonego zostanie naruszony, ponieważ sygnatura dostępu Współdzielonego ma mniej energii w ręce osoba atakująca.
 7. **Dowiedz się, że Twoje konto zostanie naliczona za każde użycie, w tym zrobić za pomocą sygnatury dostępu Współdzielonego.** Jeśli podasz dostęp do zapisu do obiektu blob, użytkownik może zdecydować się na przekażesz obiekt blob 200GB. Jeśli zostało podane je także dostęp do odczytu, mogą one jego pobranie 10 razy ponoszenia 2 TB w koszty ruchu wychodzącego dla Ciebie. Ponownie podaj ograniczonymi uprawnieniami, aby ułatwić uniknięcie potencjalnych akcji złośliwych użytkowników. Użyj krótkotrwałe sygnatury dostępu Współdzielonego, aby zmniejszyć to zagrożenie (lecz można je na uwadze zegara na czas zakończenia).
 8. **Sprawdzanie poprawności danych zapisanych przy użyciu sygnatury dostępu Współdzielonego.** Gdy aplikacja kliencka zapisuje dane do swojego konta magazynu, należy pamiętać o tym, że mogą wystąpić problemy z tymi danymi. Jeśli aplikacja wymaga, że dane można sprawdzić poprawności lub autoryzowane, zanim będzie gotowa do użycia, należy to wykonać tej weryfikacji po zapisaniu danych oraz zanim zostanie on użyty przez aplikację. To rozwiązanie chroni także uszkodzony lub złośliwego danych zapisywanych do konta przez użytkownika, który prawidłowo pobrać sygnatury dostępu Współdzielonego lub przez użytkownika, wykorzystaniu ujawnione sygnatury dostępu Współdzielonego.
-9. **Nie należy zawsze używać sygnatury dostępu Współdzielonego.** Czasami ryzyko związane z daną operację względem konta usługi storage przeważyć zalety sygnatury dostępu Współdzielonego. Dla takich działań, Utwórz usługa warstwy środkowej, która zapisuje do swojego konta magazynu po wykonaniu firm reguły sprawdzania poprawności, uwierzytelnianie i inspekcji. Czasami jest także łatwiej zarządzać dostępem w inny sposób. Na przykład, chcąc odczytywać wszystkie obiekty BLOB w kontenerze publicznie, możesz ustawić kontener Public, zamiast udostępniać sygnatury dostępu Współdzielonego do każdego klienta, aby uzyskać dostęp.
+9. **Nie należy zawsze używać sygnatury dostępu Współdzielonego.** Czasami ryzyko związane z daną operację względem konta usługi storage przeważyć zalety sygnatury dostępu Współdzielonego. Dla takich działań, Utwórz usługa warstwy środkowej, która zapisuje do swojego konta magazynu po wykonaniu firm reguły sprawdzania poprawności, uwierzytelnianie i inspekcji. Czasami jest także łatwiej zarządzać dostępem w inny sposób. Na przykład, chcąc odczytywać wszystkie obiekty BLOB w kontenerze publicaly, możesz ustawić kontener Public, zamiast udostępniać sygnatury dostępu Współdzielonego do każdego klienta, aby uzyskać dostęp.
 10. **Usługa Storage Analytics umożliwia monitorowanie aplikacji.** Rejestrowanie i metryki służy do przestrzegania wszelkich wzrost niepowodzeń uwierzytelniania z powodu awarii w usłudze dostawcy sygnatury dostępu Współdzielonego lub nieumyślne usunięcie przechowywanych zasad dostępu. Zobacz [Blog zespołu usługi Azure Storage](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) Aby uzyskać dodatkowe informacje.
 
 ## <a name="sas-examples"></a>Przykłady sygnatury dostępu Współdzielonego

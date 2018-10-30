@@ -14,16 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 87d78178c32aea3ae601983ec14e9df0732b59e2
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 0f223660f8dc99b590f8aa80a03d60fcbf3aa5d3
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091304"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232583"
 ---
 # <a name="create-a-snapshot"></a>Utwórz migawkę
 
-Migawka jest pełna, tylko do odczytu kopię wirtualnego dysku twardego (VHD). Można utworzyć migawkę dysku systemu operacyjnego lub dane wirtualnego dysku twardego do użycia jako kopii zapasowej lub rozwiązywać problemy z maszyny wirtualnej (VM). 
+Migawka jest pełna, tylko do odczytu kopię wirtualnego dysku twardego (VHD). Można utworzyć migawkę dysku systemu operacyjnego lub dane wirtualnego dysku twardego do użycia jako kopii zapasowej lub rozwiązywać problemy z maszyny wirtualnej (VM).
+
+Jeśli zamierzasz utworzyć nową maszynę Wirtualną przy użyciu migawki, zalecamy nie pozostawia żadnych śladów zamykanie maszyny Wirtualnej przed wykonaniem migawki, aby umożliwić wyczyszczenie wszystkie procesy, które są w toku.
 
 ## <a name="use-the-azure-portal"></a>Korzystanie z witryny Azure Portal 
 

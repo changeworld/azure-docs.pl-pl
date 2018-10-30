@@ -1,22 +1,20 @@
 ---
-title: Omówienie obsługi wielodostępu do replikacji maszyn wirtualnych programu VMware do platformy Azure (CSP) przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Omówienie pomocy technicznej usługi Azure Site Recovery dla dzierżawy subskrypcji w środowisku z wieloma dzierżawami przy użyciu programu CSP.
-services: site-recovery
+title: Omówienie obsługi wielodostępu na potrzeby odzyskiwania po awarii maszyn wirtualnych programu VMware do platformy Azure (CSP) przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Omówienie pomocy technicznej usługi Azure Site Recovery do odzyskiwania po awarii programu VMWare do platformy Azure w programie środowisku wielodostępnym (CSP).
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 4cd0c3baf385a864e2173de9bbce897bb5066dae
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 89e731d6c255092b087f0615bad49185c7181f1f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352875"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210761"
 ---
-# <a name="overview-of-multi-tenant-support-for-vmware-replication-to-azure-with-csp"></a>Omówienie obsługi wielodostępu na potrzeby replikacji oprogramowania VMware na platformę Azure za pomocą programu CSP
+# <a name="overview-of-multi-tenant-support-for-vmware-fisaster-recovery-to-azure-with-csp"></a>Omówienie obsługi wielodostępnych odzyskiwania fisaster programu VMware na platformę Azure za pomocą programu CSP
 
 [Usługa Azure Site Recovery](site-recovery-overview.md) obsługuje środowiska wielu dzierżaw w przypadku subskrypcji z dzierżawy. Obsługuje ona również wielodostępu dla subskrypcji dzierżawcy, które są tworzone i zarządzane za pośrednictwem programu Microsoft Cloud Solution Provider (CSP).
 

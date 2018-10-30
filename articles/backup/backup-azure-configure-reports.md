@@ -6,22 +6,29 @@ author: adiganmsft
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/26/2018
+ms.date: 10/29/2018
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0c1d7a404ffd9b4da4868f56a5e17300495b57db
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 945a91b9021ed5ff02e8c1ef7baf85e2098202ca
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269364"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214668"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurowanie raportów usługi Azure Backup
 W tym artykule przedstawiono kroki, aby wykonać, aby skonfigurować raporty usługi Azure Backup przy użyciu magazynu usługi Recovery Services. Pokazano również, jak dostęp do raportów przy użyciu usługi Power BI. Po wykonaniu tych czynności, możesz przejść bezpośrednio do usługi Power BI, aby wyświetlić, dostosowywanie i tworzenie raportów.
 
+> [!IMPORTANT]
+> Od 1 listopada 2018 r niektórzy klienci mogą zobaczyć problemy podczas ładowania danych w usłudze Azure App kopii zapasowej w usłudze Power BI, informujący o tym, "znaleziono dodatkowe znaki na końcu danych wejściowych JSON. Wyjątek został zgłoszony przez interfejs IDataReader."
+Jest to ze względu na zmianę w formacie, w którym dane są ładowane do konta magazynu.
+Uaktualnij aplikację do najnowszej wersji, aby uniknąć tego problemu.
+>
+>
+
 ## <a name="supported-scenarios"></a>Obsługiwane scenariusze
 - Usługa Azure Backup, raporty, są obsługiwane w przypadku kopii zapasowych maszyn wirtualnych platformy Azure, plików i folderów kopii zapasowych w chmurze za pomocą agenta usług odzyskiwania Azure.
-- Raporty dla serwera usługi Azure SQL Database, Data Protection Manager i usługi Azure Backup nie są obsługiwane w tej chwili.
+- Raporty dotyczące usługi Azure SQL Database, udziałów plików platformy Azure, programu Data Protection Manager i usługi Azure Backup server nie są obsługiwane w tej chwili.
 - Raporty można wyświetlać między magazynami i subskrypcji, skonfigurowanie tego samego konta magazynu dla każdego z magazynów. Wybrane konto magazynu musi być w tym samym regionie co magazyn usługi Recovery Services.
 - Częstotliwość zaplanowanego odświeżania raportów wynosi 24 godziny w usłudze Power BI. Możesz również wykonać odświeżania zapytań ad-hoc raportów w usłudze Power BI. W tym przypadku najnowsze dane na koncie magazynu klienta używany do renderowania raportów.
 

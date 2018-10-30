@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: ac184ce790a0700fcacc63f70c2bb321142d7224
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: aac59e087ba106bc20d94fea85cb8a3cd9273482
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320547"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233076"
 ---
 # <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Uruchom akcje na podstawie stanu grupy z zakresów w usłudze Azure Logic Apps
 
@@ -213,7 +213,7 @@ Następnie dodaj zakresu, dzięki czemu można grupować konkretne akcje i oceni
 
       ![Wybierz zakres stanów](./media/logic-apps-control-flow-run-steps-group-scopes/select-run-after-statuses.png)
 
-   1. Gdy skończysz, wybierz pozycję **gotowe**. 
+   1. Po zakończeniu wybierz pozycję **Gotowe**. 
    Warunek zawiera teraz ikonę "informacje".
 
 1. W **w przypadku opcji true** i **w przypadku wartości FAŁSZ** gałęzie, dodawać akcje, które mają być wykonywane na podstawie stanu każdego zakresu, na przykład, Wyślij wiadomość e-mail lub wiadomości.
@@ -389,7 +389,7 @@ Jeśli pracujesz w widoku kodu, można zdefiniować zakres struktury w definicji
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać lub głosować na funkcje i sugestie, odwiedź [witrynie opinii użytkowników usługi Azure Logic Apps](http://aka.ms/logicapps-wish).
+* Aby przesłać lub głosować na funkcje i sugestie, odwiedź [witrynie opinii użytkowników usługi Azure Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -1,27 +1,20 @@
 ---
-title: Planista wdrożenia usługi Azure Site Recovery dla oprogramowania VMware na platformie Azure | Microsoft Docs
-description: Jest to podręcznik użytkownika planisty wdrożenia usługi Azure Site Recovery.
-services: site-recovery
-documentationcenter: ''
+title: Planista wdrażania usługi Azure Site Recovery do odzyskiwania po awarii maszyn wirtualnych programu VMware do platformy Azure — informacje | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat planista wdrażania usługi Azure Site Recovery do odzyskiwania po awarii maszyn wirtualnych programu VMware do platformy Azure.
 author: nsoneji
 manager: garavd
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: a04a372e52c682af428938514eac5d5e0f4274f0
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 5aade5a2ad0b0f51c5bd7f53ed0ee191950aa7c4
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093718"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213325"
 ---
-# <a name="azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Planista wdrażania usługi Azure Site Recovery dla oprogramowania VMware na platformie Azure
+# <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Planista wdrażania usługi Azure Site Recovery, programu VMware do platformy Azure — informacje
 Ten artykuł to podręcznik użytkownika planisty wdrażania usługi Azure Site Recovery dla wdrożeń produkcyjnych oprogramowania VMware na platformie Azure.
 
 ## <a name="overview"></a>Przegląd

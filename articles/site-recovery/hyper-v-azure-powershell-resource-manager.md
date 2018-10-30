@@ -1,19 +1,18 @@
 ---
-title: Replikowanie maszyn wirtualnych funkcji Hyper-V, za pomocą programu PowerShell i usługi Azure Resource Manager | Dokumentacja firmy Microsoft
-description: Automatyzowanie replikacji maszyn wirtualnych funkcji Hyper-V, na platformie Azure przy użyciu usługi Azure Site Recovery przy użyciu programu PowerShell i usługi Azure Resource Manager.
-services: site-recovery
+title: Konfigurowanie odzyskiwania po awarii na platformie Azure dla maszyn wirtualnych funkcji Hyper-V przy użyciu programu PowerShell i usługi Azure Resource Manager | Dokumentacja firmy Microsoft
+description: Automatyzowanie odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V na platformie Azure przy użyciu usługi Azure Site Recovery przy użyciu programu PowerShell i usługi Azure Resource Manager.
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: sutalasi
-ms.openlocfilehash: 1d72d56188c3b787ab335ced554eb7c1dc74e0b7
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: f8f690a4f94ee56cfaa5532fa090fada1a33bddf
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427437"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214787"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Konfigurowanie odzyskiwania po awarii na platformie Azure dla maszyn wirtualnych funkcji Hyper-V przy użyciu programu PowerShell i usługi Azure Resource Manager
 

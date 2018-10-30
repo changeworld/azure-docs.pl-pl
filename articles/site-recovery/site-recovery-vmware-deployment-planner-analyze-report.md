@@ -1,21 +1,21 @@
 ---
-title: Planista wdrożenia usługi Azure Site Recovery dla oprogramowania VMware na platformie Azure | Microsoft Docs
-description: W tym artykule opisano analizę wygenerowanego raportu planisty wdrożenia usługi Azure Site Recovery dla oprogramowania VMware na platformie Azure.
-services: site-recovery
+title: Analizowanie raportu Planisty wdrożenia usługi Azure Site Recovery do odzyskiwania po awarii programu VMware do platformy Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak analizować raportu generowany przez Planistę wdrażania usługi Azure Site Recovery dla odzyskiwania po awarii programu VMware na platformę Azure.
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: e6aa3a8c788fe06a528a9c363a28faffa0a9ca88
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: d709b13aaf6b6ee9a913484ed503da1e76982d17
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094092"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213920"
 ---
-# <a name="azure-site-recovery-deployment-planner-report"></a>Raport planisty wdrożenia usługi Azure Site Recovery
+# <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analizowanie raportu Planisty wdrożenia usługi Azure Site Recovery dla odzyskiwania po awarii programu VMware na platformę Azure
+
 Wygenerowany raport programu Microsoft Excel zawiera następujące arkusze:
 ## <a name="on-premises-summary"></a>Podsumowanie środowiska lokalnego
 Arkusz Podsumowanie środowiska lokalnego zawiera omówienie profilowanego środowiska VMware.

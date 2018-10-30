@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: a761e384a356a0cbf5531eee7340ddbbd1526909
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: a3f837b41ba6ec7ecadb3e34917a8088e4d1e2d9
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122250"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233518"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Tworzenie niestandardowych interfejsów API można wywołać z usługi Azure Logic Apps
 
@@ -41,7 +41,7 @@ Możesz hostować swoje interfejsy API na [usługi Azure App Service](../app-ser
 > * [Python](../app-service/containers/quickstart-python.md)
 > * [Ruby](../app-service/containers/quickstart-ruby.md)
 >
-> Aby uzyskać przykłady aplikacji interfejsu API, stworzona z myślą o aplikacjach logiki, odwiedź stronę [repozytorium Azure Logic Apps w witrynie GitHub](http://github.com/logicappsio) lub [blogu](http://aka.ms/logicappsblog).
+> Aby uzyskać przykłady aplikacji interfejsu API, stworzona z myślą o aplikacjach logiki, odwiedź stronę [repozytorium Azure Logic Apps w witrynie GitHub](http://github.com/logicappsio) lub [blogu](https://aka.ms/logicappsblog).
 
 ## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>Jak niestandardowe interfejsy API, różni się od łączników niestandardowych?
 
@@ -230,7 +230,7 @@ Aby niestandardowe interfejsy API dostępne dla wszystkich użytkowników w Logi
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 
-* Aby pomóc w ulepszaniu usługi Logic Apps, przesyłaj pomysły lub głosuj na nie w [witrynie opinii użytkowników usługi Logic Apps](http://aka.ms/logicapps-wish). 
+* Aby pomóc w ulepszaniu usługi Logic Apps, przesyłaj pomysły lub głosuj na nie w [witrynie opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

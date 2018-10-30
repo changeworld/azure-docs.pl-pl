@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 7fa9d097a8f000c886425d53ee000c6013f3bbb0
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 8b245b51eb349e8c8aaa61d30ec3daec427ea2fd
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086730"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212169"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Usługa Azure Functions HTTP wyzwalaczy i powiązań
 
@@ -44,7 +44,7 @@ Powiązania protokołu HTTP, znajdują się w [Microsoft.Azure.WebJobs.Extension
 
 Wyzwalacz HTTP umożliwia wywołanie funkcji z żądania HTTP. Wyzwalacz HTTP służy do tworzenia interfejsów API bez użycia serwera i odpowiadać na elementy webhook. 
 
-Domyślnie wyzwalacz HTTP zwraca HTTP 200 OK o pustej treści w funkcjach 1.x lub HTTP 204 Brak zawartości z pustą treść w funkcjach 2.x. Aby zmodyfikować odpowiedzi, należy skonfigurować [powiązania danych wyjściowych HTTP](#http-output-binding).
+Domyślnie wyzwalacz HTTP zwraca HTTP 200 OK o pustej treści w funkcjach 1.x lub HTTP 204 Brak zawartości z pustą treść w funkcjach 2.x. Aby zmodyfikować odpowiedzi, należy skonfigurować [powiązania danych wyjściowych HTTP](#output).
 
 ## <a name="trigger---example"></a>Wyzwalacz — przykład
 

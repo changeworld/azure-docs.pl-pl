@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: 1c2068af510cb3733ce99a6ae7b40487a8c1a015
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: c1d66e0b58567244f8c1406ee258c9311994ff20
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324202"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215110"
 ---
 # <a name="understanding-digital-twins-object-models-and-spatial-intelligence-graph"></a>Opis modeli obiektów cyfrowego bliźniaczych reprezentacji i analizy przestrzennej wykresu
 
@@ -25,7 +25,7 @@ Za pomocą _cyfrowego modele obiektów bliźniaczych reprezentacji_ i _Ontology_
 
 ![Cyfrowy bliźniaczych elementów przestrzennych Tworzenie wykresu][1]
 
-<a id="model" />
+<a id="model"></a>
 
 Wykres przestrzenne łączy miejsca do magazynowania, urządzeń, czujników i użytkowników. Każdy połączony w taki sposób, że modele rzeczywistych: miejsc 43 ma cztery podłóg, każdy z wielu różnych obszarów. Użytkownicy są skojarzone z ich stacjach roboczych i mających dostęp do części wykresu.  Na przykład administrator musi uprawnień do wprowadzania zmian w przestrzenne programu graph, gdy użytkownik może mieć jedynie uprawnienia do wyświetlania niektórych danych tworzenia.
 
@@ -52,19 +52,19 @@ Inne kategorie obiektów są:
 - **Dopasowujące jednostki** są obiekty, które określają, które funkcje zdefiniowane przez użytkownika, które zostaną wykonane telemetrii danego komunikatu.
 - **Punkty końcowe** lokalizacji, gdzie komunikaty telemetryczne i Twins cyfrowego zdarzenia te można skierować, na przykład `Event Hub`, `Service Bus`, `Event Grid`.
 
-<a id="graph" />
+<a id="graph"></a>
 
 ## <a name="spatial-intelligence-graph"></a>Wykres analizy przestrzennej
 
 **Wykres przestrzenne** jest wykres hierarchiczny miejsca do magazynowania, urządzeń, i ludzie zdefiniowane w **cyfrowego bliźniaczych reprezentacji modelu obiektów**. Przestrzenne programu graph obsługuje _dziedziczenia_, _filtrowanie_, _przechodzenie_, _skalowalność_, i _rozszerzalności_ . Użytkownicy mogą zarządzać i interakcję z ich przestrzenne wykres z to zbiór interfejsów API REST (zobacz poniżej).
 
-Użytkownik, który wdraża usługi cyfrowego bliźniaczych reprezentacji w ramach swojej subskrypcji staje się administratorem globalnym węzeł główny automatycznie przyznanie pełnego dostępu do całej struktury. Ten użytkownik może następnie aprowizować miejsca do magazynowania przy użyciu wykresu `Space` interfejsu API. Urządzenia może być aprowizowane za pomocą `Device` interfejsu API, czujniki może być aprowizowane za pomocą `Sensor` interfejsu API itp. Oferujemy również [narzędzia open source](https://github.com/Azure-Samples/digital-twins-samples-csharp) do aprowizowania na wykresie zbiorczo.
+Użytkownik, który wdraża usługi cyfrowego bliźniaczych reprezentacji w ramach swojej subskrypcji staje się administratorem globalnym węzeł główny automatycznie przyznanie pełnego dostępu do całej struktury. Ten użytkownik może następnie aprowizować miejsca do magazynowania w programie graph przy użyciu interfejsu API miejsca. Urządzenia może być aprowizowane przy użyciu interfejsu API urządzenia, czujniki może być obsługiwana za pomocą interfejsu API z czujników itp. Oferujemy również [narzędzia open source](https://github.com/Azure-Samples/digital-twins-samples-csharp) do aprowizowania na wykresie zbiorczo.
 
 Wykres _dziedziczenia_ odnosi się do uprawnień i właściwości, które jest elementem podrzędnym elementu węzła nadrzędnego na wszystkie węzły znajdujące się poniżej. Na przykład gdy rola jest przypisywana do użytkowników w danym węźle, użytkownik będzie miał uprawnienia tej roli do Podany węzeł i każdy węzeł poniżej. Ponadto każdego właściwość klucza i rozszerzone typu zdefiniowane dla danego węzła będą dziedziczone przez wszystkie węzły znajdujące się poniżej tego węzła.
 
-Wykres _filtrowanie_ umożliwia użytkownikom zawęzić wyniki żądania identyfikatorów, nazwy, typy, podtypy, miejsce nadrzędnego, skojarzone miejsca do magazynowania, typy danych czujników, klucze właściwości i wartości, przechodzenia, minLevel, maxLevel oraz innych filtru OData Parametry.
+Wykres _filtrowanie_ umożliwia użytkownikom zawęzić wyniki żądania według identyfikatorów, nazwy, podtypy, klucze właściwości, miejsce nadrzędnego, typy danych czujników, typów, skojarzone miejsca do magazynowania i wartości, *przechodzenie*,  *minLevel*, *maxLevel*i inne parametry filtru OData.
 
-Wykres _przechodzenie_ pozwala użytkownikom na przechodzenie przestrzenne programu graph za pośrednictwem jej wiedzy i doświadczeniu. Dla głębokości, wykres może te typy można przemierzać góry do dołu lub od dołu do góry przy użyciu parametrów nawigacji `traverse`, `minLevel`, `maxLevel`. Dla zakresu wykres może nastąpi przejście, uzyskać dostęp do węzłów równorzędnych podłączone bezpośrednio do miejsca nadrzędnej lub jeden z jego obiektów podrzędnych. Podczas wykonywania zapytań względem obiektu, można pobrać wszystkich powiązanych obiektów, które mają relacje z tego obiektu przy użyciu `includes` parametru Pobierz interfejsów API.
+Wykres _przechodzenie_ pozwala użytkownikom na przechodzenie przestrzenne programu graph za pośrednictwem jej wiedzy i doświadczeniu. Dla głębokości, wykres może te typy można przemierzać góry do dołu lub od dołu do góry przy użyciu parametrów nawigacji *przechodzenie*, *minLevel*, *maxLevel*. Dla zakresu wykres może nastąpi przejście, uzyskać dostęp do węzłów równorzędnych podłączone bezpośrednio do miejsca nadrzędnej lub jeden z jego obiektów podrzędnych. Podczas wykonywania zapytań względem obiektu, można pobrać wszystkich powiązanych obiektów, które mają relacje z tego obiektu przy użyciu *obejmuje* parametru Pobierz interfejsów API.
 
 Azure Twins cyfrowego gwarantuje wykres _skalowalność_, więc może obsługiwać swoje obciążenia w rzeczywistych warunkach. Cyfrowy Twins może służyć do reprezentowania dużych zestawów nieruchomości, infrastruktury, urządzeń, czujników, dane telemetryczne i więcej.
 
@@ -80,8 +80,8 @@ https://yourInstanceName.yourLocation.azuresmartspaces.net/management/swagger
 
 | Nazwa atrybutu niestandardowego | Zamień |
 | --- | --- |
-| `yourInstanceName` | Nazwa wystąpienia usługi Azure cyfrowego bliźniaczych reprezentacji |
-| `yourLocation` | Który region serwer wystąpienie usługi jest hostowana na |
+| *yourInstanceName* | Nazwa wystąpienia usługi Azure cyfrowego bliźniaczych reprezentacji |
+| *yourLocation* | Który region serwer wystąpienie usługi jest hostowana na |
 
  Pełny format adresu URL są widoczne używany na poniższej ilustracji:
 

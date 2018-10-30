@@ -6,18 +6,18 @@ author: rayne-wiselman
 manager: carmonm
 ms.topic: conceptual
 ms.service: site-recovery
-ms.date: 10/09/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 802c2223a72a89dbe2a97404aab4b0fc85c391ed
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 9da64ebe675f9d481c7474a81fec294d50e49ce7
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902828"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215212"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replikowanie maszyn wirtualnych usługi Azure Stack na platformie Azure
 
-W tym artykule pokazano, jak skonfigurować odzyskiwanie po awarii na platformie Azure dla maszyn wirtualnych platformy Azure Stack, przy użyciu [usługi Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview).
+W tym artykule pokazano, jak skonfigurować odzyskiwanie po awarii maszyn wirtualnych platformy Azure Stack na platformie Azure przy użyciu [usługi Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview).
 
 Usługa Site Recovery przyczynia się do Twojej ciągłość działalności biznesowej i odzyskiwanie po awarii (BCDR) strategii odzyskiwania. Usługa zapewnia, że obciążeń maszyny Wirtualnej pozostaną dostępne, gdy oczekiwano i wystąpienia nieoczekiwanych awarii.
 
@@ -189,7 +189,7 @@ Teraz można zainstalować na serwerze konfiguracji:
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> Serwer konfiguracji można również zainstalować z poziomu wiersza polecenia. [Dowiedz się więcej](http://aka.ms/installconfigsrv).
+> Serwer konfiguracji można również zainstalować z poziomu wiersza polecenia. [Dowiedz się więcej](physical-manage-configuration-server.md#install-from-the-command-line).
 
 > Zanim nazwa konta pojawi się w portalu, może minąć 15 minut lub więcej. Aby wykonać natychmiastową aktualizację, wybierz pozycje **Serwery konfiguracji** > ***nazwa serwera*** > **Odśwież serwer**.
 

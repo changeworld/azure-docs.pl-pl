@@ -2,7 +2,7 @@
 title: Rozwiązywanie problemów z licencją dla grupy w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
 description: Jak identyfikowanie i rozwiązywanie problemów z licencją przydziału podczas korzystania z usługi Azure Active Directory na podstawie grupy licencji
 services: active-directory
-keywords: Licencjonowanie usługi Azure AD
+keywords: Zarządzanie licencjonowaniem w usłudze Azure AD
 documentationcenter: ''
 author: curtand
 manager: mtillman
@@ -11,15 +11,15 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 06/05/2017
+ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5d64cf71ea3a44b7539835e3616150218e8b3635
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: ee441a8c9a0d8a70a2797f090a143189cdb6872a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861771"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211540"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identyfikowanie i rozwiązywanie problemów z przypisania licencji dla grupy w usłudze Azure Active Directory
 
@@ -97,6 +97,19 @@ Aby rozwiązać ten problem, należy usunąć użytkowników z nieobsługiwanych
 > [!NOTE]
 > W przypadku usługi Azure AD spowoduje przypisanie licencji grupy, wszyscy użytkownicy bez lokalizacji określonego użycia dziedziczą lokalizację katalogu. Zaleca się, czy Administratorzy ustawić poprawne użycie wartości lokalizacji na użytkowników przed rozpoczęciem korzystania z licencjonowaniem opartym na grupy do wykonania z lokalnymi przepisami i regulacjami.
 
+## <a name="duplicate-proxy-addresses"></a>Zduplikowane adresy serwerów proxy
+
+Jeśli używasz usługi Exchange Online, niektórzy użytkownicy w Twojej dzierżawie może niepoprawnie skonfigurowany z taką samą wartość adresu serwera proxy. Gdy Licencjonowanie na podstawie grupy próbuje przypisać licencję do takiego użytkownika, nie powiedzie się i pokazuje "jest już używana adres serwera Proxy".
+
+> [!TIP]
+> Aby sprawdzić, czy adres serwera proxy duplikatów, wykonaj następujące polecenie cmdlet programu PowerShell dla usługi Exchange Online:
+```
+Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
+```
+> Aby uzyskać więcej informacji na temat tego problemu, zobacz [w usłudze Exchange Online komunikat o błędzie "adres serwera Proxy jest już używana"](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online). Artykuł zawiera również informacje na [sposób nawiązywania połączeń do usługi Exchange Online przy użyciu zdalnego programu PowerShell](https://technet.microsoft.com/library/jj984289.aspx). W tym artykule, aby uzyskać więcej informacji zobacz [na jak atrybut proxyAddresses jest wypełniany w usłudze Azure AD](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
+
+Po rozwiązaniu problemów adres serwera proxy dla użytkowników, których dotyczy problem, upewnij się wymusić przetwarzania licencji w grupie, aby upewnić się, że można teraz stosować licencji.
+
 ## <a name="what-happens-when-theres-more-than-one-product-license-on-a-group"></a>Co się stanie, jeśli istnieje więcej niż jedna licencja na produkt w grupie?
 
 Więcej niż jedna licencja na produkt można przypisać do grupy. Na przykład Office 365 Enterprise E3 i rozwiązania Enterprise Mobility + Security można przypisać do grupy, aby łatwo włączyć dołączane usług oferowanych użytkownikom końcowym.
@@ -134,19 +147,7 @@ Od teraz dodanych do tej grupy użytkowników korzystać jedną licencję produk
 > [!TIP]
 > Można utworzyć wiele grup dla każdego planu usługi wymagań wstępnych. Na przykład, jeśli używasz pakietu Office 365 Enterprise E1 i Office 365 Enterprise E3 dla użytkowników, możesz utworzyć dwie grupy licencji firmy Microsoft Workplace Analytics: jedną, która używa E1 jako warunek wstępny, a druga używa E3. Dzięki temu można rozpowszechnić dodatek do planu E1 i E3 użytkowników bez używania dodatkowe licencje.
 
-## <a name="license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online"></a>Przypisanie licencji kończy się niepowodzeniem dyskretnie dla użytkownika z powodu adresy serwerów proxy zduplikowane w programie Exchange Online
 
-Jeśli używasz usługi Exchange Online, niektórzy użytkownicy w Twojej dzierżawie może niepoprawnie skonfigurowany z taką samą wartość adresu serwera proxy. Gdy Licencjonowanie na podstawie grupy próbuje przypisać licencję do takiego użytkownika, nie powiedzie się i nie rejestruje błąd. Błąd, aby zarejestrować błąd, w tym wystąpieniu jest to ograniczenie w wersji zapoznawczej ta funkcja i użyjemy, aby rozwiązać problem przed *ogólnie*.
-
-> [!TIP]
-> Jeśli zauważysz, że niektórzy użytkownicy nie otrzymała licencję i nie ma błędów rejestrowane dla tych użytkowników, najpierw sprawdzić, jeśli mają one adres serwera proxy duplikatów.
-> Aby sprawdzić, czy adres serwera proxy duplikatów, wykonaj następujące polecenie cmdlet programu PowerShell dla usługi Exchange Online:
-```
-Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
-```
-> Aby uzyskać więcej informacji na temat tego problemu, zobacz [w usłudze Exchange Online komunikat o błędzie "adres serwera Proxy jest już używana"](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online). Artykuł zawiera również informacje na [sposób nawiązywania połączeń do usługi Exchange Online przy użyciu zdalnego programu PowerShell](https://technet.microsoft.com/library/jj984289.aspx).
-
-Po rozwiązaniu problemów adres serwera proxy dla użytkowników, których dotyczy problem, upewnij się wymusić przetwarzania licencji w grupie, aby upewnić się, że można teraz stosować licencji.
 
 ## <a name="how-do-you-force-license-processing-in-a-group-to-resolve-errors"></a>Jak wymusić przetwarzania licencji w grupie, aby naprawić błędy?
 
@@ -154,11 +155,19 @@ Zależności od tego, jakie kroki zostały wykonane w celu naprawić błędy mo�
 
 Na przykład jeśli zwolnić niektórych licencji, usuwając bezpośrednich przypisań licencji użytkowników należy do wyzwolenia przetwarzania grupy, które nie jest w pełni licencji wszystkich elementów członkowskich użytkownika. Ponownego przetworzenia grupy, przejdź do okienka grupy, otwórz **licencji**, a następnie wybierz pozycję **ponownie przetworzyć** przycisk na pasku narzędzi.
 
+## <a name="how-do-you-force-license-processing-on-a-user-to-resolve-errors"></a>Jak wymusić przetwarzania licencji na użytkownika, aby naprawić błędy?
+
+Zależności od tego, jakie kroki zostały wykonane w celu naprawić błędy może być konieczne ręcznie wyzwolić przetwarzania użytkownikowi na aktualizowanie stanu użytkownikom.
+
+Na przykład po rozwiązaniu problemu adres zduplikowane serwera proxy dla określonego użytkownika należy do wyzwolenia przetwarzania użytkownika. Ponownego przetworzenia przez użytkownika, przejdź do okienka użytkowników, otwórz **licencji**, a następnie wybierz pozycję **ponownie przetworzyć** przycisk na pasku narzędzi.
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej na temat innych scenariusze dotyczące zarządzania licencjami za pomocą grup, zobacz następujące tematy:
 
-* [Przypisywanie licencji do grupy w usłudze Azure Active Directory](licensing-groups-assign.md)
 * [Co to jest oparte na grupach Licencjonowanie w usłudze Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [Jak przeprowadzić migrację użytkowników z licencjami indywidualnymi do licencjonowania opartego na grupy w usłudze Azure Active Directory](licensing-groups-migrate-users.md)
-* [Usługa Azure Active Directory na podstawie grupy licencjonowania dodatkowe scenariusze](licensing-group-advanced.md)
+* [Przypisywanie licencji do grupy w usłudze Azure Active Directory](licensing-groups-assign.md)
+* [Jak migrować użytkowników z licencjami indywidualnymi do licencji opartych na grupach w usłudze Azure Active Directory](licensing-groups-migrate-users.md)
+* [Jak przeprowadzić migrację użytkowników między licencjami produktów za pomocą licencjonowania opartego na grupy w usłudze Azure Active Directory](licensing-groups-change-licenses.md)
+* [Dodatkowe scenariusze licencjonowania opartego na grupach w usłudze Azure Active Directory](licensing-group-advanced.md)
+* [Przykłady programu PowerShell dla licencjonowania opartego na grupy w usłudze Azure Active Directory](licensing-ps-examples.md)

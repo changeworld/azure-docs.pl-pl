@@ -1,3 +1,16 @@
+---
+author: rothja
+ms.service: virtual-machines-sql
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: jroth
+ms.openlocfilehash: 57f238a8f91df1271e91894b88a7f02118b1f123
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226584"
+---
 ### <a name="determine-the-dns-name-of-the-virtual-machine"></a>Określ nazwę DNS maszyny wirtualnej
 Aby połączyć się z aparatem bazy danych programu SQL Server z innego komputera, musisz znać nazwę systemu nazw domen (DNS, Domain Name System) maszyny wirtualnej. (Jest to nazwa, używanych przez internet do identyfikowania maszyny wirtualnej. Możesz użyć adresu IP, ale adresu IP mogą ulec zmianie, gdy Azure przenosi zasoby dla zapewnienia nadmiarowości lub konserwacji. Nazwa DNS będzie stabilny, ponieważ mogą zostać przekierowane do nowego adresu IP).  
 

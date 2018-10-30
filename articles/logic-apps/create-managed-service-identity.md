@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 10/05/2018
-ms.openlocfilehash: 2964869933dd096b96e892cf08b8d4b66a8f210c
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 84529e1097678ba7a039ffaeec57a9293c93dafd
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817062"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50229643"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Uwierzytelnianie i dostęp do zasobów z zarządzanych tożsamości w usłudze Azure Logic Apps
 
@@ -193,5 +193,5 @@ Jeśli utworzono aplikację logiki przypisany systemowo tożsamości zarządzane
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](http://aka.ms/logicapps-wish).
+* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 

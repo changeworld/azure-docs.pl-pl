@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2018
+ms.date: 10/27/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 161b54620bd8a3c9994228a30bd7495717064168
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: d80e7bc1d391d9b5bfd718ca2dc0e9dc7ecb2268
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158470"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210877"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizacja usługi Azure Stack 1809
 
@@ -38,6 +38,8 @@ Numerem kompilacji aktualizacji usługi Azure Stack 1809 **1.1809.0.90**.
 ### <a name="new-features"></a>Nowe funkcje
 
 Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack:
+
+- W tej wersji usługi Azure Stack zintegrowane systemy obsługuje konfiguracje węzłów 4 – 16.
 
 - <!--  2712869   | IS  ASDK -->  **Klient usługi syslog usługi Azure Stack (ogólnie)** ten klient umożliwia przekazywanie inspekcje, alerty i dzienniki zabezpieczeń związane z infrastruktury Azure Stack w celu syslog serwera lub zabezpieczeń informacjami i zdarzeniami (SIEM) oprogramowania do zarządzania zewnętrzne w stosunku do usługi Azure Stack. Klient usługi syslog obsługuje teraz, określając port, na którym nasłuchuje serwer syslog.
 
@@ -147,6 +149,8 @@ Aby uzyskać więcej informacji na temat tych luk w zabezpieczeniach kliknij pop
 - <!-- 2468613 - IS --> Podczas instalacji tej aktualizacji, użytkownik może widzieć alerty z tytułem *błędu — szablon FaultType UserAccounts.New Brak.*  Te alerty można bezpiecznie zignorować. Te alerty zostanie zamknięte automatycznie po zakończeniu instalacji tej aktualizacji.
 
 - <!-- 2489559 - IS --> Nie należy próbować tworzyć maszyny wirtualne podczas instalacji tej aktualizacji. Aby uzyskać więcej informacji na temat zarządzania aktualizacjami, zobacz [zarządzanie aktualizacjami w usłudze Azure Stack — omówienie](azure-stack-updates.md#plan-for-updates).
+
+- <!-- 3139614 | IS --> Po zastosowaniu aktualizacji do usługi Azure Stack z producent OEM, **dostępna aktualizacja** powiadomień nie może występować w portalu administratora usługi Azure Stack. Aby zainstalować usługi Microsoft update, Pobierz i zaimportuj go ręcznie wykonując instrukcje znajdujące się w tym miejscu [stosowanie aktualizacji w usłudze Azure Stack](azure-stack-apply-updates.md).
 
 ### <a name="post-update-steps"></a>Kroki po aktualizacji
 

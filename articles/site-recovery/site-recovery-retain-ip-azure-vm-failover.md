@@ -1,22 +1,19 @@
 ---
-title: Zachowaj adresów IP podczas przechodzenia w tryb failover maszyn wirtualnych platformy Azure do innego regionu platformy Azure | Dokumentacja firmy Microsoft
-description: Opisuje sposób zachować adresy IP dla scenariusze trybu failover z platformy Azure do platformy Azure za pomocą usługi Azure Site Recovery
+title: Zachowaj adresów IP dla trybu failover maszyny Wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+description: Opisuje sposób zachować adresy IP, gdy przejść w tryb failover maszyn wirtualnych platformy Azure do odzyskiwania po awarii do regionu pomocniczego przy użyciu usługi Azure Site Recovery
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 10/16/2018
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 4260a4487480c42b518374965d8deda1e7803e62
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 86adaa21a069c168b512231ba231940bfa2ef9e8
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353326"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213036"
 ---
-# <a name="ip-address-retention-for-azure-virtual-machine-failover"></a>Przechowywanie adresów IP dla trybu failover maszyny wirtualnej platformy Azure
+# <a name="ip-address-retention-for-azure-vm-failover"></a>Przechowywanie adresów IP dla trybu failover maszyny Wirtualnej platformy Azure
 
 Usługa Azure Site Recovery umożliwia odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure. Podczas przechodzenia w tryb failover między regionami platformy Azure do innego, klienci często wymagają przechowywania ich konfiguracje adresów IP. Site Recovery, domyślnie naśladuje źródłowa sieć wirtualna i struktura podsieci podczas tworzenia tych zasobów w regionie docelowym. Skonfigurowano statyczne prywatne adresy IP maszyn wirtualnych platformy Azure Usługa Site Recovery sprawia, że optymalnego próby aprowizacji tego samego prywatnego adresu IP na docelowej maszynie Wirtualnej, jeśli ten adres IP nie jest już zablokowany przez zasób platformy Azure lub zreplikowanej maszyny Wirtualnej.
 

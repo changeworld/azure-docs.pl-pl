@@ -1,21 +1,20 @@
 ---
-title: Replikowanie wielowarstwowej aplikacji sieci web opartych na usługach IIS przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+title: Konfigurowanie odzyskiwania po awarii fo wielowarstwowej aplikacji sieci web opartych na usługach IIS przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak replikować IIS sieci web farmy maszyn wirtualnych przy użyciu usługi Azure Site Recovery.
-services: site-recovery
 author: nsoneji
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 830ced767a34302a635b9e685a2aee60c95fc81f
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: bac995829e90fea35eebf5e5e57a0ffb85bbba0c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920852"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211829"
 ---
-# <a name="replicate-a-multi-tier-iis-based-web-application"></a>Replikowanie wielowarstwowej aplikacji sieci web opartych na usługach IIS
+# <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji sieci web opartych na usługach IIS
 
 Oprogramowanie jest aparat wydajność biznesową w organizacji. Różne aplikacje sieci web może służyć do różnych celów, w organizacji. Niektóre aplikacje, takie jak aplikacje używane do przetwarzania listy płac, aplikacje finansowe i witryn sieci Web przeznaczonych dla klientów, może być mają kluczowe znaczenie dla organizacji. Aby zapobiec utracie produktywność, jest ważne dla organizacji te aplikacje stale się i działa. Co ważniejsze mających te aplikacje, które są stale dostępne może zapobiec szkody na marki lub obrazu w organizacji.
 

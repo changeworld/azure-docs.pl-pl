@@ -1,21 +1,20 @@
 ---
-title: Planowanie wydajności i skalowanie na potrzeby replikacji oprogramowania VMware na platformę Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Skorzystaj z tego artykułu, planowanie wydajności i skalowania podczas replikowania maszyn wirtualnych VMware na platformę Azure za pomocą usługi Azure Site Recovery
-services: site-recovery
+title: Planowanie wydajności i skalowanie na potrzeby odzyskiwania po awarii programu VMware na platformę Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Skorzystaj z tego artykułu. Planowanie wydajności i skalowania, podczas konfigurowania odzyskiwania po awarii maszyn wirtualnych VMware na platformę Azure za pomocą usługi Azure Site Recovery
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.topic: conceptual
 ms.author: rayne
-ms.openlocfilehash: 833000cb09d315a996ebc9e2d66210c805160f2a
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 9bc0d5976cf01eb61c2a09a35ccd3a834313ca00
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067557"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210503"
 ---
-# <a name="plan-capacity-and-scaling-for-vmware-replication-with-azure-site-recovery"></a>Planowanie wydajności i skalowanie na potrzeby replikacji oprogramowania VMware za pomocą usługi Azure Site Recovery
+# <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-auzre"></a>Planowanie wydajności i skalowanie na potrzeby odzyskiwania po awarii programu VMware na przeglądzie
 
 Użyj w tym artykule, aby ustalić planowania pojemności i skalowania podczas replikowania lokalnych maszyn wirtualnych z programu VMware i serwerów fizycznych na platformę Azure za pomocą [usługi Azure Site Recovery](site-recovery-overview.md).
 

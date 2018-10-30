@@ -1,26 +1,23 @@
 ---
-title: Macierz obsługi usługi Azure Site Recovery na potrzeby replikacji z platformy Azure do platformy Azure | Dokumentacja firmy Microsoft
+title: Macierz obsługi usługi Azure Site Recovery do odzyskiwania po awarii maszyn wirtualnych IaaS platformy Azure między regionami platformy Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: Zawiera podsumowanie obsługiwanych systemów operacyjnych i konfiguracji do usługi Azure Site Recovery replikacji maszyn wirtualnych (VM) z jednego regionu do innego na potrzeby odzyskiwania po awarii.
 services: site-recovery
-author: sujayt
-manager: rochakm
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.date: 09/10/2018
-ms.author: sujayt
-ms.openlocfilehash: 49773e076ed8bb06ff76f9f654b914a709051fb5
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.topic: conceptual
+ms.date: 10/28/2018
+ms.author: raynew
+ms.openlocfilehash: a2668ab99ef110c89ddd69cd5e8df858552d27af
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378622"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215059"
 ---
-# <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji między regionami platformy Azure do innego
+# <a name="support-matrix-for-disaster-recovery-of-azure-vms-between-azure-regions"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych platformy Azure między regionami platformy Azure
 
-
-
-Ten artykuł zawiera podsumowanie obsługiwanych konfiguracji i składników podczas replikacji i odzyskiwania maszyn wirtualnych platformy Azure z jednego regionu do innego regionu za pomocą [usługi Azure Site Recovery](site-recovery-overview.md) usługi.
+Ten artykuł zawiera podsumowanie obsługiwanych konfiguracji i składników podczas wdrażania odzyskiwania po awarii dzięki replikacji, trybu failover i odzyskiwania maszyn wirtualnych platformy Azure między regionami platformy Azure do innego, za pomocą [usługi Azure Site Recovery](site-recovery-overview.md) Usługa.
 
 ## <a name="user-interface-options"></a>Opcje interfejsu użytkownika
 

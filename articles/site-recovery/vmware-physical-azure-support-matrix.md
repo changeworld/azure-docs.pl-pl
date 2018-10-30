@@ -1,21 +1,20 @@
 ---
-title: Macierz obsługi replikowania maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Zawiera podsumowanie obsługiwanych systemów operacyjnych oraz składników na potrzeby replikacji maszyn wirtualnych VMware i serwerów fizycznych do platformy Azure przy użyciu usługi Azure Site Recovery.
-services: site-recovery
+title: Macierz obsługi na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Zawiera podsumowanie obsługiwanych systemów operacyjnych i składników do odzyskiwania po awarii maszyn wirtualnych VMware i serwera fizycznego na platformie Azure przy użyciu usługi Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: f6f1ceb4f9afaaeb0a436879802144bdebc06280
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: b472ed1c32e64b8f8ac881c09f22590c49f39c75
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378656"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215365"
 ---
-# <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Macierz obsługi dla oprogramowania VMware oraz replikacji serwera fizycznego do platformy Azure
+# <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure
 
 Ten artykuł zawiera podsumowanie obsługiwanych składników i ustawienia na potrzeby odzyskiwania po awarii maszyn wirtualnych programu VMware na platformę Azure za pomocą [usługi Azure Site Recovery](site-recovery-overview.md).
 

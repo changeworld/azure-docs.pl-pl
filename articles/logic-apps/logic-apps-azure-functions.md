@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: a63bd8e3b071ed996db8ad5aeaeb5e451b4d92e9
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: bb00ef0f76b71d0a4748a319c9f2a5d64dffa251
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42060334"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233314"
 ---
 # <a name="add-and-run-custom-code-snippets-in-azure-logic-apps-with-azure-functions"></a>Dodawanie i uruchamianie niestandardowych fragmentach kodu w usłudze Azure Logic Apps z usługą Azure Functions
 
@@ -214,7 +214,7 @@ Chcesz wyzwalacza aplikacji logiki od wewnątrz funkcji platformy Azure, aplikac
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](http://aka.ms/logicapps-wish).
+* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

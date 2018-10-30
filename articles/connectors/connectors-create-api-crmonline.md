@@ -10,12 +10,12 @@ ms.suite: integration
 ms.topic: article
 ms.date: 08/18/2018
 tags: connectors
-ms.openlocfilehash: b1ff93f1e03e047ad5ac00259c1aa53afda0c76d
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 1247f603b759364edcee2bff12f75bb0a217ecd6
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818944"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231258"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>Zarządzanie rekordami Dynamics 365 z usługą Azure Logic Apps
 
@@ -192,7 +192,7 @@ Szczegóły techniczne, takich jak wyzwalacze, akcje i limity, zgodnie z opisem 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](http://aka.ms/logicapps-wish).
+* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

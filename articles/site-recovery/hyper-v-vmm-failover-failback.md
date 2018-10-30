@@ -1,19 +1,19 @@
 ---
-title: Tryb failover i powrót po awarii maszyn wirtualnych funkcji Hyper-V, replikowane do dodatkowego centrum danych z usługą Site Recovery | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przełączyć w tryb failover maszyny wirtualne funkcji Hyper-V do lokacji dodatkowej w środowisku lokalnym i powrót po awarii do lokacji głównej, przy użyciu usługi Azure Site Recovery
+title: Tryb failover i powrót po awarii maszyn wirtualnych funkcji Hyper-V, replikowane do dodatkowego centrum danych podczas odzyskiwania po awarii przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przełączyć w tryb failover maszyny wirtualne funkcji Hyper-V do lokacji dodatkowej w środowisku lokalnym i powrócić po awarii lokacji głównej podczas odzyskiwania po awarii przy użyciu usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 782ddc3ebb7b3c533d0eb5c4b7735a13cbaf268c
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 80a26f7f2c97fdbc5342d8845277facd79f22a62
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077684"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210010"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>Tryb failover i powrót po awarii maszyn wirtualnych funkcji Hyper-V replikowany do lokacji dodatkowej w środowisku lokalnym
 
@@ -68,7 +68,7 @@ Uruchamianie replikacji z lokacji dodatkowej do podstawowej i powrót po awarii 
  
 1. Kliknij maszynę Wirtualną > kliknij **replikacja odwrotna**.
 2. Po zakończeniu zadania, kliknij maszynę Wirtualną > w **trybu Failover**Sprawdź wybrano kierunek trybu failover (z dodatkowych chmury programu VMM), a wybierz lokalizacje źródłowe i docelowe. 
-4. Zainicjuj tryb failover. Można śledzić postęp trybu failover **zadań** kartę.
+4. Zainicjuj tryb failover. Na karcie **Zadania** można śledzić postęp trybu failover.
 5. W chmurze podstawowej programu VMM Sprawdź, czy maszyna wirtualna jest dostępna.
 6. Jeśli chcesz uruchomić ponownie replikacji podstawowej maszyny Wirtualnej do lokacji dodatkowej, polecenie **replikacja odwrotna**.
 

@@ -2,7 +2,7 @@
 title: Przypisywanie licencji do grupy w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
 description: Jak przypisać licencje do użytkowników za pomocą licencjonowania grupy usługi Azure Active Directory
 services: active-directory
-keywords: Licencjonowanie usługi Azure AD
+keywords: Zarządzanie licencjonowaniem w usłudze Azure AD
 documentationcenter: ''
 author: curtand
 manager: mtillman
@@ -11,15 +11,15 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.component: users-groups-roles
-ms.date: 06/05/2017
+ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7a235851d7172d32d62c64b163e0b7635a1a47fd
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e08ca3453cc43fa0f35102ca5563b4b07ce45dea
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37862074"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215008"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Przypisywanie licencji do użytkowników, członkostwa w grupach w usłudze Azure Active Directory
 
@@ -28,7 +28,7 @@ W tym artykule opisano poprzez przypisywanie licencji produktu do grupy użytkow
 W tym przykładzie dzierżawcy zawiera grupę zabezpieczeń o nazwie **dział KADR**. Ta grupa zawiera wszystkie elementy członkowskie z działu kadr (około 1000 użytkowników). Chcesz przypisać licencje usługi Office 365 Enterprise E3 całego działu. Usługa Yammer przedsiębiorstw, która jest zawarta w produkcie musi tymczasowo wyłączone, aż dział jest gotowy rozpocząć korzystanie z niej. Chcesz również wdrożyć pakiet Enterprise Mobility + Security licencji do tej samej grupy użytkowników.
 
 > [!NOTE]
-> Niektóre usługi firmy Microsoft nie są dostępne we wszystkich lokalizacjach. Aby można było przypisać licencję do użytkownika, administrator musi określić właściwość lokalizacja użytkowania na użytkownika.
+> Nie wszystkie usługi firmy Microsoft są dostępne we wszystkich lokalizacjach. Aby można było przypisać licencję do użytkownika, administrator musi określić właściwość lokalizacja użytkowania na użytkownika.
 
 > W celu przypisania licencji grupy Wszyscy użytkownicy bez określonej lokalizacji użytkowania dziedziczą lokalizację katalogu. Jeśli masz użytkowników w wielu lokalizacjach, zaleca się zawsze wartość lokalizacji użytkowania — część przepływu tworzenia użytkownika w usłudze Azure AD (np. przez program AAD Connect Konfiguracja) -, które gwarantuje, że wynik przypisania licencji zawsze jest poprawna, a użytkownicy nie będą odbierać usługi w lokalizacjach, które nie są dozwolone.
 
@@ -52,20 +52,20 @@ W tym przykładzie dzierżawcy zawiera grupę zabezpieczeń o nazwie **dział KA
 
    ![Opcje przypisania](./media/licensing-groups-assign/assignment-options.png)
 
-7. Można ukończyć ich przypisywania na **przypisywanie licencji** okienku kliknij **przypisać** w dolnej części okienka.
+7. Aby zakończyć przypisywanie, w dolnej części okienka **Przypisz licencję** kliknij pozycję **Przypisz**.
 
 8. W prawym górnym rogu, który pokazuje stan i wynik procesu zostanie wyświetlone powiadomienie. Jeśli nie można ukończyć przypisanie do grupy (na przykład z powodu istniejących licencji do grupy), kliknij powiadomienie, aby wyświetlić szczegóły dotyczące błędu.
 
-Teraz możemy określony szablon licencji dla grupy Dział KADR. Proces w tle w usłudze Azure AD został uruchomiony do przetworzenia istniejący członkowie tej grupy. Ta początkowa operacja może trochę potrwać, w zależności od bieżącego rozmiaru grupy. Wyświetl licencje na użytkownika
+Teraz możemy określony szablon licencji dla grupy Dział KADR. Proces w tle w usłudze Azure AD został uruchomiony do przetworzenia istniejący członkowie tej grupy. Ta początkowa operacja może trochę potrwać, w zależności od bieżącego rozmiaru grupy. Następnym krokiem w tym artykule opisano sposób sprawdzić, czy proces zostanie zakończony i określić, jeśli dalszej uwagi jest wymagane do rozwiązania problemów.
 
 > [!NOTE]
-> Aby rozwiązać ten konflikt, należy usunąć użytkownika z **użytkowników kiosku** grupy. Po przetworzeniu przez usługę **Azure AD zmiany**  > **dział KADR** >  **poprawnie przypisanych licencji**. Poprawnie przypisanej licencji Aby dowiedzieć się więcej na temat funkcji, ustaw dla zarządzania licencjami za pomocą grup, zobacz następujące artykuły:
+> Przypisanie tych samych można uruchomić z lokalizacji alternatywnej: **użytkowników i grup** w usłudze Azure AD. Po przetworzeniu przez usługę **Azure AD zmiany**  > **dział KADR** >  **poprawnie przypisanych licencji**. Następnie znajdź grupę, wybierz ją i przejdź do **licencji** kartę. **Przypisać** przycisk u góry okienka powoduje otwarcie okienka przypisania licencji.
 
-## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>Co to jest oparte na grupach Licencjonowanie w usłudze Azure Active Directory?
+## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>Krok 2: Sprawdź, czy zakończyła początkowego przydziału
 
-1. Po przetworzeniu przez usługę **Azure AD zmiany**  > **dział KADR** >  **poprawnie przypisanych licencji**. Identyfikowanie i rozwiązywanie problemów z licencją dla grupy w usłudze Azure Active Directory
+1. Po przetworzeniu przez usługę **Azure AD zmiany**  > **dział KADR** >  **poprawnie przypisanych licencji**. Następnie znajdź **dział KADR** licencje zostały przypisane do grupy.
 
-2. Jak przeprowadzić migrację użytkowników z licencjami indywidualnymi do licencjonowania opartego na grupy w usłudze Azure Active Directory Usługa Azure Active Directory na podstawie grupy licencjonowania dodatkowe scenariusze Dostępne są następujące informacje:
+2. Na **dział KADR** grupy wybierz opcję **licencji**. Dzięki temu można szybko upewnij się, jeśli pełni przypisano licencje do użytkowników, a wystąpiły żadne błędy, które należy zbadać. Dostępne są następujące informacje:
 
    - Lista licencji produktu, które są obecnie przypisane do grupy. Wybierz wpis, aby wyświetlić konkretne usługi, które zostały włączone i wprowadzać zmiany.
 
@@ -86,7 +86,7 @@ Teraz możemy określony szablon licencji dla grupy Dział KADR. Proces w tle w 
 ## <a name="step-3-check-for-license-problems-and-resolve-them"></a>Krok 3: Sprawdź problemów z licencją i ich rozwiązania
 
 1. Przejdź do **usługi Azure Active Directory** > **użytkowników i grup** > **wszystkich grup**i Znajdź **dział KADR** licencje zostały przypisane do grupy.
-2. Jak przeprowadzić migrację użytkowników z licencjami indywidualnymi do licencjonowania opartego na grupy w usłudze Azure Active Directory Powiadomienia u góry okienka pokazuje, że istnieją 10 użytkowników, których nie można przypisać licencji. Kliknięcie powoduje otwarcie listy wszystkich użytkowników w stanie błąd licencjonowania dla tej grupy.
+2. Na **dział KADR** grupy wybierz opcję **licencji**. Powiadomienia u góry okienka pokazuje, że istnieją 10 użytkowników, których nie można przypisać licencji. Kliknięcie powoduje otwarcie listy wszystkich użytkowników w stanie błąd licencjonowania dla tej grupy.
 3. **Przypisań zakończonych niepowodzeniem** kolumny informuje NAS, że obie licencje produktu nie można przypisać do użytkowników. **Najważniejsze przyczyny niepowodzenia** kolumna zawiera przyczynę niepowodzenia. W tym przypadku ma **plany usług powodujące konflikt**.
 
    ![Przypisania nie powiodło się](./media/licensing-groups-assign/failed-assignments.png)
@@ -105,5 +105,7 @@ Aby dowiedzieć się więcej na temat funkcji, ustaw dla zarządzania licencjami
 
 * [Co to jest oparte na grupach Licencjonowanie w usłudze Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
 * [Identyfikowanie i rozwiązywanie problemów z licencją dla grupy w usłudze Azure Active Directory](licensing-groups-resolve-problems.md)
-* [Jak przeprowadzić migrację użytkowników z licencjami indywidualnymi do licencjonowania opartego na grupy w usłudze Azure Active Directory](licensing-groups-migrate-users.md)
-* [Usługa Azure Active Directory na podstawie grupy licencjonowania dodatkowe scenariusze](../active-directory-licensing-group-advanced.md)
+* [Jak migrować użytkowników z licencjami indywidualnymi do licencji opartych na grupach w usłudze Azure Active Directory](licensing-groups-migrate-users.md)
+* [Jak przeprowadzić migrację użytkowników między licencjami produktów za pomocą licencjonowania opartego na grupy w usłudze Azure Active Directory](licensing-groups-change-licenses.md)
+* [Dodatkowe scenariusze licencjonowania opartego na grupach w usłudze Azure Active Directory](../active-directory-licensing-group-advanced.md)
+* [Przykłady programu PowerShell dla licencjonowania opartego na grupy w usłudze Azure Active Directory](licensing-ps-examples.md)

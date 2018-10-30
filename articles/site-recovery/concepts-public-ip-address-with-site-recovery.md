@@ -1,22 +1,21 @@
 ---
-title: Publiczny adres IP z usługą Site Recovery | Dokumentacja firmy Microsoft
+title: Używania publicznych adresów IP po włączeniu trybu failover za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób konfigurowania publicznych adresów IP przy użyciu usługi Azure Site Recovery i Azure Traffic Manager na potrzeby odzyskiwania po awarii i migracji
 services: site-recovery
-documentationcenter: ''
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 09/28/2018
 ms.author: mayg
-ms.openlocfilehash: fd17c786515a6db1f8aa5c1aff7c0dcd42ed7dc6
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 80c38ecc766d60fba578e877998aeb216ea66012
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435214"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215280"
 ---
-# <a name="public-ip-address-with-site-recovery"></a>Publiczny adres IP z usługą Site Recovery
+# <a name="set-up-public-ip-addresses-after-failover"></a>Konfigurowanie publicznych adresów IP, po włączeniu trybu failover
 
 Publiczne adresy IP umożliwiają zasobom internetowym komunikowanie się w ramach ruchu przychodzącego z zasobami platformy Azure. Publiczne adresy IP umożliwiają również zasobom platformy Azure komunikowanie się w ramach ruchu wychodzącego z Internetem i publicznymi usługami platformy Azure za pomocą adresu IP przypisanego do zasobu.
 - Komunikacji przychodzącej z Internetu do zasobu, takich jak Azure Virtual Machines (VM), bramy aplikacji platformy Azure, usługi równoważenia obciążenia platformy Azure, bram Azure VPN Gateway i inne. Użytkownik może nadal komunikować się z niektórych zasobów, takich jak maszyny wirtualne z Internetu, jeśli maszyna wirtualna nie ma publiczny adres IP przypisany do niego, tak długo, jak maszyna wirtualna jest częścią puli zaplecza modułu równoważenia obciążenia i równoważenia obciążenia jest przypisany publiczny adres IP.

@@ -1,5 +1,5 @@
 ---
-title: Monitorowanie użycia bazy danych za pomocą Intelligent Insights — usługi Azure SQL Database | Dokumentacja firmy Microsoft
+title: Monitorowanie wydajności bazy danych za pomocą usługi Intelligent Insights — usługi Azure SQL Database | Dokumentacja firmy Microsoft
 description: Usługa Azure SQL Database Intelligent Insights używa wbudowanym funkcjom analizy, aby stale monitorować użycie bazy danych za pomocą sztucznej inteligencji i wykrywać szkodliwe zdarzenia, które powodują spadek wydajności.
 services: sql-database
 ms.service: sql-database
@@ -12,14 +12,14 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: b64c8f5d30f95cccf8a029adfd5c443a81597c4d
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: e87cd3742a5dcd52c3a447bb66ea9089c18d5aee
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870693"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214685"
 ---
-# <a name="intelligent-insights-using-artificial-intelligence-to-monitor-database-usage"></a>Intelligent Insights za pomocą sztucznej inteligencji, monitorują użycie bazy danych
+# <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Wydajność bazy danych Intelligent Insights za pomocą sztucznej Inteligencji do monitorowania i rozwiązywania problemów
 
 Usługa Azure SQL Database Intelligent Insights poinformuje Cię o tym, co się dzieje z wydajność bazy danych SQL Database i wystąpienia zarządzanego.
 

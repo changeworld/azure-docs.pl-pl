@@ -1,8 +1,21 @@
+---
+author: rothja
+ms.service: virtual-machines-sql
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: jroth
+ms.openlocfilehash: edb8503f4187fd2d21129ea03e954a0d3516be4b
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227488"
+---
 ### <a name="create-a-tcp-endpoint-for-the-virtual-machine"></a>Tworzenie punktu końcowego TCP dla maszyny wirtualnej
 Aby uzyskać dostęp do programu SQL Server, z Internetu, maszyna wirtualna musi mieć punktu końcowego do nasłuchiwania pod kątem przychodzącą komunikację protokołu TCP. Ten krok konfiguracji platformy Azure kieruje ruch przychodzący port TCP do portu TCP, który jest dostępny dla maszyny wirtualnej.
 
 > [!NOTE]
-> Jeśli łączysz się w ramach jednej usługi w chmurze lub sieci wirtualnej, nie należy utworzyć publicznie dostępnym punkcie końcowym. W takim przypadku można kontynuować do następnego kroku. Aby uzyskać więcej informacji, zobacz [scenariusze łączenia](../articles/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-connect.md#connection-scenarios).
+> Jeśli łączysz się w ramach jednej usługi w chmurze lub sieci wirtualnej, nie należy utworzyć punkt końcowy dostępny publicaly. W takim przypadku można kontynuować do następnego kroku. Aby uzyskać więcej informacji, zobacz [scenariusze łączenia](../articles/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-connect.md#connection-scenarios).
 > 
 > 
 

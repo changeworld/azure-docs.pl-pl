@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: 6b4cce641556a290111db530c0089e4da0a351c8
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 3af2b2a1b35a290746007d7f486473162a055b99
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958432"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211370"
 ---
 # <a name="expressroute-faq"></a>Usługa ExpressRoute — często zadawane pytania
 
@@ -71,7 +71,6 @@ Usługa ExpressRoute obsługuje [trzy domeny routingu](expressroute-circuit-peer
 * Większość usług platformy Azure są obsługiwane. Sprawdź, czy bezpośrednio z usługą, który chcesz użyć, aby sprawdzić, pomocy technicznej.<br>
   Następujące usługi nie są obsługiwane:
     * CDN
-    * Testowanie obciążenia za pomocą usługi Azure DevOps
     * Multi-Factor Authentication
     * Traffic Manager
 
@@ -81,10 +80,9 @@ Usługa ExpressRoute obsługuje [trzy domeny routingu](expressroute-circuit-peer
 * Dynamics 365 
 * Power BI
 * Usługa Azure Active Directory
-* Testowanie obciążenia za pomocą usługi Azure DevOps
+* [Usługa Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (społeczność globalne usługi platformy Azure)
 * Większość usług platformy Azure są obsługiwane. Sprawdź, czy bezpośrednio z usługą, który chcesz użyć, aby sprawdzić, pomocy technicznej.<br>Następujące usługi są **nieobsługiwane**:
     * CDN
-    * Testowanie obciążenia za pomocą usługi Azure DevOps
     * Multi-Factor Authentication
     * Traffic Manager
 

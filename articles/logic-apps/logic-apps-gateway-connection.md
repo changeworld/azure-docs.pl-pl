@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/20/2018
 ms.reviewer: yshoukry, LADocs
 ms.suite: integration
-ms.openlocfilehash: 65c7e03b349314ad61fa5f1ea8322f4d1352b8e6
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 6b6006293d562dbc270dc77bc49da2027f171dd2
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145693"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233297"
 ---
 # <a name="connect-to-data-sources-on-premises-from-azure-logic-apps-with-on-premises-data-gateway"></a>Łączenie ze źródłami danych w środowisku lokalnym z usługi Azure Logic Apps za pomocą lokalnej bramy danych
 
@@ -53,7 +53,7 @@ a jeśli jeszcze nie, wykonaj kroki, aby [pobieranie i instalowanie lokalnej bra
 
 Po zainstalowaniu bramy na komputerze lokalnym, będzie można utworzyć zasobu platformy Azure dla bramy. Ten krok powoduje również skojarzenie zasobu bramy z subskrypcją platformy Azure.
 
-1. Zaloguj się w <a href="https://portal.azure.com" target="_blank">Portalu Azure</a>. Upewnij się, korzystając z tego samego roboczych platformy Azure lub służbowy adres e-mail używany do instalacji bramy.
+1. Zaloguj się w witrynie <a href="https://portal.azure.com" target="_blank">Azure Portal</a>. Upewnij się, korzystając z tego samego roboczych platformy Azure lub służbowy adres e-mail używany do instalacji bramy.
 
 2. W głównym menu platformy Azure, wybierz **Utwórz zasób** > 
 **integracji** > **lokalnej bramy danych**.
@@ -155,7 +155,7 @@ Do tworzenia zasobu bramy innej, skojarzenia bramy z innego zasobu lub usuwanie 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](http://aka.ms/logicapps-wish).
+* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

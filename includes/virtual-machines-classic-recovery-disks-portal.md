@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 5490bdd3934b438a683ce4271fbec20b3d13735d
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227364"
+---
 Jeśli maszyna wirtualna na platformie Azure napotkała błąd podczas rozruchu lub błąd dysku, konieczne może wykonanie kroków rozwiązywania problemów na samym wirtualnym dysku twardym. Typowym przykładem może być niepowodzenie aktualizacji aplikacji, które uniemożliwia pomyślny rozruch maszyny wirtualnej. W tym artykule opisano, jak za pomocą witryny Azure Portal połączyć wirtualny dysk twardy z inną maszyną wirtualną w celu naprawienia błędów, a następnie ponownie utworzyć oryginalną maszynę wirtualną.
 
 
@@ -54,9 +67,9 @@ Po rozwiązaniu wszystkich problemów i usunięciu błędów odinstaluj i odłą
 
 ## <a name="create-a-vm-from-the-original-hard-disk"></a>Tworzenie maszyny wirtualnej na podstawie oryginalnego dysku twardego
 
-Aby utworzyć Maszynę wirtualną z oryginalny wirtualny dysk twardy, użyj [portalu Azure](https://portal.azure.com).
+Aby utworzyć Maszynę wirtualną z oryginalnego wirtualnego dysku twardego, użyj [witryny Azure portal](https://portal.azure.com).
 
 1. Zaloguj się w [portalu Azure](https://portal.azure.com).
-2. W lewym górnym rogu portalu, wybierz opcję **Utwórz zasób** > **obliczeniowe** > **maszyny wirtualnej** > **z Galeria**.
+2. W lewym górnym rogu portalu, wybierz opcję **Utwórz zasób** > **obliczenia** > **maszyny wirtualnej** > **z Galeria**.
 3. W sekcji **Wybieranie obrazu** wybierz pozycję **Moje dyski**, a następnie wybierz oryginalny wirtualny dysk twardy. Sprawdź informacje o lokalizacji. Jest to region, w którym maszyna wirtualna musi zostać wdrożona. Kliknij przycisk Dalej.
 4. W sekcji **Konfiguracja maszyny wirtualnej** wpisz nazwę maszyny wirtualnej i wybierz rozmiar maszyny wirtualnej.

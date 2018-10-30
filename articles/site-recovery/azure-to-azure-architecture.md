@@ -1,24 +1,24 @@
 ---
 title: Architektura replikacji Azure – Azure w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera omówienie składników i architektury używanych podczas replikowania maszyn wirtualnych platformy Azure między regionami platformy Azure przy użyciu usługi Azure Site Recovery.
+description: Ten artykuł zawiera omówienie składników i architektury używanych podczas konfigurowania odzyskiwania po awarii między regionami platformy Azure dla maszyn wirtualnych platformy Azure, za pomocą usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 20387c325497934ccb2e02188b24a0125f937e00
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 0069ece5d02ad52b6fea9add7817e63fa3c412b6
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078261"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212736"
 ---
-# <a name="azure-to-azure-replication-architecture"></a>Architektura replikacji Azure – Azure
+# <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura odzyskiwania po awarii Azure – Azure
 
 
-W tym artykule opisano architekturę używany, gdy replikacja, tryb failover i odzyskiwanie maszyn wirtualnych (VM) między regionami platformy Azure przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md) usługi.
+W tym artykule opisano architekturę używany podczas wdrażania odzyskiwania po awarii dzięki replikacji, trybu failover i odzyskiwania maszyn wirtualnych (VM) między regionami platformy Azure przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md) usługi.
 
 
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2018
+ms.date: 10/26/2018
 ms.author: sethm
-ms.openlocfilehash: 96137b95f46f24bca6a4ee6a39d93a490a03c431
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: a6d8ef698c005429c1184b5565b1a9387d05e062
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958452"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230118"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Zapewnianie aplikacjom dostępu do usługi Azure Stack
 
@@ -77,6 +77,13 @@ Skrypt jest uruchamiany z uprzywilejowanym punktu końcowego na maszynie wirtual
 Wymagania:
 - Wymagany jest certyfikat.
 
+Wymagania dotyczące certyfikatów:
+ - Dostawca usług kryptograficznych (CSP) musi być starszej wersji dostawcy kluczy.
+ - Format certyfikatu musi być w pliku PFX, jak klucze publiczne i prywatne są wymagane. Serwery Windows używają, pliki PFX, które zawierają plik klucza publicznego (plik certyfikatu protokołu SSL) i skojarzony plik klucza prywatnego.
+ - W środowisku produkcyjnym certyfikat musi być wystawiony z wewnętrznego urzędu certyfikacji lub publicznego urzędu certyfikacji. Jeśli korzystasz z publicznego urzędu certyfikacji, należy objęte urzędowi podstawowy obrazu systemu operacyjnego w ramach programu Microsoft zaufanego głównego urzędu. Można znaleźć pełną listę w [programu zaufanych certyfikatów głównych firmy Microsoft: uczestników](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
+ - Infrastruktury Azure Stack musi mieć dostęp do sieci do lokalizacji listy odwołania certyfikatów (CRL) urzędu certyfikacji, opublikowane w certyfikacie. Tę listę CRL musi być punkt końcowy HTTP.
+
+
 #### <a name="parameters"></a>Parametry
 
 Wymagane są następujące informacje jako dane wejściowe dla parametrów usługi automation:
@@ -93,7 +100,7 @@ Wymagane są następujące informacje jako dane wejściowe dla parametrów usłu
 1. Otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień i uruchom następujące polecenia:
 
    > [!NOTE]
-   > Ten przykład tworzy certyfikat z podpisem własnym. Po uruchomieniu tych poleceń wdrażania w środowisku produkcyjnym, należy użyć [Get-Certificate](/powershell/module/pkiclient/get-certificate) można pobrać obiektu certyfikatu dla certyfikatu, którego chcesz użyć.
+   > Ten przykład tworzy certyfikat z podpisem własnym. Po uruchomieniu tych poleceń wdrażania w środowisku produkcyjnym, należy użyć [Get-Item](/powershell/module/Microsoft.PowerShell.Management/Get-Item) można pobrać obiektu certyfikatu dla certyfikatu, którego chcesz użyć.
 
    ```PowerShell  
     # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
@@ -102,7 +109,7 @@ Wymagane są następujące informacje jako dane wejściowe dla parametrów usłu
     # Creating a PSSession to the ERCS PrivilegedEndpoint
     $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
 
-    # This produces a self signed cert for testing purposes. It is prefered to use a managed certificate for this.
+    # This produces a self signed cert for testing purposes. It is preferred to use a managed certificate for this.
     $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
 
     $ServicePrincipal = Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name '<yourappname>' -ClientCertificates $using:cert}

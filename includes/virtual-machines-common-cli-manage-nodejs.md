@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 682288338d66f1006e9f1d7f3d6d30f822626425
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226912"
+---
 Aby móc używać interfejsu wiersza polecenia platformy Azure oraz szablonów i poleceń usługi Resource Manager w celu wdrażania obciążeń i zasobów platformy Azure przy użyciu grup zasobów, potrzebne jest konto platformy Azure. Jeśli nie posiadasz konta, możesz skorzystać z [bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 Jeśli jeszcze nie zainstalowano interfejsu wiersza polecenia platformy Azure i nie nawiązano połączenia z subskrypcją, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](../articles/cli-install-nodejs.md), ustaw tryb na wartość `arm` przy użyciu polecenia `azure config mode arm` i nawiąż połączenie z platformą Azure przy użyciu polecenia `azure login`.

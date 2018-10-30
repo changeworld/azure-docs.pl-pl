@@ -1,21 +1,20 @@
 ---
 title: Wdrażanie serwera konfiguracji na potrzeby odzyskiwania po awarii programu VMware przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób wdrażania serwera konfiguracji w celu odzyskiwania po awarii programu VMware przy użyciu usługi Azure Site Recovery
-services: site-recovery
+description: W tym artykule opisano sposób wdrażania serwera konfiguracji w celu odzyskiwania po awarii programu VMware na platformę Azure za pomocą usługi Azure Site Recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 4222214705c42fe09d90d77faa7be63cc2a13206
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 516edd922d6ead9a71f81c3b9b777b15f1fb28ae
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025280"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233161"
 ---
-# <a name="deploy-a-configuration-server"></a>Wdrażanie serwera konfiguracji
+# <a name="deploy-a-configuration-server-for-vmware-disaster-recovery-to-azure"></a>Wdrażanie serwera konfiguracji w celu odzyskiwania po awarii programu VMware na platformie Azure
 
 Wdrażanie serwera konfiguracji w środowisku lokalnym, korzystając z [usługi Azure Site Recovery](site-recovery-overview.md) do odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure. Konfiguracja współrzędne międzyserwerowej komunikacji lokalnych programu VMware i platformą Azure. Umożliwia także zarządzanie replikacją danych. W tym artykule przedstawiono kroki niezbędne do wdrożenia serwera konfiguracji w przypadku replikacji maszyn wirtualnych VMware na platformę Azure. [Postępuj zgodnie z tym artykule](physical-azure-set-up-source.md) Jeśli musisz skonfigurować serwer konfiguracji, replikacji serwera fizycznego.
 
@@ -117,6 +116,14 @@ Jeśli chcesz dodać dodatkową kartę Sieciową do serwera konfiguracji, należ
 8. Aby ukończyć rejestrację, wybierz pozycję **Zakończ konfigurację**.
 9. Po zakończeniu rejestracji Otwórz witrynę Azure portal, sprawdź, czy serwer konfiguracji i serwer VMware są wyświetlane na **magazyn usługi Recovery Services** > **Zarządzaj**  >  **Infrastruktura usługi site Recovery** > **serwery konfiguracji**.
 
+## <a name="upgrade-the-configuration-server"></a>Uaktualnij serwer konfiguracji
+
+Aby uaktualnić serwer konfiguracji do najnowszej wersji, postępuj zgodnie z tymi [kroki](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
+
+## <a name="manage-the-configuration-server"></a>Zarządzanie serwerem konfiguracji
+
+Aby uniknąć przerw w działaniu w trwającej replikacji, upewnij się, że adres IP serwera konfiguracji nie zmienia się po zarejestrowaniu serwera konfiguracji w magazynie. Dowiedz się więcej na temat typowych zadań zarządzania serwerem konfiguracji [tutaj](vmware-azure-manage-configuration-server.md).
+
 ## <a name="faq"></a>Często zadawane pytania
 
 1. Czy można używać maszyny Wirtualnej, w którym zainstalowano serwer konfiguracji do różnych celów?
@@ -140,14 +147,6 @@ Jeśli chcesz dodać dodatkową kartę Sieciową do serwera konfiguracji, należ
 7. Gdzie można pobrać klucze rejestracyjne magazynu?
 
     W **magazyn usług Recovery Services**, **zarządzanie** > **infrastruktura usługi Site Recovery** > **serwery konfiguracji**. Na serwerach, wybierz **Pobierz klucz rejestracji** można pobrać pliku poświadczeń magazynu.
-
-## <a name="upgrade-the-configuration-server"></a>Uaktualnij serwer konfiguracji
-
-Aby uaktualnić serwer konfiguracji do najnowszej wersji, postępuj zgodnie z tymi [kroki](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
-
-## <a name="manage-the-configuration-server"></a>Zarządzanie serwerem konfiguracji
-
-Aby uniknąć przerw w działaniu w trwającej replikacji, upewnij się, że adres IP serwera konfiguracji nie zmienia się po zarejestrowaniu serwera konfiguracji w magazynie. Dowiedz się więcej na temat typowych zadań zarządzania serwerem konfiguracji [tutaj](vmware-azure-manage-configuration-server.md).
 
 ## <a name="troubleshoot-deployment-issues"></a>Rozwiązywanie problemów dotyczących wdrożenia
 

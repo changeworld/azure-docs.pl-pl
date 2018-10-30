@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2018
+ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: fbb51d8dc3b1ea4c6b34120e8fe35474ae949cf2
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 7071e22d703ab7ec3a51eff02d1694fc04cb3417
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116916"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231240"
 ---
 # <a name="troubleshoot-your-deployment-to-kubernetes-to-azure-stack"></a>Rozwiązywanie problemów z wdrożenia rozwiązania Kubernetes w usłudze Azure Stack
 
@@ -28,7 +28,7 @@ ms.locfileid: "49116916"
 > [!Note]  
 > Rozwiązanie Kubernetes w usłudze Azure Stack jest w wersji zapoznawczej.
 
-Następujący artykuł patrzy na rozwiązywanie problemów z klastrem Kubernetes. Można przejrzeć alert wdrażania i sprawdź stan wdrożenia według elementów wymaganych do wdrożenia. Może być konieczne zebranie dzienników wdrażania z usługi Azure Stack lub maszyn wirtualnych systemu Linux obsługujących usługi Kubernetes. Ponadto może być konieczne współpraca z administratorem usługi Azure Stack można pobrać dzienników z punktu końcowego usługi administracyjne.
+Następujący artykuł patrzy na rozwiązywanie problemów z klastrem Kubernetes. Można przejrzeć alert wdrażania i sprawdź stan wdrożenia, analizując elementów wymaganych do wdrożenia. Może być konieczne zebranie dzienników wdrażania z usługi Azure Stack lub maszyn wirtualnych systemu Linux obsługujących usługi Kubernetes. Ponadto może być konieczne współpraca z administratorem usługi Azure Stack można pobrać dzienników z punktu końcowego usługi administracyjne.
 
 ## <a name="overview-of-deployment"></a>Omówienie wdrażania
 
@@ -47,7 +47,7 @@ Na poniższym diagramie przedstawiono ogólny proces wdrażania klastra.
     Wprowadź wartości, które trzeba skonfigurować w tym klastrze Kubernetes:
     -  **Nazwa użytkownika** nazwę użytkownika dla maszyn wirtualnych systemu Linux, które są częścią klastra Kubernetes i Menedżer DVM.
     -  **Klucz publiczny SSH** klucz używany do autoryzacji do wszystkich utworzonych jako część klastra Kubernetes i Menedżer DVM maszyn z systemem Linux
-    -  **Usługa Zasady** identyfikator używany przez dostawcę chmury Kubernetes Azure. Identyfikator klienta zidentyfikowane jako identyfikator aplikacji, podczas tworzenia jednostki usługi. 
+    -  **Usługa Zasady** identyfikator używany przez dostawcę chmury Kubernetes Azure. Identyfikator klienta została zidentyfikowana jako identyfikator aplikacji, gdy są tworzone jednostki usługi. 
     -  **Klucz tajny klienta** one klucza utworzonego podczas tworzenia jednostki usługi.
 
 2. Tworzy wdrożenie maszyny Wirtualnej i rozszerzenia niestandardowego skryptu.

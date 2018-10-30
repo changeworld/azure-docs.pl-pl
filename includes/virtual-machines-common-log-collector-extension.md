@@ -1,4 +1,16 @@
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 52e1a7bf3e8f8770e4ba4f931c4d7427a7362f2f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226761"
+---
 Diagnozowanie problemów z usługą w chmurze Microsoft Azure wymaga zbierania plików dziennika usługi na maszynach wirtualnych, w momencie wystąpienia problemów. Można użyć AzureLogCollector rozszerzenia na żądanie wykonaj jednorazowy zbieranie dzienników z przynajmniej jednej chmury usługi maszyny wirtualnej (z ról sieć web i ról procesów roboczych) i przenieść zebranych plików na konto magazynu platformy Azure — wszystko to bez konieczności zdalne logowanie do dowolnej maszyn wirtualnych.
 
 > [!NOTE]
@@ -437,7 +449,7 @@ if ($AdditionDataLocationList -ne $null )
 #
 $publicConfigJSON = $publicConfig | ConvertTo-Json
 
-Write-Output "PublicConfiguration is: \r\n$publicConfigJSON"
+Write-Output "PublicConfigurtion is: \r\n$publicConfigJSON"
 
 #
 #we just provide a empty privateConfig object

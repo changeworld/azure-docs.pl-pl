@@ -1,21 +1,20 @@
 ---
-title: Testowanie trybu failover na platformie Azure w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o uruchamianiu testowy tryb failover ze środowiska lokalnego na platformę Azure za pomocą usługi Azure Site Recovery.
-services: site-recovery
+title: Uruchamianie próbnego odzyskiwania po awarii na platformie Azure przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o uruchamianiu próbnego odzyskiwania po awarii ze środowiska lokalnego na platformę Azure za pomocą usługi Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 09/11/2018
+ms.topic: conceptual
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 4c72a58cdc6082a40fe80b7a3cf8cf964199371e
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 6eb1ee90b22b9e37dcae900cd80f80cb549090e9
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391780"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213954"
 ---
-# <a name="test-failover-to-azure-in-site-recovery"></a>Testowanie trybu failover na platformie Azure w usłudze Site Recovery
+# <a name="run-a-disaster-recovery-drill-to-azure"></a>Uruchamianie próbnego odzyskiwania na platformie Azure 
 
 
 W tym artykule opisano sposób uruchamiania próbnego odzyskiwania po awarii na platformie Azure przy użyciu testowego trybu failover Usługa Site Recovery.  
@@ -77,13 +76,13 @@ W następujących scenariuszach tryb failover wymaga dodatkowych pośredniego kr
 We wszystkich innych przypadkach nie pośredni krok nie jest wymagany, a tryb failover trwa znacznie krócej.
 
 
-## <a name="create-a-network-for-test-failover"></a>Tworzenie sieci do testowania trybu failover
+## <a name="create-a-network-for-test-failover"></a>Tworzenie sieci do testowania pracy w trybie failover
 
-Zalecane do testowania trybu failover, wybranie sieci, która jest odizolowana od określonej w sieci lokacji odzyskiwania produkcji **obliczenia i sieć** ustawienia dla każdej maszyny Wirtualnej. Domyślnie po utworzeniu sieci wirtualnej platformy Azure jest odizolowana od innych sieci. Sieci produkcyjnej, powinien naśladować sieci testowej:
+Do testowania pracy w trybie failover zalecamy wybór sieci izolowanej od sieci produkcyjnej lokacji odzyskiwania, określonej w obszarze ustawień **Obliczenia i sieć** poszczególnych maszyn wirtualnych. Tworzone sieci wirtualne platformy Azure są domyślnie izolowane od innych sieci. Sieć testowa powinna odzwierciedlać sieć produkcyjną:
 
-- W sieci testowej powinny mieć tą samą liczbą podsieci jako sieci produkcyjnej. Podsieci powinien mieć takich samych nazwach.
-- W sieci testowej należy używać tego samego zakresu adresów IP.
-- Zaktualizuj DNS w sieci testowej przy użyciu adresu IP dla maszyny Wirtualnej DNS w **obliczenia i sieć** ustawienia. Odczyt [testowanie trybu failover zagadnienia dotyczące usługi Active Directory](site-recovery-active-directory.md#test-failover-considerations) Aby uzyskać więcej informacji.
+- Sieć testowa powinna mieć taką samą liczbę podsieci jak sieć produkcyjna. Podsieci powinny mieć takie same nazwy.
+- W sieci testowej powinien być używany taki sam zakres adresów IP.
+- Zaktualizuj system DNS sieci testowej, używając adresu IP określonego dla maszyny wirtualnej systemu DNS w obszarze ustawień **Obliczenia i sieć**. Aby uzyskać więcej informacji, zobacz sekcję [Zagadnienia dotyczące testowania trybu failover dla usługi Active Directory](site-recovery-active-directory.md#test-failover-considerations).
 
 
 ## <a name="test-failover-to-a-production-network-in-the-recovery-site"></a>Testowanie trybu failover do produkcyjnego środowiska sieciowego w lokacji odzyskiwania
@@ -111,7 +110,7 @@ Jeśli chcesz połączyć się z maszyn wirtualnych platformy Azure przy użyciu
 **Maszyna wirtualna platformy Azure z systemem Linux** | Na komputerze lokalnym przed włączeniem trybu failover | Upewnij się, że Usługa Secure Shell na maszynie Wirtualnej jest ustawiona na automatyczne uruchomienie przy rozruchu systemu.<br/><br/> Sprawdź, czy reguły zapory zezwalają na połączenie SSH.
 **Maszyna wirtualna platformy Azure z systemem Linux** | Maszyna wirtualna platformy Azure po włączeniu trybu failover | Reguły sieciowych grup zabezpieczeń w trybie Failover maszyny Wirtualnej (i podsieci platformy Azure, do którego jest podłączony) muszą zezwalać na połączenia przychodzące do portu SSH.<br/><br/> [Dodaj publiczny adres IP](https://aka.ms/addpublicip) dla maszyny wirtualnej.<br/><br/> Sprawdź **diagnostykę rozruchu** dla zrzut ekranu maszyny wirtualnej.<br/><br/>
 
-Wykonaj kroki opisane [tutaj](site-recovery-failover-to-azure-troubleshoot.md) rozwiązywać problemy z łącznością wszelkie problemy po pracy awaryjnej.
+Wykonaj czynności opisane [tutaj](site-recovery-failover-to-azure-troubleshoot.md), aby rozwiązać wszystkie problemy z łącznością po przejściu do trybu failover.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Po ukończeniu odzyskiwania po awarii, więcej informacji na temat innych rodzajów [trybu failover](site-recovery-failover.md).

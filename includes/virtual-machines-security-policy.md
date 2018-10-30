@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 4887dbcc89180c54b8e991e6fa152463476c5ce9
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226830"
+---
 Należy chronić maszyny wirtualnej (VM) dla aplikacji, które zostanie uruchomione. Zabezpieczanie maszyn wirtualnych może zawierać jeden lub więcej usług platformy Azure, jak i funkcji, które obejmują bezpieczny dostęp do maszyn wirtualnych i bezpieczne przechowywanie danych. Ten artykuł zawiera informacje, która pozwala zapewnić bezpieczeństwo swoich maszyn wirtualnych i aplikacji.
 
 ## <a name="antimalware"></a>Oprogramowanie chroniące przed złośliwym kodem
@@ -26,7 +39,7 @@ Podczas łączenia z maszyn wirtualnych, należy używać kryptografii klucza pu
 
 Typowym wyzwaniem podczas kompilowania aplikacji w chmurze jest sposób zarządzania poświadczeniami w kodzie w przypadku uwierzytelniania przy użyciu usług w chmurze. Zabezpieczanie poświadczeń to ważne zadanie. W idealnej sytuacji poświadczenia nie są nigdy wyświetlane na stacjach roboczych deweloperów ani zaewidencjonowane do kontroli źródła. Usługa Azure Key Vault oferuje bezpieczny sposób przechowywania poświadczeń, wpisów tajnych i innych kluczy, ale w celu ich pobrania należy uwierzytelnić kod w usłudze Key Vault. 
 
-Zarządzanych tożsamości dla funkcji zasobów platformy Azure w usłudze Azure Active Directory (Azure AD) rozwiązuje ten problem. Funkcja ta udostępnia usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure AD. Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD, w tym w usłudze Key Vault, bez konieczności umieszczania poświadczeń w kodzie.  Swój kod, który jest uruchomiony na maszynie Wirtualnej mogą żądać tokenu z dwa punkty końcowe, które są dostępne tylko z poziomu maszyny Wirtualnej. Aby uzyskać szczegółowe informacje o tej usłudze, przejrzyj [zarządzanych tożsamości dla zasobów platformy Azure](../articles/active-directory/managed-identities-azure-resources/overview.md) strona przeglądu.   
+Funkcja tożsamości zarządzanych dla platformy Azure w usłudze Azure Active Directory (Azure AD) rozwiązuje ten problem. Funkcja ta udostępnia usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure AD. Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD, w tym w usłudze Key Vault, bez konieczności umieszczania poświadczeń w kodzie.  Swój kod, który jest uruchomiony na maszynie Wirtualnej mogą żądać tokenu z dwa punkty końcowe, które są dostępne tylko z poziomu maszyny Wirtualnej. Aby uzyskać szczegółowe informacje o tej usłudze, przejrzyj [zarządzanych tożsamości dla zasobów platformy Azure](../articles/active-directory/managed-identities-azure-resources/overview.md) strona przeglądu.   
 
 ## <a name="policies"></a>Zasady
 

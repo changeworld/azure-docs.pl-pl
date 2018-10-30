@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, divswa, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 086aa846e278ddf2d64eca97e781463f73b868d0
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 77d1e11c1400f9a3d6bb6bda8e935cd4d24a195e
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47057969"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230900"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Łączenie z systemami SAP z usługi Azure Logic Apps
 
@@ -198,7 +198,7 @@ Aby uzyskać szczegółowe informacje techniczne dotyczące łącznika, zgodnie 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](http://aka.ms/logicapps-wish).
+* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

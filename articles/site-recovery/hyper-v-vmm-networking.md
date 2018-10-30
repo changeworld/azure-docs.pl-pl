@@ -1,19 +1,19 @@
 ---
 title: Konfigurowanie adresów IP, odnoszący się do połączenia z lokacji dodatkowej w środowisku lokalnym po pracy awaryjnej przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania adresów IP na potrzeby nawiązywania połączenia z maszynami wirtualnymi w lokacji dodatkowej lokalnej po włączeniu trybu failover usługi Azure Site Recovery.
+description: W tym artykule opisano sposób konfigurowania adresów IP na potrzeby nawiązywania połączenia z maszynami wirtualnymi w lokacji dodatkowej w środowisku lokalnym po odzyskiwania po awarii i trybu failover za pomocą usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: rayne
-ms.openlocfilehash: dc28611f4b27d263e19f76ce4313f8d531a8cba2
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 1a9a89138dc71f7a0255b8ab4084182848d6e994
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077007"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211744"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>Konfigurowanie adresów IP adresowania połączyć po włączeniu trybu failover do lokacji dodatkowej w środowisku lokalnym
 

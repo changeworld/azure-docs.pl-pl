@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/24/2017
-ms.openlocfilehash: 08ad2d853ab909ea859ffd1230dd651aa6661500
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 1195ab125749cd211a35d7ff00c4f418dbd59f62
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987634"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232430"
 ---
 # <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>Architektura referencyjna: w czasie rzeczywistym do przetwarzania zdarzeń, za pomocą usługi Microsoft Azure Stream Analytics
 Architektura referencyjna dla zdarzeń w czasie rzeczywistym przetwarzania za pomocą usługi Azure Stream Analytics mają na celu dostarczenie ogólny plan wdrażania w czasie rzeczywistym platforma jako usługa (PaaS) rozwiązanie przetwarzanie strumienia z platformą Microsoft Azure.
@@ -25,7 +25,7 @@ Tradycyjne rozwiązania do analizy, została oparta na możliwości, takie jak E
 Microsoft Azure oferuje rozbudowane katalogu technologii analitycznych, które obsługują szereg scenariuszy różnych rozwiązań i wymagania. Wybierając którymi usługami platformy Azure, aby wdrożyć rozwiązania end-to-end może być trudne, biorąc pod uwagę szerokie oferty. Ten dokument jest przeznaczony do opisywania, możliwości i współdziałanie różnych usług platformy Azure, które obsługują to rozwiązanie do przesyłania strumieniowego wydarzeń. Również objaśniono niektóre scenariusze, w których klienci mogą korzystać z tego typu podejście.
 
 ## <a name="contents"></a>Zawartość
-* Streszczenie
+* Podsumowanie dla kierownictwa
 * Wprowadzenie do analizy w czasie rzeczywistym
 * Korzyści z danych w czasie rzeczywistym na platformie Azure
 * Typowe scenariusze dotyczące analizy w czasie rzeczywistym

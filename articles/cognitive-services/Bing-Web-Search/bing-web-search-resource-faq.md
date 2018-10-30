@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: troubleshooting
 ms.date: 10/06/2017
 ms.author: v-jerkin
-ms.openlocfilehash: b0b8fd3eb80d7418546788565402042de20ab3e7
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 2d43a73d93b24599b28af849ee9d1532441ef6bc
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129322"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233563"
 ---
 # <a name="frequently-asked-questions-faq"></a>Często zadawane pytania
 
@@ -35,9 +35,9 @@ Jest to szczególnie ważne utrwalić identyfikator klienta i przywrócić go z 
 
 Jednak gdy wywołujesz API wyszukiwania w Internecie Bing poziomu języka JavaScript w przeglądarce wbudowane funkcje zabezpieczeń (między źródłami CORS) może uniemożliwić dostęp do wartości tych nagłówków.
 
-Aby uzyskać dostęp do nagłówków, może wykonać żądania interfejsu API wyszukiwania Bing w sieci Web za pośrednictwem serwera proxy mechanizmu CORS. Odpowiedź z serwera proxy ma `Access-Control-Expose-Headers` Nagłówek tego dozwolonych nagłówków odpowiedzi i udostępnienie ich dla języka JavaScript.
+Aby uzyskać dostęp do nagłówków, może wykonać żądania interfejsu API wyszukiwania Bing w sieci Web za pośrednictwem serwera proxy mechanizmu CORS. Odpowiedź z tego serwera proxy zawiera nagłówek `Access-Control-Expose-Headers`, który zezwala na nagłówki odpowiedzi i udostępnia je dla języka JavaScript.
 
-To proste zainstalować serwer proxy CORS, aby zezwolić na naszych [samouczek aplikacji](tutorial-bing-web-search-single-page-app.md) nagłówki opcjonalne klienta dostępu do. Pierwsze, jeśli nie masz jeszcze, [zainstalować środowisko Node.js](https://nodejs.org/en/download/). Następnie wprowadź następujące polecenie w wierszu polecenia.
+To proste zainstalować serwer proxy CORS, aby zezwolić na naszych [samouczek aplikacji](tutorial-bing-web-search-single-page-app.md) nagłówki opcjonalne klienta dostępu do. Najpierw [zainstaluj platformę Node.js](https://nodejs.org/en/download/), jeśli jeszcze jej nie masz. Następnie wprowadź następujące polecenie w wierszu polecenia.
 
     npm install -g cors-proxy-server
 
@@ -45,17 +45,17 @@ Następnie Zmień punkt końcowy interfejsu API wyszukiwania Bing w sieci Web w 
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
 
-Na koniec uruchom serwer proxy mechanizmu CORS za pomocą następującego polecenia:
+Na koniec uruchom serwer proxy CORS za pomocą następującego polecenia:
 
     cors-proxy-server
 
-Pozostaw otwarte okno polecenia podczas korzystania z samouczka aplikacji; Zamyka okno zatrzymuje serwera proxy. W sekcji można rozwijać nagłówków HTTP poniżej wyniki wyszukiwania, będą teraz widoczne `X-MSEdge-ClientID` nagłówka (między innymi) i sprawdź, czy jest taka sama dla każdego żądania.
+Podczas korzystania z aplikacji samouczka pozostaw okno polecenia otwarte, ponieważ jego zamknięcie spowoduje zatrzymanie serwera proxy. W rozwijanej sekcji nagłówków HTML poniżej wyników wyszukiwania można teraz zobaczyć nagłówek `X-MSEdge-ClientID` (pomiędzy innymi) i sprawdzić, czy jest on taki sam dla każdego żądania.
 
 ## <a name="response-headers-in-production"></a>Nagłówki odpowiedzi w środowisku produkcyjnym
 
 Podejście proxy CORS, które są opisane w poprzedniej odpowiedzi jest odpowiednia dla rozwoju, testowania i nauki.
 
-Jednak w środowisku produkcyjnym należy obsługiwać skryptu po stronie serwera w tej samej domenie co strony sieci Web, który używa API wyszukiwania w Internecie Bing. Ten skrypt powinien rzeczywiście nie wywołania interfejsu API na żądanie z JavaScript strony sieci Web i przekazać wszystkie wyniki, włącznie z nagłówkami, z powrotem do klienta. Od dwóch zasobów (strony i skryptów) udostępnić punkt początkowy, mechanizm CORS nie dochodzą do głosu i specjalnych nagłówków są acessible w kodzie JavaScript na stronie sieci Web.
+Jednak w środowisku produkcyjnym należy obsługiwać skryptu po stronie serwera w tej samej domenie co strony sieci Web, który używa API wyszukiwania w Internecie Bing. Ten skrypt powinien rzeczywiście nie wywołania interfejsu API na żądanie z JavaScript strony sieci Web i przekazać wszystkie wyniki, włącznie z nagłówkami, z powrotem do klienta. Ponieważ dwóch zasobów (strony i skryptów) udostępnić punkt początkowy, mechanizm CORS nie dochodzą do głosu i specjalnych nagłówków są dostępne dla JavaScript na stronie sieci Web.
 
 Takie podejście chroni także klucz interfejsu API przed narażenia na wartość publiczne, ponieważ tylko skrypt po stronie serwera, należy go. Skrypt można użyć innej metody, aby upewnić się, że żądanie jest autoryzowane.
 

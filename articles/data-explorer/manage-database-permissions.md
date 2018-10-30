@@ -8,18 +8,18 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: b0fb2cd79c0ee685ad2000c5444a84d53e462f24
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 287b95b59b0ec2b308d3e455c4f6ffce4baf4ff7
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868279"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212883"
 ---
 # <a name="manage-azure-data-explorer-database-permissions"></a>Zarządzanie uprawnieniami bazy danych Azure Eksplorator danych
 
 Eksplorator danych usługi Azure pozwala na kontrolowanie dostępu do baz danych i tabel, za pomocą *kontroli dostępu opartej na rolach* modelu. W tym modelu *podmiotów* (użytkownikom, grupom i aplikacjom), które są mapowane na *role*. Podmiotów zabezpieczeń można uzyskać dostęp do zasobów zgodnie z rolami, które są przydzielone.
 
-W tym artykule opisano dostępne role i jak można przypisać jednostki do tych ról.
+W tym artykule opisano dostępne role i jak można przypisać jednostki do tych ról przy użyciu witryny Azure portal i poleceń zarządzania Eksploratora danych usługi Azure.
 
 ## <a name="roles-and-permissions"></a>Role i uprawnienia
 
@@ -77,4 +77,4 @@ Eksplorator usługi Azure Data ma następujące role:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Zapisywanie zapytań](write-queries.md)
+[Pisanie zapytań](write-queries.md)

@@ -1,21 +1,20 @@
 ---
-title: Konfigurowanie replikacji oprogramowania VMware do platformy Azure w środowisku wielu dzierżawców Site Recovery i program Cloud Solution Provider (CSP) | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób tworzenia i zarządzania subskrypcjami dzierżawy za pośrednictwem dostawcy usług Kryptograficznych i wdrażanie usługi Azure Site Recovery w konfiguracji z wieloma dzierżawami
-services: site-recovery
+title: Konfigurowanie odzyskiwania po awarii programu VMware do platformy Azure w środowisku wielu dzierżawców przy użyciu Site Recovery i programu Cloud Solution Provider (CSP) | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób konfigurowania odzyskiwania po awarii programu VMware w środowisku z wieloma dzierżawami przy użyciu usługi Azure Site Recovery.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: bd356a7e4285f8663b91da1f200cc2ae3c266bf3
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: c26421f848cf25e391589fa791f801e30fd14797
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354125"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50208905"
 ---
-# <a name="set-up-vmware-replication-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Konfigurowanie replikacji VMware w środowisku wielu dzierżawców w ramach programu Cloud Solution Provider (CSP)
+# <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Konfigurowanie odzyskiwania po awarii programu VMware w środowisku wielu dzierżawców w ramach programu Cloud Solution Provider (CSP)
 
 [CSP program](https://partner.microsoft.com/en-US/cloud-solution-provider) sprzyjają razem lepiej scenariusze dla usług w chmurze firmy Microsoft, w tym usługi Office 365, pakietu Enterprise Mobility Suite i Microsoft Azure. Za pomocą programu CSP partnerzy właścicielem end-to-end relacji z klientami i stają się punkt kontaktowy podstawowej relacji. Partnerów można wdrożyć subskrypcji platformy Azure dla klientów i łączyć przy użyciu własnych wartości dodanej, dostosowane oferty.
 

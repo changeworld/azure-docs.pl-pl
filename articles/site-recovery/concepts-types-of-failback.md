@@ -1,6 +1,6 @@
 ---
-title: Powrót po awarii w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera omówienie różnych typów powrotu po awarii i zastrzeżenia wziąć pod uwagę podczas przechodzenia wstecz do środowiska lokalnego z usługą Azure Site Recovery.
+title: Powrót po awarii podczas odzyskiwania po awarii przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera omówienie różnych typów powrotu po awarii i zastrzeżenia wziąć pod uwagę podczas przechodzenia wstecz do serwera lokalnego, podczas odzyskiwania po awarii przy użyciu usługi Azure Site Recovery.
 services: site-recovery
 author: rajani-janaki-ram
 manager: guaravd
@@ -8,16 +8,16 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajanki
-ms.openlocfilehash: 2a9ee380fc16c4088d98875dd465509c4023d037
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: e97d736e7e117e0ccce6dc021a9de2ea15ac5484
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920393"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210146"
 ---
 # <a name="overview-of-failback"></a>Omówienie powrotu po awarii
 
-Po za pośrednictwem powiodły się na platformie Azure, może zakończyć się niepowodzeniem, wróć do witryny w środowisku lokalnym. Istnieją dwa różne typy powrotu po awarii, które można wykonać za pomocą usługi Azure Site Recovery: 
+Po użytkownik nie powiodło za pośrednictwem platformy Azure jako część procesu odzyskiwania po awarii, może zakończyć się niepowodzeniem, wróć do witryny w środowisku lokalnym. Istnieją dwa różne typy powrotu po awarii, które można wykonać za pomocą usługi Azure Site Recovery: 
 
 - Powrót po awarii do oryginalnej lokalizacji 
 - Powrót po awarii do lokalizacji alternatywnej

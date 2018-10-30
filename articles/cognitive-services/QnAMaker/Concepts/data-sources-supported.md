@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: tulasim
-ms.openlocfilehash: 36d74c7fba472956d57344977de79a4cbfd2cf02
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 4c96eb5b49c72fe9bb5ab977c773407889c56805
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648517"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213308"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Źródła danych dla zawartości usługi QnA Maker
 
@@ -25,10 +25,10 @@ Poniższa tabela zawiera podsumowanie typów formaty zawartości i plików, któ
 
 |Typ źródła|Typ zawartości| Przykłady|
 |--|--|--|
-|ADRES URL|Często zadawane pytania (płaskie, sekcji lub z określonej strony głównej tematy)|[Zwykły — często zadawane pytania](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), [— często zadawane pytania wraz z łączami](https://www.microsoft.com/software-download/faq), [— często zadawane pytania za pomocą strony głównej — tematy](https://support.microsoft.com/products/windows?os=windows-10)|
+|Adres URL|Często zadawane pytania (płaskie, sekcji lub z określonej strony głównej tematy)|[Zwykły — często zadawane pytania](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), [— często zadawane pytania wraz z łączami](https://www.microsoft.com/software-download/faq), [— często zadawane pytania za pomocą strony głównej — tematy](https://support.microsoft.com/products/windows?os=windows-10)|
 |PLIK PDF / DOC|Przewodnik dotyczący — często zadawane pytania, obsługi produktu, broszury, dokument, ulotka zasad, pomoc techniczną, ze strukturą pytań i odpowiedzi, np.|[Strukturę QnA.doc](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Bot%20Service%20Sample%20FAQ.docx), [Manual.pdf produktu przykładowe](https://download.microsoft.com/download/2/9/B/29B20383-302C-4517-A006-B0186F04BE28/surface-pro-4-user-guide-EN.pdf), [przykładowy o częściowej lub structured.doc](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx), [przykładowy paper.pdf biały](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-stack-wortmann-bring-the-power-of-the-public-cloud-into-your-data-center/Azure_Stack_Wortmann_Bring_the_Power_of_the_Public_Cloud_into_Your_Data_Center.pdf)|
 |Excel|Ze strukturą pliku pytań i odpowiedzi (łącznie z RTF, HTML pomocy technicznej)|[Przykładowy FAQ.xls pytań i odpowiedzi](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/QnA%20Maker%20Sample%20FAQ.xlsx)|
-|TXT/TSV|Ze strukturą pliku pytań i odpowiedzi|[Przykładowe chit-chat.tsv](https://raw.githubusercontent.com/Microsoft/BotBuilder-PersonalityChat/master/CSharp/Datasets/Queries_Responses_Friendly_QnAMaker.tsv)|
+|TXT/TSV|Ze strukturą pliku pytań i odpowiedzi|[Przykładowe chit-chat.tsv](https://github.com/Microsoft/BotBuilder-PersonalityChat/blob/master/CSharp/Datasets/scenario_responses_the_friend.tsv)|
 
 ## <a name="faq-urls"></a>Adresy URL — często zadawane pytania
 
@@ -123,7 +123,7 @@ Poniżej znajduje się przykład ze strukturą QnA *xls* plik z zawartością HT
 
 Importowanie bazy wiedzy zastępuje zawartości istniejącej bazie wiedzy knowledge base. Importuj wymaga pliku tsv ze strukturą, który zawiera informacje o źródle danych. Informacje te pomagają usługi QnA Maker grupę pary pytań i odpowiedzi, a ich atrybutu z określonego źródła danych.
 
-| Pytanie  | Odpowiedź  | Źródło| Metadane                |
+| Pytanie  | Odpowiedź  | Element źródłowy| Metadane                |
 |-----------|---------|----|---------------------|
 | Question1 | Answer1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | Question2 | Answer2 | Redakcyjna|    `Key:Value`       |

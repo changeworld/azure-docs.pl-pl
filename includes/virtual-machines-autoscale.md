@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 0e46caf855bca184ff8a714d2c93d573b910fea8
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227423"
+---
 Możesz z łatwością [automatyczne skalowanie](../articles/monitoring-and-diagnostics/insights-autoscale-best-practices.md) swoje [maszyn wirtualnych (VM)](../articles/virtual-machines/windows/overview.md) zastosowania [zestawy skalowania maszyn wirtualnych](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) i [funkcja automatycznego skalowania platformy Azure Monitor](../articles/monitoring-and-diagnostics/monitoring-overview-autoscale.md). Maszyny wirtualne muszą należeć do zestawu skalowania automatycznego skalowania. Ten artykuł zawiera informacje, która pozwala na lepsze zrozumienie, jak skalowanie w pionie i w poziomie przy użyciu automatycznej i ręcznej metody maszyn wirtualnych.
 
 ## <a name="horizontal-or-vertical-scaling"></a>Skalowanie w poziomie lub w pionie

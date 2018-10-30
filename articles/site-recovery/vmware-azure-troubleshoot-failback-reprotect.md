@@ -1,22 +1,20 @@
 ---
-title: Rozwiązywanie problemów z błędami podczas powrotu po awarii maszyn wirtualnych platformy Azure do lokalnych zasobów programu VMware przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposoby rozwiązywania typowych problemów podczas powrotu po awarii i ponownego włączania ochrony podczas powrotu po awarii do programu VMware na platformie Azure przy użyciu usługi Azure Site Recovery.
-services: site-recovery
-documentationcenter: ''
+title: Rozwiązywanie problemów z powrotu po awarii do środowiska lokalnego podczas odzyskiwania po awarii maszyn wirtualnych programu VMware na platformę Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak rozwiązywać problemy podczas powrotu po awarii i ponownego włączania ochrony podczas odzyskiwania po awarii maszyn wirtualnych programu VMware na platformę Azure za pomocą usługi Azure Site Recovery.
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: c5ba0f1d98f3e4023e767bf3eea7a0b497d47686
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 89484e14d69493c74ed1ff983cf88ec146e0313d
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920975"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210367"
 ---
-# <a name="troubleshoot-failback-from-azure-to-vmware"></a>Rozwiązywanie problemów podczas powrotu po awarii z platformy Azure do programu VMware
+# <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Rozwiązywanie problemów z powrotu po awarii do środowiska lokalnego na platformie Azure
 
 W tym artykule opisano sposób rozwiązywania problemów, które mogą występować w przypadku maszyn wirtualnych z powrotem do platformy Azure po awarii do lokalnej infrastruktury VMware po włączeniu trybu failover na platformie Azure przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md).
 

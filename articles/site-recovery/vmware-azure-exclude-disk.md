@@ -1,19 +1,19 @@
 ---
-title: Wykluczanie dysków z ochrony za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Opisuje, dlaczego i jak wykluczać dyski maszyny wirtualnej z replikacji z programu VMware do platformy Azure.
+title: Wykluczanie dysków z replikacji na potrzeby odzyskiwania po awarii programu VMware do platformy Azure przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Opisuje, dlaczego i jak wykluczać dyski maszyny Wirtualnej z replikacji na potrzeby odzyskiwania po awarii programu VMware do platformy Azure.
 author: nsoneji
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: ea0e9f3572287139612256863ee28b72c83cd4ef
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: f8e5fd094e453088dab83c1967bc0733f91a2b98
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092427"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210590"
 ---
-# <a name="exclude-disks-from-replication-for-vmware-to-azure-scenario"></a>Wykluczanie dysków z replikacji w scenariuszu VMware–Azure
+# <a name="exclude-disks-from-replication-of-vmware-vms-to-azure"></a>Wykluczanie dysków z replikacji maszyn wirtualnych programu VMware do platformy Azure
 
 W tym artykule opisano sposób wykluczania dysków podczas replikowania maszyn wirtualnych VMware na platformę Azure. Takie wykluczenie może zoptymalizować przepustowość używaną przez replikację lub zoptymalizować zasoby po stronie docelowej, z których korzystają takie dyski. Jeśli potrzebujesz informacji na temat funkcji Hyper-v z wyjątkiem dysków, zapoznaj się z [w tym artykule](hyper-v-exclude-disk.md)
 

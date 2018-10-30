@@ -1,21 +1,22 @@
 ---
-title: Tryb failover w usłudze Site Recovery | Dokumentacja firmy Microsoft
-description: Usługa Azure Site Recovery koordynuje replikację, tryb failover i odzyskiwania maszyn wirtualnych i serwerów fizycznych. Więcej informacji na temat trybu failover na platformie Azure lub dodatkowego centrum danych.
+title: Tryb failover podczas odzyskiwania po awarii przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o za pośrednictwem serwerów fizycznych i maszyn wirtualnych podczas odzyskiwania po awarii przy użyciu usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/11/2018
-ms.author: ponatara
-ms.openlocfilehash: c9a2f258ca952ca36000e1ca0630fbde31ba7ba0
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.date: 10/28/2018
+ms.author: raynew
+ms.openlocfilehash: 6e16529740377b9a082fda4f3e4409b57441715e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391321"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215161"
 ---
-# <a name="failover-in-site-recovery"></a>Praca w trybie failover w usłudze Site Recovery
+# <a name="fail-over-vms-and-physical-servers"></a>W tryb failover maszyn wirtualnych i serwerów fizycznych 
+
 W tym artykule opisano, jak do trybu failover maszyny wirtualne i fizyczne serwery są chronione przez usługę Site Recovery.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -114,9 +115,9 @@ Aby zachować litery dysku na maszynach wirtualnych, po włączeniu trybu failov
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Przygotowanie do połączenia z maszynami wirtualnymi Azure po przejściu do trybu failover
 
-Jeśli chcesz połączyć się z maszyn wirtualnych platformy Azure przy użyciu protokołu RDP/SSH po włączeniu trybu failover, postępuj zgodnie z wymaganiami podsumowane w tabeli [tutaj](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+Jeśli chcesz nawiązać połączenie z maszynami wirtualnymi platformy Azure przy użyciu protokołu RDP/SSH po przejściu do trybu failover, upewnij się, że zostały spełnione wymagania podsumowane w [tej](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover) tabeli.
 
-Wykonaj kroki opisane [tutaj](site-recovery-failover-to-azure-troubleshoot.md) rozwiązywać problemy z łącznością wszelkie problemy po pracy awaryjnej.
+Wykonaj czynności opisane [tutaj](site-recovery-failover-to-azure-troubleshoot.md), aby rozwiązać wszystkie problemy z łącznością po przejściu do trybu failover.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

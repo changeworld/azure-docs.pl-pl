@@ -1,6 +1,6 @@
 ---
-title: Zintegrowane zabezpieczenia do platformy Azure projekty architektury | Dokumentacja firmy Microsoft
-description: " Ten artykuł pomoże Ci zrozumieć Architektura usług i aplikacji na platformie Azure, aby ułatwić zintegrowane zabezpieczenia do projektowania i implementacji. "
+title: Integrowanie zabezpieczeń platformy Azure projekty architektury | Dokumentacja firmy Microsoft
+description: " Ten artykuł pomoże zrozumieć architekturę aplikacji i usług na platformie Azure ułatwiają integrowanie bezpieczeństwo projektowania i implementacji. "
 services: security
 documentationcenter: na
 author: TomShinder
@@ -14,45 +14,45 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: f15378c50dbf80863305ed4d1f31ae75f46a7789
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 8ca9f0b75627e7ad366b3c02ec3126713a283ed2
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2017
-ms.locfileid: "25549439"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233739"
 ---
 # <a name="application-architecture-on-azure"></a>Architektura aplikacji na platformie Azure
-Aby ułatwić zabezpieczanie rozwiązań opartych na chmurze w systemie Microsoft Azure, silne foundation architektury jest krytyczna. Architektów, projektantów i implementacje korzystać z silnej wiedzy architektury usług i aplikacji. Ta wiedza podstawowych ułatwiające zrozumienie wszystkie składniki rozwiązań opartych na chmurze i ułatwiają zintegrowane zabezpieczenia do wszystkich aspektów projektowania i implementacji.
+Aby zabezpieczyć swoje rozwiązania oparte na chmurze w systemie Microsoft Azure solidne podstawy architektury ma krytyczne znaczenie. Architekci, projektantów i konsultantów korzystać z silnej znajomości architektury aplikacji i usług. Ta podstawowe wiedza ułatwi Ci zrozumienie wszystkie składniki rozwiązań opartych na chmurze i ułatwiają integrowanie zabezpieczeń wszystkich aspektów projektowania i implementacji.
 
-Mamy następujące polecenie, aby ułatwić z architektury dochodzenia i projektów:
+Mamy następujące polecenie, aby pomóc przy użyciu architektury dochodzenia i projekty:
 
-* Infographics architektury
-* Plany architektury
+* Architektury grafika informacyjna o systemie
+* Schematy architektury
 * Zestaw symboli cloud i enterprise
-* Szablon programu Visio planu 3D
+* Szablon programu Visio schemat 3D
 
-## <a name="architectural-infographics"></a>Infographics architektury
-Firma Microsoft publikuje kilka architektury pokrewne plakaty/infographics. Obejmują one:
+## <a name="architectural-infographics"></a>Architektury grafika informacyjna o systemie
+Firma Microsoft publikuje kilka architektury powiązane plakaty/grafiki informacyjne. Ulepszenia obejmują:
 
-* [Tworzenie aplikacji rzeczywistych chmury](https://azure.microsoft.com/documentation/infographics/building-real-world-cloud-apps/)
+* [Tworzenie aplikacji w chmurze w rzeczywistych warunkach](https://azure.microsoft.com/documentation/infographics/building-real-world-cloud-apps/)
 * [Skalowanie z usługami w chmurze](https://azure.microsoft.com/documentation/infographics/cloud-services/)
 
-## <a name="architectural-blueprints"></a>Plany architektury
-Firma Microsoft publikuje zbiór wysokiego poziomu [architektury plany](http://aka.ms/azblueprints) przedstawiający sposób tworzenia określone typy systemów przy użyciu produktów firmy Microsoft.
+## <a name="architectural-blueprints"></a>Schematy architektury
+Firma Microsoft publikuje zbiór wysokiego poziomu [schematy architektury](https://aka.ms/azblueprints) przedstawiający sposób tworzenia określonych typów systemów przy użyciu produktów firmy Microsoft.
 Każdy plan zawiera:
 
-* Płaskie 2D Visio 2003 plików, który można pobrać i zmodyfikować
-* Plik PDF kolorowe perspektywy 3W wprowadzenie planu do odbiorców mniej techniczne
-* Wideo, który przeprowadzi Cię przez wersję 3D
+* Płaskie 2D plików z systemem 2003 programu Visio, który można pobrać i zmodyfikować
+* Plik PDF kolorowe perspektywę 3W wprowadzenie planu do mniej techniczna odbiorców
+* Film wideo, który przeprowadzi wersji 3D
 
 ## <a name="cloud-and-enterprise-symbol-set"></a>Zestaw symboli cloud i enterprise
-[Wyświetl Visio i symbole szkolenia wideo](http://aka.ms/CnESymbolsVideo) , a następnie [Pobierz chmury i zestaw symboli Enterprise](http://aka.ms/CnESymbols) w celu tworzenia technicznej materiały, które opisują Azure, Windows Server, SQL Server i inne. Można używać symboli w diagramów architektury, materiałów szkoleniowych prezentacji, arkusze danych, infographics, oficjalne dokumenty i nawet książek innych firm, jeśli książce przygotowuje osoby do używania produktów firmy Microsoft. Jednak nie są przeznaczone do użycia w interfejsów użytkownika.
+[Wyświetl Visio i symbole szkolenia wideo](https://aka.ms/CnESymbolsVideo) a następnie [Pobierz chmury i ustaw Enterprise Symbol](https://aka.ms/CnESymbols) pomocnych przy tworzeniu techniczne materiały, które opisują platformy Azure, Windows Server, SQL Server i nie tylko. Można użyć symboli w diagramów architektury, materiałów szkoleniowych, prezentacje, arkusze danych, grafika informacyjna o systemie, oficjalne dokumenty i nawet książki innych firm, jeśli książki szkolenie modeli osobom korzystanie z produktów firmy Microsoft. Jednak nie są przeznaczone do użytku w interfejsie użytkownika.
 
-## <a name="3d-blueprint-visio-template"></a>Szablon programu Visio planu 3D
-Wersje 3D [plany architektura Microsoft](http://aka.ms/azblueprints) początkowo zostały utworzone w narzędziu do firmy Microsoft. Nowy szablon programu Visio 2013 (lub nowszym) wysłane na 5 sierpnia 2015 roku jako część [kursu certyfikacji Microsoft Architecture rozproszone na EDX.ORG](https://docs.microsoft.com/azure/architecture/#microsoft-architecture-certification-course).
+## <a name="3d-blueprint-visio-template"></a>Szablon programu Visio schemat 3D
+Wersje 3D [schematy architektury Microsoft](https://aka.ms/azblueprints) początkowo zostały utworzone w narzędziu innej firmy niż Microsoft. Nowy szablon programu Visio 2013 (lub nowszym) dostarczany 5 sierpnia 2015 roku jako część [kurs certyfikacji Microsoft Architecture rozproszone na EDX.ORG](https://docs.microsoft.com/azure/architecture/#microsoft-architecture-certification-course).
 
-Szablon jest również dostępna poza kursu.
+Szablon jest również dostępne poza kursu.
 
-* [Obejrzyj klip wideo szkolenia](http://aka.ms/3dBlueprintTemplateVideo) pierwszy, aby wiedzieć, co można zrobić
-* Pobierz [Microsoft 3d szablon programu Visio planu](http://aka.ms/3DBlueprintTemplate)
-* Pobierz [Cloud i Enterprise symboli](https://docs.microsoft.com/azure/architecture/#drawing-symbol-and-icon-sets) do użycia z szablonem 3D
+* [Obejrzyj film szkolenia](https://aka.ms/3dBlueprintTemplateVideo) pierwszy, aby było wiadomo, co można zrobić
+* Pobierz [Microsoft szablony planu 3d w programie Visio](https://aka.ms/3DBlueprintTemplate)
+* Pobierz [Cloud i Enterprise symbole](https://docs.microsoft.com/azure/architecture/#drawing-symbol-and-icon-sets) za pomocą szablonu 3D

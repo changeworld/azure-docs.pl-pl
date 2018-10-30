@@ -1,3 +1,16 @@
+---
+author: rothja
+ms.service: virtual-machines-sql
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: jroth
+ms.openlocfilehash: c9df9e0812d5c4b5a581d4b7da677623f45f8053
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227152"
+---
 1. Po nawiązaniu połączenia z maszyną wirtualną przy użyciu pulpitu zdalnego wyszukaj pozycję **Menedżer konfiguracji**:
 
     ![Otwieranie Menedżera konfiguracji programu SQL Server](./media/virtual-machines-sql-server-connection-tcp-protocol/sql-server-configuration-manager.png)

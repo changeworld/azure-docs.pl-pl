@@ -1,6 +1,6 @@
 ---
-title: Ochrona usługi Active Directory i DNS przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak wdrożyć rozwiązanie odzyskiwania po awarii dla usługi Active Directory za pomocą usługi Azure Site Recovery.
+title: Konfigurowanie odzyskiwania po awarii dla usługi Active Directory i DNS przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak wdrożyć rozwiązanie odzyskiwania po awarii dla usługi Active Directory i DNS przy użyciu usługi Azure Site Recovery.
 services: site-recovery
 documentationcenter: ''
 author: mayurigupta13
@@ -9,14 +9,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 1072c903e9bd9ccb3d63cae426283a677d10077e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 51d435d9edea5e341127cac89bc96a71c7bc8bb4
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354295"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211897"
 ---
-# <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Użyj usługi Azure Site Recovery, aby chronić Active Directory i DNS
+# <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Konfigurowanie odzyskiwania po awarii dla usługi Active Directory i DNS
 
 Aplikacje dla przedsiębiorstw, takich jak SharePoint, Dynamics AX i SAP są zależne od usługi Active Directory i infrastruktury DNS, aby działo poprawnie. Podczas konfigurowania odzyskiwania po awarii dla aplikacji często trzeba odzyskać Active Directory i DNS, przed odzyskaniem inne składniki aplikacji w celu zapewnienia ich funkcjonalności właściwej aplikacji.
 

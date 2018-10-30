@@ -1,25 +1,26 @@
 ---
-title: Architektura replikacji platformy Azure w usłudze Azure Site Recovery VMware – | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera omówienie składników i architektury używanych podczas replikowania lokalnych maszyn wirtualnych z programu VMware na platformę Azure za pomocą usługi Azure Site Recovery
+title: Program VMware do architektury odzyskiwania po awarii platformy Azure w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera omówienie składników i architektury używanych podczas konfigurowania odzyskiwania po awarii lokalnych maszyn wirtualnych programu VMware na platformę Azure za pomocą usługi Azure Site Recovery
 author: rayne-wiselman
 ms.service: site-recovery
+ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: raynew
-ms.openlocfilehash: 498c41324bfc85f6f91acc8000df4c34856cf428
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 58129ece0fb1b7f446e5f8d738b5d1135aa0256e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715758"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212390"
 ---
-# <a name="vmware-to-azure-replication-architecture"></a>Architektura Azure replikacji VMware –
+# <a name="vmware-to-azure-disaster-recovery-architecture"></a>Program VMware do architektury odzyskiwania po awarii platformy Azure
 
-W tym artykule opisano architekturę i procesów związanych z replikacja, tryb failover i odzyskiwanie maszyn wirtualnych VMware (VM) między lokalną lokacją programu VMware i platformą Azure za pomocą [usługi Azure Site Recovery](site-recovery-overview.md).
+W tym artykule opisano architekturę i procesów związanych z wdrożeniem replikacji odzyskiwania po awarii, tryb failover i odzyskiwanie maszyn wirtualnych VMware (VM) między lokalną lokacją programu VMware i platformy Azure za pomocą [usługi Azure Site Recovery](site-recovery-overview.md) servuce.
 
 
 ## <a name="architectural-components"></a>Składniki architektury
 
-Poniższej tabeli i grafika przedstawia ogólny widok składniki używane na potrzeby replikacji oprogramowania VMware na platformę Azure.
+Poniższej tabeli i grafika przedstawia ogólny widok składniki używane do odzyskiwania po awarii programu VMware na platformę Azure.
 
 **Składnik** | **Wymaganie** | **Szczegóły**
 --- | --- | ---

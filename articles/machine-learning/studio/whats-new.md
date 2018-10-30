@@ -1,6 +1,6 @@
 ---
-title: What's new in Azure Machine Learning | Dokumentacja firmy Microsoft
-description: Nowe funkcje, które są dostępne w usłudze Azure Machine Learning.
+title: What's new in Azure Machine Learning Studio | Dokumentacja firmy Microsoft
+description: Nowe funkcje, które są dostępne w usłudze Azure Machine Learning Studio.
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
@@ -14,44 +14,49 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2017
-ms.openlocfilehash: 61bea7fde96b239a50ec25a702a73ecfb62ce717
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.date: 10/28/2018
+ms.openlocfilehash: 2f990ce30b66392e8a649e4e88b21457d9fe223b
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836076"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212662"
 ---
-# <a name="whats-new-in-azure-machine-learning"></a>Co nowego w usłudze Azure Machine Learning
+# <a name="whats-new-in-azure-machine-learning-studio"></a>What's New in Azure Machine Learning Studio
 
-### <a name="the-march-2017-release-of-microsoft-azure-machine-learning-updates-provides-the-following-feature"></a>Wersja 2017 marca aktualizacje Microsoft Azure Machine Learning zapewnia następującej funkcji:
+## <a name="october-2018"></a>Października 2018 r.
+
+Aparat języka R w [wykonanie skryptu języka R](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/execute-r-script) modułu została dodana nowa wersja środowiska uruchomieniowego języka R — Microsoft R Open (MRO) 3.4.4. MRO 3.4.4 zależy od typu open-source CRAN R 3.4.4 i dlatego jest zgodny z pakietami, które współpracuje z danej wersji języka R.  Dowiedz się więcej o obsługiwane pakiety języka R w artykule "[pakiety języka R obsługiwanych przez usługi Azure Machine Learning Studio](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/r-packages-supported-by-azure-machine-learning#bkmk_List)".
+
+## <a name="march-2017"></a>Marca 2017 r. 
+Ta wersja aktualizacji Microsoft Azure Machine Learning oferuje następującej funkcji:
+
+* Dedykowaną pojemność dla usługi Azure Machine Learning BES zadania
+
+    Usługi Machine Learning Batch Pool przetwarzania używa [usługi Azure Batch](../../batch/batch-technical-overview.md) usługi w celu zapewnienia skalowania zarządzanych przez klienta usługa wykonywania wsadowego usługi Azure Machine Learning. Przetwarzanie puli usługi Batch pozwala tworzyć pule usługi Azure Batch, na których można przesłać zadania usługi batch oraz korzystać z ich wykonania w sposób przewidywalny.
+
+    Aby uzyskać więcej informacji, zobacz [usługi Azure Batch dla zadań usługi Machine Learning](dedicated-capacity-for-bes-jobs.md).
 
 
+## <a name="august-2016"></a>Sierpnia 2016 r. 
+Ta wersja programu Microsoft Azure Machine Learning aktualizacje zapewniają następujące funkcje:
+* Klasyczne usługi sieci Web można teraz zarządzać w nowym [usług sieci Web Microsoft Azure Machine Learning](https://services.azureml.net/) portalem zapewniającym w jednym miejscu, aby zarządzać wszystkimi aspektami usługi sieci Web.    
+  * Który udostępnia usługę sieci web [statystyki użycia](manage-new-webservice.md).
+  * Upraszcza testowanie wywołań usługi Azure Machine Learning zdalnego żądania przy użyciu przykładowych danych.
+  * Zapewnia stronę testową usługę wykonywania wsadowego próbki historii przesyłania danych i zadań.
+  * Umożliwia łatwiejsze zarządzanie w punkcie końcowym.
 
-* Dedykowany pojemności dla usługi Azure Machine Learning BES zadań
+## <a name="july-2016"></a>Lipca 2016 r. 
+Ta wersja programu Microsoft Azure Machine Learning aktualizacje zapewniają następujące funkcje:
+* Usługi sieci Web są teraz zarządzane jako zasoby platformy Azure zarządzane za pośrednictwem [usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) interfejsów, co zapewnia następujące ulepszenia:
+  * Istnieją nowe [interfejsów API REST](https://msdn.microsoft.com/library/azure/Dn950030.aspx) wdrażanie i zarządzanie nimi Menedżera zasobów na podstawie usług sieci Web.
+  * Jest dostępny nowy [usług sieci Web Microsoft Azure Machine Learning](https://services.azureml.net/) portalem zapewniającym w jednym miejscu, aby zarządzać wszystkimi aspektami usługi sieci Web.
+* Dołącza nowy model wdrażania usługi sieci web opartym na subskrypcji, w wielu regionach przy użyciu usługi Resource Manager, na podstawie interfejsów API, wykorzystując dostawcy zasobów usługi Resource Manager dla usług sieci Web.
+* Wprowadzono nowe [planów cenowych](https://azure.microsoft.com/pricing/details/machine-learning/) i zaplanować możliwości zarządzania przy użyciu nowej jednostki Uzależnionej usługi Resource Manager dla rozliczeń.
+  * Możesz teraz [wdrażanie usługi sieci web do wielu regionów](how-to-deploy-to-multiple-regions.md) bez konieczności tworzenia subskrypcji w każdym regionie.
+* Udostępnia usługę sieci web [statystyki użycia](manage-new-webservice.md).
+* Upraszcza testowanie wywołań usługi Azure Machine Learning zdalnego żądania przy użyciu przykładowych danych.
+* Zapewnia stronę testową usługę wykonywania wsadowego próbki historii przesyłania danych i zadań.
 
-    Maszyny przetwarzania używa puli partii Learning [partii zadań Azure](../../batch/batch-technical-overview.md) usługą skalowalnego zarządzany przez klienta dla usługi Azure Machine Learning partii wykonywania. Przetwarzanie wsadowe puli służy do tworzenia pul partii zadań Azure, na których przesyłania zadań wsadowych i je w sposób przewidywalne.
-
-    Aby uzyskać więcej informacji, zobacz [usługi partia zadań Azure Machine Learning zadań](dedicated-capacity-for-bes-jobs.md).
-
-
-### <a name="the-august-2016-release-of-microsoft-azure-machine-learning-updates-provide-the-following-features"></a>Wersja sierpnia 2016 Microsoft Azure Machine Learning aktualizacje zapewniają następujące funkcje:
-* Teraz można zarządzać klasycznym usługi sieci Web w nowej [usługi sieci Web Microsoft Azure Machine Learning](https://services.azureml.net/) portal, który zawiera w jednym miejscu, aby zarządzać wszystkimi aspektami usługi sieci Web.    
-  * Zapewniające usługi sieci web [statystyk użycia](manage-new-webservice.md).
-  * Upraszcza testowania wywołań Azure Machine Learning zdalnego żądania przy użyciu przykładowych danych.
-  * Udostępnia nową stroną testową usługi wykonywania wsadowego z historią przesyłania przykładowych danych i zadania.
-  * Umożliwia łatwiejsze zarządzanie punktu końcowego.
-
-### <a name="the-july-2016-release-of-microsoft-azure-machine-learning-updates-provide-the-following-features"></a>Wersja lipca 2016 aktualizacje Microsoft Azure Machine Learning zapewniają następujące funkcje:
-* Usługi sieci Web są teraz zarządzane jako zasobów platformy Azure zarządzanych za pomocą [usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) interfejsów, co zapewnia następujące udoskonalenia:
-  * Istnieją nowe [interfejsów API REST](https://msdn.microsoft.com/library/azure/Dn950030.aspx) wdrażania i zarządzania nimi Menedżera zasobów na podstawie usług sieci Web.
-  * Jest dostępna nowa [usługi sieci Web Microsoft Azure Machine Learning](https://services.azureml.net/) portal, który zawiera w jednym miejscu, aby zarządzać wszystkimi aspektami usługi sieci Web.
-* Umowa zawiera nowe interfejsy API wykorzystaniu dostawcy zasobów Menedżera zasobów dla usług sieci Web na podstawie modelu wdrażania usług sieci web subskrypcji, w przypadku korzystania z Menedżera zasobów.
-* Wprowadzono nowe [planów cenowych](https://azure.microsoft.com/pricing/details/machine-learning/) i planowanie możliwości zarządzania przy użyciu nowego planu odzyskiwania Menedżera zasobów dla rozliczeń.
-  * Możesz teraz [wdrażanie usługi sieci web na wiele regionów](how-to-deploy-to-multiple-regions.md) bez konieczności tworzenia subskrypcji w każdym regionie.
-* Usługa sieci web [statystyk użycia](manage-new-webservice.md).
-* Upraszcza testowania wywołań Azure Machine Learning zdalnego żądania przy użyciu przykładowych danych.
-* Udostępnia nową stroną testową usługi wykonywania wsadowego z historią przesyłania przykładowych danych i zadania.
-
-Ponadto Machine Learning Studio została zaktualizowana, aby umożliwić Wdrażanie nowego modelu usług sieci Web, lub Kontynuuj wdrażanie klasycznego modelu usług sieci Web. 
+Ponadto usługi Machine Learning Studio został zaktualizowany, aby umożliwić wdrażanie do nowego modelu usługi sieci Web lub w dalszym ciągu wdrażać klasycznego modelu usług sieci Web. 
 

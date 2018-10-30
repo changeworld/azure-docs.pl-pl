@@ -1,10 +1,10 @@
 ---
 title: Usługa Azure Media Services encoding kody błędów | Dokumentacja firmy Microsoft
-description: Ten temat zawiera listę kodów błędów, które mogą być zwracane w przypadku Napotkano błąd podczas wykonywania zadania kodowania.
+description: Ten temat zawiera listę kodów błędów, które mogą być zwracane w przypadku, gdy wystąpił błąd podczas wykonywania zadania kodowania...
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: ce4e939f-5aee-41f9-859d-e4429815e9f2
 ms.service: media-services
@@ -12,33 +12,33 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 10/29/2018
 ms.author: juliako
-ms.openlocfilehash: 7a1733175f796a0d8c0c0d4247b2db2dd47e4674
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: bc1a53ba9e3630c7f985ce5c78bc4c874c70b26e
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788137"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230390"
 ---
-# <a name="encoding-error-codes"></a>Kodowanie kody błędów
+# <a name="encoding-error-codes"></a>Kody błędów kodowania
 
-W poniższej tabeli przedstawiono kody błędów, które mogą być zwracane w przypadku Napotkano błąd podczas wykonywania zadania kodowania.  Aby uzyskać szczegóły błędu w kodzie .NET, należy użyć [szczegóły błędu](http://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) klasy. Aby uzyskać szczegóły błędu w kodzie REST, należy użyć [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx) interfejsu API REST.
+Poniższa tabela zawiera listę kodów błędów, które mogą być zwracane w przypadku, gdy wystąpił błąd podczas wykonywania zadania kodowania.  Aby uzyskać szczegóły błędu w kodzie .NET, użyj [ErrorDetails](http://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) klasy. Aby uzyskać szczegóły błędu w kodzie REST, należy użyć [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx) interfejsu API REST.
 
 | ErrorDetail.Code | Możliwe przyczyny błędu |
 | --- | --- |
-| Brak informacji |Wystąpił nieznany błąd podczas wykonywania zadania |
-| ErrorDownloadingInputAssetMalformedContent |Kategorii błędów, który obejmuje błędy w czasie pobierania wejściowych zasobów, takich jak nazwy uszkodzonych plików, zero pliki o długości, niepoprawny formatuje i tak dalej. |
-| ErrorDownloadingInputAssetServiceFailure |Kategoria błędów obejmuje problemów po stronie usługi — na przykład sieci lub magazynu błędy podczas pobierania. |
-| ErrorParsingConfiguration |Kategoria błędów, gdy zadanie <see cref="MediaTask.PrivateData"/> (Konfiguracja) jest nieprawidłowa, na przykład konfiguracji nie jest poprawnym systemem ustawienia wstępnego lub zawiera nieprawidłowy kod XML. |
-| ErrorExecutingTaskMalformedContent |Kategoria błędy podczas wykonywania zadań, gdy problemy wewnątrz multimedialnych plików wejściowych spowodować niepowodzenie. |
-| ErrorExecutingTaskUnsupportedFormat |Kategoria błędy, gdy procesor multimediów nie może przetworzyć pliki udostępniane — formatu media nie obsługiwany lub nie jest zgodna z konfiguracją. Na przykład w trakcie generowania tylko dźwięk danych wyjściowych z zasobu, który zawiera tylko wideo |
-| ErrorProcessingTask |Kategoria innych błędów, które procesor multimediów napotka podczas przetwarzania zadania niezwiązane zawartości. |
-| ErrorUploadingOutputAsset |Kategoria błędy podczas przekazywania elementu zawartości wyjściowej |
+| Nieznane |Nieznany błąd podczas wykonywania zadania |
+| ErrorDownloadingInputAssetMalformedContent |Kategorii błędów, który obejmuje błędy podczas pobierania danych wejściowych zasobów, takich jak nazwy uszkodzonych plików, zerowego pliki o długości, niepoprawny formatuje i tak dalej. |
+| ErrorDownloadingInputAssetServiceFailure |Kategoria błędów, który obejmuje problemów po stronie usługi — na przykład błędy sieci i magazynu podczas pobierania. |
+| ErrorParsingConfiguration |Kategoria błędów, gdy zadanie <see cref="MediaTask.PrivateData"/> (Konfiguracja) nie jest prawidłowa, na przykład konfiguracja nie jest ustawienie wstępne systemu nieprawidłowy lub zawiera nieprawidłowy kod XML. |
+| ErrorExecutingTaskMalformedContent |Kategoria błędów podczas wykonywania zadania, w którym problemów wewnątrz multimedialnych plików wejściowych spowodować niepowodzenie. |
+| ErrorExecutingTaskUnsupportedFormat |Kategorii błędów, gdy procesor multimediów nie może przetworzyć pliki udostępniane — format multimediów nie jest obsługiwany lub nie jest zgodna z konfiguracją. Na przykład próby wygenerowanie danych wyjściowych zawierających tylko dane audio z zasobu, który zawiera tylko wideo |
+| ErrorProcessingTask |Kategoria innych błędów, które procesor multimediów napotka podczas przetwarzania zadania, które są związane z zawartością. |
+| ErrorUploadingOutputAsset |Kategoria błędów podczas przekazywania elementu zawartości wyjściowej |
 | ErrorCancelingTask |Kategoria błędów, aby pokrywał błędy przy próbie anulowania zadania |
-| TransientError |Kategoria błędów, aby pokrywał przejściowych problemów (np.) tymczasowe problemy z siecią z usługą Azure Storage) |
+| TransientError |Kategoria błędów przejściowych problemów (np.) tymczasowe problemy sieciowe przy użyciu usługi Azure Storage) |
 
-Aby uzyskać pomoc od **Media Services** zespół, otwórz [obsługuje biletu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Aby uzyskać pomoc od **usługi Media Services** zespołu, otwórz [bilet pomocy technicznej](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -47,7 +47,7 @@ Aby uzyskać pomoc od **Media Services** zespół, otwórz [obsługuje biletu](h
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>Pokrewne artykuły:
-* [Wykonywania zaawansowanych zadań kodowania dostosowując ustawienia standardu Media Encoder Standard](media-services-custom-mes-presets-with-dotnet.md)
+* [Wykonywania zaawansowanych zadań kodowania, dostosowywanie ustawień wstępnych usługi Media Encoder Standard](media-services-custom-mes-presets-with-dotnet.md)
 * [Przydziały i ograniczenia](media-services-quotas-and-limitations.md)
 
 <!--Reference links in article-->

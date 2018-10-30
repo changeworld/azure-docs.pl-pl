@@ -1,27 +1,23 @@
 ---
-title: Chronić wielowarstwowe wdrożenie aplikacji SAP NetWeaver przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak chronić wdrożenia aplikacji SAP NetWeaver przy użyciu usługi Azure Site Recovery.
-services: site-recovery
-documentationcenter: ''
+title: Konfigurowanie odzyskiwania po awarii dla wdrożenia aplikacji SAP NetWeaver obejmujące wiele warstw przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób konfigurowania odzyskiwania po awarii dla wdrożenia aplikacji SAP NetWeaver przy użyciu usługi Azure Site Recovery.
 author: asgang
 manager: rochakm
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/29/2018
 ms.author: asgang
-ms.openlocfilehash: a498ac9f973bbcf87bec104f18b542cc7e8b5800
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: c83cf9fb319c21881f0db8bd94dc9a94a3b811bc
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318694"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211727"
 ---
-# <a name="protect-a-multi-tier-sap-netweaver-application-deployment-by-using-site-recovery"></a>Ochrona wdrożenia obejmujące wiele warstw aplikacji SAP NetWeaver przy użyciu usługi Site Recovery
+# <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Konfigurowanie odzyskiwania po awarii dla wdrożenia obejmujące wiele warstw aplikacji SAP NetWeaver
 
 Większości wdrożeń SAP duży rozmiar i średniego użycia pewnego rodzaju rozwiązania odzyskiwania po awarii. Znaczenie rozwiązania odzyskiwania po awarii niezawodne i testowaniu został zwiększony, ponieważ więcej procesów biznesowych core są przenoszone do aplikacji, takich jak SAP. Usługa Azure Site Recovery została przetestowana i zintegrowana z aplikacjami SAP. Usługa Site Recovery przekracza możliwości większości rozwiązań odzyskiwania po awarii w środowisku lokalnym oraz na niższy całkowity koszt posiadania (TCO) niż konkurencyjne rozwiązania.
 
@@ -62,7 +58,7 @@ Firma Microsoft zaleca ustanowienia tej infrastruktury, zanim wdrożenia usługi
 
 Ta architektura referencyjna pokazuje, z oprogramowaniem SAP NetWeaver w środowisku Windows na platformie Azure dzięki wysokiej dostępności.  Ta architektura jest wdrażana z rozmiarów określonej maszyny wirtualnej (VM), które mogą być zmieniane spełniają wymagania Twojej organizacji.
 
-![Diagram przedstawiający typowy wzorzec wdrożenia SAP](./media/site-recovery-sap/reference_sap.png)
+![Diagram przedstawiający typowy wzorzec wdrożenia SAP](./media/site-recovery-sap/sap-netweaver_latest.png)
 
 ## <a name="disaster-recovery-considerations"></a>Zagadnienia dotyczące odzyskiwania po awarii
 

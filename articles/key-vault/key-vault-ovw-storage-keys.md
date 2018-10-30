@@ -9,12 +9,12 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: adc8b84f0f22e85de88c4bd80c10a2a35d7b490a
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 02fffe7c4a3acff6ce6d68046eee4286003b1766
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114604"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232226"
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Klucze konta magazynu usługi Azure Key Vault
 
@@ -31,38 +31,45 @@ ms.locfileid: "49114604"
 --------------
 1. [Interfejs wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) zainstalować interfejs wiersza polecenia Azure   
 2. [Tworzenie konta magazynu](https://azure.microsoft.com/services/storage/)
-    - Wykonaj czynności opisane w tym [dokumentu](https://docs.microsoft.com/azure/storage/) można utworzyć konta magazynu  
+    - Wykonaj kroki opisane w tym [dokumentu](https://docs.microsoft.com/azure/storage/) można utworzyć konta magazynu  
     - **Wskazówki dotyczące nazewnictwa:** nazwy kont magazynu muszą należeć do zakresu od 3 do 24 znaków i może zawierać tylko cyfry i małe litery.        
       
 <a name="step-by-step-instructions"></a>Krok po kroku instrukcje
 -------------------------
+W poniższych instrukcji, przypisujemy usługi Key Vault, jako usługa musi mieć uprawnienia operatora w ramach konta magazynu
 
-1. Pobierz identyfikator zasobu konta magazynu platformy Azure, którymi chcesz zarządzać.
-    a. Po utworzeniu konta magazynu, uruchom następujące polecenie, aby uzyskać identyfikator zasobu konta magazynu mają być zarządzane
+1. Po utworzeniu konta magazynu, uruchom następujące polecenie, aby uzyskać identyfikator zasobu konta magazynu, którymi chcesz zarządzać
+
     ```
     az storage account show -n storageaccountname (Copy ID out of the result of this command)
     ```
+    
 2. Uzyskiwanie usługi aplikacji identyfikator z usługi Azure Key Vault dla podmiotu zabezpieczeń 
+
     ```
     az ad sp show --id cfa8b339-82a2-471a-a3c9-0fc0be7a4093
     ```
+    
 3. Przypisz rolę operatora klucza magazynu do usługi Azure Key Vault Identity
+
     ```
     az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id hhjkh --scope idofthestorageaccount
     ```
+    
 4. Tworzenie magazynu kluczy zarządzanego konta magazynu.     <br /><br />
-   Poniższe polecenie pyta, czy usługi Key Vault można regenerować kluczy dostępu do usługi storage okresowo okres ponownego generowania. Poniżej ustawiamy okres ponowne generowanie 90 dni. Po upływie 90 dni Key Vault ponownie wygenerować "klucz1" i Zamień aktywnego klucza, z "klucz2" do "klucz1".
-   ### <a name="key-regeneration"></a>Ponowne generowanie klucza
+   Poniżej ustawiamy okres ponowne generowanie 90 dni. Po upływie 90 dni Key Vault ponownie wygenerować "klucz1" i Zamień aktywnego klucza, z "klucz2" do "klucz1".
+   
     ```
-    az keyvault storage add --vault-name <YourVaultName> -n <StorageAccountName> --active-key-name key2 --auto-generate-key --regeneration-period P90D --resource-id <Resource-id-of-storage-account>
+    az keyvault storage add --vault-name <YourVaultName> -n <StorageAccountName> --active-key-name key2 --auto-regenerate-key --regeneration-period P90D --resource-id <Resource-id-of-storage-account>
     ```
     W przypadku, gdy użytkownik nie utworzono konta magazynu i nie ma uprawnień do konta magazynu, poniższe kroki, ustaw uprawnienia dla konta upewnić się, że wszystkie uprawnienia magazynu Key Vault można zarządzać.
-    [!NOTE] W przypadku, że użytkownik nie nie uprawnienia do konta magazynu, który możemy najpierw uzyskać identyfikator obiektu użytkownika
+ > [!NOTE] 
+    W przypadku, że użytkownik nie ma uprawnień do konta magazynu możemy najpierw uzyskać identyfikator obiektu użytkownika
 
     ```
     az ad user show --upn-or-object-id "developer@contoso.com"
 
-    az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover purge restore set setsas update
+    az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
     ```
 
 ### <a name="relevant-powershell-cmdlets"></a>Odpowiednich poleceń cmdlet programu Powershell

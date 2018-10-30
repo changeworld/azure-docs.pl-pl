@@ -1,101 +1,105 @@
 ---
-title: Dodaj instrukcje przełącznika do przepływów pracy - Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Jak utworzyć instrukcji switch, kontrolujących takie akcje przepływu pracy na podstawie wartości określonych w aplikacjach logiki platformy Azure
+title: Dodawanie instrukcji switch przepływów pracy — Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Jak utworzyć instrukcji switch, które kontrolują akcji przepływu pracy na podstawie określonej wartości w usłudze Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.date: 03/05/2018
-ms.topic: article
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: e15f89d4b7e33ce7e28676c219344f7d7d9cd465
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.topic: article
+ms.date: 10/08/2018
+ms.openlocfilehash: 2a3f8ee5cba3110d392555fad78c1cb2513b5d4e
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299620"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232447"
 ---
-# <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Tworzenie przełącznika instrukcji, które wykonanie akcji przepływu pracy na podstawie wartości określonych w aplikacjach logiki platformy Azure
+# <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Tworzenie instrukcji switch, systemem akcji przepływu pracy na podstawie określonej wartości w usłudze Azure Logic Apps
 
-Aby uruchomić określone czynności na podstawie wartości obiektów, wyrażenia lub tokenów, należy dodać *przełącznika* instrukcji. Ta struktura ocenia obiektu, wyrażenie lub token, wybierze przypadek, który odpowiada wynik i uruchamia określone czynności tylko dla tego przypadku. Po uruchomieniu instrukcji switch tylko jeden przypadek powinien być zgodny z wynikiem.
+Aby uruchomić konkretne akcje na podstawie wartości obiektów, wyrażenia lub tokenów, należy dodać *Przełącz* instrukcji. Ta struktura ocenia obiektów, wyrażenie lub tokenu, wybierze case, który odpowiada wynik i uruchamia określone działania tylko dla tego przypadku. Po uruchomieniu instrukcji switch tylko jeden przypadek powinna być zgodna z wynikiem.
 
-Na przykład załóżmy, że chcesz aplikację logiki, która ma inne czynności na podstawie opcji wybranej w wiadomości e-mail. W tym przykładzie aplikacji logiki sprawdza witryny sieci Web źródło danych RSS dla nowej zawartości. Po wyświetleniu nowego elementu w źródła danych RSS, aplikację logiki wysyła wiadomości e-mail do osoby zatwierdzającej. W oparciu o czy osoba zatwierdzająca wybiera "Zatwierdź" lub "Odrzuć", aplikacji logiki wykonać różne czynności.
+Na przykład załóżmy, że chcesz aplikację logiki, która wykonuje różne czynności na podstawie opcji wybrane w wiadomości e-mail. W tym przykładzie aplikacja logiki sprawdza, czy witryny sieci Web źródła danych RSS dla nowej zawartości. Gdy w kanale informacyjnym RSS pojawi się nowy element, aplikacja logiki wysyła wiadomość e-mail do osoby zatwierdzającej. Oparte na tego, czy osoba zatwierdzająca wybiera "Zatwierdź" lub "Odrzuć", aplikacja logiki wykonać różne czynności.
 
 > [!TIP]
-> Podobnie jak wszystkie języki programowania instrukcji switch obsługuje tylko operatory równości. Jeśli potrzebujesz innych operatory relacyjne, takie jak "większe niż", użyj [instrukcji warunkowej](#conditions).
-> W celu zapewnienia sposób wykonywania deterministyczna, przypadków musi zawierać wartość unikatowa i statyczne zamiast tokeny dynamicznych lub wyrażenia.
+> Podobnie jak wszystkie języki programowania instrukcji switch obsługują tylko operatory porównania. Jeśli potrzebujesz innych operatorów relacyjnych, takich jak "większe niż", użyj [instrukcji warunkowej](../logic-apps/logic-apps-control-flow-conditional-statement.md).
+> Aby zapewnić zachowanie wykonywania deterministyczna, przypadków musi zawierać wartość unikatowa i statyczne zamiast dynamicznej tokeny lub wyrażenia.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
-* Na przykład w tym artykule, wykonaj [tworzenie aplikacji logiki tej próbki](../logic-apps/quickstart-create-first-logic-app-workflow.md) przy użyciu konta usługi Outlook.com lub Office 365 Outlook.
+* Na przykład w tym artykule, wykonaj [tworzenie Ta przykładowa aplikacja logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md) przy użyciu konta Outlook.com lub Office 365 Outlook.
 
-  1. Po dodaniu działania do wysyłania wiadomości e-mail, wybierz **wysłanie wiadomości e-mail zatwierdzania** zamiast tego.
+  1. Po dodaniu akcji do wysyłania wiadomości e-mail, Znajdź i zamiast tego wybierz następującą akcję: **Wyślij wiadomość e-mail z zatwierdzeniem**
 
-     ![Zaznacz pole wyboru "Wyślij wiadomości e-mail zatwierdzania"](./media/logic-apps-control-flow-switch-statement/send-approval-email-action.png)
+     ![Wybierz pozycję "Wyślij wiadomość e-mail z zatwierdzeniem"](./media/logic-apps-control-flow-switch-statement/send-approval-email-action.png)
 
-  2. Podaj wymagane pola, takie jak adres e-mail osoby, która pobiera wiadomości e-mail zatwierdzania. 
-  W obszarze **opcji użytkownika**, wprowadź "Zatwierdź, Odrzuć".
+  1. Podaj wymagane pola, takie jak adres e-mail osoby, która pobiera wiadomości e-mail dotyczącej zatwierdzenia. 
+  W obszarze **opcje użytkownika**, wprowadź "Zatwierdź, Odrzuć".
 
-     ![Wprowadź szczegóły poczty e-mail](./media/logic-apps-control-flow-switch-statement/send-approval-email-details.png)
+     ![Wprowadź szczegóły wiadomości e-mail](./media/logic-apps-control-flow-switch-statement/send-approval-email-details.png)
 
-## <a name="add-a-switch-statement"></a>Dodawanie instrukcji switch
+## <a name="add-switch-statement"></a>Dodawanie instrukcji switch
 
-1. Na końcu przykładowego przepływu pracy, wybierz **+ nowy krok** > **... Więcej** > **dodawanie przypadku przełącznika**. 
+1. W tym przykładzie Dodaj instrukcję switch na końcu przykładowego przepływu pracy. Po wykonaniu ostatniego kroku wybierz **nowy krok**.
 
-   ![Dodawanie instrukcji switch](./media/logic-apps-control-flow-switch-statement/add-switch-statement.png)
+   Jeśli chcesz dodać instrukcji switch między krokami, przesuń wskaźnik nad strzałką znajdującą się gdzie chcesz dodać instrukcji switch. Wybierz **znak plus** (**+**) wyświetlany, wybierz **Dodaj akcję**.
 
-   Instrukcja switch zostanie wyświetlony jeden przypadek oraz przypadek domyślny. 
-   Instrukcja switch wymaga co najmniej jeden przypadek plus na przypadek domyślny. 
+1. W polu wyszukiwania wprowadź "Przejdź" jako filtr. Wybierz tę akcję: **Przełącz — kontrola**
 
-   Jeśli chcesz dodać instrukcji switch między krokami wskaźnika na strzałkę której chcesz dodać instrukcji switch. 
-   Wybierz **znak plus** (**+**) wyświetlony, a następnie wybierz **dodawanie przypadku przełącznika**.
+   ![Dodaj przełącznik](./media/logic-apps-control-flow-switch-statement/add-switch-statement.png)
 
-4. W **na** wybierz opcję **SelectedOption** pola, której wyjście Określa akcję do wykonania. 
-   
-   Można wybrać wartość z **dodać zawartość dynamiczną** listy.
+   Instrukcja switch pojawia się z jednym przypadkiem i przypadek domyślny. 
+   Domyślnie instrukcji switch wymaga co najmniej jeden przypadek, a także przypadek domyślny. 
 
-5. Aby obsługiwać przypadki, w których osoba zatwierdzająca wybiera `Approve` lub `Reject`, dodać innego przypadku między **przypadku** i **domyślne**. 
-   
-6. Dodaj te akcje w odpowiednich przypadkach:
+   ![Domyślnym pustym instrukcji switch](./media/logic-apps-control-flow-switch-statement/empty-switch.png)
 
-   | Wielkość # | **SelectedOption** | Akcja |
-   |:------ |:-------------------|:------ |
-   | Przypadek 1 | **Zatwierdzanie** | Dodaj programu Outlook **wysłać wiadomość e-mail** akcji wysyłania szczegóły elementu RSS, tylko w przypadku wybrania osoby zatwierdzającej **Zatwierdź**. |
-   | Przypadek 2 | **Odrzuć** | Dodaj programu Outlook **wysłać wiadomość e-mail** akcji powiadamiania innych osób zatwierdzających odrzucono elementu RSS. |
-   | Domyślne | \<Brak\> | Nie trzeba nic robić. W tym przykładzie **domyślne** przypadek jest pusty ponieważ **SelectedOption** ma tylko dwie opcje. |
-   |         |          |
+1. Kliknij wewnątrz **na** pola tak, aby wyświetlić listę zawartości dynamicznej. Z tej listy, wybierz **SelectedOption** pole, którego dane wyjściowe Określa akcję do wykonania. 
 
-   ![Switch — instrukcja](./media/logic-apps-control-flow-switch-statement/switch.png)
+   ![Wybierz pozycję "SelectedOption"](./media/logic-apps-control-flow-switch-statement/select-selected-option.png)
 
-7. Zapisz aplikację logiki. 
+1. Sposób obsługiwać przypadki, w których osoba zatwierdzająca wybiera `Approve` lub `Reject`, Dodaj inny przypadek między **przypadek** i **domyślne**. 
 
-   Aby ręcznie przetestować w tym przykładzie, wybierz **Uruchom** aż do aplikacji logiki znajdzie nowy element funkcji RSS i wysyła wiadomości e-mail zatwierdzania. 
-   Wybierz **Zatwierdź** obserwować wyniki.
+   ![Dodaj inny przypadek](./media/logic-apps-control-flow-switch-statement/switch-plus.png)
 
-## <a name="json-definition"></a>Definicja formatu JSON
+1. Dodaj te akcje do odpowiednich przypadkach:
 
-Teraz, zostało utworzone przy użyciu instrukcji switch aplikacji logiki, Przyjrzyjmy się definicję wysokiego poziomu kodu za instrukcji switch.
+   | # Wielkości liter | **SelectedOption** | Akcja |
+   |--------|--------------------|--------|
+   | Przypadek 1 | **Zatwierdź** | Dodawanie programu Outlook **Wyślij wiadomość e-mail** akcji wysyłania szczegóły dotyczące elementu kanału RSS, tylko wtedy, gdy osoba zatwierdzająca zaznaczyła opcję **Zatwierdź**. |
+   | Przypadek 2 | **Odrzuć** | Dodawanie programu Outlook **Wyślij wiadomość e-mail** akcji do powiadamiania innych osób zatwierdzających o odrzuceniu elementu kanału RSS. |
+   | Domyślne | Brak | Trzeba podejmować żadnych działań. W tym przykładzie **domyślne** przypadek jest pusty ponieważ **SelectedOption** ma tylko dwie opcje. |
+   |||
+
+   ![Instrukcja switch zakończone](./media/logic-apps-control-flow-switch-statement/finished-switch.png)
+
+1. Zapisz aplikację logiki. 
+
+   Aby ręcznie przetestować w tym przykładzie, wybierz **Uruchom** aż aplikacja logiki znajdzie nowy element RSS i wysyła wiadomość e-mail z zatwierdzeniem. 
+   Wybierz **Zatwierdź** aby obserwować wyniki.
+
+## <a name="json-definition"></a>Definicji JSON
+
+Teraz, gdy utworzono aplikację logiki, za pomocą instrukcji switch, Przyjrzyjmy się definicję kodu wysokiego poziomu za instrukcji switch.
 
 ``` json
 "Switch": {
    "type": "Switch",
    "expression": "@body('Send_approval_email')?['SelectedOption']",
    "cases": {
-      "Case" : {
-         "actions" : {
-           "Send_an_email": { }
+      "Case": {
+         "actions": {
+           "Send_an_email": {}
          },
          "case" : "Approve"
       },
-      "Case_2" : {
-         "actions" : {
-           "Send_an_email_2": { }
+      "Case_2": {
+         "actions": {
+           "Send_an_email_2": {}
          },
-         "case" : "Reject"
+         "case": "Reject"
       }
    },
    "default": {
@@ -109,23 +113,23 @@ Teraz, zostało utworzone przy użyciu instrukcji switch aplikacji logiki, Przyj
 }
 ```
 
-| Etykieta              | Opis |
-| :----------------- | :---------- |
-| `"Switch"`         | Nazwa instrukcji switch, które można zmienić nazwy dla czytelności |
+| Etykieta | Opis |
+|-------|-------------|
+| `"Switch"`         | Nazwa instrukcji switch, które możesz zmienić nazwę, aby zwiększyć czytelność |
 | `"type": "Switch"` | Określa, że akcja instrukcji switch |
-| `"expression"`     | W tym przykładzie określa osoby zatwierdzającej wybranej opcji, które jest obliczane przed każdym przypadku zgodnie z deklaracją później w definicji |
-| `"cases"` | Definiuje dowolnej liczby przypadków. W przypadku każdego `"Case_*"` jest domyślną nazwę dla tego przypadku można zmienić nazwy dla czytelności |
-| `"case"` | Określa wartość przypadek, który musi być unikatowa i stałych wartość, która używa instrukcji switch do porównania. Jeśli przypadkach nie pasuje do wyniku wyrażenia switch akcje w `"default"` sekcji są uruchamiane.
-|           |         |
+| `"expression"`     | W tym przykładzie określa osoby zatwierdzającej wybranej opcji, które jest obliczane przed każdym przypadku, ponieważ nie zadeklarowano w dalszej części definicji |
+| `"cases"` | Definiuje dowolnej liczby przypadków. W przypadku każdego `"Case_*"` jest nazwą domyślną, w tym przypadku możesz zmienić nazwę, aby zwiększyć czytelność |
+| `"case"` | Określa wartość przypadek, który musi być unikatowy i stałych wartość, która korzysta z instrukcji switch do porównania. Jeśli żadne przypadki zgodne wyniku wyrażenia switch, akcje `"default"` sekcji są uruchamiane. | 
+| | | 
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać lub oddawać głosy na funkcje lub sugestie, odwiedź stronę [witrynę opinii użytkowników usługi Azure Logic Apps](http://aka.ms/logicapps-wish).
+* Aby przesłać lub głosować na funkcje lub sugestie, odwiedź [witrynie opinii użytkowników usługi Azure Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Wykonanie kroków na podstawie warunku (warunkowe instrukcje)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
-* [Uruchom i powtórz kroki (pętle)](../logic-apps/logic-apps-control-flow-loops.md)
-* [Uruchom lub scalania czynności równoległe (gałęzi)](../logic-apps/logic-apps-control-flow-branches.md)
-* [Wykonanie kroków na podstawie stanu akcji grupowanych (zakresy)](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
+* [Wykonaj kroki na podstawie warunku (instrukcje warunkowe)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
+* [Uruchom i wykonaj ponownie kroki (pętli)](../logic-apps/logic-apps-control-flow-loops.md)
+* [Uruchom lub scalania równoległymi krokami (gałęzie)](../logic-apps/logic-apps-control-flow-branches.md)
+* [Wykonaj kroki na podstawie stanu akcji grupowanych (zakresy)](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)

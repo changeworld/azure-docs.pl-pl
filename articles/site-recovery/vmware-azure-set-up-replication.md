@@ -1,21 +1,20 @@
 ---
-title: Konfigurowanie i zarządzanie zasadami replikacji na potrzeby replikacji oprogramowania VMware za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania ustawień replikacji na potrzeby replikacji oprogramowania VMware na platformę Azure za pomocą usługi Azure Site Recovery.
-services: site-recovery
+title: Konfigurowanie i zarządzanie zasadami replikacji dla odzyskiwania po awarii programu VMware na platformę Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób konfigurowania ustawień replikacji dla odzyskiwania po awarii programu VMware na platformę Azure za pomocą usługi Azure Site Recovery.
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: sutalasi
-ms.openlocfilehash: 03197d1f42a17d6fc99b85d3fbc3635468b1e6ae
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: fd987097c2ca7b1e7509a1a0e63905c36ec8fec8
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423610"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212900"
 ---
-# <a name="configure-and-manage-replication-policies-for-vmware-replication"></a>Konfigurowanie i zarządzanie zasadami replikacji na potrzeby replikacji oprogramowania VMware
+# <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery-to-azure"></a>Konfigurowanie zasad replikacji dla odzyskiwania po awarii programu VMware na platformę Azure i zarządzanie
 W tym artykule opisano sposób konfigurowania zasad replikacji, Jeśli replikujesz maszyny wirtualne VMware na platformę Azure przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md).
 
 

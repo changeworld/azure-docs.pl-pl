@@ -15,12 +15,12 @@ ms.date: 05/04/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 0d139437a069406db2ae0f189480072f8063a327
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 73854cba151dfbebe53862a39fbe980502192c2d
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982276"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230067"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Przekieruj zapisane na stałe linki do aplikacji opublikowanych przy użyciu serwera Proxy aplikacji usługi Azure AD
 
@@ -97,6 +97,7 @@ Aby zwiększyć wydajność i bezpieczeństwo, nie są tłumaczone niektóre ł�
 
 - Łącza nie wewnątrz kodu znaczników. 
 - Łącza nie jest w formacie HTML i CSS. 
+- Łącza w formacie zakodowanym adresu URL.
 - Wewnętrzne linki otwierane z innych programów. Nie można przetłumaczyć łącza wysyłane za pośrednictwem poczty e-mail lub wiadomości błyskawicznych lub zawartych w innych dokumentach. Użytkownicy muszą wiedzieć, aby przejść do zewnętrznego adresu URL.
 
 Jeśli zachodzi potrzeba obsługi jednej z tych dwóch scenariuszy, należy użyć tych samych adresów URL wewnętrznych i zewnętrznych, zamiast łącza tłumaczenia.  

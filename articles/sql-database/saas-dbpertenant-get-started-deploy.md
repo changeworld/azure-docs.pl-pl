@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 77e3cdcbd18a4a5313160b947ce278a75f3e3de3
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 10/29/2018
+ms.openlocfilehash: 6a5ee991ca21e60e6c2b14d5e3be560183eae4fa
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056390"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232906"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Wdrażanie i eksplorowanie wielodostępną aplikację SaaS, która używa wzorca bazy danych dla dzierżawcy z usługą SQL Database
 
@@ -43,16 +43,16 @@ Do ukończenia tego samouczka, upewnij się, że zainstalowano program Azure Pow
 
 ## <a name="deploy-the-wingtip-tickets-saas-application"></a>Wdrażanie aplikacji SaaS o nazwie Wingtip Tickets
 
-#### <a name="plan-the-names"></a>Planowanie nazwy
+### <a name="plan-the-names"></a>Planowanie nazwy
 
 W krokach w tej sekcji musisz podać wartość użytkownika, który służy do upewnij się, że nazwy zasobów są globalnie unikatowe. Możesz również podać nazwę grupy zasobów, która zawiera wszystkie zasoby utworzone przez wdrożenie aplikacji. Fikcyjne osoby o nazwie Finley pods Sugerujemy:
 
 - **Użytkownik**: *af1* składa się z pods Finley inicjały i cyfry. W przypadku wdrożenia aplikacji po raz drugi użycie innej wartości. Przykładem jest af2.
 - **Grupa zasobów**: *wingtip-dpt-af1* wskazuje, że jest to aplikacja bazy danych dla dzierżawcy. Dołącz af1 nazwę użytkownika, aby skorelować nazwę grupy zasobów za pomocą nazw zasobów, które zawiera.
 
-Teraz wybierz nazwy i zanotuj je. 
+Teraz wybierz nazwy i zanotuj je.
 
-#### <a name="steps"></a>Kroki
+### <a name="steps"></a>Kroki
 
 1. Aby otworzyć szablon wdrożenia bazy danych dla dzierżawcy SaaS o nazwie Wingtip Tickets w witrynie Azure portal, wybierz **Wdróż na platformie Azure**.
 
@@ -63,7 +63,7 @@ Teraz wybierz nazwy i zanotuj je.
     > [!IMPORTANT]
     > Niektóre zapory uwierzytelniania i serwera są celowo niezabezpieczone w celach demonstracyjnych. Firma Microsoft zaleca, aby utworzyć nową grupę zasobów. Nie używaj istniejących grup zasobów, serwerów ani pul. Nie należy używać tej aplikacji, skrypty lub wszystkie wdrożone zasoby w środowisku produkcyjnym. Po zakończeniu pracy z aplikacją, aby zatrzymać ich rozliczanie, należy usunąć tę grupę zasobów.
 
-    - **Grupa zasobów**: Wybierz **Utwórz nową**i Podaj unikatową nazwę wybranej wcześniej dla grupy zasobów. 
+    - **Grupa zasobów**: Wybierz **Utwórz nową**i Podaj unikatową nazwę wybranej wcześniej dla grupy zasobów.
     - **Lokalizacja**: Wybierz lokalizację z listy rozwijanej.
     - **Użytkownik**: Użyj wartość Nazwa użytkownika, którą wybrano wcześniej.
 
@@ -97,7 +97,7 @@ Skrypty znajdują się w... \\WingtipTicketsSaaS DbPerTenant wzorca\\folderze Le
 
 Przed uruchomieniem wszystkie skrypty, zaktualizuj wartości zasobów grupy i użytkownika w pliku konfiguracji użytkownika. Ustaw następujące zmienne na wartości, które były używane podczas wdrażania.
 
-1. W środowisku PowerShell ISE Otwórz... \\Learning Modules\\**UserConfig.psm1** 
+1. W środowisku PowerShell ISE Otwórz... \\Learning Modules\\**UserConfig.psm1**
 1. Aktualizacja **ResourceGroupName** i **nazwa** z określonymi wartościami dla danego wdrożenia (w wierszach, 10 i 11 tylko).
 1. Zapisz zmiany.
 
@@ -115,13 +115,13 @@ Centralna **Centrum zdarzeń** strona zawiera listę linków do dzierżawców w 
 
     ![Centrum zdarzeń](media/saas-dbpertenant-get-started-deploy/events-hub.png)
 
-1. Wybierz **Fabrikam Jazz Club** w Centrum zdarzeń.
+2. Wybierz **Fabrikam Jazz Club** w Centrum zdarzeń.
 
     ![Zdarzenia](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
 
-#### <a name="azure-traffic-manager"></a>Azure Traffic Manager
+### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
-Aplikacja Wingtip używa [ *usługi Azure Traffic Manager* ](../traffic-manager/traffic-manager-overview.md) do sterowania dystrybucją żądań przychodzących. Adres URL, aby uzyskać dostęp do strony zdarzenia do określonej dzierżawy posługuje się następującym formatem:
+Aplikacja Wingtip używa [*usługi Azure Traffic Manager* ](../traffic-manager/traffic-manager-overview.md) do sterowania dystrybucją żądań przychodzących. Adres URL, aby uzyskać dostęp do strony zdarzenia do określonej dzierżawy posługuje się następującym formatem:
 
 - http://events.wingtip-dpt.&lt; użytkownika&gt;.trafficmanager.net/fabrikamjazzclub
 
@@ -135,13 +135,17 @@ Aplikacja Wingtip używa [ *usługi Azure Traffic Manager* ](../traffic-manager/
     | fabrikamjazzclub | Identyfikuje dzierżawy o nazwie firmy Fabrikam Jazz Club. |
     | &nbsp; | &nbsp; |
 
-* Nazwa dzierżawy jest analizowana z adresu URL przez aplikację zdarzeń.
-* Nazwa dzierżawy jest używany do utworzenia klucza.
-* Ten klucz służy dostępu do wykazu uzyskać lokalizację bazy danych dzierżawy.
-    - Katalog jest implementowany przy użyciu *procesu zarządzania mapą fragmentów*.
-* Centrum zdarzeń używa rozszerzonych metadanych zawartych w katalogu do utworzenia zdarzenia listy adresów URL dla każdego dzierżawcy.
+- Nazwa dzierżawy jest analizowana z adresu URL przez aplikację zdarzeń.
+- Nazwa dzierżawy jest używany do utworzenia klucza.
+- Ten klucz służy dostępu do wykazu uzyskać lokalizację bazy danych dzierżawy.
+  - Katalog jest implementowany przy użyciu *procesu zarządzania mapą fragmentów*.
+- Centrum zdarzeń używa rozszerzonych metadanych zawartych w katalogu do utworzenia zdarzenia listy adresów URL dla każdego dzierżawcy.
 
-W środowisku produkcyjnym zwykle możesz utworzyć rekordu CNAME DNS, aby [ *punktu firmowej domeny internetowej* ](../traffic-manager/traffic-manager-point-internet-domain.md) na nazwę DNS usługi Traffic Manager.
+W środowisku produkcyjnym zwykle możesz utworzyć rekordu CNAME DNS, aby [*punktu firmowej domeny internetowej*](../traffic-manager/traffic-manager-point-internet-domain.md) na nazwę DNS usługi Traffic Manager.
+
+> [!NOTE]
+> Może nie być od razu widoczne korzystanie z usługi traffic manager jest w tym samouczku. Celem tej serii samouczków jest do prezentowania wzorców, które może obsłużyć skali w środowisku produkcyjnym złożonych. W takim przypadku na przykład, czy masz wiele aplikacji sieci web w różnych miejscach globu, wspólnie z bazami danych i będziesz potrzebować usługi traffic manager kierować między tymi wystąpieniami.
+Innego zestawu samouczków, który ilustruje sposób używania usługi traffic manager mimo że są [geoprzywracanie](saas-dbpertenant-dr-geo-restore.md) i [geografickou replikaci](saas-dbpertenant-dr-geo-replication.md) samouczków. W tych samouczkach usługi traffic manager służy do pomocy, aby przełączyć się do odzyskiwania wystąpienie aplikacji SaaS w przypadku regionalnej awarii.
 
 ## <a name="start-generating-load-on-the-tenant-databases"></a>Rozpoczęcie generowanie obciążenia baz danych dzierżawy
 
@@ -150,12 +154,12 @@ Teraz, gdy aplikacja jest wdrożona zbierzmy do pracy.
 *LoadGenerator pokaz* skrypt programu PowerShell uruchamia obciążenia, która jest uruchamiana dla wszystkich baz danych dzierżaw. Rzeczywiste obciążenie na wiele aplikacji SaaS jest sporadyczne i nieprzewidywalne. Aby zasymulować ten typ obciążenia, generator tworzy obciążenia przy użyciu losowego wzrostów lub wzrosty aktywności na każdą dzierżawę. Chwilowego występować w odstępach czasu losowego. Trwa kilka minut, zanim wzorca obciążenia wyłaniać się. Pozwolić uruchamiania dla trzech lub czterech minut, zanim monitorowania obciążenia.
 
 1. Otwórz w programie PowerShell ISE... \\Learning Modules\\narzędzia\\*LoadGenerator.ps1 pokaz* skryptu.
-1. Naciśnij klawisz F5, aby uruchomić skrypt i Generator obciążenia. Teraz, należy pozostawić domyślne wartości parametrów.
-1. Zaloguj się do konta platformy Azure, a następnie wybierz subskrypcję, której chcesz użyć, jeśli to konieczne.
+2. Naciśnij klawisz F5, aby uruchomić skrypt i Generator obciążenia. Teraz, należy pozostawić domyślne wartości parametrów.
+3. Zaloguj się do konta platformy Azure, a następnie wybierz subskrypcję, której chcesz użyć, jeśli to konieczne.
 
 Uruchamia zadanie w tle dla każdej bazy danych w katalogu skryptu generatora obciążenia, a następnie zatrzymuje. Jeśli uruchomisz skrypt generator obciążenia, zatrzymuje wszystkie zadania w tle, które są uruchomione, zanim zacznie nowe.
 
-#### <a name="monitor-the-background-jobs"></a>Monitorowanie zadań w tle
+### <a name="monitor-the-background-jobs"></a>Monitorowanie zadań w tle
 
 Jeśli chcesz kontrolować i monitorować zadania w tle, należy użyć następujących poleceń cmdlet:
 
@@ -163,7 +167,7 @@ Jeśli chcesz kontrolować i monitorować zadania w tle, należy użyć następu
 - `Receive-Job`
 - `Stop-Job`
 
-#### <a name="demo-loadgeneratorps1-actions"></a>Pokaz LoadGenerator.ps1 akcji
+### <a name="demo-loadgeneratorps1-actions"></a>Pokaz LoadGenerator.ps1 akcji
 
 *Pokaz LoadGenerator.ps1* naśladuje aktywne obciążenie transakcji odbiorcy. W poniższych krokach opisano sekwencji akcji, która *LoadGenerator.ps1 pokaz* inicjuje:
 
@@ -171,18 +175,18 @@ Jeśli chcesz kontrolować i monitorować zadania w tle, należy użyć następu
 
     - Oba pliki .ps1 są przechowywane w folderach Learning Modules\\narzędzia\\.
 
-1. *LoadGenerator.ps1* pętlę wszystkich baz danych dzierżaw w wykazie.
+2. *LoadGenerator.ps1* pętlę wszystkich baz danych dzierżaw w wykazie.
 
-1. *LoadGenerator.ps1* uruchamia zadania w tle programu PowerShell dla każdej bazy danych dzierżawy:
+3. *LoadGenerator.ps1* uruchamia zadania w tle programu PowerShell dla każdej bazy danych dzierżawy:
 
     - Domyślnie zadania w tle są uruchamiane na 120 minut.
-    - Każde zadanie powoduje, że obciążenia procesora CPU w bazie danych jedną dzierżawę, wykonując *sp_CpuLoadGenerator*. Intensywność i czas trwania obciążenia różni się w zależności od `$DemoScenario`. 
+    - Każde zadanie powoduje, że obciążenia procesora CPU w bazie danych jedną dzierżawę, wykonując *sp_CpuLoadGenerator*. Intensywność i czas trwania obciążenia różni się w zależności od `$DemoScenario`.
     - *sp_CpuLoadGenerator* pętli wokół instrukcję SQL SELECT, powodujący wysokie obciążenie procesora CPU. Odstęp czasu między problemów wyboru zależy od wartości parametru, aby utworzyć sterowane obciążenie procesora CPU. Poziomy obciążenia i interwały są wybierane w sposób bardziej realistycznymi obciążeniami.
     - Plik SQL znajduje się w obszarze *WingtipTenantDB\\dbo\\StoredProcedures\\*.
 
-1. Jeśli `$OneTime = $false`, generator obciążenia rozpoczyna się zadania w tle, a następnie kontynuuje działanie. Co 10 sekund monitoruje dla nowych dzierżaw, które są udostępniane. Jeśli ustawisz `$OneTime = $true`, LoadGenerator uruchamia zadania w tle, a następnie zatrzymuje, uruchomiona na pierwszym planie. W tym samouczku pozostaw `$OneTime = $false`.
+4. Jeśli `$OneTime = $false`, generator obciążenia rozpoczyna się zadania w tle, a następnie kontynuuje działanie. Co 10 sekund monitoruje dla nowych dzierżaw, które są udostępniane. Jeśli ustawisz `$OneTime = $true`, LoadGenerator uruchamia zadania w tle, a następnie zatrzymuje, uruchomiona na pierwszym planie. W tym samouczku pozostaw `$OneTime = $false`.
 
-  Jeśli chcesz zatrzymać lub uruchomić ponownie generator obciążenia, należy użyć klawiszy Ctrl-C lub zatrzymać operację Ctrl-Break. 
+  Jeśli chcesz zatrzymać lub uruchomić ponownie generator obciążenia, należy użyć klawiszy Ctrl-C lub zatrzymać operację Ctrl-Break.
 
   Jeśli pozostawisz generator obciążenia uruchomione na pierwszym planie, użyj innego wystąpienia programu PowerShell ISE, aby uruchomić inne skrypty programu PowerShell.
 
@@ -195,11 +199,11 @@ Przed kontynuowaniem do następnej sekcji pozostawić generator obciążenia, ur
 Początkowego wdrożenia są tworzone trzy przykładowe dzierżawy. Teraz możesz utworzyć innej dzierżawy, aby zobaczyć wpływ na wdrożoną aplikację. W aplikacji Wingtip aprowizowanie nowych dzierżaw przepływu pracy zostało wyjaśnione w [samouczek dotyczący aprowizacji i wykazu](saas-dbpertenant-provision-and-catalog.md). Na tym etapie utworzysz nową dzierżawę zajmuje mniej niż minutę.
 
 1. Otwórz nowy program PowerShell ISE.
-1. Otwórz... \\Learning Modules\Provision and Catalog\\*Demo-ProvisionAndCatalog.ps1*.
-1. Aby uruchomić skrypt, naciśnij klawisz F5. Teraz, pozostaw wartości domyślne.
+2. Otwórz... \\Learning Modules\Provision and Catalog\\*Demo-ProvisionAndCatalog.ps1*.
+3. Aby uruchomić skrypt, naciśnij klawisz F5. Teraz, pozostaw wartości domyślne.
 
    > [!NOTE]
-   > Użyj wielu skryptów aplikacji Wingtip SaaS *$PSScriptRoot* można przeglądać folderów mogły wywołać funkcje w innych skryptów. Ta zmienna jest oceniane tylko wtedy, gdy pełna skrypt zostanie wykonany, naciskając klawisz F5. Wyróżnianie i uruchomienie go przy użyciu F8 może spowodować błędy. Aby uruchomić skrypty, naciśnij klawisz F5.
+   > Użyj wielu skryptów aplikacji Wingtip SaaS *$PSScriptRoot* można przeglądać folderów mogły wywołać funkcje w innych skryptów. Ta zmienna jest oceniane tylko wtedy, gdy pełna skrypt zostanie wykonany, naciskając klawisz F5. Wyróżnianie i uruchomienie go przy użyciu F8 może spowodować błędy. Aby uruchomić skrypty, naciśnij klawisz F5.
 
 Nowa baza danych dzierżawy jest:
 
@@ -217,16 +221,16 @@ Odśwież Centrum zdarzeń, aby utworzyć nową dzierżawę, są wyświetlane na
 
 Teraz, gdy Zacząłem obciążenia względem kolekcji dzierżaw, Przyjrzyjmy się niektóre zasoby, które zostały wdrożone.
 
-1. W [witryny Azure portal](http://portal.azure.com), przejdź do listy serwerów SQL. Następnie otwórz **catalog-dpt -&lt;użytkownika&gt;**  serwera.
+1. W [witryny Azure portal](http://portal.azure.com), przejdź do listy serwerów SQL. Następnie otwórz **catalog-dpt -&lt;użytkownika&gt;** serwera.
     - Serwer wykazu zawiera dwie bazy danych, **tenantcatalog** i **basetenantdb** (szablonu bazy danych, która jest kopiowana do tworzenia nowych dzierżaw).
 
    ![Bazy danych](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
-1. Wróć do listy serwerów SQL.
+2. Wróć do listy serwerów SQL.
 
-1. Otwórz **tenants1-dpt -&lt;użytkownika&gt;**  serwera baz danych dzierżaw.
+3. Otwórz **tenants1-dpt -&lt;użytkownika&gt;** serwera baz danych dzierżaw.
 
-1. Zobacz następujące elementy:
+4. Zobacz następujące elementy:
 
     - Każda baza danych dzierżawy jest **elastyczna — standardowa** bazy danych w puli standardowej 50 eDTU.
     - Red Maple Racing bazy danych jest baza danych dzierżawy, aprowizowanej wcześniej.
@@ -237,7 +241,7 @@ Teraz, gdy Zacząłem obciążenia względem kolekcji dzierżaw, Przyjrzyjmy si�
 
 Po *LoadGenerator.ps1* działa przez kilka minut, wystarczającej ilości danych powinny być dostępne rozpocząć przyglądanie się niektóre możliwości monitorowania. Te możliwości są wbudowane w pul i baz danych.
 
-Przejdź do serwera **tenants1-dpt -&lt;użytkownika&gt;** i wybierz **Pool1** do wyświetlenia wykorzystania zasobów puli. W następujące wykresy generator obciążenia uruchomionych za jedną godzinę.
+Przejdź do serwera **tenants1-dpt -&lt;użytkownika&gt;** i wybierz **Pool1** do wyświetlenia wykorzystania zasobów puli. W następujące wykresy generator obciążenia uruchomionych za jedną godzinę.
 
    ![Monitorowanie puli](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 
@@ -249,10 +253,9 @@ Dwa wykresy pokazują, że elastyczne pule i bazy danych SQL są dobrze nadaje s
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - Aby uzyskać więcej informacji, zobacz dodatkowe [samouczków, które są kompilowane w aplikacji SaaS o nazwie Wingtip Tickets bazy danych dla dzierżawcy](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
-- Aby dowiedzieć się więcej o elastycznych pulach, zobacz [co to jest pula elastyczna Azure SQL?](sql-database-elastic-pool.md).
-- Aby dowiedzieć się więcej o zadaniach elastycznych, zobacz [Zarządzanie bazami danych w chmurze skalowanych w poziomie](sql-database-elastic-jobs-overview.md).
-- Aby dowiedzieć się więcej o wielodostępnych aplikacji SaaS, zobacz [wzorce projektowe dla wielodostępnych aplikacji SaaS](saas-tenancy-app-design-patterns.md).
-
+- Aby dowiedzieć się więcej o elastycznych pulach, zobacz [co to jest pula elastyczna Azure SQL?](sql-database-elastic-pool.md).
+- Aby dowiedzieć się więcej o zadaniach elastycznych, zobacz [Zarządzanie bazami danych w chmurze skalowanych w poziomie](sql-database-elastic-jobs-overview.md).
+- Aby dowiedzieć się więcej o wielodostępnych aplikacji SaaS, zobacz [wzorce projektowe dla wielodostępnych aplikacji SaaS](saas-tenancy-app-design-patterns.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -268,9 +271,6 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Następnie spróbuj [samouczek dotyczący aprowizacji i wykazu](saas-dbpertenant-provision-and-catalog.md).
 
-
-
 <!-- Link references. -->
 
-[github-wingtip-dpt]: https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant 
-
+[github-wingtip-dpt]: https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant

@@ -9,12 +9,12 @@ ms.reviewer: jehollan, klam, LADocs
 ms.topic: article
 ms.assetid: 19cbd921-7071-4221-ab86-b44d0fc0ecef
 ms.date: 08/25/2018
-ms.openlocfilehash: 8d6f2ecaec7bf7ae7e4415ccd60fc6ec3ff487f3
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 69a4e4c59038599a7375466c46878bdd017582fa
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126176"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231614"
 ---
 # <a name="scenario-trigger-logic-apps-with-azure-functions-and-azure-service-bus"></a>Scenariusz: Wyzwalacza aplikacji logiki za pomocą usługi Azure Functions i Azure Service Bus
 
@@ -134,5 +134,5 @@ Następnie należy utworzyć funkcję, która działa jako wyzwalacz i nasłuchu
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](http://aka.ms/logicapps-wish).
+* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 

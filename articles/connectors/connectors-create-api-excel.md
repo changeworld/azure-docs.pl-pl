@@ -10,12 +10,12 @@ ms.suite: integration
 tags: connectors
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: ceef6c5f32372bb69f6ce789e755bc540cb12ba1
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 917b9abd4a32b7951313c5555f4111dff990078c
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051953"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230955"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Zarządzanie danymi programu Excel Online z usługą Azure Logic Apps
 
@@ -69,7 +69,7 @@ Aby uzyskać szczegółowe informacje techniczne, takie jak akcje i ograniczeń,
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](http://aka.ms/logicapps-wish).
+* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

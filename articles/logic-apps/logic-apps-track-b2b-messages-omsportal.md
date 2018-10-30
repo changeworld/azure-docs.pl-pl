@@ -1,5 +1,5 @@
 ---
-title: Śledzenie komunikatów B2B w usłudze Azure Log Analytics — Azure Logic Apps | Dokumentacja firmy Microsoft
+title: Śledzenie komunikatów B2B w usłudze Log Analytics — Azure Logic Apps | Dokumentacja firmy Microsoft
 description: Ścieżki komunikacji B2B dla konta integracji i Azure Logic Apps z usługą Azure Log Analytics
 services: logic-apps
 ms.service: logic-apps
@@ -8,18 +8,17 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
-ms.date: 06/19/2018
-ms.openlocfilehash: 666c998a781f13ea2a26ccfc0b94aeead0308f5b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.date: 10/19/2018
+ms.openlocfilehash: 0bfb652d9e64b9dbf61ad4032f1449fd484cc80a
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405688"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233564"
 ---
-# <a name="track-b2b-communication-with-azure-log-analytics"></a>Śledzenie B2B komunikacji z usługą Azure Log Analytics
+# <a name="track-b2b-messages-with-azure-log-analytics"></a>Śledzenie komunikatów B2B w usłudze Azure Log Analytics
 
-Po skonfigurowaniu komunikacji B2B między dwiema uruchomionych procesów biznesowych lub aplikacji za pośrednictwem Twojego konta integracji tych jednostek mogą wymieniać komunikaty ze sobą. Aby sprawdzić, czy te komunikaty są przetwarzane prawidłowo, można śledzić AS2, X12, i EDIFACT komunikatów za pomocą [usługi Azure Log Analytics](../log-analytics/log-analytics-overview.md). Na przykład można użyć tych możliwości opartych na sieci web śledzenia do śledzenia komunikatów:
+Po skonfigurowaniu komunikacji B2B między partnerami handlowymi na koncie integracji tych partnerów mogą wymieniać komunikaty z protokołów, takich jak AS2, X 12 i EDIFACT. Aby sprawdzić, czy te komunikaty są przetwarzane prawidłowo, można śledzić te komunikaty z [usługi Azure Log Analytics](../log-analytics/log-analytics-overview.md). Na przykład można użyć tych możliwości opartych na sieci web śledzenia do śledzenia komunikatów:
 
 * Liczba komunikatów i stan
 * Stan potwierdzenia
@@ -27,7 +26,10 @@ Po skonfigurowaniu komunikacji B2B między dwiema uruchomionych procesów biznes
 * Szczegółowy komunikat o błędzie opisy błędów
 * Możliwości wyszukiwania
 
-## <a name="requirements"></a>Wymagania
+> [!NOTE]
+> Ta strona opisane wcześniej kroki dotyczące sposobu wykonywania tych zadań za pomocą programu Microsoft Operations Management Suite (OMS), który jest [wycofywania w styczniu 2019](../log-analytics/log-analytics-oms-portal-transition.md), zamiast tego zastępuje te kroki z usługą Azure Log Analytics. 
+
+## <a name="prerequisites"></a>Wymagania wstępne
 
 * Aplikację logiki, która została skonfigurowana za pomocą rejestrowania diagnostycznego. Dowiedz się, [jak utworzyć aplikację logiki](quickstart-create-first-logic-app-workflow.md) i [jak skonfigurować rejestrowanie dla tej aplikacji logiki](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
@@ -35,51 +37,57 @@ Po skonfigurowaniu komunikacji B2B między dwiema uruchomionych procesów biznes
 
 * Jeśli jeszcze nie, [publikowania danych diagnostycznych do usługi Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
-> [!NOTE]
-> Po poprzednie wymagania zostały spełnione, należy mieć obszar roboczy w usłudze Log Analytics. Należy używać tego samego obszaru roboczego do śledzenia komunikacji B2B w usłudze Log Analytics. 
->  
-> Dowiedz się, jeśli nie masz obszaru roboczego usługi Log Analytics [jak utworzyć obszar roboczy usługi Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
+* Po użytkownik spełnia poprzednie wymagania, należy również obszar roboczy usługi Log Analytics, która jest używana do śledzenia B2B komunikację za pośrednictwem usługi Log Analytics. Dowiedz się, jeśli nie masz obszaru roboczego usługi Log Analytics [jak utworzyć obszar roboczy usługi Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
 
-## <a name="add-the-logic-apps-b2b-solution-to-azure"></a>Dodawanie rozwiązania B2B aplikacji logiki na platformie Azure
+## <a name="install-logic-apps-b2b-solution"></a>Instalowanie rozwiązania B2B aplikacji logiki
 
-Aby śledzenie komunikatów B2B dla twojej aplikacji logiki w usłudze Log Analytics, należy dodać **B2B aplikacji logiki** rozwiązania do usługi Log Analytics. Dowiedz się więcej o [Dodawanie rozwiązań do usługi Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
+Śledzenie komunikatów B2B dla twojej aplikacji logiki w usłudze Log Analytics może mieć, aby móc dodać **B2B aplikacji logiki** rozwiązania do usługi Log Analytics. Dowiedz się więcej o [Dodawanie rozwiązań do usługi Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
 
-1. W [witryny Azure portal](https://portal.azure.com), wybierz **wszystkich usług**. Wyszukaj "log analytics", a następnie wybierz **usługi Log Analytics** jak pokazano poniżej:
+1. W witrynie [Azure Portal](https://portal.azure.com) wybierz pozycję **Wszystkie usługi**. W polu wyszukiwania Znajdź "log analytics", a następnie wybierz **usługi Log Analytics**.
 
-   ![Znajdowanie usługi Log Analytics](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png)
+   ![Wybierz usługi Log Analytics](media/logic-apps-track-b2b-messages-omsportal/find-log-analytics.png)
 
-2. W obszarze **usługi Log Analytics**, Znajdź i wybierz swój obszar roboczy usługi Log Analytics. 
+1. W obszarze **usługi Log Analytics**, Znajdź i wybierz swój obszar roboczy usługi Log Analytics. 
 
-   ![Wybierz swój obszar roboczy usługi Log Analytics](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
+   ![Wybierz obszar roboczy usługi Log Analytics](media/logic-apps-track-b2b-messages-omsportal/select-log-analytics-workspace.png)
 
-3. W obszarze **zarządzania**, wybierz **podsumowanie obszaru roboczego**.
+1. W obszarze **Rozpoczynanie pracy z usługą Log Analytics** > **konfigurowanie rozwiązania do monitorowania**, wybierz **Wyświetl rozwiązania**.
 
-   ![Wybierz portal usługi Log Analytics](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
+   ![Wybierz "Wyświetl rozwiązania"](media/logic-apps-track-b2b-messages-omsportal/log-analytics-workspace.png)
 
-4. Po otwarciu strony głównej wybierz **Dodaj** do zainstalowania rozwiązania B2B aplikacji logiki.    
-   ![Wybierz z galerii rozwiązań](media/logic-apps-track-b2b-messages-omsportal/add-b2b-solution.png)
+1. Na stronie Przegląd wybierz **Dodaj**, co spowoduje otwarcie **rozwiązań do zarządzania** listy. Z tej listy, wybierz **B2B aplikacji logiki**. 
 
-5. W obszarze **rozwiązań do zarządzania**, znajdowanie i tworzenie **B2B aplikacji logiki** rozwiązania.     
-   ![Wybierz B2B aplikacji logiki](media/logic-apps-track-b2b-messages-omsportal/create-b2b-solution.png)
+   ![Wybierz rozwiązanie B2B aplikacji logiki](media/logic-apps-track-b2b-messages-omsportal/add-b2b-solution.png)
 
-   Na stronie głównej, a na kafelku **komunikatów B2B usługi Logic Apps** będzie teraz widoczna. 
-   Ten Kafelek aktualizuje liczba komunikatów podczas przetwarzania komunikatów B2B.
+   Jeśli nie możesz znaleźć rozwiązania, w dolnej części listy, wybierz opcję **Załaduj więcej** , aż pojawi się w rozwiązaniu.
+
+1. Wybierz **Utwórz**, upewnij się, którym chcesz zainstalować rozwiązanie, a następnie wybierz obszar roboczy usługi Log Analytics **Utwórz** ponownie.   
+
+   ![Wybierz pozycję "Utwórz", dla modelu B2B aplikacji logiki](media/logic-apps-track-b2b-messages-omsportal/create-b2b-solution.png)
+
+   Jeśli nie chcesz używać istniejącego obszaru roboczego, można również utworzyć nowy obszar roboczy, w tym momencie.
+
+1. Gdy skończysz, wróć do obszaru roboczego **Przegląd** strony. 
+
+   Rozwiązania B2B aplikacji logiki pojawi się na stronie Przegląd. 
+   Podczas przetwarzania komunikatów B2B liczba komunikatów na tej stronie jest aktualizowana.
 
 <a name="message-status-details"></a>
 
-## <a name="track-message-status-and-details-in-log-analytics"></a>Śledzenie stanu i szczegółów wiadomości w usłudze Log Analytics
+## <a name="view-b2b-message-information"></a>Wyświetl informacje o wiadomości B2B
 
-1. Po przetworzeniu wiadomości B2B można wyświetlić stan i szczegóły dotyczące tych komunikatów. Na stronie Przegląd wybierz **komunikatów B2B usługi Logic Apps** kafelka.
+Po przetworzeniu komunikatów B2B w można wyświetlić stan i szczegóły dotyczące tych komunikatów **B2B aplikacji logiki** kafelka.
+
+1. Przejdź do obszaru roboczego usługi Logic Apps Analytics, a następnie otwórz stronę przeglądu. Wybierz **B2B aplikacji logiki**.
 
    ![Liczba zaktualizowanych komunikatów](media/logic-apps-track-b2b-messages-omsportal/b2b-overview-tile.png)
 
    > [!NOTE]
-   > Domyślnie **komunikatów B2B usługi Logic Apps** kafelkowi danych, w oparciu o jeden dzień. Aby zmienić zakres danych na inny interwał, wybierz formant zakresu w górnej części strony:
+   > Domyślnie **B2B aplikacji logiki** kafelkowi danych, w oparciu o jeden dzień. Aby zmienić zakres danych na inny interwał, wybierz formant zakresu w górnej części strony:
    > 
-   > ![Zmień zakres danych](media/logic-apps-track-b2b-messages-omsportal/server-filter.png)
-   >
+   > ![Interwał zmiany](media/logic-apps-track-b2b-messages-omsportal/change-interval.png)
 
-2. Po wiadomości stan zostanie wyświetlony pulpit nawigacyjny, można wyświetlić więcej szczegółów dla typu szczegółowy komunikat o błędzie, który wyświetla dane w oparciu o jeden dzień. Wybierz Kafelek **AS2**, **X12**, lub **EDIFACT**.
+1. Po wiadomości stan zostanie wyświetlony pulpit nawigacyjny, można wyświetlić więcej szczegółów dla typu szczegółowy komunikat o błędzie, który wyświetla dane w oparciu o jeden dzień. Wybierz Kafelek **AS2**, **X12**, lub **EDIFACT**.
 
    ![Wyświetlanie komunikatu stanu](media/logic-apps-track-b2b-messages-omsportal/omshomepage5.png)
 
@@ -145,7 +153,7 @@ Poniżej przedstawiono opisy właściwości dla każdego komunikatu AS2.
 | Potwierdzenia | Stan komunikatu MDN <br>Zaakceptowane = odebranych lub wysłanych dodatnią powiadomienia MDN. <br>Oczekujące = oczekiwanie na odbierania lub wysyłania komunikatu MDN. <br>Odrzucone = odebrane lub wysyłane ujemna powiadomienia MDN. <br>Niewymagane = powiadomienia MDN nie jest skonfigurowany w umowie. |
 | Kierunek | Kierunek komunikatu AS2 |
 | Identyfikator korelacji | Identyfikator, który jest skorelowane wszystkich wyzwalaczy i akcji w aplikacji logiki |
-| Identyfikator wiadomości | Identyfikator komunikatu AS2 z nagłówków komunikatu AS2 |
+| Identyfikator komunikatu | Identyfikator komunikatu AS2 z nagłówków komunikatu AS2 |
 | Znacznik czasu | Czas, kiedy akcja AS2 przetworzony komunikat |
 |          |             |
 

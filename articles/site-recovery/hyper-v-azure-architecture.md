@@ -1,20 +1,20 @@
 ---
-title: Funkcji Hyper-V do architektury replikacja usługi Azure w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera omówienie składników i architektury używanych podczas replikowania lokalnych maszyn wirtualnych funkcji Hyper-V (bez usługi VMM) do platformy Azure za pomocą usługi Azure Site Recovery.
+title: Funkcji Hyper-V do architektury odzyskiwania po awarii platformy Azure w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera omówienie składników i architektury używanych podczas wdrażania odzyskiwania po awarii dla maszyn wirtualnych funkcji Hyper-V w środowisku lokalnym (bez programu VMM) na platformie Azure przy użyciu usługi Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 49059415c5f96eeb4dd871e7d2c8ae4ab9b2c12e
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 23b12f5b0423f717e96ec1f59480f0175648c75f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078362"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210656"
 ---
-# <a name="hyper-v-to-azure-replication-architecture"></a>Funkcji Hyper-V, replikacja usługi Azure architektury
+# <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Funkcji Hyper-V do architektury odzyskiwania po awarii platformy Azure
 
 
 W tym artykule opisano architekturę i procesów związanych z replikacja, tryb failover i odzyskiwanie maszyn wirtualnych funkcji Hyper-V (VM) między hostami funkcji Hyper-V w środowisku lokalnym i platformą Azure za pomocą [usługi Azure Site Recovery](site-recovery-overview.md) usługi.

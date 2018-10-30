@@ -1,20 +1,20 @@
 ---
-title: Replikacja funkcji Hyper-V do lokacji dodatkowej architektury usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera omówienie architektury używanej podczas replikowania lokalnych maszyn wirtualnych funkcji Hyper-V do lokacji dodatkowej z programem System Center VMM za pomocą usługi Azure Site Recovery.
+title: Architektura funkcji Hyper-V odzyskiwania po awarii do dodatkowej lokacji przy użyciu usługi Azure Site Recovery lokalnej | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera omówienie architektury do odzyskiwania po awarii lokalnych maszyn wirtualnych z funkcją Hyper-V do lokacji dodatkowej programu System Center VMM za pomocą usługi Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 8f8b498164cc4a77cace470f7483aa572fefbaed
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 98eb654468eb27b8100a0cc9b73994e5a7add167
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078923"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214600"
 ---
-# <a name="hyper-v-replication-to-a-secondary-site"></a>Replikacja funkcji Hyper-V do lokacji dodatkowej
+# <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Architektura — replikacja funkcji Hyper-V do lokacji dodatkowej
 
 Ten artykuł zawiera opis składników i procesów związanych z replikacją lokalnych maszyn wirtualnych funkcji Hyper-V w chmurach programu System Center Virtual Machine Manager (VMM) do lokacji dodatkowej z programem VMM za pomocą usługi [Azure Site Recovery](site-recovery-overview.md) w witrynie Azure Portal.
 

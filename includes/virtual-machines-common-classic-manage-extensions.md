@@ -1,37 +1,47 @@
-
-
-
-## <a name="using-vm-extensions"></a>Przy użyciu rozszerzeń maszyny Wirtualnej
-Implementowanie rozszerzeń maszyny Wirtualnej Azure zachowania lub funkcje, które ułatwiają albo inne programy, które działają na maszynach wirtualnych Azure (na przykład **WebDeployForVSDevTest** rozszerzenia umożliwia programowi Visual Studio Web Deploy rozwiązań na maszynie Wirtualnej platformy Azure) lub podaj zdolność umożliwia interakcję z maszyną Wirtualną do obsługi niektóre inne zachowanie (na przykład umożliwia rozszerzenia dostępu do maszyny Wirtualnej z klientów programu PowerShell, interfejsu wiersza polecenia Azure i REST resetowania lub zmodyfikuj wartości dostępu zdalnego na maszynie Wirtualnej platformy Azure).
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: d14cfb82ae74f85425dbd3e8a365e8b99969641d
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226735"
+---
+## <a name="using-vm-extensions"></a>Przy użyciu rozszerzeń maszyn wirtualnych
+Implementowanie rozszerzeń maszyny Wirtualnej platformy Azure, zachowania lub funkcje, które ułatwiają albo inne programy, które działają na maszynach wirtualnych Azure (na przykład **WebDeployForVSDevTest** rozszerzenie umożliwia programowi Visual Studio do narzędzia Web Deploy rozwiązań na maszynie Wirtualnej platformy Azure) lub podaj możliwość interakcji z maszyny Wirtualnej obsługuje kilka innych zachowań (na przykład umożliwia rozszerzenia dostępu do maszyny Wirtualnej z klientów programu PowerShell, interfejsu wiersza polecenia platformy Azure i REST zresetować lub zmodyfikuj wartości dostępu zdalnego na maszynie Wirtualnej platformy Azure).
 
 > [!IMPORTANT]
-> Pełną listę rozszerzeń przez funkcje obsługują zobacz [rozszerzeń maszyny Wirtualnej platformy Azure i funkcje](../articles/virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Ponieważ każde rozszerzenie maszyny Wirtualnej obsługuje określonych funkcji, dokładnie co można, a nie z rozszerzeniem jest zależna od rozszerzenia. W związku z tym przed zmodyfikowaniem maszyny Wirtualnej, sprawdź, czy znasz dokumentacji dla rozszerzenia maszyny Wirtualnej, którego chcesz użyć. Usunięcie niektórych rozszerzeń maszyny Wirtualnej nie jest obsługiwany; inne mają właściwości, które można ustawić które znacząco zmieniają zachowanie maszyny Wirtualnej.
+> Aby uzyskać pełną listę rozszerzeń przy użyciu funkcji, które obsługują, zobacz [rozszerzeń maszyn wirtualnych platformy Azure i funkcji](../articles/virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Ponieważ każde rozszerzenie maszyny Wirtualnej obsługuje określonych funkcji, dokładnie co można, a nie będzie możliwe rozszerzenie jest zależna od rozszerzenia. Dlatego przed zmodyfikowaniem maszyny Wirtualnej, sprawdź, czy mają przeczytaj dokumentację dotyczącą rozszerzenia maszyny Wirtualnej, w której chcesz użyć. Usunięcie niektórych rozszerzeń maszyny Wirtualnej nie jest obsługiwana; inne osoby mają właściwości, które można ustawić, które znacząco zmieniają zachowanie maszyny Wirtualnej.
 > 
 > 
 
-Typowe zadania są:
+Najczęściej wykonywane czynności są następujące:
 
 1. Znajdowanie dostępnych rozszerzeń
-2. Aktualizacja rozszerzeń załadowany
+2. Aktualizowanie załadować rozszerzeń
 3. Dodawanie rozszerzeń
-4. Usuwanie rozszerzeń
+4. Usuwanie rozszerzenia
 
 ## <a name="find-available-extensions"></a>Znajdowanie dostępnych rozszerzeń
-Można znaleźć rozszerzenia i używanie rozszerzonych informacji:
+Możesz znaleźć rozszerzenia i używanie rozszerzonych informacji:
 
 * PowerShell
-* Interfejs wiersza polecenia i Platform Azure (Azure CLI)
+* Interfejs wiersza polecenia dla wielu Platform Azure (Azure CLI)
 * Interfejs API protokołu REST zarządzania usługami
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Niektóre rozszerzenia zostały poleceń cmdlet programu PowerShell, które są specyficzne dla nich, które mogą ułatwić ich konfiguracji z programu PowerShell; jednak następujące polecenia cmdlet działać dla wszystkich rozszerzeń maszyny Wirtualnej.
+Niektóre rozszerzenia zostały poleceń cmdlet programu PowerShell, które są specyficzne dla nich, które mogą ułatwić ich konfiguracji z poziomu programu PowerShell; ale następujących poleceń cmdlet dla wszystkich rozszerzeń maszyny Wirtualnej.
 
-Aby uzyskać informacje o dostępnych rozszerzeń służy następujące polecenia cmdlet:
+Aby uzyskać informacje o dostępnych rozszerzeń, można użyć następujących poleceń cmdlet:
 
-* Dla wystąpienia ról sieci web lub roli proces roboczy, można użyć [Get-AzureServiceAvailableExtension](https://msdn.microsoft.com/library/azure/dn722498.aspx) polecenia cmdlet.
-* Dla wystąpień maszyn wirtualnych, można użyć [Get-AzureVMAvailableExtension](https://msdn.microsoft.com/library/azure/dn722480.aspx) polecenia cmdlet.
+* Dla wystąpień ról sieć web lub ról procesów roboczych, można użyć [Get-AzureServiceAvailableExtension](https://msdn.microsoft.com/library/azure/dn722498.aspx) polecenia cmdlet.
+* Dla wystąpień maszyn wirtualnych, można użyć [Get AzureVMAvailableExtension](https://msdn.microsoft.com/library/azure/dn722480.aspx) polecenia cmdlet.
   
-   Na przykład następujący przykładowy kod przedstawia sposób wyświetlania informacji dotyczących **IaaSDiagnostics** rozszerzenia przy użyciu programu PowerShell.
+   Na przykład, poniższy kod ilustruje sposób wyświetlenia listy informacji dla **IaaSDiagnostics** rozszerzenia za pomocą programu PowerShell.
   
       PS C:\> Get-AzureVMAvailableExtension -ExtensionName IaaSDiagnostics
   
@@ -55,11 +65,11 @@ Aby uzyskać informacje o dostępnych rozszerzeń służy następujące poleceni
       CompanyName                 :
 
 ### <a name="azure-command-line-interface-azure-cli"></a>Interfejs wiersza polecenia platformy Azure (Azure CLI)
-Niektóre rozszerzenia zostały polecenia interfejsu wiersza polecenia Azure, które są specyficzne dla ich (Docker rozszerzenia maszyny Wirtualnej jest jednym z przykładów), która może ułatwić ich konfiguracji; Jednak poniższe polecenia działać dla wszystkich rozszerzeń maszyny Wirtualnej.
+Niektóre rozszerzenia zostały polecenia wiersza polecenia platformy Azure, które są specyficzne dla nich (rozszerzenie maszyny Wirtualnej Docker jest jednym z przykładów), które mogą ułatwić ich konfiguracji; Jednak poniższe polecenia działać dla wszystkich rozszerzeń maszyny Wirtualnej.
 
-Można użyć **listy rozszerzeń maszyny wirtualnej azure** polecenie, aby uzyskać informacje o dostępnych rozszerzeń, a następnie użyj **—-json** opcję, aby wyświetlić wszystkie dostępne informacje o jedno lub więcej rozszerzeń. Jeśli nie używasz rozszerzenie nazwy, polecenie zwraca opisu JSON wszystkie dostępne rozszerzenia.
+Możesz użyć **listy rozszerzeń maszyny wirtualnej platformy azure** polecenie, aby uzyskać informacje na temat dostępnych rozszerzeń, a następnie użyj **—-json** opcję, aby wyświetlić wszystkie dostępne informacje o jedno lub więcej rozszerzeń. Jeśli nie zostanie użyta nazwa rozszerzenia, to polecenie zwraca opisu JSON wszystkich dostępnych rozszerzeń.
 
-Na przykład następujący przykładowy kod przedstawia sposób wyświetlania informacji dotyczących **IaaSDiagnostics** rozszerzenia przy użyciu interfejsu wiersza polecenia Azure **listy rozszerzeń maszyny wirtualnej azure** polecenia i używa **—-json**  opcję, aby zwracać pełne informacje.
+Na przykład, poniższy kod ilustruje sposób wyświetlenia listy informacji dla **IaaSDiagnostics** rozszerzenia za pomocą wiersza polecenia platformy Azure **listy rozszerzeń maszyny wirtualnej platformy azure** polecenia i zastosowań **—-json**  opcję, aby zwracać pełne informacje.
 
     $ azure vm extension list -n IaaSDiagnostics --json
     [
@@ -77,32 +87,32 @@ Na przykład następujący przykładowy kod przedstawia sposób wyświetlania in
 
 
 ### <a name="service-management-rest-apis"></a>Interfejsy API REST zarządzania usługami
-Aby uzyskać informacje o dostępnych rozszerzeń służy następujących interfejsów API REST:
+Aby uzyskać informacje o dostępnych rozszerzeń, można użyć następujących interfejsów API REST:
 
-* Dla wystąpienia ról sieci web lub roli proces roboczy, można użyć [listę dostępnych rozszerzeń](https://msdn.microsoft.com/library/dn169559.aspx) operacji. Aby wyświetlić listę wersji dostępne rozszerzenia, można użyć [wersji rozszerzenia listy](https://msdn.microsoft.com/library/dn495437.aspx).
-* Dla wystąpień maszyn wirtualnych, można użyć [listy rozszerzeń zasobu](https://msdn.microsoft.com/library/dn495441.aspx) operacji. Aby wyświetlić listę wersji dostępne rozszerzenia, można użyć [wersji rozszerzenia zasobu listy](https://msdn.microsoft.com/library/dn495440.aspx).
+* Dla wystąpień ról sieć web lub ról procesów roboczych, można użyć [listę dostępnych rozszerzeń](https://msdn.microsoft.com/library/dn169559.aspx) operacji. Aby wyświetlić listę wersji dostępnych rozszerzeń, można użyć [Utwórz listę wersji rozszerzenia](https://msdn.microsoft.com/library/dn495437.aspx).
+* Dla wystąpień maszyn wirtualnych, można użyć [listy rozszerzeń zasobów](https://msdn.microsoft.com/library/dn495441.aspx) operacji. Aby wyświetlić listę wersji dostępnych rozszerzeń, można użyć [Utwórz listę wersji rozszerzenia zasobu](https://msdn.microsoft.com/library/dn495440.aspx).
 
 ## <a name="add-update-or-disable-extensions"></a>Dodawanie, aktualizowanie lub wyłączyć rozszerzenia
-Podczas tworzenia wystąpienia lub mogą być dodawane uruchomione wystąpienie można dodać rozszerzenia. Rozszerzenia może zostać zaktualizowany, wyłączone lub usunięte. Można wykonywać te akcje za pomocą poleceń cmdlet programu Azure PowerShell lub przy użyciu operacji interfejsu API REST zarządzania usługi. Aby zainstalować i skonfigurować niektóre rozszerzenia są wymagane parametry. Parametry publiczne i prywatne są obsługiwane dla rozszerzeń.
+Rozszerzenia można dodać, gdy tworzone jest wystąpienie lub mogą być dodawane do uruchomionego wystąpienia. Rozszerzenia można zaktualizować, wyłączone lub usunięte. Te akcje można wykonać przy użyciu poleceń cmdlet programu Azure PowerShell lub przy użyciu operacji interfejsu API REST zarządzania usługami. Aby zainstalować i skonfigurować niektóre rozszerzenia są wymagane parametry. Parametry publiczne i prywatne są obsługiwane dla rozszerzeń.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Za pomocą poleceń cmdlet programu Azure PowerShell jest najprostszym sposobem na dodawanie i aktualizowanie rozszerzeń. Korzystając z polecenia cmdlet rozszerzenia, większość ustawień konfiguracji rozszerzenia odbywa się automatycznie. W czasie konieczne może być programowane Dodawanie rozszerzenia. Należy to zrobić, należy podać konfiguracji rozszerzenia.
+Za pomocą poleceń cmdlet programu Azure PowerShell jest najprostszym sposobem na dodawanie i aktualizowanie rozszerzeń. Korzystając z poleceń cmdlet rozszerzenia, większość konfiguracji rozszerzenia jest wykonywane. Czasami może być konieczne programowo dodać rozszerzenie. Gdy trzeba to zrobić, należy podać konfiguracji rozszerzenia.
 
-Następujące polecenia cmdlet umożliwia wiedzieć, czy rozszerzenie wymaga konfiguracji publiczne i prywatne parametrów:
+Aby dowiedzieć się, czy rozszerzenie wymaga konfiguracji parametrów publicznych i prywatnych, można użyć następujących poleceń cmdlet:
 
-* Dla wystąpienia ról sieci web lub roli proces roboczy, można użyć **Get-AzureServiceAvailableExtension** polecenia cmdlet.
-* Dla wystąpień maszyn wirtualnych, można użyć **Get-AzureVMAvailableExtension** polecenia cmdlet.
+* Dla wystąpień ról sieć web lub ról procesów roboczych, można użyć **Get-AzureServiceAvailableExtension** polecenia cmdlet.
+* Dla wystąpień maszyn wirtualnych, można użyć **Get AzureVMAvailableExtension** polecenia cmdlet.
 
 ### <a name="service-management-rest-apis"></a>Interfejsy API REST zarządzania usługami
-Podczas pobierania listy dostępnych rozszerzeń przy użyciu interfejsów API REST, pojawi się informacji na temat sposobu rozszerzenia ma zostać skonfigurowana. Zwracane informacje mogą być wyświetlane informacje o parametrach reprezentowany przez schemat publicznej i prywatnej schematu. Wartości parametrów publicznego są zwracane w zapytaniach dotyczących wystąpienia. Wartości parametrów prywatne nie są zwracane.
+Możesz pobrać listę dostępnych rozszerzeń przy użyciu interfejsów API REST, pojawi się uzyskać informacje na temat sposobu rozszerzenia do skonfigurowania. Zwrócone informacje może wyświetlać informacje o parametrach, reprezentowany przez schemat publicznej i prywatnej schematu. Wartości parametrów publicznego są zwracane w zapytaniach dotyczących wystąpień. Wartości parametrów prywatne nie są zwracane.
 
-Następujące interfejsy API REST umożliwia wiedzieć, czy rozszerzenie wymaga konfiguracji publiczne i prywatne parametrów:
+Aby dowiedzieć się, czy rozszerzenie wymaga konfiguracji parametrów publicznych i prywatnych, można użyć następujące interfejsy API REST:
 
-* Dla wystąpienia ról sieci web lub roli proces roboczy **PublicConfigurationSchema** i **PrivateConfigurationSchema** elementy zawierają informacje w odpowiedzi z [dostępne listy Rozszerzenia](https://msdn.microsoft.com/library/dn169559.aspx) operacji.
-* Dla wystąpień maszyn wirtualnych, **PublicConfigurationSchema** i **PrivateConfigurationSchema** elementy zawierają informacje w odpowiedzi z [listy zasobów Rozszerzenia](https://msdn.microsoft.com/library/dn495441.aspx) operacji.
+* Dla wystąpień ról sieć web lub ról procesów roboczych **PublicConfigurationSchema** i **PrivateConfigurationSchema** elementy zawierają informacje w odpowiedzi z [dostępne listy Rozszerzenia](https://msdn.microsoft.com/library/dn169559.aspx) operacji.
+* Dla wystąpień maszyn wirtualnych **PublicConfigurationSchema** i **PrivateConfigurationSchema** elementy zawierają informacje w odpowiedzi z [listy zasobów Rozszerzenia](https://msdn.microsoft.com/library/dn495441.aspx) operacji.
 
 > [!NOTE]
-> Rozszerzenia za pomocą konfiguracji, które są zdefiniowane JSON. Gdy te typy rozszerzeń są używane, tylko **SampleConfig** element jest używany.
+> Rozszerzenia umożliwiają konfiguracje, które są zdefiniowane przy użyciu formatu JSON. Gdy używane są te typy rozszerzeń, tylko **SampleConfig** element jest używany.
 > 
 > 
 

@@ -11,15 +11,15 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.component: users-groups-roles
-ms.date: 01/14/2018
+ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: seohack1
-ms.openlocfilehash: 5beee2fae518fec23b65ff05a79281e0fc3f1417
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 4272d16a2acba992f05bb0874a40affa7d30abb5
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48800744"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213648"
 ---
 # <a name="how-to-add-licensed-users-to-a-group-for-licensing-in-azure-active-directory"></a>Jak dodać licencjonowanych użytkowników do grupy licencjonowania w usłudze Azure Active Directory
 
@@ -84,7 +84,9 @@ Poniżej przedstawiono, jak może wyglądać procesu migracji:
 
 Aby dowiedzieć się, jak inne scenariusze dotyczące zarządzania licencjami za pomocą grup, przeczytaj
 
-* [Przypisywanie licencji do grupy w usłudze Azure Active Directory](licensing-groups-assign.md)
 * [Co to jest oparte na grupach Licencjonowanie w usłudze Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
+* [Przypisywanie licencji do grupy w usłudze Azure Active Directory](licensing-groups-assign.md)
 * [Identyfikowanie i rozwiązywanie problemów z licencją dla grupy w usłudze Azure Active Directory](licensing-groups-resolve-problems.md)
+* [Jak przeprowadzić migrację użytkowników między licencjami produktów za pomocą licencjonowania opartego na grupy w usłudze Azure Active Directory](licensing-groups-change-licenses.md)
 * [Dodatkowe scenariusze licencjonowania opartego na grupach w usłudze Azure Active Directory](licensing-group-advanced.md)
+* [Przykłady programu PowerShell dla licencjonowania opartego na grupy w usłudze Azure Active Directory](licensing-ps-examples.md)

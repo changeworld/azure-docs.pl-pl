@@ -1,6 +1,16 @@
-
-
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 45a6bd349169265ef411d01a3601a27551847633
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226928"
+---
 W tym artykule zostały podane odpowiedzi na niektóre często zadawane przez użytkowników pytania dotyczące maszyn wirtualnych na platformie Azure utworzonych za pomocą klasycznego modelu wdrażania.
 
 ## <a name="can-i-migrate-my-vm-created-in-the-classic-deployment-model-to-the-new-resource-manager-model"></a>Czy mogę zmigrować swoje maszyny wirtualne utworzone w klasycznym modelu wdrażania do nowego modelu menedżera zasobów?
@@ -48,7 +58,7 @@ Dla maszyn wirtualnych utworzonych w klasycznym modelu wdrażania możesz użyć
 Podczas tworzenia maszyny wirtualnej musisz określić sieć, do której ma należeć maszyna wirtualna. Nie możesz dołączyć istniejącej maszyny wirtualnej do sieci wirtualnej. Możesz jednak obejść ten problem, odłączając wirtualny dysk twardy od istniejącej maszyny wirtualnej, a następnie używając go do utworzenia nowej maszyny wirtualnej z żądaną konfiguracją sieci.
 
 ## <a name="how-can-i-access--my-virtual-machine"></a>Jak mogę uzyskać dostęp do mojej maszyny wirtualnej?
-Należy ustanowić połączenia zdalnego do logowania się do maszyny wirtualnej przy użyciu usługi Podłączanie pulpitu zdalnego dla maszyny Wirtualnej systemu Windows lub protokołu Secure Shell (SSH) dla maszyny Wirtualnej systemu Linux. Aby uzyskać instrukcje, zobacz:
+Należy ustanowić połączenia zdalnego do logowania się do maszyny wirtualnej przy użyciu usługi Podłączanie pulpitu zdalnego dla maszyny Wirtualnej z systemem Windows lub protokołu Secure Shell (SSH) dla maszyny Wirtualnej z systemem Linux. Aby uzyskać instrukcje, zobacz:
 
 * [Jak logować się do maszyny wirtualnej z systemem Windows Server](../articles/virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Obsługiwane są maksymalnie 2 równoczesne połączenia, chyba że serwer jest skonfigurowany jako host sesji usług pulpitu zdalnego.  
 * [Jak logować się do maszyny wirtualnej z systemem Linux](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Domyślnie protokół SSH umożliwia maksymalnie 10 równoczesnych połączeń. Możesz zwiększyć tę liczbę, edytując plik konfiguracji.
@@ -57,7 +67,7 @@ Jeśli masz problemy z pulpitem zdalnym lub protokołem SSH, zainstaluj rozszerz
 
 Dla maszyn wirtualnych z systemem Windows dostępne są następujące opcje dodatkowe:
 
-* W portalu Azure można znaleźć maszyny Wirtualnej, a następnie kliknij przycisk **Resetuj dostęp zdalny** z paska poleceń.
+* W portalu Azure Znajdź maszynę Wirtualną, a następnie kliknij przycisk **Resetuj dostęp zdalny** na pasku poleceń.
 * Zapoznaj się z tematem [Rozwiązywanie problemów z połączeniami pulpitu zdalnego nawiązywanymi z maszyną wirtualną platformy Azure z systemem Windows](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Użyj funkcji komunikacji zdalnej programu Windows PowerShell, aby połączyć się z maszyną wirtualną, lub utwórz dodatkowe punkty końcowe dla innych zasobów, aby nawiązać połączenie z maszyną wirtualną. Aby uzyskać szczegółowe informacje, zobacz [How to Set Up Endpoints to a Virtual Machine](../articles/virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) (Jak skonfigurować punkty końcowe do maszyny wirtualnej).
 
@@ -78,13 +88,13 @@ Termin uaktualnienie zazwyczaj oznacza przejście do nowszej wersji systemu oper
 Aby uzyskać ogólne informacje dotyczące narzędzi i procesów migracji systemu Windows Server, zobacz [Migrowanie ról i funkcji do systemu Windows Server](http://go.microsoft.com/fwlink/p/?LinkId=396940).
 
 ## <a name="whats-the-default-user-name-and-password-on-the-virtual-machine"></a>Jaka jest domyślna nazwa użytkownika i hasło na maszynie wirtualnej?
-Obrazy dostarczane przez platformę Azure nie mają wstępnie skonfigurowanej nazwy użytkownika ani hasła. Podczas tworzenia maszyny wirtualnej przy użyciu jednej z tych obrazów, należy podać nazwę użytkownika i hasło, którego będziesz używać do logowania się na maszynie wirtualnej.
+Obrazy dostarczane przez platformę Azure nie mają wstępnie skonfigurowanej nazwy użytkownika ani hasła. Podczas tworzenia maszyny wirtualnej przy użyciu jednego z tych obrazów należy podać nazwę użytkownika i hasło, którego będziesz używać do logowania się do maszyny wirtualnej.
 
 Jeśli nie pamiętasz nazwy użytkownika lub hasła, a został zainstalowany agent maszyny wirtualnej, możesz zainstalować rozszerzenie [VMAccess](../articles/virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) i użyć go w celu rozwiązania tego problemu.
 
 Dodatkowe szczegóły:
 
-* Jeśli używasz portalu Azure na obrazy systemu Linux "azureuser" jest podawana jako domyślna nazwa użytkownika, ale można to zmienić za pomocą "Z galerii" zamiast "Szybkie tworzenie" jako taki sposób, aby utworzyć maszynę wirtualną. Użycie pozycji „Z galerii” umożliwia również podjęcie decyzji co do tego, czy do logowania użyć hasła, klucza SSH, czy też ich obu. Konto użytkownika jest kontem użytkownika bez uprawnień, który ma dostęp „sudo” do uruchamiania poleceń uprzywilejowanych. Konto użytkownika „root” jest wyłączone.
+* Jeśli używasz witryny Azure portal, dla obrazów systemu Linux "azureuser" jest podawana jako domyślna nazwa użytkownika, ale możesz to zmienić za pomocą "Z galerii" zamiast "Szybkie tworzenie" jako sposób do utworzenia maszyny wirtualnej. Użycie pozycji „Z galerii” umożliwia również podjęcie decyzji co do tego, czy do logowania użyć hasła, klucza SSH, czy też ich obu. Konto użytkownika jest kontem użytkownika bez uprawnień, który ma dostęp „sudo” do uruchamiania poleceń uprzywilejowanych. Konto użytkownika „root” jest wyłączone.
 * W przypadku obrazów systemu Windows podczas tworzenia maszyny wirtualnej musisz podać nazwę użytkownika i hasło. Konto jest dodawane do grupy Administratorzy.
 
 ## <a name="can-azure-run-anti-virus-on-my-virtual-machines"></a>Czy platforma Azure może uruchamiać oprogramowanie antywirusowe na moich maszynach wirtualnych?
@@ -104,7 +114,7 @@ Na platformie Azure obowiązuje cena za godzinę, która jest określana na pods
 
 Opłaty są naliczane, gdy stan maszyny wirtualnej to Uruchomiona lub Zatrzymana, ale nie są naliczane, gdy stan maszyny wirtualnej to Zatrzymana (cofnięty przydział). Aby umieścić maszynę wirtualną w stanie Zatrzymana (cofnięty przydział), wykonaj jedną z następujących czynności:
 
-* Wyłączanie lub usuwanie maszyny Wirtualnej w portalu Azure.
+* Wyłącz lub Usuń maszynę Wirtualną w witrynie Azure portal.
 * Użyj polecenia cmdlet Stop-AzureVM dostępnego w module Azure PowerShell.
 * Użyj operacji zamknięcia roli w interfejsie API REST zarządzania usługi i określ wartość StoppedDeallocated dla elementu PostShutdownAction.
 
@@ -117,7 +127,7 @@ Nieplanowane zdarzenia konserwacji mogą wystąpić, gdy platforma Azure wykryje
 
 Dla dowolnej autonomicznej maszyny wirtualnej (tzn. gdy maszyna wirtualna nie jest częścią zestawu dostępności) platforma Azure powiadamia administratora usługi subskrypcji za pośrednictwem poczty e-mail co najmniej tydzień przed zaplanowaną konserwacją, ponieważ maszyny wirtualne mogą zostać ponownie uruchomione podczas aktualizacji. Może nastąpić przestój w działaniu aplikacji uruchomionych na maszynach wirtualnych.
 
-Możesz również umożliwia portalu Azure lub programu Azure PowerShell Sprawdź dzienniki z rozruchu po ponownym uruchomieniu komputera wystąpiły z powodu zaplanowanej konserwacji. Aby uzyskać szczegółowe informacje, zobacz [Wyświetlanie dzienników ponownego uruchamiania maszyny wirtualnej](https://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/).
+Możesz również można użyć witryny Azure portal lub programu Azure PowerShell Aby wyświetlić dzienniki ponownego uruchomienia, gdy ponowne uruchomienie nastąpiło z powodu planowanej konserwacji. Aby uzyskać szczegółowe informacje, zobacz [Wyświetlanie dzienników ponownego uruchamiania maszyny wirtualnej](https://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/).
 
 Aby zapewnić nadmiarowość, umieść co najmniej dwie podobnie skonfigurowane maszyny wirtualne w tym samym zestawie dostępności. Pomaga to w zapewnieniu, że co najmniej jedna maszyna wirtualna jest dostępna podczas planowanej lub nieplanowanej konserwacji. Platforma Azure gwarantuje pewne poziomy dostępności maszyny wirtualnej dla tej konfiguracji. Aby uzyskać szczegółowe informacje, zobacz [Zarządzanie dostępnością maszyn wirtualnych](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

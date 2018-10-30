@@ -9,12 +9,12 @@ ms.author: haining
 author: hning86
 ms.reviewer: larryfr
 ms.date: 10/24/2018
-ms.openlocfilehash: b00f72c987b6ce8c44796bd036af670ec39fa7a6
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 95f74b23b9d0c89966347f066041b23f64f3b82c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093636"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210690"
 ---
 # <a name="how-the-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: pojęcia i architektura
 
@@ -143,7 +143,7 @@ Przebieg jest rekord, który zawiera następujące informacje:
 
 * Metadane dotyczące przebiegu (sygnatura czasowa, czas trwania itp.)
 * Zarejestrowane przez skrypt metryki
-* Pliki wyjściowe automatycznie zebranych w doświadczeniu lub jawnie przekazane przez użytkownika.
+* Dane wyjściowe pliki autocollected w doświadczeniu lub jawnie przekazane przez użytkownika.
 * Migawka katalogu, który zawiera skrypty, przed przebiegu
 
 Uruchom jest generowany, gdy prześlesz skryptu w celu nauczenia modelu. Uruchom może mieć zero lub więcej uruchomień podrzędnych. Więc wykonywania najwyższego poziomu może mieć dwa przebiegi podrzędnych, z których każdy może mieć własne podrzędne działa.
@@ -156,23 +156,28 @@ Eksperyment to zbiór wielu uruchomień z danego skryptu. Zawsze należy do obsz
 
 Na przykład z użyciem eksperymentu zobacz [Szybki Start: wprowadzenie do usługi Azure Machine Learning](quickstart-get-started.md) dokumentu.
 
-
 ## <a name="pipelines"></a>Potoki
 
-Potoki są używane do tworzenia i zarządzania nimi przepływy pracy tej fazy uczenia maszynowego razem Połącz (ML), takich jak przygotowywanie danych, szkolenie modelu, wdrożenie modelu i wnioskowania. Każda faza może obejmować wiele kroków, z których każdy może uruchamiane w różnych celów obliczeń.
+Potoki są używane do tworzenia i zarządzania nimi przepływy pracy, które łączyć usługi machine learning faz. Na przykład potok może obejmować przygotowywania danych, szkolenie modelu, wdrożenie modelu i fazy wnioskowania. Każda faza może obejmować wiele kroków, z których każdy może uruchamiane w różnych celów obliczeń.
 
 Aby uzyskać więcej informacji na temat potoków uczenia maszynowego za pomocą tej usługi, zobacz artykuł [potoków i Azure Machine Learning](concept-ml-pipelines.md).
 
 ## <a name="compute-target"></a>Obliczeniowego elementu docelowego
 
-Cel obliczenia jest używane do uruchamiania skryptu szkolenia lub wdrożeniu usługi sieci web hosta zasobów obliczeniowych. Są obsługiwane obliczeniowych elementów docelowych: 
+Cel obliczenia jest zasobu obliczeniowego, używane do uruchamiania skryptu szkolenia lub hosta wdrożenia swojej usługi. Są obsługiwane obliczeniowych elementów docelowych: 
 
-* Komputer lokalny
-* Maszyny Wirtualnej z systemem Linux na platformie Azure (np. maszyna wirtualna do nauki o danych)
-* Usługa Azure Batch AI klastra
-* Platforma Apache Spark dla HDInsight
-* Wystąpienie kontenera platformy Azure
-* Azure Kubernetes Service
+| Obliczeniowego elementu docelowego | Szkolenia | Wdrożenie |
+| ---- |:----:|:----:|
+| Komputer lokalny | ✓ | &nbsp; |
+| Maszyny Wirtualnej z systemem Linux na platformie Azure</br>(na przykład maszyna wirtualna do nauki o danych) | ✓ | &nbsp; |
+| Usługa Azure Batch AI klastra | ✓ | &nbsp; |
+| Azure Databricks | ✓ | &nbsp; | &nbsp; |
+| Azure Data Lake Analytics | ✓ | &nbsp; |
+| Platforma Apache Spark dla HDInsight | ✓ | &nbsp; |
+| Wystąpienie kontenera platformy Azure | ✓ | ✓ |
+| Azure Kubernetes Service | &nbsp; | ✓ |
+| Azure IoT Edge | &nbsp; | ✓ |
+| Project Brainwave</br>(Programowalny bramy array) | &nbsp; | ✓ |
 
 Obliczeniowych elementów docelowych są dołączone do obszaru roboczego. Obliczeniowe elementy docelowe, innym niż komputer lokalny są udostępniane przez użytkowników obszaru roboczego.
 
@@ -194,7 +199,7 @@ Na przykład konfiguracji uruchamiania, zobacz [wybierz, a następnie użyć obl
 
 Do nauczenia modelu, można określić katalog, który zawiera skrypt szkolenia i skojarzone pliki. Należy również określić nazwę eksperymentu, który jest używany do przechowywania informacji zebranych podczas szkolenia. Podczas szkolenia, cały katalog jest kopiowany do treningowe (obiekt docelowy obliczeniowe) i uruchomieniu skryptu określony w konfiguracji przebiegu. Migawka katalogu znajduje się również w obszarze eksperymentu, w obszarze roboczym.
 
-Przykład za pomocą skryptów do nauczenia modelu, zobacz [Utwórz obszar roboczy za pomocą języka Python](quickstart-get-started.md)
+Aby uzyskać przykład, zobacz [Utwórz obszar roboczy za pomocą języka Python](quickstart-get-started.md)
 
 ## <a name="logging"></a>Rejestrowanie
 

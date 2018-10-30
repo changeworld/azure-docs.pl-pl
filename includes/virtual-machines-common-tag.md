@@ -1,6 +1,16 @@
-
-
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: ccc2b574ea054a1b0ecf32a1e59691050fb66fcf
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226608"
+---
 ## <a name="tagging-a-virtual-machine-through-templates"></a>Tagowanie maszyny wirtualnej za pomocą szablonów
 Najpierw Przyjrzyjmy się tagowanie za pomocą szablonów. [Ten szablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) umieszcza tagi dla następujących zasobów: obliczeniowych (maszyny wirtualnej), magazynu (konta magazynu) i sieci (publiczny adres IP, sieci wirtualnej i interfejsu sieciowego). Ten szablon jest dla maszyny Wirtualnej z systemem Windows, ale mogą być dostosowane do maszyn wirtualnych systemu Linux.
 

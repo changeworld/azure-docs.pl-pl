@@ -1,58 +1,68 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 32f533d06b7db0284459951e65f9c04fe0bb0285
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226400"
+---
+Zestaw dostępności, pomaga zachować maszynach wirtualnych, które jest dostępne podczas przestojów, takich jak podczas konserwacji. Wprowadzenie do co najmniej dwie podobnie skonfigurowane maszyny wirtualne w zestawie dostępności tworzy nadmiarowość niezbędne do zapewnienia dostępności aplikacji lub usług, których maszyna wirtualna działa. Aby uzyskać szczegółowe informacje o tym, jak to działa, zobacz [Zarządzanie dostępnością maszyn wirtualnych][Manage the availability of virtual machines].
 
+Jest najlepszym rozwiązaniem jest do użycia zarówno punkty końcowe równoważenia obciążenia, jak i zestawy dostępności, aby mieć pewność, że aplikacja jest zawsze dostępna i działa wydajnie. Aby uzyskać szczegółowe informacje na temat punktów końcowych z równoważeniem obciążenia, zobacz [równoważenia obciążenia dla usług infrastruktury platformy Azure][Load balancing for Azure infrastructure services].
 
+Możesz dodać klasycznych maszyn wirtualnych w zestawie przy użyciu jednej z dwóch opcji dostępności:
 
-Zbiór dostępności pomaga zachować maszyn wirtualnych dostępnych w trakcie przestoju, takich jak podczas konserwacji. Wprowadzenie do dwóch lub więcej podobnie skonfigurowane maszyny wirtualne w zestawie dostępności tworzy nadmiarowość potrzebne do zapewnienia dostępności aplikacji lub usług, które są wykonywane na komputerze wirtualnym. Aby uzyskać szczegółowe informacje dotyczące sposobu działania, zobacz [Zarządzaj dostępnością maszyn wirtualnych][Manage the availability of virtual machines].
-
-Jest najlepszym rozwiązaniem będzie używać zestawów dostępności i równoważenia obciążenia punktów końcowych do zapewnienia, że aplikacja jest zawsze dostępny i działa wydajnie. Aby uzyskać więcej informacji o punktach końcowych z równoważeniem obciążenia, zobacz [równoważenia obciążenia dla usług infrastruktury platformy Azure][Load balancing for Azure infrastructure services].
-
-Klasyczne maszyny wirtualne można dodać do zestawu przy użyciu jednej z dwóch opcji dostępności:
-
-* [Opcja 1: Tworzenie maszyny wirtualnej i dostępności na tym samym czasie][Option 1: Create a virtual machine and an availability set at the same time]. Następnie należy dodać nowych maszyn wirtualnych w zestawie, podczas tworzenia tych maszyn wirtualnych.
+* [Opcja 1: Tworzenie maszyny wirtualnej i zestawu dostępności w tym samym czasie][Option 1: Create a virtual machine and an availability set at the same time]. Następnie należy dodać nowe maszyny wirtualne do zestawu, podczas tworzenia tych maszyn wirtualnych.
 * [Opcja 2: Dodaj istniejącą maszynę wirtualną do zestawu dostępności][Option 2: Add an existing virtual machine to an availability set].
 
 > [!NOTE]
-> W klasycznym modelu maszyn wirtualnych, które chcesz umieścić w tym samym zestawie dostępności muszą należeć do tej samej usługi w chmurze.
+> W modelu klasycznym maszyn wirtualnych, które chcesz umieścić w tym samym zestawie dostępności muszą należeć do tej samej usługi w chmurze.
 > 
 > 
 
-## <a id="createset"> </a>Opcja 1: Tworzenie maszyny wirtualnej i dostępności na tym samym czasie
-W tym celu można użyć portalu Azure lub poleceń programu PowerShell systemu Azure.
+## <a id="createset"> </a>Opcja 1: Tworzenie maszyny wirtualnej i zestawu dostępności w tym samym czasie
+W tym celu można użyć witryny Azure portal lub poleceń programu Azure PowerShell.
 
-Aby korzystać z portalu Azure:
+Aby użyć witryny Azure portal:
 
 1. Jeśli jeszcze tego nie zrobiono, zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Kliknij przycisk **Utwórz zasób** > **obliczeniowe**.
-3. Wybierz obraz maszyny wirtualnej Marketplace, którego chcesz użyć. Można utworzyć maszyny wirtualnej systemu Linux lub Windows.
-4. Dla wybranej maszyny wirtualnej, sprawdź, czy model wdrażania jest ustawiony na **klasycznego** , a następnie kliknij przycisk **Utwórz**
+2. Kliknij przycisk **Utwórz zasób** > **obliczenia**.
+3. Wybierz obraz maszyny wirtualnej portalu Marketplace, którego chcesz użyć. Można utworzyć maszyny wirtualnej z systemem Linux lub Windows.
+4. Dla wybranej maszyny wirtualnej, sprawdź, czy w modelu wdrażania jest równa **klasycznego** a następnie kliknij przycisk **Create**
    
-    ![Tekst alternatywny obrazu](./media/virtual-machines-common-classic-configure-availability/ChooseClassicModel.png)
-5. Wprowadź nazwę maszyny wirtualnej, nazwę użytkownika i hasło (dla komputerów z systemem Windows) lub klucz publiczny SSH (w przypadku maszyn z systemem Linux). 
-6. Wybierz rozmiar maszyny Wirtualnej, a następnie kliknij przycisk **wybierz** aby kontynuować.
-7. Wybierz **konfiguracji opcjonalnej > zestawu dostępności**, i wybierz zestawu dostępności chcesz dodać maszyny wirtualnej.
+    ![Alternatywny tekst obrazu](./media/virtual-machines-common-classic-configure-availability/ChooseClassicModel.png)
+5. Wprowadź nazwę maszyny wirtualnej, nazwa użytkownika i hasło (dla maszyn Windows) lub klucza publicznego SSH (w przypadku maszyn z systemem Linux). 
+6. Wybieranie rozmiaru maszyny Wirtualnej, a następnie kliknij przycisk **wybierz** aby kontynuować.
+7. Wybierz **opcjonalna konfiguracja > zestaw dostępności**, i chcesz dodać maszyny wirtualnej wybierz zestawu dostępności.
    
-    ![Tekst alternatywny obrazu](./media/virtual-machines-common-classic-configure-availability/ChooseAvailabilitySet.png) 
+    ![Alternatywny tekst obrazu](./media/virtual-machines-common-classic-configure-availability/ChooseAvailabilitySet.png) 
 8. Przejrzyj ustawienia konfiguracji. Gdy wszystko będzie gotowe, kliknij przycisk **Utwórz**.
-9. Podczas gdy platforma Azure tworzy maszynę wirtualną, możesz śledzić postępy w obszarze **maszyn wirtualnych** w menu centralnym.
+9. Gdy platforma Azure tworzy maszynę wirtualną, możesz śledzić postęp w obszarze **maszyn wirtualnych** w menu Centrum.
 
-Aby użyć poleceń programu Azure PowerShell do tworzenia maszyny wirtualnej platformy Azure i dodaj go do zestawu dostępności nowych lub istniejących, zobacz [użycia programu Azure PowerShell do tworzenia i wstępnie skonfigurować maszyn wirtualnych z systemem Windows](../articles/virtual-machines/windows/classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+Aby utworzyć maszynę wirtualną platformy Azure i dodać go do nowego lub istniejącego dostupnosti, należy użyć poleceń programu Azure PowerShell, zobacz [Użyj programu Azure PowerShell do tworzenia i wstępne konfigurowanie maszyn wirtualnych z systemem Windows](../articles/virtual-machines/windows/classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 ## <a id="addmachine"> </a>Opcja 2: Dodaj istniejącą maszynę wirtualną do zestawu dostępności
-W portalu Azure można dodać istniejącego klasycznych maszyn wirtualnych do istniejących dostępności ustawić lub Utwórz nową dla nich. (Należy pamiętać, że maszyny wirtualne w tym samym zestawie dostępności muszą należeć do tej samej usługi w chmurze). Te kroki są prawie takie same. Przy użyciu programu Azure PowerShell można dodać maszyny wirtualnej do istniejącego zestawu dostępności.
+W witrynie Azure portal możesz dodać istniejące klasyczne maszyny wirtualne do istniejących dostępności zestawu lub utworzyć nową dla nich. (Należy pamiętać, że maszyny wirtualne w tym samym zestawie dostępności muszą należeć do tej samej usługi w chmurze). Kroki są prawie takie same. Za pomocą programu Azure PowerShell można dodać maszyny wirtualnej do istniejącego zestawu dostępności.
 
-1. Jeśli nie zostało to jeszcze zrobione, zaloguj się do [portalu Azure](https://portal.azure.com).
-2. W menu po lewej stronie kliknij **maszyn wirtualnych (klasyczne)**.
+1. Jeśli jeszcze tego nie zrobiono, zaloguj się do [witryny Azure portal](https://portal.azure.com).
+2. W menu po lewej stronie, kliknij polecenie **maszyny wirtualne (klasyczne)**.
    
-    ![Tekst alternatywny obrazu](./media/virtual-machines-common-classic-configure-availability/ChooseClassicVM.png)
-3. Z listy maszyn wirtualnych wybierz nazwę maszyny wirtualnej, który chcesz dodać do zestawu.
+    ![Alternatywny tekst obrazu](./media/virtual-machines-common-classic-configure-availability/ChooseClassicVM.png)
+3. Z listy maszyn wirtualnych wybierz nazwę maszyny wirtualnej, która ma zostać dodany do zestawu.
 4. Wybierz **zestawu dostępności** z maszyny wirtualnej **ustawienia**.
    
-    ![Tekst alternatywny obrazu](./media/virtual-machines-common-classic-configure-availability/AvailabilitySetSettings.png)
-5. Wybierz zestaw dostępności, które chcesz dodać do maszyny wirtualnej. Maszyna wirtualna musi należeć do tej samej usługi w chmurze jako zestawu dostępności.
+    ![Alternatywny tekst obrazu](./media/virtual-machines-common-classic-configure-availability/AvailabilitySetSettings.png)
+5. Wybierz zestaw dostępności, który chcesz dodać maszynę wirtualną w celu. Maszyna wirtualna musi należeć do tej samej usługi w chmurze jako zestawu dostępności.
    
-    ![Tekst alternatywny obrazu](./media/virtual-machines-common-classic-configure-availability/AvailabilitySetPicker.png)
+    ![Alternatywny tekst obrazu](./media/virtual-machines-common-classic-configure-availability/AvailabilitySetPicker.png)
 6. Kliknij pozycję **Zapisz**.
 
-Użycie poleceń programu Azure PowerShell, otwórz sesję programu PowerShell Azure poziomie administratora i uruchom następujące polecenie. Dla symboli zastępczych (takich jak &lt;VmCloudServiceName&gt;), Zastąp wszystko w obrębie oferty, w tym < i > znaków o poprawne nazwy.
+Aby użyć poleceń programu Azure PowerShell, otwórz sesję programu PowerShell Azure na poziomie administratora i uruchom następujące polecenie. Dla symboli zastępczych (takie jak &lt;VmCloudServiceName&gt;), Zamień wszystko w ramach oferty, w tym < a > znaków długości, poprawne nazwy.
 
     Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Set-AzureAvailabilitySet -AvailabilitySetName "<AvSetName>" | Update-AzureVM
 

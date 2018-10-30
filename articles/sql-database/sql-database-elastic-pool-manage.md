@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: 0c939956a8f3336b5071748a8c2bdf8840b749ad
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 10/29/2018
+ms.openlocfilehash: fbe648ad1869753666babd9d573f086177fc8adf
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466073"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232686"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Tworzenie i zarządzanie elastycznymi pulami w usłudze Azure SQL Database
 
@@ -99,11 +99,11 @@ Aby utworzyć i zarządzać nimi, SQL Database elastycznych pul i baz danych w p
 
 | Polecenie | Opis |
 | --- | --- |
-|[Elastyczne pule — Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_createorupdate)|Powoduje utworzenie nowej puli elastycznej lub aktualizacji istniejącej puli elastycznej.|
-|[Elastyczne pule — usuwanie](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_delete)|Usuwa puli elastycznej.|
-|[Elastyczne pule — Get](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_get)|Pobiera puli elastycznej.|
-|[Elastyczne pule — lista przez serwer](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_listbyserver)|Zwraca listę pule elastyczne na serwerze.|
-|[Elastyczne pule — aktualizacja](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_listbyserver)|Aktualizuje istniejący puli elastycznej.|
+|[Elastyczne pule — Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/elasticpools/createorupdate)|Powoduje utworzenie nowej puli elastycznej lub aktualizacji istniejącej puli elastycznej.|
+|[Elastyczne pule — usuwanie](https://docs.microsoft.com/rest/api/sql/elasticpools/delete)|Usuwa puli elastycznej.|
+|[Elastyczne pule — Get](https://docs.microsoft.com/rest/api/sql/elasticpools/get)|Pobiera puli elastycznej.|
+|[Elastyczne pule — lista przez serwer](https://docs.microsoft.com/rest/api/sql/elasticpools/listbyserver)|Zwraca listę pule elastyczne na serwerze.|
+|[Elastyczne pule — aktualizacja](https://docs.microsoft.com/rest/api/sql/elasticpools/listbyserver)|Aktualizuje istniejący puli elastycznej.|
 |[Pula elastyczna działań](https://docs.microsoft.com/rest/api/sql/elasticpoolactivities)|Zwraca działania puli elastycznej.|
 |[Pula elastyczna działań w bazie danych](https://docs.microsoft.com/rest/api/sql/elasticpooldatabaseactivities)|Zwraca działania baz danych w puli elastycznej.|
 |[Bazy danych — Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|Tworzy nową bazę danych lub aktualizuje istniejącą bazę danych.|

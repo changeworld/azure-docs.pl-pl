@@ -1,4 +1,16 @@
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: ae29451e3f7ec263f296e69656a5c66045334687
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227318"
+---
 1. Zaloguj się do subskrypcji platformy Azure, wykonując kroki opisane w [Połącz z platformą Azure z platformy Azure klasyczny interfejs wiersza polecenia](/cli/azure/authenticate-azure-cli).
 
 2. Upewnij się, że pracujesz w trybie klasycznym wdrożenia, w następujący sposób:

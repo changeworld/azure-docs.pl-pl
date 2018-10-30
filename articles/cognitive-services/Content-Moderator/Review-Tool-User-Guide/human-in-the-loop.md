@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
 ms.author: sajagtap
-ms.openlocfilehash: 1c08b30c0e59aac21d24f75d88530ba51b67d6b4
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 2e1a912f2d2aa8a6f9b165524351f2a16232537c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023937"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212203"
 ---
 # <a name="human-in-the-loop"></a>Człowieka w pętli
 
@@ -31,3 +31,5 @@ Narzędzie do przeglądu przez ludzi w połączeniu z wspomaganego maszynowo mod
 5. Dodawanie przeglądu przez ludzi do dowolnego interfejsu API lub business procesu po prostu tworząc łącznik.
 6. Używanie łączników domyślne, aby przejrzeć wyniki z PhotoDNA firmy Microsoft, analiza tekstu i interfejsy API rozpoznawania twarzy.
 7. Uzyskaj kluczowe metryki wydajności na procesy moderowanie zawartości.
+
+![Narzędzie służące do przeprowadzania przeglądu wideo usługi Content Moderator](../images/video-review-default-view.png)

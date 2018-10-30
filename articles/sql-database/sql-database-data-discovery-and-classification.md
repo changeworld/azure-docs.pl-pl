@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 32b60a53581a0f372a7d994cfa260ebd7bcb27b2
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: ffa1c45b2d9449310a2b0dcc66a513b4d8efbc5d
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467045"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232991"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Usługi Azure SQL Database Data odnajdywanie i klasyfikacja
 
@@ -132,7 +132,7 @@ Ważnym aspektem modelu ochrona informacji jest możliwość monitorowania dost�
 T-SQL umożliwia dodawanie/usuwanie klasyfikacje kolumn, a także pobrać wszystkie klasyfikacje dla całej bazy danych.
 
 > [!NOTE]
-> Zarządzanie etykiety za pomocą języka T-SQL, nie ma możliwości weryfikacji etykiety dodawane do kolumny istniejące w organizacji zasad usługi information protection (zestaw etykiet, które są wyświetlane w portalu zalecenia). Jest do nich można to sprawdzić.
+> Zarządzanie etykiety za pomocą języka T-SQL, nie ma możliwości weryfikacji etykiety dodawane do kolumny istniejące w organizacji zasad usługi information protection (zestaw etykiet, które są wyświetlane w portalu zalecenia). Dlatego jest maksymalnie można to sprawdzić.
 
 - Dodawanie/aktualizowanie klasyfikacji co najmniej jedna kolumna: [Dodaj klasyfikacji charakteru](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
 - Usunąć klasyfikację z co najmniej jedna kolumna: [PORZUCIĆ klasyfikacji charakteru](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)

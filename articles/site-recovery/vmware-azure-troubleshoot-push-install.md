@@ -1,20 +1,18 @@
 ---
-title: Rozwiązywanie problemów z błędami instalacji wypychanej usługi mobilności podczas Włącz Replication(VMware to Azure) | Dokumentacja firmy Microsoft
-description: Podczas replikowania maszyn wirtualnych platformy Azure, należy rozwiązać błędy instalacji wypychanej/usługi mobilności.
-services: site-recovery
+title: Rozwiązywanie problemów z błędami instalacji wypychanej usługi mobilności, podczas włączania replikacji na potrzeby odzyskiwania po awarii | Dokumentacja firmy Microsoft
+description: Rozwiązywanie problemów z błędami instalacji usługi mobilności, podczas włączania replikacji na potrzeby odzyskiwania po awarii
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.author: ramamill
-ms.date: 09/19/2018
-ms.openlocfilehash: 4c57d048f4c3222ac180355a6a700562415f601c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.date: 10/29/2018
+ms.openlocfilehash: c12683fee7022b84e097c2b71628776271611429
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390197"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210996"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Rozwiązywanie problemów z instalacją wypychaną usługi mobilności
 

@@ -1,19 +1,19 @@
 ---
-title: Instalowanie usługi mobilności (VMware lub fizycznych na platformę Azure) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zainstalować agenta usługi mobilności do ochrony lokalnych maszyn wirtualnych z programu VMware i serwerów fizycznych z usługą Azure Site Recovery.
+title: Instalowanie usługi mobilności na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych do platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zainstalować agenta usługi mobilności do odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure za pomocą usługi Azure Site Recovery.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: 094c1776c0760c04d85aff6ad3d812a2ad7afa56
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 145affbcff128e0ec599ad1f97c79260b0dcae5a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527001"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212696"
 ---
-# <a name="install-the-mobility-service"></a>Instalowanie usługi mobilności 
+# <a name="install-the-mobility-service-for-disaster-recovery-of-vmware-vms-and-physical-servers"></a>Instalowanie usługi mobilności na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych
 
 Usługa mobilności Azure Site Recovery jest zainstalowany na maszynach wirtualnych VMware i serwerów fizycznych, które mają być replikowane na platformie Azure. Ta usługa służy do przechwytywania zapisów danych na komputerze i przekazuje je do serwera przetwarzania. Wdrażanie usługi mobilności na każdym komputerze (maszyna wirtualna VMware lub serwera fizycznego), który ma zostać zreplikowana na platformę Azure. Można wdrożyć usługi mobilności na serwerach i maszyny wirtualne VMware, które chcesz chronić za pomocą następujących metod:
 

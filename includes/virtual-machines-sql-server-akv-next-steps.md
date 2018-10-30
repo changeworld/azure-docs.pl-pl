@@ -1,18 +1,31 @@
+---
+author: rothja
+ms.service: virtual-machines-sql
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: jroth
+ms.openlocfilehash: 22f16a7382cb0fe1f3fe2a6ef5e7c00a6989623c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227179"
+---
 ## <a name="next-steps"></a>Kolejne kroki
 
-Po włączeniu integracji magazynu kluczy Azure, programu SQL Server szyfrowanie można włączyć na maszynie Wirtualnej SQL. Najpierw należy utworzyć klucz asymetryczny wewnątrz magazynu kluczy oraz klucz symetryczny w programie SQL Server na maszynie Wirtualnej. Następnie można wykonać instrukcje T-SQL, aby włączyć szyfrowanie dla baz danych i tworzenie kopii zapasowych.
+Po włączeniu integracji magazynu kluczy Azure, aby umożliwić szyfrowania programu SQL Server na maszynie Wirtualnej programu SQL. Najpierw należy utworzyć klucz asymetryczny wewnątrz własnego magazynu kluczy i klucz symetryczny w programie SQL Server na maszynie Wirtualnej. Następnie można wykonać instrukcje języka T-SQL, aby włączyć szyfrowanie dla baz danych i kopie zapasowe.
 
-Istnieje kilka metod można korzystać z szyfrowania:
+Istnieją różne formy szyfrowania, których możesz korzystać z zalet:
 
-* [Przezroczystego szyfrowania danych (funkcji TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
-* [Zaszyfrowanej kopii zapasowych](https://msdn.microsoft.com/library/dn449489.aspx)
+* [Transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
+* [Zaszyfrowane kopie zapasowe](https://msdn.microsoft.com/library/dn449489.aspx)
 * [Szyfrowanie na poziomie kolumny (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)
 
-Następujące skrypty języka Transact-SQL zawierają przykłady dla każdego z tych obszarów.
+Poniższe skrypty języka Transact-SQL zawierają przykłady dla każdego z tych obszarów.
 
-### <a name="prerequisites-for-examples"></a>Wymagania wstępne dotyczące przykłady
+### <a name="prerequisites-for-examples"></a>Wymagania wstępne dotyczące przykładów
 
-Każdy przykład jest oparty na dwóch wymagań wstępnych: klucza asymetrycznego z magazynu kluczy o nazwie **CONTOSO_KEY** i wywołać poświadczenie utworzona przez funkcję Integracja **Azure_EKM_TDE_cred**. Następujące polecenia języka Transact-SQL, należy skonfigurować te wymagania wstępne dotyczące uruchamiania przykładów.
+Każdy przykład jest oparty na dwa wymagania wstępne: klucza asymetrycznego z usługi key vault o nazwie **CONTOSO_KEY** oraz utworzona przez funkcję Integracja poświadczenia o nazwie **Azure_EKM_TDE_cred**. Następujące polecenia języka Transact-SQL, skonfiguruj te wymagania wstępne dotyczące uruchamiania przykładów.
 
 ``` sql
 USE master;
@@ -37,9 +50,9 @@ WITH PROVIDER_KEY_NAME = 'KeyName_in_KeyVault',  --The key name here requires th
 CREATION_DISPOSITION = OPEN_EXISTING;
 ```
 
-### <a name="transparent-data-encryption-tde"></a>Przezroczystego szyfrowania danych (funkcji TDE)
+### <a name="transparent-data-encryption-tde"></a>Transparent Data Encryption (TDE)
 
-1. Utwórz dane logowania programu SQL Server używanego przez aparat bazy danych dla funkcji TDE, a następnie Dodaj poświadczenia do niej.
+1. Utwórz identyfikator logowania programu SQL Server do użycia przez aparat bazy danych dla funkcji TDE, a następnie dodać poświadczeń do niego.
 
    ``` sql
    USE master;
@@ -74,9 +87,9 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-### <a name="encrypted-backups"></a>Zaszyfrowanej kopii zapasowych
+### <a name="encrypted-backups"></a>Zaszyfrowane kopie zapasowe
 
-1. Utwórz dane logowania programu SQL Server używanego przez aparat bazy danych do szyfrowania kopii zapasowych, a następnie Dodaj poświadczenia do niej.
+1. Utwórz identyfikator logowania programu SQL Server do użycia przez aparat bazy danych do szyfrowania kopii zapasowych, a następnie dodać poświadczeń do niego.
 
    ``` sql
    USE master;
@@ -93,7 +106,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-1. Kopia zapasowa szyfrowania Określanie bazy danych przy użyciu klucza asymetrycznego przechowywane w magazynie kluczy.
+1. Tworzenie kopii zapasowej szyfrowania Określanie bazy danych za pomocą klucza asymetrycznego, przechowywanych w magazynie kluczy.
 
    ``` sql
    USE master;
@@ -106,7 +119,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
 
 ### <a name="column-level-encryption-cle"></a>Szyfrowanie na poziomie kolumny (CLE)
 
-Ten skrypt tworzy klucza symetrycznego chronione za pomocą klucza asymetrycznego w magazynie kluczy, a następnie używa klucza symetrycznego do szyfrowania danych w bazie danych.
+Ten skrypt tworzy klucz symetryczny chronione za pomocą klucza asymetrycznego, w usłudze key vault, a następnie używa klucza symetrycznego, aby szyfrować dane w bazie danych.
 
 ``` sql
 CREATE SYMMETRIC KEY DATA_ENCRYPTION_KEY
@@ -131,6 +144,6 @@ CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-Aby uzyskać więcej informacji na temat sposobu korzystania z tych funkcji szyfrowania, zobacz [EKM korzystanie z funkcji programu SQL Server szyfrowania](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM).
+Aby uzyskać więcej informacji na temat sposobu korzystania z tych funkcji szyfrowania, zobacz [przy użyciu EKM za pomocą funkcji szyfrowania serwera SQL](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM).
 
-Należy pamiętać, że kroki opisane w tym artykule założono, że już istnieje na serwerze SQL działa na maszynie wirtualnej platformy Azure. Jeśli nie, zobacz [Aprowizowanie maszyny wirtualnej programu SQL Server na platformie Azure](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md). Aby inne programem SQL Server na maszynach wirtualnych Azure, zobacz [programu SQL Server na maszynach wirtualnych platformy Azure — omówienie](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Pamiętaj, że kroki opisane w tym artykule przyjęto założenie, że masz już program SQL Server działający na maszynie wirtualnej platformy Azure. Jeśli nie, zobacz [Aprowizowanie maszyny wirtualnej programu SQL Server na platformie Azure](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md). Aby uzyskać inne wskazówki na temat uruchamiania programu SQL Server na maszynach wirtualnych platformy Azure, zobacz [programu SQL Server na maszynach wirtualnych platformy Azure — omówienie](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md).

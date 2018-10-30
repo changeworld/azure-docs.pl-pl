@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 10/29/2018
 ms.author: juliako
-ms.openlocfilehash: 1d626a22802a1de19bcc5647179d76d44e826cfd
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f15ba7606136786b49eb4d6a0da097e7abf3fab4
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50159047"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231665"
 ---
 # <a name="scaling-media-processing-overview"></a>Skalowanie przetwarzania multimediów — omówienie
 Ta strona zawiera omówienie, jak i dlaczego skalowanie przetwarzania multimediów. 
@@ -33,7 +33,7 @@ Poniższa tabela pomaga Ci w podjęciu decyzji, wybierając między różne szyb
 
 |Typ jednostek|Scenariusz|Przykładowe wyniki dla [7 min 1080 p wideo](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z)|
 |---|---|---|
-| **S1**|Pojedyncza szybkość transmisji bitów kodowania. <br/>Pliki SD większa niż rozwiązania, nie raz poufnych, niskich kosztów.|Kodowanie do pojedynczego pliku MP4, w tym samym rozdzielczości transmisji bitów trwa około 5 minut.|
+| **S1**|Pojedyncza szybkość transmisji bitów kodowania. <br/>Pliki SD większa niż rozwiązania, nie raz poufnych, niskich kosztów.|Kodowanie do pojedynczego szybkości transmisji bitów SD rozpoznawania plik MP4 przy użyciu "Jednej transmisji bitów H264 SD 16 x 9" Trwa 10 minut.|
 | **S2**|Pojedyncza szybkość transmisji bitów i wielu kodowanie szybkości transmisji bitów.<br/>Normalnego użycia na potrzeby SD i HD kodowania.|Za pomocą "Pojedynczy szybkość transmisji bitów H264 720p" ustawienie wstępne kodowania zajmuje około 8 minut.<br/><br/>Kodowanie za pomocą "H264 szybkość transmisji bitów h264 720p" ustawienie wstępne zajmuje około 16,8 minut.|
 | **S3**|Pojedyncza szybkość transmisji bitów i wielu kodowanie szybkości transmisji bitów.<br/>Pełne HD i 4K rozdzielczości wideo. Czas przetwarzania poufnych, szybsze kodowanie.|Za pomocą "Pojedynczy szybkość transmisji bitów H264 1080p" ustawienie wstępne kodowania zajmuje około 4 minuty.<br/><br/>Kodowanie za pomocą "H264 szybkość transmisji bitów h264 1080p" ustawienie wstępne zajmuje około 8 minut.|
 

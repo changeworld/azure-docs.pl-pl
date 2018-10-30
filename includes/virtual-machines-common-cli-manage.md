@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: e08e6ca4f6413b475bd8a0e5ff30b74921c2f0e6
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226807"
+---
 Interfejs wiersza polecenia platformy Azure umożliwia tworzenie i zarządzanie zasobami platformy Azure w systemach macOS, Linux i Windows. Ten artykuł szczegółowo opisuje niektóre z najczęściej używanych poleceń, aby utworzyć i zarządzać maszyn wirtualnych (VM).
 
 Ten artykuł wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli musisz uaktualnić, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj](/cli/azure/install-azure-cli). Można również użyć [Cloud Shell](/azure/cloud-shell/quickstart) z poziomu przeglądarki.

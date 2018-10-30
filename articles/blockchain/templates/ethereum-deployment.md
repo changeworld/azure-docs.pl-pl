@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 5/21/2018
+ms.date: 10/29/2018
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: 823bea9bac8ff270d5b5c02e3b76a2f7236c9c99
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: fa58ecf4607efc1d212e40b98d199756d4b987f8
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242922"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231801"
 ---
 # <a name="ethereum-proof-of-work-consortium-solution-template"></a>Szablon rozwiązania konsorcjum dowód pracy Ethereum
 
@@ -119,7 +119,7 @@ Piąty regionu| Piąty region, aby wdrożyć sieć konsorcjum (widoczne tylko wt
 
 ### <a name="network-size-and-performance"></a>Network Activity block size i wydajności
 
-Następnie w obszarze **rozmiaru i wydajność sieci** Określ dane wejściowe dla rozmiaru sieci konsorcjum, takie jak liczba i rozmiar węzłów wyszukiwania i węzłów transakcji.
+Następnie w obszarze **rozmiaru i wydajność sieci** Określ dane wejściowe dla rozmiaru sieci konsorcjum. Takie jak liczba i rozmiar węzłów wyszukiwania i węzłów transakcji.
 
 ![Network Activity block size i wydajności](./media/ethereum-deployment/network-size-performance.png)
 
@@ -261,10 +261,10 @@ Następnie zaimportuj moduł:
 
 Na koniec uruchom funkcję przy użyciu odpowiednich danych wejściowych:
 
-- **MyGatewayResourceId** : ścieżka zasobu bramy. Jest to parametr wyjściowy szablonu wdrożenia o nazwie **CONSORTIUM_MEMBER_GATEWAY_ID**.
-- **OtherGatewayResourceId** : ścieżka zasobu bramy przyłączany elementu członkowskiego. To jest świadczona przez przyłączany elementu członkowskiego i parametr wyjściowy szablonu wdrożenia programu o nazwie **CONSORTIUM_MEMBER_GATEWAY_ID**.
-- **ConnectionName** : Nazwa do identyfikowania tego połączenia bramy.
-- **Klucz wspólny** : wstępnie ustaloną klucz tajny między dwoma składnikami sieci konsorcjum, które są nawiązywania połączenia z.
+- **MyGatewayResourceId:** ścieżka zasobu bramy. Jest to parametr wyjściowy szablonu wdrożenia o nazwie **CONSORTIUM_MEMBER_GATEWAY_ID**.
+- **OtherGatewayResourceId:** ścieżka zasobu bramy przyłączany elementu członkowskiego. To jest świadczona przez przyłączany elementu członkowskiego i parametr wyjściowy szablonu wdrożenia programu o nazwie **CONSORTIUM_MEMBER_GATEWAY_ID**.
+- **ConnectionName:** nazwy do identyfikowania tego połączenia bramy.
+- **Klucz współużytkowany:** wstępnie ustaloną klucz tajny między dwoma składnikami sieci konsorcjum, które są nawiązywania połączenia z.
 
 **CreateConnection** -MyGatewayResourceId <resource path of your Gateway> - OtherGatewayResourceId < ścieżka zasobu bramy przyłączany składowej > - ConnectionName Mojepołączenie - SharedKey "MySharedKeyAbc123"
 
@@ -274,11 +274,11 @@ Pobierz skrypt wiersza polecenia platformy Azure, a następnie zapisz go lokalni
 
 Uruchom skrypt przy użyciu odpowiednich danych wejściowych:
 
-- **MyGatewayResourceId** : ścieżka zasobu bramy. Jest to parametr wyjściowy szablonu wdrożenia o nazwie **CONSORTIUM_MEMBER_GATEWAY_ID**.
-- **OtherGatewayResourceId** : ścieżka zasobu bramy przyłączany elementu członkowskiego. To jest dostarczany przez przyłączany elementu członkowskiego, a parametr szablonu wdrożenia ich wdrożenia o nazwie **CONSORTIUM_MEMBER_GATEWAY_ID**.
-- **ConnectionName** : Nazwa do identyfikowania tego połączenia bramy.
-- **Klucz wspólny** : wstępnie ustaloną klucz tajny między dwoma składnikami sieci konsorcjum, które są nawiązywania połączenia z.
-- **Lokalizacja** : region platformy Azure wdrożonym zasobu bramy.
+- **MyGatewayResourceId:** ścieżka zasobu bramy. Jest to parametr wyjściowy szablonu wdrożenia o nazwie **CONSORTIUM_MEMBER_GATEWAY_ID**.
+- **OtherGatewayResourceId:** ścieżka zasobu bramy przyłączany elementu członkowskiego. To jest dostarczany przez przyłączany elementu członkowskiego, a parametr szablonu wdrożenia ich wdrożenia o nazwie **CONSORTIUM_MEMBER_GATEWAY_ID**.
+- **ConnectionName:** nazwy do identyfikowania tego połączenia bramy.
+- **Klucz współużytkowany:** wstępnie ustaloną klucz tajny między dwoma składnikami sieci konsorcjum, które są nawiązywania połączenia z.
+- **Lokalizacja:** regionu platformy Azure, w której wdrożono zasób bramy.
 
 ``` powershell
 az network vpn-connection create --name $ConnectionName --resource-group
@@ -316,7 +316,7 @@ Aby zainstalować rozszerzenia w przeglądarce Chrome, przejdź do dostosowania 
 
 ![Rozszerzenie MetaMask](./media/ethereum-deployment/metamask-extension.png)
 
-Po zainstalowaniu Otwórz MetaMask i Utwórz nowy magazyn. Domyślnie Magazyn zostaną podłączone do testowej sieci Morden. Należy zmienić ten element, aby połączyć się z siecią wdrożonej konsorcjum prywatnych do modułu równoważenia obciążenia przed węzłów transakcji. Z danych wyjściowych szablonu, należy pobrać narażonych końcowych wywołań RPC Ethereum w porcie 8545, o nazwie `ETHEREUM-RPC-ENDPOINT`i wprowadź go na niestandardowych RPC, jak pokazano poniżej.
+Po zainstalowaniu Otwórz MetaMask i Utwórz nowy magazyn. Domyślnie Magazyn zostaną podłączone do testowej sieci Morden. Zmień ten element, aby połączyć się z siecią wdrożonej konsorcjum prywatnych do modułu równoważenia obciążenia przed węzłów transakcji. Z danych wyjściowych szablonu, należy pobrać narażonych końcowych wywołań RPC Ethereum w porcie 8545, o nazwie `ETHEREUM-RPC-ENDPOINT`i wprowadź go na niestandardowych RPC, jak pokazano poniżej.
 
 ![Ustawienia MetaMask](./media/ethereum-deployment/metamask-settings.png)
 

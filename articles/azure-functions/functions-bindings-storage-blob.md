@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: glenga
-ms.openlocfilehash: 4b1210d02d763ac8ad2b5c651b01f9a3cdd8695f
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 0c6f62b4390ba6084abce9b1354fbcf17a9d3b79
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087308"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232974"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Usługa Azure powiązania magazynu obiektów Blob dla usługi Azure Functions
 
@@ -282,7 +282,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**type** | Nie dotyczy | Musi być równa `blobTrigger`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
 |**direction** | Nie dotyczy | Musi być równa `in`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. Wyjątki są zaznaczone w [użycia](#trigger---usage) sekcji. |
 |**Nazwa** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt blob w kodzie funkcji. | 
-|**Ścieżka** | **BlobPath** |Kontener do monitorowania.  Może być [wzorzec nazwy obiektu blob](#trigger-blob-name-patterns). | 
+|**Ścieżka** | **BlobPath** |Kontener do monitorowania.  Może być [wzorzec nazwy obiektu blob](#trigger---blob-name-patterns). | 
 |**połączenia** | **połączenia** | Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.<br><br>Parametry połączenia nie może być dla konta magazynu ogólnego przeznaczenia, [konta magazynu obiektów Blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

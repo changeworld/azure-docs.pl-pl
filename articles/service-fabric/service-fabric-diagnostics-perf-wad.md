@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/26/2018
 ms.author: srrengar
-ms.openlocfilehash: 68e0192756db539767dd808d0f0d408e77c2ae1b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: bc86ef5a32e08bc00b5a2fa53dccb8d6313f167b
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405654"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230989"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Monitorowanie wydajności za pomocą rozszerzenia diagnostyki Azure Windows
 
@@ -115,7 +115,7 @@ Poniżej przedstawiono przykład konfiguracji za pomocą licznika dla *łączny 
     New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
-5. Po zakończeniu uaktualniania wprowadza (trwa od 15 do 45 minut), WAD należy zbierać liczniki wydajności i wysyła je do tabeli o nazwie WADPerformanceCountersTable w ramach konta magazynu skojarzone z klastrem. Zobacz liczniki wydajności w usłudze Application Insights przez [Dodawanie ujścia sztucznej Inteligencji do szablonu usługi Resource Manager](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template).
+5. Po zakończeniu uaktualniania wprowadza (trwa od 15 do 45 minut), WAD należy zbierać liczniki wydajności i wysyła je do tabeli o nazwie WADPerformanceCountersTable w ramach konta magazynu skojarzone z klastrem. Zobacz liczniki wydajności w usłudze Application Insights przez [Dodawanie ujścia sztucznej Inteligencji do szablonu usługi Resource Manager](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Zbieranie większej liczby liczników wydajności dla klastra. Zobacz [metryki wydajności](service-fabric-diagnostics-event-generation-perf.md) listę liczników, które należy zebrać.

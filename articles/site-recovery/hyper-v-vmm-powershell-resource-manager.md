@@ -1,6 +1,6 @@
 ---
-title: Replikowanie maszyn wirtualnych z funkcją Hyper-V w chmurach programu Virtual Machine Manager do lokacji dodatkowej przy użyciu programu PowerShell (Azure Resource Manager) | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób replikowania maszyn wirtualnych z funkcją Hyper-V w chmurach programu Virtual Machine Manager do lokacji dodatkowej programu Virtual Machine Manager przy użyciu programu PowerShell (Resource Manager)
+title: Konfigurowanie odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V w chmurach programu VMM do lokacji dodatkowej przy użyciu programu PowerShell i usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób konfigurowania odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V w chmurach programu VMM do lokacji dodatkowej programu VMM przy użyciu programu PowerShell i usługi Azure Site Recovery.
 services: site-recovery
 author: sujayt
 manager: rochakm
@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: sutalasi
-ms.openlocfilehash: 896b3cb3c40673dfbc7269cab1d37790f78912b0
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 6ade1d584fad05e33a72a0ff5099378a9cf7f29f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041360"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214583"
 ---
-# <a name="replicate-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Replikowanie maszyn wirtualnych funkcji Hyper-V do lokacji dodatkowej przy użyciu programu PowerShell (Resource Manager)
+# <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Konfigurowanie odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V do lokacji dodatkowej przy użyciu programu PowerShell (Resource Manager)
 
 W tym artykule pokazano, jak do automatyzowania czynności w przypadku replikacji maszyn wirtualnych z funkcją Hyper-V w chmurach programu System Center Virtual Machine Manager do programu Virtual Machine Manager chmury w dodatkowej lokacji lokalnej przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md).
 

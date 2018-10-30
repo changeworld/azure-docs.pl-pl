@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: cc051e1ba0bbea68bb1e888168883351bf4f730f
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: e440cca59bde1c845bc99ef137c18242e888ee06
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406215"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230101"
 ---
 # <a name="performance-monitoring-with-log-analytics"></a>Monitorowanie wydajności za pomocą usługi Log Analytics
 
@@ -100,4 +100,4 @@ Teraz, że dodano agenta usługi Log Analytics, head w tryb failover do portalu 
 
 * Zbierz odpowiednie [liczniki wydajności](service-fabric-diagnostics-event-generation-perf.md). Aby skonfigurować agenta usługi Log Analytics można zebrać liczników wydajności określonych, zapoznaj się z [Konfigurowanie źródeł danych](../log-analytics/log-analytics-data-sources.md#configuring-data-sources).
 * Skonfiguruj usługę Log Analytics, aby skonfigurować [automatyczne alerty](../log-analytics/log-analytics-alerts.md) ułatwiające wykrywanie i przeprowadzanie diagnostyki
-* Alternatywnie można zebrać liczników wydajności za pośrednictwem [rozszerzenie diagnostyki platformy Azure i wysyłać je do usługi Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template)
+* Alternatywnie można zebrać liczników wydajności za pośrednictwem [rozszerzenie diagnostyki platformy Azure i wysyłać je do usługi Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template)

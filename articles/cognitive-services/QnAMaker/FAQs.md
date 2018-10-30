@@ -8,32 +8,40 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 10/25/2018
 ms.author: tulasim
-ms.openlocfilehash: efefd595c43d7f46ff1ead91577d070cf8fb90e4
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 9597b878eb3d92727b352ba42a9e5557bb1cc799
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164620"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211438"
 ---
 # <a name="frequently-asked-questions"></a>Często zadawane pytania
 
 ## <a name="why-is-my-urlsfiles-is-not-extracting-question-answer-pairs"></a>Dlaczego jest Moje adresy URL / pliki nie wyodrębnia pary odpowiedź na pytanie?
 
-Istnieje możliwość, że usługa QnA Maker nie może automatycznie wyodrębnić część zawartości (pytań i odpowiedzi) pytań i odpowiedzi z prawidłowych adresów URL. W takich przypadkach możesz wkleić zawartość pytań i odpowiedzi w pliku txt i zobaczyć, jeśli to narzędzie umożliwia pobieranie go. Alternatywnie możesz przez jej tradycyjne zredagowanie dodać zawartość do bazy wiedzy.
+Istnieje możliwość, że usługa QnA Maker nie może automatycznie wyodrębnić część zawartości (pytań i odpowiedzi) pytań i odpowiedzi z prawidłowych adresów URL. W takich przypadkach możesz wkleić zawartość pytań i odpowiedzi w pliku txt i zobaczyć, jeśli to narzędzie umożliwia pobieranie go. Alternatywnie możesz przez jej tradycyjne zredagowanie dodać zawartość do bazy wiedzy za pośrednictwem [portalu narzędzia QnA Maker](https://qnamaker.ai).
 
 ## <a name="how-large-a-knowledge-base-can-i-create"></a>Jak duże bazy wiedzy można tworzyć?
 
 Wyszukiwanie jednostek SKU usługi Azure, które można wybrać podczas tworzenia usługi QnA Maker zależy od rozmiaru bazy wiedzy knowledge base. Odczyt [tutaj](./Tutorials/choosing-capacity-qnamaker-deployment.md) Aby uzyskać więcej informacji.
 
-## <a name="why-do-i-not-see-anything-in-the-drop-down-for-when-i-try-to-create-a-new-knowledge-base"></a>Dlaczego nie widzę żadnego z listy rozwijanej dla elementów podczas próby utworzenia nowej bazy wiedzy?
+## <a name="why-cant-i-see-anything-in-the-drop-down-when-i-try-to-create-a-new-knowledge-base"></a>Dlaczego nie widzę żadnych czynności w listy rozwijanej podczas próby utworzenia nowej bazy wiedzy?
 
-Nie utworzono jeszcze żadnych usługi QnA Maker na platformie Azure. Odczyt [tutaj](./How-To/set-up-qnamaker-service-azure.md) jak to zrobić.
+Nie utworzono jeszcze żadnych usługi QnA Maker na platformie Azure. Odczyt [tutaj](./How-To/set-up-qnamaker-service-azure.md) dowiesz się, jak to zrobić.
 
-## <a name="how-do-i-share-a-knowledge-base-with-other"></a>Jak udostępnić wiedzy innym?
+## <a name="how-do-i-share-a-knowledge-base-with-others"></a>Jak udostępnić wiedzy innym osobom?
 
-Udostępnianie działa na poziomie usługi QnA Maker, czyli wszystkich baz wiedzy w usługach zostaną udostępnione. Odczyt [tutaj](./How-To/collaborate-knowledge-base.md) jak współpracować nad wiedzy.
+Udostępnianie działa na poziomie usługi QnA Maker, oznacza to, że wszystkie baz wiedzy w usłudze zostaną udostępnione. Odczyt [tutaj](./How-To/collaborate-knowledge-base.md) jak współpracować nad wiedzy.
+
+## <a name="can-you-share-a-kb-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-kb"></a>Możesz udostępnić bazę wiedzy współautorów którzy nie znajduje się w tej samej dzierżawie usługi AAD do modyfikowania bazy wiedzy? 
+
+Udostępnianie bazuje na kontroli dostępu opartej na rolach na platformie Azure (RBAC). Jeśli możesz udostępniać _wszelkie_ zasobów na platformie Azure przy użyciu innego użytkownika, można także udostępnić usługi QnA Maker.
+
+## <a name="if-you-have-an-app-service-plan-with-5-qnamaker-kbs-can-you-assign-readwrite-rights-to-5-different-users-so-each-of-them-can-access-only-1-qnamaker-kb"></a>Jeśli masz Plan usługi App Service z dnia 5 QnAMaker artykułów bazy wiedzy. Aby każdego z nich można uzyskiwać dostęp do QnAMaker tylko 1 KB można przypisać uprawnienia odczytu/zapisu do 5 różnych użytkowników?
+
+Możesz udostępniać całej usługi qna Maker przechowuje wszelką, nie do poszczególnych artykułów bazy wiedzy.
 
 ## <a name="how-can-i-change-the-default-message-when-no-good-match-is-found"></a>Jak można zmienić domyślną wiadomość, gdy zostanie odnaleziona żadna zgodna dobre?
 
@@ -56,7 +64,7 @@ Narzędzie analizuje tylko publiczne adresy URL i nie obsługuje źródeł danyc
 
 ## <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>Aktualizacje wprowadzone wiedzy nie są odzwierciedlane publikowanie. Dlaczego?
 
-Każdej operacji edycji w aktualizacji tabeli, testów i ustawień, musi zostać zapisany zanim można go opublikować. Pamiętaj kliknij przycisk Zapisz, a następnie szkolenie przycisku po każdej operacji edycji.
+Każdej operacji edycji w tabeli aktualizacji, testowym czy ustawienie, musi zostać zapisany zanim można go opublikować. Należy kliknąć przycisk **Zapisz i szkolenie** przycisku po każdej operacji edycji.
 
 ## <a name="when-should-i-refresh-my-endpoint-keys"></a>Podczas odświeżania Moje klucze punktu końcowego?
 
@@ -74,13 +82,17 @@ Zobacz więcej szczegółów na temat [obsługiwane języki](./Overview/language
 
 Jeśli masz zawartości z wielu języków, należy utworzyć osobną usługą dla każdego języka.
 
+## <a name="can-i-use-the-same-azure-search-resource-for-kbs-using-multiple-languages"></a>Czy można używać tego samego zasobu usługi Azure Search do artykułów bazy wiedzy przy użyciu wielu języków?
+
+Aby korzystać z wielu języków i wiele artykułów bazy wiedzy, użytkownik musi utworzyć zasób usługi QnA Maker dla każdego języka. Spowoduje to utworzenie usługi wyszukiwania platformy Azure, dla każdego języka. Mieszanie inny język artykułów bazy wiedzy w ramach jednej usługi Azure search usługi spowoduje o obniżonym poziomie istotności wyników.
+
 ## <a name="do-i-need-to-use-bot-framework-in-order-to-use-qna-maker"></a>Czy do używania narzędzia QnA Maker potrzebna jest struktura botów?
 
-Nie, nie ma potrzeby platformy Bot Framework za pomocą usługi QnA Maker. Jednak narzędzie QnA Maker jest oferowana jako jeden z kilku szablonów w usłudze Azure Bot Service. Usługa BOT Service umożliwia szybkie tworzenie inteligentnych botów programowania za pomocą narzędzi Microsoft Bot Framework i działa na serwerze mniej środowiska.
+Nie, nie ma potrzeby platformy Bot Framework za pomocą usługi QnA Maker. Jednak narzędzie QnA Maker jest oferowana jako jeden z kilku szablonów w usłudze Azure Bot Service. Usługa BOT Service umożliwia szybkie tworzenie inteligentnych botów programowania za pomocą narzędzi Microsoft Bot Framework i działa w środowisku bez serwera.
 
 ## <a name="how-can-i-create-a-bot-with-qna-maker"></a>Jak utworzyć robota przy użyciu usługi QnA Maker?
 
-Postępuj zgodnie z instrukcjami w [to](./Tutorials/create-qna-bot.md) dokumentacji do tworzenie Bota przy użyciu usługi Azure Bot.
+Postępuj zgodnie z instrukcjami w [to](./Tutorials/create-qna-bot.md) dokumentacji do tworzenia Bota usługa Azure Bot Service.
 
 ## <a name="how-do-i-embed-the-qna-maker-service-in-my-website"></a>Jak osadzić usługę QnA Maker w witrynie internetowej?
 

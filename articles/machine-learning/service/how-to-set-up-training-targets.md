@@ -10,18 +10,18 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 7754e93035a5f76d31f6a4202c757c909706a52a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 2c4255b70ae9eb3b31b6fdfce33853f0d517aa1f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156939"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215484"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>Wybierz, a następnie użyć obliczeniowego elementu docelowego do nauczenia modelu
 
-Za pomocą usługi Azure Machine Learning możesz uczyć modelu w kilku różnych środowiskach. Te środowiska o nazwie __celów obliczeń__, może być lokalne lub w chmurze. W tym dokumencie zawiera informacje o obsługiwanych obliczeniowych elementów docelowych i sposobu ich używania.
+Za pomocą usługi Azure Machine Learning możesz uczyć modelu w różnych środowiskach. Te środowiska o nazwie __celów obliczeń__, może być lokalne lub w chmurze. W tym dokumencie informacje o obsługiwanych obliczeniowych elementów docelowych i sposobu ich używania.
 
-Cel obliczenia jest zasobem, który jest uruchamiany skrypt szkolenia lub hosty modelu po jego wdrożeniu jako usługę sieci web. One mogą być tworzone i zarządzane przy użyciu zestawu SDK usługi Azure Machine Learning lub interfejsu wiersza polecenia. Jeśli masz obliczeniowych elementów docelowych, które zostały utworzone przez inny proces (na przykład, witryny Azure portal lub interfejsu wiersza polecenia platformy Azure), możesz ich używać, dołączanie ich do obszaru roboczego usługi Azure Machine Learning.
+Cel obliczenia jest zasobem, który jest uruchamiany skrypt szkolenia lub udostępnia swój model, gdy aplikacja jest wdrożona jako usługę sieci web. One mogą być tworzone i zarządzane przy użyciu zestawu SDK usługi Azure Machine Learning lub interfejsu wiersza polecenia. Jeśli masz obliczeniowych elementów docelowych, które zostały utworzone przez inny proces (na przykład, witryny Azure portal lub interfejsu wiersza polecenia platformy Azure), możesz ich używać, dołączanie ich do obszaru roboczego usługi Azure Machine Learning.
 
 Można rozpoczynać przebiegów lokalnych na komputerze, a następnie skalowania w górę i do innych środowisk, takich jak zdalnych maszyn wirtualnych do nauki o danych z procesorem GPU lub usługi Azure Batch AI. 
 
@@ -36,8 +36,13 @@ Usługa Azure Machine Learning obsługuje następujące obliczeniowych elementó
 |----|:----:|:----:|:----:|:----:|
 |[Komputer lokalny](#local)| Być może | &nbsp; | ✓ | &nbsp; |
 |[Maszyna wirtualna do nauki o danych (DSVM)](#dsvm) | ✓ | ✓ | ✓ | ✓ |
-|[Usługa Azure Batch AI](#batch)| ✓ | ✓ | ✓ | ✓ | ✓ |
+|[Usługa Azure Batch AI](#batch)| ✓ | ✓ | ✓ | ✓ |
+|[Azure Databricks](#databricks)| &nbsp; | &nbsp; | &nbsp; | ✓[*](#pipeline-only) |
+|[Azure Data Lake Analytics](#adla)| &nbsp; | &nbsp; | &nbsp; | ✓[*](#pipeline-only) |
 |[Usługa Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
+
+> [!IMPORTANT]
+> <a id="pipeline-only"></a>* Usługa azure Databricks i Azure Data Lake Analytics może __tylko__ można używać w potoku. Aby uzyskać więcej informacji na temat potoków, zobacz [potoki w usłudze Azure Machine Learning](concept-ml-pipelines.md) dokumentu.
 
 __[Usługa Azure Container Instances (ACI)](#aci)__  może również służyć do uczenia modeli. To bezserwerowe w chmurze niedrogich i ułatwia tworzenie i Praca z. ACI nie obsługuje przyspieszenia procesora GPU, zautomatyzowane parametr hyper dostrajania, lub zautomatyzowane wybór modelu. Ponadto nie można użyć w potoku.
 
@@ -52,7 +57,7 @@ Zestaw SDK usługi Azure Machine Learning, wiersza polecenia platformy Azure lub
 > [!IMPORTANT]
 > Nie można dołączyć istniejącego wystąpienia kontenerów platformy Azure do swojego obszaru roboczego. Zamiast tego należy utworzyć nowe wystąpienie.
 >
-> Nie można utworzyć klaster usługi HDInsight platformy Azure, w obszarze roboczym. Zamiast tego należy dołączyć istniejący klaster.
+> Nie można utworzyć usługi Azure HDInsight, Azure Databricks i Azure Data Lake Store, w obszarze roboczym. Zamiast tego należy utworzyć zasób i następnie dołączyć go do obszaru roboczego.
 
 ## <a name="workflow"></a>Przepływ pracy
 
@@ -311,6 +316,106 @@ Może potrwać od kilku sekund do kilku minut utworzyć cel obliczenia ACI.
 
 Dla notesu Jupyter, który demonstruje szkolenie dotyczące wystąpienia kontenera platformy Azure, zobacz [ https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci/03.train-on-aci.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci/03.train-on-aci.ipynb).
 
+## <a id="databricks"></a>Usługa Azure Databricks
+
+Usługa Azure Databricks to oparta na platformie Apache Spark środowisko w chmurze platformy Azure. Może służyć jako cel obliczenia podczas uczenia modeli za pomocą potoku usługi Azure Machine Learning.
+
+> [!IMPORTANT]
+> Usługa Azure Databricks obliczeniowego elementu docelowego należy używać tylko w potoku uczenia maszynowego.
+>
+> Przed użyciem w celu nauczenia modelu, należy utworzyć obszar roboczy usługi Azure Databricks. Aby utworzyć tych zasobów, zobacz [uruchamianie zadania Spark w usłudze Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) dokumentu.
+
+Aby dołączyć usługi Azure Databricks, jako cel obliczenia, możesz użyć zestawu SDK usługi Azure Machine Learning i podaj następujące informacje:
+
+* __Nazwa obliczeniowego__: nazwa, którą chcesz przypisać do tego zasobu obliczeniowego.
+* __Identyfikator zasobu__: identyfikator zasobu obszaru roboczego usługi Azure Databricks. Następujący tekst jest przykładem formatu dla tej wartości:
+
+    ```text
+    /subscriptions/<your_subscription>/resourceGroups/<resource-group-name>/providers/Microsoft.Databricks/workspaces/<databricks-workspace-name>
+    ```
+
+    > [!TIP]
+    > Aby uzyskać identyfikator zasobu, użyj następującego polecenia wiersza polecenia platformy Azure. Zastąp `<databricks-ws>` nazwą obszaru roboczego usługi Databricks:
+    > ```azurecli-interactive
+    > az resource list --name <databricks-ws> --query [].id
+    > ```
+
+* __Token dostępu__: token dostępu używany do uwierzytelniania usługi Azure Databricks. Aby wygenerować token dostępu, zobacz [uwierzytelniania](https://docs.azuredatabricks.net/api/latest/authentication.html) dokumentu.
+
+Poniższy kod przedstawia sposób dołączania usługi Azure Databricks, jako cel obliczenia:
+
+```python
+databricks_compute_name = os.environ.get("AML_DATABRICKS_COMPUTE_NAME", "<databricks_compute_name>")
+databricks_resource_id = os.environ.get("AML_DATABRICKS_RESOURCE_ID", "<databricks_resource_id>")
+databricks_access_token = os.environ.get("AML_DATABRICKS_ACCESS_TOKEN", "<databricks_access_token>")
+
+try:
+    databricks_compute = ComputeTarget(workspace=ws, name=databricks_compute_name)
+    print('Compute target already exists')
+except ComputeTargetException:
+    print('compute not found')
+    print('databricks_compute_name {}'.format(databricks_compute_name))
+    print('databricks_resource_id {}'.format(databricks_resource_id))
+    print('databricks_access_token {}'.format(databricks_access_token))
+    databricks_compute = DatabricksCompute.attach(
+             workspace=ws,
+             name=databricks_compute_name,
+             resource_id=databricks_resource_id,
+             access_token=databricks_access_token
+         )
+    
+    databricks_compute.wait_for_completion(True)
+```
+
+## <a id="adla"></a>Azure Data Lake Analytics
+
+Usługa Azure Data Lake Analytics to platforma analiz danych big data w chmurze platformy Azure. Może służyć jako cel obliczenia podczas uczenia modeli za pomocą potoku usługi Azure Machine Learning.
+
+> [!IMPORTANT]
+> Azure Data Lake Analytics obliczeniowego elementu docelowego należy używać tylko w potoku uczenia maszynowego.
+>
+> Przed użyciem w celu nauczenia modelu, musisz utworzyć konto usługi Azure Data Lake Analytics. Aby utworzyć ten zasób, zobacz [Rozpoczynanie pracy z usługą Azure Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal) dokumentu.
+
+Aby dołączyć usługi Data Lake Analytics, jako cel obliczenia, możesz użyć zestawu SDK usługi Azure Machine Learning i podaj następujące informacje:
+
+* __Nazwa obliczeniowego__: nazwa, którą chcesz przypisać do tego zasobu obliczeniowego.
+* __Identyfikator zasobu__: identyfikator zasobu konta usługi Data Lake Analytics. Następujący tekst jest przykładem formatu dla tej wartości:
+
+    ```text
+    /subscriptions/<your_subscription>/resourceGroups/<resource-group-name>/providers/Microsoft.DataLakeAnalytics/accounts/<datalakeanalytics-name>
+    ```
+
+    > [!TIP]
+    > Aby uzyskać identyfikator zasobu, użyj następującego polecenia wiersza polecenia platformy Azure. Zastąp `<datalakeanalytics>` nazwą swojej nazwy konta usługi Data Lake Analytics:
+    > ```azurecli-interactive
+    > az resource list --name <datalakeanalytics> --query [].id
+    > ```
+
+Poniższy kod przedstawia sposób dołączania usługi Data Lake Analytics, jako cel obliczenia:
+
+```python
+adla_compute_name = os.environ.get("AML_ADLA_COMPUTE_NAME", "<adla_compute_name>")
+adla_resource_id = os.environ.get("AML_ADLA_RESOURCE_ID", "<adla_resource_id>")
+
+try:
+    adla_compute = ComputeTarget(workspace=ws, name=adla_compute_name)
+    print('Compute target already exists')
+except ComputeTargetException:
+    print('compute not found')
+    print('adla_compute_name {}'.format(adla_compute_name))
+    print('adla_resource_id {}'.format(adla_resource_id))
+    adla_compute = AdlaCompute.attach(
+             workspace=ws,
+             name=adla_compute_name,
+             resource_id=adla_resource_id
+         )
+    
+    adla_compute.wait_for_completion(True)
+```
+
+> [!TIP]
+> Potoki usługi Azure Machine Learning może pracować tylko z danych przechowywanych w magazynie danych domyślnego konta usługi Data Lake Analytics. Jeśli dane potrzebne do pracy z znajduje się w magazynie innych niż domyślne, można użyć [ `DataTransferStep` ](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) do kopiowania danych przed szkolenia.
+
 ## <a id="hdinsight"></a>Dołącz klastra usługi HDInsight 
 
 HDInsight to popularne platformy do analizy danych big data. Udostępnia platformę Apache Spark, która może służyć do uczenia modelu.
@@ -351,8 +456,19 @@ run_config.auto_prepare_environment = True
 ```
 
 ## <a name="submit-training-run"></a>Prześlij szkolenia uruchamiania
-    
-Kodu przesyłającego wykonywania szkolenia jest taki sam niezależnie od obliczeniowego elementu docelowego:
+
+Istnieją dwa sposoby, aby przesłać przebiegu szkolenia:
+
+* Przesyłanie `ScriptRunConfig` obiektu.
+* Przesyłanie `Pipeline` obiektu.
+
+> [!IMPORTANT]
+> Usługa Azure Databricks, Azure Datalake Analytics i Azure HDInsight obliczeniowe elementy docelowe należy używać tylko w potoku.
+> Nie można użyć lokalnego obliczeniowego elementu docelowego w potoku.
+
+### <a name="submit-using-scriptrunconfig"></a>Przesyłanie przy użyciu `ScriptRunConfig`
+
+Wzorzec kod przesyłania szkoleniowe jest wykonywane przy użyciu `ScriptRunConfig` jest taki sam, niezależnie od tego, obliczeniowego elementu docelowego:
 
 * Utwórz `ScriptRunConfig` obiekt, za pomocą konfiguracji uruchamiania dla obliczeniowego elementu docelowego.
 * Prześlij przebiegu.
@@ -360,13 +476,46 @@ Kodu przesyłającego wykonywania szkolenia jest taki sam niezależnie od oblicz
 
 W poniższym przykładzie użyto konfiguracji docelowego kontrolowany przez system lokalny obliczeniowe utworzone wcześniej w tym dokumencie:
 
-```pyghon
+```python
 src = ScriptRunConfig(source_directory = script_folder, script = 'train.py', run_config = run_config_system_managed)
 run = exp.submit(src)
 run.wait_for_completion(show_output = True)
 ```
 
 Aby uzyskać notesu programu Jupyter, który demonstruje szkolenia z platformy Spark w HDInsight, zobacz [ https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark/05.train-in-spark.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark/05.train-in-spark.ipynb).
+
+### <a name="submit-using-a-pipeline"></a>Przesyłanie przy użyciu potoku
+
+Kod wzorzec przesyłania szkoleniowe, który jest uruchamiany przy użyciu potoku jest taki sam niezależnie od obliczeniowego elementu docelowego:
+
+* Dodaj krok do potoku dla zasobów obliczeniowych.
+* Prześlij przebiegu przy użyciu potoku.
+* Poczekaj, aż działanie zakończyć.
+
+W poniższym przykładzie użyto usługi Azure Databricks obliczeniowego elementu docelowego utworzone wcześniej w tym dokumencie:
+
+```python
+dbStep = DatabricksStep(
+    name="databricksmodule",
+    inputs=[step_1_input],
+    outputs=[step_1_output],
+    num_workers=1,
+    notebook_path=notebook_path,
+    notebook_params={'myparam': 'testparam'},
+    run_name='demo run name',
+    databricks_compute=databricks_compute,
+    allow_reuse=False
+)
+# list of steps to run
+steps = [dbStep]
+pipeline = Pipeline(workspace=ws, steps=steps)
+pipeline_run = Experiment(ws, 'Demo_experiment').submit(pipeline)
+pipeline_run.wait_for_completion()
+```
+
+Aby uzyskać więcej informacji na temat potoków uczenia maszynowego, zobacz [potoków i Azure Machine Learning](concept-ml-pipelines.md) dokumentu.
+
+Na przykład notesów programu Jupyter, które pokazują szkolenie przy użyciu potoku, zobacz [ https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline ](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline).
 
 ## <a name="view-and-set-up-compute-using-the-azure-portal"></a>Wyświetlanie i konfigurowanie obliczeń przy użyciu witryny Azure portal
 
@@ -387,11 +536,18 @@ Wykonaj powyższe kroki, aby wyświetlić listę obliczeniowych elementów docel
 
 1. Wprowadź nazwę dla obliczeniowego elementu docelowego.
 1. Wybierz typ obliczenia, które można dołączyć do __szkolenia__. 
+
+    > [!IMPORTANT]
+    > Nie wszystkie zasoby obliczeniowe typy mogą być tworzone przy użyciu witryny Azure portal. Obecnie są typy, które mogą być tworzone na potrzeby szkolenia:
+    > 
+    > * Maszyna wirtualna
+    > * Usługa Batch — sztuczna inteligencja
+
 1. Wybierz __Utwórz nowy__ i wypełnij formularz wymagane. 
 1. Wybierz pozycję __Utwórz__
 1. Można wyświetlić stan operacji tworzenia, wybierając obliczeniowego elementu docelowego z listy.
 
-    ![Wyświetl listę obliczeń](./media/how-to-set-up-training-targets/View_list.png) zostanie wtedy wyświetlone szczegóły dla tego środowiska obliczeniowego.
+    ![Wyświetl listę obliczeń](./media/how-to-set-up-training-targets/View_list.png) zostanie wtedy wyświetlone szczegóły obliczeniowego elementu docelowego.
     ![Wyświetl szczegóły](./media/how-to-set-up-training-targets/vm_view.PNG)
 1. Teraz można przesłać przebiegu dla następujących elementów docelowych zgodnie z opisem powyżej.
 
@@ -401,8 +557,16 @@ Wykonaj powyższe kroki, aby wyświetlić listę obliczeniowych elementów docel
 
 1. Kliknij przycisk **+** Zaloguj się do dodania obliczeniowego elementu docelowego.
 2. Wprowadź nazwę dla obliczeniowego elementu docelowego.
-3. Wybierz typ obliczenia, które można dołączyć do trenowania. Maszyny wirtualne i usługi Batch AI są obecnie obsługiwane w portalu do trenowania.
-4. Wybierz opcję Użyj istniejącej.
+3. Wybierz typ obliczenia, które można dołączyć do trenowania.
+
+    > [!IMPORTANT]
+    > Nie wszystkie obliczenia typy mogą być dołączane za pomocą portalu.
+    > Obecnie są typy, które mogą być dołączane do trenowania:
+    > 
+    > * Maszyna wirtualna
+    > * Usługa Batch — sztuczna inteligencja
+
+1. Wybierz opcję Użyj istniejącej.
     - Podczas podłączania klastry usługi Batch AI, wybierz obliczeniowego elementu docelowego z listy rozwijanej, wybierz obszar roboczy usługi Batch AI i klastra sztucznej Inteligencji usługi Batch, a następnie kliknij **Utwórz**.
     - Podczas dołączania maszyny wirtualnej, wprowadź adres IP, kombinacja nazwy użytkownika/hasła, klucze prywatne/publiczne i numer portu, a następnie kliknij przycisk Utwórz.
 
@@ -412,7 +576,7 @@ Wykonaj powyższe kroki, aby wyświetlić listę obliczeniowych elementów docel
     > * [Tworzenie i używanie kluczy SSH w systemie Linux lub macOS]( https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
     > * [Tworzenie i używanie kluczy SSH w Windows]( https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
 
-5. Stan Stan aprowizacji można wyświetlić, wybierając obliczeniowego elementu docelowego na liście usługi obliczeniowe.
+5. Stan Stan aprowizacji można wyświetlić, wybierając obliczeniowego elementu docelowego z listy.
 6. Teraz można przesłać przebiegu względem tych celów.
 
 ## <a name="examples"></a>Przykłady

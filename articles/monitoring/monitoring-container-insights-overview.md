@@ -1,5 +1,5 @@
 ---
-title: Omówienie usługi Azure Monitor dla kontenerów | Dokumentacja firmy Microsoft
+title: Omówienie usługi Azure Monitor dla kontenerów (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: W tym artykule opisano usługi Azure Monitor dla kontenerów, które monitoruje szczegółowe informacje o kontenerze AKS rozwiązania i wartość, która zapewnia możliwość przez monitorowanie kondycji klastrów usługi AKS i wystąpienia kontenera na platformie Azure.
 services: azure-monitor
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 6819cf96eb968e8faad5441cf3f3dd672653f1cd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 13fde8a4ec4ecf43b9997d5d4d181a232505626f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971437"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213002"
 ---
-# <a name="azure-monitor-for-containers-overview"></a>Usługa Azure Monitor, aby uzyskać przegląd kontenerów
+# <a name="azure-monitor-for-containers-preview-overview"></a>Usługa Azure Monitor, aby uzyskać przegląd kontenerów (wersja zapoznawcza)
 
 Usługa Azure Monitor dla kontenerów to funkcja przeznaczona do monitorowania wydajności obciążeń kontenerów wdrożonych na zarządzane klastry Kubernetes hostowanych na platformie Azure Kubernetes Service (AKS). Monitorowanie kontenerów ma krytyczne znaczenie, szczególnie w przypadku korzystania z klastra produkcyjnego na dużą skalę z wieloma aplikacjami.
 

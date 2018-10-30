@@ -1,21 +1,21 @@
 ---
-title: Typowe pytania — funkcji Hyper-V do platformy Azure replikację za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera podsumowanie często zadawane pytania dotyczące replikowania lokalnych maszyn wirtualnych z funkcją Hyper-V do platformy Azure przy użyciu usługi Azure Site Recovery.
+title: Typowe pytania — funkcji Hyper-V odzyskiwania po awarii platformy Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera podsumowanie często zadawane pytania na temat konfigurowania odzyskiwania po awarii dla lokalnych maszyn wirtualnych funkcji Hyper-V na platformie Azure przy użyciu witryny usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 7c5316aea2bfdb9a96b9aeb2dd5387b2643a92b2
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 6345cf47d19f7990e776e0fe4ec2bafd005c9cf2
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319731"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212492"
 ---
-# <a name="common-questions---hyper-v-to-azure-replication"></a>Często zadawane pytania — funkcji Hyper-V replikacja usługi Azure
+# <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Często zadawane pytania — funkcji Hyper-V odzyskiwania po awarii platformy Azure
 
 Ten artykuł zawiera odpowiedzi na typowe pytania, które widać podczas replikowania lokalnych maszyn wirtualnych z funkcją Hyper-V do platformy Azure. 
 

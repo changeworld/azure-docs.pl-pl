@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 11/22/2016
-ms.openlocfilehash: 1307b6df22c51af9710d44abb23178d65e3507aa
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 0fe35b67a424caedcea2c71885d1757943ace9d1
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377398"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232600"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Bezpieczny dostęp w usłudze Azure Logic Apps
 
@@ -168,7 +168,7 @@ Można zdefiniować parametry niektóre aspekty definicji przepływu pracy dla w
 
 ### <a name="using-parameters-and-secure-parameters"></a>Za pomocą parametrów i bezpieczne
 
-Do uzyskania dostępu do wartości parametru zasobu w czasie wykonywania, [język definicji przepływów pracy](http://aka.ms/logicappsdocs) zapewnia `@parameters()` operacji. Można również [Określ parametry w szablonie wdrożenia zasobów](../azure-resource-manager/resource-group-authoring-templates.md#parameters). Ale jeśli określisz typ parametru jako `securestring`, parametr nie będą zwracane z pozostałą częścią definicji zasobu i nie będą dostępne, wyświetlając zasobu po wdrożeniu.
+Do uzyskania dostępu do wartości parametru zasobu w czasie wykonywania, [język definicji przepływów pracy](https://aka.ms/logicappsdocs) zapewnia `@parameters()` operacji. Można również [Określ parametry w szablonie wdrożenia zasobów](../azure-resource-manager/resource-group-authoring-templates.md#parameters). Ale jeśli określisz typ parametru jako `securestring`, parametr nie będą zwracane z pozostałą częścią definicji zasobu i nie będą dostępne, wyświetlając zasobu po wdrożeniu.
 
 > [!NOTE]
 > Jeśli Twój parametr jest używany w nagłówkach ani treści żądania, parametr może być widoczna, uzyskując dostęp do historii uruchamiania i wychodzące żądania HTTP. Upewnij się, że odpowiednio ustawić zasady dostępu do zawartości.

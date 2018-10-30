@@ -7,12 +7,12 @@ ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 09/19/2018
-ms.openlocfilehash: 81a9f84a925fc424fc6371fcbe02a141d4ee8ec1
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: b0b67121e172bb29d1f95e56d3b31f509552bf2e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498355"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211234"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms-previous-release"></a>Włączanie usługi Azure Disk Encryption dla maszyn wirtualnych systemu Linux IaaS (poprzedniej wersji)
 
@@ -192,8 +192,11 @@ Parametr wykracza jednak wszystkie partycje i szyfruje je, tak długo, jak speł
 - Nie jest partycją rozruchową głównego/OS
 - Nie jest już zaszyfrowany
 - Nie jest woluminem klucz szyfrowania bloków
+- Brak woluminu RAID
+- Nie jest woluminem LVM
 - Jest zainstalowany
 
+Szyfrowanie dysków, które tworzą woluminu RAID lub LVM zamiast woluminu RAID lub LVM.
 
 ### <a name="bkmk_EFATemplate"> </a> Użyj parametru EncryptFormatAll przy użyciu szablonu
 Aby użyć opcji EncryptFormatAll, należy użyć dowolnego istniejącego szablonu usługi Azure Resource Manager, która szyfruje maszyny Wirtualnej z systemem Linux i zmienić **EncryptionOperation** dla zasobu AzureDiskEncryption pole.

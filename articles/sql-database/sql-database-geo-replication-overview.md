@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: 9332bcb5849deacde13d67e4a18ea19af8af2977
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 10/29/2018
+ms.openlocfilehash: 3495a923683d78446e61ff0545c7d86023c14bc0
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471479"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233858"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Przegląd: Aktywnej grupy replikacji geograficznej i automatyczny tryb failover
 
@@ -281,18 +281,18 @@ Zgodnie z opisem wcześniej grupy automatyczny tryb failover i aktywna replikacj
 | --- | --- |
 | [Tworzenie lub aktualizacja bazy danych (createMode = przywracanie)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Tworzy, aktualizuje lub przywrócenie podstawowej lub pomocniczej bazy danych. |
 | [Pobierz Utwórz lub zaktualizuj stan bazy danych](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Zwraca stan podczas operacji tworzenia. |
-| [Ustaw pomocniczej bazy danych jako podstawowy (planowanego trybu Failover)](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_failover) |Zestawy, które z repliką baz danych jest kluczem podstawowym, przechodzenie w tryb failover z bieżącej bazy danych repliki podstawowej. |
-| [Ustaw pomocniczej bazy danych jako podstawowy (nieplanowany tryb Failover)](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_failoverallowdataloss) |Zestawy, które z repliką baz danych jest kluczem podstawowym, przechodzenie w tryb failover z bieżącej bazy danych repliki podstawowej. Ta operacja może spowodować utratę danych. |
-| [Uzyskaj Link replikacji](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_get) |Pobiera łącze replikacji dla danej bazy danych SQL w partnerstwie replikacji geograficznej. Pobiera informacje widoczne w widoku wykazu sys.geo_replication_links. |
-| [Łącza replikacji — lista przez bazę danych](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_listbydatabase) | Pobiera wszystkie łącza replikacji dla danej bazy danych SQL w partnerstwie replikacji geograficznej. Pobiera informacje widoczne w widoku wykazu sys.geo_replication_links. |
-| [Usuń Link replikacji](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_delete) | Usuwa link replikacji bazy danych. Nie można wykonać podczas pracy awaryjnej. |
-| [Utwórz lub zaktualizuj grupę trybu Failover](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_createorupdate) | Tworzy lub aktualizuje grupę trybu failover |
-| [Usuwanie grupy trybu Failover](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_delete) | Usuwa grupę trybu failover z serwera |
-| [Praca awaryjna (planowana)](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_failover) | Nie powiedzie się za pośrednictwem z bieżącego serwera podstawowego do tego serwera. |
-| [Zezwalaj na utratę danych wymuszenie trybu Failover](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_forcefailoverallowdataloss) |ails za pośrednictwem z bieżącego serwera podstawowego do tego serwera. Ta operacja może spowodować utratę danych. |
-| [Pobierz grupę trybu Failover](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_get) | Pobiera grupy trybu failover. |
-| [Wyświetlanie listy grup trybu Failover przez serwer](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_listbyserver) | Wyświetla listę grup trybu failover na serwerze. |
-| [Aktualizacja grupy trybu Failover](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_update) | Aktualizuje grupę trybu failover. |
+| [Ustaw pomocniczej bazy danych jako podstawowy (planowanego trybu Failover)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failover) |Zestawy, które z repliką baz danych jest kluczem podstawowym, przechodzenie w tryb failover z bieżącej bazy danych repliki podstawowej. |
+| [Ustaw pomocniczej bazy danych jako podstawowy (nieplanowany tryb Failover)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failoverallowdataloss) |Zestawy, które z repliką baz danych jest kluczem podstawowym, przechodzenie w tryb failover z bieżącej bazy danych repliki podstawowej. Ta operacja może spowodować utratę danych. |
+| [Uzyskaj Link replikacji](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Pobiera łącze replikacji dla danej bazy danych SQL w partnerstwie replikacji geograficznej. Pobiera informacje widoczne w widoku wykazu sys.geo_replication_links. |
+| [Łącza replikacji — lista przez bazę danych](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Pobiera wszystkie łącza replikacji dla danej bazy danych SQL w partnerstwie replikacji geograficznej. Pobiera informacje widoczne w widoku wykazu sys.geo_replication_links. |
+| [Usuń Link replikacji](https://docs.microsoft.com/rest/api/sql/replicationlinks/delete) | Usuwa link replikacji bazy danych. Nie można wykonać podczas pracy awaryjnej. |
+| [Utwórz lub zaktualizuj grupę trybu Failover](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Tworzy lub aktualizuje grupę trybu failover |
+| [Usuwanie grupy trybu Failover](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Usuwa grupę trybu failover z serwera |
+| [Praca awaryjna (planowana)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | Nie powiedzie się za pośrednictwem z bieżącego serwera podstawowego do tego serwera. |
+| [Zezwalaj na utratę danych wymuszenie trybu Failover](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) |ails za pośrednictwem z bieżącego serwera podstawowego do tego serwera. Ta operacja może spowodować utratę danych. |
+| [Pobierz grupę trybu Failover](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | Pobiera grupy trybu failover. |
+| [Wyświetlanie listy grup trybu Failover przez serwer](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | Wyświetla listę grup trybu failover na serwerze. |
+| [Aktualizacja grupy trybu Failover](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Aktualizuje grupę trybu failover. |
 |  | |
 
 ## <a name="next-steps"></a>Kolejne kroki

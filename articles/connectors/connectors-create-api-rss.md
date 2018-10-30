@@ -11,12 +11,12 @@ ms.topic: article
 ms.assetid: a10a6277-ed29-4e68-a881-ccdad6fd0ad8
 tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: c8d1122572764dda1fc550a06ae254109e3bf033
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 01573871700bbeeb653ce3efdbf6c6aca88fd454
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42885802"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233059"
 ---
 # <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>Zarządzanie źródłami danych RSS przy użyciu usługi Azure Logic Apps
 
@@ -60,7 +60,7 @@ Szczegółowe informacje techniczne dotyczące wyzwalaczy, akcje i ograniczeń, 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](http://aka.ms/logicapps-wish).
+* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

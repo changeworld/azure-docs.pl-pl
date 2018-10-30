@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6c68d90605590ed8a17296e83276c7ef5396d6a2
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 48b4878eef7395b51d19c59443736bae5aeb7365
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092983"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233586"
 ---
 # <a name="contoso-migration-rebuild-an-on-premises-app-to-azure"></a>Migracja Contoso: ponownie skompilować aplikację w środowisku lokalnym na platformie Azure
 
@@ -116,7 +116,7 @@ Contoso ocenia proponowane projektu poprzez umieszczenie razem listę zalet i wa
 --- | --- | ---
 [USŁUGI AKS](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Upraszcza zarządzanie Kubernetes, wdrażania i operacji. Udostępnia w pełni zarządzanej usługi organizowania kontenerów Kubernetes.  | AKS to bezpłatna usługa.  Płać tylko maszyny wirtualne, skojarzony magazyn i wykorzystane zasoby sieciowe. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/kubernetes-service/).
 [Azure Functions](https://azure.microsoft.com/services/functions/) | Przyspiesza tworzenie aplikacji przy użyciu oparte na zdarzeniach bezserwerowemu środowisku obliczeniowemu. Skaluj na żądanie.  | Płacisz tylko za wykorzystane zasoby. Plan jest rozliczana w oparciu o liczby wykonań i użycia zasobów na sekundę. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/functions/).
-[Usługa Azure Container Registry](https://azure.microsoft.com/services/container-registry/) | Magazyny dowolnych typów obrazów wdrożeń kontenerów. | Koszt na podstawie funkcji, magazynu i czas trwania użycia. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/container-registry/).
+[Azure Container Registry](https://azure.microsoft.com/services/container-registry/) | Magazyny dowolnych typów obrazów wdrożeń kontenerów. | Koszt na podstawie funkcji, magazynu i czas trwania użycia. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/container-registry/).
 [Azure App Service](https://azure.microsoft.com/services/app-service/containers/) | Szybko kompiluj, wdrażaj i skaluj aplikacje internetowe, aplikacje mobilne i aplikacje interfejsów API klasy korporacyjnej działające na dowolnej platformie. | Opłaty za plany usługi App Service są naliczane co sekundę. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/app-service/windows/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -139,7 +139,7 @@ Poniżej przedstawiono, jak Uruchom migrację w Contoso:
 > * **Krok 1: Aprowizowanie AKS i ACR**: Contoso Inicjuje obsługę zarządzany klaster AKS i usługi Azure container registry przy użyciu programu PowerShell
 > * **Krok 2: Tworzenie kontenerów Docker**: Skonfiguruj ciągłą Integrację dla kontenerów Docker przy użyciu usługi Azure DevOps i odesłać je do usługi ACR.
 > * **Krok 3: Wdrażanie mikrousług zaplecza**: wdrożeniem w pozostałej części infrastruktury, które będą wykorzystywane przez mikrousług zaplecza.
-> * **Krok 4: Wdrażanie infrastruktury frontonu**: wdrożeniu przez nich infrastruktura frontonu, w tym w magazynie obiektów blob dla telefonów domowych, Cosmos DB i interfejs API przetwarzania.
+> * **Krok 4: Wdrażanie infrastruktury frontonu**: wdrażanych frontonu infrastruktury, w tym magazyn obiektów blob dla telefonów domowych, Cosmos DB i interfejs API przetwarzania.
 > * **Krok 5: Migrowanie zaplecza**: Wdrażanie mikrousług i uruchom w usłudze AKS, aby przeprowadzić migrację zaplecza.
 > * **Krok 6. publikowanie fronton**: usługi Azure App service i aplikację funkcji, która zostanie wywołana przez usługę pet publikują one aplikacji rozwiązania SmartHotel360.
 
@@ -545,7 +545,7 @@ Contoso Administratorzy mogą teraz publikować w witrynie sieci Web.
 
     ![Nowe środowisko](./media/contoso-migration-rebuild/vsts-publishfront8.png)
 
-14. Wybierają **wdrożenia usługi Azure App Service z gniazdem**i nadaj środowisku **Prod**.
+14. Wybierają **wdrożenia usługi Azure App Service z gniazdem**i nadaj nazwę środowiska **Prod**.
 15. Kliknięciu **zadanie 1, 2 zadania**i wybierz subskrypcję, nazwa usługi app service, a **przemieszczania** miejsca.
 
     ![Nazwa środowiska](./media/contoso-migration-rebuild/vsts-publishfront10.png)

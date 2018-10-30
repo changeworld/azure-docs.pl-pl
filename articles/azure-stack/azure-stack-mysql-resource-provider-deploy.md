@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 1c5a2e4102b251490bf3a1fa9b82e9dbce075242
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: dce9d4d5d1f2e3e50cabb86ee0d8d14b2fce2923
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364425"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230033"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Wdrażanie dostawcy zasobów MySQL w usłudze Azure Stack
 
@@ -90,7 +90,7 @@ Można określić te parametry, z poziomu wiersza polecenia. Jeśli nie istnieje
 | **VMLocalCredential** | Poświadczenia dla konta administratora lokalnego dostawcy zasobów MySQL maszyny Wirtualnej. | _Wymagane_ |
 | **PrivilegedEndpoint** | Adres IP lub nazwa DNS uprzywilejowanych punktu końcowego. |  _Wymagane_ |
 | **AzureEnvironment** | Środowiska platformy Azure z konta administratora usługi, które używanych do wdrażania usługi Azure Stack. Wymagane tylko w przypadku wdrożeń usługi Azure AD. Nazwy środowiska obsługiwane są **AzureCloud**, **AzureUSGovernment**, lub jeśli za pomocą (Chiny) usługi Azure AD, **AzureChinaCloud**. | AzureCloud |
-| **DependencyFilesLocalPath** | Tylko zintegrowane systemy plik PFX certyfikatu musi być umieszczane w tym katalogu. Dla odłączonych enviroments pobrać [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) do tego katalogu. Opcjonalnie można skopiować jeden pakiet Windows Update MSU tutaj. | _Opcjonalnie_ (_obowiązkowe_ zintegrowanych systemów lub w środowiskach rozłączonych) |
+| **DependencyFilesLocalPath** | Tylko zintegrowane systemy plik PFX certyfikatu musi być umieszczane w tym katalogu. W środowiskach rozłączonych Pobierz [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) do tego katalogu. Opcjonalnie można skopiować jeden pakiet Windows Update MSU tutaj. | _Opcjonalnie_ (_obowiązkowe_ zintegrowanych systemów lub w środowiskach rozłączonych) |
 | **DefaultSSLCertificatePassword** | Hasło dla certyfikatu pfx. | _Wymagane_ |
 | **MaxRetryCount** | Liczba przypadków, o których chcesz ponowić próbę każdej operacji w przypadku awarii.| 2 |
 | **RetryDuration** | Interwał limitu czasu między kolejnymi próbami w sekundach. | 120 |

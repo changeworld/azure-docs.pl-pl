@@ -1,5 +1,6 @@
 ---
-title: Tworzenie nowej aplikacji z użyciem usługi LUIS
+title: Tworzenie nowej aplikacji z usługą interpretacji języka
+titleSuffix: Azure Cognitive Services
 description: Utwórz aplikacje i zarządzaj nimi na stronie sieci Web Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -9,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 55af0559c98c9fc63fd6902d80b4e6f2f0a7d2da
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: a4dbea40e59ef8fb3a89fefc24f43060c46a91eb
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870119"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214209"
 ---
 # <a name="create-an-app"></a>Tworzenie aplikacji
 Istnieje kilka sposobów, aby utworzyć aplikację usługi LUIS. Można utworzyć aplikację usługi LUIS w [LUIS](https://www.luis.ai) portalu lub za pomocą usługi LUIS tworzenia [interfejsów API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).

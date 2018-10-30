@@ -1,7 +1,7 @@
 ---
 title: REST API (V4) — przejdź — QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Uzyskaj informacje oparte na protokole REST i przykłady kodu, aby pomóc Ci szybko rozpocząć pracę, usług Microsoft Cognitive Services na platformie Azure przy użyciu interfejsu API tekstu usługi Translator firmy Microsoft.
+description: Uzyskaj informacje oparte na protokole G0 REST i przykłady kodu, aby pomóc Ci szybko rozpocząć pracę, usług Microsoft Cognitive Services na platformie Azure przy użyciu interfejsu API tekstu usługi Translator firmy Microsoft.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -10,17 +10,17 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 1b4f4c50c8c3fbdc2cc556705bdd446cb360ef2c
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: b9451d51bf0c0c684cebf89ad448b66fee59d9ea
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650234"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210707"
 ---
 # <a name="qna-maker-rest-api-with-go"></a>Interfejs API REST usługi QnA Maker za pomocą języka Go 
 <a name="HOLTop"></a>
 
-W tym artykule dowiesz się, jak używać [interfejsu API usługi Microsoft QnA Maker](../Overview/overview.md) w języku Go, aby wykonać następujące czynności.
+W tym artykule dowiesz się, jak używać [interfejsu API programu Microsoft QnA Maker](../Overview/overview.md) za pomocą języka Go, aby wykonać następujące czynności.
 
 - [Tworzenie nowej bazy wiedzy.](#Create)
 - [Aktualizowanie istniejącej bazy wiedzy.](#Update)
@@ -37,7 +37,7 @@ W tym artykule dowiesz się, jak używać [interfejsu API usługi Microsoft QnA 
 - [Uzyskiwanie bieżącego zestawu zmian słów.](#GetAlterations)
 - [Zastępowanie bieżącego zestawu zmian słów.](#PutAlterations)
 
-## <a name="prerequisites"></a>Wstępnie wymagane składniki
+## <a name="prerequisites"></a>Wymagania wstępne
 
 Do uruchomienia tego kodu jest potrzebne środowisko [Go 1.10.1](https://golang.org/dl/).
 

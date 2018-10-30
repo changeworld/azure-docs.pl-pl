@@ -8,12 +8,12 @@ ms.date: 06/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9609aab6c70bc0c2755de142023bd26e7417987a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 2416d70e3c9d0f66ff755d8049e78e0275c89258
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347078"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232073"
 ---
 # <a name="create-and-provision-an-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Tworzenie i aprowizowanie urządzenia usługi Edge z wirtualnego TPM na maszynie wirtualnej systemu Linux
 
@@ -125,7 +125,7 @@ Po utworzeniu rejestracji w usłudze DPS mają okazję do deklarowania **począt
 
 ## <a name="install-the-iot-edge-runtime"></a>Zainstalować środowisko uruchomieniowe usługi IoT Edge
 
-Środowisko uruchomieniowe usługi IoT Edge jest wdrożone na wszystkich urządzeniach usługi IoT Edge. Jego składniki działają w kontenerach i pozwalają wdrożyć dodatkowe kontenery na urządzeniu, aby uruchomić kod, na urządzeniach brzegowych. Zainstaluj środowisko uruchomieniowe usługi IoT Edge na Twoje achine wirtualnego m. 
+Środowisko uruchomieniowe usługi IoT Edge jest wdrażane na wszystkich urządzeniach usługi IoT Edge. Jego składniki działają w kontenerach i pozwalają wdrożyć dodatkowe kontenery na urządzeniu, aby uruchomić kod, na urządzeniach brzegowych. Na maszynie wirtualnej, należy zainstalować środowisko uruchomieniowe usługi IoT Edge. 
 
 Znasz usłudze DPS **zakres identyfikatorów** i urządzenia **identyfikator rejestracji** przed rozpoczęciem tego artykułu, który odpowiada danemu typowi urządzenia. Jeśli zainstalowano przykładowe Ubuntu server, użyj **x64** instrukcje. Upewnij się, że Konfigurowanie środowiska uruchomieniowego usługi IoT Edge do automatycznego, nie ręcznego inicjowania obsługi. 
 

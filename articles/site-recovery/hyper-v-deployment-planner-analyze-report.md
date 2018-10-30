@@ -1,6 +1,6 @@
 ---
-title: Planista wdrażania usługi Azure Site Recovery dla funkcji Hyper-V na platformie Azure | Microsoft Docs
-description: W tym artykule opisano analizę raportu wygenerowanego przez Planistę wdrażania usługi Azure Site Recovery w przypadku scenariusza dotyczącego funkcji Hyper-V na platformie Azure.
+title: Analizowanie raportu Planisty wdrożenia usługi Azure Site Recovery do odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V na platformie Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak analizować raportu generowany przez Planistę wdrażania usługi Azure Site Recovery do odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V do platformy Azure.
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: d5e8038aea547977ed11d0bd5d2675322921d8ef
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ad53b32b9809e8cce459d8317a916a9ddab0e336
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092919"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210935"
 ---
-# <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analizowanie raportu Planisty wdrażania usługi Azure Site Recovery
+# <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analizowanie raportu Planisty wdrożenia usługi Azure Site Recovery
 W tym artykule omówiono arkusze zawarte w raporcie programu Excel wygenerowanym przez Planistę wdrażania usługi Azure Site Recovery w przypadku scenariusza dotyczącego funkcji Hyper-V na platformie Azure.
 
 ## <a name="on-premises-summary"></a>Podsumowanie środowiska lokalnego

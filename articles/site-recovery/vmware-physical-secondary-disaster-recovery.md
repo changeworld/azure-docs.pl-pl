@@ -1,21 +1,18 @@
 ---
 title: Konfigurowanie odzyskiwania po awarii maszyn wirtualnych VMware lub serwerów fizycznych do lokacji dodatkowej za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skonfigurować odzyskiwanie po awarii w przypadku maszyn wirtualnych VMware lub Windows i Linux serwerów fizycznych do lokacji dodatkowej za pomocą usługi Azure Site Recovery.
-services: site-recovery
-author: nsoneji
-manager: gauarvd
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.workload: backup-recovery
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 08/01/2018
+ms.topic: conceptual
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 94abdd30dc9cd279ab791541250787a111f80d30
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: fe6199aea91bbb7518ccdbfe640848a59edcee49
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618992"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215467"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Konfigurowanie odzyskiwania po awarii maszyn wirtualnych programu VMware w środowisku lokalnym lub serwerów fizycznych do lokacji dodatkowej
 
@@ -176,7 +173,7 @@ Aktualizacja programu Scout 5 jest aktualizacją zbiorczą. Zawiera on wszystkie
 > [!NOTE]
 > * Poprawki klastra P2V dotyczą tylko klastry fizyczne MSCS nowo chronionych za pomocą witryny odzyskiwania Scout aktualizacja Update 5. Aby zainstalować poprawki klastra klastrach P2V MSCS chronionych za pomocą aktualizacji w starszych, postępuj zgodnie z uaktualnienia kroki opisane w sekcji 12 [informacje o wersji programu Scout odzyskiwania lokacji](https://aka.ms/asr-scout-release-notes).
 > * Jeśli podczas ponownej ochrony, ten sam zestaw dysków są aktywne na każdym z węzłów klastra, jak podczas początkowego chronione, następnie ponownej ochrony klastrze MSCS fizycznym tylko ich ponownie istniejące dyski docelowe. Jeśli nie, użyj ręczne wykonanie czynności w sekcji 12 [informacje o wersji programu Scout odzyskiwania lokacji](https://aka.ms/asr-scout-release-notes), aby przenieść dyski po stronie docelowej do ścieżki poprawny magazyn danych, do ponownego użycia podczas ponownej ochrony. Jeśli możesz ponownie włączyć ochronę klastrze MSCS P2V w trybie bez zgodnie z instrukcjami uaktualnienia, tworzy nowy dysk na docelowym serwerze ESXi. Należy ręcznie usunąć stare dyski z magazynu danych.
-> * Gdy serwer źródłowy SLES11 lub SLES11 (z dowolny dodatek service pack) jest uruchamiany ponownie bez problemu zmieniała, następnie ręcznie oznaczyć **głównego** dysku par replikacji ponownej synchronizacji. Nie ma żadnych powiadomień w interfejsie CX. Jeśli nie dysku głównego do ponownej synchronizacji, można zauważyć problemy z integralnością danych.
+> * Gdy serwer źródłowy SLES11 lub SLES11 (z dowolny dodatek service pack) jest uruchamiany ponownie bez problemu zmieniała, następnie ręcznie oznaczyć **głównego** dysku par replikacji ponownej synchronizacji. Nie ma żadnych powiadomień w interfejsie CX. Jeśli nie dysku głównego do ponownej synchronizacji, można zauważyć problemy z integralnością danych.
 
 
 ### <a name="azure-site-recovery-scout-801-update-4"></a>Azure Site Recovery Scout 8.0.1 Update 4

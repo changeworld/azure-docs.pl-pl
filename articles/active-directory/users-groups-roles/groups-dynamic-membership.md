@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 10/26/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: e8f0077bf5a1a2911b3aec032fadacf31ad75463
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 13d6ed9feab4654d3574a5aced72efa0345365a6
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855276"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215331"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Reguły członkostwa dynamicznego dla grup w usłudze Azure Active Directory
 
@@ -316,7 +316,7 @@ Reguła "Wszystkie urządzenia" jest konstruowany przy użyciu pojedynczego wyra
 device.objectid -ne null
 ```
 
-### <a name="extension-properties-and-custom-extension-properties"></a>Właściwości rozszerzenia i właściwości niestandardowego rozszerzenia
+## <a name="extension-properties-and-custom-extension-properties"></a>Właściwości rozszerzenia i właściwości niestandardowego rozszerzenia
 
 Właściwości niestandardowe extenson i rozszerzeń atrybuty są obsługiwane jako właściwości parametrów w regułach członkostwa dynamicznego. Atrybuty rozszerzenia są synchronizowane z lokalną Windows Server AD i mieć format "ExtensionAttributeX", gdzie X jest równa 1 – 15. Oto przykład reguły używającej atrybutu rozszerzenia jako właściwość:
 
@@ -335,7 +335,7 @@ Jest przykładem regułę, która używa właściwości niestandardowego rozszer
 user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
 ```
 
-Nazwa właściwości niestandardowych można znaleźć w katalogu, wysyłając zapytanie do właściwości przy użyciu Eksploratora programu Graph i wyszukując nazwę właściwości.
+Nazwa właściwości niestandardowych można znaleźć w katalogu, wysyłając zapytanie do właściwości przy użyciu Eksploratora programu Graph i wyszukując nazwę właściwości. Ponadto można teraz wybrać **pobieranie właściwości niestandardowego rozszerzenia** łącze w Konstruktorze użytkownik dynamiczny grupy reguł, możesz wprowadzić identyfikator unikatowy aplikacji i otrzymywać pełną listę właściwości niestandardowego rozszerzenia do użycia podczas tworzenia reguły członkostwa dynamicznego. Tej listy można odświeżać w taki sposób, aby uzyskać nowe właściwości rozszerzenia niestandardowego dla danej aplikacji.
 
 ## <a name="rules-for-devices"></a>Reguły urządzeń
 

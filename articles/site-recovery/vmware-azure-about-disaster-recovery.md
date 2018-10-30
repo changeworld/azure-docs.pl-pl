@@ -4,15 +4,14 @@ description: Ten artykuł zawiera omówienie odzyskiwania po awarii maszyn wirtu
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-services: site-recovery
-ms.date: 08/29/2018
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 105ad94b442790c82af0f6b9533f195d93c5cd1d
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 9368ff848c9be075a08d5a80a49ffc64f5392cad
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339153"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214702"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>Temat odzyskiwania po awarii maszyn wirtualnych programu VMware do platformy Azure
 

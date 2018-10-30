@@ -12,12 +12,12 @@ ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/23/2018
-ms.openlocfilehash: 0a514cced50a2a05008c03dfb438cceefb332d17
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 5ddcacbf805ae9d2ce093058b21d53189457ffb9
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987328"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233773"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>Limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu opartego na jednostkach DTU
 
@@ -81,7 +81,7 @@ Dla pojedynczych baz danych w poniższych tabelach Pokaż zasoby dostępne dla p
 |||||||
 
 > [!IMPORTANT]
-> Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępna we wszystkich regionach z wyjątkiem następujących: Chiny wschodnie, Chiny Północne, Niemcy środkowe, Niemcy północno-wschodnie, Północne Zjednoczone Królestwo, południowe Zjednoczone Królestwo, dod — środkowe stany, US dod — wschodnie stany, Rządu środkowe stany USA i zachodnio-środkowe stany USA.  W tych regionach maksymalna wielkość magazynu w warstwie Premium jest ograniczona do 1 TB. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępna we wszystkich regionach z wyjątkiem następujących: Chiny wschodnie, Chiny Północne, Niemcy środkowe, Niemcy północno-wschodnie, Północne Zjednoczone Królestwo, południowe Zjednoczone Królestwo, dod — środkowe stany, US dod — wschodnie stany, instytucji rządowych środkowe stany USA i zachodnio-środkowe stany USA.  W tych regionach maksymalna wielkość magazynu w warstwie Premium jest ograniczona do 1 TB. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 ## <a name="single-database-change-storage-size"></a>Pojedyncza baza danych: zmiana rozmiaru magazynu
 

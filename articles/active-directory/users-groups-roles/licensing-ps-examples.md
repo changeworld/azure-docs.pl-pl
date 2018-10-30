@@ -1,8 +1,8 @@
 ---
-title: Przykłady programu PowerShell dla licencjonowania opartego na grupy w usłudze Azure AD | Dokumentacja firmy Microsoft
+title: Przykłady programu PowerShell i program Microsoft Graph z licencjonowaniem opartym na grupach w usłudze Azure AD | Dokumentacja firmy Microsoft
 description: Scenariusze programu PowerShell dla licencjonowania opartego na grupach usługi Azure Active Directory
 services: active-directory
-keywords: Licencjonowanie usługi Azure AD
+keywords: Zarządzanie licencjonowaniem w usłudze Azure AD
 documentationcenter: ''
 author: curtand
 manager: mtillman
@@ -11,21 +11,21 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 04/23/2018
+ms.date: 10/29/2018
 ms.author: curtand
-ms.openlocfilehash: 9ff51308022881dabb0bd8efaa5852d0f296474a
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: d046b8e6c054131a4154654637f12dbdc26608a6
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37872529"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210435"
 ---
 # <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>Przykłady programu PowerShell dla licencjonowania opartego na grupy w usłudze Azure AD
 
-Pełna funkcjonalność dla licencjonowania opartego na grupach jest dostępna za pośrednictwem [witryny Azure portal](https://portal.azure.com), a obecnie jest ograniczona obsługa programu PowerShell. Istnieją jednak pewne użytecznych zadań, które mogą być wykonywane przy użyciu istniejącego [poleceń cmdlet programu MSOnline PowerShell](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory). W tym dokumencie przedstawiono przykłady, co jest możliwe.
+Pełna funkcjonalność dla licencjonowania opartego na grupach jest dostępna za pośrednictwem [witryny Azure portal](https://portal.azure.com), i obecnie Obsługa programu PowerShell i program Microsoft Graph jest ograniczona. Istnieją jednak pewne użytecznych zadań, które mogą być wykonywane przy użyciu istniejącego [poleceń cmdlet programu MSOnline PowerShell](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) i Microsoft Graph. W tym dokumencie przedstawiono przykłady, co jest możliwe.
 
 > [!NOTE]
-> Przed uruchomieniem poleceń cmdlet, upewnij się, nawiązaniu połączenia z Twojej dzierżawy, uruchamiając `Connect-MsolService` polecenia cmdlet.
+> Przed uruchomieniem poleceń cmdlet, upewnij się, nawiązaniu połączenia z Twojej dzierżawy, uruchamiając `Connect-MsolService`  polecenia cmdlet.
 
 > [!WARNING]
 > Ten kod jest dostarczany jako przykład w celach demonstracyjnych. Jeśli zamierzasz używać jej w środowisku, należy wziąć pod uwagę testowanie go najpierw na małą skalę, lub w dzierżawie testowej oddzielne. Może być konieczne dostosowanie kod w celu spełnienia specyficznych potrzeb danego środowiska.
@@ -46,6 +46,34 @@ EMSPREMIUM
 
 > [!NOTE]
 > Dane są ograniczone do informacji o produkcie (SKU). Nie jest możliwe wyświetlić listę planów usług, wyłączona w licencji.
+
+Użyj następujących czynności, aby uzyskać te same dane z programu Microsoft Graph
+
+```
+GET https://graph.microsoft.com/beta/groups/99c4216a-56de-42c4-a4ac-e411cd8c7c41$select=assignedLicenses
+```
+Dane wyjściowe:
+```
+HTTP/1.1 200 OK
+{
+  “value”: [
+{
+  “assignedLicenses”: [
+     {
+          "accountId":"f1b45b40-57df-41f7-9596-7f2313883635",
+          "skuId":"c7df2760-2c81-4ef7-b578-5b5392b571df",
+      "disabledPlans":[]
+     },
+     {
+          "accountId":"f1b45b40-57df-41f7-9596-7f2313883635",
+          "skuId":" b05e124f-c7cc-45a0-a6aa-8cf78c946968",
+      "disabledPlans":[]
+     },
+  ],
+}
+  ]
+}
+```
 
 ## <a name="get-all-groups-with-licenses"></a>Pobieranie wszystkich grup z licencjami
 
@@ -141,6 +169,34 @@ ObjectId                             DisplayName             GroupType Descripti
 --------                             -----------             --------- -----------
 11151866-5419-4d93-9141-0603bbf78b42 Access to Office 365 E1 Security  Users who should have E1 licenses
 ```
+Użyj następujących czynności, aby uzyskać te same dane z programu Microsoft Graph
+```
+GET https://graph.microsoft.com/beta/groups?$filter=hasMembersWithLicenseErrors+eq+true
+```
+Dane wyjściowe:
+```
+HTTP/1.1 200 OK
+{
+  "value":[
+    {
+      "odata.type": "Microsoft.DirectoryServices.Group",
+      "objectType": "Group",
+      "id": "11151866-5419-4d93-9141-0603bbf78b42",
+      ... # other group properties.
+    },
+    {
+      "odata.type": "Microsoft.DirectoryServices.Group",
+      "objectType": "Group",
+      "id": "c57cdc98-0dcd-4f90-a82f-c911b288bab9",
+      ...
+    },
+    ... # other groups with license errors.
+  ]
+"odata.nextLink":"https://graph.microsoft.com/beta/ groups?$filter=hasMembersWithLicenseErrors+eq+true&$skipToken=<encodedPageToken>"
+}
+```
+
+
 ## <a name="get-all-users-with-license-errors-in-a-group"></a>Pobieranie wszystkich użytkowników z błędami licencji w grupie
 
 Biorąc pod uwagę grupy, która zawiera błędy dotyczące licencji, możesz teraz wyświetlić listę wszystkich użytkownikach, których dotyczą te błędy. Użytkownik może mieć zbyt błędy z innych grup. Jednak w tym przykładzie, tylko wyniki zastosowanie w danej grupie błędów jest ograniczona, sprawdzając **ReferencedObjectId** właściwości każdego **IndirectLicenseError** wpis użytkownika.
@@ -167,6 +223,28 @@ ObjectId                             DisplayName      License Error
 --------                             -----------      ------------
 6d325baf-22b7-46fa-a2fc-a2500613ca15 Catherine Gibson MutuallyExclusiveViolation
 ```
+Użyj następujących czynności, aby uzyskać te same dane z programu Microsoft Graph
+```
+GET https://graph.microsoft.com/beta/groups/11151866-5419-4d93-9141-0603bbf78b42/membersWithLicenseErrors
+```
+Dane wyjściowe:
+```
+HTTP/1.1 200 OK
+{
+  "value":[
+    {
+      "odata.type": "Microsoft.DirectoryServices.User",
+      "objectType": "User",
+      "id": "6d325baf-22b7-46fa-a2fc-a2500613ca15",
+      ... # other user properties.
+    },
+    ... # other users.
+  ],
+  "odata.nextLink":"https://graph.microsoft.com/beta/groups/11151866-5419-4d93-9141-0603bbf78b42/membersWithLicenseErrors?$skipToken=<encodedPageToken>" 
+}
+
+```
+
 ## <a name="get-all-users-with-license-errors-in-the-entire-tenant"></a>Pobieranie wszystkich użytkowników z błędami licencji w całej dzierżawie
 
 Poniższy skrypt można pobrać wszystkich użytkowników, którzy mają błędy licencji z co najmniej jedną grupę. Skrypt wyświetla jeden wiersz dla każdego użytkownika na błąd licencji, dzięki czemu można jednoznacznie zidentyfikować źródło każdego błędu.
@@ -299,6 +377,58 @@ ObjectId                             SkuId       AssignedDirectly AssignedFromGr
 157870f6-e050-4b3c-ad5e-0f0a377c8f4d contoso:EMS             True             False
 1f3174e2-ee9d-49e9-b917-e8d84650f895 contoso:EMS            False              True
 240622ac-b9b8-4d50-94e2-dad19a3bf4b5 contoso:EMS             True              True
+```
+
+Wykres nie ma prosty sposób przedstawiają wynik pomyślnie, ale są widoczne z tego interfejsu API
+```
+GET https://graph.microsoft.com/beta/users/e61ff361-5baf-41f0-b2fd-380a6a5e406a?$select=licenseAssignmentStates
+```
+Dane wyjściowe:
+```
+HTTP/1.1 200 OK
+{
+  "value":[
+    {
+      "odata.type": "Microsoft.DirectoryServices.User",
+      "objectType": "User",
+      "id": "e61ff361-5baf-41f0-b2fd-380a6a5e406a",
+      "licenseAssignmentState":[
+        {
+          "skuId": "157870f6-e050-4b3c-ad5e-0f0a377c8f4d”,
+          "disabledPlans":[],
+          "assignedByGroup": null, # assigned directly.
+          "state": "Active",
+          "error": "None"
+        },
+        {
+          "skuId": "1f3174e2-ee9d-49e9-b917-e8d84650f895",
+          "disabledPlans":[],
+          "assignedByGroup": “e61ff361-5baf-41f0-b2fd-380a6a5e406a”, # assigned by this group.
+          "state": "Active",
+          "error": "None"
+        },
+        {
+          "skuId": "240622ac-b9b8-4d50-94e2-dad19a3bf4b5", 
+          "disabledPlans":[
+            "e61ff361-5baf-41f0-b2fd-380a6a5e406a"
+          ],
+          "assignedByGroup": "e61ff361-5baf-41f0-b2fd-380a6a5e406a",
+          "state": "Active",
+          "error": "None"
+        },
+        {
+          "skuId": "240622ac-b9b8-4d50-94e2-dad19a3bf4b5",
+          "disabledPlans":[],
+          "assignedByGroup": null, # It is the same license as the previous one. It means the license is assigned directly once and inherited from group as well.
+          "state": " Active ",
+          "error": " None"
+        }
+      ],
+      ...
+    }
+  ],
+}
+
 ```
 
 ## <a name="remove-direct-licenses-for-users-with-group-licenses"></a>Usuń bezpośrednie licencji dla użytkowników z licencjami grup
@@ -483,5 +613,7 @@ Aby dowiedzieć się więcej na temat funkcji, ustaw dla zarządzania licencjami
 * [Co to jest oparte na grupach Licencjonowanie w usłudze Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
 * [Przypisywanie licencji do grupy w usłudze Azure Active Directory](licensing-groups-assign.md)
 * [Identyfikowanie i rozwiązywanie problemów z licencją dla grupy w usłudze Azure Active Directory](licensing-groups-resolve-problems.md)
-* [Jak przeprowadzić migrację użytkowników z licencjami indywidualnymi do licencjonowania opartego na grupy w usłudze Azure Active Directory](licensing-groups-migrate-users.md)
-* [Usługa Azure Active Directory na podstawie grupy licencjonowania dodatkowe scenariusze](licensing-group-advanced.md)
+* [Jak migrować użytkowników z licencjami indywidualnymi do licencji opartych na grupach w usłudze Azure Active Directory](licensing-groups-migrate-users.md)
+* [Jak przeprowadzić migrację użytkowników między licencjami produktów za pomocą licencjonowania opartego na grupy w usłudze Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
+* [Dodatkowe scenariusze licencjonowania opartego na grupach w usłudze Azure Active Directory](licensing-group-advanced.md)
+* [Przykłady programu PowerShell dla licencjonowania opartego na grupy w usłudze Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)

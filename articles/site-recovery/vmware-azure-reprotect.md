@@ -1,21 +1,20 @@
 ---
-title: Ponowne włączanie ochrony maszyn wirtualnych platformy Azure do lokacji lokalnej | Dokumentacja firmy Microsoft
-description: Po przejściu w tryb failover maszyn wirtualnych na platformie Azure można zainicjować powrotu po awarii, aby przywrócić maszyny wirtualne do środowiska lokalnego. Dowiedz się, jak ponownie włączyć ochronę przed powrotem po awarii.
-services: site-recovery
+title: Ponowne włączanie ochrony maszyn wirtualnych platformy Azure do lokacji lokalnej podczas odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych | Dokumentacja firmy Microsoft
+description: Po przejściu w tryb failover na platformie Azure podczas odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych Dowiedz się, jak się nie powieść powrót po awarii z platformy Azure do lokacji lokalnej.
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 1b410b2832d856f80d640aab2096fef270156c81
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 3f661ab5ff2a127ba7507a64bb4520cbad740473
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346683"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213291"
 ---
-# <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>Ponowne włączanie ochrony maszyn z platformy Azure do lokacji lokalnej
+# <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Ponowne włączanie ochrony i zakończyć się niepowodzeniem maszynami wstecz do lokacji lokalnej po włączeniu trybu failover na platformie Azure
 
 Po [trybu failover](site-recovery-failover.md) lokalnych maszyn wirtualnych z programu VMware lub serwery fizyczne do platformy Azure, pierwszym krokiem przechodzenia do lokacji sieci lokalnej jest do ponownego włączenia ochrony maszyn wirtualnych platformy Azure, które zostały utworzone podczas pracy awaryjnej. W tym artykule opisano, jak to zrobić. 
 

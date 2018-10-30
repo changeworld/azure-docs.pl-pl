@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 411c743421af79ea066df3a5fc07f71b8b6cb993
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 43f9d7d39cfcdd7b670aca6184533def0b6966f5
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855871"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211387"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Umożliwia dostęp do programu GRUB i tryb jednego użytkownika konsoli szeregowej
 Program GRUB jest sumy Unified programu inicjującego. Z programu GRUB są możliwość modyfikowania konfiguracji rozruchu do rozruchu w trybie jednego użytkownika, między innymi.
@@ -33,7 +33,7 @@ Aby przejść do trybu jednego użytkownika, należy wprowadzić CHODNIKÓW, kie
 ## <a name="general-grub-access"></a>Ogólny program GRUB dostępu
 Dostępu CHODNIKÓW, będzie konieczne ponowne uruchomienie maszyny Wirtualnej przy jednoczesnym zachowaniu Otwórz blok konsoli szeregowej. Niektóre dystrybucje wymaga danych wprowadzonych z klawiatury do wyświetlenia CHODNIKÓW, podczas gdy inne automatycznie Pokaż CHODNIKÓW na kilka sekund i Zezwalaj na klawiatury danych wprowadzonych przez użytkownika limit czasu anulowania. 
 
-Należy upewnić się, że CHODNIKÓW jest włączona na maszynie Wirtualnej, aby można było w trybie jednego użytkownika dostępu. W zależności od Twojej dystrybucji może być jakąś pracę Instalatora, aby upewnić się, że włączono programu GRUB. Informacje specyficzne dla dystrybucji są dostępne poniżej.
+Należy upewnić się, że CHODNIKÓW jest włączona na maszynie Wirtualnej, aby można było w trybie jednego użytkownika dostępu. W zależności od Twojej dystrybucji może być jakąś pracę Instalatora, aby upewnić się, że włączono programu GRUB. Informacje specyficzne dla dystrybucji znajduje się poniżej oraz w [ten link](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/).
 
 ### <a name="reboot-your-vm-to-access-grub-in-serial-console"></a>Ponowne uruchomienie maszyny Wirtualnej, aby uzyskać dostęp CHODNIKÓW w konsoli szeregowej
 Ponowne uruchamianie maszyny Wirtualnej za pomocą bloku konsoli szeregowej, otwórz może odbywać się przy użyciu SysRq `'b'` polecenia, jeśli [SysRq](./serial-console-nmi-sysrq.md) jest włączona lub przez kliknięcie przycisku ponownego uruchomienia znajdujący się w bloku przeglądu (Otwieranie maszyny Wirtualnej w nowej karcie przeglądarki, ponowne uruchomienie bez zamknięcia Blok konsoli szeregowej). Postępuj zgodnie z poniższymi instrukcjami specyficzne dla dystrybucji, aby dowiedzieć się, czego można oczekiwać od CHODNIKÓW, po ponownym uruchomieniu.
@@ -186,6 +186,7 @@ Postępuj zgodnie z instrukcjami dotyczącymi RHEL powyżej, aby włączyć tryb
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Znajduje się na stronie dokumentacji Linux głównych konsoli szeregowej [tutaj](serial-console-linux.md).
+* Dowiedz się, jak używać konsoli szeregowej [Włącz CHODNIKÓW w różnych dystrybucjach](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)
 * Użyj konsoli szeregowej dla [NMI i SysRq wywołania](serial-console-nmi-sysrq.md)
 * Jest również dostępny dla konsoli szeregowej [Windows](serial-console-windows.md) maszyn wirtualnych
 * Dowiedz się więcej o [diagnostykę rozruchu](boot-diagnostics.md)

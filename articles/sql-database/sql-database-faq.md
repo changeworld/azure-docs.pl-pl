@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 88bea87c752563e1c19332121eb568b0bd329d03
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7bb692735cb3541fb05b2c39dd7325fa74a00034
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954147"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232209"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>SQL Database — często zadawane pytania (FAQ)
 
@@ -31,7 +31,7 @@ Firma Microsoft gwarantuje dostępność przez 99,99% czasu, możesz korzystać 
 
 ## <a name="can-i-control-when-patching-downtime-occurs"></a>Czy mogę kontrolować to sytuacji poprawek przestoju
 
-Nie. Zwykle wpływ poprawek nie jest operacja Jeśli możesz [stosować logikę ponawiania próby](sql-database-develop-overview.md#resiliency) w swojej aplikacji.
+Nie. Zwykle wpływ poprawek nie jest widoczne w przypadku możesz [stosować logikę ponawiania próby](sql-database-develop-overview.md#resiliency) w swojej aplikacji.
 
 ## <a name="what-is-the-new-vcore-based-purchasing-model-for-azure-sql-database"></a>Co to jest nowy oparty na rdzeniach wirtualnych zakupu model usługi Azure SQL Database
 

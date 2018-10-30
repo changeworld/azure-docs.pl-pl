@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/03/2018
+ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 49688b958d904450c50944725b18e0d518e27146
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 32cd373499a1ac6dd8cc02e666b0f6ff70688157
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269262"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215263"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Za pomocą rozwiązania Service Map na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Przy użyciu mapy usługi w taki sposób, które z nich można przeglądać serwery: jako wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map Pokazuje połączenia między serwerami, procesami, czas oczekiwania na połączenie przychodzące i wychodzące i portami w dowolnej architekturze połączenia TCP, bez konieczności konfiguracji wymagane inne niż Instalacja agenta.
@@ -72,11 +72,6 @@ Maszyny można rozwijać w mapę, aby pokazać uruchamianie przetwarzania grupy 
 
 Domyślnie mapy usługi maps Pokaż ostatnich 30 minut informacji o zależnościach. Za pomocą kontrolek na czas, w lewym górnym rogu, można tworzyć zapytania mapy dla zakresy czasu historycznych maksymalnie jedną godzinę, aby pokazać, jak zależności będzie wyglądał w przeszłości (na przykład podczas zdarzenia lub przed wystąpieniem zmiany). Rozwiązania Service Map, dane są przechowywane przez 30 dni w płatnych obszarów roboczych oraz przez 7 dni w bezpłatnych obszarów roboczych.
 
-
-
-
-
-
 ## <a name="status-badges-and-border-coloring"></a>Wskaźniki stanu i kolorowanie obramowania
 W dolnej części każdego serwera, na mapie, może być lista wskaźniki stanu przekazywania stanu informacji o serwerze. Wskaźniki oznacza, że niektóre istotne informacje dotyczące serwera z jednego z integracji rozwiązań. Klikając pozycję wskaźnika przejście bezpośrednio do szczegółowych informacji o stanie w okienku po prawej stronie. Wskaźniki stanu aktualnie dostępne obejmują alerty, pomoc techniczna, zmiany, zabezpieczeń i aktualizacje.
 
@@ -104,7 +99,7 @@ Tam możesz wybrać **Utwórz nową** i nadaj nazwę grupie.
 ![Nazwa grupy](media/monitoring-service-map/machine-groups-name.png)
 
 >[!NOTE]
->Grupy na komputerze są obecnie ograniczone do 10 serwerów, ale planujemy szybko zwiększyć ten limit.
+>Grupy maszyn są ograniczone do 10 serwerów.
 
 ### <a name="viewing-a-group"></a>Wyświetlanie grupy
 Po utworzeniu niektóre grupy, można je wyświetlić, wybierając kartę grupy.
@@ -307,7 +302,7 @@ Aby zarządzać, koszt i złożoność, rekordy połączeń nie przedstawiają p
 |:--|:--|
 |Kierunek |Kierunek połączenia, wartość jest *dla ruchu przychodzącego* lub *ruchu wychodzącego* |
 |Maszyna |Nazwa FQDN komputera |
-|Proces |Tożsamość procesu lub grupy procesów, inicjowanie/akceptować połączenia |
+|Przetwórz |Tożsamość procesu lub grupy procesów, inicjowanie/akceptować połączenia |
 |SourceIp |Adres IP źródła |
 |DestinationIp |Adres IP miejsca docelowego |
 |DestinationPort |Numer portu docelowego |

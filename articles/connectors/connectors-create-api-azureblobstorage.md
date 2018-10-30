@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: d8658740772ed4a11fdfd70a0c925ac1b597dd69
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 7d6845624c838ac0cf49e5963cae1ca0ea15ec15
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452024"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230611"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Tworzenie i zarządzanie obiektami BLOB w usłudze Azure blob storage z usługą Azure Logic Apps
 
@@ -28,7 +28,7 @@ Załóżmy, że masz narzędzie, które zostanie zaktualizowany w witrynie sieci
 >
 > * Tworzenie [środowisko usługi integracji](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), które mogą łączyć się z zasobami w sieci wirtualnej platformy Azure. 
 > 
-> * Jeśli używasz już usługi API Management, można użyć tej usługi, w tym scenariuszu. Aby uzyskać więcej informacji, zobacz [Architektura integracji przedsiębiorstw proste](http://aka.ms/aisarch).
+> * Jeśli używasz już usługi API Management, można użyć tej usługi, w tym scenariuszu. Aby uzyskać więcej informacji, zobacz [Architektura integracji przedsiębiorstw proste](https://aka.ms/aisarch).
 
 Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 Aby uzyskać informacje techniczne dotyczące łącznika, zobacz <a href="https://docs.microsoft.com/connectors/azureblobconnector/" target="blank">dokumentacja łączników usługi Azure Blob Storage</a>.
@@ -124,7 +124,7 @@ Szczegóły techniczne, takich jak wyzwalacze, akcje i limity, zgodnie z opisem 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](http://aka.ms/logicapps-wish).
+* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

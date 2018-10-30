@@ -1,18 +1,18 @@
 ---
-title: " Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii serwerów fizycznych z usługą Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: W tym artykule opisano sposób zarządzania istniejącego serwera konfiguracji odzyskiwania po awarii serwerów fizycznych na platformę Azure za pomocą usługi Azure Site Recovery.
+title: Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii lokalnych serwerów fizycznych na platformę Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób zarządzania serwerem konfiguracji usługi Azure Site Recovery na potrzeby odzyskiwania po awarii serwerów fizycznych na platformę Azure.
 services: site-recovery
-author: AnoopVasudavan
+author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
-ms.author: anoopkv
-ms.openlocfilehash: 068d2774791995fab1c07c73e6d733a6e09379f1
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.date: 10/29/2018
+ms.author: ramamill
+ms.openlocfilehash: 4bf9277598c3e56c0429dddcb2204cb1338a33be
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951180"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213257"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii serwerów fizycznych
 

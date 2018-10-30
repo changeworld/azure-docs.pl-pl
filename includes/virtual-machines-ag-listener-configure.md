@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 93aa77edaedbd3984e9e83ccfb7374422952e83a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227468"
+---
 Odbiornik grupy dostępności jest nazwa i adres IP sieci, grupy dostępności programu SQL Server nasłuchuje. Aby utworzyć odbiornik grupy dostępności, wykonaj następujące czynności:
 
 1. <a name="getnet"></a>Pobierz nazwę zasobu sieci klastra.

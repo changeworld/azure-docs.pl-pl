@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines-linux
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 46fd31b54b7692700cce0bebe484c4f5de591942
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226530"
+---
 Podczas dodawania dysków danych do maszyny Wirtualnej z systemem Linux, mogą wystąpić błędy, jeśli nie ma dysku o numerze LUN 0. W przypadku dodawania dysku ręcznie przy użyciu `azure vm disk attach-new` polecenia i podaj numer LUN (`--lun`) zamiast co platformy Azure, aby określić odpowiednie jednostki LUN, powinien zachować ostrożność, że dysk już istnieje / będzie istnieć o numerze LUN 0. 
 
 Rozważmy następujący przykład przedstawiający fragment danych wyjściowych z `lsscsi`:

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: d70eecb6a5d6bafbfa6507dbe8b1bcb1cad67191
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cbe6ddc2c4680028d5a4a0491756c7a7b9897c69
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990250"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233246"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Rozszerzanie alertów z usługi Log Analytics do alertów platformy Azure
 Funkcja alertów w usłudze Azure Log Analytics jest zastępowany przez alerty platformy Azure. W ramach tego przejścia alerty, które pierwotnie skonfigurowane w usłudze Log Analytics zostanie rozszerzony na platformę Azure. Jeśli nie chcesz poczekać na ich automatycznie przeniesione na platformę Azure, możesz zainicjować proces:
@@ -22,12 +22,12 @@ Funkcja alertów w usłudze Azure Log Analytics jest zastępowany przez alerty p
 - Programowe korzystając z interfejsu API AlertsVersion.  
 
 > [!NOTE]
-> Firma Microsoft automatycznie rozszerzy alerty utworzone w wystąpieniach chmury publicznej usługi Log Analytics do alertów platformy Azure od 14 maja 2018 r. w serii cyklicznych do momentu zakończenia. Jeśli masz problemy z tworzeniem [grup akcji](monitoring-action-groups.md), użyj [te czynności zaradczych](monitoring-alerts-extend-tool.md#troubleshooting) można pobrać grup akcji utworzone automatycznie. Te kroki można użyć do 5 lipca 2018 r. *Nie dotyczy rządu platformy Azure i użytkownicy usługi Log Analytics w chmurze Soveriegn*. 
+> Firma Microsoft automatycznie rozszerzy alerty utworzone w wystąpieniach chmury publicznej usługi Log Analytics do alertów platformy Azure od 14 maja 2018 r. w serii cyklicznych do momentu zakończenia. Jeśli masz problemy z tworzeniem [grup akcji](monitoring-action-groups.md), użyj [te czynności zaradczych](monitoring-alerts-extend-tool.md#troubleshooting) można pobrać grup akcji utworzone automatycznie. Te kroki można użyć do 5 lipca 2018 r. *Nie stosuje się do platformy Azure dla instytucji rządowych i użytkowników należących do suwerennej chmury usługi Log Analytics*. 
 
 ## <a name="option-1-initiate-from-the-operations-management-suite-portal"></a>Opcja 1: Zainicjuj z portalu Operations Management Suite
 Poniżej opisano sposób rozszerzyć alerty dla obszaru roboczego z portalu Operations Management Suite.  
 
-1. W witrynie Azure portal wybierz **wszystkich usług**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
+1. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
 2. W okienku subskrypcji usługi Log Analytics wybierz obszar roboczy, a następnie wybierz **portalu pakietu OMS** kafelka.
 ![W okienku subskrypcji zrzut ekranu usługi Log Analytics, za pomocą portalu pakietu OMS kafelka wyróżnione](./media/monitor-alerts-extend/azure-portal-01.png) 
 3. Po użytkownik zostanie przekierowany do portalu Operations Management Suite, wybierz **ustawienia** ikony.

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: d240bafa543633999a74ef66efcfd7130a4a7b7a
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 1a135b0e17889c544a99ad677e9fa42ad6de994c
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389279"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231886"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -74,9 +74,9 @@ Ten problem występuje, gdy udział plików platformy Azure jest już używany p
 Jeśli widzisz ten komunikat i udziału plików platformy Azure nie jest obecnie używany przez punkt końcowy w chmurze, wykonaj następujące kroki, aby wyczyścić metadanych usługi Azure File Sync w udziale plików platformy Azure:
 
 > [!Warning]  
-> Usuwanie metadanych w udziale plików platformy Azure, która jest aktualnie używany przez punkt końcowy w chmurze powoduje niepowodzenie działania usługi Azure File Sync. 
+> Usuwanie metadanych w udziale plików platformy Azure, która jest aktualnie używany przez punkt końcowy w chmurze powoduje niepowodzenie działania usługi Azure File Sync. 
 
-1. W witrynie Azure portal przejdź do udziału plików platformy Azure.  
+1. W witrynie Azure portal przejdź do udziału plików platformy Azure.  
 2. Kliknij prawym przyciskiem myszy udział plików platformy Azure, a następnie wybierz **edytowanie metadanych**.
 3. Kliknij prawym przyciskiem myszy **SyncService**, a następnie wybierz pozycję **Usuń**.
 
@@ -519,7 +519,7 @@ Ten błąd występuje, ponieważ nie wprowadzono zmian w udziale plików platfor
 | | |
 | **HRESULT** | 0x80c8021c |
 | **HRESULT (dziesiętna)** | -2134375908 |
-| **Ciąg błędu** | ECS_E_SYNC_METADATA_KNOWLEGE_LIMIT_REACHED |
+| **Ciąg błędu** | ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED |
 | **Wymagana korekta** | Yes |
 | | |
 | **HRESULT** | 0x80c80253 |

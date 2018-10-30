@@ -14,30 +14,33 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: barclayn
-ms.openlocfilehash: 56a1ebcfbb6dda9bc96aa241bd2b8d753022181a
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: d1a6da5d599296a11678ee58cadc42d61296e8e7
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385862"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230305"
 ---
 # <a name="what-is-azure-key-vault"></a>Co to jest usługa Azure Key Vault?
 
 Usługa Azure Key Vault pomaga rozwiązać następujące problemy:
-- **Zarządzanie wpisami tajnymi** — usługi Azure Key Vault pozwala bezpiecznie przechowywać i ściśle kontrolować dostęp do tokenów, hasła, certyfikaty, klucze interfejsu API i innych wpisów tajnych
-- **Zarządzanie kluczami** — usługi Azure Key Vault umożliwia także jako rozwiązania do zarządzania kluczami. Usługa Azure Key Vault ułatwia tworzenie i kontrolowanie kluczy szyfrowania używanych do szyfrowania danych. 
-- **Zarządzanie certyfikatami** — usługi Azure Key Vault jest również usługa, która pozwala na łatwe aprowizowanie, zarządzanie i wdrażanie prywatnych i publicznych certyfikatów Secure Sockets Layer/Transport Layer Security (SSL/TLS) do użytku z platformą Azure i wewnętrznych połączone zasoby. 
-- **Store wpisów tajnych, wspierane przez sprzętowe moduły zabezpieczeń** — klucze tajne i klucze mogą być chronione przez oprogramowanie lub ze standardem FIPS 140-2 Level 2 weryfikuje sprzętowych modułów zabezpieczeń
+- **Zarządzanie wpisami tajnymi** — usługi Azure Key Vault pozwala bezpiecznie przechowywać i ściśle kontrolować dostęp do tokenów, hasła, certyfikaty, klucze interfejsu API i innych wpisów tajnych.
+- **Zarządzanie kluczami** — usługa Azure Key Vault może być także używana jako rozwiązanie do zarządzania kluczami. Usługa Azure Key Vault ułatwia tworzenie i kontrolowanie kluczy szyfrowania używanych do szyfrowania danych. 
+- **Zarządzanie certyfikatami** — usługa Azure Key Vault pozwala również łatwo aprowizować i wdrażać prywatne i publiczne certyfikaty Secure Sockets Layer/Transport Layer Security (SSL/TLS) do użycia z platformą Azure i połączonymi zasobami wewnętrznymi oraz zarządzać tymi certyfikatami. 
+- **Store wpisów tajnych, wspierane przez sprzętowe moduły zabezpieczeń** — klucze tajne i klucze mogą być chronione przez oprogramowanie lub ze standardem FIPS 140-2 Level 2 weryfikuje sprzętowych modułów zabezpieczeń.
 
 ## <a name="basic-concepts"></a>Podstawowe pojęcia
 
 Usługa Azure Key Vault jest narzędziem do bezpiecznego przechowywania wpisów tajnych i uzyskiwania do nich dostępu. Wpis tajny to dowolny zasób, do którego dostęp powinien być ściśle kontrolowany. Przykładowe wpisy tajne to klucze interfejsu API, hasła i certyfikaty. A **magazynu** jest logiczną grupą wpisów tajnych. Teraz można wykonywać wszystkie operacje za pomocą usługi Key Vault należy najpierw uwierzytelnić się do niego. 
 
-Zasadniczo są 3 sposoby uwierzytelniania w usłudze Key Vault
+Zasadniczo istnieją 3 sposoby uwierzytelniania w usłudze Key Vault:
 
 1. **Za pomocą [zarządzanych tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)**  (**zalecane i najlepszych praktyk**): podczas wdrażania aplikacji na maszynie wirtualnej na platformie Azure, można przypisać tożsamość maszyny wirtualnej który ma dostęp do usługi Key Vault. Można także przypisać tożsamości do innych zasobów platformy azure, które są wymienione [tutaj](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Korzyści w przypadku tej metody jest aplikacja / Usługa nie zarządza obrót pierwszy klucz tajny. Azure automatycznie przełącza tożsamości. 
-2. **Za pomocą jednostki usługi i certyfikatu:** 2nd opcją jest użycie nazwy głównej usługi i jest skojarzony certyfikat, który ma dostęp do usługi Key Vault. Ciężar rotacji certyfikatu znajduje się w właściciela aplikacji lub dla deweloperów i dlatego nie jest to zalecane
-3. **Za pomocą nazwy głównej usługi i klucza tajnego:** opcja 3 (nie preferowaną opcję) jest użycie jednostki usługi oraz klucza tajnego do uwierzytelniania w usłudze Key Vault
+2. **Za pomocą jednostki usługi i certyfikatu:** 2nd opcją jest użycie nazwy głównej usługi i jest skojarzony certyfikat, który ma dostęp do usługi Key Vault. Ciężar rotacji certyfikatu znajduje się w właściciela aplikacji lub dla deweloperów i dlatego nie jest to zalecane.
+3. **Za pomocą nazwy głównej usługi i klucza tajnego:** opcja 3 (nie preferowaną opcję) jest użycie jednostki usługi oraz klucza tajnego do uwierzytelniania w usłudze Key Vault.
+
+> [!NOTE]
+> Opcja 3 powyżej nie należy używać, ponieważ trudno automatyczne obracanie bootstrap hasło używane do uwierzytelniania w usłudze Key Vault.
 
 Poniżej przedstawiono niektóre kluczowe terminy:
 - **Dzierżawa** — dzierżawa to organizacja, która jest właścicielem konkretnego wystąpienia usług firmy Microsoft w chmurze i zarządza nim. Tym terminem najczęściej określa się zestaw usług platformy Azure i Office 365 dla organizacji.
@@ -45,7 +48,7 @@ Poniżej przedstawiono niektóre kluczowe terminy:
 - **Użytkownik magazynu** — użytkownik magazynu może wykonywać akcje na zasobach wewnątrz magazynu kluczy, jeśli właściciel magazynu udzieli mu dostępu. Dostępne akcje zależą od przyznanych uprawnień.
 - **Zasób** — zasób to dostępny za pośrednictwem platformy Azure element, którym można zarządzać. Niektóre typowe zasoby to: maszyna wirtualna, konto magazynu, aplikacja internetowa czy sieć wirtualna. Istnieje ich jednak wiele więcej.
 - **Grupa zasobów** — grupa zasobów to kontener, który zawiera powiązane zasoby dla rozwiązania platformy Azure. Grupa zasobów może zawierać wszystkie zasoby dla rozwiązania lub tylko te zasoby, które mają być zarządzane jako grupa. Użytkownik decyduje o sposobie przydziału zasobów do grup zasobów pod kątem tego, co jest najbardziej odpowiednie dla danej organizacji.
-- **Nazwa główna usługi** — w celu uzyskania dostępu do zasobów, które są zabezpieczone przez dzierżawę usługi Azure AD, jednostka, która wymaga dostępu musi być reprezentowana przez podmiot zabezpieczeń. Ta zasada obowiązuje dla użytkowników (nazwy głównej użytkownika) i aplikacji (nazwy głównej usługi). Podmiot zabezpieczeń definiuje zasady dostępu i uprawnień dla aplikacji/użytkownika w tej dzierżawie. Dzięki temu podstawowe funkcje, takie jak uwierzytelnianie aplikacji/użytkownika podczas logowania i autoryzacji podczas uzyskiwania dostępu do zasobów.
+- **Nazwa główna usługi** -jednostki usługi platformy Azure to tożsamość zabezpieczeń używana przez aplikacje utworzone przez użytkownika, usługi i narzędzia automatyzacji, dostęp do określonych zasobów platformy Azure. Można ją traktować jako „tożsamość użytkownika” (nazwa logowania i hasło lub certyfikat) z określoną rolą i ściśle kontrolowanymi uprawnieniami. W odróżnieniu od ogólnej tożsamości użytkownika, jednostka usługi powinna wykonywać tylko określone czynności. Nazwa główna usługi pozwala poprawić bezpieczeństwo, jeśli przyznasz jej tylko minimalny poziom uprawnień potrzebny do wykonywania zadań zarządzania.
 - **[Azure Active Directory (Azure AD)](../active-directory/active-directory-whatis.md)**: Azure AD to usługa Active Directory dla dzierżawy. Każdy katalog ma co najmniej jedną domenę. Katalog może mieć wiele skojarzonych subskrypcji, ale tylko jedną dzierżawę. 
 - **Identyfikator dzierżawy Azure** — identyfikator dzierżawy to unikatowy sposób identyfikacji wystąpienia usługi Azure AD w ramach subskrypcji platformy Azure.
 - **Zarządzane tożsamości dla zasobów platformy Azure**: usługi Azure Key Vault umożliwia bezpieczne przechowywanie poświadczeń i innych kluczy i wpisów tajnych, ale Twój kod będzie wymagała uwierzytelnienia do usługi Key Vault, aby je pobrać. Za pomocą tożsamości zarządzanej sprawia, że rozwiązywania tego problemu, prostsze, zapewniając tożsamości automatycznie zarządzanych usług platformy Azure w usłudze Azure AD. Za pomocą tej tożsamości można uwierzytelnić się w usłudze Key Vault lub dowolnej innej usłudze obsługującej uwierzytelnianie usługi Azure AD bez konieczności przechowywania poświadczeń w kodzie. Aby uzyskać więcej informacji, zobacz poniższy obraz i [zarządzanych tożsamości dla zasobów platformy Azure — omówienie](../active-directory/managed-identities-azure-resources/overview.md).

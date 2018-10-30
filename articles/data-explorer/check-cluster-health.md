@@ -8,18 +8,18 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 0746247d2c912ba66e81b95f45b168e32b522130
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d07873b34a41ff20b5007a88743f6b150d4d8a3d
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988431"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212832"
 ---
 # <a name="check-the-health-of-an-azure-data-explorer-cluster"></a>Sprawdzanie kondycji klastra usługi Azure Eksplorator danych
 
 Istnieje kilka czynników, które mają wpływ na kondycję klastra Eksploratora danych usługi Azure, w tym procesora CPU, pamięci i podsystem dysku. W tym artykule przedstawiono niektóre podstawowe kroki można wykonać w celu oceniania kondycji klastra.
 
-1. Zaloguj się do [ https://dataexplorer.azure.com ](https://dataexplorer.azure.com).
+1. Zaloguj się do witryny [https://dataexplorer.azure.com](https://dataexplorer.azure.com).
 
 1. W okienku po lewej stronie wybierz klaster, a następnie uruchom następujące polecenie.
 
@@ -35,6 +35,8 @@ Istnieje kilka czynników, które mają wpływ na kondycję klastra Eksploratora
 
     ![Metryka zachować aktywności klastra](media/check-cluster-health/portal-metrics.png)
 
-1. Dodaj inne metryki, takie jak procesor CPU i pamięć podręczna miernika wykorzystanie zasobów klastra.
+1. Istnieje możliwość dodać innych metryk do wykresu. Następnie wybierz wykres **Dodaj metrykę**. Wybierz inną metrykę — w tym przykładzie **Procesora**.
 
-1. Jeśli potrzebujesz pomocy w diagnozowaniu problemów z kondycją klastra, otwórz żądanie pomocy technicznej w [witryny Azure portal](https://portal.azure.com).
+    ![Dodawanie metryki](media/check-cluster-health/add-metric.png)
+
+1. Jeśli potrzebujesz pomocy w diagnozowaniu problemów z kondycją klastra, otwórz żądanie pomocy technicznej w [witryny Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).

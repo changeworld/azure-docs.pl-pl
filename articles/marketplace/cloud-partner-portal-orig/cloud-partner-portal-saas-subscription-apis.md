@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c9ed3f3511def085f5e0658bbcbd7978e3a7ce20
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 9ffb67a2d3d07e75df29070ca198bac1661f95cc
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079320"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212968"
 ---
 <a name="saas-sell-through-azure---apis"></a>Sprzedaż SaaS za pośrednictwem platformy Azure — interfejsy API
 ==============================
 
-W tym artykule opisano sposób tworzenia oferty SaaS za pomocą interfejsów API. Interfejsy API są niezbędne w przypadku sprzedaży za pośrednictwem wybrane platformy Azure, dzięki czemu subskrypcje do swojej oferty SaaS. Jeśli chcesz skompilować regularne listy SaaS, które ma włączone commerce, zobacz [publikowania Guide]./cloud-partner-portal-saas-offers-tech-publishing-guide.md technicznych aplikacji SaaS).
+W tym artykule opisano sposób tworzenia oferty SaaS za pomocą interfejsów API. Interfejsy API są niezbędne w przypadku sprzedaży za pośrednictwem wybrane platformy Azure, dzięki czemu subskrypcje do swojej oferty SaaS. Jeśli chcesz utworzyć listę SaaS regularnych, które nie zostały włączone commerce, zobacz [techniczne Podręcznik publikowania aplikacji SaaS](./cloud-partner-portal-saas-offers-tech-publishing-guide.md).
 
 W tym artykule jest podzielona na dwie sekcje:
 

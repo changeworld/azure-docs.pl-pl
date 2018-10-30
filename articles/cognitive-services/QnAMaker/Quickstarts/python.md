@@ -1,7 +1,7 @@
 ---
 title: Interfejs API REST (V4) - Python - usługi QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Uzyskaj informacje oraz przykłady kodu, które umożliwią Ci szybkie rozpoczęcie korzystania z interfejsu API tłumaczenia tekstu przy użyciu usługi Microsoft Translator w usłudze Microsoft Cognitive Services na platformie Azure.
+description: Pobierz Python informacji i przykładowy kod w celu szybkiego Rozpocznij pracę przy użyciu interfejsu API tekstu usługi Translator firmy Microsoft w usługach Microsoft Cognitive Services na platformie Azure.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -10,17 +10,17 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 595eee6a10192d877aa77f4849bac494dff05808
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 1eff6ab146bb3a7ee053b8ac7fe3137d7c58c93a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650013"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212475"
 ---
 # <a name="qna-maker-rest-api-with-python"></a>Interfejs API REST usługi QnA Maker za pomocą języka Python
 <a name="HOLTop"></a>
 
-W tym artykule dowiesz się, jak używać [interfejsu API usługi Microsoft QnA Maker](../Overview/overview.md) w języku Python, aby wykonać następujące czynności.
+W tym artykule dowiesz się, jak używać [interfejsu API programu Microsoft QnA Maker](../Overview/overview.md) przy użyciu języka Python, wykonaj następujące czynności.
 
 - [Tworzenie nowej bazy wiedzy.](#Create)
 - [Aktualizowanie istniejącej bazy wiedzy.](#Update)
@@ -39,7 +39,7 @@ W tym artykule dowiesz się, jak używać [interfejsu API usługi Microsoft QnA 
 
 [!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 
-## <a name="prerequisites"></a>Wstępnie wymagane składniki
+## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby uruchomić ten kod, potrzebne jest środowisko języka [Python 3.x](https://www.python.org/downloads/).
 

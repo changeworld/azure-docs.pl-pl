@@ -1,21 +1,20 @@
 ---
-title: Planista wdrożenia usługi Azure Site Recovery dla oprogramowania VMware na platformie Azure | Microsoft Docs
-description: W tym artykule opisano tryb uruchamiania planisty wdrożenia usługi Azure Site Recovery dla scenariusza oprogramowania VMware na platformie Azure.
-services: site-recovery
+title: Uruchamianie Planisty wdrożenia usługi Azure Site Recovery dla odzyskiwania po awarii programu VMware na platformie Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób uruchamiania Planisty wdrożenia usługi Azure Site Recovery w celu odzyskiwania po awarii programu VMware na platformę Azure.
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: f83ab78cae17859dc28349cf7c435d7101c5fa3b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: b890dce5d94c2177c8fc8cdb5477b92df15c8095
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093164"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211030"
 ---
-# <a name="run-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Uruchamianie planisty wdrożenia usługi Azure Site Recovery dla oprogramowania VMware na platformie Azure
+# <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Uruchamianie Planisty wdrożenia usługi Azure Site Recovery dla odzyskiwania po awarii programu VMware na platformę Azure
 Ten artykuł to podręcznik użytkownika planisty wdrożenia usługi Azure Site Recovery dla wdrożeń produkcyjnych oprogramowania VMware na platformie Azure.
 
 

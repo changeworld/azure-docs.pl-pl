@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: roiyz
-ms.openlocfilehash: 1201e7ec232a5bd45351072949dc0b9c19af434f
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 7396277c58b079dc2f0c68b7832a6f2ca57ee287
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452177"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212305"
 ---
 # <a name="custom-script-extension-for-windows"></a>Rozszerzenie niestandardowego skryptu dla Windows
 
@@ -73,7 +73,7 @@ Tych elementów powinien być traktowane jako poufne dane i określony w konfigu
 
 ```json
 {
-    "apiVersion": "2015-06-15",
+    "apiVersion": "2018-06-01",
     "type": "Microsoft.Compute/virtualMachines/extensions",
     "name": "config-app",
     "location": "[resourceGroup().location]",
@@ -108,10 +108,10 @@ Tych elementów powinien być traktowane jako poufne dane i określony w konfigu
 
 | Name (Nazwa) | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | data |
+| apiVersion | 2015-06-15 | date |
 | Wydawcy | Microsoft.Compute | ciąg |
 | type | CustomScriptExtension | ciąg |
-| typeHandlerVersion | 1.9 | Int |
+| typeHandlerVersion | 1.9 | int |
 | fileUris (np.) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | tablica |
 | commandToExecute (np.) | Program PowerShell - ExecutionPolicy Unrestricted - pliku skonfigurować — muzyka app.ps1 | ciąg |
 | storageAccountName (np.) | examplestorageacct | ciąg |
@@ -135,7 +135,10 @@ Ustawienia publicznego są wysyłane w postaci zwykłego tekstu do maszyny Wirtu
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
-Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Schemat JSON szczegółowo opisane w poprzedniej sekcji może służyć w szablonie usługi Azure Resource Manager do rozszerzenia niestandardowego skryptu są uruchamiane podczas wdrażania szablonu usługi Azure Resource Manager. Przykładowy szablon, który zawiera rozszerzenie niestandardowego skryptu można znaleźć w tym miejscu [GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows).
+Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Schemat JSON szczegółowo opisane w poprzedniej sekcji może służyć w szablonie usługi Azure Resource Manager do rozszerzenia niestandardowego skryptu są uruchamiane podczas wdrażania szablonu usługi Azure Resource Manager. Poniższe przykłady pokazują, jak za pomocą rozszerzenia niestandardowego skryptu:
+
+* [Samouczek: Wdrażanie rozszerzenia maszyny wirtualnej przy użyciu szablonów usługi Azure Resource Manager](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)
+* [Wdrażanie dwóch aplikacji warstwy na Windows i bazą danych Azure SQL](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)
 
 ## <a name="powershell-deployment"></a>Wdrożenie programu PowerShell
 

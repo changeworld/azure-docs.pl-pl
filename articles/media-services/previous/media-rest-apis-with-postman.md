@@ -1,45 +1,45 @@
 ---
-title: Skonfiguruj Postman dla wywołań interfejsu API REST Azure Media Services
-description: Dowiedz się, jak skonfigurować Postman dla wywołań interfejsu API REST usług Media.
+title: Konfigurowanie narzędzia Postman dla wywołań interfejsu API REST usługi Azure Media Services
+description: Dowiedz się, jak skonfigurować narzędzia Postman dla wywołań interfejsu API REST usługi Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 10/29/2018
 ms.author: juliako
-ms.openlocfilehash: 72b110cac8d4945c958d760ff98e2da2f2796b62
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ee7f87a9c358f2b6ee655d13b74297a96b25cfcc
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788263"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233790"
 ---
-# <a name="configure-postman-for-media-services-rest-api-calls"></a>Skonfiguruj Postman dla wywołań interfejsu API REST usługi multimediów
+# <a name="configure-postman-for-media-services-rest-api-calls"></a>Konfigurowanie narzędzia Postman dla wywołań interfejsu API REST usługi Media Services
 
-W tym samouczku przedstawiono sposób konfigurowania **Postman** dzięki mogą być używane do wywoływania interfejsów API REST usługi Azure Media Services (AMS). Samouczek pokazuje, jak do importowania plików środowiska i kolekcji do **Postman**. Kolekcja zawiera definicje grupowanych żądań HTTP, które mogą wywoływać interfejsy API REST usługi Azure Media Services (AMS). Plik środowisko zawiera zmiennych, które są używane przez połączenie.
+W tym samouczku dowiesz się, jak skonfigurować **Postman** , dzięki czemu może służyć do wywołania interfejsów API REST usługi Azure Media Services (AMS). Samouczek pokazuje, jak do importowania plików środowiska i kolekcji do **Postman**. Kolekcja zawiera definicje pogrupowanych żądań HTTP przetwarzanych wywoływać interfejsy API REST usługi Azure Media Services (AMS). Plik środowisko zawiera zmienne, które są używane przez kolekcję.
 
-To środowisko i kolekcji jest używany w artykułach, które pokazują, jak uzyskać różne zadania związane z interfejsów API usługi Azure Media Services REST.
+To środowisko i kolekcji są używane w artykułach, które pokazują, jak osiągnąć różne zadania za pomocą interfejsów API REST usługi Azure Media.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Zainstaluj [Postman](https://www.getpostman.com/) klienta REST do wykonania wyświetlany w niektórych samouczki AMS REST interfejsów API REST. 
+- Zainstaluj klienta REST programu [Postman](https://www.getpostman.com/), aby uruchomić interfejsy API REST przedstawione w niektórych samouczkach dotyczących AMS REST. 
 
-    Używamy **Postman** , ale odpowiednia może być dowolnego narzędzia REST. Inne alternatywne to: **Visual Studio Code** z wtyczki REST lub **Fiddler strony firmy Telerik**. 
+    W przykładzie użyto programu **Postman**, ale odpowiednie będzie każde narzędzie REST. Można również użyć: programu **Visual Studio Code** z wtyczką REST lub programu **Telerik Fiddler**. 
 
 ## <a name="configure-the-environment"></a>Konfigurowanie środowiska 
 
-1. Utwórz plik JSON zawierający zmiennych środowiskowych w samouczkach AMS. Nazwa pliku (na przykład **AzureMediaServices.postman_environment.json**). Otwórz plik i Wklej kod, który definiuje środowiska Postman [ten przykładowy kod](postman-environment.md). 
-2. Otwórz **Postman**.
-3. Po prawej stronie ekranu wybierz **środowiska Zarządzaj** opcji.
+1. Utwórz plik JSON, który zawiera zmienne środowiskowe, używaną w samouczkach usługi AMS. Nadaj plikowi nazwę (na przykład **AzureMediaServices.postman_environment.json**). Otwórz plik i Wklej kod, który definiuje środowiska Postman [tym fragmencie kodu](postman-environment.md). 
+2. Otwórz program **Postman**.
+3. Po prawej stronie ekranu wybierz opcję **Zarządzaj środowiskiem**.
 
     ![Przekazywanie pliku](./media/media-services-rest-upload-files/postman-create-env.png)
-4. Z **środowiska Zarządzaj** okna dialogowego, kliknij przycisk **importu**.
+4. W oknie dialogowym **Zarządzaj środowiskiem** kliknij opcję **Importuj**.
 5. Wyszukaj i wybierz **AzureMediaServices.postman_environment.json** pliku.
 6. **AzureMedia** środowiska zostanie dodany.
 7. Zamknij okno dialogowe.
@@ -49,12 +49,12 @@ To środowisko i kolekcji jest używany w artykułach, które pokazują, jak uzy
 
 ## <a name="configure-the-collection"></a>Konfigurowanie kolekcji
 
-1. Utwórz plik JSON zawierający **Postman** kolekcji z wszystkie operacje, które są wymagane do przekazania pliku do usługi Media Services. Nazwa pliku (na przykład **AzureMediaServicesOperations.postman_collection.json**). Otwórz plik i Wklej kod, który definiuje **Postman** kolekcji z [ten przykładowy kod](postman-collection.md).
-2. Kliknij przycisk **zaimportować** można zaimportować pliku kolekcji.
+1. Utwórz plik JSON, który zawiera **Postman** kolekcji z operacjami, które są niezbędne do przekazania pliku do usługi Media Services. Nadaj plikowi nazwę (na przykład **AzureMediaServicesOperations.postman_collection.json**). Otwórz plik i Wklej kod, który definiuje **Postman** kolekcji z [tym fragmencie kodu](postman-collection.md).
+2. Kliknij przycisk **Importuj**, aby zaimportować plik kolekcji.
 3. Wybierz **AzureMediaServicesOperations.postman_collection.json** pliku.
 
     ![Przekazywanie pliku](./media/media-services-rest-upload-files/postman-import-collection.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zapoznaj się z [Przekaż zasoby](media-services-rest-upload-files.md) artykułu.  
+Zapoznaj się z [przekazuj zasoby](media-services-rest-upload-files.md) artykułu.  
