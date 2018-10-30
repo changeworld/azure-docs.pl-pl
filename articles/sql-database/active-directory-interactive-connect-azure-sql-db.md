@@ -124,13 +124,13 @@ Program C# opiera się na przestrzeń nazw **Microsoft.IdentityModel.Clients.Act
 
 Jednej przestrzeni nazw, które opiera się na przykład C# jest **System.Data.SqlClient**. Szczególnie ważne jest wyliczenia **SqlAuthenticationMethod**. To wyliczenie ma następujące wartości:
 
-- **SqlAuthenticationMethod.ActiveDirectory * Interactive ***:&nbsp; za pomocą to nazwa użytkownika usługi Azure AD, do osiągnięcia uwierzytelnianie wieloskładnikowe MFA.
+- **SqlAuthenticationMethod.ActiveDirectory \*Interactive**\*:&nbsp; za pomocą to nazwa użytkownika usługi Azure AD, do osiągnięcia uwierzytelnianie wieloskładnikowe MFA.
     - Ta wartość jest celem niniejszego artykułu. Tworzy środowisko interaktywne, wyświetlając okien dialogowych dla hasła użytkownika, a następnie do weryfikacji uwierzytelniania Wieloskładnikowego, jeśli uwierzytelnianie wieloskładnikowe nakłada się na tego użytkownika.
     - Ta wartość jest dostępnych w programie .NET Framework w wersji 4.7.2.
 
-- **SqlAuthenticationMethod.ActiveDirectory * zintegrowany ***:&nbsp; użyjemy dla *federacyjnych* konta. Dla kont federacyjnych nazwa użytkownika jest znany do domeny Windows. Ta metoda nie obsługuje uwierzytelniania Wieloskładnikowego.
+- **SqlAuthenticationMethod.ActiveDirectory \*zintegrowany**\*:&nbsp; użyjemy dla *federacyjnych* konta. Dla kont federacyjnych nazwa użytkownika jest znany do domeny Windows. Ta metoda nie obsługuje uwierzytelniania Wieloskładnikowego.
 
-- **SqlAuthenticationMethod.ActiveDirectory * hasła ***:&nbsp; używane dla uwierzytelniania, który wymaga użytkownika usługi Azure AD i hasło użytkownika. Usługa Azure SQL Database przeprowadza uwierzytelnianie. Ta metoda nie obsługuje uwierzytelniania Wieloskładnikowego.
+- **SqlAuthenticationMethod.ActiveDirectory \*hasła**\*:&nbsp; używane dla uwierzytelniania, który wymaga użytkownika usługi Azure AD i hasło użytkownika. Usługa Azure SQL Database przeprowadza uwierzytelnianie. Ta metoda nie obsługuje uwierzytelniania Wieloskładnikowego.
 
 
 
