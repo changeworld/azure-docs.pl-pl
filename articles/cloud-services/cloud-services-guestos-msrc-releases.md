@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/24/2018
+ms.date: 10/28/2018
 ms.author: raiye
-ms.openlocfilehash: 989627388e9ad1c99daa31bd9c8af884ab16b421
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 0430eefb55893420cf7ea603998f14465fb2cc60
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087784"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215518"
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa platformy Azure
 Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Security Response Center (MSRC) stosowane do systemu operacyjnego gościa platformy Azure. Wyszukaj w tym artykule, aby określić, jeśli dana aktualizacja ma zastosowanie do systemu operacyjnego gościa, którego używasz. Aktualizacje zawsze przenoszone w konkretnym [rodziny] [ family-explain] były one wprowadzone w.
@@ -30,11 +30,11 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 18 – 10 | [4462917] | Zabezpieczenia systemu Windows 10 | 5,24 | 9 października 2018 r. |
-| ReL 18 – 10 | [4464330] | Zabezpieczenia systemu Windows 10 | 6.01 | 9 października 2018 r. |
+| ReL 18 – 10 | [4464330] | Zabezpieczenia systemu Windows 10 | 6.0 | 9 października 2018 r. |
 | ReL 18 – 10 | [4462915] | Zabezpieczeń Windows | 2.79 | 9 października 2018 r. |
 | ReL 18 – 10 | [4462931] | Zabezpieczeń Windows | 3,66 | 9 października 2018 r. |
 | ReL 18 – 10 | [4462941] | Zabezpieczeń Windows | 4,59 | 9 października 2018 r. |
-| ReL 18 – 10 | [4462930] | Flash | 3,66, 4,59, 5,24, 6.01 | 9 października 2018 r. |
+| ReL 18 – 10 | [4462930] | Flash | 3,66, 4,59, 5,24 6.0 | 9 października 2018 r. |
 | ReL 18 – 10 | [4462949] | Internet Explorer | 2.79, 3,66 4,59 | 9 października 2018 r. |
 | ND | [4339284] | Aktualizacja stref czasowych | 2.79, 3,66 4,59 | 24 lipca 2018 r. |
 | ND | [4457144] | Pakiet zbiorczy września niezwiązane z zabezpieczeniami | 2.79 | 11 września 2018 r. |
