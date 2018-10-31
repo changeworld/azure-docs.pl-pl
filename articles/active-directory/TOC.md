@@ -4,7 +4,6 @@
 ## [Co to jest usługa Azure Active Directory?](fundamentals/active-directory-whatis.md)
 ## [Informacje o zarządzaniu tożsamościami na platformie Azure](fundamentals/identity-fundamentals.md)
 ## [Omówienie rozwiązań do obsługi tożsamości na platformie Azure](fundamentals/understand-azure-identity-solutions.md)
-## [Wybieranie rozwiązania tożsamości hybrydowej](choose-hybrid-identity-solution.md)
 ## [Kojarzenie subskrypcji usługi Azure](fundamentals/active-directory-how-subscriptions-associated-directory.md)
 ## [Zagadnienia dotyczące rezydencji i danych](fundamentals/active-directory-data-storage-eu.md)
 ## [Często zadawane pytania](fundamentals/active-directory-faq.md)
@@ -47,7 +46,6 @@
 ### [Dodawanie nowych użytkowników do usługi Azure AD](fundamentals/add-users-azure-active-directory.md)
 ### [Zarządzanie profilami użytkowników](fundamentals/active-directory-users-profile-azure-portal.md)
 ### [Resetowanie haseł użytkowników](fundamentals/active-directory-users-reset-password-azure-portal.md)
-### [Udostępnianie kont](active-directory-sharing-accounts.md)
 ### [Przypisywanie użytkowników do ról administratorów](fundamentals/active-directory-users-assign-role-azure-portal.md)
 ### [Dodawanie użytkowników-gości z innego katalogu (B2B)](b2b/what-is-b2b.md)
 #### [Administratorzy dodający użytkowników B2B](b2b/add-users-administrator.md)
@@ -320,11 +318,15 @@
 
 ### [Privileged Identity Management](privileged-identity-management/pim-configure.md?toc=%2fazure%2factive-directory%2ftoc.json)
 
-## [Wdrażanie usług AD FS na platformie Azure](hybrid/how-to-connect-fed-azure-adfs.md)
-### [Wysoka dostępność](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
-### [Zmiana algorytmu wyznaczania wartości skrótu podpisu](active-directory-federation-sha256-guidance.md)
+
 
 ## [Rozwiązywanie problemów](fundamentals/active-directory-troubleshooting-support-howto.md)
+
+## Wdrażanie prototypu usługi Azure AD
+### [Podręcznik prototypu: wprowadzenie](active-directory-playbook-intro.md)
+### [Podręcznik prototypu: składniki](active-directory-playbook-ingredients.md)
+### [Podręcznik prototypu: implementacja](active-directory-playbook-implementation.md)
+### [Podręcznik prototypu: bloki konstrukcyjne](active-directory-playbook-building-blocks.md)
 
 # Dokumentacja
 ## [Przykłady kodu](https://azure.microsoft.com/resources/samples/?service=active-directory)
