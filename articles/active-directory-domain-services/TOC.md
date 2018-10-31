@@ -24,44 +24,45 @@
 ## [Włączanie usługi Azure AD Domain Services przy użyciu programu PowerShell](active-directory-ds-enable-using-powershell.md)
 ## [Konfigurowanie synchronizacji o określonym zakresie z usługi Azure AD do domeny zarządzanej](active-directory-ds-scoped-synchronization.md)
 ## [Zabezpieczanie domeny zarządzanej](active-directory-ds-secure-your-domain.md)
-## Dołączanie do domeny zarządzanej
-### [Maszyna wirtualna z systemem Windows Server](active-directory-ds-admin-guide-join-windows-vm-portal.md)
-### [Maszyna wirtualna z systemem Windows Server z szablonu](active-directory-ds-join-windows-vm-template.md)
-### [CentOS](active-directory-ds-join-centos-linux-vm.md)
-### [CoreOS](active-directory-ds-join-coreos-linux-vm.md)
-### [Red Hat Enterprise Linux](active-directory-ds-join-rhel-linux-vm.md)
-### [Serwer Ubuntu](active-directory-ds-join-ubuntu-linux-vm.md)
-## Administrowanie domeną zarządzaną
-### [Administrowanie domeną zarządzaną](active-directory-ds-admin-guide-administer-domain.md)
-### [Administrowanie systemem DNS w domenie zarządzanej](active-directory-ds-admin-guide-administer-dns.md)
-### [Aktualizowanie powiadomień e-mail](active-directory-ds-notifications.md)
-### Konfigurowanie protokołu LDAP dla domeny zarządzanej
-#### [Task 1: obtain a certificate for secure LDAP (Zadanie 1. Uzyskiwanie certyfikatu na potrzeby protokołu Secure LDAP)](active-directory-ds-admin-guide-configure-secure-ldap.md)
-#### [Task 2: export the secure LDAP certificate (Zadanie 2. Eksportowanie certyfikatu protokołu Secure LDAP)](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
-#### [Task 3: enable secure LDAP for the managed domain using Azure portal (Zadanie 3. Włączanie protokołu Secure LDAP dla domeny zarządzanej przy użyciu witryny Azure Portal)](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
-#### [Task 4: configure DNS to access the managed domain from the internet (Zadanie 4. Konfigurowanie systemu DNS do uzyskiwania dostępu do domeny zarządzanej z Internetu)](active-directory-ds-ldaps-configure-dns.md)
-#### [Task 5: bind to the managed domain and lock down secure LDAP access (Zadanie 5. Tworzenie powiązania z domeną zarządzaną i blokowanie dostępu do bezpiecznego protokołu LDAP)](active-directory-ds-ldaps-bind-lockdown.md)
-#### [Rozwiązywanie problemów z bezpiecznym protokołem LDAP](active-directory-ds-ldaps-troubleshoot.md)
-
-### [Tworzenie jednostki organizacyjnej w domenie zarządzanej](active-directory-ds-admin-guide-create-ou.md)
-### [Tworzenie zarządzanego konta usługi grupy w domenie zarządzanej](active-directory-ds-create-gmsa.md)
-### [Administrowanie zasadami grupy w domenie zarządzanej](active-directory-ds-admin-guide-administer-group-policy.md)
-### [Konfigurowanie zasad dotyczących haseł w domenie zarządzanej](active-directory-ds-password-policy.md)
+## [Tworzenie jednostki organizacyjnej w domenie zarządzanej](active-directory-ds-admin-guide-create-ou.md)
+## [Tworzenie zarządzanego konta usługi grupy w domenie zarządzanej](active-directory-ds-create-gmsa.md)
+## [Administrowanie zasadami grupy w domenie zarządzanej](active-directory-ds-admin-guide-administer-group-policy.md)
+## [Konfigurowanie zasad dotyczących haseł w domenie zarządzanej](active-directory-ds-password-policy.md)
 ## [Wybieranie sieci wirtualnej](active-directory-ds-networking.md)
 ## Wdrażanie aplikacji
 ### [Konfigurowanie obsługi synchronizacji profilów dla programu SharePoint Server](active-directory-ds-enable-sharepoint-profile-sync.md)
 ### [Konfigurowanie ograniczonego delegowania protokołu Kerberos](active-directory-ds-enable-kcd.md)
 ### [Wdrażanie serwera proxy aplikacji usługi Azure AD](active-directory-ds-deploy-azure-app-proxy.md)
 ## [Usuwanie domeny zarządzanej](active-directory-ds-disable-aadds.md)
-## Rozwiązywanie problemów
-### [Często zadawane pytania](active-directory-ds-faqs.md)
-### [Przewodnik rozwiązywania problemów](active-directory-ds-troubleshooting.md)
-### [Rozwiązywanie problemów z alertami](active-directory-ds-troubleshoot-alerts.md)
-#### [Naprawianie uszkodzonej konfiguracji sieciowej grupy zabezpieczeń](active-directory-ds-troubleshoot-nsg.md)
-#### [Przywracanie brakujących jednostek usługi](active-directory-ds-troubleshoot-service-principals.md)
-#### [Błędy protokołu Secure LDAP](active-directory-ds-troubleshoot-ldaps.md)
-### [Resolve mismatched tenant errors (Rozwiązywanie błędów dotyczących niezgodnych dzierżaw)](active-directory-ds-mismatched-tenant-error.md)
-### [Wstrzymane domeny](active-directory-ds-suspension.md)
+
+# Dołączanie do domeny zarządzanej
+## [Maszyna wirtualna z systemem Windows Server](active-directory-ds-admin-guide-join-windows-vm-portal.md)
+## [Maszyna wirtualna z systemem Windows Server z szablonu](active-directory-ds-join-windows-vm-template.md)
+## [CentOS](active-directory-ds-join-centos-linux-vm.md)
+## [CoreOS](active-directory-ds-join-coreos-linux-vm.md)
+## [Red Hat Enterprise Linux](active-directory-ds-join-rhel-linux-vm.md)
+## [Serwer Ubuntu](active-directory-ds-join-ubuntu-linux-vm.md)
+# Administrowanie domeną zarządzaną
+## [Administrowanie domeną zarządzaną](active-directory-ds-admin-guide-administer-domain.md)
+## [Administrowanie systemem DNS w domenie zarządzanej](active-directory-ds-admin-guide-administer-dns.md)
+## [Aktualizowanie powiadomień e-mail](active-directory-ds-notifications.md)
+# Konfigurowanie protokołu Secure LDAP dla domeny zarządzanej
+## [Zadanie 1. Uzyskiwanie certyfikatu na potrzeby protokołu Secure LDAP](active-directory-ds-admin-guide-configure-secure-ldap.md)
+## [Zadanie 2. Eksportowanie certyfikatu protokołu Secure LDAP](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
+## [Zadanie 3. Włączanie protokołu Secure LDAP dla domeny zarządzanej przy użyciu witryny Azure Portal](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
+## [Zadanie 4. Konfigurowanie systemu DNS do uzyskiwania dostępu do domeny zarządzanej z Internetu](active-directory-ds-ldaps-configure-dns.md)
+## [Zadanie 5. Tworzenie powiązania z domeną zarządzaną i blokowanie dostępu za pomocą protokołu Secure LDAP](active-directory-ds-ldaps-bind-lockdown.md)
+## [Rozwiązywanie problemów z protokołem Secure LDAP](active-directory-ds-ldaps-troubleshoot.md)
+
+# Rozwiązywanie problemów
+## [Często zadawane pytania](active-directory-ds-faqs.md)
+## [Przewodnik rozwiązywania problemów](active-directory-ds-troubleshooting.md)
+## [Rozwiązywanie problemów z alertami](active-directory-ds-troubleshoot-alerts.md)
+### [Naprawianie uszkodzonej konfiguracji sieciowej grupy zabezpieczeń](active-directory-ds-troubleshoot-nsg.md)
+### [Przywracanie brakujących jednostek usługi](active-directory-ds-troubleshoot-service-principals.md)
+### [Błędy protokołu Secure LDAP](active-directory-ds-troubleshoot-ldaps.md)
+## [Resolve mismatched tenant errors (Rozwiązywanie błędów dotyczących niezgodnych dzierżaw)](active-directory-ds-mismatched-tenant-error.md)
+## [Wstrzymane domeny](active-directory-ds-suspension.md)
 
 
 # Dokumentacja

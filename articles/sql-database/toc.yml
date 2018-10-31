@@ -329,32 +329,30 @@ items:
       href: sql-database-monitor-tune-overview.md
     - name: Inteligentna wydajność
       items:
-      - name: Wykonywanie zapytania
+      - name: Doradcy ds. strojenia
         items:
-        - name: Przetwarzanie zapytań inteligentnych
-          href: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json
-        - name: Adaptacyjne przetwarzanie zapytań
-          href: https://docs.microsoft.com/sql/relational-databases/performance/adaptive-query-processing?toc=/azure/sql-database/toc.json
-      - name: Monitorowanie i dostrajanie
-        items:
-        - name: Zalecenia dotyczące wydajności funkcji Database Advisor
-          href: sql-database-advisor.md
         - name: Akcje dostrajania i zalecenia
           href: sql-database-performance.md
-        - name: Stosowanie zaleceń dotyczących wydajności
-          href: sql-database-advisor-portal.md
-      - name: Wyniki analizy
-        items:
-        - name: Omówienie możliwości Intelligent Insights
-          href: sql-database-intelligent-insights.md
-        - name: Rejestrowanie diagnostyczne
-          href: sql-database-metrics-diag-logging.md
-        - name: Korzystanie z dzienników diagnostycznych
-          href: sql-database-intelligent-insights-use-diagnostics-log.md
         - name: Szczegółowe informacje o wydajności zapytań
           href: sql-database-query-performance.md
-        - name: Rozwiązywanie problemów z wydajnością
+        - name: Zalecenia dotyczące wydajności funkcji Database Advisor
+          href: sql-database-advisor.md
+        - name: Stosowanie zaleceń dotyczących wydajności
+          href: sql-database-advisor-portal.md
+      - name: Zaawansowane monitorowanie
+        items:
+        - name: Monitorowanie usługi Azure SQL Analytics
+          href: https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql
+        - name: Rejestrowanie telemetrii diagnostyki
+          href: sql-database-metrics-diag-logging.md
+      - name: Automatyczne rozwiązywanie problemów
+        items:
+        - name: Inteligentne uzyskiwanie szczegółowych informacji o wydajności
+          href: sql-database-intelligent-insights.md
+        - name: Rozwiązywanie problemów z wydajnością przy użyciu funkcji Intelligent Insights
           href: sql-database-intelligent-insights-troubleshoot-performance.md
+        - name: Korzystanie z dziennika diagnostycznego funkcji Intelligent Insights
+          href: sql-database-intelligent-insights-use-diagnostics-log.md
       - name: Automatyczne dostrajanie
         items:
         - name: Omówienie dostrajania automatycznego
@@ -363,6 +361,12 @@ items:
           href: sql-database-automatic-tuning-enable.md
         - name: Włączanie powiadomień e-mail
           href: sql-database-automatic-tuning-email-notifications.md
+      - name: Przetwarzanie zapytań inteligentnych
+        items:
+        - name: Przetwarzanie zapytań inteligentnych
+          href: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json
+        - name: Adaptacyjne przetwarzanie zapytań
+          href: https://docs.microsoft.com/sql/relational-databases/performance/adaptive-query-processing?toc=/azure/sql-database/toc.json
     - name: Ręczne dostrajanie
       items:
       - name: Ręczne dostrajanie
@@ -634,9 +638,9 @@ items:
     href: /azure/architecture/
   - name: Historie klientów
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 416f74c395f331de6af749f3de1d3a3e966b8b35
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: c5e7a5265a7667acf462085f81c4b53c8d86236b
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650064"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50221482"

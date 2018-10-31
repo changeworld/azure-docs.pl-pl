@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 3094075607f096200ce1fb7ad499776bdcd3e093
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: b221697b7450ad1c6dac87b7a08c7db8b11810bf
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233603"
+ms.locfileid: "50240469"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Przenoszenie danych między źródłami lokalnymi i w chmurze przy użyciu bramy zarządzania danymi
 > [!NOTE]
@@ -65,7 +65,7 @@ W tym kroku użyjesz witryny Azure portal, aby utworzyć wystąpienie usługi Az
    > [!IMPORTANT]
    > Nazwa fabryki danych Azure musi być globalnie unikatowa. Jeśli zostanie wyświetlony błąd: **nazwa fabryki danych "ADFTutorialOnPremDF" nie jest dostępna**, Zmień nazwę fabryki danych (na przykład yournameADFTutorialOnPremDF) i spróbuj utworzyć ją ponownie. Użyj tej nazwy zamiast ADFTutorialOnPremDF podczas wykonywania pozostałych kroków w ramach tego samouczka.
    >
-   > Nazwa fabryki danych może zostać zarejestrowana jako **DNS** publicaly nazwy w przyszłości, a wówczas stanie się widoczny.
+   > Nazwa fabryki danych może zostać zarejestrowana jako **DNS** nazwy w przyszłości, a wówczas stanie się widoczna publicznie.
    >
    >
 4. Wybierz **subskrypcję Azure**, w ramach której chcesz utworzyć fabrykę danych.
