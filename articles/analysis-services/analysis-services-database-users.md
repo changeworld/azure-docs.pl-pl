@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 863e465d888774730b9d9269024665a097a1207b
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: ab238e31ba022427dc55fec842f3e89e72fa530a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429304"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238883"
 ---
 # <a name="manage-database-roles-and-users"></a>Zarządzanie rolami bazy danych i użytkowników
 
@@ -135,7 +135,7 @@ Filtry wierszy mają zastosowanie do określonych wierszy i powiązane wiersze. 
   
 |Tabela|Wyrażenie DAX|  
 |-----------|--------------------|  
-|Region|=Region[Country]=”USA”|  
+|Region|= Region [Kraj] = "USA"|  
 |ProductCategory|= ProductCategory [Name] = "Rowerów"|  
 |Transakcje|= Transakcje [rok] = 2016|  
   

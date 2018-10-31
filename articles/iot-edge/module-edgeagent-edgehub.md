@@ -8,18 +8,18 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 259d61125828ee487b74daa525f3635cfa592ce7
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: ecc48adfeef30a777ae4d96c9b996c8bcdfea12d
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017708"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247814"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Właściwości agenta usługi Edge i bliźniaczych reprezentacjach modułów Centrum usługi Edge
 
 Agent usługi Edge i Centrum usługi Edge są dwa moduły, które tworzą środowisko uruchomieniowe usługi IoT Edge. Aby uzyskać więcej informacji o jakie obowiązków, wykonuje każdy moduł, zobacz [zrozumieć środowisko uruchomieniowe usługi Azure IoT Edge oraz jej architektury](iot-edge-runtime.md). 
 
-Ten artykuł zawiera żądane właściwości i zgłaszanych właściwości bliźniaczych reprezentacjach modułów środowiska uruchomieniowego. Aby uzyskać więcej informacji na temat wdrażania modułów na urządzeniach IoT Edge, zobacz [wdrażania i monitorowania][lnk-deploy].
+Ten artykuł zawiera żądane właściwości i zgłaszanych właściwości bliźniaczych reprezentacjach modułów środowiska uruchomieniowego. Aby uzyskać więcej informacji na temat wdrażania modułów na urządzeniach IoT Edge, zobacz [wdrażania i monitorowania](module-deployment-monitoring.md).
 
 ## <a name="edgeagent-desired-properties"></a>EdgeAgent żądane właściwości
 
@@ -30,26 +30,26 @@ Agent usługi Edge bliźniaczą reprezentację modułu nosi nazwę `$edgeAgent` 
 | schemaVersion | Musi być "1.0" | Yes |
 | runtime.type | Musi być "docker" | Yes |
 | runtime.settings.minDockerVersion | Wartość minimalna wersja platformy Docker wymaganych przez ten manifest wdrażania | Yes |
-| runtime.settings.loggingOptions | JSON skonwertowanej do formatu tekstowego, zawierający opcje rejestrowania dla kontenera agenta usługi Edge. [Opcje rejestrowania platformy docker][lnk-docker-logging-options] | Nie |
+| runtime.settings.loggingOptions | JSON skonwertowanej do formatu tekstowego, zawierający opcje rejestrowania dla kontenera agenta usługi Edge. [Opcje rejestrowania platformy docker](https://docs.docker.com/engine/admin/logging/overview/) | Nie |
 | runtime.settings.registryCredentials<br>. .username {registryId} | Nazwa rejestru kontenerów. Usługi Azure Container Registry nazwa użytkownika jest zazwyczaj nazwa rejestru.<br><br> Poświadczenia rejestru są niezbędne dla wszelkich obrazów modułu, które nie są publicznie udostępniane. | Nie |
 | runtime.settings.registryCredentials<br>. .password {registryId} | Hasło dla rejestru kontenerów. | Nie |
 | runtime.settings.registryCredentials<br>. .address {registryId} | Adres rejestru kontenera. Usługi Azure Container Registry, adres, jest zazwyczaj *.azurecr.io {registryname}*. | Nie |  
 | systemModules.edgeAgent.type | Musi być "docker" | Yes |
 | systemModules.edgeAgent.settings.image | Identyfikator URI obrazu agenta usługi Edge. Obecnie agent usługi Edge nie będzie mógł automatycznie zaktualizowana. | Yes |
-| systemModules.edgeAgent.settings<br>.createOptions | JSON skonwertowanej do formatu tekstowego zawierającego opcje tworzenia kontenera agenta usługi Edge. [Opcje tworzenia platformy docker][lnk-docker-create-options] | Nie |
+| systemModules.edgeAgent.settings<br>.createOptions | JSON skonwertowanej do formatu tekstowego zawierającego opcje tworzenia kontenera agenta usługi Edge. [Opcje tworzenia platformy docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nie |
 | systemModules.edgeAgent.configuration.id | Identyfikator wdrożenia, które są wdrożone w tym module. | Ta właściwość jest ustawiona przez usługę IoT Hub, po zastosowaniu tego manifestu, przy użyciu wdrożenia. Nie jest częścią manifestu wdrażania. |
 | systemModules.edgeHub.type | Musi być "docker" | Yes |
 | systemModules.edgeHub.status | Musi być "uruchomiona" | Yes |
 | systemModules.edgeHub.restartPolicy | Musi być "zawsze" | Yes |
 | systemModules.edgeHub.settings.image | Identyfikator URI obrazu Centrum usługi Edge. | Yes |
-| systemModules.edgeHub.settings<br>.createOptions | JSON skonwertowanej do formatu tekstowego zawierającego opcje tworzenia kontenera Centrum usługi Edge. [Opcje tworzenia platformy docker][lnk-docker-create-options] | Nie |
+| systemModules.edgeHub.settings<br>.createOptions | JSON skonwertowanej do formatu tekstowego zawierającego opcje tworzenia kontenera Centrum usługi Edge. [Opcje tworzenia platformy docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nie |
 | systemModules.edgeHub.configuration.id | Identyfikator wdrożenia, które są wdrożone w tym module. | Ta właściwość jest ustawiona przez usługę IoT Hub, po zastosowaniu tego manifestu, przy użyciu wdrożenia. Nie jest częścią manifestu wdrażania. |
 | moduły. {moduleId} .version | Zdefiniowane przez użytkownika ciąg reprezentujący wersję tego modułu. | Yes |
 | moduły. .Type — {moduleId} | Musi być "docker" | Yes |
 | moduły. .status {moduleId} | {"uruchomiona" \| "zatrzymana"} | Yes |
 | moduły. .restartPolicy {moduleId} | {"nigdy" \| "na — nie powiodło się" \| "na — zła" \| "zawsze"} | Yes |
 | modules.{moduleId}.settings.image | Identyfikator URI do obrazu modułu. | Yes |
-| modules.{moduleId}.settings.createOptions | Opcje tworzenia kontenera moduł zawierający JSON skonwertowanej do formatu tekstowego. [Opcje tworzenia platformy docker][lnk-docker-create-options] | Nie |
+| modules.{moduleId}.settings.createOptions | Opcje tworzenia kontenera moduł zawierający JSON skonwertowanej do formatu tekstowego. [Opcje tworzenia platformy docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nie |
 | moduły. .configuration.id {moduleId} | Identyfikator wdrożenia, które są wdrożone w tym module. | Ta właściwość jest ustawiona przez usługę IoT Hub, po zastosowaniu tego manifestu, przy użyciu wdrożenia. Nie jest częścią manifestu wdrażania. |
 
 ## <a name="edgeagent-reported-properties"></a>EdgeAgent zgłaszanych właściwości
@@ -63,7 +63,7 @@ Agent usługi Edge zgłosił, że właściwości obejmują trzy główne informa
 Ten ostatni element informacji jest przydatna w przypadku, gdy najnowszy żądane właściwości nie są stosowane pomyślnie w czasie wykonywania, a urządzenie jest nadal uruchomiona poprzedniego manifest wdrożenia.
 
 > [!NOTE]
-> Zgłoszone właściwości agenta usługi Edge są przydatne, ponieważ może być odpytywany za pomocą [język zapytań usługi IoT Hub] [ lnk-iothub-query] aby zbadać stan wdrożeń na dużą skalę. Aby uzyskać więcej informacji na temat sposobu używania właściwości agenta usługi Edge dla stanu, zobacz [wdrożeń zrozumieć usługi IoT Edge dla urządzeń z jednej lub w odpowiedniej skali][lnk-deploy].
+> Zgłoszone właściwości agenta usługi Edge są przydatne, ponieważ może być odpytywany za pomocą [język zapytań usługi IoT Hub](../iot-hub/iot-hub-devguide-query-language.md) aby zbadać stan wdrożeń na dużą skalę. Aby uzyskać więcej informacji na temat sposobu używania właściwości agenta usługi Edge dla stanu, zobacz [wdrożeń zrozumieć usługi IoT Edge dla urządzeń z jednej lub w odpowiedniej skali](module-deployment-monitoring.md).
 
 Poniższa tabela nie zawiera informacje, które są kopiowane z żądanych właściwości.
 
@@ -117,9 +117,3 @@ Bliźniacza reprezentacja modułu dla Centrum usługi Edge jest nazywany `$edgeH
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się, jak budować manifesty wdrożenia za pomocą tych właściwości, zobacz [zrozumieć, jak moduły usługi IoT Edge mogą być używane, skonfigurowania i ponownie](module-composition.md).
-
-<!--links -->
-[lnk-deploy]: module-deployment-monitoring.md
-[lnk-docker-create-options]: https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate
-[lnk-docker-logging-options]: https://docs.docker.com/engine/admin/logging/overview/
-[lnk-iothub-query]: ../iot-hub/iot-hub-devguide-query-language.md

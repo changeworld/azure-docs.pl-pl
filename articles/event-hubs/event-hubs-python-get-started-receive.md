@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: sethm
-ms.openlocfilehash: f5388f2de599d94f68a1d24a7d701a2cb4795915
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 9707f0cf5a76c0ac4006b53ca8166d3b42fc9af4
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43703663"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240566"
 ---
 # <a name="receive-events-from-event-hubs-using-python"></a>Odbieranie zdarzeń z usługi Event Hubs przy użyciu języka Python
 
@@ -108,14 +108,7 @@ start python recv.py
 ```
  
 ## <a name="next-steps"></a>Kolejne kroki
-
-Aby wysyłać zdarzenia, zobacz [do odpowiedniego artykułu wysyłania](event-hubs-python-get-started-send.md).
-
-Odwiedź następujące strony, aby dowiedzieć się więcej o usłudze Event Hubs:
-
-* [Przegląd usługi Event Hubs][Event Hubs overview]
-* [Tworzenie centrum zdarzeń](event-hubs-create.md)
-* [Event Hubs — często zadawane pytania](event-hubs-faq.md)
+W tym przewodniku Szybki Start utworzono aplikację w języku Python, które odebrano komunikaty z Centrum zdarzeń. Aby dowiedzieć się, jak do wysyłania zdarzeń do Centrum zdarzeń za pomocą języka Python, zobacz [wysyłać zdarzenia z Centrum zdarzeń — Python](event-hubs-python-get-started-send.md).
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-about.md

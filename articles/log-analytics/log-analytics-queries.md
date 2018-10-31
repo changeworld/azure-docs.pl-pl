@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 0340a4d527023c050e2c776d31c02b59161a1316
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 904502e5c73127cca7920da2173edd013e55762f
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429479"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242249"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Analizowanie danych usługi Log Analytics w usłudze Azure Monitor
 
-Dane dzienników zbieranych przez usługi Azure Monitor są przechowywane w usłudze Log Analytics, który zbiera dane telemetryczne i inne dane z różnych źródeł i oferuje język zapytań zaawansowanych funkcji analizy.
+Dane dzienników zbieranych przez usługi Azure Monitor są przechowywane w obszarze roboczym usługi Log Analytics, która jest oparta na [Eksploratora danych usługi Azure](/data-explorer). Gromadzi dane telemetryczne z różnych źródeł i używa [języka w Eksploratorze danych zapytań](/kusto) do pobierania i analizowania danych.
 
 > [!NOTE]
 > Usługa log Analytics wcześniej zostało potraktowane jako własnej usługi na platformie Azure. On teraz jest traktowane jako część usługi Azure Monitor i koncentruje się na magazynu i analizy danych dziennika przy użyciu języka zapytań. Funkcje, które były traktowane jako część usługi Log Analytics, takie jak Windows i Linux agentów do zbierania danych, widoków, aby wizualizować istniejące dane i alerty do aktywnego powiadamiania użytkownika o problemach, nie uległy zmianie, ale teraz są traktowane jako część usługi Azure Monitor.
@@ -51,7 +51,7 @@ Różne sposoby, że używany jest program zapytań w usłudze Log Analytics są
 ![Wyszukiwanie w Dzienniku](media/log-analytics-queries/queries-overview.png)
 
 ## <a name="write-a-query"></a>Napisz zapytanie
-Usługa log Analytics zawiera [język zapytań rozbudowane](query-language/get-started-queries.md) , która umożliwia pobieranie i analizowanie danych dzienników na różne sposoby.  Będzie zazwyczaj rozpocząć podstawowe zapytania, a następnie postęp, aby użyć bardziej zaawansowane funkcje, jakie wymagania są coraz bardziej złożone.
+Zaloguj się Analytics używa [wersję języka zapytań Eksploratora danych](query-language/get-started-queries.md) do pobierania i analizowania danych dziennika w na różne sposoby.  Będzie zazwyczaj rozpocząć podstawowe zapytania, a następnie postęp, aby użyć bardziej zaawansowane funkcje, jakie wymagania są coraz bardziej złożone.
 
 Podstawowa struktura zapytania jest tabela źródłowa następuje szereg operatory oddzielony znakiem kreski pionowej `|`.  Można połączyć w łańcuch ze sobą wiele operatorów, aby dostosować dane i wykonywać zaawansowane funkcje.
 

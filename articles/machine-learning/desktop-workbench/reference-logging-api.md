@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/25/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7084251102984445e7c2341b78b44f85811ebea7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f7dac645ef0b732b7f3087a06c74385871d5b1c9
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958224"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238340"
 ---
 # <a name="logging-api-reference"></a>Dokumentacja interfejsu API rejestrowania
 
@@ -89,5 +89,5 @@ $ az ml history info -r <runid> -a <artifact/path>
 $ az ml history promote -r <runid> -ap <artifact/prefix> -n <name of asset to create>
 ```
 ## <a name="next-steps"></a>Kolejne kroki
-- Przeprowadzenie [klasyfikowania tutoria irysów, część 2](tutorial-classifying-iris-part-2.md) się interfejs API rejestrowania akcji.
+- Przeprowadzenie [klasyfikowanie irysów, samouczek, część 2](tutorial-classifying-iris-part-2.md) się interfejs API rejestrowania akcji.
 - Przegląd [sposobu użycia historii uruchamiania i metryk modelu w aplikacji Azure Machine Learning Workbench](how-to-use-run-history-model-metrics.md) zrozumienie lepszy sposób rejestrowania interfejsów API można używać w historii uruchamiania.

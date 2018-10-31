@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/17/2018
+ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 4ed4e73348db8cfffb6e79afaa9d196e242d7488
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 759de1c62cb9cb4aa642fa564378b1ed551d7dae
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42057077"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239359"
 ---
 # <a name="azure-storage-security-overview"></a>Omówienie zabezpieczeń usługi Azure Storage
 
@@ -33,6 +33,7 @@ Usługa Azure Storage to rozwiązanie magazynu w chmurze dla nowoczesnych aplika
 * Korzystanie z analizy, aby śledzić metodę uwierzytelniania, która korzysta z aktualnie podczas uzyskiwania dostępu do magazynu.
 
 Aby uzyskać bardziej szczegółowy widok zabezpieczeń w usłudze Azure Storage, zobacz [Przewodnik po zabezpieczeniach usługi Azure Storage](../storage/common/storage-security-guide.md). Ten przewodnik zawiera szczegółowe informacje na funkcje zabezpieczeń usługi Azure Storage. Funkcje te obejmują klucze konta magazynu, szyfrowanie danych podczas przesyłania i nieużywanych danych i usługa storage analytics.
+
 
 Ten artykuł zawiera omówienie funkcji zabezpieczeń platformy Azure, korzystających z usługi Azure Storage. Linki do artykułów podać szczegóły każdej funkcji, dzięki czemu możesz dowiedzieć się więcej.
 
@@ -91,13 +92,35 @@ Dowiedz się więcej
 
 * [Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS z systemem Linux i Windows](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
 
-## <a name="azure-storage-firewalls-and-virtual-networks"></a>Sieci platformy Azure z zapór usługi Storage i Virtual
+## <a name="firewalls-and-virtual-networks"></a>Zapory i sieci wirtualnej
 
 Usługa Azure storage umożliwia włączenie reguły zapory dla konta magazynu. Raz włączone one zablokuje żądań przychodzących dla danych, w tym żądania od innych usług platformy Azure. Możesz skonfigurować wyjątki, aby zezwolić na ruch. Reguły zapory może być włączona na istniejące konta magazynu lub podczas tworzenia.
 
 Do zabezpieczania konta magazynu do określonego zestawu dozwolonych sieci, należy użyć tej funkcji.
 
 Aby uzyskać więcej informacji na temat usługi Azure storage zapory i sieci wirtualne zapoznaj się z artykułem [Konfigurowanie usługi Azure Storage zapory i sieci wirtualne](../storage/common/storage-network-security.md)
+
+## <a name="azure-data-box"></a>Azure Data Box
+
+Urządzenia Data Box, Data Box Disk i Data Box Heavy pomagają w przesyłaniu dużych ilości danych na platformę Azure, kiedy nie można skorzystać z sieci. Te urządzenia transferu danych w trybie offline są dostarczane między organizacją klienta a centrum danych platformy Azure. Korzystają one z szyfrowania AES, aby pomóc w ochronie Twoich danych podczas przesyłania, i przechodzą dokładny proces oczyszczania po przekazaniu, aby usunąć Twoje dane z urządzenia.
+
+Usługi Data Box Edge i Data Box Gateway to produkty transferu danych online, które działają jak bramy magazynu sieciowego, aby zarządzać danymi między Twoją witryną a platformą Azure. Data Box Edge, lokalne urządzenie sieciowe, przesyła dane na platformę Azure i z niej oraz przetwarza dane przy użyciu funkcji obliczeniowej na brzegu sieci z obsługą sztucznej inteligencji. Data Box Gateway to urządzenie wirtualne z funkcjami bramy magazynu.
+
+Więcej informacji:
+
+* [Urządzenie Azure Data Box](https://azure.microsoft.com/services/storage/databox/)
+* [Krawędź pola danych na platformie Azure](../databox-online/data-box-edge-overview.md)
+* [Usługa Azure Data Box bramy](..//databox-online/data-box-gateway-overview.md)
+
+## <a name="advanced-threat-protection"></a>Zaawansowana ochrona przed zagrożeniami
+
+Usługa Azure Storage udostępnia zaawansowaną ochronę przed zagrożeniami dodatkową warstwę analizy zabezpieczeń, który wykrywa nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystać swoje konto magazynu. Advanced Threat Protection monitoruje dzienników diagnostycznych usługi Azure Storage dla podejrzanych odczytu, zapisu lub usuwania żądań do usługi Blob storage. 
+
+Zaawansowana ochrona przed zagrożeniami alerty mogą być wyświetlane z [usługi Azure Security Center](https://azure.microsoft.com/services/security-center/). Usługa Azure Security Center zapewnia szczegółowe informacje na temat wszelkich podejrzanych działań wykryte i zaleca działania mające na celu badanie i korygowanie potencjalnych zagrożeń. 
+
+Więcej informacji:
+
+* [Usługa Azure Storage, zaawansowane Omówienie ochrony przed zagrożeniami](../storage/common/storage-advanced-threat-protection.md)
 
 ## <a name="azure-key-vault"></a>W usłudze Azure Key Vault
 

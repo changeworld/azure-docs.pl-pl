@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 10/26/2018
+ms.date: 10/30/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: d521406e37920dcd76c0078d2fdf54c16b7a0461
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: be880b937f254cbf8115d1a5129069069a0c7eea
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209993"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249679"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Utworzyć grupę dynamiczną i sprawdzić stan
 
@@ -39,7 +39,7 @@ Ten artykuł szczegółowo opisuje sposób konfigurowania reguły w witrynie Azu
 
    ![Dodaj dynamiczną regułę członkostwa](./media/groups-create-rule/add-dynamic-group-rule.png)
 
-5. Aby wyświetlić pełną listę właściwości rozszerzenia klienta, które można dodać do zapytania o członkostwo, wybierz **Pobierz właściwości rozszerzenia klienta**wprowadź unikatowy identyfikator aplikacji, a następnie wybierz pozycję **Odśwież właściwości**. Pełne ISTA właściwości będzie teraz dostępne do wybrania.
+5. Aby wyświetlić pełną listę właściwości niestandardowego rozszerzenia, które można dodać do zapytania o członkostwo, wybierz **pobieranie właściwości niestandardowego rozszerzenia**wprowadź identyfikator aplikacji, a następnie wybierz pozycję **Odśwież właściwości**. Pełne ISTA właściwości będzie teraz dostępne do wybrania.
 6. Po utworzeniu reguły, wybierz **Dodaj zapytanie** w dolnej części bloku.
 7. Wybierz **Utwórz** na **grupy** bloku, aby utworzyć grupę.
 

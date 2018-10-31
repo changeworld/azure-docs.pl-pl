@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 049f5211e800dace4b8968cd9e3db9ad968f8813
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: c4071da60ed1311d8dd75d6a369c48cf711778cb
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050750"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50243218"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Inicjowanie obsługi oraz wdrażanie mikrousług przewidywalny na platformie Azure
 W tym samouczku pokazano, jak aprowizować i wdrażanie aplikacji składających się z [mikrousług](https://en.wikipedia.org/wiki/Microservices) w [usługi Azure App Service](https://azure.microsoft.com/services/app-service/) jako pojedyncza jednostka i w przewidywalny sposób za pomocą szablonów grup zasobów JSON i Wykonywanie skryptów programu PowerShell. 
@@ -148,7 +148,7 @@ Ustawienia aplikacji również są definiowane jako zagnieżdżonych zasobów.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-6-webappsettings.png)
 
-W `properties` elementu `config/appsettings`, mają dwa ustawienia aplikacji w formacie `“<name>” : “<value>”`.
+W `properties` elementu `config/appsettings`, mają dwa ustawienia aplikacji w formacie `"<name>" : "<value>"`.
 
 * `PROJECT` jest [ustawienie KUDU](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) który informuje wdrażania na platformie Azure do projektu w rozwiązaniu Visual Studio obejmujących wiele projektów. Pokażę, pokażemy, jak skonfigurowano kontroli źródła, ale ponieważ kod ToDoApp znajduje się w rozwiązaniu Visual Studio obejmujących wiele projektów, musimy to ustawienie.
 * `clientUrl` jest po prostu aplikację ustawienia kodu aplikacji.
@@ -158,7 +158,7 @@ Parametry połączenia są również określone jako zasób zagnieżdżonych.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
 
-W `properties` elementu `config/connectionstrings`, każdy ciąg połączenia jest również zdefiniowana jako parę nazwa: wartość w określonym formacie `“<name>” : {“value”: “…”, “type”: “…”}`. Aby uzyskać `type` elementu, możliwe wartości to `MySql`, `SQLServer`, `SQLAzure`, i `Custom`.
+W `properties` elementu `config/connectionstrings`, każdy ciąg połączenia jest również zdefiniowana jako parę nazwa: wartość w określonym formacie `"<name>" : {"value": "…", "type": "…"}`. Aby uzyskać `type` elementu, możliwe wartości to `MySql`, `SQLServer`, `SQLAzure`, i `Custom`.
 
 > [!TIP]
 > Ostateczne listę typów ciągów połączeń, uruchom następujące polecenie w programie Azure PowerShell: \[Enum]::GetNames("Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")

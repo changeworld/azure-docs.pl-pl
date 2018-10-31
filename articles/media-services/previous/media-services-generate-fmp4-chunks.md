@@ -1,30 +1,30 @@
 ---
-title: Utwórz zadanie usługi Azure Media Services kodowania, które generuje fragmentów fMP4 | Dokumentacja firmy Microsoft
-description: W tym temacie przedstawiono sposób tworzenia zadania kodowania, które generuje fMP4 fragmentów. Gdy to zadanie jest używana z Media Encoder Standard lub kodera Media Encoder Premium w przepływie pracy, elementu zawartości wyjściowej będzie zawierać fragmentów fMP4 zamiast plików ISO MP4.
+title: Tworzenie usługi Azure Media Services zadanie kodowania, które fragmenty fMP4 | Dokumentacja firmy Microsoft
+description: W tym temacie przedstawiono sposób tworzenia zadania kodowania, generującego fragmenty fMP4. Gdy to zadanie jest wykorzystywane przy użyciu usługi Media Encoder Standard lub kodera Media Encoder Premium Workflow, elementu zawartości wyjściowej będzie zawierać fragmenty fMP4 zamiast plików ISO MP4.
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 09dd5ea447449bc23f49699dc69647550f62738a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f2f3784ea2cb4a7864faef6a4e49edd7a289afc2
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788207"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250568"
 ---
-#  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>Utwórz zadania kodowania, które generuje fMP4 fragmentów
+#  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>Utwórz zadanie kodowania, które fragmenty fMP4
 
 ## <a name="overview"></a>Przegląd
 
-W tym artykule przedstawiono sposób tworzenia zadania kodowania, które generuje pofragmentowane MP4 fragmentów (fMP4) zamiast plików ISO MP4. Aby wygenerować fMP4 fragmentów, użyj **Media Encoder Standard** lub **Media Encoder Premium w przepływie pracy** koder na utworzenie zadania kodowania, a także określić **AssetFormatOption.AdaptiveStreaming**  opcji, jak pokazano w poniższym przykładzie:  
+W tym artykule przedstawiono sposób tworzenia zadania kodowania, która generuje plik MP4 fragmenty (fMP4) zamiast plików ISO MP4. Aby wygenerować fragmenty fMP4, należy użyć **Media Encoder Standard** lub **Media Encoder Premium Workflow** kodera, aby utworzyć zadanie kodowania, a także określić **AssetFormatOption.AdaptiveStreaming**  opcji, jak pokazano w poniższym przykładzie:  
     
 ```csharp
     task.OutputAssets.AddNew(@"Output Asset containing fMP4 chunks", 
@@ -32,16 +32,16 @@ W tym artykule przedstawiono sposób tworzenia zadania kodowania, które generuj
             formatOption: AssetFormatOption.AdaptiveStreaming);
 ```
 
-## <a id="encoding_with_dotnet"></a>Kodowanie w usłudze Media Services zestawu .NET SDK
+## <a id="encoding_with_dotnet"></a>Kodowanie za pomocą usługi Media Services .NET SDK
 
-Poniższy przykład kodu wykorzystuje .NET SDK usługi Media Services do wykonywania następujących zadań:
+Poniższy przykład kodu używa Media Services .NET SDK do wykonywania następujących zadań:
 
 - Utwórz zadania kodowania.
 - Pobierz odwołanie do **Media Encoder Standard** kodera.
-- Dodaj zadanie kodowania zadania i określanie użycia **adaptacyjne przesyłanie strumieniowe** wstępnie zdefiniowane. 
-- Tworzenie zasobu wyjściowego, który będzie zawierać fragmentów fMP4 i plik .ism.
+- Dodaj zadanie kodowania, zadania i określanie użycia **adaptacyjnego przesyłania strumieniowego** wstępnie zdefiniowane. 
+- Tworzenie zasobu danych wyjściowych, który będzie zawierać fragmenty fMP4 i plik .ism.
 - Dodaj program obsługi zdarzeń, aby sprawdzić postęp zadania.
-- Przesłać zadanie.
+- Prześlij zadanie.
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Tworzenie i konfigurowanie projektu programu Visual Studio
 
@@ -177,5 +177,5 @@ namespace AdaptiveStreaming
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Zobacz też
-[Usługi multimediów kodowania — omówienie](media-services-encode-asset.md)
+[Omówienie kodowania usługi Media Services](media-services-encode-asset.md)
 

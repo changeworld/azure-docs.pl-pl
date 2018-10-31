@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/27/2018
-ms.openlocfilehash: 556b71d8312c7661b58a3ccf56fd76f6753ef9cf
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 2bd2a90c6bac280b6f68bde378b7f7d32b7fcd38
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987583"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248749"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream data jako dane wejściowe do usługi Stream Analytics
 
@@ -115,7 +115,6 @@ Gdy używasz przesyłanie strumieniowe danych z usługi IoT Hub, masz dostęp do
 | **IoTHub.ConnectionDeviceId** | Identyfikator uwierzytelniania używany do wysyłania tego komunikatu. Ta wartość jest dołączana do wiadomości powiązań usługi w usłudze IoT Hub. |
 | **IoTHub.ConnectionDeviceGenerationId** | Identyfikator generacji uwierzytelnionego urządzenia, który został użyty do wysłania tej wiadomości. Ta wartość jest dołączana do wiadomości powiązań usługi w usłudze IoT Hub. |
 | **IoTHub.EnqueuedTime** | Czas, kiedy wiadomość została odebrana przez usługę IoT Hub. |
-| **IoTHub.StreamId** | Właściwość zdarzenie niestandardowe dodane przez urządzenie nadawcy. |
 
 
 ## <a name="stream-data-from-blob-storage"></a>Stream dane z magazynu obiektów Blob

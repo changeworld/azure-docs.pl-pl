@@ -1,10 +1,10 @@
 ---
-title: Dostosowywanie ustawienia standardu Media Encoder Standard | Dokumentacja firmy Microsoft
-description: W tym temacie pokazano, jak przeprowadzić Zaawansowane kodowanie dostosowując Media Encoder Standard ustawienia zadania. Temat przedstawia sposób użycia .NET SDK usługi Media Services do tworzenia kodowania zadań i zadania. Widoczny jest również sposób dostarczania predefiniowanych do zadania kodowania.
+title: Dostosowywanie ustawień wstępnych usługi Media Encoder Standard | Dokumentacja firmy Microsoft
+description: W tym temacie pokazano, jak przeprowadzić Zaawansowane kodowanie za pomocą usługi Media Encoder Standard zadań wstępne dostosowania. Temat pokazuje, jak używać zestawu SDK .NET usługi Media Services do tworzenia, kodowania zadań i zadań. Pokazano również, jak do dostarczania niestandardowych ustawień wstępnych do kodowania zadania.
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: ec95392f-d34a-4c22-a6df-5274eaac445b
 ms.service: media-services
@@ -12,32 +12,32 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 4bdfdb5bd5362d5a8039ca31d498d122843df2a7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 21f182051e3e92cd126b832876d57854ac126367
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788417"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247457"
 ---
-# <a name="customizing-media-encoder-standard-presets"></a>Dostosowywanie Media Encoder Standard ustawienia
+# <a name="customizing-media-encoder-standard-presets"></a>Ustawienia wstępne Dostosowywanie Media Encoder Standard
 
 ## <a name="overview"></a>Przegląd
 
-W tym artykule pokazano, jak przeprowadzić Zaawansowane kodowanie z Media Encoder Standard (rynkowej) przy użyciu animacji niestandardowej. Artykuł będzie używał programu .NET do tworzenia kodowania zadań i zadań, która wykonuje to zadanie.  
+Ten artykuł pokazuje, jak wykonywać zaawansowane kodowanie za pomocą Media Encoder Standard (MES) przy użyciu niestandardowego ustawienia wstępnego. Artykuł będzie używał programu .NET do tworzenia zadania kodowania i zadanie, które wykonuje to zadanie.  
 
-W tym artykule przedstawiono sposób dostosować ustawienia domyślne, wykonując [wielu transmisji bitów H264 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) ustawień wstępnych i zmniejsza liczbę warstw. [Ustawienia Dostosowywanie Media Encoder Standard](media-services-advanced-encoding-with-mes.md) artykule przedstawiono ustawienia niestandardowe, które mogą służyć do wykonywania zaawansowanych zadań kodowania.
+W tym artykule pokazano, jak dostosować ustawienia domyślne, wykonując [wielu szybkość transmisji bitów H264 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) ustawienie wstępne i zmniejsza liczbę warstw. [Dostosowywanie Media Encoder Standard ustawienia wstępne](media-services-advanced-encoding-with-mes.md) artykuł przedstawia niestandardowych ustawień wstępnych, które mogą służyć do wykonywania zaawansowanych zadań kodowania.
 
-## <a id="customizing_presets"></a> Dostosowywanie predefiniowanego rynkowej
+## <a id="customizing_presets"></a> Dostosowywanie ustawienie wstępne usługi MES
 
 ### <a name="original-preset"></a>Oryginalnego ustawienia wstępnego
 
-Zapisz zdefiniowane w formacie JSON [wielu transmisji bitów H264 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) artykułu w niektórych plików z rozszerzeniem JSON. Na przykład **CustomPreset_JSON.json**.
+Zapisz dane JSON, zdefiniowana w [wielu szybkość transmisji bitów H264 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) artykułu w niektóre pliki z rozszerzeniem .json. Na przykład **CustomPreset_JSON.json**.
 
-### <a name="customized-preset"></a>Dostosowane ustawienia wstępnego
+### <a name="customized-preset"></a>Niestandardowe ustawienie wstępne
 
-Otwórz **CustomPreset_JSON.json** plików i usuń pierwsze trzy warstwy z **H264Layers** tak pliku wygląda następująco.
+Otwórz **CustomPreset_JSON.json** pliku i usuń pierwsze trzy warstwy z **H264Layers** więc plik wygląda następująco.
 
 ```json 
     {  
@@ -110,22 +110,22 @@ Otwórz **CustomPreset_JSON.json** plików i usuń pierwsze trzy warstwy z **H26
     }  
 ```
 
-## <a id="encoding_with_dotnet"></a>Kodowanie w usłudze Media Services zestawu .NET SDK
+## <a id="encoding_with_dotnet"></a>Kodowanie za pomocą usługi Media Services .NET SDK
 
-Poniższy przykład kodu wykorzystuje .NET SDK usługi Media Services do wykonywania następujących zadań:
+Poniższy przykład kodu używa Media Services .NET SDK do wykonywania następujących zadań:
 
 - Utwórz zadania kodowania.
-- Pobierz odwołanie do kodera Media Encoder Standard.
-- Załaduj predefiniowane JSON, który został utworzony w poprzedniej sekcji. 
+- Pobierz odwołanie do usługi Media Encoder Standard kodera.
+- Załaduj niestandardowego ustawienia wstępnego JSON, który został utworzony w poprzedniej sekcji. 
   
         // Load the JSON from the local file.
         string configuration = File.ReadAllText(fileName);  
 
-- Dodaj kodowania zadań dla zadania. 
-- Określ wejściowych zasobów do zakodowania.
-- Tworzenie zasobu wyjściowy, który zawiera zakodowanym elementem zawartości.
+- Dodaj zadanie kodowania do zadania. 
+- Określ wejściowego elementu do zakodowania.
+- Tworzenie zasobu danych wyjściowych, który zawiera zakodowanym elementem zawartości.
 - Dodaj program obsługi zdarzeń, aby sprawdzić postęp zadania.
-- Przesłać zadanie.
+- Prześlij zadanie.
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Tworzenie i konfigurowanie projektu programu Visual Studio
 
@@ -268,5 +268,5 @@ namespace CustomizeMESPresests
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Zobacz też
-[Usługi multimediów kodowania — omówienie](media-services-encode-asset.md)
+[Omówienie kodowania usługi Media Services](media-services-encode-asset.md)
 

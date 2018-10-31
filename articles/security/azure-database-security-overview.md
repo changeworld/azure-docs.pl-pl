@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
+ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: 460ef8a3d4436f240793025cbec874c624a2a6f4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: a61f3572037b1c62ea5ed4e0ac4496b057e2b96d
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039024"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249055"
 ---
 # <a name="azure-database-security-overview"></a>Omówienie zabezpieczeń usługi Azure database
 
@@ -65,6 +65,7 @@ Wszystkie połączenia z usługą Azure SQL Database wymagają szyfrowania (TLS/
 W parametrach połączenia aplikacji należy określić parametry, aby szyfrować połączenia, a nie ufać certyfikatowi serwera. (To jest wykonywane po skopiowaniu parametrów połączenia z witryny Azure portal.) W przeciwnym razie połączenie nie zweryfikuje tożsamości serwera i będzie podatne na ataki "man-in--middle". W przypadku sterownika ADO.NET, na przykład te parametry połączenia są `Encrypt=True` i `TrustServerCertificate=False`.
 
 ### <a name="encryption-at-rest"></a>Szyfrowanie w spoczynku
+
 Możesz wykonać kilka kroków, aby ułatwić zabezpieczanie bazy danych. Na przykład projektowanie bezpieczny system szyfrowania poufnych zasobów i tworzenie zapory wokół serwerów bazy danych. Jednak w scenariuszu, gdzie kradzieży nośnik fizyczny (np. dysków lub taśm kopii zapasowych), złośliwa strona może po prostu przywrócić lub dołączyć bazę danych i przeglądać dane.
 
 Jest jedno z rozwiązań do szyfrowania poufnych danych w bazie danych i chronić klucze, które są używane do szyfrowania danych przy użyciu certyfikatu. To rozwiązanie zapobiega każdy bez kluczy przy użyciu danych, ale muszą być planowane tego rodzaju ochrony.
@@ -92,6 +93,7 @@ Zawsze zaszyfrowane zapewnia oddzielenie osób, które są właścicielami danyc
 Ponadto Always Encrypted sprawia, że szyfrowanie przezroczyste dla aplikacji. Z włączoną funkcją Always Encrypted sterownik jest zainstalowany na komputerze klienckim, tak, aby go automatycznie szyfrowania i odszyfrowywania poufnych danych w aplikacji klienckiej. Sterownik szyfruje dane w kolumnach poufnych przed przekazaniem ich z aparatem bazy danych. Sterownik automatycznie ponownie zapisuje zapytania, tak aby zostały zachowane semantyki do aplikacji. Podobnie sterownika przezroczyste odszyfrowuje danych przechowywanych w kolumnach szyfrowanej bazy danych, zawarte w wynikach kwerendy.
 
 ## <a name="access-control"></a>Kontrola dostępu
+
 Aby zapewnić ochronę, SQL Database kontroluje dostęp za pomocą:
 
 - Reguły zapory, które ograniczają połączenia przy użyciu adresu IP.
@@ -124,11 +126,13 @@ Uwierzytelnianie to sposób potwierdzenia tożsamości podczas nawiązywania po�
   - Je wyeliminować zapisywania haseł, włączając zintegrowane uwierzytelnianie Windows i innych metod uwierzytelniania, który obsługuje usługi Azure AD.
 
 #### <a name="authorization"></a>Autoryzacja
+
 [Autoryzacja](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins) odwołuje się do co użytkownik może zrobić w ramach usługi Azure SQL database. Jest to kontrolowane przez konto użytkownika bazy danych [członkostwa w roli](https://msdn.microsoft.com/library/ms189121) i [uprawnienia na poziomie obiektu](https://msdn.microsoft.com/library/ms191291.aspx). Autoryzacja to proces określania, że zasoby zabezpieczanego podmiot zabezpieczeń mogą uzyskiwać dostęp do i jakie operacje są dozwolone dla tych zasobów.
 
 ### <a name="application-access"></a>Dostęp do aplikacji
 
 #### <a name="dynamic-data-masking"></a>Dynamiczne maskowanie danych
+
 Z przedstawicielem w Centrum połączenia może identyfikować obiekty wywołujące przez kilka cyfry numeru karty kredytowej lub numer ubezpieczenia społecznego. Jednak te elementy danych nie należy całkowicie uwidaczniać do przedstawiciela biura obsługi.
 
 Można zdefiniować regułę maskowania maskuje wszystkie z wyjątkiem cztery ostatnie cyfry numeru karty kredytowej w zestawie wyników dowolnego zapytania lub numer ubezpieczenia społecznego.
@@ -141,11 +145,11 @@ Funkcja [dynamicznego maskowania danych w bazie danych SQL](https://docs.microso
 
 [Dynamiczne maskowanie danych](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking) ułatwia zapobieganie nieautoryzowanemu dostępowi do danych poufnych, umożliwiając wyznaczenie, jaka część danych poufnych może zostać odsłonięta, przy minimalnym wpływie na warstwę aplikacji. Jest to funkcja zabezpieczeń oparta na zasadach, która ukrywa dane poufne w zestawie wyników zapytania w wyznaczonych polach bazy danych, przy czym dane w bazie danych pozostają bez zmian.
 
-
 > [!Note]
 > Dynamiczne maskowanie danych można skonfigurować przez administratora bazy danych Azure, administrator serwera lub ról ds. zabezpieczeń.
 
 #### <a name="row-level-security"></a>Zabezpieczenia na poziomie wierszy
+
 Innym często spotykanym wymaganiem zabezpieczeń dla wielodostępnych baz danych jest [zabezpieczenia na poziomie wiersza](https://msdn.microsoft.com/library/dn765131.aspx). Ta funkcja służy do kontrolowania dostępu do wierszy w tabeli bazy danych na podstawie właściwości użytkownika, który wykonuje kwerendę. (Przykład cechy są grupy członkostwa i wykonywanie kontekstu).
 
 ![Umożliwianie użytkownikowi dostępu do wierszy w tabeli za pomocą aplikacji klienckiej zabezpieczenia na poziomie wiersza](./media/azure-databse-security-overview/azure-database-fig4.png)
@@ -155,18 +159,20 @@ Logika ograniczeń dostępu jest znajduje się w warstwie bazy danych, a nie od 
 Zabezpieczenia na poziomie wiersza wprowadza kontroli dostępu na podstawie predykatu. Zawiera funkcje elastyczne, scentralizowane wersję próbną, która może wziąć pod uwagę metadanych lub inne kryteria, które administrator określa odpowiednio. Predykat jest używany jako kryterium do określenia, czy użytkownik ma odpowiedni dostęp do danych na podstawie atrybutów użytkownika. Kontrola dostępu oparta na etykietę można zaimplementować przy użyciu kontroli dostępu na podstawie predykatu.
 
 ## <a name="proactive-monitoring"></a>Aktywne monitorowanie
+
 Bazy danych SQL Database pomaga w zabezpieczaniu danych, zapewniając *inspekcji* i *wykrywanie zagrożeń* możliwości.
 
 ### <a name="auditing"></a>Inspekcja
+
 [Funkcja inspekcji usługi Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started) zwiększa możliwości, aby uzyskać wgląd w zdarzenia i zmiany, które występują w bazie danych. Przykładami są aktualizacje i zapytania dotyczące danych.
 
 SQL Database auditing śledzi zdarzenia bazy danych i zapisuje je do inspekcji logowania na koncie magazynu platformy Azure. Inspekcja pomaga zachować zgodność z przepisami, analizować aktywność bazy danych i uzyskać wgląd w odchylenia i anomalie, które mogą wskazywać na problemy biznesowe lub podejrzane naruszenia zabezpieczeń. Inspekcja umożliwia i ułatwia zgodności ze standardami zgodności, ale nie gwarantuje zgodności.
 
 Możesz użyć inspekcji do bazy danych SQL:
 
--   **Zachowaj** dziennik inspekcji wybranych zdarzeń. Można zdefiniować kategorie działań bazy danych powinien być poddany inspekcji.
--   **Raport** aktywność bazy danych. Wstępnie skonfigurowane raporty i pulpit nawigacyjny umożliwia szybkie rozpoczynanie pracy z działaniem i raportowanie zdarzeń.
--   **Analizowanie** raportów. Możesz znaleźć podejrzanych zdarzeń, nietypowej aktywności i trendów.
+- **Zachowaj** dziennik inspekcji wybranych zdarzeń. Można zdefiniować kategorie działań bazy danych powinien być poddany inspekcji.
+- **Raport** aktywność bazy danych. Wstępnie skonfigurowane raporty i pulpit nawigacyjny umożliwia szybkie rozpoczynanie pracy z działaniem i raportowanie zdarzeń.
+- **Analizowanie** raportów. Możesz znaleźć podejrzanych zdarzeń, nietypowej aktywności i trendów.
 
 Istnieją dwie metody inspekcji:
 
@@ -174,13 +180,26 @@ Istnieją dwie metody inspekcji:
 -   **Inspekcja tabeli**: dzienniki są zapisywane w usłudze Azure Table storage.
 
 ### <a name="threat-detection"></a>Wykrywanie zagrożeń
-[Wykrywanie zagrożeń w usłudze Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) wykrywa podejrzane działania, które wskazują potencjalne zagrożenia bezpieczeństwa. Wykrywanie zagrożeń służy do reagowania na podejrzane zdarzenia w bazie danych, takie jak wstrzyknięcia kodu SQL w momencie ich wystąpienia. Zapewnia alerty i umożliwia korzystanie z usługi Azure SQL Database inspekcji eksplorować podejrzane zdarzenia.
+
+[Zaawansowana ochrona przed zagrożeniami dla bazy danych SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-advanced-threat-protection) wykrywa podejrzane działania, które wskazują potencjalne zagrożenia bezpieczeństwa. Wykrywanie zagrożeń służy do reagowania na podejrzane zdarzenia w bazie danych, takie jak wstrzyknięcia kodu SQL w momencie ich wystąpienia. Zapewnia alerty i umożliwia korzystanie z usługi Azure SQL Database inspekcji eksplorować podejrzane zdarzenia.
 
 ![Wykrywanie zagrożeń dla bazy danych SQL Database i aplikację internetową, zewnętrzna osoba atakująca i złośliwe oprogramowanie](./media/azure-databse-security-overview/azure-database-fig5.jpg)
 
-Na przykład wstrzykiwanie kodu SQL jest jednym z typowych problemów z zabezpieczeniami dla aplikacji sieci web. Jest on używany do atakowania aplikacji opartych na danych. Osoby atakujące wykorzystują luki w zabezpieczeniach aplikacji iniekcję złośliwych instrukcji SQL do pól wejścia aplikacji, co umożliwia naruszenie lub zmodyfikowanie danych w bazie danych.
+SQL zaawansowane Threat Protection (ATP) zawiera zestaw zaawansowanych funkcji zabezpieczeń programu SQL, w tym odnajdywanie danych i klasyfikacji, ocena luk w zabezpieczeniach i wykrywanie zagrożeń. 
 
-Specjaliści ds. bezpieczeństwa lub innymi wyznaczeni administratorzy mogą uzyskać natychmiastowego wysłania powiadomienia o podejrzanych działaniach bazy danych, w jakiej występują. Każde powiadomienie zawiera szczegółowe informacje o podejrzanych działaniach i zaleca zastosowanie jak dalszego zbadania i wyeliminowania zagrożenia.        
+- [Odnajdywanie i klasyfikacja danych](../sql-database/sql-database-data-discovery-and-classification.md)
+- [Ocena luk w zabezpieczeniach](../sql-database/sql-vulnerability-assessment.md)  
+- [Wykrywanie zagrożeń](../sql-database/sql-database-threat-detection.md)
+
+[Usługa Azure Database for postgresql w warstwie zaawansowanej ochrony przed zagrożeniami](../postgresql/concepts-data-access-and-security-threat-protection.md) stanowi nową warstwę zabezpieczeń, która umożliwia wykrywanie oraz reagowanie na potencjalne zagrożenia w miarę ich występowania, zapewniając alerty zabezpieczeń w przypadku wystąpienia nietypowych działań. Użytkownicy otrzymują alert po podejrzanych działaniach bazy danych oraz potencjalnych luk w zabezpieczeniach, a także wzorce dostępu i zapytania nietypowego bazy danych. Zaawansowana ochrona przed zagrożeniami dla usługi Azure Database for PostgreSQL integruje alerty z usługą Azure Security Center. Typów alertów, obejmują:
+
+- Dostęp z nietypowej lokalizacji
+- Dostęp do centrum danych platformy Azure 
+- Dostęp z nieznanego podmiotu zabezpieczeń 
+- Dostęp z potencjalnie szkodliwej aplikacji 
+- Atak siłowy usługa Azure database for postgresql — poświadczeń 
+
+[Usługa Azure Database for MySQL — Zaawansowana ochrona przed zagrożeniami](/mysql/concepts-data-access-and-security-threat-protection.md) zapewnia ochronę, podobnie jak PostgreSQL zaawansowanej ochrony.  
 
 ## <a name="centralized-security-management"></a>Zarządzanie zabezpieczeniami scentralizowane
 
@@ -188,12 +207,20 @@ Usługa [Azure Security Center](https://azure.microsoft.com/documentation/servic
 
 [Usługa Security Center](https://docs.microsoft.com/azure/security-center/security-center-sql-database) pomaga chronić dane w bazie danych SQL, zapewniając wgląd w zabezpieczenia serwerów i baz danych. Usługa Security Center możesz wykonywać następujące czynności:
 
--   Definiuj zasady szyfrowania bazy danych SQL i inspekcji.
--   Monitorowanie zabezpieczeń zasobów bazy danych SQL dla wszystkich swoich subskrypcji.
--   Szybkie identyfikowanie i rozwiązywanie problemów dotyczących bezpieczeństwa.
--   Integruj alerty z [wykrywania zagrożeń usługi Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection).
+- Definiuj zasady szyfrowania bazy danych SQL i inspekcji.
+- Monitorowanie zabezpieczeń zasobów bazy danych SQL dla wszystkich swoich subskrypcji.
+- Szybkie identyfikowanie i rozwiązywanie problemów dotyczących bezpieczeństwa.
+- Integruj alerty z [wykrywania zagrożeń usługi Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection).
 
 Usługa Security Center obsługuje dostępu opartej na rolach.
+
+## <a name="sql-information-protection"></a>Usługa SQL Information Protection
+
+[Usługa SQL Information Protection](../sql-database/sql-database-data-discovery-and-classification.md) automatycznie odnajduje i klasyfikuje potencjalnie poufnych danych, udostępnia mechanizm etykietowania trwałe tagowanie poufnych danych za pomocą atrybutów klasyfikacji i zapewnia wyświetlanie szczegółowego pulpitu nawigacyjnego Stan klasyfikacji bazy danych.  
+
+Ponadto oblicza wynik ustawić czułość zapytań SQL, dzięki czemu mogą jawnie inspekcji zapytań, które umożliwiają wyodrębnianie danych poufnych, a dane mogą być chronione. Aby uzyskać szczegółowe informacje na temat SQL Information Protection Zobacz odnajdywanie danych bazy danych SQL Azure i klasyfikacji.
+
+Można skonfigurować [zasad SQL Information Protection](/security-center/security-center-info-protection-policy.md) w usłudze Azure Security Center.
 
 ## <a name="azure-marketplace"></a>Azure Marketplace
 

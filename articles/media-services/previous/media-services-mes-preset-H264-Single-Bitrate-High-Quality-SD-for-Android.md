@@ -1,8 +1,8 @@
 ---
-title: H264 Pojedyncza szybkość transmisji bitów wysokiej jakości SD dla systemu Android | Dokumentacja firmy Microsoft
-description: Temat zawiera omówienie **H264 pojedynczego szybkości transmisji bitów wysokiej jakości SD dla systemu Android** ustawień wstępnych zadań.
+title: H264 Pojedyncza SD wysokiej szybkości transmisji bitów jakości dla systemu Android | Dokumentacja firmy Microsoft
+description: Temat zawiera omówienie **H264 pojedynczej szybkości transmisji bitów wysokiej jakości SD dla systemu Android** ustawienie wstępne zadania.
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,21 +12,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 325078dd188556daaf4092909a174d97a2e01e1a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 098bf237953530a09bc454a921ae5d5a399f3315
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788445"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250788"
 ---
-# <a name="h264-single-bitrate-high-quality-sd-for-android"></a>H264 SD jakości pojedynczego wysokiej szybkości transmisji bitów dla systemu Android
-`Media Encoder Standard` definiuje zestaw kodowania ustawienia używanego podczas tworzenia zadania kodowania. Można użyć `preset name` do określenia do formatu, który chcesz kodować pliku nośnika. Lub można utworzyć własny JSON lub ustawienia opartych na języku XML (przy użyciu kodowania UTF-8 lub UTF-16. Następnie możesz przejdzie niestandardowe ustawienia do kodera. Aby uzyskać listę wszystkich istniejących nazw obsługiwanych przez to `Media Encoder Standard` kodera, zobacz [ustawień wstępnych zadań dla standardu Media Encoder Standard](media-services-mes-presets-overview.md).  
+# <a name="h264-single-bitrate-high-quality-sd-for-android"></a>H264 SD pojedynczej szybkości transmisji bitów o wysokiej jakości, dla systemu Android
+`Media Encoder Standard` definiuje zestaw kodowania ustawienia wstępne, których można użyć podczas tworzenia zadań kodowania. Można użyć `preset name` do określenia do formatu, który chcesz zakodować pliku multimedialnego. Lub można utworzyć własne JSON lub XML na podstawie ustawień wstępnych (przy użyciu kodowania UTF-8 lub UTF-16. Następnie należy wprowadzić niestandardowego ustawienia wstępnego z koderem. Aby uzyskać listę wszystkich wstępnie zdefiniowanych nazw obsługiwanych przez to `Media Encoder Standard` encoder, zobacz [ustawienia wstępne zadań usługi Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- W tym temacie przedstawiono `H264 Single Bitrate High Quality SD for Android` ustawienia wstępnego w formacie XML i JSON.  
+ W tym temacie przedstawiono `H264 Single Bitrate High Quality SD for Android` wstępnie ustawione w formacie XML i JSON.  
   
- Ten plik wstępnie zdefiniowane i tworzy jednej MP4 o szybkości 500 KB/s i stereo AAC audio. Aby uzyskać szczegółowe informacje o profilu szybkości transmisji bitów próbkowania szybkości, itp. tego ustawień, sprawdzić XML lub JSON określonych poniżej. Wyjaśnień jakie każdego elementu w sposób te ustawienia i prawidłowe wartości dla każdego elementu, zobacz [Media Encoder Standard schematu](media-services-mes-schema.md) tematu.  
+ Ten plik wstępnie tworzy pojedynczy MP4 z 500 KB/s i stereo AAC audio szybkość transmisji bitów. Aby uzyskać szczegółowe informacje o profilu szybkości transmisji bitów, próbkowanie wskaźnik, itp., to ustawień, sprawdź zdefiniowane poniżej w formacie JSON lub XML. Objaśnienia każdego elementu w tych oznacza, że ustawienia i prawidłowe wartości dla każdego elementu, zobacz [schemat usługi Media Encoder Standard](media-services-mes-schema.md) tematu.  
   
  XML  
   

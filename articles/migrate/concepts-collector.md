@@ -4,15 +4,15 @@ description: Zawiera informacje dotyczące urządzenia modułu zbierającego w u
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/24/2018
+ms.date: 10/30/2018
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 006a246323e9f82ea9c9a6a2940ed624d7e44e13
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 81e6731068db84f02073f02c49bea9a8fb7c7c70
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986784"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241195"
 ---
 # <a name="about-the-collector-appliance"></a>O urządzenia modułu zbierającego
 
@@ -20,6 +20,38 @@ ms.locfileid: "49986784"
 
 Azure Migrate Collector to urządzenie uproszczone, który może służyć do wykrywania w lokalnym środowisku vCenter na potrzeby oceny za pomocą [usługi Azure Migrate](migrate-overview.md) usługi, przed migracją na platformę Azure.  
 
+## <a name="discovery-methods"></a>Metody odnajdywania
+
+Dostępne są dwie opcje dla urządzenia modułu zbierającego, jednorazowe lub ciągłe odnajdywania.
+
+### <a name="one-time-discovery"></a>Jednorazowe odnajdywanie
+
+Urządzenie modułu zbierającego komunikuje się jednorazowo przy użyciu programu vCenter Server, aby zebrać metadanych dotyczących maszyn wirtualnych. Za pomocą tej metody:
+
+- Urządzenie ciągle nie jest podłączony do projektu Azure Migrate.
+- Zmiany w środowisku lokalnym nie są uwzględniane w usłudze Azure Migrate, po zakończeniu odnajdywania. Aby odzwierciedlały zmiany, należy ponownie odnajdywanie w tym samym środowisku, w tym samym projekcie.
+- Podczas zbierania danych wydajności dla maszyny Wirtualnej, urządzenie opiera się na dane historyczne wydajności, przechowywane w programie vCenter Server. Historia wydajności zbiera dla ostatniego miesiąca.
+- Dla kolekcji historyczne dane wydajności należy ustawić ustawienia statystyk w programie vCenter Server na poziomie 3. Po ustawieniu poziomu do trzech, musisz poczekać co najmniej jeden dzień dla vCenter w celu zbierania liczników wydajności. Dlatego zaleca się uruchamianie odnajdywania po co najmniej jeden dzień. Do oceny środowiska na podstawie danych wydajności 1 tydzień lub 1 miesiąc, należy odpowiednio oczekiwania.
+- W przypadku tej metody odnajdowania usługi Azure Migrate umożliwia zbieranie informacji o średnia liczników dla każdego metryki (zamiast liczniki szczytowe), co może skutkować niepełną zmiany rozmiaru. Zalecamy użycie opcji ciągłego odnajdywania w celu uzyskania bardziej dokładnych rozmiaru wyników.
+
+### <a name="continuous-discovery"></a>Ciągłe odnajdywanie
+
+Urządzenie modułu zbierającego stale jest podłączony do projektu Azure Migrate i stale zbiera dane dotyczące wydajności maszyn wirtualnych.
+
+- Moduł zbierający stale profilów w środowisku lokalnym na potrzeby zbierania danych użycia w czasie rzeczywistym, co 20 sekund.
+- Urządzenie zbiera przykłady 20 sekund i tworzy jeden punkt danych co 15 minut.
+- Do tworzenia danych punkt urządzenie szczytowa wartość wybierana jest opcja przykłady 20 sekund i wysyła je do platformy Azure.
+- Ten model nie są zależne od ustawienia statystyk serwera vCenter, tak aby zbierać dane dotyczące wydajności.
+- Aby zatrzymać, ciągłe profilowania w dowolnym momencie z modułu zbierającego.
+
+Należy pamiętać, że urządzenie zbiera w sposób ciągły tylko dane dotyczące wydajności i nie wykrywa żadnych zmian konfiguracji w środowisku lokalnym (tzn. dodania lub usunięcia maszyny wirtualnej, dodania dysku itp.). W przypadku zmiany konfiguracji w środowisku lokalnym możesz wykonać następujące działania, aby odzwierciedlić zmiany w portalu:
+
+- Dodanie elementów (maszyn wirtualnych, dysków, rdzeni itp.): aby uwzględnić te zmiany w witrynie Azure Portal, możesz zatrzymać odnajdywanie z urządzenia i następnie uruchomić je ponownie. Zapewni to, że zmiany zostaną zaktualizowane w projekcie usługi Azure Migrate.
+
+- Usunięcie maszyn wirtualnych: ze względu na konstrukcję urządzenia, usunięcie maszyny wirtualnej nie zostanie uwzględnione, nawet jeśli zatrzymasz odnajdywanie i uruchomisz je ponownie. Przyczyną jest to, że dane z kolejnych operacji odnajdywania są dołączane do starszych danych, a nie nadpisywane. W takim przypadku możesz po prostu zignorować maszynę wirtualną w portalu, usuwając ją z grupy i obliczając ponownie ocenę.
+
+> [!NOTE]
+> Funkcja ciągłego Odnajdywanie jest w wersji zapoznawczej. Zalecamy używanie tej metody, ponieważ zbiera ona szczegółowe dane wydajności i daje w wyniku dokładne szacunki rozmiaru.
 
 ## <a name="deploying-the-collector"></a>Wdrażanie modułu zbierającego
 
@@ -163,43 +195,6 @@ Moduł zbierający można uaktualnić do najnowszej wersji, bez pobierania OVA p
 3. Skopiuj plik zip do usługi Azure Migrate collector maszyny wirtualnej (urządzenia modułu zbierającego).
 4. Kliknij prawym przyciskiem myszy w pliku zip, a następnie wybierz Wyodrębnij wszystkie.
 5. Kliknij prawym przyciskiem myszy na Setup.ps1 i wybierz polecenie Uruchom przy użyciu programu PowerShell, a następnie postępuj zgodnie z instrukcjami na ekranie, aby zainstalować aktualizację.
-
-
-## <a name="discovery-methods"></a>Metody odnajdywania
-
-Istnieją dwie metody, których urządzenie modułu zbierającego służy do odnajdywania, jednorazowe lub ciągłe odnajdywania.
-
-
-### <a name="one-time-discovery"></a>Jednorazowe odnajdywanie
-
-Moduł zbierający komunikuje się jednorazowo przy użyciu programu vCenter Server, aby zebrać metadanych dotyczących maszyn wirtualnych. Za pomocą tej metody:
-
-- Urządzenie ciągle nie jest podłączony do projektu Azure Migrate.
-- Zmiany w środowisku lokalnym nie są uwzględniane w usłudze Azure Migrate, po zakończeniu odnajdywania. Aby odzwierciedlały zmiany, należy ponownie odnajdywanie w tym samym środowisku, w tym samym projekcie.
-- Ta metoda odnajdywania należy skonfigurować ustawienie statystyk w programie vCenter Server na poziomie 3.
-- Po ustawieniu poziomu do trzech, zajmuje do dnia do generowania liczników wydajności. Dlatego zaleca się uruchamianie odnajdywania po dniu.
-- Podczas zbierania danych wydajności dla maszyny Wirtualnej, urządzenie opiera się na dane historyczne wydajności, przechowywane w programie vCenter Server. Historia wydajności zbiera dla ostatniego miesiąca.
-- Usługa Azure Migrate umożliwia zbieranie informacji o średnia liczników (zamiast licznika szczytowa) dla każdego metryki, co może spowodować niepełną zmiany rozmiaru.
-
-### <a name="continuous-discovery"></a>Ciągłe odnajdywanie
-
-Urządzenie modułu zbierającego stale jest podłączony do projektu Azure Migrate i stale zbiera dane dotyczące wydajności maszyn wirtualnych.
-
-- Moduł zbierający stale profilów w środowisku lokalnym na potrzeby zbierania danych użycia w czasie rzeczywistym, co 20 sekund.
-- Ten model nie są zależne od ustawienia statystyk serwera vCenter, tak aby zbierać dane dotyczące wydajności.
-- Urządzenie zbiera przykłady 20 sekund i tworzy jeden punkt danych co 15 minut.
-- Do tworzenia danych punkt urządzenie szczytowa wartość wybierana jest opcja przykłady 20 sekund i wysyła je do platformy Azure.
-- Aby zatrzymać, ciągłe profilowania w dowolnym momencie z modułu zbierającego.
-
-Należy pamiętać, że urządzenie tylko zbiera dane dotyczące wydajności stale nie wykrywa zmiany konfiguracji w środowisku lokalnym, (tj. Dodawanie maszyny Wirtualnej, usuwania, dodawania dysku itp.). W przypadku zmiany konfiguracji w środowisku lokalnym, możesz wykonać następujące polecenie, aby odzwierciedlały zmiany w portalu:
-
-1. Dodawanie elementów (maszyn wirtualnych, dysków, liczba rdzeni itp.): aby uwzględnić te zmiany w witrynie Azure portal, można zatrzymać odnajdywania przez urządzenie i uruchom go ponownie. Pozwoli to zagwarantować, że zmiany są uwzględniane w projekcie usługi Azure Migrate.
-
-2. Usuwanie maszyn wirtualnych: ze względu na sposób zaprojektowano urządzenia, usunięcie maszyny wirtualne nie zostaną uwzględnione nawet, gdy zatrzymujesz i uruchamiasz odnajdywania. Jest to spowodowane dane z kolejne operacje odnajdywania są dołączane do odnajdywania starszych i nie zostanie zastąpiona. W takim przypadku możesz po prostu zignorować maszyny Wirtualnej w portalu, usuwając go z grupy i ponownego obliczania oceny.
-
-> [!NOTE]
-> Funkcja ciągłego Odnajdywanie jest w wersji zapoznawczej. Firma Microsoft zaleca używania tej metody, ponieważ ta metoda służy do zbierania szczegółowych danych i powoduje dokładne doboru.
-
 
 ## <a name="discovery-process"></a>Proces odnajdywania
 

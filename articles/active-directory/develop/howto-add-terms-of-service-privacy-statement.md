@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 21cd4990e2117cef2d36fa2607a601afd1a4c4e4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2195a43665f99e8388b13fc6dc3e528496bd3901
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990505"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242691"
 ---
 # <a name="terms-of-service-and-privacy-statement-for-registered-azure-active-directory-apps"></a>Warunków użytkowania usługi i zasady zachowania poufności dla zarejestrowanych aplikacji usługi Azure Active Directory
 
@@ -43,7 +43,7 @@ W poniższych przykładach pokazano użytkownika zgody środowiska, gdy skonfigu
 
 Przed dodaniem linki do warunków Twojej aplikacji, usług i ochrony prywatności dokumentów instrukcji, upewnij się, że adresy URL przestrzegać następujących wytycznych.
 
-| Wytyczne     | Opis                           |
+| Wytyczna     | Opis                           |
 |---------------|---------------------------------------|
 | Format        | Nieprawidłowy adres URL                             |
 | Prawidłowe schematy | HTTP i HTTPS</br>Firma Microsoft zaleca protokołu HTTPS |
@@ -64,7 +64,7 @@ Jeśli warunki usługi i zasady zachowania poufności są gotowe, można dodać 
 
 Jeśli aplikacja jest zarejestrowana w witrynie Azure portal, wykonaj następujące kroki.
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/).
+1. Zaloguj się do witryny  [Azure Portal](https://portal.azure.com/).
 2. Przejdź do **rejestracje aplikacji** sekcji i wybierz swoją aplikację.
 3. Otwórz **właściwości** części aplikacji.
 4. Wypełnij **URL warunki usługi** i **adres URL zasad zachowania poufności informacji** pola.
@@ -89,8 +89,8 @@ Jeśli wolisz bezpośrednio zmodyfikować obiekt aplikacji JSON umożliwia Edyto
 
 ```json
     "informationalUrls": { 
-        "termsOfService": “<your_terms_of_service_url>”, 
-        "privacy": “<your_privacy_statement_url>” 
+        "termsOfService": "<your_terms_of_service_url>", 
+        "privacy": "<your_privacy_statement_url>" 
     }
 ```
 

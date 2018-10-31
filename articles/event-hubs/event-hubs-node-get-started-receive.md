@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: shvija
-ms.openlocfilehash: 6d5b52c8a5dd0306a349cac5e67eecc809005c6f
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 2f59b7f47acc8ce8e566b7f0e2bcfed379ea60d2
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429188"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239088"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-nodejs"></a>Odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu środowiska Node.js
 
@@ -141,12 +141,7 @@ Więcej przykładów można znaleźć [tutaj](https://github.com/Azure/azure-eve
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Odwiedź następujące strony, aby dowiedzieć się więcej o usłudze Event Hubs:
-
-* [Wysyłanie zdarzeń za pomocą środowiska Node.js](event-hubs-go-get-started-send.md)
-* [Przykłady usługi Event Hubs](https://github.com/Azure/azure-event-hubs-node/tree/master/processor/examples/)
-* [Przechwytywanie zdarzeń do usługi Azure Storage lub Data Lake Store](event-hubs-capture-overview.md)
-* [Event Hubs — często zadawane pytania](event-hubs-faq.md)
+W tym przewodniku Szybki Start utworzono aplikację w języku Node.js, która Odebrano komunikaty z Centrum zdarzeń. Aby dowiedzieć się, jak do wysyłania zdarzeń do Centrum zdarzeń za pomocą środowiska Node.js, zobacz [wysyłać zdarzenia z Centrum zdarzeń — Node.js](event-hubs-node-get-started-send.md).
 
 <!-- Links -->
 [bezpłatne konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

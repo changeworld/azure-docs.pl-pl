@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: kgremban
-ms.openlocfilehash: c400a084a78af6313e355d65bcbc07a520f55514
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: b470ca15163ef1e74ec9795ad0a2581a24c83474
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156055"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250421"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorowanie kondycji usługi Azure IoT Hub i szybkie diagnozowanie problemów
 
@@ -24,13 +24,13 @@ Usługa Azure Monitor to pojedyncze źródło monitorowania i rejestrowania dla 
 > [!IMPORTANT]
 > Zdarzenia wyemitowane przez usługę IoT Hub przy użyciu dzienników diagnostycznych usługi Azure Monitor nie musi być niezawodne lub są uporządkowane. Niektóre zdarzenia mogły zostać utracone albo dostarczony poza kolejnością. Dzienniki diagnostyczne również nie należy traktować jako w czasie rzeczywistym i może potrwać kilka minut, zanim zdarzenia do zarejestrowania się w wybranej lokalizacji docelowej.
 
-Usługa Azure Resource Health pomaga diagnozować i uzyskać pomoc techniczną, gdy problemy z platformy Azure wpłynie na Twoje zasoby. Spersonalizowany pulpit nawigacyjny zawiera stan bieżącej i przeszłej kondycji dla usługi IoT Hub. Przeczytaj ten artykuł, aby dowiedzieć się, jak [użycia usługi Azure Resource Health](#use-azure-resource-health) za pomocą usługi IoT hub. 
+Usługa Azure Resource Health pomaga diagnozować i uzyskać pomoc techniczną, gdy na Twoje zasoby wpływa jakiś problem z platformą Azure. Spersonalizowany pulpit nawigacyjny zawiera stan bieżącej i przeszłej kondycji dla usługi IoT Hub. Przeczytaj ten artykuł, aby dowiedzieć się, jak [użycia usługi Azure Resource Health](#use-azure-resource-health) za pomocą usługi IoT hub. 
 
-Oprócz integracji z tych dwóch usług, IoT Hub udostępnia swoje własne metryki, które można użyć, aby poznać stan zasobów IoT. Aby dowiedzieć się więcej, zobacz [metryki zrozumieć usługi IoT Hub][lnk-metrics].
+IoT Hub udostępnia również własne metryki, które można użyć, aby poznać stan zasobów IoT. Aby dowiedzieć się więcej, zobacz [metryki zrozumieć usługi IoT Hub][lnk-metrics].
 
 ## <a name="use-azure-monitor"></a>Korzystanie z usługi Azure Monitor
 
-Usługa Azure Monitor udostępnia informacje diagnostyczne poziomie zasobów, co oznacza, monitorować operacje, które odbywają się w Centrum IoT hub. 
+Usługa Azure Monitor udostępnia informacje diagnostyczne dla zasobów platformy Azure, co oznacza, monitorować operacje, które odbywają się w Centrum IoT hub. 
 
 Zastępuje ustawienia diagnostyki usługi Azure Monitor. monitorowanie operacji usługi IoT Hub. Jeśli obecnie używasz monitorowanie operacji, można dokonać migracji przepływów pracy. Aby uzyskać więcej informacji, zobacz [migracja z usługi operations ustawienia monitorowania do diagnostyki][lnk-migrate].
 
@@ -42,11 +42,9 @@ Aby dowiedzieć się więcej na temat określonych metryk i zdarzeń usługi Azu
 
 Usługa Azure Monitor śledzi różnych operacji występujących w usłudze IoT Hub. Każda kategoria ma schemat, który definiuje sposób zgłaszania zdarzeń w danej kategorii. 
 
-
-
 #### <a name="connections"></a>Połączenia
 
-Urządzenia śledzi kategorii połączenia Połącz i odłączanie zdarzeń usługi IoT hub, jak również błędy. Śledzenie tej kategorii jest przydatne do identyfikowania próby nawiązania połączenia nieautoryzowanych i śledzenia, gdy połączenie zostanie przerwane dla urządzeń w obszarach niską łączności.
+Urządzenia śledzi kategorii połączenia Połącz i odłączanie zdarzeń usługi IoT hub, jak również błędy. Ta kategoria jest przydatna do zidentyfikowanie próby nawiązania połączenia nieautoryzowanych i/lub alerty po utracie połączenia z urządzeniami.
 
 > [!NOTE]
 > Stan niezawodnego połączenia urządzeń można znaleźć [pulsu urządzenia][lnk-devguide-heartbeat].
@@ -65,7 +63,13 @@ Urządzenia śledzi kategorii połączenia Połącz i odłączanie zdarzeń usł
 
 #### <a name="cloud-to-device-commands"></a>Polecenia chmura-urządzenie
 
-Kategorii poleceń chmura urządzenie do śledzenia błędów, które występują w Centrum IoT hub i są powiązane z potok komunikatów z chmury do urządzenia. Ta kategoria obejmuje błędów występujących podczas wysyłania komunikatów z chmury do urządzeń (na przykład nieautoryzowanego nadawcę), odbieranie komunikatów z chmury do urządzeń (np. Przekroczono licznik dostaw) i odbieranie opinii komunikatów z chmury do urządzenia (takie jak opinii wygasła). Ta kategoria nie może przechwytywać błędy z urządzenia, obsługujący nieprawidłowo komunikatu chmura urządzenie, jeśli komunikatu chmura urządzenie zostało pomyślnie dostarczone.
+Kategorii poleceń chmura urządzenie do śledzenia błędów, które występują w Centrum IoT hub i są powiązane z potok komunikatów z chmury do urządzenia. Ta kategoria zawiera błędy, które występują ze:
+
+* Wysyłanie komunikatów z chmury do urządzeń (np. błędy nieautoryzowanego nadawcę)
+* Odbieranie komunikatów z chmury do urządzeń (np. błędy Przekroczono licznik dostaw), a
+* Odbieranie opinii komunikatów z chmury do urządzeń (takich jak opinii wygasłe błędów). 
+
+Ta kategoria nie przechwytuje błędy, gdy komunikatu chmura urządzenie została pomyślnie dostarczone, ale nieprawidłowo obsługiwane przez urządzenie.
 
 ```json
 {
@@ -111,7 +115,13 @@ Kategoria operacje tożsamości urządzenia do śledzenia błędów występując
 
 #### <a name="routes"></a>Trasy
 
-Kategoria routingu wiadomości do śledzenia błędów występujących podczas oceny trasy wiadomości i punktu końcowego kondycji postrzeganiu przez usługę IoT Hub. Ta kategoria zawiera zdarzenia, np. gdy reguła zwraca "undefined", gdy usługi IoT Hub oznacza punktu końcowego jako martwe i inne błędy otrzymane od punktu końcowego. Ta kategoria nie obejmuje określone błędy dotyczące komunikatów samodzielnie (na przykład urządzenie błędy ograniczania przepływności), które zostały zgłoszone w kategorii "danych telemetrycznych z urządzenia".
+Kategoria routingu wiadomości do śledzenia błędów występujących podczas oceny trasy wiadomości i punktu końcowego kondycji postrzeganiu przez usługę IoT Hub. Ta kategoria obejmuje zdarzenia, takie jak:
+
+* Reguła daje w wyniku "undefined"
+* Usługa IoT Hub oznacza punkt końcowy jako utraconego, lub
+* Błędy otrzymane od punktu końcowego. 
+
+Ta kategoria nie obejmuje określone błędy dotyczące komunikatów samodzielnie (na przykład urządzenie błędy ograniczania przepływności), które zostały zgłoszone w kategorii "danych telemetrycznych z urządzenia".
 
 ```json
 {
@@ -365,7 +375,7 @@ class Program 
 
 Użyj usługi Azure Resource Health, aby monitorować, czy Centrum IoT hub jest uruchomiona. Możesz także dowiedzieć się czy awaria regionalna ma wpływ na kondycję usługi IoT hub. Aby poznać szczegółowe informacje o stanie kondycji usługi Azure IoT Hub, zaleca się, że możesz [użycia usługi Azure Monitor](#use-azure-monitor). 
 
-Usługa Azure IoT Hub wskazuje kondycji na poziomie regionalnym. Jeśli istnieje awaria regionalna wywierania wpływu na usługi IoT hub, stan kondycji jest wyświetlany jako **nieznany**. Aby dowiedzieć się więcej na temat kontroli kondycji konkretnego, wykonywanych przez usługi Azure Resource Health, zobacz [typów zasobów i kontrole kondycji w usłudze Azure resource health][lnk-ARH-checks].
+Usługa Azure IoT Hub wskazuje kondycji na poziomie regionalnym. Jeśli awaria regionalna ma wpływ na usługi IoT hub, stan kondycji jest wyświetlany jako **nieznany**. Aby dowiedzieć się więcej, zobacz [typów zasobów i kontrole kondycji w usłudze Azure resource health][lnk-ARH-checks].
 
 Aby sprawdzić kondycję usługi IoT Hub, wykonaj następujące kroki:
 

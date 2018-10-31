@@ -7,24 +7,24 @@ ms.subservice: scenario
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: tmullaney
-ms.author: thmullan
+author: VanMSFT
+ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 94430d3b72bb5b8e8bde0e9e2e9fb2eb2b0c3632
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: d669e7beb2d0e41ff26408d4f71c3e1648c41e3a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056288"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242572"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Wielodostępne aplikacje za pomocą narzędzi elastycznych baz danych i zabezpieczenia na poziomie wiersza
 
 [Narzędzia elastycznych baz danych](sql-database-elastic-scale-get-started.md) i [zabezpieczenia (RLS)] [ rls] współpracują w celu włączenia skalowania warstwy danych aplikacji z wieloma dzierżawami przy użyciu usługi Azure SQL Database. Razem te technologie pomocne w tworzeniu aplikacji, która ma wysoce skalowalną warstwą danych. Warstwa danych obsługuje wielodostępne fragmenty i używa **ADO.NET SqlClient** lub **Entity Framework**. Aby uzyskać więcej informacji, zobacz [wzorce projektowe dla wielodostępnych aplikacji SaaS przy użyciu usługi Azure SQL Database](saas-tenancy-app-design-patterns.md).
 
 - **Narzędzia elastycznych baz danych** umożliwia deweloperom skalowanie w poziomie warstwy danych przy użyciu standardowych procedur fragmentowania, przy użyciu bibliotek programu .NET i szablonów usług platformy Azure. Zarządzanie fragmentami przy użyciu [Biblioteka kliencka Elastic Database] [ s-d-elastic-database-client-library] pomaga zautomatyzować i uprościć wiele zadań infrastrukturalnych, zwykle skojarzone z dzielenia na fragmenty.
-- **Zabezpieczenia** umożliwia deweloperom bezpieczne przechowywanie danych w wielu dzierżaw w tej samej bazy danych. Zasady zabezpieczeń na poziomie filtrowanie wierszy, które nie należą do dzierżawy, wykonywanie zapytania. Centralizowanie logikę filtrowania wewnątrz bazy danych upraszcza konserwację i zmniejsza ryzyko błędów zabezpieczeń. Alternatywne opierając się na cały kod klienta z zabezpieczeniami enfore jest ryzykowne.
+- **Zabezpieczenia** umożliwia deweloperom bezpieczne przechowywanie danych w wielu dzierżaw w tej samej bazy danych. Zasady zabezpieczeń na poziomie filtrowanie wierszy, które nie należą do dzierżawy, wykonywanie zapytania. Centralizowanie logikę filtrowania wewnątrz bazy danych upraszcza konserwację i zmniejsza ryzyko błędów zabezpieczeń. Alternatywne opierając się na cały kod klienta do wymuszania zabezpieczeń jest ryzykowne.
 
 Korzystając z tych funkcji razem, aplikacja może przechowywać dane dla wielu dzierżaw w tej samej bazy danych fragmentów. To kosztuje mniej na dzierżawę dzierżawcy udostępniania bazy danych. Jeszcze ta sama aplikacja także zaoferować jego dzierżaw premium możliwość płacenia za swoje własne dedykowane fragmentu pojedynczej dzierżawy. Jedną z zalet pojedynczej dzierżawy izolacji jest lepszych gwarancji wydajności. W bazie danych pojedynczej dzierżawy nie istnieje żadne inne dzierżawy, rywalizując o zasoby.
 
@@ -39,8 +39,8 @@ Celem jest użycie Biblioteka kliencka elastic database [routingu zależnego od 
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-- Używanie programu Visual Studio (2012 lub nowszym) 
-- Utwórz trzy bazy danych Azure SQL 
+- Używanie programu Visual Studio (2012 lub nowszym)
+- Utwórz trzy bazy danych Azure SQL
 - Pobierz przykładowy projekt: [narzędzia elastyczne bazy danych SQL Azure - fragmentów z wieloma dzierżawcami](http://go.microsoft.com/?linkid=9888163)
   - Wprowadź informacje dla baz danych na początku **Program.cs** 
 

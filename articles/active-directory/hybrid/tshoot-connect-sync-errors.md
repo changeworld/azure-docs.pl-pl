@@ -11,22 +11,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 10/29/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: cb2b4bdee445587b32516c8db869170ab067b8d3
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c94ecc223c4e2c0533c23e58823bb203064ceef6
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406861"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250476"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Rozwiązywanie problemów z błędami występującymi podczas synchronizacji
 Podczas synchronizowania danych tożsamości z usługi Windows Server Active Directory (AD DS) do usługi Azure Active Directory (Azure AD), mogą wystąpić błędy. Ten artykuł zawiera omówienie różnych typów błędów synchronizacji, niektóre z możliwych scenariuszy, które powodują tych błędów i potencjalne sposoby naprawienia błędy. W tym artykule zawiera z najczęściej popełnianymi typami błędów i może nie obejmować wszystkich możliwych błędów.
 
  W tym artykule założono, czytelnik jest zapoznać się z bazowego [projektowania pojęcia dotyczące usługi Azure AD i Azure AD Connect](plan-connect-design-concepts.md).
 
-Za pomocą najnowszej wersji programu Azure AD Connect \(sierpnia 2016 lub nowszego\), raport błędów synchronizacji jest dostępny w [witryny Azure Portal](https://aka.ms/aadconnecthealth) jako część usługi Azure AD Connect Health do celów synchronizacji.
+Za pomocą najnowszej wersji programu Azure AD Connect \(sierpnia 2016 lub nowszego\), raport błędów synchronizacji jest dostępny w [witryny Azure portal](https://aka.ms/aadconnecthealth) jako część usługi Azure AD Connect Health do celów synchronizacji.
 
 Od 1 września 2016 [usługi Azure Active Directory zduplikowany atrybut odporności](how-to-connect-syncservice-duplicate-attribute-resiliency.md) funkcja zostanie włączona domyślnie dla wszystkich *nowe* usługi Azure Active Directory dzierżaw. Ta funkcja zostanie automatycznie włączona w przypadku istniejących dzierżaw w ciągu najbliższych miesięcy.
 
@@ -219,6 +219,29 @@ Gdy atrybut przekroczy dozwolony limit rozmiaru, długości lub liczby ustawiony
 
 ### <a name="how-to-fix"></a>Jak naprawić
 1. Upewnij się, że atrybut powoduje błąd w ramach ograniczenia dozwolone.
+
+## <a name="existing-admin-role-conflict"></a>Istniejący konflikt roli administratora
+
+### <a name="description"></a>Opis
+**Istniejącego konfliktu roli administratora** ma miejsce w obiekcie użytkownika podczas synchronizacji, gdy ma ten obiekt użytkownika:
+
+- uprawnienia administracyjne i
+- tym samym UserPrincipalName jako istniejący obiekt usługi Azure AD
+
+Program Azure AD Connect nie może dopasowanie słabe obiektu użytkownika z lokalnej usługi AD za pomocą obiektu użytkownika w usłudze Azure AD, która ma przypisane do niego rola administracyjna.  Aby uzyskać więcej informacji, zobacz [populacji UserPrincipalName usługi Azure AD](plan-connect-userprincipalname.md)
+
+![Istniejącego administratora](media/tshoot-connect-sync-errors/existingadmin.png)
+
+
+### <a name="how-to-fix"></a>Jak naprawić
+Aby rozwiązać tego problemu, wykonaj, jedną z następujących czynności:
+
+
+- Zmień właściwości UserPrincipalName na wartość, która nie pasuje do użytkownika administratora w usłudze Azure AD — które spowoduje utworzenie nowego użytkownika w usłudze Azure AD za pomocą dopasowywania UserPrincipalName
+- Usuń rolę administracyjną użytkownika administratora w usłudze Azure AD, co umożliwi nietrwałego zgodność między obiektu użytkownika w środowisku lokalnym i do istniejącego obiektu użytkownika w usłudze Azure AD.
+
+>[!NOTE]
+>Można przypisać roli administracyjnej do istniejącego obiektu użytkownika ponownie po ukończeniu nietrwałego zgodność między obiektu użytkownika w środowisku lokalnym i obiektów użytkownika usługi Azure AD.
 
 ## <a name="related-links"></a>Powiązane linki
 * [Znajdź obiekty usługi Active Directory w Centrum administracyjne usługi Active Directory](https://technet.microsoft.com/library/dd560661.aspx)

@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: c125f503166e3f63599dbd09acf42c69fab8d2ce
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 7576c479b9e3e443b048a9295c0ff0f30d4b9423
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044658"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240328"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Do nauki o danych z systemem Linux maszyny wirtualnej analizy danych na platformie Azure
 W tym instruktażu przedstawiono sposób wykonywania kilku typowych zadań do nauki o danych z maszyna wirtualna do nauki o danych systemu Linux. Linux Data Science Virtual Machine (dsvm dystrybucji) jest obraz maszyny wirtualnej dostępne na platformie Azure, który jest wstępnie instalowane ze zbiorem narzędzi często używane do analizy danych i uczenia maszynowego. Składniki oprogramowania są wymienione w [Aprowizowanie maszyny wirtualnej do nauki o danych Linux](linux-dsvm-intro.md) tematu. Obraz maszyny Wirtualnej ułatwia rozpoczęcie pracy, nauki o danych w ciągu kilku minut, bez konieczności instalowania i konfigurowania poszczególnych narzędzi indywidualnie. Możesz łatwo skalować w górę maszyny Wirtualnej, w razie potrzeby i zatrzymaj ją, gdy użycie. Więc ten zasób jest elastyczne i ekonomiczne.
 
-Zadania do nauki o danych, które są przedstawione w tym przewodniku wykonaj czynności opisane w temacie [zespołu danych dla celów naukowych](https://azure.microsoft.com/documentation/learning-paths/data-science-process/). Ten proces obejmuje to systematyczne podejście do nauki o danych, który umożliwia zespołom naukowców skutecznie współpracować z cyklem tworzenia inteligentnych aplikacji. W procesie nauki o danych udostępnia także platforma iteracyjne do nauki o danych, który może występować przez osobę.
+Zadania do nauki o danych, które są przedstawione w tym przewodniku wykonaj czynności opisane w temacie [zespołu danych dla celów naukowych](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/overview). Ten proces obejmuje to systematyczne podejście do nauki o danych, który umożliwia zespołom naukowców skutecznie współpracować z cyklem tworzenia inteligentnych aplikacji. W procesie nauki o danych udostępnia także platforma iteracyjne do nauki o danych, który może występować przez osobę.
 
 Analizujemy [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) zestawu danych, w tym przewodniku. Jest to zestaw wiadomości e-mail, które są oznaczone jako wiadomości-śmieci lub które pichcisz (tzn. nie są one spam), a także statystykami dotyczącymi zawartość wiadomości e-mail. Statystyki uwzględnione są omówione w następnej, ale jedną sekcję.
 

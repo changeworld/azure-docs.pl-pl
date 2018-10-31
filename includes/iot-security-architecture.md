@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: bbdff5a9aa74ab08dc99c41f8ab847f901e18256
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: ac51dc8b7cbfa08ebca201c42c0c82356b7d5b6c
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226935"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50254620"
 ---
 # <a name="internet-of-things-security-architecture"></a>Architektura zabezpieczeń Internet of Things
 
@@ -21,7 +21,7 @@ Podczas projektowania systemu, ważne jest zrozumienie potencjalnych zagrożeń 
 
 ## <a name="security-starts-with-a-threat-model"></a>Zabezpieczenia zaczyna się od model zagrożeń
 
-Firma Microsoft długo została użyta modele zagrożeń dla swoich produktów i podejścia biznesowego uczyniło zagrożeń firmy modelowania publicaly proces jest dostępny. Środowisko firmy pokazuje, że modelowania ma nieoczekiwany korzyści po bezpośrednim znajomości jakie zagrożenia są najbardziej dotyczących. Na przykład tworzy również ścieżek Otwórz omówienie z innymi osobami spoza zespołu rozwoju, co może prowadzić do nowych pomysłów i ulepszenia produktu.
+Firma Microsoft długo została użyta modele zagrożeń dla swoich produktów i podejścia biznesowego uczyniło zagrożeń firmy publicznie dostępnych procesu modelowania. Środowisko firmy pokazuje, że modelowania ma nieoczekiwany korzyści po bezpośrednim znajomości jakie zagrożenia są najbardziej dotyczących. Na przykład tworzy również ścieżek Otwórz omówienie z innymi osobami spoza zespołu rozwoju, co może prowadzić do nowych pomysłów i ulepszenia produktu.
 
 Celem modelowanie zagrożeń jest zrozumienie, jak osoba atakująca może być w stanie naruszyć bezpieczeństwo systemu, a następnie upewnij się, że zostały spełnione odpowiednie środki zaradcze. Wymusza modelowania zagrożeń, zespół projektowy, należy wziąć pod uwagę czynniki identycznie systemu, a nie po system jest wdrażany. Ten fakt ma kluczowe znaczenie, ponieważ modernizacji zabezpieczeń mechanizmów obronnych w celu wiele urządzeń, w tym polu jest niewykonalne, występowania błędów i pozostawia klientów na ryzyko.
 

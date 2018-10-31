@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e78e7b5b4dba0bfea4f3398ca20b381a291fe44f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 410559ab03f0e0be71f2eba27ed71c9f7cf05862
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313306"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238543"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: Jak usunąć limit 10 GB dla lokalnej bazy danych
 Program Azure AD Connect wymaga bazy danych programu SQL Server do przechowywania danych tożsamości. Możesz korzystać z domyślnego programu SQL Server 2012 Express LocalDB zainstalowanego z programem Azure AD Connect lub użyć własnego pełnego programu SQL. Program SQL Server Express narzuca limit rozmiaru w wysokości 10 GB. Jeśli jest używany program LocalDB i limit zostanie osiągnięty, usługa synchronizacji programu Azure AD Connect nie będzie mogła uruchomić się ani prawidłowo wykonywać synchronizacji. Ten artykuł zawiera kroki odzyskiwania.
@@ -71,7 +71,7 @@ Nazwa bazy danych utworzone dla programu Azure AD Connect jest **ADSync**. Aby w
 
 3. Przejdź do folderu `%ProgramFiles%\Microsoft SQL Server\110\Tools\Binn`.
 
-4. Rozpocznij **sqlcmd** narzędzie, uruchamiając polecenie `./SQLCMD.EXE -S “(localdb)\.\ADSync” -U <Username> -P <Password>`, przy użyciu poświadczeń administratora systemu lub bazy danych DBO.
+4. Rozpocznij **sqlcmd** narzędzie, uruchamiając polecenie `./SQLCMD.EXE -S "(localdb)\.\ADSync" -U <Username> -P <Password>`, przy użyciu poświadczeń administratora systemu lub bazy danych DBO.
 
 5. Aby zmniejszyć bazy danych, w tym celu w wierszu sqlcmd (1 >), wprowadź `DBCC Shrinkdatabase(ADSync,1);`, a następnie `GO` w następnym wierszu.
 

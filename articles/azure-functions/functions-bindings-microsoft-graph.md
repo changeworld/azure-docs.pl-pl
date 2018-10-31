@@ -2,19 +2,19 @@
 title: Powiązania programu Microsoft Graph dla usługi Azure Functions
 description: Dowiedz się, jak używać programu Microsoft Graph wyzwalaczy i powiązań w usłudze Azure Functions.
 services: functions
-author: mattchenderson
+author: craigshoemaker
 manager: jeconnoc
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
-ms.author: mahender
-ms.openlocfilehash: 04786ce69b880abcd5508b9653d9ff30efcc187c
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.author: cshoe
+ms.openlocfilehash: fa429553caf874dd634944a5fca6cd9283194bb4
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087223"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50251111"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Powiązania programu Microsoft Graph dla usługi Azure Functions
 
@@ -523,7 +523,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 To powiązanie wymaga następujących uprawnień usługi Azure AD:
 |Zasób|Uprawnienie|
 |--------|--------|
-|Microsoft Graph|Masz pełny dostęp do plików użytkownika|
+|Microsoft Graph|Miej pełny dostęp do plików użytkownika|
 
 Powiązanie uwidacznia następujące typy funkcji platformy .NET:
 - [String []]
@@ -812,7 +812,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 To powiązanie wymaga następujących uprawnień usługi Azure AD:
 |Zasób|Uprawnienie|
 |--------|--------|
-|Microsoft Graph|Masz pełny dostęp do plików użytkownika|
+|Microsoft Graph|Miej pełny dostęp do plików użytkownika|
 
 Powiązanie uwidacznia następujące typy funkcji platformy .NET:
 - byte[]

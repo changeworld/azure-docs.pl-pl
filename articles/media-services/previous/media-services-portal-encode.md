@@ -1,10 +1,10 @@
 ---
-title: Kodowanie elementu zawartości przy użyciu standardu Media Encoder Standard w portalu Azure | Dokumentacja firmy Microsoft
-description: Ten samouczek przedstawia kroki kodowania zawartości przy użyciu standardu Media Encoder Standard w portalu Azure.
+title: Kodowanie elementu zawartości za pomocą usługi Media Encoder Standard w witrynie Azure portal | Dokumentacja firmy Microsoft
+description: Ten samouczek przeprowadzi Cię przez kroki kodowania zasobów za pomocą usługi Media Encoder Standard w witrynie Azure portal.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 107d9e9a-71e9-43e5-b17c-6e00983aceab
 ms.service: media-services
@@ -12,33 +12,33 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 470eb8613416f441c1becee628acf3c898591c84
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 958c53108c024cb349922a1bd10b2cdc2dba41a3
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790223"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247286"
 ---
-# <a name="encode-an-asset-by-using-media-encoder-standard-in-the-azure-portal"></a>Kodowanie elementu zawartości przy użyciu standardu Media Encoder Standard w portalu Azure
+# <a name="encode-an-asset-by-using-media-encoder-standard-in-the-azure-portal"></a>Kodowanie elementu zawartości za pomocą usługi Media Encoder Standard w witrynie Azure portal
 
 > [!NOTE]
 > Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [Bezpłatna wersja próbna systemu Azure](https://azure.microsoft.com/pricing/free-trial/). 
 > 
 > 
 
-Jednym z najbardziej typowych scenariuszy w pracy z usługą Azure Media Services jest dostarczanie klientom usługi przesyłania strumieniowego adaptacyjną szybkością transmisji bitów. Usługa Media Services obsługuje następujące technologie przesyłania strumieniowego adaptacyjnej szybkości bitowej: Apple HTTP Live Streaming (HLS), Smooth Streaming firmy Microsoft i dynamicznych adaptacyjne przesyłanie strumieniowe za pośrednictwem protokołu HTTP (kreska, nazywany również MPEG-DASH). Aby przygotować pliki wideo do przesyłania strumieniowego o adaptacyjnej szybkości bitowej, najpierw zakodować źródłowy plik wideo jako pliki wielokrotnej szybkości transmisji bitów. Azure Media Encoder Standard umożliwia kodowania plików wideo.  
+Jednym z najbardziej typowych scenariuszy, w pracy z usługą Azure Media Services jest dostarczanie adaptacyjną szybkością transmisji bitów klientom usługi przesyłania strumieniowego. Usługa Media Services obsługuje następujące technologie przesyłania strumieniowego adaptacyjną szybkością transmisji bitów: Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming i Dynamic Adaptive Streaming over HTTP (DASH, nazywany także MPEG-DASH). Do przesyłania strumieniowego z adaptacyjną szybkością transmisji bitów, należy przygotować pliki wideo, najpierw należy zakodować źródłowy plik wideo jako pliki o różnych szybkościach transmisji bitów. Usługi Azure Media Encoder Standard umożliwia kodowanie filmów wideo.  
 
-Usługa Media Services udostępnia funkcję dynamicznego tworzenia pakietów. Dzięki funkcji dynamicznego tworzenia pakietów, można dostarczać MP4s Twojego wielokrotnej szybkości transmisji bitów w HLS, Smooth Streaming, MPEG-DASH, bez ponowne utworzenie pakietu w tych formatach. Korzystając z dynamicznego tworzenia pakietów, można przechowywać i opłacać pliki w formacie jednego magazynu. Usługa Media Services kompilacje i służy właściwą odpowiedź na podstawie żądania klienta.
+Usługa Media Services udostępnia funkcję dynamicznego tworzenia pakietów. Za pomocą funkcji dynamicznego tworzenia pakietów można dostarczać usługi każdego pliku MP4 o różnych szybkościach transmisji bitów w HLS, Smooth Streaming i MPEG-DASH, bez ponownego pakowania w tych formatach. Korzystając z funkcji dynamicznego tworzenia pakietów, można przechowywać i opłacać pliki w formacie jednego magazynu. Usługa Media Services skompiluje oraz udostępni właściwą odpowiedź na podstawie żądania klienta.
 
 Aby skorzystać z dynamicznego tworzenia pakietów, musisz zakodować swoje pliki źródłowe jako zestaw plików MP4 o różnych szybkościach transmisji bitów. Kroki kodowania przedstawiono w dalszej części tego artykułu.
 
-Informacje na temat skalowania przetwarzania nośnika, zobacz [skalowanie przetwarzania przy użyciu portalu Azure media](media-services-portal-scale-media-processing.md).
+Aby dowiedzieć się, jak skalowanie przetwarzania multimediów, zobacz [skalowanie przetwarzania za pomocą witryny Azure portal multimediów](media-services-portal-scale-media-processing.md).
 
-## <a name="encode-in-the-azure-portal"></a>Kodowanie w portalu Azure
+## <a name="encode-in-the-azure-portal"></a>Kodowanie w witrynie Azure portal
 
-W celu zakodowania zawartości przy użyciu standardu Media Encoder Standard:
+Aby zakodować zawartość przy użyciu standardowego kodera multimediów:
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) wybierz swoje konto usługi Azure Media Services.
 2. Wybierz kolejno pozycje **Ustawienia** > **Elementy zawartości**. Wybierz element zawartości, który chcesz zakodować.
@@ -57,5 +57,5 @@ W celu zakodowania zawartości przy użyciu standardu Media Encoder Standard:
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Monitorować postęp zadania kodowania](media-services-portal-check-job-progress.md) w portalu Azure.  
+* [Monitoruj postęp zadania kodowania](media-services-portal-check-job-progress.md) w witrynie Azure portal.  
 

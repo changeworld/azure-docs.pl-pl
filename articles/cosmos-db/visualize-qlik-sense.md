@@ -7,19 +7,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: sngun
-ms.openlocfilehash: e804ddec5f7aebf58352e87e483bf2bdeca0fce0
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 3bae365b879019862dd76ac8a857d4ded2b6c4bb
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49989205"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241032"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Usługa Qlik Sense nawiązać połączenie z usługi Azure Cosmos DB i wizualizuj dane bazy danych
 
 Usługa Qlik Sense jest narzędzie do wizualizacji danych, które łączy dane z różnych źródeł w jednym widoku. Usługa Qlik Sense indeksuje co możliwych relacji w danych, dzięki czemu możesz uzyskać natychmiastowy wgląd w dane. Możesz wizualizować dane usługi Azure Cosmos DB przy użyciu usługa Qlik Sense. W tym artykule opisano kroki wymagane do nawiązywania połączenia usługi Azure Cosmos DB, aby usługa Qlik Sense i wizualizuj dane bazy danych. 
 
 > [!NOTE]
-> Łączenie usługi Azure Cosmos DB, aby usługa Qlik Sense jest obecnie obsługiwane interfejsu API SQL usługi Azure Cosmos DB tylko dla kont.
+> Usługa Qlik Sense nawiązywania połączenia z usługi Azure Cosmos DB jest obecnie obsługiwane dla tylko konta interfejsu API SQL usługi Azure Cosmos DB i interfejsu API usługi MongoDB.
 
 Możesz połączyć usługa Qlik Sense do usługi Azure Cosmos DB przy użyciu:
 

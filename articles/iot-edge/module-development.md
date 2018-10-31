@@ -1,6 +1,6 @@
 ---
-title: Opracowanie modułów Azure IoT Edge | Dokumentacja firmy Microsoft
-description: Informacje o sposobie tworzenia niestandardowych modułów Edge IoT Azure
+title: Tworzenie modułów dla usługi Azure IoT Edge | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć niestandardowe moduły dla usługi Azure IoT Edge
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -8,78 +8,71 @@ ms.date: 10/05/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: dbbd07e93602855afb0c9755e8872e0b46557611
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 761485de4bf52b7261ac8f1f8c3d937486c66546
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030023"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248004"
 ---
-# <a name="understand-the-requirements-and-tools-for-developing-iot-edge-modules"></a>Zrozumieć wymagania i narzędzi do tworzenia modułów krawędzi IoT
+# <a name="understand-the-requirements-and-tools-for-developing-iot-edge-modules"></a>Zrozumienie wymagań i narzędzia do tworzenia modułów usługi IoT Edge
 
-W tym artykule opisano, jakie funkcje są dostępne podczas pisania aplikacji działających jako moduł krawędzi IoT i jak korzystać z nich.
+W tym artykule opisano, jakie funkcje są dostępne podczas pisania aplikacji, które są uruchamiane jako moduł usługi IoT Edge i jak z nich skorzystać.
 
-## <a name="iot-edge-runtime-environment"></a>Środowisko uruchomieniowe krawędzi IoT
-Środowiska uruchomieniowego krawędzi IoT zapewnia infrastrukturę do integracji funkcji wiele modułów krawędzi IoT i można je wdrożyć na urządzenia brzegowe IoT. Na wysokim poziomie wszystkie programy można spakować jako moduł IoT krawędzi. Jednak do w pełni korzystać krawędzi IoT, komunikację i funkcje zarządzania, program działający w module można nawiązać połączenia lokalnego Centrum IoT krawędzi, zintegrowane w środowisku wykonawczym IoT krawędzi.
+## <a name="iot-edge-runtime-environment"></a>Środowisko uruchomieniowe usługi IoT Edge
+Środowisko uruchomieniowe usługi IoT Edge zapewnia infrastrukturę do integracji funkcji wiele modułów usługi IoT Edge i wdrażania ich na urządzeniach usługi IoT Edge. Na wysokim poziomie można spakować każdy program jako moduł usługi IoT Edge. Jednak do wykorzystania zalet usługi IoT Edge, komunikacji i funkcje zarządzania, program działający w module można łączyć się z lokalnym Centrum IoT Edge, zintegrowane w środowisku uruchomieniowym usługi IoT Edge.
 
-## <a name="using-the-iot-edge-hub"></a>Przy użyciu Centrum IoT krawędzi
-Centrum IoT krawędzi udostępnia dwie główne funkcje: serwer proxy Centrum IoT i lokalnej komunikacji.
+## <a name="using-the-iot-edge-hub"></a>Przy użyciu Centrum usługi IoT Edge
+Centrum usługi IoT Edge udostępnia dwie główne funkcje: serwer proxy do Centrum IoT i łączności lokalnej.
 
-### <a name="iot-hub-primitives"></a>Elementy podstawowe Centrum IoT
-Widzi Centrum IoT w module wystąpienia analogously na urządzeniu, w tym sensie, że:
+### <a name="iot-hub-primitives"></a>Elementy podstawowe usługi IoT Hub
+IoT Hub widzi moduł wystąpienia analogicznie do urządzenia, w tym sensie, że:
 
-* ma dwie moduł, który jest odrębny i odizolowane od [dwie urządzenia] [ lnk-devicetwin] i innych twins modułu tych urządzeń;
-* może wysłać [wiadomości urządzenia do chmury][lnk-iothub-messaging];
-* możliwość odbierania [bezpośrednie metody] [ lnk-methods] skierowane w szczególności jego tożsamość.
+* ma ona bliźniaczą reprezentację modułu, który jest odrębna i odizolowane od [bliźniaczej reprezentacji urządzenia](../iot-hub/iot-hub-devguide-device-twins.md) i innych bliźniaczych reprezentacjach modułów tych urządzeń;
+* może wysłać [komunikatów z urządzenia do chmury](../iot-hub/iot-hub-devguide-messaging.md);
+* może ona odbierać [metody bezpośrednie](../iot-hub/iot-hub-devguide-direct-methods.md) przeznaczone specjalnie dla swojej tożsamości.
 
-Obecnie modułu nie może odbierać komunikaty z chmury do urządzenia ani używać funkcji przekazywania plików.
+Obecnie modułu nie może odbierać komunikaty z chmury do urządzenia korzystają z funkcji przekazywania plików.
 
-Podczas zapisywania moduł, możesz użyć [SDK urządzenia IoT Azure] [ lnk-devicesdk] do nawiązywania połączeń z Centrum IoT krawędzi i korzystać z funkcji powyżej, jak w przypadku, gdy przy użyciu Centrum IoT z aplikacją urządzenia tylko Różnica między nimi polega, z poziomu aplikacji zaplecza, trzeba odwoływać się do tożsamości modułu zamiast tożsamości tego urządzenia.
+Podczas zapisywania modułu, można po prostu użyć [zestawu SDK urządzenia IoT Azure](../iot-hub/iot-hub-devguide-sdks.md) połączyć się z Centrum IoT Edge i korzystać z funkcji powyżej, tak jak w przypadku za pomocą usługi IoT Hub za pomocą aplikacji urządzenia, jedyną różnicą, że pochodzącej z usługi zaplecze aplikacji, należy odwołać się do odpowiedniej tożsamości modułu, a nie tożsamości urządzenia.
 
-Zobacz [opracowanie i wdrożyć moduł krawędzi IoT symulowane urządzenie] [ lnk-tutorial2] przykład aplikacji modułu, która wysyła komunikaty urządzenia do chmury, a używa dwie modułu.
+Zobacz [tworzenie i wdrażanie moduł usługi IoT Edge na symulowanym urządzeniu](tutorial-csharp-module.md) na przykład aplikacja modułu, która wysyła komunikaty z urządzenia do chmury i korzysta z bliźniaczej reprezentacji modułu.
 
 ### <a name="device-to-cloud-messages"></a>Komunikaty z urządzenia do chmury
-Aby włączyć złożonych, przetwarzanie wiadomości urządzenia do chmury Centrum IoT krawędzi zapewnia deklaratywne routing wiadomości między modułami i między modułami i Centrum IoT.
-Dzięki temu moduł do przechwycenia i przetwarzania komunikatów wysłanych przez inne moduły i propagować je do złożonych potoków.
-Artykuł [budowy modułu] [ lnk-module-comp] opisano sposób tworzenia modułów do złożonych potoki za pomocą trasy.
+Aby włączyć złożone przetwarzanie komunikatów przesyłanych z chmury do urządzenia usługi IoT Edge hub udostępnia deklaratywny routing komunikatów między modułami, a także między modułami i IoT Hub.
+Dzięki temu modułów, aby przechwycić i przetwarzanie komunikatów wysyłanych przez inne moduły i propagowania ich potoki złożone.
+Artykuł [budowy modułu](module-composition.md) wyjaśnia sposób tworzenia modułów potoki złożonych przy użyciu trasy.
 
-Inaczej niż normalne aplikacji urządzenia IoT Hub moduł krawędzi IoT mogą odbierać wiadomości urządzenia do chmury, które są przekazywane przez serwer proxy przez jego lokalnego Centrum IoT krawędzi, w celu ich przetworzenia.
+Moduł usługi IoT Edge, inaczej niż normalna aplikacja urządzenia usługi IoT Hub może odbierać komunikaty z urządzenia do chmury, których tworzone są przekazywane przez jego lokalne centrum IoT Edge, aby można było je przetworzyć.
 
-Centrum IoT krawędzi propaguje wiadomości do modułu oparte na trasach deklaratywne opisanego w [budowy modułu] [ lnk-module-comp] artykułu. Podczas tworzenia modułu IoT krawędzi, można otrzymywać te wiadomości przez ustawienie programy obsługi wiadomości, opisane w samouczku [programowanie i wdrażanie modułu krawędzi IoT symulowane urządzenie][lnk-tutorial2].
+Centrum usługi IoT Edge propaguje komunikaty do modułu oparte na trasach deklaratywne opisanego w [budowy modułu](module-composition.md) artykułu. Podczas tworzenia modułu usługi IoT Edge, może pojawiają się następujące komunikaty, ustawiając programy obsługi komunikatów, jak pokazano w tym samouczku [tworzenie i wdrażanie moduł usługi IoT Edge na symulowanym urządzeniu] [lnk-tutorial2].
 
-W celu uproszczenia procesu tworzenia tras, krawędzi IoT dodaje pojęcie modułu *wejściowych* i *dane wyjściowe* punktów końcowych. Moduł może odbierać wszystkie wiadomości urządzenia do chmury kierowane do niej bez określania żadnych danych i może wysyłać komunikaty urządzenia do chmury bez określania żadnych danych wyjściowych.
-Za pomocą jawnego wejściach i wyjściach, jednak sprawia, że reguły routingu łatwiejsze do zrozumienia. Zobacz [budowy modułu] [ lnk-module-comp] Aby uzyskać więcej informacji na temat reguł routingu i wejściowymi i wyjściowymi punktów końcowych dla modułów.
+Aby uprościć tworzenie tras, IoT Edge dodaje koncepcji modułu *wejściowych* i *dane wyjściowe* punktów końcowych. Moduł może odbierać wszystkie komunikaty urządzenie chmura kierowane do niego bez określania żadnych danych i może wysyłać komunikaty z urządzenia do chmury bez określania żadnych danych wyjściowych.
+Za pomocą jawnego wejściami i wyjściami, jednak sprawia, że reguły routingu łatwiejsze do zrozumienia. Zobacz [budowy modułu](module-composition.md) Aby uzyskać więcej informacji na temat reguł routingu i wejściowych i wyjściowych punktów końcowych dla modułów.
 
-Ponadto urządzenia do chmury komunikaty obsługiwane przez Centrum krawędzi oznaczony są następujące właściwości systemu:
+Na koniec komunikatów przesyłanych z chmury do urządzenia obsługiwane przez Centrum usługi Edge są oznaczone zgodnie z poniższymi właściwościami systemu:
 
 | Właściwość | Opis |
 | -------- | ----------- |
-| $connectionDeviceId | Identyfikator urządzenia klienta, który wysłał wiadomość |
+| $connectionDeviceId | Identyfikator urządzenia klienta, która wysłała komunikat |
 | $connectionModuleId | Identyfikator modułu modułu, który wysłał wiadomość |
-| $inputName | Dane wejściowe ten komunikat. Może być pusta. |
-| $outputName | Dane wyjściowe używane do wysyłania wiadomości. Może być pusta. |
+| $inputName | Dane wejściowe, który otrzymał ten komunikat. Może być pusta. |
+| $outputName | Dane wyjściowe, używane do wysyłania wiadomości. Może być pusta. |
 
-### <a name="connecting-to-iot-edge-hub-from-a-module"></a>Łączenie z Centrum IoT krawędzi z modułu
-Łączenie z lokalnym Centrum IoT krawędzi z modułu wymaga wykonania dwóch kroków: Użyj parametrów połączenia, pod warunkiem przez środowisko uruchomieniowe krawędzi IoT podczas uruchamiania modułu i upewnij się, że aplikacja akceptuje certyfikat przedstawiony przez Centrum IoT Edge na tym urządzeniu.
+### <a name="connecting-to-iot-edge-hub-from-a-module"></a>Łączenie Centrum IoT Edge z modułu
+Łączenie z lokalnym Centrum IoT Edge z modułu obejmuje dwa kroki: Użyj parametrów połączenia, dostarczone przez środowisko uruchomieniowe usługi IoT Edge podczas uruchamiania modułu i upewnij się, że Twoja aplikacja akceptuje certyfikat przedstawiony przez Centrum usługi IoT Edge na tym urządzeniu.
 
-Ciąg połączenia używany jest wstrzyknięte przez środowisko uruchomieniowe IoT krawędzi w zmiennej środowiskowej `EdgeHubConnectionString`. Dzięki temu dostępne dla dowolnego programu, który chce go używać.
+Ciąg połączenia używany jest wprowadzony przez środowisko uruchomieniowe usługi IoT Edge w zmiennej środowiskowej `EdgeHubConnectionString`. Dzięki temu dostępne dla dowolnego programu, który chce używać go.
 
-Analogously, certyfikat służący do weryfikowania połączeń Centrum IoT krawędzi jest wstrzyknięte przez środowisko uruchomieniowe IoT krawędzi w pliku, w których ścieżka jest dostępna w zmiennej środowiskowej `EdgeModuleCACertificateFile`.
+Analogicznie, certyfikat służący do weryfikowania połączenia Centrum IoT Edge jest wprowadzony przez środowisko uruchomieniowe usługi IoT Edge w pliku, w których ścieżka jest dostępna w zmiennej środowiskowej `EdgeModuleCACertificateFile`.
 
-Samouczek [opracowanie i wdrożyć moduł krawędzi IoT symulowane urządzenie] [ lnk-tutorial2] pokazano, jak i upewnij się, że certyfikat znajduje się w magazynie komputera w aplikacji modułu. Wyraźnie widać innych metod, aby zaufać połączeń przy użyciu tego certyfikatu.
+Samouczek [tworzenie i wdrażanie moduł usługi IoT Edge na symulowanym urządzeniu] [lnk-tutorial2] Pokazuje, jak upewnić się, że certyfikat znajduje się w magazynie maszyny w aplikacji modułu. Wyraźnie widać każda inna metoda ufać połączeń przy użyciu tego certyfikatu.
 
-## <a name="packaging-as-an-image"></a>OPAKOWYWANIE jako obrazu
-Krawędź IoT moduły są dostarczane jako obrazy usługi Docker.
-Jak pokazano w samouczku można użyć bezpośrednio łańcuch narzędzi platformy Docker lub Visual Studio Code [opracowanie i wdrożyć moduł krawędzi IoT symulowane urządzenie][lnk-tutorial2].
+## <a name="packaging-as-an-image"></a>Tworzenie pakietów w formie obrazu
+Moduły usługi IoT Edge są spakowane w postaci obrazów platformy Docker.
+Jak pokazano w tym samouczku można użyć bezpośrednio łańcuch narzędzi platformy Docker lub Visual Studio Code [tworzenie i wdrażanie moduł usługi IoT Edge na symulowanym urządzeniu] [lnk-tutorial2].
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Po opracowywanie modułu, Dowiedz się jak [wdrażanie i monitorowanie krawędzi IoT modułów na dużą skalę][lnk-howto-deploy].
+Dowiedz się, po tworzenia modułu jak [wdrażanie i monitorowanie moduły usługi IoT Edge na dużą skalę](how-to-deploy-monitor.md).
 
-[lnk-devicesdk]: ../iot-hub/iot-hub-devguide-sdks.md
-[lnk-devicetwin]: ../iot-hub/iot-hub-devguide-device-twins.md
-[lnk-iothub-messaging]: ../iot-hub/iot-hub-devguide-messaging.md
-[lnk-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
-[lnk-tutorial2]: tutorial-csharp-module.md
-[lnk-module-comp]: module-composition.md
-[lnk-howto-deploy]: how-to-deploy-monitor.md

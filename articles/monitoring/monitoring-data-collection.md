@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: 8d3e0874637bc3f13905c6038349b34c18b5fe56
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: a810de5c3c70322560bb45bcc2aee5cf0798cea9
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637801"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248714"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Dane monitorowania zbierane przez usługi Azure Monitor
 [Usługa Azure Monitor](../azure-monitor/overview.md) jest to usługa, która pomaga monitorować Twoje aplikacje i zasoby korzystają z. Decydujące znaczenie dla tej funkcji jest przechowywanie danych telemetrycznych i innych danych z monitorowanych zasobów. Ten artykuł zawiera pełny opis jak te dane są przechowywane i używane przez usługi Azure Monitor.
 
 Wszystkie dane zebrane przez usługi Azure Monitor pasuje do jednej z dwóch typów podstawowych, [metryki](#metrics) i [dzienniki](#logs). Metryki są wartości liczbowe, które opisują niektóre aspekty systemu w określonym punkcie w czasie. Są one uproszczone i zdolność do obsługi scenariuszy w czasie rzeczywistym w pobliżu. Dzienniki zawierają różne rodzaje danych zorganizowanych w rekordy z różnymi zestawami właściwości dla każdego typu. Dane telemetryczne, np. zdarzeniami i śladami są przechowywane jako dzienniki dodatkowo na dane wydajności, aby wszystkie można zbudować do analizy.
 
-![Omówienie usługi Azure Monitor](../azure-monitor/media/overview/overview.png)
+![Omówienie usługi Azure Monitor](media/monitoring-data-collection/overview.png)
 
 ## <a name="metrics"></a>Metryki
 Metryki są wartości liczbowe, które opisują niektóre aspekty systemu w określonym czasie. Są one uproszczone i zdolność do obsługi scenariuszy w czasie rzeczywistym w pobliżu. Metryki są zbierane w regularnych odstępach czasu, czy po zmianie wartości. Są one przydatne w przypadku alertów, ponieważ może być próbkowany często i alertu można szybko wywoływane z logiką stosunkowo proste. 
@@ -51,7 +51,7 @@ W poniższym przykładzie przedstawiono dwa zestawy danych dla hipotetycznego me
 
 ### <a name="network-throughput"></a>Przepływność sieci
 
- |Sygnatura czasowa        | Wartość metryki | 
+ |Znacznik czasu        | Wartość metryki | 
    | ------------- |:-------------| 
    | 8/9/2017 8:14 | 1,331.8 Kb/s | 
    | 8/9/2017 8:15 | 1,141.4 Kb/s |
@@ -61,7 +61,7 @@ Ta metryka-wymiarowej można tylko odpowiedzi na podstawowe pytania, takie jak "
 
 ### <a name="network-throughput--two-dimensions-ip-and-direction"></a>Przepływność sieci i dwa wymiary ("Adres IP" i "Direction")
 
-| Sygnatura czasowa          | Wymiar "Adres IP" | Wymiar "Direction" | Wartość metryki| 
+| Znacznik czasu          | Wymiar "Adres IP" | Wymiar "Direction" | Wartość metryki| 
    | ------------- |:-----------------|:------------------- |:-----------|  
    | 8/9/2017 8:14 | IP = "192.168.5.2" | Kierunek = "Wyślij"    | 646.5 kb/s |
    | 8/9/2017 8:14 | IP = "192.168.5.2" | Kierunek = "Otrzymywać" | 420.1 KB/s |

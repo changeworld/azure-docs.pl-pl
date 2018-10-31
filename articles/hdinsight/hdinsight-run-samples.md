@@ -9,22 +9,22 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 59e6fd0a05374329efb20201c8d904cbbdc72b1a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 84c28eebc2bcf1bfdfcb0995f1caa05ed19629e2
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43111003"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250839"
 ---
 # <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Uruchamianie przykładów technologii MapReduce usługi Hadoop w HDInsight z systemem Windows
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
-Aby ułatwić wprowadzenie uruchomionych zadań MapReduce w klastrach usługi Hadoop przy użyciu usługi Azure HDInsight znajdują się uzyskać zestaw przykładów. Te przykłady są udostępniane na każdym z klastrów HDInsight zarządzane, które tworzysz. Uruchamianie tych przykładów zapoznanie się z przy użyciu poleceń cmdlet programu Azure PowerShell do uruchamiania zadań w klastrach usługi Hadoop.
+Aby ułatwić wprowadzenie uruchomionych zadań MapReduce w klastrach usługi Hadoop przy użyciu usługi Azure HDInsight jest dostępny zestaw przykładów. Te przykłady są udostępniane na każdym z klastrów HDInsight zarządzane, które tworzysz. Uruchamianie tych przykładów zapoznanie się z przy użyciu poleceń cmdlet programu Azure PowerShell do uruchamiania zadań w klastrach usługi Hadoop.
 
 * [**Liczby słów**][hdinsight-sample-wordcount]: zlicza wystąpienia wyrazów w pliku tekstowym.
 * [**C# przesyłania strumieniowego wyrazów**][hdinsight-sample-csharp-streaming]: zlicza wystąpienia wyrazów w pliku tekstowym za pomocą interfejsu przesyłania strumieniowego usługi Hadoop.
 * [**Estymatora liczby pi**][hdinsight-sample-pi-estimator]: używa statystycznego (quasi Monte Carlo) metodę, aby oszacować wartość liczby pi.
-* [**10 GB Graysort**][hdinsight-sample-10gb-graysort]: Uruchom GraySort ogólnego przeznaczenia w pliku 10 GB, przy użyciu HDInsight. Istnieją trzy zadania do uruchomienia: Teragen do generowania danych Terasort, aby posortować dane, a Teravalidate, aby upewnić się, czy dane zostały prawidłowo posortowane.
+* [**10 GB Graysort**][hdinsight-sample-10gb-graysort]: Uruchom GraySort ogólnego przeznaczenia w pliku o rozmiarze 10 GB, przy użyciu HDInsight. Istnieją trzy zadania do uruchomienia: Teragen do generowania danych Terasort, aby posortować dane, a Teravalidate, aby upewnić się, czy dane zostały prawidłowo posortowane.
 
 > [!NOTE]
 > Kod źródłowy można znaleźć w dodatku.
@@ -167,7 +167,7 @@ Skryptu podane w tym przykładzie przesyła plik jar zadania usługi Hadoop i je
     ```
 
 ## <a name="hdinsight-sample-10gb-graysort"></a>Graysort 10 GB
-Ta próbka używa skromną 10GB danych, dzięki czemu mogą być uruchamiane względnie szybko. Używa ona aplikacje MapReduce, opracowane przez Owen O'Malley oraz organizacji i Arun Murthy, który wygrał roczne porównawczych sortowania terabajt ogólnego przeznaczenia ("daytona") w 2009 wysokości 0.578 TB na minutę (100 TB w ciągu minut 173). Aby uzyskać więcej informacji na ten temat i inne wzorce sortowania, zobacz [Sortbenchmark](http://sortbenchmark.org/) lokacji.
+Ta próbka używa skromną 10 GB danych, dzięki czemu mogą być uruchamiane względnie szybko. Używa ona aplikacje MapReduce, opracowane przez Owen O'Malley oraz organizacji i Arun Murthy, który wygrał roczne porównawczych sortowania terabajt ogólnego przeznaczenia ("daytona") w 2009 wysokości 0.578 TB na minutę (100 TB w ciągu minut 173). Aby uzyskać więcej informacji na ten temat i inne wzorce sortowania, zobacz [Sortbenchmark](http://sortbenchmark.org/) lokacji.
 
 W tym przykładzie użyto trzy rodzaje programów MapReduce:
 
@@ -211,7 +211,6 @@ W tym artykule i artykuły we wszystkich przykładach przedstawiono sposób uruc
 * [Korzystanie z języka Pig z platformą Hadoop w HDInsight][hdinsight-use-pig]
 * [Korzystanie z programu Hive z usługą Hadoop w HDInsight][hdinsight-use-hive]
 * [Przesyłanie zadań Hadoop w HDInsight][hdinsight-submit-jobs]
-* [Dokumentacja usługi Azure HDInsight SDK][hdinsight-sdk-documentation]
 
 ## <a name="appendix-a---the-word-count-source-code"></a>Dodatek A — kod źródłowy liczba programu Word
 
@@ -977,8 +976,6 @@ public class TeraSort extends Configured implements Tool {
     }
 }
 ```
-
-[hdinsight-sdk-documentation]: https://msdn.microsoft.com/library/azure/dn479185.aspx
 
 [hdinsight-submit-jobs]: hadoop/submit-apache-hadoop-jobs-programmatically.md
 [hdinsight-introduction]:hadoop/apache-hadoop-introduction.md

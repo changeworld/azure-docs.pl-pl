@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/20/2018
+ms.date: 10/30/2018
 ms.author: alkohli
-ms.openlocfilehash: 5da67b5141eb61823d3e376b6f0e6b0b3895ca68
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 5166e154e1a67cea777933b6bf8757661a9c3ad5
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498287"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242963"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Opcje migracji danych z usługi StorSimple serii 5000 – 7000 
 
@@ -29,15 +29,21 @@ Usługa StorSimple serii 5000 – 7000 zbliża się do [wsparcie](https://suppor
 
 ## <a name="migration-options"></a>Opcje migracji
 
-Klientów przy użyciu usługi StorSimple serii 5000 – 7000 ma dwie główne opcje:
+Korzystający z serii StorSimple 5000 – 7000 są następujące opcje:
 
-- **Uaktualnianie do programu StorSimple 8000 Series** — uaktualnienie do magazynu StorSimple serii 8000 i kontynuować na platformie usługi StorSimple.  Tej ścieżki uaktualniania wymaga od klientów w celu zastąpienia ich urządzeń serii 5000 – 7000 z serii 8000. Z urządzeń serii 5000 – 7000 są migrowane dane przy użyciu narzędzia do migracji. Po pomyślnym zakończeniu migracji, urządzeń z serii StorSimple 8000 będzie warstwy danych w usłudze Azure Blob Storage. 
+- **Opcje Azure**:
+
+    - **Uaktualnianie do programu StorSimple 8000 Series** — uaktualnienie do magazynu StorSimple serii 8000 i kontynuować na platformie usługi StorSimple.  Tej ścieżki uaktualniania wymaga od klientów w celu zastąpienia ich urządzeń serii 5000 – 7000 z serii 8000. Z urządzeń serii 5000 – 7000 są migrowane dane przy użyciu narzędzia do migracji. Po pomyślnym zakończeniu migracji, urządzeń z serii StorSimple 8000 będzie warstwy danych w usłudze Azure Blob Storage. 
 
     Aby uzyskać więcej informacji na temat migrowania danych przy użyciu serii StorSimple 8000, przejdź do [migracji danych z usługi StorSimple serii 5000 – 7000 do urządzenia z serii 8000](storsimple-8000-migrate-from-5000-7000.md).
 
-- **Migrowanie do usługi Azure File Sync** — ta zupełnie nowa opcja migracji umożliwia klientom na przechowywanie udziałów plików w organizacji w usłudze Azure Files. Te udziały plików są następnie scentralizowane dla dostępu do lokalnego przy użyciu usługi Azure File Sync (AFS). AFS można wdrożyć na hoście systemu Windows Server. Następnie odbywa się migracja rzeczywistych danych jako hosta kopiowania lub za pomocą narzędzia migracji.
+    - **Migrowanie do usługi Azure File Sync** — ta zupełnie nowa opcja migracji umożliwia klientom na przechowywanie udziałów plików w organizacji w usłudze Azure Files. Te udziały plików są następnie scentralizowane dla dostępu do lokalnego przy użyciu usługi Azure File Sync (AFS). AFS można wdrożyć na hoście systemu Windows Server. Następnie odbywa się migracja rzeczywistych danych jako hosta kopiowania lub za pomocą narzędzia migracji.
 
     Aby uzyskać więcej informacji na temat migrowania danych do usługi Azure File Sync, przejdź do [migracji danych z rozwiązania StorSimple serii 5000 – 7000 do usługi Azure File Sync](https://aka.ms/StorSimpleMigrationAFS).
+
+- **Opcje strony trzeciej**:
+
+    - **Migrowanie do NAS swobodę Panzura** — StorSimple 5000 – 7000 klienci mogą wybrać opcję migracji do Panzura swobodę NAS, aby zachować swoje dane na platformie Azure. Swoboda Panzura rozwiązanie zapewnia rozwiązanie NAS obejmującej centrów danych, oddziałów, chmur prywatnych i publicznych. To rozwiązanie umożliwia lokalnych, hybrydowych i przepływy pracy danych w chmurze dla systemu plików NFS, SMB i klientów mobilnych. Ta migracja jest obsługiwana przez Panzura i klienci mogą zacząć żądając Obsługa migracji z [Panzura witryny sieci Web](https://panzura.com/storsimple-migration/).
 
 ## <a name="migration---frequently-asked-questions"></a>Migracja — często zadawane pytania
 
@@ -50,11 +56,11 @@ A. StorSimple serii 5000 – 7000 osiągnąć [koniec usługi](https://support.m
 A. Można nadal używać danych na platformie Azure, po zmigrowaniu do nowszych usługi. 
 
 
-### <a name="q--what-happens-to-the-data-i-have-stored-locally-on-my-storsimple-device"></a>PYTANIE:  Co stanie się dane, które mają I przechowywane lokalnie na urządzeniu StorSimple? 
+### <a name="q-what-happens-to-the-data-i-have-stored-locally-on-my-storsimple-device"></a>PYTANIE: Co stanie się dane, które mają I przechowywane lokalnie na urządzeniu StorSimple? 
 
 A. Do nowszych usługi zgodnie z opisem w dokumentach migracji można skopiować danych, która znajduje się na urządzeniu lokalnym.
 
-### <a name="what-happens-if-i-want-to-keep-my-storsimple-50007000-series-appliance"></a>Co się stanie, jeśli chcę przechowywać Moje urządzenia serii StorSimple 5000/7000? 
+### <a name="q-what-happens-if-i-want-to-keep-my-storsimple-50007000-series-appliance"></a>PYTANIE: Co się stanie, jeśli chcę przechowywać Moje urządzenia serii StorSimple 5000/7000? 
 
 A. Podczas usług mogą kontynuować pracę, Microsoft nie będzie do obsługi sprzętu i oprogramowania. Zdecydowanie zaleca się migrację dla ciągłości działania.
 

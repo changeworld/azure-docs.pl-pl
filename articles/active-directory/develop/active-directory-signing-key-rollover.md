@@ -16,12 +16,12 @@ ms.date: 10/20/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3b41436ffae2f5761b1917af3048327b90952b78
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: eaaeaf1b37c0d732d8d0009ad5a66f2118674b66
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470966"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240464"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Przerzucanie klucza w usłudze Azure Active Directory podpisywania
 W tym artykule opisano, co musisz wiedzieć o publiczne klucze, które są używane w usłudze Azure Active Directory (Azure AD) do podpisywania tokenów zabezpieczających. Należy zauważyć, że te przerzucania kluczy w regularnych odstępach czasu, a w nagłych wypadkach można od razu przenoszone. Wszystkie aplikacje, które używają usługi Azure AD powinien móc programowo obsługuje procesu przerzucania klucza lub ustanowienia okresowe ręczne Przerzucanie procesu. Kontynuuj czytanie, aby zrozumieć, jak działają klawisze jak ocenić wpływ przerzucania do aplikacji i jak zaktualizować aplikację lub ustanowienia procesu okresowe ręczne Przerzucanie do obsługi Przerzucanie klucza, jeśli to konieczne.
@@ -285,7 +285,7 @@ Wykonaj poniższe kroki, aby sprawdzić, czy działa logiki przerzucania klucza.
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
    ```
-2. W **<add thumbprint=””>** Zmień wartość odcisku palca, zastępując inny dowolny znak. Zapisz **Web.config** pliku.
+2. W **<add thumbprint="">** Zmień wartość odcisku palca, zastępując inny dowolny znak. Zapisz **Web.config** pliku.
 3. Kompiluj aplikację, a następnie uruchom go. Jeśli można ukończyć procesu logowania, aplikacja pomyślnie aktualizuje klucz pobierając wymaganych informacji z dokumentu metadanych federacji w Twoim katalogu. Jeśli występują problemy z logowaniem, upewnij się, zmiany w aplikacji są poprawne, czytając [Dodawanie logowania jednokrotnego do usługi sieci Web Application Using usługi Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) artykułu, lub pobierania i zapoznanie się poniższy przykładowy kod: [ Aplikacja w chmurze wielu dzierżaw usługi Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="vs2010"></a>Windows Identity Foundation (WIF) w wersji 1.0 programu .NET 3.5 i aplikacji sieci Web chroni zasoby oraz utworzone przy użyciu programu Visual Studio 2008 lub 2010

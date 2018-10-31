@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/09/2018
 ms.author: markvi
 ms.reviewer: ravenn
-ms.openlocfilehash: cde364cb5231c1cc0b1947da35994862cf45b571
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 267e398305939048014038b7350b2a10481fdfbd
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042165"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238730"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Urządzenia przyłączone do sposobu zarządzania do lokalnej grupy administratorów w usłudze Azure AD
 
@@ -92,9 +92,9 @@ Począwszy od **systemu Windows 10 1709** wersji, można wykonać tego zadania o
  
 Ponadto można również dodać użytkowników przy użyciu wiersza polecenia:
 
-- Jeśli użytkownicy dzierżawy są synchronizowane z usługi Active Directory w środowisku lokalnym, użyj `net localgroup administrators /add “Contoso\username”`.
+- Jeśli użytkownicy dzierżawy są synchronizowane z usługi Active Directory w środowisku lokalnym, użyj `net localgroup administrators /add "Contoso\username"`.
 
-- Jeśli użytkownicy dzierżawy są tworzone w usłudze Azure AD, należy użyć `net localgroup administrators /add “AzureAD\UserUpn”`
+- Jeśli użytkownicy dzierżawy są tworzone w usłudze Azure AD, należy użyć `net localgroup administrators /add "AzureAD\UserUpn"`
 
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia 
@@ -109,8 +109,8 @@ Jeśli usuniesz użytkowników z roli administratora urządzenia nadal ma on upr
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby uzyskać omówienie sposobu zarządzania urządzeniami w witrynie Azure portal, zobacz [zarządzania urządzeniami przy użyciu witryny Azure portal](device-management-azure-portal.md)
+- Aby uzyskać omówienie sposobu zarządzania urządzeniami w witrynie Azure Portal, zobacz [zarządzanie urządzeniami przy użyciu witryny Azure Portal](device-management-azure-portal.md)
 
-- Aby dowiedzieć się więcej na temat dostępu warunkowego opartego na urządzeniach, zobacz [konfigurowania zasad dostępu warunkowego opartego na urządzeniu usługi Azure Active Directory](../conditional-access/require-managed-devices.md).
+- Aby dowiedzieć się więcej o dostępie warunkowym opartym na urządzeniach, zobacz [konfigurowanie zasad dostępu warunkowego opartego na urządzeniach w usłudze Azure Active Directory](../conditional-access/require-managed-devices.md).
 
 

@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: e11b115d7a6421c34e7f1371ad8931b6affa0436
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 1639194741fb343391f80790d0a2cc7f392218ac
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815175"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238119"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Przewodnik dla deweloperów języka Java dla usługi App Service w systemie Linux
 
@@ -146,6 +146,8 @@ Postępuj zgodnie z instrukcjami w [wiązanie istniejącego niestandardowego cer
 
 >[!NOTE]
 > Jeśli aplikacja używa Spring Framework lub Spring Boot, można ustawić informacji połączenia bazy danych dla źródła danych z rozwiązaniami JPA jako zmienne środowiskowe [w pliku właściwości aplikacji]. Następnie użyj [ustawienia aplikacji](/azure/app-service/web-sites-configure#app-settings) do definiowania te wartości dla swojej aplikacji w witrynie Azure portal lub interfejsu wiersza polecenia.
+
+Przykładowe fragmenty konfiguracji w tej sekcji Użyj bazy danych MySQL. Aby uzyskać dodatkowe informacje, zobacz dokumentacja konfiguracji [MySQL](https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-usagenotes-tomcat.html) , [JDBC oprogramowania SQL Server](https://docs.microsoft.com/en-us/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?view=sql-server-2017), i [PostgreSQL](https://jdbc.postgresql.org/documentation/head/index.html).
 
 Aby skonfigurować Tomcat używać zarządzanego połączenia z bazami danych przy użyciu języka Java połączenia bazy danych (JDBC) lub interfejsu API trwałości Java rozwiązaniami (JPA), należy najpierw dostosować zmienną środowiskową CATALINA_OPTS przeczytać, Tomcat podczas uruchamiania. Ustaw te wartości za pomocą ustawienia aplikacji we wtyczce aplikacji usługi Maven:
 

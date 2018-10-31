@@ -1,10 +1,10 @@
 ---
-title: Użyj elementów Webhook Azure, aby monitorować powiadomienia zadania usługi Media Services przy użyciu platformy .NET | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak monitorować powiadomienia zadania usługi Media Services za pomocą elementów Webhook Azure. Przykładowy kod jest napisany w języku C# i używa SDK usługi Media Services dla platformy .NET.
+title: Używanie elementów Webhook platformy Azure do monitorowania powiadomień dotyczących zadań usługi Media Services przy użyciu platformy .NET | Dokumentacja firmy Microsoft
+description: Informacje o sposobie monitorowania powiadomień dotyczących zadań usługi Media Services przy użyciu elementów Webhook platformy Azure. Przykładowy kod jest zapisywany C# i używa Media Services SDK dla platformy .NET.
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: a61fe157-81b1-45c1-89f2-224b7ef55869
 ms.service: media-services
@@ -12,29 +12,29 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 10/29/2018
 ms.author: juliako
-ms.openlocfilehash: 564fc25699c3ae627804d49bfdc40ae9dd559269
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b3ce3731f19565bfe950d03a2bbc980dda55a7f4
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33789411"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238662"
 ---
-# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Elementów Webhook Azure używana do monitorowania usługi Media Services zadania powiadomienia z platformą .NET
-Po uruchomieniu zadania często wymagają sposób, aby śledzić postęp zadania. Powiadomienia zadań usługi Media Services można monitorować za pomocą elementów Webhook Azure lub [magazynu kolejek Azure](media-services-dotnet-check-job-progress-with-queues.md). W tym artykule przedstawiono sposób pracy z elementów webhook.
+# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Użyj platformy Azure z elementów Webhook do monitorowania powiadomień dotyczących zadań usługi Media Services przy użyciu platformy .NET
+Po uruchomieniu zadania, często wymagają sposób śledzenia postępu zadań. Można monitorować powiadomień dotyczących zadań usługi Media Services za pomocą elementów Webhook platformy Azure lub [Azure Queue storage](media-services-dotnet-check-job-progress-with-queues.md). W tym artykule pokazano, jak pracować z elementami webhook.
 
 W tym artykule przedstawiono sposób
 
-*  Zdefiniuj funkcję platformy Azure, dostosowane odpowiedzieć elementów webhook. 
+*  Zdefiniuj funkcję platformy Azure, który został dostosowany, aby odpowiedzieć na elementy webhook. 
     
-    W takim przypadku elementu webhook jest wyzwalane przez usługę Media Services, gdy zmieni zadania kodowania. Funkcja nasłuchuje wywołanie elementu webhook z usługi Media Services powiadomienia i publikuje elementu zawartości wyjściowej, po zakończeniu zadania. 
+    W tym przypadku element webhook jest wyzwalany przez usługę Media Services, gdy zadanie kodowania zmienia stan. Funkcja nasłuchuje na wywołanie elementu webhook, powrót po awarii z powiadomienia usługi Media Services i publikuje elementu zawartości wyjściowej, po zakończeniu zadania. 
     
     >[!NOTE]
-    >Przed kontynuowaniem upewnij się, że rozumiesz, jak [powiązania HTTP funkcje platformy Azure i elementu webhook](../../azure-functions/functions-bindings-http-webhook.md) pracy.
+    >Przed kontynuowaniem upewnij się, że rozumiesz, jak [powiązania usługi Azure Functions HTTP i elementów webhook](../../azure-functions/functions-bindings-http-webhook.md) pracy.
     >
     
-* Dodawanie elementu webhook do kodowania zadań, a następnie określ adres URL elementu webhook i klucz tajny, który odpowiada ten element webhook. Można znaleźć przykład dodającego elementu webhook do kodowania zadań na końcu tego artykułu.  
+* Dodawanie elementu webhook do kodowania zadania, a następnie określ adres URL elementu webhook i klucz tajny, który odpowiada tego elementu webhook. Znajdziesz się przykładowi, który dodaje elementu webhook do kodowania zadania na końcu tego artykułu.  
 
 Można znaleźć definicji różnych Media Services .NET usługi Azure Functions (w tym przedstawionego w tym artykule) [tutaj](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).
 
@@ -44,42 +44,42 @@ Do wykonania czynności przedstawionych w tym samouczku są niezbędne następuj
 
 * Konto platformy Azure. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Konto usługi Media Services. Aby utworzyć konto usługi Media Services, zobacz temat [Jak utworzyć konto usługi Media Services](media-services-portal-create-account.md).
-* Opis elementu [sposobu korzystania z usługi Azure Functions](../../azure-functions/functions-overview.md). Sprawdź również [powiązania HTTP funkcje platformy Azure i webhook](../../azure-functions/functions-bindings-http-webhook.md).
+* Zrozumienie [jak używać usługi Azure Functions](../../azure-functions/functions-overview.md). Ponadto przejrzyj [powiązania usługi Azure Functions HTTP i elementów webhook](../../azure-functions/functions-bindings-http-webhook.md).
 
 ## <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji
 
 1. Przejdź do [witryny Azure Portal](http://portal.azure.com) i zaloguj się przy użyciu konta Azure.
 2. Tworzenie aplikacji funkcji, zgodnie z opisem [tutaj](../../azure-functions/functions-create-function-app-portal.md).
 
-## <a name="configure-function-app-settings"></a>Konfiguruj ustawienia aplikacji — funkcja
+## <a name="configure-function-app-settings"></a>Konfigurowanie ustawień aplikacji funkcji
 
-Podczas tworzenia usługi Media Services funkcje, warto dodać zmiennych środowiskowych, które będą używane w całej funkcji. Aby skonfigurować ustawienia aplikacji, kliknij łącze Konfiguruj ustawienia aplikacji. 
+Podczas tworzenia funkcji usługi Media Services, warto dodać zmienne środowiskowe, które będą używane w całej funkcji. Aby skonfigurować ustawienia aplikacji, kliknij łącze Konfiguruj ustawienia aplikacji. 
 
-[Ustawienia aplikacji](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings) sekcja definiuje parametry, które są używane w webhook zdefiniowane w tym artykule. Również dodać następujące parametry do ustawień aplikacji. 
+[Ustawienia aplikacji](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings) sekcja definiuje parametry, które są używane w elementu webhook, zdefiniowane w tym artykule. Również dodać następujące parametry do ustawień aplikacji. 
 
 |Name (Nazwa)|Definicja|Przykład| 
 |---|---|---|
-|SigningKey |Klucza podpisywania.| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
-|WebHookEndpoint | Adres punktu końcowego elementu webhook. Po utworzeniu elementu webhook funkcji, możesz skopiować adres URL z **uzyskać adres URL funkcji** łącza. | https://juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==.|
+|SigningKey |Klucz podpisywania.| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
+|WebHookEndpoint | Adres punktu końcowego elementu webhook. Po utworzeniu funkcji elementu webhook, możesz skopiować adres URL z **Pobierz adres URL funkcji** łącza. | https://juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==.|
 
 ## <a name="create-a-function"></a>Tworzenie funkcji
 
-Po wdrożeniu aplikacji funkcji można znaleźć wśród **usługi aplikacji** usługi Azure Functions.
+Po wdrożeniu aplikacji funkcji można znaleźć wśród **App Services** usługi Azure Functions.
 
 1. Wybierz aplikację funkcji, a następnie kliknij przycisk **nową funkcję**.
-2. Wybierz **C#** kodu i **interfejsu API & elementów Webhook** scenariusza. 
-3. Wybierz **ogólny element Webhook - C#**.
-4. Nazwa użytkownika elementu webhook i naciśnij klawisz **Utwórz**.
+2. Wybierz **C#** kodu i **interfejsu API i elementy Webhook** scenariusza. 
+3. Wybierz **ogólny element Webhook — C#** .
+4. Nazwa usługi elementu webhook, a następnie naciśnij klawisz **Utwórz**.
 
 ### <a name="files"></a>Pliki
 
-Funkcja Azure jest skojarzony z plików kodu i innych plików, które zostały opisane w tej sekcji. Domyślnie funkcja jest skojarzony z **function.json** i **run.csx** plików (C#). Konieczne jest dodanie **project.json** pliku. Pozostałej części tej sekcji przedstawiono definicje tych plików.
+Funkcji platformy Azure jest skojarzony z plików kodu i innych plików, które są opisane w tej sekcji. Domyślnie funkcja jest skojarzony z **function.json** i **run.csx** (C#) plików. Należy dodać **project.json** pliku. Pozostała część tej sekcji zawiera definicje dla tych plików.
 
 ![plików](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 #### <a name="functionjson"></a>function.json
 
-Plik function.json definiuje, powiązania funkcji i innych ustawień konfiguracyjnych. Środowisko uruchomieniowe korzysta z tego pliku, aby określić zdarzenia do monitorowania oraz sposób przekazywania danych do i zwracać dane z wykonywania funkcji. 
+Plik function.json definiuje powiązań funkcji i innych ustawień konfiguracyjnych. Środowisko wykonawcze używa tego pliku, aby określić zdarzenia do monitorowania oraz sposób przekazywania danych do i zwrócić dane z wykonywania funkcji. 
 
 ```json
 {
@@ -121,11 +121,11 @@ Plik project.json zawiera zależności.
     
 #### <a name="runcsx"></a>run.csx
 
-Kod w tej sekcji przedstawia implementację funkcji platformy Azure, która jest elementu webhook. W tym przykładzie funkcja nasłuchuje wywołanie elementu webhook z usługi Media Services powiadomienia i publikuje elementu zawartości wyjściowej, po zakończeniu zadania.
+W kodzie w tej sekcji przedstawiono implementację funkcji platformy Azure, która jest element webhook. W tym przykładzie funkcja nasłuchuje na wywołanie elementu webhook, powrót po awarii z powiadomienia usługi Media Services i publikuje elementu zawartości wyjściowej, po zakończeniu zadania.
 
-Element webhook oczekuje klucza podpisywania (poświadczeń) do dopasowania, który zostanie przekazany podczas konfigurowania punktu końcowego powiadomienia. Klucz podpisujący jest 64-bajtową wartość kodowany w standardzie Base64, który służy do ochrony i zabezpieczania Twojego wywołania zwrotne elementów Webhook z usługi Azure Media Services. 
+Element webhook oczekuje klucza podpisywania (poświadczeń) być zgodne z działaniem, które można przekazać podczas konfigurowania punktu końcowego powiadomienia. Klucz podpisywania jest 64-bajtową wartość zakodowane w formacie Base64, który służy do ochrony i bezpiecznego wywołania zwrotne z elementów Webhook z usługi Azure Media Services. 
 
-W kodzie definicji elementu webhook, który jest zgodny **VerifyWebHookRequestSignature** metoda wykonuje weryfikacji komunikat powiadomienia. Celem tej weryfikacji jest zapewnienie, że wiadomość została wysłana przez usługi Azure Media Services i nie została zmieniona. Podpis jest opcjonalne dla usługi Azure Functions, ponieważ mają one **kod** wartość jako parametr zapytania za pośrednictwem zabezpieczeń TLS (Transport Layer). 
+W kodzie definicji elementu webhook, który jest zgodna **VerifyWebHookRequestSignature** metoda wykonuje weryfikację komunikat powiadomienia. Celem tej weryfikacji jest zapewnienie, że wiadomość została wysłana przez usługę Azure Media Services i nie została zmieniona. Podpis jest opcjonalny w przypadku usługi Azure Functions, ponieważ zawiera ona **kodu** wartość jako parametr zapytania za pośrednictwem zabezpieczeń TLS (Transport Layer). 
 
 >[!NOTE]
 >Limit różnych zasad usługi AMS wynosi 1 000 000 (na przykład zasad lokalizatorów lub ContentKeyAuthorizationPolicy). Należy używać tego samego identyfikatora zasad, jeśli zawsze są używane uprawnienia dotyczące tych samych dni lub tego samego dostępu, na przykład dla lokalizatorów przeznaczonych do długotrwałego stosowania (nieprzekazywanych zasad). Aby uzyskać więcej informacji, zobacz [ten](media-services-dotnet-manage-entities.md#limit-access-policies) temat.
@@ -344,11 +344,11 @@ internal sealed class NotificationMessage
 }
 ```
 
-Zapisz i uruchom funkcji.
+Zapisz i uruchom funkcję.
 
 ### <a name="function-output"></a>Dane wyjściowe funkcji
 
-Po wyzwoleniu elementu webhook w powyższym przykładzie tworzy następujące dane wyjściowe, wartości będą się różnić.
+Po wyzwoleniu elementu webhook w powyższym przykładzie, produkuje następujące dane wyjściowe, wartości będą się różnić.
 
     C# HTTP trigger function processed a request. RequestUri=https://juliako001-functions.azurewebsites.net/api/Notification_Webhook_Function?code=9376d69kygoy49oft81nel8frty5cme8hb9xsjslxjhalwhfrqd79awz8ic4ieku74dvkdfgvi
     Request Body = 
@@ -370,17 +370,17 @@ Po wyzwoleniu elementu webhook w powyższym przykładzie tworzy następujące da
     
     URL to the manifest for client streaming using HLS protocol: http://mediapkeewmg5c3peq.streaming.mediaservices.windows.net/0ac98077-2b58-4db7-a8da-789a13ac6167/BigBuckBunny.ism/manifest(format=m3u8-aapl)
 
-## <a name="add-a-webhook-to-your-encoding-task"></a>Dodawanie elementu webhook do kodowania zadań
+## <a name="add-a-webhook-to-your-encoding-task"></a>Dodawanie elementu webhook do kodowania zadania
 
-W tej sekcji przedstawiono kod, który dodaje powiadomienie elementu webhook do zadania. Można również dodać powiadomienie poziomu zadania, które będą bardziej użyteczna w przypadku pracy z zadaniami łańcuchowa.  
+W tej sekcji przedstawiono kod, który dodaje powiadomień elementu webhook do zadania. Można również dodać powiadomienie poziomu zadania, które byłby jednak bardziej użyteczny dla zadania o łańcuchowe zadania podrzędne.  
 
-1. Utwórz nową aplikację konsoli języka C# w programie Visual Studio. Wprowadź nazwę nazwy, lokalizacji i rozwiązania, a następnie kliknij przycisk OK.
+1. Utwórz nową aplikację konsoli języka C# w programie Visual Studio. Wprowadź nazwę nazwę, lokalizację i rozwiązania, a następnie kliknij przycisk OK.
 2. Użyj [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) do zainstalowania usługi Azure Media Services.
-3. Zaktualizuj plik App.config o odpowiednie wartości: 
+3. Zaktualizuj plik App.config odpowiednimi wartościami: 
     
-    * Azure Media Services informacje dotyczące połączenia: 
-    * oczekuje, aby otrzymywać powiadomienia, adres URL elementu webhook 
-    * klucza podpisywania, który pasuje do klucza, która oczekuje z elementu webhook. Klucz podpisujący jest 64-bajtową wartość kodowany w standardzie Base64, który służy do ochrony i zabezpieczania Twojego wywołania zwrotne elementów webhook z usługi Azure Media Services. 
+    * Informacje o połączeniu usługi Azure Media Services, 
+    * adres URL elementu webhook, który oczekuje, że aby otrzymywać powiadomienia, 
+    * klucz podpisywania, który pasuje do klucza, który oczekuje, że element webhook. Klucz podpisywania jest 64-bajtową wartość zakodowane w formacie Base64, który służy do ochrony i bezpiecznego wywołania zwrotne z elementów webhook z usługi Azure Media Services. 
 
     ```xml
             <appSettings>

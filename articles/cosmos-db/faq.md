@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: de67d71a209ea0889b4dc5c87fed254700cb9916
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 554718f0bb465ca757fc4dcf6c22d3b0dd80f2fb
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395143"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50251094"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB — często zadawane pytania
 ## <a name="azure-cosmos-db-fundamentals"></a>Podstawy usługi Azure Cosmos DB
@@ -36,11 +36,11 @@ Usługa Azure Cosmos DB jest dobrym wyborem dla nowych sieci web, mobilnych, gie
 ### <a name="how-does-azure-cosmos-db-offer-predictable-performance"></a>Jak usługa Azure Cosmos DB zapewnia przewidywalną wydajność?
 A [jednostki żądań](request-units.md) służy do mierzenia przepływności w usłudze Azure Cosmos DB. Przepływność 1-RU odpowiada przepływności pobierania dokumentu o rozmiarze 1 KB. Każda operacja w usłudze Azure Cosmos DB, w tym odczyty, zapisy, zapytań SQL i wykonania procedury składowanej ma deterministyczną wartość RU, który jest oparty na przepływności wymaganej do ukończenia tej operacji. Zamiast myśleć o procesora CPU, we/wy i pamięci oraz ich wpływ na przepływność aplikacji, można traktować pod względem pojedynczej mierze jednostek RU.
 
-Możesz zarezerwować każdego kontenera usługi Azure Cosmos DB z aprowizowaną przepływnością wyrażoną jako jednostek żądania przepływności na sekundę. W przypadku aplikacji o dowolnej skali test porównawczy poszczególnych żądań w celu pomiaru ich wartości jednostki ru na i aprowizować kontener służący do obsługi suma liczby jednostek żądania udostępniane wszystkim żądaniom. Możesz również skalować w górę lub Skaluj w dół przepływność z kontenerem aplikacji rozwijających się potrzeb. Aby uzyskać więcej informacji na temat jednostek żądania i określania kontenera zobacz [szacowania związanym z przepływnością](request-units.md#estimating-throughput-needs) , a następnie spróbuj [Kalkulator przepływności](https://www.documentdb.com/capacityplanner). Termin *kontenera* odnosi się tutaj do odwołuje się do kolekcji interfejs API SQL, interfejs API Gremlin wykresu, kolekcji interfejs API bazy danych MongoDB i tabelę interfejsu API tabel. 
+Możesz zarezerwować każdego kontenera usługi Azure Cosmos DB z aprowizowaną przepływnością wyrażoną jako jednostek żądania przepływności na sekundę. W przypadku aplikacji o dowolnej skali test porównawczy poszczególnych żądań w celu pomiaru ich wartości jednostki ru na i aprowizować kontener służący do obsługi suma liczby jednostek żądania udostępniane wszystkim żądaniom. Możesz również skalować w górę lub Skaluj w dół przepływność z kontenerem aplikacji rozwijających się potrzeb. Aby uzyskać więcej informacji na temat jednostek żądania i określania kontenera zobacz [szacowania związanym z przepływnością](request-units.md#estimating-throughput-needs) , a następnie spróbuj [Kalkulator przepływności](https://www.documentdb.com/capacityplanner). Termin *kontenera* odnosi się tutaj do kolekcji interfejs API SQL, interfejs API Gremlin wykresu, kolekcji interfejs API bazy danych MongoDB i tabelę interfejsu API tabel. 
 
 ### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Jak usługa Azure Cosmos DB obsługuje różne modele danych, takie jak klucz/wartość, kolumnowy, dokument i wykres?
 
-Klucz/wartość (tabela), kolumnowy, dokumentów i danych programu graph modeli są natywnie obsługiwane ze względu na ARS (atomów, rekordów i sekwencji) projektowania tej usługi Azure Cosmos DB jest oparty na. Atomów, rekordów i sekwencji umożliwia łatwe mapowane i zaprojektowana różne modele danych. Interfejsy API dla podzbioru modeli są dostępne po prawej stronie teraz (SQL, bazy danych MongoDB, Table i interfejsów API rozwiązania Gremlin) i inne, które są specyficzne dla dodatkowe modele danych będą dostępne w przyszłości.
+Klucz/wartość (tabela), kolumnowy, dokumentów i danych wykresu, który modeli są natywnie obsługiwane ze względu na ARS (atomów, rekordów i sekwencji) projektowania, że usługi Azure Cosmos DB zaprojektowano. Atomów, rekordów i sekwencji umożliwia łatwe mapowane i zaprojektowana różne modele danych. Interfejsy API dla podzbioru modeli są dostępne po prawej stronie teraz (SQL, bazy danych MongoDB, Table i interfejsów API rozwiązania Gremlin) i inne, które są specyficzne dla dodatkowe modele danych będą dostępne w przyszłości.
 
 Usługa Azure Cosmos DB ma schemat niezależny od aparatu indeksowania która może automatycznie indeksować wszystkie dane, które które pozyska, bez wymagania żadnych schematów ani indeksów pomocniczych od dewelopera. Aparat opiera się na zestaw układów logicznych indeksu (odwrócona, kolumnowy, drzewo), które rozdzielenie układ magazynu z indeksem i podsystemy przetwarzania zapytań. Usługa cosmos DB ma również możliwość obsługi zestawu o komunikacji sieciowej protokołów i interfejsów API w sposób rozszerzalny i wydajnie tłumaczyć je do modelu danych podstawowych (1) i układów logicznych indeksu, (2) co jednoznacznie może obsługiwać wiele modeli danych natywnie.
 
@@ -53,11 +53,11 @@ Nie ma żadnego limitu, całkowitej ilości danych, które mogą być przechowyw
 ### <a name="what-are-the-throughput-limits-of-azure-cosmos-db"></a>Jakie są ograniczenia przepływności usługi Azure Cosmos DB?
 Nie ma żadnego limitu, na łączną przepływność, które obsługują kontenera w usłudze Azure Cosmos DB. Kluczowe chodzi o to, aby rozłożyć obciążenie około równomiernie między wystarczająco dużą liczbę kluczy partycji.
 
-### <a name="are-direct-and-gateway-connectivity-modes-encrypted-"></a>Tryby łączności usługi bezpośrednie i bramy są szyfrowane? 
+### <a name="are-direct-and-gateway-connectivity-modes-encrypted"></a>Tryby łączności usługi bezpośrednie i bramy są szyfrowane? 
 Tak, oba tryby są zawsze w pełni zaszyfrowane. 
 
 ### <a name="how-much-does-azure-cosmos-db-cost"></a>Ile kosztuje usługa Azure Cosmos DB
-Aby uzyskać szczegółowe informacje, zapoznaj się [szczegóły cennika usługi Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) strony. Opłaty za użycie usługi Azure Cosmos DB są określane przez liczbę kontenerów elastycznie, liczby godzin kontenery zostały online, i aprowizowanej przepływności dla każdego kontenera. Termin *kontenery* odnosi się tutaj do kolekcji interfejs API SQL, interfejs API Gremlin (Graf), kolekcji interfejs API bazy danych MongoDB i tabel na interfejs API tabel. 
+Aby uzyskać szczegółowe informacje, zapoznaj się [szczegóły cennika usługi Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) strony. Opłaty za użycie usługi Azure Cosmos DB są określane przez liczbę kontenerów elastycznie, liczby godzin kontenery zostały online, i aprowizowanej przepływności dla każdego kontenera. Pojęcie kontener tutaj odnosi się do kolekcji interfejs API SQL, interfejs API Gremlin (Graf), kolekcji interfejs API bazy danych MongoDB i tabel na interfejs API tabel. 
 
 ### <a name="is-a-free-account-available"></a>Bezpłatne konto jest dostępny?
 Tak, możesz zasubskrybować konta ograniczonej czasowo, bez dodatkowych opłat, bez zobowiązań. Aby się zarejestrować, odwiedź stronę [Wypróbuj bezpłatnie usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) lub Przeczytaj więcej w [Wypróbuj usługi Azure Cosmos DB — często zadawane pytania](#try-cosmos-db).
@@ -72,7 +72,7 @@ Aby zadawać pytania techniczne, możesz wpis do jednej z tych dwóch pytań i o
 * [Forum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
 * [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb). Przepełnienie stosu jest najważniejsze pytania na temat programowania. Upewnij się, Twoje pytanie jest [na temat](https://stackoverflow.com/help/on-topic) i [zawierają tyle szczegółowe informacje, jak to możliwe, dzięki czemu zapytania teraz bardziej czytelne i którą można odpowiedzieć](https://stackoverflow.com/help/how-to-ask). 
 
-Aby poprosić o nowe funkcje, należy utworzyć nowe żądanie na [Uservoice](https://feedback.azure.com/forums/263030-azure-cosmos-db).
+Aby poprosić o nowe funkcje, należy utworzyć nowe żądanie na [User voice](https://feedback.azure.com/forums/263030-azure-cosmos-db).
 
 Aby rozwiązać problem z Twoim kontem, wyślij [żądanie obsługi](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) w portalu Azure Portal.
 
@@ -88,8 +88,8 @@ Try Azure Cosmos DB subskrypcje będą widoczne w witrynie Azure portal obok inn
 Do subskrypcji Wypróbuj usługę Azure Cosmos DB mają zastosowanie następujące warunki:
 
 * Jeden kontener na subskrypcję dla konta programu SQL, interfejs API Gremlin i tabeli.
-* Maksymalnie 3 kolekcje w każdej subskrypcji dla kont bazy danych MongoDB.
-* 10 GB pojemności.
+* Maksymalnie trzy kolekcje na subskrypcję dla konta bazy danych MongoDB.
+* Pojemność magazynu o rozmiarze 10 GB.
 * Replikacja globalnej jest dostępna w następujących [regionów świadczenia usługi Azure](https://azure.microsoft.com/regions/): środkowe stany USA, Europa Północna i Azja południowo-wschodnia
 * Maksymalnej przepływności równej 5 K jednostek RU/s.
 * Subskrypcje wygasają po upływie 24 godzin i można rozszerzyć do maksymalnie 48 godzin.
@@ -161,7 +161,7 @@ Język zapytań SQL, które są obsługiwane przez konta interfejsu API SQL jest
 Interfejs API SQL obsługuje agregację o małych opóźnieniach w dowolnej skali za pomocą funkcji agregujących `COUNT`, `MIN`, `MAX`, `AVG`, i `SUM` przy użyciu Gramatyka języka SQL. Aby uzyskać więcej informacji, zobacz [funkcje](sql-api-sql-query.md#Aggregates).
 
 ### <a name="how-does-the-sql-api-provide-concurrency"></a>Jak interfejs API SQL zapewnia współbieżność?
-Interfejs API SQL obsługuje optymistycznej współbieżności sterowanie współbieżnością za pomocą tagów jednostki HTTP lub elementów ETag. Każdy zasób interfejsu API SQL ma element ETag, a element ETag jest ustawiony na serwerze za każdym razem, gdy dokument zostanie zaktualizowany. Nagłówka ETag i bieżącą wartość są objęte wszystkie wiadomości odpowiedzi. Elementów etag może służyć nagłówek If-Match, aby serwer mógł zdecydować, czy można zaktualizować zasobu. Wartość If-Match jest wartość elementu ETag ma być sprawdzany względem. Jeśli wartość elementu ETag odpowiada wartość elementu ETag serwera, zasób jest aktualizowany. Jeśli element ETag nie jest już aktualna, serwer odrzuca operację, podając "HTTP 412 niepowodzenie warunku wstępnego" Kod odpowiedzi. Następnie klient pobiera ponownie zasobu, aby uzyskać bieżącą wartość elementu ETag dla zasobu. Ponadto elementów etag może służyć za pomocą nagłówka If-None-Match do określenia, czy ponownie pobrać zasobu jest wymagana.
+Interfejs API SQL obsługuje optymistycznej współbieżności sterowanie współbieżnością za pomocą tagów jednostki HTTP lub elementów ETag. Każdy zasób interfejsu API SQL ma element ETag, a element ETag jest ustawiony na serwerze za każdym razem, gdy dokument zostanie zaktualizowany. Nagłówka ETag i bieżącą wartość są objęte wszystkie wiadomości odpowiedzi. Elementów etag może służyć nagłówek If-Match, aby serwer mógł zdecydować, czy można zaktualizować zasobu. Wartość If-Match jest wartość elementu ETag ma być sprawdzany względem. Jeśli wartość elementu ETag odpowiada wartość elementu ETag serwera, zasób jest aktualizowany. Jeśli element ETag nie jest już aktualna, serwer odrzuca operację, podając "HTTP 412 niepowodzenie warunku wstępnego" Kod odpowiedzi. Klient następnie refetches zasobu, aby uzyskać bieżącą wartość elementu ETag dla zasobu. Ponadto elementów etag może służyć za pomocą nagłówka If-None-Match do określenia, czy ponownie Pobierz zasobu jest wymagana.
 
 Aby użyć optymistycznej współbieżności na platformie .NET, należy użyć [AccessCondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx) klasy. Aby uzyskać przykład .NET, zobacz [Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) w przykładzie DocumentManagement w witrynie GitHub.
 
@@ -230,13 +230,13 @@ Brak istniejącego magazynu, zestawy SDK powinny nadal działać. Jednak zaleca 
 ### <a name="where-is-table-api-not-identical-with-azure-table-storage-behavior"></a>Gdy interfejs API tabel nie jest taka sama, jak usługa Azure Table storage zachowanie?
 Istnieją pewne różnice zachowanie, które pochodzące z usługi Azure Table storage użytkownicy, którzy chcą tworzyć tabele za pomocą interfejsu API tabeli usługi Azure Cosmos DB, trzeba wiedzieć:
 
-* Interfejs API usługi Azure Cosmos DB Table jest używany model rezerwowanie pojemności w celu zapewnienia wydajności gwarantowane, ale oznacza to, że jeden płaci za pojemność zaraz po utworzeniu tabeli, nawet jeśli pojemność nie jest używana. Za pomocą usługi Azure Table storage jeden płaci tylko za pojemność, który będzie faktycznie używana. To ułatwia, aby wyjaśnić, dlaczego interfejs API tabel może oferować Read 10 ms i 15 ms zapisu umowy SLA w 99. percentylu, natomiast usługa Azure Table storage oferuje 10 drugi umowy SLA. Jednak w konsekwencji za pomocą interfejsu Table API tabel, nawet pustych tabel bez żadnych żądań pieniądze kosztów w celu zapewnienia, że pojemność jest dostępna do obsługi żądań do nich w umowie SLA oferowane przez usługę Azure Cosmos DB.
+* Interfejs API usługi Azure Cosmos DB Table jest używany model rezerwowanie pojemności w celu zapewnienia wydajności gwarantowane, ale oznacza to, że jeden płaci za pojemność zaraz po utworzeniu tabeli, nawet jeśli pojemność nie jest używana. Za pomocą usługi Azure Table storage jeden płaci tylko za pojemność, która jest używana. Pomaga to wyjaśnić, dlaczego interfejs API tabel może oferować odczytu 10 ms i 15 ms zapisu umowy SLA w 99. percentylu, natomiast usługa Azure Table storage oferuje umowy SLA 10 sekund. Jednak w konsekwencji za pomocą interfejsu Table API tabel, nawet pustych tabel bez żadnych żądań pieniądze kosztów w celu zapewnienia, że pojemność jest dostępna do obsługi żądań do nich w umowie SLA oferowane przez usługę Azure Cosmos DB.
 * Wyniki zapytania, zwracane przez interfejs API tabel nie są sortowane w kolejności klucza wiersza klucza partycji, ponieważ znajdują się w usłudze Azure Table storage.
 * Kluczy wierszy może składać się maksymalnie 255 bajtów
 * Partie może zawierać maksymalnie 2 MB
 * Mechanizm CORS nie jest obecnie obsługiwane.
 * Nazwy tabel w usłudze Azure Table storage nie jest rozróżniana wielkość liter, ale są one interfejsu API tabeli usługi Azure Cosmos DB
-* Niektóre usługi Azure Cosmos DB wewnętrznego formaty kodowania informacje, takie jak pola binarne, nie są obecnie wydajne jeden mogą zainteresować. W związku z tym może to spowodować nieoczekiwane ograniczenia rozmiaru danych. Na przykład aktualnie jeden nie można użyć Meg pełnej 1 jednostkę tabeli do przechowywania danych binarnych, ponieważ kodowanie zwiększa rozmiar danych.
+* Niektóre usługi Azure Cosmos DB wewnętrznego formaty kodowania informacje, takie jak pola binarne, nie są obecnie wydajne jeden mogą zainteresować. W związku z tym może to spowodować nieoczekiwane ograniczenia rozmiaru danych. Na przykład aktualnie jeden nie można użyć Meg pełnej jedną jednostkę tabeli do przechowywania danych binarnych, ponieważ kodowanie zwiększa rozmiar danych.
 * Nazwa właściwości jednostki "Id" obecnie nieobsługiwane
 * TableQuery TakeCount nie jest ograniczone do 1000
 
@@ -260,17 +260,17 @@ Dla zestawu .NET SDK w szczególności, istnieją pewne klas i metod, które nie
 |                  | \*ServiceStats* |
 | CloudTable | Ustawiania * |
 |            | GetPermissions * |
-| TableServiceContext | * Ta klasa jest faktycznie gt;(przestarzałe) |
+| TableServiceContext | * (Ta klasa jest przestarzałe) |
 | TableServiceEntity | " " |
 | TableServiceExtensions | " " |
 | TableServiceQuery | " " |
 
-Jeśli dowolny z tych różnic jest problemem dla Twojego projektu skontaktuj się z pomocą [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com) i Daj nam znać.
+Jeśli te różnice są problemem dla projektu, skontaktuj się z pomocą [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com) i Daj nam znać.
 
 ### <a name="how-do-i-provide-feedback-about-the-sdk-or-bugs"></a>Jak Wyraź swoją opinię dotyczącą zestawu SDK lub usterki?
 Podziel się swoją opinią, w dowolnym z następujących sposobów:
 
-* [Uservoice](https://feedback.azure.com/forums/599062-azure-cosmos-db-table-api)
+* [Głos użytkownika](https://feedback.azure.com/forums/263030-azure-cosmos-db)
 * [Forum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
 * [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb). Przepełnienie stosu jest najważniejsze pytania na temat programowania. Upewnij się, Twoje pytanie jest [na temat](https://stackoverflow.com/help/on-topic) i [zawierają tyle szczegółowe informacje, jak to możliwe, dzięki czemu zapytania teraz bardziej czytelne i którą można odpowiedzieć](https://stackoverflow.com/help/how-to-ask).
 
@@ -329,7 +329,7 @@ Nie można tworzyć i korzystać z istniejących zasobów magazynu tabel Azure b
 Możesz użyć portalu usługi Azure Cosmos DB [ustawienia replikacji globalnej](tutorial-global-distribution-sql-api.md#portal) Dodawanie regionów, które są odpowiednie dla twojej aplikacji. Tworzenie aplikacji dystrybuowanych globalnie, należy również dodać aplikację przy użyciu informacji o PreferredLocation w lokalnym regionie zapewniające małe opóźnienia odczytu. 
 
 ### <a name="how-do-i-change-the-primary-write-region-for-the-account-in-the-table-api"></a>Jak zmienić podstawowego regionu zapisu dla konta w interfejsie API tabeli?
-W okienku portalu globalnej replikacji usługi Azure Cosmos DB umożliwia dodawanie regionu, a następnie przełączyć w tryb failover do regionu wymagane. Aby uzyskać instrukcje, zobacz [opracowywanie zawartości przy użyciu kont usługi Azure Cosmos DB w wielu regionach](regional-failover.md). 
+W okienku portalu globalnej replikacji usługi Azure Cosmos DB umożliwia dodawanie regionu, a następnie przełączyć w tryb failover do regionu wymagane. Aby uzyskać instrukcje, zobacz [opracowywanie zawartości przy użyciu kont usługi Azure Cosmos DB w wielu regionach](high-availability.md). 
 
 ### <a name="how-do-i-configure-my-preferred-read-regions-for-low-latency-when-i-distribute-my-data"></a>Jak skonfigurować Mój preferowanych regionów odczytu w celu uzyskania niskich opóźnień, gdy dystrybuować Moje dane? 
 Aby ułatwić odczytywanie lokalizacji lokalnej, należy użyć klucza PreferredLocation w pliku app.config. W przypadku istniejących aplikacji interfejsu API tabel zgłasza błąd, jeśli ustawiono LocationMode. Ten kod, należy usunąć, ponieważ interfejs API tabel zbiera te informacje z pliku app.config. Aby uzyskać więcej informacji, zobacz [możliwości usługi Azure Cosmos DB](../cosmos-db/tutorial-develop-table-dotnet.md#azure-cosmos-db-capabilities).
@@ -351,7 +351,7 @@ Usługa Azure Cosmos DB zatwierdzeń danych trwale w regionie lokalnym i wypycha
 Za pomocą usługi Azure Cosmos DB można ustawić poziomu spójności na poziomie kontenera (w tabeli). Za pomocą zestawu .NET SDK, możesz zmienić poziom, podając wartość dla klucza TableConsistencyLevel w pliku app.config. Możliwe wartości to: silna, powiązana nieaktualność, sesja, spójny prefiks i ostateczna. Aby uzyskać więcej informacji, zobacz [dostosowania danych poziomy spójności w usłudze Azure Cosmos DB](consistency-levels.md). Kluczowe chodzi o to, że nie można ustawić spójności żądania poziomu więcej niż ustawienie dla tabeli. Na przykład nie można ustawić poziomu spójności dla tabeli ostateczna i poziomu spójności żądania na silne. 
 
 ### <a name="how-does-the-table-api-handle-failover-if-a-region-goes-down"></a>Jak interfejs API tabel obsługuje tryb failover Jeśli region ulegnie awarii? 
-Interfejs API tabel korzysta z globalnie rozproszoną platformę usługi Azure Cosmos DB. Aby upewnić się, że Twoja aplikacja może tolerować przestój centrum danych, należy włączyć co najmniej jeden region więcej dla konta w portalu usługi Azure Cosmos DB [opracowywanie zawartości przy użyciu kont usługi Azure Cosmos DB w wielu regionach](regional-failover.md). Można ustawić priorytet regionu za pomocą portalu [opracowywanie zawartości przy użyciu kont usługi Azure Cosmos DB w wielu regionach](regional-failover.md). 
+Interfejs API tabel korzysta z globalnie rozproszoną platformę usługi Azure Cosmos DB. Aby upewnić się, że Twoja aplikacja może tolerować przestój centrum danych, należy włączyć co najmniej jeden region więcej dla konta w portalu usługi Azure Cosmos DB [opracowywanie zawartości przy użyciu kont usługi Azure Cosmos DB w wielu regionach](high-availability.md). Można ustawić priorytet regionu za pomocą portalu [opracowywanie zawartości przy użyciu kont usługi Azure Cosmos DB w wielu regionach](high-availability.md). 
 
 Możesz dodać dowolną liczbę regionów, jak konta i kontrolować, gdzie go może zostać przeniesiony do, zapewniając priorytetem trybu failover. Oczywiście do korzystania z bazy danych, należy podać aplikacji istnieje zbyt. Po wykonaniu tej czynności klientów nie będą obawiać się o przestoje. [Najnowszy zestaw SDK klienta .NET](table-sdk-dotnet.md) jest automatycznie obsługujące usługę, ale innych zestawów SDK nie są. Oznacza to, że może wykryć regionu, który nie działa i automatycznie przełączania w tryb failover do nowego regionu.
 
@@ -431,7 +431,7 @@ Usługa Azure Cosmos DB zapewnia gwarancji wydajności i opóźnień z górną g
 
 Przy użyciu specyfikacji przepływności, można elastycznie zmienić go do korzyści z sezonowości aplikacji, potrzeb przepływność i zmniejsza koszty.
 
-### <a name="azure-table-storage-has-been-very-inexpensive-for-me-because-i-pay-only-to-store-the-data-and-i-rarely-query-the-azure-cosmos-db-table-api-offering-seems-to-be-charging-me-even-though-i-have-not-performed-a-single-transaction-or-stored-anything-can-you-please-explain"></a>Usługa Azure Table storage zostało niedrogie dla mnie, ponieważ zapłacić tylko do przechowywania danych i rzadko zapytania. Oferta interfejsu API tabeli usługi Azure Cosmos DB wydaje się być ładowania mnie, mimo że nie ma mogę wykonać pojedynczą transakcję lub przechowywane niczego. Jakie?
+### <a name="azure-table-storage-has-been-inexpensive-for-me-because-i-pay-only-to-store-the-data-and-i-rarely-query-the-azure-cosmos-db-table-api-offering-seems-to-be-charging-me-even-though-i-have-not-performed-a-single-transaction-or-stored-anything-can-you-please-explain"></a>Usługa Azure Table storage zostało niedrogie dla mnie, ponieważ zapłacić tylko do przechowywania danych i rzadko zapytania. Oferta interfejsu API tabeli usługi Azure Cosmos DB wydaje się być ładowania mnie, mimo że nie ma mogę wykonać pojedynczą transakcję lub przechowywane niczego. Jakie?
 
 Usługa Azure Cosmos DB została zaprojektowana jako globalnie dystrybuowana, oparte na umowie SLA systemie gwarantuje dostępność, opóźnienia i przepływności. Podczas rezerwowania przepustowości w usłudze Azure Cosmos DB ma żadnej gwarancji, w odróżnieniu od przepływności innych systemów. Usługa Azure Cosmos DB zapewnia dodatkowe funkcje, wymagające klientów, takich jak indeksy pomocnicze i globalnej dystrybucji.  
 
@@ -456,13 +456,13 @@ Interfejs API usługi Azure Cosmos DB Gremlin wykorzystuje sterowników open sou
 
 ### <a name="how-are-rus-charged-when-running-queries-on-a-graph-database"></a>Jak są rozliczane jednostek RU/s podczas uruchamiania zapytań w bazie danych programu graph? 
 
-Wszystkie obiekty programu graph, wierzchołki i krawędzie, są reprezentowane jako dokumenty JSON w wewnętrznej bazie danych. Ponieważ jednego zapytania języka Gremlin można zmodyfikować jedną lub wiele grafu obiektów w danym momencie, kosztów skojarzonych z nim isbe bezpośrednio związane z obiektami krawędzie, które są przetwarzane przez zapytanie. Jest to ten sam proces, który korzysta z usługi Azure Cosmos DB dla innych interfejsów API. Aby uzyskać więcej informacji, zobacz [jednostek żądań w usłudze Azure Cosmos DB](request-units.md).
+Wszystkie obiekty programu graph, wierzchołki i krawędzie, są reprezentowane jako dokumenty JSON w wewnętrznej bazie danych. Ponieważ jednego zapytania języka Gremlin można zmodyfikować jedną lub wiele grafu obiektów w danym momencie, koszt związany z nim jest bezpośrednio związana obiektów, krawędzie, które są przetwarzane przez zapytanie. Jest to ten sam proces, który korzysta z usługi Azure Cosmos DB dla innych interfejsów API. Aby uzyskać więcej informacji, zobacz [jednostek żądań w usłudze Azure Cosmos DB](request-units.md).
 
 Opłata za RU opiera się na zestawie roboczym danych podczas przechodzenia i ustaw nie wynik. Na przykład jeśli zapytanie ma na celu uzyskanie poszczególnych wierzchołków w wyniku, ale musi przechodzić przez wiele innych obiektów w taki sposób, następnie koszt będzie opierać się na wszystkie obiekty programu graph, które spowoduje przejście do obliczenia wierzchołka jeden wynik.
 
 ### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Jaka jest maksymalna skala, który grafowej bazy danych może mieć w usłudze Azure Cosmos DB — interfejs API Gremlin? 
 
-Usługa Azure Cosmos DB wykorzystuje [partycjonowanie poziome](partition-data.md) automatycznie adres wzrost wymagania dotyczące magazynu i przepływności. Maksymalną pojemność przepływności i przestrzeni dyskowej obciążenie jest określany przez ilość partycje, które są skojarzone z danej kolekcji. Jednak kolekcji interfejs API Gremlin ma określony zbiór wytycznych, aby zapewnić właściwe działanie doświadczeń skali. Aby uzyskać więcej informacji i najlepszych rozwiązań, zobacz [najlepszymi rozwiązaniami dotyczącymi partycjonowania](partition-data.md#best-practices-when-choosing-a-partition-key) dokumentu. 
+Usługa Azure Cosmos DB wykorzystuje [partycjonowanie poziome](partition-data.md) automatycznie adres wzrost wymagania dotyczące magazynu i przepływności. Maksymalną pojemność przepływności i przestrzeni dyskowej obciążenie jest określana przez liczbę partycji, które są skojarzone z danej kolekcji. Jednak kolekcji interfejs API Gremlin ma określony zbiór wytycznych, aby zapewnić właściwe działanie doświadczeń skali. Aby uzyskać więcej informacji i najlepszych rozwiązań, zobacz [najlepszymi rozwiązaniami dotyczącymi partycjonowania](partition-data.md#best-practices-when-choosing-a-partition-key) dokumentu. 
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Jak chronić przed atakami polegającymi na iniekcji przy użyciu języka Gremlin sterowniki? 
 
@@ -472,7 +472,7 @@ Najbardziej natywnych sterowniki Tinkerpop języku Gremlin umożliwiają opcję,
 
 Interfejs API usługi Azure Cosmos DB Gremlin implementuje podzbiór funkcji zdefiniowane w obszarze powierzchni języka Gremlin. Obsługiwane kroki i dodatkowe informacje można znaleźć [Obsługa języka Gremlin](gremlin-support.md) artykułu.
 
-Najlepszym obejściem tego problemu jest przepisaniu wymaganych kroków języka Gremlin z obsługiwanych funkcji, ponieważ wszystkie niezbędne kroki Gremlin są obsługiwane przez usługę Azure Cosmos DB.
+Najlepszym obejściem tego problemu jest do przepisania wymaganych kroków języka Gremlin z obsługiwanych funkcji, ponieważ wszystkie niezbędne kroki Gremlin są obsługiwane przez usługę Azure Cosmos DB.
 
 ### <a name="why-am-i-getting-the-websocketexception-the-server-returned-status-code-200-when-status-code-101-was-expected-error"></a>Dlaczego otrzymuję "WebSocketException: serwer zwrócił kod stanu"200", gdy oczekiwany kod stanu:"101"" Błąd?
 
@@ -501,7 +501,7 @@ Za pośrednictwem połączenia protokołu WebSocket nawiązywane jest połączen
 
 ### <a name="why-cant-i-use-fluent-api-calls-in-the-native-gremlin-drivers"></a>Dlaczego nie można użyć wywołania interfejsu API fluent w sterowników natywnych języka Gremlin?
 
-Wywołania interfejsu API Fluent nie są jeszcze obsługiwane przez interfejs API języka Gremlin usługi Azure Cosmos DB. Wywołania interfejsu API Fluent wymagają wewnętrznych funkcji formatowania, znany jako kod bajtowy pomocy technicznej, który nie jest obecnie obsługiwane przez usługi Azure Cosmos DB — interfejs API Gremlin. Z powodu tego samego powodu najnowszy sterownik języka Gremlin JavaScript również nie jest obecnie obsługiwane. 
+Wywołania interfejsu API Fluent nie są jeszcze obsługiwane przez interfejs API języka Gremlin usługi Azure Cosmos DB. Wywołania interfejsu API Fluent wymagają wewnętrznych funkcji formatowania, znany jako kod bajtowy pomocy technicznej, która nie jest obecnie obsługiwane przez usługi Azure Cosmos DB — interfejs API Gremlin. Z powodu tego samego powodu najnowszy sterownik języka Gremlin JavaScript również nie jest obecnie obsługiwane. 
 
 ### <a name="how-can-i-evaluate-the-efficiency-of-my-gremlin-queries"></a>Jak można ocenić wydajność zapytań w języku Gremlin?
 
@@ -579,7 +579,7 @@ Dane wyjściowe powyższych profilu pokazują, jak dużo czasu na uzyskiwanie ob
 ## <a id="cassandra"></a> Interfejs API rozwiązania Cassandra
 
 ### <a name="what-is-the-protocol-version-supported-in-the-private-preview-is-there-a-plan-to-support-other-protocols"></a>Co to jest wersja protokołu, obsługiwane w prywatnej wersji zapoznawczej? Czy istnieje plan do obsługi innych protokołów?
-Interfejs Apache Cassandra API usługi Azure Cosmos DB obsługuje obecnie języka CQL w wersji 4. Jeśli masz opinię na temat obsługi innych protokołów, Daj nam znać za pośrednictwem [opinii uservoice](https://feedback.azure.com/forums/263030-azure-cosmos-db) lub Wyślij wiadomość e-mail do [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com). 
+Interfejs Apache Cassandra API usługi Azure Cosmos DB obsługuje obecnie języka CQL w wersji 4. Jeśli masz opinię na temat obsługi innych protokołów, Daj nam znać za pośrednictwem [opinia głosowych użytkownika](https://feedback.azure.com/forums/263030-azure-cosmos-db) lub Wyślij wiadomość e-mail do [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com). 
 
 ### <a name="why-is-choosing-a-throughput-for-a-table-a-requirement"></a>Dlaczego jest wybranie przepływności dla tabeli zapotrzebowania?
 Usługa Azure Cosmos DB ustawia domyślne przepływność dla kontenera, w której utworzono tabelę z - portalu lub języka CQL. Usługa Azure Cosmos DB zapewnia gwarancji wydajności i opóźnień z górną granicę dla operacji. Gwarancja jest możliwe w przypadku, gdy aparat można wymusić nadzoru na operacje dzierżawcy. Ustawienie przepustowości zapewnia uzyskać gwarantowaną przepływność i opóźnienie, ponieważ platforma rezerwuje tej pojemności i gwarantuje powodzenie operacji. Elastycznie można zmienić przepustowość, aby korzystać z sezonowości aplikacji i obniżenia kosztów.
@@ -604,55 +604,55 @@ simpleStatement.SetOutgoingPayload(outgoingPayload);
 ``` 
 
 ### <a name="what-happens-when-throughput-is-exceeded"></a>Co się stanie, gdy zostanie przekroczona przepustowość? 
-Usługa Azure Cosmos DB zapewnia gwarancji wydajności i opóźnień z górną granicę dla operacji. Gwarancja jest możliwe w przypadku, gdy aparat można wymusić nadzoru na operacje dzierżawcy. Jest to możliwe, oparte na temat ustawiania przepływnością, co zapewnia uzyskać gwarantowaną przepływność i opóźnienie, ponieważ platforma rezerwuje tej pojemności i gwarantuje powodzenie operacji. Po przekroczeniu tej pojemności uzyskasz przeciążona komunikat o błędzie zawierający pojemności został przekroczony. przeciążone 0x1001: nie można przetworzyć żądania, ponieważ "Wskaźnik żądań jest duży". W tym momencie jest, aby zobaczyć, jakie operacje i ich wielkości powoduje, że ten problem. Możesz uzyskać pomysł o pojemności wykorzystanych przekraczające zaprowizowaną pojemnością z metrykami w portalu. Należy upewnić się, pojemność jest zajęta niemal równie we wszystkich partycji podstawowej. Jeśli zostanie wyświetlony, większość przepływność jest używane przez jedną partycję, masz niesymetryczność obciążenia. 
+Usługa Azure Cosmos DB zapewnia gwarancji wydajności i opóźnień z górną granicę dla operacji. Gwarancja jest możliwe w przypadku, gdy aparat można wymusić nadzoru na operacje dzierżawcy. Jest to możliwe, oparte na temat ustawiania przepływnością, co zapewnia uzyskać gwarantowaną przepływność i opóźnienie, ponieważ platforma rezerwuje tej pojemności i gwarantuje powodzenie operacji. Po przekroczeniu tej pojemności, Pobierz, przeciążone komunikat o błędzie zawierający pojemności został przekroczony. przeciążone 0x1001: nie można przetworzyć żądania, ponieważ "Wskaźnik żądań jest duży". W tym miejscu jest, aby zobaczyć, jakie operacje i ich wielkości powoduje, że ten problem. Możesz uzyskać pomysł o pojemności wykorzystanych przekraczające zaprowizowaną pojemnością z metrykami w portalu. Należy upewnić się, pojemność jest zajęta niemal równie we wszystkich partycji podstawowej. Jeśli zostanie wyświetlony, większość przepływność jest używane przez jedną partycję, masz niesymetryczność obciążenia. 
 
 Metryki są dostępne, dowiesz się, jak przepływność jest używany w ciągu godzin, dni, a na siedem dni, między partycjami lub w agregacji. Aby uzyskać więcej informacji, zobacz [monitorowania i debugowania przy użyciu metryk w usłudze Azure Cosmos DB](use-metrics.md).
 
 Dzienniki diagnostyczne zostały wyjaśnione w [rejestrowania diagnostycznego usługi Azure Cosmos DB](logging.md) artykułu.
 
 ### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>Czy głównej mapy kluczy do partycji kluczową koncepcją w usłudze Azure Cosmos DB?
-Tak, klucz partycji służy do umieszczania jednostki w odpowiedniej lokalizacji. W usłudze Azure Cosmos DB służy można znaleźć po prawej logicznej partycji, który jest przechowywany na fizyczną partycję. Koncepcja partycjonowania również zostało wyjaśnione w [partycji i skali w usłudze Azure Cosmos DB](partition-data.md) artykułu. Podejmij podstawowe natychmiast Oto czy partycja logiczna nie może przekraczać limitu 10 GB już dziś. 
+Tak, klucz partycji służy do umieszczania jednostki w odpowiedniej lokalizacji. W usłudze Azure Cosmos DB służy można znaleźć po prawej logicznej partycji, który jest przechowywany na fizyczną partycję. Koncepcja partycjonowania również zostało wyjaśnione w [partycji i skali w usłudze Azure Cosmos DB](partition-data.md) artykułu. Podejmij podstawowe natychmiast Oto czy logicznej partycji nie powinna przekraczać limit 10 GB już dziś. 
 
 ### <a name="what-happens-when-i-get-a-quota-full-notification-indicating-that-a-partition-is-full"></a>Co się stanie, gdy pojawia się osiągnięto limit przydziału"powiadomienie wskazujące, że partycja jest zapełniony?
-Usługa Azure Cosmos DB jest oparte na umowie SLA systemu, który umożliwia nieograniczone Skalowanie z gwarancji w odniesieniu do opóźnienia, przepływności, dostępności i spójności. Jego interfejsu API rozwiązania Cassandra zbyt umożliwia nieograniczony magazyn danych. Ta nieograniczony magazyn opiera się na poziomie skalowania w poziomie danych za pomocą partycjonowania jako kluczową koncepcją. Koncepcja partycjonowania również zostało wyjaśnione w [partycji i skali w usłudze Azure Cosmos DB](partition-data.md) artykułu.
+Usługa Azure Cosmos DB jest oparte na umowie SLA systemu, który umożliwia nieograniczone Skalowanie z gwarancji w odniesieniu do opóźnienia, przepływności, dostępności i spójności. Ta nieograniczony magazyn opiera się na skalowaniu wykorzystać dane za pomocą partycjonowania jako kluczową koncepcją. Koncepcja partycjonowania również zostało wyjaśnione w [partycji i skali w usłudze Azure Cosmos DB](partition-data.md) artykułu.
 
-Limit 10 GB, liczby jednostek lub elementów na partycji logicznej należy przestrzegać. Aby upewnić się, że skalowanie aplikacji, zaleca się, że możesz *nie* tworzenie gorącą partycją dzięki przechowywaniu wszystkich informacji w jednej partycji i badając ją. Ten błąd można tylko wróć, jeśli danych jest niesymetryczna — to Ty dużej ilości danych dla jednej partycji klucz — czyli więcej niż 10 GB. Możesz znaleźć dystrybucja danych za pomocą portalu magazynu. Aby naprawić ten błąd jest recrete tabeli i wybierz szczegółową podstawowy (klucz partycji), co pozwala lepiej rozkład danych.
+Limit 10 GB, liczby jednostek lub elementów na partycji logicznej należy przestrzegać. Aby upewnić się, że skalowanie aplikacji, zaleca się, że możesz *nie* tworzenie gorącą partycją dzięki przechowywaniu wszystkich informacji w jednej partycji i badając ją. Ten błąd może pochodzić tylko, jeśli danych jest niesymetryczna — która jest, że masz dużą ilość danych dla jednej partycji klucz — czyli więcej niż 10 GB. Możesz znaleźć dystrybucja danych za pomocą portalu magazynu. Aby naprawić ten błąd jest ponowne utworzenie tabeli, a następnie wybierz podstawowy szczegółowe (klucz partycji), co pozwala lepiej rozkład danych.
 
 ### <a name="is-it-possible-to-use-cassandra-api-as-key-value-store-with-millions-or-billions-of-individual-partition-keys"></a>Czy jest możliwe za pomocą usług bazy danych Cassandra API jako magazyn wartości klucza milionów lub miliardów klucze poszczególnych partycji
 Usługa Azure Cosmos DB przechowywać dane nieograniczone skalowanie magazynu. Ta funkcja jest niezależna od informacji o przepływności. Tak zawsze można użyć interfejsu API rozwiązania Cassandra do przechowywania i pobierania kluczy/wartości, określając klucz podstawowy/partycji prawo. Te klucze poszczególnych Uzyskaj ich własnych partycji logicznej i znajdują się na jego podstawie fizyczną partycję bez problemów. 
 
 ### <a name="is-it-possible-to-create-multiple-tables-with-apache-cassandra-api-of-azure-cosmos-db"></a>Czy jest możliwe utworzenie wielu tabel przy użyciu Apache Cassandra API usługi Azure Cosmos DB?
-Tak, istnieje możliwość Kreta wielu tabel przy użyciu interfejsu API Apache Cassandra. Każda z tych tabel jest traktowany jako jednostki przepływności i magazynu. 
+Tak, istnieje możliwość tworzenia wielu tabel przy użyciu interfejsu API Apache Cassandra. Każda z tych tabel jest traktowany jako jednostki przepływności i magazynu. 
 
 ### <a name="is-it-possible-to-create-multiple-tables-in-succession"></a>Czy jest możliwe utworzenie wielu tabel w odstępie czasu?
-Usługa Azure Cosmos DB to system zasobów podlegają działań płaszczyzny danych i kontrolki. Kontenery, takich jak kolekcje, tabele są jednostki środowiska uruchomieniowego, które są udostępnione dla danego przepływność. Tworzenie te kontenery szybko nie jest oczekiwane działanie i ograniczenia. W przypadku testów, których listy/tabel od razu utworzyć — spróbuj rozmieścić je.
+Usługa Azure Cosmos DB to system zasobów podlegają działań płaszczyzny danych i kontrolki. Kontenery, takich jak kolekcje, tabele są jednostkach środowiska uruchomieniowego, które są udostępniane dla danego przepływność. Tworzenie te kontenery szybko nie jest oczekiwane działanie i ograniczenia. W przypadku testów, które listy/tabel od razu utworzyć — spróbuj rozmieścić je.
 
-### <a name="what-is-maximum-number-of-tables-which-can-be-created"></a>Co to jest maksymalna liczba tabel, które można utworzyć?
-Nie ma żadnego limitu fizycznych na liczbę tabel, Wyślij wiadomość e-mail na [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com) w przypadku bardzo dużej liczby tabel (w których łączny rozmiar stały przekracza 10 TB danych), które muszą zostać utworzone na podstawie zwykle 10s lub 100s. 
+### <a name="what-is-maximum-number-of-tables-that-can-be-created"></a>Co to jest maksymalna liczba tabel, które mogą być tworzone?
+Nie ma żadnego limitu fizycznych na liczbę tabel, Wyślij wiadomość e-mail na [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com) w przypadku dużej liczby tabel (w których łączny rozmiar stały przekracza 10 TB danych), które muszą zostać utworzone na podstawie zwykle 10s lub 100s. 
 
-### <a name="what-is-the-maximum--of-keyspace-which-we-can-create"></a>Jaka jest maksymalna liczba przestrzeń kluczy, w którym możemy utworzyć? 
-Nie ma limitu fizycznych na liczbie keyspaces są kontenery metadanych, Wyślij wiadomość e-mail na [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com) w przypadku bardzo dużej liczby keyspaces przyczyny. 
+### <a name="what-is-the-maximum--of-keyspace-that-we-can-create"></a>Jaka jest maksymalna liczba przestrzeń kluczy, który można utworzyć? 
+Nie ma limitu fizycznych na liczbie keyspaces są kontenery metadanych, Wyślij wiadomość e-mail na [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com) w przypadku dużej liczby keyspaces przyczyny. 
 
 ### <a name="is-it-possible-to-bring-in-lot-of-data-after-starting-from-normal-table"></a>Czy jest możliwe po od normalnych tabel, Przełącz w dużej ilości danych 
 Pojemność magazynu odbywa się automatycznie i zwiększa się podczas wypychania w większej ilości danych. Dlatego bez obaw można zaimportować tak dużej ilości danych bez zarządzania i Inicjowanie obsługi administracyjnej węzłów itp. 
 
 ### <a name="is-it-possible-to-supply-yaml-file-settings-to-configure-apache-casssandra-api-of-azure-cosmos-db-behavior"></a>Czy jest możliwe, aby podać ustawienia pliku yaml, aby skonfigurować zachowanie Apache Casssandra interfejsu API usługi Azure Cosmos DB?
-Apache Cassandra API usługi Azure Cosmos DB to usługa platformy. Udostępnia protokół poziomu programu Access do wykonywania operacji. Natychmiast ukrywa złożoność zarządzania, monitorowania i konfiguracji. Jako deweloper/użytkownik nie trzeba już martwić się o dostępności, reliktów, kluczy pamięci podręcznej, wiersza pamięci podręcznej, filtr rozwiniętej i wieloma innymi ustawieniami. Danych usługi Azure Cosmos DB interfejsu API Apache Cassandra skoncentrowano się na wydajność odczytu i zapisu wymaganych aplikacji bez konieczności konfigurowania i zarządzania.
+Apache Cassandra API usługi Azure Cosmos DB to usługa platformy. Zapewnia zgodność z protokołem poziomu wykonywania operacji. Natychmiast ukrywa złożoność zarządzania, monitorowania i konfiguracji. Jako deweloper/użytkownik nie trzeba już martwić się o dostępności, reliktów, kluczy pamięci podręcznej, wiersza pamięci podręcznej, filtr rozwiniętej i wieloma innymi ustawieniami. Danych usługi Azure Cosmos DB interfejsu API Apache Cassandra skoncentrowano się na wydajność odczytu i zapisu wymaganych aplikacji bez konieczności konfigurowania i zarządzania.
 
 ### <a name="will-apache-cassandra-api-for-azure-cosmos-db-support-node-additioncluster-statusnode-status-commands"></a>Będzie interfejsu API Apache Cassandra usługi Azure Cosmos DB obsługuje węzła dodawania/klaster stanie/node stanu polecenia?
-Interfejsu API Apache Cassandra to usługa platformy, co sprawia, że planowania pojemności, odpowiada na żądania elastyczności, przepływności i magazynu, szybka i bezproblemowa. Usługa Azure Cosmos DB możesz aprowizować przepływność, które są potrzebne. Następnie możesz skalować ją w górę i w dół dowolną liczbę razy, za pośrednictwem dnia bez martwienia się o Dodawanie/usuwanie węzłów lub zarządzania nimi. Oznacza to, że nie musisz za pomocą węzła, narzędzie do zarządzania klastrem. 
+Interfejsu API Apache Cassandra to usługa platformy, która ułatwia planowanie pojemności, odpowiada na żądania elastyczności, przepływności i magazynu, szybka i bezproblemowa. Usługa Azure Cosmos DB można aprowizować przepływność mierzoną, potrzebujesz. Następnie możesz skalować ją w górę i w dół dowolną liczbę razy, za pośrednictwem dnia bez martwienia się o Dodawanie/usuwanie węzłów lub zarządzania nimi. Oznacza to, że nie musisz za pomocą węzła, narzędzie do zarządzania klastrem. 
 
 ### <a name="what-happens-with-respect-to-various-config-settings-for-keyspace-creation-like-simplenetwork"></a>Co się dzieje w odniesieniu do różnych ustawień konfiguracji do tworzenia przestrzeń kluczy, takie jak proste i sieci?
 Usługa Azure Cosmos DB zapewnia globalną dystrybucję użytkowanie dostępności i małym opóźnieniu przyczyny. Nie musisz repliki konfiguracji itp. Wszystkie operacje zapisu są zawsze trwale kworum zatwierdzone w dowolnym regionie pisze się przy jednoczesnym zapewnieniu gwarancji wydajności.  
 
-### <a name="what-happens-with-respect-to-various-settings-for-table-metadata-like-bloom-filter-caching-read-repair-change-gcgrace-compression-memtableflushperiod-etc"></a>Co się stanie w odniesieniu do różnych ustawień dla tabeli metadanych, takich jak filtr rozwiniętej buforowania, czytanie zmiany naprawy, gc_grace memtable_flush_period kompresji itp.
-Usługa Azure Cosmos DB zapewnia wydajność dla operacji odczytu/zapisu i przepustowość, bez potrzeby wpływu ustawienia konfiguracji i przypadkowo, manipulowania nimi.  
+### <a name="what-happens-with-respect-to-various-settings-for-table-metadata-like-bloom-filter-caching-read-repair-change-gcgrace-compression-memtableflushperiod-etc"></a>Co się dzieje względem różne ustawienia dla tabeli metadanych, takich jak filtr rozwiniętej, buforowanie, przeczytaj zmiany naprawy, gc_grace memtable_flush_period kompresji itp.?
+Usługa Azure Cosmos DB zapewnia wydajność dla operacji odczytu/zapisu i przepustowość, bez konieczności zmiany ustawień konfiguracji i przypadkowo manipulowania nimi.  
 
 ### <a name="is-time-to-live-ttl-supported-for-cassandra-tables"></a>Czas wygaśnięcia (TTL) jest obsługiwane dla tabel bazy danych Cassandra? 
 Tak, jest obsługiwany czas wygaśnięcia. 
 
 ### <a name="is-it-possible-to-monitor-node-status-replica-status-gc-and-os-parameters-earlier-with-various-tools-what-needs-to-be-monitored-now"></a>Czy jest możliwe monitorowanie stanu węzła, stan repliki, wykaz globalny i parametrów systemu operacyjnego wcześniej przy użyciu różnych narzędzi Czego potrzebuje do monitorowanego teraz?
-Usługa Azure Cosmos DB to usługa platformy, która pomaga zwiększyć produktywność i nie martw się o zarządzanie i monitorowanie infrastruktury. Potrzebujesz zadbać o przepływności, który jest dostępny na portalu metryki, aby dowiedzieć się, jeśli są ograniczany i zwiększyć lub zmniejszyć, że przepustowość. Monitor [umowy SLA](monitor-accounts.md).
+Usługa Azure Cosmos DB to usługa platformy, która pomaga zwiększyć produktywność i nie martw się o zarządzanie i monitorowanie infrastruktury. Potrzebujesz zadbać o przepływności, które są dostępne w portalu metryki, aby dowiedzieć się, jeśli są ograniczany i zwiększyć lub zmniejszyć, że przepustowość. Monitor [umowy SLA](monitor-accounts.md).
 Użyj [metryki](use-metrics.md) użyj [dzienniki diagnostyczne](logging.md).
 
 ### <a name="which-client-sdks-can-work-with-apache-cassandra-api-of-azure-cosmos-db"></a>Które zestawy SDK klientów można pracować z Apache Cassandra API usługi Azure Cosmos DB?
@@ -661,8 +661,8 @@ W prywatnej wersji zapoznawczej Apache Cassandra zestawu SDK klienta sterowniki,
 ### <a name="is-composite-partition-key-supported"></a>Klucz partycji złożonego jest obsługiwana?
 Tak, można użyć regularnych składni można utworzyć klucza złożonego partycji. 
 
-### <a name="can-i-use-sstable-loader-for-data-loading"></a>W celu załadowania danych można używać modułu ładującego sstable?
-Nie, w trakcie okresu zapoznawczego sstable modułu ładującego nie jest obsługiwana. 
+### <a name="can-i-use-stable-loader-for-data-loading"></a>W celu załadowania danych można używać modułu ładującego stabilne?
+Nie, w trakcie okresu zapoznawczego stabilne modułu ładującego nie jest obsługiwana. 
 
 ### <a name="can-an-on-premises-cassandra-cluster-be-paired-with-azure-cosmos-dbs-apache-cassandra-api"></a>Czy klastra oprogramowania cassandra w środowisku lokalnym mogą być parowane przy użyciu interfejsu Apache Cassandra API usługi Azure Cosmos DB?
 Na obecne usługi Azure Cosmos DB zawiera zoptymalizowany środowisko, w środowisku chmury bez koszty operacji. Jeśli potrzebujesz parowania, Wyślij wiadomość e-mail do [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com) z opisem Twojego scenariusza.
@@ -671,7 +671,7 @@ Na obecne usługi Azure Cosmos DB zawiera zoptymalizowany środowisko, w środow
 Usługa Azure Cosmos DB oferuje dwa bezpłatne pełnej kopii zapasowych wykonanych interwałem cztery godziny już dziś wszystkich interfejsów API. Dzięki temu nie trzeba skonfigurować harmonogram tworzenia kopii zapasowych itd. Jeśli chcesz zmodyfikować i częstotliwość przechowywania, Wyślij wiadomość e-mail do [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com) wywoływać zgłoszenia do pomocy technicznej. Informacje o możliwości tworzenia kopii zapasowej znajduje się w [automatyczne tworzenie kopii zapasowej online i przywracanie za pomocą usługi Azure Cosmos DB](online-backup-and-restore.md) artykułu. 
 
 ### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>Jak konto interfejsu API rozwiązania Cassandra obsługuje tryb failover Jeśli region ulegnie awarii? 
-Interfejs API usługi Azure Cosmos DB Cassandra obiektowy globalnie rozproszoną platformę usługi Azure Cosmos DB. Aby upewnić się, że Twoja aplikacja może tolerować przestój centrum danych, należy włączyć co najmniej jeden region więcej dla konta w portalu usługi Azure Cosmos DB [opracowywanie zawartości przy użyciu kont usługi Azure Cosmos DB w wielu regionach](regional-failover.md). Można ustawić priorytet regionu za pomocą portalu [opracowywanie zawartości przy użyciu kont usługi Azure Cosmos DB w wielu regionach](regional-failover.md). 
+Interfejs API usługi Azure Cosmos DB Cassandra obiektowy globalnie rozproszoną platformę usługi Azure Cosmos DB. Aby upewnić się, że Twoja aplikacja może tolerować przestój centrum danych, należy włączyć co najmniej jeden region więcej dla konta w portalu usługi Azure Cosmos DB [opracowywanie zawartości przy użyciu kont usługi Azure Cosmos DB w wielu regionach](high-availability.md). Można ustawić priorytet regionu za pomocą portalu [opracowywanie zawartości przy użyciu kont usługi Azure Cosmos DB w wielu regionach](high-availability.md). 
 
 Możesz dodać dowolną liczbę regionów, jak konta i kontrolować, gdzie go może zostać przeniesiony do, zapewniając priorytetem trybu failover. Korzystanie z bazy danych, musisz podać aplikacji istnieje zbyt. Po wykonaniu tej czynności klientów nie będą obawiać się o przestoje. 
 
@@ -688,7 +688,7 @@ Planujemy w przyszłości Obsługa tej możliwości.
 Interfejs Apache Cassandra API zapewnia taką samą funkcjonalność języka CQL jak Apache Cassandra. Planujemy zbadać możliwości obsługi różnych funkcji w przyszłości.
 
 ### <a name="feature-x-of-regular-cassandra-api-is-not-working-as-today-where-can-the-feedback-be-provided"></a>Funkcja x regularne interfejsu API rozwiązania Cassandra nie działa jak dzisiaj, gdzie opinii można podać?
-Przekazać opinię za pośrednictwem [opinii uservoice](https://feedback.azure.com/forums/263030-azure-cosmos-db).
+Przekazać opinię za pośrednictwem [opinia głosowych użytkownika](https://feedback.azure.com/forums/263030-azure-cosmos-db).
 
 [azure-portal]: https://portal.azure.com
 [query]: sql-api-sql-query.md

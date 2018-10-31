@@ -3,7 +3,7 @@ title: Raportowanie w bazach danych skalowanych w poziomie cloud | Dokumentacja 
 description: jak skonfigurować zapytania elastyczne za pośrednictwem poziomych partycji
 services: sql-database
 ms.service: sql-database
-subservice: elastic-scale
+ms.subservice: elastic-scale
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 906c6825dbfdf7d4873c765d0b3eba626ef52e1b
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: e1eec489bf33cbf03269f68413c39c9fb03bbb22
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159367"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240396"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Raportowanie we wszystkich bazach danych w chmurze skalowanych w poziomie (wersja zapoznawcza)
 ![Zapytanie między fragmentami][1]

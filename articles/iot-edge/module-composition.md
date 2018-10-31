@@ -8,16 +8,16 @@ ms.date: 06/06/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a65eb029dbf10b194bd28bf7ad82f5aa839338a2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: beb7574653375024f36912c4b3a37b01d2f59bd5
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990624"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248407"
 ---
-# <a name="learn-how-to-use-deployment-manifests-to-deploy-modules-and-establish-routes"></a>Dowiedz się, jak wdrażać moduły oraz ustalenia tras za pomocą manifestów wdrożenia
+# <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Dowiedz się, jak wdrażać moduły oraz określenia trasy w usługi IoT Edge
 
-Każde urządzenie usługi IoT Edge działa co najmniej dwa moduły: $edgeAgent i $edgeHub, które tworzą środowisko uruchomieniowe usługi IoT Edge. Oprócz tych dwóch standardowych dowolne urządzenie usługi IoT Edge można uruchamiać wiele modułów, aby wykonać dowolną liczbę procesów. Wdrażając te moduły na urządzeniu tylko raz, potrzebujesz sposobu do deklarowania modułów, które są dołączone i jak współdziałają ze sobą. 
+Każde urządzenie usługi IoT Edge działa co najmniej dwa moduły: $edgeAgent i $edgeHub, które tworzą środowisko uruchomieniowe usługi IoT Edge. Ponadto dowolnego urządzenia IoT Edge można uruchamiać wiele modułów, aby wykonać dowolną liczbę procesów. Wdrażając te moduły na urządzeniu tylko raz, potrzebujesz sposobu do deklarowania modułów, które są dołączone i jak współdziałają ze sobą. 
 
 *Manifest wdrożenia* to dokument JSON, który opisuje:
 
@@ -27,7 +27,7 @@ Każde urządzenie usługi IoT Edge działa co najmniej dwa moduły: $edgeAgent 
 
 Wszystkie urządzenia usługi IoT Edge trzeba mieć skonfigurowaną manifest wdrożenia. Nowo zainstalowane środowisko uruchomieniowe usługi IoT Edge zgłasza kodu błędu, dopóki skonfigurowany z prawidłowym manifestem. 
 
-Samouczki usługi Azure IoT Edge możesz tworzyć manifestu wdrożenia za pośrednictwem kreatora w portalu usługi Azure IoT Edge. Można także zastosować manifest wdrożenia, w sposób programowy za pomocą REST lub zestawu SDK z usługi IoT Hub. Aby uzyskać więcej informacji, zobacz [wdrożenia usługi IoT Edge zrozumieć][lnk-deploy].
+Samouczki usługi Azure IoT Edge możesz tworzyć manifestu wdrożenia za pośrednictwem kreatora w portalu usługi Azure IoT Edge. Można także zastosować manifest wdrożenia, w sposób programowy za pomocą REST lub zestawu SDK z usługi IoT Hub. Aby uzyskać więcej informacji, zobacz [wdrożenia usługi IoT Edge zrozumieć](module-deployment-monitoring.md).
 
 ## <a name="create-a-deployment-manifest"></a>Tworzenie manifestu wdrożenia
 
@@ -138,7 +138,7 @@ Każdy wymaga źródła i ujścia, ale warunek jest opcjonalne, można użyć do
 | `/messages/modules/{moduleId}/outputs/{output}` | Wszystkie komunikaty z urządzenia do chmury przesyłane przy użyciu {moduleId}, {wyjściowych} |
 
 ### <a name="condition"></a>Warunek
-Warunek jest opcjonalny w deklaracji trasy. Jeśli chcesz przekazać wszystkie komunikaty z ujścia w źródle, po prostu Opuść **gdzie** klauzuli całkowicie. Możesz też [język zapytań usługi IoT Hub] [ lnk-iothub-query] do filtrowania niektórych komunikatów lub typy komunikatów, które spełniają warunek.
+Warunek jest opcjonalny w deklaracji trasy. Jeśli chcesz przekazać wszystkie komunikaty z ujścia w źródle, po prostu Opuść **gdzie** klauzuli całkowicie. Możesz też [język zapytań usługi IoT Hub](../iot-hub/iot-hub-devguide-routing-query-syntax.md) do filtrowania niektórych komunikatów lub typy komunikatów, które spełniają warunek.
 
 Komunikaty, które przechodzą między modułów usługi IoT Edge są formatowane w taki sam jak komunikaty, które przechodzą między urządzeniami i usługi Azure IoT Hub. Wszystkie komunikaty są w formacie JSON i mieć **systemProperties**, **parametr appProperties**, i **treści** parametrów. 
 
@@ -262,10 +262,4 @@ Ten przykład dokumentem JSON manifestu wdrażania.
 
 * Aby uzyskać pełną listę właściwości, które mogą lub muszą być zawarte w $edgeAgent i $edgeHub, zobacz [właściwości agenta usługi Edge i Centrum usługi Edge](module-edgeagent-edgehub.md).
 
-* Teraz, gdy wiesz, jak są używane moduły usługi IoT Edge, [zrozumieć wymagania i narzędzia do tworzenia modułów usługi IoT Edge][lnk-module-dev].
-
-[lnk-deploy]: module-deployment-monitoring.md
-[lnk-iothub-query]: ../iot-hub/iot-hub-devguide-routing-query-syntax.md
-[lnk-docker-create-options]: https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate
-[lnk-docker-logging-options]: https://docs.docker.com/engine/admin/logging/overview/
-[lnk-module-dev]: module-development.md
+* Teraz, gdy wiesz, jak są używane moduły usługi IoT Edge, [zrozumieć wymagania i narzędzia do tworzenia modułów usługi IoT Edge](module-development.md).

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/22/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 95f2ffb1a51184f1194f87a4a5e9a54e682edf80
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cbafe7fcdf2ccd515dfec5554c93bec9c7f3537a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312004"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50243167"
 ---
 # <a name="connector-version-release-history"></a>Historia wersji łącznika
 Łączniki dla programu Forefront Identity Manager (FIM) i Microsoft Identity Manager (MIM) są często aktualizowane.
@@ -98,7 +98,7 @@ Linki pokrewne:
 * Usługi sieci Web ogólnych:
   * Narzędzie Wsconfig nie zostały przekonwertowane poprawnie tablicę Json z "przykładowe żądanie" dla metody usługi REST. Przyczyną problemów z serializacji tej tablicy Json dla żądania REST.
   * Narzędzia konfiguracji łącznika usług sieci Web nie obsługuje użycia symboli miejsca w nazwach atrybutów JSON 
-    * Wzorzec podstawienia można dodać ręcznie do pliku WSConfigTool.exe.config, np. ```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```
+    * Wzorzec podstawienia można dodać ręcznie do pliku WSConfigTool.exe.config, np. ```<appSettings> <add key="JSONSpaceNamePattern" value="__" /> </appSettings>```
 > [!NOTE]
 > Wymagany jest klucz JSONSpaceNamePattern, jak eksportu zostanie wyświetlony następujący błąd: komunikat: pusta nazwa jest niedozwolona. 
 
@@ -143,7 +143,7 @@ Wydanie: 2017 marca
 ### <a name="enhancements"></a>Ulepszenia
 
 * Ogólny łącznik SQL:</br>
-  **Scenariusz objawy:** jest dobrze znane ograniczenia przy użyciu łącznika SQL, gdzie możemy tylko Zezwalaj na odwołanie do jednego typu obiektu i wymagają odsyłaczy z elementami członkowskimi. </br>
+  **Scenariusz objawy:**   jest dobrze znane ograniczenia przy użyciu łącznika SQL, gdzie możemy tylko Zezwalaj na odwołanie do jednego typu obiektu i wymagają odsyłaczy z elementami członkowskimi. </br>
   **Opis rozwiązania:** w kroku przetwarzania odwołań były "*" opcja zostanie wybrana, wszystkie kombinacje typów obiektów zostaną zwrócone do aparatu synchronizacji.
 
 >[!Important]

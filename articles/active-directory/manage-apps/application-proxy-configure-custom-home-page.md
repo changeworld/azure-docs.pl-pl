@@ -15,12 +15,12 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 10bcb3c0c4842202f95cdc1fff30d12b7a8fbbc2
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: e6f4e67d09eacadbbf9d74f417357a87ece0a951
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366027"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238509"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Ustaw niestandardową stronę główną dla opublikowanych aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD
 
@@ -62,7 +62,7 @@ Przed ustawieniem adres URL strony głównej, należy przestrzegać następując
 
 ### <a name="install-the-azure-ad-powershell-module"></a>Instalowanie modułu Azure AD PowerShell
 
-Przed zdefiniowaniem adres URL niestandardowej strony głównej przy użyciu programu PowerShell, należy zainstalować moduł programu PowerShell usługi Azure AD. Możesz pobrać pakiet ze [galerii programu PowerShell](https://www.powershellgallery.com/packages/AzureAD/2.0.0.131), który używa punktu końcowego interfejsu API programu Graph. 
+Przed zdefiniowaniem adres URL niestandardowej strony głównej przy użyciu programu PowerShell, należy zainstalować moduł programu PowerShell usługi Azure AD. Możesz pobrać pakiet ze [galerii programu PowerShell](https://www.powershellgallery.com/packages/AzureAD/2.0.0.131), który używa punktu końcowego interfejsu API programu Graph. 
 
 Aby zainstalować pakiet, wykonaj następujące kroki:
 
@@ -72,7 +72,7 @@ Aby zainstalować pakiet, wykonaj następujące kroki:
      Install-Module -Name AzureAD
     ```
     Jeśli używasz polecenia jako użytkownik inny niż administrator, należy użyć `-scope currentuser` opcji.
-2. Podczas instalacji należy wybrać **Y** zainstalować dwa pakiety z witryny Nuget.org. Wymagane są oba pakiety. 
+2. Podczas instalacji należy wybrać **Y** zainstalować dwa pakiety z witryny Nuget.org. Wymagane są oba pakiety. 
 
 ### <a name="find-the-objectid-of-the-app"></a>Znajdź identyfikator obiektu aplikacji
 
@@ -92,14 +92,14 @@ Uzyskaj identyfikator obiektu aplikacji, a następnie wyszukaj aplikację przez 
 3. Znajdź aplikację, w oparciu o jego adres URL strony głównej. Adres URL można znaleźć w portalu, przechodząc do **usługi Azure Active Directory** > **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**. W tym przykładzie użyto *sharepoint iddemo*.
 
     ```
-    Get-AzureADApplication | where { $_.Homepage -like “sharepoint-iddemo” } | fl DisplayName, Homepage, ObjectID
+    Get-AzureADApplication | where { $_.Homepage -like "sharepoint-iddemo" } | fl DisplayName, Homepage, ObjectID
     ```
 4. Powinna pojawić się wynik podobny do pokazanego poniżej. Skopiuj identyfikator GUID obiektu, do użycia w następnej sekcji.
 
     ```
     DisplayName : SharePoint
-    Homepage    : https://sharepoint-iddemo.msappproxy.net/
-    ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
+    Homepage    : https://sharepoint-iddemo.msappproxy.net/
+    ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
     ```
 
 ### <a name="update-the-home-page-url"></a>Zaktualizuj adres URL strony głównej
@@ -117,13 +117,13 @@ Utwórz adres URL strony głównej i aktualizowanie aplikacji przy użyciu tej w
 2. Utwórz obiekt pusta aplikacja do przechowywania, które chcesz wprowadzić zmiany. Ta zmienna przechowuje wartości, które chcesz zaktualizować. Nic nie jest tworzone w tym kroku.
 
     ```
-    $appnew = New-Object “Microsoft.Open.AzureAD.Model.Application”
+    $appnew = New-Object "Microsoft.Open.AzureAD.Model.Application"
     ```
 
-3. Ustaw adres URL strony głównej na żądaną wartość. Wartość musi być ścieżką poddomeny opublikowanej aplikacji. Na przykład, jeśli zmienisz adres URL strony głównej z *https://sharepoint-iddemo.msappproxy.net/* do *https://sharepoint-iddemo.msappproxy.net/hybrid/*, użytkownicy aplikacji przejść bezpośrednio do niestandardowej strony głównej.
+3. Ustaw adres URL strony głównej na żądaną wartość. Wartość musi być ścieżką poddomeny opublikowanej aplikacji. Na przykład, jeśli zmienisz adres URL strony głównej z *https://sharepoint-iddemo.msappproxy.net/* do *https://sharepoint-iddemo.msappproxy.net/hybrid/*, użytkownicy aplikacji przejść bezpośrednio do niestandardowej strony głównej.
 
     ```
-    $homepage = “https://sharepoint-iddemo.msappproxy.net/hybrid/”
+    $homepage = "https://sharepoint-iddemo.msappproxy.net/hybrid/"
     ```
 4. Tworzenie aktualizacji przy użyciu GUID (identyfikator obiektu), który został skopiowany w "krok 1: znajdowanie identyfikator obiektu aplikacji."
 

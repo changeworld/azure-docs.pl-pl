@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b3ee62ec6b8155841121eed6c4ab9c12b08f0e9b
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: f0c852b0b3de4edcf894d80ae397eae6c8980d49
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165223"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240413"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Biblioteki klienckie do łączenia się z usług Azure Analysis Services
 
@@ -59,7 +59,7 @@ Biblioteki klienckie dla połączeń klienckich różnią się od dostawców dan
 
 ### <a name="amo"></a>AMO  
 
- AMO jest zarządzana biblioteka kliencka służy do administrowania serwerem i definicję danych. Zostanie on zainstalowany i używana przez narzędzia i aplikacje klienckie. Na przykład SQL Server Management Studio (SSMS) używa AMO nawiązywania połączenia z usługami Analysis Services. Połączenie przy użyciu AMO jest zazwyczaj minimalny, składający się z `“data source=\<servername>”`. Po nawiązaniu połączenia możesz za pomocą interfejsu API z kolekcji baz danych i obiektów głównych. Program SSMS i SSDT Użyj AMO, aby połączyć się z wystąpieniem usług Analysis Services.  
+ AMO jest zarządzana biblioteka kliencka służy do administrowania serwerem i definicję danych. Zostanie on zainstalowany i używana przez narzędzia i aplikacje klienckie. Na przykład SQL Server Management Studio (SSMS) używa AMO nawiązywania połączenia z usługami Analysis Services. Połączenie przy użyciu AMO jest zazwyczaj minimalny, składający się z `"data source=\<servername>"`. Po nawiązaniu połączenia możesz za pomocą interfejsu API z kolekcji baz danych i obiektów głównych. Program SSMS i SSDT Użyj AMO, aby połączyć się z wystąpieniem usług Analysis Services.  
 
   
 ### <a name="adomd"></a>ADOMD

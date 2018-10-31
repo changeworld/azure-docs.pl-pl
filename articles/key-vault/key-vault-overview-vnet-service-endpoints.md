@@ -10,12 +10,12 @@ ms.date: 08/31/2018
 ms.service: key-vault
 ms.workload: identity
 ms.topic: conceptual
-ms.openlocfilehash: 9b0600a7afb07600116440461037c7abcb9236de
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6e0029e051e418bc54471284547329a0b0a2e9cd
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404328"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50246658"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Punkty końcowe usługi sieci wirtualnej dla usługi Azure Key Vault
 
@@ -44,7 +44,7 @@ Poniżej przedstawiono kroki wymagane do skonfigurowania zapory i sieci wirtualn
 Zapoznaj się [skonfigurować Azure Key Vault zapory i sieci wirtualne](key-vault-network-security.md) szczegółowe instrukcje krok po kroku.
 
 > [!IMPORTANT]
-> Gdy reguły zapory są stosowane, wszystkie usługi Key Vault [płaszczyzny danych](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) operacje mogą być wykonywane, gdy obiekt wywołujący żądania pochodzą z dozwolonych sieci wirtualnych lub zakres adresów IPV4. Dotyczy to również do uzyskiwania dostępu do magazynu kluczy z witryny Azure portal. Gdy użytkownik może przeglądarki do magazynu kluczy z witryny Azure portal, ich może nie móc listę kluczy/wpisów tajnych/certyfikatów Jeśli swoim komputerze klienckim nie ma na liście dozwolonych. Dotyczy to również selektor klucza — magazynu przez inne usługi platformy Azure. Użytkownicy mogą mieć możliwości wyświetlić listę magazynów kluczy, ale nie listy kluczy, jeśli reguły zapory na swoim komputerze klienckim.
+> Gdy reguły zapory są stosowane, wszystkie usługi Key Vault [płaszczyzny danych](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) operacje mogą być wykonywane, gdy obiekt wywołujący żądania pochodzą z dozwolonych sieci wirtualnych lub zakres adresów IPV4. (Aby dowiedzieć się więcej na temat płaszczyzny danych a płaszczyzny zarządzania, przeczytaj [to](../key-vault/key-vault-secure-your-key-vault.md#management-plane-access-control) dotyczy to również dostępu do magazynu kluczy z witryny Azure portal. Gdy użytkownik może przeglądarki do magazynu kluczy z witryny Azure portal, ich może nie móc listę kluczy/wpisów tajnych/certyfikatów Jeśli swoim komputerze klienckim nie ma na liście dozwolonych. Dotyczy to również selektor klucza — magazynu przez inne usługi platformy Azure. Użytkownicy mogą mieć możliwości wyświetlić listę magazynów kluczy, ale nie listy kluczy, jeśli reguły zapory na swoim komputerze klienckim.
 
 
 > [!NOTE]

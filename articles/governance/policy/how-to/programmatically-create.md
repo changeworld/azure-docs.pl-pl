@@ -4,16 +4,16 @@ description: W tym artykule opisano proces programowego tworzenia i zarządzanie
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/29/2018
+ms.date: 10/30/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 4a68b60df76dcc554158d6c8db4d0dfe8dd32be7
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: d72c9c1747bb697f66fa53489636b1726053060c
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209228"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242640"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programowe tworzenie zasad i wyświetlić dane na temat zgodności
 
@@ -74,7 +74,13 @@ Pierwszym krokiem procesu lepszą widoczność zasobów jest tworzenie i przypis
    New-AzureRmPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy 'AuditStorageAccounts.json'
    ```
 
-   Polecenie tworzy definicję zasad o nazwie _inspekcji magazynu kont otwarte do sieci publicznych_. Aby uzyskać więcej informacji na temat innych parametrów, których można wyświetlić [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition).
+   Polecenie tworzy definicję zasad o nazwie _inspekcji magazynu kont otwarte do sieci publicznych_.
+   Aby uzyskać więcej informacji na temat innych parametrów, których można wyświetlić [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition).
+
+   Gdy zostanie wywołana bez parametrów lokalizacji `New-AzureRmPolicyDefinition` wartość domyślna to zapisanie definicji zasad w wybranej subskrypcji kontekstu sesji. Aby zapisać definicję do innej lokalizacji, należy użyć następujących parametrów:
+
+   - **SubscriptionId** — Zapisz się do innej subskrypcji. Wymaga _GUID_ wartość.
+   - **ManagementGroupName** — zapisywanie do grupy zarządzania. Wymaga _ciąg_ wartość.
 
 1. Po utworzeniu definicji zasad, można utworzyć przypisanie zasad, uruchamiając następujące polecenia:
 
@@ -86,7 +92,8 @@ Pierwszym krokiem procesu lepszą widoczność zasobów jest tworzenie i przypis
 
    Zastąp _ContosoRG_ nazwą grupy zasobów przeznaczone.
 
-   **Zakres** parametru `New-AzureRmPolicyAssignment` działa także w przypadku subskrypcji i grup zarządzania. Parametr używa ścieżki wszystkich zasobów, które **ResourceId** właściwość `Get-AzureRmResourceGroup` zwraca. Wzorzec **zakres** dla każdego kontenera jest w następujący sposób.  Zastąp `{rgName}`, `{subId}`, i `{mgName}` z zasobem usługi grupy odpowiednio na nazwę, identyfikator subskrypcji i nazwa grupy zarządzania.
+   **Zakres** parametru `New-AzureRmPolicyAssignment` działa także w przypadku subskrypcji i grup zarządzania. Parametr używa ścieżki wszystkich zasobów, które **ResourceId** właściwość `Get-AzureRmResourceGroup` zwraca. Wzorzec **zakres** dla każdego kontenera jest w następujący sposób.
+   Zastąp `{rgName}`, `{subId}`, i `{mgName}` z zasobem usługi grupy odpowiednio na nazwę, identyfikator subskrypcji i nazwa grupy zarządzania.
 
    - Grupa zasobów- `/subscriptions/{subId}/resourceGroups/{rgName}`
    - Subskrypcja — `/subscriptions/{subId}/`

@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: a3ae9c0926f9c2a8bb900e25b610f8c2f4e6d292
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 0ca8e1081b514d5569c84a6364d55e8f49bee533
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231580"
+ms.locfileid: "50239009"
 ---
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>Rozpoznawanie jednostek biomedycznych przy użyciu szablonu Team Data Science naukowych
 
@@ -64,7 +64,7 @@ Na poniższej ilustracji przedstawiono architekturę, który został użyty do p
 ## <a name="data-description"></a>Opis danych
 
 ### <a name="1-word2vec-model-training-data"></a>1. Dane szkoleniowe modelu Word2Vec
-Najpierw pobraliśmy dane pierwotne MEDLINE abstrakcyjna z [MEDLINE](https://www.nlm.nih.gov/pubs/factsheets/medline.html). Dane są publicaly, które są dostępne w postaci plików XML na ich [serwera FTP](https://ftp.ncbi.nlm.nih.gov/pubmed/baseline). Na serwerze są dostępne 892 plików XML i każdy z plików XML ma informacje o ponad 30 000 artykułów. Więcej informacji na temat kroku zbierania danych znajdują się w sekcji struktury projektu. Te pola, które są obecne w każdym pliku to 
+Najpierw pobraliśmy dane pierwotne MEDLINE abstrakcyjna z [MEDLINE](https://www.nlm.nih.gov/pubs/factsheets/medline.html). Dane są publicznie dostępne w postaci plików XML na ich [serwera FTP](https://ftp.ncbi.nlm.nih.gov/pubmed/baseline). Na serwerze są dostępne 892 plików XML i każdy z plików XML ma informacje o ponad 30 000 artykułów. Więcej informacji na temat kroku zbierania danych znajdują się w sekcji struktury projektu. Te pola, które są obecne w każdym pliku to 
         
         abstract
         affiliation

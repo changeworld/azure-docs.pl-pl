@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewers: billgib,AyoOlubeko
+ms.reviewers: billgib,ayolubek
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 3bba0eb552338f1b436ea25306a84029d352f1f3
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: e23b679d6c81d1a4103f010a9d13c35e80d4d2af
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055292"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240992"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Raportowanie przy użyciu międzydzierżawowe rozproszonych zapytań
 
@@ -122,7 +122,7 @@ To ćwiczenie dodaje schematu (zewnętrznego źródła danych i definicje tabeli
 
    Elastyczne zapytanie używa poświadczeń o zakresie bazy danych, aby dostęp do wszystkich wymienionych baz danych dzierżawy. Te poświadczenia muszą być dostępne we wszystkich bazach danych i zwykle przyznanych minimalnych uprawnień powinien włączyć te zapytania.
 
-    ![Tworzenie poświadczeń](media/saas-tenancy-cross-tenant-reporting/create-credential.png)
+    ![tworzenie poświadczenia](media/saas-tenancy-cross-tenant-reporting/create-credential.png)
 
    Dzięki bazie danych wykazu jako zewnętrzne źródło danych zapytania są dystrybuowane do wszystkich baz danych zarejestrowanych w wykazie w czasie, który uruchamia zapytanie. Ponieważ nazwy serwerów są różne dla każdego wdrożenia, ten skrypt pobiera lokalizację bazy danych katalogu z bieżącego serwera (@@servername) gdy skrypt zostanie wykonany.
 

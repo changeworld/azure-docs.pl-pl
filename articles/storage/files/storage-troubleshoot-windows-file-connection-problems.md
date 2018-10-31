@@ -6,19 +6,19 @@ author: jeffpatt24
 tags: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 10/30/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: a0a330d3ea7362ffabb20a5d390cee87cbf7d8ff
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
-ms.translationtype: HT
+ms.openlocfilehash: 5e730e52d55f6c8c2dd02f69e3efa67017af152b
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365409"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242980"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Rozwiązywanie problemów z usługą Azure Files w Windows
 
-W tym artykule wymieniono typowe problemy, które są powiązane z plików pakietu Microsoft Azure, po nawiązaniu połączenia z klientami Windows. Zapewnia także możliwe przyczyny i rozwiązania tych problemów. Oprócz kroki rozwiązywania problemów, w tym artykule, można również użyć [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) aby upewnić się, że w środowisku klienta Windows ma poprawne warunki wstępne. AzFileDiagnostics automatyzuje wykrywania większość objawy wymienionych w tym artykule i ułatwia konfigurowanie środowiska w celu uzyskania optymalnej wydajności. Można również znaleźć te informacje w [udziałów plików platformy Azure do rozwiązywania problemów z](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) zawierający kroki, aby pomóc z problemami z udziałów plików platformy Azure łączenie/mapowania/instalowanie.
+W tym artykule wymieniono typowe problemy, które są powiązane z plików pakietu Microsoft Azure, po nawiązaniu połączenia z klientami Windows. Zapewnia także możliwe przyczyny i rozwiązania tych problemów. Oprócz kroki rozwiązywania problemów, w tym artykule, można również użyć [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) aby upewnić się, że w środowisku klienta Windows ma poprawne warunki wstępne. AzFileDiagnostics automatyzuje wykrywania większość objawy wymienionych w tym artykule i ułatwia konfigurowanie środowiska w celu uzyskania optymalnej wydajności. Można również znaleźć te informacje w [udziałów plików platformy Azure do rozwiązywania problemów z](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) zawierający kroki, aby pomóc z problemami z udziałów plików platformy Azure łączenie/mapowania/instalowanie.
 
 
 <a id="error53-67-87"></a>
@@ -32,13 +32,13 @@ Podczas próby instalacji udziału plików ze środowiska lokalnego lub z innego
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>Przyczyny 1: Kanał komunikacyjny niezaszyfrowane
 
-Ze względów bezpieczeństwa połączenia z udziałami plików platformy Azure są blokowane, jeśli nie jest szyfrowany kanał komunikacyjny, a w tym samym centrum danych nie jest podejmowana próba połączenia, gdzie znajdują się udziałów plików platformy Azure. Również może zostać zablokowany nieszyfrowanego połączenia, w tym samym centrum danych, jeśli [Wymagany bezpieczny transfer](https://docs.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer) ustawienie jest włączone na koncie magazynu. Szyfrowanie kanału komunikacji znajduje się tylko wtedy, gdy system operacyjny klienta użytkownika obsługuje szyfrowanie protokołu SMB.
+Ze względów bezpieczeństwa połączenia z udziałami plików platformy Azure są blokowane, jeśli nie jest szyfrowany kanał komunikacyjny, a w tym samym centrum danych nie jest podejmowana próba połączenia, gdzie znajdują się udziałów plików platformy Azure. Również może zostać zablokowany nieszyfrowanego połączenia, w tym samym centrum danych, jeśli [Wymagany bezpieczny transfer](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ustawienie jest włączone na koncie magazynu. Szyfrowanie kanału komunikacji znajduje się tylko wtedy, gdy system operacyjny klienta użytkownika obsługuje szyfrowanie protokołu SMB.
 
 Windows 8, Windows Server 2012 i nowszych wersjach każdego systemu negocjowania żądań, które obejmują protokół SMB 3.0, który obsługuje szyfrowanie.
 
 ### <a name="solution-for-cause-1"></a>Rozwiązanie przyczyny 1
 
-1. Sprawdź [Wymagany bezpieczny transfer](https://docs.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer) ustawienie jest wyłączone na koncie magazynu.
+1. Sprawdź [Wymagany bezpieczny transfer](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ustawienie jest wyłączone na koncie magazynu.
 2. Połączenie od klienta, który wykonuje jedną z następujących czynności:
 
     - Spełnia wymagania dotyczące systemu Windows 8 i Windows Server 2012 lub nowszy
@@ -189,6 +189,24 @@ Aby skopiować plik za pośrednictwem sieci, należy najpierw musisz go odszyfro
   - Wartość = 1
 
 Należy pamiętać, że ustawienie klucza rejestru ma wpływ na wszystkie operacje kopiowania, które zostały wprowadzone do udziałów sieciowych.
+
+## <a name="slow-enumeration-of-files-and-folders"></a>Powolne wyliczenie plików i folderów
+
+### <a name="cause"></a>Przyczyna
+
+Ten problem może wystąpić, jeśli na komputerze klienckim na potrzeby dużych katalogów jest brak wystarczającej ilości pamięci podręcznej.
+
+### <a name="solution"></a>Rozwiązanie
+
+Aby rozwiązać ten problem, dostosowując **DirectoryCacheEntrySizeMax** wartości rejestru, aby umożliwić buforowanie większej listach zawartości katalogów w komputerze klienckim:
+
+- Lokalizacja: HKLM\System\CCS\Services\Lanmanworkstation\Parameters
+- Wartość mane: DirectoryCacheEntrySizeMax 
+- Wartość typ: DWORD
+ 
+ 
+Można na przykład, ustaw ją na 0x100000 i sprawdzić, czy wydajność stają się lepsze.
+
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
 Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) uzyskać szybko rozwiązać problem.

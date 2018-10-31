@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: shvija
-ms.openlocfilehash: eaea6adbaef7baf9bb1e617ba0a709cf14edf781
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 0a8cb349be0ffefecb07bc705391684dc57f1b96
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005582"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239495"
 ---
 # <a name="receive-events-from-event-hubs-using-go"></a>Odbieranie zdarzeń z usługi Event Hubs za pomocą języka Go
 
@@ -80,7 +80,7 @@ import (
 
 ## <a name="create-service-principal"></a>Tworzenie jednostki usługi
 
-Utwórz nową jednostkę usługi, postępując zgodnie z instrukcjami wyświetlanymi w [Tworzenie jednostki usługi platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/create-an-azure-service-principal-azure-cli). Zapisz podanych poświadczeń w środowisku z następującymi nazwami. Zestaw Azure SDK dla języka Go i pakietu usługi Event Hubs są wstępnie skonfigurowane do wyszukania tych nazw zmiennych.
+Utwórz nową jednostkę usługi, postępując zgodnie z instrukcjami wyświetlanymi w [Tworzenie jednostki usługi platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/create-an-azure-service-principal-azure-cli). Zapisz podanych poświadczeń w środowisku o następujących nazwach: zarówno zestaw Azure SDK dla języka Go i usługi Event Hubs pakietu są wstępnie skonfigurowane, aby wyszukać te nazwy zmiennych.
 
 ```bash
 export AZURE_CLIENT_ID=
@@ -197,13 +197,7 @@ if err != nil {
 Instrukcje w tym samouczku obejmują użycie pojedynczego wystąpienia klasy **EventProcessorHost**. Aby zwiększyć przepustowość i niezawodność, należy uruchomić wiele wystąpień **EventProcessorHost** w różnych systemach. Leaser, które system zapewnia, że tylko jeden odbiornik jest skojarzony z i odbiera komunikaty z określonej partycji o określonej godzinie.
 
 ## <a name="next-steps"></a>Kolejne kroki
-
-Odwiedź te strony, aby dowiedzieć się więcej o usłudze Event Hubs:
-
-* [Wysyłanie zdarzeń za pomocą języka Go](event-hubs-go-get-started-send.md)
-* [Omówienie usługi Event Hubs](event-hubs-about.md)
-* [Tworzenie centrum zdarzeń](event-hubs-create.md)
-* [Event Hubs — często zadawane pytania](event-hubs-faq.md)
+W tym przewodniku Szybki Start utworzono aplikację języka Go, która Odebrano komunikaty z Centrum zdarzeń. Aby dowiedzieć się więcej o sposobie wysyłania zdarzeń do Centrum zdarzeń za pomocą języka Go, zobacz [wysyłać zdarzenia z Centrum zdarzeń — z rzeczywistym użyciem](event-hubs-go-get-started-send.md).
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-about.md

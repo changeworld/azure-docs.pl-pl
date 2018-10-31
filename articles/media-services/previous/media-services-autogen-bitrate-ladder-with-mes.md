@@ -1,49 +1,49 @@
 ---
-title: Użyj usługi Azure Media Encoder Standard, aby automatycznie wygenerować drabinę szybkości transmisji bitów | Dokumentacja firmy Microsoft
-description: W tym temacie przedstawiono sposób Media Encoder Standard (rynkowej) umożliwia automatyczne generowanie drabinę szybkości transmisji bitów, na podstawie rozdzielczość i szybkość transmisji bitów. Rozdzielczość i szybkość transmisji bitów nigdy nie zostanie przekroczony. Na przykład jeśli dane wejściowe są 720p w 3 MB/s, dane wyjściowe będą pozostawać w najlepszym 720p i rozpocznie stawkami niższa niż 3 MB/s.
+title: Użyj usługi Azure Media Encoder Standard automatyczne generowanie drabiny szybkości transmisji bitów | Dokumentacja firmy Microsoft
+description: W tym temacie przedstawiono sposób Media Encoder Standard (MES) umożliwia automatyczne generowanie drabiny szybkości transmisji bitów, na podstawie rozdzielczości i szybkości transmisji bitów. Rozdzielczości i szybkości transmisji bitów nigdy nie zostanie przekroczony. Na przykład jeśli dane wejściowe są 720p na 3 MB/s, dane wyjściowe będą pozostają w najlepszym 720p i rozpocznie się stawek niższy niż 3 MB/s.
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 80f76f413ec2c267ba8fb93514480e168563f470
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1d02f64cce5e539dd43a9372a00cd3ec1ddd5f0c
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788627"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50246980"
 ---
-#  <a name="use-azure-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Użyj usługi Azure Media Encoder Standard, aby automatycznie wygenerować drabinę szybkości transmisji bitów
+#  <a name="use-azure-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Użyj usługi Azure Media Encoder Standard automatyczne generowanie drabiny szybkości transmisji bitów
 
 ## <a name="overview"></a>Przegląd
 
-W tym artykule przedstawiono sposób Media Encoder Standard (rynkowej) umożliwia automatyczne generowanie drabinę szybkości transmisji bitów (pary rozpoznawania szybkości transmisji bitów) na podstawie rozdzielczość i szybkość transmisji bitów. Nigdy nie przekroczy ustawienie generowane automatycznie, rozdzielczość i szybkość transmisji bitów. Na przykład jeśli dane wejściowe są 720p 3 MB/s, dane wyjściowe w najlepszym pozostaje 720p i rozpocznie stawkami niższa niż 3 MB/s.
+W tym artykule przedstawiono sposób Media Encoder Standard (MES) umożliwia automatyczne generowanie drabiny szybkości transmisji bitów (pary rozpoznawania szybkości transmisji bitów), na podstawie rozdzielczości i szybkości transmisji bitów. Nigdy nie przekroczy ustawienie wstępne generowane automatycznie, rozdzielczości i szybkości transmisji bitów. Na przykład jeśli dane wejściowe są 720p 3 MB/s, dane wyjściowe w najlepszym pozostaje 720p i rozpocznie się stawek niższy niż 3 MB/s.
 
-### <a name="encoding-for-streaming-only"></a>Kodowanie tylko przesyłania strumieniowego
+### <a name="encoding-for-streaming-only"></a>Kodowanie przesyłania strumieniowego tylko
 
-Jeśli Twoje zamierzeniu zakodować źródłowy plik wideo tylko do przesyłania strumieniowego, następnie należy użyć "Adaptacyjne przesyłanie strumieniowe" ustawienia wstępnego podczas tworzenia zadania kodowania. Korzystając z **adaptacyjne przesyłanie strumieniowe** zdefiniowane, koder rynkowej sposób inteligentny będzie cap drabinę szybkości transmisji bitów. Jednak nie będzie mogła kontroli kodowanie koszty, ponieważ usługa określa, jak wiele warstw do użycia i jakie rozdzielczości. Zawiera przykłady warstw wyjściowego utworzonego przez rynkowej wyniku z kodowaniem **adaptacyjne przesyłanie strumieniowe** ustawień wstępnych. na końcu tego artykułu. Dane wyjściowe zawartości zawiera pliki MP4, gdzie audio i wideo nie ma przeplotu.
+Jeśli jest zgodne z zamiarami użytkownika zakodować źródłowy plik wideo tylko w przypadku przesyłania strumieniowego, następnie należy użyć "adaptacyjnego przesyłania strumieniowego" wstępnie ustawione podczas tworzenia zadania kodowania. Korzystając z **adaptacyjnego przesyłania strumieniowego** ustawienie wstępne kodera MES będzie inteligentnie limit drabiny szybkości transmisji bitów. Jednak nie można do kontrolki, kodowanie, koszty, ponieważ usługa określa, jak wiele warstw do użycia i jakie rozdzielczości. Zawiera przykłady warstw danych wyjściowych wytworzonych przez usługi MES wyniku kodowania z **adaptacyjnego przesyłania strumieniowego** wstępnie ustawione na końcu tego artykułu. Dane wyjściowe, element zawartości zawiera pliki MP4, gdzie audio i wideo nie odbywa się z przeplotem.
 
-### <a name="encoding-for-streaming-and-progressive-download"></a>Kodowanie używane do przesyłania strumieniowego i pobierania progresywnego
+### <a name="encoding-for-streaming-and-progressive-download"></a>Kodowanie przesyłania strumieniowego i pobierania progresywnego
 
-Z celem jest, aby zakodować źródłowy plik wideo do przesyłania strumieniowego, a także do tworzenia plików MP4 do pobierania progresywnego, należy użyć "zawartości adaptacyjną wielu szybkości transmisji bitów MP4" ustawienia wstępnego podczas tworzenia zadania kodowania. Korzystając z **zawartości adaptacyjną wielu MP4 szybkości transmisji bitów** zdefiniowane, koder rynkowej stosuje tej samej logiki kodowania, powyżej, ale teraz elementu zawartości wyjściowej będzie zawierać pliki MP4, gdzie audio i wideo jest przeplatana. Można użyć jednego z tych plików MP4 (na przykład najwyższa wersja szybkości transmisji bitów) jako plik pobierania progresywnego.
+W przypadku zakodować źródłowy plik wideo do przesyłania strumieniowego oraz do tworzenia plików MP4 do pobierania progresywnego zgodne z zamiarami użytkownika należy używać "zawartości adaptacyjne wielu szybkości transmisji bitów w formacie MP4" wstępnie ustawione podczas tworzenia zadania kodowania. Korzystając z **zawartości adaptacyjne wielu szybkości transmisji bitów w formacie MP4** zdefiniowane, encoder usługi MES ma zastosowanie ta sama logika kodowania opisanych powyżej, ale teraz elementu zawartości wyjściowej będzie zawierać pliki MP4, gdzie audio i wideo odbywa się z przeplotem. Można użyć jednego z tych plików w formacie MP4 (na przykład najwyższa wersja szybkości transmisji bitów), jako plik pobierania progresywnego.
 
-## <a id="encoding_with_dotnet"></a>Kodowanie w usłudze Media Services zestawu .NET SDK
+## <a id="encoding_with_dotnet"></a>Kodowanie za pomocą usługi Media Services .NET SDK
 
-Poniższy przykład kodu wykorzystuje .NET SDK usługi Media Services do wykonywania następujących zadań:
+Poniższy przykład kodu używa Media Services .NET SDK do wykonywania następujących zadań:
 
 - Utwórz zadania kodowania.
-- Pobierz odwołanie do kodera Media Encoder Standard.
-- Dodaj zadanie kodowania zadania i określanie użycia **adaptacyjne przesyłanie strumieniowe** wstępnie zdefiniowane. 
-- Tworzenie zasobu wyjściowy, który zawiera zakodowanym elementem zawartości.
+- Pobierz odwołanie do usługi Media Encoder Standard kodera.
+- Dodaj zadanie kodowania, zadania i określanie użycia **adaptacyjnego przesyłania strumieniowego** wstępnie zdefiniowane. 
+- Tworzenie zasobu danych wyjściowych, który zawiera zakodowanym elementem zawartości.
 - Dodaj program obsługi zdarzeń, aby sprawdzić postęp zadania.
-- Przesłać zadanie.
+- Prześlij zadanie.
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Tworzenie i konfigurowanie projektu programu Visual Studio
 
@@ -169,12 +169,12 @@ namespace AdaptiveStreamingMESPresest
 
 ## <a id="output"></a>Dane wyjściowe
 
-W tej sekcji przedstawiono trzy przykłady warstw wyjściowego utworzonego przez rynkowej wyniku z kodowaniem **adaptacyjne przesyłanie strumieniowe** wstępnie zdefiniowane. 
+W tej sekcji przedstawiono trzy przykłady warstw danych wyjściowych wytworzonych przez usługi MES wyniku kodowania z **adaptacyjnego przesyłania strumieniowego** wstępnie zdefiniowane. 
 
 ### <a name="example-1"></a>Przykład 1
-Źródło o wysokość "1080" i "29.970" szybkość klatek tworzy 6 warstwy wideo:
+Źródło o wysokości "1080" i "29.970" szybkość klatek generuje 6 warstwy wideo:
 
-|Warstwy|Wysokość|Szerokość|Bitrate(Kbps)|
+|Warstwa|Wysokość|Szerokość|Bitrate(Kbps)|
 |---|---|---|---|
 |1|1080|1920|6780|
 |2|720|1280|3520|
@@ -184,9 +184,9 @@ W tej sekcji przedstawiono trzy przykłady warstw wyjściowego utworzonego przez
 |6|180|320|380|
 
 ### <a name="example-2"></a>Przykład 2
-Źródło o wysokość "720" i "23.970" szybkość klatek tworzy 5 warstwy wideo:
+Źródło o wysokości "720" i "23.970" szybkość klatek generuje 5 warstwy wideo:
 
-|Warstwy|Wysokość|Szerokość|Bitrate(Kbps)|
+|Warstwa|Wysokość|Szerokość|Bitrate(Kbps)|
 |---|---|---|---|
 |1|720|1280|2940|
 |2|540|960|1850|
@@ -195,9 +195,9 @@ W tej sekcji przedstawiono trzy przykłady warstw wyjściowego utworzonego przez
 |5|180|320|320|
 
 ### <a name="example-3"></a>Przykład 3
-Źródło o wysokość "360" i "29.970" szybkość klatek tworzy 3 warstwy wideo:
+Źródło o wysokości "360" i "29.970" szybkość klatek generuje 3 warstwy wideo:
 
-|Warstwy|Wysokość|Szerokość|Bitrate(Kbps)|
+|Warstwa|Wysokość|Szerokość|Bitrate(Kbps)|
 |---|---|---|---|
 |1|360|640|700|
 |2|270|480|440|
@@ -209,5 +209,5 @@ W tej sekcji przedstawiono trzy przykłady warstw wyjściowego utworzonego przez
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Zobacz też
-[Usługi multimediów kodowania — omówienie](media-services-encode-asset.md)
+[Omówienie kodowania usługi Media Services](media-services-encode-asset.md)
 

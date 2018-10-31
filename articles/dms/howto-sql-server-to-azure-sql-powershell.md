@@ -1,6 +1,6 @@
 ---
-title: Użyj modułu usługi Azure Database Migration Service w systemie Microsoft Azure PowerShell do migracji programu SQL Server w środowisku lokalnym do bazy danych SQL Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się przeprowadzić migrację z lokalnego programu SQL Server do bazy danych SQL Azure przy użyciu programu Azure PowerShell.
+title: Migrowanie programu SQL Server do usługi Azure SQL Database za pomocą usługi Database Migration Service i programu PowerShell | Dokumentacja firmy Microsoft
+description: Dowiedz się przeprowadzić migrację z lokalnego programu SQL Server do usługi Azure SQL Database przy użyciu programu Azure PowerShell.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: ffa4d5f87a722ed3cb95d873d02707ed1c797dc6
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 0a4e88ed52e2da814d1b10dbc695c9c61b899ef1
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886670"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248208"
 ---
-# <a name="migrate-sql-server-on-premises-to-azure-sql-db-using-azure-powershell"></a>Migrowanie lokalnego programu SQL Server do bazy danych SQL Azure przy użyciu programu Azure PowerShell
+# <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>Migrowanie lokalnego programu SQL Server do usługi Azure SQL Database przy użyciu programu Azure PowerShell
 W tym artykule, wykonywana jest migracja **Adventureworks2012** bazy danych przywróconej do lokalnego wystąpienia programu SQL Server 2016 lub nowszym do usługi Azure SQL Database przy użyciu programu Microsoft Azure PowerShell. Można migrować bazy danych z lokalnego wystąpienia programu SQL Server do usługi Azure SQL Database przy użyciu `AzureRM.DataMigration` modułu w programie Microsoft Azure PowerShell.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: daseidma;bwren
-ms.openlocfilehash: 70cf6fe1e2256ba2ed58d020111669e59d9db56b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9d574e7e8b0b285093aa0960243300dfe9f6d417
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405518"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249012"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurowanie rozwiązania Service Map na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Służy on do wyświetlenia serwerów, prawdopodobnie z nich--wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map Pokazuje połączenia między serwerami, procesami i portami w dowolnej architekturze połączenia TCP bez konieczności konfiguracji, innej niż Instalacja agenta.
@@ -146,7 +146,7 @@ W tym artykule będziemy odnosić się do wszystkich agentów, czy Linux lub Win
 
 Agent rozwiązania Service Map nie przesyła wszystkie dane, a nie wymaga wprowadzania zmian w zapory i porty. Agenta usługi Log Analytics w usłudze Log Analytics, przesyłania danych na mapie usługi zawsze, bezpośrednio lub za pośrednictwem bramy usługi Log Analytics.
 
-![Agenci rozwiązania Service Map](media/monitoring-service-map/agents.png)
+![Agenci rozwiązania Service Map](media/monitoring-service-map-configure/agents.png)
 
 Jeśli jesteś klientem programu System Center Operations Manager z grupy zarządzania podłączone do usługi Log Analytics:
 

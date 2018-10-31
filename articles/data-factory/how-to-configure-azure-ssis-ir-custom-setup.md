@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/21/2018
+ms.date: 10/28/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: ad3ec09f039b38290929289c7bca77664b0fb554
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3ba3e6036821323146f00cf9c255b70606771aed
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441789"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241161"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Dostosowywanie ustawień środowiska Azure-SSIS integration Runtime
 
@@ -98,7 +98,11 @@ Dostosowywanie środowiska IR Azure-SSIS, potrzebne są następujące elementy:
 
        ![Skopiuj i Zapisz sygnatura dostępu współdzielonego](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image8.png)
 
-    1.  W przypadku udostępniania lub zmienić konfigurację środowiska IR Azure-SSIS przy użyciu programu PowerShell, przed rozpoczęciem korzystania z usługi Azure-SSIS IR, uruchomić `Set-AzureRmDataFactoryV2IntegrationRuntime` polecenia cmdlet z identyfikatora URI sygnatury dostępu Współdzielonego kontenera jako wartość dla nowych `SetupScriptContainerSasUri` parametru. Na przykład:
+    1.  Po aprowizacji lub zmienić konfigurację środowiska IR Azure-SSIS przy użyciu interfejsu użytkownika usługi Data Factory, przed rozpoczęciem korzystania z usługi Azure-SSIS IR, wprowadź identyfikator URI sygnatury dostępu Współdzielonego kontenera, w odpowiednim polu:
+
+       ![Wprowadź sygnaturę dostępu współdzielonego](media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
+
+       W przypadku udostępniania lub zmienić konfigurację środowiska IR Azure-SSIS przy użyciu programu PowerShell, przed rozpoczęciem korzystania z usługi Azure-SSIS IR, uruchomić `Set-AzureRmDataFactoryV2IntegrationRuntime` polecenia cmdlet z identyfikatora URI sygnatury dostępu Współdzielonego kontenera jako wartość dla nowych `SetupScriptContainerSasUri` parametru. Na przykład:
 
        ```powershell
        Set-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName `
@@ -143,7 +147,7 @@ Dostosowywanie środowiska IR Azure-SSIS, potrzebne są następujące elementy:
 
        1. `MSDTC` Folder, który zawiera niestandardowe ustawienia do modyfikowania konfiguracji zabezpieczeń i sieci dla usługi transakcji Koordynator MSDTC (Microsoft Distributed) w każdym węźle usługi Azure-SSIS IR. Aby upewnić się, że usługa MSDTC została uruchomiona, Dodaj zadanie wykonania procesu na początku przepływ sterowania w pakietach można wykonać następujące polecenie: `%SystemRoot%\system32\cmd.exe /c powershell -Command "Start-Service MSDTC"` 
 
-       1. `ORACLE ENTERPRISE` Folder, który zawiera skrypt instalacji niestandardowej (`main.cmd`) i plik konfiguracji instalacji dyskretnej (`client.rsp`) Aby zainstalować sterownik Oracle OCI w każdym węźle Twojego środowiska Azure-SSIS IR Enterprise Edition. Ta konfiguracja pozwala Użyj Menedżera połączeń bazy danych Oracle, źródłowym i docelowym. Najpierw pobierz najnowszego klienta Oracle — na przykład `winx64_12102_client.zip` — od [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) , a następnie przekaż go razem z `main.cmd` i `client.rsp` do kontenera. Jeśli używasz TNS nawiązać połączenia z programem Oracle, należy również pobrać `tnsnames.ora`, edytować go i przekaż go do kontenera, dzięki czemu mogą być kopiowane do folderu instalacyjnego programu Oracle podczas instalacji.
+       1. `ORACLE ENTERPRISE` Folder, który zawiera skrypt instalacji niestandardowej (`main.cmd`) i plik konfiguracji instalacji dyskretnej (`client.rsp`) Aby zainstalować łączniki bazy danych Oracle i OCI sterownika w każdym węźle Twojego środowiska Azure-SSIS IR Enterprise Edition. Ta konfiguracja pozwala Użyj Menedżera połączeń bazy danych Oracle, źródłowym i docelowym. Najpierw pobierz v5.0 Connectors firmy Microsoft na oprogramowanie Oracle (`AttunitySSISOraAdaptersSetup.msi` i `AttunitySSISOraAdaptersSetup64.msi`) z [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=55179) i najnowszych klienta Oracle — na przykład `winx64_12102_client.zip` — od [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html), następnie przekazać je wszystkie razem z `main.cmd` i `client.rsp` do kontenera. Jeśli używasz TNS nawiązać połączenia z programem Oracle, należy również pobrać `tnsnames.ora`, edytować go i przekaż go do kontenera, dzięki czemu mogą być kopiowane do folderu instalacyjnego programu Oracle podczas instalacji.
 
        1. `ORACLE STANDARD` Folder, który zawiera skrypt instalacji niestandardowej (`main.cmd`) do zainstalowania sterownika Oracle ODP.NET w każdym węźle usługi Azure-SSIS IR. Ta konfiguracja pozwala Użyj Menedżera połączeń ADO.NET, źródłowym i docelowym. Najpierw pobierz najnowszy sterownik Oracle ODP.NET — na przykład `ODP.NET_Managed_ODAC122cR1.zip` — od [Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html), a następnie przekaż go razem z `main.cmd` do kontenera.
 

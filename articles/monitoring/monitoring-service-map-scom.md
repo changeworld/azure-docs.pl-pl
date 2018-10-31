@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
-ms.openlocfilehash: 6fc6afa9c0ccbddcfa408556dee92618fe63c8fb
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b9146bfc284a469f12eb626c2434f4afe52335dc
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407116"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250466"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>Mapa usługi integracji programu System Center Operations Manager
   > [!NOTE]
@@ -53,19 +53,19 @@ Aby skonfigurować integrację rozwiązania Service Map, wykonaj następujące c
 
 1. Aby otworzyć Kreatora konfiguracji w **omówienie mapy usługi** okienku kliknij **Dodaj obszar roboczy**.  
 
-    ![Okienko omówienia mapy usługi](media/monitoring-service-map/scom-configuration.png)
+    ![Okienko omówienia mapy usługi](media/monitoring-service-map-scom/scom-configuration.png)
 
 2. W **Konfiguracja połączenia** okna, wprowadź nazwę dzierżawy lub identyfikator, identyfikator aplikacji (znany także jako nazwa użytkownika lub identyfikatora klienta) i hasło jednostki usługi, a następnie kliknij przycisk **dalej**. Aby uzyskać więcej informacji, przejdź do [utworzyć nazwę główną usługi](#creating-a-service-principal).
 
-    ![W oknie Konfiguracja połączenia](media/monitoring-service-map/scom-config-spn.png)
+    ![W oknie Konfiguracja połączenia](media/monitoring-service-map-scom/scom-config-spn.png)
 
 3. W **wybór subskrypcji** , wybierz subskrypcję platformy Azure, grupę zasobów platformy Azure (jedna, która zawiera obszar roboczy usługi Log Analytics) i obszar roboczy usługi Log Analytics, a następnie kliknij przycisk **dalej**.
 
-    ![Obszar roboczy programu Operations Manager konfiguracji](media/monitoring-service-map/scom-config-workspace.png)
+    ![Obszar roboczy programu Operations Manager konfiguracji](media/monitoring-service-map-scom/scom-config-workspace.png)
 
 4. W **wybór grupy maszyny** okna, możesz wybrać grupy maszyny mapy usługi mają być synchronizowane z programem Operations Manager. Kliknij przycisk **grupy maszyn Dodaj/Usuń**, wybierz grupy z listy **dostępne grupy maszyn**i kliknij przycisk **Dodaj**.  Po wybraniu grup kliknij **Ok** na zakończenie.
     
-    ![Grupy maszyn konfiguracji menedżera operacji](media/monitoring-service-map/scom-config-machine-groups.png)
+    ![Grupy maszyn konfiguracji menedżera operacji](media/monitoring-service-map-scom/scom-config-machine-groups.png)
     
 5. W **wybór dotyczący serwera** okna, skonfigurowaniu grupy serwerów mapy usługi przy użyciu serwerów, które mają być synchronizowane między programem Operations Manager i Service Map. Kliknij przycisk **Dodaj/Usuń serwery**.   
     
@@ -75,36 +75,36 @@ Aby skonfigurować integrację rozwiązania Service Map, wykonaj następujące c
     * Zarządzane przez usługę mapy
     * Na liście grupy serwerów mapy usługi
 
-    ![Grupa konfiguracji programu Operations Manager](media/monitoring-service-map/scom-config-group.png)
+    ![Grupa konfiguracji programu Operations Manager](media/monitoring-service-map-scom/scom-config-group.png)
 
 6. Opcjonalnie: Wybierz pulę zasobów serwera zarządzania do komunikowania się z usługą Log Analytics, a następnie kliknij przycisk **Dodaj obszar roboczy**.
 
-    ![Pula zasobów konfiguracji menedżera operacji](media/monitoring-service-map/scom-config-pool.png)
+    ![Pula zasobów konfiguracji menedżera operacji](media/monitoring-service-map-scom/scom-config-pool.png)
 
     Może potrwać chwilę, aby skonfigurować i zarejestrować obszaru roboczego usługi Log Analytics. Po skonfigurowaniu programu Operations Manager inicjuje pierwsza synchronizacja mapy usługi.
 
-    ![Pula zasobów konfiguracji menedżera operacji](media/monitoring-service-map/scom-config-success.png)
+    ![Pula zasobów konfiguracji menedżera operacji](media/monitoring-service-map-scom/scom-config-success.png)
 
 
 ## <a name="monitor-service-map"></a>Mapa usługi monitora
 Po połączeniu obszaru roboczego usługi Log Analytics nowego folderu, mapa usługi jest wyświetlana w **monitorowanie** okienku konsoli programu Operations Manager.
 
-![W okienku Monitoring programu Operations Manager](media/monitoring-service-map/scom-monitoring.png)
+![W okienku Monitoring programu Operations Manager](media/monitoring-service-map-scom/scom-monitoring.png)
 
 Folder rozwiązania Service Map ma cztery węzły:
 * **Aktywne alerty**: Wyświetla listę wszystkich aktywnych alertów dotyczących komunikacji między programem Operations Manager i Service Map.  Należy zauważyć, że te alerty nie są usługi Log Analytics alerty synchronizowany z usługą Operations Manager. 
 
 * **Serwery**: Wyświetla listę monitorowanych serwerów, które są skonfigurowane do synchronizacji z mapy usługi.
 
-    ![W okienku monitorowanie serwerów programu Operations Manager](media/monitoring-service-map/scom-monitoring-servers.png)
+    ![W okienku monitorowanie serwerów programu Operations Manager](media/monitoring-service-map-scom/scom-monitoring-servers.png)
 
 * **Widoki zależności dla grup usługi Machine**: Wyświetla wszystkie grupy maszyny, które są synchronizowane z mapy usługi. Możesz kliknąć dowolną grupę, aby wyświetlić jego diagramu aplikacji rozproszonej.
 
-    ![Diagramu aplikacji rozproszonej programu Operations Manager](media/monitoring-service-map/scom-group-dad.png)
+    ![Diagramu aplikacji rozproszonej programu Operations Manager](media/monitoring-service-map-scom/scom-group-dad.png)
 
 * **Widoki zależności Server**: Wyświetla listę wszystkich serwerów, które są synchronizowane z mapy usługi. Kliknięcie dowolnego serwera, aby wyświetlić jego diagramu aplikacji rozproszonej.
 
-    ![Diagramu aplikacji rozproszonej programu Operations Manager](media/monitoring-service-map/scom-dad.png)
+    ![Diagramu aplikacji rozproszonej programu Operations Manager](media/monitoring-service-map-scom/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>Edytowanie lub usuwanie obszaru roboczego
 Można edytować lub usunąć skonfigurowany obszar roboczy za pomocą **omówienie mapy usługi** okienko (**administracji** okienko > **pakietu Operations Management Suite**  >  **Usługi mapy**).
@@ -114,12 +114,12 @@ Można edytować lub usunąć skonfigurowany obszar roboczy za pomocą **omówie
 
 Teraz można skonfigurować tylko jeden obszar roboczy usługi Log Analytics.
 
-![W okienku Menedżera operacji Edytuj obszar roboczy](media/monitoring-service-map/scom-edit-workspace.png)
+![W okienku Menedżera operacji Edytuj obszar roboczy](media/monitoring-service-map-scom/scom-edit-workspace.png)
 
 ## <a name="configure-rules-and-overrides"></a>Konfigurowanie reguł i zastąpień
 Reguła _Microsoft.SystemCenter.ServiceMapImport.Rule_, zostanie utworzona okresowo pobieranie informacji z mapy usługi. Aby zmienić czasów synchronizacji, można skonfigurować przesłonięcia reguły (**tworzenie** okienko > **reguły** > **Microsoft.SystemCenter.ServiceMapImport.Rule**) .
 
-![W oknie właściwości zastępuje programu Operations Manager](media/monitoring-service-map/scom-overrides.png)
+![W oknie właściwości zastępuje programu Operations Manager](media/monitoring-service-map-scom/scom-overrides.png)
 
 * **Włączone**: Włączanie lub wyłączanie automatycznych aktualizacji. 
 * **IntervalMinutes**: resetowanie czasu między aktualizacjami. Domyślny interwał to jedna godzina. Jeśli chcesz zsynchronizować serwera mapy częściej, możesz zmienić wartość.

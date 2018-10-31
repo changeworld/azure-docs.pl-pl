@@ -3,7 +3,7 @@ title: Routing zależny od danych z usługą Azure SQL Database | Dokumentacja f
 description: Sposób użycia klasy ShardMapManager w aplikacjach .NET na dane zależne od routingu funkcji podzielonej na fragmenty baz danych w usłudze Azure SQL Database
 services: sql-database
 ms.service: sql-database
-subservice: elastic-scale
+ms.subservice: elastic-scale
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: c54a644b140d65ccad1a3cba6c5a07a8e201cddb
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: d40d0aff62492a01694eecac0a3650fcba69c448
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869622"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242929"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Użyj danych zależne od routingu, aby skierować zapytanie do odpowiedniej bazy danych
 

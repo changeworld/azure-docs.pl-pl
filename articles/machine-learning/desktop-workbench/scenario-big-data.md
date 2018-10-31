@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0d3c6b78944d9365d1e7e88ed33aba852b71a9c1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 4a3329c7f08dfabdf1bb8a010ad5bc865fc509f4
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232022"
+ms.locfileid: "50241654"
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>Prognozowanie obciążenia serwera pod kątem terabajtów danych
 
@@ -100,7 +100,7 @@ Uruchom `git status` Aby sprawdzić stan plików dla wersji, śledzenia.
 
 ## <a name="data-description"></a>Opis danych
 
-Dane używane w tym przykładzie jest danych obciążenia syntetyzowany serwera. Jest ona hostowana na konto magazynu obiektów Blob platformy Azure, będącego publicaly, które są dostępne w regionie wschodnie stany USA. Informacje o koncie magazynu określonym znajdują się w `dataFile` pole [ `Config/storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldata_storageconfig.json) w formacie "wasb: / /<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>". Można użyć danych bezpośrednio z magazynu obiektów Blob. Jeśli magazyn jest używany przez wielu użytkowników równocześnie, możesz użyć [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) do pobierania danych do magazynu w celu zwiększenia jakości eksperymentowania. 
+Dane używane w tym przykładzie jest danych obciążenia syntetyzowany serwera. Jest ona hostowana na konto magazynu obiektów Blob platformy Azure, który jest publicznie dostępny w regionie wschodnie stany USA. Informacje o koncie magazynu określonym znajdują się w `dataFile` pole [ `Config/storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldata_storageconfig.json) w formacie "wasb: / /<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>". Można użyć danych bezpośrednio z magazynu obiektów Blob. Jeśli magazyn jest używany przez wielu użytkowników równocześnie, możesz użyć [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) do pobierania danych do magazynu w celu zwiększenia jakości eksperymentowania. 
 
 Łącznemu rozmiarowi danych wynosi około 1 TB. Każdy plik ma około 1 – 3 GB, a w formacie pliku CSV, bez nagłówka. Każdy wiersz danych reprezentuje obciążenie transakcji na określonym serwerze. Szczegółowe informacje schematu danych jest w następujący sposób:
 

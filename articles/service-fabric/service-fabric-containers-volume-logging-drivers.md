@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/10/2018
 ms.author: subramar
-ms.openlocfilehash: 9bd370e8070816d62b22c1e3d5ad4b6cdd2da30a
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 0ce1ca09327fa0bd7fbbb82b8dc3c3bdc70d5028
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144955"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239376"
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Sterownik woluminu plików platformy Azure dla usługi sieci szkieletowej (wersja zapoznawcza)
 Dodatek woluminu plików platformy Azure jest [wtyczki woluminu Docker](https://docs.docker.com/engine/extend/plugins_volume/) zapewniający [usługi Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) na podstawie woluminów na potrzeby kontenerów platformy Docker. Ta wtyczka woluminu platformy Docker jest spakowany jako aplikacji usługi Service Fabric, który może być wdrożony w klastrach usługi Service Fabric. Jego celem jest zapewnienie usługi Azure Files na podstawie woluminów dla innych aplikacji kontenera usługi Service Fabric, które zostały wdrożone w klastrze.
 
 > [!NOTE]
-> Wersja 6.255.389.9494 wtyczki woluminu plików platformy Azure jest wersja zapoznawcza, która jest dostępna z tego dokumentu. Jako wersji zapoznawczej, jest **nie** przeznaczony do użytku w środowiskach produkcyjnych.
+> Wersja 6.4.571.9494 wtyczki woluminu plików platformy Azure jest wersja zapoznawcza, która jest dostępna z tego dokumentu. Jako wersji zapoznawczej, jest **nie** przeznaczony do użytku w środowiskach produkcyjnych.
 >
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -66,7 +66,7 @@ W sekcji element fabricSettings szablonu ARM (w przypadku wdrożeń na platformi
 
 ## <a name="deploy-the-service-fabric-azure-files-application"></a>Wdrażanie aplikacji usługi Service Fabric usługi Azure Files
 
-Aplikacja usługi Service Fabric, która zapewnia woluminów dla swoich kontenerów, można pobrać z następujących [łącze](https://aka.ms/sfvolume). Aplikację można wdrożyć w klastrze za pomocą [PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications), [interfejsu wiersza polecenia](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-lifecycle-sfctl) lub [interfejsy API FabricClient](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications-fabricclient).
+Aplikacja usługi Service Fabric, która zapewnia woluminów dla swoich kontenerów, można pobrać z następujących [łącze](https://aka.ms/sfvolume6.4). Aplikację można wdrożyć w klastrze za pomocą [PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications), [interfejsu wiersza polecenia](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-lifecycle-sfctl) lub [interfejsy API FabricClient](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications-fabricclient).
 
 1. Przy użyciu wiersza polecenia, zmień katalog na katalog główny pobrany pakiet aplikacji.
 
@@ -102,11 +102,11 @@ Aplikacja usługi Service Fabric, która zapewnia woluminów dla swoich kontener
 4. Tworzenie aplikacji w poleceniu do tworzenia aplikacji poniżej, należy pamiętać, **ListenPort** parametr aplikacji. Ta wartość określona dla parametru tej aplikacji jest port, na którym wtyczki usługi Azure Files woluminu nasłuchuje żądań z demona platformy Docker. Należy upewnić się, że porcie podanym do aplikacji nie powoduje konfliktu z innego portu używanego przez klaster lub aplikacji.
 
     ```powershell
-    New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.255.389.9494 -ApplicationParameter @{ListenPort='19100'}
+    New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.4.571.9494 -ApplicationParameter @{ListenPort='19100'}
     ```
 
     ```bash
-    sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.255.389.9494 --parameter '{"ListenPort":"19100"}'
+    sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.4.571.9494 --parameter '{"ListenPort":"19100"}'
     ```
 
 > [!NOTE]
@@ -118,11 +118,11 @@ Aplikacja usługi Service Fabric, która zapewnia woluminów dla swoich kontener
 Domyślna liczba wystąpień usługi dla aplikacji usługi Azure Files wtyczki woluminu jest wartość -1, co oznacza, że to wystąpienie usługi, który został wdrożony w każdym węźle w klastrze. Jednak podczas wdrażania aplikacji usługi Azure Files woluminu wtyczki na lokalny klaster projektowy, liczba wystąpień usługi powinien być określony jako 1. Można to zrobić za pomocą **InstanceCount** parametr aplikacji. W związku z tym polecenia do wdrożenia aplikacji usługi Azure Files woluminu wtyczki na lokalny klaster projektowy jest:
 
 ```powershell
-New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.255.389.9494 -ApplicationParameter @{ListenPort='19100';InstanceCount='1'}
+New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.4.571.9494 -ApplicationParameter @{ListenPort='19100';InstanceCount='1'}
 ```
 
 ```bash
-sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.255.389.9494 --parameter '{"ListenPort": "19100","InstanceCount": "1"}'
+sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.4.571.9494 --parameter '{"ListenPort": "19100","InstanceCount": "1"}'
 ```
 ## <a name="configure-your-applications-to-use-the-volume"></a>Konfigurowanie aplikacji w taki sposób, aby korzystać z woluminu
 Poniższy fragment kodu pokazuje, jak usługi Azure Files na podstawie woluminu można określić w manifeście aplikacji w aplikacji. Element określonych zainteresowań jest **woluminu** tag:
@@ -130,31 +130,32 @@ Poniższy fragment kodu pokazuje, jak usługi Azure Files na podstawie woluminu 
 ```xml
 ?xml version="1.0" encoding="UTF-8"?>
 <ApplicationManifest ApplicationTypeName="WinNodeJsApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <Description>Calculator Application</Description>
-    <Parameters>
-      <Parameter Name="ServiceInstanceCount" DefaultValue="3"></Parameter>
-      <Parameter Name="MyCpuShares" DefaultValue="3"></Parameter>
-      <Parameter Name="MyStorageVar" DefaultValue="c:\tmp"></Parameter>
-    </Parameters>
-    <ServiceManifestImport>
-        <ServiceManifestRef ServiceManifestName="NodeServicePackage" ServiceManifestVersion="1.0"/>
-     <Policies>
+    <Description>Calculator Application</Description>
+    <Parameters>
+      <Parameter Name="ServiceInstanceCount" DefaultValue="3"></Parameter>
+      <Parameter Name="MyCpuShares" DefaultValue="3"></Parameter>
+      <Parameter Name="MyStorageVar" DefaultValue="c:\tmp"></Parameter>
+    </Parameters>
+    <ServiceManifestImport>
+        <ServiceManifestRef ServiceManifestName="NodeServicePackage" ServiceManifestVersion="1.0"/>
+     <Policies>
        <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="hyperv">
-            <PortBinding ContainerPort="8905" EndpointRef="Endpoint1"/>
-            <RepositoryCredentials PasswordEncrypted="false" Password="****" AccountName="test"/>
+            <PortBinding ContainerPort="8905" EndpointRef="Endpoint1"/>
+            <RepositoryCredentials PasswordEncrypted="false" Password="****" AccountName="test"/>
             <Volume Source="azfiles" Destination="c:\VolumeTest\Data" Driver="sfazurefile">
                 <DriverOption Name="shareName" Value="" />
                 <DriverOption Name="storageAccountName" Value="" />
                 <DriverOption Name="storageAccountKey" Value="" />
+                <DriverOption Name="storageAccountFQDN" Value="" />
             </Volume>
-       </ContainerHostPolicies>
-   </Policies>
-    </ServiceManifestImport>
-    <ServiceTemplates>
-        <StatelessService ServiceTypeName="StatelessNodeService" InstanceCount="5">
-            <SingletonPartition></SingletonPartition>
-        </StatelessService>
-    </ServiceTemplates>
+       </ContainerHostPolicies>
+   </Policies>
+    </ServiceManifestImport>
+    <ServiceTemplates>
+        <StatelessService ServiceTypeName="StatelessNodeService" InstanceCount="5">
+            <SingletonPartition></SingletonPartition>
+        </StatelessService>
+    </ServiceTemplates>
 </ApplicationManifest>
 ```
 
@@ -166,12 +167,23 @@ W **woluminu** element we fragmencie kodu powyżej, wtyczka woluminu plików pla
 
 Jak pokazano na **DriverOption** elementy we fragmencie kodu powyżej, wtyczka woluminu plików platformy Azure obsługuje następujące opcje sterownika:
 
+Obsługiwane opcje sterownika:
 - **Nazwa udziału** — nazwę udziału plików usługi Azure Files, zapewniająca woluminu dla kontenera
 - **storageAccountName** — nazwa konta magazynu platformy Azure, który zawiera plik usługi Azure Files udostępniania
 - **storageAccountKey** -klucz dostępu dla konta usługi Azure storage, który zawiera udział plików usługi Azure Files
-
-Wymagane są wszystkie powyższe opcje sterownika.
-
+- **storageAccountFQDN** — nazwę domeny skojarzone z kontem magazynu. Jeśli storageAccountFQDN nie zostanie określony, nazwy domeny będzie sformatowany przy użyciu suffix(.file.core.windows.net) domyślne storageAccountName. 
+    ```xml
+    - Example1: 
+        <DriverOption Name="shareName" Value="myshare1" />
+        <DriverOption Name="storageAccountName" Value="myaccount1" />
+        <DriverOption Name="storageAccountKey" Value="mykey1" />
+        <!-- storageAccountFQDN will be "myaccount1.file.core.windows.net" -->
+    - Example2: 
+        <DriverOption Name="shareName" Value="myshare2" />
+        <DriverOption Name="storageAccountName" Value="myaccount2" />
+        <DriverOption Name="storageAccountKey" Value="mykey2" />
+        <DriverOption Name="storageAccountFQDN" Value="myaccount2.file.core.chinacloudapi.cn" />
+    ```
 ## <a name="using-your-own-volume-or-logging-driver"></a>Korzystając z własnych woluminu lub rejestrowanie sterownika
 Usługa Service Fabric umożliwia także użycie własnego niestandardowego [woluminu](https://docs.docker.com/engine/extend/plugins_volume/) lub [rejestrowania](https://docs.docker.com/engine/admin/logging/overview/) sterowników. Jeśli nie zainstalowano sterownika wolumin/rejestrowania platformy Docker w klastrze, można zainstalować go ręcznie przy użyciu protokołów RDP/SSH. Można przeprowadzić instalację za pomocą tych protokołów za pośrednictwem [skrypt uruchamiania zestawu skalowania maszyn wirtualnych](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/) lub [skryptu SetupEntryPoint](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model#describe-a-service).
 

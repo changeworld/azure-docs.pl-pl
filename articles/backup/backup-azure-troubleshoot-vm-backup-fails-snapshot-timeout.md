@@ -7,14 +7,14 @@ manager: cshepard
 keywords: Usługa Azure backup; Agent maszyny Wirtualnej; Łączności sieciowej;
 ms.service: backup
 ms.topic: troubleshooting
-ms.date: 06/25/2018
+ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: ce4a889cae852d333ea9862138f4d44471677c26
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 5c37e2e3cabb81ed123146f283c7d568cc58816d
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544017"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242632"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z awarii usługi Azure Backup: problemy z agentem lub rozszerzenia
 
@@ -181,7 +181,7 @@ Aby odinstalować rozszerzenie:
 
 1. W [witryny Azure portal](https://portal.azure.com/), przejdź do maszyny Wirtualnej, której dotyczy niepowodzenia wykonywania kopii zapasowej.
 2. Wybierz **ustawienia**.
-3. Wybierz **rozszerzenia**.
+3. Wybierz pozycję **Rozszerzenia**.
 4. Wybierz **rozszerzenie Vmsnapshot**.
 5. Wybierz **odinstalować**.
 
@@ -195,7 +195,7 @@ Ten problem dotyczy zarządzane maszyny wirtualne, w których użytkownik zablok
 #### <a name="solution"></a>Rozwiązanie
 
 Aby rozwiązać ten problem, Usuń blokadę z grupy zasobów i wykonaj następujące kroki, aby usunąć kolekcję punktów przywracania: 
- 
+ 
 1. Usuń blokadę, w grupie zasobów, w którym znajduje się maszyna wirtualna. 
 2. Zainstaluj ARMClient przy użyciu narzędzia Chocolatey: <br>
    https://github.com/projectkudu/ARMClient

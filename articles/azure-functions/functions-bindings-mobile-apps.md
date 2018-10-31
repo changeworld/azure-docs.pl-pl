@@ -3,20 +3,20 @@ title: Powiązania funkcji Mobile Apps dla usługi Azure Functions
 description: Dowiedz się, jak używać powiązań usługi Azure Mobile Apps w usłudze Azure Functions.
 services: functions
 documentationcenter: na
-author: ggailey777
+author: craigshoemaker
 manager: jeconnoc
 keywords: usługi Azure functions, funkcje, przetwarzanie zdarzeń, obliczanie dynamiczne, architektura bez serwera
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
-ms.author: glenga
-ms.openlocfilehash: 6b5a45bfcfc02c6b313e868fb3ba037ce3ba48c9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: cshoe
+ms.openlocfilehash: eb77046c6e673012209f0db452b20bf25046cd67
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967578"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250975"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Powiązania funkcji Mobile Apps dla usługi Azure Functions 
 

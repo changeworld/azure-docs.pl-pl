@@ -5,19 +5,19 @@ services: app-service
 author: cephalin
 ms.service: app-service
 ms.topic: include
-ms.date: 02/02/2018
+ms.date: 10/30/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 917f8cc4a22199351614d101f1300b80052ee9a9
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
-ms.translationtype: HT
+ms.openlocfilehash: 60d6ff8dea81102cfac0fea76f6fd11ff8465a23
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/03/2018
-ms.locfileid: "28986083"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50254684"
 ---
 ## <a name="deploy-zip-file"></a>Wdrażanie plików ZIP
 
-W przeglądarce przejdź do strony `https://<app_name>.scm.azurewebsites.net/ZipDeploy`.
+W przeglądarce przejdź do strony `https://<app_name>.scm.azurewebsites.net/ZipDeployUI`.
 
 Przekaż plik ZIP utworzony w ramach procedury [Tworzenie pliku ZIP projektu](#create-a-project-zip-file) przez przeciągnięcie go do obszaru Eksploratora plików na stronie internetowej.
 

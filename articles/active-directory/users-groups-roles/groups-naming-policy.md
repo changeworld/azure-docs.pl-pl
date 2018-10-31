@@ -14,12 +14,12 @@ ms.date: 05/21/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 111be7d3ee00f2b40ace3bfe4efdacc5029ccf77
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 2857f95eff0b2d039a1a3c7bbe566a8ed3ca4fea
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239138"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50243133"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Wymuszanie zasad nazewnictwa dla grup usługi Office 365 w usłudze Azure Active Directory (wersja zapoznawcza)
 
@@ -49,7 +49,7 @@ Aby ułatwić skanowania i rozróżniania grup w globalnej liście adresowej i �
 
 #### <a name="user-attributes"></a>Atrybuty użytkownika
 
-Można użyć atrybuty, które mogą pomóc Ci i zidentyfikować użytkowników, działów, pakietu office lub regionie geograficznym, w którym grupa została utworzona. Na przykład po zdefiniowaniu zasad nazewnictwa jako `PrefixSuffixNamingRequirement = “GRP [GroupName] [Department]”`, i `User’s department = Engineering`, a następnie nazwę grupy wymuszone, może być "DGRP Moje grupy Engineering." Obsługiwane usługi Azure AD atrybuty są \[działu\], \[firmy\], \[Office\], \[StanLubProwincja\], \[CountryOrRegion \], \[Tytuł\]. Atrybuty użytkownika nieobsługiwany są traktowane jako stałych ciągów; na przykład "\[KodPocztowy\]". Rozszerzeń atrybuty oraz atrybuty niestandardowe nie są obsługiwane.
+Można użyć atrybuty, które mogą pomóc Ci i zidentyfikować użytkowników, działów, pakietu office lub regionie geograficznym, w którym grupa została utworzona. Na przykład po zdefiniowaniu zasad nazewnictwa jako `PrefixSuffixNamingRequirement = "GRP [GroupName] [Department]"`, i `User’s department = Engineering`, a następnie nazwę grupy wymuszone, może być "DGRP Moje grupy Engineering." Obsługiwane usługi Azure AD atrybuty są \[działu\], \[firmy\], \[Office\], \[StanLubProwincja\], \[CountryOrRegion \], \[Tytuł\]. Atrybuty użytkownika nieobsługiwany są traktowane jako stałych ciągów; na przykład "\[KodPocztowy\]". Rozszerzeń atrybuty oraz atrybuty niestandardowe nie są obsługiwane.
 
 Firma Microsoft zaleca używanie atrybutów, które mają wartości wypełnione dla wszystkich użytkowników w Twojej organizacji i nie używaj atrybuty, które mają długi wartości.
 
@@ -75,34 +75,34 @@ Wybranym administratorom można wykluczone z tych zasad we wszystkich obciąże�
 
 ## <a name="install-powershell-cmdlets-to-configure-a-naming-policy"></a>Zainstaluj polecenia cmdlet programu PowerShell, aby skonfigurować zasady nazewnictwa
 
-Pamiętaj odinstalować dowolną starszą wersję usługi Azure Active Directory PowerShell dla modułu programu Graph dla Windows PowerShell i zainstaluj [Azure Active Directory PowerShell Graph — publicznej wersji zapoznawczej 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) przed uruchomieniem Polecenia programu PowerShell. 
+Pamiętaj, aby odinstalować starszą wersję modułu Azure Active Directory PowerShell dla programu Graph z programu Windows PowerShell i zainstalować moduł [Azure Active Directory PowerShell dla programu Graph w publicznej wersji zapoznawczej 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) przed uruchomieniem poleceń programu PowerShell. 
 
-1. Otwórz aplikację programu Windows PowerShell jako administrator.
-2. Odinstalowywanie poprzednich wersji AzureADPreview.
+1. Otwórz aplikację Windows PowerShell jako administrator.
+2. Odinstaluj poprzednią wersję programu AzureADPreview.
   
   ````
   Uninstall-Module AzureADPreview
   ````
-3. Zainstaluj najnowszą wersję AzureADPreview.
+3. Zainstaluj najnowszą wersję programu AzureADPreview.
   
   ````
   Install-Module AzureADPreview
   ````
-Jeśli zostanie wyświetlony monit o dostęp do niezaufanych repozytorium, wpisz **Y**. Może upłynąć kilka minut, zanim nowy moduł do zainstalowania.
+Jeśli zostanie wyświetlony monit dotyczący dostępu do niezaufanego repozytorium, wpisz **Y**. Zainstalowanie nowego modułu może zająć kilka minut.
 
 ## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-ad-powershell"></a>Konfigurowanie grupy, zasady nazewnictwa dla dzierżawcy przy użyciu usługi Azure AD PowerShell
 
 1. Otwórz okno programu Windows PowerShell na komputerze. Możesz go otworzyć, bez podwyższonego poziomu uprawnień.
 
-2. Uruchom następujące polecenia, aby przygotować się do uruchamiania poleceń cmdlet.
+2. Uruchom następujące polecenia, aby przygotować się do uruchomienia poleceń cmdlet.
   
   ````
   Import-Module AzureADPreview
   Connect-AzureAD
   ````
-  W **Zaloguj się do swojego konta** ekran, który zostanie otwarty, wprowadź swoje konto administratora i hasło, aby połączyć się z usługą z, a następnie wybierz pozycję **Zaloguj**.
+  Na ekranie **Zaloguj się na swoje konto** wprowadź swoje konto administratora i hasło, aby połączyć się z usługą, a następnie wybierz polecenie **Zaloguj**.
 
-3. Postępuj zgodnie z instrukcjami w [poleceń cmdlet usługi Azure Active Directory, do konfigurowania ustawień grupy](groups-settings-cmdlets.md) można utworzyć grupy ustawień dla tej dzierżawy.
+3. Postępuj zgodnie z instrukcjami zawartymi w artykule [Azure Active Directory cmdlets for configuring group settings (Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy)](groups-settings-cmdlets.md), aby utworzyć ustawienia grupy dla tej dzierżawy.
 
 ### <a name="view-the-current-settings"></a>Wyświetl bieżące ustawienia
 
@@ -120,25 +120,25 @@ Jeśli zostanie wyświetlony monit o dostęp do niezaufanych repozytorium, wpisz
   
 ### <a name="set-the-naming-policy-and-custom-blocked-words"></a>Ustaw zasady nazewnictwa i podasz niestandardowe wyrazy zablokowane
 
-1. Ustaw grupę prefiksów i sufiksów nazw w programie Azure AD PowerShell.
+1. Ustaw prefiksy i sufiksy nazw grup w usłudze Azure AD PowerShell.
   
   ````
   $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
   ````
   
-2. Ustaw niestandardowy zablokowanych wyrazy, które chcesz ograniczyć. W poniższym przykładzie pokazano, jak dodać własne niestandardowe słowa.
+2. Ustaw niestandardowe słowa zablokowane. W poniższym przykładzie pokazano, jak dodać własne słowa niestandardowe.
   
   ````
   $Setting["CustomBlockedWordsList"]=“Payroll,CEO,HR"
   ````
   
-3. Zapisz ustawienia nowych zasad zaczęła obowiązywać, takie jak w poniższym przykładzie.
+3. Zapisz ustawienia nowych zasad, aby zaczęły obowiązywać, tak jak w poniższym przykładzie.
   
   ````
   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
   ````
   
-To już wszystko. Już skonfigurować zasady nazewnictwa i dodać zablokowanych słów.
+Gotowe. Już skonfigurować zasady nazewnictwa i dodać zablokowanych słów.
 
 ## <a name="export-or-import-the-list-of-custom-blocked-words"></a>Eksportowanie lub importowanie listy zablokowanych podasz niestandardowe wyrazy
 

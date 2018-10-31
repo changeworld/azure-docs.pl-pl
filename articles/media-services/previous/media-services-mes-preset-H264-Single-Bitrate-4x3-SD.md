@@ -1,8 +1,8 @@
 ---
-title: Ustawienie SD Media Encoder Standard H264 pojedynczej szybkości transmisji bitów 4 x 3 - Azure | Dokumentacja firmy Microsoft
-description: Temat zawiera omówienie **H264 pojedynczej szybkości transmisji bitów 4 x 3 SD** ustawień wstępnych zadań.
+title: Pojedynczy szybkość transmisji bitów H264 4 x 3 SD Media Encoder Standard ustawienie — Azure | Dokumentacja firmy Microsoft
+description: Temat zawiera omówienie **pojedynczego szybkość transmisji bitów H264 4 x 3 SD** ustawienie wstępne zadania.
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,21 +12,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 61fac597c6e9ee425cedd1df2d819acebb148280
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e9d400de159048a5eb72d8f674cbbf9c42d50e17
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788242"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247155"
 ---
-# <a name="h264-single-bitrate-4x3-sd"></a>H264 Pojedynczej szybkości transmisji bitów 4 x 3 SD.
-`Media Encoder Standard` definiuje zestaw kodowania ustawienia używanego podczas tworzenia zadania kodowania. Można użyć `preset name` do określenia do formatu, który chcesz kodować pliku nośnika. Lub można utworzyć własny JSON lub ustawienia opartych na języku XML (przy użyciu kodowania UTF-8 lub UTF-16. Następnie możesz przejdzie niestandardowe ustawienia do kodera. Aby uzyskać listę wszystkich istniejących nazw obsługiwanych przez to `Media Encoder Standard` kodera, zobacz [ustawień wstępnych zadań dla standardu Media Encoder Standard](media-services-mes-presets-overview.md).  
+# <a name="h264-single-bitrate-4x3-sd"></a>H264 Pojedyncza szybkość transmisji bitów 4 x 3 SD
+`Media Encoder Standard` definiuje zestaw kodowania ustawienia wstępne, których można użyć podczas tworzenia zadań kodowania. Można użyć `preset name` do określenia do formatu, który chcesz zakodować pliku multimedialnego. Lub można utworzyć własne JSON lub XML na podstawie ustawień wstępnych (przy użyciu kodowania UTF-8 lub UTF-16. Następnie należy wprowadzić niestandardowego ustawienia wstępnego z koderem. Aby uzyskać listę wszystkich wstępnie zdefiniowanych nazw obsługiwanych przez to `Media Encoder Standard` encoder, zobacz [ustawienia wstępne zadań usługi Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- W tym temacie przedstawiono `H264 Single Bitrate 4x3 SD` ustawienia wstępnego w formacie XML i JSON.  
+ W tym temacie przedstawiono `H264 Single Bitrate 4x3 SD` wstępnie ustawione w formacie XML i JSON.  
   
- Ten plik wstępnie zdefiniowane i tworzy jednej MP4 o szybkości transmisji bitów 1800 KB/s i stereo AAC audio. Aby uzyskać szczegółowe informacje o profilu szybkości transmisji bitów próbkowania szybkości, itp. tego ustawień, sprawdzić XML lub JSON określonych poniżej. Wyjaśnień jakie każdego elementu w sposób te ustawienia i prawidłowe wartości dla każdego elementu, zobacz [Media Encoder Standard schematu](media-services-mes-schema.md) tematu.  
+ Ten plik wstępnie tworzy pojedynczy MP4 z 1800 KB/s i stereo AAC audio szybkość transmisji bitów. Aby uzyskać szczegółowe informacje o profilu szybkości transmisji bitów, próbkowanie wskaźnik, itp., to ustawień, sprawdź zdefiniowane poniżej w formacie JSON lub XML. Objaśnienia każdego elementu w tych oznacza, że ustawienia i prawidłowe wartości dla każdego elementu, zobacz [schemat usługi Media Encoder Standard](media-services-mes-schema.md) tematu.  
   
  XML  
   

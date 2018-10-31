@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/30/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 36db41308678f3f1bd713561f9a844288f5db401
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 19a4b77be613eb7ddb4367ca5dc5731c4e0a0287
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312242"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249258"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Zainstaluj program Azure AD Connect przy użyciu istniejącej bazy danych ADSync
 Program Azure AD Connect wymaga bazy danych programu SQL Server do przechowywania danych. Możesz korzystać z domyślnego programu SQL Server 2012 Express LocalDB zainstalowane za pomocą usługi Azure AD Connect lub użyć pełnej wersji programu SQL Server. Wcześniej Jeśli zainstalowano program Azure AD Connect, nową bazę danych o nazwie ADSync zawsze został utworzony. Za pomocą usługi Azure AD Connect w wersji 1.1.613.0 (lub po) masz możliwość zainstalowania Azure AD Connect, wskazując je do istniejącej bazy danych ADSync.
@@ -86,6 +86,17 @@ Ważne uwagi do wykonania należy pamiętać o przed kontynuowaniem:
  
 11. Po zakończeniu instalacji serwer programu Azure AD Connect jest automatycznie włączany dla trybu przejściowego. Przed wyłączeniem trybu przejściowego zaleca się przejrzenie konfiguracji serwera i oczekujących operacji eksportowania pod kątem nieoczekiwanych zmian. 
 
+## <a name="post-installation-tasks"></a>Zadania poinstalacyjne
+Przywracanie kopii zapasowej bazy danych podczas tworzenia przez wersję programu Azure AD Connect w wersjach wcześniejszych niż <our pending release>, serwer przejściowy automatycznie wybierze metodę logowania z **nie należy konfigurować**. Podczas, gdy zostaną przywrócone z synchronizacji skrótów haseł i preferencje dotyczące funkcji zapisywania zwrotnego haseł, możesz później zmienić metody logowania, aby dopasować inne zasady dla serwera synchronizacji usługi active.  Nie można wykonać te kroki mogą uniemożliwić użytkownikom rejestrowanie w należy ten serwer stanie się aktywny.  
+
+Użyj poniższej tabeli, aby sprawdzić dodatkowe czynności, które są wymagane.
+
+|Cecha|Kroki|
+|-----|-----|
+|Synchronizacja skrótów haseł| Synchronizacja skrótów haseł i ustawienia funkcji zapisywania zwrotnego haseł zostaną w pełni przywrócone dla wersji AADC począwszy od <our impending release>.  Jeśli przywracanie przy użyciu starszej wersji AADC, przejrzyj ustawienia opcji synchronizacji dla tych funkcji, aby upewnić się, że pasują do serwera synchronizacji usługi active.  Nie inne czynności konfiguracyjne, powinno być konieczne.|
+|Federacja z usługami AD FS|Uwierzytelnianie usługi Azure, będą w dalszym ciągu korzystać z zasad usług AD FS skonfigurowane dla serwera synchronizacji usługi active.  Program Azure AD Connect umożliwia zarządzanie farmie usług AD FS, opcjonalnie możesz zmienić metodę logowania do Federacji usług AD FS w ramach przygotowania do wstrzymania serwera staje się wystąpienia synchronizacji usługi active.   Włączenie opcji urządzeń na serwerze synchronizacji usługi active należy skonfigurować te opcje na tym serwerze, uruchamiając zadanie "Konfiguruj opcje urządzenia".|
+|Uwierzytelnianie przekazywane i pulpitu logowania jednokrotnego|Zaktualizuj logowania w metodzie zgodnie z konfiguracją na serwerze synchronizacji usługi active.  Jeśli to nie jest zakończony przed podniesieniem poziomu serwera do uwierzytelniania podstawowego, przekazywane wraz z bezproblemowego logowania jednokrotnego na zostanie wyłączone, a następnie dzierżawy może być zablokowane, jeśli nie masz wersji logowania kopii zapasowych w przypadku opcji. Należy również zauważyć, że po włączeniu uwierzytelnianie przekazywane w trybie przejściowym, zostanie zainstalowany nowy agent uwierzytelniania, zarejestrowany i będzie działał jako agent wysokiej dostępności, który będzie akceptować logowania dla żądania.|
+|Federacja z serwerem PingFederate|Uwierzytelnianie usługi Azure, będą w dalszym ciągu korzystać z zasad serwera PingFederate skonfigurowane dla serwera synchronizacji usługi active.  Opcjonalnie możesz zmienić metodę logowania do serwera PingFederate w ramach przygotowania do wstrzymania serwera staje się wystąpienia synchronizacji usługi active.  Może zostać przesunięty w tym kroku, dopóki nie należy sfederować dodatkowe domeny z serwerem PingFederate.|
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Po zainstalowaniu programu Azure AD Connect możesz [zweryfikować instalację i przypisać licencje](how-to-connect-post-installation.md).

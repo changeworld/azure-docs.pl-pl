@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 9978497f8bd3ebb11247f3bffe319866128e9f1d
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 2a1d8a993f805c6ef814088af6fc4e3051519e37
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646511"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248799"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Omówienie funkcji zabezpieczeń usługi Azure SQL Database
 
@@ -32,7 +32,7 @@ Pełne omówienie funkcji zabezpieczeń dostępnych we wszystkich wersjach bazy 
 Usługa SQL Database zabezpiecza dane, szyfrując przesyłane dane za pomocą protokołu [Transport Layer Security](https://support.microsoft.com/kb/3135244), dane magazynowane za pomocą funkcji [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql), a używane dane za pomocą funkcji [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx).
 
 > [!IMPORTANT]
-> Usługa Azure SQL Database wymusza szyfrowania (SSL/TLS) na cały czas dla wszystkie połączenia, dzięki któremu wszystkie dane są szyfrowane "przesyłanych" między bazy danych i klientem. Dzieje się tak niezależnie od ustawienia **Szyfruj** lub **TrustServerCertificate** w parametrach połączenia.
+> Usługa Azure SQL Database wymusza szyfrowania (SSL/TLS) na cały czas dla wszystkich połączeń, co zapewnia, że wszystkie dane są szyfrowane "przesyłanych" między bazy danych i klientem. Dzieje się tak niezależnie od ustawienia **Szyfruj** lub **TrustServerCertificate** w parametrach połączenia.
 >
 > W parametrach połączenia aplikacji, upewnij się, że podajesz szyfrowanego połączenia i *nie* ufać certyfikatowi serwera (sterownik dla ADO.NET to **Encrypt = True** i  **TrustServerCertificate = False**). Pomaga to zapobiec aplikacji człowiek w środkowej ataku, wymuszając aplikację, aby sprawdzić nazwę serwera i wymuszania szyfrowania. Parametry połączenia można uzyskać w witrynie Azure portal, mają prawidłowe ustawienia.
 >
@@ -64,7 +64,7 @@ Usługa SQL Database zabezpiecza dane przez ograniczenie dostępu do bazy danych
 
 Aby ułatwić ochronę danych, zapora uniemożliwia wszelki dostęp do serwera bazy danych do momentu określenia komputerów, które mają uprawnienia, za pomocą [reguł zapory](sql-database-firewall-configure.md). Zapora udziela dostępu do bazy danych na podstawie źródłowego adresu IP każdego żądania.
 
-### <a name="authentication"></a>Uwierzytelnianie
+### <a name="authentication"></a>Authentication
 
 Uwierzytelnianie w usłudze SQL Database to sposób potwierdzenia tożsamości podczas nawiązywania połączenia z bazą danych. Usługa SQL Database obsługuje dwa typy uwierzytelniania:
 

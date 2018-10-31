@@ -1,6 +1,6 @@
 ---
-title: Dokumentacja pliku host.JSON dla usługi Azure Functions
-description: Dokumentacja pliku host.json usługi Azure Functions.
+title: Dokumentacja pliku host.JSON dla usługi Azure Functions 2.x
+description: Dokumentacja pliku host.json usługi Azure Functions ze środowiskiem uruchomieniowym w wersji 2.
 services: functions
 author: ggailey777
 manager: jeconnoc
@@ -10,19 +10,23 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 7a049a1fb57d65824fa2c44b40d3d51083459973
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 13f81ced7ebaee97b53cf843421b339db6fd6096
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232254"
+ms.locfileid: "50246911"
 ---
-# <a name="hostjson-reference-for-azure-functions"></a>Dokumentacja pliku host.JSON dla usługi Azure Functions
+# <a name="hostjson-reference-for-azure-functions-2x"></a>Dokumentacja pliku host.JSON dla usługi Azure Functions 2.x  
 
-*Host.json* plik metadanych zawiera opcje konfiguracji globalne, które wpływają na wszystkie funkcje dla aplikacji funkcji. Ten artykuł zawiera listę ustawień, które są dostępne. Schemat JSON wynosi http://json.schemastore.org/host.
+> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> * [Wersja 1](functions-host-json-v1.md)
+> * [W wersji 2](functions-host-json.md)
+
+*Host.json* plik metadanych zawiera opcje konfiguracji globalne, które wpływają na wszystkie funkcje dla aplikacji funkcji. Ten artykuł zawiera listę ustawień, które są dostępne dla środowiska uruchomieniowego w wersji 2.  
 
 > [!NOTE]
-> Istnieją istotne różnice w zakresie *host.json* między wersji v1 i v2 środowisko uruchomieniowe usługi Azure Functions. `"version": "2.0"` Jest wymagana dla aplikacji funkcji, który jest przeznaczony dla środowiska uruchomieniowego w wersji 2.
+> Ten artykuł jest przeznaczony dla usługi Azure Functions 2.x.  Odwołanie host.json w funkcjach 1.x, zobacz [dokumentacja pliku host.JSON dla usługi Azure Functions 1.x](functions-host-json-v1.md).
 
 Inne opcje konfiguracji aplikacji funkcji odbywa się w Twojej [ustawienia aplikacji](functions-app-settings.md).
 
@@ -32,7 +36,6 @@ Niektóre ustawienia host.json są używane tylko podczas uruchamiania lokalnego
 
 Poniższy przykład *host.json* pliki mają wszystkie możliwe opcje określone.
 
-### <a name="version-2x"></a>W wersji 2.x
 
 ```json
 {
@@ -42,28 +45,13 @@ Poniższy przykład *host.json* pliki mają wszystkie możliwe opcje określone.
         "flushTimeout": "00:00:30"
     },
     "extensions": {
-        "eventHubs": {
-          "maxBatchSize": 64,
-          "prefetchCount": 256,
-          "batchCheckpointFrequency": 1
-        },
-        "http": {
-            "routePrefix": "api",
-            "maxConcurrentRequests": 100,
-            "maxOutstandingRequests": 30
-        },
-        "queues": {
-            "visibilityTimeout": "00:00:10",
-            "maxDequeueCount": 3
-        },
-        "sendGrid": {
-            "from": "Azure Functions <samples@functions.com>"
-        },
-        "serviceBus": {
-          "maxConcurrentCalls": 16,
-          "prefetchCount": 100,
-          "autoRenewTimeout": "00:05:00"
-        }
+        "cosmosDb": {},
+        "durableTask": {},
+        "eventHubs": {},
+        "http": {},
+        "queues": {},
+        "sendGrid": {},
+        "serviceBus": {}
     },
     "functions": [ "QueueProcessor", "GitHubWebHook" ],
     "functionTimeout": "00:05:00",
@@ -74,7 +62,6 @@ Poniższy przykład *host.json* pliki mają wszystkie możliwe opcje określone.
         "healthCheckThreshold": 6,
         "counterThreshold": 0.80
     },
-    "id": "9f4ea53c5136457d883d685e57164f08",
     "logging": {
         "fileLoggingMode": "debugOnly",
         "logLevel": {
@@ -99,175 +86,31 @@ Poniższy przykład *host.json* pliki mają wszystkie możliwe opcje określone.
 }
 ```
 
-### <a name="version-1x"></a>W wersji 1.x
-
-```json
-{
-    "aggregator": {
-        "batchSize": 1000,
-        "flushTimeout": "00:00:30"
-    },
-    "applicationInsights": {
-        "sampling": {
-          "isEnabled": true,
-          "maxTelemetryItemsPerSecond" : 5
-        }
-    },
-    "eventHub": {
-      "maxBatchSize": 64,
-      "prefetchCount": 256,
-      "batchCheckpointFrequency": 1
-    },
-    "functions": [ "QueueProcessor", "GitHubWebHook" ],
-    "functionTimeout": "00:05:00",
-    "healthMonitor": {
-        "enabled": true,
-        "healthCheckInterval": "00:00:10",
-        "healthCheckWindow": "00:02:00",
-        "healthCheckThreshold": 6,
-        "counterThreshold": 0.80
-    },
-    "http": {
-        "routePrefix": "api",
-        "maxOutstandingRequests": 20,
-        "maxConcurrentRequests": 10,
-        "dynamicThrottlesEnabled": false
-    },
-    "id": "9f4ea53c5136457d883d685e57164f08",
-    "logger": {
-        "categoryFilter": {
-            "defaultLevel": "Information",
-            "categoryLevels": {
-                "Host": "Error",
-                "Function": "Error",
-                "Host.Aggregator": "Information"
-            }
-        }
-    },
-    "queues": {
-      "maxPollingInterval": 2000,
-      "visibilityTimeout" : "00:00:30",
-      "batchSize": 16,
-      "maxDequeueCount": 5,
-      "newBatchThreshold": 8
-    },
-    "serviceBus": {
-      "maxConcurrentCalls": 16,
-      "prefetchCount": 100,
-      "autoRenewTimeout": "00:05:00"
-    },
-    "singleton": {
-      "lockPeriod": "00:00:15",
-      "listenerLockPeriod": "00:01:00",
-      "listenerLockRecoveryPollingInterval": "00:01:00",
-      "lockAcquisitionTimeout": "00:01:00",
-      "lockAcquisitionPollingInterval": "00:00:03"
-    },
-    "tracing": {
-      "consoleLevel": "verbose",
-      "fileLoggingMode": "debugOnly"
-    },
-    "watchDirectories": [ "Shared" ],
-}
-```
-
 W poniższych sekcjach tego artykułu opisano każdą właściwość najwyższego poziomu. Wszystkie są opcjonalne, o ile nie wskazano inaczej.
 
 ## <a name="aggregator"></a>aggregator
 
-Określa, ile wywołania funkcji są agregowane, kiedy [obliczanie metryki dla usługi Application Insights](functions-monitoring.md#configure-the-aggregator). 
-
-```json
-{
-    "aggregator": {
-        "batchSize": 1000,
-        "flushTimeout": "00:00:30"
-    }
-}
-```
-
-|Właściwość |Domyślne  | Opis |
-|---------|---------|---------| 
-|batchSize|1000|Maksymalna liczba żądań do zagregowania.| 
-|flushTimeout|00:00:30|Maksymalny czas okresu do zagregowania.| 
-
-Wywołania funkcji są agregowane, gdy pierwsze z tych limitów osiągnięciu.
+[!INCLUDE [aggregator](../../includes/functions-host-json-aggregator.md)]
 
 ## <a name="applicationinsights"></a>applicationInsights
 
-Formanty [próbkowania funkcji w usłudze Application Insights](functions-monitoring.md#configure-sampling). W wersji 2.x, to ustawienie jest elementem podrzędnym [rejestrowania](#logging).
+To ustawienie jest elementem podrzędnym [rejestrowania](#log).
 
-```json
-{
-    "applicationInsights": {
-        "sampling": {
-          "isEnabled": true,
-          "maxTelemetryItemsPerSecond" : 5
-        }
-    }
-}
-```
+[!INCLUDE [applicationInsights](../../includes/functions-host-json-applicationinsights.md)]
 
-|Właściwość  |Domyślne | Opis |
-|---------|---------|---------| 
-|isEnabled|true|Włącza lub wyłącza próbkowania.| 
-|maxTelemetryItemsPerSecond|5|Rozpoczyna się progu, na które próbkowania.| 
+## <a name="cosmosdb"></a>bazy danych cosmos DB
+
+Ustawienia konfiguracji można znaleźć w [Cosmos DB, wyzwalaczy i powiązań](functions-bindings-cosmosdb-v2.md#host-json).
 
 ## <a name="durabletask"></a>durableTask
 
-Ustawienia konfiguracji dla [funkcje trwałe](durable-functions-overview.md).
-
-```json
-{
-  "durableTask": {
-    "HubName": "MyTaskHub",
-    "ControlQueueBatchSize": 32,
-    "PartitionCount": 4,
-    "ControlQueueVisibilityTimeout": "00:05:00",
-    "WorkItemQueueVisibilityTimeout": "00:05:00",
-    "MaxConcurrentActivityFunctions": 10,
-    "MaxConcurrentOrchestratorFunctions": 10,
-    "AzureStorageConnectionStringName": "AzureWebJobsStorage",
-    "TraceInputsAndOutputs": false,
-    "LogReplayEvents": false,
-    "EventGridTopicEndpoint": "https://topic_name.westus2-1.eventgrid.azure.net/api/events",
-    "EventGridKeySettingName":  "EventGridKey",
-    "EventGridPublishRetryCount": 3,
-    "EventGridPublishRetryInterval": "00:00:30"
-  }
-}
-```
-
-Nazwy Centrum zadań musi rozpoczynać się literą i składać się wyłącznie z liter i cyfr. Jeśli nie zostanie określony, domyślna nazwa Centrum zadania dla aplikacji funkcji jest **DurableFunctionsHub**. Aby uzyskać więcej informacji, zobacz [koncentratory zadań](durable-functions-task-hubs.md).
-
-|Właściwość  |Domyślne | Opis |
-|---------|---------|---------|
-|HubName|DurableFunctionsHub|Alternatywne [Centrum zadań](durable-functions-task-hubs.md) nazwy mogą być używane do izolowania wielu aplikacji funkcje trwałe od siebie, nawet wtedy, gdy oni są przy użyciu tej samej wewnętrznej bazy danych magazynu.|
-|ControlQueueBatchSize|32|Liczba wiadomości do ściągania z kolejki formantu w czasie.|
-|PartitionCount |4|Liczba partycji dla kolejki kontroli. Może być dodatnią liczbą całkowitą od 1 do 16.|
-|ControlQueueVisibilityTimeout |5 minut|Limit czasu widoczności kontroli usuniętych z kolejki komunikatów w kolejce.|
-|WorkItemQueueVisibilityTimeout |5 minut|Limit czasu widoczności wiadomości w kolejce elementu roboczego usuniętych z kolejki.|
-|MaxConcurrentActivityFunctions |10 razy liczba procesorów na bieżącej maszynie|Maksymalna liczba funkcji działań, które mogą być przetwarzane jednocześnie w wystąpieniu jednego hosta.|
-|MaxConcurrentOrchestratorFunctions |10 razy liczba procesorów na bieżącej maszynie|Maksymalna liczba funkcji działań, które mogą być przetwarzane jednocześnie w wystąpieniu jednego hosta.|
-|AzureStorageConnectionStringName |AzureWebJobsStorage|Nazwa ustawienia aplikacji, która ma parametry połączenia usługi Azure Storage, które są używane do zarządzania związanych z nią zasobów usługi Azure Storage.|
-|TraceInputsAndOutputs |false|Wartość wskazująca, czy do śledzenia wejść i wyjść wywołania funkcji. Domyślne zachowanie, gdy Śledzenie zdarzeń do wykonywania funkcji ma zawierać liczbę bajtów w serializowane dane wejściowe i wyjściowe dla wywołania funkcji. Zapewnia to minimum informacji o dane wejściowe i wyjściowe wygląd bez nadmiernego zwiększenia rozmiaru dzienników lub przypadkowe udostępnianie poufnych informacji w dziennikach. Ustawienie tej właściwości na wartość true powoduje, że domyślne rejestrowanie funkcji logowania całą zawartość funkcji dane wejściowe i wyjściowe.|
-|LogReplayEvents|false|Wartość wskazująca, czy chcesz zapisać aranżacji powtarzania zdarzeń do usługi Application Insights.|
-|EventGridTopicEndpoint ||Adres URL punktu końcowego tematu niestandardowego usługi Azure Event Grid. Gdy ta właściwość jest ustawiona, organizowanie cyklu życia powiadomień zdarzenia są publikowane do tego punktu końcowego. Ta właściwość obsługuje rozpoznawanie ustawień aplikacji.|
-|EventGridKeySettingName ||Nazwa ustawienia aplikacji zawierającego klucz używany do uwierzytelniania za pośrednictwem tematu niestandardowego usługi Azure Event Grid w `EventGridTopicEndpoint`.|
-|EventGridPublishRetryCount|0|Liczba ponownych prób publikowania do tematu usługi Event Grid kończy się niepowodzeniem.|
-|EventGridPublishRetryInterval|5 minut|Usługi Event Grid publikuje interwał ponawiania prób w *: mm: ss* formatu.|
-
-Wiele z nich są do optymalizacji wydajności. Aby uzyskać więcej informacji, zobacz [wydajności i skali](durable-functions-perf-and-scale.md).
+Ustawienia konfiguracji można znaleźć w [powiązania trwałe funkcje](durable-functions-bindings.md#host-json).
 
 ## <a name="eventhub"></a>eventHub
 
-Ustawienia konfiguracji dla [Centrum zdarzeń wyzwalaczy i powiązań](functions-bindings-event-hubs.md). W wersji 2.x, jest elementem podrzędnym [rozszerzenia](#extensions).
-
-[!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
+Ustawienia konfiguracji można znaleźć w [Centrum zdarzeń wyzwalaczy i powiązań](functions-bindings-event-hubs.md#host-json). 
 
 ## <a name="extensions"></a>Rozszerzenia
-
-*W wersji 2.x tylko.*
 
 Właściwość, która zwraca obiekt, który zawiera wszystkie ustawienia specyficzne dla powiązania, takich jak [http](#http) i [eventHub](#eventhub).
 
@@ -317,54 +160,11 @@ Ustawienia konfiguracji dla [monitor kondycji hosta](https://github.com/Azure/az
 
 ## <a name="http"></a>http
 
-Ustawienia konfiguracji dla [http wyzwalaczy i powiązań](functions-bindings-http-webhook.md). W wersji 2.x, jest elementem podrzędnym [rozszerzenia](#extensions).
+Ustawienia konfiguracji można znaleźć w [http wyzwalaczy i powiązań](functions-bindings-http-webhook.md).
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
-## <a name="id"></a>id
-
-*W wersji 1.x tylko.*
-
-Unikatowy identyfikator dla hosta zadania. Może się od małej litery identyfikatora GUID z kreskami usunięte. Wymagana, gdy uruchamiane lokalnie. Podczas uruchamiania na platformie Azure, zalecamy nie ustawisz wartość Identyfikatora. Identyfikator jest generowana automatycznie na platformie Azure podczas `id` zostanie pominięty. Nie można ustawić identyfikator aplikacji funkcję niestandardową, korzystając z środowisko uruchomieniowe 2.x wersji.
-
-Jeśli udostępniasz konta magazynu przez wiele aplikacji funkcji, upewnij się, że każda aplikacja funkcji ma inną `id`. Możesz pominąć `id` właściwości lub ręcznym ustawieniu każda aplikacja funkcji `id` na inną wartość. Wyzwalacz czasomierza stosowana jest blokada, magazynu, aby upewnić się, że będą istnieć tylko jedno wystąpienie czasomierza w przypadku aplikacji funkcji skalowania do wielu wystąpień. Jeśli dwie aplikacje funkcji współużytkować ten sam `id` i każdy z nich korzysta z wyzwalacza czasomierza, uruchomi timer tylko jeden.
-
-```json
-{
-    "id": "9f4ea53c5136457d883d685e57164f08"
-}
-```
-
-## <a name="logger"></a>logger
-
-*W wersji 1.x tylko; do użytku w wersji 2.x [rejestrowania](#logging).*
-
-Kontrolki filtrowania dla dzienników napisane przez [obiektu ILogger](functions-monitoring.md#write-logs-in-c-functions) lub [context.log](functions-monitoring.md#write-logs-in-javascript-functions).
-
-```json
-{
-    "logger": {
-        "categoryFilter": {
-            "defaultLevel": "Information",
-            "categoryLevels": {
-                "Host": "Error",
-                "Function": "Error",
-                "Host.Aggregator": "Information"
-            }
-        }
-    }
-}
-```
-
-|Właściwość  |Domyślne | Opis |
-|---------|---------|---------| 
-|categoryFilter|Nie dotyczy|Określa, filtrowanie według kategorii| 
-|defaultLevel|Informacje|Dla dowolnej kategorii nie jest określony w `categoryLevels` tablicy, Wyślij dzienniki na tym poziomie i nowszych do usługi Application Insights.| 
-|categoryLevels|Nie dotyczy|Tablica kategorii określa minimalny poziom rejestrowania do wysłania do usługi Application Insights dla każdej kategorii. Kategoria określone w tym miejscu kontroluje wszystkie kategorie, które zaczynają się od tej samej wartości i wartości dłuższe wyższy priorytet. W poprzednim przykładzie *host.json* pliku wszystkie kategorie, które zaczynają się od "Host.Aggregator" dziennika w `Information` poziom. Wszystkie kategorie, które zaczynają się od "Host", takich jak "Host.Executor" Zaloguj się na `Error` poziom.| 
-
 ## <a name="logging"></a>Rejestrowanie
-
-*W wersji 2.x. do użytku w wersji 1.x [rejestratora](#logger).*
 
 Kontroluje zachowania rejestrowania aplikacji funkcji, łącznie z usługi Application Insights.
 
@@ -383,21 +183,21 @@ Kontroluje zachowania rejestrowania aplikacji funkcji, łącznie z usługi Appli
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------|
-|fileLoggingMode|informacje|Wysyła dzienniki na tym poziomie i nowszych do usługi Application Insights. |
+|fileLoggingMode|debugOnly|Określa, jaki poziom rejestrowania w pliku jest włączone.  Dostępne są opcje `never`, `always`, `debugOnly`. |
 |LogLevel|Nie dotyczy|Obiekt, który definiuje kategoria dziennika filtrowania dla funkcji w aplikacji. W wersji 2.x następuje układ platformy ASP.NET Core w celu filtrowania kategorii dziennika. Dzięki temu można filtrować rejestrowania dla określonych funkcji. Aby uzyskać więcej informacji, zobacz [filtrowanie dziennika](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) w dokumentacji platformy ASP.NET Core. |
 |applicationInsights|Nie dotyczy| [ApplicationInsights](#applicationinsights) ustawienie. |
 
 ## <a name="queues"></a>kolejki
 
-Ustawienia konfiguracji dla [magazynu kolejki wyzwalaczy i powiązań](functions-bindings-storage-queue.md). W wersji 2.x, jest elementem podrzędnym [rozszerzenia](#extensions).
+Ustawienia konfiguracji można znaleźć w [magazynu kolejki wyzwalaczy i powiązań](functions-bindings-storage-queue.md#host-json).  
 
-[!INCLUDE [functions-host-json-queues](../../includes/functions-host-json-queues.md)]
+## <a name="sendgrid"></a>Usługi SendGrid
+
+Ustawienia konfiguracji można znaleźć w [SendGrid wyzwalaczy i powiązań](functions-bindings-sendgrid.md#host-json).
 
 ## <a name="servicebus"></a>serviceBus
 
-Ustawienie konfiguracji [usługi Service Bus wyzwalaczy i powiązań](functions-bindings-service-bus.md). W wersji 2.x, jest elementem podrzędnym [rozszerzenia](#extensions).
-
-[!INCLUDE [functions-host-json-service-bus](../../includes/functions-host-json-service-bus.md)]
+Ustawienia konfiguracji można znaleźć w [usługi Service Bus wyzwalaczy i powiązań](functions-bindings-service-bus.md#host-json).
 
 ## <a name="singleton"></a>pojedyncze
 
@@ -423,29 +223,7 @@ Ustawienia konfiguracji dla pojedynczego wystąpienia zachowanie blokad. Aby uzy
 |lockAcquisitionTimeout|00:01:00|Maksymalna ilość czasu, środowisko uruchomieniowe podejmie próbę uzyskania blokady.| 
 |lockAcquisitionPollingInterval|Nie dotyczy|Interwał między próbami pozyskiwania blokady.| 
 
-## <a name="tracing"></a>Śledzenie
-
-*W wersji 1.x*
-
-Ustawienia konfiguracji dla dzienników, które tworzysz przy użyciu `TraceWriter` obiektu. Zobacz [C# rejestrowania](functions-reference-csharp.md#logging) i [rejestrowania Node.js](functions-reference-node.md#writing-trace-output-to-the-console). W wersji 2.x, wszystkie zachowanie dziennika jest kontrolowane przez [rejestrowania](#logging).
-
-```json
-{
-    "tracing": {
-      "consoleLevel": "verbose",
-      "fileLoggingMode": "debugOnly"
-    }
-}
-```
-
-|Właściwość  |Domyślne | Opis |
-|---------|---------|---------| 
-|consoleLevel|informacje|Poziom śledzenia dla rejestrowania konsoli. Opcje to: `off`, `error`, `warning`, `info`, i `verbose`.|
-|fileLoggingMode|debugOnly|Poziom śledzenia dla rejestrowania w pliku. Dostępne są opcje `never`, `always`, `debugOnly`.| 
-
 ## <a name="version"></a>version
-
-*W wersji 2.x*
 
 Ciąg wersji `"version": "2.0"` jest wymagana dla aplikacji funkcji, który jest przeznaczony dla środowiska uruchomieniowego w wersji 2.
 
