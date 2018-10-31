@@ -43,7 +43,7 @@ Oprócz funkcji opisanych w tym artykule usługa Application Gateway oferuje ró
 
 - **Pięć razy lepsza wydajność odciążenia protokołu SSL** w porównaniu z ogólnie dostępną jednostką SKU.
 
-Aby uzyskać więcej informacji na temat funkcji usługi Application Gateway w publicznej wersji zapoznawczej, zobacz [Autoscaling and Zone-redundant Application Gateway — Public Preview (Skalowanie automatyczne oraz nadmiarowość strefy w usłudze Application Gateway — publiczna wersja zapoznawcza)](application-gateway-autoscaling-zone-redundant.md).
+Aby uzyskać więcej informacji na temat funkcji usługi Application Gateway w publicznej wersji zapoznawczej, zobacz [Autoskalowana i strefowo nadmiarowa usługa Application Gateway (publiczna wersja zapoznawcza)](application-gateway-autoscaling-zone-redundant.md).
 
 ## <a name="azure-kubernetes-service-aks-ingress-controller-preview"></a>Kontroler ruchu przychodzącego w usłudze Azure Kubernetes Service (AKS) — wersja zapoznawcza 
 

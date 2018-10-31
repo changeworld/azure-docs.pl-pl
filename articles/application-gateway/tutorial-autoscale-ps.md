@@ -19,10 +19,10 @@ ms.locfileid: "48016938"
 
 W tym samouczku opisano sposób tworzenia usługi Azure Application Gateway przy użyciu poleceń cmdlet programu Azure PowerShell i modelu wdrażania usługi Azure Resource Manager. Ten samouczek koncentruje się na różnicach między nową jednostką SKU ze skalowaniem automatycznym a istniejącą standardową jednostką SKU. Szczegółowo opisano tu funkcje obsługi skalowania automatycznego, nadmiarowości strefy i zastrzeżone adresy VIP (statyczne adresy IP).
 
-Aby uzyskać więcej informacji na temat skalowania automatycznego i nadmiarowości strefy bramy aplikacji, zobacz [Skalowanie automatyczne i nadmiarowość strefy w usłudze Application Gateway (publiczna wersja zapoznawcza)](application-gateway-autoscaling-zone-redundant.md).
+Aby uzyskać więcej informacji na temat autoskalowania i strefowej nadmiarowości bramy aplikacji, zobacz [Autoskalowana i strefowo nadmiarowa usługa Application Gateway (publiczna wersja zapoznawcza)](application-gateway-autoscaling-zone-redundant.md).
 
 > [!IMPORTANT]
-> Jednostka SKU skalowania automatycznego i nadmiarowości strefy bramy aplikacji jest aktualnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Jednostka SKU autoskalowanej i strefowo nadmiarowej bramy aplikacji jest aktualnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
