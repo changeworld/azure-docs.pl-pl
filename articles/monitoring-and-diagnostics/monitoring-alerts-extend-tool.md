@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: cbe6ddc2c4680028d5a4a0491756c7a7b9897c69
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: ed6b2fafbb3329e20985b75f55d29b52dcc5da57
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233246"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415706"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Rozszerzanie alertów z usługi Log Analytics do alertów platformy Azure
 Funkcja alertów w usłudze Azure Log Analytics jest zastępowany przez alerty platformy Azure. W ramach tego przejścia alerty, które pierwotnie skonfigurowane w usłudze Log Analytics zostanie rozszerzony na platformę Azure. Jeśli nie chcesz poczekać na ich automatycznie przeniesione na platformę Azure, możesz zainicjować proces:
@@ -29,24 +29,24 @@ Poniżej opisano sposób rozszerzyć alerty dla obszaru roboczego z portalu Oper
 
 1. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
 2. W okienku subskrypcji usługi Log Analytics wybierz obszar roboczy, a następnie wybierz **portalu pakietu OMS** kafelka.
-![W okienku subskrypcji zrzut ekranu usługi Log Analytics, za pomocą portalu pakietu OMS kafelka wyróżnione](./media/monitor-alerts-extend/azure-portal-01.png) 
+![W okienku subskrypcji zrzut ekranu usługi Log Analytics, za pomocą portalu pakietu OMS kafelka wyróżnione](media/monitoring-alerts-extend-tool/azure-portal-01.png) 
 3. Po użytkownik zostanie przekierowany do portalu Operations Management Suite, wybierz **ustawienia** ikony.
-![Zrzut ekranu z pakietu Operations Management Suite portalu z wyróżnioną ikonę ustawienia](./media/monitor-alerts-extend/oms-portal-settings-option.png) 
+![Zrzut ekranu z pakietu Operations Management Suite portalu z wyróżnioną ikonę ustawienia](media/monitoring-alerts-extend-tool/oms-portal-settings-option.png) 
 4. Z **ustawienia** wybierz opcję **alerty**.  
 5. Wybierz **rozszerzone na platformę Azure**.
-![Zrzut ekranu z pakietu Operations Management Suite ustawienia alertów strony portalu, za pomocą Rozszerz do platformy Azure z wyróżnioną pozycją](./media/monitor-alerts-extend/ExtendInto.png)
+![Zrzut ekranu z pakietu Operations Management Suite ustawienia alertów strony portalu, za pomocą Rozszerz do platformy Azure z wyróżnioną pozycją](media/monitoring-alerts-extend-tool/ExtendInto.png)
 6. Wyświetlany jest Kreator trzech krokach **alerty** okienka. Zapoznaj się z omówieniem, a następnie wybierz pozycję **dalej**.
-![Zrzut ekranu przedstawiający kreatora w kroku 1](./media/monitor-alerts-extend/ExtendStep1.png)  
+![Zrzut ekranu przedstawiający kreatora w kroku 1](media/monitoring-alerts-extend-tool/ExtendStep1.png)  
 7. W drugim kroku zostanie wyświetlone podsumowanie proponowanych zmian i listę odpowiednich [grup akcji](monitoring-action-groups.md) dla alertów. Jeśli podobnych działań są widoczne w więcej niż jeden alert, proponowanych przez kreatora skojarzyć grupy pojedynczej akcji z wszystkich z nich.  Konwencja nazewnictwa jest następująca: *WorkspaceName_AG_ #Number*. Aby kontynuować, wybierz **dalej**.
-![Zrzut ekranu przedstawiający krok 2 Kreatora](./media/monitor-alerts-extend/ExtendStep2.png)  
+![Zrzut ekranu przedstawiający krok 2 Kreatora](media/monitoring-alerts-extend-tool/ExtendStep2.png)  
 8. W ostatnim kroku kreatora wybierz **Zakończ**i upewnij się, gdy zostanie wyświetlony monit, aby zainicjować proces. Opcjonalnie można podać adres e-mail, dzięki czemu otrzymasz powiadomienie, gdy proces zostanie zakończony i wszystkich alertów została pomyślnie przeniesiona do alertów platformy Azure.
-![Zrzut ekranu przedstawiający krok 3 kreatora](./media/monitor-alerts-extend/ExtendStep3.png)
+![Zrzut ekranu przedstawiający krok 3 kreatora](media/monitoring-alerts-extend-tool/ExtendStep3.png)
 
 Po zakończeniu działania kreatora, na **ustawienia alertów** strona, możliwość rozszerzanie alertów do platformy Azure zostanie usunięta. W tle alerty zostaną przeniesione na platformę Azure, a to może zająć trochę czasu. Podczas operacji nie możesz wprowadzać zmian do alertów z portalu Operations Management Suite. Można wyświetlić bieżący stan z Baner w górnej części portalu. Jeśli adres e-mail podany wcześniej, otrzymasz wiadomość e-mail, gdy proces zostanie pomyślnie zakończony.  
 
 
 Alerty nadal będą wyświetlane w portalu Operations Management Suite, nawet w przypadku, po pomyślnym przeniesieniu ich do platformy Azure.
-![Strona Ustawienia alertów portal zrzut ekranu z pakietu Operations Management Suite](./media/monitor-alerts-extend/PostExtendList.png)
+![Strona Ustawienia alertów portal zrzut ekranu z pakietu Operations Management Suite](media/monitoring-alerts-extend-tool/PostExtendList.png)
 
 
 ## <a name="option-2-use-the-alertsversion-api"></a>Opcja 2: Użycie interfejs API AlertsVersion
@@ -460,7 +460,7 @@ Podczas procesu rozszerzania alertów, problemów może uniemożliwić systemu t
 > W przypadku chmury publicznej platformy Azure na podstawie użytkowników usługi Log Analytics nie wykonaj następujące kroki korygowania przed 5 lipca 2018 r., alerty zostaną wykonane na platformie Azure, ale nie będą uruchamiane w dowolnej akcji powiadomienia. Aby otrzymywać powiadomienia o alertach, należy ręcznie edytować i Dodaj [grup akcji](monitoring-action-groups.md), lub użyj kroku [niestandardowego skryptu programu PowerShell](#option-3---using-custom-powershell-script).
 
 Poniżej przedstawiono kroki korygowania dla każdego błędu:
-- **Błąd: Blokada zakres jest obecny na poziomie grupy zasobów/subskrypcji dla operacji zapisu**: ![zrzut ekranu przedstawiający pakietu Operations Management Suite ustawienia alertów stronie portalu, zakres blokady komunikat o błędzie wyróżniony](./media/monitor-alerts-extend/ErrorScopeLock.png)
+- **Błąd: Blokada zakres jest obecny na poziomie grupy zasobów/subskrypcji dla operacji zapisu**: ![zrzut ekranu przedstawiający pakietu Operations Management Suite ustawienia alertów stronie portalu, zakres blokady komunikat o błędzie wyróżniony](media/monitoring-alerts-extend-tool/ErrorScopeLock.png)
 
     Gdy zakres blokady jest włączona, ta funkcja ogranicza wszelkie nowe zmiany w grupie subskrypcji lub zasobu, która zawiera obszar roboczy usługi Log Analytics (Operations Management Suite). System nie mógł rozszerzyć alertów do platformy Azure i utworzyć niezbędnych grup akcji.
     
@@ -468,7 +468,7 @@ Poniżej przedstawiono kroki korygowania dla każdego błędu:
     
     Po naprawieniu błędu wykonując kroki przedstawione w artykule, pakiet Operations Management Suite rozszerza alertów do platformy Azure w ramach następnego dnia zaplanowane uruchomienie. Nie trzeba podejmować żadnych dalszych akcji lub zainicjować niczego.
 
-- **Błąd: Zasady są obecne na poziomie grupy zasobów/subskrypcji**: ![zrzut ekranu przedstawiający pakietu Operations Management Suite ustawienia alertów stronie portalu, zasady komunikat o błędzie wyróżniony](./media/monitor-alerts-extend/ErrorPolicy.png)
+- **Błąd: Zasady są obecne na poziomie grupy zasobów/subskrypcji**: ![zrzut ekranu przedstawiający pakietu Operations Management Suite ustawienia alertów stronie portalu, zasady komunikat o błędzie wyróżniony](media/monitoring-alerts-extend-tool/ErrorPolicy.png)
 
     Gdy [usługi Azure Policy](../azure-policy/azure-policy-introduction.md) jest stosowany, ogranicza nowego zasobu w grupie subskrypcji lub zasobu, która zawiera obszar roboczy usługi Log Analytics (Operations Management Suite). System nie mógł rozszerzyć alertów do platformy Azure i utworzyć niezbędnych grup akcji.
     

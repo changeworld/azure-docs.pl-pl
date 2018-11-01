@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: c419a3c44a38f72d56f2b7b362c62e683fc20c7f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 057ce4b93be27c27e27d49e61a89a7c2b9e46dc8
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993021"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421071"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Stream dzienniki diagnostyczne platformy Azure do usługi Log Analytics
 
@@ -44,21 +44,21 @@ Obszar roboczy usługi Log Analytics nie musi znajdować się w tej samej subskr
 ## <a name="stream-diagnostic-logs-using-the-portal"></a>Dzienniki diagnostyczne Stream przy użyciu portalu
 1. W portalu, przejdź do usługi Azure Monitor, a następnie kliknij pozycję **ustawień diagnostycznych**
 
-    ![Monitorowanie sekcji usługi Azure Monitor](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-blade.png)
+    ![Monitorowanie sekcji usługi Azure Monitor](media/monitor-stream-diagnostic-logs-log-analytics/diagnostic-settings-blade.png)
 
 2. Opcjonalnie filtrować listę według grupy zasobów lub typ zasobu, a następnie kliknij na zasób, dla którego chcesz skonfigurować ustawienie diagnostyczne.
 
 3. Jeśli ustawienia nie istnieje w zasobie wybrany, zostanie wyświetlony monit, aby utworzyć ustawienie. Kliknij przycisk "Włącz diagnostykę."
 
-   ![Dodaj ustawienie diagnostyczne — nie istniejące ustawienia](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-none.png)
+   ![Dodaj ustawienie diagnostyczne — nie istniejące ustawienia](media/monitor-stream-diagnostic-logs-log-analytics/diagnostic-settings-none.png)
 
    W przypadku ustawienia istniejące na zasób zostanie wyświetlona lista ustawień już skonfigurowany dla tego zasobu. Kliknij pozycję "Dodaj ustawienie diagnostyczne".
 
-   ![Dodaj ustawienie diagnostyczne — istniejące ustawienia](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-multiple.png)
+   ![Dodaj ustawienie diagnostyczne — istniejące ustawienia](media/monitor-stream-diagnostic-logs-log-analytics/diagnostic-settings-multiple.png)
 
 3. Nadaj nazwę ustawienia i zaznacz pole **wysyłanie do usługi Log Analytics**, następnie wybierz obszar roboczy usługi Log Analytics.
 
-   ![Dodaj ustawienie diagnostyczne — istniejące ustawienia](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-configure.png)
+   ![Dodaj ustawienie diagnostyczne — istniejące ustawienia](media/monitor-stream-diagnostic-logs-log-analytics/diagnostic-settings-configure.png)
 
 4. Kliknij pozycję **Zapisz**.
 

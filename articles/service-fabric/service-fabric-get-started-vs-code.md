@@ -1,6 +1,6 @@
 ---
-title: Sieć szkieletowa usług Azure z kodem VS wprowadzenie | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera omówienie tworzenia aplikacji platformy Service Fabric przy użyciu programu Visual Studio Code.
+title: Usługa Azure Service Fabric za pomocą programu VS Code wprowadzenie | Dokumentacja firmy Microsoft
+description: W tym artykule przedstawiono omówienie procedury tworzenia aplikacji usługi Service Fabric przy użyciu programu Visual Studio Code.
 services: service-fabric
 documentationcenter: .net
 author: JimacoMS2
@@ -14,31 +14,31 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 367829c269bd1d96e6aa5fab1be008483a4ab5ab
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: dc9c11e2c0d5642e31eace2a4dcb6065d990e25d
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37116067"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413659"
 ---
-# <a name="service-fabric-for-visual-studio-code"></a>Sieć szkieletowa usług dla kodu programu Visual Studio
+# <a name="service-fabric-for-visual-studio-code"></a>Usługa Service Fabric dla programu Visual Studio Code
 
-[Rozszerzenia usługi sieci szkieletowej niezawodnych usług VS kodu](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-service-fabric-reliable-services) udostępnia narzędzia niezbędne do tworzenia, tworzenie i debugowanie aplikacji sieci szkieletowej usług w systemach operacyjnych Windows, Linux lub macOS.
+[Rozszerzenie usług Reliable Services usługi Service Fabric dla programu VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-service-fabric-reliable-services) udostępnia narzędzia niezbędne do tworzenia, kompilowania i debugowania aplikacji usługi Service Fabric w systemach operacyjnych Windows, Linux i macOS.
 
-Ten artykuł zawiera omówienie wymagań i konfiguracji rozszerzenia, a także użycia poszczególnych poleceń, które są udostępniane przez rozszerzenie. 
+Ten artykuł zawiera omówienie wymagań i instalacji rozszerzenia, a także użycie różnych poleceń, które są dostarczane przez rozszerzenie. 
 
 > [!IMPORTANT]
-> Usługa sieci szkieletowej Java aplikacje mogą być opracowane na komputerach z systemem Windows, ale mogą być rozmieszczane tylko klastry z systemem Linux Azure. Debugowanie aplikacji Java nie jest obsługiwane w systemie Windows.
+> Aplikacje Java usługi Service Fabric mogą być tworzone na maszynach Windows, ale mogą być rozmieszczane tylko klastry z systemem Linux platformy Azure. Debugowanie aplikacji Java nie jest obsługiwana na Windows.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Następujące wymagania wstępne musi być zainstalowany na wszystkich środowisk.
+Następujące wymagania wstępne, musi być zainstalowany na wszystkich środowisk.
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Node.js](https://nodejs.org/)
-* [Git](https://git-scm.com/)
-* [Usługa SDK sieci szkieletowej](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started)
-* Generatory narzędzia yeoman — zainstalować odpowiednie generatory aplikacji
+* [Usługa Git](https://git-scm.com/)
+* [Zestaw SDK usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started)
+* Generatory narzędzia yeoman — instalowanie generatorów odpowiednie dla twojej aplikacji
 
    ```sh
    npm install -g yo
@@ -48,92 +48,92 @@ Następujące wymagania wstępne musi być zainstalowany na wszystkich środowis
    npm install -g generator-azuresfguest
    ```
 
-Do tworzenia aplikacji Java muszą być zainstalowane następujące wymagania wstępne:
+Muszą być zainstalowane następujące wstępnie wymagane składniki do tworzenia aplikacji Java:
 
-* [Zestaw SDK Java](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) (w wersji 1.8)
+* [Zestaw SDK platformy Java](https://aka.ms/azure-jdks) (wersja 1.8)
 * [Narzędzia Gradle](https://gradle.org/install/)
-* [Debuger dla kodu języka Java VS rozszerzenia](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug) wymagane do debugowania usług Java. Debugowanie usług Java jest obsługiwany w systemie Linux tylko. Można zainstalować, klikając ikonę rozszerzenia w **działania pasek** w kodzie VS i wyszukiwania rozszerzenia lub z witryny Marketplace kodu programu VS.
+* [Debuger dla rozszerzenia kodu programu VS Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug) potrzebnych do debugowania usług Java. Debugowanie usługi Java jest obsługiwane w systemie Linux tylko. Można to zrobić, klikając ikonę rozszerzenia w **pasku działań** programu VS Code i rozszerzenia lub z programu VS Code Marketplace.
 
-Muszą być zainstalowane następujące wymagania wstępne platformy .NET Core / programowania w języku C#:
+Należy zainstalować następujące wymagania wstępne dla platformy .NET Core /C# programowania:
 
-* [Oprogramowanie .NET core](https://www.microsoft.com/net/learn/get-started) (wersji 2.0.0 lub nowszy)
-* [C# dla rozszerzenia Visual Studio Code (obsługiwane przez OmniSharp) kodzie VS](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) wymagane do debugowania usług C#. Można zainstalować, klikając ikonę rozszerzenia w **działania pasek** w kodzie VS i wyszukiwania rozszerzenia lub z witryny Marketplace kodu programu VS.
+* [.NET core](https://www.microsoft.com/net/learn/get-started) (w wersji 2.0.0 lub nowszy)
+* [C#rozszerzenia programu Visual Studio Code (obsługiwane przez technologię OmniSharp) programu VS Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) potrzebnych do debugowania C# usług. Można to zrobić, klikając ikonę rozszerzenia w **pasku działań** programu VS Code i rozszerzenia lub z programu VS Code Marketplace.
 
 ## <a name="setup"></a>Konfigurowanie
 
-1. Otwórz VS kodu.
-2. Kliknij ikonę rozszerzenia w **działania pasek** po lewej stronie kodzie VS. Wyszukaj "Sieci szkieletowej usług". Kliknij przycisk **zainstalować** rozszerzenia usługi sieci szkieletowej niezawodne usługi.
+1. Otwórz program VS Code.
+2. Kliknij ikonę rozszerzenia **pasku działań** po lewej stronie programu VS Code. Wyszukaj frazę "Service Fabric". Kliknij przycisk **zainstalować** rozszerzenia usług Reliable Services usługi Service Fabric.
 
 ## <a name="commands"></a>Polecenia
-Rozszerzenie usługi sieci szkieletowej niezawodnych usług VS kodu udostępnia wiele poleceń, aby pomóc deweloperom tworzenie i wdrażanie projektów sieci szkieletowej usług. Możesz wywołać poleceń z **palety polecenia** naciskając `(Ctrl + Shift + p)`, wpisując nazwę polecenia na pasku wejściowego i wybranie odpowiedniego polecenia z listy monitu. 
+Rozszerzenie usług Reliable Services usługi Service Fabric dla programu VS Code zawiera wiele poleceń, aby pomóc deweloperom tworzyć i wdrażać projekty usługi Service Fabric. Można wywołać polecenia z **paletę poleceń** , naciskając klawisz `(Ctrl + Shift + p)`, wpisując nazwę polecenia pasek danych wejściowych, a wybranie odpowiedniego polecenia z listy monitów. 
 
-* Usługa sieci szkieletowej: Tworzenie aplikacji 
-* Usługa sieci szkieletowej: Publikowanie aplikacji 
-* Usługa sieci szkieletowej: Wdrażanie aplikacji 
-* Usługa sieci szkieletowej: Usuwanie aplikacji  
-* Usługa sieci szkieletowej: Tworzenie aplikacji 
+* Usługa Service Fabric: Tworzenie aplikacji 
+* Usługa Service Fabric: Publikowanie aplikacji 
+* Usługa Service Fabric: Wdrażanie aplikacji 
+* Usługa Service Fabric: Usuń aplikację  
+* Usługa Service Fabric: Tworzenie aplikacji 
 * Usługi Service Fabric: Wyczyść aplikacji 
 
-### <a name="service-fabric-create-application"></a>Usługa sieci szkieletowej: Tworzenie aplikacji
+### <a name="service-fabric-create-application"></a>Usługa Service Fabric: Tworzenie aplikacji
 
-**Usługi Service Fabric: tworzenie aplikacji** polecenie tworzy nową aplikację platformy Service Fabric w bieżącym obszarze roboczym. W zależności od tego, które narzędzia yeoman generatory są zainstalowane na komputerze deweloperskim można utworzyć kilka typów aplikacji sieci szkieletowej usług, w tym projekty języka Java, C#, kontenera i gościa. 
+**Usługi Service Fabric: tworzenie aplikacji** polecenie tworzy nową aplikację usługi Service Fabric w bieżącym obszarze roboczym. W zależności od tego, które yeoman generatory są zainstalowane na komputerze deweloperskim, można utworzyć kilka typów aplikacji usługi Service Fabric, w tym Java, C#, kontener i projektów gościa. 
 
 1.  Wybierz **usługi Service Fabric: Dodaj usługę** polecenia
-2.  Wybierz typ dla nowej aplikacji sieci szkieletowej usług. 
+2.  Wybierz typ nowej aplikacji usługi Service Fabric. 
 3.  Wprowadź nazwę aplikacji, którą chcesz utworzyć
-3.  Wybierz typ usługi, którą chcesz dodać do aplikacji sieci szkieletowej usług. 
+3.  Wybierz typ usługi, którą chcesz dodać do aplikacji usługi Service Fabric. 
 4.  Postępuj zgodnie z monitami, aby nazwa usługi. 
-5.  Nowa aplikacja usługi Service Fabric pojawi się w obszarze roboczym.
-6.  Otwórz nowy folder aplikacji tak, aby stał się folderu głównego w obszarze roboczym. Można kontynuować wykonywania poleceń w tym miejscu.
+5.  Nowa aplikacja usługi Service Fabric zostanie wyświetlony w obszarze roboczym.
+6.  Otwórz ten nowy folder aplikacji, tak aby stał się folderze głównym w obszarze roboczym. Można kontynuować wykonywania poleceń w tym miejscu.
 
-### <a name="service-fabric-add-service"></a>Usługa sieci szkieletowej: Dodawanie usługi
-**Usługi Service Fabric: Dodaj usługę** polecenie dodaje nową usługę do istniejącej aplikacji sieci szkieletowej usług. Usługa nie zostanie dodany do aplikacji musi być katalog główny obszaru roboczego. 
+### <a name="service-fabric-add-service"></a>Usługa Service Fabric: Dodaj usługę
+**Usługi Service Fabric: Dodaj usługę** polecenie dodaje nową usługę do istniejącej aplikacji usługi Service Fabric. Usługa zostanie dodana do aplikacji musi być katalog główny, w obszarze roboczym. 
 
 1.  Wybierz **usługi Service Fabric: Dodaj usługę** polecenia.
-2.  Wybierz typ bieżącej aplikacji sieci szkieletowej usług. 
-3.  Wybierz typ usługi, którą chcesz dodać do aplikacji sieci szkieletowej usług. 
+2.  Wybierz typ obecnie używaną aplikację usługi Service Fabric. 
+3.  Wybierz typ usługi, którą chcesz dodać do aplikacji usługi Service Fabric. 
 4.  Postępuj zgodnie z monitami, aby nazwa usługi. 
 5.  Nowa usługa pojawia się w katalogu projektu. 
 
-### <a name="service-fabric-publish-application"></a>Usługa sieci szkieletowej: Publikowanie aplikacji
-**Usługi Service Fabric: publikowanie aplikacji** polecenia wdraża aplikacji w zdalnym klastrze usługi sieć szkieletowa usług. Klaster docelowy może być bezpiecznej lub niezabezpieczone klastra. Jeśli nie ustawiono parametrów w Cloud.json, aplikacja jest wdrażana na lokalny klaster.
+### <a name="service-fabric-publish-application"></a>Usługa Service Fabric: Publikowanie aplikacji
+**Usługi Service Fabric: publikowanie aplikacji** polecenie służy do wdrażania aplikacji usługi Service Fabric w klastrze zdalnym. Klaster docelowy może być bezpieczny lub niezabezpieczonym klastrem. Jeśli nie ustawiono parametrów w Cloud.json, aplikacja jest wdrażana w klastrze lokalnym.
 
-1.  Przy pierwszym wbudowanej aplikacji pliku Cloud.json jest generowany w katalogu projektu.
+1.  Przy pierwszym aplikacja jest skompilowana, generowany jest plik Cloud.json w katalogu projektu.
 2.  Wprowadź wartości dla klastra, który chcesz połączyć się w pliku Cloud.json.
 3.  Wybierz **usługi Service Fabric: publikowanie aplikacji** polecenia.
-4.  Wyświetl klastra docelowego o Service Fabric Explorer, aby upewnić się, że aplikacja została zainstalowana. 
+4.  Wyświetl klastra docelowego przy użyciu narzędzia Service Fabric Explorer, aby upewnić się, że aplikacja została zainstalowana. 
 
-### <a name="service-fabric-deploy-application-localhost"></a>Usługa sieci szkieletowej: Wdrażanie aplikacji (Localhost)
-**Usługi Service Fabric: Wdrażanie aplikacji** polecenia wdraża aplikacji sieci szkieletowej usług w klastrze lokalnym. Upewnij się, że w klastrze lokalnym działa przed użyciem polecenia. 
+### <a name="service-fabric-deploy-application-localhost"></a>Usługa Service Fabric: Wdrażanie aplikacji (Localhost)
+**Usługi Service Fabric: Wdrażanie aplikacji** polecenie służy do wdrażania aplikacji usługi Service Fabric w klastrze lokalnym. Upewnij się, że klaster lokalny jest uruchomiony przed użyciem polecenia. 
 
 1.  Wybierz **usługi Service Fabric: Wdrażanie aplikacji** polecenia
-2.  Wyświetl klastra lokalnego z Eksploratora usługi sieć szkieletowa (http://localhost:19080/Explorer) aby upewnić się, że aplikacja została zainstalowana. Może to zająć trochę czasu, dlatego cierpliwość.
-3.  Można również użyć **usługi Service Fabric: publikowanie aplikacji** polecenia bez parametrów ustawione w pliku Cloud.json do wdrożenia z lokalnym klastrem.
+2.  Wyświetlanie klastra lokalnego przy użyciu narzędzia Service Fabric Explorer (http://localhost:19080/Explorer) aby upewnić się, że aplikacja została zainstalowana. To może trochę potrwać, więc o cierpliwość.
+3.  Można również użyć **usługi Service Fabric: publikowanie aplikacji** polecenia bez parametrów, ustawione w pliku Cloud.json do wdrożenia w lokalnym klastrze.
 
 > [!NOTE]
-> Wdrożenie aplikacji Java na lokalny klaster nie jest obsługiwana na komputerach z systemem Windows.
+> Wdrażanie aplikacji Java w klastrze lokalnym nie jest obsługiwane na maszynach Windows.
 
-### <a name="service-fabric-remove-application"></a>Usługa sieci szkieletowej: Usuwanie aplikacji
-**Usługi Service Fabric: usuwanie aplikacji** polecenia powoduje usunięcie aplikacji usługi Service Fabric z klastra, aby była wcześniej wdrożona przy użyciu rozszerzenia kodzie VS. 
+### <a name="service-fabric-remove-application"></a>Usługa Service Fabric: Usuń aplikację
+**Usługi Service Fabric: Usuń aplikacji** polecenie usuwa aplikację usługi Service Fabric z klastra, aby była wcześniej wdrożona za pomocą rozszerzenia programu VS Code. 
 
-1.  Wybierz **usługi Service Fabric: usuwanie aplikacji** polecenia.
-2.  Wyświetl klaster z Service Fabric Explorer, aby upewnić się, że aplikacja została usunięta. Może to zająć trochę czasu, dlatego cierpliwość.
+1.  Wybierz **usługi Service Fabric: Usuń aplikacji** polecenia.
+2.  Wyświetl klastra przy użyciu narzędzia Service Fabric Explorer, aby upewnić się, że aplikacja została usunięta. To może trochę potrwać, więc o cierpliwość.
 
-### <a name="service-fabric-build-application"></a>Usługa sieci szkieletowej: Tworzenie aplikacji
-**Usługi Service Fabric: usuwanie aplikacji** polecenia można tworzyć aplikacje Java lub C# sieci szkieletowej usług. 
+### <a name="service-fabric-build-application"></a>Usługa Service Fabric: Tworzenie aplikacji
+**Usługi Service Fabric: Usuń aplikacji** polecenia można utworzyć albo Java lub C# aplikacji usługi Service Fabric. 
 
-1.  Upewnij się, że znajdują się w folderze głównym aplikacji przed wykonaniem tego polecenia. Polecenie identyfikuje typu aplikacji (C# lub języka Java) i w związku z tym tworzy aplikacji.
-2.  Wybierz **usługi Service Fabric: tworzenie aplikacji** polecenia.
-3.  Dane wyjściowe z procesu kompilacji są zapisywane w zintegrowanym terminala.
+1.  Upewnij się, że znajdują się w folderze głównym aplikacji przed wykonaniem tego polecenia. To polecenie identyfikuje typ aplikacji (C# lub Java) i w związku z tym kompilacji aplikacji.
+2.  Wybierz **usługi Service Fabric: budowanie aplikacji** polecenia.
+3.  Dane wyjściowe z procesu kompilacji są zapisywane w zintegrowanym terminalu.
 
 ### <a name="service-fabric-clean-application"></a>Usługi Service Fabric: Wyczyść aplikacji
-**Usługi Service Fabric: czystą aplikacji** polecenie usuwa wszystkie pliki jar i natywnych bibliotek, które zostały wygenerowane przez kompilację. Dotyczy tylko aplikacji Java. 
+**Usługi Service Fabric: wyczyść aplikacji** polecenie usuwa wszystkie pliki jar i natywnych bibliotek, które zostały wygenerowane przez kompilację. Prawidłowe dla tylko aplikacji w języku Java. 
 
 1.  Upewnij się, że znajdują się w folderze głównym aplikacji przed wykonaniem tego polecenia. 
-2.  Wybierz **usługi Service Fabric: czystą aplikacji** polecenia.
-3.  Dane wyjściowe czystą procesu są zapisywane w zintegrowanym terminala.
+2.  Wybierz **usługi Service Fabric: wyczyść aplikacji** polecenia.
+3.  Dane wyjściowe czyste procesu są zapisywane zintegrowany terminal programu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się, jak [tworzenie i debugowanie aplikacji sieci szkieletowej usług C# za pomocą kodu VS](./service-fabric-develop-csharp-applications-with-vs-code.md).
-* Dowiedz się, jak [opracowywania i debugowania aplikacji Java sieci szkieletowej usług za pomocą kodu VS](./service-fabric-develop-java-applications-with-vs-code.md).
+* Dowiedz się, jak [programowanie i debugowanie C# aplikacji usługi Service Fabric za pomocą programu VS Code](./service-fabric-develop-csharp-applications-with-vs-code.md).
+* Dowiedz się, jak [programowanie i debugowanie aplikacji Java usługi Service Fabric za pomocą programu VS Code](./service-fabric-develop-java-applications-with-vs-code.md).

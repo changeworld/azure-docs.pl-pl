@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: daseidma;bwren
-ms.openlocfilehash: 9d574e7e8b0b285093aa0960243300dfe9f6d417
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 4461b98c56bcf99fc11aa9d89e6c6dc5961c86ac
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249012"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419524"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurowanie rozwiązania Service Map na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Służy on do wyświetlenia serwerów, prawdopodobnie z nich--wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map Pokazuje połączenia między serwerami, procesami i portami w dowolnej architekturze połączenia TCP bez konieczności konfiguracji, innej niż Instalacja agenta.
@@ -172,7 +172,7 @@ Aby uzyskać więcej informacji na temat zbierania i wykorzystywania danych, zob
 
 ## <a name="installation"></a>Instalacja
 
-## <a name="azure-vm-extension"></a>Rozszerzenie maszyny Wirtualnej platformy Azure
+### <a name="azure-vm-extension"></a>Rozszerzenie maszyny Wirtualnej platformy Azure
 Rozszerzenie jest dostępne zarówno dla Windows (DependencyAgentWindows) i systemu Linux (DependencyAgentLinux) i agenta zależności można łatwo wdrożyć na maszynach wirtualnych platformy Azure, używając [rozszerzenie maszyny Wirtualnej Azure](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-features).  Rozszerzenie maszyny Wirtualnej platformy Azure Windows i maszyn wirtualnych systemu Linux przy użyciu skryptu programu PowerShell lub bezpośrednio na maszynie Wirtualnej przy użyciu szablonu usługi Azure Resource Manager można wdrożyć agenta zależności.  W przypadku wdrożenia agenta za pomocą rozszerzenia maszyny Wirtualnej platformy Azure, Twoi agenci są automatycznie aktualizowane do najnowszej wersji.
 
 Aby wdrożyć rozszerzenie maszyny Wirtualnej platformy Azure przy użyciu programu PowerShell, służy poniższy przykład:

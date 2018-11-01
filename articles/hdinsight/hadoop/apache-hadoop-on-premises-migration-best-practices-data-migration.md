@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 95b753a3be824b5815a70fee84913f1c129f2605
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 6b06b8eb8d5e18acd3107ec5cccac79fc7be7edc
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221948"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418181"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania migracji danych
 
@@ -100,14 +100,14 @@ Magazyn metadanych hive można migrować za pomocą skryptów lub przy użyciu f
 
 #### <a name="hive-metastore-migration-using-scripts"></a>Migracja magazynu metadanych hive za pomocą skryptów
 
-- Generuj Hive DDLs z Magazyn metadanych Hive środowiska lokalnego. Ten krok można wykonać przy użyciu [otoki skryptu powłoki systemowej](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md)
-- Edytuj wygenerowany kod DDL, aby zastąpić adres url systemu HDFS przy użyciu adresów URL usługi ADLS/WASB/ABFS
-- Uruchamianie zaktualizowane DDL na Magazyn metadanych z klastra usługi HDI
-- Upewnij się, czy wersja magazynu metadanych Hive jest zgodna między lokalizacją lokalną i chmurą
+1. Generuj Hive DDLs z Magazyn metadanych Hive środowiska lokalnego. Ten krok można wykonać przy użyciu [otoki skryptu powłoki systemowej]. (https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md)
+1. Edytuj wygenerowany kod DDL, aby zastąpić adres url systemu HDFS przy użyciu adresów URL usługi ADLS/WASB/ABFS
+1. Uruchom zaktualizowane DDL na magazynu metadanych klastra HDInsight
+1. Upewnij się, czy wersja magazynu metadanych Hive jest zgodna między lokalizacją lokalną i chmurą
 
 #### <a name="hive-metastore-migration-using-db-replication"></a>Migracja magazynu metadanych hive przy użyciu replikacji bazy danych
 
-- Konfigurowanie replikacji bazy danych między Magazyn metadanych Hive lokalnej bazy danych i magazynu metadanych usługi HDI bazy danych
+- Konfigurowanie replikacji bazy danych między Magazyn metadanych Hive lokalnej bazy danych i magazynu metadanych HDInsight bazy danych
 - Użyj "Hive MetaTool", aby zastąpić adres url systemu HDFS ADLS/WASB/ABFS adresów URL, na przykład:
 
 ```bash
@@ -116,9 +116,9 @@ Magazyn metadanych hive można migrować za pomocą skryptów lub przy użyciu f
 
 ### <a name="ranger"></a>Ranger
 
-- Eksportuj zasady platformy Ranger środowiska lokalnego do plików xml
-- Przekształcanie środowiska lokalnego określonych opartych na systemie plików HDFS ścieżki do WASB/Azure Data Lake Store przy użyciu narzędzia, takiego jak XSLT
-- Importowanie zasad do uruchamiania w usłudze HDI platformy Ranger
+- Eksportuj zasady platformy Ranger w środowisku lokalnym do plików xml.
+- Przekształć lokalnych określonych opartych na systemie plików HDFS ścieżki do WASB/Azure Data Lake Store przy użyciu narzędzia, takiego jak XSLT.
+- Importowanie zasad do systemem HDInsight platformy Ranger.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

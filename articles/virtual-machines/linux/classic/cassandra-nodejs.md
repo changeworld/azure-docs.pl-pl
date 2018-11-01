@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: d99c9732bb1bf494b87d2073ba002264c7a51634
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 3066da9a492fc12dd8b333a089b8aabbbb647414
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221251"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421360"
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Uruchamianie klastra oprogramowania Cassandra w systemie Linux na platformie Azure przy użyciu środowiska Node.js
 
@@ -118,13 +118,13 @@ Następujące wersje oprogramowania są używane podczas wdrażania:
 
 <table>
 <tr><th>Oprogramowanie</th><th>Element źródłowy</th><th>Wersja</th></tr>
-<tr><td>JRE    </td><td>[JRE 8](http://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html) </td><td>8U5</td></tr>
+<tr><td>JRE    </td><td>[JRE 8](https://aka.ms/azure-jdks) </td><td>8U5</td></tr>
 <tr><td>JNA    </td><td>[JNA](https://github.com/twall/jna) </td><td> 3.2.7</td></tr>
 <tr><td>Cassandra</td><td>[Bazy danych Apache Cassandra 2.0.8](http://www.apache.org/dist/cassandra/)</td><td> 2.0.8</td></tr>
 <tr><td>Ubuntu    </td><td>[Microsoft Azure](https://azure.microsoft.com/) </td><td>14.04 LTS</td></tr>
 </table>
 
-Po pobraniu środowiska JRE, musisz ręcznie zaakceptować licencji oprogramowania Oracle. Tak można Uproszczenie wdrażania, Pobierz wymagane oprogramowanie na pulpicie. Następnie przekaż go do obrazu systemu Ubuntu szablonu do utworzenia jako wstępnym i niezbędnym warunkiem do wdrożenia klastra.
+Aby uprościć wdrożenie, Pobierz wymagane oprogramowanie na pulpicie. Następnie przekaż go do obrazu systemu Ubuntu szablonu do utworzenia jako wstępnym i niezbędnym warunkiem do wdrożenia klastra.
 
 Pobierz wymienionego powyżej oprogramowania w katalogu pobierania dobrze znanych (na przykład %TEMP%/downloads na Windows lub ~/Downloads na większości dystrybucje systemu Linux lub Mac) na komputerze lokalnym.
 
@@ -149,7 +149,7 @@ Na ekranie "konfiguracja maszyny wirtualnej" #1, wprowadź następujące informa
 <tr><td> UWIERZYTELNIANIE         </td><td> Kliknij pole wyboru                 </td><td>Sprawdź, czy chcesz zabezpieczyć za pomocą klucza SSH </td><tr>
 <tr><td> CERTYFIKAT             </td><td> Nazwa pliku certyfikatu klucza publicznego </td><td> Użyj wcześniej wygenerowany klucz publiczny</td><tr>
 <tr><td> Nowe hasło    </td><td> Silne hasło </td><td> </td><tr>
-<tr><td> Potwierdzanie hasła    </td><td> Silne hasło </td><td></td><tr>
+<tr><td> Potwierdź hasło    </td><td> Silne hasło </td><td></td><tr>
 </table>
 
 Na ekranie "konfiguracja maszyny wirtualnej" #2, wprowadź następujące informacje:

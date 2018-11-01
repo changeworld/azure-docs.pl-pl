@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/20/2017
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74824af6f17a6c1d2638c8604edd38ffa419d607
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 1b1dcd9ba428618e1b234d76d5ad459eab0662aa
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858123"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417569"
 ---
 # <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Praca z danymi geograficznymi oraz GeoJSON lokalizacji danych w usłudze Azure Cosmos DB
 Ten artykuł stanowi wprowadzenie do funkcji geoprzestrzennych w [usługi Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Po przeczytaniu tego, możliwe będzie odpowiadać na następujące pytania:
@@ -133,6 +133,9 @@ public class UserProfile
     [JsonProperty("location")]
     public Point Location { get; set; }
 
+    [JsonProperty("profiletype")]
+    public string ProfileType { get; set; }
+
     // More properties
 }
 
@@ -155,7 +158,7 @@ Usługa Azure Cosmos DB obsługuje następujące funkcje wbudowane Otwórz dane 
 
 <table>
 <tr>
-  <td><strong>Sposób użycia</strong></td>
+  <td><strong>Użycie</strong></td>
   <td><strong>Opis</strong></td>
 </tr>
 <tr>
@@ -276,7 +279,7 @@ Poniżej przedstawiono przykładowe zapytanie LINQ, które znajdzie wszystkie do
 **Zapytania LINQ dla odległości**
 
     foreach (UserProfile user in client.CreateDocumentQuery<UserProfile>(UriFactory.CreateDocumentCollectionUri("db", "profiles"))
-        .Where(u => u.ProfileType == "Public" && a.Location.Distance(new Point(32.33, -4.66)) < 30000))
+        .Where(u => u.ProfileType == "Public" && u.Location.Distance(new Point(32.33, -4.66)) < 30000))
     {
         Console.WriteLine("\t" + user);
     }

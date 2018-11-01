@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 08/22/2017
 ms.author: ramkris
-ms.openlocfilehash: ef12f7e06462d89e34c2475ea34929b96bbf0432
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f60afa88f0730e510a94aae0ac5d4fb3462c8a4e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954895"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421275"
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Tworzenie aplikacji internetowej w języku Java za pomocą usługi Azure Cosmos DB i interfejsu API SQL
 
@@ -49,7 +49,7 @@ Przed rozpoczęciem korzystania z tego samouczka tworzenia aplikacji należy dys
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [Zestaw Java Development Kit (JDK) 7+](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
+* [Zestaw Java Development Kit (JDK) 7+](https://aka.ms/azure-jdks).
 * [Środowisko Eclipse IDE for Java EE Developers.](http://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [Witryna internetowa platformy Azure z włączonym środowiskiem uruchomieniowym języka Java (np. Tomcat lub Jetty).](../app-service/app-service-web-get-started-java.md)
 

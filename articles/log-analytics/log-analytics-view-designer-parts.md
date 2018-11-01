@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 8cc654fca8e645253ffc79ef808075bdbe887530
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 31ee14369cc3f1c03d13c59e1239aa567bce3552
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043298"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419779"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Podręcznik informacyjny do części wizualizacji projektanta widoków w usłudze Log Analytics
 Przy użyciu projektanta widoku w usłudze Azure Log Analytics, można tworzyć widoki niestandardowe w witrynie Azure portal, które przedstawiają różne wizualizacje danych ze swojego obszaru roboczego usługi Log Analytics. Ten artykuł jest przewodnik odwołanie do ustawienia dla części wizualizacji, które są dostępne w widoki niestandardowe.
@@ -50,7 +50,7 @@ W kolejnych sekcjach opisano typy kafelków i ich właściwości szczegółowo.
 ## <a name="list-of-queries-part"></a>Listę części zapytania
 Listy zapytań część Wyświetla listę zapytań funkcji przeszukiwania dzienników. Możesz wybrać każdej kwerendy, aby wyświetlić wyniki. Domyślnie widok zawiera jedno zapytanie i można wybrać **+ zapytania** można dodać dodatkowe zapytania.
 
-![Lista widoku zapytań](media/log-analytics-view-designer/view-list-queries.png)
+![Lista widoku zapytań](media/log-analytics-view-designer-parts/view-list-queries.png)
 
 | Ustawienie | Opis |
 |:--- |:--- |
@@ -66,7 +66,7 @@ Listy zapytań część Wyświetla listę zapytań funkcji przeszukiwania dzienn
 ## <a name="number-and-list-part"></a>Część liczby i lista
 Nagłówek przedstawia jeden numer, który pokazuje liczbę rekordów z zapytanie wyszukiwania w dzienniku. Lista zawiera najważniejsze dziesięć wyników zapytania, przy użyciu programu graph, która wskazuje względną wartość kolumny liczbowej lub jego zmiana, wraz z upływem czasu.
 
-![Lista widoku zapytań](media/log-analytics-view-designer/view-number-list.png)
+![Lista widoku zapytań](media/log-analytics-view-designer-parts/view-number-list.png)
 
 | Ustawienie | Opis |
 |:--- |:--- |
@@ -95,7 +95,7 @@ Nagłówek przedstawia jeden numer, który pokazuje liczbę rekordów z zapytani
 ## <a name="two-numbers-and-list-part"></a>Dwie liczby i części listy
 Nagłówek ma dwie liczby, które wyświetla liczbę rekordów niż zapytania wyszukiwania w oddzielnych dziennikach. Lista zawiera najważniejsze dziesięć wyników zapytania, przy użyciu programu graph, która wskazuje względną wartość kolumny liczbowej lub jego zmiana, wraz z upływem czasu.
 
-![Dwie liczby i widok listy](media/log-analytics-view-designer/view-two-numbers-list.png)
+![Dwie liczby i widok listy](media/log-analytics-view-designer-parts/view-two-numbers-list.png)
 
 | Ustawienie | Opis |
 |:--- |:--- |
@@ -126,7 +126,7 @@ Nagłówek ma dwie liczby, które wyświetla liczbę rekordów niż zapytania wy
 ## <a name="donut-and-list-part"></a>Część wykres pierścieniowy i lista
 Nagłówek przedstawia jeden numer, który podsumowuje kolumnę wartości w zapytaniu dziennika. Wykres pierścieniowy wyświetla w postaci graficznej wyniki pierwszych trzech rekordów.
 
-![Wyświetl wykres pierścieniowy i lista](media/log-analytics-view-designer/view-donut-list.png)
+![Wyświetl wykres pierścieniowy i lista](media/log-analytics-view-designer-parts/view-donut-list.png)
 
 | Ustawienie | Opis |
 |:--- |:--- |
@@ -167,7 +167,7 @@ Nagłówek przedstawia jeden numer, który podsumowuje kolumnę wartości w zapy
 ## <a name="two-timelines-and-list-part"></a>Dwie osie czasu i Lista części
 Nagłówek przedstawia wyniki dwóch zapytań log wraz z upływem czasu jako wykresy kolumnowe, z objaśnieniem, który wyświetla jeden numer, który podsumowuje kolumnę wartości w zapytaniu dziennika. Lista zawiera najważniejsze dziesięć wyników zapytania, przy użyciu programu graph, która wskazuje względną wartość kolumny liczbowej lub jego zmiana, wraz z upływem czasu.
 
-![Wyświetl dwie osie czasu i lista](media/log-analytics-view-designer/view-two-timelines-list.png)
+![Wyświetl dwie osie czasu i lista](media/log-analytics-view-designer-parts/view-two-timelines-list.png)
 
 | Ustawienie | Opis |
 |:--- |:--- |
@@ -199,7 +199,7 @@ Nagłówek przedstawia wyniki dwóch zapytań log wraz z upływem czasu jako wyk
 ## <a name="information-part"></a>Część informacji
 Nagłówek Wyświetla tekst statyczny oraz opcjonalnie łącza. Zostanie wyświetlona lista jednego lub więcej elementów z tytułu statycznych i tekst.
 
-![Wyświetlanie informacji](media/log-analytics-view-designer/view-information.png)
+![Wyświetlanie informacji](media/log-analytics-view-designer-parts/view-information.png)
 
 | Ustawienie | Opis |
 |:--- |:--- |
@@ -220,7 +220,7 @@ Nagłówek Wyświetla tekst statyczny oraz opcjonalnie łącza. Zostanie wyświe
 ## <a name="line-chart-callout-and-list-part"></a>Wykres liniowy, objaśnienie i listy
 Nagłówek przedstawia wykres liniowy z wielu serii, w wyniku zapytania dziennika przestrzeni czasu i objaśnienie przy użyciu wartości podsumowania. Lista zawiera najważniejsze dziesięć wyników zapytania, przy użyciu programu graph, która wskazuje względną wartość kolumny liczbowej lub jego zmiana, wraz z upływem czasu.
 
-![Wykres liniowy, objaśnienie i widok listy](media/log-analytics-view-designer/view-line-chart-callout-list.png)
+![Wykres liniowy, objaśnienie i widok listy](media/log-analytics-view-designer-parts/view-line-chart-callout-list.png)
 
 | Ustawienie | Opis |
 |:--- |:--- |
@@ -260,7 +260,7 @@ Nagłówek przedstawia wykres liniowy z wielu serii, w wyniku zapytania dziennik
 ## <a name="line-chart-and-list-part"></a>Część wiersza wykresu i listy
 Nagłówek przedstawia wykres liniowy z wielu serii, w wyniku zapytania dziennika wraz z upływem czasu. Lista zawiera najważniejsze dziesięć wyników zapytania, przy użyciu programu graph, która wskazuje względną wartość kolumny liczbowej lub jego zmiana, wraz z upływem czasu.
 
-![Widok wykresu i listy wiersza](media/log-analytics-view-designer/view-line-chart-callout-list.png)
+![Widok wykresu i listy wiersza](media/log-analytics-view-designer-parts/view-line-chart-callout-list.png)
 
 | Ustawienie | Opis |
 |:--- |:--- |
@@ -296,7 +296,7 @@ Nagłówek przedstawia wykres liniowy z wielu serii, w wyniku zapytania dziennik
 ## <a name="stack-of-line-charts-part"></a>Stos części wykresy wiersza
 Stos wykres liniowy przedstawia trzy oddzielne wykresy, przy użyciu wielu serii, w wyniku zapytania dziennika wraz z upływem czasu, jak pokazano poniżej:
 
-![Stos wykresów liniowych](media/log-analytics-view-designer/view-stack-line-charts.png)
+![Stos wykresów liniowych](media/log-analytics-view-designer-parts/view-stack-line-charts.png)
 
 | Ustawienie | Opis |
 |:--- |:--- |

@@ -4,7 +4,7 @@ description: Więcej informacji na temat zagadnień projektowych dotyczących us
 keywords: zestawy skalowania maszyn wirtualnych systemu Linux maszyny wirtualnej,
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: gatneil
+author: mayanknayar
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
-ms.author: negat
-ms.openlocfilehash: e03016b80b0a7043a72e55b6c8b68b67b55283b1
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.author: manayar
+ms.openlocfilehash: 1c99b7a3eecdd7938b4813647afb9e48fb0173a0
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388130"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739281"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Zagadnienia dotyczące projektowania dla zestawów skalowania
 W tym artykule omówiono zagadnienia dotyczące projektowania dla zestawów skalowania maszyn wirtualnych. Aby dowiedzieć się, jak co to są zestawy skalowania maszyn wirtualnych, zapoznaj się [omówienie zestawów skalowania maszyn wirtualnych](virtual-machine-scale-sets-overview.md).

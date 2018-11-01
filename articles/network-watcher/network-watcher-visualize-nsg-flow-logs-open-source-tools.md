@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: aa83ba1f428e70cd78cba2af6d39989179d5b30f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 61354803f4fced7cd8fee31f10b5f72401f267da
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42059714"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414951"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Wizualizowanie dzienników przepływów Azure Network Watcher NSG przy użyciu narzędzi typu open source
 
@@ -43,7 +43,7 @@ W tym scenariuszu konieczne jest posiadanie sieci zabezpieczeń grupy przepływu
 
 #### <a name="install-elasticsearch"></a>Instalowanie usługi Elasticsearch
 
-1. Elastic Stack w wersji 5.0 lub nowszym wymaga Java 8. Uruchom polecenie `java -version` Aby sprawdzić swoją wersję. Jeśli nie masz języka java Zainstaluj, zajrzyj do dokumentacji na [witryny sieci Web firmy Oracle](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html).
+1. Elastic Stack w wersji 5.0 lub nowszym wymaga Java 8. Uruchom polecenie `java -version` Aby sprawdzić swoją wersję. Jeśli nie masz języka java Zainstaluj, jeśli nie masz zainstalowane w języku java, zajrzyj do dokumentacji na [JDK Azure suppored](https://aka.ms/azure-jdks).
 2. Pobierz poprawny pakiet binarne w systemie:
 
    ```bash

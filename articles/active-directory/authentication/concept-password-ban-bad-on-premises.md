@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 286f8e560ec653ed4f4f1cad5a2ae27b940f8d15
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: ca412e94f65c7e1ed9a547ec9dcabc62fac7d42f
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781784"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741831"
 ---
 # <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Wersja zapoznawcza: Wymuszanie ochrona za pomocą hasła usługi Azure AD dla usługi Active Directory systemu Windows Server
 
@@ -33,16 +33,6 @@ Istnieją trzy składniki oprogramowania, które tworzą ochrona za pomocą has�
 * Dll filtru haseł agenta DC odbiera żądania weryfikacji hasła od systemu operacyjnego i przekazuje je do usługi agenta ochrony kontrolera domeny hasła usługi Azure AD działa lokalnie na kontrolerze domeny.
 
 ![W jaki sposób składniki ochrony hasła usługi Azure AD współpracują ze sobą](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
-
-## <a name="requirements"></a>Wymagania
-
-* Wszystkie komputery z zainstalowanym składniki ochrony hasła usługi Azure AD w tym kontrolery domeny musi działać system Windows Server 2012 lub nowszy.
-* Wszystkie komputery z zainstalowanym składniki ochrony hasła usługi Azure AD w tym kontrolery domeny muszą mieć zainstalowanego środowiska uruchomieniowego języka Universal C. Najlepiej jest to realizowane poprzez wdrażanie poprawek w pełni maszyny za pośrednictwem usługi Windows Update. W przeciwnym razie odpowiedni pakiet aktualizacji specyficznych dla systemu operacyjnego może być zainstalowana — zobacz [aktualizacji dla uniwersalnego środowiska uruchomieniowego c. w Windows](https://support.microsoft.com/help/2999226/update-for-universal-c-runtime-in-windows)
-* Łączność sieciowa musi istnieć między co najmniej jeden kontroler domeny w każdej domenie i co najmniej jeden serwer obsługujący usługę serwera proxy ochrony haseł usługi Azure AD.
-* Dowolny kontroler domeny usługi Active Directory, która korzysta z funkcji ochrony hasła musi być zainstalowany agent kontrolera domeny.
-* Dowolnej domeny usługi Active Directory, uruchamianie kontrolera domeny oprogramowanie usługi agenta należy użyć DFSR do replikacji folderu sysvol.
-* Konta administratora globalnego, aby zarejestrować usługę serwera proxy ochrony haseł usługi Azure AD z usługą Azure AD.
-* Konta z uprawnieniami administratora domeny usługi Active Directory w domenie głównej lasu.
 
 ### <a name="license-requirements"></a>Wymagania licencyjne
 
@@ -70,7 +60,6 @@ Istnieją dwa wymagane pliki instalacyjne ochrony hasłem usługi Azure AD, któ
 * Zalecane jest, aby zainstalować agenta kontrolera domeny na wszystkie kontrolery domeny, aby upewnić się, wymuszanie ochrony hasła. 
 * Ochrony hasłem w usłudze Azure AD nie jest aparat aplikacji zasad w czasie rzeczywistym. Czas między zmiana konfiguracji zasad haseł i czasu osiągnie i są wymuszane na wszystkich kontrolerach domeny może być z opóźnieniem.
 
-
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Wdrażanie ochrony haseł w usłudze Azure AD](howto-password-ban-bad-on-premises.md)
+[Wdrażanie ochrony haseł w usłudze Azure AD](howto-password-ban-bad-on-premises-deploy.md)

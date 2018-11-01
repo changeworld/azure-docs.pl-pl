@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: 1639194741fb343391f80790d0a2cc7f392218ac
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: f07d830e90045c11d870a921d091b45de6d2a89b
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238119"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418538"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Przewodnik dla deweloperów języka Java dla usługi App Service w systemie Linux
 
@@ -235,7 +235,7 @@ Za udostępnione zasoby na poziomie serwera:
 
 ## <a name="docker-containers"></a>Kontenerów Docker
 
-Aby użyć zestawu JDK Zulu obsługiwanej przez platformę Azure w swoje kontenery, upewnij się, że ściągać i używać wstępnie utworzone obrazy na [strony pobierania firmy Azul](https://www.azul.com/downloads/azure-only/zulu/#docker) lub użyj `Dockerfile` przykłady z [repozytorium usługi GitHub firmy Microsoft Java](https://github.com/Microsoft/java/tree/master/docker).
+Aby użyć zestawu JDK Zulu obsługiwanej przez platformę Azure w swoje kontenery, upewnij się, że ściągać i używać wstępnie utworzone obrazy, zgodnie z opisem z [obsługiwane Azul Zulu Enterprise dla strony pobierania Azure](https://www.azul.com/downloads/azure-only/zulu/) lub użyj `Dockerfile` przykłady z [Repozytorium usługi GitHub firmy Microsoft Java](https://github.com/Microsoft/java/tree/master/docker).
 
 ## <a name="runtime-availability-and-statement-of-support"></a>Dostępność w czasie wykonywania i oświadczenie zespołu pomocy technicznej
 

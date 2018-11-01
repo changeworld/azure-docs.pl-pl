@@ -8,14 +8,14 @@ editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
 ms.topic: troubleshooting
-ms.date: 06/15/2018
+ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: 64641f8acfe7b58763756e2a0707fa799ee804b2
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 9341458336e4c95b84590eadbc86073e7dbf09a0
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414088"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419558"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>Jak rozwiązywać problemy z maszyn wirtualnych na platformie Azure przy użyciu diagnostyki rozruchu
 
@@ -24,6 +24,10 @@ Pomoc techniczna dotycząca dwie funkcje debugowania jest teraz dostępna na pla
 Podczas przełączania z własnego obrazu na platformie Azure lub nawet wykonywania rozruchu jednego z obrazów platformy, może wystąpić wiele przyczyn, dlaczego pobiera maszynę wirtualną do stanu uniemożliwiającego. Te funkcje umożliwiają łatwe diagnozowanie i odzyskiwanie maszyn wirtualnych po niepowodzeniach rozruchu.
 
 W przypadku maszyn wirtualnych systemu Linux można łatwo wyświetlić dane wyjściowe konsoli dziennika z poziomu portalu. W przypadku systemów Windows i Linux maszyn wirtualnych platformy Azure umożliwia również wyświetlenie zrzutu ekranu maszyny Wirtualnej z funkcji hypervisor. Obie te funkcje są obsługiwane w przypadku maszyn wirtualnych platformy Azure we wszystkich regionach. Należy pamiętać, że może minąć do 10 minut, zanim zrzuty ekranu i dane wyjściowe pojawią się na koncie magazynu.
+
+Możesz wybrać **diagnostykę rozruchu** opcję, aby wyświetlić dziennik i zrzutu ekranu.
+
+![Resource Manager](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
 
 ## <a name="common-boot-errors"></a>Typowe błędy rozruchu
 
@@ -70,7 +74,7 @@ W przypadku maszyn wirtualnych systemu Linux można łatwo wyświetlić dane wyj
             "diagnosticsProfile": {
                 "bootDiagnostics": {
                 "enabled": true,
-                "storageUri": "[concat('http://', parameters('newStorageAccountName'), '.blob.core.windows.net')]"
+                "storageUri": "[concat('https://', parameters('newStorageAccountName'), '.blob.core.windows.net')]"
                 }
             }
             }

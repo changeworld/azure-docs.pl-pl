@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: f09430aeb38e6762729167494a23096c7bc5ca85
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: eb50673b4f618caadfa1abfb654d7e3f15e51713
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023955"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740964"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Pobierz procesora źródło zmian .NET SDK: I informacje o wersji
 > [!div class="op_single_selector"]
@@ -42,6 +42,9 @@ ms.locfileid: "50023955"
 ## <a name="release-notes"></a>Informacje o wersji
 
 ### <a name="v2-builds"></a>kompilacje w wersji 2
+
+### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
+* Rozwiązano problem, który może występować podczas przetwarzania podzielić w przypadku dzierżawy kolekcja jest partycjonowana. Ten problem może prowadzić do dzierżawy, nie ma partycji nie są usuwane z kolekcji dzierżawy. Problem został rozwiązany w tej wersji.
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 * Naprawiono narzędzie do szacowania obliczenia wzorzec wielu kont i nowy format tokenu sesji.

@@ -1,8 +1,8 @@
 ---
-title: Usługa Azure Active Directory na podstawie aplikacji dostępu warunkowego | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak działa dostęp warunkowy oparty na aplikacji usługi Azure Active Directory.
+title: Jak wymagać zatwierdzonych aplikacji klienckich w celu uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wymagać zatwierdzonych aplikacji klienckich w celu uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego w usłudze Azure Active Directory.
 services: active-directory
-keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
+keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, zabezpieczenia dostępu do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -17,18 +17,18 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: f34fc4c41094292db9bed1294ee7b26ec04c96c6
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 68c2178440264aa6a6efce074b299f4e3deaa10f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630606"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415393"
 ---
-# <a name="azure-active-directory-app-based-conditional-access"></a>Usługa Azure Active Directory na podstawie aplikacji dostępu warunkowego  
+# <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Instrukcje: Wymagaj zatwierdzonych aplikacji klienckich, aby uzyskać dostęp do aplikacji w chmurze przy użyciu dostępu warunkowego 
 
-Pracownicy używają urządzeń przenośnych zarówno osobistych i służbowych. Upewnij się, że Twoi pracownicy mogą być produktywność, ma zapobiegać utracie danych. Przy użyciu usługi Azure Active Directory (Azure AD) na podstawie aplikacji dostępu warunkowego można ograniczyć dostęp do aplikacji w chmurze do aplikacji klienckich, które może chronić dane firmowe.  
+Pracownicy używają urządzeń przenośnych zarówno osobistych i służbowych. Upewnij się, że Twoi pracownicy mogą być produktywność, ma zapobiegać utracie danych. Przy użyciu dostępu warunkowego usługi Azure Active Directory (Azure AD) można ograniczyć dostęp do aplikacji w chmurze do zatwierdzonych aplikacji klienckich, które może chronić dane firmowe.  
 
-W tym temacie opisano sposób konfigurowania dostępu warunkowego opartego na aplikacji usługi Azure AD.
+W tym temacie opisano sposób konfigurowania zasad dostępu warunek wymagające zatwierdzonych aplikacji klienckich.
 
 ## <a name="overview"></a>Przegląd
 
@@ -36,7 +36,7 @@ Za pomocą [dostępu warunkowego usługi Azure AD](overview.md), można dostosow
 
 Możesz użyć [zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy) w celu ochrony danych firmy. Zasady ochrony aplikacji usługi Intune nie wymagają rozwiązania do zarządzania urządzeniami przenośnymi (MDM), które umożliwia ochronę danych firmy bez rejestrowania urządzeń w rozwiązaniu do zarządzania urządzeniami.
 
-Ograniczanie dostępu do aplikacji w chmurze do aplikacji klienckich, które obsługują zasady ochrony aplikacji usługi Intune Azure umożliwia dostęp warunkowy oparty na aplikacji usługi Active Directory. Na przykład można ograniczyć dostęp do usługi Exchange Online do aplikacji Outlook.
+Ograniczanie dostępu do aplikacji w chmurze do aplikacji klienckich, które obsługują zasady ochrony aplikacji usługi Intune Azure umożliwia dostęp warunkowy usługi Active Directory. Na przykład można ograniczyć dostęp do usługi Exchange Online do aplikacji Outlook.
 
 W terminologii dostępu warunkowego, te aplikacje klienckie są znane jako **zatwierdzonych aplikacji klienckich**.  
 
@@ -120,9 +120,9 @@ Zasady dostępu warunkowego w tym kroku należy skonfigurować następujące sk�
 
     ![Dostęp warunkowy](./media/app-based-conditional-access/03.png)
 
-    b. Jako **aplikacje klienckie**, wybierz opcję **aplikacje mobilne i aplikacje komputerowe**.
+    b. Jako **aplikacje klienckie (wersja zapoznawcza)**, wybierz opcję **aplikacje mobilne i aplikacje komputerowe** i **Nowocześni Klienci uwierzytelniania**.
 
-    ![Dostęp warunkowy](./media/app-based-conditional-access/04.png)
+    ![Dostęp warunkowy](./media/app-based-conditional-access/91.png)
 
 5. Jako **kontrole dostępu**, musisz mieć **Wymagaj zatwierdzonej aplikacji klienckiej (wersja zapoznawcza)** wybrane.
 
@@ -144,11 +144,11 @@ Zasady dostępu warunkowego w tym kroku należy skonfigurować następujące sk�
 
     ![Dostęp warunkowy](./media/app-based-conditional-access/07.png)
 
-4. **Warunki:** jako **warunki**, należy skonfigurować **aplikacje klienckie**. 
+4. **Warunki:** jako **warunki**, należy skonfigurować **aplikacje klienckie (wersja zapoznawcza)**. 
 
-    a. Jako **aplikacje klienckie**, wybierz opcję **programu Exchange Active Sync**.
+    a. Jako **aplikacje klienckie (wersja zapoznawcza)**, wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **klienci programu Exchange ActiveSync**.
 
-    ![Dostęp warunkowy](./media/app-based-conditional-access/08.png)
+    ![Dostęp warunkowy](./media/app-based-conditional-access/92.png)
 
     b. Jako **kontrole dostępu**, musisz mieć **Wymagaj zatwierdzonej aplikacji klienckiej (wersja zapoznawcza)** wybrane.
 
@@ -201,9 +201,9 @@ Zasady dostępu warunkowego w tym kroku należy skonfigurować następujące sk�
 
     ![Dostęp warunkowy](./media/app-based-conditional-access/03.png)
 
-    b. Jako **aplikacje klienckie**, wybierz opcję **aplikacje mobilne i aplikacje komputerowe**.
+    b. Jako **aplikacje klienckie (wersja zapoznawcza)**, wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **Nowocześni Klienci uwierzytelniania**.
 
-    ![Dostęp warunkowy](./media/app-based-conditional-access/04.png)
+    ![Dostęp warunkowy](./media/app-based-conditional-access/91.png)
 
 5. Jako **kontrole dostępu**, musisz mieć **Wymagaj zatwierdzonej aplikacji klienckiej (wersja zapoznawcza)** wybrane.
 
@@ -228,9 +228,9 @@ Zasady dostępu warunkowego w tym kroku należy skonfigurować następujące sk�
 
 4. **Warunki:** jako **warunki**, należy skonfigurować **aplikacje klienckie**:
 
-    a. Jako **aplikacje klienckie**, wybierz opcję **programu Exchange Active Sync**.
+    a. Jako **aplikacje klienckie (wersja zapoznawcza)**, wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **klienci programu Exchange ActiveSync**.
 
-    ![Dostęp warunkowy](./media/app-based-conditional-access/08.png)
+    ![Dostęp warunkowy](./media/app-based-conditional-access/92.png)
 
     b. Jako **kontrole dostępu**, musisz mieć **Wymagaj zatwierdzonej aplikacji klienckiej (wersja zapoznawcza)** wybrane.
 
@@ -285,9 +285,9 @@ Zasady dostępu warunkowego w tym kroku należy skonfigurować następujące sk�
 
     ![Dostęp warunkowy](./media/app-based-conditional-access/03.png)
 
-    b. Jako **aplikacje klienckie**, wybierz opcję **aplikacje mobilne i aplikacje komputerowe**.
+    b. Jako **aplikacje klienckie (wersja zapoznawcza)**, wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **Nowocześni Klienci uwierzytelniania**.
 
-    ![Dostęp warunkowy](./media/app-based-conditional-access/04.png)
+    ![Dostęp warunkowy](./media/app-based-conditional-access/91.png)
 
 5. Jako **kontrole dostępu**, musisz mieć następujące wybrane:
 
@@ -317,9 +317,9 @@ Zasady dostępu warunkowego w tym kroku należy skonfigurować następujące sk�
 
 4. **Warunki:** jako **warunki**, należy skonfigurować **aplikacje klienckie**. 
 
-    Jako **aplikacje klienckie*, wybierz opcję **programu Exchange Active Sync**.
+    Jako **aplikacje klienckie (wersja zapoznawcza)**, wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **klienci programu Exchange ActiveSync**.
 
-    ![Dostęp warunkowy](./media/app-based-conditional-access/08.png)
+    ![Dostęp warunkowy](./media/app-based-conditional-access/91.png)
 
 5. Jako **kontrole dostępu**, musisz mieć **Wymagaj zatwierdzonej aplikacji klienckiej (wersja zapoznawcza)** wybrane.
  
@@ -381,9 +381,9 @@ Zasady dostępu warunkowego w tym kroku należy skonfigurować następujące sk�
 
     ![Dostęp warunkowy](./media/app-based-conditional-access/03.png)
 
-    b. Jako **aplikacje klienckie**, wybierz opcję **aplikacje mobilne i aplikacje komputerowe**.
+    b. Jako **aplikacje klienckie (wersja zapoznawcza)**, wybierz opcję **aplikacje mobilne i aplikacje komputerowe** i **Nowocześni Klienci uwierzytelniania**.
 
-    ![Dostęp warunkowy](./media/app-based-conditional-access/04.png)
+    ![Dostęp warunkowy](./media/app-based-conditional-access/91.png)
 
 5. Jako **kontrole dostępu**, musisz mieć następujące wybrane:
 
@@ -411,11 +411,11 @@ Zasady dostępu warunkowego w tym kroku należy skonfigurować następujące sk�
 
     ![Dostęp warunkowy](./media/app-based-conditional-access/07.png)
 
-4. **Warunki:** jako **warunki**, należy skonfigurować **aplikacje klienckie**. 
+4. **Warunki:** jako **warunki**, należy skonfigurować **aplikacje klienckie (wersja zapoznawcza)**. 
 
-    Jako **aplikacje klienckie**, wybierz opcję **programu Exchange Active Sync**.
+    Jako **aplikacje klienckie (wersja zapoznawcza)**, wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **klienci programu Exchange ActiveSync**.
 
-    ![Dostęp warunkowy](./media/app-based-conditional-access/08.png)
+    ![Dostęp warunkowy](./media/app-based-conditional-access/92.png)
 
 5. Jako **kontrole dostępu**, musisz mieć następujące wybrane:
 
@@ -446,4 +446,4 @@ Zobacz [ochrona aplikacji i danych w usłudze Microsoft Intune](https://docs.mic
 
 Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](app-based-mfa.md).
 
-Jeśli wszystko jest gotowe do skonfigurowania zasad dostępu warunkowego dla danego środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](best-practices.md). 
+Jeśli chcesz skonfigurować zasady dostępu warunkowego w swoim środowisku, zobacz [Best practices for conditional access in Azure Active Directory (Najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory)](best-practices.md). 
