@@ -2,6 +2,6 @@
 
 # <a name="metadata-for-azure-technical-articles"></a>Metadane dla artykułów technicznych Azure
 
-W tych wskazówkach została przeniesiona do witryny docs.microsoft.com wewnętrzny przewodnika dla współautorów.
+Ten artykul został przeniesiony do wewnętrznego przewodnika dla współautorów na witrynie docs.microsoft.com
 
-See [https://aka.ms/azure-docs-metadata](https://aka.ms/azure-docs-metadata)
+Patrz [https://aka.ms/azure-docs-metadata](https://aka.ms/azure-docs-metadata)
