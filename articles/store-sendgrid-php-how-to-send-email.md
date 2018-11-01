@@ -52,7 +52,7 @@ Możesz wysłać wiadomość e-mail przy użyciu SMTP lub interfejsu API sieci W
 
 ### <a name="smtp-api"></a>INTERFEJS API SMTP
 
-Aby wysłać wiadomość e-mail przy użyciu interfejsu API usługi SendGrid SMTP, należy użyć *Swift Mailer*, oparty na komponentach biblioteki do wysyłania wiadomości e-mail z aplikacji PHP. Możesz pobrać [biblioteki Swift Mailer](https://swiftmailer.symfony.com/) v5.3.0 (Użyj [Composer] do zainstalowania języka Swift masowo wiadomości E-mail). Wysyłanie wiadomości e-mail z biblioteką wymaga utworzenia instancji `Swift\_SmtpTransport`, `Swift\_Mailer`, i `Swift\_Message` klasy, ustawienie odpowiednie właściwości i wywoływania `Swift\_Mailer::send` metody.
+Aby wysłać wiadomość e-mail przy użyciu interfejsu API usługi SendGrid SMTP, należy użyć *Swift Mailer*, oparty na komponentach biblioteki do wysyłania wiadomości e-mail z aplikacji PHP. Możesz pobrać [biblioteki Swift Mailer](https://swiftmailer.symfony.com/) v5.3.0 (Użyj [Program Composer] do zainstalowania języka Swift masowo wiadomości E-mail). Wysyłanie wiadomości e-mail z biblioteką wymaga utworzenia instancji `Swift\_SmtpTransport`, `Swift\_Mailer`, i `Swift\_Message` klasy, ustawienie odpowiednie właściwości i wywoływania `Swift\_Mailer::send` metody.
 
 ```php
 <?php
@@ -302,7 +302,7 @@ Usługa SendGrid umożliwia funkcje dodatkowe poczty e-mail za pośrednictwem *f
 
 Filtry można stosować do wiadomości za pomocą filtrów właściwości. Każdy filtr jest określony przez skrót zawierający ustawienia specyficzne dla filtru. Poniższy przykład umożliwia filtr stopki i określa wiadomość SMS, który zostanie dołączony do dolnej części wiadomości e-mail. W tym przykładzie użyjemy [biblioteki sendgrid php].
 
-Użyj [Composer] Aby zainstalować bibliotekę:
+Użyj [Program Composer] Aby zainstalować bibliotekę:
 
 ```bash
 php composer.phar require sendgrid/sendgrid 2.1.1
@@ -424,4 +424,4 @@ Aby uzyskać więcej informacji, zobacz też [Centrum deweloperów języka PHP](
 [Usługa oparta na chmurze poczty e-mail]: https://sendgrid.com/email-solutions
 [dostarczania wiadomości e-mail dotyczącej transakcji]: https://sendgrid.com/transactional-email
 [biblioteki sendgrid php]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
-Program [Composer]: https://getcomposer.org/download/
+[Program Composer]: https://getcomposer.org/download/

@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 10/30/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: febdb2e3ae4432c36ca839f81ba7a1d333df1a2f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a9e601d0bd9a4d7879ecd205488c6a901a464021
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952005"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419848"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Samouczek: Wdrażanie aplikacji na platformie Azure i usługi Azure Stack
 
@@ -180,7 +180,7 @@ Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Upraw
 
 3. W programie Visual Studio Enterprise, wybierz **kontrola dostępu (IAM)**.
 
-    ![Kontrola dostępu (IAM)](media\azure-stack-solution-hybrid-pipeline\000_12.png)
+    ![Kontrola dostępu (Zarządzanie dostępem i tożsamościami)](media\azure-stack-solution-hybrid-pipeline\000_12.png)
 
 4. Wybierz pozycję **Dodaj**.
 
@@ -273,21 +273,57 @@ Tworząc punktów końcowych, kompilacja programu Visual Studio Online (Narzędz
 10. Wybierz **Zapisz zmiany**.
 
 Teraz, gdy informacje o punkcie końcowym istnieje, usługom DevOps platformy Azure do połączenia usługi Azure Stack jest gotowe do użycia. Agenta kompilacji w usłudze Azure Stack pobiera instrukcje z usługom DevOps platformy Azure, a następnie agenta umożliwia przekazywanie informacji o punkcie końcowym komunikacji z usługą Azure Stack.
+
 ## <a name="create-an-azure-stack-endpoint"></a>Tworzenie punktu końcowego usługi Azure Stack
+
+### <a name="create-an-endpoint-for-azure-ad-deployments"></a>Utworzenie punktu końcowego w przypadku wdrożeń usługi Azure AD
 
 Możesz wykonać instrukcje w [tworzenia połączenia z usługą Azure Resource Manager za pomocą istniejącej usługi głównej ](https://docs.microsoft.com/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) artykuł, aby utworzyć połączenie usługi z istniejącej usługi głównej i użyj następującego mapowania:
 
-- Środowisko: AzureStack
-- Adres URL środowiska: Mniej więcej tak `https://management.local.azurestack.external`
-- Identyfikator subskrypcji: Identyfikator subskrypcji użytkownika na podstawie usługi Azure Stack
-- Nazwa subskrypcji: Nazwa subskrypcji użytkownika z usługi Azure Stack
-- Identyfikator klienta nazwy głównej usługi: identyfikator podmiotu zabezpieczeń z [to](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal) sekcję w tym artykule.
-- Klucz jednostki usługi: klucz z tego samego artykułu (lub hasło, jeśli używany jest skrypt).
-- Identyfikator dzierżawy: Identyfikator dzierżawy możesz pobrać następujące instrukcji w [uzyskanie Identyfikatora dzierżawy](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id).
+Można utworzyć połączenia usługi przy użyciu następującego mapowania:
 
-Teraz, gdy jest tworzony punkt końcowy, usługa VSTS do połączenia usługi Azure Stack jest gotowe do użycia. Agent kompilacji w usłudze Azure Stack pobiera instrukcje z usługi VSTS, a następnie agenta umożliwia przekazywanie informacji o punkcie końcowym komunikacji z usługą Azure Stack.
+| Name (Nazwa) | Przykład | Opis |
+| --- | --- | --- |
+| Nazwa połączenia | Usługa Azure Stack w usłudze Azure AD | Nazwa połączenia. |
+| Środowisko | AzureStack | Nazwa środowiska. |
+| Adres URL środowiska | `https://management.local.azurestack.external` | Punkt końcowy zarządzania. |
+| Poziom zakresu | Subskrypcja | Zakresu połączenia. |
+| Identyfikator subskrypcji | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | Identyfikator subskrypcji użytkownika z usługi Azure Stack |
+| Nazwa subskrypcji | name@contoso.com | Nazwa subskrypcji użytkownika z usługi Azure Stack. |
+| Identyfikator klienta jednostki usługi | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | Identyfikator podmiotu zabezpieczeń z [to](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal) sekcję w tym artykule. |
+| Klucz jednostki usługi | THESCRETGOESHERE = | Klucz z tego samego artykułu (lub hasło, jeśli używany jest skrypt). |
+| Identyfikator dzierżawy | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | Identyfikator dzierżawy, możesz pobrać następujące instrukcje na uzyskiwanie dzierżawy identyfikatora. Identyfikator dzierżawy, możesz pobrać następujące instrukcji w [uzyskanie Identyfikatora dzierżawy](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id).  |
+| Połączenie: | Nie zweryfikowano | Sprawdź ustawienia połączenia do jednostki usługi. |
 
-![Agenta kompilacji](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
+Teraz, gdy jest tworzony punkt końcowy, metodyki DevOps w celu połączenia usługi Azure Stack jest gotowe do użycia. Agent kompilacji w usłudze Azure Stack pobiera instrukcje od metodyki DevOps, a następnie agenta umożliwia przekazywanie informacji o punkcie końcowym komunikacji z usługą Azure Stack.
+
+![Tworzenie agenta usługi Azure AD](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
+
+### <a name="create-an-endpoint-for-ad-fs"></a>Utworzenie punktu końcowego dla usług AD FS
+
+Najnowsza aktualizacja DevOps platformy Azure umożliwia tworzenie za pomocą jednostki usługi przy użyciu certyfikatu do uwierzytelniania połączenia z usługą. Jest to wymagane, podczas wdrażania usługi Azure Stack z usługami AD FS jako dostawcy tożsamości. 
+
+![Tworzenie agenta usług AD FS](media\azure-stack-solution-hybrid-pipeline\image06.png)
+
+Można utworzyć połączenia usługi przy użyciu następującego mapowania:
+
+| Name (Nazwa) | Przykład | Opis |
+| --- | --- | --- |
+| Nazwa połączenia | Usługa Azure Stack usług AD FS | Nazwa połączenia. |
+| Środowisko | AzureStack | Nazwa środowiska. |
+| Adres URL środowiska | `https://management.local.azurestack.external` | Punkt końcowy zarządzania. |
+| Poziom zakresu | Subskrypcja | Zakresu połączenia. |
+| Identyfikator subskrypcji | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | Identyfikator subskrypcji użytkownika z usługi Azure Stack |
+| Nazwa subskrypcji | name@contoso.com | Nazwa subskrypcji użytkownika z usługi Azure Stack. |
+| Identyfikator klienta jednostki usługi | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | Identyfikator klienta jednostki usługi utworzono dla usług AD FS. |
+| Certyfikat | `<certificate>` |  Konwertuj plik certyfikatu z profilu PFX na PEM. Wklej zawartość pliku PEM certyfikatu w tym polu. <br> Konwertowanie PFX na PEM:<br>`openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>` |
+| Identyfikator dzierżawy | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | Identyfikator dzierżawy, możesz pobrać następujące instrukcje na uzyskiwanie dzierżawy identyfikatora. Identyfikator dzierżawy, możesz pobrać następujące instrukcji w [uzyskanie Identyfikatora dzierżawy](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id). |
+| Połączenie: | Nie zweryfikowano | Sprawdź ustawienia połączenia do jednostki usługi. |
+
+Teraz, gdy jest tworzony punkt końcowy, DevOps platformy Azure do połączenia usługi Azure Stack jest gotowe do użycia. Agent kompilacji w usłudze Azure Stack pobiera instrukcje z DevOps platformy Azure, a następnie agenta umożliwia przekazywanie informacji o punkcie końcowym komunikacji z usługą Azure Stack.
+
+> [!Note]
+> Punkt końcowy usługi Azure Stack użytkownika ARM nie jest połączone z Internetem, sprawdzanie poprawności połączenia zakończy się niepowodzeniem. Jest to oczekiwane, i sprawdź poprawność połączenia przez tworzenie potoku tworzenia wersji z prostym zadaniem. 
 
 ## <a name="develop-your-application-build"></a>Tworzenie kompilacji aplikacji
 

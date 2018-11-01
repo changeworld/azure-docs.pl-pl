@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: jasonh
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 10ea0eb3907abc0a90e589e57970c0e4622a4d56
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: e236b4fcb179a8ed218915e9d3dd579928a0700f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43043933"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418589"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Tworzenie topologii Apache Storm w języku Java
 
@@ -28,7 +28,7 @@ Po wykonaniu tych kroków w tym dokumencie, można wdrożyć topologię Storm Ap
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Java Developer Kit (JDK) w wersji 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Java Developer Kit (JDK) w wersji 8](https://aka.ms/azure-jdks)
 
 * [Narzędzie maven (https://maven.apache.org/download.cgi)](https://maven.apache.org/download.cgi): Maven to system kompilacji projektu dla projektów języka Java.
 
@@ -76,7 +76,7 @@ Usuń wygenerowany test i pliki aplikacji:
 
 ## <a name="add-maven-repositories"></a>Dodawanie repozytoriów narzędzia Maven
 
-HDInsight jest oparta na platformie danych Hortonworks (HDP), tak więc zaleca się przy użyciu repozytorium Hortonworks, aby pobrać zależności dla projektów systemu Apache Storm. W __pom.xml__ pliku i Dodaj następujący kod XML po `<url>http://maven.apache.org</url>` wiersza:
+HDInsight jest oparta na platformie danych Hortonworks (HDP), tak więc zaleca się przy użyciu repozytorium Hortonworks, aby pobrać zależności dla projektów systemu Apache Storm. W __pom.xml__ pliku i Dodaj następujący kod XML po `<url> http://maven.apache.org</url>` wiersza:
 
 ```xml
 <repositories>

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: 8c34696f81e40b4db13e6868f6bdaa1b2a8e7a2a
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: b0256e899d47e3b6f8141218c11e1a7a62ca8e1a
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095467"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419728"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Wykrywanie inteligentne — anomalie wydajności
 
@@ -47,7 +47,7 @@ Nie, powiadomienia nie oznacza, że Twoja aplikacja ma zdecydowanie problem. Jes
 Powiadomienia obejmują informacje diagnostyczne. Oto przykład:
 
 
-![Oto przykład wykrywania wydłużenie czasu odpowiedzi serwera](./media/app-insights-proactive-diagnostics/server_response_time_degradation.png)
+![Oto przykład wykrywania wydłużenie czasu odpowiedzi serwera](media/app-insights-proactive-performance-diagnostics/server_response_time_degradation.png)
 
 1. **Klasyfikacja**. Powiadomienie zawiera informację, ilu użytkowników lub ile operacji uległy zmianie. Może to pomóc Ci przypisać priorytet problemu.
 2. **Zakres**. Ten problem wpływa na cały ruch lub tylko niektóre strony? Jest on ograniczony do określonego przeglądarki lub lokalizacji? Te informacje można uzyskać z powiadomienia.
@@ -61,7 +61,7 @@ Powiadomienia obejmują informacje diagnostyczne. Oto przykład:
 
 Inteligentne wykrywanie powiadomienia są domyślnie włączone i wysyłane do tych, którzy mają [właściciele, współautorzy i czytelnicy dostęp do zasobu usługi Application Insights](app-insights-resources-roles-access-control.md). Aby zmienić to ustawienie, kliknij przycisk **Konfiguruj** powiadomienia e-mail, lub Otwórz ustawienia wykrywania inteligentnego w usłudze Application Insights. 
   
-  ![Ustawienia wykrywania inteligentnego](./media/app-insights-proactive-diagnostics/smart_detection_configuration.png)
+  ![Ustawienia wykrywania inteligentnego](media/app-insights-proactive-performance-diagnostics/smart_detection_configuration.png)
   
   * Możesz użyć **anulować** linku w wiadomości e-mail wykrywania inteligentnego, aby przestać otrzymywać powiadomienia e-mail.
 
@@ -143,7 +143,7 @@ Nowoczesną aplikacją bardziej przyjąć podejście do projektowania wczesnych,
 
 Przykładowe zależności degradacji powiadomień:
 
-![Oto przykład wykrywania spadek czasu trwania zależności](./media/app-insights-proactive-diagnostics/dependency_duration_degradation.png)
+![Oto przykład wykrywania spadek czasu trwania zależności](media/app-insights-proactive-performance-diagnostics/dependency_duration_degradation.png)
 
 Zwróć uwagę, że informuje:
 
@@ -161,7 +161,7 @@ Zwróć uwagę, że informuje:
 
 Usługa Application Insights umożliwia znalezienie problemów z wydajnością, którzy mogą wpływ tylko na część użytkowników lub wpływ tylko na użytkowników, w niektórych przypadkach. Na przykład powiadomienia o ładowania stron jest wolniejszy na jednym typie przeglądarki niż na inne typy przeglądarek, lub jeśli żądania są obsługiwane wolniej z określonego serwera. Umożliwia również odnajdywanie problemów związanych z kombinacji właściwości, takie jak powolne strona ładuje się w jednym obszarze geograficznym w przypadku klientów z określonym systemem operacyjnym.  
 
-Anomalie, takie jak te są bardzo trudne do wykrycia, po prostu, sprawdzając dane, ale są bardziej powszechne, niż myślisz. Często są tylko powierzchni, gdy klienci zaczną zgłaszać skargi. Do tego czasu jest za późno: narażeni użytkownicy są już przełączanie do Twoich konkurentów!
+Anomalie, takie jak te są bardzo trudne do wykrycia, po prostu, sprawdzając dane, ale są bardziej powszechne, niż myślisz. Często są tylko powierzchni, gdy klienci zaczną zgłaszać skargi. Do tego czasu go za późno s: narażeni użytkownicy są już przełączanie do Twoich konkurentów!
 
 Obecnie nasze algorytmy Przyjrzyj się krótszy czas ładowania strony, czasów odpowiedzi żądania na serwerze i czasów odpowiedzi zależności.  
 
