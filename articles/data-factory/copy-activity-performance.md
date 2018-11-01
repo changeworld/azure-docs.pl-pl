@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 10/31/2018
 ms.author: jingwang
-ms.openlocfilehash: 958d1ea09ce4d85afc59af412e1050efc6290a1a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 7dc60c18e105c9be190b5bfede786f61a65feec3
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002249"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416940"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Skopiuj wydajności i działania przewodnika dostrajania
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -56,7 +56,7 @@ Jako odwołanie, Poniższa tabela pokazuje liczbę przepływności kopiowania **
 Informacje, które należy zwrócić uwagę:
 
 * Obliczana jest przepływność przy użyciu następującej formuły: [rozmiar danych do odczytu ze źródła] / [czas uruchomienia działania kopiowania].
-* Numery odniesienia wydajności w tabeli są mierzone przy użyciu [TPC-H](http://www.tpc.org/tpch/) zestawu danych w działaniu kopiowania pojedynczego uruchomienia.
+* Numery odniesienia wydajności w tabeli są mierzone przy użyciu [TPC-H](http://www.tpc.org/tpch/) zestawu danych w działaniu kopiowania pojedynczego uruchomienia. Pliki testu dla magazynów opartych na plikach są wiele plików z 10GB, rozmiar.
 * W magazynach danych platformy Azure źródła i ujścia znajdują się w tym samym regionie platformy Azure.
 * Związanym z kopiowaniem hybrydowej między lokalizacją lokalną i chmurą magazynów danych na każdym węźle środowiskiem Integration Runtime został uruchomiony na komputerze, który został oddzielnie od magazynu danych przy użyciu poniższych specyfikacji. Gdy jedno działanie została uruchomiona, operacji kopiowania wykorzystywane tylko niewielką część procesora CPU, pamięć lub przepustowość sieci testowej maszyny.
     <table>
@@ -76,7 +76,7 @@ Informacje, które należy zwrócić uwagę:
 
 
 > [!TIP]
-> Można osiągnąć większą przepływność za pomocą więcej danych integracji jednostki (DIU) niż domyślne dozwolona maksymalna DIUs, które są 32 w przypadku uruchomienia działania kopiowania w chmurze do chmury. Na przykład ze 100 DIUs możesz osiągnąć kopiowania danych z obiektów Blob platformy Azure do usługi Azure Data Lake Store w **1.0GBps**. Zobacz [jednostek integracji danych](#data-integration-units) sekcji, aby uzyskać szczegółowe informacje na temat tej funkcji i obsługiwany scenariusz. Skontaktuj się z pomocą [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/) żądania DIUs więcej.
+> Można osiągnąć większą przepływność przy użyciu więcej danych integracji jednostki (DIU). Na przykład ze 100 DIUs możesz osiągnąć kopiowania danych z obiektów Blob platformy Azure do usługi Azure Data Lake Store w **1.0GBps**. Zobacz [jednostek integracji danych](#data-integration-units) sekcji, aby uzyskać szczegółowe informacje na temat tej funkcji i obsługiwany scenariusz. 
 
 ## <a name="data-integration-units"></a>Jednostki integracji danych
 
@@ -94,7 +94,7 @@ Aby zastąpić to ustawienie domyślne, należy określić wartość dla **dataI
 Możesz zobaczyć faktycznie używanych jednostek integracji danych dla poszczególnych kopii, uruchom w działaniu kopiowania danych wyjściowych w przypadku uruchomienia działania monitorowania. Dowiedz się, szczegółowe informacje z [skopiuj Monitorowanie działania](copy-activity-overview.md#monitoring).
 
 > [!NOTE]
-> Jeśli potrzebujesz więcej DIUs większej przepływności, skontaktuj się z [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/). Ustawienie 8 i nowszych jest obecnie obsługiwane tylko wtedy, gdy użytkownik **skopiować wielu plików z obiektu Blob magazynu/Data Lake Store/Amazon S3/w chmurze SFTP FTP/w chmurze do innych magazynów danych chmury**.
+> Ustawienie DIUs **większy niż 4** obecnie działa tylko wtedy, gdy użytkownik **skopiować wielu plików z magazynu obiektów Blob/Data Lake Storage/przechowuje Amazon S3/w chmurze FTP/w chmurze z serwera SFTP do innych danych w chmurze.**.
 >
 
 **Przykład:**
@@ -248,7 +248,7 @@ Sugerujemy, wykonaj następujące kroki, aby dostosować wydajność usługi Dat
      * [Samodzielnie hostowany skalowalność produktu Integration Runtime](concepts-integration-runtime.md#self-hosted-integration-runtime)
    * [Własne środowisko Integration Runtime](#considerations-for-self-hosted-integration-runtime)
    * [Element źródłowy](#considerations-for-the-source)
-   * [Obiekt sink](#considerations-for-the-sink)
+   * [obiekt sink](#considerations-for-the-sink)
    * [Serializacja i deserializacja](#considerations-for-serialization-and-deserialization)
    * [Kompresja](#considerations-for-compression)
    * [Mapowanie kolumn](#considerations-for-column-mapping)

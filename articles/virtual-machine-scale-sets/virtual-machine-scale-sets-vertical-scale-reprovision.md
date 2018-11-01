@@ -1,9 +1,9 @@
 ---
-title: Skalowanie w pionie zestawy skalowania maszyny wirtualnej platformy Azure | Dokumentacja firmy Microsoft
-description: Sposób pionowo skalowania maszyny wirtualnej w odpowiedzi na monitorowanie alertów w usłudze Automatyzacja Azure
+title: Skalowanie w pionie zestawów skalowania maszyn wirtualnych platformy Azure | Dokumentacja firmy Microsoft
+description: Jak skalowanie w pionie maszynę wirtualną w odpowiedzi na monitorowanie alertów w usłudze Azure Automation
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: gatneil
+author: mayanknayar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,77 +14,77 @@ ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
-ms.author: negat
-ms.openlocfilehash: 6e4733e023d1dc27fb099216f9afea07fe07446c
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.author: manayar
+ms.openlocfilehash: 8080cdf78333eed9541311ba67221c713341a21a
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26781823"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741576"
 ---
-# <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Ustawia pionowe automatycznego skalowania o skali maszyny wirtualnej
-W tym artykule opisano sposób skalowanie w pionie Azure [zestawy skalowania maszyny wirtualnej](https://azure.microsoft.com/services/virtual-machine-scale-sets/) z lub bez reprovisioning. Pionowy skalowania maszyn wirtualnych, które nie znajdują się w zestawy skalowania można znaleźć w temacie [skalowanie w pionie maszyny wirtualnej platformy Azure w usłudze Automatyzacja Azure](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+# <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Ustawia pionowe skalowania automatycznego za pomocą skalowania maszyn wirtualnych
+W tym artykule opisano sposób skalowanie w pionie Azure [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/) z lub bez reprovisioning. Skalowanie w pionie maszyn wirtualnych, które nie są w zestawach skalowania, można znaleźć [skalowanie w pionie maszyn wirtualnych platformy Azure z usługą Azure Automation](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Skalować w pionie, znanej także jako *skalowanie w górę* i *dół*, oznacza zwiększenie lub zmniejszenie rozmiarów maszyn wirtualnych (VM) w odpowiedzi na obciążenie. Porównanie zachowanie w przypadku [skalowanie w poziomie](virtual-machine-scale-sets-autoscale-overview.md), nazywany również *skalowanie w poziomie* i *skalować w*, gdzie liczby maszyn wirtualnych jest zmianie w zależności od obciążenia.
+Skalowanie w pionie, znany także jako *skalowanie w górę* i *skalowanie w dół*, oznacza, że zwiększenie lub zmniejszenie rozmiarów maszyn wirtualnych (VM) w odpowiedzi na obciążenie. Porównaj tego zachowania [skalowanie w poziomie](virtual-machine-scale-sets-autoscale-overview.md), nazywany również *skalowanie w poziomie* i *skalowanie w pionie*, gdy liczba maszyn wirtualnych ulega zmianie w zależności od obciążenia.
 
-Reprovisioning oznacza usunięcie istniejącej maszyny Wirtualnej i zastąpienie go innym. Jeśli zwiększyć lub zmniejszyć rozmiar maszyn wirtualnych w skali maszyny wirtualnej ustawić w niektórych przypadkach, który chcesz zmienić rozmiar istniejących maszyn wirtualnych i Zachowaj dane, a w innych przypadkach należy wdrożyć nowe maszyny wirtualne o nowy rozmiar. W tym dokumencie opisano w obu przypadkach.
+Reprovisioning oznacza usunięcie istniejącej maszyny Wirtualnej, a następnie zamienić go na nowy. Kiedy zwiększyć lub zmniejszyć rozmiar maszyn wirtualnych w skali maszyny wirtualnej ustawić w niektórych przypadkach potrzebne do zmiany rozmiaru istniejących maszyn wirtualnych i przechowywać dane, a w innych przypadkach należy wdrożyć nowe maszyny wirtualne z nowego rozmiaru. W tym dokumencie opisano w obu przypadkach.
 
-Skalowanie w pionie mogą być przydatne podczas:
+Skalowanie w pionie może być przydatne podczas:
 
-* Usługa oparta na maszynach wirtualnych jest wykorzystywane w obszarze (na przykład w weekendy). Zmniejszenie rozmiaru maszyny Wirtualnej można zmniejszyć koszty miesięcznych.
-* Zwiększanie rozmiaru maszyny Wirtualnej, aby poradzić sobie z większą żądanie bez tworzenia dodatkowych maszyn wirtualnych.
+* Usługi oparte na maszynach wirtualnych jest niewykorzystywanych (na przykład w weekendy). Zmniejszenie rozmiaru maszyny Wirtualnej można zmniejszyć koszty miesięczne.
+* Zwiększanie rozmiaru maszyny Wirtualnej, aby poradzić sobie z większych żądanie bez konieczności tworzenia dodatkowych maszyn wirtualnych.
 
-Można skonfigurować skalowanie w pionie być wyzwalane na podstawie alertów według metryki z zestawu skalowania maszyny wirtualnej. Gdy alert jest aktywny, jego generowane elementu webhook tego wyzwalaczy, ustawione przez element runbook, który można skalować na skalę w górę lub w dół. Skalowanie w pionie można skonfigurować, wykonaj następujące czynności:
+Możesz skonfigurować skalowanie w pionie być wyzwalane na podstawie alertów na podstawie metryk z zestawu skalowania maszyn wirtualnych. Po aktywowaniu alertu go wyzwala element webhook tego wyzwalaczy, ustawionych przez element runbook, który można skalować skalowania w górę lub w dół. Skalowanie w pionie można skonfigurować, wykonując następujące czynności:
 
-1. Utwórz konto usługi Automatyzacja Azure z funkcji Uruchom jako.
-2. W ramach subskrypcji, należy zaimportować elementy runbook skali pionowej automatyzacji Azure dla zestawy skalowania maszyny wirtualnej.
+1. Utwórz konto usługi Azure Automation za pomocą funkcji Uruchom jako.
+2. Importowanie elementów runbook usługi Azure Automation pionowy skalowania zestawów skalowania maszyn wirtualnych w ramach subskrypcji.
 3. Dodawanie elementu webhook do elementu runbook.
-4. Dodaj alert do Twojej skalowania maszyny wirtualnej ustawić za pomocą powiadomień elementu webhook.
+4. Dodawanie alertu do Twojej maszyny wirtualnej zestawu skalowania przy użyciu powiadomień elementu webhook.
 
 > [!NOTE]
-> Skalowanie w pionie automatyczne może nastąpić w określonym zakresie rozmiarów maszyn wirtualnych. Porównanie specyfikacji każdego rozmiaru przed podjęciem decyzji o skali: od jednej do innego (większą liczbę nie zawsze wskazuje większy rozmiar maszyny Wirtualnej). Możesz skalować między parami następujących rozmiarów:
+> Automatyczne skalowanie w pionie może występować tylko w określonym zakresie rozmiarów maszyn wirtualnych. Porównanie specyfikacji każdego rozmiaru przed podjęciem decyzji o Skaluj od jednej do innego (większa liczba zostanie podana nie zawsze wskazuje większy rozmiar maszyny Wirtualnej). Możesz skalować między następujące pary rozmiarów:
 > 
-> | Rozmiary maszyn wirtualnych, skalowanie pary |  |
+> | Rozmiary maszyn wirtualnych, skalowanie parę |  |
 > | --- | --- |
 > | Standardowa_A0 |Standardowa_A11 |
 > | Standardowa_D1 |Standardowa_D14 |
 > | Standardowa_DS1 |Standardowa_DS14 |
 > | Standard_D1v2 |Standard_D15v2 |
-> | Standardowa_G1 |Standard_G5 |
+> | Standardowa_G1 |Maszyna wirtualna Standard_G5 |
 > | Standardowa_GS1 |Standard_GS5 |
 > 
 > 
 
-## <a name="create-an-azure-automation-account-with-run-as-capability"></a>Utwórz konto usługi Automatyzacja Azure z funkcji Uruchom jako
-W pierwszej kolejności należy wykonać to utworzyć konto usługi Automatyzacja Azure, które obsługuje elementów runbook, używana do skalowania wystąpienia zestawu skali maszyny wirtualnej. Ostatnio [usługi Automatyzacja Azure](https://azure.microsoft.com/services/automation/) wprowadzono funkcję "Konto Uruchom jako", która sprawia, że ustawienia zapasowej główną usługi do automatycznego uruchamiania elementów runbook w imieniu użytkownika. Aby uzyskać więcej informacji, zobacz:
+## <a name="create-an-azure-automation-account-with-run-as-capability"></a>Tworzenie konta usługi Azure Automation za pomocą funkcji Uruchom jako
+Pierwszą rzeczą, jaką należy wykonać jest utworzyć konto usługi Azure Automation, który jest hostem elementów runbook umożliwia skalowanie wystąpień zestawu skalowania maszyn wirtualnych. Ostatnio [usługi Azure Automation](https://azure.microsoft.com/services/automation/) wprowadza funkcję "Uruchom jako konto", który sprawia, że ustawienia zapasowej jednostki usługi do automatycznego uruchamiania elementów runbook w imieniu użytkownika. Aby uzyskać więcej informacji, zobacz:
 
 * [Uwierzytelnianie elementów Runbook przy użyciu konta Uruchom jako platformy Azure](../automation/automation-sec-configure-azure-runas-account.md)
 
-## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Importowanie elementów runbook skali pionowej automatyzacji Azure w ramach subskrypcji
-Elementy runbook, konieczne jest skalowanie w pionie Twojej zestawy skalowania maszyny wirtualnej zostały już opublikowane w galerii elementu Runbook automatyzacji Azure. Aby zaimportować je do subskrypcji wykonaj kroki opisane w tym artykule:
+## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Importowanie elementów runbook usługi Azure Automation pionowy skalowania w ramach subskrypcji
+Elementy runbook konieczne skalowanie w pionie Twoje zestawy skalowania maszyn wirtualnych są już opublikowany w galerii elementów Runbook automatyzacji Azure. Aby zaimportować je do subskrypcji postępuj zgodnie z instrukcjami w tym artykule:
 
-* [Galeria elementów Runbook i modułów dla usługi Automatyzacja Azure](../automation/automation-runbook-gallery.md)
+* [Galeria elementów Runbook i modułów usługi Azure Automation](../automation/automation-runbook-gallery.md)
 
-Wybierz opcję Galerii przeglądania z menu elementów Runbook:
+Wybierz opcję Przeglądaj galerię menu elementów Runbook:
 
 ![Elementy Runbook do zaimportowania][runbooks]
 
-Wyświetlane są elementy runbook, które muszą zostać zaimportowane. Wybierz element runbook, czy ma pionowego, skalowania z lub bez reprovisioning — na podstawie:
+Elementy runbook, które muszą zostać zaimportowane, są wyświetlane. Wybierz element runbook, oparte na tego, czy chcesz, aby pionowy, Skalowanie z użyciem lub bez reprovisioning:
 
 ![Galeria elementów Runbook][gallery]
 
-## <a name="add-a-webhook-to-your-runbook"></a>Dodawanie elementu webhook z elementem runbook
-Po zaimportowaniu elementów runbook, należy dodać elementu webhook do elementu runbook, mogą być wyzwalane przez alert z zestawu skalowania maszyn wirtualnych. W tym artykule opisano szczegółów tworzenia elementu webhook dla elementu Runbook:
+## <a name="add-a-webhook-to-your-runbook"></a>Dodawanie elementu webhook do elementu runbook
+Po zaimportowaniu elementów runbook, Dodaj element webhook do elementu runbook, dzięki czemu mogą być wyzwalane przez alert z zestawu skalowania maszyn wirtualnych. W tym artykule opisano szczegóły tworzenia elementu webhook dla elementu Runbook:
 
-* [Azure automatyzacji elementów webhook](../automation/automation-webhooks.md)
+* [Usługa Azure Automation elementów webhook](../automation/automation-webhooks.md)
 
 > [!NOTE]
-> Upewnij się, że należy skopiować identyfikator URI elementu webhook przed zamknięciem okna dialogowego elementu webhook, ponieważ będzie potrzebny ten adres w następnej sekcji.
+> Upewnij się, że Skopiuj identyfikator URI elementu webhook przed zamknięciem okna dialogowego elementu webhook, ponieważ będzie potrzebny, ten adres w następnej sekcji.
 > 
 > 
 
-## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>Dodaj alert do zestawu skalowania maszyny wirtualnej
-Poniżej ustawiono się skrypt programu PowerShell, który pokazuje, jak dodać alert do skalowania maszyny wirtualnej. Zapoznaj się z artykułem następujące nazwy metryki wyzwalać alert na: [metryki wspólnej Skalowanie automatyczne Azure Monitor](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md).
+## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>Dodawanie alertu do zestawu skalowania maszyn wirtualnych
+Poniżej jest skrypt programu PowerShell, który pokazuje, jak dodać alert do skalowania maszyn wirtualnych z zestawu. Zapoznaj się z następującym artykułem, aby uzyskać nazwę metryki wyzwolenie alertu na: [typowe metryki automatycznego skalowania usługi Azure Monitor](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md).
 
 ```
 $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail user@contoso.com
@@ -113,17 +113,17 @@ Add-AzureRmMetricAlertRule  -Name  $alertName `
 ```
 
 > [!NOTE]
-> Zalecane jest, aby skonfigurować okno czasu alertu, aby uniknąć wyzwalania skalowanie w pionie i wszystkie skojarzone przerw w obsłudze, zbyt często. Należy wziąć pod uwagę okna o co najmniej 20-30 minut lub dłużej. Należy wziąć pod uwagę skalowanie, aby uniknąć przerw w poziomie.
+> Zalecane jest, aby skonfigurować okno uzasadnionym czasie alertu, aby uniknąć wyzwalania skalowania w pionie i wszystkie skojarzone zakłóceń zbyt często. Należy wziąć pod uwagę okna co najmniej 20 – 30 minut lub dłużej. Należy wziąć pod uwagę poziomej, skalowanie, aby uniknąć przerw w działaniu.
 > 
 > 
 
-Aby uzyskać więcej informacji na temat sposobu tworzenia alertów zobacz następujące artykuły:
+Aby uzyskać więcej informacji na temat tworzenia alertów zobacz następujące artykuły:
 
-* [Przykładów dla platformy Azure Monitor PowerShell Szybki Start](../monitoring-and-diagnostics/insights-powershell-samples.md)
-* [Przykładów dla platformy Azure CLI wieloplatformowych Monitor Szybki Start](../monitoring-and-diagnostics/insights-cli-samples.md)
+* [Przykłady szybkiego startu programu Azure PowerShell monitora](../monitoring-and-diagnostics/insights-powershell-samples.md)
+* [Przykłady szybkiego startu usługi Azure Monitor międzyplatformowego interfejsu wiersza polecenia](../monitoring-and-diagnostics/insights-cli-samples.md)
 
 ## <a name="summary"></a>Podsumowanie
-W tym artykule pokazano proste przykłady skalowania pionowej. Te bloki konstrukcyjne — konto automatyzacji, elementy runbook, elementów webhook, alerty — może się łączyć szeroki zakres zdarzeń dostosowany zbiór akcji.
+W tym artykule przedstawiono proste przykłady skalowanie pionowe. Przy użyciu tych bloków konstrukcyjnych — konto usługi Automation, elementami runbook, elementy webhook, alerty — możesz łączyć z wielu różnych zdarzeń za pomocą dostosowanego zestawu działań.
 
 [runbooks]: ./media/virtual-machine-scale-sets-vertical-scale-reprovision/runbooks.png
 [gallery]: ./media/virtual-machine-scale-sets-vertical-scale-reprovision/runbooks-gallery.png

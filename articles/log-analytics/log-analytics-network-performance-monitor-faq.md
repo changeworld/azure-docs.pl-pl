@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 2821f3fa07d8d9ada02da212084639c93e469d0b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 91cfa35cd10772da0042566bdd9030f780329f93
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408884"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415189"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor rozwiązania — często zadawane pytania
 
-![Symbol monitora wydajności sieci](media/log-analytics-network-performance-monitor/npm-symbol.png)
+![Symbol monitora wydajności sieci](media/log-analytics-network-performance-monitor-faq/npm-symbol.png)
 
 Ten artykuł zawiera często zadawane pytania (FAQ) dotyczących Network Performance Monitor (NPM) na platformie Azure
 
@@ -54,7 +54,7 @@ Aby uzyskać możliwość monitorowania usługi ExpressRoute węzły na platform
 ### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>Należy wybrać protokół TCP i ICMP do monitorowania?
 Jeśli monitorujesz sieci przy użyciu węzłów na serwerze Windows zalecamy użyć TCP jako protokół monitorowania, ponieważ zapewnia większą dokładność. 
 
-Windows pulpitów/kliencie systemu Windows w oparciu o system operacyjny węzłów ICMP jest zalecane, ponieważ ta platforma nie zezwala na TCP danych wysłane za pośrednictwem gniazd sieciowych, która jest wymagana przez NPM, aby odnaleźć topologię sieci.
+Protokół ICMP jest zalecana dla Windows pulpitów/kliencie systemu Windows w oparciu o system operacyjny węzłów. Ta platforma nie zezwala na TCP dane wysłane za pośrednictwem gniazd sieciowych, które NPM, aby odnaleźć topologię sieci.
 
 Więcej informacji można uzyskać na względne zalety każdego protokołu [tutaj](log-analytics-network-performance-monitor-performance-monitor.md#choose-the-protocol).
 

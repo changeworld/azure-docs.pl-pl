@@ -77,7 +77,7 @@ Poniżej przedstawiono kilka przykładów, które pokazują, co można osiągną
   Ten scenariusz wymaga dwóch przypisań ról.
 
   1. Przypisanie wbudowanej **Współautor** roli na poziomie usługi data factory.
-  2. Utworzyć niestandardową rolę z uprawnieniami do * Microsoft.Resources/deployments/**. Przypisz tę rolę niestandardową do użytkownika na poziomie grupy zasobów.
+  2. Utworzyć niestandardową rolę z uprawnieniami do *Microsoft.Resources/deployments/*\*. Przypisz tę rolę niestandardową do użytkownika na poziomie grupy zasobów.
 
 - Umożliwia użytkownikowi zaktualizować fabrykę danych z programu PowerShell lub zestawu SDK, ale nie w witrynie Azure portal.
 

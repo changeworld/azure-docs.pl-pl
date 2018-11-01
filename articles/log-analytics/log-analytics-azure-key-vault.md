@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: 1c72421be6cfb266293c98d9ad06bd6adb35019b
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: be0a12bbb84db1e4016bd7126a38e750e6c0c3ad
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043614"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412826"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Rozwiązanie na platformie Azure Key Vault Analytics w usłudze Log Analytics
 
-![Symbol usługi Key Vault](./media/log-analytics-azure-keyvault/key-vault-analytics-symbol.png)
+![Symbol usługi Key Vault](media/log-analytics-azure-key-vault/key-vault-analytics-symbol.png)
 
 Za pomocą rozwiązania Azure Key Vault możesz w usłudze Log Analytics przeglądać dzienniki rozwiązania Azure Key Vault z kategorii AuditEvent.
 
@@ -46,10 +46,10 @@ Użyj poniższych instrukcji, aby zainstalować i skonfigurować rozwiązanie Az
 1. W witrynie Azure portal przejdź do zasobu usługi Key Vault do monitorowania
 2. Wybierz *dzienniki diagnostyczne* można otworzyć na następującej stronie
 
-   ![Obraz przedstawiający Kafelek usługi Azure Key Vault](./media/log-analytics-azure-keyvault/log-analytics-keyvault-enable-diagnostics01.png)
+   ![Obraz przedstawiający Kafelek usługi Azure Key Vault](media/log-analytics-azure-key-vault/log-analytics-keyvault-enable-diagnostics01.png)
 3. Kliknij przycisk *Włącz diagnostykę* można otworzyć na następującej stronie
 
-   ![Obraz przedstawiający Kafelek usługi Azure Key Vault](./media/log-analytics-azure-keyvault/log-analytics-keyvault-enable-diagnostics02.png)
+   ![Obraz przedstawiający Kafelek usługi Azure Key Vault](media/log-analytics-azure-key-vault/log-analytics-keyvault-enable-diagnostics02.png)
 4. Aby włączyć diagnostykę, kliknij *na* w obszarze *stanu*
 5. Kliknij pole wyboru *wysyłanie do usługi Log Analytics*
 6. Wybierz istniejący obszar roboczy usługi Log Analytics lub Utwórz obszar roboczy
@@ -81,7 +81,7 @@ W poniższej tabeli przedstawiono metody zbierania danych i inne szczegóły dot
 ## <a name="use-azure-key-vault"></a>Korzystanie z rozwiązania Azure Key Vault
 Po [zainstalować rozwiązanie](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview), Wyświetl dane usługi Key Vault, klikając **usługi Azure Key Vault** Kafelek z **Przegląd** strony usługi Log Analytics.
 
-![Obraz przedstawiający Kafelek usługi Azure Key Vault](./media/log-analytics-azure-keyvault/log-analytics-keyvault-tile.png)
+![Obraz przedstawiający Kafelek usługi Azure Key Vault](media/log-analytics-azure-key-vault/log-analytics-keyvault-tile.png)
 
 Po kliknięciu **Przegląd** Kafelek, możesz wyświetlić podsumowanie dzienników i następnie przejść do szczegółów w ramach następujących kategorii:
 
@@ -90,9 +90,9 @@ Po kliknięciu **Przegląd** Kafelek, możesz wyświetlić podsumowanie dziennik
 * Średnie opóźnienie operacyjne przez operację
 * Jakość usług dla operacji na wartościach liczby operacji, które przyjmują więcej niż 1000 ms i listę operacji, które przyjmują więcej niż 1000 ms
 
-![Obraz przedstawiający pulpit nawigacyjny usługi Azure Key Vault](./media/log-analytics-azure-keyvault/log-analytics-keyvault01.png)
+![Obraz przedstawiający pulpit nawigacyjny usługi Azure Key Vault](media/log-analytics-azure-key-vault/log-analytics-keyvault01.png)
 
-![Obraz przedstawiający pulpit nawigacyjny usługi Azure Key Vault](./media/log-analytics-azure-keyvault/log-analytics-keyvault02.png)
+![Obraz przedstawiający pulpit nawigacyjny usługi Azure Key Vault](media/log-analytics-azure-key-vault/log-analytics-keyvault02.png)
 
 ### <a name="to-view-details-for-any-operation"></a>Aby wyświetlić szczegóły dotyczące każdej operacji
 1. Na **Przegląd** kliknij **usługi Azure Key Vault** kafelka.

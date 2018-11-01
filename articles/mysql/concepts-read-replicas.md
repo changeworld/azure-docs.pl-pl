@@ -7,13 +7,13 @@ ms.author: andrela
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 283b529aa8c6431ea725b066c9b5cb3db19a929b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 10/30/2018
+ms.openlocfilehash: b4e79723072a19f2637bea16d0534cb85588e9e3
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969448"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412452"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Odczytu replik w usłudze Azure Database for MySQL
 
@@ -34,6 +34,10 @@ Typowy scenariusz polega na zapewnienie Power BI i obciążeń analitycznych pe�
 ### <a name="pricing-tiers"></a>Warstwy cenowe
 
 Repliki do odczytu są obecnie dostępne tylko w warstw cenowych ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.
+
+### <a name="master-server-restart"></a>Ponowne uruchomienie serwera głównego
+
+W tej wersji zapoznawczej podczas tworzenia repliki dla serwera głównego, który nie ma istniejących replik, wzorzec zostanie najpierw ponownie uruchomić przygotować się do replikacji. Wziąć pod uwagę i wykonywać te operacje podczas okresu poza godzinami.
 
 ### <a name="stopping-replication"></a>Zatrzymywanie replikacji
 

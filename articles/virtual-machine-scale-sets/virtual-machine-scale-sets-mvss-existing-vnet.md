@@ -1,9 +1,9 @@
 ---
-title: Odwołanie istniejącej sieci wirtualnej w szablonie zestaw skalowania Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak dodać sieć wirtualną do istniejącego zestawu skalowania maszyn wirtualnych Azure szablonu
+title: Odwoływać się do istniejącej sieci wirtualnej w szablonie zestawu skalowania na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak można dodać sieci wirtualnej do istniejącego szablonu zestawu skalowania maszyn wirtualnych platformy Azure
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: gatneil
+author: mayanknayar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
-ms.author: negat
-ms.openlocfilehash: eb35975de5864e129f97b614a61487456dd972ef
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.author: manayar
+ms.openlocfilehash: 1dcb97a94bd5790edc2e40acf890bb47baec7a4b
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26782375"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740097"
 ---
-# <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>Dodaj odwołanie do istniejącej sieci wirtualnej w szablonie zestaw skalowania Azure
+# <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>Dodaj odwołanie do istniejącej sieci wirtualnej w szablonie zestawu skalowania na platformie Azure
 
-W tym artykule przedstawiono sposób modyfikowania [minimalnej wielkości Ustaw szablon](./virtual-machine-scale-sets-mvss-start.md) do wdrożenia w ramach istniejącej sieci wirtualnej, zamiast tworzyć nowy.
+W tym artykule przedstawiono sposób modyfikowania [minimalnego możliwego do użycia zestawu skalowania szablonu](./virtual-machine-scale-sets-mvss-start.md) do wdrożenia w istniejącej sieci wirtualnej, zamiast tworzyć nowy.
 
-## <a name="change-the-template-definition"></a>Zmiany definicji szablonu
+## <a name="change-the-template-definition"></a>Zmiana definicji szablonu
 
-Ustaw szablon minimalnej wielkości są widoczne [tutaj](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json), i szablon do wdrażania do istniejącej sieci wirtualnej zestaw skali są widoczne [tutaj](https://raw.githubusercontent.com/gatneil/mvss/existing-vnet/azuredeploy.json). Przeanalizujmy różnicowego używany do tworzenia tego szablonu (`git diff minimum-viable-scale-set existing-vnet`) element przez element:
+Szablon zestawu minimalnej wielkości są widoczne [tutaj](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json), i szablon do wdrażania zestawu skalowania w istniejącej sieci wirtualnej są widoczne [tutaj](https://raw.githubusercontent.com/gatneil/mvss/existing-vnet/azuredeploy.json). Przeanalizujmy diff, używany do tworzenia tego szablonu (`git diff minimum-viable-scale-set existing-vnet`) eliminujemy:
 
-Najpierw dodaj `subnetId` parametru. Ten ciąg jest przekazywany do konfiguracji zestaw skali, dzięki czemu zestaw do identyfikowania wstępnie utworzone podsieci do wdrażania maszyn wirtualnych do skalowania. Ten ciąg musi mieć postać: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`. Na przykład, aby wdrożyć skali należy ustawić w istniejącej sieci wirtualnej o nazwie `myvnet`, podsieci `mysubnet`, grupy zasobów `myrg`i subskrypcji `00000000-0000-0000-0000-000000000000`, będzie subnetId: `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`.
+Najpierw dodaj `subnetId` parametru. Ten ciąg jest przekazywany do konfiguracji zestawu skalowania, umożliwiając zidentyfikować wstępnie utworzonych podsieci w celu wdrożenia maszyn wirtualnych w zestawie skalowania. Ten ciąg musi mieć postać: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`. Na przykład ustawić do wdrożenia skalowania w istniejącej sieci wirtualnej o nazwie `myvnet`, podsieci `mysubnet`, grupy zasobów `myrg`, subskrypcji i `00000000-0000-0000-0000-000000000000`, byłoby subnetId: `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`.
 
 ```diff
      },
@@ -43,7 +43,7 @@ Najpierw dodaj `subnetId` parametru. Ten ciąg jest przekazywany do konfiguracji
    },
 ```
 
-Następnie należy usunąć zasób sieci wirtualnej z `resources` tablicy, jak używać istniejącej sieci wirtualnej i nie potrzeba wdrożenia nowej.
+Następnie należy usunąć zasób sieci wirtualnej z `resources` tablicy, jak użyć istniejącej sieci wirtualnej i nie trzeba wdrożyć nowe.
 
 ```diff
    "variables": {},
@@ -71,7 +71,7 @@ Następnie należy usunąć zasób sieci wirtualnej z `resources` tablicy, jak u
 -    },
 ```
 
-Sieć wirtualna już istnieje przed wdrożeniem szablon, więc nie istnieje potrzeba do określenia klauzuli dependsOn od skali ustawioną sieci wirtualnej. Usuń następujące wiersze:
+Sieć wirtualna już istnieje przed wdrożeniem szablon, więc nie ma potrzeby do określenia klauzuli dependsOn z zestawu skalowania do sieci wirtualnej. Usuń następujące wiersze:
 
 ```diff
      {
@@ -87,7 +87,7 @@ Sieć wirtualna już istnieje przed wdrożeniem szablon, więc nie istnieje potr
          "capacity": 2
 ```
 
-Na koniec należy przekazać w `subnetId` parametru ustawiony przez użytkownika (zamiast `resourceId` można pobrać Identyfikatora sieci wirtualnej w ramach tego samego wdrożenia, który ma co minimalnej wielkości ustawić szablon jest).
+Na koniec Przekaż `subnetId` parametru ustawiony przez użytkownika (zamiast `resourceId` Aby uzyskać identyfikator sieci wirtualnej, w tym samym wdrożeniu, czyli co minimalnego możliwego do użycia zestawu skalowania szablonu przeprowadza).
 
 ```diff
                        "name": "myIpConfig",

@@ -1,6 +1,6 @@
 ---
-title: Statyczne wewnętrzne prywatnej klasycznym IP - Azure VM-
-description: Opis statyczne wewnętrzne adresy IP (DIP) i zarządzanie nimi
+title: Statyczne wewnętrzne prywatny IP - maszyny Wirtualnej platformy Azure — Model Klasyczny
+description: Omówienie statyczne wewnętrzne adresy IP (spadku) oraz jak nimi zarządzać
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -12,25 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 661d2f789ace8da68b6d65609d4584a11967a01f
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d5d75c25d03c02d6d49fc2fd8aeec995cea52314
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366617"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414271"
 ---
-# <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>Jak ustawić statyczne wewnętrzne prywatny adres IP za pomocą programu PowerShell (klasyczne)
-W większości przypadków nie trzeba określić statyczny adres IP wewnętrznego dla maszyny wirtualnej. Maszyn wirtualnych w sieci wirtualnej zostanie automatycznie otrzymują wewnętrzny adres IP z zakresu, który określisz. Jednak w niektórych przypadkach Określanie statycznego adresu IP dla określonej maszyny Wirtualnej ma sens. Na przykład, jeśli maszyna wirtualna jest, aby uruchomić DNS lub będzie kontroler domeny. Statyczny adres IP wewnętrznego utrzymane maszyny Wirtualnej, nawet za pośrednictwem stanu zatrzymania/deprovision. 
+# <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>Jak skonfigurować statyczne wewnętrzne prywatny adres IP przy użyciu programu PowerShell (wersja klasyczna)
+W większości przypadków nie trzeba określić statyczny adres IP wewnętrznego dla maszyny wirtualnej. Maszyny wirtualne w sieci wirtualnej automatycznie otrzyma wewnętrznego adresu IP z zakresu, który określisz. Jednak w niektórych przypadkach Określanie statyczny adres IP dla konkretnej maszyny Wirtualnej ma sens. Na przykład, jeśli maszyna wirtualna będzie uruchamiany DNS lub zostanie kontrolerem domeny. Statyczny adres IP wewnętrznego pozostaje z maszyną Wirtualną, nawet za pośrednictwem do stanu zatrzymania/anulowania aprowizacji. 
 
 > [!IMPORTANT]
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Azure Resource Manager i model klasyczny](../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca, aby użyć większości nowych wdrożeń [modelu wdrażania usługi Resource Manager](virtual-networks-static-private-ip-arm-ps.md).
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Azure Resource Manager i model klasyczny](../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca się, że większości nowych wdrożeń korzystać [modelu wdrażania usługi Resource Manager](virtual-networks-static-private-ip-arm-ps.md).
 > 
 > 
 
 ## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>Jak sprawdzić, czy określony adres IP jest dostępna
-Aby sprawdzić, czy adres IP *10.0.0.7* jest dostępny w sieci wirtualnej o nazwie *TestVnet*, uruchom następujące polecenie programu PowerShell i sprawdź wartość *IsAvailable*:
+Sprawdzenie, czy adres IP *10.0.0.7* jest dostępny w sieci wirtualnej o nazwie *TestVnet*, uruchom następujące polecenie programu PowerShell i sprawdź wartość *IsAvailable*:
 
     Test-AzureStaticVNetIP –VNetName TestVNet –IPAddress 10.0.0.7 
 
@@ -41,12 +41,12 @@ Aby sprawdzić, czy adres IP *10.0.0.7* jest dostępny w sieci wirtualnej o nazw
     OperationStatus      : Succeeded
 
 > [!NOTE]
-> Jeśli chcesz przetestować polecenia powyżej w bezpiecznym środowisku postępuj zgodnie ze wskazówkami podanymi w [utworzyć sieć wirtualną (klasyczne)](virtual-networks-create-vnet-classic-pportal.md) tworzenie sieci wirtualnej o nazwie *TestVnet* i upewnij się, używa *10.0.0.0/8* przestrzeni adresów.
+> Jeśli chcesz przetestować polecenia powyżej w bezpiecznym środowisku postępuj zgodnie z wytycznymi podanymi w [tworzenie sieci wirtualnej (klasycznej)](virtual-networks-create-vnet-classic-pportal.md) tworzenie sieci wirtualnej o nazwie *TestVnet* i upewnij się, używa ona *10.0.0.0/8*  przestrzeń adresowa.
 > 
 > 
 
-## <a name="how-to-specify-a-static-internal-ip-when-creating-a-vm"></a>Jak określić statyczny adres IP wewnętrznego podczas tworzenia maszyny Wirtualnej
-Poniższy skrypt programu PowerShell tworzy nową usługę w chmurze o nazwie *TestService*, pobiera obraz z platformy Azure, a następnie tworzy Maszynę wirtualną o nazwie *TestVM* nową usługę w chmurze przy użyciu obrazu pobrane, ustawia maszyna wirtualna może znajdować się w podsieci o nazwie *podsieć 1*i ustawia *10.0.0.7* jako statyczny adres IP wewnętrznego dla maszyny Wirtualnej:
+## <a name="how-to-specify-a-static-internal-ip-when-creating-a-vm"></a>Jak określić statyczny adres IP wewnętrznego, podczas tworzenia maszyny Wirtualnej
+Poniższy skrypt programu PowerShell tworzy nową usługę w chmurze o nazwie *TestService*, pobiera obraz z platformy Azure, a następnie tworzy maszynę Wirtualną o nazwie *TestVM* w nową usługę w chmurze przy użyciu obrazu pobrane, ustawia Maszyna wirtualna była w podsieci o nazwie *Subnet-1*i ustawia *10.0.0.7* jako wewnętrzny statyczny adres IP dla maszyny Wirtualnej:
 
     New-AzureService -ServiceName TestService -Location "Central US"
     $image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
@@ -57,7 +57,7 @@ Poniższy skrypt programu PowerShell tworzy nową usługę w chmurze o nazwie *T
     | New-AzureVM -ServiceName "TestService" –VNetName TestVnet
 
 ## <a name="how-to-retrieve-static-internal-ip-information-for-a-vm"></a>Jak pobrać statyczne wewnętrzne informacje o adresie IP dla maszyny Wirtualnej
-Aby wyświetlić informacje statyczne wewnętrzne IP dla maszyny Wirtualnej utworzone za pomocą skryptu powyżej, uruchom następujące polecenie programu PowerShell i sprawdź wartości *IpAddress*:
+Aby wyświetlić statycznych informacji wewnętrznych adresów IP dla maszyny Wirtualnej utworzone za pomocą skryptu powyżej, uruchom następujące polecenie programu PowerShell i sprawdź wartości *IpAddress*:
 
     Get-AzureVM -Name TestVM -ServiceName TestService
 
@@ -88,15 +88,15 @@ Aby wyświetlić informacje statyczne wewnętrzne IP dla maszyny Wirtualnej utwo
     OperationId                 : 34c1560a62f0901ab75cde4fed8e8bd1
     OperationStatus             : OK
 
-## <a name="how-to-remove-a-static-internal-ip-from-a-vm"></a>Jak usunąć statyczny adres IP wewnętrznego z maszyny Wirtualnej
-Aby usunąć statyczny adres IP wewnętrznego dodane do maszyny Wirtualnej w skrypcie powyżej, uruchom następujące polecenie programu PowerShell:
+## <a name="how-to-remove-a-static-internal-ip-from-a-vm"></a>Jak usunąć wewnętrzny statyczny adres IP z maszyny Wirtualnej
+Aby usunąć statyczny adres IP wewnętrznego, dodane do maszyny Wirtualnej w skrypcie powyżej, uruchom następujące polecenie programu PowerShell:
 
     Get-AzureVM -ServiceName TestService -Name TestVM `
     | Remove-AzureStaticVNetIP `
     | Update-AzureVM
 
-## <a name="how-to-add-a-static-internal-ip-to-an-existing-vm"></a>Jak dodać statyczny adres IP wewnętrznego do istniejącej maszyny Wirtualnej
-Aby dodać wewnętrzny statycznego adresu IP do maszyny Wirtualnej utworzone za pomocą skryptu powyżej, uruchom następujące polecenie:
+## <a name="how-to-add-a-static-internal-ip-to-an-existing-vm"></a>Jak dodać statycznego adresu IP wewnętrznej do istniejącej maszyny Wirtualnej
+Aby dodać wewnętrznej statyczny adres IP do maszyny Wirtualnej utworzonej przy użyciu skryptu powyżej, uruchom następujące polecenie:
 
     Get-AzureVM -ServiceName TestService000 -Name TestVM `
     | Set-AzureStaticVNetIP -IPAddress 10.10.0.7 `
@@ -105,7 +105,7 @@ Aby dodać wewnętrzny statycznego adresu IP do maszyny Wirtualnej utworzone za 
 ## <a name="next-steps"></a>Kolejne kroki
 [Zastrzeżony adres IP](virtual-networks-reserved-public-ip.md)
 
-[Poziom wystąpienia publicznego adresu IP (ILPIP)](virtual-networks-instance-level-public-ip.md)
+[Publiczny adres IP na poziomie wystąpienia (ILPIP)](virtual-networks-instance-level-public-ip.md)
 
 [Interfejsy API REST zastrzeżonego adresu IP](https://msdn.microsoft.com/library/azure/dn722420.aspx)
 

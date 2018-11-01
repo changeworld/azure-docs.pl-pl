@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.openlocfilehash: 670d465f1481592862f5e653a508460c19be07d8
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 4e99ed88eb6a58308ecd972931ca877493504fea
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049695"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419840"
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>Zapisu systemu plików HDFS z systemu Storm Apache na HDInsight
 
@@ -29,7 +29,7 @@ Projekt zawierający Ta topologia jest dostępna do pobrania z [ https://github.
 
 Aby skompilować ten projekt, potrzebne jest następująca konfiguracja środowiska deweloperskiego:
 
-* Zestaw [Java JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) lub nowszy. Usługa HDInsight w wersji 3.5 lub nowszej wymaga środowiska Java 8.
+* Zestaw [Java JDK 1.8](https://aka.ms/azure-jdks) lub nowszy. Usługa HDInsight w wersji 3.5 lub nowszej wymaga środowiska Java 8.
 
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 3c1bff98debf426fc02dbd4518c0bb798d7ba96d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 74607f61482d4a96931e307e77b4a6d4c45e4c30
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576025"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420935"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Porady: wyzwalanie złożone akcje przy użyciu alertów usługi Azure Monitor
 
@@ -38,25 +38,25 @@ Proces jest podobny, jeśli chcesz, aby aplikację logiki, aby wykonywać różn
 
 1.  W witrynie Azure portal wybierz **Utwórz zasób** w lewym górnym rogu.
 
-2.  Wyszukaj i wybierz pozycję **aplikacji logiki**, a następnie wybierz **Utwórz**.
+2.  Wyszukaj i wybierz pozycję **aplikacji logiki**, a następnie wybierz **Utwórz**.
 
 3.  Nadaj aplikacji logiki **nazwa**, wybierz **grupy zasobów**i tak dalej.
 
-    ![Tworzenie aplikacji logiki](media/monitoring-action-groups/create-logic-app-dialog.png "tworzenie aplikacji logiki")
+    ![Tworzenie aplikacji logiki](media/monitoring-action-groups-logic-app/create-logic-app-dialog.png "tworzenie aplikacji logiki")
 
 4.  Wybierz **Utwórz** do tworzenia aplikacji logiki. Komunikat podręczny wskazuje, że utworzono aplikację logiki. Wybierz **Uruchom zasobów** otworzyć **Projektant aplikacji logiki**.
 
 5.  Wybierz wyzwalacz: **zostanie odebrane żądanie po HTTP**.
 
-    ![Wyzwalacze aplikacji logiki](media/monitoring-action-groups/logic-app-triggers.png "wyzwalacze aplikacji logiki")
+    ![Wyzwalacze aplikacji logiki](media/monitoring-action-groups-logic-app/logic-app-triggers.png "wyzwalacze aplikacji logiki")
 
 6.  Wybierz **Edytuj** zmienić wyzwalacza żądania HTTP.
 
-    ![Wyzwalaniem na żądanie HTTP](media/monitoring-action-groups/http-request-trigger-shape.png "wyzwalaniem na żądanie HTTP")
+    ![Wyzwalaniem na żądanie HTTP](media/monitoring-action-groups-logic-app/http-request-trigger-shape.png "wyzwalaniem na żądanie HTTP")
 
 7.  Wybierz pozycję **Użyj przykładowego ładunku do wygenerowania schematu**.
 
-    ![Użyj przykładowego ładunku](media/monitoring-action-groups/use-sample-payload-button.png "Użyj przykładowego ładunku")
+    ![Użyj przykładowego ładunku](media/monitoring-action-groups-logic-app/use-sample-payload-button.png "Użyj przykładowego ładunku")
 
 8.  Skopiuj i wklej następujący schemat przykładowe okno dialogowe:
 
@@ -99,15 +99,15 @@ Proces jest podobny, jeśli chcesz, aby aplikację logiki, aby wykonywać różn
 
 9. **Projektant aplikacji logiki** wyświetli okno wyskakujące celu odnotowania, że żądania wysyłane do aplikacji logiki, należy ustawić **Content-Type** nagłówka do **application/json**. Zamknij okno podręczne. Alert usługi Azure Monitor ustawia nagłówek.
 
-    ![Ustaw nagłówek Content-Type](media/monitoring-action-groups/content-type-header.png "Ustaw nagłówek Content-Type")
+    ![Ustaw nagłówek Content-Type](media/monitoring-action-groups-logic-app/content-type-header.png "Ustaw nagłówek Content-Type")
 
 10. Wybierz **+** **nowy krok** , a następnie wybierz **Dodaj akcję**.
 
-    ![Dodaj akcję](media/monitoring-action-groups/add-action.png "Dodaj akcję")
+    ![Dodaj akcję](media/monitoring-action-groups-logic-app/add-action.png "Dodaj akcję")
 
 11. Wyszukaj i wybierz łącznik usługi Microsoft Teams. Wybierz **Microsoft Teams — Opublikuj wiadomość** akcji.
 
-    ![Działania Microsoft Teams](media/monitoring-action-groups/microsoft-teams-actions.png "działania Microsoft Teams")
+    ![Działania Microsoft Teams](media/monitoring-action-groups-logic-app/microsoft-teams-actions.png "działania Microsoft Teams")
 
 12. Skonfiguruj akcję Microsoft Teams. **Projektant aplikacji logiki** prosi o uwierzytelniania do konta usługi Office 365. Wybierz **identyfikator zespołu** i **identyfikator kanału** można wysłać wiadomości do.
 
@@ -125,13 +125,13 @@ Proces jest podobny, jeśli chcesz, aby aplikację logiki, aby wykonywać różn
     > [!NOTE]
     > Istnieją dwa pola dynamicznych, które noszą **stan**. Dodaj oba te pola do wiadomości. Użyj pola, które znajduje się w **activityLog** zbiór właściwości i Usuń inne pole. Umieszczaj kursor nad **stan** pola, aby zobaczyć odwołania do pól w pełni kwalifikowaną, jak pokazano na poniższym zrzucie ekranu:
 
-    ![Działania Microsoft Teams: Opublikuj wiadomość w](media/monitoring-action-groups/teams-action-post-message.png "działania Microsoft Teams: Opublikuj wiadomość")
+    ![Działania Microsoft Teams: Opublikuj wiadomość w](media/monitoring-action-groups-logic-app/teams-action-post-message.png "działania Microsoft Teams: Opublikuj wiadomość")
 
 14. W górnej części **Projektant aplikacji logiki**, wybierz opcję **Zapisz** można zapisać aplikacji logiki.
 
 15. Otwórz istniejące grupy akcji i Dodaj akcję, aby odwoływać się do aplikacji logiki. Jeśli nie masz istniejącej grupy akcji, zobacz [tworzenie grup akcji w witrynie Azure portal i zarządzanie nimi](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) ją utworzyć. Należy pamiętać zapisać zmiany.
 
-    ![Zaktualizuj grupę akcji](media/monitoring-action-groups/update-action-group.png "zaktualizować grupy akcji")
+    ![Zaktualizuj grupę akcji](media/monitoring-action-groups-logic-app/update-action-group.png "zaktualizować grupy akcji")
 
 Przy następnym alert wywołuje Twojej grupy akcji aplikacji logiki jest wywoływana.
 
@@ -192,7 +192,7 @@ Usługa Azure Service Health wpisy są częścią dziennika aktywności. Proces 
        - `eventSource == ServiceHealth`
        - `version == "0.1.1"`
 
-      !["Service Health ładunku warunek"](media/monitoring-action-groups/service-health-payload-condition.png "warunek ładunku Service Health")
+      !["Service Health ładunku warunek"](media/monitoring-action-groups-logic-app/service-health-payload-condition.png "warunek ładunku Service Health")
 
    1. W **w przypadku opcji true** warunku, postępuj zgodnie z instrukcjami wyświetlanymi w kroki od 11 do 13 w [Tworzenie alertu dziennika aktywności](#create-an-activity-log-alert-administrative) Aby dodać akcję Microsoft Teams.
 
@@ -209,7 +209,7 @@ Usługa Azure Service Health wpisy są częścią dziennika aktywności. Proces 
        <p>[communication]</p>
        ```
 
-       !["Service Health warunek jest prawdziwy wpis action"](media/monitoring-action-groups/service-health-true-condition-post-action.png "akcji po warunek jest prawdziwy Service Health")
+       !["Service Health warunek jest prawdziwy wpis action"](media/monitoring-action-groups-logic-app/service-health-true-condition-post-action.png "akcji po warunek jest prawdziwy Service Health")
 
    1. Aby uzyskać **w przypadku wartości FAŁSZ** warunku, przydatne komunikat:
 
@@ -219,7 +219,7 @@ Usługa Azure Service Health wpisy są częścią dziennika aktywności. Proces 
        <p><a href="https://ms.portal.azure.com/#blade/Microsoft_Azure_Health/AzureHealthBrowseBlade/serviceIssues">For details, log in to the Azure Service Health dashboard.\</a></p>
        ```
 
-       !["Service Health fałszywe wpis action"](media/monitoring-action-groups/service-health-false-condition-post-action.png "akcji po fałszywe Service Health")
+       !["Service Health fałszywe wpis action"](media/monitoring-action-groups-logic-app/service-health-false-condition-post-action.png "akcji po fałszywe Service Health")
 
 - Krok 15 jest taka sama. Postępuj zgodnie z instrukcjami, aby zapisać aplikację logiki i zaktualizować grupy akcji.
 
@@ -279,15 +279,15 @@ Proces tworzenia alertu dotyczącego metryki jest podobny do [Tworzenie alertu d
        - `schemaId == AzureMonitorMetricAlert`
        - `version == "2.0"`
        
-       !["Ładunek alertu metryki warunek"](media/monitoring-action-groups/metric-alert-payload-condition.png "warunek ładunku alertu metryki")
+       !["Ładunek alertu metryki warunek"](media/monitoring-action-groups-logic-app/metric-alert-payload-condition.png "warunek ładunku alertu metryki")
 
    1. W **w przypadku opcji true** warunku, należy dodać **dla każdego** pętli i działania Microsoft Teams. Zdefiniuj wiadomości przy użyciu kombinacji kodu HTML i zawartości dynamicznej.
 
-       !["Akcji po metryki warunek jest prawdziwy alertu"](media/monitoring-action-groups/metric-alert-true-condition-post-action.png "akcji po warunek alertu metryki")
+       !["Akcji po metryki warunek jest prawdziwy alertu"](media/monitoring-action-groups-logic-app/metric-alert-true-condition-post-action.png "akcji po warunek alertu metryki")
 
    1. W **w przypadku wartości FAŁSZ** warunku, zdefiniuj akcję Microsoft Teams do komunikowania się, że alert dotyczący metryki nie jest zgodna oczekiwania aplikacji logiki. Uwzględnij ładunek JSON. Zwróć uwagę, jak utworzyć odwołanie do `triggerBody` zawartości dynamicznej w `json()` wyrażenia.
 
-       !["Fałszywe alertu metryki wpis action"](media/monitoring-action-groups/metric-alert-false-condition-post-action.png "akcji po fałszywe alertu metryki")
+       !["Fałszywe alertu metryki wpis action"](media/monitoring-action-groups-logic-app/metric-alert-false-condition-post-action.png "akcji po fałszywe alertu metryki")
 
 - Krok 15 jest taka sama. Postępuj zgodnie z instrukcjami, aby zapisać aplikację logiki i zaktualizować grupy akcji.
 

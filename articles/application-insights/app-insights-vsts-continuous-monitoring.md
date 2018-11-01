@@ -9,12 +9,12 @@ ms.date: 11/13/2017
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ecda8621640223f1c27f32834f2e4a098da4aba6
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 75401614b6892402083af5192b691f00d82c8d05
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301632"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413625"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Dodawanie ciągłego monitorowania, tak aby potok wydania
 
@@ -28,13 +28,13 @@ Usługom DevOps platformy Azure obsługuje teraz ciągłego monitorowania, wedł
 
 2. Umieść kursor nad **kompilowania i wydawania** > Wybierz **wersji** > kliknij **znak plus** > **Tworzenie definicji wydania** > Wyszukaj **monitorowania** > **wdrażanie usługi Azure App Service za pomocą ciągłego monitorowania.**
 
-   ![Nowy potok wersji usługi Azure DevOps](.\media\app-insights-continuous-monitoring\001.png)
+   ![Nowy potok wersji usługi Azure DevOps](media/app-insights-vsts-continuous-monitoring/001.png)
 
 3. Kliknij przycisk **zastosowania.**
 
 4. Obok czerwonego wykrzyknika zaznacz tekst w kolorze niebieskim do **przeglądać zadania w środowisku.**
 
-   ![Wyświetl zadania środowiska](.\media\app-insights-continuous-monitoring\002.png)
+   ![Wyświetl zadania środowiska](media/app-insights-vsts-continuous-monitoring/002.png)
 
    Zostanie wyświetlone okno konfiguracji, skorzystaj z poniższej tabeli, wypełnij pola wejściowe.
 
@@ -60,7 +60,7 @@ Usługom DevOps platformy Azure obsługuje teraz ciągłego monitorowania, wedł
 
 3. Modyfikowanie dostępności **próg** zgodnie z wymaganiami poziomu usługi.
 
-   ![Modyfikuj Alert](.\media\app-insights-continuous-monitoring\003.png)
+   ![Modyfikuj Alert](media/app-insights-vsts-continuous-monitoring/003.png)
 
 4. Wybierz **OK** > **Zapisz** > Wprowadź opisowy komentarz > kliknij **OK.**
 
@@ -68,13 +68,13 @@ Usługom DevOps platformy Azure obsługuje teraz ciągłego monitorowania, wedł
 
 1. Kliknij przycisk **potoku** > Wybierz **Pre** lub **po wdrożeniu warunków** symbolu, w zależności od etapu, na którym wymaga brama ciągłego monitorowania.
 
-   ![Warunki wstępne wdrożenia](.\media\app-insights-continuous-monitoring\004.png)
+   ![Warunki wstępne wdrożenia](media/app-insights-vsts-continuous-monitoring/004.png)
 
 2. Ustaw **bramy** do **włączone** > **zatwierdzania bramy**> kliknij **Dodaj.**
 
 3. Wybierz **usługi Azure Monitor** (Ta opcja zapewnia możliwość dostępu alerty zarówno z usługi Azure Monitor i Application Insights)
 
-    ![Azure Monitor](.\media\app-insights-continuous-monitoring\005.png)
+    ![Azure Monitor](media/app-insights-vsts-continuous-monitoring/005.png)
 
 4. Wprowadź **limitu czasu bramy** wartość.
 
@@ -86,7 +86,7 @@ Po dodaniu bramy do wdrożenia, alert w usłudze Application Insights, co powodu
 
 Aby zaobserwować to zachowanie, zaznacz **wersji** > wersji kliknij prawym przyciskiem myszy nazwę **Otwórz** > **dzienniki.**
 
-![Dzienniki](.\media\app-insights-continuous-monitoring\006.png)
+![Dzienniki](media/app-insights-vsts-continuous-monitoring/006.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

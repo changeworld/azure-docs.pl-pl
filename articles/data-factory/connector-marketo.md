@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 10/31/2018
 ms.author: jingwang
-ms.openlocfilehash: efbc020f482a46621eb5c3e3cd6137d1114da6de
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 02d21db5c5fadb65ec63e41cbd9e2db8869ed2e7
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129611"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415835"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Kopiowanie danych z usługi Marketo za pomocą usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -32,6 +32,9 @@ W tym artykule opisano sposób używania działania kopiowania w usłudze Azure 
 Możesz skopiować dane z usługi Marketo, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
 Usługa Azure Data Factory udostępnia wbudowanego sterownika, aby umożliwić łączność, dlatego nie trzeba ręcznie zainstalować dowolnego sterownika, za pomocą tego łącznika.
+
+>[!NOTE]
+>Ten łącznik usługi Marketo jest oparty na interfejsie API REST usługi Marketo. Należy pamiętać, że usługa Marketo udostępnia [limit współbieżnych żądań](http://developers.marketo.com/rest-api/) po stronie usługi. Jeśli napotkasz błędy informujący o tym, "Wystąpił błąd podczas próby użycia interfejsu API REST: maksymalna szybkość Przekroczono za pomocą w"20"limit"100"sekund (606)" lub "Wystąpił błąd podczas próby użycia interfejsu API REST: równoczesny dostęp"10"osiągnięto (615)", należy wziąć pod uwagę, aby zmniejszyć uruchomienia działania kopiowania współbieżnych do Zmniejsz liczbę żądań do usługi.
 
 ## <a name="getting-started"></a>Wprowadzenie
 

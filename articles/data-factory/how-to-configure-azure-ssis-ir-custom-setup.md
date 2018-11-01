@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 10/31/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 3ba3e6036821323146f00cf9c255b70606771aed
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 2edaea1cfb02b250b27c47d58b6c1d1ef6501480
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241161"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420272"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Dostosowywanie ustawień środowiska Azure-SSIS integration Runtime
 
@@ -98,7 +98,7 @@ Dostosowywanie środowiska IR Azure-SSIS, potrzebne są następujące elementy:
 
        ![Skopiuj i Zapisz sygnatura dostępu współdzielonego](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image8.png)
 
-    1.  Po aprowizacji lub zmienić konfigurację środowiska IR Azure-SSIS przy użyciu interfejsu użytkownika usługi Data Factory, przed rozpoczęciem korzystania z usługi Azure-SSIS IR, wprowadź identyfikator URI sygnatury dostępu Współdzielonego kontenera, w odpowiednim polu:
+    1.  Podczas aprowizowania lub ponownie skonfigurować środowiska IR Azure-SSIS przy użyciu interfejsu użytkownika usługi Data Factory, przed rozpoczęciem korzystania z usługi Azure-SSIS IR, wprowadź identyfikator URI sygnatury dostępu Współdzielonego kontenera w odpowiednim polu na **Zaawansowane ustawienia** panelu:
 
        ![Wprowadź sygnaturę dostępu współdzielonego](media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
 
@@ -141,6 +141,8 @@ Dostosowywanie środowiska IR Azure-SSIS, potrzebne są następujące elementy:
 
        1. A `.NET FRAMEWORK 3.5` folder zawierający niestandardowe Instalatora, aby zainstalować starszą wersję programu .NET Framework, które mogą być wymagane dla niestandardowych składników w każdym węźle usługi Azure-SSIS IR.
 
+       1. `AAS` Folder, który zawiera niestandardowe ustawienia do instalowania bibliotek klienta na każdym węźle środowiska IR Azure-SSIS, pozwalających na korzystanie z usług Analysis Services zadań połączyć się z wystąpieniem usługi Azure Analysis Services (AAS) przy użyciu uwierzytelniania jednostki usługi. Najpierw pobierz najnowsze **MSOLAP (amd64)** i **AMO** instalatory bibliotek/Windows klienta — na przykład `x64_15.0.900.108_SQL_AS_OLEDB.msi` i `x64_15.0.900.108_SQL_AS_AMO.msi` — od [tutaj](https://docs.microsoft.com/en-us/azure/analysis-services/analysis-services-data-providers), następnie przekazać je wszystkie razem z `main.cmd` do kontenera.  
+
        1. A `BCP` folder zawierający niestandardowe Instalatora, aby zainstalować narzędzia wiersza polecenia programu SQL Server (`MsSqlCmdLnUtils.msi`), w tym programu do kopiowania zbiorczego (`bcp`), w każdym węźle usługi Azure-SSIS IR.
 
        1. `EXCEL` Folder, który zawiera niestandardowe ustawienia do instalowania zestawów typu open source (`DocumentFormat.OpenXml.dll`, `ExcelDataReader.DataSet.dll`, i `ExcelDataReader.dll`) w każdym węźle usługi Azure-SSIS IR.
@@ -155,7 +157,7 @@ Dostosowywanie środowiska IR Azure-SSIS, potrzebne są następujące elementy:
 
        1. A `STORAGE` folder, który zawiera niestandardowe ustawienia instalacji programu Azure PowerShell w każdym węźle usługi Azure-SSIS IR. Ta konfiguracja umożliwia wdrażanie, a następnie uruchom SSIS umieszcza uruchamianą [skryptów programu PowerShell do manipulowania konta usługi Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-use-blobs-powershell). Kopiuj `main.cmd`, próbkę `AzurePowerShell.msi` (lub zainstaluj najnowszą wersję) i `storage.ps1` do kontenera. Na użytek PowerShell.dtsx jako szablon pakietów. Szablon pakietu łączy [zadania pobierania obiektów Blob Azure](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task), jakie pliki do pobrania `storage.ps1` jako skrypt programu PowerShell można modyfikować i [wykonać zadanie procesu](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/) , który jest wykonywany skrypt w każdym węźle.
 
-       1. A `TERADATA` folder, który zawiera skrypt instalacji niestandardowej (`main.cmd)`, jego skojarzonego pliku (`install.cmd`) i pakiety instalacyjne (`.msi`). Te pliki zainstalować Teradata łączników interfejsu API TPT i sterownik ODBC w każdym węźle Twojego środowiska Azure-SSIS IR Enterprise Edition. Ta konfiguracja umożliwia używanie, Teradata Menedżera połączeń, źródłowym i docelowym. Najpierw Pobierz plik zip 15.x Teradata narzędzia i programy narzędziowe (TTU) (na przykład `TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip`) z [Teradata](http://partnerintelligence.teradata.com), a następnie przekaż go wraz z powyższymi `.cmd` i `.msi` plików do kontenera.
+       1. A `TERADATA` folder, który zawiera skrypt instalacji niestandardowej (`main.cmd`), jego skojarzonego pliku (`install.cmd`) i pakiety instalacyjne (`.msi`). Te pliki zainstalować Teradata łączników interfejsu API TPT i sterownik ODBC w każdym węźle Twojego środowiska Azure-SSIS IR Enterprise Edition. Ta konfiguracja umożliwia używanie, Teradata Menedżera połączeń, źródłowym i docelowym. Najpierw Pobierz plik zip 15.x Teradata narzędzia i programy narzędziowe (TTU) (na przykład `TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip`) z [Teradata](http://partnerintelligence.teradata.com), a następnie przekaż go wraz z powyższymi `.cmd` i `.msi` plików do kontenera.
 
     ![Folderów w folderze scenariusze użytkownika](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png)
 

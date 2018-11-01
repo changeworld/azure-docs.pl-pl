@@ -1,121 +1,117 @@
 ---
-title: Nawiązywanie połączenia z programu Excel, Python lub R do platformy Azure Databricks | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak korzystać ze sterownika Simba nawiązać Azure Databricks do programu Excel, Python lub R.
+title: 'Nawiązywanie połączenia usługi Azure Databricks z programu Excel, Python lub R '
+description: Dowiedz się, jak połączyć z usługą Azure Databricks do programu Excel, Python lub R. za pomocą sterownika firmą Simba
 services: azure-databricks
-documentationcenter: ''
-author: nitinme
-manager: cgronlun
-editor: cgronlun
+author: mamccrea
+ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: 333ff3ac3de053eae604ffeab600df7d35874f69
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.author: mamccrea
+ms.openlocfilehash: 6c8d0c9f5471395d1552b896b4d411dcad0a280f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085236"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421139"
 ---
-# <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Nawiązywanie połączenia z programu Excel, Python lub R do Azure Databricks
+# <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Nawiązywanie połączenia usługi Azure Databricks z programu Excel, Python lub R
 
-W tym artykule Dowiedz się jak korzystać ze sterownika Databricks ODBC nawiązać połączenia z językiem programu Microsoft Excel, Python lub R Azure Databricks. Po ustanowieniu połączenia ma dostęp do danych w usłudze Azure Databricks, od klientów programu Excel, Python lub R. Umożliwia także klientów do dalszej analizy danych. 
+W tym artykule dowiesz się, jak połączyć z usługą Azure Databricks przy użyciu języka programu Microsoft Excel, Python lub R za pomocą sterownika ODBC usługi Databricks. Po ustanowieniu połączenia uzyskujesz dostęp do danych w usłudze Azure Databricks z klientów programu Excel, Python lub R. Klientów można również użyć w celu dalszej analizy danych. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Musi mieć obszarem roboczym Azure Databricks, klastra Spark i przykładowe dane skojarzone z klastra. Nie masz już te wymagania wstępne, należy wykonać procedury szybkiego startu w [Uruchom zadanie Spark Databricks Azure przy użyciu portalu Azure](quickstart-create-databricks-workspace-portal.md).
+* Konieczne jest posiadanie obszar roboczy usługi Azure Databricks, klaster Spark i przykładowe dane skojarzone z klastrem. Jeśli nie masz już te wymagania wstępne, ukończenie tego przewodnika Szybki Start na [uruchamianie zadania Spark w usłudze Azure Databricks przy użyciu witryny Azure portal](quickstart-create-databricks-workspace-portal.md).
 
-* Pobierz sterownik Databricks ODBC z [stronę pobierania sterownika Databricks](https://databricks.com/spark/odbc-driver-download). Zainstaluj wersję 32-bitowy lub 64-bitowych zależnie od aplikacji, z którym chcesz nawiązać połączenie Azure Databricks. Na przykład aby połączyć się z programu Excel, należy zainstalować 32-bitowej wersji sterownika. Aby połączyć się z języków R i Python, zainstaluj 64-bitowej wersji sterownika.
+* Pobierz sterownik ODBC usługi Databricks z [strony pobierania sterownika usługi Databricks](https://databricks.com/spark/odbc-driver-download). Zainstaluj wersję 32-bitową lub 64-bitowych w zależności od aplikacji, z którym chcesz nawiązać połączenie z usługi Azure Databricks. Na przykład aby połączyć się z programu Excel, należy zainstalować 32-bitowej wersji sterownika. Aby nawiązać połączenie z języków R i Python, należy zainstalować wersję 64-bitowego sterownika.
 
-* Konfigurowanie osobisty token dostępu w Databricks. Aby uzyskać instrukcje, zobacz [Token zarządzania](https://docs.azuredatabricks.net/api/latest/authentication.html#token-management).
+* Skonfiguruj osobistego tokenu dostępu w usłudze Databricks. Aby uzyskać instrukcje, zobacz [Token zarządzania](https://docs.azuredatabricks.net/api/latest/authentication.html#token-management).
 
 ## <a name="set-up-a-dsn"></a>Konfigurowanie nazwy DSN
 
-Nazwa źródła danych (DSN) zawiera informacje dotyczące określonego źródła danych. Sterownik ODBC wymaga tego DSN nawiązywania połączenia ze źródłem danych. W tej sekcji ustawić DSN, który może służyć ze sterownikiem Databricks ODBC do nawiązania połączenia od klientów, takich jak program Microsoft Excel, Python lub R. Azure Databricks
+Nazwa źródła danych (DSN) zawiera informacje na temat z określonym źródłem danych. Sterownik ODBC wymaga tego DSN do połączenia ze źródłem danych. W tej sekcji można skonfigurować DSN, który może służyć za pomocą sterownika ODBC usługi Databricks nawiązać połączenia z usługi Azure Databricks z klientów takich jak program Microsoft Excel, Python lub R.
 
-1. W obszarze roboczym Azure Databricks przejdź do klastra Databricks.
+1. W obszarze roboczym usługi Azure Databricks przejdź do klastra usługi Databricks.
 
-    ![Otwórz klaster Databricks](./media/connect-databricks-excel-python-r/open-databricks-cluster.png "Databricks Otwórz klastra")
+    ![Otwórz klastra usługi Databricks](./media/connect-databricks-excel-python-r/open-databricks-cluster.png "Otwórz Databricks w klastrze")
 
-2. W obszarze **konfiguracji** , kliknij pozycję **JDBC/ODBC** karcie i skopiuj wartości **nazwy hosta serwera** i **ścieżki HTTP**. Należy wykonać czynności opisane w tym artykule tych wartości.
+2. W obszarze **konfiguracji** kliknij pozycję **JDBC/ODBC** kartę i skopiuj wartości pól **nazwy hosta serwera** i **ścieżki HTTP**. Te wartości, wykonanie czynności opisanych w tym artykule będą potrzebne.
 
-    ![Uzyskiwanie konfiguracji Databricks](./media/connect-databricks-excel-python-r/get-databricks-jdbc-configuration.png "Databricks pobrać konfiguracji")
+    ![Uzyskiwanie konfiguracji usługi Databricks](./media/connect-databricks-excel-python-r/get-databricks-jdbc-configuration.png "konfiguracji pobrać usługi Databricks")
 
-3. Na komputerze, należy uruchomić **źródeł danych ODBC** aplikacji (32-bitowy lub 64-bitowy), w zależności od aplikacji. Aby połączyć się z programu Excel, użyj wersji 32-bitowej. Aby połączyć się z języków R i Python, użyj wersji 64-bitowej.
+3. Na komputerze, należy uruchomić **źródeł danych ODBC** aplikacji (32-bitowy lub 64-bitowy), w zależności od aplikacji. Aby nawiązać połączenie z programu Excel, należy użyć 32-bitowej wersji. Aby nawiązać połączenie z języków R i Python, należy użyć 64-bitowej wersji.
 
-    ![Uruchamianie ODBC](./media/connect-databricks-excel-python-r/launch-odbc-app.png "Uruchom aplikację ODBC")
+    ![Uruchom ODBC](./media/connect-databricks-excel-python-r/launch-odbc-app.png "Uruchom aplikację ODBC")
 
-4. W obszarze **DSN użytkownika** , kliknij pozycję **Dodaj**. W **Utwórz nowe źródło danych** okno dialogowe, wybierz opcję **sterownika ODBC Spark Simba**, a następnie kliknij przycisk **Zakończ**.
+4. W obszarze **DSN użytkownika** kliknij pozycję **Dodaj**. W **Utwórz nowe źródło danych** okno dialogowe, wybierz opcję **sterownik ODBC platformy Spark firmą Simba**, a następnie kliknij przycisk **Zakończ**.
 
-    ![Uruchamianie ODBC](./media/connect-databricks-excel-python-r/add-new-user-dsn.png "Uruchom aplikację ODBC")
+    ![Uruchom ODBC](./media/connect-databricks-excel-python-r/add-new-user-dsn.png "Uruchom aplikację ODBC")
 
-5. W **sterownika ODBC Spark Simba** okna dialogowego wprowadź następujące wartości:
+5. W **sterownik ODBC platformy Spark firmą Simba** okna dialogowego wprowadź następujące wartości:
 
     ![Konfigurowanie nazwy DSN](./media/connect-databricks-excel-python-r/odbc-dsn-setup.png "skonfigurować DSN")
 
-    Poniższa tabela zawiera informacje o wartości w oknie dialogowym.
+    Poniższa tabela zawiera informacje na podstawie wartości w celu zapewnienia w oknie dialogowym.
     
     |Pole  | Wartość  |
     |---------|---------|
     |**Nazwa źródła danych**     | Podaj nazwę dla źródła danych.        |
-    |**Hostami**     | Podaj wartość skopiowany z obszaru roboczego Databricks dla *nazwy hosta serwera*.        |
+    |**Hostami**     | Podaj wartość, który został skopiowany z obszaru roboczego usługi Databricks *nazwy hosta serwera*.        |
     |**Port**     | Wprowadź *443*.        |
-    |**Uwierzytelnianie** > **mechanizmu**     | Wybierz *nazwy użytkownika i hasła*.        |
+    |**Uwierzytelnianie** > **mechanizm**     | Wybierz *nazwy użytkownika i hasła*.        |
     |**Nazwa użytkownika**     | Wprowadź *tokenu*.        |
-    |**Hasło**     | Wprowadź wartość tokenu, które zostały skopiowane z obszaru roboczego Databricks. |
+    |**Hasło**     | Wprowadź wartość tokenu, który został skopiowany z obszaru roboczego usługi Databricks. |
     
     W oknie dialogowym Ustawienia DSN, należy wykonać następujące dodatkowe czynności.
     
-    * Kliknij przycisk **Options protokołu HTTP**. W otwartym oknie dialogowym Wklej wartość *ścieżki HTTP* skopiowany z Databricks obszaru roboczego. Kliknij przycisk **OK**.
-    * Kliknij przycisk **opcji SSL**. W otwartym oknie dialogowym wybierz **Włącz SSL** pole wyboru. Kliknij przycisk **OK**.
-    * Kliknij przycisk **Test** do testowania połączenia Azure Databricks. Kliknij przycisk **OK** Aby zapisać konfigurację.
+    * Kliknij przycisk **Options protokołu HTTP**. W otwartym oknie dialogowym Wklej wartość *ścieżki HTTP* skopiowany z obszaru roboczego usługi Databricks. Kliknij przycisk **OK**.
+    * Kliknij przycisk **opcje protokołu SSL**. W otwartym oknie dialogowym wybierz **Włącz SSL** pole wyboru. Kliknij przycisk **OK**.
+    * Kliknij przycisk **Test** Aby przetestować połączenie z usługą Azure Databricks. Kliknij przycisk **OK** Aby zapisać konfigurację.
     * W **Administrator źródła danych ODBC** okno dialogowe, kliknij przycisk **OK**.
 
-Masz teraz Twojego DSN Konfigurowanie. W kolejnych sekcjach Użyj tej nazwy DSN do nawiązania połączenia z programu Excel, Python lub R. Azure Databricks
+Masz teraz Twoje DSN Konfigurowanie. W kolejnych sekcjach Użyj tej nazwy DSN nawiązać połączenia z usługi Azure Databricks z programu Excel, Python lub R.
 
-## <a name="connect-from-microsoft-excel"></a>Nawiązywanie połączenia z programu Microsoft Excel
+## <a name="connect-from-microsoft-excel"></a>Łączenie z programu Microsoft Excel
 
-W tej sekcji możesz pobierają dane z Azure Databricks do programu Microsoft Excel za pomocą nazwy DSN, utworzony wcześniej. Przed rozpoczęciem upewnij się, że masz zainstalowany na tym komputerze program Microsoft Excel. Można użyć programu Excel z wersji próbnej [łącze wersji próbnej programu Microsoft Excel](https://products.office.com/excel).
+W tej sekcji możesz ściągnąć dane z usługi Azure Databricks do programu Microsoft Excel przy użyciu utworzonej wcześniej nazwy DSN. Przed rozpoczęciem upewnij się, że masz zainstalowany na tym komputerze program Microsoft Excel. Można używać wersji próbnej wersji programu Excel z [łącze wersji próbnej programu Microsoft Excel](https://products.office.com/excel).
 
-1. Otwórz pusty skoroszyt w programie Microsoft Excel. Z **danych** wstążki, kliknij przycisk **Pobierz dane**. Kliknij przycisk **z innych źródeł** , a następnie kliknij przycisk **z ODBC**.
+1. Otwórz pusty skoroszyt w programie Microsoft Excel. Z **danych** wstążki, kliknij przycisk **Pobierz dane**. Kliknij przycisk **z innych źródeł** a następnie kliknij przycisk **z ODBC**.
 
-    ![Uruchamianie ODBC z programu Excel](./media/connect-databricks-excel-python-r/launch-odbc-from-excel.png "uruchamianie ODBC z programu Excel")
+    ![Uruchom ODBC z programu Excel](./media/connect-databricks-excel-python-r/launch-odbc-from-excel.png "Uruchom ODBC z programu Excel")
 
-2. W **z ODBC** okno dialogowe DSN, który został utworzony wcześniej, a następnie kliknij przycisk **OK**.
+2. W **z ODBC** okno dialogowe, wybierz DSN, który został utworzony wcześniej, a następnie kliknij przycisk **OK**.
 
     ![Wybierz DSN](./media/connect-databricks-excel-python-r/excel-select-dsn.png "wybierz DSN")
 
-3. W przypadku wyświetlenia monitu o poświadczenia dla nazwy użytkownika wprowadź **tokenu**. Hasła Podaj wartość tokenu, którego został pobrany z obszaru roboczego Databricks.
+3. Jeśli zostanie wyświetlony monit o poświadczenia, aby uzyskać nazwę użytkownika wprowadź **tokenu**. Hasła Podaj wartość tokenu, który pobierane obszar roboczy usługi Databricks.
 
-    ![Podaj poświadczenia dla Databricks](./media/connect-databricks-excel-python-r/excel-databricks-token.png "wybierz DSN")
+    ![Podaj poświadczenia dla usługi Databricks](./media/connect-databricks-excel-python-r/excel-databricks-token.png "wybierz DSN")
 
-4. W oknie Nawigator wybierz tabelę w Databricks, który chcesz załadować do programu Excel, a następnie kliknij przycisk **obciążenia**. 
+4. W oknie Nawigator wybierz tabelę w usłudze Databricks, który chcesz załadować do programu Excel, a następnie kliknij przycisk **obciążenia**. 
 
     ![Ładowanie dta do programu Excel](./media/connect-databricks-excel-python-r/excel-load-data.png "dta obciążenia do programu Excel")
 
-Po utworzeniu danych w skoroszycie programu Excel, można wykonać na nim operacji analitycznych.
+Po umieszczeniu danych w skoroszycie programu Excel, można wykonać operacji analitycznych na nim.
 
-## <a name="connect-from-r"></a>Nawiązywanie połączenia z języka R
+## <a name="connect-from-r"></a>Łączenie z języka R
 
 > [!NOTE]
-> Ta sekcja zawiera informacje na temat integracji klienta R Studio uruchomiony na pulpicie z Azure Databricks. Instrukcje dotyczące sposobu używania R Studio na samego klastra Azure Databricks, zobacz [Studio R Azure Databricks](https://docs.azuredatabricks.net/spark/latest/sparkr/rstudio.html).
+> Ta sekcja zawiera informacje na temat klienta programu R Studio uruchomiony na komputerze z usługą Azure Databricks. Aby uzyskać instrukcje dotyczące sposobu używania programu R Studio na sam klaster usługi Azure Databricks, zobacz [programu R Studio w usłudze Azure Databricks](https://docs.azuredatabricks.net/spark/latest/sparkr/rstudio.html).
 
-W tej sekcji służy IDE języka R odwoływanie się do danych dostępne w Azure Databricks. Przed rozpoczęciem, musi mieć następujące zainstalowane na komputerze.
+W tej sekcji użyjesz środowiska IDE języka R z danymi referencyjnymi dostępne w usłudze Azure Databricks. Przed przystąpieniem do wykonywania, musi mieć następujące zainstalowane na komputerze.
 
-* IDE języka R. W tym artykule używa programu RStudio pulpitu. Możesz zainstalować ją z [pobieranie R Studio](https://www.rstudio.com/products/rstudio/download/).
-* Jeśli używasz programu RStudio pulpitu jako środowiskiem IDE także zainstalować Microsoft R Client [ http://aka.ms/rclient/ ](http://aka.ms/rclient/). 
+* Środowisko IDE dla języka R. W tym artykule korzysta z programu RStudio Desktop. Można zainstalować go z [pobierania programu R Studio](https://www.rstudio.com/products/rstudio/download/).
+* Jeśli używasz programu RStudio for Desktop jako zintegrowanego środowiska Projektowego także zainstalować program Microsoft R Client z [ http://aka.ms/rclient/ ](http://aka.ms/rclient/). 
 
-Otwórz programu RStudio i wykonaj następujące czynności:
+Otwórz program RStudio i wykonaj następujące czynności:
 
-- Odwołanie `RODBC` pakietu. Dzięki temu można nawiązać połączenia z Databricks Azure przy użyciu nazwy DSN utworzone wcześniej.
+- Odwołanie `RODBC` pakietu. Dzięki temu można nawiązać połączenia z usługi Azure Databricks przy użyciu utworzonej wcześniej nazwy DSN.
 - Nawiąż połączenie przy użyciu nazwy DSN.
-- Uruchom kwerendę SQL w danych w Azure Databricks. W poniższy fragment *radio_sample_data* jest tabela, która już istnieje w Azure Databricks.
-- Wykonanie pewnych operacji w zapytaniu, aby zweryfikować dane wyjściowe. 
+- Uruchom kwerendę SQL na tych danych w usłudze Azure Databricks. W poniższym fragmencie kodu *radio_sample_data* jest tabela, która już istnieje w usłudze Azure Databricks.
+- Wykonywanie operacji na zapytanie, aby sprawdzić dane wyjściowe. 
 
-Poniższy fragment kodu wykonuje te zadania:
+Poniższy fragment kodu wykonuje następujące zadania:
 
     # reference the 'RODBC' package
     require(RODBC)
@@ -132,24 +128,24 @@ Poniższy fragment kodu wykonuje te zadania:
     # print out the number of rows in the query output
     nrow (res)
 
-## <a name="connect-from-python"></a>Nawiązywanie połączenia z języka Python
+## <a name="connect-from-python"></a>Połącz za pomocą języka Python
 
-W tej sekcji służy IDE języka Python (na przykład BEZCZYNNY) do dostępnych w usłudze Azure Databricks danych referencyjnych. Przed rozpoczęciem należy wykonać następujące wymagania wstępne:
+W tej sekcji użyjesz środowiskiem Python IDE (takich jak BEZCZYNNY) z danymi referencyjnymi dostępne w usłudze Azure Databricks. Przed rozpoczęciem należy spełnić następujące wymagania wstępne:
 
-* Zainstaluj środowisko Python z [tutaj](https://www.python.org/downloads/). Instalowanie języka Python z tego łącza instaluje BEZCZYNNY.
+* Zainstaluj język Python z [tutaj](https://www.python.org/downloads/). Instalowanie języka Python z tego linku instaluje BEZCZYNNY.
 
-* W wierszu polecenia na komputerze, należy zainstalować `pyodbc` pakietu. Uruchom następujące polecenie:
+* W wierszu polecenia na komputerze zainstalować `pyodbc` pakietu. Uruchom następujące polecenie:
 
       pip install pyodbc
 
 Otwórz BEZCZYNNY i wykonaj następujące czynności:
 
-- Importuj `pyodbc` pakietu. Dzięki temu można nawiązać połączenia z Databricks Azure przy użyciu nazwy DSN utworzone wcześniej.
-- Nawiąż połączenie przy użyciu nazwy DSN utworzony wcześniej.
--  Uruchom zapytanie SQL przy użyciu połączenia utworzone. W poniższy fragment *radio_sample_data* jest tabela, która już istnieje w Azure Databricks.
-- Wykonywanie operacji w zapytaniu, aby zweryfikować dane wyjściowe.
+- Importuj `pyodbc` pakietu. Dzięki temu można nawiązać połączenia z usługi Azure Databricks przy użyciu utworzonej wcześniej nazwy DSN.
+- Nawiąż połączenie przy użyciu utworzonej wcześniej nazwy DSN.
+-  Uruchom kwerendę SQL przy użyciu połączenia utworzone. W poniższym fragmencie kodu *radio_sample_data* jest tabela, która już istnieje w usłudze Azure Databricks.
+- Wykonywać operacje na zapytanie, aby sprawdzić dane wyjściowe.
 
-Poniższy fragment kodu wykonuje te zadania:
+Poniższy fragment kodu wykonuje następujące zadania:
 
 ```python
 # import the `pyodbc` package:
@@ -170,6 +166,6 @@ for row in cursor.fetchall():
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby uzyskać informacje dotyczące źródła, z których możesz zaimportować dane Azure Databricks, zobacz [źródła danych dla Azure Databricks](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html#)
+* Aby dowiedzieć się więcej na temat źródeł, z których możesz zaimportować dane do usługi Azure Databricks, zobacz [źródeł danych dla usługi Azure Databricks](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html#)
 
 

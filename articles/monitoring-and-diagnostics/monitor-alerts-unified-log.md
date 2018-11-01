@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: bcede1f985937058196b75a93f539cb34da73992
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 49607809d6bb8697cc6b7a4063a45d893b9e1eac
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365066"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421088"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Alerty dzienników w usłudze Azure Monitor
 Ten artykuł zawiera szczegółowe informacje o alertów dzienników są jednym z typów alertów, które obsługują [Azure Alerts](monitoring-overview-unified-alerts.md) i zezwolić użytkownikom na stosowanie platforma analiz platformy Azure jako podstawa dla alertów.
@@ -93,7 +93,7 @@ Rozważmy scenariusz, w którym alert potrzebowała przekroczeniu użycie proces
 
 Zapytanie spowodowałoby średnią wartość dla każdego komputera w 5-minutowych odstępach czasu.  To zapytanie zostałoby uruchomione co 5 minut przez dane zebrane przez poprzednie 30 minut.  Poniżej przedstawiono przykładowe dane na trzech komputerach.
 
-![Przykładowe wyniki zapytania](./media/monitor-alerts-unified/metrics-measurement-sample-graph.png)
+![Przykładowe wyniki zapytania](media/monitor-alerts-unified-log/metrics-measurement-sample-graph.png)
 
 W tym przykładzie oddzielne alerty zostałyby utworzone srv02 i srv03, ponieważ ich naruszenia 90% progu trzy razy w okresie czasu.  Jeśli **Wyzwalaj alert na podstawie:** zostały zmienione na **kolejno** , a następnie będzie można utworzyć alertu tylko w przypadku srv03, ponieważ jego naruszenia progu dla trzech kolejnych próbek.
 

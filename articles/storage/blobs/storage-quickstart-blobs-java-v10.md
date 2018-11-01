@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 10/19/2018
 ms.author: rogarana
-ms.openlocfilehash: c675dd17994abaaf6d0eed1934bec8f2220e7435
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: ea94a4e537a46ac8287e4454a2cfd10c59db590b
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955705"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416872"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą zestawu SDK usługi Storage dla języka Java w wersji 10
 
@@ -24,7 +24,7 @@ W tym przewodniku Szybki start dowiesz się, w jaki sposób za pomocą nowego ze
 Zainstaluj i skonfiguruj następujące aplikacje:
 
 * Narzędzie [Maven](http://maven.apache.org/download.cgi) do użycia z poziomu wiersza polecenia lub dowolne wybrane zintegrowane środowisko projektowe Java.
-* Zestaw [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
+* Zestaw [JDK](https://aka.ms/azure-jdks).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

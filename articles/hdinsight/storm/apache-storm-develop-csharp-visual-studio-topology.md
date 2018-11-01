@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 371f8c1d69482381e3a400da6010825bc3ac7c1a
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 2765021d80701826644f095d22c650160001e907
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697785"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414900"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Opracowywanie topologii języka C# dla Apache Storm przy użyciu narzędzi Data Lake tools for Visual Studio
 
@@ -57,7 +57,7 @@ Aby zainstalować narzędzia Data Lake tools dla programu Visual Studio, wykonaj
 
 Gdy prześlesz topologii Storm za pomocą programu Visual Studio, platformy SCP.NET generuje plik zip, który zawiera topologii i zależności. Java służy do tworzenia tych plików zip, ponieważ używa ona formatu, który jest bardziej zgodne z klastrów opartych na systemie Linux.
 
-1. Instalowanie języka Java Developer Kit (JDK) 7 lub nowszy na swoje Środowisko deweloperskie. Możesz uzyskać JDK Oracle z [Oracle](http://www.oracle.com/technetwork/java/javase/downloads/index.html). Można również użyć [inne dystrybucje Java](http://openjdk.java.net/).
+1. Instalowanie języka Java Developer Kit (JDK) 7 lub nowszy na swoje Środowisko deweloperskie. Możesz uzyskać JDK Oracle z [Oracle](https://aka.ms/azure-jdks). Można również użyć [inne dystrybucje Java](http://openjdk.java.net/).
 
 2. `JAVA_HOME` Zmiennej środowiskowej musi wskazywać katalog zawierający języka Java.
 
@@ -70,30 +70,30 @@ using System;
 using System.IO;
 namespace ConsoleApplication2
 {
-   class Program
-   {
-       static void Main(string[] args)
-       {
-           string javaHome = Environment.GetEnvironmentVariable("JAVA_HOME");
-           if (!string.IsNullOrEmpty(javaHome))
-           {
-               string jarExe = Path.Combine(javaHome + @"\bin", "jar.exe");
-               if (File.Exists(jarExe))
-               {
-                   Console.WriteLine("JAVA Is Installed properly");
-                    return;
-               }
-               else
-               {
-                   Console.WriteLine("A valid JAVA JDK is not found. Looks like JRE is installed instead of JDK.");
-               }
-           }
-           else
-           {
-             Console.WriteLine("A valid JAVA JDK is not found. JAVA_HOME environment variable is not set.");
-           }
-       }  
-   }
+   class Program
+   {
+       static void Main(string[] args)
+       {
+           string javaHome = Environment.GetEnvironmentVariable("JAVA_HOME");
+           if (!string.IsNullOrEmpty(javaHome))
+           {
+               string jarExe = Path.Combine(javaHome + @"\bin", "jar.exe");
+               if (File.Exists(jarExe))
+               {
+                   Console.WriteLine("JAVA Is Installed properly");
+                    return;
+               }
+               else
+               {
+                   Console.WriteLine("A valid JAVA JDK is not found. Looks like JRE is installed instead of JDK.");
+               }
+           }
+           else
+           {
+             Console.WriteLine("A valid JAVA JDK is not found. JAVA_HOME environment variable is not set.");
+           }
+       }  
+   }
 }
 ```
 
@@ -451,11 +451,11 @@ Data Lake tools for Visual Studio umożliwia również tworzyć hybrydowe topolo
 
 Na przykład topologii hybrydowego utworzyć projekt, a następnie wybierz pozycję **przykład hybrydowego Storm**. Ten typ przykładowy pokazuje następujące pojęcia:
 
-* **Java spout** i **bolt języka C#**: zdefiniowaną w **HybridTopology_javaSpout_csharpBolt**.
+* **Java spout** i  **C# bolt**: zdefiniowaną w **HybridTopology_javaSpout_csharpBolt**.
 
     * Transakcyjne wersja jest zdefiniowany w **HybridTopologyTx_javaSpout_csharpBolt**.
 
-* **C# spout** i **bolt języka Java**: zdefiniowaną w **HybridTopology_csharpSpout_javaBolt**.
+* **C#spout** i **bolt języka Java**: zdefiniowaną w **HybridTopology_csharpSpout_javaBolt**.
 
     * Transakcyjne wersja jest zdefiniowany w **HybridTopologyTx_csharpSpout_javaBolt**.
 

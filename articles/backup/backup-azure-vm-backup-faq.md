@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: trinadhk
-ms.openlocfilehash: 910225e74fcd4655a9eff711d3ac1316d948c2b3
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ba77ec34e7887f676ea3df101e87c1ea80fceec5
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886198"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414798"
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Pytania dotyczące usługi tworzenia kopii zapasowej maszyny wirtualnej platformy Azure
 W tym artykule znajdują się odpowiedzi na często zadawane pytania pomagające w szybkim poznaniu składników usługi tworzenia kopii zapasowej maszyny wirtualnej platformy Azure. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -48,7 +48,7 @@ Tak. Nawet w przypadku, gdy maszyna zostanie zamknięta kopie zapasowe działaj�
 Tak. Możesz anulować zadanie tworzenia kopii zapasowej, jeśli jest w fazie "Utworzenia migawki". **Nie można anulować zadania, jeśli przesyłanie danych z migawki jest w toku**.
 
 ### <a name="i-enabled-resource-group-lock-on-my-backed-up-managed-disk-vms-will-my-backups-continue-to-work"></a>Zablokuj grupy zasobów I włączone na Moje kopie zapasowe maszyn wirtualnych dysku zarządzanego. Czy operacje tworzenia kopii zapasowych będą nadal działać?
-Użytkownik zablokuje grupy zasobów, usługi Kopia zapasowa nie jest można usunąć starsze punkty przywracania. Ze względu na to nowych kopii zapasowych będzie kończyć się niepowodzeniem, ponieważ istnieje limit maksymalnego 18 punktów przywracania narzucone z wewnętrznej bazy danych. Jeśli tworzenie kopii zapasowych zakończą się niepowodzeniem z powodu błędu wewnętrznego po blokady RG, postępuj zgodnie z tymi [kolekcję punktów kroki, aby usunąć przywracania](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock).
+Użytkownik zablokuje grupy zasobów, usługi Kopia zapasowa nie jest można usunąć starsze punkty przywracania. Ze względu na to nowych kopii zapasowych będzie kończyć się niepowodzeniem, ponieważ istnieje limit maksymalnego 18 punktów przywracania narzucone z wewnętrznej bazy danych. Jeśli tworzenie kopii zapasowych zakończą się niepowodzeniem z powodu błędu wewnętrznego po blokady RG, postępuj zgodnie z tymi [kolekcję punktów kroki, aby usunąć przywracania](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-portal-created-by-backup-service).
 
 ### <a name="does-backup-policy-take-daylight-saving-timedst-into-account"></a>Zasady tworzenia kopii zapasowych podąża czasu letniego Time(DST) zapisywanie do konta?
 Nie. Należy pamiętać, że data i godzina na komputerze lokalnym jest wyświetlana w formacie czasu lokalnego, jak i z uwzględnieniem bieżącego czasu. Dlatego skonfigurowany czas zaplanowanego tworzenia kopii zapasowych może różnić się od czasu lokalnego z powodu czasu letniego.

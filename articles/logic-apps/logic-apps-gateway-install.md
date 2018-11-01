@@ -6,15 +6,15 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-ms.reviewer: yshoukry, LADocs
+ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 07/20/2018
-ms.openlocfilehash: 5fc4ccacaaedfc3fe6c77fa9a0ad693530bdde93
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 10/01/2018
+ms.openlocfilehash: 2934eadce9e3e0d5e0375dff4eec359a33bd4479
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855429"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420102"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Zainstaluj lokalną bramę danych dla usługi Azure Logic Apps
 
@@ -60,11 +60,13 @@ Aby uzyskać informacje o sposobie używania bramy z innymi usługami, zobacz na
 * Poniżej przedstawiono wymagania dotyczące komputera lokalnego:
 
   **Minimalne wymagania**
+
   * .NET Framework 4.5.2
   * 64-bitowej wersji systemu Windows 7 lub Windows Server 2008 R2 (lub nowszy)
 
   **Zalecane wymagania**
-  * 8 rdzeni procesora CPU
+
+  * 8-rdzeniowy Procesor
   * 8 GB pamięci RAM
   * 64-bitowej wersji systemu Windows Server 2012 R2 (lub nowszym)
 
@@ -75,11 +77,11 @@ Aby uzyskać informacje o sposobie używania bramy z innymi usługami, zobacz na
     > [!TIP]
     > Aby zminimalizować czas oczekiwania, możesz zainstalować bramę jak najbliżej źródła danych lub na tym samym komputerze, przy założeniu, że masz uprawnienia.
 
-  * Zainstaluj bramę na komputerze, który jest połączony z Internetem, zawsze włączone i *nie* Przejdź w tryb uśpienia. W przeciwnym razie nie można uruchomić bramy. Ponadto może to spowodować obniżenie wydajności w sieci bezprzewodowej.
+  * Zainstaluj bramę na komputerze, który jest połączony z Internetem, zawsze włączone i *nie* Przejdź w tryb uśpienia. W przeciwnym razie nie można uruchomić bramy. 
+  Ponadto może to spowodować obniżenie wydajności w sieci bezprzewodowej.
 
-  * Podczas instalacji, można się zarejestrować tylko przy użyciu [konto służbowe](../active-directory/sign-up-organization.md) zarządzanym usługi Azure Active Directory (Azure AD), a nie konta Microsoft. 
-  Ponadto upewnij się, że to konto nie jest B2B w usłudze Azure konta (Gość). 
-  Po zarejestrowaniu instalację bramy, tworząc zasobu platformy Azure dla bramy, należy również użyć tego samego konta logowania w witrynie Azure portal. 
+  * Podczas instalacji, można się zarejestrować tylko przy użyciu [konto służbowe](../active-directory/sign-up-organization.md) zarządzanym przez usługę Azure Active Directory (Azure AD), na przykład @contoso.onmicrosoft.com, a nie B2B w usłudze Azure konta (Gość) lub osobiste Microsoft konta, takie jak @hotmail.com lub @outlook.com. 
+  Upewnij się, że używasz tego samego konta logowania po zarejestrowaniu instalację bramy w witrynie Azure portal, tworząc zasobu bramy. 
   Następnie można wybrać tego zasobu bramy, podczas tworzenia połączenia z aplikacji logiki ze źródłem danych lokalnych. 
   [Dlaczego należy używać usługi Azure AD praca lub konta służbowego?](#why-azure-work-school-account)
 
@@ -96,6 +98,19 @@ Aby uzyskać informacje o sposobie używania bramy z innymi usługami, zobacz na
   * Jeśli masz już skonfigurowaną z Instalatorem wcześniejszej niż wersja 14.16.6317.4 bramy, nie można zmienić lokalizacji bramy sieci uruchomić najnowszą wersję Instalatora. Jednak można użyć najnowszą wersję Instalatora, aby zdefiniować nową bramę z lokalizacji, w których chcesz zamiast tego.
   
     Jeśli masz Instalatora bramy, która jest starsza niż wersja 14.16.6317.4, ale nie został jeszcze zainstalowany bramy można jeszcze, pobrać i zamiast tego użyj najnowszą wersję Instalatora.
+
+## <a name="high-availability-support"></a>Obsługa wysokiej dostępności
+
+Lokalna brama danych obsługuje wysoką dostępność, gdy masz więcej niż jeden instalacji bramy i ustawić je jako klastry. Jeśli masz istniejącą bramę, po przejściu do tworzenia bramy innej, można opcjonalnie utworzyć klastry wysokiej dostępności. Tych klastrów organizować bram w grupach, które mogą pomóc uniknąć pojedynczych punktów awarii. Ponadto wszystkie łączniki bramy danych lokalnych obsługują obecnie wysokiej dostępności.
+
+Aby korzystać z lokalnej bramy danych, należy przejrzeć wymagania i uwagi:
+
+* Musi już mieć co najmniej jedną bramę instalację w ramach tej samej subskrypcji platformy Azure jako bramy podstawowej i klucz odzyskiwania dla tej instalacji. 
+
+* Bramy podstawowej musi być uruchomiona aktualizacja bramy z listopada 2017 r. lub później.
+
+Po spełnieniu tych wymagań, po utworzeniu bramy następnym wybierz **dodać do istniejącego klastra bramy**, wybierz bramy podstawowej dla klastra i podaj klucz odzyskiwania dla tej bramy podstawowej.
+Aby uzyskać więcej informacji, zobacz [klastry wysokiej dostępności dla lokalnej bramy danych](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters).
 
 <a name="install-gateway"></a>
 
@@ -161,19 +176,6 @@ Aby uzyskać informacje o sposobie używania bramy z innymi usługami, zobacz na
 
 10. Teraz zarejestrować bramę na platformie Azure dzięki [tworzenie zasobu platformy Azure dla Twojej instalacji bramy](../logic-apps/logic-apps-gateway-connection.md). 
 
-## <a name="enable-high-availability"></a>Włączanie wysokiej dostępności
-
-Lokalna brama danych obsługuje wysoką dostępność, gdy masz więcej niż jeden instalacji bramy i ustawić je jako klastry. Jeśli masz istniejącą bramę, po przejściu do tworzenia bramy innej, można opcjonalnie utworzyć klastry wysokiej dostępności. Tych klastrów organizować bram w grupach, które mogą pomóc uniknąć pojedynczych punktów awarii. Aby użyć tej funkcji, Przejrzyj wymagania i uwagi:
-
-* Tylko niektóre łączniki, które obsługuje wysoką dostępność, takich jak łącznika systemu plików i inne osoby w ten sposób. 
-     
-* Musi już mieć co najmniej jedną bramę instalację w ramach tej samej subskrypcji platformy Azure jako bramy podstawowej i klucz odzyskiwania dla tej instalacji. 
-
-* Bramy podstawowej musi być uruchomiona aktualizacja bramy z listopada 2017 r. lub później.
-
-Po spełnieniu tych wymagań, po utworzeniu bramy następnym wybierz **dodać do istniejącego klastra bramy**, wybierz bramy podstawowej dla klastra i podaj klucz odzyskiwania dla tej bramy podstawowej.
-Aby uzyskać więcej informacji, zobacz [klastry wysokiej dostępności dla lokalnej bramy danych](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters).
-
 <a name="update-gateway-installation"></a>
 
 ## <a name="change-location-migrate-restore-or-take-over-existing-gateway"></a>Zmienić lokalizację, migrowanie, przywracanie lub przejmowanie istniejącej bramy
@@ -226,7 +228,7 @@ PingReplyDetails (RTT) : 0 ms
 TcpTestSucceeded       : True
 ```
 
-Jeśli **TcpTestSucceeded** nie jest ustawiony na **True**, brama może być blokowany przez zaporę. Jeśli chcesz mieć kompleksową, Zastąp **ComputerName** i **portu** wartości z wartości na liście [skonfigurować porty](#configure-ports) w tym artykule.
+Jeśli **TcpTestSucceeded** nie jest ustawiony na **True**, brama może być blokowany przez zaporę. Pełne, należy zamienić **ComputerName** i **portu** wartości z wartości na liście [skonfigurować porty](#configure-ports) w tym artykule.
 
 Zapora może także blokować połączenia, które usługi Azure Service Bus nawiązuje do centrów danych platformy Azure. W przypadku tego scenariusza zatwierdzania (należy je odblokować) wszystkie adresy IP tych centrów danych w Twoim regionie. Dla tych adresów IP [pobieranie listy adresów IP platformy Azure w tym miejscu](https://www.microsoft.com/download/details.aspx?id=41653).
 
@@ -253,7 +255,7 @@ W niektórych przypadkach połączenia usługi Azure Service Bus są przekazywan
 
 ### <a name="force-https-communication-with-azure-service-bus"></a>Wymuszanie komunikacji HTTPS z usługą Azure Service Bus
 
-Niektóre serwery proxy zezwalać na ruch tylko do portów 80 i 443. Domyślnie komunikacja z usługą Azure Service Bus odbywa się na porty inne niż 443.
+Niektóre serwery proxy zezwala na ruch za pośrednictwem tylko do portów 80 i 443. Domyślnie komunikacja z usługą Azure Service Bus odbywa się na porty inne niż 443.
 Możliwość wymuszenia na bramie, nawiązać połączenia z usługą Azure Service Bus za pośrednictwem protokołu HTTPS zamiast bezpośredniego połączenia TCP, ale wykonanie tej tak może znacznie zmniejszyć wydajność. Aby wykonać to zadanie, wykonaj następujące kroki:
 
 1. Przejdź do lokalizacji dla klienta bramy danych lokalnych, co zwykle można znaleźć tutaj: ```C:\Program Files\On-premises data gateway\Microsoft.PowerBI.EnterpriseGateway.exe```
@@ -283,7 +285,7 @@ Lokalna brama danych działa jak usługa Windows o nazwie "On-premises data gate
 
 ## <a name="restart-gateway"></a>Uruchom ponownie bramę
 
-Brama danych działa jako usługa okna, tak jak wszystkich innych usług Windows można uruchamiać i zatrzymywać bramy na wiele sposobów. Można na przykład, otwórz wiersz polecenia z podwyższonym poziomem uprawnień na komputerze, na którym jest uruchomiona brama i uruchom polecenie albo:
+Brama danych działa jako usługa okna, tak jak wszystkich innych usług Windows można uruchamiać i zatrzymywać bramy na różne sposoby. Można na przykład, otwórz wiersz polecenia z podwyższonym poziomem uprawnień na komputerze, na którym jest uruchomiona brama i uruchom polecenie albo:
 
 * Aby zatrzymać usługę, uruchom następujące polecenie:
   
@@ -372,7 +374,7 @@ Poniższe kroki opisują, co się dzieje, gdy użytkownik w chmurze korzysta z e
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-W tej sekcji omówiono niektóre typowe problemy, które mogą wystąpić podczas konfigurowania i korzystania z lokalnej bramy danych.
+W tej sekcji omówiono niektóre typowe problemy, które może być podczas konfigurowania i korzystania z lokalnej bramy danych.
 
 **Q**: Dlaczego moja instalacja bramy nie? <br/>
 **A**: ten problem może wystąpić, jeśli oprogramowanie antywirusowe na komputerze docelowym jest nieaktualna. Można albo zaktualizuj oprogramowanie antywirusowe lub wyłączenia oprogramowania antywirusowego, ale tylko podczas instalacji bramy i ponownie włączyć oprogramowanie.

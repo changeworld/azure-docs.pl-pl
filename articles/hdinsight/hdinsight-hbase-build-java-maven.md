@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: fc2bd03156d6005f1e10252583b4a13451f66dbf
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: c10fcb8e45dc163629186cfb48408e8734bc5a56
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43092631"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418215"
 ---
 # <a name="use-maven-to-build-java-applications-that-use-hbase-with-windows-based-hdinsight-hadoop"></a>Tworzenie aplikacji Java korzystających z bazy danych HBase z systemem Windows HDInsight (Hadoop) przy użyciu narzędzia Maven
 Dowiedz się, jak utworzyć i skompilować [bazy danych Apache HBase](http://hbase.apache.org/) aplikacji w języku Java przy użyciu narzędzia Apache Maven. Następnie za pomocą aplikacji usługi Azure HDInsight (Hadoop).
@@ -25,7 +25,7 @@ Dowiedz się, jak utworzyć i skompilować [bazy danych Apache HBase](http://hba
 > Kroki opisane w tym dokumencie wymagają klastra usługi HDInsight, który używa Windows. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 ## <a name="requirements"></a>Wymagania
-* [Platforma Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 lub nowszy
+* [Platforma Java JDK](https://aka.ms/azure-jdks) 7 lub nowszy
 * [Maven](http://maven.apache.org/)
 * Klaster HDInsight z systemem Windows z bazą danych HBase
 

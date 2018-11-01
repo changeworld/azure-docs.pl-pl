@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.author: rafats
-ms.openlocfilehash: 5811cb1e08ed5d02038da2a4460ae4b63580833b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: ff432de59e5a5fdfeaad4c3a5361554ee32e21b0
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696143"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740012"
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Unikatowe klucze w usłudze Azure Cosmos DB
 
@@ -130,7 +130,7 @@ Przykładowy dokument JSON.
 Następujące przykładowe polecenie pokazuje, jak utworzyć indeksu unique w firstName, lastName i pola wiadomości e-mail w kolekcji użytkowników dla interfejsu API usługi MongoDB. Dzięki temu unikatowości dla kombinacji wszystkie trzy pola dla wszystkich dokumentów w kolekcji. Dla kolekcji interfejs API usługi MongoDB unikatowy indeks jest tworzony po utworzeniu kolekcji, ale przed kolekcję.
 
 > [!NOTE]
-> Unikatowy format klucza interfejsu API usługi MongoDB kont różni się od z interfejsu API SQL kont, których nie trzeba określić znak ukośnika odwrotnego (/) przed nazwą pola. 
+> Unikatowy format klucza interfejsu API usługi MongoDB kont różni się od z interfejsu API SQL kont, których nie trzeba określić znak ukośnika (/) przed nazwą pola. 
 
 ```
 db.users.createIndex( { firstName: 1, lastName: 1, email: 1 }, { unique: true } )

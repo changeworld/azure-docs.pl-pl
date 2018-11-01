@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 44e71c8e9256bdfd3a55cdd21a6658bccfd5daad
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 4fec410db81077fd454f29d3359dc3728aad4bff
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987543"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739621"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Fan-wyjściowego/fan-w scenariuszu w funkcje trwałe — przykład tworzenia kopii zapasowych w chmurze
 
@@ -131,7 +131,7 @@ Content-Length: 20
 ```
 
 > [!NOTE]
-> `HttpStart` Funkcja, która jest działa tylko z zawartości w formacie JSON. Z tego powodu `Content-Type: application/json` nagłówka jest wymagana, a ścieżka katalogu jest zakodowane jako ciąg JSON.
+> `HttpStart` Funkcja, która jest działa tylko z zawartości w formacie JSON. Z tego powodu `Content-Type: application/json` nagłówka jest wymagana, a ścieżka katalogu jest zakodowane jako ciąg JSON. Ponadto HTTP, fragment kodu zakłada, istnieje wpis w `host.json` pliku, co spowoduje usunięcie domyślnie `api/` prefiks z wszystkie adresy URL funkcji wyzwalacza HTTP. Znaczniki można znaleźć w tej konfiguracji w `host.json` pliku w przykładach.
 
 Żądanie to HTTP wyzwalaczy `E2_BackupSiteContent` orchestrator i przekazuje ciąg `D:\home\LogFiles` jako parametr. Odpowiedź zawiera również link do pobrania stanu operacji tworzenia kopii zapasowej:
 

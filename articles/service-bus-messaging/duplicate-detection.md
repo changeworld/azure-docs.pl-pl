@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: spelluru
-ms.openlocfilehash: fb42f9920ce173b25cbc16725cf1f9dfd96fcc9e
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 5241020b1db3797891ae13da54cc9225bbd4619b
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48853457"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741271"
 ---
 # <a name="duplicate-detection"></a>Wykrywanie duplikatów
 
@@ -41,6 +41,9 @@ W procesie biznesowym, w której wiele komunikatów są wysyłane w trakcie obs�
 W portalu ta funkcja jest włączona podczas tworzenia jednostki za pomocą **Włącz wykrywanie duplikatów** pole wyboru jest domyślnie wyłączona. Odpowiada ustawienie do tworzenia nowych tematów.
 
 ![][1]
+
+> [!IMPORTANT]
+> Użytkownik nie może włączyć/wyłączyć wykrywanie duplikatów po utworzeniu kolejki. Możesz tylko to zrobić w momencie tworzenia kolejki. 
 
 Programowo, Ustaw flagę [QueueDescription.requiresDuplicateDetection](/dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection) właściwość pełny interfejs API programu .NET framework. Za pomocą interfejsu API usługi Azure Resource Manager, wartość została ustawiona za pomocą [queueProperties.requiresDuplicateDetection](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) właściwości.
 

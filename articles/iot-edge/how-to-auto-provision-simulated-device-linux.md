@@ -4,16 +4,16 @@ description: Użyj symulowanego modułu TPM na maszynie Wirtualnej systemu Linux
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/27/2018
+ms.date: 10/31/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2416d70e3c9d0f66ff755d8049e78e0275c89258
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 6d0d2adfb4a727ec93db6d44e6a3e8f923760b91
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232073"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739672"
 ---
 # <a name="create-and-provision-an-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Tworzenie i aprowizowanie urządzenia usługi Edge z wirtualnego TPM na maszynie wirtualnej systemu Linux
 
@@ -63,7 +63,7 @@ Jeśli widzisz błędy podczas tworzenia nowego przełącznika wirtualnego, upew
 
    1. **Określanie generacji**: Wybierz **generacji 2**.
    2. **Konfigurowanie sieci**: Ustaw wartość **połączenia** do przełącznika wirtualnego, który został utworzony w poprzedniej sekcji. 
-   3. **Instalacja technicznej**: Wybierz **zainstalować system operacyjny z pliku obrazu rozruchowego** i przejdź do pliku obrazu dysku, który został zapisany lokalnie.
+   3. **Opcje instalacji**: Wybierz **zainstalować system operacyjny z pliku obrazu rozruchowego** i przejdź do pliku obrazu dysku, który został zapisany lokalnie.
 
 Może upłynąć minut widok, aby utworzyć nową maszynę Wirtualną. 
 
@@ -180,7 +180,7 @@ Wykonaj następujące kroki, aby udzielić dostępu modułu TPM. Alternatywnie, 
    Pomyślne dane wyjściowe wyglądają następująco:
 
    ```output
-   crw------- 1 root root 10, 224 Jun 28 22:34 /dev/tpm0
+   crw------- 1 root iotedge 10, 224 Jul 20 16:27 /dev/tpm0
    ```
 
 8. Otwórz plik zastępuje środowiska uruchomieniowego usługi IoT Edge. 

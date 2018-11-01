@@ -3,19 +3,18 @@ title: Uzyskiwanie dostępu do źródeł danych w środowisku lokalnym dla usłu
 description: Utworzyć i skonfigurować lokalną bramę danych, tak aby dostęp do źródeł danych w środowisku lokalnym z aplikacji logiki
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
+ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 07/20/2018
-ms.reviewer: yshoukry, LADocs
-ms.suite: integration
-ms.openlocfilehash: 6b6006293d562dbc270dc77bc49da2027f171dd2
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 10/01/2018
+ms.openlocfilehash: e8e8d85d2c95c1dda7271de72491594562b7d3c1
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233297"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413710"
 ---
 # <a name="connect-to-data-sources-on-premises-from-azure-logic-apps-with-on-premises-data-gateway"></a>Łączenie ze źródłami danych w środowisku lokalnym z usługi Azure Logic Apps za pomocą lokalnej bramy danych
 
@@ -34,18 +33,17 @@ Aby uzyskać informacje o sposobie używania bramy z innymi usługami, zobacz na
 
 * Instalację bramy nie jest już skojarzona z zasobem bramy na platformie Azure. Instalację bramy można połączyć tylko do jednego zasobu bramy, które odbywa się podczas tworzenia zasobu bramy i wybierz opcję instalacji bramy. To połączenie powoduje, że instalacja bramy dla innych zasobów.
 
-* Gdy Zaloguj się do witryny Azure portal i utworzenia zasobu bramy, należy użyć tego samego logowania konta był wcześniej używany do [zainstalować lokalną bramę danych](../logic-apps/logic-apps-gateway-install.md#requirements).
-Również musi używać tego samego [subskrypcji platformy Azure](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/adoption-intro/subscription-explainer) użytą do zainstalowania bramy. Jeśli nie masz jeszcze subskrypcji platformy Azure <a href="https://azure.microsoft.com/free/" target="_blank">Załóż bezpłatne konto platformy Azure</a>.
+* Gdy Zaloguj się do witryny Azure portal i utworzenia zasobu bramy, należy upewnić się, logowania konta, które zostało wcześniej używanych do [zainstalować lokalną bramę danych](../logic-apps/logic-apps-gateway-install.md#requirements) oraz takie same [subskrypcji platformy Azure ](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/adoption-intro/subscription-explainer) użytą do zainstalowania bramy. Jeśli nie masz jeszcze subskrypcji platformy Azure <a href="https://azure.microsoft.com/free/" target="_blank">Załóż bezpłatne konto platformy Azure</a>.
 
-* Do tworzenia i obsługi zasobów bramy w witrynie Azure portal usługi [konta usługi Windows](../logic-apps/logic-apps-gateway-install.md#windows-service-account) musi mieć co najmniej **Współautor** uprawnienia. Lokalna brama danych działa jako usługa Windows i jest skonfigurowany do użycia `NT SERVICE\PBIEgwService` Windows poświadczeń logowania usługi. 
+* Do tworzenia i obsługi zasobów bramy w witrynie Azure portal usługi [konta usługi Windows](../logic-apps/logic-apps-gateway-install.md#windows-service-account) wymaga co najmniej **Współautor** uprawnienia. Lokalna brama danych działa jako usługa Windows i jest skonfigurowany do użycia `NT SERVICE\PBIEgwService` Windows poświadczeń logowania usługi. 
 
   > [!NOTE]
   > Windows, które konta usług różni się od konta używanego do łączenia z danymi w środowisku lokalnym źródeł i z platformy Azure konto służbowe używane do logowania do usług w chmurze.
 
 ## <a name="download-and-install-gateway"></a>Pobieranie i instalowanie bramy
 
-Zanim będzie można kontynuować czynności w tym artykule, musisz mieć bramy już jest zainstalowana na komputerze lokalnym.
-a jeśli jeszcze nie, wykonaj kroki, aby [pobieranie i instalowanie lokalnej bramy danych](../logic-apps/logic-apps-gateway-install.md). 
+Przed kontynuowaniem kroków opisanych w tym artykule upewnij się, że brama jest już zainstalowana na komputerze lokalnym.
+Jeśli jeszcze nie, wykonaj kroki, aby [pobieranie i instalowanie lokalnej bramy danych](../logic-apps/logic-apps-gateway-install.md). 
 
 <a name="create-gateway-resource"></a>
 

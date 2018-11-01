@@ -1,5 +1,5 @@
 ---
-title: Inteligentne grup
+title: Grupy inteligentne
 description: Inteligentne grup czy agregacji alerty ułatwiające ograniczenia liczby niepotrzebnych alertów
 author: anantr
 services: azure-monitor
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: 58a66cfdfaada34981ef166635b0d04e2e6e8f61
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 57ec7c13cdf5c2e44abf23dc0452e5eab3eb77ff
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976893"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412622"
 ---
-# <a name="smart-groups"></a>Inteligentne grup
+# <a name="smart-groups"></a>Grupy inteligentne
 Typowe wyzwanie sterowaną obsłudze alertów jest ignorowały szumu, aby sprawdzić faktycznie rzeczach — inteligentne grupy mają na celu rozwiązanie tego problemu.  
 
 Inteligentne grupy są tworzone automatycznie za pomocą algorytmów uczenia maszynowego, aby połączyć powiązanych alertów, które reprezentują pojedynczego problemu.  Po utworzeniu alertu algorytm dodaje go do nowej grupy inteligentne lub istniejącej grupy inteligentne w oparciu o informacje, takie jak historyczne wzorce, podobne właściwości i podobną strukturę. Na przykład, jeśli % wykorzystania procesora CPU na wielu maszynach wirtualnych w ramach subskrypcji gwałtowne wzrosty jednocześnie, co prowadzi do wielu poszczególnych alertów, a sugerujące, jeśli takie alerty wystąpiły ze sobą w dowolnym momencie w przeszłości te alerty będą prawdopodobnie pogrupowane w jednej grupie inteligentnych, a Typowe potencjalną główną przyczynę. Oznacza to, że niepowołanym Rozwiązywanie problemów z alertami, inteligentne grup nie tylko umożliwia im szumu dzięki zarządzaniu powiązanych alertów jako pojedyncza jednostka zagregowane, jego również przeprowadzi kierunku możliwości typowych głównych przyczyn ich alertów.
@@ -44,7 +44,7 @@ Obsługiwane są następujące stany inteligentne grupy.
 
 Po wybraniu grupy inteligentne, zostanie wyświetlona strona szczegółów grupy inteligentne. Zapewnia szczegółowe informacje o inteligentne grupy, w tym przyczyny, dla których został użyty do utworzenia grupy, która umożliwia zmianę stanu.
  
-![Szczegóły grupy inteligentne](media/monitoring-overview-unified-alerts/smart-group-detail.png)
+![Szczegóły grupy inteligentne](media/monitoring-overview-alerts-smartgroups/smart-group-detail.png)
 
 
 Strona szczegółów grupy inteligentnych zawiera następujące sekcje.

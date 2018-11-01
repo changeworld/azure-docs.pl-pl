@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: nberdy
-ms.openlocfilehash: f5da3759e97eaa2f89a393d55ae95eb6623fbc5d
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 34a561c5bb523b914f4b88dc8c6edc2bd00627d0
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158332"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741933"
 ---
 # <a name="understand-iot-hub-metrics"></a>Omówienie usługi IoT Hub metryki
 
@@ -26,11 +26,15 @@ Metryki są domyślnie włączone. Możesz wyświetlić metryki usługi IoT Hub 
 
 2. Otwórz blok Centrum IoT hub. W tym miejscu, kliknij przycisk **metryki**.
    
-    ![Blok metryk dla Centrum IoT hub](./media/iot-hub-metrics/enable-metrics-1.png)
+    ![Zrzut ekranu przedstawiający, gdzie jest opcja metryki na stronie zasobów usługi IoT Hub](./media/iot-hub-metrics/enable-metrics-1.png)
 
-3. W bloku metryk możesz wyświetlać metryki dla usługi IoT hub i tworzenie niestandardowych widoków metryk. Użytkownik może wysłać dane metryk do punktu końcowego usługi Event Hubs lub konta usługi Azure Storage, klikając **ustawień diagnostycznych**.
+3. W bloku metryk możesz wyświetlać metryki dla usługi IoT hub i tworzenie niestandardowych widoków metryk. 
    
-    ![Ustawienia diagnostyczne](./media/iot-hub-metrics/enable-metrics-2.png)
+    ![Zrzut ekranu przedstawiający stronę metryki dla usługi IoT Hub](./media/iot-hub-metrics/enable-metrics-2.png)
+    
+4. Użytkownik może wysłać dane metryk do punktu końcowego usługi Event Hubs lub konta usługi Azure Storage, klikając **ustawień diagnostycznych**, następnie **Dodaj ustawienie diagnostyczne**
+
+   ![Zrzut ekranu przedstawiający, gdzie jest przycisk ustawień diagnostycznych](./media/iot-hub-metrics/enable-metrics-3.png)
 
 ## <a name="iot-hub-metrics-and-how-to-use-them"></a>Metryki usługi IoT Hub i sposobu ich używania
 

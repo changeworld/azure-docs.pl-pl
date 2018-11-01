@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: vashan, rajraj, changov
-ms.openlocfilehash: b951d0b8d91729340cf382e70f72511fb009053e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 15a4ff73476ce54f0617a88e040ac64d7288e9a8
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386556"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741117"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>Rozwiązywanie problemów z błędami ograniczania przepływności interfejsu API 
 
@@ -76,6 +76,18 @@ Content-Type: application/json; charset=utf-8
 Pozostałe wywołania liczba 0 jest jednym z powodu której ograniczania błąd jest zwracany. W tym przypadku jest to `HighCostGet30Min`. Ogólny format treści odpowiedzi jest format ogólny błąd interfejsu API usługi Azure Resource Manager (zgodność z protokołem OData). Kod błędu głównego `OperationNotAllowed`, jeden używa dostawcę zasobów obliczeniowych, aby zgłaszać błędy (oraz inne rodzaje błędów klientów) ograniczania przepływności. `message` Właściwość wewnętrzne błędy zawiera strukturę serializacji JSON ze szczegółowymi informacjami o naruszenie ograniczenia przepustowości.
 
 Jak pokazano powyżej, każdy błąd ograniczania obejmuje `Retry-After` nagłówka, który dostarcza klientowi minimalną liczbę sekund oczekiwania przed ponowieniem próby żądania. 
+
+## <a name="api-call-rate-and-throttling-error-analyzer"></a>Wywołanie interfejsu API szybkości i ograniczania przepustowości Błąd analizatora
+Wersja zapoznawcza funkcji rozwiązywania problemów jest dostępna dla interfejsu API dostawcy zasobów obliczeniowych. Te polecenia cmdlet programu PowerShell, podaj statystyki dotyczące liczby żądań interfejsu API na przedział czasu dla operacji i ograniczania przepustowości naruszeń na grupy operacji (zasady):
+-   [Export-AzureRmLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/azurerm.compute/export-azurermloganalyticrequestratebyinterval)
+-   [Export-AzureRmLogAnalyticThrottledRequests](https://docs.microsoft.com/powershell/module/azurerm.compute/export-azurermloganalyticthrottledrequests)
+
+Statystyki wywołania interfejsu API można zapewniają doskonałą wgląd w zachowania klientów w ramach subskrypcji i włączyć łatwą identyfikację wzorców wywołania, które powodują ograniczenia przepustowości.
+
+To ograniczenie analizator przez pewien czas jest, czy nie powoduje liczenia żądania dla typów zasobów dysku i migawki (w odniesieniu do dysków zarządzanych). Ponieważ zbiera dane z telemetrii firmy CRP, jego również nie będzie mogła pomóc w identyfikacji błędów ograniczania dostępności z ARM. Jednak te mogą być identyfikowane łatwo zależnie od szczególne nagłówki odpowiedzi ARM, zgodnie z wcześniejszym opisem.
+
+Polecenia cmdlet programu PowerShell używasz usługi interfejsu API REST, który można łatwo wywołać bezpośrednio przez klientów (chociaż posiadanie obsługi jeszcze). Aby wyświetlić format żądania HTTP, Uruchom polecenia cmdlet z - debugowania lub rozpoznanie, na ich wykonanie, przy użyciu programu Fiddler.
+
 
 ## <a name="best-practices"></a>Najlepsze praktyki 
 

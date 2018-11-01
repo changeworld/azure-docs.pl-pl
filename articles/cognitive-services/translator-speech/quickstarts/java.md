@@ -10,12 +10,12 @@ ms.component: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 4147e164434109a90a2a044565a1fb0b2e1b48bf
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: ebff07a68975f3629b57df4cfc8a5bbcf564ce27
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386506"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412928"
 ---
 # <a name="quickstart-translator-speech-api-with-java"></a>Szybki start: interfejs API tłumaczenia mowy w usłudze Translator — Java 
 <a name="HOLTop"></a>
@@ -26,7 +26,7 @@ W tym artykule pokazano, jak używać interfejsu API tłumaczenia mowy w usłudz
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Musisz mieć zestaw [JDK 7 lub 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), aby skompilować i uruchomić ten kod. Jeśli masz ulubione środowisko projektowe Java, możesz go użyć, ale edytor tekstów również wystarczy.
+Musisz mieć zestaw [JDK 7 lub 8](https://aka.ms/azure-jdks), aby skompilować i uruchomić ten kod. Jeśli masz ulubione środowisko projektowe Java, możesz go użyć, ale edytor tekstów również wystarczy.
 
 Potrzebne będą następujące pliki.
 - [javax.websocket-api-1.1.jar (lub nowszy)](https://mvnrepository.com/artifact/javax.websocket/javax.websocket-api)

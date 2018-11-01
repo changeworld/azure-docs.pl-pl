@@ -12,16 +12,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/11/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a6077b3e10562b4aee313cccd86256b8f00084ec
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 75d630b91a1380102fd285edfb11effa22f47859
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414200"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413235"
 ---
-# <a name="how-to-use-perfinsights"></a>Jak za pomocą programu PerfInsights
+# <a name="how-to-use-perfinsights"></a>Korzystanie z narzędzia PerfInsights
 
 [Program PerfInsights](http://aka.ms/perfinsightsdownload) to narzędzie diagnostyczne samodzielnej pomocy, które zbiera i analizuje dane diagnostyczne i udostępnia raport, aby ułatwić rozwiązywanie problemów z wydajnością maszyny wirtualnej Windows na platformie Azure. Program PerfInsights mogą być uruchamiane na maszynach wirtualnych jako autonomiczne narzędzie bezpośrednio z witryny portal przy użyciu [Diagnostyka wydajności maszyn wirtualnych platformy Azure](performance-diagnostics.md), lub dzięki zainstalowaniu [rozszerzenie maszyny Wirtualnej diagnostyki wydajności platformy Azure ](performance-diagnostics-vm-extension.md).
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: 1a7fcc11bf1b98d5feaeae07264e556acce2b14b
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 55f32b498b83203a3823999a2e31024266bf37bc
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736086"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413268"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-spark-applications-remotely-in-hdinsight-through-vpn"></a>Debugowanie aplikacji Spark zdalnie w HDInsight za pośrednictwem sieci VPN przy użyciu zestawu narzędzi platformy Azure dla środowiska IntelliJ
 
@@ -31,7 +31,7 @@ Ten artykuł zawiera wskazówki krok po kroku dotyczące sposobu korzystania z n
 ## <a name="prerequisites"></a>Wymagania wstępne
 * **Subskrypcja platformy Azure**. Aby uzyskać więcej informacji, zobacz [bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * **Klaster Apache Spark w HDInsight**. Aby uzyskać instrukcje, zobacz [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
-* **Zestawu Oracle Java development kit**. Można zainstalować go z [witryny internetowej Oracle](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+* **Zestawu Oracle Java development kit**. Można zainstalować go z [witryny internetowej Oracle](https://aka.ms/azure-jdks).
 * **IntelliJ IDEA**. W tym artykule używa wersji 2017.1. Można zainstalować go z [JetBrains witryny sieci Web](https://www.jetbrains.com/idea/download/).
 * **Narzędzia HDInsight w usłudze Azure Toolkit for IntelliJ**. Narzędzia HDInsight tools for IntelliJ są dostępne w ramach zestawu narzędzi platformy Azure dla środowiska IntelliJ. Aby uzyskać instrukcje dotyczące sposobu instalowania zestawu narzędzi platformy Azure, zobacz [zainstalować Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation).
 * **Zaloguj się do subskrypcji platformy Azure z rozwiązaniem IntelliJ IDEA**. Postępuj zgodnie z instrukcjami w [użycia Azure Toolkit for IntelliJ, tworzenie aplikacji dla klastra usługi HDInsight Spark](apache-spark-intellij-tool-plugin.md).

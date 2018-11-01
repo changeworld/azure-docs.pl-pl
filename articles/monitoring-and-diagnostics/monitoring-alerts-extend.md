@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 45682caedaaaac1c9d335a45db64f16d713dfd7f
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 60ecc2bc1d700c223d4a52b05e3b9362241f3f82
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233501"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414620"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>Rozszerzanie alertów usługi Log Analytics do usługi Azure Alerts
 Niedawno, dopóki nie usługi Azure Log Analytics uwzględnione własną funkcję alertu, która może aktywnie powiadomić użytkownika o warunków opartych na danych usługi Log Analytics. Możesz zarządzać reguły alertów w portalu Microsoft Operations Management Suite. Nowe środowisko alertów ma teraz zintegrowane alertów w różnych usługach w systemie Microsoft Azure. Ta opcja jest dostępna jako **alerty** w ramach usługi Azure Monitor w witrynie Azure portal obsługuje alerty z dzienników aktywności, metryk i dzienników z usługi Log Analytics i Azure Application Insights. 
@@ -35,7 +35,7 @@ Proces przechodzenia alerty z usługą Log Analytics do alertów platformy Azure
 
 Podczas planowania alerty w obszarze roboczym usługi Log Analytics na platformie Azure one nadal działać i nie obsługują w że dowolny sposób naruszyć konfigurację. Podczas planowania alertów może tymczasowo niedostępne do modyfikacji, ale można kontynuować tworzenie nowych alertów platformy Azure, w tym czasie. Jeśli spróbujesz edytować lub tworzyć alerty z portalu Operations Management Suite, masz opcję, aby kontynuować, są one tworzone ze swojego obszaru roboczego usługi Log Analytics. Możesz również utworzyć je z alertów platformy Azure w witrynie Azure portal.
 
- ![Zrzut ekranu przedstawiający opcję, aby utworzyć alerty z usługi Log Analytics lub Azure Alerts](./media/monitor-alerts-extend/ScheduledDirection.png)
+ ![Zrzut ekranu przedstawiający opcję, aby utworzyć alerty z usługi Log Analytics lub Azure Alerts](media/monitoring-alerts-extend/ScheduledDirection.png)
 
 > [!NOTE]
 > Rozszerzanie alertów z usługi Log Analytics na platformie Azure nie są naliczane opłaty za do Twojego konta. Korzystanie z alertów platformy Azure dla zapytań na podstawie alertów usługi Log Analytics nie jest rozliczane, gdy jest używana w ramach limitów i warunki określone w [usługi Azure Monitor polityki cenowej](https://azure.microsoft.com/pricing/details/monitor/).  
@@ -47,7 +47,7 @@ Aby rozszerzyć alerty do alertów platformy Azure, można użyć Kreatora dost�
 ## <a name="experience-after-extending-your-alerts"></a>Występuje po rozszerzeniu alertów
 Alerty zostały rozszerzone do alertów platformy Azure, nadal będą znajdować się w portalu Operations Management Suite w celu zarządzania nie inaczej niż wcześniej.
 
-![Zrzut ekranu z pakietu Operations Management Suite portal, za pomocą alertów](./media/monitor-alerts-extend/PostExtendList.png)
+![Zrzut ekranu z pakietu Operations Management Suite portal, za pomocą alertów](media/monitoring-alerts-extend/PostExtendList.png)
 
 Przy próbie edycji istniejący alert lub tworzenia nowego alertu w portalu Operations Management Suite, automatycznie są przekierowywane do alertów platformy Azure.  
 

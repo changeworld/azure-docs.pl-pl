@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
-ms.openlocfilehash: db3b08ae8092661e6ffa0f2dd7e460f341a8d013
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 3030fdcec95d91b75974465ad30f707837263367
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666063"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414781"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Zarządzanie i analizowanie dzienników przepływów grupy zabezpieczeń sieci na platformie Azure przy użyciu usługi Network Watcher i z narzędzia Graylog
 
@@ -38,7 +38,7 @@ Dzienniki przepływu sieciowych grup zabezpieczeń są włączane przy użyciu u
 
 ### <a name="enable-network-security-group-flow-logging"></a>Włącz rejestrowanie przepływu grup zabezpieczeń sieci
 
-W tym scenariuszu konieczne jest posiadanie sieci zabezpieczeń grupy przepływu Rejestrowanie włączone na co najmniej jedną sieciową grupę zabezpieczeń na Twoim koncie. Instrukcje dotyczące włączania sieci dzienników przepływu grupy zabezpieczeń, zapoznaj się z następującym artykułem [wprowadzenie do rejestrowanie przepływu dla sieciowych grup zabezpieczeń](network-watcher-nsg-flow-logging-overview.md).
+W tym scenariuszu konieczne jest posiadanie sieci zabezpieczeń grupy przepływu Rejestrowanie włączone na co najmniej jedną sieciową grupę zabezpieczeń na Twoim koncie. Instrukcje dotyczące włączania sieci dzienników przepływu grupy zabezpieczeń, zapoznaj się z następującym artykułem [wprowadzenie do rejestrowanie przepływu dla sieciowych grup zabezpieczeń](network-watcher-nsg-flow-logging-overview.md).
 
 ### <a name="setting-up-graylog"></a>Konfigurowanie z narzędzia Graylog
 
@@ -51,7 +51,7 @@ W tym przykładzie użyto minimalnej konfiguracji z narzędzia Graylog (tj.) poj
 
 Z narzędzia Graylog można zainstalować na wiele sposobów, w zależności od platformy i preferencje. Pełną listę metody instalacji to możliwe, można znaleźć w oficjalnej z narzędzia Graylog firmy [dokumentacji](http://docs.graylog.org/en/2.2/pages/installation.html). Aplikacja serwera z narzędzia Graylog działa w dystrybucjach systemu Linux i ma następujące wymagania wstępne:
 
--  Oracle Java SE 8 lub nowszym — [dokumentacji instalacji programu Oracle](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)
+-  Java SE 8 lub nowszym — [Azul Azure JDK dokumentacji](https://aka.ms/azure-jdks)
 -  Elastyczne wyszukiwanie 2.x (2.1.0 lub nowszej)- [dokumentacji instalacji usługi Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
 -  Bazy danych MongoDB 2.4 lub nowszym — [dokumentacji instalacji bazy danych MongoDB](https://docs.mongodb.com/manual/administration/install-on-linux/)
 
@@ -244,4 +244,4 @@ Dzięki integracji usługi Network Watcher z z narzędzia Graylog, masz są tera
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak wizualizować swoje dzienniki sieciowych grup zabezpieczeń usługi flow z usługą Power BI, odwiedzając [Visualize sieciowej grupy zabezpieczeń przepływy dzienników za pomocą usługi Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md).
+Dowiedz się, jak wizualizować swoje dzienniki sieciowych grup zabezpieczeń usługi flow z usługą Power BI, odwiedzając [Visualize sieciowej grupy zabezpieczeń przepływy dzienników za pomocą usługi Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md).

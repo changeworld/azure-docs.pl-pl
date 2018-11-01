@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 64e735a1090972a6e4cef85d1a51909e8550c536
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 02db6b4691beb4bfefa3815c87cf54f350219d81
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221940"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418011"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania architektury
 
@@ -92,8 +92,7 @@ HDInsight używa usługi Azure SQL Database dla gałęzi i Oozie magazyny metada
     - Klastry można tworzyć i usunięte bez utraty metadane, takie jak szczegóły zadania Oozie schematu programu Hive.
     - Pojedynczy Magazyn metadanych bazy danych mogą być udostępniane w różnych typów klastrów
     - Magazyn metadanych można przeskalować w górę odpowiednio do potrzeb
-
-Aby uzyskać więcej informacji, zobacz artykuł: [używać zewnętrznych magazynów metadanych w usłudze Azure HDInsight](../hdinsight-use-external-metadata-stores.md).
+    - Aby uzyskać więcej informacji, zobacz [używać zewnętrznych magazynów metadanych w usłudze Azure HDInsight](../hdinsight-use-external-metadata-stores.md).
 
 ## <a name="best-practices-for-hive-metastore"></a>Najlepsze rozwiązania dotyczące Hive magazynu metadanych
 
@@ -105,20 +104,20 @@ Najważniejsze wskazówki magazynu metadanych HDInsight Hive są następujące:
 - Utwórz kopię zapasową niestandardowy Magazyn metadanych okresowo.
 - Zachowaj magazynu metadanych i klaster HDInsight, w tym samym regionie.
 - Monitorowanie magazynu metadanych dla wydajności i dostępności przy użyciu narzędzi monitorowania bazy danych SQL platformy Azure, takich jak witryny Azure portal lub usługi Azure Log Analytics.
-- Wykonaj **ANALIZOWANIE tabeli** polecenia na potrzeby generowania statystyk dla tabel i kolumn. Na przykład: `ANALYZE TABLE [table_name] COMPUTE STATISTICS`
+- Wykonaj **ANALIZOWANIE tabeli** polecenia na potrzeby generowania statystyk dla tabel i kolumn. Na przykład `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
 
 ## <a name="best-practices-for-different-types-of-workloads"></a>Najlepsze rozwiązania dotyczące różnych rodzajów obciążeń
 
 - Należy wziąć pod uwagę przy użyciu funkcji LLAP klastra dla interakcyjnych zapytań Hive z czasem odpowiedzi ulepszone [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) to nowa funkcja programu Hive w wersji 2.0 umożliwiająca wewnątrzpamięciowa pamięć podręczna zapytań. LLAP sprawia, że zapytania programu Hive, które znacznie szybciej, maksymalnie [26 x szybciej niż Hive 1.x w niektórych przypadkach](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
-- Należy wziąć pod uwagę przy użyciu zadań platformy Spark, zamiast zadań Hive
-- Rozważ zastąpienie zapytania oparte na aparacie impala za pomocą funkcji LLAP zapytań
-- Rozważ zastąpienie zadań MapReduce z zadań platformy Spark
-- Rozważ zastąpienie partii zadań platformy Spark o małych opóźnieniach, przy użyciu zadań platformy Spark Structured Streaming
-- Organizowanie danych — należy wziąć pod uwagę przy użyciu usługi Azure Data Factory(ADF) w wersji 2.0
-- Należy wziąć pod uwagę Ambari do zarządzania klastrem
-- Zmień magazyn danych z lokalnym systemem plików HDFS WASB lub ADLS i usług AD FS dla przetwarzania skryptów
-- Należy wziąć pod uwagę przy użyciu platformy Ranger RBAC dla tabel programu Hive i inspekcji
-- Należy wziąć pod uwagę przy użyciu bazy danych cosmos DB zamiast bazy danych MongoDB lub bazy danych Cassandra
+- Należy wziąć pod uwagę przy użyciu zadań platformy Spark, zamiast zadań Hive.
+- Należy wziąć pod uwagę, zastępując zapytania oparte na aparacie impala LLAP zapytania.
+- Należy wziąć pod uwagę, zastępując zadań MapReduce zadań platformy Spark.
+- Należy wziąć pod uwagę, zastępując partii zadań platformy Spark o małych opóźnieniach, przy użyciu zadań platformy Spark Structured Streaming.
+- Należy rozważyć użycie organizowanie danych przy użyciu usługi Azure Data Factory (ADF) w wersji 2.0.
+- Do zarządzania klastrem, należy wziąć pod uwagę Ambari.
+- Zmień magazyn danych z lokalnym systemem plików HDFS WASB lub ADLS i usług AD FS dla przetwarzania skryptów.
+- Należy wziąć pod uwagę przy użyciu platformy Ranger RBAC dla tabel programu Hive i inspekcji.
+- Należy rozważyć użycie bazy danych cosmos DB zamiast bazy danych MongoDB lub bazy danych Cassandra.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -14,14 +14,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/11/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7d4deb0618b0e0802306e344fea6d259c0597fe2
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: f4d733e29d2ba8213e1832f2c604b726283ab3e1
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413805"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417399"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Rozwiązywanie problemów z szczegółowe komunikaty o błędach protokołu RDP do maszyny Wirtualnej z systemem Windows na platformie Azure
 Otrzymasz komunikat o błędzie, gdy za pomocą programu Podłączanie pulpitu zdalnego z maszyną wirtualną (VM) Windows na platformie Azure. Ten artykuł szczegółowo opisuje niektóre typowe komunikaty o błędach napotkano oraz rozwiązywanie problemów, aby je rozwiązać. Jeśli występują problemy z nawiązywaniem połączenia z maszyną wirtualną przy użyciu protokołu RDP ale czy nie występują określony komunikat o błędzie, zobacz [przewodnik rozwiązywania problemów dla pulpitu zdalnego](troubleshoot-rdp-connection.md).

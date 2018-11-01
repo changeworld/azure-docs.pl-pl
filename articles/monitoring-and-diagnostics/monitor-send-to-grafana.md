@@ -1,5 +1,5 @@
 ---
-title: Monitoruj usługi i aplikacje platformy Azure przy użyciu narzędzia Grafana
+title: Monitorowanie usług platformy Azure i aplikacji przy użyciu narzędzia Grafana
 description: Dane trasy usługi Azure Monitor i Application Insights aby można było wyświetlić Grafana.
 services: azure-monitor
 keywords: ''
@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: ''
-ms.openlocfilehash: b4fbd1248f91e0766cca66d1c51033a8b338c324
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 75b1edf80f1dad5f0db48c11329effe080760820
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957382"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413149"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Monitorowanie usług platformy Azure w narzędzia Grafana
 Usługi platformy Azure i aplikacje od teraz można również monitorować [Grafana](https://grafana.com/) przy użyciu [wtyczki źródła danych usługi Azure Monitor](https://grafana.com/plugins/grafana-azure-monitor-datasource). Wtyczka zbiera dane dotyczące wydajności aplikacji zbierane przez zestaw SDK usługi Application Insights, a także dane infrastruktury udostępniane przez usługi Azure Monitor. Następnie można wyświetlić te dane na pulpicie nawigacyjnym Grafana.
@@ -37,13 +37,13 @@ Wykonaj następujące kroki konfiguracji serwera Grafana z witryny Azure Marketp
 ## <a name="log-in-to-grafana"></a>Zaloguj się do narzędzia Grafana
 1. Po zakończeniu wdrożenia wybierz **przejdź do grupy zasobów**. Zobaczysz listę nowo utworzonych zasobów.
 
-    ![Obiekty grupy zasobów platformy Grafana](.\media\monitor-how-to-grafana\grafana1.png)
+    ![Obiekty grupy zasobów platformy Grafana](media/monitor-send-to-grafana/grafana1.png)
 
     Jeśli zostanie wybrana grupa zabezpieczeń sieci (*grafana-nsg* w tym przypadku), możesz zobaczyć, czy dostęp do narzędzia Grafana serwera jest używany port 3000.
 
 2. Wróć do listy zasobów, a następnie wybierz pozycję **publiczny adres IP**. Korzystając z na wartości znajdujące się na tym ekranie, wpisz *http://<IP address>: 3000* lub  *<DNSName>: 3000* w przeglądarce. Powinieneś widzieć stronę logowania dla serwera platformy Grafana, który właśnie zbudowany.
 
-    ![Ekran logowania narzędzia Grafana](.\media\monitor-how-to-grafana\grafana2.png)
+    ![Ekran logowania narzędzia Grafana](media/monitor-send-to-grafana/grafana2.png)
 
 3. Zaloguj się przy użyciu nazwy użytkownika jako *administratora* i Grafana hasło administratora serwera, została utworzona wcześniej.
 
@@ -51,7 +51,7 @@ Wykonaj następujące kroki konfiguracji serwera Grafana z witryny Azure Marketp
 
 Po pomyślnym zalogowaniu powinien pojawić się, że dodatek źródła danych usługi Azure Monitor jest już dołączona.
 
-![Grafana pokazuje wtyczkę usługi Azure Monitor](.\media\monitor-how-to-grafana\grafana3.png)
+![Grafana pokazuje wtyczkę usługi Azure Monitor](media/monitor-send-to-grafana/grafana3.png)
 
 1. Wybierz **Dodaj źródło danych** do konfigurowania usługi Azure Monitor i Application Insights.
 
@@ -70,7 +70,7 @@ Grafana używa nazwy głównej usługi Azure Active Directory, aby nawiązać po
 
 4. Po wprowadzeniu wszystkich tych informacji, wybierz **Zapisz** i Grafana testuje interfejsu API. Powinien zostać wyświetlony komunikat podobny do poniższego.  
 
-    ![Grafana pokazuje wtyczkę usługi Azure Monitor](.\media\monitor-how-to-grafana\grafana4-1.png)
+    ![Grafana pokazuje wtyczkę usługi Azure Monitor](media/monitor-send-to-grafana/grafana4-1.png)
 
 > [!NOTE]
 > Podczas konfigurowania wtyczki można określić, jaka chmura platformy Azure (publiczne, dla administracji USA, Azure (Niemcy) lub Azure — Chiny) ma się wtyczki, należy skonfigurować przed.
@@ -83,7 +83,7 @@ Grafana używa nazwy głównej usługi Azure Active Directory, aby nawiązać po
 
 2. Nowy pulpit nawigacyjny, wybierz **wykresu**. Możesz wypróbować inne opcje tworzenia wykresów, ale w tym artykule wykorzystano *wykres* jako przykład.
 
-    ![Nowy pulpit nawigacyjny platformy Grafana](.\media\monitor-how-to-grafana\grafana5.png)
+    ![Nowy pulpit nawigacyjny platformy Grafana](media/monitor-send-to-grafana/grafana5.png)
 
 3. Pusty wykres wyświetlane na pulpicie nawigacyjnym.
 
@@ -93,14 +93,14 @@ Grafana używa nazwy głównej usługi Azure Active Directory, aby nawiązać po
 
 Poniżej przedstawiono dwa wykresy na prostym pulpicie nawigacyjnym. Po lewej stronie zawiera procent użycia procesora CPU, dwie maszyny wirtualne. Wykres po prawej stronie pokazuje transakcji na koncie usługi Azure Storage, podzielone według typu transakcji interfejsu API.
 
-![Przykładowe wykresy dwa narzędzia Grafana](.\media\monitor-how-to-grafana\grafana6.png)
+![Przykładowe wykresy dwa narzędzia Grafana](media/monitor-send-to-grafana/grafana6.png)
 
 
 ## <a name="optional-create-dashboard-playlists"></a>Opcjonalnie: Tworzenie list odtwarzania pulpitu nawigacyjnego
 
 Jedną z wielu przydatnych funkcji Grafana jest lista odtwarzania pulpitu nawigacyjnego. Można tworzyć wiele pulpitów nawigacyjnych i dodać je do listy odtwarzania, konfigurowanie interwał każdy pulpit nawigacyjny pokazać. Wybierz **Odtwórz** Aby wyświetlić pulpity nawigacyjne cyklicznie. Można je wyświetlić na monitorze dużej tablicy zapewnienie "board stan" dla tej grupy.
 
-![Przykład listy odtwarzania narzędzia Grafana](.\media\monitor-how-to-grafana\grafana7.png)
+![Przykład listy odtwarzania narzędzia Grafana](media/monitor-send-to-grafana/grafana7.png)
 
 
 ## <a name="optional-monitor-your-custom-metrics-in-the-same-grafana-server"></a>Opcjonalnie: Monitoruj metryki niestandardowe w tym samym serwerze narzędzia Grafana
@@ -117,7 +117,7 @@ Poniżej przedstawiono wartościowa dokumentacja ułatwiająca artykuły dotycz�
  - [Rozwiązanie monitorowania dla hostów platformy Docker, kontenery i usług konteneryzowanych](https://stefanprodan.com/2016/a-monitoring-solution-for-docker-hosts-containers-and-containerized-services/)
 
 Oto obraz pełny pulpit nawigacyjny Grafana, który zawiera metryki z usługi Azure Monitor i Application Insights.
-![Przykład Grafana metryki](.\media\monitor-how-to-grafana\grafana8.png)
+![Przykład Grafana metryki](media/monitor-send-to-grafana/grafana8.png)
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów

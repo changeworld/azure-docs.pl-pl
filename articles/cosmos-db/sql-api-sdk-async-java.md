@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: e90c5640e571aaf28e184e9439f6228e3a5bbc6b
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 57172927011532af9b14fa7ff09d6aad9bac1e92
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023566"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417603"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Usługa Azure Cosmos DB Async zestawu Java SDK dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ Zestaw SDK Java Async interfejsu API SQL różni się od zestawu SDK Java dla in
 
 <tr><td>**Porady dotyczące wydajności**</td><td>[Plik readme w serwisie Github](https://github.com/Azure/azure-cosmosdb-java#guide-for-prod)</td></tr>
 
-<tr><td>**Minimalne obsługiwane środowisko uruchomieniowe**</td><td>[JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)</td></tr>
+<tr><td>**Minimalne obsługiwane środowisko uruchomieniowe**</td><td>[JDK 8](https://aka.ms/azure-jdks)</td></tr>
 </table></br>
 
 ## <a name="release-notes"></a>Informacje o wersji

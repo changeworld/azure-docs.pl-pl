@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 78e3bec0d00336ce7cedc1434bf6ad7c65435969
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 995e93290e7c305e217c1f44609d383f69d83a9a
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978186"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420561"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Konfiguracja zaawansowane automatyczne skalowanie usługi VM Scale Sets za pomocą szablonów usługi Resource Manager
 Możesz skalować i skalowalnego w poziomie w zestawach skalowania maszyn wirtualnych na podstawie dotyczące progów metryk wydajności, według powtarzającego się harmonogramu lub według określonej daty. Można również skonfigurować powiadomienia e-mail i elementy webhook dla akcji skalowania. W tym instruktażu przedstawiono przykład konfigurowania tych obiektów w zestawie skalowania maszyn wirtualnych przy użyciu szablonu usługi Resource Manager.
@@ -29,7 +29,7 @@ W tym przewodniku używamy [Eksploratora zasobów Azure](https://resources.azure
 1. Wdrażanie nowego zestawu z ustawieniem podstawowe skalowania automatycznego skalowania. W tym artykule wykorzystano jeden z galerii Szybki Start Azure, która ma Windows zestawu skalowania przy użyciu szablonu podstawowa funkcja automatycznego skalowania. Zestawy skalowania systemu Linux, działają tak samo.
 2. Po utworzeniu zestawu skalowania, przejdź do zasobu zestawu skalowania z usługi Azure Resource Explorer. Zobaczysz następujący widok w węźle Microsoft.Insights.
 
-    ![Azure Explorer](./media/insights-advanced-autoscale-vmss/azure_explorer_navigate.png)
+    ![Azure Explorer](media/insights-advanced-autoscale-virtual-machine-scale-sets/azure_explorer_navigate.png)
 
     Wykonywanie szablonu, który utworzył domyślne ustawienie automatycznego skalowania o nazwie **"autoscalewad"**. Po prawej stronie można wyświetlić pełna definicja to ustawienie automatycznego skalowania. W tym przypadku domyślne ustawienie skalowania automatycznego jest dostarczany z regułą skalowania w poziomie i skalowanie w % na podstawie procesora CPU.  
 
@@ -58,11 +58,11 @@ W tym przewodniku używamy [Eksploratora zasobów Azure](https://resources.azure
 
 5. Upewnij się, że korzystasz z **odczytu/zapisu** trybu w Eksploratorze zasobów
 
-    ![Autoscalewad, ustawienie skalowania automatycznego domyślne](./media/insights-advanced-autoscale-vmss/autoscalewad.png)
+    ![Autoscalewad, ustawienie skalowania automatycznego domyślne](media/insights-advanced-autoscale-virtual-machine-scale-sets/autoscalewad.png)
 
 6. Kliknij przycisk Edytuj. **Zastąp** elementu "profile" w ustawieniu skalowania automatycznego za pomocą następującej konfiguracji:
 
-    ![Profile](./media/insights-advanced-autoscale-vmss/profiles.png)
+    ![Profile](media/insights-advanced-autoscale-virtual-machine-scale-sets/profiles.png)
 
     ```
     {

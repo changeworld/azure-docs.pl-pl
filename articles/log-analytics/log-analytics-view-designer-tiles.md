@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 1c9c93c198b4d88da55ecd241e096e73e4a40d5d
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: aa9e91614152aed6a04fa748521991920a0ed569
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042190"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413064"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Podręcznik informacyjny projektanta widoku kafelków w usłudze Log Analytics
 Przy użyciu projektanta widoku w usłudze Azure Log Analytics, można tworzyć widoki niestandardowe w witrynie Azure portal, które przedstawiają różne wizualizacje danych w obszarze roboczym usługi Log Analytics. Ten artykuł jest przewodnik odwołanie do ustawienia dla kafelków, które są dostępne w widoki niestandardowe.
@@ -47,7 +47,7 @@ W kolejnych sekcjach opisano typy kafelków i ich właściwości szczegółowo.
 ## <a name="number-tile"></a>Kafelka z liczbą
 **Numer** Kafelek Wyświetla liczbę rekordów z zapytanie dziennika i etykietę.
 
-![Kafelka z liczbą](media/log-analytics-view-designer/tile-number.png)
+![Kafelka z liczbą](media/log-analytics-view-designer-tiles/tile-number.png)
 
 | Ustawienie | Opis |
 |:--- |:--- |
@@ -65,7 +65,7 @@ W kolejnych sekcjach opisano typy kafelków i ich właściwości szczegółowo.
 ## <a name="two-numbers-tile"></a>Kafelek dwóch liczb
 Ten Kafelek zawiera liczbę rekordów z dwóch różnych dziennika zapytań i etykiety dla każdego.
 
-![Kafelek dwóch liczb](media/log-analytics-view-designer/tile-two-numbers.png)
+![Kafelek dwóch liczb](media/log-analytics-view-designer-tiles/tile-two-numbers.png)
 
 | Ustawienie | Opis |
 |:--- |:--- |
@@ -86,7 +86,7 @@ Ten Kafelek zawiera liczbę rekordów z dwóch różnych dziennika zapytań i et
 ## <a name="donut-tile"></a>Wykres pierścieniowy kafelka
 **Pierścieniowy** Kafelek Wyświetla jeden numer, który podsumowuje kolumnę wartości w zapytaniu dziennika. Wykres pierścieniowy wyświetla w postaci graficznej wyniki pierwszych trzech rekordów.
 
-![Wykres pierścieniowy kafelka](media/log-analytics-view-designer/tile-donut.png)
+![Wykres pierścieniowy kafelka](media/log-analytics-view-designer-tiles/tile-donut.png)
 
 | Ustawienie | Opis |
 |:--- |:--- |
@@ -110,7 +110,7 @@ Ten Kafelek zawiera liczbę rekordów z dwóch różnych dziennika zapytań i et
 ## <a name="line-chart-tile"></a>Wiersz kafelka wykresu
 Ten Kafelek jest wykres liniowy, który wyświetla wielu serii, w wyniku zapytania dziennika wraz z upływem czasu. 
 
-![Wiersz kafelka wykresu i objaśnienie](media/log-analytics-view-designer/tile-line-chart.png)
+![Wiersz kafelka wykresu i objaśnienie](media/log-analytics-view-designer-tiles/tile-line-chart.png)
 
 | Ustawienie | Opis |
 |:--- |:--- |
@@ -131,7 +131,7 @@ Ten Kafelek jest wykres liniowy, który wyświetla wielu serii, w wyniku zapytan
 ## <a name="line-chart-and-callout-tile"></a>Wiersz kafelka wykresu i objaśnienie
 Ten Kafelek zawiera zarówno wiersz, wykres ten przedstawia wiele serii z dziennika zapytanie dotyczące czasu i objaśnienie przy użyciu wartości podsumowania. 
 
-![Wiersz kafelka wykresu i objaśnienie](media/log-analytics-view-designer/tile-line-chart-callout.png)
+![Wiersz kafelka wykresu i objaśnienie](media/log-analytics-view-designer-tiles/tile-line-chart-callout.png)
 
 | Ustawienie | Opis |
 |:--- |:--- |
@@ -156,7 +156,7 @@ Ten Kafelek zawiera zarówno wiersz, wykres ten przedstawia wiele serii z dzienn
 ## <a name="two-timelines-tile"></a>Kafelek dwie osie czasu
 **Dwie osie czasu** Kafelek wyświetla wyniki dwóch zapytań log wraz z upływem czasu jako wykresy kolumnowe. Objaśnienie jest wyświetlany dla każdej serii. 
 
-![Kafelek dwie osie czasu](media/log-analytics-view-designer/tile-two-timelines.png)
+![Kafelek dwie osie czasu](media/log-analytics-view-designer-tiles/tile-two-timelines.png)
 
 | Ustawienie | Opis |
 |:--- |:--- |

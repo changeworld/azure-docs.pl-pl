@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: d359ad0e619e4d7784d763e70599ce784aa852cd
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 97ca4f69f4bf2aa814d51cc17970c1aead8399e8
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945819"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414407"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Zapisywanie i konfigurowanie konfiguracji usługi API Management przy użyciu narzędzia Git
 
@@ -190,7 +190,8 @@ Katalog główny `api-management` folder zawiera `configuration.json` pliku, kt�
     "DelegationEnabled": "False",
     "DelegationUrl": "",
     "DelegatedSubscriptionEnabled": "False",
-    "DelegationValidationKey": ""
+    "DelegationValidationKey": "",
+    "RequireUserSigninEnabled": "false"
   },
   "$ref-policy": "api-management/policies/global.xml"
 }
@@ -200,10 +201,11 @@ Pierwsze cztery ustawienia (`RegistrationEnabled`, `UserRegistrationTerms`, `Use
 
 | Ustawienia tożsamości | Mapuje |
 | --- | --- |
-| RegistrationEnabled |**Przekieruj użytkowników anonimowych do strony logowania** pola wyboru |
+| RegistrationEnabled |Obecność **nazwy użytkownika i hasło** dostawcy tożsamości |
 | UserRegistrationTerms |**Warunki użytkowania podczas tworzenia konta użytkownika** textbox |
 | UserRegistrationTermsEnabled |**Wyświetlanie warunków użytkowania na stronie tworzenia konta** pola wyboru |
 | UserRegistrationTermsConsentRequired |**Wymagaj zgody** pola wyboru |
+| RequireUserSigninEnabled |**Przekieruj użytkowników anonimowych do strony logowania** pola wyboru |
 
 Następne cztery ustawienia (`DelegationEnabled`, `DelegationUrl`, `DelegatedSubscriptionEnabled`, i `DelegationValidationKey`) mapy w następujących ustawieniach na **delegowania** karcie **zabezpieczeń** sekcji.
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 93bd141b591cda5ec6ff1d9d042222070d3146e6
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: f0a9ac1700d635365ebea0c5966489ed3d2d797b
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390316"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420251"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje program Azure AD Connect z nowych funkcji i funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich odbiorców.
@@ -37,6 +37,37 @@ Wymagane uprawnienia | Uprawnienia wymagane do zastosowania aktualizacji, zobacz
 
 Pobierz | [Pobieranie programu Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771).
 
+## <a name="12650"></a>1.2.65.0 
+
+### <a name="release-status"></a>Stan zlecenia 
+
+10 25 2018: ogólnie dostępnych do pobrania
+
+ 
+### <a name="new-features-and-improvements"></a>Nowe funkcje i ulepszenia 
+
+
+- Zmienione funkcje zapisu atrybutu zapewnienie hostowanej poczta głosowa działa zgodnie z oczekiwaniami.  W niektórych scenariuszach usługi Azure AD zostało zastępowanie atrybutu msExchUcVoicemailSettings podczas zapisu o wartości null.  Usługi Azure AD obecnie nie jest już usunie w środowisku lokalnym wartość tego atrybutu, jeśli nie ustawiono wartości chmury.
+- Rozbudowana obsługa domyślnych zmiany reguł. Teraz otrzymasz powiadomienie, jeśli wprowadzono zmiany do domyślnych reguł i są dostępne opcje, aby naprawić reguły domyślne. 
+- W kreatorze program Azure AD Connect, aby zbadać i zidentyfikować problemy z łącznością z usługą Azure AD, należy dodać diagnostyki. Te funkcje diagnostyki w tej samej można także uruchomić bezpośrednio za pomocą programu Powershell przy użyciu polecenia AdSyncAzureServiceConnectivity Cmdlet Test. 
+- W kreatorze program Azure AD Connect, aby zbadać i zidentyfikować problemy z łącznością z usługi AD, należy dodać diagnostyki. Te funkcje diagnostyki w tej samej można także uruchomić bezpośrednio za pomocą programu Powershell przy użyciu funkcji uruchamiania ConnectivityValidation w module ADConnectivityTools Powershell.  Aby uzyskać więcej informacji, zobacz [co to jest moduł programu PowerShell ADConnectivityTool?](how-to-connect-adconnectivitytools.md)
+- Dodano AD w wersji wstępnej sprawdzanie schematu do hybrydowej usługi Azure Active Directory Join i zapisywania zwrotnego urządzeń 
+- Zmienić być liter — wyszukiwanie atrybut strony rozszerzenie katalogu.
+-   Dodano pełną obsługę protokołu TLS 1.2. Ta wersja obsługuje wszystkie pozostałe protokoły są wyłączone i tylko protokołu TLS 1.2 są włączone na komputerze, na którym jest zainstalowany program Azure AD Connect.  Aby uzyskać więcej informacji, zobacz [Wymuszanie protokołu TLS 1.2, programu Azure AD Connect](reference-connect-tls-enforcement.md)
+
+ 
+
+### <a name="fixed-issues"></a>Rozwiązane problemy   
+
+- Usunięto usterkę, w której usługa Azure AD Connect Uaktualnianie może zakończyć się niepowodzeniem jeśli SQL Always On było używane. 
+- Usunięto usterkę można poprawnie przeanalizować nazwy jednostki Organizacyjnej, zawierające ukośnik. 
+- Rozwiązano problem, w którym zostałoby wyłączone uwierzytelnianie przekazywane czystej instalacji w trybie przejściowym. 
+- Usunięto usterkę uniemożliwiającą modułu programu PowerShell, należy załadować podczas uruchamiania narzędzia do rozwiązywania problemów 
+- Naprawiono usterkę, które mogłyby spowodować zablokowanie klientów przy użyciu wartości liczbowe w pierwszym znakiem nazwy hosta. 
+- Usunięto usterkę, w którym program Azure AD Connect pozwoliłoby nieprawidłowy partycji i wybór kontenera 
+- Naprawiono "nieprawidłowe hasło" komunikat o błędzie podczas logowania jednokrotnego na komputerze jest włączona. 
+- Różne poprawki dla zarządzania zaufania usług AD FS  
+- Podczas konfigurowania zapisywania zwrotnego urządzeń — Naprawiono sprawdzanie schematu do wyszukiwania klasy obiektów msDs-DeviceContainer (zostanie wprowadzony w WS2012 R2)
 
  
 ## <a name="118820"></a>1.1.882.0  

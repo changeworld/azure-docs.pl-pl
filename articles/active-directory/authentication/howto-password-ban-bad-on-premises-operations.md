@@ -4,37 +4,37 @@ description: Usługa Azure AD hasło ochrony (wersja zapoznawcza) po wdrożeniu 
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: conceptual
-ms.date: 07/11/2018
+ms.topic: article
+ms.date: 10/30/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 14aa52b6d424423f4863efa63f3e2e66b84dac70
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 6a61fdeaf1a751ab4001257335abdcbd6fac9cbf
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39164013"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739468"
 ---
-# <a name="preview-azure-ad-password-protection-post-deployment"></a>Wersja zapoznawcza: Usługa Azure AD hasło ochrony po wdrożeniu
+# <a name="preview-azure-ad-password-protection-operational-procedures"></a>(Wersja zapoznawcza): Procedury operacyjne ochrony haseł usługi Azure AD
 
 |     |
 | --- |
-| Ochrony hasłem w usłudze Azure AD i listy niestandardowej zakazanych haseł są publicznej wersji zapoznawczej funkcji usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| Ochrony hasłem w usłudze Azure AD jest funkcją publicznej wersji zapoznawczej usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
-Po ukończeniu [instalacji ochrona za pomocą hasła usługi Azure AD](howto-password-ban-bad-on-premises.md) w środowisku lokalnym, istnieje kilka elementów, które muszą być skonfigurowane w witrynie Azure portal.
+Po ukończeniu [instalacji ochrona za pomocą hasła usługi Azure AD](howto-password-ban-bad-on-premises-deploy.md) w środowisku lokalnym, istnieje kilka elementów, które muszą być skonfigurowane w witrynie Azure portal.
 
 ## <a name="configure-the-custom-banned-password-list"></a>Skonfiguruj listę niestandardowych zakazanych haseł
 
-Postępuj zgodnie ze wskazówkami w artykule [Konfigurowanie listy zakazanych haseł w niestandardowych](howto-password-ban-bad.md) dla czynności związanych z dostosowaniem listy zakazanych haseł dla Twojej organizacji.
+Postępuj zgodnie ze wskazówkami w artykule [Konfigurowanie listy zakazanych haseł w niestandardowych](howto-password-ban-bad-configure.md) dla czynności związanych z dostosowaniem listy zakazanych haseł dla Twojej organizacji.
 
 ## <a name="enable-password-protection"></a>Włączanie ochrony hasłem
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do **usługi Azure Active Directory**, **metod uwierzytelniania**, następnie **ochrona za pomocą hasła (wersja zapoznawcza)**.
 1. Ustaw **włączenia ochrony haseł usługi Active Directory systemu Windows Server** do **tak**
-1. Jak wspomniano w [przewodnik wdrażania](howto-password-ban-bad-on-premises.md#deployment-strategy), zalecane jest początkowo ustawiona **tryb** do **inspekcji**
+1. Jak wspomniano w [przewodnik wdrażania](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy), zalecane jest początkowo ustawiona **tryb** do **inspekcji**
    * Po masz doświadczenia z tej funkcji, można przełączać się **tryb** do **wymuszone**
 1. Kliknij pozycję **Zapisz**
 
@@ -51,13 +51,17 @@ Tryb inspekcji ma służyć jako możliwość uruchamiania oprogramowania w tryb
 
 Wymusić tryb jest przeznaczony jako konfiguracji końcowej. Tak jak w trybie inspekcji powyżej każda usługa agenta DC ocenia przychodzące hasła zgodnie z zasadami aktualnie aktywne. Jeśli jednak jest włączony tryb wymuszania, hasła, który jest uważany za niebezpieczne zgodnie z zasadami jest odrzucane.
 
-Gdy hasło zostanie odrzucona w trybie wymuszania przez funkcję ochrony hasło usługi Azure AD agenta kontrolera domeny, widoczne wpływ widoczne dla użytkownika końcowego jest identyczna co zobaczą będzie, jeśli ich hasła zostało odrzucone przez wymuszanie złożoności hasła tradycyjnych lokalnych. Na przykład użytkownik może zostać wyświetlony następujący komunikat o błędzie tradycyjnych, na ekranie hasła logon\change:
+Gdy hasło zostanie odrzucona w trybie wymuszania przez funkcję ochrony hasło usługi Azure AD agenta kontrolera domeny, widoczne wpływ widoczne dla użytkownika końcowego jest identyczna co zobaczą będzie, jeśli ich hasła zostało odrzucone przez wymuszanie złożoności hasła tradycyjnych lokalnych. Na przykład użytkownik może zostać wyświetlony następujący komunikat o błędzie tradycyjnych, na ekranie hasła logon\change Windows:
 
-"Nie można zaktualizować hasła. Wartość podana dla nowe hasło nie spełnia długości, złożoności lub wymagania historii domeny."
+`Unable to update the password. The value provided for the new password does not meet the length, complexity, or history requirements of the domain.`
 
 Ten komunikat jest tylko jeden przykład kilku możliwych wartości. Komunikat o błędzie może się różnić w zależności od rzeczywistej oprogramowania lub scenariusz, który próbuje ustawić hasło niezabezpieczonych.
 
 Narażeni użytkownicy końcowi może być konieczne do pracy z ich personelu IT, aby poznać nowe wymagania i bardziej umożliwia wybranie opcji bezpiecznych haseł.
+
+## <a name="enable-mode"></a>Włącz tryb
+
+To ustawienie, zazwyczaj powinna pozostać w stanie domyślnym włączone (tak). Skonfigurowanie tego ustawienia na wyłączone (nie) spowoduje, że hasła usługi Azure AD wszystkich wdrożonych agentów ochrony kontrolera domeny przejść do trybu spoczynku, gdzie wszystkie hasła będzie akceptowane jako-, a żadne działania sprawdzania poprawności zostanie wykonane jakiejkolwiek (na przykład, nawet zdarzeń inspekcji będzie obliczanie).
 
 ## <a name="usage-reporting"></a>Raportowanie użycia
 
@@ -79,8 +83,11 @@ PasswordSetErrors               : 1
 Zakres polecenia cmdlet raportowania może wpływać przy użyciu jednego z parametrów — lasu, - domeny lub kontroler domeny —. Nie został podany parametr oznacza — lasu.
 
 > [!NOTE]
+> To polecenie cmdlet działa, otwierając sesję programu Powershell na każdym kontrolerze domeny. W kolejności, tak aby wskazywał Powodzenie musi być włączona obsługa sesji zdalnej programu Powershell na każdym kontrolerze domeny, a klient musi mieć wystarczające uprawnienia. Aby uzyskać więcej informacji na temat wymagań sesji zdalnej programu Powershell należy uruchomić "Get-Help about_Remote_Troubleshooting" w oknie programu Powershell.
+
+> [!NOTE]
 > To polecenie cmdlet działa zdalnie, Sondując dzienniku zdarzeń administratora każda usługa agenta kontrolera domeny. Jeśli dzienniki zdarzeń zawierają dużą liczbę zdarzeń, polecenie cmdlet może potrwać bardzo długo. Ponadto zbiorcze sieci zapytania dotyczące dużych zestawów danych może mieć wpływ na wydajność kontrolera domeny. W związku z tym tego polecenia cmdlet należy używać ostrożnie w środowiskach produkcyjnych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Rozwiązywanie problemów i rejestrowanie informacji ochrony hasłem w usłudze Azure AD](howto-password-ban-bad-on-premises-troubleshoot.md)
+[Rozwiązywanie problemów i monitorowanie ochrona za pomocą hasła usługi Azure AD](howto-password-ban-bad-on-premises-troubleshoot.md)

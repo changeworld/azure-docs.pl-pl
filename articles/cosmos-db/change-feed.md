@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: b6d05c5e9bc59df9df7ef8840b70ab027b6e2f74
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 09f827e8784fe2a97c587524d70baf76ae4458ba
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269500"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741865"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Praca ze zmianą Obsługa kanału informacyjnego w usłudze Azure Cosmos DB
 
@@ -34,7 +34,7 @@ ms.locfileid: "48269500"
 
 ## <a name="how-does-change-feed-work"></a>Jak kanału informacyjnego zmian pracy?
 
-Obsługa kanału informacyjnego zmian w usłudze Azure Cosmos DB działa przez nasłuchiwanie w kolekcji usługi Azure Cosmos DB zostały wprowadzone zmiany. Następnie wyświetla posortowaną listę dokumentów, które zostały zmienione w kolejności, w której zostały zmodyfikowane. Zmiany są zachowywane, mogą być przetwarzane asynchronicznie i przyrostowo, a dane wyjściowe mogą być rozproszone między jednego lub wielu użytkowników do przetwarzania równoległego. 
+Obsługa kanału informacyjnego zmian w usłudze Azure Cosmos DB działa przez nasłuchiwanie w kolekcji usługi Azure Cosmos DB zostały wprowadzone zmiany. Następnie wyświetla posortowaną listę dokumentów, które zostały zmienione w kolejności, w której zostały zmodyfikowane. Zmiany zostają utrwalone, mogą być przetwarzane asynchronicznie i przyrostowo, a dane wyjściowe mogą być rozpowszechniane wśród jednego lub większej liczby konsumentów w celu przetwarzania równoległego. 
 
 Zmiana źródła danych na trzy różne sposoby, można przeczytać, zgodnie z opisem w dalszej części tego artykułu:
 
@@ -47,7 +47,7 @@ Kanał informacyjny zmian jest dostępny dla każdy zakres kluczy partycji w kol
 ![Rozproszone przetwarzanie zestawienia zmian usługi Azure Cosmos DB](./media/change-feed/changefeedvisual.png)
 
 Dodatkowe szczegóły:
-* Kanał informacyjny zmian jest domyślnie włączone dla wszystkich kont.
+* Zestawienie zmian jest włączone domyślnie dla wszystkich kont.
 * Możesz użyć swojej [aprowizowanej przepływności](request-units.md) w Twoim regionie zapisu lub w dowolnej [region odczytu](distribute-data-globally.md) odczytywanie zestawienia zmian, podobnie jak wszystkie inne działania usługi Azure Cosmos DB.
 * Kanał informacyjny zmian zawiera INSERT i update operacje wykonywane na dokumentach w obrębie kolekcji. Można przechwycić usuwa przez ustawienie flagi "opcji soft-delete" w dokumentach zamiast usuwania. Alternatywnie, można ustawić okres ważności skończoną dla dokumentów za pomocą [możliwości TTL](time-to-live.md), na przykład, 24 godzin i użyj wartości tej właściwości, aby przechwycić usuwa. Za pomocą tego rozwiązania należy przetworzyć zmiany w przedziale czasu krótszy niż okres ważności czasu wygaśnięcia.
 * Każda zmiana w dokumencie dokładnie jeden raz w zestawienia zmian, a klienci zarządzanie ich logiki procesu tworzenia punktów kontrolnych. Biblioteką procesora zestawienia zmian zapewnia automatyczne tworzenie punktów kontrolnych i "co najmniej raz" semantyki.
@@ -77,7 +77,7 @@ Na poniższej ilustracji przedstawiono, jak zmienia się potoki lambda, które z
 Ponadto w ramach Twojej [bez użycia serwera](http://azure.com/serverless) aplikacje internetowe i mobilne, możesz śledzić zdarzenia, takie jak zmiany klienta profilu, preferencje lub lokalizacji do wyzwalania określonych akcji, takich jak wysyłanie powiadomień wypychanych do urządzeń za pomocą [Usługi azure Functions](#azure-functions). Jeśli używasz usługi Azure Cosmos DB do tworzenia gier, możesz, na przykład użyj Zmień źródło danych do zaimplementowania rankingi w czasie rzeczywistym, w oparciu o wyniki z gry ukończone.
 
 <a id="azure-functions"></a>
-## <a name="using-azure-functions"></a>Użycie usługi Azure Functions 
+## <a name="using-azure-functions"></a>Użycie usługi Azure Functions 
 
 Jeśli używasz usługi Azure Functions Dodaj wyzwalacz usługi Azure Cosmos DB do swojej aplikacji usługi Azure Functions jest najprostszym sposobem, aby nawiązać połączenie Kanał informacyjny zmian usługi Azure Cosmos DB. Po utworzeniu wyzwalacza usługi Azure Cosmos DB w aplikacji usługi Azure Functions, należy wybrać kolekcji usługi Azure Cosmos DB, aby nawiązać połączenie, a funkcja jest wyzwalana po każdej zmianie kolekcji. 
 
@@ -114,9 +114,9 @@ Ta sekcja zawiera szczegółowe instrukcje dotyczące pracy za pomocą zestawien
     ```csharp
     FeedResponse pkRangesResponse = await client.ReadPartitionKeyRangeFeedAsync(
         collectionUri,
-        new FeedOptions
-            {RequestContinuation = pkRangesResponseContinuation });
-     
+        new FeedOptions
+            {RequestContinuation = pkRangesResponseContinuation });
+     
     partitionKeyRanges.AddRange(pkRangesResponse);
     pkRangesResponseContinuation = pkRangesResponse.ResponseContinuation;
     ```
@@ -125,29 +125,29 @@ Ta sekcja zawiera szczegółowe instrukcje dotyczące pracy za pomocą zestawien
 
     ```csharp
     foreach (PartitionKeyRange pkRange in partitionKeyRanges){
-        string continuation = null;
-        checkpoints.TryGetValue(pkRange.Id, out continuation);
-        IDocumentQuery<Document> query = client.CreateDocumentChangeFeedQuery(
-            collectionUri,
-            new ChangeFeedOptions
-            {
-                PartitionKeyRangeId = pkRange.Id,
-                StartFromBeginning = true,
-                RequestContinuation = continuation,
-                MaxItemCount = -1,
-                // Set reading time: only show change feed results modified since StartTime
-                StartTime = DateTime.Now - TimeSpan.FromSeconds(30)
-            });
-        while (query.HasMoreResults)
-            {
-                FeedResponse<dynamic> readChangesResponse = query.ExecuteNextAsync<dynamic>().Result;
+        string continuation = null;
+        checkpoints.TryGetValue(pkRange.Id, out continuation);
+        IDocumentQuery<Document> query = client.CreateDocumentChangeFeedQuery(
+            collectionUri,
+            new ChangeFeedOptions
+            {
+                PartitionKeyRangeId = pkRange.Id,
+                StartFromBeginning = true,
+                RequestContinuation = continuation,
+                MaxItemCount = -1,
+                // Set reading time: only show change feed results modified since StartTime
+                StartTime = DateTime.Now - TimeSpan.FromSeconds(30)
+            });
+        while (query.HasMoreResults)
+            {
+                FeedResponse<dynamic> readChangesResponse = query.ExecuteNextAsync<dynamic>().Result;
     
-                foreach (dynamic changedDocument in readChangesResponse)
-                    {
-                         Console.WriteLine("document: {0}", changedDocument);
-                    }
-                checkpoints[pkRange.Id] = readChangesResponse.ResponseContinuation;
-            }
+                foreach (dynamic changedDocument in readChangesResponse)
+                    {
+                         Console.WriteLine("document: {0}", changedDocument);
+                    }
+                checkpoints[pkRange.Id] = readChangesResponse.ResponseContinuation;
+            }
     }
     ```
 
@@ -165,13 +165,13 @@ W kodzie w kroku 4 powyżej **ResponseContinuation** w ciągu ostatnich wiersz m
 Macierz punktu kontrolnego jest tak, po prostu zachowanie numeru LSN dla każdej partycji. Ale jeśli nie chcesz poradzić sobie z partycjami, punkty kontrolne, numer LSN, czas rozpoczęcia, itp. opcja prostsze jest użycie zestawienia bibliotece procesora zmian.
 
 <a id="change-feed-processor"></a>
-## <a name="using-the-change-feed-processor-library"></a>Za pomocą zmiany źródła danych z biblioteką procesora 
+## <a name="using-the-change-feed-processor-library"></a>Za pomocą zmiany źródła danych z biblioteką procesora 
 
 [Zmian usługi Azure Cosmos DB kanału informacyjnego w bibliotece procesora](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet-changefeed) pomoże Ci łatwo Dystrybuuj przetwarzanie zdarzeń w wielu odbiorców. Ta biblioteka upraszcza zmiany odczytywania różnych partycji i wiele wątków działających równolegle.
 
 Główną zaletą biblioteką procesora zestawienia zmian jest nie trzeba zarządzać każdej partycji i token kontynuacji i nie trzeba ręcznie wykonać sondowanie każdej kolekcji.
 
-Biblioteką procesora zestawienia zmian upraszcza zmiany odczytu w partycji i wiele wątków działających równolegle.  Automatycznie zarządza odczytu zmiany na partycje przy użyciu mechanizmu dzierżawy. Jak widać na poniższej ilustracji, jeśli zaczniesz dwóch klientów, którzy korzystają z zestawienia bibliotece procesora zmian, ich podzielić pracę między sobą. W miarę postępu zwiększyć klientów, ich zachowania podzielenie pracy między sobą.
+Biblioteką procesora zestawienia zmian upraszcza zmiany odczytu w partycji i wiele wątków działających równolegle.  Automatycznie zarządza odczytu zmiany na partycje przy użyciu mechanizmu dzierżawy. Jak widać na poniższej ilustracji, jeśli zaczniesz dwóch klientów, którzy korzystają z zestawienia bibliotece procesora zmian, ich podzielić pracę między sobą. W miarę postępu zwiększyć klientów, ich zachowania podzielenie pracy między sobą.
 
 ![Rozproszone przetwarzanie zestawienia zmian usługi Azure Cosmos DB](./media/change-feed/change-feed-output.png)
 
@@ -433,7 +433,7 @@ W związku z tym Jeśli tworzysz wiele funkcji platformy Azure do odczytu takie 
 
 ### <a name="my-document-is-updated-every-second-and-i-am-not-getting-all-the-changes-in-azure-functions-listening-to-change-feed"></a>Dokument jest aktualizowany co sekundę, a nie są zwracane wszystkie zmiany w usłudze Azure Functions nasłuchiwanie zestawienia zmian.
 
-Więc wszelkie zmiany wprowadzone od 5 sekund zostaną utracone, co 5 sekund kanału informacyjnego zmian sond w usłudze Azure Functions. Usługa Azure Cosmos DB przechowuje tylko jedną wersję co 5 sekund, dzięki czemu otrzymasz 5. zmiany w dokumencie. Jednak jeśli chcesz zejść poniżej 5-sekundowego, i sondować zmiany źródła danych co sekundę, można skonfigurować godziny sondowania "feedPollTime", zobacz [powiązań usługi Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration). Jest on zdefiniowany w milisekundach z domyślną 5000. Poniżej 1 sekundę jest możliwe, ale nie jest zalecane, ponieważ rozpocznie nagrywania większej mocy Procesora.
+Więc wszelkie zmiany wprowadzone od 5 sekund zostaną utracone, co 5 sekund kanału informacyjnego zmian sond w usłudze Azure Functions. Usługa Azure Cosmos DB przechowuje tylko jedną wersję co 5 sekund, dzięki czemu otrzymasz 5. zmiany w dokumencie. Jednak jeśli chcesz zejść poniżej 5-sekundowego, i sondować zmiany źródła danych co sekundę, można skonfigurować godziny sondowania "feedPollDelay", zobacz [powiązań usługi Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration). Jest on zdefiniowany w milisekundach z domyślną 5000. Poniżej 1 sekundę jest możliwe, ale nie jest zalecane, ponieważ rozpocznie nagrywania większej mocy Procesora.
 
 ### <a name="i-inserted-a-document-in-the-mongo-api-collection-but-when-i-get-the-document-in-change-feed-it-shows-a-different-id-value-what-is-wrong-here"></a>Wstawiona dokumentu w kolekcji interfejs API Mongo, ale gdy otrzymam dokumentu w Kanał informacyjny zmian pokazuje wartość inny identyfikator. Co to jest nieprawidłowy w tym miejscu?
 

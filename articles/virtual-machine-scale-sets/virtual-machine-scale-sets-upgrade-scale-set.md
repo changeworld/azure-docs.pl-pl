@@ -3,7 +3,7 @@ title: Modyfikowanie zestawu skalowania maszyn wirtualnych platformy Azure | Dok
 description: Dowiedz się, jak zmodyfikować i aktualizowanie maszyn wirtualnych zestawu skalowania przy użyciu interfejsów API REST, programu Azure PowerShell i wiersza polecenia platformy Azure
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: gatneil
+author: mayanknayar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
-ms.author: negat
-ms.openlocfilehash: d065f9765ca279f14b9de45e2412b75c94ef3dd8
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.author: manayar
+ms.openlocfilehash: c3c01d7013749ca5cbd95224c230932a20a8146b
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139036"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740591"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Modyfikowanie zestawu skalowania maszyn wirtualnych
 W całym cyklem życia aplikacji może być konieczne modyfikują lub aktualizują zestawu skalowania maszyn wirtualnych. Te aktualizacje mogą obejmować jak zaktualizowanie konfiguracji zestawu skalowania lub zmienić konfigurację aplikacji. W tym artykule opisano sposób modyfikowania istniejącego zestawu skalowania przy użyciu interfejsów API REST, programu Azure PowerShell lub wiersza polecenia platformy Azure.

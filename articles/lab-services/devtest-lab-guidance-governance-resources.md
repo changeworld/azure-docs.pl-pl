@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 2edfa84530c147e1f716aef10c967ac36eadc922
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 2d17f4471383be623cb40276ec1e51257bf3fbce
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251072"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740386"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Zarządzanie infrastrukturą usługi Azure DevTest Labs — zasoby
 W tym artykule opisano, wyrównanie i zarządzanie zasobami dla laboratorium w Twojej organizacji. 
@@ -67,7 +67,7 @@ Zaleca się, że jednostek biznesowych i grupy deweloperów, które są skojarzo
 
 Również może być konieczne należy rozważyć granicach geograficznych. Na przykład deweloperzy we wschodnim regionie Północ Stanów Zjednoczonych (US) mogą używać laboratorium aprowizowane w wschodnie stany USA 2. Ponadto deweloperzy w Dallas, Teksas i Warszawie mogą być kierowani do użycia zasobu w południowo-środkowych stanów USA. W przypadku wspólnego nakładu pracy z firm zewnętrznych, można można przypisać do laboratorium, który nie jest używany przez deweloperów wewnętrznego. 
 
-Możesz także użyć laboratorium dla określonego projektu w obrębie projektu zespołowego w Visual Studio Team Services. Następnie możesz zastosować zabezpieczeń przy użyciu określonej grupy usługi Azure Active Directory, która zezwala na dostęp do obu zestawów zasobów. Sieci wirtualnej przypisany do laboratorium może być inny granic skonsolidować użytkowników.
+Możesz także użyć laboratorium dla określonego projektu w obrębie projektów DevOps platformy Azure. Następnie możesz zastosować zabezpieczeń przy użyciu określonej grupy usługi Azure Active Directory, która zezwala na dostęp do obu zestawów zasobów. Sieci wirtualnej przypisany do laboratorium może być inny granic skonsolidować użytkowników.
 
 ## <a name="deletion-of-resources"></a>Usuwanie zasobów
 

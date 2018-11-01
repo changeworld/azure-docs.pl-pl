@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: dobett
-ms.openlocfilehash: a19eb99f6400e57f93c3a8d18c472ba6324383db
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 98ef140635da1d773da86bbbe41e5494453d6287
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155528"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418045"
 ---
 # <a name="get-started-with-device-twins-java"></a>Rozpoczynanie pracy z bliźniaczych reprezentacji urządzeń (Java)
 
@@ -29,7 +29,7 @@ W tym samouczku utworzysz dwie aplikacje konsolowe Java:
 
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
-* Najnowszy zestaw [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* Najnowszy zestaw [Java SE Development Kit 8](https://aka.ms/azure-jdks)
 
 * [Maven 3](https://maven.apache.org/install.html)
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: 1254afc1ad1c513c18d565be8a6543a6ee0ae94b
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 17a15ca00d7343064bde84860de91b62ff136cfe
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48040595"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414127"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Rozwiązanie do monitorowania wydajności sieci: monitorowanie wydajności
 
@@ -33,12 +33,12 @@ Funkcja monitorowania wydajności w [rozwiązania Network Performance Monitor](l
 - Monitorowanie kondycji sieci bez potrzeby używania protokołu SNMP.
 
 
-![Monitor wydajności sieci](media/log-analytics-network-performance-monitor/npm-performance-monitor.png)
+![Monitor wydajności sieci](media/log-analytics-network-performance-monitor-performance-monitor/npm-performance-monitor.png)
 
 ## <a name="configuration"></a>Konfigurowanie
 Aby otworzyć konfigurację rozwiązania Network Performance Monitor, otwórz [rozwiązania Network Performance Monitor](log-analytics-network-performance-monitor.md)i wybierz **Konfiguruj**.
 
-![Konfigurowanie rozwiązania Network Performance Monitor](media/log-analytics-network-performance-monitor/npm-configure-button.png)
+![Konfigurowanie rozwiązania Network Performance Monitor](media/log-analytics-network-performance-monitor-performance-monitor/npm-configure-button.png)
 
 ### <a name="create-new-networks"></a>Tworzenie nowych sieci
 
@@ -120,21 +120,21 @@ Strona szczegółów pokazuje, że **DMZ2 DMZ1** połączenia sieciowego jest w 
 
 Na stronie szczegółów znajdują się wszystkie łącza podsieci w **DMZ2 DMZ1** połączenia sieciowego. Dla obu łączy podsieci opóźnienie przekroczyła wartość progową, co sprawia, że połączenia sieciowego jest nieprawidłowy. Widać również trendy opóźnienie oba linki podsieci. Użycie wybór czasu kontrolować na wykresie, aby skoncentrować się na zakres wymagany czas. Możesz zobaczyć pora dnia po osiągnięciu szczyt w opóźnienia. Przeszukiwanie dzienników, które później dla tego przedziału czasu w celu zbadania problemu. Wybierz **Wyświetl linki węzłów** dalszych szczegółów. 
  
- ![Strona łącza podsieci](media/log-analytics-network-performance-monitor/subnetwork-links.png) 
+ ![Strona łącza podsieci](media/log-analytics-network-performance-monitor-performance-monitor/subnetwork-links.png) 
 
 Podobnie jak w poprzedniej strony, strony Przechodzenie do szczegółów dla łącza podsieci w szczególności zawiera także jej składników węzła łącza. Można wykonać podobne działania w tym miejscu tak jak w poprzednim kroku. Wybierz **wyświetlanie topologii** Aby wyświetlić topologię między dwoma węzłami. 
  
- ![Strona łącza węzłów](media/log-analytics-network-performance-monitor/node-links.png) 
+ ![Strona łącza węzłów](media/log-analytics-network-performance-monitor-performance-monitor/node-links.png) 
 
 Wszystkie ścieżki między dwoma węzłami wybranego na wykresie mapy topologii. Można wizualizować topologii przeskoku przeskoku trasy między dwoma węzłami na mapie topologii. Pozwala ona jasny obraz, o ile istnieją między dwoma węzłami i jakie ścieżki zająć pakiety danych. Wąskie gardła wydajności sieci są wyświetlane w kolorze czerwonym. Aby zlokalizować połączenia uszkodzoną siecią lub urządzenie sieciowe uszkodzony, Przyjrzyj się czerwony elementy na mapie topologii. 
 
- ![Pulpit nawigacyjny topologii za pomocą mapy topologii](media/log-analytics-network-performance-monitor/topology-dashboard.png) 
+ ![Pulpit nawigacyjny topologii za pomocą mapy topologii](media/log-analytics-network-performance-monitor-performance-monitor/topology-dashboard.png) 
 
 Możesz przejrzeć utraty, opóźnienia i liczbę przeskoków w każdej ścieżce **akcji** okienka. Użyj paska przewijania, aby wyświetlić szczegóły ścieżki w złej kondycji. Użyj filtrów, aby zaznacz ścieżki o złej kondycji przeskoku jest wykreślany topologii dla wybranej ścieżki. Aby powiększyć lub pomniejszyć mapy topologii, należy użyć kółka myszy. 
 
 Na poniższej ilustracji głównej przyczyny problemów do określonej sekcji sieci są wyświetlane w czerwonym ścieżek i przeskoków. Wybierz węzeł na mapie topologii, aby wyświetlić właściwości węzła, który zawiera adres FQDN i adresu IP. Wybierając skoku zawiera adres IP przeskoku. 
  
-![Mapy topologii z wybrane — właściwości węzła](media/log-analytics-network-performance-monitor/topology-dashboard-root-cause.png) 
+![Mapy topologii z wybrane — właściwości węzła](media/log-analytics-network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Przeszukiwanie dzienników](log-analytics-log-searches.md) do wyświetlania rekordów danych wydajności szczegółowe sieci.

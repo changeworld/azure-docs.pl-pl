@@ -14,12 +14,12 @@ ms.date: 07/17/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 2233fc1068891ec63dacaf5871eef7957c3ac7dc
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 3d4d6ba7e185b1cc5fdcee1633a11e579d8194e8
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139877"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413967"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Odkryj, jak klienci korzystają z aplikacji za pomocą Application Insights Lejki
 
@@ -40,7 +40,7 @@ Poniżej przedstawiono kroki, które mogą wykonać w celu utworzenia ich lejka.
 Poniższy zrzut ekranu przedstawia przykład tego rodzaju danych narzędzia Lejki generuje. Właściciele Fabrikam zobaczyć, że w ciągu ostatnich 90 dni, procent 54.3 swoich klientów, którzy odwiedzone strony głównej utworzyć zgłoszenie do klienta. Można również wyświetlić 2,700 klientom pochodzi ze strony głównej do indeksu. Może to wskazywać problem odświeżania.
 
 
-![Zrzut ekranu Lejki narzędzia z danymi](./media/app-insights-understand-usage-patterns/funnel1.png)
+![Zrzut ekranu Lejki narzędzia z danymi](media/usage-funnels/funnel1.png)
 
 ### <a name="funnels-features"></a>Funkcje Lejki
 Poprzedni zrzut ekranu zawiera pięć obszarów. Są to funkcje lejki. Poniżej opisano bardziej każdy odpowiadający mu obszar na zrzucie ekranu:

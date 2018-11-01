@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: d2c4c890e1a1599e68fba1a0728061ec244f382f
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 241cd2fddf31373ed9ca208efb0612dd4332131c
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054176"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740981"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Użyj usługi Azure Cosmos DB Zmień źródło danych do analizy danych w czasie rzeczywistym wizualizować
 
@@ -104,7 +104,7 @@ Teraz utworzysz kolekcję zawierającą zdarzeń witryny handlu elektronicznego.
    * Aby uzyskać **pojemność magazynu**, wybierz opcję **nieograniczone**.  
    * Aby uzyskać **klucza partycji** wprowadź **/Item**. Jest rozróżniana wielkość liter, więc upewnij się, że jej prawidłowo wpisana.  
    * Aby uzyskać **przepływności** wprowadź **10000**.  
-   * Kliknij przycisk **OK**.  
+   * Wybierz przycisk **OK**.  
 
 3. Następnie utworzyć inną kolekcję o nazwie **dzierżawy** dla przetwarzania kanału informacyjnego zmian. Współrzędne kolekcji dzierżaw przetwarzania zestawienia zmian na wielu procesów roboczych. Oddzielne kolekcji służy do przechowywania dzierżaw przy użyciu jednej dzierżawy dla każdej partycji.  
 
@@ -114,7 +114,7 @@ Teraz utworzysz kolekcję zawierającą zdarzeń witryny handlu elektronicznego.
    * Aby uzyskać **identyfikator kolekcji** wprowadź **dzierżawy**.  
    * Aby uzyskać **pojemność magazynu**, wybierz opcję **stałe**.  
    * Pozostaw **przepływności** pole jest ustawione na wartość domyślną.  
-   * Kliknij przycisk **OK**.
+   * Wybierz przycisk **OK**.
 
 ## <a name="get-the-connection-string-and-keys"></a>Pobierz parametry połączenia i klucze
 
@@ -207,7 +207,7 @@ Usługa Azure Stream Analytics jest w pełni zarządzana usługa w chmurze do pr
    * Pozostaw **format serializacji zdarzeń** jako **JSON**.  
    * Pozostaw **pola Encoding** równa **UTF-8**.  
    * Pozostaw **typ kompresji zdarzenia** pola **Brak**.  
-   * Kliknij przycisk **Zapisz**.
+   * Wybierz ikonę **Zapisz**.
 
 5. Przejdź z powrotem do strony zadania usługi stream analytics, a następnie wybierz pozycję **dane wyjściowe**.  
 
@@ -219,10 +219,10 @@ Usługa Azure Stream Analytics jest w pełni zarządzana usługa w chmurze do pr
    * Pozostaw **obszaru roboczego grupy** pola **Autoryzuj połączenie, aby załadować obszarów roboczych**.  
    * W **Nazwa zestawu danych** wprowadź **averagePrice**.  
    * W **nazwy tabeli** wprowadź **averagePrice**.  
-   * Kliknij przycisk **Autoryzuj** przycisk, a następnie postępuj zgodnie z instrukcjami, aby autoryzować połączenie do usługi Power BI.  
-   * Kliknij przycisk **Zapisz**.  
+   * Wybierz **Autoryzuj** przycisk, a następnie postępuj zgodnie z instrukcjami, aby autoryzować połączenie do usługi Power BI.  
+   * Wybierz ikonę **Zapisz**.  
 
-8. Następnie wróć do **streamjob1** i kliknij przycisk **Edytuj zapytanie**.
+8. Następnie wróć do **streamjob1** i wybierz **Edytuj zapytanie**.
 
    ![Edytuj zapytanie](./media/changefeed-ecommerce-solution/edit-query.png)
  
@@ -235,9 +235,9 @@ Usługa Azure Stream Analytics jest w pełni zarządzana usługa w chmurze do pr
     FROM input  
     GROUP BY Action, TumblingWindow(second,5) 
    ```
-10. Następnie kliknij przycisk **Zapisz** w lewym górnym rogu.  
+10. Następnie wybierz pozycję **Zapisz** w lewym górnym rogu.  
 
-11. Teraz wróć do **streamjob1** i kliknij przycisk **Start** znajdujący się u góry strony. Usługa Azure Stream Analytics może potrwać kilka minut, aby uruchomić, ale ostatecznie zobaczysz go zmienić z "Uruchamianie" na "Uruchomiona".
+11. Teraz wróć do **streamjob1** i wybierz **Start** znajdujący się u góry strony. Usługa Azure Stream Analytics może potrwać kilka minut, aby uruchomić, ale ostatecznie zobaczysz go zmienić z "Uruchamianie" na "Uruchomiona".
 
 ## <a name="connect-to-power-bi"></a>Połączenia z usługą Power BI
 
@@ -249,9 +249,9 @@ Usługa Power BI to pakiet narzędzi do analizy biznesowej do analizowania danyc
 
 3. Wybierz **+ Dodaj Kafelek** w prawym górnym rogu.  
 
-4. Wybierz **niestandardowe dane przesyłane strumieniowo**, następnie kliknij przycisk **dalej** przycisku.  
+4. Wybierz **niestandardowe dane przesyłane strumieniowo**, a następnie wybierz **dalej** przycisku.  
  
-5. Wybierz **averagePrice** z **YOUR zestawów danych**, następnie kliknij przycisk **dalej**.  
+5. Wybierz **averagePrice** z **YOUR zestawów danych**, a następnie wybierz **dalej**.  
 
 6. W **typ wizualizacji** wybierz opcję **wykres słupkowy grupowany** z menu rozwijanego. W obszarze **osi**, Dodaj akcję. Pomiń **legendy** bez dodawania niczego. Następnie, w następnej sekcji o nazwie **wartość**, Dodaj **avg**. Wybierz **dalej**, a następnie tytułu wykresu i wybierz **Zastosuj**. Powinien zostać wyświetlony nowy wykres na pulpicie nawigacyjnym!  
 
@@ -261,7 +261,7 @@ Usługa Power BI to pakiet narzędzi do analizy biznesowej do analizowania danyc
    b. **Alias wyjściowy:** top5Output, nazwa zestawu danych: top5, nazwa tabeli: top5  
    c. **Alias wyjściowy:** uniqueVisitorCountOutput, nazwa zestawu danych: uniqueVisitorCount, nazwa tabeli: uniqueVisitorCount
 
-   Następnie kliknij przycisk **Edytuj zapytanie** i wklej następujące zapytania **powyżej** ten, który już powstała z jednego.
+   Następnie wybierz pozycję **Edytuj zapytanie** i wklej następujące zapytania **powyżej** ten, który już powstała z jednego.
 
    ```sql
     /*TOP 5*/
@@ -329,7 +329,7 @@ Teraz odbywa się w sposób korzystania z nowego narzędzia analizy danych nawi�
 
    Dodaj inną kolekcję w węźle **changefeedlabdatabase** o nazwie **topItems** z **nieograniczone** pojemność magazynu. Zapis **/Item** jako klucza partycji.
 
-2. Kliknij pozycję **topItems** kolekcji, a następnie w obszarze **skalowanie i ustawienia** ustaw **czas wygaśnięcia** jako **30 sekund** tak że topItems aktualizacji co 30 sekund.
+2. Wybierz **topItems** kolekcji, a następnie w obszarze **skalowanie i ustawienia** ustaw **czas wygaśnięcia** jako **30 sekund** tak topItems tej aktualizacji co 30 sekund.
 
    ![Czas wygaśnięcia](./media/changefeed-ecommerce-solution/time-to-live.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Weryfikowanie integracji programu Graph usługi Azure dla usługi Azure Stack
+title: Weryfikowanie integracji Azure Graph dla usługi Azure Stack
 description: Narzędzie sprawdzania gotowości stosu Azure umożliwia weryfikowanie integracji programu graph dla usługi Azure Stack.
 services: azure-stack
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: patricka
 ms.reviewer: jerskine
-ms.openlocfilehash: e1c1ba0a065a20874bf51d7464cbcfdfa13a571d
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 43f30989fa09e711fc71941e7722dcd195212472
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49947262"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416243"
 ---
 # <a name="validate-graph-integration-for-azure-stack"></a>Weryfikowanie integracji programu graph dla usługi Azure Stack
 
-Aby sprawdzić, czy środowisko jest gotowe do wykresu integracji z usługą Azure Stack, należy użyć narzędzia narzędzie do sprawdzania gotowości usługi Azure Stack (AzsReadinessChecker). Należy sprawdzić, czy wykres integrację przed rozpoczęciem integracji centrum danych lub przed wdrożeniem usługi Azure Stack.
+Aby sprawdzić, czy środowisko jest gotowe do wykresu integracji z usługą Azure Stack, należy użyć narzędzia narzędzie do sprawdzania gotowości usługi Azure Stack (AzsReadinessChecker). Sprawdź poprawność integracji programu graph, przed rozpoczęciem integracji centrum danych lub przed wdrożeniem usługi Azure Stack.
 
 Narzędzie sprawdzania gotowości weryfikuje:
 
@@ -33,7 +33,7 @@ Narzędzie sprawdzania gotowości weryfikuje:
 * Centrum dystrybucji KLUCZY może zostać rozpoznana i jest stycznych.
 * Połączenia sieciowe znajduje się w miejscu.
 
-Aby uzyskać więcej informacji na temat integracji centrum danych usługi Azure Stack, zobacz [Integracja z centrum danych usługi Azure Stack — tożsamość](azure-stack-integrate-identity.md)
+Aby uzyskać więcej informacji na temat integracji centrum danych usługi Azure Stack, zobacz [Integracja z centrum danych usługi Azure Stack — tożsamość](azure-stack-integrate-identity.md).
 
 ## <a name="get-the-readiness-checker-tool"></a>Pobierz narzędzie sprawdzania gotowości
 
@@ -48,29 +48,29 @@ Należy spełnić następujące wymagania wstępne.
 * System Windows 10 lub Windows Server 2016 przy użyciu łączności z domeną.
 * Program PowerShell 5.1 lub nowszej. Aby sprawdzić swoją wersję, uruchom następujące polecenie programu PowerShell, a następnie przejrzyj *głównych* wersji i *pomocnicza* wersji:  
    > `$PSVersionTable.PSVersion`
-* Moduł usługi Active Directory programu PowerShell
-* Najnowszą wersję [Microsoft Azure Stack gotowości Checker](https://aka.ms/AzsReadinessChecker) narzędzia
+* Moduł usługi Active Directory programu PowerShell.
+* Najnowszą wersję [Microsoft Azure Stack gotowości Checker](https://aka.ms/AzsReadinessChecker) narzędzia.
 
 **Środowiska usługi Active Directory:**
 
-* Określenie nazwy użytkownika i hasło dla konta usługi programu graph w istniejącej usłudze Active Directory
-* Identyfikowanie w pełni kwalifikowaną nazwę domeny katalogu głównego lasu usługi Active Directory
+* Określ nazwę użytkownika i hasło dla konta usługi programu graph w istniejącym wystąpieniu usługi Active Directory.
+* Zidentyfikuj pełni kwalifikowaną nazwę domeny katalogu głównego lasu usługi Active Directory.
 
-## <a name="validate-graph"></a>Sprawdź poprawność wykresu
+## <a name="validate-the-graph-service"></a>Weryfikowanie usługi graph
 
-1. Na komputerze, który spełnia wymagania wstępne Otwórz administracyjny wiersz polecenia PowerShell, a następnie uruchom następujące polecenie, aby zainstalować AzsReadinessChecker.
+1. Na komputerze, który spełnia wymagania wstępne Otwórz administracyjny wiersz polecenia PowerShell, a następnie uruchom następujące polecenie, aby zainstalować AzsReadinessChecker:
 
      `Install-Module Microsoft.AzureStack.ReadinessChecker -Force`
 
-1. W wierszu polecenia programu PowerShell, uruchom następujące polecenie, aby ustawić *$graphCredential* zmiennej do konta programu graph. Zastąp `contoso\graphservice` o Twoim koncie za pomocą `domain\username` formatu.
+1. W wierszu polecenia programu PowerShell, uruchom następujące polecenie, aby ustawić *$graphCredential* zmiennej do konta programu graph. Zastąp `contoso\graphservice` z Twoim kontem przy użyciu `domain\username` formatu.
 
     `$graphCredential = Get-Credential contoso\graphservice -Message "Enter Credentials for the Graph Service Account"`
 
-1. W wierszu polecenia programu PowerShell uruchom następujące polecenie, aby rozpocząć sprawdzanie poprawności dla wykresu. Określ wartość **- ForestFQDN** jako nazwy FQDN dla katalogu głównego lasu:
+1. W wierszu polecenia programu PowerShell uruchom następujące polecenie, aby uruchamiania funkcji weryfikacji usługi graph. Określ wartość **- ForestFQDN** jako nazwy FQDN dla katalogu głównego lasu.
 
      `Invoke-AzsGraphValidation -ForestFQDN contoso.com -Credential $graphCredential`
 
-1. Po uruchomieniu narzędzia, przejrzyj dane wyjściowe. Upewnij się, że stan jest odpowiedni dla wymagania dotyczące integracji programu graph. Pomyślnej weryfikacji, zostanie wyświetlony podobny do następującego:
+1. Po uruchomieniu narzędzia, przejrzyj dane wyjściowe. Upewnij się, że jest w stanie OK dla wymagania dotyczące integracji programu graph. Pomyślnej weryfikacji jest podobny do poniższego przykładu:
 
     ```
     Testing Graph Integration (v1.0)
@@ -94,26 +94,26 @@ Należy spełnić następujące wymagania wstępne.
     Invoke-AzsGraphValidation Completed
     ```
 
-W środowiskach produkcyjnych testowania połączenia sieciowego z poziomu stacji roboczej operatorów nie należy traktować pełni wskazujące na połączenia, które są udostępniane w usłudze Azure Stack. Sygnatury usługi Azure Stack sieci publicznych adresów VIP, należy łączności dla ruchu protokołu LDAP, przeprowadzenie integracji tożsamości.
+W środowiskach produkcyjnych testowania połączenia sieciowego z poziomu stacji roboczej operator nie jest w pełni wskazujące na połączenia, które są udostępniane w usłudze Azure Stack. Sygnatury usługi Azure Stack sieci publicznych adresów VIP, należy łączności dla ruchu protokołu LDAP, przeprowadzenie integracji tożsamości.
 
 ## <a name="report-and-log-file"></a>Raport i plik dziennika
 
-Uruchamia każdego czasu sprawdzania poprawności, rejestruje ono wyniki do **AzsReadinessChecker.log** i **AzsReadinessCheckerReport.json**. Wyświetla lokalizację tych plików z wynikami weryfikacji w programie PowerShell.
+Uruchamia każdego czasu sprawdzania poprawności, rejestruje ono wyniki do **AzsReadinessChecker.log** i **AzsReadinessCheckerReport.json**. Lokalizacja tych plików pojawia się wynikami sprawdzania poprawności w programie PowerShell.
 
 Pliki sprawdzania poprawności mogą pomóc udostępnianie stanu przed rozpoczęciem wdrażania usługi Azure Stack lub badania problemów weryfikacji. Oba pliki są zachowywane wyniki każdego sprawdzenie poprawności kolejne. Raport zawiera potwierdzenie zespołu wdrażania konfiguracji tożsamości. Plik dziennika może pomóc zespołowi pomocy technicznej lub wdrożenia badać problemy ze sprawdzaniem poprawności.
 
-Domyślnie oba pliki są zapisywane w `C:\Users\<username>\AppData\Local\Temp\AzsReadinessChecker\`
+Domyślnie oba pliki są zapisywane w `C:\Users\<username>\AppData\Local\Temp\AzsReadinessChecker\`.
 
 Użycie:
 
-* **-OutputPath** *ścieżki* parametru na końcu wiersza polecenia do określenia lokalizacji inny raport.
-* **-CleanReport** parametru na końcu polecenia uruchomienia, aby wyczyścić *AzsReadinessCheckerReport.json* z poprzednich informacji w raporcie. Aby uzyskać więcej informacji, zobacz [raportu sprawdzania poprawności w usłudze Azure Stack](azure-stack-validation-report.md).
+* **-OutputPath**: *ścieżki* parametru na końcu polecenia uruchomienia, aby określić lokalizację inny raport.
+* **-CleanReport**: parametr na końcu polecenia uruchomienia, aby wyczyścić *AzsReadinessCheckerReport.json* z poprzednich informacji w raporcie. Aby uzyskać więcej informacji, zobacz [raportu sprawdzania poprawności w usłudze Azure Stack](azure-stack-validation-report.md).
 
 ## <a name="validation-failures"></a>Błędy sprawdzania poprawności
 
-Jeśli sprawdzenie poprawności zakończy się niepowodzeniem, w oknie programu PowerShell są wyświetlane szczegóły dotyczące błędu. Narzędzie rejestruje także informacje *AzsGraphIntegration.log*.
+Jeśli sprawdzenie poprawności zakończy się niepowodzeniem, szczegółowe informacje o awarii są wyświetlane w oknie programu PowerShell. Narzędzie rejestruje także informacje *AzsGraphIntegration.log*.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Wyświetl raport gotowości](azure-stack-validation-report.md)  
 [Zagadnienia dotyczące integracji usługi Azure Stack ogólne](azure-stack-datacenter-integration.md)  

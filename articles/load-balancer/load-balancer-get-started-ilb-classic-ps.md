@@ -4,23 +4,19 @@ description: Dowiedz się, jak utworzyć wewnętrzny moduł równoważenia obci�
 services: load-balancer
 documentationcenter: na
 author: genlin
-manager: cshepard
-editor: ''
-tags: azure-service-management
-ms.assetid: 3be93168-3787-45a5-a194-9124fe386493
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: genli
-ms.openlocfilehash: 8b896705d90b51c056172c285a00dabeed54ebf2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: f8a24a12521d678cee0e255677881760828d1e1f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38697138"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414713"
 ---
 # <a name="get-started-creating-an-internal-load-balancer-classic-using-powershell"></a>Wprowadzenie do tworzenia wewnętrznego modułu równoważenia obciążenia (klasycznego) przy użyciu programu PowerShell
 
@@ -185,7 +181,7 @@ Get-Help Get-AzureInternalLoadbalancer -full
 Get-Help Remove-AzureInternalLoadBalancer -full
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Configure a load balancer distribution mode using source IP affinity](load-balancer-distribution-mode.md) (Konfigurowanie trybu dystrybucji modułu równoważenia obciążenia przy użyciu koligacji źródłowych adresów IP)
 

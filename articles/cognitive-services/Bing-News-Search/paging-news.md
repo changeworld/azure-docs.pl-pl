@@ -10,12 +10,12 @@ ms.component: bing-news-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: fff1da15df2e690cd0b37bb82654a4d30159325a
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 0507f2cfb1d75025d1b6aadccc442326a52ceebc
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803396"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739808"
 ---
 # <a name="paging-news"></a>Stronicowanie wiadomości
 
@@ -58,3 +58,6 @@ Host: api.cognitive.microsoft.com
   
 > [!NOTE]
 > Stronicowanie ma zastosowanie tylko do wyszukiwania wiadomości (/ wiadomości/wyszukiwania), a nie popularne tematy (/ wiadomości/trendingtopics) lub kategorii wiadomości (/ grup dyskusyjnych).
+
+> [!NOTE]
+> `TotalEstimatedAnswers` Pole jest szacunkową liczbę całkowitą liczbę wyników wyszukiwania, możesz pobrać dla bieżącego zapytania.  Po ustawieniu `count` i `offset` parametrów, `TotalEstimatedAnswers` liczba mogą ulec zmianie. 

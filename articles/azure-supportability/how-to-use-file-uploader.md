@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 6edcf9ae8135de8bf82d819e50d3d336b641166e
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 015d5bcdb7ab4e4e666471163bb027c74c9bb377
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "34068577"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418028"
 ---
 # <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Przekazywanie plików wskazówki dotyczące narzędzia żądania obsługi nowego Microsoft Azure
 Gdy użytkownik [Utwórz żądanie obsługi](https://portal.azure.com/#create/Microsoft.Support), narzędzie przekazywania plików mogą ułatwić przekazywania plików diagnostycznych lub innych plików, które uważasz za istotne zdarzenia.  
@@ -59,7 +59,7 @@ Za pomocą narzędzia przekazywania plików, należy przestrzegać następujący
 | .Compressed | .evt  | .mpg        | .pptx | .stp     | .wdb       | .z02    |
 | . Config     | evtx | .ms_        | prn  | .svclog  | konwersji       | .zi     |
 | .cpk        | . NA PRZYKŁAD   | .msg        | .psf  |   -       | .wma       | .zi_    |
-| .cpp        | .ex_  | .msi        | pst  |  -        | .wmv       | .zip    |
+| .cpp        | .ex_  | .msi        | pst  |  -        | .wmv       | zip    |
 | .CS         | .ex0  | .Mso        | .pub  | -         | .wmz       | .zip_   |
 | .CSV        | .FRD  | .msu        | -      |-          | wps       | .zipp   |
 | .cvr        | .gif  | .nfo        | -      |-          | wpt zostanie zmienione       | .zipped |

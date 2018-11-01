@@ -8,12 +8,12 @@ ms.date: 10/05/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 761485de4bf52b7261ac8f1f8c3d937486c66546
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: d4253942ea5cd998bfd3806978e108413949f886
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248004"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741440"
 ---
 # <a name="understand-the-requirements-and-tools-for-developing-iot-edge-modules"></a>Zrozumienie wymagań i narzędzia do tworzenia modułów usługi IoT Edge
 
@@ -34,21 +34,19 @@ IoT Hub widzi moduł wystąpienia analogicznie do urządzenia, w tym sensie, że
 
 Obecnie modułu nie może odbierać komunikaty z chmury do urządzenia korzystają z funkcji przekazywania plików.
 
-Podczas zapisywania modułu, można po prostu użyć [zestawu SDK urządzenia IoT Azure](../iot-hub/iot-hub-devguide-sdks.md) połączyć się z Centrum IoT Edge i korzystać z funkcji powyżej, tak jak w przypadku za pomocą usługi IoT Hub za pomocą aplikacji urządzenia, jedyną różnicą, że pochodzącej z usługi zaplecze aplikacji, należy odwołać się do odpowiedniej tożsamości modułu, a nie tożsamości urządzenia.
+Podczas zapisywania modułu, można użyć [zestawu SDK urządzenia IoT Azure](../iot-hub/iot-hub-devguide-sdks.md) połączyć się z Centrum IoT Edge i korzystać z funkcji powyżej, tak jak w przypadku za pomocą usługi IoT Hub za pomocą aplikacji urządzenia, jedyną różnicą jest, z poziomu aplikacji serwer zaplecza należy odwoływać się do tożsamości modułu, a nie tożsamości urządzenia.
 
 Zobacz [tworzenie i wdrażanie moduł usługi IoT Edge na symulowanym urządzeniu](tutorial-csharp-module.md) na przykład aplikacja modułu, która wysyła komunikaty z urządzenia do chmury i korzysta z bliźniaczej reprezentacji modułu.
 
 ### <a name="device-to-cloud-messages"></a>Komunikaty z urządzenia do chmury
-Aby włączyć złożone przetwarzanie komunikatów przesyłanych z chmury do urządzenia usługi IoT Edge hub udostępnia deklaratywny routing komunikatów między modułami, a także między modułami i IoT Hub.
-Dzięki temu modułów, aby przechwycić i przetwarzanie komunikatów wysyłanych przez inne moduły i propagowania ich potoki złożone.
-Artykuł [budowy modułu](module-composition.md) wyjaśnia sposób tworzenia modułów potoki złożonych przy użyciu trasy.
+Aby włączyć złożone przetwarzanie komunikatów przesyłanych z chmury do urządzenia usługi IoT Edge hub udostępnia deklaratywny routing komunikatów między modułami, a także między modułami i IoT Hub. Deklaratywny routing zezwala na moduły, aby przechwycić i przetwarzanie komunikatów wysyłanych przez inne moduły i propagowania ich potoki złożone. Artykuł [budowy modułu](module-composition.md) wyjaśnia sposób tworzenia modułów potoki złożonych przy użyciu trasy.
 
 Moduł usługi IoT Edge, inaczej niż normalna aplikacja urządzenia usługi IoT Hub może odbierać komunikaty z urządzenia do chmury, których tworzone są przekazywane przez jego lokalne centrum IoT Edge, aby można było je przetworzyć.
 
-Centrum usługi IoT Edge propaguje komunikaty do modułu oparte na trasach deklaratywne opisanego w [budowy modułu](module-composition.md) artykułu. Podczas tworzenia modułu usługi IoT Edge, może pojawiają się następujące komunikaty, ustawiając programy obsługi komunikatów, jak pokazano w tym samouczku [tworzenie i wdrażanie moduł usługi IoT Edge na symulowanym urządzeniu] [lnk-tutorial2].
+Centrum usługi IoT Edge propaguje komunikaty do modułu oparte na trasach deklaratywne opisanego w [budowy modułu](module-composition.md) artykułu. Podczas tworzenia modułu usługi IoT Edge, możesz otrzymać te komunikaty, ustawiając programy obsługi komunikatów.
 
 Aby uprościć tworzenie tras, IoT Edge dodaje koncepcji modułu *wejściowych* i *dane wyjściowe* punktów końcowych. Moduł może odbierać wszystkie komunikaty urządzenie chmura kierowane do niego bez określania żadnych danych i może wysyłać komunikaty z urządzenia do chmury bez określania żadnych danych wyjściowych.
-Za pomocą jawnego wejściami i wyjściami, jednak sprawia, że reguły routingu łatwiejsze do zrozumienia. Zobacz [budowy modułu](module-composition.md) Aby uzyskać więcej informacji na temat reguł routingu i wejściowych i wyjściowych punktów końcowych dla modułów.
+Za pomocą jawnego wejściami i wyjściami, jednak sprawia, że reguły routingu łatwiejsze do zrozumienia. Aby uzyskać więcej informacji na temat reguł routingu i wejściowych i wyjściowych punktów końcowych dla modułów, zobacz [budowy modułu](module-composition.md).
 
 Na koniec komunikatów przesyłanych z chmury do urządzenia obsługiwane przez Centrum usługi Edge są oznaczone zgodnie z poniższymi właściwościami systemu:
 
@@ -65,12 +63,6 @@ Na koniec komunikatów przesyłanych z chmury do urządzenia obsługiwane przez 
 Ciąg połączenia używany jest wprowadzony przez środowisko uruchomieniowe usługi IoT Edge w zmiennej środowiskowej `EdgeHubConnectionString`. Dzięki temu dostępne dla dowolnego programu, który chce używać go.
 
 Analogicznie, certyfikat służący do weryfikowania połączenia Centrum IoT Edge jest wprowadzony przez środowisko uruchomieniowe usługi IoT Edge w pliku, w których ścieżka jest dostępna w zmiennej środowiskowej `EdgeModuleCACertificateFile`.
-
-Samouczek [tworzenie i wdrażanie moduł usługi IoT Edge na symulowanym urządzeniu] [lnk-tutorial2] Pokazuje, jak upewnić się, że certyfikat znajduje się w magazynie maszyny w aplikacji modułu. Wyraźnie widać każda inna metoda ufać połączeń przy użyciu tego certyfikatu.
-
-## <a name="packaging-as-an-image"></a>Tworzenie pakietów w formie obrazu
-Moduły usługi IoT Edge są spakowane w postaci obrazów platformy Docker.
-Jak pokazano w tym samouczku można użyć bezpośrednio łańcuch narzędzi platformy Docker lub Visual Studio Code [tworzenie i wdrażanie moduł usługi IoT Edge na symulowanym urządzeniu] [lnk-tutorial2].
 
 ## <a name="next-steps"></a>Kolejne kroki
 

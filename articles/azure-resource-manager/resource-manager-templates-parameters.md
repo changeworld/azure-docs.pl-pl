@@ -1,6 +1,6 @@
 ---
-title: Sekcji parametr szablonu usługi Azure Resource Manager | Dokumentacja firmy Microsoft
-description: W tym artykule opisano w sekcji parametrów szablonów usługi Azure Resource Manager za pomocą składni deklaratywnej JSON.
+title: Sekcji parametrów szablonu w usłudze Azure Resource Manager | Dokumentacja firmy Microsoft
+description: W tym artykule opisano w sekcji parametrów szablonów usługi Azure Resource Manager przy użyciu składni deklaratywnej JSON.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,23 +11,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/18/2018
+ms.date: 10/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6d09a057d9b8a02c7f8313161e64aa3a42eb6db2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 83ba1b94413990c0eb8dff42c49d46456a658d5a
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604339"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417773"
 ---
-# <a name="parameters-section-of-azure-resource-manager-templates"></a>Sekcja parametrów szablonów usługi Azure Resource Manager
-W sekcji Parametry szablonu można określić wartości, które można wprowadzić podczas wdrażania zasobów. Wartości tych parametrów umożliwiają dostosowanie wdrożenie, podając wartości, które są dostosowane określonym środowisku (na przykład deweloperów, testowego i produkcyjnego). Nie musisz podać parametry w szablonie, ale bez parametrów szablonu będzie zawsze wdrażać te same zasoby z tej samej nazwy, lokalizacji i właściwości.
+# <a name="parameters-section-of-azure-resource-manager-templates"></a>Sekcji parametrów szablonów usługi Azure Resource Manager
+W sekcji parametrów szablonu należy określić wartości, które należy wprowadzić podczas wdrażania zasobów. Te wartości parametrów umożliwiają dostosowanie wdrożenia, podając wartości, które są dostosowane do określonego środowiska (na przykład deweloperskim, testowym i produkcyjnym). Nie musisz podać parametry w szablonie, ale bez parametrów szablonu będzie zawsze wdrażać te same zasoby z tej samej nazwy, lokalizacji i właściwości.
 
-Istnieje ograniczenie maksymalnie 255 parametrów w szablonie. Liczba parametrów można zmniejszyć przy użyciu obiektów, które zawierają wiele właściwości, jak pokazano w tym artykule.
+Wszystko jest ograniczona do 256 parametrów w szablonie. Aby zmniejszyć liczbę parametrów, należy za pomocą obiektów, które zawierają wiele właściwości, jak pokazano w tym artykule.
 
-## <a name="define-and-use-a-parameter"></a>Definiowanie i korzystanie z parametrem
+## <a name="define-and-use-a-parameter"></a>Definiowanie i korzystanie z parametru
 
-Poniższy przykład przedstawia definicję parametru proste. Określa nazwę parametru i określa, że ma wartość ciągu. Parametr akceptuje tylko wartości odpowiednich dla jego przeznaczenia. Określa wartość domyślną, jeśli wartość nie zostanie podana podczas wdrażania. Ponadto ten parametr zawiera opis jej użycia. 
+Poniższy przykład pokazuje definicji parametru proste. Określa nazwę parametru i określa, że ma wartość ciągu. Parametr akceptuje tylko wartości, które mają sens dla zamierzonego użycia. Określa wartość domyślną, gdy wartość nie została podana podczas wdrażania. Na koniec ten parametr zawiera opis jego użycia. 
 
 ```json
 "parameters": {
@@ -48,7 +48,7 @@ Poniższy przykład przedstawia definicję parametru proste. Określa nazwę par
 }
 ```
 
-W szablonie odwołują się wartości dla parametru przy użyciu następującej składni:
+W szablonie możesz odwołać się do wartość parametru przy użyciu następującej składni:
 
 ```json
 "resources": [
@@ -64,7 +64,7 @@ W szablonie odwołują się wartości dla parametru przy użyciu następującej 
 
 ## <a name="available-properties"></a>Dostępne właściwości
 
-Poprzednim przykładzie pokazano tylko niektóre właściwości, które można użyć w sekcji parametrów. Dostępne właściwości to:
+Poprzedni przykład wykazało, że tylko niektóre właściwości, które można używać w sekcji parametrów. Są dostępne właściwości:
 
 ```json
 "parameters": {
@@ -86,18 +86,18 @@ Poprzednim przykładzie pokazano tylko niektóre właściwości, które można u
 | Nazwa elementu | Wymagane | Opis |
 |:--- |:--- |:--- |
 | Nazwa parametru |Yes |Nazwa parametru. Musi być prawidłowym identyfikatorem języka JavaScript. |
-| type |Yes |Typ wartości parametru. Dozwolonymi typami i wartości są **ciąg**, **securestring**, **int**, **bool**, **obiektu**, **secureObject**, i **tablicy**. |
-| Wartość domyślna |Nie |Wartość domyślna parametru, jeśli wartość nie zostanie podana dla parametru. |
-| allowedValues |Nie |Tablica dozwolonych wartości tego parametru upewnić się, że podano wartość prawej strony. |
-| Wartość MinValue |Nie |Minimalna wartość parametrów typu int, ta wartość jest włącznie. |
-| MaxValue |Nie |Maksymalna wartość dla parametrów typu int, ta wartość jest włącznie. |
-| Element minLength |Nie |Minimalna długość ciągu, securestring i parametrów typu tablicy, ta wartość jest włącznie. |
-| Element maxLength |Nie |Maksymalna długość ciągu, securestring i parametrów typu tablicy, ta wartość jest włącznie. |
-| description |Nie |Opis parametru, który będzie wyświetlany użytkownikom za pośrednictwem portalu. |
+| type |Yes |Typ wartości parametru. Dozwolone typy i wartości są **ciąg**, **securestring**, **int**, **bool**, **obiektu**, **secureObject**, i **tablicy**. |
+| defaultValue |Nie |Wartość domyślna parametru, jeśli podano żadnej wartości dla parametru. |
+| allowedValues |Nie |Tablica dozwolonych wartości dla parametru upewnić się, że podano odpowiednie wartości. |
+| wartość minValue |Nie |Wartość minimalna dla parametrów typu int, ta wartość jest włącznie. |
+| maxValue |Nie |Maksymalna wartość dla parametrów typu int, ta wartość jest włącznie. |
+| Element minLength |Nie |Minimalna długość ciągu securestring i parametry typu tablicy, ta wartość jest włącznie. |
+| Element maxLength |Nie |Maksymalna długość ciągu securestring i parametry typu tablicy, ta wartość jest włącznie. |
+| description |Nie |Opis parametru, który jest widoczny dla użytkowników za pośrednictwem portalu. |
 
-## <a name="template-functions-with-parameters"></a>Funkcje szablonów z parametrami
+## <a name="template-functions-with-parameters"></a>Funkcje szablonu z parametrami
 
-Podczas tworzenia wartości domyślnej dla parametru, możesz użyć większości funkcji szablonu. Inną wartość parametru służy do tworzenia wartości domyślnej. Następujący szablon przedstawia użycie funkcji wartość domyślna:
+Podczas określania wartości domyślnej parametru, można użyć większości funkcji szablonu. Inną wartość parametru można użyć do tworzenia wartości domyślnej. Następujący szablon przedstawia korzystania z funkcji w wartości domyślne:
 
 ```json
 "parameters": {
@@ -118,13 +118,13 @@ Podczas tworzenia wartości domyślnej dla parametru, możesz użyć większośc
 }
 ```
 
-Nie można użyć `reference` funkcji w sekcji parametrów. Parametry są oceniane przed wdrożeniem więc `reference` funkcji nie można uzyskać stanu środowiska uruchomieniowego zasobu. 
+Nie można użyć `reference` funkcji w sekcji parametrów. Parametry są oceniane przed wdrożeniem, więc `reference` funkcji nie można pobrać stanu środowiska uruchomieniowego zasobu. 
 
-## <a name="objects-as-parameters"></a>Obiekty jako parametrów
+## <a name="objects-as-parameters"></a>Obiektów jako parametrów
 
 Może być łatwiejsze do organizowania powiązanych wartości, przekazując je jako obiekt. Takie podejście zmniejsza się liczba parametrów w szablonie.
 
-Zdefiniuj dany parametr w szablonie i określ obiekt JSON zamiast pojedynczej wartości podczas wdrażania. 
+Zdefiniuj parametr w szablonie, a następnie podaj obiekt JSON zamiast pojedynczej wartości podczas wdrażania. 
 
 ```json
 "parameters": {
@@ -154,7 +154,7 @@ Zdefiniuj dany parametr w szablonie i określ obiekt JSON zamiast pojedynczej wa
 },
 ```
 
-Następnie odwoływać właściwości parametru za pomocą operatora kropki.
+Następnie odwoływać właściwości podrzędnych parametru za pomocą operatora kropki.
 
 ```json
 "resources": [
@@ -189,15 +189,15 @@ Następnie odwoływać właściwości parametru za pomocą operatora kropki.
 ```
 
 ## <a name="recommendations"></a>Zalecenia
-Poniższe informacje mogą być przydatne podczas pracy z parametrami:
+Poniższe informacje, może być przydatne podczas pracy z parametrami:
 
-* Zminimalizować korzystanie z parametrów. Jeśli to możliwe, należy użyć zmiennej lub wartość literału. Parametry tylko dla tych scenariuszy:
+* Minimalizuj korzystanie z parametrów. Jeśli to możliwe, należy użyć zmiennej lub wartość literału. Użyj parametrów tylko dla tych scenariuszy:
    
-   * Ustawienia, które chcesz użyć zmian zgodnie ze środowiska (jednostka SKU, rozmiar, pojemności).
-   * Nazwy zasobów, które chcesz określić łatwo zidentyfikować.
-   * Wartości, które są często używane do wykonywania innych zadań (takie jak nazwa użytkownika administratora).
+   * Ustawienia, które chcesz użyć wariantów według środowiska (jednostki SKU, rozmiar, pojemności).
+   * Nazwy zasobów, które chcesz określić łatwą identyfikację.
+   * Wartości, które są często używane do innych zadań (na przykład nazwa użytkownika administratora).
    * Klucze tajne (takie jak hasła).
-   * Numer lub tablicy wartości, które do użycia podczas tworzenia wielu wystąpień typu zasobu.
+   * Liczba lub tablicę wartości, które można używać podczas tworzenia więcej niż jedno wystąpienie typu zasobu.
 * Użyj formatu camelcase dla nazw parametrów.
 * Podaj opis każdego parametru w metadanych:
 
@@ -212,7 +212,7 @@ Poniższe informacje mogą być przydatne podczas pracy z parametrami:
    }
    ```
 
-* Zdefiniuj wartości domyślne parametrów (z wyjątkiem hasła i klucze SSH). Podając wartości domyślnej parametru staje się opcjonalne podczas wdrażania. Wartość domyślna może być pustym ciągiem. 
+* Definiowanie wartości domyślnych dla parametrów (z wyjątkiem hasła i klucze SSH). Określając wartość domyślną, parametr staje się opcjonalny podczas wdrażania. Wartość domyślna może być ciągiem pustym. 
    
    ```json
    "parameters": {
@@ -226,7 +226,7 @@ Poniższe informacje mogą być przydatne podczas pracy z parametrami:
    }
    ```
 
-* Użyj **securestring** dla wszystkich haseł i kluczy tajnych. W przypadku przekazania danych poufnych w obiekcie JSON, użyj **secureObject** typu. Nie można odczytać parametrów szablonu z typami securestring lub secureObject po wdrożeniu zasobów. 
+* Użyj **securestring** dla wszystkich haseł i kluczy tajnych. Jeśli przekażesz poufnych danych w obiekcie JSON, użyj **secureObject** typu. Nie można odczytać parametrów szablonu z typami securestring lub secureObject po wdrażania zasobów. 
    
    ```json
    "parameters": {
@@ -239,7 +239,7 @@ Poniższe informacje mogą być przydatne podczas pracy z parametrami:
    }
    ```
 
-* Użyj parametru, aby określić lokalizację i udostępniać tę wartość parametru możliwie zasobów, które mogą być w tej samej lokalizacji. Takie podejście minimalizuje liczbę razy, które użytkownicy są proszeni o dostarczenie informacji o lokalizacji. Jeśli typ zasobu jest obsługiwana w ograniczonej liczby miejsc, można określić prawidłową lokalizację bezpośrednio w szablonie, lub Dodaj inny parametr lokalizacji. Gdy organizacja ogranicza dozwolonych regionów swoim użytkownikom **resourceGroup () .location** wyrażenie może uniemożliwić użytkownika do wdrożenia szablonu. Na przykład jeden użytkownik tworzy grupę zasobów w regionie. Drugi użytkownik należy wdrożyć w tej grupie zasobów, ale nie ma dostępu do tego regionu. 
+* Użyj parametru do określenia lokalizacji i udostępniaj tę wartość parametru możliwie wypełniane zasobami, które mogą być w tej samej lokalizacji. To podejście minimalizuje liczbę przypadków, gdy użytkownicy są proszeni o dostarczenie informacji o lokalizacji. Typ zasobu jest obsługiwana w ograniczonej liczbie lokalizacje, można określić prawidłowych lokalizacji bezpośrednio w szablonie, lub dodać inny parametr lokalizacji. Gdy organizacja ogranicza dozwolonych regionów dla swoich użytkowników **resourceGroup () .location** wyrażenie może uniemożliwić wdrażanie szablonu użytkownik. Na przykład jeden użytkownik tworzy grupę zasobów w regionie. Drugi użytkownik należy wdrożyć w tej grupie zasobów, ale nie ma dostępu do tego regionu. 
    
    ```json
    "resources": [
@@ -253,21 +253,21 @@ Poniższe informacje mogą być przydatne podczas pracy z parametrami:
    ]
    ```
     
-* Unikaj używania parametr lub zmienna dla wersji interfejsu API dla typu zasobu. Właściwości zasobów i wartości może się różnić przez numer wersji. IntelliSense w edytorze kodu nie można ustalić prawidłowego schematu, gdy parametr lub zmienna ma wartość wersja interfejsu API. Zamiast tego wersji interfejsu API zakodowane w szablonie.
-* Unikaj określania nazwy parametru w szablonie pasujący parametr w poleceniu wdrożenia. Menedżer zasobów jest rozpoznawany jako ten konflikt nazw, dodając przyrostek **FromTemplate** do parametru szablonu. Na przykład, jeśli zawiera parametr o nazwie **ResourceGroupName** w szablonie, powoduje konflikt z **ResourceGroupName** parametru w [AzureRmResourceGroupDeployment nowy](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) polecenia cmdlet. Podczas wdrażania, monit o podanie wartości **ResourceGroupNameFromTemplate**.
+* Należy unikać używania parametr lub zmienna w przypadku wersji interfejsu API dla typu zasobu. Właściwości zasobów i wartości mogą się różnić numer wersji. Funkcja IntelliSense w edytorze kodu nie można ustalić poprawnego schematu, gdy parametr lub zmienna ma wartość wersja interfejsu API. Zamiast tego należy trwale kodować interfejsu API w wersji w szablonie.
+* Unikaj określania nazwy parametru w szablonie odpowiadający parametr w poleceniu wdrożenia. Menedżer zasobów jest rozpoznawany jako ten konflikt nazw, dodając przyrostkowa **FromTemplate** z parametrem szablonu. Na przykład, jeśli zawierają parametr o nazwie **ResourceGroupName** w szablonie, powoduje on konflikt z **ResourceGroupName** parametru w [New-AzureRmResourceGroupDeployment ](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) polecenia cmdlet. Podczas wdrażania, monit o podanie wartości **ResourceGroupNameFromTemplate**.
 
-## <a name="example-templates"></a>Przykład szablonów
+## <a name="example-templates"></a>Przykładowe szablony
 
-Te szablony przykładowe pokazują niektóre scenariusze korzystania z parametrów. Ich do testowania, jak parametry są obsługiwane w różnych scenariuszy wdrażania.
+Te przykładowe szablony pokazują niektóre scenariusze użycia parametrów. Wdróż je, aby przetestować sposób obsługi parametrów w różnych scenariuszach.
 
 |Szablon  |Opis  |
 |---------|---------|
-|[Parametry funkcji dla wartości domyślnych](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Pokazuje, jak używać funkcji szablonu, definiując wartości domyślne parametrów. Szablon nie wdrażać żadnych zasobów. Konstruuje wartości parametrów, a zwraca tych wartości. |
-|[Parametr obiektu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Pokazuje, dla parametru za pomocą obiektu. Szablon nie wdrażać żadnych zasobów. Konstruuje wartości parametrów, a zwraca tych wartości. |
+|[Parametry, z funkcjami dla wartości domyślnych](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Pokazuje, jak używać funkcji szablonu, podczas definiowania wartości domyślne parametrów. Szablon nie wdroży żadnych zasobów. On tworzy wartości parametrów i zwraca te wartości. |
+|[Parametr obiektu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Demonstruje użycie obiektu dla parametru. Szablon nie wdroży żadnych zasobów. On tworzy wartości parametrów i zwraca te wartości. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Aby wyświetlić pełną listę szablonów dla wielu różnych rozwiązań, zobacz [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/documentation/templates/).
-* Jak wartości parametrów wejściowych podczas wdrażania, zobacz [wdrażania aplikacji przy użyciu szablonu usługi Azure Resource Manager](resource-group-template-deploy.md). 
-* Aby uzyskać więcej informacji o funkcje, których można użyć z w ramach szablonu, zobacz [funkcje szablonów usługi Azure Resource Manager](resource-group-template-functions.md).
-* Aby dowiedzieć się, jak za pomocą obiektu parametrów, zobacz [obiekt używany jako parametr szablonu usługi Azure Resource Manager](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
+* Jak wprowadzanie wartości parametrów podczas wdrażania, zobacz [wdrażania aplikacji przy użyciu szablonu usługi Azure Resource Manager](resource-group-template-deploy.md). 
+* Aby uzyskać szczegółowe informacje na temat funkcji, możesz użyć w szablonie, zobacz [funkcje szablonu usługi Azure Resource Manager](resource-group-template-functions.md).
+* Aby dowiedzieć się, jak za pomocą obiektu parametrów, zobacz [używanie obiektu jako parametr w szablonie usługi Azure Resource Manager](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).

@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 10/31/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 671818ca8f8fa07b506252d5d4d0c7a768577b19
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 0720edeab7577f41ddbaa67e4643f1dfe57ebac0
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087478"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740318"
 ---
 # <a name="run-a-validation-test-for-azure-stack"></a>Uruchamianie testów sprawdzania poprawności dla usługi Azure Stack
 
@@ -39,7 +39,7 @@ Jeśli masz problem, skontaktuj się z pomocą techniczną usługi firmy Microso
     3. Otwórz program PowerShell jako administrator.
     4. Uruchom polecenie: `Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint`
     5. Uruchom polecenie: `Test-AzureStack`
-4. Jeśli dowolne testy raportu **się nie POWIEŚĆ**Uruchom: `Get-AzureStackLog -FilterByRole SeedRing -OutputPath <Log output path>` polecenia cmdlet gromadzi dzienniki z AzureStack testu. Aby uzyskać więcej informacji na temat dzienników diagnostycznych, zobacz [narzędzia diagnostyczne usługi Azure Stack](azure-stack-diagnostics.md). Nie należy zbierać dzienniki lub skontaktuj się z pomocą techniczną usługi firmy Microsoft (CSS) Jeśli testy raportu **OSTRZEGAJ**.
+4. Jeśli dowolne testy raportu **się nie POWIEŚĆ**Uruchom: `Get-AzureStackLog -FilterByRole SeedRing -OutputSharePath “<path>” -OutputShareCredential $cred` polecenia cmdlet gromadzi dzienniki z AzureStack testu. Aby uzyskać więcej informacji na temat dzienników diagnostycznych, zobacz [narzędzia diagnostyczne usługi Azure Stack](azure-stack-diagnostics.md). Nie należy zbierać dzienniki lub skontaktuj się z pomocą techniczną usługi firmy Microsoft (CSS) Jeśli testy raportu **OSTRZEGAJ**.
 5. Wyślij **SeedRing** dzienniki w celu obsługi usług klienta firmy Microsoft. Usługi techniczną firmy Microsoft we współpracy z Tobą, aby rozwiązać ten problem.
 
 ## <a name="reference-for-test-azurestack"></a>Dokumentacja dotycząca AzureStack testu

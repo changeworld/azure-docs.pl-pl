@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: a95cdbb48371cf960211f55bf077cea9db783db5
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 3c8202f762c65d72417020b0524e415e55076eb0
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248333"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415274"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie przy użyciu usługi Azure Monitor alertów dziennika aktywności  
 
@@ -43,11 +43,11 @@ Postępuj zgodnie z następującą procedurą:
 1. W witrynie Azure portal wybierz **Monitor** > **alertów**
 2. Kliknij przycisk **Nowa reguła alertu** w górnej części **alerty** okna.
 
-     ![Nowa reguła alertu](./media/monitor-alerts-unified/AlertsPreviewOption.png)
+     ![Nowa reguła alertu](media/alert-activity-log/AlertsPreviewOption.png)
 
      **Utwórz regułę** zostanie wyświetlone okno.
 
-      ![nowe opcje reguły alertu](./media/monitoring-activity-log-alerts-new-experience/create-new-alert-rule-options.png)
+      ![nowe opcje reguły alertu](media/alert-activity-log/create-new-alert-rule-options.png)
 
 3. **W ramach warunku zdefiniować alertu** Podaj następujące informacje, a następnie kliknij przycisk **gotowe**.
 
@@ -57,7 +57,7 @@ Postępuj zgodnie z następującą procedurą:
 
     > można wybrać zasób, grupy zasobów lub subskrypcji usługi całej sygnału dziennika aktywności.
 
-    **Docelowy przykładowy widok alertów** ![wybierz docelowy](./media/monitoring-activity-log-alerts-new-experience/select-target.png)
+    **Docelowy przykładowy widok alertów** ![wybierz docelowy](media/alert-activity-log/select-target.png)
 
     - W obszarze **kryteriów docelowych**, kliknij przycisk **Dodaj kryteria** i są wyświetlane wszystkie dostępne sygnały dla elementu docelowego, łącznie ze składnikami z różnych kategorii **dziennika aktywności**; Nazwa kategorii jest dołączany w **usługi Monitor** nazwy.
 
@@ -67,7 +67,7 @@ Postępuj zgodnie z następującą procedurą:
 
     **Dodawanie ekranu z kryteriów**
 
-    ![Dodaj kryteria](./media/monitoring-activity-log-alerts-new-experience/add-criteria.png)
+    ![Dodaj kryteria](media/alert-activity-log/add-criteria.png)
 
     **Czas historii**: zdarzenia dostępne dla wybranej operacji jest można wykreślić przez ostatnie 6/12/24 godziny (lub) w ciągu ostatniego tygodnia.
 
@@ -79,7 +79,7 @@ Postępuj zgodnie z następującą procedurą:
 
         Przykładowy wykres sygnał z alert logic stosowane:
 
-        ![ wybrane kryteria](./media/monitoring-activity-log-alerts-new-experience/criteria-selected.png)
+        ![ wybrane kryteria](media/alert-activity-log/criteria-selected.png)
 
 4. W obszarze **Zdefiniuj szczegóły reguły alertów**, należy podać następujące dane:
 
@@ -99,20 +99,20 @@ Postępuj zgodnie z następującą procedurą:
 
 Alternatywnie prosty sposób analogiczny opis warunki, na których można tworzyć reguły alertu w dzienniku aktywności jest aby eksplorować lub filtrowanie zdarzeń za pomocą [dziennika aktywności w witrynie Azure portal](monitoring-overview-activity-logs.md#query-the-activity-log-in-the-azure-portal). W usłudze Azure Monitor — dziennik aktywności jeden można filtrować lub znaleźć wymaganych zdarzeń i następnie utworzyć alert przy użyciu **Dodaj alert dziennika aktywności** przycisk; następnie wykonaj kroki 4 i nowszych wersjach opisany powyżej samouczka.
     
- ![ Dodaj alert dziennika aktywności](./media/monitoring-activity-log-alerts-new-experience/add-activity-log.png)
+ ![ Dodaj alert dziennika aktywności](media/alert-activity-log/add-activity-log.png)
     
 
 ### <a name="view-and-manage-in-azure-portal"></a>Wyświetlanie i zarządzanie nimi w witrynie Azure portal
 
 1. W witrynie Azure portal kliknij **Monitor** > **alerty** i kliknij przycisk **zarządzanie regułami** w lewym górnym rogu okna.
 
-    ![ Zarządzaj regułami alertów](./media/monitoring-activity-log-alerts-new-experience/manage-alert-rules.png)
+    ![ Zarządzaj regułami alertów](media/alert-activity-log/manage-alert-rules.png)
 
     Zostanie wyświetlona lista dostępnych zasad.
 
 2. Wyszukaj regułę dziennika aktywności w celu zmodyfikowania.
 
-    ![ Wyszukaj reguł alertów dzienników aktywności](./media/monitoring-activity-log-alerts-new-experience/searth-activity-log-rule-to-edit.png)
+    ![ Wyszukaj reguł alertów dzienników aktywności](media/alert-activity-log/searth-activity-log-rule-to-edit.png)
 
     Możesz użyć filtrów dostępnych - _subskrypcji_, _grupy zasobów_, _zasobów_, _typu sygnału_, lub _stanu_  można znaleźć reguły działania, które chcesz edytować.
 
@@ -122,7 +122,7 @@ Alternatywnie prosty sposób analogiczny opis warunki, na których można tworzy
 
 3.  Wybierz regułę, a następnie kliknij dwukrotnie, aby edytować opcje reguły. Wprowadź wymagane zmiany, a następnie kliknij przycisk **Zapisz**.
 
-    ![ Zarządzaj regułami alertów](./media/monitoring-activity-log-alerts-new-experience/activity-log-rule-edit-page.png)
+    ![ Zarządzaj regułami alertów](media/alert-activity-log/activity-log-rule-edit-page.png)
 
 4.  Można wyłączyć, włączyć lub usunąć regułę. Wybierz odpowiednią opcję w górnej części okna, po wybraniu reguły, zgodnie z opisem w kroku 2.
 

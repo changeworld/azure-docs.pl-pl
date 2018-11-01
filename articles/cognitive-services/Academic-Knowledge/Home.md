@@ -3,19 +3,19 @@ title: Co to jest interfejs Academic Knowledge API?
 titlesuffix: Azure Cognitive Services
 description: Interfejs Academic Knowledge API pozwala interpretować zapytania użytkowników i pobierać rozbudowane informacje z grafu Academic Graph.
 services: cognitive-services
-author: mvorvoreanu
+author: darrine
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
 ms.topic: overview
-ms.date: 03/27/2017
-ms.author: mivorvor
-ms.openlocfilehash: d08cd7124b232e50365e72753eba97c6309f401c
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.date: 10/30/2018
+ms.author: darrine
+ms.openlocfilehash: aa945eb8f0b79a6b0760650bd34dba55d80ef3a4
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901214"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240362"
 ---
 # <a name="academic-knowledge-api"></a>Academic Knowledge API
 
@@ -32,13 +32,10 @@ Interfejs Academic Knowledge API obejmuje cztery powiązane punkty końcowe REST
   1. **interpret** — Interpretuje ciąg zapytania użytkownika w języku naturalnym. Zwraca interpretacje z adnotacjami, aby zapewnić zaawansowaną obsługę automatycznego uzupełniania w polu wyszukiwania, które przewiduje wpisywany tekst.  
   2. **evaluate** — Ocenia wyrażenie zapytania i zwraca wyniki z jednostkami Academic Knowledge.  
   3. **calchistogram** — Oblicza histogram rozkładu wartości atrybutów dla obiektów naukowych zwracanych przez wyrażenie zapytania, na przykład rozkład cytowań według roku dla danego autora.  
-  4. **graph search** — Wyszukuje podany wzorzec grafu i zwraca dopasowane wyniki.
-
+  
 Wspólnie te metody interfejsu API umożliwiają tworzenie zaawansowanych funkcji wyszukiwania semantycznego. Na podstawie ciągu zapytania użytkownika metoda **interpret** udostępnia wersję tego zapytania z adnotacjami oraz strukturalne wyrażenie zapytania, opcjonalnie uzupełniając zapytanie użytkownika na podstawie semantyki bazowych danych akademickich. Jeśli na przykład użytkownik wpisze ciąg *latent s*, metoda **interpret** może udostępnić zestaw pozycjonowanych interpretacji, sugerując, że użytkownik mógł szukać dziedziny badań *latent semantic analysis*, dokumentu *latent structure analysis* lub innych wyrażeń jednostek zaczynających się od *latent s*. Na podstawie tych informacji można udostępnić użytkownikowi wskazówki szybko prowadzące do żądanych wyników wyszukiwania.
 
 Metoda **evaluate** umożliwia pobieranie zestawu zgodnych jednostek dokumentów z bazy wiedzy naukowej, a metoda **calchistogram** umożliwia obliczanie rozkładu wartości atrybutów dla zestawu jednostek dokumentów, co pozwala dokładniej filtrować wyniki wyszukiwania.        
-
-Metoda **graph search** ma dwa tryby: *json* i *lambda*. Tryb *json* umożliwia dopasowywanie wzorca grafu zgodnie z wzorcami grafu określonymi przez obiekt JSON. Tryb *lambda* umożliwia wykonywanie obliczeń po stronie serwera podczas przechodzenia przez graf zgodnie z wyrażeniami lambda określonymi przez użytkownika.
 
 ## <a name="getting-started"></a>Wprowadzenie 
 Zobacz podtematy z lewej strony, aby zapoznać się ze szczegółową dokumentacją.  Aby poprawić czytelność przykładów, wywołania interfejsu API REST zawierają znaki (takie jak spacje), które nie zostały zakodowane w adresie URL.  We własnym kodzie należy stosować odpowiednie kodowania adresów URL.

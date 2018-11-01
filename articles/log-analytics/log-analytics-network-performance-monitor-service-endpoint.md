@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: fb84b20630eb63cb53ccb1d13a383ed6287b802b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 76c8421286633dc3c81a073423a7d9f9ca1e1d85
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406623"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420850"
 ---
 # <a name="service-connectivity-monitor"></a>Monitorowanie łączności usług
 
@@ -35,13 +35,13 @@ Można wykonywać następujące funkcje za pomocą Monitor łączności usługi:
 - Zidentyfikuj punkty aktywne w sieci, która może powodować niską wydajność aplikacji, wyświetlając opóźnienie pochodzącego z każdego przeskoku na mapie topologii.
 
 
-![Monitorowanie łączności usług](media/log-analytics-network-performance-monitor/service-endpoint-intro.png)
+![Monitorowanie łączności usług](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-intro.png)
 
 
 ## <a name="configuration"></a>Konfigurowanie 
 Aby otworzyć konfigurację rozwiązania Network Performance Monitor, otwórz [rozwiązania Network Performance Monitor](log-analytics-network-performance-monitor.md) i wybierz **Konfiguruj**.
 
-![Konfigurowanie rozwiązania Network Performance Monitor](media/log-analytics-network-performance-monitor/npm-configure-button.png)
+![Konfigurowanie rozwiązania Network Performance Monitor](media/log-analytics-network-performance-monitor-service-endpoint/npm-configure-button.png)
 
 
 ### <a name="configure-log-analytics-agents-for-monitoring"></a>Konfigurowanie agentów usługi Log Analytics do monitorowania
@@ -79,7 +79,7 @@ Zacznij tworzyć testy do monitorowania łączności sieciowej do punktów końc
 10. Wybierz opcję monitorowania warunków. Można ustawić niestandardowe progi generacji zdarzenie kondycji, wprowadzając wartości progowe. Zawsze, gdy wartość warunku przekroczy wartość progu wybranych dla wybranej sieci lub pary podsieci, jest generowane zdarzenie kondycji. 
 11. Wybierz **Zapisz** Aby zapisać konfigurację. 
 
-    ![Monitor łączności usługi konfiguracji testów](media/log-analytics-network-performance-monitor/service-endpoint-configuration.png)
+    ![Monitor łączności usługi konfiguracji testów](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-configuration.png)
 
 
 
@@ -87,11 +87,11 @@ Zacznij tworzyć testy do monitorowania łączności sieciowej do punktów końc
 
 Przejdź do widoku pulpitu nawigacyjnego rozwiązania Network Performance Monitor. Aby uzyskać podsumowanie kondycji inne testy utworzone, Przyjrzyj się **Monitor łączności usługi** strony. 
 
-![Strona usługi Monitor łączności](media/log-analytics-network-performance-monitor/service-endpoint-blade.png)
+![Strona usługi Monitor łączności](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-blade.png)
 
 Wybierz Kafelek, aby wyświetlić szczegółowe informacje o testy na **testy** strony. W tabeli po lewej stronie można wyświetlić w momencie kondycję i wartości czas odpowiedzi usługi, opóźnienie sieci i utraty pakietów dla wszystkich testów. Użyj kontroli rejestratora stanu sieci, aby wyświetlić migawki sieci w innym czasie w przeszłości. Wybierz test w tabeli, które chcesz zbadać. Na wykresach w okienku po prawej stronie można wyświetlić trend historyczny dotyczący utraty, opóźnienia i wartości czas odpowiedzi. Wybierz **Szczegóły testu** link, aby wyświetlić wydajność z każdego węzła.
 
-![Monitor łączności usługi testów](media/log-analytics-network-performance-monitor/service-endpoint-tests.png)
+![Monitor łączności usługi testów](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-tests.png)
 
 W **węzły testów** widok, można zaobserwować, łączność sieciową z każdego węzła. Wybierz węzeł, który ma spadek wydajności. Jest to węzeł, w którym zaobserwowano aplikacja działa wolno.
 
@@ -99,15 +99,15 @@ Określić, czy niską wydajność aplikacji, jest z powodu sieci lub problem po
 
 * **Problemu z aplikacją:** wzrost czas odpowiedzi, ale spójność na opóźnienie sieci sugeruje, że sieć działa prawidłowo i może to oznaczać ze względu na problem po stronie aplikacji. 
 
-    ![Monitor łączności usługi problemu z aplikacją](media/log-analytics-network-performance-monitor/service-endpoint-application-issue.png)
+    ![Monitor łączności usługi problemu z aplikacją](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-application-issue.png)
 
 * **Sieci problem:** wzrost czas odpowiedzi wyposażony w odpowiedniej kolekcji w opóźnienia sieci sugeruje, że wzrost czas odpowiedzi może być ze względu na zwiększenie opóźnienia sieci. 
 
-    ![Problem z siecią Monitor łączności usługi](media/log-analytics-network-performance-monitor/service-endpoint-network-issue.png)
+    ![Problem z siecią Monitor łączności usługi](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-network-issue.png)
 
 Po ustaleniu, czy problem jest z powodu sieci, wybierz **topologii** link widoku, aby zidentyfikować problematycznych przeskoku na mapie topologii. Na poniższej ilustracji przedstawiono przykład. Poza 105 ms całkowity czas oczekiwania między węzłem, a punkt końcowy aplikacji, 96 ms z powodu jest przeskoku zaznaczone na czerwono. Po zidentyfikowaniu problematycznych przeskoków, możesz korzystać z działania naprawcze. 
 
-![Monitor łączności usługi testów](media/log-analytics-network-performance-monitor/service-endpoint-topology.png)
+![Monitor łączności usługi testów](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-topology.png)
 
 ## <a name="diagnostics"></a>Diagnostyka 
 

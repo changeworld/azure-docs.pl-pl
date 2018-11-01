@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: 7565c536b5d24c859b164a960f74bd1e2ce97b63
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f044cf7e0b614d338ec9b294dfbf02c26c4351b1
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960638"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413864"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Przegląd alertów na platformie Microsoft Azure 
 
@@ -23,7 +23,7 @@ W tym artykule opisano, jakie alerty są korzyści z ich i jak rozpocząć korzy
 ## <a name="what-are-alerts-in-microsoft-azure"></a>Co to są alerty na platformie Microsoft Azure?
 Aktywne alerty powiadamiają, gdy jest to ważne, że warunki znajdują się w danych monitorowania. Umożliwiają one zidentyfikować i rozwiązać problemy, zanim użytkownicy systemu, zwróć uwagę, ich. 
 
-W tym artykule omówiono ujednoliconego środowiska alertów w usłudze Azure Monitor, który teraz zawiera usługi Log Analytics i usługi Application Insights. [Poprzednie środowisko alertów](monitoring-overview-alerts.md)i typy alertów są nazywane **alertów klasycznych**. Ta starsza obsługa produktu próbnego oraz starsze typu alertu możesz wyświetlić, klikając **wyświetlanie alertów klasycznych** w górnej części strony alertu. 
+W tym artykule omówiono ujednoliconego środowiska alertów w usłudze Azure Monitor, który teraz zawiera usługi Log Analytics i usługi Application Insights. [Poprzednie środowisko alertów](monitoring-overview-alerts.md) i typy alertów są nazywane **alertów klasycznych**. Ta starsza obsługa produktu próbnego oraz starsze typu alertu możesz wyświetlić, klikając **wyświetlanie alertów klasycznych** w górnej części strony alertu.
 
 
 ## <a name="overview"></a>Przegląd
@@ -70,7 +70,7 @@ Obsługiwane są następujące stany alertów.
 
 Stan alertu jest inny niż warunek monitora. Stan alertu jest ustawiony przez użytkownika i jest niezależna od warunek monitora. Gdy warunek wyzwolenia alertu czyści, warunek monitora alertu ustawiono rozwiązane. Mimo że system można ustawić warunek monitora rozwiązany, stan alertu nie jest zmieniany, do momentu zmiany przez użytkownika. Dowiedz się, [jak zmienić stan alertów i grup inteligentne](https://aka.ms/managing-alert-smart-group-states).
 
-## <a name="smart-groups"></a>Inteligentne grup 
+## <a name="smart-groups"></a>Grupy inteligentne 
 Inteligentne grupy są w wersji zapoznawczej. 
 
 Inteligentne grupy są agregacji alerty oparte na algorytmów uczenia maszynowego, które mogą ułatwić ograniczenia liczby niepotrzebnych alertów i pomocy w rozwiązywania problemów. [Dowiedz się więcej na temat grup inteligentne](https://aka.ms/smart-groups) i [jak zarządzać grupami inteligentne](https://aka.ms/managing-smart-groups).
@@ -96,7 +96,7 @@ Wybierz następujące wartości w górnej części strony alerty, aby otworzyć 
 | Wartość | Opis |
 |:---|:---|
 | Łączna liczba alertów | Całkowita liczba alertów, które spełniają wybrane kryteria. Wybierz tę wartość, aby otworzyć widok wszystkich alertów z żadnego filtru. |
-| Inteligentne grup | Całkowita liczba grup inteligentne, które zostały utworzone przy użyciu alertów, które spełniają wybrane kryteria. Wybierz tę wartość, aby otworzyć listę grup inteligentne w widoku wszystkie alerty.
+| Grupy inteligentne | Całkowita liczba grup inteligentne, które zostały utworzone przy użyciu alertów, które spełniają wybrane kryteria. Wybierz tę wartość, aby otworzyć listę grup inteligentne w widoku wszystkie alerty.
 | Łączna liczba reguł alertów | Całkowita liczba reguł alertów w wybranej subskrypcji i grupie zasobów. Wybierz tę wartość, aby otworzyć widok reguł filtrowane według wybranej subskrypcji i grupie zasobów.
 
 
@@ -142,7 +142,7 @@ Widok można filtrować, wybierając następujące wartości w menu rozwijanych 
 | Typ zasobu | Wybierz jeden lub więcej typów zasobów. Tylko alerty o celach wybranego typu znajdują się w widoku. W tej kolumnie jest dostępna tylko po określono grupę zasobów. |
 | Zasób | Wybierz zasób. Tylko alerty o zasobu jako obiekt docelowy znajdują się w widoku. W tej kolumnie jest dostępna tylko po został określony jako typ zasobu. |
 | Ważność | Wybierz alert o ważności lub *wszystkich* obejmujący alerty wszystkie poziomy ważności. |
-| Warunek monitora | Wybierz warunek monitora lub *wszystkich* obejmujący alerty warunków. |
+| Stan monitora | Wybierz warunek monitora lub *wszystkich* obejmujący alerty warunków. |
 | Stan alertu | Wybierz stan alertu lub *wszystkich* obejmujący alerty stanów. |
 | Monitorowanie usługi | Wybierz usługę, lub wybierz *wszystkich* obejmujący wszystkie usługi. Uwzględniane są tylko alerty tworzone przez reguły, które korzystają z usługi jako element docelowy. |
 | Przedział czasu | Tylko alerty wyzwalane w przedziale czasu wybranego znajdują się w widoku. Obsługiwane wartości to ostatniej godziny, ostatnich 24 godzin, w ciągu ostatnich 7 dni i ostatnich 30 dni. |
@@ -164,7 +164,7 @@ Strona szczegółów alertu zawiera następujące sekcje.
 | Więcej informacji | Umożliwia wyświetlanie dodatkowych informacji kontekstowych dla alertu, który jest zazwyczaj specyficzny dla typu źródła, która utworzyła alert. |
 
 
-## <a name="classic-alerts"></a>Alertów klasycznych 
+## <a name="classic-alerts"></a>Alerty klasyczne 
 
 Usługi Azure Monitor metryki i dziennika działań alerty możliwości przed czerwca 2018 r. nosi nazwę "Alerty (klasyczne)". 
 

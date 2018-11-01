@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4e60425edaebf9e77b7e71f43fa3fe2f2ac3227c
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: a1dbc04a83e80281fb6cd516c546c1dddff6db37
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221957"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413809"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania infrastruktury
 
@@ -45,11 +45,11 @@ Aplikacje lub składniki, które były dostępne w klastrach w środowisku lokal
 
 |**Aplikacja**|**Integracja**
 |---|---|
-|Powietrza|IaaS lub HDI węzłem krawędzi
+|Powietrza|IaaS lub HDInsight węzłem krawędzi
 |Alluxio|IaaS  
 |Arcadia|IaaS 
 |— Atlas|Brak (tylko HDP)
-|Datameer|Węzeł brzegowy HDI
+|Datameer|Węzeł brzegowy HDInsight
 |Usługa Datastax (Cassandra)|IaaS (bazy danych cosmos DB zamiast na platformie Azure)
 |DataTorrent|IaaS 
 |Przechodzenie do szczegółów|IaaS 
@@ -58,15 +58,15 @@ Aplikacje lub składniki, które były dostępne w klastrach w środowisku lokal
 |Mapador|IaaS 
 |MONGO|IaaS (bazy danych cosmos DB zamiast na platformie Azure)
 |NiFi|IaaS 
-|Presto|IaaS lub HDI węzłem krawędzi
+|Presto|IaaS lub HDInsight węzłem krawędzi
 |Python 2|PaaS 
 |Python 3|PaaS 
 |R|PaaS 
 |SAS|IaaS 
 |Vertica|IaaS (SQLDW zamiast na platformie Azure)
 |Tableau|IaaS 
-|Wodnej|Węzeł brzegowy HDI
-|StreamSets|Edge usługi HDI 
+|Wodnej|Węzeł brzegowy HDInsight
+|StreamSets|HDInsight krawędzi 
 |Palantir|IaaS 
 |Sailpoint|Iaas 
 
@@ -213,7 +213,7 @@ HDInsight można połączyć w sieci lokalnej za pomocą usługi Azure Virtual N
 - Konfigurowanie rozpoznawania nazw DNS między siecią wirtualną i siecią lokalną.
 - Skonfiguruj sieciowe grupy zabezpieczeń lub tras zdefiniowanych przez użytkownika (UDR) do kontrolowania ruchu sieciowego.
 
- Aby uzyskać więcej informacji, zobacz artykuł [Connect HDInsight z siecią lokalną](../connect-on-premises-network.md)
+Aby uzyskać więcej informacji, zobacz artykuł [Connect HDInsight z siecią lokalną](../connect-on-premises-network.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

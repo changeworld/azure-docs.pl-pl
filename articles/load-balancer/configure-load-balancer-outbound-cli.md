@@ -4,8 +4,6 @@ description: W tym artykule przedstawiono sposób konfigurowania reguł obciąż
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jpconnock
-tags: azure-resource-manager
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: a6d442452fe5ffc61648b3c004c03f1756f8f57e
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 0759b6a8e3deb9bc1d04e41598e4eef9304ecd83
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160659"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416413"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-using-azure-cli"></a>Konfigurowanie równoważenia obciążenia i reguł dla ruchu wychodzącego w standardowego modułu równoważenia obciążenia przy użyciu wiersza polecenia platformy Azure
 
-Ten przewodnik Szybki Start pokazuje, jak skonfigurować reguły dla ruchu wychodzącego w standardowego modułu równoważenia obciążenia przy użyciu wiersza polecenia platformy Azure.  
+Ten przewodnik Szybki Start pokazano, jak skonfigurować reguły dla ruchu wychodzącego w standardowego modułu równoważenia obciążenia przy użyciu wiersza polecenia platformy Azure.  
 
 Gdy wszystko będzie gotowe, zasób modułu równoważenia obciążenia zawiera dwa Frontony oraz skojarzone z nimi reguły: jeden dla ruchu przychodzącego i inny wpis dla ruchu wychodzącego.  Każdym frontonem odwołuje się do publicznego adresu IP i używa tego scenariusza, inny publiczny adres IP dla ruchu przychodzącego i wychodzącego.   Reguły równoważenia obciążenia zapewnia tylko dla ruchu przychodzącego równoważenia obciążenia i reguły ruchu wychodzącego kontroluje NAT dla ruchu wychodzącego podane dla maszyny Wirtualnej.
 
@@ -63,7 +61,7 @@ Aby uzyskać dostęp do aplikacji internetowej za pośrednictwem Internetu, potr
 
 ## <a name="create-outbound-public-ip-address"></a>Tworzenie wychodzącego publicznego adresu IP 
 
-Utwórz adres IP w warstwie standardowa dla konfiguracji wychodzącego frontonu modułu równoważenia obciążenia [tworzenie sieci az public-ip](https://docs.microsoft.com/cli/azure/network/public-ip#create) o nazwie *mypublicipoutbound* w *myresourcegroupoutbound*.
+Utwórz adres IP w warstwie standardowa dla ruchu wychodzącego konfigurację frontonu modułu równoważenia obciążenia za pomocą polecenia [tworzenie sieci az public-ip](https://docs.microsoft.com/cli/azure/network/public-ip#create).
 
 ```azurecli-interactive
   az network public-ip create --resource-group myresourcegroupoutbound --name mypublicipoutbound --sku standard
@@ -81,7 +79,7 @@ W tej sekcji opisano szczegółowo procedurę tworzenia i konfigurowania następ
 
 ### <a name="create-load-balancer"></a>Tworzenie modułu równoważenia obciążenia
 
-Tworzenie modułu równoważenia obciążenia za pomocą przychodzących adres IP, korzystając [tworzenie równoważenia obciążenia sieciowego az](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) o nazwie *lb* zawierającej konfigurację adresu IP frontonu dla ruchu przychodzącego o nazwie *myfrontendinbound*, Pula zaplecza o nazwie *bepool* skojarzony z publicznym adresem IP *mypublicipinbound* utworzonego w poprzednim kroku.
+Tworzenie modułu równoważenia obciążenia za pomocą przychodzących adres IP, korzystając [tworzenie równoważenia obciążenia sieciowego az](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) o nazwie *lb* zawierającej konfigurację adresu IP frontonu dla ruchu przychodzącego i pulę zaplecza, który jest skojarzony z publicznym adresem IP *mypublicipinbound* utworzonego w poprzednim kroku.
 
 ```azurecli-interactive
   az network lb create \

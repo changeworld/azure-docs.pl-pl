@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 0e6580bfea181d28d884356d6c51ff5f9336c3db
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: b7ffb5487eceb83e8961af8dfddf2416ee11dd64
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093875"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417671"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Wysyłanie metryk przez system operacyjny gościa do usługi Azure Monitor metryki magazynu przy użyciu szablonu usługi Azure Resource Manager dla zestawu skalowania maszyn wirtualnych Windows
 
@@ -275,7 +275,7 @@ Aby wdrożyć szablon usługi Resource Manager, należy użyć programu Azure Po
 
 1. Na **Monitor** wybierz opcję **metryki**. 
 
-   ![Monitorowanie — metryki strony](./media/metrics-store-custom-rest-api/metrics.png) 
+   ![Monitorowanie — metryki strony](media/metrics-store-custom-guestos-resource-manager-vmss/metrics.png) 
 
 1. Okres agregacji można zmienić **ciągu ostatnich 30 minut**.  
 

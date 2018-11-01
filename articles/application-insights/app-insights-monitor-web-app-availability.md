@@ -11,15 +11,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 10/30/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: cf5f85d4f7e9dbe1278e9dc4290967d781b398f3
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 3869b47c4e435443bb569ae7b90df7fba9687ba7
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632828"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421258"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Monitorowanie dostępności i czasu odpowiedzi dowolnej witryny sieci Web
 Po wdrożeniu aplikacji internetowej lub witryny internetowej na dowolnym serwerze możesz skonfigurować testy, aby monitorować jej dostępność i czas odpowiedzi. Usługa [Azure Application Insights](app-insights-overview.md) wysyła żądania sieci Web do aplikacji w regularnych odstępach czasu z punktów na całym świecie. Jeśli aplikacja będzie odpowiadać powoli lub wcale, usługa powiadomi Cię o tym za pomocą alertu.
@@ -47,7 +47,7 @@ Kliknij pozycję **Wszystkie zasoby**, aby otworzyć blok Omówienie dla nowego 
 ## <a name="setup"></a>Tworzenie testu ping adresu URL
 Otwórz blok Dostępność i dodaj test.
 
-![Podaj przynajmniej adres URL swojej witryny sieci Web](./media/app-insights-monitor-web-app-availability/13-availability.png)
+![Podaj przynajmniej adres URL swojej witryny sieci Web](./media/app-insights-monitor-web-app-availability/001-create-test.png)
 
 * **Adres URL** może odnosić się do dowolnej strony sieci Web, którą chcesz przetestować, ale musi być widoczny w publicznym Internecie. Adres URL może zawierać ciąg zapytania. Możesz więc np. szybko sprawdzić działanie bazy danych. Jeśli adres URL jest rozpoznawany jako przekierowanie, zostanie prześledzonych maksymalnie 10 przekierowań.
 * **Analizuj zależne żądania**: po zaznaczeniu tej opcji test zażąda obrazów, skryptów, plików stylów i innych plików, które są częścią testowanej strony sieci Web. Rejestrowany czas odpowiedzi obejmuje czas poświęcony na pobieranie tych plików. Test zakończy się niepowodzeniem, jeśli nie uda się pobrać tych zasobów w ramach limitu czasu dla całego testu. Jeśli pole opcji nie zostanie zaznaczone, test zażąda tylko pliku pod podanym adresem URL.
@@ -56,10 +56,10 @@ Otwórz blok Dostępność i dodaj test.
 
 * **Częstotliwość testu**: określa, jak często wykonywane są testy w poszczególnych lokalizacjach testowych. Przy domyślnej częstotliwości równej 5 minut i 5 lokalizacjach testu witryna będzie testowana średnio co minutę.
 
-* **Lokalizacje testu** są to miejsca, z których nasze serwery wysyłają żądania sieci Web do Twojego adresu URL. Wybierz więcej niż jedną lokalizację, aby móc odróżnić problemy z witryną od problemów z siecią. Wybrać można maksymalnie 16 lokalizacji.
+* **Lokalizacje testu** są to miejsca, z których nasze serwery wysyłają żądania sieci Web do Twojego adresu URL. Nasze minimalna liczba lokalizacji testowych zalecane wynosi pięć, aby upewnić się, że móc odróżnić problemy z witryną od problemów z siecią. Wybrać można maksymalnie 16 lokalizacji.
 
-> [!NOTE] 
-> * Zdecydowanie zaleca się testowania z wielu lokalizacji, aby zapobiec fałszywych alarmów, wynikające z przejściowych problemów z określonej lokalizacji.
+> [!NOTE]
+> * Zdecydowanie zaleca się testowania z wielu lokalizacji na co najmniej pięciu lokalizacjach. Ten parametr zapobiega fałszywych alarmów, które mogą wynikać z przejściowych problemów z określonej lokalizacji. Ponadto znaleźliśmy, to liczba lokalizacji testowych równa próg lokalizacji alertu + 2 optymalną konfigurację. 
 > * Włączanie opcji powoduje "Analizuj zależne żądania" w bardziej rygorystyczne wyboru. Test może nie działać w sytuacjach, które mogą nie być widoczne podczas przeglądania ręcznie lokacji.
 
 * **Kryteria powodzenia**:
@@ -70,10 +70,12 @@ Otwórz blok Dostępność i dodaj test.
 
     **Zgodność zawartości**: ciąg znaków, np. „Witaj!” Sprawdzamy, czy w każdej odpowiedzi występuje dokładna zgodność pod względem wielkości liter. Musi to być zwykły ciąg znaków bez symboli wieloznacznych. Pamiętaj, że w razie zmiany zawartości strony może być konieczne zaktualizowanie tego ciągu.
 
+* **Próg lokalizacji alertu**: zaleca się co najmniej 3 na dobę, 5 lokalizacjach. Jest optymalne relacji między próg lokalizacji alertu i liczba lokalizacji testowych **próg lokalizacji alertu** = **liczba lokalizacji testowych** - 2, co najmniej pięć testów lokalizacje.
+
 ## <a name="multi-step-web-tests"></a>Wieloetapowe testy sieci Web
 Możliwe jest monitorowanie scenariusza, który obejmuje sekwencję adresów URL. Jeśli na przykład monitorujesz witrynę sklepu, możesz sprawdzić, czy dodawanie towarów do koszyka działa prawidłowo.
 
-> [!NOTE] 
+> [!NOTE]
 > Za wieloetapowe testy sieci Web są naliczane opłaty. [Schemat cennika](http://azure.microsoft.com/pricing/details/application-insights/).
 > 
 
@@ -266,7 +268,7 @@ Jeśli w ramach testu należy zalogować się przy użyciu protokołu OAuth, og�
 ## <a name="performance-tests"></a>Testy wydajności
 Witrynę internetową możesz poddać testowi obciążeniowemu. Podobnie jak w przypadku testu dostępności można wysłać proste żądania lub żądania wieloetapowe z naszych punktów na całym świecie. W przeciwieństwie do testu dostępności wysyłanych jest wiele żądań symulujących wielu równoczesnych użytkowników.
 
-Z poziomu bloku Przegląd otwórz pozycję **Ustawienia**, **Testy wydajności**. Podczas tworzenia testu zaproszono Cię do łączenia lub Utwórz konto DevOps platformy Azure.
+Z poziomu bloku Przegląd otwórz pozycję **Ustawienia**, **Testy wydajności**. Podczas tworzenia testu zaproszono Cię do łączenia lub utworzyć konto usługi DevOps platformy Azure.
 
 Po zakończeniu testu wyświetlane są czasy reakcji i współczynniki powodzenia.
 

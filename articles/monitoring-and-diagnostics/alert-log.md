@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 627c0ee5a2fab333b8a120867ab54ea76bc66823
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fd183b5776f30b12d577a94be147eabef05d258f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976843"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419371"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie alerty dzienników przy użyciu usługi Azure Monitor  
 
@@ -34,26 +34,26 @@ Szczegółowe dalej jest przewodnik krok po kroku za pomocą alertów dziennikó
 
 ### <a name="create-a-log-alert-rule-with-the-azure-portal"></a>Tworzenie reguł alertów dzienników w witrynie Azure portal
 1. W [portal](https://portal.azure.com/), wybierz opcję **Monitor** i w sekcji monitorowanie — wybierz **alerty**.  
-    ![Monitorowanie](./media/monitor-alerts-unified/AlertsPreviewMenu.png)
+    ![Monitorowanie](media/alert-log/AlertsPreviewMenu.png)
 
 1. Wybierz **nową regułę alertu** przycisk, aby utworzyć nowego alertu na platformie Azure.
-    ![Dodaj Alert](./media/monitor-alerts-unified/AlertsPreviewOption.png)
+    ![Dodaj Alert](media/alert-log/AlertsPreviewOption.png)
 
 1. W sekcji Tworzenie alertu jest przedstawiana wraz z trzech części, składający się z: *Zdefiniuj warunek alertu*, *Zdefiniuj szczegóły alertu*, i *zdefiniuj grupę akcji*.
 
-    ![Utwórz regułę](./media/monitor-alerts-unified/AlertsPreviewAdd.png)
+    ![Utwórz regułę](media/alert-log/AlertsPreviewAdd.png)
 
 1.  Zdefiniuj warunek alertu przy użyciu **wybierz zasób** łącze i określenie docelowej wybierz zasób. Filtr, wybierając _subskrypcji_, _typ zasobu_oraz wymagane _zasobów_. 
 
     >[!NOTE]
 
     > Do tworzenia dziennika alertów — weryfikowanie **dziennika** sygnał jest dostępna dla wybranego zasobu, przed kontynuowaniem.
-    ![Wybierz zasób](./media/monitor-alerts-unified/Alert-SelectResourceLog.png)
+    ![Wybierz zasób](media/alert-log/Alert-SelectResourceLog.png)
 
  
 1. *Alerty dzienników*: Upewnij się, **typ zasobu** jest źródłem analizy, takie jak *usługi Log Analytics* lub *usługi Application Insights* i sygnałów typ jako **dziennika** , następnie raz właściwe **zasobów** jest wybrana, kliknij przycisk *gotowe*. Dalej używać **Dodaj kryteria** przycisk, aby wyświetlić listę sygnałów dostępnymi dla zasobu, a z listy sygnału **przeszukiwania dzienników niestandardowych** opcję dla wybranego dziennika usługi monitor, takich jak *dziennika Analiza* lub *usługi Application Insights*.
 
-   ![Wybierz zasób — wyszukiwanie dzienników niestandardowych](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog.png)
+   ![Wybierz zasób — wyszukiwanie dzienników niestandardowych](media/alert-log/AlertsPreviewResourceSelectionLog.png)
 
    > [!NOTE]
 
@@ -61,7 +61,7 @@ Szczegółowe dalej jest przewodnik krok po kroku za pomocą alertów dziennikó
 
 1.  *Alerty dzienników*: po wybraniu zapytania dotyczące alertów może być wyrażona w **zapytania wyszukiwania** pola; Jeśli składnia zapytania jest nieprawidłowa, pola są wyświetlane w kolorze CZERWONYM błędu. Jeśli składnia zapytania jest poprawna, — do użytku w danych historycznych w określonej kwerendy jest wyświetlany jako wykres z opcją, aby dostosować okno czasowe z ostatnich sześciu godzin do ostatniego tygodnia.
 
- ![Konfigurowanie reguły alertu](./media/monitor-alerts-unified/AlertsPreviewAlertLog.png)
+ ![Konfigurowanie reguły alertu](media/alert-log/AlertsPreviewAlertLog.png)
 
  > [!NOTE]
 
@@ -69,7 +69,7 @@ Szczegółowe dalej jest przewodnik krok po kroku za pomocą alertów dziennikó
 
     >  Dla typu pomiar metryki alertów dzienników za pomocą usługi Application insights, można określić, które określonej zmiennej, aby pogrupować dane przy użyciu **agregowane na** opcji; co przedstawiono poniżej:
 
-    ![Agreguj według opcji](./media/monitor-alerts-unified/aggregate-on.png)
+    ![Agreguj według opcji](media/alert-log/aggregate-on.png)
 
 1.  *Alerty dzienników*: wizualizacji w miejscu, **Alert Logic** można wybrać opcje pokazano warunku, agregacji i na koniec próg. Wskaż w logice, czas oceny pod kątem określonego warunku, przy użyciu **okres** opcji. Wraz z częstotliwość uruchamiania alertu, wybierając **częstotliwość**.
 Aby uzyskać **alertów dzienników** alerty mogą być oparte na:
@@ -83,7 +83,7 @@ Aby uzyskać **alertów dzienników** alerty mogą być oparte na:
 
     - **Pomiń alerty**: po włączeniu funkcji pomijania reguła alertu akcje dla reguły są wyłączone w przypadku określona długość czasu, po utworzeniu nowego alertu. Reguła jest nadal uruchomione i tworzy rekordy alertów, pod warunkiem spełnienia kryteriów. Umożliwiając czasu, należy rozwiązać problem bez konieczności uruchamiania zduplikowane akcji.
 
-        ![Pomiń alerty dla dziennika alertów](./media/monitor-alerts-unified/AlertsPreviewSuppress.png)
+        ![Pomiń alerty dla dziennika alertów](media/alert-log/AlertsPreviewSuppress.png)
 
         > [!TIP]
         > Określ wartość alertu Pomiń większe niż częstotliwość alertu, aby upewnić się, że powiadomienia zostały zatrzymane bez nakładania się
@@ -98,19 +98,19 @@ Aby uzyskać **alertów dzienników** alerty mogą być oparte na:
     - **Powiadomienia e-mail**: zastępuje *temat wiadomości e-mail* w wiadomości e-mail wysyłane za pośrednictwem grupy akcji, jeśli istnieje co najmniej jednej akcji poczty e-mail, wspomnianych grupy akcji. Nie można zmodyfikować treść wiadomości e-mail i to pole jest **nie** adresu e-mail.
     - **Uwzględnij niestandardowy ładunek Json**: zastępuje element webhook JSON używany przez grupy akcji; jeśli istnieje co najmniej jednej akcji elementu webhook, wspomnianych grupy akcji. Użytkownik może określić format JSON ma być używany dla wszystkich elementów webhook skonfigurowane w skojarzonej grupy akcji; Aby uzyskać więcej informacji dotyczących formatów elementu webhook, zobacz [Akcja elementu webhook dla dziennika alertów](monitor-alerts-unified-log-webhook.md). Opcja Widok do elementu Webhook jest udostępniane na Sprawdź format przy użyciu przykładowych danych JSON.
 
-        ![Akcja zastąpienia dla dziennika alertów](./media/monitor-alerts-unified/AlertsPreviewOverrideLog.png)
+        ![Akcja zastąpienia dla dziennika alertów](media/alert-log/AlertsPreviewOverrideLog.png)
 
 
 1. Jeśli wszystkie pola są prawidłowe i za pomocą znaczników zielony **Utwórz regułę alertu** kliknięcie przycisku, a alert jest tworzony w usłudze Azure Monitor — alerty. Wszystkie alerty mogą być wyświetlane z alerty pulpitu nawigacyjnego.
 
-    ![Tworzenie reguł](./media/monitor-alerts-unified/AlertsPreviewCreate.png)
+    ![Tworzenie reguł](media/alert-log/AlertsPreviewCreate.png)
 
     W ciągu kilku minut ten alert jest aktywny i wyzwala w sposób opisany wcześniej.
 
 Użytkownicy mogą również zakończona ich zapytania usługi analytics w [analizy dzienników strony w witrynie Azure portal](../log-analytics/log-analytics-log-search-portals.md#log-analytics-page
 ) i Wypchnij go do utworzenia alertu, klikając przycisk "Ustaw Alert" - następnie postępując zgodnie z instrukcjami krok 6 lub nowszym w tym samouczku powyżej.
 
- ![Log Analytics — Ustawianie alertu](./media/monitor-alerts-unified/AlertsAnalyticsCreate.png)
+ ![Log Analytics — Ustawianie alertu](media/alert-log/AlertsAnalyticsCreate.png)
 
 ### <a name="view--manage-log-alerts-in-azure-portal"></a>Wyświetlanie i zarządzanie alertów dzienników w witrynie Azure portal
 
@@ -122,7 +122,7 @@ Użytkownicy mogą również zakończona ich zapytania usługi analytics w [anal
 
 
 1. Wybierz **zarządzanie regułami** znajdujący się na górnym pasku, aby przejść do sekcji Zarządzanie reguły — gdzie znajduje się lista wszystkich reguł alertów utworzone; w tym alerty, które zostały wyłączone.
-    ![ Zarządzaj regułami alertów](./media/monitoring-activity-log-alerts-new-experience/manage-alert-rules.png)
+    ![ Zarządzaj regułami alertów](media/alert-log/manage-alert-rules.png)
 
 ## <a name="managing-log-alerts-using-azure-resource-template"></a>Zarządzanie alertami dziennika przy użyciu szablonu usługi Azure Resource
 Obecnie dziennik, który alerty mogą być tworzone przy użyciu dwóch różnych szablonów zasobów oparte na jaką platformę analizy alert jest opierać się na (to znaczy) w usłudze Log Analytics lub usługi Application Insights.

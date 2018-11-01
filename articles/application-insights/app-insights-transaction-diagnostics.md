@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: df88e9025da305701dc7168f663cad2e8f5ac738
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 5b52fd41fc3e37078bbddc721c0c54af2c430b43
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42820217"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419235"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Diagnostyka ujednoliconego transakcji między składnikami
 
@@ -38,7 +38,7 @@ Składniki są niezależne wdrażanym poszczególnych części aplikacji rozpros
 ## <a name="transaction-diagnostics-experience"></a>Środowisko Diagnostyka transakcji
 Ten widok składa się z czterech części klucza: wyniki listy, wykres transakcji międzyskładnikowych, listę sekwencję czasową wszystkie dane telemetryczne dotyczące tej operacji i okienka szczegółów dla każdego elementu wybranego telemetrii po lewej stronie.
 
-![Kluczowe elementy](media/app-insights-e2eTxn-diagnostics/4partsCrossComponent.png)
+![Kluczowe elementy](media/app-insights-transaction-diagnostics/4partsCrossComponent.png)
 
 ## <a name="cross-component-transaction-chart"></a>Wykres transakcji między składnikami
 
@@ -57,19 +57,19 @@ Wywołania do innych składników mają dwa wiersze: jeden wiersz reprezentuje w
 
 W tej sekcji przedstawiono widok listy niezhierarchizowanej w czasie sekwencji wszystkie dane telemetryczne dotyczące tej transakcji. Zawiera również niestandardowe zdarzenia i dane śledzenia, które nie są wyświetlane na wykresie transakcji. Można filtrować dane telemetryczne wygenerowane przez składnik/wywołań dla tej listy. Można wybrać dowolny element danych telemetrycznych na tej liście, aby wyświetlić odpowiadające [szczegółów po prawej stronie](#details-of-the-selected-telemetry).
 
-![Sekwencja czas wszystkie dane telemetryczne](media/app-insights-e2eTxn-diagnostics/allTelemetryDrawerOpened.png)
+![Sekwencja czas wszystkie dane telemetryczne](media/app-insights-transaction-diagnostics/allTelemetryDrawerOpened.png)
 
 ## <a name="details-of-the-selected-telemetry"></a>Szczegóły wybranego telemetrii
 
 W tym okienku zwijany przedstawiono szczegóły każdego wybranego elementów z wykresu transakcji lub z listy. "Pokaż wszystkie" zawiera listę wszystkich standardowych atrybutów, które są zbierane. Wszelkie atrybuty niestandardowe zostały oddzielnie wymienione poniżej standardowego zestawu. Kliknij pozycję "..." poniżej okna śledzenia stosu, aby uzyskać możliwość kopiowania śledzenia. "Ślady narzędzia profiler Otwórz" lub "Otwórz migawkę debugowania" przedstawia Diagnostyka na poziomie kodu w odpowiedniej okienka szczegółów.
 
-![Szczegóły wyjątku](media/app-insights-e2eTxn-diagnostics/exceptiondetail.png)
+![Szczegóły wyjątku](media/app-insights-transaction-diagnostics/exceptiondetail.png)
 
 ## <a name="search-results"></a>Wyniki wyszukiwania
 
 W tym okienku zwijany przedstawia wyniki, które spełniają kryteria filtru. Kliknij dowolny wynik można zaktualizować szczegółów odpowiednich 3 sekcji wymienionych powyżej. Spróbujemy znaleźć przykłady, które z największym prawdopodobieństwem mogą mieć szczegóły dostępny w wszystkich składników, nawet jeśli jest stosowane w dowolnym z nich. Są one wyświetlane jako "sugerowane" przykłady.
 
-![Wyniki wyszukiwania](media/app-insights-e2eTxn-diagnostics/searchResults.png)
+![Wyniki wyszukiwania](media/app-insights-transaction-diagnostics/searchResults.png)
 
 ## <a name="profiler-and-snapshot-debugger"></a>Profiler i snapshot debugger
 
@@ -79,7 +79,7 @@ Jeśli nie można pobrać Profiler pracy, skontaktuj się z **serviceprofilerhel
 
 Jeśli nie można pobrać rozszerzenia Snapshot Debugger pracy, skontaktuj się z **snapshothelp@microsoft.com**
 
-![Integracja Profiler](media/app-insights-e2eTxn-diagnostics/profilerTraces.png)
+![Integracja Profiler](media/app-insights-transaction-diagnostics/profilerTraces.png)
 
 ## <a name="faq"></a>Często zadawane pytania
 

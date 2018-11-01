@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 40c69d996721b664fbea5cd539f60ecc6a521d24
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 1bcd9dfe2d7a846dd040944509be916c1964ba48
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457650"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420391"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Usługa Azure Data szyfrowanie w spoczynku
 
@@ -29,7 +29,7 @@ Microsoft Azure zawiera narzędzia, aby chronić dane zgodnie z potrzebami zabez
 - W tym artykule omówiono różne składniki biorące udział w implementacji ochrony danych
 - Przegląda zalety i wady zarządzania kluczami w różnych metod ochrony. 
 
-Szyfrowanie w spoczynku jest typowym wymogiem zabezpieczeń. Na platformie Azure organizacje mogą osiągnąć szyfrowanie w spoczynku bez kosztów wdrażania i zarządzania i ryzyko związane z rozwiązaniem do zarządzania kluczami niestandardowych. Organizacje mają możliwość umożliwienie zarządzania szyfrowanie w spoczynku w usłudze Azure. Ponadto organizacje mają różne opcje ściśle zarządzać szyfrowania lub kluczy szyfrowania.
+Szyfrowanie w spoczynku jest typowym wymogiem zabezpieczeń. Na platformie Azure organizacje mogą szyfrować danych w spoczynku, bez ryzyka i kosztów rozwiązań niestandardowych zarządzania kluczami. Organizacje mają możliwość umożliwienie zarządzania szyfrowanie w spoczynku w usłudze Azure. Ponadto organizacje mają różne opcje ściśle zarządzać szyfrowania lub kluczy szyfrowania.
 
 ## <a name="what-is-encryption-at-rest"></a>Co to jest szyfrowanie w spoczynku?
 
@@ -38,7 +38,7 @@ Szyfrowanie w spoczynku jest kodowania (szyfrowanie) danych, gdy jest ona utrwal
 - Klucz szyfrowania symetrycznego jest używany do szyfrowania danych są zapisywane do magazynu. 
 - Ten sam klucz szyfrowania jest używany do odszyfrowania danych, ponieważ jest ona readied do użycia w pamięci.
 - Dane mogą być podzielone na partycje, a różne klucze mogą być używane do każdej partycji.
-- Klucze muszą być przechowywane w bezpiecznej lokalizacji przy użyciu zasad kontroli dostępu, ograniczanie dostępu do niektórych tożsamości i rejestrowanie użycia klucza. Klucze szyfrowania danych często są szyfrowane za pomocą asymetrycznych, aby bardziej ograniczyć dostęp.
+- Klucze muszą być przechowywane w bezpiecznej lokalizacji z kontrolą dostępu opartą na tożsamość i zasady inspekcji. Klucze szyfrowania danych często są szyfrowane za pomocą asymetrycznych, aby bardziej ograniczyć dostęp.
 
 W praktyce kluczowych scenariuszy zarządzania i kontroli, a także gwarancje skalowalność i dostępność, Wymagaj konstrukcje dodatkowe. Microsoft Azure szyfrowania Rest pojęć i składników są opisane poniżej.
 
@@ -46,13 +46,13 @@ W praktyce kluczowych scenariuszy zarządzania i kontroli, a także gwarancje sk
 
 Szyfrowanie w spoczynku zapewnia ochronę danych przechowywanych danych (nieaktywne). Ataków magazynowanych danych obejmują próbuje uzyskać fizyczny dostęp do sprzętu, na którym dane są przechowywane, a następnie naruszyć zawartymi danymi. W przypadku ataków dysk twardy serwera może mieć zostały niewłaściwego stosowania podczas konserwacji, pozwalając osobie atakującej usunąć dysk twardy. Później, osoba atakująca spowodowałaby dysku twardego na komputerze pod jej kontrolą próbuje uzyskać dostęp do danych. 
 
-Szyfrowanie w spoczynku zaprojektowano w celu uniemożliwia osobie atakującej uzyskanie dostępu do niezaszyfrowane dane przez zapewnienie im dane są szyfrowane, gdy na dysku. Gdyby osobie atakującej uzyskanie dysk twardy z takich zaszyfrowanych danych i Brak dostępu do kluczy szyfrowania, osoba atakująca może nie naruszyć danych bez trudu doskonałe. W takim przypadku osoba atakująca musi próby ataków na zaszyfrowane dane, które są bardziej złożone i korzystanie z zasobów niż dostęp do bez szyfrowania danych na dysku twardym. Z tego powodu szyfrowanie w spoczynku zdecydowanie zaleca się i jest wymagany w przypadku wielu organizacji o wysokim priorytecie. 
+Szyfrowanie w spoczynku zaprojektowano w celu uniemożliwia osobie atakującej uzyskanie dostępu do niezaszyfrowane dane przez zapewnienie im dane są szyfrowane, gdy na dysku. Jeśli osoba atakująca uzyskuje dysk twardy z zaszyfrowanych danych, ale nie klucze szyfrowania, osoba atakująca musi pokonania szyfrowania do odczytywania danych. Ten rodzaj ataku jest znacznie więcej złożone i korzystanie z zasobów niż dostęp do nieszyfrowanych danych na dysku twardym. Z tego powodu szyfrowanie w spoczynku zdecydowanie zaleca się i jest wymagany w przypadku wielu organizacji o wysokim priorytecie. 
 
 Szyfrowanie w spoczynku również mogą być wymagane przez organizacji na potrzeby danych wysiłków nadzoru i zgodności. Przepisy branżowe i rządowe, takie jak HIPAA, PCI i FedRAMP, układ konkretnych zabezpieczeń dotyczące wymagania dotyczące ochrony i szyfrowania danych. Szyfrowanie w spoczynku jest miarą obowiązkowe wymaganych do zapewnienia zgodności z niektórymi z tych przepisów.
 
-Oprócz zgodności i przepisów szyfrowanie w spoczynku powinny być uważane za możliwości platformy ochronę w głębi. Firma Microsoft udostępnia zgodności platformy dla usług, aplikacji i danych, kompleksowe możliwości i bezpieczeństwo fizyczne, kontroli i inspekcji dostępu do danych, jest ważne, aby zapewnić dodatkowe środki bezpieczeństwa "nakładające się" w przypadku jednego z innych środki bezpieczeństwa kończy się niepowodzeniem. Szyfrowanie w spoczynku udostępnia takie dodatkowy mechanizm obrony.
+Oprócz spełniające wymagania przepisów i zgodności, szyfrowanie w spoczynku zapewnia ochronę w głębi ochronę. Microsoft Azure zapewnia platformę zgodnych usług, aplikacji i danych. Udostępnia również kompleksowe możliwości i zabezpieczeń fizycznych, kontrola dostępu do danych i przeprowadzania inspekcji. Jednak jest ważne zapewnić dodatkowe środki bezpieczeństwa "nakładające się", w przypadku awarii jednego pozostałe środki bezpieczeństwa i szyfrowanie w spoczynku zapewnia środkiem bezpieczeństwa
 
-Firma Microsoft jest zobowiązana do zapewnienia szyfrowania opcjach rest dla usług w chmurze, a także zapewnić klientom odpowiednie funkcje zarządzania kluczy szyfrowania i uzyskać dostęp do dzienników wyświetlane, gdy są używane klucze szyfrowania. Ponadto firma Microsoft pracuje się w kierunku celu podejmowania wszystkich danych klientów, domyślnie szyfrowane w stanie spoczynku.
+Firma Microsoft dba o szyfrowania rest opcje usług w chmurze i kontrolę nad kluczami szyfrowania i dzienniki użycia klucza, zapewniając klientom. Ponadto firma Microsoft pracuje się do szyfrowania wszystkich danych klientów w stanie spoczynku domyślnie.
 
 ## <a name="azure-encryption-at-rest-components"></a>Szyfrowanie usługi Azure w pozostałej części
 
@@ -104,7 +104,7 @@ Dla celów szyfrowania po stronie klienta należy rozważyć następujące kwest
 - Klienci zarządzanie i przechowywania kluczy w środowisku lokalnym lub w innych secure magazynów. Klucze nie są dostępne dla usług platformy Azure
 - Funkcji w chmurze z ograniczoną
 
-Modele szyfrowania obsługiwanych na platformie Azure, podzielić na dwie główne grupy: "Szyfrowania klienta" i "po stronie serwera szyfrowania" jako wymienionych wcześniej. Należy pamiętać, że niezależnie od szyfrowania w modelu rest używanych usług platformy Azure zawsze zaleca się korzystanie z bezpiecznym transportem, takiego jak protokół TLS lub HTTPS. Dlatego szyfrowania podczas transportu powinny być kierowane przez protokół transportu i nie powinny być czynnikiem w określeniu, które szyfrowanie w modelu rest do użycia.
+Modele szyfrowania obsługiwanych na platformie Azure, podzielić na dwie główne grupy: "Szyfrowania klienta" i "po stronie serwera szyfrowania" jako wymienionych wcześniej. Niezależnie od szyfrowania w modelu rest używany, usług platformy Azure, zawsze zaleca się korzystanie z bezpiecznym transportem, takiego jak protokół TLS lub HTTPS. Dlatego szyfrowania podczas transportu powinny być kierowane przez protokół transportu i nie powinny być czynnikiem w określeniu, które szyfrowanie w modelu rest do użycia.
 
 ### <a name="client-encryption-model"></a>Model szyfrowania klienta
 
@@ -124,13 +124,13 @@ Każdy z szyfrowania po stronie serwera na pozostałą modeli oznacza cechy char
 
 #### <a name="server-side-encryption-using-service-managed-keys"></a>Szyfrowanie po stronie serwera przy użyciu kluczy zarządzanych przez usługę
 
-Dla wielu klientów zasadniczego wymogu jest zapewnienie, że dane są szyfrowane, zawsze wtedy, gdy jest w stanie spoczynku. Szyfrowanie po stronie serwera przy użyciu kluczy zarządzanych przez usługę umożliwia ten model, co umożliwia klientom oznaczyć określonego zasobu (konto magazynu, bazy danych SQL itp.) do szyfrowania i pozostawienie niezmienionej wszystkie aspekty zarządzania kluczami, takich jak publikowania klucza, obrotu i kopie zapasowe do firmy Microsoft. Większości usług platformy Azure, które zazwyczaj obsługują szyfrowanie w spoczynku obsługiwać ten model odciążania zarządzania kluczy szyfrowania na platformie Azure. Dostawca zasobów platformy Azure spowoduje utworzenie kluczy, umieszcza je w bezpiecznym magazynie i pobiera je w razie. Oznacza to, że usługa ma pełny dostęp do kluczy, a usługa ma pełną kontrolę nad poświadczenia zarządzania cyklem życia.
+Dla wielu klientów zasadniczego wymogu jest zapewnienie, że dane są szyfrowane, zawsze wtedy, gdy jest w stanie spoczynku. Szyfrowania po stronie serwera użyć tego modelu umożliwia klucze zarządzane przez usługę, co umożliwia klientom oznaczyć określonego zasobu (konto magazynu, bazy danych SQL itp.) do szyfrowania i pozostawienie niezmienionej wszystkie aspekty zarządzania kluczami, takich jak publikowania klucza, obrotu i kopie zapasowe do firmy Microsoft . Większości usług platformy Azure, które zazwyczaj obsługują szyfrowanie w spoczynku obsługiwać ten model odciążania zarządzania kluczy szyfrowania na platformie Azure. Dostawca zasobów platformy Azure spowoduje utworzenie kluczy, umieszcza je w bezpiecznym magazynie i pobiera je w razie. Oznacza to, że usługa ma pełny dostęp do kluczy, a usługa ma pełną kontrolę nad poświadczenia zarządzania cyklem życia.
 
 ![Zarządzane](./media/azure-security-encryption-atrest/azure-security-encryption-atrest-fig4.png)
 
-Szyfrowanie po stronie serwera za pomocą usług zarządzanych kluczy w związku z tym szybko rozwiązuje konieczności posiadania szyfrowania nieużywanych danych za pomocą niskie obciążenie do klienta. Jeśli jest dostępny, klient zazwyczaj spowoduje otwarcie witryny Azure portal dla subskrypcji docelowej i dostawcy zasobów i sprawdza, czy pole, wskazując, chce, aby dane były szyfrowane. W niektórych menedżerów zasobów szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez usługę jest domyślnie włączone.
+Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez usługę w związku z tym szybko rozwiązuje konieczności posiadania szyfrowania nieużywanych danych za pomocą niskie obciążenie do klienta. Jeśli jest dostępny, klient zazwyczaj spowoduje otwarcie witryny Azure portal dla subskrypcji docelowej i dostawcy zasobów i sprawdza, czy pole, wskazując, chce, aby dane były szyfrowane. W niektórych menedżerów zasobów szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez usługę jest domyślnie włączone.
 
-Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez Microsoft pociąga za sobą usługi ma pełny dostęp do przechowywania i zarządza kluczami. Chociaż niektórzy klienci może być konieczne zarządzanie kluczami, ponieważ uważają, że będą mogli większe bezpieczeństwo, koszty i ryzyko związane z rozwiązaniem niestandardowego magazynu kluczy należy uwzględnić podczas oceny tego modelu. W wielu przypadkach organizacji mogą określić, że ograniczeń zasobów lub ryzyko związane z rozwiązaniem w firmie może większe niż ryzyko zarządzania chmurą szyfrowania na klucze rest.  Jednak ten model nie może być wystarczające dla organizacji, które mają wymagania do kontrolowania, tworzenie i cyklem życia kluczy szyfrowania lub innego personelu, zarządzać kluczami szyfrowania usługi niż zarządzanie usługą (czyli podziału Zarządzanie kluczami z ogólnym modelu zarządzania dla usługi).
+Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez Microsoft zakłada, że usługa ma pełny dostęp do przechowywania i zarządzania kluczami. Chociaż niektórzy klienci może być konieczne zarządzanie kluczami, ponieważ uważają, że będą mogli większe bezpieczeństwo, koszty i ryzyko związane z rozwiązaniem niestandardowego magazynu kluczy należy uwzględnić podczas oceny tego modelu. W wielu przypadkach organizacja może określić, że ograniczeń zasobów lub ryzyko związane z rozwiązaniem w firmie może być większe niż ryzyko zarządzania chmurą szyfrowania na klucze rest.  Jednak ten model nie może być wystarczające dla organizacji, które mają wymagania do kontrolowania, tworzenie i cyklem życia kluczy szyfrowania lub innego personelu, zarządzać kluczami szyfrowania usługi niż zarządzanie usługą (czyli podziału zarządzania kluczami z ogólnym modelu zarządzania dla usługi).
 
 ##### <a name="key-access"></a>Dostęp do klucza
 
@@ -147,13 +147,13 @@ W przypadku szyfrowania po stronie serwera za pomocą kluczy zarządzanych przez
 - Nie klientowi kontrolę nad kluczami szyfrowania (Specyfikacja klucza cyklu życia, odwołań, itp.)
 - Możliwość oddzielenie czynności związanych z zarządzania kluczami z ogólnym modelu zarządzania dla usługi
 
-#### <a name="server-side-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Szyfrowanie po stronie serwera za pomocą kluczy zarządzaną przez klienta w usłudze Azure Key Vault 
+#### <a name="server-side-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta w usłudze Azure Key Vault 
 
-W scenariuszach, gdzie jest wymaganie szyfrowania danych na interfejs rest i kontroli klienci klucze szyfrowania mogą używać szyfrowania po stronie serwera za pomocą kluczy zarządzanych przez klienta w usłudze Key Vault. Niektóre usługi mogą przechowywać tylko katalogu głównego klucza szyfrowania w usłudze Azure Key Vault i Zapisz zaszyfrowany klucz szyfrowania danych w lokalizacji wewnętrznych bliżej do danych. W tym scenariuszu klienci Przynieś własne klucze do usługi Key Vault (BYOK — Bring Your Own Key), lub wygenerować nowe i ich używać do szyfrowania żądanych zasobów. Gdy dostawca zasobów wykonuje operacje szyfrowania i odszyfrowywania używa skonfigurowanego klucza jako klucza głównego dla wszystkich operacji szyfrowania. 
+W scenariuszach, gdzie jest wymaganie szyfrowania danych magazynowanych i kontrolować szyfrowanie kluczy klienci mogą używać szyfrowania po stronie serwera za pomocą kluczy zarządzanych przez klienta w usłudze Key Vault. Niektóre usługi mogą przechowywać tylko katalogu głównego klucza szyfrowania w usłudze Azure Key Vault i Zapisz zaszyfrowany klucz szyfrowania danych w lokalizacji wewnętrznych bliżej do danych. W tym scenariuszu klienci Przynieś własne klucze do usługi Key Vault (BYOK — Bring Your Own Key), lub wygenerować nowe i ich używać do szyfrowania żądanych zasobów. Gdy dostawca zasobów wykonuje operacje szyfrowania i odszyfrowywania używa skonfigurowanego klucza jako klucza głównego dla wszystkich operacji szyfrowania. 
 
 ##### <a name="key-access"></a>Dostęp do klucza
 
-Model szyfrowanie po stronie serwera za pomocą kluczy zarządzaną przez klienta w usłudze Azure Key Vault obejmuje usługę dostępu do kluczy do szyfrowania i odszyfrowywania, zgodnie z potrzebami. Rest klucze szyfrowania są dostępne usługi za pomocą zasad kontroli dostępu. Ta zasada udziela dostępu do tożsamości usługi, aby otrzymać klucz. To usługa platformy Azure, które zostały uruchomione w imieniu skojarzonej subskrypcji można skonfigurować przy użyciu tożsamości w tej subskrypcji. Usługę można wykonywać uwierzytelnianie usługi Azure Active Directory i odbierania token uwierzytelniania identyfikuje się jako działający w imieniu subskrypcję usługi. Ten token może być przedstawiony w usłudze Key Vault w celu uzyskania klucza, które uzyskało dostęp do.
+Model szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta w usłudze Azure Key Vault obejmuje usługę dostępu do kluczy do szyfrowania i odszyfrowywania, zgodnie z potrzebami. Rest klucze szyfrowania są dostępne usługi za pomocą zasad kontroli dostępu. Ta zasada udziela dostępu do tożsamości usługi, aby otrzymać klucz. To usługa platformy Azure, które zostały uruchomione w imieniu skojarzonej subskrypcji można skonfigurować przy użyciu tożsamości w tej subskrypcji. Usługę można wykonywać uwierzytelnianie usługi Azure Active Directory i odbierania token uwierzytelniania identyfikuje się jako działający w imieniu subskrypcję usługi. Ten token może być przedstawiony w usłudze Key Vault w celu uzyskania klucza, które uzyskało dostęp do.
 
 Dla operacji przy użyciu kluczy szyfrowania, tożsamości usługi można można udzielić dostępu do żadnego z następujących operacji: Odszyfruj, Szyfruj, unwrapKey, wrapKey, sprawdź, zaloguj się, Pobierz, listy, aktualizacji, tworzenie, importowanie, Usuń, kopii zapasowych i przywracania.
 
@@ -178,11 +178,11 @@ Aby uzyskać klucz do użycia w szyfrowania lub odszyfrowywania danych magazynow
 
 #### <a name="server-side-encryption-using-service-managed-keys-in-customer-controlled-hardware"></a>Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez usługę w sprzęcie kontrolowane przez klienta
 
-Niektóre usługi platformy Azure Aktywuj model zarządzania kluczami hosta Your Own Key (HYOK). Ten tryb zarządzania jest przydatne w scenariuszach w przypadku, gdy istnieje potrzeba do szyfrowania danych magazynowanych i zarządzanie kluczami w repozytorium własnościowych poza kontrolą firmy Microsoft. W tym modelu usługa musi pobrać klucza z witryny zewnętrznej. Dotyczy gwarancji wydajności i dostępności, a konfiguracja jest bardziej złożona. Ponadto ponieważ usługa ma dostęp do klucza szyfrowania danych podczas wykonywania operacji szyfrowania i odszyfrowywania ogólną gwarancje bezpieczeństwa w tym modelu są podobne do Jeśli klucze są zarządzane w usłudze Azure Key Vault klient.  W wyniku tego modelu nie jest odpowiednie dla większości organizacji, chyba że mają wymagania dotyczące określonych zarządzania kluczami. Ze względu na ograniczenia te większości usług platformy Azure nie obsługują szyfrowania po stronie serwera za pomocą kluczy zarządzanych przez serwer w sprzęcie kontrolowane przez klienta.
+Niektóre usługi platformy Azure Aktywuj model zarządzania kluczami hosta Your Own Key (HYOK). Ten tryb zarządzania jest przydatne w scenariuszach w przypadku, gdy istnieje potrzeba do szyfrowania danych magazynowanych i zarządzanie kluczami w repozytorium własnościowych poza kontrolą firmy Microsoft. W tym modelu usługa musi pobrać klucza z witryny zewnętrznej. Dotyczy gwarancji wydajności i dostępności, a konfiguracja jest bardziej złożona. Ponadto ponieważ usługa ma dostęp do klucza szyfrowania danych podczas wykonywania operacji szyfrowania i odszyfrowywania ogólną gwarancje bezpieczeństwa w tym modelu są podobne do Jeśli klucze są zarządzane przez klienta w usłudze Azure Key Vault.  W wyniku tego modelu nie jest odpowiednie dla większości organizacji, chyba że mają wymagania dotyczące określonych zarządzania kluczami. Ze względu na ograniczenia te większości usług platformy Azure nie obsługują szyfrowania po stronie serwera za pomocą kluczy zarządzanych przez serwer w sprzęcie kontrolowane przez klienta.
 
 ##### <a name="key-access"></a>Dostęp do klucza
 
-Gdy jest używane szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez usługę w sprzęcie komputerowym kontrolowane klucze są przechowywane w systemie, skonfigurowane przez klienta. Usługi platformy Azure, które obsługują ten model udostępniają metody ustanawiania bezpiecznego połączenia z klientem podany magazyn kluczy.
+Gdy jest używane szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez usługę w sprzęcie kontrolowane przez klienta klucze są przechowywane w systemie, skonfigurowane przez klienta. Usługi platformy Azure, które obsługują ten model udostępniają metody ustanawiania bezpiecznego połączenia z klientem podany magazyn kluczy.
 
 **Zalety**
 
@@ -209,11 +209,11 @@ Microsoft Cloud services są używane we wszystkich modelach trzy chmury: IaaS, 
 
 ### <a name="encryption-at-rest-for-saas-customers"></a>Szyfrowanie w spoczynku SaaS klientom
 
-Oprogramowanie jako usługa (SaaS) klienci zazwyczaj mają szyfrowanie w spoczynku, włączone lub dostępne w poszczególnych usługach. Usługi Office 365 oferuje kilka opcji klienci będą mogli zweryfikować lub włączyć szyfrowanie danych magazynowanych. Aby uzyskać informacje o usługach Office 365 Zobacz technologii szyfrowania danych dla usługi Office 365.
+Oprogramowanie jako usługa (SaaS) klienci zazwyczaj mają szyfrowanie w spoczynku, włączone lub dostępne w poszczególnych usługach. Usługi Office 365 oferuje kilka opcji klienci będą mogli zweryfikować lub włączyć szyfrowanie danych magazynowanych. Aby uzyskać informacji na temat usługi Office 365, zobacz [szyfrowania w usłudze Office 365](https://docs.microsoft.com/office365/securitycompliance/encryption).
 
 ### <a name="encryption-at-rest-for-paas-customers"></a>Szyfrowanie danych magazynowanych na potrzeby klientów PaaS
 
-Platforma jako dane klienta usługi (PaaS) znajduje się zwykle w środowisku wykonywania aplikacji i wszystkich dostawców zasobów platformy Azure używane do przechowywania danych klientów. Aby zobaczyć, szyfrowanie w spoczynku dostępnych opcji, sprawdź w tabeli poniżej platformy magazynu i aplikacji, których używasz. Jeśli są obsługiwane, aby uzyskać instrukcje dotyczące włączania szyfrowanie w spoczynku linków dla każdego dostawcy zasobów. 
+Platforma jako dane klienta usługi (PaaS) znajduje się zwykle w środowisku wykonywania aplikacji i wszystkich dostawców zasobów platformy Azure używane do przechowywania danych klientów. Aby zobaczyć, szyfrowanie w dostępnych opcji rest, sprawdź w tabeli poniżej platformy magazynu i aplikacji, których używasz. Jeśli są obsługiwane, aby uzyskać instrukcje dotyczące włączania szyfrowanie w spoczynku linków dla każdego dostawcy zasobów. 
 
 ### <a name="encryption-at-rest-for-iaas-customers"></a>Szyfrowanie w spoczynku klientom IaaS
 
@@ -225,11 +225,11 @@ Paas innych usług platformy Azure, które przechowują dane szyfrowane, gdy mog
 
 #### <a name="encrypted-compute"></a>Zaszyfrowane obliczeń
 
-Kompleksowe rozwiązania Rest wymaga, że danych nigdy nie są utrwalane w postaci niezaszyfrowanej. W użytku na serwerze, trwa ładowanie danych w pamięci, dane mogą zostać utrwalone lokalnie na różne sposoby, m.in. plik stronicowania Windows zrzutu awaryjnego i wszelkie rejestrowania, które aplikacja może wykonywać. Aby upewnić się, że te dane są szyfrowane, gdy aplikacje IaaS mogą używać usługi Azure Disk Encryption, maszyn wirtualnych IaaS platformy Azure (Windows lub Linux) i dysku wirtualnego. 
+Kompleksowe rozwiązania Rest wymaga, że danych nigdy nie są utrwalane w postaci niezaszyfrowanej. W użytku na serwerze, trwa ładowanie danych w pamięci, dane mogą zostać utrwalone lokalnie na różne sposoby, m.in. plik stronicowania Windows zrzutu awaryjnego i wszelkie rejestrowania, które aplikacja może wykonywać. Aby upewnić się, że te dane są szyfrowane w stanie spoczynku, aplikacje IaaS mogą używać usługi Azure Disk Encryption, maszyny wirtualnej IaaS platformy Azure (Windows lub Linux) i dysku wirtualnego. 
 
 #### <a name="custom-encryption-at-rest"></a>Niestandardowe szyfrowanie w spoczynku
 
-Zaleca się, że jeśli to możliwe, IaaS aplikacje korzystać z usługi Azure Disk Encryption i szyfrowania opcjach Rest udostępniane przez użyte usługi systemu Azure. W niektórych przypadkach takich jak wymagania dotyczące szyfrowania nieregularne lub magazynu opartego na spoza platformy Azure, Deweloper aplikacji IaaS może być konieczne wdrożenie szyfrowania rest samodzielnie. Deweloperzy IaaS można lepiej rozwiązań integracji z platformy Azure, zarządzania i klienta oczekiwania dzięki wykorzystaniu niektórych składników platformy Azure. W szczególności deweloperów należy używać usługi Azure Key Vault do zapewnienia bezpiecznego magazynu kluczy, a także zapewnić klientom spójne zarządzanie kluczami opcji w przypadku większości usług platformy Azure platformy. Ponadto niestandardowych rozwiązań należy używać Azure-Managed tożsamości usługi w celu umożliwienia dostępu do kluczy szyfrowania konta usług. Aby uzyskać informacje dla deweloperów usługi Azure Key Vault i tożsamości zarządzanych usług Zobacz ich odpowiednich zestawów SDK.
+Zaleca się, że jeśli to możliwe, IaaS aplikacje korzystać z usługi Azure Disk Encryption i szyfrowania opcjach Rest udostępniane przez użyte usługi systemu Azure. W niektórych przypadkach takich jak wymagania dotyczące szyfrowania nieregularne lub magazynu opartego na spoza platformy Azure, Deweloper aplikacji IaaS może być konieczne wdrożenie szyfrowania rest samodzielnie. Deweloperzy IaaS można lepiej rozwiązań integracji z platformy Azure, zarządzania i klienta oczekiwania dzięki wykorzystaniu niektórych składników platformy Azure. W szczególności deweloperów należy używać usługi Azure Key Vault do zapewnienia bezpiecznego magazynu kluczy, a także zapewnić klientom spójne zarządzanie kluczami opcji w przypadku większości usług platformy Azure platformy. Ponadto niestandardowych rozwiązań należy używać Azure-Managed tożsamości usługi w celu umożliwienia dostępu do kluczy szyfrowania konta usług. Aby uzyskać informacje dla deweloperów usługi Azure Key Vault i tożsamości usług zarządzanych Zobacz ich odpowiednich zestawów SDK.
 
 ## <a name="azure-resource-providers-encryption-model-support"></a>Obsługa modelu szyfrowania dostawcy zasobów platformy Azure
 
@@ -237,7 +237,7 @@ Usługi Microsoft Azure każdego obsługuje co najmniej szyfrowanie w modelach r
 
 ### <a name="azure-disk-encryption"></a>Usługa Azure disk encryption
 
-Każdy klient przy użyciu infrastruktury platformy Azure jako usługa (IaaS) funkcji można uzyskać, szyfrowanie w spoczynku dla swoich maszyn wirtualnych IaaS i dyski za pomocą usługi Azure Disk Encryption. Aby uzyskać więcej informacji na temat usługi Azure Disk encryption zobacz [dokumentacji usługi Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption).
+Każdy klient przy użyciu infrastruktury platformy Azure jako usługa (IaaS) funkcji można uzyskać, szyfrowanie w spoczynku dla swoich maszyn wirtualnych IaaS i dyski za pomocą usługi Azure Disk Encryption. Aby uzyskać więcej informacji na temat usługi Azure Disk encryption, zobacz [dokumentacji usługi Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption).
 
 #### <a name="azure-storage"></a>Azure Storage
 
@@ -249,39 +249,40 @@ Wszystkie usługi Azure Storage (Blob storage, Queue storage, Table storage i Az
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
 
-Usługa Azure SQL Database aktualnie obsługuje szyfrowanie danych magazynowanych po stronie usługi zarządzany przez firmę Microsoft i scenariuszy szyfrowania po stronie klienta.
+Usługa Azure SQL Database aktualnie obsługuje szyfrowanie danych magazynowanych po stronie usługi zarządzanych przez firmę Microsoft i scenariuszy szyfrowania po stronie klienta.
 
 Szyfrowanie serwera jest obecnie oferowana w ramach funkcji SQL o nazwie Transparent Data Encryption. Gdy klient korzystający z usługi Azure SQL Database umożliwia TDE klucza są automatycznie tworzone i zarządzane dla nich. Szyfrowanie w spoczynku, można włączyć na poziomie bazy danych i serwera. Począwszy od czerwca 2017 r. [przezroczystego szyfrowania danych (TDE)](https://msdn.microsoft.com/library/bb934049.aspx) jest domyślnie włączona na nowo utworzonych baz danych. Usługa Azure SQL Database obsługuje szyfrowania RSA 2048-bitowych kluczy zarządzanych przez klienta w usłudze Azure Key Vault. Aby uzyskać więcej informacji, zobacz [funkcji Transparent Data Encryption z obsługą Bring Your Own Key dla usługi Azure SQL Database i Data Warehouse](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current).
 
 Szyfrowanie po stronie klienta, danych usługi Azure SQL Database jest świadczona za pośrednictwem [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) funkcji. Zawsze szyfrowane używa klucza tworzone i przechowywane przez klienta. Klientów można przechowywać klucz główny w magazynie certyfikatów Windows, usługi Azure Key Vault lub lokalnego sprzętowego modułu zabezpieczeń. Za pomocą programu SQL Server Management Studio, użytkownicy SQL decydować, jakie klucza, czy chcesz używać do szyfrowania kolumny.
 
-|                                  |                    | **Model szyfrowanie i zarządzanie kluczami** |                   |                    |
-|----------------------------------|--------------------|--------------------|--------------------|--------------------|
-|                                  | **Po stronie serwera za pomocą klucza zarządzanego przez usługę**     | **Strona serwera przy użyciu zarządzanych przez klienta w usłudze Key Vault**             |  **Strona serwera przy użyciu zarządzanych przez klienta w środowisku lokalnym**                  | **Klienta przy użyciu zarządzanych przez klienta**      |
-| **Magazynowi i bazom danych**        |                    |                    |                    |                    |                    |
-| Dysk (IaaS)                      | -                  | Tak, RSA 2048-bitowe  | Yes               | -                  |
-| Program SQL Server (IaaS)                | Yes                | Tak, RSA 2048-bitowe  | Yes                | Yes                |
-| Usługi Azure SQL (baza danych/Data Warehouse) | Yes                | Tak, RSA 2048-bitowe  | -                  | Yes                |
-| Usługa Azure Storage (Blokuj/stronicowych obiektów blob) | Yes                | Tak, RSA 2048-bitowe  | -                  | Yes                |
-| Usługa Azure Storage (pliki)            | Yes                | Tak, RSA 2048-bitowe  | -                  | -                  |
-| Usługa Azure Storage (tabele, kolejki)   | Yes                | -                  | -                  | Yes                |
-| Usługa cosmos DB (baza danych Documentdb)          | Yes                | -                  | -                  | -                  |
-| Magazyn StorSimple                       | Yes                | -                  | -                  | Yes                |
-| Backup                           | -                  | -                  | -                  | Yes                |
-| **Analizy i analizy**   |                    |                    |                    |                    |
-| Azure Data Factory               | Yes                | -                  | -                  | -                  |
-| Azure Machine Learning           | -                  | (Wersja zapoznawcza) i RSA 2048-bitowe | -                  | -                  |
-| Usługa Azure Stream Analytics           | Yes                | -                  | -                  | -                  |
-| HDInsight (magazyn obiektów Blob platformy Azure)   | Yes                | -                  | -                  | -                  |
-| HDInsight (magazyn usługi Data Lake)    | Yes                | -                  | -                  | -                  |
-| Azure Data Lake Store            | Yes                | Tak, RSA 2048-bitowe  | -                  | -                  |
-| Azure Data Catalog               | Yes                | -                  | -                  | -                  |
-| Power BI                         | Yes                | -                  | -                  | -                  |
-| **Usługi IoT**                 |                    |                    |                    |                    |
-| Usługa IoT Hub                          | -                  | -                  | -                  | Yes                |
-| Service Bus                      | Yes                | -                  | -                  | Yes                |
-| Event Hubs                       | Yes                | -                  | -                  | -                  |
-| Event Grid                       | Yes                | -                  | -                  | -                  |
+|                                  |                    | **Model szyfrowanie i zarządzanie kluczami** |                    |
+|----------------------------------|--------------------|-----------------------------------------|--------------------|
+|                                  | **Po stronie serwera za pomocą klucza zarządzanego przez usługę**     | **Strona serwera przy użyciu zarządzanych przez klienta w usłudze Key Vault**             | **Po stronie klienta przy użyciu zarządzanych przez klienta**      |
+| **Magazynowi i bazom danych**        |                    |                    |                    |                    |
+| Dysk (IaaS)                      | -                  | Tak, RSA 2048-bitowe  | -                  |
+| Program SQL Server (IaaS)                | Yes                | Tak, RSA 2048-bitowe  | Yes                |
+| Usługi Azure SQL (baza danych/Data Warehouse) | Yes                | Tak, RSA 2048-bitowe  | Yes                |
+| Usługa Azure Storage (Blokuj/stronicowych obiektów blob) | Yes                | Tak, RSA 2048-bitowe  | Yes                |
+| Usługa Azure Storage (pliki)            | Yes                | Tak, RSA 2048-bitowe  | -                  |
+| Usługa Azure Storage (tabele, kolejki)   | Yes                | -                  | Yes                |
+| Usługa cosmos DB (baza danych Documentdb)          | Yes                | -                  | -                  |
+| Magazyn StorSimple                       | Yes                | -                  | Yes                |
+| Backup                           | -                  | -                  | Yes                |
+| **Analizy i analizy**   |                    |                    |                    |
+| Azure Data Factory               | Yes                | -                  | -                  |
+| Azure Machine Learning           | -                  | (Wersja zapoznawcza) i RSA 2048-bitowe | -                  |
+| Usługa Azure Stream Analytics           | Yes                | -                  | -                  |
+| HDInsight (magazyn obiektów Blob platformy Azure)   | Yes                | -                  | -                  |
+| HDInsight (magazyn usługi Data Lake)    | Yes                | -                  | -                  |
+| Apache Kafka dla usługi HDInsight       | Yes                | W wersji zapoznawczej, wszystkie długości RSA | -                  |
+| Azure Data Lake Store            | Yes                | Tak, RSA 2048-bitowe  | -                  |
+| Azure Data Catalog               | Yes                | -                  | -                  |
+| Power BI                         | Yes                | -                  | -                  |
+| **Usługi IoT**                 |                    |                    |                    |
+| Usługa IoT Hub                          | -                  | -                  | Yes                |
+| Service Bus                      | Yes                | -                  | Yes                |
+| Event Hubs                       | Yes                | -                  | -                  |
+| Event Grid                       | Yes                | -                  | -                  |
 
 
 ## <a name="conclusion"></a>Podsumowanie

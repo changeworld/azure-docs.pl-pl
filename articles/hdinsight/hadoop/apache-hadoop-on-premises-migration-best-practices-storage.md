@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: f89cf9431d3d72b74bc856093108a7bc0ab5a0b4
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 4f4aedd1d85a83e6f55d5729b82b88e2e9e8c00d
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221951"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415937"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania magazynu
 
@@ -47,23 +47,27 @@ Usługa Azure Storage oferuje [usuwania nietrwałego dla obiektów blob](../../s
 Możesz utworzyć [migawek obiektów blob](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob). Migawki to wersja tylko do odczytu obiektów blob, która jest wykonywana w punkcie w czasie i zapewnia sposób, aby utworzyć kopię zapasową obiektu blob. Po utworzeniu migawki go można odczytać, kopiowana, lub usunięte, ale nie zostały zmodyfikowane.
 
 > [!Note]
-> Dla starszej wersji w środowisku lokalnym w środowisku lokalnym Hadoop dystrybucji, który nie ma certyfikatu "wasbs" musi ona zostać zaimportowane do magazynu zaufania Java. Następujące polecenia, może służyć do importowania certyfikatów do magazynu zaufanych Java:
+> Dla starszej wersji w środowisku lokalnym w środowisku lokalnym Hadoop dystrybucji, który nie ma certyfikatu "wasbs" musi ona zostać zaimportowane do magazynu zaufania Java.
 
-- Pobierz certyfikat ssl usługi Azure Blob do pliku
+Następujące metody może służyć do importowania certyfikatów do magazynu zaufanych Java:
+
+Pobierz certyfikat ssl usługi Azure Blob do pliku
 
 ```bash
 echo -n | openssl s_client -connect <storage-account>.blob.core.windows.net:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > Azure_Storage.cer
 ```
 
-- Zaimportuj plik powyżej do magazynu zaufanych Java we wszystkich węzłach
+Zaimportuj plik powyżej do magazynu zaufanych Java we wszystkich węzłach
 
 ```bash
 keytool -import -trustcacerts -keystore /path/to/jre/lib/security/cacerts -storepass changeit -noprompt -alias blobtrust -file Azure_Storage.cer
 ```
 
-- Sprawdź, czy dodano certyfikat w magazynie zaufania
+Sprawdź, czy dodano certyfikat w magazynie zaufania
 
-`keytool -list -v -keystore /path/to/jre/lib/security/cacerts`
+```bash
+keytool -list -v -keystore /path/to/jre/lib/security/cacerts
+```
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 
@@ -152,23 +156,31 @@ HDInsight domyślnie ma pełny dostęp do danych w ramach kont usługi Azure Sto
     - storage_account_key: klucz konta magazynu.
     - storage_container_name: kontener na koncie magazynu, którą chcesz ograniczyć dostęp do.
     - example_file_path: ścieżka do pliku, który zostanie przekazany do kontenera
+
 2. Dołączono plik SASToken.py `ContainerPermissions.READ + ContainerPermissions.LIST` uprawnień i można go dostosować w oparciu o przypadek użycia.
+
 3. Uruchom następujący skrypt: `python SASToken.py`
+
 4. Po ukończeniu działania skryptu, wyświetla tokenu sygnatury dostępu Współdzielonego, podobny do następującego tekstu: `sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14`
 
 5. Aby ograniczyć dostęp do kontenera przy użyciu sygnatura dostępu współdzielonego, należy dodać wpis niestandardowego do konfiguracji lokacji podstawowej dla klastra, w obszarze Ambari systemu plików HDFS konfiguracje zaawansowane lokacji podstawowej Dodawanie właściwości niestandardowych.
+
 6. Użyj następujących wartości dla **klucz** i **wartość** pola:
 
-    **Klucz**: fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net **wartość**: klucz sygnatury dostępu Współdzielonego zwrócony przez FROM aplikacji języka Python w kroku 4 powyżej
+    **Klucz**: `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **wartość**: klucz sygnatury dostępu Współdzielonego zwrócony przez FROM aplikacji języka Python w kroku 4 powyżej.
 
 7. Kliknij przycisk **Dodaj** przycisk, aby zapisać ten klucz i wartość, a następnie kliknij przycisk **Zapisz** przycisk, aby zapisać zmiany konfiguracji. Po wyświetleniu monitu, Dodaj opis zmiany ("Dodawanie dostępu do magazynu sygnatur dostępu Współdzielonego" na przykład), a następnie kliknij przycisk **Zapisz**.
+
 8. W Ambari web UI, wybierz systemu plików HDFS z listy po lewej stronie, a następnie wybierz **ponowne uruchomienie wszystkich wpływ** z akcji z listy rozwijanej po prawej stronie. Po wyświetleniu monitu wybierz **upewnij się, uruchom ponownie wszystkie**.
+
 9. Powtórz ten proces dla MapReduce2 i YARN.
 
 Istnieją trzy ważne warto zapamiętać dotyczących używania tokenów sygnatur dostępu Współdzielonego na platformie Azure:
 
 1. Podczas tworzenia tokenów sygnatur dostępu Współdzielonego przy użyciu uprawnień "Odczyt + LIST" użytkowników, którzy korzystają z kontenera obiektów Blob za pomocą tokenu sygnatury dostępu Współdzielonego będzie "zapisu i usuwania" danych. Użytkownicy, którzy dostęp do kontenera obiektów Blob za pomocą tokenu sygnatury dostępu Współdzielonego i spróbuj zapis lub usunięcie operacji, zostanie wyświetlony komunikat z takich jak `"This request is not authorized to perform this operation"`.
+
 2. Wygenerowano tokeny sygnatur dostępu Współdzielonego za pomocą `READ + LIST + WRITE` uprawnienia (ograniczyć `DELETE` tylko), polecenia takie jak `hadoop fs -put` najpierw zapisać `\_COPYING\_` pliku, a następnie spróbuj zmienić nazwę pliku. Tej operacji systemu plików HDFS mapuje `copy+delete` dla WASB. Ponieważ `DELETE` uprawnienie nie został podany, "put" może zakończyć się niepowodzeniem. `\_COPYING\_` Operacji jest funkcją usługi Hadoop, mają na celu dostarczenie niektóre mechanizm kontroli współbieżności. Obecnie nie istnieje żaden sposób ograniczyć tylko operację "DELETE" bez wpływu na "WRITE" także operacje.
+
 3. Niestety Dostawca poświadczeń usługi hadoop i odszyfrowywania klucza dostawcy (ShellDecryptionKeyProvider) obecnie nie współpracujesz z tokenów sygnatur dostępu Współdzielonego i dlatego obecnie nie można chronić z widoczności.
 
 Aby uzyskać więcej informacji, zobacz [użycia usługi Azure Storage sygnatur dostępu współdzielonego do ograniczania dostępu do danych w HDInsight](../hdinsight-storage-sharedaccesssignature-permissions.md)
@@ -180,7 +192,9 @@ Wszystkie dane zapisane w usłudze Azure Storage są automatycznie szyfrowane pr
 - [Magazyn lokalnie nadmiarowy (LRS)](../../storage/common/storage-redundancy-lrs.md)
 - [Magazyn strefowo nadmiarowy (ZRS)](../../storage/common/storage-redundancy-zrs.md)
 - [Magazyn geograficznie nadmiarowy (GRS)](../../storage/common/storage-redundancy-grs.md)
-- [Dostęp do odczytu magazynu geograficznie nadmiarowego (RA-GRS)](../../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) usługi Azure Data Lake Storage zapewnia magazyn lokalnie nadmiarowy (LRS), ale należy także skopiować kluczowych danych do innego konta usługi Data Lake Storage w innym regionie z częstotliwością dostosowaną do potrzeb plan odzyskiwania po awarii. Istnieją różne metody kopiowania danych, takie jak [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md), DistCp, [programu Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md), lub [usługi Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md). Zalecane jest również wymusić zasady dostępu dla konta usługi Data Lake Storage, aby zapobiec przypadkowemu usunięciu.
+- [Magazyn geograficznie nadmiarowy dostępny do odczytu (RA-GRS)](../../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
+
+Usługi Azure Data Lake Storage zapewnia magazyn lokalnie nadmiarowy (LRS), ale należy także skopiować kluczowych danych do innego konta usługi Data Lake Storage w innym regionie z częstotliwością dostosowaną do potrzeb planu odzyskiwania po awarii. Istnieją różne metody kopiowania danych, takie jak [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md), DistCp, [programu Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md), lub [usługi Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md). Zalecane jest również wymusić zasady dostępu dla konta usługi Data Lake Storage, aby zapobiec przypadkowemu usunięciu.
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 

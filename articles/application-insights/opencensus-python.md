@@ -9,12 +9,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c9f14664ca035b3de1af80ca3101c22751c83237
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7507cdd7f3967dc132eecf81de347f2da791487f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963649"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414985"
 ---
 # <a name="collect-distributed-traces-from-python-preview"></a>Zbierać ślady rozproszonych za pomocą języka Python (wersja zapoznawcza)
 
@@ -22,7 +22,7 @@ Usługa Application Insights teraz obsługuje rozproszone śledzenie aplikacji P
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Musisz mieć subskrypcję platformy Azure.
+- Konieczna jest subskrypcja platformy Azure.
 - Python powinien być zainstalowany, w tym artykule wykorzystano [Python numer 3.7.0](https://www.python.org/downloads/), ale za pomocą drobnych korekt prawdopodobnie działać w starszych wersjach.
 - Postępuj zgodnie z instrukcjami, aby zainstalować [lokalnej usługi przesyłania dalej, co usługa Windows](./opencensus-local-forwarder.md#windows-service)
 
@@ -180,7 +180,7 @@ Najpierw należy utworzyć zasób usługi Application Insights, który generuje 
 
     Ponieważ firma Microsoft była tylko śledzenia jedno wywołanie metody, nasza Mapa aplikacji jest jak interesujące. Ale mapy aplikacji mogą być skalowane do wizualizacji o wiele bardziej rozproszonych:
 
-   ![Mapa aplikacji](./media/app-insights-nodejs-quick-start/application-map.png)
+   ![Mapa aplikacji](media/opencensus-python/application-map.png)
 
 4. Wybierz **badanie wydajności** wykonywania szczegółową analizę wydajności i określenia głównej przyczyny niskiej wydajności.
 

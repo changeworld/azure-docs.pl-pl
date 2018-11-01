@@ -1,4 +1,16 @@
-
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: b397d77b525bdb63f2531634e397ec210d4a6202
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50166163"
+---
 #### <a name="to-configure-remote-management-on-cloud-appliance"></a>Aby skonfigurować zdalne zarządzanie w urządzeniu w chmurze
 
 1. W usłudze Menedżer urządzeń StorSimple kliknij pozycję **Urządzenia**. Wybierz i kliknij urządzenie w chmurze na liście urządzeń połączonych z usługą.

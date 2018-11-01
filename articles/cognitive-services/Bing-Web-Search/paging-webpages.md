@@ -11,12 +11,12 @@ ms.component: bing-web-search
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: erhopf
-ms.openlocfilehash: 4aa3509fcdfc6fd1bccb4db95a8c916a42ce23d2
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: e98407dface348dfdbc99a1146d50c46f3bb03a7
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125276"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739247"
 ---
 # <a name="how-to-page-through-results-from-the-bing-web-search-api"></a>Jak stronicować za pośrednictwem wyników z API wyszukiwania w Internecie Bing
 
@@ -61,4 +61,7 @@ Host: api.cognitive.microsoft.com
 
 Internetowy interfejs API wyszukiwania zwraca wyniki, które obejmują stron sieci Web i może zawierać obrazów, filmów wideo i wiadomości. Po stronie wyników wyszukiwania stronicowania [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) odpowiedzi i nie inne odpowiedzi taką jak obrazy lub wiadomości. Na przykład jeśli ustawisz `count` do 50, wrócisz 50 wyniki strony sieci Web, ale odpowiedź może zawierać wyniki dla innych odpowiedzi także. Na przykład odpowiedź może zawierać 15 obrazów i 4 artykuły z wiadomościami. Istnieje również możliwość, że wyniki mogą obejmować wiadomości na pierwszej stronie, ale nie drugiej strony, lub na odwrót.   
 
-Jeśli określisz `responseFilter` parametr zapytania i nie mają stron sieci Web na liście filtrów, nie używaj `count` i `offset` parametrów.  
+Jeśli określisz `responseFilter` parametr zapytania i nie mają stron sieci Web na liście filtrów, nie używaj `count` i `offset` parametrów. 
+
+> [!NOTE]
+> `TotalEstimatedAnswers` Pole jest szacunkową liczbę całkowitą liczbę wyników wyszukiwania, możesz pobrać dla bieżącego zapytania.  Po ustawieniu `count` i `offset` parametrów, `TotalEstimatedAnswers` liczba mogą ulec zmianie. 

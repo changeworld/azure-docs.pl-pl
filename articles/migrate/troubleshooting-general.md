@@ -4,20 +4,30 @@ description: Zawiera omówienie znanych problemów dotyczących usługi Azure Mi
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/24/2018
+ms.date: 10/31/2018
 ms.author: raynew
-ms.openlocfilehash: a32b1b73a12242a6c6b1c29fbf116aff73515b46
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 0b2954ddfda0ab4c94ddf6176d76d8bcd937fa42
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086747"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413337"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Rozwiązywanie problemów z usługą Azure Migrate
 
 ## <a name="troubleshoot-common-errors"></a>Rozwiązywanie typowych problemów
 
 [Usługa Azure Migrate](migrate-overview.md) ocenia obciążenia lokalne pod kątem migracji na platformę Azure. W tym artykule umożliwiają rozwiązywanie problemów dotyczących wdrażania i korzystania z usługi Azure Migrate.
+
+### <a name="i-am-using-the-continuous-discovery-ova-but-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>Używam ciągłe odnajdywania, którą OVA, ale maszyny wirtualne, które są usuwane z mojego lokalnego środowiska nadal są wyświetlane w portalu.
+
+Urządzenia dla urządzenia odnajdywania ciągłe tylko zbiera dane dotyczące wydajności stale, nie wykrywa zmiany konfiguracji w środowisku lokalnym, (tj. Dodawanie maszyny Wirtualnej, usuwania, dodawania dysku itp.). W przypadku zmiany konfiguracji w środowisku lokalnym możesz wykonać następujące działania, aby odzwierciedlić zmiany w portalu:
+
+- Dodanie elementów (maszyn wirtualnych, dysków, rdzeni itp.): aby uwzględnić te zmiany w witrynie Azure Portal, możesz zatrzymać odnajdywanie z urządzenia i następnie uruchomić je ponownie. Zapewni to, że zmiany zostaną zaktualizowane w projekcie usługi Azure Migrate.
+
+   ![Zatrzymaj odnajdywanie](./media/troubleshooting-general/stop-discovery.png)
+
+- Usunięcie maszyn wirtualnych: ze względu na konstrukcję urządzenia, usunięcie maszyny wirtualnej nie zostanie uwzględnione, nawet jeśli zatrzymasz odnajdywanie i uruchomisz je ponownie. Przyczyną jest to, że dane z kolejnych operacji odnajdywania są dołączane do starszych danych, a nie nadpisywane. W takim przypadku możesz po prostu zignorować maszynę wirtualną w portalu, usuwając ją z grupy i obliczając ponownie ocenę.
 
 ### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>Tworzenie projektu migracji nie powiodła się z powodu błędu *żądania muszą zawierać nagłówki tożsamości użytkownika*
 
@@ -40,14 +50,6 @@ Aby włączyć zbieranie danych wydajności dysku i sieci, należy zmienić usta
 Możesz przejść do **Essentials** sekcji **Przegląd** strony projektu, aby zidentyfikować dokładną lokalizację, w którym przechowywane są metadane. Lokalizacja jest wybranych losowo w lokalizacji geograficznej przez usługę Azure Migrate, i nie można go modyfikować. Jeśli chcesz utworzyć projekt w określonym regionie tylko, można użyć interfejsów API REST, aby utworzyć projekt migracji i przekazać odpowiedni region.
 
    ![Lokalizacja projektu](./media/troubleshooting-general/geography-location.png)
-
-### <a name="i-am-using-the-continuous-discovery-ova-but-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>Używam ciągłe odnajdywania, którą OVA, ale maszyny wirtualne, które są usuwane z mojego lokalnego środowiska nadal są wyświetlane w portalu.
-
-Urządzenia dla urządzenia odnajdywania ciągłe tylko zbiera dane dotyczące wydajności stale, nie wykrywa zmiany konfiguracji w środowisku lokalnym, (tj. Dodawanie maszyny Wirtualnej, usuwania, dodawania dysku itp.). W przypadku zmiany konfiguracji w środowisku lokalnym, możesz wykonać następujące polecenie, aby odzwierciedlały zmiany w portalu:
-
-1. Dodawanie elementów (maszyn wirtualnych, dysków, liczba rdzeni itp.): aby uwzględnić te zmiany w witrynie Azure portal, można zatrzymać odnajdywania przez urządzenie i uruchom go ponownie. Pozwoli to zagwarantować, że zmiany są uwzględniane w projekcie usługi Azure Migrate.
-
-2. Usuwanie maszyn wirtualnych: ze względu na sposób zaprojektowano urządzenia, usunięcie maszyny wirtualne nie zostaną uwzględnione nawet, gdy zatrzymujesz i uruchamiasz odnajdywania. Jest to spowodowane dane z kolejne operacje odnajdywania są dołączane do odnajdywania starszych i nie zostanie zastąpiona. W takim przypadku możesz po prostu zignorować maszyny Wirtualnej w portalu, usuwając go z grupy i ponownego obliczania oceny.
 
 ## <a name="collector-errors"></a>Błędy modułu zbierającego dzienniki
 
@@ -219,9 +221,8 @@ Aby zbierać zdarzenia śledzenia dla Windows, wykonaj następujące czynności:
 
 ## <a name="collector-error-codes-and-recommended-actions"></a>Kody błędów modułu zbierającego i zalecane akcje
 
-|           |                                |                                                                               |                                                                                                       |                                                                                                                                            |
-|-----------|--------------------------------|-------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| Kod błędu | Nazwa błędu                      | Komunikat                                                                       | Możliwe przyczyny                                                                                        | Zalecana akcja                                                                                                                          |
+| Kod błędu | Nazwa błędu   | Komunikat   | Możliwe przyczyny | Zalecana akcja  |
+| --- | --- | --- | --- | --- |
 | 601       | CollectorExpired               | Moduł zbierający wygasł.                                                        | Moduł zbierający wygasł.                                                                                    | Pobierz nową wersję modułu zbierającego i ponów próbę.                                                                                      |
 | 751       | UnableToConnectToServer        | Nie można nawiązać połączenia z serwerem vCenter Server „%Name;” z powodu błędu: %ErrorMessage;     | Więcej informacji można znaleźć w komunikacie o błędzie.                                                             | Rozwiąż problem i spróbuj ponownie.                                                                                                           |
 | 752       | InvalidvCenterEndpoint         | Serwer „%Name;” nie jest serwerem vCenter Server.                                  | Podaj szczegóły serwera vCenter Server.                                                                       | Spróbuj ponownie wykonać operację, używając poprawnych informacji o serwerze vCenter Server.                                                                                   |

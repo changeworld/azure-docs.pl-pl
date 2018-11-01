@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 10/31/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.openlocfilehash: 5ebddbf1fea49fbf868d15a544a18e5a8c6369fd
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: ec4d8ef43510c07e73ab18de227176d3c282b8e1
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078311"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740845"
 ---
 # <a name="azure-stack-capacity-planner"></a>Planista wydajności usługi Azure Stack
 Planisty wydajności usługi Azure Stack to arkusz kalkulacyjny, używany do planowania pojemności zasobu usługi Azure Stack. Capacity planner zapewnia możliwość projektowania różne przydziały zasobów obliczeniowych i zobacz, jak te zmieszczą się na wybór ofert sprzętu. Poniżej znajdują się szczegółowe instrukcje dotyczące użycia usługi Azure Stack kalkulatora.
@@ -56,7 +56,7 @@ To narzędzie udostępnia dwie metody przydzielania zasobów maszyny Wirtualnej.
 ## <a name="definebyvmfootprint-instructions"></a>Instrukcje DefineByVMFootprint
 Aby utworzyć model przy użyciu jednej kolekcji różnych rozmiarów i liczby maszyn wirtualnych, wybierz kartę "DefineByVMFootprint" i wykonaj tej sekwencji kroki.
 
-1. W prawym górnym rogu tego arkusza użyj formantów okna dostarczonej listy rozwijane, aby wybrać początkowa liczba serwerów (zakresu od 4 do 12) mają zostać zainstalowane w każdym systemie sprzętu (SKU). Ta liczba serwerów, może być modyfikowany w dowolnym momencie podczas procesu modelowania, aby zobaczyć, jak ma to wpływ na ogólną dostępne zasoby dotyczące modelu alokacji zasobów.
+1. W prawym górnym rogu tego arkusza użyj formantów okna dostarczonej listy rozwijane, aby wybrać początkowa liczba serwerów (zakresu od 4 do 16) mają zostać zainstalowane w każdym systemie sprzętu (SKU). Ta liczba serwerów, może być modyfikowany w dowolnym momencie podczas procesu modelowania, aby zobaczyć, jak ma to wpływ na ogólną dostępne zasoby dotyczące modelu alokacji zasobów.
 2. Aby modelować różne alokacji zasobów maszyny Wirtualnej względem jedną konkretną konfiguracją sprzętu, można znaleźć listy rozwijane pole bezpośrednio pod etykietą "Bieżąca jednostka SKU" w prawym górnym rogu strony. Ściągnąć tego pola listy, a następnie wybierz żądany sprzętu jednostki SKU.
 3. Teraz można przystąpić do rozpoczęcia, dodając różnych wielkości maszyny wirtualne do modelu. Aby dołączyć określonego typu maszyny Wirtualnej, należy wprowadzić wartość ilość w niebieskim polu Schemat z lewej strony tego wpisu maszyny Wirtualnej.
 
@@ -73,7 +73,7 @@ Aby utworzyć model przy użyciu kolekcji usługi Azure Stack obciążeń, wybie
 > [!TIP]
 > Aby zmienić rozmiar magazynu podana dla maszyny Wirtualnej platformy Azure Stack, zobacz uwagi w kroku 3 w poprzedniej sekcji.
 
-1. W prawym górnym rogu tej strony użyj formantów okna dostarczonej listy rozwijane, aby wybrać początkowa liczba serwerów (zakresu od 4 do 12) mają zostać zainstalowane w każdym systemie sprzętu (SKU).
+1. W prawym górnym rogu tej strony użyj formantów okna dostarczonej listy rozwijane, aby wybrać początkowa liczba serwerów (zakresu od 4 do 16) mają zostać zainstalowane w każdym systemie sprzętu (SKU).
 2. Aby modelować różne alokacji zasobów maszyny Wirtualnej względem jedną konkretną konfiguracją sprzętu, można znaleźć listy rozwijane pole bezpośrednio pod etykietą "Bieżąca jednostka SKU" w prawym górnym rogu strony. Ściągnąć tego pola listy, a następnie wybierz żądany sprzętu jednostki SKU.
 3. Wybierz odpowiedni rozmiar dla każdego żądanego maszyn wirtualnych stosu platformy Azure, na stronie DefineByVMFootprint, zgodnie z powyższym opisem w kroku 3 instrukcji DefineByVMFootprint. Rozmiar magazynu dla maszyny Wirtualnej jest zdefiniowany w arkuszu DefineByVMFootprint.
 4. Począwszy od lewego górnego rogu strony DefineByWorkloadFootprint, Utwórz konfiguracje dla maksymalnie sześć różnych typów obciążenia pracą, wprowadzając ilości każdego typu maszyn wirtualnych znajdujących się w ramach tego obciążenia. Odbywa się przez umieszczenie wartości liczbowe w kolumnie bezpośrednio pod nazwą tego obciążenia. Nazwy obciążenie może być modyfikowany odzwierciedlające typ obciążenia, które będą obsługiwane przez tę konfigurację określonego.

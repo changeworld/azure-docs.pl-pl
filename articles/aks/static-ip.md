@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 0e5d42dddf550d8c7d4a579afd8436343749a995
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 24b7e03808cb5df9fa4c122ca4c9317f723dac72
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233654"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414645"
 ---
 # <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Statyczny publiczny adres IP za pomocą modułu równoważenia obciążenia Azure Kubernetes Service (AKS)
 
@@ -93,9 +93,13 @@ kubectl apply -f load-balancer-service.yaml
 
 ## <a name="use-a-static-ip-address-outside-of-the-node-resource-group"></a>Użyj statycznego adresu IP poza węzeł grupy zasobów
 
-Kubernetes 1.10 lub później możesz używać statycznego adresu IP, który jest tworzony poza węzeł grupy zasobów. Jednostki usługi używany przez klaster AKS musi mieć delegowane uprawnienia do innej grupy zasobów, aby udzielić uprawnień SP przy użyciu następującego polecenia:
-```
-az role assignment create --assignee <SP Client ID> --role "Network Contributor" --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
+Kubernetes 1.10 lub później możesz używać statycznego adresu IP, który jest tworzony poza węzeł grupy zasobów. Jednostki usługi używany przez klaster AKS musi mieć delegowane uprawnienia do innej grupy zasobów, jak pokazano w poniższym przykładzie:
+
+```azurecli
+az role assignment create\
+    --assignee <SP Client ID> \
+    --role "Network Contributor" \
+    --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
 
 Aby korzystać z adresu IP poza węzeł grupy zasobów, dodawanie adnotacji do definicji usługi. Poniższy przykład ustawia adnotację do grupy zasobów o nazwie *myResourceGroup*. Podaj własną nazwę grupy zasobów:

@@ -10,16 +10,16 @@ ms.component: bing-video-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 9b030312c562d1c0a6cbacfc7f424289dee2e8de
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: cd5d6ef6a75088d02bc34558f66ed520c230e06b
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225569"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741899"
 ---
 # <a name="paging-videos"></a>Pliki stronicowania wideo
 
-Po wywołaniu interfejsu API wyszukiwania wideo Bing zwraca listę wyników. Lista jest podzestawem całkowitej liczby wyników odpowiednich dla zapytania. Aby uzyskać szacowana liczba dostępnych wyników, dostęp do obiektu odpowiedzi [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos-totalestimatedmatches) pola.  
+Po wywołaniu interfejsu API wyszukiwania wideo usługa Bing zwraca listę wyników. Lista jest podzestawem całkowitej liczby wyników odpowiednich dla zapytania. Aby uzyskać szacowana liczba dostępnych wyników, dostęp do obiektu odpowiedzi [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos-totalestimatedmatches) pola.  
   
 W poniższym przykładzie przedstawiono `totalEstimatedMatches` pola, który zawiera odpowiedź wideo.  
   
@@ -65,3 +65,6 @@ Na przykład, jeśli chcesz stronie 30 filmów wideo w czasie, należy ustawić 
 
 > [!NOTE]
 > Stronicowanie ma zastosowanie tylko do wyszukiwania filmów wideo (/ filmy/wyszukiwania), a nie informacjom o filmie wideo (/ filmy/szczegóły) lub popularnych klipów wideo (/ filmy/analizy trendów).
+
+> [!NOTE]
+> `TotalEstimatedAnswers` Pole jest szacunkową liczbę całkowitą liczbę wyników wyszukiwania, możesz pobrać dla bieżącego zapytania.  Po ustawieniu `count` i `offset` parametrów, `TotalEstimatedAnswers` liczba mogą ulec zmianie. 

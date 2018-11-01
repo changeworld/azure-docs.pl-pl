@@ -31,7 +31,7 @@ Na przykład, jeśli wprowadzono AKS *1.11.x* obecnie Pomoc techniczna jest świ
 
 Jeśli wprowadzono nową wersję pomocniczą najstarsze pomocniczej wersji i poprawki wersji obsługiwane zostały wycofane. 15 dni przed wprowadzeniem nowych wersji pomocniczej i wycofanie mającej się ukazać wersji jest podana za pośrednictwem kanałów aktualizacji usługi Azure. W przykładzie powyżej gdzie *1.11.x* jest zwolniony, wycofane wersje są *1.7.g* + *1.7.h*.
 
-Podczas wdrażania klastra usługi AKS w portalu lub przy użyciu wiersza polecenia platformy Azure, klaster ma zawsze wartość n-1 wersji pomocniczej i najnowszych poprawek. Na przykład, jeśli obsługuje AKS *1.11.x*, *1.10.a* + *1.10.b*, *1.9.c* + *1.9 d* , *1.8.e* + *1.8F*, jest wersja domyślna dla nowych klastrów *1.10.b*.
+Podczas wdrażania klastra usługi AKS w portalu lub przy użyciu wiersza polecenia platformy Azure, klaster ma zawsze wartość n-1 wersji pomocniczej i najnowszych poprawek. Na przykład, jeśli obsługuje AKS *1.11.x*, *1.10.a* + *1.10.b*, *1.9.c* + *1.9 d*, *1.8.e* + *1.8F*, jest wersja domyślna dla nowych klastrów *1.10.b*.
 
 ## <a name="list-currently-supported-versions"></a>Lista aktualnie obsługiwane wersje
 
