@@ -50,7 +50,7 @@ Zapoznaj się [skonfigurować Azure Key Vault zapory i sieci wirtualne](key-vaul
 > [!NOTE]
 > * Dozwolone są maksymalna 127 reguł sieci Wirtualnej i 127 reguły protokołu IPv4. 
 > * Zakresy adresów małe, za pomocą "/ 31" lub "/ 32" prefiks rozmiary nie są obsługiwane. Tych zakresów powinny być skonfigurowane przy użyciu reguły dotyczące poszczególnych adresów IP.
-> * Reguły sieciowych adresów IP są dozwolone tylko dla publicznych adresów IP. Zakresy adresów IP zarezerwowanych dla sieci prywatnych (zgodnie z definicją w dokumencie RFC 1918) są niedozwolone w regułach adresów IP. Prywatne sieci obejmują adresów rozpoczynających się * zapis 10.* *, * 172.16. **, i * 192.168. **. 
+> * Reguły sieciowych adresów IP są dozwolone tylko dla publicznych adresów IP. Zakresy adresów IP zarezerwowanych dla sieci prywatnych (zgodnie z definicją w dokumencie RFC 1918) są niedozwolone w regułach adresów IP. Prywatne sieci obejmują adresów rozpoczynających się zapis *10.*\*, *172.16.*\*, i *192.168.*\*. 
 > * W tej chwili obsługiwane są tylko adresy IPv4.
 
 ## <a name="trusted-services"></a>Zaufanych usług

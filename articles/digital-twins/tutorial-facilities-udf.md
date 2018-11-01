@@ -5,14 +5,14 @@ services: digital-twins
 author: dsk-2015
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 10/15/2018
+ms.date: 10/26/2018
 ms.author: dkshir
-ms.openlocfilehash: 1e5cb18b4e526cd0a0607f5bc93788fcf07430e1
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: cf45cb8de0e40dfe5f5772dcb1a0be2aa7585fd6
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364239"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156684"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>Samouczek: aprowizowanie budynku i monitorowanie warunków pracy za pomocą usługi Azure Digital Twins
 
@@ -161,7 +161,7 @@ W przykładowym pliku *provisionSample.yaml* znajdź sekcję zaczynającą się 
             }
         ```
         
-        Zmodyfikowana funkcja UDF będzie wyszukiwała warunek, w którym pomieszczenie jest dostępne, a poziom dwutlenku węgla i temperatura mieszczą się w dopuszczalnych limitach. Wygeneruje ona powiadomienie przy użyciu instrukcji `parentSpace.Notify(JSON.stringigy(alert));`, gdy ten warunek zostanie spełniony. Ustawi wartość monitorowanej przestrzeni niezależnie od tego, czy warunek zostanie spełniony, i wyświetli odpowiedni komunikat.
+        Zmodyfikowana funkcja UDF będzie wyszukiwała warunek, w którym pomieszczenie jest dostępne, a poziom dwutlenku węgla i temperatura mieszczą się w dopuszczalnych limitach. Wygeneruje ona powiadomienie przy użyciu instrukcji `parentSpace.Notify(JSON.stringify(alert));`, gdy ten warunek zostanie spełniony. Ustawi wartość monitorowanej przestrzeni niezależnie od tego, czy warunek zostanie spełniony, i wyświetli odpowiedni komunikat.
     
     1. Zapisz plik. 
     

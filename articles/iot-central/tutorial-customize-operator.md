@@ -3,17 +3,17 @@ title: Dostosowywanie widoków operatora w usłudze Azure IoT Central | Microsof
 description: Jako konstruktor możesz dostosować widoki operatora w aplikacji usługi Azure IoT Central.
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 04/16/2018
+ms.date: 10/12/2018
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 9b8293196114f55f633e67cf19cd0c9e60f6398e
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 070a6ee4bc712b2dbec598cdb9be5c324895c033
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309464"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50154985"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Samouczek: Dostosowywanie widoku operatora usługi Azure IoT Central
 

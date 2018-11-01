@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2c5d0dc322a4a56f0de9bd3c1af7efc158131a89
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 16e78784337771d1e31d826f475c92c86fe20411
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954219"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212322"
 ---
 # <a name="azure-resource-manager-overview"></a>Omówienie usługi Azure Resource Manager
 Infrastruktura aplikacji zwykle obejmuje wiele składników — może to być maszyna wirtualna, konto magazynu i sieć wirtualna albo aplikacja internetowa, baza danych, serwer bazy danych i usługi zewnętrzne. Te składniki nie są widoczne jako osobne jednostki, tylko jako powiązane i zależne od siebie nawzajem części jednej całości. Dlatego najlepiej wdrażać i monitorować je oraz zarządzać nimi grupowo. Usługa Azure Resource Manager umożliwia pracę z zasobami tworzącymi rozwiązanie w formie grupy. Wszystkie zasoby danego rozwiązania można wdrożyć, zaktualizować lub usunąć w ramach jednej skoordynowanej operacji. Wdrażanie wykonuje się przy użyciu szablonu, którego można następnie używać w różnych środowiskach (testowanie, etap przejściowy i produkcja). Usługa Resource Manager zapewnia funkcje zabezpieczeń, inspekcji i znakowania ułatwiające zarządzanie zasobami po wdrożeniu. 
@@ -65,29 +65,7 @@ Aby uzyskać instrukcje dla przedsiębiorstw dotyczące użycia usługi Resource
 
 Aby uzyskać zalecenia dotyczące tworzenia szablonów usługi Resource Manager do użycia globalnie na platformie Azure, w chmurach suwerennych platformy Azure i w usłudze Azure Stack, zobacz [Develop Azure Resource Manager templates for cloud consistency (Tworzenie szablonów usługi Azure Resource Manager w celu zachowania spójności w chmurze)](templates-cloud-consistency.md).
 
-## <a name="quickstarts-and-tutorials"></a>Przewodniki Szybki start i samouczki
-
-Aby dowiedzieć się, jak opracowywać szablony usługi Resource Manager, użyj następujących przewodników Szybki start i samouczków:
-
-- Przewodniki Szybki start
-
-    |Tytuł|Opis|
-    |------|-----|
-    |[Korzystanie z witryny Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md)|Generowanie szablonu przy użyciu portalu oraz proces edycji i wdrażania szablonu.|
-    |[Korzystanie z programu Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)|Tworzenie i edytowanie szablonów przy użyciu programu Visual Studio Code oraz wdrażanie szablonów za pomocą usługi Azure Cloud Shell.|
-    |[Korzystanie z programu Visual Studio](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)|Tworzenie, edytowanie i wdrażanie szablonów przy użyciu programu Visual Studio.|
-
-- Samouczki
-
-    |Tytuł|Opis|
-    |------|-----|
-    |[Korzystanie z dokumentacji szablonów](./resource-manager-tutorial-create-encrypted-storage-accounts.md)|Opracowywanie szablonów przy użyciu dokumentacji szablonów. Ten samouczek obejmuje schemat konta magazynu i informacje dotyczące tworzenia zaszyfrowanego konta magazynu.|
-    |[Tworzenie wielu wystąpień](./resource-manager-tutorial-create-multiple-instances.md)|Tworzenie wielu wystąpień zasobów platformy Azure. W tym samouczku utworzysz wiele wystąpień konta magazynu.|
-    |[Ustawianie kolejności wdrażania zasobów](./resource-manager-tutorial-create-templates-with-dependent-resources.md)|Definiowanie zależności zasobów. W tym samouczku utworzysz sieć wirtualną, maszynę wirtualną i zależne zasoby platformy Azure. Dowiedz się, jak definiować zależności.|
-    |[Używanie warunków](./resource-manager-tutorial-use-conditions.md)|Wdrażanie zasobów na podstawie wartości parametrów. W tym samouczku zdefiniujesz szablon umożliwiający utworzenie nowego konta magazynu lub użyjesz istniejącego konta magazynu na podstawie wartości parametru.|
-    |[Integrowanie usługi Key Vault](./resource-manager-tutorial-use-key-vault.md)|Pobieranie wpisów tajnych/haseł z usługi Azure Key Vault. W tym samouczku utworzysz maszynę wirtualną.  Hasło administratora maszyny wirtualnej jest pobierane z usługi Key Vault.|
-    |[Create linked templates (Tworzenie połączonych szablonów)](./resource-manager-tutorial-create-linked-templates.md)|Modularyzacja szablonów i wywoływanie innych szablonów za pomocą szablonu. W tym samouczku utworzysz sieć wirtualną, maszynę wirtualną i zasoby zależne.  Zależne konto magazynu jest zdefiniowane w połączonym szablonie. |
-    |[Korzystanie z praktyk bezpiecznego wdrażania](./deployment-manager-tutorial.md)|Używanie usługi Azure Deployment Manager. |
+[!INCLUDE [arm-tutorials-quickstarts](../../includes/resource-manager-tutorials-quickstarts.md)]
 
 ## <a name="resource-groups"></a>Grupy zasobów
 Definiując grupę zasobów, należy wziąć pod uwagę pewne ważne czynniki:

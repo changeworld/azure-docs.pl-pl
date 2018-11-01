@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: b9c4c2595bb7d5347397bff95c90fbdc91902bcd
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 12e3cf028b4812abd43dd2b6f23190fa6b75157a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696452"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242294"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB — Zapraszamy!
 
@@ -55,7 +55,7 @@ Jako globalnie dystrybuowana, wielomodelowa usługa bazy danych usługa Azure Co
 * **Zapewnienie dostępności na poziomie „zawsze włączona”**
     * Umowa SLA gwarantująca dostępność na poziomie co najmniej 99,99% dla wszystkich kont bazy danych w obrębie jednego regionu, a także dostępność do odczytu na poziomie co najmniej 99,999% dla wszystkich kont bazy danych w wielu regionach.
     * Możliwość wdrażania w dowolnej liczbie [regionów świadczenia usługi Azure](https://azure.microsoft.com/regions), aby uzyskać większą dostępność i lepszą wydajność.
-    * Dynamicznie ustawiane priorytety regionów i [symulacja awarii](regional-failover.md) jednego lub kilku regionów z gwarancją utraty danych do testowania kompleksowej dostępności dla całej aplikacji (również poza bazą danych). 
+    * Dynamicznie ustawiane priorytety regionów i [symulacja awarii](high-availability.md) jednego lub kilku regionów z gwarancją utraty danych do testowania kompleksowej dostępności dla całej aplikacji (również poza bazą danych). 
 
 * **Tworzenie aplikacji dystrybuowanych globalnie w odpowiedni sposób**
     * Pięć dobrze zdefiniowanych, praktycznych i intuicyjnych [modeli spójności](consistency-levels.md) zapewnia silną spójność, podobną do spójności SQL, oraz spójność ostateczną, podobną do luźnej spójności NoSQL (i wszystko pomiędzy nimi). 

@@ -10,12 +10,12 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: orkostak
-ms.openlocfilehash: 0bf8891e28897321dbfbad4486dd11c0b5ee4264
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 8679da0dfe92b1d611fd0b61b9f7404256b2b688
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043159"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239869"
 ---
 # <a name="expire-data-in-azure-cosmos-db-mongodb-api"></a>Wygasanie danych w interfejsie API bazy danych MongoDB w usłudze Azure Cosmos DB
 
@@ -43,7 +43,8 @@ Polecenie w powyższym przykładzie powoduje utworzenie indeksu z funkcjonalnoś
 >
     
 Dodatkowo — przykład w języku C#: 
-```C# 
+
+```csharp
 var options = new CreateIndexOptions {ExpireAfter = TimeSpan.FromSeconds(10)}; 
 var field = new StringFieldDefinition<BsonDocument>("_ts"); 
 var indexDefinition = new IndexKeysDefinitionBuilder<BsonDocument>().Ascending(field); 

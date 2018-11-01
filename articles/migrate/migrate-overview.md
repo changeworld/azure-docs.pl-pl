@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/23/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 30cca10a83be09b8c9736df546958c3a1fe66f37
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 1aeaff486ed9f7cb99ea0b95451fc765344847a1
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025642"
+ms.locfileid: "50086679"
 ---
 # <a name="about-azure-migrate"></a>Informacje o usłudze Azure Migrate
 
@@ -37,7 +37,7 @@ Usługa Azure Migrate ułatwia wykonywanie następujących działań:
 -  Projekt usługi Azure Migrate można utworzyć tylko w lokalizacji geograficznej Stanów Zjednoczonych. Możesz jednak zaplanować migrację do dowolnej docelowej lokalizacji platformy Azure.
     - Tylko metadane odnalezione w środowisku lokalnym są zapisywane w regionie projektu migracji.
     - Metadane są przechowywane w jednym z dwóch regionów geograficznych: Zachodnio-środkowe stany USA lub Wschodnie stany USA.
-    - Jeśli używasz wizualizacji zależności w połączeniu z obszarem roboczym usługi Log Analytics, zostanie ona utworzona w tym samym regionie co projekt. 
+    - Jeśli używasz wizualizacji zależności w połączeniu z obszarem roboczym usługi Log Analytics, zostanie ona utworzona w tym samym regionie co projekt.
 
 
 ## <a name="what-do-i-need-to-pay-for"></a>Za co są pobierane opłaty?

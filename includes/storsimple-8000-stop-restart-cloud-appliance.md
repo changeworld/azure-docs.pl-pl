@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: c10482029e6cfce7063d205161fed54030919c48
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165408"
+---
 #### <a name="to-stop-and-start-a-cloud-appliance"></a>Aby zatrzymać i uruchomić urządzenie w chmurze
 
 1. Aby zatrzymać urządzenie w chmurze, przejdź do maszyny wirtualnej dla swojego urządzenia w chmurze.

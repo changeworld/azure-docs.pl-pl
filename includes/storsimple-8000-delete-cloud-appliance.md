@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 8de46fee4f93fffa669dc96ec5bb84e36842a055
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50164269"
+---
 #### <a name="to-delete-a-cloud-appliance"></a>Aby usunąć urządzenie w chmurze
 
 1. Zaloguj się do Portalu Azure.
