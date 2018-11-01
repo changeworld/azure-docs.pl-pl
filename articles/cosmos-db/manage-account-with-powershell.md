@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/21/2017
 ms.author: sngun
-ms.openlocfilehash: 82ab30ebab1b69d5ae636702b3b56d3792c09010
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: b115058353d14a3bd7c774197e06de088030ffff
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394577"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741355"
 ---
 # <a name="create-an-azure-cosmos-db-account-using-powershell"></a>Tworzenie konta usługi Azure Cosmos DB przy użyciu programu PowerShell
 
-Następujący przewodnik zawiera opis polecenia do automatyzacji zarządzania konta bazy danych Azure Cosmos DB przy użyciu programu Azure Powershell. Obejmuje również polecenia do zarządzania kluczami konta i priorytetów trybu failover w [multiregionalne konta baz danych] [dystrybucji data-globally.md]. Aktualizowanie konta bazy danych pozwala na modyfikowanie zasad spójności i dodawanie/usuwanie regionów. Dla wielu platform zarządzania kontem usługi Azure Cosmos DB, możesz użyć [wiersza polecenia platformy Azure](cli-samples.md), [interfejsu API REST dostawcy zasobów][rp-rest-api], lub [witryny Azure portal ](create-sql-api-dotnet.md#create-account).
+Następujący przewodnik zawiera opis polecenia do automatyzacji zarządzania konta bazy danych Azure Cosmos DB przy użyciu programu Azure Powershell. Obejmuje również polecenia do zarządzania kluczami konta i priorytetów trybu failover w [multiregionalne konta baz danych][distribute-data-globally]. Aktualizowanie konta bazy danych pozwala na modyfikowanie zasad spójności i dodawanie/usuwanie regionów. Dla wielu platform zarządzania kontem usługi Azure Cosmos DB, możesz użyć [wiersza polecenia platformy Azure](cli-samples.md), [interfejsu API REST dostawcy zasobów][rp-rest-api], lub [witryny Azure portal ](create-sql-api-dotnet.md#create-account).
 
 ## <a name="getting-started"></a>Wprowadzenie
 
@@ -33,7 +33,7 @@ Postępuj zgodnie z instrukcjami w [jak zainstalować i skonfigurować program A
 
 ## <a id="create-documentdb-account-powershell"></a> Tworzenie konta usługi Azure Cosmos DB
 
-To polecenie umożliwia tworzenie konta bazy danych usługi Azure Cosmos DB. Konfigurowanie nowego konta bazy danych jako jednym regionie lub [multiregionalne] [dystrybucji data-globally.md] niektóre [zasad spójności](consistency-levels.md).
+To polecenie umożliwia tworzenie konta bazy danych usługi Azure Cosmos DB. Konfigurowanie nowego konta bazy danych jako albo jednym regionie lub [multiregionalne] [ distribute-data-globally] niektóre [zasad spójności](consistency-levels.md).
 
     $locations = @(@{"locationName"="<write-region-location>"; "failoverPriority"=0}, @{"locationName"="<read-region-location>"; "failoverPriority"=1})
     $iprangefilter = "<ip-range-filter>"
@@ -60,7 +60,7 @@ Przykład:
     New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Location "West US" -Name "docdb-test" -Properties $CosmosDBProperties
 
 ### <a name="notes"></a>Uwagi
-* Poprzedni przykład tworzy konto bazy danych za pomocą dwóch regionach. Użytkownik może również utworzyć konto bazy danych z jednego regionu, (który jest wyznaczony jako region zapisu i mają wartość priorytetu trybu failover, 0) lub więcej niż dwóch regionach. Aby uzyskać więcej informacji, zobacz [multiregionalne konta baz danych] [dystrybucji data-globally.md].
+* Poprzedni przykład tworzy konto bazy danych za pomocą dwóch regionach. Użytkownik może również utworzyć konto bazy danych z jednego regionu, (który jest wyznaczony jako region zapisu i mają wartość priorytetu trybu failover, 0) lub więcej niż dwóch regionach. Aby uzyskać więcej informacji, zobacz [multiregionalne konta baz danych][distribute-data-globally].
 * Lokalizacje musi być regionów, w których usługa Azure Cosmos DB jest ogólnie dostępna. Bieżącą listę regionów znajduje się na [regionów platformy Azure, strona](https://azure.microsoft.com/regions/#services).
 
 ## <a id="update-documentdb-account-powershell"></a> Aktualizacja konta bazy danych usługi Azure Cosmos DB
@@ -195,6 +195,7 @@ Przykład:
 * Nawiązywanie połączenia przy użyciu środowiska Node.js, zobacz [nawiązywanie połączenia i odpytywanie za pomocą środowiska Node.js i aplikację MongoDB](create-mongodb-nodejs.md).
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
+
 [powershell-install-configure]: https://docs.microsoft.com/azure/powershell-install-configure
 [scaling-globally]: distribute-data-globally.md#EnableGlobalDistribution
 [distribute-data-globally]: distribute-data-globally.md

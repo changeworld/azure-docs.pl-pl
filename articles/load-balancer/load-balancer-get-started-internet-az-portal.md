@@ -1,13 +1,9 @@
 ---
-title: Utwórz publiczny obciążenia standardowego równoważenia z strefowo nadmiarowy frontonu adres publiczny adres IP za pomocą portalu Azure | Dokumentacja firmy Microsoft
-description: Jak utworzyć publiczny obciążenia standardowego równoważenia z strefowo nadmiarowy frontonu adres publiczny adres IP z portalu Azure
+title: Tworzenie publicznego Load Balancer w warstwie standardowa przy użyciu strefowo nadmiarowy publiczny adres IP adres serwera sieci Web przy użyciu witryny Azure portal | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć publiczny Load Balancer w warstwie standardowa przy użyciu strefowo nadmiarowy publiczny adres IP adres serwera sieci Web za pomocą witryny Azure portal
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -15,37 +11,37 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 9a51638ea6d85178e6631ac278c116e4c7e05d61
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 70514433d11bbe7606d75a3e2c1f6dffc251621f
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200262"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740947"
 ---
-#  <a name="create-a-public-load-balancer-standard-with-zone-redundant-public-ip-address-frontend-using-azure-portal"></a>Utwórz publiczny obciążenia standardowego równoważenia z strefowo nadmiarowy frontonu adres publiczny adres IP za pomocą portalu Azure
+#  <a name="create-a-public-load-balancer-standard-with-zone-redundant-public-ip-address-frontend-using-azure-portal"></a>Tworzenie publicznego Load Balancer w warstwie standardowa przy użyciu strefowo nadmiarowy publiczny adres IP adres serwera sieci Web przy użyciu witryny Azure portal
 
-W tym artykule opisano przez proces tworzenia publiczny [standardowe usługi równoważenia obciążenia](https://aka.ms/azureloadbalancerstandard) z strefowo nadmiarowy frontonu przy użyciu adresu publicznego adresu IP standardowa. Adres IP frontonu jednego standardowego modułu równoważenia obciążenia jest strefowo nadmiarowy domyślnie.
+W tym artykule opisano proces tworzenia publicznego [standardowego modułu równoważenia obciążenia](https://aka.ms/azureloadbalancerstandard) z strefowo nadmiarowe frontonu przy użyciu adresu publicznego adresu IP standardowych. Strefowo nadmiarowe domyślnie jest adresu IP frontonu jednego standardowego modułu równoważenia obciążenia.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
- Obsługa stref dostępności jest dostępna dla wybierz zasobów platformy Azure i regiony i rodziny rozmiar maszyny Wirtualnej. Więcej informacji na temat rozpocząć, które zasobów platformy Azure, regiony i rodziny rozmiar maszyny Wirtualnej można spróbować stref dostępności przy, zobacz [Przegląd stref dostępności](https://docs.microsoft.com/azure/availability-zones/az-overview). Aby uzyskać pomoc techniczną, możesz skorzystać z witryny [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) lub [otworzyć bilet pomocy technicznej platformy Azure](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  
+ Obsługa strefy dostępności jest dostępna dla wybieranych zasobów platformy Azure i regionami i rodzinami rozmiarów maszyn wirtualnych. Aby uzyskać więcej informacji na temat rozpocząć pracę i które zasoby platformy Azure, regionów i rodzinami rozmiarów maszyn wirtualnych można wypróbować strefy dostępności, zobacz [Przegląd stref dostępności](https://docs.microsoft.com/azure/availability-zones/az-overview). Aby uzyskać pomoc techniczną, możesz skorzystać z witryny [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) lub [otworzyć bilet pomocy technicznej platformy Azure](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure. 
 
 Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
 
-## <a name="create-a-zone-redundant-load-balancer"></a>Tworzenie modułu równoważenia obciążenia nadmiarowe strefy
+## <a name="create-a-zone-redundant-load-balancer"></a>Utwórz moduł równoważenia obciążenia nadmiarowe strefy
 
-1. W przeglądarce przejdź do portalu Azure: [ http://portal.azure.com ](http://portal.azure.com) i zaloguj się za pomocą konta platformy Azure.
-2. Po lewej stronie górnej części ekranu, wybierz **Utwórz zasób** > **sieci** > **usługi równoważenia obciążenia.**
-3. W **modułu równoważenia obciążenia Utwórz** w obszarze **nazwa** typu **myLoadBalancer**.
+1. Przejdź do witryny Azure portal w przeglądarce: [ http://portal.azure.com ](http://portal.azure.com) i zaloguj się przy użyciu konta platformy Azure.
+2. W lewym górnym rogu ekranu wybierz **Utwórz zasób** > **sieć** > **modułu równoważenia obciążenia.**
+3. W **Tworzenie modułu równoważenia obciążenia** w obszarze **nazwa** typu **myLoadBalancer**.
 4. W obszarze **Typ** wybierz opcję **Publiczny**.
-5. W obszarze jednostka SKU, wybierz **standardowe**.
-6. Kliknij przycisk **publicznego adresu IP**, kliknij przycisk **Utwórz nowy**i w **tworzenie publicznego adresu IP** strony, w obszarze nazwy typu **myPublicIPStandard**.
+5. W ramach jednostki SKU i wybierz **standardowa**.
+6. Kliknij przycisk **publiczny adres IP**, kliknij przycisk **Utwórz nową**, a następnie w **tworzenie publicznego adresu IP** stronie w obszarze Nazwa, typ **myPublicIPStandard**.
     >[!NOTE] 
-    > Publicznego adresu IP utworzone w tym kroku jest z wersji Standard i strefowo nadmiarowy domyślnie. 
-8. W obszarze **lokalizacji**, wybierz pozycję **Wschodnią US2**, a następnie kliknij przycisk **OK**. Rozpocznie się wdrażanie modułu równoważenia obciążenia. Potrwa to kilka minut.
+    > Publicznego adresu IP, utworzone w tym kroku jest dla standardowej jednostki SKU i strefowo nadmiarowe domyślnie. 
+8. W obszarze **lokalizacji**, wybierz opcję **wschodnie stany USA 2**, a następnie kliknij przycisk **OK**. Rozpocznie się wdrażanie modułu równoważenia obciążenia. Potrwa to kilka minut.
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o [standardowego modułu równoważenia obciążenia i dostępność strefy](load-balancer-standard-availability-zones.md).

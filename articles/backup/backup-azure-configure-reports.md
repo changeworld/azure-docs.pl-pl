@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 945a91b9021ed5ff02e8c1ef7baf85e2098202ca
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 493a8881975e6b7568a7823bfc86fc97b4389378
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214668"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418283"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurowanie raportów usługi Azure Backup
 W tym artykule przedstawiono kroki, aby wykonać, aby skonfigurować raporty usługi Azure Backup przy użyciu magazynu usługi Recovery Services. Pokazano również, jak dostęp do raportów przy użyciu usługi Power BI. Po wykonaniu tych czynności, możesz przejść bezpośrednio do usługi Power BI, aby wyświetlić, dostosowywanie i tworzenie raportów.
@@ -22,7 +22,7 @@ W tym artykule przedstawiono kroki, aby wykonać, aby skonfigurować raporty us�
 > [!IMPORTANT]
 > Od 1 listopada 2018 r niektórzy klienci mogą zobaczyć problemy podczas ładowania danych w usłudze Azure App kopii zapasowej w usłudze Power BI, informujący o tym, "znaleziono dodatkowe znaki na końcu danych wejściowych JSON. Wyjątek został zgłoszony przez interfejs IDataReader."
 Jest to ze względu na zmianę w formacie, w którym dane są ładowane do konta magazynu.
-Uaktualnij aplikację do najnowszej wersji, aby uniknąć tego problemu.
+Pobierz najnowszą wersję aplikacji (wersja 1.8) aby uniknąć tego problemu.
 >
 >
 
@@ -74,23 +74,24 @@ Wykonaj następujące kroki, aby skonfigurować konto magazynu dla magazynu usł
       ![Wyświetl ustawienia diagnostyczne w kroku 9](./media/backup-azure-configure-reports/diagnostic-setting-row.png)
 
 > [!NOTE]
-> Po skonfigurowaniu raportów, zapisując konta magazynu *Poczekaj 24 godziny* do wypychania danych początkowych zakończyć. Importuj pakiet zawartości usługi Azure Backup w usłudze Power BI dopiero po tym czasie. Aby uzyskać więcej informacji, zobacz [sekcji często zadawane pytania](#frequently-asked-questions). 
+> Po skonfigurowaniu raportów, zapisując konta magazynu *Poczekaj 24 godziny* do wypychania danych początkowych zakończyć. Importowanie aplikacji kopii zapasowej platformy Azure w usłudze Power BI dopiero po tym czasie. Aby uzyskać więcej informacji, zobacz [sekcji często zadawane pytania](#frequently-asked-questions). 
 >
 >
 
 ## <a name="view-reports-in-power-bi"></a>Wyświetlanie raportów w usłudze Power BI 
 Po skonfigurowaniu konta magazynu dla raportów przy użyciu magazynu usługi Recovery Services może potrwać około 24 godzin raportowania dane zaczną być przepływają w. Po 24 godzinach od skonfigurowania konta magazynu wykonaj następujące kroki, aby wyświetlić raporty w usłudze Power BI.
-1. [Zaloguj się](https://powerbi.microsoft.com/landing/signin/) do usługi Power BI.
-2. Wybierz pozycję **Pobieranie danych**. W **Biblioteka pakietów zawartości**w obszarze **usług**, wybierz opcję **uzyskać**. Postępuj zgodnie z instrukcjami w [dokumentacji usługi Power BI do dostępu do pakietu zawartości](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/).
+Jeśli chcesz dostosować i udostępnić raport, Utwórz obszar roboczy i wykonaj następujące czynności
 
-     ![Importowanie pakietu zawartości](./media/backup-azure-configure-reports/content-pack-import.png)
+1. [Zaloguj się](https://powerbi.microsoft.com/landing/signin/) do usługi Power BI.
+2. Wybierz pozycję **Pobieranie danych**. W **więcej sposobów na tworzenie własnej zawartości**, wybierz opcję **dodatki Service Pack zawartości**. Postępuj zgodnie z instrukcjami w [dokumentacji usługi Power BI, aby połączyć się z usługą](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/).
+
 3. W **wyszukiwania** paska, wprowadź **kopia zapasowa Azure** i wybierz **Pobierz teraz**.
 
       ![Pobieranie pakietu zawartości](./media/backup-azure-configure-reports/content-pack-get.png)
 4. Wprowadź nazwę konta magazynu, który został skonfigurowany w poprzednim kroku 5, a następnie wybierz pozycję **dalej**.
 
     ![Podaj nazwę konta magazynu](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
-5. Wprowadź klucz konta magazynu dla tego konta magazynu. Aby [wyświetlanie i kopiowanie kluczy dostępu do magazynu](../storage/common/storage-account-manage.md#access-keys), przejdź do swojego konta magazynu w witrynie Azure portal. 
+5. Przy użyciu metody uwierzytelniania "Key", wprowadź klucz konta magazynu dla tego konta magazynu. Aby [wyświetlanie i kopiowanie kluczy dostępu do magazynu](../storage/common/storage-account-manage.md#access-keys), przejdź do swojego konta magazynu w witrynie Azure portal. 
 
      ![Wprowadź konto magazynu](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>
      
@@ -102,9 +103,7 @@ Po skonfigurowaniu konta magazynu dla raportów przy użyciu magazynu usługi Re
     
     ![Importowanie pakietu zawartości sukces](./media/backup-azure-configure-reports/content-pack-import-success.png) <br/>
     
-7. Po danych pomyślnie, importowany **kopia zapasowa Azure** pakiet zawartości jest widoczna w **aplikacje** w okienku nawigacji. W obszarze **pulpity nawigacyjne**, **raporty**, i **zestawów danych**, kopia zapasowa Azure jest teraz lista z żółte gwiazdki, które wskazują nowo zaimportowane raporty.
-
-     ![Pakiet zawartości usługi Azure Backup](./media/backup-azure-configure-reports/content-pack-azure-backup.png) <br/>
+7. Po danych pomyślnie, importowany **kopia zapasowa Azure** pakiet zawartości jest widoczna w **aplikacje** w okienku nawigacji. W obszarze **pulpity nawigacyjne**, **raporty**, i **zestawów danych**, lista zawiera teraz usługi Azure Backup.
      
 8. W obszarze **pulpity nawigacyjne**, wybierz opcję **kopia zapasowa Azure**, który zawiera zestaw przypięte klucza raportów.
 

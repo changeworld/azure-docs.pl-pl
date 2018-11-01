@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/11/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: e8ecdf1fffb51c0b8e9ce996307595a5444a64ee
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: eeecf37a6cc7a0f86662f002b6f0efab5ef8c35c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414097"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417467"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Rozwiązywanie problemów aktywacji maszyny wirtualnej Windows Azure
 
@@ -82,7 +82,7 @@ Ten krok nie ma zastosowania do Windows 2012 lub Windows 2008 R2. Używa ona fun
 2. Przejdź do ekranu startowego, wyszukiwanie w programie Windows PowerShell, kliknij prawym przyciskiem myszy środowiska Windows PowerShell i wybrać polecenie Uruchom jako administrator.
 
 3. Upewnij się, że maszyna wirtualna jest skonfigurowany do używania z właściwym serwerem usługi KMS z usługi Azure. Aby to zrobić, uruchom następujące polecenie:
-  
+  
     ```
     iex “$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms
     kms.core.windows.net:1688
@@ -90,11 +90,11 @@ Ten krok nie ma zastosowania do Windows 2012 lub Windows 2008 R2. Używa ona fun
     Polecenie powinna zwrócić: Nazwa maszyny usługi zarządzania kluczami pomyślnie ustawiono na kms.core.windows.net:1688.
 
 4. Sprawdź przy użyciu Psping, że masz połączenie z serwerem usługi zarządzania Kluczami. Przejdź do folderu, w którym została rozpakowana pobierania Pstools.zip, a następnie uruchom następujące czynności:
-  
+  
     ```
     \psping.exe kms.core.windows.net:1688
     ```
-  
+  
   Upewnij się, zostanie wyświetlony w danych wyjściowych w wierszu na sekundę do ostatniego: Wysłane = 4, odebrane = 4, utracone = 0 (0% straty).
 
   Utracono jest większa od 0 (zero), maszyna wirtualna ma połączenie z serwerem usługi zarządzania Kluczami. W takiej sytuacji Jeśli maszyna wirtualna znajduje się w sieci wirtualnej i jest niestandardowego serwera DNS określona, musisz upewnić się, że serwer DNS jest w stanie rozpoznać kms.core.windows.net. Lub zmienić serwer DNS, który jest rozpoznawany kms.core.windows.net.

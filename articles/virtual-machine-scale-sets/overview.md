@@ -3,7 +3,7 @@ title: Omówienie zestawów skalowania maszyn wirtualnych platformy Azure | Micr
 description: Dowiedz się więcej o zestawach skalowania maszyn wirtualnych platformy Azure i o sposobie automatycznego skalowania swoich aplikacji
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: gatneil
+author: mayanknayar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
 ms.date: 03/27/2018
-ms.author: negat
-ms.openlocfilehash: 8ded9b20bd70d18b8a68df0c9775f3a56f8b185b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: manayar
+ms.openlocfilehash: 23c04f85c994a8b300ffec23b4660d3d431ef69b
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30247379"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740429"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Co to są zestawy skalowania maszyn wirtualnych?
 Zestawy skalowania maszyn wirtualnych platformy Azure pozwalają utworzyć grupę identycznych, mających zrównoważone obciążenie maszyn wirtualnych i zarządzać nimi. Liczba wystąpień maszyn wirtualnych może automatycznie zwiększać lub zmniejszać się w reakcji na zapotrzebowanie lub zdefiniowany harmonogram. Zestawy skalowania zapewniają wysoką dostępność Twoim aplikacjom i pozwalają na centralnie zarządzanie, konfigurowanie i aktualizowanie dużej liczby maszyn wirtualnych. Za pomocą zestawów skalowania maszyn wirtualnych możesz tworzyć usługi na dużą skalę dla takich obszarów jak obliczenia, dane big data i obciążenia kontenera.

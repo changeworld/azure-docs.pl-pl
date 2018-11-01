@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
-ms.date: 10/23/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 470834da9e9a571594789dedcbb0a67b55abd799
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 6f825d3419a8aebeae4500a383740058e984a2f2
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49953716"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420833"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Resetowanie usług pulpitu zdalnego lub jego hasło administratora na maszynie wirtualnej Windows
 Jeśli nie możesz połączyć z maszyną wirtualną (VM) Windows, możesz zresetować hasło administratora lokalnego lub zresetowanie konfiguracji usług pulpitu zdalnego (nie obsługiwany na kontrolerach domeny Windows). Aby zresetować hasło, można użyć witryny Azure portal lub rozszerzenie dostępu do maszyny Wirtualnej w programie Azure PowerShell. Po zalogowaniu się do maszyny Wirtualnej, należy zresetować hasło dla tego administratora lokalnego.  

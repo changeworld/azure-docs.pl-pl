@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: geg
-ms.openlocfilehash: 5812bafbcfa104150325dcdde374f88200b071c0
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 7de9d1674860a6369c1dc09462a06def672fbdf2
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155205"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420527"
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Przywracanie maszyn wirtualnych za pomocą witryny Azure portal
 Chroń swoje dane, tworząc migawki danych w określonych odstępach czasu. Te migawki są nazywane punktami odzyskiwania i są one przechowywane w magazynach usługi Recovery Services. Jeśli jest to konieczne naprawić lub ponownie utworzyć maszynę wirtualną (VM), można przywrócić maszynę Wirtualną z dowolnego z punktów odzyskiwania zapisanych. Przywracanie punktu odzyskiwania, możesz wykonywać następujące czynności:
@@ -170,7 +170,7 @@ Kliknij hiperlink powiadomienia, aby przejść do **BackupJobs** listy. Wszystki
 
 **Zadania tworzenia kopii zapasowej** bloku otwiera i wyświetla listę zadań.
 
-![Lista maszyn wirtualnych w magazynie](./media/backup-azure-arm-restore-vms/restore-job-completed.png)
+![Lista maszyn wirtualnych w magazynie](./media/backup-azure-arm-restore-vms/restore-job-in-progress1.png)
 
 ## <a name="use-templates-to-customize-a-restored-vm"></a>Szablony umożliwiają dostosowywanie przywróconą maszyną Wirtualną.
 Po [zakończeniu operację przywracania dysków](#Track-the-restore-operation), użyj szablonu, który został wygenerowany w ramach operacji przywracania do tworzenia nowej maszyny Wirtualnej z konfiguracją różni się od konfiguracji kopii zapasowej. Możesz również służy do dostosowywania nazw zasobów, które zostały utworzone podczas procesu tworzenia nowej maszyny Wirtualnej z punktu przywracania.

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 3851bfef71aab6553e109bb8108edd7bec182f0e
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 87cfcefd91652194adc0a5ca4580a8d00ba4d234
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041956"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412758"
 ---
 # <a name="filters-in-log-analytics-views"></a>Filtry w widokach usługi Log Analytics
 A **filtru** w [usługi Log Analytics przeglądać](log-analytics-view-designer.md) umożliwia użytkownikom do filtrowania danych w widoku przez wartość określonej właściwości bez modyfikowania samego widoku.  Na przykład możesz zezwolić użytkownikom widoku filtrowanie widoku danych tylko z określonego komputera lub zestawu komputerów.  Można utworzyć wiele filtrów w jednym widoku, który użytkownicy mogą filtrować według wielu właściwości.  W tym artykule opisano sposób użycia filtr i dodaj je do widoku niestandardowego.
@@ -28,12 +28,12 @@ A **filtru** w [usługi Log Analytics przeglądać](log-analytics-view-designer.
 ## <a name="using-a-filter"></a>Przy użyciu filtru
 Kliknij zakres czasu danych, u góry widoku, aby otworzyć rozwijanego którym można zmienić zakres czasu danych widoku.
 
-![Przykład filtru](media/log-analytics-view-designer/filters-example-time.png)
+![Przykład filtru](media/log-analytics-view-designer-filters/filters-example-time.png)
 
 Kliknij przycisk **+** Aby dodać filtr, za pomocą filtrów niestandardowych, które są zdefiniowane dla widoku. Z listy rozwijanej lub wpisz wartość, albo wybierz wartość dla filtru. Dodaj filtry, klikając przycisk w dalszym ciągu **+**. 
 
 
-![Przykład filtru](media/log-analytics-view-designer/filters-example-custom.png)
+![Przykład filtru](media/log-analytics-view-designer-filters/filters-example-custom.png)
 
 Jeśli usuniesz wszystkie wartości filtru, a następnie z filtrem nie zostaną zastosowane.
 
@@ -42,7 +42,7 @@ Jeśli usuniesz wszystkie wartości filtru, a następnie z filtrem nie zostaną 
 
 Utwórz filtr z **filtry** kartę, kiedy [widoku do edycji](log-analytics-view-designer.md).  Filtr jest globalne dla widoku i dotyczy wszystkich części widoku.  
 
-![Ustawienia filtra](media/log-analytics-view-designer/filters-settings.png)
+![Ustawienia filtra](media/log-analytics-view-designer-filters/filters-settings.png)
 
 W poniższej tabeli opisano ustawienia filtru.
 

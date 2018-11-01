@@ -1,9 +1,9 @@
 ---
-title: Azure automatycznego skalowania za pomocą metryki gościa w szablonie zestaw skalowania systemu Linux | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak w szablonie zestawu skalowania maszyn wirtualnych systemu Linux przy użyciu gościa metryki automatycznego skalowania
+title: Użyj skalowania automatycznego platformy Azure za pomocą metryk gościa w szablonie zestawu skalowania systemu Linux | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skalowanie automatyczne za pomocą metryki gościa w szablonie zestawu skalowania maszyn wirtualnych systemu Linux
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: gatneil
+author: mayanknayar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: negat
-ms.openlocfilehash: 8e822d83dd3bafabfea60ad50224c87df226bdc6
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.author: manayar
+ms.openlocfilehash: 0718ad7112c759dd3fdd363f38b863186ec9a978
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26781432"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740166"
 ---
-# <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Przy użyciu metryk gościa w szablonie Linux zestaw skalowania automatycznego skalowania
+# <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Skalowanie automatyczne za pomocą metryki gościa w szablonie zestawu skalowania systemu Linux
 
-Istnieją dwa typy metryki na platformie Azure, które są zbierane z maszyn wirtualnych i skalowanie zestawów: niektóre pochodzą z hosta maszyny Wirtualnej i innych pochodzi z gościa maszyny Wirtualnej. Na wysokim poziomie Jeśli używasz standardowego Procesora, dysku i metryki sieci metryki hosta to prawdopodobnie świetnie sprawdza się. Jeśli jednak potrzebujesz większy wybór metryk, następnie metryki gościa są prawdopodobnie lepszym rozwiązaniem. Spójrzmy na różnice między nimi:
+Istnieją dwa typy metryki na platformie Azure, które są zbierane z maszyn wirtualnych i zestawów skalowania: niektóre pochodzą z hosta maszyny Wirtualnej i innych pochodzą z maszyny Wirtualnej gościa. Na wysokim poziomie Jeśli używasz standardowego procesora CPU, dysku i metryki sieci metryki hosta to prawdopodobnie dobrym rozwiązaniem. Jeśli jednak potrzebny większy wybór metryk, następnie metryki gościa są prawdopodobnie lepszym rozwiązaniem. Spójrzmy na różnice między tymi dwoma:
 
-Metryka hosta jest prostszy i bardziej niezawodny. Nie wymagają dodatkowej konfiguracji, ponieważ są one zbierane przez hosta maszyny Wirtualnej, metryki gościa wymagają zainstalowania [rozszerzenie systemu Windows Azure Diagnostics](../virtual-machines/windows/extensions-diagnostics-template.md) lub [rozszerzenia diagnostyki Azure Linux](../virtual-machines/linux/diagnostic-extension.md)na maszynie Wirtualnej gościa. Typową przyczyną metryki gościa zamiast metryki hosta jest, że metryki gościa zapewniają większy wybór metryk niż metryki hosta. Przykładem takiego jest metryki zużycie pamięci, które są dostępne za pośrednictwem metryki gościa tylko. Metryki hosta obsługiwane są wyświetlane [tutaj](../monitoring-and-diagnostics/monitoring-supported-metrics.md), i znajduje się gościa często używane metryki [tutaj](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md). W tym artykule przedstawiono sposób modyfikowania [minimalnej wielkości Ustaw szablon](./virtual-machine-scale-sets-mvss-start.md) używać reguł skalowania automatycznego oparciu metryki gościa dla zestawów skalowania systemu Linux.
+Metryki hosta są prostsze i bardziej niezawodne. Nie wymagają dodatkowej konfiguracji, ponieważ są one zbierane przez hosta maszyny Wirtualnej, metryk gościa wymaga zainstalowania [rozszerzenia diagnostyki Azure Windows](../virtual-machines/windows/extensions-diagnostics-template.md) lub [rozszerzenia diagnostyki Azure Linux](../virtual-machines/linux/diagnostic-extension.md)w maszynie Wirtualnej gościa. Jednym z typowych powodów metryki gościa zamiast metryki hosta jest, że metryki gościa zapewniają większy wybór metryki niż metryki hosta. Jednym z przykładów jest użycie pamięci metryk, które są dostępne za pośrednictwem metryki gościa tylko. Metryki hosta obsługiwane są wymienione [tutaj](../monitoring-and-diagnostics/monitoring-supported-metrics.md), a metryki gościa często używane są wymienione [tutaj](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md). W tym artykule przedstawiono sposób modyfikowania [minimalnego możliwego do użycia zestawu skalowania szablonu](./virtual-machine-scale-sets-mvss-start.md) używać reguł skalowania automatycznego w oparciu o metryki gościa dla zestawów skalowania systemu Linux.
 
-## <a name="change-the-template-definition"></a>Zmiany definicji szablonu
+## <a name="change-the-template-definition"></a>Zmiana definicji szablonu
 
-Ustaw szablon minimalnej wielkości są widoczne [tutaj](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json), i szablon dla wdrażania skalowania Linux zestawu z gości skalowania automatycznego widoczne [tutaj](https://raw.githubusercontent.com/gatneil/mvss/guest-based-autoscale-linux/azuredeploy.json). Przeanalizujmy różnicowego używany do tworzenia tego szablonu (`git diff minimum-viable-scale-set existing-vnet`) element przez element:
+Szablon zestawu minimalnej wielkości są widoczne [tutaj](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json), i szablon do wdrażania skalowania systemu Linux zestaw z automatyczne skalowanie na podstawie gościa będą widoczne [tutaj](https://raw.githubusercontent.com/gatneil/mvss/guest-based-autoscale-linux/azuredeploy.json). Przeanalizujmy diff, używany do tworzenia tego szablonu (`git diff minimum-viable-scale-set existing-vnet`) eliminujemy:
 
-Najpierw Dodaj parametry `storageAccountName` i `storageAccountSasToken`. Diagnostyka agenta przechowuje dane w [tabeli](../cosmos-db/table-storage-how-to-use-dotnet.md) na tym koncie magazynu. Począwszy od agenta w wersji 3.0 Diagnostyka systemu Linux przy użyciu klucz dostępu do magazynu nie jest już obsługiwana. Zamiast tego należy użyć [tokenu sygnatury dostępu Współdzielonego](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Najpierw należy dodać parametry dla `storageAccountName` i `storageAccountSasToken`. Agent diagnostyki przechowuje dane metryk w [tabeli](../cosmos-db/table-storage-how-to-use-dotnet.md) na tym koncie magazynu. Począwszy od agenta diagnostyki systemu Linux w wersji 3.0 przy użyciu klucza dostępu do magazynu nie jest już obsługiwana. Zamiast tego należy użyć [tokenu sygnatury dostępu Współdzielonego](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 ```diff
      },
@@ -48,7 +48,7 @@ Najpierw Dodaj parametry `storageAccountName` i `storageAccountSasToken`. Diagno
    },
 ```
 
-Następnie zmodyfikuj zestaw skalowania `extensionProfile` do rozszerzenie diagnostyki. W tej konfiguracji należy określić identyfikator zasobu skali ustawioną zbieranie metryk, a także konta magazynu i tokenu sygnatury dostępu Współdzielonego do przechowywania metryki. Określ, jak często są agregowane metryki (w tym przypadku co minutę) i które metryk do śledzenia (w tym case, procent używanej pamięci). Aby uzyskać bardziej szczegółowe informacje dotyczące tej konfiguracji i metryki innego niż % wykorzystanie pamięci, zobacz [tej dokumentacji](../virtual-machines/linux/diagnostic-extension.md).
+Następnie należy zmodyfikować zestawu skalowania `extensionProfile` obejmujący rozszerzenie diagnostyki. W tej konfiguracji należy określić identyfikator zasobu zestawie skalowania, aby zbierać metryki, oraz konto magazynu i tokenu sygnatury dostępu Współdzielonego na potrzeby przechowywania metryki. Określ, jak często metryki są agregowane (w tym przypadku na minutę) i które metryki umożliwiające śledzenie (w tym przypadków, procent używanej pamięci). Aby bardziej szczegółowe informacje dotyczące tej konfiguracji i metryki innego niż % użycie pamięci, zobacz [tej dokumentacji](../virtual-machines/linux/diagnostic-extension.md).
 
 ```diff
                  }
@@ -111,7 +111,7 @@ Następnie zmodyfikuj zestaw skalowania `extensionProfile` do rozszerzenie diagn
        }
 ```
 
-Na koniec należy dodać `autoscaleSettings` zasobów, aby skonfigurować skalowania automatycznego oparte na tych metryk. Ten zasób ma `dependsOn` klauzuli, który odwołuje się do skali ustawioną upewnij się, że zestaw skalowania istnieje przed podjęciem próby automatycznego skalowania go. Jeśli na różne metryki automatycznego skalowania, należy użyć `counterSpecifier` z konfiguracji rozszerzenia diagnostyki jako `metricName` w konfiguracji automatycznego skalowania. Aby uzyskać więcej informacji dotyczących konfiguracji automatycznego skalowania, zobacz [najlepsze rozwiązania w zakresie skalowania automatycznego](..//monitoring-and-diagnostics/insights-autoscale-best-practices.md) i [dokumentacji interfejsu API REST Monitor Azure](https://msdn.microsoft.com/library/azure/dn931928.aspx).
+Na koniec należy dodać `autoscaleSettings` zasobów, aby skonfigurować automatyczne skalowanie na podstawie tych metryk. Ten zasób ma `dependsOn` klauzula, która odwołuje się do skalowania równa upewnij się, że zestaw skalowania istnieje przed przystąpieniem do skalowania automatycznego. Jeśli wybierzesz inne metryki automatycznego skalowania na, należy użyć `counterSpecifier` z konfiguracji rozszerzenia diagnostyki jako `metricName` w konfiguracji skalowania automatycznego. Aby uzyskać więcej informacji na temat konfiguracji skalowania automatycznego, zobacz [najlepszych praktykach dotyczących skalowania](..//monitoring-and-diagnostics/insights-autoscale-best-practices.md) i [dokumentację referencyjną interfejsu API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn931928.aspx).
 
 ```diff
 +    },

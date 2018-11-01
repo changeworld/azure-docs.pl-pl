@@ -12,16 +12,16 @@ ms.topic: tutorial
 ms.date: 12/18/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: e6511b9511d2598b58fd3afee34803ceb09ac5ce
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c41873d8f87a9a1203cefa37f99098f23e7aab92
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582856"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239017"
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: programowanie za pomocą interfejsu Table API na platformie .NET
 
-Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów.
+Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki dystrybucji globalnej i możliwości skalowania poziomego w usłudze Azure Cosmos DB możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów.
 
 Ten samouczek obejmuje następujące zadania: 
 
@@ -45,7 +45,7 @@ Ten samouczek jest przeznaczony dla deweloperów, którzy są zaznajomieni z zes
 
 Jeśli obecnie używasz usługi Azure Table Storage, korzystając z interfejsu Table API usługi Azure Cosmos DB, uzyskasz następujące korzyści:
 
-- Natychmiastowa możliwość przeprowadzenia [globalnej dystrybucji](distribute-data-globally.md) z obsługą wielu regionów oraz [automatycznego i ręcznego trybu failover](regional-failover.md)
+- Natychmiastowa możliwość przeprowadzenia [globalnej dystrybucji](distribute-data-globally.md) z obsługą wielu regionów oraz [automatycznego i ręcznego trybu failover](high-availability.md)
 - Obsługa automatycznego indeksowania wszystkich właściwości niezależna od schematu („indeksy pomocnicze”) i szybkie zapytania 
 - Obsługa [niezależnego skalowania magazynu i przepływności](partition-data.md) na dowolną liczbą regionów
 - Obsługa [dedykowanej przepływności dla tabeli](request-units.md), którą można skalować w zakresie od setek do milionów żądań na sekundę

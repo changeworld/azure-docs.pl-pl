@@ -9,12 +9,12 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: ad315b822a908212a95b3a2ab9420a343a1803f9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 1d2be579dda9f90f06897f11d62ccd08076f892e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47404948"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413574"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>Samouczek: aktualizowanie magazynu przy użyciu interfejsu wiersza polecenia oraz tematów/subskrypcji
 
@@ -38,7 +38,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem możesz utworzy
 
 Aby utworzyć aplikację usługi Service Bus w języku Java, trzeba mieć zainstalowane następujące składniki:
 
-- [Zestaw Java Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), najnowsza wersja.
+- [Zestaw Java Development Kit](https://aka.ms/azure-jdks), najnowsza wersja.
 - [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure)
 - Narzędzie [Apache Maven](https://maven.apache.org), wersja 3.0 lub nowsza.
 

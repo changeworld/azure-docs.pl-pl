@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: ac30718a92d76dedcb5b0ef3bdd2f282dd117720
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 41af53dbfbb5c863007a332445a2f184fcbcbf81
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48853525"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741066"
 ---
 # <a name="topic-filters-and-actions"></a>Filtry tematów i akcje
 
@@ -40,7 +40,7 @@ Reguły filtrowania złożonych wymagają możliwości przetwarzania. W szczegó
 
 ## <a name="actions"></a>Akcje
 
-Za pomocą warunków filtru SQL można zdefiniować akcję, która może dodawać adnotacje komunikat poprzez dodawanie, usuwanie lub zastępowanie właściwości i ich wartości. Akcja [korzysta z wyrażenia podobnego do SQL](service-bus-messaging-sql-filter.md) , luźno leans składni instrukcji SQL UPDATE. Akcja odbywa się w komunikacie po jego dopasowany i przed wybrano komunikat do tematu. Zmiany właściwości wiadomości są prywatne komunikat skopiowane do subskrypcji.
+Za pomocą warunków filtru SQL można zdefiniować akcję, która może dodawać adnotacje komunikat poprzez dodawanie, usuwanie lub zastępowanie właściwości i ich wartości. Akcja [korzysta z wyrażenia podobnego do SQL](service-bus-messaging-sql-filter.md) , luźno leans składni instrukcji SQL UPDATE. Akcja odbywa się w komunikacie po jego dopasowany i przed wybrano wiadomość w subskrypcji. Zmiany właściwości wiadomości są prywatne komunikat skopiowane do subskrypcji.
 
 ## <a name="usage-patterns"></a>Wzorce użycia
 

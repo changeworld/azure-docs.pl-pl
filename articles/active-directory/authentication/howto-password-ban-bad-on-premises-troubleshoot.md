@@ -5,23 +5,23 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 10/30/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: c164c2465a4e9d60159ea9596139f2e4938f792f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 6832f6f9d09cbbfea6ccaa69160ad93209c7ac8c
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242504"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741185"
 ---
 # <a name="preview-azure-ad-password-protection-monitoring-reporting-and-troubleshooting"></a>Wersja zapoznawcza: Usługi Azure AD monitorowania ochrony hasłem, raportowanie i rozwiązywania problemów
 
 |     |
 | --- |
-| Ochrony hasłem w usłudze Azure AD i listy niestandardowej zakazanych haseł są publicznej wersji zapoznawczej funkcji usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| Ochrony hasłem w usłudze Azure AD jest funkcją publicznej wersji zapoznawczej usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
 Po wdrożeniu ochrona za pomocą hasła usługi Azure AD z monitorowaniem i raportowaniem są podstawowe zadania. W tym artykule przechodzi do szczegółów, aby pomóc, że rozumiesz, gdzie każda usługa rejestruje informacje i instrukcje sporządzić raport na temat użytkowania ochrona za pomocą hasła usługi Azure AD.
@@ -88,7 +88,7 @@ Niektóre inne kluczowe komunikatach w dzienniku zdarzeń pod uwagę są:
 
 Hasło dla określonego użytkownika został zaakceptowany, ponieważ zasady haseł w usłudze Azure nie jest jeszcze dostępna
 
-Nazwa użytkownika: <user> imię i nazwisko: <user>
+Nazwa użytkownika: SomeUser imię i nazwisko: niektóre użytkownika
 
 Ten stan może być spowodowane przez co najmniej jeden z następujących powodów: % n
 

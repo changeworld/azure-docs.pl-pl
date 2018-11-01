@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 04/17/2018
-ms.openlocfilehash: 0c1b45d7db53bd2eb7c9f058eb1c44c762886b80
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: f50e61f4acbdc33cee1786f68cf44252a8f29741
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049838"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417416"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>Samouczek: interfejs API strumieni platformy Apache Kafka
 
@@ -46,7 +46,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Następujące składniki muszą być zainstalowane w środowisku deweloperskim:
 
-* [Zestaw Java JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) lub równoważny, taki jak OpenJDK.
+* [Zestaw Java JDK 8](https://aka.ms/azure-jdks) lub równoważny, taki jak OpenJDK.
 
 * [Apache Maven](http://maven.apache.org/)
 

@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: 716277e7ef4fa239c82562176c75bb20568a12af
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.date: 10/30/2018
+ms.openlocfilehash: e89245a946848e46f3c7c502b6cd0e8017327e07
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140929"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419898"
 ---
 # <a name="use-sql-database-managed-instance-with-virtual-networks-and-near-100-compatibility"></a>Użyj wystąpienia zarządzanego usługi SQL Database przy użyciu sieci wirtualnych i w prawie 100% zgodności
 

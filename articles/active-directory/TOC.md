@@ -302,8 +302,6 @@
 ##### [Problem z aplikacją niestandardową](manage-apps/application-sign-in-problem-custom-dev.md)
 ##### [Problem z aplikacją lokalną — serwer proxy aplikacji](manage-apps/application-sign-in-problem-on-premises-application-proxy.md)
 
-### [Programowanie aplikacji](active-directory-applications-guiding-developers-for-lob-applications.md)
-
 
 ## Zarządzanie swoim katalogiem
 ### [Program Azure AD Connect](hybrid/whatis-hybrid-identity.md)

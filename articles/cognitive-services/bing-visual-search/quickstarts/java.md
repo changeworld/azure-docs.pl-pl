@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: quickstart
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 0e2f4d83904240cb32d3e162c4c873f0c8e469fd
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: f54914b846c6a001a9fb10d938a038e390abf6bf
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885259"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416447"
 ---
 # <a name="quickstart-your-first-bing-visual-search-query-in-java"></a>Szybki start: pierwsze zapytanie wyszukiwania wizualnego Bing w języku Java
 
@@ -27,7 +27,7 @@ W przypadku przekazywania lokalnego obrazu w treści żądania POST konieczne je
 --boundary_1234-abcd
 Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
-ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
+ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
 
 --boundary_1234-abcd--
 ```
@@ -37,7 +37,7 @@ W tym artykule zawarto prostą aplikację konsolową, która wysyła żądanie i
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Musisz mieć zestaw [JDK 7 lub 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), aby skompilować i uruchomić ten kod. Możesz użyć środowiska projektowego Java, jeśli masz ulubione, ale edytor tekstu również wystarczy.
+Musisz mieć zestaw [JDK 7 lub 8](https://aka.ms/azure-jdks), aby skompilować i uruchomić ten kod. Jeśli masz ulubione środowisko projektowe Java, możesz go użyć, ale edytor tekstów również wystarczy.
 
 Na potrzeby tego przewodnika Szybki start możesz użyć klucza subskrypcji [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) lub klucza subskrypcji płatnej.
 

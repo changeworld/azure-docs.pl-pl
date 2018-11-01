@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 2eebc96b14ee0f06b3bd88ea565dfe9372aba1ff
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d85355b50bad9f05acc7da92d763d011e6f807b6
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037818"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741083"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-windows-containers"></a>Zainstaluj środowisko uruchomieniowe usługi Azure IoT Edge na Windows do korzystania z kontenerów Windows
 
@@ -36,11 +36,11 @@ Aby uzyskać więcej informacji o tym, które są obecnie obsługiwane systemy o
 ## <a name="install-the-container-runtime"></a>Zainstaluj środowisko uruchomieniowe kontenera 
 
 >[!NOTE]
->W przypadku instalacji aparatu kontenera na Windows IoT Core, wykonaj kroki z [aprowizowanie urządzenia IoT Core artykułu] [ lnk-iot-core] , a następnie kontynuuj z poniższymi instrukcjami.
+>W przypadku instalacji aparatu kontenera na Windows IoT Core, wykonaj kroki z [aprowizowanie urządzenia IoT Core artykułu](how-to-install-iot-core.md) , a następnie kontynuuj z poniższymi instrukcjami.
 
-Usługa Azure IoT Edge opiera się na [zgodnego z OCI] [ lnk-oci] kontener środowiska uruchomieniowego (na przykład Docker). Możesz użyć [Docker for Windows] [ lnk-docker-for-windows] do tworzenia i testowania. 
+Usługa Azure IoT Edge opiera się na [zgodnego z OCI](https://www.opencontainers.org/) kontener środowiska uruchomieniowego (na przykład Docker). Możesz użyć [Docker for Windows](https://www.docker.com/docker-windows) do tworzenia i testowania. 
 
-Konfigurowanie platformy Docker for Windows [używać kontenerów Windows][lnk-docker-config].
+Konfigurowanie platformy Docker for Windows [używać kontenerów Windows](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
 
 ## <a name="install-the-azure-iot-edge-security-daemon"></a>Instalowanie demona zabezpieczeń usługi Azure IoT Edge
 
@@ -51,7 +51,7 @@ Pojedyncze urządzenie usługi IoT Edge mogą być udostępniane ręcznie przy u
 
 ### <a name="install-and-manually-provision"></a>Instalacja oraz ręcznie zainicjować obsługę administracyjną
 
-1. Postępuj zgodnie z instrukcjami w [zarejestrować nowe urządzenie usługi Azure IoT Edge] [ lnk-dcs] zarejestrować urządzenie i pobieranie parametrów połączenia urządzenia. 
+1. Postępuj zgodnie z instrukcjami w [zarejestrować nowe urządzenie usługi Azure IoT Edge](how-to-register-device-portal.md) zarejestrować urządzenie i pobieranie parametrów połączenia urządzenia. 
 
 2. Na urządzeniu usługi IoT Edge uruchom program PowerShell jako administrator. 
 
@@ -66,7 +66,7 @@ Pojedyncze urządzenie usługi IoT Edge mogą być udostępniane ręcznie przy u
 
 ### <a name="install-and-automatically-provision"></a>Instalowanie i automatycznie aprowizować
 
-1. Postępuj zgodnie z instrukcjami w [tworzenie i aprowizowanie symulowanego urządzenia TPM Edge na Windows] [ lnk-dps] konfiguracji usługi Device Provisioning i pobrać jego **identyfikator zakresu**, symulowanie modułu TPM urządzenia i pobierania jej **identyfikator rejestracji**, następnie utworzyć rejestrację indywidualną. Gdy urządzenie jest zarejestrowane w usłudze IoT Hub, kontynuuj instalację.  
+1. Postępuj zgodnie z instrukcjami w [tworzenie i aprowizowanie symulowanego urządzenia TPM Edge na Windows](how-to-auto-provision-simulated-device-windows.md) konfiguracji usługi Device Provisioning i pobrać jego **identyfikator zakresu**symulowane urządzenie TPM i pobrać jego  **Identyfikator rejestracji**, następnie utworzyć rejestrację indywidualną. Gdy urządzenie jest zarejestrowane w usłudze IoT Hub, kontynuuj instalację.  
 
    >[!TIP]
    >Zachowaj okna, które działa symulatora modułu TPM, otwórz podczas instalacji programu i testowania. 
@@ -116,21 +116,6 @@ Jeśli sieci istnieje serwer proxy, wykonaj kroki opisane w [skonfigurować urz�
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, gdy masz urządzenia usługi IoT Edge zaopatrzony zainstalowanego środowiska uruchomieniowego, można [wdrożyć moduły usługi IoT Edge][lnk-modules].
+Teraz, gdy masz urządzenia usługi IoT Edge zaopatrzony zainstalowanego środowiska uruchomieniowego, można [wdrożyć moduły usługi IoT Edge](how-to-deploy-modules-portal.md).
 
-Jeśli występują problemy ze środowiska uruchomieniowego usługi Edge instalacji prawidłowo, zapoznaj się z [Rozwiązywanie problemów z] [ lnk-trouble] strony.
-
-
-<!-- Images -->
-[img-nat]: ./media/how-to-install-iot-edge-windows-with-windows/nat.png
-
-<!-- Links -->
-[lnk-docker-config]: https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers
-[lnk-dcs]: how-to-register-device-portal.md
-[lnk-dps]: how-to-auto-provision-simulated-device-windows.md
-[lnk-oci]: https://www.opencontainers.org/
-[lnk-moby]: https://mobyproject.org/
-[lnk-trouble]: troubleshoot.md
-[lnk-docker-for-windows]: https://www.docker.com/docker-windows
-[lnk-iot-core]: how-to-install-iot-core.md
-[lnk-modules]: how-to-deploy-modules-portal.md
+Jeśli występują problemy ze środowiska uruchomieniowego usługi Edge instalacji prawidłowo, zapoznaj się z [Rozwiązywanie problemów z](troubleshoot.md) strony.

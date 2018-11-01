@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/22/2018
 ms.author: dobett
-ms.openlocfilehash: 6b7de80d18250550c9bd7e52537a7a950e6ffea7
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 3e936b3e08884c1728809aea9054278ffdb99045
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364771"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416991"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>Szybki start: kontrolowanie urządzenia podłączonego do centrum IoT (Java)
 
@@ -36,7 +36,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Dwie przykładowe aplikacje uruchamiane w tym przewodniku Szybki start zostały napisane w języku Java. Potrzebujesz środowiska Java w wersji SE 8 lub nowszej na komputerze deweloperskim.
 
-Możesz pobrać środowisko Java dla wielu platform ze strony [Oracle](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
+Możesz pobrać środowisko Java dla wielu platform ze strony [Oracle](https://aka.ms/azure-jdks).
 
 Możesz sprawdzić bieżącą wersję języka Java na komputerze deweloperskim przy użyciu następującego polecenia:
 

@@ -8,12 +8,12 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5d80b6438569e74ee254d27e0061443a87efc6ce
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 80679d6efd44598fbe403707ad2e757010eb8d91
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423395"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741678"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Omówienie modułów usługi Azure IoT Edge
 
@@ -31,7 +31,7 @@ Obrazy istnieją w chmurze i mogą być aktualizowane, zmienić i wdrożone w r�
 
 Każdorazowo obraz modułu jest wdrażana na urządzeniu i uruchomiona przez środowisko uruchomieniowe usługi IoT Edge, tworzone jest nowe wystąpienie tego modułu. Dwa urządzenia w różnych częściach świata, można użyć tego samego obrazu modułu. Jednak każdy musi własne wystąpienie modułu podczas uruchamiania modułu na urządzeniu. 
 
-![Obrazy modułu w chmurze — wystąpienia modułu na urządzeniach][1]
+![Obrazy modułu w chmurze — wystąpienia modułu na urządzeniach](./media/iot-edge-modules/image_instance.png)
 
 W implementacji obrazów modułów istnieje jako obrazów kontenerów w repozytorium, a wystąpienia modułu to kontenery, które na urządzeniach. 
 
@@ -46,23 +46,23 @@ Tożsamość skojarzoną z wystąpieniem modułu zależy od tożsamości urządz
 
 Wyraźnie widać w scenariuszach, gdy należy wdrożyć jeden obraz modułu wiele razy w tym samym urządzeniu, można wdrożyć ten sam obraz wielokrotnie pod różnymi nazwami.
 
-![Moduł tożsamości są unikatowe][2]
+![Moduł tożsamości są unikatowe](./media/iot-edge-modules/identity.png)
 
 ## <a name="module-twins"></a>Bliźniaczych reprezentacjach modułów
 
 Każde wystąpienie modułu ma też odpowiedni bliźniaczą reprezentację modułu, które umożliwiają skonfigurowanie wystąpienia modułu. Wystąpienia i bliźniaczej reprezentacji są powiązane ze sobą za pomocą tożsamości modułu. 
 
-Bliźniacza reprezentacja modułu jest dokumentem JSON, która przechowuje informacje i konfiguracji właściwości modułu. To pojęcie równoleżnikami [bliźniaczej reprezentacji urządzenia] [ lnk-device-twin] koncepcji z usługi IoT Hub. Struktura bliźniaczą reprezentację modułu jest dokładnie taka sama jak w bliźniaczej reprezentacji urządzenia. Interfejsy API używane do interakcji z oboma typami bliźniaczych elementów również są takie same. Jedyną różnicą między tymi dwoma jest to tożsamość używana do tworzenia wystąpienia zestawu SDK klienta. 
+Bliźniacza reprezentacja modułu jest dokumentem JSON, która przechowuje informacje i konfiguracji właściwości modułu. To pojęcie równoleżnikami [bliźniaczej reprezentacji urządzenia](../iot-hub/iot-hub-devguide-device-twins.md) koncepcji z usługi IoT Hub. Struktura bliźniaczą reprezentację modułu jest dokładnie taka sama jak w bliźniaczej reprezentacji urządzenia. Interfejsy API używane do interakcji z oboma typami bliźniaczych elementów również są takie same. Jedyną różnicą między tymi dwoma jest to tożsamość używana do tworzenia wystąpienia zestawu SDK klienta. 
 
 ```csharp
-// Create a ModuleClient object. This ModuleClient will act on behalf of a 
-// module since it is created with a module’s connection string instead 
-// of a device connection string. 
-ModuleClient client = new ModuleClient.CreateFromEnvironmentAsync(settings); 
-await client.OpenAsync(); 
- 
-// Get the module twin 
-Twin twin = await client.GetTwinAsync(); 
+// Create a ModuleClient object. This ModuleClient will act on behalf of a 
+// module since it is created with a module’s connection string instead 
+// of a device connection string. 
+ModuleClient client = new ModuleClient.CreateFromEnvironmentAsync(settings); 
+await client.OpenAsync(); 
+ 
+// Get the module twin 
+Twin twin = await client.GetTwinAsync(); 
 ```
 
 ## <a name="offline-capabilities"></a>Możliwości w trybie offline
@@ -79,15 +79,8 @@ Moduły usługi IoT Edge może być w trybie offline przez dłuższy czas, tak d
 Dodatkowe możliwości w trybie offline są dostępne w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [opis rozszerzony możliwości w trybie offline dla usługi IoT Edge, urządzeń, moduły i urządzeń podrzędnych](offline-capabilities.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
- - [Zrozumienie wymagań i narzędzia do tworzenia modułów usługi IoT Edge][lnk-mod-dev]
- - [Omówienie środowiska uruchomieniowego usługi Azure IoT Edge oraz jej architektury][lnk-runtime]
+ - [Zrozumienie wymagań i narzędzia do tworzenia modułów usługi IoT Edge](module-development.md)
+ - [Omówienie środowiska uruchomieniowego usługi Azure IoT Edge oraz jej architektury](iot-edge-runtime.md)
 
 <!-- Images -->
-[1]: ./media/iot-edge-modules/image_instance.png
 [2]: ./media/iot-edge-modules/identity.png
-
-<!-- Links -->
-[lnk-device-identity]: ../iot-hub/iot-hub-devguide-identity-registry.md
-[lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
-[lnk-runtime]: iot-edge-runtime.md
-[lnk-mod-dev]: module-development.md

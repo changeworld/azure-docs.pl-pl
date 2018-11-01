@@ -1,6 +1,6 @@
 ---
-title: Odporność na uszkodzenia działanie kopiowania w fabryce danych Azure | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat sposobu dodawania odporność na uszkodzenia dla działania kopiowania w fabryce danych Azure przez pominięcie niezgodne wierszy.
+title: Odporność na uszkodzenia działania kopiowania w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat sposobu dodawania odporności na uszkodzenia do działania kopiowania w usłudze Azure Data Factory przez pominięcie niezgodnych wierszy.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,45 +11,47 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/27/2018
+ms.date: 10/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 6c76820b39f31d92362295d54984069393fa0dec
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 3f207cdb3af3f7e328cd5843053240bbbe15980e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37058986"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418347"
 ---
-#  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Odporność na uszkodzenia działania kopiowania w fabryce danych Azure
+#  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Odporność na uszkodzenia działania kopiowania w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [W wersji 1](v1/data-factory-copy-activity-fault-tolerance.md)
+> * [Wersja 1](v1/data-factory-copy-activity-fault-tolerance.md)
 > * [Bieżąca wersja](copy-activity-fault-tolerance.md)
 
-Działanie kopiowania w fabryce danych Azure oferuje obsługi niezgodne wierszy, gdy kopiowanie danych między źródłowy i odbiorczy magazynów danych na dwa sposoby:
+Działanie kopiowania w usłudze Azure Data Factory oferuje obsługę niezgodnych wierszy podczas kopiowania danych między magazynami danych źródła i ujścia na dwa sposoby:
 
-- Możesz przerwać i niepowodzenie kopiowania działanie w przypadku niezgodnych danych napotkało (domyślnie).
-- Możesz skopiować wszystkie dane przez dodanie odporność na uszkodzenia i pomijanie niezgodne dane wierszy. Ponadto możesz zalogować się niezgodne wiersze magazynu obiektów Blob platformy Azure lub usługi Azure Data Lake Store. Następnie można sprawdzić dziennik Dowiedz się przyczynę błędu, Usuń dane w źródle danych, a następnie ponów działanie kopiowania.
+- Można przerwać i zakończyć się niepowodzeniem kopii działanie po niezgodnych danych napotkało (zachowanie domyślne).
+- Można kontynuować do skopiowania wszystkich danych, dodając odporności na uszkodzenia i pomijanie wiersze danych niezgodne. Ponadto możesz rejestrować niezgodnych wierszy w usłudze Azure Blob storage lub Azure Data Lake Store. Następnie można sprawdzić dziennik, aby dowiedzieć się przyczyną błędu, Usuń dane w źródle danych i ponów próbę wykonania działania kopiowania.
 
 ## <a name="supported-scenarios"></a>Obsługiwane scenariusze
 Działanie kopiowania obsługuje trzy scenariusze wykrywanie, pomijanie i rejestrowanie danych niezgodne:
 
-- **Niezgodność między typem źródła danych i typ macierzysty ujścia**. 
+- **Niezgodności między typ danych źródła i ujścia typ macierzysty**. 
 
-    Na przykład: kopiowanie danych z pliku CSV w magazynie obiektów Blob do bazy danych SQL z definicji schematu, która zawiera trzy kolumny typu INT. Wiersze pliku CSV, które zawierają dane liczbowe, takie jak 123,456,789 są została pomyślnie skopiowana do ujścia magazynu. Jednak wiersze zawierające wartości nieliczbowe, takich jak 123,456, abc Wykryto niezgodne i są pomijane.
+    Na przykład: kopiowanie danych z pliku CSV w usłudze Blob storage do bazy danych SQL z definicją schematu, która zawiera trzy kolumny typu INT. Wierszy pliku CSV, które zawierają dane liczbowe, takie jak 123,456,789 są została pomyślnie skopiowana do magazynu ujścia. Jednak wiersze, które zawierają wartości nieliczbowe, takich jak 123,456, abc, są wykrywane jako niezgodne i zostaną pominięte.
 
-- **Niezgodność liczby kolumn między serwerem źródłowym a sink**.
+- **Niezgodność liczby kolumn między źródła i ujścia**.
 
-    Na przykład: kopiowanie danych z pliku CSV w magazynie obiektów Blob do bazy danych SQL z definicji schematu, który zawiera sześć kolumn. Wiersze pliku CSV, które zawierają sześć kolumn są została pomyślnie skopiowana do ujścia magazynu. Wiersze pliku CSV, które zawierają więcej lub mniej niż sześć kolumn są wykryte jako niezgodne, są pomijane.
+    Na przykład: kopiowanie danych z pliku CSV w usłudze Blob storage do bazy danych SQL z definicją schematu, która zawiera sześć kolumn. Wierszy pliku CSV, które zawiera sześć kolumn są została pomyślnie skopiowana do magazynu ujścia. Wierszy pliku CSV, które zawierają więcej lub mniej niż sześć kolumn są wykrywane jako niezgodna i są pomijane.
 
-- **Naruszenia dotyczącego klucza podstawowego podczas zapisywania do bazy danych programu SQL Server/usługi Azure SQL bazy danych/Azure rozwiązania Cosmos**.
+- **Naruszenie klucza podstawowego podczas zapisywania do usługi SQL Server i Azure SQL Database/Azure Cosmos DB**.
 
-    Na przykład: kopiowanie danych z programu SQL server z bazą danych SQL. W bazie danych SQL zbiornika jest zdefiniowany klucz podstawowy, ale taki klucz podstawowy jest zdefiniowany w programie SQL server źródła. Zduplikowane wiersze, które istnieją w źródle nie można skopiować do ujścia. Działanie kopiowania kopiuje tylko pierwszy wiersz źródła danych do ujścia. Wiersze kolejnych źródła, które zawierają zduplikowane wartości klucza podstawowego są wykrywane niezgodne i są pomijane.
+    Na przykład: kopiowanie danych z programu SQL server do usługi SQL database. W bazie danych SQL ujścia jest zdefiniowany klucz podstawowy, ale bez klucza podstawowego jest zdefiniowany w programie SQL server źródła. Zduplikowane wiersze, które istnieją w pliku źródłowym, nie można skopiować do ujścia. Działanie kopiowania kopiuje tylko pierwszy wiersz źródła danych do ujścia. Wiersze kolejne źródła, które zawierają zduplikowane wartości klucza podstawowego, są wykrywane jako niezgodne i zostaną pominięte.
 
 >[!NOTE]
->Ta funkcja nie ma zastosowania, gdy działanie kopiowania jest skonfigurowany do wywołania danych zewnętrznych ładowania, łącznie z mechanizmu [aparat PolyBase magazynu danych SQL Azure](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) lub [zwolnienie Redshift Amazon](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift). Ładowania danych do usługi SQL Data Warehouse przy użyciu programu PolyBase, korzystać z obsługi tolerancji błędów natywnego programu PolyBase w określając "[usługi](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)" w przypadku działania kopiowania.
+>- Ładowanie danych do usługi SQL Data Warehouse przy użyciu technologii PolyBase, skonfiguruj ustawienia tolerancji błędów natywnego programu PolyBase w, określając Odrzuć zasad za pomocą "[usługi](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)" w działaniu kopiowania. Można włączyć przekierowującego niezgodnych wierszy programu PolyBase do obiektu Blob lub Azure Data Lake Store w zwykły sposób, jak pokazano poniżej.
+>- Ta funkcja nie ma zastosowania, gdy działanie kopiowania jest skonfigurowany do wywołania [zwolnienie usługi Redshift Amazon](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift).
+
 
 ## <a name="configuration"></a>Konfigurowanie
-W poniższym przykładzie przedstawiono definicji JSON, aby skonfigurować pomijanie niezgodne wierszy w przypadku działania kopiowania:
+W poniższym przykładzie przedstawiono definicję formatu JSON, aby skonfigurować pomijania niezgodnych wierszy w działaniu kopiowania:
 
 ```json
 "typeProperties": {
@@ -72,13 +74,13 @@ W poniższym przykładzie przedstawiono definicji JSON, aby skonfigurować pomij
 
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | -------- 
-enableSkipIncompatibleRow | Określa, czy pominąć niezgodne wierszy podczas kopiowania lub nie. | True<br/>Wartość FAŁSZ (ustawienie domyślne) | Nie
-redirectIncompatibleRowSettings | Grupy właściwości, które można określić, kiedy mają być rejestrowane niezgodne wierszy. | &nbsp; | Nie
-linkedServiceName | Połączonej usługi [usługi Azure Storage](connector-azure-blob-storage.md#linked-service-properties) lub [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) do przechowywania dziennika, który zawiera wiersze zostało pominięte. | Nazwa `AzureStorage` lub `AzureDataLakeStore` typu połączonej usługi, która odwołuje się do wystąpienia, które ma być używany do przechowywania plików dziennika. | Nie
-ścieżka | Ścieżka pliku dziennika, który zawiera wiersze zostało pominięte. | Określ ścieżkę, którego chcesz używać do logowania się niezgodne dane. Jeśli ścieżka nie zostanie określona, usługa tworzy kontener. | Nie
+enableSkipIncompatibleRow | Określa, czy pominąć niezgodnych wierszy podczas kopiowania, czy nie. | True<br/>FALSE (domyślnie) | Nie
+redirectIncompatibleRowSettings | Grupy właściwości, które można określić, kiedy mają być rejestrowane niezgodnych wierszy. | &nbsp; | Nie
+linkedServiceName | Połączona usługa [usługi Azure Storage](connector-azure-blob-storage.md#linked-service-properties) lub [usługi Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) do przechowywania w dzienniku, który zawiera pominiętych wierszy. | Nazwa `AzureStorage` lub `AzureDataLakeStore` typu połączonej usługi, która odwołuje się do wystąpienia, które chcesz użyć do przechowywania plików dziennika. | Nie
+ścieżka | Ścieżka pliku dziennika, który zawiera pominiętych wierszy. | Wpisz ścieżkę, którą chcesz używać do logowania się niezgodne dane. Jeśli ścieżka nie zostanie określona, usługa utworzy kontener. | Nie
 
 ## <a name="monitor-skipped-rows"></a>Monitorowanie pominiętych wierszy
-Po zakończeniu uruchamiania działania kopiowania, można wyświetlić Liczba pominiętych wierszy w danych wyjściowych działania kopiowania:
+Po zakończeniu uruchomienia działania kopiowania, będzie widoczna Liczba pominiętych wierszy w danych wyjściowych działania kopiowania:
 
 ```json
 "output": {
@@ -93,11 +95,11 @@ Po zakończeniu uruchamiania działania kopiowania, można wyświetlić Liczba p
         },
 
 ```
-Jeśli konfigurujesz dziennika niezgodne wiersze, można znaleźć pliku dziennika na tej ścieżce: `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv`. 
+Jeśli skonfigurujesz dziennika niezgodnych wierszy, można znaleźć pliku dziennika w tej ścieżce: `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv`. 
 
-Pliki dziennika można tylko pliki csv. Oryginalne dane pomijany będą rejestrowane z przecinkami jako ogranicznik kolumny w razie potrzeby. Dodamy dwie kolumny "ErrorCode" i "ErrorMessage" w dodatkowych do oryginalnego źródła danych w pliku dziennika, którym można zobaczyć głównego Przyczyną niezgodności. Kod błędu i komunikat o błędzie będzie podawany w podwójne cudzysłowy. 
+Pliki dziennika można tylko pliki csv. Oryginalne dane pomijany będą rejestrowane z przecinkami jako ogranicznik kolumny w razie potrzeby. Możemy dodać dwie kolumny "ErrorCode" i "Komunikat o błędzie" się z dodatkowymi oryginalnych danych źródłowych w pliku dziennika, tam, gdzie zobaczysz głównego Przyczyna niezgodności. Kod błędu oraz komunikat o błędzie zostaną podane w cudzysłów. 
 
-Oto przykład zawartości pliku dziennika jest następujący:
+Przykład zawartości pliku dziennika jest następująca:
 
 ```
 data1, data2, data3, "UserErrorInvalidDataValue", "Column 'Prop_2' contains an invalid value 'data3'. Cannot convert 'data3' to type 'DateTime'."
@@ -105,7 +107,7 @@ data4, data5, data6, "2627", "Violation of PRIMARY KEY constraint 'PK_tblintstrd
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz inne artykuły działania kopiowania:
+Zobacz inne artykuły dotyczące działania kopiowania:
 
 - [Omówienie działania kopiowania](copy-activity-overview.md)
 - [Wydajności działania kopiowania](copy-activity-performance.md)

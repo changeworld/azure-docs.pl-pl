@@ -15,12 +15,12 @@ ms.topic: conceptal
 ms.date: 09/18/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 4834e21b5e9f1cbdd931b59e2b693e45ddfd8876
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: b7b8734e648e79ab22a6783e7fab31e942f08eb4
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043315"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418432"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Utwórz obszar roboczy usługi Log Analytics przy użyciu programu Azure PowerShell
 
@@ -123,7 +123,7 @@ Następujące parametry ustawiona wartość domyślna:
 
 Wdrożenie może potrwać kilka minut. Po zakończeniu zostanie wyświetlony komunikat podobny do poniższego, który zawiera wynik:
 
-![Przykład wyniku, gdy wdrożenie jest ukończone](./media/log-analytics-template-workspace-configuration/template-output-01.png)
+![Przykład wyniku, gdy wdrożenie jest ukończone](media/log-analytics-quick-create-workspace-posh/template-output-01.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 Teraz, gdy masz dostępnego obszaru roboczego, możesz skonfigurować zbieranie danych telemetrycznych monitorowania, uruchamiają przeszukiwanie dzienników w celu analizowania danych i dodać rozwiązanie do zarządzania w celu zapewnienia dodatkowych danych i szczegółowych informacji analitycznych.  

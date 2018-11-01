@@ -3,18 +3,17 @@ title: Wdrażanie i konfigurowanie usługi Azure Firewall przy użyciu witryny A
 description: W ramach tego samouczka dowiesz się, jak wdrożyć i skonfigurować usługę Azure Firewall przy użyciu witryny Azure Portal.
 services: firewall
 author: vhorne
-manager: jpconnock
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 10/5/2018
+ms.date: 10/30/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8fb459d197c15cf7760a924c7161fed59cc1caac
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 47a04df843ec307b54cc1d6597f9a3cf8668e291
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801883"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238832"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w witrynie Azure Portal
 
@@ -31,7 +30,7 @@ Ruch sieciowy podlega skonfigurowanym regułom zapory podczas kierowania ruchu s
 
 Reguły aplikacji i sieci są przechowywane w *kolekcjach reguł*. Kolekcja reguł to lista reguł, które mają tę samą akcję i priorytet.  Kolekcja reguł sieci to lista reguł sieci, a kolekcja reguł aplikacji to lista reguł aplikacji.
 
-Usługa Azure Firewall obsługuje reguły translatora adresów sieciowych, reguły sieci oraz reguły aplikacji. Aby dowiedzieć się więcej na temat logiki przetwarzania reguł usługi Azure Firewall, zobacz [Azure Firewall rule processing logic (Logika przetwarzania reguł usługi Azure Firewall)](rule-processing.md).
+Aby dowiedzieć się więcej na temat logiki przetwarzania reguł usługi Azure Firewall, zobacz [Azure Firewall rule processing logic (Logika przetwarzania reguł usługi Azure Firewall)](rule-processing.md).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -42,8 +41,6 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Konfigurowanie reguł aplikacji
 > * Konfigurowanie reguł sieci
 > * Testowanie zapory
-
-
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -56,32 +53,32 @@ W tym samouczku utworzysz pojedynczą sieć wirtualną z trzema podsieciami:
 
 W tym samouczku jest używana uproszczona konfiguracja sieci w celu łatwego wdrażania. W przypadku wdrożeń produkcyjnych zalecany jest [model typu gwiazda](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke), w którym zapora znajduje się we własnej sieci wirtualnej, a serwery obciążeń znajdują się w wirtualnych sieciach równorzędnych w tym samym regionie z co najmniej jedną podsiecią.
 
-
-
 ## <a name="set-up-the-network-environment"></a>Konfigurowanie środowiska sieciowego
+
 Najpierw utwórz grupę zasobów zawierającą zasoby wymagane do wdrożenia zapory. Następnie utwórz sieć wirtualną, podsieci i serwery do obsługi testowania.
 
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
-1. Zaloguj się do witryny Azure Portal pod adresem [http://portal.azure.com](http://portal.azure.com).
-1. Na stronie głównej witryny Azure Portal kliknij pozycję **Grupy zasobów**, a następnie kliknij pozycję **Dodaj**.
-2. W polu **Nazwa grupy zasobów** wpisz **Test-FW-RG**.
-3. W polu **Subskrypcja** wybierz subskrypcję.
-4. W polu **Lokalizacja grupy zasobów** wybierz lokalizację. Wszystkie kolejne zasoby, które utworzysz, muszą znajdować się w tej samej lokalizacji.
-5. Kliknij pozycję **Utwórz**.
 
+1. Zaloguj się do witryny Azure Portal pod adresem [http://portal.azure.com](http://portal.azure.com).
+2. Na stronie głównej witryny Azure Portal kliknij pozycję **Grupy zasobów**, a następnie kliknij pozycję **Dodaj**.
+3. W polu **Nazwa grupy zasobów** wpisz **Test-FW-RG**.
+4. W polu **Subskrypcja** wybierz subskrypcję.
+5. W polu **Lokalizacja grupy zasobów** wybierz lokalizację. Wszystkie kolejne zasoby, które utworzysz, muszą znajdować się w tej samej lokalizacji.
+6. Kliknij pozycję **Utwórz**.
 
 ### <a name="create-a-vnet"></a>Tworzenie sieci wirtualnej
+
 1. Na stronie głównej witryny Azure Portal kliknij pozycję **Wszystkie usługi**.
 2. W obszarze **Sieć** kliknij pozycję **Sieci wirtualne**.
 3. Kliknij pozycję **Add** (Dodaj).
 4. W polu **Nazwa** wpisz wartość **Test-FW-VN**.
 5. W polu **Przestrzeń adresowa** wpisz wartość **10.0.0.0/16**.
-7. W polu **Subskrypcja** wybierz subskrypcję.
-8. W obszarze **Grupa zasobów** wybierz pozycję **Użyj istniejącej**, a następnie wybierz pozycję **Test-FW-RG**.
-9. W polu **Lokalizacja** wybierz tę samą lokalizację, która była używana poprzednio.
-10. W obszarze **Podsieci** w polu **Nazwa** wpisz wartość **AzureFirewallSubnet**. Zapora będzie znajdować się w tej podsieci, a nazwą podsieci **musi** być AzureFirewallSubnet.
-11. W polu **Zakres adresów** wpisz wartość **10.0.1.0/24**.
-12. Użyj innych domyślnych ustawień, a następnie kliknij przycisk **Utwórz**.
+6. W polu **Subskrypcja** wybierz subskrypcję.
+7. W obszarze **Grupa zasobów** wybierz pozycję **Użyj istniejącej**, a następnie wybierz pozycję **Test-FW-RG**.
+8. W polu **Lokalizacja** wybierz tę samą lokalizację, która była używana poprzednio.
+9. W obszarze **Podsieci** w polu **Nazwa** wpisz wartość **AzureFirewallSubnet**. Zapora będzie znajdować się w tej podsieci, a nazwą podsieci **musi** być AzureFirewallSubnet.
+10. W polu **Zakres adresów** wpisz wartość **10.0.1.0/24**.
+11. Użyj innych domyślnych ustawień, a następnie kliknij przycisk **Utwórz**.
 
 > [!NOTE]
 > Minimalny rozmiar podsieci AzureFirewallSubnet to /25.
@@ -138,13 +135,11 @@ Powtórz ten proces, aby utworzyć inną maszynę wirtualną o nazwie **Srv-Work
 
 Skorzystaj z informacji w poniższej tabeli, aby skonfigurować **ustawienia** dla maszyny wirtualnej Srv-Work. Pozostała część konfiguracji jest taka sama jak w przypadku maszyny wirtualnej Srv-Jump.
 
-
 |Ustawienie  |Wartość  |
 |---------|---------|
 |Podsieć|Workload-SN|
 |Publiczny adres IP|Brak|
 |Wybieranie publicznych portów wejściowych|Brak publicznych portów wejściowych|
-
 
 ## <a name="deploy-the-firewall"></a>Wdrażanie zapory
 
@@ -168,7 +163,6 @@ Skorzystaj z informacji w poniższej tabeli, aby skonfigurować **ustawienia** d
    Wdrożenie potrwa klika minut.
 4. Po zakończeniu wdrażania przejdź do grupy zasobów **Test-FW-RG**, a następnie kliknij zaporę **Test-FW01**.
 6. Zanotuj prywatny adres IP. Użyjesz go później podczas tworzenia trasy domyślnej.
-
 
 ## <a name="create-a-default-route"></a>Tworzenie trasy domyślnej
 
@@ -200,9 +194,7 @@ Na potrzeby podsieci **Workload-SN** skonfiguruj trasę domyślną ruchu wychodz
 18. W polu **Adres następnego skoku** wpisz wcześniej zanotowany prywatny adres IP zapory.
 19. Kliknij przycisk **OK**.
 
-
 ## <a name="configure-application-rules"></a>Konfigurowanie reguł aplikacji
-
 
 1. Otwórz pozycję **Test-FW-RG** i kliknij zaporę **Test-FW01**.
 2. Na stronie **Test-FW01** w obszarze **Ustawienia** kliknij pozycję **Reguły**.
@@ -244,7 +236,6 @@ Do celów testowych w tym samouczku skonfigurujesz podstawowe i pomocnicze adres
 6. Kliknij pozycję **Zapisz**. 
 7. Uruchom ponownie maszynę wirtualną **Srv-Work**.
 
-
 ## <a name="test-the-firewall"></a>Testowanie zapory
 
 1. W witrynie Azure Portal sprawdź ustawienia sieci dla maszyny wirtualnej **Srv-Work** i zanotuj prywatny adres IP.
@@ -267,7 +258,6 @@ Teraz upewnij się, czy reguły zapory działają:
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Możesz zachować zasoby zapory na potrzeby kolejnego samouczka, a jeśli nie będą już potrzebne, możesz usunąć grupę zasobów **Test-FW-RG**, aby usunąć wszystkie zasoby związane z zaporą.
-
 
 ## <a name="next-steps"></a>Następne kroki
 

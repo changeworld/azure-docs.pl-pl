@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 49aed496d8c125da8c2269186b569693c794d290
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: fc9ed37ef24e776336124bf097def2f6a00ee83e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404566"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419796"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Często zadawane pytania dotyczące przejścia z portalu pakietu OMS do witryny Azure portal dla użytkowników usługi Log Analytics
 Usługi log Analytics swój własny portal o nazwie portalu pakietu OMS początkowo użyty do zarządzania jej konfiguracji i analizowania zebranych danych.  Wszystkie funkcje z tego portalu został przeniesiony do witryny Azure portal gdzie będą opracowywane.
@@ -32,7 +32,7 @@ Nie. Brak zmian wprowadzanych do usługi Log Analytics, więc nie ma nic, które
 ## <a name="where-do-i-find-log-analytics-in-azure"></a>Gdzie znaleźć usługi Log Analytics na platformie Azure?
 Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https://portal.azure.com).  Kliknij przycisk **wszystkich usług**, a następnie na liście zasobów wpisz **usługi Log Analytics**. Wybierz **usługi Log Analytics** , a następnie wybierz obszar roboczy. Zostanie wyświetlona strona podsumowania dla obszaru roboczego.
 
-![Obszar roboczy usługi Log Analytics](media/log-analytics-new-portal/log-analytics.png)
+![Obszar roboczy usługi Log Analytics](media/log-analytics-oms-portal-faq/log-analytics.png)
 
 ## <a name="how-do-i-manage-permissions"></a>Jak zarządzać uprawnieniami?
 Jeśli nie masz dostępu do obszaru roboczego usługi Log Analytics w witrynie Azure portal należy skonfigurować uprawnienia za pomocą [dostępu opartej na rolach na platformie Azure](../active-directory/role-based-access-control-configure.md). Aby uzyskać więcej informacji na temat zarządzania uprawnień obszaru roboczego, zobacz [możesz zarządzać obszarami roboczymi](../log-analytics/log-analytics-manage-access.md#manage-accounts-and-users). Aby uzyskać informacji o zarządzaniu uprawnienia do alertów, zobacz [Rozpoczynanie pracy z rolami, uprawnienia i zabezpieczeń za pomocą usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md).
@@ -40,12 +40,12 @@ Jeśli nie masz dostępu do obszaru roboczego usługi Log Analytics w witrynie A
 ## <a name="how-do-i-create-a-new-workspace"></a>Jak utworzyć nowy obszar roboczy? 
 Na liście obszarów roboczych w witrynie Azure portal kliknij **Dodaj** na liście obszarów roboczych.  Aby uzyskać szczegółowe informacje, zobacz [Utwórz obszar roboczy usługi Log Analytics w witrynie Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
 
-![Strona przeglądu](media/log-analytics-new-portal/new-workspace.png)
+![Strona przeglądu](media/log-analytics-oms-portal-faq/new-workspace.png)
 
 ## <a name="where-is-my-overview-page"></a>Gdzie jest Moja strona przeglądu?
 Ekranu głównego, w portalu pakietu OMS Wyświetla kafelków dla wszystkich rozwiązań zarządzania zainstalowany w obszarze roboczym i niestandardowe widoki, które zostały utworzone. Tego samego widoku jest dostępna w witrynie Azure portal. W obszarze roboczym wybierz **podsumowanie obszaru roboczego**.
 
-![Strona przeglądu](media/log-analytics-new-portal/overview.png)
+![Strona przeglądu](media/log-analytics-oms-portal-faq/overview.png)
 
 ## <a name="how-do-i-open-log-search-and-view-designer"></a>Jak otworzyć wyszukiwanie w dziennikach i Projektant widoków
 Zarówno **wyszukiwanie w dzienniku** i **Projektant widoków** są dostępne na stronie głównej i w menu po lewej stronie obszaru roboczego w witrynie Azure portal w prawo obok do **Przegląd**.
@@ -53,7 +53,7 @@ Zarówno **wyszukiwanie w dzienniku** i **Projektant widoków** są dostępne na
 ## <a name="where-do-i-find-settings"></a>Gdzie znaleźć ustawienia?
 Wiele ustawień w **ustawienia** sekcji w portalu pakietu OMS są dostępne w **Zaawansowane ustawienia** menu w witrynie Azure portal w obszarze roboczym.
 
-![Ustawienia zaawansowane](media/log-analytics-new-portal/advanced-settings.png)
+![Ustawienia zaawansowane](media/log-analytics-oms-portal-faq/advanced-settings.png)
 
 Poniższe sekcje zawierają pełną listę, jak można pobrać ustawień, które były wcześniej dostępne w **ustawienia** sekcji w portalu pakietu OMS.
 
@@ -118,7 +118,7 @@ Reguły alertów na podstawie zapytań usługi Log Analytics zarządza się tera
 ## <a name="how-do-i-check-my-usage"></a>Jak sprawdzić użycia?
 Można teraz łatwo wyświetlać i zarządzać użycia i kosztów usługi Log Analytics, wybierając **użycie i szacunkowe koszty** w obszarze roboczym.
 
-![Użycie i szacunkowe koszty](media/log-analytics-new-portal/usage.png)
+![Użycie i szacunkowe koszty](media/log-analytics-oms-portal-faq/usage.png)
 
 
 ## <a name="can-i-still-use-the-classic-portal"></a>Można nadal korzystać z klasycznego portalu?

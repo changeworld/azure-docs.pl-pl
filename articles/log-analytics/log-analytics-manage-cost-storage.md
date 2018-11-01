@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: dfb95a57da62037df8f7fbe7e5d8edd970e264ac
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 2c52baf47e0b1495a5abfa727ab8bc8d997a4283
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044369"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418895"
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Zarządzanie kosztami przez kontrolowanie ilości danych i przechowywania w usłudze Log Analytics
 
@@ -55,7 +55,7 @@ Istnieją dwa sposoby, w których ilości danych może być ograniczona i pomocy
 Log Analytics sprawia, że ułatwiają zrozumienie, co prawdopodobnie koszty oparte na najnowszych wzorców użycia.  Aby to zrobić, wykonaj następujące czynności.  
 
 1. Zaloguj się do [Azure Portal](http://portal.azure.com). 
-2. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.<br><br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+2. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.<br><br> ![Azure Portal](media/log-analytics-manage-cost-storage/azure-portal-01.png)<br><br>  
 3. W okienku subskrypcji usługi Log Analytics wybierz swój obszar roboczy, a następnie kliknij przycisk **użycie i szacunkowe koszty** z okienka po lewej stronie.<br><br> ![Użycie i szacowane koszty strony](media/log-analytics-manage-cost-storage/usage-estimated-cost-dashboard-01.png)<br>
 
 W tym miejscu możesz przejrzeć ilość danych na miesiąc. Obejmuje to wszystkie dane odebrane i przechowywane w obszarze roboczym usługi Log Analytics.  Kliknij przycisk **szczegóły użycia** w górnej części strony Aby wyświetlić pulpit nawigacyjny użycia z informacjami na temat tendencji woluminu danych źródła, komputerów i oferty. Aby wyświetlić i określić dzienny limit lub zmodyfikować okres przechowywania, kliknij przycisk **zarządzanie ilością danych**.
