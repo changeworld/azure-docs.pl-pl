@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f0ed4b20f9dbfef4824f66eab3ab953a5dbcfaae
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4960ee485ac8c6b233eacc569cdac6748481887d
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060763"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50746618"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Usługi Azure Premium Storage: Projektowanie pod kątem wysokiej wydajności
 
@@ -30,6 +30,10 @@ Ten artykuł pomoże odpowiedzi następujące często zadawane pytania na temat 
 * Jak można zoptymalizować operacje We/Wy, przepustowości i opóźnienia  
 
 Te wytyczne zostały zamieszczone specjalnie dla usługi Premium Storage, ponieważ obciążeń działających na usługę Premium Storage o wysokiej wydajności poufnych. Przykłady zostały zamieszczone, gdzie jest to odpowiednie. Można również zastosować niektóre z poniższych wskazówek do aplikacji działających na maszynach wirtualnych IaaS z dysków magazynu w warstwie standardowa.
+
+> [!NOTE]
+> Czasami prawdopodobnie problem z wydajnością jest faktycznie wąskich gardeł. W takich sytuacjach należy zoptymalizować swoje [wydajność sieci](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md).
+> Należy również upewnić się, że Twoja maszyna wirtualna obsługuje przyspieszoną siecią. Jeśli tak, możesz je włączyć, nawet po wdrożeniu zarówno [windows](../articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) i [linux](../articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms) maszyn wirtualnych.
 
 Przed przystąpieniem do wykonywania, jeśli jesteś nowym użytkownikiem magazynu w warstwie Premium, najpierw przeczytać artykuł [usługi Premium Storage: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure](../articles/virtual-machines/windows/premium-storage.md) i [usługi Azure Storage cele skalowalności i wydajności](../articles/storage/common/storage-scalability-targets.md)artykułów.
 
@@ -134,7 +138,7 @@ Aby uzyskać więcej informacji na temat rozmiarów maszyn wirtualnych i operacj
 | **Przykładowy scenariusz** |Aplikacja przedsiębiorstwa OLTP wymagające bardzo duże transakcje stawki za drugim. |Dane organizacji, magazynowanie aplikacji przetwarzania dużych ilości danych. |Niemal w czasie rzeczywistym aplikacje wymagające natychmiastowej odpowiedzi żądań użytkownika, takie jak gier online. |
 | Czynnikami wydajnościowymi | &nbsp; | &nbsp; | &nbsp; |
 | **Rozmiar we/wy** |Mniejszy rozmiar operacji We/Wy daje wyższe operacje We/Wy. |Większego rozmiaru operacji We/Wy do daje większą przepływność. | &nbsp;|
-| **Rozmiar maszyny Wirtualnej** |Użyj rozmiaru maszyny Wirtualnej, pozwalającą na operacje We/Wy większe wymagania Twojej aplikacji. |Rozmiar maszyny Wirtualnej za pomocą limit przepływności jest większa niż wymaganiami aplikacji. |Użyj rozmiaru maszyny Wirtualnej, czy oferuje skalowanie limity większa niż wymaganiami aplikacji. |
+| **Rozmiar maszyny wirtualnej** |Użyj rozmiaru maszyny Wirtualnej, pozwalającą na operacje We/Wy większe wymagania Twojej aplikacji. |Rozmiar maszyny Wirtualnej za pomocą limit przepływności jest większa niż wymaganiami aplikacji. |Użyj rozmiaru maszyny Wirtualnej, czy oferuje skalowanie limity większa niż wymaganiami aplikacji. |
 | **Rozmiar dysku** |Użyj rozmiaru dysku, pozwalającą na operacje We/Wy większe wymagania Twojej aplikacji. |Rozmiar dysku za pomocą limit przepływności jest większa niż wymaganiami aplikacji. |Użyj rozmiaru dysku, czy oferuje skalowanie limity większa niż wymaganiami aplikacji. |
 | **Maszyna wirtualna i limity skalowania dysku** |Limit operacji We/Wy wybrany rozmiar maszyny Wirtualnej powinna być większa niż łączna liczba operacji We/Wy wynika z dysków magazynu premium storage dołączono do niego. |Limit przepływności wybrany rozmiar maszyny Wirtualnej powinna być większa niż całkowita przepływność wynika z dysków magazynu premium storage dołączono do niego. |Limity skalowania wybrany rozmiar maszyny Wirtualnej musi być większa niż limity skalowania łączna liczba dysków magazynu premium dołączonych. |
 | **Buforowanie dysku** |Włączenie pamięci podręcznej tylko do odczytu dla dysków magazynu premium storage z dużymi operacje odczytu, aby uzyskać wyższy operacje odczytu We/Wy. | &nbsp; |Włączenie pamięci podręcznej tylko do odczytu dla dysków magazynu premium storage gotowe mocno operacje można pobrać odczytu bardzo małe wartości opóźnienia. |
@@ -221,11 +225,11 @@ Podczas uruchamiania systemu Linux dzięki usłudze Premium Storage, należy spr
 
 Usługa Azure Premium Storage oferuje osiem rozmiary dysków GA i trzech rozmiarach dysków, które są obecnie dostępne w wersji zapoznawczej. Rozmiar każdego dysku ma limit skalowania różne operacje We/Wy, przepustowości i magazynu. Wybierz rozmiar dysku magazynu Premium, w zależności od wymagań aplikacji i dużej skali rozmiaru maszyny Wirtualnej po prawej stronie. W poniższej tabeli przedstawiono rozmiary dysków jedenaście i ich funkcji. Rozmiary P4, P6, P15 P60, P70 i P80 są obecnie obsługiwane tylko w przypadku dysków zarządzanych.
 
-| Typ magazynu dysków Premium  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
+| Typ magazynu dysków Premium  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-| Rozmiar dysku           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1024 giB (1 TiB)    | 2048 giB (2 TiB)    | 4095 giB (4 TiB)    | 8192 giB (8 TiB)    | 16 384 giB (16 TiB)    | 32 767 giB (32 GiB)    |
-| Liczba operacji wejścia/wyjścia na sekundę na dysk       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500              | 15 000              | 20,000              |
-| Przepływność na dysk | 25 MiB na sekundę  | 50 MiB na sekundę  | MiB 100 na sekundę |125 MiB na sekundę | 150 MiB na sekundę | 200 MiB na sekundę | 250 MiB na sekundę | 250 MiB na sekundę | 480 MiB na sekundę | 750 MiB na sekundę | 750 MiB na sekundę |
+| Rozmiar dysku           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1024 giB (1 TiB)    | 2048 giB (2 TiB)    | 4095 giB (4 TiB)    | 8192 giB (8 TiB)    | 16 384 giB (16 TiB)    | 32 767 giB (32 GiB)    |
+| Liczba operacji wejścia/wyjścia na sekundę na dysk       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500              | 15 000              | 20,000              |
+| Przepływność na dysk | 25 MiB na sekundę  | 50 MiB na sekundę  | MiB 100 na sekundę |125 MiB na sekundę | 150 MiB na sekundę | 200 MiB na sekundę | 250 MiB na sekundę | 250 MiB na sekundę | 480 MiB na sekundę | 750 MiB na sekundę | 750 MiB na sekundę |
 
 Jak wiele dysków, możesz wybrać, zależy od dysku rozmiar wybrane. Można użyć pojedynczego dysku P50 lub wiele dysków P10, zgodnie z wymaganiami aplikacji. Należy uwzględnić wymienione poniżej, dokonując wyboru uwagi dotyczące konta.
 
@@ -258,7 +262,7 @@ Należy włączyć pamięć podręczną dla odpowiedniego zestawu dysków. Czy n
 
 | **Typ dysku** | **Domyślne ustawienie pamięci podręcznej** |
 | --- | --- |
-| Dysk systemu operacyjnego |Odczytu i zapisu |
+| Dysk systemu operacyjnego |Odczyt/zapis |
 | Dysk z danymi |Tylko do odczytu |
 
 Poniżej przedstawiono ustawienia pamięci podręcznej dysków zalecany w przypadku dysków danych
@@ -267,7 +271,7 @@ Poniżej przedstawiono ustawienia pamięci podręcznej dysków zalecany w przypa
 | --- | --- |
 | Brak |Skonfiguruj pamięci podręcznej hosta jako Brak w przypadku dysków tylko do zapisu i procesów. |
 | Tylko do odczytu |Konfigurowanie pamięci podręcznej hosta jako tylko do odczytu dla dysków tylko do odczytu i odczytu i zapisu. |
-| Odczytu i zapisu |Konfigurowanie pamięci podręcznej hosta jako odczytu i zapisu, tylko wtedy, gdy aplikacja poprawnie obsługuje zapisywania danych w pamięci podręcznej dysków trwałych, w razie potrzeby. |
+| Odczyt/zapis |Konfigurowanie pamięci podręcznej hosta jako odczytu i zapisu, tylko wtedy, gdy aplikacja poprawnie obsługuje zapisywania danych w pamięci podręcznej dysków trwałych, w razie potrzeby. |
 
 *Tylko do odczytu*  
 Konfigurując tylko do odczytu pamięci podręcznej danych usługi Premium Storage dysków, można osiągnąć małe opóźnienia odczytu i uzyskać bardzo duże operacje odczytu We/Wy i przepływność aplikacji. Jest to ze względu na dwóch przyczyn

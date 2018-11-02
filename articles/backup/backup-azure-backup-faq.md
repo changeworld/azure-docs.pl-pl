@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 42994a38aeab7f6da552f2f9073a806142511531
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 9fb955b6bce5b3d40def095180326fdc9aed33b1
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095532"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747902"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Usługa Azure Backup — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Backup.
@@ -44,7 +44,7 @@ Nie. Nie można przenieść dane kopii zapasowej, przechowywane w magazynie w in
 Nie. Magazyn usługi Recovery Services można zmienić tylko opcje magazynu, zanim wszystkie kopie zapasowe są przechowywane.
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Dla maszyn wirtualnych z kopii zapasowej w magazynie usługi Recovery Services mogą zrobić elementu poziom przywracania (ILR)?
-Nie, ILR nie jest obsługiwane. 
+Nie, ILR nie jest obsługiwane.
 
 
 ## <a name="azure-backup-agent"></a>Agent usługi Azure Backup
@@ -99,7 +99,7 @@ Tak. Jednak należy najpierw skonfigurować program DPM, a następnie zainstaluj
 ## <a name="general-backup"></a>Ogólne kopii zapasowej
 
 ### <a name="are-there-limits-on-backup-scheduling"></a>Czy istnieją ograniczenia dotyczące planowania kopii zapasowych?
-Tak. 
+Tak.
 - Utworzeniem kopii zapasowej systemu Windows Server lub Windows maszyny maksymalnie trzy razy dziennie. Można ustawić zasady harmonogramu dzienne lub tygodniowe harmonogramy.
 - Można utworzyć kopię zapasową programu DPM maksymalnie dwa razy dziennie. Można ustawić zasady harmonogramu dzienne, tygodniowe, miesięczne i roczne.
 - Możesz utworzyć kopię zapasową maszyn wirtualnych platformy Azure raz dziennie.
@@ -110,12 +110,12 @@ Usługa Azure Backup obsługuje następujące systemy operacyjne do wykonywania 
 
 **OS**| **SKU** |**Szczegóły**
 --- | --- | ---
-Stacja robocza | | 
+Stacja robocza | |
 System Windows 10 64-bitowy | Enterprise, Pro, Home | Powinna być uruchomiona maszyn, najnowsze pakiety usług i aktualizacje.
 Windows 8.1 64-bitowy | Enterprise, Pro | Powinna być uruchomiona maszyn, najnowsze pakiety usług i aktualizacje.
 Windows 8 64-bitowy | Enterprise, Pro | Powinna być uruchomiona maszyn, najnowsze pakiety usług i aktualizacje.
 Windows 7 64-bitowy | Ultimate, Enterprise, Professional, Home Premium, Home Basic, Starter | Powinna być uruchomiona maszyn, najnowsze pakiety usług i aktualizacje.
-Serwer | | 
+Serwer | |
 Windows Server 2016 w wersji 64-bitowych | Standard, Datacenter, Essentials | Typ elementu roboczego najnowsze usługi pakiety/aktualizacje.
 Windows Server 2012 R2 64-bitowy | Standard, Datacenter, Foundation | Przy użyciu najnowszych pakietów usługi/aktualizacji.
 Windows Server 2012 w wersji 64-bitowych | Datacenter, Foundation, Standard | Przy użyciu najnowszych pakietów usługi/aktualizacji.
@@ -133,20 +133,20 @@ Kopii zapasowych maszyn wirtualnych platformy Azure w systemie Linux obsługuje 
 Limity rozmiarów są następujące:
 
 
-System operacyjny/machine | Limit rozmiaru źródła danych 
---- | --- | --- 
-Windows 8 lub nowszy | 54 400 GB 
-Windows 7 |1700 GB 
-Windows Server 2012 lub nowszy | 54 400 GB 
-Windows Server 2008, Windows Server 2008 R2 | 1700 GB 
-Maszyna wirtualna platformy Azure | dyski z danymi 32<br/><br/> Do 4095 GB na dysku danych
+System operacyjny/machine | Limit rozmiaru źródła danych
+--- | --- | ---
+Windows 8 lub nowszy | 54 400 GB
+Windows 7 |1700 GB
+Windows Server 2012 lub nowszy | 54 400 GB
+Windows Server 2008, Windows Server 2008 R2 | 1700 GB
+Maszyna wirtualna platformy Azure | dyski z danymi 16<br/><br/> Do 4095 GB na dysku danych
 
 ## <a name="how-is-the-data-source-size-determined"></a>W jaki sposób określić rozmiar źródła danych?
 
 W poniższej tabeli opisano sposób ustalania rozmiaru dla każdego źródła danych.
 
 **Źródło danych** | **Szczegóły**
---- | --- 
+--- | ---
 Wolumin |Ilość danych kopii zapasowej z jednego woluminu tworzona kopia zapasowa maszyny Wirtualnej.
 Bazy danych programu SQL Server |Rozmiar pojedynczego rozmiar bazy danych SQL Trwa wykonywanie kopii zapasowej.
 Sharepoint | Suma zawartości i konfiguracji bazy danych w farmie programu SharePoint, w których powstaje kopia zapasowa.
@@ -158,7 +158,7 @@ Stan systemu/BMR |Każda pojedyncza kopia BMR lub stanu systemu komputera, w kt�
 
 Nie ma żadnego limitu ilości danych, które można utworzyć kopię zapasową przy użyciu magazynu usługi Recovery Services.
 
-### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted"></a>Czy w przypadku anulowania uruchomionego zadania tworzenia kopii zapasowej przesyłane dane zostaną usunięte? 
+### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted"></a>Czy w przypadku anulowania uruchomionego zadania tworzenia kopii zapasowej przesyłane dane zostaną usunięte?
 Nie. Wszystkie dane przesłane do magazynu przed momentem anulowania zadania utworzenia kopii zapasowej pozostaną w magazynie. Usługa Azure Backup używa mechanizmu, który podczas tworzenia kopii zapasowej co pewien czas dodaje punkty kontrolne do danych kopii zapasowej. Ponieważ w danych kopii zapasowej umieszczone są punkty kontrolne, następny proces kopii zapasowej może sprawdzić integralność plików. Następnym zadaniem kopii zapasowej będzie przyrostowa kopia zapasowa tworzona w oparciu o wcześniej utworzoną kopię zapasową danych. Przyrostowe kopie zapasowe przesyłają tylko nowe lub zmienione dane, dzięki czemu zapewnia się lepsze wykorzystanie przepustowości.
 
 Jeśli anulujesz zadanie kopii zapasowej dla maszyny wirtualnej platformy Azure, wszelkie przesłane dane zostaną zignorowane. Następne zadanie kopii zapasowej przesyła przyrostowe dane z ostatniego wykonanego zadania kopii zapasowej.
@@ -186,7 +186,7 @@ Nie. Wszystkie dane, które zostało przesłane do magazynu, zanim zadanie tworz
 ### <a name="are-the-retention-policies-for-dpm-and-windows-machines-without-dpm-the-same"></a>Zasady przechowywania dla programu DPM i Windows maszyny bez programu DPM są takie same?
 Tak, oba muszą zasady przechowywania dzienne, tygodniowe, miesięczne i roczne.
 
-### <a name="can-i-customize-retention-policies"></a>Czy można dostosować zasady przechowywania? 
+### <a name="can-i-customize-retention-policies"></a>Czy można dostosować zasady przechowywania?
 Tak, ma dostosowania zasad. Na przykład można skonfigurować, co tydzień codziennie przechowywania, ale nie corocznej oraz wymagania co miesiąc.
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>Czy można używać różnych dniach, dla kopii zapasowych, planowanie i zasady przechowywania?
@@ -208,7 +208,7 @@ Architektura magazynu usługi Azure Backup oferuje zalety obu rozwiązań dzięk
 
 ### <a name="is-there-a-limit-on-the-number-of-recovery-points-that-can-be-created"></a>Czy istnieje ograniczenie liczby punktów odzyskiwania, które można utworzyć?
 
-Możesz utworzyć maksymalnie 9999 punktów odzyskiwania na każde pojedyncze chronione wystąpienie. Chronione wystąpienie to komputer, serwer (fizyczny lub wirtualny) lub obciążenia, który tworzy kopie zapasowe na platformie Azure. 
+Możesz utworzyć maksymalnie 9999 punktów odzyskiwania na każde pojedyncze chronione wystąpienie. Chronione wystąpienie to komputer, serwer (fizyczny lub wirtualny) lub obciążenia, który tworzy kopie zapasowe na platformie Azure.
 
 - Dowiedz się więcej o [i przechowywania kopii zapasowych](./backup-introduction-to-azure-backup.md#backup-and-retention).
 - Dowiedz się więcej o [chronionego wystąpienia](./backup-introduction-to-azure-backup.md#what-is-a-protected-instance)?
@@ -238,7 +238,7 @@ Tak. Dane na platformie Azure są szyfrowane w spoczynku.
 - Dla lokalnej kopii zapasowej szyfrowanie na resetowanie znajduje się przy użyciu hasła, podane podczas tworzenia kopii zapasowej na platformie Azure.
 - W przypadku maszyn wirtualnych platformy Azure dane są szyfrowane na reset przy użyciu szyfrowania usługi Storage (SSE).
 
-Firma Microsoft nie odszyfrowuje danych kopii zapasowej w żadnym punkcie. 
+Firma Microsoft nie odszyfrowuje danych kopii zapasowej w żadnym punkcie.
 
 
 ### <a name="what-is-the-minimum-length-of-encryption-the-key-used-to-encrypt-backup-data"></a>Jaka jest minimalna długość szyfrowania klucz używany do szyfrowania danych kopii zapasowej?

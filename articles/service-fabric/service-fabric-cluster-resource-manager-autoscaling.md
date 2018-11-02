@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: fbaf6b92a2605d284a749365d542c223e09f730d
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 1bee48225448a964da7caa2a7b284b274c52bea6
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362606"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914060"
 ---
 # <a name="introduction-to-auto-scaling"></a>Wprowadzenie do automatycznego skalowania
 Automatyczne skalowanie jest dodatkowe możliwości usługi Service Fabric dynamicznie skalować swoje usługi, w oparciu o obciążenie, które usługi są raportowania lub na podstawie ich użycia zasobów. Automatyczne skalowanie zapewnia dużą elastyczność i umożliwia inicjowanie obsługi administracyjnej dodatkowych wystąpień lub partycje usługi na żądanie. Cały automatycznego skalowania procesu jest zautomatyzowanych i przejrzystości, a po skonfigurowaniu zasad w usłudze nie ma potrzeby ręcznego operacji skalowania na poziomie usługi. Automatyczne skalowanie może zostać włączona podczas tworzenia usługi lub w dowolnej chwili, aktualizując usługę.
@@ -41,7 +41,7 @@ Wszystkie wyzwalacze, które są obecnie obsługiwane pracy za pomocą [miar log
 Istnieją dwa mechanizmy, które są obecnie obsługiwane przez automatyczne skalowanie. Pierwsza z nich jest przeznaczona dla usługi bezstanowej lub kontenery, gdy automatyczne skalowanie odbywa się przez dodanie lub usunięcie [wystąpień](service-fabric-concepts-replica-lifecycle.md). Dla usług stanowych i bezstanowych, automatycznego skalowania można również przeprowadzić przez dodawanie lub usuwanie nazwanej [partycje](service-fabric-concepts-partitioning.md) usługi.
 
 > [!NOTE]
-> Obecnie są obsługiwane tylko jedne zasady skalowania na usługę.
+> Obecnie są obsługiwane tylko jedne zasady skalowania na usługę i tylko jeden wyzwalacz skalowanie zgodnie z zasadami.
 
 ## <a name="average-partition-load-trigger-with-instance-based-scaling"></a>Wyzwalacz obciążenia średni partycji o skalowanie na podstawie wystąpienia
 Pierwszy typ wyzwalacza opiera się na obciążenie wystąpień w partycji o bezstanowa usługa. Metryki obciążenia są najpierw wygładzone uzyskać obciążenia dla każdego wystąpienia partycji, a następnie te wartości są uśredniane we wszystkich wystąpieniach partycji. Istnieją trzy czynniki, które określają, kiedy będzie można skalować usługi:

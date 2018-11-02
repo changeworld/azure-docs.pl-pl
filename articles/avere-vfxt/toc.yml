@@ -1,0 +1,59 @@
+items:
+- name: Dokumentacja systemu Avere vFXT
+  href: index.yml
+- name: Omówienie
+  items:
+  - name: Co to jest system Avere vFXT for Azure?
+    href: avere-vfxt-overview.md
+- name: Pojęcia
+  items:
+  - name: Planowanie systemu Avere vFXT
+    href: avere-vfxt-deploy-plan.md
+  - name: Omówienie wdrażania systemu Avere vFXT
+    href: avere-vfxt-deploy-overview.md
+- name: Przewodniki z instrukcjami
+  items:
+  - name: Przygotowanie do utworzenia systemu Avere vFXT
+    href: avere-vfxt-prereqs.md
+  - name: Wdrażanie klastra vFXT
+    href: avere-vfxt-deploy.md
+  - name: Dostęp do narzędzia konfiguracji klastra
+    href: avere-vfxt-cluster-gui.md
+  - name: Włączanie przekazywania pomocy technicznej
+    href: avere-vfxt-enable-support.md
+  - name: Konfigurowanie magazynu
+    href: avere-vfxt-add-storage.md
+  - name: Instalowanie klastra Avere vFXT
+    href: avere-vfxt-mount-clients.md
+  - name: Przenoszenie danych do klastra Avere vFXT
+    href: avere-vfxt-data-ingest.md
+  - name: Zarządzanie klastrem Avere vFXT
+    href: avere-vfxt-manage-cluster.md
+  - name: Dostosowywanie dostrajania klastra
+    href: avere-vfxt-tuning.md
+- name: Zasoby
+  items:
+  - name: Pomoc dotycząca systemu
+    href: avere-vfxt-open-ticket.md
+  - name: Projekty demonstracyjne
+    href: avere-vfxt-demo-links.md
+  - name: Avere vFXT for Azure — często zadawane pytania
+    href: avere-vfxt-faq.md
+  - name: Dodatkowa dokumentacja
+    items:
+    - name: Dokumentacja uzupełniająca
+      href: avere-vfxt-additional-resources.md
+    - name: Lista dozwolonych portów
+      href: avere-vfxt-required-ports.md
+    - name: Tworzenie roli klastra bez kontrolera
+      href: avere-vfxt-pre-role.md
+    - name: Konfiguracja DNS klastra Avere
+      href: avere-vfxt-configure-dns.md
+    - name: Autoryzowanie osób niebędących właścicielami do wdrożenia systemu Avere vFXT
+      href: avere-vfxt-non-owner.md
+ms.openlocfilehash: 6f99a33ffbf637e02d487a511d17bf8a365cb3ba
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50669136"

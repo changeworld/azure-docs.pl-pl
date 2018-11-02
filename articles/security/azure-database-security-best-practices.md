@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: tomsh
-ms.openlocfilehash: 0f738348dd0a000df8b1da299bb7b58ebc5a1165
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 50cfc2e8420d9f427b02c739f497d8546d880d7c
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040101"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747766"
 ---
 # <a name="azure-database-security-best-practices"></a>Najlepsze rozwiązania dotyczące zabezpieczeń bazy danych platformy Azure
 Zabezpieczenia są szczególnie ważne dla zarządzania bazami danych i zawsze było priorytet [usługi Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). Bazy danych, które mogą być ściśle chronione ułatwiające spełniają najbardziej prawnych lub wymagań dotyczących zabezpieczeń, takich jak HIPAA, ISO 27001/27002 i PCI DSS poziom 1. Bieżącą listę certyfikatów zgodności zabezpieczeń znajduje się w temacie [witryny Microsoft Trust Center](http://azure.microsoft.com/support/trust-center/services/). Można także umieścić baz danych w określonych centrów danych platformy Azure, na podstawie wymagań prawnych.
@@ -72,22 +72,18 @@ Następujące korzyści:
 
 > [!NOTE]
 > Uwierzytelnianie programu SQL Server nie można użyć zabezpieczeń protokołu Kerberos.
->
->
 
 Jeśli używasz uwierzytelniania programu SQL Server, musisz mieć:
 
 - Zarządzaj silnych poświadczeń użytkownika.
 - Ochrona poświadczeń w parametrach połączenia.
-- (Potencjalnie) chronić poświadczenia przekazywane za pośrednictwem sieci z serwera sieci web z bazą danych. Aby uzyskać więcej informacji, zobacz [porady: łączenie do uwierzytelniania programu SQL Server przy użyciu programu SQL w programie ASP.NET 2.0](https://msdn.microsoft.com/library/ms998300.aspx).
+- (Potencjalnie) chronić poświadczenia przekazywane za pośrednictwem sieci z serwera sieci web z bazą danych. Aby uzyskać więcej informacji, zobacz [porady: łączenie do uwierzytelniania programu SQL Server przy użyciu programu SQL w programie ASP.NET 2.0](/previous-versions/msp-n-p/ff648340(v=pandp.10)).
 
 ### <a name="azure-active-directory-ad-authentication"></a>*Uwierzytelnianie usługi Azure Active Directory (AD)*
 Uwierzytelnianie usługi Azure AD jest mechanizmem nawiązywania połączenia z usługą Azure SQL Database i [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) przy użyciu tożsamości w usłudze Azure AD. Przy użyciu uwierzytelniania usługi Azure AD możesz zarządzać tożsamościami użytkowników bazy danych i innych usług firmy Microsoft w jednej centralnej lokalizacji. Centralne zarządzanie identyfikator udostępnia jedno miejsce do zarządzania użytkownikami bazy danych i upraszcza zarządzanie uprawnieniami.
 
 > [!NOTE]
 > Firma Microsoft zaleca korzystanie z uwierzytelniania usługi Azure AD za korzystanie z uwierzytelniania programu SQL Server.
->
->
 
 Następujące korzyści:
 
@@ -112,12 +108,12 @@ Kroki konfiguracji obejmują następujące procedury do konfigurowania i korzyst
 
 Można znaleźć szczegółowe informacje w [uwierzytelniania użycia usługi Azure Active Directory do uwierzytelniania przy użyciu bazy danych SQL Database, wystąpienia zarządzanego lub SQL Data Warehouse](../sql-database/sql-database-aad-authentication.md).
 
-## <a name="protect-your-data-by-using-encryption"></a>Ochrona danych przy użyciu szyfrowania
-[Usługa Azure SQL Database technologii transparent data encryption](https://msdn.microsoft.com/library/dn948096.aspx) pomaga chronić dane na dysku i zapewnia ochronę przed nieautoryzowanym dostępem do sprzętu. Wykonuje w czasie rzeczywistym szyfrowanie i odszyfrowywanie bazy danych, skojarzonych kopii zapasowych i plików dziennika transakcji w stanie spoczynku bez konieczności wprowadzania zmian do aplikacji. Przezroczyste szyfrowanie danych szyfruje magazyn całą bazę danych przy użyciu klucza symetrycznego o nazwie klucza szyfrowania bazy danych.
+## <a name="protect-your-data-by-using-encryption-and-row-level-security"></a>Ochrona danych przy użyciu szyfrowania i zabezpieczenia na poziomie wiersza
+[Usługa Azure SQL Database technologii transparent data encryption](../sql-database/transparent-data-encryption-azure-sql.md) pomaga chronić dane na dysku i zapewnia ochronę przed nieautoryzowanym dostępem do sprzętu. Wykonuje w czasie rzeczywistym szyfrowanie i odszyfrowywanie bazy danych, skojarzonych kopii zapasowych i plików dziennika transakcji w stanie spoczynku bez konieczności wprowadzania zmian do aplikacji. Przezroczyste szyfrowanie danych szyfruje magazyn całą bazę danych przy użyciu klucza symetrycznego o nazwie klucza szyfrowania bazy danych.
 
 Nawet wtedy, gdy cały magazyn jest zaszyfrowany, należy również zaszyfrować sama baza danych. Jest to implementacja podejście ochronę w głębi w celu ochrony danych. Jeśli używasz usługi Azure SQL Database, aby chronić dane poufne (na przykład kart kredytowych lub numerów ubezpieczenia społecznego) umożliwia ona szyfrowanie bazy danych z trybem FIPS 140-2 zweryfikowanych 256-bitowego szyfrowania AES. To szyfrowanie spełnia wymagania wielu standardów branżowych, (na przykład, HIPAA i PCI).
 
-Pliki związane z programem [buforu rozszerzenia puli (BPE)](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension) nie są szyfrowane podczas szyfrowania bazy danych za pomocą technologii transparent data encryption. Należy użyć narzędzi szyfrowania na poziomie systemu plików, takich jak [funkcji BitLocker](https://technet.microsoft.com/library/cc732774) lub [systemu szyfrowania plików (EFS)]() dla plików związanych z BPE.
+Pliki związane z programem [buforu rozszerzenia puli (BPE)](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension) nie są szyfrowane podczas szyfrowania bazy danych za pomocą technologii transparent data encryption. Należy użyć narzędzi szyfrowania na poziomie systemu plików, takich jak [funkcji BitLocker](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11)) lub [systemu szyfrowania plików (EFS)](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc749610(v%3dws.10)) dla plików związanych z BPE.
 
 Ponieważ autoryzowanym użytkownikiem, np. administratora zabezpieczeń lub administrator bazy danych mają dostęp do danych, nawet jeśli baza danych jest szyfrowana za pomocą technologii transparent data encryption, należy również przestrzegać tych zaleceń:
 
@@ -128,9 +124,9 @@ Ponieważ autoryzowanym użytkownikiem, np. administratora zabezpieczeń lub adm
 
 Można również rozważyć inne sposoby szyfrowania danych:
 
-- [Szyfrowanie na poziomie komórki](https://msdn.microsoft.com/library/ms179331.aspx) służące do szyfrowania określonej kolumny lub nawet poszczególnych komórek danych przy użyciu różnych kluczy szyfrowania.
-- [Zawsze szyfrowane](https://msdn.microsoft.com/library/mt163865.aspx), co umożliwia klientom szyfrowanie cennych danych wewnątrz aplikacji klienckich i nigdy nie ujawniania kluczy szyfrowania z aparatem bazy danych (bazy danych SQL Database lub SQL Server). W wyniku Always Encrypted umożliwia rozdzielenie tych, którzy są właścicielami danych (i mogą je wyświetlać) oraz tych, którzy zarządzania danymi (ale nie powinny mieć dostępu).
-- [Zabezpieczenia na poziomie wiersza](https://msdn.microsoft.com/library/dn765131), które umożliwiają klientom kontrolowanie dostępu do wierszy w tabeli bazy danych na podstawie właściwości użytkownika, który wykonuje kwerendę. (Przykład cechy są grupy członkostwa i wykonywanie kontekstu).
+- [Szyfrowanie na poziomie komórki](/sql/relational-databases/security/encryption/encrypt-a-column-of-data) służące do szyfrowania określonej kolumny lub nawet poszczególnych komórek danych przy użyciu różnych kluczy szyfrowania.
+- [Zawsze szyfrowane](/sql/relational-databases/security/encryption/always-encrypted-database-engine), co umożliwia klientom szyfrowanie cennych danych wewnątrz aplikacji klienckich i nigdy nie ujawniania kluczy szyfrowania z aparatem bazy danych (bazy danych SQL Database lub SQL Server). W wyniku Always Encrypted umożliwia rozdzielenie tych, którzy są właścicielami danych (i mogą je wyświetlać) oraz tych, którzy zarządzania danymi (ale nie powinny mieć dostępu).
+- [Zabezpieczenia na poziomie wiersza](/sql/relational-databases/security/row-level-security), które umożliwiają klientom kontrolowanie dostępu do wierszy w tabeli bazy danych na podstawie właściwości użytkownika, który wykonuje kwerendę. (Przykład cechy są grupy członkostwa i wykonywanie kontekstu).
 
 Organizacje, które nie korzystają z szyfrowaniem na poziomie bazy danych może być bardziej narażony na ataki, naruszających danych znajdujących się w bazach danych SQL.
 

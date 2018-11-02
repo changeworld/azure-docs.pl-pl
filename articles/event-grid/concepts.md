@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2a288cdb96a1e1ff7e261d4782f7e02aee12868f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 89f0f5847f157cff59a57f7958508e4f260355c3
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621205"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747562"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Pojęcia dotyczące usługi Azure Event Grid
 
@@ -48,7 +48,7 @@ Podczas projektowania aplikacji, należy elastyczność, podejmując decyzję o 
 
 ## <a name="event-subscriptions"></a>Subskrypcje zdarzeń
 
-Subskrypcję usługi Event Grid informuje o zdarzenia na temat interesuje Cię odbieranie. Podczas tworzenia subskrypcji, udostępniasz punkt końcowy dla obsługi zdarzenia. Można filtrować zdarzenia, które są wysyłane do punktu końcowego. Można filtrować według typu zdarzenia lub wzorzec podmiotu. Aby uzyskać więcej informacji, zobacz [schemat subskrypcji usługi Event Grid](subscription-creation-schema.md).
+Subskrypcję usługi Event Grid informuje o zdarzenia na temat interesujących Cię odbieranie. Podczas tworzenia subskrypcji, udostępniasz punkt końcowy dla obsługi zdarzenia. Można filtrować zdarzenia, które są wysyłane do punktu końcowego. Można filtrować według typu zdarzenia lub wzorzec podmiotu. Aby uzyskać więcej informacji, zobacz [schemat subskrypcji usługi Event Grid](subscription-creation-schema.md).
 
 Aby uzyskać przykłady tworzenia subskrypcji zobacz:
 
@@ -58,9 +58,17 @@ Aby uzyskać przykłady tworzenia subskrypcji zobacz:
 
 Aby dowiedzieć się, jak pobieranie bieżącego zdarzenia subskrypcji siatki, zobacz [subskrypcji usługi Event Grid zapytania](query-event-subscriptions.md).
 
+## <a name="event-subscription-expiration"></a>Wygaśnięcie subskrypcji zdarzeń
+
+[Rozszerzenia usługi Event Grid](/cli/azure/azure-cli-extensions-list) dla wiersza polecenia platformy Azure pozwala na ustawienie wygaśnięcia daty podczas tworzenia subskrypcji zdarzeń. Jeśli korzystasz z interfejsu API REST, należy użyć `api-version=2018-09-15-preview`
+
+Subskrypcja zdarzeń jest automatycznie wygaszane po tej dacie. Ustawienia okresu ważności subskrypcji zdarzeń, które są wymagane tylko przez ograniczony czas, a nie chcesz martwić się o czyszczenia tych subskrypcjach. Na przykład podczas tworzenia subskrypcji zdarzeń, aby przetestować scenariusz, możesz chcieć ustawienia okresu ważności. 
+
+Na przykład ustawienia wygaśnięcia, zobacz [subskrypcji z zaawansowanych filtrów](how-to-filter-events.md#subscribe-with-advanced-filters).
+
 ## <a name="event-handlers"></a>Procedury obsługi zdarzeń
 
-Z perspektywy usługi Event Grid program obsługi zdarzeń jest miejscem, w którym zdarzenie jest wysyłane. Program obsługi ma kilka dalszych działań do przetworzenia zdarzenia. Usługa Event Grid obsługuje wiele typów programu obsługi. Obsługiwane usługi platformy Azure lub własnego elementu webhook można użyć jako program obsługi. W zależności od typu obsługi usługi Event Grid następuje różne mechanizmy gwarantuje dostarczenia zdarzeń. Dla programów obsługi zdarzeń elementu webhook protokołu HTTP, zdarzenie jest ponawiana dopóki metoda obsługi zwraca kod stanu `200 – OK`. Dla usługi Azure Storage Queue zdarzenia są zwalniane, dopóki nie zostanie pomyślnie przetworzyć wypychania komunikatów do kolejki usługi kolejki.
+Z perspektywy usługi Event Grid program obsługi zdarzeń jest miejscem, w którym zdarzenie jest wysyłane. Program obsługi ma kilka dalszych działań do przetworzenia zdarzenia. Usługa Event Grid obsługuje kilka typów programu obsługi. Obsługiwane usługi platformy Azure lub własnego elementu webhook można użyć jako program obsługi. W zależności od typu obsługi usługi Event Grid następuje różne mechanizmy gwarantuje dostarczenia zdarzeń. Dla programów obsługi zdarzeń elementu webhook protokołu HTTP, zdarzenie jest ponawiana dopóki metoda obsługi zwraca kod stanu `200 – OK`. Dla usługi Azure Storage Queue zdarzenia są ponawiana do wypychania komunikatów w kolejce pomyślnie przetwarzania przez usługę kolejki.
 
 Aby uzyskać informacje o implementowaniu dowolnej obsługiwanej procedury obsługi usługi Event Grid, zobacz [procedury obsługi zdarzeń w usłudze Azure Event Grid](event-handlers.md).
 
@@ -74,7 +82,7 @@ Jeśli usługa Event Grid można potwierdzić, że zdarzenia zostały odebrane p
 
 ## <a name="batching"></a>Tworzenie partii
 
-Korzystając z niestandardowego tematu, zawsze należy opublikować zdarzenia w tablicy. Może to być partii jednego dla scenariuszy niskiej przepustowości, jednak dla usecases dużych ilościach, zaleca się że wsadowej razem na wielu zdarzeń publikowania osiągnąć wyższą wydajność. Partie można maksymalnie 1 MB. Każde zdarzenie nadal nie może przekraczać 64 KB.
+Korzystając z niestandardowego tematu, zawsze należy opublikować zdarzenia w tablicy. Można w tym zadaniu wsadowym jednego dla scenariuszy niskiej przepustowości, jednak dla dużej liczby przypadków użycia, zalecane jest, batch kilka zdarzeń, które razem na publikowanie osiągnąć wyższą wydajność. Partie można maksymalnie 1 MB. Każde zdarzenie nadal nie powinna być dłuższa niż 64 KB.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

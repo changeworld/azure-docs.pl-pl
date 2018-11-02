@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: kgremban
-ms.openlocfilehash: 031524f4ef00b57f598c1114d594fb70eeedd15b
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: e9db20a1458c398913387e40d247400ee933578b
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394004"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912309"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Łączenie urządzeń Modbus TCP za pośrednictwem bramy urządzeń usługi IoT Edge
 
@@ -99,5 +99,5 @@ Możesz również wyświetlić dane telemetryczne wysyłane przez urządzenie pr
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby dowiedzieć się więcej o tym, jak urządzenia usługi IoT Edge mogą pełnić rolę bram, zobacz [Tworzenie urządzenia usługi IoT Edge, które będzie pełnić rolę przezroczystej bramy](./how-to-create-transparent-gateway-linux.md)
+- Aby dowiedzieć się więcej o tym, jak urządzenia usługi IoT Edge mogą pełnić rolę bram, zobacz [Tworzenie urządzenia usługi IoT Edge, które będzie pełnić rolę przezroczystej bramy](./how-to-create-transparent-gateway.md)
 - Aby uzyskać więcej informacji o działaniu modułów usługi IoT Edge, zobacz [Opis modułów usługi Azure IoT Edge](iot-edge-modules.md)

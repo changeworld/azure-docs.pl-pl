@@ -6,17 +6,17 @@ author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 10/30/2018
-ms.openlocfilehash: fe66ca8b8f5b4474290e302f73b35868dce68caa
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.date: 11/01/2018
+ms.openlocfilehash: b5a1e521f46da7feffd2eb556ad1662a9ccaee55
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634055"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913840"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Omówienie domen zdarzeń związanych z zarządzaniem tematy usługi Event Grid
 
-W tym artykule opisano sposób używania domen zdarzenie pozwala na zarządzanie przepływem zdarzeń niestandardowych w celu różne organizacje biznesowych, klientów lub aplikacji. Użyj domen zdarzeń do:
+W tym artykule opisano sposób używania domen zdarzenie pozwala na zarządzanie przepływem zdarzenia niestandardowe do różnych organizacji biznesowych, klientów lub aplikacji. Użyj domen zdarzeń do:
 
 * Zarządzaj architektury wielodostępnej zdarzeń na dużą skalę.
 * Zarządzaj autoryzacji i uwierzytelniania.
@@ -25,18 +25,17 @@ W tym artykule opisano sposób używania domen zdarzenie pozwala na zarządzanie
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
+## <a name="event-domain-overview"></a>Omówienie usługi Event domeny
 
-## <a name="event-domains-overview"></a>Omówienie domen zdarzeń
+Domena zdarzeń jest narzędziem do zarządzania dla dużej liczby tematy usługi Event Grid powiązane z tej samej aplikacji. Jego można traktować jako meta temat, który może mieć tysięcy dla poszczególnych tematów.
 
-Domena zdarzeń jest narzędziem do zarządzania dla dużej liczby tematy usługi Event Grid powiązane z tej samej aplikacji. Można traktować go jako meta temat, który może zawierać tysięcy dla poszczególnych tematów.
-
-Zdarzenie domeny należy architektury usług platformy Azure, takie jak Storage i Centrum IoT Hub umożliwia publikowanie ich zdarzenia, które są dostępne do użycia w systemie użytkownika. Pozwalają one na publikowanie zdarzeń do tysięcy tematów. Domen również zapewniają autoryzację i uwierzytelnianie kontrolę nad każdego tematu, dzięki czemu można podzielić dzierżawcy.
+Zdarzenie domeny zapewnić dostępność taką samą architekturę używane przez usługi platformy Azure (takich jak Storage i Centrum IoT Hub) do publikowania ich zdarzenia. Pozwalają one na publikowanie zdarzeń do tysięcy tematów. Domen również zapewniają autoryzację i uwierzytelnianie kontrolę nad każdego tematu, dzięki czemu można podzielić dzierżawcy.
 
 ### <a name="example-use-case"></a>Przykład przypadek użycia
 
-Zdarzenie domeny najłatwiej zostały wyjaśnione przy użyciu przykładu. Załóżmy, że uruchomieniu maszyny konstrukcji firmy Contoso, w którym produkowanych kół, digging urządzenia i inne duże maszyny. Jako część prowadzenie działalności w czasie rzeczywistym informacje wypychania dla klientów dotyczące konserwacji sprzętu, kondycję systemów kontraktu aktualizacje itp. Wszystkie te informacje przechodzi do różnych punktów końcowych, w tym aplikacji, punktów końcowych klienta, a inni klienci infrastruktury zostało skonfigurowane.
+Zdarzenie domeny najłatwiej zostały wyjaśnione przy użyciu przykładu. Załóżmy, że uruchomieniu maszyny konstrukcji firmy Contoso, w którym produkowanych kół, digging urządzenia i inne duże maszyny. Jako część prowadzenie działalności w czasie rzeczywistym informacje wypchnięty do klientów o konserwacji sprzętu, systemów kondycji i aktualizacje kontraktu. Wszystkie te informacje odnoszą się do różnych punktów końcowych, w tym aplikacji, punktów końcowych klienta i innych infrastrukturę, która klientów zostały skonfigurowane.
 
-Zdarzenie domeny umożliwia model Contoso Construction maszyny jako całość jednym obsługi zdarzeń. Każdy z klientów jest reprezentowany jako tematu w obrębie domeny / uwierzytelnianie i autoryzacja są obsługiwane przy użyciu usługi Azure Active Directory. Każda z klientom subskrybowanie ich i przechodzić do nich ich zdarzenia dostarczone. Zarządzany dostęp za pośrednictwem domeny zdarzeń gwarantuje, że mają dostęp tylko ich temat.
+Zdarzenie domeny umożliwiają model Contoso Construction maszyny jako całość jednym obsługi zdarzeń. Każdy z klientów jest przedstawiana jako tematu w domenie. Uwierzytelnianie i autoryzacja są obsługiwane w usłudze Azure Active Directory. Każda z klientom subskrybowanie ich i przechodzić do nich ich zdarzenia dostarczone. Zarządzany dostęp za pośrednictwem domeny zdarzeń gwarantuje, że mają dostęp tylko ich temat.
 
 Oferuje on również pojedynczego punktu końcowego, który można opublikować wszystkie zdarzenia klienta. Usługa Event Grid zajmie się upewnienie się, że każdy temat ma informacje tylko zdarzeń o określonym zakresie do swojej dzierżawy.
 
@@ -44,89 +43,23 @@ Oferuje on również pojedynczego punktu końcowego, który można opublikować 
 
 ## <a name="access-management"></a>Zarządzanie dostępem
 
- Z domeną uzyskasz szczegółową kontrolę autoryzację i uwierzytelnianie za pośrednictwem każdego tematu za pomocą platformy Azure na podstawie ról dostępu Sprawdź (RBAC). Te role można użyć do ograniczenia poszczególnych dzierżaw w aplikacji do tematów, które chcesz przyznać im dostęp do.
+Z domeną możesz uzyskać szczegółową kontrolę autoryzację i uwierzytelnianie za pośrednictwem każdego tematu przy użyciu kontroli dostępu opartej na rolach platformy Azure (RBAC). Te role można użyć do ograniczenia poszczególnych dzierżaw w aplikacji do tematów, które chcesz przyznać im dostęp do.
 
-Rola dostępu na podstawie Sprawdź (RBAC) w domenach zdarzeń działa tak samo [zarządzane kontroli dostępu](https://docs.microsoft.com/azure/event-grid/security-authentication#management-access-control) działa w pozostałej części usługi Event Grid i na platformie Azure. Tworzenie i wymuszanie definicji ról niestandardowych w domenach zdarzeń przy użyciu kontroli RBAC.
+RBAC w domenach zdarzeń działa tak samo [zarządzane kontroli dostępu](security-authentication.md#management-access-control) działa w pozostałej części usługi Event Grid i na platformie Azure. Tworzenie i wymuszanie definicji ról niestandardowych w domenach zdarzeń przy użyciu kontroli RBAC.
 
 ### <a name="built-in-roles"></a>Wbudowane role
 
-Usługa Event Grid ma dwie definicje rolę wbudowaną, aby ułatwić RBAC:
+Usługa Event Grid ma dwie definicje wbudowana rola, aby ułatwić RBAC do pracy z domenami zdarzeń. Te role są **EventGrid EventSubscription współautora (wersja zapoznawcza)** i **EventGrid EventSubscription Reader (wersja zapoznawcza)**. Te role są przypisywane do użytkowników, którzy muszą subskrybować tematy w domenie zdarzeń. Określania zakresu przypisania roli do tylko użytkowników potrzebuje do subskrybowania tematu.
 
-#### <a name="eventgrid-eventsubscription-contributor-preview"></a>Współautor EventSubscription EventGrid (wersja zapoznawcza)
-
-```json
-[
-  {
-    "Description": "Lets you manage EventGrid event subscription operations.",
-    "IsBuiltIn": true,
-    "Id": "428e0ff05e574d9ca2212c70d0e0a443",
-    "Name": "EventGrid EventSubscription Contributor (Preview)",
-    "IsServiceRole": false,
-    "Permissions": [
-      {
-        "Actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.EventGrid/eventSubscriptions/*",
-          "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
-          "Microsoft.Insights/alertRules/*",
-          "Microsoft.Resources/deployments/*",
-          "Microsoft.Resources/subscriptions/resourceGroups/read",
-          "Microsoft.Support/*"
-        ],
-        "NotActions": [],
-        "DataActions": [],
-        "NotDataActions": [],
-        "Condition": null
-      }
-    ],
-    "Scopes": [
-      "/"
-    ]
-  }
-]
-```
-
-#### <a name="eventgrid-eventsubscription-reader-preview"></a>Czytnik EventSubscription EventGrid (wersja zapoznawcza)
-
-```json
-[
-  {
-    "Description": "Lets you read EventGrid event subscriptions.",
-    "IsBuiltIn": true,
-    "Id": "2414bbcf64974faf8c65045460748405",
-    "Name": "EventGrid EventSubscription Reader (Preview)",
-    "IsServiceRole": false,
-    "Permissions": [
-      {
-        "Actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.EventGrid/eventSubscriptions/read",
-          "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
-          "Microsoft.Resources/subscriptions/resourceGroups/read"
-        ],
-        "NotActions": [],
-        "DataActions": [],
-        "NotDataActions": []
-       }
-    ],
-    "Scopes": [
-      "/"
-    ]
-  }
-]
-```
+Aby uzyskać informacje o tych rolach, zobacz [wbudowanych ról dla usługi Event Grid](security-authentication.md#built-in-roles).
 
 ## <a name="subscribing-to-topics"></a>Subskrybowanie tematów
 
-Subskrybowanie zdarzeń dla tematu w domenie zdarzeń jest taka sama jak [Tworzenie subskrypcji zdarzeń dla tematu niestandardowego](./custom-event-quickstart.md) lub subskrypcji wbudowanych ofert Azure wydawców zdarzeń.
+Subskrybowanie zdarzeń dla tematu w domenie zdarzeń jest taka sama jak [Tworzenie subskrypcji zdarzeń dla tematu niestandardowego](./custom-event-quickstart.md) i subskrybowaniem zdarzeń z usługi platformy Azure.
 
 ### <a name="domain-scope-subscriptions"></a>Subskrypcje zakres domeny
 
-Zdarzenie domeny pozwalają również subskrypcje zakres domeny. Subskrypcję zdarzeń w domenie usługi Event będą otrzymywać wszystkie zdarzenia wysyłane do domeny, niezależnie od wysłania zdarzenia do tematu. Subskrypcje zakres domeny może być przydatne do zarządzania i inspekcji.
+Zdarzenie domeny pozwalają również zakres domeny subskrypcji. Subskrypcję zdarzeń w domenie usługi event będą otrzymywać wszystkie zdarzenia wysyłane do domeny, niezależnie od wysłania zdarzenia do tematu. Subskrypcje zakres domeny może być przydatne do zarządzania i inspekcji.
 
 ## <a name="publishing-to-an-event-domain"></a>Publikowanie zdarzeń domeny
 
@@ -163,13 +96,13 @@ Na przykład następującą tablicę zdarzenia publikowania prześle zdarzenie z
 }]
 ```
 
-Zdarzenie domeny obsługiwać publikowanie tematów dla Ciebie. Zamiast publikowania zdarzeń do każdego tematu, z którymi można zarządzać indywidualnie, możesz opublikować wszystkie zdarzenia do punktu końcowego domeny i usługi Event Grid dba o zapewnienie, że każde zdarzenie jest wysyłane do prawidłowy temat.
+Zdarzenie domeny obsługiwać publikowanie tematów dla Ciebie. Zamiast publikowania zdarzeń do każdego tematu, z którymi można zarządzać indywidualnie możesz opublikować wszystkie zdarzenia do punktu końcowego w domenie. Usługa Event Grid sprawia, że się, że każde zdarzenie jest wysyłane do prawidłowy temat.
 
 ## <a name="limits-and-quotas"></a>Limity przydziału i ograniczenia
 
 ### <a name="control-plane"></a>Płaszczyzna kontroli
 
-W trakcie okresu zapoznawczego domen zdarzeń będzie ograniczone do 1000 tematów w domenie i 50 subskrypcji zdarzeń dla tematu w domenie. Subskrypcje zakres domeny zdarzeń również będzie ograniczona do 50.
+W trakcie okresu zapoznawczego domen zdarzeń są ograniczone do 1000 tematów w domenie i 50 subskrypcji zdarzeń dla tematu w domenie. Subskrypcje zakres domeny zdarzeń również są ograniczone do 50.
 
 ### <a name="data-plane"></a>Płaszczyzna danych
 
@@ -177,7 +110,7 @@ W trakcie okresu zapoznawczego przepływność zdarzeń dla zdarzenia domeny bę
 
 ## <a name="pricing"></a>Cennik
 
-W trakcie okresu zapoznawczego domen zdarzeń będzie używać tego samego [operacje ceny](https://azure.microsoft.com/pricing/details/event-grid/) używanego przez wszystkie inne funkcje w usłudze Event Grid.
+W trakcie okresu zapoznawczego, zdarzenie domenach używały tych samych [operacje ceny](https://azure.microsoft.com/pricing/details/event-grid/) używanego przez wszystkie inne funkcje w usłudze Event Grid.
 
 Operacje działać tak samo w domenach zdarzeń, jak w tematy niestandardowe. Każdy transferu danych przychodzących zdarzenia do domeny zdarzeń jest operacją i kolejnymi próbami dostarczenia zdarzeń jest operacją.
 

@@ -9,14 +9,14 @@ tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.service: virtual-machines
 ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
-ms.date: 05/01/2018
+ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 2ec5caab32e12411f5ccab4a9a6b98d3c4e57c0b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 1de70b3ddea84fc0067a0e20ec613f01024f0ed4
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414061"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748038"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Rozwiązywanie problemów z błędami usuwania zasobów magazynu
 
@@ -69,10 +69,7 @@ Spróbuj ponownie, usuwanie konta magazynu, kontenera lub obiektu blob, po wykon
 
 ### <a name="scenario-3-deleting-storage-account---identify-all-blobs-within-storage-account-that-are-attached-to-vms"></a>Scenariusz 3: Usuwanie magazynu konta — zidentyfikować wszystkie obiekty BLOB w ramach konta magazynu, które są dołączone do maszyn wirtualnych
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. W menu Centrum wybierz **wszystkie zasoby**. Przejdź do konta magazynu, w obszarze **usługę Blob Service** wybierz **kontenery**.
-
-    ![Zrzut ekranu przedstawiający portal, za pomocą kontenerów kont magazynów i "Dzierżawy stanu" z "Wydzierżawiony" wyróżniony](./media/troubleshoot-vhds/utd-containers-sm.png)
-
+2. W menu Centrum wybierz **wszystkie zasoby**. Przejdź do konta magazynu, w obszarze **usługę Blob Service** wybierz **obiektów blob**.
 3. W **kontenery** okienku zidentyfikować wszystkie kontenery gdzie **stanu dzierżawy** jest **wydzierżawiony** i postępuj zgodnie z [scenariuszu 2](#scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms) dla każdego  **Dzierżawiony** kontenera.
 4. Postępuj zgodnie z [kroku 2](#step-2-delete-vm-to-detach-os-disk) i [kroku 3](#step-3-detach-data-disk-from-the-vm) można usunąć maszyny wirtualne z **OSDisk** i odłączanie **DataDisk**. 
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/11/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d750ac7a5ac847a8c1eb5a9c91bb42804c2eebe0
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 89d35197567c4bd44c5867dbb120d07e9f99d1e9
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49437018"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50746615"
 ---
 Utworzenie maszyny wirtualnej (VM) platformy Azure wymaga utworzenia [sieci wirtualnej](../articles/virtual-network/virtual-networks-overview.md) (VNet) lub użycia istniejącej sieci wirtualnej. Należy także określić sposób dostępu do maszyn wirtualnych w sieci wirtualnej. Ważne jest [zaplanowanie tworzenia zasobów](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) i dokładne zapoznanie się z [limitami zasobów sieciowych](../articles/azure-subscription-service-limits.md#networking-limits).
 
@@ -151,7 +151,7 @@ Poniższa tabela zawiera listę metod, których można użyć do utworzenia wewn
 
 Maszyny wirtualne można tworzyć w tej samej sieci wirtualnej i mogą one komunikować się ze sobą przy użyciu prywatnych adresów IP. Komunikacja między maszynami jest możliwa, nawet jeśli znajdują się one w różnych podsieciach — nie ma potrzeby konfigurowania bramy ani używania publicznych adresów IP. Aby połączyć maszyny wirtualne z siecią wirtualną, podczas tworzenia poszczególnych maszyn wirtualnych należy przypisać je do utworzonej sieci wirtualnej i podsieci. Ustawienia sieci maszyn wirtualnych są określane podczas wdrażania lub uruchamiania.  
 
-Przypisywanie adresów IP odbywa się podczas wdrażania maszyn wirtualnych. Jeśli w sieci wirtualnej lub podsieci wdrożono wiele maszyn wirtualnych, uzyskują one adresy IP podczas uruchamiania. Dynamiczny adres IP (DIP) jest wewnętrznym adresem IP skojarzonym z maszyną wirtualną. Do maszyny wirtualnej można przydzielić statyczny adres DIP. W przypadku przydzielenia statycznego adresu DIP rozważ użycie określonej podsieci, aby uniknąć przypadkowego ponownego użycia statycznego adresu DIP dla innej maszyny wirtualnej.  
+Przypisywanie adresów IP odbywa się podczas wdrażania maszyn wirtualnych. Jeśli w sieci wirtualnej lub podsieci wdrożono wiele maszyn wirtualnych, uzyskują one adresy IP podczas uruchamiania. Możesz również przydzielić statyczny adres IP do maszyny Wirtualnej. Jeśli należy przydzielić statyczny adres IP, należy rozważyć użycie określonej podsieci, aby uniknąć przypadkowego ponownego użycia statycznego adresu IP dla innej maszyny Wirtualnej.  
 
 Migracja utworzonej maszyny wirtualnej do sieci wirtualnej nie obejmuje jedynie wprowadzenia prostej zmiany w konfiguracji. Maszynę wirtualną należy ponownie wdrożyć w sieci wirtualnej. Najprostszym sposobem ponownego wdrożenia jest usunięcie maszyny wirtualnej (ale bez usuwania jakichkolwiek dysków podłączonych do niej), a następnie ponowne utworzenie maszyny wirtualnej w sieci wirtualnej przy użyciu oryginalnych dysków. 
 

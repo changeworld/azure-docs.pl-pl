@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 10/26/2018
 ms.author: glenga
-ms.openlocfilehash: 1918ed664a79a46f25cfc5162a28b311bea29cd8
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 18ff0e3fadad64f7bd7fe014a6dcec6a628ef1b9
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740457"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914556"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions JavaScript
 
@@ -76,7 +76,7 @@ Korzystając z [ `async function` ](https://developer.mozilla.org/docs/Web/JavaS
 
 Poniższy przykład jest prostą funkcją, która rejestruje zostało wyzwolone i natychmiast kończy wykonywanie.
 
-``` javascript
+```javascript
 module.exports = async function (context) {
     context.log('JavaScript trigger function processed a request.');
 };
@@ -112,19 +112,24 @@ W języku JavaScript [powiązania](functions-triggers-bindings.md) są konfiguro
 ### <a name="reading-trigger-and-input-data"></a>Dane wejściowe i odczytywania wyzwalaczy
 Wyzwalanie i powiązań wejściowych (vazby prvku `direction === "in"`) mogą być odczytywane przez funkcję na trzy sposoby:
  - **_[Zalecane]_  Jako parametry przekazywane do funkcji.** Są one przekazywane do funkcji w tej samej kolejności, które są zdefiniowane w *function.json*. Należy pamiętać, że `name` właściwości zdefiniowanych w *function.json* nie musi być zgodna z nazwą parametru, mimo że powinien on.
-   ``` javascript
+ 
+   ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
+   
  - **Jako elementy członkowskie [ `context.bindings` ](#contextbindings-property) obiektu.** Każdy element członkowski jest nazwany przez `name` właściwości zdefiniowanych w *function.json*.
-   ``` javascript
+ 
+   ```javascript
    module.exports = async function(context) { 
        context.log("This is myTrigger: " + context.bindings.myTrigger);
        context.log("This is myInput: " + context.bindings.myInput);
        context.log("This is myOtherInput: " + context.bindings.myOtherInput);
    };
    ```
+   
  - **Jako dane wejściowe, przy użyciu języka JavaScript [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx) obiektu.** To jest zasadniczo taki sam jak przekazywanie danych wejściowych jako parametrów, ale pozwala na dynamiczne obsługi danych wejściowych.
-   ``` javascript
+ 
+   ```javascript
    module.exports = async function(context) { 
        context.log("This is myTrigger: " + arguments[1]);
        context.log("This is myInput: " + arguments[2]);
@@ -137,7 +142,8 @@ Dane wyjściowe (vazby prvku `direction === "out"`) mogą być zapisywane przez 
 
 Dane można przypisać do powiązania danych wyjściowych, w jednym z następujących sposobów. Nie należy łączyć tych metod.
 - **_[Zalecane w przypadku wiele wyjść]_  Zwrócenie obiektu.** Jeśli używasz async/Promise zwraca funkcja może zwrócić obiektu z danych wyjściowych przypisane. W poniższym przykładzie powiązania danych wyjściowych są nazywane "httpResponse" i "queueOutput" w *function.json*.
-  ``` javascript
+
+  ```javascript
   module.exports = async function(context) {
       let retMsg = 'Hello, world!';
       return {
@@ -148,10 +154,12 @@ Dane można przypisać do powiązania danych wyjściowych, w jednym z następuj�
       };
   };
   ```
+  
   Jeśli używasz funkcji synchronicznej, można zwrócić tego obiektu przy użyciu [ `context.done` ](#contextdone-method) (Zobacz przykład).
 - **_[Zalecane w przypadku pojedynczego wyjścia]_  Zwracanie wartości bezpośrednio i przy użyciu $return powiązania nazwy.** To działa tylko w przypadku zwracania funkcje asynchroniczne/Promise. Zobacz przykład w [eksportowanie funkcji asynchronicznej](#exporting-an-async-function). 
 - **Przypisywanie wartości do `context.bindings`**  wartości można przypisać bezpośrednio do context.bindings.
-  ``` javascript
+
+  ```javascript
   module.exports = async function(context) {
       let retMsg = 'Hello, world!';
       context.bindings.httpResponse = {

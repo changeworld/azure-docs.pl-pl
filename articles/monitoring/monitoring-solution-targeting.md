@@ -1,6 +1,6 @@
 ---
-title: Celem rozwiązania do zarządzania na platformie Azure | Dokumentacja firmy Microsoft
-description: Przeznaczonych dla rozwiązań do zarządzania pozwala ograniczyć do określonego zestawu agentów rozwiązania do zarządzania.  W tym artykule opisano sposób tworzenia konfiguracji zakresu i zastosować go do rozwiązania.
+title: Określanie wartości docelowej rozwiązania do zarządzania na platformie Azure | Dokumentacja firmy Microsoft
+description: Określanie wartości docelowej rozwiązania do zarządzania umożliwia ograniczenie rozwiązania do określonej grupy agentów zarządzania.  W tym artykule opisano sposób tworzenia konfiguracji zakresu i zastosować go do rozwiązania.
 services: monitoring
 documentationcenter: ''
 author: bwren
@@ -14,65 +14,65 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: 65585e6c09def23101d9735c8b9c719d213938ac
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 1aaa753c91a324621dc66fab23e5fed3a9d11d01
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887846"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912769"
 ---
-# <a name="targeting-management-solutions-in-azure-preview"></a>Celem rozwiązania do zarządzania na platformie Azure (wersja zapoznawcza)
-Po dodaniu rozwiązania do zarządzania do subskrypcji jest automatycznie wdrażane domyślnie do wszystkich agentów systemu Windows i Linux podłączone do obszaru roboczego analizy dzienników.  Możesz zarządzać kosztów i ograniczyć ilość danych zebranych przez rozwiązanie ograniczając go z określonym zestawem agentów.  W tym artykule opisano sposób użycia **przeznaczonych dla rozwiązania** która to funkcja, która pozwala zastosować zakres do rozwiązań.
+# <a name="targeting-management-solutions-in-azure-preview"></a>Określanie wartości docelowej rozwiązania do zarządzania na platformie Azure (wersja zapoznawcza)
+Po dodaniu rozwiązania do zarządzania subskrypcją, jest automatycznie wdrażane domyślnie wszyscy agenci Windows i Linux, połączonego z obszarem roboczym usługi Log Analytics.  Można zarządzać koszty i ograniczyć ilość danych zebranych dla rozwiązania przez ograniczenie go do określonego zestawu agentów.  W tym artykule opisano sposób używania **określania celu rozwiązania** czyli funkcja umożliwiająca można zastosować zakres do rozwiązania.
 
-## <a name="how-to-target-a-solution"></a>Jak pod kątem rozwiązania
-Istnieją trzy kroki umożliwiające rozwiązanie elementów docelowych, zgodnie z opisem w poniższych sekcjach. 
+## <a name="how-to-target-a-solution"></a>Jak docelowego rozwiązania
+Istnieją trzy kroki, aby przeznaczonych dla rozwiązania, zgodnie z opisem w poniższych sekcjach. 
 
 
-### <a name="1-create-a-computer-group"></a>1. Tworzenie grupy komputerów
-Określ komputery, które chcesz uwzględnić w zakresie tworząc [grupy komputerów](../log-analytics/log-analytics-computer-groups.md) w analizy dzienników.  Grupy komputerów można oparte na wyszukiwania dziennika lub zaimportowane z innych źródeł, takich jak grupy usługi Active Directory lub usług WSUS. Jako [opisanych poniżej](#solutions-and-agents-that-cant-be-targeted), tylko te komputery, które są podłączone bezpośrednio do analizy dzienników zostaną uwzględnione w zakresie.
+### <a name="1-create-a-computer-group"></a>1. Utwórz grupę komputerów
+Określ komputery, które mają zostać uwzględnione w zakresie, tworząc [grupa](../log-analytics/log-analytics-computer-groups.md) w usłudze Log Analytics.  Grupy komputerów można oparte na wyszukiwanie w dzienniku lub zaimportowanych z innych źródeł, takich jak grupy usługi Active Directory lub programu WSUS. Jako [opisanych poniżej](#solutions-and-agents-that-cant-be-targeted), tylko te komputery, które są podłączone bezpośrednio do usługi Log Analytics, które zostaną uwzględnione w zakresie.
 
-Raz masz utworzony w obszarze roboczym grupy komputerów, a następnie zostaną wykluczone w konfiguracji zakresu, który można zastosować do co najmniej jedno rozwiązanie.
+Raz masz grupa utworzona w obszarze roboczym, a następnie zostaną objęte konfiguracji zakresu, który można zastosować do jednego lub więcej rozwiązań.
  
  
- ### <a name="2-create-a-scope-configuration"></a>2. Utwórz konfigurację zakresu
- A **konfigurację zakresu** zawiera jeden lub więcej grup komputerów i można zastosować do co najmniej jedno rozwiązanie. 
+ ### <a name="2-create-a-scope-configuration"></a>2. Tworzenie konfiguracji zakresu
+ A **konfiguracji zakresu** zawiera jeden lub więcej grup komputerów i mogą być stosowane do jednej lub więcej rozwiązań. 
  
- Utwórz konfigurację zakresu przy użyciu poniższej procedury.  
+ Tworzenie konfiguracji zakresu, za pomocą poniższego procesu.  
 
- 1. W portalu Azure, przejdź do **analizy dzienników** i wybierz obszar roboczy.
- 2. W obszarze roboczym właściwości **źródeł danych obszaru roboczego** wybierz **konfiguracji zakresu**.
- 3. Kliknij przycisk **Dodaj** Aby utworzyć nową konfigurację zakresu.
- 4. Wpisz **nazwa** konfigurację zakresu.
+ 1. W witrynie Azure portal przejdź do **usługi Log Analytics** i wybierz swój obszar roboczy.
+ 2. We właściwościach obszaru roboczego w ramach **źródła danych obszaru roboczego** wybierz **konfiguracji zakresu**.
+ 3. Kliknij przycisk **Dodaj** można utworzyć nowej konfiguracji zakresu.
+ 4. Wpisz **nazwa** dla konfiguracji zakresu.
  5. Kliknij przycisk **wybierz grupy komputerów**.
- 6. Wybierz grupy komputerów, które utworzono i opcjonalnie inne grupy, aby dodać do konfiguracji.  Kliknij pozycję **Wybierz**.  
- 6. Kliknij przycisk **OK** utworzyć konfigurację zakresu. 
+ 6. Wybierz grupę komputerów, który został utworzony i opcjonalnie innych grup, Dodaj do konfiguracji.  Kliknij pozycję **Wybierz**.  
+ 6. Kliknij przycisk **OK** można utworzyć konfiguracji zakresu. 
 
 
  ### <a name="3-apply-the-scope-configuration-to-a-solution"></a>3. Zastosuj konfigurację zakresu do rozwiązania.
-Po utworzeniu konfiguracji zakresu, następnie można użyć jej do co najmniej jedno rozwiązanie.  Należy pamiętać, że podczas konfiguracji jednego zakresu, może być używany z kilku rozwiązań w zakresie, każde rozwiązanie można używać tylko jedną konfigurację zakresu.
+Po utworzeniu konfiguracji zakresu, następnie można zastosować go do jednego lub więcej rozwiązań.  Należy pamiętać, że konfiguracja pojedynczy zakres można zastosować wiele rozwiązań, każde z tych rozwiązań można używać tylko jedną konfigurację zakresu.
 
-Zastosowanie konfiguracji zakresu przy użyciu poniższej procedury.  
+Zastosuj konfigurację zakresu, za pomocą poniższego procesu.  
 
- 1. W portalu Azure, przejdź do **analizy dzienników** i wybierz obszar roboczy.
- 2. W oknie właściwości obszaru roboczego wybierz **rozwiązań**.
- 3. Kliknij rozwiązanie, które chcesz zakresu.
- 4. We właściwościach rozwiązań w obszarze **źródeł danych obszaru roboczego** wybierz **przeznaczonych dla rozwiązania**.  Jeśli nie jest dostępna opcja następnie [tego rozwiązania nie może być celem](#solutions-and-agents-that-cant-be-targeted).
- 5. Kliknij przycisk **Dodaj konfigurację zakresu**.  Jeśli masz już konfiguracji stosowane do tego rozwiązania, a następnie ta opcja będzie niedostępna.  Należy usunąć istniejącą konfigurację przed dodaniem kolejnego.
+ 1. W witrynie Azure portal przejdź do **usługi Log Analytics** i wybierz swój obszar roboczy.
+ 2. We właściwościach dla obszaru roboczego wybierz **rozwiązania**.
+ 3. Kliknij rozwiązanie nad którym chcesz zakresu.
+ 4. We właściwościach rozwiązania w folderze **źródła danych obszaru roboczego** wybierz **określania celu rozwiązania**.  Jeśli nie jest dostępna opcja następnie [tego rozwiązania nie mogą być celem](#solutions-and-agents-that-cant-be-targeted).
+ 5. Kliknij przycisk **Dodaj konfigurację zakresu**.  Jeśli masz już konfigurację zastosowane do tego rozwiązania, a następnie ta opcja będzie niedostępna.  Należy usunąć istniejącą konfigurację, przed dodaniem kolejnego.
  6. Kliknij pozycję konfiguracja zakresu utworzony.
- 7. Obejrzyj **stan** konfiguracji, aby upewnić się, że widoczny jest **zakończyło się pomyślnie**.  Jeśli stan wskazuje na błąd, kliknij przycisk wielokropka z prawej strony konfigurację i wybierz **konfigurację zakresu edycji** do wprowadzania zmian.
+ 7. Obejrzyj **stan** konfiguracji, aby upewnić się, że zawiera **Powodzenie**.  Jeśli stan wskazuje na błąd, kliknij przycisk wielokropka z prawej strony konfiguracji, a następnie wybierz pozycję **konfiguracji zakresu edycji** zmian.
 
-## <a name="solutions-and-agents-that-cant-be-targeted"></a>Rozwiązania i agenci, którzy nie mogą być celem
-Poniżej przedstawiono kryteria agentów i rozwiązań, które nie można używać z przeznaczonych dla rozwiązania.
+## <a name="solutions-and-agents-that-cant-be-targeted"></a>Rozwiązania i agenci, którzy nie mogą być jednak celem
+Poniżej przedstawiono kryteria agentów i ich rozwiązania, które nie mogą być używane z określania celu rozwiązania.
 
-- Celem rozwiązanie ma zastosowanie tylko do rozwiązania, które wdrożyć agentów.
-- Celem rozwiązanie ma zastosowanie tylko do rozwiązań firmy Microsoft.  Nie ma zastosowania do rozwiązania [utworzony przez siebie lub partnerów](monitoring-solutions-creating.md).
-- Można odfiltrować tylko agentów, które łączą się bezpośrednio do analizy dzienników.  Rozwiązania zostaną automatycznie wdrożone do wszystkich agentów, które są częścią podłączonej grupy zarządzania programu Operations Manager, czy są one dołączone do konfiguracji zakresu.
+- Określanie celu rozwiązania ma zastosowanie tylko do rozwiązania, które wdrożyć agentów.
+- Określanie celu rozwiązania ma zastosowanie tylko do rozwiązania firmy Microsoft.  Nie ma zastosowania do rozwiązania [utworzonych przez siebie lub partnerów](monitoring-solutions-creating.md).
+- Można odfiltrować tylko agentów, które łączą się bezpośrednio do usługi Log Analytics.  Rozwiązania automatycznie wdroży go do wszystkich agentów, które są częścią podłączonej grupy zarządzania programu Operations Manager, czy są one dołączone w konfiguracji zakresu.
 
 ### <a name="exceptions"></a>Wyjątki
-Przeznaczonych dla rozwiązania nie można używać z następujących rozwiązań, nawet jeśli mieściły się podanych kryteriów.
+Określanie celu rozwiązania nie można używać z następujących rozwiązań, mimo że mieściły się podanych kryteriów.
 
-- Oceny kondycji agenta
+- Ocena kondycji agenta
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej na temat rozwiązania, które są dostępne do zainstalowania w danym środowisku, w tym rozwiązania do zarządzania [rozwiązań do zarządzania dodać Analiza dzienników Azure do swojego obszaru roboczego](../log-analytics/log-analytics-add-solutions.md).
-- Dowiedz się więcej o tworzeniu grup komputerów na [grup komputerów w analizy dzienników dziennika wyszukiwania](../log-analytics/log-analytics-computer-groups.md).
+- Dowiedz się więcej o rozwiązaniach do zarządzania rozwiązania, które są dostępne do zainstalowania w Twoim środowisku, w tym [rozwiązań do zarządzania Dodawanie usługi Azure Log Analytics do swojego obszaru roboczego](monitoring-solutions.md).
+- Dowiedz się więcej na temat tworzenia grup komputerów na [grup komputerów w usłudze Log Analytics dziennikach](../log-analytics/log-analytics-computer-groups.md).

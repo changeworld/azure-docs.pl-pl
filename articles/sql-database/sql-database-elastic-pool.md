@@ -114,10 +114,10 @@ W przypadkach, gdy nie można użyć narzędzi, skorzystanie z następujących i
 1. Oszacuj liczbę jednostek Edtu lub rdzeni wirtualnych potrzebnych dla puli w następujący sposób:
 
    Dla modelu zakupu opartego na jednostkach DTU: MAX (<*łączna liczba baz danych* X *średnie użycie jednostek DTU na bazę danych* >,<br>
-   < *liczba baz danych jednocześnie osiągających szczyt użycia* X *użycie szczytowe jednostek DTU na bazę danych* >)
+   <*liczba baz danych jednocześnie osiągających szczyt użycia* X *użycie szczytowe jednostek DTU na bazę danych*)
 
    Dla modelu zakupu opartego na rdzeniach wirtualnych: MAX (<*łączna liczba baz danych* X *średnie użycie pamięci rdzeń wirtualny na bazę danych* >,<br>
-   < *Liczba jednocześnie osiągających Szczyt użycia baz danych* X *użycie pamięci rdzeń wirtualny szczytowe na bazę danych* >)
+   <*Liczba jednocześnie osiągających Szczyt użycia baz danych* X *użycie pamięci rdzeń wirtualny szczytowe na bazę danych*)
 
 2. Oszacuj miejsce do magazynowania wymagane dla puli przez dodanie liczby bajtów potrzebnych dla wszystkich baz danych w puli. Następnie określ rozmiar puli (w jednostkach eDTU), który zapewni tę ilość miejsca przechowywania.
 3. W przypadku opartego na jednostkach DTU modelu zakupu weź większą z wartości szacunkowych eDTU, z kroku 1 i 2. Dla opartych na rdzeniach wirtualnych model zakupu należy wykonać szacowania — rdzeń wirtualny z kroku 1.

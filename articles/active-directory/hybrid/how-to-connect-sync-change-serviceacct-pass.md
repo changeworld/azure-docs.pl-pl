@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 10/31/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b0b88622069801124aff5b44dc4b813838f41c73
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 331c536970445dacdb9afc9d3cfa5711b82bfbf0
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315168"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747256"
 ---
 # <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Zmienianie hasła konta usługi synchronizacji Azure AD Connect
 Jeśli zmienisz hasło do konta usługi Azure AD Connect sync, usługa synchronizacji nie będzie możliwe start poprawnie dopiero po przeprowadzeniu zostały porzucone klucza szyfrowania i ponownie zainicjować hasło do konta usługi Azure AD Connect sync. 
@@ -44,7 +44,7 @@ Najpierw należy zmienić hasło w obszarze Menedżer sterowania usługami Windo
 Po drugie w określonych warunkach, jeśli hasło zostanie zaktualizowane, usługa synchronizacji można już pobierać klucz szyfrowania za pośrednictwem interfejsu DPAPI. Bez klucza szyfrowania usługi synchronizacji nie może odszyfrować hasła wymagane do synchronizacji z lokalnej usługi AD i Azure AD.
 Pojawią się błędy takie jak:
 
-- W obszarze Menedżer sterowania usługami Windows Jeśli użytkownik próbuje uruchomić usługi synchronizacji i nie może pobrać klucza szyfrowania go zakończy się niepowodzeniem z powodu błędu "**Windows Microsoft Azure AD Sync nie można uruchomić na komputerze lokalnym. Aby uzyskać więcej informacji przejrzyj dziennik zdarzeń systemu. Jeśli jest to usługa firmy Microsoft, skontaktuj się z dostawcą usługi i odwołać się do kodu błędu usługi \*\*-21451857952**\*\*."
+- W obszarze Menedżer sterowania usługami Windows Jeśli użytkownik próbuje uruchomić usługi synchronizacji i nie może pobrać klucza szyfrowania go zakończy się niepowodzeniem z powodu błędu "** Windows Microsoft Azure AD Sync nie można uruchomić na komputerze lokalnym. Aby uzyskać więcej informacji przejrzyj dziennik zdarzeń systemu. Jeśli jest to usługa firmy Microsoft, skontaktuj się z dostawcą usługi i odwołać się do kodu błędu usługi **-21451857952 ***. "
 - W obszarze Windows podglądu zdarzeń, w dzienniku zdarzeń aplikacji zawiera błąd przy użyciu **6028 identyfikator zdarzenia** i komunikat o błędzie *"**nie można uzyskać dostępu do klucza szyfrowania serwera.**"*
 
 Aby upewnić się, że nie będą odbierać te błędy, wykonaj procedury opisane w [porzucenie klucza szyfrowania usługi Azure AD Connect Sync](#abandoning-the-azure-ad-connect-sync-encryption-key) podczas zmiany hasła.
@@ -59,6 +59,8 @@ Użyj poniższych procedur można porzucić klucza szyfrowania.
 
 Jeśli musisz porzucić klucz szyfrowania, w tym celu należy użyć poniższych procedur.
 
+1. [Zatrzymaj usługę synchronizacji](#stop-the-synchronization-service)
+
 1. [Porzuć istniejący klucz szyfrowania](#abandon-the-existing-encryption-key)
 
 2. [Podaj hasło konta usługi AD DS](#provide-the-password-of-the-ad-ds-account)
@@ -66,6 +68,13 @@ Jeśli musisz porzucić klucz szyfrowania, w tym celu należy użyć poniższych
 3. [Zainicjuj ponownie hasła konta synchronizacji programu Azure AD](#reinitialize-the-password-of-the-azure-ad-sync-account)
 
 4. [Uruchom usługę synchronizacji](#start-the-synchronization-service)
+
+#### <a name="stop-the-synchronization-service"></a>Zatrzymaj usługę synchronizacji
+Najpierw należy zatrzymać usługę w Menedżerze sterowania usługami Windows.  Upewnij się, że usługa nie działa podczas próby zatrzymania go.  Jeśli tak jest, poczekaj, aż zakończy, a następnie Zatrzymaj go.
+
+
+1. Przejdź do Windows Menedżer sterowania usługami (usługi → START).
+2. Wybierz **Microsoft Azure AD Sync** i kliknij przycisk Zatrzymaj.
 
 #### <a name="abandon-the-existing-encryption-key"></a>Porzuć istniejący klucz szyfrowania
 Porzuć istniejący klucz szyfrowania, dzięki czemu można utworzyć tego nowego klucza szyfrowania:

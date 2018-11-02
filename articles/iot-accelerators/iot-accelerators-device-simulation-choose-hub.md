@@ -6,35 +6,37 @@ manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 07/06/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: ee96173ca5f36dee0f08c38e4b6e29da6fee804e
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 38cde750ce07741a433baa1b8607a584f94ad9b1
+ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37967546"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50753923"
 ---
 # <a name="use-an-existing-iot-hub-with-the-device-simulation-solution-accelerator"></a>Już istniejące Centrum IoT za pomocą symulacji urządzenia akceleratora rozwiązań
 
-Podczas aprowizowania akcelerator rozwiązań symulacji urządzenia można wybrać do wdrożenia usługi IoT hub w grupie zasobów akceleratora rozwiązań do użycia w symulacji.
+Podczas wdrażania symulacji urządzenia można także wdrożyć usługi IoT hub do użycia w symulacji. Ta opcja wdraża [Centrum IoT hub warstwy S2 o jednostce skalowania pojedynczej](../iot-hub/iot-hub-scaling.md). W przypadku wdrożenia tego opcjonalne Centrum IoT hub, można nadal docelowy inny Centrum IoT, uruchamiania symulacji.
 
-Jeśli nie zdecydujesz się wdrożyć opcjonalne usługi IoT Hub, należy użyć własnego Centrum dla dowolnego symulacje, po uruchomieniu. Jeśli zdecydujesz się wdrożyć opcjonalne usługi IoT Hub, można użyć tego koncentratora opcjonalne lub własnego Centrum.
+Jeśli możesz zdecydować o niewdrażaniu opcjonalne usługi IoT Hub, należy użyć własnego Centrum dla dowolnego symulacje, po uruchomieniu.
 
 Jeśli nie masz usługi IoT hub, zawsze można utworzyć nowy [witryny Azure portal](https://portal.azure.com).
 
-Aby użyć istniejącego Centrum IoT, potrzebujesz ciąg połączenia dla **iothubowner** udostępnione zasad dostępu. Możesz uzyskać te parametry połączenia z [witryny Azure portal](https://portal.azure.com):
+Za pomocą istniejące Centrum IoT, potrzebne są parametry połączenia dla **iothubowner** udostępnione zasad dostępu. Możesz uzyskać te parametry połączenia z [witryny Azure portal](https://portal.azure.com):
 
 1. Na stronie konfiguracji Centrum w portalu, kliknij przycisk **zasady dostępu współdzielonego**.
+
 1. Kliknij przycisk **iothubowner**.
+
 1. Skopiuj parametry połączenia podstawowej lub dodatkowej.
 
 [![Pobieranie parametrów połączenia](./media/iot-accelerators-device-simulation-choose-hub/connectionstring-inline.png)](./media/iot-accelerators-device-simulation-choose-hub/connectionstring-expanded.png#lightbox)
 
 Użyj parametrów połączenia skopiowaną po skonfigurowaniu symulacji:
 
-[![Konfigurowanie symulacji](./media/iot-accelerators-device-simulation-choose-hub/configuresimulation-inline.png)](./media/iot-accelerators-device-simulation-choose-hub/configuresimulation-expanded.png#lightbox)
+![Konfigurowanie symulacji](./media/iot-accelerators-device-simulation-choose-hub/configuresimulation.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+### <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku wyjaśniono sposób użycia już istniejące Centrum IoT w symulacji. Następnie możesz chcieć Dowiedz się, jak [konfigurowania modelu niestandardowego urządzenia](iot-accelerators-device-simulation-custom-model.md) symulacji.
+W tym przewodniku wyjaśniono sposób użycia już istniejące Centrum IoT w symulacji. Następnie możesz chcieć Dowiedz się, jak [tworzenia modelu urządzenia zaawansowane](iot-accelerators-device-simulation-advanced-device.md) symulacji.

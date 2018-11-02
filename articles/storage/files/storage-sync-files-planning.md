@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: e4e793ac5735f7f3b07d285dea027a8f603b7964
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 0c9c254625ccca27a3525c45da0303f5e045ef44
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237901"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914332"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -27,13 +27,13 @@ Przed przejściem do szczegółów Planowanie wdrażania usługi Azure File Sync
 Usługa synchronizacji magazynu jest najwyższego poziomu zasobów platformy Azure dla usługi Azure File Sync. Zasób usługi synchronizacji magazynu jest równorzędny zasób konta magazynu i podobnie można wdrożyć dla grup zasobów platformy Azure. Odrębne zasobem najwyższego poziomu z zasobu konta magazynu jest wymagana, ponieważ usługa synchronizacji magazynu można utworzyć relacji synchronizacji z wieloma kontami magazynu przy użyciu wielu grup synchronizacji. Subskrypcja może mieć wiele zasobów Usługa synchronizacji magazynu wdrożone.
 
 ### <a name="sync-group"></a>Grupa synchronizacji
-Grupa synchronizacji definiuje topologia synchronizacji dla zestawu plików. Punkty końcowe w ramach grupy synchronizacji są synchronizowane ze sobą. Jeśli na przykład masz dwa odrębne rodzaje plików, które mają być zarządzane za pomocą usługi Azure File Sync, czy utworzyć dwie grupy synchronizacji i dodać różne punkty końcowe do każdej grupy synchronizacji. Usługa synchronizacji magazynu może obsługiwać dowolną liczbę grup synchronizacji.  
+Grupa synchronizacji definiuje topologię synchronizacji dla zestawu plików. Punkty końcowe w ramach grupy synchronizacji są synchronizowane ze sobą. Jeśli na przykład masz dwa odrębne rodzaje plików, które mają być zarządzane za pomocą usługi Azure File Sync, czy utworzyć dwie grupy synchronizacji i dodać różne punkty końcowe do każdej grupy synchronizacji. Usługa synchronizacji magazynu może obsługiwać dowolną liczbę grup synchronizacji.  
 
 ### <a name="registered-server"></a>Zarejestrowany serwer
 Obiekt zarejestrowanego serwera reprezentuje relację zaufania między serwerem (lub klastra) i usługę synchronizacji magazynu. Możesz zarejestrować dowolną liczbę serwerów do wystąpienia usługi synchronizacji magazynu jak chcesz. Jednak serwer (lub klastrowy) można zarejestrować przy użyciu tylko jednej usługi synchronizacji magazynu w danym momencie.
 
 ### <a name="azure-file-sync-agent"></a>Agent usługi Azure File Sync
-Agent usługi Azure File Sync jest dostępna do pobrania pakiet, który umożliwia systemu Windows Server z udziału plików platformy Azure. Agent usługi Azure File Sync ma trzy główne składniki: 
+Agent usługi Azure File Sync to możliwy do pobrania pakiet, który umożliwia synchronizowanie systemu Windows Server z udziałem plików platformy Azure. Agent usługi Azure File Sync ma trzy główne składniki: 
 - **FileSyncSvc.exe**: tło usługi Windows, który jest odpowiedzialny za monitorowanie zmian na punkty końcowe serwera i inicjowania sesji synchronizacji na platformie Azure.
 - **StorageSync.sys**: filtru systemu plików usługi Azure File Sync, która jest odpowiedzialna za warstw pliki do usługi Azure Files (po chmurze warstw jest włączona).
 - **Polecenia cmdlet programu PowerShell do zarządzania**: polecenia cmdlet programu PowerShell, który jest używany do interakcji z dostawcy zasobów platformy Microsoft.StorageSync Azure. Dane można znaleźć w następujących lokalizacjach (ustawienie domyślne):
@@ -41,7 +41,7 @@ Agent usługi Azure File Sync jest dostępna do pobrania pakiet, który umożliw
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll
 
 ### <a name="server-endpoint"></a>Punkt końcowy serwera
-Punkt końcowy serwera reprezentuje konkretnej lokalizacji na zarejestrowanego serwera, takie jak folder na wolumin serwera. Wiele punktów końcowych serwera może istnieć na tym samym woluminie, jeśli nie pokrywają się ich przestrzenie nazw (na przykład `F:\sync1` i `F:\sync2`). Można skonfigurować zasad obsługi warstw chmury osobno dla każdego punktu końcowego serwera. 
+Punkt końcowy serwera reprezentuje określoną lokalizację na zarejestrowanym serwerze, taką jak folder na woluminie serwera. Wiele punktów końcowych serwera może istnieć na tym samym woluminie, jeśli nie pokrywają się ich przestrzenie nazw (na przykład `F:\sync1` i `F:\sync2`). Można skonfigurować zasad obsługi warstw chmury osobno dla każdego punktu końcowego serwera. 
 
 Możesz utworzyć punkt końcowy serwera za pośrednictwem punktu instalacji. Należy zauważyć, że punkty instalacji, w ramach punktu końcowego serwera są pomijane.  
 
@@ -132,11 +132,11 @@ Aby wyświetlić wyniki w formacie CSV:
 | Cecha | Stan obsługi | Uwagi |
 |---------|----------------|-------|
 | Listy kontroli dostępu (ACL) | W pełni obsługiwane | Listy kontroli dostępu Windows są zachowywane przez usługę Azure File Sync i są wymuszane przez system Windows Server w punktach końcowych serwera. Windows list ACL nie są (jeszcze) obsługiwane przez usługi Azure Files, jeśli pliki są dostępne bezpośrednio w chmurze. |
-| Twarde linki | Pominięto | |
-| Linki symboliczne | Pominięto | |
+| Twarde linki | Pominięte | |
+| Linki symboliczne | Pominięte | |
 | Punkty instalacji | Częściowo obsługiwane | Punkty instalacji może być katalog główny punkt końcowy serwera, ale są one pomijane, jeśli są one w przestrzeni nazw punktu końcowego serwera. |
-| Punktach transferu | Pominięto | Na przykład Distributed pliku System DfrsrPrivate i DFSRoots folderów. |
-| Punkty ponownej analizy | Pominięto | |
+| Punktach transferu | Pominięte | Na przykład Distributed pliku System DfrsrPrivate i DFSRoots folderów. |
+| Punkty ponownej analizy | Pominięte | |
 | Kompresja NTFS | W pełni obsługiwane | |
 | Pliki rozrzedzone | W pełni obsługiwane | Synchronizacja plików rozrzedzonych (nie są blokowane), ale synchronizacja z chmurą jako cały plik. Zmiana zawartości pliku w chmurze (lub na innym serwerze), plik nie jest już rozrzedzony, gdy zmiany zostały pobrane. |
 | Alternatywne strumienie danych (AD) | Zachowane, ale nie zsynchronizowano | Na przykład klasyfikacji tagów, utworzonych przez infrastrukturę klasyfikacji plików, nie są synchronizowane. Istniejące tagi klasyfikacji plików na każdym punkty końcowe serwera są lewej bez zmian. |
@@ -242,7 +242,9 @@ Usługa Azure File Sync jest dostępna tylko w następujących regionach:
 | Azja Wschodnia | Hongkong |
 | Wschodnie stany USA | Wirginia |
 | Wschodnie stany USA 2 | Wirginia |
+| Środkowo-północne stany USA | Illinois |
 | Europa Północna | Irlandia |
+| Środkowo-południowe stany USA | Teksas |
 | Indie Południowe | Chennai |
 | Azja Południowo-Wschodnia | Singapur |
 | Południowe Zjednoczone Królestwo | Londyn |
@@ -269,6 +271,7 @@ Aby obsługiwać integrację trybu failover dla magazynu geograficznie nadmiarow
 | Wschodnie stany USA             | Zachodnie stany USA            |
 | Wschodnie stany USA 2           | Środkowe stany USA         |
 | Europa Północna        | Europa Zachodnia        |
+| Środkowo-północne stany USA    | Środkowo-południowe stany USA   |
 | Indie Południowe         | Indie Środkowe      |
 | Azja Południowo-Wschodnia      | Azja Wschodnia          |
 | Południowe Zjednoczone Królestwo            | Zachodnie Zjednoczone Królestwo            |

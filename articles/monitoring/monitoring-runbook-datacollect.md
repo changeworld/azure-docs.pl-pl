@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: f1a106a4f99c09134b8784e98ca547db51ce0eae
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 2efaae7794cf5f12719d3d1420d9db6903592559
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409513"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913193"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Zbieranie danych w usłudze Log Analytics przy użyciu elementu runbook usługi Azure Automation
 Znacznej ilości danych w usłudze Log Analytics może zbierać z różnych źródeł, w tym [źródeł danych](../log-analytics/log-analytics-data-sources.md) na agentach, a także [dane zbierane z platformy Azure](../log-analytics/log-analytics-azure-storage.md).  Istnieją scenariusze, chociaż wymagających zbierania danych, która nie jest dostępny za pośrednictwem tych standardowych źródeł.  W takich przypadkach można użyć [interfejsu API modułu zbierającego dane HTTP](../log-analytics/log-analytics-data-collector-api.md) można zapisać danych do usługi Log Analytics za pomocą dowolnego klienta interfejsu API REST.  Typowe metodę w celu zbierania danych używa elementu runbook w usłudze Azure Automation.   
@@ -30,8 +30,8 @@ Ten samouczek przedstawia proces tworzenia i Planowanie elementu runbook w usłu
 ## <a name="prerequisites"></a>Wymagania wstępne
 Ten scenariusz wymaga następujących zasobów, które są skonfigurowane w ramach subskrypcji platformy Azure.  Jednocześnie może być utworzenie bezpłatnego konta.
 
-- [Zaloguj się obszar roboczy usługi Analytics](../log-analytics/log-analytics-get-started.md).
-- [Konto usługi Azure automation](../automation/automation-offering-get-started.md).
+- [Zaloguj się obszar roboczy usługi Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
+- [Konto usługi Azure automation](..//automation/automation-quickstart-create-account.md).
 
 ## <a name="overview-of-scenario"></a>Omówienie scenariusza
 W tym samouczku przedstawiono tworzenie elementu runbook, który służy do zbierania informacji na temat zadań usługi Automation.  Elementy Runbook w usłudze Azure Automation są implementowane przy użyciu programu PowerShell, dzięki czemu będzie zacząć przy pisaniu i testowaniu skrypt w edytorze usługi Azure Automation.  Po upewnieniu się, że Trwa zbieranie danych wymaganych informacji, będzie zapisać te dane do usługi Log Analytics i sprawdź niestandardowego typu danych.  Na koniec utworzymy harmonogram w celu uruchomienia elementu runbook w regularnych odstępach czasu.
@@ -145,7 +145,7 @@ Usługa Azure Automation obejmuje środowisko do [przetestować element runbook]
     ![Wpis w danych wyjściowych](media/monitoring-runbook-datacollect/post-output.png)
 
 ## <a name="5-verify-records-in-log-analytics"></a>5. Weryfikowanie rekordów w usłudze Log Analytics
-Gdy element runbook została ukończona w teście i upewnieniu się, że pomyślnie Odebrano dane wyjściowe, można sprawdzić, czy rekordy zostały utworzone przy użyciu [przeszukiwania dzienników w usłudze Log Analytics](../log-analytics/log-analytics-log-searches.md).
+Gdy element runbook została ukończona w teście i upewnieniu się, że pomyślnie Odebrano dane wyjściowe, można sprawdzić, czy rekordy zostały utworzone przy użyciu [przeszukiwania dzienników w usłudze Log Analytics](../log-analytics/log-analytics-log-search.md).
 
 ![Dane wyjściowe dziennika](media/monitoring-runbook-datacollect/log-output.png)
 

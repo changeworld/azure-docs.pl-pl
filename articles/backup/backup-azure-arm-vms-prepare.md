@@ -9,16 +9,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 30b35d38c30d3ee9410a85824c53001ca95cf30b
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: dd11c50940dc35524b6d10c6043e906cc813498d
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025943"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748293"
 ---
 # <a name="prepare-to-back-up-azure-vms"></a>Przygotowanie do tworzenia kopii zapasowych maszyn wirtualnych platformy Azure
 
-Ten artykuł zawiera instrukcje dotyczące przygotowania środowiska do tworzenia kopii zapasowej maszyny wirtualnej (VM) wdrożone usługi Azure Resource Manager. Kroki opisane w procedurach użyj witryny Azure portal. Podczas wykonywania kopii zapasowej maszyny wirtualnej, punktów odzyskiwania lub dane kopii zapasowej są przechowywane w magazynie usług odzyskiwania kopii zapasowych. 
+Ten artykuł zawiera instrukcje dotyczące przygotowania środowiska do tworzenia kopii zapasowej maszyny wirtualnej (VM) wdrożone usługi Azure Resource Manager. Kroki opisane w procedurach użyj witryny Azure portal. Podczas wykonywania kopii zapasowej maszyny wirtualnej, punktów odzyskiwania lub dane kopii zapasowej są przechowywane w magazynie usług odzyskiwania kopii zapasowych.
 
 
 
@@ -45,7 +45,7 @@ Jeśli te warunki są już istnieją w Twoim środowisku, przejdź do [tworzenie
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Ograniczenia w przypadku tworzenia kopii zapasowych i przywracania maszyny Wirtualnej
 Przed przygotowaniem środowiska, należy zrozumieć następujące ograniczenia:
 
-* Tworzenie kopii zapasowych maszyn wirtualnych przy użyciu więcej niż 32 dyski danych nie jest obsługiwane.
+* Tworzenie kopii zapasowych maszyn wirtualnych przy użyciu więcej niż 16 dysków danych nie jest obsługiwane.
 * Tworzenie kopii zapasowych maszyn wirtualnych systemu Linux, szyfrowane za pomocą funkcji szyfrowania Linux Unified klucz instalacji (LUKS) nie jest obsługiwane.
 * Nie zaleca się tworzenie kopii zapasowych maszyn wirtualnych, które zawierają udostępnionych woluminów klastra (CSV) lub serwera plików skalowalnego w poziomie konfiguracji. Jeśli będą wykonywane, awarii składników zapisywania CSV jest oczekiwany. Wymagają one, obejmujące wszystkie maszyny wirtualne, które uwzględnione w konfiguracji klastra podczas wykonywania zadania migawki. Usługa Azure Backup nie obsługuje spójność wielu maszyn wirtualnych.
 * Dane kopii zapasowej nie zawiera sieciowych zainstalowane dyski dołączone do maszyny Wirtualnej.
@@ -194,7 +194,7 @@ Usługa Backup instaluje rozszerzenie kopii zapasowej, czy maszyna wirtualna jes
 ## <a name="establish-network-connectivity"></a>Ustanowienie połączenia z siecią
 Aby zarządzać migawki maszyny Wirtualnej, rozszerzenie kopii zapasowej, musi mieć łączność platformy Azure publicznych adresów IP. Bez odpowiednie połączenie z Internetem limit czasu żądań HTTP maszyny wirtualnej, a operacja tworzenia kopii zapasowej nie powiedzie się. Jeśli wdrożenie ma ograniczenia dostępu w miejscu — przy użyciu sieciowej grupy zabezpieczeń (NSG), na przykład wybierz jedną z tych opcji, aby zapewni przejrzystą ścieżkę ruchu kopii zapasowej:
 
-* [Lista dozwolonych adresów IP centrum danych platformy Azure zakresy](http://www.microsoft.com/en-us/download/details.aspx?id=41653).
+* [Lista dozwolonych adresów IP centrum danych platformy Azure zakresy](http://www.microsoft.com/download/details.aspx?id=41653).
 * Wdrażanie serwera proxy HTTP dla routingu ruchu.
 
 Podczas wybierania opcji wad i zalet należą do zakresu od możliwości zarządzania, kontrolę i kosztów.
@@ -205,7 +205,7 @@ Podczas wybierania opcji wad i zalet należą do zakresu od możliwości zarząd
 | Użyj serwera proxy HTTP |Zapewnia szczegółową kontrolę na serwerze proxy magazynu dozwolone adresy URL.<br><br>Pojedynczy punkt internet dostępu do maszyn wirtualnych.<br><br>Nie może ulec zmianie adresów IP platformy Azure. |Dodatkowe koszty uruchamiania maszyn wirtualnych z oprogramowaniem serwera proxy. |
 
 ### <a name="whitelist-the-azure-datacenter-ip-ranges"></a>Zakresy adresów IP dozwolonych centrum danych platformy Azure
-Do listy dozwolonych zakresów adresów IP centrum danych platformy Azure, zobacz [witryny sieci Web Azure](http://www.microsoft.com/en-us/download/details.aspx?id=41653) szczegółowe informacje na temat zakresów adresów IP i instrukcje.
+Do listy dozwolonych zakresów adresów IP centrum danych platformy Azure, zobacz [witryny sieci Web Azure](http://www.microsoft.com/download/details.aspx?id=41653) szczegółowe informacje na temat zakresów adresów IP i instrukcje.
 
 Zezwalaj na połączenia do magazynu w określonym regionie przy użyciu [tagów usług](../virtual-network/security-overview.md#service-tags). Upewnij się, że reguła, która umożliwia uzyskanie dostępu do konta magazynu ma wyższy priorytet niż regułę, która blokuje dostęp do Internetu.
 

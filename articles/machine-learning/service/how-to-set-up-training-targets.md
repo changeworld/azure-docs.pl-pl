@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 2c4255b70ae9eb3b31b6fdfce33853f0d517aa1f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: dfa9da5102c2a47b14cbd70380b70b4561c3191d
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215484"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748463"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>Wybierz, a następnie użyć obliczeniowego elementu docelowego do nauczenia modelu
 
@@ -463,7 +463,7 @@ Istnieją dwa sposoby, aby przesłać przebiegu szkolenia:
 * Przesyłanie `Pipeline` obiektu.
 
 > [!IMPORTANT]
-> Usługa Azure Databricks, Azure Datalake Analytics i Azure HDInsight obliczeniowe elementy docelowe należy używać tylko w potoku.
+> Usługa Azure Databricks i Azure Datalake Analytics obliczeniowe elementy docelowe należy używać tylko w potoku.
 > Nie można użyć lokalnego obliczeniowego elementu docelowego w potoku.
 
 ### <a name="submit-using-scriptrunconfig"></a>Przesyłanie przy użyciu `ScriptRunConfig`

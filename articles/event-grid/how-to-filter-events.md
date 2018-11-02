@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8bf7ac9daf928c35a3d6efcac528d3372fa87c8a
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 6d7e9e5a4c60c16c505b0b69f14d22ebd868c1c0
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50252145"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748225"
 ---
 # <a name="filter-events-for-event-grid"></a>Filtrowanie zdarzeń usługi Event Grid
 
@@ -220,10 +220,10 @@ az eventgrid event-subscription create \
   -n demoAdvancedSub \
   --advanced-filter data.color stringin blue red green \
   --endpoint $endpointURL \
-  --expiration-date "2018-11-30"
+  --expiration-date "<yyyy-mm-dd>"
 ```
 
-Należy zauważyć, że ustawiono datę wygaśnięcia subskrypcji. Subskrypcja zdarzeń jest automatycznie wygaszane po tej dacie. Ustawienia okresu ważności subskrypcji zdarzeń, które są wymagane tylko przez ograniczony czas.
+Należy zauważyć, że [datę wygaśnięcia](concepts.md#event-subscription-expiration) jest ustawiona dla subskrypcji.
 
 ### <a name="test-filter"></a>Filtr testu
 

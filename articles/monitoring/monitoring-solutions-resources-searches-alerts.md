@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren, vinagara
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8ec5f1cef3f9ca82953093d2086b615087db1a7f
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 154dedaf5e657803417e1bb113489c49f8879a26
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024780"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914589"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Dodawanie usługi Log Analytics zapisane wyszukiwania i alerty w rozwiązaniu do zarządzania (wersja zapoznawcza)
 
@@ -27,13 +27,13 @@ ms.locfileid: "50024780"
 > Jest to wstępne dokumentację dotyczącą tworzenia rozwiązań do zarządzania, które są obecnie dostępne w wersji zapoznawczej. Żadnego schematu opisanych poniżej ulec zmianie.   
 
 
-[Rozwiązania do zarządzania](monitoring-solutions.md) zwykle zawierają [zapisane wyszukiwania](../log-analytics/log-analytics-log-searches.md) w usłudze Log Analytics do analizowania danych zbieranych przez to rozwiązanie.  Mogą również definiować [alerty](../log-analytics/log-analytics-alerts.md) powiadomić użytkownika lub automatycznie podjąć działania w odpowiedzi na problem krytyczny.  W tym artykule opisano sposób definiowania zapisanego wyszukiwania analizy dzienników i alertów w [szablonu Resource Management](../resource-manager-template-walkthrough.md) , dzięki czemu mogą być zawarte w [rozwiązań do zarządzania](monitoring-solutions-creating.md).
+[Rozwiązania do zarządzania](monitoring-solutions.md) zwykle zawierają [zapisane wyszukiwania](../log-analytics/log-analytics-log-search.md) w usłudze Log Analytics do analizowania danych zbieranych przez to rozwiązanie.  Mogą również definiować [alerty](../log-analytics/log-analytics-alerts.md) powiadomić użytkownika lub automatycznie podjąć działania w odpowiedzi na problem krytyczny.  W tym artykule opisano sposób definiowania zapisanego wyszukiwania analizy dzienników i alertów w [szablonu Resource Management](../resource-manager-template-walkthrough.md) , dzięki czemu mogą być zawarte w [rozwiązań do zarządzania](monitoring-solutions-creating.md).
 
 > [!NOTE]
 > Przykłady w tym artykule użyć parametrów i zmiennych, które są wymagane lub wspólne dla rozwiązania do zarządzania i opisem w artykule [projektowanie i tworzenie rozwiązania do zarządzania na platformie Azure](monitoring-solutions-creating.md)  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-W tym artykule założono, że znasz już sposób [utworzyć to rozwiązanie do zarządzania](monitoring-solutions-creating.md) i struktury [szablonu usługi Resource Manager](../resource-group-authoring-templates.md) i plik rozwiązania.
+W tym artykule założono, że znasz już sposób [utworzyć to rozwiązanie do zarządzania](monitoring-solutions-creating.md) i struktury [szablonu usługi Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) i plik rozwiązania.
 
 
 ## <a name="log-analytics-workspace"></a>Obszar roboczy usługi Log Analytics
@@ -54,9 +54,9 @@ Poniższa tabela zawiera listę wersji interfejsu API dla zasobów używanych w 
 
 
 ## <a name="saved-searches"></a>Zapisane wyszukiwania
-Obejmują [zapisane wyszukiwania](../log-analytics/log-analytics-log-searches.md) w ramach rozwiązania, aby umożliwić użytkownikom zapytania o dane zebrane przez rozwiązania.  Zapisane wyszukiwania są wyświetlane w obszarze **zapisane wyszukiwania** w witrynie Azure portal.  Zapisane wyszukiwanie jest także wymagane dla każdego alertu.   
+Obejmują [zapisane wyszukiwania](../log-analytics/log-analytics-log-search.md) w ramach rozwiązania, aby umożliwić użytkownikom zapytania o dane zebrane przez rozwiązania.  Zapisane wyszukiwania są wyświetlane w obszarze **zapisane wyszukiwania** w witrynie Azure portal.  Zapisane wyszukiwanie jest także wymagane dla każdego alertu.   
 
-[Zapisane wyszukiwanie analizy dzienników](../log-analytics/log-analytics-log-searches.md) zasoby mają typ `Microsoft.OperationalInsights/workspaces/savedSearches` i mają następującą strukturę.  W tym wspólnych zmiennych i parametrów, aby można skopiuj i wklej następujący fragment kodu do pliku rozwiązania i Zmień nazwy parametrów. 
+[Zapisane wyszukiwanie analizy dzienników](../log-analytics/log-analytics-log-search.md) zasoby mają typ `Microsoft.OperationalInsights/workspaces/savedSearches` i mają następującą strukturę.  W tym wspólnych zmiennych i parametrów, aby można skopiuj i wklej następujący fragment kodu do pliku rozwiązania i Zmień nazwy parametrów. 
 
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name)]",

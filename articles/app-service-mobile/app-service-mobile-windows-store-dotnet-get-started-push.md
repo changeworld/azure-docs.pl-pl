@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
-ms.openlocfilehash: bfbb72d6fd101932f00e12ad18ab079ec30a0d3a
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: c137f6cfdff9d043a656783f38ec9b894e644338
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818824"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913023"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Dodawanie powiadomień wypychanych do aplikacji Windows
 
@@ -37,21 +37,23 @@ Jeśli nie używasz projektu serwera pobranego — szybki start, konieczne będz
 
 ## <a name="register-your-app-for-push-notifications"></a>Rejestrowanie aplikacji dla usługi powiadomień wypychanych
 
-Musisz przesłać aplikacji Microsoft Store, a następnie skonfigurować Projekt serwera do integracji z usługami powiadomień Windows (WNS) do wysyłania wypychanych.
+Musisz przesłać aplikacji Microsoft Store, a następnie skonfigurować Projekt serwera do integracji z [Windows usługi powiadomień WNS](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) do wysyłania wypychanych.
 
 1. W Eksploratorze rozwiązań w usłudze Visual Studio, kliknij prawym przyciskiem myszy projekt aplikacji platformy uniwersalnej systemu Windows, kliknij przycisk **Store** > **Skojarz aplikację ze Store...** .
 
     ![Skojarz aplikację z Microsoft Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
+
 2. W kreatorze kliknij pozycję **dalej**, zaloguj się przy użyciu swojego konta Microsoft, wpisz nazwę swojej aplikacji w **Zarezerwuj nazwę nowej aplikacji**, następnie kliknij przycisk **rezerwy**.
 3. Po pomyślnym utworzeniu rejestracji aplikacji, wybierz nazwę nowej aplikacji, kliknij przycisk **dalej**, a następnie kliknij przycisk **skojarzyć**. Spowoduje to dodanie wymaganych informacji dotyczących rejestracji Microsoft Store do manifestu aplikacji.
-4. Przejdź do [Centrum deweloperów Windows](https://dev.windows.com/en-us/overview), zaloguj się przy użyciu swojego konta Microsoft, kliknij przycisk Rejestracja nowej aplikacji w **Moje aplikacje**, następnie rozwiń **usług**  >   **Powiadomienia wypychane**.
-5. W **powiadomienia wypychane** kliknij **witryna usług Live** w obszarze **Microsoft Azure Mobile Services**.
-6. Na stronie rejestracji, zanotuj wartość w obszarze **wpisów tajnych aplikacji** i **identyfikator SID pakietu**, który następnie będzie używany do konfigurowania zaplecza aplikacji mobilnej.
+4. Przejdź do [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/) i zaloguj się przy użyciu konta Microsoft. Kliknij aplikację Windows Store, którą skojarzone w poprzednim kroku.
+5. Na stronie rejestracji, zanotuj wartość w obszarze **wpisów tajnych aplikacji** i **identyfikator SID pakietu**, który następnie będzie używany do konfigurowania zaplecza aplikacji mobilnej.
 
     ![Skojarz aplikację z Microsoft Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
 
    > [!IMPORTANT]
    > Klucz tajny klienta i identyfikator SID pakietu są ważnymi poświadczeniami zabezpieczeń. Nie udostępniaj nikomu tych wartości ani nie rozpowszechniaj ich razem z aplikacją. **Identyfikator aplikacji** jest używany przy użyciu klucza tajnego do konfigurowania uwierzytelniania Account firmy Microsoft.
+
+[App Center](https://docs.microsoft.com/appcenter/sdk/push/uwp#prerequisite---register-your-app-for-windows-notification-services-wns) zawiera również instrukcje dotyczące konfigurowania aplikacji platformy UWP dla powiadomień wypychanych.
 
 ## <a name="configure-the-backend-to-send-push-notifications"></a>Konfigurowanie zaplecza służącego do wysyłania powiadomień wypychanych
 

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 3b665ed0539a41ffeca87511154f3607a57cff4a
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 17efbfffde68208b76120d449f4e1d70e843fc7d
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116197"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914349"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Obsługiwane usługi, schematów i kategorie dzienników diagnostycznych platformy Azure
 
@@ -92,9 +92,11 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 |Microsoft.Batch/batchAccounts|ServiceLog|Dzienniki usługi|
 |Microsoft.Cdn/profiles/endpoints|CoreAnalytics|Pobiera metryki punktu końcowego (np. przepustowość, ruch wychodzący itd.).|
 |Microsoft.ClassicNetwork/networksecuritygroups|Zdarzenie przepływu reguł sieciowej grupy zabezpieczeń|Zdarzenie przepływu reguł sieciowej grupy zabezpieczeń|
-|Microsoft.CognitiveServices/accounts|Inspekcja|Inspekcja|
+|Microsoft.CognitiveServices/accounts|Inspekcja|Dzienniki inspekcji|
+|Microsoft.CognitiveServices/accounts|Element RequestResponse|Dzienniki żądań i odpowiedzi|
 |Microsoft.ContainerService/managedClusters|apiserver rozwiązania kubernetes|Serwera interfejsu API rozwiązania Kubernetes|
 |Microsoft.ContainerService/managedClusters|menedżerem w przypadku kontroli rozwiązania kubernetes|Menedżerem kontroli rozwiązania Kubernetes|
+|Microsoft.ContainerService/managedClusters|Skalowanie klastra|Skalowanie klastra usługi Kubernetes|
 |Microsoft.ContainerService/managedClusters|Usługa scheduler rozwiązania kubernetes|Harmonogram usługi Kubernetes|
 |Microsoft.ContainerService/managedClusters|Ochrona|Uwierzytelnianie elementu Webhook|
 |Microsoft.CustomerInsights/hubs|AuditEvents|AuditEvents|
@@ -105,7 +107,7 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 |Microsoft.DataLakeAnalytics/accounts|Żądania|Dziennik żądań|
 |Microsoft.DataLakeStore/accounts|Inspekcja|Dzienniki inspekcji|
 |Microsoft.DataLakeStore/accounts|Żądania|Dziennik żądań|
-|Microsoft.DBforMySQL/servers|MySqlSlowLogs|Dzienniki wolnych zapytań MySQL|
+|Microsoft.DBforMySQL/servers|MySqlSlowLogs|Dzienniki serwera MySQL|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|Dzienniki serwera PostgreSQL|
 |Microsoft.Devices/IotHubs|Połączenia|Połączenia|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|Danych Telemetrycznych z urządzenia|
@@ -128,6 +130,14 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 |Microsoft.EventHub/namespaces|ArchiveLogs|Archiwizuj dzienniki|
 |Microsoft.EventHub/namespaces|OperationalLogs|Dzienniki operacyjne|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|Dzienniki skalowania automatycznego|
+|Microsoft.Insights/AutoscaleSettings|AutoscaleEvaluations|Autoskalowanie ocen|
+|Microsoft.Insights/AutoscaleSettings|AutoscaleScaleActions|Autoskalowanie akcji skalowania|
+|Microsoft.IoTSpaces/Graph|Ślad|Ślad|
+|Microsoft.IoTSpaces/Graph|Działa|Działa|
+|Microsoft.IoTSpaces/Graph|Inspekcja|Inspekcja|
+|Microsoft.IoTSpaces/Graph|UserDefinedFunction|UserDefinedFunction|
+|Microsoft.IoTSpaces/Graph|Ruch przychodzący|Ruch przychodzący|
+|Microsoft.IoTSpaces/Graph|Ruch wychodzący|Ruch wychodzący|
 |Microsoft.KeyVault/vaults|AuditEvent|Dzienniki inspekcji|
 |Microsoft.Logic/workflows|WorkflowRuntime|Zdarzenia diagnostyczne środowiska wykonawczego przepływów pracy|
 |Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|Zdarzenia śledzenia konta integracji|
@@ -136,6 +146,8 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|Zdarzenia alarmowe modułu równoważenia obciążenia|
 |Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|Stan usługi Load Balancer sondy kondycji|
 |Microsoft.Network/publicIPAddresses|DDoSProtectionNotifications|Usługa DDoS protection powiadomienia|
+|Microsoft.Network/publicIPAddresses|DDoSMitigationFlowLogs|Dzienniki decyzje dotyczące ograniczania ryzyka ataków DDoS przepływu|
+|Microsoft.Network/publicIPAddresses|DDoSMitigationReports|Raporty środki zaradcze przed atakami DDoS|
 |Microsoft.Network/virtualNetworks|VMProtectionAlerts|Alerty ochrony maszyny Wirtualnej|
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|Dziennik bramy Application Gateway dostępu|
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|Dziennik wydajności bramy Application Gateway|
@@ -151,6 +163,8 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 |Microsoft.Network/virtualNetworkGateways|P2SDiagnosticLog|Dzienniki diagnostyczne P2S|
 |Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|Zdarzenie wyniki usługi Traffic Manager sondy kondycji|
 |Microsoft.Network/expressRouteCircuits|PeeringRouteLog|Komunikacja równorzędna dzienniki tabel tras|
+|Microsoft.Network/frontdoors|FrontdoorAccessLog|Dziennik dostępu Frontdoor|
+|Microsoft.Network/frontdoors|FrontdoorWebApplicationFirewallLog|Dziennik zapory aplikacji sieci Web Frontdoor|
 |Microsoft.PowerBIDedicated/capacities|Aparat|Aparat|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Raportowania danych usługi Azure Backup|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Azure Site Recovery Jobs|
@@ -173,10 +187,21 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 |Microsoft.Sql/servers/databases|Zakleszczenia|Zakleszczenia|
 |Microsoft.Sql/servers/databases|Inspekcja|Dzienniki inspekcji|
 |Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|Zdarzenia inspekcji zabezpieczeń SQL|
-|Microsoft.Sql/servers/databases|SqlDw_Requests|Żądania usługi Magazyn danych SQL|
-|Microsoft.Sql/servers/databases|SqlDw_RequestSteps|Kroki żądania magazynu danych SQL|
+|Microsoft.Sql/servers/databases|DmsWorkers|Usługa dms pracowników|
+|Microsoft.Sql/servers/databases|ExecRequests|Exec żądań|
+|Microsoft.Sql/servers/databases|RequestSteps|Kroki żądania|
+|Microsoft.Sql/servers/databases|SqlRequests|Żądania SQL|
+|Microsoft.Sql/servers/databases|W tym czasie czeka|W tym czasie czeka|
+|Microsoft.Sql/managedInstances|ResourceUsageStats|Statystyki użycia zasobów|
+|Microsoft.Sql/managedInstances|SQLSecurityAuditEvents|Zdarzenia inspekcji zabezpieczeń SQL|
+|Microsoft.Sql/managedInstances/databases|SQLInsights|Szczegółowe informacje SQL|
+|Microsoft.Sql/managedInstances/databases|QueryStoreRuntimeStatistics|Statystyki środowiska uruchomieniowego Query Store|
+|Microsoft.Sql/managedInstances/databases|QueryStoreWaitStatistics|Statystyki oczekiwania Query Store|
+|Microsoft.Sql/managedInstances/databases|Błędy|Błędy|
 |Microsoft.StreamAnalytics/streamingjobs|Wykonanie|Wykonanie|
 |Microsoft.StreamAnalytics/streamingjobs|Tworzenie|Tworzenie|
+|Microsoft.Web/Sites|FunctionExecutionLogs|Dzienniki wykonywania — funkcja|
+|Microsoft.Web/Sites/Slots|FunctionExecutionLogs|Dzienniki wykonywania — funkcja|
 
 ## <a name="next-steps"></a>Następne kroki
 

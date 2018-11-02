@@ -1,6 +1,6 @@
 ---
-title: Omówienie usługi Azure, monitorowanie agentów | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera szczegółowe omówienie Azure agentów dostępne, które obsługują monitorowanie maszyn wirtualnych platformy Azure.
+title: Omówienie usługi Azure, agentów monitorowania | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera szczegółowe omówienie agentów programu Azure dostępne, które obsługują monitorowanie maszyn wirtualnych platformy Azure.
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: magoedte
-ms.openlocfilehash: a399c3968e5ee1e2d1f6d623a68dbb1e15cef212
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 62edeb36fcd56733630edc6fa27c9963f20b0186
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37088645"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913550"
 ---
 # <a name="overview-of-the-azure-agents-to-monitor-azure-virtual-machines"></a>Omówienie usługi Azure agentów do monitorowania maszyn wirtualnych platformy Azure
-Microsoft Azure oferuje wiele sposobów, aby zbierać różne typy danych z maszyn wirtualnych hostowanych na platformie Azure lub innych dostawców w chmurze systemem Microsoft Windows i Linux.  Ten artykuł pomoże opisano różnice i możliwości dostępne z każdego agenta, w kolejności, w celu ustalenia, która będzie obsługiwać zarządzania infrastrukturą usługi lub ogólne wymagania dotyczące monitorowania.  
+Microsoft Azure oferuje wiele sposobów, aby zbierać różne typy danych z maszyn wirtualnych hostowanych na platformie Azure lub innych dostawców rozwiązań w chmurze systemem Microsoft Windows i Linux.  Ten artykuł pomoże opisano różnice i możliwości dostępne z każdego agenta w kolejności, w celu ustalenia, który z nich będzie obsługiwać zarządzania usługi lub ogólne wymagania dotyczące monitorowania.  
 
-## <a name="comparing-azure-diagnostic-and-log-analytics-agent"></a>Porównywanie agenta diagnostyki Azure i analizy dzienników
-Obecnie na platformie Azure, istnieją dwa typy agentów dostępnych do monitorowania maszyny Wirtualnej platformy Azure — rozszerzenie diagnostyki Azure i Agent analizy dziennika dla systemów Linux i Windows.  Zasadniczo agenci mają zbierać metryki i dzienniki i przekazywać je do repozytorium. Dotyczy to jednak gdzie podobieństwa ich zakończyć.  
+## <a name="comparing-azure-diagnostic-and-log-analytics-agent"></a>Porównywanie agenta diagnostyki platformy Azure i usługi Log Analytics
+Już dziś na platformie Azure, istnieją dwa rodzaje agentów dostępnych do monitorowania maszyn wirtualnych platformy Azure — rozszerzenie diagnostyki platformy Azure i Log Analytics Agent dla systemu Linux i Windows.  Zasadniczo agenci pozwalają zbierać metryki i dzienniki i przekazywać je do repozytorium. Jednak to, gdzie kończy się ich podobieństwa.  
 
-[Rozszerzenia diagnostyki Azure](../monitoring-and-diagnostics/azure-diagnostics.md), które podano dla usług w chmurze Azure, ponieważ stały się ogólnie dostępna w 2010, jest agentem, który dostarcza prostego zbierania danych diagnostycznych z zasobów IaaS platformy Azure, takich jak maszyny Wirtualnej, i Utrwalanie go do magazynu Azure.  Gdy w magazynie, wybrana do wyświetlenia za pomocą jednego z kilku dostępnych narzędzi, takich jak [Eksploratora serwera w programie Visual Studio](../vs-azure-tools-storage-resources-server-explorer-browse-manage.md) i [Eksploratora usługi Storage Azure](../vs-azure-tools-storage-manage-with-storage-explorer.md).
+[Rozszerzenia diagnostyki Azure](../monitoring-and-diagnostics/azure-diagnostics.md), które podano dla usług Azure Cloud Services, ponieważ stały się ogólnie dostępna w 2010 r. jest agent, który dostarcza proste zbierania danych diagnostycznych z zasobu usługi IaaS platformy Azure, takich jak maszyny Wirtualnej, a Utrwalanie go do usługi Azure storage.  Gdy w usłudze storage została wybrana opcja wyświetlania przy użyciu jednego z kilku dostępnych narzędzi, takich jak [Eksploratora serwera w programie Visual Studio](../vs-azure-tools-storage-resources-server-explorer-browse-manage.md) i [Eksploratora usługi Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md).
 
-Można zbierać:
+Istnieje możliwość zbierania:
 
-* Wstępnie zdefiniowany zestaw liczników wydajności systemu operacyjnego i dzienniki zdarzeń, można również określić zbierania. 
-* Wszystkie żądania i/lub nieudane żądania do serwera sieci web usług IIS
-* Dane wyjściowe dzienniki śledzenia aplikacji .NET
-* Zdarzenia śledzenia dla zdarzeń systemu Windows (ETW) 
-* Zbieranie zdarzeń dziennika z syslog  
+* Wstępnie zdefiniowany zestaw liczników wydajności systemu operacyjnego i dzienniki zdarzeń lub można określić, których mają być gromadzone. 
+* Wszystkie żądania i/lub żądań zakończonych niepowodzeniem na serwerze sieci web usług IIS
+* Aplikacja platformy .NET, dzienniki danych wyjściowych śledzenia
+* Śledzenie zdarzeń systemu Windows (ETW) zdarzenia 
+* Zbieranie zdarzeń dziennika z dziennika systemu  
 * Zrzuty awaryjne 
 
-Dane mogą być także przekazywane do [usługi Application Insights](../application-insights/app-insights-cloudservices.md), [analizy dzienników](../log-analytics/log-analytics-overview.md), lub usług innych niż Azure za pomocą [Centrum zdarzeń](../event-hubs/event-hubs-what-is-event-hubs.md). 
+Dane mogą być także przekazywane do [usługi Application Insights](../application-insights/app-insights-cloudservices.md), [usługi Log Analytics](../log-analytics/log-analytics-overview.md), lub usługi spoza platformy Azure przy użyciu [Centrum zdarzeń](../event-hubs/event-hubs-about.md). 
 
-W przypadku zaawansowanego monitorowania konieczne więcej niż zbieranie metryk i podzestawu dzienniki, agent analizy dzienników dla systemu Windows i Linux jest wymagany.  Z tego agenta będą mogli korzystać z usług Azure, takich jak automatyzacji i analizy dziennika, w tym pełny zestaw funkcji, które oferują one dostarczać kompleksowe zarządzanie maszynach wirtualnych platformy Azure w całym cyklu ich życia. Obejmuje to:
+W przypadku zaawansowanego monitorowania, gdzie potrzebujesz więcej niż zbieranie metryk i podzbiór dzienników, agenta usługi Log Analytics dla Windows i Linux jest wymagany.  Z tego agenta jest możliwe korzystanie z usług platformy Azure, takich jak usługi Automation i Log Analytics, w tym pełny zestaw funkcji, które oferują one dostarczać kompleksowe zarządzanie całym ich cyklu życia maszynach wirtualnych platformy Azure. Obejmuje to:
 
-* [Zarządzanie aktualizacjami usługi Automatyzacja Azure](../automation/automation-update-management.md) aktualizacji systemu operacyjnego
-* [Konfiguracji usługi Azure Automation żądany stan](../automation/automation-dsc-overview.md) do zarządzania stanem spójnej konfiguracji
-* Śledzenie zmian konfiguracji z [śledzenia zmian automatyzacji Azure i magazynu](../automation/automation-change-tracking.md)
-* Kolekcja dzienników niestandardowych z systemu operacyjnego i obsługiwanych aplikacji, takich jak [FluentD](../log-analytics/log-analytics-data-sources-json.md), [dzienników niestandardowych](../log-analytics/log-analytics-data-sources-custom-logs.md), [MySQL i Apache](../log-analytics/log-analytics-data-sources-linux-applications.md) z analizy dzienników
-* Z usług takich jak Azure [usługi Application Insights](https://docs.microsoft.com/azure/application-insights/) i [Centrum zabezpieczeń Azure](https://docs.microsoft.com/azure/security-center/) natywnie przechowywać swoje dane bezpośrednio w analizy dzienników.  
+* [Azure zarządzania aktualizacjami automatyzacji](../automation/automation-update-management.md) aktualizacji systemu operacyjnego
+* [Usługi Azure Automation Desired State Configuration](../automation/automation-dsc-overview.md) do zarządzania stanem spójnej konfiguracji
+* Śledź zmiany konfiguracji przy użyciu [spis i śledzenie zmian w usłudze Azure Automation](../automation/automation-change-tracking.md)
+* Zbieranie dzienników niestandardowych z systemu operacyjnego i obsługiwanych aplikacji, takich jak [FluentD](../log-analytics/log-analytics-data-sources-json.md), [niestandardowe dzienniki](../log-analytics/log-analytics-data-sources-custom-logs.md), [MySQL i Apache](../log-analytics/log-analytics-data-sources-linux-applications.md) z usługą Log Analytics
+* Usługi systemu Azure, takich jak [usługi Application Insights](https://docs.microsoft.com/azure/application-insights/) i [usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/) natywnie przechowują swoje dane bezpośrednio w usłudze Log Analytics.  
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Zobacz [zbierania danych z komputerów w środowisku z analizy dzienników](../log-analytics/log-analytics-concept-hybrid.md) Aby przejrzeć wymagania i dostępnych metod, aby wdrożyć agenta na komputerach w centrum danych lub w innym środowisku chmury.
+- Zobacz [zbieranie danych z komputerów w środowisku z usługą Log Analytics](../log-analytics/log-analytics-concept-hybrid.md) Przegląd wymagań i dostępnych metod, aby wdrożyć agenta na komputerach w centrum danych lub w innym środowisku chmury.
 - Aby skonfigurować zbieranie danych z maszyn wirtualnych platformy Azure, zobacz [Zbieranie danych dotyczących infrastruktury Azure Virtual Machines](../log-analytics/log-analytics-quick-collect-azurevm.md). 

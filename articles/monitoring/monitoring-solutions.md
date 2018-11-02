@@ -1,6 +1,6 @@
 ---
 title: Rozwiązania do zarządzania na platformie Azure | Dokumentacja firmy Microsoft
-description: Rozwiązania do zarządzania na platformie Azure są Kolekcja reguł nabycia logiki, wizualizacji i danych zawierających metryki przestawiać wokół obszaru określonego problemu.  Ten artykuł zawiera informacje na temat instalowania i korzystania z rozwiązań zarządzania.
+description: Rozwiązania do zarządzania na platformie Azure to zbiór reguł nabycia logiki, wizualizacji i danych, które udostępniają metryki dotyczące określonego obszaru problemów.  Ten artykuł zawiera informacje na temat instalowania i za pomocą rozwiązania do zarządzania.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -14,95 +14,95 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: 3377a0b4e6440d83962d103b3e1770ccf43bd785
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: fb1a05a92244743ac8b5f980ff912c9e839d0609
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752925"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913006"
 ---
 # <a name="management-solutions-in-azure"></a>Rozwiązania do zarządzania na platformie Azure
-Rozwiązania do zarządzania korzystać z usług Azure, aby zapewnić dodatkowy wgląd w funkcjonowanie określonej aplikacji lub usługi. Ten artykuł zawiera krótki przegląd rozwiązań do zarządzania Azure i uzyskać szczegółowe informacje na i ich instalowania.
+Rozwiązania do zarządzania korzystać z usług na platformie Azure, aby zapewnić dodatkowy wgląd w działania określonej aplikacji lub usługi. Ten artykuł zawiera krótkie omówienie rozwiązania do zarządzania na platformie Azure i uzyskać szczegółowe informacje na temat używania i instalując je.
 
-Rozwiązania do zarządzania zwykle zbierać informacje do analizy dzienników i podaj widoków do analizowania danych zebranych i dziennik wyszukiwania. Mogą one również korzystać z innych usług, takich jak usługi Automatyzacja Azure do wykonywania akcji związanych z aplikacji lub usługi.
+Rozwiązania do zarządzania zwykle zbierać informacje w usłudze Log Analytics i zapewnienia wyszukiwań w dziennikach i widoków do analizowania zebranych danych. Mogą one również korzystać z innych usług, takich jak usługa Azure Automation do wykonania akcji związanych z aplikacji lub usługi.
 
-Rozwiązania do zarządzania można dodać do subskrypcji platformy Azure dla dowolnej aplikacji i usług, których używasz. Te są zwykle dostępne w żadnych kosztów, ale zbieranie danych, które może wywołać opłaty za użycie. Oprócz rozwiązań dostarczonych przez firmę Microsoft, partnerów i klientów można [tworzenia rozwiązań do zarządzania](../monitoring/monitoring-solutions-creating.md) do użycia w środowisku własnych lub udostępniona użytkownikom za pośrednictwem przez społeczność.
+Rozwiązania do zarządzania można dodać do subskrypcji platformy Azure dla dowolnej aplikacji i usług, których używasz. Są one zazwyczaj dostępne w żadnych kosztów, ale zbieranie danych, które można wywołać opłaty za użycie. Oprócz rozwiązania firmy Microsoft, partnerów i klientów można [tworzenie rozwiązań do zarządzania](../monitoring/monitoring-solutions-creating.md) do użycia we własnym środowisku lub udostępniane klientom za pośrednictwem społeczności.
 
-## <a name="using-management-solutions"></a>Przy użyciu rozwiązań do zarządzania
-**Omówienie** strony dla każdego obszaru roboczego analizy dzienników Wyświetla kafelków dla każdego rozwiązania zainstalowane w obszarze roboczym. Kliknij Kafelek dla rozwiązania, aby otworzyć jego widoku, który zawiera bardziej szczegółowe analizy jego zebranych danych.
+## <a name="using-management-solutions"></a>Za pomocą rozwiązania do zarządzania
+**Przegląd** strony dla każdego obszaru roboczego usługi Log Analytics Wyświetla Kafelek dla każdego rozwiązania w obszarze roboczym. Kliknij Kafelek rozwiązania otworzyć jej widok, który zawiera bardziej szczegółowe analizy jego zebranych danych.
 
 ![Przegląd](media/monitoring-solutions/overview.png)
 
-Rozwiązania do zarządzania może zawierać wiele typów zasobów platformy Azure i można wyświetlić wszystkie zasoby dołączone do rozwiązania, podobnie jak w innych zasobów. Na przykład żadnych wyszukiwań dziennika zawarty w rozwiązaniu są dołączone **zapisane wyszukiwania** w obszarze roboczym. Podczas przeprowadzania analizy ad hoc w module dziennika analiz, można użyć wyszukiwania.
+Rozwiązania do zarządzania może zawierać wiele typów zasobów platformy Azure i wyświetlić wszystkie zasoby dołączone do rozwiązania, tak jak każdy inny zasób. Na przykład dowolnego przeszukiwania dzienników, zawarty w rozwiązaniu są dołączone **zapisane wyszukiwania** w obszarze roboczym. Podczas przeprowadzania analizy ad-hoc w usłudze Log Analytics, można użyć wyszukiwania.
 
 ## <a name="list-installed-management-solutions"></a>Wyświetlanie listy zainstalowanych rozwiązań do zarządzania 
-Użyj poniższej procedury, aby wyświetlić listę rozwiązań zarządzania zainstalowany w ramach subskrypcji.
+Aby wyświetlić listę rozwiązań do zarządzania zainstalowany w ramach subskrypcji, należy użyć następującej procedury.
 
 1. Zaloguj się w witrynie Azure Portal.
-2. W okienku po lewej stronie wybierz **wszystkie usługi**.
-3. Albo przewiń w dół do **rozwiązań** lub typ *rozwiązań* do **filtru** okna dialogowego.
-4. Rozwiązania zainstalowane w wszystkie obszary robocze są wyświetlane. Nazwa rozwiązania następuje nazwa obszaru roboczego analizy dzienników, który jest zainstalowana.
+2. W okienku po lewej stronie wybierz **wszystkich usług**.
+3. Albo przewiń w dół do **rozwiązania** lub typ *rozwiązania* do **filtru** okna dialogowego.
+4. Rozwiązania zainstalowane we wszystkich obszarach roboczych są wyświetlane. Nazwa rozwiązania następuje nazwa obszaru roboczego usługi Log Analytics, który jest instalowany w.
 1. Użyj pola listy rozwijanej w górnej części ekranu, aby filtrować według subskrypcji lub grupy zasobów.
 
 
-![Wyświetl listę wszystkich rozwiązań](media/monitoring-solutions/list-solutions-all.png)
+![Lista wszystkich rozwiązań](media/monitoring-solutions/list-solutions-all.png)
 
-Kliknij nazwę rozwiązania, aby otworzyć jej stronę podsumowania. Ta strona wyświetla wszystkie widoki analizy dzienników zawarty w rozwiązaniu i zapewnia różne opcje dla rozwiązania się i obszaru roboczego. Wyświetl stronę podsumowania rozwiązania przy użyciu jednej z powyższych procedur do listy rozwiązań, a następnie kliknij nazwę rozwiązania.
+Kliknij nazwę rozwiązania, aby otworzyć jej stronę podsumowania. Ta strona wyświetla wszystkie widoki usługi Log Analytics, zawarty w rozwiązaniu oraz różne opcje dla rozwiązania wraz z jej obszaru roboczego. Wyświetlić stronę podsumowania dla rozwiązania przy użyciu jednej z powyższych procedur do listy rozwiązań, a następnie kliknij nazwę rozwiązania.
 
 ![Właściwości rozwiązania](media/monitoring-solutions/solution-properties.png)
 
 
 
-## <a name="install-a-management-solution"></a>Instalowanie rozwiązania do zarządzania
-Rozwiązania do zarządzania firmy Microsoft i partnerów są dostępne z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com). Można wyszukiwanie dostępnych rozwiązań i zainstalować je za pomocą poniższej procedury.
+## <a name="install-a-management-solution"></a>Zainstalować rozwiązanie do zarządzania
+Rozwiązania do zarządzania firmy Microsoft i partnerów są dostępne z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com). Możesz wyszukiwać dostępnych rozwiązań i zainstalować je przy użyciu poniższej procedury.
 
 1. Z [listę rozwiązań dla Twojej subskrypcji](#list-installed-management-solutions), kliknij przycisk **Dodaj**. 
 1. Po prawej stronie **rozwiązań do zarządzania**, kliknij przycisk **więcej**. 
-1. Znajdź rozwiązania do zarządzania mają i zapoznaj się z artykułem jego opis.
+1. Znajdź rozwiązania do zarządzania ma i zapoznaj się z jego opis.
 1. Kliknij przycisk **Utwórz** do uruchamiania procesu instalacji.
-1. Podczas uruchamiania procesu instalacji, zostanie wyświetlony monit o podanie wymaganej konfiguracji, który różni się każde rozwiązanie. Wszystkie z nich wymaga wybierz obszar roboczy analizy dzienników zainstalowaną rozwiązania i gdzie będą zbierane dane. 
+1. Podczas uruchamiania procesu instalacji, zostanie wyświetlony monit podanie wymaganej konfiguracji, które różni się w poszczególnych rozwiązań. Wszystkie z nich wymagają wybierz obszar roboczy usługi Log Analytics zainstalowanym rozwiązania i gdzie będą zbierane dane. 
 
-![Instalowanie rozwiązania](media/monitoring-solutions/install-solution.png)
+![Zainstalowanie rozwiązania](media/monitoring-solutions/install-solution.png)
 
-### <a name="install-a-solution-from-the-community"></a>Instalowanie rozwiązania przez społeczność
-Członków społeczności można przesłać do szablonów Szybki Start Azure rozwiązania do zarządzania. Można zainstalować te rozwiązania bezpośrednio lub je pobrać szablonów dla nowszej instalacji.
+### <a name="install-a-solution-from-the-community"></a>Zainstalowanie rozwiązania od społeczności
+Członkowie społeczności mogą przesyłać do platformy Azure — szablony szybkiego startu rozwiązania do zarządzania. Można bezpośrednio zainstalować te rozwiązania lub pobranie szablonów dla nowszych instalacji.
 
-1. Wykonaj czynności opisane w [obszaru roboczego analizy dzienników i konto automatyzacji](#log-analytics-workspace-and-automation-account) połączyć obszaru roboczego i konta.
-2. Przejdź do [szablonów Szybki Start Azure](https://azure.microsoft.com/documentation/templates/). 
-3. Wyszukiwanie rozwiązania, które Cię interesują.
+1. Wykonaj czynności opisane w [obszar roboczy usługi Log Analytics i konto usługi Automation](#log-analytics-workspace-and-automation-account) połączyć obszar roboczy i konto.
+2. Przejdź do [szablony szybkiego startu platformy](https://azure.microsoft.com/documentation/templates/). 
+3. Wyszukaj rozwiązanie, które interesują Cię.
 4. Wybierz rozwiązanie z wyników, aby wyświetlić jego szczegóły.
-5. Kliknij przycisk **wdrażanie na platformie Azure** przycisku.
-6. Zostanie wyświetlony monit o podanie informacje, takie jak grupy zasobów i lokalizacji oprócz wartości parametrów w rozwiązaniu.
-7. Kliknij przycisk **zakupu** zainstalować rozwiązania.
+5. Kliknij przycisk **Wdróż na platformie Azure** przycisku.
+6. Monit o podanie informacji takich jak grupy zasobów i lokalizacji, oprócz wartości parametrów w rozwiązaniu.
+7. Kliknij przycisk **zakupu** może instalować rozwiązanie.
 
 
-## <a name="log-analytics-workspace-and-automation-account"></a>Obszar roboczy analizy dzienników i konta automatyzacji
-Wszystkie rozwiązania do zarządzania wymagają [obszaru roboczego analizy dzienników](../log-analytics/log-analytics-manage-access.md) do przechowywania danych zbieranych przez rozwiązanie i hosta, widoków i dziennik wyszukiwania. Niektóre rozwiązania również wymagają [konto automatyzacji](../automation/automation-security-overview.md#automation-account-overview) zawiera elementy runbook i powiązanych zasobów. Obszar roboczy i konto musi spełniać następujące wymagania.
+## <a name="log-analytics-workspace-and-automation-account"></a>Obszar roboczy usługi log Analytics i konto usługi Automation
+Wszystkie rozwiązania zarządzania wymagają [obszaru roboczego usługi Log Analytics](../log-analytics/log-analytics-manage-access.md) do przechowywania danych zbieranych przez to rozwiązanie i hostowania wyszukiwań w dziennikach i widoków. Niektóre rozwiązania wymagają również [konta usługi Automation](../automation/automation-security-overview.md#automation-account-overview) zawiera elementy runbook i powiązane zasoby. Obszar roboczy i konto musi spełniać następujące wymagania.
 
-* Każda instalacja rozwiązania można używać tylko jednego obszaru roboczego analizy dzienników i jedno konto automatyzacji. Rozwiązanie można zainstalować oddzielnie na wiele obszarów roboczych.
-* Jeśli rozwiązanie wymaga konto usługi Automatyzacja, następnie obszaru roboczego analizy dzienników i konto automatyzacji musi być połączony ze sobą. Obszar roboczy analizy dzienników może odnosić się tylko do jednego konta automatyzacji, a konto usługi Automatyzacja może odnosić się tylko do jednego obszaru roboczego analizy dzienników.
-* Połączone, obszar roboczy analizy dzienników i konto automatyzacji musi być w tej samej grupie zasobów i region. Wyjątkiem jest obszar roboczy w regionie wschodnie stany USA, a konto usługi Automatyzacja w wschodnie stany USA 2.
+* Każda instalacja rozwiązania można używać tylko jednego obszaru roboczego usługi Log Analytics i jedno konto usługi Automation. Oddzielnie zainstalować rozwiązanie do wielu obszarów roboczych.
+* Jeśli to rozwiązanie wymaga konta usługi Automation, następnie obszaru roboczego usługi Log Analytics i konto usługi Automation muszą być połączone ze sobą. Obszar roboczy usługi Log Analytics mogą być łączone tylko na jednym koncie usługi Automation, a konto usługi Automation mogą być łączone tylko z jednym obszarem roboczym usługi Log Analytics.
+* Połączone, obszar roboczy usługi Log Analytics i konto usługi Automation musi być w tej samej grupie zasobów i regionie. Wyjątkiem jest obszar roboczy w regionie wschodnie stany USA i konta usługi Automation w regionie wschodnie stany USA 2.
 
-### <a name="creating-a-link-between-a-log-analytics-workspace-and-automation-account"></a>Tworzenie połączenia między obszaru roboczego analizy dzienników i konta automatyzacji
-Jak można określić obszaru roboczego analizy dzienników i konto usługi Automatyzacja zależy od metody instalacji dla rozwiązania.
+### <a name="creating-a-link-between-a-log-analytics-workspace-and-automation-account"></a>Tworzenie połączenia między obszaru roboczego usługi Log Analytics i konto usługi Automation
+Jak określić obszar roboczy usługi Log Analytics i konto usługi Automation zależy od metody instalacji dla danego rozwiązania.
 
-* Po zainstalowaniu rozwiązania za pośrednictwem portalu Azure Marketplace, zostanie wyświetlony monit dla obszaru roboczego i konto usługi Automatyzacja. Połączenia między nimi jest tworzony, jeśli ich nie są już połączone.
-* Rozwiązania poza portalu Azure Marketplace możesz połączyć obszaru roboczego analizy dzienników i konto automatyzacji przed zainstalowaniem rozwiązania. Można to zrobić, wybranie dowolnego rozwiązania w portalu Azure Marketplace i wybierając obszar roboczy analizy dzienników i konta automatyzacji. Nie masz faktycznie zainstalować rozwiązania, ponieważ link jest tworzony, jak zaznaczono obszaru roboczego analizy dzienników i konta automatyzacji. Po utworzeniu łącza, a następnie można użyć tego obszaru roboczego analizy dzienników i konto automatyzacji dla dowolnego rozwiązania.
+* Po zainstalowaniu rozwiązania w portalu Azure Marketplace, zostanie wyświetlony monit o obszar roboczy i konto usługi Automation. Połączenie między nimi jest tworzony, jeśli już nie są połączone.
+* W przypadku rozwiązań poza portalem Azure Marketplace musisz połączyć obszar roboczy usługi Log Analytics i konto usługi Automation przed instalacją rozwiązania. Można to zrobić, wybierając dowolne rozwiązanie w witrynie Azure Marketplace i wybierając obszar roboczy usługi Log Analytics i konto usługi Automation. Nie masz faktycznie zainstalować rozwiązania, ponieważ łącze jest tworzone, tak szybko, jak obszar roboczy usługi Log Analytics i konto usługi Automation są zaznaczone. Po utworzeniu łącza, a następnie można użyć tego obszaru roboczego usługi Log Analytics i konto usługi Automation dla dowolnego rozwiązania.
 
-### <a name="verifying-the-link-between-a-log-analytics-workspace-and-automation-account"></a>Sprawdzanie połączenia między obszaru roboczego analizy dzienników i konta automatyzacji
-Możesz sprawdzić połączenie między obszaru roboczego analizy dzienników i konto usługi Automatyzacja, korzystając z następującej procedury.
+### <a name="verifying-the-link-between-a-log-analytics-workspace-and-automation-account"></a>Weryfikowanie połączenia między obszaru roboczego usługi Log Analytics i konto usługi Automation
+Można sprawdzić połączenie między obszar roboczy usługi Log Analytics i kontem usługi Automation, korzystając z następującej procedury.
 
-1. Wybierz konto usługi Automatyzacja w portalu Azure.
+1. Wybierz konto usługi Automation w witrynie Azure portal.
 1. Przewiń do **powiązane zasoby** części menu.
-1. Jeśli **obszaru roboczego** ustawienie jest włączone, a następnie to konto jest połączone z obszaru roboczego analizy dzienników. Możesz kliknąć **obszaru roboczego** Aby wyświetlić szczegółowe informacje o obszarze roboczym.
+1. Jeśli **obszaru roboczego** ustawienie jest włączone, a następnie to konto jest połączone z obszarem roboczym usługi Log Analytics. Możesz kliknąć **obszaru roboczego** Aby wyświetlić szczegóły obszaru roboczego.
 
-## <a name="remove-a-management-solution"></a>Usuń rozwiązanie do zarządzania
-Aby usunąć zainstalowane rozwiązanie, zlokalizuj je w [listę zainstalowanych rozwiązań](#list-installed-management-solutions). Kliknij nazwę rozwiązania, aby otworzyć jej stronę podsumowania, a następnie kliknij polecenie **usunąć**.
+## <a name="remove-a-management-solution"></a>Usuń to rozwiązanie do zarządzania
+Aby usunąć rozwiązanie zainstalowany, znajdź go w [listę zainstalowanych rozwiązań](#list-installed-management-solutions). Kliknij nazwę rozwiązania, aby otworzyć jej stronę podsumowania, a następnie kliknij polecenie **Usuń**.
 
 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Pobierz [listę rozwiązań do zarządzania firmy Microsoft](monitoring-solutions-inventory.md).
-* Dowiedz się, jak [tworzenie zapytań](../log-analytics/log-analytics-log-searches.md) do analizowania danych zebranych przez rozwiązania do zarządzania.
+* Pobierz [listę rozwiązań do zarządzania przez firmę Microsoft](monitoring-solutions-inventory.md).
+* Dowiedz się, jak [tworzenia zapytań](../log-analytics/log-analytics-log-search.md) analizować dane zbierane przez rozwiązania do zarządzania.
 

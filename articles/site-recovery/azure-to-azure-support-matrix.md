@@ -5,19 +5,21 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: conceptual
+ms.devlang: na
+ms.topic: article
 ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: f8f529ecc21e8d9ecf149edb8bdf45e8b20dc283
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: ad6bf2db44996684096deb2b351301e450d80249
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241260"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747970"
 ---
-# <a name="support-matrix-for-disaster-recovery-of-azure-vms-between-azure-regions"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych platformy Azure między regionami platformy Azure
+# <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji między regionami platformy Azure do innego
 
 Ten artykuł zawiera podsumowanie obsługiwanych konfiguracji i składników podczas wdrażania odzyskiwania po awarii dzięki replikacji, trybu failover i odzyskiwania maszyn wirtualnych platformy Azure między regionami platformy Azure do innego, za pomocą [usługi Azure Site Recovery](site-recovery-overview.md) usługi.
+
 
 ## <a name="deployment-method-support"></a>Obsługa metody wdrażania
 
@@ -32,10 +34,10 @@ Ten artykuł zawiera podsumowanie obsługiwanych konfiguracji i składników pod
 ## <a name="resource-support"></a>Obsługa zasobów
 
 **Akcja zasobu** | **Szczegóły**
---- | --- | --- 
+--- | --- | ---
 **Przenoszenie magazynu między grupami zasobów** | Nieobsługiwane
 **Przenoszenie zasobów obliczeniowych i magazynu/sieci między grupami zasobów** | Nieobsługiwane.<br/><br/> Po maszyny Wirtualnej jest replikowany, przenieść Maszynę wirtualną lub skojarzone składniki, takie jak storage i sieci, należy wyłączyć i ponownie włączyć replikację dla maszyny Wirtualnej.
-**Replikowanie maszyn wirtualnych platformy Azure z jednej subskrypcji do innej na potrzeby odzyskiwania po awarii** | Obsługiwane w ramach tej samej dzierżawie usługi Azure Active Directory. 
+**Replikowanie maszyn wirtualnych platformy Azure z jednej subskrypcji do innej na potrzeby odzyskiwania po awarii** | Obsługiwane w ramach tej samej dzierżawie usługi Azure Active Directory.
 **Migrowanie maszyn wirtualnych między regionami w ramach klastrów geograficzne obsługiwane (wewnątrz i między subskrypcjami)** | Obsługiwane w ramach tej samej dzierżawie usługi Azure Active Directory.
 **Migrowanie maszyn wirtualnych w tym samym regionie** | Nieobsługiwane.
 
@@ -77,8 +79,8 @@ Usługa Site Recovery obsługuje replikację maszyn wirtualnych platformy Azure 
 **System operacyjny** | **Szczegóły**
 --- | ---
 Windows Server 2016  | Instalacja Server Core, serwer ze środowiskiem pulpitu
-Windows Server 2012 R2 | 
-Windows Server 2012 | 
+Windows Server 2012 R2 |
+Windows Server 2012 |
 Windows Server 2008 R2 | Z dodatkiem SP1 lub nowszym
 
 #### <a name="linux"></a>Linux
@@ -131,7 +133,7 @@ SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.19 | Z dodatkiem 
 SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.18 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.93-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.80-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.138-94.39-default |
 SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.17 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.88-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.126-94.22-default |
 
-## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replikowane maszyny - magazyn systemu/gościa pliku systemu Linux 
+## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replikowane maszyny - magazyn systemu/gościa pliku systemu Linux
 
 * Systemy plików: ext3, ext4, ReiserFS (Suse Linux Enterprise Server tylko), XFS
 * Menedżer woluminów: LVM2
@@ -143,7 +145,7 @@ SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.17 | Z dodatkiem 
 **Ustawienie** | **Pomoc techniczna** | **Szczegóły**
 --- | --- | ---
 Rozmiar | Dowolny rozmiar maszyny Wirtualnej platformy Azure, co najmniej 2 rdzeni procesora CPU i 1 GB pamięci RAM | Sprawdź [rozmiarów maszyn wirtualnych platformy Azure](../virtual-machines/windows/sizes.md).
-Zestawy dostępności | Obsługiwane | Po włączeniu replikacji dla maszyny Wirtualnej platformy Azure z opcjami domyślnymi, zestaw dostępności jest tworzony automatycznie w oparciu o ustawienia regionu źródłowego. Te ustawienia można modyfikować. 
+Zestawy dostępności | Obsługiwane | Po włączeniu replikacji dla maszyny Wirtualnej platformy Azure z opcjami domyślnymi, zestaw dostępności jest tworzony automatycznie w oparciu o ustawienia regionu źródłowego. Te ustawienia można modyfikować.
 Strefy dostępności | Nieobsługiwane | Obecnie nie można replikować maszyny wirtualne wdrożone w strefach dostępności.
 Korzyści z używania hybrydowej (HUB) | Obsługiwane | Jeśli źródłowa maszyna wirtualna ma włączone, licencję Centrum testowania trybu failover lub przełączone w tryb failover maszyny Wirtualnej używa również licencji KONCENTRATORA.
 Zestawy skalowania maszyn wirtualnych | Nieobsługiwane |
@@ -164,14 +166,14 @@ Dodawanie dysku do zreplikowanej maszyny Wirtualnej | Nieobsługiwane.<br/><br/>
 Ta tabela zawiera podsumowanie obsługę dysku, dysk z danymi i tymczasowy dysk systemu operacyjnego maszyny Wirtualnej platformy Azure.
 
 - Ważne jest, aby obserwować limity dysku maszyny Wirtualnej i elementy docelowe [Linux](../virtual-machines/linux/disk-scalability-targets.md) i [Windows](../virtual-machines/windows/disk-scalability-targets.md) maszyn wirtualnych, aby uniknąć problemów z wydajnością.
-- W przypadku wdrożenia przy użyciu ustawień domyślnych, Usługa Site Recovery automatycznie tworzy disks i kont magazynu, w oparciu o ustawienia źródła. 
-- W przypadku dostosowania, upewnij się, że postępuj zgodnie z wytycznymi. 
+- W przypadku wdrożenia przy użyciu ustawień domyślnych, Usługa Site Recovery automatycznie tworzy disks i kont magazynu, w oparciu o ustawienia źródła.
+- W przypadku dostosowania, upewnij się, że postępuj zgodnie z wytycznymi.
 
 **Składnik** | **Pomoc techniczna** | **Szczegóły**
 --- | --- | ---
 Maksymalny rozmiar dysku systemu operacyjnego | 2048 GB | [Dowiedz się więcej](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms) dotyczące dysków maszyn wirtualnych.
 Dysk tymczasowy | Nieobsługiwane | Dysk tymczasowy zawsze jest wykluczony z replikacji.<br/><br/> Nie wszystkie trwałych danych na dysku tymczasowym. [Dowiedz się więcej](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk).
-Maksymalny rozmiar dysku danych | 4095 GB | 
+Maksymalny rozmiar dysku danych | 4095 GB |
 Maksymalna liczba dysków danych | Maksymalnie 64 zgodnie z pomocy technicznej dla określonego rozmiaru maszyny Wirtualnej platformy Azure | [Dowiedz się więcej](../virtual-machines/windows/sizes.md) o rozmiarach maszyn wirtualnych.
 Częstotliwość zmian dysku danych | Maksymalnie 10 MB/s na dysk usługi premium storage. Maksymalnie 2 MB/s na dysk dla magazynu w warstwie standardowa. | Jeśli średni współczynnik zmian na dysku jest stale wyższa niż wartość maksymalna, replikacji nie będzie zapoznać się z nimi.<br/><br/>  Jednak maksymalny po przekroczeniu sporadycznie, replikację można zapoznać się z nimi, ale może zostać wyświetlony punktów odzyskiwania nieco opóźnione.
 Dysk danych — konto magazynu w warstwie standardowa | Obsługiwane |
@@ -182,15 +184,22 @@ Nadmiarowość | Usługi LRS i GRS są obsługiwane.<br/><br/> Magazyn ZRS nie j
 Chłodnej i gorącej magazynu. | Nieobsługiwane | Dyski maszyny Wirtualnej nie są obsługiwane w chłodnej i gorącej magazynu.
 Miejsca do magazynowania | Obsługiwane |         
 Szyfrowanie danych magazynowanych (SSE) | Obsługiwane | Funkcja SSE jest ustawieniem domyślnym dla kont magazynu.   
-Usługa Azure Disk Encryption (ADE) dla Windows | Włączone dla maszyn wirtualnych [szyfrowanie za pomocą aplikacji usługi Azure AD](https://aka.ms/ade-aad-app) są obsługiwane. |
-Usługa Azure Disk Encryption (ADE) dla systemu Linux | Nieobsługiwane |
-Dodawania/usuwania dysku    | Nieobsługiwane | Jeśli dodasz lub Usuń dysk danych na maszynie Wirtualnej, musisz wyłączyć replikacji dla maszyny Wirtualnej, a następnie włączyć ją ponownie.
-Wykluczanie dysku | Nieobsługiwane | Dysk tymczasowy jest domyślnie wykluczony.
-Bezpośrednie miejsca do magazynowania magazynu  | Nieobsługiwane 
-Serwer plików skalowalny w poziomie  | Nieobsługiwane 
+Usługa Azure Disk Encryption (ADE) dla systemu operacyjnego Windows | Włączone dla maszyn wirtualnych [szyfrowanie za pomocą aplikacji usługi Azure AD](https://aka.ms/ade-aad-app) są obsługiwane |
+Usługa Azure Disk Encryption (ADE) dla systemu Linux, systemu operacyjnego | Nieobsługiwane |
+Dodaj lub usuń gorąco dysku | Nieobsługiwane | Dodaj lub Usuń dysk danych na maszynie Wirtualnej, należy wyłączyć replikację i włącz ponownie replikację maszyny Wirtualnej.
+Wykluczanie dysku | Nieobsługiwane|   Dysk tymczasowy jest domyślnie wykluczony.
+Bezpośrednie miejsca do magazynowania magazynu  | Nieobsługiwane|
+Serwer plików skalowalny w poziomie  | Nieobsługiwane|
+LRS | Obsługiwane |
+GRS | Obsługiwane |
+RA-GRS | Obsługiwane |
+ZRS | Nieobsługiwane |  
+Chłodnej i gorącej magazynu. | Nieobsługiwane | Dyski maszyny wirtualnej nie są obsługiwane w chłodnej i gorącej magazynu.
+Usługa Azure Storage zapory sieci wirtualnej  | Yes | Jeśli jest ograniczenie dostępu sieci wirtualnej, dla kont magazynu, upewnij się, że zaufanych usług firmy Microsoft będą miały dostęp do konta magazynu.
+Konta magazynu ogólnego przeznaczenia w wersji 2 (zarówno gorąca i chłodna warstwa) | Nie | Wzrost kosztów transakcji znacznie w porównaniu do ogólnego przeznaczenia w wersji 1 konta magazynu
 
-
-
+>[!IMPORTANT]
+> Upewnij się, że przestrzegasz maszyn wirtualnych dysku cele skalowalności i wydajności dla [Linux](../virtual-machines/linux/disk-scalability-targets.md) lub [Windows](../virtual-machines/windows/disk-scalability-targets.md) maszyn wirtualnych, aby uniknąć problemów z wydajnością. Jeśli stosujesz ustawienia domyślne, Usługa Site Recovery utworzy wymagane dyski i kont magazynu, w oparciu o konfigurację źródła. Dostosowywanie i wybrać własne ustawienia, upewnij się, wykonaj cele dotyczące skalowalności i wydajności dysku dla źródła maszyn wirtualnych.
 
 ## <a name="replicated-machines---networking"></a>Replikowane maszyny — sieci
 **Konfiguracja** | **Pomoc techniczna** | **Szczegóły**
@@ -201,17 +210,18 @@ Wewnętrzny moduł równoważenia obciążenia | Obsługiwane | Kojarzenie modu�
 Publiczny adres IP | Obsługiwane | Kojarzenie istniejącego publicznego adresu IP z karty sieciowej. Lub, tworzenie publicznego adresu IP i skojarz ją z kartą Sieciową za pomocą skryptu usługi Azure Automation w planie odzyskiwania.
 Sieciowa grupa zabezpieczeń na karcie interfejsu Sieciowego | Obsługiwane | Kojarzenie sieciowej grupy zabezpieczeń z kartą Sieciową za pomocą skryptu usługi Azure Automation w planie odzyskiwania.  
 Sieciowa grupa zabezpieczeń w podsieci | Obsługiwane | Kojarzenie sieciowej grupy zabezpieczeń z podsiecią, za pomocą skryptu usługi Azure Automation w planie odzyskiwania.
-Zastrzeżony adres IP (statyczne) | Obsługiwane | Jeśli karta sieciowa źródłowej maszyny Wirtualnej ma statyczny adres IP, a podsieć docelowa ma ten sam adres IP dostępne, jest przypisany do w trybie Failover maszyny Wirtualnej.<br/><br/> Jeśli podsieć docelowa nie ma ten sam adres IP dostępny, jeden z dostępnych adresów IP w podsieci jest zarezerwowany dla maszyny Wirtualnej.<br/><br/> Można również określić stały adres IP i podsieci w **zreplikowane elementy** > **ustawienia** > **obliczenia i sieć**  >  **Interfejsy sieciowe**. 
-Dynamiczny adres IP | Obsługiwane | Karta sieciowa w źródle ma dynamicznych adresów IP kart Sieciowych w trybie Failover maszyny Wirtualnej jest również dynamiczne domyślnie.<br/><br/> Możesz zmodyfikować to stały adres IP w razie potrzeby. 
+Zastrzeżony adres IP (statyczne) | Obsługiwane | Jeśli karta sieciowa źródłowej maszyny Wirtualnej ma statyczny adres IP, a podsieć docelowa ma ten sam adres IP dostępne, jest przypisany do w trybie Failover maszyny Wirtualnej.<br/><br/> Jeśli podsieć docelowa nie ma ten sam adres IP dostępny, jeden z dostępnych adresów IP w podsieci jest zarezerwowany dla maszyny Wirtualnej.<br/><br/> Można również określić stały adres IP i podsieci w **zreplikowane elementy** > **ustawienia** > **obliczenia i sieć**  >  **Interfejsy sieciowe**.
+Dynamiczny adres IP | Obsługiwane | Karta sieciowa w źródle ma dynamicznych adresów IP kart Sieciowych w trybie Failover maszyny Wirtualnej jest również dynamiczne domyślnie.<br/><br/> Możesz zmodyfikować to stały adres IP w razie potrzeby.
 Traffic Manager     | Obsługiwane | Tak, aby ruch jest kierowany do punktu końcowego w regionie źródłowym w regularnych odstępach czasu, a do punktu końcowego w regionie docelowym w przypadku trybu failover, można wstępnie skonfigurować usługi Traffic Manager.
 System DNS platformy Azure | Obsługiwane |
 Niestandardowe DNS  | Obsługiwane |    
-Nieuwierzytelnione serwera proxy | Obsługiwane | [Dowiedz się więcej](site-recovery-azure-to-azure-networking-guidance.md).   
-Uwierzytelnionego serwera proxy | Nieobsługiwane | Nie można replikować maszynę Wirtualną, która używa uwierzytelnionego serwera proxy dla połączenia ruchu wychodzącego     
-Sieci VPN typu lokacja lokacja | Obsługiwane z użyciem lub bez usługi ExpressRoute | Upewnij się, że tras zdefiniowanych przez użytkownika i sieciowymi grupami zabezpieczeń są skonfigurowane w taki sposób, że tak tego ruchu Site Recovery nie jest kierowane do serwera lokalnego. [Dowiedz się więcej](site-recovery-azure-to-azure-networking-guidance.md).
-Połączenia sieć wirtualna-sieć wirtualna | Obsługiwane |[Dowiedz się więcej](site-recovery-azure-to-azure-networking-guidance.md). 
-Punkty końcowe usługi sieci wirtualnej | Obsługiwane | Należy pamiętać, że zapór usługi Azure Storage dla sieci wirtualnych nie są obsługiwane. Ponadto zezwalając na dostęp do określonych sieci wirtualnej platformy Azure dla kont magazynu pamięci podręcznej używane do przechowywania replikowanych danych nie jest obsługiwane.
-Wydajniejsze sieci | Obsługiwane | Przyspieszona sieć musi być włączona na źródłowej maszynie Wirtualnej. [Dowiedz się więcej](azure-vm-disaster-recovery-with-accelerated-networking.md).
+Nieuwierzytelnione serwera Proxy | Obsługiwane | Zapoznaj się [dokument ze wskazówkami dotyczącymi sieci.](site-recovery-azure-to-azure-networking-guidance.md)    
+Uwierzytelnionego serwera Proxy | Nieobsługiwane | Jeśli maszyna wirtualna korzysta z uwierzytelnionego serwera proxy dla połączenia wychodzącego, nie może być replikowane za pomocą usługi Azure Site Recovery.    
+Sieć VPN między lokacjami, z lokalnych (z lub bez usługi ExpressRoute)| Obsługiwane | Upewnij się, że tras zdefiniowanych przez użytkownika i sieciowymi grupami zabezpieczeń są skonfigurowane w taki sposób, ruch odzyskiwania lokacji nie jest kierowany do sieci lokalnej. Zapoznaj się [dokument ze wskazówkami dotyczącymi sieci.](site-recovery-azure-to-azure-networking-guidance.md)  
+Połączenie między sieciami Wirtualnymi | Obsługiwane | Zapoznaj się [dokument ze wskazówkami dotyczącymi sieci.](site-recovery-azure-to-azure-networking-guidance.md)  
+Punkty końcowe usługi sieci wirtualnej | Obsługiwane | Jeśli jest ograniczenie dostępu sieci wirtualnej, dla kont magazynu, upewnij się, że zaufanych usług firmy Microsoft będą miały dostęp do konta magazynu. 
+Accelerated Networking | Obsługiwane | Przyspieszona sieć musi być włączona na źródłowej maszynie Wirtualnej. [Dowiedz się więcej](azure-vm-disaster-recovery-with-accelerated-networking.md).
+
 
 
 ## <a name="next-steps"></a>Kolejne kroki

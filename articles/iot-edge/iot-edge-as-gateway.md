@@ -4,40 +4,41 @@ description: Użyj usługi Azure IoT Edge do utworzenia się przezroczyste, niep
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 09/21/2017
+ms.date: 11/01/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 71fce04eb4f21065184d86301689039294da8b61
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: f5bd60ddbc98f5dd7d88c7a5e3ea745f68789348
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741916"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914077"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Jak używać urządzenia usługi IoT Edge jako bramy
 
-Celem bramy w rozwiązaniach IoT jest specyficzne dla rozwiązania i połączyć łączność urządzeń za pomocą analiz. Usługa Azure IoT Edge może służyć do zaspokojenia potrzeb w przypadku bramy usługi IoT, niezależnie od tego, czy są one związane z analiz krawędziowych łączności lub tożsamości. Wzorce bramy w tym artykule odwoływać się tylko do właściwości łączności między podrzędnymi urządzeniami i tożsamości urządzenia nie jak przetwarzanie danych urządzenia w ramach bramy.
+Bramy w rozwiązaniach IoT zapewnia łączność urządzeń i analiz krawędziowych na urządzeniach IoT, które byłyby tych możliwości. Usługa Azure IoT Edge może służyć do zaspokojenia potrzeb w przypadku bramy usługi IoT, niezależnie od tego, czy są one związane z analiz krawędziowych łączności lub tożsamości. Wzorce bramy w tym artykule odwoływać się tylko do właściwości łączności między podrzędnymi urządzeniami i tożsamości urządzenia nie jak przetwarzanie danych urządzenia w ramach bramy.
 
 ## <a name="patterns"></a>Wzorce
+
 Istnieją trzy wzorce dotyczące korzystania z urządzenia usługi IoT Edge jako bramy: przezroczyste, protokołu, tłumaczenia i tłumaczenie tożsamości:
-* **Przezroczysty** — urządzeń, które teoretycznie można połączyć się z Centrum IoT Hub można zamiast tego łączenie się z urządzeniem bramy. Podrzędne urządzenia mają własne tożsamości usługi IoT Hub i korzystania z protokołów MQTT, AMQP lub HTTP. Brama po prostu przekazuje komunikację między urządzeniami a Centrum IoT Hub. Urządzenia są świadomości, że komunikują się z chmurą za pośrednictwem bramy, a użytkownik interakcji z urządzeniami w usłudze IoT Hub niezależnych od urządzenia bramy pośredniej. W związku z tym brama jest przezroczysty. Zapoznaj się [tworzenie przezroczystej bramy] [ lnk-iot-edge-as-transparent-gateway] instrukcjami, aby uzyskać szczegółowe informacje na temat korzystania z urządzenia usługi IoT Edge rolę przezroczystej bramy.
-* **Protokół tłumaczenia** — znanej również jako wzorzec nieprzezroczyste bramy, urządzeń, które nie obsługują protokołu MQTT, AMQP lub HTTP użyj urządzenia bramy w celu wysyłania danych do usługi IoT Hub. Brama jest inteligentnego zrozumieć ten protokół używany przez urządzenia podrzędnego; jednak jest tylko urządzenie, które ma tożsamości w usłudze IoT Hub. Wszystkie informacje prawdopodobnie pochodzi on z jednego urządzenia i bramy. Podrzędne urządzeń należy osadzić dodatkowe informacje identyfikacyjne w ich wiadomości, jeśli chcesz, aby aplikacje w chmurze przeglądanie informacji o danych w poszczególnych urządzeń. Ponadto usługa IoT Hub w nim elementów podstawowych, takich jak bliźniaczej reprezentacji i metody są dostępne tylko dla urządzenia bramy, a nie podrzędnym urządzenia.
-* **Tłumaczenie tożsamości** — urządzenia, które nie można nawiązać połączenia z Centrum IoT Hub zamiast łączenie się z urządzeniem bramy. Brama zapewnia usługi IoT Hub, tożsamość i protocol tłumaczenia w imieniu urządzeń podrzędnego. Brama jest inteligentne, zrozumieć protokół używany przez urządzenia podrzędnego, potwierdzenie ich tożsamości i tłumaczenie podstawowych usługi IoT Hub. Urządzenia podrzędne są wyświetlane w usłudze IoT Hub jako najwyższej jakości urządzeń za pomocą twins i metody. Użytkownik może wchodzić w interakcje z urządzeniami w usłudze IoT Hub i nie rozpoznaje urządzenie bramy pośredniej.
+* **Przezroczysty** — urządzeń, które teoretycznie można połączyć się z Centrum IoT Hub można zamiast tego łączenie się z urządzeniem bramy. Podrzędne urządzenia mają własne tożsamości usługi IoT Hub i korzystania z protokołów MQTT, AMQP lub HTTP. Brama po prostu przekazuje komunikację między urządzeniami a Centrum IoT Hub. Urządzenia są świadomości, że komunikują się z chmurą za pośrednictwem bramy, a użytkownik interakcji z urządzeniami w usłudze IoT Hub niezależnych od urządzenia bramy pośredniej. W związku z tym brama jest przezroczysty. Zapoznaj się [tworzenie przezroczystej bramy](how-to-create-transparent-gateway.md) dla szczegółowych informacji na temat korzystania z urządzenia usługi IoT Edge rolę przezroczystej bramy.
+* **Protokół tłumaczenia** — tzw. wzorzec nieprzezroczyste bramy, urządzeń, które nie obsługują protokołu MQTT, AMQP lub HTTP można użyć urządzenia bramy do wysyłania danych do usługi IoT Hub w ich imieniu. Brama obsługuje protokół używany przez urządzenia podrzędnego; jednak jest tylko urządzenie, które ma tożsamości w usłudze IoT Hub. Wszystkie informacje prawdopodobnie pochodzi on z jednego urządzenia i bramy. Podrzędne urządzeń należy osadzić dodatkowe informacje identyfikacyjne w ich wiadomości, jeśli chcesz, aby aplikacje w chmurze do analizowania danych w poszczególnych urządzeń. Ponadto usługa IoT Hub w nim elementów podstawowych, takich jak bliźniaczych reprezentacji i metody są dostępne tylko dla urządzenia bramy, a nie podrzędnym urządzenia.
+* **Tłumaczenie tożsamości** — urządzenia, które nie można nawiązać połączenia z Centrum IoT Hub można nawiązać połączenie urządzenia bramy, zamiast tego. Brama zapewnia usługi IoT Hub, tożsamość i protocol tłumaczenia w imieniu urządzeń podrzędnego. Brama jest inteligentne, zrozumieć protokół używany przez urządzenia podrzędnego, potwierdzenie ich tożsamości i tłumaczenie podstawowych usługi IoT Hub. Urządzenia podrzędne są wyświetlane w usłudze IoT Hub jako najwyższej jakości urządzeń za pomocą twins i metody. Użytkownik może wchodzić w interakcje z urządzeniami w usłudze IoT Hub i nie rozpoznaje urządzenie bramy pośredniej.
 
 ![Diagramy wzorców bramy](./media/iot-edge-as-gateway/edge-as-gateway.png)
 
 ## <a name="use-cases"></a>Przypadki zastosowań
 Wszystkie wzorce brama zapewnia następujące korzyści:
-* **Krawędzi analytics** — użycie sztucznej Inteligencji usług lokalnie w celu przetwarzania danych pochodzących z urządzeń podrzędnego bez wysyłania pełnej wierności telemetryczne do chmury. Znajdź i reagować na lokalnie szczegółowe informacje i wysyłać tylko podzbiór danych do usługi IoT Hub. 
+* **Krawędzi analytics** — użycie sztucznej Inteligencji usług lokalnie w celu przetworzenia danych pochodzących z urządzeń podrzędnego bez wysyłania telemetrii pełnej wierności do chmury. Znajdź i reagować na lokalnie szczegółowe informacje i wysyłać tylko podzbiór danych do usługi IoT Hub. 
 * **Izolacja podrzędnym urządzenia** — urządzenie bramy można włączyć osłony dla podrzędnego urządzeniom narażenia na internet. Może się znajdować między siecią OT, który nie ma łączności i sieci IT, który zapewnia dostęp do sieci web. 
-* **Połączenie Multipleksowanie** — wszystkie urządzenia, łączenie z usługą IoT Hub za pomocą usługi IoT Edge urządzenia będzie używać tego samego podstawowego połączenia.
+* **Połączenie Multipleksowanie** — wszystkie urządzenia łączące się z Centrum IoT Hub przy użyciu bramy usługi IoT Edge tego samego podstawowego połączenia.
 * **Wygładzanie ruchu** — urządzenie usługi IoT Edge automatycznie Wdrażaj wykładniczego wycofywania, gdy usługa IoT Hub ogranicza ruch, podczas utrwalania wiadomości lokalnie. Ta korzyść udostępnia rozwiązania odporne na błędy skoków ruchu.
-* **Ograniczona obsługa trybu offline** — urządzenie bramy będą przechowywane lokalnie wiadomości i aktualizacji bliźniaczej reprezentacji, które nie może zostać dostarczona do usługi IoT Hub.
+* **Ograniczona obsługa trybu offline** — urządzenie bramy przechowuje komunikaty i bliźniaczej reprezentacji aktualizacji, które nie może zostać dostarczona do usługi IoT Hub.
 
-Tłumaczenie protokołów ma bramy można również wykonywać analizy krawędziowe, izolacji urządzenia, wygładzanie ruchu i Obsługa trybu offline na urządzeniach istniejących i nowych urządzeń, które są ograniczone zasobów. Wiele istniejących urządzeń eksportują danych, który może obsługiwać wgląd w prowadzoną działalność; jednak nie zostało zaprojektowane z łączność z chmurą na uwadze. Nieprzezroczysty bram Zezwalaj na tych danych można odblokować i wykorzystywane do kompleksowego rozwiązania IoT.
+Bramy protokołu tłumaczenia można również wykonywać analizy krawędziowe, izolacji urządzenia, wygładzanie ruchu i Obsługa trybu offline na urządzeniach istniejących i nowych urządzeń, które są ograniczone zasobów. Wiele istniejących urządzeń eksportują danych, który może obsługiwać wgląd w prowadzoną działalność; jednak nie zostało zaprojektowane z łączność z chmurą na uwadze. Nieprzezroczysty bram Zezwalaj na tych danych można odblokować i wykorzystywane do kompleksowego rozwiązania IoT.
 
-Bramy, który wykonuje translację tożsamości zalety translację protokołu, a dodatkowo umożliwia pełne możliwości zarządzania podrzędnym urządzenia w chmurze. Wszystkie urządzenia z usługi IoT rozwiązania pojawią się w Centrum IoT Hub niezależnie od tego protokołu, przy użyciu ich głosu.
+Bramy, który wykonuje translację tożsamości zalety translację protokołu, a dodatkowo umożliwia pełne możliwości zarządzania podrzędnym urządzenia w chmurze. Wszystkie urządzenia w rozwiązaniu IoT są wyświetlane w Centrum IoT Hub niezależnie od używanego protokołu.
 
 ## <a name="cheat-sheet"></a>Ściągawka
 Poniżej przedstawiono szybki cheat-sheet, zawierająca porównanie podstawowych usługi IoT Hub, korzystając z przezroczyste, bramami nieprzezroczystego (protocol) i serwera proxy.
@@ -52,6 +53,4 @@ Poniżej przedstawiono szybki cheat-sheet, zawierająca porównanie podstawowych
 Udostępnianie tej samej kolejki chmury do urządzenia, który może zawierać maksymalnie 50 wiadomości, korzystając z wzorca nieprzezroczyste bramy (translację protokołu) wszystkich urządzeń, łącząc się za pośrednictwem tej bramy. Wynika, że wzorzec nieprzezroczyste bramy należy używać tylko wtedy, gdy kilka urządzenia nawiązują połączenie za pomocą każdej bramy w terenie, a ruch chmury do urządzenia jest niska.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Użyj urządzenia usługi IoT Edge jako [przezroczystej bramy][lnk-iot-edge-as-transparent-gateway] 
-
-[lnk-iot-edge-as-transparent-gateway]: ./how-to-create-transparent-gateway-linux.md
+Dowiedz się, jak skonfigurować urządzenia usługi IoT Edge jako [przezroczystej bramy](how-to-create-transparent-gateway-linux.md).

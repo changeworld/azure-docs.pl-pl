@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 2a759aea4288af2e90335b47244408d6a537e24b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: fa872c184429e69eb46fb4da112c08ee9432f1c4
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295585"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913992"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Często zadawane pytania i znane problemy związane z zarządzanych tożsamości dla zasobów platformy Azure
 
@@ -29,7 +29,7 @@ ms.locfileid: "44295585"
 ## <a name="frequently-asked-questions-faqs"></a>Często zadawane pytania
 
 > [!NOTE]
-> Zarządzane tożsamości dla zasobów platformy Azure to nowa nazwa usługi, znana wcześniej jako tożsamość usługi zarządzanej (MSI).
+> Tożsamości zarządzane dla zasobów platformy Azure to nowa nazwa usługi znanej wcześniej jako Tożsamość usługi zarządzanej (MSI).
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Zarządzanych tożsamości dla zasobów platformy Azure działa z usługami w chmurze platformy Azure?
 
@@ -60,7 +60,7 @@ Aby uzyskać więcej informacji na temat usługi Azure Instance Metadata Service
 
 Wszystkie dystrybucje systemu Linux obsługiwane przez IaaS platformy Azure może służyć z zarządzanych tożsamości dla zasobów platformy Azure za pośrednictwem punktu końcowego IMDS. 
 
-Uwaga: Zarządzanych tożsamości dla zasobów platformy Azure rozszerzenia maszyny Wirtualnej (zaplanowane do wycofania z użycia w styczniu 2019) obsługuje tylko poniższe dystrybucje systemu Linux:
+Zarządzanych tożsamości dla zasobów platformy Azure rozszerzenia maszyny Wirtualnej (zaplanowane do wycofania z użycia w styczniu 2019) obsługuje tylko poniższe dystrybucje systemu Linux:
 - Stabilny systemu CoreOS
 - CentOS 7.1
 - Red Hat 7.2
@@ -124,16 +124,23 @@ Gdy maszyna wirtualna jest uruchomiona, można usunąć tagu za pomocą następu
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
 
-## <a name="known-issues-with-user-assigned-identities"></a>Znane problemy związane z tożsamości przypisanych przez użytkownika
+### <a name="vm-extension-provisioning-fails"></a>Rozszerzenie maszyny Wirtualnej, inicjowanie obsługi administracyjnej kończy się niepowodzeniem
 
-- przydziały tożsamości przypisanych przez użytkownika są dostępne tylko dla maszyny Wirtualnej i zestawu skalowania maszyn wirtualnych. Ważne: przypisania tożsamości przypisanych przez użytkownika zmieni się w ciągu najbliższych miesięcy.
-- Zduplikowane tożsamości przypisanych przez użytkownika na tym samym VM/VMSS, spowoduje, że VM/VMSS nie powiedzie się. Dotyczy to również tożsamości, które są dodawane z inną wielkością liter. np. MyUserAssignedIdentity i myuserassignedidentity. 
-- Inicjowanie obsługi rozszerzenia maszyny Wirtualnej (zaplanowane do wycofania z użycia w 2019 styczeń) do maszyny Wirtualnej może zakończyć się niepowodzeniem z powodu błędów wyszukiwania DNS. Uruchom ponownie maszynę Wirtualną i spróbuj ponownie. 
-- Dodawanie tożsamości przypisanych przez użytkownika "nieistniejącej" spowoduje, że maszyna wirtualna może się nie powieść. 
-- Tworzenie tożsamości przypisanych przez użytkownika przy użyciu znaków specjalnych (np. podkreślenie) w nazwie, nie jest obsługiwane.
-- nazwy tożsamości przypisanych przez użytkownika są ograniczone do 24 znaków w scenariuszu typu end to end. tożsamości przypisanych przez użytkownika z nazwami dłuższe niż 24 znaki zakończy się niepowodzeniem do przypisania.
+Inicjowanie obsługi rozszerzenia maszyny Wirtualnej może zakończyć się niepowodzeniem z powodu błędów wyszukiwania DNS. Uruchom ponownie maszynę Wirtualną i spróbuj ponownie.
+ 
+> [!NOTE]
+> Rozszerzenie maszyny Wirtualnej jest planowana do wycofania z użycia stycznia 2019 r. Zaleca się, że przeniesiesz przy użyciu punktu końcowego IMDS.
+
+### <a name="transferring-a-subscription-between-azure-ad-directories"></a>Transferowania subskrypcji między katalogami usługi Azure AD
+
+Zarządzanych tożsamości nie zostać zaktualizowana, gdy subskrypcja jest przeniesiony/przeniesione do innego katalogu. Co w efekcie wszelkie istnieje przypisana przez system lub zarządzanych tożsamości przypisanych przez użytkownika zostaną przerwane. 
+
+Jako obejście po przeniesieniu subskrypcji można wyłączyć przypisany systemowo zarządzanych tożsamości i ponowne ich włączenie. Podobnie możesz usunąć i ponownie utworzyć wszelkie przypisane do użytkowników zarządzanych tożsamości. 
+
+## <a name="known-issues-with-user-assigned-managed-identities"></a>Znane problemy związane z zarządzanych tożsamości przypisanych przez użytkownika
+
+- Tworzenie tożsamości zarządzanej przypisanych przez użytkownika przy użyciu znaków specjalnych (np. podkreślenie) w nazwie, nie jest obsługiwane.
+- Nazwy tożsamości przypisanych przez użytkownika są ograniczone do 24 znaków. Jeśli nazwa jest dłuższa niż 24 znaki, tożsamość zakończy się niepowodzeniem, ma być przypisane do zasobów (np. maszyna wirtualna.)
 - W przypadku korzystania z tożsamości zarządzanej rozszerzenia maszyny wirtualnej (zaplanowane do wycofania z użycia w styczniu 2019) obsługiwany limit jest 32 przypisanych do użytkowników zarządzanych tożsamości. Bez rozszerzenia tożsamości zarządzanej maszyny wirtualnej i obsługiwany limit to 512.  
-- Podczas dodawania drugiego tożsamości przypisanych przez użytkownika, identyfikator ClientID, który mogą być niedostępne do żądania tokenów dla rozszerzenia maszyny Wirtualnej. Środki zaradcze Uruchom ponownie zarządzanych tożsamości dla rozszerzenia maszyny Wirtualnej zasoby platformy Azure przy użyciu poniższych poleceń powłoki bash dwa:
- - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
- - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`
-- Gdy maszyna wirtualna ma tożsamości przypisanych przez użytkownika, ale Brak tożsamości przypisanych przez system, portalu, do którego będą wyświetlane w interfejsie użytkownika zarządzanych tożsamości dla zasobów platformy Azure jako wyłączone. Aby włączyć tożsamości przypisanych przez system, należy użyć szablonu usługi Azure Resource Manager, interfejsu wiersza polecenia platformy Azure lub zestawu SDK.
+- Przenoszenie tożsamości zarządzanej użytkownik przypisany do innej grupy zasobów spowoduje, że tożsamości można przerwać. W rezultacie nie będzie do żądania tokenów dla tej tożsamości. 
+- Przeniesienie subskrypcji do innego katalogu spowoduje przerwanie wszelkich istniejących tożsamości zarządzanej przypisanych przez użytkownika. 

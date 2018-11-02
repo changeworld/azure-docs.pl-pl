@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f0a9ac1700d635365ebea0c5966489ed3d2d797b
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 335db0130ae6dd3d11d6592208fdf37e762509e5
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420251"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914825"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje program Azure AD Connect z nowych funkcji i funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich odbiorców.
@@ -48,7 +48,6 @@ Pobierz | [Pobieranie programu Azure AD Connect](http://go.microsoft.com/fwlink/
 
 
 - Zmienione funkcje zapisu atrybutu zapewnienie hostowanej poczta głosowa działa zgodnie z oczekiwaniami.  W niektórych scenariuszach usługi Azure AD zostało zastępowanie atrybutu msExchUcVoicemailSettings podczas zapisu o wartości null.  Usługi Azure AD obecnie nie jest już usunie w środowisku lokalnym wartość tego atrybutu, jeśli nie ustawiono wartości chmury.
-- Rozbudowana obsługa domyślnych zmiany reguł. Teraz otrzymasz powiadomienie, jeśli wprowadzono zmiany do domyślnych reguł i są dostępne opcje, aby naprawić reguły domyślne. 
 - W kreatorze program Azure AD Connect, aby zbadać i zidentyfikować problemy z łącznością z usługą Azure AD, należy dodać diagnostyki. Te funkcje diagnostyki w tej samej można także uruchomić bezpośrednio za pomocą programu Powershell przy użyciu polecenia AdSyncAzureServiceConnectivity Cmdlet Test. 
 - W kreatorze program Azure AD Connect, aby zbadać i zidentyfikować problemy z łącznością z usługi AD, należy dodać diagnostyki. Te funkcje diagnostyki w tej samej można także uruchomić bezpośrednio za pomocą programu Powershell przy użyciu funkcji uruchamiania ConnectivityValidation w module ADConnectivityTools Powershell.  Aby uzyskać więcej informacji, zobacz [co to jest moduł programu PowerShell ADConnectivityTool?](how-to-connect-adconnectivitytools.md)
 - Dodano AD w wersji wstępnej sprawdzanie schematu do hybrydowej usługi Azure Active Directory Join i zapisywania zwrotnego urządzeń 

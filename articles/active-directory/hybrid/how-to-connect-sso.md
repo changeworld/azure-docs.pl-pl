@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4e9292b5932c36d55069ff300bf7c0a99b280fc5
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 8b74cf533c0fe59a0967b7063791df2cfc9a7a77
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054188"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913935"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Usługa Azure Active Directory bezproblemowego logowania jednokrotnego
 
@@ -39,7 +39,7 @@ Bezproblemowe logowanie Jednokrotne może być łączone z albo [synchronizacji 
 
 ## <a name="key-benefits"></a>Najważniejsze korzyści
 
-- *Doskonałe środowisko użytkownika*
+- *Fantastyczne środowisko pracy użytkownika*
   - Użytkownicy zostaną automatycznie wylogowani zarówno lokalnych, jak i aplikacji działających w chmurze.
   - Użytkownicy nie musieli wprowadzać haseł wielokrotnie.
 - *Ułatwia wdrażanie i administrowanie*
@@ -58,7 +58,7 @@ Bezproblemowe logowanie Jednokrotne może być łączone z albo [synchronizacji 
 - Klienci usługi Office 365 Win32 (Outlook, Word, Excel i innych) z wersji 16.0.8730.xxxx lub nowszym są obsługiwane przy użyciu nieinterakcyjnych usługi flow. Do usługi OneDrive, musisz aktywować [OneDrive dyskretnej konfiguracji funkcji](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) dyskretnej środowisko logowania jednokrotnego.
 - Można ją włączyć za pomocą usługi Azure AD Connect.
 - Jest bezpłatną funkcją, które nie potrzebują żadnych płatnej wersji usługi Azure AD z niego korzystać.
-- Jest on obsługiwany w klientów przeglądarki sieci web oraz klientów pakietu Office, które obsługują [nowoczesnego uwierzytelniania](https://aka.ms/modernauthga) na platformach i w przeglądarkach zdolne do uwierzytelniania Kerberos:
+- Jest on obsługiwany w klientów przeglądarki sieci web oraz klientów pakietu Office, które obsługują [nowoczesnego uwierzytelniania](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) na platformach i w przeglądarkach zdolne do uwierzytelniania Kerberos:
 
 | OS\Browser |Internet Explorer|Brzeg|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 

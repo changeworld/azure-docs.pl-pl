@@ -11,23 +11,23 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab, bonova, jovanpop
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 370df2f13ddf9a2cf6613da95bd845ebfd0f253a
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.date: 11/01/2018
+ms.openlocfilehash: 8579eccfade83b3b3a016fc84429a914fbccd584
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868194"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912275"
 ---
-# <a name="configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Konfigurowanie połączenia typu punkt lokacja do wystąpienia usługi Azure SQL Database Managed ze środowiska lokalnego
+# <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Szybki Start: Konfigurowanie połączenia typu punkt lokacja do wystąpienia usługi Azure SQL Database Managed ze środowiska lokalnego
 
 Ten przewodnik Szybki Start pokazano, jak nawiązać połączenie z wystąpieniem zarządzanym usługi Azure SQL Database przy użyciu [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) z komputera klienckiego w środowisku lokalnym za pośrednictwem połączenia punkt lokacja. Aby uzyskać informacje na temat połączeń typu punkt lokacja, zobacz [sieci VPN typu punkt-lokacja — informacje](../vpn-gateway/point-to-site-about.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ten przewodnik Szybki Start:
+Ten przewodnik Szybki start:
 
-- Używa jako jego początkowy punkt zasobów utworzonych w tym przewodniku Szybki Start: [utworzysz wystąpienie zarządzane](sql-database-managed-instance-get-started.md).
+- Wykorzystuje początkowe zasoby utworzone w przewodniku Szybki start: [Tworzenie wystąpienia zarządzanego](sql-database-managed-instance-get-started.md).
 - Wymaga środowiska PowerShell 5.1 i programu Azure PowerShell 5.4.2 lub nowszej komputer kliencki w środowisku lokalnym.
 - Wymaga najnowszej wersji [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) na komputerze klienckim w środowisku lokalnym
 
@@ -104,5 +104,5 @@ Po nawiązaniu połączenia możesz wyświetlić systemowe bazy danych oraz bazy
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać szybki start przedstawiający sposób nawiązywania połączeń z maszyną wirtualną platformy Azure, zobacz [Konfigurowanie połączenia typu punkt lokacja](sql-database-managed-instance-configure-p2s.md)
-- Aby uzyskać omówienie opcji połączenia dla aplikacji, zobacz [łączenie aplikacji z wystąpieniem zarządzanym](sql-database-managed-instance-connect-app.md).
-- Aby przywrócić istniejącą bazę danych programu SQL Server ze środowiska lokalnego do wystąpienia zarządzanego, można użyć [usługi Azure Database Migration Service (DMS) do migracji](../dms/tutorial-sql-server-to-managed-instance.md) do przywrócenia z pliku kopii zapasowej bazy danych lub [T-SQL RESTORE polecenie](sql-database-managed-instance-get-started-restore.md) do przywrócenia z pliku kopii zapasowej bazy danych.
+- Aby uzyskać omówienie opcji połączenia dla aplikacji, zobacz artykuł [Connect your applications to Managed Instance](sql-database-managed-instance-connect-app.md) (Łączenie aplikacji z wystąpieniem zarządzanym).
+- Aby przywrócić istniejącą bazę danych programu SQL ze środowiska lokalnego do wystąpienia zarządzanego, możesz użyć [usługi Azure Database Migration Service (DMS) na potrzeby migracji](../dms/tutorial-sql-server-to-managed-instance.md) lub [polecenia T-SQL RESTORE](sql-database-managed-instance-get-started-restore.md) w celu przywrócenia z pliku kopii zapasowej bazy danych.

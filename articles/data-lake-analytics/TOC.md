@@ -64,6 +64,7 @@
 
 ## Ciągła integracja i ciągłe wdrażanie
 ### [Omówienie](data-lake-analytics-cicd-overview.md)
+### [Rejestrowanie zestawu](data-lake-analytics-cicd-manage-assemblies.md)
 ### [Konfigurowanie testów](data-lake-analytics-cicd-test.md)
 ### [Zestaw U-SQL SDK](data-lake-analytics-u-sql-sdk.md)
 

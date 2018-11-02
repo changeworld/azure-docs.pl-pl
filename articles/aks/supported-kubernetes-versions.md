@@ -27,11 +27,11 @@ AKS obsługuje cztery wersje pomocnicze platformy kubernetes:
 - Bieżąca wersja pomocnicza, która jest ogólnie nadrzędnego (n)
 - Trzy poprzednie wersje pomocnicze. Wszystkie obsługiwane wersje pomocnicze obsługuje również dwa stabilne poprawki.
 
-Na przykład, jeśli wprowadzono AKS *1.11.x* obecnie Pomoc techniczna jest świadczona również dla *1.10.a* + *1.10.b*, *1.9.c* + *1.9d*, *1.8.e* + *1.8F* (gdzie wersji własną literą poprawki są dwie kompilacje najnowszy stabilny).
+Na przykład, jeśli wprowadzono AKS *1.11.x* obecnie Pomoc techniczna jest świadczona również dla *1.10.a* + *1.10.b*, *1.9.c* + *1.9d*, *1.8.e*\ + *1.8F* (gdzie wersji własną literą poprawki są dwie kompilacje najnowszy stabilny).
 
 Jeśli wprowadzono nową wersję pomocniczą najstarsze pomocniczej wersji i poprawki wersji obsługiwane zostały wycofane. 15 dni przed wprowadzeniem nowych wersji pomocniczej i wycofanie mającej się ukazać wersji jest podana za pośrednictwem kanałów aktualizacji usługi Azure. W przykładzie powyżej gdzie *1.11.x* jest zwolniony, wycofane wersje są *1.7.g* + *1.7.h*.
 
-Podczas wdrażania klastra usługi AKS w portalu lub przy użyciu wiersza polecenia platformy Azure, klaster ma zawsze wartość n-1 wersji pomocniczej i najnowszych poprawek. Na przykład, jeśli obsługuje AKS *1.11.x*, *1.10.a* + *1.10.b*, *1.9.c* + *1.9 d*, *1.8.e* + *1.8F*, jest wersja domyślna dla nowych klastrów *1.10.b*.
+Podczas wdrażania klastra usługi AKS w portalu lub przy użyciu wiersza polecenia platformy Azure, klaster ma zawsze wartość n-1 wersji pomocniczej i najnowszych poprawek. Na przykład, jeśli obsługuje AKS *1.11.x*, *1.10.a* + *1.10.b*, *1.9.c* + *1.9 d*, *1.8.e*\ + *1.8F*, jest wersja domyślna dla nowych klastrów *1.10.b*.
 
 ## <a name="list-currently-supported-versions"></a>Lista aktualnie obsługiwane wersje
 
@@ -62,7 +62,7 @@ KubernetesVersion    Upgrades
 
 Jeśli użytkownik pracuje na *n-4* wersji, są z poziomu usługi. Jeśli uaktualnienie z wersji n-4 do n-3 zakończy się powodzeniem, jesteś w poziomu usługi. Na przykład:
 
-- W przypadku obsługiwanych wersji usługi AKS *1.10.a* + *1.10.b*, *1.9.c* + *1.9d*,  *1.8.e* + *1.8F* i znajdują się na *1.7.g* lub *1.7.h*, znajdą się poza poziomu usługi.
+- W przypadku obsługiwanych wersji usługi AKS *1.10.a* + *1.10.b*, *1.9.c* + *1.9d*,  *1.8.e*\ + *1.8F* i znajdują się na *1.7.g* lub *1.7.h*, znajdą się poza poziomu usługi.
 - Jeśli uaktualnienie z *1.7.g* lub *1.7.h* do *1.8.e* lub *1.8.f* zakończy się powodzeniem, się ponownie w celu poziomu usługi.
 
 Uaktualnienia do wersji starszej niż *n-4* nie są obsługiwane. W takich przypadkach firma Microsoft zaleca klientom tworzenie nowych klastrów usługi AKS i ponownie wdrożyć swoje obciążenia.

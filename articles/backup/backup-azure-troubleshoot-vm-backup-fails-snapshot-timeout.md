@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 55e4195e2666aed371a5a5664b331184afcf5e36
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 25c9cbcaf852aa07bcbe4f71bf69de366d4dbb87
+ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420969"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50754039"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z awarii usługi Azure Backup: problemy z agentem lub rozszerzenia
 
@@ -48,7 +48,6 @@ Po zarejestrowaniu i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa A
 
 **Kod błędu:**: UserErrorRpCollectionLimitReached <br>
 **Komunikat o błędzie**: osiągnęła maksymalny limit kolekcji punktów przywracania. <br>
-Opis:  
 * Ten problem może wystąpić, jeśli jest zablokowana w grupie zasobów punktu odzyskiwania, zapobiegając automatycznego czyszczenia punktu odzyskiwania.
 * Ten problem może również się zdarzyć, jeśli wiele kopii zapasowych są wyzwalane na dzień. Obecnie firma Microsoft zaleca, aby tylko jedna kopia zapasowa dziennie jako natychmiastowe RPs są przechowywane przez 7 dni, a tylko 18 błyskawiczny RPs może być skojarzony z maszyną Wirtualną, w dowolnym momencie. <br>
 
@@ -95,6 +94,21 @@ Po zarejestrowaniu i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa A
 **Przyczyna 4: [nie można pobrać stanu migawki lub migawka nie może być przyjęty.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **Przyczyna 5: [rozszerzenie kopii zapasowej nie powiedzie się zaktualizować lub załadować](#the-backup-extension-fails-to-update-or-load)**  
 **Przyczyna 6: [usługi Backup nie ma uprawnień do usunięcia starych punktów przywracania z powodu blokady grupy zasobów](#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)**
+
+## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-1023gb"></a>UserErrorUnsupportedDiskSize — obecnie usługa Azure Backup nie obsługuje dysków o rozmiarach większych niż 1023GB
+
+**Kod błędu:**: UserErrorUnsupportedDiskSize <br>
+**Komunikat o błędzie**: obecnie usługi Azure Backup nie obsługuje dysków o rozmiarach większych niż 1023 GB <br>
+
+Operację tworzenia kopii zapasowej może zakończyć się niepowodzeniem, podczas wykonywania kopii zapasowej maszyny Wirtualnej o rozmiarze dysku jest większy niż 1023GB, ponieważ magazynu nie zostanie uaktualniona do stosu kopii zapasowej maszyny Wirtualnej platformy Azure w wersji 2. Uaktualnienie do kopii zapasowych maszyn wirtualnych platformy Azure stack, podane w wersji 2 obsługuje do 4 TB. Przejrzyj te [korzyści](backup-upgrade-to-vm-backup-stack-v2.md), [zagadnienia](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade), a następnie przejść do uaktualnienia, wykonując te [instrukcje](backup-upgrade-to-vm-backup-stack-v2.md#upgrade).  
+
+## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported — obecnie usługa Azure Backup nie obsługuje dysków SSD w warstwie standardowa
+
+**Kod błędu:**: UserErrorStandardSSDNotSupported <br>
+**Komunikat o błędzie**: obecnie usługi Azure Backup nie obsługuje dysków SSD w warstwie standardowa <br>
+
+Obecnie usługa Azure Backup obsługuje dyski SSD w warstwie standardowa tylko w przypadku magazynów, które zostaną uaktualnione do stosu kopii zapasowych maszyn wirtualnych platformy Azure w wersji 2. Przejrzyj te [korzyści](backup-upgrade-to-vm-backup-stack-v2.md), [zagadnienia](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade), a następnie przejść do uaktualnienia, wykonując te [instrukcje](backup-upgrade-to-vm-backup-stack-v2.md#upgrade).
+
 
 ## <a name="causes-and-solutions"></a>Przyczyny i potencjalne rozwiązania
 
@@ -208,7 +222,7 @@ Wykonanie tych kroków powoduje, że rozszerzenie, należy ponownie zainstalowa�
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Usuń blokadę z grupy zasobów punktu odzyskiwania
 1. Zaloguj się w witrynie [Azure Portal](http://portal.azure.com/).
-2. Przejdź do **opcja wszystkie zasoby**, wybierz grupę zasobów kolekcji punktów przywracania w następującym formacie AzureBackupRG_<Geo>_<number>.
+2. Przejdź do **opcja wszystkie zasoby**, wybierz grupę zasobów kolekcji punktów przywracania w następującym formacie AzureBackupRG_`<Geo>`_`<number>`.
 3. W **ustawienia** zaznacz **blokad** do wyświetlenia blokad.
 4. Aby usunąć blokadę, wybierz wielokropek, a następnie kliknij przycisk **Usuń**.
 
@@ -217,17 +231,17 @@ Wykonanie tych kroków powoduje, że rozszerzenie, należy ponownie zainstalowa�
 ### <a name="clean_up_restore_point_collection"></a> Wyczyścić kolekcję punktów przywracania
 Po usunięciu blokady, punkty przywracania zostały wyczyszczone. Aby wyczyścić punktów przywracania, wykonaj dowolną z metod:<br>
 * [Wyczyścić kolekcję punktów przywracania przez uruchamianie zapytań ad-hoc kopii zapasowej.](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
-* [Wyczyścić kolekcję punktów przywracania z portalu, utworzone przez usługę backup](#clean-up-restore-point-collection-from-portal-created-by-backup-service)<br>
+* [Czyszczenie Przywracanie punktu kolekcji z witryny Azure portal](#clean-up-restore-point-collection-from-azure-portal)<br>
 
 #### <a name="clean-up-restore-point-collection-by-running-ad-hoc-backup"></a>Wyczyścić kolekcję punktów przywracania przez uruchamianie zapytań ad-hoc kopii zapasowej.
 Po usunięciu blokady, wyzwalanie ad-hoc/ręcznego tworzenia kopii zapasowej. Pozwoli to zagwarantować, że punkty przywracania są automatycznie czyszczone. Ta operacja ad-hoc/ręcznie zakończyć się niepowodzeniem po raz pierwszy; oczekiwane jednak zapewni automatycznego czyszczenia zamiast ręczne usuwanie punktów przywracania. Po oczyszczaniu następnej zaplanowanej kopii zapasowej powinna zakończyć się pomyślnie.
 
 > [!NOTE]
-    > Automatyczne oczyszczanie nastąpi po kilku godzinach wyzwolenie tworzenia kopii zapasowej ad-hoc/ręczne. Jeśli zaplanowane tworzenie kopii zapasowej nadal kończy się niepowodzeniem, a następnie spróbuj ręcznie usunąć kolekcję punktów przywracania wykonując kroki wymienione [tutaj](#clean-up-restore-point-collection-from-portal-created-by-backup-service).
+    > Automatyczne oczyszczanie nastąpi po kilku godzinach wyzwolenie tworzenia kopii zapasowej ad-hoc/ręczne. Jeśli zaplanowane tworzenie kopii zapasowej nadal kończy się niepowodzeniem, a następnie spróbuj ręcznie usunąć kolekcję punktów przywracania wykonując kroki wymienione [tutaj](#clean-up-restore-point-collection-from-azure-portal).
 
-#### <a name="clean-up-restore-point-collection-from-portal-created-by-backup-service"></a>Wyczyścić kolekcję punktów przywracania z portalu, utworzone przez usługę backup<br>
+#### <a name="clean-up-restore-point-collection-from-azure-portal"></a>Czyszczenie Przywracanie punktu kolekcji z witryny Azure portal <br>
 
-Aby ręcznie wyczyścić przywracania punkty kolekcji, które nie są usuwane z powodu blokady na grupę zasobów, następujące czynności:
+Ręcznie wyczyścić przywracania wskazuje kolekcji, które nie są usuwane z powodu blokady na grupę zasobów, spróbuj wykonać następujące kroki:
 1. Zaloguj się w witrynie [Azure Portal](http://portal.azure.com/).
 2. Na **Centrum** menu, kliknij przycisk **wszystkie zasoby**, wybierz grupę zasobów o następującym formacie AzureBackupRG_`<Geo>`_`<number>` gdzie znajduje się maszyna wirtualna.
 

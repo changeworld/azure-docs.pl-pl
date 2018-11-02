@@ -1,6 +1,6 @@
 ---
 title: Widoki w rozwiązaniach do zarządzania | Dokumentacja firmy Microsoft
-description: 'Rozwiązania do zarządzania zwykle zawiera co najmniej jeden widok do wizualizacji danych.  W tym artykule opisano sposób eksportowania widoku utworzone przez projektanta widoku i dołączyć go w rozwiązaniu do zarządzania. '
+description: 'Rozwiązania do zarządzania zwykle zawierają widoki co najmniej do wizualizacji danych.  W tym artykule opisano, jak wyeksportować widok utworzone przez projektanta widoku i uwzględnić go w rozwiązaniu do zarządzania. '
 services: monitoring
 documentationcenter: ''
 author: bwren
@@ -14,44 +14,44 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: b4f54358f4bc1db973d6fe7163411e3a313c3cf4
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 27bec2b7fa53e7564841e6f89be7e4d81a9b9f1a
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887867"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913040"
 ---
 # <a name="views-in-management-solutions-preview"></a>Widoki w rozwiązaniach do zarządzania (wersja zapoznawcza)
 > [!NOTE]
-> To jest wstępna dokumentacji do tworzenia rozwiązań do zarządzania, które są obecnie w wersji zapoznawczej. Żadnego schematu opisanych poniżej może ulec zmianie.    
+> Jest to wstępne dokumentację dotyczącą tworzenia rozwiązań do zarządzania, które są obecnie dostępne w wersji zapoznawczej. Żadnego schematu opisanych poniżej ulec zmianie.    
 
 
-[Rozwiązania do zarządzania](monitoring-solutions.md) zwykle zawiera co najmniej jeden widok do wizualizacji danych.  W tym artykule opisano sposób eksportowania Widok utworzony przez [Widok projektanta](../log-analytics/log-analytics-view-designer.md) i uwzględnić go w rozwiązaniu do zarządzania.  
+[Rozwiązania do zarządzania](monitoring-solutions.md) zwykle zawierają jeden lub więcej widoków, które umożliwiają wizualizację danych.  W tym artykule opisano sposób eksportowania widoku, który został utworzony przez [Projektant widoków](../log-analytics/log-analytics-view-designer.md) i dołączyć go w rozwiązaniu do zarządzania.  
 
 > [!NOTE]
-> Przykłady w tym artykule, użyj parametrów i zmiennych, które są wymagane ani wspólne dla rozwiązań do zarządzania i opisano w [projektowanie i tworzenie rozwiązania do zarządzania na platformie Azure](monitoring-solutions-creating.md)
+> Przykłady w tym artykule użyć parametrów i zmiennych, które są wymagane lub wspólne dla rozwiązania do zarządzania i opisem w artykule [projektowanie i tworzenie rozwiązania do zarządzania na platformie Azure](monitoring-solutions-creating.md)
 >
 >
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-W tym artykule przyjęto założenie, że znasz już jak [tworzenie rozwiązania do zarządzania](monitoring-solutions-creating.md) i struktura pliku rozwiązania.
+W tym artykule założono, że znasz już sposób [utworzyć to rozwiązanie do zarządzania](monitoring-solutions-creating.md) i struktury pliku rozwiązania.
 
 ## <a name="overview"></a>Przegląd
-Aby uwzględnić widoku w rozwiązaniu do zarządzania, należy utworzyć **zasobów** dla niego w [plik rozwiązania](monitoring-solutions-creating.md).  Dane JSON, które opisano konfigurację szczegółowy widok jest zwykle złożone jednak i nie coś autora rozwiązania typowych będzie można ręcznie utworzyć.  Najczęściej spotykaną metodą jest utworzenie przy użyciu widoku [Widok projektanta](../log-analytics/log-analytics-view-designer.md), go wyeksportować, a następnie dodaj konfigurację szczegółowe do rozwiązania.
+Aby uwzględnić w widoku w rozwiązaniu do zarządzania, należy utworzyć **zasobów** dla niego w [plik rozwiązania](monitoring-solutions-creating.md).  Za pomocą pliku JSON opisujące szczegółową konfigurację tego widoku jest zwykle złożone jednak i nie mielibyśmy mieć czegoś Autor typowe rozwiązanie będzie można tworzyć ręcznie.  Najczęściej spotykaną metodą jest utworzenie, przy użyciu widoku [Projektant widoków](../log-analytics/log-analytics-view-designer.md), wyeksportuj go, a następnie dodaj jego szczegółową konfigurację do rozwiązania.
 
-Poniżej znajdują się podstawowe kroki, aby dodać widok do rozwiązania.  Każdy krok jest opisany bardziej szczegółowo w poniższych sekcjach.
+Poniżej znajdują się podstawowe kroki, aby dodać widok do rozwiązania.  Każdy etap jest opisany bardziej szczegółowo w poniższych sekcjach.
 
 1. Widok można wyeksportować do pliku.
 2. Utwórz zasób widoku w rozwiązaniu.
 3. Dodawanie szczegółów widoku.
 
-## <a name="export-the-view-to-a-file"></a>Wyeksportuj do pliku widoku
-Postępuj zgodnie z instrukcjami w [Projektant widoków analizy dziennika](../log-analytics/log-analytics-view-designer.md) można wyeksportować do pliku widoku.  Wyeksportowany plik zostanie w formacie JSON o takim samym [elementów jako plik rozwiązania](monitoring-solutions-solution-file.md).  
+## <a name="export-the-view-to-a-file"></a>Eksportuj widok do pliku
+Postępuj zgodnie z instrukcjami w artykule [Projektant widoków programu Log Analytics](../log-analytics/log-analytics-view-designer.md) można wyeksportować w widoku do pliku.  Będzie wyeksportowany plik w formacie JSON z takimi samymi [elementy jako plik rozwiązania](monitoring-solutions-solution-file.md).  
 
-**Zasobów** element pliku widoku będzie miał zasobu o typie **Microsoft.OperationalInsights/workspaces** reprezentujący obszaru roboczego analizy dzienników.  Ten element będzie mieć podelement typu **widoków** który reprezentuje widok i zawiera szczegółowe konfiguracji.  Zostanie Kopiuj szczegóły tego elementu, a następnie skopiować go do rozwiązania.
+**Zasobów** element pliku widok będzie mieć zasobu o typie **Microsoft.OperationalInsights/workspaces** reprezentujący obszar roboczy usługi Log Analytics.  Ten element będzie mieć podelement typu **widoków** który reprezentuje widok oraz jego szczegółowa konfiguracja zawiera.  Będzie kopiować szczegóły tego elementu, a następnie skopiuj go do rozwiązania.
 
 ## <a name="create-the-view-resource-in-the-solution"></a>Utwórz zasób widoku w rozwiązaniu
-Dodaj następujący zasób widoku do **zasobów** element pliku rozwiązania.  Używa zmiennych, które są opisane poniżej, że należy również dodać.  Należy pamiętać, że **pulpitu nawigacyjnego** i **OverviewTile** właściwości symboli zastępczych, które spowoduje zastąpienie odpowiednie właściwości z widoku eksportowanego pliku.
+Dodaj następujący zasób widok do **zasobów** elementu z pliku rozwiązania.  Ta metoda korzysta zmiennych, które zostały opisane poniżej, musisz również dodać.  Należy pamiętać, że **pulpit nawigacyjny** i **OverviewTile** właściwości symboli zastępczych, które zostaną zastąpione za pomocą odpowiednich właściwości z pliku wyeksportowanego widoku.
 
     {
         "apiVersion": "[variables('LogAnalyticsApiVersion')]",
@@ -73,39 +73,39 @@ Dodaj następujący zasób widoku do **zasobów** element pliku rozwiązania.  U
         }
     }
 
-Dodaj następujące zmienne do elementu zmienne pliku rozwiązania i Zastąp wartości jak w przypadku rozwiązania.
+Dodaj następujące zmienne do elementu zmienne plik rozwiązania i Zastąp wartości do tych, dla Twojego rozwiązania.
 
     "LogAnalyticsApiVersion": "<api-version>",
     "ViewAuthor": "Your name."
     "ViewDescription": "Optional description of the view."
     "ViewName": "Provide a name for the view here."
 
-Należy pamiętać, że można skopiować cały widok zasobów z pliku wyeksportowanego widoku, ale musisz wprowadzić następujące zmiany, aby działał w rozwiązaniu.  
+Należy pamiętać, że można skopiować zasobu całego widoku z pliku wyeksportowanego widoku, ale należy wprowadzić następujące zmiany, aby działał w rozwiązaniu.  
 
 * **Typu** widoku zasobu musi zostać zmienione z **widoków** do **Microsoft.OperationalInsights/workspaces**.
-* **Nazwa** właściwości dla zasobu widoku musi zostać zmienione, aby zawierał on nazwę obszaru roboczego.
-* Zależność od obszaru roboczego musi można usunąć, ponieważ zasób obszaru roboczego nie jest zdefiniowany w rozwiązaniu.
-* **Nazwa wyświetlana** właściwość musi zostać dodany do widoku.  **Identyfikator**, **nazwa**, i **DisplayName** musi wszystkie zgodne.
-* Nazwy parametrów, musisz zmienić odpowiadające wymagany zestaw parametrów.
-* Zmienne należy określić w rozwiązaniu i używane w odpowiednie właściwości.
+* **Nazwa** właściwości zasobu widoku musi zostać zmienione, aby zawierał on nazwę obszaru roboczego.
+* Zależność od obszaru roboczego musi można usunąć, ponieważ zasób obszaru roboczego nie jest zdefiniowane w rozwiązaniu.
+* **DisplayName** właściwość musi zostać dodane do widoku.  **Identyfikator**, **nazwa**, i **DisplayName** musi wszystkie dopasowania.
+* Można zmienić nazw parametrów, aby dopasować żądany zestaw parametrów.
+* Zmienne powinny zdefiniowane w rozwiązaniu i używane w odpowiednich właściwości.
 
-### <a name="log-analytics-api-version"></a>Wersja interfejsu API analizy dzienników
-Wszystkie zasoby analizy dzienników zdefiniowane w szablonie usługi Resource Manager ma właściwości **apiVersion** określający wersję interfejsu API zasobu należy użyć.  Ta wersja jest różne dla widoków w zapytaniach używających [starsza wersja i język zapytań uaktualnionego](../log-analytics/log-analytics-log-search-upgrade.md).  
+### <a name="log-analytics-api-version"></a>Wersja interfejsu API analizy dziennika
+Wszystkie zasoby usługi Log Analytics, zdefiniowane w szablonie usługi Resource Manager mają właściwość **apiVersion** definiujący wersję interfejsu API, należy użyć zasobu.  Ta wersja jest inny dla widoków z zapytań, które używają [starsza wersja i język zapytań uaktualnionego](../log-analytics/log-analytics-log-search.md).  
 
- Poniższa tabela zawiera wersje interfejsu API analizy dzienników dla widoków w starszej wersji, jak i uaktualnionych obszarów roboczych: 
+ W poniższej tabeli określono wersji interfejsu API usługi Log Analytics dla widoków w starszej wersji, jak i uaktualnionych obszarów roboczych: 
 
-| Wersją z obszaru roboczego | Wersja interfejsu API | Zapytanie |
+| Wersja z obszaru roboczego | Wersja interfejsu API | Zapytanie |
 |:---|:---|:---|
-| V1 (starsze)   | 2015-11-01-preview | Format starszej wersji.<br> Przykład: Wpisz = EventLevelName zdarzenie błędu =  |
-| v2 (uaktualnienia) | 2015-11-01-preview | Format starszej wersji.  Konwertowana na format uaktualniony podczas instalacji.<br> Przykład: Wpisz = EventLevelName zdarzenie błędu =<br>Przekonwertować: zdarzenie &#124; gdzie EventLevelName == "Error"  |
-| v2 (uaktualnienia) | 2017-03-03-preview | Uaktualnij format. <br>Przykład: Zdarzenie &#124; gdzie EventLevelName == "Error"  |
+| Wersja 1 (starsza wersja)   | 2015-11-01-preview | Format starszej wersji.<br> Przykład: Wpisz = EventLevelName zdarzenia = błąd  |
+| (uaktualniony) w wersji 2 | 2015-11-01-preview | Format starszej wersji.  Konwertowanie na format uaktualnionego związane z instalacją.<br> Przykład: Wpisz = EventLevelName zdarzenia = błąd<br>Przekonwertowane na: zdarzenie &#124; gdzie EventLevelName == "Error"  |
+| (uaktualniony) w wersji 2 | 2017-03-03-preview | Uaktualnić format. <br>Przykład: Event &#124; gdzie EventLevelName == "Error"  |
 
 
-## <a name="add-the-view-details"></a>Dodawanie widoku szczegółów
-Przeglądanie zasobu w widoku wyeksportowanego pliku będzie zawierać dwa elementy w **właściwości** elementu o nazwie **pulpitu nawigacyjnego** i **OverviewTile** zawierających szczegółowe konfiguracji widoku.  Skopiuj następujące dwa elementy i ich zawartość do **właściwości** elementu zasobu widoku w pliku rozwiązania.
+## <a name="add-the-view-details"></a>Dodawanie szczegółów widoku
+Wyświetl zasób w pliku wyeksportowanego widoku będzie zawierać dwa elementy w **właściwości** elementu o nazwie **pulpit nawigacyjny** i **OverviewTile** zawierających szczegółowe Konfiguracja tego widoku.  Skopiuj te dwa elementy i ich zawartość do **właściwości** elementu Wyświetl zasób w pliku rozwiązania.
 
 ## <a name="example"></a>Przykład
-Na przykład następujący przykład przedstawia plik prostym rozwiązaniem z widoku.  Wielokropek (...) są wyświetlane dla **pulpitu nawigacyjnego** i **OverviewTile** zawartość ze względów miejsca.
+Na przykład poniższy przykład pokazuje plik prostego rozwiązania przy użyciu widoku.  Wielokropek (...) są wyświetlane dla **pulpit nawigacyjny** i **OverviewTile** zawartość ze względów miejsca.
 
     {
         "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -189,4 +189,4 @@ Na przykład następujący przykład przedstawia plik prostym rozwiązaniem z wi
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się, szczegółowe informacje dotyczące tworzenia [rozwiązań do zarządzania](monitoring-solutions-creating.md).
-* Obejmują [elementu runbook usługi Automatyzacja w ramach rozwiązania do zarządzania](monitoring-solutions-resources-automation.md).
+* Obejmują [elementów runbook usługi Automation w ramach rozwiązania do zarządzania](monitoring-solutions-resources-automation.md).

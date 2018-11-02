@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: f55f81d1e28a7626dfe00f6bea349bf74e3a1d24
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 8cca69109f07cbcffe2a5d796262e51fc9233cc5
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092778"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914692"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Jak dołączyć Azure Monitor wykrywający sytuacje, maszyny wirtualne (wersja zapoznawcza)
 W tym artykule opisano sposób konfigurowania usługi Azure Monitor dla maszyn wirtualnych w celu monitorowania kondycji systemu operacyjnego w maszynach wirtualnych platformy Azure oraz wykrywanie i mapowanie zależności aplikacji, które może być hostowana na nich.  
@@ -355,12 +355,12 @@ Poniższa tabela zawiera listę definicji zasad, pod warunkiem.
 |Name (Nazwa) |Opis |Typ |  
 |-----|------------|-----|  
 |[Wersja zapoznawcza]: Włączanie usługi Azure Monitor dla maszyn wirtualnych |Włączanie usługi Azure Monitor dla maszyn wirtualnych (VM) z określonego zakresu (grupy zarządzania, subskrypcji lub grupy zasobów). Pobiera obszar roboczy usługi Log Analytics jako parametr. |Inicjatywa |  
-|[Wersja zapoznawcza]: Wdrażanie inspekcji do agenta zależności — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście |Raporty maszyn wirtualnych z CLS jako niezgodne Jeśli obraz maszyny Wirtualnej (OS) nie jest na liście zdefiniowane i agenta nie jest zainstalowany. |Zasady |  
-|[Wersja zapoznawcza]: wdrożenie agenta inspekcji Log Analytics — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście |Raporty maszyn wirtualnych z CLS jako niezgodne Jeśli obraz maszyny Wirtualnej (OS) nie jest na liście zdefiniowane i agenta nie jest zainstalowany. |Zasady |  
-|[Wersja zapoznawcza]: Wdrażanie agenta zależności maszyn wirtualnych systemu Linux |Wdróż agenta zależności maszyn wirtualnych systemu Linux, jeśli obraz maszyny Wirtualnej (OS) jest na liście zdefiniowane i nie jest zainstalowany agent. |Zasady |  
-|[Wersja zapoznawcza]: Wdrażanie agenta zależności dla maszyn wirtualnych Windows |Wdróż agenta zależności Windows VMs, jeśli obraz maszyny Wirtualnej (OS) jest na liście zdefiniowane i nie jest zainstalowany agent. |Zasady |  
-|[Wersja zapoznawcza]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux |Wdróż Log Analytics Agent maszyn wirtualnych systemu Linux, jeśli obraz maszyny Wirtualnej (OS) jest na liście zdefiniowane i nie jest zainstalowany agent. |Zasady |  
-|[Wersja zapoznawcza]: Wdrażanie Log Analytics Agent for Windows VMs |Wdróż Log Analytics Agent dla Windows maszyn wirtualnych, jeśli obraz maszyny Wirtualnej (OS) jest na liście zdefiniowane i nie jest zainstalowany agent. |Zasady |  
+|[Wersja zapoznawcza]: Wdrażanie inspekcji do agenta zależności — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście |Zgłasza maszyny wirtualne jako niezgodne, jeśli obrazu maszyny wirtualnej (systemu operacyjnego) nie ma na zdefiniowanej liście i agent nie jest zainstalowany. |Zasady |  
+|[Wersja zapoznawcza]: wdrożenie agenta inspekcji Log Analytics — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście |Zgłasza maszyny wirtualne jako niezgodne, jeśli obrazu maszyny wirtualnej (systemu operacyjnego) nie ma na zdefiniowanej liście i agent nie jest zainstalowany. |Zasady |  
+|[Wersja zapoznawcza]: Wdrażanie agenta zależności maszyn wirtualnych systemu Linux |Wdróż agenta zależności dla maszyn wirtualnych z systemem Linux, jeśli obrazu maszyny wirtualnej (systemu operacyjnego) nie ma na zdefiniowanej liście i agent nie jest zainstalowany. |Zasady |  
+|[Wersja zapoznawcza]: Wdrażanie agenta zależności dla maszyn wirtualnych Windows |Wdróż agenta zależności dla maszyn wirtualnych z systemem Windows, jeśli obrazu maszyny wirtualnej (systemu operacyjnego) nie ma na zdefiniowanej liście i agent nie jest zainstalowany. |Zasady |  
+|[Wersja zapoznawcza]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux |Wdróż agenta usługi Log Analytics dla maszyn wirtualnych z systemem Linux, jeśli obrazu maszyny wirtualnej (systemu operacyjnego) nie ma na zdefiniowanej liście i agent nie jest zainstalowany. |Zasady |  
+|[Wersja zapoznawcza]: Wdrażanie Log Analytics Agent for Windows VMs |Wdróż agenta usługi Log Analytics dla maszyn wirtualnych z systemem Windows, jeśli obrazu maszyny wirtualnej (systemu operacyjnego) nie ma na zdefiniowanej liście i agent nie jest zainstalowany. |Zasady |  
 
 Zasady autonomiczne (nie dołączona inicjatywy) 
 

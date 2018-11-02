@@ -1,18 +1,18 @@
 ---
 title: Zrozumienie języka zapytań usługi Azure IoT Hub | Dokumentacja firmy Microsoft
 description: Przewodnik dewelopera — opis usługi IoT Hub podobnego do SQL zapytania język używany do pobierania informacji o urządzeniu/modułu bliźniaczych reprezentacji i zadań z usługi IoT hub.
-author: fsautomata
+author: rezasherafat
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/26/2018
-ms.author: elioda
-ms.openlocfilehash: f28a41f4a80806df14e314dae05405b7b45449b1
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.date: 10/29/2018
+ms.author: rezas
+ms.openlocfilehash: b7919a86c5f0b6b6990b465ed0c563fb42ea8bbc
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318252"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747919"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Język zapytań usługi IoT Hub dla bliźniaczych reprezentacji urządzeń i modułów, zadań i routingu wiadomości
 
@@ -390,6 +390,11 @@ GROUP BY <group_by_element>
 
 Obecnie w klauzuli GROUP BY jest obsługiwana tylko podczas wykonywania zapytań dotyczących bliźniaczych reprezentacji urządzeń.
 
+> [!IMPORTANT]
+> Termin `group` aktualnie jest traktowane jako specjalne — słowo kluczowe w zapytaniach. W przypadku używasz `group` jako nazwę właściwości, należy wziąć pod uwagę ujęta w podwójne nawiasy, aby uniknąć błędów, np. `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'`.
+>
+>
+
 ## <a name="expressions-and-conditions"></a>Wyrażeń i warunków
 Na wysokim poziomie *wyrażenie*:
 
@@ -444,7 +449,7 @@ Obsługiwane są następujące operatory:
 | --- | --- |
 | Operacje arytmetyczne |+, -, *, /, % |
 | Logiczne |AND, OR, NOT |
-| porównanie |=, !=, <, >, <=, >=, <> |
+| Porównanie |=, !=, <, >, <=, >=, <> |
 
 ### <a name="functions"></a>Funkcje
 Podczas wykonywania zapytań dotyczących bliźniaczych reprezentacji i zadań, które obsługuje tylko funkcja jest następująca:

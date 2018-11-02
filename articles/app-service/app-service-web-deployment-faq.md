@@ -13,14 +13,14 @@ ms.workload: web
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: ab8750e5824cf9f7635d11a6b2be332b2f9a761c
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: b38291df576d1dbd180f741659dbc379ca006d8e
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302592"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748446"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Często zadawane pytania dotyczące wdrażania dla aplikacji sieci Web na platformie Azure
 
@@ -79,7 +79,7 @@ Aby rozwiązać problemy z FTP:
 
 ## <a name="how-do-i-publish-my-code-to-app-service"></a>Jak opublikować mój kod w usłudze App Service?
 
-Szybkiego startu platformy Azure jest przeznaczony do wdrażania aplikacji przy użyciu stos wdrożenia i wybranej metody. Aby użyć tego przewodnika Szybki Start w witrynie Azure portal, przejdź do **ustawienia** > **wdrożenia aplikacji**.
+Szybkiego startu platformy Azure jest przeznaczony do wdrażania aplikacji przy użyciu stos wdrożenia i wybranej metody. Aby użyć tego przewodnika Szybki Start w witrynie Azure portal, przejdź do usługi app service w obszarze **wdrożenia**, wybierz opcję **Szybki Start**.
 
 ## <a name="why-does-my-app-sometimes-restart-after-deployment-to-app-service"></a>Dlaczego moja aplikacja czasem ponownego uruchomienia po wdrożeniu do usługi App Service?
 

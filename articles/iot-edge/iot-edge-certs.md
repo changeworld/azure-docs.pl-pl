@@ -8,12 +8,12 @@ ms.date: 09/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a782a7341e53420dbc31fefc86007951df967a9e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: af1a14f87eaf20a7f49a8fc6112c4f3c7595f6bd
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313418"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914378"
 ---
 # <a name="azure-iot-edge-certificate-usage-detail"></a>Szczegóły użycia certyfikatów w usłudze Azure IoT Edge
 
@@ -78,9 +78,9 @@ Ponieważ procesy producenta i operator są rozdzielone, istnieje kilka konsekwe
 
 ## <a name="devtest-implications"></a>Tworzenie i testowanie skutków
 
-Aby ułatwić sobie projektowanie i przetestować scenariusze, firma Microsoft udostępnia zestaw [skrypty wygody](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) generowania nieprodukcyjnych certyfikatów odpowiednich dla usługi IoT Edge w scenariuszu przezroczystej bramy.
+Aby ułatwić sobie projektowanie i przetestować scenariusze, firma Microsoft udostępnia zestaw [skrypty wygody](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) generowania nieprodukcyjnych certyfikatów odpowiednich dla usługi IoT Edge w scenariuszu przezroczystej bramy. Przykłady działania skryptów, zobacz [Konfigurowanie urządzenia usługi IoT Edge, aby pełnić rolę przezroczystej bramy](how-to-create-transparent-gateway.md).
 
-Te skrypty generować certyfikaty, które należy wykonać strukturę łańcucha certyfikatów, które są opisane w tym artykule. Aby uzyskać [Linux](how-to-create-transparent-gateway-linux.md#certificate-creation) lub [Windows](how-to-create-transparent-gateway-windows.md#certificate-creation). Następujące polecenia generowania "certyfikat głównego urzędu certyfikacji" i jednym "certyfikat pośredniego urzędu certyfikacji".
+Te skrypty generować certyfikaty, które należy wykonać strukturę łańcucha certyfikatów, które są opisane w tym artykule. Następujące polecenia generowania "certyfikat głównego urzędu certyfikacji" i jednym "certyfikat pośredniego urzędu certyfikacji".
 
 ```bash
 ./certGen.sh create_root_and_intermediate 
@@ -124,6 +124,4 @@ Możesz zobaczyć hierarchię głębokość certyfikatu reprezentowane na zrzuci
 
 [Omówienie modułów usługi Azure IoT Edge](iot-edge-modules.md)
 
-[Użyj urządzenia usługi IoT Edge rolę przezroczystej bramy (Linux)](how-to-create-transparent-gateway-linux.md)
-
-[Użyj urządzenia usługi IoT Edge rolę przezroczystej bramy (Windows)](how-to-create-transparent-gateway-windows.md)
+[Konfigurowanie urządzenia usługi IoT Edge, aby pełnić rolę przezroczystej bramy](how-to-create-transparent-gateway.md)

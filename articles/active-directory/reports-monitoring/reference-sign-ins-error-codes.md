@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 05/31/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 85df34445622a13488df590f5cb53bedb7b6ea93
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: ce06c72c9974b4887cc441344fd755bfd156a1ca
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42058088"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914723"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Kody błędów w raportach działań związanych z logowaniem w portalu usługi Azure Active Directory
 
@@ -117,10 +117,10 @@ W poniższej sekcji przedstawiono kompletne omówienie wszystkich możliwych bł
 |50135|Wymagana jest zmiana hasła ze względu na ryzyko dotyczące konta|
 |50136|Przekierowanie sesji zarządzanego konta usługi do aplikacji — wykryto jedną sesję konta MSA |
 |50140|Ten błąd wystąpił z powodu przerwania „Nie wylogowuj mnie” w trakcie logowania użytkownika. [Otwórz bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md) z identyfikatorem korelacji, identyfikatorem żądania i kodem błędu, aby uzyskać więcej informacji. |
-|50143|Niezgodność sesji — sesja jest nieprawidłowa, ponieważ dzierżawa użytkownika nie odpowiada wskazówce dotyczącej domeny z powodu innego zasobu. [Otwórz bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md) z identyfikatorem korelacji, identyfikatorem żądania i kodem błędu, aby uzyskać więcej informacji.|
+|50143|Niezgodność sesji - Sesja jest nieprawidłowa, ponieważ dzierżawy użytkownika jest niezgodna z wskazówkę dotyczącą domeny ze względu na inny zasób.  [Otwórz bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md) kodem Identyfikator korelacji, identyfikator żądania i błąd, aby uzyskać więcej szczegółów.|
 |50144|Ważność hasła użytkownika usługi Active Directory wygasła. Wygeneruj nowe hasło dla użytkownika lub poproś użytkownika końcowego o skorzystanie z narzędzia samoobsługowego resetowania hasła|
 |50146|Ta aplikacja musi być skonfigurowana przy użyciu klucza podpisywania specyficznego dla aplikacji. Albo nie została skonfigurowana przy jego użyciu, albo klucz wygasł lub nie jest jeszcze ważny. Skontaktuj się z właścicielem aplikacji|
-|50148|Wartość parametru code_verifier jest niezgodna z elementem code_challenge podanym w żądaniu autoryzacji dla PKCE. Skontaktuj się z deweloperem aplikacji. |
+|50148|Wartość parametru code_verifier jest niezgodna z elementem code_challenge podanym w żądaniu autoryzacji dla PKCE. Skontaktuj się z deweloperem aplikacji. |
 |50155|Uwierzytelnianie urządzenia nie powiodło się dla tego użytkownika|
 |50158|Zewnętrzny test zabezpieczeń nie powiódł się|
 |50161|Oświadczenia wysyłane przez zewnętrznego dostawcę nie są wystarczające lub brak oświadczenia żądanego od zewnętrznego dostawcy|
@@ -128,7 +128,7 @@ W poniższej sekcji przedstawiono kompletne omówienie wszystkich możliwych bł
 |50169|Obszar nie jest skonfigurowanym obszarem bieżącej przestrzeni nazw usługi.|
 |50172|Zewnętrzny dostawca oświadczeń nie jest zatwierdzony. Skontaktuj się z administratorem dzierżawy|
 |50173|Wymagany jest świeży token uwierzytelniania. Użytkownik musi zalogować się ponownie przy użyciu świeżych poświadczeń|
-|50177|Zewnętrzny test nie jest obsługiwany dla użytkowników przekazujących|
+|50177|Zewnętrzne żądanie nie jest obsługiwane dla użytkowników, przekazywanie|
 |50178|Kontrola sesji nie jest obsługiwana dla użytkowników przekazujących|
 |50180|Wymagane jest zintegrowane uwierzytelnianie systemu Windows. Włącz dzierżawę dla bezproblemowego logowania jednokrotnego.|
 |51001|Wskazówka dotycząca domeny nie jest obecna w lokalnym identyfikatorze zabezpieczeń — lokalna nazwa UPN|
@@ -152,7 +152,7 @@ W poniższej sekcji przedstawiono kompletne omówienie wszystkich możliwych bł
 |70007|Aplikacja zwróciła nieobsługiwaną wartość parametru „response_mode” podczas żądania tokenu. Skontaktuj się z właścicielem aplikacji|
 |70008|Podany kod autoryzacji lub token odświeżania wygasł i został odwołany. Użytkownik powinien spróbować ponownie się zalogować|
 |70011|Zakres żądany przez aplikację jest nieprawidłowy. Skontaktuj się z właścicielem aplikacji|
-|70012|Wystąpił błąd serwera podczas uwierzytelniania użytkownika zarządzanego konta usługi (użytkownika). Spróbuj ponownie. Jeśli próba ponownie nie powiedzie się, [otwórz bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md) |
+|70012|Wystąpił błąd serwera podczas uwierzytelniania użytkownika zarządzanego konta usługi (użytkownika). Spróbuj ponownie. Jeśli nadal nie będzie działać, [Otwórz bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md) |
 |70018|Nieprawidłowy kod weryfikacyjny — użytkownik wpisał niewłaściwy kod użytkownika dla przepływu kodu urządzenia. Autoryzacja nie została zatwierdzona|
 |70019|Kod weryfikacyjny wygasł. Użytkownik powinien ponowić próbę logowania|
 |70037|Podano nieprawidłową odpowiedź na wezwanie. Odrzucono sesję uwierzytelniania zdalnego.|
@@ -180,6 +180,7 @@ W poniższej sekcji przedstawiono kompletne omówienie wszystkich możliwych bł
 |90014| Brak wymaganego pola komunikatu protokołu, skontaktuj się z właścicielem aplikacji. Jeśli jesteś właścicielem aplikacji, upewnij się, że wszystkie niezbędne parametry dla żądania logowania. |
 |90072| Konto musi najpierw należy dodać jako użytkownik zewnętrzny w dzierżawie. Wylogować i zalogować ponownie, używając innej usługi Azure AD konta.|
 |90094| Przydziel musi mieć uprawnienia administratora. Skontaktuj się z administratorem dzierżawy, zapewnienie wyrażania zgody dla tej aplikacji.|
+|500133| Potwierdzenie nie jest w zasięgu prawidłową godzinę. Upewnij się, nie wygasł token dostępu przed jego użyciem na potwierdzenie użytkownika lub uzyskać nowy token.|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

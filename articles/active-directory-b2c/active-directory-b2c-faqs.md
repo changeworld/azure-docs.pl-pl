@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/16/2017
+ms.date: 11/01/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6b5cc1eff5c6d080854754ec5b3b62068f1cbb9c
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: d17e7abbb3b6e4f091e19b8ab6834461dedffc71
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264719"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914774"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Usługa Azure AD B2C: Często zadawane pytania (FAQ) 
 Ta strona odpowiedzi na często zadawane pytania dotyczące usługi Azure Active Directory (Azure AD) B2C. Wracaj aktualizacje.
@@ -80,7 +80,7 @@ Obecnie nie ma możliwości zmiany "od:" na adres e-mail. Zagłosuj [feedback.az
 Można zapisać narzędzie do migracji, można użyć interfejsu API programu Graph usługi Azure AD. Zobacz [Przewodnik po migracji użytkownika](active-directory-b2c-user-migration.md) Aby uzyskać szczegółowe informacje.
 
 ### <a name="what-password-policy-is-used-for-local-accounts-in-azure-ad-b2c"></a>Jakie zasady haseł jest używany dla kont lokalnych w usłudze Azure AD B2C?
-Zasady haseł usługi Azure AD B2C dla kont lokalnych jest na podstawie zasad dla usługi Azure AD. Usługa Azure AD B2C jego rejestracji, zarejestruj się lub logowania i hasło resetowania używa zasad siły "silnego" hasła i wygaśnięcia hasła. Odczyt [zasad haseł usługi Azure AD](https://msdn.microsoft.com/library/azure/jj943764.aspx) Aby uzyskać więcej informacji.
+Zasady haseł usługi Azure AD B2C dla kont lokalnych jest na podstawie zasad dla usługi Azure AD. Usługa Azure AD B2C jego rejestracji, zarejestruj się lub logowania i hasło resetowania używa zasad siły "silnego" hasła i wygaśnięcia hasła. Odczyt [zasad haseł usługi Azure AD](https://msdn.microsoft.com/library/azure/jj943764.aspx) Aby uzyskać więcej informacji. Aby uzyskać informacje dotyczące blokady konta i hasła, zobacz [zarządza zagrożeń bezpieczeństwa zasobów i danych w usłudze Azure Active Directory B2C](active-directory-b2c-reference-threat-management.md).
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Aby przeprowadzić migrację tożsamości klientów, które są przechowywane na mojej lokalnej usługi Active Directory do usługi Azure AD B2C można używać program Azure AD Connect?
 Nie, usługa Azure AD Connect nie jest przeznaczona do pracy z usługą Azure AD B2C. Należy rozważyć użycie [interfejsu API programu Graph](active-directory-b2c-devquickstarts-graph-dotnet.md) przypadku migracji użytkownika.  Zobacz [Przewodnik po migracji użytkownika](active-directory-b2c-user-migration.md) Aby uzyskać szczegółowe informacje.

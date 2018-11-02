@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: ergreenl
-ms.openlocfilehash: de77050206c98832b274e8bdbda8026fc115610e
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 9188e7a8dc5364592772b95c302c59a16bfad2be
+ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156225"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50754073"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurowanie bezpiecznego protokołu LDAP (LDAPS) dla domeny zarządzanej usług domenowych Azure AD
 W tym artykule pokazano, jak włączyć bezpieczny Lightweight Directory dostępu protokołu (LDAPS) dla domeny zarządzanej usług domenowych Azure AD. Protokół Secure LDAP jest także znana jako "LDAP Lightweight Directory Access Protocol () za pośrednictwem Secure Sockets Layer (SSL) / zabezpieczeń TLS (Transport Layer)".
@@ -45,7 +45,7 @@ Przed włączeniem bezpiecznego protokołu LDAP, należy uzyskać prawidłowy ce
 
 1. **Zaufanych wystawców** — certyfikat musi być wystawiony przez urząd certyfikacji zaufany przez komputery, na nawiązywanie połączeń z domeny zarządzanej przy użyciu protokołu secure LDAP. Ten urząd może być publiczny urząd certyfikacji (CA) lub urzędu certyfikacji przedsiębiorstwa ufa tych komputerów.
 2. **Okres istnienia** — certyfikat musi być ważny przez co najmniej ciągu następnych 3 – 6 miesięcy. Dostęp do Twojej domeny zarządzanej Secure LDAP jest zakłócone. po wygaśnięciu certyfikatu.
-3. **Nazwa podmiotu** -nazwa podmiotu certyfikatu musi być symbol wieloznaczny dla domeny zarządzanej. Na przykład jeśli domeny nosi nazwę "contoso100.com", nazwa podmiotu certyfikatu musi być "*. contoso100.com". Ustaw nazwę DNS (alternatywnej nazwy podmiotu) do tej nazwy symbolu wieloznacznego.
+3. **Nazwa podmiotu** -nazwa podmiotu certyfikatu musi być nazwą domeny zarządzanej. Na przykład w nazwie domeny "contoso100.com" Nazwa podmiotu certyfikatu musi być "contoso100.com". 
 4. **Użycie klucza** — certyfikat musi być skonfigurowany do następujących zastosowań - podpisów cyfrowych i szyfrowanie klucza.
 5. **Cel certyfikatu** — musi to być prawidłowy do uwierzytelniania serwera SSL.
 
