@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 10cd05bd40262815e3b27c861982debc18e5b4f3
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 152632c55fc21d2b49f6dfd8ae734833ea870898
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142423"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978370"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-virtual-machine-scale-set-with-application-insights-profiler"></a>Profil aplikacji sieci web uruchomionej na maszynie wirtualnej platformy Azure lub maszyny wirtualnej zestawu skalowania przy użyciu Application Insights Profiler
 Można także wdrożyć usługę Application Insights profiler dla tych usług:
@@ -63,11 +63,8 @@ Ta strona przeprowadzi Cię przez kroki wymagana można pobrać usługi Applicat
 
 1. Wdrażanie aplikacji.
 
-## <a name="enable-profiler-on-on-premises-servers"></a>Włącz Profiler na serwerach lokalnych
-
-Włączanie Profiler na lokalny serwer jest również nazywany uruchomionej Application Insights Profiler w trybie autonomicznym. Nie jest związany z modyfikacje rozszerzenia diagnostyki platformy Azure.
-
-Mamy zamiar świadczył oficjalną pomoc techniczną Profiler dla serwerów lokalnych. Jeśli interesuje Cię eksperymentowanie z tego scenariusza, możesz to zrobić [Pobierz kod pomocy technicznej](https://github.com/ramach-msft/AIProfiler-Standalone). Jesteśmy *nie* odpowiedzialna za utrzymanie kodu, lub reagowania na problemy i żądania funkcji, które są związane z kodem.
+## <a name="can-profiler-run-on-on-premises-servers"></a>Czy program profilujący może uruchamiać na serwerach w środowisku lokalnym?
+Nie mamy żadnych planów do obsługi aplikacji Insights Profiler dla serwerów lokalnych. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

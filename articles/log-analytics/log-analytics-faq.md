@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 08a85cea75d692573f9e9e6c4bcd8bb61e03867f
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 403ac2fd0ab497239350c8b4a68a6b6f53bb24b4
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041973"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963918"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics — często zadawane pytania
 Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące usługi Log Analytics na platformie Microsoft Azure. Jeśli masz dodatkowe pytania dotyczące usługi Log Analytics, przejdź do strony [forum dyskusyjne](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) i Publikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.
@@ -88,7 +88,7 @@ Odp.: ten region jest na limit pojemności tymczasowych. Limit jest planowana na
 
 ### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>PYTANIE: Usługa Log Analytics używa ten sam agent Azure Security Center?
 
-Odp.: w początku czerwca 2017 roku usługa Azure Security Center rozpoczęło się przy użyciu programu Microsoft Monitoring Agent do gromadzenia i przechowywania danych. Aby dowiedzieć się więcej, zobacz [Azure Security Center platformy migracji — często zadawane pytania](../security-center/security-center-platform-migration-faq.md).
+Odp.: w początku czerwca 2017 roku usługa Azure Security Center rozpoczęło się przy użyciu programu Microsoft Monitoring Agent do gromadzenia i przechowywania danych. Aby dowiedzieć się więcej, zobacz [Azure Security Center platformy migracji — często zadawane pytania](../security-center/security-center-enable-data-collection.md).
 
 ### <a name="q-what-checks-are-performed-by-the-ad-and-sql-assessment-solutions"></a>PYTANIE: Jakie są sprawdzane przez usługi AD i rozwiązania SQL Assessment?
 
@@ -135,7 +135,7 @@ Usługi log Analytics korzysta z czasu UTC, a każdy dzień rozpoczyna się o p�
 
 ### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>PYTANIE: Jak mogę otrzymywać powiadomienia po zatrzymaniu zbierania danych?
 
-Odp.: wykonaj czynności opisane w [utworzyć nowego alertu dziennika](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) zgłaszane po zatrzymaniu zbierania danych.
+Odp.: wykonaj czynności opisane w [utworzyć nowego alertu dziennika](../monitoring-and-diagnostics/alert-metric.md) zgłaszane po zatrzymaniu zbierania danych.
 
 Podczas tworzenia alertu dla zatrzymania zbierania danych, ustaw:
 
@@ -231,4 +231,4 @@ Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Rozpoczynanie pracy z usługą Log Analytics](log-analytics-get-started.md) Dowiedz się więcej o usłudze Log Analytics i rozpocząć pracę w ciągu kilku minut.
+* [Rozpoczynanie pracy z usługą Log Analytics](../azure-monitor/overview.md) Dowiedz się więcej o usłudze Log Analytics i rozpocząć pracę w ciągu kilku minut.

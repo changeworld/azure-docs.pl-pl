@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: df5e55c2c03fec13ada258be91f0d98b7ce70d94
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 18f52c7b15bf22b363309cbdf1a060b3ab89d93d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406164"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958540"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Zbierz liczniki wydajności dla aplikacji systemu Linux w usłudze Log Analytics 
 [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
@@ -170,4 +170,4 @@ Po skonfigurowaniu agenta usługi Log Analytics dla systemu Linux w celu wysyła
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Liczniki wydajności są zbierane](log-analytics-data-sources-performance-counters.md) z agentów dla systemu Linux.
-* Dowiedz się więcej o [dziennikach](log-analytics-log-searches.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
+* Dowiedz się więcej o [dziennikach](log-analytics-log-search.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 

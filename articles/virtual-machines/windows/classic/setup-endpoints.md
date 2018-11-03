@@ -13,25 +13,27 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 06/09/2017
+ms.date: 10/23/2018
 ms.author: cynthn
-ms.openlocfilehash: cca9adb40557cf7bf9e1d4129fc6bd61cbf0df4f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 373003eb8be0482ed96d7d11ecd879237f69b47a
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38618243"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957169"
 ---
-# <a name="how-to-set-up-endpoints-on-a-classic-windows-virtual-machine-in-azure"></a>Jak skonfigurować punkty końcowe na klasycznej maszynie wirtualnej Windows na platformie Azure
-Wszystkie Windows, które maszyny wirtualne, które tworzysz na platformie Azure przy użyciu klasycznego modelu wdrażania można automatycznie komunikują się za pośrednictwem prywatnej kanał sieciowy z innymi maszynami wirtualnymi w tej samej usługi w chmurze lub sieci wirtualnej. Jednak komputery w Internecie lub innymi sieciami wirtualnymi wymagają punktów końcowych do kierowania ruchu sieciowego przychodzącego do maszyny wirtualnej. W tym artykule jest także dostępna dla [maszyn wirtualnych systemu Linux](../../linux/classic/setup-endpoints.md).
+# <a name="set-up-endpoints-on-a-windows-virtual-machine-by-using-the-classic-deployment-model"></a>Skonfiguruj punkty końcowe na maszynie wirtualnej Windows przy użyciu klasycznego modelu wdrażania
+Windows maszyny wirtualne (VM), które tworzysz na platformie Azure przy użyciu klasycznego modelu wdrażania automatycznie mogą komunikować się za pośrednictwem kanału sieci prywatnej z innymi maszynami wirtualnymi w tej samej usługi w chmurze lub sieci wirtualnej. Jednak komputery w Internecie lub innymi sieciami wirtualnymi wymagają punktów końcowych do kierowania ruchu sieciowego przychodzącego do maszyny Wirtualnej. 
+
+Można również skonfigurować punkty końcowe na [maszyn wirtualnych systemu Linux](../../linux/classic/setup-endpoints.md).
 
 > [!IMPORTANT]
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [usługi Resource Manager i Model Klasyczny](../../../resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
+> Platforma Azure ma dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../../../resource-manager-deployment-model.md). W tym artykule opisano klasyczny model wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.  
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
-W **usługi Resource Manager** modelu wdrażania, punkty końcowe są konfigurowane przy użyciu **sieciowych grup zabezpieczeń (NSG)**. Aby uzyskać więcej informacji, zobacz [zezwalanie na dostęp zewnętrzny do maszyny Wirtualnej przy użyciu witryny Azure portal](../nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+W **usługi Resource Manager** modelu wdrażania, punkty końcowe są konfigurowane przy użyciu **sieciowych grup zabezpieczeń (NSG)**. Aby uzyskać więcej informacji, zobacz [Zezwalaj na dostęp zewnętrzny do maszyny Wirtualnej przy użyciu witryny Azure portal](../nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Po utworzeniu maszyny wirtualnej Windows w witrynie Azure portal wspólnych punktów końcowych, takich jak te dotyczące usług pulpitu zdalnego i komunikacji zdalnej programu Windows PowerShell są zazwyczaj tworzone automatycznie. Dodatkowe punkty końcowe można skonfigurować podczas tworzenia maszyny wirtualnej lub po jego zgodnie z potrzebami.
+Po utworzeniu maszyny Wirtualnej z systemem Windows w witrynie Azure portal wspólnych punktów końcowych, takich jak punkty końcowe dla pulpitu zdalnego i komunikacji zdalnej programu Windows PowerShell, są zazwyczaj tworzone automatycznie. Dodatkowe punkty końcowe można skonfigurować później zgodnie z potrzebami.
 
 [!INCLUDE [virtual-machines-common-classic-setup-endpoints](../../../../includes/virtual-machines-common-classic-setup-endpoints.md)]
 

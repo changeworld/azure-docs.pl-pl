@@ -8,27 +8,27 @@ ms.topic: include
 ms.date: 09/27/2018
 ms.author: adgera
 ms.custom: include file
-ms.openlocfilehash: 075587df445b46c8b03c5448cebf8cd8b12f1179
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: a03f2b4e8d216db3764af03dc06b5188289ffc92
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324175"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964207"
 ---
-Kontrola dostępu oparta na rolach jest strategia zabezpieczeń opartych na dziedziczenie zarządzania dostępu, uprawnień i ról. Role podrzędny dziedziczą uprawnienia z nadrzędnego ról. Może również przypisane uprawnienia nie są dziedziczone z roli nadrzędnej. Mogą one również przypisane do roli dostosowywać, odpowiednio do potrzeb.
+Kontrola dostępu oparta na rolach jest strategia zabezpieczeń opartych na dziedziczenie zarządzania dostępu, uprawnień i ról. Role podrzędny dziedziczą uprawnienia z nadrzędnego ról. Ponadto można przypisać uprawnienia nie są dziedziczone z roli nadrzędnej. Mogą również można przypisać do roli dostosowywać, odpowiednio do potrzeb.
 
-Na przykład **administratora miejsca** może wymagać globalny dostęp do uruchomienia wszystkie operacje dla określonego odstęp (w tym wszystkie węzły poniżej lub znajdujący się w nim), natomiast **Instalator urządzenia** tylko może być konieczne *odczytu* i *aktualizacji* uprawnienia dla urządzeń i czujników.
+Na przykład Administrator miejsca może być konieczne globalny dostęp do uruchomienia wszystkie operacje dla określonego obszaru. Uwzględniane są wszystkie węzły poniżej lub w obrębie przestrzeni. Instalator urządzenia może być konieczne tylko *odczytu* i *aktualizacji* uprawnienia dla urządzeń i czujników.
 
-W każdym przypadku może być przyznany role **dokładnie i nie więcej niż wymagany dostęp do** do zrealizowania ich zadań na **zasadę najmniejszych uprawnień**, przyznać tożsamości *tylko*:
+W każdym przypadku rolom nadaje się *dokładnie i nie więcej niż wymagany dostęp do* do zrealizowania ich zadań na zasadzie najmniejszych uprawnień. Zgodnie z tą zasadą otrzymuje tożsamość *tylko*:
 
 * Ilość dostępu wymagane do wykonania swojego zadania.
 * Rola, odpowiedni i ograniczone do wykonywania swoich zadań.
 
 >[!IMPORTANT]
-> **Zawsze postępuj zgodnie z zasadą najniższych uprawnień**.
+> Zawsze postępuj zgodnie z zasadą najniższych uprawnień.
 
-Dwie inne ważne kontroli dostępu opartej na rolach praktyki do naśladowania:
+Dwie inne ważne opartej na rolach kontroli dostępu w praktyki do naśladowania:
 
 > [!div class="checklist"]
 > * Przeprowadzaj okresowe inspekcje przypisań ról, aby sprawdzić, czy każda rola ma odpowiednie uprawnienia.
-> * Ról i przypisań powinny zostać oczyszczony po zmianie użytkowników indywidualnych, ról lub przypisania.
+> * Wyczyść ról i przypisań użytkowników indywidualnych zmiany ról lub przypisania.

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 6d826702d8302246a225ebfcdf0a5987cf9d2045
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 46939e15100468eab0d5575546eb6bd58df4aacd
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167056"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961079"
 ---
 # <a name="application-insights-for-web-pages"></a>Usługa Application Insights dla stron sieci Web
 Poznaj wydajność i użycie strony sieci Web lub aplikacji. Jeśli dodasz usługę [Application Insights](app-insights-overview.md) do skryptu strony, uzyskasz chronometraż ładowania strony i wywołań AJAX, liczniki i szczegóły dotyczące wyjątków przeglądarki i błędów AJAX, a także liczniki użytkowników i sesji. Wszystkie te dane możesz rozdzielić według strony, systemu operacyjnego klienta i wersji przeglądarki, lokalizacji geograficznej i innych wymiarów. Możesz ustawić alerty związane z liczbami błędów lub powolnym ładowaniem strony. A wstawiając wywołania śledzenia w kodzie JavaScript, możesz śledzić sposób użycia różnych funkcji aplikacji strony sieci Web.
@@ -230,7 +230,7 @@ Nazwa strony może zawierać te same znaki co adres URL, ale wszystko po znakach
 ## <a name="usage-tracking"></a>Śledzenie użycia
 Chcesz dowiedzieć się, w jaki sposób użytkownicy korzystają z aplikacji?
 
-* [Dowiedz się więcej o narzędziach analizy zachowania użytkowników](app-insights-web-track-usage.md)
+* [Dowiedz się więcej o narzędziach analizy zachowania użytkowników](app-insights-usage-overview.md)
 * [Informacje o interfejsie API do monitorowania niestandardowych zdarzeń i metryk](app-insights-api-custom-events-metrics.md).
 
 ## <a name="video"></a> Wideo
@@ -241,7 +241,7 @@ Chcesz dowiedzieć się, w jaki sposób użytkownicy korzystają z aplikacji?
 
 
 ## <a name="next"></a> Następne kroki
-* [Śledzenie użycia](app-insights-web-track-usage.md)
+* [Śledzenie użycia](app-insights-usage-overview.md)
 * [Niestandardowe zdarzenia i metryki](app-insights-api-custom-events-metrics.md)
-* [Tworzenie — pomiar— nauka](app-insights-web-track-usage.md)
+* [Tworzenie — pomiar— nauka](app-insights-usage-overview.md)
 

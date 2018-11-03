@@ -15,19 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: b8c3a2cc67c47753957963fc04b52f934b10ddfc
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 776033bde46f170295900d154cbbb3c7df73ab11
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041717"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960263"
 ---
 # <a name="data-sources-in-log-analytics"></a>Źródła danych w usłudze Log Analytics
 Log Analytics zbiera dane z połączonych źródeł i zapisuje go w obszarze roboczym usługi Log Analytics.  Dane, które są zbierane z każdego jest definiowany przez źródeł danych, które konfigurujesz.  Dane w usłudze Log Analytics są przechowywane jako zestaw rekordów.  Każde źródło danych tworzy rekordy określonego typu, za pomocą poszczególnych typów posiadanie swój własny zestaw właściwości.
 
 ![Zaloguj się zbieranie danych analitycznych](./media/log-analytics-data-sources/overview.png)
 
-Źródła danych różnią się od [rozwiązań do zarządzania](log-analytics-add-solutions.md), który również zbierać dane z połączonych źródeł i tworzenie rekordów w usłudze Log Analytics.  Oprócz zbierania danych, rozwiązania zwykle zawierają wyszukiwań w dziennikach i widoków, aby pomóc w analizie operacji określonej aplikacji lub usługi.
+Źródła danych różnią się od [rozwiązań do zarządzania](../monitoring/monitoring-solutions.md), który również zbierać dane z połączonych źródeł i tworzenie rekordów w usłudze Log Analytics.  Oprócz zbierania danych, rozwiązania zwykle zawierają wyszukiwań w dziennikach i widoków, aby pomóc w analizie operacji określonej aplikacji lub usługi.
 
 
 ## <a name="summary-of-data-sources"></a>Podsumowanie źródeł danych
@@ -68,5 +68,5 @@ Wszystkie dane zebrane przez usługę Log Analytics jest przechowywane w obszarz
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o [rozwiązania](../monitoring/monitoring-solutions.md) , dodawanie funkcji do usługi Log Analytics i również zbierać dane do obszaru roboczego.
-* Dowiedz się więcej o [dziennikach](log-analytics-log-searches.md) analizować dane zbierane z innych źródeł danych i rozwiązań.  
-* Konfigurowanie [alerty](log-analytics-alerts.md) celu proaktywnego powiadamiania o krytyczne dane zbierane z innych źródeł danych i rozwiązań.
+* Dowiedz się więcej o [dziennikach](log-analytics-log-search.md) analizować dane zbierane z innych źródeł danych i rozwiązań.  
+* Konfigurowanie [alerty](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) celu proaktywnego powiadamiania o krytyczne dane zbierane z innych źródeł danych i rozwiązań.

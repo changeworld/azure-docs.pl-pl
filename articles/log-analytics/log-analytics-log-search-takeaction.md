@@ -15,24 +15,24 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 297967f165e921fedbc7e7e952366a399fedc642
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: d86a4de5f54d0c1c492fa17081623366692712af
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043944"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959787"
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>Chroń za pomocą elementu Runbook usługi Automation z wyniki wyszukiwania dziennika usługi Log Analytics
 
 Wyniki wyszukiwania dziennika w usłudze Azure Log Analytics, można teraz wybrać **reakcję** do uruchamiania elementu runbook usługi Automation.  Element runbook może służyć do rozwiązania problemu lub wykonania określonego działania, takie jak zbierać informacje dotyczące rozwiązywania problemów, Wyślij wiadomość e-mail, lub Utwórz żądanie obsługi. 
 
 ## <a name="components-and-features-used"></a>Używane składniki i funkcje
-* [Konto usługi Azure Automation](../automation/automation-offering-get-started.md)
-* [Obszar roboczy usługi Log Analytics](../log-analytics/log-analytics-overview.md)
+* [Konto usługi Azure Automation](../automation/automation-quickstart-create-account.md)
+* [Obszar roboczy usługi Log Analytics](log-analytics-queries.md)
 
 ## <a name="to-initiate-runbook-from-log-search"></a>Aby zainicjować element runbook z przeszukiwania dzienników
 
-Podejmowanie akcji na zdarzenia i zainicjowania elementu runbook z wyników wyszukiwania w dzienniku, rozpoczyna się od utworzenia przeszukiwania dzienników, a następnie na liście wyników można wywołać elementu runbook na żądanie.  Można to osiągnąć przez funkcję wyszukiwania dzienników w [witryny Azure portal](../log-analytics/log-analytics-log-search-new.md).  W tym przykładzie wykonamy przeszukiwania dzienników w witrynie Azure portal przy użyciu podstawowych pokaz działania tej funkcji.
+Podejmowanie akcji na zdarzenia i zainicjowania elementu runbook z wyników wyszukiwania w dzienniku, rozpoczyna się od utworzenia przeszukiwania dzienników, a następnie na liście wyników można wywołać elementu runbook na żądanie.  Można to osiągnąć przez funkcję wyszukiwania dzienników w [witryny Azure portal](log-analytics-log-search.md).  W tym przykładzie wykonamy przeszukiwania dzienników w witrynie Azure portal przy użyciu podstawowych pokaz działania tej funkcji.
 
 1. W witrynie Azure portal kliknij pozycję **wszystkich usług** i wybierz **usługi Log Analytics**.  
 2. Wybierz swój obszar roboczy usługi Log Analytics.
@@ -47,9 +47,9 @@ Podejmowanie akcji na zdarzenia i zainicjowania elementu runbook z wyników wysz
 
 6. Po kliknięciu **Uruchom**, aby możliwe było sprawdzać stan zadania zostanie otwarta strona zadania elementu runbook.   
 
-W przypadku wybrania elementu runbook, który został skonfigurowany jako [wywoływane z poziomu alertu usługi Log Analytics](../automation/automation-invoke-runbook-from-omsla-alert.md), posiada parametr wejściowy o nazwie **WebhookData** czyli **obiektu** typu.  Parametr wejściowy jest obowiązkowy, należy przekazać wyniki wyszukiwania do elementu runbook, aby ją przekonwertować ciąg w formacie JSON do typu obiektu, dzięki czemu można filtrować na określone elementy, które będziesz odwoływać się w działania elementu runbook.  Można to zrobić, wybierając **wynik (obiekt) wyszukiwania** z listy rozwijanej.<br><br> ![Wybierz obiekt danych elementu Webhook dla parametru elementu runbook](media/log-analytics-log-search-takeaction/select-runbook-and-properties.png)   
+W przypadku wybrania elementu runbook, który został skonfigurowany jako [wywoływane z poziomu alertu usługi Log Analytics](../automation/automation-create-alert-triggered-runbook.md), posiada parametr wejściowy o nazwie **WebhookData** czyli **obiektu** typu.  Parametr wejściowy jest obowiązkowy, należy przekazać wyniki wyszukiwania do elementu runbook, aby ją przekonwertować ciąg w formacie JSON do typu obiektu, dzięki czemu można filtrować na określone elementy, które będziesz odwoływać się w działania elementu runbook.  Można to zrobić, wybierając **wynik (obiekt) wyszukiwania** z listy rozwijanej.<br><br> ![Wybierz obiekt danych elementu Webhook dla parametru elementu runbook](media/log-analytics-log-search-takeaction/select-runbook-and-properties.png)   
     
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Przegląd [Zaloguj się odwołanie do wyszukiwania usługi Log Analytics](log-analytics-search-reference.md) Aby wyświetlić wszystkie pola wyszukiwania i aspektów, które są dostępne w usłudze Log Analytics.
-* Aby dowiedzieć się, jak automatycznie wywoływania elementu runbook usługi Automation, zapoznaj się z [wywoływanie elementu runbook usługi Azure Automation z alertu usługi Log Analytics](../automation/automation-invoke-runbook-from-omsla-alert.md).  
+* Przegląd [Zaloguj się odwołanie do wyszukiwania usługi Log Analytics](log-analytics-log-search.md) Aby wyświetlić wszystkie pola wyszukiwania i aspektów, które są dostępne w usłudze Log Analytics.
+* Aby dowiedzieć się, jak automatycznie wywoływania elementu runbook usługi Automation, zapoznaj się z [wywoływanie elementu runbook usługi Azure Automation z alertu usługi Log Analytics](../automation/automation-create-alert-triggered-runbook.md).  

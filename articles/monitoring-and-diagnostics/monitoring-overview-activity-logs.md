@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 7538951b1ac8290b574180779b83c6b8e79fcf1f
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 40d1f73f4aed3f3f35f3f5c9de951e9b9fd271bc
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094367"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963323"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorowanie aktywności subskrypcji z dziennika aktywności platformy Azure
 
@@ -33,7 +33,7 @@ Dziennik aktywności różni się od [dzienniki diagnostyczne](monitoring-overvi
 Możesz pobrać zdarzenia z dziennika aktywności przy użyciu witryny Azure portal, interfejsu wiersza polecenia, w przypadku poleceń cmdlet programu PowerShell i interfejsu API REST usługi Azure Monitor.
 
 > [!NOTE]
->  [Nowszych alertów](monitoring-overview-unified-alerts.md) oferuje udoskonalone środowisko tworzenia i zarządzania działaniami po zalogowaniu się reguły alertów.  [Dowiedz się więcej](monitoring-activity-log-alerts-new-experience.md).
+>  [Nowszych alertów](monitoring-overview-unified-alerts.md) oferuje udoskonalone środowisko tworzenia i zarządzania działaniami po zalogowaniu się reguły alertów.  [Dowiedz się więcej](alert-activity-log.md).
 
 Umożliwia wyświetlenie poniższego klipu wideo wprowadzenie do dziennika aktywności.
 > [!VIDEO https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz/player]

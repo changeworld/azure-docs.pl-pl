@@ -10,12 +10,12 @@ ms.component: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 87cd18a60dc0c3d8affaaa69d1e9557fc10f6032
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 3123de58ea3dc4ab2c426f1393f8eca19542bfbf
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748703"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957144"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>Szybki Start: Wysłanie zapytania do lokalnych firm interfejs API wyszukiwania Bing w języku Python
 
@@ -48,8 +48,8 @@ import json
 # Replace the subscriptionKey string value with your valid subscription key.
 subscriptionKey = 'YOUR-SUBSCRIPTION-KEY'
 
-host = 'www.bingapis.com'
-path = '/api/v7/localbusinesses/search'
+host = 'api.cognitive.microsoft.com/bing'
+path = '/v7.0/localbusinesses/search'
 
 query = 'restaurant in Bellevue'
 

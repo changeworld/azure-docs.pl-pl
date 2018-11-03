@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: e77389411e52853efb52252a17c8612f0480fa61
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: ae033b944e93fe90392af9b17de883d791d3e4dc
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298646"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958606"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Szczegółowa diagnostyka dla aplikacji internetowych i usług dzięki usłudze Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Dlaczego muszę usługi Application Insights?
@@ -172,7 +172,7 @@ Gdy zostanie zgłoszony alert, Application Insights może automatycznie tworzyć
 ## <a name="next-steps"></a>Kolejne kroki
 Rozpoczynanie pracy z usługą Application Insights jest łatwe. Dostępne są następujące główne opcje:
 
-* Instrumentacja aplikacji sieci web już działa. Dzięki temu wszystkie dane telemetryczne wbudowane wydajności. Jest ona dostępna dla [Java](app-insights-java-live.md) i [serwery IIS](app-insights-monitor-performance-live-website-now.md), a także [usługi Azure web apps](app-insights-azure.md).
+* Instrumentacja aplikacji sieci web już działa. Dzięki temu wszystkie dane telemetryczne wbudowane wydajności. Jest ona dostępna dla [Java](app-insights-java-live.md) i [serwery IIS](app-insights-monitor-performance-live-website-now.md), a także [usługi Azure web apps](app-insights-overview.md).
 * Instrumentacja projektu podczas programowania. Można to zrobić [ASP.NET](app-insights-asp-net.md) lub [Java](app-insights-java-get-started.md) aplikacji, jak również [Node.js](app-insights-nodejs.md) i hostem [innych typów](app-insights-platforms.md). 
 * Instrument [dowolnej strony sieci web](app-insights-javascript.md) , dodając krótki wstawki.
 

@@ -3,18 +3,18 @@ title: Tworzenie rozwiązania IoT przy użyciu usługi Azure Stream Analytics
 description: Wprowadzenie do samouczka dotyczącego rozwiązania Stream Analytics IoT scenariusza budki
 services: stream-analytics
 author: jasonwhowell
-ms.author: jasonh
+ms.author: mamccrea
 manager: kfile
 ms.reviewer: jasonh, sngun
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/21/2018
-ms.openlocfilehash: 88c58175f4886d4796ed4e32b41d030c9ee441fc
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: e70a1210d44e5bfec914006afaf18eff772cac47
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986892"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978795"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Tworzenie rozwiązania IoT przy użyciu usługi Stream Analytics
 

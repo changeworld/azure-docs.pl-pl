@@ -1,5 +1,5 @@
 ---
-title: Rozszerzanie alertów z Analytcs dziennika do platformy Azure
+title: Rozszerzanie alertów z usługi Log Analytics na platformę Azure
 description: W tym artykule opisano, narzędzi i interfejsów API za pomocą którego można rozszerzyć alerty z usługą Log Analytics do alertów platformy Azure.
 author: msvijayn
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: ed6b2fafbb3329e20985b75f55d29b52dcc5da57
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a470299df86f6b8f7fd61279af0334d01ef94f8d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415706"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957425"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Rozszerzanie alertów z usługi Log Analytics do alertów platformy Azure
 Funkcja alertów w usłudze Azure Log Analytics jest zastępowany przez alerty platformy Azure. W ramach tego przejścia alerty, które pierwotnie skonfigurowane w usłudze Log Analytics zostanie rozszerzony na platformę Azure. Jeśli nie chcesz poczekać na ich automatycznie przeniesione na platformę Azure, możesz zainicjować proces:
@@ -470,7 +470,7 @@ Poniżej przedstawiono kroki korygowania dla każdego błędu:
 
 - **Błąd: Zasady są obecne na poziomie grupy zasobów/subskrypcji**: ![zrzut ekranu przedstawiający pakietu Operations Management Suite ustawienia alertów stronie portalu, zasady komunikat o błędzie wyróżniony](media/monitoring-alerts-extend-tool/ErrorPolicy.png)
 
-    Gdy [usługi Azure Policy](../azure-policy/azure-policy-introduction.md) jest stosowany, ogranicza nowego zasobu w grupie subskrypcji lub zasobu, która zawiera obszar roboczy usługi Log Analytics (Operations Management Suite). System nie mógł rozszerzyć alertów do platformy Azure i utworzyć niezbędnych grup akcji.
+    Gdy [usługi Azure Policy](../governance/policy/overview.md) jest stosowany, ogranicza nowego zasobu w grupie subskrypcji lub zasobu, która zawiera obszar roboczy usługi Log Analytics (Operations Management Suite). System nie mógł rozszerzyć alertów do platformy Azure i utworzyć niezbędnych grup akcji.
     
     Aby rozwiązać problem, Edytuj zasady, które powoduje *[RequestDisallowedByPolicy](../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md)* błąd, który uniemożliwia tworzenie nowych zasobów w Twojej subskrypcji lub grupy zasobów, która zawiera obszar roboczy. Można to zrobić za pomocą witryny Azure portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API. Można przeprowadzać ich inspekcje działania, aby znaleźć odpowiednie zasady, który jest przyczyną błędu. Aby dowiedzieć się więcej, zobacz [wyświetlanie dzienników aktywności do inspekcji akcji](../azure-resource-manager/resource-group-audit.md). 
     

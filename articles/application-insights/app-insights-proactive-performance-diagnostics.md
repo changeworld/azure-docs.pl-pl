@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: b0256e899d47e3b6f8141218c11e1a7a62ca8e1a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 099e597982172bcea39fedd0fd1445f466eb2bc1
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419728"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960824"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Wykrywanie inteligentne — anomalie wydajności
 
@@ -161,7 +161,7 @@ Zwróć uwagę, że informuje:
 
 Usługa Application Insights umożliwia znalezienie problemów z wydajnością, którzy mogą wpływ tylko na część użytkowników lub wpływ tylko na użytkowników, w niektórych przypadkach. Na przykład powiadomienia o ładowania stron jest wolniejszy na jednym typie przeglądarki niż na inne typy przeglądarek, lub jeśli żądania są obsługiwane wolniej z określonego serwera. Umożliwia również odnajdywanie problemów związanych z kombinacji właściwości, takie jak powolne strona ładuje się w jednym obszarze geograficznym w przypadku klientów z określonym systemem operacyjnym.  
 
-Anomalie, takie jak te są bardzo trudne do wykrycia, po prostu, sprawdzając dane, ale są bardziej powszechne, niż myślisz. Często są tylko powierzchni, gdy klienci zaczną zgłaszać skargi. Do tego czasu go za późno s: narażeni użytkownicy są już przełączanie do Twoich konkurentów!
+Anomalie, takie jak te są bardzo trudne do wykrycia, po prostu, sprawdzając dane, ale są bardziej powszechne, niż myślisz. Często są tylko powierzchni, gdy klienci zaczną zgłaszać skargi. Do tego czasu jest za późno: narażeni użytkownicy są już przełączanie do Twoich konkurentów!
 
 Obecnie nasze algorytmy Przyjrzyj się krótszy czas ładowania strony, czasów odpowiedzi żądania na serwerze i czasów odpowiedzi zależności.  
 
@@ -185,8 +185,8 @@ Te narzędzia diagnostyczne ułatwiają sprawdzanie danych telemetrycznych z Two
 
 * [Profiler](app-insights-profiler.md) 
 * [Rozszerzenie Snapshot debugger](app-insights-snapshot-debugger.md)
-* [Analiza](app-insights-analytics-tour.md)
-* [Analiza inteligentna Diagnostyka](app-insights-analytics-diagnostics.md)
+* [Analiza](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Analiza inteligentna Diagnostyka](app-insights-analytics.md)
 
 Wykrywanie inteligentne są całkowicie automatyczny. A może chcesz skonfigurować niektóre alerty więcej?
 

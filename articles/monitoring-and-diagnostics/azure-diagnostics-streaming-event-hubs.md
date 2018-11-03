@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: c87a4acb8ca333af73643a38ae1338c9c8769d13
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 123005a32315ba3972ed4f1c1784d3ac9460b101
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341240"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958954"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Strumieniowe przesyłanie danych diagnostycznych platformy Azure w warstwie gorąca ścieżce za pomocą usługi Event Hubs
 Narzędzie diagnostyczne systemu Azure oferuje elastyczne sposoby zbierać metryki i dzienniki z maszyn wirtualnych usługi w chmurze (VM) i przenieść wyniki do usługi Azure Storage. Począwszy od marca 2016 r. (zestaw SDK 2.9) przedział czasu możesz wysyłanie danych diagnostycznych niestandardowymi źródłami danych i transferu danych ścieżkę aktywną w ciągu kilku sekund przy użyciu [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -42,7 +42,7 @@ Dane receieving centrów zdarzeń z usługi Azure Diagnostics jest obsługiwana 
 * Istniejących konfiguracji diagnostyki platformy Azure w aplikacji przy użyciu *.wadcfgx* pliku i jeden z następujących metod:
   * Visual Studio: [Konfigurowanie diagnostyki dla usług Azure Cloud Services i Virtual Machines](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
   * Program Windows PowerShell: [Włączanie diagnostyki w usługach Azure Cloud Services przy użyciu programu PowerShell](../cloud-services/cloud-services-diagnostics-powershell.md)
-* Aprowizowane na artykułu, przestrzeń nazw usługi Event Hubs [Rozpoczynanie pracy z usługą Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+* Aprowizowane na artykułu, przestrzeń nazw usługi Event Hubs [Rozpoczynanie pracy z usługą Event Hubs](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Łączenie usługi Azure Diagnostics do ujścia usługi Event Hubs
 Domyślnie Diagnostyka Azure zawsze wysyła dzienniki i metryki na konto usługi Azure Storage. Aplikacja może również wysyłać dane do usługi Event Hubs, dodając nowe **wychwytywanie** sekcji **PublicConfig** / **WadCfg** elementu *. wadcfgx* pliku. W programie Visual Studio *.wadcfgx* plik jest przechowywany w następującej ścieżce: **projekt usługi w chmurze** > **role** > **() RoleName)** > **diagnostics.wadcfgx** pliku.
@@ -220,7 +220,7 @@ Na poniższej ilustracji na pulpicie nawigacyjnym usługi Event Hubs zawiera dob
 ## <a name="view-hot-path-data"></a>Wyświetl dane ścieżkę aktywną
 Jak wcześniej wspomniano, istnieje wiele zastosowań do nasłuchiwania i przetwarzanie danych usługi Event Hubs.
 
-Jest jednym proste podejście do tworzenia aplikacji konsolowej mały test, do nasłuchiwania Centrum zdarzeń i drukowanie w strumieniu wyjściowym. Możesz umieścić następujący kod, który zostało wyjaśnione bardziej szczegółowo w [Rozpoczynanie pracy z usługą Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)), w aplikacji konsoli.  
+Jest jednym proste podejście do tworzenia aplikacji konsolowej mały test, do nasłuchiwania Centrum zdarzeń i drukowanie w strumieniu wyjściowym. Możesz umieścić następujący kod, który zostało wyjaśnione bardziej szczegółowo w [Rozpoczynanie pracy z usługą Event Hubs](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)), w aplikacji konsoli.  
 
 Należy zauważyć, że aplikacja konsoli musi zawierać [pakietu NuGet hosta procesora zdarzeń](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/).  
 
@@ -508,7 +508,7 @@ Chronione ustawienia:
 ## <a name="next-steps"></a>Kolejne kroki
 Następujące linki pozwalają dowiedzieć się więcej na temat usługi Event Hubs:
 
-* [Omówienie usługi Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md)
+* [Omówienie usługi Event Hubs](../event-hubs/event-hubs-about.md)
 * [Tworzenie centrum zdarzeń](../event-hubs/event-hubs-create.md)
 * [Event Hubs — często zadawane pytania](../event-hubs/event-hubs-faq.md)
 

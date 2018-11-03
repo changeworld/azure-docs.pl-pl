@@ -6,14 +6,14 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: f5b91329f5287c1d8f76c98f27d9bc2fd464a11a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 9eba9eef315f1ec6eb25ea21c1d4747ab002d078
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634219"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958920"
 ---
-# <a name="manage-the-avere-vfxt-cluster"></a>Zarządzanie klastrem vFXT Avere
+# <a name="manage-the-avere-vfxt-cluster"></a>Zarządzanie klastrem Avere vFXT
 
 Po utworzeniu klastra, konieczne może być dodawanie węzłów klastra, zatrzymywanie lub ponowne uruchomienie klastra. A po zakończeniu projektu, trzeba znać sposób zatrzymywania i trwale usunąć klaster. 
 
@@ -83,7 +83,7 @@ Podobnie jak Avere Panelu sterowania operacje vfxt.py spróbuj upewnij się, że
 
 vfxt.PY jest preinstalowany na kontrolerze klastra maszyny Wirtualnej. <!-- (If you want to install it on another system, refer to http://github.com/Azure/AvereSDK) xxx change when this repo goes  public -->
 
-Podręcznik użycia pełną vfxt.py jest dostępna w witrynie GitHub: <https://github.com/AvereSystems/vFXT.py/blob/master/docs/README.md> 
+Podręcznik użycia pełną vfxt.py jest dostępna w witrynie GitHub: [Zarządzanie klastrem przy użyciu vfxt.py w chmurze](https://github.com/azure/averesdk/blob/master/docs/README.md)
 
 ### <a name="add-cluster-nodes-with-vfxtpy"></a>Dodawanie węzłów klastra z vfxt.py
 
@@ -115,7 +115,7 @@ Jeśli nie używasz prototypu, należy tworzyć polecenie podobne do następują
    --log ~/vfxt.log
 ```
 
-Aby uzyskać więcej informacji, przeczytaj [dodać węzły do klastra](https://github.com/AvereSystems/vFXT.py/blob/master/docs/using_vfxt_py.md#add-nodes-to-a-cluster) w przewodniku użytkowania vfxt.py.
+Aby uzyskać więcej informacji, przeczytaj [dodać węzły do klastra](https://github.com/Azure/AvereSDK/blob/master/docs/using_vfxt_py.md#add-nodes-to-a-cluster) w przewodniku użytkowania vfxt.py.
 
 ### <a name="stop-a-cluster-with-vfxtpy"></a>Zatrzymaj klaster z vfxt.py
 
@@ -129,7 +129,7 @@ vfxt.py --cloud-type azure --from-environment --stop --resource-group GROUPNAME 
 vfxt.py --cloud-type azure --from-environment --start --resource-group GROUPNAME --admin-password PASSWORD --management-address ADMIN_IP --location LOCATION --azure-network NETWORK --azure-subnet SUBNET --instances INSTANCE1_ID INSTANCE2_ID INSTANCE3_ID ...
 ```    
 
-Ponieważ klaster zostanie zatrzymana, należy przekazać identyfikatory wystąpień, aby określić węzłów klastra. Odczyt [Określanie klastra, które można modyfikować](https://github.com/AvereSystems/vFXT.py/blob/master/docs/using_vfxt_py.md#specifying-which-cluster-to-modify) w przewodniku użytkowania vfxt.py, aby dowiedzieć się więcej.
+Ponieważ klaster zostanie zatrzymana, należy przekazać identyfikatory wystąpień, aby określić węzłów klastra. Odczyt [Określanie klastra, które można modyfikować](https://github.com/Azure/AvereSDK/blob/master/docs/using_vfxt_py.md#specifying-which-cluster-to-modify) w przewodniku użytkowania vfxt.py, aby dowiedzieć się więcej.
 
 ### <a name="destroy-a-cluster-with-vfxtpy"></a>Zniszcz klaster przy użyciu vfxt.py
 
@@ -139,8 +139,7 @@ vfxt.py --cloud-type azure --from-environment --destroy --resource-group GROUPNA
 
 Opcja ``--quick-destroy`` można użyć, jeśli nie chcesz zapisać zmienione dane z pamięci podręcznej klastra.
 
-Odczyt [Podręcznik użycia vfxt.py](<https://github.com/AvereSystems/vFXT.py/blob/master/docs/README.md>) Aby uzyskać dodatkowe informacje.  
-<!-- change to final location when available -->
+Odczyt [Podręcznik użycia vfxt.py](<https://github.com/Azure/AvereSDK/blob/master/docs/README.md>) Aby uzyskać dodatkowe informacje.  
 
 ## <a name="manage-cluster-vms-from-the-azure-portal"></a>Zarządzanie maszynami wirtualnymi klastra w witrynie Azure portal 
 

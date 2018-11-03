@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 47773f9375927e4d8dfbfec922e4cf11e42ade04
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 359ada08f1d9df6b60fc27ca385f6003af498e17
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634199"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958613"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Wdrażanie klastra vFXT
 
@@ -30,7 +30,7 @@ Aby uzyskać więcej informacji na temat kroków wdrażania klastra i planowania
 
 Po wykonaniu instrukcji w tym dokumencie, będziesz mieć sieć wirtualną, podsieć, kontrolera i klaster vFXT, jak pokazano na poniższym diagramie:
 
-![Diagram przedstawiający sieć wirtualna, zawierający opcjonalne blob storage i w podsieci zawierającej trzy pogrupowane maszyn wirtualnych z etykietą vFXT węzły/vFXT klastra i jeden kontroler etykietami klastra maszyny Wirtualnej](media/avere-vfxt-deployment-500px.png)
+![Diagram przedstawiający sieć wirtualna, zawierający opcjonalne blob storage i w podsieci zawierającej trzy pogrupowane maszyn wirtualnych z etykietą vFXT węzły/vFXT klastra i jeden kontroler etykietami klastra maszyny Wirtualnej](media/avere-vfxt-deployment.png)
 
 Przed rozpoczęciem upewnij się, że zostały rozwiązane te wymagania wstępne:  
 
@@ -198,9 +198,7 @@ Możesz również znaleźć brakujące informacje, przechodząc do strony inform
 
 Aby znaleźć te informacje z usługi Resource Manager wynik szablonu, wykonaj poniższą procedurę:
 
-1. Kliknij ikonę powiadomienia na górnym pasku w witrynie Azure Portal, **przejdź do grupy zasobów**. Pokazuje to nowej grupy zasobów zawierającej Twojego kontrolera i sieci wirtualnej.
-
-   ![Powiadomienia w sekcji portal "Pomyślnie wdrożono" komunikatów i "Przejdź do grupy zasobów" i "Przypnij do pulpitu nawigacyjnego" przycisków](media/avere-vfxt-browse-to-rg.png)
+1. Przejdź do grupy zasobów dla kontrolera sieci klastra.
 
 1. Po lewej stronie kliknij pozycję **wdrożeń**, a następnie **Microsoft.Template**.
 

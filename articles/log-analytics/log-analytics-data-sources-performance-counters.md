@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5822d32906419e8b0615dd8686ec47de28deb38f
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: d03af1398f8fd714246c88308ba615ae17010b39
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182227"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962031"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Windows i Linux źródła danych dotyczących wydajności w usłudze Log Analytics
 Liczniki wydajności, Windows i Linux zapewniają wgląd w wydajność składniki sprzętowe, systemów operacyjnych i aplikacji.  Usługa log Analytics można zebrać liczników wydajności w krótkich odstępach czasu do analizy prawie czasie rzeczywistym (nRT, NEAR) oprócz agregowania danych wydajności dla dłuższy okres analizy i raportowania.
@@ -128,10 +128,10 @@ Poniższa tabela zawiera listę obiektów i liczników, które można określić
 | Dysk fizyczny | Średni Dysku w s/Transfer |
 | Dysk fizyczny | Średni Dysku w s/Zapis |
 | Dysk fizyczny | Bajty dysku fizycznego/s |
-| Proces | Czas uprzywilejowany PCT |
-| Proces | Czas użytkownika protokołu PCT |
-| Proces | Używana pamięć (KB pamięci) |
-| Proces | Wirtualnej pamięci wspólnej |
+| Przetwórz | Czas uprzywilejowany PCT |
+| Przetwórz | Czas użytkownika protokołu PCT |
+| Przetwórz | Używana pamięć (KB pamięci) |
+| Przetwórz | Wirtualnej pamięci wspólnej |
 | Procesor | Czas DPC (%) |
 | Procesor | Czas bezczynności (%) |
 | Procesor | Czas przerwań (%) |
@@ -227,5 +227,5 @@ Poniższa tabela zawiera różne przykłady przeszukiwania dzienników, które p
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Liczniki wydajności są zbierane z poziomu aplikacji systemu Linux](log-analytics-data-sources-linux-applications.md) tym MySQL i Apache HTTP Server.
-* Dowiedz się więcej o [dziennikach](log-analytics-log-searches.md) analizować dane zbierane z innych źródeł danych i rozwiązań.  
+* Dowiedz się więcej o [dziennikach](log-analytics-log-search.md) analizować dane zbierane z innych źródeł danych i rozwiązań.  
 * Zebrane dane, aby wyeksportować [usługi Power BI](log-analytics-powerbi.md) dodatkowych wizualizacji i analizy.

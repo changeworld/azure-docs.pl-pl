@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: f7fe7cee39468558ce503c050d5574e4be15ebf5
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b33cbce582fde24e4cad6f0c208de3796a04f116
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407169"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963340"
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>Monitorowanie urządzeń Surface Hub z usługą Log Analytics, aby śledzić ich kondycję
 
@@ -35,7 +35,7 @@ Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiąz
 
 * A [subskrypcja usługi Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) poziom, który będzie obsługiwać liczbę urządzeń, które chcesz monitorować. Cennik usługi log Analytics różni się w zależności od tego, ile urządzeń są rejestrowane, a także jak dużo danych go procesów. Należy wziąć pod uwagę podczas planowania wdrożenia urządzenia Surface Hub.
 
-Następnie spowoduje dodanie do istniejącego obszaru roboczego usługi Log Analytics lub Utwórz nową. Szczegółowe instrukcje dotyczące przy użyciu jednej z metod wynosi [Rozpoczynanie pracy z usługą Log Analytics](log-analytics-get-started.md). Po skonfigurowaniu obszaru roboczego usługi Log Analytics, istnieją dwa sposoby rejestrowania urządzeń Surface Hub:
+Następnie spowoduje dodanie do istniejącego obszaru roboczego usługi Log Analytics lub Utwórz nową. Szczegółowe instrukcje dotyczące przy użyciu jednej z metod wynosi [Utwórz obszar roboczy usługi Log Analytics w witrynie Azure portal](log-analytics-quick-create-workspace.md). Po skonfigurowaniu obszaru roboczego usługi Log Analytics, istnieją dwa sposoby rejestrowania urządzeń Surface Hub:
 
 * Automatycznie za pomocą usługi Intune
 * Ręcznie za pomocą **ustawienia** na urządzeniu Surface Hub.
@@ -84,8 +84,8 @@ Monitorowanie usługi urządzeń Surface Hub przy użyciu usługi Log Analytics 
 
    ![Pulpicie nawigacyjnym urządzenia Surface Hub](./media/log-analytics-surface-hubs/surface-hub-dashboard.png)
 
-Możesz utworzyć [alerty](log-analytics-alerts.md) oparte na istniejące lub niestandardowych wyszukiwań w dziennikach. Korzystanie z danych, które usługa Log Analytics zbiera z usługi urządzeń Surface Hub, możesz wyszukać problemów i powiązane alerty warunki, które definiują dla urządzeń.
+Możesz utworzyć [alerty](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) oparte na istniejące lub niestandardowych wyszukiwań w dziennikach. Korzystanie z danych, które usługa Log Analytics zbiera z usługi urządzeń Surface Hub, możesz wyszukać problemów i powiązane alerty warunki, które definiują dla urządzeń.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Użyj [przeszukiwanie dzienników w usłudze Log Analytics](log-analytics-log-searches.md) Aby przeglądać szczegółowe dane na urządzeniu Surface Hub.
-* Tworzenie [alerty](log-analytics-alerts.md) być powiadamiana wystąpić problemy z usługi urządzeń Surface Hub.
+* Użyj [przeszukiwanie dzienników w usłudze Log Analytics](log-analytics-log-search.md) Aby przeglądać szczegółowe dane na urządzeniu Surface Hub.
+* Tworzenie [alerty](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) być powiadamiana wystąpić problemy z usługi urządzeń Surface Hub.

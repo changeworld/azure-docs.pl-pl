@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: ad6bf2db44996684096deb2b351301e450d80249
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 5cce3005a0058604136e05d9c3bf9700d5296bf3
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747970"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964081"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji między regionami platformy Azure do innego
 
@@ -204,7 +204,7 @@ Konta magazynu ogólnego przeznaczenia w wersji 2 (zarówno gorąca i chłodna w
 ## <a name="replicated-machines---networking"></a>Replikowane maszyny — sieci
 **Konfiguracja** | **Pomoc techniczna** | **Szczegóły**
 --- | --- | ---
-NIC | Maksymalna liczba obsługiwanych bierz określone rozmiaru maszyny Wirtualnej platformy Azure | Karty sieciowe są tworzone podczas tworzenia maszyny Wirtualnej podczas pracy awaryjnej.<br/><br/> Liczba kart sieciowych na maszynie Wirtualnej w trybie failover zależy od liczba kart sieciowych źródłowej maszyny Wirtualnej po włączeniu replikacji. Jeśli dodasz lub usuniesz kartę Sieciową po włączeniu replikacji, wpływa nie liczba kart sieciowych zreplikowaną maszyną Wirtualną po włączeniu trybu failover.
+NIC | Maksymalna liczba obsługiwanych dla określonego rozmiaru maszyny Wirtualnej platformy Azure | Karty sieciowe są tworzone podczas tworzenia maszyny Wirtualnej podczas pracy awaryjnej.<br/><br/> Liczba kart sieciowych na maszynie Wirtualnej w trybie failover zależy od liczba kart sieciowych źródłowej maszyny Wirtualnej po włączeniu replikacji. Jeśli dodasz lub usuniesz kartę Sieciową po włączeniu replikacji, wpływa nie liczba kart sieciowych zreplikowaną maszyną Wirtualną po włączeniu trybu failover.
 Internetowy moduł równoważenia obciążenia | Obsługiwane | Kojarzenie modułu równoważenia obciążenia wstępnie skonfigurowane, za pomocą skryptu usługi Azure Automation w planie odzyskiwania.
 Wewnętrzny moduł równoważenia obciążenia | Obsługiwane | Kojarzenie modułu równoważenia obciążenia wstępnie skonfigurowane, za pomocą skryptu usługi Azure Automation w planie odzyskiwania.
 Publiczny adres IP | Obsługiwane | Kojarzenie istniejącego publicznego adresu IP z karty sieciowej. Lub, tworzenie publicznego adresu IP i skojarz ją z kartą Sieciową za pomocą skryptu usługi Azure Automation w planie odzyskiwania.

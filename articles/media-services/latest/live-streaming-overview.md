@@ -13,19 +13,19 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 533aa505c38d3cbfb46d70acecd43cc66614b13d
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: c8e4e84d7ae0defdb053108dc668956062c47ea5
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378140"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962388"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Przesyłanie strumieniowe przy użyciu usługi Azure Media Services v3 na żywo
 
 Gdy dostarczanie wydarzeń transmisji strumieniowej na żywo w usłudze Azure Media Services to zwykle wymagane są następujące składniki:
 
 * Kamera, która umożliwia emisję wydarzenia.
-* Koder wideo na żywo, który konwertuje sygnały z kamery (lub innego urządzenia, takie jak laptop) do strumieni, które są wysyłane do usługi przesyłania strumieniowego iąż. Sygnały mogą również obejmować anonsowanie SCTE 35 i podpowiedzi Ad. 
+* Koder wideo na żywo, który konwertuje sygnały z kamery (lub innego urządzenia, takie jak laptop) do strumieni, które są wysyłane do usługi transmisji strumieniowej na żywo. Sygnały mogą również obejmować anonsowanie SCTE 35 i podpowiedzi Ad. 
 * Usługa Media Services transmisji strumieniowej na żywo umożliwia pozyskiwania, w wersji zapoznawczej, pakietów, rejestrowanie, szyfrowania i emisji zawartości do klientów lub do sieci CDN w celu dalszej dystrybucji.
 
 W tym artykule szczegółowo omówiono i zawiera diagramy główne składniki zaangażowane w transmisji strumieniowej na żywo za pomocą usługi Media Services.

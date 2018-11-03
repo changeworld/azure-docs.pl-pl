@@ -4,16 +4,16 @@ description: W tym artykule opisano, jak może działać w złożonych typach da
 services: stream-analytics
 ms.service: stream-analytics
 author: jasonwhowell
-ms.author: jasonh
+ms.author: mamccrea
 manager: kfile
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.openlocfilehash: 208dfd1d78437e4ae8270d599f6365ad70a708c7
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 456167d3f17811aa77bb0c43165e5e70bb641814
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581476"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979016"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Analizowanie danych JSON i Avro w usłudze Azure Stream Analytics
 

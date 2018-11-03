@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 54a335cf1386ab29c0e0214bccf1f53a076da02b
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 24ab8e5171ebb33a5f3be5c6bf08e361fff4e4cc
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783602"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959549"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Instrumentowanie aplikacji internetowych w czasie wykonywania za pomocą usługi Application Insights
 
@@ -57,7 +57,7 @@ Jeśli aplikacja działa jako usługa sieci Web platformy Azure, monitorowanie n
 
     ![Klikaj elementy, aż przejdziesz do usługi Application Insights](./media/app-insights-monitor-performance-live-website-now/azure-web-view-more.png)
 
-[Monitorowanie aplikacji w chmurze i na maszynie wirtualnej](app-insights-azure.md).
+[Monitorowanie aplikacji w chmurze i na maszynie wirtualnej](app-insights-overview.md).
 
 ### <a name="enable-client-side-monitoring-in-azure"></a>Włączanie monitorowania po stronie klienta na platformie Azure
 

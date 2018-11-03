@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: eb129ebe6d63396934cbcda509d711cc63a5ee1b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9c2b5db4fe35227600e7ab8d94f2cc8701cf529b
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402944"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963780"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-log-analytics-agent-for-linux"></a>Zbieraj alerty z programów Nagios i Zabbix w usłudze Log Analytics z agenta usługi Log Analytics dla systemu Linux 
 [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
-[Nagios](https://www.nagios.org/) i [Zabbix](http://www.zabbix.com/) typu open source, narzędzi do monitorowania. Można zbierać alerty z tych narzędzi w usłudze Log Analytics w celu przeanalizowania wraz z [alertów z innych źródeł](log-analytics-alerts.md).  W tym artykule opisano sposób konfigurowania agenta usługi Log Analytics dla systemu Linux w celu gromadzenia alertów z poziomu tych systemów.
+[Nagios](https://www.nagios.org/) i [Zabbix](http://www.zabbix.com/) typu open source, narzędzi do monitorowania. Można zbierać alerty z tych narzędzi w usłudze Log Analytics w celu przeanalizowania wraz z [alertów z innych źródeł](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md).  W tym artykule opisano sposób konfigurowania agenta usługi Log Analytics dla systemu Linux w celu gromadzenia alertów z poziomu tych systemów.
  
 ## <a name="prerequisites"></a>Wymagania wstępne
 Agenta usługi Log Analytics dla systemu Linux obsługuje zbieranie alertów z Nagios do wersji 4.2.x i Zabbix do wersji 2.x.
@@ -80,7 +80,7 @@ Aby zbierać alerty na Nagios serwerze, wykonaj następujące czynności.
 
 
 ## <a name="alert-records"></a>Rekordy alertów
-Rekordy alertów można pobrać z programów Nagios i Zabbix przy użyciu [dziennikach](log-analytics-log-searches.md) w usłudze Log Analytics.
+Rekordy alertów można pobrać z programów Nagios i Zabbix przy użyciu [dziennikach](log-analytics-log-search.md) w usłudze Log Analytics.
 
 ### <a name="nagios-alert-records"></a>Rekordy Nagios alertu
 
@@ -118,5 +118,5 @@ Zgłoś alert, ma rekordów zbieranych przez Zabbix **typu** z **alertu** i **sy
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [alerty](log-analytics-alerts.md) w usłudze Log Analytics.
-* Dowiedz się więcej o [dziennikach](log-analytics-log-searches.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
+* Dowiedz się więcej o [alerty](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) w usłudze Log Analytics.
+* Dowiedz się więcej o [dziennikach](log-analytics-log-search.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 

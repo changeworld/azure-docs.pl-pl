@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: ae02868500329763ea459f8fb81be17598fac4ec
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 0c85b65e9b6eabcb5c74e1d178c0f26235cdf624
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914536"
+ms.locfileid: "50961827"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream danych monitorowania platformy Azure do Centrum zdarzeń do użycia przez narzędzie zewnętrzne
 
@@ -27,8 +27,8 @@ W środowisku platformy Azure istnieje kilka "warstwy" danych monitorowania, a m
 
 - **Monitorowanie danych aplikacji:** dane dotyczące wydajności i funkcji kodu zostały napisane i działają na platformie Azure. Przykładami aplikacji, danych monitorowania ślady wydajności, dzienniki aplikacji i danych telemetrycznych użytkownika. Monitorowanie danych aplikacji zwykle są zbierane w jednym z następujących sposobów:
   - Instrumentując kodu za pomocą zestawu SDK, takich jak [zestawu SDK usługi Application Insights](../application-insights/app-insights-overview.md).
-  - Uruchamiając agent monitorowania, który nasłuchuje nowych aplikacji dzienników na maszynie działania aplikacji, takich jak [agenta diagnostyki Azure Windows](./azure-diagnostics.md) lub [agenta diagnostyki Azure Linux](../virtual-machines/linux/diagnostic-extension.md).
-- **Dane monitorowania systemu operacyjnego gościa:** dane dotyczące systemu operacyjnego, na którym aplikacja jest uruchomiona. Przykładowe dane monitorowania systemu operacyjnego gościa będzie dzienników syslog systemu Linux lub zdarzeń systemu Windows. Aby zbierać dane tego typu, należy zainstalować agenta, takie jak [agenta diagnostyki Azure Windows](./azure-diagnostics.md) lub [agenta diagnostyki Azure Linux](../virtual-machines/linux/diagnostic-extension.md).
+  - Uruchamiając agent monitorowania, który nasłuchuje nowych aplikacji dzienników na maszynie działania aplikacji, takich jak [agenta diagnostyki Azure Windows](./azure-diagnostics.md) lub [agenta diagnostyki Azure Linux](../virtual-machines/extensions/diagnostics-linux.md).
+- **Dane monitorowania systemu operacyjnego gościa:** dane dotyczące systemu operacyjnego, na którym aplikacja jest uruchomiona. Przykładowe dane monitorowania systemu operacyjnego gościa będzie dzienników syslog systemu Linux lub zdarzeń systemu Windows. Aby zbierać dane tego typu, należy zainstalować agenta, takie jak [agenta diagnostyki Azure Windows](./azure-diagnostics.md) lub [agenta diagnostyki Azure Linux](../virtual-machines/extensions/diagnostics-linux.md).
 - **Dane monitorowania zasobów platformy Azure:** danych dotyczących operacji zasobu platformy Azure. W przypadku niektórych typów zasobów platformy Azure, takie jak maszyny wirtualne ma systemu operacyjnego gościa i aplikacji do monitorowania wewnątrz tej usługi platformy Azure. Dla innych zasobów platformy Azure, takich jak sieciowe grupy zabezpieczeń zasobu danych monitorowania jest najwyższej warstwy danych (ponieważ nie ma systemu operacyjnego gościa lub aplikacja działająca w tych zasobach). Te dane można zbierać w programach [ustawień diagnostycznych zasobu](./monitoring-overview-of-diagnostic-logs.md#diagnostic-settings).
 - **Dane monitorowania subskrypcji platformy Azure:** dane dotyczące operacji i zarządzania subskrypcją platformy Azure, a także dane dotyczące kondycji i działanie systemu Azure sam. [Dziennika aktywności](./monitoring-overview-activity-logs.md) zawiera większość subskrypcji monitorowania danych, takich jak zdarzenia kondycji usługi i inspekcji usługi Azure Resource Manager. Można zbierać dane przy użyciu profilu dziennika.
 - **Dane monitorowania dzierżawy platformy Azure:** dane o poziomie dzierżawy usług platformy Azure, takich jak Azure Active Directory. Przeprowadza inspekcję Azure Active Directory i logowania są przykładami dzierżawy danych monitorowania. Te dane mogą być zbierane przy użyciu ustawienia diagnostyczne dzierżawy.
@@ -54,7 +54,7 @@ Dane monitorowania dzierżawy platformy Azure jest obecnie dostępny tylko dla u
 
 ### <a name="azure-active-directory-data"></a>Dane usługi Active Directory systemu Azure
 
-Aby wysyłać dane z dziennika usługi Azure Active Directory do przestrzeni nazw usługi Event Hubs, należy skonfigurować ustawienie diagnostyczne dzierżawy w dzierżawie usługi AAD. [Postępuj zgodnie z tego przewodnika](../active-directory/reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md) skonfigurować ustawienie diagnostyczne dzierżawy.
+Aby wysyłać dane z dziennika usługi Azure Active Directory do przestrzeni nazw usługi Event Hubs, należy skonfigurować ustawienie diagnostyczne dzierżawy w dzierżawie usługi AAD. [Postępuj zgodnie z tego przewodnika](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) skonfigurować ustawienie diagnostyczne dzierżawy.
 
 ## <a name="azure-subscription-monitoring-data"></a>Dane monitorowania subskrypcji platformy Azure
 
@@ -71,7 +71,7 @@ Aby przesyłanie danych z dziennika aktywności platformy Azure do przestrzeni n
 
 Zasoby platformy Azure tworzą dwa rodzaje danych monitorowania:
 1. [Dzienniki diagnostyczne zasobu](./monitoring-overview-of-diagnostic-logs.md)
-2. [Metryki](monitoring-overview-metrics.md)
+2. [Metryki](../monitoring/monitoring-data-collection.md)
 
 Oba typy danych są wysyłane do Centrum zdarzeń za pomocą ustawienie diagnostyczne zasobu. [Postępuj zgodnie z tego przewodnika](./monitoring-stream-diagnostic-logs-to-event-hubs.md) skonfigurować ustawienie diagnostyczne zasobu definiuje od określonego zasobu. Ustaw ustawienie diagnostyczne zasobu dla każdego zasobu, z której chcesz zbierać dzienniki.
 
@@ -119,5 +119,5 @@ Routing danych monitorowania do Centrum zdarzeń za pomocą usługi Azure Monito
 ## <a name="next-steps"></a>Następne kroki
 * [Archiwizowanie dziennika aktywności na koncie magazynu](monitoring-archive-activity-log.md)
 * [Zapoznaj się z omówieniem dziennika aktywności platformy Azure](monitoring-overview-activity-logs.md)
-* [Ustawianie alertu na podstawie zdarzenia dziennika aktywności](insights-auditlog-to-webhook-email.md)
+* [Ustawianie alertu na podstawie zdarzenia dziennika aktywności](monitor-alerts-unified-log-webhook.md)
 

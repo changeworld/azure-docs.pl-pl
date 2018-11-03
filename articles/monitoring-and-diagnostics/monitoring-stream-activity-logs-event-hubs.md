@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 7a5372174fcc7cd9552c00c9d283772c9863b815
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: af8248bb68068c20d62a2d8cc1e86fd9997a740c
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258002"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962967"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Stream dziennika aktywności platformy Azure do usługi Event Hubs
 Można przesyłać strumieniowo [dziennika aktywności platformy Azure](monitoring-overview-activity-logs.md) niemal w czasie rzeczywistym do aplikacji przez:
@@ -101,5 +101,5 @@ Schemat dla dziennika aktywności jest dostępny w [monitorowania aktywności su
 ## <a name="next-steps"></a>Kolejne kroki
 * [Archiwizowanie dziennika aktywności na koncie magazynu](monitoring-archive-activity-log.md)
 * [Zapoznaj się z omówieniem dziennika aktywności platformy Azure](monitoring-overview-activity-logs.md)
-* [Ustawianie alertu na podstawie zdarzenia dziennika aktywności](insights-auditlog-to-webhook-email.md)
+* [Ustawianie alertu na podstawie zdarzenia dziennika aktywności](monitor-alerts-unified-log-webhook.md)
 

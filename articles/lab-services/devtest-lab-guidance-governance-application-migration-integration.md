@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 8653056c5c4b0e5b6831d3cc2b0006e89ac01bdd
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 8a661c94ecc660e0ebd0e9818acef81b8a7b819b
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251088"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978619"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Zarządzanie infrastrukturą usługi Azure DevTest Labs — migrację aplikacji i integracji
-Po ustanowieniu środowiska laboratoryjnego projektowania i testowania, należy wziąć pod uwagę na następujące pytania: 
+Po ustanowieniu środowiska laboratoryjnego projektowania i testowania, należy wziąć pod uwagę na następujące pytania:
 
-- Jak korzystać środowiska w ramach zespołu projektu 
+- Jak korzystać środowiska w ramach zespołu projektu
 - Jak zapewnić wykonaj wszelkie wymagane zasady organizacyjne i zachować elastyczność, aby dodać wartość do aplikacji?
 
 ## <a name="azure-marketplace-images-vs-custom-images"></a>Obrazy platformy Azure Marketplace i niestandardowych obrazów
@@ -60,10 +60,10 @@ Jak mogę skonfigurować łatwe powtarzalnego procesu do wprowadzenia Moje niest
 ### <a name="answer"></a>Odpowiedź
 Zobacz [tego wideo na wzorcu fabryki Immage](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/). W tym scenariuszu jest to zaawansowany scenariusz, a podane skrypty są przykładowe skrypty. Jeśli są wymagane zmiany, musisz zarządzać i obsługiwać skrypty używane w danym środowisku.
 
-Przy użyciu DevTest Labs, aby utworzyć potok obrazu niestandardowego w Visual Studio Team Services (VSTS):
+Tworzenie potoku obrazu niestandardowego w potokach platformy Azure przy użyciu usługi DevTest Labs:
 
 - [Wprowadzenie: Przygotowanie maszyn wirtualnych w ciągu kilku minut, konfigurując fabrykę obrazu w usłudze Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)
-- [Fabryka obrazu — część 2! Konfigurowanie usługi VSTS i fabryki laboratorium do tworzenia maszyn wirtualnych](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
+- [Fabryka obrazu — część 2! Konfigurowanie potoków usługi Azure i fabryki laboratorium do tworzenia maszyn wirtualnych](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
 - [Fabryka obrazu — część 3: Zapisywanie niestandardowych obrazów i dystrybucji do wielu Labs](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)
 - [Wideo: Fabryki obrazu niestandardowego za pomocą usługi Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)
 
@@ -79,7 +79,7 @@ Tak. Istnieją dwie kwestie należy wziąć pod uwagę — ruch przychodzący i 
 
 **Ruch wychodzący** — Jeśli chcesz uniemożliwić maszyn wirtualnych, przechodząc bezpośrednio do publicznej sieci internet i wymuszają ruch za pośrednictwem zapory firmowej, a następnie może kierować ruch w środowisku lokalnym za pośrednictwem expressroute lub sieci VPN, za pomocą wymuszają routingu.
 
-> [!NOTE] 
+> [!NOTE]
 > Jeśli masz serwer proxy, która blokuje ruch bez ustawienia serwera proxy, nie zapomnij dodać wyjątki na konto magazynu artefaktów laboratorium.
 
 Można również użyć grup zabezpieczeń sieci dla maszyn wirtualnych lub podsieci. Ten krok powoduje dodanie dodatkową warstwę ochrony, aby umożliwić / blokować ruch.
@@ -100,9 +100,9 @@ W przeciwnym razie każde środowisko usługi DevTest Labs może mieć własną 
 Kiedy używać udostępnionego IP a publicznym adresem IP a prywatny adres IP?
 
 ### <a name="answer"></a>Odpowiedź
-Jeśli używasz sieci VPN lokacja lokacja lub Expressroute, należy wziąć pod uwagę przy użyciu prywatnych adresów IP, maszynach są dostępne za pośrednictwem sieci wewnętrznej i niedostępne za pośrednictwem publicznej sieci internet. 
+Jeśli używasz sieci VPN lokacja lokacja lub Expressroute, należy wziąć pod uwagę przy użyciu prywatnych adresów IP, maszynach są dostępne za pośrednictwem sieci wewnętrznej i niedostępne za pośrednictwem publicznej sieci internet.
 
-> [!NOTE] 
+> [!NOTE]
 > Laboratorium właścicieli można zmienić te zasady podsieci, upewnij się, nikt przypadkowo tworzy publiczne adresy IP dla maszyn wirtualnych. Właściciel subskrypcji należy utworzyć zasady subskrypcji, uniemożliwiając tworzona publicznych adresów IP.
 
 Korzystając z udostępnionych, publicznych adresów IP, maszyny wirtualne w laboratorium udostępniać publicznego adresu IP. Takie podejście może być przydatne, gdy potrzebujesz w celu uniknięcia przekroczenia limitów dla publicznych adresów IP w ramach danej subskrypcji.
@@ -125,7 +125,7 @@ Podczas wybierania liczby maszyn wirtualnych, dla określonego użytkownika lub 
 Jak użyć szablonów usługi Resource Manager w mojej usługi DevTest Labs środowiska?
 
 ### <a name="answer"></a>Odpowiedź
-Wdrażanie szablonów usługi Resource Manager w środowisku laboratorium, wykonując kroki opisane w [funkcji środowisk w usłudze DevTest labs](devtest-lab-test-env.md) artykułu. Po prostu zaznacz szablonów usługi Resource Manager do repozytorium Git (Visual Studio Team Services lub GitHub) i Dodaj [prywatnym repozytorium szablonów](devtest-lab-test-env.md) do laboratorium.
+Wdrażanie szablonów usługi Resource Manager w środowisku laboratorium, wykonując kroki opisane w [funkcji środowisk w usłudze DevTest labs](devtest-lab-test-env.md) artykułu. Po prostu zaznacz szablonów usługi Resource Manager do repozytorium Git (repozytoriów platformy Azure lub GitHub) i Dodaj [prywatnym repozytorium szablonów](devtest-lab-test-env.md) do laboratorium.
 
 Ten scenariusz może okazać się przydatne, jeśli używasz usługi DevTest Labs do komputerów-hostów rozwoju, ale mogą być przydatne, jeśli tworzysz środowisko przejściowe, który jest reprezentatywny dla produkcji.
 

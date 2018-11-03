@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: b5632db57e902eef76860f85de6e76f85861090a
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: c478c2c4af12ecaa02e6700ec7faffc5b9862a00
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45728967"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958189"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Łączenie urządzenia Raspberry Pi z aplikacją usługi Azure IoT Central (Python)
 
@@ -23,9 +23,9 @@ W tym artykule opisano jak Deweloper urządzenia do łączenia z urządzeniem Ra
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Do wykonania kroków opisanych w tym artykule potrzebne są:
+Aby wykonać kroki opisane w tym artykule, potrzebne są następujące składniki:
 
-* Aplikacja usługi Azure IoT Central, utworzone na podstawie **Devkits przykładowe** szablon aplikacji. Aby uzyskać więcej informacji, zobacz [utworzyć aplikację usługi Azure IoT centralnej](howto-create-application.md).
+* Aplikacja usługi Azure IoT Central, utworzone na podstawie **Devkits przykładowe** szablon aplikacji. Aby uzyskać więcej informacji, zobacz [tworzenie aplikacji Szybki Start](quick-deploy-iot-central.md).
 * Urządzenie Raspberry Pi, systemem operacyjnym Raspbian. Potrzebujesz monitora, klawiatury i myszy podłączone do urządzenia Raspberry Pi można uzyskiwać dostęp do środowiska graficznego interfejsu użytkownika. Urządzenia Raspberry Pi musi mieć możliwość [połączenie z Internetem](https://www.raspberrypi.org/learning/software-guide/wifi/).
 * Opcjonalnie [Hat sensie](https://www.raspberrypi.org/products/sense-hat/) tablicy dodatku dla urządzenia Raspberry Pi. Ta tablica zbiera dane telemetryczne z różnych czujników do wysłania do aplikacji usługi Azure IoT Central. Jeśli nie masz **Hat sensie** tablicy, możesz zamiast tego użyć emulatora (dostępne jako część obrazu urządzenia Raspberry Pi).
 
@@ -33,17 +33,28 @@ Do wykonania kroków opisanych w tym artykule potrzebne są:
 
 Utworzone na podstawie aplikacji **Devkits przykładowe** szablon aplikacji zawiera **Raspberry Pi** szablon urządzenia o następującej charakterystyce: 
 
-- Dane telemetryczne, zawierającą pomiarów urządzenia **wilgotności**, **temperatury**, **wykorzystanie**, **Magnometer** (mierzoną wzdłuż X Y, osi Z), **Accelorometer** (mierzoną wzdłuż X, Y osi Z), i **Żyroskop** (mierzoną wzdłuż X, Y osi Z).
-- Ustawień przedstawiający **napięcia**, **bieżącego**,**szybkość wentylator** i **IR** przełącznika.
-- Właściwości zawierający właściwości urządzenia **zdechną numer** i **lokalizacji** właściwość w chmurze.
+- Dane telemetryczne, obejmuje następujące pomiary zbieranych urządzenia:
+    - Wilgotność
+    - Temperatura
+    - Ciśnienie
+    - Magnetometrów (X, Y, Z)
+    - Przyspieszeniomierza (X, Y, Z)
+    - Żyroskop (X, Y, Z)
+- Ustawienia
+    - Napięcie
+    - Bieżący
+    - Wentylator szybkości
+    - Przełącz Podczerwieni.
+- Właściwości
+    - Zdechną liczba właściwości urządzenia
+    - Właściwość chmury lokalizacji
 
-
-Można znaleźć szczegółowe informacje o konfiguracji szablonu urządzenia [Szczegóły szablonu Raspberry PI urządzenia](howto-connect-raspberry-pi-python.md#raspberry-pi-device-template-details)
+Pełne szczegóły konfiguracji szablonu urządzeń można znaleźć [Szczegóły szablonu Raspberry PI urządzenia](howto-connect-raspberry-pi-python.md#raspberry-pi-device-template-details)
     
 
 ## <a name="add-a-real-device"></a>Dodawanie rzeczywistego urządzenia
 
-W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **Raspberry Pi** szablon urządzenia i zanotować szczegółów połączenia urządzeń (**klucza podstawowego identyfikator zakresu, identyfikator urządzenia**). Aby uzyskać więcej informacji, zobacz [dodać rzeczywistego urządzenia do aplikacji usługi Azure IoT Central](tutorial-add-device.md).
+W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **Raspberry Pi** urządzenia szablonu i Śledź szczegółów połączenia urządzeń (**klucza podstawowego identyfikator zakresu, identyfikator urządzenia**). Aby uzyskać więcej informacji, zobacz [dodać rzeczywistego urządzenia do aplikacji usługi Azure IoT Central](tutorial-add-device.md).
 
 
 ### <a name="configure-the-raspberry-pi"></a>Konfigurowanie urządzenia Raspberry Pi
@@ -53,11 +64,11 @@ Poniżej opisano sposób pobierania i konfigurowanie przykładowej aplikacji Pyt
 * Wysyła dane telemetryczne i wartości właściwości do usługi Azure IoT Central.
 * Odnosi się do ustawienia zmian wprowadzonych w usłudze Azure IoT Central.
 
-Aby skonfigurować urządzenie [postępuj zgodnie z instrukcjami krok po kroku w witrynie GitHub.](http://aka.ms/iotcentral-docs-Raspi-releases)
+Aby skonfigurować urządzenie, [postępuj zgodnie z instrukcjami krok po kroku w witrynie GitHub.](http://aka.ms/iotcentral-docs-Raspi-releases)
 
 
 > [!NOTE]
-> Aby uzyskać więcej informacji na temat przykładowych Raspberry Pi w języku Python, zobacz [Readme](http://aka.ms/iotcentral-docs-Raspi-releases) pliku w usłudze GitHub.
+> Aby uzyskać więcej informacji na temat przykładowych Raspberry Pi w języku Python, zobacz [README](http://aka.ms/iotcentral-docs-Raspi-releases) pliku w usłudze GitHub.
 
 
 1. Po skonfigurowaniu urządzenia urządzenia na początek chwilowo wysyłania danych do usługi Azure IoT Central.
@@ -103,7 +114,7 @@ Ustawienia przełącznika
 
 | Nazwa wyświetlana | Nazwa pola | W tekście | Wyłącz tekstu | Początkowa |
 | ------------ | ---------- | ------- | -------- | ------- |
-| ŚRODOWISKO IR           | activateIR | ON      | WYŁ.      | Wyłączone     |
+| IR           | activateIR | ON      | WYŁĄCZONE      | Wyłączone     |
 
 ### <a name="properties"></a>Właściwości
 

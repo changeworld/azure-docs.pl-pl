@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 297b3f4c9ef110f8adc9dcb5cd9eac9e30729a5d
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: da1f69fc4b962114668c3365ef345c361a22a526
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47180129"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963969"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Usługi platformy Azure zbieranie dzienników i metryk do użycia w usłudze Log Analytics
 
@@ -35,7 +35,7 @@ Istnieją cztery różne sposoby pobierania dzienników i metryk dla usług plat
 | Usługa                 | Typ zasobu                           | Dzienniki        | Metryki     | Rozwiązanie |
 | --- | --- | --- | --- | --- |
 | Bramy aplikacji    | Microsoft.Network/applicationGateways   | Diagnostyka | Diagnostyka | [Usługi Azure Application Gateway Analytics](log-analytics-azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-log-analytics) |
-| Application Insights    |                                         | Łącznik   | Łącznik   | [Łącznik usługi Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) (wersja zapoznawcza) |
+| Usługa Application insights    |                                         | Łącznik   | Łącznik   | [Łącznik usługi Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) (wersja zapoznawcza) |
 | Konta usługi Automation     | Microsoft.Automation/AutomationAccounts | Diagnostyka |             | [Więcej informacji](../automation/automation-manage-send-joblogs-log-analytics.md)|
 | Konta usługi Batch          | Microsoft.Batch/batchAccounts           | Diagnostyka | Diagnostyka | |
 | Usługi w chmurze klasycznego  |                                         | Magazyn     |             | [Więcej informacji](log-analytics-azure-storage-iis-table.md) |
@@ -51,7 +51,7 @@ Istnieją cztery różne sposoby pobierania dzienników i metryk dla usług plat
 | Magazyny usługi Recovery         | Microsoft.RecoveryServices/vaults       |             |             | [Usługa Azure Recovery Services — analiza (Podgląd)](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 | Usługi wyszukiwania         | Microsoft.Search/searchServices         | Diagnostyka | Diagnostyka | |
 | Przestrzeń nazw magistrali usług   | Microsoft.ServiceBus/namespaces         | Diagnostyka | Diagnostyka | [Usługa Service Bus analiza (Podgląd)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
-| Service Fabric          |                                         | Magazyn     |             | [Analiza usługi Service Fabric (wersja zapoznawcza)](log-analytics-service-fabric.md) |
+| Service Fabric          |                                         | Magazyn     |             | [Analiza usługi Service Fabric (wersja zapoznawcza)](../service-fabric/service-fabric-diagnostics-oms-setup.md) |
 | SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | Diagnostyka | [Usługi Azure SQL Analytics (wersja zapoznawcza)](log-analytics-azure-sql.md) |
 | Magazyn                 |                                         |             | Skrypt      | [Usługa Azure Storage Analytics (wersja zapoznawcza)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution) |
 | Maszyny wirtualne        | Microsoft.Compute/virtualMachines       | Wewnętrzny   | Wewnętrzny <br> Diagnostyka  | |
@@ -61,14 +61,14 @@ Istnieją cztery różne sposoby pobierania dzienników i metryk dla usług plat
 
 
 > [!NOTE]
-> Do monitorowania maszyn wirtualnych platformy Azure (Linux i Windows), zaleca się zainstalowanie [rozszerzenia Log Analytics VM](log-analytics-azure-vm-extension.md). Agent udostępnia szczegółowe informacje zebrane z w obrębie maszyn wirtualnych. Można również użyć rozszerzenia dla zestawów skalowania maszyn wirtualnych.
+> Do monitorowania maszyn wirtualnych platformy Azure (Linux i Windows), zaleca się zainstalowanie [rozszerzenia Log Analytics VM](log-analytics-quick-collect-azurevm.md). Agent udostępnia szczegółowe informacje zebrane z w obrębie maszyn wirtualnych. Można również użyć rozszerzenia dla zestawów skalowania maszyn wirtualnych.
 >
 >
 
 ## <a name="azure-diagnostics-direct-to-log-analytics"></a>Narzędzie diagnostyczne systemu Azure bezpośrednio do usługi Log Analytics
 Wiele zasobów platformy Azure są w stanie zapisywać dzienniki diagnostyczne i metryki bezpośrednio do usługi Log Analytics i to jest preferowany sposób zbierania danych w celu analizy. Korzystając z usługi Diagnostyka Azure, dane są zapisywane bezpośrednio do usługi Log Analytics i nie ma potrzeby najpierw zapisać danych do magazynu.
 
-Zasoby platformy Azure, które obsługują [usługa Azure monitor](../monitoring-and-diagnostics/monitoring-overview.md) wysłać ich dzienników i metryk bezpośrednio do usługi Log Analytics.
+Zasoby platformy Azure, które obsługują [usługa Azure monitor](../azure-monitor/overview.md) wysłać ich dzienników i metryk bezpośrednio do usługi Log Analytics.
 
 > [!NOTE]
 > Wysyłanie metryk wielowymiarowych do usługi Log Analytics za pomocą ustawień diagnostycznych nie jest obecnie obsługiwane. Metryki wielowymiarowe są eksportowane jako spłaszczone metryki jednowymiarowe z wartościami zagregowanymi we wszystkich wymiarach.
@@ -158,5 +158,5 @@ Galeria szablonów platformy Azure ma [przykłady użycia usługi Azure Automati
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Magazyn obiektów blob na użytek usług IIS i magazynu table storage zdarzeń](log-analytics-azure-storage-iis-table.md) do odczytywania dzienników dla tej diagnostyki zapisu do usługi table storage lub dzienniki programu IIS zapisywane do magazynu obiektów blob usługi systemu Azure.
-* [Włączanie rozwiązań](log-analytics-add-solutions.md) zapewniające wgląd w dane.
-* [Używają zapytań wyszukiwania](log-analytics-log-searches.md) do analizowania danych.
+* [Włączanie rozwiązań](../monitoring/monitoring-solutions.md) zapewniające wgląd w dane.
+* [Używają zapytań wyszukiwania](log-analytics-log-search.md) do analizowania danych.

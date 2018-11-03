@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 30a23010f326189ffd5886407d70e357abb9c53e
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 81e41ce6818a6f56ba5e6e888480f8b25979fb81
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42061362"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979203"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfiguracja i zarządzanie nim problemów dotyczących usług Azure Cloud Services: często zadawane pytania (FAQ)
 
@@ -142,7 +142,7 @@ Więcej informacji na ten temat można znaleźć w następujących dokumentach:
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Jak włączyć rejestrowanie WAD dla usług w chmurze?
 Można włączyć rejestrowanie diagnostyki Azure Windows (WAD) za pośrednictwem następujących opcji:
-1. [Korzystanie z programu Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+1. [Korzystanie z programu Visual Studio](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
 2. [Włączyć za pomocą kodu platformy .net](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
 3. [Włącz za pomocą programu Powershell](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
 
@@ -248,7 +248,7 @@ Aby uzyskać więcej informacji na temat sposobu integrowania usługi Azure Diag
 
 Aby uzyskać więcej informacji na temat Włącz usługę Application Insights dla usług Cloud Services, zobacz [usługi Application Insights dla usług Azure Cloud Services](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)
 
-Aby uzyskać więcej informacji o tym, jak włączyć rejestrowanie diagnostyki Azure dla usług Cloud Services, zobacz [Konfigurowanie diagnostyki dla usług Azure Cloud Services i virtual machines](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+Aby uzyskać więcej informacji o tym, jak włączyć rejestrowanie diagnostyki Azure dla usług Cloud Services, zobacz [Konfigurowanie diagnostyki dla usług Azure Cloud Services i virtual machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
 
 ## <a name="generic"></a>Ogólny
 

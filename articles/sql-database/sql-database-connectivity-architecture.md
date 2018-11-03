@@ -7,17 +7,17 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: oslake
-ms.author: moslake
+author: srdan-bozovic-msft
+ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/24/2018
-ms.openlocfilehash: ca1ef9c402b370a8d1228e13d7fe3e13fd225f79
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.date: 11/02/2018
+ms.openlocfilehash: 11133a24f4446478dcc7f38ed50eb36de8843442
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986325"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978405"
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Architektura łączności bazy danych Azure SQL
 
@@ -31,19 +31,30 @@ Na poniższym diagramie przedstawiono ogólny przegląd architektury połączeni
 
 W poniższych krokach opisano, jak jest nawiązywane połączenie z bazą danych Azure SQL za pomocą usługi Azure SQL Database oprogramowania równoważenia obciążenia (SLB) i bramy usługi Azure SQL Database.
 
-- Klientom w obrębie platformy Azure i spoza platformy Azure, nawiązać SLB, która ma publiczny adres IP i nasłuchuje na porcie 1433.
-- SLB kieruje ruch do bramy usługi Azure SQL Database.
-- Brama przekierowuje ruch z oprogramowaniem pośredniczącym prawidłowy serwer proxy.
-- Oprogramowanie pośredniczące serwera proxy przekierowuje ruch z odpowiednią bazą danych Azure SQL.
+- Klienci połączyć się SLB, która ma publiczny adres IP i nasłuchuje na porcie 1433.
+- SLB przesyła dalej ruch do bramy usługi Azure SQL Database.
+- Brama w zależności od zasad połączenia skuteczne, przekierowuje lub serwery proxy ruchu do oprogramowania pośredniczącego prawidłowy serwer proxy.
+- Oprogramowanie pośredniczące serwera proxy przekazuje ruch z odpowiednią bazą danych Azure SQL.
 
 > [!IMPORTANT]
 > Każdego z tych składników ma distributed denial protection service (DDoS) wbudowanych w sieci i warstwy aplikacji.
 
+## <a name="connection-policy"></a>Zasady połączenia
+
+Usługa Azure SQL Database obsługuje poniższe trzy opcje ustawienia zasad połączenia z serwerem bazy danych SQL:
+
+- **Przekierowania (zalecane):** klientów nawiązywać połączenia z bezpośrednio na węzeł, w którym baza danych. Aby włączyć łączność, klienci muszą zezwalać na reguły zapory dla ruchu wychodzącego dla wszystkich adresów IP platformy Azure w regionie (Wypróbuj to przy użyciu grup zabezpieczeń sieci (NSG) za pomocą [tagów usług](../virtual-network/security-overview.md#service-tags)), nie tylko adresy IP bramy bazy danych SQL Azure. Ponieważ pakietów przejść bezpośrednio do bazy danych, opóźnienia i przepływności mają większą wydajność.
+- **Serwer proxy:** w tym trybie wszystkie połączenia są przekazywane za pośrednictwem bramy usługi Azure SQL Database. Aby włączyć łączność, klient musi mieć reguł zapory dla ruchu wychodzącego, które umożliwiają tylko adresy IP bramy bazy danych SQL Azure (zazwyczaj dwa adresy IP na region). Wybór ten tryb może spowodować wyższe opóźnienie i niższych przepływności, w zależności od rodzaju obciążenia. Zdecydowanie zalecamy zasady przekierowania połączenia za pośrednictwem zasad połączenia serwera Proxy dla najmniejszego opóźnienia i najwyższy przepływność.
+- **Wartość domyślna:** to obowiązuje zasada połączenia na wszystkich serwerach po utworzeniu, chyba że jawnie zmienić zasady połączenia serwera Proxy lub przekierowania. Efektywnych zasad zależy od tego, czy połączenia pochodzą z w obrębie platformy Azure (przekierowanie) lub spoza platformy Azure (Proxy).
+
 ## <a name="connectivity-from-within-azure"></a>Łączność z w obrębie platformy Azure
 
-Jeśli połączenie jest nawiązywane z w obrębie platformy Azure, Twoje połączenia mają zasady połączenia **przekierowania** domyślnie. Zasady **przekierowania** oznacza, że połączenia po TCP ustanowieniu sesji w bazie danych Azure SQL, sesja klienta jest następnie przekierowywane do oprogramowania pośredniczącego serwera proxy w przypadku zmiany docelowego wirtualnego adresu IP niż platformy Azure Brama bazy danych SQL do tego oprogramowania pośredniczącego serwera proxy. Dzięki temu wszystkie kolejne pakiety przepływ bezpośrednio za pomocą oprogramowania pośredniczącego serwera proxy, z pominięciem bramy usługi Azure SQL Database. Na poniższym diagramie przedstawiono ten przepływ ruchu.
+W przypadku łączenia z w obrębie platformy Azure na serwerze, który został utworzony po 10 listopada 2018 r połączenia mają zasady połączenia **przekierowania** domyślnie. Zasady **przekierowania** oznacza, że połączenia po TCP ustanowieniu sesji w bazie danych Azure SQL, sesja klienta jest następnie przekierowywane do oprogramowania pośredniczącego serwera proxy w przypadku zmiany docelowego wirtualnego adresu IP niż platformy Azure Brama bazy danych SQL do tego oprogramowania pośredniczącego serwera proxy. Dzięki temu wszystkie kolejne pakiety przepływ bezpośrednio za pomocą oprogramowania pośredniczącego serwera proxy, z pominięciem bramy usługi Azure SQL Database. Na poniższym diagramie przedstawiono ten przepływ ruchu.
 
 ![Omówienie architektury](./media/sql-database-connectivity-architecture/connectivity-from-within-azure.png)
+
+> [!IMPORTANT]
+> Jeśli utworzono serwer bazy danych SQL przed 10 listopada 2018 zasad połączenia ustawiono jawnie na **Proxy**. Korzystając z punktów końcowych usługi, zdecydowanie zaleca się zmianę zasad połączenia do **przekierowania** umożliwiające lepszą wydajność. W przypadku zmiany zasad połączenia do **przekierowania**, nie będą wystarczające, aby umożliwić ruchu wychodzącego w sieciowej grupie zabezpieczeń do bramy usługi Azure SQL Database, adresów IP wymienionych poniżej, musisz zezwolić na ruch wychodzący do wszystkich adresów IP bazy danych SQL Azure. Można to zrobić za pomocą tagów usługi sieciowej grupy zabezpieczeń (sieciowych grup zabezpieczeń). Aby uzyskać więcej informacji, zobacz [tagi usługi](../virtual-network/security-overview.md#service-tags).
 
 ## <a name="connectivity-from-outside-of-azure"></a>Łączność z spoza platformy Azure
 
@@ -51,19 +62,11 @@ Jeśli nawiązujesz połączenie spoza platformy Azure, Twoje połączenia mają
 
 ![Omówienie architektury](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
-> [!IMPORTANT]
-> Podczas korzystania z punktów końcowych usługi za pomocą usługi Azure SQL Database zasad jest **Proxy** domyślnie. Aby włączyć łączność z wewnątrz sieci wirtualnej, musisz zezwolić na połączenia wychodzące adresy IP bramy bazy danych SQL Azure określone na liście poniżej.
-
-Korzystając z punktów końcowych usługi zdecydowanie zaleca się zmianę zasad połączenia do **przekierowania** umożliwiające lepszą wydajność. W przypadku zmiany zasad połączenia do **przekierowania** nie będą wystarczające, aby umożliwić ruchu wychodzącego w sieciowej grupie zabezpieczeń do bramy usługi Azure SQL Database, adresów IP wymienionych poniżej, musisz zezwolić na ruch wychodzący do wszystkich adresów IP bazy danych SQL Azure. Można to zrobić za pomocą tagów usługi sieciowej grupy zabezpieczeń (sieciowych grup zabezpieczeń). Aby uzyskać więcej informacji, zobacz [tagi usługi](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
-
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Adresy IP bramy usługi Azure SQL Database
 
 Aby nawiązać połączenie z bazą danych Azure SQL z zasobami lokalnymi, należy zezwolić na wychodzący ruch sieciowy do bramy usługi Azure SQL Database dla regionu platformy Azure. Połączenia przejść tylko za pośrednictwem bramy podczas nawiązywania połączenia w trybie serwera Proxy, który jest domyślną kolekcją podczas nawiązywania połączenia z zasobami lokalnymi.
 
 Poniższa tabela zawiera listę podstawowych i pomocniczych adresów IP bramy usługi Azure SQL Database dla wszystkich obszarach danych. W niektórych regionach istnieją dwa adresy IP. W tych regionach podstawowy adres IP jest bieżący adres IP bramy, a drugi adres IP jest adresem IP trybu failover. Adres trybu failover jest adresem, do którego możemy przenieść serwer zapewnienie wysokiej dostępności usługi. W tych regionach zaleca się zezwolenie wychodzące adresy IP. Drugi adres IP jest własnością firmy Microsoft i nie będzie nasłuchiwać na wszystkie usługi, dopóki nie zostanie aktywowany przez usługę Azure SQL Database do akceptowania połączeń.
-
-> [!IMPORTANT]
-> Jeśli łączysz się z w obrębie platformy Azure będzie zasad połączenia **przekierowania** domyślnie (z wyjątkiem sytuacji, jeśli używasz punktów końcowych usługi). Nie będzie wystarczająca do następujących adresów IP. Musisz zezwolić na wszystkie adresy IP bazy danych SQL Azure. Jeśli połączenie jest nawiązywane z w obrębie sieci wirtualnej, można to zrobić za pomocą tagów usługi sieciowej grupy zabezpieczeń (sieciowych grup zabezpieczeń). Aby uzyskać więcej informacji, zobacz [tagi usługi](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 | Nazwa regionu | Podstawowy adres IP | Adres IP pomocniczego |
 | --- | --- |--- |

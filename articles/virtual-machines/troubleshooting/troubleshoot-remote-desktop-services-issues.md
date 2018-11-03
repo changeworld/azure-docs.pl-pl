@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 756417ee2f98549d648386c2471baa74889245a4
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 904387def0fd8842f196e80cfcf72d9dd1639458
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914026"
+ms.locfileid: "50957709"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Usługi pulpitu zdalnego nie jest uruchamiania na Maszynie wirtualnej platformy Azure
 
@@ -58,6 +58,7 @@ Ten problem występuje, ponieważ usług pulpitu zdalnego nie jest uruchomiona n
 
 - Usługa TermService jest ustawiona na **wyłączone**. 
 - Usługa TermService jest uległa awarii lub zawiesza się. 
+- TermService nie rozpoczyna z powodu nieprawidłowej konfiguracji.
 
 ## <a name="solution"></a>Rozwiązanie
 
@@ -98,16 +99,17 @@ Aby rozwiązać ten problem, należy użyć konsoli szeregowej. Lub [napraw masz
 
     |  Błąd |  Sugestia |
     |---|---|
-    |5 — ODMOWA DOSTĘPU |Zobacz [TermService zostanie zatrzymana z powodu błędu dostępu](#termService-service-is-stopped-because-of-an-access-denied-error). |
-    |1058 - ERROR_SERVICE_DISABLED  |Zobacz [TermService usługa zostanie wyłączona](#termService-service-is-disabled).  |
+    |5 — ODMOWA DOSTĘPU |Zobacz [TermService zostanie zatrzymana z powodu błędu dostępu](#termService-service-is-stopped-because-of-an-access-denied-problem). |   |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |Zobacz [TermService usługa zostanie wyłączona](#termService-service-is-disabled).  |  
+    |1058 - ERROR_SERVICE_DISABLED  |Zobacz [TermService usługa ulegnie awarii lub zawiesza się](#termService-service-crashes-or-hangs).  |
     |1059 - ERROR_CIRCULAR_DEPENDENCY |[Skontaktuj się z działem pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.|
+    |1067 - ERROR_PROCESS_ABORTED  |Zobacz [TermService usługa ulegnie awarii lub zawiesza się](#termService-service-crashes-or-hangs).  |
     |1068 - ERROR_SERVICE_DEPENDENCY_FAIL|[Skontaktuj się z działem pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.|
-    |1069 - ERROR_SERVICE_LOGON_FAILED  |[Skontaktuj się z działem pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.    |
-    |1070 - ERROR_SERVICE_START_HANG   | [Skontaktuj się z działem pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.  |
+    |1069 - ERROR_SERVICE_LOGON_FAILED  |Zobacz [usługi TermService kończy się niepowodzeniem z powodu niepowodzenia logowania](#termService-service-fails-because-of-logon-failure) |
+    |1070 - ERROR_SERVICE_START_HANG   | Zobacz [TermService usługa ulegnie awarii lub zawiesza się](#termService-service-crashes-or-hangs). |
     |1077 - ERROR_SERVICE_NEVER_STARTED   | Zobacz [TermService usługa zostanie wyłączona](#termService-service-is-disabled).  |
     |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   |[Skontaktuj się z działem pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem. |
-    |1753   |[Skontaktuj się z działem pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.   |
-
+    |1753   |[Skontaktuj się z działem pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.   |   |5 — ODMOWA DOSTĘPU |Zobacz [TermService zostanie zatrzymana z powodu błędu dostępu](#termService-service-is-stopped-because-of-an-access-denied-error). |
+    
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>TermService zostanie zatrzymana z powodu problemu odmowa dostępu
 
 1. Połączyć się z [konsoli szeregowej](serial-console-windows.md#) , a następnie otwórz wystąpienie programu PowerShell.
@@ -139,7 +141,14 @@ Aby rozwiązać ten problem, należy użyć konsoli szeregowej. Lub [napraw masz
    procmon /Terminate 
    ```
 
-5. Zbieranie pliku **c:\temp\ProcMonTrace.PML**. Otwórz je przy użyciu **procmon**. Następnie filtrować dane według **wynik jest odmowa dostępu**, jak pokazano na poniższym zrzucie ekranu:
+5. Zbieranie pliku **c:\temp\ProcMonTrace.PML**:
+
+    1. [Dołączanie dysku danych do maszyny Wirtualnej](../windows/attach-managed-disk-portal.md
+).
+    2. Użyj konsoli szeregowej, możesz skopiować go na nowy dysk. Na przykład `copy C:\temp\ProcMonTrace.PML F:\`. W tym poleceniu F jest literą sterownika dołączonego dysku danych.
+    3. Odłączanie dysku danych i dołączyć go na działającą maszynę Wirtualną, której Monitor procesu ubstakke zainstalowane.
+
+6. Otwórz **ProcMonTrace.PML** za pomocą procesu monitora działającej maszyny Wirtualnej. Następnie filtrować dane według **wynik jest odmowa dostępu**, jak pokazano na poniższym zrzucie ekranu:
 
     ![Filtruj według wynik na liście Monitor procesu](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
 
@@ -168,6 +177,27 @@ Aby rozwiązać ten problem, należy użyć konsoli szeregowej. Lub [napraw masz
 
 4. Spróbuj nawiązać połączenie z maszyną Wirtualną przy użyciu pulpitu zdalnego.
 
+#### <a name="termservice-service-fails-because-of-logon-failure"></a>Usługa TermService zakończy się niepowodzeniem z powodu niepowodzenia logowania
+
+1. Ten problem występuje, gdy zmieniono konto uruchamiania usługi. Zmieniony w tym na domyślny: 
+
+        sc config TermService obj= 'NT Authority\NetworkService'
+2. Uruchom usługę:
+
+        sc start TermService
+3. Spróbuj nawiązać połączenie z maszyną Wirtualną przy użyciu pulpitu zdalnego.
+
+#### <a name="termservice-service-crashes-or-hangs"></a>Zawieszanie się lub awariach usługi TermService
+1. Jeśli stan usługi utkwiła w automatycznej **od** lub **zatrzymywanie**, spróbuj zatrzymać usługę: 
+
+        sc stop TermService
+2. Izoluj usługę na własnym kontenerze "svchost":
+
+        sc config TermService type= own
+3. Uruchom usługę:
+
+        sc start TermService
+4. Jeśli usługa jest nadal nie można uruchomić, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="repair-the-vm-offline"></a>Napraw maszynę Wirtualną w tryb offline
 

@@ -8,33 +8,32 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 21464ccfbd5712b18e46a271a93232dc3ba7d3c8
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 656742727b2bd85ac93211c74d82fe11d0bc0f46
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50244080"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963901"
 ---
-# <a name="global-distribution---under-the-hood"></a>Dystrybucja globalna - kulisy
+# <a name="azure-cosmos-db-global-distribution---under-the-hood"></a>Usługa Azure Cosmos DB globalną dystrybucję - kulisy
 
-Usługa Azure Cosmos DB to podstawowe usługi platformy Azure, dzięki czemu jest wdrażana we wszystkich regionach platformy Azure na całym świecie, w tym publiczny, suwerennych, Departament Obrony (DoD) i chmury dla instytucji rządowych. W ramach centrum danych, firma Microsoft wdrażanie i zarządzanie nimi usługi Azure Cosmos DB na ogromną "sygnatury" maszyn wirtualnych, każda z dedykowanych dla magazynu lokalnego. W centrum danych usługi Azure Cosmos DB jest wdrażana w wielu klastrach, każdy potencjalnie uruchamianie wielu generacji sprzętu. Maszyny w ramach klastra są rozmieszczone na 10-20 domen błędów.
+Usługa Azure Cosmos DB to podstawowe usługi platformy Azure, dzięki czemu jest wdrażana we wszystkich regionach platformy Azure na całym świecie, w tym publiczny, suwerennych, Departament Obrony (DoD) i chmury dla instytucji rządowych. W ramach centrum danych, firma Microsoft wdrażanie i zarządzanie Azure Cosmos DB na ogromną sygnaturą czasową maszyny, każdy z dedykowanych dla magazynu lokalnego. W centrum danych usługi Azure Cosmos DB jest wdrażana w wielu klastrach, każdy potencjalnie uruchamianie wielu generacji sprzętu. Maszyny w ramach klastra są rozmieszczone na 10-20 domen błędów. Na poniższej ilustracji przedstawiono topologię systemu dystrybucji globalnej usługi Cosmos DB:
 
 ![Topologia systemu](./media/global-dist-under-the-hood/distributed-system-topology.png)
-**topologii systemu**
 
-Dystrybucja globalna w usłudze Azure Cosmos DB jest kompleksowa: w dowolnym momencie za pomocą kilku kliknięć lub programowo przy użyciu jednego wywołania interfejsu API klienta można dodawać i usuwać regionów geograficznych, skojarzonych z ich bazy danych Cosmos. Bazy danych Cosmos z kolei zawiera zestaw kontenerów Cosmos. W usłudze Cosmos DB kontenery służyć jako jednostki logiczne dystrybucji i skalowalności. Kolekcje, tabele i wykresy, które możesz utworzyć to (wewnętrznie) po prostu Cosmos kontenery. Kontenery są całkowicie niezależne od schematu i podaj zakres dla zapytania. Wszystkie dane w kontenerze Cosmos są automatycznie indeksowane po pozyskiwania. Automatyczne indeksowanie umożliwia użytkownikom do wykonywania zapytań o dane bez konieczności schematu lub problemów z zarządzaniem indeksem, szczególnie w konfiguracji globalnej dystrybucji.  
-
-Jak pokazano na poniższej ilustracji, dane znajdujące się w kontenerze są rozmieszczane w dwóch wymiarach:  
+**Dystrybucja globalna w usłudze Azure Cosmos DB jest kompleksowa:** w dowolnym momencie za pomocą kilku kliknięć lub programowo przy użyciu jednego wywołania interfejsu API można dodawać i usuwać regionów geograficznych, skojarzonych z ich bazy danych Cosmos. Bazy danych Cosmos z kolei zawiera zestaw kontenerów Cosmos. W usłudze Cosmos DB kontenery służyć jako jednostki logiczne dystrybucji i skalowalności. Kolekcje, tabele i wykresy, które możesz utworzyć to (wewnętrznie) po prostu Cosmos kontenery. Kontenery są całkowicie niezależne od schematu i podaj zakres dla zapytania. Dane w kontenerze Cosmos są automatycznie indeksowane po pozyskiwania. Automatyczne indeksowanie umożliwia użytkownikom do wykonywania zapytań o dane bez konieczności schematu lub problemów z zarządzaniem indeksem, szczególnie w konfiguracji globalnej dystrybucji.  
 
 - W danym regionie dane znajdujące się w kontenerze są przesyłane przy użyciu klucza partycji, które zapewniają oraz sposób niewidoczny dla użytkownika jest zarządzana przez podstawowy partycji zasobów (Dystrybucja lokalna).  
+
 - Każda partycja zasobów jest również replikowana w regionach geograficznych (dystrybucja globalna). 
 
 Gdy aplikacji za pomocą usługi Cosmos DB elastycznie skaluje przepustowość (lub zużywa więcej pamięci masowej) na kontenerze Cosmos usługi Cosmos DB obsługuje przezroczysty operacje zarządzania partycjami (podziału, klonowanie, usuwanie) we wszystkich regionach. Niezależnie od skali, dystrybucji czy awarii usługa Cosmos DB stale zapewnia pojedynczy obraz systemu danych w kontenerach, które są globalnie rozproszone w dowolnej liczbie regionów.  
 
-![Partycji zasobów](./media/global-dist-under-the-hood/distribution-of-resource-partitions.png)
-**dystrybucji partycji zasobów**
+Jak pokazano na poniższej ilustracji, dane znajdujące się w kontenerze są rozmieszczane w dwóch wymiarach:  
 
-Fizycznie partycja zasobów jest implementowany przez grupę repliki, nazywany zestawu replik. Każda maszyna obsługuje setki replik odpowiadający różnych partycji zasobów w ramach ustalony zestaw elementów procesów, jak pokazano na poprzedniej ilustracji. Repliki odpowiadające partycji zasobów znajdują się dynamicznie i zrównoważonym między komputerami w ramach klastrów i centrów danych w obrębie regionu.  
+![Partycji zasobów](./media/global-dist-under-the-hood/distribution-of-resource-partitions.png)
+
+Partycja zasobu jest implementowany przez grupę repliki, nazywany zestawu replik. Każda maszyna obsługuje setki replik, które odnoszą się do różnych partycji zasobów w obrębie ustalony zestaw elementów procesów, jak pokazano na poprzedniej ilustracji. Repliki odpowiadające partycji zasobów znajdują się dynamicznie i zrównoważonym między komputerami w ramach klastrów i centrów danych w obrębie regionu.  
 
 Replikę należy jednoznacznie do dzierżawy usługi Azure Cosmos DB. Każda replika znajduje się wystąpienie usługi Cosmos DB [aparatu bazy danych](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), która zarządza zasobami, a także indeksy. Aparat bazy danych Cosmos DB działa w systemie na podstawie typu atom rekord sekwencja (ARS). Aparat jest niezależny od koncepcji schematu i rozmywając granic między wartościami struktury i wystąpienia rekordów. Usługa cosmos DB realizuje agnosticism pełnego schematu przez automatyczne indeksowanie wszystkich elementów, od pozyskiwania w sposób efektywny, które umożliwia użytkownikom do wykonywania zapytań ich danych rozproszonych globalnie, bez konieczności zarządzania schematami lub indeksami.
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: cfcdf13f8aa4dfab9b361ccbb82ea4b2c3e2ca0d
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 5550bbb95b24e12510c69bc3952c346250786994
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42056980"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960008"
 ---
 # <a name="import-data-into-analytics"></a>Importowanie danych do analizy
 
@@ -123,7 +123,7 @@ Każda kolumna jest identyfikowany przez lokalizację, nazwy i typu.
 * Lokalizacja — rozdzielonym pliku flagowana jest pozycja mapowanej wartości. Dla formatu JSON jest jpath zamapowanego klucza.
 * Nazwa — Nazwa wyświetlana kolumny.
 * Typ — typ danych tej kolumny.
- 
+
 > [!NOTE]
 > W przypadku, gdy użyto przykładowych danych i format pliku jest rozdzielany, definicji schematu musi mapować wszystkie kolumny i dodać nowe kolumny na końcu.
 > 
@@ -137,7 +137,7 @@ Aby zaimportować dane, przekaż go do usługi Azure storage, Utwórz klucz dost
 
 Wykonaj następujący proces ręcznie lub skonfigurować zautomatyzowany system, aby to zrobić w regularnych odstępach czasu. Należy wykonać następujące kroki dla każdego bloku danych, które chcesz zaimportować.
 
-1. Przekazywanie danych do [usługi Azure blob storage](../storage/blobs/storage-dotnet-how-to-use-blobs.md). 
+1. Przekazywanie danych do [usługi Azure blob storage](../storage/blobs/storage-quickstart-blobs-dotnet.md). 
 
  * Obiekty BLOB mogą być dowolnego rozmiaru bez kompresji do 1GB. Duże obiekty BLOB setek MB są idealnym rozwiązaniem z punktu widzenia wydajności.
  * Można ją skompresować za pomocą narzędzia Gzip, aby poprawić czas przekazywania i czas oczekiwania na dane, które mają być dostępne dla zapytania. Użyj `.gz` rozszerzenie nazwy pliku.
@@ -369,5 +369,5 @@ Użyj tego kodu dla każdego obiektu blob.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Samouczek języka zapytań usługi Log Analytics](app-insights-analytics-tour.md)
+* [Samouczek języka zapytań usługi Log Analytics](../log-analytics/query-language/get-started-analytics-portal.md)
 * Jeśli używasz programu Logstash, użyj [wtyczkę Logstash w celu wysyłania danych do usługi Application Insights](https://github.com/Microsoft/logstash-output-application-insights)

@@ -3,18 +3,18 @@ title: Zrozumieć dane wyjściowe z usługi Azure Stream Analytics
 description: W tym artykule opisano opcje danych wyjściowych danych dostępnych w usłudze Azure Stream Analytics, w tym usługi Power BI dla wyników analizy.
 services: stream-analytics
 author: jasonwhowell
-ms.author: jasonh
+ms.author: mamccrea
 manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 396b843ecd17c15e9476bacb5e96545f963f0c4e
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: abf581430f7cf7020145b0217c387b8c2fc4f795
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747851"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979407"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Zrozumieć dane wyjściowe z usługi Azure Stream Analytics
 W tym artykule opisano różne typy danych wyjściowych jest dostępny dla zadania usługi Azure Stream Analytics. Dane wyjściowe pozwalają na przechowywanie i zapisać wyniki zadania usługi Stream Analytics. Można wykonać, korzystając z danych wyjściowych, dalszych analiz biznesowych i danych magazynu danych. 
@@ -323,10 +323,11 @@ W poniższej tabeli opisano niektóre zagadnienia, dane wyjściowe przetwarzania
 | Kolejki usługi Service Bus platformy Azure   | 256 KB na komunikat</br> Zobacz też [limitów usługi Service Bus](../service-bus-messaging/service-bus-quotas.md) | Pojedyncze zdarzenie dla komunikatu |
 | Usługa Azure tematu usługi Service Bus | 256 KB na komunikat</br> Zobacz też [limitów usługi Service Bus](../service-bus-messaging/service-bus-quotas.md) | Pojedyncze zdarzenie dla komunikatu |
 | Azure Cosmos DB   | Zobacz [limity usługi Azure Cosmos DB](../azure-subscription-service-limits.md#azure-cosmos-db-limits) | Batch size i zapisu, częstotliwość to skorygowany dynamicznie na podstawie odpowiedzi bazy danych cosmos DB. </br> Brak ograniczeń wcześniej z usługi Stream Analytics. |
-| Azure Functions   | | Domyślny rozmiar partii to 246 KB. </br> Domyślna liczba zdarzeń na partię to 100. </br> Rozmiar partii jest konfigurowalne i można zwiększyć lub zmniejszyć w usłudze Stream Analytics [opcje wyjściowe](#azure-functions). 
+| Azure Functions   | | Domyślny rozmiar partii to 256 KB. </br> Domyślna liczba zdarzeń na partię to 100. </br> Rozmiar partii jest konfigurowalne i można zwiększyć lub zmniejszyć w usłudze Stream Analytics [opcje wyjściowe](#azure-functions). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"]
+
 > [Szybki Start: Tworzenie zadania usługi Stream Analytics przy użyciu witryny Azure portal](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->

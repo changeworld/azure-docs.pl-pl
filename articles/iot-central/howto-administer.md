@@ -1,110 +1,67 @@
 ---
 title: Administrowanie aplikacją usługi Azure IoT Central | Dokumentacja firmy Microsoft
 description: Jako administratora jak zarządzać aplikacją usługi Azure IoT Central
-author: tbhagwat3
-ms.author: tanmayb
+author: viv-liu
+ms.author: viviali
 ms.date: 04/16/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 25b4777be4257933b84d58d0f10cf12571de9590
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 4bfb7dc2b65dc479189ac7920509e1fd8a23ce4f
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155324"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961352"
 ---
-# <a name="administer-your-iot-central-application"></a>Administrowanie aplikację IOT Central
+# <a name="administer-your-iot-central-application"></a>Zarządzać aplikacją IoT Central
 
-Po utworzeniu aplikacji Microsoft Azure IoT Central, można użyć **administracji** części interfejsu użytkownika usługi Azure IoT Central, zarządzania nim. Aby przejść do **administracji** zaznacz **administracji** w menu nawigacji po lewej stronie.
-
-**Administracji** sekcja umożliwia:
-
-- Zarządzanie użytkownikami
-
-- Zarządzanie rolami
-
-- Wyświetlanie informacji dotyczących rozliczeń
+Po utworzeniu aplikacji IoT Central, możesz przejść do **administracji** sekcji:
 
 - Zarządzaj ustawieniami aplikacji
-
-- Oferty bezpłatnej wersji próbnej
-
-W **administracji** sekcji menu Nawigacja drugorzędna zawiera linki do różnych zadań administracyjnych.
+- Zarządzanie użytkownikami
+- Zarządzanie rolami
+- Wyświetl rachunek
+- Konwertuj wersję próbną na płatność za rzeczywiste użycie
+- Eksportowanie danych
+- Zarządzanie połączenie z urządzeniem
+- Używanie tokenów dostępu
 
 Aby uzyskać dostęp do **administracji** sekcji, musisz mieć **administratora** roli dla aplikacji usługi Azure IoT Central. Jeśli tworzysz aplikację usługi Azure IoT Central, masz automatycznie przypisaną **administratora** roli dla tej aplikacji. [Zarządzanie użytkownikami](#manage-users) sekcję w tym artykule opisano bardziej dotyczące sposobu przypisywania **administratora** rolę do innych użytkowników.
 
-## <a name="change-application-name"></a>Zmienianie nazwy aplikacji
+## <a name="manage-application-settings"></a>Zarządzaj ustawieniami aplikacji
 
-Aby zmienić nazwę aplikacji, użyj menu Nawigacja drugorzędna, aby przejść do **ustawienia aplikacji** strony w **administracji** sekcji.
-
-Na **ustawienia aplikacji** strony, wprowadź nazwę wybranego w **Nazwa aplikacji** pola. Następnie wybierz pozycję **Zapisz**.
-
-## <a name="change-the-application-url"></a>Zmień adres URL aplikacji
-
-Aby zmienić adres URL aplikacji, użyj menu Nawigacja drugorzędna można przejść do **ustawienia aplikacji** strony w **administracji** sekcji.
+### <a name="change-application-name-and-url"></a>Zmienianie nazwy aplikacji i adres URL
+W **ustawienia aplikacji** strony, można zmienić nazwy i adresu URL aplikacji, a następnie wybierz **Zapisz**.
 
 ![Strona ustawień aplikacji](media\howto-administer\image0-a.png)
-
-Na **ustawienia aplikacji** strony, wprowadź adres URL wybranego w **adresu URL** , a następnie wybierz opcję **Zapisz**. Adres URL może mieć maksymalnie 200 znaków. Jeśli adres URL nie jest dostępna, zostanie wyświetlony błąd sprawdzania poprawności.
 
 > [!Note]
 > Jeśli zmienisz adres URL, stary adres URL może zostać pobrany przez innego klienta usługi Azure IoT Central. Jeśli tak się stanie, nie jest już dostępne do użycia. Po zmianie adresu URL stary adres URL nie będzie działać, a następnie należy powiadomić użytkowników o nowy adres URL do użycia.
 
-## <a name="change-the-application-image"></a>Zmień obraz aplikacji
+### <a name="prepare-and-upload-image"></a>Przygotuj i przekazywanie obrazu
+Aby zmienić obraz aplikacji, zobacz [przygotowywania i przekazywania obrazów do usługi Azure IoT Central aplikacji](howto-prepare-images.md).
 
-Aby uzyskać więcej informacji na temat korzystania z obrazów w aplikacji usługi Azure IoT Central, zobacz [przygotowywania i przekazywania obrazów do usługi Azure IoT Central aplikacji](howto-prepare-images.md).
+### <a name="copy-an-application"></a>Kopiuj aplikację
+Można utworzyć kopię dowolnej aplikacji, bez żadnych wystąpień urządzeń, Historia danych z urządzeń i danych użytkowników. Kopia zostanie umieszczona aplikacji płatność za rzeczywiste użycie, która zostanie naliczona opłata. Nie można utworzyć aplikacji wersji próbnej w ten sposób.
 
-## <a name="copy-an-application"></a>Kopiuj aplikację
-
-Można utworzyć kopię dowolnej aplikacji, bez żadnych wystąpień urządzeń, Historia danych z urządzeń i danych użytkowników. Kopia zostanie umieszczona płatnej aplikacji, które są naliczane opłaty za. Aplikacja w wersji próbnej nie można utworzyć, kopiując innej aplikacji.
-
-Aby skopiować aplikację, przejdź do **ustawienia aplikacji** strony. Następnie wybierz pozycję **kopiowania** przycisku.
-
-![Strona ustawień aplikacji](media\howto-administer\appCopy1.png)
-
-Wybieranie **kopiowania** przycisku powoduje otwarcie okna dialogowego, w którym można wybrać nazwę, adres URL, usługi Azure AD directory, subskrypcji i region platformy Azure dla nowej aplikacji, która zostanie utworzona przez skopiowanie aplikacji. Wybierz wartości dla każdego z tych pól. Następnie wybierz pozycję **kopiowania** przycisk, aby upewnić się, że chcesz kontynuować. Dowiedz się więcej o tym, co należy wprowadzić w przypadku tych wartości w tym artykule o [sposób tworzenia aplikacji](howto-create-application.md).
+Kliknij przycisk **kopiowania** przycisku. W oknie dialogowym wprowadź szczegóły nowej aplikacji płatność za rzeczywiste użycie. Następnie kliknij przycisk **kopiowania** przycisk, aby upewnić się, że chcesz kontynuować. Dowiedz się więcej na temat pól, w tym formularzu w [tworzenia aplikacji](quick-deploy-iot-central.md) Szybki Start.
 
 ![Strona ustawień aplikacji](media\howto-administer\appCopy2.png)
 
-Po pomyślnym operacji kopiowania aplikacji, możesz przejść do nowej aplikacji, która została utworzona przez skopiowanie aplikacji. Aby przejść do aplikacji, wybierz link, który pojawia się na **ustawienia aplikacji** strony.
+Po pomyślnym operacji kopiowania aplikacji, możesz przejść do nowej aplikacji, która została utworzona przez skopiowanie swoją aplikację przy użyciu linku, który pojawia się.
 
 ![Strona ustawień aplikacji](media\howto-administer\appCopy3.png)
 
 > [!Note]
-> Kopiowanie aplikacji kopiuje również definicji reguły lub akcji. Jednak ponieważ użytkowników, którzy mają dostęp do pierwotnej aplikacji nie są kopiowane do skopiowanych aplikacji, musisz ręcznie dodawać użytkowników do akcji, takich jak wiadomości e-mail, do którego użytkownicy mają jako warunek wstępny.
+> Kopiowanie aplikacji kopiuje również definicji reguły i akcje. Jednak ponieważ użytkowników, którzy mają dostęp do pierwotnej aplikacji nie są kopiowane do skopiowanych aplikacji, musisz ręcznie dodawać użytkowników do akcji, takich jak wiadomości e-mail, do którego użytkownicy mają warunek wstępny. Ogólnie rzecz biorąc jest dobry pomysł, aby sprawdzić reguły i akcje, aby upewnić się, że są one na bieżąco w nowej aplikacji.
 
-## <a name="delete-an-application"></a>Usuwanie aplikacji
+### <a name="delete-an-application"></a>Usuwanie aplikacji
 
-Aby usunąć aplikację, użyj menu Nawigacja drugorzędna, aby przejść do **ustawienia aplikacji** strony w **administracji** sekcji.
-
-Wybierz **Usuń**.
-
-> [!Note]
-> Trwałe usunięcie aplikacji spowoduje usunięcie wszystkich danych, które jest skojarzone z tej aplikacji.  Aby usunąć aplikację, również musi mieć uprawnienia do usuwania zasobów w subskrypcji platformy Azure została wybrana opcja utworzenia aplikacji. Aby dowiedzieć się więcej, zobacz [zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą kontroli dostępu opartej na rolach](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
-
-## <a name="roles-in-azure-iot-central"></a>Role w usłudze Azure IoT Central
-
-Role umożliwiają kontrolowanie, kto w organizacji można wykonywać różne zadania usługi Azure IoT Central. Usługa Azure IoT Central ma trzy role, które można przypisać do użytkowników aplikacji. Role są przypisywane przez poszczególne aplikacje. Ten sam użytkownik może mieć różne role w różnych aplikacjach. Tego samego użytkownika można przypisać do wielu ról w ramach aplikacji.
-
-### <a name="administrator"></a>Administrator
-
-Użytkownicy w **administratora** rola ma dostęp do wszystkich funkcji w aplikacji usługi Azure IoT Central.
-
-Użytkownik, który tworzy aplikację, jest automatycznie przypisywana do **administratora** roli. Zawsze musi istnieć co najmniej jeden użytkownik w **administratora** roli.
-
-### <a name="application-builder"></a>Konstruktor aplikacji
-
-Użytkownicy w **Konstruktor aplikacji** roli można zrobić wszystko, co w aplikacji usługi Azure IoT Central, z wyjątkiem administrowania aplikacją.
-
-### <a name="application-operator"></a>Operator aplikacji
-
-Użytkownicy w **operatora aplikacji** rola nie ma dostępu do **Konstruktor aplikacji** strony. Nie można ich administrowania aplikacją.
+Użyj **Usuń** przycisk, aby trwale usunąć aplikację IoT Central. W ten sposób spowoduje trwałe usunięcie wszystkich danych, które jest skojarzone z tej aplikacji. Aby usunąć aplikację, również musi mieć uprawnienia do usuwania zasobów w subskrypcji platformy Azure została wybrana opcja utworzenia aplikacji. Aby dowiedzieć się więcej, zobacz [zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą kontroli dostępu opartej na rolach](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
 
 ## <a name="manage-users"></a>Zarządzanie użytkownikami
-
-Administratorzy aplikacji można przypisać użytkowników do ról w aplikacji.
 
 ### <a name="add-users"></a>Dodawanie użytkowników
 
@@ -112,24 +69,18 @@ Każdy użytkownik musi mieć konto użytkownika, zanim Zaloguj się i uzyskać 
 
 Aby uzyskać więcej informacji, zobacz [pomocy konta firmy Microsoft](https://support.microsoft.com/products/microsoft-account?category=manage-account) i [Szybki Start: dodawanie nowych użytkowników do usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
 
-1. Aby dodać konto użytkownika z aplikacją usługi Azure IoT Central, użyj menu Nawigacja drugorzędna, aby przejść do **użytkowników** strony w **administracji** sekcji.
+1. Aby dodać użytkownika do aplikacji IoT Central, przejdź do **użytkowników** strony w **administracji** sekcji.
 
     ![Lista użytkowników](media\howto-administer\image1.png)
 
 1. Aby dodać użytkownika, na **użytkowników** wybierz **+ Dodaj użytkownika**.
 
-    ![Dodawanie użytkownika](media\howto-administer\image2.png)
-
-1. Wybierz rolę dla użytkownika z **roli** menu rozwijanego. Dowiedz się więcej o rolach w *ról w usłudze Azure IoT Central* dalszej części tego artykułu.
+1. Wybierz rolę dla użytkownika z **roli** menu rozwijanego. Dowiedz się więcej o rolach w [Zarządzanie rolami](#manage-roles) dalszej części tego artykułu.
 
     ![Wybór roli](media\howto-administer\image3.png)
 
     > [!NOTE]
     >  Aby dodać użytkowników zbiorczo, wprowadź identyfikatory wszystkich użytkowników, które chcesz dodać użytkowników, rozdzielając je średnikami. Wybierz rolę z **roli** menu rozwijanego. Następnie wybierz pozycję **Zapisz**.
-
-1. Po dodaniu użytkownika, pojawi się wpis dla danego użytkownika na **użytkowników** strony.
-
-    ![Lista użytkowników](media\howto-administer\image4.png)
 
 ### <a name="edit-the-roles-that-are-assigned-to-users"></a>Edytuj role, które są przypisane do użytkowników
 
@@ -139,35 +90,63 @@ Role nie można zmienić po przypisaniu. Zmiana roli, która jest przypisana do 
 
 Aby usunąć użytkowników, wybierz jeden lub więcej pól wyboru na **użytkowników** strony. Następnie wybierz pozycję **Usuń**.
 
+## <a name="manage-roles"></a>Zarządzanie rolami
+
+Role umożliwiają kontrolowanie, kto w organizacji można wykonywać różne zadania w IoT Central. Istnieją trzy role, które można przypisać do użytkowników aplikacji. 
+
+### <a name="administrator"></a>Administrator
+
+Użytkownicy w **administratora** rola ma dostęp do wszystkich funkcji w aplikacji.
+
+Użytkownik, który tworzy aplikację, jest automatycznie przypisywana do **administratora** roli. Zawsze musi istnieć co najmniej jeden użytkownik w **administratora** roli.
+
+### <a name="application-builder"></a>Konstruktor aplikacji
+
+Użytkownicy w **Konstruktor aplikacji** roli można zrobić wszystko, co w aplikacji, z wyjątkiem administrowania aplikacją. To oznacza, że Konstruktorzy można tworzyć, edytować, usunąć urządzenia szablonów i urządzeń, Zarządzaj zbiorami urządzeń i uruchamiać zadania i analizy. Konstruktory nie mają dostępu do **administracji** części aplikacji.
+
+### <a name="application-operator"></a>Operator aplikacji
+
+Użytkownicy w **operatora aplikacji** roli nie może wprowadzać zmian do szablonów urządzeń i nie można administrować aplikacji. Oznacza to, można operatorów dodawania i usuwania urządzeń, Zarządzaj zbiorami urządzeń i uruchamiać zadania i analizy. Operatory nie mają dostępu do **Konstruktor aplikacji** i **administracji** stron.
+
+
 ## <a name="view-your-bill"></a>Wyświetl rachunek
 
-Aby wyświetlić swój rachunek, przejdź do **rozliczeń** strony w **administracji** sekcji. Następnie wybierz pozycję **rozliczeń**. Stronę rozliczeń platformy Azure zostanie otwarty na nowej karcie, w którym można zobaczyć rachunek dla każdej aplikacji w usłudze Azure IoT Central.
+Aby wyświetlić swój rachunek, przejdź do **rozliczeń** strony w **administracji** sekcji. Stronę rozliczeń platformy Azure zostanie otwarty na nowej karcie, w którym można zobaczyć rachunek dla każdej aplikacji w usłudze Azure IoT Central.
 
-## <a name="convert-your-trial-to-a-paid-application"></a>Konwertuj wersję próbną do płatnej aplikacji
+### <a name="convert-your-trial-to-pay-as-you-go"></a>Konwertuj wersję próbną na płatność za rzeczywiste użycie
 
-Po została oceniona IoT Central, możesz przekonwertować wersję próbną do płatnej aplikacji. Aby ukończyć ten samoobsługowy proces, wykonaj następujące kroki:
+Możesz również przekonwertować Twoja wersja próbna aplikacji na aplikację płatność za rzeczywiste użycie. Poniżej przedstawiono różnice między tymi typami aplikacji.
 
-1. Użyj menu Nawigacja drugorzędna, aby przejść do **rozliczeń** strony w **administracji** sekcji. Jeśli jeszcze nie przedłużony okres próbny, strona wygląda jak poniższy zrzut ekranu:
+- **Wersja próbna** aplikacje są bezpłatne przez 7 dni, zanim wygasną. Mogą być konwertowane na płatność za rzeczywiste użycie w dowolnym momencie, zanim wygasną.
+- **Płatność za rzeczywiste użycie** aplikacje są naliczane zgodnie z urządzenia z urządzeniami pierwszych 5 bezpłatnych.
 
-    ![Bezpłatna wersja próbna stanu](media/howto-administer/freetrial.png)
+Dowiedz się więcej na temat cen na [stronę z cennikiem usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
+    
+Aby ukończyć ten samoobsługowy proces, wykonaj następujące kroki:
 
-2. Wybierz **konwersji do wersji płatnej**. Jeśli jeszcze nie przedłużony okres próbny, okno podręczne wygląda jak poniższy zrzut ekranu:
+1. Przejdź do **rozliczeń** strony w **administracji** sekcji. 
 
-    ![Rozszerzanie bezpłatnej wersji próbnej](media/howto-administer/extend.png)
+    ![Stan wersji próbnej](media/howto-administer/freetrialbilling.png)
 
-3. W oknie podręcznym wybierz odpowiednią dzierżawy usługi Azure Active Directory, a następnie subskrypcji platformy Azure na potrzeby aplikacji IoT Central.
+1. Kliknij przycisk **przekonwertować płatność za rzeczywiste użycie**. 
 
-3. Po wybraniu **przekonwertować**, Twojej wersji próbnej przekonwertowano do płatnej aplikacji i możesz rozpocząć rozliczanych.
+    ![Konwertuj na wersję próbną](media/howto-administer/convert.png)
 
-## <a name="extend-your-free-trial"></a>Rozszerzanie Twoja bezpłatna wersja próbna
+1. Wybierz odpowiednie usługi Azure Active Directory, a następnie subskrypcji platformy Azure na potrzeby aplikacji płatność za rzeczywiste użycie.
 
-Domyślnie wszystkie bezpłatne wersje próbne są dostępne przez siedem dni. Jeśli chcesz zwiększyć swoją wersję próbną do 30 dni, wykonaj następujące kroki:
+1. Po kliknięciu **przekonwertować**, Twoja aplikacja jest teraz aplikacją płatność za rzeczywiste użycie i rozpoczęciem rozliczanych.
 
-1. Użyj menu Nawigacja drugorzędna, aby przejść do **rozliczeń** strony w **administracji** sekcji.
+## <a name="export-data"></a>Eksportowanie danych
 
-1. Wybierz **Rozszerz wersję próbną**. W oknie podręcznym wybierz odpowiednie dzierżawy usługi Azure Active Directory, a następnie subskrypcji platformy Azure do użytku aplikacji IoT Central.
+Aby umożliwić **ciągły Eksport danych** do wyeksportowania pomiarów, urządzeń i danych szablonów urządzenie do swojego konta magazynu obiektów Blob platformy Azure. Dowiedz się więcej o [sposób eksportowania danych](#howto-export-data).
 
-1. Następnie wybierz pozycję **Rozszerz**. Twój okres próbny teraz jest ważne przez 30 dni.
+## <a name="manage-device-connection"></a>Zarządzanie połączenie z urządzeniem
+
+Łączenie urządzeń na dużą skalę w Twojej aplikacji, w tym miejscu przy użyciu kluczy i certyfikatów. Dowiedz się więcej o [podłączania urządzeń](#concepts-connectivity).
+
+## <a name="use-access-tokens"></a>Używanie tokenów dostępu
+
+Generowanie tokenów dostępu z nich korzystać w narzędzia dla deweloperów. Obecnie ma dostępnych co narzędzie dla deweloperów, czyli Eksploratora usługi IoT Central do monitorowania komunikatów przesyłanych z urządzenia i zmiany w propreties i ustawień. Dowiedz się więcej o [explorer IoT Central](#howto-use-iotc-explorer). 
 
 ## <a name="use-the-azure-sdks-for-control-plane-operations"></a>Zestawy SDK platformy Azure na użytek operacje warstwy kontroli
 

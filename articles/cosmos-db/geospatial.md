@@ -1,5 +1,5 @@
 ---
-title: Praca z danymi dane geograficzne w usłudze Azure Cosmos DB | Dokumentacja firmy Microsoft
+title: Praca z danymi z danymi geograficznymi w konto interfejsu API SQL usługi Azure Cosmos DB | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak tworzyć, indeksu i zapytań przestrzennych obiektów za pomocą usługi Azure Cosmos DB i interfejsu API SQL.
 services: cosmos-db
 author: SnehaGunda
@@ -7,18 +7,18 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/20/2017
+ms.date: 11/01/2017
 ms.author: sngun
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1b1dcd9ba428618e1b234d76d5ad459eab0662aa
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 6ad59f14a0ade305bc9b1f9f125c21e9bdc39c0d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417569"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961912"
 ---
-# <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Praca z danymi geograficznymi oraz GeoJSON lokalizacji danych w usłudze Azure Cosmos DB
-Ten artykuł stanowi wprowadzenie do funkcji geoprzestrzennych w [usługi Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Po przeczytaniu tego, możliwe będzie odpowiadać na następujące pytania:
+# <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Dane lokalizacji geograficznych i GeoJSON za pomocą konta interfejsu API SQL usługi Azure Cosmos DB
+
+Ten artykuł stanowi wprowadzenie do funkcji geoprzestrzennych w usłudze Azure Cosmos DB. Obecnie przechowywania i uzyskiwania dostępu do danych dane geograficzne jest obsługiwany przez tylko konta interfejsu API SQL usługi Cosmos DB. Po przeczytaniu tego artykułu, możliwe będzie odpowiadać na następujące pytania:
 
 * Jak przechowywać dane przestrzenne w usłudze Azure Cosmos DB?
 * Jak tworzyć zapytania dane geograficzne w usłudze Azure Cosmos DB SQL i LINQ
@@ -133,9 +133,6 @@ public class UserProfile
     [JsonProperty("location")]
     public Point Location { get; set; }
 
-    [JsonProperty("profiletype")]
-    public string ProfileType { get; set; }
-
     // More properties
 }
 
@@ -154,7 +151,7 @@ Jeśli nie ma informacji o długości i szerokości geograficznej, ale mają adr
 Teraz, że zrobiliśmy przyjrzeć się jak wstawić dane geoprzestrzenne, Spójrzmy na sposób tworzenia zapytań względem tych danych za pomocą usługi Azure Cosmos DB przy użyciu języków SQL i LINQ.
 
 ### <a name="spatial-sql-built-in-functions"></a>Wbudowane funkcje przestrzenne programu SQL
-Usługa Azure Cosmos DB obsługuje następujące funkcje wbudowane Otwórz dane geograficzne Consortium (OGC) do wykonywania zapytań na danych geoprzestrzennych. Aby uzyskać szczegółowe informacje na temat pełnego zestawu funkcji wbudowanych w języku SQL, zobacz [zapytań usługi Azure Cosmos DB](sql-api-sql-query.md).
+Usługa Azure Cosmos DB obsługuje następujące funkcje wbudowane Otwórz dane geograficzne Consortium (OGC) do wykonywania zapytań na danych geoprzestrzennych. Aby uzyskać więcej informacji na temat pełnego zestawu funkcji wbudowanych w języku SQL, zobacz [zapytań usługi Azure Cosmos DB](sql-api-sql-query.md).
 
 <table>
 <tr>
@@ -197,7 +194,7 @@ Funkcje przestrzenne może służyć do wykonywania zapytań dotyczących odleg�
       "id": "WakefieldFamily"
     }]
 
-Jeśli dołączysz indeksowania przestrzennego w zasady indeksowania, następnie "odległość zapytania" będzie ich obsługa jest wydajna za pomocą indeksu. Aby uzyskać szczegółowe informacje na temat indeksowania przestrzennego zobacz sekcję poniżej. Jeśli nie masz indeks przestrzenny dla określonych ścieżek, można wykonywać zapytań przestrzennych, określając `x-ms-documentdb-query-enable-scan` nagłówek żądania z ustawioną wartość "true". Na platformie .NET, można to zrobić, przekazując opcjonalny **FeedOptions** argument zapytań przy użyciu [EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) ma wartość true. 
+Jeśli dołączysz indeksowania przestrzennego w zasady indeksowania, następnie "odległość zapytania" będzie ich obsługa jest wydajna za pomocą indeksu. Aby uzyskać więcej informacji dotyczących indeksowania przestrzennego zobacz sekcję poniżej. Jeśli nie masz indeks przestrzenny dla określonych ścieżek, można wykonywać zapytań przestrzennych, określając `x-ms-documentdb-query-enable-scan` nagłówek żądania z ustawioną wartość "true". Na platformie .NET, można to zrobić, przekazując opcjonalny **FeedOptions** argument zapytań przy użyciu [EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) ma wartość true. 
 
 ST_WITHIN może służyć do sprawdzania, jeśli punkt znajduje się w obrębie wielokąta. Często wielokątów są używane do reprezentowania granice, takie jak kodów pocztowych, granice stanu lub formacji fizycznych. Ponownie Jeśli dołączysz indeksowania przestrzennego w zasady indeksowania, następnie "w ciągu" zapytania będą ich obsługa jest wydajna za pomocą indeksu. 
 
@@ -279,7 +276,7 @@ Poniżej przedstawiono przykładowe zapytanie LINQ, które znajdzie wszystkie do
 **Zapytania LINQ dla odległości**
 
     foreach (UserProfile user in client.CreateDocumentQuery<UserProfile>(UriFactory.CreateDocumentCollectionUri("db", "profiles"))
-        .Where(u => u.ProfileType == "Public" && u.Location.Distance(new Point(32.33, -4.66)) < 30000))
+        .Where(u => u.ProfileType == "Public" && a.Location.Distance(new Point(32.33, -4.66)) < 30000))
     {
         Console.WriteLine("\t" + user);
     }

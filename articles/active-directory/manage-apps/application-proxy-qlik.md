@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 5f103e9fe410374a551eb43d456d5993bdd36627
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 55e262e1855eb6ab50c2d32e7e8cd4bb9175a593
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057160"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962558"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Serwer Proxy aplikacji i usługa Qlik Sense 
 Usługa Azure Active Directory serwera Proxy aplikacji i usługa Qlik Sense wspólnie opracowały razem upewnij się, że możesz łatwo udostępnić dostępu zdalnego we wdrożeniu usługa Qlik Sense za pomocą serwera Proxy aplikacji.  
@@ -58,7 +58,11 @@ Te same czynności jak w przypadku aplikacji nr 1, z następującymi wyjątkami:
 ## <a name="testing"></a>Testowanie 
 Twoja aplikacja jest teraz gotowe do testu. Dostęp do zewnętrznego adresu URL używany do publikowania QlikSense w aplikacji nr 1, a następnie zaloguj się jako użytkownik przypisany do obydwu aplikacji.  
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="additional-references"></a>Dodatkowa dokumentacja
+Więcej informacji na temat publikowania usługa Qlik Sense przy użyciu serwera Proxy aplikacji można znaleźć w artykule społeczności Qlik: [usługi Azure AD przy użyciu zintegrowanego uwierzytelniania Windows przy użyciu ograniczonego delegowania protokołu Kerberos za pomocą usługa Qlik Sense](https://community.qlik.com/docs/DOC-20183).
+
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Publikowanie aplikacji przy użyciu serwera Proxy aplikacji](application-proxy-publish-azure-portal.md)
-- [Praca z łącznikami serwera Proxy aplikacji](application-proxy-connector-groups.md).
+- [Praca z łącznikami serwera Proxy aplikacji](application-proxy-connector-groups.md)
+

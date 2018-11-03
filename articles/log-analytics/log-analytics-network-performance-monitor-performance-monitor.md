@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: 17a15ca00d7343064bde84860de91b62ff136cfe
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 720deec76c57a7aab222ac3e6e76a1cd3f4253c1
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414127"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961419"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Rozwiązanie do monitorowania wydajności sieci: monitorowanie wydajności
 
@@ -137,4 +137,4 @@ Na poniższej ilustracji głównej przyczyny problemów do określonej sekcji si
 ![Mapy topologii z wybrane — właściwości węzła](media/log-analytics-network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Przeszukiwanie dzienników](log-analytics-log-searches.md) do wyświetlania rekordów danych wydajności szczegółowe sieci.
+[Przeszukiwanie dzienników](log-analytics-log-search.md) do wyświetlania rekordów danych wydajności szczegółowe sieci.

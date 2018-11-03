@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 36025bf8460d690aab3b3617ad3341dfe7005e9e
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: f180b6b82613cdddf33a2128d25c49913b8fb128
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649279"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978489"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Zestaw przekierowania adresów URL z usługi b2clogin.com dla usługi Azure Active Directory B2C
 
@@ -62,7 +62,7 @@ Aplikacja usługi Azure AD B2C, ale prawdopodobnie dotyczy `login.microsoftonlin
 
 Jeśli używasz biblioteki MSAL **ValidateAuthority** do `false`. Poniższy przykład pokazuje, jak można ustawić właściwości:
 
-```
+```CSharp
 this.clientApplication = new UserAgentApplication(
   env.auth.clientId,
   env.auth.loginAuthority,

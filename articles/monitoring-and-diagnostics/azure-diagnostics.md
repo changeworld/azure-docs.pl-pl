@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: ef1422db799db6d635ad9f03908e3a34f312e408
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 752a0262503550b9995ac76f648a132429203cce
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974242"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961436"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Co to jest rozszerzenie diagnostyki platformy Azure
-Rozszerzenie diagnostyki platformy Azure jest agenta w systemie Azure umożliwia zbieranie danych diagnostycznych na rozmieszczonej aplikacji. Rozszerzenie diagnostyki można użyć z wielu różnych źródeł. Obecnie obsługiwane wartości to usługa w chmurze (klasyczne) w sieci Web i ról procesów roboczych, maszyny wirtualne, zestawy skalowania maszyn wirtualnych i Service Fabric. Inne usługi platformy Azure jest diagnostyki różnych metod. Zobacz [monitorowania na platformie Azure — omówienie](monitoring-overview.md).
+Rozszerzenie diagnostyki platformy Azure jest agenta w systemie Azure umożliwia zbieranie danych diagnostycznych na rozmieszczonej aplikacji. Rozszerzenie diagnostyki można użyć z wielu różnych źródeł. Obecnie obsługiwane wartości to usługa w chmurze (klasyczne) w sieci Web i ról procesów roboczych, maszyny wirtualne, zestawy skalowania maszyn wirtualnych i Service Fabric. Inne usługi platformy Azure jest diagnostyki różnych metod. Zobacz [monitorowania na platformie Azure — omówienie](../azure-monitor/overview.md).
 
 ## <a name="linux-agent"></a>Agent systemu Linux
-A [wersji systemu Linux rozszerzenie](../virtual-machines/linux/diagnostic-extension.md) dostępnej dla maszyn wirtualnych z systemem Linux. Dane statystyczne zebrane i zachowanie różnią się od wersji Windows.
+A [wersji systemu Linux rozszerzenie](../virtual-machines/extensions/diagnostics-linux.md) dostępnej dla maszyn wirtualnych z systemem Linux. Dane statystyczne zebrane i zachowanie różnią się od wersji Windows.
 
 ## <a name="data-you-can-collect"></a>Dane, które można zebrać
 Rozszerzenie diagnostyki platformy Azure można zebrać następujące typy danych:
@@ -42,7 +42,7 @@ Rozszerzenie diagnostyki platformy Azure można zebrać następujące typy danyc
 ## <a name="data-storage"></a>Magazyn danych
 Rozszerzenie zapisuje dane w [konta usługi Azure Storage](azure-diagnostics-storage.md) określonym przez użytkownika.
 
-Można również wysłać go do [usługi Application Insights](../application-insights/app-insights-cloudservices.md). Innym rozwiązaniem jest przesyłanie strumieniowe do [Centrum zdarzeń](../event-hubs/event-hubs-what-is-event-hubs.md), który następnie pozwala wysyłać je do usługi montoring spoza platformy Azure.
+Można również wysłać go do [usługi Application Insights](../application-insights/app-insights-cloudservices.md). Innym rozwiązaniem jest przesyłanie strumieniowe do [Centrum zdarzeń](../event-hubs/event-hubs-about.md), który następnie pozwala wysyłać je do usługi montoring spoza platformy Azure.
 
 ### <a name="azure-monitor"></a>Azure Monitor
 Istnieje również możliwość wysyłania danych do usługi Azure Monitor. W tej chwili zlew ma zastosowanie tylko do liczników wydajności. Umożliwia wysyłanie liczniki wydajności zebrane na maszynie Wirtualnej, zestawu skalowania maszyn wirtualnych, lub w chmurze Usługa do usługi Azure Monitor jako metryki niestandardowe. Obsługuje ujścia usługi Azure Monitor:
@@ -53,7 +53,7 @@ Istnieje również możliwość wysyłania danych do usługi Azure Monitor. W te
 Aby dowiedzieć się więcej na temat konfigurowania tego obiektu sink, zapoznaj się [dokumentacji schemat usługi Diagnostyka Azure.](azure-diagnostics-schema-1dot3-and-later.md)
 
 ## <a name="versioning-and-configuration-schema"></a>Schemat przechowywania wersji i konfiguracji
-Zobacz [schemat i Historia wersji usługi Diagnostyka Azure](azure-diagnostics-versioning-history.md).
+Zobacz [schemat i Historia wersji usługi Diagnostyka Azure](azure-diagnostics-schema.md).
 
 
 ## <a name="next-steps"></a>Kolejne kroki
@@ -68,16 +68,16 @@ Aby uzyskać bardziej zaawansowanych tematów zobacz
 
 * [Narzędzie diagnostyczne systemu Azure za pomocą usługi Application Insights do usług w chmurze](../application-insights/app-insights-cloudservices.md)
 * [Śledzenie przepływu aplikacji usługi w chmurze przy użyciu diagnostyki Azure](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
-* [Konfigurowanie diagnostyki w usługach Cloud Services za pomocą programu PowerShell](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Konfigurowanie diagnostyki w usługach Cloud Services za pomocą programu PowerShell](../virtual-machines/extensions/diagnostics-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="virtual-machines"></a>Maszyny wirtualne
 * Jeśli używasz programu Visual Studio, zobacz [za pomocą Visual Studio śledzenia usługi Azure Virtual Machines](../vs-azure-tools-debug-cloud-services-virtual-machines.md) na rozpoczęcie pracy. W przeciwnym razie zobacz
-* [Konfigurowanie diagnostyki platformy Azure na maszynie wirtualnej platformy Azure](../virtual-machines-dotnet-diagnostics.md)
+* [Konfigurowanie diagnostyki platformy Azure na maszynie wirtualnej platformy Azure](../virtual-machines/virtual-machines-dotnet-diagnostics.md)
 
 Aby uzyskać bardziej zaawansowanych tematów zobacz
 
-* [Konfigurowanie diagnostyki w usłudze Azure Virtual Machines przy użyciu programu PowerShell](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Utwórz maszynę wirtualną Windows z funkcjami monitorowania i diagnostyki przy użyciu szablonu Azure Resource Manager](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Konfigurowanie diagnostyki w usłudze Azure Virtual Machines przy użyciu programu PowerShell](../virtual-machines/extensions/diagnostics-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Utwórz maszynę wirtualną Windows z funkcjami monitorowania i diagnostyki przy użyciu szablonu Azure Resource Manager](../virtual-machines/extensions/diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="service-fabric"></a>Service Fabric
 Rozpocznij pracę w [monitorowania aplikacji usługi Service Fabric](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md). Wiele innych artykułów diagnostyki usługi Service Fabric są dostępne w drzewie nawigacji po lewej stronie, gdy można uzyskać dostęp do tego artykułu.

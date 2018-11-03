@@ -4,20 +4,19 @@ titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
-author: ghogen
-ms.author: ghogen
+author: iainfoulds
+ms.author: iainfou
 ms.date: 07/03/2018
 ms.topic: article
 ms.technology: azds-kubernetes
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, containers
-manager: douge
-ms.openlocfilehash: 10838528d79caa49abc541b4fcd38fea3c24d68f
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 61e59abde2c3a06b8cf650306b67ac5142729a8c
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42054162"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50976940"
 ---
 # <a name="how-to-upgrade-azure-dev-spaces-tools"></a>Uaktualnianie narzędzia Azure Dev miejsca do magazynowania
 

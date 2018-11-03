@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.component: common
-ms.openlocfilehash: ffb355b4471bd8455f67e657d9557c3f372c3f4e
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fa73062cc2fdfa3704088f37b2e4856e134a6dfe
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470324"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979033"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów z Eksploratora usługi Storage platformy Azure
 
@@ -143,6 +143,12 @@ Jeśli ustawienia serwera proxy są poprawne, należy skontaktować się z admin
 ## <a name="unable-to-retrieve-children-error-message"></a>Komunikat o błędzie "Nie można pobrać elementów podrzędnych"
 
 Jeśli na platformie Azure są połączone za pośrednictwem serwera proxy, sprawdź, czy ustawienia serwera proxy są poprawne. Jeśli z właścicielem subskrypcji, czy konta zostały przyznano dostęp do zasobu, sprawdź, czy po ich przeczytaniu lub listy uprawnień dla tego zasobu.
+
+## <a name="connection-string-does-not-have-complete-configuration-settings"></a>Parametry połączenia nie ma pełną konfigurację ustawień
+
+Jeśli zostanie wyświetlony ten komunikat o błędzie, jest to możliwe, że nie masz wymaganych uprawnień do uzyskania kluczy dla konta magazynu. Aby upewnić się, jeśli jest to możliwe, przejdź do portalu, a następnie zlokalizuj konto magazynu. Możesz szybko to zrobić, kliknij prawym przyciskiem myszy kliknij węzeł konta usługi Storage, a następnie klikając polecenie "Otwórz w Portal". Po wykonaniu tej czynności, przejdź do bloku "Klucze dostępu". Jeśli nie masz uprawnień do wyświetlania kluczy zostanie wyświetlona strona, z komunikatem "Nie masz dostępu.". Aby obejść ten problem, można uzyskać klucz konta od kogoś innego i dołączyć nazwą i kluczem lub może być poproszenie o sygnatury dostępu Współdzielonego do konta magazynu i umożliwia dołączanie konta magazynu.
+
+Jeśli możesz wyświetlić klucze konta, a następnie Zgłoś problem w serwisie GitHub, dzięki czemu możemy Ci pomóc rozwiązać ten problem.
 
 ## <a name="issues-with-sas-url"></a>Problemy związane z adresu URL sygnatury dostępu Współdzielonego
 Jeśli łączysz się z usługą przy użyciu adresu URL sygnatury dostępu Współdzielonego i występuje ten błąd:

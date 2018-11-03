@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4f063299a0bb454c8eaf3d38a0cb0a5fb20abcc8
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 60195f135b8b0e102a36c3573a341432f2e0c784
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094087"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959311"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Usługa Application Insights: Często zadawane pytania
 
@@ -27,7 +27,7 @@ ms.locfileid: "47094087"
 
 * [Aplikacja platformy .NET](app-insights-asp-net-troubleshoot-no-data.md)
 * [Monitorowanie aplikacji już działa](app-insights-monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)
-* [Diagnostyka Azure](app-insights-azure-diagnostics.md)
+* [Diagnostyka Azure](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
 * [Aplikacje internetowe w języku Java](app-insights-java-troubleshoot.md)
 
 *Pojawia się żadne dane z serwera*
@@ -111,7 +111,7 @@ Z aplikacji sieci web server:
 
 Z [stron sieci web klienta](app-insights-javascript.md):
 
-* [Liczba wyświetleń strony](app-insights-web-track-usage.md)
+* [Liczba wyświetleń strony](app-insights-usage-overview.md)
 * [Wywołania AJAX](app-insights-asp-net-dependencies.md) żądania wysłane z uruchamianie skryptu.
 * Załaduj dane dotyczące wyświetleń stron
 * Liczby użytkowników i sesji
@@ -119,7 +119,7 @@ Z [stron sieci web klienta](app-insights-javascript.md):
 
 Z innych źródeł, jeśli można je skonfigurować:
 
-* [Diagnostyka Azure](app-insights-azure-diagnostics.md)
+* [Diagnostyka Azure](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
 * [Kontenery platformy docker](app-insights-docker.md)
 * [Importuj tabele do analizy](app-insights-analytics-import.md)
 * [Log Analytics](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)

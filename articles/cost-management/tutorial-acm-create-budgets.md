@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/01/2018
+ms.date: 11/02/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 50bd22559c3695ac4161932652eb191084e2b46e
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 338035014cb8e34caa7aea688028a96d039b028c
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017366"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50977672"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Samouczek: Tworzenie i zarządzanie nimi budżetów platformy Azure
 
-Budżetów w Cost Management ułatwiają planowanie i dysku świadomości finansowej w organizacji. Za pomocą budżety może uwzględnić usług platformy Azure, używają lub subskrybować w określonym czasie. Ułatwiają one poinformować inne osoby o ich wydatków, aby aktywnie zarządzać kosztami i monitorować, jak wydatków w miarę wraz z upływem czasu. W miarę jak wydatków można zobaczyć, wraz z upływem czasu. Po przekroczeniu progów budżetu, który został utworzony, są wyzwalane tylko powiadomienia. Wpływają na żaden z zasobów i nie zostanie ono zatrzymane swoje użycie. Budżetów służy do porównywania i śledzić wydatki jako analizując koszty.
+Budżety w usłudze Cost Management ułatwiają planowanie poprawy odpowiedzialności organizacji. Za pomocą budżetów możesz obserwować koszt wykorzystywanych lub subskrybowanych usług platformy Azure w określonym czasie. Ułatwiają one poinformować inne osoby o ich wydatków, aby aktywnie zarządzać kosztami i monitorować, jak wydatków w miarę wraz z upływem czasu. W miarę jak wydatków można zobaczyć, wraz z upływem czasu. Po przekroczeniu progów budżetu, który został utworzony, są wyzwalane tylko powiadomienia. Wpływają na żaden z zasobów i nie zostanie ono zatrzymane swoje użycie. Budżetów służy do porównywania i śledzić wydatki jako analizując koszty.
 
 Budżetów automatycznie resetować na końcu okresu (co miesiąc, co kwartał lub rocznie) na tym samym kwotę budżetu po wybraniu datę wygaśnięcia w przyszłości. Ponieważ są one resetowane sama kwota budżetu, musisz utworzyć oddzielne budżety, gdy budżet kwot różnią się w przyszłych okresach.
 
@@ -33,13 +33,13 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Budżetów są dostępne dla wszystkich klientów z umowami EA platformy Azure. Musi mieć dostęp do odczytu do subskrypcji umowy EA platformy Azure do tworzenia i zarządzania budżet. Konta rozliczeniowego EA nie są obsługiwane przez budżet.
+Budżetów są dostępne dla wszystkich klientów z umowami EA platformy Azure. Aby móc tworzyć budżety i zarządzać nimi, musisz mieć dostęp do odczytu do subskrypcji umowy EA platformy Azure. Można utworzyć indywidualne budżetów dla subskrypcji EA i grupy zasobów. Jednak nie można utworzyć budżetów dla rozliczeń konta EA.
 
-Na subskrypcję lub na poziomie grupy zasobów, budżety są tworzone pojedynczo. Następujące uprawnienia platformy Azure są obsługiwane na subskrypcję dla budżetów przez użytkowników i grup:
+Następujące uprawnienia platformy Azure są obsługiwane na subskrypcję dla budżetów przez użytkowników i grup:
 
-- Właściciel — może tworzyć, modyfikować ani usuwać budżetów dla subskrypcji.
-- Współautor — może tworzyć, modyfikować ani usuwać własne budżety. Można modyfikować wielkość budżetu dla budżetów tworzonych przez innych użytkowników.
-- Czytelnik — można wyświetlić budżety, które mają uprawnienia.
+- Właściciel — może tworzyć, modyfikować i usuwać budżety dla subskrypcji.
+- Współautor — może tworzyć, modyfikować i usuwać swoje budżety. Może też modyfikować kwoty budżetów utworzonych przez innych użytkowników.
+- Czytelnik — może wyświetlać budżety, do których ma uprawnienia.
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 

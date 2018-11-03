@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9f4aae578606e14711deaac87e232bad0158bfe9
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: f88290043f750122327ddb1fd9b381b6bc24110c
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041493"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959328"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Użyj usługi Azure blob storage usług IIS i platformą Azure table Storage w przypadku zdarzeń z usługą Log Analytics
 
@@ -53,7 +53,7 @@ Dla usługi Log Analytics do zbierania tych dzienników diagnostyki platformy Az
 >
 >
 
-W przypadku maszyn wirtualnych ma możliwości zainstalowania [agenta usługi Log Analytics](log-analytics-azure-vm-extension.md) połączenie z maszyną wirtualną, aby włączyć dodatkowe informacje szczegółowe. Oprócz możliwości analizowania dzienników usług IIS i dzienniki zdarzeń, możesz wykonać dodatkową analizę, takich jak śledzenie zmian konfiguracji, ocena SQL i oceny aktualizacji.
+W przypadku maszyn wirtualnych ma możliwości zainstalowania [agenta usługi Log Analytics](log-analytics-quick-collect-azurevm.md) połączenie z maszyną wirtualną, aby włączyć dodatkowe informacje szczegółowe. Oprócz możliwości analizowania dzienników usług IIS i dzienniki zdarzeń, możesz wykonać dodatkową analizę, takich jak śledzenie zmian konfiguracji, ocena SQL i oceny aktualizacji.
 
 ## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection"></a>Włącz diagnostykę platformy Azure na maszynie wirtualnej do dziennika zdarzeń i IIS zbierania dzienników
 Poniższa procedura umożliwia Włącz diagnostykę platformy Azure na maszynie wirtualnej, do dziennika zdarzeń i IIS zbieranie dzienników przy użyciu portalu Microsoft Azure.
@@ -151,7 +151,7 @@ W ciągu 30 minut jesteś w stanie wyświetlić dane z konta magazynu w usłudze
 Użyj kroków w [konfigurowania usługi Log Analytics do indeksowania usługi Diagnostyka Azure](log-analytics-powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics) odczytywać diagnostyki platformy Azure, które są zapisywane w usłudze table storage przy użyciu programu PowerShell.
 
 Przy użyciu programu Azure PowerShell można bardziej precyzyjnie określić zdarzenia, które są zapisywane do usługi Azure Storage.
-Aby uzyskać więcej informacji, zobacz [Włączanie diagnostyki w usłudze Azure Virtual Machines](../virtual-machines-dotnet-diagnostics.md).
+Aby uzyskać więcej informacji, zobacz [Włączanie diagnostyki w usłudze Azure Virtual Machines](../virtual-machines/virtual-machines-dotnet-diagnostics.md).
 
 Można włączyć i aktualizować diagnostyki platformy Azure za pomocą następującego skryptu programu PowerShell.
 Umożliwia także ten skrypt z konfiguracją niestandardowego rejestrowania.
@@ -194,5 +194,5 @@ Przejrzyj następujący przykładowy skrypt, skopiuj go, zmodyfikuj go zgodnie z
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Zbieranie dzienników i metryk dla usług platformy Azure](log-analytics-azure-storage.md) obsługiwanych usług platformy Azure.
-* [Włączanie rozwiązań](log-analytics-add-solutions.md) zapewniające wgląd w dane.
-* [Używają zapytań wyszukiwania](log-analytics-log-searches.md) do analizowania danych.
+* [Włączanie rozwiązań](../monitoring/monitoring-solutions.md) zapewniające wgląd w dane.
+* [Używają zapytań wyszukiwania](log-analytics-log-search.md) do analizowania danych.

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mbullwin
-ms.openlocfilehash: 91b5c2c23445e5cd3445d1d5b640cb3ecb8e5e7a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1e9170c955f2a36d68600372e3dcdac2a63056c1
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301195"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957764"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Automatyzacja procesów usługi Application Insights za pomocą usługi Logic Apps
 
@@ -51,7 +51,7 @@ W tym samouczku dowiesz się, jak utworzyć aplikację logiki, która używa alg
 
 1. W **wybierz akcję** pola wyszukiwania, typ **usługi Azure Application Insights**.
 
-1. W obszarze **akcje**, kliknij przycisk **usługi Azure Application Insights — analiza wizualizacji zapytań (wersja zapoznawcza)**.
+1. W obszarze **akcje**, kliknij przycisk **Azure Application Insights — analiza wizualizacji zapytań (wersja zapoznawcza)**.
 
     ![Okna "Wybierz akcję" Projektant aplikacji logiki](./media/automate-with-logic-apps/flow2.png)
 
@@ -93,7 +93,7 @@ Podczas tworzenia własnych zapytań, sprawdź, czy działają prawidłowo w us�
 
 1. W polu wyszukiwania wpisz **usługi Office 365 Outlook**.
 
-1. Kliknij przycisk **usługi Office 365 Outlook — Wyślij wiadomość e-mail**.
+1. Kliknij przycisk **Office 365 Outlook — Wyślij wiadomość e-mail**.
 
     ![Wybór programu Outlook usługi Office 365](./media/automate-with-logic-apps/flow2b.png)
 
@@ -132,7 +132,7 @@ Po uruchomieniu aplikacji logiki adresatów, do których określony na liście a
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej na temat tworzenia [zapytań analitycznych](app-insights-analytics-using.md).
+- Dowiedz się więcej na temat tworzenia [zapytań analitycznych](../log-analytics/query-language/get-started-queries.md).
 - Dowiedz się więcej na temat usługi [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps).
 
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: fc5ab802b39597d72f01f756c9bdb16597862e3c
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: d49360fe39b0df7fc1172c3927e8725af10f927d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638210"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963884"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor rozwiązanie na platformie Azure
 
@@ -46,7 +46,7 @@ Więcej informacji na temat różnych funkcji obsługiwanych przez [rozwiązania
 ## <a name="supported-regions"></a>Obsługiwane regiony
 NPM monitorować łączność między sieciami i aplikacji w dowolnej części świata, z obszaru roboczego, który znajduje się w następujących regionach:
 * Europa Zachodnia
-* Zachodnio-środkowe stany USA
+* Środkowo-zachodnie stany USA
 * Wschodnie stany USA
 * Japonia Wschodnia
 * Azja Południowo-Wschodnia
@@ -103,7 +103,7 @@ Rozwiązanie Network Performance Monitor używa transakcji syntetycznych do moni
 
 ### <a name="configure-the-solution"></a>Skonfiguruj rozwiązanie 
 
-1. Dodaj rozwiązanie Network Performance Monitor do obszaru roboczego z [portalu Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Możesz też użyć procesu opisanego w [rozwiązań Dodaj usługi Log Analytics z galerii rozwiązań](log-analytics-add-solutions.md). 
+1. Dodaj rozwiązanie Network Performance Monitor do obszaru roboczego z [portalu Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Możesz też użyć procesu opisanego w [rozwiązań Dodaj usługi Log Analytics z galerii rozwiązań](../monitoring/monitoring-solutions.md). 
 2. Otwórz obszar roboczy usługi Log Analytics, a następnie wybierz pozycję **Przegląd** kafelka. 
 3. Wybierz **rozwiązania Network Performance Monitor** Kafelek z komunikatem *rozwiązanie wymaga dodatkowej konfiguracji*.
 
@@ -251,7 +251,7 @@ Topologia wyświetlane na mapie topologii warstwy 3 i nie zawiera warstwy 2, urz
 
 ## <a name="log-analytics-search"></a>Wyszukiwania usługi log Analytics 
 
-Wszystkie dane, które są uwidocznione w formie graficznej za pośrednictwem pulpitu nawigacyjnego rozwiązania Network Performance Monitor i przechodzenie do szczegółów strony jest również dostępna natywnie w [wyszukiwania usługi Log Analytics](log-analytics-log-search-new.md). Można wykonywać interakcyjne analizy danych w repozytorium i korelowanie danych z różnych źródeł. Możesz również utworzyć niestandardowe alerty i widoki i wyeksportować dane do programu Excel, Power BI lub możliwe do udostępnienia łącza.  **Typowe zapytania dotyczące** obszaru na pulpicie nawigacyjnym zawiera niektóre przydatne zapytania, które służą jako punktu wyjścia do tworzenia własnych zapytań i raportów. 
+Wszystkie dane, które są uwidocznione w formie graficznej za pośrednictwem pulpitu nawigacyjnego rozwiązania Network Performance Monitor i przechodzenie do szczegółów strony jest również dostępna natywnie w [wyszukiwania usługi Log Analytics](log-analytics-log-search.md). Można wykonywać interakcyjne analizy danych w repozytorium i korelowanie danych z różnych źródeł. Możesz również utworzyć niestandardowe alerty i widoki i wyeksportować dane do programu Excel, Power BI lub możliwe do udostępnienia łącza.  **Typowe zapytania dotyczące** obszaru na pulpicie nawigacyjnym zawiera niektóre przydatne zapytania, które służą jako punktu wyjścia do tworzenia własnych zapytań i raportów. 
 
 ## <a name="alerts"></a>Alerty
 
@@ -279,7 +279,7 @@ Powiadomienia są rozliczane osobno zgodnie [powiadomienia o cenach usługi Azur
 
 Informacje na temat cen są dostępne [online](log-analytics-network-performance-monitor-pricing-faq.md).
 
-## <a name="provide-feedback"></a>Prześlij opinię 
+## <a name="provide-feedback"></a>Przekazywanie opinii 
 
 * **UserVoice:** może umieszczać swoje pomysły funkcji rozwiązania Network Performance Monitor, które chcesz pracować. Odwiedź stronę [stronie UserVoice](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring). 
 

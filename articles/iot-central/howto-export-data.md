@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 86128abd82ee41459a84fc7d9169042179807793
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3231a956648b80d88059b7b0fc8f790e0e58be99
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034913"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962796"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Eksportowanie danych w usłudze Azure IoT Central
 
@@ -26,10 +26,10 @@ W tym artykule opisano sposób używania funkcji eksportu ciągłego dane w usł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Rozszerzone 30-dniowej wersji próbnej IoT Central aplikację lub płatnej aplikacji.
-- Konto platformy Azure z subskrypcją platformy Azure.
-- Tego samego konta platformy Azure jest administratorem w Twojej aplikacji IoT Central.
-- Tego samego konta platformy Azure ma uprawnienia do tworzenia konta magazynu ani uzyskać dostępu do istniejącego konta magazynu w tej samej subskrypcji platformy Azure.
+- Aplikacja płatność za rzeczywiste użycie.
+- Administrator aplikacji IoT Central, który zawiera:
+    - Konto platformy Azure w subskrypcji platformy Azure, w której znajduje się aplikacja IoT Central
+    - uprawnienia do tworzenia magazynu konta ani uzyskać dostępu do istniejącego konta magazynu w tej subskrypcji platformy Azure
 
 ## <a name="types-of-data-to-export"></a>Typy danych do wyeksportowania
 

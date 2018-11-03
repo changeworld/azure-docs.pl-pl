@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 7c850eee67224d09ea2715a58c3cd8eca4ab07af
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: c248e126d99c7cb83895871ec24d41ffcfd84d29
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041905"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960688"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Monitoruje stan replikacji usługi Active Directory z usługą Log Analytics
 
@@ -34,7 +34,7 @@ Pakiet rozwiązań stan replikacji usługi AD regularnie monitoruje środowiska 
 Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązanie.
 
 * Konieczne jest zainstalowanie agentów na kontrolerach domeny, które są członkami domeny, która ma zostać obliczone. Alternatywnie należy zainstalować agentów na serwerach członkowskich i konfigurować agentów do przesyłania danych replikacji usługi AD do usługi Log Analytics. Aby dowiedzieć się, jak połączyć komputery Windows do usługi Log Analytics, zobacz [Windows łączenie komputerów do usługi Log Analytics](log-analytics-windows-agent.md). Jeśli kontroler domeny jest już częścią istniejącego środowiska programu System Center Operations Manager, który chcesz połączyć z usługą Log Analytics, zobacz [łączenie programu Operations Manager do usługi Log Analytics](log-analytics-om-agents.md).
-* Dodaj rozwiązanie stan replikacji usługi Active Directory do obszaru roboczego usługi Log Analytics przy użyciu procesu opisanego w [rozwiązań Dodaj usługi Log Analytics z galerii rozwiązań](log-analytics-add-solutions.md).  Nie są wymagane żadne dalsze czynności konfiguracyjne.
+* Dodaj rozwiązanie stan replikacji usługi Active Directory do obszaru roboczego usługi Log Analytics przy użyciu procesu opisanego w [rozwiązań Dodaj usługi Log Analytics z galerii rozwiązań](../monitoring/monitoring-solutions.md).  Nie są wymagane żadne dalsze czynności konfiguracyjne.
 
 ## <a name="ad-replication-status-data-collection-details"></a>Szczegóły kolekcji danych stanu replikacji usługi AD
 W poniższej tabeli przedstawiono metody zbierania danych i inne szczegóły dotyczące jak zbierane są dane dotyczące stanu replikacji usługi AD.
@@ -110,7 +110,7 @@ Po kliknięciu dowolnego elementu w wykazie, zobaczysz dodatkowe szczegóły dot
 
 ![Błędy stanu replikacji usługi AD w wynikach wyszukiwania](./media/log-analytics-ad-replication-status/oms-ad-replication-search-details.png)
 
-W tym miejscu można dalej filtrować, zmodyfikuj zapytanie wyszukiwania i tak dalej. Aby uzyskać więcej informacji o używaniu przeszukiwania dzienników, zobacz [dziennikach](log-analytics-log-searches.md).
+W tym miejscu można dalej filtrować, zmodyfikuj zapytanie wyszukiwania i tak dalej. Aby uzyskać więcej informacji o używaniu przeszukiwania dzienników, zobacz [dziennikach](log-analytics-log-search.md).
 
 **HelpLink** polu wyświetlany adres URL strony TechNet, z dodatkowymi szczegółami dotyczącymi tego wystąpienia określonego błędu. Można skopiować i wkleić ten link do okna przeglądarki w celu wyświetlenia informacji na temat rozwiązywania problemów i usunięciu błędu.
 
@@ -154,4 +154,4 @@ Jeśli potrzebujesz pomocy przy podłączaniu jeden z kontrolerów domeny, możn
 Jeśli nie chcesz połączyć wszystkich kontrolerów domeny, bezpośrednio do usługi Log Analytics lub System Center Operations Manager, zobacz [umożliwiające niebędącym kontrolerem domeny do przesyłania danych do usługi AD do usługi Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Użyj [przeszukiwanie dzienników w usłudze Log Analytics](log-analytics-log-searches.md) Aby wyświetlić szczegółowe dane stanu replikacji usługi Active Directory.
+* Użyj [przeszukiwanie dzienników w usłudze Log Analytics](log-analytics-log-search.md) Aby wyświetlić szczegółowe dane stanu replikacji usługi Active Directory.

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3b06ec3b10edc39d770e5a724125e70afd5e5477
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 46c05c7c6568a967aae8e50a5da9ae70779a6060
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783605"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959022"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Usługa Application Insights dla usług Azure Cloud Services
 [Aplikacje usługi Microsoft Azure Cloud](https://azure.microsoft.com/services/cloud-services/) mogą być monitorowane przez usługę [Application Insights][start] w celu sprawdzania ich dostępności, wydajności, błędów i użycia. W tym celu dane z zestawów SDK usługi Application Insights są łączone z danymi z usługi [Azure Diagnotics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) pochodzącymi z usług w chmurze. Dzięki uzyskiwanym opiniom dotyczącym wydajności i skuteczności aplikacji możesz dokonać opartych na informacjach wyborów dotyczących kierunku projektu w każdym cyklu życia.
@@ -96,7 +96,7 @@ Jeśli zamierzasz używać osobnego zasobu usługi Application Insights dla każ
 
 To powoduje wstawianie kluczy instrumentacji usługi Application Insights do plików o nazwie `ServiceConfiguration.*.cscfg`. ([Przykładowy kod](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg)).
 
-Jeśli chcesz zróżnicować poziom informacji diagnostycznych wysyłanych do usługi Application Insights, możesz to zrobić, [bezpośrednio edytując pliki `.cscfg`](app-insights-azure-diagnostics.md).
+Jeśli chcesz zróżnicować poziom informacji diagnostycznych wysyłanych do usługi Application Insights, możesz to zrobić, [bezpośrednio edytując pliki `.cscfg`](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md).
 
 ## <a name="sdk"></a>Zainstaluj zestaw SDK w każdym projekcie
 Ta opcja dodaje możliwość dodawania niestandardowych telemetrii biznesowych do każdej roli w celu dokładniejszego przeanalizowania sposobu używania i działania aplikacji.
@@ -151,7 +151,7 @@ Aby wyświetlić liczniki wydajności i liczby zdarzeń, otwórz pozycję [Ekspl
 
 ![Dane diagnostyczne platformy Azure](./media/app-insights-cloudservices/23-wad.png)
 
-Użyj [wyszukiwania](app-insights-diagnostic-search.md) lub [zapytania analitycznego](app-insights-analytics-tour.md), aby wyszukiwać w różnych dziennikach śledzenia wysyłanych przez diagnostykę platformy Azure. Załóżmy na przykład, że masz nieobsłużony wyjątek, który spowodował awarię i odtworzenie roli. Te informacje będą wyświetlane w kanale aplikacji dziennika zdarzeń systemu Windows. Możesz użyć wyszukiwania, aby wyszukać błąd w dzienniku zdarzeń systemu Windows i uzyskać pełen ślad stosu dla wyjątku. Ułatwi to znaleźć główną przyczynę problemu.
+Użyj [wyszukiwania](app-insights-diagnostic-search.md) lub [zapytania analitycznego](../log-analytics/query-language/get-started-analytics-portal.md), aby wyszukiwać w różnych dziennikach śledzenia wysyłanych przez diagnostykę platformy Azure. Załóżmy na przykład, że masz nieobsłużony wyjątek, który spowodował awarię i odtworzenie roli. Te informacje będą wyświetlane w kanale aplikacji dziennika zdarzeń systemu Windows. Możesz użyć wyszukiwania, aby wyszukać błąd w dzienniku zdarzeń systemu Windows i uzyskać pełen ślad stosu dla wyjątku. Ułatwi to znaleźć główną przyczynę problemu.
 
 ![Wyszukiwanie diagnostyki platformy Azure](./media/app-insights-cloudservices/25-wad.png)
 
@@ -231,7 +231,7 @@ Czy to kompilacja dla .NET 4.6? Wersja 4.6 nie jest automatycznie obsługiwana w
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Konfigurowanie wysyłania usługi Diagnostyka Azure do usługi Application Insights](app-insights-azure-diagnostics.md)
+* [Konfigurowanie wysyłania usługi Diagnostyka Azure do usługi Application Insights](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
 * [Automatyczne tworzenie zasobów usługi Application Insights](app-insights-powershell.md)
 * [Automatyzacja usługi Diagnostyka Azure](app-insights-powershell-azure-diagnostics.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)

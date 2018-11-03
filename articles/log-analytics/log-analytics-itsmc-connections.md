@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 4faea38817a546dbab02064d22a0813362f77b3d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e504f8c4fb34084d613e7ab1e506187a856defef
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416464"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961844"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Połączenia narzędzia ITSM produktów/usług za pomocą łącznika zarządzania usługami IT
 Ten artykuł zawiera informacje o tym, jak skonfigurować połączenie między jego produkt/usługę ITSM i IT Service Management Connector (ITSMC) w usłudze Log Analytics, aby centralnie zarządzać elementami roboczymi. Aby uzyskać więcej informacji na temat ITSMC zobacz [Przegląd](log-analytics-itsmc-overview.md).
@@ -293,7 +293,7 @@ Upewnij się, że zostały spełnione następujące wymagania wstępne:
 
 
 - ITSMC zainstalowane. Więcej informacji: [Dodawanie rozwiązanie IT Service Management Connector](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution).
-- Aplikacja provance powinien być zarejestrowany w usłudze Azure AD — oraz identyfikator klienta jest dostępna. Aby uzyskać szczegółowe informacje, zobacz [jak skonfigurować uwierzytelnianie usługi active directory](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md).
+- Aplikacja provance powinien być zarejestrowany w usłudze Azure AD — oraz identyfikator klienta jest dostępna. Aby uzyskać szczegółowe informacje, zobacz [jak skonfigurować uwierzytelnianie usługi active directory](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md).
 
 - Rola: Administrator.
 

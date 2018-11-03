@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 7cd7f0f37f0d351d1d50d4c15e7132f072b5125d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fde8892f7a32d7b5405eef6661bbf29098325178
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982209"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958682"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Instalowanie usługi Azure File storage na maszynach wirtualnych systemu Linux przy użyciu protokołu SMB
 
@@ -100,6 +100,7 @@ Instalowanie udziału plików platformy Azure do katalogu lokalnego.
 sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFileShare -o vers=3.0,username=$STORAGEACCT,password=$STORAGEKEY,dir_mode=0777,file_mode=0777,serverino
 ```
 
+Powyższe polecenie używa [instalacji](https://linux.die.net/man/8/mount) polecenie, aby zainstalować udział plików platformy Azure i opcje specyficzne dla [cifs](https://linux.die.net/man/8/mount.cifs). W szczególności file_mode i dir_mode opcje zestawu plików i katalogów do uprawnień `0777`. `0777` Umożliwia uprawnień odczytu, zapisu i wykonywania uprawnień dla wszystkich użytkowników. Te uprawnienia można zmienić, zastępując wartości z innymi [uprawnienia chmod](https://en.wikipedia.org/wiki/Chmod). Można również użyć innych [cifs](https://linux.die.net/man/8/mount.cifs) opcje, takie jak identyfikator GID dostępu lub identyfikatora uid. 
 
 
 ## <a name="persist-the-mount"></a>Utrwalanie instalacji

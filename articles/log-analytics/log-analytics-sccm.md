@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: dfa0a4b637153d6fa3cce5c9b402587950686341
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ad5721ff7304629ba786b1fed308ccb05b4a5211
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418079"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962728"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Łączenie programu Configuration Manager do usługi Log Analytics
 Można połączyć środowiska programu System Center Configuration Manager z usługą Azure Log Analytics, synchronizować dane kolekcji urządzeń i odwołują się do tych kolekcji w usłudze Log Analytics i Azure Automation.  
@@ -69,7 +69,7 @@ Aby dodać połączenie usługi Log Analytics, środowiska programu Configuratio
    
 2. Na **ogólne** ekranu, upewnij się, że zostały wykonane następujące akcje i że możesz mieć szczegółów dla każdego elementu, a następnie wybierz **dalej**.
 
-   1. W witrynie Azure portal zarejestrowanego w programie Configuration Manager jako aplikację sieci Web, aplikacji i/lub interfejs API sieci Web i że posiadasz [identyfikator klienta z rejestracji](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md).
+   1. W witrynie Azure portal zarejestrowanego w programie Configuration Manager jako aplikację sieci Web, aplikacji i/lub interfejs API sieci Web i że posiadasz [identyfikator klienta z rejestracji](../active-directory/develop/quickstart-v1-add-azure-ad-app.md).
    2. W witrynie Azure portal zostanie utworzona klucza tajnego aplikacji dla aplikacji zarejestrowanych w usłudze Azure Active Directory.  
    3. W witrynie Azure portal został podany rejestrowanej aplikacji internetowej z uprawnieniami do usługi Log Analytics.  
       ![Połączenie Strona ogólna Kreatora analizy dzienników](./media/log-analytics-sccm/sccm-console-general01.png)
@@ -113,7 +113,7 @@ Po zaimportowaniu kolekcje, możesz zobaczyć, na ilu komputerach za pomocą cz�
 
 ![Grupy komputerów - kartę programu SCCM](./media/log-analytics-sccm/sccm-computer-groups02.png)
 
-Po kliknięciu pojedynczo wyszukiwania zostanie otwarty, wszystkie zaimportowane grupy albo wszystkich komputerów, które należą do każdej grupy. Za pomocą [wyszukiwanie w dzienniku](log-analytics-log-searches.md), możesz rozpocząć szczegółowej analizy danych programu Configuration Manager.
+Po kliknięciu pojedynczo wyszukiwania zostanie otwarty, wszystkie zaimportowane grupy albo wszystkich komputerów, które należą do każdej grupy. Za pomocą [wyszukiwanie w dzienniku](log-analytics-log-search.md), możesz rozpocząć szczegółowej analizy danych programu Configuration Manager.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Użyj [wyszukiwanie w dzienniku](log-analytics-log-searches.md) Aby wyświetlić szczegółowe informacje dotyczące danych programu Configuration Manager.
+* Użyj [wyszukiwanie w dzienniku](log-analytics-log-search.md) Aby wyświetlić szczegółowe informacje dotyczące danych programu Configuration Manager.

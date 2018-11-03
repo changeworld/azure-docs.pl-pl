@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: caa8f1a10652c16e181c47fbbe4f9f0c815cfd67
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ab7689cb18dcd11926abc2e9806885b1072e3886
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983688"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960178"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archiwizuj dzienniki diagnostyczne platformy Azure
 
@@ -26,7 +26,7 @@ W tym artykule pokazano, jak można użyć witryny Azure portal, poleceń cmdlet
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem należy [Tworzenie konta magazynu](../storage/storage-create-storage-account.md) do której można zarchiwizować dzienników diagnostycznych. Zdecydowanie zaleca się, że nie używasz istniejącego konta magazynu, który ma inne — monitorowanie danych przechowywanych w nim, dzięki czemu można lepiej kontrolować dostęp do danych monitorowania. Jednakże jeśli są również archiwizowanie swoje dziennika aktywności i metrykach diagnostycznych na konto magazynu, rozsądne może okazać się zachować wszystkie dane monitorowania w centralnej lokalizacji za pomocą tego konta magazynu dla dzienników diagnostycznych w także.
+Przed rozpoczęciem należy [Tworzenie konta magazynu](../storage/common/storage-create-storage-account.md) do której można zarchiwizować dzienników diagnostycznych. Zdecydowanie zaleca się, że nie używasz istniejącego konta magazynu, który ma inne — monitorowanie danych przechowywanych w nim, dzięki czemu można lepiej kontrolować dostęp do danych monitorowania. Jednakże jeśli są również archiwizowanie swoje dziennika aktywności i metrykach diagnostycznych na konto magazynu, rozsądne może okazać się zachować wszystkie dane monitorowania w centralnej lokalizacji za pomocą tego konta magazynu dla dzienników diagnostycznych w także.
 
 > [!NOTE]
 >  Obecnie nie można zarchiwizować dane do magazynu konta, do którego za zabezpieczonej sieci wirtualnej.
@@ -161,7 +161,7 @@ W pliku PT1H.json każde zdarzenie jest przechowywane w tablicy "rekordy", zgodn
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Pobierz obiekty BLOB na potrzeby analizy](../storage/storage-dotnet-how-to-use-blobs.md)
+* [Pobierz obiekty BLOB na potrzeby analizy](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 * [Stream dzienników diagnostycznych do przestrzeni nazw usługi Event Hubs](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [Archiwizuj dzienniki usługi Azure Active Directory z usługą Azure Monitor](../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 * [Więcej informacji na temat dzienników diagnostycznych](monitoring-overview-of-diagnostic-logs.md)

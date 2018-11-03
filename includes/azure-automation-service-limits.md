@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/05/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: 34cae9172d9b024bd6866742d39d82ad496bfc52
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
-ms.translationtype: MT
+ms.openlocfilehash: abe7668ed16ddd5cc1b247207d3e80f7c1118137
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45570425"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50964569"
 ---
 | Zasób | Limit maksymalny |Uwagi|
 | --- | --- |---|
@@ -31,5 +31,6 @@ ms.locfileid: "45570425"
 | Maksymalna liczba zadania elementu Runbook parametry rozmiar   | 512 kb||
 | Maksymalna liczba parametrów   | 50|Można przekazać ciągu JSON lub XML do parametru i przeanalizować za pomocą elementu runbook, jeśli osiągnięty limit liczby 50 parametrów|
 | Maksymalny rozmiar ładunku elementu webhook |  512 kb|
+| Maksymalna liczba dni, które są przechowywane dane zadania|30 dni|
 
 **<sup>1</sup>**  piaskownicy jest udostępnionym środowiskiem, które mogą być używane przez wiele zadań, zadań przy użyciu tego samego piaskownicy są powiązane przez ograniczenia zasobów piaskownicy.

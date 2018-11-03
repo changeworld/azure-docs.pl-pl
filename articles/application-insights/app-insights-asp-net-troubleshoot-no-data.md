@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1a46564c324edb1999a2e1b1d482817685df2893
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 3fa41f894e3228310bae6a9407cfcc426c27bfdc
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205990"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963722"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Rozwiązywanie problemów z brakiem danych — usługa Application Insights dla platformy .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Brakuje części moich danych telemetrycznych
@@ -158,7 +158,7 @@ Dane pochodzą ze skryptów na stronach sieci web.
 Zobacz [telemetrii zależności](app-insights-asp-net-dependencies.md) i [dane telemetryczne dotyczące wyjątków](app-insights-asp-net-exceptions.md).
 
 ## <a name="no-performance-data"></a>Brak danych wydajności
-Dane dotyczące wydajności (procesora CPU, we/wy i tak dalej) jest dostępna dla [usług sieci web Java](app-insights-java-collectd.md), [aplikacje komputerowe Windows](app-insights-windows-desktop.md), [usług IIS i aplikacje sieci web usług jeśli instalowany jest monitor stanu](app-insights-monitor-performance-live-website-now.md), i [Usług azure Cloud Services](app-insights-azure.md). znajdziesz go w obszarze Ustawienia serwerów.
+Dane dotyczące wydajności (procesora CPU, we/wy i tak dalej) jest dostępna dla [usług sieci web Java](app-insights-java-collectd.md), [aplikacje komputerowe Windows](app-insights-windows-desktop.md), [usług IIS i aplikacje sieci web usług jeśli instalowany jest monitor stanu](app-insights-monitor-performance-live-website-now.md), i [Usług azure Cloud Services](app-insights-overview.md). znajdziesz go w obszarze Ustawienia serwerów.
 
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>Brak danych (serwer), ponieważ po opublikowaniu aplikacji się z serwerem
 * Sprawdź, faktycznie kopiowane przez firmę Microsoft. DLL dotycząca usługi Application Insights do serwera, wraz z Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll

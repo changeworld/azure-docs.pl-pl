@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: 449a6274b67f3eb72ea6d8bd19f555fc59158d7e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 60605e7bdeeef32889bc0ac104fa34bd66d4444d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299104"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962881"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Zautomatyzować procesy usługi Azure Application Insights za pomocą łącznika usługi Microsoft Flow
 
@@ -47,7 +47,7 @@ W tym samouczku dowiesz się, jak utworzyć przepływ, który używa algorytmu k
 ### <a name="step-3-add-an-application-insights-action"></a>Krok 3: Dodaj akcję usługi Application Insights
 1. Kliknij przycisk **nowy krok**, a następnie kliknij przycisk **Dodaj akcję**.
 1. Wyszukaj **usługi Application Insights**.
-1. Kliknij przycisk **usługi Azure Application Insights — analiza wizualizacji zapytań (wersja zapoznawcza)**.
+1. Kliknij przycisk **Azure Application Insights — analiza wizualizacji zapytań (wersja zapoznawcza)**.
 
     ![Uruchom okno zapytania usługi Analytics](./media/app-insights-automate-with-flow/flow2.png)
 
@@ -85,7 +85,7 @@ Podczas tworzenia własnych zapytań, sprawdź, czy działają prawidłowo w us�
 
 1. Kliknij przycisk **nowy krok**, a następnie kliknij przycisk **Dodaj akcję**.
 1. Wyszukaj **usługi Office 365 Outlook**.
-1. Kliknij przycisk **usługi Office 365 Outlook — Wyślij wiadomość e-mail**.
+1. Kliknij przycisk **Office 365 Outlook — Wyślij wiadomość e-mail**.
 
     ![Okno wyboru programu Outlook usługi Office 365](./media/app-insights-automate-with-flow/flow2b.png)
 
@@ -125,7 +125,7 @@ Przebieg przepływu adresatów, do których określony na liście e-mail otrzymy
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej na temat tworzenia [zapytań analitycznych](app-insights-analytics-using.md).
+- Dowiedz się więcej na temat tworzenia [zapytań analitycznych](../log-analytics/query-language/get-started-queries.md).
 - Dowiedz się więcej o [Microsoft Flow](https://ms.flow.microsoft.com).
 
 

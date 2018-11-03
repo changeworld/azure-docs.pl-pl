@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: ce8946e5a022eea9281898d1518cc3e8bfb50ee5
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 1951f001de1b9d0667e5d4430454b32b5a3c890e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092509"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957492"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Eksplorowanie danych platformy HockeyApp w usłudze Application Insights
 
@@ -61,7 +61,7 @@ Analytics to zaawansowane narzędzie do zapytania ad hoc dane, dzięki czemu mo�
 
 ![Analiza](./media/app-insights-hockeyapp-bridge-app/05.png)
 
-* [Dowiedz się więcej na temat analizy](app-insights-analytics-tour.md)
+* [Dowiedz się więcej na temat analizy](../log-analytics/query-language/get-started-analytics-portal.md)
 
 ## <a name="continuous-export"></a>Eksport ciągły
 Eksport ciągły umożliwia eksportowanie danych do kontenera usługi Azure Blob Storage. Jest to bardzo przydatne, jeśli potrzebujesz do przechowywania danych przez czas dłuższy niż okres przechowywania obecnie oferowane przez usługę Application Insights. Możesz przechowywać dane w magazynie obiektów blob, Przetwarzaj je do bazy danych SQL lub preferowany rozwiązań magazynowania danych.
@@ -69,5 +69,5 @@ Eksport ciągły umożliwia eksportowanie danych do kontenera usługi Azure Blob
 [Dowiedz się więcej o eksportu ciągłego](app-insights-export-telemetry.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Zastosowanie analizy danych](app-insights-analytics-tour.md)
+* [Zastosowanie analizy danych](../log-analytics/query-language/get-started-analytics-portal.md)
 

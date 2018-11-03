@@ -1,5 +1,5 @@
 ---
-title: Konsola szeregowa maszyny wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+title: Konsoli szeregowej maszyny wirtualnej platformy Azure dla systemu Linux | Dokumentacja firmy Microsoft
 description: Dwukierunkowa konsoli szeregowej maszyn wirtualnych platformy Azure.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: 22128f027f0a218756e413653aa92ee097064587
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: a3d59d0e7575721dbb719944f27fd673ba41f469
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741712"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963822"
 ---
 # <a name="virtual-machine-serial-console-for-linux"></a>Konsola szeregowa maszyny wirtualnej dla systemu Linux
 
@@ -33,17 +33,17 @@ Konsola szeregowa dokumentację dotyczącą maszyn wirtualnych Windows, zobacz [
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
-* Maszyna wirtualna, w którym uzyskujesz dostęp do konsoli szeregowej, należy użyć modelu wdrażania usługi resource management. W przypadku wdrożeń klasycznych nie są obsługiwane. 
+- Maszyna wirtualna, w którym uzyskujesz dostęp do konsoli szeregowej, należy użyć modelu wdrażania usługi resource management. W przypadku wdrożeń klasycznych nie są obsługiwane. 
 
-* Maszyna wirtualna, w którym uzyskujesz dostęp do konsoli szeregowej muszą mieć [diagnostykę rozruchu](boot-diagnostics.md) włączone. Wybierz **diagnostykę rozruchu** z **pomoc techniczna i rozwiązywanie problemów z** sekcji.
+- Maszyna wirtualna, w którym uzyskujesz dostęp do konsoli szeregowej muszą mieć [diagnostykę rozruchu](boot-diagnostics.md) włączone. 
 
     ![Ustawienia diagnostyki rozruchu](./media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
 
-Konta, które używa konsoli szeregowej muszą mieć [rola Współautor maszyny wirtualnej](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) dla maszyny Wirtualnej i [diagnostykę rozruchu](boot-diagnostics.md) konta magazynu: 
+- Konta, które używa konsoli szeregowej muszą mieć [rola Współautor maszyny wirtualnej](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) dla maszyny Wirtualnej i [diagnostykę rozruchu](boot-diagnostics.md) konta magazynu: 
 
-* Maszyna wirtualna, w którym uzyskujesz dostęp do konsoli szeregowej, musisz mieć konto opartego na hasłach. Możesz je utworzyć za pomocą [Resetuj hasło](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkcji rozszerzenia dostępu do maszyny Wirtualnej. Wybierz **Resetuj hasło** z **pomoc techniczna i rozwiązywanie problemów z** sekcji. 
+    - Maszyna wirtualna, w którym uzyskujesz dostęp do konsoli szeregowej, musisz mieć konto opartego na hasłach. Możesz je utworzyć za pomocą [Resetuj hasło](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkcji rozszerzenia dostępu do maszyny Wirtualnej. Wybierz **Resetuj hasło** z **pomoc techniczna i rozwiązywanie problemów z** sekcji. 
 
-* Ustawienia specyficzne dla dystrybucji systemu Linux, zobacz [konsoli szeregowej dostępności dystrybucji systemu Linux](#serial-console-linux-distribution-availability).
+    - Ustawienia specyficzne dla dystrybucji systemu Linux, zobacz [konsoli szeregowej dostępności dystrybucji systemu Linux](#serial-console-linux-distribution-availability).
 
 
 
@@ -51,12 +51,14 @@ Konta, które używa konsoli szeregowej muszą mieć [rola Współautor maszyny 
 Konsoli szeregowej dla maszyn wirtualnych jest dostępna tylko za pośrednictwem witryny Azure portal:
 
   1. Otwórz [portal Azure](https://portal.azure.com).
+
   1. W menu po lewej stronie wybierz **maszyn wirtualnych**.
+
   1. Wybierz maszynę Wirtualną na liście. Zostanie otwarta strona Przegląd dla maszyny Wirtualnej.
+
   1. Przewiń w dół do **pomoc techniczna i rozwiązywanie problemów z** i wybierz pozycję **konsoli szeregowej**. Nowe okienko z konsolą szeregową otwiera się i rozpoczyna połączenie.
 
-   ![Okna konsoli szeregowej systemu Linux](./media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
-
+     ![Okna konsoli szeregowej systemu Linux](./media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
 
 
 > [!NOTE] 

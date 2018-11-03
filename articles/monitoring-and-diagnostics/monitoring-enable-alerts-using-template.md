@@ -1,6 +1,6 @@
 ---
-title: Tworzenie klasycznej alert metryki na platformie Azure przy użyciu szablonu usługi Resource Manager
-description: Dowiedz się, jak szablon Menedżera zasobów do tworzenia klasycznych alert metryki, aby otrzymywać powiadomienia pocztą e-mail lub elementu webhook.
+title: Tworzenie klasycznego alertu metryki na platformie Azure przy użyciu szablonu usługi Resource Manager
+description: Dowiedz się, jak używać szablonu usługi Resource Manager do tworzenia klasycznego alertu metryki, aby otrzymywać powiadomienia, adres e-mail lub elementu webhook.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,31 +8,31 @@ ms.topic: conceptual
 ms.date: 4/27/2018
 ms.author: johnkem
 ms.component: metric
-ms.openlocfilehash: 67dac4f8d9b66f4b5f2654ffb16d9829387fc060
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 3cdf2371ccdaca5573c088c33527985f98ef2f90
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263300"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957122"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Tworzenie klasycznego alertu metryki za pomocą szablonu usługi Resource Manager
-W tym artykule opisano, jak używasz [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) Konfigurowanie alertów metryki platformy Azure. Umożliwia to automatyczne konfigurowanie alertów dla zasobów podczas ich tworzenia, aby upewnić się, że wszystkie zasoby są monitorowane poprawnie.
+W tym artykule pokazano, jak za pomocą [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) konfigurowania alertów dotyczących metryk platformy Azure. Pozwala na automatyczne konfigurowanie alertów dotyczących zasobów podczas jego tworzenia, aby upewnić się, że wszystkie zasoby są prawidłowo monitorowane.
 
 > [!NOTE]
 > 
-> W tym artykule opisano tworzenie **klasycznego alerty metryki** przy użyciu szablonów usługi Resource Manager. Jeśli szukasz tworzenie [nowszej alerty metryki](monitoring-near-real-time-metric-alerts.md) za pomocą szablonów, [w tym artykule](monitoring-create-metric-alerts-with-templates.md) udostępnia szczegółowe informacje.
+> W tym artykule opisano tworzenie **klasycznego alertów dotyczących metryk** przy użyciu szablonów usługi Resource Manager. Jeśli potrzebujesz do tworzenia [nowszych alertów metryk](monitoring-near-real-time-metric-alerts.md) przy użyciu szablonów, [w tym artykule](monitoring-create-metric-alerts-with-templates.md) udostępnia szczegółowe informacje.
 >
 
 
 Podstawowe kroki są następujące:
 
-1. Tworzenie szablonu w formacie JSON, który opisuje sposób tworzenia alertu.
+1. Utwórz szablon jako plik JSON, który opisuje sposób tworzenia alertu.
 2. [Wdrażanie szablonu przy użyciu dowolnej metody wdrażania](../azure-resource-manager/resource-group-template-deploy.md).
 
-Poniżej opisano sposób tworzenia szablonu usługi Resource Manager najpierw alertu samodzielnie, a następnie dla alertu podczas tworzenia innego zasobu.
+Poniżej opisano sposób tworzenia szablonu usługi Resource Manager najpierw alertu samodzielnie, następnie alertu podczas tworzenia inny zasób.
 
-## <a name="resource-manager-template-for-a-classic-metric-alert"></a>Szablon usługi Resource Manager w klasycznym alertu metryki
-Aby utworzyć alert przy użyciu szablonu usługi Resource Manager, należy utworzyć zasobu typu `Microsoft.Insights/alertRules` i wypełnij wszystkie powiązane właściwości. Poniżej znajduje się szablon, który tworzy regułę alertu.
+## <a name="resource-manager-template-for-a-classic-metric-alert"></a>Szablon usługi Resource Manager klasycznego alertu metryki
+Aby utworzyć alert przy użyciu szablonu usługi Resource Manager, należy utworzyć zasób typu `Microsoft.Insights/alertRules` i wypełnij wszystkie powiązane właściwości. Poniżej znajduje się szablon, który tworzy regułę alertu.
 
 ```json
 {
@@ -179,10 +179,10 @@ Aby utworzyć alert przy użyciu szablonu usługi Resource Manager, należy utwo
 }
 ```
 
-Objaśnienia dotyczące schematu i właściwości dla reguły alertu [jest dostępnych tutaj](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+Opis schematu i właściwości dla reguły alertu [znajduje się tutaj](https://msdn.microsoft.com/library/azure/dn933805.aspx).
 
-## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>Szablon Menedżera zasobów dla zasobów klasycznych alert metryki
-Alert w szablonie usługi Resource Manager najczęściej jest przydatne podczas tworzenia alertu podczas tworzenia zasobu. Na przykład może być upewnij się, że "Procesora % > 80" skonfigurować regułę za każdym razem, gdy wdrożenie maszyny wirtualnej. W tym celu należy dodać reguły alertów jako zasób w tablicy zasobów szablonu maszyny Wirtualnej i dodać zależności za pomocą `dependsOn` właściwość identyfikatora zasobu maszyny Wirtualnej W tym miejscu jest pełny przykład, który tworzy Maszynę wirtualną systemu Windows i dodaje alert powiadamia Administratorzy subskrypcji, gdy użycie procesora CPU przekracza 80%.
+## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>Szablon usługi Resource Manager dla zasobu z klasycznego alertu metryki
+Alert w szablonie usługi Resource Manager przydaje się w większości przypadków podczas tworzenia alertu podczas tworzenia zasobu. Na przykład możesz chcieć upewnij się, że "Procesora % > 80" skonfigurować regułę za każdym razem, gdy wdrażanie maszyny wirtualnej. Aby to zrobić, Dodaj regułę alertu jako zasób w tablicy zasobów dla szablonu maszyny Wirtualnej oraz Dodaj zależności przy użyciu `dependsOn` właściwość identyfikatora zasobu maszyny Wirtualnej Oto pełny przykład, który tworzy maszyny Wirtualnej z systemem Windows i dodaje alert powiadamiający Administratorzy subskrypcji, gdy użycie procesora CPU przekracza 80%.
 
 ```json
 {
@@ -402,6 +402,6 @@ Alert w szablonie usługi Resource Manager najczęściej jest przydatne podczas 
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-* [Dowiedz się więcej o alertach](insights-receive-alert-notifications.md)
-* [Dodaj ustawienia diagnostyki](monitoring-enable-diagnostic-logs-using-template.md) do szablonu usługi Resource Manager
+* [Dowiedz się więcej o alertach](monitoring-overview-alerts.md)
+* [Dodaj ustawienia diagnostyczne](monitoring-enable-diagnostic-logs-using-template.md) do szablonu usługi Resource Manager
 

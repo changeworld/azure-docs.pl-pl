@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 4f9882ce94827e490b676fdf421095eae40420d5
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: be2fd826ffa658ec04bd937036e37bf55cbf65a4
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407728"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964139"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optymalizowanie środowiska SQL za pomocą rozwiązania sprawdzanie kondycji serwera SQL w usłudze Log Analytics
 
@@ -53,7 +53,7 @@ Po dodaniu rozwiązania i ocena jest zakończone, podsumowanie informacje o obsz
 
 Aby przeprowadzić sprawdzenie kondycji serwerów programu SQL Server, wymagają agenta i łączności z usługą Log Analytics przy użyciu jednej z następujących obsługiwanych metod:
 
-1. Zainstaluj [Microsoft Monitoring Agent (MMA)](log-analytics-windows-agent.md) Jeśli serwer nie jest już monitorowane przez program System Center 2016 — Operations Manager lub Operations Manager 2012 R2.
+1. Zainstaluj [Microsoft Monitoring Agent (MMA)](log-analytics-agent-windows.md) Jeśli serwer nie jest już monitorowane przez program System Center 2016 — Operations Manager lub Operations Manager 2012 R2.
 2. Jeśli grupa zarządzania nie jest zintegrowana z usługą Log Analytics jest monitorowana przy użyciu programu System Center 2016 — Operations Manager lub Operations Manager 2012 R2, serwer może być wieloadresowe z usługą Log Analytics, aby zbierać dane i przekazywać je do usługi i nadal monitorowane przez program Operations Manager.  
 3. W przeciwnym razie, jeśli grupa zarządzania programu Operations Manager jest zintegrowany z usługą, należy dodać kontrolerów domeny do zbierania danych przez usługę, wykonaj czynności w ramach [dodać komputery zarządzane z wykorzystaniem agentów](log-analytics-om-agents.md#connecting-operations-manager-to-log-analytics) po włączeniu rozwiązania w Twoim obszarze roboczym.  
 
@@ -184,7 +184,7 @@ Jeśli masz zaleceń, które chcesz zignorować, można utworzyć plik tekstowy,
     ```
 
     >[!NOTE]
-    > Jeśli obszar roboczy został uaktualniony do [nowych zapytań usługi Log Analytics język](log-analytics-log-search-upgrade.md), a następnie powyższe zapytania zmienią się następujące czynności.
+    > Jeśli obszar roboczy został uaktualniony do [nowych zapytań usługi Log Analytics język](log-analytics-log-search.md), a następnie powyższe zapytania zmienią się następujące czynności.
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -209,7 +209,7 @@ Jeśli masz zaleceń, które chcesz zignorować, można utworzyć plik tekstowy,
     ```
 
     >[!NOTE]
-    > Jeśli obszar roboczy został uaktualniony do [nowych zapytań usługi Log Analytics język](log-analytics-log-search-upgrade.md), a następnie powyższe zapytania zmienią się następujące czynności.
+    > Jeśli obszar roboczy został uaktualniony do [nowych zapytań usługi Log Analytics język](log-analytics-log-search.md), a następnie powyższe zapytania zmienią się następujące czynności.
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -265,4 +265,4 @@ Jeśli masz zaleceń, które chcesz zignorować, można utworzyć plik tekstowy,
 * Tak, zobacz [Zignoruj zalecenia](#ignore-recommendations) powyższej sekcji.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Przeszukiwanie dzienników](log-analytics-log-searches.md) Aby dowiedzieć się, jak analizować szczegółowe dane SQL Health Check i zalecenia.
+* [Przeszukiwanie dzienników](log-analytics-log-search.md) Aby dowiedzieć się, jak analizować szczegółowe dane SQL Health Check i zalecenia.

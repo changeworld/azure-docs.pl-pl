@@ -9,22 +9,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: mjbrown
-ms.openlocfilehash: ed08b90b9e216ee8713bfe445e98144bf2ba02d4
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 974531cd5907e4f69e7d064125d3e51fa4974949
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50244192"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50956387"
 ---
-# <a name="consistency-levels-and-cosmos-db-apis"></a>Poziomy spójności i Cosmos DB z interfejsów API
+# <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Poziomy spójności i interfejsów API usługi Azure Cosmos DB
 
-Pięcioma modelami spójności są natywnie obsługiwane przez interfejs API SQL, co jest domyślny interfejs API, gdy za pomocą usługi Cosmos DB. Oprócz interfejsu API SQL Cosmos DB zapewnia natywną obsługę protokół przewodowy zgodnych interfejsów API dla popularnych baz danych, takich jak bazy danych MongoDB, Apache Cassandra, Gremlin i tabele platformy Azure. Te bazy danych oferują ani dokładnie zdefiniowanych modeli spójności ani objętym umową SLA gwarancje dotyczące poziomów spójności i zwykle zapewniają tylko podzbiór pięcioma modelami spójności oferowanych przez usługi Cosmos DB. Interfejs API SQL, interfejs API Gremlin i interfejsu API tabel jest używany domyślny poziom spójności skonfigurowane na konto usługi Cosmos.
+Pięcioma modelami spójności oferowanych przez usługę Azure Cosmos DB są natywnie obsługiwane przez Cosmos DB SQL API, czyli domyślnego interfejsu API, korzystając z usługi Cosmos DB. Oprócz interfejsu API SQL Cosmos DB zapewnia natywną obsługę protokół przewodowy zgodnych interfejsów API dla popularnych baz danych, takich jak bazy danych MongoDB, Apache Cassandra, Gremlin i tabele platformy Azure. Te bazy danych, ani oferować dokładnie zdefiniowanych modeli spójności ani objętym umową SLA gwarancje dotyczące poziomów spójności. Te bazy danych zwykle zapewniają tylko podzbiór pięcioma modelami spójności oferowanych przez usługi Cosmos DB. Interfejs API SQL, interfejs API Gremlin i interfejsu API tabel jest używany domyślny poziom spójności, który został skonfigurowany na konto usługi Cosmos.
 
-W poniższej tabeli przedstawiono mapowania między spójności danych wymagany przez sterownik klienta OSS dla bazy danych Apache Cassandra 4.x i MongoDB 3.4, korzystając z interfejsu API rozwiązania Cassandra i interfejsu API usługi MongoDB, odpowiednio i odpowiadającymi im poziomami spójności usługi Cosmos DB.
+W poniższych sekcjach przedstawiono mapowanie między spójności danych wymagany przez sterownik klienta OSS dla bazy danych Apache Cassandra 4.x i MongoDB 3.4, korzystając z interfejsu API rozwiązania Cassandra i interfejsu API usługi MongoDB, odpowiednio i odpowiadającymi im poziomami spójności usługi Cosmos DB.
 
-## <a id="cassandra-mapping"></a>Mapowanie poziomów spójności bazy danych Apache Cassandra i Cosmos DB
+## <a id="cassandra-mapping"></a>Mapowanie między poziomami spójności bazy danych Apache Cassandra usługi Cosmos DB
 
-W poniższej tabeli przedstawiono mapowania dla odczytu spójności między klientem 4.x bazy danych Apache Cassandra i Cosmos DB "Default" poziomu spójności dla wielu regionów i jednym regionie wdrażania.
+W poniższej tabeli przedstawiono "spójności odczytu" mapowanie między klientem 4.x bazy danych Apache Cassandra i domyślny poziom spójności w usłudze Cosmos DB, w przypadku wdrożeń zarówno w wielu regionach, jak i w jednym regionie.
 
 | **Bazy danych Apache Cassandra 4.x** | **Usługa cosmos DB (wielu regionów)** | **Usługa cosmos DB (w jednym regionie)** |
 | - | - | - |
@@ -36,7 +36,7 @@ W poniższej tabeli przedstawiono mapowania dla odczytu spójności między klie
 
 ## <a id="mongo-mapping"></a>Mapowanie między poziomami spójności bazy danych MongoDB 3.4 i Cosmos DB
 
-W poniższej tabeli przedstawiono mapowania "odczytu dotyczy" MongoDB 3.4 i Cosmos DB poziomu "Default" spójności dla wielu regionów i jednym regionie wdrażania.
+W poniższej tabeli przedstawiono "Przeczytaj uwagi" mapowanie między MongoDB 3.4 i domyślny poziom spójności w usłudze Cosmos DB, w przypadku wdrożeń zarówno w wielu regionach, jak i w jednym regionie.
 
 | **MongoDB 3.4** | **Usługa cosmos DB (wielu regionów)** | **Usługa cosmos DB (w jednym regionie)** |
 | - | - | - |

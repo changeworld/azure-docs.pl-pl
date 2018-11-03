@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/3/2018
 ms.author: trinadhk
-ms.openlocfilehash: 9152733e189aec25a5c024de7f9a3582c29218a3
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 20c1606d4d6a1ddd43426731e5498d1bee47f2e3
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406538"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962541"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Uaktualnianie do stosu kopii zapasowych maszyn wirtualnych platformy Azure w wersji 2
 
@@ -28,8 +28,8 @@ Model wdrażania usługi Resource Manager dla uaktualnienie do stosu kopii zapas
 
 * Możliwość używania niezarządzanej maszyny Wirtualnej w oryginalnych kont magazynu, podczas przywracania. Ta możliwość istnieje, nawet wtedy, gdy maszyna wirtualna ma dyski, które są dystrybuowane na kontach magazynu. Przyspiesza operacje przywracania dla różnych konfiguracji maszyny Wirtualnej.
     > [!NOTE]
-    > Ta możliwość nie jest taka sama jak zastępowanie dysków maszyny Wirtualnej przy użyciu danych z punktu odzyskiwania. 
-    
+    > Ta możliwość nie jest taka sama jak zastępowanie dysków maszyny Wirtualnej przy użyciu danych z punktu odzyskiwania.
+
 
 ## <a name="whats-changing-in-the-new-stack"></a>Co ulega zmianie na nowy stos?
 Obecnie zadanie tworzenia kopii zapasowej obejmuje dwa etapy:
@@ -55,7 +55,7 @@ Domyślnie migawki są przechowywane przez 7 dni. Ta funkcja umożliwia przywrac
 * Dla kont usługi premium storage miejsca przydzielonego do migawek wykonywanych liczby punktów natychmiastowe odzyskiwanie kierunku limit 10 TB.
 
 > [!NOTE]
-> Uaktualnianie do stosu kopii zapasowych maszyn wirtualnych platformy Azure w wersji 2 można pobrać obsługę usługi Azure Backup [dysków zarządzanych dysków SSD w warstwie standardowa](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/) i maszyny wirtualne z maksymalnie 32 dyski danych.
+> Uaktualnianie do stosu kopii zapasowych maszyn wirtualnych platformy Azure w wersji 2 można pobrać obsługę usługi Azure Backup [dysków zarządzanych dysków SSD w warstwie standardowa](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/).
 
 ## <a name="upgrade"></a>Uaktualnienie
 ### <a name="the-azure-portal"></a>Witryna Azure Portal
@@ -119,4 +119,4 @@ Każdego dnia nowe migawki. Istnieje siedem poszczególnych migawki. Usługą **
 Migawek przyrostowych są używane w przypadku dysków niezarządzanych. W przypadku dysków zarządzanych punkt, Kolekcja utworzona przez usługę Azure Backup używa migawek obiektów blob i dlatego są dodawane.
 
 ### <a name="how-to-get-standard-ssd-managed-disk-support-for-a-virtual-machine"></a>Jak uzyskać SSD w warstwie standardowa zarządzany za pomocą techniczną dysku dla maszyny wirtualnej
-Uaktualnianie do stosu kopii zapasowych maszyn wirtualnych platformy Azure w wersji 2 można pobrać obsługę usługi Azure Backup [dysków zarządzanych dysków SSD w warstwie standardowa](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). Po uaktualnieniu można również tworzyć kopie zapasowe maszyn wirtualnych z maksymalnie 32 dyski danych.
+Uaktualnianie do stosu kopii zapasowych maszyn wirtualnych platformy Azure w wersji 2 można pobrać obsługę usługi Azure Backup [dysków zarządzanych dysków SSD w warstwie standardowa](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/).

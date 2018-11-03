@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 95cfc7e6d9515274aa7a3c5fde382244f3b33fab
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 8dc85c55dd67d8acd394d7922e947c91234ef23b
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42062095"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957152"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Usługa Azure Stream Analytics dane wyjściowe usługi Azure Cosmos DB  
 Stream Analytics można wskazać [usługi Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) dla danych wyjściowych JSON, włączanie danych archiwizowanie i małe opóźnienia zapytań na danych JSON bez struktury. W tym dokumencie opisano najlepsze rozwiązania dotyczące wdrażania tej konfiguracji.
@@ -37,6 +37,13 @@ Aby są zgodne z wymaganiami aplikacji, usługi Azure Cosmos DB umożliwia prawi
 Stream Analytics integracji z usługą Azure Cosmos DB umożliwia wstawianie lub aktualizowania rekordów w kolekcji na podstawie danej kolumny Identyfikatora dokumentu. To jest również nazywany *Upsert*.
 
 Stream Analytics korzysta z metody optymistycznej upsert których aktualizacje są wykonywane tylko podczas wstawiania zakończy się niepowodzeniem z konfliktem identyfikator dokumentu. Ta aktualizacja jest wykonywane jako poprawki, dzięki czemu umożliwia ona aktualizacje częściowe do dokumentu, to znaczy, dodanie nowych właściwości lub zastępując istniejącą właściwość jest wykonywana stopniowo. Jednak zmiany wartości właściwości tablicy w wyniku dokumentu JSON, korzystając z całej tablicy wprowadzenie zastąpione, czyli tablicy nie jest połączony.
+
+Jeśli przychodzący dokument JSON zawiera istniejące pole ID, że pole jest automatycznie używane jako kolumna Identyfikatora dokumentu w usłudze Cosmos DB, a wszystkie kolejne operacje zapisu są obsługiwane jako takie, co prowadzi do jednej z tych sytuacji:
+- unikatowe identyfikatory prowadzić do wstawienia
+- Zduplikowane identyfikatory i "Identyfikator dokumentu" wartość "ID" prowadzi do wykonania operacji upsert
+- nie zduplikowane identyfikatory i 'Identyfikator dokumentu' zestawu prowadzi do błędu, po pierwszym dokumentu
+
+Jeśli chcesz zapisać <i>wszystkich</i> dokumenty w tym te o zduplikowanym identyfikatorze, Zmień nazwę pola Identyfikator w zapytaniu (za pomocą słowa kluczowego AS) i pozwól Cosmos DB, tworzenia pole Identyfikatora lub Zastąp identyfikator o wartości innej kolumny (przy użyciu słowa kluczowego AS lub za pomocą ustawienia "Dokumentu ID").
 
 ## <a name="data-partitioning-in-cosmos-db"></a>Partycjonowanie danych w usłudze Cosmos DB
 Usługa Azure Cosmos DB [nieograniczone](../cosmos-db/partition-data.md) są zalecane podejście do partycjonowania danych, jak usługa Azure Cosmos DB automatycznie skaluje partycji na podstawie własnego obciążenia. Podczas zapisywania nieograniczone kontenery, Stream Analytics używa dowolną liczbę równoległych składników zapisywania jako poprzedniego kroku zapytania lub schemat partycjonowania danych wejściowych.

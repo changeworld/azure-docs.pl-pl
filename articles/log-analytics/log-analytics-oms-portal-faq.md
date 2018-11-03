@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: fc9ed37ef24e776336124bf097def2f6a00ee83e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 6f28a636f4df1343431762cf1eb8aec9b660f2e2
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419796"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962507"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Często zadawane pytania dotyczące przejścia z portalu pakietu OMS do witryny Azure portal dla użytkowników usługi Log Analytics
 Usługi log Analytics swój własny portal o nazwie portalu pakietu OMS początkowo użyty do zarządzania jej konfiguracji i analizowania zebranych danych.  Wszystkie funkcje z tego portalu został przeniesiony do witryny Azure portal gdzie będą opracowywane.
@@ -82,7 +82,7 @@ Zarządzanie większość ustawień podłączone źródło w **Zaawansowane usta
 | Serwery z systemem Linux   | **Zaawansowane ustawienia** menu dla obszaru roboczego. |
 | Azure Storage     | **Zaawansowane ustawienia** menu dla obszaru roboczego. |
 | System Center     | **Zaawansowane ustawienia** menu dla obszaru roboczego. |
-| Office 365        | Zobacz [dokumentację dotyczącą rozwiązania do zarządzania usługi Office 365](../operations-management-suite/oms-solution-office-365.md) szczegółowe informacje dotyczące konfiguracji. |
+| Office 365        | Zobacz [dokumentację dotyczącą rozwiązania do zarządzania usługi Office 365](../monitoring/monitoring-solution-office-365.md) szczegółowe informacje dotyczące konfiguracji. |
 | Telemetria systemu Windows | Menu Ustawienia dla rozwiązania. Zobacz [Windows Analytics w witrynie Azure portal](/windows/deployment/update/windows-analytics-azure-portal) szczegółowe informacje dotyczące konfiguracji. |
 | Łącznik ITSM    | Zobacz [połączenia narzędzia ITSM produktów/usług za pomocą łącznika zarządzania usługami IT](../log-analytics/log-analytics-itsmc-connections.md) instrukcje dotyczące łączenia usługi ITSM za pomocą usługi Log Analytics. |
 

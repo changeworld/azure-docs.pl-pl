@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 49607809d6bb8697cc6b7a4063a45d893b9e1eac
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: f6f94f12fc0a639743f310638af0f0b6ac0d2932
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421088"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958156"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Alerty dzienników w usłudze Azure Monitor
 Ten artykuł zawiera szczegółowe informacje o alertów dzienników są jednym z typów alertów, które obsługują [Azure Alerts](monitoring-overview-unified-alerts.md) i zezwolić użytkownikom na stosowanie platforma analiz platformy Azure jako podstawa dla alertów.
@@ -122,4 +122,4 @@ Ceny dla dziennika alertów jest podany w [cennik usługi Azure Monitor](https:/
 * Zrozumienie [elementami webhook w dzienniku alertów na platformie Azure](monitor-alerts-unified-log-webhook.md).
 * Dowiedz się więcej o [alertów platformy Azure](monitoring-overview-unified-alerts.md).
 * Dowiedz się więcej o [usługi Application Insights](../application-insights/app-insights-analytics.md).
-* Dowiedz się więcej o [usługi Log Analytics](../log-analytics/log-analytics-overview.md).    
+* Dowiedz się więcej o [usługi Log Analytics](../log-analytics/log-analytics-queries.md).    

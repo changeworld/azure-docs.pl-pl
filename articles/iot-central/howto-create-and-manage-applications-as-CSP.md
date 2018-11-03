@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 07/09/2018
+ms.date: 10/29/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: d32e05e99543b30ee92ea455ae2f800b09d83661
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 5db215a3bf87ac42ac832a59ce39f7e72c45527f
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009294"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963357"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Jako dostawca CSP tworzenie i zarządzanie aplikację Central IoT platformy Azure w imieniu klienta 
 
@@ -35,13 +35,13 @@ Zostanie wyświetlony na stronie usługi Azure IoT Central aplikacji Manager. Az
 
 Aby utworzyć aplikację usługi Azure IoT Central, kliknij przycisk **nową aplikację** kafelka. Spowoduje to załadowanie strony tworzenia aplikacji. Musisz wypełnić wszystkie pola na tej stronie, a następnie wybierz **Utwórz**. Możesz znaleźć więcej informacji na temat każdego z poniższych pól.
 
-![Tworzenie strony aplikacji dla dostawców CSP](media\howto-create-application-asCSP\image4-1.png)
+![Tworzenie strony aplikacji dla dostawców CSP](media\howto-create-application-asCSP\image4.png)
 
-![Tworzenie strony aplikacji dla dostawców CSP](media\howto-create-application-asCSP\image4-2.png)
+![Tworzenie strony aplikacji dla dostawców CSP](media\howto-create-application-asCSP\image4-1.png)
 
 ## <a name="payment-plan"></a>Plan płatności
 
-Można tworzyć tylko tworzyć aplikacje płatne jako dostawca CSP. Aby zaprezentować usługi Azure IoT Central do klienta, można utworzyć aplikację wersji próbnej oddzielnie. Dowiedz się więcej o aplikacjach płatnych oraz wersji próbnych na [stronę z cennikiem usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
+Płatność za rzeczywiste użycie aplikacji można utworzyć tylko jako dostawca CSP. Aby zaprezentować usługi Azure IoT Central do klienta, można utworzyć aplikację wersji próbnej oddzielnie. Dowiedz się więcej na temat aplikacji do udostępniania wersji próbnych i płatność za rzeczywiste użycie na [stronę z cennikiem usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
 
 ## <a name="application-name"></a>Nazwa aplikacji
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5ea026de228f3c93eed04770ad931d072387aa95
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 86b7b87c8cc11be5c4f2c8892905bb6e6800e729
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079076"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958886"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Zbieranie, przechowywanie i magazynowanie danych w usłudze Application Insights
 
@@ -173,7 +173,7 @@ TelemetryConfiguration.Active.TelemetryChannel = channel;
 
 Domyślnie `ServerTelemetryChannel` używa bieżącego użytkownika lokalnej aplikacji danych folderu `%localAppData%\Microsoft\ApplicationInsights` lub folderu tymczasowego `%TMP%`. (Zobacz [implementacji](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) tutaj.) W środowisku systemu Linux magazynu lokalnego zostanie wyłączone, o ile nie określono folderu magazynu.
 
-Poniższy fragment kodu przedstawia sposób ustawiania `ServerTelemetryChannel.StorageFolder` w `ConfigureServices()` metody usługi `Startup.cs` klasy:
+Poniższy fragment kodu przedstawia sposób ustawiania `ServerTelemetryChannel.StorageFolder` w `ConfigureServices()`  metody usługi `Startup.cs` klasy:
 
 ```
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
@@ -232,7 +232,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>Dane osobowe przechowywane w usłudze Application Insights
 
-Nasze [usługi Application Insights dane osobowe artykułu](app-insights-customer-data.md) ten problem, szczegółowe.
+Nasze [usługi Application Insights dane osobowe artykułu](../log-analytics/log-analytics-personal-data-mgmt.md) ten problem, szczegółowe.
 
 #### <a name="can-my-users-turn-off-application-insights"></a>Moi użytkownicy wyłączyć usługi Application Insights?
 Nie bezpośrednio. Firma Microsoft nie oferuje przełącznik, który użytkownicy mogą działać wyłączenia usługi Application Insights.

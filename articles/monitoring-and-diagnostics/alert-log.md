@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: fd183b5776f30b12d577a94be147eabef05d258f
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 43ff945747915edb76da8b593b232e86778374ce
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419371"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958512"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie alerty dzienników przy użyciu usługi Azure Monitor  
 
@@ -57,7 +57,7 @@ Szczegółowe dalej jest przewodnik krok po kroku za pomocą alertów dziennikó
 
    > [!NOTE]
 
-   > Listy można zaimportować zapytania usługi analytics jako typ sygnału — alerty **dziennika (zapisane zapytanie)**, jak pokazano powyżej ilustracji. Dzięki temu użytkownicy może zapytania w usłudze Analytics udoskonalania i zapisać je do użytku w przyszłości w alertach — więcej szczegółowych informacji na temat korzystania z Zapisywanie zapytań dostępne pod adresem [przy użyciu przeszukiwania dzienników w usłudze log analytics](../log-analytics/log-analytics-log-searches.md) lub [udostępnionego zapytania w usłudze application insights Analiza](../log-analytics/log-analytics-overview.md). 
+   > Listy można zaimportować zapytania usługi analytics jako typ sygnału — alerty **dziennika (zapisane zapytanie)**, jak pokazano powyżej ilustracji. Dzięki temu użytkownicy może zapytania w usłudze Analytics udoskonalania i zapisać je do użytku w przyszłości w alertach — więcej szczegółowych informacji na temat korzystania z Zapisywanie zapytań dostępne pod adresem [przy użyciu przeszukiwania dzienników w usłudze log analytics](../log-analytics/log-analytics-log-searches.md) lub [udostępnionego zapytania w usłudze application insights Analiza](../log-analytics/log-analytics-queries.md). 
 
 1.  *Alerty dzienników*: po wybraniu zapytania dotyczące alertów może być wyrażona w **zapytania wyszukiwania** pola; Jeśli składnia zapytania jest nieprawidłowa, pola są wyświetlane w kolorze CZERWONYM błędu. Jeśli składnia zapytania jest poprawna, — do użytku w danych historycznych w określonej kwerendy jest wyświetlany jako wykres z opcją, aby dostosować okno czasowe z ostatnich sześciu godzin do ostatniego tygodnia.
 
@@ -132,7 +132,7 @@ Dlatego dalszej części tego artykułu zawierają szczegółowe informacje na t
 ### <a name="azure-resource-template-for-log-analytics"></a>Szablonu zasobów platformy Azure dla usługi Log Analytics
 Alerty dzienników usługi Log Analytics są tworzone przez reguły alertów, uruchamianych zapisanej operacji wyszukiwania w regularnych odstępach czasu. Jeśli wyniki zapytania dopasowania określone kryteria, zostaje utworzony rekord alertu i są uruchamiane co najmniej jednej akcji. 
 
-Szablon zasobu usługi Log analytics, zapisane wyszukiwania i alertów usługi Log analytics są dostępne w sekcji dokumentacji usługi Log Analytics. Aby dowiedzieć się więcej, zobacz [Dodawanie usługi Log Analytics zapisane wyszukiwania i alerty](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md); w tym przykłady ilustrujące, jak również szczegóły schematu.
+Szablon zasobu usługi Log analytics, zapisane wyszukiwania i alertów usługi Log analytics są dostępne w sekcji dokumentacji usługi Log Analytics. Aby dowiedzieć się więcej, zobacz [Dodawanie usługi Log Analytics zapisane wyszukiwania i alerty](../monitoring/monitoring-solutions-resources-searches-alerts.md); w tym przykłady ilustrujące, jak również szczegóły schematu.
 
 ### <a name="azure-resource-template-for-application-insights"></a>Szablonu zasobów platformy Azure dla usługi Application Insights
 Alert dziennika dla zasobów usługi Application Insights ma typ `Microsoft.Insights/scheduledQueryRules/`. Aby uzyskać więcej informacji na temat tego typu zasobu, zobacz [usługi Azure Monitor — zaplanowane reguły dokumentację interfejsu API zapytań](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
@@ -246,5 +246,5 @@ Na powodzenie operacji 201 zostanie przywrócony do stanu nowych Tworzenie regu�
 * Dowiedz się więcej o [alerty dzienników w alertów platformy Azure](monitor-alerts-unified-log.md)
 * Zrozumienie [Akcje elementu Webhook dla alertów dzienników](monitor-alerts-unified-log-webhook.md)
 * Dowiedz się więcej o [usługi Application Insights](../application-insights/app-insights-analytics.md)
-* Dowiedz się więcej o [usługi Log Analytics](../log-analytics/log-analytics-overview.md). 
+* Dowiedz się więcej o [usługi Log Analytics](../log-analytics/log-analytics-queries.md). 
 

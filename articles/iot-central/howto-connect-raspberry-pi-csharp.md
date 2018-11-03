@@ -1,19 +1,19 @@
 ---
 title: Konstruktor Raspberry Pi z aplikacją usługi Azure IoT Central (C#) | Dokumentacja firmy Microsoft
 description: Jako deweloper w urządzeniu jak łączyć z urządzeniem Raspberry Pi do usługi Azure IoT Central aplikacji przy użyciu języka C#.
-author: dominicbetts
-ms.author: dobett
-ms.date: 01/22/2018
+author: viv-liu
+ms.author: viviali
+ms.date: 10/31/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: timlt
-ms.openlocfilehash: a9390ac9046ad1e0ec5a1689052ee99bf76ec6f4
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+manager: peterpr
+ms.openlocfilehash: 489a644bd2d17e2be3232ec522b9ed7e37d246ad
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734239"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50956727"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Łączenie urządzenia Raspberry Pi z aplikacją usługi Azure IoT Central (C#)
 
@@ -23,10 +23,10 @@ W tym artykule opisano jak Deweloper urządzenia do łączenia z urządzeniem Ra
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Do wykonania kroków opisanych w tym artykule potrzebne są:
+Aby wykonać kroki opisane w tym artykule, potrzebne są następujące składniki:
 
 * [Platforma .NET core 2](https://www.microsoft.com/net) zainstalowane na komputerze deweloperskim. Należy przygotować także Edytor odpowiedni kod taki jak [programu Visual Studio Code](https://code.visualstudio.com/).
-* Aplikacja usługi Azure IoT Central, utworzone na podstawie **Devkits przykładowe** szablon aplikacji. Aby uzyskać więcej informacji, zobacz [utworzyć aplikację usługi Azure IoT centralnej](howto-create-application.md).
+* Aplikacja usługi Azure IoT Central, utworzone na podstawie **Devkits przykładowe** szablon aplikacji. Aby uzyskać więcej informacji, zobacz [tworzenie aplikacji Szybki Start](quick-deploy-iot-central.md).
 * Urządzenie Raspberry Pi, systemem operacyjnym Raspbian.
 
 
@@ -34,10 +34,21 @@ Do wykonania kroków opisanych w tym artykule potrzebne są:
 
 Utworzone na podstawie aplikacji **Devkits przykładowe** szablon aplikacji zawiera **Raspberry Pi** szablon urządzenia o następującej charakterystyce: 
 
-- Dane telemetryczne, zawierającą pomiarów urządzenia **wilgotności**, **temperatury**, **wykorzystanie**, **Magnometer** (mierzoną wzdłuż X Y, osi Z), **Accelorometer** (mierzoną wzdłuż X, Y osi Z) i **Żyroskop** (mierzoną wzdłuż X, Y osi Z).
-- Ustawień przedstawiający **napięcia**, **bieżącego**,**szybkość wentylator** i **IR** przełącznika.
-- Właściwości zawierający właściwości urządzenia **zdechną numer** i **lokalizacji** właściwość w chmurze.
-
+- Dane telemetryczne, obejmuje następujące pomiary zbieranych urządzenia:
+    - Wilgotność
+    - Temperatura
+    - Ciśnienie
+    - Magnetometrów (X, Y, Z)
+    - Przyspieszeniomierza (X, Y, Z)
+    - Żyroskop (X, Y, Z)
+- Ustawienia
+    - Napięcie
+    - Bieżący
+    - Wentylator szybkości
+    - Przełącz Podczerwieni.
+- Właściwości
+    - Zdechną liczba właściwości urządzenia
+    - Właściwość chmury lokalizacji
 
 Można znaleźć szczegółowe informacje o konfiguracji szablonu urządzenia [Szczegóły szablonu Raspberry PI urządzenia](howto-connect-raspberry-pi-csharp.md#raspberry-pi-device-template-details)
 
@@ -346,7 +357,7 @@ Ustawienia przełącznika
 
 | Nazwa wyświetlana | Nazwa pola | W tekście | Wyłącz tekstu | Początkowa |
 | ------------ | ---------- | ------- | -------- | ------- |
-| ŚRODOWISKO IR           | activateIR | ON      | WYŁ.      | Wyłączone     |
+| IR           | activateIR | ON      | WYŁĄCZONE      | Wyłączone     |
 
 ### <a name="properties"></a>Właściwości
 

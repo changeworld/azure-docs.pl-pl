@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 11/02/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: f82a01f3a2b88e66988717eb008a65c8f2aecf28
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 8f32e84e5381a548ada2c5ad393e16c65b17379e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900329"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957186"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Wdrażanie aplikacji w usłudze Azure App Service przy użyciu protokołu FTP/S
 
@@ -45,7 +45,7 @@ Zaleca się, że używasz **poświadczenia aplikacji** można wdrożyć do swoje
 
 ## <a name="deploy-files-to-azure"></a>Wdrażanie plików na platformie Azure
 
-1. Z poziomu klienta FTP (na przykład [programu Visual Studio](https://www.visualstudio.com/vs/community/) lub [FileZilla](https://filezilla-project.org/download.php?type=client)), informacji o połączeniu zebrane nawiązać połączenia z aplikacją.
+1. Z poziomu klienta FTP (na przykład [programu Visual Studio](https://www.visualstudio.com/vs/community/), [Cyberduck](https://cyberduck.io/), lub [WinSCP](https://winscp.net/index.php)), informacji o połączeniu zebrane nawiązać połączenia z aplikacją.
 3. Skopiuj pliki i odpowiednią strukturę katalogów do [ **/site/wwwroot** katalogu](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) na platformie Azure (lub **/site/wwwroot/App_Data/zadania/** katalog dla zadań Webjob).
 4. Przejdź do adresu URL aplikacji, aby sprawdzić, czy aplikacja działa prawidłowo. 
 

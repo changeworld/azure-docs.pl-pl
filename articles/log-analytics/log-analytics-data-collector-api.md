@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: f0a982e8a0cb358e29375e05c1752a33b15ec255
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: cedebbe1ba0dcf40af0f2f001f022ffaad175c70
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319714"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959634"
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Wysyłanie danych do usługi Log Analytics przy użyciu interfejsu API modułu zbierającego dane HTTP (publiczna wersja zapoznawcza)
 W tym artykule pokazano, jak używać interfejsu API modułu zbierającego dane HTTP do wysyłania danych do usługi Log Analytics z klienta interfejsu API REST.  Przedstawiono sposób formatowania danych zbieranych przez skrypt lub aplikację, uwzględnić go w żądaniu i ma to żądanie autoryzacji przez usługę Log Analytics.  Przykłady są udostępniane dla programu PowerShell, C# i Python.
@@ -201,7 +201,7 @@ Poniższa tabela zawiera listę pełnego zestawu kodów stanu, które mogą zwra
 Przesyłać zapytania dotyczące danych przesyłanych przez Log Analytics HTTP danych interfejsu API modułu zbierającego, wyszukiwać rekordy z **typu** jest równa **LogType** wartości, który określiłeś, jest dołączany wraz z **_CL**. Na przykład, jeśli użyto **MyCustomLog**, a następnie zwróci wszystkie rekordy z **typu = MyCustomLog_CL**.
 
 >[!NOTE]
-> Jeśli obszar roboczy został uaktualniony do [nowych zapytań usługi Log Analytics język](log-analytics-log-search-upgrade.md), a następnie powyższe zapytania zmienią się następujące czynności.
+> Jeśli obszar roboczy został uaktualniony do [nowych zapytań usługi Log Analytics język](log-analytics-log-search.md), a następnie powyższe zapytania zmienią się następujące czynności.
 
 > `MyCustomLog_CL`
 
@@ -470,6 +470,6 @@ post_data(customer_id, shared_key, body, log_type)
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Użyj [interfejsu API wyszukiwania w dzienniku](log-analytics-log-search-api.md) do pobierania danych z repozytorium usługi Log Analytics.
+- Użyj [interfejsu API wyszukiwania w dzienniku](log-analytics-log-search.md) do pobierania danych z repozytorium usługi Log Analytics.
 
 - Dowiedz się więcej o tym, jak [tworzenie potoku danych przy użyciu interfejsu API modułu zbierającego dane](log-analytics-create-pipeline-datacollector-api.md) przy użyciu przepływu pracy aplikacji logiki do usługi Log Analytics.

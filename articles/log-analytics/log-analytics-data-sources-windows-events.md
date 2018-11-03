@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/11/2017
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 4e21c011f54382466bf614dc01fb9d51b514d998
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 0285b9208247aa84f56d127e734e8a5e87048ac6
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044250"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961368"
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Źródła danych dziennika zdarzeń Windows w usłudze Log Analytics
 Dzienniki zdarzeń Windows są jedną z najbardziej typowych [źródeł danych](log-analytics-data-sources.md) do zbierania danych przy użyciu agentów Windows, ponieważ wiele aplikacji zapisu w dzienniku zdarzeń Windows.  Oprócz określenia żadnych dzienników niestandardowych utworzone przez aplikacje, które są potrzebne do monitorowania może zbierać zdarzenia z dzienników standardowych, takich jak systemu i aplikacji.
@@ -40,7 +40,7 @@ Podczas wpisywania nazwy dziennika zdarzeń, usługa Log Analytics oferuje suges
 Usługa log Analytics zbiera każdego zdarzenia, które odpowiada wybranej ważności z monitorowanych dziennika zdarzeń, podczas tworzenia zdarzenia.  Agent rejestruje jej miejscu w każdym dzienniku zdarzeń, który zbiera z.  Jeśli agent przejdzie do trybu offline w okresie czasu, następnie usługi Log Analytics zbiera dane zdarzeń z tam, gdzie ją ostatnia przerwaliśmy, nawet jeśli te zdarzenia zostały utworzone, gdy agent był w trybie offline.  Istnieje możliwość dla tych zdarzeń nie można pobrać, jeśli w dzienniku zdarzeń opakowuje ze zdarzeniami niepobranych zostaną zastąpione, gdy agent jest w trybie offline.
 
 >[!NOTE]
->Usługa log Analytics nie są zbierane zdarzenia inspekcji utworzone przez program SQL Server ze źródła *MSSQLSERVER* z Identyfikatorem zdarzenia 18453, który zawiera słowa kluczowe — *klasycznego* lub *Sukces inspekcji* i słowo kluczowe *0xa0000000000000*.
+>Usługa log Analytics nie są zbierane zdarzenia inspekcji utworzone przez program SQL Server ze źródła *MSSQLSERVER* z Identyfikatorem zdarzenia 18453, który zawiera słowa kluczowe — *klasycznego* lub *Sukces inspekcji* i słowo kluczowe *0xa0000000000000*.
 >
 
 ## <a name="windows-event-records-properties"></a>Właściwości rekordy zdarzeń Windows
@@ -76,6 +76,6 @@ Poniższa tabela zawiera różne przykłady przeszukiwania dzienników, które p
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Skonfiguruj usługę Log Analytics do gromadzenia innych [źródeł danych](log-analytics-data-sources.md) do analizy.
-* Dowiedz się więcej o [dziennikach](log-analytics-log-searches.md) analizować dane zbierane z innych źródeł danych i rozwiązań.  
+* Dowiedz się więcej o [dziennikach](log-analytics-log-search.md) analizować dane zbierane z innych źródeł danych i rozwiązań.  
 * Użyj [pól niestandardowych](log-analytics-custom-fields.md) do analizowania rekordów zdarzeń do poszczególnych pól.
 * Konfigurowanie [zbieranie liczników wydajności](log-analytics-data-sources-performance-counters.md) z agentów użytkownika Windows.

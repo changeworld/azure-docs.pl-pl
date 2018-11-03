@@ -1,6 +1,6 @@
 ---
-title: Przekaż obrazy do aplikacji Azure IoT centralnej | Dokumentacja firmy Microsoft
-description: Jako konstruktora Dowiedz się, jak przygotować i przekazywanie obrazów do aplikacji Azure IoT centralnej.
+title: Przekazywanie obrazów do aplikacji usługi Azure IoT Central | Dokumentacja firmy Microsoft
+description: Jako Konstruktor Dowiedz się, jak przygotować i przekazać obrazy do aplikacji usługi Azure IoT Central.
 author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/16/2018
@@ -8,115 +8,115 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 7fd9c8ed5559b00bc755e3f04c768dceeb487562
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 18c44a3d91a4964d054c8e142394da7d69772ed0
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628025"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960705"
 ---
-# <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Przygotowanie i przekazywanie obrazów do aplikacji Azure IoT centralnej
+# <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Przygotuj i przekazywać obrazy do aplikacji usługi Azure IoT Central
 
-W tym artykule opisano, jak to zrobić, w jako konstruktora, przekazując niestandardowych obrazów można dostosować aplikację Microsoft Azure IoT centralnej. Na przykład można dostosować pulpit nawigacyjny urządzenia z obrazu urządzenia.
+W tym artykule opisano, jak to zrobić, w jako konstruktor, przekazując obrazów niestandardowych można dostosować aplikację Microsoft Azure IoT Central. Na przykład można dostosować pulpit nawigacyjny urządzenia przy użyciu obrazu urządzenia.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 Do wykonania kroków opisanych w tym artykule potrzebne są:
 
-1. Aplikacja Azure IoT centralnej. Aby uzyskać więcej informacji, zobacz [tworzenie aplikacji centralnej Azure IoT](howto-create-application.md).
-1. Narzędzie do skalowania i zmiany rozmiaru plików obrazów.
+1. Aplikacja usługi Azure IoT Central. Aby uzyskać więcej informacji, zobacz [tworzenie aplikacji Szybki Start](quick-deploy-iot-central.md).
+1. Narzędzie służące do skalowania i zmienianie rozmiaru obrazów, plików.
 
-## <a name="choose-where-to-use-custom-images"></a>Wybierz miejsce, do używania niestandardowych obrazów
+## <a name="choose-where-to-use-custom-images"></a>Wybierz miejsce używać obrazów niestandardowych
 
-W następujących lokalizacjach w aplikacji Azure IoT centralnej, można dodać niestandardowe obrazy:
+Możesz dodać niestandardowe obrazy w następujących lokalizacjach w aplikacji usługi Azure IoT Central:
 
 * **Menedżer aplikacji** strony
 
-    ![Obraz strony Menedżera aplikacji](media/howto-prepare-images/applicationmanager.png)
+    ![Obraz na stronie Menedżera aplikacji](media/howto-prepare-images/applicationmanager.png)
 
 * Strona główna
 
-    ![Obraz strony głównej](media/howto-prepare-images/homepage.png)
+    ![Obraz na stronie głównej](media/howto-prepare-images/homepage.png)
 
 * Szablon urządzenia
 
-    ![Obraz szablonu urządzenia](media/howto-prepare-images/devicetemplate.png)
+    ![Obraz na szablon urządzenia](media/howto-prepare-images/devicetemplate.png)
 
-* Kafelka na pulpicie nawigacyjnym urządzenia
+* Kafelek na pulpicie nawigacyjnym urządzenia
 
-    ![Obraz na kafelku urządzenia](media/howto-prepare-images/devicetile.png)
+    ![Obraz na Kafelek urządzenia](media/howto-prepare-images/devicetile.png)
 
-* Kafelka na pulpicie nawigacyjnym zestawu urządzeń
+* Kafelek na pulpicie nawigacyjnym zestawu urządzeń
 
     ![Obraz na kafelku zestawu urządzeń](media/howto-prepare-images/devicesettile.png)
 
-## <a name="prepare-the-images"></a>Przygotowanie obrazów
+## <a name="prepare-the-images"></a>Przygotowywanie obrazów
 
-We wszystkich lokalizacjach czterech można użyć obrazów PNG, GIF lub JPEG.
+We wszystkich czterech lokalizacjach można używać obrazów PNG, GIF lub JPEG.
 
-Poniższa tabela zawiera podsumowanie rozmiary obrazów, których można użyć:
+W poniższej tabeli przedstawiono rozmiary obrazów, których można użyć:
 
 | Lokalizacja | Rozmiary |
 | -------- | ------ |
 | **Menedżer aplikacji** | 268 x 160 pikseli |
 | Szablon urządzenia | 64 x 64 pikseli |
-| Strona główna i kafelka pulpitu nawigacyjnego | Najmniejszy rozmiar kafelka jest 200 x 200 pikseli, większe Kafelki można kwadratowy lub prostokątny wielokrotności małych fragmentów. Na przykład 200 x 400 pikseli, 400 x 200 pikseli lub 400 x 400 pikseli |
+| Strona główna i Kafelki pulpitu nawigacyjnego | Najmniejszy rozmiar kafelka jest 200 x 200 pikseli, większy kafelków może być kwadratowe lub prostokątny wielokrotności małych fragmentów. Na przykład 200 x 400 pikseli, 400 x 200 pikseli lub 400 x 400 piks. |
 
-Najlepsze wyświetlana w aplikacji należy utworzyć obrazy pasujące wymiarów przedstawionych w powyższej tabeli.
+Najlepsze wyświetlania w aplikacji należy utworzyć obrazy, które odpowiadają wymiarów przedstawionych w powyższej tabeli.
 
 ## <a name="upload-the-images"></a>Przekazywanie obrazów
 
-W poniższych sekcjach opisano sposób przekazywania obrazów do użycia w różnych miejscach:
+W poniższych sekcjach opisano sposób przekazywania obrazów do wykorzystania w różnych miejscach:
 
 ### <a name="application-manager"></a>Menedżer aplikacji
 
-Aby przekazać obraz do użycia na **Menedżer aplikacji**, przejdź do **ustawienia aplikacji** strony **administracji** sekcji. Musisz być administratorem, aby zakończyć to zadanie:
+Do przekazania obrazu do użycia na **Menedżer aplikacji**, przejdź do **ustawienia aplikacji** strony w **administracji** sekcji. Musisz być administratorem, aby zakończyć to zadanie:
 
 ![Przekaż obraz aplikacji](media/howto-prepare-images/uploadapplicationmanager.png)
 
-Kliknij obraz przekazywania, a następnie wybierz plik do przekazania z komputera lokalnego.
+Kliknij obraz, przekazywania, a następnie wybierz plik do przekazania z komputera lokalnego.
 
 ### <a name="home-page"></a>Strona główna
 
-Aby przekazać obraz do użycia na stronie głównej, przejdź do **strony głównej** aplikacji i tryb projektowania przełącznika. Musi być konstruktora do zakończenia tego zadania:
+Aby przekazać obraz do użycia na stronie głównej, przejdź do **strony głównej** aplikacji i Przełącz tryb projektowania na. Konstruktor, aby zakończyć to zadanie, musisz być:
 
 ![Przekaż obraz strony głównej](media/howto-prepare-images/uploadhomepage.png)
 
-Kliknij obraz przekazywania, a następnie wybierz plik do przekazania z komputera lokalnego.
+Kliknij obraz, przekazywania, a następnie wybierz plik do przekazania z komputera lokalnego.
 
-Po operacji przekazywania obrazu, można zmienić podczas, gdy włączony jest tryb projektowania.
+Po obraz, który ładuje, możesz zmienić jego rozmiar gdy włączony jest tryb projektowania.
 
 ### <a name="device-template"></a>Szablon urządzenia
 
-Aby przekazać obraz do użycia w szablonie urządzeń, przejdź do **Explorer urządzenia**, wybierz szablon urządzenia, a następnie urządzenia i Włącz tryb projektowania. Musi być konstruktora do zakończenia tego zadania:
+Aby przekazać obraz do użycia na podstawie szablonu urządzenia, przejdź do **Device Explorer**, wybierz szablon urządzenia, a następnie urządzenia i włączenie trybu projektowania. Konstruktor, aby zakończyć to zadanie, musisz być:
 
 ![Przekazywanie obrazu szablonu urządzenia](media/howto-prepare-images/uploaddevicetemplate.png)
 
-Kliknij obraz przekazywania, a następnie wybierz plik do przekazania z komputera lokalnego.
+Kliknij obraz, przekazywania, a następnie wybierz plik do przekazania z komputera lokalnego.
 
 ### <a name="device-dashboard"></a>Pulpit nawigacyjny urządzenia
 
-Aby przekazać obraz do użycia na pulpicie nawigacyjnym, urządzeń, przejdź do **Explorer urządzenia**, wybierz szablon urządzenia i urządzenia. Następnie wybierz pozycję **pulpitu nawigacyjnego** tryb projektowania strony i przełącznik na. Musi być konstruktora do zakończenia tego zadania:
+Aby przekazać obraz do użycia na pulpicie nawigacyjnym urządzenia, przejdź do **Device Explorer**, wybierz szablon urządzenia, a następnie urządzenia. Następnie wybierz **pulpit nawigacyjny** strony i przełącznik tryb projektowania na. Konstruktor, aby zakończyć to zadanie, musisz być:
 
-![Przekaż obraz pulpitu nawigacyjnego urządzenia](media/howto-prepare-images/uploaddevicedashboard.png)
+![Przekazywanie obrazu do pulpitu nawigacyjnego urządzeń](media/howto-prepare-images/uploaddevicedashboard.png)
 
-Kliknij obraz przekazywania, a następnie wybierz plik do przekazania z komputera lokalnego.
+Kliknij obraz, przekazywania, a następnie wybierz plik do przekazania z komputera lokalnego.
 
-Po operacji przekazywania obrazu, można zmieniać rozmiar i zmienić jej podczas położenie **tryb projektowania** jest włączone.
+Po przekazuje obraz, można zmienić rozmiar i zmienić położenie go podczas **trybu projektowania** jest włączone.
 
-### <a name="device-set-dashboard"></a>Urządzenie ustawione pulpitu nawigacyjnego
+### <a name="device-set-dashboard"></a>Pulpit nawigacyjny zestawu urządzeń
 
-Aby przekazać obraz do użycia na pulpicie nawigacyjnym zestawu urządzeń, przejdź do **zestawy urządzeń** i wybierz zestaw urządzenia, a następnie urządzenia. Następnie wybierz pozycję **pulpitu nawigacyjnego** strony i przełącznik **tryb projektowania** na:
+Aby przekazać obraz do użycia na pulpicie nawigacyjnym zestawu urządzeń, przejdź do **zestawy urządzeń** i wybierz zestaw urządzeń, a następnie urządzenia. Następnie wybierz **pulpit nawigacyjny** strony i przełącznik **trybu projektowania** na:
 
-![Przekaż obraz pulpitu nawigacyjnego zestawu urządzenia](media/howto-prepare-images/uploaddevicesetdashboard.png)
+![Przekaż obraz pulpitu nawigacyjnego zestawu urządzeń](media/howto-prepare-images/uploaddevicesetdashboard.png)
 
-Kliknij obraz przekazywania, a następnie wybierz plik do przekazania z komputera lokalnego.
+Kliknij obraz, przekazywania, a następnie wybierz plik do przekazania z komputera lokalnego.
 
-Po przekazuje obrazu, można zmienić rozmiar i zmienić jej położenie, podczas gdy włączony jest tryb projektowania.
+Po przekazuje obraz, można zmienić rozmiar i zmienić jej położenie, podczas gdy włączony jest tryb projektowania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, kiedy znasz przygotowaniu i przekazywanie obrazów do aplikacji Azure IoT centralnej, Oto sugerowane następnego kroku:
+Teraz, gdy wiesz jak przygotować i przekazywać obrazy do aplikacji usługi Azure IoT Central, poniżej przedstawiono sugerowany następnego kroku:
 
 > [!div class="nextstepaction"]
-> [Zarządzanie urządzeniami w aplikacji Azure IoT centralnej](howto-manage-devices.md)
+> [Zarządzanie urządzeniami w usłudze Azure IoT Central aplikacji](howto-manage-devices.md)

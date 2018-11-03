@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 10/30/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7f5e1f2141a58f666367d253d5fc313499e64c9f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 8b12e3cdc53b926f660e12b7cf4b79a8cb6f40c2
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239394"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960161"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Rozwiązywanie problemów z błędu ogólnego protokołu RDP w maszynie Wirtualnej platformy Azure
 
@@ -65,7 +65,7 @@ Aby rozwiązać ten problem, [Utwórz kopię zapasową dysku systemu operacyjneg
 
 ### <a name="serial-console"></a>Konsola szeregowa
 
-#### <a name="step-1-turn-on-remote-deskop"></a>Krok 1: Włączanie zdalnego klasycznej
+#### <a name="step-1-turn-on-remote-desktop"></a>Krok 1: Włączanie pulpitu zdalnego
 
 1. Dostęp do [konsoli szeregowej](serial-console-windows.md) , wybierając **pomoc techniczna i rozwiązywanie problemów** > **Konsola szeregowa (wersja zapoznawcza)**. Jeśli ta funkcja jest włączona na maszynie Wirtualnej, możesz połączyć maszynę Wirtualną pomyślnie.
 
@@ -76,94 +76,91 @@ Aby rozwiązać ten problem, [Utwórz kopię zapasową dysku systemu operacyjneg
    ```
    ch -si 1
    ```
-4. Sprawdź wartości kluczy rejestru w następujący sposób:
 
-   1. Upewnij się, że włączono składników protokołu RDP.
+#### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>Krok 2: Sprawdzenie wartości kluczy rejestru protokołu RDP:
+
+1. Sprawdź, czy protokołu RDP zostało wyłączone przez zasady.
 
       ```
-      REM Get the local policy
+      REM Get the local policy 
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server " /v fDenyTSConnections
 
       REM Get the domain policy if any
       reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
       ```
 
-      Jeśli zasady domeny istnieje, zostanie zastąpiony ustawień zasad lokalnych.
+      - Jeśli zasady domeny istnieje, zostanie zastąpiony ustawień zasad lokalnych.
+      - Jeśli zasady domeny określają, czy RDP jest wyłączona (1), a następnie zasady aktualizacji AD z kontrolera domeny.
+      - Jeśli zasady domeny stwierdza, że protokół RDP jest włączony (0), aktualizacja nie jest potrzebna.
+      - Jeśli zasady domeny nie istnieje, a zasady lokalne stany wyłączenia protokołu RDP (1), Włącz protokół RDP przy użyciu następującego polecenia: 
+      
+            reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+                  
 
-         - Jeśli zasady domeny określają, czy RDP jest wyłączona (1), a następnie zasady aktualizacji AD z kontrolera domeny.
-         - Jeśli zasady domeny stwierdza, że protokół RDP jest włączony (0), aktualizacja nie jest potrzebna.
-
-      Jeśli zasady domeny nie istnieje, a zasady lokalne stany wyłączenia protokołu RDP (1), Włącz protokół RDP przy użyciu następującego polecenia:
-
-         ```
-         reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
-         ```
-
-   2. Sprawdź bieżącą konfigurację serwera terminali.
+2. Sprawdź bieżącą konfigurację serwera terminali.
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled
       ```
 
-   3. Jeśli polecenie zwróci wartość 0, serwer terminali jest wyłączone. Następnie należy włączyć serwera terminali w następujący sposób:
+      Jeśli polecenie zwróci wartość 0, serwer terminali jest wyłączone. Następnie należy włączyć serwera terminali w następujący sposób:
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled /t REG_DWORD /d 1 /f
       ```
 
-   4. Moduł serwera terminali ustawiono trybu opróżniania, jeśli serwer znajduje się w farmie serwerów terminali (usług pulpitu zdalnego lub Citrix). Sprawdź, czy bieżący tryb modułu serwera terminali
+3. Moduł serwera terminali ustawiono trybu opróżniania, jeśli serwer znajduje się w farmie serwerów terminali (usług pulpitu zdalnego lub Citrix). Sprawdź, czy bieżący tryb modułu serwera terminali
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSServerDrainMode
       ```
 
-   5. Jeśli polecenie zwróci 1, moduł serwera terminali ustawiono trybu opróżniania. Następnie ustaw moduł do trybu pracy w następujący sposób:
+      Jeśli polecenie zwróci 1, moduł serwera terminali ustawiono trybu opróżniania. Następnie ustaw moduł do trybu pracy w następujący sposób:
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSServerDrainMode /t REG_DWORD /d 0 /f
       ```
 
-   6. Sprawdź, czy użytkownik może łączyć się z serwera terminali.
+4. Sprawdź, czy użytkownik może łączyć się z serwera terminali.
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSUserEnabled
       ```
 
-   7. Polecenie zwraca wartość 1, nie można nawiązać serwera terminali. Następnie Włącz połączenie w następujący sposób:
+      Polecenie zwraca wartość 1, nie można nawiązać serwera terminali. Następnie Włącz połączenie w następujący sposób:
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSUserEnabled /t REG_DWORD /d 0 /f
       ```
-
-   8. Sprawdź bieżącą konfigurację odbiornika protokołu RDP.
+5. Sprawdź bieżącą konfigurację odbiornika protokołu RDP.
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fEnableWinStation
       ```
 
-   9. Jeśli polecenie zwróci wartość 0, odbiornik protokołu RDP jest wyłączone. Następnie Włącz odbiornik w następujący sposób:
+      Jeśli polecenie zwróci wartość 0, odbiornik protokołu RDP jest wyłączone. Następnie Włącz odbiornik w następujący sposób:
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fEnableWinStation /t REG_DWORD /d 1 /f
       ```
 
-   10. Sprawdź, czy możesz nawiązać połączenie odbiornik protokołu RDP.
+6. Sprawdź, czy możesz nawiązać połączenie odbiornik protokołu RDP.
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fLogonDisabled
       ```
 
-   11. Polecenie zwraca wartość 1, nie można nawiązać odbiornik protokołu RDP. Następnie Włącz połączenie w następujący sposób:
+   Polecenie zwraca wartość 1, nie można nawiązać odbiornik protokołu RDP. Następnie Włącz połączenie w następujący sposób:
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fLogonDisabled /t REG_DWORD /d 0 /f
       ```
 
-6. Uruchom ponownie maszynę wirtualną.
+7. Uruchom ponownie maszynę wirtualną.
 
-7. Wyjdź z wystąpienia CMD, wpisując `exit`, a następnie naciśnij klawisz **Enter** dwa razy.
+8. Wyjdź z wystąpienia CMD, wpisując `exit`, a następnie naciśnij klawisz **Enter** dwa razy.
 
-8. Uruchom ponownie maszynę Wirtualną, wpisując `restart`.
+9. Uruchom ponownie maszynę Wirtualną, wpisując `restart`, a następnie nawiązać połączenie z maszyną wirtualną.
 
 Jeśli problem nadal występuje, przejdź do kroku 2.
 
@@ -177,13 +174,13 @@ Aby uzyskać więcej informacji, zobacz [pulpitu zdalnego rozłączy się częst
 
 ### <a name="offline-repair"></a>Naprawy w trybie offline
 
-#### <a name="step-1-turn-on-remote-deskop"></a>Krok 1: Włączanie zdalnego klasycznej
+#### <a name="step-1-turn-on-remote-desktop"></a>Krok 1: Włączanie pulpitu zdalnego
 
 1. [Dołącz dysk systemu operacyjnego do maszyny Wirtualnej odzyskiwania](../windows/troubleshoot-recovery-disks-portal.md).
 2. Rozpocznij połączenie pulpitu zdalnego do maszyny Wirtualnej odzyskiwania.
 3. Upewnij się, że dysk jest oznaczone jako **Online** w konsoli Zarządzanie dyskami. Zanotuj literę dysku, która jest przypisana do dołączonym dysku systemu operacyjnego.
-3. Rozpocznij połączenie pulpitu zdalnego do maszyny Wirtualnej odzyskiwania.
-4. Otwórz sesję wiersza polecenia z podwyższonym poziomem uprawnień (**Uruchom jako administrator**). Uruchom następujące skrypty. W tym skrypcie przyjęto założenie, że litery dysku, która jest przypisana do dołączonym dysku systemu operacyjnego jest F. Zastąp tę literę dysku z odpowiednią wartością dla maszyny Wirtualnej.
+4. Rozpocznij połączenie pulpitu zdalnego do maszyny Wirtualnej odzyskiwania.
+5. Otwórz sesję wiersza polecenia z podwyższonym poziomem uprawnień (**Uruchom jako administrator**). Uruchom następujące skrypty. W tym skrypcie przyjęto założenie, że litery dysku, która jest przypisana do dołączonym dysku systemu operacyjnego jest F. Zastąp tę literę dysku z odpowiednią wartością dla maszyny Wirtualnej.
 
       ```
       reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv 
@@ -219,21 +216,21 @@ Aby uzyskać więcej informacji, zobacz [pulpitu zdalnego rozłączy się częst
       reg unload HKLM\BROKENSOFTWARE 
       ```
 
-3. Jeśli maszyna wirtualna jest przyłączona do domeny, sprawdź następujący klucz rejestru, aby zobaczyć, czy zasady grupy, które spowoduje wyłączenie protokołu RDP. 
+6. Jeśli maszyna wirtualna jest przyłączona do domeny, sprawdź następujący klucz rejestru, aby zobaczyć, czy zasady grupy, które spowoduje wyłączenie protokołu RDP. 
 
-   ```
-   HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fDenyTSConnectionS
-   ```
-
+      ```
+      HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fDenyTSConnectionS
+      ```
 
       Jeśli ta wartość klucza jest równa 1, oznacza to, że protokół RDP jest wyłączona przez zasady. Aby włączyć Pulpit zdalny przy użyciu zasad obiektu zasad grupy, należy zmienić następujące zasady z kontrolera domeny:
 
-   ```
-   Computer Configuration\Policies\Administrative Templates: Policy definitions\Windows Components\Remote Desktop Services\Remote Desktop Session Host\Connections\Allow users to connect remotely by using Remote Desktop Services
-   ```
+   
+      **Szablony w obszarze Konfiguracja komputera\Zasady\Szablony komputera:**
 
-4. Odłącz dysk od ratownictwa maszyny Wirtualnej.
-5. [Tworzenie nowej maszyny Wirtualnej na podstawie dysku](../windows/create-vm-specialized.md).
+      Zasady definitions\Windows Windows\Usługi pulpitu usług pulpitu sesji Host\Connections\Allow użytkownikom łączyć się zdalnie za pomocą usług pulpitu zdalnego
+  
+7. Odłącz dysk od ratownictwa maszyny Wirtualnej.
+8. [Tworzenie nowej maszyny Wirtualnej na podstawie dysku](../windows/create-vm-specialized.md).
 
 Jeśli problem nadal występuje, przejdź do kroku 2.
 

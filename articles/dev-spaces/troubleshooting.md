@@ -4,19 +4,18 @@ titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
-author: ghogen
-ms.author: ghogen
+author: iainfoulds
+ms.author: iainfou
 ms.date: 09/11/2018
 ms.topic: article
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-manager: douge
-ms.openlocfilehash: 3f30a62a2f351aecabc37206607c3e28ec5e3ab5
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: bca818cb4e13066f8a631111b75f50384e521ac1
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353362"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978897"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -231,6 +230,16 @@ Ten błąd występuje, jeśli klient narzędzia Helm już nie może komunikować
 
 ### <a name="try"></a>Wypróbuj:
 Ponowne uruchamianie węzłów agenta w klastrze zwykle rozwiązuje ten problem.
+
+## <a name="azure-dev-spaces-proxy-can-interfere-with-other-pods-running-in-a-dev-space"></a>Serwer proxy usługi Azure Dev miejsca do magazynowania może zakłócać innych zasobników w miejsce dev
+
+### <a name="reason"></a>Przyczyna
+Po włączeniu Dev miejsca do magazynowania w przestrzeni nazw w klastrze AKS dodatkowy kontener o nazwie _mindaro proxy_ jest instalowany na każdym zasobników działającym wewnątrz tego obszaru nazw. Ten kontener przechwytuje wywołania usług pod, który jest dołączony do funkcji tworzenia zespołu miejsca do magazynowania deweloperów.
+
+Niestety może to zakłócać pewne usługi działające w tych zasobników. W szczególności koliduje z zasobników uruchamianie pamięci podręcznej redis cache, powodując błędy połączeń i błędów w komunikacie główny/podrzędny.
+
+### <a name="try"></a>Wypróbuj:
+Dotyczy pod(s) można przenieść do przestrzeni nazw w ramach klastra, który wykonuje _nie_ zawierać spacji deweloperów podczas uruchomienia pozostałej części aplikacji wewnątrz przestrzeni nazw z obsługą tworzenia miejsca do magazynowania w dalszym ciągu włączona. Dev miejsca do magazynowania nie spowoduje zainstalowania _mindaro proxy_ kontenerów wewnątrz spacje innych deweloperów włączone obszary nazw.
 
 ## <a name="azure-dev-spaces-doesnt-seem-to-use-my-existing-dockerfile-to-build-a-container"></a>Usługa Azure Dev spacje wydają się użyć Mój istniejący plik Dockerfile do utworzenia kontenera 
 

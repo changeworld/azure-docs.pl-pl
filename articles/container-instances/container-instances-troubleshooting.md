@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: d2e4491f2ee21deedd674a5a8a64e4dd99149924
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 41e3f38817abbdd0cab9ab2c72d39cb6f3f69531
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079362"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978182"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Rozwiązywanie typowych problemów w usłudze Azure Container Instances
 
@@ -102,7 +102,7 @@ az container create -g MyResourceGroup --name myapp --image ubuntu --command-lin
 
 ```azurecli-interactive 
 ## Deploying a Windows container
-az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image windowsservercore:ltsc2016
+az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image microsoft/windowsservercore:ltsc2016
  --command-line "ping -t localhost"
 ```
 
@@ -187,7 +187,7 @@ Aby zapewnić najlepszy czas uruchamiania kontenera Windows, użyj jednej z **tr
 
 ### <a name="windows-containers-slow-network-readiness"></a>Gotowość wolną sieć kontenery Windows
 
-Kontenery Windows może spowodować naliczenie bez połączenia przychodzącego i wychodzącego do 5 sekund po utworzeniu początkowego. Po przeprowadzeniu instalacji początkowej kontenerowa powinna zostać wznowiona odpowiednio.
+Po utworzeniu początkowego kontenery Windows może być brak łączności dla ruchu przychodzącego lub wychodzącego przez maksymalnie 30 sekund (lub dłużej, w rzadkich przypadkach). Jeśli aplikacja kontenera wymaga połączenia internetowego, dodawać opóźnienie i ponów próbę wykonania logiki, aby zezwolić na 30 sekund, aby nawiązać połączenie z Internetem. Po przeprowadzeniu instalacji początkowej kontenerowa powinna zostać wznowiona odpowiednio.
 
 ## <a name="resource-not-available-error"></a>Zasób błąd nie jest dostępna
 

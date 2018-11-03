@@ -11,13 +11,13 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 27f807c8f2f6b6a65ef95136047f5eed1b3aab02
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 11/02/2018
+ms.openlocfilehash: 11777013eca0ba3a759635ef99c2cfa04104e24b
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159316"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978999"
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Tworzenie alertów dla usługi Azure SQL Database i Data Warehouse za pomocą witryny Azure portal
 
@@ -44,19 +44,15 @@ Można skonfigurować i uzyskać informacje na temat przy użyciu reguł alertó
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Tworzenie reguły alertu na metryki w witrynie Azure portal
 1. W [portal](https://portal.azure.com/)Znajdź zasób interesuje Cię monitorowania i wybierz ją.
-2. Ten krok jest inny dla bazy danych SQL i pule elastyczne i magazyn danych SQL: 
-
-   - **TYLKO bazy danych SQL i elastyczne pule**: Wybierz **alerty** lub **reguły alertów** w sekcji monitorowanie. Tekst i ikona może się nieco różnić dla różnych zasobów.  
+2. Wybierz **alerty (klasyczne)** w sekcji monitorowanie. Tekst i ikona może się nieco różnić dla różnych zasobów.  
    
-     ![Monitorowanie](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertRulesButton.png)
+     ![Monitorowanie](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertsClassicButton.JPG)
   
-   - **SQL data Warehouse tylko**: Wybierz **monitorowanie** sekcji typowych zadań. Kliknij przycisk **użycie jednostki DWU** wykresu.
+   - **SQL data Warehouse tylko**: kliknij **użycie jednostki DWU** wykresu. Wybierz **wyświetlanie alertów klasycznych**
 
-     ![TYPOWE ZADANIA](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertRulesButtonDW.png)
-
-3. Wybierz **Dodaj alert dotyczący** polecenia, a następnie wypełnij pola.
+3. Wybierz **Dodaj alert dotyczący metryki (wersja klasyczna)** przycisk, a następnie wypełnij pola.
    
-    ![Dodaj alert](../monitoring-and-diagnostics/media/insights-alerts-portal/AddDBAlertPage.png)
+    ![Dodaj alert](../monitoring-and-diagnostics/media/insights-alerts-portal/AddDBAlertPageClassic.JPG)
 4. **Nazwa** alert reguły, a następnie wybierz **opis**, który pokazuje także w wiadomości e-mail z powiadomieniem.
 5. Wybierz **metryki** chcesz monitorować, a następnie wybierz **warunek** i **próg** wartość metryki. Również wybrać **okres** czasu, przez jaki reguła metryki muszą być spełnione przed wyzwala alert. Na przykład jeśli używasz okres "PT5M", a alert szuka procesora CPU przekracza 80%, alert wyzwala kiedy **średni** został procesora CPU przekracza 80% przez 5 minut. Gdy wystąpi to pierwszy wyzwalacz, ponownie uaktywnia to, gdy średnie użycie procesora CPU wynosi poniżej 80% przez 5 minut. Pomiar procesora CPU występuje co minutę. Można znaleźć w poniższej tabeli opisano obsługiwane czas systemu windows, a następnie wpisz agregacji, że każdy alert nie używa wszystkich alertów należy użyć wartości średniej.   
 6. Sprawdź **wiadomości E-mail właścicielom...**  chcącym administratorów i współadministratorów, aby otrzymywać pocztą e-mail powiadomienia, gdy zostanie wyzwolony alert.

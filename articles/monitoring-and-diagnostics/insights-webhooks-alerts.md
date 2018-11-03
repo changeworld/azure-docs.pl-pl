@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 08ba5e7cbdc041a41f1d006d69980bf6efc00101
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 0f08e63d6cbf5be8667b1fd61556e3f33e31d06f
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380294"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957662"
 ---
 # <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>Masz klasycznego alertu metryki powiadomić systemu poza platformą Azure za pomocą elementu webhook
 Elementy webhook umożliwia kierowanie powiadomień o alertach platformy Azure z innymi systemami przetwarzania końcowego lub niestandardowych akcji. Element webhook dla alertu dotyczącego służy do kierowania go do usługi, które wysyłanie wiadomości SMS, aby rejestrować błędy, aby powiadomić zespół za pośrednictwem czatu lub usług obsługi wiadomości lub różne inne akcje. 
 
-W tym artykule opisano sposób ustawiania elementu webhook dla alertu dotyczącego metryki platformy Azure. Pokazano także, jak wygląda ładunek HTTP POST do elementu webhook. Informacje o instalacji i schematu dla działania platformy Azure alertu dziennika (alert zdarzeń), zobacz [wywoływania elementu webhook dla alertu dotyczącego dziennika aktywności platformy Azure](insights-auditlog-to-webhook-email.md).
+W tym artykule opisano sposób ustawiania elementu webhook dla alertu dotyczącego metryki platformy Azure. Pokazano także, jak wygląda ładunek HTTP POST do elementu webhook. Informacje o instalacji i schematu dla działania platformy Azure alertu dziennika (alert zdarzeń), zobacz [wywoływania elementu webhook dla alertu dotyczącego dziennika aktywności platformy Azure](monitor-alerts-unified-log-webhook.md).
 
 Alerty platformy Azure za pomocą żądania HTTP POST wysyłać zawartość alertu w formacie JSON element webhook identyfikator URI, który podajesz podczas tworzenia alertu. Schemat jest zdefiniowana w dalszej części tego artykułu. Identyfikator URI musi być prawidłowy punkt końcowy HTTP lub HTTPS. Azure publikuje jednego wpisu na żądanie, gdy alert jest aktywny.
 

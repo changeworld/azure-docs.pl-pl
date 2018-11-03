@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 10/30/2018
+ms.date: 11/02/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 6832f6f9d09cbbfea6ccaa69160ad93209c7ac8c
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 1e5782ce3421cc5f0d2e0e51484d4bbe6b9eb6ab
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741185"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978642"
 ---
 # <a name="preview-azure-ad-password-protection-monitoring-reporting-and-troubleshooting"></a>Wersja zapoznawcza: Usługi Azure AD monitorowania ochrony hasłem, raportowanie i rozwiązywania problemów
 
@@ -24,13 +24,15 @@ ms.locfileid: "50741185"
 | Ochrony hasłem w usłudze Azure AD jest funkcją publicznej wersji zapoznawczej usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
-Po wdrożeniu ochrona za pomocą hasła usługi Azure AD z monitorowaniem i raportowaniem są podstawowe zadania. W tym artykule przechodzi do szczegółów, aby pomóc, że rozumiesz, gdzie każda usługa rejestruje informacje i instrukcje sporządzić raport na temat użytkowania ochrona za pomocą hasła usługi Azure AD.
+Po wdrożeniu ochrona za pomocą hasła usługi Azure AD monitorowania i raportowania są podstawowe zadania. W tym artykule przechodzi do szczegółów, aby pomóc, że rozumiesz, gdzie każda usługa rejestruje informacje i instrukcje sporządzić raport na temat użytkowania ochrona za pomocą hasła usługi Azure AD.
 
 ## <a name="on-premises-logs-and-events"></a>W środowisku lokalnym dzienników i zdarzeń
 
-### <a name="dc-agent-service"></a>Usługa agenta kontrolera domeny
+### <a name="dc-agent-admin-log"></a>Dziennik administratora agenta kontrolera domeny
 
-Na każdym kontrolerze domeny DC oprogramowani usługi zapisuje wyniki jego poprawności hasła (i inne stanu) w lokalnym dzienniku zdarzeń: \Applications i Logs\Microsoft\AzureADPasswordProtection\DCAgent\Admin usług
+Na każdym kontrolerze domeny DC oprogramowani usługi zapisuje wyniki jego poprawności hasła (i inne stanu) w lokalnym dzienniku zdarzeń:
+
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Admin`
 
 Zdarzenia są rejestrowane przez różne składniki agenta kontrolera domeny przy użyciu następujących zakresów:
 
@@ -62,105 +64,157 @@ Kluczowe informacje o zdarzeniach powiązanych sprawdzania poprawności hasła s
 > [!TIP]
 > Przychodzące hasła są sprawdzane Microsoft hasło globalne listy najpierw; w przypadku niepowodzenia nie dalsze przetwarzanie odbywa się. Jest to takie samo zachowanie, ponieważ jest wykonywane na zmiany hasła w systemie Azure.
 
-#### <a name="sample-event-log-message-for-event-id-10014-successful-password-set"></a>Przykładowy komunikat dziennika zdarzeń dla zestawu 10014 hasło pomyślne identyfikator zdarzenia
+#### <a name="sample-event-log-message-for-event-id-10014-successful-password-set"></a>Komunikat dziennika zdarzeń przykładowy identyfikator zdarzenia 10014 (Ustawianie hasła pomyślne)
 
-Zmiany hasła dla określonego użytkownika został zweryfikowany jako zgodny z bieżącym zasadami haseł usługi Azure.
+```
+The changed password for the specified user was validated as compliant with the current Azure password policy.
 
- Nazwa użytkownika: BPL_02885102771 imię i nazwisko:
+ UserName: BPL_02885102771
+ FullName:
+```
 
-#### <a name="sample-event-log-message-for-event-id-10017-and-30003-failed-password-set"></a>Przykładowy komunikat dziennika zdarzeń dla Identyfikatora zdarzenia 10017 i 30003 nie powiodło się ustawianie hasła
+#### <a name="sample-event-log-message-for-event-id-10017-and-30003-failed-password-set"></a>Przykładowy komunikat dziennika zdarzeń dla Identyfikatora zdarzenia 10017 i 30003 (Ustawianie hasła nie powiodło się)
 
 10017:
 
-Resetuj hasło dla określonego użytkownika zostało odrzucone, ponieważ nie był zgodny ze bieżące zasady haseł w usłudze Azure. Zobacz komunikat skorelowany dziennik zdarzeń, aby uzyskać więcej informacji.
+```
+The reset password for the specified user was rejected because it did not comply with the current Azure password policy. Please see the correlated event log message for more details.
 
- Nazwa użytkownika: BPL_03283841185 imię i nazwisko:
+ UserName: BPL_03283841185
+ FullName:
+```
 
 30003:
 
-Resetuj hasło dla określonego użytkownika zostało odrzucone, ponieważ był zgodny z co najmniej jeden z tokenów występuje na liście haseł na dzierżawie zakaz dostępu do bieżących zasad haseł usługi Azure.
+```
+The reset password for the specified user was rejected because it matched at least one of the tokens present in the per-tenant banned password list of the current Azure password policy.
 
- Nazwa użytkownika: BPL_03283841185 imię i nazwisko:
+ UserName: BPL_03283841185
+ FullName:
+```
 
-Niektóre inne kluczowe komunikatach w dzienniku zdarzeń pod uwagę są:
+#### <a name="sample-event-log-message-for-event-id-30001-password-accepted-due-to-no-policy-available"></a>Przykładowy komunikat dziennika zdarzeń dla Identyfikatora zdarzenia 30001 (hasło zaakceptowane ze względu na brak zasad, które są dostępne)
 
-#### <a name="sample-event-log-message-for-event-id-30001"></a>Przykładowy komunikat dziennika zdarzeń dla Identyfikatora zdarzenia 30001
+```
+The password for the specified user was accepted because an Azure password policy is not available yet
 
-Hasło dla określonego użytkownika został zaakceptowany, ponieważ zasady haseł w usłudze Azure nie jest jeszcze dostępna
+UserName: SomeUser
+FullName: Some User
 
-Nazwa użytkownika: SomeUser imię i nazwisko: niektóre użytkownika
+This condition may be caused by one or more of the following reasons:%n
 
-Ten stan może być spowodowane przez co najmniej jeden z następujących powodów: % n
+1. The forest has not yet been registered with Azure.
 
-1. Las nie została jeszcze zarejestrowana przy użyciu platformy Azure.
+   Resolution steps: an administrator must register the forest using the Register-AzureADPasswordProtectionForest cmdlet.
 
-   Kroki rozwiązania: administrator musi zarejestrować lasu za pomocą polecenia cmdlet Register-AzureADPasswordProtectionForest.
+2. An Azure AD password protection Proxy is not yet available on at least one machine in the current forest.
 
-2. Ochrona za pomocą hasła usługi Azure AD serwera Proxy nie jest jeszcze dostępna w co najmniej jedna maszyna w bieżącym lesie.
+   Resolution steps: an administrator must install and register a proxy using the Register-AzureADPasswordProtectionProxy cmdlet.
 
-   Kroki rozwiązania: administrator musi zainstalować i zarejestrować serwer proxy przy użyciu polecenia cmdlet Register-AzureADPasswordProtectionProxy.
+3. This DC does not have network connectivity to any Azure AD password protection Proxy instances.
 
-3. Ten kontroler domeny nie ma łączności sieciowej do żadnych wystąpień serwera Proxy ochrony haseł usługi Azure AD.
+   Resolution steps: ensure network connectivity exists to at least one Azure AD password protection Proxy instance.
 
-   Kroki rozwiązania: Sprawdź istnieje połączenie sieciowe do co najmniej jedno wystąpienie serwera Proxy ochrony haseł usługi Azure AD.
+4. This DC does not have connectivity to other domain controllers in the domain.
 
-4. Ten kontroler domeny nie ma łączności z innymi kontrolerami domeny w domenie.
+   Resolution steps: ensure network connectivity exists to the domain.
+```
 
-   Kroki rozwiązania: Sprawdź istnieje połączenie sieciowe z domeną.
+#### <a name="sample-event-log-message-for-event-id-30006-new-policy-being-enforced"></a>Przykładowy komunikat dziennika zdarzeń dla Identyfikatora zdarzenia 30006 (nowe zasady są wymuszane)
 
-#### <a name="sample-event-log-message-for-event-id-30006"></a>Przykładowy komunikat dziennika zdarzeń dla Identyfikatora zdarzenia 30006
+```
+The service is now enforcing the following Azure password policy.
 
-Usługa jest teraz wymuszania następujące zasady haseł w usłudze Azure.
-
+ Enabled: 1
  AuditOnly: 1
+ Global policy date: ‎2018‎-‎05‎-‎15T00:00:00.000000000Z
+ Tenant policy date: ‎2018‎-‎06‎-‎10T20:15:24.432457600Z
+ Enforce tenant policy: 1
+```
 
- Globalne zasady daty: 2018-05-15T00:00:00.000000000Z
+#### <a name="dc-agent-operational-log"></a>Dziennik operacyjny agenta kontrolera domeny
 
- Dzierżawy Data zasad: 2018-06-10T20:15:24.432457600Z
+Usługa agenta DC zarejestruje także zdarzenia operacyjne związane z następujących dzienników:
 
- Wymuszanie zasad dzierżawy: 1
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Operational`
 
-#### <a name="dc-agent-log-locations"></a>Lokalizacje dziennika agenta kontrolera domeny
+#### <a name="dc-agent-trace-log"></a>W dzienniku śledzenia agenta kontrolera domeny
 
-Usługa agenta DC zarejestruje także zdarzenia operacyjne związane z następujących dziennik: \Applications i Logs\Microsoft\AzureADPasswordProtection\DCAgent\Operational usług
+Usługa agenta kontrolera domeny także zalogować się następujący dziennik zdarzeń pełnego śledzenia na poziomie debugowania:
 
-Usługa agenta kontrolera domeny można także rejestrować zdarzenia śledzenia pełne poziom debugowania następujący dziennik: \Applications i Logs\Microsoft\AzureADPasswordProtection\DCAgent\Trace usług
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Trace`
+
+Rejestrowanie śledzenia jest domyślnie wyłączona.
 
 > [!WARNING]
-> W dzienniku śledzenia jest domyślnie wyłączona. Po włączeniu tego dziennika odbiera dużej liczby zdarzeń i może mieć wpływ na wydajność kontrolera domeny. W związku z tym, ten rozszerzony dziennik tylko powinno być włączone, gdy problem wymaga głębszego zbadania, a następnie dla skraca czas procesu.
+>  Po włączeniu dziennika śledzenia odbiera dużej liczby zdarzeń i może mieć wpływ na wydajność kontrolera domeny. W związku z tym, ten rozszerzony dziennik tylko powinno być włączone, gdy problem wymaga głębszego zbadania, a następnie dla skraca czas procesu.
+
+#### <a name="dc-agent-text-logging"></a>DC Agent rejestrowania w pliku tekstowym
+
+Można skonfigurować usługę agenta kontrolera domeny do zapisu do dziennika tekstowego, ustawiając następującą wartość rejestru:
+
+HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionDCAgent\Parameters! EnableTextLogging = 1 (wartość REG_DWORD)
+
+Rejestrowania w pliku tekstowym jest domyślnie wyłączona. Ponowne uruchomienie usługi agenta kontrolera domeny jest wymagana dla zmiany tej wartości, aby zastosować zmiany. Po włączeniu kontroler domeny usługi agenta są zapisywane w pliku dziennika, znajdujący się w folderze:
+
+`%ProgramFiles%\Azure AD Password Protection DC Agent\Logs`
+
+> [!TIP]
+> Dziennik tekstowy odbiera tych samych wpisy poziom debugowania, które mogą być rejestrowane w dzienniku śledzenia, ale zwykle jest w formacie łatwiejsze do przeglądania i analizowania.
+
+> [!WARNING]
+> Po włączeniu tego dziennika odbiera dużej liczby zdarzeń i może mieć wpływ na wydajność kontrolera domeny. W związku z tym, ten rozszerzony dziennik tylko powinno być włączone, gdy problem wymaga głębszego zbadania, a następnie dla skraca czas procesu.
 
 ### <a name="azure-ad-password-protection-proxy-service"></a>Hasło ochrony serwera proxy usługi programu Azure AD
 
-Ochrona za pomocą hasła usługi serwera Proxy emituje to minimalny zestaw zdarzeń w dzienniku zdarzeń następujące: \Applications i Logs\Microsoft\AzureADPasswordProtection\ProxyService\Operational usług
+#### <a name="proxy-service-event-logs"></a>Dzienniki zdarzeń usługi serwera proxy
 
-Ochrona za pomocą hasła usługi serwera Proxy można także rejestrować zdarzenia pełnego śledzenia na poziomie debugowania następujący dziennik: \Applications i Logs\Microsoft\AzureADPasswordProtection\ProxyService\Trace usług
+Usługa serwera Proxy emituje to minimalny zestaw zdarzeń do następujących dzienników zdarzeń:
+
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Admin`
+
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Operational`
+
+Usługa serwera Proxy także zalogować się następujący dziennik zdarzeń pełnego śledzenia na poziomie debugowania:
+
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Trace`
+
+Rejestrowanie śledzenia jest domyślnie wyłączona.
 
 > [!WARNING]
-> W dzienniku śledzenia jest domyślnie wyłączona. Po włączeniu tego dziennika odbiera dużej liczby zdarzeń i może to mieć wpływ na wydajność hosta serwera proxy. W związku z tym, ten dziennik tylko powinno być włączone, gdy problem wymaga głębszego zbadania, a następnie dla skraca czas procesu.
+> Po włączeniu dziennika śledzenia odbiera dużej liczby zdarzeń i może to mieć wpływ na wydajność hosta serwera proxy. W związku z tym, ten dziennik tylko powinno być włączone, gdy problem wymaga głębszego zbadania, a następnie dla skraca czas procesu.
 
-### <a name="dc-agent-discovery"></a>Odnajdywanie agenta kontrolera domeny
+#### <a name="proxy-service-text-logging"></a>Rejestrowania w pliku tekstowym usługa serwera proxy
 
-`Get-AzureADPasswordProtectionDCAgent` Polecenia cmdlet mogą służyć do wyświetlania podstawowych informacji o różnych agentów kontrolera domeny w domenie lub lesie. Te informacje są pobierane z obiektów serviceConnectionPoint zarejestrowane przez uruchamianie usług agenta kontrolera domeny. Przykładowe dane wyjściowe tego polecenia cmdlet jest następująca:
+Usługa serwera Proxy można skonfigurować do zapisu do dziennika tekstowego, ustawiając następującą wartość rejestru:
 
-```
-PS C:\> Get-AzureADPasswordProtectionDCAgent
-ServerFQDN            : bplChildDC2.bplchild.bplRootDomain.com
-Domain                : bplchild.bplRootDomain.com
-Forest                : bplRootDomain.com
-Heartbeat             : 2/16/2018 8:35:01 AM
-```
+HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionProxy\Parameters! EnableTextLogging = 1 (wartość REG_DWORD)
 
-Różne właściwości są aktualizowane przez poszczególne usługi agenta kontrolera domeny w systemie godzinowym przybliżone. Dane są nadal podlega procesowi opóźnienie replikacji usługi Active Directory.
+Rejestrowania w pliku tekstowym jest domyślnie wyłączona. Ponowne uruchomienie usługi serwera Proxy jest wymagany dla zmiany tej wartości, aby zastosować zmiany. Po włączeniu serwera Proxy usługi są zapisywane w pliku dziennika, znajdujący się w folderze:
 
-Zakres kwerendy polecenie cmdlet może wpływać przy użyciu parametrów — domenie lub lesie —.
+`%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
+
+> [!TIP]
+> Dziennik tekstowy odbiera tych samych wpisy poziom debugowania, które mogą być rejestrowane w dzienniku śledzenia, ale zwykle jest w formacie łatwiejsze do przeglądania i analizowania.
+
+> [!WARNING]
+> Po włączeniu tego dziennika odbiera dużej liczby zdarzeń i może mieć wpływ na wydajność kontrolera domeny. W związku z tym, ten rozszerzony dziennik tylko powinno być włączone, gdy problem wymaga głębszego zbadania, a następnie dla skraca czas procesu.
+
+#### <a name="powershell-cmdlet-logging"></a>Funkcje rejestrowania polecenia cmdlet programu PowerShell
+
+Większość ochrony hasłem usługi Azure AD poleceń cmdlet programu Powershell będzie zapisywała Dziennik tekstowy znajdujący się w folderze:
+
+`%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
+
+Jeśli wystąpi błąd polecenia cmdlet i rozwiązanie i/lub Przyczyna nie jest łatwe do rozwiązania, mogą również konsultacje te dzienniki tekstowe.
 
 ### <a name="emergency-remediation"></a>Korygowanie awaryjnego
 
-Jeśli niefortunne sytuacja występuje, gdy usługa agenta kontrolera domeny powoduje problemy, Usługa agenta kontrolera domeny może być natychmiast zamknięty. Dll filtru haseł agenta kontrolera domeny, próbuje wywołać bez działającej usługi i będzie rejestrować zdarzenia ostrzeżeń (10012, 10013), ale wszystkie przychodzące hasła są akceptowane w tym samym czasie. Usługa agenta kontrolera domeny może także można skonfigurować za pomocą Windows Menedżer sterowania usługami za pomocą typu uruchamiania "Disabled" zgodnie z potrzebami.
+Jeśli sytuacja występuje, gdy usługa agenta kontrolera domeny powoduje problemy, Usługa agenta kontrolera domeny może być natychmiast zamknięty. Dll filtru haseł agenta kontrolera domeny nadal próbuje wywołać bez działającej usługi i będzie rejestrować zdarzenia ostrzeżeń (10012, 10013), ale wszystkie przychodzące hasła są akceptowane w tym samym czasie. Usługa agenta kontrolera domeny może także można skonfigurować za pomocą Windows Menedżer sterowania usługami za pomocą typu uruchamiania "Disabled" zgodnie z potrzebami.
 
 ### <a name="performance-monitoring"></a>Monitorowanie wydajności
 
-Oprogramowanie usługi agenta DC instaluje obiektu licznika wydajności, o nazwie **ochrona za pomocą hasła usługi Azure AD**. Obecnie dostępne są następujące liczniki wydajności:
+Oprogramowanie usługi agenta DC instaluje obiektu licznika wydajności, o nazwie **ochrony haseł usługi Azure AD**. Obecnie dostępne są następujące liczniki wydajności:
 
 |Nazwa licznika wydajności | Opis|
 | --- | --- |
@@ -182,6 +236,7 @@ Jeśli kontroler domeny jest uruchomiony w trybie naprawy usług katalogowych, U
 ## <a name="domain-controller-demotion"></a>Obniżenia poziomu kontrolera domeny
 
 Możliwe jest obniżenie poziomu kontrolera domeny, który wciąż działa oprogramowanie agenta kontrolera domeny. Administratorzy Pamiętaj jednak, oprogramowanie agenta kontrolera domeny jest uruchomiony i jest kontynuowane wymuszanie bieżące zasady haseł podczas wykonywania procedury obniżania poziomu. Nowe hasło administratora lokalnego konta (określonego jako część operacji obniżania poziomu) jest weryfikowana, podobnie jak inne hasło. Firma Microsoft zaleca, można wybrać bezpiecznych haseł dla konta administratora lokalnego w ramach procedury obniżania poziomu kontrolera domeny; Jednakże weryfikacji nowe hasło administratora lokalnego konta przez oprogramowanie agenta kontrolera domeny może być znaczący wpływ na istniejące procedury operacyjne obniżania poziomu.
+
 Po obniżania poziomu zakończyła się pomyślnie, a kontroler domeny zostanie ponownie uruchomiony i jest ponownie uruchomiony jako serwer członkowski normalne, przywraca uruchomiony w trybie pasywnym oprogramowanie agenta kontrolera domeny. Może on następnie odinstalowano w dowolnym momencie.
 
 ## <a name="removal"></a>Usunięcie
@@ -189,35 +244,36 @@ Po obniżania poziomu zakończyła się pomyślnie, a kontroler domeny zostanie 
 Jeśli zostanie podjęta decyzja, aby odinstalować oprogramowanie w publicznej wersji zapoznawczej i czyszczenia stan wszystkich powiązanych z domeny i lasu, to zadanie można osiągnąć wykonując następujące czynności:
 
 > [!IMPORTANT]
-> Należy wykonać następujące kroki w kolejności. Jeśli pole pozostanie dowolne wystąpienie ochrony hasłem usługi serwera Proxy uruchomieniu będzie okresowo ponownie utworzyć jej obiektu serviceConnectionPoint także okresowo ponownie utworzyć stan sysvol.
+> Należy wykonać następujące kroki w kolejności. Jeśli dowolne wystąpienie usługi serwera Proxy zostanie pozostawiony jako uruchomiony okresowo ponownie utworzy jej obiektu serviceConnectionPoint. Jeśli dowolne wystąpienie usługi agenta kontrolera domeny jest w trybie ciągłym okresowo ponownie utworzy jej obiektu serviceConnectionPoint i folderu sysvol stanu.
 
 1. Odinstaluj ochrony hasłem oprogramowanie serwera Proxy z wszystkich maszyn. Ten krok jest **nie** konieczne jest ponowne uruchomienie.
 2. Odinstaluj oprogramowanie agenta kontrolera domeny ze wszystkich kontrolerów domeny. W tym kroku **wymaga** ponowne uruchomienie komputera.
-3. Ręcznie usuń wszystkie punkty połączenia usługi serwera proxy w każdym kontekście nazewnictwa domeny. Może zostać odnalezionych lokalizacji tych obiektów za pomocą następującego polecenia środowiska Powershell usługi Active Directory:
-   ```
+3. Ręcznie usuń wszystkie punkty połączenia usługi serwera Proxy w każdym kontekście nazewnictwa domeny. Może zostać odnalezionych lokalizacji tych obiektów za pomocą następującego polecenia środowiska Powershell usługi Active Directory:
+
+   ```Powershell
    $scp = "serviceConnectionPoint"
-   $keywords = "{EBEFB703-6113-413D-9167-9F8DD4D24468}*"
+   $keywords = "{ebefb703-6113-413d-9167-9f8dd4d24468}*"
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
    Nie pominięto gwiazdki ("*") na końcu $keywords wartość zmiennej.
 
-   Wynikowy obiekt znalezione przez `Get-ADObject` polecenia następnie mogą być przesyłane potokiem do `Remove-ADObject`, lub usunąć ręcznie. 
+   Obiekty wynikowe znalezione przez `Get-ADObject` polecenia następnie mogą być przesyłane potokiem do `Remove-ADObject`, lub usunąć ręcznie. 
 
 4. Ręcznie usuń wszystkie punkty połączenia agenta kontrolera domeny w każdym kontekście nazewnictwa domeny. Może istnieć tylko jeden tych obiektów na kontrolerze domeny w lesie, w zależności od tego, jak powszechnie prapremiery publicznej została wdrożona. Lokalizacja tego obiektu może zostać odnalezionych za pomocą następującego polecenia środowiska Powershell usługi Active Directory:
 
-   ```
+   ```Powershell
    $scp = "serviceConnectionPoint"
-   $keywords = "{B11BB10A-3E7D-4D37-A4C3-51DE9D0F77C9}*"
+   $keywords = "{2bac71e6-a293-4d5b-ba3b-50b995237946}*"
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
-   Wynikowy obiekt znalezione przez `Get-ADObject` polecenia następnie mogą być przesyłane potokiem do `Remove-ADObject`, lub usunąć ręcznie.
+   Obiekty wynikowe znalezione przez `Get-ADObject` polecenia następnie mogą być przesyłane potokiem do `Remove-ADObject`, lub usunąć ręcznie.
 
 5. Ręcznie usuń stan konfiguracji na poziomie lasu. Stan konfiguracji lasu jest zachowywana w kontenerze w kontekście nazewnictwa konfiguracji w usłudze Active Directory. Można go odnalezione i usunięte w następujący sposób:
 
-   ```
-   $passwordProtectonConfigContainer = "CN=Azure AD password protection,CN=Services," + (Get-ADRootDSE).configurationNamingContext
+   ```Powershell
+   $passwordProtectonConfigContainer = "CN=Azure AD Password Protection,CN=Services," + (Get-ADRootDSE).configurationNamingContext
    Remove-ADObject $passwordProtectonConfigContainer
    ```
 

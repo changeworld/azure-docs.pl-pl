@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 15cac40e743f44ea7e0954c94683674ad9372a7a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5f6140b582b2412a164593bd2aa99bfbde5fb688
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962951"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964190"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki z usługą Azure Monitor
 Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wykresy je w portalu, uzyskując dostęp do nich za pośrednictwem interfejsu API REST lub ich zapytań przy użyciu programu PowerShell lub interfejsu wiersza polecenia. Oto Pełna lista wszystkich metryk jest obecnie dostępna z potoku metryk usługi Azure Monitor. Inne metryki mogą być dostępne w portalu lub przy użyciu starszej wersji interfejsów API. Ta lista poniżej zawiera tylko metryk przy użyciu skonsolidowany potoku metryk usługi Azure Monitor. Użyj kwerendy i dostępem tych metryk [2018-01-01-api-version](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -367,15 +367,15 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |Pozostałe środki na procesory CPU|Pozostałe środki na procesory CPU|Licznik|Średnia|Łączna ilość środków dostępnych na potrzeby serii|Nie wymiarów|
 |Wykorzystane środki na procesory CPU|Wykorzystane środki na procesory CPU|Licznik|Średnia|Łączna ilość środków wykorzystanych przez maszynę wirtualną|Nie wymiarów|
 |Bajty odczytu z dysku/s|Bajty odczytu z dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę odczytanych z pojedynczego dysku w okresie monitorowania|SlotId|
-|Bajty zapisu na dysku/s|Bajty zapisu na dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę zapisanych na pojedynczym dysku w okresie monitorowania|SlotId|
-|Operacje odczytu z dysku/s|Operacje odczytu z dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji we/wy na sekundę wykonanych podczas odczytywania z pojedynczego dysku w okresie monitorowania|SlotId|
-|Operacje zapisu na dysku/s|Operacje zapisu na dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji we/wy na sekundę wykonanych podczas zapisywania na pojedynczym dysku w okresie monitorowania|SlotId|
-|Głębokość kolejki dysku|Głębokość kolejki dysku danych (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku danych (lub długość kolejki)|SlotId|
+|Bajty zapisu na dysku/s|Bajty zapisu na dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę zapisanych na jednym dysku w okresie monitorowania|SlotId|
+|Operacje odczytu z dysku/s|Operacje odczytu z dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji We/Wy podczas odczytywania z pojedynczego dysku w okresie monitorowania|SlotId|
+|Operacje zapisu na dysku/s|Operacje zapisu na dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji We/Wy podczas zapisywania na pojedynczym dysku w okresie monitorowania|SlotId|
+|Głębokość kolejki dysku|(Wersja zapoznawcza) głębokość kolejki dysku danych|Licznik|Średnia|Głębokość kolejki dysku danych (lub długość kolejki)|SlotId|
 |Bajty odczytu z dysku systemu operacyjnego/s|Bajty odczytu z dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę odczytanych z pojedynczego dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
-|Bajty zapisu na dysku systemu operacyjnego/s|Bajty zapisu na dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę zapisanych na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
-|Operacje odczytu z dysku systemu operacyjnego/s|Operacje odczytu z dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji we/wy na sekundę wykonanych podczas odczytywania z pojedynczego dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
-|Operacje zapisu na dysku systemu operacyjnego/s|Operacje zapisu na dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji we/wy na sekundę wykonanych podczas zapisywania na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
-|Głębokość kolejki dysku systemu operacyjnego|Głębokość kolejki dysku systemu operacyjnego (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku systemu operacyjnego (lub długość kolejki)|Nie wymiarów|
+|Bajty zapisu na dysku systemu operacyjnego/s|Bajty zapisu na dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę zapisanych na jednym dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
+|Operacje odczytu z dysku systemu operacyjnego/s|Operacje odczytu z dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji We/Wy podczas odczytywania z pojedynczego dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
+|Operacje zapisu na dysku systemu operacyjnego/s|Operacje zapisu na dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji We/Wy podczas zapisywania na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
+|Głębokość kolejki dysku systemu operacyjnego|Dysk systemu operacyjnego głębokość kolejki (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku systemu operacyjnego (lub długość kolejki)|Nie wymiarów|
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 
@@ -391,15 +391,15 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |Pozostałe środki na procesory CPU|Pozostałe środki na procesory CPU|Licznik|Średnia|Łączna ilość środków dostępnych na potrzeby serii|Nie wymiarów|
 |Wykorzystane środki na procesory CPU|Wykorzystane środki na procesory CPU|Licznik|Średnia|Łączna ilość środków wykorzystanych przez maszynę wirtualną|Nie wymiarów|
 |Bajty odczytu z dysku/s|Bajty odczytu z dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę odczytanych z pojedynczego dysku w okresie monitorowania|SlotId|
-|Bajty zapisu na dysku/s|Bajty zapisu na dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę zapisanych na pojedynczym dysku w okresie monitorowania|SlotId|
-|Operacje odczytu z dysku/s|Operacje odczytu z dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji we/wy na sekundę wykonanych podczas odczytywania z pojedynczego dysku w okresie monitorowania|SlotId|
-|Operacje zapisu na dysku/s|Operacje zapisu na dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji we/wy na sekundę wykonanych podczas zapisywania na pojedynczym dysku w okresie monitorowania|SlotId|
-|Głębokość kolejki dysku|Głębokość kolejki dysku danych (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku danych (lub długość kolejki)|SlotId|
+|Bajty zapisu na dysku/s|Bajty zapisu na dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę zapisanych na jednym dysku w okresie monitorowania|SlotId|
+|Operacje odczytu z dysku/s|Operacje odczytu z dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji We/Wy podczas odczytywania z pojedynczego dysku w okresie monitorowania|SlotId|
+|Operacje zapisu na dysku/s|Operacje zapisu na dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji We/Wy podczas zapisywania na pojedynczym dysku w okresie monitorowania|SlotId|
+|Głębokość kolejki dysku|(Wersja zapoznawcza) głębokość kolejki dysku danych|Licznik|Średnia|Głębokość kolejki dysku danych (lub długość kolejki)|SlotId|
 |Bajty odczytu z dysku systemu operacyjnego/s|Bajtów na sekundę odczytu z dysku systemu operacyjnego|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę odczytanych z pojedynczego dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
-|Bajty zapisu na dysku systemu operacyjnego/s|Bajty zapisu na dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę zapisanych na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
-|Operacje odczytu z dysku systemu operacyjnego/s|Operacje odczytu z dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji we/wy na sekundę wykonanych podczas odczytywania z pojedynczego dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
-|Operacje zapisu na dysku systemu operacyjnego/s|Operacje zapisu na dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji we/wy na sekundę wykonanych podczas zapisywania na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
-|Głębokość kolejki dysku systemu operacyjnego|Głębokość kolejki dysku systemu operacyjnego (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku systemu operacyjnego (lub długość kolejki)|Nie wymiarów|
+|Bajty zapisu na dysku systemu operacyjnego/s|Bajty zapisu na dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę zapisanych na jednym dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
+|Operacje odczytu z dysku systemu operacyjnego/s|Operacje odczytu z dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji We/Wy podczas odczytywania z pojedynczego dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
+|Operacje zapisu na dysku systemu operacyjnego/s|Operacje zapisu na dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji We/Wy podczas zapisywania na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
+|Głębokość kolejki dysku systemu operacyjnego|Dysk systemu operacyjnego głębokość kolejki (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku systemu operacyjnego (lub długość kolejki)|Nie wymiarów|
 
 ## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Microsoft.Compute/virtualMachineScaleSets/virtualMachines
 
@@ -415,15 +415,15 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |Pozostałe środki na procesory CPU|Pozostałe środki na procesory CPU|Licznik|Średnia|Łączna ilość środków dostępnych na potrzeby serii|Nie wymiarów|
 |Wykorzystane środki na procesory CPU|Wykorzystane środki na procesory CPU|Licznik|Średnia|Łączna ilość środków wykorzystanych przez maszynę wirtualną|Nie wymiarów|
 |Bajty odczytu z dysku/s|Bajty odczytu z dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę odczytanych z pojedynczego dysku w okresie monitorowania|SlotId|
-|Bajty zapisu na dysku/s|Bajty zapisu na dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę zapisanych na pojedynczym dysku w okresie monitorowania|SlotId|
-|Operacje odczytu z dysku/s|Operacje odczytu z dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji we/wy na sekundę wykonanych podczas odczytywania z pojedynczego dysku w okresie monitorowania|SlotId|
-|Operacje zapisu na dysku/s|Operacje zapisu na dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji we/wy na sekundę wykonanych podczas zapisywania na pojedynczym dysku w okresie monitorowania|SlotId|
-|Głębokość kolejki dysku|Głębokość kolejki dysku danych (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku danych (lub długość kolejki)|SlotId|
+|Bajty zapisu na dysku/s|Bajty zapisu na dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę zapisanych na jednym dysku w okresie monitorowania|SlotId|
+|Operacje odczytu z dysku/s|Operacje odczytu z dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji We/Wy podczas odczytywania z pojedynczego dysku w okresie monitorowania|SlotId|
+|Operacje zapisu na dysku/s|Operacje zapisu na dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji We/Wy podczas zapisywania na pojedynczym dysku w okresie monitorowania|SlotId|
+|Głębokość kolejki dysku|(Wersja zapoznawcza) głębokość kolejki dysku danych|Licznik|Średnia|Głębokość kolejki dysku danych (lub długość kolejki)|SlotId|
 |Bajty odczytu z dysku systemu operacyjnego/s|Bajty odczytu z dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę odczytanych z pojedynczego dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
-|Bajty zapisu na dysku systemu operacyjnego/s|Bajty zapisu na dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę zapisanych na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
-|Operacje odczytu z dysku systemu operacyjnego/s|Operacje odczytu z dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji we/wy na sekundę wykonanych podczas odczytywania z pojedynczego dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
-|Operacje zapisu na dysku systemu operacyjnego/s|Operacje zapisu na dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji we/wy na sekundę wykonanych podczas zapisywania na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
-|Głębokość kolejki dysku systemu operacyjnego|Głębokość kolejki dysku systemu operacyjnego (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku systemu operacyjnego (lub długość kolejki)|Nie wymiarów|
+|Bajty zapisu na dysku systemu operacyjnego/s|Bajty zapisu na dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę zapisanych na jednym dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
+|Operacje odczytu z dysku systemu operacyjnego/s|Operacje odczytu z dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji We/Wy podczas odczytywania z pojedynczego dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
+|Operacje zapisu na dysku systemu operacyjnego/s|Operacje zapisu na dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji We/Wy podczas zapisywania na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
+|Głębokość kolejki dysku systemu operacyjnego|Dysk systemu operacyjnego głębokość kolejki (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku systemu operacyjnego (lub długość kolejki)|Nie wymiarów|
 
 ## <a name="microsoftcontainerinstancecontainergroups"></a>Microsoft.ContainerInstance/containerGroups
 
@@ -431,7 +431,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |---|---|---|---|---|---|
 |CpuUsage|Użycie procesora CPU|Licznik|Średnia|Użycie procesora CPU na wszystkich rdzeniach (w tysięcznych częściach rdzenia).|containerName|
 |MemoryUsage|Użycie pamięci|Bajty|Średnia|Całkowite użycie pamięci (w bajtach).|containerName|
-|NetworkBytesReceivedPerSecond|Liczba bajtów odebranych przez sieć na sekundę|Bajty|Średnia|Bajty sieci na sekundę.|Nie wymiarów|
+|NetworkBytesReceivedPerSecond|Liczba bajtów odebranych przez sieć na sekundę|Bajty|Średnia|Liczba bajtów odebranych przez sieć na sekundę.|Nie wymiarów|
 |NetworkBytesTransmittedPerSecond|Liczba bajtów przesłanych przez sieć na sekundę|Bajty|Średnia|Liczba bajtów przesłanych przez sieć na sekundę.|Nie wymiarów|
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
@@ -587,8 +587,8 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |devices.totalDevices|Łączna liczba urządzeń (przestarzałe)|Licznik|Łącznie|Liczba urządzeń zarejestrowanych do Centrum IoT hub|Nie wymiarów|
 |devices.connectedDevices.allProtocol|Połączone urządzenia (przestarzałe) |Licznik|Łącznie|Liczba urządzeń podłączonych do Centrum IoT hub|Nie wymiarów|
 |d2c.telemetry.egress.success|Routingu: wydana komunikaty telemetryczne|Licznik|Łącznie|Liczba przypadków, gdy wiadomości zostały pomyślnie dostarczone do wszystkich punktów końcowych przy użyciu routingu w usłudze IoT Hub. Jeśli komunikat jest kierowany do wielu punktów końcowych, ta wartość zwiększa się o jeden dla każdego skutecznej. Jeśli komunikat jest dostarczane do tego samego punktu końcowego wiele razy, ta wartość zwiększa się o jeden dla każdego skutecznej.|Nie wymiarów|
-|d2c.telemetry.egress.dropped|Routingu: porzucone komunikaty telemetryczne |Licznik|Łącznie|Liczba przypadków, gdy komunikaty zostały porzucone przez usługę IoT Hub routing z powodu braku punktów końcowych. Ta wartość nie jest liczony komunikaty dostarczane do trasy rezerwowej, gdy porzuconych wiadomości nie są dostarczane istnieje.|Nie wymiarów|
-|d2c.telemetry.egress.orphaned|Routingu: porzucone komunikaty telemetryczne |Licznik|Łącznie|Liczba przypadków, gdy komunikaty zostały oddzielone kierując usługi IoT Hub, ponieważ nie pasują do żadnych reguł routingu (w tym reguły rezerwowego). |Nie wymiarów|
+|d2c.telemetry.egress.dropped|Routingu: porzucone komunikaty telemetryczne |Licznik|Łącznie|Liczba przypadków, gdy komunikaty zostały porzucone przez usługę IoT Hub routing z powodu braku punktów końcowych. Ta wartość nie jest liczony komunikaty dostarczane do trasy rezerwowej, gdy porzuconych wiadomości nie są dostarczane istnieje.|Nie wymiarów|
+|d2c.telemetry.egress.orphaned|Routingu: porzucone komunikaty telemetryczne |Licznik|Łącznie|Liczba przypadków, gdy komunikaty zostały oddzielone kierując usługi IoT Hub, ponieważ nie pasują do żadnych reguł routingu (w tym reguły rezerwowego). |Nie wymiarów|
 |d2c.telemetry.egress.invalid|Routing: komunikaty telemetryczne niezgodne|Licznik|Łącznie|Liczba razy routingu w usłudze IoT Hub nie można dostarczać komunikatów z powodu niezgodności z punktem końcowym. Ta wartość nie obejmuje ponownych prób.|Nie wymiarów|
 |d2c.telemetry.egress.fallback|Routing: komunikaty dostarczane do rezerwowego|Licznik|Łącznie|Liczba przypadków, dostarczenia komunikatów w Centrum IoT Hub routingu do skojarzonej z trasą rezerwowego punktu końcowego.|Nie wymiarów|
 |d2c.endpoints.egress.eventHubs|Routing: komunikaty dostarczane do Centrum zdarzeń|Licznik|Łącznie|Liczba przypadków, gdy Centrum IoT Hub routingu pomyślnie dostarczone wiadomości do punktów końcowych Centrum zdarzeń.|Nie wymiarów|
@@ -1570,6 +1570,6 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |MemoryPercentage|Procent pamięci|Procent|Średnia|Procent pamięci|Wystąpienie|
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Przeczytaj o metrykach w usłudze Azure Monitor](monitoring-overview-metrics.md)
-* [Tworzenie alertów dotyczących metryk](insights-receive-alert-notifications.md)
+* [Przeczytaj o metrykach w usłudze Azure Monitor](../monitoring/monitoring-data-collection.md)
+* [Tworzenie alertów dotyczących metryk](monitoring-overview-alerts.md)
 * [Eksportowanie metryk do magazynu, Centrum zdarzeń lub usługi Log Analytics](monitoring-overview-of-diagnostic-logs.md)

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 11/02/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 6a61fdeaf1a751ab4001257335abdcbd6fac9cbf
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: e728162da8221046b8496cced8671695c7794164
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739468"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978387"
 ---
 # <a name="preview-azure-ad-password-protection-operational-procedures"></a>(Wersja zapoznawcza): Procedury operacyjne ochrony haseł usługi Azure AD
 
@@ -67,7 +67,7 @@ To ustawienie, zazwyczaj powinna pozostać w stanie domyślnym włączone (tak).
 
 `Get-AzureADPasswordProtectionSummaryReport` Polecenia cmdlet, które może być użyta do wyprodukowania widok podsumowania działań. Przykładowe dane wyjściowe tego polecenia cmdlet jest następująca:
 
-```
+```Powershell
 Get-AzureADPasswordProtectionSummaryReport -DomainController bplrootdc2
 DomainController                : bplrootdc2
 PasswordChangesValidated        : 6677
@@ -83,10 +83,26 @@ PasswordSetErrors               : 1
 Zakres polecenia cmdlet raportowania może wpływać przy użyciu jednego z parametrów — lasu, - domeny lub kontroler domeny —. Nie został podany parametr oznacza — lasu.
 
 > [!NOTE]
-> To polecenie cmdlet działa, otwierając sesję programu Powershell na każdym kontrolerze domeny. W kolejności, tak aby wskazywał Powodzenie musi być włączona obsługa sesji zdalnej programu Powershell na każdym kontrolerze domeny, a klient musi mieć wystarczające uprawnienia. Aby uzyskać więcej informacji na temat wymagań sesji zdalnej programu Powershell należy uruchomić "Get-Help about_Remote_Troubleshooting" w oknie programu Powershell.
+> To polecenie cmdlet działa, otwierając sesję programu Powershell na każdym kontrolerze domeny. Aby można było pomyślnie, obsługa sesji zdalnej programu Powershell musi być włączona na każdym kontrolerze domeny, a klient musi mieć wystarczające uprawnienia. Aby uzyskać więcej informacji na temat wymagań sesji zdalnej programu Powershell należy uruchomić "Get-Help about_Remote_Troubleshooting" w oknie programu Powershell.
 
 > [!NOTE]
 > To polecenie cmdlet działa zdalnie, Sondując dzienniku zdarzeń administratora każda usługa agenta kontrolera domeny. Jeśli dzienniki zdarzeń zawierają dużą liczbę zdarzeń, polecenie cmdlet może potrwać bardzo długo. Ponadto zbiorcze sieci zapytania dotyczące dużych zestawów danych może mieć wpływ na wydajność kontrolera domeny. W związku z tym tego polecenia cmdlet należy używać ostrożnie w środowiskach produkcyjnych.
+
+## <a name="dc-agent-discovery"></a>Odnajdywanie agenta kontrolera domeny
+
+`Get-AzureADPasswordProtectionDCAgent` Polecenia cmdlet mogą służyć do wyświetlania podstawowych informacji o różnych agentów kontrolera domeny w domenie lub lesie. Te informacje są pobierane z obiektów serviceConnectionPoint zarejestrowane przez uruchamianie usług agenta kontrolera domeny. Przykładowe dane wyjściowe tego polecenia cmdlet jest następująca:
+
+```Powershell
+Get-AzureADPasswordProtectionDCAgent
+ServerFQDN            : bplChildDC2.bplchild.bplRootDomain.com
+Domain                : bplchild.bplRootDomain.com
+Forest                : bplRootDomain.com
+Heartbeat             : 2/16/2018 8:35:01 AM
+```
+
+Różne właściwości są aktualizowane przez poszczególne usługi agenta kontrolera domeny w systemie godzinowym przybliżone. Dane są nadal podlega procesowi opóźnienie replikacji usługi Active Directory.
+
+Zakres kwerendy polecenie cmdlet może wpływać przy użyciu parametrów — domenie lub lesie —.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

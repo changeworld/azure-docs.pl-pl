@@ -16,12 +16,12 @@ ms.date: 10/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3a3768e796284895b25eb62d00a58b20ca811540
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 18de5ce2f47b6593d4c8556af045f14ade957fb9
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958945"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979237"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Tokeny dostępu w usłudze Azure Active Directory
 
@@ -86,7 +86,7 @@ Oświadczenia są obecne, tylko wtedy, gdy istnieje wartość, aby wypełnić go
 | Claim | Format | Opis |
 |-----|--------|-------------|
 | `aud` | Ciąg, identyfikator URI Identyfikatora aplikacji | Identyfikuje zamierzonym odbiorcą tokenu. W tokenach dostępu odbiorców jest identyfikator aplikacji, przypisany do aplikacji w witrynie Azure portal. Aplikację należy sprawdzić tę wartość i odrzucenie tokenu, jeśli wartość nie jest zgodny. |
-| `iss` | Ciąg identyfikatora URI usługi STS | Określa usługę tokenu zabezpieczającego (STS), który tworzy i zwraca token i dzierżawy usługi Azure AD, w którym użytkownik został uwierzytelniony. Jeśli token został wystawiony przez punkt końcowy v2.0, identyfikator URI zakończy się w `/v2.0`. Identyfikator GUID, który wskazuje, czy użytkownik jest użytkownikiem odbiorcy z konta Microsoft jest `9188040d-6c67-4c5b-b112-36a304b66dad`. Aplikację należy użyć część stanowiącą identyfikator GUID oświadczenia, aby ograniczyć zestaw dzierżawców, którzy mogą zalogować do aplikacji, jeśli ma to zastosowanie. |
+| `iss` | Ciąg identyfikatora URI usługi STS | Określa usługę tokenu zabezpieczającego (STS), który tworzy i zwraca token i dzierżawy usługi Azure AD, w którym użytkownik został uwierzytelniony. Jeśli token wystawiony token w wersji 2.0 (zobacz `ver` oświadczeń), identyfikator URI będzie kończyć się `/v2.0`. Identyfikator GUID, który wskazuje, czy użytkownik jest użytkownikiem odbiorcy z konta Microsoft jest `9188040d-6c67-4c5b-b112-36a304b66dad`. Aplikację należy użyć część stanowiącą identyfikator GUID oświadczenia, aby ograniczyć zestaw dzierżawców, którzy mogą zalogować do aplikacji, jeśli ma to zastosowanie. |
 |`idp`|Ciąg, zazwyczaj identyfikator URI usługi STS | Rejestruje dostawcę tożsamości, który uwierzytelnił podmiot tokenu. Ta wartość jest taka sama jak wartość oświadczenia wystawcy, chyba że konto użytkownika nie znajduje się w tej samej dzierżawie, jako wystawca - goście, na przykład. Jeśli oświadczenia nie jest obecny, oznacza to, że wartość `iss` mogą być używane zamiast tego.  Dla osobistych kont, które są używane w kontekście orgnizational (na przykład konta osobistego zaproszeni do dzierżawy usługi Azure AD) `idp` oświadczeń może być "live.com" lub identyfikator URI usługi STS dzierżawy konta Microsoft zawierającego `9188040d-6c67-4c5b-b112-36a304b66dad`. |  
 | `iat` | int, sygnatura czasowa systemu UNIX | "Wydany w" wskazuje, kiedy wystąpił uwierzytelniania dla tego tokenu. |
 | `nbf` | int, sygnatura czasowa systemu UNIX | Oświadczenie "nbf" (nie przed) identyfikuje czas, przed którym tokenu JWT nie muszą zostać zaakceptowane do przetworzenia. |
@@ -228,12 +228,12 @@ Odśwież tokeny mogą zostać unieważnione lub odwołać w dowolnym momencie i
 |   | Plik cookie oparte na hasłach | Token oparte na hasłach | Na podstawie plików cookie bez hasła | Inne niż hasło na podstawie tokenu | Token poufne klienta| 
 |---|-----------------------|----------------------|---------------------------|--------------------------|--------------------------|
 | Hasło wygasło | Pozostanie aktywny| Pozostanie aktywny | Pozostanie aktywny | Pozostanie aktywny | Pozostanie aktywny |
-| Hasło zostało zmienione przez użytkownika | Odwołany | Odwołany | Pozostanie aktywny | Pozostanie aktywny | Pozostanie aktywny |
-| Użytkownik wykona samoobsługowego resetowania HASEŁ | Odwołany | Odwołany | Pozostanie aktywny | Pozostanie aktywny | Pozostanie aktywny |
-| Administrator operacji resetowania hasła | Odwołany | Odwołany | Pozostanie aktywny | Pozostanie aktywny | Pozostanie aktywny |
-| Użytkownik odwołuje tokeny odświeżania [za pośrednictwem programu PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) | Odwołany | Odwołany |Odwołany | Odwołany |Odwołany | Odwołany |
-| Administrator odwołuje wszystkie tokeny odświeżania dla dzierżawy [za pośrednictwem programu PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Odwołany | Odwołany |Odwołany | Odwołany |Odwołany | Odwołany |
-| [Wylogowania jednokrotnego](v1-protocols-openid-connect-code.md#single-sign-out) w sieci web | Odwołany | Pozostanie aktywny | Odwołany | Pozostanie aktywny | Pozostanie aktywny |
+| Hasło zostało zmienione przez użytkownika | Odwołano | Odwołano | Pozostanie aktywny | Pozostanie aktywny | Pozostanie aktywny |
+| Użytkownik wykona samoobsługowego resetowania HASEŁ | Odwołano | Odwołano | Pozostanie aktywny | Pozostanie aktywny | Pozostanie aktywny |
+| Administrator operacji resetowania hasła | Odwołano | Odwołano | Pozostanie aktywny | Pozostanie aktywny | Pozostanie aktywny |
+| Użytkownik odwołuje tokeny odświeżania [za pośrednictwem programu PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) | Odwołano | Odwołano |Odwołano | Odwołano |Odwołano | Odwołano |
+| Administrator odwołuje wszystkie tokeny odświeżania dla dzierżawy [za pośrednictwem programu PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Odwołano | Odwołano |Odwołano | Odwołano |Odwołano | Odwołano |
+| [Wylogowania jednokrotnego](v1-protocols-openid-connect-code.md#single-sign-out) w sieci web | Odwołano | Pozostanie aktywny | Odwołano | Pozostanie aktywny | Pozostanie aktywny |
 
 > [!NOTE]
 > "Non-password na podstawie" nazwy logowania jest w jednym gdzie użytkownik nie wpisz hasło, aby pobrać go. Na przykład za pomocą usługi rozpoznawania twarzy Windows Hello, klucz FIDO lub numeru PIN. 

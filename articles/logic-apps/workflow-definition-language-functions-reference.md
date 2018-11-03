@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: bc16b71ad20e2cf2bc61a046336fe6a3618bc403
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 43713cd4d217f2b43a0966f4de4f3573d4ef9b09
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269568"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979543"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Dokumentacja funkcji programu język definicji przepływów pracy w usłudze Azure Logic Apps
 
@@ -281,7 +281,7 @@ Aby pracować z obiektami JSON i XML węzłów, można użyć tych funkcji manip
 <a name="alphabetical-list"></a>
 <a name="action"></a>
 
-### <a name="action"></a>akcja
+### <a name="action"></a>action
 
 Zwróć *bieżącego* danych wyjściowych akcji środowiska uruchomieniowego lub wartości z innych par nazwa i wartość JSON, które można przypisać do wyrażenia. Domyślnie ta funkcja odwołuje się do obiektu całą operację, ale Opcjonalnie można określić właściwości żądanymi wartościami. Zobacz też [actions()](../logic-apps/workflow-definition-language-functions-reference.md#actions).
 
@@ -451,7 +451,7 @@ I zwraca wynik: `"Succeeded"`
 
 <a name="add"></a>
 
-### <a name="add"></a>dodaj
+### <a name="add"></a>add
 
 Zwróć wynik dodawania dwóch liczb.
 
@@ -1751,7 +1751,7 @@ Te przykłady znalezienia pierwszego elementu w tych kolekcjach:
 
 ```
 first('hello')
-first([0, 1, 2])
+first(createArray(0, 1, 2))
 ```
 
 I zwrócić następujące wyniki: 
@@ -1761,7 +1761,7 @@ I zwrócić następujące wyniki:
 
 <a name="float"></a>
 
-### <a name="float"></a>liczba zmiennoprzecinkowa
+### <a name="float"></a>float
 
 Konwertuj wersję ciągu na liczbę zmiennoprzecinkową na rzeczywista liczba zmiennoprzecinkowa. Ta funkcja służy tylko wtedy, gdy przekazywanie parametrów niestandardowych do aplikacji, takie jak aplikacja logiki.
 
@@ -2138,7 +2138,7 @@ I zwraca wynik: `6`
 
 <a name="int"></a>
 
-### <a name="int"></a>Int
+### <a name="int"></a>int
 
 Zwróć wersja liczby całkowitej, ciągu.
 
@@ -2312,7 +2312,7 @@ intersection('<collection1>', '<collection2>', ...)
 W tym przykładzie wyszukuje wspólne elementy między te macierze:  
 
 ```
-intersection([1, 2, 3], [101, 2, 1, 10], [6, 8, 1, 2])
+intersection(createArray(1, 2, 3), createArray(101, 2, 1, 10), createArray(6, 8, 1, 2))
 ```
 
 I zwraca tablicę z *tylko* następujące elementy: `[1, 2]`
@@ -2343,7 +2343,7 @@ join([<collection>], '<delimiter>')
 W tym przykładzie tworzy ciąg ze wszystkich elementów w tej tablicy od określonego znaku, jak ogranicznik:
 
 ```
-join([a, b, c], '.')
+join(createArray('a', 'b', 'c'), '.')
 ```
 
 I zwraca wynik: `"a.b.c"`
@@ -2375,7 +2375,7 @@ Te przykłady znajdowanie ostatniego elementu w tych kolekcjach:
 
 ```
 last('abcd')
-last([0, 1, 2, 3])
+last(createArray(0, 1, 2, 3))
 ```
 
 I zwraca następujące wyniki: 
@@ -2441,7 +2441,7 @@ Te przykłady liczby elementów w tych kolekcjach:
 
 ```
 length('abcd')
-length([0, 1, 2, 3])
+length(createArray(0, 1, 2, 3))
 ```
 
 I zwracają wynik: `4`
@@ -2569,7 +2569,7 @@ Te przykłady uzyskać najwyższą wartość z zestawu kombinacja cyfr i tablicy
 
 ```
 max(1, 2, 3)
-max([1, 2, 3])
+max(createArray(1, 2, 3))
 ```
 
 I zwracają wynik: `3`
@@ -2602,7 +2602,7 @@ Te przykłady Pobierz najmniejszą wartość w zestawie kombinacja cyfr i tablic
 
 ```
 min(1, 2, 3)
-min([1, 2, 3])
+min(createArray(1, 2, 3))
 ```
 
 I zwracają wynik: `1`
@@ -3007,7 +3007,7 @@ skip([<collection>], <count>)
 W tym przykładzie usuwa jeden element, liczba 0, z przodu określonej tablicy: 
 
 ```
-skip([0, 1, 2, 3], 1)
+skip(createArray(0, 1, 2, 3), 1)
 ```
 
 I zwraca tej tablicy, pozostałe elementy: `[1,2,3]`
@@ -3351,7 +3351,7 @@ Te przykłady Pobierz określoną liczbę elementów na początku tych kolekcji:
 
 ```
 take('abcde`, 3)
-take([0, 1, 2, 3, 4], 3)
+take(createArray(0, 1, 2, 3, 4), 3)
 ```
 
 I zwrócić następujące wyniki:
@@ -3626,7 +3626,7 @@ union([<collection1>], [<collection2>], ...)
 W tym przykładzie pobiera *wszystkie* elementy z tych kolekcji: 
 
 ```
-union([1, 2, 3], [1, 2, 10, 101])
+union(createArray(1, 2, 3), createArray(1, 2, 10, 101))
 ```
 
 I zwraca wynik: `[1, 2, 3, 10, 101]`

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 03133c6d6518444f8e6fb15cfa425969dbafdedc
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6c58967255270231f61c59205ed12a9cdfec6897
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406878"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958699"
 ---
 # <a name="collect-data-in-a-hybrid-environment-with-log-analytics-agent"></a>Zbieranie danych w środowisku hybrydowym za pomocą agenta usługi Log Analytics
 
@@ -127,6 +127,6 @@ Na przykład: `https://user01:password@proxy01.contoso.com:30443`
 
 * Przegląd [źródeł danych](log-analytics-data-sources.md) zrozumienie źródła danych, których można zbierać dane z systemu Windows lub Linux. 
 
-* Dowiedz się więcej o [dziennikach](log-analytics-log-searches.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
+* Dowiedz się więcej o [dziennikach](log-analytics-log-search.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
 
-* Dowiedz się więcej o [rozwiązania](log-analytics-add-solutions.md) , dodawanie funkcji do usługi Log Analytics i również zbierać dane do obszaru roboczego usługi Log Analytics.
+* Dowiedz się więcej o [rozwiązania](../monitoring/monitoring-solutions.md) , dodawanie funkcji do usługi Log Analytics i również zbierać dane do obszaru roboczego usługi Log Analytics.

@@ -2,26 +2,26 @@
 title: Dotyczących platformy Azure bezpośrednio z usługi ExpressRoute | Dokumentacja firmy Microsoft
 description: Ta strona zawiera omówienie usługi ExpressRoute bezpośrednich (wersja zapoznawcza)
 services: expressroute
-author: cherylmc
+author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/21/2018
-ms.author: cherylmc
-ms.openlocfilehash: ce4bc88f6b599bb3f5f760b2ba83c81f2b6acc5f
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.date: 11/01/2018
+ms.author: mialdrid
+ms.openlocfilehash: 3b46f24edf10fee7001b35ffdd9fa218aa438e19
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405182"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959684"
 ---
 # <a name="about-expressroute-direct-preview"></a>Temat usługi ExpressRoute bezpośrednie (wersja zapoznawcza)
 
-Usługa ExpressRoute Direct daje klientom możliwość łączenia się bezpośrednio z globalną siecią firmy Microsoft w skomunikowanych równorzędnie lokalizacjach strategicznie rozmieszczonych na całym świecie. Bezpośrednie ExpressRoute zapewnia podwójne 100 GB/s łączności obsługuje połączenia aktywny/aktywny na dużą skalę. 
+Usługa ExpressRoute Direct daje klientom możliwość łączenia się bezpośrednio z globalną siecią firmy Microsoft w skomunikowanych równorzędnie lokalizacjach strategicznie rozmieszczonych na całym świecie. Bezpośrednie ExpressRoute zapewnia łączność podwójną 100 GB, obsługująca łączność aktywny/aktywny na dużą skalę.
 
 Najważniejsze funkcje, które zapewnia usługi ExpressRoute bezpośrednio obejmują, ale nie są ograniczone do:
 
-* Masywne pozyskiwanie danych do usług, takich jak Storage i Cosmos DB 
-* Fizyczne oddzielenie w przypadku tych branż, które są regulowane i w których łączność musi być dedykowana i oddzielona, na przykład w przypadku usług bankowych, rządowych i handlowych 
+* Masywne pozyskiwanie danych do usług, takich jak Storage i Cosmos DB
+* Fizyczne odizolowanie dla przedsiębiorstw, które są regulowane i wymagają w wersji dedykowanej i izolowany łączności, takich jak: bankowe dla instytucji rządowych i handlu detalicznego
 * Pełna kontrola nad rozmieszczeniem obwodów na podstawie jednostek biznesowych
 
 > [!IMPORTANT]
@@ -31,7 +31,7 @@ Najważniejsze funkcje, które zapewnia usługi ExpressRoute bezpośrednio obejm
 
 ## <a name="enroll-in-the-preview"></a>Rejestracja w wersji zapoznawczej
 
-Przed rozpoczęciem korzystania z usługi ExpressRoute bezpośrednio, musisz zarejestrować swoją subskrypcję w wersji zapoznawczej. Aby przeprowadzić rejestrację, wyślij wiadomość e-mail na adres <ExpressRouteDirect@microsoft.com>, podając identyfikator subskrypcji. Bezpośrednie usługi ExpressRoute jest funkcją przeznaczonych dla przedsiębiorstw. Podaj dodatkowe szczegóły:
+Przed rozpoczęciem korzystania z usługi ExpressRoute bezpośrednio, musisz zarejestrować swoją subskrypcję w wersji zapoznawczej. Aby zarejestrować urządzenie, Wyślij wiadomość E-mail do <ExpressRouteDirect@microsoft.com> identyfikatorem subskrypcji, łącznie z następującymi szczegółami:
 
 * Scenariusze, które chcesz wykonać przy użyciu **bezpośrednio z usługi ExpressRoute**
 * Zobacz Preferencje lokalizacji — [partnerzy i lokalizacje komunikacji równorzędnej](expressroute-locations-providers.md) pełną listę wszystkich lokalizacji
@@ -41,10 +41,10 @@ Przed rozpoczęciem korzystania z usługi ExpressRoute bezpośrednio, musisz zar
 ## <a name="expressroute-using-a-service-provider-and-expressroute-direct"></a>Usługi ExpressRoute za pomocą dostawcy usług i bezpośrednio z usługi ExpressRoute
 
 | **Przy użyciu dostawcy usługi ExpressRoute** | **Bezpośrednie usługi ExpressRoute** | 
-| --- | --- | 
-| Korzysta z dostawcą usługi, aby włączyć szybkiego dołączania i połączeń z istniejącą infrastrukturą | Wymaga 100 GB/s, infrastruktury i pełnego zarządzania wszystkie warstwy
-| Integruje się z setkami dostawców sieci Ethernet i MPLS | Bezpośrednie/dedykowana pojemność branżach regulowanych prawnie i pozyskiwania duża ilość danych | 
-| SKU obwodów z dnia 50 MB/s do 10 GB/s | Jednostki SKU obwodów od 5 GB/s do 100 GB/s (5 GB/s, 10 GB/s, 40 GB/s, 100 GB/s)
+| --- | --- |
+| Korzysta z dostawców usługi, aby włączyć szybkie dołączania i połączeń z istniejącą infrastrukturą | Wymaga infrastruktury 100-GB/s i pełnego zarządzania wszystkie warstwy
+| Integruje się z setkami dostawców sieci Ethernet i MPLS | Bezpośrednie/dedykowana pojemność branżach regulowanych prawnie i pozyskiwania duża ilość danych |
+| Jednostki SKU obwodów z 50 MB/s do 10 GB/s | Klient może wybrać kombinację następujących jednostek SKU obwodu: 5 GB/s, 10 GB/s, 40 GB/s, 100 GB/s - ograniczoną do 200 GB/s łącznie
 | Zoptymalizowane pod kątem pojedynczej dzierżawy | Zoptymalizowane pod kątem dla dostawców usług w jednej dzierżawy/w chmurze / wielu jednostkach biznesowych
 
 ## <a name="expressroute-direct-circuits"></a>Obwody usługi ExpressRoute bezpośrednio
@@ -57,13 +57,13 @@ Funkcje, które w większości przypadków jest odpowiednikiem obwodów, które 
 
 ## <a name="circuit-skus"></a>Jednostki SKU obwodu
 
-Bezpośrednie ExpressRoute obsługuje scenariuszy pozyskiwania duża ilość danych do usługi Azure storage i innych usług danych big data. Usługi ExpressRoute circuits na bezpośrednio z usługi ExpressRoute teraz również obsługę **40 GB/s** i **100 GB/s** circuit jednostki SKU. 
+Bezpośrednie ExpressRoute obsługuje scenariuszy pozyskiwania duża ilość danych do usługi Azure storage i innych usług danych big data. Usługi ExpressRoute circuits na bezpośrednio z usługi ExpressRoute teraz również obsługę **40 GB/s** i **100 GB/s** circuit jednostki SKU.
 
 ## <a name="vlan-tagging"></a>Znakowanie sieci VLAN
 
 Usługa ExpressRoute bezpośrednio obsługuje QinQ i Dot1Q znakowanie sieci VLAN.
 
-* **Znakowanie sieci VLAN QinQ** umożliwia izolowanych domen routingu na podstawie obwodu usługi ExpressRoute. Platforma Azure dynamicznie przydziela Tag S, podczas tworzenia obwodu i nie można jej zmienić. Każdego wystąpienia komunikacji równorzędnej na obwód (prywatnej i Microsoft) będą korzystać z unikatowych tagów języka C jako sieci VLAN. Tag języka C nie musi być unikatowa w obrębie obwodów na portach bezpośrednio z usługi ExpressRoute. 
+* **Znakowanie sieci VLAN QinQ** umożliwia izolowanych domen routingu na podstawie obwodu usługi ExpressRoute. Platforma Azure dynamicznie przydziela Tag S, podczas tworzenia obwodu i nie można jej zmienić. Każdego wystąpienia komunikacji równorzędnej na obwód (prywatnej i Microsoft) będą korzystać z unikatowych tagów języka C jako sieci VLAN. Tag języka C nie musi być unikatowa w obrębie obwodów na portach bezpośrednio z usługi ExpressRoute.
 
 * **Znakowanie sieci VLAN Dot1Q** umożliwia pojedynczego otagowane sieci VLAN na poszczególnych para portów bezpośrednio z usługi ExpressRoute. C — Tag, używany w komunikacji równorzędnej musi być unikatowa we wszystkich obwodów i komunikacji równorzędnej w parę portu bezpośrednio z usługi ExpressRoute.
 

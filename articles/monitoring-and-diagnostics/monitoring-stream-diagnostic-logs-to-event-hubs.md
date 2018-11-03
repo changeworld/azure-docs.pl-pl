@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 19f066bea9de580cf1245aec74fbe563bf8ba449
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d178041a420c49480c6043869f139eb3a09c91fd
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996557"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959277"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Stream dzienniki diagnostyczne platformy Azure do Centrum zdarzeń
 **[Dzienniki diagnostyczne platformy Azure](monitoring-overview-of-diagnostic-logs.md)**  może być przesyłany strumieniowo w czasie zbliżonym do rzeczywistego do dowolnej aplikacji przy użyciu wbudowanych opcji "Eksportuj do usługi Event Hubs" w portalu lub przez włączenie identyfikator reguły autoryzacji Centrum zdarzeń w ustawieniu diagnostycznym za pośrednictwem platformy Azure Polecenia cmdlet programu PowerShell lub Azure interfejsu wiersza polecenia.
@@ -44,7 +44,7 @@ Oto kilka sposobów, można na przykład możliwość przesyłania strumienioweg
 Aby umożliwić przesyłanie strumieniowe dzienników diagnostycznych programowo, w portalu lub przy użyciu [interfejsów API REST usługi Azure Monitor](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings). W obu przypadkach można utworzyć ustawienie diagnostyczne, w którym należy określić przestrzeni nazw usługi Event Hubs i kategorie dzienników i metryk, które chcesz wysłać do przestrzeni nazw. Centrum zdarzeń jest tworzony w przestrzeni nazw dla każdej kategorii dziennika, w której zostanie włączone. Diagnostyka **kategoria dziennika** jest typem dziennika, który może zbierać zasobu.
 
 > [!WARNING]
-> Strumieniowe przesyłanie dzienników diagnostycznych z zasobów obliczeniowych (na przykład maszyny wirtualne lub usługi Service Fabric) i włączenie [wymaga innego zestawu kroków](../event-hubs/event-hubs-streaming-azure-diags-data.md).
+> Strumieniowe przesyłanie dzienników diagnostycznych z zasobów obliczeniowych (na przykład maszyny wirtualne lub usługi Service Fabric) i włączenie [wymaga innego zestawu kroków](azure-diagnostics-streaming-event-hubs.md).
 
 Usługa Event Hubs, których nazw nie muszą znajdować się w tej samej subskrypcji co zasób emitowane dzienniki, jak długo użytkownik, który konfiguruje ustawienie ma odpowiedni dostęp RBAC do subskrypcji i obu subskrypcji są częścią tej samej dzierżawie usługi AAD.
 
@@ -191,10 +191,10 @@ Można wyświetlić listę wszystkich dostawców zasobów, które obsługują pr
 
 ## <a name="stream-data-from-compute-resources"></a>Stream dane z zasobów obliczeniowych
 
-Obejmuje także strumieniowe przesyłanie dzienników diagnostycznych z zasobów obliczeniowych, przy użyciu agenta usługi Windows Azure Diagnostics. [Ten artykuł](../event-hubs/event-hubs-streaming-azure-diags-data.md) jak to skonfigurować.
+Obejmuje także strumieniowe przesyłanie dzienników diagnostycznych z zasobów obliczeniowych, przy użyciu agenta usługi Windows Azure Diagnostics. [Ten artykuł](azure-diagnostics-streaming-event-hubs.md) jak to skonfigurować.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Stream dzienniki usługi Azure Active Directory z usługą Azure Monitor](../active-directory/reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md)
+* [Stream dzienniki usługi Azure Active Directory z usługą Azure Monitor](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)
 * [Dowiedz się więcej o dziennikach diagnostycznych platformy Azure](monitoring-overview-of-diagnostic-logs.md)
-* [Rozpoczynanie pracy z usługą Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+* [Rozpoczynanie pracy z usługą Event Hubs](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)

@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1bf716d4e5a37739de2e820725449be2576054ea
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bf722756ed04349a06cbcb7b9686e6340e8d4b6c
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038777"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958410"
 ---
 # <a name="using-search-in-application-insights"></a>Za pomocą wyszukiwania w usłudze Application Insights
 Wyszukiwanie jest funkcją [usługi Application Insights](app-insights-overview.md) służącego do wyszukania i zapoznaj się z elementów telemetrii, takich jak wyświetleń stron, wyjątki lub żądania sieci web. I przeglądać ślady dzienników i zdarzeń, które zostały zakodowane.
 
-(W przypadku bardziej złożone zapytania na danych, użyj [analizy](app-insights-analytics-tour.md).)
+(W przypadku bardziej złożone zapytania na danych, użyj [analizy](../log-analytics/query-language/get-started-analytics-portal.md).)
 
 ## <a name="where-do-you-see-search"></a>Gdzie można zobaczyć wyszukiwania?
 
@@ -102,7 +102,7 @@ Znajdź wszystkie elementy z taką samą wartość właściwości:
 ## <a name="search-the-data"></a>Wyszukiwanie danych
 
 > [!NOTE]
-> Aby napisać bardziej złożone zapytania, należy otworzyć [ **Analytics** ](app-insights-analytics-tour.md) w górnej części bloku przeszukiwania.
+> Aby napisać bardziej złożone zapytania, należy otworzyć [ **Analytics** ](../log-analytics/query-language/get-started-analytics-portal.md) w górnej części bloku przeszukiwania.
 > 
 
 Można wyszukiwać terminy w dowolnej wartości właściwości. Jest to szczególnie przydatne, jeśli napisano [zdarzenia niestandardowe](app-insights-api-custom-events-metrics.md) przy użyciu wartości właściwości. 
@@ -164,7 +164,7 @@ Firma Microsoft nie rejestruj danych POST automatycznie, ale można użyć [Trac
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="add"></a>Następne kroki
-* [Zapisywanie złożonych zapytań w usłudze Analytics](app-insights-analytics-tour.md)
+* [Zapisywanie złożonych zapytań w usłudze Analytics](../log-analytics/query-language/get-started-analytics-portal.md)
 * [Wyślij dzienniki i niestandardowych danych telemetrycznych do usługi Application Insights](app-insights-asp-net-trace-logs.md)
 * [Konfigurowanie dostępności i czasu odpowiedzi testów](app-insights-monitor-web-app-availability.md)
 * [Rozwiązywanie problemów](app-insights-troubleshoot-faq.md)

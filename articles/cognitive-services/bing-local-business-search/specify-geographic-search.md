@@ -10,12 +10,12 @@ ms.component: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 246b0d3f2edcf941a49e7e57043225ff4c276064
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: baf2f2ed3487bbc8b680a54d86b42d27d76a0ba9
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748661"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957246"
 ---
 # <a name="use-geographic-boundaries-to-filter-results-from-the-bing-local-business-search-api"></a>Użyj granicach geograficznych, aby przefiltrować wyniki z lokalnych firm interfejsu API wyszukiwania Bing
 
@@ -34,7 +34,7 @@ Aby określić obszaru cykliczne wyszukiwanie geograficzne, wybierz i szerokoś�
 Pełnej kwerendy:
 
 ````
-https://www.bingapis.com/api/v7/localbusinesses/search?q=restaurant&localCircularView=47.6421,-122.13715,5000&appid=0123456789ABCDEF&mkt=en-us&form=monitr
+https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search?q=restaurant&localCircularView=47.6421,-122.13715,5000&appid=0123456789ABCDEF&mkt=en-us&form=monitr
 ````
 
 ## <a name="localmapview"></a>localMapView
@@ -46,7 +46,7 @@ Aby określić obszaru search prostokątny, wybierz dwa zestawy współrzędnych
 Pełnej kwerendy:
 
 ````
-https://www.bingapis.com/api/v7/localbusinesses/search?q=restaurant&localMapView=47.619987,-122.181671,47.6421,-122.13715&appid=0123456789ABCDEF&mkt=en-us&form=monitr
+https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search?q=restaurant&localMapView=47.619987,-122.181671,47.6421,-122.13715&appid=0123456789ABCDEF&mkt=en-us&form=monitr
 ````
 
 ## <a name="next-steps"></a>Kolejne kroki

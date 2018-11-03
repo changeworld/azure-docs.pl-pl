@@ -1,5 +1,5 @@
 ---
-title: Wybieranie poziomu spójności odpowiednie dla aplikacji | Dokumentacja firmy Microsoft
+title: Wybieranie poziomu spójności odpowiednie dla twojej aplikacji, która korzysta z usługi Azure Cosmos DB | Dokumentacja firmy Microsoft
 description: Wybieranie poziomu spójności odpowiednie dla twojej aplikacji w usłudze Azure Cosmos DB.
 keywords: spójność, wydajność, usługi azure cosmos db, azure, Microsoft azure
 services: cosmos-db
@@ -9,42 +9,52 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: mjbrown
-ms.openlocfilehash: 4b438320ac75918d10880a4bcdccadca4eebec32
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 9234a57bdec3dfd7a1ccdba00b90a5c853dc1c5a
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50244185"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960971"
 ---
 # <a name="choose-the-right-consistency-level-for-your-application"></a>Wybierz poziom spójności odpowiednie dla twojej aplikacji
 
-Rozproszonych baz danych, opierając się na replikację, wysoką dostępność, małych opóźnień, czy oba rodzaje, wprowadzić podstawowe zależnościami między spójności odczytu, a dostępność, opóźnienia i przepływności. Większość komercyjnego rozproszonych baz danych, poproś deweloperów dokonać wyboru między dwoma modelami spójności extreme: wysoki poziom spójności i spójności ostatecznej. Usługa Azure Cosmos DB umożliwia deweloperom pięć dokładnie zdefiniowanych modeli spójności do wyboru: silne, powiązana nieaktualność, sesja, spójny prefiks i "eventual". Każda z tych modeli spójności jest dobrze zdefiniowany i intuicyjny i może służyć do określonych scenariuszy w rzeczywistych warunkach. Każda z pięcioma modelami spójności zapewnia wyczyść wpływ na dostępność i wydajność i jest wspierana przez kompleksowe umowy SLA. Następujące kwestie proste ułatwi właściwym wyborem w wielu typowych scenariuszy.
+Rozproszonych baz danych, opierając się na replikację, wysoką dostępność, małych opóźnień, czy oba rodzaje, wprowadzić podstawowe zależnościami między spójności odczytu, a dostępność, opóźnienia i przepływności. Większość komercyjnego rozproszonych baz danych, poproś deweloperów dokonać wyboru między dwoma modelami spójności extreme: wysoki poziom spójności i spójności ostatecznej. Usługa Azure Cosmos DB umożliwia deweloperom wybranie jednego z pięciu dobrze zdefiniowanych modeli spójności: silne, powiązana nieaktualność, sesja, spójny prefiks i "eventual". Każda z tych modeli spójności jest dobrze zdefiniowany i intuicyjny i może służyć do określonych scenariuszy w rzeczywistych warunkach. Każda z pięcioma modelami spójności oferuje [wpływ na dostępność i wydajność](consistency-levels-tradeoffs.md) i jest wspierana przez kompleksowe umowy SLA. Następujące kwestie proste ułatwi właściwym wyborem w wielu typowych scenariuszy.
 
-## <a name="sql-api-or-table-api"></a>Interfejs API SQL lub interfejsu API tabel
+## <a name="sql-api-and-table-api"></a>SQL, interfejsu API i interfejs API tabel
 
-- Dla wielu scenariuszy w rzeczywistych warunkach spójność sesji to optymalne i jest to zalecana opcja. Aby uzyskać więcej informacji, zobacz [instrukcje Zarządzanie tokenu sesji aplikacji](how-to-manage-consistency.md#utilize-session-tokens).
+Należy wziąć pod uwagę następujące kwestie, aplikacja powstała przy użyciu interfejsu API SQL usługi Cosmos DB lub interfejsu API tabel
+
+- Dla wielu scenariuszy w rzeczywistych warunkach spójność sesji to optymalne i jest to zalecana opcja. Aby uzyskać więcej informacji znajduje się pozycja [instrukcje Zarządzanie tokenu sesji aplikacji](how-to-manage-consistency.md#utilize-session-tokens).
+
 - Jeśli aplikacja wymaga silnej spójności, zaleca się, że używasz poziom spójności powiązana nieaktualność.
-- Jeśli potrzebujesz bardziej rygorystyczne gwarancje spójności niż te dostarczone przez spójność sesji i opóźnienia pojedynczych milisekund do zapisu, zaleca się, że używasz poziom spójności powiązana nieaktualność.  
-- Jeśli aplikacja wymaga spójności ostatecznej, zaleca się, że używasz spójny prefiks poziomu spójności.
-- Gwarancje ścisłej spójności, mniej niż dostarczanych przez spójność sesji, należy zaleca się, że używasz spójny prefiks poziomu spójności.
+
+- Jeśli potrzebujesz bardziej rygorystyczne spójności gwarantuje niż te pod warunkiem spójność sesji i pojedynczych milisekund opóźnienia zapisu, zalecane jest, że używasz powiązana nieaktualność poziomu spójności.  
+
+- Jeśli aplikacja wymaga spójności ostatecznej, zaleca się, że używasz poziomu spójności spójny prefiks.
+
+- Gwarancje ścisłej spójności, mniej niż te dostarczone przez spójność sesji, należy zaleca się, że używasz poziomu spójności spójny prefiks.
+
 - Jeśli potrzebujesz najwyższej dostępności i najniższym opóźnieniu, użyj poziomu spójności ostatecznej.
 
-## <a name="cassandra-mongodb-or-gremlin-api"></a>Interfejs API rozwiązania Cassandra, MongoDB lub języka Gremlin
+## <a name="cassandra-mongodb-and-gremlin-api"></a>Interfejs API rozwiązania Cassandra, MongoDB i języka Gremlin
 
-- Aby uzyskać szczegółowe informacje dotyczące mapowania między "Poziom spójności odczytu" poziomów spójności bazy danych Apache Cassandra i Cosmos DB, zobacz [poziomy spójności i Cosmos DB API](consistency-levels-across-apis.md#cassandra-mapping).
+- "Poziom spójności odczytu" oferowane poziomy spójności bazy danych Apache Cassandra i Cosmos DB można znaleźć szczegółowe informacje na temat mapowania między [poziomy spójności i Cosmos DB API](consistency-levels-across-apis.md#cassandra-mapping).
+
 - Aby uzyskać szczegółowe informacje dotyczące mapowania między "Odczytu kwestią" poziomów spójności bazy danych MongoDB i usługi Azure Cosmos DB, zobacz [poziomy spójności i Cosmos DB API](consistency-levels-across-apis.md#mongo-mapping).
 
-## <a name="you-may-get-stronger-consistency-guarantees-in-practice"></a>Lepsze gwarancje spójności może wystąpić w praktyce
+## <a name="consistency-guarantees-in-practice"></a>Gwarancje spójności w praktyce
 
-Gwarancje spójności dla operacji odczytu odpowiadają aktualność i kolejność stan żądanej bazy danych. Spójność odczytu jest powiązany do porządkowania i propagację operacje zapisu (aktualizacja).  
+Możesz uzyskać lepsze gwarancje spójności w praktyce. Gwarancje spójności dla operacji odczytu odpowiadają aktualność i szeregowania stanu bazy danych, który w przypadku żądania. Spójność odczytu jest powiązany do porządkowania i propagację operacje zapisu/aktualizacji.  
 
-Gdy ma wartość poziomu spójności **powiązana nieaktualność**, Cosmos DB gwarantuje, czy klienci zawsze odczytać wartość poprzedniego zapisu z to opóźnienie ograniczany przez okno nieaktualność.
+* Gdy ma wartość poziomu spójności **powiązana nieaktualność**, Cosmos DB gwarantuje, czy klienci zawsze odczytać wartość poprzedniego zapisu z to opóźnienie ograniczany przez okno nieaktualność.
 
-Gdy ma wartość poziomu spójności **silne**okno nieaktualność jest odpowiednikiem zero i gwarantują klientów można odczytać najnowszą zatwierdzone wartości zapisu.
+* Gdy ma wartość poziomu spójności **silne**okno nieaktualność jest odpowiednikiem zero i klienci są gwarantowane odczytać wartości najnowsza wersja zatwierdzić operacji zapisywania.
 
-Dla pozostałych poziomów spójności trzy okno nieaktualność jest dużym stopniu zależy od obciążenia. Na przykład, jeśli nie zapisy są wykonywane w bazie danych, operacji odczytu z **ostatecznej**, **sesji**, lub **spójny prefiks** poziomów spójności jest prawdopodobne te same wyniki operacji odczytu z poziomem silnej spójności.
+* Dla pozostałych poziomów spójności trzy okno nieaktualność jest dużym stopniu zależy od obciążenia. Na przykład, jeśli żadne operacje zapisu w bazie danych, operacji odczytu z **ostatecznej**, **sesji**, lub **spójny prefiks** poziomów spójności jest prawdopodobne te same wyniki operacji odczytu z poziomem silnej spójności.
 
-Jeśli konto usługi Cosmos DB jest skonfigurowany przy użyciu dowolnego poziomu spójności, innych niż wysoki poziom spójności, można znaleźć prawdopodobieństwo, że na komputerach klienckich, Pobierz zdecydowanie spójnych odczytów (linearizable) dla Twojego workload(s), analizując Probabilistyczne ograniczone Metryka nieaktualność (PBS) udostępniane w witrynie Azure portal [opublikujemy w zakresie używania metryki PBS](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric). Probabilistyczne powiązana nieaktualność pokazuje, jak ostateczną spójność ostateczną. Ta metryka zapewnia wgląd w częstotliwości otrzymywania spójności silniejsza niż poziom spójności, który został skonfigurowany na koncie usługi Cosmos DB. Innymi słowy możesz zobaczyć prawdopodobieństwo (opisanej w milisekundach), wprowadzenie zdecydowanie spójnych odczytów dla kombinacji zapisu i odczytu regionów.
+Jeśli konto usługi Cosmos DB jest skonfigurowany z poziomem spójności niż wysoki poziom spójności, można znaleźć prawdopodobieństwo, że klienci mogą otrzymać silnych i spójnych odczytów dla swoich obciążeń spoglądając na Probabilistyczne powiązana nieaktualność książek Telefonicznych metryki. Ta metryka jest widoczna w witrynie Azure portal, aby dowiedzieć się więcej, zobacz [sposób używania metryki PBS](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric) artykułu.
+
+Probabilistyczne powiązana nieaktualność pokazuje, jak ostateczną spójność ostateczną. Ta metryka zapewnia wgląd w jak często można uzyskać spójności silniejsza niż poziomu spójności, który aktualnie skonfigurowane na konto usługi Cosmos DB. Innymi słowy można wyświetlić prawdopodobieństwo (mierzonego w milisekundach) uzyskiwanie zdecydowanie spójnych odczytów dla kombinacji zapisu i regionów odczytu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

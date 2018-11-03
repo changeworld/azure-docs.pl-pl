@@ -10,16 +10,16 @@ ms.component: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: dc394093e9e2db223defe61229832ce5448bdfaa
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 100d2a6163c6b2b7a7bf8a557e69e1082b48eaee
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748738"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979220"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Odwołanie do lokalnych firm interfejsu API wyszukiwania Bing w wersji 7
 
-Wysyła lokalnych firm interfejs API wyszukiwania Bing w celu uzyskania wyników, które zawierają zapytania wyszukiwania obejmują restauracje, hotele lub innych lokalnych firm. Dla miejsc zapytanie można określić nazwę lokalnych firmach lub kategorii (na przykład, restauracje w pobliżu). Wyniki dotyczące jednostek to między innymi osoby, miejsca i rzeczy. Miejsce, w tym kontekście jest jednostek biznesowych, Stany, kraje, itp.  
+Interfejsu API wyszukiwania w lokalnych firm wysyła zapytanie wyszukiwania do usługi Bing w celu uzyskania wyników, które zawierają restauracje, hotele lub innych lokalnych firm. Dla miejsc zapytanie można określić nazwę lokalnych firmach lub kategorii (na przykład, restauracje w pobliżu). Wyniki dotyczące jednostek to między innymi osoby, miejsca i rzeczy. Miejsce, w tym kontekście jest jednostek biznesowych, Stany, kraje, itp.  
 
 Ta sekcja zawiera szczegółowe informacje techniczne dotyczące obiektów odpowiedzi i parametrów zapytania i nagłówków, które mają wpływ na wyniki wyszukiwania. Przykłady pokazujące, jak żądań, zobacz [lokalnego wyszukiwania firm C# Szybki Start](quickstarts/local-quickstart.md) lub [Szybki Start lokalnych firm wyszukiwania Java](quickstarts/local-search-java-quickstart.md). 
   
@@ -37,7 +37,7 @@ Aby uzyskać informacji o dozwolone użycie i wyświetlania wyników, zobacz [u�
 Aby zażądać wyników lokalnych firmach, Wyślij żądanie Pobierz do: 
 
 ``` 
-https://api.cognitive.microsoft.com/bing/localbusinesses/v7.0/search
+https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 
 ```
   

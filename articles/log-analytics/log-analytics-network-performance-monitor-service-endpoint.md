@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: 76c8421286633dc3c81a073423a7d9f9ca1e1d85
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: df87f1ab1ba639ad874aa8bd353362913355cf8d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420850"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964020"
 ---
 # <a name="service-connectivity-monitor"></a>Monitorowanie łączności usług
 
@@ -131,4 +131,4 @@ Jeśli zauważysz nieprawidłowości, wykonaj następujące kroki:
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Przeszukiwanie dzienników](log-analytics-log-searches.md) do wyświetlania rekordów danych wydajności szczegółowe sieci.
+[Przeszukiwanie dzienników](log-analytics-log-search.md) do wyświetlania rekordów danych wydajności szczegółowe sieci.

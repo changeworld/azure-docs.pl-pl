@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: dd404bf8766082148a2c5a1ae55189f5f82f9021
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f5db8c4e8137d9758113210ad433278eb8f5a2ee
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404073"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962133"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Zbieraj i Analizuj Dzienniki aktywności platformy Azure w usłudze Log Analytics
 
@@ -54,8 +54,8 @@ W przeciwieństwie do większości innych rozwiązań usługi Log Analytics dane
 
 | Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |
-| [Agenci dla systemu Windows](log-analytics-windows-agent.md) | Nie | Rozwiązanie nie zbiera informacji od agentów Windows. |
-| [Agenci dla systemu Linux](log-analytics-linux-agents.md) | Nie | Rozwiązanie zbiera informacje z agentów dla systemu Linux. |
+| [Agenci dla systemu Windows](log-analytics-agent-windows.md) | Nie | Rozwiązanie nie zbiera informacji od agentów Windows. |
+| [Agenci dla systemu Linux](log-analytics-quick-collect-linux-computer.md) | Nie | Rozwiązanie zbiera informacje z agentów dla systemu Linux. |
 | [Grupy zarządzania SCOM](log-analytics-om-agents.md) | Nie | Rozwiązanie nie zbiera informacji od agentów w połączonej grupie zarządzania programu SCOM. |
 | [Konto usługi Azure Storage](log-analytics-azure-storage.md) | Nie | Rozwiązanie zbiera informacje z usługi Azure storage. |
 
@@ -67,7 +67,7 @@ W przeciwieństwie do większości innych rozwiązań usługi Log Analytics dane
 
 Wykonaj poniższe kroki, aby skonfigurować rozwiązanie Activity Log Analytics dla obszarów roboczych.
 
-1. Włącz rozwiązanie Activity Log Analytics z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) lub przy użyciu procesu opisanego w [Add Log Analytics solutions from the Solutions Gallery (Dodawanie rozwiązań usługi Log Analytics z galerii rozwiązań)](log-analytics-add-solutions.md).
+1. Włącz rozwiązanie Activity Log Analytics z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) lub przy użyciu procesu opisanego w [Add Log Analytics solutions from the Solutions Gallery (Dodawanie rozwiązań usługi Log Analytics z galerii rozwiązań)](../monitoring/monitoring-solutions.md).
 2. Konfigurowanie dzienników aktywności, aby przejść do obszaru roboczego usługi Log Analytics.
     1. W witrynie Azure portal, wybierz swój obszar roboczy, a następnie kliknij przycisk **dziennik aktywności platformy Azure**.
     2. Dla każdej subskrypcji kliknij nazwę subskrypcji.  
@@ -89,7 +89,7 @@ Kliknij przycisk **dzienników aktywności platformy Azure** Kafelek, aby otworz
 
 Dane dzienników aktywności jest wyświetlany tylko *po* zostały skonfigurowane z dzienników aktywności, aby przejść do rozwiązania, więc nie można wyświetlić danych przed tym dniem.
 
-| Blade | Opis |
+| Blok | Opis |
 | --- | --- |
 | Wpisy dziennika aktywności platformy Azure | Przedstawia wykres słupkowy w górnej części wpis dziennika aktywności platformy Azure rekordu sumy dla zakresu dat, który wybrano i wyświetla listę najważniejszych wywołań 10 działania. Kliknij wykres słupkowy Aby uruchomić wyszukiwanie w dzienniku dla <code>AzureActivity</code>. Kliknij element wywołujący, aby uruchomić wyszukiwanie w dzienniku zwraca wszystkie wpisy dziennika aktywności dla tego elementu. |
 | Dzienniki aktywności według stanu | Przedstawia wykres pierścieniowy stanu dziennika aktywności platformy Azure dotyczące zakresu dat, które zostały wybrane. Lista pierwszych rekordów stanu dziesięć również pokazuje listę. Kliknij wykres, aby uruchomić wyszukiwanie w dzienniku dla <code>AzureActivity &#124; summarize AggregatedValue = count() by ActivityStatus</code>. Kliknij element stanu, aby uruchomić wyszukiwanie w dzienniku zwraca wszystkie wpisy dziennika aktywności dla tego rekordu stanu. |
@@ -100,5 +100,5 @@ Dane dzienników aktywności jest wyświetlany tylko *po* zostały skonfigurowan
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Tworzenie [alert](log-analytics-alerts-creating.md) podczas określonego działania się dzieje.
-- Użyj [wyszukiwanie w dzienniku](log-analytics-log-searches.md) Aby wyświetlić szczegółowe informacje z dzienników aktywności.
+- Tworzenie [alert](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) podczas określonego działania się dzieje.
+- Użyj [wyszukiwanie w dzienniku](log-analytics-log-search.md) Aby wyświetlić szczegółowe informacje z dzienników aktywności.

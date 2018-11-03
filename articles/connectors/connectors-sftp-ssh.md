@@ -1,121 +1,149 @@
 ---
-title: Połączenie z kontem SFTP z usługi Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Automatyzowanie zadań i przepływów pracy, umożliwiające monitorowanie, tworzenie, zarządzanie, wysyłania i odbierania plików na serwerze SFTP przy użyciu usługi Azure Logic Apps
+title: Połączyć się z serwerem SFTP przy użyciu protokołu SSH — Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Automatyzowanie zadań, umożliwiające monitorowanie, tworzenie, zarządzanie, wysyłania i odbierania plików na serwerze SFTP przy użyciu protokołu SSH i Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: divswa, LADocs
 ms.topic: article
 tags: connectors
-ms.date: 09/24/2018
-ms.openlocfilehash: 2250c6952aeac7b10dcb1a1a35419941e5cad507
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 10/31/2018
+ms.openlocfilehash: 336288aaf3817fe267d58a225249bf54cca691bc
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233212"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979101"
 ---
-# <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps-and-sftp-ssh-connector"></a>Monitorowanie, tworzenie i zarządzanie plikami SFTP za pomocą łącznika usługi Azure Logic Apps i SFTP — SSH
+# <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorowanie, tworzenie i zarządzanie plikami SFTP przy użyciu protokołu SSH i Azure Logic Apps
 
-Korzystając z usługi Azure Logic Apps i łącznika SFTP-SSH, można utworzyć zautomatyzowanym zadaniom i przepływy pracy monitorowania, tworzenie, wysyłanie i odbieranie plików za pośrednictwem Twojego konta na [SFTP](https://www.ssh.com/ssh/sftp/) serwerem oraz inne czynności, na przykład:
+Automatyzowanie zadań, które monitorowania, tworzenie, wysyłanie i odbieranie plików na [Secure File Transfer Protocol (SFTP)](https://www.ssh.com/ssh/sftp/) serwera za pomocą [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) protokołu, możesz rozwijać i automatyzować integracji przepływy pracy za pomocą usługi Azure Logic Apps i łącznika SFTP-protokołu SSH. Protokół SFTP jest protokołem sieci, który zapewnia dostęp do plików, transfer plików i zarządzanie plikami w strumieniu żadnych wiarygodnych danych. Poniżej przedstawiono niektóre przykład zadania, które można zautomatyzować: 
 
 * Monitor, gdy pliki są dodane lub zmienione.
 * Pobieranie, tworzenie, kopiowanie, Zmień nazwę, aktualizacji listy i Usuń pliki.
-* Utwórz folder.
+* Tworzenie folderów.
 * Pobierz zawartość pliku i metadanych.
 * Wyodrębnij archiwum do folderów.
 
-Możesz użyć wyzwalaczy, które uzyskiwanie odpowiedzi z serwera SFTP oraz udostępnić dane wyjściowe do innych działań. Akcje w aplikacjach logic apps umożliwia wykonywanie zadań z plikami na serwerze SFTP. Mogą też istnieć inne akcje użyć danych wyjściowych z akcji SFTP. Na przykład jeśli regularnie możesz pobrać pliki z serwera SFTP, możesz wysłać pocztą e-mail informacje dotyczące tych plików i ich zawartości za pomocą łącznika usługi Office 365 Outlook lub łącznik usługi Outlook.com.
+W porównaniu do [łącznika SFTP](../connectors/connectors-create-api-sftp.md), łącznik SFTP-SSH może odczytać lub zapisać pliki do *1 GB* rozmiar. W przypadku plików większych niż 1 GB, można użyć protokołu SFTP-SSH i [segmentu do obsługi dużych komunikatów](../logic-apps/logic-apps-handle-large-messages.md). Więcej różnic, można przejrzeć [porównania SFTP-SSH i SFTP](#comparison) w dalszej części tego artykułu.
+
+Możesz użyć wyzwalaczy, które monitorowania zdarzeń na serwerze SFTP i udostępnić dane wyjściowe innych działań. Możesz użyć akcji, które wykonywania różnych zadań na serwerze SFTP. Mogą też istnieć inne akcje w aplikacji logiki, użyć danych wyjściowych z akcji SFTP. Na przykład jeśli regularnie możesz pobrać pliki z serwera SFTP, możesz wysłać alerty e-mail dotyczące tych plików i ich zawartości za pomocą łącznika usługi Office 365 Outlook lub łącznik usługi Outlook.com.
 Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="sftp-ssh-versus-sftp"></a>SFTP-SSH i SFTP
+<a name="comparison"></a>
 
-Poniżej przedstawiono kilka podstawowych różnic między łącznika SFTP-SSH i [SFTP](../connectors/connectors-create-api-sftp.md) łącznika. Łącznik SFTP-SSH udostępnia te możliwości:
+## <a name="compare-sftp-ssh-versus-sftp"></a>Porównaj SFTP-SSH i SFTP
 
-* Używa <a href="https://github.com/sshnet/SSH.NET" target="_blank"> **SSH.NET** </a> biblioteki, która jest biblioteką Secure Shell (SSH) typu open source dla platformy .NET.
+Poniżej przedstawiono inne podstawowe różnice między łącznik SFTP-SSH i łącznika SFTP, w którym łącznik SFTP-SSH ma te możliwości:
 
-* Zapewnia obsługę dużych plików do **1 GB**. Łącznik można Odczyt lub zapis plików znajdujących się w rozmiarze do 1 GB.
+* Używa <a href="https://github.com/sshnet/SSH.NET" target="_blank"> **SSH.NET** </a> biblioteki, która to biblioteka Secure Shell (SSH) typu open source, która obsługuje platformy .NET. 
+
+  > [!NOTE]
+  >
+  > SFTP-SSH łącznik obsługuje *tylko* te klucze prywatne, formatów, algorytmów i odcisków palców:
+  > 
+  > * **Formaty klucza prywatnego**: RSA (Rivest Shamir Adleman) i DSA (algorytmu Digital Signature Algorithm) klucze zarówno OpenSSH, jak i ssh.com formatów
+  > * **Algorytmy szyfrowania**: EDE3-DES-CBC, DES-EDE3-CFB DES-CBC, AES-128-CBC, 192-AES-CBC i AES-256-CBC
+  > * **Odcisk palca**: MD5
+
+* Operacja odczytu lub zapisu do plików *1 GB* w porównaniu do łącznika SFTP. W przypadku plików większych niż 1 GB, użyj [segmentu do obsługi dużych komunikatów](../logic-apps/logic-apps-handle-large-messages.md). 
 
 * Udostępnia **Utwórz folder** akcji, która tworzy folder w określonej ścieżce na serwerze SFTP.
 
 * Udostępnia **zmiany nazwy pliku** akcji, która zmienia nazwę pliku na serwerze SFTP.
 
-* Buforuje połączenia do serwera SFTP, który zapewnia lepszą wydajność i zmniejsza liczbę prób nawiązania połączenia na serwerze. 
-
-  Możesz kontrolować czas trwania buforowania połączenia, konfigurując <a href="http://man.openbsd.org/sshd_config#ClientAliveInterval" target="_blank"> **ClientAliveInterval** </a> właściwości na serwerze SFTP. 
-
-## <a name="how-trigger-polling-works"></a>Jak wyzwolić działania sondowania
-
-Wyzwalacze SFTP-SSH działają przez sondowanie system plików SFTP i szukasz każdego pliku, który został zmieniony od czasu ostatniego sondowania. Niektóre narzędzia pozwalają zachować sygnaturę czasową, gdy zmieniają się pliki, więc w takich przypadkach należy wyłączyć tę funkcję dla wyzwalacza do pracy. Poniżej przedstawiono niektóre typowe ustawienia:
-
-| Klient protokołu SFTP | Akcja | 
-|-------------|--------| 
-| Winscp | Preferencje → opcje... Edytuj transferu → →... Wyłącz → zachować sygnatury czasowej → |
-| FileZilla | Wyłącz transferu → Zachowaj znacznikami czasu plików przeniesionych → | 
-||| 
-
-Jeśli wyzwalacz wykryje nowy plik, wyzwalacz sprawdzi, czy nowy plik jest pełny i niezapisane częściowo. Na przykład plik może mieć zmiany w toku, gdy wyzwalacz sprawdza, czy serwer plików. Aby uniknąć, zwracając częściowo napisane pliku, wyzwalacz — informacje o sygnaturę czasową dla pliku, który zawiera ostatnie zmiany, ale nie natychmiast przywrócić ten plik. Wyzwalacz zwraca plik tylko wtedy, gdy ponownie sondowania serwera. Czasami to zachowanie może powodować opóźnienia, która jest maksymalnie dwa razy tego wyzwalacza interwał sondowania. 
-
-Podczas żądania zawartości pliku, wyzwalacz nie pobierać pliki o rozmiarze większym niż 50 MB. Aby pobrać pliki o rozmiarze większym niż 50 MB, należy korzystać z tego wzoru:
-
-* Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)**. 
-* Postępuj zgodnie z wyzwalacza z akcji, która odczytuje plik pełną, takich jak **Pobierz zawartość pliku przy użyciu ścieżki**.
+* Pamięci podręczne połączenie z serwerem SFTP *przez maksymalnie godzinę*, który zapewnia lepszą wydajność i zmniejsza liczbę prób połączenia z serwerem. Aby ustawić czas trwania tego zachowania buforowania, Edytuj <a href="http://man.openbsd.org/sshd_config#ClientAliveInterval" target="_blank"> **ClientAliveInterval** </a> właściwości w konfiguracji SSH na serwerze SFTP. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. 
 
-* SFTP hosta adres i konta poświadczeń serwera, które Autoryzuj aplikację logiki, aby utworzyć połączenie i dostęp do tego konta SFTP.
+* SFTP adres i konta poświadczeń serwera, które umożliwiają dostęp do tego konta SFTP aplikacji logiki. Należy również dostęp do klucza prywatnego SSH i hasło klucza prywatnego SSH. 
 
-  Skopiuj i Wklej pełną zawartość prywatny klucz SSH do **prywatny klucz SSH** właściwości, postępując zgodnie z wielowierszowym formacie. 
-  Poniżej przedstawiono przykładowe kroki, pokazujące, jak zapewnić prywatny klucz SSH przy użyciu Notepad.exe:
-    
-  1. Otwórz plik klucza prywatnego SSH w Notepad.exe
-  2. Na **Edytuj** menu, wybierz opcję **Zaznacz wszystko**.
-  3. Wybierz **Edytuj** > **kopiowania**.
-  4. Po utworzeniu połączenia w **prywatny klucz SSH** właściwości, Wklej klucz. Nie należy ręcznie ich edytować **prywatny klucz SSH** właściwości.
-
-     Łącznik używa biblioteki SSH.NET, która obsługuje formatach klucza prywatnego SSH i tylko algorytmy MD5 odcisk palca:
-
-     * RSA 
-     * DSA
+  > [!IMPORTANT]
+  >
+  > SFTP-SSH łącznik obsługuje *tylko* te formaty klucza prywatnego, algorytmów i odcisków palców:
+  > 
+  > * **Formaty klucza prywatnego**: RSA (Rivest Shamir Adleman) i DSA (algorytmu Digital Signature Algorithm) klucze zarówno OpenSSH, jak i ssh.com formatów
+  > * **Algorytmy szyfrowania**: EDE3-DES-CBC, DES-EDE3-CFB DES-CBC, AES-128-CBC, 192-AES-CBC i AES-256-CBC
+  > * **Odcisk palca**: MD5
+  >
+  > Podczas tworzenia aplikacji logiki, po dodaniu SFTP-SSH wyzwalacza lub akcji, które chcesz, musisz podać informacje o połączeniu na serwerze SFTP. 
+  > Jeśli używasz klucza prywatnego SSH, upewnij się, że ***kopiowania*** klucza z protokołu SSH pliku klucza prywatnego, i ***Wklej*** tego klucza do szczegółów połączenia ***nie ręcznie wprowadzić lub edytować klucza***, co może spowodować połączenia nie powiedzie się. 
+  > Aby uzyskać więcej informacji zobacz kolejnych krokach w tym artykule.
 
 * Podstawową wiedzę na temat o [sposób tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Aplikacja logiki, w której chcesz uzyskać dostęp do konta SFTP. Można uruchomić z wyzwalaczem SFTP [Tworzenie pustej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby użyć akcji SFTP, uruchom aplikację logiki za pomocą wyzwalacza innego, na przykład, **cyklu** wyzwalacza.
+* Aplikacja logiki, w której chcesz uzyskać dostęp do konta SFTP. Można uruchomić przy użyciu protokołu SFTP-SSH wyzwalacz, [Tworzenie pustej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby użyć akcji SFTP-SSH, uruchom aplikację logiki za pomocą wyzwalacza innego, na przykład, **cyklu** wyzwalacza.
 
-## <a name="connect-to-sftp"></a>Nawiązać połączenie SFTP
+## <a name="connect-to-sftp-with-ssh"></a>Nawiązać połączenie SFTP przy użyciu protokołu SSH
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i Otwórz swoją aplikację logiki w Projektancie aplikacji logiki, jeśli nie otwarto już.
 
-1. Puste logic apps w polu wyszukiwania wprowadź "sftp" jako filtr. W obszarze listy wyzwalaczy wybierz wyzwalacz, który ma. 
+1. Puste logic apps, w polu wyszukiwania wprowadź "sftp ssh" jako filtr. W obszarze listy wyzwalaczy wybierz wyzwalacz, który ma. 
 
    — lub —
 
    Dla istniejących aplikacji logiki w ostatnim kroku, które chcesz dodać akcję, wybierz **nowy krok**. 
-   W polu wyszukiwania wprowadź "sftp" jako filtr. 
+   W polu wyszukiwania wpisz "sftp ssh" jako filtr. 
    W obszarze listy akcji wybierz akcję, którą chcesz.
 
    Aby dodać akcję między krokami, wskaźnik myszy nad strzałką znajdującą się między krokami. 
    Wybierz znak plus (**+**) pojawia się, a następnie wybierz **Dodaj akcję**.
 
-1. Podaj odpowiednie szczegóły połączenia, a następnie wybierz **Utwórz**.
+1. Podaj odpowiednie szczegóły połączenia.
 
-1. Podaj odpowiednie szczegóły wybranego wyzwalacza lub akcji i kontynuuj tworzenie przepływu pracy aplikacji logiki.
+   > [!IMPORTANT] 
+   >
+   > Po wprowadzeniu klucza prywatnego SSH w **prywatny klucz SSH** właściwość, należy wykonać następujące dodatkowe czynności, które pomagają, pamiętaj o podaniu wartości kompletny i poprawny dla tej właściwości. 
+   > Nieprawidłowy klucz powoduje, że połączenie nie powiedzie się.
+   
+   Chociaż można używać dowolnego edytora tekstów, poniżej przedstawiono kroki próbki, które pokazują, jak poprawnie skopiuj i Wklej swój klucz przy użyciu Notepad.exe jako przykład.
+    
+   1. Otwórz pliku klucza prywatnego SSH w edytorze tekstów. 
+   Następujące kroki, np. za pomocą Notatnika.
+
+   1. W programie Notatnik firmy **Edytuj** menu, wybierz opcję **Zaznacz wszystko**.
+
+   1. Wybierz **Edytuj** > **kopiowania**.
+
+   1. Wklej w SFTP SSH wyzwalacza lub akcji został dodany, *pełną* klucza, zostały skopiowane do **prywatny klucz SSH** właściwość, która obsługuje wiele wierszy. 
+   ***Upewnij się, że możesz wkleić*** klucza. ***Nie ręcznie wprowadzić lub edytować klucza***.
+
+1. Po zakończeniu wprowadzania szczegóły połączenia, wybierz **Utwórz**.
+
+1. Teraz podaj odpowiednie szczegóły wybranego wyzwalacza lub akcji i kontynuuj tworzenie przepływu pracy aplikacji logiki.
+
+## <a name="trigger-limits"></a>Ograniczenia wyzwalacza
+
+Wyzwalacze SFTP-SSH działają przez sondowanie system plików SFTP i szukasz każdego pliku, który został zmieniony od czasu ostatniego sondowania. Niektóre narzędzia pozwalają zachować sygnaturę czasową, gdy zmienią się pliki. W takich przypadkach należy wyłączyć tę funkcję, dzięki czemu można pracować wyzwalacza. Poniżej przedstawiono niektóre typowe ustawienia:
+
+| Klient protokołu SFTP | Akcja | 
+|-------------|--------| 
+| Winscp | Przejdź do **opcje** > **preferencje** > **transferu** > **Edytuj**  >  **Zachować sygnatury czasowej** > **wyłączone** |
+| FileZilla | Przejdź do **transferu** > **zachować znacznikami czasu plików przeniesionych** > **wyłączone** | 
+||| 
+
+Jeśli wyzwalacz wykryje nowy plik, wyzwalacz sprawdzi, czy nowy plik jest pełny i niezapisane częściowo. Na przykład plik może mieć zmiany w toku, gdy wyzwalacz sprawdza, czy serwer plików. Aby uniknąć, zwracając częściowo napisane pliku, wyzwalacz — informacje o sygnaturę czasową dla pliku, który zawiera ostatnie zmiany, ale nie natychmiast przywrócić ten plik. Wyzwalacz zwraca plik tylko wtedy, gdy ponownie sondowania serwera. Czasami to zachowanie może powodować opóźnienia, która jest maksymalnie dwa razy tego wyzwalacza interwał sondowania. 
+
+Podczas żądania zawartości pliku, wyzwalacz nie pobierać pliki o rozmiarze większym niż 50 MB. Aby pobrać pliki większe niż 50 MB, należy korzystać z tego wzoru:
+
+* Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)**. 
+* Postępuj zgodnie z wyzwalacza z akcji, która odczytuje plik pełną, takich jak **Pobierz zawartość pliku przy użyciu ścieżki**.
 
 ## <a name="examples"></a>Przykłady
 
-### <a name="sftp-trigger-when-a-file-is-added-or-modified"></a>Wyzwalacz protokołu SFTP: po dodaniu lub zmodyfikowaniu pliku
+### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP — wyzwalanie SSH: po dodaniu lub zmodyfikowaniu pliku
 
-Ten wyzwalacz jest uruchamiany przepływ pracy aplikacji logiki po wykryciu wyzwalacz, gdy plik zostanie dodane lub zmienione na serwerze SFTP. Na przykład można dodać warunek, który sprawdza, czy zawartość pliku i decyduje o tym, czy można pobrać tej zawartości na podstawie tego, czy tę zawartość spełnia określony warunek. Na koniec możesz dodać akcję, która pobiera zawartość pliku i umieścić tę zawartość w folderze na serwerze SFTP. 
+Ten wyzwalacz jest uruchamiany przepływ pracy aplikacji logiki, gdy plik zostanie dodane lub zmienione na serwerze SFTP. Na przykład można dodać warunek, który sprawdza, czy zawartość pliku i pobiera zawartość, w oparciu o tego, czy zawartość spełnia określony warunek. Następnie można dodać akcję, która pobiera zawartość pliku i umieszcza tę zawartość w folderze na serwerze SFTP. 
 
-**Przykład Enterprise**: tego wyzwalacza można używać do monitorowania folderu SFTP dla nowych plików, które reprezentują zamówienia. Można następnie użyć akcji SFTP takich jak **Pobierz zawartość pliku**, dzięki czemu można uzyskać zawartość kolejności do dalszego przetwarzania i przechowywania tej kolejności w bazie danych zamówień.
+**Przykład Enterprise**: tego wyzwalacza można używać do monitorowania folderu SFTP dla nowych plików, które reprezentują zamówienia. Można następnie użyć akcji SFTP takich jak **Pobierz zawartość pliku** , Pobierz zawartość w kolejności do dalszego przetwarzania i przechowywania tej kolejności w bazie danych zamówień.
 
-### <a name="sftp-action-get-content"></a>Akcja SFTP: pobieranie zawartości
+### <a name="sftp---ssh-action-get-content"></a>SFTP - SSH akcji: pobieranie zawartości
 
 Ta akcja pobiera zawartość z pliku na serwer SFTP. Na przykład można dodać wyzwalacza z poprzedniego przykładu i warunek, który musi spełniać zawartość pliku. Jeśli warunek jest spełniony, można uruchomić akcję, która pobiera zawartość. 
 

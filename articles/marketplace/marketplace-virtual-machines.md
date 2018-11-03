@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: b8caeab7f08ffeee81492b01750cbb255e172872
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: d2ff854d291f65848c7e87b88d8020a835b3bdaa
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144526"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958665"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>Oferty maszyny wirtualnej Podręcznik publikowania
 
@@ -29,18 +29,18 @@ Są to oferty transakcji, które są wdrożone i rozliczane za pośrednictwem po
 
 ## <a name="free-trial"></a>Bezpłatna wersja próbna 
 
-Można rozmieścić dla użytkowników przetestować ofertę, uzyskując dostęp do licencji na oprogramowanie ograniczony czas, korzystając z modelu blling Bring Your Own License (BYOL). Poniżej przedstawiono wymagania dotyczące wdrożenia tej oferty. 
+Można rozmieścić dla użytkowników przetestować ofertę, uzyskując dostęp do licencji na oprogramowanie ograniczony czas, korzystając z modelu rozliczania Bring Your Own License (BYOL). Poniżej przedstawiono wymagania dotyczące wdrożenia tej oferty. 
 
 |Wymagania  |Szczegóły  |
 |---------|---------|
-|Okres bezpłatnej wersji próbnej i wersja próbna     |   Klient może bezpłatnie wypróbować aplikację przez ograniczony czas. Klient nie jest wymagany do zapłaty wszelkich opłat licencji lub subskrypcji oferty. Klienci nie są wymagane do zapłacenia za podstawowych produktów firmy Microsoft lub usługi. Wszystkie opcje wersji próbnej są wdrażane do subskrypcji platformy Azure. Masz wyłączną kontrolę nad optymalizację kosztów i zarządzania. Możesz wybrać bezpłatnej wersji próbnej lub interaktywne pokaz. Niezależnie od tego, możesz wybrać Twoja bezpłatna wersja próbna należy podać klienta przez wstępnie określony czas, aby wypróbować ofertę bez ponoszenia dodatkowych kosztów.|
+|Okres bezpłatnej wersji próbnej i wersja próbna     |   Klienci mogą bezpłatnie wypróbować aplikację przez ograniczony czas. Klienci są Uwaga konieczne uiszczanie wszelkich opłat licencji lub subskrypcji oferty. Klienci nie są wymagane do zapłacenia za podstawowych produktów firmy Microsoft lub usługi. Wszystkie opcje wersji próbnej są wdrażane do subskrypcji platformy Azure. Masz wyłączną kontrolę nad optymalizację kosztów i zarządzania. Możesz wybrać bezpłatnej wersji próbnej lub interaktywne pokaz. Niezależnie od tego, możesz wybrać Twoja bezpłatna wersja próbna musi zapewnić klientom przez wstępnie określony czas, aby wypróbować ofertę bez ponoszenia dodatkowych kosztów.|
 |Można je łatwo konfigurować, gotowych do użycia rozwiązanie    |  Aplikacja musi być łatwo i szybko skonfigurować i skonfigurować.       |
 |Dostępność / czas pracy    |    Twoja aplikacja SaaS lub platformy musi mieć czas działania co najmniej 99,9%.     |
 |Usługa Azure Active Directory     |    Oferty muszą zezwalać na, że usługi Azure Active Directory (Azure AD) federacyjnego logowania jednokrotnego (SSO) (Azure AD Federacyjna usługa rejestracji Jednokrotnej), za zgodą włączone.     |
 
 ## <a name="test-drive"></a>Wersja testowa
 
-Możesz wdrożyć jeden lub więcej maszyn wirtualnych za pośrednictwem infrastructure-as-a-service(IaaS) lub aplikacji SaaS. Przewodnik po zaletą wersji testowej, opcja publikowania jest automatyczne Inicjowanie obsługi maszyny wirtualnej lub całe rozwiązanie, które są prowadzone przez u partnera. Wersji testowej umożliwia oprogramowania ewaluacyjnego bez ponoszenia dodatkowych kosztów do klienta. Klient nie musi być istniejącym klientem platformy Azure zapoznawanie się z wersji próbnej środowiska. 
+Możesz wdrożyć co najmniej jednej maszyny wirtualnej za pomocą infrastructure-as-a-service (IaaS) lub aplikacji software-as-a-service (SaaS). Przewodnik po zaletą wersji testowej, opcja publikowania jest automatyczne Inicjowanie obsługi maszyny wirtualnej lub całe rozwiązanie, które są prowadzone przez u partnera. Wersji testowej umożliwia oprogramowania ewaluacyjnego bez ponoszenia dodatkowych kosztów do klienta. Klient nie musi być istniejącym klientem platformy Azure zapoznawanie się z wersji próbnej środowiska. 
 
 Skontaktuj się z nami pod adresem [amp testdrive](mailto:amp-testdrive@microsoft.com) na rozpoczęcie pracy. 
 

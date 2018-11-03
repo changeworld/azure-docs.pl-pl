@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: 6356154bf30fcb2557e288305fa032989e5ddc9d
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 989e96aa00ae65d1206f961a10893e3331670553
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471842"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958308"
 ---
 # <a name="how-to-configure-expressroute-direct-using-cli-preview"></a>Konfigurowanie usługi ExpressRoute bezpośrednio przy użyciu interfejsu wiersza polecenia (wersja zapoznawcza)
 
@@ -290,7 +290,7 @@ Utwórz obwód zasobu bezpośrednio z usługi ExpressRoute.
   az network express-route create --express-route-port "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRoutePorts/Contoso-Direct" -n "Contoso-Direct-ckt" -g "Contoso-Direct-rg" --sku-family MeteredData --sku-tier Standard --bandwidth 100 Gbps
   ```
 
-  Inne przepustowości obejmują: 1.0, 2.0, 5.0, 10.0 i 40.0
+  Inne przepustowości obejmują: 5 GB/s, 10 GB/s i 40 GB/s
 
   **Przykładowe dane wyjściowe:**
 

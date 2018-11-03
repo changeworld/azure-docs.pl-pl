@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 800fcc131cc6dc7b86444a00d60ad6c52599d334
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 1cb36eec6dd23d65298b2c011a194c015922d807
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955102"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960994"
 ---
 # <a name="configure-collection-of-azure-paas-resource-metrics-with-log-analytics"></a>Konfiguruj zbieranie metryk zasobów PaaS platformy Azure z usługą Log Analytics
 
@@ -81,7 +81,7 @@ Zostanie wyświetlony monit odpowiedzieć na te same informacje co uruchomiono s
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o [dziennikach](log-analytics-log-searches.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
+* Dowiedz się więcej o [dziennikach](log-analytics-log-search.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
 
 * Użyj [pól niestandardowych](log-analytics-custom-fields.md)(w celu analizowania rekordów zdarzeń do poszczególnych pól.
 
