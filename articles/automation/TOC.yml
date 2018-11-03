@@ -203,12 +203,6 @@ items:
       href: automation-create-alert-triggered-runbook.md
     - name: Tworzenie maszyny wirtualnej usługi Amazon Web Service
       href: automation-scenario-aws-deployment.md
-    - name: Integracja kontroli źródła z usługą GitHub Enterprise
-      displayName: CI, runbooks
-      href: automation-scenario-source-control-integration-with-github-ent.md
-    - name: Integracja kontroli źródła z usługą Azure DevOps
-      displayName: VSTS, CI, runbooks
-      href: automation-scenario-source-control-integration-with-VSTS.md
     - name: Wdrażanie szablonu usługi Azure Resource Manager w elemencie runbook programu PowerShell usługi Azure Automation
       href: automation-deploy-template-runbook.md
     - name: Integracja usługi Azure Automation z usługami Event Grid i Microsoft Teams
@@ -277,9 +271,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-automation
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: 9ecdfd37ac2de97342447d25c4e09c53730651bf
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 671b0ea315af44875134c16c77b8bbeb9cf2ec73
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155613"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962592"
