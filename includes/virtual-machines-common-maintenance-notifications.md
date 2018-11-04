@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: b3f71c4710bd9711a3209dd55f8e680f63627c1b
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b8d759c7b55608be780389991e6bb393f4f3fe9f
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50035128"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50981649"
 ---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>View VMs zaplanowana do konserwacji w portalu
 
@@ -49,17 +49,9 @@ Można użyć witryny Azure portal i wyszukaj zaplanowana konserwacja maszyn wir
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Powiadomienia i alerty w portalu
 
-Azure komunikuje się harmonogram planowanej konserwacji, wysyłając wiadomość e-mail do grupy właściciel i współwłaściciele subskrypcji. Możesz dodać dodatkowych adresatów oraz kanały do komunikacji przez tworzenie alertów dziennika aktywności platformy Azure. Aby uzyskać więcej informacji, zobacz [monitorowania aktywności subskrypcji z dziennika aktywności platformy Azure](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+Azure komunikuje się harmonogram planowanej konserwacji, wysyłając wiadomość e-mail do grupy właściciel i współwłaściciele subskrypcji. Możesz dodać dodatkowych adresatów oraz kanały do komunikacji przez tworzenie alertów dziennika aktywności platformy Azure. Aby uzyskać więcej informacji, zobacz [Tworzenie alertów dziennika aktywności dla powiadomień dotyczących usług](../articles/monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md).
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. W menu po lewej stronie wybierz **Monitor**. 
-3. W **monitorowanie — alerty (klasyczne)** okienku kliknij **+ Dodaj alert dziennika aktywności**.
-5. Uzupełnij informacje w **Dodaj alert dziennika aktywności** strony i upewnij się, ustaw następujące opcje **kryteria**:
-   - **Kategoria zdarzenia**: kondycja usługi
-   - **Usługi**: zestawy skalowania maszyn wirtualnych i maszyn wirtualnych
-   - **Typ**: Planowana konserwacja 
-    
-Aby dowiedzieć się więcej na temat konfigurowania alertów dziennika aktywności, zobacz [Tworzenie alertów dziennika aktywności](../articles/monitoring-and-diagnostics/monitoring-activity-log-alerts.md).
+Upewnij się, możesz ustawić **typ zdarzenia** jako **planowanej konserwacji** i **usług** jako **Virtual Machine Scale Sets** i/lub **Maszyn wirtualnych**
     
     
 ## <a name="start-maintenance-on-your-vm-from-the-portal"></a>Uruchom konserwację na maszynie Wirtualnej z poziomu portalu
