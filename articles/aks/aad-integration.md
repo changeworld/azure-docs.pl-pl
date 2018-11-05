@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: bd7f8748dc5260ed6574a1b48632318e9399bca0
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 0dc0421baf1e5cb19be925072b5fffb989e23a3b
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042125"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979254"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Integrowanie usługi Azure Active Directory z usługą Azure Kubernetes Service
 
@@ -68,7 +68,9 @@ Pierwszą aplikację usługi Azure AD umożliwia uzyskiwanie członkostwa grupy 
 
   ![Ustaw uprawnienia aplikacji do wykresu](media/aad-integration/delegated-permissions.png)
 
-7. Wybierz **gotowe**, wybierz *programu Microsoft Graph* wybierz z listy interfejsów API, następnie **Udziel uprawnień**. Ten krok zakończy się niepowodzeniem, jeśli bieżące konto nie jest administratorem dzierżawy.
+  Wybierz pozycję **Done** (Gotowe).
+
+7. Wybierz *programu Microsoft Graph* wybierz z listy interfejsów API, następnie **Udziel uprawnień**. Ten krok zakończy się niepowodzeniem, jeśli bieżące konto nie jest administratorem dzierżawy.
 
   ![Ustaw uprawnienia aplikacji do wykresu](media/aad-integration/grant-permissions.png)
 
@@ -98,7 +100,9 @@ Druga aplikacja usługi Azure AD jest używany podczas logowania się przy użyc
 
   ![Wybierz punkt końcowy aplikacji serwera usługi AAD usługi AKS](media/aad-integration/select-server-app.png)
 
-4. Wybierz **gotowe** i **Udziel uprawnień** do ukończenia tego kroku.
+  Wybierz **gotowe**
+
+4. Wybierz swój serwer interfejsu API z listy, a następnie wybierz **Udziel uprawnień**:
 
   ![Udzielenie uprawnień](media/aad-integration/grant-permissions-client.png)
 

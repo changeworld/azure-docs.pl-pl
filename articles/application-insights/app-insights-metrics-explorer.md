@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/08/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4c35f4366b2290164036316be8de730e20aa99bf
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 99ace7be05f186ac920aa9671946389e95e3a3a6
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092666"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958121"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Eksplorowanie metryk w usłudze Application Insights
 Metryki w [usługi Application Insights] [ start] są mierzone wartości i liczby zdarzeń, które są wysyłane w danych telemetrycznych z Twojej aplikacji. Ułatwiają one wykryć problemy z wydajnością i obserwuj trendy w sposobu korzystania z aplikacji. Istnieje szereg standardowych metryk i można również utworzyć własne niestandardowe metryki i zdarzenia.
@@ -194,14 +194,14 @@ Z wykresu metryki możesz kliknąć ikonę analiza, aby przejść bezpośrednio 
 
     Jeśli chcesz ustawić różne filtry na różnych wykresów, należy je utworzyć w różnych bloków, zapisać je jako osobne Ulubione. Jeśli chcesz, możesz przypiąć je do pulpitu nawigacyjnego tak, aby można je wyświetlić obok siebie.
 * Jeśli wykres jest Grupuj według właściwości, która nie jest zdefiniowana w metryki, będą nic na wykresie. Spróbuj wyczyścić "Grupuj według", lub wybierz właściwość grupowania.
-* Dane dotyczące wydajności (procesora CPU, we/wy i tak dalej) jest dostępna dla usług sieci web Java, aplikacjach klasycznych Windows [usług IIS i aplikacje sieci web usług jeśli instalowany jest monitor stanu](app-insights-monitor-performance-live-website-now.md), i [usług Azure Cloud Services](app-insights-azure.md). Nie jest dostępne dla usługi Azure websites.
+* Dane dotyczące wydajności (procesora CPU, we/wy i tak dalej) jest dostępna dla usług sieci web Java, aplikacjach klasycznych Windows [usług IIS i aplikacje sieci web usług jeśli instalowany jest monitor stanu](app-insights-monitor-performance-live-website-now.md), i [usług Azure Cloud Services](app-insights-overview.md). Nie jest dostępne dla usługi Azure websites.
 
 ## <a name="video"></a>Połączenia wideo
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Monitorowanie użycia za pomocą usługi Application Insights](app-insights-web-track-usage.md)
+* [Monitorowanie użycia za pomocą usługi Application Insights](app-insights-usage-overview.md)
 * [Za pomocą wyszukiwanie diagnostyczne](app-insights-diagnostic-search.md)
 
 <!--Link references-->
