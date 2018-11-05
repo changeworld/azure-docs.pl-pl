@@ -86,7 +86,18 @@
 ### [Sprzedaż aplikacji SaaS za pośrednictwem platformy Azure](./cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions.md)
 ### [Interfejsy API aplikacji SaaS](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
 
-## [Containers](./cloud-partner-portal-orig/cloud-partner-portal-containers-guide.md)
+<!-- Legacy ## [Containers](./cloud-partner-portal-orig/cloud-partner-portal-containers-guide.md) -->
+
+## [Oferta kontenerów](./cloud-partner-portal/containers/cpp-containers-offer.md)
+### [Wymagania wstępne](./cloud-partner-portal/containers/cpp-prerequisites.md)
+### [Tworzenie oferty kontenera](./cloud-partner-portal/containers/cpp-create-offer.md)
+#### [Karta ustawień oferty](./cloud-partner-portal/containers/cpp-offer-settings-tab.md)
+#### [Karta jednostek SKU](./cloud-partner-portal/containers/cpp-skus-tab.md)
+#### [Karta platformy handlowej](./cloud-partner-portal/containers/cpp-marketplace-tab.md)
+#### [Karta pomocy technicznej](./cloud-partner-portal/containers/cpp-support-tab.md)
+### [Tworzenie zasobów technicznych kontenera](./cloud-partner-portal/containers/cpp-create-technical-assets.md)
+### [Publikowanie oferty kontenera](./cloud-partner-portal/containers/cpp-publish-offer.md)
+### [Aktualizowanie istniejącej oferty](./cloud-partner-portal/containers/cpp-update-existing-offer.md)
 
 ## [Oferta modułu usługi IoT Edge](./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md)
 ### [Wymagania wstępne](./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md)

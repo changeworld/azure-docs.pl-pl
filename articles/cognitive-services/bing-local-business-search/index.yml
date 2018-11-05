@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: bff078b73834308742bbdaa9ba98e62ca067a7ff
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 23a160b708200025236bfabac98f845473b4ca1c
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748811"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961624"
 documentType: LandingData
 title: Dokumentacja interfejsu API wyszukiwania lokalnych firm Bing
 titleSuffix: Azure Cognitive Services
 metadata:
   title: Dokumentacja interfejsu API wyszukiwania lokalnych firm Bing
-  description: Interfejs API wyszukiwania lokalnych firm Bing jest usługą RESTful, która pozwala aplikacjom znajdować informacje o lokalnych miejscach i firmach na podstawie zapytań wyszukiwania.
+  description: Interfejs API wyszukiwania lokalnych firm Bing jest usługą RESTful, która pozwala aplikacjom znajdować lokalne firmy na podstawie zapytań wyszukiwania.
   services: cognitive-services
   author: mikedodaro
   manager: rosh
@@ -21,7 +21,7 @@ metadata:
   ms.date: 08/02/2018
   ms.author: rosh, v-gedod
 abstract:
-  description: Interfejs API wyszukiwania lokalnych firm Bing pozwala aplikacjom znajdować informacje kontaktowe oraz adresowe lokalnych miejsc i firm na podstawie zapytań wyszukiwania.
+  description: Interfejs API wyszukiwania lokalnych firm Bing pozwala aplikacjom znajdować informacje kontaktowe oraz adresowe lokalnych firm na podstawie zapytań wyszukiwania.
 sections:
 - title: Przewodniki Szybki start
   items:
