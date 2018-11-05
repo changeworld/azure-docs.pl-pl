@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/16/2018
 ms.author: raiye
-ms.openlocfilehash: 5a9f8e332aae72d6fb0ce2f697a41391a51c44b6
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: c153e87224c596929440d814d30b94cc49d7ba76
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376673"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978744"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Wersje systemów operacyjnych gościa platformy Azure i zgodności zestawów SDK
 Zapewnia zwalnia z aktualne informacje o najnowszych systemu operacyjnego gościa platformy Azure dla usług w chmurze. Te informacje pomagają planowanie ścieżki uaktualnienia przed wyłączeniem systemie operacyjnym gościa. Jeśli konfigurujesz role do użycia *automatyczne* aktualizacji systemu operacyjnego gościa, zgodnie z opisem w [ustawienia aktualizacji systemu operacyjnego gościa Azure][Azure Guest OS Update Settings], nie jest istotne, przeczytanie na tej stronie.
@@ -66,7 +66,7 @@ Kwietnia system operacyjny gościa został wydany.
 ## <a name="family-5-releases"></a>Zwalnia Family 5
 **System Windows Server 2016**
 
-Zainstalowane środowisko .NET framework: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1 i 4.6.2
+Zainstalowane środowisko .NET framework: 3.5, 4.6.2
 
 > [!NOTE]
 > Hasła protokołu RDP dla rodziny systemów operacyjnych 5 musi być co najmniej 10 znaków.
@@ -84,7 +84,7 @@ Zainstalowane środowisko .NET framework: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1 i 4
 ## <a name="family-4-releases"></a>Zwalnia rodziny w wersji 4
 **Windows Server 2012 R2**
 
-Zainstalowane środowisko .NET framework: 4.0, 4.5, 4.5.1, 4.5.2
+Zainstalowane środowisko .NET framework: 3.5, 4.5.1
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |
@@ -98,7 +98,7 @@ Zainstalowane środowisko .NET framework: 4.0, 4.5, 4.5.1, 4.5.2
 ## <a name="family-3-releases"></a>Zwalnia rodziny 3
 **Windows Server 2012**
 
-Zainstalowane środowisko .NET framework: 4.0, 4.5, 4.5.1, 4.5.2
+Zainstalowane środowisko .NET framework: 3.5, 4.5
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |
@@ -112,7 +112,7 @@ Zainstalowane środowisko .NET framework: 4.0, 4.5, 4.5.1, 4.5.2
 ## <a name="family-2-releases"></a>Zwalnia rodziny 2
 **Windows Server 2008 R2 z dodatkiem SP1**
 
-Zainstalowane środowisko .NET framework: 3.5, 4.0, 4.5, 4.5.1, 4.5.2
+Zainstalowane środowisko .NET framework: 3.5 (w tym w wersji 2.0 i 3.0)
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |

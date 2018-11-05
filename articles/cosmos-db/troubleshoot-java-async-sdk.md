@@ -9,12 +9,12 @@ ms.date: 10/28/2018
 ms.author: moderakh
 ms.devlang: java
 ms.component: cosmosdb-sql
-ms.openlocfilehash: ef1d2d0751bf1b1a7ee88fbf37e44e6316dee8f8
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: efa2b60ccfc6af6cfb4a46e17b13a426d4e8c9fe
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249877"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958818"
 ---
 # <a name="troubleshooting-issues-when-using-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Rozwiązywanie problemów, korzystając z zestawu SDK Java Async z kontami interfejsu API SQL usługi Azure Cosmos DB
 W tym artykule omówiono typowe problemy, rozwiązania, kroki diagnostyki i narzędzi, korzystając z [Java Async ADK](sql-api-sdk-async-java.md) z kontami interfejsu API SQL usługi Azure Cosmos DB.
@@ -48,7 +48,7 @@ Liczba otwartych plików ("nofile") musi być wystarczająco duży, (na co najmn
 
 ##### <a name="snat"></a>Wyczerpanie portów w usłudze Azure SNAT (PAT)
 
-Jeśli Twoja aplikacja jest wdrożona na maszynie Wirtualnej platformy Azure, domyślnie [porty Azure SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) służą do nawiązywania połączenia z dowolnego punktu końcowego poza maszyną Wirtualną. Liczba połączeń z maszyny Wirtualnej do punktu końcowego usługi Cosmos DB jest ograniczona przez [konfiguracji Azure SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports).
+Jeśli Twoja aplikacja jest wdrożona na maszynie Wirtualnej platformy Azure bez publicznego adresu IP domyślnie [porty Azure SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) służą do nawiązywania połączenia z dowolnego punktu końcowego poza maszyną Wirtualną. Liczba połączeń z maszyny Wirtualnej do punktu końcowego usługi Cosmos DB jest ograniczona przez [konfiguracji Azure SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports).
 
 Porty SNAT platformy Azure są używane tylko wtedy, gdy maszyna wirtualna platformy Azure ma prywatny adres IP i próbuje nawiązać połączenie z publicznym adresem IP procesu z maszyny Wirtualnej. Tak istnieją dwa obejścia problemu, aby uniknąć ograniczenia SNAT platformy Azure:
     * Dodawanie punktu końcowego usługi Azure Cosmos DB do podsieci sieci Wirtualnej maszyny Wirtualnej platformy Azure, zgodnie z objaśnieniem w [Włączanie sieć Wirtualną punktu końcowego usługi](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). Po włączeniu punktu końcowego usługi żądania nie są wysyłane z publicznego adresu IP do usługi cosmos DB zamiast tego sieci Wirtualnej i podsieci tożsamości są wysyłane. Ta zmiana może spowodować spadnie zapory, jeśli tylko publiczne adresy IP są dozwolone. Jeśli używasz zapory, podczas włączania punktu końcowego usługi, Dodaj podsieć do zapory przy użyciu [list ACL sieci Wirtualnej](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl).

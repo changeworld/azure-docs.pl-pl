@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: fc651b3bc28e59c5c5a195211d811e206eee3e42
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 71d5c26c8c41c470e188291dea4a4dab2811a67e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056068"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963119"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Źródło danych usługi Power BI z usługi Application Insights
 [Usługa Power BI](http://www.powerbi.com/) jest zestaw narzędzi biznesowej, która pomaga analizować dane i dziel się spostrzeżeniami. Zaawansowane pulpity nawigacyjne są dostępne na każdym urządzeniu. Można połączyć dane z wielu źródeł, takich jak zapytania usługi Analytics z [usługi Azure Application Insights](app-insights-overview.md).
@@ -41,7 +41,7 @@ Aby zaimportować zapytanie usługi Application Insights, należy użyć klasycz
 Zainstaluj [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
 ### <a name="export-an-analytics-query"></a>Eksportuj zapytania usługi Analytics
-1. [Otwórz analizę i zapisać zapytania](app-insights-analytics-tour.md).
+1. [Otwórz analizę i zapisać zapytania](../log-analytics/query-language/get-started-analytics-portal.md).
 2. Przetestuj i uściślenie kwerendy, dopóki nie jesteś zadowolony z wyników. Upewnij się, że zapytanie działa prawidłowo w usłudze Analytics przed wykonaniem eksportu.
 3. Na **wyeksportować** menu, wybierz **usługi Power BI (M)**. Zapisz plik tekstowy.
    
@@ -109,7 +109,7 @@ Jeśli zmniejszyć zestaw danych pochodzących z zapytania analizy nie spełnia 
    * Zastąp  **https://management.azure.com/subscriptions/...**
    * za pomocą  **https://api.applicationinsights.io/beta/apps/...**
 3. Na koniec Zaktualizuj poświadczenia do warstwy podstawowa, a następnie użyj swój klucz interfejsu API.
-  
+ �
 
 **Istniejący skrypt**
  ```
@@ -155,5 +155,5 @@ Po imporcie początkowym pulpit nawigacyjny i raporty będą aktualizowane codzi
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Usługa Power BI — informacje](http://www.powerbi.com/learning/)
-* [Samouczek analiz](app-insights-analytics-tour.md)
+* [Samouczek analiz](../log-analytics/query-language/get-started-analytics-portal.md)
 

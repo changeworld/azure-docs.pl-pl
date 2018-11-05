@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: 7046a0c6ac84ad5f156098a26dcef2b8accd50af
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c69a61f19b55cd325cd594173dbf3b5f2b4576b8
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987649"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962932"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Co to są alertów klasycznych na platformie Microsoft Azure?
 
@@ -29,7 +29,7 @@ W ciągu ostatnich usługi Azure Monitor usługi Application Insights, Log Analy
 
 Można wyświetlić alertów klasycznych tylko na ekranie użytkownika alertów klasycznych w witrynie Azure Portal. Pobierz ten ekran z **wyświetlanie alertów klasycznych** przycisk na ekranie alertów. 
 
- ![Opcje alertów w witrynie Azure portal](./media/monitoring-overview-alerts-classic/monitor-alert-screen2.png) 
+ ![Opcje alertów w witrynie Azure portal](./media/monitoring-overview-alerts-classic/monitor-alert-screen2.png)�
 
 Nowe środowisko użytkownika alertów ma następujące zalety nad środowiskiem alertów klasycznych:
 -   **Lepsze systemu powiadomień** -wszystkich nowszych alertów korzystanie z grup akcji, które noszą nazwy grup powiadomienia i akcje, które mogą być ponownie używane w wielu alertów. Klasyczne alertów metryk i alertów usługi Log Analytics starsze, nie należy używać grup akcji.
@@ -89,14 +89,14 @@ Elementy Webhook umożliwia automatyzację i korygowania, na przykład przy uży
 ## <a name="next-steps"></a>Kolejne kroki
 Uzyskać informacje na temat reguł alertów i konfigurowanie ich za pomocą:
 
-* Dowiedz się więcej o [metryki](monitoring-overview-metrics.md)
-* Konfigurowanie [alertów klasycznych metryki w witrynie Azure portal](insights-alerts-portal.md)
-* Konfigurowanie [klasyczny program PowerShell alerty metryki](insights-alerts-powershell.md)
-* Konfigurowanie [klasycznego interfejsu wiersza polecenia alerty metryki (CLI)](insights-alerts-command-line-interface.md)
+* Dowiedz się więcej o [metryki](../monitoring/monitoring-data-collection.md)
+* Konfigurowanie [alertów klasycznych metryki w witrynie Azure portal](alert-metric-classic.md)
+* Konfigurowanie [klasyczny program PowerShell alerty metryki](alert-metric-classic.md)
+* Konfigurowanie [klasycznego interfejsu wiersza polecenia alerty metryki (CLI)](alert-metric-classic.md)
 * Konfigurowanie [klasycznego metryki alerty usługi Azure Monitor interfejsu API REST](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 * Dowiedz się więcej o [dziennika aktywności](monitoring-overview-activity-logs.md)
 * Konfigurowanie [alertów dziennika aktywności w witrynie Azure portal](monitoring-activity-log-alerts.md)
-* Konfigurowanie [alertów dziennika aktywności przy użyciu usługi Resource Manager](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
+* Konfigurowanie [alertów dziennika aktywności przy użyciu usługi Resource Manager](alert-activity-log.md)
 * Przegląd [schemat elementów webhook alertu dziennika aktywności](monitoring-activity-log-alerts-webhook.md)
 * Dowiedz się więcej o [grupy akcji](monitoring-action-groups.md)
-* Konfigurowanie [nowszych alertów](monitor-alerts-unified-usage.md)
+* Konfigurowanie [nowszych alertów](alert-metric.md)

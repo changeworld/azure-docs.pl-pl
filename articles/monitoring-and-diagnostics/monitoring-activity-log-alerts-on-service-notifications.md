@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
 ms.component: alerts
-ms.openlocfilehash: 221434a391f963a764ef36b9533cc8cfd0e16c01
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: a86a7188c488a634de7b0ac71657bea0105381c7
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123452"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961895"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Tworzenie alertów dziennika aktywności dla powiadomień dotyczących usług
 ## <a name="overview"></a>Przegląd
@@ -36,7 +36,7 @@ Można także skonfigurować kogo wysyłane alertu:
 
 Aby dowiedzieć się więcej o grupach akcji, zobacz [Create and manage action groups (Tworzenie grup akcji i zarządzanie nimi)](monitoring-action-groups.md).
 
-Aby uzyskać informacje na temat konfigurowania usługi kondycji powiadomień alertów przy użyciu szablonów usługi Azure Resource Manager, zobacz [szablonów usługi Resource Manager](monitoring-create-activity-log-alerts-with-resource-manager-template.md).
+Aby uzyskać informacje na temat konfigurowania usługi kondycji powiadomień alertów przy użyciu szablonów usługi Azure Resource Manager, zobacz [szablonów usługi Resource Manager](alert-activity-log.md).
 
 ## <a name="create-an-alert-on-a-service-health-notification-for-a-new-action-group-by-using-the-azure-portal"></a>Tworzenie alertu na powiadomienie usługi kondycji dla nowej grupy akcji przy użyciu witryny Azure portal
 1. W [portal](https://portal.azure.com), wybierz opcję **Service Health**.
@@ -70,7 +70,7 @@ Aby uzyskać informacje na temat konfigurowania usługi kondycji powiadomień al
 
 1. Zdefiniuj listę odbiorców, podając odbiorcę firmy:
 
-    a. **Nazwa**: Wprowadź nazwę, alias lub identyfikator odbiorcy.
+    a. **Nazwa**: Wprowadź nazwę odbiornika s, alias lub identyfikator.
 
     b. **Typ akcji**: Wybierz wiadomości SMS, wiadomości e-mail, element webhook i aplikacji platformy Azure.
 
