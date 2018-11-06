@@ -2,6 +2,7 @@
 
 # Omówienie
 ## [Co to są usługi Azure AD Domain Services?](active-directory-ds-overview.md)
+## [Często zadawane pytania](active-directory-ds-faqs.md)
 ## Czy to coś dla Ciebie?
 ### [Porównanie z usługą AD w systemie Windows Server](active-directory-ds-comparison.md)
 ### [Porównanie z dołączeniem do usługi Azure AD](active-directory-ds-compare-with-azure-ad-join.md)
@@ -46,16 +47,15 @@
 ## [Administrowanie domeną zarządzaną](active-directory-ds-admin-guide-administer-domain.md)
 ## [Administrowanie systemem DNS w domenie zarządzanej](active-directory-ds-admin-guide-administer-dns.md)
 ## [Aktualizowanie powiadomień e-mail](active-directory-ds-notifications.md)
-# Konfigurowanie protokołu Secure LDAP dla domeny zarządzanej
+# Konfigurowanie protokołu LDAP dla domeny zarządzanej
 ## [Zadanie 1. Uzyskiwanie certyfikatu na potrzeby protokołu Secure LDAP](active-directory-ds-admin-guide-configure-secure-ldap.md)
 ## [Zadanie 2. Eksportowanie certyfikatu protokołu Secure LDAP](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
 ## [Zadanie 3. Włączanie protokołu Secure LDAP dla domeny zarządzanej przy użyciu witryny Azure Portal](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
 ## [Zadanie 4. Konfigurowanie systemu DNS do uzyskiwania dostępu do domeny zarządzanej z Internetu](active-directory-ds-ldaps-configure-dns.md)
 ## [Zadanie 5. Tworzenie powiązania z domeną zarządzaną i blokowanie dostępu za pomocą protokołu Secure LDAP](active-directory-ds-ldaps-bind-lockdown.md)
-## [Rozwiązywanie problemów z protokołem Secure LDAP](active-directory-ds-ldaps-troubleshoot.md)
+## [Rozwiązywanie problemów z bezpiecznym protokołem LDAP](active-directory-ds-ldaps-troubleshoot.md)
 
 # Rozwiązywanie problemów
-## [Często zadawane pytania](active-directory-ds-faqs.md)
 ## [Przewodnik rozwiązywania problemów](active-directory-ds-troubleshooting.md)
 ## [Rozwiązywanie problemów z alertami](active-directory-ds-troubleshoot-alerts.md)
 ### [Naprawianie uszkodzonej konfiguracji sieciowej grupy zabezpieczeń](active-directory-ds-troubleshoot-nsg.md)
