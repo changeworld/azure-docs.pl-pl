@@ -1,6 +1,6 @@
 ---
-title: Jak skonfigurować uwierzytelnianie Google aplikacji usługi aplikacji
-description: Dowiedz się, jak skonfigurować uwierzytelnianie Google aplikacji usługi aplikacji.
+title: Jak skonfigurować uwierzytelnianie serwisu Google dla aplikacji usługi App Services
+description: Dowiedz się, jak skonfigurować uwierzytelnianie serwisu Google dla aplikacji usługi App Services.
 services: app-service
 documentationcenter: ''
 author: mattchenderson
@@ -14,49 +14,49 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
-ms.openlocfilehash: f89ff3a030f1da75bca538eefaf2496e9be8e97b
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 6af0dfb00ff791b8a73ebf1ad14b35d99f67a483
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233823"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227420"
 ---
-# <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>Konfigurowanie aplikacji usługi aplikacji umożliwiająca użycie logowania Google
+# <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>Jak skonfigurować aplikację App Service do używania logowania usługi Google
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-W tym temacie przedstawiono sposób konfigurowania usługi Azure App Service służące Google jako dostawcy uwierzytelniania.
+W tym temacie przedstawiono sposób konfigurowania usługi Azure App Service, aby użyć Google jako dostawcy uwierzytelniania.
 
-Aby ukończyć tę procedurę w tym temacie, musi mieć konto Google ze zweryfikowanym adresem e-mail. Aby utworzyć nowe konto Google, przejdź do strony [accounts.google.com](http://go.microsoft.com/fwlink/p/?LinkId=268302).
+Aby ukończyć tę procedurę w tym temacie, musisz mieć konto Google ze zweryfikowanym adresem e-mail. Aby utworzyć nowe konto Google, przejdź do strony [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302).
 
 ## <a name="register"> </a>Zarejestrować aplikację w usłudze Google
-1. Zaloguj się do [Azure Portal], a następnie przejdź do aplikacji. Kopia programu **adres URL**, którego można później skonfigurować aplikacji Google.
-2. Przejdź do [interfejsy API Google](http://go.microsoft.com/fwlink/p/?LinkId=268303) kliknij witrynę sieci Web, zaloguj się przy użyciu poświadczeń konta Google **tworzenia projektu**, podaj **Nazwa projektu**, następnie kliknij przycisk  **Utwórz**.
-3. Po utworzeniu projektu, zaznacz go. Na pulpicie nawigacyjnym projektu kliknij **przejdź do omówienia interfejsów API**.
-4. Wybierz **Włącz interfejsy API i usługi**. Wyszukaj **interfejsu API Google +** i zaznacz je. Następnie kliknij przycisk **włączyć**.
-5. W obszarze nawigacji po lewej stronie **poświadczenia** > **ekranu zgoda OAuth**, a następnie wybierz pozycję z **adres E-mail**, wprowadź **nazwa produktu**i kliknij przycisk **zapisać**.
-6. W **poświadczenia** , kliknij pozycję **Utwórz poświadczenia** > **identyfikator klienta OAuth**.
+1. Zaloguj się do [Azure Portal], a następnie przejdź do aplikacji. Kopiuj swoje **adresu URL**, której użyjesz później skonfigurować aplikację Google.
+2. Przejdź do [interfejsy API Google](https://go.microsoft.com/fwlink/p/?LinkId=268303) witryny sieci Web, zaloguj się przy użyciu poświadczeń konta Google, kliknij przycisk **Tworzenie projektu**, podaj **Nazwa projektu**, następnie kliknij przycisk  **Utwórz**.
+3. Po utworzeniu projektu, wybierz ją. Na pulpicie nawigacyjnym projektu kliknij **przejdź do przeglądu interfejsów API**.
+4. Wybierz **Włącz interfejsy API i usług**. Wyszukaj **interfejsu API Google +**, a następnie wybierz ją. Następnie kliknij przycisk **Włącz**.
+5. W obszarze nawigacji po lewej stronie **poświadczenia** > **ekran zgody OAuth**, a następnie wybierz swoje **adres E-mail**, wprowadź **nazwa produktu**i kliknij przycisk **Zapisz**.
+6. W **poświadczenia** kliknij pozycję **Utwórz poświadczenia** > **identyfikator klienta OAuth**.
 7. Na ekranie "Utwórz identyfikator klienta" Wybierz **aplikacji sieci Web**.
-8. Wklej usługi App Service **adres URL** zostanie wcześniej skopiowany do **autoryzowany źródeł JavaScript**, Wklej przekierowania z identyfikatora URI do **autoryzowany identyfikator URI przekierowania**. Przekierowanie URI jest adres URL aplikacji dołączany wraz ze ścieżką */.auth/login/google/callback*. Na przykład `https://contoso.azurewebsites.net/.auth/login/google/callback`. Upewnij się, że używasz schematu HTTPS. Następnie kliknij pozycję **Utwórz**.
+8. Wklej usługi App Service **adresu URL** zostanie wcześniej skopiowany do **autoryzowanych źródeł JavaScript**, Wklej Twojego przekierowania URI do **autoryzacji identyfikator URI przekierowania**. Przekierowania URI jest adres URL aplikacji dołączany ścieżki, */.auth/login/google/callback*. Na przykład `https://contoso.azurewebsites.net/.auth/login/google/callback`. Upewnij się, że będą używać schematu HTTPS. Następnie kliknij pozycję **Utwórz**.
 9. Na następnym ekranie zanotuj wartości Identyfikatora klienta i klucz tajny klienta.
 
     > [!IMPORTANT]
-    > Klucz tajny klienta jest ważne poświadczenie zabezpieczeń. Nie udostępniaj nikomu ten klucz tajny i rozpowszechnienie go w aplikacji klienta.
+    > Klucz tajny klienta jest ważnym poświadczeniem zabezpieczeń. Udostępnij ten wpis tajny osobom lub nie rozpowszechnić ją w aplikacji klienckiej.
 
 
-## <a name="secrets"> </a>Dodawanie do aplikacji Google informacji
-1. W [Azure Portal], przejdź do aplikacji. Kliknij przycisk **ustawienia**, a następnie **uwierzytelniania / autoryzacji**.
-2. Jeśli uwierzytelnianie / autoryzacja funkcja nie jest włączona, włącz przełącznik do **na**.
-3. Kliknij przycisk **Google**. Wklej w wartości Identyfikatora aplikacji i klucz tajny aplikacji, które uzyskany wcześniej i opcjonalnie włączyć wszystkie zakresy wymaganych przez aplikację. Następnie kliknij przycisk **OK**.
+## <a name="secrets"> </a>Dodaj informacje o Google do aplikacji
+1. Ponownie [Azure Portal], przejdź do aplikacji. Kliknij przycisk **ustawienia**, a następnie **uwierzytelniania / autoryzacji**.
+2. Jeśli uwierzytelnianie / Autoryzacja nie jest aktywna, ustaw przełącznik na **na**.
+3. Kliknij przycisk **Google**. Wklej wartości Identyfikatora aplikacji i klucz tajny aplikacji, które uzyskany wcześniej, a opcjonalnie włączyć wszystkie zakresy, wymaganych przez aplikację. Następnie kliknij przycisk **OK**.
    
    ![][1]
    
-   Domyślnie usługi App Service zapewnia uwierzytelnianie, ale nie ogranicza autoryzowanego dostępu do interfejsów API i zawartości witryny. Musisz zezwolić użytkownikom w kodzie aplikacji.
-4. (Opcjonalnie) Aby ograniczyć dostęp do witryny użytkownikom tylko uwierzytelniony przez firmę Google, ustaw **działania należy podjąć w przypadku nieuwierzytelnionego żądania** do **Google**. Wymaga to, że wszystkie żądania uwierzytelnienia, a wszystkie nieuwierzytelnione żądania są przekierowywane do Google do uwierzytelniania.
+   Domyślnie usługa App Service zapewnia uwierzytelnianie, ale nie ogranicza autoryzowanego dostępu do zawartości witryny i interfejsów API. W kodzie aplikacji musi autoryzować użytkowników.
+4. (Opcjonalnie) Aby ograniczyć dostęp do witryny tylko użytkownicy uwierzytelnieni przez firmę Google, należy ustawić **akcji do wykonania w przypadku nieuwierzytelnionego żądania** do **Google**. Wymaga to, że wszystkie żądania uwierzytelnienia, a wszystkie nieuwierzytelnione żądania są przekierowywane do firmy Google do uwierzytelniania.
 5. Kliknij pozycję **Zapisz**.
 
-Teraz można przystąpić do uwierzytelniania w aplikacji Google.
+Teraz można przystąpić do użycia Google na potrzeby uwierzytelniania w aplikacji.
 
-## <a name="related-content"> </a>Zawartość pokrewna
+## <a name="related-content"> </a>Powiązana zawartość
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
 <!-- Anchors. -->

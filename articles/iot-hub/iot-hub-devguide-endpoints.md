@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 12dd93edce365509488631e4ca27462256abfca8
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 43e2101f413985974b964f2261d852692bcac61d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452670"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251444"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Odwołanie - punktów końcowych usługi IoT Hub
 
@@ -57,7 +57,7 @@ Poniższa lista zawiera punkty końcowe:
 
 * **Punkty końcowe usługi**. Każde Centrum IoT hub ujawnia zestaw punktów końcowych w zapleczu rozwiązania do komunikowania się z urządzeniami. Z jednym wyjątkiem te punkty końcowe są dostępne tylko przy użyciu [AMQP](https://www.amqp.org/) protokołu. Punkt końcowy z wywołania metody jest uwidaczniany za pośrednictwem protokołu HTTPS.
   
-  * *Odbieranie komunikatów z urządzenia do chmury*. Ten punkt końcowy jest zgodny z [usługi Azure Event Hubs](http://azure.microsoft.com/documentation/services/event-hubs/). Usługa zaplecza służy do odczytywania [komunikatów z urządzenia do chmury](iot-hub-devguide-messages-d2c.md) wysyłane przez urządzenie. Niestandardowe punkty końcowe można utworzyć w usłudze IoT hub, oprócz tego wbudowany punkt końcowy.
+  * *Odbieranie komunikatów z urządzenia do chmury*. Ten punkt końcowy jest zgodny z [usługi Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/). Usługa zaplecza służy do odczytywania [komunikatów z urządzenia do chmury](iot-hub-devguide-messages-d2c.md) wysyłane przez urządzenie. Niestandardowe punkty końcowe można utworzyć w usłudze IoT hub, oprócz tego wbudowany punkt końcowy.
   
   * *Wysyłanie komunikatów z chmury do urządzeń i otrzymywać potwierdzeń dostarczenia*. Tych punktów końcowych, Włącz w zapleczu rozwiązania do wysyłania niezawodne [komunikatów z chmury do urządzeń](iot-hub-devguide-messages-c2d.md)oraz dostarczania odpowiednich lub potwierdzenia wygaśnięcia.
   

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: 554718f0bb465ca757fc4dcf6c22d3b0dd80f2fb
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3f0bf2c6c58afbbf9a1256fa5901591e535fe20c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251094"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250768"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB — często zadawane pytania
 ## <a name="azure-cosmos-db-fundamentals"></a>Podstawy usługi Azure Cosmos DB
@@ -36,7 +36,7 @@ Usługa Azure Cosmos DB jest dobrym wyborem dla nowych sieci web, mobilnych, gie
 ### <a name="how-does-azure-cosmos-db-offer-predictable-performance"></a>Jak usługa Azure Cosmos DB zapewnia przewidywalną wydajność?
 A [jednostki żądań](request-units.md) służy do mierzenia przepływności w usłudze Azure Cosmos DB. Przepływność 1-RU odpowiada przepływności pobierania dokumentu o rozmiarze 1 KB. Każda operacja w usłudze Azure Cosmos DB, w tym odczyty, zapisy, zapytań SQL i wykonania procedury składowanej ma deterministyczną wartość RU, który jest oparty na przepływności wymaganej do ukończenia tej operacji. Zamiast myśleć o procesora CPU, we/wy i pamięci oraz ich wpływ na przepływność aplikacji, można traktować pod względem pojedynczej mierze jednostek RU.
 
-Możesz zarezerwować każdego kontenera usługi Azure Cosmos DB z aprowizowaną przepływnością wyrażoną jako jednostek żądania przepływności na sekundę. W przypadku aplikacji o dowolnej skali test porównawczy poszczególnych żądań w celu pomiaru ich wartości jednostki ru na i aprowizować kontener służący do obsługi suma liczby jednostek żądania udostępniane wszystkim żądaniom. Możesz również skalować w górę lub Skaluj w dół przepływność z kontenerem aplikacji rozwijających się potrzeb. Aby uzyskać więcej informacji na temat jednostek żądania i określania kontenera zobacz [szacowania związanym z przepływnością](request-units.md#estimating-throughput-needs) , a następnie spróbuj [Kalkulator przepływności](https://www.documentdb.com/capacityplanner). Termin *kontenera* odnosi się tutaj do kolekcji interfejs API SQL, interfejs API Gremlin wykresu, kolekcji interfejs API bazy danych MongoDB i tabelę interfejsu API tabel. 
+Możesz zarezerwować każdego kontenera usługi Azure Cosmos DB z aprowizowaną przepływnością wyrażoną jako jednostek żądania przepływności na sekundę. W przypadku aplikacji o dowolnej skali test porównawczy poszczególnych żądań w celu pomiaru ich wartości jednostki ru na i aprowizować kontener służący do obsługi suma liczby jednostek żądania udostępniane wszystkim żądaniom. Możesz również skalować w górę lub Skaluj w dół przepływność z kontenerem aplikacji rozwijających się potrzeb. Aby uzyskać więcej informacji na temat jednostek żądania i określania kontenera spróbuj [Kalkulator przepływności](https://www.documentdb.com/capacityplanner). Termin *kontenera* odnosi się tutaj do kolekcji interfejs API SQL, interfejs API Gremlin wykresu, kolekcji interfejs API bazy danych MongoDB i tabelę interfejsu API tabel. 
 
 ### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Jak usługa Azure Cosmos DB obsługuje różne modele danych, takie jak klucz/wartość, kolumnowy, dokument i wykres?
 
@@ -462,7 +462,7 @@ Opłata za RU opiera się na zestawie roboczym danych podczas przechodzenia i us
 
 ### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Jaka jest maksymalna skala, który grafowej bazy danych może mieć w usłudze Azure Cosmos DB — interfejs API Gremlin? 
 
-Usługa Azure Cosmos DB wykorzystuje [partycjonowanie poziome](partition-data.md) automatycznie adres wzrost wymagania dotyczące magazynu i przepływności. Maksymalną pojemność przepływności i przestrzeni dyskowej obciążenie jest określana przez liczbę partycji, które są skojarzone z danej kolekcji. Jednak kolekcji interfejs API Gremlin ma określony zbiór wytycznych, aby zapewnić właściwe działanie doświadczeń skali. Aby uzyskać więcej informacji i najlepszych rozwiązań, zobacz [najlepszymi rozwiązaniami dotyczącymi partycjonowania](partition-data.md#best-practices-when-choosing-a-partition-key) dokumentu. 
+Usługa Azure Cosmos DB wykorzystuje [partycjonowanie poziome](partition-data.md) automatycznie adres wzrost wymagania dotyczące magazynu i przepływności. Maksymalną pojemność przepływności i przestrzeni dyskowej obciążenie jest określana przez liczbę partycji, które są skojarzone z danej kolekcji. Jednak kolekcji interfejs API Gremlin ma określony zbiór wytycznych, aby zapewnić właściwe działanie doświadczeń skali. Aby uzyskać więcej informacji na temat partycjonowania i najlepsze rozwiązania, zobacz [partycjonowanie w usłudze Azure Cosmos DB](partition-data.md) artykułu. 
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Jak chronić przed atakami polegającymi na iniekcji przy użyciu języka Gremlin sterowniki? 
 

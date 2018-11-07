@@ -13,136 +13,104 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 10/16/2018
+ms.date: 11/05/2018
 ms.author: juliako
-ms.openlocfilehash: a17bad5beb651aaa085c626296c200a00c30647e
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 2f5c0ef63ba150fdad4aea1a0c65269611d56815
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376366"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247691"
 ---
-# <a name="migrate-from-media-services-v2-to-v3"></a>Migrowanie z usługi Media Services v2 do v3
+# <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Wskazówki dotyczące migracji do przenoszenia z usługi Media Services v2 do v3
 
-W tym artykule opisano zmiany, które zostały wprowadzone w usłudze Azure Media Services (AMS) w wersji 3 i przedstawiono różnice między dwoma wersjami.
+W tym artykule opisano zmiany, które zostały wprowadzone w usłudze Azure Media Services v3, przedstawiono różnice między dwoma wersjami i zawiera wskazówki dotyczące migracji.
 
-## <a name="why-should-you-move-to-v3"></a>Dlaczego należy można przenieść do wersji 3?
+Jeśli masz już dziś opracowanych w górnej części usługi wideo [starszej wersji usługi Media Services v2 API](../previous/media-services-overview.md), należy przejrzeć następujące wskazówki i uwagi dotyczące przed przeprowadzeniem migracji do interfejsów API w wersji 3. Istnieje wiele korzyści i nowe funkcje w wersji 3 interfejsu API, które zwiększają Środowisko deweloperskie i możliwości usługi Media Services. Jednak jako o nazwie w [znane problemy](#known-issues) sekcji tego artykułu, również istnieją pewne ograniczenia z powodu zmian między wersjami interfejsu API. Ta strona zostanie zachowana, jak zespół usługi Media Services umożliwia dalsze ulepszenia do interfejsów API w wersji 3 i luki między wersjami. 
+
+## <a name="benefits-of-media-services-v3"></a>Zalety Media Services v3
 
 ### <a name="api-is-more-approachable"></a>Interfejs API jest bardziej przystępne.
 
-*  v3 opiera się na ujednoliconego powierzchni interfejsu API, który uwidacznia funkcje operacji oraz zarządzania oparta na usłudze Resource Manager. Szablony usługi Azure Resource Manager może służyć do tworzenia i wdrażania przekształceń, punkty końcowe przesyłania strumieniowego, LiveEvents i nie tylko.
-* Otwórz interfejs API (zwane również struktury Swagger) dokument specyfikacji.
-* Zestawy SDK dostępne dla platformy .net,.Net Core, Node.js, Python, Java, Ruby.
-* Integracja z interfejsu wiersza polecenia platformy Azure.
+*  Wersja 3 opiera się na ujednoliconej powierzchni interfejsu API, która udostępnia zarówno funkcje zarządzania, jak i operacji oparte na usłudze Azure Resource Manager. Szablony usługi Azure Resource Manager może służyć do tworzenia i wdrażania przekształceń, punkty końcowe przesyłania strumieniowego, LiveEvents i nie tylko.
+* [Otwórz interfejs API (zwane również struktury Swagger) specyfikacji](https://aka.ms/ams-v3-rest-sdk) dokumentu.
+    Przedstawia schematu dla wszystkich składników usługi, w tym kodowanie oparte na plikach.
+* Zestawy SDK dostępne dla [.NET](https://aka.ms/ams-v3-dotnet-ref), .NET Core [Node.js](https://aka.ms/ams-v3-nodejs-ref), [Python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [Przejdź](https://aka.ms/ams-v3-go-ref)i Ruby.
+* [Interfejs wiersza polecenia Azure](https://aka.ms/ams-v3-cli-ref) integracji na potrzeby prostą obsługę skryptów.
 
 ### <a name="new-features"></a>Nowe funkcje
 
-* Kodowanie obsługuje teraz protokół HTTPS pozyskiwania (wejście opartego na adresach Url).
-* Przekształcenia stanowią nowość w wersji 3. Przekształcenie umożliwia udostępnianie konfiguracji, tworzenia szablonów usługi Azure Resource Manager i izolować ustawienia kodowania, dla konkretnego klienta lub jednego dzierżawcy. 
-* Element zawartości może mieć wiele StreamingLocators z różnymi ustawieniami funkcji dynamicznego tworzenia pakietów i szyfrowania dynamicznego.
-* Usługa Content protection obsługuje funkcje wielu kluczy. 
+* Przetwarzanie zadania oparte na plikach można użyć adresu URL HTTP (S) jako dane wejściowe.
+    Nie musisz mieć zawartości już przechowywane na platformie Azure i nie potrzebujesz do tworzenia zasobów.
+* Pojęcia związane z [przekształca](transforms-jobs-concept.md) dla przetwarzanie zadań opartych na plikach. Przekształcenie może służyć do tworzenia konfiguracji wielokrotnego użytku, do tworzenia szablonów usługi Azure Resource Manager i izolowania przetwarzania ustawień między wieloma klientami lub dzierżawcy.
+* Element zawartości może mieć [wielu StreamingLocators](streaming-locators-concept.md) każdego z różnymi ustawieniami funkcji dynamicznego tworzenia pakietów i szyfrowania dynamicznego.
+* [Content protection](content-key-policy-concept.md) obsługuje wiele kluczowych funkcji.
+* Można przesyłać strumieniowo wydarzenia na żywo, które są do 24 godzin.
+* Nowe Niskie opóźnienie obsługę przesyłania strumieniowego na żywo na LiveEvents.
 * Element LiveEvent (wersja zapoznawcza) obsługuje funkcję dynamicznego tworzenia pakietów i szyfrowania dynamicznego. Dzięki temu ochrony zawartości w wersji zapoznawczej, a także DASH i HLS pakowania.
-* LiveOuput jest prostsza w użyciu niż starsza jednostki programu. 
-* Dodano obsługę funkcji RBAC w jednostkach.
+* LiveOutput jest łatwiejszy w obsłudze niż jednostka Program w interfejsach API w wersji 2. 
+* Masz kontroli dostępu opartej na rolach (RBAC) za pośrednictwem jednostek. 
 
 ## <a name="changes-from-v2"></a>Zmiany w wersji 2
 
-* W Media Services v3 szyfrowania magazynu (szyfrowanie AES-256) jest tylko obsługiwane dla zapewnienia zgodności gdy Twoje zasoby zostały utworzone za pomocą usługi Media Services v2. Co oznacza v3 współpracuje z istniejącym magazynie zaszyfrowane zasoby, ale nie pozwoli na tworzenie nowych.
-
-    Dla zasoby utworzone w wersji 3, Media Services obsługuje [usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) szyfrowanie magazynu po stronie serwera.
-    
-* Zestawy SDK usług Media całkowicie niezależna od zestawu SDK magazynu, co daje większą kontrolę nad zestawu SDK usługi Storage używane i eliminuje problemy z wersjonowaniem. 
-* W wersji 3 są wszystkie kodowania szybkości transmisji bitów w bitach na sekundę. Stanowi to odmianę v2 REST, które ustawienia wstępne usługi Media Encoder Standard. Na przykład szybkości transmisji bitów w wersji 2 będzie można określić jako 128, ale w wersji 3 byłoby 128000. 
-* IngestManifests AssetFiles, AccessPolicies, nie istnieją w wersji 3.
-* Kluczy zawartości nie są już jednostki, właściwość StreamingLocator.
+* Dla zasoby utworzone w wersji 3, Media Services obsługuje tylko [szyfrowania magazynu po stronie serwera usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
+    * Za pomocą interfejsów API w wersji 3 zasoby utworzone za pomocą interfejsów API w wersji 2, który miał [szyfrowania magazynu](../previous/media-services-rest-storage-encryption.md) (AES 256) udostępnianego przez usługi multimediów.
+    * Nie można tworzyć nowe zasoby za pomocą starszej wersji AES 256 [szyfrowania magazynu](../previous/media-services-rest-storage-encryption.md) przy użyciu interfejsów API w wersji 3.
+* Zestawy SDK w wersji 3 są teraz całkowicie niezależni od zestawu SDK usługi Storage, co daje większą kontrolę nad wersję zestawu SDK usługi Storage ma być używany i eliminuje problemy z wersjonowaniem. 
+* W interfejsach API w wersji 3 są wszystkie kodowania szybkości transmisji bitów w bitach na sekundę. Stanowi to odmianę v2, które ustawienia wstępne usługi Media Encoder Standard. Na przykład szybkości transmisji bitów w wersji 2 będzie można określić jako 128 (KB/s), ale w wersji 3 byłoby 128000 (bity/sekundę). 
+* AssetFiles jednostek, AccessPolicies i IngestManifests nie istnieją w wersji 3.
+* Kluczy zawartości nie jest już jednostki, jest teraz właściwość StreamingLocator.
 * Obsługa siatki zdarzeń zastępuje NotificationEndpoints.
-* Niektóre jednostki zostały zmienione.
+* Następujące jednostki zostały zmienione.
+    * JobOutput zadań zastępuje i jest teraz częścią zadania.
+    * StreamingLocator zastępuje lokalizatora.
+    * Element LiveEvent zastępuje kanału.
+        
+        Rozliczenia LiveEvents opiera się na licznikach kanału na żywo. Aby uzyskać więcej informacji, zobacz [na żywo, przesyłanie strumieniowe Przegląd](live-streaming-overview.md#billing) i [ceny](https://azure.microsoft.com/pricing/details/media-services/).
+    * LiveOutput zastępuje Program.
+* LiveOutputs nie musiały zostać uruchomione w sposób jawny, start przy tworzeniu i Zatrzymaj po usunięciu. Programy działały inaczej w interfejsach API w wersji 2, mieli oni ma zostać uruchomiony po utworzeniu.
 
-  * JobOutput zastępuje zadanie teraz po prostu część zadania.
-  * Element LiveEvent zastępuje kanału.
-  * LiveOutput zastępuje Program.
-  * StreamingLocator zastępuje lokalizatora.
+## <a name="feature-gaps-with-respect-to-v2-apis"></a>Funkcja luki w odniesieniu do interfejsów API w wersji 2
 
-## <a name="code-changes"></a>Zmiany kodu
+Interfejs API w wersji 3 ma następujące luki funkcji w odniesieniu do interfejsu API w wersji 2. Do wypełniania luk jest w toku.
 
-### <a name="create-an-asset-and-upload-a-file"></a>Utworzenie elementu zawartości i przekaż plik 
+* [Koder w warstwie Premium](../previous/media-services-premium-workflow-encoder-formats.md) i starszego [media analytics procesorów](../previous/media-services-analytics-overview.md) (Azure Media Services Indexer 2 — wersja zapoznawcza, usługi Face Redactor itp.) nie są dostępne za pośrednictwem v3.
 
-#### <a name="v2"></a>v2
+    Klienci, którzy chcą przeprowadzić migrację z 1 indeksatora multimediów lub 2 (wersja zapoznawcza) można użyć od razu AudioAnalyzer wstępnie ustawione w interfejsie API w wersji 3.  To nowe ustawienie wstępne zawiera więcej funkcji niż starsze 1 indeksatora multimediów lub 2. 
 
-```csharp
-IAsset asset = context.Assets.Create(assetName, storageAccountName, options);
+* Wiele zaawansowanych funkcji usługi Media Encoder Standard w interfejsach API w wersji 2 nie są obecnie dostępne w wersji 3, takich jak:
+    * Przycinanie (dla scenariuszy, na żądanie i na żywo)
+    * Łączenie zasobów
+    * Nakładki
+    * Przycinanie
+    * Miniatury ikony
+* LiveEvents z transkodowanie obecnie obsługuje strumienia środku wstawiania Plansz, niestandardowych ustawień wstępnych ani wstawiania znaczników reklamy, za pośrednictwem wywołania interfejsu API. 
 
-IAssetFile assetFile = asset.AssetFiles.Create(assetFileName);
+> [!NOTE]
+> Zakładki w tym artykule i zachować sprawdzania dostępności aktualizacji.
 
-assetFile.Upload(filePath);
-```
+## <a name="code-differences"></a>Różnice w kodzie
 
-#### <a name="v3"></a>v3
+W poniższej tabeli przedstawiono różnice kodu między v2 i v3 dla typowych scenariuszy.
 
-```csharp
-Asset asset = client.Assets.CreateOrUpdate(resourceGroupName, accountName, assetName, new Asset());
+|Scenariusz|INTERFEJSY API WERSJI 2|W WERSJI 3 INTERFEJSU API|
+|---|---|---|
+|Utworzenie elementu zawartości i przekaż plik |[przykład dla środowiska .NET w wersji 2](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[przykład dla środowiska .NET w wersji 3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
+|Przesyłanie zadania|[przykład dla środowiska .NET w wersji 2](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[przykład dla środowiska .NET w wersji 3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Pokazuje, jak utworzyć przekształcenie, a następnie przesyłać zadania.|
+|Publikowanie elementu zawartości przy użyciu szyfrowania AES |1. Utwórz ContentKeyAuthorizationPolicyOption<br/>2. Utwórz ContentKeyAuthorizationPolicy<br/>3. Utwórz AssetDeliveryPolicy<br/>4. Tworzenie elementu zawartości i przekazywać zawartość lub Prześlij zadanie i korzystają z danych wyjściowych elementu zawartości<br/>5. Kojarzenie AssetDeliveryPolicy z elementem zawartości<br/>6. Utwórz ContentKey<br/>7. Dołącz ContentKey do zasobu<br/>8. Utwórz AccessPolicy<br/>9. Tworzenie lokalizatora<br/><br/>[przykład dla środowiska .NET w wersji 2](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. Tworzenie zasad kluczy zawartości<br/>2. Utwórz zasób<br/>3. Przekazywanie zawartości lub Użyj zasobów jako JobOutput<br/>4. Utwórz StreamingLocator<br/><br/>[przykład dla środowiska .NET w wersji 3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
 
-var response = client.Assets.ListContainerSas(resourceGroupName, accountName, assetName, permissions: AssetContainerPermission.ReadWrite, expiryTime: DateTime.Now.AddHours(1));
+## <a name="known-issues"></a>Znane problemy
 
-var sasUri = new Uri(response.AssetContainerSasUrls.First());
-CloudBlobContainer container = new CloudBlobContainer(sasUri);
-
-var blob = container.GetBlockBlobReference(Path.GetFileName(fileToUpload));
-blob.UploadFromFile(fileToUpload);
-```
-
-### <a name="submit-a-job"></a>Przesyłanie zadania
-
-#### <a name="v2"></a>v2
-
-```csharp
-IMediaProcessor processor = context.MediaProcessors.GetLatestMediaProcessorByName(mediaProcessorName);
-
-IJob job = jobs.Create($"Job for {inputAsset.Name}");
-
-ITask task = job.Tasks.AddNew($"Task for {inputAsset.Name}", processor, taskConfiguration);
-
-task.InputAssets.Add(inputAsset);
-
-task.OutputAssets.AddNew(outputAssetName, outputAssetStorageAccountName, outputAssetOptions);
-
-job.Submit();
-```
-
-#### <a name="v3"></a>v3
-
-```csharp
-client.Assets.CreateOrUpdate(resourceGroupName, accountName, outputAssetName, new Asset());
-
-JobOutput[] jobOutputs = { new JobOutputAsset(outputAssetName)};
-
-JobInput jobInput = JobInputAsset(assetName: assetName);
-
-Job job = client.Jobs.Create(resourceGroupName,
-accountName, transformName, jobName,
-new Job {Input = jobInput, Outputs = jobOutputs});
-```
-
-### <a name="publish-an-asset-with-aes-encryption"></a>Publikowanie elementu zawartości przy użyciu szyfrowania AES 
-
-#### <a name="v2"></a>v2
-
-1. Utwórz ContentKeyAuthorizationPolicyOption
-2. Utwórz ContentKeyAuthorizationPolicy
-3. Utwórz AssetDeliveryPolicy
-4. Tworzenie elementu zawartości i przekazywać zawartość lub Prześlij zadanie i korzystają z danych wyjściowych elementu zawartości
-5. Kojarzenie AssetDeliveryPolicy z elementem zawartości
-6. Utwórz ContentKey
-7. Dołącz ContentKey do zasobu
-8. Utwórz AccessPolicy
-9. Tworzenie lokalizatora
-
-#### <a name="v3"></a>v3
-
-1. Tworzenie zasad kluczy zawartości
-2. Utwórz zasób
-3. Przekazywanie zawartości lub Użyj zasobów jako JobOutput
-4. Utwórz StreamingLocator
+* Obecnie nie można użyć witryny Azure portal do zarządzania zasobami v3. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-sdk), interfejsu wiersza polecenia lub w jednym z obsługiwanych zestawów SDK.
+* Obecnie jednostek zarezerwowanych multimediów może zarządzać tylko przy użyciu interfejsu API w wersji 2 usługi Media Services. Aby uzyskać więcej informacji, zobacz [skalowanie przetwarzania multimediów](../previous/media-services-scale-media-processing-overview.md).
+* Jednostki usługi Media Services, utworzone w wersji 3, interfejs API nie mogą być zarządzane przez interfejsy API wersji 2.  
+* Nie zaleca się Zarządzanie jednostkami, które zostały utworzone za pomocą interfejsów API w wersji 2, za pośrednictwem interfejsów API w wersji 3. Poniżej przedstawiono przykłady różnic, wchodzące jednostkami w dwóch wersjach niezgodne:   
+    * Zadania i zadania utworzone w wersji 2 nie są wyświetlane w wersji 3, ponieważ nie są one powiązane z zadaniami transformacji. Zalecane jest, aby przełączyć się do wersji 3 transformacje i zadania. Będzie konieczności monitor porządkowych w wersji 2 zadania podczas przełączenie okres względnie krótkim czasie.
+    * Kanały i programy utworzone za pomocą wersji 2, (które są mapowane na LiveEvents i LiveOutputs w wersji 3) nie może kontynuować, zarządzane w wersji 3. Zalecane jest, aby przełączyć się do v3 LiveEvents i LiveOutputs na wygodne Zatrzymaj kanał.
+    
+        Obecnie nie można migrować, stale uruchomione kanały.  
+> [!NOTE]
+> Zakładki w tym artykule i zachować sprawdzania dostępności aktualizacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
